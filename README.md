@@ -16,4 +16,4 @@ This repository contains an isolated core logic and tools package with synthetic
 
 ## Validation
 
-Use Node.js >=22.13.0. Run `npm ci --ignore-scripts`, then `npm run verify` (TypeScript check and 70 synthetic tests). Run `node scripts/repo-hygiene.mjs` separately to check tracked paths. No production credentials or data are required.
+Use Node.js >=22.13.0. Run `npm ci --ignore-scripts`, then `npm run verify` (TypeScript check and 84 synthetic tests). Run `node scripts/repo-hygiene.mjs` separately to check tracked paths. No production credentials or data are required.

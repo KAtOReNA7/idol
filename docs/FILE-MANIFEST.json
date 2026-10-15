@@ -1,0 +1,435 @@
+{
+  "purpose": "integrated-code-only-mainline-no-production-data",
+  "sources": {
+    "core": "1a3b8629de688a9aca844eac309bfb5056c7f5be",
+    "uiBase": "b65bb8a666a03f8ea3044295cc4c7bc915efce1d",
+    "uiIntegration": "3f0527bcd97a1138d0595543aec4bda1d925c08a"
+  },
+  "rollbackMain": "d7111538c6eaa430e0f1cd2e198ab794aa944e40",
+  "excludedManifests": [
+    "SOURCE-MANIFEST.json",
+    "docs/FILE-MANIFEST.json"
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 381,
+      "sha256": "09167d4aaf4212a1b7da38248375e65be7f6319cfdcb77821697731d25563414"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3556,
+      "sha256": "f9a608f7c4f4ed9dac12987e716c66de9e85fe7b77b5d2cc34bd1a9daffaa7c7"
+    },
+    {
+      "path": "app/api/catalog/route.ts",
+      "bytes": 101,
+      "sha256": "a700dc0ed522cea9acdcb07606cc7ca45ae3e042d2c5e8ca21f4a4ea7508f445"
+    },
+    {
+      "path": "app/api/media/route.ts",
+      "bytes": 1910,
+      "sha256": "efb286133bc7662a4066cca84f0c0f61d4fa983b6d6244c4c649c2a29b8fd582"
+    },
+    {
+      "path": "app/api/save/route.ts",
+      "bytes": 135,
+      "sha256": "acd0bdca6b5e9cf0e4e486f367edf5ed996a0fa81570a0824ce2429f8c4132d7"
+    },
+    {
+      "path": "app/api/status/route.ts",
+      "bytes": 65,
+      "sha256": "6aba3021b512f446c11d298193da4772a48d927d03ae0f7013fa88688b9b5532"
+    },
+    {
+      "path": "app/artists/aespa/page.tsx",
+      "bytes": 229,
+      "sha256": "e7eb471eb9ea8af3daca79b18556a6a0093ef2f901c00fb775cbd18d97ec379d"
+    },
+    {
+      "path": "app/artists/babymonster/page.tsx",
+      "bytes": 190,
+      "sha256": "0981f0e779034f9e20052eb5ea68dc49265de013192f747931479ce5a1fc1321"
+    },
+    {
+      "path": "app/artists/expanded-artist.css",
+      "bytes": 27192,
+      "sha256": "5caa449a1239e52b8cd07a3cb2488602b6c2bcb5e9a1f894f08d12127c48c3e7"
+    },
+    {
+      "path": "app/artists/illit/artist.css",
+      "bytes": 23328,
+      "sha256": "5bd6fb4b1a03d33927f99aa3c7e491871f410451b497eaaf116d4c1a80bd526a"
+    },
+    {
+      "path": "app/artists/illit/page.tsx",
+      "bytes": 131,
+      "sha256": "d204187acdcf81caf4ab9162aacad6fc49ca1597662a41dc7c09f82ea0f23d05"
+    },
+    {
+      "path": "app/artists/ive/ive-artist.css",
+      "bytes": 16628,
+      "sha256": "2cebec051698512b5e086e1ed415df674f3a4a1415d61aa9be8b30535f7b15f3"
+    },
+    {
+      "path": "app/artists/ive/page.tsx",
+      "bytes": 193,
+      "sha256": "43372e238d60b63c9c31e7cf11c391bded99e19003ec429423273060521850ed"
+    },
+    {
+      "path": "app/artists/kissoflife/kiof-artist.css",
+      "bytes": 15516,
+      "sha256": "26de467b8a36a344242264a60f79802c5e5f8e073fe9ab28a6eb4fe543ca6234"
+    },
+    {
+      "path": "app/artists/kissoflife/page.tsx",
+      "bytes": 204,
+      "sha256": "e89010beae69c45df3454b5e3ba6e38120d247aeae620f3c190f3b99cd1064a1"
+    },
+    {
+      "path": "app/artists/xg/page.tsx",
+      "bytes": 223,
+      "sha256": "f297cb7b144bf74c4279cd1d338a009fb6951454f936ab50369875256ae16c69"
+    },
+    {
+      "path": "app/babymonster-experience.css",
+      "bytes": 8238,
+      "sha256": "4b1fd5d9e58d2b4b78fb4fb09e35319e8336999e22d41bc59e13e53a0f27473f"
+    },
+    {
+      "path": "app/expanded-experience.css",
+      "bytes": 14677,
+      "sha256": "ad42e14e5e2765dd2a6735bb0053125a0b2bb6c84d80b711bc754bfbeed95948"
+    },
+    {
+      "path": "app/globals.css",
+      "bytes": 56915,
+      "sha256": "b9e0ac837d452f80805267914898f0ed90bea5e8b90ec6c587d47b7743f8405b"
+    },
+    {
+      "path": "app/illit-experience.css",
+      "bytes": 9392,
+      "sha256": "ad6448b725448d0a64370d1fd48833a4033a4b265da228ab1118407c252c171c"
+    },
+    {
+      "path": "app/ive-experience.css",
+      "bytes": 7087,
+      "sha256": "fb50d5466b54b8b459e4527ebe500d0151395ef56322ba10cb49a43c0fe7ffcf"
+    },
+    {
+      "path": "app/kiof-experience.css",
+      "bytes": 7652,
+      "sha256": "7030440a9e4729a2de6ddd2b1d0155df16f3c2f4ad2dfdf640465bacf38255d9"
+    },
+    {
+      "path": "app/layout.tsx",
+      "bytes": 373,
+      "sha256": "a9a848070926d03433573aa41fedc84ad5b2a9acc89386b5909b91f3dbb44f68"
+    },
+    {
+      "path": "app/page.tsx",
+      "bytes": 58815,
+      "sha256": "5e94d5914985f84d128d7a391221f7fc60f9aeebb7a0f4380fe466b96259a04b"
+    },
+    {
+      "path": "app/preview/babymonster/artist.css",
+      "bytes": 25747,
+      "sha256": "707a8228d94f6311751cce069dd50251b7ff9d3b1d8a4eb453892b1d66524249"
+    },
+    {
+      "path": "components/artist-sample.tsx",
+      "bytes": 22425,
+      "sha256": "7f74069eeb7f4964ea5a6a311098522def913a5b090b0e29df4e18c4c95d3a02"
+    },
+    {
+      "path": "components/expanded-artist.tsx",
+      "bytes": 23392,
+      "sha256": "0674321fe950add2a5d32451c796709f4def2e7132b9cb60d8724fda1f75a6bf"
+    },
+    {
+      "path": "components/group-detail.tsx",
+      "bytes": 13270,
+      "sha256": "3d312eec1e7c83d135955394783942a2804d8e92a883e7973a7202d1500893cf"
+    },
+    {
+      "path": "components/group-index.tsx",
+      "bytes": 2981,
+      "sha256": "1ccde3033b81ee73656783dea4ae1c36d142c7cc3ec8e37bd6f949eabf6b8936"
+    },
+    {
+      "path": "components/illit-artist.tsx",
+      "bytes": 20074,
+      "sha256": "7ef9568285ca5da1f8b22bf29e8a35e439462d497e52fbafd59dd082948ae0a3"
+    },
+    {
+      "path": "components/ive-artist.tsx",
+      "bytes": 19707,
+      "sha256": "fb88eece251cda95207ee747232e820622b65e5ff50ec468d543215d55d2e2ce"
+    },
+    {
+      "path": "components/kiof-artist.tsx",
+      "bytes": 19365,
+      "sha256": "1c4f1a49b5d1105e394adde5eeca7032cc435b778dc2104a2ffa2fcfd62215f9"
+    },
+    {
+      "path": "components/photo-lightbox.tsx",
+      "bytes": 1423,
+      "sha256": "55b013ca44bd03075a8b04cf67ab2a7cae512389821d0fab037247a1192b06bc"
+    },
+    {
+      "path": "components/social-links.tsx",
+      "bytes": 1184,
+      "sha256": "df0b4ae2da210bfd36c080275a20b670b7b42f03e2ff1d8361894195551f0a59"
+    },
+    {
+      "path": "components/use-artist-scroll.ts",
+      "bytes": 1843,
+      "sha256": "5323bb9f5779abb9c76f0c651efb25e43f51cec3f499673dd31373a14f89bfdd"
+    },
+    {
+      "path": "components/use-browse-journey.ts",
+      "bytes": 8611,
+      "sha256": "98193ee49ec4c0868d339105a775702b79e582e44cdced8671a855545398938a"
+    },
+    {
+      "path": "components/use-member-work-focus.ts",
+      "bytes": 1558,
+      "sha256": "29c1f4b1f57784b1f3ba90f5fb0a23286eb8d9ab7c51746013a0f7fc101f79b0"
+    },
+    {
+      "path": "components/work-video-player.tsx",
+      "bytes": 1515,
+      "sha256": "df150d993e9ddbd250c304eb9a08c32afcb98e706906a2c7428da1723d6a0125"
+    },
+    {
+      "path": "data/aespa-artist.json",
+      "bytes": 106961,
+      "sha256": "d727ec0fc7346f5566ef156ca3e7578873e2dee25e1bad3b7d0dc3be0b189240"
+    },
+    {
+      "path": "data/artist-visuals.json",
+      "bytes": 8195,
+      "sha256": "b56376e838b8bab733e7607578c1e24b7deb252bcc715ff157ecdbc8a2c7e18b"
+    },
+    {
+      "path": "data/babymonster-artist.json",
+      "bytes": 23323,
+      "sha256": "9e0ce72e8513d56bdfce7256e750a2fe00e1aec395b233685de5ce3d6fcb78dc"
+    },
+    {
+      "path": "data/illit-artist.json",
+      "bytes": 39200,
+      "sha256": "6434a8fdb8f429d15d3d7acd7a8e4778e9e134cab066694387dbe0fd42262cf3"
+    },
+    {
+      "path": "data/ive-artist.json",
+      "bytes": 108534,
+      "sha256": "e46f276758e4ebf56102d0df8ba332f9e6c6d1cbf961e2eba46019ed6556ef78"
+    },
+    {
+      "path": "data/kissoflife-artist.json",
+      "bytes": 23289,
+      "sha256": "6278747a5c4fda8facdd5246ad530888c880c58fd791c9433b1302d9d5a18c78"
+    },
+    {
+      "path": "data/ui/alternative-notes.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "path": "data/xg-artist.json",
+      "bytes": 37714,
+      "sha256": "12acb8612eaff69592b86e4fcf0ba6197caf20fc5585d70662b35be34ef39b22"
+    },
+    {
+      "path": "docs/CORE-SANDBOX.md",
+      "bytes": 2601,
+      "sha256": "811aa78f9743dc009301c568a858048a9edca75b24e4add37f1895f11745d35b"
+    },
+    {
+      "path": "docs/DEVELOPMENT-PLAN.md",
+      "bytes": 3792,
+      "sha256": "83201e0b17238246cf5e8d4f456ae2674811877f2dea7ab64a3acf7d5e76161e"
+    },
+    {
+      "path": "fixtures/catalog.json",
+      "bytes": 36954,
+      "sha256": "282908b7b6c6d3d697c65e918880315170b18ee02d1a76d4eee38707a0bc51a9"
+    },
+    {
+      "path": "lib/idol/artist-navigation.ts",
+      "bytes": 2711,
+      "sha256": "6f34ae03350dd889f7938c0dafbc962875d12e99bf9bc0206bf8786fe37e7ef6"
+    },
+    {
+      "path": "lib/idol/artist-preview.ts",
+      "bytes": 3395,
+      "sha256": "458cbef7b51ec4bf831e73ccd638387e64aa60ab956c87590cf28685b207649a"
+    },
+    {
+      "path": "lib/idol/group-detail.ts",
+      "bytes": 2518,
+      "sha256": "a4ae64edbfa7d13c1b1f5722791e0882a26f96ced3b29a438c13707aebdbf2a5"
+    },
+    {
+      "path": "lib/idol/group-index.ts",
+      "bytes": 807,
+      "sha256": "70a4707fa8e1216b74a983473c50c5b3f315e911e36c1e950c3f8821fa589116"
+    },
+    {
+      "path": "lib/idol/home-rotation.ts",
+      "bytes": 3791,
+      "sha256": "237660e6dfb13ba54a4738cbe15511b2925d78ce434d0e865e7b9d3d2fca8c2e"
+    },
+    {
+      "path": "lib/idol/journey.ts",
+      "bytes": 6054,
+      "sha256": "c2e263e2d11fcfd0dae45d2743e4ed53d20503ed97e1876864007171bc971acb"
+    },
+    {
+      "path": "lib/idol/member-works.ts",
+      "bytes": 4822,
+      "sha256": "8ed615d8400349ccd5bfff873c363e03bfb8a5511d5c781958ceeadb5c264957"
+    },
+    {
+      "path": "lib/idol/product-copy.ts",
+      "bytes": 2898,
+      "sha256": "e4253f36d0e99dc1b2d37b8f3725636fbf0927dac6a162863454fa4f24770f8d"
+    },
+    {
+      "path": "lib/idol/queues.ts",
+      "bytes": 831,
+      "sha256": "b1654e9f799095cde8a523a2b8ff48ccd97f281f5dc8121fe5fd9de2945cd4a7"
+    },
+    {
+      "path": "lib/idol/stage-display.ts",
+      "bytes": 1936,
+      "sha256": "405ecc2235e1699fadd8709d9d7df5c00be8c44a978ecfdb82019120ad66d027"
+    },
+    {
+      "path": "lib/idol/stage-source.ts",
+      "bytes": 2204,
+      "sha256": "df2e837a9ce05d0be652f13fac5c2e24d5c2a427f6eee1e791738c3524965969"
+    },
+    {
+      "path": "lib/idol/types.ts",
+      "bytes": 6056,
+      "sha256": "b1808d276bc15ef3f8adf2e64a54de407921f7335bde7a27b131cc8b9667f78c"
+    },
+    {
+      "path": "lib/idol/values.ts",
+      "bytes": 1834,
+      "sha256": "e624379f19c2d8f8192a012eaa936199a50910c45c0375113a8e72b86819ea4e"
+    },
+    {
+      "path": "lib/idol/watch-sequence.ts",
+      "bytes": 2023,
+      "sha256": "090c4ddf8225bb8b95af592bfc02418256a1f98d9d6548846c8ff49a6bc67f5d"
+    },
+    {
+      "path": "next-env.d.ts",
+      "bytes": 288,
+      "sha256": "1862ac4bbbc5192d4bf562161df66ea547ed3e67173100656ab606ae9797db2b"
+    },
+    {
+      "path": "next.config.ts",
+      "bytes": 133,
+      "sha256": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 58963,
+      "sha256": "88ce53a60ac38f166d05396f7dad8f384179d7db8f1649a912428df0a4635a65"
+    },
+    {
+      "path": "package.json",
+      "bytes": 746,
+      "sha256": "7e8d0e5bdee335a29788c093d85ceec0147a44de1e4a2fe47e984557437772b4"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "bytes": 94,
+      "sha256": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde"
+    },
+    {
+      "path": "public/placeholder.svg",
+      "bytes": 217,
+      "sha256": "37c77c3f111ab999f7f11398d208b910de081369e31f8ad62061662a724ca268"
+    },
+    {
+      "path": "scripts/repo-hygiene.mjs",
+      "bytes": 1924,
+      "sha256": "d2e91d812b21b91910b54fa0fff6bbe4e6e163ea358e22a8ce3295201ee6d8c6"
+    },
+    {
+      "path": "scripts/validate-image-manifest.mjs",
+      "bytes": 2569,
+      "sha256": "aa2efadbce79b8cb419852975172cbbd28d8094f09c08bbf2a951040f6252709"
+    },
+    {
+      "path": "tests/fixture-flows.test.cjs",
+      "bytes": 3822,
+      "sha256": "ab6efddc024692ad3ddccdddc825c6a9a3c29528f64bb54c37d11c84cf565f01"
+    },
+    {
+      "path": "tests/group-detail.test.cjs",
+      "bytes": 4752,
+      "sha256": "f2caa17e6923745e185dffbe57e2fea97605e4c6b3abbba70a1ba0db1b4993d0"
+    },
+    {
+      "path": "tests/group-index.test.cjs",
+      "bytes": 3012,
+      "sha256": "46be097abd98c00c3222b41431465b4feca290d1fc81284d5605c7d06188b830"
+    },
+    {
+      "path": "tests/home-rotation.test.cjs",
+      "bytes": 5284,
+      "sha256": "e9f63c3891bb7c1d1ddbe720d86897b6c8eb2f2b0c9c0fb13479f00d0e427814"
+    },
+    {
+      "path": "tests/library-fixture.cjs",
+      "bytes": 1135,
+      "sha256": "3e049cf58cb11faf3d7bd062d02eed5b10921bd9aa855bec8815a7f3dee758a3"
+    },
+    {
+      "path": "tests/library-search.test.cjs",
+      "bytes": 3566,
+      "sha256": "3e3bc552905e749d67c4af4865bda6d6bd24ac6e7c8fab86294681994e996b7e"
+    },
+    {
+      "path": "tests/member-works.test.cjs",
+      "bytes": 10101,
+      "sha256": "35dac77a8da143d28bff44cc89d11151a7f531f8a14e52d4ea98b9cbc2c93ad5"
+    },
+    {
+      "path": "tests/repo-hygiene.test.mjs",
+      "bytes": 3742,
+      "sha256": "7b67422d46f842a285b020345759b3aa12442b6c9e6f1bb5390220662a351a91"
+    },
+    {
+      "path": "tests/sandbox-isolation.test.mjs",
+      "bytes": 816,
+      "sha256": "fb748e85882a14b5d609bfc0b2c2c6a784c935cc0ff31482c9e9f244b281ccb3"
+    },
+    {
+      "path": "tests/synthetic-media.test.cjs",
+      "bytes": 2485,
+      "sha256": "82a0c44cc7b8bbdf3d95e8deca1f2c297e450b38dc1307f3714024beb246c1b7"
+    },
+    {
+      "path": "tests/validate-image-manifest.test.mjs",
+      "bytes": 4833,
+      "sha256": "29252dee9d525f1ec6f0593ff7a34a068efe83aedef023f53b3e87ff4c17c586"
+    },
+    {
+      "path": "tests/work-video-player.test.cjs",
+      "bytes": 1933,
+      "sha256": "fb34c954e10f66e7979f937d3cc2bb0dad3dd6f31ba7a5bb89fd7dac03552f04"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 765,
+      "sha256": "2ac52399e52dc1402bba4ae38cec5b0234acd84e9ced1b0ffb6fa754617c13a2"
+    }
+  ]
+}

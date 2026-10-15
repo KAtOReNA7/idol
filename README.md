@@ -1,19 +1,30 @@
-# Idol
+# Idol integrated development main
 
-Private development repository for the idol website project.
+Code-only mainline combining the reviewed core toolkit, duplicate-score fixes, and accepted UI integration. This repository is not the production deployment; publishing this source does not update the live site.
 
-## Bootstrap status
+## Run
+Node >=22.13. npm ci --ignore-scripts, npm run verify, npm run dev.
 
-This initial commit establishes the repository for a Codex cloud environment. The existing production website is not deployed from this repository yet. Reviewed application source and tests will be added separately.
+This sandbox contains the six released artist page components and shared UI logic, not the full production backend. Its catalog route returns a clearly labelled synthetic fixture of six groups, twelve fictional members and eighteen fictional works; add typed synthetic fixtures for UI testing, never export real user scores or notes. Official image files are excluded and image references replaced with a neutral SVG. Public researched editorial facts remain in artist content JSON; they are historical data, not fresh verification.
 
-## Development boundaries
+The /api/save route always returns HTTP 403; it never persists data. No production credentials, database snapshots, backup archives, management API, deployment workflow, or production write API are included. Do not deploy this sandbox over production. Work on independent branches and submit patches for integration into the maintained production source.
 
-- Work in isolated feature branches and submit changes for review.
-- Do not modify production data or deploy without an explicit task.
-- Never commit credentials, environment secrets, personal ratings or notes, database exports, backups, or private runtime logs.
-- Keep licensed photo assets and production media in their existing private storage.
-- Use synthetic fixtures for tests. Preserve existing user ratings, notes, viewing status, and record relationships.
+Bundled webfonts are excluded; system font fallback is expected. Member birthday values are omitted from the sandbox. No credentials or production environment variables are required.
 
-## Initial cloud validation
+## Member MV image preview
 
-The first task should verify repository access, branch-based changes, and test execution after source is added. No production credentials are required for this initial validation.
+Member MV cards share a 4:5 frame, display the complete image with `object-fit: contain`, and open an accessible lightbox with Escape, close-button and backdrop dismissal. The close button receives focus; closing restores focus and page scrolling. Mobile cards stack without horizontal overflow.
+
+The fixture has generated portrait (400×600), landscape (900×500), and missing-image cases. `/api/media` serves SVG drawings only for exact registered synthetic photo references; unknown records return 404. It performs no upstream image requests or production storage access. The fixture stays in snapshot mode and `/api/save` still returns 403.
+
+Original member-image validation: `npm run verify` (12 tests and typecheck), `npm run build`, and Playwright checks of the shared member page plus all six artist pages at desktop and mobile widths. Bundled fonts remain intentionally excluded as above; font and favicon 404s are baseline asset omissions, not image-interaction failures.
+
+## Integrated mainline (2026-10-15)
+
+- Core source: PR #1, 1a3b8629de688a9aca844eac309bfb5056c7f5be. All 70 core/tool tests are retained.
+- UI base: PR #2, b65bb8a666a03f8ea3044295cc4c7bc915efce1d.
+- Accepted UI patch: local source commit 3f0527bcd97a1138d0595543aec4bda1d925c08a, SHA-256 c59c2d26092187c9b25b1d02babaa1aa0d1a189b1df5c76eb8bca14450cd8a86. Adds home rotation stability, group filtering, library state restoration, independent player lifecycle, and member return focus.
+- Core conflict resolution: group-detail.ts and member-works.ts retain reviewed per-dimension duplicate-score resolution; all other accepted UI behavior is retained. Combined suite: 97 tests.
+- Mainline work is maintained directly by dot. Saved cloud tasks are reserved for small capability/solution validations, not core project development.
+- Synthetic APIs are development-only: save is blocked (403), media is a closed synthetic registry, and no real ratings, photos, credentials, or production backend are included.
+- Source manifests exclude themselves to avoid circular hashes. Historical core-only documentation below is explicitly marked as historical.

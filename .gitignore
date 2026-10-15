@@ -1,28 +1,33 @@
-# Dependencies and generated output
-node_modules/
-dist/
-build/
-coverage/
-.wrangler/
 
-# Secrets and local configuration
-.env
-.env.*
 !.env.example
-.dev.vars
-.dev.vars.*
-*.pem
-*.key
-
+# Dependencies and generated output
+# Editor and operating system files
 # Runtime data and local backups
+# Secrets and local configuration
+*.db
+*.key
+*.log
+*.pem
 *.sqlite
 *.sqlite3
-*.db
-*.log
+*.tar
+*.tsbuildinfo
+*.zip
+.DS_Store
+.dev.vars
+.dev.vars.*
+.env
+.env*
+.env.*
+.idea/
+.next/
+.wrangler/
+Thumbs.db
 backups/
+build/
+coverage/
+dist/
+node_modules/
 private-data/
 
-# Editor and operating system files
-.DS_Store
-Thumbs.db
-.idea/
+node_modules

@@ -20,3 +20,54 @@ test('an exclusion note about promotional photos does not reject a declared name
 test('projection leaves original manual favorites and all raw data unchanged',()=>{const data={works:[work('a')],ratings:[row('r','a',8,9)],members:[{id:'m',favorite:3,note:'synthetic'}]};const before=JSON.stringify(data);memberWorkSummary(memberWorks(data,'m'));assert.equal(JSON.stringify(data),before);});
 
 test('native exact-image provenance can resolve old pending text but never mismatched IDs',()=>{const p={table:'ratings',recordId:'r',index:0,kind:'本 MV 截图',nativeIdentity:{memberId:'m',workId:'a',videoId:'abcdefghijk'}},r=row('r','a',null,null,{photo:p,recognition:'原待补说明保留'});assert.ok(personalMvPhoto(r,'m','a'));assert.equal(personalMvPhoto({...r,photo:{...p,nativeIdentity:{...p.nativeIdentity,memberId:'other'}}},'m','a'),null);});
+
+const plain=value=>JSON.parse(JSON.stringify(value));
+const permutations=xs=>xs.length?xs.flatMap((x,i)=>permutations(xs.filter((_,j)=>i!==j)).map(rest=>[x,...rest])):[[]];
+
+test('same rating ID conflicts resolve per dimension independently of row order',()=>{
+ const ratings=[row('same','a',2,0),row('same','a',8,0),row('other','b',4,6)];
+ for(const ordered of permutations(ratings)){
+  const before=JSON.stringify(ordered),items=view(ordered),a=items.find(x=>x.work.id==='a');
+  assert.equal(a.performance,null);assert.equal(a.styling,0);
+  assert.deepEqual(plain(memberWorkSummary(items)),{performanceMean:4,stylingMean:3,performanceCount:1,stylingCount:2,ratedWorks:2,composite:3.5});
+  assert.equal(JSON.stringify(ordered),before);
+ }
+});
+
+test('styling-only and two-dimension conflicts do not discard or invent scores',()=>{
+ for(const ordered of permutations([row('same','a',0,2),row('same','a',0,8),row('other','b',4,6)])){
+  const a=view(ordered).find(x=>x.work.id==='a');assert.equal(a.performance,0);assert.equal(a.styling,null);
+  const s=memberWorkSummary(view(ordered));assert.equal(s.performanceCount,2);assert.equal(s.stylingCount,1);assert.equal(s.performanceMean,2);assert.equal(s.stylingMean,6);
+ }
+ for(const ordered of permutations([row('same','a',2,0),row('same','a',8,9)])){
+  const s=memberWorkSummary(view(ordered));assert.equal(s.performanceMean,null);assert.equal(s.stylingMean,null);assert.equal(s.performanceCount,0);assert.equal(s.stylingCount,0);assert.equal(s.ratedWorks,0);assert.equal(s.composite,null);
+ }
+});
+
+test('null duplicate dimensions remain missing while zero and matching values merge once',()=>{
+ const ratings=[row('same','a',0,null),row('same','a',null,6),row('same','a',0,6),row('other','b',8)];
+ for(const ordered of permutations(ratings)){
+  assert.deepEqual(plain(memberWorkSummary(view(ordered))),{performanceMean:4,stylingMean:6,performanceCount:2,stylingCount:1,ratedWorks:2,composite:5});
+ }
+ const s=memberWorkSummary(view([row('same','a'),row('same','a')]));assert.equal(s.ratedWorks,0);assert.equal(s.performanceMean,null);assert.equal(s.stylingMean,null);
+});
+
+test('duplicate work IDs emit one member card and preserve an identical rating attachment',()=>{
+ const a=work('a'),b=work('b'),r=row('same','a',0,6,{photo:{table:'ratings',recordId:'same',index:0},recognition:'本MV截图 · synthetic named caption'});
+ for(const works of permutations([a,{...a},b])){
+  const data={works,ratings:[r,{...r},row('other','b',8)]},before=JSON.stringify(data),items=memberWorks(data,'m');
+  assert.equal(items.length,2);assert.equal(new Set(items.map(x=>x.work.id)).size,2);assert.ok(items.find(x=>x.work.id==='a').photo);
+  assert.deepEqual(plain(memberWorkSummary(items)),{performanceMean:4,stylingMean:6,performanceCount:2,stylingCount:1,ratedWorks:2,composite:5});
+  assert.equal(JSON.stringify(data),before);
+ }
+});
+
+test('direct summaries merge duplicate work dimensions without order-dependent overrides',()=>{
+ const item=(id,performance,styling)=>({work:work(id),performance,styling,photo:null});
+ for(const ordered of permutations([item('a',2,0),item('a',8,0),item('b',4,6)])){
+  assert.deepEqual(plain(memberWorkSummary(ordered)),{performanceMean:4,stylingMean:3,performanceCount:1,stylingCount:2,ratedWorks:2,composite:3.5});
+ }
+ for(const ordered of permutations([item('a',0,null),item('a',null,6),item('a',0,6)])){
+  assert.deepEqual(plain(memberWorkSummary(ordered)),{performanceMean:0,stylingMean:6,performanceCount:1,stylingCount:1,ratedWorks:1,composite:3});
+ }
+});

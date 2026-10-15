@@ -4,9 +4,9 @@ export type MemberWork={work:Work;performance:number|null;styling:number|null;ph
 const validScore=(value:unknown):value is number=>typeof value==='number'&&Number.isFinite(value)&&value>=0&&value<=10;
 // A work is one sample. Repeated identical rows do not add weight; conflicting
 // values stay unresolved rather than choosing the first row or inventing a mean.
-function oneScore(rows:Rating[],key:'score'|'stylingScore'){
- const values=[...new Set(rows.map(r=>r[key]).filter(validScore))];
- return values.length===1?values[0]:null;
+function oneScore(values:unknown[]){
+ const scores=[...new Set(values.filter(validScore))];
+ return scores.length===1?scores[0]:null;
 }
 export function personalMvPhoto(r:Rating,memberId:string,workId:string):Photo|null{
  const p=r.photo;
@@ -28,16 +28,21 @@ export function personalMvPhoto(r:Rating,memberId:string,workId:string):Photo|nu
  return /MV\s*截图|本\s*MV\s*(?:具名)?(?:截图|个人|认人图)/i.test(declaredKind)||namedPanel||namedChapter||namedGif||completedEditorial?p:null;
 }
 export function memberWorks(data:Pick<Catalog,'ratings'|'works'>,memberId:string):MemberWork[]{
- const related=[...new Map(data.ratings.filter(r=>r.memberIds.includes(memberId)).map(r=>[r.id,r])).values()];
+ const related=data.ratings.filter(r=>r.memberIds.includes(memberId));
  const workIds=new Set(related.flatMap(r=>r.workIds));
- return data.works.filter(w=>workIds.has(w.id)&&!w.placeholder).map(work=>{
+ const works=[...new Map(data.works.filter(w=>workIds.has(w.id)&&!w.placeholder).map(w=>[w.id,w])).values()];
+ return works.map(work=>{
   const rows=related.filter(r=>r.memberIds.length===1&&r.workIds.length===1&&r.workIds[0]===work.id);
-  const photos=rows.map(r=>personalMvPhoto(r,memberId,work.id)).filter((p):p is Photo=>p!==null);
-  return {work,performance:oneScore(rows,'score'),styling:oneScore(rows,'stylingScore'),photo:photos.length===1?photos[0]:null};
+  // Keep the existing photo selection policy; score conflicts use every row.
+  const photoRows=[...new Map(rows.map(r=>[r.id,r])).values()];
+  const photos=photoRows.map(r=>personalMvPhoto(r,memberId,work.id)).filter((p):p is Photo=>p!==null);
+  return {work,performance:oneScore(rows.map(r=>r.score)),styling:oneScore(rows.map(r=>r.stylingScore)),photo:photos.length===1?photos[0]:null};
  });
 }
 export function memberWorkSummary(items:MemberWork[]){
- const unique=[...new Map(items.map(item=>[item.work.id,item])).values()];
+ const byWork=new Map<string,MemberWork[]>();
+ for(const item of items){const rows=byWork.get(item.work.id)??[];rows.push(item);byWork.set(item.work.id,rows);}
+ const unique=[...byWork.values()].map(rows=>({performance:oneScore(rows.map(r=>r.performance)),styling:oneScore(rows.map(r=>r.styling))}));
  const performance=unique.map(x=>x.performance).filter(validScore),styling=unique.map(x=>x.styling).filter(validScore);
  const mean=(values:number[])=>values.length?values.reduce((sum,x)=>sum+x,0)/values.length:null;
  const performanceMean=mean(performance),stylingMean=mean(styling);

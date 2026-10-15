@@ -1,4 +1,4 @@
-> Historical core-only delivery record. Superseded by the integrated mainline README on 2026-10-15; earlier cloud-development and unmerged status descriptions are historical. Current combined verification runs 97 tests.
+> Historical core-only delivery record. Superseded by the integrated mainline README on 2026-10-15; earlier cloud-development and unmerged status descriptions are historical. Current combined verification runs 100 tests.
 
 # 女团网站：隔离核心逻辑工作区
 

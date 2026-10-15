@@ -24,7 +24,9 @@ Original member-image validation: `npm run verify` (12 tests and typecheck), `np
 - Core source: PR #1, 1a3b8629de688a9aca844eac309bfb5056c7f5be. All 70 core/tool tests are retained.
 - UI base: PR #2, b65bb8a666a03f8ea3044295cc4c7bc915efce1d.
 - Accepted UI patch: local source commit 3f0527bcd97a1138d0595543aec4bda1d925c08a, SHA-256 c59c2d26092187c9b25b1d02babaa1aa0d1a189b1df5c76eb8bca14450cd8a86. Adds home rotation stability, group filtering, library state restoration, independent player lifecycle, and member return focus.
-- Core conflict resolution: group-detail.ts and member-works.ts retain reviewed per-dimension duplicate-score resolution; all other accepted UI behavior is retained. Combined suite: 97 tests.
+- Core conflict resolution: group-detail.ts and member-works.ts retain reviewed per-dimension duplicate-score resolution; all other accepted UI behavior is retained. Combined suite: 100 tests.
 - Mainline work is maintained directly by dot. Saved cloud tasks are reserved for small capability/solution validations, not core project development.
 - Synthetic APIs are development-only: save is blocked (403), media is a closed synthetic registry, and no real ratings, photos, credentials, or production backend are included.
 - Source manifests exclude themselves to avoid circular hashes. Historical core-only documentation below is explicitly marked as historical.
+
+Duplicate stage-score follow-up: duplicate works aggregate stage scores only when every row has a valid binding to the same full video/clip source key. Cross-video, cross-clip, missing and invalid bindings remain unscored. Three regression tests cover permutations, zero/null and conflicts.

@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),ts=require('typescript');
-const api={};vm.runInNewContext('(function(exports){'+ts.transpileModule(fs.readFileSync('lib/idol/member-works.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText+'})') (api);
+const api={};vm.runInNewContext('(function(exports){'+ts.transpileModule(fs.readFileSync('lib/idol/member-works.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText+'})',{URL}) (api);
 const {memberWorks,memberWorkSummary,personalMvPhoto}=api;
 const work=id=>({id,song:id,score:10,stageScore:10});
 const row=(id,w,score=null,stylingScore=null,extra={})=>({id,memberIds:['m'],workIds:[w],score,stylingScore,photo:null,recognition:'',...extra});
@@ -70,4 +70,99 @@ test('direct summaries merge duplicate work dimensions without order-dependent o
  for(const ordered of permutations([item('a',0,null),item('a',null,6),item('a',0,6)])){
   assert.deepEqual(plain(memberWorkSummary(ordered)),{performanceMean:0,stylingMean:6,performanceCount:1,stylingCount:1,ratedWorks:1,composite:3});
  }
+});
+
+const syntheticPhoto=(extra={})=>({table:'ratings',recordId:'same',fieldId:'synthetic-photo',index:0,kind:'本 MV 截图',...extra});
+const photoRow=(extra={})=>row('same','a',0,6,{photo:syntheticPhoto(),recognition:'本MV截图 · synthetic named caption',...extra});
+function checkPhotoOrders(ratings,expected,works=[work('a')]){
+ let baseline;
+ for(const rs of permutations(ratings))for(const ws of permutations(works)){
+  const data={ratings:rs,works:ws},before=JSON.stringify(data),items=memberWorks(data,'m'),a=items.find(x=>x.work.id==='a');
+  assert.ok(a);assert.deepEqual(plain(a.photo),expected);assert.equal(JSON.stringify(data),before);
+  if(baseline)assert.deepEqual(plain(items),baseline);else baseline=plain(items);
+ }
+}
+test('photo consensus rejects conflicting duplicate attachment references and missing attachments',()=>{
+ for(const patch of [{index:1},{fieldId:'other-field'},{fileToken:'synthetic-token-B'},{recordId:'other-record'},{table:'members'}]){
+  checkPhotoOrders([photoRow(),photoRow({photo:syntheticPhoto(patch)})],null);
+ }
+ checkPhotoOrders([photoRow(),photoRow({photo:null})],null);
+});
+test('photo consensus sees same-ID relation conflicts before member and work filtering',()=>{
+ for(const patch of [{memberIds:['other']},{workIds:['b']},{memberIds:['m','other']},{workIds:['a','b']}]){
+  checkPhotoOrders([photoRow(),photoRow(patch)],null);
+ }
+});
+test('photo consensus rejects contradictory eligibility and text evidence',()=>{
+ for(const patch of [{personalPhotoEligible:false},{recognition:'档案照'},{recognition:'本MV截图 · different synthetic caption'}]){
+  checkPhotoOrders([photoRow({personalPhotoEligible:true}),photoRow(patch)],null);
+ }
+});
+test('explicit native identity contradictions cannot fall back to text or true flags',()=>{
+ for(const identity of [{memberId:'other',workId:'a',videoId:'AAAAAAAAAAA'},{memberId:'m',workId:'other',videoId:'AAAAAAAAAAA'},{memberId:'m',workId:'a',videoId:'bad'}]){
+  for(const flag of [{},{personalPhotoEligible:true}])assert.equal(personalMvPhoto(photoRow({...flag,photo:syntheticPhoto({nativeIdentity:identity})}),'m','a'),null);
+ }
+});
+test('photo consensus rejects native identity or video conflicts within duplicate rating rows',()=>{
+ const nativeIdentity={memberId:'m',workId:'a',videoId:'AAAAAAAAAAA'};
+ for(const patch of [{memberId:'other'},{workId:'b'},{videoId:'BBBBBBBBBBB'}]){
+  checkPhotoOrders([photoRow({photo:syntheticPhoto({nativeIdentity})}),photoRow({photo:syntheticPhoto({nativeIdentity:{...nativeIdentity,...patch}})})],null);
+ }
+});
+test('exact work video must agree with photo provenance even when a true flag is present',()=>{
+ const w={...work('a'),url:'https://www.youtube.com/watch?v=BBBBBBBBBBB'};
+ for(const flag of [{},{personalPhotoEligible:true}])checkPhotoOrders([photoRow({...flag,photo:syntheticPhoto({nativeIdentity:{memberId:'m',workId:'a',videoId:'AAAAAAAAAAA'}})})],null,[w]);
+});
+test('duplicate work video, version or group conflicts hide photos and keep complete output deterministic',()=>{
+ const a={...work('a'),url:'https://www.youtube.com/watch?v=AAAAAAAAAAA',version:'synthetic-A',groupIds:['synthetic-group']};
+ for(const patch of [{url:'https://www.youtube.com/watch?v=BBBBBBBBBBB'},{version:'synthetic-B'},{groupIds:['synthetic-other-group']},{placeholder:{reason:'synthetic'}}]){
+  checkPhotoOrders([photoRow()],null,[a,{...a,...patch}]);
+ }
+});
+test('identical duplicate photos and scores survive key order and input order changes',()=>{
+ const p=syntheticPhoto(),reordered=Object.fromEntries(Object.entries(p).reverse());
+ checkPhotoOrders([photoRow(),photoRow({photo:reordered}),photoRow()],p,[work('a'),{...work('a')}]);
+});
+test('photo consensus preserves dimension conflicts, zero and missing scores',()=>{
+ for(const rs of permutations([photoRow({score:2,stylingScore:0}),photoRow({score:8,stylingScore:0}),photoRow({score:null,stylingScore:null})])){
+  const data={works:[work('a')],ratings:rs},before=JSON.stringify(data),items=memberWorks(data,'m');
+  assert.deepEqual(plain(items[0].photo),syntheticPhoto());
+  assert.deepEqual(plain(memberWorkSummary(items)),{performanceMean:null,stylingMean:0,performanceCount:0,stylingCount:1,ratedWorks:1,composite:null});
+  assert.equal(JSON.stringify(data),before);
+ }
+});
+test('photo consensus preserves unambiguous legacy captions and exact native video URL variants',()=>{
+ const nativeIdentity={memberId:'m',workId:'a',videoId:'AAAAAAAAAAA'},p=syntheticPhoto({nativeIdentity});
+ const a={...work('a'),url:'https://www.youtube.com/watch?v=AAAAAAAAAAA&feature=synthetic'};
+ const b={...a,url:'https://youtu.be/AAAAAAAAAAA'};
+ checkPhotoOrders([photoRow({photo:p}),photoRow({photo:p})],p,[a,b]);
+ checkPhotoOrders([photoRow()],syntheticPhoto());
+});
+test('a conflicting duplicate group cannot be discarded to select another attachment',()=>{
+ const other=row('other','a',8,9,{photo:{...syntheticPhoto(),recordId:'other'},recognition:'本MV截图 · synthetic named caption'});
+ checkPhotoOrders([photoRow(),photoRow({photo:syntheticPhoto({index:1})}),other],null);
+});
+test('multiple eligible rating attachments remain ambiguous and cards sort by stable work ID',()=>{
+ const other=row('other','a',8,9,{photo:{...syntheticPhoto(),recordId:'other'},recognition:'本MV截图 · synthetic named caption'});
+ checkPhotoOrders([photoRow(),other],null);
+ let baseline;
+ for(const rs of permutations([photoRow(),row('b-rating','b',2,3)]))for(const ws of permutations([work('a'),work('b')])){
+  const data={works:ws,ratings:rs},before=JSON.stringify(data),items=plain(memberWorks(data,'m'));
+  assert.deepEqual(items.map(x=>x.work.id),['a','b']);
+  if(baseline)assert.deepEqual(items,baseline);else baseline=items;
+  assert.equal(JSON.stringify(data),before);
+ }
+});
+test('explicit exact-video text conflicts cannot be overridden by native identity or eligibility',()=>{
+ const recognition='本MV截图 · synthetic caption | 原文嵌入精确 MV BBBBBBBBBBB';
+ const nativeIdentity={memberId:'m',workId:'a',videoId:'AAAAAAAAAAA'};
+ for(const flag of [{},{personalPhotoEligible:true}]){
+  assert.equal(personalMvPhoto(photoRow({...flag,recognition,photo:syntheticPhoto({nativeIdentity})}),'m','a'),null);
+  checkPhotoOrders([photoRow({...flag,recognition})],null,[{...work('a'),url:'https://youtu.be/AAAAAAAAAAA'}]);
+ }
+ assert.equal(personalMvPhoto(photoRow({recognition:recognition+' | 原文嵌入精确 MV CCCCCCCCCCC'}),'m','a'),null);
+});
+test('consistent native and exact-video text evidence remains eligible',()=>{
+ const nativeIdentity={memberId:'m',workId:'a',videoId:'AAAAAAAAAAA'},p=syntheticPhoto({nativeIdentity});
+ checkPhotoOrders([photoRow({photo:p,recognition:'本MV截图 · synthetic caption | 原文嵌入精确 MV AAAAAAAAAAA'})],p,[{...work('a'),url:'https://youtu.be/AAAAAAAAAAA'}]);
 });

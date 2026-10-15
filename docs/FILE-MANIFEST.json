@@ -1,18 +1,36 @@
 {
   "formatVersion": 1,
-  "baseCommit": "01bcaf6d02c50143a0489f87a6d537e22b7d8f30",
+  "baseCommit": "a141367e1496e7e038a40748e34ea1742f16d8ff",
   "purpose": "isolated-pure-functions-no-production-data",
   "files": [
     {
+      "path": ".gitignore",
+      "bytes": 330,
+      "sha256": "62246429b911125297803b21d9524489a7ddac319f0035480259dd32d12ac580",
+      "origin": "tool, synthetic test, sandbox config or documentation"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1079,
+      "sha256": "b59f575db5d12e66e75d3544f06cba644dabe8148fad45686c8d9f0acba5b09c",
+      "origin": "tool, synthetic test, sandbox config or documentation"
+    },
+    {
       "path": "docs/CORE-SANDBOX.md",
-      "bytes": 1937,
-      "sha256": "c2361c73b6abb2b69fd708a3100444e99301860d3f25414cf6bcd3e7f83aed9e",
+      "bytes": 2380,
+      "sha256": "de6d8daec28fb9a05927f687d0b7279eaa146d7662fa0b01e8fae01376a08f5e",
       "origin": "synthetic test or sandbox config"
     },
     {
+      "path": "docs/DEVELOPMENT-PLAN.md",
+      "bytes": 3571,
+      "sha256": "d8840481d23615a0a211aa4ae645759426915000de57e403de716e7a70332c44",
+      "origin": "tool, synthetic test, sandbox config or documentation"
+    },
+    {
       "path": "lib/idol/group-detail.ts",
-      "bytes": 1945,
-      "sha256": "3d28fc28a9cbe2abcb5d60319a59294c3767ef4e0ab4b93042d70336d20a0482",
+      "bytes": 2518,
+      "sha256": "a4ae64edbfa7d13c1b1f5722791e0882a26f96ced3b29a438c13707aebdbf2a5",
       "origin": "v75 source pure logic"
     },
     {
@@ -23,8 +41,8 @@
     },
     {
       "path": "lib/idol/member-works.ts",
-      "bytes": 4450,
-      "sha256": "4d7701cd6838acebd30a8bbab3b01ac9f9aa1c8abe810cf9fbe018200fa9166a",
+      "bytes": 4822,
+      "sha256": "8ed615d8400349ccd5bfff873c363e03bfb8a5511d5c781958ceeadb5c264957",
       "origin": "v75 source pure logic"
     },
     {
@@ -52,9 +70,21 @@
       "origin": "synthetic test or sandbox config"
     },
     {
+      "path": "scripts/repo-hygiene.mjs",
+      "bytes": 1924,
+      "sha256": "d2e91d812b21b91910b54fa0fff6bbe4e6e163ea358e22a8ce3295201ee6d8c6",
+      "origin": "tool, synthetic test, sandbox config or documentation"
+    },
+    {
+      "path": "scripts/validate-image-manifest.mjs",
+      "bytes": 2569,
+      "sha256": "aa2efadbce79b8cb419852975172cbbd28d8094f09c08bbf2a951040f6252709",
+      "origin": "tool, synthetic test, sandbox config or documentation"
+    },
+    {
       "path": "tests/group-detail.test.cjs",
-      "bytes": 2932,
-      "sha256": "7e071361e4691269b8b534a8ccbee544fba434c06c9031870a3dc0615ee1b443",
+      "bytes": 4752,
+      "sha256": "f2caa17e6923745e185dffbe57e2fea97605e4c6b3abbba70a1ba0db1b4993d0",
       "origin": "synthetic test or sandbox config"
     },
     {
@@ -65,9 +95,21 @@
     },
     {
       "path": "tests/member-works.test.cjs",
-      "bytes": 6565,
-      "sha256": "58f3d828a7ab3db73ceb2a573c421ba514723c7cf2562d53682317662643092e",
+      "bytes": 10101,
+      "sha256": "35dac77a8da143d28bff44cc89d11151a7f531f8a14e52d4ea98b9cbc2c93ad5",
       "origin": "synthetic test or sandbox config"
+    },
+    {
+      "path": "tests/repo-hygiene.test.mjs",
+      "bytes": 3742,
+      "sha256": "7b67422d46f842a285b020345759b3aa12442b6c9e6f1bb5390220662a351a91",
+      "origin": "tool, synthetic test, sandbox config or documentation"
+    },
+    {
+      "path": "tests/validate-image-manifest.test.mjs",
+      "bytes": 4833,
+      "sha256": "29252dee9d525f1ec6f0593ff7a34a068efe83aedef023f53b3e87ff4c17c586",
+      "origin": "tool, synthetic test, sandbox config or documentation"
     },
     {
       "path": "tsconfig.json",

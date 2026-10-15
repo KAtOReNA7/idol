@@ -2,9 +2,9 @@
 
 Private development repository for the idol website project.
 
-## Bootstrap status
+## Development status
 
-This initial commit establishes the repository for a Codex cloud environment. The existing production website is not deployed from this repository yet. Reviewed application source and tests will be added separately.
+This repository contains an isolated core logic and tools package with synthetic tests. It does not contain the complete UI and has not been published or deployed. See docs/CORE-SANDBOX.md for scope, source commits, and the file manifest.
 
 ## Development boundaries
 
@@ -14,6 +14,6 @@ This initial commit establishes the repository for a Codex cloud environment. Th
 - Keep licensed photo assets and production media in their existing private storage.
 - Use synthetic fixtures for tests. Preserve existing user ratings, notes, viewing status, and record relationships.
 
-## Initial cloud validation
+## Validation
 
-The first task should verify repository access, branch-based changes, and test execution after source is added. No production credentials are required for this initial validation.
+Use Node.js >=22.13.0. Run `npm ci --ignore-scripts`, then `npm run verify` (TypeScript check and 70 synthetic tests). Run `node scripts/repo-hygiene.mjs` separately to check tracked paths. No production credentials or data are required.

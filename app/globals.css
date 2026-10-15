@@ -222,3 +222,49 @@
 .member-work-card{display:flex;flex-direction:column;cursor:default}.member-work-card__art{position:relative;display:block;flex:none;aspect-ratio:8/5;min-height:0}.member-work-photo-button{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;background:transparent}.member-work-card__art img{position:absolute;inset:0;width:100%;height:100%;min-width:0;min-height:0;object-fit:contain;object-position:center}.member-work-card__body{display:flex;flex:1;flex-direction:column;padding:0;background:none;text-align:left;width:100%;min-width:0}.member-work-card__scores{margin-top:auto}.member-work-card__title{min-height:2.5em}.member-photo-expand{position:absolute;right:8px;bottom:8px;border-radius:4px;background:#ffffffdf;color:var(--ink);font-size:10px;padding:3px 7px}.member-work-retry{top:12px;right:12px}.photo-lightbox{position:fixed;inset:0;background:#18151cec;z-index:200;display:flex;align-items:center;justify-content:center;padding:64px 20px 28px}.photo-lightbox figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:100%;max-height:100%}.photo-lightbox img{display:block;max-width:100%;max-height:calc(100vh - 140px);object-fit:contain}.photo-lightbox figcaption{color:white;font-size:12px;text-align:center}.photo-lightbox-close{position:absolute;top:16px;right:20px;display:flex;align-items:center;gap:6px;min-height:44px;padding:10px 16px;background:white;border-radius:8px}
 @media(max-width:1050px){.group-roster{grid-template-columns:repeat(4,minmax(0,1fr))}.group-hero-portraits .photo{height:225px}.group-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.group-timeline>div:not(.section-heading){grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.header nav button{min-height:44px}.group-detail .work-grid{grid-template-columns:1fr}.group-hero{grid-template-columns:1fr;gap:28px;padding:12px 0 30px}.group-hero h1{font-size:40px}.group-hero-portraits .photo{height:180px}.group-hero-portraits .image-label{font-size:8px;left:4px;bottom:4px;padding:2px 3px}.group-facts{padding:20px}.group-taste-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.group-roster{grid-template-columns:repeat(2,minmax(0,1fr))}.group-timeline>div:not(.section-heading){grid-template-columns:1fr}.group-score-panel{padding:20px}.social-cards{grid-template-columns:1fr}.social-cards a{padding:18px}.group-milestones>div:not(.section-heading){grid-template-columns:1fr}.group-work-controls .search{min-width:0;width:100%}.group-index-art{height:190px}.member-work-card__title{min-height:0}}
+
+/* One complete-image frame shared by member MV cards across artist themes. */
+.member-work-card .member-work-card__art,
+button.member-mv-look {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: color-mix(in srgb, currentColor 5%, transparent);
+}
+button.member-mv-look > img,
+button.member-mv-look > div {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+button.member-mv-look { padding: 0; cursor: zoom-in; }
+button.member-mv-look:disabled { cursor: default; }
+.member-work-photo-button { cursor: zoom-in; }
+.member-work-photo-button:focus-visible,
+button.member-mv-look:focus-visible,
+.photo-lightbox-close:focus-visible { outline: 3px solid #a5688b; outline-offset: -4px; }
+.photo-lightbox { padding: max(72px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom)); }
+.photo-lightbox figure { width: 100%; min-height: 0; }
+.photo-lightbox img { min-height: 0; max-height: calc(100dvh - 160px); flex: 0 1 auto; }
+.photo-lightbox figcaption { max-width: 70ch; overflow-wrap: anywhere; flex-shrink: 0; }
+.photo-lightbox-close { top: max(16px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right)); }
+.photo-lightbox-error { padding: 24px; color: white; }
+@media (max-width: 640px) {
+  .member-works-grid { gap: 18px; }
+  .member-work-card { padding: 12px; }
+  .member-work-card__body { min-height: 44px; }
+  .photo-lightbox { padding-left: 12px; padding-right: 12px; }
+}
+.member-work-card .member-work-card__empty {
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100%;
+}

@@ -1,19 +1,12 @@
-# Idol
+# Idol UI sandbox
 
-Private development repository for the idol website project.
+Code-only development copy reconstructed from verified Sites v74 source plus the v75 patch. The production site is unchanged.
 
-## Bootstrap status
+## Run
+Node >=22.13. npm ci --ignore-scripts, npm run verify, npm run dev.
 
-This initial commit establishes the repository for a Codex cloud environment. The existing production website is not deployed from this repository yet. Reviewed application source and tests will be added separately.
+This sandbox contains the six released artist page components and shared UI logic, not the full production backend. Its catalog route returns a clearly labelled synthetic fixture of six groups, twelve fictional members and eighteen fictional works; add typed synthetic fixtures for UI testing, never export real user scores or notes. Official image files are excluded and image references replaced with a neutral SVG. Public researched editorial facts remain in artist content JSON; they are historical data, not fresh verification.
 
-## Development boundaries
+The /api/save route always returns HTTP 403; it never persists data. No production credentials, database snapshots, backup archives, management API, deployment workflow, or production write API are included. Do not deploy this sandbox over production. Work on independent branches and submit patches for integration into the maintained production source.
 
-- Work in isolated feature branches and submit changes for review.
-- Do not modify production data or deploy without an explicit task.
-- Never commit credentials, environment secrets, personal ratings or notes, database exports, backups, or private runtime logs.
-- Keep licensed photo assets and production media in their existing private storage.
-- Use synthetic fixtures for tests. Preserve existing user ratings, notes, viewing status, and record relationships.
-
-## Initial cloud validation
-
-The first task should verify repository access, branch-based changes, and test execution after source is added. No production credentials are required for this initial validation.
+Bundled webfonts are excluded; system font fallback is expected. Member birthday values are omitted from the sandbox. No credentials or production environment variables are required.

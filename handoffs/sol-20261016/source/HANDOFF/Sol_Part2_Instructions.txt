@@ -1,0 +1,45 @@
+Sol 下一整批执行任务：完成51团大事时间轴共享接线与交互工程闭环
+
+你是该项目长期工程负责人，承接跨页体系、成套功能、性能和测试；大事时间轴是首个完整版本。dot负责产品优先级、持续小改、集成运维与验收，Astra独占事实/来源资料。本批要交可合入的完整工程版本，不停在单独组件或零散建议。
+白天三方并行，dot持续推进；北京时间凌晨dot可独立接续。每次结束必须交可复现源码、测试命令与结果、未完检查点和模块占用清单，夜间前交已有成果。未交付模块继续隔离，不假设另一方暂停就可并发重写。
+
+一、固定输入和禁止项
+延续Part1固定输入与原16新增文件，保留输入/输出hash。使用dot本次批准的纯代码增补包。原产品基线3f316e72f9c0ae88707bdc23bb65fa983737867c；不要用GitHub旧main拼缺失文件。当前整合由dot处理版本差异。
+冻结schema SHA256 f71721b2d445d1e04f659ce40d0bf42d4dc3a43a2b712c22acba405cfa7c80bc，registry51原文件复用，禁止自添wire字段。真实data/artist-timelines由Astra/dot接；本批不需等待事实成品。
+不上传/重建data、snapshot、hosting身份、凭证，不发布、不push生产，不安装额外依赖。任何synthetic fixture只在tests目录，绝不能回传替代生产snapshot。不得仿造缺失宿主模块骗build。未提供journey/app/page/API/保存模块仍dot独占，必要修改交独立提案，不能覆盖。
+
+二、先完成Part1实际接入问题
+1 新增只读identity adapter：从Catalog传入members/works，将member.groupIds+formerGroupIds按id去重供时间轴验证；保留works原groupIds，使用完整51group registry。不改变任何原对象、关系、默认人数或活动状态。
+2 明确数据尚未加载、合法空、schema非法、身份上下文暂不可达四状态。已审事实不因临时缺link而被误称格式坏；未知/跨团链接不可导航。strict审核和UI可用性分层可新增内部types，但不得改变冻结wire schema。提供未知成员、历史成员、部分catalog、重复ID冲突、缺失作品和hold事件引用的回归。不要通过删真实memberIds/workIds逃避校验。
+3 链接返回身份从仅eventId扩到UI层eventId+member/work+targetId。多个按钮准确返回，折叠关联项先展开；style/data ready前不恢复、不捕获隐藏页scroll；modal/dirty/uncertain/user takeover不抢焦点。接口与dot宿主接线分离。
+4 route读写保留section=updates兼容旧链接，timelineType/Importance/Order严格白名单。其它roster/q/queue/format由宿主安全返回校验，路由工具不能等价导航授权。
+
+三、完整页面迁移（0/51→51/51目标）
+37候选团：修改components/candidate-artist-experience.tsx的updates标签和notes共用区域，使overview与updates调用同一ArtistTimeline；原facts/rosterNote/activityNote/gaps保存在来源与背景区域，不把旧文本猜成日期事件。37个design通过现有slot获得，不逐个重写布局。
+14旧团在以下13组件全部接线：artist-sample(BABYMONSTER)、illit-artist、expanded-artist(aespa/XG)、ive-artist、kiof-artist、stayc-artist、nmixx-artist、hearts2hearts-artist、kiiikiii-artist、itzy-artist、lesserafim-artist、saymyname-artist、katseye-artist。
+所有相关“官方动态”“资料与动态”“官方发行”“发行来信”导航/overview入口统一“大事时间轴”；独立作品发行卡若不属于这栏可保留，不盲目全局替换。全部51真实routes逐项登记组件和是否接线，不能把registry存在计为迁移完成。
+真实事件registry尚未交时，用合法空输入显示已核事件待整理+可查来源；禁止合成事实出现在产品registry。推荐host adapter通过props或明确只读registry函数注入；测试fixture可以演示丰富内容。
+保持既有每团主题/字体/CSS就绪门、图片contain及来源范围、排序、roster现有/历史切换、默认人数、成员作品入口/焦点、播放器互斥、评分Editor挂载和未保存状态。
+
+四、显示与交互完整验收
+日期按真实eventDate与精度显示；年/月不可补01，未知日期独立区，announcement/planned/sourcePublishedAt分别标注，核验日期不排序。未来/过期计划不自动确认。年份/月度区间重叠只承诺稳定展示顺序。
+分类全部/成员与团体/发行/公司与状态，重要/全部，近→远与远→近。严格按显式releaseKey聚合，同名不同版本不可乱合；notice多目标不传递吞掉多个事件，取消/延期背景可展开。
+来源details可键盘展开，显示publisher/title/发布日期/checkedAt/支持范围，安全http(s)链接；不把媒体稿称官方。320/390/desktop可读，长URL/长中文不断布局，焦点可见，按钮≥44px，不仅靠颜色。
+链接只允许已知稳定ID；历史成员保持历史说明，不声称精确离团日；MASHIRO/YESEO图片来源范围保留。事件相关member/work返回保留时间轴筛选、折叠状态、scroll与准确按钮焦点。
+
+五、可运行测试与交付，不依赖私人数据
+保留35现有测试。新增完整51迁移静态/SSR矩阵及真实React交互fixture：现有/历史身份adapter；loading→ready/error→retry；无数据/全部hold；日历/精度/公告未知/延期取消；releaseKey与多notice；受控筛选和A→B→A；多成员多作品同事件精确focus；折叠子事件返回；modal/dirty/uncertain保护；来源键盘及320/390宽度。
+fixture使用tests合成Catalog和合成事件，通过props/adapter注入；不能借mock把生产不存在的API字段说成已支持。缺宿主依赖的断言明确未验证，不创造替代保存/API实现。既有依赖能用即用，不新增安装。
+交可静态bundle的真实React页面及本地HTTP托管说明供dot云浏览器QA，正常按钮操作可复现；尚无浏览器结果必须列未验。
+交全部代码patch、逐文件hash、确切base、逐51迁移矩阵、输入依赖/缺口、命令/退出码/完整日志、未完检查点、模块占用/可交接状态。类型/构建若只模块级就写模块级；完整构建由dot环境验，不能以SSR或fixture build替代。最终实际事实文件由dot校验接入。
+
+六、dot已独立核验可作为基线
+Part1 35/35通过；放入完整原基线tsc和官方build退出0，但未接路由因此只证明原站构建兼容。Astra canonical51：groups-only9份通过、当前成员关联45份通过、成员当前+历史关联只读并集51份通过。不要把strict validator直接挂当前groupIds导致6团整栏报错。无需改变事实数据即可正确接入。
+下一交付目标是上述全部工程闭环，不能只回传一份后续建议；客观缺依赖时给准确文件/符号和已完成可接续patch，让dot补最小接口后继续。
+
+七、缺资料依赖时仍可执行的独立host fixture方案（仅tests）
+本次增补包将提供纯UI/CSS/design闭包，仍不提供52份资料JSON、姓名metadata helper、全局journey及私人snapshot。不要因此停止组件迁移，也不能把缺文件在产品路径伪造。
+在tests/fixtures/timeline-host/创建synthetic-catalog.ts、synthetic-artist-content.ts、synthetic-events.ts和explicit-test-aliases.cjs。Catalog对象需保留真实类型必填字段，但仅合成recFixture...身份、null评分/空备注/观看；用独立三团案例覆盖现有/历史和跨团，不复制真实私存数据。每个legacy配置shape依已给组件实际读取字段声明最小显式合成对象，不能用通用{}掩盖undefined失败。
+使用esbuild仅在此fixture构建脚本里设置精确onResolve映射：仅获准缺少的data/*.json和lib/idol/member-display-name可指向tests合成对象/测试函数；禁止全局正则吞掉所有未解析import。alias清单列每个原路径、合成模块、shape和未覆盖能力。source文件保持原import，禁止在components/lib写替代helper。姓名测试函数仅从合成member.stageName/name取值，标明不验证真实别名metadata。
+journey缺口不仿造产品实现。组件的宿主callback通过显式props adapter由fixture驱动，回调spy记录member/work/filters；需要完整dirty/history hook的测试列为dot集成门槛。可用已给真实focus/roster hooks的地方必须直接import真实代码，不能用同名空函数替换；真实模块缺少的route工具由test-only adapter实现有限契约并注明未验证全局安全返回，完整真实守卫由dot跑。
+构建fixture时附metafile验证alias只落tests，产品输出patch不得包含虚拟source文件或替代JSON；测试入口不能被生产组件import。静态HTML依旧加载真实React和实际共享组件/CSS；替代的是授权缺失的合成内容，不把宿主路由/API假装真实。交付至少一页可正常点击的组件fixture和51宿主SSR矩阵；发现某legacy最小shape不明，列精确访问字段，由dot给shape而非申请整份data。

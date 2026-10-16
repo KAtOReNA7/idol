@@ -1,0 +1,85 @@
+@font-face{font-family:MeovvCandidateDisplay;src:url('/fonts/Anton-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+.candidate-artist.candidate-meovv{--ca-bg:#111615;--ca-ink:#f2f1e8;--ca-muted:#a5b0a7;--ca-accent:#d7f645;--ca-line:#303834;--ca-surface:#242d29;--ca-panel:#242d29;--ca-on-accent:#111615;background:#111615;color:#f2f1e8;min-height:100vh;font-family:'Noto Sans SC',system-ui,sans-serif}
+.candidate-artist.candidate-meovv .ca-header{border-bottom:1px solid #303834;background:#111615;color:#f2f1e8}
+.candidate-artist.candidate-meovv .ca-brand{font-weight:500;letter-spacing:.02em}
+.candidate-artist.candidate-meovv .ca-hero{padding-top:36px}
+.candidate-artist.candidate-meovv .meovv-cover{display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:28px 50px;align-items:start}
+.candidate-artist.candidate-meovv .meovv-cover-copy{padding-top:12px;min-width:0}
+.candidate-artist.candidate-meovv .ca-title small{display:block;font-size:11px;letter-spacing:.12em;color:#d7f645;margin-bottom:34px}
+.candidate-artist.candidate-meovv .ca-title h1{font-family:MeovvCandidateDisplay,'Arial Narrow',sans-serif;font-size:clamp(78px,8.2vw,130px);font-weight:400;line-height:1.08;letter-spacing:-.035em;max-width:5.9ch;overflow-wrap:normal}
+.candidate-artist.candidate-meovv .meovv-wordmark{font:400 clamp(38px,4vw,62px)/1.2 MeovvCandidateDisplay,'Arial Narrow',sans-serif;margin:30px 0 24px;letter-spacing:-.025em}
+.candidate-artist.candidate-meovv .ca-intro{max-width:29em;font-size:16px;line-height:1.85;color:#dedfd6}
+.candidate-artist.candidate-meovv .ca-actions{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
+.candidate-artist.candidate-meovv .ca-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 20px;border:1px solid #d7f645;border-radius:0;background:#d7f645;color:#111615;font-weight:600;white-space:normal;line-height:1.5;text-align:center}
+.candidate-artist.candidate-meovv .ca-button:hover{background:#efffa5;border-color:#efffa5}
+.candidate-artist.candidate-meovv .meovv-cover-photo{min-width:0;background:#242d29;align-self:stretch}
+.candidate-artist.candidate-meovv .ca-image{margin:0;background:#242d29;border-radius:0}
+.candidate-artist.candidate-meovv .ca-image img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;border-radius:0}
+.candidate-artist.candidate-meovv .ca-image figcaption{padding:12px 16px;color:#b8c2b7;font-size:11px}
+.candidate-artist.candidate-meovv .meovv-cover-facts{grid-column:1/-1;border-top:1px solid #303834;padding-top:20px}
+.candidate-artist.candidate-meovv .ca-facts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin:0}
+.candidate-artist.candidate-meovv .ca-facts>div{padding:14px 16px;border:0;border-left:2px solid #4d5841;border-radius:0;background:transparent;min-width:0}
+.candidate-artist.candidate-meovv .ca-facts dt{font-size:11px;color:#a5b0a7}
+.candidate-artist.candidate-meovv .ca-facts dd{margin:8px 0;color:#f2f1e8;font-size:18px;font-weight:500;overflow-wrap:anywhere}
+.candidate-artist.candidate-meovv .ca-facts small{color:#a5b0a7;font-size:10px;line-height:1.7}
+.candidate-artist.candidate-meovv .ca-facts a{color:#d7f645;font-size:10px}
+.candidate-artist.candidate-meovv .ca-tabs{border-color:#303834;background:#111615}
+.candidate-artist.candidate-meovv .ca-tabs button{border-radius:0;color:#a5b0a7}
+.candidate-artist.candidate-meovv .ca-tabs button[aria-current=page]{background:#d7f645;color:#111615}
+.candidate-artist.candidate-meovv .meovv-night-index{display:grid;gap:54px}
+.candidate-artist.candidate-meovv .meovv-section-kicker{font-size:12px;letter-spacing:.09em;color:#d7f645;margin-bottom:18px}
+.candidate-artist.candidate-meovv .ca-section-heading h2{font-size:clamp(24px,2.4vw,34px);font-weight:500;letter-spacing:-.025em}
+.candidate-artist.candidate-meovv .ca-roster{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid #303834}
+.candidate-artist.candidate-meovv .ca-roster>button{display:grid;grid-template-columns:35px 100px minmax(0,1fr) auto;align-items:center;gap:22px;width:100%;padding:20px 0;text-align:left;border:0;border-bottom:1px solid #303834;border-radius:0;background:transparent;color:#f2f1e8;min-width:0}
+.candidate-artist.candidate-meovv .ca-roster>button:hover{background:#1b231f}
+.candidate-artist.candidate-meovv .ca-roster .ca-ordinal{grid-column:1;grid-row:1;color:#d7f645;font-size:12px;font-family:MeovvCandidateDisplay,sans-serif}
+.candidate-artist.candidate-meovv .ca-roster .ca-member-photo{grid-column:2;grid-row:1;width:100px;height:100px;aspect-ratio:1;background:#242d29;border-radius:0;overflow:hidden}
+.candidate-artist.candidate-meovv .ca-member-photo img{width:100%;height:100%;object-fit:contain;border-radius:0}
+.candidate-artist.candidate-meovv .ca-roster .ca-member-copy{grid-column:3;grid-row:1;display:flex;flex-direction:column;min-width:0;gap:4px;overflow-wrap:anywhere}
+.candidate-artist.candidate-meovv .ca-member-copy strong{font-size:24px;font-weight:500;line-height:1.5}
+.candidate-artist.candidate-meovv .ca-member-copy small{font-size:12px;letter-spacing:.03em;color:#a5b0a7}
+.candidate-artist.candidate-meovv .ca-roster-arrow{grid-column:4;grid-row:1;color:#d7f645}
+.candidate-artist.candidate-meovv .meovv-listening-block{display:grid;grid-template-columns:minmax(150px,.32fr) minmax(0,1fr);gap:48px;border-top:3px solid #d7f645;padding-top:28px}
+.candidate-artist.candidate-meovv .meovv-listening-label{display:flex;flex-direction:column;gap:2px;color:#d7f645}
+.candidate-artist.candidate-meovv .meovv-listening-label span{font:400 clamp(38px,4.8vw,72px)/1.13 MeovvCandidateDisplay,sans-serif;letter-spacing:-.02em}
+.candidate-artist.candidate-meovv .meovv-listening-label small{font-size:10px;letter-spacing:.15em;margin-top:20px}
+.candidate-artist.candidate-meovv .meovv-listening-content{min-width:0;display:grid;gap:26px}
+.candidate-artist.candidate-meovv .ca-works{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.candidate-artist.candidate-meovv .ca-work{border-radius:0;background:#1d2521;border:1px solid #303834;padding:14px;min-width:0}
+.candidate-artist.candidate-meovv .ca-work-cover{border-radius:0;background:#242d29}
+.candidate-artist.candidate-meovv .ca-work-actions{display:flex;flex-wrap:wrap;gap:8px}
+.candidate-artist.candidate-meovv .ca-work-actions button,.candidate-artist.candidate-meovv .ca-work-actions a{border-radius:0;white-space:normal}
+.candidate-artist.candidate-meovv .ca-library{border:1px solid #3f4b3a;border-radius:0;background:transparent;padding:20px}
+.candidate-artist.candidate-meovv .ca-notes{border-top:1px solid #303834;padding-top:26px;color:#a5b0a7}
+.candidate-artist.candidate-meovv .ca-empty{padding:26px;border:1px solid #303834;background:#1b231f;color:#b8c2b7;border-radius:0}
+.candidate-artist.candidate-meovv .meovv-person-sheet{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:60px;align-items:start}
+.candidate-artist.candidate-meovv .meovv-person-copy{min-width:0;padding-top:24px}
+.candidate-artist.candidate-meovv .ca-member-identity h1{font-size:clamp(34px,4.3vw,66px);line-height:1.35;font-weight:500;overflow-wrap:anywhere}
+.candidate-artist.candidate-meovv .ca-member-summary{margin-top:28px;padding-top:22px;border-top:1px solid #303834}
+.candidate-artist.candidate-meovv .meovv-person-photo{min-width:0;background:#242d29}
+.candidate-artist.candidate-meovv .meovv-person-photo .ca-member-photo,.candidate-artist.candidate-meovv .meovv-person-photo .ca-image{width:100%;height:auto;aspect-ratio:1;max-width:none}
+.candidate-artist.candidate-meovv .meovv-person-photo img{width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+.candidate-artist.candidate-meovv .ca-footer{border-top:1px solid #303834;color:#a5b0a7;padding-top:24px}
+@media(max-width:1020px){.candidate-artist.candidate-meovv .meovv-cover{gap:26px}.candidate-artist.candidate-meovv .ca-title h1{font-size:clamp(70px,8vw,102px)}.candidate-artist.candidate-meovv .ca-facts{grid-template-columns:repeat(3,minmax(0,1fr))}.candidate-artist.candidate-meovv .meovv-listening-block{gap:26px}.candidate-artist.candidate-meovv .meovv-person-sheet{gap:30px}}
+@media(max-width:760px){.candidate-artist.candidate-meovv .ca-hero{padding-top:22px}.candidate-artist.candidate-meovv .meovv-cover{display:flex;flex-direction:column;gap:25px}.candidate-artist.candidate-meovv .meovv-cover-photo{order:0;width:100%}.candidate-artist.candidate-meovv .meovv-cover-copy{order:1;padding:0;width:100%}.candidate-artist.candidate-meovv .meovv-cover-facts{order:2;width:100%;padding-top:8px}.candidate-artist.candidate-meovv .ca-title small{font-size:10px;margin-bottom:14px}.candidate-artist.candidate-meovv .ca-title h1{font-size:38px;line-height:1.1;max-width:none;letter-spacing:-.025em}.candidate-artist.candidate-meovv .meovv-wordmark{font-size:72px;margin:20px 0 24px}.candidate-artist.candidate-meovv .ca-intro{font-size:14px;line-height:1.9}.candidate-artist.candidate-meovv .ca-actions{margin-top:22px;gap:9px}.candidate-artist.candidate-meovv .ca-actions .ca-button{flex:1 1 120px;padding:12px 14px;min-width:0}.candidate-artist.candidate-meovv .ca-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 6px}.candidate-artist.candidate-meovv .ca-facts>div{padding:12px}.candidate-artist.candidate-meovv .ca-facts dd{font-size:15px}.candidate-artist.candidate-meovv .meovv-night-index{gap:38px}.candidate-artist.candidate-meovv .meovv-section-kicker{font-size:10px;margin-bottom:15px}.candidate-artist.candidate-meovv .ca-roster>button{grid-template-columns:22px 64px minmax(0,1fr) 18px;gap:12px;padding:17px 0}.candidate-artist.candidate-meovv .ca-roster .ca-member-photo{width:64px;height:64px}.candidate-artist.candidate-meovv .ca-member-copy strong{font-size:17px;line-height:1.5}.candidate-artist.candidate-meovv .ca-member-copy small{font-size:10px}.candidate-artist.candidate-meovv .ca-roster .ca-ordinal{font-size:11px}.candidate-artist.candidate-meovv .meovv-listening-block{grid-template-columns:1fr;gap:24px;padding-top:24px}.candidate-artist.candidate-meovv .meovv-listening-label{display:flex;flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:0 8px}.candidate-artist.candidate-meovv .meovv-listening-label span{font-size:36px;line-height:1.2}.candidate-artist.candidate-meovv .meovv-listening-label small{font-size:9px;margin:0 0 0 auto}.candidate-artist.candidate-meovv .ca-works{grid-template-columns:1fr;gap:16px}.candidate-artist.candidate-meovv .ca-work{padding:12px}.candidate-artist.candidate-meovv .ca-library{padding:16px}.candidate-artist.candidate-meovv .meovv-person-sheet{grid-template-columns:1fr;gap:30px}.candidate-artist.candidate-meovv .meovv-person-copy{padding:0}.candidate-artist.candidate-meovv .ca-member-identity h1{font-size:38px}.candidate-artist.candidate-meovv .ca-member-summary{margin-top:20px;padding-top:18px}.candidate-artist.candidate-meovv .ca-section-heading h2{font-size:24px}}
+@media(max-width:360px){.candidate-artist.candidate-meovv .ca-roster>button{grid-template-columns:18px 52px minmax(0,1fr) 14px;gap:9px}.candidate-artist.candidate-meovv .ca-roster .ca-member-photo{width:52px;height:52px}.candidate-artist.candidate-meovv .ca-member-copy strong{font-size:15px}.candidate-artist.candidate-meovv .ca-title h1{font-size:34px}.candidate-artist.candidate-meovv .meovv-wordmark{font-size:64px}}
+@media(prefers-reduced-motion:reduce){.candidate-artist.candidate-meovv *{scroll-behavior:auto!important;transition:none!important}}
+
+/* The shared slots keep a semantic group H1; this cover changes their visual order. */
+.candidate-artist.candidate-meovv .meovv-cover-copy{display:flex;flex-direction:column}
+.candidate-artist.candidate-meovv .meovv-cover-copy .ca-title,.candidate-artist.candidate-meovv .meovv-cover-copy .ca-intro{display:contents}
+.candidate-artist.candidate-meovv .meovv-cover-copy .ca-title small{order:0}
+.candidate-artist.candidate-meovv .meovv-cover-copy .ca-intro h2{order:1;font:400 clamp(78px,8.2vw,130px)/1.08 MeovvCandidateDisplay,sans-serif;letter-spacing:-.035em;white-space:pre-line;overflow-wrap:normal}
+.candidate-artist.candidate-meovv .meovv-cover-copy .ca-title h1{order:2;font:400 clamp(38px,4vw,62px)/1.2 MeovvCandidateDisplay,sans-serif;letter-spacing:-.025em;max-width:none;margin:30px 0 24px}
+.candidate-artist.candidate-meovv .meovv-cover-copy .ca-intro p{order:3;margin:0;max-width:29em;color:#dedfd6;font-size:16px;line-height:1.85}
+.candidate-artist.candidate-meovv .meovv-cover-copy .ca-actions{order:4}
+.candidate-artist.candidate-meovv .ca-image>img{aspect-ratio:auto;height:auto;max-height:900px;object-fit:contain;background:#242d29}
+.candidate-artist.candidate-meovv .meovv-person-photo .ca-member-portrait{padding-bottom:14px}
+.candidate-artist.candidate-meovv .meovv-person-photo figcaption,.candidate-artist.candidate-meovv .meovv-person-photo .ca-member-portrait>a{margin:10px 16px;display:block}
+.candidate-artist.candidate-meovv .ca-pills button[aria-pressed=true]{background:#d7f645;color:#111615}
+@media(max-width:760px){.candidate-artist.candidate-meovv .meovv-cover-copy .ca-intro h2{font-size:34px;line-height:1.18;white-space:normal}.candidate-artist.candidate-meovv .meovv-cover-copy .ca-title h1{font-size:72px;margin:20px 0 24px}.candidate-artist.candidate-meovv .meovv-cover-copy .ca-intro p{font-size:14px;line-height:1.9}.candidate-artist.candidate-meovv .ca-image figcaption{padding:9px 12px}.candidate-artist.candidate-meovv .ca-image>img{max-height:none}}
+@media(max-width:360px){.candidate-artist.candidate-meovv .meovv-cover-copy .ca-title h1{font-size:64px}.candidate-artist.candidate-meovv .meovv-cover-copy .ca-intro h2{font-size:30px}}
+
+/* Missing MV looks remain disabled, but their explanation stays legible and compact. */
+.candidate-artist.candidate-meovv .ca-look:disabled{opacity:1;aspect-ratio:auto}
+.candidate-artist.candidate-meovv .ca-look:disabled>.ca-placeholder{height:auto;min-height:120px;color:var(--ca-ink)}

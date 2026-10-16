@@ -1,0 +1,29 @@
+@font-face{font-family:PurpleKissArchive;src:url('/fonts/BodoniModa-Variable.ttf') format('truetype');font-weight:400 900;font-display:swap}
+.candidate-purplekiss{--ca-bg:#21182b;--ca-ink:#f2e9f7;--ca-muted:#b9a8c5;--ca-line:#685471;--ca-accent:#ceacd9;--ca-panel:#342440;--ca-on-accent:#281a30}
+.candidate-purplekiss .ca-header{border-color:#685471}.candidate-purplekiss .ca-brand{font-weight:500}
+.candidate-purplekiss .purplekiss-record-sleeve{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-areas:'title title' 'voice art' 'liner art';gap:30px 54px}
+.candidate-purplekiss .purplekiss-sleeve-title{grid-area:title;border-block:1px solid var(--ca-line);padding:20px 0}
+.candidate-purplekiss .ca-title h1{font:500 clamp(64px,9.6vw,145px)/1.05 PurpleKissArchive,Georgia,serif;letter-spacing:-.045em;margin-block:20px 8px}
+.candidate-purplekiss .purplekiss-sleeve-voice{grid-area:voice;padding:34px 0}
+.candidate-purplekiss .ca-intro h2{font-size:clamp(28px,3.2vw,46px);font-weight:400;line-height:1.45}
+.candidate-purplekiss .purplekiss-sleeve-art{grid-area:art;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--ca-line);padding:22px;background:linear-gradient(140deg,#382343,#241a2d)}
+.candidate-purplekiss .purplekiss-sleeve-art .ca-placeholder{aspect-ratio:4/5;min-height:320px;border:1px solid var(--ca-line);background:#2c2037}
+.candidate-purplekiss .purplekiss-sleeve-art>p{font:400 clamp(20px,2.4vw,34px)/1.4 PurpleKissArchive,Georgia,serif;padding-top:28px;letter-spacing:.04em}
+.candidate-purplekiss .purplekiss-sleeve-liner{grid-area:liner}.candidate-purplekiss .purplekiss-sleeve-liner .ca-facts{grid-template-columns:1fr;gap:24px}
+.candidate-purplekiss .ca-button{border-color:var(--ca-accent);border-radius:0}.candidate-purplekiss .ca-tabs{border-block:1px solid var(--ca-line);gap:32px}
+.candidate-purplekiss .purplekiss-archive{display:grid;grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr);grid-template-areas:'notes records' 'people people';gap:58px}
+.candidate-purplekiss .purplekiss-liner-notes{grid-area:notes}.candidate-purplekiss .purplekiss-records{grid-area:records;border-left:1px solid var(--ca-line);padding-left:36px}.candidate-purplekiss .purplekiss-people-index{grid-area:people;border-top:1px solid var(--ca-line);padding-top:34px}
+.candidate-purplekiss .purplekiss-side-label{display:block;font-size:10px;letter-spacing:.18em;color:var(--ca-accent);margin-bottom:32px}
+.candidate-purplekiss .ca-notes .ca-facts,.candidate-purplekiss .ca-works{grid-template-columns:1fr}.candidate-purplekiss .ca-section-heading h2{font-weight:400;letter-spacing:.02em}
+.candidate-purplekiss .ca-work{padding:22px 0;border-top:1px solid var(--ca-accent)}
+.candidate-purplekiss .ca-work>a{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px 22px}.candidate-purplekiss .ca-work-cover{grid-row:1/4;aspect-ratio:1;margin:0}.candidate-purplekiss .ca-work h3{font:500 30px/1.2 PurpleKissArchive,Georgia,serif;align-self:end}.candidate-purplekiss .ca-work p{margin:6px 0}.candidate-purplekiss .ca-work-actions{justify-content:flex-end;margin-bottom:0}
+.candidate-purplekiss .ca-empty{border:1px solid var(--ca-line);border-top:4px solid var(--ca-accent);min-height:160px;background:#2a1f34}
+.candidate-purplekiss .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr))}.candidate-purplekiss .ca-roster>button{background:transparent}
+.candidate-purplekiss .purplekiss-person-sleeve{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);grid-template-areas:'art title' 'art liner';gap:28px 52px}.candidate-purplekiss .purplekiss-person-title{grid-area:title;border-top:1px solid var(--ca-line);padding-top:18px}.candidate-purplekiss .purplekiss-person-art{grid-area:art;padding:20px;border:1px solid var(--ca-line)}.candidate-purplekiss .purplekiss-person-liner{grid-area:liner}
+@media(max-width:900px){.candidate-purplekiss .purplekiss-archive{gap:30px}.candidate-purplekiss .purplekiss-records{padding-left:22px}}
+@media(max-width:760px){
+ .candidate-purplekiss .purplekiss-record-sleeve{grid-template-columns:1fr;grid-template-areas:'title' 'voice' 'liner' 'art';gap:24px}.candidate-purplekiss .ca-title h1{font-size:clamp(52px,16vw,80px)}.candidate-purplekiss .purplekiss-sleeve-voice{padding:0}
+ .candidate-purplekiss .purplekiss-sleeve-art{padding:16px}.candidate-purplekiss .purplekiss-sleeve-art .ca-placeholder{aspect-ratio:1;min-height:200px}.candidate-purplekiss .ca-tabs{gap:20px}
+ .candidate-purplekiss .purplekiss-archive{grid-template-columns:1fr;grid-template-areas:'records' 'people' 'notes';gap:40px}.candidate-purplekiss .purplekiss-records{border:0;padding:0}.candidate-purplekiss .ca-work>a{grid-template-columns:1fr}.candidate-purplekiss .ca-work-cover{grid-row:auto;aspect-ratio:16/10;margin-bottom:14px}.candidate-purplekiss .ca-work-actions{justify-content:flex-start}.candidate-purplekiss .ca-work h3{font-size:29px}
+ .candidate-purplekiss .ca-roster{grid-template-columns:1fr}.candidate-purplekiss .purplekiss-person-sleeve{grid-template-columns:1fr;grid-template-areas:'title' 'art' 'liner';gap:24px}.candidate-purplekiss .ca-member-identity h1{font-size:36px}
+}

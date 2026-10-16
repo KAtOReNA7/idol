@@ -1,0 +1,60 @@
+@font-face{font-family:HitgsZine;src:url('/fonts/Anton-Regular.ttf') format('truetype');font-display:swap}
+.candidate-hitgs{--ca-bg:#eaf45d;--ca-ink:#122d48;--ca-muted:#425361;--ca-line:#829458;--ca-accent:#163953;--ca-panel:#f8f7d8;--ca-on-accent:#fff}
+.candidate-hitgs .ca-header{border-bottom:3px solid var(--ca-ink)}
+.candidate-hitgs .ca-hero{padding-top:24px}
+.candidate-hitgs .hitgs-zine{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px 48px}
+.candidate-hitgs .hitgs-masthead{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:30px;border-block:2px solid var(--ca-ink);padding:20px 0}
+.candidate-hitgs .ca-title h1{font-family:HitgsZine,sans-serif;font-weight:400;font-size:clamp(88px,13vw,184px);letter-spacing:-.03em;margin:8px 0 0}
+.candidate-hitgs .hitgs-issue{font:400 clamp(24px,4vw,56px)/1.05 HitgsZine,sans-serif;color:#b02f2b}
+.candidate-hitgs .hitgs-callout{display:flex;flex-direction:column;justify-content:center}
+.candidate-hitgs .ca-intro h2{font-size:clamp(32px,3.5vw,50px)}
+.candidate-hitgs .hitgs-callout .ca-actions{order:-1}
+.candidate-hitgs .hitgs-poster{border:10px solid var(--ca-ink);padding:14px;background:var(--ca-panel)}
+.candidate-hitgs .ca-image>.ca-placeholder{aspect-ratio:5/4;background:#e0e3c6;color:var(--ca-ink)}
+.candidate-hitgs .hitgs-fact-strip{grid-column:1/-1;border-block:2px solid var(--ca-ink);padding:4px 20px;background:var(--ca-panel)}
+.candidate-hitgs .hitgs-fact-strip .ca-facts{grid-template-columns:1fr 1fr;gap:36px}
+.candidate-hitgs .hitgs-fact-strip .ca-facts>div{border:0;padding:0}
+.candidate-hitgs .ca-tabs{border-block:3px solid var(--ca-ink);gap:32px}
+.candidate-hitgs .hitgs-pages>div{margin-bottom:70px}
+.candidate-hitgs .hitgs-stamp{display:inline-block;padding:7px 16px;background:#b02f2b;color:#fff;font-weight:700;letter-spacing:.09em;margin-bottom:16px}
+.candidate-hitgs .ca-works{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+.candidate-hitgs .ca-work{border-top:3px solid var(--ca-ink);padding:20px;background:var(--ca-panel)}
+.candidate-hitgs .ca-work:first-child{grid-column:1/-1;max-width:100%}
+.candidate-hitgs .ca-work:first-child>a:first-child{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);column-gap:28px}
+.candidate-hitgs .ca-work:first-child .ca-work-cover{grid-row:1/5;margin:0}
+.candidate-hitgs .ca-work:first-child h3{align-self:end;font-size:30px}
+.candidate-hitgs .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.candidate-hitgs .ca-roster>button{grid-template-columns:1fr 20px;grid-template-areas:'number arrow' 'photo photo' 'name name';padding:24px;border:2px solid var(--ca-ink);border-bottom:7px double var(--ca-ink);gap:16px}
+.candidate-hitgs .ca-ordinal{grid-area:number;font-family:HitgsZine,sans-serif;font-size:28px}
+.candidate-hitgs .ca-roster-arrow{grid-area:arrow}
+.candidate-hitgs .ca-member-photo{grid-area:photo;aspect-ratio:5/2}
+.candidate-hitgs .ca-member-photo .ca-placeholder{background:#e5e6ce}
+.candidate-hitgs .ca-member-copy{grid-area:name}
+.candidate-hitgs .ca-member-copy strong{font-size:24px}
+.candidate-hitgs .ca-library{border-block:3px solid var(--ca-ink)}
+.candidate-hitgs .hitgs-footnotes{padding:24px;background:var(--ca-panel);border:1px solid var(--ca-ink)}
+.candidate-hitgs .hitgs-person{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:30px}
+.candidate-hitgs .hitgs-person-title{align-self:center}
+.candidate-hitgs .hitgs-person-photo{padding:15px;border:3px solid var(--ca-ink);background:var(--ca-panel)}
+.candidate-hitgs .hitgs-person-tallies{grid-column:1/-1}
+.candidate-hitgs .ca-member-works{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:760px){.candidate-hitgs .hitgs-zine{grid-template-columns:1fr;gap:24px}.candidate-hitgs .hitgs-masthead{gap:12px}.candidate-hitgs .ca-title h1{font-size:clamp(62px,21vw,112px)}.candidate-hitgs .hitgs-issue{font-size:21px}.candidate-hitgs .hitgs-callout{display:contents}.candidate-hitgs .hitgs-callout .ca-actions{grid-row:2;margin:0}.candidate-hitgs .hitgs-poster{grid-row:3;border-width:6px;padding:8px}.candidate-hitgs .ca-intro{grid-row:4}.candidate-hitgs .hitgs-fact-strip{grid-row:5;padding:8px 16px}.candidate-hitgs .hitgs-fact-strip .ca-facts{grid-template-columns:1fr;gap:20px}.candidate-hitgs .ca-tabs{gap:18px}.candidate-hitgs .ca-roster{gap:14px}.candidate-hitgs .ca-roster>button{padding:14px;gap:12px}.candidate-hitgs .ca-member-photo{aspect-ratio:1}.candidate-hitgs .ca-member-copy strong{font-size:18px}.candidate-hitgs .ca-works{grid-template-columns:1fr}.candidate-hitgs .ca-work{padding:16px}.candidate-hitgs .ca-work:first-child>a:first-child{display:block}.candidate-hitgs .ca-work:first-child .ca-work-cover{margin-bottom:18px}.candidate-hitgs .ca-work:first-child h3{font-size:24px}.candidate-hitgs .hitgs-footnotes{padding:18px}.candidate-hitgs .hitgs-person{grid-template-columns:1fr;gap:20px}.candidate-hitgs .hitgs-person-title{grid-row:1}.candidate-hitgs .hitgs-person-photo{grid-row:2}.candidate-hitgs .ca-member-works{grid-template-columns:1fr}.candidate-hitgs .hitgs-pages>div{margin-bottom:48px}}
+@media(max-width:350px){.candidate-hitgs .ca-roster{grid-template-columns:1fr}.candidate-hitgs .ca-member-photo{aspect-ratio:2/1}.candidate-hitgs .hitgs-issue{font-size:17px}}
+
+/* Batch B: preserve complete official frames and keyboard reading paths. */
+.candidate-hitgs .ca-image>img{display:block;width:100%;height:auto;max-height:640px;object-fit:contain;border-radius:0}
+.candidate-hitgs .ca-member-photo img,.candidate-hitgs .ca-member-portrait img{object-fit:contain}
+.candidate-hitgs .ca-ordinal{white-space:nowrap;overflow-wrap:normal;word-break:normal;font-variant-numeric:tabular-nums}
+.candidate-hitgs :is(a,button):focus-visible{outline:3px solid var(--ca-accent);outline-offset:4px}
+.candidate-hitgs :is(.ca-title,.ca-intro,.ca-member-copy,.ca-facts,.ca-work){min-width:0}
+.candidate-hitgs .ca-member-copy strong,.candidate-hitgs .ca-work h3{overflow-wrap:anywhere;line-height:1.4}
+.candidate-hitgs .ca-button{max-width:100%;min-width:0;text-wrap:balance;line-height:1.45}
+@media(max-width:760px){.candidate-hitgs .ca-image>img{max-height:none}.candidate-hitgs .ca-image figcaption{line-height:1.65;overflow-wrap:anywhere}}
+
+.candidate-hitgs .hitgs-poster{transform:none;align-self:start}
+.candidate-hitgs .hitgs-poster .ca-image{margin:0}
+.candidate-hitgs .hitgs-footnotes>.hitgs-stamp{margin-bottom:24px}
+.candidate-hitgs .ca-roster>button{grid-template-columns:minmax(0,1fr) 24px}
+@media(max-width:760px){.candidate-hitgs .hitgs-issue{font-size:12px;line-height:1.5;letter-spacing:.05em}.candidate-hitgs .hitgs-callout .ca-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.candidate-hitgs .hitgs-stamp{font-size:13px}.candidate-hitgs .ca-roster{grid-template-columns:1fr}.candidate-hitgs .ca-roster>button{grid-template-columns:30px 76px minmax(0,1fr) 18px;grid-template-areas:'number photo name arrow';align-items:center;padding:18px 12px;gap:12px}.candidate-hitgs .ca-member-photo{aspect-ratio:3/4}.candidate-hitgs .ca-member-copy strong{font-size:18px}}
+
+.candidate-hitgs .ca-image>img{aspect-ratio:auto}

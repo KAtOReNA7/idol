@@ -1,0 +1,67 @@
+@font-face{font-family:LoonaPhase;src:url('/fonts/InstrumentSerif-Regular.ttf') format('truetype');font-display:swap}
+.candidate-loona{--ca-bg:#171d26;--ca-ink:#f3ebd5;--ca-muted:#b8b3a5;--ca-line:#535a60;--ca-accent:#ded19b;--ca-panel:#252c35;--ca-on-accent:#171d26}
+.candidate-loona .ca-header{border-bottom-color:#8d8c77}
+.candidate-loona .loona-orbit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:30px 70px;grid-template-areas:'title moon' 'copy moon' 'facts facts'}
+.candidate-loona .loona-orbit-title{grid-area:title;align-self:end}
+.candidate-loona .ca-title h1{font:400 clamp(80px,11vw,160px)/1 LoonaPhase,serif;letter-spacing:.015em;margin:20px 0 0}
+.candidate-loona .loona-lunar-frame{grid-area:moon;align-self:center;border:1px solid var(--ca-line);border-radius:50% 50% 0 0;padding:28px 28px 14px}
+.candidate-loona .ca-image>.ca-placeholder{aspect-ratio:1;border-radius:50%;border:1px solid #8d8c77;background:#2b323b;color:#d0c8af}
+.candidate-loona .ca-image figcaption{text-align:center;margin-top:20px}
+.candidate-loona .loona-orbit-copy{grid-area:copy}
+.candidate-loona .ca-intro h2{font-size:clamp(31px,3.4vw,48px);font-weight:400;line-height:1.4}
+.candidate-loona .loona-phase-record{grid-area:facts;border-block:1px solid #8d8c77}
+.candidate-loona .loona-phase-record .ca-facts{grid-template-columns:1fr 1fr;padding:0 26px;gap:48px}
+.candidate-loona .loona-phase-record .ca-facts>div{border:0;padding:4px 0}
+.candidate-loona .loona-phase-record .ca-facts dd{font:400 33px LoonaPhase,serif}
+.candidate-loona .ca-tabs{border-color:#8d8c77;justify-content:center;gap:42px}
+.candidate-loona .ca-button{border-radius:24px}
+.candidate-loona .loona-ledger>div{margin:34px 0 76px}
+.candidate-loona .loona-section-marker{display:block;letter-spacing:.16em;color:var(--ca-accent);font-size:11px;border-bottom:1px solid var(--ca-line);padding:0 0 18px;margin-bottom:28px}
+.candidate-loona .loona-chronology{display:grid;grid-template-columns:210px minmax(0,1fr);gap:42px}
+.candidate-loona .loona-chronology .loona-section-marker{padding-top:20px;align-self:start}
+.candidate-loona .ca-section-heading h2{font-weight:400}
+.candidate-loona .ca-roster{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.candidate-loona .ca-roster>button{position:relative;grid-template-columns:minmax(0,1fr) 20px;grid-template-areas:'photo photo' 'name arrow';gap:18px;padding:20px;border:1px solid var(--ca-line);background:transparent}
+.candidate-loona .ca-member-photo{grid-area:photo;aspect-ratio:4/3;border-radius:50% 50% 0 0;overflow:hidden}
+.candidate-loona .ca-member-photo .ca-placeholder{background:#252d37;padding-top:28px}
+.candidate-loona .ca-ordinal{position:absolute;top:28px;left:30px;font:400 26px LoonaPhase,serif;color:var(--ca-accent);z-index:1}
+.candidate-loona .ca-member-copy{grid-area:name}
+.candidate-loona .ca-member-copy strong{font-size:22px;font-weight:400}
+.candidate-loona .ca-roster-arrow{grid-area:arrow}
+.candidate-loona .ca-works{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.candidate-loona .ca-work{padding-top:24px;border-color:#8d8c77}
+.candidate-loona .ca-work:nth-child(2){padding-top:50px}
+.candidate-loona .ca-work:nth-child(3){padding-top:76px}
+.candidate-loona .ca-work h3{font-size:24px;font-weight:400}
+.candidate-loona .ca-library strong{font-family:LoonaPhase,serif;font-weight:400;font-size:38px}
+.candidate-loona .loona-person-orbit{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px 60px;grid-template-areas:'name phase' 'coordinates phase'}
+.candidate-loona .loona-person-name{grid-area:name;align-self:end}
+.candidate-loona .loona-person-phase{grid-area:phase;border:1px solid #8d8c77;border-radius:50% 50% 0 0;padding:24px}
+.candidate-loona .ca-member-portrait>.ca-placeholder{border-radius:50% 50% 0 0}
+.candidate-loona .loona-person-coordinates{grid-area:coordinates}
+.candidate-loona .ca-member-summary{grid-template-columns:1fr;gap:14px}
+.candidate-loona .ca-member-summary>div{flex-direction:row;justify-content:space-between;align-items:center;border-bottom:1px solid var(--ca-line);padding-bottom:12px}
+.candidate-loona .ca-member-summary strong{font-family:LoonaPhase,serif;font-weight:400}
+.candidate-loona .ca-member-works{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:760px){.candidate-loona .loona-orbit{grid-template-columns:1fr;gap:28px;grid-template-areas:'title' 'moon' 'copy' 'facts'}.candidate-loona .ca-title h1{font-size:clamp(68px,23vw,110px)}.candidate-loona .loona-lunar-frame{padding:18px 18px 8px;max-width:430px;width:100%;justify-self:center}.candidate-loona .loona-orbit-copy .ca-actions{margin-top:0}.candidate-loona .ca-intro h2{font-size:34px}.candidate-loona .loona-phase-record .ca-facts{grid-template-columns:1fr 1fr;padding:0;gap:20px}.candidate-loona .loona-phase-record .ca-facts dd{font-size:28px}.candidate-loona .ca-tabs{justify-content:flex-start;gap:18px}.candidate-loona .loona-chronology{grid-template-columns:1fr;gap:0}.candidate-loona .loona-chronology .loona-section-marker{padding-top:0}.candidate-loona .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.candidate-loona .ca-roster>button{padding:14px;gap:14px}.candidate-loona .ca-member-photo{aspect-ratio:1}.candidate-loona .ca-ordinal{top:19px;left:22px;font-size:23px}.candidate-loona .ca-member-copy strong{font-size:18px}.candidate-loona .ca-works{grid-template-columns:1fr;gap:28px}.candidate-loona .ca-work:nth-child(2),.candidate-loona .ca-work:nth-child(3){padding-top:24px}.candidate-loona .loona-person-orbit{grid-template-columns:1fr;gap:24px;grid-template-areas:'name' 'phase' 'coordinates'}.candidate-loona .loona-person-phase{padding:18px}.candidate-loona .ca-member-works{grid-template-columns:1fr}.candidate-loona .loona-ledger>div{margin-bottom:50px}}
+@media(max-width:350px){.candidate-loona .ca-roster{grid-template-columns:1fr}.candidate-loona .ca-member-photo{aspect-ratio:5/3}.candidate-loona .loona-phase-record .ca-facts{grid-template-columns:1fr}}
+
+/* Batch B: preserve complete official frames and keyboard reading paths. */
+.candidate-loona .ca-image>img{display:block;width:100%;height:auto;max-height:640px;object-fit:contain;border-radius:0}
+.candidate-loona .ca-member-photo img,.candidate-loona .ca-member-portrait img{object-fit:contain}
+.candidate-loona .ca-ordinal{white-space:nowrap;overflow-wrap:normal;word-break:normal;font-variant-numeric:tabular-nums}
+.candidate-loona :is(a,button):focus-visible{outline:3px solid var(--ca-accent);outline-offset:4px}
+.candidate-loona :is(.ca-title,.ca-intro,.ca-member-copy,.ca-facts,.ca-work){min-width:0}
+.candidate-loona .ca-member-copy strong,.candidate-loona .ca-work h3{overflow-wrap:anywhere;line-height:1.4}
+.candidate-loona .ca-button{max-width:100%;min-width:0;text-wrap:balance;line-height:1.45}
+@media(max-width:760px){.candidate-loona .ca-image>img{max-height:none}.candidate-loona .ca-image figcaption{line-height:1.65;overflow-wrap:anywhere}}
+
+.candidate-loona .loona-lunar-frame{border-radius:0;position:relative;padding-top:24px}
+.candidate-loona .loona-lunar-frame:before{content:'';display:block;width:50px;height:12px;border:1px solid var(--ca-line);border-radius:50%;margin:0 auto 20px}
+.candidate-loona .ca-member-photo{aspect-ratio:3/4;border-radius:0;overflow:visible}
+.candidate-loona .ca-roster>button{border-top:2px solid var(--ca-accent)}
+.candidate-loona .loona-section-marker{display:block;line-height:1.6;margin-bottom:20px}
+@media(max-width:760px){.candidate-loona .loona-lunar-frame{max-width:none;padding:18px 12px 12px}.candidate-loona .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr))}.candidate-loona .ca-member-photo{aspect-ratio:3/4}.candidate-loona .ca-roster>button{padding:12px 10px;gap:12px}.candidate-loona .ca-member-copy strong{font-size:17px}}
+@media(max-width:350px){.candidate-loona .ca-roster{grid-template-columns:1fr}.candidate-loona .ca-roster>button{grid-template-columns:78px minmax(0,1fr) 20px;grid-template-areas:'photo name arrow';padding:18px 12px;gap:14px}.candidate-loona .ca-ordinal{position:static;grid-column:1;grid-row:2}.candidate-loona .ca-member-photo{aspect-ratio:3/4}}
+
+.candidate-loona .ca-image>img{aspect-ratio:auto}

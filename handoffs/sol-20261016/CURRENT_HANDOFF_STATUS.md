@@ -1,12 +1,7 @@
-# Current handoff status — 2026-10-16
+# Current handoff — Part 2 code dependencies
 
-The source/ directory currently contains a reviewed minimal code-only set, NOT the complete text tree or a standalone runnable app. The earlier HANDOFF README and technical brief describe the target full project; they must not be interpreted as proof that all referenced files have been delivered.
+168 reviewed UTF-8 code dependencies have now been added to source/ for all 51 artist host routes, including legacy components, candidate designs, CSS and helpers. See source/HANDOFF/PART2_CODE_MANIFEST.json and source/HANDOFF/Sol_Part2_Instructions.txt.
 
-Code-only commit: df65d288c5392e7bbd4192adc9003735563d6fae.
-Production baseline for reference: 3f316e72f9c0ae88707bdc23bb65fa983737867c.
+This is still a code-only handoff, not the original complete runnable app. No data/, snapshot, backup, hosting config, assets or private records were added. Existing code-only files and schema remain unchanged. Withheld name metadata and global journey interfaces must not be recreated as production replacements. Use explicitly test-only aliases and synthetic data as instructed; disclose what tests use substitutes. dot performs the final real-data build and acceptance. Do not use the repository root older main as the current baseline.
 
-Delivered: timeline schema, task brief, route registry/inventory, package and TypeScript configs, selected components, types, style/navigation helpers and two representative page entrypoints. No data/, snapshots, backups, hosting configuration or media assets have been added to source/. Full-data export was paused for additional privacy review; do not fetch or reconstruct withheld payloads.
-
-Sol may use the existing authorized GitHub text connector to inspect these UTF-8 files and implement isolated timeline model/validation/component tests with clearly synthetic data. Do not use the repository root's older mainline as the production baseline. List missing source dependencies precisely for dot; do not claim 51-page migration or full-app build validation yet. Do not deploy or alter permissions.
-
-Do not retry blocked Library ZIP downloads, local proxy networking or binary blob decoding. The separately stored ZIP is retained for provenance, not the current executable transfer route. No claim is made that the local Windows workspace has received these files.
+Continue Part 1, fix historical identity context and exact return focus, then migrate all 51 pages and provide a minimal patch plus real test evidence. Do not deploy, modify permissions or retry blocked download/network paths.

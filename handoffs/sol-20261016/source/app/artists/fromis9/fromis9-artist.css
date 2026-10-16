@@ -1,0 +1,59 @@
+@font-face{font-family:FromisPost;src:url('/fonts/Oswald-Variable.ttf') format('truetype');font-display:swap}
+.candidate-fromis9{--ca-bg:#eff5f0;--ca-ink:#234b66;--ca-muted:#5f7580;--ca-line:#b8ced0;--ca-accent:#2d647a;--ca-panel:#fffdf2;--ca-on-accent:#fff}
+.candidate-fromis9 .fromis-postcard{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px 48px;padding:28px;background:var(--ca-panel);border:1px solid var(--ca-line)}
+.candidate-fromis9 .fromis-postcard-image{position:relative;border-right:1px solid var(--ca-line);padding-right:36px}
+.candidate-fromis9 .ca-image>.ca-placeholder{aspect-ratio:4/5;background:#dceaf0}
+.candidate-fromis9 .fromis-postmark{display:flex;align-items:center;justify-content:center;text-align:center;position:absolute;right:12px;bottom:42px;width:92px;height:92px;border:2px solid var(--ca-accent);border-radius:50%;background:var(--ca-panel);font:400 19px/1.1 FromisPost,sans-serif}
+.candidate-fromis9 .fromis-postcard-writing{align-self:center}
+.candidate-fromis9 .ca-title h1{font:500 clamp(60px,8vw,112px)/1.1 FromisPost,sans-serif;letter-spacing:-.055em;margin:22px 0 32px}
+.candidate-fromis9 .ca-intro h2{font-size:clamp(30px,3vw,44px);font-weight:500;line-height:1.35}
+.candidate-fromis9 .fromis-stamps{grid-column:1/-1;border-top:1px dashed var(--ca-line);padding-top:8px}
+.candidate-fromis9 .fromis-stamps .ca-facts{gap:28px}
+.candidate-fromis9 .fromis-stamps .ca-facts>div{border:1px dashed var(--ca-line);padding:18px}
+.candidate-fromis9 .ca-tabs{justify-content:space-between}
+.candidate-fromis9 .ca-button{border-radius:4px}
+.candidate-fromis9 .fromis-album>div{margin:28px 0 64px}
+.candidate-fromis9 .ca-roster{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.candidate-fromis9 .ca-roster>button{grid-template-columns:minmax(0,1fr) 20px;grid-template-areas:'name name' 'photo photo' 'number arrow';align-items:start;padding:20px;gap:16px;border:1px solid var(--ca-line);background:var(--ca-panel)}
+.candidate-fromis9 .ca-member-copy{grid-area:name;min-height:78px}
+.candidate-fromis9 .ca-member-copy strong{font-size:21px;line-height:1.35}
+.candidate-fromis9 .ca-member-photo{grid-area:photo;aspect-ratio:4/3}
+.candidate-fromis9 .ca-member-photo .ca-placeholder{background:#e0ebea}
+.candidate-fromis9 .ca-ordinal{grid-area:number;font:400 28px FromisPost,sans-serif}
+.candidate-fromis9 .ca-roster-arrow{grid-area:arrow;align-self:end}
+.candidate-fromis9 .fromis-postscript{padding:28px;border-top:1px dashed var(--ca-line);border-bottom:1px dashed var(--ca-line);background:var(--ca-panel)}
+.candidate-fromis9 .fromis-section-label{display:block;padding:10px 0;border-bottom:3px solid var(--ca-accent);font-size:12px;letter-spacing:.15em}
+.candidate-fromis9 .ca-works{grid-template-columns:1fr;gap:0}
+.candidate-fromis9 .ca-work{padding:24px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;border-bottom:1px solid var(--ca-line);border-top:0}
+.candidate-fromis9 .ca-work>a:first-child{display:grid;grid-template-columns:180px minmax(0,1fr);gap:4px 24px}
+.candidate-fromis9 .ca-work-cover{grid-row:1/5;margin:0;align-self:center}
+.candidate-fromis9 .ca-work-actions{flex-direction:column;margin:0}
+.candidate-fromis9 .ca-work h3{align-self:end;font-size:25px}
+.candidate-fromis9 .fromis-member-postcard{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px 48px;background:var(--ca-panel);border:1px solid var(--ca-line);padding:32px}
+.candidate-fromis9 .fromis-member-stamp{border:1px dashed var(--ca-line);padding:18px}
+.candidate-fromis9 .fromis-member-address{align-self:center}
+.candidate-fromis9 .fromis-member-history{grid-column:1/-1}
+.candidate-fromis9 .ca-member-summary{border-block:1px dashed var(--ca-line);margin:0}
+@media(max-width:1100px){.candidate-fromis9 .ca-roster{grid-template-columns:repeat(3,minmax(0,1fr))}.candidate-fromis9 .fromis-postcard{gap:26px}.candidate-fromis9 .fromis-postcard-image{padding-right:24px}.candidate-fromis9 .ca-title h1{font-size:72px}}
+@media(max-width:760px){.candidate-fromis9 .fromis-postcard{grid-template-columns:1fr;padding:18px;gap:24px}.candidate-fromis9 .fromis-postcard-image{grid-row:1;border:0;padding:0}.candidate-fromis9 .ca-image>.ca-placeholder{aspect-ratio:4/3}.candidate-fromis9 .fromis-postmark{width:64px;height:64px;font-size:14px;right:10px;bottom:26px}.candidate-fromis9 .fromis-postcard-writing{grid-row:2}.candidate-fromis9 .ca-title h1{font-size:clamp(48px,15vw,78px);margin:18px 0 24px}.candidate-fromis9 .ca-intro h2{font-size:30px}.candidate-fromis9 .fromis-stamps .ca-facts{gap:14px}.candidate-fromis9 .fromis-stamps .ca-facts>div{padding:14px}.candidate-fromis9 .ca-tabs{justify-content:flex-start;gap:18px}.candidate-fromis9 .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.candidate-fromis9 .ca-roster>button{padding:14px;gap:14px}.candidate-fromis9 .ca-member-copy strong{font-size:18px}.candidate-fromis9 .ca-member-copy{min-height:72px}.candidate-fromis9 .ca-member-photo{aspect-ratio:1}.candidate-fromis9 .fromis-postscript{padding:18px}.candidate-fromis9 .ca-work{grid-template-columns:1fr;gap:18px}.candidate-fromis9 .ca-work>a:first-child{grid-template-columns:90px minmax(0,1fr);column-gap:16px}.candidate-fromis9 .ca-work-actions{flex-direction:row}.candidate-fromis9 .ca-work h3{font-size:21px}.candidate-fromis9 .fromis-member-postcard{grid-template-columns:1fr;padding:18px;gap:24px}.candidate-fromis9 .fromis-member-stamp{padding:12px}.candidate-fromis9 .ca-member-summary{gap:10px}.candidate-fromis9 .fromis-album>div{margin-bottom:44px}}
+@media(max-width:350px){.candidate-fromis9 .ca-roster{grid-template-columns:1fr}.candidate-fromis9 .ca-member-photo{aspect-ratio:2/1}.candidate-fromis9 .ca-member-copy{min-height:0}}
+
+/* Batch B: preserve complete official frames and keyboard reading paths. */
+.candidate-fromis9 .ca-image>img{display:block;width:100%;height:auto;max-height:640px;object-fit:contain;border-radius:0}
+.candidate-fromis9 .ca-member-photo img,.candidate-fromis9 .ca-member-portrait img{object-fit:contain}
+.candidate-fromis9 .ca-ordinal{white-space:nowrap;overflow-wrap:normal;word-break:normal;font-variant-numeric:tabular-nums}
+.candidate-fromis9 :is(a,button):focus-visible{outline:3px solid var(--ca-accent);outline-offset:4px}
+.candidate-fromis9 :is(.ca-title,.ca-intro,.ca-member-copy,.ca-facts,.ca-work){min-width:0}
+.candidate-fromis9 .ca-member-copy strong,.candidate-fromis9 .ca-work h3{overflow-wrap:anywhere;line-height:1.4}
+.candidate-fromis9 .ca-button{max-width:100%;min-width:0;text-wrap:balance;line-height:1.45}
+@media(max-width:760px){.candidate-fromis9 .ca-image>img{max-height:none}.candidate-fromis9 .ca-image figcaption{line-height:1.65;overflow-wrap:anywhere}}
+
+.candidate-fromis9 .fromis-postcard-image{align-self:start}
+.candidate-fromis9 .fromis-postcard-image .ca-image{margin:0}
+.candidate-fromis9 .fromis-postmark{position:static;display:table;margin:16px 0 0 auto;font-size:11px;line-height:1.6;transform:rotate(-7deg)}
+.candidate-fromis9 .ca-member-photo{aspect-ratio:3/4}
+.candidate-fromis9 .fromis-postscript{border-top:1px dashed var(--ca-accent);padding-top:28px}
+@media(max-width:760px){.candidate-fromis9 .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr))}.candidate-fromis9 .ca-member-photo{aspect-ratio:3/4}.candidate-fromis9 .ca-roster>button{padding:14px 10px;gap:12px}.candidate-fromis9 .ca-member-copy strong{font-size:17px}.candidate-fromis9 .fromis-postcard-writing .ca-actions{display:flex;flex-direction:column;align-items:stretch}.candidate-fromis9 .fromis-postcard-image .ca-image>img{max-height:none}}
+@media(max-width:350px){.candidate-fromis9 .ca-roster{grid-template-columns:1fr}.candidate-fromis9 .ca-roster>button{grid-template-columns:72px minmax(0,1fr) 24px;grid-template-areas:'photo name arrow' 'photo number arrow';text-align:left}.candidate-fromis9 .ca-member-photo{aspect-ratio:3/4}.candidate-fromis9 .ca-member-copy{align-items:start}}
+
+.candidate-fromis9 .ca-image>img{aspect-ratio:auto}

@@ -1,0 +1,40 @@
+@font-face{font-family:IzoneArchive;src:url('/fonts/BodoniModa-Variable.ttf') format('truetype');font-display:swap}
+.candidate-izone{--ca-bg:#fbf4f0;--ca-ink:#573d46;--ca-muted:#7d6269;--ca-line:#d9c4c8;--ca-accent:#a34262;--ca-panel:#fffaf6;--ca-on-accent:#fff}
+.candidate-izone .izone-exhibit{display:grid;grid-template-columns:minmax(200px,.6fr) minmax(0,1.7fr);gap:28px 52px;grid-template-areas:'spine title' 'spine cover' 'spine note'}
+.candidate-izone .izone-cover-title{grid-area:title;border-top:1px solid var(--ca-ink);padding-top:28px}
+.candidate-izone .ca-title h1{font:500 clamp(82px,11vw,162px)/1.05 IzoneArchive,serif;letter-spacing:-.065em;margin:18px 0 0}
+.candidate-izone .izone-spine{grid-area:spine;border-right:1px solid var(--ca-line);padding:28px 32px 0 0}
+.candidate-izone .izone-index-label{font-size:11px;letter-spacing:.15em;color:var(--ca-accent)}
+.candidate-izone .izone-spine .ca-facts{grid-template-columns:1fr;gap:26px}
+.candidate-izone .izone-spine .ca-facts dd{font-family:IzoneArchive,serif;font-size:23px}
+.candidate-izone .izone-exhibit-cover{grid-area:cover;border:1px solid var(--ca-line);background:var(--ca-panel);padding:24px}
+.candidate-izone .ca-image>.ca-placeholder{aspect-ratio:16/9;background:#ecdde0}
+.candidate-izone .izone-curator-note{grid-area:note;padding-bottom:18px}
+.candidate-izone .ca-intro h2{font-size:clamp(30px,3vw,45px);font-weight:500;line-height:1.35}
+.candidate-izone .ca-tabs{border-block:1px solid var(--ca-ink);gap:36px}
+.candidate-izone .izone-volume>div{margin-bottom:66px}
+.candidate-izone .izone-chapter{display:block;font-size:12px;letter-spacing:.16em;color:var(--ca-accent);padding:0 0 20px;border-bottom:1px solid var(--ca-line)}
+.candidate-izone .ca-section-heading{margin-top:30px}
+.candidate-izone .ca-section-heading h2{font-weight:500}
+.candidate-izone .ca-works{grid-template-columns:1fr;counter-reset:izone-work}
+.candidate-izone .ca-work{position:relative;padding:24px 0 24px 60px;counter-increment:izone-work;border-bottom:1px solid var(--ca-line);border-top:0}
+.candidate-izone .ca-work:before{content:counter(izone-work,decimal-leading-zero);position:absolute;left:0;top:25px;font:400 28px IzoneArchive,serif;color:var(--ca-accent)}
+.candidate-izone .ca-work>a:first-child{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1fr);column-gap:30px}
+.candidate-izone .ca-work-cover{grid-row:1/5;margin:0}
+.candidate-izone .ca-work h3{font-size:26px;align-self:end}
+.candidate-izone .ca-work-actions{margin-bottom:0}
+.candidate-izone .ca-library{border-block:1px solid var(--ca-ink)}
+.candidate-izone .ca-roster{grid-template-columns:1fr}
+.candidate-izone .ca-roster>button{grid-template-columns:42px 78px minmax(0,1fr) 24px;padding:24px;background:transparent}
+.candidate-izone .ca-ordinal{font:400 30px IzoneArchive,serif}
+.candidate-izone .ca-empty{background:var(--ca-panel);border-style:solid;border-left:5px solid var(--ca-accent);padding:40px}
+.candidate-izone .izone-person-exhibit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 50px}
+.candidate-izone .izone-person-label{grid-column:1/-1;border-bottom:1px solid var(--ca-line)}
+.candidate-izone .izone-person-print{border:1px solid var(--ca-line);background:var(--ca-panel);padding:28px}
+.candidate-izone .izone-person-record{align-self:center}
+.candidate-izone .ca-member-works{grid-template-columns:repeat(2,minmax(0,1fr))}
+.candidate-izone .ca-member-works article{padding:24px;border:1px solid var(--ca-line)}
+@media(max-width:760px){.candidate-izone .izone-exhibit{grid-template-columns:1fr;gap:26px;grid-template-areas:'title' 'spine' 'cover' 'note'}.candidate-izone .izone-cover-title{padding-top:18px}.candidate-izone .ca-title h1{font-size:clamp(62px,20vw,104px);margin-bottom:5px}.candidate-izone .izone-spine{border-right:0;border-block:1px solid var(--ca-line);padding:18px 0}.candidate-izone .izone-spine .ca-facts{grid-template-columns:1fr 1fr;gap:20px;margin:18px 0 0}.candidate-izone .izone-spine .ca-facts>div{padding-top:10px}.candidate-izone .izone-spine .ca-facts dd{font-size:19px}.candidate-izone .izone-exhibit-cover{padding:14px}.candidate-izone .ca-tabs{gap:18px}.candidate-izone .ca-work{padding:22px 0 22px 38px}.candidate-izone .ca-work:before{font-size:23px}.candidate-izone .ca-work>a:first-child{display:block}.candidate-izone .ca-work-cover{margin-bottom:18px}.candidate-izone .ca-work h3{font-size:23px}.candidate-izone .ca-empty{padding:26px 18px}.candidate-izone .ca-roster>button{grid-template-columns:22px 50px minmax(0,1fr) 16px;gap:12px;padding:16px}.candidate-izone .izone-person-exhibit{grid-template-columns:1fr;gap:24px}.candidate-izone .izone-person-print{padding:16px}.candidate-izone .ca-member-works{grid-template-columns:1fr}.candidate-izone .izone-volume>div{margin-bottom:48px}}
+@media(max-width:350px){.candidate-izone .izone-spine .ca-facts{grid-template-columns:1fr}.candidate-izone .ca-work{padding-left:32px}}
+/* Twelve-person historical roster: keep two-digit ordinals together on phones. */
+@media(max-width:760px){.candidate-izone .ca-ordinal{font-size:18px;white-space:nowrap;font-variant-numeric:tabular-nums}}

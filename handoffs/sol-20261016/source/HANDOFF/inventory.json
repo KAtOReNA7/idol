@@ -1,0 +1,693 @@
+{
+  "base": "3f316e72f9c0ae88707bdc23bb65fa983737867c",
+  "routes": [
+    {
+      "slug": "adya",
+      "routeFile": "app/artists/adya/page.tsx",
+      "componentImports": [
+        "@/components/candidate/adya-design",
+        "@/data/adya-artist.json",
+        "./adya-artist.css"
+      ],
+      "contentFile": "data/adya-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "aespa",
+      "routeFile": "app/artists/aespa/page.tsx",
+      "componentImports": [
+        "@/components/expanded-artist",
+        "@/data/aespa-artist.json",
+        "../expanded-artist.css"
+      ],
+      "contentFile": "data/aespa-artist.json",
+      "sections": {
+        "updates": 3,
+        "releases": 20,
+        "upcoming": 0
+      }
+    },
+    {
+      "slug": "atheart",
+      "routeFile": "app/artists/atheart/page.tsx",
+      "componentImports": [
+        "@/components/candidate/atheart-design",
+        "@/data/atheart-artist.json",
+        "./atheart-artist.css"
+      ],
+      "contentFile": "data/atheart-artist.json",
+      "sections": {
+        "facts": 3
+      }
+    },
+    {
+      "slug": "babymonster",
+      "routeFile": "app/artists/babymonster/page.tsx",
+      "componentImports": [
+        "@/components/artist-sample",
+        "../../preview/babymonster/artist.css"
+      ],
+      "contentFile": "data/babymonster-artist.json",
+      "sections": {
+        "updates": 3,
+        "releases": 4
+      }
+    },
+    {
+      "slug": "badvillain",
+      "routeFile": "app/artists/badvillain/page.tsx",
+      "componentImports": [
+        "@/components/candidate/badvillain-design",
+        "@/data/badvillain-artist.json",
+        "./badvillain-artist.css"
+      ],
+      "contentFile": "data/badvillain-artist.json",
+      "sections": {
+        "facts": 0
+      }
+    },
+    {
+      "slug": "bewave",
+      "routeFile": "app/artists/bewave/page.tsx",
+      "componentImports": [
+        "@/components/candidate/bewave-design",
+        "@/data/bewave-artist.json",
+        "./bewave-artist.css"
+      ],
+      "contentFile": "data/bewave-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "billlie",
+      "routeFile": "app/artists/billlie/page.tsx",
+      "componentImports": [
+        "@/components/candidate/billlie-design",
+        "@/data/billlie-artist.json",
+        "./billlie-artist.css"
+      ],
+      "contentFile": "data/billlie-artist.json",
+      "sections": {
+        "facts": 2
+      }
+    },
+    {
+      "slug": "candyshop",
+      "routeFile": "app/artists/candyshop/page.tsx",
+      "componentImports": [
+        "@/components/candidate/candyshop-design",
+        "@/data/candyshop-artist.json",
+        "./candyshop-artist.css"
+      ],
+      "contentFile": "data/candyshop-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "cherrybullet",
+      "routeFile": "app/artists/cherrybullet/page.tsx",
+      "componentImports": [
+        "@/components/candidate/cherrybullet-design",
+        "@/data/cherrybullet-artist.json",
+        "./cherrybullet-artist.css"
+      ],
+      "contentFile": "data/cherrybullet-artist.json",
+      "sections": {
+        "facts": 1
+      }
+    },
+    {
+      "slug": "everglow",
+      "routeFile": "app/artists/everglow/page.tsx",
+      "componentImports": [
+        "@/components/candidate/everglow-design",
+        "@/data/everglow-artist.json",
+        "./everglow-artist.css"
+      ],
+      "contentFile": "data/everglow-artist.json",
+      "sections": {
+        "facts": 2
+      }
+    },
+    {
+      "slug": "fromis9",
+      "routeFile": "app/artists/fromis9/page.tsx",
+      "componentImports": [
+        "@/components/candidate/fromis9-design",
+        "@/data/fromis9-artist.json",
+        "./fromis9-artist.css"
+      ],
+      "contentFile": "data/fromis9-artist.json",
+      "sections": {
+        "facts": 3
+      }
+    },
+    {
+      "slug": "geenius",
+      "routeFile": "app/artists/geenius/page.tsx",
+      "componentImports": [
+        "@/components/candidate/geenius-design",
+        "@/data/geenius-artist.json",
+        "./geenius-artist.css"
+      ],
+      "contentFile": "data/geenius-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "genblue",
+      "routeFile": "app/artists/genblue/page.tsx",
+      "componentImports": [
+        "@/components/candidate/genblue-design",
+        "@/data/genblue-artist.json",
+        "./genblue-artist.css"
+      ],
+      "contentFile": "data/genblue-artist.json",
+      "sections": {
+        "facts": 3
+      }
+    },
+    {
+      "slug": "hearts2hearts",
+      "routeFile": "app/artists/hearts2hearts/page.tsx",
+      "componentImports": [
+        "@/components/hearts2hearts-artist",
+        "@/data/hearts2hearts-artist.json",
+        "./hearts2hearts-artist.css"
+      ],
+      "contentFile": "data/hearts2hearts-artist.json",
+      "sections": {
+        "updates": 3,
+        "releases": 3,
+        "upcoming": 0
+      }
+    },
+    {
+      "slug": "hitgs",
+      "routeFile": "app/artists/hitgs/page.tsx",
+      "componentImports": [
+        "@/components/candidate/hitgs-design",
+        "@/data/hitgs-artist.json",
+        "./hitgs-artist.css"
+      ],
+      "contentFile": "data/hitgs-artist.json",
+      "sections": {
+        "facts": 2
+      }
+    },
+    {
+      "slug": "idle",
+      "routeFile": "app/artists/idle/page.tsx",
+      "componentImports": [
+        "@/components/candidate/idle-design",
+        "@/data/idle-artist.json",
+        "./idle-artist.css"
+      ],
+      "contentFile": "data/idle-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "ifeye",
+      "routeFile": "app/artists/ifeye/page.tsx",
+      "componentImports": [
+        "@/components/candidate/ifeye-design",
+        "@/data/ifeye-artist.json",
+        "./ifeye-artist.css"
+      ],
+      "contentFile": "data/ifeye-artist.json",
+      "sections": {
+        "facts": 5
+      }
+    },
+    {
+      "slug": "illit",
+      "routeFile": "app/artists/illit/page.tsx",
+      "componentImports": [
+        "@/components/illit-artist",
+        "./artist.css"
+      ],
+      "contentFile": "data/illit-artist.json",
+      "sections": {
+        "updates": 3,
+        "releases": 11,
+        "upcoming": 1
+      }
+    },
+    {
+      "slug": "itzy",
+      "routeFile": "app/artists/itzy/page.tsx",
+      "componentImports": [
+        "@/components/itzy-artist",
+        "@/data/itzy-artist.json",
+        "./itzy-artist.css"
+      ],
+      "contentFile": "data/itzy-artist.json",
+      "sections": {
+        "updates": 2,
+        "releases": 0,
+        "upcoming": 0
+      }
+    },
+    {
+      "slug": "ive",
+      "routeFile": "app/artists/ive/page.tsx",
+      "componentImports": [
+        "@/components/ive-artist",
+        "@/data/ive-artist.json",
+        "./ive-artist.css"
+      ],
+      "contentFile": "data/ive-artist.json",
+      "sections": {
+        "updates": 3,
+        "releases": 20,
+        "upcoming": 1
+      }
+    },
+    {
+      "slug": "izna",
+      "routeFile": "app/artists/izna/page.tsx",
+      "componentImports": [
+        "@/components/candidate/izna-design",
+        "@/data/izna-artist.json",
+        "./izna-artist.css"
+      ],
+      "contentFile": "data/izna-artist.json",
+      "sections": {
+        "facts": 5
+      }
+    },
+    {
+      "slug": "izone",
+      "routeFile": "app/artists/izone/page.tsx",
+      "componentImports": [
+        "@/components/candidate/izone-design",
+        "@/data/izone-artist.json",
+        "./izone-artist.css"
+      ],
+      "contentFile": "data/izone-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "katseye",
+      "routeFile": "app/artists/katseye/page.tsx",
+      "componentImports": [
+        "@/components/katseye-artist",
+        "@/data/katseye-artist.json",
+        "./katseye-artist.css"
+      ],
+      "contentFile": "data/katseye-artist.json",
+      "sections": {
+        "updates": 1,
+        "releases": 3,
+        "upcoming": 0
+      }
+    },
+    {
+      "slug": "kep1er",
+      "routeFile": "app/artists/kep1er/page.tsx",
+      "componentImports": [
+        "@/components/candidate/kep1er-design",
+        "@/data/kep1er-artist.json",
+        "./kep1er-artist.css"
+      ],
+      "contentFile": "data/kep1er-artist.json",
+      "sections": {
+        "facts": 3
+      }
+    },
+    {
+      "slug": "kiiikiii",
+      "routeFile": "app/artists/kiiikiii/page.tsx",
+      "componentImports": [
+        "@/components/kiiikiii-artist",
+        "@/data/kiiikiii-artist.json",
+        "./kiiikiii-artist.css"
+      ],
+      "contentFile": "data/kiiikiii-artist.json",
+      "sections": {
+        "updates": 3,
+        "releases": 6,
+        "upcoming": 0
+      }
+    },
+    {
+      "slug": "kissoflife",
+      "routeFile": "app/artists/kissoflife/page.tsx",
+      "componentImports": [
+        "@/components/kiof-artist",
+        "@/data/kissoflife-artist.json",
+        "./kiof-artist.css"
+      ],
+      "contentFile": "data/kissoflife-artist.json",
+      "sections": {
+        "updates": 3,
+        "releases": 13,
+        "upcoming": 0
+      }
+    },
+    {
+      "slug": "lesserafim",
+      "routeFile": "app/artists/lesserafim/page.tsx",
+      "componentImports": [
+        "@/components/lesserafim-artist",
+        "@/data/lesserafim-artist.json",
+        "./lesserafim-artist.css"
+      ],
+      "contentFile": "data/lesserafim-artist.json",
+      "sections": {
+        "updates": 3,
+        "releases": 11,
+        "upcoming": 0
+      }
+    },
+    {
+      "slug": "loona",
+      "routeFile": "app/artists/loona/page.tsx",
+      "componentImports": [
+        "@/components/candidate/loona-design",
+        "@/data/loona-artist.json",
+        "./loona-artist.css"
+      ],
+      "contentFile": "data/loona-artist.json",
+      "sections": {
+        "facts": 2
+      }
+    },
+    {
+      "slug": "madein",
+      "routeFile": "app/artists/madein/page.tsx",
+      "componentImports": [
+        "@/components/candidate/madein-design",
+        "@/data/madein-artist.json",
+        "./madein-artist.css"
+      ],
+      "contentFile": "data/madein-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "meovv",
+      "routeFile": "app/artists/meovv/page.tsx",
+      "componentImports": [
+        "@/components/candidate/meovv-design",
+        "@/data/meovv-artist.json",
+        "./meovv-artist.css"
+      ],
+      "contentFile": "data/meovv-artist.json",
+      "sections": {
+        "facts": 5
+      }
+    },
+    {
+      "slug": "newjeans",
+      "routeFile": "app/artists/newjeans/page.tsx",
+      "componentImports": [
+        "@/components/candidate/newjeans-design",
+        "@/data/newjeans-artist.json",
+        "./newjeans-artist.css"
+      ],
+      "contentFile": "data/newjeans-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "nmixx",
+      "routeFile": "app/artists/nmixx/page.tsx",
+      "componentImports": [
+        "@/components/nmixx-artist",
+        "@/data/nmixx-artist.json",
+        "./nmixx-artist.css"
+      ],
+      "contentFile": "data/nmixx-artist.json",
+      "sections": {
+        "updates": 3,
+        "releases": 3,
+        "upcoming": 0
+      }
+    },
+    {
+      "slug": "oddyouth",
+      "routeFile": "app/artists/oddyouth/page.tsx",
+      "componentImports": [
+        "@/components/candidate/oddyouth-design",
+        "@/data/oddyouth-artist.json",
+        "./oddyouth-artist.css"
+      ],
+      "contentFile": "data/oddyouth-artist.json",
+      "sections": {
+        "facts": 3
+      }
+    },
+    {
+      "slug": "purplekiss",
+      "routeFile": "app/artists/purplekiss/page.tsx",
+      "componentImports": [
+        "@/components/candidate/purplekiss-design",
+        "@/data/purplekiss-artist.json",
+        "./purplekiss-artist.css"
+      ],
+      "contentFile": "data/purplekiss-artist.json",
+      "sections": {
+        "facts": 3
+      }
+    },
+    {
+      "slug": "qwer",
+      "routeFile": "app/artists/qwer/page.tsx",
+      "componentImports": [
+        "@/components/candidate/qwer-design",
+        "@/data/qwer-artist.json",
+        "./qwer-artist.css"
+      ],
+      "contentFile": "data/qwer-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "rescene",
+      "routeFile": "app/artists/rescene/page.tsx",
+      "componentImports": [
+        "@/components/candidate/rescene-design",
+        "@/data/rescene-artist.json",
+        "./rescene-artist.css"
+      ],
+      "contentFile": "data/rescene-artist.json",
+      "sections": {
+        "facts": 2
+      }
+    },
+    {
+      "slug": "rocketpunch",
+      "routeFile": "app/artists/rocketpunch/page.tsx",
+      "componentImports": [
+        "@/components/candidate/rocketpunch-design",
+        "@/data/rocketpunch-artist.json",
+        "./rocketpunch-artist.css"
+      ],
+      "contentFile": "data/rocketpunch-artist.json",
+      "sections": {
+        "facts": 3
+      }
+    },
+    {
+      "slug": "saymyname",
+      "routeFile": "app/artists/saymyname/page.tsx",
+      "componentImports": [
+        "@/components/saymyname-artist",
+        "@/data/saymyname-artist.json",
+        "./saymyname-artist.css"
+      ],
+      "contentFile": "data/saymyname-artist.json",
+      "sections": {
+        "updates": 1,
+        "releases": 9,
+        "upcoming": 0
+      }
+    },
+    {
+      "slug": "spia",
+      "routeFile": "app/artists/spia/page.tsx",
+      "componentImports": [
+        "@/components/candidate/spia-design",
+        "@/data/spia-artist.json",
+        "./spia-artist.css"
+      ],
+      "contentFile": "data/spia-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "stayc",
+      "routeFile": "app/artists/stayc/page.tsx",
+      "componentImports": [
+        "@/components/stayc-artist",
+        "@/data/stayc-artist.json",
+        "./stayc-artist.css"
+      ],
+      "contentFile": "data/stayc-artist.json",
+      "sections": {
+        "updates": 3,
+        "releases": 13,
+        "upcoming": 0
+      }
+    },
+    {
+      "slug": "tracer",
+      "routeFile": "app/artists/tracer/page.tsx",
+      "componentImports": [
+        "@/components/candidate/tracer-design",
+        "@/data/tracer-artist.json",
+        "./tracer-artist.css"
+      ],
+      "contentFile": "data/tracer-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "triples",
+      "routeFile": "app/artists/triples/page.tsx",
+      "componentImports": [
+        "@/components/candidate/triples-design",
+        "@/data/triples-artist.json",
+        "./triples-artist.css"
+      ],
+      "contentFile": "data/triples-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "udtt",
+      "routeFile": "app/artists/udtt/page.tsx",
+      "componentImports": [
+        "@/components/candidate/udtt-design",
+        "@/data/udtt-artist.json",
+        "./udtt-artist.css"
+      ],
+      "contentFile": "data/udtt-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "unis",
+      "routeFile": "app/artists/unis/page.tsx",
+      "componentImports": [
+        "@/components/candidate/unis-design",
+        "@/data/unis-artist.json",
+        "./unis-artist.css"
+      ],
+      "contentFile": "data/unis-artist.json",
+      "sections": {
+        "facts": 3
+      }
+    },
+    {
+      "slug": "vcha",
+      "routeFile": "app/artists/vcha/page.tsx",
+      "componentImports": [
+        "@/components/candidate/vcha-design",
+        "@/data/vcha-artist.json",
+        "./vcha-artist.css"
+      ],
+      "contentFile": "data/vcha-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "vvup",
+      "routeFile": "app/artists/vvup/page.tsx",
+      "componentImports": [
+        "@/components/candidate/vvup-design",
+        "@/data/vvup-artist.json",
+        "./vvup-artist.css"
+      ],
+      "contentFile": "data/vvup-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "weeekly",
+      "routeFile": "app/artists/weeekly/page.tsx",
+      "componentImports": [
+        "@/components/candidate/weeekly-design",
+        "@/data/weeekly-artist.json",
+        "./weeekly-artist.css"
+      ],
+      "contentFile": "data/weeekly-artist.json",
+      "sections": {
+        "facts": 3
+      }
+    },
+    {
+      "slug": "witchx",
+      "routeFile": "app/artists/witchx/page.tsx",
+      "componentImports": [
+        "@/components/candidate/witchx-design",
+        "@/data/witchx-artist.json",
+        "./witchx-artist.css"
+      ],
+      "contentFile": "data/witchx-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    },
+    {
+      "slug": "wooah",
+      "routeFile": "app/artists/wooah/page.tsx",
+      "componentImports": [
+        "@/components/candidate/wooah-design",
+        "@/data/wooah-artist.json",
+        "./wooah-artist.css"
+      ],
+      "contentFile": "data/wooah-artist.json",
+      "sections": {
+        "facts": 2
+      }
+    },
+    {
+      "slug": "xg",
+      "routeFile": "app/artists/xg/page.tsx",
+      "componentImports": [
+        "@/components/expanded-artist",
+        "@/data/xg-artist.json",
+        "../expanded-artist.css"
+      ],
+      "contentFile": "data/xg-artist.json",
+      "sections": {
+        "updates": 3,
+        "releases": 23,
+        "upcoming": 1
+      }
+    },
+    {
+      "slug": "youngposse",
+      "routeFile": "app/artists/youngposse/page.tsx",
+      "componentImports": [
+        "@/components/candidate/youngposse-design",
+        "@/data/youngposse-artist.json",
+        "./youngposse-artist.css"
+      ],
+      "contentFile": "data/youngposse-artist.json",
+      "sections": {
+        "facts": 4
+      }
+    }
+  ]
+}

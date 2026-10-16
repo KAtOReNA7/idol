@@ -1,0 +1,94 @@
+项目长期分工与首个版本任务
+
+Sol是女团项目的长期工程负责人，负责跨页面体系、成套功能、性能优化和测试体系；按每轮明确模块及文件所有权承担完整大版本，不限于时间轴。dot/root负责产品优先级、持续小改、跨方整合、运维和验收；Astra负责可验证知识内容体系。三方不得并行修改同一共享文件；新任务先界定模块边界和验收标准。Sol不能自行修改生产主线、发布或改变权限。
+
+本次首个完整版本：全51团统一“大事时间轴”。以下要求限定本轮工程范围，不限制后续经过明确分配的其他工程版本。项目级章程以root最终交付版本为准。
+
+一、三方分工与基线
+你（Sol）负责共享时间轴组件、纯函数校验/排序/筛选、51团页面接线、导航与测试。Astra负责全部真实事件资料，独占真实timeline JSON。dot负责源证据审查、真实数据接入、集成、浏览器QA及授权发布。
+精确生产代码基线为3f316e72f9c0ae88707bdc23bb65fa983737867c。交接包含产品源文件的SHA256清单；先校验包和文件，不从其他旧代码覆盖。工作在独立本地目录/分支。
+包内snapshot是脱敏合成预览数据，不是生产资料。不得回传、覆盖、迁移生产snapshot，不得改成员关系、ID、评分、观看状态、备注、保存逻辑、鉴权、owner范围或存储。不能创建凭据、推送、向生产或第三方上传、部署、发布或改权限；无必要不得安装依赖或变更锁文件。不得恢复包中明确省略的私人文件或部署身份。
+
+二、不可遗漏的迁移面
+51条artists路由详见artist-registry51.json和inventory.json，slug/groupId严格使用这些映射。
+37候选团共享components/candidate-artist-experience.tsx：当前updates标签“资料与动态”，notes由facts、rosterNote、activityNote、gaps组成；37个composition.overview复用notes槽。把updates详细页和概览对应入口统一成“大事时间轴”，旧资料保留折叠来源/背景区，不删除事实依据。
+14旧团共13入口组件，全部迁移：
+1 components/artist-sample.tsx：BABYMONSTER
+2 components/illit-artist.tsx：ILLIT
+3 components/expanded-artist.tsx：XG与aespa，必须测试两个分支
+4 components/ive-artist.tsx：IVE
+5 components/kiof-artist.tsx：KISS OF LIFE
+6 components/stayc-artist.tsx：STAYC
+7 components/nmixx-artist.tsx：NMIXX
+8 components/hearts2hearts-artist.tsx：Hearts2Hearts
+9 components/kiiikiii-artist.tsx：KiiiKiii
+10 components/itzy-artist.tsx：ITZY
+11 components/lesserafim-artist.tsx：LE SSERAFIM
+12 components/saymyname-artist.tsx：SAY MY NAME
+13 components/katseye-artist.tsx：KATSEYE
+原标签除了“官方动态”“资料与动态”，还有“官方发行”“发行来信”。全部对应updates栏及概览入口统一为“大事时间轴”。保留section=updates内部路由，旧链接继续可用，不能另换成section=timeline导致旧入口失效。
+不改records发行/成绩专页、作品列表排序、历史成员切换、播放器和评分编辑器。
+
+三、接口与文件责任
+共同事件合同为schemaVersion=1，使用随包唯一权威timeline schema及样例；Astra和Sol不得各自派生不同接口。gaps为string[]。不新增effectiveAt，事件发生/生效用eventDate。
+建议新增：
+lib/idol/timeline/types.ts：与schema完全一致的TS类型。
+lib/idol/timeline/validate.ts：日历、ID、来源、状态、registry关联校验。
+lib/idol/timeline/model.ts：纯排序/筛选/分区/明确releaseKey去重模型。
+lib/idol/timeline/registry.ts：只读资料入口getArtistTimeline(groupId)；当前没有真实事件文件时返回显式空事件结果。提供可注入registry参数供测试。不要在生产registry塞演示事件。
+components/artist-timeline.tsx和artist-timeline.css：共享只读组件与可主题化样式。
+上述14入口组件及lib/idol/artist-preview.ts、artist-navigation.ts：仅必要接线和安全参数扩展。
+必要时新增独立timeline返回焦点hook，不复用成员作品焦点key造成冲突。
+tests/timeline-*.test.cjs、tests/fixtures/timeline/*.json：你可以新增合成事件和测试。测试身份可用已给公开稳定ID；事件本身标synthetic，仅本地测试。不请求生产API、不把模拟保存当真实保存。
+真实data/artist-timelines/{slug}.json及总manifest由Astra独占，Sol不可修改、猜造或补齐。现有data/*-artist.json、公开证据JSON只读参考；不能自动从中文facts/新闻标题解析日期并冒充核验事件。
+只实现与合同匹配的接入点，最终由dot把Astra已审资料导入registry。无合格事件的团页显示诚实空态和旧来源背景区，不假装全生涯已整理。
+
+四、事件合同关键语义
+每团：schemaVersion、groupId、slug、events、gaps。
+每事件：稳定id、groupId、eventType、title、summary、scopeNote、eventDate、announcementDate、plannedDate、status、importance、memberIds、workIds、releaseKey、relatedEventIds、sources、reviewStatus、holdReasons。
+DateValue为value和precision，值仅YYYY/YYYY-MM/YYYY-MM-DD；precision分别year/month/day。未知=null；不补01，不展示伪造月日。
+eventDate是发生/生效，announcementDate是公告，plannedDate是计划，Source.sourcePublishedAt是原文发布，Source.checkedAt只用于资料核验。不得混用。
+eventType枚举member_join/member_departure/debut/release/disband/agency_change/contract_end/rename/hiatus/resume/notice/other。
+status枚举confirmed/announced/planned/postponed/cancelled/uncertain；importance为major/supporting；reviewStatus为ready/hold。hold不进默认事件展示，另显示待核计数或说明，不渲染未核断言为事实。
+合同结束与退团独立，官网卡片少一人不是离团日期，停更/会员服务结束不是解散证据。禁止由日期过期自动把计划转成已经发生。
+只有公告已证、生效未知：保留原事件eventDate=null和announcementDate；若资料另提供notice事件，则其标题必须明确公告发布，eventDate只代表公告行为本身，relatedEventIds用于折叠关联、防双计。
+
+五、排序与筛选行为
+默认最近优先，可切最早优先。按真实事件时间分组；年精度、月精度保留可见标签，“年内日期未详”“月内日期未详”不得混成1月1日。精度区间相交的事件没有可证明的严格先后，显示稳定顺序并避免文案宣称先后已证。相同日期以稳定id排序。
+已证事件、公告计划、事件日期未明分区。日期未明不丢弃；公告日可在副文本显示但不得悄悄移到主轴当生效日。延期/取消保留状态并展示来源。
+分类建议“全部”“成员与团体”“发行”“公司与状态”。重要性“重要事件/全部已核事件”，默认major；明确supporting不等于未核。默认不加载每张配图，优先文字和小图。
+发行按资料显式releaseKey关联折叠：一次发行的公告/曲目/版本/MV附属资料可显示在同事件下。没有releaseKey或关系证据时不凭近似歌名、日期或版本猜合并。专辑各曲目、预告、歌词视频、不同物理版本不应自动灌满主轴。详细发行records页保留，不自动拿Work.releaseDate当歌曲发行日。
+若持久化filter到URL，统一使用timelineType=all|members|release|organization，timelineImportance=major|all，timelineOrder=recent|earliest；默认值省略。仅51个artists路径且section=updates可接受，重复或非法值拒绝。不得复用作品queue/q/format，也不得破坏roster=history。若需要调整这些接口必须先报告dot和Astra接口联系人，不私自分叉。
+
+六、来源与链接
+事件卡展示简明标题、可确认日期、类型/状态、范围说明。来源用原生details/summary展开：发布者、原文标题、发布日/核验日分列、可点击安全外链及scope。可多来源，不能把媒体来源一律称官方。
+成员链接仅引用真实memberId。三个已有历史视图团（LOONA/EVERGLOW/Kep1er）的former成员用既有roster=history入口；其他不可达历史成员使用既有通用档案安全入口，保留returnTo，不新增关系。无ID只显示姓名文本。
+作品链接仅已有workId，经artistWorkUrl或现有安全函数进入，保留timeline returnTo及历史scope，不按曲名猜版本。未知ID降级为文本和原来源，不造链接。
+时间轴到成员/作品再返回，恢复分类/重要性/排序、相应事件卡焦点和滚动。独立data-timeline-event-trigger和history键，不能冒用data-member-work-trigger或清除成员原有焦点。modal打开时不抢焦点。
+所有跨页离开仍经既有dirty/uncertain-save守卫，不能通过新原生链接或window.location绕过编辑器保护。时间轴不产生保存请求。
+
+七、视觉与无障碍
+保留旧14全局字体/主题与37候选按需CSS门控，不把全站主题重新静态引入主页。
+共享组件使用局部低特异性CSS和主题变量映射，布局不覆盖原艺术页风格。320/390手机单列竖轴，desktop可加留白但不用左右交错造成阅读顺序混乱；长标题、URL、多来源、年份标签不横溢。
+不依赖颜色表达状态。filter使用原生button和aria-pressed，时间用合法datetime且保留精度显示；未知无虚假datetime。来源details键盘可用，图片含准确alt且contain保构图水印。空态和loading/error与现有数据读取状态区分。
+未取到真实事件时明确“已核事件待整理”，不能显示演示日期/随机事件。保留可读来源背景资料。
+
+八、测试与验收
+1 全51路由及overview/updates入口都显示“大事时间轴”；XG/aespa双分支、37composition notes槽均覆盖。不能只改37共享页。
+2 纯函数：真实日历/闰日/年月日精度/null、同日稳定序、精度相交、未知区、未来/延期/取消、时钟冻结、hold排除、分类重要性、releaseKey与相同歌名不同ID不误并。
+3 安全与不变性：输入深相等、原私密资料/关系/评分不写；不允许陌生groupId/memberId/workId、安全外链和returnTo严格；字段不足按空态处理。
+4 React：真实组件渲染、来源展开、filter、空态、长文；无嵌套交互元素；已核照片完整显示。旧评分、播放器和Editor不卸载或重置草稿。
+5 导航：timeline→work/member→Back/Forward/reload保留filter/roster/事件焦点；快速重复跳转、跨团、关闭来源/弹窗、不确定保存及dirty取消均覆盖。
+6 保留现有排序、历史成员11/4/6与12/6/9、CSS pending/retry、作品返回焦点全部既有回归。只因脱敏snapshot无法运行的测试必须逐个列出，不删断言或伪造全过。
+7 用现有依赖跑新增suite、所有适用现有tests、tsc --noEmit --incremental false、npm run build、git diff --check。报告每项准确退出码，未跑不能写通过。
+8 提供可由dot云Terminal Python本地托管的真实React合成fixture（只连localhost、不连生产），覆盖320/390/desktop；dot负责受支持浏览器最终验收，Sol可自行在授权环境验证但不得声称未做的实测通过。
+
+九、交付
+基于3f316e7提交最小文本patch和逐文件SHA256。禁止含data/snapshot.json、合成预览覆盖、private导出、.env、token、.git、node_modules、dist、部署配置身份或新图片上传。可另附测试fixture源码及运行指令，和适用测试结果。
+提交变更清单、接口版本、51团迁移覆盖表、行为风险/回滚建议、未完成门槛。若源码包为了安全缺少必要依赖，报告具体文件用途，由dot补公开最小材料；不要获取生产权限。
+不要发布、改访问范围或创建凭据。dot将独立审查、整合真实事件资料、浏览器验收后再按用户批准流程处理。
+
+交付权限与持续接续补充（与技术任务共同执行）：
+用户亲自发送本任务指令后，允许将本任务最小patch、合成fixture源码、报告及必要截图打包为ZIP，保存至当前会话资料库并返回真实文件ID/附件。“不上传”仅限制生产或第三方目标，不限制上述明确授权的本会话交付。若工具另需批准仍遵守，不能绕过审批、伪造文件ID或扩展接收方。
+白天三方按文件责任并行；北京时间凌晨由dot独立接续已获授权的工作。完成或暂停时交付可复现检查点，包含base和输入hash、patch、精确复现命令及结果、未完成模块、阻塞点和下一步，不让dot依赖记忆猜测状态。不新增定时任务、提醒或自动化。
+dot本轮独占app/page.tsx、lib/idol/journey.ts、components/use-browse-journey.ts与个人记录搜索/读写接口。Sol时间轴导航使用artist专页导航/历史返回，不改上述全局journey；确需变更先提交proposal交dot协调。

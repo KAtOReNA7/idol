@@ -1,0 +1,339 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Artist milestone timeline v1 — shared Astra/Sol contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "groupId",
+    "slug",
+    "events",
+    "gaps"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "groupId": {
+      "type": "string",
+      "pattern": "^rec[A-Za-z0-9]+$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Event"
+      }
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "DateValue": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "precision"
+          ],
+          "properties": {
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9]{4}$"
+            },
+            "precision": {
+              "const": "year"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "precision"
+          ],
+          "properties": {
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+            },
+            "precision": {
+              "const": "month"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "precision"
+          ],
+          "properties": {
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"
+            },
+            "precision": {
+              "const": "day"
+            }
+          }
+        }
+      ]
+    },
+    "Source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "url",
+        "publisher",
+        "title",
+        "sourcePublishedAt",
+        "checkedAt",
+        "scopeNote",
+        "evidenceRef"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://"
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "sourcePublishedAt": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/DateValue"
+            }
+          ]
+        },
+        "checkedAt": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "scopeNote": {
+          "type": "string"
+        },
+        "evidenceRef": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "groupId",
+        "eventType",
+        "title",
+        "summary",
+        "scopeNote",
+        "eventDate",
+        "announcementDate",
+        "plannedDate",
+        "status",
+        "importance",
+        "memberIds",
+        "workIds",
+        "releaseKey",
+        "relatedEventIds",
+        "sources",
+        "reviewStatus",
+        "holdReasons"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "groupId": {
+          "type": "string",
+          "pattern": "^rec[A-Za-z0-9]+$"
+        },
+        "eventType": {
+          "enum": [
+            "member_join",
+            "member_departure",
+            "debut",
+            "release",
+            "disband",
+            "agency_change",
+            "contract_end",
+            "rename",
+            "hiatus",
+            "resume",
+            "notice",
+            "other"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string"
+        },
+        "scopeNote": {
+          "type": "string"
+        },
+        "eventDate": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/DateValue"
+            }
+          ]
+        },
+        "announcementDate": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/DateValue"
+            }
+          ]
+        },
+        "plannedDate": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/DateValue"
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "confirmed",
+            "announced",
+            "planned",
+            "postponed",
+            "cancelled",
+            "uncertain"
+          ]
+        },
+        "importance": {
+          "enum": [
+            "major",
+            "supporting"
+          ]
+        },
+        "memberIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^rec[A-Za-z0-9]+$"
+          },
+          "uniqueItems": true
+        },
+        "workIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^rec[A-Za-z0-9]+$"
+          },
+          "uniqueItems": true
+        },
+        "releaseKey": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relatedEventIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/Source"
+          }
+        },
+        "reviewStatus": {
+          "enum": [
+            "ready",
+            "hold"
+          ]
+        },
+        "holdReasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "reviewStatus": {
+                "const": "hold"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "holdReasons": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "reviewStatus": {
+                "const": "ready"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "holdReasons": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$comment": "Calendar validity, identity/registry lookup, event/date semantics, URL provenance and duplicate-event checks require separate validation. Patterns do not validate leap days. ready means evidence candidate suitable for dot review, not permission to publish. No custom fields: use separate audit/coverage files."
+}

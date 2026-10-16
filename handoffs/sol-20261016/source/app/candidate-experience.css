@@ -1,0 +1,19 @@
+/* Candidate-only shared detail ergonomics. Existing fourteen themes keep priority. */
+.candidate-experience{min-height:100vh;background:var(--paper,#f5f3ee);color:var(--ink,#202822)}
+.candidate-experience *{min-width:0}
+.candidate-experience .header{background:var(--paper);border-color:var(--line)}
+.candidate-experience .header button,.candidate-experience .header .brand{color:var(--ink)}
+.candidate-experience .private-pill{background:var(--white);color:var(--ink);border-color:var(--line)}
+.candidate-experience .work-aside{background:var(--white);color:var(--ink)}
+.candidate-experience .work-aside h1,.candidate-experience .member-detail h1{overflow-wrap:anywhere}
+.candidate-experience .cast-card,.candidate-experience .member-work-card,.candidate-experience .editor,.candidate-experience .stage-source,.candidate-experience .detail-return{background:var(--white);color:var(--ink);border-color:var(--line)}
+.candidate-experience .photo img{object-fit:contain}
+.candidate-experience .button,.candidate-experience .video-mode-tabs button{min-height:44px}
+.candidate-experience :is(button,a,input,textarea,select):focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+@media(max-width:760px){.candidate-experience .header{height:auto;min-height:80px;flex-wrap:wrap;padding-block:14px;gap:12px}.candidate-experience .header nav{height:auto;order:3;flex-basis:100%;gap:16px;overflow-x:auto}.candidate-experience .header nav button{font-size:11px;padding:12px 0}.candidate-experience .private-pill{margin-left:auto}.candidate-experience .work-detail-top{grid-template-columns:minmax(0,1fr)}.candidate-experience .work-aside{padding:20px}.candidate-experience .editor-fields input,.candidate-experience .editor-fields textarea,.candidate-experience .editor-fields select{font-size:16px}.candidate-experience .cast-grid{grid-template-columns:1fr}.candidate-experience .member-detail{grid-template-columns:1fr}.candidate-experience .editor-actions{flex-wrap:wrap}.candidate-experience .video-mode-tabs{flex-wrap:wrap}.candidate-experience .video-mode-tabs button{white-space:normal}}
+@media(prefers-reduced-motion:reduce){.candidate-experience *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+/* The inherited sticky save bar covers the player/title in these new layouts.
+   Keep the same controls and save state in normal flow; legacy themes unchanged. */
+.candidate-experience.candidate-experience .detail-return,.candidate-experience.candidate-experience .stage-view>.detail-return{position:static;inset:auto;margin-top:32px}
+.candidate-experience .readonly-note{color:var(--ink);background:var(--blush);border:1px solid var(--line);padding:14px}
+.candidate-experience .source-status{background:var(--white);color:var(--ink);border-color:var(--line)}

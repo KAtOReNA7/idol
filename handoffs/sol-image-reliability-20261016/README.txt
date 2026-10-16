@@ -1,0 +1,2 @@
+本轮纯代码增补，供root审核后通过现有私有GitHub固定commit发布。当前未上传。source/为c58e8a0完整文本文件，仅允许图片hunk修改；reference-only/为dot独占入口参考，不是可编译App或可覆盖CSS。源文件hash见REFERENCE_ONLY。旧8471929中photo-lightbox.tsx及candidate/portrait.ts字节仍可复用。所有产品data、snapshot、backup、API配置、照片、部署及用户文字不在本增补。
+当前artist入口引入的新时间轴/历史状态/身体资料模块只可在隔离图片fixture用有限签名适配，不需要真实数据。适配表必须报告，不可进入产品；完整产品官方build归dot。不得用旧168源码覆盖当前非图片逻辑。

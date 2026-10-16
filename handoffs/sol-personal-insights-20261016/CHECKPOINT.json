@@ -1,0 +1,114 @@
+{
+  "format": "sol-personal-insights-checkpoint/v1.1",
+  "task": "personal-insights",
+  "priorTask": "library-browser handed over to dot; stopped here",
+  "inputBaseline": "1804f12d0c51963bb65864cf531113151b07eaf5",
+  "input": {
+    "library_file_id": "libfile_20ab9a502894819198ea3f3bcdf82a8b",
+    "file_id": "file_000000005cc481f6a3a38f39e6a5455b",
+    "files": 17,
+    "reusedPreviouslyVerifiedSources": true
+  },
+  "instructions": {
+    "library_file_id": "libfile_18992ce66cf48191a905360a05a8e2db",
+    "file_id": "file_000000005c8081fd9a3cb540c3afcd41"
+  },
+  "delivery": {
+    "repository": "KAtOReNA7/idol",
+    "branch": "handoff/sol-safe-source-20261016",
+    "directory": "handoffs/sol-personal-insights-20261016/",
+    "updateMode": "expected_sha + force=false; no main/PR/deployment",
+    "expectedParent": "4db05db7e6bd0478f2b468f74c21e23de3ce6e3d",
+    "baseTree": "374b73a02d6f4b3e2989e483cf15aa87a040fcfa"
+  },
+  "execution": {
+    "implementation": "source_written",
+    "staticReview": "completed_source_review_only",
+    "typecheck": "not_run",
+    "nodeTests": "not_run",
+    "SSR": "not_run",
+    "browser": "not_run",
+    "scale5000": "not_run",
+    "performance": "not_run",
+    "patchApply": "not_run",
+    "wholeSite": "not_run",
+    "windowsAccessed": false,
+    "OSCommandsExecuted": false
+  },
+  "ownership": {
+    "A": [
+      "contract.ts",
+      "score.ts",
+      "prepare.ts",
+      "index.ts"
+    ],
+    "B": [
+      "overview.ts"
+    ],
+    "C": [
+      "members.ts",
+      "revisit.ts"
+    ],
+    "D": [
+      "PersonalInsights.tsx",
+      "personal-insights.css"
+    ],
+    "E": [
+      "fixtures.ts",
+      "model.test.ts",
+      "properties.test.ts",
+      "component.test.tsx",
+      "tsconfig.json",
+      "run-tests.mjs"
+    ],
+    "F": [
+      "CONTRACT.md",
+      "REVIEW.md",
+      "TEST_PLAN.json"
+    ],
+    "coordinator": [
+      "APP_WIRING.patch",
+      "IMPLEMENTATION.patch",
+      "browser-checks.tsx",
+      "browser-entry.tsx",
+      "vite.config.ts",
+      "index.html",
+      "DELIVERY.txt",
+      "MANIFEST.json",
+      "CHECKPOINT.json"
+    ]
+  },
+  "productionSourceRoots": [
+    "lib/idol/personal-insights/",
+    "components/personal-insights/",
+    "tests/personal-insights/"
+  ],
+  "hostFilesChanged": false,
+  "runtimeDependencies": [
+    "lib/idol/types.ts from verified input",
+    "existing React19/react-dom19/TypeScript5.9/Vite8/@vitejs/plugin-react6 installation"
+  ],
+  "requiredHostAdapters": [
+    "memberLabel uses existing memberDisplayName",
+    "isStageScoreEligible(work) delegates to existing stageHasValidBinding(work.stage)"
+  ],
+  "nextSteps": [
+    "Restore only the three new source roots into dot's working copy.",
+    "Inspect APP_WIRING.patch against the current App; apply separately after checking drift.",
+    "Run node tests/personal-insights/run-tests.mjs and retain actual output.",
+    "Run isolated Vite fixture in a supported environment and use real viewports 390/768/1280.",
+    "Run full host typecheck/lint/navigation-save checks before any separately authorized publication."
+  ],
+  "staticReviewEvidence": {
+    "relativeImportTargets": 40,
+    "unresolvedImportTargets": 0,
+    "unexpectedControlCharacters": 0,
+    "runtimeClaim": false
+  },
+  "authoredCases": {
+    "node": 27,
+    "browser": 11,
+    "total": 38,
+    "executed": 0
+  }
+}

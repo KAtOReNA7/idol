@@ -1,0 +1,32 @@
+Sol personal-insights / 2026-10-16 / contract 1.1
+原作品浏览任务：已停止，由 dot 接手。
+
+交付位置：
+KAtOReNA7/idol
+分支 handoff/sol-safe-source-20261016
+目录 handoffs/sol-personal-insights-20261016/
+本目录只新增本任务代码/测试/文档；实际交付commit ID由本会话最终响应和Git记录返回。
+
+输入：此前已核验的17份源码，baseline 1804f12d0c51963bb65864cf531113151b07eaf5。
+没有重新下载ZIP，没有使用Windows/用户电脑，没有获取生产数据、真实评分、备注、记忆、图片或部署配置。
+
+完整实现：7个纯模型源码、2个React/CSS文件、10个测试/独立夹具文件。
+19个新增源文件路径见 MANIFEST.json；IMPLEMENTATION.patch只含这三棵新目录。
+APP_WIRING.patch是独立候选，只新增import与替换原Insights调用，未修改生产App。
+
+测试源码：27个Node模型/性质/SSR与源码边界case，11个真实浏览器断言，合计38个。
+执行状态：全部not_run。类型检查、patch apply、build/lint、5000规模、性能、全站回归均not_run。
+源码实现已交付，运行测试由dot执行。
+
+还原入口：README.md。
+统计口径：CONTRACT.md。
+独立静态审查、已修问题、限制：REVIEW.md。
+每条case/合成输入/预期/未运行状态：TEST_PLAN.json。
+六路分工与接续步骤：CHECKPOINT.json。
+UTF-8字节数、实际计算SHA256：MANIFEST.json（清单自身不自包含hash）。
+所有文件均为纯UTF-8文本，合成fixture仅限tests，不应覆盖生产数据。
+
+缺失执行证据：编译/运行/真实浏览器/规模/性能/主线导航保存回归结果，需dot执行后记录。
+接线依赖：宿主既有memberDisplayName、stageHasValidBinding及openGroup/openMember/openWork，不在此包重建。
+源码最小集依赖的types.ts与package.json已在17份既有输入中，不重复回传。
+未部署，未建PR，未改main/权限/凭证。

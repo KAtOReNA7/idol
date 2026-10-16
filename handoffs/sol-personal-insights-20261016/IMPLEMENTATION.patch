@@ -1,0 +1,2535 @@
+diff --git a/components/personal-insights/PersonalInsights.tsx b/components/personal-insights/PersonalInsights.tsx
+new file mode 100644
+--- /dev/null
++++ b/components/personal-insights/PersonalInsights.tsx
+@@ -0,0 +1,470 @@
++'use client';
++
++import {useEffect, useId, useRef, useState} from 'react';
++import type {CatalogView, Member, Work} from '../../lib/idol/types';
++import {analyzeCatalog} from '../../lib/idol/personal-insights';
++import './personal-insights.css';
++
++export interface PersonalInsightsProps {
++  catalog: Readonly<CatalogView>;
++  memberLabel: (member: Readonly<Member>) => string;
++  isStageScoreEligible?: (work: Readonly<Work>) => boolean;
++  onGroup?: (id: string) => void;
++  onMember?: (id: string) => void;
++  onWork?: (id: string) => void;
++  disabled?: boolean;
++}
++
++type InsightModel = ReturnType<typeof analyzeCatalog>;
++type ScoreStats = InsightModel['mv'];
++type GroupRow = InsightModel['mvGroups'][number];
++type MemberRow = InsightModel['members']['rows'][number];
++type RevisitRow = InsightModel['mvRevisit']['highRated'][number];
++type ScoreDomain = 'mv' | 'stage';
++type GroupSort = 'mean' | 'samples' | 'high';
++type MemberMetric = 'performance' | 'styling';
++type RevisitKind = 'high-score' | 'watched-unrated';
++type FocusSection = 'groups' | 'members' | 'revisit' | 'trace' | 'member-return';
++
++const numberFormat = new Intl.NumberFormat('zh-CN', {maximumFractionDigits: 2});
++function count(value: number): string { return numberFormat.format(value); }
++function score(value: number | null): string {
++  return value === null || !Number.isFinite(value) ? '—' : numberFormat.format(value);
++}
++function ratio(numerator: number, denominator: number): string {
++  return denominator > 0 ? numberFormat.format(numerator / denominator * 100) + '%' : '—';
++}
++function meanOrder(a: number | null, b: number | null): number {
++  if (a === null) return b === null ? 0 : 1;
++  if (b === null) return -1;
++  return b - a;
++}
++
++function usePage<T>(items: readonly T[], pageSize: number) {
++  const [requestedPage, setRequestedPage] = useState(1);
++  const pageCount = Math.max(1, Math.ceil(items.length / pageSize));
++  const page = Math.min(Math.max(1, requestedPage), pageCount);
++  // Refreshes can mutate Catalog in place. Clamp the rendered slice immediately.
++  useEffect(() => {
++    if (requestedPage !== page) setRequestedPage(page);
++  }, [requestedPage, page]);
++  return {
++    page, pageCount, total: items.length,
++    rows: items.slice((page - 1) * pageSize, page * pageSize),
++    setPage: setRequestedPage,
++    reset: () => setRequestedPage(1),
++  };
++}
++
++function Pager({label, page, pageCount, total, pageSize, disabled, onPage}: {
++  label: string; page: number; pageCount: number; total: number; pageSize: number;
++  disabled: boolean; onPage: (page: number) => void;
++}) {
++  if (total === 0) return null;
++  const first = (page - 1) * pageSize + 1;
++  const last = Math.min(total, page * pageSize);
++  return <nav className="pi-pagination" aria-label={label + '分页'}>
++    <p role="status" aria-live="polite" aria-atomic="true">
++      第 {count(page)} / {count(pageCount)} 页
++      <span> · 显示 {count(first)}–{count(last)} / {count(total)} 项</span>
++    </p>
++    <div className="pi-pagination-actions">
++      <button type="button" className="pi-button" disabled={disabled || page <= 1}
++        aria-label={label + '上一页'}
++        onClick={() => { if (!disabled && page > 1) onPage(page - 1); }}>
++        上一页
++      </button>
++      <button type="button" className="pi-button" disabled={disabled || page >= pageCount}
++        aria-label={label + '下一页'}
++        onClick={() => { if (!disabled && page < pageCount) onPage(page + 1); }}>
++        下一页
++      </button>
++    </div>
++  </nav>;
++}
++
++function ScoreSummary({stats, domainLabel}: {stats: ScoreStats; domainLabel: string}) {
++  return <>
++    <dl className="pi-summary">
++      <div><dt>已评分作品</dt><dd>{count(stats.ratedCount)}</dd></div>
++      <div><dt>{domainLabel} 均分</dt><dd>{score(stats.mean)}</dd></div>
++      <div>
++        <dt>高分作品 · 9 分起</dt><dd>{count(stats.highCount)}</dd>
++        <small>占已评分作品 {ratio(stats.highCount, stats.ratedCount)}</small>
++      </div>
++      <div><dt>可比较作品</dt><dd>{count(stats.eligibleCount)}</dd></div>
++    </dl>
++    <p className="pi-caption">
++      未填写评分 {count(stats.missingCount)} 部
++      {stats.invalidCount > 0 && <> · 未计入的无效评分 {count(stats.invalidCount)} 条</>}
++      。0 分属于有效评分，不计作未填写。
++    </p>
++    {stats.ratedCount > 0 && stats.ratedCount < 5 && <p className="pi-note">
++      目前有 {count(stats.ratedCount)} 部已评分作品，均分可作初步参考。
++    </p>}
++  </>;
++}
++
++function Histogram({stats, domainLabel}: {stats: ScoreStats; domainLabel: string}) {
++  const bins = Array.from({length: 11}, (_, index) => stats.bins[index] ?? 0);
++  const maximum = Math.max(0, ...bins);
++  const label = (index: number) => index === 10 ? '10 分' : index + ' 分至不足 ' + (index + 1) + ' 分';
++  return <div className="pi-histogram">
++    <ol className="pi-histogram-bars" aria-label={domainLabel + '评分分布'}>
++      {bins.map((value, index) => <li key={index} aria-label={label(index) + '：' + count(value) + ' 部'}>
++        <span className="pi-bin-count">{count(value)}</span>
++        <span className="pi-bin-track" aria-hidden="true">
++          <span className="pi-bin-fill" style={{height: (maximum > 0 ? value / maximum * 100 : 0) + '%'}}/>
++        </span>
++        <span className="pi-bin-label" aria-hidden="true">{index}</span>
++      </li>)}
++    </ol>
++    <p className="pi-caption">0–9 每格从该整数分起，至下一整数分之前；10 分单独统计。</p>
++    <details className="pi-histogram-data">
++      <summary>查看评分分布数据</summary>
++      <div className="pi-table-wrap">
++        <table className="pi-table">
++          <caption>{domainLabel}评分分布，共 {count(stats.ratedCount)} 部已评分作品</caption>
++          <thead><tr><th scope="col">评分区间</th><th scope="col" className="pi-numeric">作品数</th></tr></thead>
++          <tbody>{bins.map((value, index) => <tr key={index}>
++            <th scope="row">{label(index)}</th><td className="pi-numeric">{count(value)}</td>
++          </tr>)}</tbody>
++        </table>
++      </div>
++    </details>
++  </div>;
++}
++
++export function PersonalInsights({
++  catalog, memberLabel, isStageScoreEligible, onGroup, onMember, onWork, disabled = false,
++}: PersonalInsightsProps) {
++  // Object identity is not a freshness signal: recompute on every render.
++  const model = analyzeCatalog(catalog, {isStageScoreEligible});
++  const instanceId = useId();
++  const [domain, setDomain] = useState<ScoreDomain>('mv');
++  const [groupSort, setGroupSort] = useState<GroupSort>('mean');
++  const [memberMetric, setMemberMetric] = useState<MemberMetric>('performance');
++  const [revisitKind, setRevisitKind] = useState<RevisitKind>('high-score');
++  const [pageSize, setPageSize] = useState(10);
++  const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);
++  const groupsHeading = useRef<HTMLHeadingElement>(null);
++  const membersHeading = useRef<HTMLHeadingElement>(null);
++  const revisitHeading = useRef<HTMLHeadingElement>(null);
++  const traceHeading = useRef<HTMLHeadingElement>(null);
++  const traceTrigger = useRef<HTMLButtonElement | null>(null);
++  const pendingFocus = useRef<FocusSection | null>(null);
++  const domainLabel = domain === 'mv' ? 'MV' : '舞台';
++  const stats = domain === 'mv' ? model.mv : model.stage;
++  const hasWorkAnalysis = domain === 'mv' || typeof isStageScoreEligible === 'function';
++  const groupOrder = new Map<string, number>();
++  const memberOrder = new Map<string, number>();
++  const membersById = new Map<string, Member>();
++  const worksById = new Map<string, Work>();
++  catalog.groups.forEach((group, index) => {
++    if (!groupOrder.has(group.id)) groupOrder.set(group.id, index);
++  });
++  catalog.members.forEach((member, index) => {
++    if (!memberOrder.has(member.id)) memberOrder.set(member.id, index);
++    if (!membersById.has(member.id)) membersById.set(member.id, member);
++  });
++  catalog.works.forEach(work => {
++    if (!worksById.has(work.id)) worksById.set(work.id, work);
++  });
++
++  const groupRows = [...(domain === 'mv' ? model.mvGroups : model.stageGroups)]
++    .map((row, index) => ({row, index}))
++    .sort((a, b) => {
++      let comparison = 0;
++      if (groupSort === 'mean') comparison = meanOrder(a.row.stats.mean, b.row.stats.mean);
++      if (groupSort === 'samples') comparison = b.row.stats.ratedCount - a.row.stats.ratedCount;
++      if (groupSort === 'high') comparison = b.row.stats.highCount - a.row.stats.highCount;
++      return comparison
++        || (groupOrder.get(a.row.groupId) ?? Number.MAX_SAFE_INTEGER)
++          - (groupOrder.get(b.row.groupId) ?? Number.MAX_SAFE_INTEGER)
++        || a.index - b.index;
++    }).map(({row}) => row);
++  const memberRows = [...model.members.rows].map((row, index) => ({row, index}))
++    .sort((a, b) => meanOrder(a.row[memberMetric].mean, b.row[memberMetric].mean)
++      || (memberOrder.get(a.row.memberId) ?? Number.MAX_SAFE_INTEGER)
++        - (memberOrder.get(b.row.memberId) ?? Number.MAX_SAFE_INTEGER)
++      || a.index - b.index).map(({row}) => row);
++
++  // Watching is an MV observation, not an inferred stage viewing record.
++  const revisitRows: readonly RevisitRow[] = revisitKind === 'watched-unrated'
++    ? model.mvRevisit.watchedUnrated
++    : domain === 'mv' ? model.mvRevisit.highRated : model.stageRevisit.highRated;
++  const selectedMember: MemberRow | undefined = selectedMemberId === null ? undefined
++    : model.members.rows.find(row => row.memberId === selectedMemberId);
++  const selectedMemberRecord = selectedMember ? membersById.get(selectedMember.memberId) : undefined;
++  const selectedMemberLabel = selectedMemberRecord ? memberLabel(selectedMemberRecord) : '成员资料暂不可用';
++  const traceWorks = selectedMember
++    ? selectedMember.workIds.map(workId => ({workId, work: worksById.get(workId)}))
++    : [];
++  const groupsPage = usePage<GroupRow>(groupRows, pageSize);
++  const membersPage = usePage<MemberRow>(memberRows, pageSize);
++  const revisitPage = usePage<RevisitRow>(revisitRows, pageSize);
++  const tracePage = usePage(traceWorks, 20);
++
++  // Focus changes only follow explicit paging/disclosure actions, never refresh.
++  useEffect(() => {
++    const section = pendingFocus.current;
++    if (section === null) return;
++    pendingFocus.current = null;
++    const target = section === 'groups' ? groupsHeading.current
++      : section === 'members' ? membersHeading.current
++        : section === 'revisit' ? revisitHeading.current
++          : section === 'trace' ? traceHeading.current
++            : traceTrigger.current?.isConnected ? traceTrigger.current : membersHeading.current;
++    if (target?.isConnected) target.focus({preventScroll: true});
++  });
++  function resetAllPages() {
++    groupsPage.reset(); membersPage.reset(); revisitPage.reset(); tracePage.reset();
++  }
++  const watchingRows = [
++    {key: 'watched', label: '已观看', value: model.watching.watched},
++    {key: 'unwatched', label: '未观看', value: model.watching.unwatched},
++    {key: 'unmarked', label: '未标记', value: model.watching.unmarked},
++    {key: 'unknown', label: '其他观看状态', value: model.watching.unknown},
++  ] as const;
++  const revisitTitle = revisitKind === 'watched-unrated' ? 'MV 已看待评' : domainLabel + ' 高分重温';
++  const excludedMembers = model.members.excluded;
++  const unclearMemberRelations = excludedMembers.ambiguousRelations
++    + excludedMembers.missingRelations + excludedMembers.unlinkedRatings;
++  const hasExcludedMemberRecords = unclearMemberRelations > 0
++    || excludedMembers.emptyScores > 0 || excludedMembers.invalidScores > 0;
++
++  return <section className="pi-insights" aria-labelledby={instanceId + '-title'}>
++    <header className="pi-header">
++      <div>
++        <p className="pi-eyebrow">我的偏好</p>
++        <h2 id={instanceId + '-title'}>从评分里看看喜欢什么</h2>
++        <p className="pi-intro">已收录 {count(model.uniqueWorkCount)} 部作品。作品评分、观看记录和成员评分分别统计。</p>
++      </div>
++      <label className="pi-field"><span>列表每页</span>
++        <select value={pageSize} disabled={disabled} onChange={event => {
++          if (disabled) return;
++          const value = Number(event.target.value);
++          if (value !== 10 && value !== 20) return;
++          setPageSize(value); resetAllPages(); setSelectedMemberId(null);
++        }}>
++          <option value={10}>10 项</option><option value={20}>20 项</option>
++        </select>
++      </label>
++    </header>
++
++    <section className="pi-panel" aria-labelledby={instanceId + '-watching'}>
++      <div className="pi-section-heading"><div>
++        <h3 id={instanceId + '-watching'}>MV 观看记录</h3>
++        <p>以下四类均以 {count(model.watching.total)} 部作品为分母。</p>
++      </div></div>
++      <dl className="pi-watching">{watchingRows.map(row => <div key={row.key}>
++        <dt>{row.label}</dt><dd>{count(row.value)} <small>部</small></dd>
++        <span>{ratio(row.value, model.watching.total)}</span>
++      </div>)}</dl>
++      {model.watching.total === 0 && <p className="pi-caption">暂时没有可统计的 MV 观看记录。</p>}
++    </section>
++
++    <section className="pi-panel" aria-labelledby={instanceId + '-scores'}>
++      <div className="pi-section-heading">
++        <div><h3 id={instanceId + '-scores'}>作品评分</h3><p>MV 与舞台分别计算，不混合均分。</p></div>
++        <fieldset className="pi-domain" disabled={disabled}><legend>评分范围</legend>
++          {(['mv', 'stage'] as const).map(value => <label key={value}>
++            <input type="radio" name={instanceId + '-domain'} value={value} checked={domain === value}
++              onChange={() => {
++                if (disabled) return;
++                setDomain(value); resetAllPages(); setSelectedMemberId(null);
++              }}/>
++            <span>{value === 'mv' ? 'MV' : '舞台'}</span>
++          </label>)}
++        </fieldset>
++      </div>
++      {hasWorkAnalysis ? <>
++        <ScoreSummary stats={stats} domainLabel={domainLabel}/>
++        <h4 className="pi-subheading">{domainLabel} 评分分布</h4>
++        <Histogram stats={stats} domainLabel={domainLabel}/>
++      </> : <div className="pi-empty">
++        <h4>暂时没有可比较的舞台评分</h4><p>MV 评分与观看记录仍可在对应范围查看。</p>
++      </div>}
++    </section>
++
++    {hasWorkAnalysis && <section className="pi-panel" aria-labelledby={instanceId + '-groups'}>
++      <div className="pi-section-heading">
++        <div>
++          <h3 id={instanceId + '-groups'} ref={groupsHeading} tabIndex={-1} className="pi-focus-target">团体比较 · {domainLabel}</h3>
++          <p>均分与样本数一起看；有作品但暂无有效评分的团体保留在列表中。</p>
++        </div>
++        <label className="pi-field"><span>排序</span>
++          <select value={groupSort} disabled={disabled} onChange={event => {
++            if (disabled) return;
++            const value = event.target.value;
++            if (value !== 'mean' && value !== 'samples' && value !== 'high') return;
++            setGroupSort(value); groupsPage.reset();
++          }}>
++            <option value="mean">均分高到低</option>
++            <option value="samples">评分样本多到少</option>
++            <option value="high">高分作品多到少</option>
++          </select>
++        </label>
++      </div>
++      {groupRows.length > 0 ? <>
++        <div className="pi-table-wrap" role="region" aria-label={domainLabel + '团体比较表，可横向滚动'} tabIndex={0}>
++          <table className="pi-table pi-group-table">
++            <caption>团体的 {domainLabel} 评分，当前页 {count(groupsPage.rows.length)} 项</caption>
++            <thead><tr>
++              <th scope="col">团体</th><th scope="col" className="pi-numeric">作品数</th>
++              <th scope="col" className="pi-numeric">评分样本</th><th scope="col" className="pi-numeric">均分</th>
++              <th scope="col" className="pi-numeric">9 分起</th><th scope="col" className="pi-numeric">高分占比</th>
++            </tr></thead>
++            <tbody>{groupsPage.rows.map(row => <tr key={row.groupId}>
++              <th scope="row">{onGroup
++                ? <button type="button" className="pi-text-button" disabled={disabled}
++                  onClick={() => { if (!disabled) onGroup(row.groupId); }}>{row.name}</button>
++                : row.name}</th>
++              <td className="pi-numeric">{count(row.workCount)}</td>
++              <td className="pi-numeric">{count(row.stats.ratedCount)}</td>
++              <td className="pi-numeric">{score(row.stats.mean)}</td>
++              <td className="pi-numeric">{count(row.stats.highCount)}</td>
++              <td className="pi-numeric">{ratio(row.stats.highCount, row.stats.ratedCount)}</td>
++            </tr>)}</tbody>
++          </table>
++        </div>
++        <Pager label="团体比较" {...groupsPage} pageSize={pageSize} disabled={disabled}
++          onPage={page => { if (disabled) return; pendingFocus.current = 'groups'; groupsPage.setPage(page); }}/>
++      </> : <div className="pi-empty"><p>暂时没有可比较的团体作品。</p></div>}
++    </section>}
++
++    <section className="pi-panel" aria-labelledby={instanceId + '-members'}>
++      <div className="pi-section-heading">
++        <div>
++          <h3 id={instanceId + '-members'} ref={membersHeading} tabIndex={-1} className="pi-focus-target">成员表现与造型</h3>
++          <p>两项分别按有效评分条目计算，不合并分母，也不使用喜爱分。</p>
++        </div>
++        <label className="pi-field"><span>排序</span>
++          <select value={memberMetric} disabled={disabled} onChange={event => {
++            if (disabled) return;
++            const value = event.target.value;
++            if (value !== 'performance' && value !== 'styling') return;
++            setMemberMetric(value); membersPage.reset(); tracePage.reset(); setSelectedMemberId(null);
++          }}>
++            <option value="performance">表现均分高到低</option><option value="styling">造型均分高到低</option>
++          </select>
++        </label>
++      </div>
++      {hasExcludedMemberRecords && <p className="pi-excluded">
++        {unclearMemberRelations > 0 && <span>另有 {count(unclearMemberRelations)} 条关系尚未明确的记录未计入个人均分。</span>}
++        {excludedMembers.emptyScores > 0 && <span>{count(excludedMembers.emptyScores)} 条记录尚无评分。</span>}
++        {excludedMembers.invalidScores > 0 && <span>{count(excludedMembers.invalidScores)} 条记录的分数无效，未计入个人均分。</span>}
++      </p>}
++      {memberRows.length > 0 ? <>
++        <div className="pi-table-wrap" role="region" aria-label="成员评分表，可横向滚动" tabIndex={0}>
++          <table className="pi-table pi-member-table">
++            <caption>成员表现和造型的独立均分与样本数</caption>
++            <thead><tr>
++              <th scope="col">成员</th><th scope="col" className="pi-numeric">表现均分</th>
++              <th scope="col" className="pi-numeric">表现样本</th><th scope="col" className="pi-numeric">造型均分</th>
++              <th scope="col" className="pi-numeric">造型样本</th><th scope="col">关联作品</th>
++            </tr></thead>
++            <tbody>{membersPage.rows.map(row => {
++              const member = membersById.get(row.memberId);
++              const label = member ? memberLabel(member) : '成员资料暂不可用';
++              return <tr key={row.memberId}>
++                <th scope="row">{member && onMember
++                  ? <button type="button" className="pi-text-button" disabled={disabled}
++                    onClick={() => { if (!disabled) onMember(row.memberId); }}>{label}</button>
++                  : label}</th>
++                <td className="pi-numeric">{score(row.performance.mean)}</td>
++                <td className="pi-numeric">{count(row.performance.sampleCount)}</td>
++                <td className="pi-numeric">{score(row.styling.mean)}</td>
++                <td className="pi-numeric">{count(row.styling.sampleCount)}</td>
++                <td><button type="button" className="pi-button pi-button-small"
++                  disabled={disabled || row.workIds.length === 0}
++                  aria-expanded={selectedMemberId === row.memberId} aria-controls={selectedMemberId === row.memberId ? instanceId + '-trace' : undefined}
++                  aria-label={'查看' + label + '的 ' + count(row.workIds.length) + ' 部关联作品'}
++                  onClick={event => {
++                    if (disabled || row.workIds.length === 0) return;
++                    traceTrigger.current = event.currentTarget;
++                    setSelectedMemberId(row.memberId); tracePage.reset(); pendingFocus.current = 'trace';
++                  }}>查看作品（{count(row.workIds.length)}）</button></td>
++              </tr>;
++            })}</tbody>
++          </table>
++        </div>
++        <Pager label="成员评分" {...membersPage} pageSize={pageSize} disabled={disabled}
++          onPage={page => {
++            if (disabled) return;
++            setSelectedMemberId(null); pendingFocus.current = 'members'; membersPage.setPage(page);
++          }}/>
++      </> : <div className="pi-empty">
++        <h4>暂时没有可比较的成员评分</h4><p>表现与造型有各自的样本数，未填写的维度不会当作 0 分。</p>
++      </div>}
++
++      {selectedMember && <section className="pi-trace" id={instanceId + '-trace'}
++        aria-labelledby={instanceId + '-trace-title'} key={selectedMember.memberId}>
++        <div className="pi-section-heading">
++          <div>
++            <h4 id={instanceId + '-trace-title'} ref={traceHeading} tabIndex={-1} className="pi-focus-target">{selectedMemberLabel} · 关联作品</h4>
++            <p>表现样本 {count(selectedMember.performance.sampleCount)} 条，
++              造型样本 {count(selectedMember.styling.sampleCount)} 条；
++              共关联 {count(selectedMember.workIds.length)} 部作品。</p>
++          </div>
++          <button type="button" className="pi-button" disabled={disabled}
++            onClick={() => {
++              if (disabled) return;
++              pendingFocus.current = 'member-return'; setSelectedMemberId(null);
++            }}>收起作品</button>
++        </div>
++        <ul className="pi-trace-list">{tracePage.rows.map(({workId, work}) => <li key={workId}>
++          <span>{work ? work.song || work.name : '作品资料暂不可用'}
++            {work?.version && <small>{work.version}</small>}</span>
++          {work && onWork ? <button type="button" className="pi-button" disabled={disabled}
++            aria-label={'打开作品：' + (work.song || work.name)}
++            onClick={() => { if (!disabled) onWork(workId); }}>打开作品</button>
++            : <span className="pi-caption">{work ? '可在作品页查看评分' : '暂不可打开'}</span>}
++        </li>)}</ul>
++        <Pager label="成员关联作品" {...tracePage} pageSize={20} disabled={disabled}
++          onPage={page => { if (disabled) return; pendingFocus.current = 'trace'; tracePage.setPage(page); }}/>
++      </section>}
++    </section>
++
++    <section className="pi-panel" aria-labelledby={instanceId + '-revisit'}>
++      <div className="pi-section-heading">
++        <div>
++          <h3 id={instanceId + '-revisit'} ref={revisitHeading} tabIndex={-1} className="pi-focus-target">{revisitTitle}</h3>
++          <p>{revisitKind === 'watched-unrated'
++            ? '只列出已有 MV 观看记录、尚未填写 MV 评分的作品。'
++            : '从 ' + domainLabel + ' 已评分作品中，找回 9 分及以上的作品。'}</p>
++        </div>
++        <fieldset className="pi-domain" disabled={disabled}><legend>作品清单</legend>
++          {([['high-score', '高分重温'], ['watched-unrated', 'MV 已看待评']] as const).map(([value, label]) => <label key={value}>
++            <input type="radio" name={instanceId + '-revisit-kind'} value={value} checked={revisitKind === value}
++              onChange={() => { if (disabled) return; setRevisitKind(value); revisitPage.reset(); }}/>
++            <span>{label}</span>
++          </label>)}
++        </fieldset>
++      </div>
++      {revisitRows.length > 0 ? <>
++        <ol className="pi-revisit-list" start={(revisitPage.page - 1) * pageSize + 1}>
++          {revisitPage.rows.map(item => {
++            const exists = worksById.has(item.workId);
++            return <li key={item.workId}>
++              <div className="pi-revisit-copy">
++                <h4>{item.name}</h4>{item.version && <p>{item.version}</p>}
++                <span className="pi-score-label">{revisitKind === 'watched-unrated'
++                  ? 'MV 评分未填写' : domainLabel + ' 评分 ' + score(item.score)}</span>
++              </div>
++              {onWork && exists ? <button type="button" className="pi-button" disabled={disabled}
++                aria-label={'打开作品：' + item.name}
++                onClick={() => { if (!disabled) onWork(item.workId); }}>打开作品</button>
++                : <span className="pi-caption">{exists ? '可在作品页查看' : '作品资料暂不可用'}</span>}
++            </li>;
++          })}
++        </ol>
++        <Pager label={revisitTitle} {...revisitPage} pageSize={pageSize} disabled={disabled}
++          onPage={page => { if (disabled) return; pendingFocus.current = 'revisit'; revisitPage.setPage(page); }}/>
++      </> : <div className="pi-empty"><p>{revisitKind === 'watched-unrated'
++        ? '暂时没有 MV 已看待评作品。' : '暂时没有 ' + domainLabel + ' 高分重温作品。'}</p></div>}
++    </section>
++  </section>;
++}
++
++export default PersonalInsights;
+diff --git a/components/personal-insights/personal-insights.css b/components/personal-insights/personal-insights.css
+new file mode 100644
+--- /dev/null
++++ b/components/personal-insights/personal-insights.css
+@@ -0,0 +1,238 @@
++.pi-insights {
++  box-sizing: border-box;
++  --pi-ink: var(--ink, #29252f);
++  --pi-muted: var(--muted, #6b6571);
++  --pi-line: var(--line, #ddd7df);
++  --pi-paper: var(--paper, #ffffff);
++  --pi-soft: #f6f3f7;
++  --pi-accent: #714b79;
++  --pi-focus: #365ed0;
++  width: 100%; max-width: 1280px; min-width: 0; margin-inline: auto;
++  padding: 24px; color: var(--pi-ink); font: inherit; line-height: 1.6;
++}
++.pi-insights *, .pi-insights *::before, .pi-insights *::after { box-sizing: border-box; }
++.pi-insights h2, .pi-insights h3, .pi-insights h4,
++.pi-insights p, .pi-insights dl, .pi-insights dd { margin: 0; }
++.pi-insights button, .pi-insights select, .pi-insights input { font: inherit; }
++.pi-insights button, .pi-insights select, .pi-insights summary { -webkit-tap-highlight-color: transparent; }
++.pi-insights button:focus-visible, .pi-insights select:focus-visible,
++.pi-insights input:focus-visible, .pi-insights summary:focus-visible,
++.pi-insights .pi-table-wrap:focus-visible, .pi-insights .pi-focus-target:focus-visible {
++  outline: 3px solid var(--pi-focus); outline-offset: 3px;
++}
++.pi-insights button:disabled, .pi-insights select:disabled, .pi-insights input:disabled {
++  cursor: default; opacity: .55;
++}
++.pi-insights h2 {
++  font-size: clamp(24px, 3vw, 36px); line-height: 1.25;
++  letter-spacing: -.025em; overflow-wrap: anywhere;
++}
++.pi-insights h3 { font-size: clamp(19px, 2.1vw, 25px); line-height: 1.35; }
++.pi-insights h4 { font-size: 16px; line-height: 1.5; }
++.pi-header {
++  display: flex; align-items: flex-start; justify-content: space-between;
++  gap: 24px; margin-bottom: 24px;
++}
++.pi-header > div, .pi-section-heading > div { min-width: 0; }
++.pi-eyebrow {
++  margin-bottom: 8px !important; color: var(--pi-accent);
++  font-size: 13px; font-weight: 700; letter-spacing: .08em;
++}
++.pi-intro {
++  max-width: 64ch; margin-top: 12px !important; color: var(--pi-muted); font-size: 14px;
++}
++.pi-panel {
++  min-width: 0; margin-top: 20px; padding: 24px;
++  border: 1px solid var(--pi-line); border-radius: 16px; background: var(--pi-paper);
++}
++.pi-section-heading {
++  display: flex; align-items: flex-start; justify-content: space-between;
++  gap: 20px; margin-bottom: 20px;
++}
++.pi-section-heading p {
++  max-width: 66ch; margin-top: 8px !important; color: var(--pi-muted);
++  font-size: 13px; overflow-wrap: anywhere;
++}
++.pi-field {
++  display: flex; flex: none; align-items: center; gap: 10px;
++  color: var(--pi-muted); font-size: 13px;
++}
++.pi-field select {
++  min-width: 94px; max-width: 100%; min-height: 44px; padding: 8px 32px 8px 12px;
++  border: 1px solid var(--pi-line); border-radius: 8px;
++  background: var(--pi-paper); color: var(--pi-ink);
++}
++.pi-domain {
++  display: flex; flex: none; flex-wrap: wrap; align-items: center;
++  gap: 8px 16px; min-width: 0; margin: 0; padding: 8px 12px;
++  border: 1px solid var(--pi-line); border-radius: 10px;
++}
++.pi-domain legend { padding-inline: 4px; color: var(--pi-muted); font-size: 12px; }
++.pi-domain label {
++  display: inline-flex; min-height: 32px; align-items: center; gap: 8px;
++  cursor: pointer; color: var(--pi-ink); font-size: 13px;
++}
++.pi-domain:disabled label { cursor: default; }
++.pi-domain input { width: 17px; height: 17px; margin: 0; accent-color: var(--pi-accent); }
++.pi-summary, .pi-watching {
++  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;
++}
++.pi-summary > div, .pi-watching > div {
++  min-width: 0; padding: 18px; border-radius: 12px; background: var(--pi-soft);
++}
++.pi-summary dt, .pi-watching dt { color: var(--pi-muted); font-size: 13px; }
++.pi-summary dd, .pi-watching dd {
++  margin-top: 8px; font-size: clamp(26px, 3.5vw, 40px);
++  font-weight: 650; font-variant-numeric: tabular-nums;
++  line-height: 1.2; overflow-wrap: anywhere;
++}
++.pi-summary small, .pi-watching > div > span {
++  display: block; margin-top: 8px; color: var(--pi-muted); font-size: 12px;
++}
++.pi-watching dd small { color: var(--pi-muted); font-size: 12px; font-weight: 400; }
++.pi-caption {
++  margin-top: 12px !important; color: var(--pi-muted);
++  font-size: 12px; line-height: 1.7; overflow-wrap: anywhere;
++}
++.pi-note {
++  margin-top: 14px !important; padding: 10px 12px;
++  border-left: 3px solid var(--pi-accent); background: var(--pi-soft); font-size: 13px;
++}
++.pi-excluded {
++  margin-bottom: 16px !important; padding: 10px 12px;
++  border-radius: 8px; background: var(--pi-soft); color: var(--pi-muted);
++  font-size: 13px; line-height: 1.8; overflow-wrap: anywhere;
++}
++.pi-excluded > span { display: block; }
++.pi-subheading { margin-top: 28px !important; }
++.pi-histogram { min-width: 0; margin-top: 18px; }
++.pi-histogram-bars {
++  display: grid; grid-template-columns: repeat(11, minmax(0, 1fr));
++  gap: 10px; margin: 0; padding: 0; list-style: none;
++}
++.pi-histogram-bars > li {
++  display: flex; min-width: 0; flex-direction: column; align-items: center; gap: 6px;
++}
++.pi-bin-count {
++  max-width: 100%; color: var(--pi-ink); font-size: 12px;
++  font-variant-numeric: tabular-nums; overflow-wrap: anywhere;
++}
++.pi-bin-track {
++  position: relative; display: block; width: 100%; max-width: 48px;
++  height: 120px; overflow: hidden; border-radius: 4px 4px 0 0; background: var(--pi-soft);
++}
++.pi-bin-fill {
++  position: absolute; right: 0; bottom: 0; left: 0;
++  display: block; border-radius: 4px 4px 0 0; background: var(--pi-accent);
++}
++.pi-bin-label { color: var(--pi-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
++.pi-histogram-data { margin-top: 14px; }
++.pi-histogram-data summary {
++  width: fit-content; max-width: 100%; min-height: 44px; padding-block: 10px;
++  color: var(--pi-accent); cursor: pointer; font-size: 13px;
++}
++.pi-table-wrap {
++  width: 100%; min-width: 0; max-width: 100%; overflow: auto;
++  overscroll-behavior-inline: contain; border: 1px solid var(--pi-line); border-radius: 10px;
++}
++.pi-table {
++  width: 100%; border-collapse: collapse; color: var(--pi-ink); font-size: 13px; text-align: left;
++}
++.pi-table caption {
++  padding: 12px 14px; color: var(--pi-muted); font-size: 12px; line-height: 1.7; text-align: left;
++}
++.pi-table th, .pi-table td {
++  padding: 12px 14px; border-top: 1px solid var(--pi-line); vertical-align: middle;
++}
++.pi-table thead th {
++  background: var(--pi-soft); color: var(--pi-muted); font-size: 12px; font-weight: 600;
++}
++.pi-table tbody th { font-weight: 500; overflow-wrap: anywhere; }
++.pi-group-table { min-width: 590px; }
++.pi-member-table { min-width: 700px; }
++.pi-group-table tbody th, .pi-member-table tbody th { min-width: 140px; max-width: 280px; }
++.pi-numeric { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
++.pi-button {
++  display: inline-flex; min-height: 44px; max-width: 100%; align-items: center;
++  justify-content: center; gap: 6px; padding: 9px 14px;
++  border: 1px solid var(--pi-line); border-radius: 8px;
++  background: var(--pi-paper); color: var(--pi-ink); cursor: pointer;
++  font-size: 13px; line-height: 1.5; text-align: center; overflow-wrap: anywhere;
++}
++.pi-button:not(:disabled):hover { border-color: var(--pi-accent); background: var(--pi-soft); }
++.pi-button-small { padding-inline: 10px; white-space: nowrap; }
++.pi-text-button {
++  min-height: 44px; max-width: 100%; padding: 6px 0; border: 0; background: transparent;
++  color: var(--pi-accent); cursor: pointer; font-weight: inherit; line-height: 1.6;
++  text-align: left; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere;
++}
++.pi-pagination {
++  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
++  gap: 12px 20px; margin-top: 18px;
++}
++.pi-pagination p { color: var(--pi-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
++.pi-pagination-actions { display: flex; flex: none; gap: 8px; }
++.pi-empty {
++  padding: 28px 16px; border: 1px dashed var(--pi-line); border-radius: 10px;
++  background: var(--pi-soft); text-align: center;
++}
++.pi-empty p { margin-top: 8px; color: var(--pi-muted); font-size: 13px; }
++.pi-empty p:first-child { margin-top: 0; }
++.pi-trace {
++  min-width: 0; margin-top: 24px; padding: 20px;
++  border: 1px solid var(--pi-line); border-radius: 12px; background: var(--pi-soft);
++}
++.pi-trace-list { margin: 0; padding: 0; list-style: none; }
++.pi-trace-list > li {
++  display: flex; min-width: 0; align-items: center; justify-content: space-between;
++  gap: 16px; padding: 12px 0; border-top: 1px solid var(--pi-line);
++}
++.pi-trace-list > li > span:first-child { min-width: 0; font-size: 14px; overflow-wrap: anywhere; }
++.pi-trace-list small { display: block; margin-top: 4px; color: var(--pi-muted); font-size: 12px; }
++.pi-trace-list .pi-button { flex: none; }
++.pi-revisit-list {
++  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
++  gap: 12px; margin: 0; padding: 0; list-style: none;
++}
++.pi-revisit-list > li {
++  display: flex; min-width: 0; flex-direction: column; align-items: flex-start;
++  justify-content: space-between; gap: 16px; padding: 18px;
++  border: 1px solid var(--pi-line); border-radius: 12px;
++}
++.pi-revisit-copy { width: 100%; min-width: 0; }
++.pi-revisit-copy h4 { font-size: 15px; overflow-wrap: anywhere; }
++.pi-revisit-copy p { margin-top: 5px; color: var(--pi-muted); font-size: 12px; overflow-wrap: anywhere; }
++.pi-score-label { display: block; margin-top: 12px; font-size: 13px; font-variant-numeric: tabular-nums; }
++@media (min-width: 1100px) {
++  .pi-revisit-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
++}
++@media (max-width: 767px) {
++  .pi-insights { padding: 16px; }
++  .pi-header, .pi-section-heading { flex-direction: column; align-items: stretch; gap: 16px; }
++  .pi-header > .pi-field, .pi-section-heading > .pi-field { align-self: flex-start; }
++  .pi-panel { padding: 18px; border-radius: 12px; }
++  .pi-summary, .pi-watching { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
++  .pi-summary > div, .pi-watching > div { padding: 14px; }
++  .pi-domain { align-self: flex-start; }
++  .pi-histogram-bars { gap: 5px; }
++  .pi-bin-track { height: 100px; }
++  .pi-bin-count, .pi-bin-label { font-size: 10px; }
++  .pi-pagination { align-items: flex-start; }
++  .pi-pagination p span { display: block; }
++  .pi-revisit-list { grid-template-columns: minmax(0, 1fr); }
++  .pi-trace { padding: 14px; }
++  .pi-trace-list > li { flex-wrap: wrap; gap: 10px; }
++  .pi-trace-list > li > span:first-child { flex-basis: 100%; }
++}
++@media (max-width: 389px) {
++  .pi-insights { padding: 12px; }
++  .pi-panel { padding: 14px; }
++  .pi-summary dd, .pi-watching dd { font-size: 28px; }
++  .pi-pagination-actions { width: 100%; }
++  .pi-pagination-actions .pi-button { flex: 1; }
++}
++@media (prefers-reduced-motion: reduce) {
++  .pi-insights *, .pi-insights *::before, .pi-insights *::after {
++    scroll-behavior: auto; transition: none; animation: none;
++  }
++}
+diff --git a/lib/idol/personal-insights/contract.ts b/lib/idol/personal-insights/contract.ts
+new file mode 100644
+--- /dev/null
++++ b/lib/idol/personal-insights/contract.ts
+@@ -0,0 +1,98 @@
++import type {CatalogView, Work, Group, Member, RatingView} from '../types';
++
++export type ScoreDomain = 'mv' | 'stage';
++export type GroupSort = 'mean' | 'samples' | 'high';
++export type InsightOptions = {
++  /** Pure host adapter; stage-source binding cannot be inferred from this input. */
++  isStageScoreEligible?: (work: Readonly<Work>) => boolean;
++};
++export type ScoreStats = {
++  eligibleCount: number;
++  ratedCount: number;
++  mean: number | null;
++  highCount: number;
++  /** Integer intervals [0,1)..[9,10), plus exact 10. */
++  bins: readonly number[];
++  missingCount: number;
++  invalidCount: number;
++  unqualifiedCount: number;
++};
++export type WatchingStats = {
++  total: number;
++  watched: number;
++  unwatched: number;
++  unmarked: number;
++  unknown: number;
++  knownCount: number;
++  watchedRatio: number | null;
++};
++export type IdentityDiagnostics = {
++  duplicateWorkIds: readonly string[];
++  duplicateGroupIds: readonly string[];
++  duplicateMemberIds: readonly string[];
++  duplicateRatingIds: readonly string[];
++  emptyIds: {works: number; groups: number; members: number; ratings: number};
++  placeholderCount: number;
++};
++export type PreparedCatalog = {
++  works: readonly Readonly<Work>[];
++  groups: readonly Readonly<Group>[];
++  members: readonly Readonly<Member>[];
++  ratings: readonly Readonly<RatingView>[];
++  workById: ReadonlyMap<string, Readonly<Work>>;
++  groupById: ReadonlyMap<string, Readonly<Group>>;
++  memberById: ReadonlyMap<string, Readonly<Member>>;
++  diagnostics: IdentityDiagnostics;
++};
++export type GroupRow = {
++  groupId: string;
++  name: string;
++  workCount: number;
++  stats: ScoreStats;
++};
++export type MetricStats = {
++  sampleCount: number;
++  mean: number | null;
++  invalidCount: number;
++};
++export type MemberRow = {
++  memberId: string;
++  performance: MetricStats;
++  styling: MetricStats;
++  ratingIds: readonly string[];
++  workIds: readonly string[];
++};
++export type MemberAnalysis = {
++  rows: readonly MemberRow[];
++  excluded: {
++    ambiguousRelations: number;
++    missingRelations: number;
++    unlinkedRatings: number;
++    emptyScores: number;
++    invalidScores: number;
++  };
++};
++export type RevisitItem = {
++  workId: string;
++  name: string;
++  version: string;
++  score: number | null;
++  reason: 'high-score' | 'watched-unrated';
++};
++export type RevisitLists = {
++  highRated: readonly RevisitItem[];
++  watchedUnrated: readonly RevisitItem[];
++};
++export type PersonalInsightModel = {
++  uniqueWorkCount: number;
++  watching: WatchingStats;
++  mv: ScoreStats;
++  stage: ScoreStats;
++  mvGroups: readonly GroupRow[];
++  stageGroups: readonly GroupRow[];
++  members: MemberAnalysis;
++  mvRevisit: RevisitLists;
++  stageRevisit: RevisitLists;
++  diagnostics: IdentityDiagnostics;
++};
++export type InsightsCatalog = Readonly<CatalogView>;
+diff --git a/lib/idol/personal-insights/index.ts b/lib/idol/personal-insights/index.ts
+new file mode 100644
+--- /dev/null
++++ b/lib/idol/personal-insights/index.ts
+@@ -0,0 +1,43 @@
++import type {InsightOptions, InsightsCatalog, PersonalInsightModel} from './contract';
++import {prepareCatalog} from './prepare';
++import {compareGroups, summarizeScores, summarizeWatching} from './overview';
++import {summarizeMembers} from './members';
++import {buildRevisitLists} from './revisit';
++
++function freezeDerivedModel<T>(value: T): T {
++  const seen = new WeakSet<object>();
++  function visit(current: unknown): void {
++    if (current === null || typeof current !== 'object' || seen.has(current)) return;
++    seen.add(current);
++    for (const child of Object.values(current)) visit(child);
++    Object.freeze(current);
++  }
++  visit(value);
++  return value;
++}
++/** No IO, persistence, navigation or implicit eligibility inference. */
++export function analyzeCatalog(catalog: InsightsCatalog, options?: InsightOptions): PersonalInsightModel {
++  const p = prepareCatalog(catalog);
++  return freezeDerivedModel<PersonalInsightModel>({
++    uniqueWorkCount: p.works.length,
++    watching: summarizeWatching(p.works),
++    mv: summarizeScores(p.works, 'mv', options),
++    stage: summarizeScores(p.works, 'stage', options),
++    mvGroups: compareGroups(p, 'mv', 'mean', options),
++    stageGroups: compareGroups(p, 'stage', 'mean', options),
++    members: summarizeMembers(p),
++    mvRevisit: buildRevisitLists(p, 'mv', options),
++    stageRevisit: buildRevisitLists(p, 'stage', options),
++    diagnostics: p.diagnostics,
++  });
++}
++export {prepareCatalog} from './prepare';
++export {validScore, isStageEligible} from './score';
++export {compareGroups, summarizeScores, summarizeWatching} from './overview';
++export {summarizeMembers} from './members';
++export {buildRevisitLists} from './revisit';
++export type {
++  ScoreDomain, GroupSort, InsightOptions, ScoreStats, WatchingStats,
++  IdentityDiagnostics, PreparedCatalog, GroupRow, MetricStats, MemberRow,
++  MemberAnalysis, RevisitItem, RevisitLists, PersonalInsightModel, InsightsCatalog,
++} from './contract';
+diff --git a/lib/idol/personal-insights/members.ts b/lib/idol/personal-insights/members.ts
+new file mode 100644
+--- /dev/null
++++ b/lib/idol/personal-insights/members.ts
+@@ -0,0 +1,61 @@
++import type {MemberAnalysis, MemberRow, MetricStats, PreparedCatalog} from './contract';
++import {validScore} from './score';
++
++interface MetricAccumulator {sampleCount: number; sum: number; invalidCount: number;}
++interface MemberAccumulator {
++  performance: MetricAccumulator; styling: MetricAccumulator;
++  ratingIds: Set<string>; workIds: Set<string>;
++}
++function createMetric(): MetricAccumulator {return {sampleCount: 0, sum: 0, invalidCount: 0};}
++function accumulate(metric: MetricAccumulator, raw: unknown): number | null {
++  const score = validScore(raw);
++  if (score !== null) {metric.sampleCount += 1; metric.sum += score;}
++  else if (raw !== null && raw !== undefined) metric.invalidCount += 1;
++  return score;
++}
++function summarizeMetric(m: MetricAccumulator): MetricStats {
++  return {sampleCount: m.sampleCount, mean: m.sampleCount > 0 ? m.sum / m.sampleCount : null,
++    invalidCount: m.invalidCount};
++}
++/** Count individual Rating records only after unambiguous, reciprocal linkage. */
++export function summarizeMembers(prepared: PreparedCatalog): MemberAnalysis {
++  const excluded: MemberAnalysis['excluded'] =
++    {ambiguousRelations: 0, missingRelations: 0, unlinkedRatings: 0, emptyScores: 0, invalidScores: 0};
++  const linkedRatingIdsByWork = new Map<string, ReadonlySet<string>>();
++  for (const [workId, work] of prepared.workById)
++    linkedRatingIdsByWork.set(workId, new Set(work.ratingIds));
++  const accumulators = new Map<string, MemberAccumulator>();
++  for (const rating of prepared.ratings) {
++    const memberIds = [...new Set(rating.memberIds)], workIds = [...new Set(rating.workIds)];
++    if (memberIds.length > 1 || workIds.length > 1) {excluded.ambiguousRelations += 1; continue;}
++    if (memberIds.length !== 1 || workIds.length !== 1) {excluded.missingRelations += 1; continue;}
++    const memberId = memberIds[0], workId = workIds[0];
++    if (!prepared.memberById.has(memberId) || !prepared.workById.has(workId)) {
++      excluded.missingRelations += 1; continue;
++    }
++    if (!linkedRatingIdsByWork.get(workId)?.has(rating.id)) {excluded.unlinkedRatings += 1; continue;}
++    let a = accumulators.get(memberId);
++    if (!a) {
++      a = {performance: createMetric(), styling: createMetric(), ratingIds: new Set(), workIds: new Set()};
++      accumulators.set(memberId, a);
++    }
++    const performance = accumulate(a.performance, rating.score);
++    const styling = accumulate(a.styling, rating.stylingScore);
++    if (performance === null && styling === null) {
++      const missingPerformance = rating.score === null || rating.score === undefined;
++      const missingStyling = rating.stylingScore === null || rating.stylingScore === undefined;
++      if (missingPerformance && missingStyling) excluded.emptyScores += 1;
++      else excluded.invalidScores += 1;
++      continue;
++    }
++    a.ratingIds.add(rating.id); a.workIds.add(workId);
++  }
++  const rows: MemberRow[] = [];
++  for (const member of prepared.members) {
++    const a = accumulators.get(member.id);
++    if (!a || (a.performance.sampleCount === 0 && a.styling.sampleCount === 0)) continue;
++    rows.push({memberId: member.id, performance: summarizeMetric(a.performance),
++      styling: summarizeMetric(a.styling), ratingIds: [...a.ratingIds], workIds: [...a.workIds]});
++  }
++  return {rows, excluded};
++}
+diff --git a/lib/idol/personal-insights/overview.ts b/lib/idol/personal-insights/overview.ts
+new file mode 100644
+--- /dev/null
++++ b/lib/idol/personal-insights/overview.ts
+@@ -0,0 +1,111 @@
++import type {Work} from '../types';
++import type {
++  GroupRow, GroupSort, InsightOptions, PreparedCatalog, ScoreDomain,
++  ScoreStats, WatchingStats,
++} from './contract';
++import {isStageEligible, validScore} from './score';
++
++interface ScoreAccumulator {
++  eligibleCount: number; ratedCount: number; sum: number; highCount: number;
++  bins: number[]; missingCount: number; invalidCount: number; unqualifiedCount: number;
++}
++type ScoreObservation =
++  | {kind: 'unqualified'} | {kind: 'missing'} | {kind: 'invalid'}
++  | {kind: 'rated'; value: number};
++interface GroupAccumulator {
++  groupId: string; name: string; inputOrder: number; workCount: number;
++  score: ScoreAccumulator;
++}
++function createScoreAccumulator(): ScoreAccumulator {
++  return {eligibleCount: 0, ratedCount: 0, sum: 0, highCount: 0,
++    bins: Array<number>(11).fill(0), missingCount: 0, invalidCount: 0, unqualifiedCount: 0};
++}
++function observeScore(
++  work: Readonly<Work>, domain: ScoreDomain, options: InsightOptions,
++): ScoreObservation {
++  if (domain === 'stage' && !isStageEligible(work, options)) return {kind: 'unqualified'};
++  const raw: unknown = domain === 'mv' ? work.score : work.stageScore;
++  if (raw === null || raw === undefined) return {kind: 'missing'};
++  const value = validScore(raw);
++  return value === null ? {kind: 'invalid'} : {kind: 'rated', value};
++}
++function accumulateScore(a: ScoreAccumulator, observation: ScoreObservation): void {
++  if (observation.kind === 'unqualified') {a.unqualifiedCount += 1; return;}
++  a.eligibleCount += 1;
++  if (observation.kind === 'missing') {a.missingCount += 1; return;}
++  if (observation.kind === 'invalid') {a.invalidCount += 1; return;}
++  const value = observation.value;
++  a.ratedCount += 1;
++  a.sum += value;
++  if (value >= 9) a.highCount += 1;
++  a.bins[value === 10 ? 10 : Math.floor(value)] += 1;
++}
++function finishScoreStats(a: ScoreAccumulator): ScoreStats {
++  return {eligibleCount: a.eligibleCount, ratedCount: a.ratedCount,
++    mean: a.ratedCount === 0 ? null : a.sum / a.ratedCount,
++    highCount: a.highCount, bins: a.bins.slice(), missingCount: a.missingCount,
++    invalidCount: a.invalidCount, unqualifiedCount: a.unqualifiedCount};
++}
++export function summarizeScores(
++  works: readonly Readonly<Work>[], domain: ScoreDomain, options: InsightOptions = {},
++): ScoreStats {
++  const a = createScoreAccumulator();
++  for (const work of works) accumulateScore(a, observeScore(work, domain, options));
++  return finishScoreStats(a);
++}
++export function summarizeWatching(works: readonly Readonly<Work>[]): WatchingStats {
++  let watched = 0, unwatched = 0, unmarked = 0, unknown = 0;
++  for (const work of works) {
++    if (work.watched === '已观看') watched += 1;
++    else if (work.watched === '未观看') unwatched += 1;
++    else if (work.watched === '') unmarked += 1;
++    else unknown += 1;
++  }
++  const knownCount = watched + unwatched + unmarked;
++  return {total: works.length, watched, unwatched, unmarked, unknown, knownCount,
++    watchedRatio: knownCount === 0 ? null : watched / knownCount};
++}
++export function compareGroups(
++  prepared: PreparedCatalog, domain: ScoreDomain, sort: GroupSort = 'mean',
++  options: InsightOptions = {},
++): GroupRow[] {
++  const accumulators = new Map<string, GroupAccumulator>();
++  let inputOrder = 0;
++  for (const group of prepared.groups) {
++    if (!accumulators.has(group.id)) accumulators.set(group.id,
++      {groupId: group.id, name: group.name, inputOrder, workCount: 0,
++        score: createScoreAccumulator()});
++    inputOrder += 1;
++  }
++  const seenWorkIds = new Set<string>();
++  for (const work of prepared.works) {
++    if (seenWorkIds.has(work.id)) continue;
++    seenWorkIds.add(work.id);
++    const observation = observeScore(work, domain, options);
++    for (const groupId of new Set(work.groupIds)) {
++      const a = accumulators.get(groupId);
++      if (!a) continue;
++      a.workCount += 1;
++      accumulateScore(a.score, observation);
++    }
++  }
++  const rows: {row: GroupRow; inputOrder: number}[] = [];
++  for (const a of accumulators.values()) {
++    if (a.workCount === 0) continue;
++    rows.push({inputOrder: a.inputOrder, row: {groupId: a.groupId, name: a.name,
++      workCount: a.workCount, stats: finishScoreStats(a.score)}});
++  }
++  rows.sort((left, right) => {
++    const a = left.row.stats, b = right.row.stats;
++    let difference = 0;
++    if (sort === 'samples') difference = b.ratedCount - a.ratedCount;
++    else if (sort === 'high') difference = b.highCount - a.highCount;
++    else {
++      if (a.mean === null && b.mean !== null) return 1;
++      if (a.mean !== null && b.mean === null) return -1;
++      if (a.mean !== null && b.mean !== null) difference = b.mean - a.mean;
++    }
++    return difference || left.inputOrder - right.inputOrder;
++  });
++  return rows.map(({row}) => row);
++}
+diff --git a/lib/idol/personal-insights/prepare.ts b/lib/idol/personal-insights/prepare.ts
+new file mode 100644
+--- /dev/null
++++ b/lib/idol/personal-insights/prepare.ts
+@@ -0,0 +1,58 @@
++import type {Group, Member, RatingView, Work} from '../types';
++import type {IdentityDiagnostics, InsightsCatalog, PreparedCatalog} from './contract';
++
++interface IdentityRow {readonly id: string;}
++interface IdentityScan<T extends IdentityRow> {
++  byId: Map<string, Readonly<T>>; duplicateIds: readonly string[]; emptyCount: number;
++}
++/** All occurrences of a duplicate identity are excluded, even identical rows. */
++function scanIdentities<T extends IdentityRow>(
++  records: readonly Readonly<T>[],
++): IdentityScan<T> {
++  const candidates: Array<{id: string; value: Readonly<T>}> = [];
++  const counts = new Map<string, number>();
++  let emptyCount = 0;
++  for (const record of records) {
++    if (record === null || typeof record !== 'object') {emptyCount += 1; continue;}
++    const id: unknown = record.id;
++    if (typeof id !== 'string' || id.trim().length === 0) {emptyCount += 1; continue;}
++    // Only test emptiness: do not rewrite the identity.
++    candidates.push({id, value: record});
++    counts.set(id, (counts.get(id) ?? 0) + 1);
++  }
++  const duplicateIds: string[] = [];
++  for (const [id, count] of counts) if (count > 1) duplicateIds.push(id);
++  const byId = new Map<string, Readonly<T>>();
++  for (const c of candidates) if (counts.get(c.id) === 1) byId.set(c.id, c.value);
++  return {byId, duplicateIds: Object.freeze(duplicateIds), emptyCount};
++}
++export function prepareCatalog(catalog: InsightsCatalog): PreparedCatalog {
++  const sourceWorks: readonly Readonly<Work>[] = Array.isArray(catalog?.works) ? catalog.works : [];
++  const sourceGroups: readonly Readonly<Group>[] = Array.isArray(catalog?.groups) ? catalog.groups : [];
++  const sourceMembers: readonly Readonly<Member>[] = Array.isArray(catalog?.members) ? catalog.members : [];
++  const sourceRatings: readonly Readonly<RatingView>[] = Array.isArray(catalog?.ratings) ? catalog.ratings : [];
++  const workScan = scanIdentities<Work>(sourceWorks);
++  const groupScan = scanIdentities<Group>(sourceGroups);
++  const memberScan = scanIdentities<Member>(sourceMembers);
++  const ratingScan = scanIdentities<RatingView>(sourceRatings);
++  // Raw-input placeholder diagnostics may overlap duplicate/empty-ID exclusions.
++  let placeholderCount = 0;
++  for (const work of sourceWorks)
++    if (work !== null && typeof work === 'object' && Boolean(work.placeholder)) placeholderCount += 1;
++  const workById = new Map<string, Readonly<Work>>();
++  for (const [id, work] of workScan.byId) if (!work.placeholder) workById.set(id, work);
++  const diagnostics: IdentityDiagnostics = Object.freeze({
++    duplicateWorkIds: workScan.duplicateIds, duplicateGroupIds: groupScan.duplicateIds,
++    duplicateMemberIds: memberScan.duplicateIds, duplicateRatingIds: ratingScan.duplicateIds,
++    emptyIds: Object.freeze({works: workScan.emptyCount, groups: groupScan.emptyCount,
++      members: memberScan.emptyCount, ratings: ratingScan.emptyCount}), placeholderCount,
++  });
++  // Freeze only new containers, never the original entities.
++  return Object.freeze({
++    works: Object.freeze(Array.from(workById.values())),
++    groups: Object.freeze(Array.from(groupScan.byId.values())),
++    members: Object.freeze(Array.from(memberScan.byId.values())),
++    ratings: Object.freeze(Array.from(ratingScan.byId.values())),
++    workById, groupById: groupScan.byId, memberById: memberScan.byId, diagnostics,
++  });
++}
+diff --git a/lib/idol/personal-insights/revisit.ts b/lib/idol/personal-insights/revisit.ts
+new file mode 100644
+--- /dev/null
++++ b/lib/idol/personal-insights/revisit.ts
+@@ -0,0 +1,27 @@
++import type {Work} from '../types';
++import type {InsightOptions, PreparedCatalog, RevisitItem, RevisitLists, ScoreDomain} from './contract';
++import {isStageEligible, validScore} from './score';
++
++function revisitItem(work: Readonly<Work>, score: number | null, reason: RevisitItem['reason']): RevisitItem {
++  return {workId: work.id, name: work.name, version: work.version, score, reason};
++}
++export function buildRevisitLists(
++  prepared: PreparedCatalog, domain: ScoreDomain, options?: InsightOptions,
++): RevisitLists {
++  const highRated: {inputIndex: number; score: number; item: RevisitItem}[] = [];
++  const watchedUnrated: RevisitItem[] = [];
++  for (let inputIndex = 0; inputIndex < prepared.works.length; inputIndex += 1) {
++    const work = prepared.works[inputIndex];
++    if (domain === 'stage' && !isStageEligible(work, options)) continue;
++    const rawScore = domain === 'stage' ? work.stageScore : work.score;
++    const score = validScore(rawScore);
++    if (score !== null && score >= 9)
++      highRated.push({inputIndex, score, item: revisitItem(work, score, 'high-score')});
++    // Only MV has a viewing-state field. Stage viewing must not be inferred.
++    // A malformed/absent score is not an explicitly unrated (null) score.
++    if (domain === 'mv' && work.watched === '已观看' && rawScore === null)
++      watchedUnrated.push(revisitItem(work, null, 'watched-unrated'));
++  }
++  highRated.sort((a, b) => b.score - a.score || a.inputIndex - b.inputIndex);
++  return {highRated: highRated.map(entry => entry.item), watchedUnrated};
++}
+diff --git a/lib/idol/personal-insights/score.ts b/lib/idol/personal-insights/score.ts
+new file mode 100644
+--- /dev/null
++++ b/lib/idol/personal-insights/score.ts
+@@ -0,0 +1,14 @@
++import type {Work} from '../types';
++import type {InsightOptions} from './contract';
++
++/** Accept finite scores in [0,10]; retain zero and the supplied precision. */
++export function validScore(value: unknown): number | null {
++  return typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= 10
++    ? value : null;
++}
++/** Stage presence does not establish score binding: the host must approve. */
++export function isStageEligible(work: Readonly<Work>, options?: InsightOptions): boolean {
++  if (!work?.stage) return false;
++  try {return options?.isStageScoreEligible?.(work) === true;}
++  catch {return false;}
++}
+diff --git a/tests/personal-insights/browser-checks.tsx b/tests/personal-insights/browser-checks.tsx
+new file mode 100644
+--- /dev/null
++++ b/tests/personal-insights/browser-checks.tsx
+@@ -0,0 +1,176 @@
++/**
++ * TEST ONLY. Import into a real browser host with the project's React/CSS build.
++ * No browser, layout, keyboard or timing results have been executed by Sol.
++ */
++import {createRoot} from 'react-dom/client';
++import {flushSync} from 'react-dom';
++import {PersonalInsights} from '../../components/personal-insights/PersonalInsights';
++import type {CatalogView} from '../../lib/idol/types';
++import {catalog, group, member, rating, stage, work} from './fixtures';
++
++export interface BrowserCheckResult {name: string; status: 'passed' | 'failed'; detail?: string;}
++function requireCondition(value: unknown, message: string): asserts value {
++  if (!value) throw new Error(message);
++}
++function findButton(container: HTMLElement, label: string): HTMLButtonElement {
++  const button = [...container.querySelectorAll<HTMLButtonElement>('button')]
++    .find(item => item.getAttribute('aria-label') === label || item.textContent?.trim() === label);
++  requireCondition(button, 'Missing button: ' + label);
++  return button;
++}
++function fixture(size: number): CatalogView {
++  return catalog({
++    groups: Array.from({length: size}, (_, i) => group('g-' + i)),
++    members: Array.from({length: size}, (_, i) => member('m-' + i)),
++    works: Array.from({length: size}, (_, i) => work('w-' + i, {
++      groupIds: ['g-' + i], ratingIds: ['r-' + i], stage: stage(),
++      stageScore: 10, score: i === 0 ? null : 9, watched: '已观看',
++      name: 'TEST ONLY browser work ' + i, version: 'TEST ONLY version ' + i,
++    })),
++    ratings: Array.from({length: size}, (_, i) => rating('r-' + i, {
++      memberIds: ['m-' + i], workIds: ['w-' + i], score: 0, stylingScore: 10,
++    })),
++  });
++}
++const settle = () => new Promise<void>(resolve =>
++  requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
++
++/**
++ * Call with a connected, empty element inside an isolated TEST ONLY browser page.
++ * Run at each actual viewport 390, 768 and 1280; it does not resize the window.
++ * Returned statuses are produced only by an actual invocation, never prefilled.
++ * This covers click/focus behavior; trusted Tab/arrow/screen-reader checks remain
++ * separate manual steps in TEST_PLAN.json.
++ */
++export async function runPersonalInsightsBrowserChecks(
++  container: HTMLElement,
++): Promise<BrowserCheckResult[]> {
++  requireCondition(container.isConnected && container.childNodes.length === 0,
++    'Use a connected empty TEST ONLY container');
++  const root = createRoot(container), results: BrowserCheckResult[] = [];
++  const calls: {kind: string; id: string}[] = [];
++  const data = fixture(25);
++  function render(input: CatalogView, disabled = false, key = 'stable') {
++    flushSync(() => root.render(<PersonalInsights key={key} catalog={input}
++      memberLabel={item => item.name}
++      isStageScoreEligible={() => true}
++      disabled={disabled}
++      onGroup={id => calls.push({kind: 'group', id})}
++      onMember={id => calls.push({kind: 'member', id})}
++      onWork={id => calls.push({kind: 'work', id})}/>));
++  }
++  async function check(name: string, action: () => void | Promise<void>) {
++    try {await action(); results.push({name, status: 'passed'});}
++    catch (error) {results.push({name, status: 'failed',
++      detail: error instanceof Error ? error.message : String(error)});}
++  }
++  try {
++    render(data);
++    await settle();
++    await check('native tables and readable histogram', () => {
++      requireCondition(container.querySelector('table caption'), 'Missing table caption');
++      requireCondition(container.querySelector('th[scope="col"]'), 'Missing column headers');
++      requireCondition(container.querySelectorAll('.pi-histogram-bars > li').length === 11,
++        'Histogram must expose all eleven bins');
++    });
++    await check('group host callback preserves canonical identity', () => {
++      const button = container.querySelector<HTMLButtonElement>('.pi-group-table tbody button');
++      requireCondition(button, 'Missing group navigation');
++      const before = calls.length; button.click();
++      requireCondition(calls.length === before + 1 && calls[calls.length - 1].kind === 'group'
++        && calls[calls.length - 1].id === 'g-1',
++        'Expected exactly one canonical group callback');
++    });
++    await check('disabled callbacks remain silent', async () => {
++      render(data, true); await settle();
++      const before = calls.length;
++      for (const selector of ['.pi-group-table tbody button', '.pi-member-table tbody .pi-text-button',
++        '.pi-revisit-list button']) {
++        const button = container.querySelector<HTMLButtonElement>(selector);
++        requireCondition(button?.disabled, 'Navigation must be disabled: ' + selector);
++        button.click();
++      }
++      requireCondition(calls.length === before, 'Disabled callback was invoked');
++      render(data); await settle();
++    });
++    await check('paging moves focus to the corresponding heading', async () => {
++      flushSync(() => findButton(container, '团体比较下一页').click());
++      await settle();
++      requireCondition(document.activeElement === container.querySelector('[id$="-groups"]'),
++        'Group page focus did not land on heading');
++      requireCondition(container.querySelectorAll('.pi-group-table tbody tr').length === 10,
++        'Expected a bounded second page');
++    });
++    await check('stage scope does not relabel MV pending reviews', async () => {
++      const stageRadio = container.querySelector<HTMLInputElement>('input[value="stage"]');
++      requireCondition(stageRadio, 'Missing stage control');
++      flushSync(() => stageRadio.click()); await settle();
++      requireCondition(container.querySelector('[id$="-groups"]')?.textContent?.includes('舞台'),
++        'Stage group scope did not update');
++      const pending = container.querySelector<HTMLInputElement>('input[value="watched-unrated"]');
++      requireCondition(pending, 'Missing MV pending control');
++      flushSync(() => pending.click()); await settle();
++      requireCondition(container.querySelector('[id$="-revisit"]')?.textContent === 'MV 已看待评',
++        'MV viewing status must remain MV');
++      requireCondition(container.querySelectorAll('.pi-revisit-list > li').length === 1,
++        'Expected only the explicit-null watched MV');
++    });
++    await check('member host callback preserves canonical identity', () => {
++      const button = container.querySelector<HTMLButtonElement>('.pi-member-table tbody .pi-text-button');
++      requireCondition(button, 'Missing member navigation');
++      const before = calls.length; button.click();
++      requireCondition(calls.length === before + 1 && calls[calls.length - 1].kind === 'member'
++        && calls[calls.length - 1].id === 'm-0', 'Expected the selected canonical member');
++    });
++    await check('member trace opens and close returns focus', async () => {
++      const trigger = container.querySelector<HTMLButtonElement>('.pi-member-table button[aria-expanded]');
++      requireCondition(trigger, 'Missing member trace trigger');
++      flushSync(() => trigger.click()); await settle();
++      requireCondition(document.activeElement === container.querySelector('[id$="-trace-title"]'),
++        'Trace heading did not receive focus');
++      const workButton = container.querySelector<HTMLButtonElement>('.pi-trace-list button');
++      requireCondition(workButton, 'Missing trace work navigation');
++      const before = calls.length; workButton.click();
++      requireCondition(calls.length === before + 1 && calls[calls.length - 1].kind === 'work'
++        && calls[calls.length - 1].id === 'w-0',
++        'Trace did not call the host work callback');
++      flushSync(() => findButton(container, '收起作品').click()); await settle();
++      requireCondition(document.activeElement === trigger, 'Trace close did not return focus');
++    });
++    await check('same-object refresh invalidates statistics', async () => {
++      const mvRadio = container.querySelector<HTMLInputElement>('input[value="mv"]');
++      requireCondition(mvRadio, 'Missing MV control');
++      flushSync(() => mvRadio.click()); await settle();
++      data.works[0].score = 0;
++      render(data); await settle();
++      const values = [...container.querySelectorAll('.pi-summary dd')].map(item => item.textContent);
++      requireCondition(values[0] === '25' && values[1] === '8.64',
++        'Same catalog identity retained stale statistics');
++    });
++    await check('shrinking data clamps an existing later page', async () => {
++      flushSync(() => findButton(container, '团体比较下一页').click()); await settle();
++      data.works.splice(1);
++      render(data); await settle();
++      requireCondition(container.querySelectorAll('.pi-group-table tbody tr').length === 1,
++        'Shrinking data left an empty out-of-range page');
++    });
++    await check('5000-work rendering remains bounded', async () => {
++      render(fixture(5000), false, 'scale-5000'); await settle();
++      requireCondition(container.querySelectorAll('.pi-group-table tbody tr').length <= 10,
++        'Unbounded group DOM');
++      requireCondition(container.querySelectorAll('.pi-member-table tbody tr').length <= 10,
++        'Unbounded member DOM');
++      requireCondition(container.querySelectorAll('.pi-revisit-list > li').length <= 10,
++        'Unbounded revisit DOM');
++    });
++    await check('current real viewport contains the outer panel', () => {
++      const insights = container.querySelector<HTMLElement>('.pi-insights');
++      requireCondition(insights && insights.clientWidth > 0, 'Fixture must be visible');
++      requireCondition(insights.scrollWidth <= insights.clientWidth + 1,
++        'Outer panel overflows; tables should scroll inside their wrappers');
++    });
++    return results;
++  } finally {
++    flushSync(() => root.unmount());
++  }
++}
+diff --git a/tests/personal-insights/browser-entry.tsx b/tests/personal-insights/browser-entry.tsx
+new file mode 100644
+--- /dev/null
++++ b/tests/personal-insights/browser-entry.tsx
+@@ -0,0 +1,67 @@
++/** TEST ONLY. The input is entirely synthetic and never sent to an API. */
++import {useState} from 'react';
++import {createRoot} from 'react-dom/client';
++import {PersonalInsights} from '../../components/personal-insights/PersonalInsights';
++import {catalog, deepFreeze, group, member, rating, stage, work} from './fixtures';
++import {runPersonalInsightsBrowserChecks} from './browser-checks';
++
++function makeFixture(size: number) {
++  const groups = Array.from({length: 51}, (_, i) => group('test-group-' + i));
++  const members = Array.from({length: 30}, (_, i) => member('test-member-' + i));
++  const works = Array.from({length: size}, (_, i) => work('test-work-' + i, {
++    name: 'TEST ONLY · 合成作品 ' + i,
++    song: 'TEST ONLY · 同名歌曲 ' + (i % 4),
++    version: i % 2 ? '合成现场版' : '合成原版',
++    groupIds: i % 8 === 0 ? [groups[i % 51].id, groups[(i + 1) % 51].id] : [groups[i % 51].id],
++    score: i % 5 === 0 ? null : i % 11,
++    stage: i % 3 === 0 ? stage() : null,
++    stageScore: i % 3 === 0 ? (i + 4) % 11 : null,
++    watched: ['已观看', '未观看', '', 'TEST ONLY other'][i % 4],
++    ratingIds: ['test-rating-' + i],
++  }));
++  const ratings = works.map((item, i) => rating('test-rating-' + i, {
++    workIds: [item.id],
++    memberIds: i % 17 === 0 ? [members[i % 30].id, members[(i + 1) % 30].id] : [members[i % 30].id],
++    score: i % 4 === 0 ? null : i % 11,
++    stylingScore: i % 6 === 0 ? null : (i + 3) % 11,
++  }));
++  return deepFreeze(catalog({groups, members, works, ratings}));
++}
++const fixtureSizes = [0, 100, 1000, 5000] as const;
++
++function Fixture() {
++  const [size, setSize] = useState<number>(100);
++  const [data, setData] = useState(() => makeFixture(100));
++  const [disabled, setDisabled] = useState(false);
++  const [events, setEvents] = useState<string[]>([]);
++  const [checks, setChecks] = useState('not_run');
++  function record(kind: string, id: string) {setEvents(items => [kind + ': ' + id, ...items].slice(0, 8));}
++  return <main>
++    <aside style={{padding: 16, borderBottom: '2px solid #714b79'}}>
++      <h1>TEST ONLY · 个人偏好分析</h1>
++      <p>全部为合成夹具。模型、SSR、浏览器和性能执行结果以实际报告为准。</p>
++      <label>规模 <select value={size} onChange={event => {
++        const value = Number(event.target.value); setSize(value); setData(makeFixture(value));
++      }}>{fixtureSizes.map(value => <option key={value}>{value}</option>)}</select></label>{' '}
++      <label><input type="checkbox" checked={disabled}
++        onChange={event => setDisabled(event.target.checked)}/> 禁用模块交互</label>{' '}
++      <button type="button" disabled={checks === 'running'} onClick={async () => {
++        const container = document.getElementById('browser-check-container');
++        if (!container) return;
++        setChecks('running');
++        try {setChecks(JSON.stringify(await runPersonalInsightsBrowserChecks(container), null, 2));}
++        catch (error) {setChecks('failed: ' + String(error));}
++      }}>运行真实浏览器断言</button>
++      <pre aria-label="浏览器断言结果" style={{whiteSpace: 'pre-wrap'}}>{checks}</pre>
++      <p>宿主回调记录：{events.join('；') || '尚无'}</p>
++    </aside>
++    <PersonalInsights catalog={data} memberLabel={item => item.name} disabled={disabled}
++      isStageScoreEligible={() => true}
++      onGroup={id => record('group', id)} onMember={id => record('member', id)}
++      onWork={id => record('work', id)}/>
++    <section aria-label="独立浏览器断言容器" id="browser-check-container"/>
++  </main>;
++}
++const target = document.getElementById('fixture');
++if (!target) throw new Error('Missing TEST ONLY fixture root');
++createRoot(target).render(<Fixture/>);
+diff --git a/tests/personal-insights/component.test.tsx b/tests/personal-insights/component.test.tsx
+new file mode 100644
+--- /dev/null
++++ b/tests/personal-insights/component.test.tsx
+@@ -0,0 +1,207 @@
++/**
++ * SSR and source-structure checks only.
++ * Mounted keyboard, focus, callbacks, refresh effects and viewport checks are
++ * separate browser acceptance work; none are claimed by this file.
++ */
++import assert from 'node:assert/strict';
++import test from 'node:test';
++import { readFileSync } from 'node:fs';
++import path from 'node:path';
++import { fileURLToPath } from 'node:url';
++import { renderToStaticMarkup } from 'react-dom/server';
++import ts from 'typescript';
++import { PersonalInsights } from '../../components/personal-insights/PersonalInsights';
++import { catalog, group, member, rating, stage, work } from './fixtures';
++
++function plain(markup: string): string {
++  return markup.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').trim();
++}
++function table(html: string, caption: string): string {
++  const found = (html.match(/<table\b[^>]*>[\s\S]*?<\/table>/g) ?? [])
++    .find((item) => item.includes(caption));
++  assert.ok(found, 'missing table caption: ' + caption);
++  return found;
++}
++function bodyRows(markup: string): string[] {
++  const body = markup.match(/<tbody>([\s\S]*?)<\/tbody>/)?.[1] ?? '';
++  return body.match(/<tr\b[^>]*>[\s\S]*?<\/tr>/g) ?? [];
++}
++function cells(row: string): string[] {
++  return (row.match(/<td\b[^>]*>[\s\S]*?<\/td>/g) ?? []).map(plain);
++}
++function zeroCatalog() {
++  return catalog({
++    groups: [group('g')], members: [member('m', { favorite: 10 })],
++    works: [work('w', { groupIds: ['g'], ratingIds: ['r'], score: 0, stage: stage(), stageScore: 10 })],
++    ratings: [rating('r', { memberIds: ['m'], workIds: ['w'], score: 0, stylingScore: 0 })],
++  });
++}
++function highCatalog() {
++  return catalog({
++    groups: [group('g')], members: [member('m')],
++    works: [work('w', { groupIds: ['g'], ratingIds: ['r'], score: 9 })],
++    ratings: [rating('r', { memberIds: ['m'], workIds: ['w'], score: 0, stylingScore: 10 })],
++  });
++}
++
++test('SSR empty state exposes separate domains and honest empty values', () => {
++  const html = renderToStaticMarkup(
++    <PersonalInsights catalog={catalog()} memberLabel={(item) => item.stageName}/>,
++  );
++  assert.match(html, /<h2\b[^>]*>从评分里看看喜欢什么<\/h2>/);
++  for (const title of ['MV 观看记录', '作品评分', '团体比较 · MV', '成员表现与造型', 'MV 高分重温']) {
++    assert.ok(html.includes(title), 'missing heading: ' + title);
++  }
++  assert.match(html, /<dt>MV 均分<\/dt><dd>—<\/dd>/);
++  assert.ok(html.includes('暂时没有可统计的 MV 观看记录。'));
++  assert.ok(html.includes('暂时没有可比较的成员评分'));
++  assert.ok(html.includes('暂时没有 MV 高分重温作品。'));
++  assert.match(html, /<legend>评分范围<\/legend>/);
++  const radios = html.match(/<input\b[^>]*>/g) ?? [];
++  const mvRadio = radios.find(tag => /\btype="radio"/.test(tag) && /\bvalue="mv"/.test(tag));
++  assert.ok(mvRadio, 'missing MV radio');
++  assert.match(mvRadio, /\bchecked=""/);
++  assert.ok(radios.some(tag => /\btype="radio"/.test(tag) && /\bvalue="stage"/.test(tag)));
++  assert.doesNotMatch(html, /NaN|Infinity/);
++});
++
++test('SSR zero appears in the MV summary and independent member cells, not as missing', () => {
++  const html = renderToStaticMarkup(
++    <PersonalInsights catalog={zeroCatalog()} memberLabel={(item) => item.stageName}/>,
++  );
++  assert.match(html, /<dt>MV 均分<\/dt><dd>0<\/dd>/);
++  assert.ok(html.includes('0 分属于有效评分，不计作未填写。'));
++  const groups = bodyRows(table(html, '团体的 MV 评分'));
++  const members = bodyRows(table(html, '成员表现和造型的独立均分与样本数'));
++  assert.equal(groups.length, 1);
++  assert.equal(cells(groups[0])[2], '0');
++  assert.equal(members.length, 1);
++  assert.deepEqual(cells(members[0]).slice(0, 4), ['0', '1', '0', '1']);
++  const histogram = html.match(/<ol\b[^>]*aria-label="MV评分分布"[^>]*>([\s\S]*?)<\/ol>/);
++  assert.ok(histogram);
++  assert.equal((histogram[1].match(/<li\b/g) ?? []).length, 11);
++});
++
++test('SSR disabled state disables native controls and never calls drilldown callbacks', () => {
++  const calls: string[] = [];
++  const labels: string[] = [];
++  const html = renderToStaticMarkup(<PersonalInsights
++    catalog={highCatalog()} disabled
++    memberLabel={(item) => { labels.push(item.id); return 'TEST ONLY host member label'; }}
++    onGroup={(id) => { calls.push('group:' + id); }}
++    onMember={(id) => { calls.push('member:' + id); }}
++    onWork={(id) => { calls.push('work:' + id); }}
++  />);
++  assert.deepEqual(calls, []);
++  assert.ok(labels.includes('m'));
++  assert.ok(html.includes('TEST ONLY host member label'));
++  assert.ok(html.includes('aria-label="打开作品：TEST ONLY Work w"'));
++  const buttonTags = html.match(/<button\b[^>]*>/g) ?? [];
++  assert.ok(buttonTags.length >= 3);
++  for (const tag of buttonTags) {
++    assert.match(tag, /\btype="button"/);
++    assert.match(tag, /\bdisabled=""/);
++  }
++  const fieldsets = html.match(/<fieldset\b[^>]*>/g) ?? [];
++  assert.ok(fieldsets.length >= 2);
++  for (const tag of fieldsets) assert.match(tag, /\bdisabled=""/);
++  for (const tag of html.match(/<select\b[^>]*>/g) ?? []) assert.match(tag, /\bdisabled=""/);
++  assert.doesNotMatch(html, /<a\b/);
++});
++
++test('SSR without host callbacks renders identities as text and invents no navigation URLs', () => {
++  const html = renderToStaticMarkup(
++    <PersonalInsights catalog={highCatalog()} memberLabel={(item) => item.stageName}/>,
++  );
++  assert.ok(html.includes('TEST ONLY Group g'));
++  assert.ok(html.includes('TEST ONLY m'));
++  assert.ok(html.includes('可在作品页查看'));
++  assert.doesNotMatch(html, /class="pi-text-button"/);
++  assert.doesNotMatch(html, /aria-label="打开作品：/);
++  assert.doesNotMatch(html, /<a\b|javascript:|href=/);
++});
++
++test('SSR distinguishes wholly invalid member scores from genuinely empty scores', () => {
++  const input = catalog({
++    members: [member('m')],
++    works: [work('invalid-work', { ratingIds: ['invalid'] }), work('empty-work', { ratingIds: ['empty'] })],
++    ratings: [
++      rating('invalid', { memberIds: ['m'], workIds: ['invalid-work'], score: 11 }),
++      rating('empty', { memberIds: ['m'], workIds: ['empty-work'] }),
++    ],
++  });
++  const html = renderToStaticMarkup(
++    <PersonalInsights catalog={input} memberLabel={(item) => item.stageName}/>,
++  );
++  assert.ok(html.includes('1 条记录尚无评分。'));
++  assert.ok(html.includes('1 条记录的分数无效，未计入个人均分。'));
++  assert.ok(!html.includes('2 条记录尚无评分。'));
++});
++
++test('SSR first page bounds all three data lists at ten items without simulating clicks', () => {
++  const input = catalog({
++    groups: Array.from({ length: 25 }, (_, i) => group('g' + i)),
++    members: Array.from({ length: 25 }, (_, i) => member('m' + i)),
++    works: Array.from({ length: 25 }, (_, i) => work('w' + i, {
++      groupIds: ['g' + i], ratingIds: ['r' + i], score: 9,
++    })),
++    ratings: Array.from({ length: 25 }, (_, i) => rating('r' + i, {
++      memberIds: ['m' + i], workIds: ['w' + i], score: 0, stylingScore: 10,
++    })),
++  });
++  const html = renderToStaticMarkup(
++    <PersonalInsights catalog={input} memberLabel={(item) => item.stageName}/>,
++  );
++  assert.equal(bodyRows(table(html, '团体的 MV 评分')).length, 10);
++  assert.equal(bodyRows(table(html, '成员表现和造型的独立均分与样本数')).length, 10);
++  const revisit = html.match(/<ol\b[^>]*class="pi-revisit-list"[^>]*>([\s\S]*?)<\/ol>/);
++  assert.ok(revisit);
++  assert.equal((revisit[1].match(/<li\b/g) ?? []).length, 10);
++  assert.ok(revisit[1].includes('TEST ONLY Work w9'));
++  assert.ok(!revisit[1].includes('TEST ONLY Work w10'));
++  const next = (html.match(/<button\b[^>]*>/g) ?? [])
++    .find((tag) => tag.includes('aria-label="团体比较下一页"'));
++  assert.ok(next);
++  assert.doesNotMatch(next, /\bdisabled=/);
++});
++
++test('source boundary keeps native controls and local analysis; this is not a mounted behavior test', () => {
++  const sourceRoot = process.env.PERSONAL_INSIGHTS_SOURCE_ROOT
++    ?? fileURLToPath(new URL('../../', import.meta.url));
++  const filename = path.join(sourceRoot, 'components/personal-insights/PersonalInsights.tsx');
++  const source = ts.createSourceFile(filename, readFileSync(filename, 'utf8'),
++    ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
++  const permittedImports = new Set([
++    'react', '../../lib/idol/types', '../../lib/idol/personal-insights', './personal-insights.css',
++  ]);
++  let buttons = 0;
++  let fieldsets = 0;
++  const visit = (node: ts.Node): void => {
++    if (ts.isImportDeclaration(node) && ts.isStringLiteral(node.moduleSpecifier)) {
++      assert.ok(permittedImports.has(node.moduleSpecifier.text),
++        'unexpected dependency: ' + node.moduleSpecifier.text);
++    }
++    if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
++      if (ts.isIdentifier(node.tagName)) {
++        const attributes = node.attributes.properties.filter(ts.isJsxAttribute);
++        const attr = (name: string) => attributes.find((item) => item.name.getText(source) === name);
++        if (node.tagName.text === 'button') {
++          buttons += 1;
++          const type = attr('type')?.initializer;
++          assert.ok(type && ts.isStringLiteral(type) && type.text === 'button');
++          assert.ok(attr('disabled'), 'each native button needs an explicit disabled policy');
++        }
++        if (node.tagName.text === 'fieldset') {
++          fieldsets += 1;
++          assert.ok(attr('disabled'), 'radio groups inherit the native disabled state');
++        }
++      }
++    }
++    ts.forEachChild(node, visit);
++  };
++  visit(source);
++  assert.ok(buttons >= 3);
++  assert.ok(fieldsets >= 2);
++  // These are dependency boundaries, not proof that any DOM effect has run.
++  assert.doesNotMatch(source.text, /\b(?:fetch|localStorage|sessionStorage)\s*(?:\(|\.)/);
++});
+diff --git a/tests/personal-insights/fixtures.ts b/tests/personal-insights/fixtures.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/personal-insights/fixtures.ts
+@@ -0,0 +1,113 @@
++/** TEST ONLY synthetic fixtures. Never copy these records into production data. */
++import type { CatalogView, Group, Member, RatingView, Work } from '../../lib/idol/types';
++
++export const TEST_ONLY_NOTICE = 'TEST ONLY / synthetic personal-insights fixtures';
++
++export function group(id: string, patch: Partial<Group> = {}): Group {
++  return {
++    id, name: 'TEST ONLY Group ' + id, generation: '', company: '', country: '',
++    note: '', debut: '', memberIds: [], workIds: [], average: null, ratedCount: 0,
++    ...patch,
++  };
++}
++
++export function member(id: string, patch: Partial<Member> = {}): Member {
++  return {
++    id, name: 'TEST ONLY Member ' + id, cnName: '', stageName: 'TEST ONLY ' + id,
++    groupIds: [], photo: null, favorite: null, note: '', profile: '', status: '',
++    country: '', role: '', officialUrl: '', birthDate: '', ...patch,
++  };
++}
++
++export function stage(
++  patch: Partial<NonNullable<Work['stage']>> = {},
++): NonNullable<Work['stage']> {
++  return {
++    videoId: 'TEST_ONLY_STAGE', url: 'https://video.example/test-only-stage',
++    title: 'TEST ONLY complete stage', channel: 'TEST ONLY channel',
++    kind: 'TEST ONLY stage', publishedDate: '', typeNote: '',
++    sourceUrl: 'https://source.example/test-only-stage', scoreBinding: null,
++    likes: { value: null, display: '', precision: 'unknown' },
++    checkedAt: '2026-10-16', selectionNote: 'TEST ONLY', candidateCount: 0,
++    candidates: [], ...patch,
++  };
++}
++
++export function work(id: string, patch: Partial<Work> = {}): Work {
++  return {
++    id, name: 'TEST ONLY Work ' + id, song: 'TEST ONLY Song ' + id,
++    groupIds: [], url: '', score: null, stageScore: null, stage: null,
++    stageResearch: { status: 'pending', reason: 'TEST ONLY', checkedAt: null },
++    note: '', watched: '', videoType: '', version: '', releaseDate: '',
++    verification: '', officialTitle: '', channel: '', ratingIds: [], source: '',
++    ...patch,
++  };
++}
++
++export function rating(id: string, patch: Partial<RatingView> = {}): RatingView {
++  return {
++    id, name: 'TEST ONLY Rating ' + id, memberIds: [], workIds: [],
++    score: null, stylingScore: null, memory: '', note: '', photo: null,
++    verification: '', source: '', recognition: '', ...patch,
++  };
++}
++
++export interface CatalogParts {
++  groups?: Group[];
++  members?: Member[];
++  works?: Work[];
++  ratings?: RatingView[];
++}
++
++export function catalog(parts: CatalogParts = {}): CatalogView {
++  const groups = parts.groups ?? [];
++  const members = parts.members ?? [];
++  const works = parts.works ?? [];
++  const ratings = parts.ratings ?? [];
++  const scores = works.map((item) => item.score).filter((value): value is number => (
++    typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= 10
++  ));
++  return {
++    mode: 'snapshot', capturedAt: '2026-10-16T00:00:00.000Z',
++    loadedAt: '2026-10-16T00:00:00.000Z', warning: null,
++    groups, members, works, ratings,
++    counts: {
++      groups: groups.length, members: members.length, works: works.length,
++      ratings: ratings.length, ratedWorks: scores.length,
++      scoreSum: scores.reduce((sum, value) => sum + value, 0),
++    },
++  };
++}
++
++/** Deliberately malformed runtime field; never casts an entire catalog. */
++export function rawField<T extends object, K extends keyof T>(
++  record: T, key: K, value: unknown,
++): T {
++  const copy = { ...record };
++  Object.defineProperty(copy, key, {
++    value, enumerable: true, configurable: true, writable: true,
++  });
++  return copy;
++}
++
++/** Freezes values without invoking accessors. */
++export function deepFreeze<T>(value: T, seen: WeakSet<object> = new WeakSet()): T {
++  if (value === null || (typeof value !== 'object' && typeof value !== 'function')) return value;
++  if (seen.has(value)) return value;
++  seen.add(value);
++  for (const key of Reflect.ownKeys(value)) {
++    const descriptor = Object.getOwnPropertyDescriptor(value, key);
++    if (descriptor && 'value' in descriptor) deepFreeze(descriptor.value, seen);
++  }
++  return Object.freeze(value);
++}
++
++/** Privacy oracle: accidental access fails instead of returning fake content. */
++export function forbidRead(record: object, keys: readonly PropertyKey[]): void {
++  for (const key of keys) {
++    Object.defineProperty(record, key, {
++      enumerable: true, configurable: true,
++      get() { throw new Error('TEST ONLY forbidden personal field read: ' + String(key)); },
++    });
++  }
++}
+diff --git a/tests/personal-insights/index.html b/tests/personal-insights/index.html
+new file mode 100644
+--- /dev/null
++++ b/tests/personal-insights/index.html
+@@ -0,0 +1,8 @@
++<!doctype html>
++<html lang="zh-CN">
++<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TEST ONLY · 个人偏好分析夹具</title></head>
++<body style="margin:0;background:#faf8fb;font-family:system-ui,sans-serif">
++  <div id="fixture"></div>
++  <script type="module" src="./browser-entry.tsx"></script>
++</body>
++</html>
+diff --git a/tests/personal-insights/model.test.ts b/tests/personal-insights/model.test.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/personal-insights/model.test.ts
+@@ -0,0 +1,326 @@
++import assert from 'node:assert/strict';
++import test from 'node:test';
++import {
++  analyzeCatalog, compareGroups, isStageEligible, prepareCatalog, validScore,
++} from '../../lib/idol/personal-insights/index';
++import {
++  catalog, deepFreeze, forbidRead, group, member, rating, rawField, stage, work,
++} from './fixtures';
++
++function close(actual: number | null, expected: number): void {
++  assert.ok(actual !== null, 'expected a numeric mean, received null');
++  assert.ok(Math.abs(actual - expected) < 1e-12, actual + ' differs from ' + expected);
++}
++function sorted(values: readonly string[]): string[] { return [...values].sort(); }
++
++test('validScore preserves zero and accepts only finite numeric values in [0,10]', () => {
++  for (const value of [0, 0.25, 8.99, 9, 9.5, 10]) assert.equal(validScore(value), value);
++  assert.equal(validScore(-0) === 0, true);
++  const hostileObject = { valueOf() { throw new Error('must not coerce'); } };
++  for (const value of [
++    null, undefined, NaN, Infinity, -Infinity, -0.001, 10.001,
++    '0', '9', '', true, false, [], [9], {}, hostileObject,
++  ]) assert.equal(validScore(value), null);
++});
++
++test('MV statistics distinguish missing and invalid fields and use floor bins', () => {
++  const values: unknown[] = [0, 10, 9.5, 8.99, null, undefined, NaN, -1, 11, '7', Infinity];
++  const input = deepFreeze(catalog({
++    works: values.map((value, index) => rawField(work('score-' + index), 'score', value)),
++  }));
++  const result = analyzeCatalog(input);
++  assert.equal(result.uniqueWorkCount, 11);
++  assert.deepEqual(result.mv, {
++    eligibleCount: 11, ratedCount: 4, mean: (0 + 10 + 9.5 + 8.99) / 4, highCount: 2,
++    bins: [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
++    missingCount: 2, invalidCount: 5, unqualifiedCount: 0,
++  });
++  assert.equal(result.stage.eligibleCount, 0);
++  assert.equal(result.stage.ratedCount, 0);
++  assert.equal(result.stage.mean, null);
++  assert.equal(result.stage.unqualifiedCount, 11);
++});
++
++test('MV and stage have separate scores; stage requires a stage and exact adapter approval', () => {
++  const approved = work('approved', { score: 0, stageScore: 10, stage: stage() });
++  const approvedZero = work('approved-zero', { score: 10, stageScore: 0, stage: stage() });
++  const denied = work('denied', { score: null, stageScore: 9, stage: stage() });
++  const absent = work('absent', { score: 9, stageScore: 9 });
++  const input = catalog({ works: [approved, approvedZero, denied, absent] });
++  const options = { isStageScoreEligible: (item: Readonly<typeof approved>) => item.id !== 'denied' };
++  assert.equal(isStageEligible(approved), false);
++  assert.equal(isStageEligible(approved, options), true);
++  assert.equal(isStageEligible(denied, options), false);
++  assert.equal(isStageEligible(absent, options), false);
++  const truthyAdapter = { isStageScoreEligible: () => true };
++  Object.defineProperty(truthyAdapter, 'isStageScoreEligible', { value: () => 'yes' });
++  assert.equal(isStageEligible(approved, truthyAdapter), false);
++  const result = analyzeCatalog(input, options);
++  close(result.mv.mean, 19 / 3);
++  assert.equal(result.mv.ratedCount, 3);
++  assert.equal(result.mv.missingCount, 1);
++  assert.equal(result.stage.eligibleCount, 2);
++  assert.equal(result.stage.unqualifiedCount, 2);
++  assert.equal(result.stage.ratedCount, 2);
++  assert.equal(result.stage.mean, 5);
++  assert.equal(result.stage.highCount, 1);
++  assert.equal(result.stage.bins[0], 1);
++  assert.equal(result.stage.bins[10], 1);
++  assert.equal(analyzeCatalog(input).stage.unqualifiedCount, 4);
++});
++
++test('a throwing stage adapter fails closed without throwing from analysis', () => {
++  const item = work('adapter-throws', { stage: stage(), stageScore: 10 });
++  const options = { isStageScoreEligible: () => { throw new Error('TEST ONLY adapter failure'); } };
++  assert.equal(isStageEligible(item, options), false);
++  const result = analyzeCatalog(catalog({ works: [item] }), options);
++  assert.equal(result.stage.eligibleCount, 0);
++  assert.equal(result.stage.unqualifiedCount, 1);
++  assert.deepEqual(result.stageRevisit.highRated, []);
++});
++
++test('ineligible stage scores never enter missing or invalid counts', () => {
++  const input = catalog({ works: [
++    rawField(work('valid-stage', { stage: stage(), stageScore: 0 }), 'score', undefined),
++    rawField(work('missing-stage-score', { stage: stage() }), 'stageScore', undefined),
++    rawField(work('invalid-stage-score', { stage: stage() }), 'stageScore', '9'),
++    rawField(work('unqualified-invalid', { stage: stage() }), 'stageScore', NaN),
++    rawField(work('unqualified-missing'), 'stageScore', undefined),
++  ] });
++  const result = analyzeCatalog(input, {
++    isStageScoreEligible: (item) => !item.id.startsWith('unqualified'),
++  });
++  assert.deepEqual(result.stage, {
++    eligibleCount: 3, ratedCount: 1, mean: 0, highCount: 0,
++    bins: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
++    missingCount: 1, invalidCount: 1, unqualifiedCount: 2,
++  });
++  assert.equal(result.mv.missingCount, 5);
++});
++
++test('multi-group works count once globally and once per distinct canonical group', () => {
++  const input = deepFreeze(catalog({
++    groups: [group('b'), group('a'), group('c')],
++    works: [
++      work('both', { groupIds: ['a', 'a', 'b'], score: 0 }),
++      work('a-only', { groupIds: ['a'], score: 10 }),
++      work('b-only', { groupIds: ['b'], score: 9 }),
++      work('unrated', { groupIds: ['c'], score: null }),
++    ],
++  }));
++  const result = analyzeCatalog(input);
++  assert.equal(result.uniqueWorkCount, 4);
++  assert.equal(result.mv.ratedCount, 3);
++  close(result.mv.mean, 19 / 3);
++  const a = result.mvGroups.find((item) => item.groupId === 'a');
++  const b = result.mvGroups.find((item) => item.groupId === 'b');
++  const c = result.mvGroups.find((item) => item.groupId === 'c');
++  assert.ok(a && b && c);
++  assert.equal(a.workCount, 2);
++  assert.equal(a.stats.mean, 5);
++  assert.equal(b.workCount, 2);
++  assert.equal(b.stats.mean, 4.5);
++  assert.equal(c.workCount, 1);
++  assert.equal(c.stats.ratedCount, 0);
++  assert.equal(c.stats.mean, null);
++  const prepared = prepareCatalog(input);
++  assert.deepEqual(compareGroups(prepared, 'mv').map((item) => item.groupId), ['a', 'b', 'c']);
++  assert.deepEqual(compareGroups(prepared, 'mv', 'samples').map((item) => item.groupId), ['b', 'a', 'c']);
++  assert.deepEqual(compareGroups(prepared, 'mv', 'high').map((item) => item.groupId), ['b', 'a', 'c']);
++  assert.deepEqual(compareGroups(prepared, 'stage').map((item) => item.groupId), ['b', 'a', 'c']);
++});
++
++test('watch states use exact source strings and an honest known-state denominator', () => {
++  const states: unknown[] = ['已观看', '未观看', '', 'unknown', '已观看 ', undefined];
++  const result = analyzeCatalog(catalog({
++    works: states.map((value, index) => rawField(work('watch-' + index), 'watched', value)),
++  }));
++  assert.deepEqual(result.watching, {
++    total: 6, watched: 1, unwatched: 1, unmarked: 1, unknown: 3,
++    knownCount: 3, watchedRatio: 1 / 3,
++  });
++  const unknownOnly = analyzeCatalog(catalog({ works: [work('unknown', { watched: '?' })] }));
++  assert.equal(unknownOnly.watching.knownCount, 0);
++  assert.equal(unknownOnly.watching.watchedRatio, null);
++});
++
++test('revisit lists preserve versions, use raw null for MV pending reviews, and never infer stage watching', () => {
++  const input = catalog({ works: [
++    work('original', { name: 'TEST ONLY Echo', version: 'original', score: 9, watched: '未观看' }),
++    work('dance', { name: 'TEST ONLY Echo', version: 'dance', score: 10, watched: '' }),
++    work('waiting', { score: null, watched: '已观看', stage: stage(), stageScore: 9 }),
++    rawField(work('undefined', { watched: '已观看', stage: stage(), stageScore: 10 }), 'score', undefined),
++    rawField(work('invalid', { watched: '已观看' }), 'score', NaN),
++    work('zero', { score: 0, watched: '已观看' }),
++    work('unwatched-null', { score: null, watched: '未观看' }),
++  ] });
++  const result = analyzeCatalog(input, { isStageScoreEligible: () => true });
++  assert.deepEqual(sorted(result.mvRevisit.highRated.map((item) => item.workId)), ['dance', 'original']);
++  const originals = new Map(result.mvRevisit.highRated.map((item) => [item.workId, item]));
++  assert.deepEqual(originals.get('original'), {
++    workId: 'original', name: 'TEST ONLY Echo', version: 'original', score: 9, reason: 'high-score',
++  });
++  assert.deepEqual(originals.get('dance'), {
++    workId: 'dance', name: 'TEST ONLY Echo', version: 'dance', score: 10, reason: 'high-score',
++  });
++  assert.deepEqual(result.mvRevisit.watchedUnrated.map((item) => ({
++    workId: item.workId, score: item.score, reason: item.reason,
++  })), [{ workId: 'waiting', score: null, reason: 'watched-unrated' }]);
++  assert.deepEqual(sorted(result.stageRevisit.highRated.map((item) => item.workId)), ['undefined', 'waiting']);
++  assert.deepEqual(result.stageRevisit.watchedUnrated, []);
++  assert.equal(result.mv.missingCount, 3);
++  assert.equal(result.mv.invalidCount, 1);
++});
++
++test('member axes have independent denominators; all-invalid records remain diagnosed', () => {
++  const works = [
++    work('w1', { ratingIds: ['r1'] }), work('w2', { ratingIds: ['r2'] }),
++    work('w3', { ratingIds: ['r3'] }), work('w4', { ratingIds: ['r4'] }),
++    work('w5', { ratingIds: ['empty'] }), work('w6', { ratingIds: ['invalid'] }),
++    work('w7', { ratingIds: ['undefined-empty'] }),
++    work('wa', { ratingIds: ['ambiguous'] }), work('wm', { ratingIds: ['missing-member'] }),
++  ];
++  const result = analyzeCatalog(deepFreeze(catalog({
++    members: [member('a', { favorite: 10 }), member('b', { favorite: 0 })],
++    works,
++    ratings: [
++      rating('r1', { memberIds: ['a', 'a'], workIds: ['w1', 'w1'], score: 0, stylingScore: 10 }),
++      rating('r2', { memberIds: ['a'], workIds: ['w2'], score: 10, stylingScore: 0 }),
++      rating('r3', { memberIds: ['b'], workIds: ['w3'], score: null, stylingScore: 0 }),
++      rawField(rating('r4', { memberIds: ['a'], workIds: ['w4'], stylingScore: 8 }), 'score', NaN),
++      rating('empty', { memberIds: ['a'], workIds: ['w5'] }),
++      rating('invalid', { memberIds: ['a'], workIds: ['w6'], score: 11, stylingScore: null }),
++      rawField(rating('undefined-empty', { memberIds: ['a'], workIds: ['w7'] }), 'score', undefined),
++      rating('ambiguous', { memberIds: ['a', 'b'], workIds: ['wa'], score: 10 }),
++      rating('missing-member', { memberIds: ['absent'], workIds: ['wm'], score: 10 }),
++      rating('missing-work', { memberIds: ['a'], workIds: ['absent'], score: 10 }),
++      rating('unlinked', { memberIds: ['a'], workIds: ['w1'], score: 10 }),
++    ],
++  })));
++  assert.equal(result.members.rows.length, 2);
++  const a = result.members.rows.find((item) => item.memberId === 'a');
++  const b = result.members.rows.find((item) => item.memberId === 'b');
++  assert.ok(a && b);
++  assert.deepEqual(a.performance, { sampleCount: 2, mean: 5, invalidCount: 2 });
++  assert.deepEqual(a.styling, { sampleCount: 3, mean: 6, invalidCount: 0 });
++  assert.deepEqual(sorted(a.workIds), ['w1', 'w2', 'w4']);
++  assert.deepEqual(sorted(a.ratingIds), ['r1', 'r2', 'r4']);
++  assert.deepEqual(b.performance, { sampleCount: 0, mean: null, invalidCount: 0 });
++  assert.deepEqual(b.styling, { sampleCount: 1, mean: 0, invalidCount: 0 });
++  assert.deepEqual(result.members.excluded, {
++    ambiguousRelations: 1, missingRelations: 2, unlinkedRatings: 1,
++    emptyScores: 2, invalidScores: 1,
++  });
++});
++
++test('duplicate IDs are quarantined; raw placeholder diagnostics may overlap duplicate records', () => {
++  const hidden = { reason: 'TEST ONLY placeholder', originalRow: 42, verifiedAt: '2026-10-16' };
++  const result = analyzeCatalog(catalog({
++    groups: [group('dup-group'), group('dup-group'), group('g'), group('')],
++    members: [member('dup-member'), member('dup-member'), member('m'), member('\t')],
++    works: [
++      work('dup-work', { score: 10 }), work('dup-work', { score: 0 }),
++      work('dup-hidden', { placeholder: hidden }), work('dup-hidden', { placeholder: hidden }),
++      work('placeholder', { placeholder: hidden }),
++      work(' kept ', { groupIds: ['g'], score: 0, ratingIds: ['r'] }),
++      work(' ', { score: 10 }),
++    ],
++    ratings: [
++      rating('dup-rating', { score: 10 }), rating('dup-rating', { score: 0 }),
++      rating('r', { memberIds: ['m'], workIds: [' kept '], score: 0 }),
++      rating('  '),
++    ],
++  }));
++  assert.equal(result.uniqueWorkCount, 1);
++  assert.equal(result.mv.ratedCount, 1);
++  assert.equal(result.mv.mean, 0);
++  assert.deepEqual(result.members.rows.map((item) => item.memberId), ['m']);
++  assert.deepEqual(result.members.rows[0]?.workIds, [' kept ']);
++  assert.deepEqual(sorted(result.diagnostics.duplicateWorkIds), ['dup-hidden', 'dup-work']);
++  assert.deepEqual(result.diagnostics.duplicateGroupIds, ['dup-group']);
++  assert.deepEqual(result.diagnostics.duplicateMemberIds, ['dup-member']);
++  assert.deepEqual(result.diagnostics.duplicateRatingIds, ['dup-rating']);
++  assert.deepEqual(result.diagnostics.emptyIds, { works: 1, groups: 1, members: 1, ratings: 1 });
++  // This diagnostic counts raw records, independently of identity quarantine.
++  assert.equal(result.diagnostics.placeholderCount, 3);
++});
++
++test('a duplicated group or member is not selected arbitrarily for a canonical relationship', () => {
++  const result = analyzeCatalog(catalog({
++    groups: [group('g', { name: 'TEST ONLY first' }), group('g', { name: 'TEST ONLY second' })],
++    members: [member('m'), member('m')],
++    works: [work('w', { groupIds: ['g'], ratingIds: ['r'], score: 9 })],
++    ratings: [rating('r', { memberIds: ['m'], workIds: ['w'], score: 10 })],
++  }));
++  assert.equal(result.uniqueWorkCount, 1);
++  assert.deepEqual(result.mvGroups, []);
++  assert.deepEqual(result.members.rows, []);
++  assert.equal(result.members.excluded.missingRelations, 1);
++});
++
++test('empty catalogs produce zeros and null means without invented comparisons', () => {
++  const result = analyzeCatalog(deepFreeze(catalog()));
++  assert.equal(result.uniqueWorkCount, 0);
++  assert.deepEqual(result.watching, {
++    total: 0, watched: 0, unwatched: 0, unmarked: 0, unknown: 0,
++    knownCount: 0, watchedRatio: null,
++  });
++  for (const stats of [result.mv, result.stage]) {
++    assert.deepEqual(stats, {
++      eligibleCount: 0, ratedCount: 0, mean: null, highCount: 0,
++      bins: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
++      missingCount: 0, invalidCount: 0, unqualifiedCount: 0,
++    });
++  }
++  assert.deepEqual(result.mvGroups, []);
++  assert.deepEqual(result.stageGroups, []);
++  assert.deepEqual(result.members, {
++    rows: [],
++    excluded: { ambiguousRelations: 0, missingRelations: 0, unlinkedRatings: 0, emptyScores: 0, invalidScores: 0 },
++  });
++  assert.deepEqual(result.mvRevisit, { highRated: [], watchedUnrated: [] });
++  assert.deepEqual(result.stageRevisit, { highRated: [], watchedUnrated: [] });
++});
++
++test('frozen inputs remain intact and refreshing a catalog recomputes the same IDs', () => {
++  const original = deepFreeze(catalog({
++    groups: [group('g')],
++    works: [work('same', { groupIds: ['g'], score: 0, watched: '未观看' })],
++  }));
++  const before = JSON.stringify(original);
++  const worksReference = original.works;
++  const workReference = original.works[0];
++  const first = analyzeCatalog(original);
++  const prepared = prepareCatalog(original);
++  compareGroups(prepared, 'mv', 'high');
++  assert.equal(JSON.stringify(original), before);
++  assert.equal(original.works, worksReference);
++  assert.equal(original.works[0], workReference);
++  const refreshed = deepFreeze(catalog({
++    groups: [group('g')],
++    works: [work('same', { groupIds: ['g'], score: 10, watched: '已观看' })],
++  }));
++  const second = analyzeCatalog(refreshed);
++  assert.equal(first.mv.mean, 0);
++  assert.equal(second.mv.mean, 10);
++  assert.equal(first.watching.watched, 0);
++  assert.equal(second.watching.watched, 1);
++  assert.equal(analyzeCatalog(original).mv.mean, 0);
++});
++
++test('analysis never reads personal notes, memories, profiles, favorites, or sources', () => {
++  const input = catalog({
++    groups: [group('g')], members: [member('m')],
++    works: [work('w', { groupIds: ['g'], ratingIds: ['r'], score: 0, stage: stage(), stageScore: 10 })],
++    ratings: [rating('r', { memberIds: ['m'], workIds: ['w'], score: 0, stylingScore: 10 })],
++  });
++  for (const item of input.groups) forbidRead(item, ['note']);
++  for (const item of input.members) forbidRead(item, ['note', 'profile', 'favorite']);
++  for (const item of input.works) forbidRead(item, ['note', 'source']);
++  for (const item of input.ratings) forbidRead(item, ['note', 'memory', 'source']);
++  const result = analyzeCatalog(deepFreeze(input), { isStageScoreEligible: () => true });
++  assert.equal(result.mv.mean, 0);
++  assert.equal(result.stage.mean, 10);
++  assert.equal(result.members.rows[0]?.performance.mean, 0);
++  assert.equal(result.members.rows[0]?.styling.mean, 10);
++});
+diff --git a/tests/personal-insights/properties.test.ts b/tests/personal-insights/properties.test.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/personal-insights/properties.test.ts
+@@ -0,0 +1,185 @@
++import assert from 'node:assert/strict';
++import test from 'node:test';
++import { analyzeCatalog, validScore } from '../../lib/idol/personal-insights/index';
++import {
++  catalog, deepFreeze, group, member, rating, rawField, stage, work,
++} from './fixtures';
++
++type Stats = ReturnType<typeof analyzeCatalog>['mv'];
++function assertStats(stats: Stats): void {
++  assert.equal(stats.bins.length, 11);
++  assert.ok(stats.bins.every((count) => Number.isInteger(count) && count >= 0));
++  assert.equal(stats.bins.reduce((sum, count) => sum + count, 0), stats.ratedCount);
++  assert.equal(stats.eligibleCount, stats.ratedCount + stats.missingCount + stats.invalidCount);
++  assert.ok(stats.highCount >= 0 && stats.highCount <= stats.ratedCount);
++  if (stats.ratedCount === 0) assert.equal(stats.mean, null);
++  else {
++    assert.ok(stats.mean !== null);
++    assert.ok(Number.isFinite(stats.mean) && stats.mean >= 0 && stats.mean <= 10);
++  }
++}
++function generator(seed: number): () => number {
++  let state = seed >>> 0;
++  return () => {
++    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
++    return state;
++  };
++}
++
++test('deterministic generated catalogs satisfy count, range, and identity invariants', () => {
++  const pool: unknown[] = [0, 1, 4.5, 8.99, 9, 10, null, undefined, NaN, -1, 11, '9'];
++  for (let seed = 1; seed <= 48; seed += 1) {
++    const random = generator(seed);
++    const works = Array.from({ length: 48 }, (_, index) => {
++      const item = work('seed-' + seed + '-work-' + index, {
++        groupIds: index % 3 === 0 ? ['a', 'a', 'b'] : [index % 2 === 0 ? 'a' : 'b'],
++        stage: index % 3 === 0 ? null : stage(),
++        videoType: index % 2 === 0 ? 'TEST ONLY eligible' : 'TEST ONLY denied',
++        watched: ['已观看', '未观看', '', '?'][random() % 4],
++      });
++      return rawField(rawField(item, 'score', pool[random() % pool.length]),
++        'stageScore', pool[random() % pool.length]);
++    });
++    const input = deepFreeze(catalog({ groups: [group('b'), group('a')], works }));
++    const snapshot = input.works.map((item) => ({
++      id: item.id, score: item.score, stageScore: item.stageScore, groupIds: [...item.groupIds],
++    }));
++    const result = analyzeCatalog(input, {
++      isStageScoreEligible: (item) => item.videoType === 'TEST ONLY eligible',
++    });
++    assert.equal(result.uniqueWorkCount, 48);
++    assertStats(result.mv);
++    assertStats(result.stage);
++    assert.equal(result.mv.eligibleCount, 48);
++    assert.equal(result.mv.unqualifiedCount, 0);
++    assert.equal(result.stage.eligibleCount + result.stage.unqualifiedCount, 48);
++    assert.equal(result.stage.eligibleCount, works.filter((item) => (
++      item.stage !== null && item.videoType === 'TEST ONLY eligible'
++    )).length);
++    assert.equal(result.watching.total, 48);
++    assert.equal(result.watching.total,
++      result.watching.knownCount + result.watching.unknown);
++    assert.equal(result.watching.knownCount,
++      result.watching.watched + result.watching.unwatched + result.watching.unmarked);
++    for (const row of [...result.mvGroups, ...result.stageGroups]) {
++      assert.ok(row.workCount > 0 && row.workCount <= 48);
++      assert.ok(row.stats.ratedCount <= row.workCount);
++      assertStats(row.stats);
++    }
++    assert.deepEqual(result.stageRevisit.watchedUnrated, []);
++    assert.deepEqual(input.works.map((item) => ({
++      id: item.id, score: item.score, stageScore: item.stageScore, groupIds: [...item.groupIds],
++    })), snapshot);
++  }
++});
++
++test('score boundaries retain tiny positive values and distinguish bins immediately below 9 and 10', () => {
++  const values = [0, Number.MIN_VALUE, 0.999999, 1, 8.999999, 9, 9.999999, 10];
++  assert.equal(validScore(Number.MIN_VALUE), Number.MIN_VALUE);
++  assert.equal(validScore(-Number.MIN_VALUE), null);
++  assert.equal(validScore(10.000001), null);
++  const result = analyzeCatalog(catalog({
++    works: values.map((score, index) => work('boundary-' + index, { score })),
++  }));
++  assert.deepEqual(result.mv.bins, [3, 1, 0, 0, 0, 0, 0, 0, 1, 2, 1]);
++  assert.equal(result.mv.highCount, 3);
++  assert.equal(result.mv.ratedCount, values.length);
++});
++
++test('permuting source works does not alter aggregate or per-group statistics', () => {
++  const works = Array.from({ length: 33 }, (_, index) => work('permutation-' + index, {
++    score: index % 11, stageScore: 10 - (index % 11), stage: stage(),
++    groupIds: index % 3 === 0 ? ['a', 'b', 'a'] : [index % 2 === 0 ? 'a' : 'b'],
++    watched: index % 2 === 0 ? '已观看' : '未观看',
++  }));
++  const make = (items: typeof works) => analyzeCatalog(deepFreeze(catalog({
++    groups: [group('b'), group('a')], works: items,
++  })), { isStageScoreEligible: () => true });
++  const first = make(works);
++  const second = make([...works].reverse());
++  assert.deepEqual(second.watching, first.watching);
++  assert.deepEqual(second.mv, first.mv);
++  assert.deepEqual(second.stage, first.stage);
++  const byId = (rows: typeof first.mvGroups) => [...rows].sort((a, b) => a.groupId.localeCompare(b.groupId));
++  assert.deepEqual(byId(second.mvGroups), byId(first.mvGroups));
++  assert.deepEqual(byId(second.stageGroups), byId(first.stageGroups));
++});
++
++test('relationship order and repeated identical links never pick an arbitrary ambiguous entity', () => {
++  const run = (memberIds: string[], workIds: string[]) => analyzeCatalog(catalog({
++    members: [member('a'), member('b')],
++    works: [work('w1', { ratingIds: ['r'] }), work('w2', { ratingIds: ['r'] })],
++    ratings: [rating('r', { memberIds, workIds, score: 0, stylingScore: 10 })],
++  }));
++  for (const [members, works] of [
++    [['a', 'b'], ['w1']], [['b', 'a', 'b'], ['w1', 'w1']],
++    [['a'], ['w1', 'w2']], [['a', 'a'], ['w2', 'w1', 'w2']],
++  ]) {
++    const result = run(members, works);
++    assert.deepEqual(result.members.rows, []);
++    assert.equal(result.members.excluded.ambiguousRelations, 1);
++  }
++  const unique = run(['a'], ['w1']);
++  const repeated = run(['a', 'a', 'a'], ['w1', 'w1']);
++  assert.deepEqual(repeated.members, unique.members);
++  assert.equal(repeated.members.rows[0]?.performance.mean, 0);
++  assert.equal(repeated.members.rows[0]?.styling.mean, 10);
++});
++
++test('one-sided rating associations are excluded even when the other direction is populated', () => {
++  const noBacklink = analyzeCatalog(catalog({
++    members: [member('a')], works: [work('w')],
++    ratings: [rating('r', { memberIds: ['a'], workIds: ['w'], score: 10 })],
++  }));
++  assert.deepEqual(noBacklink.members.rows, []);
++  assert.equal(noBacklink.members.excluded.unlinkedRatings, 1);
++  const noForwardLink = analyzeCatalog(catalog({
++    members: [member('a')], works: [work('w', { ratingIds: ['r'] })],
++    ratings: [rating('r', { memberIds: ['a'], workIds: [], score: 10 })],
++  }));
++  assert.deepEqual(noForwardLink.members.rows, []);
++  assert.equal(noForwardLink.members.excluded.missingRelations, 1);
++});
++
++test('5000 distinct synthetic works and ratings retain exact counts without a timing claim', () => {
++  const works = Array.from({ length: 5000 }, (_, index) => work('scale-' + index, {
++    score: index % 11,
++    stageScore: index % 2 === 0 ? 10 : null,
++    stage: index % 2 === 0 ? stage() : null,
++    groupIds: index % 5 === 0 ? ['a', 'a', 'b'] : [index % 2 === 0 ? 'a' : 'b'],
++    ratingIds: ['scale-rating-' + index],
++    watched: ['已观看', '未观看', '', '?'][index % 4],
++  }));
++  const ratings = works.map((item, index) => rating('scale-rating-' + index, {
++    memberIds: ['m'], workIds: [item.id], score: index % 11, stylingScore: 10 - (index % 11),
++  }));
++  const input = deepFreeze(catalog({
++    groups: [group('b'), group('a')], members: [member('m', { favorite: 10 })], works, ratings,
++  }));
++  const result = analyzeCatalog(input, { isStageScoreEligible: () => true });
++  assert.equal(result.uniqueWorkCount, 5000);
++  assert.equal(result.mv.ratedCount, 5000);
++  assert.equal(result.mv.mean, 24985 / 5000);
++  assert.equal(result.mv.highCount, 908);
++  assert.deepEqual(result.mv.bins, [455, 455, 455, 455, 455, 455, 454, 454, 454, 454, 454]);
++  assert.equal(result.stage.eligibleCount, 2500);
++  assert.equal(result.stage.unqualifiedCount, 2500);
++  assert.equal(result.stage.mean, 10);
++  assert.equal(result.stage.highCount, 2500);
++  assert.deepEqual(result.stageRevisit.watchedUnrated, []);
++  assert.deepEqual(result.watching, {
++    total: 5000, watched: 1250, unwatched: 1250, unmarked: 1250, unknown: 1250,
++    knownCount: 3750, watchedRatio: 1 / 3,
++  });
++  const row = result.members.rows[0];
++  assert.ok(row);
++  assert.equal(result.members.rows.length, 1);
++  assert.equal(row.performance.sampleCount, 5000);
++  assert.equal(row.performance.mean, 24985 / 5000);
++  assert.equal(row.styling.sampleCount, 5000);
++  assert.equal(row.styling.mean, 25015 / 5000);
++  assert.equal(row.workIds.length, 5000);
++  assert.equal(new Set(row.workIds).size, 5000);
++  assert.equal(row.ratingIds.length, 5000);
++  assert.equal(new Set(row.ratingIds).size, 5000);
++});
+diff --git a/tests/personal-insights/run-tests.mjs b/tests/personal-insights/run-tests.mjs
+new file mode 100644
+--- /dev/null
++++ b/tests/personal-insights/run-tests.mjs
+@@ -0,0 +1,185 @@
++/**
++ * Run only after the feature has been restored to the real project.
++ * Uses existing Node >=22.13, TypeScript 5.9, React 19 and react-dom 19.
++ * No installation, network, data fetching or product-module mocks.
++ *
++ * 1. Strictly typecheck the feature, its actual imports and all local fixtures.
++ * 2. Mirror actual TypeScript implementations to a temporary ESM output folder.
++ * 3. Execute exactly the three Node test files below.
++ *
++ * The one explicit CSS side-effect import is omitted for SSR only. Browser
++ * checks use the real stylesheet and run separately; they are never Node cases.
++ * Authoring checkpoint: not_run.
++ */
++import fs from 'node:fs/promises';
++import path from 'node:path';
++import { fileURLToPath } from 'node:url';
++import { createRequire } from 'node:module';
++import { spawnSync } from 'node:child_process';
++
++const projectRoot = await fs.realpath(fileURLToPath(new URL('../../', import.meta.url)));
++const configPath = path.join(projectRoot, 'tests/personal-insights/tsconfig.json');
++const requireFromProject = createRequire(path.join(projectRoot, 'package.json'));
++const [nodeMajor, nodeMinor] = process.versions.node.split('.').map(Number);
++if (nodeMajor < 22 || (nodeMajor === 22 && nodeMinor < 13)) {
++  throw new Error('personal-insights tests require Node >=22.13; found ' + process.versions.node);
++}
++let ts;
++let reactVersion;
++let reactDomVersion;
++try {
++  ts = requireFromProject('typescript');
++  reactVersion = requireFromProject('react/package.json').version;
++  reactDomVersion = requireFromProject('react-dom/package.json').version;
++} catch (error) {
++  throw new Error('Restore the existing project dependencies; no packages are installed by this runner.', { cause: error });
++}
++if (!/^5\.9\./.test(ts.version)) {
++  throw new Error('Expected existing TypeScript 5.9.x; found ' + ts.version);
++}
++if (!/^19\./.test(reactVersion) || !/^19\./.test(reactDomVersion)) {
++  throw new Error('Expected existing React/react-dom 19.x; found ' + reactVersion + '/' + reactDomVersion);
++}
++
++const diagnosticHost = {
++  getCanonicalFileName: (name) => name,
++  getCurrentDirectory: () => projectRoot,
++  getNewLine: () => '\n',
++};
++function failDiagnostics(diagnostics) {
++  if (diagnostics.length === 0) return;
++  process.stderr.write(ts.formatDiagnosticsWithColorAndContext(diagnostics, diagnosticHost));
++  throw new Error('Strict feature typecheck failed; Node tests were not started.');
++}
++const readConfig = ts.readConfigFile(configPath, ts.sys.readFile);
++failDiagnostics(readConfig.error ? [readConfig.error] : []);
++const parsed = ts.parseJsonConfigFileContent(readConfig.config, ts.sys, path.dirname(configPath), undefined, configPath);
++failDiagnostics(parsed.errors);
++const program = ts.createProgram({
++  rootNames: parsed.fileNames, options: parsed.options,
++  projectReferences: parsed.projectReferences,
++});
++failDiagnostics(ts.getPreEmitDiagnostics(program));
++process.stdout.write('Strict TypeScript feature check passed. SSR/source tests follow; browser checks are separate.\n');
++
++const tempPrefix = '.personal-insights-tests-';
++const outputRoot = await fs.mkdtemp(path.join(projectRoot, tempPrefix));
++const explicitSsrCss = path.join(projectRoot, 'components/personal-insights/personal-insights.css');
++const ignoredStyles = new Set();
++let exitCode = 1;
++
++function relativeInsideRoot(filename) {
++  const relative = path.relative(projectRoot, path.resolve(filename));
++  if (!relative || path.isAbsolute(relative) || relative === '..' || relative.startsWith('..' + path.sep)) {
++    throw new Error('Source escaped the restored project: ' + filename);
++  }
++  return relative;
++}
++function outputFile(filename) {
++  return path.join(outputRoot, relativeInsideRoot(filename).replace(/\.(?:tsx?|mts|cts)$/i, '.js'));
++}
++function rewriteSpecifier(specifier, importer) {
++  const resolved = ts.resolveModuleName(specifier, importer, parsed.options, ts.sys).resolvedModule;
++  if (!resolved) {
++    if (specifier.startsWith('.') || path.isAbsolute(specifier)) {
++      throw new Error('Unresolved local runtime import: ' + importer + ' -> ' + specifier);
++    }
++    return specifier;
++  }
++  if (resolved.isExternalLibraryImport || /\.d\.(?:ts|mts|cts)$/i.test(resolved.resolvedFileName)) {
++    return specifier;
++  }
++  if (!/\.(?:tsx?|mts|cts)$/i.test(resolved.resolvedFileName)) {
++    throw new Error('Unsupported local runtime dependency: ' + resolved.resolvedFileName);
++  }
++  let relative = path.relative(path.dirname(outputFile(importer)), outputFile(resolved.resolvedFileName));
++  relative = relative.split(path.sep).join('/');
++  return relative.startsWith('.') ? relative : './' + relative;
++}
++function transformImports(importer) {
++  return (context) => {
++    const factory = context.factory;
++    const visit = (node) => {
++      if (ts.isImportDeclaration(node) && ts.isStringLiteral(node.moduleSpecifier)) {
++        const specifier = node.moduleSpecifier.text;
++        if (specifier.endsWith('.css')) {
++          const cssPath = path.resolve(path.dirname(importer), specifier);
++          if (cssPath !== explicitSsrCss || node.importClause || !ts.sys.fileExists(cssPath)) {
++            throw new Error('Unregistered or missing SSR stylesheet: ' + importer + ' -> ' + specifier);
++          }
++          ignoredStyles.add(path.relative(projectRoot, cssPath).split(path.sep).join('/'));
++          return undefined;
++        }
++        return factory.updateImportDeclaration(
++          node, node.modifiers, node.importClause,
++          factory.createStringLiteral(rewriteSpecifier(specifier, importer)), node.attributes,
++        );
++      }
++      if (ts.isExportDeclaration(node) && node.moduleSpecifier && ts.isStringLiteral(node.moduleSpecifier)) {
++        return factory.updateExportDeclaration(
++          node, node.modifiers, node.isTypeOnly, node.exportClause,
++          factory.createStringLiteral(rewriteSpecifier(node.moduleSpecifier.text, importer)), node.attributes,
++        );
++      }
++      if (ts.isCallExpression(node) && node.expression.kind === ts.SyntaxKind.ImportKeyword
++        && node.arguments.length === 1 && ts.isStringLiteral(node.arguments[0])) {
++        return factory.updateCallExpression(node, node.expression, node.typeArguments, [
++          factory.createStringLiteral(rewriteSpecifier(node.arguments[0].text, importer)),
++        ]);
++      }
++      return ts.visitEachChild(node, visit, context);
++    };
++    return (source) => ts.visitNode(source, visit);
++  };
++}
++
++try {
++  await fs.writeFile(path.join(outputRoot, 'package.json'), '{"type":"module"}\n', 'utf8');
++  const implementations = program.getSourceFiles().filter((source) => (
++    !source.isDeclarationFile && !program.isSourceFileFromExternalLibrary(source)
++  ));
++  for (const source of implementations) {
++    if (!/\.(?:tsx?|mts|cts)$/i.test(source.fileName)) {
++      throw new Error('Unexpected implementation input: ' + source.fileName);
++    }
++    const result = ts.transpileModule(source.text, {
++      fileName: source.fileName,
++      compilerOptions: {
++        ...parsed.options, noEmit: false, declaration: false, declarationMap: false,
++        module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022,
++        jsx: ts.JsxEmit.ReactJSX, sourceMap: false, inlineSourceMap: false,
++        importHelpers: false,
++      },
++      reportDiagnostics: true,
++      transformers: { before: [transformImports(source.fileName)] },
++    });
++    failDiagnostics(result.diagnostics ?? []);
++    const destination = outputFile(source.fileName);
++    await fs.mkdir(path.dirname(destination), { recursive: true });
++    await fs.writeFile(destination, result.outputText, 'utf8');
++  }
++  if (ignoredStyles.size !== 1) {
++    throw new Error('Expected the one explicit personal-insights SSR stylesheet import.');
++  }
++  process.stdout.write('SSR-only omitted style: ' + [...ignoredStyles].join(', ') + '\n');
++  const cases = ['model.test.js', 'properties.test.js', 'component.test.js']
++    .map((name) => path.join(outputRoot, 'tests/personal-insights', name));
++  for (const filename of cases) await fs.access(filename);
++  const child = spawnSync(process.execPath, ['--test', '--test-reporter=tap', ...cases], {
++    cwd: projectRoot,
++    env: { ...process.env, PERSONAL_INSIGHTS_SOURCE_ROOT: projectRoot },
++    stdio: 'inherit',
++    shell: false,
++  });
++  if (child.error) throw child.error;
++  if (child.signal) throw new Error('Node test process stopped by signal ' + child.signal);
++  exitCode = child.status ?? 1;
++} finally {
++  // Verify the absolute target before the only recursive deletion in this file.
++  const resolvedOutput = await fs.realpath(outputRoot);
++  if (path.dirname(resolvedOutput) !== projectRoot || !path.basename(resolvedOutput).startsWith(tempPrefix)) {
++    throw new Error('Refusing cleanup outside this runner project directory: ' + resolvedOutput);
++  }
++  await fs.rm(resolvedOutput, { recursive: true, force: true });
++}
++process.exitCode = exitCode;
+diff --git a/tests/personal-insights/tsconfig.json b/tests/personal-insights/tsconfig.json
+new file mode 100644
+--- /dev/null
++++ b/tests/personal-insights/tsconfig.json
+@@ -0,0 +1,34 @@
++{
++  "compilerOptions": {
++    "target": "ES2022",
++    "lib": [
++      "ES2022",
++      "DOM",
++      "DOM.Iterable"
++    ],
++    "module": "ESNext",
++    "moduleResolution": "Bundler",
++    "jsx": "react-jsx",
++    "strict": true,
++    "noEmit": true,
++    "skipLibCheck": true,
++    "esModuleInterop": true,
++    "allowSyntheticDefaultImports": true,
++    "types": [
++      "node",
++      "react",
++      "react-dom"
++    ],
++    "forceConsistentCasingInFileNames": true
++  },
++  "include": [
++    "../../lib/idol/personal-insights/**/*.ts",
++    "../../components/personal-insights/**/*.ts",
++    "../../components/personal-insights/**/*.tsx",
++    "./**/*.ts",
++    "./**/*.tsx"
++  ],
++  "exclude": [
++    "../../node_modules"
++  ]
++}
+diff --git a/tests/personal-insights/vite.config.ts b/tests/personal-insights/vite.config.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/personal-insights/vite.config.ts
+@@ -0,0 +1,19 @@
++/** TEST ONLY isolated host. No application routes, production data or APIs. */
++import {defineConfig} from 'vite';
++import react from '@vitejs/plugin-react';
++import {fileURLToPath} from 'node:url';
++
++export default defineConfig({
++  root: fileURLToPath(new URL('./', import.meta.url)),
++  plugins: [react()],
++  server: {
++    host: '127.0.0.1',
++    port: 4178,
++    strictPort: true,
++    fs: {allow: [fileURLToPath(new URL('../../', import.meta.url))]},
++  },
++  build: {
++    outDir: 'browser-fixture-dist',
++    emptyOutDir: false,
++  },
++});

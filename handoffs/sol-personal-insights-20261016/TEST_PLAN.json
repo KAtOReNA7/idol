@@ -1,0 +1,990 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "personal-insights",
+  "baseline": "1804f12d0c51963bb65864cf531113151b07eaf5",
+  "authoredAt": "2026-10-16",
+  "execution": {
+    "status": "not_run",
+    "reason": "Original cloud runtime unavailable; user forbids PC/OS/local filesystem/browser/process execution. Only backend source reading and static review performed.",
+    "executedCases": 0,
+    "passed": null,
+    "failed": null,
+    "durations": null,
+    "performanceMeasurements": null
+  },
+  "boundaries": {
+    "productionDirectories": [
+      "lib/idol/personal-insights/",
+      "components/personal-insights/"
+    ],
+    "testDirectory": "tests/personal-insights/",
+    "data": "TEST ONLY synthetic; never write or upload into production catalog",
+    "application": "APP_WIRING.patch is a separate minimal proposal, not applied",
+    "noDependencyInstallation": true,
+    "noProductMocks": true,
+    "ssrCss": "Only actual personal-insights.css side-effect import omitted by runner for Node SSR; real browser uses real stylesheet",
+    "statusSemantics": "Source assertions listed here exist, but are not passed until executed in real host. Manual gates are separate."
+  },
+  "prerequisites": {
+    "node": ">=22.13",
+    "typescript": "existing 5.9.x",
+    "react": "existing19.x",
+    "reactDom": "existing19.x",
+    "browserFixture": "existing vite and @vitejs/plugin-react, real browser",
+    "missingProductionHelpers": "stage-source/member-display-name not included in 17-file input; final App helper resolution/typecheck remains a dot host gate"
+  },
+  "commands": [
+    {
+      "id": "isolated_feature",
+      "command": "node tests/personal-insights/run-tests.mjs",
+      "cwd": "restored project root after adding only approved three-directory files",
+      "performs": [
+        "strict feature TypeScript precheck including actual imports and local fixtures",
+        "temporary ESM transpilation of actual source with resolved relative imports",
+        "Node TAP execution of exactly model.test.ts,properties.test.ts,component.test.tsx equivalents",
+        "verified temp-directory cleanup"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "browser_fixture",
+      "command": "node node_modules/vite/bin/vite.js --config tests/personal-insights/vite.config.ts",
+      "cwd": "restored project root",
+      "url": "http://127.0.0.1:4178",
+      "performs": [
+        "isolated TEST ONLY fixture, no App/API/production catalog",
+        "select synthetic scale, interact with controls and run actual-browser assertion button"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "minimal_patch",
+      "command": "git apply --check handoffs/sol-personal-insights-20261016/APP_WIRING.patch",
+      "cwd": "exact baseline project root; proposed App unchanged",
+      "performs": [
+        "reviewable patch applicability only; does not apply source or prove TS/build"
+      ],
+      "status": "not_run"
+    }
+  ],
+  "automatedSourceCases": [
+    {
+      "id": "valid_score",
+      "title": "validScore preserves zero and accepts only finite numeric values in [0,10]",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "0,-0,0.25,8.99,9,9.5,10",
+        "null,undefined,NaN,±Infinity,-0.001,10.001,strings,booleans,arrays,objects",
+        "object.valueOf throws if coercion attempted"
+      ],
+      "expected": [
+        "all valid numeric values returned unchanged; -0 remains numerically zero",
+        "all other values return null without coercion"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "score_bins",
+      "title": "MV statistics distinguish missing and invalid fields and use floor bins",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "11 works with score=[0,10,9.5,8.99,null,undefined,NaN,-1,11,'7',Infinity]"
+      ],
+      "expected": {
+        "uniqueWorkCount": 11,
+        "mv": {
+          "eligibleCount": 11,
+          "ratedCount": 4,
+          "mean": "(0+10+9.5+8.99)/4",
+          "highCount": 2,
+          "bins": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "missingCount": 2,
+          "invalidCount": 5,
+          "unqualifiedCount": 0
+        },
+        "stage": {
+          "eligibleCount": 0,
+          "ratedCount": 0,
+          "mean": null,
+          "unqualifiedCount": 11
+        }
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "stage_domains",
+      "title": "MV and stage have separate scores; stage requires a stage and exact adapter approval",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "4 works: MV scores0,10,null,9; stage scores10,0,9,9",
+        "first two stage present+approved; third denied; fourth stage absent; truthy string callback tested"
+      ],
+      "expected": {
+        "mv": {
+          "ratedCount": 3,
+          "mean": "19/3",
+          "missingCount": 1
+        },
+        "stage": {
+          "eligibleCount": 2,
+          "unqualifiedCount": 2,
+          "ratedCount": 2,
+          "mean": 5,
+          "highCount": 1,
+          "bins0": 1,
+          "bins10": 1
+        },
+        "defaultStageUnqualified": 4,
+        "truthyNonBooleanApproved": false
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "stage_throw",
+      "title": "a throwing stage adapter fails closed without throwing from analysis",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "1 stage-bearing work stageScore10; callback throws"
+      ],
+      "expected": {
+        "eligibleCount": 0,
+        "unqualifiedCount": 1,
+        "highRated": [],
+        "throws": false
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "stage_partition",
+      "title": "ineligible stage scores never enter missing or invalid counts",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "5 works: qualified stage zero/missing/invalid; denied stage NaN; absent stage undefined"
+      ],
+      "expected": {
+        "stage": {
+          "eligibleCount": 3,
+          "ratedCount": 1,
+          "mean": 0,
+          "highCount": 0,
+          "bins": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "missingCount": 1,
+          "invalidCount": 1,
+          "unqualifiedCount": 2
+        },
+        "mvMissingCount": 5
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "multi_group",
+      "title": "multi-group works count once globally and once per distinct canonical group",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "groups input order b,a,c; both(a,a,b) score0; a-only10; b-only9; c-unrated null"
+      ],
+      "expected": {
+        "uniqueWorkCount": 4,
+        "mv": {
+          "ratedCount": 3,
+          "mean": "19/3"
+        },
+        "a": {
+          "workCount": 2,
+          "mean": 5
+        },
+        "b": {
+          "workCount": 2,
+          "mean": 4.5
+        },
+        "c": {
+          "workCount": 1,
+          "ratedCount": 0,
+          "mean": null
+        },
+        "sortMean": [
+          "a",
+          "b",
+          "c"
+        ],
+        "sortSamples": [
+          "b",
+          "a",
+          "c"
+        ],
+        "sortHigh": [
+          "b",
+          "a",
+          "c"
+        ],
+        "stageTies": [
+          "b",
+          "a",
+          "c"
+        ]
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "watch_denominator",
+      "title": "watch states use exact source strings and an honest known-state denominator",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "watched=['已观看','未观看','','unknown','已观看 ',undefined]",
+        "separate unknown-only catalog"
+      ],
+      "expected": {
+        "total": 6,
+        "watched": 1,
+        "unwatched": 1,
+        "unmarked": 1,
+        "unknown": 3,
+        "knownCount": 3,
+        "watchedRatio": "1/3",
+        "unknownOnlyRatio": null
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "revisit_identity",
+      "title": "revisit lists preserve versions, use raw null for MV pending reviews, and never infer stage watching",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "same song name original9/dance10 versions; explicit-null watched waiting; undefined watched; NaN watched; zero watched; null unwatched",
+        "waiting and undefined have qualified stage scores9/10"
+      ],
+      "expected": {
+        "mvHighRated": [
+          "dance",
+          "original"
+        ],
+        "versionMetadata": "original and dance retained on their own work IDs",
+        "mvPending": [
+          "waiting"
+        ],
+        "stageHighRated": [
+          "undefined",
+          "waiting"
+        ],
+        "stagePending": [],
+        "mvMissingCount": 3,
+        "mvInvalidCount": 1
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "member_axes",
+      "title": "member axes have independent denominators; all-invalid records remain diagnosed",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "member a rating pairs: (0,10),(10,0),(NaN,8),(null,null),(11,null),(undefined,null)",
+        "member b: (null,0); ambiguous1; missing-member1; missing-work1; unlinked1",
+        "all accepted ratings use reciprocal Work.ratingIds; favorite varies independently"
+      ],
+      "expected": {
+        "rows": 2,
+        "a": {
+          "performance": {
+            "sampleCount": 2,
+            "mean": 5,
+            "invalidCount": 2
+          },
+          "styling": {
+            "sampleCount": 3,
+            "mean": 6,
+            "invalidCount": 0
+          },
+          "ratingIds": [
+            "r1",
+            "r2",
+            "r4"
+          ],
+          "workIds": [
+            "w1",
+            "w2",
+            "w4"
+          ]
+        },
+        "b": {
+          "performance": {
+            "sampleCount": 0,
+            "mean": null,
+            "invalidCount": 0
+          },
+          "styling": {
+            "sampleCount": 1,
+            "mean": 0,
+            "invalidCount": 0
+          }
+        },
+        "excluded": {
+          "ambiguousRelations": 1,
+          "missingRelations": 2,
+          "unlinkedRatings": 1,
+          "emptyScores": 2,
+          "invalidScores": 1
+        }
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "identity_quarantine",
+      "title": "duplicate IDs are quarantined; raw placeholder diagnostics may overlap duplicate records",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "each table contains duplicated IDs and one whitespace-only ID",
+        "works include2 duplicate placeholders+1 unique placeholder; unique ID ' kept ' score0; valid reciprocal member rating0"
+      ],
+      "expected": {
+        "uniqueWorkCount": 1,
+        "mvRatedCount": 1,
+        "mvMean": 0,
+        "memberIds": [
+          "m"
+        ],
+        "keptID": " kept ",
+        "duplicateWorkIds": [
+          "dup-hidden",
+          "dup-work"
+        ],
+        "duplicateGroupIds": [
+          "dup-group"
+        ],
+        "duplicateMemberIds": [
+          "dup-member"
+        ],
+        "duplicateRatingIds": [
+          "dup-rating"
+        ],
+        "emptyIds": {
+          "works": 1,
+          "groups": 1,
+          "members": 1,
+          "ratings": 1
+        },
+        "placeholderCount": 3
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "duplicate_relations",
+      "title": "a duplicated group or member is not selected arbitrarily for a canonical relationship",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "group g duplicated with different names; member m duplicated; one work w score9 linked to g and rating r for m"
+      ],
+      "expected": {
+        "uniqueWorkCount": 1,
+        "mvGroups": [],
+        "memberRows": [],
+        "missingRelations": 1
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "empty",
+      "title": "empty catalogs produce zeros and null means without invented comparisons",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "deep-frozen empty four-table catalog"
+      ],
+      "expected": {
+        "uniqueWorkCount": 0,
+        "watching": "all counts0; ratio null",
+        "scoreStats": "all counts0; 11 zero bins; mean null",
+        "groups": [],
+        "members": "rows empty, all5 excluded counters0",
+        "revisit": "both domains empty lists"
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "input_refresh",
+      "title": "frozen inputs remain intact and refreshing a catalog recomputes the same IDs",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "frozen catalog w=same score0/unwatched then new catalog same ID score10/watched",
+        "prepare+compareGroups called on frozen original"
+      ],
+      "expected": {
+        "sourceSnapshotUnchanged": true,
+        "sourceReferencesUnchanged": true,
+        "firstMean": 0,
+        "secondMean": 10,
+        "firstWatched": 0,
+        "secondWatched": 1,
+        "reanalyzedOriginalMean": 0
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "private_fields",
+      "title": "analysis never reads personal notes, memories, profiles, favorites, or sources",
+      "source": "tests/personal-insights/model.test.ts",
+      "kind": "node-model",
+      "syntheticInput": [
+        "throwing getters for group.note; member.note/profile/favorite; work.note/source; rating.note/memory/source",
+        "valid work MV0/stage10; member performance0/styling10"
+      ],
+      "expected": {
+        "getterRead": false,
+        "mvMean": 0,
+        "stageMean": 10,
+        "memberPerformanceMean": 0,
+        "memberStylingMean": 10
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "generated_invariants",
+      "title": "deterministic generated catalogs satisfy count, range, and identity invariants",
+      "source": "tests/personal-insights/properties.test.ts",
+      "kind": "node-properties",
+      "syntheticInput": [
+        "deterministic seeds1..48,48 works/seed; finite/invalid/missing score pool; multi-group repeated links; separate stage presence and adapter eligibility"
+      ],
+      "expected": [
+        "bins length11, nonnegative integer counts, sum=bins ratedCount",
+        "eligible=rated+missing+invalid; valid mean within0..10 or null",
+        "stage eligible+unqualified=48; MV eligible48",
+        "watching total=known+unknown; known=watched+unwatched+unmarked",
+        "each group workCount<=48; stage pending empty; frozen snapshot intact"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "boundary_bins",
+      "title": "score boundaries retain tiny positive values and distinguish bins immediately below 9 and 10",
+      "source": "tests/personal-insights/properties.test.ts",
+      "kind": "node-properties",
+      "syntheticInput": [
+        "scores=[0,Number.MIN_VALUE,0.999999,1,8.999999,9,9.999999,10]"
+      ],
+      "expected": {
+        "bins": [
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          1
+        ],
+        "highCount": 3,
+        "ratedCount": 8,
+        "negativeMinValueValid": false,
+        "above10Valid": false
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "permutation",
+      "title": "permuting source works does not alter aggregate or per-group statistics",
+      "source": "tests/personal-insights/properties.test.ts",
+      "kind": "node-properties",
+      "syntheticInput": [
+        "33 works score=i%11; stageScore=10-i%11; reverse work array; group order b,a unchanged"
+      ],
+      "expected": [
+        "global MV/stage/watch stats identical",
+        "per-group stats identical after comparing by groupId; no claim revisit tie order unchanged"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "relation_permutation",
+      "title": "relationship order and repeated identical links never pick an arbitrary ambiguous entity",
+      "source": "tests/personal-insights/properties.test.ts",
+      "kind": "node-properties",
+      "syntheticInput": [
+        "member/work target order variations including >1 distinct target and repeated identical links"
+      ],
+      "expected": [
+        "all multi-target records excluded ambiguousRelations1 with no member rows",
+        "repeated same single relation identical to unique-link model; performance0/styling10"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "one_sided",
+      "title": "one-sided rating associations are excluded even when the other direction is populated",
+      "source": "tests/personal-insights/properties.test.ts",
+      "kind": "node-properties",
+      "syntheticInput": [
+        "Rating points at Work but Work.ratingIds lacks rating; separate Work links rating but Rating.workIds empty"
+      ],
+      "expected": {
+        "noBacklink": {
+          "rows": [],
+          "unlinkedRatings": 1
+        },
+        "noForwardLink": {
+          "rows": [],
+          "missingRelations": 1
+        }
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "scale5000",
+      "title": "5000 distinct synthetic works and ratings retain exact counts without a timing claim",
+      "source": "tests/personal-insights/properties.test.ts",
+      "kind": "node-properties",
+      "syntheticInput": [
+        "5000 distinct works/ratings, score=i%11, stage present+10 for even i; four watched statuses cycling; one member with performance=i%11/styling=10-i%11"
+      ],
+      "expected": {
+        "uniqueWorkCount": 5000,
+        "mv": {
+          "ratedCount": 5000,
+          "mean": "24985/5000",
+          "highCount": 908,
+          "bins": [
+            455,
+            455,
+            455,
+            455,
+            455,
+            455,
+            454,
+            454,
+            454,
+            454,
+            454
+          ]
+        },
+        "stage": {
+          "eligibleCount": 2500,
+          "unqualifiedCount": 2500,
+          "mean": 10,
+          "highCount": 2500,
+          "pending": []
+        },
+        "watching": {
+          "total": 5000,
+          "watched": 1250,
+          "unwatched": 1250,
+          "unmarked": 1250,
+          "unknown": 1250,
+          "knownCount": 3750,
+          "watchedRatio": "1/3"
+        },
+        "member": {
+          "rows": 1,
+          "performanceSampleCount": 5000,
+          "performanceMean": "24985/5000",
+          "stylingSampleCount": 5000,
+          "stylingMean": "25015/5000",
+          "uniqueWorkIds": 5000,
+          "uniqueRatingIds": 5000
+        },
+        "timingClaim": false
+      },
+      "status": "not_run"
+    },
+    {
+      "id": "ssr_empty",
+      "title": "SSR empty state exposes separate domains and honest empty values",
+      "source": "tests/personal-insights/component.test.tsx",
+      "kind": "node-SSR-or-AST",
+      "syntheticInput": [
+        "empty catalog, host member label"
+      ],
+      "expected": [
+        "5 separate MV/watch/group/member/revisit headings; mean dash; honest empty texts; native MV/stage radio legend; no NaN/Infinity"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "ssr_zero",
+      "title": "SSR zero appears in the MV summary and independent member cells, not as missing",
+      "source": "tests/personal-insights/component.test.tsx",
+      "kind": "node-SSR-or-AST",
+      "syntheticInput": [
+        "one work MV0, qualified-stage10; member performance0/styling0"
+      ],
+      "expected": [
+        "MV mean0, zero-valid explanation; group mean0; member cells0/1/0/1;11 histogram bins"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "ssr_disabled",
+      "title": "SSR disabled state disables native controls and never calls drilldown callbacks",
+      "source": "tests/personal-insights/component.test.tsx",
+      "kind": "node-SSR-or-AST",
+      "syntheticInput": [
+        "one high MV work with callbacks and disabled=true"
+      ],
+      "expected": [
+        "SSR never invokes callbacks; host member label used; every native button type=button+disabled; selects/fieldsets disabled; no links",
+        "does not simulate mounted disabled clicks"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "ssr_no_callbacks",
+      "title": "SSR without host callbacks renders identities as text and invents no navigation URLs",
+      "source": "tests/personal-insights/component.test.tsx",
+      "kind": "node-SSR-or-AST",
+      "syntheticInput": [
+        "same high-score catalog, no navigation callbacks"
+      ],
+      "expected": [
+        "group/member identities shown as text; no text-button drilldown; no work-action aria label; no a/href/javascript URLs"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "ssr_invalid_diagnostics",
+      "title": "SSR distinguishes wholly invalid member scores from genuinely empty scores",
+      "source": "tests/personal-insights/component.test.tsx",
+      "kind": "node-SSR-or-AST",
+      "syntheticInput": [
+        "one reciprocal all-invalid rating(score11) and one reciprocal empty rating for member m"
+      ],
+      "expected": [
+        "exactly1 empty-score message and1 invalid-score message; not2 empty scores"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "ssr_bounded",
+      "title": "SSR first page bounds all three data lists at ten items without simulating clicks",
+      "source": "tests/personal-insights/component.test.tsx",
+      "kind": "node-SSR-or-AST",
+      "syntheticInput": [
+        "25 groups/members/works/ratings; all MV9; member0/10"
+      ],
+      "expected": [
+        "first group/member/revisit DOM lists each10; w9 included,w10 absent in revisit; next-group button enabled",
+        "SSR only; no click/focus claim"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "source_boundary",
+      "title": "source boundary keeps native controls and local analysis; this is not a mounted behavior test",
+      "source": "tests/personal-insights/component.test.tsx",
+      "kind": "node-SSR-or-AST",
+      "syntheticInput": [
+        "TypeScript AST of actual PersonalInsights.tsx"
+      ],
+      "expected": [
+        "imports restricted to React,types,analysis,local CSS; all native buttons explicit type=button+disabled; fieldsets disabled; no fetch/localStorage/sessionStorage source call pattern",
+        "static structure, not mounted behavior or whole-repo IO proof"
+      ],
+      "status": "not_run"
+    }
+  ],
+  "browser": {
+    "source": "tests/personal-insights/browser-checks.tsx",
+    "entry": "tests/personal-insights/browser-entry.tsx",
+    "html": "tests/personal-insights/index.html",
+    "config": "tests/personal-insights/vite.config.ts",
+    "implementation": "real ReactDOM createRoot + flushSync + DOM queries/clicks/focus; requestAnimationFrame settlement; results only produced on actual invocation",
+    "viewports": [
+      390,
+      768,
+      1280
+    ],
+    "scaleChoices": [
+      0,
+      100,
+      1000,
+      5000
+    ],
+    "sourceCases": [
+      {
+        "id": "native_semantics",
+        "title": "native tables and readable histogram",
+        "source": "tests/personal-insights/browser-checks.tsx",
+        "kind": "real-browser-DOM",
+        "syntheticInput": [
+          "25 synthetic canonical groups/members/works/ratings; MV scores null atw-0,9 elsewhere; stage10 all; member0/10"
+        ],
+        "expected": [
+          "table caption and column header exist; histogram has exactly11 li"
+        ],
+        "status": "not_run"
+      },
+      {
+        "id": "group_callback",
+        "title": "group host callback preserves canonical identity",
+        "source": "tests/personal-insights/browser-checks.tsx",
+        "kind": "real-browser-DOM",
+        "syntheticInput": [
+          "click first rendered group action in default mean-desc MV scope"
+        ],
+        "expected": [
+          "callback grows exactly1 with kind group and exact ID g-1"
+        ],
+        "status": "not_run"
+      },
+      {
+        "id": "disabled_callbacks",
+        "title": "disabled callbacks remain silent",
+        "source": "tests/personal-insights/browser-checks.tsx",
+        "kind": "real-browser-DOM",
+        "syntheticInput": [
+          "render same data disabled=true; click native group/member/revisit action buttons; restore enabled"
+        ],
+        "expected": [
+          "all3 controls disabled; callback log unchanged"
+        ],
+        "status": "not_run"
+      },
+      {
+        "id": "paging_focus",
+        "title": "paging moves focus to the corresponding heading",
+        "source": "tests/personal-insights/browser-checks.tsx",
+        "kind": "real-browser-DOM",
+        "syntheticInput": [
+          "click group next-page button; settle actual React effects"
+        ],
+        "expected": [
+          "activeElement is group heading; second page group tbody has10 rows"
+        ],
+        "status": "not_run"
+      },
+      {
+        "id": "stage_mv_pending",
+        "title": "stage scope does not relabel MV pending reviews",
+        "source": "tests/personal-insights/browser-checks.tsx",
+        "kind": "real-browser-DOM",
+        "syntheticInput": [
+          "switch stage radio; then watched-unrated revisit radio"
+        ],
+        "expected": [
+          "group heading says stage; revisit heading exactlyMV 已看待评; pending list count1 from explicit-null w-0"
+        ],
+        "status": "not_run"
+      },
+      {
+        "id": "member_callback",
+        "title": "member host callback preserves canonical identity",
+        "source": "tests/personal-insights/browser-checks.tsx",
+        "kind": "real-browser-DOM",
+        "syntheticInput": [
+          "click first rendered member host action"
+        ],
+        "expected": [
+          "callback grows exactly1 with kind member and exact ID m-0"
+        ],
+        "status": "not_run"
+      },
+      {
+        "id": "trace_focus_and_identity",
+        "title": "member trace opens and close returns focus",
+        "source": "tests/personal-insights/browser-checks.tsx",
+        "kind": "real-browser-DOM",
+        "syntheticInput": [
+          "click first member aria-expanded trigger; click first trace work; close trace"
+        ],
+        "expected": [
+          "focus on trace title after open; exactly1 work callback with exactID w-0; close returns focus to original connected trigger"
+        ],
+        "status": "not_run"
+      },
+      {
+        "id": "same_object",
+        "title": "same-object refresh invalidates statistics",
+        "source": "tests/personal-insights/browser-checks.tsx",
+        "kind": "real-browser-DOM",
+        "syntheticInput": [
+          "switch MV radio; mutate same catalog data.works[0].score fromnull to0; rerender same identity"
+        ],
+        "expected": [
+          "summary rated count25 and mean string8.64; no stale memo result"
+        ],
+        "status": "not_run"
+      },
+      {
+        "id": "shrink_clamp",
+        "title": "shrinking data clamps an existing later page",
+        "source": "tests/personal-insights/browser-checks.tsx",
+        "kind": "real-browser-DOM",
+        "syntheticInput": [
+          "advance group page; splice original works array down to1; rerender same catalog object"
+        ],
+        "expected": [
+          "group tbody immediately contains1 row rather than empty out-of-range page"
+        ],
+        "status": "not_run"
+      },
+      {
+        "id": "bounded5000",
+        "title": "5000-work rendering remains bounded",
+        "source": "tests/personal-insights/browser-checks.tsx",
+        "kind": "real-browser-DOM",
+        "syntheticInput": [
+          "fresh keyed instance with5000 synthetic groups/members/works/ratings; default page size10"
+        ],
+        "expected": [
+          "group rows<=10;member rows<=10;revisit li<=10; no execution-time assertion"
+        ],
+        "status": "not_run"
+      },
+      {
+        "id": "viewport_overflow",
+        "title": "current real viewport contains the outer panel",
+        "source": "tests/personal-insights/browser-checks.tsx",
+        "kind": "real-browser-DOM",
+        "syntheticInput": [
+          "visible5000 fixture in current actual viewport, repeated at390/768/1280"
+        ],
+        "expected": [
+          "module clientWidth>0 and scrollWidth<=clientWidth+1; table overflow should remain inside wrappers"
+        ],
+        "status": "not_run"
+      }
+    ],
+    "status": "not_run",
+    "resultPerViewport": [
+      {
+        "width": 390,
+        "status": "not_run",
+        "passed": null,
+        "failed": null
+      },
+      {
+        "width": 768,
+        "status": "not_run",
+        "passed": null,
+        "failed": null
+      },
+      {
+        "width": 1280,
+        "status": "not_run",
+        "passed": null,
+        "failed": null
+      }
+    ],
+    "notProvedByProgrammaticClicks": [
+      "trusted Tab/Shift+Tab and radio/select arrows",
+      "screen-reader naming/order/announcements",
+      "full application navigation, save guard and queue behavior",
+      "performance or paint timing"
+    ]
+  },
+  "manualGates": [
+    {
+      "id": "keyboard_and_reader",
+      "input": "real browser fixture at390/768/1280, empty+5000 datasets",
+      "steps": [
+        "Tab/Shift+Tab through radio,sort,page-size,pagers,drilldowns and table scroll wrappers",
+        "use native radio/select arrows; expand/close member trace; inspect focus",
+        "check screen-reader table caption/header association, histogram counts, native group labels,expanded state"
+      ],
+      "expected": "reachable named native controls; deliberate paging/disclosure focus; close returns to connected trigger; no focus trap; trace aria-controls resolves only when expanded",
+      "status": "not_run"
+    },
+    {
+      "id": "module_layout",
+      "input": "0/100/1000/5000 synthetic scales at390/768/1280 with real CSS",
+      "steps": [
+        "inspect all domains and revisit scopes; change page-size10/20; use each table scroll wrapper",
+        "open a member with more than20 contributing works and paginate trace"
+      ],
+      "expected": "outer module fits actual viewport; wide tables scroll internally; main lists<=selected page size; trace<=20; version/name remain readable",
+      "status": "not_run",
+      "observedMeasurements": null
+    },
+    {
+      "id": "derived_immutability",
+      "input": "mutable synthetic original entities and analyzeCatalog output",
+      "steps": [
+        "check recursive Object.isFrozen on derived output only",
+        "confirm original catalog/entities remain writable/unfrozen and unmodified"
+      ],
+      "expected": "derived model recursively frozen; original references not frozen or mutated",
+      "status": "not_run",
+      "coverage": "supplemental manual/source contract gate; not counted among27 Node cases"
+    },
+    {
+      "id": "real_App_integration",
+      "input": "exact baseline with proposed import+single-call substitution, existing host helpers and callbacks",
+      "steps": [
+        "run actual project lint,typecheck/build using its existing commands and dependencies",
+        "confirm old unused Insights function is acceptable to lint/noUnusedLocals or resolve minimally within authorization",
+        "navigate canonical group/member/work from insight; exercise unsaved save/discard/cancel paths",
+        "verify openWork default queue and journey semantics plus existing protected regression suites"
+      ],
+      "expected": "no bypass of save guard; host callbacks retain real routing/queue behavior; no new production data,API/storage/credentials/dependencies; protected 17 inputs unchanged except separate approved App proposal",
+      "status": "not_run"
+    }
+  ],
+  "measurementPolicy": {
+    "status": "not_run",
+    "noMeasuredRuntimeNumbers": true,
+    "scale5000": "correctness assertions and DOM bounds only, not a speed or memory benchmark",
+    "fields": {
+      "typecheckMs": null,
+      "nodeTestMs": null,
+      "analysisMs": null,
+      "renderMs": null,
+      "heapBytes": null,
+      "layoutShift": null
+    }
+  },
+  "sourceCounts": {
+    "nodeModel": 14,
+    "nodeProperties": 6,
+    "nodeSSROrAST": 7,
+    "nodeTotal": 27,
+    "browser": 11,
+    "totalDistinctSourceCases": 38,
+    "executed": 0
+  },
+  "reviewedSourceBlobs": {
+    "model.test.ts": "bdf1c3a9eea86330cfbac36d1a49c7182b03b3cc",
+    "properties.test.ts": "2a42256d58fae1967ca3032b8de800a1d7fc26cb",
+    "component.test.tsx": "cf80bbc22ec6deb6d11b4a2c1a146bd555fe6564",
+    "run-tests.mjs": "eb4bf866f0cc44e320b00453c49f60c968b81bee",
+    "browser-checks.tsx": "3a1db24c37655a3774f7d9d33dcd6381cd2729cc",
+    "browser-entry.tsx": "f6dd9429b898b85d0cf58ab61817aaf12a126e96",
+    "vite.config.ts": "e8e5e0ff16cdfed49a202262d5ae3da55ba97751",
+    "index.html": "5a9506191bef2fcfdeef64a06be7b2d0ad5e20ef"
+  }
+}

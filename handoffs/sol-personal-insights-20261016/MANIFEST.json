@@ -1,0 +1,187 @@
+{
+  "format": "sol-personal-insights-files/v1",
+  "sourceBaseline": "1804f12d0c51963bb65864cf531113151b07eaf5",
+  "repository": "KAtOReNA7/idol",
+  "branch": "handoff/sol-safe-source-20261016",
+  "directory": "handoffs/sol-personal-insights-20261016/",
+  "expectedParent": "4db05db7e6bd0478f2b468f74c21e23de3ce6e3d",
+  "encoding": "UTF-8",
+  "fileCountIncludingManifest": 28,
+  "newSourceFiles": 19,
+  "sourceCases": {
+    "node": 27,
+    "browser": 11,
+    "total": 38,
+    "executed": 0
+  },
+  "executionStatus": "not_run",
+  "hashEvidence": "SHA256 and UTF-8 byte lengths actually computed in backend text processing; no OS or implementation execution.",
+  "self": {
+    "path": "MANIFEST.json",
+    "sha256": "self-excluded"
+  },
+  "files": [
+    {
+      "path": "APP_WIRING.patch",
+      "bytes": 6183,
+      "sha256": "f58cbd8dbe7bbf61ada19017ead979d8f4090b70f66baf831101495c96a2e0d6",
+      "role": "candidate-patch"
+    },
+    {
+      "path": "CHECKPOINT.json",
+      "bytes": 3345,
+      "sha256": "c5824ff4a4a9a738a256da394a71f6994ce579a9b4f33781ac45dee1e7d6fb10",
+      "role": "handoff-document"
+    },
+    {
+      "path": "components/personal-insights/personal-insights.css",
+      "bytes": 10665,
+      "sha256": "bfe12d1b495388017bc3c9a16111d3cac1a1c80b62f982c45adb63bbc83bff10",
+      "role": "react-ui"
+    },
+    {
+      "path": "components/personal-insights/PersonalInsights.tsx",
+      "bytes": 25703,
+      "sha256": "ac99b586746645715f8929954a5d79ab7e30017d31a6e1fe70586b06831554b8",
+      "role": "react-ui"
+    },
+    {
+      "path": "CONTRACT.md",
+      "bytes": 8081,
+      "sha256": "10175ff7204827f10a0a2a57980705389c2e4f7287caf63286cb7d68c8a15b33",
+      "role": "handoff-document"
+    },
+    {
+      "path": "DELIVERY.txt",
+      "bytes": 1955,
+      "sha256": "7a600e914f6283b47367be354aee65025e0f4dd0658d5af32150dfe92a36b61a",
+      "role": "handoff-document"
+    },
+    {
+      "path": "IMPLEMENTATION.patch",
+      "bytes": 124546,
+      "sha256": "a1f88e501b20febaac8fea0ca54c576af180f62fe77737ca9ea07a0df9a7d5ff",
+      "role": "candidate-patch"
+    },
+    {
+      "path": "lib/idol/personal-insights/contract.ts",
+      "bytes": 2736,
+      "sha256": "b80ad910c84c3e2f43985b065b984af8a27a98b7c86127fec3d524b25db095ce",
+      "role": "pure-model"
+    },
+    {
+      "path": "lib/idol/personal-insights/index.ts",
+      "bytes": 1937,
+      "sha256": "7667200eb9f5a54214b25d75c4c91b78cf880727539d9cd629018dd3cb75a76c",
+      "role": "pure-model"
+    },
+    {
+      "path": "lib/idol/personal-insights/members.ts",
+      "bytes": 3285,
+      "sha256": "db107a82ae813286e1183419668631caf02d410fe9ce9de5fb69a534c1deeb87",
+      "role": "pure-model"
+    },
+    {
+      "path": "lib/idol/personal-insights/overview.ts",
+      "bytes": 4769,
+      "sha256": "9f974c75552157d49808233f51710d635c0676f31e3d7021f80cfa34afd21d5a",
+      "role": "pure-model"
+    },
+    {
+      "path": "lib/idol/personal-insights/prepare.ts",
+      "bytes": 3340,
+      "sha256": "edea1247293c7f9aad5710d9704ddecfd510202b2ebb290b254ac22b4cbabfdd",
+      "role": "pure-model"
+    },
+    {
+      "path": "lib/idol/personal-insights/revisit.ts",
+      "bytes": 1545,
+      "sha256": "dbb210f853fb32d9bc1f893c5e30c5052691a06146a25d3b66d19323d02c81ce",
+      "role": "pure-model"
+    },
+    {
+      "path": "lib/idol/personal-insights/score.ts",
+      "bytes": 629,
+      "sha256": "e8099a678388f4989888f30b5572daee782191c5d43fe64795a93454b9bd1b77",
+      "role": "pure-model"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3048,
+      "sha256": "b1d87e806563383b2e9705a828a24b90895adf2db8dd7f75b6683c7ba841c40c",
+      "role": "handoff-document"
+    },
+    {
+      "path": "REVIEW.md",
+      "bytes": 7185,
+      "sha256": "37628cc52f1b6976413ca10c764e8078df885c9cee2a3a0aa994f4cf7fecf642",
+      "role": "handoff-document"
+    },
+    {
+      "path": "TEST_PLAN.json",
+      "bytes": 33678,
+      "sha256": "49b0a5b13814e278522bc54ffcacce220ca20637174a96e5927a1aa4bd845004",
+      "role": "handoff-document"
+    },
+    {
+      "path": "tests/personal-insights/browser-checks.tsx",
+      "bytes": 9758,
+      "sha256": "d8d65d49cac437591baec7d3356039148582f7ad2da2621a779dc2ebc37ffdff",
+      "role": "test-only"
+    },
+    {
+      "path": "tests/personal-insights/browser-entry.tsx",
+      "bytes": 3724,
+      "sha256": "64067e795c9ad586efa53649b95267cb0a3d00475b8c6ffbf2b428dd2a54d204",
+      "role": "test-only"
+    },
+    {
+      "path": "tests/personal-insights/component.test.tsx",
+      "bytes": 9777,
+      "sha256": "31a521b15027dfc3338c685c4d10bb3d71f592620c0e4c0e619f7d9575811837",
+      "role": "test-only"
+    },
+    {
+      "path": "tests/personal-insights/fixtures.ts",
+      "bytes": 4357,
+      "sha256": "ad27cbd141e4e47c0c9f5f286e90a043915f69e8be3831833dae5762699a3602",
+      "role": "test-only"
+    },
+    {
+      "path": "tests/personal-insights/index.html",
+      "bytes": 370,
+      "sha256": "334c962082b01875f298b163468abaa197af35ab648bb42d8701f17c5c3cfee1",
+      "role": "test-only"
+    },
+    {
+      "path": "tests/personal-insights/model.test.ts",
+      "bytes": 16844,
+      "sha256": "2e38607eac4bc92afde9ebc9785abe75b60ffd965f1563608f4b16e15d803443",
+      "role": "test-only"
+    },
+    {
+      "path": "tests/personal-insights/properties.test.ts",
+      "bytes": 8914,
+      "sha256": "32b77b50906e000630fa1792cd9f48791309a9befd12f6bb73c0cd570acdcdfa",
+      "role": "test-only"
+    },
+    {
+      "path": "tests/personal-insights/run-tests.mjs",
+      "bytes": 8838,
+      "sha256": "25c045a0605ff552e591c1d4370ff92be94d40ac298a8aa47d573cdf7bd59693",
+      "role": "test-only"
+    },
+    {
+      "path": "tests/personal-insights/tsconfig.json",
+      "bytes": 707,
+      "sha256": "7ab4af49fc877939f549e7c8e0721d1120236c5576eeab0a19076635f29724f4",
+      "role": "test-only"
+    },
+    {
+      "path": "tests/personal-insights/vite.config.ts",
+      "bytes": 533,
+      "sha256": "b59eaddbf4f58b1e307a18fc8f5eee61e7fe6473058fbc490c32791c87511e51",
+      "role": "test-only"
+    }
+  ]
+}

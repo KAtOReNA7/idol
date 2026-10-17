@@ -1,0 +1,117 @@
+{
+  "format": "sol-idle-resume/v1",
+  "purpose": "Minimal source handoff; original Library items remain unchanged.",
+  "libraryProvenance": [
+    {
+      "library_file_id": "libfile_a18934a381e8819185d43758f64f6d4e",
+      "file_id": "file_00000000f4a88230a2e054a00aef58cd",
+      "filename": "i-dle-checkpoint-code-20261017.zip",
+      "version_id": null
+    },
+    {
+      "library_file_id": "libfile_faebadf30c248191b52468940c683ae2",
+      "file_id": "file_00000000261c81fdb77dfcb2aee6ea47",
+      "filename": "i-dle-state-delta-20261018.zip",
+      "version_id": null
+    }
+  ],
+  "versionNote": "Library read returned version_id null; exact backing file IDs retained.",
+  "checkpoint": {
+    "nextImportIndex": 307,
+    "jobsTotal": 313,
+    "imageKeysCompleted": 55,
+    "imageKeysTarget": 57,
+    "uniqueHashesCompleted": 54,
+    "uniqueHashesTarget": 56,
+    "figmaRootsBuilt": 0
+  },
+  "files": [
+    {
+      "path": "idle-data.json",
+      "bytes": 134461,
+      "sha256": "3a369a41ba018afc8afd42fa6062360701bd27a7ce689a2af999444fe9452e9a"
+    },
+    {
+      "path": "image-sources.json",
+      "bytes": 90876,
+      "sha256": "478208c2513f60e3b803110287cee2374320d3d7978efa23e9453f9dc6114068"
+    },
+    {
+      "path": "native-execution/idle-checkpoint.json",
+      "bytes": 204,
+      "sha256": "19f9ce8c0744792f8fdda0acd4982a294a9e3744bbf2b3720b81d2a610a3d043"
+    },
+    {
+      "path": "native-execution/idle-unimported-keys.json",
+      "bytes": 116,
+      "sha256": "7c87ca934acd8522a0fbdeb91f982020a31ba9c61a8a4855a89efb8cd677f21b"
+    },
+    {
+      "path": "native-imports/idle/manifest.json",
+      "bytes": 108355,
+      "sha256": "02b82beeb885069189ab8909f84627d694d9caebbb2a9a3c6801fbefbc1e35fd"
+    },
+    {
+      "path": "idle-pages.js",
+      "bytes": 20698,
+      "sha256": "ec6bc8c3752bdbb3887a8c5e9124b552a3e41efdf66537b08b46536413403981"
+    },
+    {
+      "path": "native-runtime.js",
+      "bytes": 15942,
+      "sha256": "245b3967d10a99606eaf67fca5d5e1a057f8b20b6ea7853b28095de324a9d3de"
+    },
+    {
+      "path": "build-native.py",
+      "bytes": 11969,
+      "sha256": "f044632d67e34c92ed489c842e466f9abeb1e5822624ba5b3dd10256658faed1"
+    },
+    {
+      "path": "idle-build-jobs.json",
+      "bytes": 3463,
+      "sha256": "1677dc1bb049eb1b915c3ff9a7d80eb923162de7b1175e245379730022b70ec2"
+    },
+    {
+      "path": "schema.md",
+      "bytes": 10383,
+      "sha256": "3302a265df384f4f2f32d8212c7a216d6a6b68a2905872e59263afb5e37844a8"
+    },
+    {
+      "path": "reflow-idle-roots.native-call.js",
+      "bytes": 2135,
+      "sha256": "1f5f2ff97e9fb69ee1ae59471bb3749909d27a9cb6fe5fea2215d3b0ceb6ac91"
+    },
+    {
+      "path": "native-imports/idle/0308-chunk.native-call.js",
+      "bytes": 40609,
+      "sha256": "52cdc7b829c934a027e2bf71320c50c3748f3964d18932746fd8c7f0a2aa8cf2"
+    },
+    {
+      "path": "native-imports/idle/0309-chunk-commit.native-call.js",
+      "bytes": 22929,
+      "sha256": "3cd96cbc5e2eb1f1092bcc3b6ddf934cc676e645f7af1018cb1f8e58d14ca3c8"
+    },
+    {
+      "path": "native-imports/idle/0310-chunk.native-call.js",
+      "bytes": 40663,
+      "sha256": "a6f13cb0de495a772325ab73d980b97be3ac0dcb856788910e364d093e585877"
+    },
+    {
+      "path": "native-imports/idle/0311-chunk.native-call.js",
+      "bytes": 40663,
+      "sha256": "7733ce17576af61a86e61d5e47d4a221a5b3c3bf2cc683d1fffb51db3f10d819"
+    },
+    {
+      "path": "native-imports/idle/0312-chunk.native-call.js",
+      "bytes": 40663,
+      "sha256": "ab1e9414570e723fed8348fb8a13013a83a857a0942d1ea8206e76cd4a671aae"
+    },
+    {
+      "path": "native-imports/idle/0313-chunk-commit.native-call.js",
+      "bytes": 35079,
+      "sha256": "1328ecce289f09ec6cd91320ca376529fa3953fe3494c92a7897f7c80c7b47d0"
+    }
+  ],
+  "payloadBytes": 619208,
+  "validation": "17 source files retained byte-for-byte; JSON parsed and credential/private-record field checks passed. No Figma write or design execution performed during handoff."
+}

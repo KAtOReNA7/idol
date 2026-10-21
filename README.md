@@ -30,3 +30,7 @@ Original member-image validation: `npm run verify` (12 tests and typecheck), `np
 - Source manifests exclude themselves to avoid circular hashes. Historical core-only documentation below is explicitly marked as historical.
 
 Duplicate stage-score follow-up: duplicate works aggregate stage scores only when every row has a valid binding to the same full video/clip source key. Cross-video, cross-clip, missing and invalid bindings remain unscored. Three regression tests cover permutations, zero/null and conflicts.
+
+## Cross-session collaboration / 跨会话协作
+
+Before preparing tasks for Sol, Astra or another session, read [AGENTS.md](AGENTS.md) and the [跨会话派工与验收手册](docs/collaboration-playbook.md). The playbook records the 2026-10-21 source-handoff, preview-environment, image-verification and Figma lessons, with a reusable task template and evidence gates. It does not grant permissions or turn this sandbox into production source.

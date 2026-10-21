@@ -6,17 +6,17 @@ Requirements: read repository AGENTS.md, docs/design-requirements.md (fixed requ
 
 ## Windows: recover and verify
 
-Obtain these three files from the same immutable GitHub commit, through the authorized connector or normal Git checkout/download. Do not substitute a moving main branch. With Git, use `git -c core.autocrlf=false ...` to preserve exact UTF-8 bytes. Do not repair/change the platform Library helper or skip its metadata checks; this route reads GitHub source instead.
+Obtain source-manifest.json, all source-part-XX.json files listed by that manifest, restore-source.py and this guide from the same immutable GitHub commit, through the authorized connector or normal Git checkout/download. Do not substitute a moving main branch. With Git, use `git -c core.autocrlf=false ...` to preserve exact UTF-8 bytes. Do not repair/change the platform Library helper or skip its metadata checks; this route reads GitHub source instead.
 
 Run from this directory:
 
     py -3 restore-source.py --destination C:\work\sol-cw-recovered
     py -3 restore-source.py --destination C:\work\sol-cw-recovered --verify
-    Get-FileHash .\source-bundle.json -Algorithm SHA256
+    Get-FileHash .\source-manifest.json -Algorithm SHA256
 
 On Linux/macOS use python3 and an absolute new destination. The ordinary Python standard-library restorer verifies all paths, bytes and SHA256 values before writing, rejects traversal, Windows device names, symlinks and existing destinations; --verify is read-only. It never uses os.setxattr, the network, or a Library ID as a download URL.
 
-Expected source-bundle.json: 2,487,914 B; SHA256 dc4d58e1ea4a94311c09ef7dad07e8b6bef1fcac7bf52269fd807e8761474f90.
+Authoritative input: source-manifest.json plus 9 complete valid JSON shards, each below 400 KB. Manifest SHA256 6c6d46be4175827ce3b15a30cab5ec5192735ccee54ec4662cba80a68c4f185e. The restorer verifies each shard SHA/bytes and every source file before writing. source-bundle.json is retained as historical equivalent only: the connector cannot return its 2.49 MB content, so DO NOT require it for recovery. Each authoritative shard was re-read through the connector at the final commit and compared in full.
 
 ## Version and exact preserved change
 

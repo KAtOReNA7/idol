@@ -29,7 +29,7 @@
 ### 2. localhost 与浏览器跨环境
 现象：用户 Windows Chrome 打开 127.0.0.1:8847/example/adya.html?group=adya，显示 ERR_CONNECTION_REFUSED。
 确定事实：浏览器所在环境的该地址未成功接受连接。
-尚未确定：本轮服务是否未启动、退出、端口不一致，或运行在另一台机器。不得把跨机器推测写成已证实根因。
+后续新增证据（同日 v2 交付检查）：evidence/v2-browser-status.json 的 localCommandProbeError 记录 urllib.error.URLError: <urlopen error [Errno 111] Connection refused>，即命令端 HTTP 探针也失败。不能只归因于浏览器跨机器。仍需检查服务是否未启动、已退出或端口不一致；不得把推测写成已证实根因。
 历史证据：曾出现执行环境 HTTP 检查通过、浏览器仍拒绝连接；同环境浏览器后来完成了验收。
 后续规则：
 - localhost 永远指调用者所在机器/网络环境。

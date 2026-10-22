@@ -18,9 +18,9 @@ test('all six stable member IDs and eight exact video bindings match the existin
   assert.equal(JSON.stringify(actual),before);
 });
 
-test('MV cast uses singleton existing relations; stage never borrows the MV cast',()=>{
-  const knownCounts={rec28ldfRTrCU6:6,rec28ldfRTrCYg:6,rec28ldfRTrQJ1:6,recvxIZLjZmGMf:0};
-  for(const media of archive.media){const members=api.genblueMediaMembers(actual,media);assert.equal(members.length,media.kind==='mv'?knownCounts[media.workId]:0);for(const member of members)assert.ok(api.memberWorks(actual,member.id).some(item=>item.work.id===media.workId));}
+test('MV cast uses singleton records or exact named evidence; stage never borrows the MV cast',()=>{
+  const knownCounts={rec28ldfRTrCU6:6,rec28ldfRTrCYg:6,rec28ldfRTrQJ1:6,recvxIZLjZmGMf:6};
+  for(const media of archive.media){const members=api.genblueMediaMembers(actual,media);assert.equal(members.length,media.kind==='mv'?knownCounts[media.workId]:0);for(const member of members)assert.ok(api.memberWorks(actual,member.id).some(item=>item.work.id===media.workId)||api.genblueMediaEvidence(media)?.memberIds.includes(member.id));}
   const c=structuredClone(actual),media=archive.media[0],memberId=archive.members[0].id;
   c.ratings=[{id:'synthetic-mixed',workIds:[media.workId,'recOther'],memberIds:[memberId]}];assert.equal(api.genblueMediaMembers(c,media).length,0);
   c.ratings=[{id:'synthetic-mixed',workIds:[media.workId],memberIds:[memberId,archive.members[1].id]}];assert.equal(api.genblueMediaMembers(c,media).length,0);
@@ -44,4 +44,30 @@ test('real React renders homepage, directories, six member pages, eight releases
   const routes=['/artists/genblue','/artists/genblue?section=members','/artists/genblue?section=works','/artists/genblue?section=updates',...archive.members.map(m=>api.genblueMemberHref(m.id)),...archive.releases.map(r=>api.genblueReleaseHref(r.key)),...archive.media.map(m=>api.genblueMediaHref(m))];
   for(const route of routes){const html=renderToStaticMarkup(React.createElement(api.ArtistTimelineHostProvider,{value:{catalog:synthetic,loading:false,serverRoute:route}},React.createElement(api.Page)));assert.match(html,/data-genblue-native="bluecut"/);assert.doesNotMatch(html,/这个链接暂不可用|未找到这个/);if(route==='/artists/genblue')for(const m of archive.members)assert.ok(html.includes(m.cnName));}
   assert.equal(routes.length,26);
+});
+
+
+test('night market MV evidence adds bidirectional browsing without inventing personal ratings or stage images',()=>{
+  const media=archive.media.find(m=>m.videoId==='o5EdYwk8k9o');
+  const before=JSON.stringify(actual),evidence=api.genblueMediaEvidence(media);
+  assert.equal(evidence.kind,'mv');
+  assert.equal(new Set(evidence.memberIds).size,6);
+  const photo=fs.readFileSync('public'+evidence.image.src);
+  assert.equal(photo.length,evidence.image.bytes);
+  assert.equal(require('node:crypto').createHash('sha256').update(photo).digest('hex'),evidence.image.sha256);
+  for(const id of evidence.memberIds){
+    const relation=api.genblueMemberMedia(actual,id).find(r=>r.media.key===media.key);
+    assert.ok(relation);assert.equal(relation.record,null);
+    assert.equal(api.memberWorks(actual,id).some(r=>r.work.id===media.workId),false);
+  }
+  assert.equal(api.genblueMediaEvidence({...media,videoId:'_FJCv4my4eI'}),null);
+  assert.equal(api.genblueMediaEvidence({...media,url:'https://example.com'}),null);
+  for(const stage of archive.media.filter(m=>m.kind==='stage')){
+    assert.equal(api.genblueMediaEvidence(stage),null);assert.equal(api.genblueMediaMembers(actual,stage).length,0);
+  }
+  const html=renderToStaticMarkup(React.createElement(api.ArtistTimelineHostProvider,{value:{catalog:actual,loading:false,serverRoute:api.genblueMediaHref(media)}},React.createElement(api.Page)));
+  assert.ok(html.includes(evidence.image.src));assert.ok(html.includes(evidence.sourceUrl.replaceAll('&','&amp;')));
+  assert.match(html,/MV 宣传照/);assert.doesNotMatch(html,/视频预览暂缺/);
+  for(const m of archive.members)assert.ok(html.includes(m.cnName));
+  assert.equal(JSON.stringify(actual),before);
 });

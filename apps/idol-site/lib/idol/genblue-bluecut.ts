@@ -1,4 +1,6 @@
 import data from '../../data/genblue-bluecut.json';
+import mediaEvidence from '../../data/genblue-media-evidence.json';
+import {memberWorks} from './member-works';
 import {safeArtistReturn} from './artist-navigation';
 import {artistMemberUrl, artistWorkUrl} from './artist-preview';
 import {stageHasValidBinding, stageSourceKey} from './stage-source';
@@ -109,15 +111,26 @@ export function genblueMemberRecordHref(catalog:CatalogView|null,id:string,retur
   const safe=safeArtistReturn(returnTo);
   return resolveGenblueMember(catalog,id)&&safe?.startsWith(GENBLUE_PATH)?artistMemberUrl(id,safe):null;
 }
-/** Existing member/MV relations only. A bound stage does not inherit its MV cast. */
+/** Exact-version editorial evidence is display-only; it never creates rating records. */
+export function genblueMediaEvidence(media:GenblueMedia) {
+  if(!data.media.some(m=>m.key===media.key&&m.workId===media.workId&&m.videoId===media.videoId&&m.kind===media.kind&&m.url===media.url))return null;
+  return mediaEvidence.find(e=>e.key===media.key&&e.workId===media.workId&&e.videoId===media.videoId&&e.kind===media.kind)??null;
+}
+/** Existing singleton relations plus named MV evidence. Stages never inherit an MV cast. */
 export function genblueMediaMembers(catalog:CatalogView|null,media:GenblueMedia):Member[] {
   const binding=resolveGenblueMedia(catalog,media);
   if(!catalog||!binding||media.kind!=='mv')return [];
   const ids=new Set(catalog.ratings.filter(r=>r.workIds.length===1&&r.workIds[0]===binding.work.id&&r.memberIds.length===1).map(r=>r.memberIds[0]));
+  for(const id of genblueMediaEvidence(media)?.memberIds??[])ids.add(id);
   return data.members.flatMap(member=>{
     const native=ids.has(member.id)?resolveGenblueMember(catalog,member.id):null;
     return native?[native]:[];
   });
+}
+export function genblueMemberMedia(catalog:CatalogView|null,memberId:string) {
+  if(!catalog||!resolveGenblueMember(catalog,memberId))return [];
+  const records=memberWorks(catalog,memberId);
+  return data.media.filter(media=>media.kind==='mv'&&genblueMediaMembers(catalog,media).some(m=>m.id===memberId)).map(media=>({media,record:records.find(item=>item.work.id===media.workId)??null}));
 }
 /** Watched is a shared Work field. Stage filters never borrow the MV score. */
 export function genblueMediaMatches(catalog:CatalogView|null,media:GenblueMedia,route:GenblueRoute):boolean {

@@ -1,5 +1,7 @@
 # GENBLUE 验收链接 404 修复
 
+> 后续用户已明确回复“这一版可以 继续开发吧”，本次 v10 页面人工确认通过，允许接续 WOOAH。开发侧浏览器/真实保存/完整生产部署未验事项仍保留。新的接续入口为 [WOOAH worklog](20261022-wooah-native-integration.md)。
+
 - 时间：2026-10-22，北京时间 23:37 发布。
 - 分支：`codex/genblue-native-integration` / PR #3，基于 `e5b9ed97ea49d17f139241410a0c357a54b13a7b`；仍承接 `handoff/codex-20261022`，没有从旧 main 开发。
 - 用户反馈：`/artists/genblue` 无法打开，提供的浏览器画面为 HTTP 404。人工验收尚未开始，下一团继续暂停。

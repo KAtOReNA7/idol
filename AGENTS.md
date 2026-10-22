@@ -3,7 +3,7 @@
 在为 Sol、Astra 或其他会话编写任务指令、接续实现、汇总验收之前，先阅读 [设计要求与验收基准](docs/design-requirements.md) 和 [跨会话派工与验收手册](docs/collaboration-playbook.md) 中的最新用户决定，再核对当前源码和最新交付。
 
 ## 当前执行决定（2026-10-22，取代 2026-10-21 的暂不迁移决定）
-- 最新用户决定（北京时间 2026-10-22）：逐团开发与人工验收。当前只完成 GENBLUE，交可打开地址后等待用户明确反馈；用户确认通过后才能开发下一团。公共部分开发不受此暂停限制。此决定取代计划中的多团并行/每批 2–3 团安排。
+- 最新用户决定（北京时间 2026-10-22）：用户对 GENBLUE v10 审阅页明确回复“这一版可以 继续开发吧”。本次页面人工确认已通过，当前接续 WOOAH；完成后单独交地址，待用户明确通过才能开始再下一团。公共部分例外。GENBLUE 真实保存、完整生产部署等未验事项不因此改成已验。
 - 用户已决定迁移试用 Codex；GitHub 保存多台电脑共享的代码与开发阶段，不再要求主会话直接开发、云环境仅验证。首次执行读 [CODEX-FIRST-RUN](docs/codex/CODEX-FIRST-RUN.md)、[STATUS](docs/codex/STATUS.md)、[PRD](docs/codex/PRD.md)、[CURRENT-STATE](docs/codex/CURRENT-STATE.md) 和 [ACCEPTANCE](docs/codex/ACCEPTANCE.md)。
 - 正式工程为 `apps/idol-site/`，根 Next sandbox 保留为历史样本。v186 基线与候选分别按各自清单核验，不用旧根代码冒充完整生产源，不依赖控制或读取 Sol/Astra 会话。
 - Astra 与 Sol 均已收官，Sol 最终补遗见 `docs/codex/SOL-HANDOFF.md`；收官不代表全部团体已验收。已有完整原生源与候选足以继续。

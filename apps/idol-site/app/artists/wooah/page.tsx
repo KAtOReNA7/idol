@@ -1,7 +1,2 @@
-import WooahDesign from '@/components/candidate/wooah-design';
-import content from '@/data/wooah-artist.json';
-import './wooah-artist.css';
-
-export default function WooahArtistPage() {
-  return <WooahDesign content={content} />;
-}
+import WooahEditorial from '@/components/wooah/editorial';
+export default function WooahArtistPage(){return <WooahEditorial/>;}

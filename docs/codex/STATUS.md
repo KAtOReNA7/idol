@@ -1,8 +1,8 @@
 # 共享开发状态
 
-更新：2026-10-22。交接分支为 `handoff/codex-20261022`；每次先 fetch 并读实际 HEAD、活动分支/PR 和 worklog，不把本地聊天当共享进度。
+更新：2026-10-23 北京时间（WOOAH v11 审阅发布）。交接分支为 `handoff/codex-20261022`；每次先 fetch 并读实际 HEAD、活动分支/PR 和 worklog，不把本地聊天当共享进度。
 
-最新用户决定（北京时间 2026-10-22）：**逐团完成 → 发网页地址 → 等用户人工确认 → 再开发下一团**。公共功能可继续。当前目标仅 GENBLUE；WOOAH、izna、ifeye 等保持待开始，不按原计划并行开工。用户随后报告验收链接 HTTP 404；已补齐静态入口并重新发布，线上可达性尚未独立确认，见 [访问修复](worklogs/20261022-genblue-routefix.md)。
+最新用户决定（北京时间 2026-10-22）：用户在收到 GENBLUE v10 修复版地址后明确回复 **“这一版可以 继续开发吧”**，本次页面人工确认通过。当前接续 **WOOAH**，完成后单独交地址；用户明确通过后再开始下一团。公共功能例外。GENBLUE 真实保存与主站完整部署的未验项保留；不把页面认可扩大为这些项目通过。见 [WOOAH 接续](worklogs/20261022-wooah-native-integration.md)。
 
 ## 已核基线与交接入口
 
@@ -18,8 +18,8 @@
 | 范围 | 当前状态 | 接续边界 |
 | --- | --- | --- |
 | 线上主站 | v186 A-only | 未发布 MEOVV B 或本轮两团候选 |
-| GENBLUE | BlueCut 已接入正式工程；审阅链接 404 后已发布入口修复版 | [直接页面入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/genblue/index.html)；用户可达性/真实浏览器/保存未验，主站包体超限，其他团暂停 |
-| WOOAH | native v1.2 隔离候选已入仓 | 等 GENBLUE 用户通过后再开发，保留现有候选 |
+| GENBLUE | BlueCut 已接入正式工程；v10 页面获用户明确认可 | [已确认页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/genblue/index.html)；开发侧真实浏览器/保存未验，主站包体超限事项仍保留 |
+| WOOAH | 实图方案与精确关系已接入正式工程；只读审阅 v11 已发布 | [待人工确认](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/wooah/index.html)；类型、干净构建、44+8+37 项测试及剪枝 dry-run 通过；真实浏览器/保存未验，24 个视频配图仍缺；确认前不启动第三团 |
 | MEOVV B | 四段patch及四份真实readback已入仓；未上线 | pins只绑定当次产物，完整Sites TAR容量与最终发布仍待验 |
 | izna/ifeye v3 | 15份源、30图依赖闭合，隔离候选已入仓 | 15图复用基线，15图恢复；宿主/resolver/评分接线未完成 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
@@ -30,9 +30,10 @@
 从 [CODEX-FIRST-RUN](CODEX-FIRST-RUN.md) 开始。第一轮在独立任务分支将 GENBLUE/WOOAH 至少一团接入真实工程，补 catalog、稳定ID、精确关联及既有记录入口，交可打开预览；不只写计划或文档。共享层避免抢写；如 pruner 与 GENBLUE 7图冲突成为依赖，精确修保留规则，不关闭 guard 或删原图。
 
 - [本次有界交接记录](worklogs/20261022-repository-handoff.md)
-- [GENBLUE 本轮审阅版](worklogs/20261022-genblue-review.md)：`codex/genblue-native-integration` / PR #3；补夜市王具名 MV 图及双向成员入口、0.1 评分步进和构建审计。最终类型/构建/62 项专项通过；私有只读审阅站已发布。正式展开 TAR 271.328125 MiB 超限，浏览器与真实保存未验，主站未发布、人工待反馈。[首轮接入历史](worklogs/20261022-genblue-native-integration.md) 保留。
+- [GENBLUE 本轮审阅版](worklogs/20261022-genblue-review.md)：`codex/genblue-native-integration` / PR #3；补夜市王具名 MV 图及双向成员入口、0.1 评分步进和构建审计。最终类型/构建/62 项专项通过；私有只读审阅站已发布。旧轮正式展开 TAR 271.328125 MiB 超限，浏览器与真实保存未验、主站未发布；后续 v10 页面已获用户认可。[首轮接入历史](worklogs/20261022-genblue-native-integration.md) 保留。
 - [新任务 worklog 模板](worklogs/TEMPLATE.md)
 - [GENBLUE 验收链接 404 修复](worklogs/20261022-genblue-routefix.md)：同一 PR #3；物理团页、静态回退配置、路径规范化已发布到审阅站。10 项相关回归及类型检查通过；线上浏览器/HTTP 可达性未独立复验，不能宣称 404 已在用户端消失。
+- [WOOAH 正式接续](worklogs/20261022-wooah-native-integration.md)：基于 GENBLUE 修复提交 `c523b0b` 的 `codex/wooah-native-integration`；56 条成员/MV 精确关系、5 个时间轴作品入口、资料来源修订、独立只读审阅入口与原图保留守卫已落地。v11 已发布并等人工确认，保留已认可 GENBLUE；PR 以 GENBLUE 分支为基线，不从旧 main 开工。
 
 每次结束/换机前代码与 worklog 同提交并 push 合规 WIP。未验 WIP 不混成已验 main；合并与实际验证后才更新已验基线。当前无生产发布授权就交预览，有明确授权后可按验收门槛继续，不永久停在候选。
 

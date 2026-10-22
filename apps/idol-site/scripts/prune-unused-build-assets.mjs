@@ -1,4 +1,5 @@
 import {youngposseAuditTexts} from './audit-youngposse-retained-originals.mjs';
+import {auditGenblueBuildAssets} from './audit-genblue-build-assets.mjs';
 // Audited 2026-10-17: five superseded directories, 91 display files, one unused original build copy.
 // Also audits four byte-identical LOONA build copies; canonical public/build originals stay intact.
 // Also excludes seven unreachable ifeye PNG original build copies; public/Git sources stay intact.
@@ -16,7 +17,7 @@ import {auditDuplicateLoonaBuildAssets} from './audit-duplicate-loona-build-asse
 import {auditUnusedUnisFontBuildAssets} from './audit-unused-unis-font-build-assets.mjs';
 import {auditUnusedIfeyeOriginalBuildAssets} from './audit-unused-ifeye-original-build-assets.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const groups = ['fromis9', 'atheart', 'izna', 'genblue', 'loona'];
+const groups = ['fromis9', 'atheart', 'izna', 'loona'];
 const old = 'batch-b-20261016';
 // LOONA's active homepage/member lightboxes use the identical approved-home
 // originals. Keep both those deployed originals and every public/ source.
@@ -118,9 +119,10 @@ const {plan:editorialPlan,skipped:editorialSkipped}=auditUnusedEditorialAssets(r
 const duplicateLoonaPlan=auditDuplicateLoonaBuildAssets(root);
 const unisFontPlan=auditUnusedUnisFontBuildAssets(root);
 const udttPrivatePlan=auditUdttPrivateBuildAssets(root);
-const saved=udttPrivatePlan.reduce((n,p)=>n+p.bytes,0)+ifeyeOriginalPlan.reduce((n,p)=>n+p.bytes,0)+unisFontPlan.reduce((n,p)=>n+p.bytes,0)+duplicateLoonaPlan.reduce((n,p)=>n+p.bytes,0)+editorialPlan.reduce((n,p)=>n+p.bytes,0)+originalPlan.reduce((n,p)=>n+p.bytes,0)+plan.reduce((n,p)=>n+p.bytes,0)+displayPlan.reduce((n,p)=>n+p.bytes,0);
-console.log(JSON.stringify({mode:process.argv.includes('--apply')?'apply':'dry-run',plan,displayPlan,originalPlan,editorialPlan,editorialSkipped,duplicateLoonaPlan,unisFontPlan,ifeyeOriginalPlan,udttPrivatePlan,savedBytes:saved,clientBeforeBytes:before,clientAfterBytes:before-saved},null,2));
+const genbluePlan=auditGenblueBuildAssets(root,texts);
+const saved=genbluePlan.reduce((n,p)=>n+p.bytes,0)+udttPrivatePlan.reduce((n,p)=>n+p.bytes,0)+ifeyeOriginalPlan.reduce((n,p)=>n+p.bytes,0)+unisFontPlan.reduce((n,p)=>n+p.bytes,0)+duplicateLoonaPlan.reduce((n,p)=>n+p.bytes,0)+editorialPlan.reduce((n,p)=>n+p.bytes,0)+originalPlan.reduce((n,p)=>n+p.bytes,0)+plan.reduce((n,p)=>n+p.bytes,0)+displayPlan.reduce((n,p)=>n+p.bytes,0);
+console.log(JSON.stringify({mode:process.argv.includes('--apply')?'apply':'dry-run',plan,displayPlan,originalPlan,editorialPlan,editorialSkipped,duplicateLoonaPlan,unisFontPlan,ifeyeOriginalPlan,udttPrivatePlan,genbluePlan,savedBytes:saved,clientBeforeBytes:before,clientAfterBytes:before-saved},null,2));
 if(process.argv.includes('--apply')) {
  for(const {dir} of plan) fs.rmSync(path.join(root,dir),{recursive:true,force:true});
- for(const {file} of [...displayPlan,...originalPlan,...editorialPlan,...duplicateLoonaPlan,...unisFontPlan,...ifeyeOriginalPlan,...udttPrivatePlan]) fs.unlinkSync(path.join(root,file));
+ for(const {file} of [...displayPlan,...originalPlan,...editorialPlan,...duplicateLoonaPlan,...unisFontPlan,...ifeyeOriginalPlan,...udttPrivatePlan,...genbluePlan]) fs.unlinkSync(path.join(root,file));
 }

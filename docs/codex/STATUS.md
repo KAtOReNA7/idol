@@ -27,7 +27,8 @@
 从 [CODEX-FIRST-RUN](CODEX-FIRST-RUN.md) 开始。第一轮在独立任务分支将 GENBLUE/WOOAH 至少一团接入真实工程，补 catalog、稳定ID、精确关联及既有记录入口，交可打开预览；不只写计划或文档。共享层避免抢写；如 pruner 与 GENBLUE 7图冲突成为依赖，精确修保留规则，不关闭 guard 或删原图。
 
 - [本次有界交接记录](worklogs/20261022-repository-handoff.md)
-- [新任务 worklog 模板](worklogs/TEMPLATE.md)：尚无首轮产品任务被此文件宣称已认领或完成。
+- [GENBLUE 首轮接入](worklogs/20261022-genblue-native-integration.md)：`codex/genblue-native-integration`，正式工程已接入 BlueCut v2.2 并补 MV→成员入口；类型/构建/9项专项通过，浏览器与完整归档受阻，未上线、未人工验收。已吸收 `498cf80` Sol 补遗，不更新已验生产基线。
+- [新任务 worklog 模板](worklogs/TEMPLATE.md)
 
 每次结束/换机前代码与 worklog 同提交并 push 合规 WIP。未验 WIP 不混成已验 main；合并与实际验证后才更新已验基线。当前无生产发布授权就交预览，有明确授权后可按验收门槛继续，不永久停在候选。
 

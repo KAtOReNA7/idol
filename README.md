@@ -17,7 +17,7 @@ v186 原生源码已在提交 `f24075fc98893793e82adbc92cadc9e58257728f` 推送�
 - [MEOVV B](handoffs/codex-20261022/meovv-b/README.md)：四段冻结 patch 与四份真实 owner readback；B 尚未上线，不能冒称已通过正式 Sites 完整包验收。
 - [izna / ifeye v3](handoffs/codex-20261022/astra-izna-ifeye-v3/README.md)：15 份源码、30 图依赖闭合，仍待原生宿主与评分链路接入。
 
-线上主站仍是 v186 A-only；GENBLUE/WOOAH 为私有 QA 候选，尚无本轮人工认可；两团 v3 隔离候选未合入。Astra 已收官，Sol 最新最终反馈尚未见；完整原生源码已经足以继续，不以旧会话报告未回阻断所有开发。
+线上主站仍是 v186 A-only；GENBLUE/WOOAH 为私有 QA 候选，尚无本轮人工认可；两团 v3 隔离候选未合入。Astra 与 Sol 本轮均已收官，Sol最终反馈已归档为 [SOL-HANDOFF](docs/codex/SOL-HANDOFF.md)；主会话已通过有界交接入口复核，不等于产品验收通过。完整原生源码足以继续，无需等待旧会话回复。
 
 仓库保持公开。用户于 2026-10-22 13:22 UTC 已批准本次现有评分、备注、观看快照随源码公开；该批准不扩展到未来任意数据导出、密钥或凭证。公开读仍不等于开放写，owner-only 保存保护保持。没有当前生产发布授权时交预览，有明确授权后可按上线门槛继续。
 

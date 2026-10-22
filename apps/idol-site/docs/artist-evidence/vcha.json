@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "slug": "vcha",
+  "groupId": "rec28ldfRTiE0h",
+  "status": "partial",
+  "checkedAt": "2026-10-16T03:33:42.709425+00:00",
+  "reusedEvidence": {
+    "baseCommit": "c0a1422dcf4d733e84c9b03a32926f17b70a76c0",
+    "facts": [
+      {
+        "label": "VCHA 历史名册",
+        "value": "6 人 · 2024.03.15",
+        "sourceUrl": "https://www.universalmusic.com.br/2024/03/15/o-grupo-de-pop-feminino-vcha-faz-o-lancamento-duplo-de-only-one-e-favorite-girl/",
+        "scope": "环球正文明确列名的历史六人，不代表当前人数",
+        "checkedDate": "2026-10-15"
+      },
+      {
+        "label": "改名关联",
+        "value": "VCHA → GIRLSET",
+        "sourceUrl": "https://www.jype.com/board/ir-data/o486guua",
+        "scope": "JYP报告截至2025-08-15正文日期确认改品牌名；精确生效日未明",
+        "checkedDate": "2026-10-15"
+      },
+      {
+        "label": "GIRLSET 历史配置",
+        "value": "4 人 · 2025.08.15",
+        "sourceUrl": "https://www.jype.com/board/ir-data/o486guua",
+        "scope": "Lexi、Camila、Kendall、Savanna；不覆盖VCHA旧六人记录",
+        "checkedDate": "2026-10-15"
+      },
+      {
+        "label": "GIRLSET 发行",
+        "value": "Commas · 2025.08.29",
+        "sourceUrl": "https://www.universalmusic.com.br/2025/08/29/o-girl-group-girlset-lanca-seu-novo-single-commas/",
+        "scope": "归属GIRLSET时期，不改写VCHA历史作品名义",
+        "checkedDate": "2026-10-15"
+      }
+    ],
+    "note": "Accepted baseline scoped facts retained; fetched source pages this round only for image/identity binding, no inventory recertification."
+  },
+  "newFacts": [],
+  "assets": [
+    {
+      "slug": "vcha",
+      "key": "hero",
+      "imageUrl": "https://www.universalmusic.com.br/wp-content/uploads/sites/628/2024/03/03-15_VCHA.jpg",
+      "sourceUrl": "https://www.universalmusic.com.br/2024/03/15/o-grupo-de-pop-feminino-vcha-faz-o-lancamento-duplo-de-only-one-e-favorite-girl/",
+      "checkedAt": "2026-10-16T03:27:33.024751+00:00",
+      "publishedAt": "2024-03-15",
+      "photographedAt": null,
+      "scope": "2024-03-15 环球 VCHA 六人历史文章主图；不替代 GIRLSET 身份",
+      "rawEvidenceFile": "batch-b/evidence/slices/04/vcha/hero-source-fragment.html",
+      "recordId": null,
+      "stageName": null,
+      "httpStatus": 200,
+      "original": {
+        "path": "public/artist/vcha/batch-b-20261016/hero-original.jpg",
+        "format": "JPEG",
+        "width": 960,
+        "height": 639,
+        "bytes": 317819,
+        "sha256": "de23a566d65f59dc2463300ab3b2fb2a7b69b1ebb3742f5b48eca3b745af8e0d"
+      },
+      "display": {
+        "path": "public/artist/vcha/batch-b-20261016/hero-display.png",
+        "format": "PNG",
+        "width": 960,
+        "height": 639,
+        "bytes": 590725,
+        "sha256": "5dbc97024cf16eb8296ff0f51d5adede866987db6a3e18225b29a2062f9c7060"
+      },
+      "conversion": {
+        "library": "Pillow",
+        "orientation": "exif_transpose",
+        "resize": "thumbnail; preserve aspect ratio; no crop; no upscale",
+        "maxWidth": 1600,
+        "maxHeight": 1600,
+        "resample": "LANCZOS",
+        "format": "PNG",
+        "compressLevel": 9,
+        "optimize": false
+      },
+      "status": "downloaded"
+    }
+  ],
+  "sourceAttempts": [
+    {
+      "sourceUrl": "https://vcha.jype.com/Mobile/Profile",
+      "checkedAt": "2026-10-16T03:27:49.159521+00:00",
+      "status": "unavailable",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "sourceUrl": "https://www.universalmusic.com.br/2024/03/15/o-grupo-de-pop-feminino-vcha-faz-o-lancamento-duplo-de-only-one-e-favorite-girl/",
+      "checkedAt": "2026-10-16T03:23:32.828345+00:00",
+      "status": 200,
+      "finalUrl": "https://www.universalmusic.com.br/2024/03/15/o-grupo-de-pop-feminino-vcha-faz-o-lancamento-duplo-de-only-one-e-favorite-girl/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 60331
+    }
+  ],
+  "physicalCoverage": {
+    "linkedMembers": 6,
+    "membersWithReliableValues": 0,
+    "omittedFields": [
+      "heightCm",
+      "weightKg",
+      "bustCm",
+      "waistCm",
+      "hipsCm"
+    ],
+    "note": "No qualifying official/self-disclosed/formal interview measurements obtained within bounded source work; unknown values and empty members omitted. Minor or age-at-publication-unknown bust/waist/hip data not collected."
+  },
+  "implemented": [
+    "历史两章题头与日期说明分离，避免把 VCHA 历史名册全部归入 GIRLSET",
+    "手机时间线改横向分界，作品卡回到单列阅读",
+    "接入历史官方发行主视觉，明确不是完整合照"
+  ],
+  "gaps": [
+    "精确更名生效日及完整成员变动公告待补。",
+    "当前全员活动与个人合同状态未知。",
+    "GIRLSET图像尚未绑定原图URL，不用于VCHA旧成员身份替代。",
+    "完整六人合照尚缺；现主视觉为发行设计图，未当作完整合照。",
+    "旧 JYP 成员资料页本轮返回404，六张单人照未绑定；保留共享已有照片 fallback。",
+    "身高、体重及符合成年双时点要求的三围暂无合格直接证据，数值与成员条目省略。",
+    "项目依赖缺失；类型、构建与真实页面浏览器验收待根执行者统一记录。"
+  ],
+  "validation": {
+    "assetBytesHashes": "passed: 58/58 resources across slice; command and log in evidence/slices/04/batch-b-slice04-assets-test.log",
+    "identityBindings": "passed exact recordId+stageName+groupIds against supplied identity-map",
+    "runtimeTypecheck": "not run by slice",
+    "build": "not run by slice",
+    "browser": "not run by slice",
+    "visualImageInspection": "six source candidates inspected; HITGS single-person image rejected, actual group header selected; no face-based naming",
+    "checkScope": "Python contract checks only, not runtime typecheck/build/browser acceptance"
+  },
+  "visualProvenance": {
+    "sameCollection": "Profiles from same official page when portraits supplied",
+    "samePhotographySeries": "unknown unless explicitly supplied in asset scope",
+    "photographyDate": "unknown",
+    "noFaceInference": true
+  },
+  "sourceCapture": {
+    "rawEvidenceFile": "batch-b/evidence/slices/04/vcha/source-fragments.html",
+    "scope": "minimal unmodified HTML title and image/name card excerpts from HTTP 200 source; no scripts, forms or unrelated page body shipped"
+  }
+}

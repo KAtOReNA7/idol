@@ -1,0 +1,65 @@
+@font-face{font-family:AtheartLetter;src:url('/fonts/InstrumentSerif-Regular.ttf') format('truetype');font-display:swap}
+.candidate-atheart{--ca-bg:#f6f1de;--ca-ink:#40394e;--ca-muted:#686173;--ca-line:#c9c0bb;--ca-accent:#665383;--ca-panel:#fffcf1;--ca-on-accent:#fff}
+.candidate-atheart .atheart-address{text-align:center;padding:12px 0 42px;border-bottom:1px solid var(--ca-line)}
+.candidate-atheart .ca-title h1{font:400 clamp(92px,13vw,180px)/.95 AtheartLetter,serif;letter-spacing:-.045em;margin:22px 0}
+.candidate-atheart .atheart-fold{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;padding:46px 0}
+.candidate-atheart .atheart-message{padding:20px 0;align-self:center}
+.candidate-atheart .atheart-salutation{display:block;font:italic 26px/1.4 AtheartLetter,serif;color:var(--ca-accent);margin:0 0 28px}
+.candidate-atheart .ca-intro h2{font-size:clamp(32px,3.4vw,50px);font-weight:500;line-height:1.35}
+.candidate-atheart .atheart-enclosure{background:var(--ca-panel);border:1px solid var(--ca-line);padding:20px;align-self:start}
+.candidate-atheart .ca-image>.ca-placeholder{aspect-ratio:4/3;background:#e9e1de}
+.candidate-atheart .atheart-postscript{max-width:100%;border-top:1px dashed var(--ca-line);padding:0 24px}
+.candidate-atheart .atheart-postscript .ca-facts>div{border-top:0}
+.candidate-atheart .ca-tabs{justify-content:center;gap:44px}
+.candidate-atheart .ca-button{border-radius:30px;padding-inline:24px}
+.candidate-atheart .atheart-correspondence>div{margin:24px 0 70px}
+.candidate-atheart .ca-section-heading{align-items:center;text-align:center;margin:20px 0 38px}
+.candidate-atheart .ca-section-heading h2{font-weight:500}
+.candidate-atheart .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.candidate-atheart .ca-roster>button{grid-template-columns:22px 68px minmax(0,1fr) 20px;gap:18px;border-radius:60px;padding:24px;background:var(--ca-panel)}
+.candidate-atheart .ca-member-photo{border:1px solid var(--ca-line);border-radius:50%;overflow:hidden}
+.candidate-atheart .ca-member-photo .ca-placeholder{background:#ebe3d8}
+.candidate-atheart .ca-ordinal{font:400 22px/1 AtheartLetter,serif;color:var(--ca-accent)}
+.candidate-atheart .ca-member-copy strong{font-size:20px;font-weight:500}
+.candidate-atheart .atheart-play-letter{border:1px solid var(--ca-line);padding:32px;background:var(--ca-panel)}
+.candidate-atheart .atheart-chapter{display:block;text-align:center;letter-spacing:.18em;font-size:11px;padding-bottom:18px;border-bottom:1px solid var(--ca-line)}
+.candidate-atheart .ca-works{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.candidate-atheart .ca-work{padding-top:24px}
+.candidate-atheart .ca-work:first-child{grid-row:span 2}
+.candidate-atheart .ca-work:first-child .ca-work-cover{aspect-ratio:4/5}
+.candidate-atheart .ca-work:first-child h3{font-size:28px}
+.candidate-atheart .ca-work-cover{background:#e9e1de}
+.candidate-atheart .atheart-personal-note{max-width:900px;margin-inline:auto!important}
+.candidate-atheart .ca-library{border-block:1px dashed var(--ca-line);padding:32px 0}
+.candidate-atheart .atheart-reference{border-top:1px solid var(--ca-line);padding-top:24px}
+.candidate-atheart .atheart-person-letter{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:36px 60px}
+.candidate-atheart .atheart-person-writing{align-self:center}
+.candidate-atheart .atheart-person-enclosure{border:1px solid var(--ca-line);padding:22px;background:var(--ca-panel)}
+.candidate-atheart .atheart-person-summary{grid-column:1/-1;border-top:1px dashed var(--ca-line)}
+.candidate-atheart .ca-member-summary{border:0;margin:0;padding:22px 0}
+.candidate-atheart .ca-member-works{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.candidate-atheart .ca-member-works article{border:1px solid var(--ca-line);padding:24px;background:var(--ca-panel)}
+@media(max-width:760px){.candidate-atheart .atheart-address{padding:0 0 22px}.candidate-atheart .ca-title h1{font-size:clamp(76px,24vw,120px);margin:20px 0 8px}.candidate-atheart .atheart-fold{grid-template-columns:1fr;gap:26px;padding:24px 0}.candidate-atheart .atheart-message{padding:0}.candidate-atheart .atheart-salutation{font-size:24px;margin-bottom:20px}.candidate-atheart .ca-intro h2{font-size:34px}.candidate-atheart .atheart-enclosure{padding:14px}.candidate-atheart .atheart-postscript{padding:0}.candidate-atheart .ca-tabs{gap:18px;justify-content:flex-start}.candidate-atheart .ca-roster{grid-template-columns:1fr;gap:14px}.candidate-atheart .ca-roster>button{grid-template-columns:16px 46px minmax(0,1fr) 16px;gap:12px;padding:18px;border-radius:40px}.candidate-atheart .ca-member-copy strong{font-size:17px}.candidate-atheart .ca-member-photo .ca-placeholder{font-size:8px;padding:4px}.candidate-atheart .atheart-play-letter{padding:18px}.candidate-atheart .ca-works{grid-template-columns:1fr}.candidate-atheart .ca-work:first-child{grid-row:auto}.candidate-atheart .ca-work:first-child .ca-work-cover{aspect-ratio:16/9}.candidate-atheart .atheart-correspondence>div{margin-bottom:48px}.candidate-atheart .atheart-person-letter{grid-template-columns:1fr;gap:22px}.candidate-atheart .atheart-person-writing{grid-row:1}.candidate-atheart .atheart-person-enclosure{grid-row:2}.candidate-atheart .atheart-person-summary{grid-row:3}.candidate-atheart .ca-member-works{grid-template-columns:1fr;gap:26px}.candidate-atheart .ca-member-works article{padding:16px}}
+
+/* Keep serif roster indices on one line without preventing names from wrapping. */
+.candidate-atheart .ca-roster>button{grid-template-columns:28px 68px minmax(0,1fr) 20px}
+.candidate-atheart .ca-roster .ca-ordinal{white-space:nowrap;overflow-wrap:normal;word-break:normal;font-variant-numeric:tabular-nums;min-width:28px}
+@media(max-width:760px){.candidate-atheart .ca-roster>button{grid-template-columns:24px 46px minmax(0,1fr) 16px}.candidate-atheart .ca-roster .ca-ordinal{font-size:20px;min-width:24px}}
+
+/* Batch B: preserve complete official frames and keyboard reading paths. */
+.candidate-atheart .ca-image>img{display:block;width:100%;height:auto;max-height:640px;object-fit:contain;border-radius:0}
+.candidate-atheart .ca-member-photo img,.candidate-atheart .ca-member-portrait img{object-fit:contain}
+.candidate-atheart .ca-ordinal{white-space:nowrap;overflow-wrap:normal;word-break:normal;font-variant-numeric:tabular-nums}
+.candidate-atheart :is(a,button):focus-visible{outline:3px solid var(--ca-accent);outline-offset:4px}
+.candidate-atheart :is(.ca-title,.ca-intro,.ca-member-copy,.ca-facts,.ca-work){min-width:0}
+.candidate-atheart .ca-member-copy strong,.candidate-atheart .ca-work h3{overflow-wrap:anywhere;line-height:1.4}
+.candidate-atheart .ca-button{max-width:100%;min-width:0;text-wrap:balance;line-height:1.45}
+@media(max-width:760px){.candidate-atheart .ca-image>img{max-height:none}.candidate-atheart .ca-image figcaption{line-height:1.65;overflow-wrap:anywhere}}
+
+.candidate-atheart .atheart-chapter{display:block;margin-bottom:20px;line-height:1.6}
+.candidate-atheart .ca-member-photo{border-radius:12px;overflow:visible;aspect-ratio:3/4}
+.candidate-atheart .ca-roster>button{border-radius:10px 34px 10px 10px;grid-template-columns:28px 82px minmax(0,1fr) 20px;padding:22px;gap:16px}
+.candidate-atheart .atheart-enclosure .ca-image{margin:0}
+@media(max-width:760px){.candidate-atheart .ca-roster>button{grid-template-columns:24px 68px minmax(0,1fr) 16px;padding:16px 12px;gap:12px}.candidate-atheart .ca-member-copy strong{font-size:18px}.candidate-atheart .atheart-person-writing .ca-actions{display:grid;grid-template-columns:1fr}.candidate-atheart .atheart-correspondence{row-gap:34px}}
+
+.candidate-atheart .ca-image>img{aspect-ratio:auto}

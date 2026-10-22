@@ -1,0 +1,53 @@
+@font-face{font-family:WooahDetail;src:url('/fonts/Syne.ttf') format('truetype');font-weight:400 800;font-display:swap}
+.candidate-wooah-experience{--paper:#e9f6f3;--white:#f4fffb;--ink:#163e43;--muted:#4b7377;--line:#9ec4c2;--rose:#006b78;--blush:#d7eee9;--lilac:#c9e7e3;background:var(--paper);color:var(--ink)}
+.candidate-wooah-experience .work-detail-top>*{min-width:0}
+.candidate-wooah-experience .work-aside h1,.candidate-wooah-experience .mobile-work-heading h1{font-family:WooahDetail,Georgia,serif;line-height:1.15;overflow-wrap:anywhere}
+.candidate-wooah-experience .work-aside h1{font-size:clamp(32px,3.4vw,50px)}
+.candidate-wooah-experience .video-mode-tabs{border:1px solid var(--line);background:var(--white);border-radius:0}
+.candidate-wooah-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:var(--paper)}
+.candidate-wooah-experience .video-play{border-radius:0;background:var(--rose);color:var(--paper);min-height:48px}
+.candidate-wooah-experience .button{border-radius:0;white-space:normal;line-height:1.45;min-height:44px}
+.candidate-wooah-experience .button.primary{background:var(--rose);color:var(--paper);border-color:var(--rose)}
+.candidate-wooah-experience .editor-fields input,.candidate-wooah-experience .editor-fields textarea,.candidate-wooah-experience .editor-fields select{background:var(--white);color:var(--ink);border-color:var(--line);border-radius:0}
+.candidate-wooah-experience .editor,.candidate-wooah-experience .editor-actions{border-radius:0}
+.candidate-wooah-experience .cast-card{border-radius:0;background:var(--white)}
+.candidate-wooah-experience .cast-scores{flex-wrap:wrap;gap:10px}
+.candidate-wooah-experience .image-label{background:var(--white);color:var(--muted);border-radius:0}
+.candidate-wooah-experience .member-detail{display:grid;align-items:start}
+.candidate-wooah-experience .member-detail h1{font-size:clamp(36px,4.3vw,66px);line-height:1.25;overflow-wrap:anywhere}
+.candidate-wooah-experience .member-work-card{border-radius:0;border:1px solid var(--line)}
+.candidate-wooah-experience .detail-return{border:1px solid var(--line);border-radius:0;background:var(--white);padding:20px}
+
+.candidate-wooah-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;max-width:1120px;margin-inline:auto}
+.candidate-wooah-experience .video-stage{border-radius:20px;border:8px solid var(--white)}
+.candidate-wooah-experience .work-aside{border:1px solid var(--line);border-radius:22px;padding:32px;background:#f4fffb}
+.candidate-wooah-experience .work-score{border-block:1px solid var(--line);padding-block:20px}
+.candidate-wooah-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.candidate-wooah-experience .cast-card{border-radius:20px;padding:18px}.candidate-wooah-experience .cast-card .photo{border-radius:13px}
+.candidate-wooah-experience .stage-view .work-detail-top{grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:28px;max-width:none}
+.candidate-wooah-experience .stage-view .work-detail-top>div{grid-column:2;grid-row:1}
+.candidate-wooah-experience .stage-view .work-aside{grid-column:1;grid-row:1;border-radius:18px;border-top:8px solid var(--rose);padding:24px}
+.candidate-wooah-experience .stage-source{border-radius:12px;background:var(--blush);border:1px solid var(--line)}
+.candidate-wooah-experience .member-detail{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:42px}
+.candidate-wooah-experience .member-detail>.photo{border-radius:30px;border:12px solid var(--white)}
+.candidate-wooah-experience .member-work-summary{border-radius:18px;background:var(--blush)}
+
+@media(max-width:1100px){.candidate-wooah-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ .candidate-wooah-experience .work-detail-top,.candidate-wooah-experience .stage-view .work-detail-top{grid-template-columns:minmax(0,1fr);gap:24px}
+ .candidate-wooah-experience .cast-grid{grid-template-columns:1fr}
+ .candidate-wooah-experience .member-detail{grid-template-columns:1fr}
+ .candidate-wooah-experience .work-aside h1,.candidate-wooah-experience .mobile-work-heading h1{font-size:36px}
+ .candidate-wooah-experience .member-detail h1{font-size:36px}
+ .candidate-wooah-experience .video-mode-tabs{width:100%}
+ .candidate-wooah-experience .video-mode-tabs button{flex:1;min-width:0}
+ .candidate-wooah-experience .detail-return{padding:16px 12px}
+ .candidate-wooah-experience .member-name{font-size:18px;line-height:1.4;overflow-wrap:anywhere}
+ .candidate-wooah-experience .editor-fields input,.candidate-wooah-experience .editor-fields textarea,.candidate-wooah-experience .editor-fields select{font-size:16px}
+ .candidate-wooah-experience .video-stage{border-width:4px;border-radius:13px}.candidate-wooah-experience .stage-view .work-detail-top>div,.candidate-wooah-experience .stage-view .work-aside{grid-column:auto;grid-row:auto}.candidate-wooah-experience .work-aside,.candidate-wooah-experience .stage-view .work-aside{padding:22px 18px;border-radius:15px}.candidate-wooah-experience .member-detail>.photo{border-width:8px}
+}
+
+/* Batch B: narrow-screen action labels, focus and score numerals. */
+.candidate-wooah-experience :is(button,a,input,textarea,select):focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.candidate-wooah-experience :is(.cast-scores,.member-work-summary) strong{white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:390px){.candidate-wooah-experience .editor-actions{display:flex;flex-wrap:wrap;gap:10px}.candidate-wooah-experience .editor-actions>.button{flex:1 1 120px;white-space:nowrap}.candidate-wooah-experience .video-mode-tabs button{white-space:nowrap;padding-inline:8px}}

@@ -1,0 +1,43 @@
+@font-face{font-family:WeeeklyJournal;src:url('/fonts/PlayfairDisplay-Variable.woff2') format('woff2'),url('/fonts/PlayfairDisplay-Variable.ttf') format('truetype');font-weight:400 900;font-display:swap}
+.candidate-weeekly{--ca-bg:#fff9e9;--ca-ink:#344638;--ca-muted:#68735f;--ca-line:#d6d2af;--ca-accent:#59754e;--ca-panel:#f0edce;--ca-on-accent:#fffef0}
+.candidate-weeekly .weeekly-journal{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);grid-template-areas:'week week' 'heading note' 'photo note' 'photo actions' 'dates dates';gap:24px 44px}
+.candidate-weeekly .weeekly-week{grid-area:week;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid var(--ca-line)}
+.candidate-weeekly .weeekly-week span{text-align:center;font-size:10px;letter-spacing:.1em;padding:13px 5px;border-right:1px solid var(--ca-line)}
+.candidate-weeekly .weeekly-week span:last-child{border:0;background:var(--ca-accent);color:var(--ca-on-accent)}
+.candidate-weeekly .weeekly-heading{grid-area:heading}.candidate-weeekly .ca-title h1{font-family:WeeeklyJournal,Georgia,serif;font-size:clamp(66px,9vw,138px);font-weight:500;font-style:italic;letter-spacing:-.07em}
+.candidate-weeekly .weeekly-sticky-note{grid-area:note;align-self:start;background:#eee7b4;border-top:8px solid #d9cb71;padding:32px 28px;margin-top:34px}
+.candidate-weeekly .ca-intro h2{font-size:clamp(27px,2.9vw,42px);line-height:1.4;font-weight:500}
+.candidate-weeekly .weeekly-photo-page{grid-area:photo;padding:14px;background:#fffdf5;border:1px solid var(--ca-line);box-shadow:7px 7px 0 #ece5cb}
+.candidate-weeekly .weeekly-photo-page .ca-image>.ca-placeholder{aspect-ratio:3/2}
+.candidate-weeekly .weeekly-page-actions{grid-area:actions;align-self:end}.candidate-weeekly .weeekly-date-notes{grid-area:dates;margin-top:28px}
+.candidate-weeekly .ca-button{border-radius:4px}.candidate-weeekly .ca-tabs{background:#ede6bf;border:0;border-top:1px solid var(--ca-line);gap:30px}
+.candidate-weeekly .weeekly-tab-label{display:inline-block;background:var(--ca-accent);color:var(--ca-on-accent);padding:8px 18px;border-radius:8px 8px 0 0;font-size:10px;letter-spacing:.13em;margin-bottom:20px}
+.candidate-weeekly .weeekly-notebook>div{margin-bottom:58px}.candidate-weeekly .weeekly-roster-page{border-bottom:1px solid var(--ca-line);padding-bottom:32px}
+.candidate-weeekly .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.candidate-weeekly .ca-roster>button{border:0;border-bottom:1px solid var(--ca-line);padding:18px 0;background:transparent;grid-template-columns:24px 64px minmax(0,1fr) 18px}
+.candidate-weeekly .ca-ordinal{font-family:WeeeklyJournal,Georgia,serif;font-size:22px;color:var(--ca-accent)}
+.candidate-weeekly .ca-work{border:1px solid var(--ca-line);padding:16px;background:#fffdf5;align-self:start}
+.candidate-weeekly .ca-works>.ca-work:nth-child(3n+2){margin-top:35px}.candidate-weeekly .ca-works>.ca-work:nth-child(3n){margin-top:70px}
+.candidate-weeekly .ca-work h3{font-family:WeeeklyJournal,Georgia,serif;font-size:24px;font-weight:600}
+.candidate-weeekly .weeekly-bookmark{border-block:5px double var(--ca-line);padding:0 24px}.candidate-weeekly .ca-library{border:0}
+.candidate-weeekly .weeekly-notes-page{background:repeating-linear-gradient(transparent,transparent 31px,#d6d2af55 31px,#d6d2af55 32px);padding-bottom:20px}
+.candidate-weeekly .weeekly-person-page{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-areas:'picture title' 'picture notes';gap:20px 48px}
+.candidate-weeekly .weeekly-person-title{grid-area:title}.candidate-weeekly .weeekly-person-picture{grid-area:picture;padding:16px;border:1px solid var(--ca-line);box-shadow:7px 7px 0 var(--ca-panel)}.candidate-weeekly .weeekly-person-notes{grid-area:notes}
+@media(max-width:760px){
+ .candidate-weeekly .weeekly-journal{grid-template-columns:1fr;grid-template-areas:'week' 'heading' 'note' 'actions' 'photo' 'dates';gap:18px}
+ .candidate-weeekly .weeekly-week span{font-size:8px;letter-spacing:0;padding:11px 2px}.candidate-weeekly .ca-title h1{font-size:clamp(58px,18vw,86px)}
+ .candidate-weeekly .weeekly-sticky-note{margin:0;padding:24px 20px}.candidate-weeekly .weeekly-date-notes{margin-top:16px}.candidate-weeekly .weeekly-page-actions .ca-actions{margin:5px 0}
+ .candidate-weeekly .ca-roster{grid-template-columns:1fr}.candidate-weeekly .ca-roster>button{grid-template-columns:24px 58px minmax(0,1fr) 16px}
+ .candidate-weeekly .ca-works>.ca-work:nth-child(n){margin-top:0}.candidate-weeekly .weeekly-bookmark{padding:0 10px}.candidate-weeekly .ca-tabs{gap:20px}
+ .candidate-weeekly .weeekly-person-page{grid-template-columns:1fr;grid-template-areas:'title' 'picture' 'notes';gap:24px}.candidate-weeekly .ca-member-identity h1{font-size:36px}
+}
+
+/* Batch B: source images retain complete framing; focused controls and two-digit indices remain legible. */
+.candidate-weeekly .ca-image>img{height:auto;aspect-ratio:auto;object-fit:contain}
+.candidate-weeekly .ca-member-portrait>img{height:auto;max-height:78vh;object-fit:contain}
+.candidate-weeekly .ca-ordinal{white-space:nowrap;overflow-wrap:normal;word-break:normal;font-variant-numeric:tabular-nums}
+.candidate-weeekly :is(.ca-title h1,.ca-member-copy strong,.ca-member-identity h1,.ca-facts dd,.ca-work h3){overflow-wrap:anywhere}
+.candidate-weeekly .ca-button{white-space:nowrap;gap:8px}
+.candidate-weeekly .ca-button svg{flex:none}
+.candidate-weeekly :is(a,button):focus-visible{outline:3px solid var(--ca-accent);outline-offset:4px}
+.candidate-weeekly .weeekly-reading-note{font-size:12px;line-height:1.7;border-top:1px dashed var(--ca-line);padding-top:14px;margin-top:20px}.candidate-weeekly .weeekly-photo-page{align-self:start}.candidate-weeekly .weeekly-roster-page .ca-roster{row-gap:6px}.candidate-weeekly .weeekly-tab-label{letter-spacing:.06em}.candidate-weeekly .weeekly-date-notes .ca-facts{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}@media(max-width:760px){.candidate-weeekly .weeekly-journal{grid-template-areas:'week' 'heading' 'photo' 'note' 'actions' 'dates'}.candidate-weeekly .weeekly-photo-page{padding:8px;box-shadow:4px 5px 0 #ece5cb}.candidate-weeekly .weeekly-date-notes .ca-facts{grid-template-columns:1fr}.candidate-weeekly .weeekly-sticky-note{padding:20px 16px}.candidate-weeekly .weeekly-reading-note{margin-top:14px}.candidate-weeekly .weeekly-person-picture{box-shadow:4px 5px 0 var(--ca-panel)}}

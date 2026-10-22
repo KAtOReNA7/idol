@@ -1,0 +1,481 @@
+{
+  "baselineCommit": "adb7501342baf9c4d28707db3072a99b21cb122c",
+  "sourceOverlayCommit": "4db05db7e6bd0478f2b468f74c21e23de3ce6e3d",
+  "sourceProductionCommit": "c58e8a093bfd4e1075eeb156a974ed9bc59c3098",
+  "beforeSourceSavedAt": "2026-10-16T13:18:34.169368+00:00",
+  "beforeMeasuredAt": "2026-10-16T13:21:18.960Z",
+  "afterMeasuredAt": "2026-10-16T13:39:50.114Z",
+  "measurementScope": "Identical fixture, count, dimensions, source patterns, alt text and first-image priority. Actual image functions extracted verbatim by TypeScript AST. Core JS excludes external React/ReactDOM/lucide, common to both. SSR counts are deterministic markup only.",
+  "coreJs": {
+    "before": {
+      "rawBytes": 33766,
+      "gzipBytes": 6032,
+      "sha256": "34b4461d42638e90abb3bb2bef60312d350ebdc043dabb916ab64352a0ab53ff",
+      "external": [
+        "react",
+        "react-dom",
+        "lucide-react"
+      ]
+    },
+    "after": {
+      "rawBytes": 43876,
+      "gzipBytes": 10042,
+      "sha256": "b6cad298ffce2326652043c528ae09de1e20196d6a9ba1ba89d9d9a4bdffc6a5",
+      "external": [
+        "react",
+        "react-dom",
+        "lucide-react"
+      ]
+    },
+    "deltaRawBytes": 10110,
+    "deltaGzipBytes": 4010,
+    "interpretation": "New explicit recovery, generation/session protection and lightbox lifecycle have a measured code-size cost. This is not a measured loading-speed improvement. Browser bundle/experience acceptance remains a dot integration gate."
+  },
+  "ssrComparison": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "count": 12,
+      "sameImageCountQualitySourceAltAndPriority": true,
+      "before": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "count": 12,
+        "domElementCount": 26,
+        "imgCount": 12,
+        "nonemptySrcCount": 12,
+        "uniqueSrcCount": 3,
+        "altCount": 12,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 11
+      },
+      "after": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "count": 12,
+        "domElementCount": 26,
+        "imgCount": 12,
+        "nonemptySrcCount": 12,
+        "uniqueSrcCount": 3,
+        "altCount": 12,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 11
+      },
+      "afterAsyncDecodeCount": 12
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "count": 120,
+      "sameImageCountQualitySourceAltAndPriority": true,
+      "before": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "count": 120,
+        "domElementCount": 242,
+        "imgCount": 120,
+        "nonemptySrcCount": 120,
+        "uniqueSrcCount": 30,
+        "altCount": 120,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 119
+      },
+      "after": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "count": 120,
+        "domElementCount": 242,
+        "imgCount": 120,
+        "nonemptySrcCount": 120,
+        "uniqueSrcCount": 30,
+        "altCount": 120,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 119
+      },
+      "afterAsyncDecodeCount": 120
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "count": 600,
+      "sameImageCountQualitySourceAltAndPriority": true,
+      "before": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "count": 600,
+        "domElementCount": 1202,
+        "imgCount": 600,
+        "nonemptySrcCount": 600,
+        "uniqueSrcCount": 150,
+        "altCount": 600,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 599
+      },
+      "after": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "count": 600,
+        "domElementCount": 1202,
+        "imgCount": 600,
+        "nonemptySrcCount": 600,
+        "uniqueSrcCount": 150,
+        "altCount": 600,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 599
+      },
+      "afterAsyncDecodeCount": 600
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "count": 12,
+      "sameImageCountQualitySourceAltAndPriority": true,
+      "before": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "count": 12,
+        "domElementCount": 26,
+        "imgCount": 12,
+        "nonemptySrcCount": 12,
+        "uniqueSrcCount": 3,
+        "altCount": 12,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 11
+      },
+      "after": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "count": 12,
+        "domElementCount": 26,
+        "imgCount": 12,
+        "nonemptySrcCount": 12,
+        "uniqueSrcCount": 3,
+        "altCount": 12,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 11
+      },
+      "afterAsyncDecodeCount": 12
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "count": 120,
+      "sameImageCountQualitySourceAltAndPriority": true,
+      "before": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "count": 120,
+        "domElementCount": 242,
+        "imgCount": 120,
+        "nonemptySrcCount": 120,
+        "uniqueSrcCount": 30,
+        "altCount": 120,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 119
+      },
+      "after": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "count": 120,
+        "domElementCount": 242,
+        "imgCount": 120,
+        "nonemptySrcCount": 120,
+        "uniqueSrcCount": 30,
+        "altCount": 120,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 119
+      },
+      "afterAsyncDecodeCount": 120
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "count": 600,
+      "sameImageCountQualitySourceAltAndPriority": true,
+      "before": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "count": 600,
+        "domElementCount": 1202,
+        "imgCount": 600,
+        "nonemptySrcCount": 600,
+        "uniqueSrcCount": 150,
+        "altCount": 600,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 599
+      },
+      "after": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "count": 600,
+        "domElementCount": 1202,
+        "imgCount": 600,
+        "nonemptySrcCount": 600,
+        "uniqueSrcCount": 150,
+        "altCount": 600,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 599
+      },
+      "afterAsyncDecodeCount": 600
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 720
+      },
+      "count": 12,
+      "sameImageCountQualitySourceAltAndPriority": true,
+      "before": {
+        "viewport": {
+          "width": 320,
+          "height": 720
+        },
+        "count": 12,
+        "domElementCount": 26,
+        "imgCount": 12,
+        "nonemptySrcCount": 12,
+        "uniqueSrcCount": 3,
+        "altCount": 12,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 11
+      },
+      "after": {
+        "viewport": {
+          "width": 320,
+          "height": 720
+        },
+        "count": 12,
+        "domElementCount": 26,
+        "imgCount": 12,
+        "nonemptySrcCount": 12,
+        "uniqueSrcCount": 3,
+        "altCount": 12,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 11
+      },
+      "afterAsyncDecodeCount": 12
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 720
+      },
+      "count": 120,
+      "sameImageCountQualitySourceAltAndPriority": true,
+      "before": {
+        "viewport": {
+          "width": 320,
+          "height": 720
+        },
+        "count": 120,
+        "domElementCount": 242,
+        "imgCount": 120,
+        "nonemptySrcCount": 120,
+        "uniqueSrcCount": 30,
+        "altCount": 120,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 119
+      },
+      "after": {
+        "viewport": {
+          "width": 320,
+          "height": 720
+        },
+        "count": 120,
+        "domElementCount": 242,
+        "imgCount": 120,
+        "nonemptySrcCount": 120,
+        "uniqueSrcCount": 30,
+        "altCount": 120,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 119
+      },
+      "afterAsyncDecodeCount": 120
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 720
+      },
+      "count": 600,
+      "sameImageCountQualitySourceAltAndPriority": true,
+      "before": {
+        "viewport": {
+          "width": 320,
+          "height": 720
+        },
+        "count": 600,
+        "domElementCount": 1202,
+        "imgCount": 600,
+        "nonemptySrcCount": 600,
+        "uniqueSrcCount": 150,
+        "altCount": 600,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 599
+      },
+      "after": {
+        "viewport": {
+          "width": 320,
+          "height": 720
+        },
+        "count": 600,
+        "domElementCount": 1202,
+        "imgCount": 600,
+        "nonemptySrcCount": 600,
+        "uniqueSrcCount": 150,
+        "altCount": 600,
+        "eagerCount": 1,
+        "highPriorityCount": 1,
+        "lazyCount": 599
+      },
+      "afterAsyncDecodeCount": 600
+    }
+  ],
+  "browser": {
+    "state": "not-run",
+    "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+    "probe": {
+      "measuredAt": "2026-10-16T13:18:52.993Z",
+      "engine": "chromium",
+      "playwrightVersion": "1.62.1",
+      "executable": "/root/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome",
+      "binaryExists": false,
+      "launchAttempts": 1,
+      "installationAttempted": false,
+      "launched": false,
+      "error": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    },
+    "intendedSettings": {
+      "viewports": [
+        {
+          "width": 1280,
+          "height": 900
+        },
+        {
+          "width": 390,
+          "height": 844
+        },
+        {
+          "width": 320,
+          "height": 720
+        }
+      ],
+      "imageCounts": [
+        12,
+        120,
+        600
+      ],
+      "sourcePattern": "Each four distinct identities repeat the same URL; identity switch keeps src, source sequence A→B→A; same 800x600 synthetic SVG and 120ms server delay",
+      "cache": [
+        "cold",
+        "warm"
+      ],
+      "runsPerCell": 5,
+      "actualRuns": 0,
+      "browser": "existing Playwright Chromium only; no installation"
+    },
+    "metrics": {
+      "requestCount": {
+        "measured": false,
+        "median": null,
+        "p95": null,
+        "runs": 0
+      },
+      "duplicateRequests": {
+        "measured": false,
+        "median": null,
+        "p95": null,
+        "runs": 0
+      },
+      "criticalImageStartMs": {
+        "measured": false,
+        "median": null,
+        "p95": null,
+        "runs": 0
+      },
+      "firstVisibleMs": {
+        "measured": false,
+        "median": null,
+        "p95": null,
+        "runs": 0
+      },
+      "LCP": {
+        "measured": false,
+        "median": null,
+        "p95": null,
+        "runs": 0
+      },
+      "CLS": {
+        "measured": false,
+        "median": null,
+        "p95": null,
+        "runs": 0
+      },
+      "scrollLoad": {
+        "measured": false,
+        "median": null,
+        "p95": null,
+        "runs": 0
+      },
+      "DOMCountInBrowser": {
+        "measured": false,
+        "median": null,
+        "p95": null,
+        "runs": 0
+      }
+    }
+  }
+}

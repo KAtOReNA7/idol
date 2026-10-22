@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-10-16",
+  "records": [
+    {
+      "sourceId": "source:e403895b3cd703fe",
+      "url": "https://kpopmedia.co.kr/",
+      "excerpt": "MARI (마리) / Main Vocals / 담당: Main Vocals, Main Rapper",
+      "locator": "L137–141",
+      "evidenceType": "fresh_official_body_short_quote",
+      "scope": "MARI only. Main Rapper maps to the existing 主说唱 option. Does not map Lead Rapper or plain Rapper to 主说唱."
+    },
+    {
+      "url": "https://purplekiss.co.kr/community/board/63563c9c60351124ac4aeb29/post/6919cad547978b6418ecd6df",
+      "excerpt": "퍼플키스는 11월 16일 모든 공식 활동을 마무리합니다.",
+      "locator": "L4–7",
+      "evidenceType": "fresh_official_body_short_quote",
+      "scope": "2025-11-16 group official activities ending; not an individual membership or agency-contract endpoint."
+    },
+    {
+      "url": "https://www.soompi.com/article/1656372wpp/cherry-bullet-announces-disbandment",
+      "excerpt": "their official group activities end today",
+      "locator": "L13–20",
+      "evidenceType": "fresh_reproduced_official_statement_translation",
+      "scope": "FNC statement reproduced in English; group activity endpoint, not universal individual membership or contract endpoint.",
+      "officialOriginUrl": "https://weverse.io/cherrybullet/notice/19011",
+      "officialOriginReadStatus": "shell_only_no_statement_body; verified linked origin, not independently body-read"
+    }
+  ],
+  "roleNormalizations": [
+    {
+      "claimId": "member:recvxAPQCFIfdZ:role:5ff242a4953ed228",
+      "sourceId": "source:e403895b3cd703fe",
+      "sourceLabel": "Main Rapper",
+      "originalLabel": "主Rapper",
+      "adoptedLabel": "主说唱",
+      "rule": "Exact claim-scoped translation of freshly verified Main Rapper into an existing backend option; no global alias or semantic promotion."
+    }
+  ]
+}

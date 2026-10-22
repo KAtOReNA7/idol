@@ -1,0 +1,3 @@
+// Synthetic editorial projection; no public research or private catalog data.
+import type {TriplesPublicMusic} from '../../../../lib/idol/triples-design-catalog';
+export default {releases:[{key:'fixture-triples-release',kind:'release',title:'合成发行',date:'2026-10-16',dateSemantics:null,localImage:'/image-fixture/release.png?host=triples',sourceUrl:'https://image-fixture.example/release',participantIds:[],participationStatus:'synthetic'}] as TriplesPublicMusic[],musicVideos:[] as TriplesPublicMusic[],stages:[] as TriplesPublicMusic[],dimensions:[] as {key:string;name:string;memberIds:string[];sourceUrl:string}[]};

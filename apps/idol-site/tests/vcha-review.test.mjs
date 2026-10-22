@@ -1,0 +1,27 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {createHash} from 'node:crypto';import {createRequire} from 'node:module';
+import {group,assets,helpers,resolveNative,nativeHref,readReviewUrl,REVIEW_PATH} from '../lib/idol/design-review/vcha-runtime/model.mjs';
+import {artist,render} from '../lib/idol/design-review/vcha-runtime/groups/vcha/index.js';import {validateNativeActivation} from '../lib/idol/design-review/vcha-runtime/host.mjs';import {actionIdentity} from '../lib/idol/design-review/vcha-runtime/shared/identity.js';
+const require=createRequire(import.meta.url),load=require('./helpers/public-artist-loader.cjs'),production={...load('lib/idol/artist-navigation.ts'),...load('lib/idol/journey.ts'),...load('lib/idol/stage-source.ts')};const fixture=JSON.parse(fs.readFileSync(new URL('./fixtures/vcha-review-catalog.json',import.meta.url)));
+const route=(page='home',key=null,query='')=>({slug:'vcha',page,key,query:new URLSearchParams(query)});
+test('all original public identities, members, dates, sources and artwork retained',async()=>{
+ const upstream=JSON.parse(fs.readFileSync(new URL('../evidence/sol15/vcha/source-artist.json',import.meta.url)));assert.deepEqual(JSON.parse(JSON.stringify(artist)),upstream);assert.equal(artist.members.length,6);assert.equal(artist.works.length,12);assert.equal(artist.timeline.length,9);assert.equal(group.media.length,8);
+ for(const p of ['home','members','works','timeline'])assert.ok(render({route:route(p),helpers}).includes('vc-site'));
+ for(const w of artist.works)assert.ok(render({route:route('work',helpers.entityKey(w)),helpers}).includes(helpers.escape(w.title)));
+ for(const m of artist.members)assert.ok(render({route:route('member',m.id),helpers}).includes(m.id));
+ const html=render({route:route('home'),helpers})+render({route:route('timeline'),helpers});assert.doesNotMatch(html,/旧名的作品|完整地留在这里|沿一根时间线|待补|待核|证据缺口|SOURCE_ROWS/);
+});
+test('every mapped original SHA is exact, deployed reuse only, no image compression',()=>{
+ let fresh=0;for(const a of Object.values(assets)){const b=fs.readFileSync(new URL('../public'+a.targetUrl,import.meta.url));assert.equal(b.length,a.bytes);assert.equal(createHash('sha256').update(b).digest('hex'),a.sha256);if(!a.distMatches.length)fresh+=b.length;}assert.equal(fresh,3689990);
+});
+for(const media of group.media)test('exact native binding '+media.key,()=>{
+ const reference={kind:media.kind,key:media.key},r=route('work',media.key),url=REVIEW_PATH+helpers.href('vcha','work',media.key);const before=JSON.stringify(fixture);const entity=resolveNative(reference,fixture,production);assert.ok(entity);assert.equal(entity.videoId,media.videoId);assert.equal(entity.sourceKey,media.videoId);assert.equal(entity.clip,null);
+ const context={getAttribute:k=>k==='data-work-key'?media.key:null,hasAttribute:k=>k==='data-work-key'};const element={dataset:{sourceKey:entity.sourceKey,originalType:entity.originalType,slotType:entity.slotType,clip:'null'},getAttribute:()=>null,hasAttribute:()=>false,closest:()=>context};const identity=actionIdentity(element,{artist,route:r});assert.deepEqual(validateNativeActivation({element,identity,artist,route:r,catalog:fixture,production}),reference);
+ for(const field of ['groupId','entityId','candidateKey','workId','videoId','slug'])assert.equal(validateNativeActivation({element,identity:{...identity,[field]:'forged'},artist,route:r,catalog:fixture,production}),null);
+ for(const field of ['sourceKey','slotType','originalType','clip']){const old=element.dataset[field];element.dataset[field]='forged';assert.equal(validateNativeActivation({element,identity,artist,route:r,catalog:fixture,production}),null);element.dataset[field]=old;}
+ const input={reference,action:'records',catalog:fixture,route:r,mountedUrl:url,currentUrl:url,mayLeave:true};const href=nativeHref(input,production);assert.ok(href);const parsed=production.readRoute(href);assert.equal(parsed.work,entity.workId);assert.equal(parsed.video,media.kind);assert.match(parsed.artistReturn,/^\/artists\/vcha/);
+ for(const patch of [{mayLeave:false},{currentUrl:REVIEW_PATH},{action:'save'}])assert.equal(nativeHref({...input,...patch},production),null);
+ for(const mutate of [c=>c.scope.groupId='foreign',c=>c.works.push(c.works.find(w=>w.id===entity.workId)),c=>c.works.find(w=>w.id===entity.workId).url='https://www.youtube.com/watch?v=XXXXXXXXXXX']){const c=structuredClone(fixture);mutate(c);if(media.kind==='mv'||c.scope.groupId==='foreign'||c.works.length>fixture.works.length)assert.equal(resolveNative(reference,c,production),null);}
+ if(media.kind==='stage')for(const patch of [{kind:'forged'},{clip:{start:1,end:2}},{videoId:'XXXXXXXXXXX'},{url:'https://www.youtube.com/watch?v=XXXXXXXXXXX'}]){const c=structuredClone(fixture);Object.assign(c.works.find(w=>w.id===entity.workId).stage,patch);assert.equal(resolveNative(reference,c,production),null);}
+ assert.equal(JSON.stringify(fixture),before);
+});
+test('releases never native; six historical member IDs retain actual catalog binding; repeated query transports',()=>{for(const m of group.members)assert.equal(resolveNative({kind:'member',key:m.key},fixture,production)?.memberId,m.memberId);for(const w of group.releases)assert.equal(resolveNative({kind:'release',key:w.key},fixture,production),null);assert.deepEqual([...readReviewUrl(REVIEW_PATH+'#/vcha/works?q=a&q=b&chapter=girlset').query],[['q','a'],['q','b'],['chapter','girlset']]);});

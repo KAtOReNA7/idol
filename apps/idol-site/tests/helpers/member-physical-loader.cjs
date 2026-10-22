@@ -1,0 +1,4 @@
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ts=require('typescript');
+const root=path.resolve(__dirname,'../..'),cache=new Map();
+function load(rel){const file=path.resolve(root,rel);if(cache.has(file))return cache.get(file);if(file.endsWith('.json'))return JSON.parse(fs.readFileSync(file));const out={};cache.set(file,out);const code=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{jsx:ts.JsxEmit.ReactJSX,module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText;vm.runInNewContext('(function(require,exports){'+code+'})',{URL,Date})(name=>{if(name.endsWith('.css'))return {};if(name.startsWith('@/')){let p=name.slice(2);return load(fs.existsSync(path.join(root,p))?p:p+'.ts');}return require(name);},out);return out;}
+module.exports=load('components/member-physical-facts.tsx');

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "slug": "udtt",
+  "groupId": "rec28ldfRTiDPs",
+  "status": "partial",
+  "checkedAt": "2026-10-16T03:35:50.311709+00:00",
+  "reusedEvidence": {
+    "baseCommit": "c0a1422dcf4d733e84c9b03a32926f17b70a76c0",
+    "facts": [
+      {
+        "label": "出道单曲专辑",
+        "value": "School Rush",
+        "sourceUrl": "https://music.bugs.co.kr/album/20721719?wl_ref=list_tr_11_ar",
+        "scope": "Bugs正文以 debut single album 介绍",
+        "checkedDate": "2026-10-15"
+      },
+      {
+        "label": "目录发行日期",
+        "value": "2025.04.29",
+        "sourceUrl": "https://music.bugs.co.kr/album/20721719?wl_ref=list_tr_11_ar",
+        "scope": "唱片目录发行日，不自动升级为全部出道定义",
+        "checkedDate": "2026-10-15"
+      },
+      {
+        "label": "此前发行",
+        "value": "RETRY · 2024.12.11",
+        "sourceUrl": "https://music.apple.com/us/album/retry-single/1782470972",
+        "scope": "Apple Music发行记录；先行或正式出道性质另核",
+        "checkedDate": "2026-10-15"
+      },
+      {
+        "label": "该次制作署名",
+        "value": "에쓰더블유엔터테인먼트주식회사",
+        "sourceUrl": "https://music.bugs.co.kr/album/20721719?wl_ref=list_tr_11_ar",
+        "scope": "School Rush作品制作署名，不与其他报道标签自动合并",
+        "checkedDate": "2026-10-15"
+      }
+    ],
+    "note": "基线已验收字段照录，未重新采集或将其核验日改成本轮。"
+  },
+  "newFacts": [],
+  "assets": [
+    {
+      "key": "group",
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000006.000170584.html",
+      "originalUrl": "https://prcdn.freetls.fastly.net/release_image/170584/6/170584-6-69b88d8bc9efc66ed3ab35ec23a9a1fe-1200x1799.jpg",
+      "checkedAt": "2026-10-16T03:26:23.077000+00:00",
+      "publishedAt": "2025-10-08",
+      "photoDate": null,
+      "samePhotographicSeries": "unknown",
+      "httpStatus": 200,
+      "original": {
+        "path": "public/artist/udtt/batch-b-20261016/group.original.jpg",
+        "format": "JPEG",
+        "width": 1200,
+        "height": 1799,
+        "bytes": 184139,
+        "sha256": "ab537193942af46601a56e27dc5b45976c75fb80aedb77d25cb9fd38af170d1a"
+      },
+      "display": {
+        "path": "public/artist/udtt/batch-b-20261016/group.display.jpg",
+        "format": "JPEG",
+        "width": 1067,
+        "height": 1600,
+        "bytes": 245638,
+        "sha256": "c55959059143b87732e514646b3d81104bbc7195a5379c98c5720c50487945bf"
+      },
+      "conversion": {
+        "tool": "Pillow",
+        "operation": "EXIF transpose; RGB; contain thumbnail without crop or upscaling",
+        "maxWidth": 1600,
+        "maxHeight": 1600,
+        "resample": "LANCZOS",
+        "format": "JPEG",
+        "quality": 88,
+        "subsampling": 0,
+        "optimize": false,
+        "progressive": false
+      },
+      "scope": "活动主办方2025-10-08新闻稿明确标注UDTT；不按照片推断逐人身份或当前关系",
+      "credit": "在日本大韓民国民団大阪府本部 / 活动主办方新闻稿",
+      "sameDataCollection": "single published source",
+      "rawEvidenceFile": "evidence/slices/03/udtt/promoter.html"
+    }
+  ],
+  "sourceAttempts": [
+    {
+      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000006.000170584.html",
+      "status": "readable",
+      "checkedAt": "2026-10-16T03:35:50.311709+00:00",
+      "rawEvidenceFile": "evidence/slices/03/udtt/promoter.html"
+    },
+    {
+      "sourceUrl": "https://swentertainment.co.kr/UDTT-우당탕탕소녀단",
+      "status": "unavailable-body",
+      "httpStatus": 200,
+      "error": "Domain disconnected",
+      "rawEvidenceFile": "evidence/slices/03/udtt/agency.html"
+    }
+  ],
+  "physicalCoverage": {
+    "memberCount": 0,
+    "fields": [],
+    "omitted": [
+      "weightKg",
+      "bustCm",
+      "waistCm",
+      "hipsCm",
+      "heightCm"
+    ],
+    "reason": "仅采用官方卡片直接可读数字；其他搜索返回聚合站无来源值，未采纳。三围未取得符合公开来源及成年时点证明的数据。"
+  },
+  "implemented": [
+    "校园课表保留深绿放映区；手机标题后先看完整合照再看课程资料，320窄屏点名册单列。",
+    "完整原图及非裁切显示版；稳定身份绑定与原始HTML片段。",
+    "键盘焦点、双位序号nowrap、窄屏长标题与作品详情溢出修正。",
+    "原共享 slots 及照片fallback保留。"
+  ],
+  "gaps": [
+    "官方完整名册及成员变动原公告待补。",
+    "制作署名、经纪关系和准确出道定义不能相互替代。",
+    "具名官方个人图待补：Risako、Han Chaehee、Koo Hanna、Lu Yuting、Kwon Yejin；不依据合照面貌赋名。",
+    "本批未取得可靠体重或符合成年时点要求的公开三围；字段省略。",
+    "官方图片仅在候选资源目录，未上传生产或Figma。",
+    "桌面/320/390视图、类型检查和构建等待root统一执行，未在分片声明通过。"
+  ],
+  "validation": {
+    "identityAndAssets": "passed: python evidence/slices/03/batch-b-slice03-contract.py, exit 0",
+    "browser": "not run by slice",
+    "typecheck": "not run by slice",
+    "build": "not run by slice",
+    "log": "evidence/slices/03/batch-b-slice03-contract.log"
+  }
+}

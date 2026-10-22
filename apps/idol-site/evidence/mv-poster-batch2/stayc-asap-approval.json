@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "upstreamAdmissionSHA256": "d93b40e1e98790447308e4aa559684cfcd6a5c55e4614824e21ff5d151d63755",
+  "reviewedAtUTC": "2026-10-19T07:47:45.717763+00:00",
+  "reviewer": "independent-review",
+  "decision": "approved_for_bugs_mv_preview_admission",
+  "candidateId": "stayc-asap-38cfc43c8f72",
+  "candidateVersion": "mv-poster-20261019-batch2",
+  "originalFile": "tests/fixtures/mv-poster-batch2/stayc-asap-original-591778.jpg",
+  "approvedFacts": {
+    "approved": true,
+    "status": "approved_for_bugs_mv_preview_admission",
+    "group": "STAYC",
+    "song": "ASAP",
+    "workId": "recvxyH5pzNPXg",
+    "videoId": "NsY-9MCOIAQ",
+    "videoType": "官方MV",
+    "youtubeUrl": "https://www.youtube.com/watch?v=NsY-9MCOIAQ",
+    "catalogWorkName": "STAYC · ASAP",
+    "label": "MV 预览图（Bugs 来源）",
+    "sourceProvider": "Bugs",
+    "sourcePage": "https://music.bugs.co.kr/mv/591778",
+    "bugsMvId": "591778",
+    "originalUrl": "https://image.bugsm.co.kr/mvhd/images/500/5917/591778.jpg",
+    "sourceTitle": "ASAP",
+    "sourceOGTitle": "ASAP / STAYC(스테이씨)",
+    "sourceArtist": "STAYC",
+    "sourceOGArtist": "STAYC(스테이씨)",
+    "sourceAlbum": "STAYDOM",
+    "sourceType": "정규",
+    "sourceRegistrationDate": "2021-04-08",
+    "duration": "03:15",
+    "durationSeconds": 195,
+    "sha256": "38cfc43c8f72a244ea7c55d31ec189cb00c064a743b85ae8549ee8acb766c5b4",
+    "bytes": 92563,
+    "width": 500,
+    "height": 282,
+    "dimensions": [
+      500,
+      282
+    ],
+    "mime": "image/jpeg",
+    "format": "JPEG",
+    "mode": "RGB",
+    "fullDecode": true,
+    "decodedPixelSHA256": "bfca7b83a3a49ecc7bb3a7a7e3c295920686870ec0d5b8430eb75e75600d8dce",
+    "decodedPixelHashMethod": "Pillow native RGB image.tobytes(), row-major, no conversion or edits",
+    "decodeLibrary": "Pillow 12.3.0",
+    "pixelExtremaRGB": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "pixelStddevRGB": [
+      65.03383463614972,
+      60.048999484497074,
+      57.05263410302682
+    ],
+    "visualInspection": {
+      "passed": true,
+      "method": "Each original viewed independently at native dimensions through view_image",
+      "finding": "Six performers pose before an ASAP-letter backdrop; full coherent image, no visible corruption.",
+      "faceIdentityInferred": false
+    },
+    "sourceHTMLSha256": "fe8bd526e3cbca8b069b6c2ce50bcc4da7ffab8bb4e6ead5fc366135d1fb6660",
+    "durationEvidenceSHA256": "37566d1071d63ba11f9607d749ec57e66f7b691fad36cec0891a396fe959eec8",
+    "durationEvidenceSelector": "figure[mvId=\"591778\"] time.duration",
+    "durationFigureText": "03:15 [12세 이상 관람가] ASAP STAYC(스테이씨) 2021.04.08 정규 기타 기능",
+    "imageHeadersSHA256": "016bb8ff85c5edb213ba1e0e23cce5cda217a8f77b195e085b865758df5f47df",
+    "capturedImageHTTPStatus": 200,
+    "capturedImageContentType": "image/jpeg",
+    "capturedImageContentLength": 92563,
+    "researchEvidenceSHA256": "5a0162be1f056adccfac0cb5c59a96db517db1ff7525c738466a76483cfcdcb0",
+    "liveCatalogVerified": true,
+    "liveTuple": {
+      "id": "recvxyH5pzNPXg",
+      "name": "STAYC · ASAP",
+      "song": "ASAP",
+      "url": "https://www.youtube.com/watch?v=NsY-9MCOIAQ",
+      "videoType": "官方MV"
+    },
+    "liveEvidenceCapturedAt": "2026-10-19T07:40:21.312Z",
+    "liveEvidenceScope": "Independent comparison to parent-supplied authenticated live API capture; reviewer did not re-fetch the private API",
+    "repositoryOfficialMetadata": {
+      "title": "STAYC(스테이씨) 'ASAP' MV",
+      "channel": "STAYC",
+      "releaseDate": "2021-04-08",
+      "provenance": "Repository snapshot and inventory, not independently re-fetched YouTube metadata"
+    },
+    "excludedObservedVariants": [
+      {
+        "bugsMvId": "591612",
+        "sourcePage": "https://music.bugs.co.kr/mv/591612",
+        "title": "ASAP (Teaser)",
+        "sourceType": "티저",
+        "duration": "00:18"
+      }
+    ],
+    "selectedTitleHasNoTeaserOrPerformanceQualifier": true,
+    "teaserExclusionScope": "Exact selected MV ID is regular with unqualified song title and full-length source duration. Listed variants are separately observed IDs, not an exhaustive universe of variants.",
+    "directBugsToYouTubeLinkFound": false,
+    "catalogYouTubeIdFoundInSourceHTML": false,
+    "crossPlatformVideoByteEqualityVerified": false,
+    "crossPlatformFramePixelIdentityVerified": false,
+    "crossPlatformAssessment": "Sufficient for a Bugs-source preview associated with this catalog work: exact artist/song, matching date, regular type, exact Bugs-ID duration and verified live catalog tuple. Does not establish a direct platform bridge, an identical video edit, a YouTube thumbnail, or a specific video frame/timecode.",
+    "historicalOriginalHashEqualityVerified": false,
+    "priorExpectedSHA256": null,
+    "sourceBytesMatchResearchManifest": true,
+    "reviewerModifiedOriginal": false,
+    "issues": []
+  },
+  "provenance": {
+    "sourceHTML": {
+      "sha256": "fe8bd526e3cbca8b069b6c2ce50bcc4da7ffab8bb4e6ead5fc366135d1fb6660",
+      "retainedOutsideRepository": true,
+      "archiveName": "stayc/bugs-591778-source.html",
+      "sourceUrl": "https://music.bugs.co.kr/mv/591778"
+    },
+    "durationHTML": {
+      "sha256": "37566d1071d63ba11f9607d749ec57e66f7b691fad36cec0891a396fe959eec8",
+      "retainedOutsideRepository": true,
+      "archiveName": "stayc/bugs-track-6102049.html",
+      "sourceUrl": "https://music.bugs.co.kr/track/6102049"
+    },
+    "imageHeaders": {
+      "sha256": "016bb8ff85c5edb213ba1e0e23cce5cda217a8f77b195e085b865758df5f47df",
+      "retainedOutsideRepository": true,
+      "archiveName": "stayc/asap-image-headers.txt",
+      "sourceUrl": "https://image.bugsm.co.kr/mvhd/images/500/5917/591778.jpg"
+    },
+    "researchEvidence": {
+      "sha256": "5a0162be1f056adccfac0cb5c59a96db517db1ff7525c738466a76483cfcdcb0",
+      "retainedOutsideRepository": true,
+      "archiveName": "stayc/asap-evidence.json"
+    },
+    "excludedVariantCaptures": [
+      {
+        "bugsMvId": "591612",
+        "sha256": "37566d1071d63ba11f9607d749ec57e66f7b691fad36cec0891a396fe959eec8",
+        "retainedOutsideRepository": true,
+        "archiveName": "stayc/bugs-track-6102049.html",
+        "sourceUrl": "https://music.bugs.co.kr/track/6102049"
+      }
+    ]
+  },
+  "admissionBoundary": {
+    "allowedUse": "Work-associated Bugs-source MV preview with exact required source label",
+    "directYouTubeBridgeVerified": false,
+    "videoOrFramePixelIdentityVerified": false,
+    "youtubeThumbnailClaimAllowed": false,
+    "HDClaimAllowed": false,
+    "historicalDownloadHashEqualityVerified": false,
+    "nativeAspectRatioMustBePreserved": true,
+    "originalBytesMustBePreserved": true,
+    "soBadPilotExcluded": true
+  }
+}

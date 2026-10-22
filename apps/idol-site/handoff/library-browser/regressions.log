@@ -1,0 +1,227 @@
+✔ name matching is deterministic NFKC, case and separator tolerant within a field (1.883182ms)
+✔ blank search remains all; nonempty punctuation or emoji search is never all (1.118622ms)
+✔ independent fields cannot invent concatenated names while multiword AND still crosses fields (0.478099ms)
+✔ group old/current names, member Chinese display names and combined filters remain searchable (1.047405ms)
+✔ public indexes exclude personal notes, profile prose, sources and research text (0.390637ms)
+✔ indexed library preserves existing queue/watch/generation/stage inputs and original references (168.057262ms)
+✔ index reuse never rereads or renormalizes public text when typing, filtering or counting queues (0.94453ms)
+✔ a fresh catalog rebuild updates names, scores, queues and relationships without mutating prior indexes (0.565641ms)
+✔ separator-tolerant query preserves sorted 24-row pagination and next-item revalidation (1.09024ms)
+✔ work to member and back restores precise work mode, list scope and scroll (74.560071ms)
+✔ list filters are independent and survive same-tab reload (53.96614ms)
+✔ cancelled navigation and browser back preserve draft page and do not reset filters (43.1205ms)
+✔ direct detail links have a safe return and history contains navigation only (37.510482ms)
+✔ member search includes group names and mobile draft shortcut has a real control (0.950559ms)
+✔ restoration survives async short-page clamp and stops when user takes over (31.776359ms)
+✔ in-page alternative shortcut scrolls without creating an untracked history entry (0.559151ms)
+✔ next work retains original list return, sequence, reload and browser history (24.670802ms)
+✔ next work respects dirty cancellation and never rewinds or leaves the chosen sequence (21.560435ms)
+✔ malformed playback sequences are ignored on reload (0.450528ms)
+✔ pending save blocks next, return and history even without dirty fields (18.818802ms)
+✔ home picks survive detail/back and manual rotation does not affect the other pools (24.44279ms)
+✔ fresh reload rotates with previous ids while a new home entry preserves the old back entry (21.854857ms)
+✔ home history rejects unbounded ids and private payload-shaped picks (0.241192ms)
+✔ group detail deep link and group-scoped filters preserve index, work, member and return context (24.325823ms)
+✔ group deep links return to index and invalid history filters are rejected (20.045316ms)
+✔ artist cross-page return blocks unknown saves and cancelled drafts, then preserves list position (16.291721ms)
+✔ sorted library retains expanded page and sort through next, Back, Forward and reload (18.414324ms)
+✔ old history without sort restores expanded page; invalid sort values are rejected in every scope (19.047166ms)
+✔ history roster cross-page navigation keeps draft and uncertain-save guards (20.009602ms)
+✔ 198 synthetic works preserve zero, null and all watch states without mutations (22.709103ms)
+✔ search supports trimmed, mixed case, fullwidth and multiple words across fields (15.862285ms)
+✔ watch status never infers a rating or a watched flag from zero (9.30856ms)
+✔ search, group, generation, queue and watch intersect; sequence retains scope (13.230002ms)
+✔ history accepts old filters, validates watch/focus, and preserves expanded list state (1.523561ms)
+{
+  "pass": true,
+  "network": "fakeFetch only; no real network",
+  "editors": [
+    {
+      "table": "works",
+      "scenario": "saving",
+      "editorDirty": true,
+      "navigationBlocked": true,
+      "nextDisabled": true,
+      "retryLabelVisible": false,
+      "serverPendingWarningVisible": false,
+      "unloadGuardCount": 1,
+      "mockedReads": 1,
+      "mockedWrites": 1
+    },
+    {
+      "table": "works",
+      "scenario": "unknownResult",
+      "editorDirty": true,
+      "navigationBlocked": true,
+      "nextDisabled": true,
+      "retryLabelVisible": true,
+      "serverPendingWarningVisible": false,
+      "unloadGuardCount": 1,
+      "mockedReads": 1,
+      "mockedWrites": 1
+    },
+    {
+      "table": "works",
+      "scenario": "serverPending",
+      "editorDirty": false,
+      "navigationBlocked": true,
+      "nextDisabled": true,
+      "retryLabelVisible": false,
+      "serverPendingWarningVisible": true,
+      "unloadGuardCount": 1,
+      "mockedReads": 1,
+      "mockedWrites": 0
+    },
+    {
+      "table": "ratings",
+      "scenario": "saving",
+      "editorDirty": true,
+      "navigationBlocked": true,
+      "nextDisabled": true,
+      "retryLabelVisible": false,
+      "serverPendingWarningVisible": false,
+      "unloadGuardCount": 1,
+      "mockedReads": 2,
+      "mockedWrites": 1
+    },
+    {
+      "table": "ratings",
+      "scenario": "unknownResult",
+      "editorDirty": true,
+      "navigationBlocked": true,
+      "nextDisabled": true,
+      "retryLabelVisible": true,
+      "serverPendingWarningVisible": false,
+      "unloadGuardCount": 1,
+      "mockedReads": 2,
+      "mockedWrites": 1
+    },
+    {
+      "table": "ratings",
+      "scenario": "serverPending",
+      "editorDirty": false,
+      "navigationBlocked": true,
+      "nextDisabled": true,
+      "retryLabelVisible": false,
+      "serverPendingWarningVisible": true,
+      "unloadGuardCount": 1,
+      "mockedReads": 2,
+      "mockedWrites": 0
+    }
+  ],
+  "journeys": [
+    {
+      "dirty": false,
+      "action": "next",
+      "remainedOnCurrentWork": true,
+      "routeWork": "recA",
+      "url": "https://test.site/?view=works&work=recA"
+    },
+    {
+      "dirty": false,
+      "action": "back",
+      "remainedOnCurrentWork": true,
+      "routeWork": "recA",
+      "url": "https://test.site/?view=works&work=recA"
+    },
+    {
+      "dirty": false,
+      "action": "member",
+      "remainedOnCurrentWork": true,
+      "routeWork": "recA",
+      "url": "https://test.site/?view=works&work=recA"
+    },
+    {
+      "dirty": false,
+      "action": "mainNav",
+      "remainedOnCurrentWork": true,
+      "routeWork": "recA",
+      "url": "https://test.site/?view=works&work=recA"
+    },
+    {
+      "dirty": false,
+      "action": "browserBack",
+      "remainedOnCurrentWork": true,
+      "routeWork": "recA",
+      "url": "https://test.site/?view=works&work=recA"
+    },
+    {
+      "dirty": true,
+      "action": "next",
+      "remainedOnCurrentWork": true,
+      "routeWork": "recA",
+      "url": "https://test.site/?view=works&work=recA"
+    },
+    {
+      "dirty": true,
+      "action": "back",
+      "remainedOnCurrentWork": true,
+      "routeWork": "recA",
+      "url": "https://test.site/?view=works&work=recA"
+    },
+    {
+      "dirty": true,
+      "action": "member",
+      "remainedOnCurrentWork": true,
+      "routeWork": "recA",
+      "url": "https://test.site/?view=works&work=recA"
+    },
+    {
+      "dirty": true,
+      "action": "mainNav",
+      "remainedOnCurrentWork": true,
+      "routeWork": "recA",
+      "url": "https://test.site/?view=works&work=recA"
+    },
+    {
+      "dirty": true,
+      "action": "browserBack",
+      "remainedOnCurrentWork": true,
+      "routeWork": "recA",
+      "url": "https://test.site/?view=works&work=recA"
+    },
+    {
+      "action": "sameTargetRepeated",
+      "first": true,
+      "second": false,
+      "routeWork": "recB"
+    }
+  ]
+}
+✔ tests/navigation-save-guard.test.cjs (1619.57663ms)
+✔ only saved personal text is searched; empty queries expose nothing (2.274211ms)
+✔ all four fields work; zero scores retain their notes; inputs never mutate (0.710569ms)
+✔ case, width, composed Unicode and emoji work literally without regex (0.57877ms)
+✔ rating matches contain valid work, member and group context without duplicate rows (0.342865ms)
+✔ missing relationships keep saved text without fabricated target links; placeholders excluded (0.198529ms)
+✔ long notes show bounded matching excerpts, never split emoji; many results retain stable order (27.122009ms)
+✔ updated catalog drops removed notes without retaining a stale global index (0.346191ms)
+✔ records navigation stores type and focus only, preserves old history and uses safe guards (150.084011ms)
+✔ UI keeps query in memory, has bounded list and uses guarded internal navigation (0.895477ms)
+✔ records detail Back/Forward restores exact result focus and scroll and honors dirty/unknown-save guards (116.723998ms)
+✔ removed records result returns to visible search through resize and font passes (55.114277ms)
+✔ one rating preserves two distinct works and members in stable order with unambiguous click targets (1.295068ms)
+✔ matching touches no excerpt text; materialization is bounded to visible rows and their matching fields (4.602683ms)
+✔ paged materialization exactly equals original full API prefixes across Unicode, multi-target and multi-field records (0.660243ms)
+✔ page expansion, refreshed disappearing matches, clear and a new query never reuse stale excerpts (0.907995ms)
+✔ fixed legacy output contract retains normalized display, two fields and explicit multi-target order (0.366991ms)
+✔ MV rating todo requires watched and null; zero and stage/member blanks never qualify (4.48168ms)
+✔ next retains original anchor after saved current work leaves queue; skips now-ineligible future works (0.93765ms)
+✔ sequence is bounded to its original ordering, excludes placeholders and URL-less entries, does not wrap (1.426605ms)
+✔ next rechecks group, generation, query and stage scope without promoting alternative videos (0.861286ms)
+✔ member sequence skips a work whose original member relationship no longer exists (0.328474ms)
+✔ sequence state contains navigation data only and copies filters rather than mutating them (0.329466ms)
+✔ group timeline and recommendations start an independent group sequence while library cards retain search (0.855106ms)
+✔ library default sort preserves input and every sort is non-mutating and stable (1.217622ms)
+✔ MV sort retains zero, sorts only MV score, and puts null/non-finite scores last stably (0.340141ms)
+✔ calendar date sorts keep unknown and impossible dates last in both directions (0.525179ms)
+✔ filtered library is sorted before pagination and the full sequence follows that order across pages (1.607067ms)
+✔ library wires sorting once before its shared card sequence and load-more slice (0.531199ms)
+ℹ tests 63
+ℹ suites 0
+ℹ pass 63
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1637.306845

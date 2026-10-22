@@ -1,0 +1,83 @@
+@font-face{font-family:FromisPost;src:url('/fonts/Oswald-Variable.ttf') format('truetype');font-display:swap}
+.candidate-fromis9-experience{--paper:#eff5f0;--white:#fffdf2;--ink:#234b66;--muted:#5f7580;--line:#b8ced0;--rose:#2d647a;--blush:#dae9e4;--lilac:#dceaf0;background:var(--paper);color:var(--ink);min-height:100vh;font-family:var(--font-body),system-ui,sans-serif;overflow-wrap:anywhere}
+.candidate-fromis9-experience .work-detail-top,.candidate-fromis9-experience .member-detail{align-items:start}
+.candidate-fromis9-experience .work-aside,.candidate-fromis9-experience .cast-card,.candidate-fromis9-experience .editor,.candidate-fromis9-experience .member-work-summary,.candidate-fromis9-experience .stage-source,.candidate-fromis9-experience .watch-next{border-radius:0;min-width:0}
+.candidate-fromis9-experience .video-stage,.candidate-fromis9-experience .button,.candidate-fromis9-experience .video-mode-tabs,.candidate-fromis9-experience .video-mode-tabs button{border-radius:0}
+.candidate-fromis9-experience .button{white-space:normal;max-width:100%;min-height:44px}
+.candidate-fromis9-experience .button.primary,.candidate-fromis9-experience .button.primary:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+.candidate-fromis9-experience .video-mode-tabs{border:1px solid var(--line);background:var(--white)}
+.candidate-fromis9-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:#fff}
+.candidate-fromis9-experience .video-mode-tabs button{min-height:44px}
+.candidate-fromis9-experience .photo-empty,.candidate-fromis9-experience .video-fallback,.candidate-fromis9-experience .video-caption{color:var(--muted)}
+.candidate-fromis9-experience .photo,.candidate-fromis9-experience .member-work-card{border-radius:0;background:var(--lilac)}
+.candidate-fromis9-experience .member-detail>.photo img{object-fit:contain}
+.candidate-fromis9-experience .member-name{font-size:20px;line-height:1.4}
+.candidate-fromis9-experience .cast-scores{flex-wrap:wrap}
+.candidate-fromis9-experience .editor-fields input,.candidate-fromis9-experience .editor-fields select,.candidate-fromis9-experience .editor-fields textarea,.candidate-fromis9-experience .score-input{background:var(--paper);color:var(--ink);border-color:var(--line);border-radius:0}
+.candidate-fromis9-experience .my-note,.candidate-fromis9-experience .caption-help{background:var(--white);border:1px solid var(--line);border-radius:0;color:var(--muted)}
+.candidate-fromis9-experience .detail-return{border:1px solid var(--line);background:var(--white);border-radius:0;padding:18px}
+.candidate-fromis9-experience .alternative-card,.candidate-fromis9-experience .watch-lead-card{background:var(--white);border-color:var(--line);border-radius:0}
+.candidate-fromis9-experience .stage-view .mobile-work-heading h1{overflow-wrap:anywhere}
+.candidate-fromis9-experience .header{border-bottom:1px dashed var(--line)}
+.candidate-fromis9-experience .brand{font:500 32px/1.1 FromisPost,sans-serif;letter-spacing:-.03em}
+.candidate-fromis9-experience .work-detail-top{grid-template-columns:minmax(0,1.8fr) minmax(0,.85fr);gap:36px;border-top:4px solid var(--rose);padding-top:24px}
+.candidate-fromis9-experience .work-aside{background:var(--white);border:1px dashed var(--line);padding:24px}
+.candidate-fromis9-experience .work-aside h1{font-size:clamp(28px,3vw,42px);line-height:1.35;font-weight:500}
+.candidate-fromis9-experience .video-stage{border:12px solid var(--white);outline:1px solid var(--line)}
+.candidate-fromis9-experience .video-play{border-radius:4px;background:var(--rose);color:#fff}
+.candidate-fromis9-experience .button{border-radius:4px}
+.candidate-fromis9-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.candidate-fromis9-experience .cast-card{padding:18px;border:1px solid var(--line);background:var(--white)}
+.candidate-fromis9-experience .cast-card .photo{aspect-ratio:4/3;border-bottom:1px dashed var(--line);padding-bottom:12px}
+.candidate-fromis9-experience .stage-view .work-detail-top{grid-template-columns:1fr}
+.candidate-fromis9-experience .stage-view .work-aside{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;border-block:2px dashed var(--line)}
+.candidate-fromis9-experience .stage-view .work-aside>*{grid-column:1}
+.candidate-fromis9-experience .stage-view .work-aside>.editor{grid-column:2;grid-row:1/span 7;align-self:start;margin-top:0}
+.candidate-fromis9-experience .stage-source{border:1px dashed var(--line);padding:24px;background:var(--white)}
+.candidate-fromis9-experience .stage-overall-note{border-top:1px dashed var(--line);padding-top:20px}
+.candidate-fromis9-experience .watch-next{border:1px dashed var(--line);background:var(--white)}
+.candidate-fromis9-experience .member-detail{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:52px;padding:30px;background:var(--white);border:1px solid var(--line)}
+.candidate-fromis9-experience .member-detail>.photo{padding:18px;border:1px dashed var(--line);background:var(--lilac)}
+.candidate-fromis9-experience .member-detail h1{font-weight:500}
+.candidate-fromis9-experience .member-work-summary{border-block:1px dashed var(--line);background:var(--white)}
+@media(max-width:760px){
+.candidate-fromis9-experience .header{height:auto;min-height:76px;flex-wrap:wrap;padding-top:12px}
+.candidate-fromis9-experience .header nav{height:auto;gap:18px;background:var(--paper)}
+.candidate-fromis9-experience .video-mode-tabs{width:100%;flex:1}
+.candidate-fromis9-experience .video-mode-tabs button{flex:1}
+.candidate-fromis9-experience .editor-fields input,.candidate-fromis9-experience .editor-fields select,.candidate-fromis9-experience .editor-fields textarea{font-size:16px}
+.candidate-fromis9-experience .cast-copy{min-width:0}
+.candidate-fromis9-experience .member-name{font-size:18px}
+.candidate-fromis9-experience .detail-return{padding:14px 12px}
+.candidate-fromis9-experience .detail-return .button{min-height:48px;min-width:0;white-space:normal}
+.candidate-fromis9-experience .stage-view .mobile-work-heading{display:block}
+.candidate-fromis9-experience .work-detail-top,.candidate-fromis9-experience .member-detail{min-width:0}
+.candidate-fromis9-experience .work-detail-top{grid-template-columns:1fr;gap:24px}
+.candidate-fromis9-experience .work-aside{padding:20px}
+.candidate-fromis9-experience .video-stage{border-width:8px}
+.candidate-fromis9-experience .cast-grid{grid-template-columns:1fr;gap:20px}
+.candidate-fromis9-experience .cast-card{display:grid;grid-template-columns:84px minmax(0,1fr);gap:16px;padding:16px}
+.candidate-fromis9-experience .cast-card .photo{aspect-ratio:3/4;border-bottom:0;border-right:1px dashed var(--line);padding:0 8px 0 0;min-height:110px}
+.candidate-fromis9-experience .cast-copy{padding:0}
+.candidate-fromis9-experience .stage-view .work-aside{display:block}
+.candidate-fromis9-experience .stage-view .work-aside>.editor{margin-top:22px}
+.candidate-fromis9-experience .member-detail{grid-template-columns:1fr;padding:20px;gap:26px}
+.candidate-fromis9-experience .member-detail>.photo{padding:12px}
+.candidate-fromis9-experience .stage-source{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){.candidate-fromis9-experience *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Keep missing-image text and its truthful caption in separate flow rows. */
+.candidate-fromis9-experience .cast-card .photo:has(> .photo-empty){display:flex;flex-direction:column;height:auto;min-height:150px;aspect-ratio:auto;align-self:start;padding:0}
+.candidate-fromis9-experience .cast-card .photo>.photo-empty{flex:1 0 auto;height:auto;min-height:108px;padding:18px 7px 12px;gap:8px}
+.candidate-fromis9-experience .cast-card .photo>.photo-empty>svg{flex:none;width:22px;height:22px}
+.candidate-fromis9-experience .cast-card .photo>.photo-empty>span{font-size:11px;line-height:1.5}
+.candidate-fromis9-experience .cast-card .photo:has(> .photo-empty)>.image-label{position:static;display:block;flex:none;width:100%;max-width:none;box-sizing:border-box;margin:0;padding:7px 6px;white-space:normal;overflow-wrap:anywhere;line-height:1.5;text-align:center;background:var(--white);color:var(--muted);border-top:1px dashed var(--line)}
+
+/* Batch B: local detail views retain full portraits and reachable controls. */
+.candidate-fromis9-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.candidate-fromis9-experience .cast-card .photo img,.candidate-fromis9-experience .member-detail>.photo img{object-fit:contain}
+.candidate-fromis9-experience .cast-card .photo{overflow:hidden;border-radius:0}
+.candidate-fromis9-experience :is(.cast-copy,.work-aside,.member-detail>div){min-width:0}
+.candidate-fromis9-experience .cast-scores{gap:10px}
+@media(max-width:390px){.candidate-fromis9-experience .button{max-width:100%;min-width:0;line-height:1.5}.candidate-fromis9-experience .detail-return{display:flex;flex-wrap:wrap;gap:12px}.candidate-fromis9-experience .work-aside h1{font-size:30px;overflow-wrap:anywhere}}

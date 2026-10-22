@@ -1,0 +1,819 @@
+diff --git a/components/library-browser/filter-controls.tsx b/components/library-browser/filter-controls.tsx
+new file mode 100644
+index 0000000..0e12cd0
+--- /dev/null
++++ b/components/library-browser/filter-controls.tsx
+@@ -0,0 +1,25 @@
++'use client';
++import type {BrowseFilters} from '../../lib/idol/journey';
++import {defaultFilters} from '../../lib/idol/journey';
++import type {Group} from '../../lib/idol/types';
++import type {LibraryModel,ConditionKey} from '../../lib/idol/library-browser/contract';
++import {clearCondition} from '../../lib/idol/library-browser/query-model';
++import {queueLabels} from '../../lib/idol/queues';
++import './filters.css';
++export function FilterControls({filters,onFiltersChange,groups,model,disabled=false,searchId='lb-search'}:{filters:BrowseFilters;onFiltersChange:(filters:BrowseFilters)=>void;groups:Group[];model:LibraryModel;disabled?:boolean;searchId?:string}){
++ const change=(key:ConditionKey,value:string)=>{if(!disabled)onFiltersChange({...filters,[key]:value,limit:24});};
++ const remove=(key:ConditionKey)=>{if(!disabled)onFiltersChange(clearCondition(filters,key));};
++ return <section className="lb-filters" aria-label="作品筛选">
++ <div className="lb-filter-fields">
++ <label>公开名称搜索<input id={searchId} data-library-focus="search" value={filters.search} maxLength={1000} disabled={disabled} onChange={e=>change('search',e.target.value)} placeholder="歌曲、团体或视频标题"/></label>
++ <label>团体<select value={filters.group} disabled={disabled} onChange={e=>change('group',e.target.value)}><option value="all">所有团体</option>{groups.map(g=><option key={g.id} value={g.id}>{g.name}</option>)}</select></label>
++ <label>代际<select value={filters.generation} disabled={disabled} onChange={e=>change('generation',e.target.value)}><option value="all">所有代际</option>{[...new Set(groups.map(g=>g.generation))].filter(Boolean).map(g=><option key={g}>{g}</option>)}</select></label>
++ <label>观看队列<select value={filters.queue} disabled={disabled} onChange={e=>change('queue',e.target.value)}>{Object.entries(queueLabels).map(([key,label])=><option key={key} value={key}>{label}（{model.facetCounts.queue[key]??0}）</option>)}</select></label>
++ <label>观看状态<select data-library-focus="watch" value={filters.watch??'all'} disabled={disabled} onChange={e=>change('watch',e.target.value)}>{[['all','所有观看状态'],['watched','已观看'],['unwatched','未观看'],['unmarked','未标记']].map(([v,l])=><option key={v} value={v}>{l}</option>)}</select></label>
++ <label>作品排序<select data-library-focus="sort" value={filters.sort??'default'} disabled={disabled} onChange={e=>change('sort',e.target.value)}>{[['default','默认排序'],['release-desc','发行新到旧'],['release-asc','发行旧到新'],['score-desc','MV 分高到低']].map(([v,l])=><option key={v} value={v}>{l}</option>)}</select></label>
++ </div>
++ <div className="lb-stage-options" role="group" aria-label="舞台分类">{[['all','全部'],['ready','有舞台'],['alternative','其他现场'],['pending','暂无舞台']].map(([value,label])=><button type="button" key={value} disabled={disabled} aria-pressed={filters.stageFilter===value} onClick={()=>change('stageFilter',value)}>{label}（{model.facetCounts.stage[value]??0}）</button>)}</div>
++ {model.activeConditions.length>0&&<div className="lb-active-conditions" aria-label="当前条件">{model.activeConditions.map(c=><button type="button" key={c.key} disabled={disabled} aria-label={`撤销${c.label}`} onClick={()=>remove(c.key)}>{c.label} ×</button>)}<button type="button" disabled={disabled} onClick={()=>{if(!disabled)onFiltersChange({...filters,...defaultFilters()});}}>重置全部条件</button></div>}
++ {model.pagination.total===0&&model.activeConditions.length>0&&<p className="lb-empty-reason">当前条件组合没有匹配作品。可逐项撤销上方条件，其余条件会保留。{filters.queue==='unrated'?'“看过待评分”仅包含已观看且 MV 分数为空的作品；0 分表示已评分。':''}</p>}
++ </section>;
++}
+diff --git a/components/library-browser/filters.css b/components/library-browser/filters.css
+new file mode 100644
+index 0000000..7398264
+--- /dev/null
++++ b/components/library-browser/filters.css
+@@ -0,0 +1 @@
++.lb-filters{margin:1rem 0;color:inherit}.lb-filter-fields{display:flex;flex-wrap:wrap;gap:12px}.lb-filter-fields label{display:flex;flex-direction:column;gap:6px;min-width:0;max-width:100%;font-size:.85rem}.lb-filter-fields label:first-child{flex:1 1 260px}.lb-filter-fields input,.lb-filter-fields select{box-sizing:border-box;max-width:100%;min-width:0;border:1px solid #c9c4ce;border-radius:8px;padding:10px;background:#fff;color:#29242e;font:inherit}.lb-stage-options,.lb-active-conditions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.lb-filters button{max-width:100%;overflow-wrap:anywhere;border:1px solid #b9adb9;border-radius:20px;background:transparent;padding:9px 12px;color:inherit;cursor:pointer}.lb-filters button[aria-pressed=true]{background:#513d55;color:white}.lb-filters button:disabled{opacity:.5;cursor:default}.lb-filters :focus-visible{outline:3px solid #83558d;outline-offset:3px}.lb-empty-reason{line-height:1.6}.lb-browser{min-width:0;max-width:100%}.lb-browser-readonly{font-size:.85rem;color:#655d68}
+diff --git a/components/library-browser/index.ts b/components/library-browser/index.ts
+new file mode 100644
+index 0000000..c9bd52a
+--- /dev/null
++++ b/components/library-browser/index.ts
+@@ -0,0 +1,5 @@
++export {LibraryBrowser} from './library-browser';
++export type {LibraryBrowserProps} from './library-browser';
++export {FilterControls} from './filter-controls';
++export {ResultsView} from './results-view';
++export {SequencePreview} from './sequence-preview';
+diff --git a/components/library-browser/library-browser.tsx b/components/library-browser/library-browser.tsx
+new file mode 100644
+index 0000000..a2c7b01
+--- /dev/null
++++ b/components/library-browser/library-browser.tsx
+@@ -0,0 +1,28 @@
++'use client';
++import {useMemo,useId} from 'react';
++import type {BrowseFilters,WatchSequence} from '../../lib/idol/journey';
++import type {CatalogView,Work} from '../../lib/idol/types';
++import type {ReactNode} from 'react';
++import type {PageSize,RestoreTarget,RestoreResolution} from '../../lib/idol/library-browser/contract';
++import {paginate} from '../../lib/idol/library-browser/paging-model';
++import {buildLibraryModel} from '../../lib/idol/library-browser/query-model';
++import {makeWatchSequence} from '../../lib/idol/watch-sequence';
++import {queueLabels} from '../../lib/idol/queues';
++import {FilterControls} from './filter-controls';
++import {ResultsView} from './results-view';
++export type LibraryBrowserProps={catalog:CatalogView;filters:BrowseFilters;onFiltersChange:(filters:BrowseFilters)=>void;page:number;pageSize:PageSize;onPageChange:(page:number,pageSize:PageSize)=>void;renderWork:(work:Work,onOpen:()=>void)=>ReactNode;onOpenWork:(id:string,sequence:WatchSequence)=>void;restoreTarget?:RestoreTarget;restoreReady?:boolean;onRestoreReady?:(target:RestoreResolution)=>void;loading?:boolean;error?:string|null;readOnly?:boolean};
++export function LibraryBrowser(props:LibraryBrowserProps){
++ const {catalog,filters,page,pageSize}=props;
++ // Navigation replaces BrowseFilters objects, so cache by query semantics rather than object identity.
++ // Catalog identity remains a dependency: refreshed scores/relations/names must invalidate this cache.
++ const {search,group,generation,queue,stageFilter,watch,sort}=filters;
++ const queryModel=useMemo(()=>buildLibraryModel(catalog,{search,group,generation,queue,stageFilter,watch,sort,limit:24},1,24),[catalog,search,group,generation,queue,stageFilter,watch,sort]);
++ const model=useMemo(()=>{const pagination=paginate(queryModel.orderedIds.length,page,pageSize);return {...queryModel,pagination,rows:queryModel.orderedWorks.slice((pagination.page-1)*pagination.pageSize,pagination.end)};},[queryModel,page,pageSize]);
++ const sequence=useMemo(()=>makeWatchSequence(model.orderedWorks,queueLabels[filters.queue]??'作品库',filters),[model.orderedWorks,filters]);
++ const searchId=useId();
++ return <section className="lb-browser" aria-label="完整作品库" aria-busy={!!props.loading}>
++ {props.readOnly&&<p className="lb-browser-readonly">只读浏览，不会修改评分、备注或观看状态。</p>}
++ <FilterControls filters={filters} groups={catalog.groups} model={model} disabled={props.loading} searchId={searchId} onFiltersChange={next=>{props.onFiltersChange(next);props.onPageChange(1,pageSize);}}/>
++ <ResultsView {...props} model={model} sequence={sequence} searchId={searchId}/>
++ </section>;
++}
+diff --git a/components/library-browser/results-view.tsx b/components/library-browser/results-view.tsx
+new file mode 100644
+index 0000000..140798e
+--- /dev/null
++++ b/components/library-browser/results-view.tsx
+@@ -0,0 +1,130 @@
++'use client';
++
++import {useEffect, useId, useLayoutEffect, useRef, useState} from 'react';
++import type {FormEvent} from 'react';
++import type {PageSize, ResultsViewProps} from '../../lib/idol/library-browser/contract';
++import {paginate, resolveRestoreTarget} from '../../lib/idol/library-browser/paging-model';
++import './results.css';
++
++/** Controlled, bounded rendering. History and layout stabilization belong to the host. */
++export function ResultsView({model, page, pageSize, onPageChange, renderWork, onOpenWork,
++  sequence, restoreTarget, restoreReady = false, onRestoreReady, loading = false,
++  error, searchId}: ResultsViewProps) {
++  const paging = paginate(model.orderedWorks.length, page, pageSize);
++  const rows = model.orderedWorks.slice((paging.page - 1) * paging.pageSize, paging.page * paging.pageSize);
++  const uid = useId();
++  const heading = useRef<HTMLHeadingElement>(null);
++  const container = useRef<HTMLDivElement>(null);
++  const pendingFocus = useRef<{page: number; size: PageSize} | null>(null);
++  const completedRestore = useRef<string | null>(null);
++  const requestedPage = useRef<string | null>(null);
++  const [jump, setJump] = useState(String(paging.page));
++  const [jumpError, setJumpError] = useState('');
++  const restoreKey = restoreTarget ? JSON.stringify(restoreTarget) : null;
++
++  useEffect(() => {setJump(String(paging.page)); setJumpError('');}, [paging.page, paging.pageSize]);
++  useLayoutEffect(() => {
++    if (restoreKey === null) {completedRestore.current = null; requestedPage.current = null;}
++    if (!restoreTarget || loading || error) return;
++    const resolution = resolveRestoreTarget(model.orderedIds, paging.pageSize, restoreTarget);
++    const completionKey = `${restoreKey}:${JSON.stringify(resolution)}`;
++    if (completionKey === completedRestore.current) return;
++    if (paging.page !== resolution.page) {
++      const request = `${restoreKey}:${resolution.page}:${paging.pageSize}`;
++      if (requestedPage.current !== request) {
++        requestedPage.current = request;
++        onPageChange(resolution.page, paging.pageSize);
++      }
++      return;
++    }
++    // Never restore focus/geometry while the host is waiting for images or fonts.
++    if (!restoreReady) return;
++    const anchor = resolution.anchorId
++      ? Array.from(container.current?.querySelectorAll<HTMLElement>('[data-lb-work-id]') ?? [])
++        .find(element => element.dataset.lbWorkId === resolution.anchorId)
++      : undefined;
++    if (resolution.focus === 'anchor' && !anchor) return;
++    const requestedFocus = restoreTarget.focusId ? document.getElementById(restoreTarget.focusId) : null;
++    const focus = resolution.focus === 'anchor'
++      ? (requestedFocus && anchor?.contains(requestedFocus) ? requestedFocus
++        : anchor?.querySelector<HTMLElement>('button:not([disabled]), a[href], [tabindex="0"]') ?? anchor)
++      : ((searchId ? document.getElementById(searchId) : null) ?? heading.current);
++    focus?.focus({preventScroll: true});
++    completedRestore.current = completionKey;
++    requestedPage.current = null;
++    pendingFocus.current = null;
++    onRestoreReady?.(resolution);
++  }, [restoreKey, restoreTarget, restoreReady, model.orderedIds, paging.page, paging.pageSize,
++    loading, error, onPageChange, onRestoreReady, searchId]);
++
++  useLayoutEffect(() => {
++    const pending = pendingFocus.current;
++    if (!pending || loading || error || pending.page !== paging.page || pending.size !== paging.pageSize) return;
++    // Focus only after an explicit paging gesture, never on ordinary mount/refresh.
++    pendingFocus.current = null;
++    heading.current?.focus();
++  }, [paging.page, paging.pageSize, loading, error]);
++
++  function changePage(next: number, size: PageSize = paging.pageSize) {
++    if (loading || error) return;
++    const nextPage = paginate(model.orderedWorks.length, next, size).page;
++    if (nextPage === paging.page && size === paging.pageSize) return;
++    pendingFocus.current = {page: nextPage, size};
++    onPageChange(nextPage, size);
++  }
++  function submitJump(event: FormEvent) {
++    event.preventDefault();
++    if (loading || error) return;
++    const value = jump.trim();
++    if (!/^\d+$/.test(value) || !Number.isSafeInteger(Number(value)) || Number(value) < 1 || Number(value) > paging.pageCount) {
++      setJumpError(`请输入 1 至 ${paging.pageCount} 的整数页码。`);
++      return;
++    }
++    setJumpError('');
++    changePage(Number(value));
++  }
++
++  return <section className="lb-results" aria-busy={loading} aria-labelledby={`${uid}-title`}>
++    <h2 id={`${uid}-title`} className="lb-results-heading" tabIndex={-1} ref={heading}>作品浏览</h2>
++    <p className="lb-results-summary" role="status" aria-live="polite" aria-atomic="true">
++      {loading ? '正在加载作品…' : error ? '作品暂时无法显示。' : paging.total
++        ? `第 ${paging.start}–${paging.end} 项，共 ${paging.total} 项；第 ${paging.page} / ${paging.pageCount} 页`
++        : '共 0 项作品'}
++    </p>
++    {error ? <p role="alert" className="lb-results-error">{error}</p> : null}
++    {!loading && !error && !paging.total ? <p className="lb-results-empty">{model.activeConditions.length
++      ? '没有符合当前条件的作品，请撤销上方条件后重试。' : '作品库暂无作品。'}</p> : null}
++    <div ref={container} className="lb-results-grid" data-lb-results-grid="" aria-label="本页作品">
++      {!loading && !error && rows.map(work => <div key={work.id} className="lb-results-card" data-lb-work-id={work.id}
++        tabIndex={-1} aria-label={work.name}>
++        {renderWork(work, () => {
++          if (loading || error) return;
++          // Safari/touch and programmatic clicks do not necessarily focus buttons.
++          // Capture the actual opened card before the host snapshots its history anchor.
++          const card = Array.from(container.current?.querySelectorAll<HTMLElement>('[data-lb-work-id]') ?? [])
++            .find(element => element.dataset.lbWorkId === work.id);
++          (card?.querySelector<HTMLElement>('button:not([disabled]), a[href], [tabindex="0"]') ?? card)?.focus({preventScroll:true});
++          onOpenWork(work.id, sequence);
++        })}
++      </div>)}
++    </div>
++    <nav className="lb-results-paging" aria-label="作品分页">
++      <button type="button" disabled={loading || !!error || paging.page <= 1} onClick={() => changePage(paging.page - 1)}>上一页</button>
++      <span aria-current="page">第 {paging.page} / {paging.pageCount} 页</span>
++      <button type="button" disabled={loading || !!error || paging.page >= paging.pageCount} onClick={() => changePage(paging.page + 1)}>下一页</button>
++      <label htmlFor={`${uid}-size`}>每页</label>
++      <select id={`${uid}-size`} value={paging.pageSize} disabled={loading || !!error}
++        onChange={event => {const size = Number(event.target.value); if (size === 24 || size === 48) changePage(1, size);}}>
++        <option value={24}>24 项</option><option value={48}>48 项</option>
++      </select>
++      <form className="lb-results-jump" onSubmit={submitJump} noValidate>
++        <label htmlFor={`${uid}-jump`}>跳至页码</label>
++        <input id={`${uid}-jump`} type="text" inputMode="numeric" value={jump} disabled={loading || !!error || !paging.total}
++          aria-invalid={!!jumpError} aria-describedby={jumpError ? `${uid}-jump-error` : undefined}
++          onChange={event => {setJump(event.target.value); setJumpError('');}} />
++        <button type="submit" disabled={loading || !!error || !paging.total}>前往</button>
++      </form>
++    </nav>
++    {jumpError ? <p id={`${uid}-jump-error`} className="lb-results-error" role="alert">{jumpError}</p> : null}
++  </section>;
++}
+diff --git a/components/library-browser/results.css b/components/library-browser/results.css
+new file mode 100644
+index 0000000..ae27e28
+--- /dev/null
++++ b/components/library-browser/results.css
+@@ -0,0 +1,15 @@
++.lb-results{min-width:0;max-width:100%;color:inherit}
++.lb-results-heading{font-size:1.2rem;margin-block:1rem .5rem}
++.lb-results-summary{font-variant-numeric:tabular-nums}
++.lb-results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1rem}
++.lb-results-card{min-width:0;overflow-wrap:anywhere}
++.lb-results-card img{max-width:100%}
++.lb-results-paging,.lb-results-jump{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem}
++.lb-results-paging{margin-block:1rem}
++.lb-results-paging button,.lb-results-paging select,.lb-results-jump input{min-height:44px;max-width:100%;font:inherit;padding:.45rem .65rem}
++.lb-results-jump input{width:5rem;box-sizing:border-box}
++.lb-results-error{color:#a82020;overflow-wrap:anywhere}
++.lb-results-empty{padding:1rem;border:1px solid currentColor;border-radius:.5rem}
++.lb-results :focus-visible{outline:3px solid #346de0;outline-offset:3px}
++.lb-results button:disabled{opacity:.55;cursor:not-allowed}
++@media(prefers-reduced-motion:reduce){.lb-results *{scroll-behavior:auto;animation:none;transition:none}}
+diff --git a/components/library-browser/sequence-preview.tsx b/components/library-browser/sequence-preview.tsx
+new file mode 100644
+index 0000000..feebdeb
+--- /dev/null
++++ b/components/library-browser/sequence-preview.tsx
+@@ -0,0 +1,69 @@
++'use client';
++
++import {useId, useLayoutEffect, useRef, useState} from 'react';
++import type {PageSize, SequencePreviewProps, SequenceStatus} from '../../lib/idol/library-browser/contract';
++import {paginate} from '../../lib/idol/library-browser/paging-model';
++import {buildSequenceModel} from '../../lib/idol/library-browser/sequence-model';
++import './sequence.css';
++
++const statusLabels: Record<SequenceStatus, string> = {
++  available: '可观看', missing: '已删除或不存在', unavailable: '来源不可用',
++  filtered: '已不符合本次条件', 'member-unlinked': '成员关联已断开',
++};
++
++/** Read-only original session order; only the host may navigate through onNext. */
++export function SequencePreview({sequence, currentId, catalog, onNext, nextDisabled = false}: SequencePreviewProps) {
++  const model = buildSequenceModel(sequence, currentId, catalog);
++  const [page, setPage] = useState(1);
++  const [pageSize, setPageSize] = useState<PageSize>(24);
++  const paging = paginate(model.total, page, pageSize);
++  const rows = model.rows.slice((paging.page - 1) * paging.pageSize, paging.page * paging.pageSize);
++  const uid = useId();
++  const summary = useRef<HTMLParagraphElement>(null);
++  const deliberate = useRef(false);
++  useLayoutEffect(() => {
++    if (!deliberate.current) return;
++    deliberate.current = false;
++    summary.current?.focus();
++  }, [paging.page, paging.pageSize]);
++  const disabled = nextDisabled || !onNext || !model.nextId || model.unrecoverable;
++
++  return <details className="lb-sequence">
++    <summary className="lb-sequence-toggle">本次观看列表（{model.total} 项）</summary>
++    <div className="lb-sequence-panel">
++      <p className="lb-sequence-label">{sequence.label} · 只读预览</p>
++      <p>{model.unrecoverable ? '当前作品不在原会话中，无法恢复会话位置。'
++        : model.currentPosition === null ? '当前没有可恢复的作品位置。'
++          : `原会话第 ${model.currentPosition} / ${model.total} 项`}</p>
++      <p>当前可继续 {model.continuableCount} 项；原顺序与总数保持不变。</p>
++      <p ref={summary} tabIndex={-1} className="lb-sequence-page-status" role="status" aria-live="polite" aria-atomic="true">
++        {model.total ? `预览第 ${paging.start}–${paging.end} 项，第 ${paging.page} / ${paging.pageCount} 页` : '本次观看列表为空。'}
++      </p>
++      <ol className="lb-sequence-list" start={(paging.page - 1) * paging.pageSize + 1} aria-label="原会话顺序">
++        {rows.map((row, index) => <li key={`${row.id}:${row.position}:${index}`} className="lb-sequence-row"
++          data-lb-sequence-id={row.id} aria-current={row.current ? 'step' : undefined}>
++          <span className="lb-sequence-name">{row.name}</span>
++          <span className="lb-sequence-state">{row.current ? '当前作品 · ' : ''}{row.next ? '下一支 · ' : ''}{statusLabels[row.status]}</span>
++        </li>)}
++      </ol>
++      <nav className="lb-sequence-paging" aria-label="观看列表预览分页">
++        <button type="button" disabled={paging.page <= 1} onClick={() => {
++          if (paging.page <= 1) return; deliberate.current = true; setPage(paging.page - 1);
++        }}>预览上一页</button>
++        <span aria-current="page">第 {paging.page} / {paging.pageCount} 页</span>
++        <button type="button" disabled={paging.page >= paging.pageCount} onClick={() => {
++          if (paging.page >= paging.pageCount) return; deliberate.current = true; setPage(paging.page + 1);
++        }}>预览下一页</button>
++        <label htmlFor={`${uid}-size`}>预览每页</label>
++        <select id={`${uid}-size`} value={pageSize} onChange={event => {
++          const size = Number(event.target.value);
++          if (size !== 24 && size !== 48) return;
++          deliberate.current = true; setPage(1); setPageSize(size);
++        }}><option value={24}>24 项</option><option value={48}>48 项</option></select>
++      </nav>
++      {!model.nextId && !model.unrecoverable ? <p className="lb-sequence-end" role="status">本次观看已到末尾，没有可继续的下一支。</p> : null}
++      {onNext ? <button className="lb-sequence-next" type="button" disabled={disabled}
++        onClick={() => {if (!disabled) onNext();}}>下一支</button> : null}
++    </div>
++  </details>;
++}
+diff --git a/components/library-browser/sequence.css b/components/library-browser/sequence.css
+new file mode 100644
+index 0000000..85feafc
+--- /dev/null
++++ b/components/library-browser/sequence.css
+@@ -0,0 +1,15 @@
++.lb-sequence{max-width:100%;min-width:0;border:1px solid #8a8a8a;border-radius:.6rem;margin-block:1rem}
++.lb-sequence-toggle{cursor:pointer;padding:.8rem;min-height:44px;box-sizing:border-box}
++.lb-sequence-panel{padding:0 1rem 1rem;overflow-wrap:anywhere}
++.lb-sequence-label{font-weight:600}
++.lb-sequence-list{padding-inline-start:2.5rem}
++.lb-sequence-row{padding:.5rem .25rem;border-block-end:1px solid #aaa6}
++.lb-sequence-row[aria-current="step"]{font-weight:700;background:#7771}
++.lb-sequence-name,.lb-sequence-state{display:block;overflow-wrap:anywhere}
++.lb-sequence-state{font-size:.875rem}
++.lb-sequence-paging{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem}
++.lb-sequence button,.lb-sequence select{min-height:44px;max-width:100%;font:inherit;padding:.45rem .65rem}
++.lb-sequence-next{margin-block-start:.75rem}
++.lb-sequence :focus-visible{outline:3px solid #346de0;outline-offset:3px}
++.lb-sequence button:disabled{opacity:.55;cursor:not-allowed}
++@media(prefers-reduced-motion:reduce){.lb-sequence *{scroll-behavior:auto;animation:none;transition:none}}
+diff --git a/examples/library-browser/index.html b/examples/library-browser/index.html
+new file mode 100644
+index 0000000..8aa697c
+--- /dev/null
++++ b/examples/library-browser/index.html
+@@ -0,0 +1 @@
++<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SYNTHETIC 作品浏览验收</title></head><body><div id="root"></div><script type="module" src="/examples/library-browser/main.tsx"></script></body></html>
+diff --git a/examples/library-browser/main.tsx b/examples/library-browser/main.tsx
+new file mode 100644
+index 0000000..e27aa97
+--- /dev/null
++++ b/examples/library-browser/main.tsx
+@@ -0,0 +1,36 @@
++import React,{useState,useRef,useEffect,useMemo} from 'react';
++import {createRoot} from 'react-dom/client';
++import {LibraryBrowser,SequencePreview} from '../../components/library-browser';
++import {defaultFilters,type BrowseFilters,type WatchSequence} from '../../lib/idol/journey';
++import type {PageSize,RestoreResolution,RestoreTarget} from '../../lib/idol/library-browser/contract';
++import type {CatalogView,Work} from '../../lib/idol/types';
++import {nextInSequence,makeWatchSequence,indexWorkNames,matchingWorks,sortWorks} from '../../lib/idol/watch-sequence';
++import {stageMatches} from '../../lib/idol/stage-display';
++import {fixture,SEED} from '../../tests/library-browser/synthetic-fixture';
++import './style.css';
++type Snapshot={id:string|null;sequence?:WatchSequence;filters:BrowseFilters;page:number;pageSize:PageSize;anchor?:RestoreTarget};
++function App(){
++ const [count,setCount]=useState(1000),[catalog,setCatalog]=useState(()=>fixture(1000));
++ const [stack,setStack]=useState<Snapshot[]>([{id:null,filters:defaultFilters(),page:1,pageSize:24}]),[position,setPosition]=useState(0);
++ const current=stack[position],currentRef=useRef(current);currentRef.current=current;
++ const [dirty,setDirty]=useState(false),[pending,setPending]=useState(false),[reject,setReject]=useState(true),[draft,setDraft]=useState(''),[message,setMessage]=useState(''),[restore,setRestore]=useState<RestoreTarget>(),[delayed,setDelayed]=useState(false),[large,setLarge]=useState(false),[loading,setLoading]=useState(false),[error,setError]=useState(false);
++ const [legacy,setLegacy]=useState(false),[legacyLimit,setLegacyLimit]=useState(24),[restoreText,setRestoreText]=useState('尚未恢复');
++ const restoration=useRef<RestoreResolution|null>(null),request=useRef(0);
++ const update=(patch:Partial<Snapshot>)=>setStack(s=>s.map((v,i)=>i===position?{...v,...patch}:v));
++ const allowed=()=>{if(pending){setMessage('保存处理中，已阻止导航');return false;}if(dirty&&reject){setMessage('守卫拒绝离开，草稿已保留');return false;}return true;};
++ const open=(id:string,sequence:WatchSequence)=>{if(!allowed())return;const el=[...document.querySelectorAll<HTMLElement>('[data-demo-work]')].find(n=>n.dataset.demoWork===id);const anchor={anchorId:id,offset:el?.getBoundingClientRect().top??0,page:current.page};const before={...current,anchor};setStack([...stack.slice(0,position),before,{...current,id,sequence}]);setPosition(position+1);setRestore(undefined);window.scrollTo(0,0);};
++ const move=(delta:number)=>{if(!allowed())return;const p=position+delta;if(p<0||p>=stack.length)return;setPosition(p);const target=stack[p];setRestore(target.id?undefined:{...target.anchor,page:target.page,requestKey:++request.current});};
++ const back=()=>{if(!allowed())return;let p=position-1;while(p>=0&&stack[p].id)p--;if(p<0)return;setPosition(p);setRestore({...stack[p].anchor,page:stack[p].page,requestKey:++request.current});};
++ useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.altKey&&e.key==='ArrowLeft'){e.preventDefault();back();}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);});
++ useEffect(()=>{if(!delayed){setLarge(false);return;}setLarge(false);const timer=setTimeout(()=>setLarge(true),700);return()=>clearTimeout(timer);},[delayed,current.id,position]);
++ const ready=(resolved:RestoreResolution)=>{restoration.current=resolved;setRestoreText(JSON.stringify(resolved));};
++ useEffect(()=>{if(current.id||!restore)return;let active=true;const apply=()=>{const r=restoration.current;if(!active||!r)return;const node=r.anchorId?[...document.querySelectorAll<HTMLElement>('[data-demo-work]')].find(n=>n.dataset.demoWork===r.anchorId):document.querySelector<HTMLElement>('[data-library-focus=search]');if(node){node.focus({preventScroll:true});window.scrollTo(0,Math.max(0,window.scrollY+node.getBoundingClientRect().top-(r.focus==='search'?20:r.offset)));}};const observer=new ResizeObserver(()=>requestAnimationFrame(apply));observer.observe(document.body);const timer=setInterval(apply,80);const stop=()=>{active=false;observer.disconnect();clearInterval(timer);};window.addEventListener('pointerdown',stop,{once:true});window.addEventListener('keydown',stop,{once:true});void document.fonts.ready.then(apply);return()=>{stop();window.removeEventListener('pointerdown',stop);window.removeEventListener('keydown',stop);};},[restore,current.id]);
++ const oldRows=useMemo(()=>sortWorks(matchingWorks(indexWorkNames(catalog.works,catalog.groups),current.filters).filter(w=>stageMatches(w,current.filters.stageFilter)),current.filters.sort),[catalog,current.filters.search,current.filters.group,current.filters.generation,current.filters.queue,current.filters.stageFilter,current.filters.watch,current.filters.sort]);
++ const work=catalog.works.find(w=>w.id===current.id),next=current.id&&current.sequence?nextInSequence(current.sequence,current.id,catalog):null;
++ return <main><h1>SYNTHETIC · 作品浏览验收</h1><p>本地合成资料，seed {SEED}，所有操作仅影响内存。当前历史位置 {position+1}/{stack.length}</p>
++ <div className="demo-toolbar"><label>规模<select aria-label="合成目录规模" value={count} onChange={e=>{const n=+e.target.value;setCount(n);setCatalog(fixture(n));}}>{[100,1000,5000].map(n=><option key={n}>{n}</option>)}</select></label><button disabled={position===0} onClick={()=>move(-1)}>模拟后退</button><button disabled={position===stack.length-1} onClick={()=>move(1)}>模拟前进</button><label><input type="checkbox" checked={delayed} onChange={e=>setDelayed(e.target.checked)}/>延迟图片布局</label><label><input type="checkbox" checked={loading} onChange={e=>setLoading(e.target.checked)}/>加载中</label><label><input type="checkbox" checked={error} onChange={e=>setError(e.target.checked)}/>读取错误</label><button onClick={()=>setCatalog({...catalog,works:[]})}>模拟空库</button><button onClick={()=>setCatalog(fixture(count))}>重置目录</button></div>
++ <div className="demo-toolbar"><label><input type="checkbox" checked={legacy} onChange={e=>{setLegacy(e.target.checked);setLegacyLimit(24);}}/>旧累计加载对照</label><button onClick={()=>{const w=oldRows[50];if(w){setRestore({anchorId:'work-'+w.id,legacyLimit:96,offset:100,requestKey:++request.current});setMessage('旧历史 limit=96；按第51项锚点恢复，绝不当作第96页');}}}>恢复旧 limit=96 + 第51项锚点</button><button onClick={()=>setRestore({anchorId:'work-recDeleted',legacyLimit:96,page:3,requestKey:++request.current})}>恢复已删除锚点</button></div><p role="status">{message}</p><p data-demo-restore="">恢复协议：{restoreText}</p>
++ {current.id?<section><button onClick={back}>返回作品库</button><h2>{work?.name??'当前作品已删除'}</h2><p>MV 分数：{work?.score===null?'未评分':work?.score??'作品不存在'}</p><label>草稿<textarea value={draft} onChange={e=>{setDraft(e.target.value);setDirty(true);}}/></label><label><input type="checkbox" checked={reject} onChange={e=>setReject(e.target.checked)}/>模拟拒绝未保存离开</label><label><input type="checkbox" checked={pending} onChange={e=>setPending(e.target.checked)}/>模拟 pending-save</label><button onClick={()=>setCatalog({...catalog,works:catalog.works.map(w=>w.id===current.id?{...w,score:0,watched:'已观看'}:w)})}>刷新：当前改为已看 0 分</button><button onClick={()=>setCatalog({...catalog,works:catalog.works.filter(w=>w.id!==current.id)})}>刷新：删除当前作品</button><button disabled={!work?.groupIds.length} onClick={()=>{const group=work?.groupIds[0];if(!group)return;setStack(s=>s.map((v,i)=>i<position&&!v.id?{...v,filters:{...v.filters,group}}:v));setCatalog({...catalog,works:catalog.works.map(w=>w.id===current.id?{...w,groupIds:[]}:w)});setMessage('返回列表按原团体筛选；当前作品已断开团体关系，应恢复到搜索框');}}>模拟原作被团体条件筛走</button><button disabled={!current.sequence} onClick={()=>{if(current.sequence){const memberId='recSyntheticSessionMember';setCatalog({...catalog,ratings:[...catalog.ratings,...current.sequence.ids.map(id=>({id:'recSyntheticLink'+id,name:'SYNTHETIC relation',memberIds:[memberId],workIds:[id],score:null,stylingScore:null,memory:'SYNTHETIC_PRIVATE_MEMORY',note:'SYNTHETIC_PRIVATE_NOTE',photo:null,verification:''}))]});update({sequence:{...current.sequence,memberId}});}}}>模拟成员观看会话（建立合成关联）</button><button disabled={!current.sequence?.memberId||!next} onClick={()=>{if(next)setCatalog({...catalog,ratings:catalog.ratings.map(r=>({...r,workIds:r.workIds.filter(id=>id!==next.id)}))});}}>刷新：断开下一支成员关联</button><button onClick={()=>update({id:'recUnknown'})}>模拟未知当前 ID</button>{current.sequence&&<SequencePreview sequence={current.sequence} currentId={current.id} catalog={catalog} nextDisabled={pending} onNext={()=>{if(next&&allowed()){setStack([...stack.slice(0,position+1),{...current,id:next.id}]);setPosition(position+1);}}}/>}</section>:
++ legacy?<section><p>旧累计视图：{Math.min(legacyLimit,oldRows.length)} / {oldRows.length}，用于同路径性能对照</p><div className="lb-results-grid">{oldRows.slice(0,legacyLimit).map(w=><button key={w.id} className="demo-card" data-demo-work={w.id} data-browse-anchor={'work-'+w.id} onClick={()=>open(w.id,makeWatchSequence(oldRows,'旧累计对照',current.filters))}><div className="demo-placeholder" style={{height:large?160:96}}>SYNTHETIC</div><strong>{w.name} · {w.id}</strong><span>{w.score===null?'未评分':w.score+' 分'}</span></button>)}</div><button disabled={legacyLimit>=oldRows.length} onClick={()=>setLegacyLimit(v=>v+24)}>旧版再看 24 条</button></section>:<LibraryBrowser catalog={catalog} filters={current.filters} onFiltersChange={filters=>{restoration.current=null;setRestore(undefined);update({filters,page:1});}} page={current.page} pageSize={current.pageSize} onPageChange={(page,pageSize)=>update({page,pageSize})} loading={loading} error={error?'合成读取错误':null} readOnly restoreTarget={restore} restoreReady={!loading&&!error} onRestoreReady={ready} onOpenWork={open} renderWork={(w,onOpen)=><button className="demo-card" data-demo-work={w.id} data-browse-anchor={'work-'+w.id} onClick={onOpen}><div className="demo-placeholder" style={{height:large?160:96}} aria-hidden="true">SYNTHETIC</div><strong>{w.name} · {w.id}</strong><span>{w.version} · {w.score===null?'未评分':`${w.score} 分`} · {w.watched||'未标记'}</span></button>}/>}</main>;
++}
++createRoot(document.getElementById('root')!).render(<App/>);
+diff --git a/examples/library-browser/style.css b/examples/library-browser/style.css
+new file mode 100644
+index 0000000..327d810
+--- /dev/null
++++ b/examples/library-browser/style.css
+@@ -0,0 +1,3 @@
++body{margin:0;background:#f8f5f9;color:#2d2631;font-family:system-ui,sans-serif}main{max-width:1200px;margin:auto;padding:20px;box-sizing:border-box}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}.demo-toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.demo-toolbar label{display:flex;gap:6px;align-items:center}.demo-card{width:100%;min-width:0;border:1px solid #c5b8cb;border-radius:12px;overflow:hidden;background:white;text-align:left;color:inherit;padding:0}.demo-card strong,.demo-card span{display:block;padding:10px;overflow-wrap:anywhere}.demo-placeholder{display:grid;place-items:center;background:#ddd1e1;color:#624b70}main :focus-visible{outline:3px solid #885ba0;outline-offset:3px}textarea{display:block;max-width:100%;box-sizing:border-box}section>label{display:block;margin:12px 0}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
++
++[data-demo-restore]{overflow-wrap:anywhere;word-break:break-word;max-width:100%}
+diff --git a/examples/library-browser/vite.config.ts b/examples/library-browser/vite.config.ts
+new file mode 100644
+index 0000000..4d7880c
+--- /dev/null
++++ b/examples/library-browser/vite.config.ts
+@@ -0,0 +1,3 @@
++import {defineConfig} from 'vite';
++import react from '@vitejs/plugin-react';
++export default defineConfig({publicDir:false,plugins:[react()],server:{host:'0.0.0.0',port:5190,strictPort:true},build:{outDir:'handoff/library-browser/browser-build',emptyOutDir:true,rollupOptions:{input:'examples/library-browser/index.html'}}});
+diff --git a/lib/idol/library-browser/contract.ts b/lib/idol/library-browser/contract.ts
+new file mode 100644
+index 0000000..b8f60b6
+--- /dev/null
++++ b/lib/idol/library-browser/contract.ts
+@@ -0,0 +1,15 @@
++import type {ReactNode} from 'react';
++import type {BrowseFilters,WatchSequence} from '../journey';
++import type {CatalogView,Work} from '../types';
++export type PageSize=24|48;
++export type ConditionKey='search'|'group'|'generation'|'queue'|'stageFilter'|'watch'|'sort';
++export type ActiveCondition={key:ConditionKey;label:string;value:string};
++export type PageModel={page:number;pageSize:PageSize;pageCount:number;total:number;start:number;end:number};
++export type LibraryModel={orderedWorks:Work[];orderedIds:string[];rows:Work[];pagination:PageModel;facetCounts:{queue:Record<string,number>;stage:Record<string,number>};activeConditions:ActiveCondition[];watchableIds:string[]};
++export type RestoreTarget={anchorId?:string;offset?:number;page?:number;legacyLimit?:number;focusId?:string;requestKey?:string|number};
++export type RestoreResolution={page:number;anchorId:string|null;offset:number;focus:'anchor'|'search';reason:'anchor'|'missing-anchor'|'page'};
++export type ResultsViewProps={model:LibraryModel;page:number;pageSize:PageSize;onPageChange:(page:number,pageSize:PageSize)=>void;renderWork:(work:Work,onOpen:()=>void)=>ReactNode;onOpenWork:(workId:string,sequence:WatchSequence)=>void;sequence:WatchSequence;restoreTarget?:RestoreTarget;restoreReady?:boolean;onRestoreReady?:(resolution:RestoreResolution)=>void;loading?:boolean;error?:string|null;searchId?:string};
++export type SequenceStatus='available'|'missing'|'unavailable'|'filtered'|'member-unlinked';
++export type SequenceRow={id:string;position:number;name:string;status:SequenceStatus;current:boolean;next:boolean};
++export type SequenceModel={rows:SequenceRow[];total:number;currentPosition:number|null;nextId:string|null;continuableCount:number;unrecoverable:boolean};
++export type SequencePreviewProps={sequence:WatchSequence;currentId:string;catalog:CatalogView;onNext?:()=>void;nextDisabled?:boolean};
+diff --git a/lib/idol/library-browser/paging-model.ts b/lib/idol/library-browser/paging-model.ts
+new file mode 100644
+index 0000000..4d6fb6f
+--- /dev/null
++++ b/lib/idol/library-browser/paging-model.ts
+@@ -0,0 +1,17 @@
++import type {PageModel,PageSize,RestoreResolution,RestoreTarget} from './contract';
++/** Public callers may hydrate untrusted navigation numbers. Legacy limits are never page numbers. */
++export function paginate(total:number,page=1,pageSize:PageSize=24):PageModel{
++ const size:PageSize=pageSize===48?48:24;
++ const count=Number.isFinite(total)?Math.max(0,Math.floor(total)):0;
++ const pageCount=Math.max(1,Math.ceil(count/size));
++ const current=Math.min(pageCount,Math.max(1,Number.isFinite(page)?Math.floor(page):1));
++ return {page:current,pageSize:size,pageCount,total:count,start:count?(current-1)*size+1:0,end:Math.min(current*size,count)};
++}
++export function resolveRestoreTarget(orderedIds:readonly string[],pageSize:PageSize,target:RestoreTarget={}):RestoreResolution{
++ // Historical hosts saved DOM anchors as work-<id>. Prefer an exact ID first.
++ let index=target.anchorId?orderedIds.indexOf(target.anchorId):-1;
++ if(index<0&&target.anchorId?.startsWith('work-'))index=orderedIds.indexOf(target.anchorId.slice(5));
++ const offset=Number.isFinite(target.offset)?target.offset!:0;
++ if(index>=0)return {page:paginate(orderedIds.length,Math.floor(index/(pageSize===48?48:24))+1,pageSize).page,anchorId:orderedIds[index],offset,focus:'anchor',reason:'anchor'};
++ return {page:paginate(orderedIds.length,target.page??1,pageSize).page,anchorId:null,offset:0,focus:'search',reason:target.anchorId?'missing-anchor':'page'};
++}
+diff --git a/lib/idol/library-browser/query-model.ts b/lib/idol/library-browser/query-model.ts
+new file mode 100644
+index 0000000..5b92773
+--- /dev/null
++++ b/lib/idol/library-browser/query-model.ts
+@@ -0,0 +1,35 @@
++import type {BrowseFilters} from '../journey';
++import type {CatalogView} from '../types';
++import {indexWorkNames,matchingWorks,sortWorks} from '../watch-sequence';
++import {queueLabels} from '../queues';
++import {stageMatches} from '../stage-display';
++import {paginate} from './paging-model';
++import type {ActiveCondition,ConditionKey,LibraryModel,PageSize} from './contract';
++const defaults:Record<ConditionKey,string>={search:'',group:'all',generation:'all',queue:'all',stageFilter:'all',watch:'all',sort:'default'};
++const labels:Record<ConditionKey,string>={search:'名称',group:'团体',generation:'世代',queue:'队列',stageFilter:'舞台',watch:'观看状态',sort:'排序'};
++const stageLabels:Record<string,string>={all:'全部',ready:'有舞台',alternative:'其他现场',pending:'暂无舞台'};
++const watchLabels:Record<string,string>={watched:'已观看',unwatched:'未观看',unmarked:'未标记'};
++const sortLabels:Record<string,string>={'release-desc':'发行时间：新到旧','release-asc':'发行时间：旧到新','score-desc':'评分：高到低'};
++/** Exactly one dimension changes; limit, company and optional fields survive untouched. */
++export function clearCondition(filters:BrowseFilters,key:ConditionKey):BrowseFilters{return {...filters,[key]:defaults[key]};}
++/** Duplicate IDs are invalid catalog input: retain the first record (including placeholders).
++ * This matches nextInSequence's first-find behavior. Never merge names, scores or associations.
++ * Only public name fields enter the existing name index; Work slots remain host-owned records.
++ */
++export function buildLibraryModel(catalog:CatalogView,filters:BrowseFilters,page=1,pageSize:PageSize=24):LibraryModel{
++ const seen=new Set<string>();
++ const works=catalog.works.filter(work=>{if(seen.has(work.id))return false;seen.add(work.id);return true;});
++ const index=indexWorkNames(works,catalog.groups);
++ const scope=matchingWorks(index,filters);
++ const orderedWorks=sortWorks(scope.filter(work=>stageMatches(work,filters.stageFilter)),filters.sort);
++ const pagination=paginate(orderedWorks.length,page,pageSize);
++ const queue=Object.fromEntries(Object.keys(queueLabels).map(key=>[key,matchingWorks(index,{...filters,queue:key}).filter(work=>stageMatches(work,filters.stageFilter)).length]));
++ const stage=Object.fromEntries(Object.keys(stageLabels).map(key=>[key,scope.filter(work=>stageMatches(work,key)).length]));
++ const activeConditions:ActiveCondition[]=[];
++ for(const key of Object.keys(defaults) as ConditionKey[]){
++  const value=filters[key]??defaults[key];if(value===defaults[key])continue;
++  const display=key==='group'?catalog.groups.find(group=>group.id===value)?.name??value:key==='queue'?queueLabels[value]??value:key==='stageFilter'?stageLabels[value]??value:key==='watch'?watchLabels[value]??value:key==='sort'?sortLabels[value]??value:value;
++  activeConditions.push({key,value,label:`${labels[key]}：${display}`});
++ }
++ return {orderedWorks,orderedIds:orderedWorks.map(work=>work.id),rows:orderedWorks.slice((pagination.page-1)*pagination.pageSize,pagination.end),pagination,facetCounts:{queue,stage},activeConditions,watchableIds:orderedWorks.filter(work=>!!work.url).map(work=>work.id)};
++}
+diff --git a/lib/idol/library-browser/sequence-model.ts b/lib/idol/library-browser/sequence-model.ts
+new file mode 100644
+index 0000000..3958819
+--- /dev/null
++++ b/lib/idol/library-browser/sequence-model.ts
+@@ -0,0 +1,23 @@
++import type {CatalogView,Work} from '../types';
++import type {WatchSequence} from '../journey';
++import {matchesWorkScope,nextInSequence} from '../watch-sequence';
++import {stageMatches} from '../stage-display';
++import type {SequenceModel,SequenceStatus} from './contract';
++/** Keep the complete captured IDs and positions; never sort or silently repair a session. */
++export function buildSequenceModel(sequence:WatchSequence,currentId:string,catalog:CatalogView):SequenceModel{
++ const first=new Map<string,Work>();for(const work of catalog.works)if(!first.has(work.id))first.set(work.id,work);
++ const linked=new Set(sequence.memberId?catalog.ratings.filter(rating=>rating.memberIds.includes(sequence.memberId!)).flatMap(rating=>rating.workIds):[]);
++ const currentIndex=sequence.ids.indexOf(currentId);
++ // The host's existing continuation oracle remains authoritative, including missing-current behavior.
++ const nextId=nextInSequence(sequence,currentId,catalog)?.id??null;
++ const nextIndex=nextId===null?-1:sequence.ids.indexOf(nextId,currentIndex+1);
++ const rows=sequence.ids.map((id,index)=>{
++  const work=first.get(id);let status:SequenceStatus='available';
++  if(!work)status='missing';
++  else if(work.placeholder||!work.url)status='unavailable';
++  else if(!matchesWorkScope(work,sequence.filters,catalog.groups)||!stageMatches(work,sequence.filters.stageFilter))status='filtered';
++  else if(sequence.memberId&&!linked.has(id))status='member-unlinked';
++  return {id,position:index+1,name:work?.name??'已移除的作品',status,current:index===currentIndex,next:index===nextIndex};
++ });
++ return {rows,total:sequence.ids.length,currentPosition:currentIndex<0?null:currentIndex+1,nextId,continuableCount:currentIndex<0?0:rows.slice(currentIndex+1).filter(row=>row.status==='available').length,unrecoverable:currentIndex<0};
++}
+diff --git a/tests/library-browser/components-open-focus.test.cjs b/tests/library-browser/components-open-focus.test.cjs
+new file mode 100644
+index 0000000..b66b83f
+--- /dev/null
++++ b/tests/library-browser/components-open-focus.test.cjs
+@@ -0,0 +1,17 @@
++const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ts=require('typescript');
++const {load,fixture}=require('./scale-fixture.cjs');
++test('actual ResultsView programmatic open focuses matching enabled card before host captures navigation',()=>{
++ const catalog=fixture(100),filters={search:'',group:'all',generation:'all',queue:'all',stageFilter:'all',watch:'all',sort:'default',limit:24};
++ const {buildLibraryModel}=load('lib/idol/library-browser/query-model.ts'),paging=load('lib/idol/library-browser/paging-model.ts');
++ const model=buildLibraryModel(catalog,filters,3,24),id=model.rows[3].id,sequence={ids:model.watchableIds,filters,label:'SYNTHETIC'};
++ let active='unrelated-search',captured,open,refs=0;const focusOptions=[];
++ const target={focus(opts){active='work-'+id;focusOptions.push(opts);}};
++ const card={dataset:{lbWorkId:id},querySelector(selector){assert.match(selector,/button:not\(\[disabled\]\)/);return target;},focus(){assert.fail('Use actionable child instead of wrapper');}};
++ const container={querySelectorAll:()=>[{dataset:{lbWorkId:'unrelated'},querySelector(){assert.fail('Wrong card focus');}},card]};
++ const React={useId:()=>':synthetic:',useEffect(){},useLayoutEffect(){},useRef:()=>({current:++refs===2?container:null}),useState:value=>[value,()=>{}]};
++ const filename=path.resolve(__dirname,'../../components/library-browser/results-view.tsx');
++ const code=ts.transpileModule(fs.readFileSync(filename,'utf8'),{compilerOptions:{jsx:ts.JsxEmit.ReactJSX,module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
++ const exports={};vm.runInNewContext('(function(require,exports){'+code+'})')(name=>name==='react'?React:name==='react/jsx-runtime'?require('react/jsx-runtime'):name.includes('paging-model')?paging:{},exports);
++ exports.ResultsView({model,page:3,pageSize:24,sequence,onPageChange(){},renderWork(work,callback){if(work.id===id)open=callback;return work.name;},onOpenWork(workId,full){captured={workId,focused:active,full};}});
++ assert.equal(active,'unrelated-search');open();assert.equal(captured.workId,id);assert.equal(captured.focused,'work-'+id);assert.equal(captured.full,sequence);assert.equal(focusOptions[0].preventScroll,true);
++});
+diff --git a/tests/library-browser/components-query-memo.test.cjs b/tests/library-browser/components-query-memo.test.cjs
+new file mode 100644
+index 0000000..befac09
+--- /dev/null
++++ b/tests/library-browser/components-query-memo.test.cjs
+@@ -0,0 +1,22 @@
++const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ts=require('typescript');
++const root=path.resolve(__dirname,'../..');
++const {load,fixture,filters}=(()=>{const util=require('./scale-fixture.cjs');return util;})();
++// Exercise the actual component function with a persistent deterministic hook scheduler.
++// Real browser timing and event verification remains a separate production-bundle check.
++function harness(){
++ let cursor=0,calls=0;const memo=[];
++ const query=load('lib/idol/library-browser/query-model.ts'),paging=load('lib/idol/library-browser/paging-model.ts');
++ const React={useId:()=>':synthetic:',useMemo(fn,deps){const i=cursor++;if(!memo[i]||!deps.every((v,j)=>Object.is(v,memo[i].deps[j])))memo[i]={deps,value:fn()};return memo[i].value;}};
++ const source=ts.transpileModule(fs.readFileSync(path.join(root,'components/library-browser/library-browser.tsx'),'utf8'),{compilerOptions:{jsx:ts.JsxEmit.ReactJSX,module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
++ const exports={};const imports=name=>name==='react'?React:name==='react/jsx-runtime'?require('react/jsx-runtime'):name.includes('query-model')?{...query,buildLibraryModel(...args){calls++;return query.buildLibraryModel(...args);}}:name.includes('paging-model')?paging:name.includes('watch-sequence')?load('lib/idol/watch-sequence.ts'):name.includes('/queues')?load('lib/idol/queues.ts'):{};
++ vm.runInNewContext('(function(require,exports){'+source+'})')(imports,exports);
++ return {render(props){cursor=0;const element=exports.LibraryBrowser({...props,onFiltersChange(){},onPageChange(){},onOpenWork(){},renderWork:w=>w.name});return element.props.children.at(-1).props.model;},get calls(){return calls;}};
++}
++test('actual LibraryBrowser retains full query cache across new navigation filter objects and page sizes',()=>{
++ const h=harness(),catalog=fixture(1000);const base={search:'',group:'all',generation:'all',queue:'all',stageFilter:'all',watch:'all',sort:'default',limit:24};
++ h.render({catalog,filters:base,page:1,pageSize:24});assert.equal(h.calls,1);
++ let result=h.render({catalog,filters:{...base,page:3,limit:96},page:3,pageSize:24});assert.equal(h.calls,1);assert.equal(result.pagination.page,3);assert.equal(result.rows.length,24);
++ result=h.render({catalog,filters:{...base,page:2,pageSize:48},page:2,pageSize:48});assert.equal(h.calls,1);assert.equal(result.rows.length,48);
++ for(const patch of [{search:'Song'},{group:'recG1'},{generation:'第五代'},{queue:'tonight'},{stageFilter:'ready'},{watch:'watched'},{sort:'score-desc'}]){const before=h.calls;h.render({catalog,filters:{...base,...patch},page:1,pageSize:24});assert.equal(h.calls,before+1);}
++ const before=h.calls;h.render({catalog:{...catalog,works:catalog.works.map(w=>({...w,score:0}))},filters:base,page:1,pageSize:24});assert.equal(h.calls,before+1);
++});
+diff --git a/tests/library-browser/components-results-sequence.test.cjs b/tests/library-browser/components-results-sequence.test.cjs
+new file mode 100644
+index 0000000..43b5035
+--- /dev/null
++++ b/tests/library-browser/components-results-sequence.test.cjs
+@@ -0,0 +1,97 @@
++const test = require('node:test');
++const assert = require('node:assert/strict');
++const path = require('node:path');
++const Module = require('node:module');
++const esbuild = require('esbuild');
++const React = require('react');
++const {renderToStaticMarkup} = require('react-dom/server');
++const root = path.resolve(__dirname, '../..');
++function load(relative) {
++  const filename = path.join(root, relative);
++  const {outputFiles} = esbuild.buildSync({entryPoints: [filename], bundle: true, write: false,
++    platform: 'node', format: 'cjs', jsx: 'automatic', external: ['react', 'react/*'],
++    loader: {'.css': 'empty'}, logLevel: 'silent'});
++  const loaded = new Module(filename, module);
++  loaded.filename = filename;
++  loaded.paths = Module._nodeModulePaths(path.dirname(filename));
++  loaded._compile(outputFiles[0].text, filename);
++  return loaded.exports;
++}
++const {ResultsView} = load('components/library-browser/results-view.tsx');
++const {SequencePreview} = load('components/library-browser/sequence-preview.tsx');
++const {buildLibraryModel} = load('lib/idol/library-browser/query-model.ts');
++const filters = {search:'', group:'all', generation:'all', queue:'all', stageFilter:'all', watch:'all', sort:'default', limit:24};
++function fixture(count = 100) {
++  const works = Array.from({length:count}, (_, i) => ({id:`recWork${i}`,name:`SYNTHETIC ${i}`,song:`Song ${i}`,
++    officialTitle:'MV',version:'',videoType:'MV',groupIds:[],url:'https://example.invalid/video',
++    stage:null,stageScore:null,score:null,watched:'未观看',note:'SYNTHETIC_PRIVATE_SENTINEL'}));
++  const catalog = {works,groups:[],members:[],ratings:[]};
++  const sequence = {ids: works.map(work=>work.id),label:'SYNTHETIC session', filters:{...filters}};
++  return {catalog,sequence};
++}
++const freeze = object => {Object.freeze(object); for (const value of Object.values(object)) if (value && typeof value==='object' && !Object.isFrozen(value)) freeze(value); return object;};
++function results(catalog, sequence, options = {}) {
++  const page = options.page ?? 1, pageSize = options.pageSize ?? 24;
++  return renderToStaticMarkup(React.createElement(ResultsView, {model: buildLibraryModel(catalog,filters,page,pageSize),
++    page,pageSize,sequence,onPageChange:()=>assert.fail('SSR must not change page'),onOpenWork:()=>{},
++    renderWork:(work,onOpen)=>React.createElement('button',{type:'button',onClick:onOpen},work.name),...options}));
++}
++const count = (html, token) => html.split(token).length-1;
++test('actual ResultsView SSR mounts only requested 24/48 rows on deep pages',()=>{
++  const {catalog,sequence}=freeze(fixture(5000));
++  for (const pageSize of [24,48]) {
++    const html=results(catalog,sequence,{page:3,pageSize});
++    assert.equal(count(html,'data-lb-work-id='),pageSize);
++    assert.match(html,new RegExp(`data-lb-work-id="recWork${pageSize*2}"`));
++    assert.ok(!html.includes('SYNTHETIC_PRIVATE_SENTINEL'));
++    assert.match(html,/共 5000 项/);
++    assert.ok(!html.includes('data-lb-work-id="recWork0"'));
++  }
++});
++test('card slot receives original complete sequence, never a page-sized replacement',()=>{
++  const {catalog,sequence}=freeze(fixture(100)); let open, actual;
++  results(catalog,sequence,{page:3,renderWork:(work,callback)=>{if(!open)open=callback;return work.name;},
++    onOpenWork:(id,seq)=>{actual={id,seq};}});
++  open(); assert.equal(actual.id,'recWork48'); assert.equal(actual.seq,sequence); assert.equal(actual.seq.ids.length,100);
++});
++test('loading, error, empty library and no-match states are honest and do not render stale cards',()=>{
++  const {catalog,sequence}=fixture();
++  assert.equal(count(results(catalog,sequence,{loading:true}),'data-lb-work-id='),0);
++  assert.match(results(catalog,sequence,{loading:true}),/aria-busy="true"/);
++  const error=results(catalog,sequence,{error:'Synthetic failure'});
++  assert.equal(count(error,'data-lb-work-id='),0); assert.match(error,/role="alert"/);
++  const empty=fixture(0); assert.match(results(empty.catalog,empty.sequence),/作品库暂无作品/);
++  const noMatch=buildLibraryModel(catalog,{...filters,search:'nothing matches'});
++  assert.match(results(catalog,sequence,{model:noMatch}),/没有符合当前条件/);
++});
++test('SSR restoration does not invoke host or steal focus; client layout effect handles ready gate',()=>{
++  const {catalog,sequence}=fixture();
++  const html=results(catalog,sequence,{restoreTarget:{anchorId:'recWork70',legacyLimit:96},restoreReady:true,
++    onRestoreReady:()=>assert.fail('Server cannot restore geometry')});
++  assert.equal(count(html,'data-lb-work-id='),24);
++});
++test('actual read-only SequencePreview remains bounded and states original total/current/next',()=>{
++  const {catalog,sequence}=freeze(fixture(100));
++  const before=JSON.stringify({catalog,sequence});
++  const html=renderToStaticMarkup(React.createElement(SequencePreview,{catalog,sequence,currentId:'recWork0',onNext:()=>assert.fail('SSR cannot navigate')}));
++  assert.equal(count(html,'data-lb-sequence-id='),24);
++  assert.match(html,/原会话第 1 \/ 100 项/);assert.match(html,/当前可继续 99 项/);
++  assert.match(html,/aria-current="step"/);assert.match(html,/下一支 · 可观看/);
++  assert.ok(!html.includes('SYNTHETIC_PRIVATE_SENTINEL'));
++  assert.equal(JSON.stringify({catalog,sequence}),before);
++});
++test('queue preview displays missing/unavailable/filtered and refuses unknown current continuation',()=>{
++  const {catalog,sequence}=fixture(4);
++  catalog.works[1].url='';catalog.works.splice(2,1);catalog.works[2].watched='已观看';sequence.filters.watch='unwatched';
++  const html=renderToStaticMarkup(React.createElement(SequencePreview,{catalog,sequence,currentId:'recWork0',onNext:()=>{}}));
++  assert.match(html,/来源不可用/);assert.match(html,/已删除或不存在/);assert.match(html,/已不符合本次条件/);
++  assert.match(html,/没有可继续的下一支/);assert.match(html,/class="lb-sequence-next" type="button" disabled=""/);
++  const unknown=renderToStaticMarkup(React.createElement(SequencePreview,{catalog,sequence,currentId:'recUnknown',onNext:()=>{}}));
++  assert.match(unknown,/无法恢复会话位置/);assert.ok(!unknown.includes('aria-current="step"'));
++  assert.match(unknown,/class="lb-sequence-next" type="button" disabled=""/);
++});
++test('pending-save host guard disables exposed next button despite available successor',()=>{
++  const {catalog,sequence}=fixture(2);
++  const html=renderToStaticMarkup(React.createElement(SequencePreview,{catalog,sequence,currentId:'recWork0',onNext:()=>{},nextDisabled:true}));
++  assert.match(html,/class="lb-sequence-next" type="button" disabled=""/);
++});
+diff --git a/tests/library-browser/paging-model.test.cjs b/tests/library-browser/paging-model.test.cjs
+new file mode 100644
+index 0000000..a5ca42e
+--- /dev/null
++++ b/tests/library-browser/paging-model.test.cjs
+@@ -0,0 +1,5 @@
++const test=require('node:test'),assert=require('node:assert/strict'),{load}=require('./scale-fixture.cjs');
++const {paginate,resolveRestoreTarget}=load('lib/idol/library-browser/paging-model.ts');
++test('bounded 1-based pagination covers empty/out-of-range/invalid input and 24/48 only',()=>{assert.deepEqual(paginate(0,90,24),{page:1,pageSize:24,pageCount:1,total:0,start:0,end:0});assert.deepEqual(paginate(100,9,48),{page:3,pageSize:48,pageCount:3,total:100,start:97,end:100});for(const invalid of [NaN,Infinity,-10,0])assert.equal(paginate(100,invalid,24).page,1);assert.equal(paginate(100,2.9,24).page,2);assert.equal(paginate(100,1,100).pageSize,24);assert.equal(paginate(-1).total,0);});
++test('anchor wins over page and legacy limit; offsets preserved; unavailable anchor falls back to clamped page/search',()=>{const ids=Array.from({length:100},(_,i)=>`w${i}`);assert.deepEqual(resolveRestoreTarget(ids,24,{anchorId:'w70',offset:-23,page:1,legacyLimit:480}),{page:3,anchorId:'w70',offset:-23,focus:'anchor',reason:'anchor'});assert.equal(resolveRestoreTarget(ids,24,{legacyLimit:480}).page,1);assert.deepEqual(resolveRestoreTarget(ids,24,{anchorId:'removed',page:99,offset:20}),{page:5,anchorId:null,offset:0,focus:'search',reason:'missing-anchor'});assert.equal(resolveRestoreTarget(ids.slice(60),24,{anchorId:'w70',page:3}).page,1);assert.equal(resolveRestoreTarget([],48,{anchorId:'w70',page:3}).page,1);assert.equal(resolveRestoreTarget(ids,48,{anchorId:'w70',offset:NaN}).offset,0);});
++test('legacy DOM anchor prefix resolves only after literal business ID lookup',()=>{assert.equal(resolveRestoreTarget(['recA'],24,{anchorId:'work-recA'}).anchorId,'recA');assert.equal(resolveRestoreTarget(['recA','work-recA'],24,{anchorId:'work-recA'}).anchorId,'work-recA');});
+diff --git a/tests/library-browser/query-model.test.cjs b/tests/library-browser/query-model.test.cjs
+new file mode 100644
+index 0000000..b2e9cd5
+--- /dev/null
++++ b/tests/library-browser/query-model.test.cjs
+@@ -0,0 +1,14 @@
++const test=require('node:test'),assert=require('node:assert/strict');
++const {fixture,freeze,defaults,load}=require('./scale-fixture.cjs');
++const {buildLibraryModel,clearCondition}=load('lib/idol/library-browser/query-model.ts');
++const {indexWorkNames,matchingWorks,sortWorks}=load('lib/idol/watch-sequence.ts');
++const {stageMatches}=load('lib/idol/stage-display.ts');
++const queues=['all','high','surprise','tonight','unrated','rewatch'],stages=['all','ready','alternative','pending'],watches=['all','watched','unwatched','unmarked'],sorts=['default','release-desc','release-asc','score-desc'];
++const ids=rows=>rows.map(w=>w.id);
++function parity(data,f){const index=indexWorkNames(data.works,data.groups),scope=matchingWorks(index,f),expected=sortWorks(scope.filter(w=>stageMatches(w,f.stageFilter)),f.sort),model=buildLibraryModel(data,f,3,24);assert.deepEqual(model.orderedIds,ids(expected));assert.deepEqual(ids(model.rows),ids(expected.slice((model.pagination.page-1)*24,model.pagination.end)));assert.deepEqual(model.watchableIds,ids(expected.filter(w=>w.url)));for(const q of queues)assert.equal(model.facetCounts.queue[q],matchingWorks(index,{...f,queue:q}).filter(w=>stageMatches(w,f.stageFilter)).length);for(const s of stages)assert.equal(model.facetCounts.stage[s],scope.filter(w=>stageMatches(w,s)).length);assert.ok(model.rows.length<=24);}
++test('all queue/watch/stage/sort combinations execute the existing semantic oracle on frozen data',()=>{const data=fixture(100);for(const queue of queues)for(const watch of watches)for(const stageFilter of stages)for(const sort of sorts)parity(data,freeze({...defaults(),queue,watch,stageFilter,sort}));});
++test('public names normalize and combine; group/generation/unknown relations preserve oracle parity',()=>{const data=fixture(100);for(const search of ['ＳＯＮＧ','song1','Japanese group','Alias 1','SYNTHETIC_PRIVATE_NOTE','SYNTHETIC_PRIVATE_MEMORY','SYNTHETIC_PRIVATE_PROFILE','SYNTHETIC_PRIVATE_GROUP','no match'])for(const group of ['all','recG1','recAbsent'])for(const generation of ['all','第五代'])parity(data,{...defaults(),search,group,generation});for(const search of ['SYNTHETIC_PRIVATE_NOTE','SYNTHETIC_PRIVATE_MEMORY','SYNTHETIC_PRIVATE_PROFILE','SYNTHETIC_PRIVATE_GROUP'])assert.equal(buildLibraryModel(data,{...defaults(),search}).orderedIds.length,0);});
++test('clear changes exactly its dimension, preserving limit/company and every other condition',()=>{const f=freeze({search:'ＳＯＮＧ',group:'recG1',generation:'第五代',queue:'unrated',stageFilter:'ready',watch:'watched',sort:'score-desc',limit:480,company:'private host preference'});const model=buildLibraryModel(fixture(100),f);assert.equal(model.activeConditions.length,7);for(const condition of model.activeConditions){const cleared=clearCondition(f,condition.key);for(const key of Object.keys(f))assert.equal(cleared[key],key===condition.key?defaults()[key]:f[key]);assert.notEqual(cleared,f);}});
++test('duplicate identity uses first record, never song name; placeholder and no URL remain distinct',()=>{const d=fixture(10),first={...d.works[1],id:'recSame',name:'Same',score:0,watched:'已观看'},second={...first,score:null};const data=freeze({...d,works:[first,second,{...first,id:'recVersion',version:'Different'},{...first,id:'recNoUrl',url:''},{...first,id:'recPlaceholder',placeholder:{reason:'x'}},{...first,id:'recPlaceholder',placeholder:null}]});const m=buildLibraryModel(data,defaults());assert.deepEqual(m.orderedIds,['recSame','recVersion','recNoUrl']);assert.deepEqual(m.watchableIds,['recSame','recVersion']);assert.equal(m.orderedWorks[0].score,0);assert.equal(buildLibraryModel(data,{...defaults(),queue:'unrated'}).orderedIds.length,0);});
++test('zero is scored; unknown watched is not unwatched; ties and invalid dates use stable existing sorting',()=>{const d=fixture(10),w=d.works[1];const data=freeze({...d,works:[{...w,id:'a',score:null,watched:'',releaseDate:'invalid'},{...w,id:'b',score:0,watched:'已观看',releaseDate:'2024-02-29'},{...w,id:'c',score:9,watched:'未观看',releaseDate:'2025-02-30'},{...w,id:'d',score:9,watched:'未观看',releaseDate:'2024-02-29'}]});assert.deepEqual(buildLibraryModel(data,{...defaults(),sort:'score-desc'}).orderedIds,['c','d','b','a']);assert.deepEqual(buildLibraryModel(data,{...defaults(),sort:'release-desc'}).orderedIds,['b','d','a','c']);assert.deepEqual(buildLibraryModel(data,{...defaults(),watch:'unmarked'}).orderedIds,['a']);assert.deepEqual(buildLibraryModel(data,{...defaults(),queue:'unrated'}).orderedIds,[]);});
++module.exports={parity};
+diff --git a/tests/library-browser/scale-fixture.cjs b/tests/library-browser/scale-fixture.cjs
+new file mode 100644
+index 0000000..02e5823
+--- /dev/null
++++ b/tests/library-browser/scale-fixture.cjs
+@@ -0,0 +1,4 @@
++// Test-only real TypeScript bundle loader.
++// Real executable TS import, bundled with exactly the repository implementation.
++function load(relative){const fs=require('node:fs'),os=require('node:os'),path=require('node:path');const dir=fs.mkdtempSync(path.join(os.tmpdir(),'library-model-'));const output=path.join(dir,'module.cjs');require('esbuild').buildSync({entryPoints:[path.resolve(__dirname,'../..',relative)],outfile:output,bundle:true,platform:'node',format:'cjs',logLevel:'silent'});try{return require(output);}finally{fs.rmSync(dir,{recursive:true,force:true});}}
++module.exports={...load('tests/library-browser/synthetic-fixture.ts'),load};
+diff --git a/tests/library-browser/scale-performance.test.cjs b/tests/library-browser/scale-performance.test.cjs
+new file mode 100644
+index 0000000..754e45b
+--- /dev/null
++++ b/tests/library-browser/scale-performance.test.cjs
+@@ -0,0 +1,19 @@
++const test=require('node:test'),assert=require('node:assert/strict'),os=require('node:os'),fs=require('node:fs'),path=require('node:path');
++const {fixture,defaults,load,SEED}=require('./scale-fixture.cjs');
++const {buildLibraryModel}=load('lib/idol/library-browser/query-model.ts');
++const {indexWorkNames,matchingWorks,sortWorks}=load('lib/idol/watch-sequence.ts');
++const {stageMatches}=load('lib/idol/stage-display.ts');
++const queues=['all','high','surprise','tonight','unrated','rewatch'],stages=['all','ready','alternative','pending'];
++const summary=values=>{const a=[...values].sort((a,b)=>a-b);return {samplesMs:values,medianMs:a[Math.floor(a.length/2)],p95Ms:a[Math.ceil(a.length*.95)-1]};};
++const report={kind:'SYNTHETIC client-loaded pure model benchmark',seed:SEED,node:process.version,platform:process.platform,cpu:os.cpus()[0]?.model,build:'esbuild CommonJS, no minification; Node execution, not browser production',method:'Frozen fixture construction excluded. Parity before timing. One first measured sample after parity (not a process-cold measurement), then one untimed warm-up and seven warm samples. Existing oracle baseline includes all six queue and four stage facets. p95 is descriptive for small samples. No browser performance inference.',sizes:[]};
++for(const size of [100,1000,5000])test(`SYNTHETIC ${size}: full order/facets parity, page bounds and raw performance`,()=>{
++ const data=fixture(size);assert.ok(Object.isFrozen(data)&&Object.isFrozen(data.works)&&Object.isFrozen(data.works[1]));
++ const baseline=f=>{const index=indexWorkNames(data.works,data.groups),scope=matchingWorks(index,f);return {ids:sortWorks(scope.filter(w=>stageMatches(w,f.stageFilter)),f.sort).map(w=>w.id),queue:Object.fromEntries(queues.map(queue=>[queue,matchingWorks(index,{...f,queue}).filter(w=>stageMatches(w,f.stageFilter)).length])),stage:Object.fromEntries(stages.map(stage=>[stage,scope.filter(w=>stageMatches(w,stage)).length]))};};
++ for(let i=0;i<48;i++){const f={...defaults(),queue:queues[i%6],watch:['all','watched','unwatched','unmarked'][Math.floor(i/6)%4],stageFilter:stages[Math.floor(i/3)%4],sort:['default','release-desc','release-asc','score-desc'][Math.floor(i/2)%4],search:i%5===0?'song':i%7===0?'Japanese':'',group:i%11===0?'recG1':'all',generation:i%13===0?'第五代':'all'};const expected=baseline(f),actual=buildLibraryModel(data,f,1000,i%2?24:48);assert.deepEqual(actual.orderedIds,expected.ids);assert.deepEqual(actual.facetCounts,{queue:expected.queue,stage:expected.stage});assert.ok(actual.rows.length<=48);}
++ const f={...defaults(),sort:'release-desc'};const measure=fn=>{const start=performance.now();fn();return performance.now()-start;};
++ const firstMeasuredAfterParityMs=measure(()=>buildLibraryModel(data,f,1,24));buildLibraryModel(data,f,1,24);baseline(f);
++ const model=[],oracle=[];for(let i=0;i<7;i++){model.push(measure(()=>buildLibraryModel(data,f,Math.ceil(size/24),24)));oracle.push(measure(()=>baseline(f)));}
++ const initial=buildLibraryModel(data,f,1,24),deep=buildLibraryModel(data,f,1000,48);report.sizes.push({size,parityCases:48,firstMeasuredAfterParityMs,model:summary(model),existingOracle:summary(oracle),initialRows:initial.rows.length,deepPageRows:deep.rows.length});
++ console.log('MODEL_PERFORMANCE '+JSON.stringify(report.sizes.at(-1)));
++});
++test.after(()=>{if(process.env.LIBRARY_MODEL_PERFORMANCE_OUT){const dest=path.resolve(process.env.LIBRARY_MODEL_PERFORMANCE_OUT);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,JSON.stringify(report,null,2)+'\n');}});
+diff --git a/tests/library-browser/sequence-model.test.cjs b/tests/library-browser/sequence-model.test.cjs
+new file mode 100644
+index 0000000..d72bb33
+--- /dev/null
++++ b/tests/library-browser/sequence-model.test.cjs
+@@ -0,0 +1,5 @@
++const test=require('node:test'),assert=require('node:assert/strict'),{load,fixture,defaults,freeze}=require('./scale-fixture.cjs');
++const {buildSequenceModel}=load('lib/idol/library-browser/sequence-model.ts'),{nextInSequence}=load('lib/idol/watch-sequence.ts');
++test('full original positions, availability states, member links and actual next oracle survive frozen refresh',()=>{const d=fixture(10),w=d.works[1];const catalog=freeze({...d,works:[{...w,id:'current',score:0,watched:'已观看'},{...w,id:'noUrl',url:''},{...w,id:'placeholder',placeholder:{}},{...w,id:'filtered',watched:'未观看'},{...w,id:'unlinked',score:null,watched:'已观看'},{...w,id:'next',score:null,watched:'已观看'}],ratings:[{memberIds:['member'],workIds:['next']}]});const sequence=freeze({ids:['current','missing','noUrl','placeholder','filtered','unlinked','next'],label:'SYNTHETIC',filters:{...defaults(),queue:'unrated'},memberId:'member'});const m=buildSequenceModel(sequence,'current',catalog);assert.deepEqual(m.rows.map(r=>r.status),['filtered','missing','unavailable','unavailable','filtered','member-unlinked','available']);assert.equal(m.total,7);assert.equal(m.currentPosition,1);assert.equal(m.continuableCount,1);assert.equal(m.nextId,nextInSequence(sequence,'current',catalog).id);assert.equal(m.rows[6].next,true);assert.deepEqual(m.rows.map(r=>r.position),[1,2,3,4,5,6,7]);assert.equal(buildSequenceModel(sequence,'next',catalog).nextId,null);const unknown=buildSequenceModel(sequence,'unknown',catalog);assert.equal(unknown.unrecoverable,true);assert.equal(unknown.currentPosition,null);assert.equal(unknown.nextId,null);assert.equal(unknown.continuableCount,0);assert.ok(!unknown.rows.some(r=>r.current||r.next));});
++test('sequence order never re-sorts after scores change; deleted current retains original position',()=>{const d=fixture(10),w=d.works[1],catalog=freeze({...d,works:[{...w,id:'c',score:10},{...w,id:'b',score:0}],ratings:[]});const sequence=freeze({ids:['a','b','c'],filters:{...defaults(),sort:'score-desc'},label:'SYNTHETIC'});const m=buildSequenceModel(sequence,'a',catalog);assert.deepEqual(m.rows.map(r=>r.id),sequence.ids);assert.equal(m.currentPosition,1);assert.equal(m.nextId,'b');assert.equal(m.rows[0].status,'missing');assert.equal(m.unrecoverable,false);});
++test('duplicate catalog IDs retain first; malformed duplicate session IDs retain positions and only actual next/current slot flags',()=>{const d=fixture(10),w=d.works[1],catalog={...d,works:[{...w,id:'a'},{...w,id:'b',url:''},{...w,id:'b'}]},sequence={ids:['a','b','a'],filters:defaults(),label:'SYNTHETIC'};const m=buildSequenceModel(sequence,'a',catalog);assert.equal(m.nextId,nextInSequence(sequence,'a',catalog).id);assert.deepEqual(m.rows.map(r=>r.status),['available','unavailable','available']);assert.deepEqual(m.rows.map(r=>r.current),[true,false,false]);assert.deepEqual(m.rows.map(r=>r.next),[false,false,true]);});
+diff --git a/tests/library-browser/synthetic-fixture.ts b/tests/library-browser/synthetic-fixture.ts
+new file mode 100644
+index 0000000..7438f0f
+--- /dev/null
++++ b/tests/library-browser/synthetic-fixture.ts
+@@ -0,0 +1,13 @@
++// SYNTHETIC only; stable seed, public example data and private-field test sentinels.
++import type {CatalogView} from '../../lib/idol/types';
++export const SEED=20261016;
++export function freeze<T>(value:T):T{if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
++export function fixture(count:number,seed=SEED):CatalogView{
++ let state=seed>>>0;const random=()=>{state=(Math.imul(state,1664525)+1013904223)>>>0;return state;};
++ const groups=Array.from({length:6},(_,i)=>({id:`recG${i}`,name:`SYNTHETIC Group ${i}`,currentName:`Alias ${i}`,generation:i%2?'第五代':'第四代',company:'Synthetic',country:'',note:'SYNTHETIC_PRIVATE_GROUP',debut:'',memberIds:[],workIds:[],average:i%2?8:9.5,ratedCount:i===5?0:3}));
++ const works=Array.from({length:count},(_,i)=>({id:`recW${i}`,name:`SYNTHETIC Song ${i%20}`,song:`Song ${i%20}`,officialTitle:`Official ＳＯＮＧ ${i%20}`,groupIds:i%19===0?['recAbsent']:[`recG${i%6}`,...(i%7===0?[`recG${(i+1)%6}`]:[])],url:i%17===0?'':'https://example.invalid/synthetic',score:i%4===0?null:i%11===0?0:random()%11,stageScore:null,note:'SYNTHETIC_PRIVATE_NOTE',watched:['','未观看','已观看'][i%3],videoType:'MV',version:i%2?'Japanese Version':'Original',releaseDate:['2024-02-29','2025-02-30','','2023-06-01','2024-02-29','未知'][i%6],verification:'',channel:'',ratingIds:[],source:'',stage:i%4===0?{kind:'音乐节目'}:null,stageResearch:{status:'pending',reason:'',checkedAt:null},stageSupplement:{alternatives:i%4===1?[{id:'synthetic-alternative',scorePolicy:'view_only'}]:[],watchLeads:i%4===2?[{id:'synthetic-lead',scorePolicy:'view_only'}]:[]},...(i%53===0?{placeholder:{reason:'SYNTHETIC',originalRow:i,verifiedAt:''}}:{})}));
++ return freeze({mode:'snapshot',capturedAt:'',loadedAt:'',warning:'SYNTHETIC',groups,works,members:[{id:'recMember',profile:'SYNTHETIC_PRIVATE_PROFILE'}],ratings:works.filter((_,i)=>i%3===0).map(w=>({id:`recR${w.id}`,memberIds:['recMember'],workIds:[w.id],memory:'SYNTHETIC_PRIVATE_MEMORY',note:'SYNTHETIC_PRIVATE_RATING'})),counts:{groups:groups.length,works:count,members:1,ratings:0,ratedWorks:0,scoreSum:0}}) as unknown as CatalogView;
++}
++export const defaults=()=>({search:'',group:'all',generation:'all',queue:'all',stageFilter:'all',watch:'all',sort:'default',limit:24});
++
++export const syntheticCatalog=fixture;
+diff --git a/tests/library-browser/tsconfig.json b/tests/library-browser/tsconfig.json
+new file mode 100644
+index 0000000..0adc056
+--- /dev/null
++++ b/tests/library-browser/tsconfig.json
+@@ -0,0 +1 @@
++{"extends":"../../tsconfig.json","compilerOptions":{"incremental":false,"noEmit":true},"include":["../../lib/idol/library-browser/**/*.ts","../../components/library-browser/**/*.tsx","../../examples/library-browser/**/*.tsx","../../examples/library-browser/**/*.ts"],"exclude":["../../node_modules"]}
+diff --git a/tests/library-browser/wiring-hook.test.cjs b/tests/library-browser/wiring-hook.test.cjs
+new file mode 100644
+index 0000000..3ce536b
+--- /dev/null
++++ b/tests/library-browser/wiring-hook.test.cjs
+@@ -0,0 +1,39 @@
++// eslint-disable-next-line @typescript-eslint/no-require-imports -- Node CommonJS test harness dependency.
++const {candidateRegistry}=require('../candidate-harness.cjs');
++const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ts=require('typescript');
++const root=path.resolve(__dirname,'../..');
++const os=require('node:os'),cp=require('node:child_process');
++const overlay=fs.mkdtempSync(path.join(os.tmpdir(),'library-wiring-test-'));
++for(const f of ['app/page.tsx','components/use-browse-journey.ts','lib/idol/journey.ts']){const p=path.join(overlay,f);fs.mkdirSync(path.dirname(p),{recursive:true});fs.copyFileSync(path.join(root,f),p);}
++const patch=path.join(root,'handoff/library-browser/APP_WIRING.patch');
++const applyArgs=['apply','--unsafe-paths','--directory='+overlay];
++let alreadyApplied=false;
++try{cp.execFileSync('git',[...applyArgs,'--check',patch],{cwd:root,stdio:'pipe'});}catch{
++ cp.execFileSync('git',[...applyArgs,'--reverse','--check',patch],{cwd:root,stdio:'pipe'});alreadyApplied=true;
++}
++if(!alreadyApplied)cp.execFileSync('git',[...applyArgs,patch],{cwd:root,stdio:'pipe'});
++process.on('exit',()=>fs.rmSync(overlay,{recursive:true,force:true}));
++function compile(file,requireFn,globals={}){const e={};const code=ts.transpileModule(fs.readFileSync(path.join(fs.existsSync(path.join(overlay,file))?overlay:root,file),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext(`(function(require,exports){${code}})`,{URL,URLSearchParams,crypto:require('node:crypto').webcrypto,...globals})(requireFn,e);return e;}
++const rotation=compile('lib/idol/home-rotation.ts',()=>({}));
++const artistNavigation=compile('lib/idol/artist-navigation.ts',name=>{const imageModule=require('../helpers/image-dependency-loader.cjs').imageDependency(name);if(imageModule!==undefined)return imageModule;const timelineModule=require('../helpers/timeline-dependency-loader.cjs').timelineDependency(name);if(timelineModule!==undefined)return timelineModule;if(name==='./candidate/registry')return candidateRegistry;if(name==='./member-affiliation')return compile('lib/idol/member-affiliation.ts',()=>({}));throw Error('Unexpected artist-navigation dependency '+name);});
++const pure=compile('lib/idol/journey.ts',n=>n.includes('artist-navigation')?artistNavigation:rotation);
++function harness(url='https://test.site/?view=works'){
++ let current,dirty=false,blocked=false,allow=true,height=10000;const observers=[];const listeners={},frames=new Map();let frame=0;
++ const location={href:url,get pathname(){return new URL(this.href).pathname},get search(){return new URL(this.href).search}};const entries=[{url,state:null}];let index=0;
++ const history={scrollRestoration:'auto',get state(){return entries[index].state},replaceState(state,_,url){entries[index]={state:structuredClone(state),url:new URL(url,location.href).href};location.href=entries[index].url},pushState(state,_,url){entries.splice(index+1);entries.push({state:structuredClone(state),url:new URL(url,location.href).href});index++;location.href=entries[index].url},go(delta){const n=index+delta;if(n<0||n>=entries.length)return;index=n;location.href=entries[index].url;listeners.popstate?.()}};
++ const window={location:{assign(href){location.href=new URL(href,location.href).href}},innerHeight:800,scrollY:0,scrollTo({top}){this.scrollY=Math.min(top,Math.max(0,height-this.innerHeight))},confirm(){return allow},alert(){}};
++ const React={useRef(v){const i=current.i++;return current.hooks[i]??(current.hooks[i]={current:v})},useState(v){const i=current.i++;const r=current;if(!r.hooks[i])r.hooks[i]={value:typeof v==='function'?v():v};return [r.hooks[i].value,x=>{r.hooks[i].value=typeof x==='function'?x(r.hooks[i].value):x}]},useEffect(fn,deps){const i=current.i++,r=current,old=r.hooks[i];if(!old||!deps.every((v,j)=>Object.is(v,old.deps[j]))){r.hooks[i]={deps,cleanup:old?.cleanup};r.effects.push(()=>{old?.cleanup?.();r.hooks[i].cleanup=fn()})}}};React.useLayoutEffect=React.useEffect;React.useCallback=(fn,deps)=>{const i=current.i++,r=current,old=r.hooks[i];if(!old||!deps.every((v,j)=>Object.is(v,old.deps[j])))r.hooks[i]={deps,value:fn};return r.hooks[i].value};
++ const globals={window,history,location,performance:{getEntriesByType:()=>[{type:'reload'}]},document:{body:{},addEventListener(k,f){listeners['document:'+k]=f},removeEventListener(k,f){if(listeners['document:'+k]===f)delete listeners['document:'+k]},querySelector:selector=>selector==='main'?{}:selector==='[data-navigation-blocked="true"]'?(blocked?{}:null):selector==='[data-dirty="true"]'?(dirty?{}:null):null,querySelectorAll:()=>[]},ResizeObserver:class{constructor(fn){this.fn=fn;observers.push(this)}observe(){this.active=true}disconnect(){this.active=false}},requestAnimationFrame:fn=>{frames.set(++frame,fn);return frame},cancelAnimationFrame:id=>frames.delete(id),addEventListener:(k,f)=>listeners[k]=f,removeEventListener:(k,f)=>{if(listeners[k]===f)delete listeners[k]}};
++ const focus=compile('components/use-member-work-focus.ts',n=>n==='react'?React:{},globals);
++ const api=compile('components/use-browse-journey.ts',n=>n==='react'?React:n.includes('use-experience-styles')?{useExperienceStyles:()=>({phase:'not-required',retry:()=>{}})}:n.includes('use-member-work-focus')?focus:n.includes('home-rotation')?rotation:n.includes('artist-navigation')?artistNavigation:pure,globals);
++ let runner={hooks:[],i:0,effects:[]};
++ function render(){current=runner;runner.i=0;runner.effects=[];const out=api.useBrowseJourney(true);for(const f of runner.effects)f();return out}
++ function flush(){let out=render();for(let i=0;i<3;i++){const jobs=[...frames.values()];frames.clear();for(const f of jobs)f();out=render()}return out}
++ let state=render();state=flush();
++ return {get api(){return render()},flush,history,location,window,entries,resize(h){height=h;for(const o of observers)if(o.active)o.fn();return flush()},userScroll(y){listeners.wheel?.({target:{closest:()=>null}});window.scrollY=y;listeners.scroll?.();return flush()},setDirty(v,a=true){dirty=v;allow=a},setBlocked(v){blocked=v},scroll(y){listeners.wheel?.({target:{closest:()=>null}});window.scrollY=y;listeners.scroll?.();flush()},reload(){for(const h of runner.hooks)h?.cleanup?.();runner={hooks:[],i:0,effects:[]};render();return flush()}};
++}
++
++test('actual proposed hook keeps restored page in React entry and history after takeover/rerender',()=>{const h=harness();assert.equal(h.api.displayReady,false);h.api.libraryRestoreMounted({page:3,anchorId:'recW51',offset:100,focus:'anchor',reason:'anchor'});h.flush();assert.equal(h.api.displayReady,true);assert.equal(h.api.filters.page,3);assert.equal(h.history.state.idolBrowse.lists.works.page,3);h.userScroll(600);h.api.updateFilters({limit:96});h.flush();assert.equal(h.api.libraryRestoreTarget,undefined);assert.equal(h.api.filters.page,3);assert.equal(h.api.filters.limit,96);});
++test('actual hook page/size survives detail, next, Back and Forward with original full sequence',()=>{const h=harness();h.api.libraryRestoreMounted({page:1,anchorId:null,offset:0,focus:'search',reason:'page'});h.flush();h.api.setLibraryPage(3,48);const sequence={ids:['recA','recB','recC'],label:'synthetic',filters:pure.defaultFilters()};assert.equal(h.api.navigate({work:'recA'},'作品库',undefined,sequence),true);h.flush();assert.equal(h.api.continueWork('recB'),true);h.flush();h.api.back({nav:'works',work:null,member:null,video:'mv'});h.flush();assert.equal(h.api.filters.page,3);assert.equal(h.api.filters.pageSize,48);assert.equal(h.api.displayReady,false);h.api.libraryRestoreMounted({page:3,anchorId:null,offset:0,focus:'search',reason:'page'});h.flush();assert.equal(h.api.displayReady,true);h.history.go(1);h.flush();assert.equal(h.api.route.work,'recA');assert.deepEqual(Array.from(h.api.sequence.ids),['recA','recB','recC']);});
++test('actual hook still rejects dirty and pending navigation, preserving current route and preferences',()=>{const h=harness();h.api.libraryRestoreMounted({page:1,anchorId:null,offset:0,focus:'search',reason:'page'});h.flush();h.api.setLibraryPage(3,24);const sequence={ids:['recA','recB'],label:'synthetic',filters:pure.defaultFilters()};h.api.navigate({work:'recA'},'作品库',undefined,sequence);h.flush();h.setDirty(true,false);assert.equal(h.api.continueWork('recB'),false);assert.equal(h.api.route.work,'recA');h.setDirty(false);h.setBlocked(true);assert.equal(h.api.continueWork('recB'),false);assert.equal(h.api.route.work,'recA');assert.equal(h.api.filters.page,3);});
++test('proposed readEntry accepts legacy limit and valid navigation paging but rejects malformed values',()=>{const entry=pure.newEntry('/?view=works');entry.lists.works.limit=96;assert.ok(pure.readEntry({idolBrowse:entry},'/?view=works'));for(const [page,pageSize,valid] of [[3,48,true],[0,24,false],[1,25,false],[1.2,24,false],[10001,24,false]]){const next=structuredClone(entry);Object.assign(next.lists.works,{page,pageSize});assert.equal(!!pure.readEntry({idolBrowse:next},'/?view=works'),valid);}});

@@ -1,0 +1,390 @@
+{
+  "schemaVersion": 1,
+  "groupId": "rec28ldfRTiD8K",
+  "slug": "vvup",
+  "events": [
+    {
+      "id": "e-vvup-formal-debut",
+      "groupId": "rec28ldfRTiD8K",
+      "eventType": "debut",
+      "title": "VVUP正式出道",
+      "summary": "旧已成功读取的官方Highlight DEBUT字段换算韩国时间为2024年4月1日。",
+      "scopeNote": "原字段为2024-03-31T15:00:00.000Z，换算KST=4月1日；不是3月预出道歌曲或现名册观察日。",
+      "eventDate": {
+        "value": "2024-04-01",
+        "precision": "day"
+      },
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "importance": "major",
+      "memberIds": [],
+      "workIds": [],
+      "releaseKey": null,
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "es-6d167b03806e1552",
+          "url": "https://weverse.io/vvup/highlight?hl=ko",
+          "publisher": "VVUP 官方Weverse",
+          "title": "VVUP Community Highlight",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-16",
+          "scopeNote": "旧成功官方Highlight原始DEBUT值，UTC换算韩国时区为2024-04-01；不从当前四人名册推历史加入。",
+          "evidenceRef": "evidence/E/task04/sources/reused/vvup-debut-highlight.json"
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    },
+    {
+      "id": "e-vvup-four-life-candidate",
+      "groupId": "rec28ldfRTiD8K",
+      "eventType": "release",
+      "title": "特别数字单曲《4 Life》发行",
+      "summary": "6月原稿明确回顾此前已推出特别单曲《4 Life》，可确认音乐发行存在。",
+      "scopeNote": "精确实际日期保留未知：Jan10仅发行目录，不能代替Dec30计划延期后的完成日期证明。既有延期计划和成员加入节点独立保留。",
+      "eventDate": null,
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "importance": "major",
+      "memberIds": [],
+      "workIds": [
+        "rec28ldfRTrFGi"
+      ],
+      "releaseKey": "vvup-4-life",
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "es-1c65303f80a3356d",
+          "url": "https://music.apple.com/us/album/4-life/1789254071?i=1789254072&at=1l3vpUI&ct=LFV_bc515fcdb5ac5b2149c7151faa02ebfa&itsct=catchall_p3&itscg=30440&ls=1",
+          "publisher": "授权音乐平台目录",
+          "title": "4 Life - Single",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-16",
+          "scopeNote": "原成功回执最小原文复用；日期语义由事件单独限定。",
+          "evidenceRef": "evidence/inherited/E01/baseline-evidence/task04/sources/reused/vvup-4life-catalog.json"
+        },
+        {
+          "id": "es-e01-t02-vvup-four-life-notice",
+          "url": "https://weverse.io/vvup/notice/24552?hl=ko",
+          "publisher": "egoENT / 이고이엔티",
+          "title": "VVUP(비비업) 음원 관련 안내",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-16",
+          "scopeNote": "公司原始公告仅证当时延期、部分平台误上线和要求停止服务；正式发行日重排中。公告日期未知；不外推后续截至日仍延期。",
+          "evidenceRef": "evidence/inherited/E01/task02/sources/vvup-four-life-original-notice.json"
+        },
+        {
+          "id": "fs05-vvup-giddy",
+          "url": "https://news.tf.co.kr/read/entertain/2216656.htm",
+          "publisher": "더팩트 / 박지윤",
+          "title": "비비업, 오늘(20일) 'Giddy Boy' 발매…에너제틱한 매력 발산",
+          "sourcePublishedAt": {
+            "value": "2025-06-20",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "原稿13:41说明Giddy Boy当日正午已发；后文将4 Life作为既已推出的约五个月前专辑回顾，足证4 Life发生但不能独立确定Jan10，后者仍只作目录线索。",
+          "evidenceRef": "evidence/task05/evidence/vvup-giddy.json"
+        },
+        {
+          "id": "fs05-vvup-skeleton",
+          "url": "https://music.bugs.co.kr/artist/20207328/albums?type=RELEASE&wl_ref=S_ar_11_01",
+          "publisher": "NHN Bugs 许可发行目录",
+          "title": "VVUP(비비업) - 벅스",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-16",
+          "scopeNote": "实际读取完整七发行目录：Doo Doom Chit、Locked On、Ain’t Nobody、4 Life、Giddy Boy、House Party、VVON。目录Jan10不独立认定4 Life实际日；旧Dec30计划延期保留。",
+          "evidenceRef": "evidence/task05/evidence/vvup-skeleton.json"
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    },
+    {
+      "id": "e-vvup-giddy-boy-candidate",
+      "groupId": "rec28ldfRTiD8K",
+      "eventType": "release",
+      "title": "数字单曲《Giddy Boy》发行",
+      "summary": "13:41原稿完整过去式说明20日正午已发行数字单曲。",
+      "scopeNote": "新增实际发行句后保留旧candidate后缀ID；不将后续11月VVON收录当首次公开。",
+      "eventDate": {
+        "value": "2025-06-20",
+        "precision": "day"
+      },
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "importance": "major",
+      "memberIds": [],
+      "workIds": [
+        "rec28ldfRTrQDO"
+      ],
+      "releaseKey": "vvup-giddy-boy",
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "es-c952d55d567695cc",
+          "url": "https://music.apple.com/us/album/giddy-boy-single/1821807042",
+          "publisher": "授权音乐平台目录",
+          "title": "Giddy Boy - Single",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-16",
+          "scopeNote": "原成功回执最小原文复用；日期语义由事件单独限定。",
+          "evidenceRef": "evidence/inherited/E/task04/sources/reused/vvup-giddy-catalog.json"
+        },
+        {
+          "id": "fs05-vvup-giddy",
+          "url": "https://news.tf.co.kr/read/entertain/2216656.htm",
+          "publisher": "더팩트 / 박지윤",
+          "title": "비비업, 오늘(20일) 'Giddy Boy' 발매…에너제틱한 매력 발산",
+          "sourcePublishedAt": {
+            "value": "2025-06-20",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "原稿13:41说明Giddy Boy当日正午已发；后文将4 Life作为既已推出的约五个月前专辑回顾，足证4 Life发生但不能独立确定Jan10，后者仍只作目录线索。",
+          "evidenceRef": "evidence/task05/evidence/vvup-giddy.json"
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    },
+    {
+      "id": "e-vvup-hyunny-departure-announcement",
+      "groupId": "rec28ldfRTiD8K",
+      "eventType": "member_departure",
+      "title": "公告：HYUNNY结束VVUP活动",
+      "summary": "egoENT原公告明确HYUNNY的VVUP活动结束，之后预定行程将以三人进行。",
+      "scopeNote": "独立生效日未知，公告正文发表日也未显示，eventDate/announcementDate双null、status=announced；媒体2024-08-29只保留线索，不把公告当独立生效日。仅活动事实不复制原因，不外推个人合同。",
+      "eventDate": null,
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "announced",
+      "importance": "major",
+      "memberIds": [
+        "recvxAPQCFN2Tn"
+      ],
+      "workIds": [],
+      "releaseKey": null,
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "es-a08b810a74c904bf",
+          "url": "https://weverse.io/vvup/notice/21980",
+          "publisher": "egoENT",
+          "title": "[NOTICE] VVUP (비비업) 현희 활동 관련 안내",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-16",
+          "scopeNote": "原经纪公司公告确认结束VVUP活动及后续三人安排；独立生效日、公告发表日正文均未显示。未复制原因；不是逐人合同声明。",
+          "evidenceRef": "evidence/E/task04/sources/vvup-hyunny-notice.json"
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    },
+    {
+      "id": "e-vvup-jiyoon-join",
+      "groupId": "rec28ldfRTiD8K",
+      "eventType": "member_join",
+      "title": "JIYOON加入VVUP",
+      "summary": "JIYOON在发布会原创问答中亲口说明成为VVUP成员的感想。",
+      "scopeNote": "本人加入事实可证；2025-10-22仅发布会/采访发表日，不是加入日。旧2025-01-13自称新成员同样不提供独立生效日，故eventDate=null。",
+      "eventDate": null,
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "importance": "major",
+      "memberIds": [
+        "recvxAPQCF1Jqn"
+      ],
+      "workIds": [],
+      "releaseKey": null,
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "es-ef5a832dd408d51f",
+          "url": "https://www.mk.co.kr/news/musics/11448243",
+          "publisher": "MK STAR TODAY（原创发布会问答）",
+          "title": "비비업 지윤 새 합류 소감",
+          "sourcePublishedAt": {
+            "value": "2025-10-22",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "韩文原创记者自采发布会中的本人加入确认；不是AI翻译稿。只支持已加入事实，发布会日不是入团日。",
+          "evidenceRef": "evidence/E/task04/sources/vvup-jiyoon-interview.json"
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    },
+    {
+      "id": "e-vvup-doo-doom-chit-prerelease",
+      "groupId": "rec28ldfRTiD8K",
+      "eventType": "release",
+      "title": "出道先行曲《Doo Doom Chit》发行",
+      "summary": "发行日下午专业媒体直接确认13日正午已发行出道先行音源。",
+      "scopeNote": "3月12日旧视频字段与音源3月13日分开；4月1日Locked On再收录不再复制先行首发。",
+      "eventDate": {
+        "value": "2024-03-13",
+        "precision": "day"
+      },
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "importance": "major",
+      "memberIds": [],
+      "workIds": [
+        "rec28ldfRTrFb6"
+      ],
+      "releaseKey": "vvup:doo-doom-chit-prerelease",
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "fs05-vvup-doodoom",
+          "url": "https://isplus.com/article/view/isp202403130124",
+          "publisher": "일간스포츠 / 이세빈",
+          "title": "비비업, 가요계 출사표 던졌다…‘두둠칫’ 발매",
+          "sourcePublishedAt": {
+            "value": "2024-03-13",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "14:42原稿过去式确认13日中午已发行；后句明确定义为正式出道前先行曲。既有视频字段3月12日不能覆盖音源3月13日。",
+          "evidenceRef": "evidence/task05/evidence/vvup-doodoom.json"
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    },
+    {
+      "id": "e-vvup-aint-nobody-digital",
+      "groupId": "rec28ldfRTiD8K",
+      "eventType": "release",
+      "title": "数字单曲《Ain’t Nobody》发行",
+      "summary": "当日晚间原创问答直接确认3日数字单曲已发行。",
+      "scopeNote": "主曲、Locked On重制和伴奏同载体；不逐版本新增事件。",
+      "eventDate": {
+        "value": "2024-07-03",
+        "precision": "day"
+      },
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "importance": "major",
+      "memberIds": [],
+      "workIds": [
+        "rec28ldfRTrFsx"
+      ],
+      "releaseKey": "vvup:aint-nobody-digital",
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "fs05-vvup-aintnobody",
+          "url": "https://www.starnewskorea.com/music/2024/07/03/2024070320254212922",
+          "publisher": "STARNEWS / 原创成员问答",
+          "title": "VVUP \"첫 서머송 'Ain't Nobody', 무대 위 '파워풀 청량'\"",
+          "sourcePublishedAt": {
+            "value": "2024-07-03",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "20:28成员问答原稿完整过去式，确认7月3日音乐发行；不由当前成员倒填历史四人。",
+          "evidenceRef": "evidence/task05/evidence/vvup-aintnobody.json"
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    },
+    {
+      "id": "e-vvup-house-party-prerelease",
+      "groupId": "rec28ldfRTiD8K",
+      "eventType": "release",
+      "title": "首张迷你先行曲《House Party》发行",
+      "summary": "18时专业媒体原稿明确首张迷你先行曲当日已发表。",
+      "scopeNote": "音乐音源先行与11月20日整专发行分开；不由当前阵容倒填历史参与。",
+      "eventDate": {
+        "value": "2025-10-22",
+        "precision": "day"
+      },
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "importance": "major",
+      "memberIds": [],
+      "workIds": [
+        "recvxIZLpEd8EW"
+      ],
+      "releaseKey": "vvup:house-party-prerelease",
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "fs05-vvup-houseparty",
+          "url": "https://www.starnewskorea.com/music/2025/10/22/2025102216130788047",
+          "publisher": "STARNEWS / 独立音乐新歌报道",
+          "title": "\"가짜 필터 다 모여\" 비비업, '하우스 파티'로 초대장 직배송 [6시★살롱]",
+          "sourcePublishedAt": {
+            "value": "2025-10-22",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "18时原稿明确过去式音乐发行，后段定义为11月首迷你先行；未借用被拒OSEN稿或转载镜像。",
+          "evidenceRef": "evidence/task05/evidence/vvup-houseparty.json"
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    },
+    {
+      "id": "e-vvup-vvon-ep",
+      "groupId": "rec28ldfRTiD8K",
+      "eventType": "release",
+      "title": "首张迷你专辑《VVON》发行",
+      "summary": "原始发行推广专题完整原句确认2025年11月20日首迷你已发。",
+      "scopeNote": "五首正曲及五伴奏合一专辑事件，Super Model同日主打不再单列。",
+      "eventDate": {
+        "value": "2025-11-20",
+        "precision": "day"
+      },
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "importance": "major",
+      "memberIds": [],
+      "workIds": [
+        "recvxIZLpEopO1",
+        "recvxIZLpEd8EW",
+        "rec28ldfRTrQDO",
+        "rec28ldfRTrFGi"
+      ],
+      "releaseKey": "vvup:vvon-ep",
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "fs05-vvup-vvon",
+          "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15751",
+          "publisher": "Genie Magazine / VVUP原始发行推广专题",
+          "title": "VVUP (비비업) ‘Super Model’ MV 촬영현장 엿보기",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-16",
+          "scopeNote": "原始推广正文完整过去式及完整年月日；不是只用问候或MV拍摄。曲表确认Super Model、House Party、Giddy Boy、4 Life同属VVON，含伴奏共10音轨不算10新曲。",
+          "evidenceRef": "evidence/task05/evidence/vvup-vvon.json"
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    }
+  ],
+  "gaps": [
+    "HYUNNY原公司结束活动公告的独立生效日与正文发表日未知；2024-08-29媒体日不填eventDate。",
+    "JIYOON本人确认已加入，但独立加入日仍未知；2025-01-13新成员自述和10月22日发布会不是加入日。",
+    "4 Life、Giddy Boy仅授权目录待补原文；前者12月30日计划与次年1月10日载体线索不混。",
+    "预出道Doo Doom Chit与正式4月1日出道分开；首张迷你专辑VVON实际数字/实体延期口径后续需补原始声明。",
+    "明确解散、个人合同或团体换公司未知；egoENT签署活动公告不证明截至日逐人合同。",
+    "4 Life精确实际日未知；目录2025-01-10作为线索，未恢复为已验收实际日。",
+    "七阶段中仅真实已存在作品可关联；不从现在四人成员名单倒填2024发行阵容。"
+  ]
+}

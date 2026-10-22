@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "slug": "rescene",
+  "groupId": "rec28ldfRTiCOB",
+  "status": "partial",
+  "checkedAt": "2026-10-16T03:29:47.084595+00:00",
+  "reusedEvidence": {
+    "baseCommit": "c0a1422dcf4d733e84c9b03a32926f17b70a76c0",
+    "facts": "Existing dated/scoped baseline facts retained, not newly recertified.",
+    "portraitsRetained": 0
+  },
+  "newFacts": [
+    {
+      "label": "公司资料页名册",
+      "value": "5 人",
+      "sourceUrl": "https://themuze.kr/rescene",
+      "scope": "公司艺人介绍正文逐名列五位成员；不等于核验日五人全部活动。",
+      "checkedDate": "2026-10-16",
+      "rawEvidenceFile": "evidence/slices/01/rescene/artist-detail.html"
+    },
+    {
+      "label": "名称释义",
+      "value": "Scene × Scent",
+      "sourceUrl": "https://themuze.kr/rescene",
+      "scope": "公司艺人介绍解释团名结合场景与香气；本项不是发行或活动状态声明。",
+      "checkedDate": "2026-10-16",
+      "rawEvidenceFile": "evidence/slices/01/rescene/artist-detail.html"
+    }
+  ],
+  "assets": [
+    {
+      "slug": "rescene",
+      "key": "group",
+      "url": "https://cdn.imweb.me/thumbnail/20250128/1425a50a03a0e.jpg",
+      "sourceUrl": "https://themuze.kr/rescene",
+      "rawEvidenceFile": "evidence/slices/01/rescene/artist-detail.html",
+      "scope": "官方资料页所示图片；核验于2026-10-16，发布及拍摄日期未知；不代表核验日全员活动。",
+      "publishedAt": null,
+      "photographedAt": null,
+      "sameCollection": true,
+      "samePhotographySeries": "unknown",
+      "checkedAt": "2026-10-16T03:26:02.580469+00:00",
+      "httpStatus": 200,
+      "original": {
+        "path": "public/artist/rescene/batch-b-20261016/group-original.jpg",
+        "format": "JPEG",
+        "width": 1500,
+        "height": 1000,
+        "bytes": 678872,
+        "sha256": "39a1c6fbeadc9507c4445826579e4969a320805506033e22061db1e3fd3ae53a"
+      },
+      "display": {
+        "path": "public/artist/rescene/batch-b-20261016/group-display.jpg",
+        "format": "JPEG",
+        "width": 1500,
+        "height": 1000,
+        "bytes": 213755,
+        "sha256": "f91196f5b3378db60f828c21cca5d0171f523913adcd3604dda00c24d7829081"
+      },
+      "conversion": {
+        "library": "Pillow",
+        "exifTranspose": true,
+        "resize": "thumbnail LANCZOS; preserve aspect ratio; no upscale; no crop",
+        "maxWidth": 1600,
+        "maxHeight": 1600,
+        "format": "JPEG",
+        "quality": 88,
+        "subsampling": 0,
+        "progressive": true,
+        "optimize": false
+      },
+      "status": "downloaded"
+    }
+  ],
+  "sourceAttempts": [
+    {
+      "url": "https://themuze.kr/",
+      "checkedAt": "2026-10-16T03:23:59.671636+00:00",
+      "status": 200,
+      "bytes": 358040,
+      "finalUrl": "https://themuze.kr/",
+      "rawEvidenceFile": "evidence/slices/01/rescene/additional-source.html",
+      "receiptFile": "evidence/slices/01/rescene/additional-attempt.json"
+    },
+    {
+      "url": "https://themuze.kr/rescene",
+      "checkedAt": "2026-10-16T03:24:33.534035+00:00",
+      "status": 200,
+      "bytes": 451088,
+      "rawEvidenceFile": "evidence/slices/01/rescene/artist-detail.html",
+      "receiptFile": "evidence/slices/01/rescene/detail-attempt.json"
+    }
+  ],
+  "physicalCoverage": {
+    "membersWithReliableValues": 0,
+    "fieldsIncluded": [],
+    "checkedScope": "Official profile text and attached official cards inspected; no reliable height/weight/adult measurements found. Search summaries and unsourced aggregators were excluded. Not a claim of exhaustive Internet absence."
+  },
+  "implemented": [
+    "已补官方合照及可读简介；公司页面尚未取得逐人姓名—肖像直接绑定，个人头像保留档案 fallback。",
+    "Preserved shared hero/overview/member slots and navigation/player/save behavior.",
+    "Group-specific image layout, two-digit ordinals, responsive typography, focus indicators and long-text containment."
+  ],
+  "gaps": [
+    "已补官方合照及可读简介；公司页面尚未取得逐人姓名—肖像直接绑定，个人头像保留档案 fallback。",
+    "摄影系列、拍摄日期及逐人当前活动情况仍待补；体格字段仅收可靠原始公开资料，本轮无可录入数值。"
+  ],
+  "validation": {
+    "typecheck": "not-run-by-slice",
+    "build": "not-run-by-slice",
+    "browser": "pending-root",
+    "imageVisualReview": "Six official group photos inspected; UNIS logo excluded. GENBLUE original cards display member names directly. This is source-image review, not rendered application visual acceptance.",
+    "sliceContractTests": {
+      "command": "node --test tests/batch-b-slice01.test.mjs",
+      "result": "15 tests passed, exit 0",
+      "log": "evidence/slices/01/batch-b-slice01-test.log",
+      "scope": "Resource bytes/hashes, bindings against asset metadata, slots, empty physical records; not TypeScript compile or browser validation."
+    }
+  }
+}

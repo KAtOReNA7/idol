@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "slug": "bewave",
+  "groupId": "rec28ldfRTiDh1",
+  "status": "partial",
+  "checkedAt": "2026-10-16T03:28:56.611504+00:00",
+  "reusedEvidence": {
+    "baseCommit": "c0a1422dcf4d733e84c9b03a32926f17b70a76c0",
+    "facts": [
+      {
+        "label": "历史平台名册",
+        "value": "6 位成员",
+        "sourceUrl": "https://bstage.in/article/kimyeji-crush-bewave-ko/?hl=ko/",
+        "scope": "2024.09.25 开站资料，不作为当前人数",
+        "checkedDate": "2026-10-15"
+      },
+      {
+        "label": "历史官方贴文",
+        "value": "2024.09.29",
+        "sourceUrl": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/66f96c06f462384b21a6a8e6",
+        "scope": "概念图贴文日期，不是照片拍摄日期",
+        "checkedDate": "2026-10-15"
+      },
+      {
+        "label": "概念资料集合",
+        "value": "Be your Wave · Concept Photo 2",
+        "sourceUrl": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/66f96c06f462384b21a6a8e6",
+        "scope": "同贴资料集合已核；六图逐人身份仍未绑定",
+        "checkedDate": "2026-10-15"
+      }
+    ],
+    "portraits": {},
+    "note": "既有已验收字段原样复用，未将继承项伪称本次新增核验。"
+  },
+  "newFacts": [
+    {
+      "label": "历史舞台记录",
+      "value": "MBC 音乐中心 · 2024.10.12",
+      "sourceUrl": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/670a71aa813c344c968ab3c0",
+      "scope": "官方当日后台贴文与合照；不推断当前阵容或拍摄时点",
+      "checkedDate": "2026-10-16"
+    }
+  ],
+  "assets": [
+    {
+      "slug": "bewave",
+      "key": "group",
+      "url": "https://image.static.bstage.in/cdn-cgi/image/metadata=none/bewave/3e48a477-5ab7-4b7f-8775-4477e3548ac3/79c32372-b832-4238-8b16-23983a041021/ori.jpeg",
+      "sourceUrl": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/670a71aa813c344c968ab3c0",
+      "rawEvidenceFile": "evidence/slices/02/bewave/source-02-post-fragment.json",
+      "stageName": null,
+      "checkedAt": "2026-10-16T03:27:35.666502+00:00",
+      "publishedAt": "2024-10-12T12:55:06.581Z",
+      "photographedAt": null,
+      "scope": "2024.10.12 MBC 后台贴文资料，历史阵容；拍摄时点未核",
+      "sameCollection": true,
+      "samePhotographySeries": null,
+      "original": {
+        "path": "public/artist/bewave/batch-b-20261016/group-original.jpg",
+        "format": "JPEG",
+        "width": 1170,
+        "height": 1539,
+        "bytes": 262507,
+        "sha256": "42fd4b2e92b93eabee0a10e5bd251e46d9d295ebeb13e6b98abcaf294a215583"
+      },
+      "display": {
+        "path": "public/artist/bewave/batch-b-20261016/group-display.webp",
+        "format": "WEBP",
+        "width": 1170,
+        "height": 1539,
+        "bytes": 241740,
+        "sha256": "59f6275c37088ff28c21bc790b6964ffc7888118ee7875214dfc41f277825468"
+      },
+      "conversion": {
+        "library": "Pillow",
+        "operation": "EXIF transpose, RGB, fit within 1600x1600 without crop or upscale",
+        "resample": "LANCZOS",
+        "format": "WEBP",
+        "quality": 90,
+        "method": 6
+      },
+      "status": "downloaded",
+      "sourceTitle": "[BEHIND] 20241012 MBC 쇼! 음악중심"
+    }
+  ],
+  "sourceAttempts": [
+    {
+      "url": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/66f96c06f462384b21a6a8e6",
+      "checkedAt": "2026-10-16T03:23:10.267216+00:00",
+      "status": 200,
+      "bytes": 122082,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e",
+      "checkedAt": "2026-10-16T03:26:34.271198+00:00",
+      "status": 200,
+      "bytes": 175679
+    }
+  ],
+  "physicalCoverage": {
+    "membersWithReliableValues": 0,
+    "omittedFields": [
+      "heightCm",
+      "weightKg",
+      "bustCm",
+      "waistCm",
+      "hipsCm"
+    ],
+    "reason": "本轮可读官方资料未提供可采用数值；体格资料省略，不用粉丝推测或聚合站值。",
+    "searchNotes": "本轮读取范围为已记录官方资料卡/贴文，未发现可采用体格字段；不宣称穷尽本人采访。二手媒体及聚合搜索片段仅保留为未采用线索。",
+    "rawLeadFile": "evidence/slices/02/physical-search-leads.txt"
+  },
+  "implemented": [
+    "保留独立构图和所有共享 slots、导航、中文名、作品与保存行为",
+    "官方可证图片接入（见 assets；为空即仍缺）",
+    "本团窄屏阅读顺序、图像不裁切、数字不折行与焦点增量",
+    "成员体格独立 JSON：本次无可采用字段，members 为空"
+  ],
+  "gaps": [
+    "六张官方概念图尚未逐图绑定成员姓名，保持不具名、不作肖像使用。",
+    "当前成员、实际活动、精确出道日及经纪关系待核。",
+    "摄影系列、拍摄时间及完整成员变动待核。",
+    "可靠身高/体重/成年三围未获得；对应数值字段全部省略。",
+    "项目类型检查、构建及真实交互/视觉验收由 root 汇总，不以静态检查冒充通过。"
+  ],
+  "validation": {
+    "assetInspection": "下载图片已人工回读，用于区分合照/个人照片和检查转码，不据面貌赋名",
+    "typecheck": "not-run-by-slice",
+    "build": "not-run-by-slice",
+    "browser": "not-run-by-slice",
+    "static": {
+      "result": "pass",
+      "scope": "identities, reused portrait bindings, new local asset existence/hash, raw proof file existence only",
+      "checkedAt": "2026-10-16T03:33:02.411660+00:00",
+      "log": "evidence/slices/02/batch-b-static-check.log"
+    }
+  }
+}

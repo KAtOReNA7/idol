@@ -1,0 +1,333 @@
+{
+  "status": "fail",
+  "viewport": {
+    "width": 1180,
+    "height": 757
+  },
+  "results": [
+    {
+      "name": "native 404 → same URL retry → actual compiled CSS success",
+      "status": "pass",
+      "detail": {
+        "href": "/fault/once404/meovv-experience.tOve4sp0.css?case=1792121189682-4daaf60eb33ba",
+        "phase": "ready"
+      }
+    },
+    {
+      "name": "real 15s deadline → retry succeeds; old delayed request cannot change another theme",
+      "status": "pass",
+      "detail": {
+        "href": "/fault/timeout/meovv-experience.tOve4sp0.css?case=1792121189682-4daaf60eb33ba",
+        "elapsedMs": 15074,
+        "currentHref": "/_next/static/css/izna-experience.Bjz0IM1E.css"
+      }
+    },
+    {
+      "name": "real delayed A → B → A uses same pending asset",
+      "status": "pass",
+      "detail": {
+        "href": "/fault/delay/meovv-experience.tOve4sp0.css?case=1792121189682-4daaf60eb33ba"
+      }
+    },
+    {
+      "name": "37 official compiled theme styles load and switch with native links",
+      "status": "pass",
+      "detail": [
+        {
+          "slug": "meovv",
+          "href": "/_next/static/css/meovv-experience.tOve4sp0.css",
+          "rules": 46
+        },
+        {
+          "slug": "izna",
+          "href": "/_next/static/css/izna-experience.Bjz0IM1E.css",
+          "rules": 17
+        },
+        {
+          "slug": "triples",
+          "href": "/_next/static/css/triples-experience.hN2SWChB.css",
+          "rules": 20
+        },
+        {
+          "slug": "madein",
+          "href": "/_next/static/css/madein-experience.CD3pvRX2.css",
+          "rules": 21
+        },
+        {
+          "slug": "ifeye",
+          "href": "/_next/static/css/ifeye-experience.DV6AJtMb.css",
+          "rules": 21
+        },
+        {
+          "slug": "genblue",
+          "href": "/_next/static/css/genblue-experience.BsHtSxNO.css",
+          "rules": 19
+        },
+        {
+          "slug": "rescene",
+          "href": "/_next/static/css/rescene-experience.CRBzaY2P.css",
+          "rules": 26
+        },
+        {
+          "slug": "unis",
+          "href": "/_next/static/css/unis-experience.NI756aS0.css",
+          "rules": 22
+        },
+        {
+          "slug": "badvillain",
+          "href": "/_next/static/css/badvillain-experience.BIq1-Faj.css",
+          "rules": 38
+        },
+        {
+          "slug": "qwer",
+          "href": "/_next/static/css/qwer-experience.ByJiNuh2.css",
+          "rules": 38
+        },
+        {
+          "slug": "vvup",
+          "href": "/_next/static/css/vvup-experience.DQB5i377.css",
+          "rules": 39
+        },
+        {
+          "slug": "youngposse",
+          "href": "/_next/static/css/youngposse-experience.CU-WXwt1.css",
+          "rules": 40
+        },
+        {
+          "slug": "bewave",
+          "href": "/_next/static/css/bewave-experience.FhlJ4jVt.css",
+          "rules": 39
+        },
+        {
+          "slug": "candyshop",
+          "href": "/_next/static/css/candyshop-experience.DMU781Md.css",
+          "rules": 40
+        },
+        {
+          "slug": "oddyouth",
+          "href": "/_next/static/css/oddyouth-experience.B3_Oln8n.css",
+          "rules": 40
+        },
+        {
+          "slug": "adya",
+          "href": "/_next/static/css/adya-experience._5J24jif.css",
+          "rules": 34
+        },
+        {
+          "slug": "geenius",
+          "href": "/_next/static/css/geenius-experience.CeCkVs-8.css",
+          "rules": 38
+        },
+        {
+          "slug": "tracer",
+          "href": "/_next/static/css/tracer-experience.SVjHU7oj.css",
+          "rules": 36
+        },
+        {
+          "slug": "witchx",
+          "href": "/_next/static/css/witchx-experience.LRqs6Yhm.css",
+          "rules": 40
+        },
+        {
+          "slug": "spia",
+          "href": "/_next/static/css/spia-experience.PhEypKzX.css",
+          "rules": 38
+        },
+        {
+          "slug": "udtt",
+          "href": "/_next/static/css/udtt-experience.DeLcFWOA.css",
+          "rules": 37
+        },
+        {
+          "slug": "vcha",
+          "href": "/_next/static/css/vcha-experience.C-nYuVTv.css",
+          "rules": 40
+        },
+        {
+          "slug": "hitgs",
+          "href": "/_next/static/css/hitgs-experience.CUAkEgoW.css",
+          "rules": 43
+        },
+        {
+          "slug": "atheart",
+          "href": "/_next/static/css/atheart-experience.BEPZg-qr.css",
+          "rules": 48
+        },
+        {
+          "slug": "idle",
+          "href": "/_next/static/css/idle-experience.B4VOrQSk.css",
+          "rules": 49
+        },
+        {
+          "slug": "izone",
+          "href": "/_next/static/css/izone-experience.By1k9hza.css",
+          "rules": 43
+        },
+        {
+          "slug": "fromis9",
+          "href": "/_next/static/css/fromis9-experience.CHuBvDQh.css",
+          "rules": 49
+        },
+        {
+          "slug": "loona",
+          "href": "/_next/static/css/loona-experience.DJnvG_9Z.css",
+          "rules": 44
+        },
+        {
+          "slug": "everglow",
+          "href": "/_next/static/css/everglow-experience.lnyN3njg.css",
+          "rules": 43
+        },
+        {
+          "slug": "rocketpunch",
+          "href": "/_next/static/css/rocketpunch-experience.BgcI1Tm8.css",
+          "rules": 45
+        },
+        {
+          "slug": "cherrybullet",
+          "href": "/_next/static/css/cherrybullet-experience.BgFLdQBm.css",
+          "rules": 32
+        },
+        {
+          "slug": "weeekly",
+          "href": "/_next/static/css/weeekly-experience.B8CZ0xlX.css",
+          "rules": 39
+        },
+        {
+          "slug": "wooah",
+          "href": "/_next/static/css/wooah-experience.CkyKBAZW.css",
+          "rules": 35
+        },
+        {
+          "slug": "purplekiss",
+          "href": "/_next/static/css/purplekiss-experience.BcjeXxCR.css",
+          "rules": 36
+        },
+        {
+          "slug": "billlie",
+          "href": "/_next/static/css/billlie-experience.Bd0vSn7t.css",
+          "rules": 38
+        },
+        {
+          "slug": "kep1er",
+          "href": "/_next/static/css/kep1er-experience.dbZXJVnG.css",
+          "rules": 39
+        },
+        {
+          "slug": "newjeans",
+          "href": "/_next/static/css/newjeans-experience.CTMKYRjZ.css",
+          "rules": 46
+        }
+      ]
+    },
+    {
+      "name": "all compiled local font resources return bytes and decode as FontFace",
+      "status": "pass",
+      "detail": [
+        {
+          "path": "/fonts/Anton-Regular.ttf",
+          "bytes": 130324,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/BarlowCondensed-BoldItalic.ttf",
+          "bytes": 112196,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/BarlowCondensed-SemiBold.ttf",
+          "bytes": 109428,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/BodoniModa-Italic.ttf",
+          "bytes": 176300,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/BodoniModa-Variable.ttf",
+          "bytes": 162104,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/DMSans-Variable.ttf",
+          "bytes": 240164,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/DMSans-Variable.woff2",
+          "bytes": 88820,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/InstrumentSerif-Italic.ttf",
+          "bytes": 71592,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/InstrumentSerif-Regular.ttf",
+          "bytes": 70012,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/Oswald-Variable.ttf",
+          "bytes": 172088,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/PlayfairDisplay-Variable.ttf",
+          "bytes": 300724,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/PlayfairDisplay-Variable.woff2",
+          "bytes": 106440,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/SpaceGrotesk.ttf",
+          "bytes": 136676,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/SpaceGrotesk.woff2",
+          "bytes": 49256,
+          "status": "loaded"
+        },
+        {
+          "path": "/fonts/Syne.ttf",
+          "bytes": 146980,
+          "status": "loaded"
+        }
+      ]
+    },
+    {
+      "name": "old14 and home never enter candidate stylesheet waiting",
+      "status": "pass",
+      "detail": {
+        "legacy": [
+          "bm",
+          "illit",
+          "xg",
+          "aespa",
+          "ive",
+          "kiof",
+          "stayc",
+          "nmixx",
+          "hearts2hearts",
+          "kiiikiii",
+          "itzy",
+          "lesserafim",
+          "saymyname",
+          "katseye"
+        ],
+        "home": true
+      }
+    },
+    {
+      "name": "server confirms actual first404, slow response, retry and paths",
+      "status": "fail",
+      "error": "Error: missing timeout retry200"
+    }
+  ]
+}

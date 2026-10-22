@@ -1,0 +1,79 @@
+@font-face{font-family:AtheartLetter;src:url('/fonts/InstrumentSerif-Regular.ttf') format('truetype');font-display:swap}
+.candidate-atheart-experience{--paper:#f6f1de;--white:#fffcf1;--ink:#40394e;--muted:#686173;--line:#c9c0bb;--rose:#665383;--blush:#e8e0eb;--lilac:#e9e1de;background:var(--paper);color:var(--ink);min-height:100vh;font-family:var(--font-body),system-ui,sans-serif;overflow-wrap:anywhere}
+.candidate-atheart-experience .work-detail-top,.candidate-atheart-experience .member-detail{align-items:start}
+.candidate-atheart-experience .work-aside,.candidate-atheart-experience .cast-card,.candidate-atheart-experience .editor,.candidate-atheart-experience .member-work-summary,.candidate-atheart-experience .stage-source,.candidate-atheart-experience .watch-next{border-radius:0;min-width:0}
+.candidate-atheart-experience .video-stage,.candidate-atheart-experience .button,.candidate-atheart-experience .video-mode-tabs,.candidate-atheart-experience .video-mode-tabs button{border-radius:0}
+.candidate-atheart-experience .button{white-space:normal;max-width:100%;min-height:44px}
+.candidate-atheart-experience .button.primary,.candidate-atheart-experience .button.primary:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+.candidate-atheart-experience .video-mode-tabs{border:1px solid var(--line);background:var(--white)}
+.candidate-atheart-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:#fff}
+.candidate-atheart-experience .video-mode-tabs button{min-height:44px}
+.candidate-atheart-experience .photo-empty,.candidate-atheart-experience .video-fallback,.candidate-atheart-experience .video-caption{color:var(--muted)}
+.candidate-atheart-experience .photo,.candidate-atheart-experience .member-work-card{border-radius:0;background:var(--lilac)}
+.candidate-atheart-experience .member-detail>.photo img{object-fit:contain}
+.candidate-atheart-experience .member-name{font-size:20px;line-height:1.4}
+.candidate-atheart-experience .cast-scores{flex-wrap:wrap}
+.candidate-atheart-experience .editor-fields input,.candidate-atheart-experience .editor-fields select,.candidate-atheart-experience .editor-fields textarea,.candidate-atheart-experience .score-input{background:var(--paper);color:var(--ink);border-color:var(--line);border-radius:0}
+.candidate-atheart-experience .my-note,.candidate-atheart-experience .caption-help{background:var(--white);border:1px solid var(--line);border-radius:0;color:var(--muted)}
+.candidate-atheart-experience .detail-return{border:1px solid var(--line);background:var(--white);border-radius:0;padding:18px}
+.candidate-atheart-experience .alternative-card,.candidate-atheart-experience .watch-lead-card{background:var(--white);border-color:var(--line);border-radius:0}
+.candidate-atheart-experience .stage-view .mobile-work-heading h1{overflow-wrap:anywhere}
+.candidate-atheart-experience .header{border-bottom:1px dashed var(--line)}
+.candidate-atheart-experience .brand{font:400 42px/1.1 AtheartLetter,serif;letter-spacing:-.04em}
+.candidate-atheart-experience .work-detail-top{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:44px;border-top:1px solid var(--line);padding-top:32px}
+.candidate-atheart-experience .work-aside{padding:30px;background:var(--white);border:1px solid var(--line);border-top:5px solid #d6c7da}
+.candidate-atheart-experience .work-aside h1{font-size:clamp(30px,3vw,44px);line-height:1.4;font-weight:500}
+.candidate-atheart-experience .video-stage{border:14px solid var(--white);outline:1px solid var(--line)}
+.candidate-atheart-experience .video-play{border-radius:50%;background:var(--rose);color:#fff}
+.candidate-atheart-experience .button{border-radius:28px}
+.candidate-atheart-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}
+.candidate-atheart-experience .cast-card{display:grid;grid-template-columns:140px minmax(0,1fr);gap:22px;padding:24px;border:1px solid var(--line);background:var(--white)}
+.candidate-atheart-experience .cast-card .photo{min-height:140px;aspect-ratio:4/5;border-radius:60px 60px 0 0}
+.candidate-atheart-experience .cast-copy{padding:0}
+.candidate-atheart-experience .stage-source{padding:22px;background:var(--white);border-block:1px dashed var(--line)}
+.candidate-atheart-experience .stage-overall-note{border-top:1px dashed var(--line);padding-top:22px;font-style:normal}
+.candidate-atheart-experience .stage-view .work-aside{border-top:1px solid var(--line);border-left:5px solid #d6c7da}
+.candidate-atheart-experience .watch-next{background:var(--white);border:1px dashed var(--line)}
+.candidate-atheart-experience .member-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:60px;border-top:1px solid var(--line);padding-top:36px}
+.candidate-atheart-experience .member-detail>.photo{order:2;padding:20px;background:var(--white);border:1px solid var(--line)}
+.candidate-atheart-experience .member-detail>div:not(.photo){order:1;align-self:center}
+.candidate-atheart-experience .member-detail h1{font-weight:500}
+.candidate-atheart-experience .member-work-summary{border-block:1px dashed var(--line);background:var(--white)}
+@media(max-width:760px){
+.candidate-atheart-experience .header{height:auto;min-height:76px;flex-wrap:wrap;padding-top:12px}
+.candidate-atheart-experience .header nav{height:auto;gap:18px;background:var(--paper)}
+.candidate-atheart-experience .video-mode-tabs{width:100%;flex:1}
+.candidate-atheart-experience .video-mode-tabs button{flex:1}
+.candidate-atheart-experience .editor-fields input,.candidate-atheart-experience .editor-fields select,.candidate-atheart-experience .editor-fields textarea{font-size:16px}
+.candidate-atheart-experience .cast-copy{min-width:0}
+.candidate-atheart-experience .member-name{font-size:18px}
+.candidate-atheart-experience .detail-return{padding:14px 12px}
+.candidate-atheart-experience .detail-return .button{min-height:48px;min-width:0;white-space:normal}
+.candidate-atheart-experience .stage-view .mobile-work-heading{display:block}
+.candidate-atheart-experience .work-detail-top,.candidate-atheart-experience .member-detail{min-width:0}
+.candidate-atheart-experience .work-detail-top{grid-template-columns:1fr;gap:28px;padding-top:24px}
+.candidate-atheart-experience .work-aside{padding:22px}
+.candidate-atheart-experience .video-stage{border-width:8px}
+.candidate-atheart-experience .cast-grid{grid-template-columns:1fr;gap:22px}
+.candidate-atheart-experience .cast-card{grid-template-columns:72px minmax(0,1fr);padding:16px;gap:16px}
+.candidate-atheart-experience .cast-card .photo{min-height:100px;aspect-ratio:3/4;border-radius:34px 34px 0 0}
+.candidate-atheart-experience .member-detail{grid-template-columns:1fr;gap:28px}
+.candidate-atheart-experience .member-detail>.photo{order:2;padding:16px}
+.candidate-atheart-experience .stage-source{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){.candidate-atheart-experience *{scroll-behavior:auto!important;transition:none!important}}
+
+/* The empty portrait and the explanatory badge occupy separate rows. */
+.candidate-atheart-experience .cast-card .photo:has(> .photo-empty){display:flex;flex-direction:column;height:auto;min-height:154px;aspect-ratio:auto;align-self:start}
+.candidate-atheart-experience .cast-card .photo>.photo-empty{flex:1 0 auto;height:auto;min-height:112px;padding:24px 7px 12px;gap:8px}
+.candidate-atheart-experience .cast-card .photo>.photo-empty>svg{flex:none;width:22px;height:22px}
+.candidate-atheart-experience .cast-card .photo>.photo-empty>span{font-size:11px;line-height:1.5}
+.candidate-atheart-experience .cast-card .photo:has(> .photo-empty)>.image-label{position:static;display:block;flex:none;width:100%;max-width:none;box-sizing:border-box;margin:0;padding:7px 6px;white-space:normal;overflow-wrap:anywhere;line-height:1.5;text-align:center;background:var(--white);border-top:1px solid var(--line)}
+
+/* Batch B: local detail views retain full portraits and reachable controls. */
+.candidate-atheart-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.candidate-atheart-experience .cast-card .photo img,.candidate-atheart-experience .member-detail>.photo img{object-fit:contain}
+.candidate-atheart-experience .cast-card .photo{overflow:hidden;border-radius:0}
+.candidate-atheart-experience :is(.cast-copy,.work-aside,.member-detail>div){min-width:0}
+.candidate-atheart-experience .cast-scores{gap:10px}
+@media(max-width:390px){.candidate-atheart-experience .button{max-width:100%;min-width:0;line-height:1.5}.candidate-atheart-experience .detail-return{display:flex;flex-wrap:wrap;gap:12px}.candidate-atheart-experience .work-aside h1{font-size:30px;overflow-wrap:anywhere}}

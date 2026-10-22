@@ -1,0 +1,12 @@
+function PhotoView({photo,label,kind='档案资料照',className='',live=true,retryable=Boolean(photo&&live),priority=false,fit}:{photo:Photo|null;label:string;kind?:string;className?:string;live?:boolean;retryable?:boolean;priority?:boolean;fit?:'contain'}){
+ const src=photo&&live?`/api/media?table=${photo.table}&record=${photo.recordId}&index=${photo.index}`:'';
+ const [imageState,setImageState]=useState<{request:object;value:ReliableImageState}|null>(null);
+ const imageKey=JSON.stringify([src,label,kind]);
+ const request=useMemo(()=>({}),[imageKey]),currentRequest=useRef(request);currentRequest.current=request;
+ const receiveImageState=useCallback((value:ReliableImageState)=>{if(currentRequest.current===request)setImageState({request,value});},[request]);
+ const currentImageState=imageState?.request===request?imageState.value:null;
+ const image=<CatalogPhotoImage photo={photo} live={live} label={label+' · '+kind} priority={priority} fit={fit} retryable={retryable}
+  onStateChange={receiveImageState} missing={<div className="photo-empty"><ImageIcon size={28}/><span>{photo?'图片暂时无法加载':kind.includes('MV')?'暂无 MV 截图':'暂无照片'}</span></div>}
+  fallback={<div className="photo-empty"><ImageIcon size={28}/><span>图片暂时无法加载</span></div>}/>;
+ return <div className={'photo '+className}>{src&&photo?.table==='ratings'?<a href={currentImageState?.src||src} target="_blank" rel="noopener noreferrer" aria-label={'放大'+kind} onClick={event=>{if(currentImageState?.status==='error'){event.preventDefault();event.stopPropagation();}}}>{image}</a>:image}<span className="image-label">{kind}</span></div>;
+}

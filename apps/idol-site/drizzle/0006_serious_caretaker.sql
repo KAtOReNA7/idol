@@ -1,0 +1,1 @@
+ALTER TABLE `idol_archive_phases` ADD `start_other_bytes` integer NOT NULL;

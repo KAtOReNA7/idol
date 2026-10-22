@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "correctionId": "badvillain-overstep-20261018",
+  "baseCommit": "dd42066a822b4b8591c0b09a5e3f944cd4915b06",
+  "eventId": "e-badvillain-official-debut",
+  "slug": "badvillain",
+  "allowedFields": [
+    "eventDate",
+    "scopeNote",
+    "sources",
+    "summary"
+  ],
+  "beforeSha256": "67c80cb50e4e0cb884901b611dab4e662709d06ca41cbd3cb0a5bba24789b68b",
+  "afterSha256": "923b35bdf63108bdbe9deb7c7726b8b257ee69469cef31be4800037286bff7b5",
+  "beforeDocumentSha256": "101a6061a4f823b944d90a5d590be19488beb72e87540252516f2c369c761a5d",
+  "afterDocumentSha256": "979ad00e60d80eb2c8ee9d2146ff9aeccfb92795853739f70fdfbaa95704d5e3",
+  "before": {
+    "id": "e-badvillain-official-debut",
+    "groupId": "rec28ldfRTiD0h",
+    "eventType": "debut",
+    "title": "以《OVERSTEP》正式出道",
+    "summary": "NPOP官方配信合作方于2024年6月回顾BADVILLAIN当月刚出道；原始制作专题将OVERSTEP定义为出道专辑。",
+    "scopeNote": "只有月级正式出道直接证据；6月3日目录日未自动升为精确出道日，被拒OVERSTEP专题完全不采用。",
+    "eventDate": {
+      "value": "2024-06",
+      "precision": "month"
+    },
+    "announcementDate": null,
+    "plannedDate": null,
+    "status": "confirmed",
+    "importance": "major",
+    "memberIds": [],
+    "workIds": [
+      "rec28ldfRTrEzJ",
+      "rec28ldfRTrEGO",
+      "rec28ldfRTrEsc"
+    ],
+    "releaseKey": "badvillain:overstep",
+    "relatedEventIds": [],
+    "sources": [
+      {
+        "id": "es-1083c4d73e7308c1",
+        "url": "https://prtimes.jp/main/html/rd/p/000000540.000129774.html",
+        "publisher": "LINEヤフー株式会社（NPOP配信合作方）",
+        "title": "NPOP合作方BADVILLAIN出道月份回顾",
+        "sourcePublishedAt": {
+          "value": "2024-06-25",
+          "precision": "day"
+        },
+        "checkedAt": "2026-10-16",
+        "scopeNote": "合作方原稿仅证月份；没有采用被拒OVERSTEP原页，不把6月3日目录日升级为精确出道日。",
+        "evidenceRef": "evidence/E02/reused-evidence/E/task05/sources/badvillain-partner-debut.json"
+      },
+      {
+        "id": "es-2099a7229bd2559c",
+        "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15569",
+        "publisher": "Genie Magazine / BADVILLAIN原始制作访谈",
+        "title": "BADVILLAIN [THRILLER]制作评论访谈",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-16",
+        "scopeNote": "E02追加：复用E01已保存L159原文“데뷔 앨범 [OVERSTEP]”直接支持OVERSTEP为出道专辑；本次单独记录该eventId增量，未新增出道日期。",
+        "evidenceRef": "evidence/E02/task01/sources/badvillain-overstep-added-e02.json"
+      },
+      {
+        "id": "es-0450d7a825a73f96",
+        "url": "https://www.genie.co.kr/detail/artistInfo?xxnm=82507911",
+        "publisher": "Genie",
+        "title": "BADVILLAIN艺人专题索引",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-16",
+        "scopeNote": "仅作日期索引，实际发行须由原始专题正文支持；不独立升格目录日期。",
+        "evidenceRef": "evidence/E02/reused-evidence/E/task05/sources/badvillain-genie-index.json"
+      }
+    ],
+    "reviewStatus": "ready",
+    "holdReasons": []
+  },
+  "after": {
+    "id": "e-badvillain-official-debut",
+    "groupId": "rec28ldfRTiD0h",
+    "eventType": "debut",
+    "title": "以《OVERSTEP》正式出道",
+    "summary": "Bugs 收录的发行方专辑介绍明确记述 6 月 3 日发表出道专辑《OVERSTEP》，同页发行资料确认年份为 2024。",
+    "scopeNote": "精确日期由发行方专辑介绍正文与同页发行资料交叉核验；未采用此前被拦截的 Genie 专题或 BPM 页面，也不从 MV 上传日期推断。",
+    "eventDate": {
+      "value": "2024-06-03",
+      "precision": "day"
+    },
+    "announcementDate": null,
+    "plannedDate": null,
+    "status": "confirmed",
+    "importance": "major",
+    "memberIds": [],
+    "workIds": [
+      "rec28ldfRTrEzJ",
+      "rec28ldfRTrEGO",
+      "rec28ldfRTrEsc"
+    ],
+    "releaseKey": "badvillain:overstep",
+    "relatedEventIds": [],
+    "sources": [
+      {
+        "id": "es-1083c4d73e7308c1",
+        "url": "https://prtimes.jp/main/html/rd/p/000000540.000129774.html",
+        "publisher": "LINEヤフー株式会社（NPOP配信合作方）",
+        "title": "NPOP合作方BADVILLAIN出道月份回顾",
+        "sourcePublishedAt": {
+          "value": "2024-06-25",
+          "precision": "day"
+        },
+        "checkedAt": "2026-10-16",
+        "scopeNote": "合作方原稿仅证月份；没有采用被拒OVERSTEP原页，不把6月3日目录日升级为精确出道日。",
+        "evidenceRef": "evidence/E02/reused-evidence/E/task05/sources/badvillain-partner-debut.json"
+      },
+      {
+        "id": "es-2099a7229bd2559c",
+        "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15569",
+        "publisher": "Genie Magazine / BADVILLAIN原始制作访谈",
+        "title": "BADVILLAIN [THRILLER]制作评论访谈",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-16",
+        "scopeNote": "E02追加：复用E01已保存L159原文“데뷔 앨범 [OVERSTEP]”直接支持OVERSTEP为出道专辑；本次单独记录该eventId增量，未新增出道日期。",
+        "evidenceRef": "evidence/E02/task01/sources/badvillain-overstep-added-e02.json"
+      },
+      {
+        "id": "es-0450d7a825a73f96",
+        "url": "https://www.genie.co.kr/detail/artistInfo?xxnm=82507911",
+        "publisher": "Genie",
+        "title": "BADVILLAIN艺人专题索引",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-16",
+        "scopeNote": "仅作日期索引，实际发行须由原始专题正文支持；不独立升格目录日期。",
+        "evidenceRef": "evidence/E02/reused-evidence/E/task05/sources/badvillain-genie-index.json"
+      },
+      {
+        "id": "visual-repair-badvillain-overstep-bugs",
+        "url": "https://music.bugs.co.kr/album/4102279?wl_ref=M_contents_01_07",
+        "publisher": "Bugs / BIGPLANETMADE album introduction",
+        "title": "OVERSTEP / BADVILLAIN — 专辑介绍与发行资料",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-18",
+        "scopeNote": "专辑介绍明确记述 6 月 3 日发表出道专辑，发行栏标明 2024.06.03；不是仅使用目录日期。",
+        "evidenceRef": "evidence/approved-visual-repairs/badvillain-overstep-date.json"
+      }
+    ],
+    "reviewStatus": "ready",
+    "holdReasons": []
+  },
+  "beforeGaps": [
+    "6月3日精确出道日因原专题历史安全拦截不得使用，只采用合作方月份级出道；不重试BPM403。",
+    "HURRICANE预出道表演与6月24日完整音源需分开；精确音源日尚仅目录，hold。",
+    "没有取得直接加入/退出/解散/公司变更声明；七人名册不是持续现况或个人合同证明。",
+    "OVERSTEP正式出道仅保留2024-06月精度，不因目录3日擅自恢复E02已删精确日。",
+    "HURRICANE韩国音源24日与海外计划26日分开；后者未单列完成事件。"
+  ],
+  "afterGaps": [
+    "HURRICANE预出道表演与6月24日完整音源需分开；精确音源日尚仅目录，hold。",
+    "没有取得直接加入/退出/解散/公司变更声明；七人名册不是持续现况或个人合同证明。",
+    "HURRICANE韩国音源24日与海外计划26日分开；后者未单列完成事件。"
+  ],
+  "evidence": {
+    "path": "evidence/approved-visual-repairs/badvillain-overstep-date.json",
+    "sha256": "4211d1b9e954bfdaef16f80cb4d6b68a12a0623dbcc7726d1a302051cc6bf494"
+  }
+}

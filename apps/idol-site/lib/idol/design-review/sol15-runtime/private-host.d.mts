@@ -1,0 +1,4 @@
+import type {CatalogView} from '../../types';
+export function catalogBelongs(catalog:unknown):boolean;
+export type PrivateImageReport={format:string;manifestHash:string;total:number;counts:{loaded:number;failed:number;notTriggered:number;pending:number};stopped:boolean;stopReason:string|null;inFlightAssetId:string|null;maxInFlight:number;allImagesReady:boolean;complete:boolean;hero:{status:string;srcToLoadMs:number|null;loadToDecodeMs:number|null;srcToDecodeMs:number|null}|undefined;entries:unknown[];timingNote:string};
+export function createUdttPrivateReview(options:{host:HTMLElement;catalog:CatalogView;viewer:unknown;production:object;onStatus?:(message:string)=>void;onImages?:(report:PrivateImageReport)=>void}):{ready:Promise<unknown>;images:{report:()=>PrivateImageReport};destroy:()=>void};

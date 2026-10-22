@@ -1,0 +1,58 @@
+@font-face{font-family:Kep1erDetail;src:url('/fonts/SpaceGrotesk.woff2') format('woff2'),url('/fonts/SpaceGrotesk.ttf') format('truetype');font-weight:300 700;font-display:swap}
+.candidate-kep1er-experience{--paper:#eef0f7;--white:#f9faff;--ink:#1c2855;--muted:#637092;--line:#a9b4d3;--rose:#344c9b;--blush:#dbe1f0;--lilac:#e3e9f8;background:var(--paper);color:var(--ink)}
+.candidate-kep1er-experience .work-detail-top>*{min-width:0}
+.candidate-kep1er-experience .work-aside h1,.candidate-kep1er-experience .mobile-work-heading h1{font-family:Kep1erDetail,Georgia,serif;line-height:1.15;overflow-wrap:anywhere}
+.candidate-kep1er-experience .work-aside h1{font-size:clamp(32px,3.4vw,50px)}
+.candidate-kep1er-experience .video-mode-tabs{border:1px solid var(--line);background:var(--white);border-radius:0}
+.candidate-kep1er-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:var(--paper)}
+.candidate-kep1er-experience .video-play{border-radius:0;background:var(--rose);color:var(--paper);min-height:48px}
+.candidate-kep1er-experience .button{border-radius:0;white-space:normal;line-height:1.45;min-height:44px}
+.candidate-kep1er-experience .button.primary{background:var(--rose);color:var(--paper);border-color:var(--rose)}
+.candidate-kep1er-experience .editor-fields input,.candidate-kep1er-experience .editor-fields textarea,.candidate-kep1er-experience .editor-fields select{background:var(--white);color:var(--ink);border-color:var(--line);border-radius:0}
+.candidate-kep1er-experience .editor,.candidate-kep1er-experience .editor-actions{border-radius:0}
+.candidate-kep1er-experience .cast-card{border-radius:0;background:var(--white)}
+.candidate-kep1er-experience .cast-scores{flex-wrap:wrap;gap:10px}
+.candidate-kep1er-experience .image-label{background:var(--white);color:var(--muted);border-radius:0}
+.candidate-kep1er-experience .member-detail{display:grid;align-items:start}
+.candidate-kep1er-experience .member-detail h1{font-size:clamp(36px,4.3vw,66px);line-height:1.25;overflow-wrap:anywhere}
+.candidate-kep1er-experience .member-work-card{border-radius:0;border:1px solid var(--line)}
+.candidate-kep1er-experience .detail-return{border:1px solid var(--line);border-radius:0;background:var(--white);padding:20px}
+
+.candidate-kep1er-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:28px}
+.candidate-kep1er-experience .video-stage{border:1px solid var(--rose);border-radius:0;padding:8px;background:#1c2855}
+.candidate-kep1er-experience .work-aside{border:1px solid var(--line);border-top:6px solid var(--rose);padding:24px;background:var(--white)}
+.candidate-kep1er-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.candidate-kep1er-experience .cast-card{padding:16px;border-radius:0;border:1px solid var(--line)}
+.candidate-kep1er-experience .cast-card .photo{border-radius:0;aspect-ratio:5/4}
+.candidate-kep1er-experience .stage-view .work-detail-top{grid-template-columns:minmax(0,1fr)}
+.candidate-kep1er-experience .stage-view .work-aside{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px 32px;padding:28px;border-top:1px solid var(--line);border-left:6px solid var(--rose)}
+.candidate-kep1er-experience .stage-view .work-aside>h1{grid-column:1/-1}.candidate-kep1er-experience .stage-view .work-aside>.editor{grid-column:2;grid-row:3/7}.candidate-kep1er-experience .stage-view .stage-overall-note{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px;background:none}
+.candidate-kep1er-experience .stage-source{border-radius:0;border-inline:0;border-block:1px solid var(--line);background:transparent;padding:20px 0}
+.candidate-kep1er-experience .member-detail{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:44px}
+.candidate-kep1er-experience .member-detail>.photo{border:1px solid var(--rose);border-radius:0;padding:12px;background:var(--blush)}
+.candidate-kep1er-experience .member-work-summary{background:var(--white);border:1px solid var(--line);border-radius:0}
+
+@media(max-width:1100px){.candidate-kep1er-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ .candidate-kep1er-experience .work-detail-top,.candidate-kep1er-experience .stage-view .work-detail-top{grid-template-columns:minmax(0,1fr);gap:24px}
+ .candidate-kep1er-experience .cast-grid{grid-template-columns:1fr}
+ .candidate-kep1er-experience .member-detail{grid-template-columns:1fr}
+ .candidate-kep1er-experience .work-aside h1,.candidate-kep1er-experience .mobile-work-heading h1{font-size:36px}
+ .candidate-kep1er-experience .member-detail h1{font-size:36px}
+ .candidate-kep1er-experience .video-mode-tabs{width:100%}
+ .candidate-kep1er-experience .video-mode-tabs button{flex:1;min-width:0}
+ .candidate-kep1er-experience .detail-return{padding:16px 12px}
+ .candidate-kep1er-experience .member-name{font-size:18px;line-height:1.4;overflow-wrap:anywhere}
+ .candidate-kep1er-experience .editor-fields input,.candidate-kep1er-experience .editor-fields textarea,.candidate-kep1er-experience .editor-fields select{font-size:16px}
+ .candidate-kep1er-experience .work-aside{padding:22px 17px}.candidate-kep1er-experience .stage-view .work-aside{display:block;padding:22px 17px;border-left-width:4px}.candidate-kep1er-experience .stage-view .work-aside>.editor{grid-column:auto;grid-row:auto}.candidate-kep1er-experience .video-stage{padding:4px}.candidate-kep1er-experience .stage-source{padding:18px 0}
+}
+
+/* Tags must not stretch to match the neighbouring score/editor grid track. */
+.candidate-kep1er-experience .stage-view .work-aside{align-items:start}
+.candidate-kep1er-experience .stage-view .work-aside>.tags{align-self:start;align-items:flex-start;align-content:flex-start;height:fit-content;min-height:0}
+.candidate-kep1er-experience .stage-view .work-aside>.tags>span{align-self:flex-start;height:auto;min-height:0}
+
+/* Batch B: narrow-screen action labels, focus and score numerals. */
+.candidate-kep1er-experience :is(button,a,input,textarea,select):focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.candidate-kep1er-experience :is(.cast-scores,.member-work-summary) strong{white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:390px){.candidate-kep1er-experience .editor-actions{display:flex;flex-wrap:wrap;gap:10px}.candidate-kep1er-experience .editor-actions>.button{flex:1 1 120px;white-space:nowrap}.candidate-kep1er-experience .video-mode-tabs button{white-space:nowrap;padding-inline:8px}}

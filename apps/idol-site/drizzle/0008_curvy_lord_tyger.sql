@@ -1,0 +1,1 @@
+ALTER TABLE `idol_native_records` ADD `source_order` integer DEFAULT 0 NOT NULL;

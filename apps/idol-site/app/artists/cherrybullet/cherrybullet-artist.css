@@ -1,0 +1,41 @@
+@font-face{font-family:CherryBulletFile;src:url('/fonts/Anton-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+.candidate-cherrybullet{--ca-bg:#fff6ef;--ca-ink:#4a1822;--ca-muted:#825c62;--ca-line:#d7aaa9;--ca-accent:#b42d43;--ca-panel:#f4dfd8;--ca-on-accent:#fff9f5}
+.candidate-cherrybullet .ca-header{border-bottom:3px solid var(--ca-accent)}
+.candidate-cherrybullet .cherrybullet-cover{display:grid;grid-template-columns:40px minmax(0,1.1fr) minmax(0,1fr);grid-template-areas:'spine heading sleeve' 'spine copy sleeve' 'spine note note';gap:28px}
+.candidate-cherrybullet .cherrybullet-spine{grid-area:spine;writing-mode:vertical-rl;transform:rotate(180deg);border-left:1px solid var(--ca-line);font-size:11px;letter-spacing:.22em;text-align:right;padding-left:16px}
+.candidate-cherrybullet .cherrybullet-heading{grid-area:heading;border-top:12px solid var(--ca-accent);padding-top:22px}
+.candidate-cherrybullet .ca-title h1{font-family:CherryBulletFile,sans-serif;text-transform:uppercase;font-size:clamp(60px,7.9vw,126px);font-weight:400;letter-spacing:-.025em;max-width:8ch}
+.candidate-cherrybullet .cherrybullet-cover-copy{grid-area:copy;padding:12px 0}
+.candidate-cherrybullet .ca-intro h2{font-size:clamp(24px,2.5vw,40px);line-height:1.4;font-weight:500}
+.candidate-cherrybullet .cherrybullet-sleeve{grid-area:sleeve;border:1px solid var(--ca-line);padding:18px;background:var(--ca-panel);display:flex;flex-direction:column;justify-content:space-between}
+.candidate-cherrybullet .cherrybullet-sleeve>.ca-image>.ca-placeholder{aspect-ratio:4/5;background:#ead0ca;border:1px dashed var(--ca-line)}
+.candidate-cherrybullet .cherrybullet-sleeve>span{font:400 28px/1.2 CherryBulletFile,sans-serif;border-top:2px solid var(--ca-accent);padding-top:18px;margin-top:28px}
+.candidate-cherrybullet .cherrybullet-cover-note{grid-area:note}
+.candidate-cherrybullet .cherrybullet-cover-note .ca-facts{grid-template-columns:1fr;margin-bottom:0}
+.candidate-cherrybullet .ca-button{border-radius:0;border-color:var(--ca-accent)}
+.candidate-cherrybullet .ca-tabs{border-block:2px solid var(--ca-accent)}
+.candidate-cherrybullet .cherrybullet-dossier{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);grid-template-areas:'people collection' 'history collection';gap:48px}
+.candidate-cherrybullet .cherrybullet-people{grid-area:people}
+.candidate-cherrybullet .cherrybullet-collection{grid-area:collection;border-left:1px solid var(--ca-line);padding-left:32px}
+.candidate-cherrybullet .cherrybullet-history{grid-area:history}
+.candidate-cherrybullet .cherrybullet-file-label{font-size:10px;letter-spacing:.18em;color:var(--ca-accent);border-top:3px solid var(--ca-accent);padding-top:12px;margin:0 0 30px}
+.candidate-cherrybullet .ca-empty{border:1px solid var(--ca-accent);border-left:8px solid var(--ca-accent);background:#f9e8e2;min-height:180px}
+.candidate-cherrybullet .ca-roster,.candidate-cherrybullet .ca-works,.candidate-cherrybullet .ca-notes .ca-facts{grid-template-columns:1fr}
+.candidate-cherrybullet .ca-work{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:22px;padding-top:24px;border-top:2px solid var(--ca-accent)}
+.candidate-cherrybullet .ca-work-actions{flex-direction:column;justify-content:flex-end;margin:0 0 24px}
+.candidate-cherrybullet .ca-work-cover{max-width:360px}
+.candidate-cherrybullet .ca-library{grid-template-columns:1fr 1fr}
+.candidate-cherrybullet .ca-library>button{grid-column:1/-1}
+.candidate-cherrybullet .cherrybullet-person-file{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px}
+.candidate-cherrybullet .cherrybullet-person-cover{grid-row:span 2;border:1px solid var(--ca-line);padding:18px}
+.candidate-cherrybullet .cherrybullet-person-heading .ca-member-identity h1{font-size:clamp(34px,4vw,64px)}
+.candidate-cherrybullet .cherrybullet-person-summary{grid-column:2}
+@media(max-width:900px){.candidate-cherrybullet .cherrybullet-dossier{gap:28px}.candidate-cherrybullet .cherrybullet-collection{padding-left:22px}.candidate-cherrybullet .ca-work{grid-template-columns:1fr}.candidate-cherrybullet .ca-work-actions{flex-direction:row}}
+@media(max-width:760px){
+ .candidate-cherrybullet .cherrybullet-cover{grid-template-columns:1fr;grid-template-areas:'heading' 'sleeve' 'copy' 'note';gap:24px}
+ .candidate-cherrybullet .cherrybullet-spine{display:none}.candidate-cherrybullet .ca-title h1{font-size:clamp(58px,18vw,88px)}
+ .candidate-cherrybullet .cherrybullet-sleeve{padding:14px}.candidate-cherrybullet .cherrybullet-sleeve>.ca-image>.ca-placeholder{aspect-ratio:5/4}.candidate-cherrybullet .cherrybullet-sleeve>span{font-size:23px}
+ .candidate-cherrybullet .cherrybullet-dossier{grid-template-columns:1fr;grid-template-areas:'people' 'collection' 'history';gap:40px}.candidate-cherrybullet .cherrybullet-collection{border-left:0;padding-left:0}
+ .candidate-cherrybullet .ca-work{grid-template-columns:1fr}.candidate-cherrybullet .ca-work-actions{flex-direction:row;gap:8px}.candidate-cherrybullet .ca-button{padding:10px 13px}
+ .candidate-cherrybullet .cherrybullet-person-file{grid-template-columns:1fr;gap:20px}.candidate-cherrybullet .cherrybullet-person-cover{grid-row:auto;order:2}.candidate-cherrybullet .cherrybullet-person-heading{order:1}.candidate-cherrybullet .cherrybullet-person-summary{grid-column:auto;order:3}
+}

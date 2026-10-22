@@ -1,0 +1,96 @@
+{
+  "facts": [
+    {
+      "factId": "c-task05-izna-formal-debut",
+      "groupSlug": "izna",
+      "groupId": "rec28ldfRTiCpp",
+      "memberRecordId": null,
+      "field": "formalDebutDate",
+      "candidateValue": "2024-11-25",
+      "changeType": "new",
+      "status": "confirmed_candidate",
+      "sourcePageUrl": "https://special-izna-official.jp/Na/",
+      "sourceTitle": "izna | N/a",
+      "shortOriginalExcerpt": "2024.11.25 DEBUT",
+      "rawEvidenceFile": "task05/sources/izna-special.html",
+      "sourcePublishedAt": null,
+      "effectiveAt": "2024-11-25",
+      "checkedAt": "2026-10-16T05:45:37.074735+00:00",
+      "applicablePeriod": "正式出道日；与已验收EP发行日同日但为独立语义字段，不以发行日推算出道。",
+      "scope": "正式出道日；与已验收EP发行日同日但为独立语义字段，不以发行日推算出道。",
+      "evidenceStrength": "primary_direct",
+      "conflicts": [],
+      "uncertainties": [
+        "专题页自身首次发布时间未标，sourcePublishedAt=null。"
+      ],
+      "dotDecisionRequired": true,
+      "evidence": [
+        {
+          "sourcePageUrl": "https://www.cjenm.com/en/news/2024-mama-awards-wrap-up-historic-run-with-iconic-performances-and-milestone-moments/",
+          "sourceTitle": "2024 MAMA AWARDS Wrap Up Historic Run with Iconic Performances and Milestone Moments",
+          "shortOriginalExcerpt": "ahead of their official launch on November 25 (KST)",
+          "rawEvidenceFile": "task05/sources/izna-cjenm.html",
+          "sourcePublishedAt": "2024-11-25",
+          "effectiveAt": "2024-11-25",
+          "checkedAt": "2026-10-16T05:45:37.075843+00:00"
+        }
+      ]
+    },
+    {
+      "factId": "c-task04-kep1er-body-receipt",
+      "groupSlug": "kep1er",
+      "groupId": "recvxyEBDZ8A0W",
+      "memberRecordId": null,
+      "field": "activityNotice.sourcePublishedAt",
+      "candidateValue": "2026-03-06",
+      "changeType": "correction",
+      "status": "confirmed_candidate",
+      "sourcePageUrl": "https://wake-one.com/notice/kep1er-향후-활동-체제-및-멤버-서영은-활동-관련-안내/",
+      "sourceTitle": "Kep1er 향후 활동 체제 및 멤버 서영은 활동 관련 안내",
+      "shortOriginalExcerpt": "2026. 03. 06",
+      "rawEvidenceFile": "task04/sources/kep1er-notice-page.json",
+      "sourcePublishedAt": "2026-03-06",
+      "effectiveAt": null,
+      "checkedAt": "2026-10-16",
+      "applicablePeriod": "2026-03-06 notice; future arrangement, not 2026-10-16 attendance.",
+      "scope": "Evidence correction only: adds original dated page plus fully read attached Korean notice for the already-known Batch B statement. Body confirms announced future six-member arrangement and SEO YOUNGEUN ending team activity; these values remain reused, not new counts.",
+      "evidenceStrength": "direct official body",
+      "conflicts": [
+        "Batch B Japan profile discrepancy (seven-member introduction versus six cards) remains a different page/time scope."
+      ],
+      "uncertainties": [
+        "No separate effective date appears.",
+        "No individual contract termination wording."
+      ],
+      "dotDecisionRequired": true,
+      "evidence": [
+        {
+          "rawEvidenceFile": "task04/sources/kep1er-notice-ko.jpg",
+          "kind": "official_notice_document",
+          "originalImageUrl": "https://cdn.wake-one.com/wp-content/uploads/2026/03/06150024/TalkMedia_i_bd9bea82f92f.jpg-scaled.jpg"
+        }
+      ]
+    }
+  ],
+  "loona": {
+    "groupId": "recvxyEBDZJAXm",
+    "groupSlug": "loona",
+    "changeType": "correction",
+    "scope": "Only proposed display/query scope correction; no identity or relationship mutation.",
+    "existingCurrentGroupIdsCount": 11,
+    "existingCurrentPlusFormerHistoryCount": 12,
+    "historicalDifference": {
+      "recordId": "recvxyICzHTm4b",
+      "stageName": "CHUU",
+      "groupIds": [],
+      "formerGroupIds": [
+        "recvxyEBDZJAXm"
+      ]
+    },
+    "proposal": "dot should choose an explicitly historical display that reads the existing current-plus-former association, or retain current groupIds-only 11 with a historical roster explanatory note. Do not create CHUU ID or move association automatically.",
+    "activityInference": null,
+    "dotDecisionRequired": true,
+    "checkedAt": "2026-10-16T05:50:28.484322+00:00"
+  },
+  "implementationScope": "LOONA explanatory text only; historical view deferred; no source relationship writes"
+}

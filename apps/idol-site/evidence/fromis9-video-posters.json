@@ -1,0 +1,68 @@
+{
+  "checkedAtUtc": "2026-10-18T14:58:00Z",
+  "assets": [
+    {
+      "workId": "recvxyOz5XJ7W3",
+      "song": "WE GO",
+      "videoId": "HM6UpQZvbhY",
+      "kind": "mv",
+      "youtubeUrl": "https://www.youtube.com/watch?v=HM6UpQZvbhY",
+      "sourcePage": "https://music.bugs.co.kr/mv/594651",
+      "sourceImage": "https://image.bugsm.co.kr/mvhd/images/500/5946/594651.jpg",
+      "sha256": "6bcc9b8cd6e1a98b7d6bbaaf8bd8421060b313e2599f00f90c266073436b4613",
+      "bytes": 52911,
+      "width": 500,
+      "height": 282,
+      "conversion": "none: HTTP 200 original published 500px JPEG bytes",
+      "releaseDate": "2021-05-17",
+      "duration": "03:21",
+      "visualReview": "Photo-editor desktop composition; DAILY magazine panel and beach composite, Monday 9:00 AM, 9 Way Ticket layer. This is the narrative/compositing MV setting, not a performance-stage shot.",
+      "label": "MV 预览图（Bugs 来源）",
+      "eligible": true,
+      "limitations": [
+        "500x282 published thumbnail, not HD; do not upscale or claim 1280 pixels",
+        "Bugs-distributed full MV preview, not the exact YouTube-hosted thumbnail bytes",
+        "No frame-accurate playback/timecode verification; version join is supported by artist, original release, full-MV category, duration, explicit teaser separation, and actual narrative MV pixels"
+      ],
+      "repositoryFile": "public/artist/fromis9/video-posters/recvxyOz5XJ7W3-mv-HM6UpQZvbhY-bugs-original.jpg",
+      "src": "/artist/fromis9/video-posters/recvxyOz5XJ7W3-mv-HM6UpQZvbhY-bugs-original.jpg",
+      "view": "mv"
+    },
+    {
+      "workId": "recvxyOz5XKR8M",
+      "song": "Supersonic",
+      "videoId": "0LiQp7y8Wwc",
+      "kind": "mv",
+      "youtubeUrl": "https://www.youtube.com/watch?v=0LiQp7y8Wwc",
+      "sourcePage": "https://music.bugs.co.kr/mv/626868",
+      "sourceImage": "https://image.bugsm.co.kr/mvhd/images/500/6268/626868.jpg",
+      "sha256": "51e7a83c7a51769c64f42655c16c9fad72061a89503c006a7155d623d109c664",
+      "bytes": 80102,
+      "width": 500,
+      "height": 282,
+      "conversion": "none: HTTP 200 original published 500px JPEG bytes",
+      "releaseDate": "2024-08-12",
+      "duration": "03:02",
+      "visualReview": "Top-down road scene with center yellow stripe, glass sphere and performer in red top; PLEDIS ENTERTAINMENT OFFICIAL mark preserved. Not an album square or stage image.",
+      "label": "MV 预览图（Bugs 来源）",
+      "eligible": true,
+      "limitations": [
+        "500x282 published thumbnail, not HD; do not upscale or claim 1280 pixels",
+        "Bugs-distributed full MV preview, not the exact YouTube-hosted thumbnail bytes",
+        "No frame-accurate playback/timecode verification; version join is supported by artist, original release, full-MV category, duration, explicit teaser separation, and actual narrative MV pixels"
+      ],
+      "repositoryFile": "public/artist/fromis9/video-posters/recvxyOz5XKR8M-mv-0LiQp7y8Wwc-bugs-original.jpg",
+      "src": "/artist/fromis9/video-posters/recvxyOz5XKR8M-mv-0LiQp7y8Wwc-bugs-original.jpg",
+      "view": "mv"
+    }
+  ],
+  "evidence": {
+    "localWorkMapping": "data/snapshot.json fields fldhBWXBZE, fld6nT26GF, fld1vZ4MUc; both records are original Korean official MVs",
+    "bugsPages": "Saved full HTML for both pages; og:image names exact Bugs MV ID; type 정규 and original release date. Supersonic listing is 03:02, WE GO listing 03:21. Each page lists teasers as distinct IDs (Supersonic 626867; WE GO 594515, 594516).",
+    "wegoIndependentNarrative": "wego-mv-analysis.html embeds HM6UpQZvbhY, describes 03:21 original MV photo-editor scenes, Monday 9 AM, magazine panels and beach composites matching inspected downloaded pixels. https://www.promise-publications.com/write-ups/9-things-you-may-have-missed-in-fromis_9s-we-go-mv/index.html",
+    "supersonicIndependentPlatform": "supersonic-apple.html meta describes full music video, release 2024-08-12 and 03:02 duration; matches Bugs original release and full length. https://music.apple.com/us/music-video/supersonic/1763878234",
+    "officialYoutube": "Web search returned official Supersonic title for 0LiQp7y8Wwc; direct WE GO fetch failed; no attempt at alternate YouTube route. Weverse HTML was SPA shell and is not counted as substantive evidence.",
+    "existingAssets": "public/artist/fromis9 contains group and member profile/hero assets; no work/video-ID-named corresponding poster files found under public or research. No album artwork used."
+  },
+  "integration": "Original JPEG bytes copied unchanged; exact workId + videoId + MV binding only. No stage poster, crop, conversion, watermark removal, upscale or HD claim."
+}

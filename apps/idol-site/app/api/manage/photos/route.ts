@@ -1,0 +1,8 @@
+import {photoImportOptions,preparePhotoImport,uploadPhotoImport,downloadImportedPhoto,photoImportUploadLimit} from '@/lib/idol/photo-maintenance';
+import {requireUser,sameOrigin,json,failure} from '@/lib/idol/http';
+import {AppError} from '@/lib/idol/feishu';
+import {boundedBytes} from '@/lib/idol/image-integrity';
+export const dynamic='force-dynamic';
+export async function GET(request:Request){try{const user=await requireUser(),q=new URL(request.url).searchParams;return q.has('download')?await downloadImportedPhoto(user.userId,q.get('download')!):json(await photoImportOptions(user.userId));}catch(e){return failure(e);}}
+export async function POST(request:Request){try{const user=await requireUser();sameOrigin(request);if(!request.headers.get('content-type')?.startsWith('application/json'))throw new AppError('INVALID_CONTENT_TYPE','图片操作内容格式不正确。',400);const text=new TextDecoder().decode(await boundedBytes(new Response(request.body),2000));let input;try{input=JSON.parse(text);}catch{throw new AppError('INVALID_PHOTO_OPERATION','图片操作内容格式不正确。',400);}return json(await preparePhotoImport(user.userId,input));}catch(e){return failure(e);}}
+export async function PUT(request:Request){try{const user=await requireUser();sameOrigin(request);if(request.headers.get('content-type')!=='application/octet-stream')throw new AppError('INVALID_CONTENT_TYPE','请选择原始图片文件。',400);const operationId=new URL(request.url).searchParams.get('operation')??'',limit=await photoImportUploadLimit(user.userId,operationId);const bytes=request.body?await boundedBytes(new Response(request.body),limit):new Uint8Array(0);return json(await uploadPhotoImport(user.userId,operationId,bytes.length?bytes:null));}catch(e){return failure(e);}}

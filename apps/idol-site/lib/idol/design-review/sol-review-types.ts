@@ -1,0 +1,13 @@
+import type {AnchorHTMLAttributes, ComponentType, ReactNode} from 'react';
+import type {TimelineEvent} from '../timeline/types';
+import type {PublicArtistFields} from '../public-artist-bridge';
+export type SolSlug = 'rescene' | 'purplekiss';
+export type SolSource = {label: string; url: string};
+export type SolMember = {key:string; id:string; stageName:string; name:string; koreanName:string; profile:string; role:string; birthDate:string|null; status:string; historical:boolean; period:string; image:string|null; imageCredit:string; sources:SolSource[]};
+export type SolWork = {key:string; kind:'release'|'mv'|'stage'; title:string; subtype:string; date:string|null; dateLabel:string; image:string|null; imageCredit:string; imageCaveat:string; description:string; tracks:string[]; sources:SolSource[]; url:string|null; workId:string|null; videoId:string|null; releaseId:null; actionable:boolean};
+export type SolData = {slug:SolSlug; groupId:string; name:string; channelUrl:string; hero:string; logo:string|null; status:string; statusDate:string|null; members:SolMember[]; works:SolWork[]};
+export type SolRoute = {valid:boolean; canonical:string|null; fields:PublicArtistFields; section:string; member:string|null; release:string|null; media:string|null; format:'release'|'mv'|'stage'; query:string; sort:'oldest'|'newest'; event:string|null; year:string|null; timelineType:string};
+export type SolPictureProps = {src?:string|null; alt:string; className?:string; priority?:boolean; zoom?:boolean};
+export type SolLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {href?:string|null; children:ReactNode};
+export type SolViewProps = {data:SolData; route:SolRoute; events:readonly TimelineEvent[]; Link:ComponentType<SolLinkProps>; Picture:ComponentType<SolPictureProps>; href:(fields?:PublicArtistFields)=>string|null; onFilter:(fields:PublicArtistFields)=>void; onReturn:()=>void; onMemberAction:(member:SolMember)=>void; onMediaAction:(work:SolWork, action:'play'|'records')=>void; timelineLoading:boolean; timelineError:string; onTimelineRetry:()=>void; timelineFields:(event:TimelineEvent)=>PublicArtistFields|null};
+export type SolWorkDetailProps = SolViewProps & {work:SolWork};

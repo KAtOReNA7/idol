@@ -1,0 +1,39 @@
+@font-face{font-family:WooahFrequency;src:url('/fonts/Syne.ttf') format('truetype');font-weight:400 800;font-display:swap}
+.candidate-wooah{--ca-bg:#e9f6f3;--ca-ink:#163e43;--ca-muted:#4b7377;--ca-line:#9ec4c2;--ca-accent:#006b78;--ca-panel:#c9e7e3;--ca-on-accent:#f1fffb}
+.candidate-wooah .wooah-station{display:grid;grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr);grid-template-areas:'heading heading' 'intro screen' 'controls screen' 'index index';gap:26px 42px}
+.candidate-wooah .wooah-station-heading{grid-area:heading;text-align:center;padding-bottom:28px}
+.candidate-wooah .ca-title h1{font:800 clamp(70px,12vw,180px)/1 WooahFrequency,sans-serif;letter-spacing:-.07em;margin-top:22px}
+.candidate-wooah .wooah-frequency{display:flex;justify-content:center;align-items:center;gap:10px;height:35px}
+.candidate-wooah .wooah-frequency span{height:10px;width:3px;background:var(--ca-accent)}.candidate-wooah .wooah-frequency span:nth-child(2n){height:21px}.candidate-wooah .wooah-frequency span:nth-child(3n){height:32px}
+.candidate-wooah .wooah-station-screen{grid-area:screen;border:1px solid var(--ca-accent);border-radius:28px;padding:18px;background:#f4fffb}
+.candidate-wooah .wooah-station-screen .ca-placeholder{aspect-ratio:16/10;border-radius:15px}
+.candidate-wooah .wooah-station-intro{grid-area:intro;padding-top:20px}.candidate-wooah .ca-intro h2{font-size:clamp(27px,3vw,44px);line-height:1.25}
+.candidate-wooah .wooah-station-controls{grid-area:controls;align-self:end}.candidate-wooah .wooah-station-index{grid-area:index;border-bottom:3px solid var(--ca-accent)}
+.candidate-wooah .ca-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.candidate-wooah .ca-button{border-radius:24px;padding-inline:21px}.candidate-wooah .ca-tabs{justify-content:center;border-block:1px solid var(--ca-accent)}
+.candidate-wooah .wooah-broadcast>div{margin-bottom:64px}.candidate-wooah .wooah-channel-label{font-family:WooahFrequency,sans-serif;font-size:11px;letter-spacing:.08em;display:block;margin-bottom:28px;color:var(--ca-accent)}
+.candidate-wooah .ca-works{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px}
+.candidate-wooah .ca-works>.ca-work:first-child{grid-row:span 2}.candidate-wooah .ca-work{border:1px solid var(--ca-line);border-radius:20px;padding:20px;background:#f4fffb}
+.candidate-wooah .ca-work-cover{border-radius:12px;overflow:hidden}.candidate-wooah .ca-work:first-child .ca-work-cover{aspect-ratio:4/3}.candidate-wooah .ca-work h3{font-family:WooahFrequency,sans-serif;font-size:25px}
+.candidate-wooah .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.candidate-wooah .ca-roster>button{grid-template-columns:30px 90px minmax(0,1fr) 20px;border-radius:14px;background:transparent;padding:20px}
+.candidate-wooah .ca-roster>button:nth-child(odd){background:#f4fffb}.candidate-wooah .ca-member-photo{border-radius:50%;overflow:hidden}.candidate-wooah .ca-member-copy strong{font-size:20px}
+.candidate-wooah .wooah-listening-meter{padding:8px 28px;background:var(--ca-accent);color:var(--ca-on-accent);border-radius:18px}.candidate-wooah .ca-library{border:0}.candidate-wooah .ca-library strong{font-family:WooahFrequency,sans-serif}
+.candidate-wooah .wooah-profile-channel{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);grid-template-areas:'name name' 'screen data' 'screen controls';gap:28px 40px}
+.candidate-wooah .wooah-profile-name{grid-area:name;border-bottom:3px solid var(--ca-accent)}.candidate-wooah .wooah-profile-screen{grid-area:screen;border:1px solid var(--ca-line);border-radius:24px;padding:20px}.candidate-wooah .wooah-profile-data{grid-area:data}.candidate-wooah .wooah-profile-controls{grid-area:controls;align-self:end}
+@media(max-width:760px){
+ .candidate-wooah .wooah-station{grid-template-columns:1fr;grid-template-areas:'heading' 'screen' 'controls' 'intro' 'index';gap:20px}
+ .candidate-wooah .ca-title h1{font-size:clamp(57px,18vw,90px)}.candidate-wooah .wooah-station-heading{padding-bottom:10px}.candidate-wooah .wooah-station-screen{border-radius:18px;padding:12px}.candidate-wooah .wooah-station-intro{padding-top:0}
+ .candidate-wooah .ca-facts{grid-template-columns:1fr}.candidate-wooah .ca-tabs{justify-content:flex-start;gap:20px}.candidate-wooah .ca-works{grid-template-columns:1fr}.candidate-wooah .ca-works>.ca-work:first-child{grid-row:auto}
+ .candidate-wooah .ca-roster{grid-template-columns:1fr}.candidate-wooah .ca-roster>button{grid-template-columns:22px 64px minmax(0,1fr) 16px;gap:10px;padding:14px}.candidate-wooah .ca-member-copy strong{font-size:18px}
+ .candidate-wooah .wooah-listening-meter{padding:0 16px}.candidate-wooah .ca-work-actions{gap:8px}.candidate-wooah .ca-button{padding-inline:14px}
+ .candidate-wooah .wooah-profile-channel{grid-template-columns:1fr;grid-template-areas:'name' 'controls' 'screen' 'data';gap:20px}.candidate-wooah .wooah-profile-screen{padding:14px}
+}
+
+/* Batch B: source images retain complete framing; focused controls and two-digit indices remain legible. */
+.candidate-wooah .ca-image>img{height:auto;aspect-ratio:auto;object-fit:contain}
+.candidate-wooah .ca-member-portrait>img{height:auto;max-height:78vh;object-fit:contain}
+.candidate-wooah .ca-ordinal{white-space:nowrap;overflow-wrap:normal;word-break:normal;font-variant-numeric:tabular-nums}
+.candidate-wooah :is(.ca-title h1,.ca-member-copy strong,.ca-member-identity h1,.ca-facts dd,.ca-work h3){overflow-wrap:anywhere}
+.candidate-wooah .ca-button{white-space:nowrap;gap:8px}
+.candidate-wooah .ca-button svg{flex:none}
+.candidate-wooah :is(a,button):focus-visible{outline:3px solid var(--ca-accent);outline-offset:4px}
+.candidate-wooah .wooah-reading-note{font-size:12px;line-height:1.7;border-bottom:1px solid var(--ca-line);padding-bottom:18px}.candidate-wooah .wooah-station-screen{align-self:start}.candidate-wooah .ca-member-photo{border-radius:12px;overflow:visible}.candidate-wooah .wooah-station-log{border-top:3px solid var(--ca-accent);padding-top:24px}.candidate-wooah .wooah-listening-meter .ca-library button:focus-visible{outline-color:var(--ca-on-accent)}@media(max-width:760px){.candidate-wooah .wooah-station{grid-template-areas:'heading' 'screen' 'intro' 'controls' 'index'}.candidate-wooah .wooah-profile-channel{grid-template-areas:'name' 'screen' 'controls' 'data'}.candidate-wooah .wooah-station-controls .ca-actions{margin:4px 0 12px}.candidate-wooah .wooah-channel-label{font-size:12px;line-height:1.6}.candidate-wooah .ca-member-photo{aspect-ratio:4/5}.candidate-wooah .wooah-profile-screen{border-radius:16px}.candidate-wooah .wooah-reading-note{padding-bottom:12px}}

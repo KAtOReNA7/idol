@@ -1,0 +1,17 @@
+.candidate-izna-experience{--paper:#f7f0e4;--white:#fffaf2;--ink:#22201f;--muted:#6c5f56;--line:#d7c8b7;--rose:#ad351e;--blush:#f7f0e4;--lilac:#fffaf2;background:var(--paper);color:var(--ink);min-height:100vh}
+.candidate-izna-experience .button{white-space:normal;max-width:100%}
+.candidate-izna-experience .work-aside,.candidate-izna-experience .member-detail>div{min-width:0}
+.candidate-izna-experience .work-aside h1,.candidate-izna-experience .member-detail h1{overflow-wrap:anywhere}
+.candidate-izna-experience .header{background:var(--paper)}
+.candidate-izna-experience .video-play{background:var(--rose);color:#ffffff}
+.candidate-izna-experience .editor-fields input,.candidate-izna-experience .editor-fields select,.candidate-izna-experience .editor-fields textarea{background:var(--white);color:var(--ink)}
+.candidate-izna-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,.9fr);gap:34px;align-items:start;border-top:6px solid var(--rose);padding-top:24px}.candidate-izna-experience .work-aside{border:0;border-left:2px solid var(--rose);border-radius:0;background:var(--white);padding:28px}.candidate-izna-experience .stage-view .work-detail-top{grid-template-columns:1fr}.candidate-izna-experience .stage-view .work-aside{display:block;border-left:0;border-top:2px solid var(--rose);max-width:none}.candidate-izna-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.candidate-izna-experience .cast-card{border-radius:0;border:0;border-top:3px solid var(--rose)}.candidate-izna-experience .member-detail{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:44px;border-top:6px solid var(--rose);padding-top:26px}.candidate-izna-experience .video-stage{border-radius:0}.candidate-izna-experience .stage-source{border-radius:0;border-left:4px solid var(--rose)}@media(max-width:760px){.candidate-izna-experience .work-detail-top,.candidate-izna-experience .member-detail{grid-template-columns:1fr;gap:22px}.candidate-izna-experience .work-aside{padding:20px}.candidate-izna-experience .cast-grid{grid-template-columns:1fr 1fr;gap:12px}.candidate-izna-experience .cast-card{padding:12px}.candidate-izna-experience .cast-copy{padding:10px 0}.candidate-izna-experience .member-name{font-size:16px}.candidate-izna-experience .stage-view .work-aside{border-top-width:5px}}
+@media(max-width:760px){.candidate-izna-experience .header{height:auto;min-height:78px;flex-wrap:wrap}.candidate-izna-experience .header nav{height:auto;flex-wrap:wrap}.candidate-izna-experience .editor-fields input,.candidate-izna-experience .editor-fields select,.candidate-izna-experience .editor-fields textarea{font-size:16px}}
+
+/* Batch B: visible focus and unbroken values within the existing player/editor. */
+.candidate-izna-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid var(--rose);outline-offset:4px}
+.candidate-izna-experience .cast-scores b,.candidate-izna-experience .work-score strong{white-space:nowrap;font-variant-numeric:tabular-nums}
+.candidate-izna-experience .cast-card .photo img{object-fit:contain}
+.candidate-izna-experience .work-detail-top>*,.candidate-izna-experience .member-detail>*{min-width:0}
+.candidate-izna-experience .video-mode-tabs{flex-wrap:wrap}
+@media(max-width:390px){.candidate-izna-experience .cast-grid{gap:10px}.candidate-izna-experience .cast-card{padding:10px}.candidate-izna-experience .cast-scores{flex-wrap:wrap;gap:8px}}

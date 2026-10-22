@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "correctionId": "triples-assemble24-20261016",
+  "baseCommit": "228ed8e4cf84a0078bcc09d48bbce374e777f7ad",
+  "eventId": "e-triples-assemble24-complete-phase",
+  "slug": "triples",
+  "historicalLedger": "HANDOFF/batch-f/integration-ledger.json",
+  "historicalLedgerSha256": "177e6a6236c647a9ae5730f7d80df03333f0f13fa197c9263ded6cd4391e7d7d",
+  "historicalManifestSha256": "afc292a22593be1ae4bdfc08eab2c20efc0e365545cdbd2df46d3749562b3d99",
+  "historicalSourceIndexSha256": "7b7bb472a912b1116c5b447893b00bf33c7c4ab904dd8aa3d680f7cdf7e1ee2c",
+  "historicalAdoptedSha256": "f4492c1e591d9651ebcb50bd8527f8203d8f675146670c9b000abd6ab0a8bbc6",
+  "beforeSha256": "f4492c1e591d9651ebcb50bd8527f8203d8f675146670c9b000abd6ab0a8bbc6",
+  "afterSha256": "9c8c0fa506359a5df426d815c67789f42c386b81cec0d99eb3b9b44fbb7abb2c",
+  "allowedFields": [
+    "eventDate",
+    "scopeNote",
+    "sources",
+    "summary",
+    "workIds"
+  ],
+  "diff": [
+    {
+      "field": "eventDate",
+      "before": null,
+      "after": {
+        "value": "2024-05-08",
+        "precision": "day"
+      }
+    },
+    {
+      "field": "scopeNote",
+      "before": "仅保留该专辑及24人范围；移除未在保存原句出现的2024年5月完整体活动月份。专辑目录日、日本7月20日先行日均不代填实际日期，不推逐人加入日期。",
+      "after": "仅保留该专辑及24人范围；移除未在保存原句出现的2024年5月完整体活动月份。专辑目录日、日本7月20日先行日均不代填实际日期，不推逐人加入日期。 后续证据更新（2026-10-16）：Soompi的2024年5月8日KST更新明确当日18:00发行专辑及主打MV，现据此补齐韩国当地发行日期与既有作品关联；原日期未知结论仅代表此前Bugs保存原句的证据范围，不新增逐人成员参与推断。"
+    },
+    {
+      "field": "sources",
+      "before": [
+        {
+          "id": "es-8c02884dae22cdf8",
+          "url": "https://music.bugs.co.kr/album/4100945",
+          "publisher": "Bugs / licensed album description",
+          "title": "ASSEMBLE24",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-16",
+          "scopeNote": "原保存韩文明确24人完整体专辑已揭晓；实际月份未知，不借日本7月先行日期补5月。",
+          "evidenceRef": "evidence/E02/task06/sources/e-triples-assemble24-complete-phase.json"
+        }
+      ],
+      "after": [
+        {
+          "id": "es-8c02884dae22cdf8",
+          "url": "https://music.bugs.co.kr/album/4100945",
+          "publisher": "Bugs / licensed album description",
+          "title": "ASSEMBLE24",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-16",
+          "scopeNote": "原保存韩文明确24人完整体专辑已揭晓；实际月份未知，不借日本7月先行日期补5月。",
+          "evidenceRef": "evidence/E02/task06/sources/e-triples-assemble24-complete-phase.json"
+        },
+        {
+          "id": "es-triples-assemble24-soompi-20240508",
+          "url": "https://www.soompi.com/article/1654800wpp/triples-announces-comeback-date-for-full-group-return-with-assemble24",
+          "publisher": "Soompi / E Cha",
+          "title": "Watch: tripleS Sings \"Girls Never Die\" In Epic MV For First Full-Group Comeback",
+          "sourcePublishedAt": {
+            "value": "2024-04-14",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "页面原始文章日期2024-04-14；采用2024-05-08 KST更新第1–2段，确认当地18:00专辑与主打MV同时发行。原始文章支持24人完整体范围；不推逐人成员参与。",
+          "evidenceRef": "HANDOFF/timeline-corrections/triples-assemble24-source.json"
+        }
+      ]
+    },
+    {
+      "field": "summary",
+      "before": "已保存的专辑介绍原句明确，tripleS揭晓24人完整体专辑《ASSEMBLE24》。",
+      "after": "tripleS以24人完整体发行专辑《ASSEMBLE24》，并发布主打曲《Girls Never Die》MV。"
+    },
+    {
+      "field": "workIds",
+      "before": [],
+      "after": [
+        "rec28ldfRTrCjG"
+      ]
+    }
+  ],
+  "before": {
+    "id": "e-triples-assemble24-complete-phase",
+    "groupId": "rec28ldfRTiCtw",
+    "eventType": "release",
+    "title": "24人完整体专辑《ASSEMBLE24》",
+    "summary": "已保存的专辑介绍原句明确，tripleS揭晓24人完整体专辑《ASSEMBLE24》。",
+    "scopeNote": "仅保留该专辑及24人范围；移除未在保存原句出现的2024年5月完整体活动月份。专辑目录日、日本7月20日先行日均不代填实际日期，不推逐人加入日期。",
+    "eventDate": null,
+    "announcementDate": null,
+    "plannedDate": null,
+    "status": "confirmed",
+    "importance": "major",
+    "memberIds": [],
+    "workIds": [],
+    "releaseKey": "triples-assemble24",
+    "relatedEventIds": [],
+    "sources": [
+      {
+        "id": "es-8c02884dae22cdf8",
+        "url": "https://music.bugs.co.kr/album/4100945",
+        "publisher": "Bugs / licensed album description",
+        "title": "ASSEMBLE24",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-16",
+        "scopeNote": "原保存韩文明确24人完整体专辑已揭晓；实际月份未知，不借日本7月先行日期补5月。",
+        "evidenceRef": "evidence/E02/task06/sources/e-triples-assemble24-complete-phase.json"
+      }
+    ],
+    "reviewStatus": "ready",
+    "holdReasons": []
+  },
+  "after": {
+    "id": "e-triples-assemble24-complete-phase",
+    "groupId": "rec28ldfRTiCtw",
+    "eventType": "release",
+    "title": "24人完整体专辑《ASSEMBLE24》",
+    "summary": "tripleS以24人完整体发行专辑《ASSEMBLE24》，并发布主打曲《Girls Never Die》MV。",
+    "scopeNote": "仅保留该专辑及24人范围；移除未在保存原句出现的2024年5月完整体活动月份。专辑目录日、日本7月20日先行日均不代填实际日期，不推逐人加入日期。 后续证据更新（2026-10-16）：Soompi的2024年5月8日KST更新明确当日18:00发行专辑及主打MV，现据此补齐韩国当地发行日期与既有作品关联；原日期未知结论仅代表此前Bugs保存原句的证据范围，不新增逐人成员参与推断。",
+    "eventDate": {
+      "value": "2024-05-08",
+      "precision": "day"
+    },
+    "announcementDate": null,
+    "plannedDate": null,
+    "status": "confirmed",
+    "importance": "major",
+    "memberIds": [],
+    "workIds": [
+      "rec28ldfRTrCjG"
+    ],
+    "releaseKey": "triples-assemble24",
+    "relatedEventIds": [],
+    "sources": [
+      {
+        "id": "es-8c02884dae22cdf8",
+        "url": "https://music.bugs.co.kr/album/4100945",
+        "publisher": "Bugs / licensed album description",
+        "title": "ASSEMBLE24",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-16",
+        "scopeNote": "原保存韩文明确24人完整体专辑已揭晓；实际月份未知，不借日本7月先行日期补5月。",
+        "evidenceRef": "evidence/E02/task06/sources/e-triples-assemble24-complete-phase.json"
+      },
+      {
+        "id": "es-triples-assemble24-soompi-20240508",
+        "url": "https://www.soompi.com/article/1654800wpp/triples-announces-comeback-date-for-full-group-return-with-assemble24",
+        "publisher": "Soompi / E Cha",
+        "title": "Watch: tripleS Sings \"Girls Never Die\" In Epic MV For First Full-Group Comeback",
+        "sourcePublishedAt": {
+          "value": "2024-04-14",
+          "precision": "day"
+        },
+        "checkedAt": "2026-10-16",
+        "scopeNote": "页面原始文章日期2024-04-14；采用2024-05-08 KST更新第1–2段，确认当地18:00专辑与主打MV同时发行。原始文章支持24人完整体范围；不推逐人成员参与。",
+        "evidenceRef": "HANDOFF/timeline-corrections/triples-assemble24-source.json"
+      }
+    ],
+    "reviewStatus": "ready",
+    "holdReasons": []
+  },
+  "evidence": {
+    "path": "HANDOFF/timeline-corrections/triples-assemble24-source.json",
+    "sha256": "9b8d4e0cf8be40806475329a46f1a1b007b6189178a846e7fcf292ab34126e2d"
+  },
+  "workIdentity": {
+    "recordId": "rec28ldfRTrCjG",
+    "groupIds": [
+      "rec28ldfRTiCtw"
+    ],
+    "url": "https://www.youtube.com/watch?v=2tda_TCjz8w",
+    "song": "Girls Never Die",
+    "officialTitle": "tripleS(트리플에스) 'Girls Never Die' Official MV"
+  },
+  "beforeDocumentSha256": "a5cc11fc14462b541960ce985e18d484c65dd5122070442e095f7eedfa3502a6",
+  "afterDocumentSha256": "f9ed785a7a36ff5e6ada871e360b953c950ed0a2fc45513a42cd8b31974bd95a"
+}

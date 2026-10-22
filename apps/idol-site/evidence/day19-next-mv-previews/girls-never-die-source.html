@@ -1,0 +1,2869 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<!-- bgsw-wbugs-ca905 -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQMQKQTGQJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZQMQKQTGQJ');
+</script>
+
+<script>
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-menu]');
+  if (el) {
+    gtag('event', 'home_gnb', { menu: el.dataset.menu });
+    return;
+  }
+
+  const headerEl = e.target.closest('[data-header]');
+  if (headerEl) {
+    gtag('event', 'home', { header: headerEl.dataset.header });
+    return;
+  }
+
+  for (const key of ['popular', 'recent', 'category', 'tag']) {
+    const essentialEl = e.target.closest('[data-' + key + ']');
+    if (essentialEl) {
+      gtag('event', 'essential_home', { [key]: essentialEl.dataset[key] });
+      return;
+    }
+  }
+});
+</script>
+
+
+
+
+
+
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="노래추천, 음악추천, 플레이리스트, essential, 에센셜, 스트리밍, 스밍, 뮤직PD, 노래듣기, 음악다운로드, 페이코" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<script type="text/javascript">
+	if(!(location.href.indexOf("music.bugs.co.kr/newPlayer") >= 0 || location.href.indexOf("music.bugs.co.kr/newRadio") >= 0 || location.href.indexOf("localhost") >= 0
+        || location.href.indexOf("help.bugs.co.kr") >= 0))
+		document.domain = 'bugs.co.kr';
+
+	var g_urlBase = "https://www.bugs.co.kr";
+	var g_urlWww = "https://www.bugs.co.kr";
+	var g_urlSecure = "https://secure.bugs.co.kr";
+	var g_urlMusic = "https://music.bugs.co.kr";
+	var g_urlMusicSecure = "https://music.bugs.co.kr";
+	var g_urlMember = "https://secure.bugs.co.kr/member";
+	var g_urlFile = "https://file.bugsm.co.kr/wbugs";
+	var g_urlFile_n ="https://file.bugsm.co.kr/nbugs"; 
+	//var g_urlSwf = "https://music.bugs.co.kr/swf";
+	var g_urlSwf = "https://music.bugs.co.kr/swf";
+	var g_urlJs = "/js";
+	var g_urlMe = "https://music.bugs.co.kr/user";
+	var g_urlThumbnail = "http://nboardr.bugs.co.kr/thumbnail";
+	var g_urlOpenalbum = "https://music.bugs.co.kr/openalbum";
+	var g_urlClipimg = "//image.bugsm.co.kr";
+	//var g_urlLikes = "https://music.bugs.co.kr/like";
+	//var g_urlPlaylists = "https://music.bugs.co.kr/playlist";
+	var g_urlLikes = "https://music.bugs.co.kr/like";
+	var g_urlPlaylists = "https://music.bugs.co.kr/playlist"
+	var g_urlListen = "https://music.bugs.co.kr/listen";
+	var g_urlMyinfo = "https://music.bugs.co.kr/myinfo";
+	var g_urlSecureMyinfo = "https://secure.bugs.co.kr/myinfo";
+	var g_urlSearch = "https://music.bugs.co.kr/search";
+	var g_urlChart = "https://music.bugs.co.kr/chart";
+	var g_urlPay = "https://music.bugs.co.kr/pay";
+	var g_urlBilling = "https://pay.bugs.co.kr";
+	var g_urlPartner = "https://www.bugs.co.kr/Partner";
+	var g_urlSecurePay = "https://secure.bugs.co.kr/pay";
+	var g_urlOtu = "https://notu.bugs.co.kr";
+	var g_urlBoard = "http://board.bugs.co.kr/notice";
+	var g_urlEvent = "https://music.bugs.co.kr/event";		
+	var g_storageServerRead = "http://nboardr.bugs.co.kr";
+	var g_storageServerWrite = "https://nboardw.bugs.co.kr";
+    var g_storageServerFileUploadTmp = g_storageServerWrite+"/adminimg/storage/upload";
+	var g_urlPanel = "https://music.bugs.co.kr/panel";
+	var g_urlAjax = "https://music.bugs.co.kr";
+	var g_urlAppsvr = "https://music.bugs.co.kr";
+	var g_urlMusicPd = "https://music.bugs.co.kr/musicpd";
+	var g_urlGenre = "https://music.bugs.co.kr/genre";
+	var g_urlMLounge = "https://mlounge.bugs.co.kr";
+	var g_urlNinanoclub = "http://ninanoclub.bugs.co.kr";
+	var g_urlM = "https://m.bugs.co.kr";
+	var g_urlDl = "https://dl.bugs.co.kr";
+	var g_urlBGT = "https://bgt.bugs.co.kr";
+	var g_urlFavorite = "https://favorite.bugs.co.kr";
+
+	var g_env = "svc";
+
+	var g_isLogged = false;
+	var g_msrl = false;
+	var g_isGuest = false;
+</script>
+
+
+<!-- cache.filePacking : true -->
+
+<!-- bugs file packing [ open_lib_js ] cached data / start -->
+<script type='text/javascript' src='//music.bugs.co.kr/filepacking/open_lib_js?env=svc&_t_s_=20261019-1812' ></script>
+<!-- bugs file packing [ open_lib_js ] cached data / end -->
+
+
+<!-- bugs file packing [ bugs_desktopLib_js ] cached data / start -->
+<script type='text/javascript' src='//music.bugs.co.kr/filepacking/bugs_desktopLib_js?env=svc&_t_s_=20261019-1812' ></script>
+<!-- bugs file packing [ bugs_desktopLib_js ] cached data / end -->
+
+
+<!-- bugs file packing [ bugs_newLib_js ] cached data / start -->
+<script type='text/javascript' src='//music.bugs.co.kr/filepacking/bugs_newLib_js?env=svc&_t_s_=20261019-1812' ></script>
+<!-- bugs file packing [ bugs_newLib_js ] cached data / end -->
+
+<!-- clova issue로 분기 -->
+<script type="text/javascript" src="/js/swfobject/swfobject.js"></script>
+
+<!-- java enum to js -->
+<script type="text/javascript" src="https://music.bugs.co.kr/js/enumtojs"></script>
+
+<script type="text/javascript" src="/js/utils/personMedia.js?version=20220420"></script>
+<script type="text/javascript" src="/js/me/playlist.js?version=20151102"></script>
+<script type="text/javascript" src="/js/log/makePCookie.js"></script>
+
+<script type="text/javascript" src="/js/player/min/mvHtml5Player.min.js?version=20261019:1812"></script>
+
+<!-- <script type="text/javascript" src="/js/utils/fileUploader.js"></script> -->
+
+<script type="text/javascript" src="/js/lib/kakao.min.js"></script>	<!-- <script type="text/javascript" src="/js/lib/kakao.story.min.js"></script> -->
+
+<!--[if gt IE 7]>
+	<script type="text/javascript" src="/js/jquery/jquery.ba-hashchange.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+	<script type="text/javascript" src="/js/html5/html5shiv.min.js"></script>
+	<script type="text/javascript" src="/js/json2.js"></script>
+<![endif]-->
+
+
+<!-- bugs file packing [ bugs_commonStyle_css ] cached data / start -->
+<link rel='stylesheet' type='text/css' href='//music.bugs.co.kr/filepacking/bugs_commonStyle_css?env=svc&_t_s_=20261019-1812' />
+<!-- bugs file packing [ bugs_commonStyle_css ] cached data / end -->
+
+
+<script async type="text/javascript" src="//cdn.nhnace.com/libs/aceat.js?pub_code=1955139738"></script>    
+<script type="text/javascript" src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+<script type="text/javascript" src="//music.bugs.co.kr/js/utils/cfTurnstile.js"></script>	
+
+
+
+
+
+		
+
+
+		<meta name="description" content="벅스에서 tripleS (트리플에스)의 멋진 영상을 지금 감상해보세요." />
+
+		<!-- open graph -->
+		<meta property="fb:app_id" content="122936701116206" />
+		<meta property="og:title" content="Girls Never Die / tripleS (트리플에스)"/>
+		<meta property="og:url" content="https://music.bugs.co.kr/mv/624885"/>
+		<meta property="og:image" content="https://image.bugsm.co.kr/mvhd/images/500/6248/624885.jpg" />
+		<meta property="og:site_name" content="벅스!"/>
+		<meta property="og:description" content="벅스에서 tripleS (트리플에스)의 멋진 영상을 지금 감상해보세요."/>
+		<meta property="og:type" content="video.other" />
+		<meta property="og:locale" content="ko_KR" />
+
+		
+		<!-- twitter card -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:url" content="https://music.bugs.co.kr/mv/624885">
+		<meta name="twitter:site" content="@Bugs_play">
+		<meta name="twitter:title" content="Girls Never Die / tripleS (트리플에스)">
+		<meta name="twitter:description" content="벅스에서 tripleS (트리플에스)의 멋진 영상을 지금 감상해보세요.">
+		<meta name="twitter:image" content="https://image.bugsm.co.kr/mvhd/images/500/6248/624885.jpg">
+		<meta name="twitter:image:src" content="https://image.bugsm.co.kr/mvhd/images/500/6248/624885.jpg">
+		<meta name="twitter:app:name:iphone" content="벅스">
+		<meta name="twitter:app:name:ipad" content="벅스">
+		<meta name="twitter:app:name:googleplay" content="벅스">
+		<meta name="twitter:app:url:iphone" content="https://music.bugs.co.kr/mv/624885">
+		<meta name="twitter:app:url:ipad" content="https://music.bugs.co.kr/mv/624885">
+		<meta name="twitter:app:url:googleplay" content="https://music.bugs.co.kr/mv/624885">
+		<meta name="twitter:app:id:iphone" content="348555322">
+		<meta name="twitter:app:id:ipad" content="420598915">
+		<meta name="twitter:app:id:googleplay" content="com.neowiz.android.bugs">
+		
+		<link rel="image_src" href="https://image.bugsm.co.kr/mvhd/images/500/6248/624885.jpg" />
+		<meta content="https://image.bugsm.co.kr/mvhd/images/500/6248/624885.jpg" itemprop="image">
+		
+		<!-- bugs.sns 용 공유 파라미터 -->
+		<script>
+			var bugsSnsParam = {
+		 			url : "https://music.bugs.co.kr/mv/624885",
+		 			text : "Girls Never Die / tripleS (트리플에스)",
+		 			img : "https://image.bugsm.co.kr/mvhd/images/500/6248/624885.jpg",
+		 			hashTag : "#슈퍼사운드 #벅스 #tripleS (트리플에스)",
+		 			corner : "벅스"
+		 		}
+		</script>
+
+		<script>
+      		 var bugsSnsParam2 = {
+                        url : "https://music.bugs.co.kr/mv/624885",
+                        text : "#2018_우리가_사랑한_음악",
+                        img : "https://image.bugsm.co.kr/mvhd/images/500/6248/624885.jpg",
+                        hashTag : "#슈퍼사운드 #벅스 #tripleS (트리플에스)",
+                        corner : "벅스"
+                    }
+		</script>
+
+
+		
+	
+	
+
+<link rel="canonical" href="https://music.bugs.co.kr/mv/624885" /><link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.bugs.co.kr/mv/624885" />
+
+
+
+
+	
+
+	<meta property="og:locale" content="ko_KR" />
+
+	
+
+
+
+
+
+	<title>Girls Never Die - 벅스</title>
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<!-- 네이버 검색용 메타 -->
+	<meta name="naver-site-verification" content="0582453e44d4365f5e597d1580911be7a3173ef7"/>
+		
+<!-- bugs file packing [ bugs_wbugsAll_css ] cached data / start -->
+<link rel='stylesheet' type='text/css' href='//music.bugs.co.kr/filepacking/bugs_wbugsAll_css?env=svc&_t_s_=20261019-1812' />
+<!-- bugs file packing [ bugs_wbugsAll_css ] cached data / end -->
+
+
+	<link rel="shortcut icon" href="https://file.bugsm.co.kr/wbugs/common/faviconBugs.ico" type="image/x-icon" />
+	<link rel="icon" href="https://file.bugsm.co.kr/wbugs/common/faviconBugs.ico" type="image/x-icon" />
+
+
+
+
+	<script>
+	$(document).ready(function(){
+		$("[dotdotdot=Y]").dotdotdot({
+			watch : "window"
+		});
+	});
+	</script>
+
+    <meta name="last-process-time" content="">
+
+
+<span itemscope="" itemtype="http://schema.org/Organization">
+	 <link itemprop="url" href="http://music.bugs.co.kr">
+	 <a itemprop="sameAs" href="https://www.facebook.com/bugsplay"></a>
+	 <a itemprop="sameAs" href="http://blog.bugs.co.kr"></a>
+	 <a itemprop="sameAs" href="https://twitter.com/bugs_play"></a>
+	 <a itemprop="sameAs" href="https://itunes.apple.com/kr/app/bugs/id348555322?mt=8"></a>
+	 <a itemprop="sameAs" href="https://play.google.com/store/apps/details?id=com.neowiz.android.bugs"></a>
+</span>
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+
+
+  try {
+    ga('create', 'UA-97174709-1', 'auto', 'billingTracker');
+  } catch (e) {
+    console.log('GoogleAnalytics Create Error');
+  }
+
+    var sendGoogleAnalyticsEventForBilling = function (category, action, label) {
+      try {
+        ga('billingTracker.send', 'event', category, action, label);
+      } catch (e) {
+        console.log('GoogleAnalytics Send Event Error');
+      }
+    }
+
+</script>
+</head>
+
+<body>
+
+
+
+	<div id="skipNav">
+		<a href="#container" onclick="$('#container').attr('tabIndex','-1');$('#container').focus();$('body,html').scrollTop(0);return false;"><span>본문 바로가기</span></a>
+		<a href="#gnb" onclick="bugs.navigator.setLeftMenuShow(true,true);$('#gnb').attr('tabIndex','-1');$('#gnb').focus();return false;"><span>메뉴 바로가기</span></a>
+		<a href="#loginHeader" onclick="$('#loginHeader a:first-of-type').attr('tabIndex','-1');$('#loginHeader a:first-of-type').focus();return false;"><span>로그인 바로가기</span></a>
+		<a href="#footer" onclick="$('#footer').attr('tabIndex','-1');$('#footer').focus();return false;"><span>하단 정보 바로가기</span></a>
+	</div>
+
+	<div id="wrap">
+
+<script>
+	$(document).ready(function(){
+					if('' == ""){
+				bugs.searchBoxAd.init();
+				bugs.searchBoxAd.checkInput();
+				bugs.searchBoxAd.inputBlur();
+				bugs.searchBoxAd.deleteText();
+			}
+
+		popWebPlayerNotification();
+
+		bugs.suggest.close();
+		var headerCommonBanner = '[{\"image_bg_color\":\"\",\"clickCount\":0,\"artist\":null,\"sub_category\":\"main\",\"crt_dt\":\"\",\"db_sts\":\"\",\"link\":\"https://music.bugs.co.kr/musicpd/albumview/48805\",\"view_target\":\"ALL\",\"title\":\"가을 온라인 탑골공원\",\"str_content_id\":\"0\",\"content_type\":\"NONE\",\"crt_id\":\"\",\"track\":null,\"view_env\":\"SVC\",\"content_id2\":\"\",\"pay_yn\":\"\",\"banner_id\":134071,\"content_id\":0,\"album\":null,\"upd_dt\":\"\",\"mv\":null,\"weight\":20,\"image_path2\":\"\",\"artist_id\":\"0\",\"mobile_target\":\"\",\"target\":\"_self\",\"upd_id\":\"\",\"wiselog_code\":\"\",\"file_ext\":\"\",\"css_class_nm\":\"\",\"image_path\":\"//image.bugsm.co.kr/banner/images/original/71/134/0/134071.jpg\",\"view_start_date\":{\"date\":1,\"hours\":14,\"seconds\":0,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":15,\"time\":1788239700000,\"day\":2},\"expire_day\":0,\"regdate\":{\"date\":1,\"hours\":14,\"seconds\":35,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":11,\"time\":1788239495000,\"day\":2},\"totalWeight\":0,\"app_nm\":\"\",\"album_id\":\"0\",\"lastupdate\":{\"date\":1,\"hours\":14,\"seconds\":35,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":11,\"time\":1788239495000,\"day\":2},\"view_end_date\":{\"date\":5,\"hours\":0,\"seconds\":0,\"month\":11,\"timezoneOffset\":-540,\"year\":126,\"minutes\":0,\"time\":1796396400000,\"day\":6},\"category\":\"WBUGS_HEADER_COMMON_BANNER\",\"status\":\"OK\"},{\"image_bg_color\":\"\",\"clickCount\":0,\"artist\":null,\"sub_category\":\"main\",\"crt_dt\":\"\",\"db_sts\":\"\",\"link\":\"https://music.bugs.co.kr/musicpd/albumview/35675\",\"view_target\":\"ALL\",\"title\":\"가을 발라드\",\"str_content_id\":\"0\",\"content_type\":\"NONE\",\"crt_id\":\"\",\"track\":null,\"view_env\":\"SVC\",\"content_id2\":\"\",\"pay_yn\":\"\",\"banner_id\":134069,\"content_id\":0,\"album\":null,\"upd_dt\":\"\",\"mv\":null,\"weight\":20,\"image_path2\":\"\",\"artist_id\":\"0\",\"mobile_target\":\"\",\"target\":\"_self\",\"upd_id\":\"\",\"wiselog_code\":\"\",\"file_ext\":\"\",\"css_class_nm\":\"\",\"image_path\":\"//image.bugsm.co.kr/banner/images/original/69/134/0/134069.jpg\",\"view_start_date\":{\"date\":1,\"hours\":14,\"seconds\":0,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":15,\"time\":1788239700000,\"day\":2},\"expire_day\":0,\"regdate\":{\"date\":1,\"hours\":14,\"seconds\":44,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":10,\"time\":1788239444000,\"day\":2},\"totalWeight\":0,\"app_nm\":\"\",\"album_id\":\"0\",\"lastupdate\":{\"date\":1,\"hours\":14,\"seconds\":44,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":10,\"time\":1788239444000,\"day\":2},\"view_end_date\":{\"date\":5,\"hours\":0,\"seconds\":0,\"month\":11,\"timezoneOffset\":-540,\"year\":126,\"minutes\":0,\"time\":1796396400000,\"day\":6},\"category\":\"WBUGS_HEADER_COMMON_BANNER\",\"status\":\"OK\"},{\"image_bg_color\":\"\",\"clickCount\":0,\"artist\":null,\"sub_category\":\"main\",\"crt_dt\":\"\",\"db_sts\":\"\",\"link\":\"https://music.bugs.co.kr/musicpd/albumview/24528\",\"view_target\":\"ALL\",\"title\":\"영화 속 재즈\",\"str_content_id\":\"0\",\"content_type\":\"NONE\",\"crt_id\":\"\",\"track\":null,\"view_env\":\"SVC\",\"content_id2\":\"\",\"pay_yn\":\"\",\"banner_id\":134067,\"content_id\":0,\"album\":null,\"upd_dt\":\"\",\"mv\":null,\"weight\":20,\"image_path2\":\"\",\"artist_id\":\"0\",\"mobile_target\":\"\",\"target\":\"_self\",\"upd_id\":\"\",\"wiselog_code\":\"\",\"file_ext\":\"\",\"css_class_nm\":\"\",\"image_path\":\"//image.bugsm.co.kr/banner/images/original/67/134/0/134067.jpg\",\"view_start_date\":{\"date\":1,\"hours\":14,\"seconds\":0,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":15,\"time\":1788239700000,\"day\":2},\"expire_day\":0,\"regdate\":{\"date\":1,\"hours\":14,\"seconds\":24,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":9,\"time\":1788239364000,\"day\":2},\"totalWeight\":0,\"app_nm\":\"\",\"album_id\":\"0\",\"lastupdate\":{\"date\":1,\"hours\":14,\"seconds\":24,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":9,\"time\":1788239364000,\"day\":2},\"view_end_date\":{\"date\":5,\"hours\":0,\"seconds\":0,\"month\":11,\"timezoneOffset\":-540,\"year\":126,\"minutes\":0,\"time\":1796396400000,\"day\":6},\"category\":\"WBUGS_HEADER_COMMON_BANNER\",\"status\":\"OK\"}]||[{\"image_bg_color\":\"\",\"clickCount\":0,\"artist\":null,\"sub_category\":\"sub\",\"crt_dt\":\"\",\"db_sts\":\"\",\"link\":\"https://music.bugs.co.kr/musicpd/albumview/48805\",\"view_target\":\"ALL\",\"title\":\"가을 온라인 탑골공원\",\"str_content_id\":\"0\",\"content_type\":\"NONE\",\"crt_id\":\"\",\"track\":null,\"view_env\":\"SVC\",\"content_id2\":\"\",\"pay_yn\":\"\",\"banner_id\":134072,\"content_id\":0,\"album\":null,\"upd_dt\":\"\",\"mv\":null,\"weight\":20,\"image_path2\":\"\",\"artist_id\":\"0\",\"mobile_target\":\"\",\"target\":\"_self\",\"upd_id\":\"\",\"wiselog_code\":\"\",\"file_ext\":\"\",\"css_class_nm\":\"\",\"image_path\":\"//image.bugsm.co.kr/banner/images/original/72/134/0/134072.jpg\",\"view_start_date\":{\"date\":1,\"hours\":14,\"seconds\":0,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":15,\"time\":1788239700000,\"day\":2},\"expire_day\":0,\"regdate\":{\"date\":1,\"hours\":14,\"seconds\":0,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":12,\"time\":1788239520000,\"day\":2},\"totalWeight\":0,\"app_nm\":\"\",\"album_id\":\"0\",\"lastupdate\":{\"date\":1,\"hours\":14,\"seconds\":0,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":12,\"time\":1788239520000,\"day\":2},\"view_end_date\":{\"date\":5,\"hours\":0,\"seconds\":0,\"month\":11,\"timezoneOffset\":-540,\"year\":126,\"minutes\":0,\"time\":1796396400000,\"day\":6},\"category\":\"WBUGS_HEADER_COMMON_BANNER\",\"status\":\"OK\"},{\"image_bg_color\":\"\",\"clickCount\":0,\"artist\":null,\"sub_category\":\"sub\",\"crt_dt\":\"\",\"db_sts\":\"\",\"link\":\"https://music.bugs.co.kr/musicpd/albumview/35675\",\"view_target\":\"ALL\",\"title\":\"가을 발라드\",\"str_content_id\":\"0\",\"content_type\":\"NONE\",\"crt_id\":\"\",\"track\":null,\"view_env\":\"SVC\",\"content_id2\":\"\",\"pay_yn\":\"\",\"banner_id\":134070,\"content_id\":0,\"album\":null,\"upd_dt\":\"\",\"mv\":null,\"weight\":20,\"image_path2\":\"\",\"artist_id\":\"0\",\"mobile_target\":\"\",\"target\":\"_self\",\"upd_id\":\"\",\"wiselog_code\":\"\",\"file_ext\":\"\",\"css_class_nm\":\"\",\"image_path\":\"//image.bugsm.co.kr/banner/images/original/70/134/0/134070.jpg\",\"view_start_date\":{\"date\":1,\"hours\":14,\"seconds\":0,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":15,\"time\":1788239700000,\"day\":2},\"expire_day\":0,\"regdate\":{\"date\":1,\"hours\":14,\"seconds\":7,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":11,\"time\":1788239467000,\"day\":2},\"totalWeight\":0,\"app_nm\":\"\",\"album_id\":\"0\",\"lastupdate\":{\"date\":1,\"hours\":14,\"seconds\":18,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":12,\"time\":1788239538000,\"day\":2},\"view_end_date\":{\"date\":5,\"hours\":0,\"seconds\":0,\"month\":11,\"timezoneOffset\":-540,\"year\":126,\"minutes\":0,\"time\":1796396400000,\"day\":6},\"category\":\"WBUGS_HEADER_COMMON_BANNER\",\"status\":\"OK\"},{\"image_bg_color\":\"\",\"clickCount\":0,\"artist\":null,\"sub_category\":\"sub\",\"crt_dt\":\"\",\"db_sts\":\"\",\"link\":\"https://music.bugs.co.kr/musicpd/albumview/24528\",\"view_target\":\"ALL\",\"title\":\"영화 속 재즈\",\"str_content_id\":\"0\",\"content_type\":\"NONE\",\"crt_id\":\"\",\"track\":null,\"view_env\":\"SVC\",\"content_id2\":\"\",\"pay_yn\":\"\",\"banner_id\":134068,\"content_id\":0,\"album\":null,\"upd_dt\":\"\",\"mv\":null,\"weight\":20,\"image_path2\":\"\",\"artist_id\":\"0\",\"mobile_target\":\"\",\"target\":\"_self\",\"upd_id\":\"\",\"wiselog_code\":\"\",\"file_ext\":\"\",\"css_class_nm\":\"\",\"image_path\":\"//image.bugsm.co.kr/banner/images/original/68/134/0/134068.jpg\",\"view_start_date\":{\"date\":1,\"hours\":14,\"seconds\":0,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":15,\"time\":1788239700000,\"day\":2},\"expire_day\":0,\"regdate\":{\"date\":1,\"hours\":14,\"seconds\":8,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":10,\"time\":1788239408000,\"day\":2},\"totalWeight\":0,\"app_nm\":\"\",\"album_id\":\"0\",\"lastupdate\":{\"date\":1,\"hours\":14,\"seconds\":8,\"month\":8,\"timezoneOffset\":-540,\"year\":126,\"minutes\":10,\"time\":1788239408000,\"day\":2},\"view_end_date\":{\"date\":5,\"hours\":0,\"seconds\":0,\"month\":11,\"timezoneOffset\":-540,\"year\":126,\"minutes\":0,\"time\":1796396400000,\"day\":6},\"category\":\"WBUGS_HEADER_COMMON_BANNER\",\"status\":\"OK\"}]';
+
+		if(headerCommonBanner != ""){
+			window._headerCommonBannerMainList = bugs.utils.parseJson(headerCommonBanner.split("||")[0]);
+			window._headerCommonBannerSubList = bugs.utils.parseJson(headerCommonBanner.split("||")[1]);
+		}
+
+		headerCommonBannerLoad(location.href);
+
+		if(bugs.cookie.get("hasCouponEmailID") == "1"){
+			$("#no_coupon_text").append('<a href="http://help.bugs.co.kr/sub?target=bugs/faq/list%3FfaqId%3D26048%26categoryNo%3D4600" class="linkFAQ" target="_blank">구매한 이용권이 보이지 않는다면?</a>');
+		}
+	});
+
+	function popWebPlayerNotification() {
+		var flag = Cookies.get("wpn");
+		if(!flag)
+			$(".slogan .tip").show();
+		else
+			$(".slogan .tip").hide();
+	};
+
+	function closeWebPlayerNotification() {
+		Cookies.set("wpn", "Y", {expires:365*50, path:"/", domain:document.domain});
+		$(".slogan .tip").hide();
+	}
+
+	function headerCommonBannerLoad(url){
+// 		url = window.location.href; //테스트용
+
+		if(url.indexOf("?") > 0){
+			url = url.substring(0,url.indexOf("?"))
+		}
+
+		if(url == g_urlWww || url == g_urlWww+"/" || url == g_urlWww+"/index" || url == g_urlMusic){ //main
+			if(typeof window._headerCommonBannerSubList != "undefined" && window._headerCommonBannerMainList.length > 0){
+				var selectedBanner = bugs.utils.getBannerRandomExtractByWeight(window._headerCommonBannerMainList);
+				$('#header div.header div.banner').empty();
+				$('#header div.header div.banner').append('<a href="'+ bugs.common_util.setLinkUrlWiseLog(selectedBanner.link, "M_header_03_03") +'" target="'+selectedBanner.target+'" onclick="bugs.logging.banner('+selectedBanner.banner_id+','+"'banner'"+')" title="'+selectedBanner.title+'-페이지 이동">'+
+						'<img src="'+selectedBanner.image_path+'" alt="'+selectedBanner.title+'"></a>');
+			}
+
+		}else{ //sub
+			if(typeof window._headerCommonBannerSubList != "undefined" && window._headerCommonBannerSubList.length > 0){
+				var selectedBanner = bugs.utils.getBannerRandomExtractByWeight(window._headerCommonBannerSubList);
+				$('#header div.header div.banner').empty();
+				$('#header div.header div.banner').append('<a href="'+selectedBanner.link+'" target="'+selectedBanner.target+'" onclick="bugs.logging.banner('+selectedBanner.banner_id+','+"'banner'"+')" title="'+selectedBanner.title+'-페이지 이동">'+
+						'<img src="'+selectedBanner.image_path+'" alt="'+selectedBanner.title+'"></a>');
+			}
+		}
+
+	};
+
+</script>
+<header id="header">
+
+
+
+
+<aside class="layer layerSettingPlayer guide title" style="display:none;">
+	<div class="box-shadow"></div>
+
+	<header class="layer-title">
+		<h1>안내</h1>
+	</header>
+
+	<section class="layerContents">
+		<p class="message">
+			음악을 재생할 플레이어를 선택해 주세요. <br/>
+			벅스 웹상단 &gt; <strong>플레이어 선택</strong>에서 플레이어를 변경할 수 있습니다.
+		</p>
+		
+		<fieldset>
+			<div class="radioChk"><input type="radio" id="radio_player_web2" name="radio_player_type2" value="WEB" checked="checked"> <label for="radio_player_web2">웹 플레이어</label>
+				<p class="playerVersionOption">
+					<input type="checkbox" id="chkAudioPlayerVersion2" name="chkAudioPlayerVersion2"> <label for="chkAudioPlayerVersion2">이전 버전 웹플레이어 사용</label>
+				</p>
+			</div>
+			<div class="radioChk"><input type="radio" id="radio_player_mac2" name="radio_player_type2" value="MAC"> <label for="radio_player_mac2">벅스 플레이어 (프로그램 설치 필요)</label>
+				<p>
+					v 1.3.0 미만인 경우,  최신 버전으로 업데이트 해주세요.<br/>
+					<a href="https://music.bugs.co.kr/serviceGuide/pc/bugsPlayer?sub=macPlayer" target="_blank">[설치 안내 바로가기]</a>
+				</p>
+			</div>
+		</fieldset>
+		
+		<p class="agreeCheck">
+			<input type="checkbox" id="setPlayerSelectionConfirm" name="setPlayer"> <label for="setPlayerSelectionConfirm">항상 선택한 플레이어로 재생</label>
+		</p>
+
+		<p class="btns">	
+			<button class="btnNormal" type="ok">확인</button>
+		</p>
+	</section>
+	
+	<button class="btnClose" type="cancel">닫기</button>
+</aside>
+<!-- //플레이어 선택 설정 안내 -->
+
+<aside class="layer layerSettingPlayer selectPlayer title" style="display:none;">
+	<div class="box-shadow"></div>
+
+	<header class="layer-title">
+		<h1>플레이어 선택</h1>
+	</header>
+
+	<section class="layerContents">
+		<p class="message">음악을 재생할 플레이어를 선택해 주세요.</p>
+		
+		<fieldset>
+			<div class="radioChk">
+				<input type="radio" id="radio_player_web1" name="radio_player_type1" value="WEB" checked="checked"> <label for="radio_player_web1">웹 플레이어</label>
+				<p class="playerVersionOption">
+					<input type="checkbox" id="chkAudioPlayerVersion1" name="chkAudioPlayerVersion1"> <label for="chkAudioPlayerVersion1">이전 버전 웹플레이어 사용</label>
+				</p>
+			</div>
+			<div class="radioChk">
+				<input type="radio" id="radio_player_mac1" name="radio_player_type1" value="MAC"> <label for="radio_player_mac1">벅스 플레이어 (프로그램 설치 필요)</label>
+				<p>
+					v 1.3.0 미만인 경우,  최신 버전으로 업데이트 해주세요.<br/>
+					<a href="https://music.bugs.co.kr/serviceGuide/pc/bugsPlayer?sub=macPlayer" target="_blank">[설치 안내 바로가기]</a>
+				</p>
+			</div>
+		</fieldset>
+
+		<p class="btns">	
+			<button class="btnNormal" type="ok">확인</button>
+		</p>
+	</section>
+	
+	<button class="btnClose" type="cancel">닫기</button>
+</aside>
+<!-- //플레이어 선택 안내 -->
+
+
+<!--
+<aside class="layer layerPlayingPlayer" style="display:none;">
+	<div class="box-shadow"></div>
+
+	<section class="layerContents">
+		<strong class="message">벅스 플레이어로 재생됩니다.</strong>
+		<ul>
+			<li>벅스 웹상단 &gt; 플레이어 선택에서 플레이어를 변경할 수 있습니다.</li>
+			<li>혹시 벅스 플레이어가 실행되지 않는다면? <a href="https://music.bugs.co.kr/serviceGuide/pc/bugsPlayer?sub=macPlayer" onclick="$('.layerPlayingPlayer').hide();" target="_blank">[설치 안내 바로가기]</a></li>
+		</ul>
+	</section>
+</aside>
+-->
+<script type="text/javascript">
+//	var ua = navigator.userAgent;
+//	window._isMacBrowser = navigator.userAgent.search("Mac") > -1;
+//	window._isMacPlayerLinked = /Mac OS X 11_/.test(ua)
+//				|| /Mac OS X 12_/.test(ua)
+//				|| (/Mac OS X 10_/.test(ua) && !/Mac OS X 10_10/.test(ua) && !/Mac OS X 10_9/.test(ua) && !/Mac OS X 10_8/.test(ua) && !/Mac OS X 10_7/.test(ua) && !/Mac OS X 10_6/.test(ua) && !/Mac OS X 10_5/.test(ua)
+//														&& !/Mac OS X 10_4/.test(ua) && !/Mac OS X 10_3/.test(ua) && !/Mac OS X 10_2/.test(ua));
+
+	var goServiceGuidePlayerPage = function(){
+		if(navigator.platform.indexOf('Win') > -1){
+			document.location.href = "https://music.bugs.co.kr/serviceGuide/pc/bugsPlayer";
+		}else{
+			document.location.href = "https://music.bugs.co.kr/serviceGuide/pc/bugsPlayer?sub=macPlayer";
+		}
+	}
+
+	$(document).ready(function() {
+		showMacPlayerSelection();
+
+	});
+
+	var showMacPlayerSelection = function() {
+		if(bugs.music.isMacPlayerSupport()) {
+			$(".slogan .selectPlayer").show();
+			$(".slogan .goGuideBugsPlayer").hide();
+
+			var dp = bugs.cookie.get('defaultPlayer') || "";
+			updateHeaderPlayerMenu(dp);
+		} else if(navigator.platform.indexOf('Win') > -1) {
+			// Windows는 벅스 플레이어(Mac 전용) 연동이 없어 설치 가이드는 그대로 두고, 플레이어 선택(웹 플레이어 버전 전환)만 같이 노출한다
+			$(".slogan .selectPlayer").show();
+			$(".slogan .goGuideBugsPlayer").show();
+
+			var dp = bugs.cookie.get('defaultPlayer') || "";
+			updateHeaderPlayerMenu(dp);
+		} else {
+			$(".slogan .selectPlayer").hide();
+			$(".slogan .goGuideBugsPlayer").show();
+		}
+	}
+
+	var updateHeaderPlayerMenu = function(type) {
+		$("#headerWebPlayer").hide();
+		$("#headerMacPlayer").hide();
+
+		if(type == "MAC") {
+			$("#headerMacPlayer").show();
+		} else { // if(type == "" || type == "WEB") {
+			$("#headerWebPlayer").show();
+			$("#headerWebPlayer").removeAttr("onclick");
+			$("#headerWebPlayer").unbind("click").bind("click", function() {
+				bugs.music.popWebPlayer();
+				bugs.wiselog.area('M_header_02_20');
+				return false;
+			});
+		}
+	}
+</script>
+
+<div class="top">
+	<div class="slogan">
+		<a href="https://music.bugs.co.kr/musicpd" class="btnPlaylistForYou">나를 위한 플리</a>
+		<a href="https://music.bugs.co.kr/essential" class="btnEssential" data-header="essential"><span class="blind">essential;</span></a>
+
+		<a id="headerWebPlayer" href="javascript:;" onclick="javascript:bugs.music.popWebPlayer();return false;" class="openPlayer" aria-label="새창">웹 플레이어</a>
+		<a id="headerMacPlayer" href="bugs3://app/wakeup" onclick="bugs.wiselog.area('M_header_02_18');" class="openPlayer" style="display:none;">벅스 플레이어</a>
+		<span class="goGuideBugsPlayer" style="display:none;">
+			<a href="javascript:;" onclick="try{bugs.wiselog.area('M_header_02_14');}catch(e){} goServiceGuidePlayerPage();">벅스 플레이어</a>
+		</span>
+		<a href="javascript:;" onclick="bugs.ui.showPlayerSettingLayer();" class="selectPlayer" aria-label="새창" style="display:none;">플레이어 선택</a>
+	</div>
+
+	<div class="rightGroup">
+		<div class="more">
+			<a href="http://help.bugs.co.kr" onclick="try{bugs.wiselog.area('M_header_02_06');}catch(e){}">고객센터</a>
+			<a href="javascript:;" onclick="try{bugs.wiselog.area('M_header_02_08');}catch(e){}bugs.ui.cp.headerGameMenuToggle();" class="game">게임</a>
+
+			<aside class="layer gameMenu">
+				<div class="box-shadow"></div>
+				<ul class="list-layer-select">
+					<li><a href="https://game.bugs.co.kr?wl_ref=sub_gnb&wl_ref=M_header_02_11" onclick="try{bugs.wiselog.area('M_header_02_11');}catch(e){}" target='_blank' data-restricted="hangame">피망</a></li>
+				</ul>
+			</aside>
+		</div>
+
+		<div class="family">
+			<a href="http://www.ticketlink.co.kr" onclick="try{bugs.wiselog.area('M_header_02_04');}catch(e){}" class="ticketlink" target="_blank">티켓링크</a>
+			<a href="https://www.hangame.com" onclick="try{bugs.wiselog.area('M_header_02_05');}catch(e){}" class="hangame" target="_blank">HANGAME</a>
+		</div>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+(function() {
+  let lastEssentialAlbumId = null;
+
+	const fetchLatestListenedAlbumId = async () => {
+		const apiUrl = g_urlMusic + '/v5api/mymusic/listened/essential';
+		const response = await fetch(apiUrl, { method: 'GET' });
+		if (!response.ok) throw new Error('Network response was not ok');
+
+		const data = await response.json();
+    if (data && data.ret_code === 0 && data.list.length > 0) {
+      return data.list[0]?.es_album_id || null;
+    }
+
+		return null;
+	}
+
+  fetchLatestListenedAlbumId()
+    .then((id) => {
+        lastEssentialAlbumId = id;
+    })
+    .catch((e) => {
+        console.error('Failed to check essential listened status', e);
+    });
+
+	const handleEssentialClick = () =>{
+    if (lastEssentialAlbumId != null) {
+      bugs.music.playEssentialAlbum(lastEssentialAlbumId);
+    } else {
+      location.href = g_urlMusic + '/essential';
+    }
+  }
+
+	const headerEssentialButton = document.querySelector('[data-header-essential]');
+	if (headerEssentialButton) {
+		headerEssentialButton.addEventListener('click', handleEssentialClick);
+	}
+})();
+</script>
+
+	<div class="header">
+		<div class="logoArea">
+			<a href="https://music.bugs.co.kr?wl_ref=M_header_03_01" class="logo seasonal hyrend"><span class="blind">Bugs! 홈으로 이동</span></a>
+		</div>
+
+		<div class="innerContainer">
+			<input type="hidden" id="_hsi"/>
+			<fieldset class="searchForm" id="hederSearchForm">
+				<div class="input">
+					<input type="text" id="headerSearchInput" title="검색어 입력" autocomplete="off" />
+					<span class="adKeywordDelete" id="keywordClearButton"><span class="blind">검색어 삭제</span></span>
+					<button class="btnSearch" id="hederSearchFormButton" onclick="bugs.search.searchFromButton();" aria-label="검색"></button>
+				</div>
+				<div id="suggest" style="display:none;"></div>
+			</fieldset>
+
+			<div class="banner"></div>
+		</div>
+
+<div class="rightSection">
+	
+
+	<div class="member">
+
+		<div id="loginHeader" class="login">
+			<a href="javascript:void(0);" onclick="bugs.wiselog.area('M_header_03_05');bugs.ui.showLoginLayerForHeader({caller:this});">로그인 / 회원가입</a>
+		</div>
+
+		<div class="notification" id="memberNotificationArea">
+			<button id="btnNotificationMain" onclick="bugs.notice.pop(this, g_isLogged);bugs.wiselog.area('M_header_03_04');" style="display:none;"><span class="blind">알림</span></button>
+			<button id="aNotificationMain" class="count" onclick="bugs.notice.pop(this, g_isLogged);bugs.wiselog.area('M_header_03_04');" style="display:none;"><span class="blind">새로운 알림</span>0<span class="blind">개</span></button>
+		</div>
+	</div>
+</div>
+
+	</div>
+</header><div id="gnb">
+	<span id="gnbHandleBtn" class="btnMenuFolding" style="display:none">MENU</span>
+
+	<div id="gnbBody">
+		<div class="links">
+			<a href="https://music.bugs.co.kr/pay/recommend" class="linkButton ticket" data-restricted="hangame" data-restricted-button="pay" data-menu="이용권구매">이용권 구매</a>
+			<div>
+				<a href="https://music.bugs.co.kr/member/vipinfo" class="link lounge" data-menu="VIP멤버십"><span class="blind">VIP</span>멤버십</a>
+				<a href="https://music.bugs.co.kr/pay/offlineCoupon" class="link coupon" data-restricted="hangame" data-menu="상품권등록">상품권 등록</a>
+			</div>
+		</div>
+
+		<nav>
+			<ul>
+				<li><a href="https://music.bugs.co.kr/chart" class="chart hyrend" lmid="lm_chart" data-menu="벅스차트">벅스차트</a></li>
+				<li><a href="https://music.bugs.co.kr/newest" class="newest hyrend" lmid="lm_news" data-menu="최신음악">최신 음악</a></li>
+				<li><a href="https://music.bugs.co.kr/genre/home" class="genre hyrend" lmid="lm_genre" data-menu="장르">장르</a></li>
+				<li class="myMusic">
+					<ul>
+						<li class="music4u"><a href="https://music.bugs.co.kr/music4u" class="music4u hyrend" lmid="lm_m4u" loginRequired="PAGE" data-menu="뮤직4U">뮤직4U</a></li>
+						<li><a href="https://music.bugs.co.kr/user/library/listen" class="recentTrack" lmid="lm_recentTrack" loginRequired="PAGE" data-menu="최근들은곡">최근 들은 곡</a> <button onclick="bugs.music.myAlbumList.listenListenedList('',true);" class="btnGnbPlay" aria-label="새창">최근 들은 곡 재생</button></li>
+						<li><a href="https://music.bugs.co.kr/user/library/listen?sort=LISTEN_COUNT" class="mostPlayed" lmid="lm_manytimesTrack" loginRequired="PAGE" data-menu="가장 많이 들은 곡">가장 많이 들은 곡</a> <button onclick="bugs.music.myAlbumList.listenListenedList('LISTEN_COUNT',true);" class="btnGnbPlay" aria-label="새창">가장 많이 들은 곡 재생</button></li>
+						<li><a href="https://music.bugs.co.kr/user/library/purchased/track" class="purchasedTrack" lmid="lm_buymusic" loginRequired="PAGE" data-menu="구매한음악">구매한 음악</a></li>
+						<li><a href="https://music.bugs.co.kr/user/library/like/track" class="likedTrack" lmid="lm_likemusic" loginRequired="PAGE" data-menu="좋아한음악">좋아한 음악</a></li>
+						<li><a href="https://music.bugs.co.kr/user/library/myalbum/list" class="myAlbum" lmid="lm_myAlbumManage" loginRequired="PAGE" data-menu="내앨범">내앨범</a></li>
+					</ul>
+				</li>
+
+				<li class="theme">
+					<ul>
+						<li><a href="https://music.bugs.co.kr/essential" class="essential hyrend" lmid="lm_essential" data-menu="essential"><span class="blind">essential;</span></a></li>
+						<li><a href="https://music.bugs.co.kr/musicpd" class="musicpdAlbum hyrend" lmid="lm_esalbum" data-menu="뮤직PD앨범">뮤직PD 앨범</a></li>
+						<li><a href="https://music.bugs.co.kr/years" class="years hyrend" lmid="lm_years" data-menu="연도별">연도별</a></li>
+					</ul>
+				</li>
+				<li class="favoriteVote">
+					<ul>
+						<li><a href="https://favorite.bugs.co.kr" class="favorite" lmid="lm_favorite" data-menu="Favorite"><span class="blind">Favorite</span></a></li>
+						<li><a href="https://favorite.bugs.co.kr/heartchargingstation" class="heartchargingstation" lmid="lm_heartchargingstation" data-restricted="hangame" data-menu="하트충전소">하트 충전소</a></li>
+					</ul>
+				</li>
+				<li><a href="https://music.bugs.co.kr/radio/radioChannel" class="radio hyrend" lmid="lm_radio" data-menu="라디오">라디오</a></li>
+				<li><a href="https://music.bugs.co.kr/musicpost" class="musicpost hyrend" lmid="lm_special" data-menu="뮤직포스트">뮤직포스트</a></li>
+				<li><a href="https://music.bugs.co.kr/connect" class="connect hyrend" lmid="lm_connect" data-menu="커넥트">커넥트 </a></li>
+			</ul>
+		</nav>
+	</div>
+</div>
+<script>
+try{
+	bugs.navigator.setLeftMenuFolder();
+}
+catch(e){}
+</script>
+		<div id="hyrendContentBody"  >
+		
+
+
+<script type="text/javascript" src="/js/utils/paging.js?version=201506111150"></script>
+
+
+<script>
+$(window.document).ready(function() {
+
+
+	mvHplayerSetting();
+
+	if($("#expandCheckLyrics").height() > 100){
+		$("#btnSwitchgear").show();
+	}
+	$("#expandCheckLyrics").remove();
+	$('#btnSwitchgear').click(function(ev) {
+		ev.preventDefault();
+
+		$target = $("#trackLyrics");
+
+		if( $target.hasClass("fold") ) {
+			$target.removeClass("fold");
+			$(this).addClass("open");
+			$(this).find('>em').html("접기");
+			setTimeout(function() {
+				bugs.navigator._arrangeLayout(true);
+			}, 300);
+		} else {
+			$target.addClass("fold");
+			$(this).removeClass("open");
+			$(this).find('>em').html("펼치기");
+			$(window).resize();
+			setTimeout(function() {
+				bugs.navigator._arrangeLayout(true);
+			}, 300);
+		}
+	});
+
+	// 일반 가사 신청
+	$('div.lyricsContainer a.btnReqLyricsNormal').click(function(e) {
+		// 가사 신청 시 로그인 체크하기
+			alert("로그인 후, 신청하실 수 있습니다.");
+			return false;
+
+		requestLyrics(6244409, "N");
+		return false;
+	});
+
+	// 실시간 가사 신청
+	$('div.lyricsContainer a.btnReqLyricsTime').click(function(e) {
+		// 가사 신청 시 로그인 체크하기
+			alert("로그인 후, 신청하실 수 있습니다.");
+			return false;
+
+		requestLyrics(6244409, "T");
+		return false;
+	});
+
+	//일반 가사 등록(가사 없을 때)
+	$("div.lyricsContainer a.btnRegLyrics").click(function (e) {
+
+		// 패널 아니면 팝업 띄움
+			this.showPanelInfoPopup();
+			return false;
+
+			openLyricsRegisterPage(6244409, "N");
+	});
+
+	window._paging_timer = setInterval(function(){
+		try{
+			if(bugs.paging) {
+				clearInterval(window._paging_timer);
+				LoadPagings();
+			}
+		}
+		catch(e){}
+	}, 100);
+
+});
+
+function mvHplayerSetting(){
+	//초기화
+
+	bugs.mvHPlayer.init(false, false, "", "https://music.bugs.co.kr", false);
+
+	bugs.mvHPlayer.addPlayer("BugsMusicVideoHomePlayer",
+			"624885",
+			1100,
+			"embed",
+			"",
+			"",
+			(bugs.music.useHtml5MvPlayer() ? true : false) // 자동 재생 옵션 (바로 재생)
+	);
+
+	// 페이지 열리면 바로 재생하기 (바로 재생 기능 제거) - 플레이어 내부에서 처리
+//	if(bugs.music.useHtml5MvPlayer()) {
+//		setTimeout(function() {
+//			bugs.mvHPlayer.playVideo("BugsMusicVideoHomePlayer");
+//		}, 500);
+//	}
+}
+
+function addLikeMusicVideo(obj) {
+	$("a.like").attr('onclick','').unbind('click');
+	bugs.music.addLikeMusicVideo('624885', {
+		anchor : $(obj),
+		success : function() {
+			bugs.mvHPlayer.updateLikeState("BugsMusicVideoHomePlayer", "like");
+		}
+	});
+}
+
+function delLikeMusicVideo(obj) {
+	$("a.like").attr('onclick','').unbind('click');
+	bugs.music.delLikeMusicVideo('624885', {
+		anchor : $(obj),
+		success : function() {
+			bugs.mvHPlayer.updateLikeState("BugsMusicVideoHomePlayer", "dislike");
+		}
+	});
+}
+
+function mvPageLikeUpdateCall(option) {
+	if(option == "like") {
+		$("a.like").addClass("selected");
+
+		var curLikeCount = (parseInt($("a.like").find("em").text()) + 1);
+		$("a.like").html("<span>좋아<em>" + curLikeCount + "</em></span>");
+		$("a.like").attr('onclick','').unbind('click');
+		$("a.like").click(function() {	// 좋아 취소 이벤트 추가
+			delLikeMusicVideo(this);
+		});
+	} else {	// (option == "dislike") {
+		$("a.like").removeClass("selected");
+
+		var curLikeCount = (parseInt($("a.like").find("em").text()) - 1);
+		$("a.like").html("<span>좋아<em>" + curLikeCount + "</em></span>");
+		$("a.like").attr('onclick','').unbind('click');
+		$("a.like").click(function() {	// 좋아 취소 이벤트 추가
+			addLikeMusicVideo(this);
+		});
+	}
+}
+
+function popLayerLyricsReport() {
+	window.open(g_urlMusic + '/lyricsReport?track_id=6244409&refer=mvpage', 'popLyricsReport', 'width=516, height=589, toolbar=0, directories=0, status=0, menubar=0, scrollbars=0, resizable=0');
+}
+
+function LoadPagings() {
+
+	var otherMvPager = new bugs.paging("otherMvList", 1, 4, 1, 1880, [4, 6]); 								// 뮤직 비디오 리스트 공통 페이징
+
+	var artistMvPager = new bugs.paging("artistMvList", 44, 4, 1, 1880, [4, 6]); 								// 뮤직 비디오 리스트 공통 페이징
+}
+
+requestLyrics = function(trackId, type) {
+
+	bugs.confirm("가사 신청을 하시겠습니까?", function() {
+		$.get(g_urlMusic + "/track/requestLyrics", {trackId : trackId, type : type}, function(ret) {
+			if(ret) {
+				alert("가사 신청이 완료되었습니다.");
+			}
+			else{
+				alert("신청되지 않았습니다.\n다시 시도해 주세요.");
+			}
+		}.bind(this));
+	});
+}
+
+openLyricsRegisterPage = function(trackId, type) {
+
+	var url ="";
+
+	if(type == "T"){
+		url = g_urlPanel+"/lyricsDtlReal?track_id="+trackId+"&proc_tp=REG";
+	}else{
+		url = g_urlPanel+"/lyricsDtl?track_id="+trackId+"&proc_tp=REG";
+	}
+	window.open(url,'name',
+		type == "T" ? 'width=852, height=652, toolbar=0, directories=0, status=0, menubar=0, scrollbars=0, resizable=0'
+					: 'width=512, height=672, toolbar=0, directories=0, status=0, menubar=0, scrollbars=0, resizable=0');
+}
+
+
+var toggleMvDesc = function(){
+	if($("#mvDescArea").hasClass("fold")){
+		$("#mvDescArea").removeClass("fold").addClass("open");
+		$("#toggleMvDescBtn").addClass("open").find("em").text("접기");
+	}else{
+		$("#mvDescArea").removeClass("open").addClass("fold");
+		$("#toggleMvDescBtn").removeClass("open").find("em").text("펼치기");
+		setTimeout(function() {
+			bugs.navigator._arrangeLayout(true);
+		}, 300);
+	}
+
+}
+
+
+
+function onClick_likeBtn(obj){
+	bugs.wiselog.area('S_mv_05');
+
+	var params = {};
+	params.ui_type = bugs.recommend.UiType.ONE;
+	params.recom_type = bugs.api.recommend.Type.Artist;
+	params.content_type = bugs.api.like.ContentType.MV;
+	params.content_id = 624885;
+	params.eventTarget = obj;
+	params.artist_yn = "Y";
+	params.showRecommendLayer = true;
+	params.apiSuccess = function(data){
+		bugs.mvHPlayer.updateLikeState("BugsMusicVideoHomePlayer", data.result.object != null ? "like" : "dislike");
+	};
+	params.apiError = function(data){
+		if(data.ret_code ==  bugs.api.RETURN_CODE.NOT_LOGGED.code){
+			bugs.ui.showLoginLayer();
+		}
+	}
+
+	bugs.like.toggle(params);
+}
+
+</script>
+
+<article id="container" class="mnMusic mnMV pgMV">
+	<section class="videoArea">
+		<div class="innerContainer">
+			<div class="mov">
+				<div id="BugsMusicVideoHomePlayer" class="videoPlayer"></div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="sectionPadding summaryInfo summaryMVPlayer">
+		<div class="innerContainer">
+			<header class="pgTitle">
+<h1>
+<span class="badge o15">[15세 이상 관람가]</span>Girls Never Die
+</h1>				<div class="btns">
+				</div>
+			</header>
+
+			<div class="basicInfo">
+				<table class="info">
+					<caption>곡 정보</caption>
+					<tbody>
+						<tr>
+							<th scope="row">아티스트</th>
+							<td>
+										<a	href="https://music.bugs.co.kr/artist/20171256?wl_ref=S_mv_04">
+											tripleS (트리플에스)
+										</a>
+							</td>
+						</tr>
+							<tr>
+                                <th scope="row">앨범</th>
+                                <td>
+                                    <a href="https://music.bugs.co.kr/album/4100945?wl_ref=S_mv_03">&lt;ASSEMBLE24&gt;</a>
+                                </td>
+                            </tr>
+							<tr>
+								<th scope="row">종류</th>
+								<td>
+									정규
+								</td>
+							</tr>
+						<tr>
+							<th scope="row">등록일</th>
+							<td>
+								2024.05.08
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">재생 횟수</th>
+							<td>2,906회</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="etcInfo">
+				<div class="etcInfoInner">
+
+					<span class="likeBtn likeMV">
+						<a href="javascript:void(0);" onclick="onClick_likeBtn(this)" class="btnNormal like "><span>좋아<em>29</em></span></a>
+						<span id="recommend_layer_area"></span>
+					</span>
+<script type="text/javascript">
+	function goBottomCommentArea(){
+		var pos = $("#comments:not(.commentsBside)").offset().top;
+		var cHeight = $("#header").height();
+		$(window).scrollTop(pos-cHeight);
+		
+	}
+</script>
+<div class="comment">
+	<h3>한마디</h3>
+	
+
+
+	
+	
+	
+	<p class="total"><span><a href="javascript:;" onclick="bugs.wiselog.area('S_mv_06'); goBottomCommentArea();" id="basicInfoTotalCount"><span cmt_disp_comment_count="onlyone">0</span>개</a>
+		
+		</span><a href="javascript:;" onclick="bugs.wiselog.area('S_mv_06'); goBottomCommentArea();" class="btnNormal">쓰기</a></p>
+	
+	
+	<div class="preview" id="basicInfoCommentPrev">
+	</div>
+	
+	<div class="preview nodata" id="basicInfoCommentPrevNone" style="display:none;">
+	</div>
+	
+</div>
+
+<div class="share">
+	<h3>공유</h3>
+	<p>
+
+
+
+		<a href="javascript:bugs.facebook2.mv('624885', 'Girls Never Die', 'tripleS (트리플에스)');" class="facebook" aria-label="새창">페이스북 공유하기</a>
+		<a href="javascript:" onclick="bugs.layermenu.openShareUrlLayer('MV',this,'624885', event);" class="link" aria-label="새창">링크 공유하기</a>
+
+
+	</p>
+</div>
+
+<script>
+function commonSnsShare(snsType){
+	if(snsType == "FACEBOOK"){
+		bugs.sns.facebook(bugsSnsParam);
+	}
+	else if(snsType == "TWITTER"){
+		bugs.sns.twitter(bugsSnsParam);
+	}
+	else if(snsType == "KAKAOSTORY"){
+		bugs.sns.kakaostory(bugsSnsParam);
+	}
+}
+</script>
+
+<!-- 앨범정보. 뮤직피디 앨범정보 -->
+
+
+							<div class="download line">
+								<h3>다운로드</h3>
+									<p><a href="javascript:;" onclick="bugs.wiselog.area('S_mv_08');bugs.music.downloadMusicVideo(624885, 'FULLHD');" data-restricted="hangame" class="btnMVDown">영상 다운받기</a></p>
+							</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="sectionPadding contents artistMvList bgGray">
+		<div class="innerContainer">
+			<header class="sectionTitle">
+				<h1>이 아티스트의 영상</h1>
+				<p class="desc">아티스트 홈에서 전체 영상를 감상할 수 있습니다. </p>
+			</header>
+
+<ul class="list tileView mvList ">
+<li class="divider ">
+<figure class="mvInfo" trackId="6512367" albumId="4156636" mvId="641975" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(641975,true); " title="Andless 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6419/641975.jpg?version=20261017005505" onerror="bugs.utils.imgError(this);" alt="Andless 영상 대표이미지" />
+<time datetime="" class="duration">02:53</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(641975); " title="Andless 영상 보기" >Andless</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2026.10.16</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'641975','6512367','', '4156636','SL','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Andless"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6512367" albumId="4156636" mvId="641931" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(641931,true); " title="Andless (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6419/641931.jpg?version=20261017005505" onerror="bugs.utils.imgError(this);" alt="Andless (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:14</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(641931); " title="Andless (Teaser) 영상 보기" >Andless (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2026.10.15</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'641931','6512367','', '4156636','SL','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Andless (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6471090" albumId="4148624" mvId="639607" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(639607,true); " title="Baby Flower 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6396/639607.jpg?version=20261016004459" onerror="bugs.utils.imgError(this);" alt="Baby Flower 영상 대표이미지" />
+<time datetime="" class="duration">03:10</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(639607); " title="Baby Flower 영상 보기" >Baby Flower</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2026.06.01</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'639607','6471090','', '4148624','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Baby Flower"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider lineBreak">
+<figure class="mvInfo" trackId="6471090" albumId="4148624" mvId="639560" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(639560,true); " title="Baby Flower (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6395/639560.jpg?version=20261016004459" onerror="bugs.utils.imgError(this);" alt="Baby Flower (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:33</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(639560); " title="Baby Flower (Teaser) 영상 보기" >Baby Flower (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2026.05.29</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'639560','6471090','', '4148624','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Baby Flower (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6380527" albumId="4134151" mvId="636211" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(636211,true); " title="Christmas Alone (Special Clip) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6362/636211.jpg?version=20260523004311" onerror="bugs.utils.imgError(this);" alt="Christmas Alone (Special Clip) 영상 대표이미지" />
+<time datetime="" class="duration">02:57</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(636211); " title="Christmas Alone (Special Clip) 영상 보기" >Christmas Alone (Special Clip)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.11.24</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'636211','6380527','', '4134151','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Christmas Alone (Special Clip)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6380525" albumId="4134151" mvId="636217" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(636217,true); " title="Bubble Gum Girl 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6362/636217.jpg?version=20260523004311" onerror="bugs.utils.imgError(this);" alt="Bubble Gum Girl 영상 대표이미지" />
+<time datetime="" class="duration">02:49</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(636217); " title="Bubble Gum Girl 영상 보기" >Bubble Gum Girl</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.11.24</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'636217','6380525','', '4134151','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Bubble Gum Girl"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6380524" albumId="4134151" mvId="636215" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(636215,true); " title="Cameo Love 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6362/636215.jpg?version=20260523004311" onerror="bugs.utils.imgError(this);" alt="Cameo Love 영상 대표이미지" />
+<time datetime="" class="duration">02:45</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(636215); " title="Cameo Love 영상 보기" >Cameo Love</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.11.24</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'636215','6380524','', '4134151','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Cameo Love"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider lineBreak">
+<figure class="mvInfo" trackId="6380523" albumId="4134151" mvId="636218" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(636218,true); " title="Fly Up 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6362/636218.jpg?version=20260523004311" onerror="bugs.utils.imgError(this);" alt="Fly Up 영상 대표이미지" />
+<time datetime="" class="duration">02:44</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(636218); " title="Fly Up 영상 보기" >Fly Up</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.11.24</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'636218','6380523','', '4134151','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Fly Up"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6380526" albumId="4134151" mvId="636214" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(636214,true); " title="Q&amp;A 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6362/636214.jpg?version=20260523004311" onerror="bugs.utils.imgError(this);" alt="Q&amp;A 영상 대표이미지" />
+<time datetime="" class="duration">03:39</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(636214); " title="Q&amp;A 영상 보기" >Q&amp;A</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.11.24</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'636214','6380526','', '4134151','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Q&A"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6380527" albumId="4134151" mvId="636180" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(636180,true); " title="Christmas Alone (Special Clip) (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6361/636180.jpg?version=20260523004311" onerror="bugs.utils.imgError(this);" alt="Christmas Alone (Special Clip) (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:17</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(636180); " title="Christmas Alone (Special Clip) (Teaser) 영상 보기" >Christmas Alone (Special Clip) (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.11.24</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'636180','6380527','', '4134151','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Christmas Alone (Special Clip) (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6380524" albumId="4134151" mvId="636132" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(636132,true); " title="Cameo Love (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6361/636132.jpg?version=20260523004311" onerror="bugs.utils.imgError(this);" alt="Cameo Love (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:16</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(636132); " title="Cameo Love (Teaser) 영상 보기" >Cameo Love (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.11.21</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'636132','6380524','', '4134151','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Cameo Love (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider lineBreak">
+<figure class="mvInfo" trackId="6380525" albumId="4134151" mvId="636108" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(636108,true); " title="Bubble Gum Girl (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6361/636108.jpg?version=20260523004311" onerror="bugs.utils.imgError(this);" alt="Bubble Gum Girl (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:27</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(636108); " title="Bubble Gum Girl (Teaser) 영상 보기" >Bubble Gum Girl (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.11.20</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'636108','6380525','', '4134151','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Bubble Gum Girl (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6380523" albumId="4134151" mvId="636082" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(636082,true); " title="Fly Up (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6360/636082.jpg?version=20260523004311" onerror="bugs.utils.imgError(this);" alt="Fly Up (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:28</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(636082); " title="Fly Up (Teaser) 영상 보기" >Fly Up (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.11.19</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'636082','6380523','', '4134151','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Fly Up (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6380526" albumId="4134151" mvId="636058" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(636058,true); " title="Q&amp;A (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6360/636058.jpg?version=20260523004311" onerror="bugs.utils.imgError(this);" alt="Q&amp;A (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:27</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(636058); " title="Q&amp;A (Teaser) 영상 보기" >Q&amp;A (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.11.18</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'636058','6380526','', '4134151','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Q&A (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6324346" albumId="4123225" mvId="633435" multiArtist="Y" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(633435,true); " title="Pink Power 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6334/633435.jpg?version=20251104003840" onerror="bugs.utils.imgError(this);" alt="Pink Power 영상 대표이미지" />
+<time datetime="" class="duration">03:09</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(633435); " title="Pink Power 영상 보기" >Pink Power</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<!-- <span onclick="bugs.layermenu.openMultiArtistSearchResultPopLayer(this, '잔망루피||잔망루피||80371456||OK\ntripleS (트리플에스)||tripleS (트리플에스)||20171256||OK');" class="more"></span> -->
+<!-- a tag title -->
+<a href="https://music.bugs.co.kr/artist/80371456?wl_ref=list_mv_03_aran" class="artistTitle" title="잔망루피" >잔망루피</a>
+<!-- a tag link -->
+<a href="javascript:void(0);" name="atag_martist_list" class="more" title="아티스트 전체보기" wise_log_str="?wl_ref=list_mv_03_aran" onclick="bugs.layermenu.openMultiArtistSearchResultPopLayer(this, '잔망루피||잔망루피||80371456||OK\\ntripleS (트리플에스)||tripleS (트리플에스)||20171256||OK', ''); return false;">
+잔망루피
+</a> </p>
+<p>
+<time datetime="">2025.07.17</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'633435','6324346','', '4123225','SL','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="80371456"
+artist_disp_nm="잔망루피"
+mv_title="Pink Power"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider lineBreak">
+<figure class="mvInfo" trackId="6324346" albumId="4123225" mvId="633315" multiArtist="Y" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(633315,true); " title="Pink Power (Teaser 2) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6333/633315.jpg?version=20251104003840" onerror="bugs.utils.imgError(this);" alt="Pink Power (Teaser 2) 영상 대표이미지" />
+<time datetime="" class="duration">00:12</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(633315); " title="Pink Power (Teaser 2) 영상 보기" >Pink Power (Teaser 2)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<!-- <span onclick="bugs.layermenu.openMultiArtistSearchResultPopLayer(this, '잔망루피||잔망루피||80371456||OK\ntripleS (트리플에스)||tripleS (트리플에스)||20171256||OK');" class="more"></span> -->
+<!-- a tag title -->
+<a href="https://music.bugs.co.kr/artist/80371456?wl_ref=list_mv_03_aran" class="artistTitle" title="잔망루피" >잔망루피</a>
+<!-- a tag link -->
+<a href="javascript:void(0);" name="atag_martist_list" class="more" title="아티스트 전체보기" wise_log_str="?wl_ref=list_mv_03_aran" onclick="bugs.layermenu.openMultiArtistSearchResultPopLayer(this, '잔망루피||잔망루피||80371456||OK\\ntripleS (트리플에스)||tripleS (트리플에스)||20171256||OK', ''); return false;">
+잔망루피
+</a> </p>
+<p>
+<time datetime="">2025.07.12</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'633315','6324346','', '4123225','SL','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Pink Power (Teaser 2)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6324346" albumId="4123225" mvId="633209" multiArtist="Y" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(633209,true); " title="Pink Power (Teaser 1) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6332/633209.jpg?version=20251104003840" onerror="bugs.utils.imgError(this);" alt="Pink Power (Teaser 1) 영상 대표이미지" />
+<time datetime="" class="duration">00:14</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(633209); " title="Pink Power (Teaser 1) 영상 보기" >Pink Power (Teaser 1)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<!-- <span onclick="bugs.layermenu.openMultiArtistSearchResultPopLayer(this, '잔망루피||잔망루피||80371456||OK\ntripleS (트리플에스)||tripleS (트리플에스)||20171256||OK');" class="more"></span> -->
+<!-- a tag title -->
+<a href="https://music.bugs.co.kr/artist/80371456?wl_ref=list_mv_03_aran" class="artistTitle" title="잔망루피" >잔망루피</a>
+<!-- a tag link -->
+<a href="javascript:void(0);" name="atag_martist_list" class="more" title="아티스트 전체보기" wise_log_str="?wl_ref=list_mv_03_aran" onclick="bugs.layermenu.openMultiArtistSearchResultPopLayer(this, '잔망루피||잔망루피||80371456||OK\\ntripleS (트리플에스)||tripleS (트리플에스)||20171256||OK', ''); return false;">
+잔망루피
+</a> </p>
+<p>
+<time datetime="">2025.07.05</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'633209','6324346','', '4123225','SL','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="80371456"
+artist_disp_nm="잔망루피"
+mv_title="Pink Power (Teaser 1)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6305558" albumId="4119156" mvId="632156" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(632156,true); " title="깨어 (Are You Alive) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6321/632156.jpg?version=20250611003110" onerror="bugs.utils.imgError(this);" alt="깨어 (Are You Alive) 영상 대표이미지" />
+<time datetime="" class="duration">03:20</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(632156); " title="깨어 (Are You Alive) 영상 보기" >깨어 (Are You Alive)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.05.12</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'632156','6305558','', '4119156','RL','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="깨어 (Are You Alive)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6305558" albumId="4119156" mvId="632041" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(632041,true); " title="깨어 (Are You Alive) (Teaser) (Awake Ver.) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6320/632041.jpg?version=20250611003110" onerror="bugs.utils.imgError(this);" alt="깨어 (Are You Alive) (Teaser) (Awake Ver.) 영상 대표이미지" />
+<time datetime="" class="duration">00:15</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(632041); " title="깨어 (Are You Alive) (Teaser) (Awake Ver.) 영상 보기" >깨어 (Are You Alive) (Teaser) (Awake Ver.)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.05.06</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'632041','6305558','', '4119156','RL','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="깨어 (Are You Alive) (Teaser) (Awake Ver.)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider lineBreak">
+<figure class="mvInfo" trackId="6305558" albumId="4119156" mvId="632040" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(632040,true); " title="깨어 (Are You Alive) (Teaser) (Care Ver.) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6320/632040.jpg?version=20250611003110" onerror="bugs.utils.imgError(this);" alt="깨어 (Are You Alive) (Teaser) (Care Ver.) 영상 대표이미지" />
+<time datetime="" class="duration">00:14</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(632040); " title="깨어 (Are You Alive) (Teaser) (Care Ver.) 영상 보기" >깨어 (Are You Alive) (Teaser) (Care Ver.)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2025.05.01</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'632040','6305558','', '4119156','RL','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="깨어 (Are You Alive) (Teaser) (Care Ver.)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6272766" albumId="4110804" mvId="629021" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(629021,true); " title="Dreaming (by 유연, 유빈, 다현, 시온) (Studio ver.) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6290/629021.jpg?version=20260520004419" onerror="bugs.utils.imgError(this);" alt="Dreaming (by 유연, 유빈, 다현, 시온) (Studio ver.) 영상 대표이미지" />
+<time datetime="" class="duration">03:07</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(629021); " title="Dreaming (by 유연, 유빈, 다현, 시온) (Studio ver.) 영상 보기" >Dreaming (by 유연, 유빈, 다현, 시온) (Studio ver.)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2024.11.26</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'629021','6272766','', '4110804','OS','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Dreaming (by 유연, 유빈, 다현, 시온) (Studio ver.)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6270601" albumId="4109792" mvId="628823" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(628823,true); " title="Polaroid (by 나경, 마유, 시온, 채원) (녹음실Ver.) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6288/628823.jpg?version=20241213014115" onerror="bugs.utils.imgError(this);" alt="Polaroid (by 나경, 마유, 시온, 채원) (녹음실Ver.) 영상 대표이미지" />
+<time datetime="" class="duration">03:02</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(628823); " title="Polaroid (by 나경, 마유, 시온, 채원) (녹음실Ver.) 영상 보기" >Polaroid (by 나경, 마유, 시온, 채원) (녹음실Ver.)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2024.11.15</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'628823','6270601','', '4109792','OS','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Polaroid (by 나경, 마유, 시온, 채원) (녹음실Ver.)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6270601" albumId="4109792" mvId="628824" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(628824,true); " title="Polaroid (by 나경, 마유, 시온, 채원) (인터뷰) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6288/628824.jpg?version=20241213014115" onerror="bugs.utils.imgError(this);" alt="Polaroid (by 나경, 마유, 시온, 채원) (인터뷰) 영상 대표이미지" />
+<time datetime="" class="duration">03:18</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(628824); " title="Polaroid (by 나경, 마유, 시온, 채원) (인터뷰) 영상 보기" >Polaroid (by 나경, 마유, 시온, 채원) (인터뷰)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2024.11.15</time>
+<span class="albumType">인터뷰</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'628824','6270601','', '4109792','OS','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Polaroid (by 나경, 마유, 시온, 채원) (인터뷰)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider lineBreak">
+<figure class="mvInfo" trackId="6267167" albumId="4108858" mvId="628255" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(628255,true); " title="Hit the Floor 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6282/628255.jpg?version=20250814011638" onerror="bugs.utils.imgError(this);" alt="Hit the Floor 영상 대표이미지" />
+<time datetime="" class="duration">03:07</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge o15">[15세 이상 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(628255); " title="Hit the Floor 영상 보기" >Hit the Floor</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2024.10.23</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'628255','6267167','', '4108858','RL','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Hit the Floor"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6267167" albumId="4108858" mvId="628132" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(628132,true); " title="Hit the Floor (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6281/628132.jpg?version=20250814011638" onerror="bugs.utils.imgError(this);" alt="Hit the Floor (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:26</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge o15">[15세 이상 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(628132); " title="Hit the Floor (Teaser) 영상 보기" >Hit the Floor (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2024.10.17</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'628132','6267167','', '4108858','RL','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Hit the Floor (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6229477" albumId="4095214" mvId="622500" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(622500,true); " title="Door 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6225/622500.jpg?version=20240116064445" onerror="bugs.utils.imgError(this);" alt="Door 영상 대표이미지" />
+<time datetime="" class="duration">03:32</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(622500); " title="Door 영상 보기" >Door</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2024.01.15</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'622500','6229477','', '4095214','SL','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Door"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6229477" albumId="4095214" mvId="622218" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(622218,true); " title="Door (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6222/622218.jpg?version=20240116064445" onerror="bugs.utils.imgError(this);" alt="Door (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:35</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(622218); " title="Door (Teaser) 영상 보기" >Door (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2024.01.01</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'622218','6229477','', '4095214','SL','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Door (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider lineBreak">
+<figure class="mvInfo" trackId="6217971" albumId="4091886" mvId="620234" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(620234,true); " title="Invincible 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6202/620234.jpg?version=20241207014542" onerror="bugs.utils.imgError(this);" alt="Invincible 영상 대표이미지" />
+<time datetime="" class="duration">03:19</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge o12">[12세 이상 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(620234); " title="Invincible 영상 보기" >Invincible</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.10.11</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'620234','6217971','', '4091886','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Invincible"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6217971" albumId="4091886" mvId="620052" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(620052,true); " title="INVINCIBLE (Teaser) (♦ Ver.) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6200/620052.jpg?version=20241207014542" onerror="bugs.utils.imgError(this);" alt="INVINCIBLE (Teaser) (♦ Ver.) 영상 대표이미지" />
+<time datetime="" class="duration">00:29</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(620052); " title="INVINCIBLE (Teaser) (♦ Ver.) 영상 보기" >INVINCIBLE (Teaser) (♦ Ver.)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.10.05</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'620052','6217971','', '4091886','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="INVINCIBLE (Teaser) (♦ Ver.)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6217971" albumId="4091886" mvId="620023" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(620023,true); " title="INVINCIBLE (Teaser) (♢ Ver.) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6200/620023.jpg?version=20241207014542" onerror="bugs.utils.imgError(this);" alt="INVINCIBLE (Teaser) (♢ Ver.) 영상 대표이미지" />
+<time datetime="" class="duration">00:17</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(620023); " title="INVINCIBLE (Teaser) (♢ Ver.) 영상 보기" >INVINCIBLE (Teaser) (♢ Ver.)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.09.28</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'620023','6217971','', '4091886','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="INVINCIBLE (Teaser) (♢ Ver.)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6212810" albumId="4090209" mvId="618959" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(618959,true); " title="Girls' Capitalism 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6189/618959.jpg?version=20230822004027" onerror="bugs.utils.imgError(this);" alt="Girls' Capitalism 영상 대표이미지" />
+<time datetime="" class="duration">04:00</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge o12">[12세 이상 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(618959); " title="Girls' Capitalism 영상 보기" >Girls' Capitalism</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.08.17</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'618959','6212810','', '4090209','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Girls\' Capitalism"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider lineBreak">
+<figure class="mvInfo" trackId="6212810" albumId="4090209" mvId="618892" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(618892,true); " title="Girls' Capitalism (Teaser) (ↁivine Ver.) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6188/618892.jpg?version=20230822004027" onerror="bugs.utils.imgError(this);" alt="Girls' Capitalism (Teaser) (ↁivine Ver.) 영상 대표이미지" />
+<time datetime="" class="duration">00:24</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(618892); " title="Girls' Capitalism (Teaser) (ↁivine Ver.) 영상 보기" >Girls' Capitalism (Teaser) (ↁivine Ver.)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.08.12</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'618892','6212810','', '4090209','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Girls\' Capitalism (Teaser) (ↁivine Ver.)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6212810" albumId="4090209" mvId="618769" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(618769,true); " title="Girls' Capitalism (Teaser) (ℂool Ver.) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6187/618769.jpg?version=20230822004027" onerror="bugs.utils.imgError(this);" alt="Girls' Capitalism (Teaser) (ℂool Ver.) 영상 대표이미지" />
+<time datetime="" class="duration">00:28</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(618769); " title="Girls' Capitalism (Teaser) (ℂool Ver.) 영상 보기" >Girls' Capitalism (Teaser) (ℂool Ver.)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.08.08</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'618769','6212810','', '4090209','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Girls\' Capitalism (Teaser) (ℂool Ver.)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6204313" albumId="4088120" mvId="617719" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(617719,true); " title="Touch+ 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6177/617719.jpg?version=20230628063947" onerror="bugs.utils.imgError(this);" alt="Touch+ 영상 대표이미지" />
+<time datetime="" class="duration">03:08</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(617719); " title="Touch+ 영상 보기" >Touch+</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.06.22</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'617719','6204313','', '4088120','SL','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Touch+"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6202056" albumId="4087408" mvId="617388" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(617388,true); " title="Cherry Gene (Visualizer) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6173/617388.jpg?version=20230706180004" onerror="bugs.utils.imgError(this);" alt="Cherry Gene (Visualizer) 영상 대표이미지" />
+<time datetime="" class="duration">01:43</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(617388); " title="Cherry Gene (Visualizer) 영상 보기" >Cherry Gene (Visualizer)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.06.06</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'617388','6202056','', '4087408','SL','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Cherry Gene (Visualizer)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider lineBreak">
+<figure class="mvInfo" trackId="6204313" albumId="4088120" mvId="617261" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(617261,true); " title="Touch+ (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6172/617261.jpg?version=20230628063947" onerror="bugs.utils.imgError(this);" alt="Touch+ (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:26</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(617261); " title="Touch+ (Teaser) 영상 보기" >Touch+ (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.05.30</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'617261','6204313','', '4088120','SL','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Touch+ (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6198318" albumId="4086158" mvId="616748" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(616748,true); " title="Cherry Talk 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6167/616748.jpg?version=20230822023401" onerror="bugs.utils.imgError(this);" alt="Cherry Talk 영상 대표이미지" />
+<time datetime="" class="duration">03:12</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge o12">[12세 이상 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(616748); " title="Cherry Talk 영상 보기" >Cherry Talk</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.05.08</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'616748','6198318','', '4086158','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Cherry Talk"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6198318" albumId="4086158" mvId="616613" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(616613,true); " title="Cherry Talk (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6166/616613.jpg?version=20230822023401" onerror="bugs.utils.imgError(this);" alt="Cherry Talk (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:19</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(616613); " title="Cherry Talk (Teaser) 영상 보기" >Cherry Talk (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.04.29</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'616613','6198318','', '4086158','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Cherry Talk (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6189987" albumId="4083763" mvId="615002" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(615002,true); " title="Rising 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6150/615002.jpg?version=20241207013434" onerror="bugs.utils.imgError(this);" alt="Rising 영상 대표이미지" />
+<time datetime="" class="duration">03:08</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(615002); " title="Rising 영상 보기" >Rising</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.02.13</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'615002','6189987','', '4083763','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Rising"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider lineBreak">
+<figure class="mvInfo" trackId="6189987" albumId="4083763" mvId="614873" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(614873,true); " title="Rising (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6148/614873.jpg?version=20241207013434" onerror="bugs.utils.imgError(this);" alt="Rising (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:21</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge o12">[12세 이상 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(614873); " title="Rising (Teaser) 영상 보기" >Rising (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2023.02.07</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'614873','6189987','', '4083763','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Rising (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6180349" albumId="4081080" mvId="612560" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(612560,true); " title="Generation (Dance Ver.) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6125/612560.jpg?version=20230411013357" onerror="bugs.utils.imgError(this);" alt="Generation (Dance Ver.) 영상 대표이미지" />
+<time datetime="" class="duration">02:49</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge o12">[12세 이상 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(612560); " title="Generation (Dance Ver.) 영상 보기" >Generation (Dance Ver.)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2022.10.28</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'612560','6180349','', '4081080','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Generation (Dance Ver.)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6180349" albumId="4081080" mvId="612523" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(612523,true); " title="Generation 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6125/612523.jpg?version=20230411013357" onerror="bugs.utils.imgError(this);" alt="Generation 영상 대표이미지" />
+<time datetime="" class="duration">03:11</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge o12">[12세 이상 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(612523); " title="Generation 영상 보기" >Generation</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2022.10.28</time>
+<span class="albumType">정규</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'612523','6180349','', '4081080','EP','FULLHD','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Generation"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider ">
+<figure class="mvInfo" trackId="6180349" albumId="4081080" mvId="612357" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(612357,true); " title="Generation (Acid Ver.) (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6123/612357.jpg?version=20230411013357" onerror="bugs.utils.imgError(this);" alt="Generation (Acid Ver.) (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:46</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge o12">[12세 이상 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(612357); " title="Generation (Acid Ver.) (Teaser) 영상 보기" >Generation (Acid Ver.) (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2022.10.22</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'612357','6180349','', '4081080','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Generation (Acid Ver.) (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li><li class="divider lineBreak">
+<figure class="mvInfo" trackId="6180349" albumId="4081080" mvId="612358" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_aran');bugs.music.viewMV(612358,true); " title="Generation (Base Ver.) (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6123/612358.jpg?version=20230411013357" onerror="bugs.utils.imgError(this);" alt="Generation (Base Ver.) (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:27</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge o12">[12세 이상 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_aran');bugs.music.viewMV(612358); " title="Generation (Base Ver.) (Teaser) 영상 보기" >Generation (Base Ver.) (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_aran" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2022.10.22</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_aran');
+bugs.layermenu.mvMoreAction(this,'612358','6180349','', '4081080','EP','NONE','STR','PASS','N', 'N','OK', '_aran','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Generation (Base Ver.) (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li> </ul>
+			<div class="paging">
+				<a href="javascript:;" class="btnPrev icon">이전</a>
+				<span class="btnPrev icon">이전</span>
+				<a href="javascript:;" class="btnNext icon">다음</a>
+				<span class="btnNext icon">다음</span>
+			</div>
+
+		</div>
+	</section>
+
+	<section class="sectionPadding contents otherMvList bgGray">
+		<div class="innerContainer">
+			<header class="sectionTitle">
+				<h1>이 영상의 다른 버전</h1>
+			</header>
+
+<ul class="list tileView mvList ">
+<li class="divider ">
+<figure class="mvInfo" trackId="6244409" albumId="4100945" mvId="624761" multiArtist="N" >
+<a href="javascript:;" class="thumbnail" onclick="bugs.wiselog.area('list_mv_01_ver');bugs.music.viewMV(624761,true); " title="Girls Never Die (Teaser) 영상 보기">
+<span class="mask"></span>
+<img src="https://image.bugsm.co.kr/mvhd/images/224/6247/624761.jpg?version=20250107015946" onerror="bugs.utils.imgError(this);" alt="Girls Never Die (Teaser) 영상 대표이미지" />
+<time datetime="" class="duration">00:32</time>
+</a>
+<figcaption class="info">
+<p class="trackTitle">
+<span class="badge all">[전체 관람가]</span> <a href="javascript:;" onclick="bugs.wiselog.area('list_mv_02_ver');bugs.music.viewMV(624761); " title="Girls Never Die (Teaser) 영상 보기" >Girls Never Die (Teaser)</a>
+</p>
+<div class="subInfo">
+<p class="artist">
+<a href="https://music.bugs.co.kr/artist/20171256?wl_ref=list_mv_03_ver" title="tripleS (트리플에스)" >tripleS (트리플에스)</a>
+</p>
+<p>
+<time datetime="">2024.05.02</time>
+<span class="albumType">티저</span>
+</p>
+</div>
+<a href="javascript:;" class="btnActions"
+onclick="bugs.wiselog.area('list_mv_04_ver');
+bugs.layermenu.mvMoreAction(this,'624761','6244409','', '4100945','RL','NONE','STR','PASS','N', 'N','OK', '_ver','OK');"
+artist_id="20171256"
+artist_disp_nm="tripleS (트리플에스)"
+mv_title="Girls Never Die (Teaser)"
+layerPositionTarget="figure"
+>기타 기능</a>
+</figcaption>
+</figure>
+</li> </ul>
+			<div class="paging">
+				<a href="javascript:;" class="btnPrev icon">이전</a>
+				<span class="btnPrev icon">이전</span>
+				<a href="javascript:;" class="btnNext icon">다음</a>
+				<span class="btnNext icon">다음</span>
+			</div>
+
+		</div>
+	</section>
+
+	<section class="sectionPadding contents lyrics">
+		<div class="innerContainer">
+			<header class="sectionTitle">
+				<h1>가사</h1>
+			</header>
+
+				<!-- 가사 있을 경우 -->
+				<div class="lyricsContainer">
+					<div id="expandCheckLyrics" class="view" style="visibility:hidden;">
+						다시 해보자<br/><br/>La La La La La La La<br/>끝까지 가볼래 포기는 안 할래 난<br/>La La La La La La La<br/>쓰러져도 일어나<br/>We Go, We High, Go Now<br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry<br/><br/>세상은 늘 화려한 꿈 내 눈이 멀게<br/>눈부셔 Shine Better<br/>난 여기 보이지 않겠지 점점<br/>초라한 내가 싫어<br/>날 보이기도 싫어<br/><br/>짙게 화장했던 이유 <br/>필터 꼈던 이유 알겠니 <br/>이젠 알겠니<br/><br/>La La La La La La La<br/>끝까지 가볼래 포기는 안 할래 난<br/>La La La La La La La<br/>쓰러져도 일어나<br/>We Go, We High, Go Now<br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry<br/><br/>비켜봐 봐 비켜 핑계는<br/>우린 본질 속에 진주가 될래<br/>꿈의 난이도 좀 더 난 높일게<br/>고통 시련 다듬어 내가 될게<br/><br/>I'm Just<br/>이제 조금 알겠어<br/>I Shine<br/>왜 날 힘들게 울게만 둔 건지<br/>Hold Me Closer Broken Myself<br/><br/>La La La La La La La<br/>끝까지 가볼래 포기는 안할래 난<br/>La La La La La La La<br/>쓰러져도 일어나<br/>We Go, We High, Go Now<br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry<br/><br/>날 따라와 달라진 날<br/>하나가 되자<br/>너의 꿈이 내가 되고<br/>우리 함께 꾸는 꿈<br/><br/>두려움 따위다 <br/>함께 있다면은<br/>이제 무서울 것 없지<br/><br/>다시 해볼까<br/><br/>La La La La La La La<br/>끝까지 가볼래 포기는 안 할래 난<br/>La La La La La La La<br/>쓰러져도 일어나<br/>We Go, We High, Go Now<br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry<br/><br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry<br/>La La La La La La La<br/>끝까지 가볼래 포기는 안 할래<br/>We Go, We High, Go Now<br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry
+
+						<div class="reference">
+							<cite class="writer">Bugs</cite> 님이 등록해 주신 가사입니다.
+						</div>
+
+					</div>
+					<div id="trackLyrics" class="view fold">
+						다시 해보자<br/><br/>La La La La La La La<br/>끝까지 가볼래 포기는 안 할래 난<br/>La La La La La La La<br/>쓰러져도 일어나<br/>We Go, We High, Go Now<br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry<br/><br/>세상은 늘 화려한 꿈 내 눈이 멀게<br/>눈부셔 Shine Better<br/>난 여기 보이지 않겠지 점점<br/>초라한 내가 싫어<br/>날 보이기도 싫어<br/><br/>짙게 화장했던 이유 <br/>필터 꼈던 이유 알겠니 <br/>이젠 알겠니<br/><br/>La La La La La La La<br/>끝까지 가볼래 포기는 안 할래 난<br/>La La La La La La La<br/>쓰러져도 일어나<br/>We Go, We High, Go Now<br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry<br/><br/>비켜봐 봐 비켜 핑계는<br/>우린 본질 속에 진주가 될래<br/>꿈의 난이도 좀 더 난 높일게<br/>고통 시련 다듬어 내가 될게<br/><br/>I'm Just<br/>이제 조금 알겠어<br/>I Shine<br/>왜 날 힘들게 울게만 둔 건지<br/>Hold Me Closer Broken Myself<br/><br/>La La La La La La La<br/>끝까지 가볼래 포기는 안할래 난<br/>La La La La La La La<br/>쓰러져도 일어나<br/>We Go, We High, Go Now<br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry<br/><br/>날 따라와 달라진 날<br/>하나가 되자<br/>너의 꿈이 내가 되고<br/>우리 함께 꾸는 꿈<br/><br/>두려움 따위다 <br/>함께 있다면은<br/>이제 무서울 것 없지<br/><br/>다시 해볼까<br/><br/>La La La La La La La<br/>끝까지 가볼래 포기는 안 할래 난<br/>La La La La La La La<br/>쓰러져도 일어나<br/>We Go, We High, Go Now<br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry<br/><br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry<br/>La La La La La La La<br/>끝까지 가볼래 포기는 안 할래<br/>We Go, We High, Go Now<br/>La La La La La La La<br/>Girls Never Die 절대 Never Cry
+
+						<div class="reference">
+							<cite class="writer">Bugs</cite> 님이 등록해 주신 가사입니다.
+						</div>
+
+					</div>
+
+					<p class="btns">
+						<a href="#trackLyrics" onclick="bugs.wiselog.area('S_mv_09');"; class="btnSwitchgear" id="btnSwitchgear" style="display:none;"><em>펼치기</em></a>
+					</p>
+
+							<a href="javascript:;"	class="btnNormal btnLyricsReport" onclick="bugs.ui.showLoginLayer();">가사 오류 제보</a>
+				</div>
+		</div>
+	</section>
+
+
+	
+
+	<script>
+	$(document).ready(function(){
+		bugs.comment.data_getCommentList({comment_group_id:272687957});
+	});
+	</script>
+
+
+
+
+<section
+	id="comments"
+	class="commentsCommon sectionPadding"
+	cmt_area="comment_group"
+	cmt_ui="mtype"
+	cmt_load_first="Y"
+	cmt_comment_group_id="272687957"
+	cmt_content_type="MV"
+	cmt_target_id="624885"
+	cmt_page="1"
+	cmt_sort_type="regdate"
+	cmt_direct_my_comment_id="0"
+	cmt_direct_comment_reply_id="0"
+	cmt_limit_comment_content_min_length="1"
+	cmt_limit_comment_content_max_length="300"
+	cmt_limit_reply_content_min_length="1"
+	cmt_limit_reply_content_max_length="300"
+	cmt_limit_oneday_comment="10"
+	cmt_limit_oneday_reply="20"
+	>
+	<div class="innerContainer">
+        <h1>한마디</h1>
+        <p class="desc">
+            (<span id="totalComment" cmt_disp_comment_count="272687957"></span>)
+        </p>
+
+		<a href="javascript:;" class="btnCommentInfo" cmt_area="showRuleBtn">한마디 운영 원칙</a>
+
+		<div class="clear"></div>
+
+
+
+
+		<fieldset class="writeComment">
+			<legend>한마디 등록 폼</legend>
+
+			<div class="cover">
+				<textarea name="" id="" cols="100" rows="10" cmt_area="commentContentEdit" title="한마디 입력"></textarea>
+				<span cmt_area="commentAttachArea"></span>
+                <span cmt_area="commentImageAttachArea"></span>
+			</div>
+
+			<style>
+			.pgSnackMusic div.btnAttach{
+				display:none;
+			}
+
+			</style>
+			<div class="btnAttach">
+				<button class="btnNormal btnAttachMusic" id="btnCommentAttachMusic" onclick="bugs.comment.attach_showSearchLayer({caller:this});bugs.comment.wiselog_attachMusicBtn()">음악 첨부</button>
+			</div>
+			<button class="btnWrite" cmt_area="commentWriteBtn">등록</button>
+			<span class="remain" cmt_area="contLenMonitor">(<em cmt_area="current">0</em>/<em cmt_area="max">300</em>)</span>
+		</fieldset>
+
+
+		<p class="sorting">
+			<button cmt_area="sortTypeBtn" cmt_sort_type_option="regdate"><span class="icon"></span>등록순</button>
+			<button cmt_area="sortTypeBtn" cmt_sort_type_option="good_cnt"><span class="icon"></span>호감순</button>
+			<button cmt_area="sortTypeBtn" cmt_sort_type_option="reply"><span class="icon"></span>답글순</button>
+		</p>
+
+
+		<p class="btns nextComments" cmt_area="prevPageBtnArea" style="display:none;">
+			<a href="javascript:;" class="btnMore" cmt_area="prevPageBtn">다음 한마디</a>
+		</p>
+
+		<ul class="listComments" cmt_area="commentlist"></ul>
+
+		<p class="btns" cmt_area="nextPageBtnArea" style="display:none;">
+			<a href="javascript:;" class="btnMore" cmt_area="nextPageBtn">이전 한마디</a>
+		</p>
+	</div>
+</section>
+
+
+
+</article>
+
+
+
+		</div>
+
+		<div class="floatingTop">
+			<a href="javascript:void(bugs.navigator.scrollTop())" class="btnTop">TOP</a>
+		</div>
+
+<script type="text/javascript" src="/js/jquery/jquery-dateFormat.min.js"></script>
+<script>
+$(window.document).ready(function() {
+			setTimeout(function(){
+				$.ajax({
+					url : g_urlAjax + "/board/notice/ajax/commonfooternotice",
+					type : "POST",
+					dataType : "json",
+					success : function(data){
+						if(data != null){
+							$("#commonFooterNotice a#commonFooterNoticeTitle").text(data.title);
+							$("#commonFooterNotice a#commonFooterNoticeTitle").attr("href", g_urlMusic + "/board/notice?srl=" + data.srl + "&wl_ref=M_footer_01_01");
+							$("#commonFooterNotice time").text(data.str_crt_dt);
+							$("#commonFooterNotice time").attr("datetime", $.format.date(Date.parse(data.str_crt_dt,"yyyy.MM.dd"), "yyyy-MM-dd"));
+						}
+					}
+				});
+			}, 1300);
+
+});
+</script>
+<script type="text/javascript" src="/js/bugs/bugs.footer.layer.js"></script>
+<footer id="footer"  >
+	<section class="sectionPadding">
+		<div class="innerContainer">
+			<div class="notice" id="commonFooterNotice">
+				<strong><a href="https://music.bugs.co.kr/board/notice">공지사항</a></strong>
+				<a href="javascript:;" id="commonFooterNoticeTitle"></a>
+				<time datetime=""></time>
+			</div>
+			<ul class="quicklinks">
+				<li><a href="https://music.bugs.co.kr/event">이벤트</a></li>
+				<li><a href="https://music.bugs.co.kr/panel">벅스패널</a></li>
+				<li><a href="https://music.bugs.co.kr/serviceGuide/home">벅스 꿀팁 보기</a></li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="sectionPadding">
+		<div class="innerContainer">
+<ul class="links">
+	<li><a href="http://www.bugscorp.co.kr" target="_blank">회사소개</a></li>
+	<li><a href="https://music.bugs.co.kr/cooperation">제휴문의</a></li>
+	<li><a href="https://music.bugs.co.kr/rules/use">이용약관</a></li>
+	<li><a href="https://music.bugs.co.kr/rules/privacy"><em>개인정보처리방침</em></a></li>
+	<li><a href="https://music.bugs.co.kr/rules/youth">청소년보호정책</a></li>
+	<li><a href="https://music.bugs.co.kr/connect/center">커넥트 센터</a></li>
+	<li><a href="http://help.bugs.co.kr">고객센터</a></li>
+	<li><a href="https://music.bugs.co.kr/sitemap">사이트맵</a></li>
+	<li><a href="https://inside.nhn.com/br/index.nhn" target="_blank">NHN 브랜드 사이트</a></li>
+</ul>
+
+<aside class="footerUtil">
+	<div class="sns">
+		<a href="https://x.com/bugs_official_" target="_blank" class="twitter">트위터</a>
+		<a href="https://www.instagram.com/bugs.official_/" target="_blank" class="instagram">인스타그램</a>
+		<a href="https://www.facebook.com/bugsplay" target="_blank" class="facebook">페이스북</a>
+	</div>
+
+	<div class="familysite">
+		<button tabindex="0" onclick="bugs.ui.cp.footerFamilySiteMenu(this);">Family Site</button>
+		<aside class="layer familysiteMenu">
+			<div class="box-shadow"></div>
+			<ul class="list-layer-select">
+				<li><a href="http://www.nhn.com" target="_blank">NHN</a></li>
+				<li><a href="http://me.sayclub.com" target="_blank">세이클럽</a></li>
+			</ul>
+		</aside>
+	</div>
+</aside>
+
+<ul class="footerCompanyInfo">
+	<li>(주)엔에이치엔벅스</li>
+	<li>06043 서울특별시 강남구 강남대로 586, 제이빌딩</li>
+	<li>대표이사 : 왕문주</li>
+	<li>고객센터 : <a href="mailto:help@help.bugs.co.kr">help@help.bugs.co.kr</a> / 1566-4882 (유료)</li>
+	<li class="listStart">사업자등록번호 : 211-87-15555</li>
+	<li>통신판매업 신고번호 : 제2023-강남-04353호</li>
+	<li>호스팅 제공자 : (주)엔에이치엔벅스</li>
+	<li><a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=2118715555" target="_blank">사업자 정보 확인</a></li>
+	<li>© NHN Bugs Corp. All rights reserved.</li>
+</ul>
+
+<script>
+
+if (!bugs.ui.cp) {
+	bugs.ui.cp = {
+		headerGameMenuToggle : function() {
+			$('.layer.gameMenu').toggle();
+		},
+		footerFamilySiteMenu : function() {
+			$('.layer.familysiteMenu').toggle();
+		}
+	};
+}
+
+</script>
+
+
+			<ul class="emblem">
+					<li>
+							<a href="https://help.bugs.co.kr/hc/notice/2586/" target="_blank">
+								<img src="https://file.bugsm.co.kr/wbugs/common/footer/i_footerEmblemGooglePlayV20260102.png" alt="" loading="lazy" />
+							</a>
+						<span>Google Play 선정
+2018 올해를 빛낸 앱</span>
+					</li>
+					<li>
+							<a href="https://music.bugs.co.kr/specialView/supersound/NJ6P8GAP0ERQFD84GUCF">
+								<img src="https://file.bugsm.co.kr/wbugs/common/footer/i_footerEmblemHiResV20260102.png" alt="" loading="lazy" />
+							</a>
+						<span>하이 레졸루션
+공식인증</span>
+					</li>
+					<li>
+							<button onclick="bugs.footer.layer.showIsms();">
+								<img src="https://file.bugsm.co.kr/wbugs/common/footer/i_footerEmblemISMSV20260102.png" alt="" loading="lazy" />
+							</button>
+						<span>정보보호 관리체계
+ISMS 인증</span>
+					</li>
+					<li>
+							<img src="https://file.bugsm.co.kr/wbugs/common/footer/i_footerEmblemClmsV20260102.png" alt="" loading="lazy" />
+						<span>음악저작권
+이용 허락 인증</span>
+					</li>
+					<li>
+							<a href="https://www.kcopa.or.kr/lay1/S1T356C360/contents.do" target="_blank">
+								<img src="https://file.bugsm.co.kr/wbugs/common/footer/i_footerEmblemCopyrightokV20260102.png" alt="" loading="lazy" />
+							</a>
+						<span>저작권안심</span>
+					</li>
+			</ul>
+		</div>
+	</section>
+</footer>
+
+	</div>
+<!--<a href="javascript:void(playlists.resetPlaylist())">리셋하기</a>-->
+<script type="text/javascript">
+$(document).ready(function(){
+	try{
+		bugs.navigator.addHyrendUnloadHandler(function(){playlists.playlistLayerHide();},"track2playlistForMoveHyrend", true);
+	}catch(e){}
+
+});
+</script>
+<aside id="track2playlist" class="layer layer-select addMyAlbum" style="display:none;">
+	<div class="box-shadow"></div>
+	<h1>내 앨범 목록</h1>
+	<div class="innerScroll" autoScroll="N" id="track2playlistScrollArea">
+		<ul class="list-layer-select">
+						<li><a href="javascript:;" onclick="$('#track2playlist').hide('blind', {}, 'normal', function() { bugs.ui.modalLayer.hide();playlists.make(); });" title="새 앨범 만들기">+ 새 앨범 만들기</a></li>
+		</ul>
+	</div>
+</aside>
+
+<!-- 레이어 - 내 앨범 수정 -->
+<aside id="editMyAlbumLayer" class="layer createMyAlbum" style="display:none; z-index:1002;">
+	<div class="box-shadow"></div>
+
+	<header class="layer-title">
+		<h1>앨범 정보 수정</h1>
+	</header>
+
+	<section class="layerContents">
+
+		<fieldset>
+			<legend>내 앨범 수정</legend>
+
+			<table class="formLayout">
+				<caption>내 앨범 수정 입력 폼</caption>
+				<tbody>
+					<tr>
+						<th scope="row"><label for="editMyAlbumLayerPhoto" class="lb">사진</label></th>
+						<td>
+							<img src="https://file.bugsm.co.kr/wbugs/common/i_defaultMyAlbum_50x50.png" id="editMyAlbumLayerPhoto_img" alt="" class="thumb">
+							<div class="inputFile">
+								<input type="text" id="editMyAlbumLayerPhoto" class="file"  diabled />
+								<button class="btnNormal" type="button" id="searchImage">찾아보기</button>
+								<input type="hidden" id="editMyAlbumLayerPhoto_path" title="사진경로" />
+							</div>
+						</td>
+						<td class="right" style="width:55px;"></td>
+					</tr>
+					<tr>
+						<th scope="row" style="width:55px;"><label for="editMyAlbumLayerTitle" class="lb">제목</label></th>
+						<td><input type="text" id="editMyAlbumLayerTitle" class="txt" value="111"></td>
+						<td class="right" style="width:55px;"><span class="remain" id="editMyAlbumLayerTitleRemain">(0/100)</span></td>
+					</tr>
+					<tr>
+						<th  scope="row"><label for="editMyAlbumLayerDescribe" class="lb">설명</label></th>
+						<td>
+							<textarea name=""  id="editMyAlbumLayerDescribe" cols="30" rows="10" class="txtArea"></textarea>
+						</td>
+						<td class="right"><span class="remain" id="editMyAlbumLayerDescribeRemain">(0/300)</span></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p class="btns">
+				<button id="editMyAlbumLayerUpdate" btnType="ok" class="btnNormal">저장</button>
+				<button id="editMyAlbumLayerCancel" btnType="cancel" class="btnNormal">취소</button>
+			</p>
+		</fieldset>
+
+	</section>
+	<button class="btnClose" btnType="close" id="editMyAlbumLayerClose">닫기</button>
+</aside>
+
+
+<aside id="createMyAlbumLayer" class="layer createMyAlbum" style="display:none; z-index:1000;">
+	<div class="box-shadow"></div>
+
+	<header class="layer-title">
+		<h1 id="createMyAlbumLayerHeader"></h1> 
+	</header>
+
+	<section class="layerContents">
+
+		<fieldset>
+			<legend id="createMyAlbumLayerLegend"></legend> 
+
+			<div class="row">
+				<label for="createMyAlbumLayerTitle">제목</label>
+				<div class="col">
+					<input type="text" id="createMyAlbumLayerTitle" class="txt" value="">
+					<span class="remain" id="createMyAlbumLayerTitleRemain">(0/100)</span>
+				</div>
+			</div>
+
+			<div class="btns">
+				<button id="createMyAlbumLayerUpdate" btnType="ok" class="btnNormal strong">저장</button>
+				<button id="createMyAlbumLayerCancel" btnType="cancel" class="btnNormal">취소</button>
+			</div>
+		</fieldset>
+
+	</section>
+	<button class="btnClose" btnType="close" id="crerateMyAlbumLayerClose">닫기</button>
+</aside>
+<span id="removeSpecialCharTarget" style="display:none;"></span>
+<script>
+try{
+	bugs.navigator.setLeftMenuShowOnLoad();
+}
+catch(e){}
+$(document).ready(function(){
+	var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+	if(isFirefox){
+		$("#skipNav").css({top:"1px", left:"1px"});
+	}
+});
+</script>
+
+<!-- 470517  -->
+<script>
+try {
+		var expTime = (new Date()).getTime() + (60*60*24*30*1000);
+	var expTime2 = (new Date()).getTime() - (60*5*1000);
+	    bugs.cookie.set("last_login_log_date_cookie","", expTime2, "/", "bugs.co.kr");
+}
+catch(e){}
+</script>
+<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->
+
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script>
+<script type="text/javascript">
+    if (!wcs_add) var wcs_add={};
+    wcs_add["wa"] = "s_595467f7a42";
+    if (!_nasa) var _nasa={};
+    wcs.inflow("bugs.co.kr");
+    wcs_do(_nasa);
+</script>
+</body>
+</html>

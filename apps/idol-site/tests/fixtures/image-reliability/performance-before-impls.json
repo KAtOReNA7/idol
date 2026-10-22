@@ -1,0 +1,478 @@
+{
+  "capturedAt": "2026-10-16T13:20:29.856Z",
+  "baselineCommit": "adb7501342baf9c4d28707db3072a99b21cb122c",
+  "method": "Exact AST declarations and required imports selected from before-source saved before implementation; function bodies are verbatim production source.",
+  "records": {
+    "components/artist-sample.tsx": {
+      "source": "components/artist-sample.tsx",
+      "sourceSha256": "6e50e97bf77dddd2c5f65a643c1ea7a81c9fa8cbb055331541f1abe58e436a6b",
+      "selected": [
+        "Picture",
+        "VideoThumb"
+      ],
+      "declarations": [
+        {
+          "name": "Picture",
+          "line": 28,
+          "text": "function Picture(props:PictureProps){return <PictureImage key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "PictureImage",
+          "line": 29,
+          "text": "function PictureImage({src,alt,fit='cover',priority=false}:PictureProps){const [failed,setFailed]=useState(false);return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} style={{objectFit:fit}} onError={()=>setFailed(true)}/>:<div className=\"as-photo-empty\"><ImageIcon size={24}/><span>{src?'图片暂未加载':'暂无对应造型图'}</span></div>;}"
+        },
+        {
+          "name": "VideoThumb",
+          "line": 31,
+          "text": "function VideoThumb({work,large=false}:{work:Work;large?:boolean}){return <VideoThumbImage key={work.id+work.url} work={work} large={large}/>;}"
+        },
+        {
+          "name": "VideoThumbImage",
+          "line": 32,
+          "text": "function VideoThumbImage({work,large=false}:{work:Work;large?:boolean}){const id=videoId(work.url),[failed,setFailed]=useState(false);return <div className={'as-video-thumb'+(large?' large':'')}>{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"as-text-cover\" aria-label={`${work.song||work.name} 文字作品封面`}><Play size={large?26:15}/>{large&&<strong>{work.song||work.name}</strong>}<span>{large?'MUSIC VIDEO':'MV'}</span></div>}</div>;}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ChevronRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {videoId} from '@/lib/idol/values';\nfunction Picture(props:PictureProps){return <PictureImage key={props.src} {...props}/>;}\nfunction PictureImage({src,alt,fit='cover',priority=false}:PictureProps){const [failed,setFailed]=useState(false);return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} style={{objectFit:fit}} onError={()=>setFailed(true)}/>:<div className=\"as-photo-empty\"><ImageIcon size={24}/><span>{src?'图片暂未加载':'暂无对应造型图'}</span></div>;}\nfunction VideoThumb({work,large=false}:{work:Work;large?:boolean}){return <VideoThumbImage key={work.id+work.url} work={work} large={large}/>;}\nfunction VideoThumbImage({work,large=false}:{work:Work;large?:boolean}){const id=videoId(work.url),[failed,setFailed]=useState(false);return <div className={'as-video-thumb'+(large?' large':'')}>{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"as-text-cover\" aria-label={`${work.song||work.name} 文字作品封面`}><Play size={large?26:15}/>{large&&<strong>{work.song||work.name}</strong>}<span>{large?'MUSIC VIDEO':'MV'}</span></div>}</div>;}\nexport {Picture,VideoThumb};\n"
+    },
+    "components/illit-artist.tsx": {
+      "source": "components/illit-artist.tsx",
+      "sourceSha256": "f281642337773d5e54d5f4ab8b0af11d8461380e3a92068a7db339462b1c791a",
+      "selected": [
+        "Picture",
+        "WorkCard",
+        "Thumb"
+      ],
+      "declarations": [
+        {
+          "name": "LinkTo",
+          "line": 25,
+          "text": "function LinkTo({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 26,
+          "text": "function Picture(props:{src?:string;alt:string;priority?:boolean}){return <PictureImage key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "PictureImage",
+          "line": 27,
+          "text": "function PictureImage({src,alt,priority=false}:{src?:string;alt:string;priority?:boolean}){const [failed,setFailed]=useState(false);return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"il-photo-empty\"><ImageIcon size={24}/><span>{src?'图片暂未加载':'暂无对应造型图'}</span></div>;}"
+        },
+        {
+          "name": "Thumb",
+          "line": 28,
+          "text": "function Thumb({work}:{work:Work}){const [failed,setFailed]=useState(false),id=videoId(work.url);return <div className=\"il-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} referrerPolicy=\"no-referrer\" loading=\"lazy\" onError={()=>setFailed(true)}/>:<div className=\"il-text-cover\"><Play size={22}/><strong>{work.song||work.name}</strong><small>MUSIC VIDEO</small></div>}</div>;}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 30,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){return <article className=\"il-work-card\"><LinkTo href={artistWorkUrl(work,false,returnTo)}><Thumb work={work}/><div className=\"il-work-copy\"><h3>{work.song||work.name}</h3><p>{[work.version||work.videoType,work.releaseDate].filter(Boolean).join(' · ')}</p><span className=\"il-work-score\">我的 MV 分 <strong>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</strong></span></div></LinkTo><div className=\"il-work-actions\"><LinkTo href={artistWorkUrl(work,false,returnTo)}><Play size={14}/>看 MV</LinkTo>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<LinkTo href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={13}/></LinkTo>}</div></article>;}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ChevronRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nfunction LinkTo({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string;alt:string;priority?:boolean}){return <PictureImage key={props.src} {...props}/>;}\nfunction PictureImage({src,alt,priority=false}:{src?:string;alt:string;priority?:boolean}){const [failed,setFailed]=useState(false);return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"il-photo-empty\"><ImageIcon size={24}/><span>{src?'图片暂未加载':'暂无对应造型图'}</span></div>;}\nfunction Thumb({work}:{work:Work}){const [failed,setFailed]=useState(false),id=videoId(work.url);return <div className=\"il-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} referrerPolicy=\"no-referrer\" loading=\"lazy\" onError={()=>setFailed(true)}/>:<div className=\"il-text-cover\"><Play size={22}/><strong>{work.song||work.name}</strong><small>MUSIC VIDEO</small></div>}</div>;}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){return <article className=\"il-work-card\"><LinkTo href={artistWorkUrl(work,false,returnTo)}><Thumb work={work}/><div className=\"il-work-copy\"><h3>{work.song||work.name}</h3><p>{[work.version||work.videoType,work.releaseDate].filter(Boolean).join(' · ')}</p><span className=\"il-work-score\">我的 MV 分 <strong>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</strong></span></div></LinkTo><div className=\"il-work-actions\"><LinkTo href={artistWorkUrl(work,false,returnTo)}><Play size={14}/>看 MV</LinkTo>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<LinkTo href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={13}/></LinkTo>}</div></article>;}\nexport {Picture,WorkCard,Thumb};\n"
+    },
+    "components/expanded-artist.tsx": {
+      "source": "components/expanded-artist.tsx",
+      "sourceSha256": "d9f3942fec7e912550f6d30e09f02a0e9a20d0d0a8d9bca0264c52c0ac205a8f",
+      "selected": [
+        "Picture",
+        "WorkCard",
+        "Thumb"
+      ],
+      "declarations": [
+        {
+          "name": "A",
+          "line": 35,
+          "text": "function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 36,
+          "text": "function Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 37,
+          "text": "function ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){const [failed,setFailed]=useState(false);return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"nx-empty-photo\"><ImageIcon size={24}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;}"
+        },
+        {
+          "name": "Wave",
+          "line": 38,
+          "text": "function Wave(){return <svg className=\"nx-wave\" viewBox=\"0 0 700 80\" aria-hidden=\"true\"><path d=\"M0 40C100-30 250 100 350 40S600-30 700 40\"/><ellipse cx=\"350\" cy=\"40\" rx=\"105\" ry=\"25\"/></svg>;}"
+        },
+        {
+          "name": "Thumb",
+          "line": 40,
+          "text": "function Thumb({work}:{work:Work}){const [failed,setFailed]=useState(false),id=videoId(work.url);return <div className=\"nx-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} referrerPolicy=\"no-referrer\" loading=\"lazy\" onError={()=>setFailed(true)}/>:<div className=\"nx-text-cover\"><Wave/><strong>{work.song||work.name}</strong><Play size={22}/></div>}</div>;}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 41,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){return <article className=\"nx-work\"><A href={artistWorkUrl(work,false,returnTo)}><Thumb work={work}/><div className=\"nx-work-copy\"><small>{work.videoType||'MV'} · {work.releaseDate}</small><h3>{work.song||work.name}</h3><p>{work.version||work.videoType}</p><span>我的 MV 分 <strong>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</strong></span></div></A><div className=\"nx-work-actions\"><A href={artistWorkUrl(work,false,returnTo)}><Play size={14}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={13}/></A>}</div></article>;}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ChevronRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection,type ArtistSalesRelease} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nfunction A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}\nfunction ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){const [failed,setFailed]=useState(false);return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"nx-empty-photo\"><ImageIcon size={24}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;}\nfunction Wave(){return <svg className=\"nx-wave\" viewBox=\"0 0 700 80\" aria-hidden=\"true\"><path d=\"M0 40C100-30 250 100 350 40S600-30 700 40\"/><ellipse cx=\"350\" cy=\"40\" rx=\"105\" ry=\"25\"/></svg>;}\nfunction Thumb({work}:{work:Work}){const [failed,setFailed]=useState(false),id=videoId(work.url);return <div className=\"nx-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} referrerPolicy=\"no-referrer\" loading=\"lazy\" onError={()=>setFailed(true)}/>:<div className=\"nx-text-cover\"><Wave/><strong>{work.song||work.name}</strong><Play size={22}/></div>}</div>;}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){return <article className=\"nx-work\"><A href={artistWorkUrl(work,false,returnTo)}><Thumb work={work}/><div className=\"nx-work-copy\"><small>{work.videoType||'MV'} · {work.releaseDate}</small><h3>{work.song||work.name}</h3><p>{work.version||work.videoType}</p><span>我的 MV 分 <strong>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</strong></span></div></A><div className=\"nx-work-actions\"><A href={artistWorkUrl(work,false,returnTo)}><Play size={14}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={13}/></A>}</div></article>;}\nexport {Picture,WorkCard,Thumb};\n"
+    },
+    "components/ive-artist.tsx": {
+      "source": "components/ive-artist.tsx",
+      "sourceSha256": "98eef00a9c639f36988e897ea3e1ead9a5d8347bd20b612b77485248426823ed",
+      "selected": [
+        "Picture",
+        "WorkCard"
+      ],
+      "declarations": [
+        {
+          "name": "A",
+          "line": 26,
+          "text": "function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 27,
+          "text": "function Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 28,
+          "text": "function ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"iv-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 42,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"iv-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"iv-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"iv-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"iv-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"iv-work-actions\"><A className=\"iv-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"iv-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nfunction A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}\nfunction ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"iv-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"iv-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"iv-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"iv-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"iv-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"iv-work-actions\"><A className=\"iv-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"iv-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}\nexport {Picture,WorkCard};\n"
+    },
+    "components/kiof-artist.tsx": {
+      "source": "components/kiof-artist.tsx",
+      "sourceSha256": "ec89973c9c655b194f61da5c1ea23ebf7656559d8e3c8be9043b82a4c514da29",
+      "selected": [
+        "Picture",
+        "WorkCard"
+      ],
+      "declarations": [
+        {
+          "name": "A",
+          "line": 26,
+          "text": "function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 27,
+          "text": "function Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 28,
+          "text": "function ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"kf-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 42,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"kf-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"kf-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"kf-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"kf-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"kf-work-actions\"><A className=\"kf-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"kf-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nfunction A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}\nfunction ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"kf-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"kf-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"kf-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"kf-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"kf-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"kf-work-actions\"><A className=\"kf-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"kf-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}\nexport {Picture,WorkCard};\n"
+    },
+    "components/stayc-artist.tsx": {
+      "source": "components/stayc-artist.tsx",
+      "sourceSha256": "84c09e4cace50a7ecc15ed479d8e014e7849223123069a865978fa0dc25005c6",
+      "selected": [
+        "Picture",
+        "WorkCard"
+      ],
+      "declarations": [
+        {
+          "name": "A",
+          "line": 26,
+          "text": "function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 27,
+          "text": "function Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 28,
+          "text": "function ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"sc-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 42,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"sc-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"sc-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"sc-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"sc-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"sc-work-actions\"><A className=\"sc-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"sc-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nfunction A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}\nfunction ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"sc-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"sc-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"sc-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"sc-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"sc-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"sc-work-actions\"><A className=\"sc-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"sc-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}\nexport {Picture,WorkCard};\n"
+    },
+    "components/nmixx-artist.tsx": {
+      "source": "components/nmixx-artist.tsx",
+      "sourceSha256": "43dc718b0c17e484c34ad52d2fe6b0ab5fe460bde954a08a5473574b88fd3344",
+      "selected": [
+        "Picture",
+        "WorkCard"
+      ],
+      "declarations": [
+        {
+          "name": "A",
+          "line": 26,
+          "text": "function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 27,
+          "text": "function Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 28,
+          "text": "function ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"nx-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 42,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"nx-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"nx-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"nx-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"nx-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"nx-work-actions\"><A className=\"nx-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"nx-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nfunction A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}\nfunction ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"nx-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"nx-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"nx-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"nx-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"nx-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"nx-work-actions\"><A className=\"nx-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"nx-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}\nexport {Picture,WorkCard};\n"
+    },
+    "components/hearts2hearts-artist.tsx": {
+      "source": "components/hearts2hearts-artist.tsx",
+      "sourceSha256": "06335af4adf6a3a5f6c61cfcc0a2870487d104c5a087ea240015949af838063c",
+      "selected": [
+        "Picture",
+        "WorkCard"
+      ],
+      "declarations": [
+        {
+          "name": "A",
+          "line": 26,
+          "text": "function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 27,
+          "text": "function Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 28,
+          "text": "function ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"h2h-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 42,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"h2h-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"h2h-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"h2h-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"h2h-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"h2h-work-actions\"><A className=\"h2h-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"h2h-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nfunction A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}\nfunction ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"h2h-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"h2h-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"h2h-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"h2h-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"h2h-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"h2h-work-actions\"><A className=\"h2h-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"h2h-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}\nexport {Picture,WorkCard};\n"
+    },
+    "components/kiiikiii-artist.tsx": {
+      "source": "components/kiiikiii-artist.tsx",
+      "sourceSha256": "9149c7c6f41ed8add0b8d5ab72612874229694f089479721b127023e7fca8904",
+      "selected": [
+        "Picture",
+        "WorkCard"
+      ],
+      "declarations": [
+        {
+          "name": "A",
+          "line": 26,
+          "text": "function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 27,
+          "text": "function Picture(props:{src?:string|null;alt:string;priority?:boolean;missingLabel?:string}){return <ImageWithFallback key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 28,
+          "text": "function ImageWithFallback({src,alt,priority=false,missingLabel='本 MV 个人造型图暂缺'}:{src?:string|null;alt:string;priority?:boolean;missingLabel?:string}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"kk-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':missingLabel}</span></div>;\n}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 42,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"kk-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"kk-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"kk-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"kk-score\">我的{work.videoType==='官方MV'?' MV':'作品'}分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"kk-work-actions\"><A className=\"kk-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"kk-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nfunction A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string|null;alt:string;priority?:boolean;missingLabel?:string}){return <ImageWithFallback key={props.src} {...props}/>;}\nfunction ImageWithFallback({src,alt,priority=false,missingLabel='本 MV 个人造型图暂缺'}:{src?:string|null;alt:string;priority?:boolean;missingLabel?:string}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"kk-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':missingLabel}</span></div>;\n}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"kk-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"kk-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"kk-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"kk-score\">我的{work.videoType==='官方MV'?' MV':'作品'}分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"kk-work-actions\"><A className=\"kk-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"kk-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}\nexport {Picture,WorkCard};\n"
+    },
+    "components/lesserafim-artist.tsx": {
+      "source": "components/lesserafim-artist.tsx",
+      "sourceSha256": "763d84f192899d74bcd2687503603b7e805dd742834ac2738ead59e6b98ab142",
+      "selected": [
+        "Picture",
+        "WorkCard"
+      ],
+      "declarations": [
+        {
+          "name": "A",
+          "line": 26,
+          "text": "function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 27,
+          "text": "function Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 28,
+          "text": "function ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"lf-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 42,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"lf-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"lf-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"lf-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"lf-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"lf-work-actions\"><A className=\"lf-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"lf-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nfunction A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}\nfunction ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"lf-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"lf-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"lf-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"lf-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"lf-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"lf-work-actions\"><A className=\"lf-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"lf-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}\nexport {Picture,WorkCard};\n"
+    },
+    "components/itzy-artist.tsx": {
+      "source": "components/itzy-artist.tsx",
+      "sourceSha256": "d5369632a4b68ea50485dbf295f0f70942f2362b201e4b2478c1e07f34eae1f7",
+      "selected": [
+        "Picture",
+        "WorkCard"
+      ],
+      "declarations": [
+        {
+          "name": "A",
+          "line": 26,
+          "text": "function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 27,
+          "text": "function Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 28,
+          "text": "function ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"iz-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 42,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"iz-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"iz-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"iz-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"iz-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"iz-work-actions\"><A className=\"iz-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"iz-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nfunction A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}\nfunction ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"iz-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>;\n}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"iz-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"iz-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"iz-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"iz-score\">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"iz-work-actions\"><A className=\"iz-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"iz-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}\nexport {Picture,WorkCard};\n"
+    },
+    "components/saymyname-artist.tsx": {
+      "source": "components/saymyname-artist.tsx",
+      "sourceSha256": "68eb6d14ebc2eb9033f876c639a628e0446f58223d18596230f10966b8702672",
+      "selected": [
+        "Picture",
+        "WorkCard"
+      ],
+      "declarations": [
+        {
+          "name": "A",
+          "line": 26,
+          "text": "function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 27,
+          "text": "function Picture(props:{src?:string|null;alt:string;priority?:boolean;missingLabel?:string}){return <ImageWithFallback key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 28,
+          "text": "function ImageWithFallback({src,alt,priority=false,missingLabel='本 MV 个人造型图暂缺'}:{src?:string|null;alt:string;priority?:boolean;missingLabel?:string}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"smn-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':missingLabel}</span></div>;\n}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 42,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"smn-work\"><A className=\"smn-work-thumb\" href={artistWorkUrl(work,false,returnTo)}>{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"smn-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</A><div className=\"smn-work-copy\"><A href={artistWorkUrl(work,false,returnTo)}><h3>{work.song||work.name}</h3></A><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"smn-score\">我的{work.videoType==='官方MV'?' MV':'作品'}分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span><div className=\"smn-work-actions\"><A className=\"smn-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"smn-button secondary\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></div></article>;\n}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nfunction A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string|null;alt:string;priority?:boolean;missingLabel?:string}){return <ImageWithFallback key={props.src} {...props}/>;}\nfunction ImageWithFallback({src,alt,priority=false,missingLabel='本 MV 个人造型图暂缺'}:{src?:string|null;alt:string;priority?:boolean;missingLabel?:string}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"smn-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':missingLabel}</span></div>;\n}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"smn-work\"><A className=\"smn-work-thumb\" href={artistWorkUrl(work,false,returnTo)}>{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"smn-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</A><div className=\"smn-work-copy\"><A href={artistWorkUrl(work,false,returnTo)}><h3>{work.song||work.name}</h3></A><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className=\"smn-score\">我的{work.videoType==='官方MV'?' MV':'作品'}分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span><div className=\"smn-work-actions\"><A className=\"smn-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"smn-button secondary\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></div></article>;\n}\nexport {Picture,WorkCard};\n"
+    },
+    "components/katseye-artist.tsx": {
+      "source": "components/katseye-artist.tsx",
+      "sourceSha256": "20f65f971ea203669db1f8bd0eaf30fecc2ef9d4b069cd040ea4b60729c52f6c",
+      "selected": [
+        "Picture",
+        "WorkCard"
+      ],
+      "declarations": [
+        {
+          "name": "variable",
+          "line": 22,
+          "text": "const isMv=(w:Work)=>['官方MV','特别合作MV','合作MV','混音版MV'].includes(w.videoType);"
+        },
+        {
+          "name": "A",
+          "line": 27,
+          "text": "function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 28,
+          "text": "function Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 29,
+          "text": "function ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"ke-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':alt.includes('MV造型')?'本 MV 个人造型图暂缺':'图片暂未收录'}</span></div>;\n}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 43,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"ke-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"ke-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"ke-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.videoType,work.version].filter(Boolean).join(' · ')}</p><span className=\"ke-score\">我的{isMv(work)?' MV':'作品'}分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"ke-work-actions\"><A className=\"ke-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"ke-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}"
+        }
+      ],
+      "code": "import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';\nimport {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {videoId} from '@/lib/idol/values';\nconst isMv=(w:Work)=>['官方MV','特别合作MV','合作MV','混音版MV'].includes(w.videoType);\nfunction A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}\nfunction Picture(props:{src?:string|null;alt:string;priority?:boolean}){return <ImageWithFallback key={props.src} {...props}/>;}\nfunction ImageWithFallback({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){\n const [failed,setFailed]=useState(false);\n return src&&!failed?<img src={src} alt={alt} referrerPolicy=\"no-referrer\" loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} onError={()=>setFailed(true)}/>:<div className=\"ke-photo-empty\"><ImageIcon size={22}/><span>{src?'图片暂未加载':alt.includes('MV造型')?'本 MV 个人造型图暂缺':'图片暂未收录'}</span></div>;\n}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){\n const [failed,setFailed]=useState(false),id=videoId(work.url);\n return <article className=\"ke-work\"><A href={artistWorkUrl(work,false,returnTo)}><div className=\"ke-work-thumb\">{id&&!failed?<img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt={`${work.song||work.name} 视频封面`} loading=\"lazy\" referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"ke-text-cover\"><strong>{work.song||work.name}</strong><Play size={24}/></div>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.videoType,work.version].filter(Boolean).join(' · ')}</p><span className=\"ke-score\">我的{isMv(work)?' MV':'作品'}分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className=\"ke-work-actions\"><A className=\"ke-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className=\"ke-button\" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;\n}\nexport {Picture,WorkCard};\n"
+    },
+    "components/candidate-artist-experience.tsx": {
+      "source": "components/candidate-artist-experience.tsx",
+      "sourceSha256": "6c507fb726f5d7d3e004fc47bfeddd91c4c6d73779dcb92b86a241c3575e4b77",
+      "selected": [
+        "Picture",
+        "WorkCard"
+      ],
+      "declarations": [
+        {
+          "name": "Link",
+          "line": 25,
+          "text": "function Link({href,children,className,external=false}:{href?:string|null;children:ReactNode;className?:string;external?:boolean}){const safe=external?safeGroupLink(href??undefined):href;return safe?<a href={safe} className={className} {...(external?{target:'_blank',rel:'noopener noreferrer'}:{})}>{children}</a>:<span className={className}>{children}</span>;}"
+        },
+        {
+          "name": "Picture",
+          "line": 26,
+          "text": "function Picture({src,alt,empty='官方照片暂缺',priority=false,complete=false}:{src?:string|null;alt:string;empty?:string;priority?:boolean;complete?:boolean}){return <ImageWithFallback key={src??'empty'} src={src} alt={alt} empty={empty} priority={priority} complete={complete}/>;}"
+        },
+        {
+          "name": "ImageWithFallback",
+          "line": 27,
+          "text": "function ImageWithFallback({src,alt,empty,priority,complete}:{src?:string|null;alt:string;empty:string;priority:boolean;complete:boolean}){const [failed,setFailed]=useState(false);const imageRef=useRef<HTMLImageElement|null>(null);useEffect(()=>{let active=true;const element=imageRef.current;if(src&&element?.complete&&element.naturalWidth===0)queueMicrotask(()=>{if(active)setFailed(true);});return()=>{active=false;};},[src]);return src&&!failed?<img ref={imageRef} style={complete?{objectFit:'contain'}:undefined} src={src} alt={alt} loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"ca-placeholder\"><ImageIcon size={26}/><span>{failed?'图片暂时无法加载':empty}</span></div>;}"
+        },
+        {
+          "name": "WorkCard",
+          "line": 29,
+          "text": "function WorkCard({work,returnTo}:{work:Work;returnTo:string}){const id=videoId(work.url);return <article className=\"ca-work\"><Link href={artistWorkUrl(work,false,returnTo)}><div className=\"ca-work-cover\"><Picture src={id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:null} alt={`${work.song||work.name} 视频封面`} empty=\"视频封面暂缺\"/></div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span>我的 MV 分 <b>{artistWorkScoreLabel(work.score)}</b></span></Link><div className=\"ca-work-actions\"><Link className=\"ca-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={14}/>观看与评分</Link>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<Link className=\"ca-button\" href={artistWorkUrl(work,true,returnTo)}>看舞台<ArrowUpRight size={14}/></Link>}</div></article>;}"
+        }
+      ],
+      "code": "import {useEffect,useMemo,useRef,useState,useSyncExternalStore,type ReactNode} from 'react';\nimport {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';\nimport type {CatalogView,Member,Photo,Work} from '@/lib/idol/types';\nimport {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkScoreLabel,artistWorkUrl,type ArtistSection} from '@/lib/idol/artist-preview';\nimport {safeGroupLink} from '@/lib/idol/group-detail';\nimport {videoId} from '@/lib/idol/values';\nfunction Link({href,children,className,external=false}:{href?:string|null;children:ReactNode;className?:string;external?:boolean}){const safe=external?safeGroupLink(href??undefined):href;return safe?<a href={safe} className={className} {...(external?{target:'_blank',rel:'noopener noreferrer'}:{})}>{children}</a>:<span className={className}>{children}</span>;}\nfunction Picture({src,alt,empty='官方照片暂缺',priority=false,complete=false}:{src?:string|null;alt:string;empty?:string;priority?:boolean;complete?:boolean}){return <ImageWithFallback key={src??'empty'} src={src} alt={alt} empty={empty} priority={priority} complete={complete}/>;}\nfunction ImageWithFallback({src,alt,empty,priority,complete}:{src?:string|null;alt:string;empty:string;priority:boolean;complete:boolean}){const [failed,setFailed]=useState(false);const imageRef=useRef<HTMLImageElement|null>(null);useEffect(()=>{let active=true;const element=imageRef.current;if(src&&element?.complete&&element.naturalWidth===0)queueMicrotask(()=>{if(active)setFailed(true);});return()=>{active=false;};},[src]);return src&&!failed?<img ref={imageRef} style={complete?{objectFit:'contain'}:undefined} src={src} alt={alt} loading={priority?'eager':'lazy'} fetchPriority={priority?'high':'auto'} referrerPolicy=\"no-referrer\" onError={()=>setFailed(true)}/>:<div className=\"ca-placeholder\"><ImageIcon size={26}/><span>{failed?'图片暂时无法加载':empty}</span></div>;}\nfunction WorkCard({work,returnTo}:{work:Work;returnTo:string}){const id=videoId(work.url);return <article className=\"ca-work\"><Link href={artistWorkUrl(work,false,returnTo)}><div className=\"ca-work-cover\"><Picture src={id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:null} alt={`${work.song||work.name} 视频封面`} empty=\"视频封面暂缺\"/></div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span>我的 MV 分 <b>{artistWorkScoreLabel(work.score)}</b></span></Link><div className=\"ca-work-actions\"><Link className=\"ca-button\" href={artistWorkUrl(work,false,returnTo)}><Play size={14}/>观看与评分</Link>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<Link className=\"ca-button\" href={artistWorkUrl(work,true,returnTo)}>看舞台<ArrowUpRight size={14}/></Link>}</div></article>;}\nexport {Picture,WorkCard};\n"
+    },
+    "components/photo-lightbox.tsx": {
+      "source": "components/photo-lightbox.tsx",
+      "sourceSha256": "55b013ca44bd03075a8b04cf67ab2a7cae512389821d0fab037247a1192b06bc",
+      "selected": [
+        "PhotoLightbox"
+      ],
+      "declarations": [
+        {
+          "name": "PhotoLightbox",
+          "line": 5,
+          "text": "export function PhotoLightbox({src,label,onClose}:{src:string;label:string;onClose:()=>void}){\n const close=useRef<HTMLButtonElement>(null),captionId=useId();\n const [failed,setFailed]=useState(false);\n useEffect(()=>{const previous=document.activeElement as HTMLElement|null,overflow=document.body.style.overflow;document.body.style.overflow='hidden';close.current?.focus();const key=(event:KeyboardEvent)=>{if(event.key==='Escape'){event.preventDefault();onClose();}if(event.key==='Tab'){event.preventDefault();close.current?.focus();}};document.addEventListener('keydown',key);return()=>{document.body.style.overflow=overflow;document.removeEventListener('keydown',key);previous?.focus();};},[onClose]);\n return createPortal(<div className=\"photo-lightbox\" role=\"dialog\" aria-modal=\"true\" aria-labelledby={captionId} onClick={e=>{if(e.target===e.currentTarget)onClose();}}><button ref={close} type=\"button\" className=\"photo-lightbox-close\" aria-label=\"关闭大图\" onClick={onClose}><X size={21}/>关闭</button><figure>{failed?<p className=\"photo-lightbox-error\" role=\"status\">图片暂时打不开，请关闭后重试。</p>:<img key={src} src={src} alt={label} onError={()=>setFailed(true)}/>}<figcaption id={captionId}>{label}</figcaption></figure></div>,document.body);\n}"
+        }
+      ],
+      "code": "import {useEffect,useId,useRef,useState} from 'react';\nimport {createPortal} from 'react-dom';\nimport {X} from 'lucide-react';\nfunction PhotoLightbox({src,label,onClose}:{src:string;label:string;onClose:()=>void}){\n const close=useRef<HTMLButtonElement>(null),captionId=useId();\n const [failed,setFailed]=useState(false);\n useEffect(()=>{const previous=document.activeElement as HTMLElement|null,overflow=document.body.style.overflow;document.body.style.overflow='hidden';close.current?.focus();const key=(event:KeyboardEvent)=>{if(event.key==='Escape'){event.preventDefault();onClose();}if(event.key==='Tab'){event.preventDefault();close.current?.focus();}};document.addEventListener('keydown',key);return()=>{document.body.style.overflow=overflow;document.removeEventListener('keydown',key);previous?.focus();};},[onClose]);\n return createPortal(<div className=\"photo-lightbox\" role=\"dialog\" aria-modal=\"true\" aria-labelledby={captionId} onClick={e=>{if(e.target===e.currentTarget)onClose();}}><button ref={close} type=\"button\" className=\"photo-lightbox-close\" aria-label=\"关闭大图\" onClick={onClose}><X size={21}/>关闭</button><figure>{failed?<p className=\"photo-lightbox-error\" role=\"status\">图片暂时打不开，请关闭后重试。</p>:<img key={src} src={src} alt={label} onError={()=>setFailed(true)}/>}<figcaption id={captionId}>{label}</figcaption></figure></div>,document.body);\n}\nexport {PhotoLightbox};\n"
+    }
+  }
+}

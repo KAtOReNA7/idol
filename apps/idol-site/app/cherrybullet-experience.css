@@ -1,0 +1,46 @@
+@font-face{font-family:CherryBulletDetail;src:url('/fonts/Anton-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+.candidate-cherrybullet-experience{--paper:#fff6ef;--white:#fffaf5;--ink:#4a1822;--muted:#825c62;--line:#d7aaa9;--rose:#b42d43;--blush:#f4dfd8;--lilac:#ead0ca;background:var(--paper);color:var(--ink)}
+.candidate-cherrybullet-experience .work-detail-top>*{min-width:0}
+.candidate-cherrybullet-experience .work-aside h1,.candidate-cherrybullet-experience .mobile-work-heading h1{font-family:CherryBulletDetail,Georgia,serif;line-height:1.15;overflow-wrap:anywhere}
+.candidate-cherrybullet-experience .work-aside h1{font-size:clamp(32px,3.4vw,50px)}
+.candidate-cherrybullet-experience .video-mode-tabs{border:1px solid var(--line);background:var(--white);border-radius:0}
+.candidate-cherrybullet-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:var(--paper)}
+.candidate-cherrybullet-experience .video-play{border-radius:0;background:var(--rose);color:var(--paper);min-height:48px}
+.candidate-cherrybullet-experience .button{border-radius:0;white-space:normal;line-height:1.45;min-height:44px}
+.candidate-cherrybullet-experience .button.primary{background:var(--rose);color:var(--paper);border-color:var(--rose)}
+.candidate-cherrybullet-experience .editor-fields input,.candidate-cherrybullet-experience .editor-fields textarea,.candidate-cherrybullet-experience .editor-fields select{background:var(--white);color:var(--ink);border-color:var(--line);border-radius:0}
+.candidate-cherrybullet-experience .editor,.candidate-cherrybullet-experience .editor-actions{border-radius:0}
+.candidate-cherrybullet-experience .cast-card{border-radius:0;background:var(--white)}
+.candidate-cherrybullet-experience .cast-scores{flex-wrap:wrap;gap:10px}
+.candidate-cherrybullet-experience .image-label{background:var(--white);color:var(--muted);border-radius:0}
+.candidate-cherrybullet-experience .member-detail{display:grid;align-items:start}
+.candidate-cherrybullet-experience .member-detail h1{font-size:clamp(36px,4.3vw,66px);line-height:1.25;overflow-wrap:anywhere}
+.candidate-cherrybullet-experience .member-work-card{border-radius:0;border:1px solid var(--line)}
+.candidate-cherrybullet-experience .detail-return{border:1px solid var(--line);border-radius:0;background:var(--white);padding:20px}
+
+.candidate-cherrybullet-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,1fr);gap:26px}
+.candidate-cherrybullet-experience .work-aside{border-top:8px solid var(--rose);padding:26px 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 34px}
+.candidate-cherrybullet-experience .work-aside>h1,.candidate-cherrybullet-experience .work-aside>.tags{grid-column:1/-1}
+.candidate-cherrybullet-experience .work-aside>.editor{grid-column:2;grid-row:4/8}
+.candidate-cherrybullet-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.candidate-cherrybullet-experience .cast-card{border-top:4px solid var(--rose);padding:16px}
+.candidate-cherrybullet-experience .stage-view .work-detail-top{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:30px}
+.candidate-cherrybullet-experience .stage-view .work-aside{display:block;border-top-width:1px;border-left:7px solid var(--rose);padding:24px}
+.candidate-cherrybullet-experience .stage-source{border-inline:0;border-bottom:3px double var(--line);padding:22px 0}
+.candidate-cherrybullet-experience .member-detail{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:50px}
+.candidate-cherrybullet-experience .member-detail>div:last-child{border-top:8px solid var(--rose);padding-top:22px}
+
+@media(max-width:1100px){.candidate-cherrybullet-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ .candidate-cherrybullet-experience .work-detail-top,.candidate-cherrybullet-experience .stage-view .work-detail-top{grid-template-columns:minmax(0,1fr);gap:24px}
+ .candidate-cherrybullet-experience .cast-grid{grid-template-columns:1fr}
+ .candidate-cherrybullet-experience .member-detail{grid-template-columns:1fr}
+ .candidate-cherrybullet-experience .work-aside h1,.candidate-cherrybullet-experience .mobile-work-heading h1{font-size:36px}
+ .candidate-cherrybullet-experience .member-detail h1{font-size:36px}
+ .candidate-cherrybullet-experience .video-mode-tabs{width:100%}
+ .candidate-cherrybullet-experience .video-mode-tabs button{flex:1;min-width:0}
+ .candidate-cherrybullet-experience .detail-return{padding:16px 12px}
+ .candidate-cherrybullet-experience .member-name{font-size:18px;line-height:1.4;overflow-wrap:anywhere}
+ .candidate-cherrybullet-experience .editor-fields input,.candidate-cherrybullet-experience .editor-fields textarea,.candidate-cherrybullet-experience .editor-fields select{font-size:16px}
+ .candidate-cherrybullet-experience .work-aside{display:block;padding:22px 18px}.candidate-cherrybullet-experience .work-aside>.editor{grid-column:auto;grid-row:auto}.candidate-cherrybullet-experience .stage-view .work-aside{border-left-width:4px;padding:20px 16px}
+}

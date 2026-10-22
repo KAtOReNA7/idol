@@ -1,0 +1,58 @@
+@font-face{font-family:SmnNarrow;src:url('/fonts/Oswald-Variable.ttf') format('truetype');font-weight:200 700;font-style:normal;font-display:swap}
+/* Native Figma increment 609. Existing private editor and video lifecycle are retained. */
+.saymyname-experience{--font-editorial:SmnNarrow,'Arial Narrow',sans-serif;--paper:#fffcfd;--white:#fff;--ink:#3e2946;--muted:#7b687f;--rose:#80619d;--blush:#faeaf2;--line:#e5dbe8;--lilac:#f4eef7;--page-gutter:clamp(24px,3.333vw,48px);background:var(--paper);color:var(--ink);min-height:100vh;font-family:var(--font-body)}
+.saymyname-experience .header{background:var(--paper);border-bottom:1px solid var(--line)}
+.saymyname-experience .brand{color:var(--ink)}
+.saymyname-experience .private-pill{background:var(--white);border-color:var(--line)}
+.saymyname-experience .saymyname-work-heading{margin:32px 0;padding:28px 32px;background:var(--blush);border:1px solid var(--line);position:relative}
+.saymyname-experience .saymyname-work-heading:before{content:'SAY MY NAME / MUSIC & VIDEO';display:block;font-size:10px;letter-spacing:.15em;margin-bottom:20px;color:var(--rose)}
+.saymyname-experience .saymyname-work-heading h1{font:400 clamp(36px,4.3vw,64px)/1.14 var(--font-editorial);overflow-wrap:anywhere;margin:14px 0}
+.saymyname-experience .saymyname-work-heading>p{font-size:12px;color:var(--muted)}
+.saymyname-experience .mobile-work-heading{display:none}
+.saymyname-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:24px;align-items:start}
+.saymyname-experience .video-stage{border-radius:4px;background:var(--ink);border:1px solid var(--line)}
+.saymyname-experience .video-mode-tabs{background:var(--blush);border:1px solid var(--line);border-radius:4px}
+.saymyname-experience .video-mode-tabs button{border-radius:2px;min-height:44px}
+.saymyname-experience .video-mode-tabs button[aria-selected=true]{background:var(--white);color:var(--rose)}
+.saymyname-experience .video-play{background:var(--rose);color:var(--white);border-radius:4px}
+.saymyname-experience .work-aside{padding:24px;border:1px solid var(--line);background:var(--white);border-radius:4px}
+.saymyname-experience .work-aside h1{font-family:var(--font-editorial);font-weight:400;overflow-wrap:anywhere}
+.saymyname-experience .button,.saymyname-experience .editor,.saymyname-experience .editor-actions,.saymyname-experience .score-input,.saymyname-experience .editor-fields input,.saymyname-experience .editor-fields textarea,.saymyname-experience .editor-fields select{border-radius:4px}
+.saymyname-experience .button{min-height:44px}
+.saymyname-experience .section-heading h2,.saymyname-experience .watch-next h2{font:400 30px/1.25 var(--font-editorial)}
+.saymyname-experience .cast-grid{gap:24px}
+.saymyname-experience .cast-card,.saymyname-experience .member-work-card{padding:12px;background:var(--white);border:1px solid var(--line);border-radius:4px}
+.saymyname-experience .cast-card .photo,.saymyname-experience .member-work-card__art{border-radius:2px;background:var(--lilac)}
+.saymyname-experience .photo img,.saymyname-experience .bm-concept-photo img{object-fit:contain}
+.saymyname-experience .image-label{background:var(--paper);color:var(--muted)}
+.saymyname-experience .stage-source,.saymyname-experience .alternative-card,.saymyname-experience .watch-lead-card{border:1px solid var(--line);background:var(--white);border-radius:4px}
+.saymyname-experience .stage-overall-note,.saymyname-experience .member-work-summary{background:var(--blush);border-radius:4px}
+.saymyname-experience .detail-return,.saymyname-experience .stage-view>.detail-return{border:1px solid var(--line);background:var(--blush);border-radius:4px}
+.saymyname-experience .member-detail h1{font:400 clamp(40px,5.5vw,76px)/1.1 var(--font-editorial);overflow-wrap:anywhere}
+.saymyname-experience .member-detail>.bm-concept-photo{height:auto;aspect-ratio:2/3;border:12px solid var(--white);border-radius:2px;background:var(--lilac)}
+.saymyname-experience :is(button,a,input,textarea,select):focus-visible{outline:3px solid var(--rose);outline-offset:4px}
+.group-index-card.saymyname-index-card{--font-editorial:SmnNarrow,'Arial Narrow',sans-serif;padding:12px;text-align:left;background:#fffcfd;color:#3e2946;border:1px solid #e5dbe8;border-radius:4px}
+.saymyname-index-image{aspect-ratio:16/9;background:#faeaf2}
+.saymyname-index-image img{width:100%;height:100%;object-fit:contain}
+.saymyname-index-copy{padding:24px 12px 12px;display:flex;flex-direction:column;gap:14px}
+.saymyname-index-copy h2{font:400 clamp(30px,3vw,48px)/1.12 var(--font-editorial);color:#3e2946;margin:0;overflow-wrap:anywhere}
+.saymyname-index-copy p,.saymyname-index-copy small{font-size:11px;line-height:1.7}
+.saymyname-index-copy>span{min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #e5dbe8;padding-top:14px;color:#80619d;font-size:12px}
+@media(max-width:760px){.saymyname-experience .header{height:auto;min-height:78px;flex-wrap:wrap;padding-top:12px}.saymyname-experience .header nav{height:auto;margin-top:10px;gap:16px;overflow-x:auto}.saymyname-experience .header nav button{font-size:10px;padding:12px 0}.saymyname-experience .saymyname-work-heading{padding:20px;margin:24px 0}.saymyname-experience .work-detail-top{grid-template-columns:1fr;gap:24px}.saymyname-experience .work-aside{padding:20px}.saymyname-experience .cast-grid{grid-template-columns:1fr}.saymyname-experience .editor-fields input,.saymyname-experience .editor-fields textarea,.saymyname-experience .editor-fields select{font-size:16px}.saymyname-experience .member-detail{gap:24px}.saymyname-index-copy{padding:20px 8px 8px}}
+@media(prefers-reduced-motion:reduce){.saymyname-experience *,.saymyname-index-card{scroll-behavior:auto!important;transition:none!important}}
+.saymyname-index-pending{display:flex;align-items:center;justify-content:center;height:100%;min-height:160px;color:#7b687f;font-size:12px}
+
+.saymyname-experience .saymyname-work-heading{background:transparent;border:0;border-bottom:1px solid var(--line);padding:0 0 32px;margin:32px 0}
+.saymyname-experience .saymyname-work-heading h1{font-size:clamp(48px,6vw,96px)}
+.saymyname-experience .work-detail-top{grid-template-columns:minmax(0,1fr);gap:32px}
+.saymyname-experience .work-aside{background:transparent;border:0;padding:0 0 24px;border-bottom:1px solid var(--line)}
+.saymyname-experience .video-stage{border:0;border-radius:0;background:var(--blush)}
+.saymyname-experience .video-mode-tabs{background:transparent;border:0;gap:12px;justify-content:flex-start}
+.saymyname-experience .video-mode-tabs button{border:1px solid var(--line);border-radius:8px;min-width:128px;background:var(--white)}
+.saymyname-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:var(--white)}
+.saymyname-experience .editor{background:var(--paper);border:1px solid var(--line)}
+.saymyname-experience .editor-actions{background:var(--blush);padding:20px;gap:12px}
+.saymyname-experience .score-input{background:white;border-color:var(--line)}
+.saymyname-experience .cast-card,.saymyname-experience .member-work-card{border:0;padding:0;background:transparent}
+.saymyname-experience .member-detail>.bm-concept-photo{border:0}
+@media(max-width:760px){.saymyname-experience .saymyname-work-heading{padding:0 0 24px}.saymyname-experience .video-mode-tabs button{min-width:0;flex:1}.saymyname-experience .editor-actions{padding:16px}.saymyname-experience .work-aside{padding:0 0 24px}}

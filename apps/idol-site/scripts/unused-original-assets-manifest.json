@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "auditCommit": "f96ee6494a403c86fdcb0fb4a348ff9081844808",
+  "reason": "TRACER hero and index already use the retained display. Original has no runtime consumer; public source and Git original remain untouched. Runtime rendering changes require re-audit.",
+  "runtimeGuards": {
+    "app/artists/tracer/page.tsx": {
+      "bytes": 207,
+      "sha256": "e421801f0cea1b9bf550c05c48455e9c6b04a47b71586e32b2896dea4e1f0cae"
+    },
+    "components/candidate/tracer-design.tsx": {
+      "bytes": 1480,
+      "sha256": "3648a170e5ceaff72f112cfd1130a7494545513f769cbff533bdc845a9841664"
+    },
+    "components/candidate-artist-experience.tsx": {
+      "bytes": 19211,
+      "sha256": "00b469d538abc1f119bc55f4a27b158f4213ecbed3591483eacdeed55d1113f0"
+    },
+    "components/candidate-index-card.tsx": {
+      "bytes": 3512,
+      "sha256": "eb6493d4674124fae6558d67da17bc7ca8612b8d5774b45cf9f3ee701b9813e0"
+    },
+    "components/reliable-image.tsx": {
+      "bytes": 12702,
+      "sha256": "d99db30b791ece5cfd9110dfb176b7a636492887dbb86e0cf34e8b1822116339"
+    },
+    "components/photo-lightbox.tsx": {
+      "bytes": 6113,
+      "sha256": "3daba994be17c12eb83d6b80eaeb9a1dd7b656684f1a6a2fabd2245de4ac58c9"
+    },
+    "lib/idol/image-presentation.ts": {
+      "bytes": 4250,
+      "sha256": "7b4492ca26032c7f6fe3d1663812d887616c147e06496c53336713bd331b7d3e"
+    }
+  },
+  "files": [
+    {
+      "path": "/artist/tracer/dot-three-hero-20261016/group.original.jpg",
+      "bytes": 25354489,
+      "sha256": "050000ba29ab64d13ecec793c49f24dc2f214cc7bb74868e47b9f1f834e8da47",
+      "replacement": "/artist/tracer/dot-three-hero-20261016/group.display.jpg",
+      "replacementIntegrity": {
+        "bytes": 617563,
+        "sha256": "f391a556d3f989a3c0258747a933d16690e4a4e8fa100b8e79b636057fc9a42b"
+      },
+      "sourceGitBlob": "9421b65b9b9b056b5e625ed0e73aefb9a021d96f"
+    }
+  ]
+}

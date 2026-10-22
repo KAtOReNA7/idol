@@ -1,0 +1,1 @@
+ALTER TABLE `idol_native_records` ADD `version` integer DEFAULT 1 NOT NULL;

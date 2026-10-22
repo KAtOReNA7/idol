@@ -1,0 +1,385 @@
+@font-face{font-family:UNISDisplay;src:url('/fonts/unis/URWGothic-Demi.otf') format('opentype');font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:UNISBody;src:url('/fonts/unis/NotoSansSC-Regular.woff2') format('woff2');font-style:normal;font-weight:400 500;font-display:swap}
+@font-face{font-family:UNISBody;src:url('/fonts/unis/NotoSansSC-Bold.woff2') format('woff2');font-style:normal;font-weight:600 900;font-display:swap}
+
+.unis-figma{--uf-native-canvas:#ffffff;--uf-blue:#234df2;--uf-ink:#111a32;--uf-muted:#63708c;--uf-line:#d9dfef;--uf-pale:#f1f4ff;--uf-pink:#f9dceb;--uf-yellow:#fff39d;--uf-pad:clamp(28px,3.8889vw,88px);min-height:100vh;background:var(--uf-native-canvas);color:var(--uf-ink);font:400 16px/1.5 UNISBody,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;overflow-wrap:break-word}
+.unis-figma,.unis-figma *,.unis-figma *::before,.unis-figma *::after{box-sizing:border-box}
+.unis-figma :where(h1,h2,h3,p,figure){margin:0}
+.unis-figma :where(button,a,input){font:inherit}
+.unis-figma button{cursor:pointer;color:inherit;background:none;border:0;border-radius:0}
+.unis-figma a{color:inherit;text-decoration:none}
+.unis-figma button:disabled{cursor:default}
+.unis-figma :is(button,a,input,summary):focus-visible{outline:3px solid var(--uf-blue);outline-offset:5px}
+.unis-figma .uf-button{min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border:1px solid transparent;max-width:100%;font-size:14px;line-height:1.5;text-align:center;white-space:normal;overflow-wrap:anywhere}
+.unis-figma .uf-primary{background:var(--uf-blue);color:#fff}
+.unis-figma .uf-pale{background:var(--uf-pale);color:var(--uf-blue)}
+.unis-figma .uf-outline{border-color:var(--uf-blue);color:var(--uf-blue);background:#fff}
+.unis-figma .uf-yellow{background:var(--uf-yellow);color:var(--uf-ink)}
+.unis-figma .uf-primary:hover{background:#173edb}
+.unis-figma .uf-pale:hover{background:#e5eaff}
+.unis-figma .uf-visually-hidden,.unis-figma .uf-skip:not(:focus){position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.unis-figma .uf-skip:focus{position:absolute;top:12px;left:12px;z-index:20;padding:12px;background:#fff;color:var(--uf-blue)}
+.unis-figma .uf-header{height:80px;margin:0 var(--uf-pad);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--uf-line);gap:20px}
+.unis-figma .uf-logo{font:700 32px/1 UNISDisplay,sans-serif;color:var(--uf-blue);padding:8px 0;min-width:88px;min-height:44px;text-align:left}
+.unis-figma .uf-nav{display:flex;align-items:center;gap:4px}
+.unis-figma .uf-nav button{height:44px;min-width:116px;padding:0 22px;font-size:15px;color:var(--uf-blue)}
+.unis-figma .uf-nav button:nth-child(2){min-width:156px}
+.unis-figma .uf-nav button[aria-current=page]{background:var(--uf-blue);color:#fff}
+.unis-figma .uf-mobile-label{display:none}
+.unis-figma .uf-main{outline:none;width:100%;max-width:none;margin:0;padding:0}
+.unis-figma .uf-square{display:block;width:100%;aspect-ratio:1;background:var(--uf-pale);overflow:hidden}
+.unis-figma .uf-square>img{display:block;width:100%;height:100%;object-fit:contain}
+.unis-figma .uf-square>.ri-fallback,.unis-figma .uf-music-placeholder{display:grid;place-items:center;min-height:0;width:100%;height:100%;aspect-ratio:1;background:var(--uf-pale);color:var(--uf-blue)}
+.unis-figma .uf-music-placeholder{font-size:36px}
+.unis-figma .uf-image-state{display:flex;align-items:center;justify-content:center;min-height:160px;padding:16px;background:var(--uf-pale);color:var(--uf-muted);font-size:14px;text-align:center}
+.unis-figma .uf-title{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:90px;border-bottom:1px solid var(--uf-line);margin-bottom:40px;color:var(--uf-blue)}
+.unis-figma .uf-title h1,.unis-figma .uf-title h2{font:700 70px/1.15 UNISDisplay,sans-serif;letter-spacing:0;min-width:0}
+.unis-figma .uf-title p{font-size:22px;flex-shrink:0}
+.unis-figma :is(.uf-members-page,.uf-library,.uf-timeline){padding:0 var(--uf-pad)}
+.unis-figma .uf-roster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 24px}
+.unis-figma .uf-roster>button{display:block;padding:0;min-width:0;text-align:left}
+.unis-figma .uf-roster strong{display:block;font-size:24px;line-height:1.4;margin-top:7px;font-weight:700;overflow-wrap:anywhere}
+.unis-figma .uf-roster small{display:block;font-size:14px;line-height:1.5;margin-top:10px;color:var(--uf-muted);overflow-wrap:anywhere}
+.unis-figma .uf-bottom{min-width:280px;margin-top:36px;min-height:52px}
+.unis-figma .uf-members-page>.uf-bottom{margin-top:36px;width:300px}
+.unis-figma .uf-hero{margin:32px var(--uf-pad) 64px;display:grid;grid-template-columns:minmax(0,31%) minmax(0,1fr);column-gap:40px;min-height:488px}
+.unis-figma .uf-hero-identity{grid-column:1;grid-row:1;container-type:inline-size;align-self:start;min-width:0}
+.unis-figma .uf-hero h1{font:700 min(190px,45.8715cqw)/1.04 UNISDisplay,sans-serif;letter-spacing:0;color:var(--uf-blue);margin-top:12px;white-space:nowrap}
+.unis-figma .uf-hero-identity>p{font-size:16px;color:var(--uf-blue);margin-top:12px}
+.unis-figma .uf-colour-dots{display:flex;gap:9px;margin-top:28px;padding-left:2px}
+.unis-figma .uf-colour-dots i{display:block;width:44px;height:44px;border-radius:50%;background:var(--uf-yellow)}
+.unis-figma .uf-colour-dots i:nth-child(2){background:var(--uf-pink)}
+.unis-figma .uf-colour-dots i:nth-child(3){background:var(--uf-pale)}
+.unis-figma .uf-hero-image{grid-column:2;grid-row:1;align-self:start;min-width:0}
+.unis-figma .uf-hero-image>img{display:block;width:100%;height:auto;aspect-ratio:1600/1049;object-fit:contain}
+.unis-figma .uf-hero-actions{grid-column:1;grid-row:1;align-self:start;margin-top:344px;display:grid;gap:16px;padding-right:24px;min-width:0}
+.unis-figma .uf-hero-actions .uf-button{width:100%;min-height:52px;font-size:16px}
+.unis-figma .uf-hero-actions .uf-primary{min-height:56px}
+.unis-figma .uf-home-releases{background:var(--uf-blue);color:#fff;padding:48px var(--uf-pad) 74px;display:grid;grid-template-columns:440px minmax(0,1fr);column-gap:40px;row-gap:20px;min-height:552px}
+.unis-figma .uf-release-heading{grid-column:1;grid-row:1;align-self:start}
+.unis-figma .uf-release-heading h2{font:700 64px/1.15 UNISDisplay,sans-serif}
+.unis-figma .uf-release-heading p{font-size:21px;margin-top:18px}
+.unis-figma .uf-featured-release{grid-column:2;grid-row:1;display:grid;grid-template-columns:300px minmax(0,1fr);gap:20px;align-items:start;min-width:0}
+.unis-figma .uf-featured-release h3{font-size:32px;line-height:1.4;margin-top:6px;font-weight:700}
+.unis-figma .uf-featured-release p{margin-top:16px;font-size:16px}
+.unis-figma .uf-featured-release .uf-button{width:220px;min-height:52px;margin-top:28px;font-size:16px}
+.unis-figma .uf-library-button{grid-column:1;grid-row:1;align-self:start;margin-top:152px;width:300px;min-height:56px;background:#fff;color:var(--uf-blue);font-size:16px}
+.unis-figma .uf-home-release-list{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px}
+.unis-figma .uf-release-row{display:grid;width:100%;grid-template-columns:80px minmax(0,1fr) 32px;align-items:start;gap:16px;padding:12px 0;min-height:120px;border-bottom:1px solid var(--uf-line);text-align:left}
+.unis-figma .uf-release-copy{display:flex;flex-direction:column;align-self:stretch;gap:16px;min-width:0;padding-top:4px}
+.unis-figma .uf-release-copy strong{font-size:23px;line-height:1.4;font-weight:700;word-break:normal;overflow-wrap:anywhere}
+.unis-figma .uf-release-copy time{font-size:14px;line-height:1.4;color:var(--uf-muted);margin-top:auto;margin-bottom:8px;font-variant-numeric:tabular-nums}
+.unis-figma .uf-release-arrow{font-size:23px;color:var(--uf-blue);justify-self:end;padding-top:7px}
+.unis-figma .uf-home-release-list .uf-release-row{grid-template-columns:96px minmax(0,1fr);min-height:110px;border:0;gap:20px;padding:0}
+.unis-figma .uf-home-release-list .uf-release-row:nth-child(n+4){display:none}
+.unis-figma .uf-home-release-list .uf-release-copy{padding-top:7px;gap:20px}
+.unis-figma .uf-home-release-list strong{font-size:19px;font-weight:400}
+.unis-figma .uf-home-release-list time{color:inherit;margin-bottom:14px}
+.unis-figma .uf-home-release-list .uf-release-arrow{display:none}
+.unis-figma .uf-home-members{margin:48px var(--uf-pad) 0}
+.unis-figma .uf-home-members .uf-title{min-height:64px;margin-bottom:40px;border:0}
+.unis-figma .uf-home-members .uf-title h2{font-size:64px}
+.unis-figma .uf-timeline-teaser{margin:44px var(--uf-pad) 0;padding:20px;background:var(--uf-pale);min-height:144px}
+.unis-figma .uf-timeline-teaser time{display:block;color:var(--uf-blue);font-size:14px}
+.unis-figma .uf-timeline-teaser h2{font-size:24px;font-weight:400;line-height:1.5;margin-top:4px}
+.unis-figma .uf-timeline-teaser .uf-button{color:var(--uf-blue);padding-inline:0;width:220px;justify-content:center;margin-top:8px}
+.unis-figma .uf-library-tools{display:grid;gap:20px;margin-bottom:36px}
+.unis-figma .uf-search{display:block;min-width:0}
+.unis-figma .uf-search input{border:0;border-radius:0;display:block;width:100%;min-height:52px;padding:14px 16px;background:var(--uf-pale);color:var(--uf-blue);font-size:15px;-webkit-appearance:none}
+.unis-figma .uf-search input::placeholder{color:var(--uf-muted);opacity:1}
+.unis-figma .uf-format,.unis-figma .uf-queues{display:flex;flex-wrap:wrap;gap:10px 8px}
+.unis-figma .uf-format button{min-width:64px;min-height:44px;border:1px solid var(--uf-line);padding:10px 18px;color:var(--uf-blue);font-size:14px}
+.unis-figma .uf-format button[aria-pressed=true]{background:var(--uf-blue);border-color:var(--uf-blue);color:#fff}
+.unis-figma .uf-queues{margin-top:-4px}
+.unis-figma .uf-queues button{min-height:44px;background:var(--uf-pale);padding:10px 18px;font-size:13px}
+.unis-figma .uf-queues button[aria-pressed=true]:not(:first-child){background:var(--uf-pink)}
+.unis-figma :is(.uf-video-list,.uf-all-releases,.uf-related)>h2{font-size:26px;color:var(--uf-blue);font-weight:700;line-height:1.5;margin-bottom:18px}
+.unis-figma .uf-work-row{display:grid;grid-template-columns:88px minmax(0,1fr) 256px;gap:16px;align-items:start;min-height:124px;padding:12px 0 18px;border-bottom:1px solid var(--uf-line)}
+.unis-figma .uf-work-art{width:88px;aspect-ratio:1}
+.unis-figma .uf-work-copy{min-width:0;padding-top:4px}
+.unis-figma .uf-work-copy h3{font-size:23px;font-weight:700;line-height:1.4;word-break:normal;overflow-wrap:anywhere}
+.unis-figma .uf-work-copy p{font-size:14px;line-height:1.4;color:var(--uf-muted);margin-top:14px}
+.unis-figma .uf-work-copy .uf-work-score{font-size:12px;margin-top:5px}
+.unis-figma .uf-work-score b{font-weight:500}
+.unis-figma .uf-work-actions{display:flex;gap:12px;align-self:center}
+.unis-figma .uf-work-actions .uf-button{width:122px;min-height:48px;padding:10px 12px}
+.unis-figma .uf-all-releases{margin-top:60px}
+.unis-figma .uf-search-empty{padding:14px 0 80px;min-height:300px}
+.unis-figma .uf-search-empty h2{font-size:22px;color:var(--uf-blue)}
+.unis-figma .uf-search-empty p{font-size:15px;color:var(--uf-muted);margin-top:20px}
+.unis-figma .uf-search-empty .uf-button{min-height:52px;width:350px;margin-top:30px}
+.unis-figma .uf-back{min-height:44px;padding:10px 28px;color:var(--uf-blue);font-size:14px;margin:40px var(--uf-pad) 22px;text-align:left}
+.unis-figma .uf-person{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:80px;margin:0 var(--uf-pad);align-items:start}
+.unis-figma .uf-portrait-button{padding:0}
+.unis-figma .uf-person-copy{padding-top:32px;min-width:0}
+.unis-figma .uf-person-copy h1{font-size:72px;line-height:1.4;font-weight:700;color:var(--uf-blue);overflow-wrap:anywhere}
+.unis-figma .uf-person-copy h2{font:700 80px/1.15 UNISDisplay,sans-serif;color:var(--uf-blue);margin-top:12px;overflow-wrap:anywhere}
+.unis-figma .uf-person-copy>p{font-size:19px;color:var(--uf-muted);margin-top:18px}
+.unis-figma .uf-person-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.unis-figma .uf-person-facts{margin-top:18px;color:var(--uf-muted);font-size:14px}
+.unis-figma .uf-person-facts summary{min-height:44px;padding:12px 0;cursor:pointer}
+.unis-figma .uf-person-facts p{margin:10px 0}
+.unis-figma .uf-person-records{margin:52px var(--uf-pad) 0;border-top:1px solid var(--uf-line);padding-top:24px}
+.unis-figma .uf-person-records h2{font-size:22px;margin-bottom:12px}
+.unis-figma .uf-person-records>a{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:15px 0;border-bottom:1px solid var(--uf-line)}
+.unis-figma .uf-person-records span{color:var(--uf-muted);font-size:14px}
+.unis-figma .uf-related{margin:72px var(--uf-pad) 0;border-top:1px solid var(--uf-line);padding-top:24px}
+.unis-figma .uf-release-detail{display:grid;grid-template-columns:minmax(0,500px) minmax(0,1fr);gap:80px;margin:0 var(--uf-pad);align-items:start}
+.unis-figma .uf-release-detail h1{font:700 90px/1.2 UNISDisplay,UNISBody,sans-serif;color:var(--uf-blue);margin-top:12px;overflow-wrap:anywhere}
+.unis-figma .uf-release-detail .uf-release-kind{font-size:28px;line-height:1.5;margin-top:18px}
+.unis-figma .uf-release-detail time{display:block;color:var(--uf-muted);margin-top:18px;font-size:18px}
+.unis-figma .uf-release-detail .uf-button{display:flex;width:320px;min-height:56px;margin-top:52px;font-size:16px}
+.unis-figma .uf-state{margin:60px var(--uf-pad);min-height:50vh}
+.unis-figma .uf-state h1{font:700 70px/1.2 UNISDisplay,sans-serif;color:var(--uf-blue)}
+.unis-figma .uf-state p{margin-block:24px}
+.unis-figma .uf-empty{padding:32px 0;color:var(--uf-muted)}
+.unis-figma .uf-footer{margin:80px var(--uf-pad) 0;min-height:100px;border-top:1px solid var(--uf-line);display:flex;align-items:center;justify-content:space-between;gap:24px;color:var(--uf-blue)}
+.unis-figma .uf-footer .uf-logo{font-size:36px}
+.unis-figma .uf-footer>div{display:flex;gap:20px;align-items:center;font-size:14px}
+.unis-figma .uf-footer>div>a,.unis-figma .uf-footer>div>button{min-height:44px;display:inline-flex;align-items:center;padding:10px 0}
+.unis-figma .uf-timeline{--artist-timeline-accent:var(--uf-blue);--artist-timeline-line:var(--uf-line);--artist-timeline-focus:var(--uf-blue)}
+.unis-figma .uf-timeline .artist-timeline .at-list{margin:0 0 0 190px;padding:0 0 0 58px}
+.unis-figma .uf-timeline .artist-timeline .at-list>li{padding:0 0 62px;min-height:100px}
+.unis-figma .uf-timeline .artist-timeline .at-list>li:last-child{padding-bottom:0;min-height:38px}
+.unis-figma .uf-timeline .artist-timeline .at-list>li:not(:last-child)::after{left:-58px;top:18px;width:2px;background:var(--uf-line)}
+.unis-figma .uf-timeline .artist-timeline .at-node{left:-64px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--uf-blue)}
+.unis-figma .uf-timeline .artist-timeline .at-list>li:first-child .at-node{background:var(--uf-pink)}
+.unis-figma .uf-timeline .artist-timeline .at-node>*{display:none}
+.unis-figma .uf-timeline .artist-timeline .at-event .at-when{position:absolute;right:calc(100% + 84px);top:1px;width:160px;margin:0;text-align:right;white-space:nowrap;color:var(--uf-blue);font-size:16px;line-height:1.7}
+.unis-figma .uf-timeline .artist-timeline .at-event h3{font-family:UNISBody,'Noto Sans SC',sans-serif;font-size:24px;font-weight:400;line-height:1.5;color:var(--uf-ink);padding:0;border:0;word-break:normal;overflow-wrap:break-word}
+.unis-figma .uf-timeline .artist-timeline .at-event h3::after{display:none}
+/* This design is a date-and-event reading axis; linked records remain in the roster and library. */
+.unis-figma .uf-timeline .artist-timeline .at-references{display:none}
+.unis-figma .uf-timeline>.uf-bottom{margin-top:64px}
+.unis-figma .ri-recovery{margin:28px var(--uf-pad);color:var(--uf-muted)}
+
+@media(min-width:1800px){.unis-figma .uf-hero h1{font-size:200px}.unis-figma .uf-hero{margin-top:32px}.unis-figma .uf-hero-identity{padding-top:16px}}
+@media(min-width:700px) and (max-width:1199px){.unis-figma .uf-hero{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:28px;min-height:400px}.unis-figma .uf-hero-actions{margin-top:280px;padding-right:0}.unis-figma .uf-colour-dots{margin-top:22px}.unis-figma .uf-home-releases{grid-template-columns:32% minmax(0,1fr);gap:32px;min-height:0}.unis-figma .uf-release-heading h2{font-size:44px}.unis-figma .uf-library-button{max-width:100%;font-size:14px}.unis-figma .uf-featured-release{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}.unis-figma .uf-featured-release h3{font-size:28px}.unis-figma .uf-featured-release p{font-size:13px}.unis-figma .uf-featured-release .uf-button{width:100%;font-size:14px}.unis-figma .uf-home-release-list{margin-top:18px}.unis-figma .uf-home-release-list .uf-release-row{grid-template-columns:72px minmax(0,1fr);gap:12px}.unis-figma .uf-home-release-list strong{font-size:16px}.unis-figma .uf-person,.unis-figma .uf-release-detail{grid-template-columns:minmax(0,44%) minmax(0,1fr);gap:48px}.unis-figma .uf-person-copy h1{font-size:52px}.unis-figma .uf-person-copy h2{font-size:60px}.unis-figma .uf-release-detail h1{font-size:62px}.unis-figma .uf-title h1{font-size:58px}.unis-figma .uf-work-row{grid-template-columns:80px minmax(0,1fr) 220px}.unis-figma .uf-work-actions .uf-button{width:104px}}
+@media(max-width:699px){
+  .unis-figma{--uf-pad:20px;font-size:15px}
+  .unis-figma .uf-header{height:64px;gap:8px}
+  .unis-figma .uf-header .uf-logo{font-size:27px;min-width:88px}
+  .unis-figma .uf-nav{gap:4px}
+  .unis-figma .uf-nav button{min-width:52px!important;font-size:14px;padding:0 10px}
+  .unis-figma .uf-nav button:first-child{order:1;background:var(--uf-pale);color:var(--uf-blue)}
+  .unis-figma .uf-nav button:nth-child(2){order:0}
+  .unis-figma .uf-nav button:last-child{display:none}
+  .unis-figma .uf-nav button[aria-current=page]{box-shadow:inset 0 -2px var(--uf-blue);background:var(--uf-pale);color:var(--uf-blue)}
+  .unis-figma .uf-desktop-label{display:none}
+  .unis-figma .uf-mobile-label{display:inline}
+  .unis-figma .uf-title{display:block;min-height:0;border:0;padding-top:18px;margin-bottom:32px}
+  .unis-figma .uf-title h1,.unis-figma .uf-title h2{font-size:42px;line-height:1.2;letter-spacing:0;white-space:nowrap}
+  .unis-figma .uf-library>.uf-title h1{font-size:min(42px,10.25vw)}
+  .unis-figma .uf-title p{font-size:22px;font-weight:700;margin-top:8px}
+  .unis-figma .uf-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 16px}
+  .unis-figma .uf-roster>button{padding-bottom:0}
+  .unis-figma .uf-roster strong{font-size:20px;line-height:1.5;margin-top:9px}
+  .unis-figma .uf-roster small{font-size:12px;line-height:1.5;margin-top:9px}
+  .unis-figma .uf-bottom{min-width:0;width:100%;margin-top:34px;min-height:52px}
+  .unis-figma .uf-members-page>.uf-bottom{width:100%;margin-top:30px}
+  .unis-figma .uf-hero{margin:12px var(--uf-pad) 0;display:flex;flex-direction:column;gap:0;min-height:0}
+  .unis-figma .uf-hero-identity{width:100%}
+  .unis-figma .uf-hero h1{font-size:min(158px,45.8715cqw);line-height:1.03;margin-top:0}
+  .unis-figma .uf-hero-identity>p{font-size:13px;margin-top:0}
+  .unis-figma .uf-colour-dots{display:none}
+  .unis-figma .uf-hero-image{margin-top:16px;width:100%}
+  .unis-figma .uf-hero-actions{margin:20px 0 0;padding:0;gap:12px;width:100%}
+  .unis-figma .uf-hero-actions .uf-button{min-height:48px}
+  .unis-figma .uf-hero-actions .uf-primary{min-height:56px}
+  .unis-figma .uf-home-releases{display:flex;flex-direction:column;gap:0;min-height:0;margin-top:48px;padding:0 var(--uf-pad);background:#fff;color:var(--uf-ink)}
+  .unis-figma .uf-release-heading{color:var(--uf-blue)}
+  .unis-figma .uf-release-heading h2{font-size:36px;line-height:1.15}
+  .unis-figma .uf-release-heading p{display:none}
+  .unis-figma .uf-featured-release{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;order:1;margin-top:22px}
+  .unis-figma .uf-featured-release h3{font-size:26px;color:var(--uf-blue);margin-top:0;line-height:1.4}
+  .unis-figma .uf-featured-release p{font-size:13px;color:var(--uf-muted);margin-top:8px}
+  .unis-figma .uf-featured-release .uf-button{width:100%;min-height:44px;font-size:14px;margin-top:14px;padding:9px 8px}
+  .unis-figma .uf-home-release-list{display:block;order:2;margin-top:28px}
+  .unis-figma .uf-home-release-list .uf-release-row,.unis-figma .uf-release-row{display:grid;grid-template-columns:64px minmax(0,1fr) 20px;gap:16px;min-height:112px;padding:12px 0;border-bottom:1px solid var(--uf-line)}
+  .unis-figma .uf-home-release-list .uf-release-row:nth-child(n+4){display:grid}
+  .unis-figma .uf-home-release-list .uf-release-copy,.unis-figma .uf-release-copy{padding-top:2px;gap:14px}
+  .unis-figma .uf-home-release-list strong,.unis-figma .uf-release-copy strong{font-size:16px;font-weight:700;line-height:1.4;overflow-wrap:anywhere;word-break:normal}
+  .unis-figma .uf-home-release-list time,.unis-figma .uf-release-copy time{font-size:12px;color:var(--uf-muted);margin-bottom:8px}
+  .unis-figma .uf-home-release-list .uf-release-arrow,.unis-figma .uf-release-arrow{display:block;font-size:23px;padding-top:4px;color:var(--uf-blue)}
+  .unis-figma .uf-library-button{order:3;width:100%;margin-top:40px;min-height:52px;background:var(--uf-blue);color:#fff;font-size:16px}
+  .unis-figma .uf-home-members{margin:60px var(--uf-pad) 0}
+  .unis-figma .uf-home-members .uf-title{margin-bottom:26px;padding-top:0}
+  .unis-figma .uf-home-members .uf-title h2{font-size:40px}
+  .unis-figma .uf-home-members .uf-title p{font-size:20px;margin-top:12px}
+  .unis-figma .uf-timeline-teaser{margin:32px var(--uf-pad) 0;min-height:132px;padding:20px}
+  .unis-figma .uf-timeline-teaser h2{font-size:16px;margin-top:10px}
+  .unis-figma .uf-timeline-teaser .uf-button{width:100%;margin-top:8px}
+  .unis-figma .uf-library-tools{gap:20px;margin-bottom:36px}
+  .unis-figma .uf-queues{gap:10px 8px}
+  .unis-figma .uf-queues button{padding:10px 18px}
+  .unis-figma :is(.uf-video-list,.uf-all-releases,.uf-related)>h2{font-size:26px;margin-bottom:16px}
+  .unis-figma .uf-work-row{grid-template-columns:76px minmax(0,1fr);gap:12px 16px;min-height:148px;padding:12px 0 10px;align-items:start}
+  .unis-figma .uf-work-art{width:76px;grid-row:1/3}
+  .unis-figma .uf-work-copy{padding-top:5px;min-height:60px}
+  .unis-figma .uf-work-copy h3{font-size:15px;line-height:1.45;overflow-wrap:anywhere;word-break:normal}
+  .unis-figma .uf-work-copy>p:not(.uf-work-score){display:none}
+  .unis-figma .uf-work-copy .uf-work-score{font-size:11px;line-height:1.45;margin-top:8px}
+  .unis-figma .uf-work-actions{grid-column:2;gap:8px;align-self:start;display:flex;flex-wrap:wrap}
+  .unis-figma .uf-work-actions .uf-button{min-height:44px;min-width:0;width:calc((100% - 8px)/2);padding:8px 4px;font-size:13px}
+  .unis-figma .uf-all-releases{margin-top:60px}
+  .unis-figma .uf-search-empty{padding-top:12px;padding-bottom:40px}
+  .unis-figma .uf-search-empty .uf-button{width:100%}
+  .unis-figma .uf-back{margin-top:32px;margin-bottom:22px;padding-inline:0;width:calc(100% - 2*var(--uf-pad))}
+  .unis-figma .uf-person,.unis-figma .uf-release-detail{display:block;margin-inline:var(--uf-pad)}
+  .unis-figma .uf-person-copy{padding-top:32px}
+  .unis-figma .uf-person-copy h1{font-size:48px;line-height:1.4}
+  .unis-figma .uf-person-copy h2{font-size:40px;line-height:1.2;margin-top:8px}
+  .unis-figma .uf-person-copy>p{font-size:16px;margin-top:20px}
+  .unis-figma .uf-person-actions{display:grid;gap:10px;margin-top:26px}
+  .unis-figma .uf-person-actions .uf-button{width:100%;min-height:48px}
+  .unis-figma .uf-person-records{margin-top:42px}
+  .unis-figma .uf-person-records>a{display:grid;gap:6px}
+  .unis-figma .uf-related{margin-top:50px;padding-top:20px}
+  .unis-figma .uf-related>.uf-bottom{margin-top:24px}
+  .unis-figma .uf-release-detail h1{font-size:54px;line-height:1.2;margin-top:32px}
+  .unis-figma .uf-release-detail .uf-release-kind{font-size:22px;margin-top:16px}
+  .unis-figma .uf-release-detail time{font-size:15px;margin-top:14px}
+  .unis-figma .uf-release-detail .uf-button{width:100%;min-height:52px;font-size:15px;margin-top:28px}
+  .unis-figma .uf-footer{margin-top:64px;min-height:100px}
+  .unis-figma .uf-footer>div{gap:12px;font-size:12px}
+  .unis-figma .uf-timeline .artist-timeline .at-list{margin:0 0 0 7px;padding:0 0 26px 28px}
+  .unis-figma .uf-timeline .artist-timeline .at-list>li{min-height:132px;padding-bottom:34px}
+  .unis-figma .uf-timeline .artist-timeline .at-list>li:not(:last-child)::after{left:-28px;top:13px;width:2px}
+  .unis-figma .uf-timeline .artist-timeline .at-node{left:-34px;top:5px;width:14px;height:14px}
+  .unis-figma .uf-timeline .artist-timeline .at-event .at-when{position:static;width:auto;text-align:left;font-size:14px;margin-bottom:12px;white-space:normal}
+  .unis-figma .uf-timeline .artist-timeline .at-event h3{font-size:18px;line-height:1.65;word-break:normal;overflow-wrap:break-word}
+  .unis-figma .uf-timeline>.uf-bottom{margin-top:22px}
+}
+@media(max-width:340px){.unis-figma{--uf-pad:16px}.unis-figma .uf-hero h1{font-size:min(138px,45.8715cqw)}.unis-figma .uf-featured-release{grid-template-columns:112px minmax(0,1fr);gap:16px}.unis-figma .uf-featured-release h3{font-size:24px}.unis-figma .uf-featured-release .uf-button{font-size:13px;padding-inline:4px}.unis-figma .uf-roster strong{font-size:18px}.unis-figma .uf-release-copy strong{font-size:15px}.unis-figma .uf-work-copy h3{font-size:15px}.unis-figma .uf-person-copy h2{font-size:36px}.unis-figma .uf-release-detail h1{font-size:44px}.unis-figma .uf-footer>div{gap:10px}.unis-figma .uf-footer .uf-logo{font-size:32px}}
+@media(prefers-reduced-motion:reduce){.unis-figma *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* Native glyph assets keep their intrinsic root dimensions. Only the containing stage scales. */
+.unis-figma .uf-native-label{display:block;max-width:100%}
+.unis-figma .uf-native-variant{display:none;max-width:100%}
+.unis-figma .uf-native-art{display:block;position:relative}
+.unis-figma .uf-native-art-stage{position:absolute;left:0;top:0;transform-origin:top left}
+.unis-figma .uf-native-art-stage>img{position:absolute;display:block;max-width:none;max-height:none}
+.unis-figma .uf-header{position:relative}
+.unis-figma .uf-header .uf-logo{position:absolute;left:0;top:12px;width:88px;height:44px;min-height:44px;padding:0}
+.unis-figma .uf-header .uf-nav{margin-left:auto}
+.unis-figma .uf-footer{position:relative}
+.unis-figma .uf-footer .uf-logo{position:absolute;left:0;top:20px;width:104px;height:44px;padding:0}
+.unis-figma .uf-footer>div{margin-left:auto}
+.unis-figma .uf-hero h1{margin-top:0;line-height:0}
+.unis-figma .uf-hero-identity{padding-top:0}
+@media(min-width:1800px){.unis-figma .uf-native-wide{display:block}}
+@media(min-width:700px) and (max-width:1799px){.unis-figma .uf-native-desktop{display:block}}
+@media(min-width:390px) and (max-width:699px){.unis-figma .uf-native-phone{display:block}}
+@media(max-width:389px){.unis-figma .uf-native-narrow{display:block}}
+@media(max-width:699px){.unis-figma .uf-hero-identity>p{line-height:18px}.unis-figma .uf-hero-image{margin-top:13px}}
+
+.unis-figma .uf-colour-dots>img{display:block;flex:none;max-width:none;max-height:none}
+.unis-figma .uf-native-pending{display:block;max-width:100%;padding:16px;background:var(--uf-pale);color:var(--uf-muted);font:400 14px/1.5 UNISBody,sans-serif;white-space:normal}
+
+/* Local implementation corrects the reported native 320 teaser overlap: one flow paragraph, no split orphan. */
+@media(max-width:699px){.unis-figma .uf-timeline-teaser h2{line-height:22px}}
+
+/* The accepted Bugs image is a 200px preview, never an upscaled or HD cover. */
+.unis-figma .uf-preview-cover>img{max-width:200px;max-height:200px;margin:auto}
+.unis-figma .uf-preview-cover{display:grid;place-items:center}
+.unis-figma .uf-cover-note{font-size:13px;line-height:1.6;color:var(--uf-muted);margin-top:18px}
+
+/* Whole native primitive assets are semantic underlays, never a flattened page image. */
+.unis-figma{position:relative;isolation:isolate}
+.unis-figma .uf-native-host,.unis-figma .uf-work-row,.unis-figma .uf-header,.unis-figma .uf-footer{position:relative;isolation:isolate}
+.unis-figma .uf-native-surface{position:absolute;inset:0;pointer-events:none;z-index:-1}
+.unis-figma .uf-native-surface>.uf-native-variant,.unis-figma .uf-native-surface-box{position:absolute;inset:0}
+.unis-figma .uf-native-surface-stage{position:absolute;left:0;top:0;transform-origin:top left}
+.unis-figma .uf-native-surface-stage>img{position:absolute;display:block;max-width:none;max-height:none}
+.unis-figma .uf-native-rule{top:auto;bottom:0;height:1px}
+.unis-figma .uf-rule-top{top:0;bottom:auto}
+.unis-figma .uf-header-surface{position:absolute;top:0;left:0;right:0;height:80px;isolation:isolate;pointer-events:none}
+.unis-figma :is(.uf-header,.uf-footer,.uf-title,.uf-work-row,.uf-release-row){border:0}
+.unis-figma .uf-native-host.uf-button{border:0;padding-block:10px}
+.unis-figma .uf-outline.uf-native-host{border:0}
+.unis-figma .uf-footer-return{width:104px;height:44px;justify-content:center}
+.unis-figma .uf-work-actions>.uf-button:first-child{width:120px}
+.unis-figma .uf-work-actions>.uf-button:nth-child(2){width:124px}
+.unis-figma .uf-format button{width:64px;min-width:0;height:44px;padding:0;border:0}
+.unis-figma .uf-format button:last-child{width:72px}
+.unis-figma .uf-format button[aria-pressed=true]{box-shadow:inset 0 -2px var(--uf-blue)}
+.unis-figma .uf-format button:not(:first-child)[aria-pressed=true]{color:var(--uf-blue)}
+.unis-figma .uf-format button:first-child{color:#fff}
+.unis-figma .uf-queues button{width:88px;height:44px;padding:0}
+.unis-figma .uf-queues button:nth-child(2){width:64px}
+.unis-figma .uf-queues button:nth-child(4){width:104px}
+.unis-figma .uf-queues button[aria-pressed=true]{box-shadow:inset 0 -2px var(--uf-blue)}
+.unis-figma .uf-search input{background:transparent}
+.unis-figma .uf-back{width:144px;height:44px;padding:0 28px}
+.unis-figma .uf-back:has([data-native-surface$='/release-back']){width:176px}
+.unis-figma .uf-person~.uf-related>.uf-bottom{width:320px}
+.unis-figma .uf-related{border:0;position:relative;isolation:isolate}
+.unis-figma .uf-home-release-list .uf-release-rule{display:none}
+.unis-figma .uf-home-release-list .uf-release-row:nth-child(n+4){display:none}
+.unis-figma .uf-timeline-data{position:relative;isolation:isolate}
+.unis-figma .uf-native-timeline-axis{position:absolute;left:246px;top:10px;width:1px;height:0;z-index:-1;pointer-events:none}
+.unis-figma .uf-timeline .artist-timeline .at-list>li:not(:last-child)::after{display:none}
+.unis-figma .uf-timeline .artist-timeline .at-node{border:0;background:transparent url('/artist/unis/native-figma-20261019/663-793.svg') no-repeat center;box-shadow:none}
+.unis-figma .uf-timeline .artist-timeline .at-list>li:first-child .at-node{background:transparent url('/artist/unis/native-figma-20261019/663-790.svg') no-repeat center}
+@media(max-width:699px){
+  .unis-figma .uf-header-surface{height:64px}
+  .unis-figma .uf-nav button:nth-child(2){min-width:48px!important;width:48px;padding:0}
+  .unis-figma .uf-nav button:first-child{width:52px;padding:0}
+  .unis-figma .uf-work-actions>.uf-button:first-child,.unis-figma .uf-work-actions>.uf-button:nth-child(2){width:calc((100% - 8px)/2)}
+  .unis-figma .uf-home-release-list .uf-release-rule,.unis-figma .uf-home-release-list .uf-release-row:nth-child(n+4){display:block}
+  .unis-figma .uf-home-release-list .uf-release-row:nth-child(n+4){display:grid}
+  .unis-figma .uf-person~.uf-related>.uf-bottom{width:100%}
+  .unis-figma .uf-back{padding:0}
+}
+/* Tiny native hit-region tint is an overlay, as in the original layer order. */
+.unis-figma .uf-native-surface{z-index:auto}
+.unis-figma .uf-native-surface-stage{z-index:-1}
+.unis-figma .uf-native-hit-stage{z-index:1}
+.unis-figma .uf-format button[aria-pressed=false]{color:var(--uf-blue)}
+.unis-figma .uf-format button[aria-pressed=true]{color:#fff}
+
+/* Native geometry corrections from retained current Figma metadata, not bitmap tracing.
+ * White canvas: 15 current opaque/no-stroke full-frame records + original rect source.
+ * Home1440: 659:18436 (caption), 659:18468 (member label), 659:18469 (first portrait).
+ * Home390: 663:38–43 (featured release), 663:83–84 (member label and first portrait).
+ * The exact native artwork files and their intrinsic dimensions are unchanged.
+ */
+@media(min-width:700px){
+  .unis-figma .uf-header .uf-nav{margin-right:4px}
+  .unis-figma .uf-release-heading{position:relative}
+  .unis-figma .uf-release-heading p{position:absolute;left:0;top:67px;margin:0;line-height:25px}
+  .unis-figma .uf-home-members .uf-title{height:60px;min-height:60px;align-items:flex-start}
+  .unis-figma .uf-home-members .uf-title p{position:absolute;right:0;top:26px;margin:0;line-height:26px}
+}
+@media(max-width:699px){
+  .unis-figma .uf-featured-release{grid-template-columns:120px minmax(0,1fr);gap:20px;margin-top:22.6px}
+  .unis-figma .uf-featured-release>div{position:relative;min-height:120px}
+  .unis-figma .uf-featured-release h3{position:absolute;left:0;top:6px;margin:0;font-size:26px;line-height:31px}
+  .unis-figma .uf-featured-release p{position:absolute;left:0;top:50px;margin:0;line-height:16px}
+  .unis-figma .uf-featured-release .uf-button{position:absolute;left:0;top:76px;margin:0;height:44px;min-height:44px}
+  .unis-figma .uf-home-members .uf-title{margin-bottom:20px}
+  .unis-figma .uf-home-members .uf-title p{margin-top:8px;line-height:24px}
+}
+/* Native home member cards have a12px row gap and an explicit lower hit area.
+ * Desktop uses659:18470–73; phone663:85–88. Keep the real eight live members.
+ */
+@media(min-width:700px){
+  .unis-figma .uf-home-members .uf-roster{row-gap:12px}
+  .unis-figma .uf-home-members .uf-roster>button{padding-bottom:19px}
+  .unis-figma .uf-home-members .uf-roster strong{margin-top:6px;line-height:29px}
+  .unis-figma .uf-home-members .uf-roster small{margin-top:9px;line-height:17px}
+}
+@media(max-width:699px){
+  .unis-figma .uf-home-members{margin-top:32px}
+  .unis-figma .uf-home-members .uf-roster{row-gap:12px}
+  .unis-figma .uf-home-members .uf-roster>button{padding-bottom:14px}
+  .unis-figma .uf-home-members .uf-roster strong{margin-top:10px;font-size:20px;line-height:24px}
+  .unis-figma .uf-home-members .uf-roster small{margin-top:12px;line-height:14px}
+  .unis-figma .uf-timeline-teaser{margin-top:36px}
+}
+/* Intermediate desktops keep identity and actions in natural rows, never overlapping. */
+@media(min-width:700px) and (max-width:1199px){
+ .unis-figma .uf-hero{grid-template-rows:max-content max-content;row-gap:24px}
+ .unis-figma .uf-hero-image{grid-row:1 / span 2}
+ .unis-figma .uf-hero-actions{grid-row:2;margin-top:0}
+}

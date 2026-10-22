@@ -1,0 +1,1 @@
+export default {"01": "/image-fixture/hero.png?host=madein", "02": "/image-fixture/press-two.png?host=madein", "03": "/image-fixture/press-three.png?host=madein", "04": "/image-fixture/press-four.png?host=madein"};

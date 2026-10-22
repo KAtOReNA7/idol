@@ -1,0 +1,15 @@
+.lb-results{min-width:0;max-width:100%;color:inherit}
+.lb-results-heading{font-size:1.2rem;margin-block:1rem .5rem}
+.lb-results-summary{font-variant-numeric:tabular-nums}
+.lb-results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1rem}
+.lb-results-card{min-width:0;overflow-wrap:anywhere}
+.lb-results-card img{max-width:100%}
+.lb-results-paging,.lb-results-jump{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem}
+.lb-results-paging{margin-block:1rem}
+.lb-results-paging button,.lb-results-paging select,.lb-results-jump input{min-height:44px;max-width:100%;font:inherit;padding:.45rem .65rem}
+.lb-results-jump input{width:5rem;box-sizing:border-box}
+.lb-results-error{color:#a82020;overflow-wrap:anywhere}
+.lb-results-empty{padding:1rem;border:1px solid currentColor;border-radius:.5rem}
+.lb-results :focus-visible{outline:3px solid #346de0;outline-offset:3px}
+.lb-results button:disabled{opacity:.55;cursor:not-allowed}
+@media(prefers-reduced-motion:reduce){.lb-results *{scroll-behavior:auto;animation:none;transition:none}}

@@ -1,0 +1,13 @@
+/* Shared access/recovery controls only. Each group's composition lives in its own source CSS. */
+.rescene-visual-review .sol-status,.purplekiss-visual-review .sol-status{padding:clamp(24px,5vw,80px);min-height:60vh}
+.rescene-visual-review .sol-status button,.purplekiss-visual-review .sol-status button{border:1px solid currentColor;padding:12px 20px;min-height:44px;margin-top:16px}
+.rescene-visual-review .sol-image-zoom,.purplekiss-visual-review .sol-image-zoom{display:block;width:100%;padding:0;border:0;background:none;text-align:inherit}
+.rescene-visual-review .sol-image-dialog,.purplekiss-visual-review .sol-image-dialog{width:min(1100px,calc(100% - 24px));max-height:94dvh;padding:54px 20px 20px}
+.rescene-visual-review .sol-image-dialog figure,.purplekiss-visual-review .sol-image-dialog figure{margin:0}
+.rescene-visual-review .sol-image-dialog img,.purplekiss-visual-review .sol-image-dialog img{width:100%;max-height:76dvh;object-fit:contain}
+.rescene-visual-review .sol-image-dialog figcaption,.purplekiss-visual-review .sol-image-dialog figcaption{font-size:13px;line-height:1.8;margin-top:12px}
+.rescene-visual-review .ri-recovery,.purplekiss-visual-review .ri-recovery{position:relative;width:auto;margin:24px;padding:16px;border:1px solid currentColor;background:inherit;color:inherit}
+.rescene-visual-review .ri-recovery summary,.purplekiss-visual-review .ri-recovery summary{display:list-item;cursor:pointer;min-height:44px;align-content:center}
+.rescene-visual-review .ri-recovery .ri-retry,.purplekiss-visual-review .ri-recovery .ri-retry{border:1px solid currentColor;min-height:44px;padding:10px;margin:8px}
+.rescene-visual-review .ri-placeholder,.purplekiss-visual-review .ri-placeholder{min-height:90px;padding:20px;font-size:13px;line-height:1.8;color:inherit;background:transparent;outline:1px solid currentColor;outline-offset:-1px}
+.rescene-visual-review [data-timeline-event],.purplekiss-visual-review [data-timeline-event]{scroll-margin-top:24px}

@@ -1,0 +1,67 @@
+@font-face{font-family:EverglowScreen;src:url('/fonts/Syne.ttf') format('truetype');font-display:swap}
+.candidate-everglow{--ca-bg:#191715;--ca-ink:#f8f1e8;--ca-muted:#b5aca1;--ca-line:#5f4f43;--ca-accent:#fb915c;--ca-panel:#29241f;--ca-on-accent:#191715}
+.candidate-everglow .ca-header{border-bottom:2px solid var(--ca-accent)}
+.candidate-everglow .everglow-cinema{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.8fr);gap:32px 44px}
+.candidate-everglow .everglow-marquee{grid-column:1/-1;border-bottom:1px solid var(--ca-line);padding-bottom:24px}
+.candidate-everglow .ca-title h1{font:750 clamp(60px,9.7vw,145px)/1.06 EverglowScreen,sans-serif;letter-spacing:-.065em;margin:24px 0 0}
+.candidate-everglow .ca-title small{color:var(--ca-accent)}
+.candidate-everglow .everglow-screen{border:1px solid var(--ca-line);padding:22px;background:#0d0d0d;align-self:start}
+.candidate-everglow .ca-image>.ca-placeholder{aspect-ratio:16/10;background:#29241f;color:#c3b8ac}
+.candidate-everglow .everglow-screen-actions{border-top:1px solid var(--ca-line);padding-top:4px}
+.candidate-everglow .everglow-screen-actions .ca-actions{margin-bottom:0}
+.candidate-everglow .everglow-programme{border-top:3px solid var(--ca-accent);padding-top:24px}
+.candidate-everglow .everglow-programme-label{display:block;font:600 11px EverglowScreen,sans-serif;letter-spacing:.12em;color:var(--ca-accent);margin-bottom:30px}
+.candidate-everglow .ca-intro h2{font-size:clamp(30px,3vw,44px);font-weight:500;line-height:1.35}
+.candidate-everglow .everglow-programme .ca-facts{grid-template-columns:1fr;gap:24px}
+.candidate-everglow .ca-tabs{border-block:1px solid var(--ca-line);gap:40px}
+.candidate-everglow .ca-tabs button[aria-current=page]{color:var(--ca-accent)}
+.candidate-everglow .ca-button{border-color:#80644f}
+.candidate-everglow .ca-primary{border-color:var(--ca-accent)}
+.candidate-everglow .everglow-programme-pages>div{margin:30px 0 72px}
+.candidate-everglow .ca-works{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.candidate-everglow .ca-work{padding:22px;background:#0d0d0d;border:1px solid var(--ca-line)}
+.candidate-everglow .ca-work:first-child{grid-column:1/-1}
+.candidate-everglow .ca-work:first-child .ca-work-cover{aspect-ratio:21/9}
+.candidate-everglow .ca-work:first-child h3{font-size:32px}
+.candidate-everglow .ca-work-cover>.ca-placeholder{background:#29241f}
+.candidate-everglow .ca-library{border-block:2px solid var(--ca-accent)}
+.candidate-everglow .ca-library strong{font-family:EverglowScreen,sans-serif;color:var(--ca-accent)}
+.candidate-everglow .everglow-programme-notes{display:grid;grid-template-columns:1fr;border:1px solid var(--ca-line);padding:32px;background:var(--ca-panel)}
+.candidate-everglow .everglow-cast-label{font:600 12px EverglowScreen,sans-serif;letter-spacing:.12em;color:var(--ca-accent);padding-bottom:22px;border-bottom:1px solid var(--ca-line)}
+.candidate-everglow .ca-roster{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.candidate-everglow .ca-roster>button{grid-template-columns:minmax(0,1fr) 20px;grid-template-areas:'number arrow' 'photo photo' 'name name';align-items:start;gap:20px;padding:20px;border:1px solid var(--ca-line);border-radius:64px 64px 0 0;text-align:center;background:#30261e}
+.candidate-everglow .ca-ordinal{grid-area:number;font:700 20px EverglowScreen,sans-serif;color:var(--ca-accent);text-align:left;padding-left:14px}
+.candidate-everglow .ca-roster-arrow{grid-area:arrow}
+.candidate-everglow .ca-member-photo{grid-area:photo;aspect-ratio:4/5}
+.candidate-everglow .ca-member-photo .ca-placeholder{background:#211d18}
+.candidate-everglow .ca-member-copy{grid-area:name;align-items:center}
+.candidate-everglow .ca-member-copy strong{font-size:21px;font-weight:500}
+.candidate-everglow .everglow-person-screen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 48px}
+.candidate-everglow .everglow-person-banner{grid-column:1/-1;border:1px solid var(--ca-line);background:#0d0d0d;padding:24px}
+.candidate-everglow .ca-member-portrait>.ca-placeholder{aspect-ratio:21/8;background:#29241f}
+.candidate-everglow .everglow-person-credit{align-self:center}
+.candidate-everglow .everglow-person-replay{align-self:center}
+.candidate-everglow .ca-member-summary{border-block:1px solid var(--ca-accent)}
+.candidate-everglow .ca-member-works{grid-template-columns:repeat(2,minmax(0,1fr))}
+.candidate-everglow .ca-member-works article{border:1px solid var(--ca-line);padding:22px;background:#0d0d0d}
+@media(max-width:1100px){.candidate-everglow .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr))}.candidate-everglow .everglow-cinema{gap:28px}}
+@media(max-width:760px){.candidate-everglow .everglow-cinema{grid-template-columns:1fr;gap:26px}.candidate-everglow .everglow-marquee{padding-bottom:24px}.candidate-everglow .ca-title h1{font-size:clamp(26px,8.6vw,62px);letter-spacing:-.055em;margin-top:20px;white-space:nowrap;overflow-wrap:normal}.candidate-everglow .everglow-screen{grid-row:2;padding:14px}.candidate-everglow .everglow-programme{grid-row:3;padding-top:20px}.candidate-everglow .everglow-programme-label{margin-bottom:22px}.candidate-everglow .ca-tabs{gap:18px}.candidate-everglow .ca-works{grid-template-columns:1fr;gap:24px}.candidate-everglow .ca-work{padding:16px}.candidate-everglow .ca-work:first-child .ca-work-cover{aspect-ratio:16/9}.candidate-everglow .ca-work:first-child h3{font-size:25px}.candidate-everglow .everglow-programme-notes{padding:20px}.candidate-everglow .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.candidate-everglow .ca-roster>button{padding:20px 12px 16px;gap:16px;border-radius:42px 42px 0 0}.candidate-everglow .ca-ordinal{font-size:16px;padding-left:8px}.candidate-everglow .ca-member-copy strong{font-size:17px}.candidate-everglow .everglow-person-screen{grid-template-columns:1fr;gap:24px}.candidate-everglow .everglow-person-banner{padding:14px}.candidate-everglow .ca-member-portrait>.ca-placeholder{aspect-ratio:4/3}.candidate-everglow .ca-member-works{grid-template-columns:1fr}.candidate-everglow .ca-member-works article{padding:16px}.candidate-everglow .everglow-programme-pages>div{margin-bottom:48px}}
+@media(max-width:350px){.candidate-everglow .ca-roster{grid-template-columns:1fr}.candidate-everglow .ca-member-photo{aspect-ratio:4/3}.candidate-everglow .ca-title h1{font-size:clamp(26px,8.6vw,62px)}}
+
+/* Batch B: preserve complete official frames and keyboard reading paths. */
+.candidate-everglow .ca-image>img{display:block;width:100%;height:auto;max-height:640px;object-fit:contain;border-radius:0}
+.candidate-everglow .ca-member-photo img,.candidate-everglow .ca-member-portrait img{object-fit:contain}
+.candidate-everglow .ca-ordinal{white-space:nowrap;overflow-wrap:normal;word-break:normal;font-variant-numeric:tabular-nums}
+.candidate-everglow :is(a,button):focus-visible{outline:3px solid var(--ca-accent);outline-offset:4px}
+.candidate-everglow :is(.ca-title,.ca-intro,.ca-member-copy,.ca-facts,.ca-work){min-width:0}
+.candidate-everglow .ca-member-copy strong,.candidate-everglow .ca-work h3{overflow-wrap:anywhere;line-height:1.4}
+.candidate-everglow .ca-button{max-width:100%;min-width:0;text-wrap:balance;line-height:1.45}
+@media(max-width:760px){.candidate-everglow .ca-image>img{max-height:none}.candidate-everglow .ca-image figcaption{line-height:1.65;overflow-wrap:anywhere}}
+
+.candidate-everglow .everglow-programme-notes>.everglow-cast-label{margin:0 0 24px}
+.candidate-everglow .everglow-screen .ca-image{margin:0}
+.candidate-everglow .everglow-cast-seats{border-top:3px solid var(--ca-accent);padding-top:24px}
+@media(max-width:760px){.candidate-everglow .everglow-screen-actions .ca-actions{display:grid;grid-template-columns:1fr;gap:12px}.candidate-everglow .ca-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.candidate-everglow .ca-roster>button{border-radius:28px 28px 0 0;padding:18px 10px}.candidate-everglow .everglow-programme-notes{padding:18px}.candidate-everglow .everglow-person-banner{padding:10px}}
+@media(max-width:350px){.candidate-everglow .ca-roster{grid-template-columns:1fr}.candidate-everglow .ca-roster>button{grid-template-columns:28px 70px minmax(0,1fr) 18px;grid-template-areas:'number photo name arrow';border-radius:0;gap:10px;text-align:left}.candidate-everglow .ca-member-photo{aspect-ratio:3/4}.candidate-everglow .ca-ordinal{padding:0}.candidate-everglow .ca-member-copy{align-items:start}}
+
+.candidate-everglow .ca-image>img{aspect-ratio:auto}

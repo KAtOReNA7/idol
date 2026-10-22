@@ -1,0 +1,50 @@
+@font-face{font-family:PurpleKissDetail;src:url('/fonts/BodoniModa-Variable.ttf') format('truetype');font-weight:400 900;font-display:swap}
+.candidate-purplekiss-experience{--paper:#21182b;--white:#2c2037;--ink:#f2e9f7;--muted:#b9a8c5;--line:#685471;--rose:#ceacd9;--blush:#382643;--lilac:#342440;background:var(--paper);color:var(--ink)}
+.candidate-purplekiss-experience .work-detail-top>*{min-width:0}
+.candidate-purplekiss-experience .work-aside h1,.candidate-purplekiss-experience .mobile-work-heading h1{font-family:PurpleKissDetail,Georgia,serif;line-height:1.15;overflow-wrap:anywhere}
+.candidate-purplekiss-experience .work-aside h1{font-size:clamp(32px,3.4vw,50px)}
+.candidate-purplekiss-experience .video-mode-tabs{border:1px solid var(--line);background:var(--white);border-radius:0}
+.candidate-purplekiss-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:var(--paper)}
+.candidate-purplekiss-experience .video-play{border-radius:0;background:var(--rose);color:var(--paper);min-height:48px}
+.candidate-purplekiss-experience .button{border-radius:0;white-space:normal;line-height:1.45;min-height:44px}
+.candidate-purplekiss-experience .button.primary{background:var(--rose);color:var(--paper);border-color:var(--rose)}
+.candidate-purplekiss-experience .editor-fields input,.candidate-purplekiss-experience .editor-fields textarea,.candidate-purplekiss-experience .editor-fields select{background:var(--white);color:var(--ink);border-color:var(--line);border-radius:0}
+.candidate-purplekiss-experience .editor,.candidate-purplekiss-experience .editor-actions{border-radius:0}
+.candidate-purplekiss-experience .cast-card{border-radius:0;background:var(--white)}
+.candidate-purplekiss-experience .cast-scores{flex-wrap:wrap;gap:10px}
+.candidate-purplekiss-experience .image-label{background:var(--white);color:var(--muted);border-radius:0}
+.candidate-purplekiss-experience .member-detail{display:grid;align-items:start}
+.candidate-purplekiss-experience .member-detail h1{font-size:clamp(36px,4.3vw,66px);line-height:1.25;overflow-wrap:anywhere}
+.candidate-purplekiss-experience .member-work-card{border-radius:0;border:1px solid var(--line)}
+.candidate-purplekiss-experience .detail-return{border:1px solid var(--line);border-radius:0;background:var(--white);padding:20px}
+
+.candidate-purplekiss-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:36px}
+.candidate-purplekiss-experience .video-stage{border:1px solid var(--line);border-radius:0;background:#120c19}
+.candidate-purplekiss-experience .work-aside{padding:28px;border:1px solid var(--line);border-top:4px solid var(--rose);background:#2c2037}
+.candidate-purplekiss-experience .work-aside h1{font-weight:400;letter-spacing:-.025em}
+.candidate-purplekiss-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+.candidate-purplekiss-experience .cast-card{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;padding:20px;border-color:var(--line)}
+.candidate-purplekiss-experience .cast-card .photo{height:190px;aspect-ratio:auto;border-radius:0;background:#382643}
+.candidate-purplekiss-experience .cast-copy{padding:0}
+.candidate-purplekiss-experience .stage-view .work-detail-top{grid-template-columns:minmax(0,1fr)}
+.candidate-purplekiss-experience .stage-view .work-aside{border-inline:0;border-top:1px solid var(--rose);border-bottom:1px solid var(--line);padding:30px;background:transparent}
+.candidate-purplekiss-experience .stage-source{border:0;border-top:1px solid var(--line);padding:22px 0;background:transparent;border-radius:0}
+.candidate-purplekiss-experience .stage-overall-note{background:#382643;border-left:3px solid var(--rose);padding:16px}
+.candidate-purplekiss-experience .member-detail{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:54px}
+.candidate-purplekiss-experience .member-detail>.photo{border-radius:0;border:1px solid var(--line);padding:15px;background:#2c2037}
+.candidate-purplekiss-experience .member-work-summary{background:none;border-block:1px solid var(--line);border-radius:0}
+
+@media(max-width:1100px){.candidate-purplekiss-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ .candidate-purplekiss-experience .work-detail-top,.candidate-purplekiss-experience .stage-view .work-detail-top{grid-template-columns:minmax(0,1fr);gap:24px}
+ .candidate-purplekiss-experience .cast-grid{grid-template-columns:1fr}
+ .candidate-purplekiss-experience .member-detail{grid-template-columns:1fr}
+ .candidate-purplekiss-experience .work-aside h1,.candidate-purplekiss-experience .mobile-work-heading h1{font-size:36px}
+ .candidate-purplekiss-experience .member-detail h1{font-size:36px}
+ .candidate-purplekiss-experience .video-mode-tabs{width:100%}
+ .candidate-purplekiss-experience .video-mode-tabs button{flex:1;min-width:0}
+ .candidate-purplekiss-experience .detail-return{padding:16px 12px}
+ .candidate-purplekiss-experience .member-name{font-size:18px;line-height:1.4;overflow-wrap:anywhere}
+ .candidate-purplekiss-experience .editor-fields input,.candidate-purplekiss-experience .editor-fields textarea,.candidate-purplekiss-experience .editor-fields select{font-size:16px}
+ .candidate-purplekiss-experience .cast-card{grid-template-columns:80px minmax(0,1fr);gap:15px;padding:15px}.candidate-purplekiss-experience .cast-card .photo{height:110px}.candidate-purplekiss-experience .work-aside,.candidate-purplekiss-experience .stage-view .work-aside{padding:22px 18px}.candidate-purplekiss-experience .member-detail{gap:28px}
+}

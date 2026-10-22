@@ -1,0 +1,307 @@
+diff --git a/scripts/candyshop-unused-group-original-manifest.json b/scripts/candyshop-unused-group-original-manifest.json
+index c020a0c..f55eabc 100644
+--- a/scripts/candyshop-unused-group-original-manifest.json
++++ b/scripts/candyshop-unused-group-original-manifest.json
+@@ -47,35 +47,35 @@
+     },
+     "dist/server/index.js": {
+       "bytes": 421489,
+-      "sha256": "04e800bd02192452c6bfbdbd3ca888e32d21f6ccc2c3ef1a04189656f1467913"
++      "sha256": "40c81db69aba04e408e7f8bde7008b6e2c44529a17f500e3a2baa80029354286"
+     },
+     "dist/server/_next/static/page-COOl0hhP.js": {
+       "bytes": 4709,
+       "sha256": "0fb80edb580f815ad0ce3483dc321daf52b4de0f777f919f1985d4a8be1a8208"
+     },
+-    "dist/client/_next/static/chunks/catalog-group-views-2X1FOLPM.js": {
++    "dist/client/_next/static/chunks/catalog-group-views-pUrlUAQ8.js": {
+       "bytes": 131695,
+-      "sha256": "c07d54e5a88f424f408839e91aa2d51d40b5ab3614f0a09cc22aa29b0f8c27d7"
++      "sha256": "dd8a9066173b97e96a75107ba0e05b7bfc4782f27bb2fcc7140eb065af601e97"
+     },
+-    "dist/server/ssr/_next/static/catalog-group-views-BTalh9pe.js": {
++    "dist/server/ssr/_next/static/catalog-group-views-BNYC8XWV.js": {
+       "bytes": 131642,
+-      "sha256": "915d53a55d7d87f46824a047002bf051be56845d6a0d41647c6a5c418dbb6d79"
++      "sha256": "26941ca8e928500cb86915730621c1e0753be71c1971e815f4c219bcab133735"
+     },
+-    "dist/client/_next/static/chunks/candidate-artist-experience-Cuc-PrOK.js": {
++    "dist/client/_next/static/chunks/candidate-artist-experience-CK2OmxWk.js": {
+       "bytes": 17339,
+-      "sha256": "2c26bb6464537b88c3bafbc46e554ca029dc663d1c57a8ca4a4e0fa08d7361b2"
++      "sha256": "0e50e69a68d55d4d95ab11dfc5a7311d4d8131d839e56091d91d9eb17e36df93"
+     },
+-    "dist/server/ssr/_next/static/candidate-artist-experience-Ca9nVyky.js": {
++    "dist/server/ssr/_next/static/candidate-artist-experience-DZO3gfZ0.js": {
+       "bytes": 17286,
+-      "sha256": "5ea723af7bb6e902575f820990f095564bbe2929c1014710c06c9ed4bc368eba"
++      "sha256": "33bab11c704d866e21711116883cc344331aac3eae1bc32e0594775a6afff7d0"
+     },
+-    "dist/client/_next/static/chunks/candyshop-design-DKOLwvwe.js": {
++    "dist/client/_next/static/chunks/candyshop-design-y4QdObqU.js": {
+       "bytes": 1358,
+-      "sha256": "8b8b6588f7d301183086d8a3d914ce58e05a7e16af67e3295d1487fa801ca472"
++      "sha256": "79ff74759880cd383fe6a3813eb4552c838a9d91b91ec3f8000a42d5ce39bd94"
+     },
+-    "dist/server/ssr/_next/static/candyshop-design-DS6Q9DIw.js": {
++    "dist/server/ssr/_next/static/candyshop-design-D8VZSMhf.js": {
+       "bytes": 1349,
+-      "sha256": "79f17633a2507e2caa2ec8426572c917e7d8e26b2289969de0493200e8d72bf9"
++      "sha256": "8c75c2dfdff1117f23713f6f0da40237bdd9ad4a53e2b5dc2ff4fa38d18de4a2"
+     }
+   },
+   "original": {
+diff --git a/scripts/meovv-build-asset-cutover-guards.json b/scripts/meovv-build-asset-cutover-guards.json
+index 20ef149..03ad58c 100644
+--- a/scripts/meovv-build-asset-cutover-guards.json
++++ b/scripts/meovv-build-asset-cutover-guards.json
+@@ -139,8 +139,100 @@
+   },
+   "compiled": {
+     "status": "pending-full-build-and-independent-review",
+-    "carriers": {},
+-    "dynamicPathCarriers": [],
+-    "originalPathCarriers": []
++    "carriers": {
++      "dist/client/.vite/manifest.json": {
++        "bytes": 78999,
++        "sha256": "d8d3cfa03f693dcfd13d6cc2a53612bea20912890859b92f19643153464301bc"
++      },
++      "dist/client/_next/static/chunks/build-asset-format-DqJFtnOG.js": {
++        "bytes": 2472,
++        "sha256": "028458cc2eb864a2b4ab3ea9a2b58a8c4168919dcef7b13c8cafb0af38fec673"
++      },
++      "dist/client/_next/static/chunks/catalog-group-views-pUrlUAQ8.js": {
++        "bytes": 131695,
++        "sha256": "dd8a9066173b97e96a75107ba0e05b7bfc4782f27bb2fcc7140eb065af601e97"
++      },
++      "dist/client/_next/static/chunks/index-oVSPwbFs.js": {
++        "bytes": 265956,
++        "sha256": "c85dcbaa77ee50ea3ffd3fac7a1db910ff03f253e4cc54ee0d2ac0f3a61152fe"
++      },
++      "dist/client/_next/static/chunks/meovv-design-iEVepYKh.js": {
++        "bytes": 20227,
++        "sha256": "18eba7f778d6bb01678034f4cea43c595ccee21824dd049aa5c2cd56e14b018b"
++      },
++      "dist/client/_next/static/chunks/page-f_DKIQ_K.js": {
++        "bytes": 199811,
++        "sha256": "7072b1a42f3399119aaf063d1a2e8b567b5936c3c54a4f6207efd884fcaf4de9"
++      },
++      "dist/server/.vite/manifest.json": {
++        "bytes": 71183,
++        "sha256": "f20ffaddc5ff42f384b3121222a2e5912706724b5a45f2cff8b3c097934fcf30"
++      },
++      "dist/server/_next/static/build-asset-host-ut1RkR94.js": {
++        "bytes": 7316,
++        "sha256": "951d0d1bb4a7a30d892fc3a26dcb903343ca450e6ec0bafdd6fe4bfd75824beb"
++      },
++      "dist/server/_next/static/page-CHQ7_2n3.js": {
++        "bytes": 4150,
++        "sha256": "0b10d90da1645c143fd4e7195a02be7faab346b008d2f86b0f368ea0ee33cc92"
++      },
++      "dist/server/index.js": {
++        "bytes": 421489,
++        "sha256": "40c81db69aba04e408e7f8bde7008b6e2c44529a17f500e3a2baa80029354286"
++      },
++      "dist/server/ssr/_next/static/build-asset-format-CgOs2MaO.js": {
++        "bytes": 2472,
++        "sha256": "028458cc2eb864a2b4ab3ea9a2b58a8c4168919dcef7b13c8cafb0af38fec673"
++      },
++      "dist/server/ssr/_next/static/catalog-group-views-BNYC8XWV.js": {
++        "bytes": 131642,
++        "sha256": "26941ca8e928500cb86915730621c1e0753be71c1971e815f4c219bcab133735"
++      },
++      "dist/server/ssr/_next/static/meovv-design-DfjPTJKr.js": {
++        "bytes": 20135,
++        "sha256": "b76d4d0fcc1ec85f0974cc971d3c6da130249b38f9e3dd25407ecd5e4c4c282f"
++      },
++      "dist/server/ssr/_next/static/page-BRpRaw0J.js": {
++        "bytes": 198585,
++        "sha256": "a0231537a60ecd1fd29d293b8caaa9b28074e3e9fbd3d0a1c0819cbc72ee4382"
++      },
++      "dist/server/ssr/vinext-client-assets.js": {
++        "bytes": 97867,
++        "sha256": "84e431180915902e3cc66ee8a0414606622adf2c59e12df3bd5123f9f4f3b455"
++      },
++      "dist/server/vinext-client-assets.js": {
++        "bytes": 97867,
++        "sha256": "84e431180915902e3cc66ee8a0414606622adf2c59e12df3bd5123f9f4f3b455"
++      }
++    },
++    "dynamicPathCarriers": [
++      "dist/client/.vite/manifest.json",
++      "dist/client/_next/static/chunks/build-asset-format-DqJFtnOG.js",
++      "dist/client/_next/static/chunks/catalog-group-views-pUrlUAQ8.js",
++      "dist/client/_next/static/chunks/index-oVSPwbFs.js",
++      "dist/client/_next/static/chunks/meovv-design-iEVepYKh.js",
++      "dist/client/_next/static/chunks/page-f_DKIQ_K.js",
++      "dist/server/.vite/manifest.json",
++      "dist/server/_next/static/build-asset-host-ut1RkR94.js",
++      "dist/server/_next/static/page-CHQ7_2n3.js",
++      "dist/server/index.js",
++      "dist/server/ssr/_next/static/build-asset-format-CgOs2MaO.js",
++      "dist/server/ssr/_next/static/catalog-group-views-BNYC8XWV.js",
++      "dist/server/ssr/_next/static/meovv-design-DfjPTJKr.js",
++      "dist/server/ssr/_next/static/page-BRpRaw0J.js",
++      "dist/server/ssr/vinext-client-assets.js",
++      "dist/server/vinext-client-assets.js"
++    ],
++    "originalPathCarriers": [
++      "dist/client/_next/static/chunks/build-asset-format-DqJFtnOG.js",
++      "dist/client/_next/static/chunks/catalog-group-views-pUrlUAQ8.js",
++      "dist/client/_next/static/chunks/meovv-design-iEVepYKh.js",
++      "dist/server/_next/static/build-asset-host-ut1RkR94.js",
++      "dist/server/_next/static/page-CHQ7_2n3.js",
++      "dist/server/index.js",
++      "dist/server/ssr/_next/static/build-asset-format-CgOs2MaO.js",
++      "dist/server/ssr/_next/static/catalog-group-views-BNYC8XWV.js",
++      "dist/server/ssr/_next/static/meovv-design-DfjPTJKr.js"
++    ]
+   }
+ }
+diff --git a/scripts/prune-candyshop-unused-group-original.mjs b/scripts/prune-candyshop-unused-group-original.mjs
+index 2da7fc2..2b797a7 100644
+--- a/scripts/prune-candyshop-unused-group-original.mjs
++++ b/scripts/prune-candyshop-unused-group-original.mjs
+@@ -2,7 +2,7 @@
+ import fs from 'node:fs';import path from 'node:path';import {createHash}from'node:crypto';import {fileURLToPath}from'node:url';
+ const manifest=JSON.parse(fs.readFileSync(new URL('./candyshop-unused-group-original-manifest.json',import.meta.url),'utf8'));
+ const original='/artist/candyshop/batch-b-20261016/group-original.jpg',display='/artist/candyshop/batch-b-20261016-webp-v1/group-display.webp';
+-const exactGuards=["app/artists/candyshop/page.tsx", "components/candidate-artist-experience.tsx", "components/candidate-index-card.tsx", "components/candidate/candyshop-design.tsx", "components/group-detail.tsx", "components/photo-lightbox.tsx", "components/reliable-image.tsx", "data/candidate-index-visuals.json", "data/candyshop-artist.json", "dist/client/_next/static/chunks/candidate-artist-experience-Cuc-PrOK.js", "dist/client/_next/static/chunks/candyshop-design-DKOLwvwe.js", "dist/client/_next/static/chunks/catalog-group-views-2X1FOLPM.js", "dist/server/_next/static/page-COOl0hhP.js", "dist/server/index.js", "dist/server/ssr/_next/static/candidate-artist-experience-Ca9nVyky.js", "dist/server/ssr/_next/static/candyshop-design-DS6Q9DIw.js", "dist/server/ssr/_next/static/catalog-group-views-BTalh9pe.js", "lib/idol/image-lightbox-session.ts", "lib/idol/image-presentation.ts"];
++const exactGuards=["app/artists/candyshop/page.tsx", "components/candidate-artist-experience.tsx", "components/candidate-index-card.tsx", "components/candidate/candyshop-design.tsx", "components/group-detail.tsx", "components/photo-lightbox.tsx", "components/reliable-image.tsx", "data/candidate-index-visuals.json", "data/candyshop-artist.json", "dist/client/_next/static/chunks/candidate-artist-experience-CK2OmxWk.js", "dist/client/_next/static/chunks/candyshop-design-y4QdObqU.js", "dist/client/_next/static/chunks/catalog-group-views-pUrlUAQ8.js", "dist/server/_next/static/page-COOl0hhP.js", "dist/server/index.js", "dist/server/ssr/_next/static/candidate-artist-experience-DZO3gfZ0.js", "dist/server/ssr/_next/static/candyshop-design-D8VZSMhf.js", "dist/server/ssr/_next/static/catalog-group-views-BNYC8XWV.js", "lib/idol/image-lightbox-session.ts", "lib/idol/image-presentation.ts"];
+ function verify(file,row){if(!fs.existsSync(file)||fs.lstatSync(file).isSymbolicLink()||!fs.statSync(file).isFile()||fs.statSync(file).size!==row.bytes||createHash('sha256').update(fs.readFileSync(file)).digest('hex')!==row.sha256)throw new Error('Candyshop integrity mismatch: '+file);}
+ function files(dir){if(!fs.existsSync(dir))return[];if(fs.lstatSync(dir).isSymbolicLink())throw new Error('Candyshop audit rejects symlink: '+dir);return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{const p=path.join(dir,e.name);if(e.isSymbolicLink())throw new Error('Candyshop audit rejects symlink: '+p);return e.isDirectory()?files(p):[p];});}
+ export function auditCandyshopUnusedOriginal(root){
+diff --git a/scripts/prune-youngposse-replaced-build-portraits.mjs b/scripts/prune-youngposse-replaced-build-portraits.mjs
+index fa58e4a..eb9f9f6 100644
+--- a/scripts/prune-youngposse-replaced-build-portraits.mjs
++++ b/scripts/prune-youngposse-replaced-build-portraits.mjs
+@@ -11,7 +11,7 @@ function verify(p,row){if(!fs.existsSync(p)||fs.lstatSync(p).isSymbolicLink()||!
+ function files(dir){if(!fs.existsSync(dir))return [];if(fs.lstatSync(dir).isSymbolicLink())throw new Error('YP portrait audit rejects symlink: '+dir);return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{const p=path.join(dir,e.name);if(e.isSymbolicLink())throw new Error('YP portrait audit rejects symlink: '+p);return e.isDirectory()?files(p):[p];});}
+ export function auditReplacedYoungpossePortraits(root){
+  root=path.resolve(root);
+- const exactGuards=["app/artists/youngposse/page.tsx", "components/candidate-index-card.tsx", "components/candidate/youngposse-design.tsx", "components/group-detail.tsx", "data/candidate-index-visuals.json", "data/youngposse-artist.json", "dist/client/_next/static/chunks/catalog-group-views-2X1FOLPM.js", "dist/client/_next/static/chunks/youngposse-design-CJvfgQ_F.js", "dist/server/_next/static/page-BAQMDTuJ.js", "dist/server/index.js", "dist/server/ssr/_next/static/catalog-group-views-BTalh9pe.js", "dist/server/ssr/_next/static/youngposse-design-CIkyENua.js"];
++ const exactGuards=["app/artists/youngposse/page.tsx", "components/candidate-index-card.tsx", "components/candidate/youngposse-design.tsx", "components/group-detail.tsx", "data/candidate-index-visuals.json", "data/youngposse-artist.json", "dist/client/_next/static/chunks/catalog-group-views-pUrlUAQ8.js", "dist/client/_next/static/chunks/youngposse-design-DhAbecIi.js", "dist/server/_next/static/page-BAQMDTuJ.js", "dist/server/index.js", "dist/server/ssr/_next/static/catalog-group-views-BNYC8XWV.js", "dist/server/ssr/_next/static/youngposse-design-Dcih7odv.js"];
+  if(JSON.stringify(Object.keys(manifest.runtimeGuards).sort())!==JSON.stringify(exactGuards))throw new Error('YP exact consumer inventory changed');
+  const exactRetained=["/artist/youngposse/batch-b-20261016-webp-v1/group-display.webp", "/artist/youngposse/batch-b-20261016/doeun-display.webp", "/artist/youngposse/batch-b-20261016/doeun-original.jpg", "/artist/youngposse/batch-b-20261016/group-display.webp", "/artist/youngposse/batch-b-20261016/group-original.png", "/artist/youngposse/batch-b-20261016/jiana-display.webp", "/artist/youngposse/batch-b-20261016/jiana-original.jpg", "/artist/youngposse/batch-b-20261016/jieun-display.webp", "/artist/youngposse/batch-b-20261016/jieun-original.jpg", "/artist/youngposse/batch-b-20261016/sunhye-display.webp", "/artist/youngposse/batch-b-20261016/sunhye-original.jpg", "/artist/youngposse/batch-b-20261016/yeonjung-display.webp", "/artist/youngposse/batch-b-20261016/yeonjung-original.jpg"];
+  if(JSON.stringify(manifest.retainedImages.map(x=>x.path).sort())!==JSON.stringify(exactRetained))throw new Error('YP retained image inventory changed');
+diff --git a/scripts/udtt-font-retention-manifest.json b/scripts/udtt-font-retention-manifest.json
+index 99a6db5..2645f74 100644
+--- a/scripts/udtt-font-retention-manifest.json
++++ b/scripts/udtt-font-retention-manifest.json
+@@ -18,17 +18,17 @@
+       "bytes": 59168,
+       "sha256": "c12a79c47eb9ba50edafa662ff4890177027f6c2ecb44dc51dbbf75b65eb4341"
+     },
+-    "dist/client/_next/static/chunks/udtt-native-design-BXlIzo9y.js": {
++    "dist/client/_next/static/chunks/udtt-native-design-CmVrcXgN.js": {
+       "bytes": 32063,
+-      "sha256": "8f907225abdb8965a21d677c21415beefd4b1c014f83669a52891b7d68d2097a"
++      "sha256": "ca12ab76af9ffd5abe7a8221400abd721222d878e4dbc8a7467743e3073aa3c5"
+     },
+     "dist/client/artist/udtt/figma-native.css": {
+       "bytes": 11859,
+       "sha256": "915a849fdcf2604828baf132b222885c4e052d16564294818ceeb4198db162a8"
+     },
+-    "dist/server/ssr/_next/static/udtt-native-design-PJiFeZoB.js": {
++    "dist/server/ssr/_next/static/udtt-native-design-C2YKGc5u.js": {
+       "bytes": 32015,
+-      "sha256": "4e6161699f16fea3f8313d3e2cbed24fc2fd8e063096e950f362a1aa59ab891c"
++      "sha256": "a7e4c3c2f5154c2fa7d0de0f84f6c46efbb62d7fc270fb125e2091e2aed73564"
+     }
+   },
+   "retainedFonts": [
+diff --git a/scripts/udtt-private-build-assets-manifest.json b/scripts/udtt-private-build-assets-manifest.json
+index 064c0a2..66a50dc 100644
+--- a/scripts/udtt-private-build-assets-manifest.json
++++ b/scripts/udtt-private-build-assets-manifest.json
+@@ -199,11 +199,11 @@
+     }
+   },
+   "builtContractCarriers": {
+-    "dist/client/_next/static/chunks/lifecycle-zibf9bGi.js": {
++    "dist/client/_next/static/chunks/lifecycle-yK8SWZpN.js": {
+       "bytes": 109850,
+       "sha256": "e8b3d7bd22bc3aa5867f5ee6b592dbe8a5df2f628d4870dc3bb5e30ff769920d"
+     },
+-    "dist/server/ssr/_next/static/lifecycle-TiRgqUon.js": {
++    "dist/server/ssr/_next/static/lifecycle-uS41EaDw.js": {
+       "bytes": 109834,
+       "sha256": "6766b04e3bc3b2dccb6d09c3fe228d4c3ab1f09fdf58d1ff90b6a8fb2c012acc"
+     }
+diff --git a/scripts/youngposse-original-retention-manifest.json b/scripts/youngposse-original-retention-manifest.json
+index 45e15a2..79c0c0d 100644
+--- a/scripts/youngposse-original-retention-manifest.json
++++ b/scripts/youngposse-original-retention-manifest.json
+@@ -107,13 +107,13 @@
+   ],
+   "compiledHelper": "C=e=>e.replace(`/batch-b-20261016-webp-v1/`,`/batch-b-20261016/`)",
+   "builtCarriers": {
+-    "dist/client/_next/static/chunks/youngposse-design-CJvfgQ_F.js": {
++    "dist/client/_next/static/chunks/youngposse-design-DhAbecIi.js": {
+       "bytes": 31976,
+-      "sha256": "db75b31cd165c076b14919f347ab4088010397c3846a115660e414a4e0906ff4"
++      "sha256": "9c2c9732539afd8fcb905cd2a00e5b28c3799b883ed1bff0395d38fb9079ad13"
+     },
+-    "dist/server/ssr/_next/static/youngposse-design-CIkyENua.js": {
++    "dist/server/ssr/_next/static/youngposse-design-Dcih7odv.js": {
+       "bytes": 31923,
+-      "sha256": "ed29e2ce40e763213a241f6e85d3784b0f2be9c0ff50b120b20f4d251daa0e75"
++      "sha256": "ef245505fed128fd1d82b410b284ebaf72d6179bbcac0a52e8f149e5ac73e58f"
+     }
+   }
+ }
+diff --git a/scripts/youngposse-replaced-portrait-build-manifest.json b/scripts/youngposse-replaced-portrait-build-manifest.json
+index b9504d4..4308fd8 100644
+--- a/scripts/youngposse-replaced-portrait-build-manifest.json
++++ b/scripts/youngposse-replaced-portrait-build-manifest.json
+@@ -27,27 +27,27 @@
+     },
+     "dist/server/index.js": {
+       "bytes": 421489,
+-      "sha256": "04e800bd02192452c6bfbdbd3ca888e32d21f6ccc2c3ef1a04189656f1467913"
++      "sha256": "40c81db69aba04e408e7f8bde7008b6e2c44529a17f500e3a2baa80029354286"
+     },
+     "dist/server/_next/static/page-BAQMDTuJ.js": {
+       "bytes": 4542,
+       "sha256": "e385c3ff6496a229499d3de4b5cb00d9ffd48e2c7f5b4ac582c0fd7cb3fb0917"
+     },
+-    "dist/server/ssr/_next/static/catalog-group-views-BTalh9pe.js": {
++    "dist/server/ssr/_next/static/catalog-group-views-BNYC8XWV.js": {
+       "bytes": 131642,
+-      "sha256": "915d53a55d7d87f46824a047002bf051be56845d6a0d41647c6a5c418dbb6d79"
++      "sha256": "26941ca8e928500cb86915730621c1e0753be71c1971e815f4c219bcab133735"
+     },
+-    "dist/client/_next/static/chunks/catalog-group-views-2X1FOLPM.js": {
++    "dist/client/_next/static/chunks/catalog-group-views-pUrlUAQ8.js": {
+       "bytes": 131695,
+-      "sha256": "c07d54e5a88f424f408839e91aa2d51d40b5ab3614f0a09cc22aa29b0f8c27d7"
++      "sha256": "dd8a9066173b97e96a75107ba0e05b7bfc4782f27bb2fcc7140eb065af601e97"
+     },
+-    "dist/client/_next/static/chunks/youngposse-design-CJvfgQ_F.js": {
++    "dist/client/_next/static/chunks/youngposse-design-DhAbecIi.js": {
+       "bytes": 31976,
+-      "sha256": "db75b31cd165c076b14919f347ab4088010397c3846a115660e414a4e0906ff4"
++      "sha256": "9c2c9732539afd8fcb905cd2a00e5b28c3799b883ed1bff0395d38fb9079ad13"
+     },
+-    "dist/server/ssr/_next/static/youngposse-design-CIkyENua.js": {
++    "dist/server/ssr/_next/static/youngposse-design-Dcih7odv.js": {
+       "bytes": 31923,
+-      "sha256": "ed29e2ce40e763213a241f6e85d3784b0f2be9c0ff50b120b20f4d251daa0e75"
++      "sha256": "ef245505fed128fd1d82b410b284ebaf72d6179bbcac0a52e8f149e5ac73e58f"
+     }
+   },
+   "files": [
+diff --git a/tests/meovv-build-asset-audit.test.mjs b/tests/meovv-build-asset-audit.test.mjs
+index b4d9e82..a80b9ed 100644
+--- a/tests/meovv-build-asset-audit.test.mjs
++++ b/tests/meovv-build-asset-audit.test.mjs
+@@ -30,7 +30,7 @@ function snapshot(root,prefix=''){
+ }
+ function noWrites(f,run,pattern){const before=snapshot(f.dir);assert.throws(run,pattern);assert.deepEqual(snapshot(f.dir),before);}
+ test('production guard remains pending; dry-run requires build, exact pins and real saved bodies',()=>{
+- assert.equal(guard.compiled.status,'pending-full-build-and-independent-review');assert.deepEqual(guard.compiled.carriers,{});
++ assert.equal(guard.compiled.status,'pending-full-build-and-independent-review');assert.equal(Object.keys(guard.compiled.carriers).length,16);assert.deepEqual(Object.keys(guard.compiled.carriers).sort(),[...new Set([...guard.compiled.dynamicPathCarriers,...guard.compiled.originalPathCarriers])].sort());
+  const f=fixture({dist:false});try{const before=snapshot(f.dir),result=auditMeovvCutover(f.dir);assert.equal(result.candidates.length,4);assert.equal(result.payloadBytes,6004463);assert.equal(result.mayDelete,false);assert.equal(result.cutoverEnabled,true);assert.equal(result.blockers.length,3);assert.deepEqual(snapshot(f.dir),before);noWrites(f,()=>pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}),/Prune blocked/);}finally{f.dispose();}
+ });
+ test('saved body verification and human incognito evidence remain explicitly distinct',()=>{

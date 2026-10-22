@@ -1,0 +1,1233 @@
+diff --git a/app/manage/build-assets/client.tsx b/app/manage/build-assets/client.tsx
+index e705324..c28ff85 100644
+--- a/app/manage/build-assets/client.tsx
++++ b/app/manage/build-assets/client.tsx
+@@ -1,6 +1,6 @@
+ 'use client';
+ import {useEffect, useRef, useState} from 'react';
+-import {assetUrl, BUILD_ASSETS, verifyBuildAsset, type BuildAsset} from '@/lib/idol/build-asset-format';
++import {assetUrl, BUILD_ASSETS, BuildAssetError, verifyBuildAsset, type BuildAsset} from '@/lib/idol/build-asset-format';
+ type Status = {id?: unknown; version?: unknown; state?: unknown};
+ function Slot({asset}: {asset: BuildAsset}) {
+  const [file, setFile] = useState<File | null>(null), [busy, setBusy] = useState(false);
+@@ -28,19 +28,36 @@ function Slot({asset}: {asset: BuildAsset}) {
+  }
+  async function inspect() {
+   if (locked.current) return; locked.current = true; setBusy(true); setCanUpload(false);
++  let phase = 'owner-status', failure = 'REQUEST_FAILED';
++  const reject = (code: string): never => { failure = code; throw new Error('READBACK_NOT_CONFIRMED'); };
+   try {
+    const response = await fetch(assetUrl(asset, true), {cache: 'no-store', credentials: 'same-origin', signal: AbortSignal.timeout(45000)});
+-   if (!response.ok) throw new Error(); const result = await response.json() as Status;
+-   if (result.id !== asset.id || result.version !== asset.sha256) throw new Error();
++   if (!response.ok) reject(`HTTP_${response.status}`);
++   phase = 'owner-json'; failure = 'INVALID_JSON';
++   const result = await response.json() as Status;
++   if (result.id !== asset.id || result.version !== asset.sha256) reject('IDENTITY_MISMATCH');
+    if (result.state === 'verified') {
++    phase = 'public-get'; failure = 'REQUEST_FAILED';
+     const readback = await fetch(assetUrl(asset), {cache: 'no-store', credentials: 'same-origin', signal: AbortSignal.timeout(30000)});
+-    if (!readback.ok || readback.headers.get('content-length') !== String(asset.bytes)) throw new Error();
+-    await verifyBuildAsset(asset, new Uint8Array(await readback.arrayBuffer()), readback.headers.get('content-type') ?? '');
++    if (!readback.ok) reject(`HTTP_${readback.status}`);
++    phase = 'public-headers';
++    const declaredLength = readback.headers.get('content-length');
++    // A transfer may omit Content-Length. Only the complete body and the fixed
++    // bytes/MIME/JPEG geometry/SHA checks below can establish byte integrity.
++    if (declaredLength !== null && declaredLength !== String(asset.bytes)) reject('DECLARED_LENGTH_MISMATCH');
++    phase = 'public-body'; failure = 'BODY_READ_FAILED';
++    const bytes = new Uint8Array(await readback.arrayBuffer());
++    phase = 'public-verify'; failure = 'VERIFICATION_FAILED';
++    await verifyBuildAsset(asset, bytes, readback.headers.get('content-type') ?? '');
+     setMessage('已读回并核验原始字节。此所有者浏览器检查不替代独立匿名访问验收。');
+    } else if (result.state === 'missing' && !attempted.current) {
+     setCanUpload(!!file); setMessage('存储中尚无此固定副本。选择并核验原文件后，可显式上传一次。');
+    } else { setMessage('状态为冲突或不确定。停止上传，仅可继续只读核验；缺失结果不证明此前写入没有执行。'); }
+-  } catch { setMessage('读回未能确认。没有重试或修改其他数据，请保留当前文件。'); }
++  } catch (error) {
++   if (error instanceof BuildAssetError) failure = error.code;
++   else if (error instanceof Error && ['TimeoutError', 'AbortError'].includes(error.name)) failure = error.name;
++   setMessage(`读回未能确认（${phase}: ${failure}）。没有重试或修改其他数据，请保留当前文件。`);
++  }
+   finally { locked.current = false; setBusy(false); }
+  }
+  async function upload() {
+diff --git a/components/candidate/meovv-design.tsx b/components/candidate/meovv-design.tsx
+index fe0aff8..8136d9c 100644
+--- a/components/candidate/meovv-design.tsx
++++ b/components/candidate/meovv-design.tsx
+@@ -10,6 +10,7 @@ import {useArtistScroll} from '@/components/use-artist-scroll';
+ import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
+ import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+ import {candidatePortrait} from '@/lib/idol/candidate/portrait';
++import {meovvBuildAssetPortrait} from '@/lib/idol/candidate/meovv-build-asset-portrait';
+ import {meovvRosterPortrait} from '@/lib/idol/candidate/meovv-roster-portrait';
+ import {memberDisplayName,memberChineseName} from '@/lib/idol/member-display-name';
+ import {memberAffiliationLabel} from '@/lib/idol/member-affiliation';
+@@ -84,7 +85,7 @@ export default function MeovvDesign({content}:{content:CandidateContent}){
+  const roster=<section className="mf-section mf-roster-section"><Title en={onHome?'THE FIVE':'MEMBERS'} count={onHome?undefined:members.length}>{onHome?'成员':'成员库'}</Title><div className="mf-roster">{members.map(m=><button key={m.id} data-artist-member-trigger={m.id} onClick={()=>navigate({section:'members',member:m.id})}><span className="mf-roster-photo"><Picture identityKey={'member:'+m.id} complete src={meovvRosterPortrait(m,portrait(m)?.image)} alt={memberDisplayName(m)}/></span><span className="mf-roster-label"><strong className="member-display-name">{memberChineseName(m)||memberDisplayName(m)}</strong>{memberChineseName(m)&&m.stageName.trim()&&m.stageName.trim()!==memberChineseName(m)&&<small>{m.stageName}</small>}</span></button>)}</div>{!members.length&&<p className="mf-empty">尚无关联的成员记录。</p>}</section>;
+  const releases=<section className="mf-section mf-releases"><Title count={onHome?undefined:MEOVV_RELEASES.length}>发行</Title><div className="mf-release-grid">{MEOVV_RELEASES.map(release=>{const work=works.find(item=>item.id===release.workId);return <article key={release.title}><button className="mf-release-image" aria-label={`放大 ${release.title} 发行封面`} aria-haspopup="dialog" onClick={()=>setLightbox({src:release.src,label:`${release.title} · 官方发行封面`})}><Picture src={release.src} identityKey={'release:'+release.title} alt={`${release.title} 官方发行封面`}/></button><h3><Link href={work?artistWorkUrl(work,false,returnTo):undefined}>{release.title}</Link></h3><p>{onHome?'MEOVV':`${release.year} · ${release.kind}`}</p></article>;})}</div></section>;
+  const timeline=<section className="mf-section mf-timeline"><Title en={onHome?undefined:'HISTORY'}>历程</Title><ArtistTimelineHost groupId={content.groupId} catalog={state.data} loading={state.loading} error={state.error} onRetry={timelineHostOptions.onRetry}/></section>;
+- function memberPage(m:Member){if(!state.data)return null;const selected=portrait(m),items=memberWorks(state.data,m.id),summary=memberWorkSummary(items);return <section className="mf-section mf-member"><button className="mf-button mf-back" onClick={()=>navigate({section:'members',member:null})}><ArrowLeft size={16}/>返回成员库</button><div className="mf-person-breadcrumb"><button onClick={()=>navigate({section:'overview',member:null})}>MEOVV</button><span>/</span><button onClick={()=>navigate({section:'members',member:null})}>成员</button><span>/</span><span>{memberDisplayName(m)}</span></div><div className="mf-person-grid"><div className="mf-person-title"><h1 className="member-display-name">{memberChineseName(m)||memberDisplayName(m)}</h1>{memberChineseName(m)&&m.stageName.trim()&&m.stageName.trim()!==memberChineseName(m)&&<p>{m.stageName}</p>}</div><figure className="mf-person-photo"><button aria-label={`放大${memberDisplayName(m)}的照片`} aria-haspopup="dialog" disabled={!selected?.image} onClick={()=>selected?.image&&setLightbox({src:selected.image,label:memberDisplayName(m)})}><Picture identityKey={'member-full:'+m.id} src={selected?.image} alt={memberDisplayName(m)} priority/></button>{selected?.credit&&<figcaption>{selected.credit} {selected.sourceUrl&&<Link href={selected.sourceUrl} external>图片来源 <ArrowUpRight size={12}/></Link>}</figcaption>}</figure><div className="mf-person-copy">{m.profile&&<h2>简介</h2>}<MemberCareerFacts member={m}/><MemberPhysicalFacts member={m}/>{(m.country||m.birthDate)&&<p>{[m.country,m.birthDate].filter(Boolean).join(' · ')}</p>}{m.role&&<p>{m.role}</p>}<p>{memberAffiliationLabel(m,content.groupId)}</p><button className="mf-button mf-person-return" onClick={()=>navigate({section:'members',member:null})}>返回成员库</button><Link className="mf-button" href={artistMemberUrl(m.id,returnTo)}>个人记录 <ArrowUpRight size={16}/></Link></div></div>{items.length>0?<><Title>关联作品</Title><div className="mf-person-scores"><span>作品综合分 <b>{number(summary.composite)}</b></span><span>表现均分 <b>{number(summary.performanceMean)}</b></span><span>造型均分 <b>{number(summary.stylingMean)}</b></span></div><div className="mf-looks">{items.map(item=><article key={item.work.id}>{item.photo&&<button className={'mf-look-photo'+(item.photo?.sourceKind==='mv_look_photo'?' mv-look-native':'')} aria-label={`放大${memberDisplayName(m)}在${item.work.song}的 MV 造型`} aria-haspopup="dialog" onClick={()=>item.photo&&setLightbox({src:media(item.photo),label:`${memberDisplayName(m)} · ${item.work.song} · ${mvPhotoLabel(item.photo,'MV造型')}`})}><Picture identityKey={'look:'+m.id+':'+item.work.id} complete src={media(item.photo)} alt={`${memberDisplayName(m)} · ${item.work.song} · ${mvPhotoLabel(item.photo,'MV造型')}`}/></button>}{item.photo?.sourceKind==='mv_look_photo'&&<small className="mv-look-photo-caption">{MV_LOOK_PHOTO_LABEL}</small>}<MvPhotoReference photo={item.photo} referencePhoto={item.referencePhoto} label={memberDisplayName(m)+' · '+item.work.song} live={state.data?.mode==='live'}/><a data-member-work-trigger={item.work.id} href={artistWorkUrl(item.work,false,returnTo)}><h3>{item.work.song||item.work.name}<ArrowUpRight size={16}/></h3><p>表现 {number(item.performance)} · 造型 {number(item.styling)}</p></a></article>)}</div></>:null}<button className="mf-button" onClick={()=>navigate({section:'works',member:null})}>作品库</button></section>;}
++ function memberPage(m:Member){if(!state.data)return null;const selected=portrait(m),fullImage=meovvBuildAssetPortrait(m.id,selected?.image),items=memberWorks(state.data,m.id),summary=memberWorkSummary(items);return <section className="mf-section mf-member"><button className="mf-button mf-back" onClick={()=>navigate({section:'members',member:null})}><ArrowLeft size={16}/>返回成员库</button><div className="mf-person-breadcrumb"><button onClick={()=>navigate({section:'overview',member:null})}>MEOVV</button><span>/</span><button onClick={()=>navigate({section:'members',member:null})}>成员</button><span>/</span><span>{memberDisplayName(m)}</span></div><div className="mf-person-grid"><div className="mf-person-title"><h1 className="member-display-name">{memberChineseName(m)||memberDisplayName(m)}</h1>{memberChineseName(m)&&m.stageName.trim()&&m.stageName.trim()!==memberChineseName(m)&&<p>{m.stageName}</p>}</div><figure className="mf-person-photo"><button aria-label={`放大${memberDisplayName(m)}的照片`} aria-haspopup="dialog" disabled={!fullImage} onClick={()=>fullImage&&setLightbox({src:fullImage,label:memberDisplayName(m)})}><Picture identityKey={'member-full:'+m.id} src={fullImage} alt={memberDisplayName(m)} priority/></button>{selected?.credit&&<figcaption>{selected.credit} {selected.sourceUrl&&<Link href={selected.sourceUrl} external>图片来源 <ArrowUpRight size={12}/></Link>}</figcaption>}</figure><div className="mf-person-copy">{m.profile&&<h2>简介</h2>}<MemberCareerFacts member={m}/><MemberPhysicalFacts member={m}/>{(m.country||m.birthDate)&&<p>{[m.country,m.birthDate].filter(Boolean).join(' · ')}</p>}{m.role&&<p>{m.role}</p>}<p>{memberAffiliationLabel(m,content.groupId)}</p><button className="mf-button mf-person-return" onClick={()=>navigate({section:'members',member:null})}>返回成员库</button><Link className="mf-button" href={artistMemberUrl(m.id,returnTo)}>个人记录 <ArrowUpRight size={16}/></Link></div></div>{items.length>0?<><Title>关联作品</Title><div className="mf-person-scores"><span>作品综合分 <b>{number(summary.composite)}</b></span><span>表现均分 <b>{number(summary.performanceMean)}</b></span><span>造型均分 <b>{number(summary.stylingMean)}</b></span></div><div className="mf-looks">{items.map(item=><article key={item.work.id}>{item.photo&&<button className={'mf-look-photo'+(item.photo?.sourceKind==='mv_look_photo'?' mv-look-native':'')} aria-label={`放大${memberDisplayName(m)}在${item.work.song}的 MV 造型`} aria-haspopup="dialog" onClick={()=>item.photo&&setLightbox({src:media(item.photo),label:`${memberDisplayName(m)} · ${item.work.song} · ${mvPhotoLabel(item.photo,'MV造型')}`})}><Picture identityKey={'look:'+m.id+':'+item.work.id} complete src={media(item.photo)} alt={`${memberDisplayName(m)} · ${item.work.song} · ${mvPhotoLabel(item.photo,'MV造型')}`}/></button>}{item.photo?.sourceKind==='mv_look_photo'&&<small className="mv-look-photo-caption">{MV_LOOK_PHOTO_LABEL}</small>}<MvPhotoReference photo={item.photo} referencePhoto={item.referencePhoto} label={memberDisplayName(m)+' · '+item.work.song} live={state.data?.mode==='live'}/><a data-member-work-trigger={item.work.id} href={artistWorkUrl(item.work,false,returnTo)}><h3>{item.work.song||item.work.name}<ArrowUpRight size={16}/></h3><p>表现 {number(item.performance)} · 造型 {number(item.styling)}</p></a></article>)}</div></>:null}<button className="mf-button" onClick={()=>navigate({section:'works',member:null})}>作品库</button></section>;}
+  const library=<><section className="mf-section mf-library"><Title en="WORKS">作品库</Title></section>{releases}<section className="mf-section mf-library"><Title count={filteredRows.length}>作品视频</Title><div className="mf-tools"><label><Search size={17}/><input aria-label="搜索本团作品" placeholder="搜索歌曲或版本" value={route.search} onChange={event=>navigate({search:event.target.value},true)}/></label><div className="mf-filters">{queues.map(([key,label])=><button key={key} aria-pressed={key===route.queue} onClick={()=>navigate({queue:key})}>{label}</button>)}</div></div><div className="mf-filters mf-kinds">{[['all','全部'],['mv','MV'],['performance','表演'],['special','特别视频']].map(([key,label])=><button key={key} aria-pressed={key===kind} onClick={()=>setKind(key)}>{label}</button>)}</div>{route.format!=='stage'&&<div className="mf-work-grid">{filteredRows.map(work=><WorkEntry key={work.id} work={work} returnTo={returnTo}/>)}</div>}{!filteredRows.length&&<p className="mf-empty">没有符合条件的作品。</p>}</section>{route.format!=='mv'&&<section className="mf-section mf-dark mf-stage-library"><Title count={stageRows.length}>舞台</Title><div className="mf-stage-grid">{stageRows.map(work=><WorkEntry key={work.id} work={work} stage returnTo={returnTo}/>)}</div>{!stageRows.length&&<p className="mf-empty">暂无符合条件的舞台。</p>}</section>}</>;
+  return <ImageRecoveryProvider><div className={`meovv-figma${route.member?' mf-profile':''}${route.section==='works'?' mf-works-page':''}`}><header className="mf-header"><button className="mf-logo" aria-label="MEOVV 首页" onClick={()=>navigate({section:'overview',member:null})}><Picture src={MEOVV_LOGO} identityKey="meovv-logo" alt="MEOVV" complete priority/></button><button className="mf-button mf-profile-return" onClick={()=>navigate({section:'members',member:null})}>返回成员库</button><button ref={menuButton} className="mf-button mf-menu-button" aria-expanded={menuOpen} aria-controls="meovv-menu" onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?'关闭':'菜单'}</button><nav id="meovv-menu" className={menuOpen?'is-open':''} aria-label="MEOVV 导航">{sections.map(([key,label])=><button key={key} aria-current={key===route.section?'page':undefined} onClick={()=>navigate({section:key,member:null,format:'all'})}>{label}</button>)}<Link className="mf-index-link" href="/?view=groups">团体索引 <ArrowUpRight size={14}/></Link></nav></header>{onHome&&<><section className="mf-hero"><Picture identityKey="meovv-industrial-city" src={MEOVV_HERO} alt="MEOVV 五人官方合照" priority/></section><div className="mf-hero-actions"><button className="mf-button" onClick={()=>navigate({section:'works',member:null})}>作品</button><button className="mf-button" onClick={()=>navigate({section:'members',member:null})}>成员</button></div></>}<main id="artist-content" className={onHome?'mf-main mf-home':'mf-main'}>{!onHome&&!route.member&&<div className="mf-page-back">{backHome}</div>}{state.loading?<div className="mf-empty" role="status">正在打开 MEOVV 档案…<a href="">重新加载当前页</a></div>:state.error?<div className="mf-empty" role="alert"><p>{state.error}</p><button className="mf-button" onClick={()=>timelineHostOptions.onRetry?timelineHostOptions.onRetry():window.location.reload()}>重新加载</button></div>:!collection?<div className="mf-empty">暂未找到团体资料。<Link href="/?view=groups">返回团体索引</Link></div>:route.member?member?memberPage(member):<div className="mf-empty">这个成员不在本团档案中。<button onClick={()=>navigate({section:'members',member:null})}>查看成员</button></div>:<>{onHome&&<>{releases}{roster}<section className="mf-section mf-dark mf-featured"><div className="mf-title"><h2>MV</h2><button onClick={()=>navigate({section:'works',member:null})}>全部作品</button></div><div className="mf-featured-grid">{featured.map(work=><WorkEntry key={work.id} work={work} returnTo={returnTo} featured/>)}</div>{!featured.length&&<p className="mf-empty">重点作品暂未加载，已收录作品可在作品库查看。</p>}</section><div className="mf-dark">{timeline}</div></>}{route.section==='members'&&roster}{route.section==='works'&&library}{route.section==='updates'&&timeline}{route.section==='records'&&<>{releases}<section className="mf-section mf-records"><Title>发行档案</Title><div className="mf-record-list">{works.map(work=><Link key={work.id} href={artistWorkUrl(work,false,returnTo)}><time>{meovvDate(work.releaseDate)}</time><strong>{work.song||work.name}</strong><span>{work.version||work.videoType}</span><ArrowUpRight size={16}/></Link>)}</div></section></>}</>}</main><footer className={`mf-footer${onHome||route.section==='works'?' mf-dark':''}`}><span>MEOVV</span><Link href="/?view=groups">音乐档案 · 返回团体索引 <ArrowUpRight size={14}/></Link></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}</div><ImageRecoveryControls/></ImageRecoveryProvider>;
+ }
+diff --git a/docs/build-assets/meovv-four-anonymous-access.json b/docs/build-assets/meovv-four-anonymous-access.json
+new file mode 100644
+index 0000000..f17398e
+--- /dev/null
++++ b/docs/build-assets/meovv-four-anonymous-access.json
+@@ -0,0 +1,20 @@
++{
++  "format": "meovv-four-anonymous-access.v1",
++  "deploymentVersion": 186,
++  "kind": "user-confirmed-incognito-visibility",
++  "mock": false,
++  "requestedMessageId": "Sentinel_4048e8209e188191b4b32d222db3f770",
++  "requestedText": "请用浏览器无痕窗口打开下面四张图，确认不登录也能看到即可。",
++  "replyMessageId": "Sentinel_a773ccb2b3e481918f0c7bd533e8c288",
++  "replyToMessageId": "Sentinel_4048e8209e188191b4b32d222db3f770",
++  "replyText": "可以查看",
++  "publicUrls": [
++    "/api/build-assets?id=meovv-narin-profile&version=20bbc6656c68c15956eca02d990b69ebba5c66bd1adad9a4ad710aa58b14cb12",
++    "/api/build-assets?id=meovv-ella-profile&version=3f269df1205abd84576d06ffd25cbaf699b4541091595ca89a7992232ba15682",
++    "/api/build-assets?id=meovv-anna-profile&version=0c12e9ff99f10b83da2285329417fa502eb3a77f8e4d0968657300a4b0117b19",
++    "/api/build-assets?id=meovv-gawon-profile&version=05b0a419b53c456067fbe297a2651784c510d7a7d882537c8d106d507cd2bbc0"
++  ],
++  "anonymousBodyDownloaded": false,
++  "anonymousBytesShaOrHeadersMeasured": false,
++  "interpretation": "The owner confirmed incognito visibility of the four requested images. This is access confirmation, not independently saved anonymous response bytes, status or headers."
++}
+diff --git a/docs/build-assets/meovv-four-consumer-proof.md b/docs/build-assets/meovv-four-consumer-proof.md
+new file mode 100644
+index 0000000..5311779
+--- /dev/null
++++ b/docs/build-assets/meovv-four-consumer-proof.md
+@@ -0,0 +1,85 @@
++# MEOVV build-asset consumer proof
++
++Date: 2026-10-22. Scope: source-level consumers and small local component tests, not a deployment or HTTP audit.
++
++## Result
++
++The four full portraits (NARIN, ELLA, ANNA and GAWON) are consumed by the independent MEOVV member detail and its photo lightbox. The B candidate selects the same version-pinned build-asset URL for both. A load failure produces an error placeholder; a manual retry creates a new image generation while preserving that URL byte-for-byte. It does not select the old static JPEG, a roster WEBP, another member or a lower-resolution image.
++
++The portable targeted test suite passed **9/9** against the candidate source with its enabled, checked-in production configuration. Test duration was approximately 3.35 seconds. No full application build, browser, HTTP request, upload, deployment or user-record mutation was performed for this proof.
++
++Run after adding the test and its two helpers to the repository:
++
++```sh
++node --test tests/meovv-build-asset-consumer.test.cjs
++```
++
++The test helper derives the repository root from its own location. For a separate source overlay, `MEOVV_TEST_ROOT` may explicitly name that root. Installed repository dependencies are used; there is no network installation or frozen-tree/git-history dependency.
++
++## Exact consumers and non-consumers
++
++Line references below refer to the B candidate; unchanged shared files retain the A baseline line numbers.
++
++1. **MEOVV entry and full detail**
++   - `app/artists/meovv/page.tsx:1-6` imports `MeovvDesign` and `data/meovv-artist.json`. It does not route through the generic `CandidateArtistExperience`.
++   - `data/meovv-artist.json:22,28,34,40` retains GAWON, ANNA, NARIN and ELLA's original static source metadata.
++   - `lib/idol/candidate/portrait.ts:8-15` selects a verified portrait only for matching member ID and stage name. Its archive-media fallback is selection-time behavior when that identity/source is absent, not an image-load-error handler.
++   - `components/candidate/meovv-design.tsx:77` keeps that original selection. `:88` computes `fullImage=meovvBuildAssetPortrait(m.id,selected?.image)` and supplies **that same value** to both the detail `Picture.src` and the zoom click's `setLightbox.src`.
++   - `components/candidate/meovv-design.tsx:90` renders `PhotoLightbox` from that state. No additional image source is selected there.
++   - `lib/idol/candidate/meovv-build-asset-portrait.ts:7-13` requires the enabled cohort/version/evidence gate, then the exact `(memberId, original sourceUrl)` pair. Nonmatches preserve the supplied source.
++   - `lib/idol/build-asset-format.ts:9-10` creates `/api/build-assets?id=<fixed ID>&version=<fixed SHA-256>`.
++
++2. **Independent homepage/member roster stays on WEBP**
++   - `components/candidate/meovv-design.tsx:85` calls `meovvRosterPortrait(m,portrait(m)?.image)`, not the build-asset selector.
++   - `lib/idol/candidate/meovv-roster-portrait.ts:7-15` maps the exact ID, stage name and selected static source to each existing roster WEBP.
++   - All five current roster images, including SOOIN, remain unchanged on the homepage and the member list. SOOIN's full-detail JPEG also remains unchanged.
++
++3. **Catalog group index metadata is not a load-error fallback**
++   - `data/candidate-index-visuals.json:8` supplies the nonempty `/artist/meovv/group-official.jpg` hero. The four old portrait paths remain metadata at `:21,27,33,39`.
++   - `components/candidate-index-card.tsx:21` computes potential portrait selections, but `:25` chooses the hero branch solely from `visual.hero.image` being present. It creates no member-gallery image elements in the current configuration.
++   - `CardPhoto` at `:15-16` delegates failure to `ReliableImage` with a placeholder. No handler clears `visual.hero.image` or changes it to a portrait.
++   - Consequently, **a failed HTTP/image load of the hero does not activate the gallery**. The actual card's error and manual-retry handlers were executed in the test model: no portrait element appeared and retry still used the hero URL.
++   - Boundary: if a future content change makes `visual.hero.image` absent, the gallery branch will use up to the first three selected member portraits. That is a latent metadata consumer, not an active request path today. Do not claim these source references no longer exist.
++
++4. **Shared member detail does not use these static portrait metadata**
++   - `lib/idol/artist-preview.ts:23` builds the existing shared member-record route used by the detail's personal-record link.
++   - `app/page.tsx:903-905` renders shared `MemberDetail`. Its conceptual-photo branches are explicitly BABYMONSTER, ILLIT, XG, aespa, IVE, KISS OF LIFE and STAYC, not MEOVV. MEOVV uses `PhotoView` with `m.photo`.
++   - `app/page.tsx:62-74` and `components/app-image-presentation.tsx:13-21` derive that photo's source as `/api/media?table=...&record=...&index=...`, or no source in snapshot/missing mode. They do not import MEOVV static portrait metadata or fall back to these four JPEGs.
++   - This shared-detail conclusion is source inspection, not an executed shared-app DOM test.
++
++5. **Generic candidate component and public/vendor**
++   - `components/candidate-artist-experience.tsx:71,81-82` could display the portraits supplied to it, but the actual MEOVV entry imports the independent component. No current MEOVV runtime call into this generic experience was found.
++   - Runtime-source search across `app/`, `components/`, `lib/`, `data/`, `public/` and `vendor/` found the portrait references described above plus the four build-asset manifest identities. No extra public-script/vendor consumer was found. `vendor/` contains the shadcn CSS and its license; there is no `public/vendor/` directory in the inspected tree.
++   - The four files themselves are static assets, not additional component entry points. Direct visits/bookmarks to their old URLs are outside this component proof. Source metadata retention does not by itself guarantee those direct URLs remain served after any later packaging change.
++
++## Failure and manual-retry semantics
++
++- `components/candidate/meovv-design.tsx:35`: `Picture` passes its selected source directly into `ReliableImage`, with an error placeholder and no image fallback URL.
++- `components/reliable-image.tsx:122,128-145`: errors commit only to the current image generation; retry advances the generation without selecting a different source.
++- `components/reliable-image.tsx:175-180`: an error renders an error status node instead of an image. Retry creates a new keyed native image element with the calculated attempt source.
++- `lib/idol/image-presentation.ts:26-39`: only a well-formed `/api/media?...table=ratings...` URL can receive a retry query parameter. A build-assets URL is returned unchanged for all attempts. Adding `retry`, a cache buster, a fragment or a different query shape is neither required nor permitted by this implementation.
++- `lib/idol/image-presentation.ts:57-65`: the first manual retry may run immediately; repeated failures respect the 800 ms retry cooldown. A stale generation cannot commit a replacement result.
++- `components/photo-lightbox.tsx:57-60`: client portal content supplies the unmodified `src` to `ReliableImage` with eager loading and `retryMode="manual"`. The retry button invokes the current image state's retry callback; it does not set a new source.
++- `components/reliable-image.tsx:63-85`: the detail's external recovery controls retry only the selected failed image. They do not perform a batch retry or change records.
++
++## What was executed
++
++1. Checked-in production gate + real React SSR rendered each of the four expected build-asset detail URLs.
++2. Real React SSR with explicit active/dormant fixture gates rendered identical five-image roster sources on both homepage and members page; SOOIN remained its original full JPEG.
++3. The unmodified production MeovvDesign, Picture, ReliableImage, recovery provider/controls and PhotoLightbox ran through deterministic hook/ref/event/portal ports for each of the four members:
++   - Detail image source; detail error placeholder; clicking the still-enabled zoom action after detail error.
++   - Exact same lightbox source; lightbox error placeholder; immediate manual retry; newly keyed image generation.
++   - Old detached image's stale load event; repeated error; 800 ms cooldown; second retry; close.
++   - Detail recovery button; same detail source after retry.
++4. Dormant gate, wrong selected source and wrong member ID were executed through the real component and actual mapping function. No substitution occurred for mismatched pairs.
++5. Actual roster click → member detail → return to members preserved all five WEBPs.
++6. Actual CandidateIndexCard hero error → placeholder → manual retry preserved the hero and never created a member gallery.
++7. Test catalog/content fixtures were unchanged, and API fetch ports remained unused.
++
++## Explicit limitations
++
++- Real React was used for SSR. The event tests use a declared deterministic React-hook/DOM/portal model, **not** React DOM hydration or a real browser. Real production component functions and handlers run, but native layout, event propagation, focus/inert behavior, browser caching and actual image decoding are not established by that model.
++- The only business-logic fixture replacement is the cutover JSON in the active/dormant bundles. The mapping function is never mocked. The separate production bundle uses the checked-in JSON without replacement. Timeline, facts, scroll hooks and icons are real modules. CSS is ignored for this nonvisual proof.
++- The `fetch` port catches unexpected API activity; it is not an HTTP observer for native image loading. Image-source assertions prove rendered source selection, not successful network requests.
++- No anonymous HTTP status, headers or response-body SHA-256 was measured here. No upload/readback credential or evidence grant was created. Fixture hashes are synthetic gate-test values, not evidence.
++- This small suite is not a full build, a broad regression suite, image-byte audit, deployment check or visual/browser QA. Those claims must remain separate.
+diff --git a/docs/build-assets/meovv-four-cutover-candidate.md b/docs/build-assets/meovv-four-cutover-candidate.md
+new file mode 100644
+index 0000000..1b88986
+--- /dev/null
++++ b/docs/build-assets/meovv-four-cutover-candidate.md
+@@ -0,0 +1,66 @@
++# MEOVV four-image B cutover: source-only local candidate
++
++## Status and scope
++
++Base is live v186 source `f0391481cccd85a4eb53cbe9bf63cdd77d30e350` plus the independently reviewed inspect-only fix `97fb6ab1c2e5303b9e77ec4e52e3762cf912f77a`. This patch enables only the existing four exact member-ID/static-path pairs at the final MEOVV member-detail and PhotoLightbox display points. It changes no `candidatePortrait`, roster helper/WEBP, SOOIN portrait, shared component design, native/editorial image record, score, note, watched state, permission, sharing scope or storage API.
++
++This is a source/test candidate, not a full checkout, complete build, capacity result or deployment. The four source JPEGs remain in Git/public. The original 194 build exclusions and their scripts are unchanged. Compiled pins are deliberately empty: production `--apply` remains fail-closed pending a complete independent build and separate compiled-consumer review. No credentials, HTTP calls, PUT retries, attempt-fence reset, upload or deployment are part of this preparation.
++
++## Evidence, without overstating anonymous verification
++
++The frozen evidence files under `docs/build-assets/` distinguish:
++
++- `meovv-four-owner-readback-original.json`: the unchanged original root report, with `anonymousVerified:false` and `cutover:false` preserved.
++- `meovv-four-owner-readback.json`: fixed four-entry derivative of root's normal owner-browser public-GET image downloads, exact bytes/SHA/decoded geometry, and root's report that each owner PUT occurred once and its server readback verified. The four actual downloaded bodies were independently copied and completely JPEG-decoded locally. MIME is the decoded JPEG file type, not a claim that raw HTTP headers were captured.
++- `meovv-four-anonymous-access.json`: the user's response “可以查看” to the four-image incognito-view request. It binds the original request/reply message IDs and fixed URLs. This confirms anonymous visibility as accepted by root. It **does not** claim anonymous body downloads, SHA/byte measurements, status codes, MIME headers or an automated bypass of the existing Cloudflare block.
++
++The runtime selector binds the two evidence-document SHA values. The local pruner also hashes all three documents and all four saved owner-browser bodies. These hashes preserve reviewed evidence; a handwritten JSON record cannot independently authenticate a browser session, the user's identity or a remote upload. Provenance still relies on the actual preserved conversation/downloads and independent review. The originals and bodies are not old native-image-backup records.
++
++## Consumer and failure behavior
++
++See `meovv-four-consumer-proof.md` and `tests/meovv-build-asset-consumer.test.cjs`.
++
++- Only exact `(member ID, original static path)` pairs map to fixed `/api/build-assets?id=...&version=<SHA>` URLs.
++- Detail and lightbox use the same selected full URL; source/credit/geometry/layout are unchanged.
++- A missing/404/corrupt response or image error leaves the existing error placeholder. Manual retry preserves the exact endpoint, without a cache-buster or fallback to the pruned old JPEG, WEBP, another person or a low-resolution substitute.
++- All five roster WEBPs and SOOIN's full portrait remain unchanged. The generic shared member record uses its existing `/api/media` route.
++- The index keeps its group hero. A failed hero image does not select the portrait-gallery branch. The old portrait metadata remains dormant only while that hero remains present; source and compiled guards pin that branch.
++- Old direct static-image bookmarks are not redirected by this patch and may cease to resolve after pruning. Recovery is via the immutable endpoint or complete rollback package, not an invented static fallback.
++
++The executed proof uses real React SSR and real production component handlers with a declared deterministic hook/ref/portal event model. It is not real browser hydration, focus/layout QA, HTTP/image decoding or deployment verification.
++
++## Exact-four prune gate
++
++`scripts/audit-meovv-build-asset-cutover.mjs` is default read-only. Only explicit `--apply` may unlink exactly the four fixed `PROJECT/dist/client/artist/meovv/*-mnet-profile.jpg` outputs, after all preflight checks pass:
++
++1. Fixed manifest SHA and exactly 25 source guard identities, bytes and SHA; enabled cohort and verified v186 evidence binding.
++2. All runtime source consumers inventoried across app, components, lib, data, hooks, db, vendor and public; exact original-path and dynamic-carrier sets; the nonempty group hero branch.
++3. Exact public originals plus every generated target's bytes/SHA. Target paths reject symlinks and hardlinks; source/public is never a write target.
++4. All three frozen evidence documents and the four actual downloaded response bodies supplied by `--readback-dir`.
++5. Reviewed exact compiled-carrier inventory and byte/SHA pins. Empty/pending pins currently block apply. Pin refresh must not broaden consumer rules or exclusion sets.
++
++All targets are verified again before the first unlink. A preflight error causes zero writes. An operating-system unlink error can be partial; it stops and reports the removed paths, without automatic retry. Reconstruct a fresh complete build from public originals before retrying. There is no R2 write/delete, remote fetch, native record change or arbitrary output-path argument.
++
++After source review and a separately authorized serial full build: independently review exact compiled pins, run read-only dry-run, then apply only the already approved original 194 exclusions and these four. Run the official package helper and `scripts/verify-sites-expanded-archive.py` on the complete gzip stream. A payload estimate is not acceptance; real fulltar headroom must remain at least 2,097,152 bytes. No full build or prune apply on a real dist was run for this source-only candidate.
++
++Example later commands, **only after the preceding review/build gates**:
++
++```sh
++node scripts/audit-meovv-build-asset-cutover.mjs --dry-run --readback-dir /path/to/verified-owner-download-copies
++node scripts/audit-meovv-build-asset-cutover.mjs --apply --readback-dir /path/to/verified-owner-download-copies
++python3 scripts/verify-sites-expanded-archive.py /path/to/official-package.tar.gz
++```
++
++The body directory contains the four fixed `<asset-id>.jpg` filenames recorded in the owner evidence. It is a local evidence input, not an upload source or runtime configuration.
++
++## Recovery and rollback
++
++The offline four-original backup is `meovv-four-originals.tar.gz`, SHA256 `9f8cc1d96285ad06de1d1a4ddfe9178bee2d111e7eee23f7c76d17e37f8b5c7e`. Its isolated restore/full JPEG decode was already tested. Canonical originals also remain in public/Git at the four manifest SHA values.
++
++Fast rollback is the preserved official v186 A-only source-matched package `meovv-A-source-matched-oct22.tar.gz`, SHA256 `f3866d4ba4af3fd26142c167c4c33867be18aec21878e76b6be173d9340e0baa`, with all four static originals retained. The earlier local-only measurement package has SHA256 `e238ec005064cb6687789c0ac3d73b122cc63c2fa8b08cb3470b5176b3cf39e0`; it is not the official package identity. Independent comparison found identical member paths/types/sizes and file-content SHA values, but different tar member mtimes and different expanded tar bytes. Both expanded streams measure 265,717,760 bytes. An alternative is a fresh complete build with B disabled and all four original static outputs restored, followed by normal original-194 pruning and fulltar verification. **Do not merely toggle B off inside an already-pruned package:** that would point consumers at missing files. Disabling the switch makes the four-pruner refuse execution. Remote immutable copies may remain; rollback never overwrites or deletes them.
++
++## Capacity planning, not a measured package result
++
++v186 real fulltar margin was 2,717,696 bytes. Exact removal of the four tar members is estimated to release 6,007,808 bytes, giving 8,725,504 bytes before additions. GENBLUE images 2,467,871 + font 538,732 + WOOAH images 1,391,200 total **4,397,803 bytes**, already including the font. Do not deduct the font twice. That leaves 4,327,701 bytes before new code/licenses and added tar headers/padding. Only the final official complete gzip-expanded stream can prove the >=2 MiB margin.
++
++Any later GENBLUE/WOOAH integration that changes a pinned shared source file requires an exact, independently reviewed pin update preserving the MEOVV branch and fixed-four semantics. This candidate does not include those integrations.
+diff --git a/docs/build-assets/meovv-four-owner-readback-original.json b/docs/build-assets/meovv-four-owner-readback-original.json
+new file mode 100644
+index 0000000..cd4efe5
+--- /dev/null
++++ b/docs/build-assets/meovv-four-owner-readback-original.json
+@@ -0,0 +1,48 @@
++{
++  "source": "ordinary owner cloud browser DOM image download from public GET; not anonymous",
++  "checkedAt": "2026-10-22T09:20:45Z",
++  "entries": [
++    {
++      "id": "meovv-narin-profile",
++      "sha256": "20bbc6656c68c15956eca02d990b69ebba5c66bd1adad9a4ad710aa58b14cb12",
++      "bytes": 2117711,
++      "dimensions": [
++        2731,
++        2731
++      ],
++      "verified": true
++    },
++    {
++      "id": "meovv-ella-profile",
++      "sha256": "3f269df1205abd84576d06ffd25cbaf699b4541091595ca89a7992232ba15682",
++      "bytes": 1704677,
++      "dimensions": [
++        2730,
++        2730
++      ],
++      "verified": true
++    },
++    {
++      "id": "meovv-anna-profile",
++      "sha256": "0c12e9ff99f10b83da2285329417fa502eb3a77f8e4d0968657300a4b0117b19",
++      "bytes": 1431588,
++      "dimensions": [
++        2731,
++        2731
++      ],
++      "verified": true
++    },
++    {
++      "id": "meovv-gawon-profile",
++      "sha256": "05b0a419b53c456067fbe297a2651784c510d7a7d882537c8d106d507cd2bbc0",
++      "bytes": 750487,
++      "dimensions": [
++        2182,
++        2182
++      ],
++      "verified": true
++    }
++  ],
++  "anonymousVerified": false,
++  "cutover": false
++}
+\ No newline at end of file
+diff --git a/docs/build-assets/meovv-four-owner-readback.json b/docs/build-assets/meovv-four-owner-readback.json
+new file mode 100644
+index 0000000..6b26225
+--- /dev/null
++++ b/docs/build-assets/meovv-four-owner-readback.json
+@@ -0,0 +1,65 @@
++{
++  "format": "meovv-four-owner-readback.v1",
++  "deploymentVersion": 186,
++  "sourceCommit": "f0391481cccd85a4eb53cbe9bf63cdd77d30e350",
++  "kind": "owner-browser-public-get-downloaded-body",
++  "mock": false,
++  "sourceReportSha256": "c886d4c4d1525e0d831f95cb4808f7cfbd9db62624a5393680b13e343463d627",
++  "checkedAt": "2026-10-22T09:20:45Z",
++  "anonymousBodyVerified": false,
++  "entries": [
++    {
++      "id": "meovv-narin-profile",
++      "sha256": "20bbc6656c68c15956eca02d990b69ebba5c66bd1adad9a4ad710aa58b14cb12",
++      "bytes": 2117711,
++      "mime": "image/jpeg",
++      "width": 2731,
++      "height": 2731,
++      "bodyFile": "meovv-narin-profile.jpg",
++      "publicUrl": "/api/build-assets?id=meovv-narin-profile&version=20bbc6656c68c15956eca02d990b69ebba5c66bd1adad9a4ad710aa58b14cb12",
++      "putCount": 1,
++      "putServerReadback": "verified",
++      "ownerBrowserDownloadedBody": "verified"
++    },
++    {
++      "id": "meovv-ella-profile",
++      "sha256": "3f269df1205abd84576d06ffd25cbaf699b4541091595ca89a7992232ba15682",
++      "bytes": 1704677,
++      "mime": "image/jpeg",
++      "width": 2730,
++      "height": 2730,
++      "bodyFile": "meovv-ella-profile.jpg",
++      "publicUrl": "/api/build-assets?id=meovv-ella-profile&version=3f269df1205abd84576d06ffd25cbaf699b4541091595ca89a7992232ba15682",
++      "putCount": 1,
++      "putServerReadback": "verified",
++      "ownerBrowserDownloadedBody": "verified"
++    },
++    {
++      "id": "meovv-anna-profile",
++      "sha256": "0c12e9ff99f10b83da2285329417fa502eb3a77f8e4d0968657300a4b0117b19",
++      "bytes": 1431588,
++      "mime": "image/jpeg",
++      "width": 2731,
++      "height": 2731,
++      "bodyFile": "meovv-anna-profile.jpg",
++      "publicUrl": "/api/build-assets?id=meovv-anna-profile&version=0c12e9ff99f10b83da2285329417fa502eb3a77f8e4d0968657300a4b0117b19",
++      "putCount": 1,
++      "putServerReadback": "verified",
++      "ownerBrowserDownloadedBody": "verified"
++    },
++    {
++      "id": "meovv-gawon-profile",
++      "sha256": "05b0a419b53c456067fbe297a2651784c510d7a7d882537c8d106d507cd2bbc0",
++      "bytes": 750487,
++      "mime": "image/jpeg",
++      "width": 2182,
++      "height": 2182,
++      "bodyFile": "meovv-gawon-profile.jpg",
++      "publicUrl": "/api/build-assets?id=meovv-gawon-profile&version=05b0a419b53c456067fbe297a2651784c510d7a7d882537c8d106d507cd2bbc0",
++      "putCount": 1,
++      "putServerReadback": "verified",
++      "ownerBrowserDownloadedBody": "verified"
++    }
++  ],
++  "mimeBasis": "Downloaded-file JPEG decode; no saved raw HTTP-header capture is claimed."
++}
+diff --git a/lib/idol/build-asset-cutover.json b/lib/idol/build-asset-cutover.json
+new file mode 100644
+index 0000000..a1ff04a
+--- /dev/null
++++ b/lib/idol/build-asset-cutover.json
+@@ -0,0 +1,7 @@
++{
++  "cohort": "meovv-four-oct22",
++  "enabled": true,
++  "verifiedDeploymentVersion": 186,
++  "ownerReadbackEvidenceSha256": "4b4a86212212327683443a91758c680aaedabdc44d5275530c32625912000815",
++  "anonymousAccessEvidenceSha256": "697d412648eaabe7aaa8b085591d69155ee70622e507b10d69cee40557e35065"
++}
+diff --git a/lib/idol/candidate/meovv-build-asset-portrait.ts b/lib/idol/candidate/meovv-build-asset-portrait.ts
+new file mode 100644
+index 0000000..b4dc7fe
+--- /dev/null
++++ b/lib/idol/candidate/meovv-build-asset-portrait.ts
+@@ -0,0 +1,14 @@
++import {assetUrl, BUILD_ASSETS} from '../build-asset-format';
++import cutover from '../build-asset-cutover.json';
++// Match only at member-detail/lightbox final display points. Roster selection
++// and candidatePortrait retain their original static source identities.
++// Evidence distinguishes owner body SHA verification from user-confirmed
++// anonymous visibility; it does not claim anonymous body/header measurement.
++export function meovvBuildAssetPortrait(memberId: string, source: string | null | undefined) {
++ if (cutover.enabled !== true || cutover.cohort !== 'meovv-four-oct22' ||
++     cutover.verifiedDeploymentVersion !== 186 ||
++     !/^[a-f0-9]{64}$/.test(String(cutover.ownerReadbackEvidenceSha256)) ||
++     !/^[a-f0-9]{64}$/.test(String(cutover.anonymousAccessEvidenceSha256))) return source;
++ const asset = BUILD_ASSETS.find(item => item.memberId === memberId && item.sourceUrl === source);
++ return asset ? assetUrl(asset) : source;
++}
+diff --git a/scripts/audit-meovv-build-asset-cutover.mjs b/scripts/audit-meovv-build-asset-cutover.mjs
+new file mode 100644
+index 0000000..0116753
+--- /dev/null
++++ b/scripts/audit-meovv-build-asset-cutover.mjs
+@@ -0,0 +1,139 @@
++// Local build-output only. Default is read-only. Compiled pins are deliberately
++// pending until a complete build receives independent consumer/pin review.
++import fs from 'node:fs';
++import path from 'node:path';
++import {createHash} from 'node:crypto';
++import {fileURLToPath} from 'node:url';
++const hash = bytes => createHash('sha256').update(bytes).digest('hex');
++const FIXED_MANIFEST_SHA = '2262fad9a601459126b789ec68b5297fb5be64426045a7b38eb3ec8017237feb';
++const SOURCE_DIRS = ['app','components','lib','data','hooks','db','vendor','public'];
++const TEXT = /\.(?:[cm]?js|jsx|[cm]?ts|tsx|json|css|html|svg|mdx|map)$/;
++const DYNAMIC = /\/artist\/meovv\/|meovv-artist|meovvRosterPortrait|mnet-profile|build-assets|meovv-four-oct22/;
++const exactGuardFiles = ['app/api/build-assets/route.ts','app/api/manage/build-assets/route.ts','app/artists/meovv/page.tsx','app/manage/build-assets/client.tsx','app/manage/build-assets/page.tsx','app/page.tsx','components/candidate-index-card.tsx','components/candidate/meovv-design.tsx','components/candidate/meovv-figma-design.css','components/photo-lightbox.tsx','components/reliable-image.tsx','data/candidate-index-visuals.json','data/meovv-artist.json','data/meovv-figma-asset-manifest.json','lib/idol/build-asset-cutover.json','lib/idol/build-asset-format.ts','lib/idol/build-asset-host.ts','lib/idol/build-asset-manifest.json','lib/idol/build-asset-service.ts','lib/idol/candidate/meovv-build-asset-portrait.ts','lib/idol/candidate/meovv-figma-assets.ts','lib/idol/candidate/meovv-roster-portrait.ts','lib/idol/candidate/portrait.ts','lib/idol/image-lightbox-session.ts','lib/idol/image-presentation.ts'].sort();
++const evidenceNames = ['meovv-four-owner-readback-original.json','meovv-four-owner-readback.json','meovv-four-anonymous-access.json'];
++function equal(a,b,message) { if (JSON.stringify(a) !== JSON.stringify(b)) throw new Error(message); }
++function safe(root,relative) {
++ if (!relative || path.isAbsolute(relative) || relative.split(/[\\/]/).some(p=>p==='..'||p==='.'||p==='')) throw new Error('Unsafe relative path');
++ let cursor=root;
++ for (const part of relative.split('/')) {
++  cursor=path.join(cursor,part);
++  if (fs.existsSync(cursor) || fs.lstatSync(path.dirname(cursor)).isSymbolicLink()) {
++   if (fs.lstatSync(cursor).isSymbolicLink()) throw new Error('Symlink rejected: '+relative);
++  }
++ }
++ return cursor;
++}
++function regular(root,relative,expected,{singleLink=false}={}) {
++ if (arguments.length>=3 && (!expected || !Number.isSafeInteger(expected.bytes) || expected.bytes<0 || typeof expected.sha256!=='string' || !/^[a-f0-9]{64}$/.test(expected.sha256))) throw new Error('Invalid required byte/SHA pin: '+relative);
++ const full=safe(root,relative), st=fs.lstatSync(full);
++ if (!st.isFile() || (singleLink&&st.nlink!==1)) throw new Error('Not an independent regular file: '+relative);
++ if (expected && st.size!==expected.bytes) throw new Error('Byte length changed: '+relative);
++ const bytes=fs.readFileSync(full);
++ if (expected && hash(bytes)!==expected.sha256) throw new Error('SHA changed: '+relative);
++ return {bytes,identity:{dev:st.dev,ino:st.ino,size:st.size,nlink:st.nlink}};
++}
++function files(dir) {
++ if (!fs.existsSync(dir)) return [];
++ if (fs.lstatSync(dir).isSymbolicLink()) throw new Error('Symlink rejected: '+dir);
++ return fs.readdirSync(dir,{withFileTypes:true}).flatMap(item=>{
++  const full=path.join(dir,item.name);
++  if(item.isSymbolicLink())throw new Error('Symlink rejected: '+full);
++  if(item.isDirectory())return files(full);
++  if(!item.isFile())throw new Error('Special file rejected: '+full);
++  return [full];
++ });
++}
++function inventory(root,roots,manifest) {
++ const result={dynamic:[],original:[]};
++ for(const file of roots.flatMap(dir=>files(path.join(root,dir)))) {
++  if(!TEXT.test(file))continue;
++  const text=fs.readFileSync(file,'utf8'),name=path.relative(root,file);
++  if(DYNAMIC.test(text))result.dynamic.push(name);
++  if(manifest.entries.some(a=>text.includes(a.sourceUrl)))result.original.push(name);
++ }
++ result.dynamic.sort();result.original.sort();return result;
++}
++function evidence(root,guards,config,manifest,readbackDir) {
++ const values={};
++ for(const name of evidenceNames)values[name]=JSON.parse(regular(root,'docs/build-assets/'+name,guards.evidenceGuards[name]).bytes);
++ const owner=values[evidenceNames[1]],anon=values[evidenceNames[2]],original=values[evidenceNames[0]];
++ equal(Object.keys(guards.evidenceGuards).sort(),[...evidenceNames].sort(),'Evidence guard set changed');
++ if(config.ownerReadbackEvidenceSha256!==guards.evidenceGuards[evidenceNames[1]].sha256 || config.anonymousAccessEvidenceSha256!==guards.evidenceGuards[evidenceNames[2]].sha256)throw new Error('Cutover evidence binding changed');
++ if(owner.format!=='meovv-four-owner-readback.v1'||owner.kind!=='owner-browser-public-get-downloaded-body'||owner.mock!==false||owner.deploymentVersion!==186||owner.sourceCommit!=='f0391481cccd85a4eb53cbe9bf63cdd77d30e350'||owner.anonymousBodyVerified!==false||owner.sourceReportSha256!==guards.evidenceGuards[evidenceNames[0]].sha256)throw new Error('Owner evidence identity changed');
++ if(anon.format!=='meovv-four-anonymous-access.v1'||anon.kind!=='user-confirmed-incognito-visibility'||anon.mock!==false||anon.deploymentVersion!==186||anon.anonymousBodyDownloaded!==false||anon.anonymousBytesShaOrHeadersMeasured!==false||anon.requestedMessageId!=='Sentinel_4048e8209e188191b4b32d222db3f770'||anon.replyMessageId!=='Sentinel_a773ccb2b3e481918f0c7bd533e8c288'||anon.replyToMessageId!==anon.requestedMessageId||anon.replyText!=='可以查看')throw new Error('Anonymous access provenance changed');
++ equal(anon.publicUrls,manifest.entries.map(a=>`/api/build-assets?id=${a.id}&version=${a.sha256}`),'Anonymous access scope changed');
++ if(original.anonymousVerified!==false||original.cutover!==false||original.entries?.length!==4||owner.entries?.length!==4)throw new Error('Original readback report changed');
++ if(readbackDir){readbackDir=path.resolve(readbackDir);if(fs.lstatSync(readbackDir).isSymbolicLink())throw new Error('Readback directory symlink rejected');}
++ for(const asset of manifest.entries){
++  const matches=owner.entries.filter(r=>r.id===asset.id),old=original.entries.filter(r=>r.id===asset.id);
++  if(matches.length!==1||old.length!==1)throw new Error('Readback entry identity changed');
++  const row=matches[0];
++  for(const key of ['sha256','bytes','mime','width','height'])if(row[key]!==asset[key])throw new Error('Readback metadata mismatch');
++  if(row.bodyFile!==asset.id+'.jpg'||row.publicUrl!==`/api/build-assets?id=${asset.id}&version=${asset.sha256}`||row.putCount!==1||row.putServerReadback!=='verified'||row.ownerBrowserDownloadedBody!=='verified'||old[0].verified!==true||old[0].sha256!==asset.sha256||old[0].bytes!==asset.bytes)throw new Error('Incomplete owner verification');
++  equal(old[0].dimensions,[asset.width,asset.height],'Owner geometry report changed');
++  if(readbackDir)regular(readbackDir,row.bodyFile,asset);
++ }
++ return {ownerBodyBytesVerified:!!readbackDir,anonymousAccessKind:anon.kind,anonymousBodyVerified:false};
++}
++export function auditMeovvCutover(root,{readbackDir}={}) {
++ root=path.resolve(root);
++ if(fs.lstatSync(root).isSymbolicLink())throw new Error('Project root symlink rejected');
++ const manifestBytes=regular(root,'lib/idol/build-asset-manifest.json').bytes;
++ if(hash(manifestBytes)!==FIXED_MANIFEST_SHA)throw new Error('Fixed four-image manifest changed');
++ const manifest=JSON.parse(manifestBytes),guards=JSON.parse(regular(root,'scripts/meovv-build-asset-cutover-guards.json').bytes);
++ if(guards.format!=='meovv-four-build-cutover-guards.v2'||guards.manifestSha256!==FIXED_MANIFEST_SHA||manifest.entries.length!==4)throw new Error('Guard identity changed');
++ equal(Object.keys(guards.sourceGuards).sort(),exactGuardFiles,'Exact consumer guard set changed');
++ for(const name of exactGuardFiles)regular(root,name,guards.sourceGuards[name]);
++ const config=JSON.parse(regular(root,'lib/idol/build-asset-cutover.json').bytes);
++ if(config.enabled!==true||config.cohort!=='meovv-four-oct22'||config.verifiedDeploymentVersion!==186)throw new Error('Active consumer switch required before pruning');
++ const sourceInventory=inventory(root,SOURCE_DIRS,manifest);
++ equal(sourceInventory.dynamic,guards.dynamicPathCarriers,'Dynamic consumer inventory changed');
++ equal(sourceInventory.original,guards.originalPathCarriers,'Original-path consumer inventory changed');
++ for(const name of sourceInventory.dynamic)if(!Object.hasOwn(guards.sourceGuards,name))throw new Error('Unpinned source carrier: '+name);
++ const visual=JSON.parse(regular(root,'data/candidate-index-visuals.json').bytes)['rec28ldfRTiC6k'];
++ if(visual.hero.image!=='/artist/meovv/group-official.jpg')throw new Error('Index hero branch changed');
++ const verifiedEvidence=evidence(root,guards,config,manifest,readbackDir),blockers=[];
++ if(!readbackDir)blockers.push('Saved owner-browser response bodies must be supplied with --readback-dir.');
++ const distRoot=safe(root,'dist');
++ if(!fs.existsSync(distRoot))blockers.push('A complete independent build is required; no dist exists.');
++ const candidates=manifest.entries.map(asset=>{
++  regular(root,'public'+asset.sourceUrl,asset);
++  const build='dist/client'+asset.sourceUrl;
++  let identity=null;
++  if(fs.existsSync(distRoot))identity=regular(root,build,asset,{singleLink:true}).identity;
++  return {id:asset.id,memberId:asset.memberId,source:'public'+asset.sourceUrl,build,bytes:asset.bytes,sha256:asset.sha256,identity};
++ });
++ const compiled=guards.compiled;
++ if(compiled?.status!=='independently-reviewed'||!compiled.carriers||Object.keys(compiled.carriers).length===0)blockers.push('Exact compiled carrier pins are pending a complete build and independent review.');
++ else {
++  if(!fs.existsSync(distRoot))throw new Error('Reviewed compiled pins without a complete build');
++  const actual=inventory(root,['dist'],manifest);
++  equal(actual.dynamic,compiled.dynamicPathCarriers,'Compiled dynamic inventory changed');
++  equal(actual.original,compiled.originalPathCarriers,'Compiled original-path inventory changed');
++  equal(Object.keys(compiled.carriers).sort(),[...new Set([...actual.dynamic,...actual.original])].sort(),'Compiled carrier pin set changed');
++  for(const [name,pin] of Object.entries(compiled.carriers)){if(!name.startsWith('dist/'))throw new Error('Compiled pin outside dist');regular(root,name,pin);}
++ }
++ return {mode:'dry-run',cutoverEnabled:true,mayDelete:blockers.length===0,publicOriginalsRetained:true,existing194PruneRulesChanged:false,payloadBytes:6004463,estimatedFourTarBytes:6007808,candidates,evidence:verifiedEvidence,blockers,packageGate:'After pruning, the official complete gzip-expanded tar must retain >=2097152 bytes; payload estimates are not package acceptance.'};
++}
++export function pruneMeovvCutover(root,options={}) {
++ const plan=auditMeovvCutover(root,options);
++ if(!plan.mayDelete)throw new Error('Prune blocked: '+plan.blockers.join(' '));
++ // Validate every target again before the first write. No source tree, R2,
++ // native data or other build path is ever a write target. A failed preflight
++ // makes zero changes. An OS unlink failure may be partial; stop, never retry.
++ for(const item of plan.candidates){const now=regular(root,item.build,item,{singleLink:true});equal(now.identity,item.identity,'Build target changed during preflight');}
++ const removed=[];
++ try {for(const item of plan.candidates){fs.unlinkSync(safe(root,item.build));removed.push(item.build);}}
++ catch(error){throw new Error(`Local prune stopped after ${removed.length} removals. Restore all four from public into a fresh build before retry. Removed: ${removed.join(',')}`,{cause:error});}
++ return {...plan,mode:'applied',removed};
++}
++if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
++ let mode='dry-run',readbackDir;const args=process.argv.slice(2);
++ for(let i=0;i<args.length;i++){
++  if(args[i]==='--dry-run'){if(mode==='apply')throw new Error('Conflicting modes');continue;}
++  if(args[i]==='--apply'){if(args.includes('--dry-run'))throw new Error('Conflicting modes');mode='apply';continue;}
++  if(args[i]==='--readback-dir'&&args[i+1]){if(readbackDir)throw new Error('Duplicate readback directory');readbackDir=path.resolve(args[++i]);continue;}
++  throw new Error('Only --dry-run/--apply and --readback-dir are supported; dist is fixed to PROJECT/dist.');
++ }
++ console.log(JSON.stringify((mode==='apply'?pruneMeovvCutover:auditMeovvCutover)(process.cwd(),{readbackDir}),null,2));
++}
+diff --git a/scripts/meovv-build-asset-cutover-guards.json b/scripts/meovv-build-asset-cutover-guards.json
+new file mode 100644
+index 0000000..20ef149
+--- /dev/null
++++ b/scripts/meovv-build-asset-cutover-guards.json
+@@ -0,0 +1,146 @@
++{
++  "format": "meovv-four-build-cutover-guards.v2",
++  "manifestSha256": "2262fad9a601459126b789ec68b5297fb5be64426045a7b38eb3ec8017237feb",
++  "sourceGuards": {
++    "app/api/build-assets/route.ts": {
++      "bytes": 652,
++      "sha256": "7f0c55ef80262e1fa8ac4d9b3d4d22b65f8aa8e7a114594f2a2d9442668bde85"
++    },
++    "app/api/manage/build-assets/route.ts": {
++      "bytes": 912,
++      "sha256": "494f4e3bd773c82737ae9334209389ce8d1cb8024f1ad1e88e447406a377bc87"
++    },
++    "app/artists/meovv/page.tsx": {
++      "bytes": 219,
++      "sha256": "5fc44a6555c4e1395c369b7aa9415faa31c16db4be4c0d024f142e2e629a11d2"
++    },
++    "app/manage/build-assets/client.tsx": {
++      "bytes": 7240,
++      "sha256": "558ced60d584ba48ecfd0552f24a8cb410073d33cf82a2c1b60ea4a8ff4c8c1d"
++    },
++    "app/manage/build-assets/page.tsx": {
++      "bytes": 388,
++      "sha256": "f9fe2c131b1a82d2df1c88d52e39d056ca822d360c5f472328676f362267cb7f"
++    },
++    "app/page.tsx": {
++      "bytes": 144749,
++      "sha256": "0d358332a0d85248a1aee35373f9f81857d5646c868848c142488b687987afa5"
++    },
++    "components/candidate-index-card.tsx": {
++      "bytes": 3512,
++      "sha256": "eb6493d4674124fae6558d67da17bc7ca8612b8d5774b45cf9f3ee701b9813e0"
++    },
++    "components/candidate/meovv-design.tsx": {
++      "bytes": 19368,
++      "sha256": "555531ab1392aa4e0cce7ea21f60222e75bf2bb78b3ef7a20901697ab7acdaeb"
++    },
++    "components/candidate/meovv-figma-design.css": {
++      "bytes": 13603,
++      "sha256": "f7bb8376abb54cf5df2d2ab0a027cc49d165f07c8853399ab3c8889afb3c687e"
++    },
++    "components/photo-lightbox.tsx": {
++      "bytes": 6113,
++      "sha256": "3daba994be17c12eb83d6b80eaeb9a1dd7b656684f1a6a2fabd2245de4ac58c9"
++    },
++    "components/reliable-image.tsx": {
++      "bytes": 12702,
++      "sha256": "d99db30b791ece5cfd9110dfb176b7a636492887dbb86e0cf34e8b1822116339"
++    },
++    "data/candidate-index-visuals.json": {
++      "bytes": 81992,
++      "sha256": "5c987d65e668a65c2d44a948025f4c08e1e6b3e853561462718381fb5b9130b8"
++    },
++    "data/meovv-artist.json": {
++      "bytes": 3689,
++      "sha256": "0181d578004f4fa23182993b3a6fd79db302dce1c945024f841db7a98d294a89"
++    },
++    "data/meovv-figma-asset-manifest.json": {
++      "bytes": 3176,
++      "sha256": "806e2776ab7ff7eebcf594a8fd5ac0b391e7bf13996d7b784f31dc264d14bfd4"
++    },
++    "lib/idol/build-asset-cutover.json": {
++      "bytes": 294,
++      "sha256": "9c057fd327968eaac9910469b23483f570b1eaedcae75685e8010b80643b1295"
++    },
++    "lib/idol/build-asset-format.ts": {
++      "bytes": 3498,
++      "sha256": "9ccaade5a6cda0d7f99bba49c074e3d687a76b93a1f6a3488ba9eb157894b443"
++    },
++    "lib/idol/build-asset-host.ts": {
++      "bytes": 1523,
++      "sha256": "19be886cf401fe72ca572ffe118c669a3f12394e8b18279a226e690542c972fc"
++    },
++    "lib/idol/build-asset-manifest.json": {
++      "bytes": 1493,
++      "sha256": "2262fad9a601459126b789ec68b5297fb5be64426045a7b38eb3ec8017237feb"
++    },
++    "lib/idol/build-asset-service.ts": {
++      "bytes": 7711,
++      "sha256": "5e9a865c2c0dcda340e1f071e2fd28bca15a4f0e027a847969d61d2ab79df0d7"
++    },
++    "lib/idol/candidate/meovv-build-asset-portrait.ts": {
++      "bytes": 946,
++      "sha256": "01dfe8669f386f6403592b3eb40df373098af3b3cf0ab2999b8f22bc2f2efc3c"
++    },
++    "lib/idol/candidate/meovv-figma-assets.ts": {
++      "bytes": 2809,
++      "sha256": "75c9f030bbe993938c06ef7a1bc09bcfdc559749f16f3a8abdcec131d1087cb8"
++    },
++    "lib/idol/candidate/meovv-roster-portrait.ts": {
++      "bytes": 1303,
++      "sha256": "3c5ccf1206c6af7d5ba1ea35f44c9d4da72fe1b056e6a7e4603c12f095cdb6da"
++    },
++    "lib/idol/candidate/portrait.ts": {
++      "bytes": 992,
++      "sha256": "08e8870cd1713a0935b24baa1cc941df9add6e60afe292b0c26af7bbb09b6216"
++    },
++    "lib/idol/image-lightbox-session.ts": {
++      "bytes": 5119,
++      "sha256": "aa51eb51fedc5857c7b72ccc55d2cf415f3b29612c4c348e9eeb97c17e547318"
++    },
++    "lib/idol/image-presentation.ts": {
++      "bytes": 4250,
++      "sha256": "7b4492ca26032c7f6fe3d1663812d887616c147e06496c53336713bd331b7d3e"
++    }
++  },
++  "originalPathCarriers": [
++    "data/candidate-index-visuals.json",
++    "data/meovv-artist.json",
++    "lib/idol/build-asset-manifest.json",
++    "lib/idol/candidate/meovv-roster-portrait.ts"
++  ],
++  "dynamicPathCarriers": [
++    "app/artists/meovv/page.tsx",
++    "app/page.tsx",
++    "components/candidate/meovv-design.tsx",
++    "data/candidate-index-visuals.json",
++    "data/meovv-artist.json",
++    "data/meovv-figma-asset-manifest.json",
++    "lib/idol/build-asset-cutover.json",
++    "lib/idol/build-asset-format.ts",
++    "lib/idol/build-asset-manifest.json",
++    "lib/idol/candidate/meovv-build-asset-portrait.ts",
++    "lib/idol/candidate/meovv-figma-assets.ts",
++    "lib/idol/candidate/meovv-roster-portrait.ts"
++  ],
++  "evidenceGuards": {
++    "meovv-four-owner-readback-original.json": {
++      "bytes": 1149,
++      "sha256": "c886d4c4d1525e0d831f95cb4808f7cfbd9db62624a5393680b13e343463d627"
++    },
++    "meovv-four-owner-readback.json": {
++      "bytes": 2537,
++      "sha256": "4b4a86212212327683443a91758c680aaedabdc44d5275530c32625912000815"
++    },
++    "meovv-four-anonymous-access.json": {
++      "bytes": 1264,
++      "sha256": "697d412648eaabe7aaa8b085591d69155ee70622e507b10d69cee40557e35065"
++    }
++  },
++  "compiled": {
++    "status": "pending-full-build-and-independent-review",
++    "carriers": {},
++    "dynamicPathCarriers": [],
++    "originalPathCarriers": []
++  }
++}
+diff --git a/tests/build-assets-inspect.test.cjs b/tests/build-assets-inspect.test.cjs
+new file mode 100644
+index 0000000..ee5d790
+--- /dev/null
++++ b/tests/build-assets-inspect.test.cjs
+@@ -0,0 +1,97 @@
++/* eslint-disable @typescript-eslint/no-require-imports */
++// The actual client inspect handler runs against local GET-only responses.
++const test = require('node:test'), assert = require('node:assert/strict');
++const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm'), ts = require('typescript');
++const root = path.resolve(__dirname, '..');
++function compile(source, requireFn, extras = {}) {
++ const exports = {};
++ const code = ts.transpileModule(source, {compilerOptions: {module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true}}).outputText;
++ vm.runInNewContext('(function(require,exports){' + code + '\n})', {Error, Uint8Array, DataView, Request, Response, URL, ReadableStream, crypto: globalThis.crypto, AbortSignal, ...extras})(requireFn, exports);
++ return exports;
++}
++const format = compile(fs.readFileSync(path.join(root, 'lib/idol/build-asset-format.ts'), 'utf8'), name => {
++ assert.equal(name, './build-asset-manifest.json'); return JSON.parse(fs.readFileSync(path.join(root, 'lib/idol/build-asset-manifest.json'), 'utf8'));
++});
++const clientSource = fs.readFileSync(path.join(root, 'app/manage/build-assets/client.tsx'), 'utf8');
++const success = '已读回并核验原始字节。此所有者浏览器检查不替代独立匿名访问验收。';
++const original = asset => new Uint8Array(fs.readFileSync(path.join(root, 'public', asset.sourceUrl)));
++async function inspect(options = {}) {
++ const asset = options.asset ?? format.BUILD_ASSETS[0], states = [], methods = [], timeouts = [];
++ let stateIndex = 0, bodyReads = 0, verifications = 0, fetches = 0, storageWrites = 0, resolveComplete;
++ const complete = new Promise(resolve => { resolveComplete = resolve; });
++ const jsx = (type, props) => ({type, props});
++ const react = {
++  useState(value) { const i = stateIndex++; states[i] = value; return [value, next => { states[i] = next; if (i === 1 && next === false) resolveComplete(); }]; },
++  useRef(value) { return {current: value}; },
++  useEffect(effect) { effect(); },
++ };
++ const timeout = () => { const error = new Error('local simulated timeout'); error.name = 'TimeoutError'; throw error; };
++ const localFetch = async (url, init) => {
++  assert.equal(init.method, undefined); assert.equal(init.cache, 'no-store'); assert.equal(init.credentials, 'same-origin');
++  methods.push('GET'); fetches++;
++  if (fetches === 1) {
++   assert.equal(url, format.assetUrl(asset, true)); if (options.ownerTimeout) timeout();
++   if (options.invalidJson) return new Response('invalid JSON');
++   return Response.json({id: asset.id, version: asset.sha256, state: options.state ?? 'verified', ...options.report}, {status: options.ownerStatus ?? 200});
++  }
++  assert.equal(fetches, 2); assert.equal(url, format.assetUrl(asset)); if (options.publicTimeout) timeout();
++  const headers = {'content-type': options.mime ?? 'image/jpeg'};
++  if (options.length !== undefined) headers['content-length'] = String(options.length);
++  const response = new Response(options.body ?? original(asset), {status: options.publicStatus ?? 200, headers});
++  const read = response.arrayBuffer.bind(response);
++  response.arrayBuffer = () => { bodyReads++; if (options.bodyTimeout) timeout(); return read(); };
++  return response;
++ };
++ const exports = compile(clientSource + '\nexport {Slot as __testSlot};', name => {
++  if (name === 'react') return react;
++  if (name === 'react/jsx-runtime') return {jsx, jsxs: jsx};
++  if (name === '@/lib/idol/build-asset-format') return {...format, verifyBuildAsset: async (...args) => { verifications++; return format.verifyBuildAsset(...args); }};
++  throw new Error('Unexpected dependency ' + name);
++ }, {
++  fetch: localFetch, AbortSignal: {timeout(ms) { timeouts.push(ms); return AbortSignal.timeout(ms); }},
++  window: {addEventListener() {}, removeEventListener() {}},
++  localStorage: {getItem() { return 'attempted'; }, setItem() { storageWrites++; throw new Error('Unexpected attempt fence write'); }},
++  navigator: {locks: {request() { throw new Error('Unexpected upload lock'); }}},
++ });
++ const tree = exports.__testSlot({asset}), buttons = [];
++ function walk(node) { if (!node || typeof node !== 'object') return; if (node.type === 'button') buttons.push(node); const children = node.props?.children; for (const child of Array.isArray(children) ? children : [children]) walk(child); }
++ walk(tree); assert.equal(buttons.length, 2); assert.equal(buttons[1].props.disabled, true);
++ buttons[0].props.onClick(); await complete;
++ assert.equal(storageWrites, 0); assert.ok(methods.every(method => method === 'GET')); assert.equal(states[3], false);
++ assert.equal(timeouts[0], 45000); if (fetches === 2) assert.equal(timeouts[1], 30000);
++ return {message: states[2], bodyReads, verifications, GETs: fetches};
++}
++test('all four exact originals verify with or without Content-Length, without PUT or fence changes', async () => {
++ for (const asset of format.BUILD_ASSETS) for (const length of [undefined, asset.bytes]) {
++  const result = await inspect({asset, length}); assert.equal(result.message, success); assert.equal(result.bodyReads, 1); assert.equal(result.verifications, 1); assert.equal(result.GETs, 2);
++ }
++});
++test('an explicit wrong or malformed declared length still fails closed before body read', async () => {
++ for (const length of [0, format.BUILD_ASSETS[0].bytes + 1, '', 'abc']) {
++  const result = await inspect({length}); assert.match(result.message, /public-headers: DECLARED_LENGTH_MISMATCH/); assert.equal(result.bodyReads, 0); assert.equal(result.verifications, 0);
++ }
++});
++test('missing header cannot bypass exact actual bytes, MIME, SHA, JPEG header or geometry', async () => {
++ const asset = format.BUILD_ASSETS[0], bytes = original(asset), badHash = new Uint8Array(bytes), badHeader = new Uint8Array(bytes), badGeometry = new Uint8Array(bytes);
++ badHash[badHash.length - 20] ^= 1; badHeader[0] = 0;
++ let offset = 2; while (offset < badGeometry.length) { while (badGeometry[offset] === 255) offset++; const marker = badGeometry[offset++], length = (badGeometry[offset] << 8) + badGeometry[offset + 1]; if ([0xc0, 0xc1, 0xc2].includes(marker)) { badGeometry[offset + 5] ^= 1; break; } offset += length; }
++ for (const [options, code] of [[{body: bytes.slice(0, -1)}, 'SIZE'], [{body: new Uint8Array(asset.bytes + 1)}, 'SIZE'], [{mime: 'application/octet-stream'}, 'MIME'], [{body: badHash}, 'HASH'], [{body: badHeader}, 'IMAGE'], [{body: badGeometry}, 'GEOMETRY']]) {
++  const result = await inspect(options); assert.match(result.message, new RegExp('public-verify: BUILD_ASSET_' + code + '_')); assert.equal(result.verifications, 1);
++ }
++});
++test('owner HTTP, JSON and identity failures have distinct diagnostics and never start public GET', async () => {
++ for (const [options, code] of [[{ownerStatus: 403}, 'owner-status: HTTP_403'], [{invalidJson: true}, 'owner-json: INVALID_JSON'], [{report: {id: 'other'}}, 'owner-json: IDENTITY_MISMATCH'], [{report: {version: 'other'}}, 'owner-json: IDENTITY_MISMATCH']]) {
++  const result = await inspect(options); assert.ok(result.message.includes(code)); assert.equal(result.GETs, 1);
++ }
++});
++test('owner, public GET and body timeouts remain distinguishable with unchanged time budgets', async () => {
++ for (const [options, phase] of [[{ownerTimeout: true}, 'owner-status'], [{publicTimeout: true}, 'public-get'], [{bodyTimeout: true}, 'public-body']]) {
++  const result = await inspect(options); assert.ok(result.message.includes(phase + ': TimeoutError')); assert.equal(result.verifications, 0);
++ }
++ const result = await inspect({publicStatus: 503}); assert.match(result.message, /public-get: HTTP_503/);
++});
++test('an existing attempt fence stays closed for missing, conflict and unknown owner states', async () => {
++ for (const state of ['missing', 'conflict', 'unknown']) {
++  const result = await inspect({state}); assert.match(result.message, /状态为冲突或不确定/); assert.equal(result.GETs, 1); assert.equal(result.bodyReads, 0);
++ }
++});
+diff --git a/tests/helpers/meovv-consumer-build.cjs b/tests/helpers/meovv-consumer-build.cjs
+new file mode 100644
+index 0000000..f70fe1f
+--- /dev/null
++++ b/tests/helpers/meovv-consumer-build.cjs
+@@ -0,0 +1,28 @@
++/* Targeted, in-memory bundles only. No source file or production config is edited. */
++const fs=require('node:fs'),path=require('node:path'),{createRequire}=require('node:module');
++const root=path.resolve(process.env.MEOVV_TEST_ROOT||path.join(__dirname,'../..'));
++const req=createRequire(path.join(root,'package.json'));
++const esbuild=req('esbuild');
++async function build(mode='active'){
++ // Synthetic gate metadata exercises the actual selector. These are not production
++ // approvals, upload/readback evidence or HTTP-body hashes and are never persisted.
++ const fixture={cohort:'meovv-four-oct22',enabled:mode==='active',verifiedDeploymentVersion:186,
++  ownerReadbackEvidenceSha256:'a'.repeat(64),anonymousAccessEvidenceSha256:'b'.repeat(64)};
++ const result=await esbuild.build({
++  stdin:{contents:`export {default as MeovvDesign} from './components/candidate/meovv-design';export {CandidateIndexCard,candidateIndexVisual} from './components/candidate-index-card';export {ImageRecoveryProvider,ImageRecoveryControls} from './components/reliable-image';export {ArtistTimelineHostProvider as TestHostProvider} from './components/artist-timeline-host';`,resolveDir:root,loader:'tsx'},
++  absWorkingDir:root,bundle:true,write:false,platform:'node',format:'cjs',jsx:'automatic',external:['react','react/*','react-dom','react-dom/*'],loader:{'.css':'empty'},logLevel:'silent',
++  plugins:mode==='production'?[]:[{name:'explicit-cutover-fixture',setup(b){
++   b.onResolve({filter:/build-asset-cutover\.json$/},()=>({path:'cutover',namespace:'test-fixture'}));
++   b.onLoad({filter:/.*/,namespace:'test-fixture'},()=>({contents:JSON.stringify(fixture),loader:'json'}));
++  }}],
++ });return result.outputFiles[0].text;
++}
++function scene(){
++ const content=JSON.parse(fs.readFileSync(path.join(root,'data/meovv-artist.json')));
++ const fixture=JSON.parse(fs.readFileSync(path.join(root,'tests/fixtures/candidate37.synthetic.json')));
++ const base=fixture.members.find(m=>m.groupIds.includes(content.groupId));
++ const members=Object.entries(content.portraits).map(([id,p])=>({...base,id,name:p.stageName,stageName:p.stageName,cnName:'',photo:null,groupIds:[content.groupId]}));
++ const catalog={...fixture,groups:fixture.groups.filter(g=>g.id===content.groupId),members,works:[],ratings:[]};
++ return {content,catalog};
++}
++module.exports={build,scene,root,req};
+diff --git a/tests/helpers/meovv-consumer-harness.cjs b/tests/helpers/meovv-consumer-harness.cjs
+new file mode 100644
+index 0000000..3a98984
+--- /dev/null
++++ b/tests/helpers/meovv-consumer-harness.cjs
+@@ -0,0 +1,178 @@
++/* Runs real MeovvDesign, ReliableImage, PhotoLightbox and CandidateIndexCard using
++ * deterministic React hook/ref/event/portal ports. Not browser or React DOM hydration.
++ * Production component source, selector, timeline, facts, scroll hooks and image
++ * handlers are not stubbed. DOM/layout/focus/network are an explicit test model. */
++const vm=require('node:vm');
++const {scene,req}=require('./meovv-consumer-build.cjs');
++const equal = (a, b) => a && b && a.length === b.length && a.every((value, index) => Object.is(value, b[index]));
++const walk = node => Array.isArray(node) ? node.flatMap(walk) : !node || typeof node !== 'object' ? [] : [node, ...walk(node.props?.children)];
++function harness(source, {initial='/artists/meovv?section=members', index=false, scenario=scene()}={}) {
++  let current, contexts = new Map(), dirty = false, now = 1000, uid = 0, nextTimer = 0;
++  let layouts = [], effects = [], microtasks = [], tree, position = 0;
++  const fibers = new Map(), nodes = new Map(), timers = new Map(), frames = new Map(), listeners = new Map();
++  const stack = [{url: initial, state: {}}], modalStack = [], requests = [], assigns = [], focusAttempts = [];
++  const {content,catalog}=scenario; const timeline=null;
++  function matches(node, selector) {
++    if(selector==='[data-artist-member-trigger]')return !!node.props['data-artist-member-trigger'];
++    if (selector === 'main' || selector === '[role="main"]') return node.tagName === 'MAIN';
++    if (selector === 'dialog') return node.tagName === 'DIALOG';
++    if (selector === 'dialog[open]') return node.tagName === 'DIALOG' && node.open;
++    if (selector === '[aria-modal="true"]') return node.props['aria-modal'] === 'true';
++    if (selector === '.triples-visual-review a[href]') return node.tagName === 'A' && !!node.props.href;
++    return ['a', 'button', 'summary', 'label'].includes(selector) && node.tagName.toLowerCase() === selector;
++  }
++  const document = {
++    activeElement:null, body:{style:(()=>{const m=new Map();return {getPropertyValue:k=>m.get(k)?.value??'',getPropertyPriority:k=>m.get(k)?.priority??'',setProperty:(k,value,priority='')=>m.set(k,{value,priority}),removeProperty:k=>m.delete(k)}})()},defaultView:{getComputedStyle:()=>({display:'block',visibility:'visible'})},
++    querySelectorAll(selector) {
++      return [...nodes.values()].map(entry => entry.dom).filter(node => selector.split(',').some(part => matches(node, part.trim())));
++    },
++    querySelector(selector) {return this.querySelectorAll(selector)[0] ?? null;},
++    getElementById(id) {return [...nodes.values()].find(entry => entry.dom.props.id === id)?.dom ?? null;},
++  };
++  const window = {
++    scrollY: 320, confirm: () => true, alert() {}, scrollTo() {},
++    addEventListener(type, callback) {if (!listeners.has(type)) listeners.set(type, new Set()); listeners.get(type).add(callback);},
++    removeEventListener(type, callback) {listeners.get(type)?.delete(callback);},
++    dispatchEvent(event) {for (const callback of [...listeners.get(event.type) ?? []]) callback(event);},
++  };
++  document.addEventListener = (type, callback) => window.addEventListener('document:' + type, callback);
++  document.removeEventListener = (type, callback) => window.removeEventListener('document:' + type, callback);
++  const location = {
++    get pathname() {return new URL(stack[position].url, 'https://site.invalid').pathname;},
++    get search() {return new URL(stack[position].url, 'https://site.invalid').search;},
++    get hash() {return new URL(stack[position].url, 'https://site.invalid').hash;},
++    get href() {return stack[position].url;},
++    assign(url) {assigns.push(url);}, reload() {assigns.push('reload');},
++  };
++  const history = {
++    get state() {return stack[position].state;},
++    replaceState(state, _, url) {stack[position] = {url, state};},
++    pushState(state, _, url) {stack.splice(position + 1); stack.push({url, state}); position++;},
++    back() {if (position) {position--; window.dispatchEvent({type: 'popstate'});}},
++    forward() {if (position < stack.length - 1) {position++; window.dispatchEvent({type: 'popstate'});}},
++  };
++  const slot = initialize => {const index = current.cursor++; return current.hooks[index] ?? (current.hooks[index] = initialize());};
++  const effect = (callback, dependencies, queue) => {
++    const state = slot(() => ({}));
++    if (!equal(state.dependencies, dependencies)) {state.dependencies = dependencies; queue.push(() => {state.cleanup?.(); state.cleanup = callback();});}
++  };
++  const React = {
++    forwardRef:render=>props=>render(props,props.ref??null),
++    memo:component=>component,
++    createElement(type, props, ...children) {return {type, key: props?.key, props: {...props, ...(children.length ? {children: children.length === 1 ? children[0] : children} : {})}};},
++    useState(initialValue) {
++      const state = slot(() => ({value: typeof initialValue === 'function' ? initialValue() : initialValue}));
++      return [state.value, value => {const next = typeof value === 'function' ? value(state.value) : value; if (!Object.is(next, state.value)) {state.value = next; dirty = true;}}];
++    },
++    useRef: value => slot(() => ({current: value})),
++    useMemo(callback, dependencies) {
++      const state = slot(() => ({}));
++      if (!equal(state.dependencies, dependencies)) {state.dependencies = dependencies; state.value = callback();}
++      return state.value;
++    },
++    useCallback(callback, dependencies) {return React.useMemo(() => callback, dependencies);},
++    useId: () => slot(() => ({id: `meovv-consumer-test-${++uid}`})).id,
++    useEffect: (callback, dependencies) => effect(callback, dependencies, effects),
++    useLayoutEffect: (callback, dependencies) => effect(callback, dependencies, layouts),
++    useSyncExternalStore(subscribe, getSnapshot) {React.useEffect(() => subscribe(() => {dirty = true;}), [subscribe]); return getSnapshot();},
++    createContext(value) {const context = {value}; context.Provider = {context}; return context;},
++    useContext: context => contexts.has(context) ? contexts.get(context) : context.value,
++    isValidElement: node => !!node && typeof node === 'object' && 'type' in node,
++    cloneElement: (node, extra) => ({...node, props: {...node.props, ...extra}}),
++  };
++  const jsx = (type, props, key) => ({type, props: props ?? {}, key});
++  const modulePort = {exports: {}};
++  class Clock extends Date {static now() {return now;}}
++  vm.runInNewContext('(function(require,module,exports){' + source + '})', {
++    Date: Clock, URL, URLSearchParams, AbortController, DOMException, window, document, history, location,
++    Event: class Event {constructor(type) {this.type = type;}},
++    ResizeObserver: class ResizeObserver {observe() {} disconnect() {}},
++    addEventListener: window.addEventListener.bind(window), removeEventListener: window.removeEventListener.bind(window),
++    queueMicrotask: callback => microtasks.push(callback),
++    setTimeout: (callback, ms) => {const id = ++nextTimer; timers.set(id, {callback, due: now + ms}); return id;},
++    clearTimeout: id => timers.delete(id),
++    requestAnimationFrame: callback => {const id = ++nextTimer; frames.set(id, callback); return id;},
++    cancelAnimationFrame: id => frames.delete(id),
++    fetch: (...args) => {requests.push(args); throw Error('No API reads or writes are expected with catalog/timeline overrides');},
++  })(name=>name==='react'?React:name==='react/jsx-runtime'?{jsx,jsxs:jsx,Fragment:'fragment'}:name==='react-dom'?{createPortal:children=>jsx('portal',{children})}:req(name),modulePort,modulePort.exports);
++  Object.assign(window,{location,history,requestAnimationFrame:callback=>{const id=++nextTimer;frames.set(id,callback);return id;}});
++  function visit(node, key = 'root', parent = null) {
++    if (Array.isArray(node)) return node.map((child, index) => visit(child, key + '.' + (child?.key ?? index), parent));
++    if (!node || typeof node !== 'object') return node;
++    const id = key + ':' + String(node.key ?? '');
++    if (node.type?.context) {
++      const previous = contexts; contexts = new Map(contexts); contexts.set(node.type.context, node.props.value);
++      const result = visit(node.props.children, id + '.provider', parent); contexts = previous; return result;
++    }
++    if (typeof node.type === 'function') {
++      let fiber = fibers.get(id);
++      if (!fiber || fiber.type !== node.type) {fiber?.hooks.forEach(hook => hook.cleanup?.()); fiber = {type: node.type, hooks: [], cursor: 0}; fibers.set(id, fiber);}
++      fiber.seen = true; fiber.cursor = 0;
++      const previous = current; current = fiber; const rendered = node.type(node.props); current = previous;
++      return visit(rendered, id + '.render', parent);
++    }
++    if (node.type === 'fragment') return visit(node.props.children, id + '.fragment', parent);
++    let saved = nodes.get(id);
++    if (!saved || saved.type !== node.type) {
++      const attributes = new Map();
++      const dom = {
++        ownerDocument: document, isConnected: true, tagName: String(node.type).toUpperCase(), complete: false, naturalWidth: 0, open: false,
++        getBoundingClientRect: () => ({width: 400, height: 600, left: 0, top: 0, right: 400, bottom: 600}),
++        hasAttribute: name => attributes.has(name), setAttribute: (name, value) => attributes.set(name, value), removeAttribute: name => attributes.delete(name),
++        get dataset(){return Object.fromEntries(Object.entries(this.props??{}).filter(([k])=>k.startsWith('data-')).map(([k,v])=>[k.slice(5).replace(/-([a-z])/g,(_,c)=>c.toUpperCase()),v]));},getAttribute(name) {return attributes.get(name)??this.props[name]??null;},scrollIntoView(){},getClientRects(){return [{width:400,height:600}]},matches(selector){if(selector===':disabled')return !!this.props.disabled;return selector.split(',').some(s=>s==='button'?this.tagName==='BUTTON':s==='a[href]'?this.tagName==='A'&&!!this.props.href:false)},get tabIndex(){return this.props.tabIndex??(['BUTTON','A'].includes(this.tagName)?0:-1)},querySelectorAll(selector){return [...nodes.values()].map(n=>n.dom).filter(n=>n!==this&&this.contains(n)&&n.matches(selector));},
++        contains(target) {for (let ancestor = target; ancestor; ancestor = ancestor.parent) if (ancestor === this) return true; return false;},
++        closest(selector) {for (let ancestor = this; ancestor; ancestor = ancestor.parent) if (selector.split(',').some(part => matches(ancestor, part.trim()))) return ancestor; return null;},
++        focus() {
++          const top = modalStack.at(-1);
++          focusAttempts.push({node: this, accepted: this.isConnected && (!top || top.contains(this))});
++          if (this.isConnected && (!top || top.contains(this))) document.activeElement = this;
++        },
++        showModal() {this.open = true; modalStack.push(this); this.focus();},
++        close() {this.open = false; const index = modalStack.indexOf(this); if (index >= 0) modalStack.splice(index, 1);},
++      };
++      saved = {type: node.type, dom}; nodes.set(id, saved);
++    }
++    saved.seen = true; saved.dom.parent = parent; saved.dom.isConnected = true; saved.dom.props = node.props;
++    const ref = node.props.ref;
++    if (ref) {saved.ref = ref; if (typeof ref === 'function') ref(saved.dom); else ref.current = saved.dom;}
++    const props = {...node.props};
++    for (const event of ['onError', 'onLoad', 'onClick', 'onCancel', 'onPointerDown', 'onKeyDown']) if (props[event]) {
++      const callback = props[event];
++      props[event] = (supplied = {}) => {
++        if (event === 'onClick' && saved.dom.isConnected) saved.dom.focus();
++        return callback({currentTarget: saved.dom, target: saved.dom, button: 0, preventDefault() {}, stopPropagation() {}, ...supplied});
++      };
++    }
++    return {...node, dom: saved.dom, props: {...props, children: visit(node.props.children, id + '.children', saved.dom)}};
++  }
++  function render() {
++    let passes = 0;
++    do {
++      dirty = false; layouts = []; effects = [];
++      for (const fiber of fibers.values()) fiber.seen = false;
++      for (const node of nodes.values()) node.seen = false;
++      const out=modulePort.exports;const body=index?jsx(out.ImageRecoveryProvider,{children:[jsx(out.CandidateIndexCard,{group:catalog.groups[0],members:catalog.members,workCount:0,mean:null,onOpen:()=>{}}),jsx(out.ImageRecoveryControls,{})]}):jsx(out.TestHostProvider,{value:{catalog,loading:false,serverRoute:initial},children:jsx(out.MeovvDesign,{content})});tree=visit(body);
++      for (const [key, fiber] of fibers) if (!fiber.seen) {fiber.hooks.forEach(hook => hook.cleanup?.()); fibers.delete(key);}
++      for (const [key, node] of nodes) if (!node.seen) {node.dom.isConnected = false; if (node.ref?.current === node.dom) node.ref.current = null; nodes.delete(key);}
++      for (const callback of [...layouts, ...effects]) callback();
++      while (microtasks.length) microtasks.shift()();
++      for (const [id, callback] of [...frames]) {frames.delete(id); callback();}
++      if (++passes > 30) throw Error('MEOVV consumer test hook loop');
++    } while (dirty);
++    return tree;
++  }
++  return {
++    render, catalog, content, timeline, document, history, location, modalStack, requests, assigns, focusAttempts,
++    get tree() {return tree;}, get listenerCount() {return [...listeners.values()].reduce((sum, set) => sum + set.size, 0);},
++    setRoute(url){history.pushState({},'',url);window.dispatchEvent({type:'artist-location-change'});return render();},
++    all: predicate => walk(tree).filter(predicate),
++    find: predicate => walk(tree).find(predicate),
++    advance(ms) {now += ms; for (const [id, timer] of timers) if (timer.due <= now) {timers.delete(id); timer.callback();} render();},
++    unmount() {
++      for (const fiber of fibers.values()) fiber.hooks.forEach(hook => hook.cleanup?.());
++      for (const node of nodes.values()) node.dom.isConnected = false;
++      fibers.clear(); nodes.clear();
++    },
++  };
++}
++module.exports = {harness, walk};
+diff --git a/tests/meovv-build-asset-audit.test.mjs b/tests/meovv-build-asset-audit.test.mjs
+new file mode 100644
+index 0000000..b4d9e82
+--- /dev/null
++++ b/tests/meovv-build-asset-audit.test.mjs
+@@ -0,0 +1,74 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import fs from 'node:fs';
++import path from 'node:path';
++import os from 'node:os';
++import {createHash} from 'node:crypto';
++import {auditMeovvCutover,pruneMeovvCutover} from '../scripts/audit-meovv-build-asset-cutover.mjs';
++const root=path.resolve(new URL('..',import.meta.url).pathname);
++const guard=JSON.parse(fs.readFileSync(path.join(root,'scripts/meovv-build-asset-cutover-guards.json')));
++const manifest=JSON.parse(fs.readFileSync(path.join(root,'lib/idol/build-asset-manifest.json')));
++const sha=bytes=>createHash('sha256').update(bytes).digest('hex'),pin=bytes=>({bytes:bytes.length,sha256:sha(bytes)});
++function fixture({compiled=false,dist=true}={}){
++ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'meovv-exact-four-test-'));
++ const put=(name,bytes)=>{const p=path.join(dir,name);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,bytes);};
++ const guards=structuredClone(guard),saveGuard=()=>put('scripts/meovv-build-asset-cutover-guards.json',JSON.stringify(guards));
++ for(const name of Object.keys(guards.sourceGuards))put(name,fs.readFileSync(path.join(root,name)));
++ for(const name of Object.keys(guards.evidenceGuards))put('docs/build-assets/'+name,fs.readFileSync(path.join(root,'docs/build-assets',name)));
++ for(const a of manifest.entries)for(const prefix of ['public','readback',...(dist?['dist/client']:[])])put(prefix+(prefix==='readback'?'/'+a.id+'.jpg':a.sourceUrl),fs.readFileSync(path.join(root,'public',a.sourceUrl)));
++ if(dist){put('dist/client/artist/meovv/sooin-mnet-profile.jpg','retained SOOIN fixture');put('dist/client/artist/meovv/narin-mnet-profile-roster.webp','retained roster fixture');put('dist/server/unrelated.js','retained unrelated fixture');}
++ if(compiled){
++  // Synthetic local fixture, never production evidence or a real build/review.
++  const name='dist/server/meovv-compiled-fixture.js',bytes=Buffer.from(`// mock compiled fixture /api/build-assets\nconst metadata=${JSON.stringify(manifest.entries.map(a=>a.sourceUrl))};`);
++  put(name,bytes);guards.compiled={status:'independently-reviewed',carriers:{[name]:pin(bytes)},dynamicPathCarriers:[name],originalPathCarriers:[name]};
++ }
++ saveGuard();
++ return {dir,put,guards,saveGuard,readbackDir:path.join(dir,'readback'),dispose:()=>fs.rmSync(dir,{recursive:true,force:true})};
++}
++function snapshot(root,prefix=''){
++ const result={};for(const name of fs.readdirSync(path.join(root,prefix))){const relative=path.join(prefix,name),full=path.join(root,relative),stat=fs.lstatSync(full);if(stat.isDirectory())Object.assign(result,snapshot(root,relative));else result[relative]=stat.isSymbolicLink()?'link:'+fs.readlinkSync(full):sha(fs.readFileSync(full));}return result;
++}
++function noWrites(f,run,pattern){const before=snapshot(f.dir);assert.throws(run,pattern);assert.deepEqual(snapshot(f.dir),before);}
++test('production guard remains pending; dry-run requires build, exact pins and real saved bodies',()=>{
++ assert.equal(guard.compiled.status,'pending-full-build-and-independent-review');assert.deepEqual(guard.compiled.carriers,{});
++ const f=fixture({dist:false});try{const before=snapshot(f.dir),result=auditMeovvCutover(f.dir);assert.equal(result.candidates.length,4);assert.equal(result.payloadBytes,6004463);assert.equal(result.mayDelete,false);assert.equal(result.cutoverEnabled,true);assert.equal(result.blockers.length,3);assert.deepEqual(snapshot(f.dir),before);noWrites(f,()=>pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}),/Prune blocked/);}finally{f.dispose();}
++});
++test('saved body verification and human incognito evidence remain explicitly distinct',()=>{
++ const f=fixture();try{const result=auditMeovvCutover(f.dir,{readbackDir:f.readbackDir});assert.deepEqual(result.evidence,{ownerBodyBytesVerified:true,anonymousAccessKind:'user-confirmed-incognito-visibility',anonymousBodyVerified:false});assert.equal(result.mayDelete,false);assert.equal(result.blockers.length,1);noWrites(f,()=>pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}),/Prune blocked/);}finally{f.dispose();}
++});
++test('synthetic reviewed-pin fixture removes exactly four generated copies, retaining source/roster/SOOIN/all other files',()=>{
++ const f=fixture({compiled:true});try{const before=snapshot(f.dir),result=pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}),after=snapshot(f.dir);assert.equal(result.removed.length,4);assert.equal(result.mode,'applied');for(const a of manifest.entries){assert.equal(after['public'+a.sourceUrl],a.sha256);delete before['dist/client'+a.sourceUrl];}assert.deepEqual(after,before);noWrites(f,()=>pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}));}finally{f.dispose();}
++});
++test('source/consumer/roster/index/retry/manifest mutation and new carriers fail before any write',()=>{
++ const a=manifest.entries[0];
++ const mutations=[f=>f.put('public'+a.sourceUrl,'wrong bytes'),f=>f.put('dist/client'+a.sourceUrl,'wrong bytes'),...['components/candidate/meovv-design.tsx','components/candidate-index-card.tsx','components/photo-lightbox.tsx','components/reliable-image.tsx','lib/idol/candidate/meovv-roster-portrait.ts','lib/idol/image-presentation.ts','lib/idol/build-asset-manifest.json'].map(name=>f=>f.put(name,'changed')), ...['components/new.tsx','hooks/new.ts','vendor/new.js','public/new.js'].map(name=>f=>f.put(name,`const path='/artist/meovv/'+name+'-mnet-profile.jpg';`)),f=>f.put('dist/server/unreviewed.js',`const url='${a.sourceUrl}'`)];
++ for(const mutate of mutations){const f=fixture({compiled:true});try{mutate(f);noWrites(f,()=>pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}));}finally{f.dispose();}}
++});
++test('missing/corrupt bodies, evidence edits, disabled switch and incomplete compiled pins are zero-write',()=>{
++ const mutations=[f=>f.put('readback/'+manifest.entries[0].id+'.jpg','not the response'),f=>fs.unlinkSync(path.join(f.readbackDir,manifest.entries[0].id+'.jpg')),f=>f.put('docs/build-assets/meovv-four-anonymous-access.json','{"anonymousBodyVerified":true}'),f=>{const name='lib/idol/build-asset-cutover.json',config=JSON.parse(fs.readFileSync(path.join(f.dir,name)));config.enabled=false;const bytes=Buffer.from(JSON.stringify(config));f.put(name,bytes);f.guards.sourceGuards[name]=pin(bytes);f.saveGuard();},f=>{f.guards.compiled.carriers={};f.saveGuard();},f=>{f.guards.compiled.dynamicPathCarriers=[];f.saveGuard();},f=>f.put('dist/server/meovv-compiled-fixture.js','different compiled bytes')];
++ for(const mutate of mutations){const f=fixture({compiled:true});try{mutate(f);noWrites(f,()=>pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}));}finally{f.dispose();}}
++});
++test('symlink source/target/parent and hardlinked build targets are rejected without touching linked originals',()=>{
++ for(const kind of ['target-symlink','target-hardlink','source-symlink','dist-symlink']){
++  const f=fixture({compiled:true});try{const a=manifest.entries[0],target=path.join(f.dir,'dist/client',a.sourceUrl),source=path.join(f.dir,'public',a.sourceUrl);
++   if(kind==='target-symlink'||kind==='target-hardlink'){fs.unlinkSync(target);(kind==='target-symlink'?fs.symlinkSync:fs.linkSync)(source,target);}
++   else if(kind==='source-symlink'){fs.unlinkSync(source);fs.symlinkSync(path.join(f.readbackDir,a.id+'.jpg'),source);}
++   else {fs.renameSync(path.join(f.dir,'dist'),path.join(f.dir,'real-dist'));fs.symlinkSync('real-dist',path.join(f.dir,'dist'));}
++   noWrites(f,()=>pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}));
++  }finally{f.dispose();}
++ }
++});
++test('unrelated native records and existing 194-prune files are not write targets',()=>{
++ const f=fixture({compiled:true});try{f.put('db/native-data.json','retain exact native data');f.put('scripts/prune-original-194.mjs','retain original script');const before=snapshot(f.dir);pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir});const after=snapshot(f.dir);assert.equal(after['db/native-data.json'],before['db/native-data.json']);assert.equal(after['scripts/prune-original-194.mjs'],before['scripts/prune-original-194.mjs']);}finally{f.dispose();}
++});
++
++test('null, missing or malformed required source/evidence/compiled pins cannot silently disable checks',()=>{
++ for(const kind of ['source','evidence','compiled'])for(const value of [null,{}, {bytes:1,sha256:['a'.repeat(64)]}, {bytes:-1,sha256:'a'.repeat(64)}]){
++  const f=fixture({compiled:true});try{
++   if(kind==='source')f.guards.sourceGuards['components/candidate/meovv-design.tsx']=value;
++   if(kind==='evidence')f.guards.evidenceGuards['meovv-four-owner-readback.json']=value;
++   if(kind==='compiled')f.guards.compiled.carriers['dist/server/meovv-compiled-fixture.js']=value;
++   f.saveGuard();noWrites(f,()=>pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}),/Invalid required byte\/SHA pin/);
++  }finally{f.dispose();}
++ }
++});
+diff --git a/tests/meovv-build-asset-consumer.test.cjs b/tests/meovv-build-asset-consumer.test.cjs
+new file mode 100644
+index 0000000..c37eafe
+--- /dev/null
++++ b/tests/meovv-build-asset-consumer.test.cjs
+@@ -0,0 +1,74 @@
++const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
++const {build,scene,root,req}=require('./helpers/meovv-consumer-build.cjs');
++const {harness,walk}=require('./helpers/meovv-consumer-harness.cjs');
++const manifest=JSON.parse(fs.readFileSync(path.join(root,'lib/idol/build-asset-manifest.json'))).entries;
++const expected=entry=>`/api/build-assets?id=${entry.id}&version=${entry.sha256}`;
++let active,dormant,production;
++test.before(async()=>{active=await build('active');dormant=await build('dormant');production=await build('production');});
++const images=h=>h.all(n=>n.type==='img');
++const profile=h=>h.find(n=>n.type==='figure'&&n.props.className==='mf-person-photo');
++const profileImage=h=>walk(profile(h)).find(n=>n.type==='img');
++const zoom=h=>walk(profile(h)).find(n=>n.type==='button');
++const lightbox=h=>h.find(n=>n.props?.className==='photo-lightbox');
++const largeImage=h=>walk(lightbox(h)).find(n=>n.type==='img');
++const errorNodes=tree=>walk(tree).filter(n=>n.props?.['data-image-status']==='error');
++const rosterSources=h=>h.all(n=>n.props?.className==='mf-roster-photo').map(n=>walk(n).find(n=>n.type==='img')?.props.src);
++function assertNoOldOrRoster(h,entry){for(const image of images(h)){assert.notEqual(image.props.src,entry.sourceUrl);assert.ok(!image.props.src.endsWith('-roster.webp'));} }
++function actualSsr(source,scenario,url){
++ const m={exports:{}};vm.runInNewContext('(function(require,module,exports){'+source+'})',{URL,URLSearchParams,AbortController,DOMException,setTimeout,clearTimeout})(req,m,m.exports);
++ const React=req('react'),{renderToStaticMarkup}=req('react-dom/server'),o=m.exports;
++ return renderToStaticMarkup(React.createElement(o.TestHostProvider,{value:{catalog:scenario.catalog,loading:false,serverRoute:url}},React.createElement(o.MeovvDesign,{content:scenario.content})));
++}
++test('checked-in production gate and actual component agree on the final four URLs',()=>{
++ const config=JSON.parse(fs.readFileSync(path.join(root,'lib/idol/build-asset-cutover.json'))),s=scene();
++ for(const entry of manifest){const html=actualSsr(production,s,'/artists/meovv?section=members&member='+entry.memberId);
++  const block=html.match(/<figure class="mf-person-photo">([\s\S]*?)<\/figure>/)[1];
++  assert.ok(block.includes((config.enabled?expected(entry):entry.sourceUrl).replaceAll('&','&amp;')));
++ }
++});
++test('actual React SSR: active four detail src switch exactly; SOOIN and both roster pages do not change',()=>{
++ const s=scene();const before=JSON.stringify(s);
++ for(const entry of manifest){const url='/artists/meovv?section=members&member='+entry.memberId;
++  const html=actualSsr(active,s,url);
++  const photo=html.match(/<figure class="mf-person-photo">([\s\S]*?)<\/figure>/)[1];
++  assert.ok(photo.includes(expected(entry).replaceAll('&','&amp;')));assert.ok(!photo.includes(entry.sourceUrl));assert.ok(!photo.includes('-roster.webp'));assert.ok(photo.includes('aria-haspopup="dialog"'));
++ }
++ for(const url of ['/artists/meovv','/artists/meovv?section=members']){
++  const h=actualSsr(active,s,url),b=actualSsr(dormant,s,url);
++  const get=html=>[...html.matchAll(/<span class="mf-roster-photo">[\s\S]*?<img[^>]*src="([^"]+)"/g)].map(x=>x[1]);
++  assert.deepEqual(get(h),get(b));assert.equal(get(h).length,5);assert.ok(get(h).every(x=>x.endsWith('-roster.webp')));
++ }
++ const sooin='/artists/meovv?section=members&member=rec28ldbniBa8G';assert.ok(actualSsr(active,s,sooin).includes('/artist/meovv/sooin-mnet-profile.jpg'));assert.equal(JSON.stringify(s),before);
++});
++for(const entry of manifest)test(`${entry.id}: actual detail click opens exact lightbox src; failures and manual retry never fall back`,()=>{
++ const s=scene(),before=JSON.stringify(s),h=harness(active,{initial:'/artists/meovv?section=members&member='+entry.memberId,scenario:s});h.render();
++ assert.equal(profileImage(h).props.src,expected(entry));const originalImage=profileImage(h);originalImage.props.onError();h.render();
++ assert.equal(profileImage(h),undefined);assert.equal(errorNodes(profile(h)).length,1);assertNoOldOrRoster(h,entry);
++ // Detail error does not disable its explicit zoom action or select a substitute source.
++ zoom(h).props.onClick();h.render();assert.equal(largeImage(h).props.src,expected(entry));assert.equal(largeImage(h).props.loading,'eager');
++ const lightImage=largeImage(h);lightImage.props.onError();h.render();assert.equal(largeImage(h),undefined);assert.equal(errorNodes(lightbox(h)).length,1);assertNoOldOrRoster(h,entry);
++ let retry=h.find(n=>n.props?.className==='photo-lightbox-retry');assert.ok(retry);assert.equal(retry.props.disabled,false);retry.props.onClick();h.render();
++ const afterRetry=largeImage(h);assert.ok(afterRetry);assert.equal(afterRetry.props.src,expected(entry));assert.notEqual(afterRetry.dom,lightImage.dom);assertNoOldOrRoster(h,entry);
++ // Stale event on the detached generation cannot overwrite the newly loading generation.
++ lightImage.props.onLoad();h.render();assert.equal(largeImage(h).props.src,expected(entry));
++ afterRetry.props.onError();h.render();retry=h.find(n=>n.props?.className==='photo-lightbox-retry');assert.equal(retry.props.disabled,true);h.advance(800);retry=h.find(n=>n.props?.className==='photo-lightbox-retry');assert.equal(retry.props.disabled,false);retry.props.onClick();h.render();assert.equal(largeImage(h).props.src,expected(entry));
++ h.find(n=>n.props?.className==='photo-lightbox-close').props.onClick();h.render();assert.equal(lightbox(h),undefined);
++ const pageRetry=h.find(n=>n.type==='button'&&n.props.className==='ri-retry');assert.ok(pageRetry);pageRetry.props.onClick();h.render();assert.equal(profileImage(h).props.src,expected(entry));assert.notEqual(profileImage(h).dom,originalImage.dom);
++ assert.deepEqual(h.requests,[]);assert.equal(JSON.stringify(s),before);h.unmount();
++});
++test('actual component dormant gate and exact-pair mismatch preserve their original sources',()=>{
++ for(const entry of manifest){let s=scene();let h=harness(dormant,{initial:'/artists/meovv?section=members&member='+entry.memberId,scenario:s});h.render();assert.equal(profileImage(h).props.src,entry.sourceUrl);h.unmount();
++  s=scene();s.content.portraits[entry.memberId].image='/synthetic/other-exact-source.jpg';h=harness(active,{initial:'/artists/meovv?section=members&member='+entry.memberId,scenario:s});h.render();assert.equal(profileImage(h).props.src,'/synthetic/other-exact-source.jpg');h.unmount();
++  s=scene();const wrong='recSyntheticWrongMember';s.catalog.members.find(m=>m.id===entry.memberId).id=wrong;s.content.portraits[wrong]=s.content.portraits[entry.memberId];delete s.content.portraits[entry.memberId];h=harness(active,{initial:'/artists/meovv?section=members&member='+wrong,scenario:s});h.render();assert.equal(profileImage(h).props.src,entry.sourceUrl);h.unmount();
++ }
++});
++test('actual roster navigation maintains five WEBPs and returns to same roster',()=>{
++ const h=harness(active);h.render();const before=rosterSources(h);assert.equal(before.length,5);assert.ok(before.every(x=>x.endsWith('-roster.webp')));
++ const entry=manifest[0];h.find(n=>n.props?.['data-artist-member-trigger']===entry.memberId).props.onClick();h.render();assert.equal(profileImage(h).props.src,expected(entry));
++ h.find(n=>n.type==='button'&&n.props.className==='mf-button mf-back').props.onClick();h.render();assert.deepEqual(rosterSources(h),before);assert.deepEqual(h.requests,[]);h.unmount();
++});
++test('actual catalog index hero failure remains a placeholder, not member JPEGs; manual retry retains hero',()=>{
++ const h=harness(active,{index:true});h.render();const src='/artist/meovv/group-official.jpg';assert.equal(images(h).length,1);assert.equal(images(h)[0].props.src,src);
++ images(h)[0].props.onError();h.render();assert.equal(images(h).length,0);assert.equal(errorNodes(h.tree).length,1);assert.equal(h.all(n=>n.props?.className==='candidate-index-gallery').length,0);
++ h.find(n=>n.type==='button'&&n.props.className==='ri-retry').props.onClick();h.render();assert.equal(images(h).length,1);assert.equal(images(h)[0].props.src,src);assert.deepEqual(h.requests,[]);h.unmount();
++});
+diff --git a/tests/meovv-build-asset-cutover.test.cjs b/tests/meovv-build-asset-cutover.test.cjs
+new file mode 100644
+index 0000000..9c26b25
+--- /dev/null
++++ b/tests/meovv-build-asset-cutover.test.cjs
+@@ -0,0 +1,26 @@
++/* eslint-disable @typescript-eslint/no-require-imports */
++const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ts=require('typescript');
++const {spawnSync}=require('node:child_process');
++const root=path.resolve(__dirname,'..'), manifest=JSON.parse(fs.readFileSync(path.join(root,'lib/idol/build-asset-manifest.json'))), cutover=JSON.parse(fs.readFileSync(path.join(root,'lib/idol/build-asset-cutover.json')));
++function moduleAt(file,stubs={}){const exp={};const code=ts.transpileModule(fs.readFileSync(path.join(root,file),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText;vm.runInNewContext('(function(require,exports){'+code+'\n})',{URL},{filename:file})(name=>{if(name in stubs)return stubs[name];if(name.endsWith('.json'))return JSON.parse(fs.readFileSync(path.join(root,path.dirname(file),name)));if(name.startsWith('.'))return moduleAt(path.join(path.dirname(file),name+'.ts'));throw Error('Unexpected '+name);},exp);return exp;}
++const mapping=config=>moduleAt('lib/idol/candidate/meovv-build-asset-portrait.ts',{'../build-asset-cutover.json':config}).meovvBuildAssetPortrait;
++const active={...cutover,enabled:true,verifiedDeploymentVersion:186,ownerReadbackEvidenceSha256:'a'.repeat(64),anonymousAccessEvidenceSha256:'b'.repeat(64)}; // Mock only, never written to candidate configuration.
++test('local B configuration is bound to live evidence; disabled/incomplete configurations preserve originals',()=>{
++ assert.equal(cutover.enabled,true);const configs=[{...active,enabled:false},{...active,verifiedDeploymentVersion:null},{...active,ownerReadbackEvidenceSha256:null},{...active,anonymousAccessEvidenceSha256:null}];
++ for(const config of configs)for(const a of manifest.entries)assert.equal(mapping(config)(a.memberId,a.sourceUrl),a.sourceUrl);
++});
++test('activation maps only exact four member-ID and source pairs; SOOIN/roster/foreign unchanged',()=>{
++ const map=mapping(active);for(const a of manifest.entries){assert.equal(map(a.memberId,a.sourceUrl),`/api/build-assets?id=${a.id}&version=${a.sha256}`);assert.equal(map('foreign',a.sourceUrl),a.sourceUrl);assert.equal(map(a.memberId,a.sourceUrl+'?x=1'),a.sourceUrl+'?x=1');assert.equal(map(a.memberId,a.sourceUrl.replace('.jpg','-roster.webp')),a.sourceUrl.replace('.jpg','-roster.webp'));}
++ const sooin='/artist/meovv/sooin-mnet-profile.jpg';assert.equal(map('rec28ldbniBa8G',sooin),sooin);assert.equal(map('foreign',null),null);assert.equal(map('foreign',undefined),undefined);
++});
++test('roster keeps original selection and WEBPs; full detail/lightbox share only final display mapping',()=>{
++ const text=fs.readFileSync(path.join(root,'components/candidate/meovv-design.tsx'),'utf8');assert.equal((text.match(/meovvBuildAssetPortrait\(/g)||[]).length,1);assert.match(text,/fullImage=meovvBuildAssetPortrait\(m.id,selected\?\.image\)/);assert.match(text,/src=\{meovvRosterPortrait\(m,portrait\(m\)\?\.image\)\}/);assert.match(text,/setLightbox\(\{src:fullImage,label:memberDisplayName\(m\)\}\)/);assert.match(text,/identityKey=\{'member-full:'\+m.id\} src=\{fullImage\}/);assert.match(text,/selected\.credit/);assert.match(text,/selected\.sourceUrl/);
++ const roster=moduleAt('lib/idol/candidate/meovv-roster-portrait.ts').meovvRosterPortrait;for(const a of manifest.entries)assert.equal(roster({id:a.memberId,stageName:a.label},a.sourceUrl),a.sourceUrl.replace('.jpg','-roster.webp'));
++});
++test('existing retry keeps immutable endpoint unchanged, not a new query or alternate/low-res fallback',()=>{
++ const presentation=moduleAt('lib/idol/image-presentation.ts');const map=mapping(active);
++ for(const a of manifest.entries){const url=map(a.memberId,a.sourceUrl);assert.equal(presentation.imageAttemptSource(url,1),url);assert.equal(presentation.imageAttemptSource(url,10),url);}
++});
++test('candidate apply is fail-closed until independent compiled pins exist',()=>{
++ const result=spawnSync(process.execPath,['scripts/audit-meovv-build-asset-cutover.mjs','--apply'],{cwd:root,encoding:'utf8'});assert.notEqual(result.status,0);assert.match(result.stderr,/Prune blocked/);
++});

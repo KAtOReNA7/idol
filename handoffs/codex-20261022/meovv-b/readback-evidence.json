@@ -1,0 +1,77 @@
+{
+  "format": "meovv-four-readback-evidence.v1",
+  "packageDirectory": "handoffs/codex-20261022/meovv-b",
+  "appSourceDirectory": "apps/idol-site",
+  "ownerReadback": {
+    "checkedAt": "2026-10-22T09:20:45Z",
+    "source": "Public GET image downloads in the owner browser session; the included files are retained copies of those downloaded response bodies, not copies of source JPEGs.",
+    "basis": "The original owner-download report and copy provenance record agree with the frozen asset manifest and all four retained bodies. The original browser download operation was not re-observed during this handoff check."
+  },
+  "anonymousAccess": {
+    "evidence": "User-confirmed incognito visibility, as recorded in the supplied provenance evidence; not independently rechecked for this handoff.",
+    "bodyVerified": false,
+    "statusVerified": false,
+    "headersVerified": false,
+    "sha256AndBytesVerified": false
+  },
+  "offlineVerification": {
+    "checkedAt": "2026-10-22T12:59:41.443247Z",
+    "result": "pass",
+    "scope": "Offline SHA-256, byte length, JPEG MIME, dimensions, and complete image decode of the four retained owner-download bodies only.",
+    "matchesFrozenManifestAndRecordedOwnerReadback": true,
+    "currentNetworkRetestPerformed": false,
+    "currentDeploymentStateEstablished": false,
+    "totalBytes": 6004463
+  },
+  "pathConvention": "bodyFile is relative to this JSON. packageDirectory and appSourceDirectory are relative to the repository root. sourceUrl and publicGetUrl are origin-relative URL paths.",
+  "entries": [
+    {
+      "id": "meovv-narin-profile",
+      "memberId": "rec28ldbniBauu",
+      "sourceUrl": "/artist/meovv/narin-mnet-profile.jpg",
+      "publicGetUrl": "/api/build-assets?id=meovv-narin-profile&version=20bbc6656c68c15956eca02d990b69ebba5c66bd1adad9a4ad710aa58b14cb12",
+      "sha256": "20bbc6656c68c15956eca02d990b69ebba5c66bd1adad9a4ad710aa58b14cb12",
+      "bytes": 2117711,
+      "mime": "image/jpeg",
+      "width": 2731,
+      "height": 2731,
+      "bodyFile": "readback-bodies/meovv-narin-profile.jpg"
+    },
+    {
+      "id": "meovv-ella-profile",
+      "memberId": "rec28ldbniBaBx",
+      "sourceUrl": "/artist/meovv/ella-mnet-profile.jpg",
+      "publicGetUrl": "/api/build-assets?id=meovv-ella-profile&version=3f269df1205abd84576d06ffd25cbaf699b4541091595ca89a7992232ba15682",
+      "sha256": "3f269df1205abd84576d06ffd25cbaf699b4541091595ca89a7992232ba15682",
+      "bytes": 1704677,
+      "mime": "image/jpeg",
+      "width": 2730,
+      "height": 2730,
+      "bodyFile": "readback-bodies/meovv-ella-profile.jpg"
+    },
+    {
+      "id": "meovv-anna-profile",
+      "memberId": "rec28ldbniBan4",
+      "sourceUrl": "/artist/meovv/anna-mnet-profile.jpg",
+      "publicGetUrl": "/api/build-assets?id=meovv-anna-profile&version=0c12e9ff99f10b83da2285329417fa502eb3a77f8e4d0968657300a4b0117b19",
+      "sha256": "0c12e9ff99f10b83da2285329417fa502eb3a77f8e4d0968657300a4b0117b19",
+      "bytes": 1431588,
+      "mime": "image/jpeg",
+      "width": 2731,
+      "height": 2731,
+      "bodyFile": "readback-bodies/meovv-anna-profile.jpg"
+    },
+    {
+      "id": "meovv-gawon-profile",
+      "memberId": "rec28ldbniBafU",
+      "sourceUrl": "/artist/meovv/gawon-mnet-profile.jpg",
+      "publicGetUrl": "/api/build-assets?id=meovv-gawon-profile&version=05b0a419b53c456067fbe297a2651784c510d7a7d882537c8d106d507cd2bbc0",
+      "sha256": "05b0a419b53c456067fbe297a2651784c510d7a7d882537c8d106d507cd2bbc0",
+      "bytes": 750487,
+      "mime": "image/jpeg",
+      "width": 2182,
+      "height": 2182,
+      "bodyFile": "readback-bodies/meovv-gawon-profile.jpg"
+    }
+  ]
+}

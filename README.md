@@ -1,4 +1,35 @@
-# Idol integrated development main
+# Idol：正式开发与跨电脑交接
+
+正式工作目录是 [`apps/idol-site/`](apps/idol-site/)，不是仓库根的旧 Next sandbox。当前进入 `handoff/codex-20261022`；在未有明确合并记录前，不从旧 main 开始正式产品开发。
+
+v186 原生源码已在提交 `f24075fc98893793e82adbc92cadc9e58257728f` 推送并读回核验：3954 文件、642362678 字节，应用子树 `a1fbe5d034b23be8a88572a3ab25e4d68d67734e`。其 Sites source `f0391481cccd85a4eb53cbe9bf63cdd77d30e350` 是来源身份，不是本仓库可 fetch 的 commit。当前文档与三个隔离候选随本次交接提交提供；首次检出仍须核实际分支、清单与素材。
+
+## 接手入口
+
+- [CODEX-FIRST-RUN：首次执行文件](docs/codex/CODEX-FIRST-RUN.md)
+- [PRD](docs/codex/PRD.md)、[CURRENT-STATE](docs/codex/CURRENT-STATE.md)、[ACCEPTANCE](docs/codex/ACCEPTANCE.md)
+- [STATUS：共享进度与任务索引](docs/codex/STATUS.md)、[多电脑规则](docs/codex/AGENTS-MULTI-MACHINE.md)、[任务记录模板](docs/codex/worklogs/TEMPLATE.md)
+- [根 AGENTS](AGENTS.md)：适用于正式源码及整个仓库；先查活动分支/PR，每任务独立分支，代码和 worklog 同提交，换机前推送合规 WIP，不覆盖用户改动。
+
+## 三个候选，均未自动应用
+
+- [GENBLUE v2.2 / WOOAH v1.2 combined-integration](handoffs/codex-20261022/combined-integration/README.md)：57 个冻结 runtime 文件，首轮至少接入一团真实工程并交可打开预览。
+- [MEOVV B](handoffs/codex-20261022/meovv-b/README.md)：四段冻结 patch 与四份真实 owner readback；B 尚未上线，不能冒称已通过正式 Sites 完整包验收。
+- [izna / ifeye v3](handoffs/codex-20261022/astra-izna-ifeye-v3/README.md)：15 份源码、30 图依赖闭合，仍待原生宿主与评分链路接入。
+
+线上主站仍是 v186 A-only；GENBLUE/WOOAH 为私有 QA 候选，尚无本轮人工认可；两团 v3 隔离候选未合入。Astra 已收官，Sol 最新最终反馈尚未见；完整原生源码已经足以继续，不以旧会话报告未回阻断所有开发。
+
+仓库保持公开。用户于 2026-10-22 13:22 UTC 已批准本次现有评分、备注、观看快照随源码公开；该批准不扩展到未来任意数据导出、密钥或凭证。公开读仍不等于开放写，owner-only 保存保护保持。没有当前生产发布授权时交预览，有明确授权后可按上线门槛继续。
+
+## 历史文件的范围
+
+根 [`SOURCE-MANIFEST.json`](SOURCE-MANIFEST.json) 和 [`docs/FILE-MANIFEST.json`](docs/FILE-MANIFEST.json) 是旧 sandbox 的历史清单，不能作为当前整个仓库的完整索引。原生 v186 的唯一基线清单是 [`docs/codex/SOURCE-MANIFEST.json`](docs/codex/SOURCE-MANIFEST.json)，只覆盖 `apps/idol-site` 内指定的 3954 文件。候选各用自己的清单；不要把候选或历史证据当成已上线状态。
+
+以下内容仅说明保留的根 sandbox；其中运行命令、合成数据和历史测试结论不适用于正式工程。两套工程保留各自依赖/锁，根 tsconfig 已排除 `apps/idol-site` 和 `handoffs/codex-20261022`，不建立 workspace 或混编。
+
+---
+
+# 历史根 Next sandbox（2026-10-15）
 
 Code-only mainline combining the reviewed core toolkit, duplicate-score fixes, and accepted UI integration. This repository is not the production deployment; publishing this source does not update the live site.
 
@@ -25,7 +56,7 @@ Original member-image validation: `npm run verify` (12 tests and typecheck), `np
 - UI base: PR #2, b65bb8a666a03f8ea3044295cc4c7bc915efce1d.
 - Accepted UI patch: local source commit 3f0527bcd97a1138d0595543aec4bda1d925c08a, SHA-256 c59c2d26092187c9b25b1d02babaa1aa0d1a189b1df5c76eb8bca14450cd8a86. Adds home rotation stability, group filtering, library state restoration, independent player lifecycle, and member return focus.
 - Core conflict resolution: group-detail.ts and member-works.ts retain reviewed per-dimension duplicate-score resolution; all other accepted UI behavior is retained. Combined suite: 100 tests.
-- Mainline work is maintained directly by dot. Saved cloud tasks are reserved for small capability/solution validations, not core project development.
+- Historical execution arrangement (2026-10-15): direct dot development and cloud-only validation has been superseded by the Codex migration trial and shared GitHub worklogs. This paragraph does not restrict current Codex development.
 - Synthetic APIs are development-only: save is blocked (403), media is a closed synthetic registry, and no real ratings, photos, credentials, or production backend are included.
 - Source manifests exclude themselves to avoid circular hashes. Historical core-only documentation below is explicitly marked as historical.
 

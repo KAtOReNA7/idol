@@ -1,0 +1,74 @@
+{
+  "file": "apps/idol-site/scripts/prune-unused-build-assets.mjs",
+  "v186SourceSHA256": "9ec0e66fc4c653ef54a58661a860f464489ed178bcc2ad6df84f137b44fd0960",
+  "status": "Static packaging conflict; no pruner or build was run.",
+  "reason": "GENBLUE old batch-b directory is a whole-directory prune target. New data/genblue-bluecut.json deliberately references 7 original images there; the old source-reference guard rejects those references.",
+  "requiredOldDirectoryFiles": [
+    {
+      "path": "/artist/genblue/batch-b-20261016/card-1-display.jpg",
+      "sha256": "246e5cc706bcbf05d18174862554852e62da2a595b81a02fe6930baa63a73c1f",
+      "bytes": 115024,
+      "existsInBaselinePublic": true,
+      "origins": [
+        "GENBLUE required runtime asset"
+      ]
+    },
+    {
+      "path": "/artist/genblue/batch-b-20261016/card-2-display.jpg",
+      "sha256": "42c7ce4cebde6dab35ab49ee8b524801548f45ec3799768d7e9d51c0f97aa081",
+      "bytes": 100265,
+      "existsInBaselinePublic": true,
+      "origins": [
+        "GENBLUE required runtime asset"
+      ]
+    },
+    {
+      "path": "/artist/genblue/batch-b-20261016/card-3-display.jpg",
+      "sha256": "55876af6d1c0039e108542f89c3540c680e591b6747291bcd2559231b13b5b0f",
+      "bytes": 102196,
+      "existsInBaselinePublic": true,
+      "origins": [
+        "GENBLUE required runtime asset"
+      ]
+    },
+    {
+      "path": "/artist/genblue/batch-b-20261016/card-4-display.jpg",
+      "sha256": "94f6b2009cf7973758aa0d580a2073e5b6224f5f212ce1aeb5f34326493d3431",
+      "bytes": 105303,
+      "existsInBaselinePublic": true,
+      "origins": [
+        "GENBLUE required runtime asset"
+      ]
+    },
+    {
+      "path": "/artist/genblue/batch-b-20261016/card-5-display.jpg",
+      "sha256": "aa79c8390618a89b6e687365b7db60b29e6fab98ba54238cb64f4c44c0348acd",
+      "bytes": 119761,
+      "existsInBaselinePublic": true,
+      "origins": [
+        "GENBLUE required runtime asset"
+      ]
+    },
+    {
+      "path": "/artist/genblue/batch-b-20261016/card-6-display.jpg",
+      "sha256": "72e1c5dd62b59701f13cbfc942a11f34cd35a9edfa57004a9812e9bb2e31e388",
+      "bytes": 106785,
+      "existsInBaselinePublic": true,
+      "origins": [
+        "GENBLUE required runtime asset"
+      ]
+    },
+    {
+      "path": "/artist/genblue/batch-b-20261016/group-display.jpg",
+      "sha256": "ebd548ce3726f6a00d9dc824e0b3b2a9382d761d96b35196cae37689ce3aaeb6",
+      "bytes": 263644,
+      "existsInBaselinePublic": true,
+      "origins": [
+        "GENBLUE required runtime asset"
+      ]
+    }
+  ],
+  "requiredOldDirectoryBytes": 912978,
+  "deploymentIncrement": "UNMEASURED. These 912978 bytes existed in source but were absent after old pruning; restoring them must not be counted as zero deployment growth.",
+  "nextStep": "Review exact retention changes against the repository current pruner and guards. Do not blindly refresh hashes, weaken guards, rename/recompress images, or delete references to make a build pass."
+}

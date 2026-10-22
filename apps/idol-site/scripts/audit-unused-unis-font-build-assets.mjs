@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {resolveAuditedCarriers} from './audit-built-carriers.mjs';
 const manifest = JSON.parse(fs.readFileSync(fileURLToPath(new URL('./unused-unis-font-build-assets-manifest.json', import.meta.url)), 'utf8'));
 const names = ['NotoSansSC-Regular', 'NotoSansSC-Bold'];
 const prefix = '/fonts/unis/';
@@ -28,9 +29,15 @@ export function auditUnusedUnisFontBuildAssets(root) {
   const exactUdttSources=['lib/idol/udtt-native/image-recovery.mjs','public/fonts/udtt/fonts.css','public/artist/udtt/figma-native.css','dist/client/fonts/udtt/fonts.css','dist/client/artist/udtt/figma-native.css'];
   const guards=Object.keys(udtt.runtimeGuards??{}),carriers=guards.filter(p=>!exactUdttSources.includes(p));
   if(udtt.family!=='UdttNotoSansSC'||guards.length!==7||exactUdttSources.some(p=>!guards.includes(p))||carriers.length!==2||!carriers.some(p=>p.startsWith('dist/client/'))||!carriers.some(p=>p.startsWith('dist/server/ssr/'))||carriers.some(p=>!/^dist\/(?:client|server\/ssr)\/_next\/static\/(?:chunks\/)?udtt-native-design-[A-Za-z0-9_-]+\.js$/.test(p)))throw new Error('UDTT font consumer inventory changed');
+  const compiled=resolveAuditedCarriers(root,Object.fromEntries(carriers.map(p=>[p,udtt.runtimeGuards[p]])),'udtt-native-design',udtt.importNormalizedCarriers);
+  const auditedConsumers=new Set([...exactUdttSources,...Object.keys(compiled)]);
+  const provenance=udtt.sharedFontProvenance;
+  if(provenance?.path!=='fonts/genblue/NotoSansSC-supplements-provenance.json')throw new Error('UDTT shared font provenance scope changed');
+  const provenancePaths=['public/'+provenance.path,'dist/client/'+provenance.path];
+  for(const file of provenancePaths)verify(path.join(root,file),provenance.bytes,provenance.sha256);
   const udttUrls=Array.from({length:20},(_,i)=>`/fonts/udtt/NotoSansSC-${String(i+1).padStart(2,'0')}.woff2`);
   if(!Array.isArray(udtt.retainedFonts)||JSON.stringify(udtt.retainedFonts.map(f=>f.path).sort())!==JSON.stringify([...udttUrls].sort()))throw new Error('UDTT exact retained WOFF2 inventory changed');
-  for(const [file,expected]of Object.entries(udtt.runtimeGuards))verify(path.join(root,file),expected.bytes,expected.sha256);
+  for(const file of exactUdttSources){const expected=udtt.runtimeGuards[file];verify(path.join(root,file),expected.bytes,expected.sha256);}
   for(const font of udtt.retainedFonts)for(const dir of ['public','dist/client'])verify(path.join(root,dir,font.path),font.bytes,font.sha256);
   const server = path.join(root, 'dist/server/index.js');
   if (!fs.existsSync(server)) throw new Error('Build dist first');
@@ -64,9 +71,18 @@ export function auditUnusedUnisFontBuildAssets(root) {
     let remaining = text;
     // Only exact reviewed UDTT consumers may name this separate family/subset set.
     // Keep all UNIS paths, unknown NotoSansSC fragments and other consumers fail-closed.
-    if(Object.hasOwn(udtt.runtimeGuards,path.relative(root,file))){
+    if(auditedConsumers.has(path.relative(root,file))){
       remaining=remaining.replaceAll(udtt.family,'');
       for(const url of udttUrls)remaining=remaining.replaceAll(url,'');
+    }
+    // GENBLUE CSS reuses the retained subsets. Only complete CSS url() references
+    // qualify: an unknown JS consumer could transform a retained URL into an old
+    // UNIS URL with .replace(), so JS/TS/JSON strings are not generally exempt.
+    if(path.extname(file)==='.css')remaining=remaining.replace(/url\(\s*(["']?)(\/fonts\/udtt\/NotoSansSC-\d{2}\.woff2)\1\s*\)/g,(literal,_quote,url)=>udttUrls.includes(url)?'url()':literal);
+    // This exact hash-pinned metadata file names reused fonts and their license.
+    if(provenancePaths.includes(path.relative(root,file))){
+      for(const url of udttUrls)remaining=remaining.replaceAll(url,'');
+      remaining=remaining.replaceAll('OFL-NotoSansSC.txt','');
     }
 
     for (const entry of manifest.files) remaining = remaining.replaceAll(entry.replacement, '');

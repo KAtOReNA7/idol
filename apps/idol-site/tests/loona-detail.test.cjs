@@ -14,8 +14,8 @@ test('LOONA score control keeps null distinct from 0.0 and supports clear plus b
  h.find(t,n=>n.props.className==='loona-score-clear').props.onClick();assert.equal(value,null);
  value=9.9;t=render();h.find(t,n=>n.props['aria-label']==='表现分增加 0.1').props.onClick();assert.equal(value,10);assert.equal(h.find(render(),n=>n.props['aria-label']==='表现分增加 0.1').props.disabled,true);
 });
-test('LOONA-only scope preserves default editor step and exact Butterfly image identity',async()=>{
- const h=harness();await h.settle();assert.equal(h.find(h.editor(),n=>n.type==='input').props.step,'0.5');
+test('shared score precision preserves LOONA control and exact Butterfly image identity',async()=>{
+ const h=harness();await h.settle();assert.equal(h.find(h.editor(),n=>n.type==='input').props.step,'0.1');
  h.wp.work={...h.wp.work,id:'recvxyOz5X7G95',song:'Butterfly',groupIds:['recvxyEBDZJAXm']};let t=h.renderWork();
  assert.ok(h.find(t,n=>n.props.className==='loona-work-heading'));assert.ok(h.find(t,n=>n.props.className==='loona-associated-release'));
  assert.equal(h.find(t,n=>n.props.posterSrc).props.posterSrc,'/artist/loona/approved-home/butterfly.jpg');

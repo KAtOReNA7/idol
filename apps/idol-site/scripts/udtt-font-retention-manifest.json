@@ -132,5 +132,52 @@
       "bytes": 24880,
       "sha256": "cf5346b0747cd71123c8f74da0ad41fc0f63eda07b9d8e0382e00882ae743733"
     }
-  ]
+  ],
+  "importNormalizedCarriers": {
+    "dist/client/_next/static/chunks": {
+      "imports": [
+        "./rolldown-runtime-<hash>.js",
+        "./framework-<hash>.js",
+        "./public-access-<hash>.js",
+        "./journey-<hash>.js",
+        "./catalog-read-deadline-<hash>.js",
+        "./stage-source-<hash>.js",
+        "./lifecycle-<hash>.js"
+      ],
+      "bytes": 32049,
+      "sha256": "be3de04d3c83d89729889983ecbd5a465f767d27177ba4555970e3b08c0ef4d7"
+    },
+    "dist/server/ssr/_next/static": {
+      "imports": [
+        "../../index.js",
+        "./public-access-<hash>.js",
+        "./journey-<hash>.js",
+        "./catalog-read-deadline-<hash>.js",
+        "./stage-source-<hash>.js",
+        "./lifecycle-<hash>.js"
+      ],
+      "bytes": 32005,
+      "sha256": "4e6387d95153095bdeda69d80bb742acea942e5daa2bf3009d7c87a0073db707"
+    }
+  },
+  "carrierReview": {
+    "date": "2026-10-22",
+    "sourceCommit": "da3f6187bd315a0223818faaa737fbbbe98a8f7b",
+    "scope": "Re-reviewed generated body with unchanged pinned source/assets. Only ordered leading static import dependency hashes are normalized; all bindings and remaining bytes are pinned. Previous generated files are unavailable, so equality with their bodies is not claimed. Original raw pins remain as provenance and fixed byte-length guards.",
+    "reviewedBuild": {
+      "dist/client/_next/static/chunks/udtt-native-design-f6p1EzBI.js": {
+        "bytes": 32063,
+        "sha256": "892cdf5ae60e97884c7859ecb996b91d130ad865d86f99e4377557af756168d3"
+      },
+      "dist/server/ssr/_next/static/udtt-native-design-BJysyBLh.js": {
+        "bytes": 32015,
+        "sha256": "d63d4a76db2093dc1f0b8ea860bb2115ba45e29e82d37edf3b552005512eff5c"
+      }
+    }
+  },
+  "sharedFontProvenance": {
+    "path": "fonts/genblue/NotoSansSC-supplements-provenance.json",
+    "bytes": 12681,
+    "sha256": "599bd4924ddc22517a3fc324c86eea6efb43466a95130a6c8cbac5561a8e481f"
+  }
 }

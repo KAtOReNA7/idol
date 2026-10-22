@@ -11,10 +11,16 @@ const entries = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../scripts/u
 const hash = file => crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 const put = (root, relative, body) => {const file=path.join(root,relative);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,body);};
 const audit = async dir => (await import(pathToFileURL(script))).auditUnusedUnisFontBuildAssets(dir);
-function fixture(t) {
+async function fixture(t) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'unis-font-prune-'));
   t.after(() => fs.rmSync(dir, {recursive:true,force:true}));
-  const publicPaths = [...entries.flatMap(e => [e.path,e.replacement]), '/fonts/InstrumentSerif-Italic.ttf','/fonts/unis/NotoSansCJK-LICENSE.txt'];
+  const udtt=JSON.parse(fs.readFileSync(path.join(root,'scripts/udtt-font-retention-manifest.json'),'utf8'));
+  const {resolveAuditedCarriers}=await import(pathToFileURL(path.join(root,'scripts/audit-built-carriers.mjs')));
+  const previousCarriers=Object.fromEntries(Object.entries(udtt.runtimeGuards).filter(([p])=>p.includes('/_next/')));
+  const carriers=resolveAuditedCarriers(root,previousCarriers,'udtt-native-design',udtt.importNormalizedCarriers);
+  put(dir,'scripts/udtt-font-retention-manifest.json',JSON.stringify(udtt));
+  for(const name of [...Object.keys(udtt.runtimeGuards).filter(p=>!p.includes('/_next/')),...Object.keys(carriers)])put(dir,name,fs.readFileSync(path.join(root,name)));
+  const publicPaths = ['/'+udtt.sharedFontProvenance.path, ...udtt.retainedFonts.map(f=>f.path), '/fonts/udtt/fonts.css', '/artist/udtt/figma-native.css', ...entries.flatMap(e => [e.path,e.replacement]), '/fonts/InstrumentSerif-Italic.ttf','/fonts/unis/NotoSansCJK-LICENSE.txt'];
   for (const url of publicPaths) {
     const bytes = fs.readFileSync(path.join(root,'public',url));
     put(dir,path.join('public',url),bytes);put(dir,path.join('dist/client',url),bytes);
@@ -49,7 +55,7 @@ test('only the two promoted designs change font src; descriptors and shared TTF 
     assert.ok(fs.readFileSync(path.join(root,p),'utf8').includes('/fonts/InstrumentSerif-Italic.ttf'),p);
 });
 test('audit returns exactly two build-only paths and never writes public/shared assets', async t => {
-  const dir=fixture(t), plan=await audit(dir);
+  const dir=await fixture(t), plan=await audit(dir);
   assert.deepEqual(plan,entries.map(e=>({file:'dist/client'+e.path,bytes:e.bytes})));
   assert.equal(plan.reduce((sum,x)=>sum+x.bytes,0),644580);
   for(const e of entries) assert.equal(hash(path.join(dir,'public',e.path)),e.sha256);
@@ -57,7 +63,7 @@ test('audit returns exactly two build-only paths and never writes public/shared 
   for(const p of plan) assert.ok(fs.existsSync(path.join(dir,p.file)));
 });
 test('already-pruned build copies are idempotent while public originals are still required', async t => {
-  const dir=fixture(t);for(const e of entries)fs.unlinkSync(path.join(dir,'dist/client',e.path));
+  const dir=await fixture(t);for(const e of entries)fs.unlinkSync(path.join(dir,'dist/client',e.path));
   assert.deepEqual(await audit(dir),[]);
   fs.unlinkSync(path.join(dir,'public',entries[0].path));
   await assert.rejects(audit(dir),/inventory|integrity/);
@@ -65,25 +71,42 @@ test('already-pruned build copies are idempotent while public originals are stil
 for(const [name,relative] of [
   ['public original','public'+entries[0].path],['public derivative','public'+entries[0].replacement],
   ['built original','dist/client'+entries[0].path],['built derivative','dist/client'+entries[0].replacement],
-]) test(`rejects a changed ${name}`,async t=>{const dir=fixture(t);fs.appendFileSync(path.join(dir,relative),'x');await assert.rejects(audit(dir),/integrity/);});
+]) test(`rejects a changed ${name}`,async t=>{const dir=await fixture(t);fs.appendFileSync(path.join(dir,relative),'x');await assert.rejects(audit(dir),/integrity/);});
 for(const [name,file,text] of [
   ['old source consumer','app/consumer.ts',`const font='${entries[0].path}';`],
   ['old emitted consumer','dist/client/consumer.js',`const font='${entries[0].path}';`],
   ['escaped old consumer','data/consumer.json',JSON.stringify({font:entries[0].path}).replaceAll('/','\\/')],
   ['dynamic filename','app/consumer.ts',"const font='/fonts/unis/'+'NotoSansSC-'+weight+'.woff';"],
-]) test(`rejects ${name}`,async t=>{const dir=fixture(t);put(dir,file,text);await assert.rejects(audit(dir),/consumer|dynamic/);});
+]) test(`rejects ${name}`,async t=>{const dir=await fixture(t);put(dir,file,text);await assert.rejects(audit(dir),/consumer|dynamic/);});
 test('rejects partial or duplicate public inventories',async t=>{
-  const dir=fixture(t),file=path.join(dir,'dist/server/index.js'),original=fs.readFileSync(file,'utf8');
+  const dir=await fixture(t),file=path.join(dir,'dist/server/index.js'),original=fs.readFileSync(file,'utf8');
   fs.writeFileSync(file,original.replace('/fonts/InstrumentSerif-Italic.ttf,',''));
   await assert.rejects(audit(dir),/inventory/);
   fs.writeFileSync(file,original+'\n'+original);
   await assert.rejects(audit(dir),/inventory/);
 });
 test('rejects missing active built CSS even if the public inventory lists replacements',async t=>{
-  const dir=fixture(t);fs.unlinkSync(path.join(dir,'dist/client/_next/static/css/unis-design-review.fixture.css'));
+  const dir=await fixture(t);fs.unlinkSync(path.join(dir,'dist/client/_next/static/css/unis-design-review.fixture.css'));
   await assert.rejects(audit(dir),/built CSS/);
 });
 test('rejects runtime symlinks',async t=>{
-  const dir=fixture(t);fs.symlinkSync(path.join(dir,'components/design-review/unis-design-review.css'),path.join(dir,'components/alias.css'));
+  const dir=await fixture(t);fs.symlinkSync(path.join(dir,'components/design-review/unis-design-review.css'),path.join(dir,'components/alias.css'));
   await assert.rejects(audit(dir),/symlink/);
+});
+test('GENBLUE may reuse complete retained UDTT font URLs and name their retained license',async t=>{
+  const dir=await fixture(t);
+  put(dir,'components/genblue/bluecut.css',"@font-face{font-family:GenblueText;src:url('/fonts/udtt/NotoSansSC-01.woff2')}");
+  assert.ok(fs.existsSync(path.join(dir,'public/fonts/genblue/NotoSansSC-supplements-provenance.json')));
+  assert.equal((await audit(dir)).length,2);
+  for(const relative of ['public/fonts/udtt/NotoSansSC-01.woff2','dist/client/fonts/udtt/NotoSansSC-20.woff2'])assert.ok(fs.existsSync(path.join(dir,relative)));
+});
+for(const [name,text]of [
+ ['transformed retained URL',"const font='/fonts/udtt/NotoSansSC-01.woff2'.replace('udtt','unis').replace('-01','-Regular').replace('woff2','woff');"],
+ ['unknown shared subset',"const font='/fonts/udtt/NotoSansSC-21.woff2';"],
+ ['assembled shared font',"const font='/fonts/udtt/'+'NotoSansSC-'+n+'.woff2';"],
+ ['obsolete WOFF beside a valid shared font',"const fonts=['/fonts/udtt/NotoSansSC-01.woff2','/fonts/unis/NotoSansSC-Regular.woff'];"],
+])test('rejects '+name,async t=>{const dir=await fixture(t);put(dir,'components/genblue/consumer.ts',text);await assert.rejects(audit(dir),/consumer|dynamic/);});
+test('shared fonts stay mandatory when a new group reuses them',async t=>{
+ const dir=await fixture(t);fs.unlinkSync(path.join(dir,'dist/client/fonts/udtt/NotoSansSC-01.woff2'));
+ await assert.rejects(audit(dir),/integrity/);
 });

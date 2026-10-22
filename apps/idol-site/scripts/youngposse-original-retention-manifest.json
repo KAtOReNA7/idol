@@ -115,5 +115,57 @@
       "bytes": 31923,
       "sha256": "ed29e2ce40e763213a241f6e85d3784b0f2be9c0ff50b120b20f4d251daa0e75"
     }
+  },
+  "importNormalizedCarriers": {
+    "dist/client/_next/static/chunks": {
+      "imports": [
+        "./rolldown-runtime-<hash>.js",
+        "./framework-<hash>.js",
+        "./photo-lightbox-<hash>.js",
+        "./reliable-image-<hash>.js",
+        "./journey-<hash>.js",
+        "./catalog-read-deadline-<hash>.js",
+        "./values-<hash>.js",
+        "./member-works-<hash>.js",
+        "./stage-source-<hash>.js",
+        "./use-artist-scroll-<hash>.js",
+        "./artist-preview-<hash>.js",
+        "./artist-timeline-host-<hash>.js"
+      ],
+      "bytes": 31952,
+      "sha256": "b07ee190b00652c47fb6051abb55068640dfe01bbec6df3c48b4ec1bdf8ab3ec"
+    },
+    "dist/server/ssr/_next/static": {
+      "imports": [
+        "../../index.js",
+        "./photo-lightbox-<hash>.js",
+        "./reliable-image-<hash>.js",
+        "./journey-<hash>.js",
+        "./catalog-read-deadline-<hash>.js",
+        "./values-<hash>.js",
+        "./member-works-<hash>.js",
+        "./stage-source-<hash>.js",
+        "./use-artist-scroll-<hash>.js",
+        "./artist-preview-<hash>.js",
+        "./artist-timeline-host-<hash>.js"
+      ],
+      "bytes": 31903,
+      "sha256": "1bfb4800d13989b4b21b87285f6c64bc2bc1237bf01930dd3dcc8258c8325128"
+    }
+  },
+  "carrierReview": {
+    "date": "2026-10-22",
+    "sourceCommit": "da3f6187bd315a0223818faaa737fbbbe98a8f7b",
+    "scope": "Re-reviewed generated body with unchanged pinned source/assets. Only ordered leading static import dependency hashes are normalized; all bindings and remaining bytes are pinned. Previous generated files are unavailable, so equality with their bodies is not claimed. Original raw pins remain as provenance and fixed byte-length guards.",
+    "reviewedBuild": {
+      "dist/client/_next/static/chunks/youngposse-design-9n-9OUxK.js": {
+        "bytes": 31976,
+        "sha256": "c5ad2ede26e342a91a19c7571cd4cda5f85fc7e858beabb3fe2c394e54c2a423"
+      },
+      "dist/server/ssr/_next/static/youngposse-design-B2W4MWkq.js": {
+        "bytes": 31923,
+        "sha256": "367747d081724cb737536635b2987065c8284d6a26e96363a7f84b9f55399b4d"
+      }
+    }
   }
 }

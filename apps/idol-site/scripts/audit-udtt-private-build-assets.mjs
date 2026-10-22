@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {resolveAuditedCarriers} from './audit-built-carriers.mjs';
 const manifestPath=fileURLToPath(new URL('./udtt-private-build-assets-manifest.json',import.meta.url));
 const hash=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const ext=/\.(?:[cm]?js|jsx|[cm]?ts|tsx|json|css|html|svg|txt|map)$/;
@@ -39,15 +40,16 @@ export function auditUdttPrivateBuildAssets(root,manifest=JSON.parse(fs.readFile
   if(relative!==contractPath&&urls.some(url=>text.includes(url)))throw new Error(`UDTT active static consumer: ${relative}`);
  }
  const publicPaths=files(path.join(root,'public')).map(p=>'/'+path.relative(path.join(root,'public'),p).split(path.sep).join('/'));
- if(!manifest.builtContractCarriers||Object.keys(manifest.builtContractCarriers).length!==2)throw new Error('UDTT exact built contract carriers required');
- for(const [name,expected] of Object.entries(manifest.builtContractCarriers)){if(!/^dist\/(?:client|server\/ssr)\/_next\/static\/(?:chunks\/)?lifecycle-[A-Za-z0-9_-]+\.js$/.test(name))throw new Error('UDTT unexpected contract carrier');verify(path.join(root,name),expected);}
+ // These files retain their original full-content hashes. Only build-graph
+ // filenames are discovered; no contract/code/asset metadata is normalized.
+ const builtContractCarriers=resolveAuditedCarriers(root,manifest.builtContractCarriers,'lifecycle');
  const index=path.join(root,'dist/server/index.js');if(!fs.existsSync(index))throw new Error('Build dist first');
  for(const p of files(path.join(root,'dist')).filter(p=>ext.test(p))){let text=normalize(fs.readFileSync(p,'utf8').replaceAll('\\/','/'));
   if(p===index){const re=/new Set\(`([^`]*?\/artist\/[^`]*?)`\.split\(`,`\)\)/g,m=[...text.matchAll(re)];if(m.length!==1||!same(m[0][1].split(','),publicPaths))throw new Error('UDTT unknown public routing inventory');text=text.replace(re,'new Set()');}
   if(text.replace(/\/design-review\/sol15\/assets\/[a-f0-9]{64}\.(?:jpg|webp|png)/g,'').includes('/design-review/sol15/assets/'))throw new Error(`UDTT dynamic built static consumer: ${p}`);
   // Exempt metadata only in the exact audited generated contract carriers. A changed
   // build carrier requires re-audit; no other targetUrl object is exempt.
-  const carrier=manifest.builtContractCarriers?.[path.relative(root,p)];
+  const carrier=builtContractCarriers[path.relative(root,p)];
   if(carrier)verify(p,carrier);
   for(const url of urls){const escaped=url.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');if(carrier)text=text.replace(new RegExp('(?:"targetUrl"|targetUrl)\\s*:\\s*(["\'`])'+escaped+'\\1','g'),'targetUrl:null');if(text.includes(url))throw new Error(`UDTT built static consumer: ${p}`);}
  }

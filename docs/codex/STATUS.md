@@ -2,6 +2,8 @@
 
 更新：2026-10-22。交接分支为 `handoff/codex-20261022`；每次先 fetch 并读实际 HEAD、活动分支/PR 和 worklog，不把本地聊天当共享进度。
 
+最新用户决定（北京时间 2026-10-22）：**逐团完成 → 发网页地址 → 等用户人工确认 → 再开发下一团**。公共功能可继续。当前目标仅 GENBLUE；WOOAH、izna、ifeye 等保持待开始，不按原计划并行开工。用户随后报告验收链接 HTTP 404；已补齐静态入口并重新发布，线上可达性尚未独立确认，见 [访问修复](worklogs/20261022-genblue-routefix.md)。
+
 ## 已核基线与交接入口
 
 - 正式工程：`apps/idol-site/`。源码提交 `f24075fc98893793e82adbc92cadc9e58257728f` 已正常推送并读回确认。
@@ -16,7 +18,8 @@
 | 范围 | 当前状态 | 接续边界 |
 | --- | --- | --- |
 | 线上主站 | v186 A-only | 未发布 MEOVV B 或本轮两团候选 |
-| GENBLUE/WOOAH | 私有 synthetic QA 候选；combined-integration已入仓 | 待真实工程接入与人工反馈；不是生产验收 |
+| GENBLUE | BlueCut 已接入正式工程；审阅链接 404 后已发布入口修复版 | [直接页面入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/genblue/index.html)；用户可达性/真实浏览器/保存未验，主站包体超限，其他团暂停 |
+| WOOAH | native v1.2 隔离候选已入仓 | 等 GENBLUE 用户通过后再开发，保留现有候选 |
 | MEOVV B | 四段patch及四份真实readback已入仓；未上线 | pins只绑定当次产物，完整Sites TAR容量与最终发布仍待验 |
 | izna/ifeye v3 | 15份源、30图依赖闭合，隔离候选已入仓 | 15图复用基线，15图恢复；宿主/resolver/评分接线未完成 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
@@ -27,7 +30,9 @@
 从 [CODEX-FIRST-RUN](CODEX-FIRST-RUN.md) 开始。第一轮在独立任务分支将 GENBLUE/WOOAH 至少一团接入真实工程，补 catalog、稳定ID、精确关联及既有记录入口，交可打开预览；不只写计划或文档。共享层避免抢写；如 pruner 与 GENBLUE 7图冲突成为依赖，精确修保留规则，不关闭 guard 或删原图。
 
 - [本次有界交接记录](worklogs/20261022-repository-handoff.md)
-- [新任务 worklog 模板](worklogs/TEMPLATE.md)：尚无首轮产品任务被此文件宣称已认领或完成。
+- [GENBLUE 本轮审阅版](worklogs/20261022-genblue-review.md)：`codex/genblue-native-integration` / PR #3；补夜市王具名 MV 图及双向成员入口、0.1 评分步进和构建审计。最终类型/构建/62 项专项通过；私有只读审阅站已发布。正式展开 TAR 271.328125 MiB 超限，浏览器与真实保存未验，主站未发布、人工待反馈。[首轮接入历史](worklogs/20261022-genblue-native-integration.md) 保留。
+- [新任务 worklog 模板](worklogs/TEMPLATE.md)
+- [GENBLUE 验收链接 404 修复](worklogs/20261022-genblue-routefix.md)：同一 PR #3；物理团页、静态回退配置、路径规范化已发布到审阅站。10 项相关回归及类型检查通过；线上浏览器/HTTP 可达性未独立复验，不能宣称 404 已在用户端消失。
 
 每次结束/换机前代码与 worklog 同提交并 push 合规 WIP。未验 WIP 不混成已验 main；合并与实际验证后才更新已验基线。当前无生产发布授权就交预览，有明确授权后可按验收门槛继续，不永久停在候选。
 

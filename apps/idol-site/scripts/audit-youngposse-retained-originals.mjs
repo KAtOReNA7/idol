@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {resolveAuditedCarriers} from './audit-built-carriers.mjs';
 const manifestPath=fileURLToPath(new URL('./youngposse-original-retention-manifest.json',import.meta.url));
 const sourceHelper="const originalPhoto=(src:string)=>src.replace('/batch-b-20261016-webp-v1/','/batch-b-20261016/');";
 const compiledHelper='C=e=>e.replace(`/batch-b-20261016-webp-v1/`,`/batch-b-20261016/`)';
@@ -24,9 +25,7 @@ export function youngposseAuditTexts(root,manifest=JSON.parse(fs.readFileSync(ma
  const originals=oldDisplays.map(p=>p.endsWith('/group-display.webp')?p.replace('/group-display.webp','/group-original.png'):p.replace('-display.webp','-original.jpg'));
  if(!Array.isArray(manifest.retainedImages)||!same(manifest.retainedImages.map(p=>p.path),[...displays,...oldDisplays,...originals]))throw new Error('YOUNG POSSE retained-image inventory changed');
  for(const image of manifest.retainedImages)for(const dir of ['public','dist/client'])verify(path.join(root,dir,image.path),image);
- const carriers=Object.keys(manifest.builtCarriers??{});
- if(carriers.length!==2||!carriers.some(p=>p.startsWith('dist/client/'))||!carriers.some(p=>p.startsWith('dist/server/ssr/'))||carriers.some(p=>!/^dist\/(?:client|server\/ssr)\/_next\/static\/(?:chunks\/)?youngposse-design-[A-Za-z0-9_-]+\.js$/.test(p)))throw new Error('YOUNG POSSE exact compiled carrier inventory changed');
- for(const p of carriers)verify(path.join(root,p),manifest.builtCarriers[p]);
+ const carriers=Object.keys(resolveAuditedCarriers(root,manifest.builtCarriers,'youngposse-design',manifest.importNormalizedCarriers));
  for(const p of [component,...carriers]){
   const text=fs.readFileSync(path.join(root,p),'utf8'),helper=p===component?sourceHelper:compiledHelper;
   if(text.split(helper).length!==2)throw new Error('YOUNG POSSE exact helper must occur once: '+p);

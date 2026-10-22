@@ -3,12 +3,12 @@
 在为 Sol、Astra 或其他会话编写任务指令、接续实现、汇总验收之前，先阅读 [设计要求与验收基准](docs/design-requirements.md) 和 [跨会话派工与验收手册](docs/collaboration-playbook.md) 中的最新用户决定，再核对当前源码和最新交付。
 
 ## 当前执行决定（2026-10-22，取代 2026-10-21 的暂不迁移决定）
-- 最新用户决定（北京时间 2026-10-22）：用户对 GENBLUE v10 审阅页明确回复“这一版可以 继续开发吧”。本次页面人工确认已通过，当前接续 WOOAH；完成后单独交地址，待用户明确通过才能开始再下一团。公共部分例外。GENBLUE 真实保存、完整生产部署等未验事项不因此改成已验。
+- 最新用户决定（北京时间2026-10-23）：GENBLUE v10和WOOAH v12页面均获本次确认；用户要求保存当前进度供新电脑继续。本轮只保存，未开始第三团。之后仍每次一团，交地址并获明确认可再继续；公共功能例外。页面确认不代替真实保存、浏览器或生产部署验证。最新接续读 [RESUME](docs/codex/RESUME.md)，分支 `codex/wooah-native-integration`，不要仅停在最初handoff。
 - 用户已决定迁移试用 Codex；GitHub 保存多台电脑共享的代码与开发阶段，不再要求主会话直接开发、云环境仅验证。首次执行读 [CODEX-FIRST-RUN](docs/codex/CODEX-FIRST-RUN.md)、[STATUS](docs/codex/STATUS.md)、[PRD](docs/codex/PRD.md)、[CURRENT-STATE](docs/codex/CURRENT-STATE.md) 和 [ACCEPTANCE](docs/codex/ACCEPTANCE.md)。
 - 正式工程为 `apps/idol-site/`，根 Next sandbox 保留为历史样本。v186 基线与候选分别按各自清单核验，不用旧根代码冒充完整生产源，不依赖控制或读取 Sol/Astra 会话。
 - Astra 与 Sol 均已收官，Sol 最终补遗见 `docs/codex/SOL-HANDOFF.md`；收官不代表全部团体已验收。已有完整原生源与候选足以继续。
 - 新审核逐团区分设计、功能、资料、上线，包括此前已确认的团。旧通过记录是线索，不是自动通过凭据；保留已认可设计与全部有效产品要求，不新增 VCHA 单样板的全局门槛。
-- 用户验收可打开网页，不承担基础错图、断链、布局与关联排错。首轮优先把 GENBLUE/WOOAH 至少一团接入真实工程并交预览，不停在计划或交接包装。
+- 用户验收可打开网页，不承担基础错图、断链、布局与关联排错。GENBLUE/WOOAH首轮接入已完成；保护当前已认可页面，后续按STATUS逐团交付实际网页增量，不重复导入旧候选。
 - 当前公开仓库和本次既有评分、备注、观看快照已于 13:22 UTC 获用户批准；不扩展为未来新增数据、秘密、凭证或发布授权。保持原图、稳定 ID、owner-only 保存与现有安全边界。未经当前生产授权不覆盖主站；有明确授权后可继续合规上线。
 
 ## 必须检查

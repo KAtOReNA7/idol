@@ -1,5 +1,7 @@
 # WOOAH：团照首屏与统一成员照片
 
+> 2026-10-23后续：用户回复“OK 保存目前开发进度”，WOOAH v12本次页面确认通过；浏览器/真实保存/完整生产发布未验事项保留。最新接续见 [RESUME](../RESUME.md)，下文保留当时交付状态。
+
 - 时间：2026-10-23，北京时间。
 - 用户反馈：WOOYEON／朴镇更被独立放大；首屏使用单人写真而非团照；其他成员照片尺寸不一。两张用户截图已实看，不将其当作新版本浏览器验证。
 - 分支：`codex/wooah-native-integration`，接续提交 `0b19e11594dd95d3962f0b36c7166bff5164d466`，同一 [PR #5](https://github.com/KAtOReNA7/idol/pull/5)，正式代码 `apps/idol-site`。仍继承 `handoff/codex-20261022`，旧 main 未动。

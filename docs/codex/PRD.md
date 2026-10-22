@@ -18,13 +18,13 @@
 
 ## 范围与优先级
 
-原计划为 Sol、Astra 各 15 团。迁移后这表示产品范围，不表示 Codex 仍需读取或操控这两个会话。逐团保留合格成果，按可完成的 2–3 团批次推进；达到人工验收门槛的单团不必等待整批。
+原计划为 Sol、Astra 各 15 团。迁移后这表示产品范围，不表示 Codex 仍需读取或操控这两个会话。逐团保留合格成果，按最新用户要求逐团推进：每次一个团，交网页地址并获得明确人工确认后再开始下一团，公共功能除外。
 
 Sol 的已核 15 团名单：UDTT、KATSEYE、VCHA、HITGS、AtHeart、i-dle、IZ*ONE、fromis_9、EVERGLOW、Rocket Punch、Cherry Bullet、Weeekly、WOOAH、Billlie、NewJeans。
 
 Astra 的已核 15 团名单：Hearts2Hearts、SAY MY NAME、izna、ifeye、GENBLUE、VVUP、YOUNG POSSE、BEWAVE、Candy Shop、ODD YOUTH、ADYA、Geenius、TRACER、W!TCHX、SPIA。原批次未包括的已有网站页面继续保护，但不据目录数量扩大本次批次。
 
-当前先保护生产基线和已认可设计，再接续最接近可验收的候选。GENBLUE 与 WOOAH 已有候选页，但尚未获得本轮用户人工通过，不能直接标为上线成品。具体顺序见当前状态与开发入口。
+当前先保护生产基线和已认可设计，再接续最接近可验收的候选。GENBLUE v10与WOOAH v12页面已获用户本次确认；开发侧真实浏览器、保存及正式主站发布仍按STATUS保留未完成，不将页面确认写成全链上线通过。当前接续入口见RESUME与STATUS。
 
 以下不属于默认范围：
 

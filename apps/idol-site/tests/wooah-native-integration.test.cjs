@@ -90,6 +90,13 @@ test('49 real React route states render independently with synthetic data and ex
  assert.equal(routes.length,49);
  for(const path of routes){const html=render(path);assert.ok(html.includes('data-artist="wooah"'));assert.ok(!html.includes('这个页面地址暂不可用'));assert.ok(!html.includes('时间轴暂时无法显示'));}
  const home=render(route({}));for(const member of design.members)assert.ok(home.includes(member.displayName));
+ const hero=home.match(/<section class="wa-group-hero"[\s\S]*?<\/section>/)?.[0];assert.ok(hero);assert.ok(hero.includes(design.hero.runtime));assert.equal((home.match(new RegExp('src="'+design.hero.runtime+'"','g'))||[]).length,1);
+ for(const page of [home,render(route({section:'members'}))]){
+  const grid=page.match(/<div class="wa-member-grid">([\s\S]*?)<\/article><\/div>/)?.[1];assert.ok(grid);
+  for(const member of design.members.filter(m=>!m.historical)){assert.equal((grid.match(new RegExp('data-member-id="'+member.id+'"','g'))||[]).length,1);assert.ok(grid.includes(memberRoute(member).replaceAll('&','&amp;')));}
+  assert.ok(!grid.includes('data-member-id="'+songyee.id+'"'));assert.equal((grid.match(/class="wa-portrait-frame"/g)||[]).length,5);
+ }
+
  const c=structuredClone(synthetic);c.ratings=[pair(),pair('recSyntheticSongyee',songyee.id)];
  const memberHtml=render(memberRoute(songyee),c),mvHtml=render(videoRoute(mv),c);
  assert.ok(memberHtml.includes('data-member-mv-id="'+songyee.id+'"'));assert.ok(memberHtml.includes('media-title:'+mv.key));

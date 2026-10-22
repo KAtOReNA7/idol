@@ -1,5 +1,7 @@
 # WOOAH 正式接续与页面审阅
 
+> 后续：用户提出三项布局反馈，已按[2026-10-23 修正记录](20261023-wooah-layout-feedback.md)更新审阅页；WOOAH仍未获人工通过。以下保留首轮v11事实。
+
 - 用户决定：2026-10-22 北京时间，在 GENBLUE v10 修复版地址后回复“这一版可以 继续开发吧”。GENBLUE 本次页面获人工认可，允许下一团；仍执行逐团交地址、逐团确认，当前仅 WOOAH。
 - 代码基线：`c523b0bcfdc58b5d05542fd802383c4df441c92e`，来自 `codex/genblue-native-integration`，继续承接 `handoff/codex-20261022`，不从旧 main 开发。
 - 当前任务分支：`codex/wooah-native-integration`；正式路径 `apps/idol-site/`。

@@ -123,6 +123,9 @@ const html = `<!doctype html>
 <html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="${csp}"><title>GENBLUE · 页面验收 · 示例资料</title><link rel="stylesheet" href="/review-genblue/app.css"><style>#genblue-review-context{position:relative;z-index:5;padding:8px 16px;background:#fff4d9;color:#493d24;text-align:center;font:12px/1.5 system-ui,sans-serif}#genblue-review-context a{text-decoration:underline;margin-left:12px}</style></head><body><aside id="genblue-review-context" role="note">示例资料 · 评分不写入正式手帐<a href="/artists/genblue">GENBLUE 首页</a></aside><div id="root"></div><script type="module" src="/review-genblue/app.js"></script></body></html>\n`;
 fs.writeFileSync(path.join(out,'index.html'),html);
 fs.writeFileSync(path.join(out,'review-genblue/index.html'),html);
+// Direct navigation must not depend on a host understanding _redirects.
+fs.mkdirSync(path.join(out,'artists/genblue'),{recursive:true});
+fs.writeFileSync(path.join(out,'artists/genblue/index.html'),html);
 fs.writeFileSync(path.join(out,'_redirects'),'/artists/genblue /index.html 200\n');
 fs.writeFileSync(path.join(out,'_headers'),`/*\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: no-store\n  Content-Security-Policy: ${csp}\n`);
 const inputs = Object.keys(result.metafile.inputs).filter(file=>!file.includes('node_modules/')&&!file.startsWith('review-')).sort().map(file=>({path:file,sha256:sha(fs.readFileSync(path.join(root,file)))}));

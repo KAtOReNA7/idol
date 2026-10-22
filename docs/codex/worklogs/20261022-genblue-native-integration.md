@@ -58,7 +58,7 @@
 
 ## 预览与复现
 
-当前服务由 `sites-preview start <正式工程绝对目录>` 启动，supervisor 报告 `http://terminal.local:4173/` 运行中。此地址仅内部 QA，**不提供给用户作为可打开预览**；本轮没有浏览器可访问证明。旧 `idol-billlie-qa-oct22` 地址是上一轮候选，也不是本轮增量。
+本轮服务曾由 `sites-preview start <正式工程绝对目录>` 启动，supervisor 报告 `http://terminal.local:4173/` 运行中。此地址仅内部 QA，**不提供给用户作为可打开预览**；本轮没有浏览器可访问证明。旧 `idol-billlie-qa-oct22` 地址是上一轮候选，也不是本轮增量。
 
 其他电脑从本任务分支恢复，不从 main 启动：
 
@@ -86,4 +86,15 @@ npm run dev
 
 ## 共享与保护
 
-推送前再次确认 GitHub 仓库 public；本轮只有产品代码、现有公开资料和测试/进度，没有新增用户快照、凭证、认证令牌或构建产物。已有无关未跟踪文件保留且未暂存。未 force push、未改 main、未部署、未动用户评分备注观看状态。任务提交/PR 后的实际 SHA 与入口在下一条回执中补记。
+推送前再次确认 GitHub 仓库 public；本轮只有产品代码、现有公开资料和测试/进度，没有新增用户快照、凭证、认证令牌或构建产物。已有无关未跟踪文件保留且未暂存。未 force push、未改 main、未部署、未动用户评分备注观看状态。任务提交与 PR 回执见下文。
+
+
+## GitHub 保存回执
+
+- 产品代码提交：`da3f6187bd315a0223818faaa737fbbbe98a8f7b`。
+- 已测试代码树：`8fb883b472521c703d09c20e8e6bc5842f3bb81d`；GitHub Git-data 创建结果与本地代码树相同，再通过 `git fetch` 和 `git diff --quiet` 读回确认，exit 0。
+- 草稿 PR：[KAtOReNA7/idol#3](https://github.com/KAtOReNA7/idol/pull/3)，base 为 `handoff/codex-20261022`，head 为 `codex/genblue-native-integration`。未合并。
+- 命令行 push 因缺少 GitHub username authentication 失败；使用已连接的 GitHub 原生接口保存相同 tree，未创建或导出凭证。原本地提交 `d6479f997d91d8111e25cee59a7af177a28745a9` 保留在本地 checkpoint 分支，不是远端交接入口。
+- 已停止本轮内部 preview supervisor；下一台需按上文重新启动。尚无本轮可公开/私有打开的部署预览 URL。
+- `git diff --check` 仅发现两份原字节 OFL 授权文本自带的行尾空格，因保持候选许可证原字节而保留；其余本轮文件通过。
+- 本次回执为文档追加，不改变上述已测产品源码；下一台以 PR 最新 head 和本 worklog 继续。

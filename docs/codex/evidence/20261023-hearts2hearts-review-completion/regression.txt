@@ -1,0 +1,35 @@
+✔ artist return destinations are exact same-origin approved pages only (1.968532ms)
+✔ work and stage return keep artist filters without changing source or ratings (2.468618ms)
+✔ only released artists are promoted; unrelated group and member routes remain unchanged (0.328486ms)
+✔ cross-page navigation retains draft guard and captures browse position before leaving (1.100982ms)
+✔ published official social cards retain observed precision and date (1.374165ms)
+✔ seven member headers share one official concept set, never changing MV screenshot selection (1.240033ms)
+✔ long multilingual artist searches survive and duplicate query fields fail closed (1.114313ms)
+✔ BM watch styles are scoped and lightbox controls retain contrast (0.319312ms)
+✔ ILLIT routes isolate its collection and retain return context (0.554257ms)
+✔ IVE and BADVILLAIN public release/media return keys are scoped and preserve exact context (5.18539ms)
+✔ NewJeans release and single read-only stage returns use exact bounded keys (0.530261ms)
+✔ i-dle navigation keys stay ID-only and exactly match the existing allowed catalog subset (6.852998ms)
+✔ IVE, BADVILLAIN and tripleS navigation tables exactly project their original allowlists (9.095645ms)
+✔ Hearts2Hearts readonly release returns preserve exact approved keys only (0.609951ms)
+✔ public catalog removes private fields while retaining exact stable MV/stage and relation identity (6.531397ms)
+✔ source mismatches and ambiguous saved relationships fail closed; absent stage bindings stay absent (5.732311ms)
+✔ unrelated groups, multi-object rows and unverified video participant claims never become synthetic relations (0.977185ms)
+✔ only explicit ifeye display-catalog GETs return the synthetic fixture (6.718765ms)
+✔ save, identity, image proxy and external requests fail closed, including Request objects (3.526005ms)
+✔ all physical artist aliases normalize before native routing; other group and record paths retain identity (1.444432ms)
+✔ record mapping preserves exact query and returnTo, supports copy/new-tab, and leaves artist/external targets intact (0.374916ms)
+✔ real native MV and stage links retain exact slots and safe return context after review mapping (26.263498ms)
+✔ actual anchor hrefs are rewritten on mount and later React commits, without event interception (0.74843ms)
+✔ the real shared App navigation hook keeps records.html on initialization, navigation, reload and back (48.573455ms)
+✔ history adapter leaves state, missing URLs and non-root destinations unchanged (0.431852ms)
+✔ build produces additive physical entries, actual components and original images without changing accepted reviews (1418.575214ms)
+✔ builder refuses the repository, drive root and unrelated nonempty output without modifying them (243.620028ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1885.789913

@@ -1,0 +1,19 @@
+✔ all physical artist aliases normalize before native routing; other group and record paths retain identity (1.614437ms)
+✔ record mapping preserves exact query and returnTo, supports copy/new-tab, and leaves artist/external targets intact (0.427533ms)
+✔ native work and release return URLs retain exact identity through the review boundary (23.40717ms)
+✔ actual anchor hrefs are rewritten on mount and later React commits, without event interception (0.910018ms)
+✔ the real shared App navigation hook keeps records.html on initialization, navigation, reload and back (24.650454ms)
+✔ history adapter leaves state, missing URLs and non-root destinations unchanged (0.404508ms)
+✔ build produces additive physical entries, actual components and original images without changing accepted reviews (1193.240688ms)
+✔ builder refuses the repository, drive root and unrelated nonempty output without modifying them (204.96627ms)
+✔ physical artist links preserve parameters and the native adapter refuses changed source contracts (0.775311ms)
+✔ artist history retains physical reload/copy URLs without changing route queries or state (0.479865ms)
+✔ timeline adapters normalize only the static path while retaining return and navigation guards (0.413385ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1537.730396

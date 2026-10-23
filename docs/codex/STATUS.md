@@ -9,6 +9,8 @@
 
 [打开 Candy Shop v23](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/candyshop/index.html) · [本轮日志](worklogs/20261024-candyshop-review-completion.md) · [接续入口](RESUME.md)。
 
+GitHub：draft [PR #15](https://github.com/KAtOReNA7/idol/pull/15)，代码 `ea340901c5992a03199f4853c10d3b204f28adb2` 已推送；后续文档以远端最新HEAD为准。
+
 ## 已核基线与交接入口
 
 - 正式工程：`apps/idol-site/`。源码提交 `f24075fc98893793e82adbc92cadc9e58257728f` 已正常推送并读回确认。

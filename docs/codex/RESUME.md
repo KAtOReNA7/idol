@@ -7,6 +7,7 @@
 | 仓库 | https://github.com/KAtOReNA7/idol |
 | 应检出分支 | **`codex/candyshop-review-completion` 最新远端 HEAD** |
 | 起点 | BEWAVE 分支 `7a9b57bebc306dbe07addb7797255725aec6e05d` |
+| GitHub 交付 | draft [PR #15](https://github.com/KAtOReNA7/idol/pull/15)，代码 `ea340901c5992a03199f4853c10d3b204f28adb2`；后续文档以最新远端HEAD为准 |
 | 正式工程 | `apps/idol-site/`；根 Next sandbox 为历史样本 |
 | 当前阶段 | BEWAVE v22 已获确认；Candy Shop v23 已发布，等待本团页面确认 |
 | 私有预览 | [Candy Shop v23](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/candyshop/index.html) |

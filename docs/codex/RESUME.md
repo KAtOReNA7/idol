@@ -8,7 +8,7 @@
 | 应检出分支 | **`codex/kiiikiii-review-completion` 最新远端 HEAD** |
 | 正式工程 | `apps/idol-site/`；根目录是旧 Next sandbox |
 | 本轮基线 | `62ca3f61e3059c60a4b0558bc73b12e624ca2e1c`，`codex/hearts2hearts-review-completion` |
-| PR / 代码提交 | 推送后回填；上游 draft PR #9 保留，未合并 main |
+| PR / 代码提交 | draft [PR #10](https://github.com/KAtOReNA7/idol/pull/10)，代码 `3ea7995b42ebb9bb08e88f23463fba27dad9e634`；其后文档以最新远端HEAD为准。上游PR #9保留，未合并main |
 | 当前阶段 | GENBLUE v10、WOOAH v12、izna v15、ifeye v16、Hearts2Hearts v17 已获页面确认；**KiiiKiii v18 待人工验收** |
 | 最新交付 | [KiiiKiii 验收页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/kiiikiii/index.html) |
 | 最新证据 | [工作日志](worklogs/20261023-kiiikiii-review-completion.md)、[验证目录](evidence/20261023-kiiikiii-review-completion/) |

@@ -7,7 +7,7 @@
 - 仓库 `KAtOReNA7/idol`，正式工程 `apps/idol-site/`；任务分支 `codex/kiiikiii-review-completion`。
 - 基于 `codex/hearts2hearts-review-completion` 的 `62ca3f61e3059c60a4b0558bc73b12e624ca2e1c`，不是旧 main。开工 fetch/远端 HEAD 比较完成；上游 draft PR #9 保留。
 - [KiiiKiii v18 验收页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/kiiikiii/index.html)。当前 **等待用户人工验收**；确认前不开发下一团，公共功能除外。
-- GitHub 代码提交和 draft PR 将在推送成功后回填。正式主站仍 v186，未覆盖。
+- GitHub 代码提交 `3ea7995b42ebb9bb08e88f23463fba27dad9e634`，draft [PR #10](https://github.com/KAtOReNA7/idol/pull/10)（base为Hearts2Hearts活动分支）。连接器创建的远端tree与本地已验tree `b77ecfc5b189e97ae4a0627d66aa7cce0cc03c95` 完全相同；随后文档提交以远端HEAD为准。正式主站仍 v186，未覆盖。
 
 ## 实际网页增量
 

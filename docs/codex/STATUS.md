@@ -1,6 +1,6 @@
 # 共享开发状态
 
-更新：2026-10-23。当前接续分支 **`codex/kiiikiii-review-completion`**，基于 Hearts2Hearts 分支 `62ca3f61e3059c60a4b0558bc73b12e624ca2e1c`，正式工程 `apps/idol-site/`。先读 [RESUME](RESUME.md)，不从旧 main 开工。GitHub PR/代码提交推送后回填。
+更新：2026-10-23。当前接续分支 **`codex/kiiikiii-review-completion`**，基于 Hearts2Hearts 分支 `62ca3f61e3059c60a4b0558bc73b12e624ca2e1c`，正式工程 `apps/idol-site/`。先读 [RESUME](RESUME.md)，不从旧 main 开工。draft [PR #10](https://github.com/KAtOReNA7/idol/pull/10)，代码提交 `3ea7995b42ebb9bb08e88f23463fba27dad9e634`；文档回填后以最新远端HEAD为准。
 
 用户最新“已确认，继续开发”确认 Hearts2Hearts v17。本轮仅完成 KiiiKiii 原生增量和私有只读 v18：5成员具名照片、成员/发行检索详情、9视频、7事件、精确往返。**当前等待 KiiiKiii 人工验收，确认前不开发下一团。** 最终114项专项/回归、类型与正式构建通过；七页五宽iframe无溢出，非顶层真视口/缩放/真实保存/线上浏览器。171旧审阅文件SHA不变；主站v186未改。详见 [本轮日志](worklogs/20261023-kiiikiii-review-completion.md)。此前剪枝/审计fixture阻断保留，未执行apply。
 

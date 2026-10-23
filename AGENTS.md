@@ -5,7 +5,7 @@
 ## 最新执行决定（2026-10-23 KiiiKiii v18）
 
 - 用户“已确认，继续开发”已确认 Hearts2Hearts v17。本轮只推进 KiiiKiii：五张同系列具名照片、等大成员卡片、成员/发行搜索详情、9视频与7事件、原生手帐往返；只读 v18 已发布。
-- 最新接续分支 **`codex/kiiikiii-review-completion`**，基于 Hearts2Hearts 的 `62ca3f61e3059c60a4b0558bc73b12e624ca2e1c`；正式工程 `apps/idol-site/`。先读 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261023-kiiikiii-review-completion.md)。GitHub PR/提交推送后回填。
+- 最新接续分支 **`codex/kiiikiii-review-completion`**，基于 Hearts2Hearts 的 `62ca3f61e3059c60a4b0558bc73b12e624ca2e1c`；正式工程 `apps/idol-site/`。先读 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261023-kiiikiii-review-completion.md)。draft [PR #10](https://github.com/KAtOReNA7/idol/pull/10)；代码提交 `3ea7995b42ebb9bb08e88f23463fba27dad9e634`，其后文档以最新远端HEAD为准。
 - **现在等待 KiiiKiii 人工验收，确认前不开始下一团，公共功能例外。** GENBLUE v10、WOOAH v12、izna v15、ifeye v16、Hearts2Hearts v17 已获页面确认；正式主站 v186 未改。
 - 最终114项专项/回归、类型与正式构建通过；实际桌面交互和七页五宽iframe通过，非顶层真视口/缩放/真实保存/线上浏览器。171旧审阅文件SHA不变；设计/素材/生产待办见日志。下方旧门槛为历史，不能覆盖本决定。
 

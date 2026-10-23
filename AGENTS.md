@@ -2,7 +2,14 @@
 
 在为 Sol、Astra 或其他会话编写任务指令、接续实现、汇总验收之前，先阅读 [设计要求与验收基准](docs/design-requirements.md) 和 [跨会话派工与验收手册](docs/collaboration-playbook.md) 中的最新用户决定，再核对当前源码和最新交付。
 
-## 当前执行决定（2026-10-23，保留 Codex 迁移与逐团确认规则）
+## 当前执行决定（2026-10-23 晚间，优先于下方历史检查点）
+
+- 最新接续分支是 `codex/izna-review-followup`，基于 `codex/izna-native-integration` 的 `aa9e044`；正式工程仍为 `apps/idol-site/`。先读 [RESUME](docs/codex/RESUME.md) 与最新远端，不从旧main开发。
+- 用户本轮说“好 你开始继续开发”，本轮仅推进izna收尾。v15私有只读审阅已发布，四张既有精确视频预览已接到作品库和手帐，并保留原生分辨率上限。详见 [本轮工作日志](docs/codex/worklogs/20261023-izna-review-followup.md)。
+- 52项针对性测试、类型/正式构建通过；浏览器真实检查四图、MV/舞台隔离及分步返回；320/390仅iframe窄窗口，其他真视口/缩放和线上浏览器未复验，快速连续点击位置稳定性待复查。
+- izna整团仍待用户确认；不得提前开发ifeye或下一团，公共功能例外。正式主站仍v186；GENBLUE/WOOAH已认可页面继续保护。下面的必须检查、多电脑规则继续适用。
+
+## 2026-10-23 白天检查点（历史，当前接续以上方为准）
 
 - GENBLUE v10和WOOAH v12页面已获用户确认，继续保护。本轮从 `codex/wooah-native-integration` 的 `121f410` 接续，在 `codex/izna-native-integration` 完成 izna 原生页面接入，当前待用户审阅；未获明确确认前不得开发 ifeye 或下一团，公共功能例外。最新接续读 [RESUME](docs/codex/RESUME.md)，检出 `codex/izna-native-integration` 最新远端 HEAD，不从旧 main 或最初handoff开始。
 - izna [只读、owner-private 审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html) 已发布 **v14**，draft [PR #6](https://github.com/KAtOReNA7/idol/pull/6) 待审阅。最新代码、发布与验证见 `docs/codex/worklogs/20261023-izna-hero-web.md`；本地5宽首页、查看原图/导航、失败恢复通过，100个非izna审阅文件SHA不变。发布后in-app browser单次打开超时，线上浏览器仍未复验，用户尚未确认整团。

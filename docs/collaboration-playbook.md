@@ -1,8 +1,13 @@
 # 跨会话派工与验收手册
+
+## 最新执行决定：Candy Shop（2026-10-24）
+
+用户“好的这个团同意，继续开发”已确认 BEWAVE v22。本轮 Candy Shop 已实现并发布 **v23 owner-private 审阅**，分支 `codex/candyshop-review-completion`，基于 `7a9b57bebc306dbe07addb7797255725aec6e05d`。五份成员档案（四位官网列示成员及结菜历史档案）、三张发行、七个精确视频预览、六事件、原图和既有手帐往返已接入。50项专项/回归、类型、正式构建通过；八类页面五宽实际视口和图片失败重试已验。Figma 24个可编辑画板及9处设计上下文已完成。线上自动浏览器导航超时，真实保存/播放与80%/125%原生缩放未验。**等待 Candy Shop 网页确认后再开发 ODD YOUTH**。正式工程 `apps/idol-site`，主站仍v186；详见 `docs/codex/worklogs/20261024-candyshop-review-completion.md`。下方旧团门槛仅为历史。
+
 更新：2026-10-22（执行方式更新，保留原 2026-10-21 历史案例）。适用：女团资料库、网站和 Codex 多电脑协作。
 这是工程交接规范，不是新增授权。执行时以用户最新要求、当前工具权限和已核实状态为准。
 
-## 2026-10-24 最新逐团门槛
+## 2026-10-24 BEWAVE 历史门槛（现已获确认）
 
 用户在YOUNG POSSE v21后回复“可以 继续开发”，该页面已确认。本轮仅推进BEWAVE，分支 `codex/bewave-review-completion`，基于 `81a572d8944c6604a08e5302c77e4cafbfb950c7`。BEWAVE原生页与只读审阅已实现，**BEWAVE 已恢复并发布 v22 owner-private 审阅；等待本团人工确认，不开始Candy Shop，公共功能例外**。正式主站仍v186。六人历史相册、4发行/5影像槽/2既有关系、四事件、搜索/原图及手帐往返已验证。115专项/回归、类型、正式构建、34交互、3失败恢复和七页五宽真视口通过；另有13项旧测试框架失败在基线重现。设计、资料、功能、上线分别验收。 接续见 [RESUME](codex/RESUME.md) 与 [BEWAVE日志](codex/worklogs/20261024-bewave-review-completion.md)。
 

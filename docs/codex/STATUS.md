@@ -1,8 +1,10 @@
 # 共享开发状态
 
-更新：2026-10-23。当前接续分支 **`codex/kiiikiii-review-completion`**，基于 Hearts2Hearts 分支 `62ca3f61e3059c60a4b0558bc73b12e624ca2e1c`，正式工程 `apps/idol-site/`。先读 [RESUME](RESUME.md)，不从旧 main 开工。draft [PR #10](https://github.com/KAtOReNA7/idol/pull/10)，代码提交 `3ea7995b42ebb9bb08e88f23463fba27dad9e634`；文档回填后以最新远端HEAD为准。
+更新：北京时间2026-10-23 23:34。当前分支 **`codex/saymyname-review-completion`**，基于 KiiiKiii 分支 `f91a66ce9466cd12c64ebe9a9b16d84739b45fc9`。正式工程 `apps/idol-site/`；先读 [RESUME](RESUME.md)，不要从旧 main 接续。
 
-用户最新“已确认，继续开发”确认 Hearts2Hearts v17。本轮仅完成 KiiiKiii 原生增量和私有只读 v18：5成员具名照片、成员/发行检索详情、9视频、7事件、精确往返。**当前等待 KiiiKiii 人工验收，确认前不开发下一团。** 最终114项专项/回归、类型与正式构建通过；七页五宽iframe无溢出，非顶层真视口/缩放/真实保存/线上浏览器。171旧审阅文件SHA不变；主站v186未改。详见 [本轮日志](worklogs/20261023-kiiikiii-review-completion.md)。此前剪枝/审计fixture阻断保留，未执行apply。
+旧会话在KiiiKiii v18交付后已获用户“已确认，继续开发”，本轮承接该决定。SAY MY NAME **v19 owner-private已发布，等待网页人工确认**：8官网原图、成员检索/原图、9发行检索/详情、6影像、5绑定舞台、2只观看替代现场、37既有关系与原生手帐往返。113项测试、类型与正式构建通过；9条实际交互、7页×5个真视口通过。192旧审阅文件SHA不变，主站仍v186。
+
+[审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/saymyname/index.html) · [本轮日志及未验边界](worklogs/20261023-saymyname-review-completion.md)。真实保存/播放、线上浏览器、原生缩放、Figma完整实图及资料缺口继续待办。
 
 ## 已核基线与交接入口
 
@@ -24,15 +26,18 @@
 | izna | 原生页、7份含历史成员档案、8项只浏览发行、15影像、12条具名MV关系与20原图；v15补四张精确MV图 | [v15页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)本轮获用户确认；其11个视频预览、Figma内页/真视口/缩放/线上浏览器/真实保存等历史待办保留 |
 | ifeye | v3设计已原生接入，6成员、3发行、7影像、10原图、5事件；9公开MV参与关系、6既有个人记录 | [v16审阅入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/ifeye/index.html)已获用户页面确认；仅私有只读审阅，历史未验项继续保留 |
 | Hearts2Hearts | 独立蓝网格设计完善，8官网原图、成员/发行搜索、13版本、11事件、64既有关系和真实组件往返 | [v17审阅入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/hearts2hearts/index.html)已获用户页面确认；真实保存/视频图片/真视口/设计内页/主站待验 |
-| KiiiKiii | 独立酸绿设计完善，5成员具名刊载照片、6发行、9视频、7事件、30既有关系 | [v18审阅入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/kiiikiii/index.html)已发布，等待人工验收；历史照片明示时期，资料/设计/保存待办见日志 |
+| KiiiKiii | 独立酸绿设计完善，v18页面已确认 | 历史照片、资料/设计/保存待办保留 |
+| SAY MY NAME | 淡紫唱片设计完善，8官网原图、9发行、6影像、37关系；v19发布 | 等待页面人工验收；真实保存/播放、完整设计及上线复验待办见本轮日志 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
 | Sol | 本轮已收官，最终反馈已归档 [SOL-HANDOFF](SOL-HANDOFF.md) | 13:38形成、13:53主会话完整读取；不等于全部团体产品验收通过 |
 
 ## 下一里程碑与任务索引
 
-从 [RESUME](RESUME.md) 开始，检出 `codex/kiiikiii-review-completion` 最新远端HEAD。当前里程碑为用户审阅 KiiiKiii v18；处理其反馈，未确认不开始下一团。
+从 [RESUME](RESUME.md) 开始，检出 `codex/saymyname-review-completion` 最新远端HEAD。当前等待 SAY MY NAME v19 网页反馈，未确认不开始下一团。
 
-- [KiiiKiii 原生完善与v18](worklogs/20261023-kiiikiii-review-completion.md)：当前轮次；Hearts2Hearts v17已确认。
+- [SAY MY NAME 原生完善与v19](worklogs/20261023-saymyname-review-completion.md)：当前轮次；KiiiKiii v18已确认。
+
+- [KiiiKiii 原生完善与v18](worklogs/20261023-kiiikiii-review-completion.md)：历史轮次；KiiiKiii v18现已确认。
 - [Hearts2Hearts 原生完善与v17](worklogs/20261023-hearts2hearts-review-completion.md)：历史轮次；Hearts2Hearts v17已获页面确认。
 - [ifeye 原生接入与v16审阅](worklogs/20261023-ifeye-native-integration.md)：历史轮次；用户已确认ifeye v16。
 - [izna 手帐图片接线与v15审阅](worklogs/20261023-izna-review-followup.md)：前一轮次，四个精确视频预览接通，v15现已获页面确认。

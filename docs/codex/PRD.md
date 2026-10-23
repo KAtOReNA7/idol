@@ -24,7 +24,7 @@ Sol 的已核 15 团名单：UDTT、KATSEYE、VCHA、HITGS、AtHeart、i-dle、I
 
 Astra 的已核 15 团名单：Hearts2Hearts、SAY MY NAME、izna、ifeye、GENBLUE、VVUP、YOUNG POSSE、BEWAVE、Candy Shop、ODD YOUTH、ADYA、Geenius、TRACER、W!TCHX、SPIA。原批次未包括的已有网站页面继续保护，但不据目录数量扩大本次批次。
 
-当前接续分支为 `codex/ifeye-native-integration`，源自 `codex/izna-review-followup` 的 `665fed5`。GENBLUE v10、WOOAH v12、izna v15页面已获用户确认并继续保护。本轮ifeye v16私有只读审阅已发布，等待人工验收；确认前不开发下一团，公共功能例外。最新成果、验证与未完项见 `worklogs/20261023-ifeye-native-integration.md`，以RESUME/STATUS为当前入口。正式主站仍v186，页面认可不能替代真实保存、完整设计闭环或生产发布验收。
+当前接续分支为 `codex/saymyname-review-completion`，基于KiiiKiii的 `f91a66ce`。前六团页面已确认，SAY MY NAME v19已发布等待人工验收；确认前不推进下一团，公共功能例外。阶段和未验项以[RESUME](RESUME.md)、[STATUS](STATUS.md)及[SAY MY NAME日志](worklogs/20261023-saymyname-review-completion.md)为准。正式主站仍v186；页面认可不替代真实保存、完整设计或生产验收。
 
 以下不属于默认范围：
 

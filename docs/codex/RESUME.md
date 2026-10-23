@@ -1,8 +1,9 @@
-# 接续：ADYA v26 等待网页确认
+# 接续：ADYA v27 等待网页确认
 
 用户已确认 ODD YOUTH v25；本轮 ADYA 已交付私有只读审阅。分支 `codex/adya-review-completion`，起点 `4a261051f8e1bccf8865dd3b1d0ca1246d5e6ae7`，正式工程 `apps/idol-site`。主站仍 v186，未合并 main。
 
-- [打开 ADYA v26](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/adya/index.html)
+- [打开 ADYA v27](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/adya/index.html)
+- [v27内容缺失修复](worklogs/20261024-adya-adblock-fix.md)
 - [开发与验证日志](worklogs/20261024-adya-review-completion.md)
 - [公开来源证据](../../apps/idol-site/docs/artist-evidence/adya-review-20261024.json)
 - [Figma 原生画板](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1038-1095)

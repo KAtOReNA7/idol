@@ -1,8 +1,11 @@
 # 共享开发状态
 
-## 最新执行决定：ADYA（2026-10-24，v26待确认）
+## 最新执行决定：ADYA（2026-10-24，v27待确认）
 
-用户“同意，继续开发”已确认 ODD YOUTH v25。本轮 ADYA 原生黑底朱红页面及 owner-private QA **v26** 已发布：五人成员、五发行、六独立视频、五事件与已有手帐往返。49项专项/回归、类型、正式构建、45项五宽布局和10个综合交互场景通过。Figma已建立24个可编辑画板并校正关键首屏/内页；共享手帐画板和完整逐字间距对照仍待同步。线上首页已打开，成员点击自动化超时，不能据此宣称线上交互全过；真实保存/播放和80%/125%原生缩放待验。**等待 ADYA 网页确认后再开始下一团，公共功能例外。** 分支 `codex/adya-review-completion`，主站仍v186；原图、稳定ID、评分、备注、观看状态和访问权限保持。详见 `docs/codex/worklogs/20261024-adya-review-completion.md`。下方旧门槛为历史。
+用户“同意，继续开发”已确认 ODD YOUTH v25。本轮 ADYA 原生黑底朱红页面及 owner-private QA **v27** 已发布：五人成员、五发行、六独立视频、五事件与已有手帐往返。49项专项/回归、类型、正式构建、45项五宽布局和10个综合交互场景通过。Figma已建立24个可编辑画板并校正关键首屏/内页；共享手帐画板和完整逐字间距对照仍待同步。线上首页已打开，成员点击自动化超时，不能据此宣称线上交互全过；真实保存/播放和80%/125%原生缩放待验。**等待 ADYA 网页确认后再开始下一团，公共功能例外。** 分支 `codex/adya-review-completion`，主站仍v186；原图、稳定ID、评分、备注、观看状态和访问权限保持。详见 `docs/codex/worklogs/20261024-adya-review-completion.md`。下方旧门槛为历史。
+
+
+v27修复补充：用户反馈的大片内容缺失已复现为广告拦截规则误隐藏。ADYA团页已改为idol-adya命名空间并为审阅脚本/样式添加内容版本参数；同一EasyList规则下五宽布局、20张图片、标题及成员搜索/原图流程通过。20专项、类型、构建通过。线上自动浏览器本轮仍超时；见 `docs/codex/worklogs/20261024-adya-adblock-fix.md`。
 
 
 ## 历史执行决定：ODD YOUTH（现已获确认）（2026-10-24）
@@ -16,7 +19,7 @@
 
 更新：北京时间2026-10-24。
 
-[打开 ADYA v26](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/adya/index.html) · [本轮日志](worklogs/20261024-adya-review-completion.md) · [接续入口](RESUME.md)。
+[打开 ADYA v27](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/adya/index.html) · [本轮日志](worklogs/20261024-adya-review-completion.md) · [接续入口](RESUME.md)。
 
 GitHub：`codex/adya-review-completion`；draft [PR #17](https://github.com/KAtOReNA7/idol/pull/17)，代码 `46e14b4ba9a3cb0135473652287b52a835d30781` 已推送；接续以本分支最新远端HEAD为准。PR以 `codex/oddyouth-review-completion` 为基线。
 
@@ -47,13 +50,13 @@ GitHub：`codex/adya-review-completion`；draft [PR #17](https://github.com/KAtO
 | BEWAVE | v22 页面已获用户确认 | 历史未验项保留 |
 | Candy Shop | 独立粉紫唱片设计；v23已获用户确认 | [打开页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/candyshop/index.html)；线上交互、真实保存/播放和原生缩放待验 |
 | ODD YOUTH | 蓝白相册 v25 已获用户页面确认 | 真实保存/播放、原生缩放及Figma共享壳细节等历史未验项保留 |
-| ADYA | 黑底朱红独立页；v26私有审阅已发布，待网页确认 | 线上交互、真实保存/播放、原生缩放及共享手帐Figma仍待验；见本轮日志 |
+| ADYA | 黑底朱红独立页；v27私有审阅已发布，待网页确认 | 线上交互、真实保存/播放、原生缩放及共享手帐Figma仍待验；见本轮日志 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
 | Sol | 本轮已收官，最终反馈已归档 [SOL-HANDOFF](SOL-HANDOFF.md) | 13:38形成、13:53主会话完整读取；不等于全部团体产品验收通过 |
 
 ## 下一里程碑与任务索引
 
-从 [RESUME](RESUME.md) 开始，检出 `codex/adya-review-completion` 最新远端HEAD。ADYA v26等待网页确认，确认前不开始Geenius；公共功能例外。
+从 [RESUME](RESUME.md) 开始，检出 `codex/adya-review-completion` 最新远端HEAD。ADYA v27等待网页确认，确认前不开始Geenius；公共功能例外。
 
 - [Candy Shop 原生完善](worklogs/20261024-candyshop-review-completion.md)：历史轮次，v23已获页面确认。
 - [BEWAVE 原生完善](worklogs/20261024-bewave-review-completion.md)：历史轮次，v22已获页面确认。

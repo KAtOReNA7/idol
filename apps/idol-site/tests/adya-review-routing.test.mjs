@@ -158,7 +158,7 @@ test('build produces additive physical entries, actual components and original i
     assert.equal(manifest.assets.filter(asset=>asset.path.includes('/review-20261024/') && asset.path.endsWith('.original.jpg')).length,5);
     const compiledCss=fs.readFileSync(path.join(out,'review-adya/app.css'),'utf8');
     assert.match(fs.readFileSync(path.join(out,'review-adya/adya-experience.css'),'utf8'),/\.candidate-adya-experience/,'the native dynamically loaded record stylesheet is packaged');
-    assert.match(compiledCss,/\[data-ad-native\]/);
+    assert.match(compiledCss,/\[data-idol-adya-native\]/);
     assert.doesNotMatch(compiledCss,/\.candidate-(?:wooah|genblue)-experience|\.wooah-experience|\.genblue-bluecut/);
     const recordInput=manifest.sourceInputs.find(input=>input.path==='app/adya-experience.css');
     assert.equal(recordInput.sha256,digest(path.join(root,recordInput.path)));

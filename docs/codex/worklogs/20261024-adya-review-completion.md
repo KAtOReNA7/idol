@@ -1,5 +1,7 @@
 # ADYA 原生页面完善与 v26 审阅
 
+本记录为v26初始交付；最新v27已修复广告拦截误隐藏，见[修复日志](20261024-adya-adblock-fix.md)。
+
 ## 基线与授权
 
 用户已确认 ODD YOUTH v25并授权继续。按PRD队列推进ADYA；开工fetch、核PR，远端与本地 `4a261051f8e1bccf8865dd3b1d0ca1246d5e6ae7` 一致，无重复接续。分支 `codex/adya-review-completion`，stacked draft PR以 `codex/oddyouth-review-completion` 为base。正式工程 `apps/idol-site`，主站v186未变。

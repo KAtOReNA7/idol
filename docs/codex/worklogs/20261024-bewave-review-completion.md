@@ -1,6 +1,6 @@
 # BEWAVE 原生海岸相册与只读审阅
 
-北京时间2026-10-24。本轮主代理负责实现、Figma、验证与发布；按Sites技能复用既有素材子代理，仅核公开来源与原图。发布目前受外部上传连接阻断。
+北京时间2026-10-24。本轮主代理负责实现、Figma、验证与发布；按Sites技能复用既有素材子代理，仅核公开来源与原图。原上传阻断已于本次接续恢复，v22已发布；下文旧失败为历史，当前状态见文末。
 
 ## 基线与授权范围
 
@@ -47,3 +47,15 @@ Figma文件 `zeLNExz4TbpWRW3uiahef7`，独立page `977:1095`。7类×1440/390/32
 - 网络恢复后按RESUME核现状，再从同一推送source/归档恢复。不要重复创建Site、改观众或绕过上传权限。发布完成后打开实际URL并等BEWAVE人工确认。
 - GitHub draft [PR #14](https://github.com/KAtOReNA7/idol/pull/14) 已创建并附加；代码提交 `2d46a530aa78b2e686fdba18299911ac838563f3` 已推送。153源码输入与审阅manifest SHA全部一致；后续文档以本分支最新远端HEAD接续。
 - 本机in-app browser已实际打开4181本地首页并取得页面树/截图；这不是线上已登录验证。临时Figma捕获服务4182在收尾关闭。只读审阅构建产物及归档保留在RESUME所列本地目录，可重新启动静态预览。
+
+## 2026-10-24 接续：上传恢复与 Figma 同步
+
+用户要求“解决这个错误，继续推进女团开发”。GitHub fetch确认HEAD与远端均e2bf9c9；Sites源码helper读回b1db595，无多机更新。工作树干净，原gzip归档SHA与已验证记录一致。
+
+上传主机已可在保持证书验证的情况下返回HTTP400（根路径探针），与此前TLS握手失败不同。使用同一Site、同一source和未改变归档，单次save_version_and_deploy_private返回succeeded；后续version读回确认v22，最终get_site确认仅owner、无群组/外部用户。错误属于此前传输阶段失败，本次连接恢复；没有证据证明具体本地配置根因，未改代理/TLS或观众。272旧QA文件逐项复核SHA一致。精确version/deployment、归档和时间见[publication-recovery.json](../evidence/20261024-bewave-review-completion/publication-recovery.json)。
+
+Figma继续补齐9张画板：成员目录和作品库1440/390/320均将静态搜索行改成可编辑输入框与既有按钮组件实例；知言详情三宽补已有作品、未评分状态、下一位入口及真实Edaily来源链接。复用两种产品字体和既有颜色变量；修正变量fallback与320px韩文标题的自适应高度（68px），避免挤压评分行。9板结构读回、5板截图目视，成员320与知言390取得含截图context；最后高度修正另有320截图。其余21板完整对照、共享手帐画板、视频配图仍待办，不计整团设计验收。
+
+线上验证边界：open_in_codex排队后，IAB标签元数据已显示BEWAVE标题/路径，但getTab读取30秒超时。Browser插件不在技能列表，按前端测试技能使用现有Chrome和bundled Playwright，官方Sites授权头请求返回401，停止，不改权限/不重试绕过。未完成线上交互；本地115专项/回归、类型/build、34交互/3失败恢复/35真视口证据对应未变源码，未重复运行冒充本轮新增验证。另13旧测试基线失败保留。
+
+当前交付为[v22私有审阅](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/bewave/index.html)，正式主站v186未动，PR #14仍draft且未合并。等待BEWAVE页面确认后才开始Candy Shop，公共功能例外。

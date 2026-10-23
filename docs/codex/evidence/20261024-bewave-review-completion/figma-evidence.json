@@ -793,8 +793,55 @@
   ],
   "captureRemoved": "975:1095",
   "limitations": [
-    "Seven page types at 1440/390/320 are editable layouts; not all 21 have individual context/visual review.",
-    "Figma search is static; source links, existing member/work section and some web controls remain to sync.",
-    "Shared record view, exact video previews and pixel-level fidelity remain unverified."
-  ]
+    "All 21 editable frames are not yet individually matched to rendered web screenshots.",
+    "Six search rows and three Jiun existing-work sections are now editable and synced; remaining controls and shared record view remain.",
+    "Exact video previews and pixel-level fidelity remain unverified."
+  ],
+  "followup": {
+    "pageId": "977:1095",
+    "updatedFrames": [
+      "977:1097",
+      "977:1104",
+      "977:1111",
+      "977:1099",
+      "977:1106",
+      "977:1113",
+      "977:1098",
+      "977:1105",
+      "977:1112"
+    ],
+    "searchRows": [
+      "1000:1212",
+      "1000:1216",
+      "1000:1220",
+      "1000:1224",
+      "1000:1228",
+      "1000:1232"
+    ],
+    "memberRelationships": [
+      "1000:1236",
+      "1000:1244",
+      "1000:1252"
+    ],
+    "finalVisuals": [
+      "977:1111",
+      "977:1099",
+      "977:1098",
+      "977:1105",
+      "977:1112"
+    ],
+    "contextNodes": [
+      "977:1111",
+      "977:1105"
+    ],
+    "corrections": [
+      "Bound color fallback values match existing tokens.",
+      "Text height hugs content; 320px Korean title now reserves 68px and no longer crowds rating line."
+    ],
+    "remaining": [
+      "Complete 21-frame comparison, including unaffected page differences.",
+      "Shared record Figma screens and exact video preview images.",
+      "Search is editable visual control, not executable filtering inside Figma."
+    ]
+  }
 }

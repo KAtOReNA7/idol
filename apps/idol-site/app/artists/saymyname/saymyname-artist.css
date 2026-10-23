@@ -135,3 +135,23 @@
 /* Only approved 3:2 publisher MV illustrations fill the existing compact slot. */
 .smn-work-thumb.smn-work-thumb--verified{height:auto;aspect-ratio:3/2}
 .smn-work-thumb--verified img{width:100%;height:auto;object-fit:contain}
+
+/* Native portrait and release browsing: retain the paper/lavender chapters. */
+.saymyname-artist main.smn-content{max-width:none;width:100%;margin:0}
+.smn-portrait-frame{display:block;width:100%;aspect-ratio:2/3;background:var(--smn-sky)}
+.smn-roster .smn-portrait-frame img,.smn-roster .smn-portrait-frame .smn-photo-empty{width:100%;height:100%;aspect-ratio:auto;object-fit:contain}
+.smn-roster>button{justify-content:flex-start;align-self:stretch}
+.smn-result-count{font-size:13px;color:#7b687f;margin:20px 0!important}
+.smn-discography>a{min-width:0;display:flex;flex-direction:column;gap:8px}
+.smn-discography time,.smn-discography>a>span{font-size:12px;color:#7b687f}
+.smn-discography time{margin-top:12px}
+.smn-content>.smn-release-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;padding-top:0}
+.smn-release-detail>div{min-width:0}
+.smn-release-detail>div:last-child{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.smn-release-detail h1{font:400 clamp(36px,5vw,80px)/1.15 var(--font-editorial)}
+.smn-cover-zoom{padding:0;border:0;width:100%;aspect-ratio:1;display:block;background:var(--smn-sky)!important}
+.smn-album-cover--type{padding:24px;display:flex;flex-direction:column;justify-content:center;text-align:center;gap:16px}
+.smn-album-cover--type strong{padding:0}
+.smn-album-cover--type small{font-size:12px}
+.smn-member-hero figure>.smn-button{margin-top:16px}
+@media(max-width:700px){.smn-content>.smn-release-detail{grid-template-columns:minmax(0,1fr)}.smn-discography{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.smn-discography h3{font-size:20px}.smn-discography .smn-album-cover>strong{font-size:22px;padding:12px}}

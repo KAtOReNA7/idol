@@ -2,7 +2,14 @@
 
 在为 Sol、Astra 或其他会话编写任务指令、接续实现、汇总验收之前，先阅读 [设计要求与验收基准](docs/design-requirements.md) 和 [跨会话派工与验收手册](docs/collaboration-playbook.md) 中的最新用户决定，再核对当前源码和最新交付。
 
-## 最新执行决定（2026-10-23 KiiiKiii v18）
+## 最新执行决定（2026-10-23 SAY MY NAME v19）
+
+- 上一会话在 KiiiKiii v18 交付后已收到用户“已确认，继续开发”；本会话恢复该确认并接续。KiiiKiii 页面已确认，本轮只推进原计划内 SAY MY NAME。
+- 最新分支 **`codex/saymyname-review-completion`**，基于 `f91a66ce9466cd12c64ebe9a9b16d84739b45fc9`；正式工程 `apps/idol-site/`。draft [PR #11](https://github.com/KAtOReNA7/idol/pull/11)，代码提交 `5c28500cdeb5920ba3d7640b50065cffebe1d3b4`；文档以最新远端 HEAD 为准。先读 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261023-saymyname-review-completion.md)。
+- v19 owner-private 审阅已发布：八张2000×3000官网原图、成员搜索/原图、九发行搜索/详情、六影像/五舞台绑定/37关系及手帐往返。**等待 SAY MY NAME 人工确认后再开发下一团，公共功能例外。**
+- 113项测试、类型及正式构建通过；9项交互与七页五个真视口通过。192旧审阅文件SHA不变，正式主站仍v186。真实保存、播放、线上浏览器、原生缩放与完整Figma仍待验；部署后的in-app browser打开超时，未冒称通过。
+
+## 历史检查点（2026-10-23 KiiiKiii v18）
 
 - 用户“已确认，继续开发”已确认 Hearts2Hearts v17。本轮只推进 KiiiKiii：五张同系列具名照片、等大成员卡片、成员/发行搜索详情、9视频与7事件、原生手帐往返；只读 v18 已发布。
 - 最新接续分支 **`codex/kiiikiii-review-completion`**，基于 Hearts2Hearts 的 `62ca3f61e3059c60a4b0558bc73b12e624ca2e1c`；正式工程 `apps/idol-site/`。先读 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261023-kiiikiii-review-completion.md)。draft [PR #10](https://github.com/KAtOReNA7/idol/pull/10)；代码提交 `3ea7995b42ebb9bb08e88f23463fba27dad9e634`，其后文档以最新远端HEAD为准。

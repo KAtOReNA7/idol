@@ -3,7 +3,7 @@
 
 ## 2026-10-23 最新逐团门槛
 
-GENBLUE v10、WOOAH v12、izna v15、ifeye v16、Hearts2Hearts v17 已获用户页面确认。本轮 KiiiKiii v18 已交网页，等待人工验收；确认前不开发下一团，公共功能例外。正式工程 `apps/idol-site/`，最新分支 `codex/kiiikiii-review-completion`。从 [RESUME](codex/RESUME.md) 和 [最新日志](codex/worklogs/20261023-kiiikiii-review-completion.md) 接续。Sol/Astra均已收官；下文迁移初期状态为历史，不覆盖当前 GitHub 状态与用户决定。设计、功能、资料、上线仍分别验收。
+GENBLUE v10、WOOAH v12、izna v15、ifeye v16、Hearts2Hearts v17、KiiiKiii v18 已获用户页面确认。本轮 SAY MY NAME v19 已发布，等待人工验收；确认前不开发下一团，公共功能例外。正式工程 `apps/idol-site/`，最新分支 `codex/saymyname-review-completion`。从 [RESUME](codex/RESUME.md) 和 [本轮日志](codex/worklogs/20261023-saymyname-review-completion.md) 接续。设计、功能、资料、上线仍分别验收。下文此前检查点为历史。
 
 ## 当前执行决定（2026-10-22 用户迁移决定）
 - 用户已决定迁移试用 Codex；2026-10-21 的“暂不迁移”执行安排被本决定取代，原产品、设计、图片与验收标准继续有效。

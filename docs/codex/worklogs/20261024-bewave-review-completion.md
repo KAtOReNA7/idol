@@ -45,4 +45,5 @@ Figma文件 `zeLNExz4TbpWRW3uiahef7`，独立page `977:1095`。7类×1440/390/32
 - Sites source `b1db595f6fa843e5e7cba6ab56ec42b0e75ad160` 已由helper提交推送；归档71,764,963 bytes。早先helper凭证过期，按原Site正常续期；未改观众。
 - native save/deploy在上传archive到sdmntprwestus3.oaiusercontent.com时连接失败（azure_client_request_id `44a84486-d4f6-4ce5-a25b-8ff975aaf395`）；没有version/deployment ID。随后get_site仍v21，curl同主机TLS握手失败。受支持的source自动私有发布能力返回false，未启用。**BEWAVE没有上线，文件名v22不代表已发布版本。**
 - 网络恢复后按RESUME核现状，再从同一推送source/归档恢复。不要重复创建Site、改观众或绕过上传权限。发布完成后打开实际URL并等BEWAVE人工确认。
-- GitHub实际提交/PR记录在本日志末尾补充。
+- GitHub draft [PR #14](https://github.com/KAtOReNA7/idol/pull/14) 已创建并附加；代码提交 `2d46a530aa78b2e686fdba18299911ac838563f3` 已推送。153源码输入与审阅manifest SHA全部一致；后续文档以本分支最新远端HEAD接续。
+- 本机in-app browser已实际打开4181本地首页并取得页面树/截图；这不是线上已登录验证。临时Figma捕获服务4182在收尾关闭。只读审阅构建产物及归档保留在RESUME所列本地目录，可重新启动静态预览。

@@ -8,7 +8,7 @@
 | 应检出分支 | **`codex/bewave-review-completion` 最新远端HEAD** |
 | 正式工程 | `apps/idol-site/`；根目录为历史Next sandbox |
 | 基线 | `81a572d8944c6604a08e5302c77e4cafbfb950c7`，`codex/youngposse-review-completion` |
-| GitHub交付 | 本轮draft PR及实际代码提交见[日志](worklogs/20261024-bewave-review-completion.md) |
+| GitHub交付 | draft [PR #14](https://github.com/KAtOReNA7/idol/pull/14)，代码提交 `2d46a530aa78b2e686fdba18299911ac838563f3`；后续文档以最新远端HEAD为准 |
 | 当前阶段 | YOUNG POSSE v21及此前页面已确认；BEWAVE等待私有发布恢复及人工确认 |
 | QA线上 | 仍v21；BEWAVE上传失败，未形成新版本 |
 | 证据 | [本轮日志](worklogs/20261024-bewave-review-completion.md)、[验证目录](evidence/20261024-bewave-review-completion/) |

@@ -1,10 +1,13 @@
 # 共享开发状态
 
+## 最新执行决定：Candy Shop（2026-10-24）
+
+用户“好的这个团同意，继续开发”已确认 BEWAVE v22。本轮 Candy Shop 已实现并发布 **v23 owner-private 审阅**，分支 `codex/candyshop-review-completion`，基于 `7a9b57bebc306dbe07addb7797255725aec6e05d`。五份成员档案（四位官网列示成员及结菜历史档案）、三张发行、七个精确视频预览、六事件、原图和既有手帐往返已接入。50项专项/回归、类型、正式构建通过；八类页面五宽实际视口和图片失败重试已验。Figma 24个可编辑画板及9处设计上下文已完成。线上自动浏览器导航超时，真实保存/播放与80%/125%原生缩放未验。**等待 Candy Shop 网页确认后再开发 ODD YOUTH**。正式工程 `apps/idol-site`，主站仍v186；详见 `docs/codex/worklogs/20261024-candyshop-review-completion.md`。下方旧团门槛仅为历史。
+
+
 更新：北京时间2026-10-24。
 
-用户在YOUNG POSSE v21后回复“可以 继续开发”，该页面已确认。本轮仅推进BEWAVE，分支 `codex/bewave-review-completion`，基于 `81a572d8944c6604a08e5302c77e4cafbfb950c7`。BEWAVE原生页与只读审阅已实现，**BEWAVE 已恢复并发布 v22 owner-private 审阅；等待本团人工确认，不开始Candy Shop，公共功能例外**。正式主站仍v186。六人历史相册、4发行/5影像槽/2既有关系、四事件、搜索/原图及手帐往返已验证。115专项/回归、类型、正式构建、34交互、3失败恢复和七页五宽真视口通过；另有13项旧测试框架失败在基线重现。设计、资料、功能、上线分别验收。
-
-[draft PR #14](https://github.com/KAtOReNA7/idol/pull/14) · [本轮日志](worklogs/20261024-bewave-review-completion.md) · [接续入口](RESUME.md)。代码 `2d46a53` 已推送，QA source已推送 `b1db595f6fa843e5e7cba6ab56ec42b0e75ad160`，已发布 v22；部署 succeeded，观众仍仅owner。线上自动浏览器检查超时/401，交互未验。
+[打开 Candy Shop v23](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/candyshop/index.html) · [本轮日志](worklogs/20261024-candyshop-review-completion.md) · [接续入口](RESUME.md)。
 
 ## 已核基线与交接入口
 
@@ -30,15 +33,17 @@
 | SAY MY NAME | 淡紫唱片设计完善；v19页面已确认 | 历史资料、设计、保存与上线未验项保留 |
 | VVUP | 独立深色酸黄设计；v20页面已确认 | 历史素材、资料/设计/保存未验项保留 |
 | YOUNG POSSE | v21页面已获用户确认 | 历史资料、设计及真实保存待办保留 |
-| BEWAVE | 六人历史相册、4发行/5影像槽/2既有关系与手帐往返已实现 | [v22私有审阅](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/bewave/index.html)已发布；线上交互未验，等待人工确认，不开始Candy Shop |
+| BEWAVE | v22 页面已获用户确认 | 历史未验项保留 |
+| Candy Shop | 独立粉紫唱片设计；v23已发布，待用户确认 | [打开页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/candyshop/index.html)；线上交互、真实保存/播放和原生缩放待验 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
 | Sol | 本轮已收官，最终反馈已归档 [SOL-HANDOFF](SOL-HANDOFF.md) | 13:38形成、13:53主会话完整读取；不等于全部团体产品验收通过 |
 
 ## 下一里程碑与任务索引
 
-从 [RESUME](RESUME.md) 开始，检出 `codex/bewave-review-completion` 最新远端HEAD。BEWAVE v22已发布，继续处理本团反馈及尚未完成的验证。
+从 [RESUME](RESUME.md) 开始，检出 `codex/candyshop-review-completion` 最新远端HEAD。Candy Shop v23已发布，先处理本团反馈；确认前不开始 ODD YOUTH。
 
-- [BEWAVE 原生完善](worklogs/20261024-bewave-review-completion.md)：当前轮次，v22已恢复发布，Figma继续同步；等待页面确认。
+- [Candy Shop 原生完善](worklogs/20261024-candyshop-review-completion.md)：当前轮次，v23待页面确认。
+- [BEWAVE 原生完善](worklogs/20261024-bewave-review-completion.md)：历史轮次，v22已获页面确认。
 - [YOUNG POSSE 原生完善与v21](worklogs/20261024-youngposse-review-completion.md)：已获页面确认。
 - [VVUP 原生完善与v20](worklogs/20261024-vvup-review-completion.md)：历史轮次；页面现已确认。
 - [SAY MY NAME 原生完善与v19](worklogs/20261023-saymyname-review-completion.md)：历史轮次；页面现已确认。

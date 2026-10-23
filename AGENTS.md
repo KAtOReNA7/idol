@@ -5,7 +5,7 @@
 ## 最新执行决定（2026-10-23 Hearts2Hearts v17）
 
 - 用户“已确认，继续开发”已确认 ifeye v16。本轮仅推进 Hearts2Hearts：官网八张同尺寸原图、成员与发行搜索、13作品版本、11事件、原生手帐往返；只读 v17 已发布。
-- 最新接续分支 **`codex/hearts2hearts-review-completion`**，基于 `codex/ifeye-native-integration` 的 `abe3b0476d6585d0d2986182f90403106125fe7f`；正式工程 `apps/idol-site/`。先读 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261023-hearts2hearts-review-completion.md)。
+- 最新接续分支 **`codex/hearts2hearts-review-completion`**，基于 `codex/ifeye-native-integration` 的 `abe3b0476d6585d0d2986182f90403106125fe7f`；正式工程 `apps/idol-site/`，draft [PR #9](https://github.com/KAtOReNA7/idol/pull/9)。先读 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261023-hearts2hearts-review-completion.md)。
 - **现在等待 Hearts2Hearts 人工验收，确认前不开始下一团，公共功能例外。** GENBLUE v10、WOOAH v12、izna v15、ifeye v16 已获页面确认；正式主站 v186 未改。
 - 57项专项、27项回归、类型与正式构建通过；实际桌面交互及五宽 iframe 通过，非顶层五视口/缩放/真实保存/线上浏览器。既有149审阅文件SHA不变，完整待办见日志。下方旧门槛为历史，不能覆盖本决定。
 

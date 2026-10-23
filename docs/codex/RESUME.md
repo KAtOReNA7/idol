@@ -8,9 +8,10 @@
 | 应检出分支 | **`codex/hearts2hearts-review-completion` 最新远端 HEAD** |
 | 正式工程 | `apps/idol-site/`；根目录是旧 Next sandbox |
 | 本轮基线 | `abe3b0476d6585d0d2986182f90403106125fe7f`，`codex/ifeye-native-integration` |
-| PR | 本轮 draft PR 创建后回填；上游 [PR #8](https://github.com/KAtOReNA7/idol/pull/8) 保留，未合并 main |
+| PR | 本轮 draft [PR #9](https://github.com/KAtOReNA7/idol/pull/9)，base为ifeye活动分支；上游 [PR #8](https://github.com/KAtOReNA7/idol/pull/8) 保留，未合并 main |
 | 当前阶段 | GENBLUE v10、WOOAH v12、izna v15、ifeye v16 已获页面确认；**Hearts2Hearts v17 待人工验收** |
 | 最新交付 | [Hearts2Hearts 验收页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/hearts2hearts/index.html) |
+| 已推送代码 | `887b20ab9ab191d5ea2be274d0c2b454eb429b4a`；其后文档回填以最新远端HEAD为准 |
 | 最新证据 | [工作日志](worklogs/20261023-hearts2hearts-review-completion.md)、[验证目录](evidence/20261023-hearts2hearts-review-completion/) |
 | 正式主站 | 仍 v186 A-only，本轮未覆盖 |
 

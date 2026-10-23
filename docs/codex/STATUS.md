@@ -1,6 +1,6 @@
 # 共享开发状态
 
-更新：2026-10-23。当前接续分支 **`codex/hearts2hearts-review-completion`**，基于 ifeye 分支 `abe3b0476d6585d0d2986182f90403106125fe7f`，正式工程 `apps/idol-site/`。先读 [RESUME](RESUME.md)，不从旧 main 开工。PR 创建后回填。
+更新：2026-10-23。当前接续分支 **`codex/hearts2hearts-review-completion`**，基于 ifeye 分支 `abe3b0476d6585d0d2986182f90403106125fe7f`，正式工程 `apps/idol-site/`。先读 [RESUME](RESUME.md)，不从旧 main 开工。draft [PR #9](https://github.com/KAtOReNA7/idol/pull/9)，代码提交 `887b20ab9ab191d5ea2be274d0c2b454eb429b4a`；文档回填后仍以最新远端HEAD为准。
 
 用户最新“已确认，继续开发”确认 ifeye v16。本轮仅完成 Hearts2Hearts 原生增量和私有只读 v17：8成员原图、成员/发行检索、13作品版本、11事件、精确往返。**当前等待 Hearts2Hearts 人工验收，确认前不开发下一团。** 57项专项+27项回归、类型与正式构建通过；五宽 iframe 无溢出，非顶层/缩放/真实保存/线上浏览器。旧149审阅文件SHA不变；主站v186未改。详见 [本轮日志](worklogs/20261023-hearts2hearts-review-completion.md)。此前剪枝/审计fixture阻断保持，未执行apply。
 

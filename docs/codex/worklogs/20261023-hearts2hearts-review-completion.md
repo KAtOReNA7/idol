@@ -62,4 +62,8 @@ node scripts/build-hearts2hearts-review.mjs --out /absolute/dedicated/scratch/ou
 2. 精确视频预览、同 MV 成员造型图、其余 Figma 内页/官网/Spotify视觉研究、顶层真视口及缩放、线上浏览器、真实 owner 保存仍待验。Moonride 外部 YouTube 缩略图在本环境失败，保留诚实重试/原视频入口；不能声称实际播放通过。
 3. Review 的评分为空且不可写，不能当私人记录或生产保存验收。Moonride 无既有成员关系，未编造参演名单；其他无同 MV 图片保留缺图状态，不用官网肖像冒充造型。
 4. 生产剪枝/完整 TAR 容量与部署另验。本轮未重跑或绕过此前 izna 原图引用剪枝阻断、ifeye 旧审计 fixture 的 3 个失败；该历史问题保留，不把 v17 静态包当主站全量包通过。
-5. 新电脑从 RESUME 取最新分支，fetch并检查有无后续电脑提交；保留工作树，不从旧 main/handoff重新开发。GitHub draft PR 创建后回填，未合并 main。
+5. 新电脑从 RESUME 取最新分支，fetch并检查有无后续电脑提交；保留工作树，不从旧 main/handoff重新开发。GitHub draft [PR #9](https://github.com/KAtOReNA7/idol/pull/9)，base为ifeye活动分支，未合并 main。
+
+## GitHub 交付读回
+
+代码、原图、测试、截图和接续文档已推送 `887b20ab9ab191d5ea2be274d0c2b454eb429b4a`，远端树 `bd9186e728170b445c0db965dd3173acf24fb7e5` 与本地成果树逐字节一致；draft PR #9。此后仅回填PR/提交定位，下一台电脑仍必须fetch最新HEAD。既有本地commit保留为任务-local分支，没有reset、force push或覆盖其他电脑改动。

@@ -5,7 +5,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {resolveAuditedCarriers} from './audit-built-carriers.mjs';
-import {auditUnusedIfeyeOriginalBuildAssets,ifeyeUnusedOriginalPaths} from './audit-unused-ifeye-original-build-assets.mjs';
+import {auditUnusedIfeyeOriginalBuildAssets,ifeyeUnusedOriginalPaths,ifeyeNativeRetainsBatch} from './audit-unused-ifeye-original-build-assets.mjs';
 const manifestPath = fileURLToPath(new URL('./unused-display-assets-manifest.json', import.meta.url));
 const sha = p => createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const wooahOriginal='/artist/wooah/batch-b-20261016/group-original.png';
@@ -62,6 +62,7 @@ export function auditUnusedDisplayAssets(root, manifest=JSON.parse(fs.readFileSy
  });
  if(!fs.existsSync(path.join(root,'dist/server/index.js'))) throw new Error('Build dist first');
  const batch='batch-b-20261016';
+ const retainIfeye=ifeyeNativeRetainsBatch(root);
  const auditYoungposseText=youngposseAuditTexts(root);
  const auditWooahText=manifest.wooahRetainedOriginal?wooahRetainedOriginalAuditTexts(root,manifest.wooahRetainedOriginal):(_file,text)=>text;
  if(manifest.wooahRetainedOriginal) {
@@ -83,6 +84,7 @@ export function auditUnusedDisplayAssets(root, manifest=JSON.parse(fs.readFileSy
  const plan=[];
  let verifiedIfeyeExclusion=false;
  for(const [group,inventory] of Object.entries(manifest.groups)) {
+  if(group==='ifeye'&&retainIfeye)continue;
   if(!/^[a-z0-9]+$/.test(group)) throw new Error('Invalid audited group');
   const prefix=`/artist/${group}/${batch}/`, sourceDir=path.join(root,'public',prefix), buildDir=path.join(root,'dist/client',prefix);
   for(const {p,text} of texts) if(auditWooahText(p,text).includes(prefix)) throw new Error(`Old display directory referenced in ${p}: ${prefix}`);
@@ -101,6 +103,7 @@ export function auditUnusedDisplayAssets(root, manifest=JSON.parse(fs.readFileSy
   for(const p of files(buildDir)) if(!Object.hasOwn(inventory,path.relative(buildDir,p))) throw new Error(`Unknown build asset: ${p}`);
  }
  for(const entry of selected.values()) {
+  if(retainIfeye&&entry.path.startsWith('/artist/ifeye/'))continue;
   const parts=entry.path.split('/'),group=parts[2],name=parts[4],expected=manifest.groups[group]?.[name];
   if(!expected||expected.bytes!==entry.bytes||expected.sha256!==entry.sha256) throw new Error(`Display not in audited inventory: ${entry.path}`);
   if(!entry.replacement.startsWith(`/artist/${group}/${batch}-webp-v1/`)||entry.replacement.includes('..')) throw new Error('Invalid replacement path');

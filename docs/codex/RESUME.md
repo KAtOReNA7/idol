@@ -1,36 +1,35 @@
 # 新电脑接续：女团网站
 
-更新：2026-10-23 晚间，北京时间。本文为当前入口，不需要上一台电脑或聊天记录。
+更新：2026-10-23 晚间，北京时间。本文是当前入口，不需要上一台电脑或聊天记录。
 
 | 项目 | 当前值 |
 | --- | --- |
 | 仓库 | https://github.com/KAtOReNA7/idol |
-| 应检出分支 | **`codex/izna-review-followup` 最新远端 HEAD** |
+| 应检出分支 | **`codex/ifeye-native-integration` 最新远端 HEAD** |
 | 正式工程 | `apps/idol-site/`；仓库根是旧 Next sandbox |
-| 本轮基线 | `codex/izna-native-integration` 的 `aa9e0446c47d3de8cd0c893f86fc0112248d9aaf` |
-| PR | draft [PR #7](https://github.com/KAtOReNA7/idol/pull/7)，base为 `codex/izna-native-integration`；上游draft [PR #6](https://github.com/KAtOReNA7/idol/pull/6)保留，未合并main |
-| 当前阶段 | izna v15私有只读审阅已发布，**等待用户整团确认**；GENBLUE v10、WOOAH v12已确认 |
-| 最新证据 | [本轮worklog](worklogs/20261023-izna-review-followup.md)、[验证记录](evidence/20261023-izna-review-followup/) |
+| 本轮基线 | `665fed58554fd83ddbcfc098228c6961943e9ebf`（`codex/izna-review-followup`） |
+| PR | 本轮draft [PR #8](https://github.com/KAtOReNA7/idol/pull/8)以 `codex/izna-review-followup` 为base；上游 [PR #7](https://github.com/KAtOReNA7/idol/pull/7) 保留，未合并main |
+| 当前阶段 | GENBLUE v10、WOOAH v12、izna v15已获页面确认；**ifeye v16待人工验收** |
+| 最新证据 | [本轮worklog](worklogs/20261023-ifeye-native-integration.md)、[验证记录](evidence/20261023-ifeye-native-integration/) |
 | 正式主站 | 仍v186 A-only，本轮未覆盖 |
 
-分支来源：`handoff/codex-20261022` → `codex/genblue-native-integration` → `codex/wooah-native-integration`（121f410）→ `codex/izna-native-integration`（aa9e044）→ `codex/izna-review-followup`。不要只检出最初handoff、旧WOOAH或旧izna基线；先查远端与活动PR。
+分支链：`handoff/codex-20261022` → `codex/genblue-native-integration` → `codex/wooah-native-integration` → `codex/izna-native-integration` → `codex/izna-review-followup` → **`codex/ifeye-native-integration`**。不从旧main、最初handoff或旧检查点重新开工。
 
 ## 项目目的与有效决定
 
-这是让用户认识女团与成员、观看具体MV／舞台、记录评分与感想，并在成员、作品和历史间连续探索的网站。每团保留独立艺术语言；真实图片、中文名、准确历史阵容与精确视频关系直接服务浏览。共享保存和数据契约，不统一成模板换皮。
+让用户认识女团与成员，按具体MV／舞台观看、记录评分和感想，并在成员、作品和历史间连续探索。每团有独立设计；真实图片、中文名、准确历史阵容和精确视频身份是浏览基础。共享数据与保存契约，不统一成模板换皮。
 
-- GENBLUE v10已获认可；WOOAH v12按团照首屏、五人同组、统一4:5成员图修正后获认可。
-- izna已完成原生接入；首屏按用户批准的Figma方案发布v14。2026-10-23晚间用户说“好 你开始继续开发”，本轮继续izna收尾，并发布v15。
-- **每次一个团，交可打开网页，用户明确确认后再开始下一团；公共功能除外。当前尚未确认izna，不开发ifeye或其他下一团。**
-- 页面认可、代码实现、类型/测试、浏览器、真实保存和正式主站发布分别记录，不能互相替代。
-- 保留稳定ID、原图、评分、备注、观看状态与owner-only写保护。公开仓库中的本次既有快照曾获用户批准；不扩展为新增私有数据或凭证公开授权。
+- 用户本轮“已确认，继续开发”确认了izna v15，允许开始ifeye。本轮仅接入ifeye并发布v16。
+- **每次一个团，交网页，用户明确确认后再开始下一团；公共功能除外。当前等ifeye确认。**
+- 已认可GENBLUE、WOOAH、izna保持；页面认可不代表真实保存、全部设计待办或正式主站发布通过。
+- 保留稳定ID、原图、评分、备注、观看状态与owner-only写保护。既有快照公开批准不扩展为新增数据或凭证公开授权。
 
-## 新电脑检出与阅读
+## 检出与运行
 
 新空目录：
 
 ```sh
-git -c core.autocrlf=false clone --branch codex/izna-review-followup https://github.com/KAtOReNA7/idol.git idol
+git -c core.autocrlf=false clone --branch codex/ifeye-native-integration https://github.com/KAtOReNA7/idol.git idol
 cd idol
 git config --local core.autocrlf false
 git fetch origin
@@ -39,11 +38,11 @@ git branch --show-current
 git log -5 --oneline
 ```
 
-已有仓库先检查并保留dirty内容、fetch、比较双方有效改动，再切换/快进。禁止reset/clean/force push。必须取得完整工作树，专项测试使用`handoffs/` fixture。不要复制旧机器依赖、构建或凭证。
+已有工作树先保留改动、fetch、比较后再切换或快进，禁止reset/clean/force push。取得完整仓库，测试需handoffs/fixture；不复制旧机器依赖、构建或凭证。
 
-读取顺序：本文 → [根AGENTS](../../AGENTS.md) → [STATUS](STATUS.md) → [PRD](PRD.md) → [设计要求](../design-requirements.md)／[协作手册](../collaboration-playbook.md) → [ACCEPTANCE](ACCEPTANCE.md) → 最新worklog。CURRENT-STATE是迁移时历史快照，以本文和STATUS为最新阶段。
+阅读顺序：本文 → 根AGENTS → STATUS → PRD → 设计要求/协作手册 → ACCEPTANCE → 最新worklog。CURRENT-STATE是迁移时历史快照。
 
-普通电脑要求Node≥22.13.0、Git、npm。实际框架是Next路由/API风格 + Vinext/Vite + Cloudflare Worker，不能因根sandbox或Next依赖而改跑Next CLI。
+普通电脑需要Node≥22.13.0、Git、npm。实际框架是Next路由/API风格 + Vinext/Vite + Cloudflare Worker，不能改跑根sandbox或Next CLI。
 
 ```sh
 cd apps/idol-site
@@ -53,63 +52,59 @@ node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false
 npm run dev
 ```
 
-从终端实际地址打开 `/artists/izna`。普通电脑默认portable、开发端口从5173开始。正式构建使用`npm run build`，本地Worker使用`npm start`；这不是生产发布。D1/R2生产内容不会随clone获得，不改权限或导入真实记录来掩盖本地缺失。
+从终端实际地址打开 `/artists/ifeye`。普通电脑默认portable，端口从5173开始；`npm run build`构建、`npm start`运行本地Worker，不是生产发布。D1/R2生产内容不会随clone取得，不改权限或导入真实记录掩盖缺失。
 
-ChatGPT Sites环境先读当前Sites技能，按官方安装、preview、build、source workflow和部署流程执行。本轮为managed-linux，内部QA入口`terminal.local:4173`不供用户访问。Browser专用js未暴露，使用技能允许的CUA cloud browser；不得改通道绕过限制，也不能把iframe宽度写成顶层真视口。
+Sites环境先读当时的Sites技能，用官方安装、preview、build和source workflow。本轮managed-linux，terminal.local:4173仅用于内部浏览器QA；Browser插件js未暴露，使用技能允许的CUA。iframe宽度不能当顶层真视口。
 
-针对本轮变更的验证：
+## 当前成果与待办
 
-```sh
-node --test tests/izna-video-posters.test.cjs tests/work-video-player.test.cjs tests/approved-video-poster.test.cjs tests/retained-video-posters.test.cjs tests/katseye-video-poster.test.cjs
-node --test tests/izna-native-integration.test.cjs tests/izna-review-catalog.test.mjs tests/izna-review-routing.test.mjs tests/izna-review-isolation.test.mjs
-```
-
-按后续变更范围选择检查，不必每次全库重跑。当前52项通过属于本轮源码；新环境或新代码需自行验证。
-
-## 当前网页成果与缺口
-
-| 范围 | 已完成 | 保留待办 |
+| 团体/范围 | 已完成 | 待办边界 |
 | --- | --- | --- |
-| GENBLUE | BlueCut原生页、具名MV关系与既有评分接线；v10认可 | 精确视频图、真实保存等原待办；已知320px横向溢出40px，本轮未修 |
-| WOOAH | 实图原生页、团照首屏、五人同组、统一4:5成员图；v12认可 | 24个精确视频预览、真视口/缩放和真实保存等原待办 |
-| izna | 7份含历史成员档案、8项只浏览发行、15个影像槽位、12条具名MV关联、20原图；大团照首屏；v15把已有4张精确MV图接入作品库和手帐并限制原图放大 | 整团人工确认、11个精确视频预览、同MV成员图、Figma内页、当前版本全视口/缩放、线上浏览器与真实保存 |
-| ifeye | 原始候选源码与素材已保留 | 未原生接入，等待izna整团确认 |
-| MEOVV B / 主站包体 | 历史patch与readback已保存 | 未上线；最终pins、完整生产TAR容量及生产发布另验 |
+| GENBLUE | BlueCut原生页与精确成员关系、既有手帐；v10已确认 | 旧320px横向溢出40px、精确视频图、真实保存等历史待办保留 |
+| WOOAH | 团照首屏、五人同组、统一4:5成员图；v12已确认 | 24个视频预览、当前版本真视口/缩放/真实保存等 |
+| izna | 原生页、大团照首屏、四个精确MV预览已接作品库/手帐；v15本轮确认 | 11个精确视频预览、同MV成员图、Figma内页、真视口/缩放/线上浏览器/真实保存、快速导航复查 |
+| ifeye | 自有纸面/衬线/唱片设计，6成员、3发行、7影像、5事件、10原图；9公开MV参与关系、6既有个人记录；v16已发布 | 人工验收、7个精确视频预览、同MV成员图、Figma实图/内页、真视口/缩放/线上浏览器、真实保存；SASHA当前状态未确认 |
+| 正式生产包 | 源码完整构建通过，保留当前原图 | 剪枝dry-run受旧izna引用阻断；旧ifeye审计fixture有3失败；完整展开TAR容量/pins/生产发布另验 |
 
-[izna v15验收入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html) · [GENBLUE](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/genblue/index.html) · [WOOAH](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/wooah/index.html)
+[ifeye v16验收入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/ifeye/index.html) · [izna](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html) · [GENBLUE](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/genblue/index.html) · [WOOAH](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/wooah/index.html)
 
-本轮真实浏览器检查：1363×936桌面；四张作品卡片与播放器图片解码、MV/舞台隔离、分步成员→作品→手帐→返回及焦点恢复。320/390仅iframe窄窗口通过，未冒充顶层视口/缩放。两次快速批量点击出现目标漂移，分步通过但原因未确定，快速连续操作仍待复查。应用error/warn未见；扩展metadata错误单独排除。
+ifeye只读审阅使用净化空评分/备注，显示“示例资料 · 评分不写入正式手帐”；不是实际保存演示。首页是官网五人宣传照，档案六人，不由图片人数推断当前阵容。r u ok?六条关系已存在；Hazy三条公开参与关系不等于已有个人评分记录。
 
-关键改动路径（相对app）：`data/izna-video-posters.json`、`lib/idol/approved-video-poster.ts`、`components/app-image-presentation.tsx`、`components/work-video-player.tsx`、`app/page.tsx`。只改变图片展示，未改评分API或数据。
+关键路径：`components/ifeye/`、`lib/idol/ifeye-native.ts`、`lib/idol/ifeye-runtime/`、`data/ifeye-editorial.json`、`data/ifeye-assets.json`、`public/artist/ifeye/native-v3/`、`review/ifeye/`。共享导航只增有限键表，剪枝器保守保留ifeye旧batch14图；未修改API/保存/权限/快照/依赖。
 
-已有izna原生主体：`components/izna/`、`lib/idol/izna-native.ts`、`lib/idol/izna-runtime/`、`data/izna-editorial.json`、`data/izna-assets.json`、`public/artist/izna/`。已认可首页/成员页面保持。
+## 本轮实测与复验
 
-## 发布身份与重建
-
-- 审阅站 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3`，保持owner-private。
-- v15 Sites source `fef02183457ff9a79f08cacf605e351fcbe3896d`。
-- 版本 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_a037108af82c819196648d5935902d81`。
-- 部署 `appgdep_6adb49d73ae0819195536e3c55bb95f3` 返回succeeded；版本号15和source已读回。
-- review sourceFingerprint `c40080548bb0cc5d0260e09236d1316d2447bf4f0418f1f96c9f971657085df7`。
-- 本地实际展开TAR为29,132,800 B / 27.783203125 MiB；100个非izna审阅文件SHA未变。不是主站全量包通过。
-- 正式主站ID `appgprj_6acb4fa532b88191ae2588c24b724b17`，保持v186，本轮无覆盖授权。
-
-从GitHub可重建izna增量：
+20项ifeye测试 + 38项导航/izna回归通过，类型0错误，正式构建成功。原有ifeye剪枝测试35过3失败（临时fixture缺YOUNG POSSE正确文件）；正式prune dry-run被已有izna原图引用阻断，未执行apply。不能写为全库或完整生产包通过。
 
 ```sh
-node scripts/build-izna-review.mjs --out <仓库外专用绝对目录>
+node --test tests/ifeye-native-integration.test.cjs tests/ifeye-review-catalog.test.mjs tests/ifeye-review-routing.test.mjs tests/ifeye-review-isolation.test.mjs tests/ifeye-native-retention.test.mjs
+node --test tests/artist-navigation.test.cjs tests/izna-native-integration.test.cjs tests/izna-review-catalog.test.mjs tests/izna-review-routing.test.mjs tests/izna-review-isolation.test.mjs
 ```
 
-增量没有站点根入口和hosting配置，**不能单独覆盖审阅站**。先通过Sites官方source workflow打开现有审阅站，保留根入口、GENBLUE/WOOAH及访问设置，再合入增量。静态审阅使用净化的空评分/备注与只读API，不冒充真实手帐保存。
+浏览器1363×936完成成员→精确MV→既有手帐→舞台→返回与焦点恢复，十图解码/等大照片通过。320/390/1440/2048/2560是iframe窗口，无横向溢出；320成员搜索、查看器Escape和搜索恢复实测。非五种顶层视口，80%/125%缩放未验。外部YT缩略图失败保留诚实fallback；快速批量自动化locator曾超时，分步已通但快速导航未计通过。
 
-Sites source commit和GitHub commit不是同一个编号。凭证只经当前授权流程获取，禁止保存到文件、日志、命令行或仓库。完整生产包仍按实际展开TAR≤256 MiB且至少留2 MiB余量核验，不能用gzip大小或资源小计替代。
+Figma首页812:1133、作品库812:1456已实际get_design_context取稿及看图；文件zeLNExz4TbpWRW3uiahef7，保护ERLUBLUE节点821:52未写。完整Figma图片/内页/多尺寸仍未完成，不据网页构建推出设计闭环。
 
-## 下次接续
+## 发布与重建
 
-1. 查本分支最新远端、活动PR、STATUS和本轮worklog，确认没有另一台电脑已接手同一任务；正式工程仅在apps/idol-site。
-2. 处理用户对izna v15的反馈，继续保留已认可首屏。整团确认前不开始ifeye或其他团。
-3. 补当前版本真视口/原生缩放/线上浏览器，复查快速连续导航的稳定性；真实保存另在明确授权环境验证。
-4. 继续精确图片与Figma内页待办，不重复导入已接入候选，不因缺图删作品或拿其他图替代。
-5. 每轮代码、验证、阶段和下一步同提交推送GitHub；未验项保持明确。源分支main未合并，不自动升级为生产完成。
+- 审阅站 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3`，继续owner-private。
+- v16 source `52dac6f0d01762482a4bb3a36e1e04ae6154ca91`，2026-10-23 20:59北京时间发布succeeded，版本号/source已读回。
+- 版本 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_6590aed27bb88191924f304928048f83`；部署 `appgdep_6adb5a2caa3c8191bb958412a485e3af`。
+- ifeye sourceFingerprint `264192d9c26a9d54657a49833d6c60330855c83c43e3dd39f812d1e88a9a382a`。
+- 原审阅站130文件SHA不变；本地实际展开TAR32,778,240 B /31.259765625 MiB，平台归档统计另见worklog。这不是主站全量容量通过。
+- 正式主站 `appgprj_6acb4fa532b88191ae2588c24b724b17` 仍v186 A-only。
 
-历史依据：[v14首屏网页](worklogs/20261023-izna-hero-web.md)、[izna原生接入](worklogs/20261023-izna-native-integration.md)、[Figma首屏](worklogs/20261023-izna-hero-figma.md)、[WOOAH布局修正](worklogs/20261023-wooah-layout-feedback.md)、[此前两团检查点](worklogs/20261023-resume-checkpoint.md)。
+```sh
+node scripts/build-ifeye-review.mjs --out <仓库外专用绝对目录>
+```
+
+增量没有站点根入口/hosting配置，不能单独覆盖审阅站。先通过Sites官方source workflow打开当前v16，保护其他团、根入口与访问设置，再合入增量。Sites commit不等于GitHub commit。凭证仅通过当前授权流程取得，不存文件/命令行/日志/仓库。
+
+## 下一步
+
+1. 检查最新远端、活动PR、STATUS和本轮worklog，避免与其他电脑重复开发。
+2. 先处理ifeye人工反馈；确认前不开发下一团，公共功能除外。
+3. 补明确缺口；正式全量发布前单独解决剪枝阻断/fixture/pins和实际展开TAR预算（≤256 MiB并至少留2 MiB）。
+4. 每轮代码、验证、阶段、阻塞和下一步同提交到GitHub；未验、未合main、未生产发布分别说明。
+
+历史证据：[izna v15](worklogs/20261023-izna-review-followup.md)、[izna首屏](worklogs/20261023-izna-hero-web.md)、[WOOAH修正](worklogs/20261023-wooah-layout-feedback.md)。

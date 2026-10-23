@@ -27,7 +27,7 @@ const reset=`:host{all:initial;display:block;min-width:0;isolation:isolate;color
 /** Mount the accepted pages in an owned ShadowRoot; never reads a catalog/API.
  * The injected synchronous resolver must return an exact identity binding or null.
  */
-export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{}}) {
+export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{},onHomeChange=()=>{}}) {
   const slug=data?.group?.slug,group=groups[slug],doc=host?.ownerDocument,win=doc?.defaultView;
   if(!win||!group||group.id!==data?.group?.id)throw new TypeError('Exact izna public input and host required');
   owners.get(host)?.destroy();
@@ -90,6 +90,7 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
     return opened;
   };
   const pending=()=>{
+    onHomeChange(mountedRoute==='#/home');
     // The renderer retains its independent internal route contract. Exposed
     // anchors use real query URLs so copying/opening a new tab works as expected.
     for(const a of root.querySelectorAll('a[href^="#/"]')){

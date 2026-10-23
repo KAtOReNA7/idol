@@ -16,9 +16,12 @@ if (!target) throw new Error('izna review root is missing');
 const route = normalizeReviewLocation(location, history);
 if (route === RECORDS_PATH) installRecordHistory(history, location);
 installReviewLinks(target, location);
+// The native presentation owns an async ShadowRoot. Observe its exact content
+// root after each mount and release that observer with the presentation.
+const installPresentationLinks = (root:HTMLElement) => installReviewLinks(root, location);
 createRoot(target).render(<PublicAccessProvider canEdit={false}>
   <ArtistTimelineHostProvider value={{catalog,loading:false,error:'',serverRoute:ARTIST_PATH}}>
-    {route === ARTIST_PATH ? <IznaEditorial onNativeOpen={(_request,context)=>{
+    {route === ARTIST_PATH ? <IznaEditorial onPresentationMount={installPresentationLinks} onNativeOpen={(_request,context)=>{
       const href = reviewRecordHref(context.href, location.href);
       if (typeof href !== 'string' || !href.startsWith(RECORDS_PATH + '?')) return false;
       window.location.assign(href);

@@ -9,10 +9,10 @@
 | 仓库 | https://github.com/KAtOReNA7/idol |
 | 应检出分支 | `codex/izna-native-integration` 的最新远端 HEAD |
 | 正式工程 | `apps/idol-site/` |
-| 本轮源码版本 | izna 实现提交 `c998df46a6cd258c11cbbf7a6fb7642a2bacee3b` 已推送并以 `ls-remote` 读回；后续接续仍取最新远端 HEAD。源分支检查点为 `121f410`，此前 WOOAH 网页代码为 `821f385f05f5923dc9efae6b4d3719500ac5c0e0` |
+| 本轮源码版本 | 取本任务分支最新远端HEAD；本轮从Figma检查点 `2087e3c1f467be1ddaa1efb5526cab632f818b40` 接续并保存首屏网页代码及证据。首轮izna原生提交为 `c998df4`，WOOAH源分支检查点 `121f410`；精确网页指纹见最新worklog |
 | 活动 PR | draft [PR #6](https://github.com/KAtOReNA7/idol/pull/6)，base `codex/wooah-native-integration`、head `codex/izna-native-integration`；源分支为 [PR #5](https://github.com/KAtOReNA7/idol/pull/5)，上游为 [PR #3](https://github.com/KAtOReNA7/idol/pull/3) |
 | 分支来源 | `handoff/codex-20261022` → `codex/genblue-native-integration` → `codex/wooah-native-integration`（`121f410`）→ `codex/izna-native-integration`；没有从旧 main 开发 |
-| 当前阶段 | GENBLUE v10、WOOAH v12已确认；izna v13首屏收到“照片太小、两侧太空”的反馈，1440/390 Figma首屏已调整并导入实图，待审阅设计；网页尚未同步，整团未确认，不得开发下一团，公共功能除外 |
+| 当前阶段 | GENBLUE v10、WOOAH v12已确认；用户批准izna Figma首屏并要求继续开发，网页已同步并发布v14，等待用户确认网页；整团未确认，不得开发下一团，公共功能除外 |
 | 正式主站 | 仍为 v186 A-only；本轮不覆盖主站。izna 只读审阅发布与验证证据见本轮工作日志 |
 
 **不要只检出最初 handoff 分支。** 它是来源基线，后续实际开发位于上面的任务分支。`main` 在本次保存时仍是旧 sandbox。先 fetch 并核对 PR/STATUS；只有新的明确合并记录才可以改变上述入口。
@@ -25,6 +25,7 @@
 - 2026-10-23：WOOAH 按用户三项反馈修正为团照首屏、五人同组、统一4:5成员照片；用户随后回复“OK 保存目前开发进度”，作为本次页面确认与保存要求记录。
 - 2026-10-23 接续开发：从 WOOAH 分支最新远端 `121f410` 继续，第三团 izna 的原生集成已实现，v13 私有只读审阅已发布；等待用户明确确认，不将发布成功写成人工验收通过。
 - 2026-10-23 首屏反馈：用户要求照片更大、两侧简洁，先调整Figma；桌面1440/手机390首屏和真实团照已改好并检查实际截图、get_design_context。网页仍为v13，下一步按设计审阅取舍同步正式首页；详见 [本轮记录](worklogs/20261023-izna-hero-figma.md)。
+- 2026-10-23 首屏网页同步：用户随后回复“可以 继续开发”，本轮按批准设计更新正式首页，桌面大幅团照/手机整图/图下导航；v14私有只读审阅已发布。最终本地5宽及查看器/导航/失败恢复通过，等待用户确认实际网页，详见 [最新记录](worklogs/20261023-izna-hero-web.md)。
 - 页面确认不等于真实保存、精确视频配图、全部响应式检查或正式主站上线已经完成。
 - 后续仍执行：**每次只推进一个团，完成后给网页地址，用户明确通过才开始下一个团；公共功能除外。** 当前停在 izna 审阅阶段，不开发 ifeye 或其他下一团。
 - 保留用户评分、备注、观看状态、稳定 ID、owner-only 写入与原图。用户批准的既有快照已在公开仓库；不扩大到新敏感数据或凭证。
@@ -91,7 +92,7 @@ npm start
 | WOOAH | 原生实图页面、6份含历史成员档案、24视频、56条精确成员/MV关系、5个时间轴作品入口、资料来源修订；v12布局获认可 | 24个精确视频预览图、真实浏览器/视口/缩放、真实保存未验 |
 | 公共部署 | 原图保留守卫、独立只读审阅构建和物理HTML入口 | 完整主站展开TAR容量、真实生产发布未完成 |
 | MEOVV B | 四段patch及readback已跟踪 | 未发布，需重新核对最终pins与完整归档 |
-| izna | 独立页面原生接入；7份含历史成员档案、8项只浏览发行、15个影像槽位、12条具名MV关联；20张原图与严格resolver，评分/手帐及返回接线已实现；审阅v13已发布 | 待用户确认、线上浏览器未复验；Figma实际图片落地、11个精确视频预览、80%/125%原生浏览器缩放、真实保存与主站全量发布未完成 |
+| izna | 原生页面、7份含历史成员档案、8项只浏览发行、15个影像槽位、12条具名MV关联、20张原图与严格resolver、既有评分/手帐接线；批准Figma首屏已同步并发布v14 | 待用户确认、线上浏览器未复验；Figma下方图片/其他页面、11个精确视频预览、80%/125%原生浏览器缩放、真实保存与主站全量发布未完成 |
 | ifeye v3 | 原始源码与素材保留在隔离候选中 | 尚未原生接入；izna获明确用户确认前不开发 |
 
 已确认的页面：
@@ -112,6 +113,7 @@ npm start
 
 详细证据：
 
+- [izna首屏网页同步](worklogs/20261023-izna-hero-web.md)：最新轮次，Figma批准后实际网页代码、最终浏览器检查与v14发布读回。
 - [izna原生接续与发布验证](worklogs/20261023-izna-native-integration.md)：本轮实际代码、验证、发布状态与下一步，以该日志的精确版本为准。
 - [WOOAH原生接续](worklogs/20261022-wooah-native-integration.md)
 - [WOOAH三项布局修正](worklogs/20261023-wooah-layout-feedback.md)
@@ -124,12 +126,14 @@ WOOAH修正版代码提交上的已执行结果：类型检查与干净原生构
 
 | 对象 | Site ID / 状态 |
 | --- | --- |
-| 私有只读审阅站 | `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3`；保留owner-private；izna v13已发布，用户确认与线上浏览器复验待补 |
+| 私有只读审阅站 | `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3`；保留owner-private；izna v14已发布，用户确认与线上浏览器复验待补 |
 | 正式主站 | app内 `.openai/hosting.json` 的 `appgprj_6acb4fa532b88191ae2588c24b724b17`；仍为v186，未获本轮覆盖授权 |
 
 历史v12审阅 Sites source：`fff05becda0f21d25794cec6f5ce3275425574af`；版本 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_d68d3c6bd4988191a6fd8b849d0bc2a6`；部署 `appgdep_6ada3ad6a8dc81919bedc3b19fb37abe` succeeded。这些是 Sites 标识，不是 GitHub commit，也不是本轮izna发布证据。本轮发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`。
 
 本轮izna v13审阅 Sites source：`a6a8ff71a759de6936a0285a0ebdf18a6a69eb63`；版本 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_7dab03eccdc48191a221738c7b7f1eb8`；部署 `appgdep_6adb070706dc81919e413e71a4b9eb9f` succeeded。该成功仅确认审阅站发布，不能代替用户确认、线上浏览器或真实保存验收。
+
+最新izna v14审阅 Sites source：`02191c188af0a0d373581afd89b8e7d292c6d61a`；版本 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_cff5858b7cbc8191baf7c02dd741f69e`；部署 `appgdep_6adb28bc8a448191b3d36354713d79b9` succeeded，版本号与source已读回。完整TAR为27.81005859375 MiB。发布后单次in-app browser打开30秒超时，线上浏览器未独立复验；本地最终9组izna通过。100个非izna站点文件SHA不变；GENBLUE320既有40px溢出已记录，未修改已确认页面。
 
 本轮审阅产物可以从GitHub代码重建：`node scripts/build-izna-review.mjs --out <仓库外专用绝对目录>`。它是**增量输出**，没有站点根index/hosting配置，不能单独拿它覆盖现有审阅站；要先通过Sites官方源码流程打开上述审阅站，保留根入口、GENBLUE、WOOAH及访问配置，再合入izna产物。评分、备注及个人照片均已净化为空，非GET/API写入拒绝，不冒充真实手帐。
 
@@ -138,8 +142,8 @@ WOOAH修正版代码提交上的已执行结果：类型检查与干净原生构
 ## 下次从哪里继续
 
 1. 先核对 `codex/izna-native-integration` 最新远端、STATUS、本轮工作日志和活动PR；确认没有另一台电脑已开始同一任务。禁止回到旧main或重新覆盖旧候选。
-2. 核对已发布的izna v13、draft PR #6及本轮验证记录；线上浏览器尚未复验，在支持的环境补查。已确认的GENBLUE/WOOAH页面继续保护。
-3. 当前izna处于首屏反馈修改阶段：Figma1440/390稿已调整、网页未同步。审阅后按用户取舍同步正式首页并交新网页；**用户明确确认整团前不得开发ifeye或下一团**，公共功能例外。
+2. 核对已发布的izna v14、draft PR #6及最新网页同步记录；线上浏览器尚未复验，在支持的环境补查。已确认的GENBLUE/WOOAH页面继续保护。
+3. 当前izna处于首屏网页确认阶段：Figma1440/390稿已批准，网页已同步并部署v14。等待用户审阅新网页并处理该团反馈；**用户明确确认整团前不得开发ifeye或下一团**，公共功能例外。
 4. Figma首屏团照已落地，其他图片/页面仍待完成；11个精确视频预览、80%/125%原生浏览器缩放、真实保存和主站全量发布仍未完成；分别记录，不以实现、构建或其他视口通过替代。
 5. 每轮将代码、验证、阶段、阻塞和下一步同提交推送GitHub，更新STATUS和接续入口。不要把未合入的WIP写成main或生产已完成。
 

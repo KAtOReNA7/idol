@@ -68,6 +68,22 @@ test('actual anchor hrefs are rewritten on mount and later React commits, withou
   assert.equal(member.value,RECORDS_PATH+'?view=members&member=rec28ldbniBc6L&returnTo=%2Fartists%2Fizna');
   assert.deepEqual(options,{subtree:true,childList:true,attributes:true,attributeFilter:['href']});
   stop();assert.equal(disconnected,true);
+
+  // The owned presentation root is supplied explicitly after its async mount;
+  // no document traversal can enter another group's shadow presentation.
+  const index=anchor('/?view=groups'),unknown=anchor('/unrecognized?view=groups'),foreign=anchor('/artists/wooah'),external=anchor('https://official.example/?view=groups');
+  const otherGroupIndex=anchor('/?view=groups'),shadowLinks=[index,unknown,foreign,external],ownedRoot={querySelectorAll:()=>shadowLinks};
+  const observed=[];
+  class ShadowObserver {constructor(callback){notify=callback;}observe(node){observed.push(node);}disconnect(){disconnected=true;}}
+  disconnected=false;
+  const stopShadow=installReviewLinks(ownedRoot,{href:origin+ARTIST_PATH},ShadowObserver);
+  assert.deepEqual(observed,[ownedRoot]);
+  assert.equal(index.value,RECORDS_PATH+'?view=groups');
+  assert.equal(unknown.value,'/unrecognized?view=groups');assert.equal(foreign.value,'/artists/wooah');assert.equal(external.value,'https://official.example/?view=groups');
+  assert.equal(otherGroupIndex.value,'/?view=groups');
+  const remountedIndex=anchor('/?view=groups');shadowLinks.splice(0,shadowLinks.length,remountedIndex);notify();
+  assert.equal(remountedIndex.value,RECORDS_PATH+'?view=groups');
+  stopShadow();assert.equal(disconnected,true);
 });
 
 function fakeBrowser(url) {
@@ -163,6 +179,12 @@ test('build produces additive physical entries, actual components and original i
     assert.doesNotMatch(fs.readFileSync(path.join(out,recordStyle.path),'utf8'),/\.candidate-(?:wooah|genblue)-experience|\.wooah-experience|\.genblue-bluecut/);
     const bindings=JSON.parse(fs.readFileSync(path.join(root,'data/izna-assets.json')));
     for(const binding of bindings){const copy=manifest.assets.find(asset=>asset.path===binding.url);assert.ok(copy,binding.url);assert.equal(copy.sha256,binding.sha256);assert.equal(copy.bytes,binding.bytes);}
+    const indexImage=JSON.parse(fs.readFileSync(path.join(root,'data/candidate-index-visuals.json'))).rec28ldfRTiCpp.hero.image;
+    const indexCopy=manifest.assets.find(asset=>asset.path===indexImage);
+    assert.ok(indexCopy,'the actual CandidateIndexCard image must be present after returning to the group index');
+    assert.equal(indexCopy.sha256,digest(path.join(root,'public',indexImage)));
+    assert.equal(indexCopy.bytes,fs.statSync(path.join(root,'public',indexImage)).size);
+    assert.deepEqual(manifest.assets.filter(asset=>asset.path.includes('/batch-b-20261016-webp-v1/')).map(asset=>asset.path),[indexImage],'copy the exact izna index image without importing other index media');
     const firstManifest=fs.readFileSync(path.join(out,'review-izna/manifest.json'),'utf8');
     execFileSync(process.execPath,['scripts/build-izna-review.mjs','--out',out],{cwd:root,stdio:'pipe'});
     assert.equal(fs.readFileSync(path.join(out,'review-izna/manifest.json'),'utf8'),firstManifest,'same source rebuild must be deterministic');

@@ -12,6 +12,6 @@ export type NativeServices=Readonly<{
   open:(request:PublicRequest,context:Readonly<{href:string;resume:()=>void}>)=>boolean;
 }>;
 export type ReviewHandle=Readonly<{ready:Promise<{status:string}>;root:HTMLElement;shadow:ShadowRoot;navigate:(hash:string)=>boolean;destroy:()=>void;inspect:()=>{activeScopes:number;scopes:unknown[]}}>;
-export function mountIznaEditorial(options:{host:HTMLElement;data:unknown;resolveAsset?:ReadonlyAssetResolver;native?:NativeServices;onStatus?:(message:string)=>void}):ReviewHandle;
+export function mountIznaEditorial(options:{host:HTMLElement;data:unknown;resolveAsset?:ReadonlyAssetResolver;native?:NativeServices;onStatus?:(message:string)=>void;onHomeChange?:(home:boolean)=>void}):ReviewHandle;
 export function readIznaNavigationFocus(root:HTMLElement):{kind:string;value:string}|null;
 export function restoreIznaNavigationFocus(root:HTMLElement,key:{kind:string;value:string}|null):boolean;

@@ -8,9 +8,10 @@ import {validIznaCatalog,iznaAssetResolver,iznaNativeBindings,prepareIznaDisplay
 import type {CatalogView} from '@/lib/idol/types';
 import type {ReviewHandle,NativeServices} from '@/lib/idol/izna-runtime/host.mjs';
 
-export default function IznaEditorial({onNativeOpen}:{onNativeOpen?:NativeServices['open']}={}){
+export default function IznaEditorial({onNativeOpen,onPresentationMount}:{onNativeOpen?:NativeServices['open'];onPresentationMount?:(root:HTMLElement)=>void|(()=>void)}={}){
  const options=useArtistTimelineHostOptions(),host=useRef<HTMLDivElement>(null);
  const [attempt,setAttempt]=useState(0),[mountAttempt,setMountAttempt]=useState(0),[status,setStatus]=useState('正在打开 izna…'),[failed,setFailed]=useState(false);
+ const [isHome,setIsHome]=useState(true);
  const [fetched,setFetched]=useState<{catalog:CatalogView|null;loading:boolean;error:string}>({catalog:null,loading:true,error:''});
  const injected=options.catalog!==undefined;
  const catalog=injected?(validIznaCatalog(options.catalog)?options.catalog:null):fetched.catalog;
@@ -28,18 +29,19 @@ export default function IznaEditorial({onNativeOpen}:{onNativeOpen?:NativeServic
   return()=>controller.abort();
  },[injected,attempt]);
  useEffect(()=>{
-  let cancelled=false,handle:ReviewHandle|null=null;setFailed(false);setStatus('正在打开 izna…');
+  let cancelled=false,handle:ReviewHandle|null=null,detachPresentation:void|(()=>void);setFailed(false);setStatus('正在打开 izna…');
   void import('@/lib/idol/izna-runtime/host.mjs').then(async module=>{
    if(cancelled||!host.current)return;
    handle=module.mountIznaEditorial({host:host.current,data:display,resolveAsset:iznaAssetResolver,
     native:{bindings,routeUrl,safeArtistReturn,open:onNativeOpen??((_request,context)=>{window.location.assign(context.href);return true;})},
-    onStatus:message=>{if(!cancelled)setStatus(message);}});
+    onHomeChange:setIsHome,onStatus:message=>{if(!cancelled)setStatus(message);}});
    await handle.ready;
+   if(!cancelled)detachPresentation=onPresentationMount?.(handle.root);
   }).catch(error=>{if(cancelled)return;handle?.destroy();setFailed(true);setStatus(error instanceof Error?error.message:'页面暂时无法打开。');});
-  return()=>{cancelled=true;handle?.destroy();};
- },[display,bindings,onNativeOpen,mountAttempt]);
+  return()=>{cancelled=true;detachPresentation?.();handle?.destroy();};
+ },[display,bindings,onNativeOpen,onPresentationMount,mountAttempt]);
  return <section data-izna-native-host="true" style={{minWidth:0}}>
-  <div style={{padding:'12px 20px',font:'14px/1.6 Arial,sans-serif',display:'flex',gap:16,flexWrap:'wrap'}}><a href="/?view=groups">← 团体索引</a>{loading?<span role="status">正在读取手帐关联…</span>:error?<span role="alert">{error} 公开资料仍可浏览。 <button type="button" onClick={()=>options.onRetry?options.onRetry():setAttempt(n=>n+1)}>重新读取</button></span>:null}</div>
+  {(!isHome||failed||loading||error)&&<div style={{padding:'12px 20px',font:'14px/1.6 Arial,sans-serif',display:'flex',gap:16,flexWrap:'wrap'}}>{(!isHome||failed)&&<a href="/?view=groups">← 团体索引</a>}{loading?<span role="status">正在读取手帐关联…</span>:error?<span role="alert">{error} 公开资料仍可浏览。 <button type="button" onClick={()=>options.onRetry?options.onRetry():setAttempt(n=>n+1)}>重新读取</button></span>:null}</div>}
   {status&&<div role="status" aria-live="polite" style={{padding:'10px 20px',font:'14px/1.6 Arial,sans-serif'}}>{status}{failed&&<> <button type="button" onClick={()=>setMountAttempt(n=>n+1)}>重新打开</button></>}</div>}
   <div ref={host}/>
  </section>;

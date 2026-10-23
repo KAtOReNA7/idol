@@ -5,8 +5,8 @@
 ## 当前执行决定（2026-10-23，保留 Codex 迁移与逐团确认规则）
 
 - GENBLUE v10和WOOAH v12页面已获用户确认，继续保护。本轮从 `codex/wooah-native-integration` 的 `121f410` 接续，在 `codex/izna-native-integration` 完成 izna 原生页面接入，当前待用户审阅；未获明确确认前不得开发 ifeye 或下一团，公共功能例外。最新接续读 [RESUME](docs/codex/RESUME.md)，检出 `codex/izna-native-integration` 最新远端 HEAD，不从旧 main 或最初handoff开始。
-- izna [只读、owner-private 审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html) 已发布 v13，GitHub 实现已推送并读回，draft [PR #6](https://github.com/KAtOReNA7/idol/pull/6) 待审阅。发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`；线上浏览器未复验，用户尚未确认。Figma 实际图片落地、11个精确视频预览缺口、80%/125%原生浏览器缩放、真实保存和主站全量发布仍未完成，不能混成已验收。
-- 2026-10-23 izna最新反馈：用户认为首屏照片小、两侧空且喧宾夺主，要求Figma调整。1440/390首屏已改为大幅团照、简洁页头和图下入口，真实团照已落地；证据见 `docs/codex/worklogs/20261023-izna-hero-figma.md`。Figma下方图片仍待落地；网页仍是v13，按用户设计审阅取舍同步正式首页后交新网页，不能将Figma编辑当成网页更新或整团确认。
+- izna [只读、owner-private 审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html) 已发布 **v14**，draft [PR #6](https://github.com/KAtOReNA7/idol/pull/6) 待审阅。最新代码、发布与验证见 `docs/codex/worklogs/20261023-izna-hero-web.md`；本地5宽首页、查看原图/导航、失败恢复通过，100个非izna审阅文件SHA不变。发布后in-app browser单次打开超时，线上浏览器仍未复验，用户尚未确认整团。
+- 2026-10-23 izna最新决定：用户认可Figma首屏后回复“可以 继续开发”，网页现已同步为大幅团照、简洁页头和图下入口，手机整幅原图，桌面保留六人完整构图。Figma设计证据见 `docs/codex/worklogs/20261023-izna-hero-figma.md`；Figma下方图片/其他页面、11个精确视频预览、80%/125%原生浏览器缩放、真实保存与主站全量发布仍待完成。等待用户确认v14网页，不将本次继续开发授权等同整团通过。
 - 用户已决定迁移试用 Codex；GitHub 保存多台电脑共享的代码与开发阶段，不再要求主会话直接开发、云环境仅验证。首次执行读 [CODEX-FIRST-RUN](docs/codex/CODEX-FIRST-RUN.md)、[STATUS](docs/codex/STATUS.md)、[PRD](docs/codex/PRD.md)、[CURRENT-STATE](docs/codex/CURRENT-STATE.md) 和 [ACCEPTANCE](docs/codex/ACCEPTANCE.md)。
 - 正式工程为 `apps/idol-site/`，根 Next sandbox 保留为历史样本。v186 基线与候选分别按各自清单核验，不用旧根代码冒充完整生产源，不依赖控制或读取 Sol/Astra 会话。
 - Astra 与 Sol 均已收官，Sol 最终补遗见 `docs/codex/SOL-HANDOFF.md`；收官不代表全部团体已验收。已有完整原生源与候选足以继续。

@@ -78,7 +78,12 @@ const recordStyleBytes=read(recordStyle.source);
 fs.copyFileSync(path.join(root,recordStyle.source),path.join(out,recordStyle.path));
 if(sha(fs.readFileSync(path.join(out,recordStyle.path)))!==sha(recordStyleBytes))throw new Error('Review record stylesheet copy changed');
 
-const assets = new Set(['/artist/izna/native-v3/izna.css']);
+// The shared group index reads its own production visual, not the editorial
+// hero binding. Copy that exact izna image so the return-to-index flow works.
+const indexVisual = JSON.parse(read('data/candidate-index-visuals.json'))[archive.group.id];
+const indexImage = indexVisual?.hero?.image;
+if (indexVisual?.slug !== 'izna' || typeof indexImage !== 'string' || !/^\/artist\/izna\/[A-Za-z0-9_./-]+$/.test(indexImage) || indexImage.includes('..')) throw new Error('Unexpected izna index image');
+const assets = new Set(['/artist/izna/native-v3/izna.css', indexImage]);
 const pinned = new Map();
 for (const binding of assetBindings) {
   if (binding.groupId !== archive.group.id || !/^\/artist\/izna\/[A-Za-z0-9_./-]+$/.test(binding.url) || binding.url.includes('..')) throw new Error('Unexpected izna asset binding');

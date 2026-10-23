@@ -1,0 +1,1914 @@
+{
+  "startedAt": "2026-10-23T09:23:59.825Z",
+  "browserReason": "Browser plugin not available; regular Playwright with an existing local Chromium executable",
+  "environment": "Windows / Chromium 1228 / Playwright / native browser zoom 100%",
+  "origin": "http://127.0.0.1:4173",
+  "scope": "izna homepage geometry, original-image viewer, hero navigation, and unchanged accepted group smoke checks",
+  "unverified": [
+    "80% and 125% native browser zoom",
+    "live deployed Site",
+    "real owner save",
+    "whole-group visual acceptance"
+  ],
+  "harnessAdjustments": [
+    "Initial screenshot scrollTo used the page smooth-scroll behavior; corrected to instant scrolling and a zero-scroll wait.",
+    "Protected group selectors corrected from the izna ShadowRoot selector to the existing GENBLUE/WOOAH native wrappers."
+  ],
+  "layoutCases": [
+    {
+      "kind": "homepage-layout",
+      "width": 320,
+      "height": 844,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\hero-320.png",
+        "E:\\project\\idol-hero-web-20261023\\home-full-320.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-composition-320.png"
+      ],
+      "status": 200,
+      "url": "http://127.0.0.1:4173/artists/izna",
+      "geometry": {
+        "title": "izna",
+        "viewport": 320,
+        "documentWidth": 320,
+        "rootWidth": 320,
+        "rootRect": {
+          "x": 0,
+          "y": 34,
+          "width": 320,
+          "height": 5054.96875,
+          "top": 34,
+          "right": 320,
+          "bottom": 5088.96875,
+          "left": 0
+        },
+        "outerIndexLinks": 0,
+        "indexLink": {
+          "label": "返回团体索引",
+          "href": "/review-izna/records.html?view=groups"
+        },
+        "header": {
+          "x": 0,
+          "y": 34,
+          "width": 320,
+          "height": 60,
+          "top": 34,
+          "right": 320,
+          "bottom": 94,
+          "left": 0
+        },
+        "hero": {
+          "x": 16,
+          "y": 110,
+          "width": 288,
+          "height": 403.1875,
+          "top": 110,
+          "right": 304,
+          "bottom": 513.1875,
+          "left": 16
+        },
+        "image": {
+          "rect": {
+            "x": 16,
+            "y": 110,
+            "width": 288,
+            "height": 403.1875,
+            "top": 110,
+            "right": 304,
+            "bottom": 513.1875,
+            "left": 16
+          },
+          "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/group-original.png",
+          "naturalWidth": 1500,
+          "naturalHeight": 2100,
+          "complete": true,
+          "objectFit": "contain",
+          "objectPosition": "50% 50%"
+        },
+        "scaleX": 0.192,
+        "scaleY": 0.19199404761904762,
+        "sourceVisible": {
+          "x": 0,
+          "y": 0,
+          "width": 1500,
+          "height": 2100
+        },
+        "clippers": [
+          {
+            "tag": "SPAN",
+            "className": "asset-frame home-hero-image",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 16,
+              "y": 110,
+              "width": 288,
+              "height": 403.1875,
+              "top": 110,
+              "right": 304,
+              "bottom": 513.1875,
+              "left": 16
+            }
+          },
+          {
+            "tag": "DIV",
+            "className": "home-hero-viewport",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 16,
+              "y": 110,
+              "width": 288,
+              "height": 403.1875,
+              "top": 110,
+              "right": 304,
+              "bottom": 513.1875,
+              "left": 16
+            }
+          }
+        ],
+        "controls": [
+          {
+            "tag": "A",
+            "text": "成员 →",
+            "href": "/artists/izna?section=members",
+            "label": null,
+            "rect": {
+              "x": 16,
+              "y": 525.1875,
+              "width": 45.140625,
+              "height": 44,
+              "top": 525.1875,
+              "right": 61.140625,
+              "bottom": 569.1875,
+              "left": 16
+            }
+          },
+          {
+            "tag": "A",
+            "text": "作品 →",
+            "href": "/artists/izna?section=works",
+            "label": null,
+            "rect": {
+              "x": 86.421875,
+              "y": 525.1875,
+              "width": 45.140625,
+              "height": 44,
+              "top": 525.1875,
+              "right": 131.5625,
+              "bottom": 569.1875,
+              "left": 86.421875
+            }
+          },
+          {
+            "tag": "A",
+            "text": "时间轴 →",
+            "href": "/artists/izna?section=updates",
+            "label": null,
+            "rect": {
+              "x": 156.84375,
+              "y": 525.1875,
+              "width": 59.140625,
+              "height": 44,
+              "top": 525.1875,
+              "right": 215.984375,
+              "bottom": 569.1875,
+              "left": 156.84375
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "text": "查看原图 ↗",
+            "href": null,
+            "label": null,
+            "rect": {
+              "x": 241.265625,
+              "y": 525.1875,
+              "width": 62.734375,
+              "height": 44,
+              "top": 525.1875,
+              "right": 304,
+              "bottom": 569.1875,
+              "left": 241.265625
+            }
+          }
+        ],
+        "visibleDecorations": [],
+        "badImages": [],
+        "frameworkOverlays": 0
+      },
+      "heroFileSha256": "31139045704dc66a4101af43a9e74bb067f37e403a2d8b6e1d4f753316e9fe2c",
+      "screenshotScrollY": 0,
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    },
+    {
+      "kind": "homepage-layout",
+      "width": 390,
+      "height": 844,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\hero-390.png",
+        "E:\\project\\idol-hero-web-20261023\\home-full-390.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-composition-390.png"
+      ],
+      "status": 200,
+      "url": "http://127.0.0.1:4173/artists/izna",
+      "geometry": {
+        "title": "izna",
+        "viewport": 390,
+        "documentWidth": 390,
+        "rootWidth": 390,
+        "rootRect": {
+          "x": 0,
+          "y": 34,
+          "width": 390,
+          "height": 5249.34375,
+          "top": 34,
+          "right": 390,
+          "bottom": 5283.34375,
+          "left": 0
+        },
+        "outerIndexLinks": 0,
+        "indexLink": {
+          "label": "返回团体索引",
+          "href": "/review-izna/records.html?view=groups"
+        },
+        "header": {
+          "x": 0,
+          "y": 34,
+          "width": 390,
+          "height": 60,
+          "top": 34,
+          "right": 390,
+          "bottom": 94,
+          "left": 0
+        },
+        "hero": {
+          "x": 16,
+          "y": 110,
+          "width": 358,
+          "height": 501.1875,
+          "top": 110,
+          "right": 374,
+          "bottom": 611.1875,
+          "left": 16
+        },
+        "image": {
+          "rect": {
+            "x": 16,
+            "y": 110,
+            "width": 358,
+            "height": 501.1875,
+            "top": 110,
+            "right": 374,
+            "bottom": 611.1875,
+            "left": 16
+          },
+          "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/group-original.png",
+          "naturalWidth": 1500,
+          "naturalHeight": 2100,
+          "complete": true,
+          "objectFit": "contain",
+          "objectPosition": "50% 50%"
+        },
+        "scaleX": 0.23866666666666667,
+        "scaleY": 0.23866071428571428,
+        "sourceVisible": {
+          "x": 0,
+          "y": 0,
+          "width": 1500,
+          "height": 2100
+        },
+        "clippers": [
+          {
+            "tag": "SPAN",
+            "className": "asset-frame home-hero-image",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 16,
+              "y": 110,
+              "width": 358,
+              "height": 501.1875,
+              "top": 110,
+              "right": 374,
+              "bottom": 611.1875,
+              "left": 16
+            }
+          },
+          {
+            "tag": "DIV",
+            "className": "home-hero-viewport",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 16,
+              "y": 110,
+              "width": 358,
+              "height": 501.1875,
+              "top": 110,
+              "right": 374,
+              "bottom": 611.1875,
+              "left": 16
+            }
+          }
+        ],
+        "controls": [
+          {
+            "tag": "A",
+            "text": "成员 →",
+            "href": "/artists/izna?section=members",
+            "label": null,
+            "rect": {
+              "x": 16,
+              "y": 623.1875,
+              "width": 45.140625,
+              "height": 44,
+              "top": 623.1875,
+              "right": 61.140625,
+              "bottom": 667.1875,
+              "left": 16
+            }
+          },
+          {
+            "tag": "A",
+            "text": "作品 →",
+            "href": "/artists/izna?section=works",
+            "label": null,
+            "rect": {
+              "x": 109.75,
+              "y": 623.1875,
+              "width": 45.140625,
+              "height": 44,
+              "top": 623.1875,
+              "right": 154.890625,
+              "bottom": 667.1875,
+              "left": 109.75
+            }
+          },
+          {
+            "tag": "A",
+            "text": "时间轴 →",
+            "href": "/artists/izna?section=updates",
+            "label": null,
+            "rect": {
+              "x": 203.515625,
+              "y": 623.1875,
+              "width": 59.140625,
+              "height": 44,
+              "top": 623.1875,
+              "right": 262.65625,
+              "bottom": 667.1875,
+              "left": 203.515625
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "text": "查看原图 ↗",
+            "href": null,
+            "label": null,
+            "rect": {
+              "x": 311.265625,
+              "y": 623.1875,
+              "width": 62.734375,
+              "height": 44,
+              "top": 623.1875,
+              "right": 374,
+              "bottom": 667.1875,
+              "left": 311.265625
+            }
+          }
+        ],
+        "visibleDecorations": [],
+        "badImages": [],
+        "frameworkOverlays": 0
+      },
+      "heroFileSha256": "31139045704dc66a4101af43a9e74bb067f37e403a2d8b6e1d4f753316e9fe2c",
+      "screenshotScrollY": 0,
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    },
+    {
+      "kind": "homepage-layout",
+      "width": 1440,
+      "height": 1000,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\hero-1440.png",
+        "E:\\project\\idol-hero-web-20261023\\home-full-1440.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-composition-1440.png"
+      ],
+      "status": 200,
+      "url": "http://127.0.0.1:4173/artists/izna",
+      "geometry": {
+        "title": "izna",
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "rootWidth": 1440,
+        "rootRect": {
+          "x": 0,
+          "y": 34,
+          "width": 1440,
+          "height": 5319.59375,
+          "top": 34,
+          "right": 1440,
+          "bottom": 5353.59375,
+          "left": 0
+        },
+        "outerIndexLinks": 0,
+        "indexLink": {
+          "label": "返回团体索引",
+          "href": "/review-izna/records.html?view=groups"
+        },
+        "header": {
+          "x": 0,
+          "y": 34,
+          "width": 1440,
+          "height": 81,
+          "top": 34,
+          "right": 1440,
+          "bottom": 115,
+          "left": 0
+        },
+        "hero": {
+          "x": 160,
+          "y": 139,
+          "width": 1120,
+          "height": 746.65625,
+          "top": 139,
+          "right": 1280,
+          "bottom": 885.65625,
+          "left": 160
+        },
+        "image": {
+          "rect": {
+            "x": 160,
+            "y": -495.6666259765625,
+            "width": 1120,
+            "height": 1568,
+            "top": -495.6666259765625,
+            "right": 1280,
+            "bottom": 1072.3333740234375,
+            "left": 160
+          },
+          "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/group-original.png",
+          "naturalWidth": 1500,
+          "naturalHeight": 2100,
+          "complete": true,
+          "objectFit": "contain",
+          "objectPosition": "50% 50%"
+        },
+        "scaleX": 0.7466666666666667,
+        "scaleY": 0.7466666666666667,
+        "sourceVisible": {
+          "x": 0,
+          "y": 849.9999455043247,
+          "width": 1500,
+          "height": 999.9860491071428
+        },
+        "clippers": [
+          {
+            "tag": "SPAN",
+            "className": "asset-frame home-hero-image",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 160,
+              "y": -495.6666259765625,
+              "width": 1120,
+              "height": 1568,
+              "top": -495.6666259765625,
+              "right": 1280,
+              "bottom": 1072.3333740234375,
+              "left": 160
+            }
+          },
+          {
+            "tag": "DIV",
+            "className": "home-hero-viewport",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 160,
+              "y": 139,
+              "width": 1120,
+              "height": 746.65625,
+              "top": 139,
+              "right": 1280,
+              "bottom": 885.65625,
+              "left": 160
+            }
+          }
+        ],
+        "controls": [
+          {
+            "tag": "A",
+            "text": "成员 →",
+            "href": "/artists/izna?section=members",
+            "label": null,
+            "rect": {
+              "x": 160,
+              "y": 901.65625,
+              "width": 51.59375,
+              "height": 44,
+              "top": 901.65625,
+              "right": 211.59375,
+              "bottom": 945.65625,
+              "left": 160
+            }
+          },
+          {
+            "tag": "A",
+            "text": "作品 →",
+            "href": "/artists/izna?section=works",
+            "label": null,
+            "rect": {
+              "x": 503.609375,
+              "y": 901.65625,
+              "width": 51.59375,
+              "height": 44,
+              "top": 901.65625,
+              "right": 555.203125,
+              "bottom": 945.65625,
+              "left": 503.609375
+            }
+          },
+          {
+            "tag": "A",
+            "text": "时间轴 →",
+            "href": "/artists/izna?section=updates",
+            "label": null,
+            "rect": {
+              "x": 847.203125,
+              "y": 901.65625,
+              "width": 67.59375,
+              "height": 44,
+              "top": 901.65625,
+              "right": 914.796875,
+              "bottom": 945.65625,
+              "left": 847.203125
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "text": "查看原图 ↗",
+            "href": null,
+            "label": null,
+            "rect": {
+              "x": 1206.8125,
+              "y": 901.65625,
+              "width": 73.1875,
+              "height": 44,
+              "top": 901.65625,
+              "right": 1280,
+              "bottom": 945.65625,
+              "left": 1206.8125
+            }
+          }
+        ],
+        "visibleDecorations": [],
+        "badImages": [],
+        "frameworkOverlays": 0
+      },
+      "heroFileSha256": "31139045704dc66a4101af43a9e74bb067f37e403a2d8b6e1d4f753316e9fe2c",
+      "screenshotScrollY": 0,
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    },
+    {
+      "kind": "homepage-layout",
+      "width": 2048,
+      "height": 1000,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\hero-2048.png",
+        "E:\\project\\idol-hero-web-20261023\\home-full-2048.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-composition-2048.png"
+      ],
+      "status": 200,
+      "url": "http://127.0.0.1:4173/artists/izna",
+      "geometry": {
+        "title": "izna",
+        "viewport": 2048,
+        "documentWidth": 2048,
+        "rootWidth": 2048,
+        "rootRect": {
+          "x": 0,
+          "y": 34,
+          "width": 2048,
+          "height": 5845.90625,
+          "top": 34,
+          "right": 2048,
+          "bottom": 5879.90625,
+          "left": 0
+        },
+        "outerIndexLinks": 0,
+        "indexLink": {
+          "label": "返回团体索引",
+          "href": "/review-izna/records.html?view=groups"
+        },
+        "header": {
+          "x": 0,
+          "y": 34,
+          "width": 2048,
+          "height": 81,
+          "top": 34,
+          "right": 2048,
+          "bottom": 115,
+          "left": 0
+        },
+        "hero": {
+          "x": 274,
+          "y": 139,
+          "width": 1500,
+          "height": 1000,
+          "top": 139,
+          "right": 1774,
+          "bottom": 1139,
+          "left": 274
+        },
+        "image": {
+          "rect": {
+            "x": 274,
+            "y": -711,
+            "width": 1500,
+            "height": 2100,
+            "top": -711,
+            "right": 1774,
+            "bottom": 1389,
+            "left": 274
+          },
+          "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/group-original.png",
+          "naturalWidth": 1500,
+          "naturalHeight": 2100,
+          "complete": true,
+          "objectFit": "contain",
+          "objectPosition": "50% 50%"
+        },
+        "scaleX": 1,
+        "scaleY": 1,
+        "sourceVisible": {
+          "x": 0,
+          "y": 850,
+          "width": 1500,
+          "height": 1000
+        },
+        "clippers": [
+          {
+            "tag": "SPAN",
+            "className": "asset-frame home-hero-image",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 274,
+              "y": -711,
+              "width": 1500,
+              "height": 2100,
+              "top": -711,
+              "right": 1774,
+              "bottom": 1389,
+              "left": 274
+            }
+          },
+          {
+            "tag": "DIV",
+            "className": "home-hero-viewport",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 274,
+              "y": 139,
+              "width": 1500,
+              "height": 1000,
+              "top": 139,
+              "right": 1774,
+              "bottom": 1139,
+              "left": 274
+            }
+          }
+        ],
+        "controls": [
+          {
+            "tag": "A",
+            "text": "成员 →",
+            "href": "/artists/izna?section=members",
+            "label": null,
+            "rect": {
+              "x": 274,
+              "y": 1155,
+              "width": 51.59375,
+              "height": 44,
+              "top": 1155,
+              "right": 325.59375,
+              "bottom": 1199,
+              "left": 274
+            }
+          },
+          {
+            "tag": "A",
+            "text": "作品 →",
+            "href": "/artists/izna?section=works",
+            "label": null,
+            "rect": {
+              "x": 744.265625,
+              "y": 1155,
+              "width": 51.59375,
+              "height": 44,
+              "top": 1155,
+              "right": 795.859375,
+              "bottom": 1199,
+              "left": 744.265625
+            }
+          },
+          {
+            "tag": "A",
+            "text": "时间轴 →",
+            "href": "/artists/izna?section=updates",
+            "label": null,
+            "rect": {
+              "x": 1214.546875,
+              "y": 1155,
+              "width": 67.59375,
+              "height": 44,
+              "top": 1155,
+              "right": 1282.140625,
+              "bottom": 1199,
+              "left": 1214.546875
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "text": "查看原图 ↗",
+            "href": null,
+            "label": null,
+            "rect": {
+              "x": 1700.8125,
+              "y": 1155,
+              "width": 73.1875,
+              "height": 44,
+              "top": 1155,
+              "right": 1774,
+              "bottom": 1199,
+              "left": 1700.8125
+            }
+          }
+        ],
+        "visibleDecorations": [],
+        "badImages": [],
+        "frameworkOverlays": 0
+      },
+      "heroFileSha256": "31139045704dc66a4101af43a9e74bb067f37e403a2d8b6e1d4f753316e9fe2c",
+      "screenshotScrollY": 0,
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    },
+    {
+      "kind": "homepage-layout",
+      "width": 2560,
+      "height": 1000,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\hero-2560.png",
+        "E:\\project\\idol-hero-web-20261023\\home-full-2560.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-composition-2560.png"
+      ],
+      "status": 200,
+      "url": "http://127.0.0.1:4173/artists/izna",
+      "geometry": {
+        "title": "izna",
+        "viewport": 2560,
+        "documentWidth": 2560,
+        "rootWidth": 2560,
+        "rootRect": {
+          "x": 0,
+          "y": 34,
+          "width": 2560,
+          "height": 5845.90625,
+          "top": 34,
+          "right": 2560,
+          "bottom": 5879.90625,
+          "left": 0
+        },
+        "outerIndexLinks": 0,
+        "indexLink": {
+          "label": "返回团体索引",
+          "href": "/review-izna/records.html?view=groups"
+        },
+        "header": {
+          "x": 0,
+          "y": 34,
+          "width": 2560,
+          "height": 81,
+          "top": 34,
+          "right": 2560,
+          "bottom": 115,
+          "left": 0
+        },
+        "hero": {
+          "x": 530,
+          "y": 139,
+          "width": 1500,
+          "height": 1000,
+          "top": 139,
+          "right": 2030,
+          "bottom": 1139,
+          "left": 530
+        },
+        "image": {
+          "rect": {
+            "x": 530,
+            "y": -711,
+            "width": 1500,
+            "height": 2100,
+            "top": -711,
+            "right": 2030,
+            "bottom": 1389,
+            "left": 530
+          },
+          "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/group-original.png",
+          "naturalWidth": 1500,
+          "naturalHeight": 2100,
+          "complete": true,
+          "objectFit": "contain",
+          "objectPosition": "50% 50%"
+        },
+        "scaleX": 1,
+        "scaleY": 1,
+        "sourceVisible": {
+          "x": 0,
+          "y": 850,
+          "width": 1500,
+          "height": 1000
+        },
+        "clippers": [
+          {
+            "tag": "SPAN",
+            "className": "asset-frame home-hero-image",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 530,
+              "y": -711,
+              "width": 1500,
+              "height": 2100,
+              "top": -711,
+              "right": 2030,
+              "bottom": 1389,
+              "left": 530
+            }
+          },
+          {
+            "tag": "DIV",
+            "className": "home-hero-viewport",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 530,
+              "y": 139,
+              "width": 1500,
+              "height": 1000,
+              "top": 139,
+              "right": 2030,
+              "bottom": 1139,
+              "left": 530
+            }
+          }
+        ],
+        "controls": [
+          {
+            "tag": "A",
+            "text": "成员 →",
+            "href": "/artists/izna?section=members",
+            "label": null,
+            "rect": {
+              "x": 530,
+              "y": 1155,
+              "width": 51.59375,
+              "height": 44,
+              "top": 1155,
+              "right": 581.59375,
+              "bottom": 1199,
+              "left": 530
+            }
+          },
+          {
+            "tag": "A",
+            "text": "作品 →",
+            "href": "/artists/izna?section=works",
+            "label": null,
+            "rect": {
+              "x": 1000.265625,
+              "y": 1155,
+              "width": 51.59375,
+              "height": 44,
+              "top": 1155,
+              "right": 1051.859375,
+              "bottom": 1199,
+              "left": 1000.265625
+            }
+          },
+          {
+            "tag": "A",
+            "text": "时间轴 →",
+            "href": "/artists/izna?section=updates",
+            "label": null,
+            "rect": {
+              "x": 1470.546875,
+              "y": 1155,
+              "width": 67.59375,
+              "height": 44,
+              "top": 1155,
+              "right": 1538.140625,
+              "bottom": 1199,
+              "left": 1470.546875
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "text": "查看原图 ↗",
+            "href": null,
+            "label": null,
+            "rect": {
+              "x": 1956.8125,
+              "y": 1155,
+              "width": 73.1875,
+              "height": 44,
+              "top": 1155,
+              "right": 2030,
+              "bottom": 1199,
+              "left": 1956.8125
+            }
+          }
+        ],
+        "visibleDecorations": [],
+        "badImages": [],
+        "frameworkOverlays": 0
+      },
+      "heroFileSha256": "31139045704dc66a4101af43a9e74bb067f37e403a2d8b6e1d4f753316e9fe2c",
+      "screenshotScrollY": 0,
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    }
+  ],
+  "interactionCases": [
+    {
+      "kind": "hero-viewer-and-navigation",
+      "width": 320,
+      "height": 844,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\hero-viewer-320-Escape.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-viewer-320-button.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-group-index-320.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-returned-320.png"
+      ],
+      "opener": {
+        "text": "查看原图 ↗",
+        "label": null,
+        "rect": {
+          "x": 241.265625,
+          "y": 525.1875,
+          "width": 62.734375,
+          "height": 44,
+          "top": 525.1875,
+          "right": 304,
+          "bottom": 569.1875,
+          "left": 241.265625
+        }
+      },
+      "viewer": [
+        {
+          "closeMethod": "Escape",
+          "openFocus": {
+            "tag": "BUTTON",
+            "label": "关闭图片",
+            "text": "关闭",
+            "href": null
+          },
+          "image": {
+            "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/group-original.png",
+            "width": 1500,
+            "height": 2100,
+            "rect": {
+              "x": 12,
+              "y": 337.59375,
+              "width": 295.984375,
+              "height": 414.390625,
+              "top": 337.59375,
+              "right": 307.984375,
+              "bottom": 751.984375,
+              "left": 12
+            },
+            "objectFit": "contain"
+          },
+          "dialog": {
+            "x": 12,
+            "y": 245.171875,
+            "width": 296,
+            "height": 542.390625
+          },
+          "closeFocus": {
+            "tag": "BUTTON",
+            "label": null,
+            "text": "查看原图 ↗",
+            "href": null
+          },
+          "focusRestored": true
+        },
+        {
+          "closeMethod": "button",
+          "openFocus": {
+            "tag": "BUTTON",
+            "label": "关闭图片",
+            "text": "关闭",
+            "href": null
+          },
+          "image": {
+            "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/group-original.png",
+            "width": 1500,
+            "height": 2100,
+            "rect": {
+              "x": 12,
+              "y": 59.984375,
+              "width": 295.984375,
+              "height": 414.390625,
+              "top": 59.984375,
+              "right": 307.984375,
+              "bottom": 474.375,
+              "left": 12
+            },
+            "objectFit": "contain"
+          },
+          "dialog": {
+            "x": 12,
+            "y": 11.984375,
+            "width": 296,
+            "height": 542.390625
+          },
+          "closeFocus": {
+            "tag": "BUTTON",
+            "label": null,
+            "text": "查看原图 ↗",
+            "href": null
+          },
+          "focusRestored": true
+        }
+      ],
+      "navigation": [
+        {
+          "label": "成员",
+          "href": "/artists/izna?section=members",
+          "url": "http://127.0.0.1:4173/artists/izna?section=members",
+          "headings": [
+            "成员"
+          ],
+          "textLength": 214,
+          "width": 320,
+          "documentWidth": 320
+        },
+        {
+          "label": "作品",
+          "href": "/artists/izna?section=works",
+          "url": "http://127.0.0.1:4173/artists/izna?section=works",
+          "headings": [
+            "作品"
+          ],
+          "textLength": 854,
+          "width": 320,
+          "documentWidth": 320
+        },
+        {
+          "label": "时间轴",
+          "href": "/artists/izna?section=updates",
+          "url": "http://127.0.0.1:4173/artists/izna?section=updates",
+          "headings": [
+            "时间轴"
+          ],
+          "textLength": 752,
+          "width": 320,
+          "documentWidth": 320
+        }
+      ],
+      "index": {
+        "href": "/review-izna/records.html?view=groups",
+        "url": "http://127.0.0.1:4173/review-izna/records.html?view=groups",
+        "heading": [
+          "团体索引1"
+        ],
+        "cardText": "izna · WAKEONE 官方资料照\nIZNA / 开场之后\nizna\n\nizna 于 2024 年 11 月 25 日以首张迷你专辑《N/a》出道。\n\n6 位收录成员\n9 支作品\n进入团体主页",
+        "image": {
+          "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016-webp-v1/group-display.webp",
+          "width": 1143,
+          "height": 1600,
+          "complete": true
+        },
+        "returnUrl": "http://127.0.0.1:4173/artists/izna"
+      },
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    },
+    {
+      "kind": "hero-viewer-and-navigation",
+      "width": 1440,
+      "height": 1000,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\hero-viewer-1440-Escape.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-viewer-1440-button.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-group-index-1440.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-returned-1440.png"
+      ],
+      "opener": {
+        "text": "查看原图 ↗",
+        "label": null,
+        "rect": {
+          "x": 1206.8125,
+          "y": 901.65625,
+          "width": 73.1875,
+          "height": 44,
+          "top": 901.65625,
+          "right": 1280,
+          "bottom": 945.65625,
+          "left": 1206.8125
+        }
+      },
+      "viewer": [
+        {
+          "closeMethod": "Escape",
+          "openFocus": {
+            "tag": "BUTTON",
+            "label": "关闭图片",
+            "text": "关闭",
+            "href": null
+          },
+          "image": {
+            "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/group-original.png",
+            "width": 1500,
+            "height": 2100,
+            "rect": {
+              "x": 12,
+              "y": 59.609375,
+              "width": 605.734375,
+              "height": 848.046875,
+              "top": 59.609375,
+              "right": 617.734375,
+              "bottom": 907.65625,
+              "left": 12
+            },
+            "objectFit": "contain"
+          },
+          "dialog": {
+            "x": 12,
+            "y": 11.609375,
+            "width": 605.75,
+            "height": 976.046875
+          },
+          "closeFocus": {
+            "tag": "BUTTON",
+            "label": null,
+            "text": "查看原图 ↗",
+            "href": null
+          },
+          "focusRestored": true
+        },
+        {
+          "closeMethod": "button",
+          "openFocus": {
+            "tag": "BUTTON",
+            "label": "关闭图片",
+            "text": "关闭",
+            "href": null
+          },
+          "image": {
+            "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/group-original.png",
+            "width": 1500,
+            "height": 2100,
+            "rect": {
+              "x": 12,
+              "y": 59.671875,
+              "width": 605.734375,
+              "height": 848.046875,
+              "top": 59.671875,
+              "right": 617.734375,
+              "bottom": 907.71875,
+              "left": 12
+            },
+            "objectFit": "contain"
+          },
+          "dialog": {
+            "x": 12,
+            "y": 11.671875,
+            "width": 605.75,
+            "height": 976.046875
+          },
+          "closeFocus": {
+            "tag": "BUTTON",
+            "label": null,
+            "text": "查看原图 ↗",
+            "href": null
+          },
+          "focusRestored": true
+        }
+      ],
+      "navigation": [
+        {
+          "label": "成员",
+          "href": "/artists/izna?section=members",
+          "url": "http://127.0.0.1:4173/artists/izna?section=members",
+          "headings": [
+            "成员"
+          ],
+          "textLength": 214,
+          "width": 1440,
+          "documentWidth": 1440
+        },
+        {
+          "label": "作品",
+          "href": "/artists/izna?section=works",
+          "url": "http://127.0.0.1:4173/artists/izna?section=works",
+          "headings": [
+            "作品"
+          ],
+          "textLength": 854,
+          "width": 1440,
+          "documentWidth": 1440
+        },
+        {
+          "label": "时间轴",
+          "href": "/artists/izna?section=updates",
+          "url": "http://127.0.0.1:4173/artists/izna?section=updates",
+          "headings": [
+            "时间轴"
+          ],
+          "textLength": 752,
+          "width": 1440,
+          "documentWidth": 1440
+        }
+      ],
+      "index": {
+        "href": "/review-izna/records.html?view=groups",
+        "url": "http://127.0.0.1:4173/review-izna/records.html?view=groups",
+        "heading": [
+          "团体索引1"
+        ],
+        "cardText": "izna · WAKEONE 官方资料照\nIZNA / 开场之后\nizna\n\nizna 于 2024 年 11 月 25 日以首张迷你专辑《N/a》出道。\n\n6 位收录成员\n9 支作品\n进入团体主页",
+        "image": {
+          "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016-webp-v1/group-display.webp",
+          "width": 1143,
+          "height": 1600,
+          "complete": true
+        },
+        "returnUrl": "http://127.0.0.1:4173/artists/izna"
+      },
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    }
+  ],
+  "recoveryCases": [
+    {
+      "kind": "stylesheet-error-exit-and-retry",
+      "expectedBlockedStylesheet": true,
+      "blockedStylesheet": 1,
+      "width": 320,
+      "height": 844,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [
+        {
+          "message": "Failed to load resource: net::ERR_FAILED",
+          "url": "http://127.0.0.1:4173/artist/izna/native-v3/izna.css"
+        }
+      ],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\hero-style-error-320.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-style-recovered-320.png"
+      ],
+      "error": {
+        "text": "本团样式未能载入，请重新进入。 重新打开",
+        "role": "status",
+        "href": "/review-izna/records.html?view=groups"
+      },
+      "exitUrl": "http://127.0.0.1:4173/review-izna/records.html?view=groups",
+      "exitHeadings": [
+        "团体索引1"
+      ],
+      "recovered": {
+        "title": "izna",
+        "viewport": 320,
+        "documentWidth": 320,
+        "rootWidth": 320,
+        "rootRect": {
+          "x": 0,
+          "y": 34,
+          "width": 320,
+          "height": 5054.96875,
+          "top": 34,
+          "right": 320,
+          "bottom": 5088.96875,
+          "left": 0
+        },
+        "outerIndexLinks": 0,
+        "indexLink": {
+          "label": "返回团体索引",
+          "href": "/review-izna/records.html?view=groups"
+        },
+        "header": {
+          "x": 0,
+          "y": 34,
+          "width": 320,
+          "height": 60,
+          "top": 34,
+          "right": 320,
+          "bottom": 94,
+          "left": 0
+        },
+        "hero": {
+          "x": 16,
+          "y": 111.0307388305664,
+          "width": 288,
+          "height": 403.1875305175781,
+          "top": 111.0307388305664,
+          "right": 304,
+          "bottom": 514.2182693481445,
+          "left": 16
+        },
+        "image": {
+          "rect": {
+            "x": 16,
+            "y": 111.0307388305664,
+            "width": 288,
+            "height": 403.1875305175781,
+            "top": 111.0307388305664,
+            "right": 304,
+            "bottom": 514.2182693481445,
+            "left": 16
+          },
+          "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/group-original.png",
+          "naturalWidth": 1500,
+          "naturalHeight": 2100,
+          "complete": true,
+          "objectFit": "contain",
+          "objectPosition": "50% 50%"
+        },
+        "scaleX": 0.192,
+        "scaleY": 0.1919940621512277,
+        "sourceVisible": {
+          "x": 0,
+          "y": 0,
+          "width": 1500,
+          "height": 2100
+        },
+        "clippers": [
+          {
+            "tag": "SPAN",
+            "className": "asset-frame home-hero-image",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 16,
+              "y": 111.0307388305664,
+              "width": 288,
+              "height": 403.1875305175781,
+              "top": 111.0307388305664,
+              "right": 304,
+              "bottom": 514.2182693481445,
+              "left": 16
+            }
+          },
+          {
+            "tag": "DIV",
+            "className": "home-hero-viewport",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 16,
+              "y": 111.0307388305664,
+              "width": 288,
+              "height": 403.1875305175781,
+              "top": 111.0307388305664,
+              "right": 304,
+              "bottom": 514.2182693481445,
+              "left": 16
+            }
+          }
+        ],
+        "controls": [
+          {
+            "tag": "A",
+            "text": "成员 →",
+            "href": "/artists/izna?section=members",
+            "label": null,
+            "rect": {
+              "x": 16,
+              "y": 526.21826171875,
+              "width": 45.140625,
+              "height": 44,
+              "top": 526.21826171875,
+              "right": 61.140625,
+              "bottom": 570.21826171875,
+              "left": 16
+            }
+          },
+          {
+            "tag": "A",
+            "text": "作品 →",
+            "href": "/artists/izna?section=works",
+            "label": null,
+            "rect": {
+              "x": 86.421875,
+              "y": 526.21826171875,
+              "width": 45.140625,
+              "height": 44,
+              "top": 526.21826171875,
+              "right": 131.5625,
+              "bottom": 570.21826171875,
+              "left": 86.421875
+            }
+          },
+          {
+            "tag": "A",
+            "text": "时间轴 →",
+            "href": "/artists/izna?section=updates",
+            "label": null,
+            "rect": {
+              "x": 156.84375,
+              "y": 526.21826171875,
+              "width": 59.140625,
+              "height": 44,
+              "top": 526.21826171875,
+              "right": 215.984375,
+              "bottom": 570.21826171875,
+              "left": 156.84375
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "text": "查看原图 ↗",
+            "href": null,
+            "label": null,
+            "rect": {
+              "x": 241.265625,
+              "y": 526.21826171875,
+              "width": 62.734375,
+              "height": 44,
+              "top": 526.21826171875,
+              "right": 304,
+              "bottom": 570.21826171875,
+              "left": 241.265625
+            }
+          }
+        ],
+        "visibleDecorations": [],
+        "badImages": [
+          {
+            "src": "",
+            "alt": "DUMB HOT! 封面"
+          },
+          {
+            "src": "",
+            "alt": "SET THE TEMPO 封面"
+          },
+          {
+            "src": "",
+            "alt": "Love All 封面"
+          },
+          {
+            "src": "",
+            "alt": "Not Just Pretty 封面"
+          },
+          {
+            "src": "",
+            "alt": "BEEP 封面"
+          },
+          {
+            "src": "",
+            "alt": "SIGN 封面"
+          },
+          {
+            "src": "",
+            "alt": "N/a 封面"
+          },
+          {
+            "src": "",
+            "alt": "METRONOME 官方MV"
+          },
+          {
+            "src": "",
+            "alt": "DUMB HOT! 官方MV"
+          }
+        ],
+        "frameworkOverlays": 0
+      },
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    },
+    {
+      "kind": "stylesheet-error-exit-and-retry",
+      "expectedBlockedStylesheet": true,
+      "blockedStylesheet": 1,
+      "width": 1440,
+      "height": 1000,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [
+        {
+          "message": "Failed to load resource: net::ERR_FAILED",
+          "url": "http://127.0.0.1:4173/artist/izna/native-v3/izna.css"
+        }
+      ],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\hero-style-error-1440.png",
+        "E:\\project\\idol-hero-web-20261023\\hero-style-recovered-1440.png"
+      ],
+      "error": {
+        "text": "本团样式未能载入，请重新进入。 重新打开",
+        "role": "status",
+        "href": "/review-izna/records.html?view=groups"
+      },
+      "exitUrl": "http://127.0.0.1:4173/review-izna/records.html?view=groups",
+      "exitHeadings": [
+        "团体索引1"
+      ],
+      "recovered": {
+        "title": "izna",
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "rootWidth": 1440,
+        "rootRect": {
+          "x": 0,
+          "y": 34,
+          "width": 1440,
+          "height": 5319.59375,
+          "top": 34,
+          "right": 1440,
+          "bottom": 5353.59375,
+          "left": 0
+        },
+        "outerIndexLinks": 0,
+        "indexLink": {
+          "label": "返回团体索引",
+          "href": "/review-izna/records.html?view=groups"
+        },
+        "header": {
+          "x": 0,
+          "y": 34,
+          "width": 1440,
+          "height": 81,
+          "top": 34,
+          "right": 1440,
+          "bottom": 115,
+          "left": 0
+        },
+        "hero": {
+          "x": 160,
+          "y": 140.86062622070312,
+          "width": 1120,
+          "height": 746.65625,
+          "top": 140.86062622070312,
+          "right": 1280,
+          "bottom": 887.5168762207031,
+          "left": 160
+        },
+        "image": {
+          "rect": {
+            "x": 160,
+            "y": -493.8060302734375,
+            "width": 1120,
+            "height": 1568,
+            "top": -493.8060302734375,
+            "right": 1280,
+            "bottom": 1074.1939697265625,
+            "left": 160
+          },
+          "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/group-original.png",
+          "naturalWidth": 1500,
+          "naturalHeight": 2100,
+          "complete": true,
+          "objectFit": "contain",
+          "objectPosition": "50% 50%"
+        },
+        "scaleX": 0.7466666666666667,
+        "scaleY": 0.7466666666666667,
+        "sourceVisible": {
+          "x": 0,
+          "y": 849.9999863760812,
+          "width": 1500,
+          "height": 999.9860491071428
+        },
+        "clippers": [
+          {
+            "tag": "SPAN",
+            "className": "asset-frame home-hero-image",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 160,
+              "y": -493.8060302734375,
+              "width": 1120,
+              "height": 1568,
+              "top": -493.8060302734375,
+              "right": 1280,
+              "bottom": 1074.1939697265625,
+              "left": 160
+            }
+          },
+          {
+            "tag": "DIV",
+            "className": "home-hero-viewport",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "rect": {
+              "x": 160,
+              "y": 140.86062622070312,
+              "width": 1120,
+              "height": 746.65625,
+              "top": 140.86062622070312,
+              "right": 1280,
+              "bottom": 887.5168762207031,
+              "left": 160
+            }
+          }
+        ],
+        "controls": [
+          {
+            "tag": "A",
+            "text": "成员 →",
+            "href": "/artists/izna?section=members",
+            "label": null,
+            "rect": {
+              "x": 160,
+              "y": 903.516845703125,
+              "width": 51.59375,
+              "height": 44,
+              "top": 903.516845703125,
+              "right": 211.59375,
+              "bottom": 947.516845703125,
+              "left": 160
+            }
+          },
+          {
+            "tag": "A",
+            "text": "作品 →",
+            "href": "/artists/izna?section=works",
+            "label": null,
+            "rect": {
+              "x": 503.609375,
+              "y": 903.516845703125,
+              "width": 51.59375,
+              "height": 44,
+              "top": 903.516845703125,
+              "right": 555.203125,
+              "bottom": 947.516845703125,
+              "left": 503.609375
+            }
+          },
+          {
+            "tag": "A",
+            "text": "时间轴 →",
+            "href": "/artists/izna?section=updates",
+            "label": null,
+            "rect": {
+              "x": 847.203125,
+              "y": 903.516845703125,
+              "width": 67.59375,
+              "height": 44,
+              "top": 903.516845703125,
+              "right": 914.796875,
+              "bottom": 947.516845703125,
+              "left": 847.203125
+            }
+          },
+          {
+            "tag": "BUTTON",
+            "text": "查看原图 ↗",
+            "href": null,
+            "label": null,
+            "rect": {
+              "x": 1206.8125,
+              "y": 903.516845703125,
+              "width": 73.1875,
+              "height": 44,
+              "top": 903.516845703125,
+              "right": 1280,
+              "bottom": 947.516845703125,
+              "left": 1206.8125
+            }
+          }
+        ],
+        "visibleDecorations": [],
+        "badImages": [
+          {
+            "src": "",
+            "alt": "HANDLE WITH CARE 封面"
+          },
+          {
+            "src": "",
+            "alt": "DUMB HOT! 封面"
+          },
+          {
+            "src": "",
+            "alt": "SET THE TEMPO 封面"
+          },
+          {
+            "src": "",
+            "alt": "Love All 封面"
+          },
+          {
+            "src": "",
+            "alt": "Not Just Pretty 封面"
+          },
+          {
+            "src": "",
+            "alt": "BEEP 封面"
+          },
+          {
+            "src": "",
+            "alt": "SIGN 封面"
+          },
+          {
+            "src": "",
+            "alt": "N/a 封面"
+          },
+          {
+            "src": "",
+            "alt": "METRONOME 官方MV"
+          },
+          {
+            "src": "",
+            "alt": "DUMB HOT! 官方MV"
+          }
+        ],
+        "frameworkOverlays": 0
+      },
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    }
+  ],
+  "protectedCases": [
+    {
+      "kind": "accepted-group-smoke",
+      "slug": "genblue",
+      "width": 320,
+      "height": 844,
+      "failures": [
+        "Accepted group horizontal overflow"
+      ],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\protected-genblue-320.png"
+      ],
+      "status": 200,
+      "title": "GENBLUE · 页面验收 · 示例资料",
+      "state": {
+        "textLength": 452,
+        "width": 360,
+        "documentWidth": 360,
+        "headings": [
+          "GENBLUE"
+        ],
+        "badImages": []
+      },
+      "baselineObservation": "Existing protected GENBLUE package has 360px document width at a 320px viewport. All 100 protected files match the pre-change baseline; not an izna regression and not corrected in this scope.",
+      "unexpectedConsoleErrors": [],
+      "passed": false
+    },
+    {
+      "kind": "accepted-group-smoke",
+      "slug": "genblue",
+      "width": 1440,
+      "height": 1000,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\protected-genblue-1440.png"
+      ],
+      "status": 200,
+      "title": "GENBLUE · 页面验收 · 示例资料",
+      "state": {
+        "textLength": 452,
+        "width": 1440,
+        "documentWidth": 1440,
+        "headings": [
+          "GENBLUE"
+        ],
+        "badImages": []
+      },
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    },
+    {
+      "kind": "accepted-group-smoke",
+      "slug": "wooah",
+      "width": 320,
+      "height": 844,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\protected-wooah-320.png"
+      ],
+      "status": 200,
+      "title": "WOOAH · 页面验收 · 示例资料",
+      "state": {
+        "textLength": 688,
+        "width": 320,
+        "documentWidth": 320,
+        "headings": [
+          "WOOAH"
+        ],
+        "badImages": []
+      },
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    },
+    {
+      "kind": "accepted-group-smoke",
+      "slug": "wooah",
+      "width": 1440,
+      "height": 1000,
+      "failures": [],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "httpErrors": [],
+      "blockedExternal": [],
+      "screenshots": [
+        "E:\\project\\idol-hero-web-20261023\\protected-wooah-1440.png"
+      ],
+      "status": 200,
+      "title": "WOOAH · 页面验收 · 示例资料",
+      "state": {
+        "textLength": 688,
+        "width": 1440,
+        "documentWidth": 1440,
+        "headings": [
+          "WOOAH"
+        ],
+        "badImages": []
+      },
+      "unexpectedConsoleErrors": [],
+      "passed": true
+    }
+  ],
+  "sourceFingerprint": "217e48000f09bf157f781c62062b01f648eac9199dac02ae991e7bd01441fa50",
+  "manifestSha256": "98db83864396e0fc5dc9b04d4d4c8778cadd1a1a9a45a564c9d0f90a9ecef857",
+  "protectedFiles": {
+    "count": 100,
+    "mismatches": []
+  },
+  "finishedAt": "2026-10-23T09:24:39.861Z",
+  "summary": {
+    "cases": 13,
+    "passed": 12,
+    "failed": [
+      {
+        "kind": "accepted-group-smoke",
+        "slug": "genblue",
+        "width": 320,
+        "failures": [
+          "Accepted group horizontal overflow"
+        ]
+      }
+    ]
+  }
+}

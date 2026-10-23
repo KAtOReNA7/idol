@@ -16,10 +16,32 @@ test('all 20 original assets retain exact bytes and strict group/size/digest res
  }
  assert.equal(assets.filter(a=>a.url.includes('/native-v3/')).length,12);
 });
-test('independent renderer, runtime, focus and stylesheet preserve candidate source bytes',()=>{
+test('candidate source stays byte-exact outside the approved izna opening and original-asset metadata',()=>{
  const base='../../handoffs/codex-20261022/astra-izna-ifeye-v3/source';
- for(const file of ['izna.mjs','runtime.mjs','focus.mjs'])assert.deepEqual(fs.readFileSync('lib/idol/izna-runtime/'+file),fs.readFileSync(base+'/lib/idol/design-review/astra-izna-ifeye-runtime/'+file));
- assert.deepEqual(fs.readFileSync('public/artist/izna/native-v3/izna.css'),fs.readFileSync(base+'/public/design-review/astra/izna.css'));
+ const read=(file,current)=>fs.readFileSync(current?'lib/idol/izna-runtime/'+file:base+'/lib/idol/design-review/astra-izna-ifeye-runtime/'+file,'utf8');
+ assert.equal(read('focus.mjs',true),read('focus.mjs',false));
+ function unchangedRuntime(source){
+  for(const prefix of ['const assetQualityPolicies=Object.freeze([','const canonicalAssetIdentityRows=Object.freeze([']){
+   const start=source.indexOf(prefix)+prefix.length,end=source.indexOf('},{',start)+1,row=JSON.parse(source.slice(start,end));
+   assert.equal(row.slug,'izna');assert.ok(['groups/izna/assets/hero.jpg','groups/izna/assets/group-original.png'].includes(row.key||row.assetKey));
+   source=source.slice(0,start)+'IZNA_HERO_METADATA'+source.slice(end);
+  }
+  return source;
+ }
+ assert.equal(unchangedRuntime(read('runtime.mjs',true)),unchangedRuntime(read('runtime.mjs',false)));
+ function unchangedRenderer(source,current){
+  if(current){const helper=source.indexOf(' // The separate text control'),end=source.indexOf(' function home(){',helper);assert.ok(helper>0&&end>helper);source=source.slice(0,helper)+source.slice(end);}
+  const hero=source.indexOf(current?'<section class="home-hero"':'<section class="night-hero"'),chapter=source.indexOf('<section class="chapter home-members">',hero);assert.ok(hero>0&&chapter>hero);
+  source=source.slice(0,hero)+'APPROVED_HOME_HERO'+source.slice(chapter);
+  const header=source.indexOf(current?"${page==='home'?`":'<header class="site-header">',source.indexOf(' function renderPage()'));
+  const end=source.indexOf(current?'</header>`}':'</header>',header)+(current?11:9);assert.ok(header>0&&end>header);
+  return source.slice(0,header)+'APPROVED_HOME_HEADER'+source.slice(end);
+ }
+ assert.equal(unchangedRenderer(read('izna.mjs',true),true),unchangedRenderer(read('izna.mjs',false),false));
+ const oldCss=fs.readFileSync(base+'/public/design-review/astra/izna.css','utf8'),css=fs.readFileSync('public/artist/izna/native-v3/izna.css','utf8');
+ assert.equal(css.slice(0,oldCss.length),oldCss);
+ const addedCss=css.slice(oldCss.length).replace(/\/\*[\s\S]*?\*\//g,'').trim();assert.ok(addedCss);
+ for(const rule of addedCss.split('}').filter(rule=>rule.trim()))for(const selector of rule.split('{')[0].split(','))assert.match(selector.trim(),/^\[data-astra-group="izna"\](?:\[data-astra-max-width~="767"\])? \.home-/);
 });
 test('7 members and 15 exact video slots bind to the current catalog without changing records',()=>{
  const before=JSON.stringify(actual);assert.equal(api.validIznaCatalog(actual),true);assert.equal(api.iznaNativeBindings(actual).length,22);

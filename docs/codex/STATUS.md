@@ -1,6 +1,6 @@
 # 共享开发状态
 
-更新：北京时间2026-10-24。当前分支 **`codex/youngposse-review-completion`**，基于VVUP的 `75c22b7ec26f53fbbf14db1b253a8cce52a59d81`。正式工程 `apps/idol-site/`；最新提交和draft PR见[RESUME](RESUME.md)，不从旧main接续。
+更新：北京时间2026-10-24。当前分支 **`codex/youngposse-review-completion`**，基于VVUP的 `75c22b7ec26f53fbbf14db1b253a8cce52a59d81`。正式工程 `apps/idol-site/`；draft [PR #13](https://github.com/KAtOReNA7/idol/pull/13)，代码 `7c51709` 已推送，最新接续见[RESUME](RESUME.md)，不从旧main接续。
 
 用户“可以 继续开发”已确认VVUP v20。YOUNG POSSE **v21 owner-private已发布，等待页面人工确认**：保留独立黑色酸黄设计，五人等大照片与成员搜索、真正原图、15发行/22影像槽/39关系、14事件与手帐往返。138测试、类型、正式构建、28交互/3失败恢复及七页五宽真视口通过。237旧QA文件SHA不变，主站仍v186。
 

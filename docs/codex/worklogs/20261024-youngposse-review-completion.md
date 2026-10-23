@@ -45,4 +45,4 @@ Figma文件 `zeLNExz4TbpWRW3uiahef7`，page `850:1132`。实际取得首页1440/
 - 237旧out文件SHA不变，增35到272；gzip67,451,318 bytes，含hosting常规内容78,496,455 bytes。旧dist保留。最终指纹 `1deb58520f77719079c4f61364d3c7c5c8b14e38bea5ee1e508c0001d62353cd`，155源码输入SHA与发布清单一致。
 - `review/youngposse/`通过白名单清空个人字段，只允许本团GET；写入405、其他API404、外部fetch403，原始snapshot和保存模块不进入包。
 - 已请求Codex打开线上地址，返回queued；未将其当作已登录线上浏览器验证。真实保存/播放、原生80%/125%缩放、精确视频图/MV个人造型未验或缺失。
-- GitHub draft PR与提交在收尾补记；后续以远端本分支最新HEAD接续。先处理本团人工反馈，当前不开发下一团。
+- GitHub draft [PR #13](https://github.com/KAtOReNA7/idol/pull/13)已建立并附加，代码提交 `7c517099319cac96c66e29051ed262cd5899ed68` 已推送；文档收尾以远端本分支最新HEAD接续。先处理本团人工反馈，当前不开发下一团。

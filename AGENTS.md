@@ -5,7 +5,7 @@
 ## 最新执行决定（2026-10-24 YOUNG POSSE v21）
 
 - 用户“可以 继续开发”已确认VVUP v20；本轮只推进YOUNG POSSE。**等待YOUNG POSSE页面人工确认后再开发下一团，公共功能例外。**
-- 最新分支 **`codex/youngposse-review-completion`**，基于VVUP的 `75c22b7ec26f53fbbf14db1b253a8cce52a59d81`。正式工程 `apps/idol-site/`；GitHub交付见[RESUME](docs/codex/RESUME.md)及[本轮日志](docs/codex/worklogs/20261024-youngposse-review-completion.md)。
+- 最新分支 **`codex/youngposse-review-completion`**，基于VVUP的 `75c22b7ec26f53fbbf14db1b253a8cce52a59d81`。正式工程 `apps/idol-site/`；draft [PR #13](https://github.com/KAtOReNA7/idol/pull/13)，代码 `7c51709`，接续见[RESUME](docs/codex/RESUME.md)及[本轮日志](docs/codex/worklogs/20261024-youngposse-review-completion.md)。
 - [YOUNG POSSE v21 owner-private审阅](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/youngposse/index.html)：保留Posse in Frame设计，五人等大照片、成员搜索、真正原图、15发行/22影像槽/39关系、14事件与原生手帐往返。Figma首页和成员目录1440/390共20照片槽布局同步。
 - 138测试、类型、正式构建通过；28交互、3失败恢复和七页五宽真视口通过。237旧QA文件SHA不变。真实保存/播放、原生缩放、线上已登录浏览器、完整Figma与两项发行缺口仍待办；正式主站仍v186。
 

@@ -8,7 +8,7 @@
 | 应检出分支 | **`codex/youngposse-review-completion` 最新远端HEAD** |
 | 正式工程 | `apps/idol-site/`；根目录为历史Next sandbox |
 | 基线 | `75c22b7ec26f53fbbf14db1b253a8cce52a59d81`，`codex/vvup-review-completion` |
-| GitHub交付 | 提交与draft PR收尾补记；最新远端HEAD为准 |
+| GitHub交付 | draft [PR #13](https://github.com/KAtOReNA7/idol/pull/13)；代码提交 `7c517099319cac96c66e29051ed262cd5899ed68`，其后文档以最新远端HEAD为准 |
 | 当前阶段 | VVUP v20及前七团页面已确认；**YOUNG POSSE v21等人工确认** |
 | 审阅 | [YOUNG POSSE页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/youngposse/index.html) |
 | 证据 | [本轮日志](worklogs/20261024-youngposse-review-completion.md)、[验证目录](evidence/20261024-youngposse-review-completion/) |

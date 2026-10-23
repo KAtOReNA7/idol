@@ -2,7 +2,7 @@
 
 > 完整 v186 源码已在提交 `f24075fc98893793e82adbc92cadc9e58257728f` 推送并读回核验，工作目录为 `apps/idol-site/`。本次文档和三个隔离候选随当前交接提交提供。用户已批准本次现有评分、备注、观看快照公开入仓；不扩展到未来任意数据、秘密或凭证。
 
-更新日期：2026-10-23（接续阶段更新，产品要求保留）。本文面向接续项目的 Codex 开发者。目标是继续完成可实际使用、每团有独立设计的女团网站，不是重建开发平台或重新设计保存系统。
+更新日期：2026-10-24（接续阶段更新，产品要求保留）。本文面向接续项目的 Codex 开发者。目标是继续完成可实际使用、每团有独立设计的女团网站，不是重建开发平台或重新设计保存系统。
 
 从仓库根目录 `AGENTS.md` 进入，再读 [RESUME](RESUME.md)、[STATUS](STATUS.md)、本文件、[开发入口](CODEX-START.md) 和 [验收清单](ACCEPTANCE.md)。最新阶段与未完成项以RESUME、STATUS和本轮工作日志为准；[CURRENT-STATE](CURRENT-STATE.md)保留迁移时的历史快照，需求不能被历史测试结果代替。
 
@@ -24,7 +24,7 @@ Sol 的已核 15 团名单：UDTT、KATSEYE、VCHA、HITGS、AtHeart、i-dle、I
 
 Astra 的已核 15 团名单：Hearts2Hearts、SAY MY NAME、izna、ifeye、GENBLUE、VVUP、YOUNG POSSE、BEWAVE、Candy Shop、ODD YOUTH、ADYA、Geenius、TRACER、W!TCHX、SPIA。原批次未包括的已有网站页面继续保护，但不据目录数量扩大本次批次。
 
-当前接续分支为 `codex/saymyname-review-completion`，基于KiiiKiii的 `f91a66ce`。前六团页面已确认，SAY MY NAME v19已发布等待人工验收；确认前不推进下一团，公共功能例外。阶段和未验项以[RESUME](RESUME.md)、[STATUS](STATUS.md)及[SAY MY NAME日志](worklogs/20261023-saymyname-review-completion.md)为准。正式主站仍v186；页面认可不替代真实保存、完整设计或生产验收。
+当前接续分支为 `codex/vvup-review-completion`，基于SAY MY NAME的 `06601304`。前七团页面已确认，VVUP v20已发布等待人工验收；确认前不推进下一团，公共功能例外。阶段和未验项以[RESUME](RESUME.md)、[STATUS](STATUS.md)及[VVUP日志](worklogs/20261024-vvup-review-completion.md)为准。正式主站仍v186；页面认可不替代真实保存、完整设计或生产验收。
 
 以下不属于默认范围：
 

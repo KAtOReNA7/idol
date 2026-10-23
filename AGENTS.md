@@ -2,7 +2,14 @@
 
 在为 Sol、Astra 或其他会话编写任务指令、接续实现、汇总验收之前，先阅读 [设计要求与验收基准](docs/design-requirements.md) 和 [跨会话派工与验收手册](docs/collaboration-playbook.md) 中的最新用户决定，再核对当前源码和最新交付。
 
-## 最新执行决定（2026-10-23 SAY MY NAME v19）
+## 最新执行决定（2026-10-24 VVUP v20）
+
+- 用户已用“可以 继续开发”确认SAY MY NAME v19；本轮仅推进VVUP。**等待VVUP页面人工确认后再开发下一团，公共功能例外。**
+- 最新分支 **`codex/vvup-review-completion`**，基于 `06601304be62beff7fea7a5f87fa9e3336e71c64`；正式工程 `apps/idol-site/`。draft [PR #12](https://github.com/KAtOReNA7/idol/pull/12)，代码提交 `48c2c7bb410a4fae8adf35550bd7609bf226c0d0`；接续见 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261024-vvup-review-completion.md)，以远端最新HEAD接续。
+- [VVUP v20 owner-private审阅](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/vvup/index.html)已发布：深色酸黄独立页，四位官方成员/历史档案、原图、七发行/三封面、七影像/六舞台/16关系、时间轴与手帐往返；桌面/手机Figma首页16槽实图已写入。
+- 117测试、类型和正式构建通过；21项实际交互/状态、七页五宽真视口通过。216旧QA文件SHA不变；正式主站仍v186。真实保存/播放、线上已登录浏览器、原生缩放、完整Figma内页与缺图仍待验。
+
+## 历史检查点（2026-10-23 SAY MY NAME v19）
 
 - 上一会话在 KiiiKiii v18 交付后已收到用户“已确认，继续开发”；本会话恢复该确认并接续。KiiiKiii 页面已确认，本轮只推进原计划内 SAY MY NAME。
 - 最新分支 **`codex/saymyname-review-completion`**，基于 `f91a66ce9466cd12c64ebe9a9b16d84739b45fc9`；正式工程 `apps/idol-site/`。draft [PR #11](https://github.com/KAtOReNA7/idol/pull/11)，代码提交 `5c28500cdeb5920ba3d7640b50065cffebe1d3b4`；文档以最新远端 HEAD 为准。先读 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261023-saymyname-review-completion.md)。

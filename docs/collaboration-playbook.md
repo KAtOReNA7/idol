@@ -2,9 +2,9 @@
 更新：2026-10-22（执行方式更新，保留原 2026-10-21 历史案例）。适用：女团资料库、网站和 Codex 多电脑协作。
 这是工程交接规范，不是新增授权。执行时以用户最新要求、当前工具权限和已核实状态为准。
 
-## 2026-10-23 最新逐团门槛
+## 2026-10-24 最新逐团门槛
 
-GENBLUE v10、WOOAH v12、izna v15、ifeye v16、Hearts2Hearts v17、KiiiKiii v18 已获用户页面确认。本轮 SAY MY NAME v19 已发布，等待人工验收；确认前不开发下一团，公共功能例外。正式工程 `apps/idol-site/`，最新分支 `codex/saymyname-review-completion`。从 [RESUME](codex/RESUME.md) 和 [本轮日志](codex/worklogs/20261023-saymyname-review-completion.md) 接续。设计、功能、资料、上线仍分别验收。下文此前检查点为历史。
+用户在 SAY MY NAME v19 后回复“可以 继续开发”，该页面已确认。本轮仅推进原计划内VVUP，**v20已发布，等待VVUP页面人工确认后再开发下一团，公共功能例外**。正式工程 `apps/idol-site/`，最新分支 `codex/vvup-review-completion`。从 [RESUME](codex/RESUME.md) 和 [本轮日志](codex/worklogs/20261024-vvup-review-completion.md) 接续。四位官方成员与一位历史档案、七发行、七影像和原生手帐往返已落地；设计、功能、资料、上线仍分别验收，正式主站仍v186。下方此前检查点为历史。
 
 ## 当前执行方式：2026-10-22 Codex 迁移试用
 - 用户已选择 Codex 迁移试用，取代“暂不迁移、主会话继续负责”的旧执行安排。正式工程是 `apps/idol-site/`，原生清单是 [SOURCE-MANIFEST](codex/SOURCE-MANIFEST.json)；根 sandbox 及旧根清单只说明历史样本。

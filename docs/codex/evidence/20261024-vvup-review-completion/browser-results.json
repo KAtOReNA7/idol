@@ -1,0 +1,414 @@
+{
+  "browser": "installed Chrome; bundled Playwright; Browser plugin not available",
+  "base": "http://127.0.0.1:4179/artists/vvup/index.html",
+  "checks": [
+    {
+      "label": "成员原图 Escape 关闭恢复焦点",
+      "pass": true
+    },
+    {
+      "label": "成员作品切换精确舞台",
+      "pass": true
+    },
+    {
+      "label": "作品返回成员保留中文搜索",
+      "pass": true
+    },
+    {
+      "label": "成员目录刷新保留搜索",
+      "pass": true
+    },
+    {
+      "label": "英文成员搜索",
+      "pass": true
+    },
+    {
+      "label": "四位官方成员与一位历史成员分区",
+      "pass": true
+    },
+    {
+      "label": "历史个人记录往返保留阵容范围",
+      "pass": true
+    },
+    {
+      "label": "发行原封面关闭恢复焦点",
+      "pass": true
+    },
+    {
+      "label": "发行作品往返保留发行和查询",
+      "pass": true
+    },
+    {
+      "label": "返回发行目录保留查询",
+      "pass": true
+    },
+    {
+      "label": "4 Life 日期未知且视频类型独立",
+      "pass": true
+    },
+    {
+      "label": "MV 筛选仅六支官方 MV",
+      "pass": true
+    },
+    {
+      "label": "时间轴作品往返",
+      "pass": true
+    },
+    {
+      "label": "时间轴历史成员往返",
+      "pass": true
+    },
+    {
+      "label": "空结果 ?section=members&q=nomatch",
+      "pass": true
+    },
+    {
+      "label": "空结果 ?section=records&q=nomatch",
+      "pass": true
+    },
+    {
+      "label": "空结果 ?section=works&q=nomatch",
+      "pass": true
+    },
+    {
+      "label": "未知成员有返回入口",
+      "pass": true
+    },
+    {
+      "label": "未知发行有返回入口",
+      "pass": true
+    },
+    {
+      "label": "手机共享影像详情无横向溢出",
+      "pass": true
+    },
+    {
+      "label": "页面身份、控制台与运行时正常",
+      "pass": true
+    }
+  ],
+  "layouts": [
+    {
+      "name": "home",
+      "width": 320,
+      "scrollWidth": 320,
+      "body": 816,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "members",
+      "width": 320,
+      "scrollWidth": 320,
+      "body": 177,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "member",
+      "width": 320,
+      "scrollWidth": 320,
+      "body": 409,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "releases",
+      "width": 320,
+      "scrollWidth": 320,
+      "body": 408,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "release",
+      "width": 320,
+      "scrollWidth": 320,
+      "body": 221,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "works",
+      "width": 320,
+      "scrollWidth": 320,
+      "body": 538,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "timeline",
+      "width": 320,
+      "scrollWidth": 320,
+      "body": 505,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "home",
+      "width": 390,
+      "scrollWidth": 390,
+      "body": 816,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "members",
+      "width": 390,
+      "scrollWidth": 390,
+      "body": 177,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "member",
+      "width": 390,
+      "scrollWidth": 390,
+      "body": 409,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "releases",
+      "width": 390,
+      "scrollWidth": 390,
+      "body": 408,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "release",
+      "width": 390,
+      "scrollWidth": 390,
+      "body": 221,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "works",
+      "width": 390,
+      "scrollWidth": 390,
+      "body": 538,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "timeline",
+      "width": 390,
+      "scrollWidth": 390,
+      "body": 505,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "home",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "body": 816,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "members",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "body": 177,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "member",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "body": 409,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "releases",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "body": 408,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "release",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "body": 221,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "works",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "body": 538,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "timeline",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "body": 505,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "home",
+      "width": 2048,
+      "scrollWidth": 2048,
+      "body": 816,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "members",
+      "width": 2048,
+      "scrollWidth": 2048,
+      "body": 177,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "member",
+      "width": 2048,
+      "scrollWidth": 2048,
+      "body": 409,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "releases",
+      "width": 2048,
+      "scrollWidth": 2048,
+      "body": 408,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "release",
+      "width": 2048,
+      "scrollWidth": 2048,
+      "body": 221,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "works",
+      "width": 2048,
+      "scrollWidth": 2048,
+      "body": 538,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "timeline",
+      "width": 2048,
+      "scrollWidth": 2048,
+      "body": 505,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "home",
+      "width": 2560,
+      "scrollWidth": 2560,
+      "body": 816,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "members",
+      "width": 2560,
+      "scrollWidth": 2560,
+      "body": 177,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "member",
+      "width": 2560,
+      "scrollWidth": 2560,
+      "body": 409,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "releases",
+      "width": 2560,
+      "scrollWidth": 2560,
+      "body": 408,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "release",
+      "width": 2560,
+      "scrollWidth": 2560,
+      "body": 221,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "works",
+      "width": 2560,
+      "scrollWidth": 2560,
+      "body": 538,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    },
+    {
+      "name": "timeline",
+      "width": 2560,
+      "scrollWidth": 2560,
+      "body": 505,
+      "broken": [],
+      "overlay": false,
+      "title": "VVUP · 页面审阅"
+    }
+  ],
+  "errors": [],
+  "unverified": [
+    "native browser zoom",
+    "real save",
+    "video playback",
+    "online authenticated browser"
+  ]
+}

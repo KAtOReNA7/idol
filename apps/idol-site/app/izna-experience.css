@@ -1,17 +1,137 @@
-.candidate-izna-experience{--paper:#f7f0e4;--white:#fffaf2;--ink:#22201f;--muted:#6c5f56;--line:#d7c8b7;--rose:#ad351e;--blush:#f7f0e4;--lilac:#fffaf2;background:var(--paper);color:var(--ink);min-height:100vh}
-.candidate-izna-experience .button{white-space:normal;max-width:100%}
-.candidate-izna-experience .work-aside,.candidate-izna-experience .member-detail>div{min-width:0}
-.candidate-izna-experience .work-aside h1,.candidate-izna-experience .member-detail h1{overflow-wrap:anywhere}
-.candidate-izna-experience .header{background:var(--paper)}
-.candidate-izna-experience .video-play{background:var(--rose);color:#ffffff}
-.candidate-izna-experience .editor-fields input,.candidate-izna-experience .editor-fields select,.candidate-izna-experience .editor-fields textarea{background:var(--white);color:var(--ink)}
-.candidate-izna-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,.9fr);gap:34px;align-items:start;border-top:6px solid var(--rose);padding-top:24px}.candidate-izna-experience .work-aside{border:0;border-left:2px solid var(--rose);border-radius:0;background:var(--white);padding:28px}.candidate-izna-experience .stage-view .work-detail-top{grid-template-columns:1fr}.candidate-izna-experience .stage-view .work-aside{display:block;border-left:0;border-top:2px solid var(--rose);max-width:none}.candidate-izna-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.candidate-izna-experience .cast-card{border-radius:0;border:0;border-top:3px solid var(--rose)}.candidate-izna-experience .member-detail{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:44px;border-top:6px solid var(--rose);padding-top:26px}.candidate-izna-experience .video-stage{border-radius:0}.candidate-izna-experience .stage-source{border-radius:0;border-left:4px solid var(--rose)}@media(max-width:760px){.candidate-izna-experience .work-detail-top,.candidate-izna-experience .member-detail{grid-template-columns:1fr;gap:22px}.candidate-izna-experience .work-aside{padding:20px}.candidate-izna-experience .cast-grid{grid-template-columns:1fr 1fr;gap:12px}.candidate-izna-experience .cast-card{padding:12px}.candidate-izna-experience .cast-copy{padding:10px 0}.candidate-izna-experience .member-name{font-size:16px}.candidate-izna-experience .stage-view .work-aside{border-top-width:5px}}
-@media(max-width:760px){.candidate-izna-experience .header{height:auto;min-height:78px;flex-wrap:wrap}.candidate-izna-experience .header nav{height:auto;flex-wrap:wrap}.candidate-izna-experience .editor-fields input,.candidate-izna-experience .editor-fields select,.candidate-izna-experience .editor-fields textarea{font-size:16px}}
-
-/* Batch B: visible focus and unbroken values within the existing player/editor. */
-.candidate-izna-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid var(--rose);outline-offset:4px}
-.candidate-izna-experience .cast-scores b,.candidate-izna-experience .work-score strong{white-space:nowrap;font-variant-numeric:tabular-nums}
-.candidate-izna-experience .cast-card .photo img{object-fit:contain}
-.candidate-izna-experience .work-detail-top>*,.candidate-izna-experience .member-detail>*{min-width:0}
-.candidate-izna-experience .video-mode-tabs{flex-wrap:wrap}
-@media(max-width:390px){.candidate-izna-experience .cast-grid{gap:10px}.candidate-izna-experience .cast-card{padding:10px}.candidate-izna-experience .cast-scores{flex-wrap:wrap;gap:8px}}
+/* Existing notebook controls and save guards, presented in izna's night palette. */
+.candidate-izna-experience{
+ --paper:#090e1d;--white:#11192b;--ink:#f5f4f7;--muted:#a8adbc;--line:#384153;--rose:#ded0ec;--blush:#182036;--lilac:#11192b;--silver:#1b2438;--dark:#070b15;--success:#b7dbc9;--warning:#e5c9a5;
+ --font-body:"Helvetica Neue","Noto Sans SC","PingFang SC","Microsoft YaHei",Arial,sans-serif;--font-editorial:var(--font-body);--font-number:var(--font-body);--radius-sm:0px;--radius-md:0px;--radius-lg:0px;
+ min-height:100vh;background:var(--paper);color:var(--ink);color-scheme:dark;font-family:var(--font-body);font-synthesis:none;
+}
+.candidate-izna-experience :is(h1,h2,h3){font-weight:500;letter-spacing:-.045em}
+.candidate-izna-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid #efbddb;outline-offset:4px}
+.candidate-izna-experience :is(.work-detail-top,.member-detail)>*,.candidate-izna-experience :is(.work-aside,.member-detail>div,.cast-copy){min-width:0}
+.candidate-izna-experience :is(.work-aside h1,.member-detail h1,.mobile-work-heading h1){overflow-wrap:anywhere;line-height:1.12}
+.candidate-izna-experience .header{background:var(--paper);border-bottom:1px solid var(--line);min-height:88px}
+.candidate-izna-experience .brand{font-family:var(--font-body);letter-spacing:-.075em;font-weight:650}
+.candidate-izna-experience .header nav button{font-size:13px;color:var(--muted)}
+.candidate-izna-experience .header nav button.active{color:var(--ink);border-color:var(--rose);font-weight:500}
+.candidate-izna-experience .private-pill{border-radius:0;color:var(--muted)}
+.candidate-izna-experience .source-status{background:transparent;border-color:var(--line)}
+.candidate-izna-experience .detail{padding-top:30px}
+.candidate-izna-experience .back{margin-bottom:28px;color:var(--rose)}
+.candidate-izna-experience .button{max-width:100%;min-height:44px;border-radius:0;white-space:normal;line-height:1.5;background:transparent;color:var(--rose);border:1px solid var(--line)}
+.candidate-izna-experience .button:hover:not(:disabled){border-color:var(--rose);background:var(--white)}
+.candidate-izna-experience .button.primary{background:var(--rose);color:var(--paper);border-color:var(--rose)}
+.candidate-izna-experience .button.primary:hover:not(:disabled){background:#efbddb;border-color:#efbddb;color:var(--paper)}
+/* One ruled spread keeps the video and its notebook visibly connected. */
+.candidate-izna-experience .video-mode-row{align-items:center;gap:24px;margin-bottom:28px}
+.candidate-izna-experience .video-mode-tabs{height:auto;min-height:50px;flex-basis:260px;padding:0;background:transparent;border-radius:0;border-block:1px solid var(--line);gap:12px;flex-wrap:wrap}
+.candidate-izna-experience .video-mode-tabs button{min-height:48px;border-radius:0;border-bottom:2px solid transparent;color:var(--muted);padding:10px 20px}
+.candidate-izna-experience .video-mode-tabs button[aria-selected=true]{background:transparent;color:var(--rose);border-bottom-color:var(--rose);font-weight:500}
+.candidate-izna-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:40px;align-items:start;border-top:1px solid var(--line);padding-top:28px}
+.candidate-izna-experience .work-aside{border:0;border-left:1px solid var(--line);border-radius:0;background:transparent;padding:4px 0 8px 32px}
+.candidate-izna-experience .work-aside h1{font-family:var(--font-body);font-size:clamp(34px,4.2vw,60px);font-weight:500;margin:18px 0 26px}
+.candidate-izna-experience .tags{gap:8px;margin:16px 0 22px}
+.candidate-izna-experience .tags span{border-radius:0;font-size:11px;padding:4px 8px;color:var(--muted)}
+.candidate-izna-experience .video-stage{border-radius:0;background:var(--dark);border:1px solid var(--line)}
+.candidate-izna-experience .video-stage>img{object-fit:contain;opacity:1}
+.candidate-izna-experience .video-play{min-height:64px;min-width:92px;border:1px solid var(--rose);border-radius:0;background:#090e1de8;color:var(--rose);padding:16px 22px}
+.candidate-izna-experience .video-play:hover{background:var(--rose);color:var(--paper)}
+.candidate-izna-experience :is(.video-caption,.video-fallback){font-size:12px;line-height:1.7}
+.candidate-izna-experience .video-caption{gap:12px;flex-wrap:wrap}
+.candidate-izna-experience .video-caption>span{min-width:0;overflow-wrap:anywhere}
+.candidate-izna-experience :is(.video-cover-fallback,.photo-empty){background:var(--white);color:var(--muted)}
+.candidate-izna-experience :is(.video-cover-retry,.photo-retry){border-radius:0;background:var(--white);border-color:var(--line);color:var(--rose);min-height:44px}
+.candidate-izna-experience :is(.stage-source,.caption-help,.stage-search-review,.alternative-card,.mv-member-shortcuts,.panel){border:1px solid var(--line);border-radius:0;background:var(--white);color:var(--muted)}
+.candidate-izna-experience .stage-source{padding:20px 24px;border-left:1px solid var(--rose)}
+.candidate-izna-experience .stage-source .stage-reuse-note{background:var(--blush);border-radius:0;color:var(--rose)}
+.candidate-izna-experience .mv-member-shortcuts{padding:20px;margin-top:22px;background:transparent}
+.candidate-izna-experience .mv-member-shortcuts>span{font-size:14px;font-weight:500;color:var(--ink)}
+.candidate-izna-experience .mv-member-shortcuts button{border-radius:0;background:transparent;color:var(--rose);border-color:var(--line);font-size:12px}
+.candidate-izna-experience .work-score{flex-wrap:wrap;gap:10px;padding:22px 0;margin:26px 0 22px;border-block:1px solid var(--line)}
+.candidate-izna-experience .work-score strong{color:var(--rose);font-size:clamp(26px,2.5vw,38px);font-weight:400;white-space:nowrap;font-variant-numeric:tabular-nums}
+.candidate-izna-experience .work-score>span{font-size:12px}
+.candidate-izna-experience .work-score small{flex-basis:100%;font-size:11px;color:var(--muted)}
+.candidate-izna-experience .public-record{padding:0;background:transparent;color:var(--ink);font-size:13px;line-height:1.9}
+.candidate-izna-experience .public-record>p{display:flex;flex-wrap:wrap;gap:4px 10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.candidate-izna-experience .public-record>p>span:first-child{color:var(--muted)}
+.candidate-izna-experience .public-record>p>span:last-child{min-width:0;overflow-wrap:anywhere}
+/* Preserve complete image composition and readable score columns. */
+.candidate-izna-experience .section{margin-block:64px}
+.candidate-izna-experience .section-heading{border-top:1px solid var(--line);padding-top:22px;margin-bottom:30px}
+.candidate-izna-experience .section-heading h2{font-size:clamp(26px,3vw,42px);line-height:1.25}
+.candidate-izna-experience .eyebrow{font-size:10px;letter-spacing:.11em;color:var(--muted)}
+.candidate-izna-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 28px}
+.candidate-izna-experience .cast-card{border:0;border-radius:0;border-bottom:1px solid var(--line);padding:0 0 24px;background:transparent}
+.candidate-izna-experience .cast-card .photo{aspect-ratio:1;border-radius:0;background:var(--white)}
+.candidate-izna-experience :is(.cast-card .photo,.member-detail>.photo,.member-work-card__art) img{object-fit:contain}
+.candidate-izna-experience .cast-copy{padding:18px 0 0}
+.candidate-izna-experience .member-name{font-size:20px;line-height:1.5;overflow-wrap:anywhere;color:var(--ink)}
+.candidate-izna-experience .member-name strong{font-weight:500}
+.candidate-izna-experience .cast-scores{gap:20px;flex-wrap:wrap;padding-top:16px;margin-top:16px;font-size:12px}
+.candidate-izna-experience .cast-scores b{font-size:24px;font-weight:400;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--rose)}
+.candidate-izna-experience .image-label{border-radius:0;background:#090e1de8;color:var(--ink);font-size:10px}
+.candidate-izna-experience :is(.member-photo-expand,.photo-lightbox-close){border-radius:0;background:var(--rose);color:var(--paper)}
+.candidate-izna-experience .member-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:52px;max-width:none;align-items:start;border-top:1px solid var(--line);padding-top:28px}
+.candidate-izna-experience .member-detail>.photo{width:100%;height:auto;aspect-ratio:1;max-width:none;margin:0;border-radius:0;background:var(--white);min-height:0}
+.candidate-izna-experience .member-detail h1{font-size:clamp(38px,4.6vw,66px);font-weight:500;margin:18px 0 24px}
+.candidate-izna-experience :is(.profile-copy,.my-note){font-size:14px;line-height:1.95;color:var(--muted)}
+.candidate-izna-experience .member-work-summary{border-radius:0;background:var(--white);border:1px solid var(--line);padding:24px}
+.candidate-izna-experience .member-work-card{padding:0 0 22px;border-radius:0;border-bottom:1px solid var(--line);background:transparent;gap:18px}
+.candidate-izna-experience .member-work-card .member-work-card__art{border-radius:0;aspect-ratio:1;background:var(--white)}
+.candidate-izna-experience .member-work-card__title{font-family:var(--font-body);font-size:25px;line-height:1.35;font-weight:500}
+.candidate-izna-experience .member-work-card__score-value{color:var(--rose);font-weight:400}
+/* Owner-only input behavior remains unchanged; this block is presentation only. */
+.candidate-izna-experience .editor{margin-top:24px;padding-top:20px;border-color:var(--line)}
+.candidate-izna-experience .editor-heading{font-size:14px;line-height:1.6;font-weight:500;margin-bottom:18px;color:var(--ink)}
+.candidate-izna-experience .editor-fields{gap:16px}
+.candidate-izna-experience .editor-fields label{gap:9px}
+.candidate-izna-experience .editor-fields label>span{font-size:12px;color:var(--muted);line-height:1.6}
+.candidate-izna-experience .editor-fields :is(input,select,textarea){border:1px solid var(--line);border-radius:0;background:var(--white);color:var(--ink);font-size:14px;min-height:46px;padding:11px 12px;box-shadow:none}
+.candidate-izna-experience .editor-fields :is(input,textarea)::placeholder{color:var(--muted);opacity:.8}
+.candidate-izna-experience .editor-fields :is(input,select,textarea):disabled{color:var(--muted);background:var(--paper);opacity:.7}
+.candidate-izna-experience .editor-fields textarea{min-height:100px;line-height:1.8;resize:vertical}
+.candidate-izna-experience .score-input input{font-family:var(--font-number);font-size:28px;height:58px;padding-right:42px}
+.candidate-izna-experience .score-input small{top:22px;font-size:11px}
+.candidate-izna-experience .editor-actions{flex-wrap:wrap;gap:12px;margin-top:18px}
+.candidate-izna-experience .editor-open{min-height:44px;font-size:13px}
+.candidate-izna-experience :is(.readonly-note,.save-message,.unsaved){font-size:12px;line-height:1.7}
+.candidate-izna-experience .save-message.error{color:#f1b6c1}
+.candidate-izna-experience .alert{background:var(--blush);color:var(--warning);border-color:var(--line);border-radius:0}
+.candidate-izna-experience .detail-return,.candidate-izna-experience .stage-view>.detail-return{border:0;border-top:1px solid var(--line);border-radius:0;background:#090e1df5;padding:20px 0;gap:18px}
+.candidate-izna-experience .detail-return .button{background:var(--white)}
+.candidate-izna-experience .detail-return .button.primary{background:var(--rose);color:var(--paper)}
+.candidate-izna-experience :is(.watch-next,.watch-context){background:var(--white);border-radius:0;border-color:var(--line)}
+.candidate-izna-experience footer{border-color:var(--line)}
+@media(max-width:1100px){
+ .candidate-izna-experience .work-detail-top{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px}
+ .candidate-izna-experience .work-aside{padding-left:24px}
+ .candidate-izna-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+ .candidate-izna-experience .member-detail{gap:36px}
+}
+@media(max-width:760px){
+ .candidate-izna-experience .header{height:auto;min-height:78px;flex-wrap:wrap;padding-block:16px;gap:12px}
+ .candidate-izna-experience .header nav{height:auto;flex-wrap:wrap;gap:4px 16px;margin-top:0}
+ .candidate-izna-experience .header nav button{font-size:12px;padding-block:10px;min-height:44px}
+ .candidate-izna-experience .work-detail-top,.candidate-izna-experience .member-detail{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:22px}
+ .candidate-izna-experience .work-aside{padding:24px 0 0;border-left:0;border-top:1px solid var(--line)}
+ .candidate-izna-experience :is(.work-aside h1,.mobile-work-heading h1){font-size:36px;line-height:1.15}
+ .candidate-izna-experience .member-detail h1{font-size:40px}
+ .candidate-izna-experience .video-mode-tabs{width:100%;gap:0;flex-wrap:nowrap}
+ .candidate-izna-experience .video-mode-tabs button{min-width:0;flex:1}
+ .candidate-izna-experience .video-caption>span{max-width:100%;flex-basis:100%}
+ .candidate-izna-experience .cast-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+ .candidate-izna-experience .member-name{font-size:22px}
+ .candidate-izna-experience .section{margin-block:44px}
+ .candidate-izna-experience .section-heading{padding-top:20px;margin-bottom:24px}
+ .candidate-izna-experience .section-heading h2{font-size:29px}
+ .candidate-izna-experience .stage-source{padding:18px}
+ .candidate-izna-experience .editor-fields :is(input,select,textarea){font-size:16px}
+ .candidate-izna-experience .score-input input{font-size:28px}
+ .candidate-izna-experience .detail-return,.candidate-izna-experience .stage-view>.detail-return{padding:14px 0 calc(14px + env(safe-area-inset-bottom));gap:12px}
+ .candidate-izna-experience .detail-return>div{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .candidate-izna-experience .member-work-summary{padding:20px}
+}
+@media(max-width:390px){
+ .candidate-izna-experience .editor-fields{grid-template-columns:minmax(0,1fr)}
+ .candidate-izna-experience .editor-actions>.button{flex:1 1 120px}
+ .candidate-izna-experience .cast-scores{gap:16px}
+ .candidate-izna-experience .work-aside h1{font-size:32px}
+}

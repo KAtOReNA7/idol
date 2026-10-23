@@ -2,9 +2,9 @@
 
 > 完整 v186 源码已在提交 `f24075fc98893793e82adbc92cadc9e58257728f` 推送并读回核验，工作目录为 `apps/idol-site/`。本次文档和三个隔离候选随当前交接提交提供。用户已批准本次现有评分、备注、观看快照公开入仓；不扩展到未来任意数据、秘密或凭证。
 
-更新日期：2026-10-22。本文面向接续项目的 Codex 开发者。目标是继续完成可实际使用、每团有独立设计的女团网站，不是重建开发平台或重新设计保存系统。
+更新日期：2026-10-23（接续阶段更新，产品要求保留）。本文面向接续项目的 Codex 开发者。目标是继续完成可实际使用、每团有独立设计的女团网站，不是重建开发平台或重新设计保存系统。
 
-从仓库根目录 `AGENTS.md` 进入，再读本文件、[当前状态](CURRENT-STATE.md)、[开发入口](CODEX-START.md) 和 [验收清单](ACCEPTANCE.md)。线上状态、候选状态与未完成项以当前状态文档为准；需求不能被历史测试结果代替。
+从仓库根目录 `AGENTS.md` 进入，再读 [RESUME](RESUME.md)、[STATUS](STATUS.md)、本文件、[开发入口](CODEX-START.md) 和 [验收清单](ACCEPTANCE.md)。最新阶段与未完成项以RESUME、STATUS和本轮工作日志为准；[CURRENT-STATE](CURRENT-STATE.md)保留迁移时的历史快照，需求不能被历史测试结果代替。
 
 ## 产品目标
 
@@ -24,7 +24,7 @@ Sol 的已核 15 团名单：UDTT、KATSEYE、VCHA、HITGS、AtHeart、i-dle、I
 
 Astra 的已核 15 团名单：Hearts2Hearts、SAY MY NAME、izna、ifeye、GENBLUE、VVUP、YOUNG POSSE、BEWAVE、Candy Shop、ODD YOUTH、ADYA、Geenius、TRACER、W!TCHX、SPIA。原批次未包括的已有网站页面继续保护，但不据目录数量扩大本次批次。
 
-当前先保护生产基线和已认可设计，再接续最接近可验收的候选。GENBLUE v10与WOOAH v12页面已获用户本次确认；开发侧真实浏览器、保存及正式主站发布仍按STATUS保留未完成，不将页面确认写成全链上线通过。当前接续入口见RESUME与STATUS。
+当前接续分支为 `codex/izna-native-integration`，源自 `codex/wooah-native-integration` 的 `121f410`。GENBLUE v10与WOOAH v12页面已获用户确认，继续保护；第三团izna的原生集成已实现、待用户审阅。固定入口为 [izna只读、owner-private审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)，发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`。未获明确用户确认前不得开发ifeye或下一团，公共功能除外。Figma实际图片落地、11个精确视频预览、80%/125%原生浏览器缩放、真实保存和主站全量发布仍未完成，不将实现或页面确认写成全链上线通过。
 
 以下不属于默认范围：
 
@@ -117,6 +117,6 @@ GitHub 同时保存代码和可接续的开发阶段。每次开工先检查未�
 - [原完整设计指令固定版本](https://github.com/KAtOReNA7/idol/blob/d571f9c55f17da88120c68af26881947f0409b7a/handoffs/sol-billlie-katseye-20261018/SOL-INSTRUCTIONS.txt)。其中单次机器、Figma 目标与权限安排不自动延续为未来授权。
 - [2026-10-20 全 15 团原文](https://chatgpt.com/c/6ad1e4ea-d640-83e9-874d-d913676966b7?messageId=c95558e6-f938-4850-93b5-cd9344b1d88e)。
 - [2026-10-20 Astra 全 15 团原文](https://chatgpt.com/c/6ad0a72c-06d0-83ee-a6a1-b19e3b931767?messageId=1067b3c4-714a-4eaf-87bd-d24c6de9279c)。
-- 2026-10-22 最新决定：已迁移试用 Codex，收官现有工作、整理 GitHub、提供 PRD 与开发指令。当前生产与候选状态见同目录 CURRENT-STATE.md。
+- 2026-10-22 迁移决定：已迁移试用 Codex，收官现有工作、整理 GitHub、提供 PRD 与开发指令。2026-10-23接续阶段及当前生产/候选状态见同目录RESUME、STATUS与本轮工作日志。
 
 历史材料可追溯，但 Codex 的必要输入必须在 GitHub 或明确可访问的受控资产中，不依赖访问旧对话。

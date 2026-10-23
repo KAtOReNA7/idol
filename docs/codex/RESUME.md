@@ -7,13 +7,13 @@
 | 项目 | 当前值 |
 | --- | --- |
 | 仓库 | https://github.com/KAtOReNA7/idol |
-| 应检出分支 | `codex/wooah-native-integration` 的最新远端 HEAD |
+| 应检出分支 | `codex/izna-native-integration` 的最新远端 HEAD |
 | 正式工程 | `apps/idol-site/` |
-| 最后网页代码提交 | `821f385f05f5923dc9efae6b4d3719500ac5c0e0`；后续保存本文的提交属于正常进度更新，不要求 HEAD 停在此提交 |
-| 活动 PR | [PR #5](https://github.com/KAtOReNA7/idol/pull/5)，基于 `codex/genblue-native-integration`；父任务为 [PR #3](https://github.com/KAtOReNA7/idol/pull/3) |
-| 分支来源 | `handoff/codex-20261022` → `codex/genblue-native-integration` → `codex/wooah-native-integration`；没有从旧 main 开发 |
-| 当前阶段 | GENBLUE v10、WOOAH v12 页面均已获用户本次确认；保存进度，尚未开始第三团 |
-| 正式主站 | 仍为 v186 A-only；本轮两团增量只发布在私有只读审阅站 |
+| 本轮源码版本 | izna 代码与本文以最新远端 HEAD 为准；精确提交与推送读回记录见 [本轮工作日志](worklogs/20261023-izna-native-integration.md)。源分支检查点为 `121f410`，此前 WOOAH 网页代码为 `821f385f05f5923dc9efae6b4d3719500ac5c0e0` |
+| 活动 PR | izna PR 以本轮工作日志与远端实际记录为准；源分支为 [PR #5](https://github.com/KAtOReNA7/idol/pull/5)，上游为 [PR #3](https://github.com/KAtOReNA7/idol/pull/3) |
+| 分支来源 | `handoff/codex-20261022` → `codex/genblue-native-integration` → `codex/wooah-native-integration`（`121f410`）→ `codex/izna-native-integration`；没有从旧 main 开发 |
+| 当前阶段 | GENBLUE v10、WOOAH v12 页面已获用户确认；izna 已实现、待用户审阅，未确认前不得开发 ifeye 或下一团，公共功能除外 |
+| 正式主站 | 仍为 v186 A-only；本轮不覆盖主站。izna 只读审阅发布与验证证据见本轮工作日志 |
 
 **不要只检出最初 handoff 分支。** 它是来源基线，后续实际开发位于上面的任务分支。`main` 在本次保存时仍是旧 sandbox。先 fetch 并核对 PR/STATUS；只有新的明确合并记录才可以改变上述入口。
 
@@ -23,8 +23,9 @@
 
 - 2026-10-22：用户确认 GENBLUE v10，“这一版可以 继续开发吧”。
 - 2026-10-23：WOOAH 按用户三项反馈修正为团照首屏、五人同组、统一4:5成员照片；用户随后回复“OK 保存目前开发进度”，作为本次页面确认与保存要求记录。
+- 2026-10-23 接续开发：从 WOOAH 分支最新远端 `121f410` 继续，第三团 izna 的原生集成已实现；待交付审阅并获得用户明确确认，不将实现完成写成人工验收通过。
 - 页面确认不等于真实保存、精确视频配图、全部响应式检查或正式主站上线已经完成。
-- 后续仍执行：**每次只推进一个团，完成后给网页地址，用户明确通过才开始下一个团；公共功能除外。** 本次只保存，不开始下一团。
+- 后续仍执行：**每次只推进一个团，完成后给网页地址，用户明确通过才开始下一个团；公共功能除外。** 当前停在 izna 审阅阶段，不开发 ifeye 或其他下一团。
 - 保留用户评分、备注、观看状态、稳定 ID、owner-only 写入与原图。用户批准的既有快照已在公开仓库；不扩大到新敏感数据或凭证。
 
 ## 新电脑检出
@@ -32,7 +33,7 @@
 在一个新的空目录执行（Windows PowerShell、macOS/Linux 均可；不要覆盖已有工作目录）：
 
 ```sh
-git -c core.autocrlf=false clone --branch codex/wooah-native-integration https://github.com/KAtOReNA7/idol.git idol
+git -c core.autocrlf=false clone --branch codex/izna-native-integration https://github.com/KAtOReNA7/idol.git idol
 cd idol
 git config --local core.autocrlf false
 git fetch origin
@@ -57,11 +58,12 @@ node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false
 npm run dev
 ```
 
-`install:ci` 调用本工程锁定的 npm ci，包含 dev/optional 依赖，只启动一个安装器。普通电脑干净检出默认为 portable，开发服务器从5173端口开始；浏览器打开终端实际地址下的 `/artists/wooah` 或 `/artists/genblue`。不要把前一台电脑的 node_modules、dist、.sites-runtime 或 .wrangler 复制过来。
+`install:ci` 调用本工程锁定的 npm ci，包含 dev/optional 依赖，只启动一个安装器。普通电脑干净检出默认为 portable，开发服务器从5173端口开始；本轮浏览器打开终端实际地址下的 `/artists/izna`，同时保护 `/artists/wooah` 与 `/artists/genblue`。不要把前一台电脑的 node_modules、dist、.sites-runtime 或 .wrangler 复制过来。
 
 已存在的针对性验证入口（在 app 目录运行）：
 
 ```sh
+node --test tests/izna-native-integration.test.cjs tests/izna-review-catalog.test.mjs tests/izna-review-routing.test.mjs tests/izna-review-isolation.test.mjs
 node --test tests/wooah-native-integration.test.cjs tests/wooah-timeline.test.cjs tests/wooah-review-routing.test.mjs tests/wooah-review-isolation.test.mjs
 node --test tests/prune-unused-display-assets.test.mjs
 node --test tests/genblue-native-integration.test.cjs tests/genblue-review-routing.test.mjs tests/artist-navigation.test.cjs tests/artist-roster-return.test.cjs tests/navigation-save-guard.test.cjs
@@ -88,27 +90,32 @@ npm start
 | WOOAH | 原生实图页面、6份含历史成员档案、24视频、56条精确成员/MV关系、5个时间轴作品入口、资料来源修订；v12布局获认可 | 24个精确视频预览图、真实浏览器/视口/缩放、真实保存未验 |
 | 公共部署 | 原图保留守卫、独立只读审阅构建和物理HTML入口 | 完整主站展开TAR容量、真实生产发布未完成 |
 | MEOVV B | 四段patch及readback已跟踪 | 未发布，需重新核对最终pins与完整归档 |
-| izna/ifeye v3 | 源码及30图依赖已在隔离候选中 | 宿主、resolver、评分接线未完成；下一轮只能挑一团 |
+| izna | 独立页面原生接入；7份含历史成员档案、8项只浏览发行、15个影像槽位、12条具名MV关联；20张原图与严格resolver，评分/手帐及返回接线已实现 | 待用户审阅；Figma实际图片落地、11个精确视频预览、80%/125%原生浏览器缩放、真实保存与主站全量发布未完成 |
+| ifeye v3 | 原始源码与素材保留在隔离候选中 | 尚未原生接入；izna获明确用户确认前不开发 |
 
 已确认的页面：
 
 - [GENBLUE](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/genblue/index.html)
 - [WOOAH](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/wooah/index.html)
 
+本轮待用户审阅的固定入口：[izna](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)，只读、owner-private。发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`；此处列出地址不代表当前已发布成功或已获确认。
+
 关键代码（相对 `apps/idol-site/`）：
 
+- `app/artists/izna/page.tsx`、`components/izna/`、`lib/idol/izna-native.ts`、`lib/idol/izna-runtime/`、`data/izna-editorial.json`、`data/izna-assets.json`：本轮izna独立页面、精确身份接线与原图resolver。
 - `app/artists/wooah/page.tsx`、`components/wooah/`、`lib/idol/wooah-*.ts`、`data/wooah-editorial.json`：WOOAH真实组件、关系与资料。
 - `data/public-artist-navigation-keys.json`：团体导航键注册，保留已有团体。
-- `review/wooah/`、`scripts/build-wooah-review.mjs`：只读审阅层；`scripts/build-genblue-review.mjs` 为另一团的既有构建。
+- `review/izna/`、`scripts/build-izna-review.mjs`：本轮只读审阅层；既有 `review/wooah/`、`scripts/build-wooah-review.mjs`、`scripts/build-genblue-review.mjs` 继续保留。
 - `scripts/audit-unused-display-assets.mjs`、`scripts/unused-display-assets-manifest.json`、`scripts/prune-unused-build-assets.mjs`：保留使用中的原图，改构建后重新审核pins，不能盲目刷新或关闭guard。
 - `public/artist/wooah/`、`public/fonts/wooah/`：既有原图和字体；不重传或生成替代真人图。
 
 详细证据：
 
+- [izna原生接续与发布验证](worklogs/20261023-izna-native-integration.md)：本轮实际代码、验证、发布状态与下一步，以该日志的精确版本为准。
 - [WOOAH原生接续](worklogs/20261022-wooah-native-integration.md)
 - [WOOAH三项布局修正](worklogs/20261023-wooah-layout-feedback.md)
 - [GENBLUE原生审阅](worklogs/20261022-genblue-review.md)／[链接修复](worklogs/20261022-genblue-routefix.md)
-- [本次保存检查点](worklogs/20261023-resume-checkpoint.md)
+- [此前两团保存检查点](worklogs/20261023-resume-checkpoint.md)
 
 WOOAH修正版代码提交上的已执行结果：类型检查与干净原生构建通过，20项相关回归及37项资源守卫通过，完整剪枝 dry-run 通过且未apply。用户截图被用于发现问题；新版本并没有开发侧真实浏览器截图，不伪称布局自动验收通过。上轮client计算小计279689865 B不是生产TAR；旧轮271.328125 MiB TAR只是历史测量，不能作为新包大小。
 
@@ -116,21 +123,21 @@ WOOAH修正版代码提交上的已执行结果：类型检查与干净原生构
 
 | 对象 | Site ID / 状态 |
 | --- | --- |
-| 私有只读审阅站 | `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3`；最新v12；保留owner-private |
+| 私有只读审阅站 | `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3`；保留owner-private；此前已发布v12，izna新发布状态见本轮工作日志 |
 | 正式主站 | app内 `.openai/hosting.json` 的 `appgprj_6acb4fa532b88191ae2588c24b724b17`；仍为v186，未获本轮覆盖授权 |
 
-v12审阅 Sites source：`fff05becda0f21d25794cec6f5ce3275425574af`；版本 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_d68d3c6bd4988191a6fd8b849d0bc2a6`；部署 `appgdep_6ada3ad6a8dc81919bedc3b19fb37abe` succeeded。这些是 Sites 标识，不是 GitHub commit。
+历史v12审阅 Sites source：`fff05becda0f21d25794cec6f5ce3275425574af`；版本 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_d68d3c6bd4988191a6fd8b849d0bc2a6`；部署 `appgdep_6ada3ad6a8dc81919bedc3b19fb37abe` succeeded。这些是 Sites 标识，不是 GitHub commit，也不是本轮izna发布证据。本轮发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`。
 
-审阅产物可以从GitHub代码重建：`node scripts/build-wooah-review.mjs --out <仓库外专用绝对目录>`。它是**增量输出**，没有站点根index/hosting配置，不能单独拿它覆盖现有审阅站；要先通过Sites官方源码流程打开上述审阅站，保留根入口、GENBLUE及访问配置，再合入WOOAH产物。评分、备注及个人照片均已净化为空，非GET/API写入拒绝，不冒充真实手帐。
+本轮审阅产物可以从GitHub代码重建：`node scripts/build-izna-review.mjs --out <仓库外专用绝对目录>`。它是**增量输出**，没有站点根index/hosting配置，不能单独拿它覆盖现有审阅站；要先通过Sites官方源码流程打开上述审阅站，保留根入口、GENBLUE、WOOAH及访问配置，再合入izna产物。评分、备注及个人照片均已净化为空，非GET/API写入拒绝，不冒充真实手帐。
 
 部署源码与完整当前静态站保存在Sites source repository，正式开发代码及所有重建脚本保存在GitHub；不依赖旧机器临时输出。源凭证由当前授权的Sites流程获取，绝不放进文档、命令行或GitHub。完整生产包仍须按实际展开TAR检查256 MiB上限并留至少2 MiB余量，不能拿gzip大小或部分资源小计代替。
 
 ## 下次从哪里继续
 
-1. 先核对最新远端、STATUS、PR #5和用户后续要求；确认没有另一台电脑已开始同一任务。下一任务从此完整最新分支建立独立分支，禁止回到旧main或重新覆盖combined候选。
-2. 在新环境运行正确app并补可以实际执行的浏览器检查；已确认的GENBLUE/WOOAH视觉继续保护。既有配图、保存与完整包体缺口仍记录为待办，按当前目标选择必要工作，不因缺口重复做整团。
-3. 用户允许逐团继续，但尚未指定/启动第三团。本次保存不擅自选择已完成状态。接续开发时参考STATUS与候选说明，选择一个最接近可交付的未完成团并在新worklog声明范围；不再重复“首轮接入GENBLUE或WOOAH”。
-4. 完成实际增量后提供该团网页地址，等待明确认可再进行下一团。公共功能可独立推进，生产发布仍遵守实际授权。
+1. 先核对 `codex/izna-native-integration` 最新远端、STATUS、本轮工作日志和活动PR；确认没有另一台电脑已开始同一任务。禁止回到旧main或重新覆盖旧候选。
+2. 核对本轮固定izna网页地址的实际发布与验证记录；若尚无成功证据，继续完成当前团的发布验证。已确认的GENBLUE/WOOAH页面继续保护。
+3. 当前izna已实现、待用户审阅。可以继续处理该团反馈或补查本轮缺口；**用户明确确认前不得开发ifeye或下一团**，公共功能例外。
+4. Figma实际图片落地、11个精确视频预览、80%/125%原生浏览器缩放、真实保存和主站全量发布仍未完成；分别记录，不以实现、构建或其他视口通过替代。生产发布仍遵守实际授权。
 5. 每轮将代码、验证、阶段、阻塞和下一步同提交推送GitHub，更新STATUS和接续入口。不要把未合入的WIP写成main或生产已完成。
 
 与本次交付无关的未跟踪临时图片已保留、未提交；新电脑恢复工程不依赖它。

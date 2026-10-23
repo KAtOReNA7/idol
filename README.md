@@ -1,6 +1,6 @@
 # Idol：正式开发与跨电脑交接
 
-正式工作目录是 [`apps/idol-site/`](apps/idol-site/)，不是仓库根的旧 Next sandbox。当前完整接续分支为 `codex/wooah-native-integration`（继承 `handoff/codex-20261022`），先读 [新电脑接续 RESUME](docs/codex/RESUME.md)；在未有明确合并记录前，不从旧 main 开始正式产品开发。
+正式工作目录是 [`apps/idol-site/`](apps/idol-site/)，不是仓库根的旧 Next sandbox。当前完整接续分支为 `codex/izna-native-integration`，从 `codex/wooah-native-integration` 的 `121f410` 接续，继承最初 `handoff/codex-20261022`。先读 [新电脑接续 RESUME](docs/codex/RESUME.md)；在未有明确合并记录前，不从旧 main 开始正式产品开发。
 
 v186 原生源码已在提交 `f24075fc98893793e82adbc92cadc9e58257728f` 推送并读回核验：3954 文件、642362678 字节，应用子树 `a1fbe5d034b23be8a88572a3ab25e4d68d67734e`。其 Sites source `f0391481cccd85a4eb53cbe9bf63cdd77d30e350` 是来源身份，不是本仓库可 fetch 的 commit。当前文档与三个隔离候选随本次交接提交提供；首次检出仍须核实际分支、清单与素材。
 
@@ -15,9 +15,11 @@ v186 原生源码已在提交 `f24075fc98893793e82adbc92cadc9e58257728f` 推送�
 
 - [GENBLUE v2.2 / WOOAH v1.2 combined-integration](handoffs/codex-20261022/combined-integration/README.md)：原始冻结候选；GENBLUE与WOOAH已在当前分支接入并继续修订，不用旧候选覆盖新代码。
 - [MEOVV B](handoffs/codex-20261022/meovv-b/README.md)：四段冻结 patch 与四份真实 owner readback；B 尚未上线，不能冒称已通过正式 Sites 完整包验收。
-- [izna / ifeye v3](handoffs/codex-20261022/astra-izna-ifeye-v3/README.md)：15 份源码、30 图依赖闭合，仍待原生宿主与评分链路接入。
+- [izna / ifeye v3](handoffs/codex-20261022/astra-izna-ifeye-v3/README.md)：保留原始15份源码、30图候选；本轮仅 izna 已接入正式工程的原生宿主、精确图片 resolver 与既有评分入口，ifeye 尚未接入。
 
-线上主站仍是 v186 A-only；GENBLUE v10/WOOAH v12私有审阅页面均获本次人工认可，真实保存和主站发布仍未完成；两团 v3 隔离候选未合入。Astra 与 Sol 本轮均已收官，Sol最终反馈已归档为 [SOL-HANDOFF](docs/codex/SOL-HANDOFF.md)；主会话已通过有界交接入口复核，不等于产品验收通过。完整原生源码足以继续，无需等待旧会话回复。
+线上主站仍是 v186 A-only；GENBLUE v10/WOOAH v12私有审阅页面已获人工认可。izna 已实现、待用户审阅，固定入口为 [izna 只读审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)，保持 owner-private。发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`；未获用户明确确认前不得开发 ifeye 或下一团，公共功能除外。Figma 实际图片落地、11个精确视频预览缺口、80%/125%原生浏览器缩放、真实保存和主站全量发布仍未完成。
+
+Astra 与 Sol 已收官，Sol最终反馈已归档为 [SOL-HANDOFF](docs/codex/SOL-HANDOFF.md)；有界交接入口复核不等于全部产品验收通过。完整原生源码足以继续，无需等待旧会话回复。
 
 仓库保持公开。用户于 2026-10-22 13:22 UTC 已批准本次现有评分、备注、观看快照随源码公开；该批准不扩展到未来任意数据导出、密钥或凭证。公开读仍不等于开放写，owner-only 保存保护保持。没有当前生产发布授权时交预览，有明确授权后可按上线门槛继续。
 

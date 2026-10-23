@@ -1,15 +1,19 @@
 # 共享开发状态
 
-## 最新执行决定：Candy Shop（2026-10-24）
+## 最新执行决定：ODD YOUTH（2026-10-24，等待网页确认）
+
+用户“同意，继续开发”已确认 Candy Shop v23。本轮仅推进 ODD YOUTH，分支 `codex/oddyouth-review-completion`，起点 `a1c55190a4c0b2d96bf149f128a62a0e3473868d`。蓝白原生页及 owner-private QA **v25** 已发布：五成员、五发行/12曲目、11视频、五事件与已有手帐往返。49专项/回归、类型、正式构建、40布局与29交互检查通过；24个可编辑Figma画板及关键上下文已建立，完整共享壳保真细节仍待同步。线上v24首页可打开，后续点击超时；原生缩放、真实保存/播放未验。**等待本团网页确认后再开始下一团，公共功能例外。** 主站仍v186；原始照片、稳定ID、评分、备注、观看状态和访问权限保持。详见 `docs/codex/worklogs/20261024-oddyouth-review-completion.md`。下方旧团门槛为历史。
+
+## 历史执行决定：Candy Shop（现已获确认）（2026-10-24）
 
 用户“好的这个团同意，继续开发”已确认 BEWAVE v22。本轮 Candy Shop 已实现并发布 **v23 owner-private 审阅**，分支 `codex/candyshop-review-completion`，基于 `7a9b57bebc306dbe07addb7797255725aec6e05d`。五份成员档案（四位官网列示成员及结菜历史档案）、三张发行、七个精确视频预览、六事件、原图和既有手帐往返已接入。50项专项/回归、类型、正式构建通过；八类页面五宽实际视口和图片失败重试已验。Figma 24个可编辑画板及9处设计上下文已完成。线上自动浏览器导航超时，真实保存/播放与80%/125%原生缩放未验。**等待 Candy Shop 网页确认后再开发 ODD YOUTH**。正式工程 `apps/idol-site`，主站仍v186；详见 `docs/codex/worklogs/20261024-candyshop-review-completion.md`。下方旧团门槛仅为历史。
 
 
 更新：北京时间2026-10-24。
 
-[打开 Candy Shop v23](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/candyshop/index.html) · [本轮日志](worklogs/20261024-candyshop-review-completion.md) · [接续入口](RESUME.md)。
+[打开 ODD YOUTH v25](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/oddyouth/index.html) · [本轮日志](worklogs/20261024-oddyouth-review-completion.md) · [接续入口](RESUME.md)。
 
-GitHub：draft [PR #15](https://github.com/KAtOReNA7/idol/pull/15)，代码 `ea340901c5992a03199f4853c10d3b204f28adb2` 已推送；后续文档以远端最新HEAD为准。
+GitHub：`codex/oddyouth-review-completion`；draft [PR #16](https://github.com/KAtOReNA7/idol/pull/16)，代码 `54a9eedaf246be2d00cc0cae3fb3573f30f06224` 已推送；接续以本分支最新远端HEAD为准。
 
 ## 已核基线与交接入口
 

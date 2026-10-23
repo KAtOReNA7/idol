@@ -41,4 +41,4 @@
 
 ## GitHub 与接续
 
-本轮代码、公开来源与此交接一起提交到 `codex/adya-review-completion`；实际commit和draft PR在收尾同步。未合并main。接续先核最新远端，不从旧main或旧候选重做。
+本轮代码、公开来源与此交接已提交并推送到 `codex/adya-review-completion`，代码commit `46e14b4ba9a3cb0135473652287b52a835d30781`，draft [PR #17](https://github.com/KAtOReNA7/idol/pull/17) 已创建并附到当前任务。后续文档以分支最新HEAD为准。未合并main。接续先核最新远端，不从旧main或旧候选重做。

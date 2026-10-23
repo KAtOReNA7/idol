@@ -18,7 +18,7 @@
 
 [打开 ADYA v26](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/adya/index.html) · [本轮日志](worklogs/20261024-adya-review-completion.md) · [接续入口](RESUME.md)。
 
-GitHub：`codex/adya-review-completion`；本轮代码与交接将提交到该分支，stacked draft PR以 `codex/oddyouth-review-completion` 为基线。
+GitHub：`codex/adya-review-completion`；draft [PR #17](https://github.com/KAtOReNA7/idol/pull/17)，代码 `46e14b4ba9a3cb0135473652287b52a835d30781` 已推送；接续以本分支最新远端HEAD为准。PR以 `codex/oddyouth-review-completion` 为基线。
 
 ## 已核基线与交接入口
 

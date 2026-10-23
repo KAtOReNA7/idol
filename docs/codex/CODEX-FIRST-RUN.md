@@ -3,11 +3,11 @@
 更新：2026-10-23。**先读取 [新电脑接续文档 RESUME](RESUME.md)**，再按 [STATUS](STATUS.md) 和活动PR接续。
 
 - 仓库：https://github.com/KAtOReNA7/idol
-- 当前完整接续分支：`codex/izna-native-integration` 最新远端HEAD；精确提交与活动PR见 [本轮工作日志](worklogs/20261023-izna-native-integration.md)。
+- 当前完整接续分支：`codex/izna-native-integration` 最新远端HEAD；实现提交 `c998df46a6cd258c11cbbf7a6fb7642a2bacee3b` 已推送并读回，draft [PR #6](https://github.com/KAtOReNA7/idol/pull/6) 以WOOAH分支为基线。详细记录见 [本轮工作日志](worklogs/20261023-izna-native-integration.md)。
 - 来源：`handoff/codex-20261022` → GENBLUE任务分支 → WOOAH任务分支（`121f410`，PR #5）→ izna任务分支。最初handoff不会自动获得后续增量；旧main仍是sandbox。
 - 正式工程只在 `apps/idol-site/`。必须克隆完整仓库，包含专项测试需要的handoffs/fixture。
 - GENBLUE v10、WOOAH v12页面已获用户确认，继续保护；izna原生集成已实现、待用户审阅。
-- izna固定入口：[只读、owner-private审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)。发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`，不能由固定地址推断发布成功。
+- izna [只读、owner-private审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html) 已发布v13，等待用户确认，线上浏览器未复验。发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`。
 - **izna未获明确用户确认前不得开发ifeye或下一团**，公共功能除外。Figma实际图片落地、11个精确视频预览、80%/125%原生浏览器缩放、真实保存和主站全量发布仍未完成。
 
 新空目录检出：

@@ -17,7 +17,7 @@ v186 原生源码已在提交 `f24075fc98893793e82adbc92cadc9e58257728f` 推送�
 - [MEOVV B](handoffs/codex-20261022/meovv-b/README.md)：四段冻结 patch 与四份真实 owner readback；B 尚未上线，不能冒称已通过正式 Sites 完整包验收。
 - [izna / ifeye v3](handoffs/codex-20261022/astra-izna-ifeye-v3/README.md)：保留原始15份源码、30图候选；本轮仅 izna 已接入正式工程的原生宿主、精确图片 resolver 与既有评分入口，ifeye 尚未接入。
 
-线上主站仍是 v186 A-only；GENBLUE v10/WOOAH v12私有审阅页面已获人工认可。izna 已实现、待用户审阅，固定入口为 [izna 只读审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)，保持 owner-private。发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`；未获用户明确确认前不得开发 ifeye 或下一团，公共功能除外。Figma 实际图片落地、11个精确视频预览缺口、80%/125%原生浏览器缩放、真实保存和主站全量发布仍未完成。
+线上主站仍是 v186 A-only；GENBLUE v10/WOOAH v12私有审阅页面已获人工认可。[izna 只读审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html) 已发布 v13，保持 owner-private，等待用户确认；GitHub 实现已推送，draft [PR #6](https://github.com/KAtOReNA7/idol/pull/6) 以 WOOAH 分支为基线。发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`；线上浏览器未复验，未获用户明确确认前不得开发 ifeye 或下一团，公共功能除外。Figma 实际图片落地、11个精确视频预览缺口、80%/125%原生浏览器缩放、真实保存和主站全量发布仍未完成。
 
 Astra 与 Sol 已收官，Sol最终反馈已归档为 [SOL-HANDOFF](docs/codex/SOL-HANDOFF.md)；有界交接入口复核不等于全部产品验收通过。完整原生源码足以继续，无需等待旧会话回复。
 

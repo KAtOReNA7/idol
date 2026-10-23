@@ -3,7 +3,7 @@
 - task-id：20261023-izna-native-integration；日期：2026-10-23，北京时间。
 - 分支：`codex/izna-native-integration`，基于开工时 `codex/wooah-native-integration` 最新远端 `121f4100d31d4f23803cac18dd82df589af9473f`，没有从旧 main 开始。
 - 正式工程：`apps/idol-site/`；环境：用户 Windows 电脑、PowerShell、Node 24.19.0。代码、构建和浏览器测试均在本机。
-- 当前阶段：izna 实现及本机 QA 完成，用户人工审阅待确认。ifeye 未开发。发布及 GitHub 精确记录见文末。
+- 当前阶段：izna 实现及本机 QA 完成，私有只读审阅 v13 已发布；用户人工审阅待确认。ifeye 未开发。发布及 GitHub 精确记录见文末。
 - [固定网页入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)：既有 owner-private 审阅站，只有站点所有者可访问，只读。
 
 ## 实现与数据边界
@@ -63,7 +63,16 @@ node scripts/build-izna-review.mjs --out /absolute/dedicated/scratch/output
 
 ## 发布、同步与下一步
 
-发布与 GitHub 读回正在本轮收尾；精确证据将以实际工具结果补齐，不从本机测试推断线上成功。
+实现提交 `c998df46a6cd258c11cbbf7a6fb7642a2bacee3b` 已正常推送，`git ls-remote --heads origin codex/izna-native-integration` 独立读回相同 SHA。后续文档收尾提交在同一分支，最新远端 HEAD 为继续工作的入口。[草稿 PR #6](https://github.com/KAtOReNA7/idol/pull/6) 以 `codex/wooah-native-integration` 为 base，不合入旧 main。
+
+Sites 官方源码流程保存并推送 `a6a8ff71a759de6936a0285a0ebdf18a6a69eb63`。私有发布返回 **succeeded**，时间 `2026-10-23T07:04:52.922520+00:00`；独立读取 saved version 证实是 **v13**、相同 source SHA。完整机器可读记录见 [deployment.json](evidence/20261023-izna/deployment.json)。
+
+- version：`appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_7dab03eccdc48191a221738c7b7f1eb8`。
+- deployment：`appgdep_6adb070706dc81919e413e71a4b9eb9f`。
+- 原样官方包 gzip：18,659,900 B；完整解压 TAR 流 23,381,504 B，距 256 MiB 上限 245,053,952 B，通过至少 2 MiB 余量守卫；[测量结果](evidence/20261023-izna/archive-size.json)。服务端版本记录的存储 TAR 为 23,367,680 B / 129 files，作为独立字段保留，不冒充本地测量。
+- 首次发布响应未得到可用版本对象，回读仍为 v12；随后同一 source、同一未变归档提交成功为 v13，没有创建其他 Site、改变访问权限或跳过包体检查。
+- 部署成功由 Sites 终态及版本来源读回证明；本轮浏览器矩阵证明本机最终包，不混称线上浏览器复验。`open_in_codex` 网页交接返回 queued，用户可直接使用上方固定网址。
+- Git 空白检查使用 `core.whitespace=trailing-space,space-before-tab,cr-at-eol`，接受部分新增 Windows 文本的 CRLF 行终止符；无真实尾随空白。不为格式变化重写已验证的运行字节。
 
 - 审阅 Site：`appgprj_6ad9800421f8819188ffdf3bc8a8e0f3`，保持 owner-private；主站 `appgprj_6acb4fa532b88191ae2588c24b724b17` 未发布。
 - 完整主站展开 TAR 容量与生产上线未完成；本轮审阅包单独测量，不以资源 payload 小计代替完整 TAR。

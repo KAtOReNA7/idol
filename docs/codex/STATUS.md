@@ -1,8 +1,8 @@
 # 共享开发状态
 
-更新：2026-10-23，北京时间。当前完整接续分支为 **`codex/izna-native-integration`**，从 `codex/wooah-native-integration` 的 `121f410` 接续，继承最初 `handoff/codex-20261022`；正式目录 `apps/idol-site/`。每次先fetch并读实际HEAD/活动PR，不从旧main开工。izna精确提交、PR、发布与验证证据见 [本轮工作日志](worklogs/20261023-izna-native-integration.md)，源分支PR #5保留溯源。新电脑先读 [RESUME](RESUME.md)。
+更新：2026-10-23，北京时间。当前完整接续分支为 **`codex/izna-native-integration`**，从 `codex/wooah-native-integration` 的 `121f410` 接续，继承最初 `handoff/codex-20261022`；正式目录 `apps/idol-site/`。实现提交 `c998df46a6cd258c11cbbf7a6fb7642a2bacee3b` 已推送并读回，draft [PR #6](https://github.com/KAtOReNA7/idol/pull/6) 的base为WOOAH、head为izna任务分支。每次先fetch并读实际HEAD/活动PR，不从旧main开工。发布与验证证据见 [本轮工作日志](worklogs/20261023-izna-native-integration.md)，源分支PR #5保留溯源。新电脑先读 [RESUME](RESUME.md)。
 
-最新阶段：GENBLUE v10已获认可；WOOAH三项布局修正v12发布后，用户回复 **“OK 保存目前开发进度”**，该团页面确认通过。本轮第三团izna原生集成已实现，待用户审阅；**未获明确确认前不得开发ifeye或下一团**，公共功能例外。Figma实际图片落地、11个精确视频预览缺口、80%/125%原生浏览器缩放、真实保存和主站全量发布仍未完成，不能混成已验收。
+最新阶段：GENBLUE v10已获认可；WOOAH三项布局修正v12发布后，用户回复 **“OK 保存目前开发进度”**，该团页面确认通过。本轮第三团izna原生集成已实现，v13私有只读审阅已发布，线上浏览器未复验，等待用户确认；**未获明确确认前不得开发ifeye或下一团**，公共功能例外。Figma实际图片落地、11个精确视频预览缺口、80%/125%原生浏览器缩放、真实保存和主站全量发布仍未完成，不能混成已验收。
 
 ## 已核基线与交接入口
 
@@ -21,16 +21,16 @@
 | GENBLUE | BlueCut 已接入正式工程；v10 页面获用户明确认可 | [已确认页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/genblue/index.html)；开发侧真实浏览器/保存未验，主站包体超限事项仍保留 |
 | WOOAH | 已修正为团照首屏、五人同组、统一4:5成员照片；只读审阅v12已发布 | [已确认页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/wooah/index.html)；该轮类型、干净构建、20+37项检查及剪枝dry-run通过；真实浏览器/保存未验，24个视频配图仍缺；保护已认可页面 |
 | MEOVV B | 四段patch及四份真实readback已入仓；未上线 | pins只绑定当次产物，完整Sites TAR容量与最终发布仍待验 |
-| izna | 正式工程原生宿主、精确resolver、既有评分/手帐与返回接线已实现；7份含历史成员档案、8项只浏览发行、15个影像槽位、12条具名MV关系、20张原图 | [固定审阅入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)，只读、owner-private；待用户确认。发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`，不从地址推断发布成功；未完成项见本页顶部 |
+| izna | 正式工程原生宿主、精确resolver、既有评分/手帐与返回接线已实现；7份含历史成员档案、8项只浏览发行、15个影像槽位、12条具名MV关系、20张原图 | [v13审阅入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)已发布，只读、owner-private；待用户确认，线上浏览器未复验。发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`；未完成项见本页顶部 |
 | ifeye v3 | 原始源码与素材保留在隔离候选中 | 尚未原生接入；izna未获明确确认前不开发 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
 | Sol | 本轮已收官，最终反馈已归档 [SOL-HANDOFF](SOL-HANDOFF.md) | 13:38形成、13:53主会话完整读取；不等于全部团体产品验收通过 |
 
 ## 下一里程碑与任务索引
 
-从 [RESUME](RESUME.md) 和 [CODEX-FIRST-RUN](CODEX-FIRST-RUN.md) 开始，检出 `codex/izna-native-integration` 最新远端HEAD；源分支检查点为 `121f410`，`821f385`仅保留为此前WOOAH网页代码溯源。下一里程碑是核对izna发布与验证证据、交付固定网页并等待用户明确确认；可处理izna反馈或公共功能，不能提前开发ifeye或其他下一团。首次接入GENBLUE/WOOAH的目标已经完成，不重复导入旧候选。
+从 [RESUME](RESUME.md) 和 [CODEX-FIRST-RUN](CODEX-FIRST-RUN.md) 开始，检出 `codex/izna-native-integration` 最新远端HEAD；源分支检查点为 `121f410`，`821f385`仅保留为此前WOOAH网页代码溯源。下一里程碑是等待用户确认已发布的izna v13，并补线上浏览器复验；可处理izna反馈或公共功能，不能提前开发ifeye或其他下一团。首次接入GENBLUE/WOOAH的目标已经完成，不重复导入旧候选。
 
-- [izna 原生接续](worklogs/20261023-izna-native-integration.md)：当前任务，`codex/izna-native-integration`；实际提交、验证、发布状态和下一步以该日志为准，用户审阅未确认。
+- [izna 原生接续](worklogs/20261023-izna-native-integration.md)：当前任务，`codex/izna-native-integration` / draft PR #6；v13审阅已发布，精确版本与验证以该日志为准，用户审阅未确认。
 - [此前两团保存检查点](worklogs/20261023-resume-checkpoint.md)：两团页面获确认，新电脑完整接续入口已整理。
 - [本次有界交接记录](worklogs/20261022-repository-handoff.md)
 - [GENBLUE 本轮审阅版](worklogs/20261022-genblue-review.md)：`codex/genblue-native-integration` / PR #3；补夜市王具名 MV 图及双向成员入口、0.1 评分步进和构建审计。最终类型/构建/62 项专项通过；私有只读审阅站已发布。旧轮正式展开 TAR 271.328125 MiB 超限，浏览器与真实保存未验、主站未发布；后续 v10 页面已获用户认可。[首轮接入历史](worklogs/20261022-genblue-native-integration.md) 保留。

@@ -9,7 +9,7 @@
 - 58项针对性测试、类型与正式构建通过；实际桌面浏览器/五宽iframe检查已记录。完整生产剪枝仍被旧izna引用阻断；旧ifeye审计fixture35过3失败，未执行剪枝apply。
 - ifeye仍缺7个精确视频预览、Figma实图/内页闭环、顶层目标视口/原生缩放/线上浏览器/真实保存验收。正式主站仍v186。
 - **未获用户明确确认ifeye前，不开发下一团，公共功能例外。**
-- 本轮draft PR以 `codex/izna-review-followup` 为base，未合并main。
+- 本轮draft [PR #8](https://github.com/KAtOReNA7/idol/pull/8)以 `codex/izna-review-followup` 为base，未合并main。
 - [最新worklog与发布证据](worklogs/20261023-ifeye-native-integration.md)。
 
 新空目录：

@@ -4,7 +4,7 @@
 
 ## 当前执行决定（2026-10-23 晚间 ifeye v16，优先于下方历史检查点）
 
-- 最新接续分支 **`codex/ifeye-native-integration`**，基于 `codex/izna-review-followup` 的 `665fed58554fd83ddbcfc098228c6961943e9ebf`；正式工程 `apps/idol-site/`。先读 [RESUME](docs/codex/RESUME.md) 和最新远端，不从旧main开工。
+- 最新接续分支 **`codex/ifeye-native-integration`**，基于 `codex/izna-review-followup` 的 `665fed58554fd83ddbcfc098228c6961943e9ebf`；正式工程 `apps/idol-site/`，draft [PR #8](https://github.com/KAtOReNA7/idol/pull/8)。先读 [RESUME](docs/codex/RESUME.md) 和最新远端，不从旧main开工。
 - 用户本轮“已确认，继续开发”已确认izna v15。本轮接入ifeye原生页并发布v16：6成员、3发行、7影像、10真实图片及既有手帐往返，成员照片等大同行。见 [本轮日志](docs/codex/worklogs/20261023-ifeye-native-integration.md)。
 - **当前等待ifeye人工验收；确认前不得开始下一团，公共功能例外。** GENBLUE v10、WOOAH v12、izna v15已认可页面继续保护；正式主站仍v186。
 - 58项针对性测试、类型与正式构建通过；实际桌面/五宽iframe验证已记录，不能当顶层真视口/缩放。Figma实图/内页、7个精确视频预览、真实保存和线上浏览器仍待验。

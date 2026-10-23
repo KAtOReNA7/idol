@@ -8,7 +8,7 @@
 | 应检出分支 | **`codex/ifeye-native-integration` 最新远端 HEAD** |
 | 正式工程 | `apps/idol-site/`；仓库根是旧 Next sandbox |
 | 本轮基线 | `665fed58554fd83ddbcfc098228c6961943e9ebf`（`codex/izna-review-followup`） |
-| PR | 本轮draft PR以 `codex/izna-review-followup` 为base；上游 [PR #7](https://github.com/KAtOReNA7/idol/pull/7) 保留，未合并main |
+| PR | 本轮draft [PR #8](https://github.com/KAtOReNA7/idol/pull/8)以 `codex/izna-review-followup` 为base；上游 [PR #7](https://github.com/KAtOReNA7/idol/pull/7) 保留，未合并main |
 | 当前阶段 | GENBLUE v10、WOOAH v12、izna v15已获页面确认；**ifeye v16待人工验收** |
 | 最新证据 | [本轮worklog](worklogs/20261023-ifeye-native-integration.md)、[验证记录](evidence/20261023-ifeye-native-integration/) |
 | 正式主站 | 仍v186 A-only，本轮未覆盖 |

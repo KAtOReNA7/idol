@@ -17,7 +17,7 @@ v186 原生源码已在提交 `f24075fc98893793e82adbc92cadc9e58257728f` 推送�
 - [MEOVV B](handoffs/codex-20261022/meovv-b/README.md)：四段冻结 patch 与四份真实 owner readback；B 尚未上线，不能冒称已通过正式 Sites 完整包验收。
 - [izna / ifeye v3](handoffs/codex-20261022/astra-izna-ifeye-v3/README.md)：保留原始15份源码、30图候选；izna与ifeye均已接入正式工程原生宿主、精确图片resolver和既有手帐入口；不再用原始候选覆盖当前代码。
 
-线上主站仍为v186 A-only。GENBLUE v10/WOOAH v12/izna v15页面已获确认；[ifeye v16只读审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/ifeye/index.html) 已发布，保持owner-private，等待人工验收。6成员、3发行、7影像、10原图和既有手帐往返已落地；58项针对性测试、类型/正式构建通过。完整生产剪枝仍受旧izna引用阻断，Figma实图/内页、精确视频图和真实保存等未验项见 [本轮日志](docs/codex/worklogs/20261023-ifeye-native-integration.md)。本轮draft PR以 `codex/izna-review-followup` 为base，未合并main。未确认ifeye前不开发下一团。
+线上主站仍为v186 A-only。GENBLUE v10/WOOAH v12/izna v15页面已获确认；[ifeye v16只读审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/ifeye/index.html) 已发布，保持owner-private，等待人工验收。6成员、3发行、7影像、10原图和既有手帐往返已落地；58项针对性测试、类型/正式构建通过。完整生产剪枝仍受旧izna引用阻断，Figma实图/内页、精确视频图和真实保存等未验项见 [本轮日志](docs/codex/worklogs/20261023-ifeye-native-integration.md)。本轮draft [PR #8](https://github.com/KAtOReNA7/idol/pull/8)以 `codex/izna-review-followup` 为base，未合并main。未确认ifeye前不开发下一团。
 
 Astra 与 Sol 已收官，Sol最终反馈已归档为 [SOL-HANDOFF](docs/codex/SOL-HANDOFF.md)；有界交接入口复核不等于全部产品验收通过。完整原生源码足以继续，无需等待旧会话回复。
 

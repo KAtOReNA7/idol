@@ -77,3 +77,10 @@ managed-linux Sites preview + CUA cloud browser，服务入口terminal.local:417
 3. 正式发布前单独处理izna引用导致的剪枝阻断、旧fixture失败与最终pins/实际展开TAR容量，不能直接apply旧删除计划。无当前生产授权不覆盖主站。
 4. 新电脑先查远端/活动PR，再按RESUME安装；用 `node scripts/build-ifeye-review.mjs --out <仓库外专用绝对目录>`重建增量，必须通过Sites source workflow合入现有审阅站，不能将增量独立覆盖站点根。
 5. GitHub connector用于无CLI写认证环境，按精确tree和预期parent/ref保存；不创建新凭证，不强推，不改main。PR链接和读回结果将随接续提交保存。
+
+## GitHub 保存读回
+
+- 代码与本轮文档提交：`633f38bd075b8b3aea0ea6007261e5769295dd1c`，父提交665fed5；GitHub tree `5631075a3e5094a4b54d871c0ca799b2d8339e7a` 与本地完整tree一致，40文件增量，三张新封面复用仓库已存在的精确blob。
+- draft [PR #8](https://github.com/KAtOReNA7/idol/pull/8)，head `codex/ifeye-native-integration`、base `codex/izna-review-followup`；上游PR #7保留，未合main。
+- 已通过GitHub读取633f38b的RESUME，并fetch该远端提交确认与本地内容无差异。CLI无写凭证，使用已授权GitHub connector写入；未新建凭证、强推或覆盖其他电脑更新。
+- 本地原提交7d87d8e仅保存为 `codex/ifeye-native-integration-local`；正式接续以远端同名ifeye分支为准。本次补记PR链接为文档提交，不改变已发布的v16产品代码与fingerprint。

@@ -4,7 +4,7 @@
 
 ## 2026-10-23 最新逐团门槛
 
-GENBLUE v10、WOOAH v12、izna v15、ifeye v16 已获用户页面确认。本轮 Hearts2Hearts v17 已交网页，等待人工验收；确认前不开发下一团，公共功能例外。正式工程 `apps/idol-site/`，最新分支 `codex/hearts2hearts-review-completion`。从 [RESUME](codex/RESUME.md) 和 [最新日志](codex/worklogs/20261023-hearts2hearts-review-completion.md) 接续。Sol/Astra均已收官；下文迁移初期状态为历史，不覆盖当前 GitHub 状态与用户决定。设计、功能、资料、上线仍分别验收。
+GENBLUE v10、WOOAH v12、izna v15、ifeye v16、Hearts2Hearts v17 已获用户页面确认。本轮 KiiiKiii v18 已交网页，等待人工验收；确认前不开发下一团，公共功能例外。正式工程 `apps/idol-site/`，最新分支 `codex/kiiikiii-review-completion`。从 [RESUME](codex/RESUME.md) 和 [最新日志](codex/worklogs/20261023-kiiikiii-review-completion.md) 接续。Sol/Astra均已收官；下文迁移初期状态为历史，不覆盖当前 GitHub 状态与用户决定。设计、功能、资料、上线仍分别验收。
 
 ## 当前执行方式：2026-10-22 Codex 迁移试用
 - 用户已选择 Codex 迁移试用，取代“暂不迁移、主会话继续负责”的旧执行安排。正式工程是 `apps/idol-site/`，原生清单是 [SOURCE-MANIFEST](codex/SOURCE-MANIFEST.json)；根 sandbox 及旧根清单只说明历史样本。

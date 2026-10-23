@@ -7,3 +7,18 @@
 @media(prefers-reduced-motion:reduce){.kiiikiii-artist *{scroll-behavior:auto!important;transition:none!important}}
 /* Keep long display headings and their action within the mobile content width. */
 @media(max-width:700px){.kk-title-row{grid-template-columns:minmax(0,1fr)}.kk-title-row h1{font-size:clamp(64px,20vw,130px)}.kk-heading{flex-wrap:wrap}.kk-heading>div{min-width:0;max-width:100%}.kk-heading h2{font-size:clamp(20px,6.5vw,29px);overflow-wrap:anywhere}}
+/* Native browsing increment: same-size portraits, searchable releases, full originals. */
+.kiiikiii-artist{--kk-pad:clamp(18px,5vw,76px)}
+.kiiikiii-artist>header,.kiiikiii-artist>section,.kiiikiii-artist>main,.kiiikiii-artist>nav,.kiiikiii-artist>footer{padding-inline:max(var(--kk-pad),calc((100vw - 1600px)/2))}
+.kk-portrait-frame{display:block;aspect-ratio:3/4;overflow:hidden;background:#e8eddd}.kk-roster .kk-portrait-frame img{width:100%;height:100%;object-fit:contain}.kk-portrait-frame .kk-photo-empty{min-height:0}
+.kk-portrait-zoom{display:block;width:100%;padding:0!important}.kk-portrait-zoom img{height:auto;max-height:580px;object-fit:contain}
+.kk-poster-caption{display:block;margin-top:6px;color:var(--kk-muted);font-size:10px}
+.kk-result-count{font-size:12px;color:var(--kk-muted);margin-bottom:18px!important}
+.kk-discography>a{min-width:0;border:1px solid var(--kk-ink);padding:18px;background:white;box-shadow:5px 5px 0 var(--kk-acid)}.kk-discography time{display:block;font:11px ui-monospace,monospace;margin-top:16px}.kk-discography>a>span{display:block;margin-top:18px;font-size:12px}.kk-discography h3{overflow-wrap:anywhere}
+.kk-release-detail{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:48px;align-items:center}.kk-cover-zoom{display:block;aspect-ratio:1;width:100%;padding:0!important}.kk-release-detail>div{display:grid;justify-items:start;gap:24px;min-width:0}.kk-release-detail h1{font:800 clamp(30px,5vw,64px)/1.1 KiiiDisplay,sans-serif;overflow-wrap:anywhere}.kk-release-detail+.kk-content{padding-top:0}
+.kk-member-hero h1{letter-spacing:-1px;overflow-wrap:anywhere}.kk-roster strong{flex-wrap:wrap;gap:5px}.kk-member-hero+.kk-heading h2{overflow-wrap:anywhere}
+@media(max-width:700px){.kiiikiii-artist>.kk-tabs{padding-inline:0}.kk-release-detail{grid-template-columns:minmax(0,1fr);gap:28px}.kk-cover-zoom{max-width:360px;margin:auto}.kk-discography{grid-template-columns:minmax(0,1fr);gap:24px}.kk-discography>a{display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px 16px;padding:16px}.kk-discography .kk-album-cover{grid-row:1/5}.kk-discography h3{margin:0;font-size:20px}.kk-discography time,.kk-discography>a>span{margin:0}.kk-roster>button:last-child{grid-column:auto;max-width:none;justify-self:stretch}.kk-roster strong{font-size:17px}.kk-member-hero h1{font-size:40px}.kk-header nav{gap:12px}.kk-heading h2{max-width:100%}}
+
+.kk-roster>button{display:flex;flex-direction:column;align-items:stretch}.kk-roster>button:last-child{border-right:1px solid transparent}.kk-member-number{height:36px;flex-shrink:0}.kk-portrait-frame{flex-shrink:0}.kk-roster strong{flex:1;align-items:flex-start;font-size:clamp(15px,1.5vw,22px)}
+/* The shared record shell caps main at 1440px; this page centers its own content. */
+.kiiikiii-artist>.kk-content{max-width:none;width:auto;margin:0}

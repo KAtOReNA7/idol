@@ -1,6 +1,11 @@
 # 共享开发状态
 
-## 最新执行决定：ODD YOUTH（2026-10-24，等待网页确认）
+## 最新执行决定：ADYA（2026-10-24，v26待确认）
+
+用户“同意，继续开发”已确认 ODD YOUTH v25。本轮 ADYA 原生黑底朱红页面及 owner-private QA **v26** 已发布：五人成员、五发行、六独立视频、五事件与已有手帐往返。49项专项/回归、类型、正式构建、45项五宽布局和10个综合交互场景通过。Figma已建立24个可编辑画板并校正关键首屏/内页；共享手帐画板和完整逐字间距对照仍待同步。线上首页已打开，成员点击自动化超时，不能据此宣称线上交互全过；真实保存/播放和80%/125%原生缩放待验。**等待 ADYA 网页确认后再开始下一团，公共功能例外。** 分支 `codex/adya-review-completion`，主站仍v186；原图、稳定ID、评分、备注、观看状态和访问权限保持。详见 `docs/codex/worklogs/20261024-adya-review-completion.md`。下方旧门槛为历史。
+
+
+## 历史执行决定：ODD YOUTH（现已获确认）（2026-10-24）
 
 用户“同意，继续开发”已确认 Candy Shop v23。本轮仅推进 ODD YOUTH，分支 `codex/oddyouth-review-completion`，起点 `a1c55190a4c0b2d96bf149f128a62a0e3473868d`。蓝白原生页及 owner-private QA **v25** 已发布：五成员、五发行/12曲目、11视频、五事件与已有手帐往返。49专项/回归、类型、正式构建、40布局与29交互检查通过；24个可编辑Figma画板及关键上下文已建立，完整共享壳保真细节仍待同步。线上v24首页可打开，后续点击超时；原生缩放、真实保存/播放未验。**等待本团网页确认后再开始下一团，公共功能例外。** 主站仍v186；原始照片、稳定ID、评分、备注、观看状态和访问权限保持。详见 `docs/codex/worklogs/20261024-oddyouth-review-completion.md`。下方旧团门槛为历史。
 
@@ -11,9 +16,9 @@
 
 更新：北京时间2026-10-24。
 
-[打开 ODD YOUTH v25](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/oddyouth/index.html) · [本轮日志](worklogs/20261024-oddyouth-review-completion.md) · [接续入口](RESUME.md)。
+[打开 ADYA v26](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/adya/index.html) · [本轮日志](worklogs/20261024-adya-review-completion.md) · [接续入口](RESUME.md)。
 
-GitHub：`codex/oddyouth-review-completion`；draft [PR #16](https://github.com/KAtOReNA7/idol/pull/16)，代码 `54a9eedaf246be2d00cc0cae3fb3573f30f06224` 已推送；接续以本分支最新远端HEAD为准。
+GitHub：`codex/adya-review-completion`；本轮代码与交接将提交到该分支，stacked draft PR以 `codex/oddyouth-review-completion` 为基线。
 
 ## 已核基线与交接入口
 
@@ -40,15 +45,17 @@ GitHub：`codex/oddyouth-review-completion`；draft [PR #16](https://github.com/
 | VVUP | 独立深色酸黄设计；v20页面已确认 | 历史素材、资料/设计/保存未验项保留 |
 | YOUNG POSSE | v21页面已获用户确认 | 历史资料、设计及真实保存待办保留 |
 | BEWAVE | v22 页面已获用户确认 | 历史未验项保留 |
-| Candy Shop | 独立粉紫唱片设计；v23已发布，待用户确认 | [打开页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/candyshop/index.html)；线上交互、真实保存/播放和原生缩放待验 |
+| Candy Shop | 独立粉紫唱片设计；v23已获用户确认 | [打开页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/candyshop/index.html)；线上交互、真实保存/播放和原生缩放待验 |
+| ODD YOUTH | 蓝白相册 v25 已获用户页面确认 | 真实保存/播放、原生缩放及Figma共享壳细节等历史未验项保留 |
+| ADYA | 黑底朱红独立页；v26私有审阅已发布，待网页确认 | 线上交互、真实保存/播放、原生缩放及共享手帐Figma仍待验；见本轮日志 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
 | Sol | 本轮已收官，最终反馈已归档 [SOL-HANDOFF](SOL-HANDOFF.md) | 13:38形成、13:53主会话完整读取；不等于全部团体产品验收通过 |
 
 ## 下一里程碑与任务索引
 
-从 [RESUME](RESUME.md) 开始，检出 `codex/candyshop-review-completion` 最新远端HEAD。Candy Shop v23已发布，先处理本团反馈；确认前不开始 ODD YOUTH。
+从 [RESUME](RESUME.md) 开始，检出 `codex/adya-review-completion` 最新远端HEAD。ADYA v26等待网页确认，确认前不开始Geenius；公共功能例外。
 
-- [Candy Shop 原生完善](worklogs/20261024-candyshop-review-completion.md)：当前轮次，v23待页面确认。
+- [Candy Shop 原生完善](worklogs/20261024-candyshop-review-completion.md)：历史轮次，v23已获页面确认。
 - [BEWAVE 原生完善](worklogs/20261024-bewave-review-completion.md)：历史轮次，v22已获页面确认。
 - [YOUNG POSSE 原生完善与v21](worklogs/20261024-youngposse-review-completion.md)：已获页面确认。
 - [VVUP 原生完善与v20](worklogs/20261024-vvup-review-completion.md)：历史轮次；页面现已确认。

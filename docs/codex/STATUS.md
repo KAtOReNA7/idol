@@ -1,10 +1,10 @@
 # 共享开发状态
 
-更新：北京时间2026-10-24。当前分支 **`codex/vvup-review-completion`**，基于SAY MY NAME的 `06601304be62beff7fea7a5f87fa9e3336e71c64`。draft [PR #12](https://github.com/KAtOReNA7/idol/pull/12)；代码提交 `48c2c7bb410a4fae8adf35550bd7609bf226c0d0` 已推送，文档以最新远端HEAD为准，见[RESUME](RESUME.md)；正式工程 `apps/idol-site/`，不从旧main接续。
+更新：北京时间2026-10-24。当前分支 **`codex/youngposse-review-completion`**，基于VVUP的 `75c22b7ec26f53fbbf14db1b253a8cce52a59d81`。正式工程 `apps/idol-site/`；最新提交和draft PR见[RESUME](RESUME.md)，不从旧main接续。
 
-用户“可以 继续开发”已确认SAY MY NAME v19。VVUP **v20 owner-private已发布，等待页面人工确认**：四位官方成员与独立历史档案、七发行/三封面、七影像/六舞台绑定/16关系、九事件、原生手帐往返。Figma桌面/手机首页16槽实图。117测试、类型、正式构建、21项交互/状态及七页五宽真视口通过。216旧QA文件SHA不变，主站仍v186。
+用户“可以 继续开发”已确认VVUP v20。YOUNG POSSE **v21 owner-private已发布，等待页面人工确认**：保留独立黑色酸黄设计，五人等大照片与成员搜索、真正原图、15发行/22影像槽/39关系、14事件与手帐往返。138测试、类型、正式构建、28交互/3失败恢复及七页五宽真视口通过。237旧QA文件SHA不变，主站仍v186。
 
-[审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/vvup/index.html) · [日志及未验边界](worklogs/20261024-vvup-review-completion.md)。真实保存/播放、线上已登录浏览器、原生缩放、完整Figma内页和素材缺口继续待办。
+[审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/youngposse/index.html) · [日志及未验边界](worklogs/20261024-youngposse-review-completion.md)。真实保存/播放、原生缩放、线上已登录浏览器、完整Figma及两项发行目录缺口继续待办。
 
 ## 已核基线与交接入口
 
@@ -28,15 +28,17 @@
 | Hearts2Hearts | 独立蓝网格设计完善，8官网原图、成员/发行搜索、13版本、11事件、64既有关系和真实组件往返 | [v17审阅入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/hearts2hearts/index.html)已获用户页面确认；真实保存/视频图片/真视口/设计内页/主站待验 |
 | KiiiKiii | 独立酸绿设计完善，v18页面已确认 | 历史照片、资料/设计/保存待办保留 |
 | SAY MY NAME | 淡紫唱片设计完善；v19页面已确认 | 历史资料、设计、保存与上线未验项保留 |
-| VVUP | 独立深色酸黄设计、四官方成员/历史档案、七发行与七影像；v20已发布 | 等待页面人工确认；未验边界见VVUP本轮日志 |
+| VVUP | 独立深色酸黄设计；v20页面已确认 | 历史素材、资料/设计/保存未验项保留 |
+| YOUNG POSSE | Posse in Frame五人等大照片、15发行与22影像槽；v21已发布 | 等待页面人工确认；未验边界见YOUNG POSSE日志 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
 | Sol | 本轮已收官，最终反馈已归档 [SOL-HANDOFF](SOL-HANDOFF.md) | 13:38形成、13:53主会话完整读取；不等于全部团体产品验收通过 |
 
 ## 下一里程碑与任务索引
 
-从 [RESUME](RESUME.md) 开始，检出 `codex/vvup-review-completion` 最新远端HEAD。当前等待VVUP v20网页反馈，未确认不开始下一团。
+从 [RESUME](RESUME.md) 开始，检出 `codex/youngposse-review-completion` 最新远端HEAD。当前等待YOUNG POSSE v21网页反馈，未确认不开始下一团。
 
-- [VVUP 原生完善与v20](worklogs/20261024-vvup-review-completion.md)：当前轮次；SAY MY NAME v19已确认。
+- [YOUNG POSSE 原生完善与v21](worklogs/20261024-youngposse-review-completion.md)：当前轮次；VVUP v20已确认。
+- [VVUP 原生完善与v20](worklogs/20261024-vvup-review-completion.md)：历史轮次；页面现已确认。
 - [SAY MY NAME 原生完善与v19](worklogs/20261023-saymyname-review-completion.md)：历史轮次；页面现已确认。
 
 - [KiiiKiii 原生完善与v18](worklogs/20261023-kiiikiii-review-completion.md)：历史轮次；KiiiKiii v18现已确认。

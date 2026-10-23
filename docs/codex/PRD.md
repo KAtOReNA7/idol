@@ -24,7 +24,7 @@ Sol 的已核 15 团名单：UDTT、KATSEYE、VCHA、HITGS、AtHeart、i-dle、I
 
 Astra 的已核 15 团名单：Hearts2Hearts、SAY MY NAME、izna、ifeye、GENBLUE、VVUP、YOUNG POSSE、BEWAVE、Candy Shop、ODD YOUTH、ADYA、Geenius、TRACER、W!TCHX、SPIA。原批次未包括的已有网站页面继续保护，但不据目录数量扩大本次批次。
 
-当前接续分支为 `codex/vvup-review-completion`，基于SAY MY NAME的 `06601304`。前七团页面已确认，VVUP v20已发布等待人工验收；确认前不推进下一团，公共功能例外。阶段和未验项以[RESUME](RESUME.md)、[STATUS](STATUS.md)及[VVUP日志](worklogs/20261024-vvup-review-completion.md)为准。正式主站仍v186；页面认可不替代真实保存、完整设计或生产验收。
+当前接续分支为 `codex/youngposse-review-completion`，基于VVUP的 `75c22b7e`。前八团页面已确认，YOUNG POSSE v21已发布等待人工验收；确认前不推进下一团，公共功能例外。阶段和未验项以[RESUME](RESUME.md)、[STATUS](STATUS.md)及[YOUNG POSSE日志](worklogs/20261024-youngposse-review-completion.md)为准。正式主站仍v186；页面认可不替代真实保存、完整设计或生产验收。
 
 以下不属于默认范围：
 

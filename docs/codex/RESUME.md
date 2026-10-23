@@ -11,7 +11,7 @@
 | 私有预览 | [ODD YOUTH v25](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/oddyouth/index.html) |
 | QA source | `500e091b92597b4cf0db33fbccf7bf4d24c02c10`；331旧文件SHA不变，新增35文件 |
 | 正式主站 | v186，未覆盖、未合并main |
-| GitHub交付 | 本分支draft PR待创建 |
+| GitHub交付 | draft [PR #16](https://github.com/KAtOReNA7/idol/pull/16)，代码 `54a9eedaf246be2d00cc0cae3fb3573f30f06224` 已推送 |
 | 证据 | [本轮日志](worklogs/20261024-oddyouth-review-completion.md)、[证据目录](evidence/oddyouth-20261024/) |
 
 ## 运行与验证

@@ -13,7 +13,7 @@
 
 [打开 ODD YOUTH v25](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/oddyouth/index.html) · [本轮日志](worklogs/20261024-oddyouth-review-completion.md) · [接续入口](RESUME.md)。
 
-GitHub：`codex/oddyouth-review-completion`；draft PR 待创建，接续以本分支最新远端HEAD为准。
+GitHub：`codex/oddyouth-review-completion`；draft [PR #16](https://github.com/KAtOReNA7/idol/pull/16)，代码 `54a9eedaf246be2d00cc0cae3fb3573f30f06224` 已推送；接续以本分支最新远端HEAD为准。
 
 ## 已核基线与交接入口
 

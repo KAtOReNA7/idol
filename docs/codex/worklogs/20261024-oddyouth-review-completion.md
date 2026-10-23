@@ -38,3 +38,5 @@ v24 已成功发布，source `73abd2d319ba2d26d504d4f294297ff6149d78eb`，部署
 最终审阅 fingerprint：`3f3d129dd65a32da8cc47c7d9c766e8ac850eba3f6a9d7176d07a859eaee68ed`。
 
 [打开ODD YOUTH](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/oddyouth/index.html)。等待用户确认本团网页后再开始下一团，公共功能例外。后续优先处理审美反馈、线上交互、Figma共享壳细节与真实保存/播放环境。
+
+代码已推送 `54a9eedaf246be2d00cc0cae3fb3573f30f06224`；draft [PR #16](https://github.com/KAtOReNA7/idol/pull/16) 基于Candy Shop分支并已附加当前会话。后续文档提交以最新远端HEAD为准，工作树交接时保持干净。

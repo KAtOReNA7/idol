@@ -1,0 +1,156 @@
+
+> site-creator-vinext-starter@0.1.0 build
+> node scripts/build-artist-runtime-data.mjs --check && node scripts/build-snapshot-fallback.mjs --check && node scripts/run-framework.mjs build
+
+
+  vinext build  (Vite 8.0.13)
+
+▲ [WARNING] Proxy environment variables detected. We'll use your proxy for fetch requests.
+
+
+[1/5] analyze client references...
+
+transforming...✓ 650 modules transformed.
+rendering chunks...
+✓ built in 2.00s
+[2/5] analyze server references...
+
+transforming...✓ 629 modules transformed.
+rendering chunks...
+✓ built in 1.49s
+[3/5] build rsc environment...
+
+transforming...✓ 647 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 2.51s
+[4/5] build client environment...
+
+transforming...✓ 2390 modules transformed.
+rendering chunks...
+computing gzip size...
+[PLUGIN_TIMINGS] Your build spent significant time in plugins. Here is a breakdown:
+  - vinext:middleware-server-only (17%)
+  - vinext:css-data-url (15%)
+  - alias (13%)
+  - rsc:virtual-client-package (10%)
+  - vinext:og-inline-fetch-assets (10%)
+See https://rolldown.rs/options/checks#plugintimings for more details.
+
+✓ built in 4.89s
+[5/5] build ssr environment...
+
+transforming...✓ 634 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 2.13s
+
+  Route (app)
+  ┌ ? /
+  ├ λ /api/build-assets
+  ├ λ /api/catalog
+  ├ λ /api/editorial-assets
+  ├ λ /api/editorial-assets/viewer
+  ├ λ /api/export
+  ├ λ /api/health
+  ├ λ /api/manage/backup
+  ├ λ /api/manage/build-assets
+  ├ λ /api/manage/careers
+  ├ λ /api/manage/editorial-assets
+  ├ λ /api/manage/editorial-assets/backup
+  ├ λ /api/manage/editorial-assets/catalog
+  ├ λ /api/manage/editorial-assets/preflight
+  ├ λ /api/manage/editorial-assets/relation-diagnostics
+  ├ λ /api/manage/editorial-assets/restore
+  ├ λ /api/manage/editorial-assets/viewer
+  ├ λ /api/manage/members
+  ├ λ /api/manage/photos
+  ├ λ /api/manage/posters
+  ├ λ /api/manage/relations
+  ├ λ /api/manage/relations/billlie-zap
+  ├ λ /api/media
+  ├ λ /api/posters
+  ├ λ /api/records
+  ├ λ /api/save
+  ├ λ /api/status
+  ├ ? /artists/adya
+  ├ ? /artists/aespa
+  ├ ? /artists/atheart
+  ├ ? /artists/babymonster
+  ├ ? /artists/badvillain
+  ├ ? /artists/bewave
+  ├ ? /artists/billlie
+  ├ ? /artists/candyshop
+  ├ ? /artists/cherrybullet
+  ├ ? /artists/everglow
+  ├ ? /artists/fromis9
+  ├ ? /artists/geenius
+  ├ ? /artists/genblue
+  ├ ? /artists/hearts2hearts
+  ├ ? /artists/hitgs
+  ├ ? /artists/idle
+  ├ ? /artists/ifeye
+  ├ ? /artists/illit
+  ├ ? /artists/itzy
+  ├ ? /artists/ive
+  ├ ? /artists/izna
+  ├ ? /artists/izone
+  ├ ? /artists/katseye
+  ├ ? /artists/kep1er
+  ├ ? /artists/kiiikiii
+  ├ ? /artists/kissoflife
+  ├ ? /artists/lesserafim
+  ├ ? /artists/loona
+  ├ ? /artists/madein
+  ├ ? /artists/meovv
+  ├ ? /artists/newjeans
+  ├ ? /artists/nmixx
+  ├ ? /artists/oddyouth
+  ├ ? /artists/purplekiss
+  ├ ? /artists/qwer
+  ├ ? /artists/rescene
+  ├ ? /artists/rocketpunch
+  ├ ? /artists/saymyname
+  ├ ? /artists/spia
+  ├ ? /artists/stayc
+  ├ ? /artists/tracer
+  ├ ? /artists/triples
+  ├ ? /artists/udtt
+  ├ ? /artists/unis
+  ├ ? /artists/vcha
+  ├ ? /artists/vvup
+  ├ ? /artists/weeekly
+  ├ ? /artists/witchx
+  ├ ? /artists/wooah
+  ├ ? /artists/xg
+  ├ ? /artists/youngposse
+  ├ ? /design-review
+  ├ ? /design-review/kep1er
+  ├ ? /design-review/purplekiss-v1
+  ├ ? /design-review/rescene-v1
+  ├ ? /design-review/sol15/udtt
+  ├ ? /design-review/sol15/udtt-private
+  ├ ? /design-review/sol15/vcha
+  ├ ? /design-review/sol15/vcha-container
+  ├ ƒ /design-review/sol15/vcha-container/frame/:width
+  ├ ? /design-review/triples-v2
+  ├ ? /design-review/unis
+  ├ ? /manage
+  ├ ƒ /manage/build-assets
+  ├ ? /manage/careers
+  ├ ƒ /manage/editorial-assets
+  ├ ? /manage/photos
+  ├ ? /manage/posters
+  ├ ? /manage/relations
+  ├ ? /manage/relations/billlie-zap
+  ├ λ /mcp
+  └ ? /preview/babymonster
+
+  λ API  ƒ Dynamic  ? Unknown
+
+  ? Some routes could not be classified. vinext currently uses static analysis
+    and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.
+    Automatic classification will be improved in a future release.
+
+  Build complete. Run `vinext start` to start the production server.
+

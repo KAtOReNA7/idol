@@ -1,9 +1,9 @@
 # 女团页面设计要求与验收基准
 更新：2026-10-22（执行方式更新；原设计标准与历史依据保留）。所有派工、接续实现和“可交用户验收”的判断，必须先读本文件，再读协作手册。本文件整理已存在的用户要求，不新增凭证、权限、发布或工具使用授权。
 
-## 2026-10-23 最新逐团门槛
+## 2026-10-24 最新逐团门槛
 
-GENBLUE v10、WOOAH v12、izna v15、ifeye v16、Hearts2Hearts v17、KiiiKiii v18 已获用户页面确认。本轮 SAY MY NAME v19 已发布，等待人工验收；确认前不开发下一团，公共功能例外。正式工程 `apps/idol-site/`，最新分支 `codex/saymyname-review-completion`。从 [RESUME](codex/RESUME.md) 和 [本轮日志](codex/worklogs/20261023-saymyname-review-completion.md) 接续。设计、功能、资料、上线仍分别验收。下文此前检查点为历史。
+用户在 SAY MY NAME v19 后回复“可以 继续开发”，该页面已确认。本轮仅推进原计划内VVUP，**v20已发布，等待VVUP页面人工确认后再开发下一团，公共功能例外**。正式工程 `apps/idol-site/`，最新分支 `codex/vvup-review-completion`。从 [RESUME](codex/RESUME.md) 和 [本轮日志](codex/worklogs/20261024-vvup-review-completion.md) 接续。四位官方成员与一位历史档案、七发行、七影像和原生手帐往返已落地；设计、功能、资料、上线仍分别验收，正式主站仍v186。下方此前检查点为历史。
 
 ## 当前执行决定（2026-10-22 用户迁移决定）
 - 用户已决定迁移试用 Codex；2026-10-21 的“暂不迁移”执行安排被本决定取代，原产品、设计、图片与验收标准继续有效。

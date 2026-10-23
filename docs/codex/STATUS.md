@@ -1,10 +1,10 @@
 # 共享开发状态
 
-更新：北京时间2026-10-23 23:45。当前分支 **`codex/saymyname-review-completion`**，基于 KiiiKiii 分支 `f91a66ce9466cd12c64ebe9a9b16d84739b45fc9`。draft [PR #11](https://github.com/KAtOReNA7/idol/pull/11)；代码提交 `5c28500cdeb5920ba3d7640b50065cffebe1d3b4` 已推送，文档以最新远端 HEAD 为准。正式工程 `apps/idol-site/`；先读 [RESUME](RESUME.md)，不要从旧 main 接续。
+更新：北京时间2026-10-24。当前分支 **`codex/vvup-review-completion`**，基于SAY MY NAME的 `06601304be62beff7fea7a5f87fa9e3336e71c64`。GitHub提交/PR收尾信息见[RESUME](RESUME.md)；正式工程 `apps/idol-site/`，不从旧main接续。
 
-旧会话在KiiiKiii v18交付后已获用户“已确认，继续开发”，本轮承接该决定。SAY MY NAME **v19 owner-private已发布，等待网页人工确认**：8官网原图、成员检索/原图、9发行检索/详情、6影像、5绑定舞台、2只观看替代现场、37既有关系与原生手帐往返。113项测试、类型与正式构建通过；9条实际交互、7页×5个真视口通过。192旧审阅文件SHA不变，主站仍v186。
+用户“可以 继续开发”已确认SAY MY NAME v19。VVUP **v20 owner-private已发布，等待页面人工确认**：四位官方成员与独立历史档案、七发行/三封面、七影像/六舞台绑定/16关系、九事件、原生手帐往返。Figma桌面/手机首页16槽实图。117测试、类型、正式构建、21项交互/状态及七页五宽真视口通过。216旧QA文件SHA不变，主站仍v186。
 
-[审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/saymyname/index.html) · [本轮日志及未验边界](worklogs/20261023-saymyname-review-completion.md)。真实保存/播放、线上浏览器、原生缩放、Figma完整实图及资料缺口继续待办。
+[审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/vvup/index.html) · [日志及未验边界](worklogs/20261024-vvup-review-completion.md)。真实保存/播放、线上已登录浏览器、原生缩放、完整Figma内页和素材缺口继续待办。
 
 ## 已核基线与交接入口
 
@@ -27,15 +27,17 @@
 | ifeye | v3设计已原生接入，6成员、3发行、7影像、10原图、5事件；9公开MV参与关系、6既有个人记录 | [v16审阅入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/ifeye/index.html)已获用户页面确认；仅私有只读审阅，历史未验项继续保留 |
 | Hearts2Hearts | 独立蓝网格设计完善，8官网原图、成员/发行搜索、13版本、11事件、64既有关系和真实组件往返 | [v17审阅入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/hearts2hearts/index.html)已获用户页面确认；真实保存/视频图片/真视口/设计内页/主站待验 |
 | KiiiKiii | 独立酸绿设计完善，v18页面已确认 | 历史照片、资料/设计/保存待办保留 |
-| SAY MY NAME | 淡紫唱片设计完善，8官网原图、9发行、6影像、37关系；v19发布 | 等待页面人工验收；真实保存/播放、完整设计及上线复验待办见本轮日志 |
+| SAY MY NAME | 淡紫唱片设计完善；v19页面已确认 | 历史资料、设计、保存与上线未验项保留 |
+| VVUP | 独立深色酸黄设计、四官方成员/历史档案、七发行与七影像；v20已发布 | 等待页面人工确认；未验边界见VVUP本轮日志 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
 | Sol | 本轮已收官，最终反馈已归档 [SOL-HANDOFF](SOL-HANDOFF.md) | 13:38形成、13:53主会话完整读取；不等于全部团体产品验收通过 |
 
 ## 下一里程碑与任务索引
 
-从 [RESUME](RESUME.md) 开始，检出 `codex/saymyname-review-completion` 最新远端HEAD。当前等待 SAY MY NAME v19 网页反馈，未确认不开始下一团。
+从 [RESUME](RESUME.md) 开始，检出 `codex/vvup-review-completion` 最新远端HEAD。当前等待VVUP v20网页反馈，未确认不开始下一团。
 
-- [SAY MY NAME 原生完善与v19](worklogs/20261023-saymyname-review-completion.md)：当前轮次；KiiiKiii v18已确认。
+- [VVUP 原生完善与v20](worklogs/20261024-vvup-review-completion.md)：当前轮次；SAY MY NAME v19已确认。
+- [SAY MY NAME 原生完善与v19](worklogs/20261023-saymyname-review-completion.md)：历史轮次；页面现已确认。
 
 - [KiiiKiii 原生完善与v18](worklogs/20261023-kiiikiii-review-completion.md)：历史轮次；KiiiKiii v18现已确认。
 - [Hearts2Hearts 原生完善与v17](worklogs/20261023-hearts2hearts-review-completion.md)：历史轮次；Hearts2Hearts v17已获页面确认。

@@ -1,5 +1,6 @@
 import {publicArtistKeysForPath,validPublicArtistRoute} from './public-artist-route-keys';
 import billlieRouteKeys from '../../data/billlie-navigation-keys.json';
+const vvupReleaseKeys=['vvon','house-party','giddy-boy','4-life','aint-nobody','locked-on','doo-doom-chit'];
 const saymynameReleaseKeys=["your-scent","sweet-sour","our-vibe","out-the-door","ily","love-romantic","shalala-japanese","my-name-is","say-my-name"];
 const kiiikiiiRouteKeys={"release":["whykiiikiii","delulu-pack","to-me-from-me","dancing-alone","uncut-gem","i-do-me"]};
 import hearts2heartsRouteKeys from '../../data/hearts2hearts-navigation-keys.json';
@@ -52,11 +53,11 @@ export function safeArtistReturn(value:string|null|undefined):string|null{
  const publicKeys=publicArtistKeysForPath(u.pathname);
  if(['timelineType','timelineImportance','timelineOrder'].some(key=>u.searchParams.has(key))&&!readTimelineFilters(u.pathname+u.search,registry51.map(group=>group.path)).ok)return null;
  const designCatalog=u.pathname==='/artists/billlie'?billlieRouteKeys:u.pathname==='/artists/idle'?idleRouteKeys:u.pathname==='/artists/ive'?iveRouteKeys:u.pathname==='/artists/badvillain'?badvillainRouteKeys:u.pathname==='/artists/newjeans'?newjeansRouteKeys:null;
- if(u.searchParams.has('release')&&!(u.pathname===SAYMYNAME_PATH?saymynameReleaseKeys.includes(u.searchParams.get('release')!):u.pathname===KIIIKIII_PATH?kiiikiiiRouteKeys.release.includes(u.searchParams.get('release')!):u.pathname===HEARTS2HEARTS_PATH?hearts2heartsRouteKeys.release.includes(u.searchParams.get('release')!):u.pathname==='/artists/triples'?triplesRouteKeys.releases.some(entry=>entry.key===u.searchParams.get('release')):publicKeys?publicKeys.releases.includes(u.searchParams.get('release')!):designCatalog?.releases.some(entry=>entry.id===u.searchParams.get('release'))))return null;
+ if(u.searchParams.has('release')&&!(u.pathname==='/artists/vvup'?vvupReleaseKeys.includes(u.searchParams.get('release')!):u.pathname===SAYMYNAME_PATH?saymynameReleaseKeys.includes(u.searchParams.get('release')!):u.pathname===KIIIKIII_PATH?kiiikiiiRouteKeys.release.includes(u.searchParams.get('release')!):u.pathname===HEARTS2HEARTS_PATH?hearts2heartsRouteKeys.release.includes(u.searchParams.get('release')!):u.pathname==='/artists/triples'?triplesRouteKeys.releases.some(entry=>entry.key===u.searchParams.get('release')):publicKeys?publicKeys.releases.includes(u.searchParams.get('release')!):designCatalog?.releases.some(entry=>entry.id===u.searchParams.get('release'))))return null;
  if(u.searchParams.has('media')&&!(publicKeys?publicKeys.media.some(entry=>entry.key===u.searchParams.get('media')&&entry.kind===u.searchParams.get('format')):designCatalog?.media.some(entry=>entry.id===u.searchParams.get('media'))))return null;
  if(u.searchParams.has('media')&&u.searchParams.has('release'))return null;
  if(u.searchParams.has('reader')&&(u.pathname!=='/artists/triples'||!/^rec[A-Za-z0-9]+$/.test(u.searchParams.get('reader')!)))return null;
- if(u.searchParams.has('roster')&&(!historicalRosterPath(u.pathname)||u.searchParams.get('roster')!=='history'))return null;
+ if(u.searchParams.has('roster')&&((!historicalRosterPath(u.pathname)&&u.pathname!=='/artists/vvup')||u.searchParams.get('roster')!=='history'))return null;
  if(u.searchParams.has('format')&&(![...candidateArtistPaths,SAYMYNAME_PATH,KATSEYE_PATH,ITZY_PATH,LESSERAFIM_PATH,IVE_PATH,KIOF_PATH,STAYC_PATH,NMIXX_PATH,HEARTS2HEARTS_PATH,KIIIKIII_PATH].includes(u.pathname)||!(u.pathname==='/artists/billlie'?['mv','stage','release']:['mv','stage']).includes(u.searchParams.get('format')!)))return null;
  const section=u.searchParams.get('section'),member=u.searchParams.get('member'),queue=u.searchParams.get('queue');
  if(section&&!['overview','works','members','updates','records'].includes(section)||member&&!/^rec[A-Za-z0-9]+$/.test(member)||queue&&!['all','tonight','rewatch','unrated'].includes(queue)||(u.searchParams.get('q')?.length??0)>200)return null;

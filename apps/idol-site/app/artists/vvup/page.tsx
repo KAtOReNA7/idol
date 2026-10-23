@@ -1,4 +1,4 @@
-import Design from '@/components/candidate/vvup-design';
+import Design from '@/components/vvup-artist';
 import content from '@/data/vvup-artist.json';
-import './vvup-artist.css';
+import './vvup-native.css';
 export default function ArtistPage(){return <Design content={content}/>;}

@@ -43,7 +43,7 @@ Figma文件 `zeLNExz4TbpWRW3uiahef7`，page `802:1095`；桌面 `802:1096`、手
 - QA Site `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3`；Sites source `e4d3aef4882c64e5872ffb16956c194c25c86f25`。
 - deployment `appgdep_6adb8a1a6ddc81919c80dfadafbbf2ea` 返回 `succeeded`；version `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_2f3d98bdcd748191b37cbb9e34608b9b`。
 - 原216个静态文件SHA全部不变，增加21文件到237。gzip59,653,371 bytes，展开常规文件内容69,724,222 bytes（含hosting，不等同含TAR块填充的归档长度）。旧dist未更改。组装脚本首次在拷贝证据manifest时路径仍是旧团而失败，静态增量和旧文件SHA已完成；单独补拷正确manifest并复核216旧文件后才打包发布。
-- GitHub提交与draft PR在收尾补记，base为 `codex/saymyname-review-completion`。本地源码、公开证据和本日志一起推送，不把Sites提交混同GitHub提交。
+- GitHub代码、素材、证据与进度在 `48c2c7bb410a4fae8adf35550bd7609bf226c0d0` 推送；draft [PR #12](https://github.com/KAtOReNA7/idol/pull/12)，base为 `codex/saymyname-review-completion`，未合并。其后文档提交以分支最新远端HEAD为准，不把Sites提交混同GitHub提交。
 
 线上地址已交给Codex浏览器面板，工具返回queued；没有已登录线上浏览器检查，不宣称线上页面已独立复验。
 
@@ -53,4 +53,4 @@ Figma文件 `zeLNExz4TbpWRW3uiahef7`，page `802:1095`；桌面 `802:1096`、手
 2. 待补Hyunny具名照片、四张早期发行封面、七支精确影像预览及MV个人造型；不猜成员参与或发行日期。
 3. 完整Figma主要内页、进一步视觉研究、原生缩放、真实播放/owner保存和已登录线上浏览器复验仍待办。本地浏览器通过与部署succeeded不能代替这些项。
 4. 保留其他团历史未验项、izna生产剪枝引用阻断与ifeye旧fixture失败；此轮未剪枝apply，不据QA包推出主站全量包合格。
-5. 新电脑从 [RESUME](../RESUME.md) 检出当前分支最新远端HEAD，正式工程运行原Vite/Vinext脚本；不从旧main接续。停止本轮自有本地预览后以线上地址交付。
+5. 新电脑从 [RESUME](../RESUME.md) 检出当前分支最新远端HEAD，正式工程运行原Vite/Vinext脚本；不从旧main接续。本轮自有4179预览已停止，以线上地址交付。

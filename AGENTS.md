@@ -5,7 +5,7 @@
 ## 最新执行决定（2026-10-24 VVUP v20）
 
 - 用户已用“可以 继续开发”确认SAY MY NAME v19；本轮仅推进VVUP。**等待VVUP页面人工确认后再开发下一团，公共功能例外。**
-- 最新分支 **`codex/vvup-review-completion`**，基于 `06601304be62beff7fea7a5f87fa9e3336e71c64`；正式工程 `apps/idol-site/`。GitHub交付编号见 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261024-vvup-review-completion.md)，以远端最新HEAD接续。
+- 最新分支 **`codex/vvup-review-completion`**，基于 `06601304be62beff7fea7a5f87fa9e3336e71c64`；正式工程 `apps/idol-site/`。draft [PR #12](https://github.com/KAtOReNA7/idol/pull/12)，代码提交 `48c2c7bb410a4fae8adf35550bd7609bf226c0d0`；接续见 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261024-vvup-review-completion.md)，以远端最新HEAD接续。
 - [VVUP v20 owner-private审阅](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/vvup/index.html)已发布：深色酸黄独立页，四位官方成员/历史档案、原图、七发行/三封面、七影像/六舞台/16关系、时间轴与手帐往返；桌面/手机Figma首页16槽实图已写入。
 - 117测试、类型和正式构建通过；21项实际交互/状态、七页五宽真视口通过。216旧QA文件SHA不变；正式主站仍v186。真实保存/播放、线上已登录浏览器、原生缩放、完整Figma内页与缺图仍待验。
 

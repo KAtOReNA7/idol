@@ -8,7 +8,7 @@
 | 应检出分支 | **`codex/vvup-review-completion` 最新远端HEAD** |
 | 正式工程 | `apps/idol-site/`；根目录为历史Next sandbox |
 | 基线 | `06601304be62beff7fea7a5f87fa9e3336e71c64`，`codex/saymyname-review-completion` |
-| GitHub交付 | 提交与draft PR收尾补记；最新远端HEAD为准 |
+| GitHub交付 | draft [PR #12](https://github.com/KAtOReNA7/idol/pull/12)；代码提交 `48c2c7bb410a4fae8adf35550bd7609bf226c0d0`，其后文档以最新远端HEAD为准 |
 | 当前阶段 | SAY MY NAME v19和前六团页面已确认；**VVUP v20等人工确认** |
 | 审阅 | [VVUP页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/vvup/index.html) |
 | 证据 | [本轮日志](worklogs/20261024-vvup-review-completion.md)、[验证目录](evidence/20261024-vvup-review-completion/) |

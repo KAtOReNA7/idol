@@ -1,6 +1,6 @@
 # 共享开发状态
 
-更新：北京时间2026-10-24。当前分支 **`codex/vvup-review-completion`**，基于SAY MY NAME的 `06601304be62beff7fea7a5f87fa9e3336e71c64`。GitHub提交/PR收尾信息见[RESUME](RESUME.md)；正式工程 `apps/idol-site/`，不从旧main接续。
+更新：北京时间2026-10-24。当前分支 **`codex/vvup-review-completion`**，基于SAY MY NAME的 `06601304be62beff7fea7a5f87fa9e3336e71c64`。draft [PR #12](https://github.com/KAtOReNA7/idol/pull/12)；代码提交 `48c2c7bb410a4fae8adf35550bd7609bf226c0d0` 已推送，文档以最新远端HEAD为准，见[RESUME](RESUME.md)；正式工程 `apps/idol-site/`，不从旧main接续。
 
 用户“可以 继续开发”已确认SAY MY NAME v19。VVUP **v20 owner-private已发布，等待页面人工确认**：四位官方成员与独立历史档案、七发行/三封面、七影像/六舞台绑定/16关系、九事件、原生手帐往返。Figma桌面/手机首页16槽实图。117测试、类型、正式构建、21项交互/状态及七页五宽真视口通过。216旧QA文件SHA不变，主站仍v186。
 

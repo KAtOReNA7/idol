@@ -24,7 +24,7 @@ Sol 的已核 15 团名单：UDTT、KATSEYE、VCHA、HITGS、AtHeart、i-dle、I
 
 Astra 的已核 15 团名单：Hearts2Hearts、SAY MY NAME、izna、ifeye、GENBLUE、VVUP、YOUNG POSSE、BEWAVE、Candy Shop、ODD YOUTH、ADYA、Geenius、TRACER、W!TCHX、SPIA。原批次未包括的已有网站页面继续保护，但不据目录数量扩大本次批次。
 
-当前接续分支为 `codex/izna-native-integration`，源自 `codex/wooah-native-integration` 的 `121f410`，draft [PR #6](https://github.com/KAtOReNA7/idol/pull/6) 以WOOAH分支为基线。GENBLUE v10与WOOAH v12页面已获用户确认，继续保护；[izna只读、owner-private审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html) 已发布v13，等待用户确认，线上浏览器未复验。发布与验证证据见 `docs/codex/worklogs/20261023-izna-native-integration.md`。未获明确用户确认前不得开发ifeye或下一团，公共功能除外。Figma实际图片落地、11个精确视频预览、80%/125%原生浏览器缩放、真实保存和主站全量发布仍未完成，不将审阅发布或页面确认写成全链上线通过。
+当前接续分支为 `codex/izna-review-followup`，源自 `codex/izna-native-integration` 的 `aa9e044`（上游draft PR #6）。GENBLUE v10/WOOAH v12已确认并继续保护；izna v15私有只读审阅已发布，四张已有精确视频图已接入作品库和手帐。继续开发授权不等于整团验收，确认前不开发ifeye或下一团，公共功能例外。最新验证与剩余事项见 `worklogs/20261023-izna-review-followup.md`，以RESUME/STATUS为当前接续入口。
 
 以下不属于默认范围：
 

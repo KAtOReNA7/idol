@@ -4,7 +4,7 @@ import type {ComponentProps, CSSProperties, ReactNode} from 'react';
 import type {Photo, Work} from '../lib/idol/types';
 import {videoId} from '../lib/idol/values';
 import {katseyeVideoArt} from '../lib/idol/katseye-editorial';
-import {approvedVideoPoster} from '../lib/idol/approved-video-poster';
+import {approvedVideoPoster,type VideoPoster} from '../lib/idol/approved-video-poster';
 import {ReliableImage} from './reliable-image';
 
 type ImageStateListener = ComponentProps<typeof ReliableImage>['onStateChange'];
@@ -26,7 +26,7 @@ export function CatalogPhotoImage({photo,live=true,label,identityKey,priority=fa
 }
 
 /** Reviewed local display image for the exact work, video and view, never a substitute video. */
-export function katseyeVideoPoster(workId:string,activeVideoId:string|null,view:'mv'|'stage') {
+export function katseyeVideoPoster(workId:string,activeVideoId:string|null,view:'mv'|'stage'):VideoPoster|null {
   if(!activeVideoId)return null;
   const art=katseyeVideoArt[workId]?.[view];
   return art?.id===activeVideoId?{src:art.image,label:view==='mv'?'MV 来源影像':'舞台来源影像'}:null;
@@ -37,7 +37,7 @@ export function WorkCoverImage({work,label,fallback,onStateChange}:{
 }) {
   const id=videoId(work.url),poster=approvedVideoPoster(work.id,id,'mv')??katseyeVideoPoster(work.id,id,'mv');
   return <ReliableImage src={poster?.src??(id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:null)}
-    identityKey={`work:${work.id}:video-cover`} alt={poster?`${work.song||work.name} · ${poster.label}`:label??`${work.song||work.name} 官方视频封面`} style={poster?{objectFit:'contain'}:undefined}
+    identityKey={`work:${work.id}:video-cover`} alt={poster?`${work.song||work.name} · ${poster.label}`:label??`${work.song||work.name} 官方视频封面`} style={poster?{objectFit:'contain',maxWidth:poster.intrinsicSize?.width,maxHeight:poster.intrinsicSize?.height}:undefined}
     loading="lazy" referrerPolicy="no-referrer" fallback={fallback} onStateChange={onStateChange}/>;
 }
 

@@ -6,6 +6,13 @@ import unisKep1erPosters from '../../data/day19-unis-kep1er-video-posters.json';
 import kconStagePhotos from '../../data/day19-kcon-stage-photos.json';
 import udttPosters from '../../data/udtt-video-posters.json';
 import vchaPosters from '../../data/vcha-video-posters.json';
+import iznaPosters from '../../data/izna-video-posters.json';
+
+export type VideoPoster = {
+ src:string;
+ label:string;
+ intrinsicSize?:{width:number;height:number};
+};
 
 // SAY MY NAME entries are publisher illustrations. These retained assets
 // have separate, exact-video provenance and keep their own truthful labels.
@@ -22,8 +29,10 @@ const retainedVideoPosters=[
 ] as const;
 // Display-only: exact persistent work + active video + view must all agree.
 // Stage support is bounded to explicitly reviewed tuples; the caller also rejects clips.
-export function approvedVideoPoster(workId:string,videoId:string|null,view:'mv'|'stage'){
+export function approvedVideoPoster(workId:string,videoId:string|null,view:'mv'|'stage'):VideoPoster|null{
  if(!videoId)return null;
+ const izna=iznaPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view);
+ if(izna)return izna;
  const udtt=udttPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view);
  if(udtt)return udtt;
  const vcha=vchaPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view);

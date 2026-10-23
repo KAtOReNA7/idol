@@ -85,3 +85,14 @@ test('explicit contain posters occupy the player box without intrinsic grid over
  assert.equal(node(h.render(),'iframe'),undefined);
  node(h.render(),'button','video-play').props.onClick();assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
 });
+
+test('small verified posters remain centered at their native size and retain retry/play behavior',()=>{
+ const h=sessionHarness({posterSrc:'/fixture/preview-490.png',posterFit:'contain',posterSize:{width:490,height:266}});
+ const initial=node(h.render(),'img');
+ assert.equal(initial.props.style.maxWidth,490);assert.equal(initial.props.style.maxHeight,266);assert.equal(initial.props.style.margin,'auto');
+ assert.equal(initial.props.style.width,'100%');assert.equal(initial.props.style.height,'100%');assert.equal(initial.props.style.objectFit,'contain');
+ node(h.render(),'img').props.onError();node(h.render(),'button','video-cover-retry').props.onClick();
+ assert.equal(node(h.render(),'img').props.src,initial.props.src);assert.deepEqual(node(h.render(),'img').props.style,initial.props.style);
+ assert.equal(node(h.render(),'iframe'),undefined);assert.equal(h.opens(),0);
+ node(h.render(),'button','video-play').props.onClick();assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
+});

@@ -1,6 +1,6 @@
 # 共享开发状态
 
-更新：北京时间2026-10-23 23:34。当前分支 **`codex/saymyname-review-completion`**，基于 KiiiKiii 分支 `f91a66ce9466cd12c64ebe9a9b16d84739b45fc9`。正式工程 `apps/idol-site/`；先读 [RESUME](RESUME.md)，不要从旧 main 接续。
+更新：北京时间2026-10-23 23:45。当前分支 **`codex/saymyname-review-completion`**，基于 KiiiKiii 分支 `f91a66ce9466cd12c64ebe9a9b16d84739b45fc9`。draft [PR #11](https://github.com/KAtOReNA7/idol/pull/11)；代码提交 `5c28500cdeb5920ba3d7640b50065cffebe1d3b4` 已推送，文档以最新远端 HEAD 为准。正式工程 `apps/idol-site/`；先读 [RESUME](RESUME.md)，不要从旧 main 接续。
 
 旧会话在KiiiKiii v18交付后已获用户“已确认，继续开发”，本轮承接该决定。SAY MY NAME **v19 owner-private已发布，等待网页人工确认**：8官网原图、成员检索/原图、9发行检索/详情、6影像、5绑定舞台、2只观看替代现场、37既有关系与原生手帐往返。113项测试、类型与正式构建通过；9条实际交互、7页×5个真视口通过。192旧审阅文件SHA不变，主站仍v186。
 

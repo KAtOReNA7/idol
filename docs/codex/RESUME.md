@@ -8,6 +8,7 @@
 | 应检出分支 | **`codex/saymyname-review-completion` 最新远端 HEAD** |
 | 正式工程 | `apps/idol-site/`；根目录是旧 Next sandbox |
 | 本轮基线 | `f91a66ce9466cd12c64ebe9a9b16d84739b45fc9`，`codex/kiiikiii-review-completion` |
+| GitHub 交付 | draft [PR #11](https://github.com/KAtOReNA7/idol/pull/11)；代码提交 `5c28500cdeb5920ba3d7640b50065cffebe1d3b4`，文档以最新远端 HEAD 为准 |
 | 当前阶段 | 前六团页面已确认；**SAY MY NAME v19待人工验收** |
 | 最新交付 | [SAY MY NAME 验收页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/saymyname/index.html) |
 | 证据 | [本轮日志](worklogs/20261023-saymyname-review-completion.md)、[验证目录](evidence/20261023-saymyname-review-completion/) |

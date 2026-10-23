@@ -5,7 +5,7 @@
 ## 最新执行决定（2026-10-23 SAY MY NAME v19）
 
 - 上一会话在 KiiiKiii v18 交付后已收到用户“已确认，继续开发”；本会话恢复该确认并接续。KiiiKiii 页面已确认，本轮只推进原计划内 SAY MY NAME。
-- 最新分支 **`codex/saymyname-review-completion`**，基于 `f91a66ce9466cd12c64ebe9a9b16d84739b45fc9`；正式工程 `apps/idol-site/`。先读 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261023-saymyname-review-completion.md)。
+- 最新分支 **`codex/saymyname-review-completion`**，基于 `f91a66ce9466cd12c64ebe9a9b16d84739b45fc9`；正式工程 `apps/idol-site/`。draft [PR #11](https://github.com/KAtOReNA7/idol/pull/11)，代码提交 `5c28500cdeb5920ba3d7640b50065cffebe1d3b4`；文档以最新远端 HEAD 为准。先读 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261023-saymyname-review-completion.md)。
 - v19 owner-private 审阅已发布：八张2000×3000官网原图、成员搜索/原图、九发行搜索/详情、六影像/五舞台绑定/37关系及手帐往返。**等待 SAY MY NAME 人工确认后再开发下一团，公共功能例外。**
 - 113项测试、类型及正式构建通过；9项交互与七页五个真视口通过。192旧审阅文件SHA不变，正式主站仍v186。真实保存、播放、线上浏览器、原生缩放与完整Figma仍待验；部署后的in-app browser打开超时，未冒称通过。
 

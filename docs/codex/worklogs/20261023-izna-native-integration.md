@@ -1,5 +1,7 @@
 # izna 原生接入与逐团审阅
 
+> 后续状态：用户已对 v13 提出首屏照片小、两侧元素空的反馈；1440/390 Figma 首屏于2026-10-23完成调整与真实团照落地，待用户审阅设计、网页同步。见 [首屏调整记录](20261023-izna-hero-figma.md)。以下原生接入和v13验证为该版本历史证据，不代表新稿网页已实现或整团确认。
+
 - task-id：20261023-izna-native-integration；日期：2026-10-23，北京时间。
 - 分支：`codex/izna-native-integration`，基于开工时 `codex/wooah-native-integration` 最新远端 `121f4100d31d4f23803cac18dd82df589af9473f`，没有从旧 main 开始。
 - 正式工程：`apps/idol-site/`；环境：用户 Windows 电脑、PowerShell、Node 24.19.0。代码、构建和浏览器测试均在本机。

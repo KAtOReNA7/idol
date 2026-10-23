@@ -1,0 +1,11 @@
+file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/scripts/prune-unused-build-assets.mjs:82
+ for(const {p,text} of texts) if(text.includes(prefix)) throw new Error(`Old directory referenced in ${p}: ${prefix}`);
+                                                              ^
+
+Error: Old directory referenced in /workspace/scratch/66665e675bc4/idol/apps/idol-site/data/izna-assets.json: /artist/izna/batch-b-20261016/
+    at file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/scripts/prune-unused-build-assets.mjs:82:63
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

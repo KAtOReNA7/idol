@@ -1,0 +1,90 @@
+✔ production scope is exactly seven PNG build copies, totaling 18,205,847 bytes (1.767179ms)
+✖ dry-run is read-only; apply retains source and active display bytes; second apply is idempotent (7.801363ms)
+✖ partial prior exclusion is safe and idempotent (4.253505ms)
+✔ fails before any deletion: original source changed (4.090258ms)
+✔ fails before any deletion: original build changed (3.354366ms)
+✔ fails before any deletion: active source changed (3.239032ms)
+✔ fails before any deletion: active build changed (3.148947ms)
+✔ fails before any deletion: missing source (4.346064ms)
+✔ fails before any deletion: missing active build (2.975484ms)
+✔ fails before any deletion: missing active source (3.356179ms)
+✔ fails before any deletion: unexpected public file (2.989205ms)
+✔ fails before any deletion: unexpected built file (2.459535ms)
+✔ fails before any deletion: exact JSON original reference (2.896655ms)
+✔ fails before any deletion: compiled original reference (2.515819ms)
+✔ fails before any deletion: escaped slash reference (2.604884ms)
+✔ fails before any deletion: CSS original reference (3.297481ms)
+✔ fails before any deletion: root runtime reference (2.96581ms)
+✔ fails before any deletion: public script reference (3.501169ms)
+✔ fails before any deletion: dynamic group prefix (2.521548ms)
+✔ fails before any deletion: dynamic old batch (3.521959ms)
+✔ fails before any deletion: dynamic built old batch (2.782663ms)
+✔ fails before any deletion: changed image renderer (3.391453ms)
+✔ fails before any deletion: changed member renderer (2.797775ms)
+✔ fails before any deletion: removed active references (2.534047ms)
+✔ fails before any deletion: missing server inventory (2.898718ms)
+✔ fails before any deletion: partial server inventory (2.937787ms)
+✔ fails before any deletion: duplicate full server inventory (3.784687ms)
+✔ fails before any deletion: reference after valid inventory (2.706218ms)
+✔ fails before any deletion: missing runtime guard (3.912209ms)
+✔ fails before any deletion: extra runtime guard (2.760039ms)
+✔ fails before any deletion: extra original scope (2.693188ms)
+✔ fails before any deletion: substituted original scope (3.739589ms)
+✔ fails before any deletion: substituted display scope (2.950015ms)
+✔ fails before any deletion: invalid hash (2.573608ms)
+✔ fails before any deletion: source symlink (3.002334ms)
+✔ fails before any deletion: build symlink (6.699991ms)
+✔ fails before any deletion: runtime directory symlink (6.189129ms)
+✖ the existing display auditor accepts only fully validated absent ifeye originals (72.56232ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 35
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 311.345071
+
+✖ failing tests:
+
+test at tests/unused-ifeye-original-build-assets.test.mjs:37:1
+✖ dry-run is read-only; apply retains source and active display bytes; second apply is idempotent (7.801363ms)
+  Error: YOUNG POSSE retained integrity mismatch: /tmp/ifeye-unused-originals-mhQoDv/components/candidate/youngposse-design.tsx
+      at verify (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/scripts/audit-youngposse-retained-originals.mjs:14:334)
+      at youngposseAuditTexts (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/scripts/audit-youngposse-retained-originals.mjs:20:69)
+      at auditUnusedIfeyeOriginalBuildAssets (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/scripts/audit-unused-ifeye-original-build-assets.mjs:49:28)
+      at Object.audit (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/tests/unused-ifeye-original-build-assets.test.mjs:29:56)
+      at TestContext.<anonymous> (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/tests/unused-ifeye-original-build-assets.test.mjs:39:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+
+test at tests/unused-ifeye-original-build-assets.test.mjs:46:1
+✖ partial prior exclusion is safe and idempotent (4.253505ms)
+  Error: YOUNG POSSE retained integrity mismatch: /tmp/ifeye-unused-originals-7GsqSa/components/candidate/youngposse-design.tsx
+      at verify (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/scripts/audit-youngposse-retained-originals.mjs:14:334)
+      at youngposseAuditTexts (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/scripts/audit-youngposse-retained-originals.mjs:20:69)
+      at auditUnusedIfeyeOriginalBuildAssets (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/scripts/audit-unused-ifeye-original-build-assets.mjs:49:28)
+      at Object.audit (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/tests/unused-ifeye-original-build-assets.test.mjs:29:56)
+      at apply (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/tests/unused-ifeye-original-build-assets.test.mjs:31:33)
+      at TestContext.<anonymous> (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/tests/unused-ifeye-original-build-assets.test.mjs:46:163)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+
+test at tests/unused-ifeye-original-build-assets.test.mjs:85:1
+✖ the existing display auditor accepts only fully validated absent ifeye originals (72.56232ms)
+  Error: YOUNG POSSE retained integrity mismatch: /tmp/ifeye-display-compat-JNdSAI/components/candidate/youngposse-design.tsx
+      at verify (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/scripts/audit-youngposse-retained-originals.mjs:14:334)
+      at youngposseAuditTexts (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/scripts/audit-youngposse-retained-originals.mjs:20:69)
+      at auditUnusedDisplayAssets (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/scripts/audit-unused-display-assets.mjs:66:28)
+      at TestContext.<anonymous> (file:///workspace/scratch/66665e675bc4/idol/apps/idol-site/tests/unused-ifeye-original-build-assets.test.mjs:105:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

@@ -33,8 +33,19 @@ function verify(p,expected) {
   throw new Error(`ifeye integrity mismatch: ${p}`);
 }
 const sameSet=(a,b)=>JSON.stringify([...a].sort())===JSON.stringify([...b].sort());
+// Native ifeye intentionally consumes the original JPEG display set. Until a
+// separate pruning review pins that renderer, retain this entire old batch.
+// This can only reduce deletions; it cannot add a path to the removal allowlist.
+export function ifeyeNativeRetainsBatch(root) {
+ const binding=path.join(root,'data/ifeye-assets.json');
+ if(!fs.existsSync(binding))return false;
+ const assets=JSON.parse(fs.readFileSync(binding,'utf8'));
+ if(!Array.isArray(assets)||!assets.length)throw new Error('Invalid native ifeye bindings');
+ return assets.some(asset=>typeof asset.url==='string'&&asset.url.startsWith(oldPrefix));
+}
 export function auditUnusedIfeyeOriginalBuildAssets(root,manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'))) {
  root=path.resolve(root);
+ if(ifeyeNativeRetainsBatch(root))return [];
  const auditYoungposseText=youngposseAuditTexts(root);
  if(fs.lstatSync(root).isSymbolicLink())throw new Error('ifeye audit rejects symlink root');
  if(!manifest||manifest.version!==1||!Array.isArray(manifest.files)||!sameSet(manifest.files.map(e=>e.path),ifeyeUnusedOriginalPaths))

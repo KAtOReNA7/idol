@@ -1,8 +1,8 @@
 # 共享开发状态
 
-更新：2026-10-23 晚间，北京时间。当前完整接续分支为 **`codex/izna-review-followup`**，基于 `codex/izna-native-integration` 的 `aa9e0446c47d3de8cd0c893f86fc0112248d9aaf`；正式工程 `apps/idol-site/`。本轮 draft [PR #7](https://github.com/KAtOReNA7/idol/pull/7) 以该分支为base，上游PR #6保留。先读 [RESUME](RESUME.md)，不从旧main或旧检查点开发。
+更新：2026-10-23 晚间，北京时间。当前完整接续分支 **`codex/ifeye-native-integration`**，基于 `codex/izna-review-followup` 的 `665fed58554fd83ddbcfc098228c6961943e9ebf`；正式工程 `apps/idol-site/`。本轮draft PR以该izna分支为base，上游 [PR #7](https://github.com/KAtOReNA7/idol/pull/7) 保留，未合main。先读 [RESUME](RESUME.md)，不从旧main或旧检查点开发。
 
-最新阶段：GENBLUE v10、WOOAH v12已确认；izna v15私有只读审阅已发布，新增四张既有精确视频预览到作品库与手帐播放器，并限制小图放大。用户本轮授权继续开发，不等于izna整团验收；确认前不开发ifeye或下一团，公共功能除外。 28项图片/播放器回归与24项izna专项通过，类型/正式构建成功，浏览器已检查四图、版本切换与分步返回；320/390仅为iframe窄窗口，未冒称顶层真视口。100个非izna审阅文件SHA不变。线上浏览器、真实保存、原生缩放、11个精确视频预览及Figma内页仍待补；快速连续点击的时序问题待进一步复查。详见 [本轮工作日志](worklogs/20261023-izna-review-followup.md)。
+用户本轮“已确认，继续开发”确认izna v15；GENBLUE/WOOAH/izna继续保护。ifeye v16已发布，6成员、3发行、7影像、5事件、10原图和既有手帐往返可审阅。**等待ifeye人工验收，确认前不开发下一团，公共功能例外。** 58项针对性测试、类型与正式构建通过；桌面实测和五宽iframe通过，非顶层全尺寸/缩放。原审阅站130文件SHA不变。正式剪枝dry-run被旧izna引用阻断；旧ifeye审计fixture35过3失败，不改无关pins、不执行apply。七个精确视频预览、Figma实图/内页、线上浏览器/真实保存等仍待补。详见 [本轮工作日志](worklogs/20261023-ifeye-native-integration.md)。
 
 ## 已核基线与交接入口
 
@@ -21,16 +21,17 @@
 | GENBLUE | BlueCut 已接入正式工程；v10 页面获用户明确认可 | [已确认页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/genblue/index.html)；开发侧真实浏览器/保存未验，主站包体超限事项仍保留 |
 | WOOAH | 已修正为团照首屏、五人同组、统一4:5成员照片；只读审阅v12已发布 | [已确认页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/wooah/index.html)；该轮类型、干净构建、20+37项检查及剪枝dry-run通过；真实浏览器/保存未验，24个视频配图仍缺；保护已认可页面 |
 | MEOVV B | 四段patch及四份真实readback已入仓；未上线 | pins只绑定当次产物，完整Sites TAR容量与最终发布仍待验 |
-| izna | 原生页面与既有评分/手帐接线，7份含历史成员档案、8项只浏览发行、15个影像槽位、12条具名MV关系、20张原图；已按批准Figma稿重做首屏 | [v15审阅入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)已发布，只读、owner-private；待用户确认，线上浏览器未复验。最新证据见 `docs/codex/worklogs/20261023-izna-review-followup.md`；未完成项见本页顶部 |
-| ifeye v3 | 原始源码与素材保留在隔离候选中 | 尚未原生接入；izna未获明确确认前不开发 |
+| izna | 原生页、7份含历史成员档案、8项只浏览发行、15影像、12条具名MV关系与20原图；v15补四张精确MV图 | [v15页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)本轮获用户确认；其11个视频预览、Figma内页/真视口/缩放/线上浏览器/真实保存等历史待办保留 |
+| ifeye | v3设计已原生接入，6成员、3发行、7影像、10原图、5事件；9公开MV参与关系、6既有个人记录 | [v16审阅入口](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/ifeye/index.html)已发布，当前待人工验收；仅私有只读审阅，待办见顶部与本轮日志 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
 | Sol | 本轮已收官，最终反馈已归档 [SOL-HANDOFF](SOL-HANDOFF.md) | 13:38形成、13:53主会话完整读取；不等于全部团体产品验收通过 |
 
 ## 下一里程碑与任务索引
 
-从 [RESUME](RESUME.md) 开始，检出 `codex/izna-review-followup` 最新远端HEAD。当前里程碑是用户审阅实际v15网页、继续处理izna反馈与明确未验项。未获用户整团确认不开始下一团。
+从 [RESUME](RESUME.md) 开始，检出 `codex/ifeye-native-integration` 最新远端HEAD。当前里程碑是用户审阅ifeye v16，处理其反馈和明确未验项；未确认不开始下一团。
 
-- [izna 手帐图片接线与v15审阅](worklogs/20261023-izna-review-followup.md)：当前轮次，四个精确视频预览接通，验证和发布已保存。
+- [ifeye 原生接入与v16审阅](worklogs/20261023-ifeye-native-integration.md)：当前轮次；用户已确认izna，本轮仅推进ifeye。
+- [izna 手帐图片接线与v15审阅](worklogs/20261023-izna-review-followup.md)：前一轮次，四个精确视频预览接通，v15现已获页面确认。
 - [izna 首屏网页同步](worklogs/20261023-izna-hero-web.md)：前一轮次；已按批准稿同步、完成本地检查并发布v14，等待网页确认，主站未改。
 - [izna Figma首屏调整](worklogs/20261023-izna-hero-figma.md)：前一设计轮；桌面/手机首屏与真实团照已落地，用户随后同意继续开发，网页同步见上一项。
 - [izna 原生接续](worklogs/20261023-izna-native-integration.md)：`codex/izna-native-integration` / draft PR #6；v13审阅已发布，精确版本与验证以该日志为准，用户审阅未确认。

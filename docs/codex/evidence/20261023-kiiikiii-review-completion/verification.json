@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-23",
+  "base": "62ca3f61e3059c60a4b0558bc73b12e624ca2e1c",
+  "tests": {
+    "command": "NODE_PATH=\"$PWD/node_modules\" node --test tests/kiiikiii-*.test.* tests/artist-navigation.test.cjs tests/hearts2hearts-*.test.*",
+    "passed": 114,
+    "failed": 0,
+    "kiiikiii": 43,
+    "navigationAndHearts2Hearts": 71
+  },
+  "typecheck": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false",
+    "exit": 0,
+    "diagnostics": 0
+  },
+  "formalBuild": {
+    "command": "node /root/.codex/plugins/cache/openai-curated-remote/sites/1.1.1/scripts/build-site.mjs",
+    "exit": 0,
+    "result": "Build complete",
+    "note": "Vinext static route classification warning is not a route-runtime verification"
+  },
+  "browser": {
+    "environment": "managed Sites preview terminal.local:4173, cloud CUA; browser plugin js unavailable",
+    "flowsPassed": [
+      "Chinese member search retains MEMBER 02; reload keeps q",
+      "LEESOL detail → original viewer → Escape restores focus",
+      "LEESOL → I DO ME → stage → return retains member/q/focus",
+      "UNCUT search → release detail → DEBUT SONG → return retains release/q/focus → filtered directory",
+      "timeline → DEBUT SONG → return focuses event work",
+      "read-only shared App; no save attempted"
+    ],
+    "layout": "7 pages × 5 iframe CSS widths (320/390/1440/2048/2560), no horizontal overflow; not true top-level device viewports or browser zoom",
+    "photos": "Home final five widths all decoded; members final settled 390 all decoded; 3:4 containers equal within subpixel rounding",
+    "console": "No error/warn entries matching terminal.local; unrelated chrome-extension metadata errors observed",
+    "limitations": [
+      "YouTube external thumbnails can fail; honest fallback retained",
+      "Video playback not tested",
+      "Actual owner writes not tested",
+      "No independent post-deployment browser access test",
+      "Native viewport and 80%/125% zoom pending"
+    ]
+  },
+  "figma": {
+    "fileKey": "zeLNExz4TbpWRW3uiahef7",
+    "node": "211:1102",
+    "session": "f2b07907-1cdb-4cac-97bb-c4759217597d",
+    "evidence": "Actual get_design_context and inline screenshot read; 1440×2209 structural board with image placeholders",
+    "retained": "Acid green #c4f460, deep ink #17241b, Syne, equal five-member grid, full banner",
+    "mismatchLedger": [
+      "Historical board has image placeholders; website now has sourced historical photographs, not proof of updated Figma",
+      "Website uses 3:4 contain instead of old square placeholders to preserve publisher compositions",
+      "New release/search/detail interactions have no complete Figma inner-page review",
+      "Existing title outline retained; no claim of pixel-perfect reproduction"
+    ],
+    "pending": "Figma native images/inner pages and complete official/Spotify visual research"
+  },
+  "production": "Main Site v186 unchanged; no prune apply; no API/auth/snapshot/personal-data changes"
+}

@@ -1,0 +1,29 @@
+✔ retained photos and new covers keep exact bytes and display images resolve to true originals (6.9844ms)
+✔ historical roster does not imply current membership or create whole-roster release participation (0.1989ms)
+✔ exact native video slots preserve zero/null scores and reject wrong identities (0.4488ms)
+✔ new duo and solo releases use named participants while the undated Special Clip stays browse-only (0.5815ms)
+✔ allowlisted member/release/video return paths retain query state and reject fabricated or mixed identities (1.0942ms)
+✔ public catalog keeps six historical members, two primary videos and two stage bindings with no personal data (1.9238ms)
+✔ mismatched identities, ambiguous relations and altered alternative versions fail closed (0.5803ms)
+✔ unrelated or multi-object relations are excluded without creating missing member/work pairs (0.1264ms)
+✔ only explicit bewave display-catalog GETs return the synthetic fixture (17.7453ms)
+✔ save, identity, image proxy and external requests fail closed, including Request objects (1.6065ms)
+✔ all physical artist aliases normalize before native routing; other group and record paths retain identity (0.8289ms)
+✔ record mapping preserves exact query and returnTo, supports copy/new-tab, and leaves artist/external targets intact (0.202ms)
+✔ native work and release return URLs retain exact identity through the review boundary (25.5813ms)
+✔ actual anchor hrefs are rewritten on mount and later React commits, without event interception (0.5796ms)
+✔ the real shared App navigation hook keeps records.html on initialization, navigation, reload and back (13.9954ms)
+✔ history adapter leaves state, missing URLs and non-root destinations unchanged (0.193ms)
+✔ build produces additive physical entries, actual components and original images without changing accepted reviews (1315.0406ms)
+✔ builder refuses the repository, drive root and unrelated nonempty output without modifying them (142.2751ms)
+✔ physical artist links preserve parameters and the native adapter refuses changed source contracts (0.5669ms)
+✔ artist history retains physical reload/copy URLs without changing route queries or state (0.241ms)
+✔ timeline adapters normalize only the static path while retaining return and navigation guards (0.3584ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1587.8307

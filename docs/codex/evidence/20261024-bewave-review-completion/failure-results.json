@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "name": "503 保留可浏览的作品与官方链接",
+      "pass": true
+    },
+    {
+      "name": "记录重试成功不伪造绑定或保存",
+      "pass": true
+    },
+    {
+      "name": "单图失败可重试并恢复原身份",
+      "pass": true
+    }
+  ],
+  "scope": "real component with explicit empty API success fixture; image request failure injected by Playwright",
+  "unverified": [
+    "real backend availability",
+    "real save",
+    "30s timeout"
+  ]
+}

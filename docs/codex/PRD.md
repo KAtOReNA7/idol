@@ -24,7 +24,7 @@ Sol 的已核 15 团名单：UDTT、KATSEYE、VCHA、HITGS、AtHeart、i-dle、I
 
 Astra 的已核 15 团名单：Hearts2Hearts、SAY MY NAME、izna、ifeye、GENBLUE、VVUP、YOUNG POSSE、BEWAVE、Candy Shop、ODD YOUTH、ADYA、Geenius、TRACER、W!TCHX、SPIA。原批次未包括的已有网站页面继续保护，但不据目录数量扩大本次批次。
 
-当前接续分支为 `codex/youngposse-review-completion`，基于VVUP的 `75c22b7e`。前八团页面已确认，YOUNG POSSE v21已发布等待人工验收；确认前不推进下一团，公共功能例外。阶段和未验项以[RESUME](RESUME.md)、[STATUS](STATUS.md)及[YOUNG POSSE日志](worklogs/20261024-youngposse-review-completion.md)为准。正式主站仍v186；页面认可不替代真实保存、完整设计或生产验收。
+用户在YOUNG POSSE v21后回复“可以 继续开发”，该页面已确认。本轮仅推进BEWAVE，分支 `codex/bewave-review-completion`，基于 `81a572d8944c6604a08e5302c77e4cafbfb950c7`。BEWAVE原生页与只读审阅已实现，**Sites上传连接失败，线上仍v21；先恢复本团发布并等待人工确认，不开始Candy Shop，公共功能例外**。正式主站仍v186。六人历史相册、4发行/5影像槽/2既有关系、四事件、搜索/原图及手帐往返已验证。115专项/回归、类型、正式构建、34交互、3失败恢复和七页五宽真视口通过；另有13项旧测试框架失败在基线重现。设计、资料、功能、上线分别验收。 阶段与待办见[RESUME](RESUME.md)、[STATUS](STATUS.md)和[BEWAVE日志](worklogs/20261024-bewave-review-completion.md)。
 
 以下不属于默认范围：
 

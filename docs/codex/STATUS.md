@@ -1,6 +1,6 @@
 # 共享开发状态
 
-更新：2026-10-23 晚间，北京时间。当前完整接续分支为 **`codex/izna-review-followup`**，基于 `codex/izna-native-integration` 的 `aa9e0446c47d3de8cd0c893f86fc0112248d9aaf`；正式工程 `apps/idol-site/`。上游 draft PR #6保留，本轮PR以该分支为base。先读 [RESUME](RESUME.md)，不从旧main或旧检查点开发。
+更新：2026-10-23 晚间，北京时间。当前完整接续分支为 **`codex/izna-review-followup`**，基于 `codex/izna-native-integration` 的 `aa9e0446c47d3de8cd0c893f86fc0112248d9aaf`；正式工程 `apps/idol-site/`。本轮 draft [PR #7](https://github.com/KAtOReNA7/idol/pull/7) 以该分支为base，上游PR #6保留。先读 [RESUME](RESUME.md)，不从旧main或旧检查点开发。
 
 最新阶段：GENBLUE v10、WOOAH v12已确认；izna v15私有只读审阅已发布，新增四张既有精确视频预览到作品库与手帐播放器，并限制小图放大。用户本轮授权继续开发，不等于izna整团验收；确认前不开发ifeye或下一团，公共功能除外。 28项图片/播放器回归与24项izna专项通过，类型/正式构建成功，浏览器已检查四图、版本切换与分步返回；320/390仅为iframe窄窗口，未冒称顶层真视口。100个非izna审阅文件SHA不变。线上浏览器、真实保存、原生缩放、11个精确视频预览及Figma内页仍待补；快速连续点击的时序问题待进一步复查。详见 [本轮工作日志](worklogs/20261023-izna-review-followup.md)。
 

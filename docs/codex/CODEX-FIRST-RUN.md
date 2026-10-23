@@ -8,6 +8,7 @@
 - 当前：GENBLUE v10/WOOAH v12已确认；izna v15私有只读审阅已发布，四张已有精确视频图已接入作品库/播放器。52项测试、类型/正式构建通过，浏览器分步操作和320/390 iframe窄窗口通过。
 - 待办：用户整团确认、11个精确视频预览、同MV成员图、Figma内页、当前版本真视口/原生缩放/线上浏览器、快速连续点击位置稳定性和真实保存。正式主站仍v186。
 - **未获用户明确确认izna前，不开发ifeye或下一团，公共功能例外。**
+- 本轮 draft [PR #7](https://github.com/KAtOReNA7/idol/pull/7)，未合并main。
 - [最新worklog与发布证据](worklogs/20261023-izna-review-followup.md)。
 
 新空目录：

@@ -4,7 +4,7 @@
 
 ## 当前执行决定（2026-10-23 晚间，优先于下方历史检查点）
 
-- 最新接续分支是 `codex/izna-review-followup`，基于 `codex/izna-native-integration` 的 `aa9e044`；正式工程仍为 `apps/idol-site/`。先读 [RESUME](docs/codex/RESUME.md) 与最新远端，不从旧main开发。
+- 最新接续分支是 `codex/izna-review-followup`，基于 `codex/izna-native-integration` 的 `aa9e044`；正式工程仍为 `apps/idol-site/`。本轮 draft [PR #7](https://github.com/KAtOReNA7/idol/pull/7)。先读 [RESUME](docs/codex/RESUME.md) 与最新远端，不从旧main开发。
 - 用户本轮说“好 你开始继续开发”，本轮仅推进izna收尾。v15私有只读审阅已发布，四张既有精确视频预览已接到作品库和手帐，并保留原生分辨率上限。详见 [本轮工作日志](docs/codex/worklogs/20261023-izna-review-followup.md)。
 - 52项针对性测试、类型/正式构建通过；浏览器真实检查四图、MV/舞台隔离及分步返回；320/390仅iframe窄窗口，其他真视口/缩放和线上浏览器未复验，快速连续点击位置稳定性待复查。
 - izna整团仍待用户确认；不得提前开发ifeye或下一团，公共功能例外。正式主站仍v186；GENBLUE/WOOAH已认可页面继续保护。下面的必须检查、多电脑规则继续适用。

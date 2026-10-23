@@ -8,7 +8,7 @@
 | 应检出分支 | **`codex/izna-review-followup` 最新远端 HEAD** |
 | 正式工程 | `apps/idol-site/`；仓库根是旧 Next sandbox |
 | 本轮基线 | `codex/izna-native-integration` 的 `aa9e0446c47d3de8cd0c893f86fc0112248d9aaf` |
-| PR | 本轮PR以 `codex/izna-native-integration` 为base；上游draft [PR #6](https://github.com/KAtOReNA7/idol/pull/6)保留，未合并main |
+| PR | draft [PR #7](https://github.com/KAtOReNA7/idol/pull/7)，base为 `codex/izna-native-integration`；上游draft [PR #6](https://github.com/KAtOReNA7/idol/pull/6)保留，未合并main |
 | 当前阶段 | izna v15私有只读审阅已发布，**等待用户整团确认**；GENBLUE v10、WOOAH v12已确认 |
 | 最新证据 | [本轮worklog](worklogs/20261023-izna-review-followup.md)、[验证记录](evidence/20261023-izna-review-followup/) |
 | 正式主站 | 仍v186 A-only，本轮未覆盖 |

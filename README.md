@@ -17,7 +17,7 @@ v186 原生源码已在提交 `f24075fc98893793e82adbc92cadc9e58257728f` 推送�
 - [MEOVV B](handoffs/codex-20261022/meovv-b/README.md)：四段冻结 patch 与四份真实 owner readback；B 尚未上线，不能冒称已通过正式 Sites 完整包验收。
 - [izna / ifeye v3](handoffs/codex-20261022/astra-izna-ifeye-v3/README.md)：保留原始15份源码、30图候选；本轮仅 izna 已接入正式工程的原生宿主、精确图片 resolver 与既有评分入口，ifeye 尚未接入。
 
-线上主站仍为v186 A-only。GENBLUE v10/WOOAH v12页面已认可；[izna v15只读审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html) 已发布，保留owner-private，等待用户整团确认。最新四图接线、52项测试、浏览器检查、发布及剩余事项见 [本轮日志](docs/codex/worklogs/20261023-izna-review-followup.md)。上游PR #6保留，本轮独立分支PR以它为基线。未确认izna前不开发下一团。
+线上主站仍为v186 A-only。GENBLUE v10/WOOAH v12页面已认可；[izna v15只读审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html) 已发布，保留owner-private，等待用户整团确认。最新四图接线、52项测试、浏览器检查、发布及剩余事项见 [本轮日志](docs/codex/worklogs/20261023-izna-review-followup.md)。本轮 draft [PR #7](https://github.com/KAtOReNA7/idol/pull/7) 以旧izna分支为基线，上游PR #6保留。未确认izna前不开发下一团。
 
 Astra 与 Sol 已收官，Sol最终反馈已归档为 [SOL-HANDOFF](docs/codex/SOL-HANDOFF.md)；有界交接入口复核不等于全部产品验收通过。完整原生源码足以继续，无需等待旧会话回复。
 

@@ -8,7 +8,7 @@
 - 完整工作树从 `codex/izna-native-integration` 的 `aa9e0446c47d3de8cd0c893f86fc0112248d9aaf` 克隆，初始工作树干净；本轮独立分支 `codex/izna-review-followup`。交付前再次读取原分支 HEAD，仍为 aa9e044。
 - 已读根 AGENTS、RESUME、STATUS、PRD、设计要求、协作手册、ACCEPTANCE 和当前源码。没有从 main 开发，没有重导入候选或覆盖另一台电脑的进度。
 - 当前仓库经 GitHub 连接器核对仍公开。新增内容仅公开图片绑定、代码、合成只读 QA 证据与进度；评分、备注、观看状态、原图和依赖锁文件未改。
-- 上游 PR #6 保留。本轮 PR 以 `codex/izna-native-integration` 为 base；最新入口以 RESUME/本分支远端 HEAD 为准。
+- 上游 PR #6 保留。本轮 draft [PR #7](https://github.com/KAtOReNA7/idol/pull/7) 以 `codex/izna-native-integration` 为 base；最新入口以 RESUME/本分支远端 HEAD 为准。
 
 ## 实际问题与网页增量
 
@@ -68,6 +68,12 @@ Browser 插件的专用 js 工具未暴露，依技能使用 CUA cloud browser �
 - [人工审阅地址](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html)。
 - 本地实际展开 TAR 29,132,800 B（27.783203125 MiB）；gzip 24,438,167 B；SHA-256 `427904b77ebda70d1e756b350ca35deec68726f78feccc7af07276b8470ae411`。临时窄窗口页面在打包前移除。服务端保存后的归档元数据为 29,112,320 B/131 files，二者分开记录。
 - 没有覆盖正式主站；正式站仍 v186 A-only。部署成功不代表线上浏览器、真实登录/保存、视频外链播放或人工验收通过。本环境无 open_in_codex 工具，未宣称完成线上自动打开。
+
+## GitHub 保存与读回
+
+本轮代码及验证记录保存为 GitHub commit `10aeb98b9787adc41252031d68ab9c3c728399b5`，parent为aa9e044，tree为 `b47b52accbe442d413bb014eee84584f211db9ed`；PR #7已创建。其后仅补写PR/接续链接，最新HEAD以远端为准，应用代码和已测review指纹未改变。
+
+命令行git push遇到 `could not read Username for 'https://github.com'`，未成功；改用已授权GitHub连接器创建tree/commit/独立分支，同一内容tree与本地已验证提交逐字节一致，再fetch读回。没有新建凭证、强推或丢弃其他电脑改动。本地原提交保留在 `codex/izna-review-followup-local`；当前工作分支跟踪连接器保存的远端提交。
 
 ## 下一步
 

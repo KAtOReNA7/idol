@@ -3,7 +3,7 @@
 
 ## 2026-10-24 最新逐团门槛
 
-用户在 SAY MY NAME v19 后回复“可以 继续开发”，该页面已确认。本轮仅推进原计划内VVUP，**v20已发布，等待VVUP页面人工确认后再开发下一团，公共功能例外**。正式工程 `apps/idol-site/`，最新分支 `codex/vvup-review-completion`。从 [RESUME](codex/RESUME.md) 和 [本轮日志](codex/worklogs/20261024-vvup-review-completion.md) 接续。四位官方成员与一位历史档案、七发行、七影像和原生手帐往返已落地；设计、功能、资料、上线仍分别验收，正式主站仍v186。下方此前检查点为历史。
+用户在VVUP v20后回复“可以 继续开发”，该页面已确认。本轮仅推进原计划内YOUNG POSSE，**v21已发布，等待YOUNG POSSE页面人工确认后再开发下一团，公共功能例外**。正式工程 `apps/idol-site/`，最新分支 `codex/youngposse-review-completion`。从 [RESUME](codex/RESUME.md) 和 [本轮日志](codex/worklogs/20261024-youngposse-review-completion.md) 接续。五位成员等大照片与搜索、真正原图、15发行、22影像槽和手帐往返已完善；设计、功能、资料、上线分别验收，正式主站仍v186。下方此前检查点为历史。
 
 ## 当前执行决定（2026-10-22 用户迁移决定）
 - 用户已决定迁移试用 Codex；2026-10-21 的“暂不迁移”执行安排被本决定取代，原产品、设计、图片与验收标准继续有效。

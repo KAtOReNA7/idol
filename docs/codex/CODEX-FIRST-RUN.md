@@ -1,12 +1,11 @@
 # Codex 首次执行文件
 
-更新：2026-10-24。唯一当前入口是 [RESUME](RESUME.md)，再读根AGENTS、STATUS、PRD和验收文档。
+更新：2026-10-24。先读[RESUME](RESUME.md)，再读根AGENTS、STATUS、PRD和验收文档。
 
-- 仓库 `KAtOReNA7/idol`；最新分支 `codex/vvup-review-completion`。
-- 正式工程 `apps/idol-site/`，不是根Next sandbox；依赖/构建/测试方式见RESUME。
-- 前七团含SAY MY NAME v19页面已确认；VVUP v20已发布，等其人工确认后再推进下一团，公共功能例外。
-- 117项测试、类型、正式构建、21项交互/状态及35个真视口页面通过。Figma桌面/手机首页16槽实图已写入；完整内页、保存/播放、原生缩放和线上已登录浏览器仍待验，主站仍v186。
-- 保留原图、稳定ID、用户记录和owner-only边界；先fetch比较，禁止reset/clean/force push。
+- 仓库 `KAtOReNA7/idol`；最新分支 `codex/youngposse-review-completion`。
+- 正式工程 `apps/idol-site/`，不是根Next sandbox；运行与验证见RESUME。
+- 前八团含VVUP v20页面已确认；YOUNG POSSE v21已发布，等人工确认后再开发下一团，公共功能例外。
+- 138测试、类型、正式构建、28交互/3失败恢复和35真视口页面通过。完整设计/资料/真实保存/播放/缩放/线上浏览器边界见[日志](worklogs/20261024-youngposse-review-completion.md)，主站仍v186。
+- 保留原图、稳定ID、用户记录与owner-only边界；先fetch比较，不reset/clean/force push。
+- 当前origin可能只有单分支fetch refspec；按RESUME显式fetch目标分支，不把缺远端跟踪引用误报为远端分支不存在。
 - 每轮代码、worklog与证据一起推送，不把本地未推或未验记为共享完成。
-
-当前证据：[VVUP日志](worklogs/20261024-vvup-review-completion.md)。

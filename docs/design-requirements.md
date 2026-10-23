@@ -1,6 +1,10 @@
 # 女团页面设计要求与验收基准
 更新：2026-10-22（执行方式更新；原设计标准与历史依据保留）。所有派工、接续实现和“可交用户验收”的判断，必须先读本文件，再读协作手册。本文件整理已存在的用户要求，不新增凭证、权限、发布或工具使用授权。
 
+## 2026-10-23 最新逐团门槛
+
+GENBLUE v10、WOOAH v12、izna v15、ifeye v16 已获用户页面确认。本轮 Hearts2Hearts v17 已交网页，等待人工验收；确认前不开发下一团，公共功能例外。正式工程 `apps/idol-site/`，最新分支 `codex/hearts2hearts-review-completion`。从 [RESUME](codex/RESUME.md) 和 [最新日志](codex/worklogs/20261023-hearts2hearts-review-completion.md) 接续。Sol/Astra均已收官；下文迁移初期状态为历史，不覆盖当前 GitHub 状态与用户决定。设计、功能、资料、上线仍分别验收。
+
 ## 当前执行决定（2026-10-22 用户迁移决定）
 - 用户已决定迁移试用 Codex；2026-10-21 的“暂不迁移”执行安排被本决定取代，原产品、设计、图片与验收标准继续有效。
 - 正式工程在 `apps/idol-site/`，从 [首次执行文件](codex/CODEX-FIRST-RUN.md) 和 [共享状态](codex/STATUS.md) 接续；根 Next sandbox 及旧清单仅为历史样本。代码与进度通过 GitHub 的任务分支、PR 和 worklog 共享，不依赖控制旧会话。

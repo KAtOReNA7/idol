@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-23",
+  "scope": "Local managed browser; not deployed browser verification",
+  "desktopScreenshot": {
+    "file": "members-desktop.jpg",
+    "width": 1363,
+    "height": 936,
+    "scope": "viewport, first four of eight members; not full-page"
+  },
+  "layout": {
+    "method": "iframe CSS widths, 2400px iframe height; not top-level device or native browser zoom",
+    "pages": [
+      "home",
+      "members",
+      "records"
+    ],
+    "measurements": [
+      {
+        "iframeWidth": 320,
+        "clientWidth": 305,
+        "scrollWidth": 305,
+        "portraitCount": 8,
+        "allPortraitNaturalSizes": [
+          1000,
+          1000
+        ],
+        "allPortraitRenderedSquarePxRounded": 129
+      },
+      {
+        "iframeWidth": 390,
+        "clientWidth": 375,
+        "scrollWidth": 375,
+        "portraitCount": 8,
+        "allPortraitNaturalSizes": [
+          1000,
+          1000
+        ],
+        "allPortraitRenderedSquarePxRounded": 164
+      },
+      {
+        "iframeWidth": 1440,
+        "clientWidth": 1425,
+        "scrollWidth": 1425,
+        "portraitCount": 8,
+        "allPortraitNaturalSizes": [
+          1000,
+          1000
+        ],
+        "allPortraitRenderedSquarePxRounded": 314
+      },
+      {
+        "iframeWidth": 2048,
+        "clientWidth": 2033,
+        "scrollWidth": 2033,
+        "portraitCount": 8,
+        "allPortraitNaturalSizes": [
+          1000,
+          1000
+        ],
+        "allPortraitRenderedSquarePxRounded": 358
+      },
+      {
+        "iframeWidth": 2560,
+        "clientWidth": 2545,
+        "scrollWidth": 2545,
+        "portraitCount": 8,
+        "allPortraitNaturalSizes": [
+          1000,
+          1000
+        ],
+        "allPortraitRenderedSquarePxRounded": 358
+      }
+    ]
+  },
+  "passed": [
+    "8 original portraits decode; equal square size per viewport",
+    "member search by Chinese name and stage name, stable ordinal 04",
+    "member original viewer Escape closes and restores focus",
+    "release search Moon -> detail -> exact work -> same release -> filtered list",
+    "STELLA -> exact The Chase MV -> exact GtPPT-qSXj8 stage -> same member and search; focus restored",
+    "13 work versions; stage filter has 12 entries, retaining two view-only alternatives",
+    "FOCUS remix alternate explicitly shows original arrangement, no stage scoring",
+    "11 timeline events display; physical URL survives reload",
+    "320px menu opens using AX interaction",
+    "timeline The Chase -> exact work -> same timeline and event focus; physical page reload retains section"
+  ],
+  "notVerified": [
+    "native top-level 320/390/1440/2048/2560 viewports and 80%/125% zoom",
+    "all 13 exact video posters or actual YouTube playback",
+    "real owner writes or production services",
+    "post-deploy browser/HTTP reachability"
+  ],
+  "browserNotes": [
+    "Some batched Playwright clicks returned without transition; AX actions and subsequent state checks used for verification. Fast navigation is not claimed.",
+    "Full-page screenshot timed out; a viewport screenshot succeeded.",
+    "YouTube cover failure was visible on Moonride; honest fallback retained.",
+    "Static directory redirects dropped query strings. Review-only history/href/final-navigation adapters now retain physical index.html addresses; production navigation/guards unchanged."
+  ]
+}

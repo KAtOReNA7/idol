@@ -1,0 +1,70 @@
+{
+  "targeted": {
+    "total": 115,
+    "pass": 115
+  },
+  "finalBewave": {
+    "total": 21,
+    "pass": 21
+  },
+  "typecheck": {
+    "exitCode": 0
+  },
+  "productionBuild": {
+    "exitCode": 0
+  },
+  "broaderRun": {
+    "total": 247,
+    "pass": 234,
+    "fail": 13
+  },
+  "baselineDeadline": {
+    "total": 132,
+    "pass": 119,
+    "fail": 13,
+    "sameFailureNames": true,
+    "method": "Restore navigation JSON to HEAD via local fs read overlay; other deadline inputs unchanged vs HEAD.",
+    "failures": [
+      "ive: HTTP and malformed catalog failures keep the original validation and never look like empty success",
+      "ive: default 30-second fetch deadline exits loading with retry message and can recover",
+      "ive: rapid retries cancel earlier requests and late success cannot overwrite newest data",
+      "ive: timeout renders explicit retry UI and recovery preserves catalog values",
+      "saymyname: HTTP and malformed catalog failures keep the original validation and never look like empty success",
+      "saymyname: JSON body hanging after successful headers is also bounded",
+      "saymyname: Strict Mode style effect cleanup and setup protects the replacement request",
+      "saymyname: default 30-second fetch deadline exits loading with retry message and can recover",
+      "saymyname: immediate Strict Mode replay starts only the surviving queued read",
+      "saymyname: immediate unmount suppresses the queued initial read entirely",
+      "saymyname: rapid retries cancel earlier requests and late success cannot overwrite newest data",
+      "saymyname: timeout renders explicit retry UI and recovery preserves catalog values",
+      "saymyname: unmount aborts silently with no subsequent state writes, even for late completion"
+    ]
+  },
+  "browser": {
+    "checks": 34,
+    "layouts": 35,
+    "failures": 0,
+    "recovery": 3
+  },
+  "publication": {
+    "published": true,
+    "qaVersion": 22,
+    "sourceCommit": "b1db595f6fa843e5e7cba6ab56ec42b0e75ad160",
+    "versionId": "appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_70febd76c1ac8191b347bd5d1eca7a0d",
+    "deploymentId": "appgdep_6adba28bacc88191b53bc7e0eaab9900",
+    "status": "succeeded",
+    "archiveBytes": 71764963,
+    "archiveSha256": "d1424f0db7b5167122d21e3b9da7d50df7dc0579add7f80d519fd1aab4ee7821",
+    "onlineBrowserVerified": false
+  },
+  "publicationHistory": [
+    {
+      "published": false,
+      "qaVersion": 21,
+      "sourceCommit": "b1db595f6fa843e5e7cba6ab56ec42b0e75ad160",
+      "archiveBytes": 71764963,
+      "archiveSha256": "d1424f0db7b5167122d21e3b9da7d50df7dc0579add7f80d519fd1aab4ee7821",
+      "error": "Native artifact upload TLS/connect failure; no saved version ID."
+    }
+  ]
+}

@@ -2,7 +2,14 @@
 
 在为 Sol、Astra 或其他会话编写任务指令、接续实现、汇总验收之前，先阅读 [设计要求与验收基准](docs/design-requirements.md) 和 [跨会话派工与验收手册](docs/collaboration-playbook.md) 中的最新用户决定，再核对当前源码和最新交付。
 
-## 最新执行决定（2026-10-24 YOUNG POSSE v21）
+## 最新执行决定（2026-10-24 BEWAVE）
+
+用户在YOUNG POSSE v21后回复“可以 继续开发”，该页面已确认。本轮仅推进BEWAVE，分支 `codex/bewave-review-completion`，基于 `81a572d8944c6604a08e5302c77e4cafbfb950c7`。BEWAVE原生页与只读审阅已实现，**BEWAVE 已恢复并发布 v22 owner-private 审阅；等待本团人工确认，不开始Candy Shop，公共功能例外**。正式主站仍v186。六人历史相册、4发行/5影像槽/2既有关系、四事件、搜索/原图及手帐往返已验证。115专项/回归、类型、正式构建、34交互、3失败恢复和七页五宽真视口通过；另有13项旧测试框架失败在基线重现。设计、资料、功能、上线分别验收。
+
+- 接续见 [RESUME](docs/codex/RESUME.md) 和 [本轮日志](docs/codex/worklogs/20261024-bewave-review-completion.md)；draft [PR #14](https://github.com/KAtOReNA7/idol/pull/14)，代码 `2d46a53` 已推送。
+- 272旧QA文件SHA复核不变；Figma已有21个可编辑画板，本次同步6处搜索控件、3尺寸知言已关联作品及来源链接，修复320px标题换行高度。完整逐板对照、共享手帐及其余控件同步待完成。线上浏览器读取超时/401，未宣称线上交互通过。
+
+## 历史检查点（2026-10-24 YOUNG POSSE v21）
 
 - 用户“可以 继续开发”已确认VVUP v20；本轮只推进YOUNG POSSE。**等待YOUNG POSSE页面人工确认后再开发下一团，公共功能例外。**
 - 最新分支 **`codex/youngposse-review-completion`**，基于VVUP的 `75c22b7ec26f53fbbf14db1b253a8cce52a59d81`。正式工程 `apps/idol-site/`；draft [PR #13](https://github.com/KAtOReNA7/idol/pull/13)，代码 `7c51709`，接续见[RESUME](docs/codex/RESUME.md)及[本轮日志](docs/codex/worklogs/20261024-youngposse-review-completion.md)。

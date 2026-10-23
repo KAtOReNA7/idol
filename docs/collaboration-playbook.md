@@ -4,7 +4,7 @@
 
 ## 2026-10-24 最新逐团门槛
 
-用户在VVUP v20后回复“可以 继续开发”，该页面已确认。本轮仅推进原计划内YOUNG POSSE，**v21已发布，等待YOUNG POSSE页面人工确认后再开发下一团，公共功能例外**。正式工程 `apps/idol-site/`，最新分支 `codex/youngposse-review-completion`。从 [RESUME](codex/RESUME.md) 和 [本轮日志](codex/worklogs/20261024-youngposse-review-completion.md) 接续。五位成员等大照片与搜索、真正原图、15发行、22影像槽和手帐往返已完善；设计、功能、资料、上线分别验收，正式主站仍v186。下方此前检查点为历史。
+用户在YOUNG POSSE v21后回复“可以 继续开发”，该页面已确认。本轮仅推进BEWAVE，分支 `codex/bewave-review-completion`，基于 `81a572d8944c6604a08e5302c77e4cafbfb950c7`。BEWAVE原生页与只读审阅已实现，**BEWAVE 已恢复并发布 v22 owner-private 审阅；等待本团人工确认，不开始Candy Shop，公共功能例外**。正式主站仍v186。六人历史相册、4发行/5影像槽/2既有关系、四事件、搜索/原图及手帐往返已验证。115专项/回归、类型、正式构建、34交互、3失败恢复和七页五宽真视口通过；另有13项旧测试框架失败在基线重现。设计、资料、功能、上线分别验收。 接续见 [RESUME](codex/RESUME.md) 与 [BEWAVE日志](codex/worklogs/20261024-bewave-review-completion.md)。
 
 ## 当前执行方式：2026-10-22 Codex 迁移试用
 - 用户已选择 Codex 迁移试用，取代“暂不迁移、主会话继续负责”的旧执行安排。正式工程是 `apps/idol-site/`，原生清单是 [SOURCE-MANIFEST](codex/SOURCE-MANIFEST.json)；根 sandbox 及旧根清单只说明历史样本。

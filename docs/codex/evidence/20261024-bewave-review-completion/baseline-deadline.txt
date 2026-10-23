@@ -1,0 +1,363 @@
+✔ itzy: default 30-second fetch deadline exits loading with retry message and can recover (462.6805ms)
+✔ itzy: JSON body hanging after successful headers is also bounded (84.611ms)
+✔ itzy: rapid retries cancel earlier requests and late success cannot overwrite newest data (72.4832ms)
+✔ itzy: unmount aborts silently with no subsequent state writes, even for late completion (72.5049ms)
+✔ itzy: short injected deadline and already-aborted caller clean up without starting a read (75.1176ms)
+✔ itzy: HTTP and malformed catalog failures keep the original validation and never look like empty success (140.2821ms)
+✔ itzy: Strict Mode style effect cleanup and setup protects the replacement request (56.9542ms)
+✔ itzy: helper removes caller abort listener on success, timeout and cancellation (188.1653ms)
+✔ itzy: immediate unmount suppresses the queued initial read entirely (63.5135ms)
+✔ itzy: immediate Strict Mode replay starts only the surviving queued read (62.0717ms)
+✔ itzy: timeout renders explicit retry UI and recovery preserves catalog values (59.3136ms)
+✔ lesserafim: default 30-second fetch deadline exits loading with retry message and can recover (62.2789ms)
+✔ lesserafim: JSON body hanging after successful headers is also bounded (59.5987ms)
+✔ lesserafim: rapid retries cancel earlier requests and late success cannot overwrite newest data (52.4284ms)
+✔ lesserafim: unmount aborts silently with no subsequent state writes, even for late completion (63.6904ms)
+✔ lesserafim: short injected deadline and already-aborted caller clean up without starting a read (71.882ms)
+✔ lesserafim: HTTP and malformed catalog failures keep the original validation and never look like empty success (106.0046ms)
+✔ lesserafim: Strict Mode style effect cleanup and setup protects the replacement request (60.2131ms)
+✔ lesserafim: helper removes caller abort listener on success, timeout and cancellation (158.7934ms)
+✔ lesserafim: immediate unmount suppresses the queued initial read entirely (60.4571ms)
+✔ lesserafim: immediate Strict Mode replay starts only the surviving queued read (57.149ms)
+✔ lesserafim: timeout renders explicit retry UI and recovery preserves catalog values (51.617ms)
+✖ ive: default 30-second fetch deadline exits loading with retry message and can recover (55.5141ms)
+✔ ive: JSON body hanging after successful headers is also bounded (51.5789ms)
+✖ ive: rapid retries cancel earlier requests and late success cannot overwrite newest data (53.8546ms)
+✔ ive: unmount aborts silently with no subsequent state writes, even for late completion (41.4317ms)
+✔ ive: short injected deadline and already-aborted caller clean up without starting a read (53.1374ms)
+✖ ive: HTTP and malformed catalog failures keep the original validation and never look like empty success (40.3975ms)
+✔ ive: Strict Mode style effect cleanup and setup protects the replacement request (55.4417ms)
+✔ ive: helper removes caller abort listener on success, timeout and cancellation (131.0443ms)
+✔ ive: immediate unmount suppresses the queued initial read entirely (52.3784ms)
+✔ ive: immediate Strict Mode replay starts only the surviving queued read (48.3904ms)
+✖ ive: timeout renders explicit retry UI and recovery preserves catalog values (57.7775ms)
+✔ kissoflife: default 30-second fetch deadline exits loading with retry message and can recover (50.0138ms)
+✔ kissoflife: JSON body hanging after successful headers is also bounded (76.5188ms)
+✔ kissoflife: rapid retries cancel earlier requests and late success cannot overwrite newest data (86.8886ms)
+✔ kissoflife: unmount aborts silently with no subsequent state writes, even for late completion (77.114ms)
+✔ kissoflife: short injected deadline and already-aborted caller clean up without starting a read (87.9225ms)
+✔ kissoflife: HTTP and malformed catalog failures keep the original validation and never look like empty success (185.2762ms)
+✔ kissoflife: Strict Mode style effect cleanup and setup protects the replacement request (73.5564ms)
+✔ kissoflife: helper removes caller abort listener on success, timeout and cancellation (242.6775ms)
+✔ kissoflife: immediate unmount suppresses the queued initial read entirely (81.402ms)
+✔ kissoflife: immediate Strict Mode replay starts only the surviving queued read (80.8158ms)
+✔ kissoflife: timeout renders explicit retry UI and recovery preserves catalog values (94.2682ms)
+✔ stayc: default 30-second fetch deadline exits loading with retry message and can recover (84.2624ms)
+✔ stayc: JSON body hanging after successful headers is also bounded (79.0245ms)
+✔ stayc: rapid retries cancel earlier requests and late success cannot overwrite newest data (73.5994ms)
+✔ stayc: unmount aborts silently with no subsequent state writes, even for late completion (83.36ms)
+✔ stayc: short injected deadline and already-aborted caller clean up without starting a read (77.2424ms)
+✔ stayc: HTTP and malformed catalog failures keep the original validation and never look like empty success (145.5637ms)
+✔ stayc: Strict Mode style effect cleanup and setup protects the replacement request (79.1427ms)
+✔ stayc: helper removes caller abort listener on success, timeout and cancellation (233.7127ms)
+✔ stayc: immediate unmount suppresses the queued initial read entirely (79.2959ms)
+✔ stayc: immediate Strict Mode replay starts only the surviving queued read (65.312ms)
+✔ stayc: timeout renders explicit retry UI and recovery preserves catalog values (84.7236ms)
+✔ nmixx: default 30-second fetch deadline exits loading with retry message and can recover (86.4023ms)
+✔ nmixx: JSON body hanging after successful headers is also bounded (74.1109ms)
+✔ nmixx: rapid retries cancel earlier requests and late success cannot overwrite newest data (86.9004ms)
+✔ nmixx: unmount aborts silently with no subsequent state writes, even for late completion (85.3058ms)
+✔ nmixx: short injected deadline and already-aborted caller clean up without starting a read (75.2669ms)
+✔ nmixx: HTTP and malformed catalog failures keep the original validation and never look like empty success (174.1965ms)
+✔ nmixx: Strict Mode style effect cleanup and setup protects the replacement request (82.0357ms)
+✔ nmixx: helper removes caller abort listener on success, timeout and cancellation (251.4549ms)
+✔ nmixx: immediate unmount suppresses the queued initial read entirely (95.849ms)
+✔ nmixx: immediate Strict Mode replay starts only the surviving queued read (103.6241ms)
+✔ nmixx: timeout renders explicit retry UI and recovery preserves catalog values (93.5696ms)
+✔ hearts2hearts: default 30-second fetch deadline exits loading with retry message and can recover (68.7134ms)
+✔ hearts2hearts: JSON body hanging after successful headers is also bounded (78.7778ms)
+✔ hearts2hearts: rapid retries cancel earlier requests and late success cannot overwrite newest data (81.2952ms)
+✔ hearts2hearts: unmount aborts silently with no subsequent state writes, even for late completion (69.3775ms)
+✔ hearts2hearts: short injected deadline and already-aborted caller clean up without starting a read (81.2508ms)
+✔ hearts2hearts: HTTP and malformed catalog failures keep the original validation and never look like empty success (151.4209ms)
+✔ hearts2hearts: Strict Mode style effect cleanup and setup protects the replacement request (78.1557ms)
+✔ hearts2hearts: helper removes caller abort listener on success, timeout and cancellation (219.0269ms)
+✔ hearts2hearts: immediate unmount suppresses the queued initial read entirely (81.9691ms)
+✔ hearts2hearts: immediate Strict Mode replay starts only the surviving queued read (81.8872ms)
+✔ hearts2hearts: timeout renders explicit retry UI and recovery preserves catalog values (74.0025ms)
+✔ kiiikiii: default 30-second fetch deadline exits loading with retry message and can recover (83.83ms)
+✔ kiiikiii: JSON body hanging after successful headers is also bounded (84.3992ms)
+✔ kiiikiii: rapid retries cancel earlier requests and late success cannot overwrite newest data (89.6964ms)
+✔ kiiikiii: unmount aborts silently with no subsequent state writes, even for late completion (77.4068ms)
+✔ kiiikiii: short injected deadline and already-aborted caller clean up without starting a read (86.3136ms)
+✔ kiiikiii: HTTP and malformed catalog failures keep the original validation and never look like empty success (167.3138ms)
+✔ kiiikiii: Strict Mode style effect cleanup and setup protects the replacement request (88.5642ms)
+✔ kiiikiii: helper removes caller abort listener on success, timeout and cancellation (258.5197ms)
+✔ kiiikiii: immediate unmount suppresses the queued initial read entirely (89.6455ms)
+✔ kiiikiii: immediate Strict Mode replay starts only the surviving queued read (86.2166ms)
+✔ kiiikiii: timeout renders explicit retry UI and recovery preserves catalog values (81.7207ms)
+✔ katseye: default 30-second fetch deadline exits loading with retry message and can recover (85.9135ms)
+✔ katseye: JSON body hanging after successful headers is also bounded (82.7816ms)
+✔ katseye: rapid retries cancel earlier requests and late success cannot overwrite newest data (77.8902ms)
+✔ katseye: unmount aborts silently with no subsequent state writes, even for late completion (86.7403ms)
+✔ katseye: short injected deadline and already-aborted caller clean up without starting a read (78.707ms)
+✔ katseye: HTTP and malformed catalog failures keep the original validation and never look like empty success (164.1222ms)
+✔ katseye: Strict Mode style effect cleanup and setup protects the replacement request (85.7224ms)
+✔ katseye: helper removes caller abort listener on success, timeout and cancellation (243.2994ms)
+✔ katseye: immediate unmount suppresses the queued initial read entirely (84.9268ms)
+✔ katseye: immediate Strict Mode replay starts only the surviving queued read (72.2725ms)
+Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+✔ katseye: timeout renders explicit retry UI and recovery preserves catalog values (89.5301ms)
+✖ saymyname: default 30-second fetch deadline exits loading with retry message and can recover (77.5536ms)
+✖ saymyname: JSON body hanging after successful headers is also bounded (89.3437ms)
+✖ saymyname: rapid retries cancel earlier requests and late success cannot overwrite newest data (89.6723ms)
+✖ saymyname: unmount aborts silently with no subsequent state writes, even for late completion (77.5174ms)
+Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+✔ saymyname: short injected deadline and already-aborted caller clean up without starting a read (100.3998ms)
+✖ saymyname: HTTP and malformed catalog failures keep the original validation and never look like empty success (97.8007ms)
+✖ saymyname: Strict Mode style effect cleanup and setup protects the replacement request (87.367ms)
+Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+✔ saymyname: helper removes caller abort listener on success, timeout and cancellation (271.243ms)
+✖ saymyname: immediate unmount suppresses the queued initial read entirely (89.5164ms)
+✖ saymyname: immediate Strict Mode replay starts only the surviving queued read (105.4786ms)
+✖ saymyname: timeout renders explicit retry UI and recovery preserves catalog values (115.5059ms)
+✔ babymonster: default 30-second fetch deadline exits loading with retry message and can recover (102.1506ms)
+✔ babymonster: JSON body hanging after successful headers is also bounded (88.6652ms)
+✔ babymonster: rapid retries cancel earlier requests and late success cannot overwrite newest data (96.8273ms)
+✔ babymonster: unmount aborts silently with no subsequent state writes, even for late completion (95.5338ms)
+✔ babymonster: short injected deadline and already-aborted caller clean up without starting a read (87.9208ms)
+✔ babymonster: HTTP and malformed catalog failures keep the original validation and never look like empty success (175.1333ms)
+✔ babymonster: Strict Mode style effect cleanup and setup protects the replacement request (98.2716ms)
+✔ babymonster: helper removes caller abort listener on success, timeout and cancellation (275.5669ms)
+✔ babymonster: immediate unmount suppresses the queued initial read entirely (98.2339ms)
+✔ babymonster: immediate Strict Mode replay starts only the surviving queued read (93.8508ms)
+✔ babymonster: timeout renders explicit retry UI and recovery preserves catalog values (84.3949ms)
+✔ illit: default 30-second fetch deadline exits loading with retry message and can recover (96.355ms)
+✔ illit: JSON body hanging after successful headers is also bounded (98.0404ms)
+✔ illit: rapid retries cancel earlier requests and late success cannot overwrite newest data (83.8137ms)
+✔ illit: unmount aborts silently with no subsequent state writes, even for late completion (90.9744ms)
+✔ illit: short injected deadline and already-aborted caller clean up without starting a read (91.7536ms)
+✔ illit: HTTP and malformed catalog failures keep the original validation and never look like empty success (175.3869ms)
+✔ illit: Strict Mode style effect cleanup and setup protects the replacement request (89.0758ms)
+✔ illit: helper removes caller abort listener on success, timeout and cancellation (255.9279ms)
+✔ illit: immediate unmount suppresses the queued initial read entirely (80.3662ms)
+✔ illit: immediate Strict Mode replay starts only the surviving queued read (90.4907ms)
+✔ illit: timeout renders explicit retry UI and recovery preserves catalog values (97.0853ms)
+ℹ tests 132
+ℹ suites 0
+ℹ pass 119
+ℹ fail 13
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13610.7505
+
+✖ failing tests:
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ ive: default 30-second fetch deadline exits loading with retry message and can recover (55.5141ms)
+  TypeError: Cannot read properties of undefined (reading 'value')
+      at Object.retry (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:15:286)
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:21:16)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7)
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ ive: rapid retries cancel earlier requests and late success cannot overwrite newest data (53.8546ms)
+  TypeError: Cannot read properties of undefined (reading 'value')
+      at Object.retry (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:15:286)
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:30:54)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7)
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ ive: HTTP and malformed catalog failures keep the original validation and never look like empty success (40.3975ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /没有连上/. Input:
+
+  '资料库暂未连接，请重试。'
+
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:44:274)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '资料库暂未连接，请重试。',
+    expected: /没有连上/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ ive: timeout renders explicit retry UI and recovery preserves catalog values (57.7775ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+    assert.ok(alert)
+
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:75:65)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ saymyname: default 30-second fetch deadline exits loading with retry message and can recover (77.5536ms)
+  TypeError: Cannot read properties of null (reading 'useLayoutEffect')
+      at process.env.NODE_ENV.exports.useLayoutEffect (D:\porject\idol\apps\idol-site\node_modules\react\cjs\react.development.js:1248:33)
+      at useArtistNavigationScroll (evalmachine.<anonymous>:20:33)
+      at SaymynameArtist (evalmachine.<anonymous>:54:96)
+      at Object.render (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:15:121)
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:19:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ saymyname: JSON body hanging after successful headers is also bounded (89.3437ms)
+  TypeError: Cannot read properties of null (reading 'useLayoutEffect')
+      at process.env.NODE_ENV.exports.useLayoutEffect (D:\porject\idol\apps\idol-site\node_modules\react\cjs\react.development.js:1248:33)
+      at useArtistNavigationScroll (evalmachine.<anonymous>:20:33)
+      at SaymynameArtist (evalmachine.<anonymous>:54:96)
+      at Object.render (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:15:121)
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:26:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ saymyname: rapid retries cancel earlier requests and late success cannot overwrite newest data (89.6723ms)
+  TypeError: Cannot read properties of null (reading 'useLayoutEffect')
+      at process.env.NODE_ENV.exports.useLayoutEffect (D:\porject\idol\apps\idol-site\node_modules\react\cjs\react.development.js:1248:33)
+      at useArtistNavigationScroll (evalmachine.<anonymous>:20:33)
+      at SaymynameArtist (evalmachine.<anonymous>:54:96)
+      at Object.render (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:15:121)
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:30:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ saymyname: unmount aborts silently with no subsequent state writes, even for late completion (77.5174ms)
+  TypeError: Cannot read properties of null (reading 'useLayoutEffect')
+      at process.env.NODE_ENV.exports.useLayoutEffect (D:\porject\idol\apps\idol-site\node_modules\react\cjs\react.development.js:1248:33)
+      at useArtistNavigationScroll (evalmachine.<anonymous>:20:33)
+      at SaymynameArtist (evalmachine.<anonymous>:54:96)
+      at Object.render (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:15:121)
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:36:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ saymyname: HTTP and malformed catalog failures keep the original validation and never look like empty success (97.8007ms)
+  TypeError: Cannot read properties of null (reading 'useLayoutEffect')
+      at process.env.NODE_ENV.exports.useLayoutEffect (D:\porject\idol\apps\idol-site\node_modules\react\cjs\react.development.js:1248:33)
+      at useArtistNavigationScroll (evalmachine.<anonymous>:20:33)
+      at SaymynameArtist (evalmachine.<anonymous>:54:96)
+      at Object.render (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:15:121)
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:44:59)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ saymyname: Strict Mode style effect cleanup and setup protects the replacement request (87.367ms)
+  TypeError: Cannot read properties of null (reading 'useLayoutEffect')
+      at process.env.NODE_ENV.exports.useLayoutEffect (D:\porject\idol\apps\idol-site\node_modules\react\cjs\react.development.js:1248:33)
+      at useArtistNavigationScroll (evalmachine.<anonymous>:20:33)
+      at SaymynameArtist (evalmachine.<anonymous>:54:96)
+      at Object.render (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:15:121)
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:48:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ saymyname: immediate unmount suppresses the queued initial read entirely (89.5164ms)
+  TypeError: Cannot read properties of null (reading 'useLayoutEffect')
+      at process.env.NODE_ENV.exports.useLayoutEffect (D:\porject\idol\apps\idol-site\node_modules\react\cjs\react.development.js:1248:33)
+      at useArtistNavigationScroll (evalmachine.<anonymous>:20:33)
+      at SaymynameArtist (evalmachine.<anonymous>:54:96)
+      at Object.render (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:15:121)
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:64:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ saymyname: immediate Strict Mode replay starts only the surviving queued read (105.4786ms)
+  TypeError: Cannot read properties of null (reading 'useLayoutEffect')
+      at process.env.NODE_ENV.exports.useLayoutEffect (D:\porject\idol\apps\idol-site\node_modules\react\cjs\react.development.js:1248:33)
+      at useArtistNavigationScroll (evalmachine.<anonymous>:20:33)
+      at SaymynameArtist (evalmachine.<anonymous>:54:96)
+      at Object.render (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:15:121)
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:67:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+
+test at tests\catalog-read-deadline.test.cjs:5:44
+✖ saymyname: timeout renders explicit retry UI and recovery preserves catalog values (115.5059ms)
+  TypeError: Cannot read properties of null (reading 'useLayoutEffect')
+      at process.env.NODE_ENV.exports.useLayoutEffect (D:\porject\idol\apps\idol-site\node_modules\react\cjs\react.development.js:1248:33)
+      at useArtistNavigationScroll (evalmachine.<anonymous>:20:33)
+      at SaymynameArtist (evalmachine.<anonymous>:54:96)
+      at Object.render (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:15:121)
+      at TestContext.<anonymous> (D:\porject\idol\apps\idol-site\tests\catalog-read-deadline.test.cjs:74:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)

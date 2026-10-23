@@ -5,26 +5,26 @@
 | 项目 | 当前值 |
 | --- | --- |
 | 仓库 | https://github.com/KAtOReNA7/idol |
-| 应检出分支 | **`codex/youngposse-review-completion` 最新远端HEAD** |
+| 应检出分支 | **`codex/bewave-review-completion` 最新远端HEAD** |
 | 正式工程 | `apps/idol-site/`；根目录为历史Next sandbox |
-| 基线 | `75c22b7ec26f53fbbf14db1b253a8cce52a59d81`，`codex/vvup-review-completion` |
-| GitHub交付 | draft [PR #13](https://github.com/KAtOReNA7/idol/pull/13)；代码提交 `7c517099319cac96c66e29051ed262cd5899ed68`，其后文档以最新远端HEAD为准 |
-| 当前阶段 | VVUP v20及前七团页面已确认；**YOUNG POSSE v21等人工确认** |
-| 审阅 | [YOUNG POSSE页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/youngposse/index.html) |
-| 证据 | [本轮日志](worklogs/20261024-youngposse-review-completion.md)、[验证目录](evidence/20261024-youngposse-review-completion/) |
+| 基线 | `81a572d8944c6604a08e5302c77e4cafbfb950c7`，`codex/youngposse-review-completion` |
+| GitHub交付 | draft [PR #14](https://github.com/KAtOReNA7/idol/pull/14)，代码提交 `2d46a530aa78b2e686fdba18299911ac838563f3`；后续文档以最新远端HEAD为准 |
+| 当前阶段 | YOUNG POSSE v21及此前页面已确认；BEWAVE v22已发布，等待人工确认 |
+| QA线上 | **v22 owner-private 已发布**；[打开BEWAVE](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/bewave/index.html) |
+| 证据 | [本轮日志](worklogs/20261024-bewave-review-completion.md)、[验证目录](evidence/20261024-bewave-review-completion/) |
 | 正式主站 | 仍v186；未覆盖、未合并main |
 
-分支链：handoff → GENBLUE → WOOAH → izna → izna-followup → ifeye → Hearts2Hearts → KiiiKiii → SAY MY NAME → VVUP → **YOUNG POSSE**。
+分支链：handoff → GENBLUE → WOOAH → izna → izna-followup → ifeye → Hearts2Hearts → KiiiKiii → SAY MY NAME → VVUP → YOUNG POSSE → **BEWAVE**。
 
-用户在VVUP v20后回复“可以 继续开发”，VVUP页面现已确认。一次一团，交网页后等用户明确确认，当前等YOUNG POSSE；公共功能例外。保持原图、稳定ID、用户记录和owner-only写保护。
+本轮用户“可以 继续开发”已确认YOUNG POSSE。现在仍只做BEWAVE；已恢复发布，获得页面确认前不开始Candy Shop，公共功能例外。用户原图、评分、备注、观看状态和owner-only边界不变。
 
 ## 取得与运行
 
 ```sh
-git -c core.autocrlf=false clone --branch codex/youngposse-review-completion https://github.com/KAtOReNA7/idol.git idol
+git -c core.autocrlf=false clone --branch codex/bewave-review-completion https://github.com/KAtOReNA7/idol.git idol
 cd idol
 git config --local core.autocrlf false
-git fetch origin codex/youngposse-review-completion:refs/remotes/origin/codex/youngposse-review-completion
+git fetch origin codex/bewave-review-completion:refs/remotes/origin/codex/bewave-review-completion
 git status --short
 cd apps/idol-site
 npm run install:ci
@@ -32,28 +32,35 @@ node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false
 npm run dev
 ```
 
-已有检出先保留改动再fetch比较，不reset/clean/force push；本机remote.origin.fetch仅指向旧KiiiKiii分支，普通fetch不会更新其他跟踪引用，需显式目标。Node≥22.13.0，Vinext/Vite+Cloudflare Worker与Next路由/API约定。不能跑根sandbox或Next CLI替代。portable端口通常5173，以实际服务地址为准，打开 `/artists/youngposse`。D1/R2不随clone出现，不导入用户数据掩盖缺环境。
+已有检出先保留改动再fetch比较，不reset/clean/force push。当前remote.origin.fetch可能仅指向旧KiiiKiii分支，应显式fetch。Node≥22.13.0；Vinext/Vite+Cloudflare Worker，不运行根sandbox或Next CLI替代。页面路径 `/artists/bewave`。D1/R2不随clone出现，不导入私人数据掩盖缺环境。
 
-Windows Sites npm shim曾错找入口，用已安装Node与npm-cli.js绝对路径运行package脚本即可。代理仅按当前机器配置诊断，本机局部使用7877；不更改全局。CRLF会破坏字节校验，clone禁用转换。
+Windows的npm shim曾错找入口，可用已安装Node和npm-cli.js绝对路径。代理按当前机器配置，本机仅命令局部使用7877；不更改全局。CRLF会破坏字节校验，clone禁用转换。
 
-## 本轮实现与检查
+## 实现与验证
 
-正式路由改用新 `components/youngposse-artist.tsx`，保留旧byte-pinned candidate源。原Posse in Frame设计、五位官方具名成员、真正原图、15发行、22影像槽（14主影像+8舞台）、39既有关系、14事件；搜索、详情、精确手帐往返。27图片原字节保留，21个原图/封面与本轮公开源响应相同。照片原始600×600、团照1000×566；Figma480px是旧展示上限，不是源图分辨率。
-
-新增 `review/youngposse/` 和 `scripts/build-youngposse-review.mjs`：真实组件只读审阅，Node中从公开白名单导出并清空个人字段。写入405、非本团API拒绝，raw snapshot不进浏览器包。
+新 `components/bewave-artist.tsx` 与独立海岸相册CSS；6历史成员、4发行、5影像槽（2主影像、2舞台、1只浏览Special Clip）、2既有成员作品关系、4事件。搜索、原图焦点、精确手帐往返和失败恢复通过。2024历史名册不推断当前阵容；新小分队仅知言/允瑟，个人作品仅知言；音源日期不冒充上传日。
 
 ```powershell
 $env:NODE_PATH=(Join-Path $PWD 'node_modules')
-node --test tests/youngposse-content.test.mjs tests/youngposse-review-catalog.test.mjs tests/youngposse-review-isolation.test.mjs tests/youngposse-review-routing.test.mjs tests/vvup-*.test.mjs tests/artist-navigation.test.cjs tests/saymyname-*.test.* tests/kiiikiii-*.test.*
-node scripts/build-youngposse-review.mjs --out C:/absolute/dedicated/scratch/output
+node --test tests/bewave-*.test.mjs tests/youngposse-content.test.mjs tests/youngposse-review-*.test.mjs tests/vvup-*.test.mjs tests/artist-navigation.test.cjs tests/artist-navigation-scroll.test.cjs tests/artist-preview.test.cjs tests/member-works.test.cjs
+node scripts/build-bewave-review.mjs --out C:/absolute/dedicated/scratch/output
 ```
 
-POSIX设置 `NODE_PATH="$PWD/node_modules"` 再运行同样测试。138项通过、类型0错误、正式build成功；28交互和3失败恢复、七页×320/390/1440/2048/2560真实CSS视口通过。Browser插件缺失，使用已安装Chrome+bundled Playwright，未装新依赖。原生80%/125%缩放、真实保存/播放、线上已登录浏览器未验。
+115专项/回归通过；最终仅改事件来源链接后21项本团测试再过。类型0错误、正式build成功。34交互/3失败恢复、七类页×320/390/1440/2048/2560通过。Browser插件缺失，使用已安装Chrome及bundled Playwright；无新依赖。另跑旧catalog-read-deadline：132项中119过13失败，基线同样失败，详见日志；不能称全库全过。
 
-旧 `youngposse-retention-audit.test.mjs` 的 `.pathname` 在Windows产生 `D:\D:\` 路径错误，本轮未将其记为通过或放宽production pins。新测试直接复核18旧图片及两个源文件pins；主站全量剪枝仍保留既有阻断。
+Figma page `977:1095` 有7类×1440/390/320可编辑画板，21板均已填入内容；8板目视，首页1440与成员390取得含截图context。本次补齐6处搜索控件、3尺寸知言已有作品区与来源链接，另取得成员320/知言390含截图context；修复窄屏换行高度。完整逐板精确对照、其余控件与共享手帐仍待同步，不冒称完整设计通过。
 
-## 发布与下一步
+## 发布恢复完成（v22）
 
-QA Site `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3`：owner-private **v21 succeeded**；Sites source `96170679dfbaf679050e25c3ad3e86dfd6cc9d0a`。原237静态文件SHA不变，总272文件。仅本团增量，不能当全站替换包。线上地址交给Codex打开返回queued，未冒称已登录浏览器复验。正式主站仍v186。
+QA project `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3` 观众仍仅owner、0外部用户。Sites source `b1db595f6fa843e5e7cba6ab56ec42b0e75ad160` 与远端一致，272旧out文件SHA复核不变。2026-10-23 18:08:24 UTC恢复发布成功；正式主站仍v186。
 
-先处理YOUNG POSSE反馈；确认前不启动下一团。资料待办：Street Carol发行日12-13/12-18冲突保留null；目录另缺YOUNG POSSE UP与On My Scars，后者有6-24/6-26分歧；小分队音源参与不外推MV出演。精确视频截图、MV个人造型、完整Figma内页/320画板及官网/Spotify完整视觉研究仍待补。每轮代码、证据、阶段与下一步同提交并push。
+- version：`appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_70febd76c1ac8191b347bd5d1eca7a0d`（v22）
+- deployment：`appgdep_6adba28bacc88191b53bc7e0eaab9900`，`succeeded`
+- 页面：https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/bewave/index.html
+- 证据：[恢复记录](evidence/20261024-bewave-review-completion/publication-recovery.json)
+
+原归档 `C:/Users/61919/.codex/visualizations/2026/10/23/01a1694f-9d8c-7f82-a9a8-1732f12fea0e/bewave-v22.tar.gz` 为71,764,963 bytes，SHA未变。此前上传TLS失败已恢复；检查上传主机可完成TLS后，使用原归档单次发布成功。无证据可归因于具体应用代码；未改代理、TLS校验或观众。服务端返回的tar归档元数据与本地gzip各自记录，不将两者hash混用。不要重复上传已成功版本。
+
+应用内浏览器getTab读取30秒超时；独立Chrome使用Sites返回的授权头请求得到401后停止，没有完成线上交互验证。可继续本团独立设计/资料工作；下轮有恢复证据后补线上检查。不要改权限或绕过认证。
+
+真实保存/播放、原生80%/125%缩放、精确视频图、全部Figma逐板对照/共享手帐、当前阵容实际变更仍待验/待核。交网页后等待BEWAVE确认，不开始下一团。

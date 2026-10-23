@@ -1,0 +1,96 @@
+{
+  "checkedAt": "2026-10-23T18:18:28.460Z",
+  "projectId": "appgprj_6ad9800421f8819188ffdf3bc8a8e0f3",
+  "errorResolution": {
+    "initialFailure": "TLS/connect before archive upload; no version saved",
+    "initialRequestId": "44a84486-d4f6-4ce5-a25b-8ff975aaf395",
+    "recoveryEvidence": "2026-10-23 18:06 UTC: curl with certificate validation enabled reached HTTP 400 at the upload host root using both the existing local proxy and direct connection.",
+    "rootCause": "Transient transport failure; no deterministic local code defect identified.",
+    "changes": "No proxy, certificate, access policy or Site identity changes. Renewed expired source Git credential through supported Sites API, checked remote source, then submitted unchanged archive once."
+  },
+  "publication": {
+    "versionNumber": 22,
+    "versionId": "appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_70febd76c1ac8191b347bd5d1eca7a0d",
+    "deploymentId": "appgdep_6adba28bacc88191b53bc7e0eaab9900",
+    "status": "succeeded",
+    "url": "https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/bewave/index.html",
+    "sourceCommit": "b1db595f6fa843e5e7cba6ab56ec42b0e75ad160",
+    "publishedAt": "2026-10-23T18:08:24.457738+00:00",
+    "archiveGzipBytes": 71764963,
+    "archiveGzipSha256": "d1424f0db7b5167122d21e3b9da7d50df7dc0579add7f80d519fd1aab4ee7821",
+    "serverArchive": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000676081f5af7fb70d4275243c",
+      "content_hash": "sha256:17a5b7b7295b8e4728ba09ae6eca2a2c7558c425c250f801f993240fff8115a9",
+      "size_bytes": 83957760,
+      "file_count": 300
+    }
+  },
+  "audience": {
+    "role": "owner",
+    "mode": "custom",
+    "allowedOwners": 1,
+    "groups": 0,
+    "externalVisitors": 0
+  },
+  "protectedFiles": {
+    "count": 272,
+    "mismatches": 0
+  },
+  "browser": {
+    "inApp": "Tab metadata reported BEWAVE title and URL; getTab timed out after 30s, kernel reset.",
+    "chrome": "Installed Chrome with bundled Playwright: first page returned 401; no application interactions completed. Stopped at denial.",
+    "browserPlugin": "not available",
+    "passedOnline": false,
+    "localPreviousEvidence": "34 interactions, 3 recovery scenarios and 35 true-viewport checks remain valid for unchanged frontend input."
+  },
+  "figma": {
+    "pageId": "977:1095",
+    "updatedFrames": [
+      "977:1097",
+      "977:1104",
+      "977:1111",
+      "977:1099",
+      "977:1106",
+      "977:1113",
+      "977:1098",
+      "977:1105",
+      "977:1112"
+    ],
+    "searchRows": [
+      "1000:1212",
+      "1000:1216",
+      "1000:1220",
+      "1000:1224",
+      "1000:1228",
+      "1000:1232"
+    ],
+    "memberRelationships": [
+      "1000:1236",
+      "1000:1244",
+      "1000:1252"
+    ],
+    "finalVisuals": [
+      "977:1111",
+      "977:1099",
+      "977:1098",
+      "977:1105",
+      "977:1112"
+    ],
+    "contextNodes": [
+      "977:1111",
+      "977:1105"
+    ],
+    "corrections": [
+      "Bound color fallback values match existing tokens.",
+      "Text height hugs content; 320px Korean title now reserves 68px and no longer crowds rating line."
+    ],
+    "remaining": [
+      "Complete 21-frame comparison, including unaffected page differences.",
+      "Shared record Figma screens and exact video preview images.",
+      "Search is editable visual control, not executable filtering inside Figma."
+    ]
+  },
+  "mainSite": "v186 unchanged",
+  "humanAcceptance": "BEWAVE pending; do not begin Candy Shop"
+}

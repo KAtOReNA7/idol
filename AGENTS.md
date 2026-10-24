@@ -1,6 +1,14 @@
 # 项目协作入口
 
-## 最新用户决定：Geenius 官网重设计 v29 待确认（2026-10-24）
+## 最新执行决定：TRACER v30 已发布，待网页确认（2026-10-24）
+
+用户“同意，继续开发”已确认 Geenius 官网重设计 v29。本轮 TRACER 已按实际查看的 [GLEAMMEDIA 官网艺人页](https://www.gleammedia.co.kr/artist)重新设计，发布 **v30 owner-private 审阅**：四份成员档案、一项发行/两曲、两个精确视频、三个事件及已有手帐往返。白底玫红、官方横幅/银色标识和成员图取自官网语言；弃用旧信号控制台视觉，复用路由、原图查看器、只读审阅与共享手帐功能，目录/时间轴/手帐属于官网风格的项目扩展。
+
+28 项专项/回归、类型、正式构建、45 项五宽真视口布局和 9 个额外恢复/绑定场景通过；独立复审发现的共享成员照片缺失已修复，四成员 × 两宽共 8 场景复验。Figma 已有 30 个可编辑画板和 11 个节点的实际取稿；完整逐板像素对照及细小字体度量仍待完善。423 个旧审阅文件 SHA 不变。线上首页、成员目录及希真详情已实际读到/截图；详情点击工具曾超时，恢复后截图确认页面已到达，不能扩大为线上完整流程通过。真实保存/播放、原图弹窗与 80%/125% 原生缩放未完成线上验证。
+
+[打开 TRACER v30](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/tracer/index.html)。分支 `codex/tracer-review-completion`，基于 `d94c11d0554d4414a02cf09630fce0b516b35816`；正式工程 `apps/idol-site/`，主站仍 v186。保留原图、稳定 ID、评分、备注、观看状态和权限。**等待 TRACER 网页确认后再开始 W!TCHX，公共功能例外。** 详见 `docs/codex/worklogs/20261024-tracer-review-completion.md`。长期规则：以后沿用仓库设计须在交审时披露版本、范围、官网和差异。
+
+## 历史决定：Geenius 官网重设计 v29（现已确认）
 
 用户明确否决 Geenius v28 的仓库既有视觉，仅认可图片。本轮继续 `codex/geenius-review-completion` / PR #18，以 https://www.geeniushome.com/geenius 为直接视觉参考，重新处理字体、构图、导航、成员及作品内页和共享手帐；保留已核实图片、资料、稳定 ID、评分、备注、观看状态与访问权限。v28 的纸色蓝灰方案及旧 Figma 不构成设计通过。主站仍 v186，更新仅限同一 owner-private QA。**Geenius 重新交审并获确认前不开始 TRACER，公共功能例外。** 过程见 `docs/codex/worklogs/20261024-geenius-official-redesign.md`。
 

@@ -8,6 +8,7 @@ import udttPosters from '../../data/udtt-video-posters.json';
 import vchaPosters from '../../data/vcha-video-posters.json';
 import iznaPosters from '../../data/izna-video-posters.json';
 import geeniusPosters from '../../data/geenius-video-posters.json';
+import spiaPosters from '../../data/spia-video-posters.json';
 import tracerPosters from '../../data/tracer-video-posters.json';
 
 export type VideoPoster = {
@@ -33,6 +34,8 @@ const retainedVideoPosters=[
 // Stage support is bounded to explicitly reviewed tuples; the caller also rejects clips.
 export function approvedVideoPoster(workId:string,videoId:string|null,view:'mv'|'stage'):VideoPoster|null{
  if(!videoId)return null;
+ const spia=spiaPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view);
+ if(spia)return spia;
  const tracer=tracerPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view);
  if(tracer)return tracer;
  const geenius=geeniusPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view);

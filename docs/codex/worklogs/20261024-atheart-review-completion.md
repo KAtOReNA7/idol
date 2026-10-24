@@ -4,7 +4,7 @@
 
 - 用户最新“同意，继续开发”确认 HITGS 新站 v2 网页，授权推进 AtHeart。本轮不开始下一团。
 - 基线 `b9e07d0855888d023327998f96d104f98fa67e94`，分支 `codex/atheart-review-completion`。开工工作树干净，显式 fetch 后 HEAD/FETCH_HEAD 一致；GitHub 未发现同任务分支或 PR。
-- 正式工程 `apps/idol-site/`；只更新新审阅站 `appgprj_6adc93a0d3008191a9ebeb5700dd2d0a`。当前 v2，owner-only/custom、唯一 owner、0 外部访客。旧审阅站 v33 与主站 v186 不改。
+- 正式工程 `apps/idol-site/`；只更新新审阅站 `appgprj_6adc93a0d3008191a9ebeb5700dd2d0a`。开工 v2，现已更新 v3，owner-only/custom、唯一 owner、0 外部访客。旧审阅站 v33 与主站 v186 不改。
 - 保留原图、稳定 ID、关系、个人字段和权限；公开投影清除个人字段，仅展示既有精确关系。两条具名作品保留，原生空白作品不赋名。
 
 ## 参考与设计决定
@@ -41,4 +41,13 @@
 
 ## 发布进度
 
-正在发布同一owner-private新站，正式主站v186和旧站v33不改。62个既有非root文件SHA不变，50新增文件，root仅新增AtHeart入口；临时figma-assets.html未打包。源码边界修正后重建，JS/CSS/HTML原字节不变，manifest已更新到最终源码hash后才发布。发布结果随后补记。
+已发布同一owner-private新站v3，正式主站v186和旧站v33未改。62个既有非root文件SHA不变，50新增文件，root仅新增AtHeart入口；临时figma-assets.html未打包。源码边界修正后重建，JS/CSS/HTML原字节不变，manifest已更新到最终源码hash后才发布。
+
+
+## 已发布结果与接续
+
+- [AtHeart v3审阅](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/atheart/index.html)；Sites成功部署 `appgdep_6adcb79147088191bf1d97a6324728bd`，version `appgprj_6adc93a0d3008191a9ebeb5700dd2d0a~appgver_965a4f52c8dc81918b2bef532acd2b9d`，source `6a8d36c2be0b4a78104b4f1d05dec15c1901ac54`。发布后get_site确认v3、custom/唯一owner、0外部访客。
+- 线上IAB导航完成并实际读取完整首页DOM，七成员、九发行入口、影像/时间轴导航可见；成员点击20秒超时，随后重新绑定读取40秒超时。不能推出点击成功、图片像素通过或线上完整交互通过。`open_in_codex`返回queued；用户可打开上述链接。
+- GitHub代码 `6e527a21f582fe0d9aad493025741f7f31bc59d0` 已推送；draft [PR #25](https://github.com/KAtOReNA7/idol/pull/25)，base为HITGS分支，未合并main。后续交接文档以远端最新HEAD为准。公开仓库，仅新增公开来源资料与原图，不加入秘密或新私有数据。
+- 本轮只交付AtHeart，等待用户确认网页后再开始下一团；设计、资料、功能、上线各自验收，不用测试/构建代替设计通过。27画板的完整字体/像素保真、真实保存/播放/原生缩放及线上完整流程继续待办。
+- 可复现：正式工程使用现有npm依赖；审阅构建命令见RESUME，输出到仓库外独立目录，用普通静态HTTP服务浏览。详细本地证据位于 `C:/Users/61919/.codex/visualizations/2026/10/23/01a1694f-9d8c-7f82-a9a8-1732f12fea0e/atheart/`；关键JSON证据已入GitHub。本轮自有服务4192及素材捕获headless Chrome在交接时关闭。

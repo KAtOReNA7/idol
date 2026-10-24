@@ -1,6 +1,18 @@
 # 项目协作入口
 
-## 最新执行决定：fromis_9 官网风格 v10 待确认（2026-10-25）
+## 最新执行决定：EVERGLOW 官网风格 v11 待确认（2026-10-25）
+
+用户“同意，继续开发”已确认 fromis_9 v10。本轮仅推进 EVERGLOW，依据实际查看的 [CHXXTA 艺人官网](https://www.chxxta.com/everglow)与[官方社区](https://everglow.bstage.in/)重写黑底、紫色原字标、官网窄体字及完整四人团照，弃用旧棕橙放映室视觉。当前四人与历来六人分开；六张单人照沿用具名旧 Weverse 原图，明确标注历史时期。16项发行 / 42条本团署名曲目行、10既有作品 / 19影像槽、58既有关联及13原事件保持。
+
+**团页视觉独立重写；路由、公开投影、搜索、原图恢复与手帐业务复用 fromis_9 v10 / IZ*ONE v8；共享手帐沿用布局并换黑紫配色。** 目录、搜索、时间轴和手帐是项目扩展，不称官网逐像素复刻，交审必须披露。
+
+同站 **v11 owner-private 只读审阅已发布**。31专项/回归、类型、正式构建、90项九宽布局与46交互通过。Figma33可编辑画板、七个关键节点完整取稿，三宽时间轴缩进已修；字体替代和完整像素保真未通过，自动capture仍pending。330旧非root文件SHA保持，root仅新增入口；旧站v33与主站v186未改。线上IAB已实际读到首页及成员目录，后续操作60秒/读取40秒超时；线上完整交互、真实保存/播放及80%/125%原生缩放未验。
+
+分支 `codex/everglow-review-completion` / draft [PR #29](https://github.com/KAtOReNA7/idol/pull/29)，冻结基线 `96f2f435554ce075d37a0fcec105ce6d75cca644`，正式工程 `apps/idol-site/`。[打开 EVERGLOW v11](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/everglow/index.html)。详见 `docs/codex/worklogs/20261025-everglow-review-completion.md`。
+
+**等待 EVERGLOW 网页确认后再开始下一团，公共功能例外。下方旧门槛均为历史。**
+
+## 历史执行决定：fromis_9 官网风格 v10（已确认，2026-10-25）
 
 用户“同意，继续开发”已确认 IZ*ONE Panorama v8。本轮仅推进 fromis_9，依据实际查看的 [现行日本官网](https://fromis9.fanpla.jp/)及[具名资料页](https://fromis9.fanpla.jp/news/2/)重写白底绿字、银色标识、Sansita 斜体与完整团照，弃用旧邮简视觉。五位当前成员与历来九人分开；三张历史照片来自旧 PLEDIS 官网，张圭悧仍明确缺图。27项发行 / 93条本团曲目行、16既有作品 / 31影像槽、120既有关联和19事件，原图与稳定 ID 保持。
 

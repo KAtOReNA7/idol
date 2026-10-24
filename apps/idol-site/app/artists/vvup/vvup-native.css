@@ -24,3 +24,5 @@
 .vvup-artist .artist-timeline .at-event h3{font-size:25px;line-height:1.5}
 .vvup-artist .artist-timeline .at-references{grid-column:2;font-size:14px;color:var(--vu-blue);margin-top:12px}
 @media(max-width:760px){.vvup-artist .vu-chapter-heading:has(+ [data-timeline-host]) h2{font-size:34px}.vvup-artist .artist-timeline .at-event{display:block}.vvup-artist .artist-timeline .at-event .at-when{font-size:14px;padding-top:0;margin-bottom:12px}.vvup-artist .artist-timeline .at-event h3{font-size:21px}.vvup-artist .artist-timeline .at-references{font-size:13px}}
+
+.vvup-artist .vu-video-preview{aspect-ratio:16/9;background:#17181b}.vvup-artist .vu-video-preview img{display:block;width:100%;height:100%;object-fit:contain}.vvup-artist .vu-video-preview+.vu-video-type{min-height:0;padding:12px;display:flex;gap:12px;align-items:center}.vvup-artist .vu-video-preview+.vu-video-type svg{width:18px;height:18px}

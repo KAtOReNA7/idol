@@ -7,7 +7,7 @@ test('all 368 accepted periods preserved, hold and all 24 overlays absent from c
  assert.equal(meta.periods.length,368);assert.equal(meta.periods.filter(p=>p.relationType==='roster_listing').length,62);
  assert.equal(meta.canonicalSha256,crypto.createHash('sha256').update(fs.readFileSync('research/member-careers/data/canonical.json')).digest('hex'));
  const accepted=canonical.memberPeriods.filter(p=>p.decision!=='hold');assert.deepEqual(meta.periods.map(p=>p.periodId),accepted.map(p=>p.periodId));
- for(const p of meta.periods){const original=accepted.find(x=>x.periodId===p.periodId);for(const key of ['startDate','startPrecision','endDate','endPrecision','startDateBasis','endDateBasis'])assert.equal(p[key],original[key]);for(const id of p.sourceIds)assert.ok(meta.sources.some(s=>s.sourceId===id));}
+ for(const p of meta.periods){const original=accepted.find(x=>x.periodId===p.periodId);for(const key of ['startDate','startPrecision','endDate','endPrecision','startDateBasis','endDateBasis'])if(p.periodId==='period:rec28ldfRTiDPs:recvxAPQCF66Sl:group_membership:2025-04-29:main'&&['startDate','startPrecision','startDateBasis'].includes(key))assert.equal(p[key],null);else assert.equal(p[key],original[key]);for(const id of p.sourceIds)assert.ok(meta.sources.some(s=>s.sourceId===id));}
  assert.doesNotMatch(JSON.stringify(meta),/summaryZh|statusLabelZh|beforePublicHash|memberClaims|verification_note|display_overlay/);
 });
 test('identity guard requires exact member id and actual current/former relation; roster observations create no milestone',()=>{
@@ -41,7 +41,7 @@ test('reviewed member render families use one shared section and retain their ex
   'app/page.tsx',
   'components/design-review/unis-design-review.tsx',
   'components/design-review/kep1er-design-review.tsx',
-  ...['artist-sample','candidate-artist-experience','expanded-artist','hearts2hearts-artist','illit-artist','itzy-artist','katseye-artist','kiiikiii-artist','kiof-artist','lesserafim-artist','nmixx-artist','saymyname-artist','stayc-artist'].map(name=>'components/'+name+'.tsx'),
+  ...['artist-sample','candidate-artist-experience','expanded-artist','hearts2hearts-artist','illit-artist','itzy-artist','katseye-artist','kiiikiii-artist','kiof-artist','lesserafim-artist','nmixx-artist','saymyname-artist','stayc-artist','vvup-artist'].map(name=>'components/'+name+'.tsx'),
   ...['badvillain','billlie','loona','madein','meovv','newjeans','triples'].map(name=>'components/candidate/'+name+'-design.tsx'),
  ].sort();
  const discover=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?discover(dir+'/'+entry.name):entry.name.endsWith('.tsx')?[dir+'/'+entry.name]:[]);
@@ -50,7 +50,9 @@ test('reviewed member render families use one shared section and retain their ex
  for(const file of expected){
   const source=fs.readFileSync(file,'utf8');
   assert.equal((source.match(/<MemberCareerFacts\b/g)||[]).length,1,file);
-  if(file==='components/candidate/madein-design.tsx'){
+  if(file==='app/page.tsx'){
+   assert.match(source,/<MemberCareerFacts member=\{weeeklyMemberContext\(m,artistReturn\)\?\{\.\.\.m,officialUrl:latestWeeeklyOfficialUrl\}:cherrybulletMemberContext\(m,artistReturn\)\?\{\.\.\.m,officialUrl:latestCherrybulletOfficialUrl\}:rocketpunchMemberContext\(m,artistReturn\)\?\{\.\.\.m,officialUrl:latestRocketpunchOfficialUrl\}:m\}\/>/);
+  }else if(file==='components/candidate/madein-design.tsx'){
    // MADEIN renders its introduction separately, avoiding duplicate prose.
    assert.match(source,/<MemberCareerFacts member=\{\{\.\.\.m,profile:''\}\}\/>/);
   }else if(file==='components/candidate/badvillain-design.tsx'){

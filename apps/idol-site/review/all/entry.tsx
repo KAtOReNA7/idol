@@ -21,7 +21,7 @@ const Page=slug&&pages[slug];
 const catalog=slug?payload.catalogs[slug]:payload.catalogs.all;
 document.title=(slug?payload.registry.find((g:{slug:string})=>g.slug===slug)?.name+' · ':'')+'全团只读审阅';
 createRoot(document.getElementById('root')!).render(<PublicAccessProvider canEdit={false}>
- <ArtistTimelineHostProvider value={{catalog,loading:false,error:'',serverRoute:path,navigate:(request,beforeLeave)=>{
+ <ArtistTimelineHostProvider value={{catalog,inputs:payload.timelines,loading:false,error:'',serverRoute:path,navigate:(request,beforeLeave)=>{
   const url=timelineRecordUrl(request);if(url&&request.returnTo===location.pathname+location.search&&beforeLeave())location.assign(url);
  }}}>
   {Page?<Page/>:path==='/'?<App/>:<main><h1>未找到这个团体</h1><a href="/?view=groups">返回团体索引</a></main>}

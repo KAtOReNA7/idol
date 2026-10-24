@@ -8,11 +8,13 @@ function bundled(file){
  const directory=fs.mkdtempSync(path.join(os.tmpdir(),'timeline-dependency-'));
  const output=path.join(directory,'module.cjs');
  esbuild.buildSync({entryPoints:[path.join(root,file)],bundle:true,outfile:output,platform:'node',format:'cjs',jsx:'automatic',external:['react','react/*'],loader:{'.css':'empty'},logLevel:'silent'});
- const result=require(output);cache.set(file,result);
+ const Module=require('node:module'),mod=new Module(output,module);mod.filename=output;mod.paths=module.paths;
+ mod._compile(fs.readFileSync(output,'utf8'),output);const result=mod.exports;cache.set(file,result);
  fs.rmSync(directory,{recursive:true,force:true});
  return result;
 }
 function timelineDependency(name){
+ if(/^\.\.\/\.\.\/data\/[a-z0-9-]+-navigation-keys\.json$/.test(name))return {default:JSON.parse(fs.readFileSync(path.join(root,name.slice(6)),'utf8'))};
  if(name==='../../data/izone-navigation-keys.json')return {default:JSON.parse(fs.readFileSync(path.join(root,'data/izone-navigation-keys.json'),'utf8'))};
  if(name==='../../data/katseye-navigation-keys.json')return {default:JSON.parse(fs.readFileSync(path.join(root,'data/katseye-navigation-keys.json'),'utf8'))};
  if(name==='./public-artist-route-keys')return bundled('lib/idol/public-artist-route-keys.ts');

@@ -12,7 +12,7 @@ test('official four portrait identities are distinct from the retained fifth his
  for(const [id,p] of Object.entries(content.portraits))assert.equal(editorial.members.find(m=>m.id===id).stageName.toLowerCase(),p.stageName.toLowerCase());
 });
 test('seven release associations retain exact video identity and unknown actual 4 Life date',()=>{
- assert.equal(releases.entries.length,7);assert.equal(releases.entries.filter(r=>r.image).length,3);
+ assert.equal(releases.entries.length,7);assert.equal(releases.entries.filter(r=>r.image).length,7);
  assert.equal(releases.entries.find(r=>r.id==='4-life').date,'');assert.match(releases.entries.find(r=>r.id==='4-life').note,/延期/);
  assert.equal(releases.entries.find(r=>r.id==='locked-on').date,'2024-04-01');
  assert.equal(releases.entries.find(r=>r.id==='doo-doom-chit').date,'2024-03-13');

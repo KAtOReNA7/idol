@@ -1,11 +1,14 @@
 # 跨会话派工与验收手册
 
-## 最新执行决定：SPIA 进行中（2026-10-24）
+## 最新执行决定：SPIA v32 待确认（2026-10-24）
 
-用户“同意，继续开发”已确认 W!TCHX v31。本轮仅推进 SPIA，分支 `codex/spia-review-completion`，起点 `88d9b3e4e40cc0ed3411b2067a1e8e250482108c`。独立官网线索无法访问，采用实际查看的 Deeeep 官方发行/公司宣传素材作视觉延展，交审披露参考与复用范围。保留原图、稳定 ID、评分、备注、观看状态、访问权限；主站仍 v186。交付见 `docs/codex/worklogs/20261024-spia-review-completion.md`。完成本团网页后等待确认再开始下一团。
+用户“同意，继续开发”已确认 W!TCHX v31。本轮 SPIA 已发布 **v32 owner-private 只读审阅**：五成员、两发行/四曲、四精确视频、五事件和既有手帐往返。未找到可访问独立官网，采用实际查看的《Deeeep》公司宣传素材作原创视觉延展；五人照片为 Kprofiles 具名转载，不能称官网原图。弃用旧 SPIA 蓝色期刊视觉。复用 **TRACER v30** 精确评分绑定/目录投影及 **W!TCHX v31** 导航、原图、恢复与只读机制；共享手帐沿用布局并换 SPIA 配色，交审明确披露。
 
+37 项专项/回归、类型、正式构建、45 项五宽布局、成员主流程和 28 个补充交互/恢复场景通过。Figma 33 个可编辑画板、8 个节点取稿及关键排布修复已完成，完整逐字像素对照待验。483 旧审阅文件 SHA 不变；为满足 256 MiB 限额，五张原 PNG 由公开 GitHub 固定提交提供，远端 SHA 一致，未压缩改图。线上导航/读取工具两次超时，线上渲染和交互未复验；真实保存/播放、80%/125% 原生缩放待验。
 
-## 最新执行决定：W!TCHX v31 待确认（2026-10-24）
+[打开 SPIA v32](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/spia/index.html) · draft [PR #21](https://github.com/KAtOReNA7/idol/pull/21)。分支 `codex/spia-review-completion`，起点 `88d9b3e4e40cc0ed3411b2067a1e8e250482108c`；主站仍 v186，未合并 main，原图/稳定 ID/用户字段/权限保持。**等待 SPIA 网页确认后再开始下一团，公共功能例外。** 详见 `docs/codex/worklogs/20261024-spia-review-completion.md`。
+
+## 历史决定：W!TCHX v31（已确认，2026-10-24）
 
 用户“同意，继续开发”已确认 TRACER v30。本轮 W!TCHX 已依据实际查看的 [K-POP MEDIA / IN MEDIA A&D 官网艺人区](https://kpopmedia.co.kr/#artists)重做黑青品红页面，发布 **v31 owner-private 只读审阅**：五成员、三发行/六曲、六精确视频、六事件及手帐往返。复用 **TRACER v30** 路由、原图查看器、只读机制与共享成员手帐布局/功能；团页视觉独立重写，团照沿用 Bugs 原图。目录、详情、搜索、时间轴与手帐属于官网语言的项目扩展。
 

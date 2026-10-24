@@ -1,6 +1,18 @@
-# 接续：IZ*ONE Panorama 重设计 v8 待确认
+# 接续：fromis_9 官网风格 v9 待确认
 
-## 最新执行决定：IZ*ONE Panorama 重设计 v8 待确认（2026-10-25）
+## 最新执行决定：fromis_9 官网风格 v9 待确认（2026-10-25）
+
+用户“同意，继续开发”已确认 IZ*ONE Panorama v8。本轮仅推进 fromis_9，依据实际查看的 [现行日本官网](https://fromis9.fanpla.jp/)及[具名资料页](https://fromis9.fanpla.jp/news/2/)重写白底绿字、银色标识、Sansita 斜体与完整团照，弃用旧邮简视觉。五位当前成员与历来九人分开；三张历史照片来自旧 PLEDIS 官网，张圭悧仍明确缺图。27项发行 / 93条本团曲目行、16既有作品 / 31影像槽、120既有关联和19事件，原图与稳定 ID 保持。
+
+**团页视觉独立重写；路由、公开投影、原图恢复复用 IZ*ONE v8 / i-dle v5；共享手帐沿用 IZ*ONE v8 布局并换白绿色和 Sansita。** 搜索、发行、影像、时间轴和手帐为项目功能扩展，不称官网逐像素复刻，交审必须披露。
+
+同站 **v9 owner-private 只读审阅已发布**。28专项/回归、类型、正式构建、90项九宽布局、56交互及桌面/手机8组线上核心流程通过；线上使用服务身份 Chrome，非用户 IAB 会话。Figma33可编辑画板、8个不同关键节点完整取稿，修复三宽时间轴缩进与手机手帐姓名换行；字体替代和完整像素保真仍待验，自动capture未回报完成。253旧非root文件SHA保持，root仅新增入口；旧站v33与主站v186未改。真实保存/播放、80%/125%原生缩放未验。
+
+分支 `codex/fromis9-review-completion`，冻结基线 `6ca25655ae08986a1823b7ca263ac860a2793862`，正式工程 `apps/idol-site/`。[打开 fromis_9 v9](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/fromis9/index.html)。详见 `docs/codex/worklogs/20261025-fromis9-review-completion.md`。
+
+**等待 fromis_9 网页确认后再开始 EVERGLOW 或下一团，公共功能例外。下方旧门槛均为历史。**
+
+## 历史执行决定：IZ*ONE Panorama 重设计 v8（已确认）（2026-10-25）
 
 用户明确否决 v6 奶油玫瑰/Bodoni 展册视觉。本轮依据 [Panorama 时期韩国官网存档](https://web.archive.org/web/20210103153505/http://iz-one.co.kr/)实际取得的 HTML、CSS、原字标、字体与具名原图重写黑银页面；[BLOOM*IZ 预告历史镜像](https://iz-one.co.kr/20191103/)和 [Melon 官方专题](https://www.melon.com/musicstory/inform.htm?mstorySeq=10961)为辅助参考。原存档浏览器停在 loading，不冒称完整原站加载成功；依据是实际读取的源码、资产及辅助页面。
 

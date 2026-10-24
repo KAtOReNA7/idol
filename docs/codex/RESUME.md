@@ -10,7 +10,7 @@
 
 ## 开工入口
 
-- 仓库 KAtOReNA7/idol，正式工程 `apps/idol-site/`，活动分支 `codex/idle-review-completion`，base `codex/atheart-review-completion`。以 GitHub 最新任务 HEAD 接续。
+- 仓库 KAtOReNA7/idol，正式工程 `apps/idol-site/`，活动分支 `codex/idle-review-completion`，base `codex/atheart-review-completion`。draft [PR #26](https://github.com/KAtOReNA7/idol/pull/26)，代码 `889fdcf` 已推送，以 GitHub 最新任务 HEAD 接续。
 - 先检查工作树，显式 fetch 活动分支并比较远端；默认 refspec 有限，不通过 reset/clean/force push 丢弃更改。
 - [本轮交接](worklogs/20261024-idle-review-completion.md)、[Figma索引](worklogs/20261024-idle-figma-frames.json)。保留原认可的 i-dle 视觉，不将功能补齐描述为按官网重设计。
 - 审阅构建 `node scripts/build-idle-review.mjs --out <仓库外独立绝对目录>`；63资产、28作品、23舞台、152已有关系，个人字段均清空。

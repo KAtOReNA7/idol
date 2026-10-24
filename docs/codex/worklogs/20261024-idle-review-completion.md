@@ -44,3 +44,5 @@
 - Sites source `2c14a4ff74c2e473fa4432c7cecc0b76a853f277`；归档SHA `4528392d492b9769da29c106372d562ba5f07dac5c2f8cb8a59ac1bd98bea290`，97,013,760 bytes / 183 files。文件保护证据见 `20261024-idle-public-delivery.json`。
 - GitHub PUBLIC 已再次核对；新增内容为公开资料、代码与清空个人字段的投影。修改文件凭证模式扫描无命中；原始快照/个人字段未改，无凭证或令牌入仓。
 - 4193自有本机审阅服务在交接时关闭。最终使用上方线上URL。当前停在本团网页确认，下一团尚未开工。
+
+- GitHub代码/证据提交 `889fdcf` 已推送；draft [PR #26](https://github.com/KAtOReNA7/idol/pull/26)，base为AtHeart分支。后续文档提交以远端最新HEAD为准。

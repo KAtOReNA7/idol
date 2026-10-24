@@ -13,6 +13,7 @@ function bundled(file){
  return result;
 }
 function timelineDependency(name){
+ if(name==='../../data/izone-navigation-keys.json')return {default:JSON.parse(fs.readFileSync(path.join(root,'data/izone-navigation-keys.json'),'utf8'))};
  if(name==='../../data/katseye-navigation-keys.json')return {default:JSON.parse(fs.readFileSync(path.join(root,'data/katseye-navigation-keys.json'),'utf8'))};
  if(name==='./public-artist-route-keys')return bundled('lib/idol/public-artist-route-keys.ts');
  if(['../../data/public-artist-navigation-keys.json','../../data/hearts2hearts-navigation-keys.json','../../data/idle-navigation-keys.json','../../data/ive-navigation-keys.json','../../data/billlie-navigation-keys.json','../../data/badvillain-navigation-keys.json','../../data/triples-navigation-keys.json','../../data/ive-soft-issue.json','../../data/badvillain-figma-public.json'].includes(name))return {default:JSON.parse(fs.readFileSync(path.join(root,name.replace('../../','')),'utf8'))};

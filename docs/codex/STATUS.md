@@ -25,7 +25,7 @@ v27修复补充：用户反馈的大片内容缺失已复现为广告拦截规�
 
 [打开 Geenius v28](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/geenius/index.html) · [本轮日志](worklogs/20261024-geenius-review-completion.md) · [接续入口](RESUME.md)。
 
-GitHub：`codex/geenius-review-completion`，以 `codex/adya-review-completion` 为PR基线，接续本分支最新远端HEAD。
+GitHub：`codex/geenius-review-completion`；代码与首轮交接提交 `48672554f2b9de6a6bbd22969aff7f7b16838737` 已推送；draft [PR #18](https://github.com/KAtOReNA7/idol/pull/18)，base为 `codex/adya-review-completion`。后续文档以本分支最新远端HEAD为准。
 
 ## 已核基线与交接入口
 

@@ -61,9 +61,8 @@
 
 ## 交接与待办
 
-GitHub已复核PUBLIC，本轮仅公开素材/代码/文档，没有扩大既有私有快照分享授权。提交/推送状态以此分支最新HEAD、RESUME及draft PR为准；PR base为ADYA，不合并main。
+GitHub已复核PUBLIC，本轮仅公开素材/代码/文档，没有扩大既有私有快照分享授权。代码与首轮交接提交 `48672554f2b9de6a6bbd22969aff7f7b16838737` 已推送；draft [PR #18](https://github.com/KAtOReNA7/idol/pull/18)，base为 `codex/adya-review-completion`。后续文档以本分支最新远端HEAD为准。 未合并main。
 
 复现审阅：在 `apps/idol-site` 运行 `node scripts/build-geenius-review.mjs --out <仓库外独立目录>`，静态服务打开 `/artists/geenius/index.html`。正式开发使用现有工程脚本。
 
 待办分层：Geenius网页人工确认；线上已登录浏览器交互；真实保存/播放；80%/125%原生浏览器缩放；Figma剩余字体/标记/控件细节；MV个人截图与未证实发行素材。不能用本轮测试或发布成功推定这些项目通过。**Geenius确认后才推进TRACER，公共功能例外。**
-

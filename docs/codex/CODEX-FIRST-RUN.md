@@ -8,4 +8,3 @@
 - 保留原图、稳定ID、评分/备注/观看和owner-only边界。主站仍v186，不merge main。
 - 先显式fetch目标分支再比较，不reset/clean/force push；origin可能仅有旧分支refspec。
 - 每轮代码、worklog与公开证据一起推送，不能把本地结果记为线上完成。
-

@@ -1,6 +1,14 @@
 # 共享开发状态
 
-## 最新执行决定：TRACER v30 已发布，待网页确认（2026-10-24）
+## 最新执行决定：W!TCHX v31 待确认（2026-10-24）
+
+用户“同意，继续开发”已确认 TRACER v30。本轮 W!TCHX 已依据实际查看的 [K-POP MEDIA / IN MEDIA A&D 官网艺人区](https://kpopmedia.co.kr/#artists)重做黑青品红页面，发布 **v31 owner-private 只读审阅**：五成员、三发行/六曲、六精确视频、六事件及手帐往返。复用 **TRACER v30** 路由、原图查看器、只读机制与共享成员手帐布局/功能；团页视觉独立重写，团照沿用 Bugs 原图。目录、详情、搜索、时间轴与手帐属于官网语言的项目扩展。
+
+44测试、类型、正式构建、45项五宽真视口布局、完整主流程、8恢复/广告规则场景、16成员/视频补查通过。Figma 27个可编辑画板及12个节点完整取稿已完成，全部逐字像素对照仍待验。452个旧审阅文件SHA不变。线上自动导航和读取超时，只见tab标题/URL，不能宣称线上渲染或交互通过；真实保存/播放、80%/125%原生缩放待验。原图、稳定ID、用户字段和权限保持；公开视频尚未接入评分手帐，不给原生空白作品赋名。
+
+分支 `codex/witchx-review-completion`，起点 `7b9bcdb32a1c589e4cf0cfd9a8d10c1852edfa07`，主站仍v186，未合并main。[打开 W!TCHX v31](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/witchx/index.html)。**等待本团网页确认后再开始下一团，公共功能例外。** 详见 `docs/codex/worklogs/20261024-witchx-review-completion.md`。沿用仓库设计继续在交审时披露版本、范围及官网差异。
+
+## 历史决定：TRACER v30（现已确认）
 
 用户“同意，继续开发”已确认 Geenius 官网重设计 v29。本轮 TRACER 已按实际查看的 [GLEAMMEDIA 官网艺人页](https://www.gleammedia.co.kr/artist)重新设计，发布 **v30 owner-private 审阅**：四份成员档案、一项发行/两曲、两个精确视频、三个事件及已有手帐往返。白底玫红、官方横幅/银色标识和成员图取自官网语言；弃用旧信号控制台视觉，复用路由、原图查看器、只读审阅与共享手帐功能，目录/时间轴/手帐属于官网风格的项目扩展。
 
@@ -39,9 +47,9 @@ v27修复补充：用户反馈的大片内容缺失已复现为广告拦截规�
 
 更新：北京时间2026-10-24。
 
-[打开 TRACER v30](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/tracer/index.html) · [本轮日志](worklogs/20261024-tracer-review-completion.md) · [接续入口](RESUME.md)。
+[打开 W!TCHX v31](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/witchx/index.html) · [本轮日志](worklogs/20261024-witchx-review-completion.md) · [接续入口](RESUME.md)。
 
-GitHub：`codex/tracer-review-completion`，base 为 `codex/geenius-review-completion`；代码与交接以该任务分支最新远端 HEAD 为准。draft [PR #19](https://github.com/KAtOReNA7/idol/pull/19)，代码提交 `3dca0012bd6f809270d82ec019085a0b229c5110` 已推送。
+GitHub：`codex/witchx-review-completion`，draft [PR #20](https://github.com/KAtOReNA7/idol/pull/20)，base `codex/tracer-review-completion`；代码提交 `b9008f36e2cb67330d425366dd4fd8af36c3138b` 已推送。后续交接以任务分支最新远端HEAD为准。
 
 ## 已核基线与交接入口
 
@@ -72,15 +80,17 @@ GitHub：`codex/tracer-review-completion`，base 为 `codex/geenius-review-compl
 | ODD YOUTH | 蓝白相册 v25 已获用户页面确认 | 真实保存/播放、原生缩放及Figma共享壳细节等历史未验项保留 |
 | ADYA | 黑底朱红独立页；v27已获用户页面确认 | 线上交互、真实保存/播放、原生缩放及共享手帐Figma仍待验；见本轮日志 |
 | Geenius | HOMe 官网风格 v29 已获用户确认；v28旧视觉已否决 | 历史线上交互、真实保存/播放、缩放和Figma细节待办保留 |
-| TRACER | GLEAMMEDIA 官网风格 v30 私有审阅已发布，待网页确认 | 28测试、45布局、30个可编辑Figma画板；线上首页/成员目录/希真详情已验证，完整流程和真实保存/播放待验 |
+| TRACER | GLEAMMEDIA 官网风格 v30 已获用户确认 | 28测试、45布局、30个可编辑Figma画板；线上首页/成员目录/希真详情已验证，完整流程和真实保存/播放待验 |
+| W!TCHX | 公司官网黑青品红v31已发布，待网页确认 | 44测试、45布局、27可编辑Figma画板；线上浏览器、真实保存/播放和缩放待验 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
 | Sol | 本轮已收官，最终反馈已归档 [SOL-HANDOFF](SOL-HANDOFF.md) | 13:38形成、13:53主会话完整读取；不等于全部团体产品验收通过 |
 
 ## 下一里程碑与任务索引
 
-从 [RESUME](RESUME.md) 开始，显式 fetch `codex/tracer-review-completion` 最新远端 HEAD。TRACER v30 等待网页确认，确认前不开始 W!TCHX；公共功能例外。
+从 [RESUME](RESUME.md) 开始，显式 fetch `codex/witchx-review-completion` 最新远端 HEAD。W!TCHX v31 等待网页确认，确认前不开始下一团；公共功能例外。
 
-- [TRACER 官网风格原生页与 v30](worklogs/20261024-tracer-review-completion.md)：当前轮次，待网页确认。
+- [W!TCHX 官网风格原生页与 v31](worklogs/20261024-witchx-review-completion.md)：当前轮次，待网页确认。
+- [TRACER 官网风格原生页与 v30](worklogs/20261024-tracer-review-completion.md)：已获用户确认。
 - [Geenius 官网重设计 v29](worklogs/20261024-geenius-official-redesign.md)：已获用户确认；v28旧设计已否决。
 
 - [Candy Shop 原生完善](worklogs/20261024-candyshop-review-completion.md)：历史轮次，v23已获页面确认。

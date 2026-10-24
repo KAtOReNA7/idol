@@ -1,7 +1,5 @@
-import Design from '@/components/candidate/hitgs-design';
-import content from '@/data/hitgs-artist.json';
-import './hitgs-artist.css';
+import HitgsArtist from '@/components/hitgs-artist';
 
 export default function Page() {
- return <Design content={content}/>;
+ return <HitgsArtist/>;
 }

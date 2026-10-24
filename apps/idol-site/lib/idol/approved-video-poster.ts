@@ -7,6 +7,7 @@ import kconStagePhotos from '../../data/day19-kcon-stage-photos.json';
 import udttPosters from '../../data/udtt-video-posters.json';
 import vchaPosters from '../../data/vcha-video-posters.json';
 import iznaPosters from '../../data/izna-video-posters.json';
+import geeniusPosters from '../../data/geenius-video-posters.json';
 
 export type VideoPoster = {
  src:string;
@@ -31,6 +32,8 @@ const retainedVideoPosters=[
 // Stage support is bounded to explicitly reviewed tuples; the caller also rejects clips.
 export function approvedVideoPoster(workId:string,videoId:string|null,view:'mv'|'stage'):VideoPoster|null{
  if(!videoId)return null;
+ const geenius=geeniusPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view);
+ if(geenius)return geenius;
  const izna=iznaPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view);
  if(izna)return izna;
  const udtt=udttPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view);

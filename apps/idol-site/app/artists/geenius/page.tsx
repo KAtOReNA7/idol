@@ -1,5 +1,3 @@
-import Design from '@/components/candidate/geenius-design';
+import GeeniusArtist from '@/components/geenius-artist';
 import content from '@/data/geenius-artist.json';
-import './geenius-artist.css';
-
-export default function Page(){return <Design content={content}/>;}
+export default function Page(){return <GeeniusArtist content={content}/>;}

@@ -1,6 +1,18 @@
 # 共享开发状态
 
-## 最新执行决定：ADYA（2026-10-24，v27待确认）
+## 最新用户决定：Geenius 官网重设计 v29 待确认（2026-10-24）
+
+用户明确否决 Geenius v28 的仓库既有视觉，仅认可图片。本轮继续 `codex/geenius-review-completion` / PR #18，以 https://www.geeniushome.com/geenius 为直接视觉参考，重新处理字体、构图、导航、成员及作品内页和共享手帐；保留已核实图片、资料、稳定 ID、评分、备注、观看状态与访问权限。v28 的纸色蓝灰方案及旧 Figma 不构成设计通过。主站仍 v186，更新仅限同一 owner-private QA。**Geenius 重新交审并获确认前不开始 TRACER，公共功能例外。** 过程见 `docs/codex/worklogs/20261024-geenius-official-redesign.md`。
+
+v29 官网风格重设计已发布，27 个可编辑 Figma 画板已同步；39 项专项/回归、类型、正式构建和 45 项真实视口布局通过。394 个其他团审阅文件 SHA 不变。线上 IAB 导航超时，真实保存/播放和原生缩放仍未验，等待本轮网页确认。
+
+**长期交审规则：此后任何团体若沿用仓库已有设计，必须在交给用户审核的消息中明确说明沿用了哪一版/哪些部分，同时给出实际参考官网及差异；不能将旧设计沿用描述为按官网重新设计。** 用户此次要求不授权重做已确认的其他团。
+
+## 历史交付：Geenius v28（视觉已被用户否决）
+
+用户在 ADYA v27 修复后回复“同意，继续开发”，已确认 ADYA。本轮 Geenius 纸色蓝灰页面及 owner-private QA **v28** 已发布：五人成员、三项发行、七个精确视频、四事件与已有手帐往返。39项专项/导航回归、类型、正式构建、45项五宽布局和12个交互/恢复/广告规则场景通过。Figma有27个可编辑画板（含共享手帐）及16个图片组件；字体度量、少数标记/控件细节仍待逐板对照。线上导航及读取自动化超时，仅标签页标题/地址可见；真实保存/播放、80%/125%原生缩放未验。**等待 Geenius 网页确认后再开始 TRACER，公共功能例外。** 分支 `codex/geenius-review-completion`，主站仍v186；原图、稳定ID、评分、备注、观看状态和权限保持。详见 `docs/codex/worklogs/20261024-geenius-review-completion.md`。下方旧门槛为历史。
+
+## 历史执行决定：ADYA（v27 已获确认）
 
 用户“同意，继续开发”已确认 ODD YOUTH v25。本轮 ADYA 原生黑底朱红页面及 owner-private QA **v27** 已发布：五人成员、五发行、六独立视频、五事件与已有手帐往返。49项专项/回归、类型、正式构建、45项五宽布局和10个综合交互场景通过。Figma已建立24个可编辑画板并校正关键首屏/内页；共享手帐画板和完整逐字间距对照仍待同步。线上首页已打开，成员点击自动化超时，不能据此宣称线上交互全过；真实保存/播放和80%/125%原生缩放待验。**等待 ADYA 网页确认后再开始下一团，公共功能例外。** 分支 `codex/adya-review-completion`，主站仍v186；原图、稳定ID、评分、备注、观看状态和访问权限保持。详见 `docs/codex/worklogs/20261024-adya-review-completion.md`。下方旧门槛为历史。
 
@@ -19,9 +31,9 @@ v27修复补充：用户反馈的大片内容缺失已复现为广告拦截规�
 
 更新：北京时间2026-10-24。
 
-[打开 ADYA v27](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/adya/index.html) · [本轮日志](worklogs/20261024-adya-review-completion.md) · [接续入口](RESUME.md)。
+[打开 Geenius v29](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/geenius/index.html) · [本轮日志](worklogs/20261024-geenius-official-redesign.md) · [接续入口](RESUME.md)。
 
-GitHub：`codex/adya-review-completion`；draft [PR #17](https://github.com/KAtOReNA7/idol/pull/17)，代码 `46e14b4ba9a3cb0135473652287b52a835d30781` 已推送；接续以本分支最新远端HEAD为准。PR以 `codex/oddyouth-review-completion` 为基线。
+GitHub：`codex/geenius-review-completion`；官网重设计与交接以活动分支远端最新 HEAD 为准；v28 视觉已被否决；draft [PR #18](https://github.com/KAtOReNA7/idol/pull/18)，base为 `codex/adya-review-completion`。后续文档以本分支最新远端HEAD为准。
 
 ## 已核基线与交接入口
 
@@ -50,13 +62,16 @@ GitHub：`codex/adya-review-completion`；draft [PR #17](https://github.com/KAtO
 | BEWAVE | v22 页面已获用户确认 | 历史未验项保留 |
 | Candy Shop | 独立粉紫唱片设计；v23已获用户确认 | [打开页面](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/candyshop/index.html)；线上交互、真实保存/播放和原生缩放待验 |
 | ODD YOUTH | 蓝白相册 v25 已获用户页面确认 | 真实保存/播放、原生缩放及Figma共享壳细节等历史未验项保留 |
-| ADYA | 黑底朱红独立页；v27私有审阅已发布，待网页确认 | 线上交互、真实保存/播放、原生缩放及共享手帐Figma仍待验；见本轮日志 |
+| ADYA | 黑底朱红独立页；v27已获用户页面确认 | 线上交互、真实保存/播放、原生缩放及共享手帐Figma仍待验；见本轮日志 |
+| Geenius | 纸色蓝灰独立页；v28私有审阅已发布，待网页确认 | 39测试、45布局与12场景通过；线上交互、真实保存/播放、缩放、Figma细节和MV认人截图仍待验 |
 | Astra | 已收官 | 不代表15团全部设计/上线通过 |
 | Sol | 本轮已收官，最终反馈已归档 [SOL-HANDOFF](SOL-HANDOFF.md) | 13:38形成、13:53主会话完整读取；不等于全部团体产品验收通过 |
 
 ## 下一里程碑与任务索引
 
-从 [RESUME](RESUME.md) 开始，检出 `codex/adya-review-completion` 最新远端HEAD。ADYA v27等待网页确认，确认前不开始Geenius；公共功能例外。
+从 [RESUME](RESUME.md) 开始，检出 `codex/geenius-review-completion` 最新远端HEAD。Geenius v28等待网页确认，确认前不开始TRACER；公共功能例外。
+
+- [Geenius 原生完善与v28](worklogs/20261024-geenius-review-completion.md)：当前轮次，待网页确认。
 
 - [Candy Shop 原生完善](worklogs/20261024-candyshop-review-completion.md)：历史轮次，v23已获页面确认。
 - [BEWAVE 原生完善](worklogs/20261024-bewave-review-completion.md)：历史轮次，v22已获页面确认。

@@ -1,5 +1,3 @@
-import Design from '@/components/candidate/witchx-design';
+import WitchxArtist from '@/components/witchx-artist';
 import content from '@/data/witchx-artist.json';
-import './witchx-artist.css';
-
-export default function Page(){return <Design content={content}/>;}
+export default function Page(){return <WitchxArtist content={content}/>;}

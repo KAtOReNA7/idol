@@ -86,4 +86,6 @@ node scripts/build-everglow-review.mjs --out <仓库外绝对scratch路径>
 
 GitHub实际public，用户已授权的既有快照分享范围保持；新增内容仅公开资料/原图/代码与验证证据，无新增个人数据或凭证。代码和本日志一起提交，推送独立分支，draft PR基于 `codex/fromis9-review-completion`，未合main。
 
+代码提交 `2bb403d7b58a67b931c83655763145b96be11ece` 已推送；draft [PR #29](https://github.com/KAtOReNA7/idol/pull/29) 已创建并附加本会话。后续文档HEAD以远端分支为准。
+
 **等待用户审阅EVERGLOW v11；确认前不开始下一团，公共功能例外。** 下轮先fetch最新远端并读取本分支HEAD及PR；设计、资料、功能、上线分别验收。未验的线上完整交互、真实保存/播放、原生缩放及Figma字体/像素对照保留为待办，不继承其他团结论。

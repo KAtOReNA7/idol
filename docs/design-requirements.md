@@ -8,7 +8,7 @@
 
 同站 **v11 owner-private 只读审阅已发布**。31专项/回归、类型、正式构建、90项九宽布局与46交互通过。Figma33可编辑画板、七个关键节点完整取稿，三宽时间轴缩进已修；字体替代和完整像素保真未通过，自动capture仍pending。330旧非root文件SHA保持，root仅新增入口；旧站v33与主站v186未改。线上IAB已实际读到首页及成员目录，后续操作60秒/读取40秒超时；线上完整交互、真实保存/播放及80%/125%原生缩放未验。
 
-分支 `codex/everglow-review-completion`，冻结基线 `96f2f435554ce075d37a0fcec105ce6d75cca644`，正式工程 `apps/idol-site/`。[打开 EVERGLOW v11](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/everglow/index.html)。详见 `docs/codex/worklogs/20261025-everglow-review-completion.md`。
+分支 `codex/everglow-review-completion` / draft [PR #29](https://github.com/KAtOReNA7/idol/pull/29)，冻结基线 `96f2f435554ce075d37a0fcec105ce6d75cca644`，正式工程 `apps/idol-site/`。[打开 EVERGLOW v11](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/everglow/index.html)。详见 `docs/codex/worklogs/20261025-everglow-review-completion.md`。
 
 **等待 EVERGLOW 网页确认后再开始下一团，公共功能例外。下方旧门槛均为历史。**
 

@@ -38,3 +38,9 @@ test('Lu Yuting biography uses a dated interview without inventing a precise joi
  const row=runtime.periods.find(p=>p.periodId===rows[0].periodId);
  assert.deepEqual(runtime.eventSets[row.eventSet].events,rows[0].events);
 });
+
+test('new supplement photos keep original bytes and historical VVUP identity cannot cross groups',()=>{
+ for(const slug of ['vvup','saymyname','fromis9','itzy'])for(const p of JSON.parse(fs.readFileSync('data/'+slug+'-review-supplements.json')).assets){const b=fs.readFileSync('public'+p.url);assert.equal(b.length,p.bytes);assert.equal(createHash('sha256').update(b).digest('hex'),p.sha256);}
+ const {vvupMemberPortrait}=load('lib/idol/vvup-photos.ts');const m={id:'recvxAPQCFN2Tn',stageName:'Hyunny',groupIds:[],formerGroupIds:['rec28ldfRTiD8K']};const route='/artists/vvup?section=members&member='+m.id+'&roster=history';
+ assert.match(vvupMemberPortrait(m,route).label,/历史/);assert.equal(vvupMemberPortrait(m,'/artists/fromis9'),null);assert.equal(vvupMemberPortrait({...m,id:'wrong'},route),null);assert.equal(vvupMemberPortrait({...m,stageName:'other'},route),null);assert.equal(vvupMemberPortrait({...m,formerGroupIds:[]},route),null);
+});

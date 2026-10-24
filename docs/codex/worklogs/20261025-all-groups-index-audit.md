@@ -39,3 +39,10 @@
 - 索引51入口逐一点击，落到51个不同的真实团页；搜索Geenius只返回1卡，清空恢复51卡；390px索引无溢出或坏图。索引fallback肖像同步当前团资料，保留历史照片说明。
 - 新站登记为 `appgprj_6add2704bc6c81918d3e0e2f13130422`，预期域名 `idol-all-groups-review-oct25.wuke40758.chatgpt.site`；当前尚未发布，不代表上线验收。旧站与主站v186保持。
 - 原图发布策略：公开原图使用已推送GitHub固定提交；UDTT十张受保护原图仅随owner-private包交付，陆雨婷使用独立具名历史照，错误旧头像排除。izna/ifeye shadow渲染器使用同一白名单资产元数据，仅在审阅构建替换传输URL，不修改生产身份/hash验证。
+
+## 最终补查发现
+
+- 手帐往返暴露Hyunny只在团页有新图：补充VVUP历史上下文精确绑定，非法团体/成员/艺名组合拒绝。ITZY五成员此前依赖API媒体，在独立审阅站显示错误占位；初始img扫描未捕捉已被占位替换的图片，已扩大检查范围。下载既有具名JYP URL的5张原始JPEG，逐图查看，保留previousImage身份；团页与共享手帐均接入。未改设计或私人媒体记录。
+- 远端模式发现React keyed/spread图片走createElement绕过叶子JSX重写；将传输地址在上层图片组件props转换，tripleS等已恢复。UDTT受保护照片等待viewer完成后9首页图片全部实际解码。
+- 最终集中测试111/111通过，无跳过；类型/正式构建正在最后复验。完整公开问题清单见 `docs/codex/all-groups-audit-20261025.md`，列42张新增公开原图、133个关系待核作品、14 hold事件及其他未验边界。
+- Sites source helper初次Git使用失效本机代理失败，未完成push或部署；仅在独立Site checkout将http.proxy设为已验证的127.0.0.1:7877，再使用同一Site身份重试。没有创建新凭证绕过访问限制。

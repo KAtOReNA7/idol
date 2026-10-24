@@ -5,8 +5,8 @@
     "eyebrow": "MEOVV / THEBLACKLABEL",
     "headline": "AFTER\nHOURS.",
     "hero": {
-      "image": "/artist/meovv/group-official.jpg",
-      "caption": "MEOVV · 官方合照",
+      "image": "/artist/meovv/figma-20261017/group-spotify-hero.jpg",
+      "caption": "MEOVV · 团体页面主视觉",
       "sourceUrl": "https://en.tblshop.com/meovv/profile.html",
       "scopeLabel": "官方团体视觉"
     },
@@ -43,14 +43,29 @@
       }
     },
     "palette": {
-      "bg": "#111615",
-      "panel": "#242d29",
-      "ink": "#f2f1e8",
-      "muted": "#a5b0a7",
-      "line": "#303834",
-      "accent": "#d7f645"
+      "bg": "#faf8f6",
+      "panel": "#faf8f6",
+      "ink": "#222323",
+      "muted": "#222323",
+      "line": "#111212",
+      "accent": "#111212"
     },
-    "variant": "noir"
+    "variant": "page",
+    "font": {
+      "display": "Arial",
+      "body": "Arial"
+    },
+    "designSource": {
+      "component": "components/candidate/meovv-design.tsx",
+      "css": [
+        "app/artists/meovv/meovv-artist.css",
+        "components/candidate/meovv-figma-design.css"
+      ],
+      "references": [
+        "https://en.tblshop.com/meovv/profile.html"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiCpp": {
     "slug": "izna",
@@ -58,8 +73,8 @@
     "eyebrow": "IZNA / 开场之后",
     "headline": "在下一束光里。",
     "hero": {
-      "image": "/artist/izna/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "WAKEONE 官方 izna 资料照 · 官网展示版本；拍摄日期未确认",
+      "image": "/artist/izna/batch-b-20261016/group-original.png",
+      "caption": "izna · 团体页面主视觉",
       "sourceUrl": "https://wake-one.com/en/artists/izna/",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
@@ -108,14 +123,28 @@
       }
     },
     "palette": {
-      "bg": "#f7f0e4",
-      "panel": "#fffaf2",
-      "ink": "#22201f",
-      "muted": "#6c5f56",
-      "line": "#d7c8b7",
-      "accent": "#ad351e"
+      "bg": "#090e1d",
+      "panel": "#090e1d",
+      "ink": "#f5f4f7",
+      "muted": "#f5f4f7",
+      "line": "#ded0ec",
+      "accent": "#ded0ec"
     },
-    "variant": "editorial"
+    "variant": "page",
+    "font": {
+      "display": "Helvetica Neue",
+      "body": "Helvetica Neue"
+    },
+    "designSource": {
+      "component": "components/izna/editorial.tsx",
+      "css": [
+        "public/artist/izna/native-v3/izna.css"
+      ],
+      "references": [
+        "https://wake-one.com/en/artists/izna/"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiCtw": {
     "slug": "triples",
@@ -124,7 +153,7 @@
     "headline": "多一种组合，\n多一条听歌路线。",
     "hero": {
       "image": "/artist/triples/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "tripleS 日本官网团体资料照 · 拍摄日期及本次图片阵容时期未确认",
+      "caption": "tripleS · 团体页面主视觉",
       "sourceUrl": "https://www.triples-official.jp/profile/",
       "scopeLabel": "官网团体资料照 · 阵容时期未确认"
     },
@@ -275,14 +304,28 @@
       }
     },
     "palette": {
-      "bg": "#ececf1",
-      "panel": "#fafaff",
-      "ink": "#242336",
-      "muted": "#626175",
-      "line": "#c5c5d3",
-      "accent": "#5444ab"
+      "bg": "#eeefea",
+      "panel": "#eeefea",
+      "ink": "#16242b",
+      "muted": "#16242b",
+      "line": "#07506a",
+      "accent": "#07506a"
     },
-    "variant": "grid"
+    "variant": "page",
+    "font": {
+      "display": "CandidateTriples",
+      "body": "Arial"
+    },
+    "designSource": {
+      "component": "components/candidate/triples-design.tsx",
+      "css": [
+        "app/artists/triples/triples-artist.css"
+      ],
+      "references": [
+        "https://www.triples-official.jp/profile/"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiCzI": {
     "slug": "madein",
@@ -291,7 +334,7 @@
     "headline": "把每一页，\n留给新的开始。",
     "hero": {
       "image": "/artist/madein/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "MADEIN 日本官网首页资料照 · 画面为四人，不据此覆盖六人资料页或历史七人档案",
+      "caption": "MADEIN · 团体页面主视觉",
       "sourceUrl": "https://www.madein-official.net/",
       "scopeLabel": "官网四人资料照 · 阵容另见详情"
     },
@@ -334,14 +377,28 @@
       }
     },
     "palette": {
-      "bg": "#efe9dc",
-      "panel": "#faf7ef",
-      "ink": "#243747",
-      "muted": "#677078",
-      "line": "#c6c5ba",
-      "accent": "#344e71"
+      "bg": "#faf8f6",
+      "panel": "#faf8f6",
+      "ink": "#241d25",
+      "muted": "#241d25",
+      "line": "#9c171d",
+      "accent": "#9c171d"
     },
-    "variant": "soft"
+    "variant": "page",
+    "font": {
+      "display": "Noto Sans SC",
+      "body": "Noto Sans SC"
+    },
+    "designSource": {
+      "component": "components/candidate/madein-design.tsx",
+      "css": [
+        "app/artists/madein/madein-artist.css"
+      ],
+      "references": [
+        "https://www.madein-official.net/"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiCGa": {
     "slug": "ifeye",
@@ -349,8 +406,8 @@
     "eyebrow": "IFEYE / 观察日记",
     "headline": "把目光，\n交给这一刻。",
     "hero": {
-      "image": "/artist/ifeye/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "HI-HAT 官方 ifeye 资料照 · 画面为五人；与六人具名资料卡分开，拍摄日期未确认",
+      "image": "/artist/ifeye/batch-b-20261016/group-display.jpg",
+      "caption": "ifeye · 团体页面主视觉",
       "sourceUrl": "https://www.hihat.co.kr/eng/artist/458",
       "scopeLabel": "官网五人资料照 · 拍摄日期未确认"
     },
@@ -393,14 +450,28 @@
       }
     },
     "palette": {
-      "bg": "#f0f1e8",
-      "panel": "#fcfcf6",
-      "ink": "#283e35",
-      "muted": "#67756b",
-      "line": "#c9d2c5",
-      "accent": "#426b4b"
+      "bg": "#fffefa",
+      "panel": "#fffefa",
+      "ink": "#222720",
+      "muted": "#222720",
+      "line": "#8a781b",
+      "accent": "#8a781b"
     },
-    "variant": "editorial"
+    "variant": "page",
+    "font": {
+      "display": "Noto Sans SC",
+      "body": "Noto Sans SC"
+    },
+    "designSource": {
+      "component": "components/ifeye/editorial.tsx",
+      "css": [
+        "public/artist/ifeye/native-v3/ifeye.css"
+      ],
+      "references": [
+        "https://www.hihat.co.kr/eng/artist/458"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiCKv": {
     "slug": "genblue",
@@ -408,8 +479,8 @@
     "eyebrow": "GENBLUE / 海岸坐标",
     "headline": "沿着蓝色，\n向下一首出发。",
     "hero": {
-      "image": "/artist/genblue/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "天空娱乐官方 GENBLUE 团体资料照 · 拍摄日期未确认",
+      "image": "/artist/genblue/batch-b-20261016/group-display.jpg",
+      "caption": "GENBLUE · 团体页面主视觉",
       "sourceUrl": "https://www.tenentcorp.com/pages/genblue",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
@@ -452,14 +523,28 @@
       }
     },
     "palette": {
-      "bg": "#e9f4f4",
-      "panel": "#faffff",
-      "ink": "#10374a",
-      "muted": "#547584",
-      "line": "#b7d6dc",
-      "accent": "#006989"
+      "bg": "#f3f5f7",
+      "panel": "#f3f5f7",
+      "ink": "#142242",
+      "muted": "#142242",
+      "line": "#1746aa",
+      "accent": "#1746aa"
     },
-    "variant": "grid"
+    "variant": "page",
+    "font": {
+      "display": "GenblueDisplay",
+      "body": "GenblueText"
+    },
+    "designSource": {
+      "component": "components/genblue/bluecut-experience.tsx",
+      "css": [
+        "components/genblue/bluecut.css"
+      ],
+      "references": [
+        "https://www.tenentcorp.com/pages/genblue"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiCOB": {
     "slug": "rescene",
@@ -468,20 +553,34 @@
     "headline": "这一幕，\n值得再看一次。",
     "hero": {
       "image": "/artist/rescene/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "THE MUZE 官方 RESCENE 团体资料照 · 拍摄日期未确认",
+      "caption": "RESCENE · 团体页面主视觉",
       "sourceUrl": "https://themuze.kr/rescene",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
     "portraits": {},
     "palette": {
       "bg": "#f3edf3",
-      "panel": "#fffbff",
+      "panel": "#f3edf3",
       "ink": "#3c2945",
-      "muted": "#7b657c",
-      "line": "#d5c6d8",
+      "muted": "#3c2945",
+      "line": "#77537f",
       "accent": "#77537f"
     },
-    "variant": "editorial"
+    "variant": "page",
+    "font": {
+      "display": "CandidateRescene",
+      "body": "Noto Sans SC"
+    },
+    "designSource": {
+      "component": "components/candidate/rescene-design.tsx",
+      "css": [
+        "app/artists/rescene/rescene-artist.css"
+      ],
+      "references": [
+        "https://themuze.kr/rescene"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiCWc": {
     "slug": "unis",
@@ -490,7 +589,7 @@
     "headline": "下一站，\n再听一遍。",
     "hero": {
       "image": "/artist/unis/batch-c-20261016/c-task01-unis-swicy-group.display.webp",
-      "caption": "UNIS · SWICY 八人历史宣传照，发布于 2025-04-01；拍摄日期未注明，不代表当前活动阵容。",
+      "caption": "UNIS · 团体页面主视觉",
       "sourceUrl": "https://www.unv-jp.com/ja/articles/dJPdStB6njkXP8nwfksZmE",
       "scopeLabel": "SWICY 八人历史宣传照 · 非当前阵容证明"
     },
@@ -545,14 +644,28 @@
       }
     },
     "palette": {
-      "bg": "#fff8de",
-      "panel": "#fffdf2",
-      "ink": "#263142",
-      "muted": "#7a6e47",
-      "line": "#ded1a1",
-      "accent": "#8b6200"
+      "bg": "#ffffff",
+      "panel": "#ffffff",
+      "ink": "#111a32",
+      "muted": "#111a32",
+      "line": "#234df2",
+      "accent": "#234df2"
     },
-    "variant": "soft"
+    "variant": "page",
+    "font": {
+      "display": "UNISDisplay",
+      "body": "UNISBody"
+    },
+    "designSource": {
+      "component": "components/design-review/unis-design-review.tsx",
+      "css": [
+        "components/design-review/unis-design-review.css"
+      ],
+      "references": [
+        "https://www.unv-jp.com/ja/articles/dJPdStB6njkXP8nwfksZmE"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiD0h": {
     "slug": "badvillain",
@@ -560,21 +673,35 @@
     "eyebrow": "MOVEMENT / ARCHIVE",
     "headline": "把节拍留在身体里。",
     "hero": {
-      "image": "/artist/badvillain/dot-three-hero-20261016/group.display.webp",
-      "caption": "BADVILLAIN · Bugs 艺人资料合照 · 拍摄时期未知，不作当前阵容证明",
+      "image": "/artist/badvillain/dot-three-hero-20261016/group.original.jpg",
+      "caption": "BADVILLAIN · 团体页面主视觉",
       "sourceUrl": "https://music.bugs.co.kr/artist/20212684",
       "scopeLabel": "Bugs 资料合照 · 时期未明"
     },
     "portraits": {},
     "palette": {
-      "bg": "#151515",
-      "panel": "#20201e",
-      "ink": "#eff1db",
-      "muted": "#b4b7a3",
-      "line": "#3d4034",
-      "accent": "#cfe85c"
+      "bg": "#111313",
+      "panel": "#111313",
+      "ink": "#f3f3eb",
+      "muted": "#f3f3eb",
+      "line": "#d8f346",
+      "accent": "#d8f346"
     },
-    "variant": "noir"
+    "variant": "page",
+    "font": {
+      "display": "Oswald",
+      "body": "Noto Sans SC"
+    },
+    "designSource": {
+      "component": "components/candidate/badvillain-design.tsx",
+      "css": [
+        "app/artists/badvillain/badvillain-artist.css"
+      ],
+      "references": [
+        "https://music.bugs.co.kr/artist/20212684"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiD4A": {
     "slug": "qwer",
@@ -583,7 +710,7 @@
     "headline": "一页旋律，四种回响。",
     "hero": {
       "image": "/artist/qwer/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "QWER · 官方团体资料照 · 核于 2026-10-16；拍摄日期未知",
+      "caption": "QWER · 团体页面主视觉",
       "sourceUrl": "https://qwerjapan.com/news/2/",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
@@ -615,13 +742,27 @@
     },
     "palette": {
       "bg": "#f5f3df",
-      "panel": "#fffdf3",
+      "panel": "#f5f3df",
       "ink": "#243f67",
-      "muted": "#566b86",
-      "line": "#cad0c4",
+      "muted": "#243f67",
+      "line": "#365d9a",
       "accent": "#365d9a"
     },
-    "variant": "score"
+    "variant": "page",
+    "font": {
+      "display": "QwerScore",
+      "body": "Noto Sans SC"
+    },
+    "designSource": {
+      "component": "components/candidate/qwer-design.tsx",
+      "css": [
+        "app/artists/qwer/qwer-artist.css"
+      ],
+      "references": [
+        "https://qwerjapan.com/news/2/"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiD8K": {
     "slug": "vvup",
@@ -630,7 +771,7 @@
     "headline": "向上，再向前。",
     "hero": {
       "image": "/artist/vvup/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "VVUP · 官方团体资料照 · 核于 2026-10-16；拍摄日期未知",
+      "caption": "VVUP · 团体页面主视觉",
       "sourceUrl": "https://weverse.io/vvup/highlight?hl=ko",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
@@ -661,14 +802,28 @@
       }
     },
     "palette": {
-      "bg": "#e9f0e1",
-      "panel": "#f9fcf3",
-      "ink": "#283429",
-      "muted": "#687264",
-      "line": "#bcc8b2",
-      "accent": "#675796"
+      "bg": "#111215",
+      "panel": "#111215",
+      "ink": "#f3f5e9",
+      "muted": "#f3f5e9",
+      "line": "#dcf65c",
+      "accent": "#dcf65c"
     },
-    "variant": "score"
+    "variant": "page",
+    "font": {
+      "display": "VvupArchivo",
+      "body": "Noto Sans SC"
+    },
+    "designSource": {
+      "component": "components/vvup-artist.tsx",
+      "css": [
+        "app/artists/vvup/vvup-native.css"
+      ],
+      "references": [
+        "https://weverse.io/vvup/highlight?hl=ko"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiDcU": {
     "slug": "youngposse",
@@ -677,7 +832,7 @@
     "headline": "把日常放大声。",
     "hero": {
       "image": "/artist/youngposse/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "YOUNG POSSE · 官方团体资料照 · 核于 2026-10-16；拍摄日期未知",
+      "caption": "YOUNG POSSE · 团体页面主视觉",
       "sourceUrl": "https://youngposseofficial.jp/profile",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
@@ -714,14 +869,30 @@
       }
     },
     "palette": {
-      "bg": "#e8dfcc",
-      "panel": "#f5eddd",
-      "ink": "#292821",
-      "muted": "#746a59",
-      "line": "#b9ad95",
-      "accent": "#b74923"
+      "bg": "#141412",
+      "panel": "#141412",
+      "ink": "#e6e2d8",
+      "muted": "#e6e2d8",
+      "line": "#e5fd45",
+      "accent": "#e5fd45"
     },
-    "variant": "score"
+    "variant": "page",
+    "font": {
+      "display": "YPInter",
+      "body": "YPInter"
+    },
+    "designSource": {
+      "component": "components/youngposse-artist.tsx",
+      "css": [
+        "app/artists/youngposse/youngposse-artist.css",
+        "components/youngposse-artist.css",
+        "components/candidate/youngposse-native-design.css"
+      ],
+      "references": [
+        "https://youngposseofficial.jp/profile"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiDh1": {
     "slug": "bewave",
@@ -730,7 +901,7 @@
     "headline": "让每一段回响，被记得。",
     "hero": {
       "image": "/artist/bewave/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "BEWAVE · 历史合照 · 官方贴文 2024.10.12；不代表当前阵容",
+      "caption": "BEWAVE · 团体页面主视觉",
       "sourceUrl": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/670a71aa813c344c968ab3c0",
       "scopeLabel": "历史团体照片 · 非当前阵容"
     },
@@ -774,13 +945,27 @@
     },
     "palette": {
       "bg": "#edf4f3",
-      "panel": "#f8fbf9",
+      "panel": "#edf4f3",
       "ink": "#294c5b",
-      "muted": "#65828a",
-      "line": "#c4d8da",
+      "muted": "#294c5b",
+      "line": "#477e94",
       "accent": "#477e94"
     },
-    "variant": "editorial"
+    "variant": "page",
+    "font": {
+      "display": "BewaveTide",
+      "body": "Noto Sans SC"
+    },
+    "designSource": {
+      "component": "components/bewave-artist.tsx",
+      "css": [
+        "components/bewave-artist.css"
+      ],
+      "references": [
+        "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/670a71aa813c344c968ab3c0"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiDlb": {
     "slug": "candyshop",
@@ -789,7 +974,7 @@
     "headline": "喜欢的声音，慢慢收藏。",
     "hero": {
       "image": "/artist/candyshop/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "Candy Shop · 官方团体资料照 · 核于 2026-10-16；拍摄日期未知",
+      "caption": "Candy Shop · 团体页面主视觉",
       "sourceUrl": "https://candy-shop.jp/about",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
@@ -826,14 +1011,28 @@
       }
     },
     "palette": {
-      "bg": "#f5ebe0",
-      "panel": "#fff9f0",
-      "ink": "#584f48",
-      "muted": "#8e796d",
-      "line": "#d6c1ae",
-      "accent": "#668573"
+      "bg": "#ffffff",
+      "panel": "#ffffff",
+      "ink": "#57364f",
+      "muted": "#57364f",
+      "line": "#9b4a80",
+      "accent": "#9b4a80"
     },
-    "variant": "soft"
+    "variant": "page",
+    "font": {
+      "display": "CS Bodoni",
+      "body": "CS Sans"
+    },
+    "designSource": {
+      "component": "components/candyshop-artist.tsx",
+      "css": [
+        "components/candyshop-artist.css"
+      ],
+      "references": [
+        "https://candy-shop.jp/about"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiDpi": {
     "slug": "oddyouth",
@@ -842,7 +1041,7 @@
     "headline": "不必一样，也能一起。",
     "hero": {
       "image": "/artist/oddyouth/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "ODD YOUTH · 官方团体资料照 · 核于 2026-10-16；拍摄日期未知",
+      "caption": "ODD YOUTH · 团体页面主视觉",
       "sourceUrl": "https://www.itopgroup.com/bbs/page.php?hid=ODDYOUTH",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
@@ -879,14 +1078,28 @@
       }
     },
     "palette": {
-      "bg": "#f7f0dc",
-      "panel": "#fff9ea",
-      "ink": "#252c43",
-      "muted": "#766e63",
-      "line": "#d8c5a5",
-      "accent": "#a54538"
+      "bg": "#ffffff",
+      "panel": "#ffffff",
+      "ink": "#142846",
+      "muted": "#142846",
+      "line": "#2465d5",
+      "accent": "#2465d5"
     },
-    "variant": "grid"
+    "variant": "page",
+    "font": {
+      "display": "OddYouthAlbum",
+      "body": "Arial"
+    },
+    "designSource": {
+      "component": "components/oddyouth-artist.tsx",
+      "css": [
+        "components/oddyouth-artist.css"
+      ],
+      "references": [
+        "https://www.itopgroup.com/bbs/page.php?hid=ODDYOUTH"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiDtr": {
     "slug": "adya",
@@ -895,7 +1108,7 @@
     "headline": "MOVE\nTOGETHER.",
     "hero": {
       "image": "/artist/adya/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "ADYA · 2024.12.23 官方合作方发布合照；拍摄日期未注明",
+      "caption": "ADYA · 团体页面主视觉",
       "sourceUrl": "https://prtimes.jp/main/html/rd/p/000001548.000003711.html",
       "scopeLabel": "官方合作方发布照片"
     },
@@ -914,14 +1127,28 @@
       }
     },
     "palette": {
-      "bg": "#f4f0e5",
-      "panel": "#fffdf7",
-      "ink": "#1b2a49",
-      "muted": "#617087",
-      "line": "#c8cec9",
-      "accent": "#c84621"
+      "bg": "#111112",
+      "panel": "#111112",
+      "ink": "#f5f3ef",
+      "muted": "#f5f3ef",
+      "line": "#f64e37",
+      "accent": "#f64e37"
     },
-    "variant": "soft"
+    "variant": "page",
+    "font": {
+      "display": "AdyaDisplay",
+      "body": "AdyaText"
+    },
+    "designSource": {
+      "component": "components/adya-artist.tsx",
+      "css": [
+        "components/adya-artist.css"
+      ],
+      "references": [
+        "https://prtimes.jp/main/html/rd/p/000001548.000003711.html"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiDxx": {
     "slug": "geenius",
@@ -930,7 +1157,7 @@
     "headline": "A VOYAGE\nIN SOUND.",
     "hero": {
       "image": "/artist/geenius/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "Geenius · HOMe 官方艺人页合照；拍摄日期未注明",
+      "caption": "Geenius · 团体页面主视觉",
       "sourceUrl": "https://www.geeniushome.com/geenius",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
@@ -967,14 +1194,28 @@
       }
     },
     "palette": {
-      "bg": "#f1eee6",
-      "panel": "#fffcf5",
-      "ink": "#203547",
-      "muted": "#687377",
-      "line": "#c9d0c9",
-      "accent": "#395d6c"
+      "bg": "#000000",
+      "panel": "#000000",
+      "ink": "#ffffff",
+      "muted": "#ffffff",
+      "line": "#6bbcff",
+      "accent": "#6bbcff"
     },
-    "variant": "editorial"
+    "variant": "page",
+    "font": {
+      "display": "GeeniusSans",
+      "body": "GeeniusSans"
+    },
+    "designSource": {
+      "component": "components/geenius-artist.tsx",
+      "css": [
+        "components/geenius-artist.css"
+      ],
+      "references": [
+        "https://www.geeniushome.com/geenius"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiDBG": {
     "slug": "tracer",
@@ -983,20 +1224,34 @@
     "headline": "FOLLOW\nTHE SIGNAL.",
     "hero": {
       "image": "/artist/tracer/dot-three-hero-20261016/group.display.jpg",
-      "caption": "TRACER · GLEAMMEDIA GROUP 艺人页合照 · 拍摄时期与逐人对应未确认，不作当前阵容证明",
+      "caption": "TRACER · 团体页面主视觉",
       "sourceUrl": "https://www.gleammedia.co.kr/artist",
       "scopeLabel": "公司页资料合照 · 时期未明"
     },
     "portraits": {},
     "palette": {
-      "bg": "#161c21",
-      "panel": "#222d35",
-      "ink": "#e3e9e8",
-      "muted": "#a1b3bc",
-      "line": "#40505d",
-      "accent": "#ff9a55"
+      "bg": "#ffffff",
+      "panel": "#ffffff",
+      "ink": "#25282b",
+      "muted": "#25282b",
+      "line": "#cc3666",
+      "accent": "#cc3666"
     },
-    "variant": "grid"
+    "variant": "page",
+    "font": {
+      "display": "TracerSans",
+      "body": "TracerText"
+    },
+    "designSource": {
+      "component": "components/tracer-artist.tsx",
+      "css": [
+        "components/tracer-artist.css"
+      ],
+      "references": [
+        "https://www.gleammedia.co.kr/artist"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiDFM": {
     "slug": "witchx",
@@ -1005,8 +1260,8 @@
     "headline": "OPEN\nTHE CIRCLE.",
     "hero": {
       "image": "/artist/witchx/dot-three-hero-20261016/group.display.webp",
-      "caption": "W!TCHX · Bugs 艺人资料合照 · 拍摄时期未知，不作当前阵容证明",
-      "sourceUrl": "https://music.bugs.co.kr/artist/20222498",
+      "caption": "W!TCHX · 团体页面主视觉",
+      "sourceUrl": "https://kpopmedia.co.kr/#artists",
       "scopeLabel": "Bugs 资料合照 · 时期未明"
     },
     "portraits": {
@@ -1042,14 +1297,29 @@
       }
     },
     "palette": {
-      "bg": "#251c30",
-      "panel": "#352940",
-      "ink": "#f6eee4",
-      "muted": "#c4b4cb",
-      "line": "#5c466a",
-      "accent": "#e6c487"
+      "bg": "#000000",
+      "panel": "#000000",
+      "ink": "#f2f0f6",
+      "muted": "#f2f0f6",
+      "line": "#00e5ec",
+      "accent": "#00e5ec"
     },
-    "variant": "score"
+    "variant": "page",
+    "font": {
+      "display": "Orbitron",
+      "body": "Rajdhani"
+    },
+    "designSource": {
+      "component": "components/witchx-artist.tsx",
+      "css": [
+        "components/witchx-artist.css"
+      ],
+      "references": [
+        "https://kpopmedia.co.kr/#artists",
+        "https://music.bugs.co.kr/artist/20222498"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiDJU": {
     "slug": "spia",
@@ -1057,9 +1327,9 @@
     "eyebrow": "SPIA / BLUE EDITION",
     "headline": "DEEPER\nIN THE FRAME.",
     "hero": {
-      "image": "/artist/spia/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "SPIA · Campus 提供的历史合照，刊于 2024.04.24；拍摄日期未注明",
-      "sourceUrl": "https://v.daum.net/v/pVzp4ekPJ0",
+      "image": "/artist/spia/review-20261024/deeeep-group-original.jpg",
+      "caption": "SPIA · 团体页面主视觉",
+      "sourceUrl": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=451476&id=&lang=k&menu_cate=enternews",
       "scopeLabel": "媒体刊载历史合照 · 公司供图"
     },
     "portraits": {
@@ -1071,14 +1341,29 @@
       }
     },
     "palette": {
-      "bg": "#e9f0f2",
-      "panel": "#f7fbfb",
-      "ink": "#123956",
-      "muted": "#5d7886",
-      "line": "#b7cdd2",
-      "accent": "#225e81"
+      "bg": "#ffffff",
+      "panel": "#ffffff",
+      "ink": "#23482c",
+      "muted": "#23482c",
+      "line": "#426c3d",
+      "accent": "#426c3d"
     },
-    "variant": "soft"
+    "variant": "page",
+    "font": {
+      "display": "SpiaSerif",
+      "body": "SpiaText"
+    },
+    "designSource": {
+      "component": "components/spia-artist.tsx",
+      "css": [
+        "components/spia-artist.css"
+      ],
+      "references": [
+        "https://world.kbs.co.kr/service/contents_view.htm?board_seq=451476&id=&lang=k&menu_cate=enternews",
+        "https://v.daum.net/v/pVzp4ekPJ0"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiDPs": {
     "slug": "udtt",
@@ -1086,21 +1371,35 @@
     "eyebrow": "UDTT / AFTER CLASS",
     "headline": "SCHOOL\nRUSH.",
     "hero": {
-      "image": "/artist/udtt/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "UDTT · 2025.10.08 活动主办方发布合照；拍摄日期未注明",
+      "image": "/artist/udtt/batch-b-20261016/group.original.jpg",
+      "caption": "UDTT · 团体页面主视觉",
       "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000006.000170584.html",
       "scopeLabel": "主办方四人宣传照 · 非全员证明"
     },
     "portraits": {},
     "palette": {
-      "bg": "#f0f1df",
-      "panel": "#fffef1",
-      "ink": "#234232",
-      "muted": "#687663",
-      "line": "#bcc8a4",
-      "accent": "#b9432f"
+      "bg": "#102c43",
+      "panel": "#102c43",
+      "ink": "#ffffff",
+      "muted": "#ffffff",
+      "line": "#b8d3e3",
+      "accent": "#b8d3e3"
     },
-    "variant": "editorial"
+    "variant": "page",
+    "font": {
+      "display": "UdttInter",
+      "body": "UdttNotoSansSC"
+    },
+    "designSource": {
+      "component": "components/candidate/udtt-native-design.tsx",
+      "css": [
+        "public/artist/udtt/figma-native.css"
+      ],
+      "references": [
+        "https://prtimes.jp/main/html/rd/p/000000006.000170584.html"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiE0h": {
     "slug": "vcha",
@@ -1108,8 +1407,8 @@
     "eyebrow": "VCHA / HISTORY & RELATED CHAPTERS",
     "headline": "TWO CHAPTERS.\nONE ARCHIVE.",
     "hero": {
-      "image": "/artist/vcha/batch-b-20261016-webp-v1/hero-display.webp",
-      "caption": "VCHA · Only One 官方发行视觉（2024-03-15 发布；非完整合照）",
+      "image": "/design-review/sol15/vcha/assets/only-one-release-visual.jpg",
+      "caption": "VCHA · 团体页面主视觉",
       "sourceUrl": "https://www.universalmusic.com.br/2024/03/15/o-grupo-de-pop-feminino-vcha-faz-o-lancamento-duplo-de-only-one-e-favorite-girl/",
       "scopeLabel": "官方发行视觉 · 非完整合照"
     },
@@ -1134,14 +1433,28 @@
       }
     },
     "palette": {
-      "bg": "#f3e8dc",
-      "panel": "#fff8ec",
-      "ink": "#313c60",
-      "muted": "#757487",
-      "line": "#cec5b7",
-      "accent": "#9c4e3e"
+      "bg": "#ffffff",
+      "panel": "#ffffff",
+      "ink": "#211f22",
+      "muted": "#211f22",
+      "line": "#d41477",
+      "accent": "#d41477"
     },
-    "variant": "grid"
+    "variant": "page",
+    "font": {
+      "display": "VchaDisplay",
+      "body": "Arial"
+    },
+    "designSource": {
+      "component": "components/vcha-artist.tsx",
+      "css": [
+        "components/vcha-artist.css"
+      ],
+      "references": [
+        "https://www.universalmusic.com.br/2024/03/15/o-grupo-de-pop-feminino-vcha-faz-o-lancamento-duplo-de-only-one-e-favorite-girl/"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiE4q": {
     "slug": "hitgs",
@@ -1149,21 +1462,35 @@
     "eyebrow": "HITGS / THE PLAY ZINE",
     "headline": "翻开这一页，\n接着听。",
     "hero": {
-      "image": "/artist/hitgs/batch-b-20261016-webp-v1/hero-display.webp",
-      "caption": "HITGS · Things we love : H 官方发行专题合照（拍摄日期未载）",
+      "image": "/artist/hitgs/batch-b-20261016/hero-original.jpg",
+      "caption": "HITGS · 团体页面主视觉",
       "sourceUrl": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15198",
       "scopeLabel": "官方发行专题照片"
     },
     "portraits": {},
     "palette": {
-      "bg": "#eaf45d",
-      "panel": "#f8f7d8",
-      "ink": "#122d48",
-      "muted": "#425361",
-      "line": "#829458",
-      "accent": "#163953"
+      "bg": "#e4eff8",
+      "panel": "#e4eff8",
+      "ink": "#173c70",
+      "muted": "#173c70",
+      "line": "#143c7b",
+      "accent": "#143c7b"
     },
-    "variant": "score"
+    "variant": "page",
+    "font": {
+      "display": "HitgsDisplay",
+      "body": "Arial"
+    },
+    "designSource": {
+      "component": "components/hitgs-artist.tsx",
+      "css": [
+        "components/hitgs-artist.css"
+      ],
+      "references": [
+        "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15198"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "rec28ldfRTiEaV": {
     "slug": "atheart",
@@ -1171,9 +1498,9 @@
     "eyebrow": "ATHEART / A LETTER IN SOUND",
     "headline": "把这一刻，\n写进心里。",
     "hero": {
-      "image": "/artist/atheart/batch-b-20261016-webp-v1/hero-display.webp",
-      "caption": "AtHeart · 日本官网资料页合照（拍摄日期未载）",
-      "sourceUrl": "https://atheart.jp/contents/menu/176621",
+      "image": "/artist/atheart/batch-b-20261016/hero-original.png",
+      "caption": "AtHeart · 团体页面主视觉",
+      "sourceUrl": "https://atheart.me/",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
     "portraits": {
@@ -1221,14 +1548,29 @@
       }
     },
     "palette": {
-      "bg": "#f6f1de",
-      "panel": "#fffcf1",
-      "ink": "#40394e",
-      "muted": "#686173",
-      "line": "#c9c0bb",
-      "accent": "#665383"
+      "bg": "#000000",
+      "panel": "#000000",
+      "ink": "#fafafa",
+      "muted": "#fafafa",
+      "line": "#ffffff",
+      "accent": "#ffffff"
     },
-    "variant": "soft"
+    "variant": "page",
+    "font": {
+      "display": "Arial",
+      "body": "Arial"
+    },
+    "designSource": {
+      "component": "components/atheart-artist.tsx",
+      "css": [
+        "components/atheart-artist.css"
+      ],
+      "references": [
+        "https://atheart.me/",
+        "https://atheart.jp/contents/menu/176621"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZqkpg": {
     "slug": "idle",
@@ -1236,8 +1578,8 @@
     "eyebrow": "WRITTEN BY",
     "headline": "五种个性，各自成章。",
     "hero": {
-      "image": "/artist/idle/idle-0.jpg",
-      "caption": "i-dle · 日本官方资料照",
+      "image": "/artist/idle/display/hero--hero.jpg",
+      "caption": "i-dle · 团体页面主视觉",
       "sourceUrl": "https://i-dle.cubeent.co.jp/profile/",
       "scopeLabel": "官方团体视觉"
     },
@@ -1274,14 +1616,29 @@
       }
     },
     "palette": {
-      "bg": "#f4f0e7",
-      "panel": "#e9e8dc",
-      "ink": "#24332c",
-      "muted": "#5f7062",
-      "line": "#dcd7ca",
-      "accent": "#324e3f"
+      "bg": "#180f25",
+      "panel": "#180f25",
+      "ink": "#fff6eb",
+      "muted": "#fff6eb",
+      "line": "#f54d55",
+      "accent": "#f54d55"
     },
-    "variant": "editorial"
+    "variant": "page",
+    "font": {
+      "display": "Space Grotesk",
+      "body": "Space Grotesk"
+    },
+    "designSource": {
+      "component": "components/candidate/idle-design.tsx",
+      "css": [
+        "app/artists/idle/idle-artist.css",
+        "components/candidate/idle-verified-design.css"
+      ],
+      "references": [
+        "https://i-dle.cubeent.co.jp/profile/"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZ52oG": {
     "slug": "izone",
@@ -1289,21 +1646,40 @@
     "eyebrow": "IZ*ONE / THE ARCHIVE EDITION",
     "headline": "留住每一帧，\n重读这一段。",
     "hero": {
-      "image": "/artist/izone/historical-20261016.webp",
-      "caption": "IZ*ONE 历史十二人团体照，来源：KBS WORLD 2018-11-12 艺人介绍；拍摄日期未注明。",
-      "sourceUrl": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=351078&id=&lang=j&menu_cate=artist",
+      "image": "/artist/izone/panorama-official/profile-iz-one.jpg",
+      "caption": "IZ*ONE · 团体页面主视觉",
+      "sourceUrl": "https://smart.mnetjp.com/profile/camtPhKL7AaZcltSDFILdS",
       "scopeLabel": "历史团体照片 · 非当前阵容"
     },
     "portraits": {},
     "palette": {
-      "bg": "#fbf4f0",
-      "panel": "#fffaf6",
-      "ink": "#573d46",
-      "muted": "#7d6269",
-      "line": "#d9c4c8",
-      "accent": "#a34262"
+      "bg": "#000000",
+      "panel": "#000000",
+      "ink": "#d2d0d4",
+      "muted": "#d2d0d4",
+      "line": "#c4b0f0",
+      "accent": "#c4b0f0"
     },
-    "variant": "editorial"
+    "variant": "page",
+    "font": {
+      "display": "IzoneCinema",
+      "body": "Arial"
+    },
+    "designSource": {
+      "component": "components/candidate/izone-design.tsx",
+      "css": [
+        "app/artists/izone/izone-artist.css"
+      ],
+      "references": [
+        "https://smart.mnetjp.com/profile/camtPhKL7AaZcltSDFILdS",
+        "https://web.archive.org/web/20210103153505/http://iz-one.co.kr/",
+        "https://music.bugs.co.kr/artist/20067467/albums",
+        "https://iz-one.co.kr/20191103/",
+        "https://www.melon.com/musicstory/inform.htm?mstorySeq=10961",
+        "https://world.kbs.co.kr/service/contents_view.htm?board_seq=351078&id=&lang=j&menu_cate=artist"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZcosR": {
     "slug": "fromis9",
@@ -1311,9 +1687,9 @@
     "eyebrow": "FROMIS_9 / POSTCARDS TO PLAY",
     "headline": "寄给下一次，\n想重看的你。",
     "hero": {
-      "image": "/artist/fromis9/batch-b-20261016-webp-v1/hero-display.webp",
-      "caption": "fromis_9 · 日本官方资料页五人合照（拍摄日期未载）",
-      "sourceUrl": "https://fromis9.fanpla.jp/news/2/",
+      "image": "/artist/fromis9/official-20261025/hero-original.jpeg",
+      "caption": "fromis_9 · 团体页面主视觉",
+      "sourceUrl": "https://fromis9.fanpla.jp/",
       "scopeLabel": "官网五人资料照 · 拍摄日期未确认"
     },
     "portraits": {
@@ -1349,14 +1725,30 @@
       }
     },
     "palette": {
-      "bg": "#eff5f0",
-      "panel": "#fffdf2",
-      "ink": "#234b66",
-      "muted": "#5f7580",
-      "line": "#b8ced0",
-      "accent": "#2d647a"
+      "bg": "#ffffff",
+      "panel": "#ffffff",
+      "ink": "#236e5c",
+      "muted": "#236e5c",
+      "line": "#2c8b73",
+      "accent": "#2c8b73"
     },
-    "variant": "score"
+    "variant": "page",
+    "font": {
+      "display": "FromisSansita",
+      "body": "Arial"
+    },
+    "designSource": {
+      "component": "components/candidate/fromis9-design.tsx",
+      "css": [
+        "app/artists/fromis9/fromis9-artist.css"
+      ],
+      "references": [
+        "https://fromis9.fanpla.jp/",
+        "https://fromis9.fanpla.jp/news/2/",
+        "https://music.bugs.co.kr/artist/20047596/albums"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZJAXm": {
     "slug": "loona",
@@ -1364,8 +1756,8 @@
     "eyebrow": "LOONA / PHASES OF THE ARCHIVE",
     "headline": "沿着月相，\n回到作品。",
     "hero": {
-      "image": "/artist/loona/batch-b-20261016-webp-v1/hero-display.webp",
-      "caption": "LOONA · Universal 日本 2021 时期资料合照（历史十二人）",
+      "image": "/artist/loona/approved-home/hero.jpg",
+      "caption": "LOONA · 团体页面主视觉",
       "sourceUrl": "https://www.universal-music.co.jp/loona/biography/",
       "scopeLabel": "历史团体照片 · 非当前阵容"
     },
@@ -1438,14 +1830,29 @@
       }
     },
     "palette": {
-      "bg": "#171d26",
-      "panel": "#252c35",
-      "ink": "#f3ebd5",
-      "muted": "#b8b3a5",
-      "line": "#535a60",
-      "accent": "#ded19b"
+      "bg": "#ffffff",
+      "panel": "#ffffff",
+      "ink": "#111111",
+      "muted": "#111111",
+      "line": "#111111",
+      "accent": "#111111"
     },
-    "variant": "editorial"
+    "variant": "page",
+    "font": {
+      "display": "Noto Sans SC",
+      "body": "Noto Sans SC"
+    },
+    "designSource": {
+      "component": "components/candidate/loona-design.tsx",
+      "css": [
+        "app/artists/loona/loona-artist.css",
+        "app/artists/loona/loona-inner.css"
+      ],
+      "references": [
+        "https://www.universal-music.co.jp/loona/biography/"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZ9Jl3": {
     "slug": "everglow",
@@ -1453,9 +1860,9 @@
     "eyebrow": "EVERGLOW / SCREENING ROOM",
     "headline": "灯光暗下，\n作品开始。",
     "hero": {
-      "image": "/artist/everglow/batch-b-20261016-webp-v1/hero-display.webp",
-      "caption": "EVERGLOW · CHXXTA COMPANY 署名合照（2025-09-10 发布）",
-      "sourceUrl": "https://www.einpresswire.com/article/847656903/everglow-signs-an-exclusive-contract-with-chxxta-company",
+      "image": "/artist/everglow/official-20261025/hero.png",
+      "caption": "EVERGLOW · 团体页面主视觉",
+      "sourceUrl": "https://www.chxxta.com/everglow",
       "scopeLabel": "2025签约宣传照 · 非当前阵容证明"
     },
     "portraits": {
@@ -1497,14 +1904,31 @@
       }
     },
     "palette": {
-      "bg": "#191715",
-      "panel": "#29241f",
-      "ink": "#f8f1e8",
-      "muted": "#b5aca1",
-      "line": "#5f4f43",
-      "accent": "#fb915c"
+      "bg": "#000000",
+      "panel": "#000000",
+      "ink": "#f5f3fa",
+      "muted": "#f5f3fa",
+      "line": "#a58adb",
+      "accent": "#a58adb"
     },
-    "variant": "editorial"
+    "variant": "page",
+    "font": {
+      "display": "EverglowCondensed",
+      "body": "Arial"
+    },
+    "designSource": {
+      "component": "components/candidate/everglow-design.tsx",
+      "css": [
+        "app/artists/everglow/everglow-artist.css"
+      ],
+      "references": [
+        "https://www.chxxta.com/everglow",
+        "https://everglow.bstage.in/",
+        "https://music.bugs.co.kr/artist/20076399/albums",
+        "https://www.einpresswire.com/article/847656903/everglow-signs-an-exclusive-contract-with-chxxta-company"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZB3pz": {
     "slug": "rocketpunch",
@@ -1512,9 +1936,9 @@
     "eyebrow": "ROCKET PUNCH / PLAYBACK TICKET",
     "headline": "下一站，\n再看一遍。",
     "hero": {
-      "image": "/artist/rocketpunch/batch-b-20261016-webp-v1/group-2021-press-display.webp",
-      "caption": "2021-08-03 日本出道宣传稿所附六人时期资料照 · 拍摄日期未知；不代表当前活动阵容",
-      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000997.000029501.html",
+      "image": "/artist/rocketpunch/official-boom/boom-1-group-original.jpg",
+      "caption": "Rocket Punch · 团体页面主视觉",
+      "sourceUrl": "https://www.woolliment.com/album/boom",
       "scopeLabel": "历史团体照片 · 非当前阵容"
     },
     "portraits": {
@@ -1550,14 +1974,31 @@
       }
     },
     "palette": {
-      "bg": "#f6f1e6",
-      "panel": "#fffdf6",
-      "ink": "#263b70",
-      "muted": "#63718b",
-      "line": "#bdc4ce",
-      "accent": "#bf4239"
+      "bg": "#000000",
+      "panel": "#000000",
+      "ink": "#ffffff",
+      "muted": "#ffffff",
+      "line": "#ffe448",
+      "accent": "#ffe448"
     },
-    "variant": "grid"
+    "variant": "page",
+    "font": {
+      "display": "RocketOpenSans",
+      "body": "RocketOpenSans"
+    },
+    "designSource": {
+      "component": "components/candidate/rocketpunch-design.tsx",
+      "css": [
+        "app/artists/rocketpunch/rocketpunch-artist.css"
+      ],
+      "references": [
+        "https://www.woolliment.com/album/boom",
+        "https://weverse.io/rocketpunch/notice",
+        "https://music.bugs.co.kr/artist/20088588/albums",
+        "https://prtimes.jp/main/html/rd/p/000000997.000029501.html"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZm40w": {
     "slug": "cherrybullet",
@@ -1565,21 +2006,38 @@
     "eyebrow": "THE RED FILE / 樱色档案",
     "headline": "翻开这一页，\n让作品继续发声。",
     "hero": {
-      "image": "/artist/cherrybullet/historical-20261016.webp",
-      "caption": "Cherry Bullet《Cherry Dash》时期七人团体概念照（Fashion House ver.），来源：FNC 官方图库，发布于 2023-02-23；拍摄日期未注明。",
-      "sourceUrl": "https://fncent.com/CherryBullet/b/gallery/55485",
+      "image": "/artist/cherrybullet/official/group-fashion-house.jpg",
+      "caption": "Cherry Bullet · 团体页面主视觉",
+      "sourceUrl": "https://fncent.com/CherryBullet",
       "scopeLabel": "历史团体照片 · 非当前阵容"
     },
     "portraits": {},
     "palette": {
-      "bg": "#fff6ef",
-      "panel": "#f4dfd8",
-      "ink": "#4a1822",
-      "muted": "#825c62",
-      "line": "#d7aaa9",
-      "accent": "#b42d43"
+      "bg": "#ffffff",
+      "panel": "#ffffff",
+      "ink": "#1f1f1f",
+      "muted": "#1f1f1f",
+      "line": "#e54132",
+      "accent": "#e54132"
     },
-    "variant": "score"
+    "variant": "page",
+    "font": {
+      "display": "CherryBulletGothic",
+      "body": "CherryBulletGothic"
+    },
+    "designSource": {
+      "component": "components/candidate/cherrybullet-design.tsx",
+      "css": [
+        "app/artists/cherrybullet/cherrybullet-artist.css"
+      ],
+      "references": [
+        "https://fncent.com/CherryBullet",
+        "https://fncent.com/?bid=album&m=bbs&ma_cate=1&ma_lang=1&mod=view&r=CherryBullet&uid=55694",
+        "https://fncent.com/CherryBullet/b/gallery/55485",
+        "https://music.bugs.co.kr/artist/20074110/albums"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZPbu5": {
     "slug": "weeekly",
@@ -1587,9 +2045,9 @@
     "eyebrow": "A PAGE FOR EVERY DAY / 每日续页",
     "headline": "把喜欢的片刻，\n夹在下一页。",
     "hero": {
-      "image": "/artist/weeekly/batch-b-20261016-webp-v1/press-group-display.webp",
-      "caption": "2024-03-04 日本见面会主办方公告所附资料照 · 拍摄日期未知",
-      "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000006.000117603.html",
+      "image": "/artist/weeekly/official/group-1.jpg",
+      "caption": "Weeekly · 团体页面主视觉",
+      "sourceUrl": "https://weverse.io/weeekly/highlight",
       "scopeLabel": "活动主办方发布照片"
     },
     "portraits": {
@@ -1631,14 +2089,32 @@
       }
     },
     "palette": {
-      "bg": "#fff9e9",
-      "panel": "#f0edce",
-      "ink": "#344638",
-      "muted": "#68735f",
-      "line": "#d6d2af",
-      "accent": "#59754e"
+      "bg": "#ffffff",
+      "panel": "#ffffff",
+      "ink": "#202020",
+      "muted": "#202020",
+      "line": "#a64161",
+      "accent": "#a64161"
     },
-    "variant": "soft"
+    "variant": "page",
+    "font": {
+      "display": "Georgia",
+      "body": "Arial"
+    },
+    "designSource": {
+      "component": "components/candidate/weeekly-design.tsx",
+      "css": [
+        "app/artists/weeekly/weeekly-artist.css"
+      ],
+      "references": [
+        "https://weverse.io/weeekly/highlight",
+        "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=14428",
+        "https://music.bugs.co.kr/artist/20110282/albums",
+        "https://weverse.io/weeekly/media/2-144406028",
+        "https://prtimes.jp/main/html/rd/p/000000006.000117603.html"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZs5Ic": {
     "slug": "wooah",
@@ -1646,8 +2122,8 @@
     "eyebrow": "OPEN FREQUENCY / 打开这一频率",
     "headline": "把声音调亮，\n把舞台留住。",
     "hero": {
-      "image": "/artist/wooah/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "日本官方资料页所列团体照 · 发布及拍摄日期未知",
+      "image": "/artist/wooah/batch-b-20261016/group-original.png",
+      "caption": "WOOAH · 团体页面主视觉",
       "sourceUrl": "https://wooahjapan.jp/profile/",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
@@ -1684,14 +2160,28 @@
       }
     },
     "palette": {
-      "bg": "#e9f6f3",
-      "panel": "#c9e7e3",
-      "ink": "#163e43",
-      "muted": "#4b7377",
-      "line": "#9ec4c2",
-      "accent": "#006b78"
+      "bg": "#0c0b0d",
+      "panel": "#0c0b0d",
+      "ink": "#f4f0ee",
+      "muted": "#f4f0ee",
+      "line": "#f743ad",
+      "accent": "#f743ad"
     },
-    "variant": "editorial"
+    "variant": "page",
+    "font": {
+      "display": "Roboto Condensed",
+      "body": "Noto Sans SC"
+    },
+    "designSource": {
+      "component": "components/wooah/editorial.tsx",
+      "css": [
+        "components/wooah/editorial.css"
+      ],
+      "references": [
+        "https://wooahjapan.jp/profile/"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZllCe": {
     "slug": "purplekiss",
@@ -1701,19 +2191,33 @@
     "hero": {
       "image": "/artist/purplekiss/historical-20261016.webp",
       "sourceUrl": "https://www.jvcmusic.co.jp/-/Profile/A026967.html",
-      "caption": "PURPLE KISS 历史六人团体照，来源：Victor 官方艺人资料页；照片日期未注明。",
+      "caption": "PURPLE KISS · 团体页面主视觉",
       "scopeLabel": "历史团体照片 · 非当前阵容"
     },
     "portraits": {},
     "palette": {
       "bg": "#21182b",
-      "panel": "#342440",
+      "panel": "#21182b",
       "ink": "#f2e9f7",
-      "muted": "#b9a8c5",
-      "line": "#685471",
+      "muted": "#f2e9f7",
+      "line": "#ceacd9",
       "accent": "#ceacd9"
     },
-    "variant": "grid"
+    "variant": "page",
+    "font": {
+      "display": "PurpleKissArchive",
+      "body": "Noto Sans SC"
+    },
+    "designSource": {
+      "component": "components/candidate/purplekiss-design.tsx",
+      "css": [
+        "app/artists/purplekiss/purplekiss-artist.css"
+      ],
+      "references": [
+        "https://www.jvcmusic.co.jp/-/Profile/A026967.html"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZPXW9": {
     "slug": "billlie",
@@ -1721,8 +2225,8 @@
     "eyebrow": "THE UNFOLDING FILE / 故事续卷",
     "headline": "循着一首歌，\n翻开另一条线索。",
     "hero": {
-      "image": "/artist/billlie/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "日本官方资料页团体照 · 发布及拍摄日期未知",
+      "image": "/artist/billlie/display/billlie-apple-1895807762.webp",
+      "caption": "Billlie · 团体页面主视觉",
       "sourceUrl": "https://billlie.jp/profile/",
       "scopeLabel": "官方团体资料图 · 来源与范围见详情"
     },
@@ -1771,14 +2275,29 @@
       }
     },
     "palette": {
-      "bg": "#eae9e2",
-      "panel": "#d6d9db",
-      "ink": "#263344",
-      "muted": "#66717c",
-      "line": "#aab0b7",
-      "accent": "#354d75"
+      "bg": "#111010",
+      "panel": "#111010",
+      "ink": "#f1eee7",
+      "muted": "#f1eee7",
+      "line": "#d0c5ed",
+      "accent": "#d0c5ed"
     },
-    "variant": "score"
+    "variant": "page",
+    "font": {
+      "display": "BilllieBodoni",
+      "body": "BilllieDM"
+    },
+    "designSource": {
+      "component": "components/candidate/billlie-design.tsx",
+      "css": [
+        "app/artists/billlie/billlie-artist.css",
+        "components/candidate/billlie-figma-design.css"
+      ],
+      "references": [
+        "https://billlie.jp/profile/"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZ8A0W": {
     "slug": "kep1er",
@@ -1787,7 +2306,7 @@
     "headline": "沿着作品，\n找到新的坐标。",
     "hero": {
       "image": "/artist/kep1er/batch-c-20261016/c-task01-kep1er-wakeone-group.display.webp",
-      "caption": "WAKEONE 官网 Kep1er 六人资料照；拍摄及页面发布日期未注明，不证明逐人当前活动状态。",
+      "caption": "Kep1er · 团体页面主视觉",
       "sourceUrl": "https://wake-one.com/en/artists/kep1er/",
       "scopeLabel": "官网六人资料照 · 活动范围另见详情"
     },
@@ -1836,14 +2355,28 @@
       }
     },
     "palette": {
-      "bg": "#eef0f7",
-      "panel": "#dbe1f0",
-      "ink": "#1c2855",
-      "muted": "#637092",
-      "line": "#a9b4d3",
-      "accent": "#344c9b"
+      "bg": "#f7f7f5",
+      "panel": "#f7f7f5",
+      "ink": "#111214",
+      "muted": "#111214",
+      "line": "#7255a5",
+      "accent": "#7255a5"
     },
-    "variant": "soft"
+    "variant": "page",
+    "font": {
+      "display": "KepEditorial",
+      "body": "KepInter"
+    },
+    "designSource": {
+      "component": "components/design-review/kep1er-design-review.tsx",
+      "css": [
+        "components/design-review/kep1er-figma-design.css"
+      ],
+      "references": [
+        "https://wake-one.com/en/artists/kep1er/"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   },
   "recvxyEBDZ9qVl": {
     "slug": "newjeans",
@@ -1851,8 +2384,8 @@
     "eyebrow": "A NOTE TO KEEP / 留下这一页",
     "headline": "熟悉的旋律，\n新的观看笔记。",
     "hero": {
-      "image": "/artist/newjeans/batch-b-20261016-webp-v1/group-display.webp",
-      "caption": "日本官方资料页团体照 · 资料页名册与历史记录分别保留；拍摄日期未知",
+      "image": "/artist/newjeans/figma-display/hero-37008550e0.jpg",
+      "caption": "NewJeans · 团体页面主视觉",
       "sourceUrl": "https://www.newjeans.jp/profile/",
       "scopeLabel": "官网四人资料照 · 阵容另见详情"
     },
@@ -1883,13 +2416,28 @@
       }
     },
     "palette": {
-      "bg": "#f2f6fc",
-      "panel": "#dce8f7",
-      "ink": "#234b86",
-      "muted": "#5c789e",
-      "line": "#a7bbd7",
-      "accent": "#2756a0"
+      "bg": "#f8fcff",
+      "panel": "#f8fcff",
+      "ink": "#193953",
+      "muted": "#193953",
+      "line": "#254ec7",
+      "accent": "#254ec7"
     },
-    "variant": "soft"
+    "variant": "page",
+    "font": {
+      "display": "NewJeans Nunito Sans",
+      "body": "NewJeans Nunito Sans"
+    },
+    "designSource": {
+      "component": "components/candidate/newjeans-design.tsx",
+      "css": [
+        "app/artists/newjeans/newjeans-artist.css",
+        "components/candidate/newjeans-design.css"
+      ],
+      "references": [
+        "https://www.newjeans.jp/profile/"
+      ],
+      "scope": "承接当前团体页面的主视觉、色彩与字体；索引信息结构为项目扩展。"
+    }
   }
 }

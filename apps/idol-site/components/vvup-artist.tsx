@@ -4,6 +4,9 @@ import {ArrowLeft,ArrowUpRight,Search,Play} from 'lucide-react';
 import type {CatalogView,Member,Work} from '@/lib/idol/types';
 import type {CandidateContent} from '@/lib/idol/candidate/types';
 import releases from '@/data/vvup-releases.json';
+import editorial from '@/data/vvup-review-editorial.json';
+import supplements from '@/data/vvup-review-supplements.json';
+import {approvedVideoPoster} from '@/lib/idol/approved-video-poster';
 import {artistCollection,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistMemberUrl,type ArtistSection} from '@/lib/idol/artist-preview';
 import {memberChineseName,memberDisplayName} from '@/lib/idol/member-display-name';
 import {memberWorks} from '@/lib/idol/member-works';
@@ -19,12 +22,14 @@ import {useArtistScroll} from './use-artist-scroll';
 import {useArtistNavigationScroll} from './use-artist-navigation-scroll';
 
 const path='/artists/vvup';
+const officialIds=new Set(editorial.members.filter(m=>m.roster==='official').map(m=>m.id));
+const historicalPortrait=supplements.assets.find(a=>a.kind==='member');
 const sections:[ArtistSection,string][]=[['overview','首页'],['members','成员'],['records','发行'],['works','影像'],['updates','时间轴']];
 const subscribe=(f:()=>void)=>{window.addEventListener('popstate',f);window.addEventListener('artist-location-change',f);return()=>{window.removeEventListener('popstate',f);window.removeEventListener('artist-location-change',f);};};
 const score=(v:number|null)=>v===null?'未评分':v.toFixed(1);
 function Photo({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){return <ReliableImage src={src} identityKey={src??alt} alt={alt} priority={priority} missing={<div className="vu-missing">照片暂未收录</div>} errorFallback={<div className="vu-missing">图片暂时无法加载</div>}/>;}
 function Chapter({title,label,onMore}:{title:string;label?:string;onMore?:()=>void}){return <div className="vu-chapter-heading"><h2>{title}</h2>{onMore&&<button onClick={onMore}>{label??'查看全部'} <ArrowUpRight size={18}/></button>}</div>;}
-function VideoCard({work,returnTo}:{work:Work;returnTo:string}){return <article className="vu-video"><a href={artistWorkUrl(work,false,returnTo)}><div className="vu-video-type"><Play size={32}/><span>{work.videoType||'影像'}</span><small>打开影像</small></div><h3>{work.song||work.name}</h3></a><p>{work.version||work.videoType} · {work.releaseDate||'公开日期待核'}</p><div className="vu-video-links"><a href={artistWorkUrl(work,false,returnTo)}>观看与评分 <ArrowUpRight size={16}/></a>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<a href={artistWorkUrl(work,true,returnTo)}>看舞台 <ArrowUpRight size={16}/></a>}<span>{score(work.score)}</span></div></article>;}
+function VideoCard({work,returnTo}:{work:Work;returnTo:string}){const poster=approvedVideoPoster(work.id,videoId(work.url),'mv');return <article className="vu-video"><a href={artistWorkUrl(work,false,returnTo)}>{poster&&<div className="vu-video-preview"><Photo src={poster.src} alt={(work.song||work.name)+" · "+(work.version||work.videoType)}/></div>}<div className="vu-video-type"><Play size={32}/><span>{work.videoType||'影像'}</span><small>打开影像</small></div><h3>{work.song||work.name}</h3></a><p>{work.version||work.videoType} · {work.releaseDate||'公开日期待核'}</p><div className="vu-video-links"><a href={artistWorkUrl(work,false,returnTo)}>观看与评分 <ArrowUpRight size={16}/></a>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<a href={artistWorkUrl(work,true,returnTo)}>看舞台 <ArrowUpRight size={16}/></a>}<span>{score(work.score)}</span></div></article>;}
 
 export default function VvupArtist({content}:{content:CandidateContent}){
  const host=useArtistTimelineHostOptions();
@@ -66,8 +71,8 @@ export default function VvupArtist({content}:{content:CandidateContent}){
  const select=(section:ArtistSection)=>navigate({section,member:null,search:'',queue:'all',format:'all'},false,false);
  const collection=useMemo(()=>state.data?artistCollection(state.data,content.groupId):null,[state.data,content.groupId]);
  const allMembers=collection?.members??[];
- const official=Object.keys(content.portraits).map(id=>allMembers.find(m=>m.id===id)).filter((m):m is Member=>!!m);
- const archive=allMembers.filter(m=>!content.portraits[m.id]);
+ const official=editorial.members.filter(m=>officialIds.has(m.id)).map(m=>allMembers.find(row=>row.id===m.id)).filter((m):m is Member=>!!m);
+ const archive=allMembers.filter(m=>!officialIds.has(m.id));
  const member=allMembers.find(m=>m.id===route.member);
  const needle=route.search.trim().toLocaleLowerCase();
  const matchesMember=(m:Member)=>[memberDisplayName(m),m.stageName].some(s=>s.toLocaleLowerCase().includes(needle));
@@ -77,14 +82,14 @@ export default function VvupArtist({content}:{content:CandidateContent}){
  const releaseHref=(id:string)=>`${path}?section=records${route.section==='records'&&route.search?'&q='+encodeURIComponent(route.search):''}&release=${encodeURIComponent(id)}`;
  const releaseList=artistRouteUrl({...route,section:'records',member:null,queue:'all',format:'all'},path);
  const shownWorks=artistWorkRows(works,route.queue,route.search).filter(w=>route.format==='stage'?!!(w.stage||w.stageSupplement?.alternatives.length):route.format==='mv'?w.videoType==='官方MV':true);
- function portraitOriginal(m:Member){const p=content.portraits[m.id];return p?`/artist/vvup/batch-b-20261016/${p.stageName.toLowerCase()}-original.jpg`:null;}
- function roster(items:Member[]){return <div className="vu-roster">{items.map(m=><button key={m.id} data-artist-member-trigger={m.id} onClick={()=>navigate({section:'members',member:m.id},false,!content.portraits[m.id]||historical)}><span className="vu-portrait-frame"><Photo src={content.portraits[m.id]?.image} alt={memberDisplayName(m)+' · 官方资料照'}/></span><strong>{memberChineseName(m)||m.stageName}</strong><span>{m.stageName}</span>{!content.portraits[m.id]&&<small>历史成员</small>}</button>)}</div>;}
+ function portraitOriginal(m:Member){if(m.id===historicalPortrait?.memberId)return historicalPortrait.url;const p=content.portraits[m.id];return p?`/artist/vvup/batch-b-20261016/${p.stageName.toLowerCase()}-original.jpg`:null;}
+ function roster(items:Member[]){return <div className="vu-roster">{items.map(m=><button key={m.id} data-artist-member-trigger={m.id} onClick={()=>navigate({section:'members',member:m.id},false,!officialIds.has(m.id)||historical)}><span className="vu-portrait-frame"><Photo src={content.portraits[m.id]?.image??(m.id===historicalPortrait?.memberId?historicalPortrait.url:null)} alt={memberDisplayName(m)+' · 官方资料照'}/></span><strong>{memberChineseName(m)||m.stageName}</strong><span>{m.stageName}</span>{!officialIds.has(m.id)&&<small>历史成员</small>}</button>)}</div>;}
  function releaseGrid(entries= releases.entries){return <div className="vu-releases">{entries.map(r=><a key={r.id} href={releaseHref(r.id)} data-artist-release-trigger={r.id}><div className="vu-cover">{r.image?<Photo src={r.image} alt={r.title+' · 发行封面'}/>:<div className="vu-cover-missing"><strong>{r.title}</strong><span>发行封面暂缺</span></div>}</div><h3>{r.title}</h3><p>{r.date||'发行日期待核'} · {r.type}</p></a>)}</div>;}
  function timeline(){return <ArtistTimelineHost groupId={content.groupId} catalog={state.data} loading={state.loading} error={state.error} onRetry={retry} background={<p>从音乐与成员的足迹，回看 VVUP。</p>}/>;}
  function retry(){if(host.onRetry)host.onRetry();else setAttempt(x=>x+1);}
  function memberPage(m:Member){
   const items=state.data?memberWorks(state.data,m.id):[],original=portraitOriginal(m);
-  return <><button className="vu-back" onClick={()=>navigate({section:'members',member:null})}><ArrowLeft size={16}/>返回成员</button><section className="vu-member-detail"><figure><Photo src={content.portraits[m.id]?.image} alt={memberDisplayName(m)+' · 资料照'} priority/>{original&&<button className="vu-outline" onClick={()=>setLightbox({src:original,label:memberDisplayName(m)+' · 官方资料图'})}>查看原图 <ArrowUpRight size={16}/></button>}</figure><div><p className="vu-kicker">VVUP / {original?'MEMBER':'ARCHIVE'}</p><h1>{memberChineseName(m)||m.stageName}</h1><p className="vu-stage-name">{m.stageName}</p><p>{original?'官方资料页列示成员':'历史成员 · 已结束本团活动'}</p><p>{m.country}{m.birthDate?' · '+m.birthDate:''}</p><MemberPhysicalFacts member={m}/><MemberCareerFacts member={m}/><a className="vu-outline" href={artistMemberUrl(m.id,returnTo)}>个人档案与记录 <ArrowUpRight size={16}/></a>{original?<a href={content.portraits[m.id].sourceUrl} target="_blank" rel="noopener noreferrer">官方资料与图片来源 ↗</a>:<p>历史照片暂缺；活动结束的独立生效日期未确认。</p>}</div></section><section><Chapter title="她的作品"/><p className="vu-muted">按已有成员与作品关系展示；MV 个人造型图尚未收录。</p><div className="vu-videos">{items.map(item=><VideoCard key={item.work.id} work={item.work} returnTo={returnTo}/>)}</div>{!items.length&&<p className="vu-empty">尚无已关联的作品记录。</p>}</section></>;
+  return <><button className="vu-back" onClick={()=>navigate({section:'members',member:null})}><ArrowLeft size={16}/>返回成员</button><section className="vu-member-detail"><figure><Photo src={content.portraits[m.id]?.image??(m.id===historicalPortrait?.memberId?historicalPortrait.url:null)} alt={memberDisplayName(m)+' · 资料照'} priority/>{original&&<button className="vu-outline" onClick={()=>setLightbox({src:original,label:memberDisplayName(m)+' · 官方资料图'})}>查看原图 <ArrowUpRight size={16}/></button>}</figure><div><p className="vu-kicker">VVUP / {officialIds.has(m.id)?'MEMBER':'ARCHIVE'}</p><h1>{memberChineseName(m)||m.stageName}</h1><p className="vu-stage-name">{m.stageName}</p><p>{officialIds.has(m.id)?'官方资料页列示成员':'历史成员 · 已结束本团活动'}</p><p>{m.country}{m.birthDate?' · '+m.birthDate:''}</p>{!officialIds.has(m.id)&&<p>2024《Ain’t Nobody》官方历史概念照 · 活动结束的独立生效日期未确认。</p>}<MemberPhysicalFacts member={m}/><MemberCareerFacts member={m}/><a className="vu-outline" href={artistMemberUrl(m.id,returnTo)}>个人档案与记录 <ArrowUpRight size={16}/></a>{original?<a href={content.portraits[m.id]?.sourceUrl??historicalPortrait?.sourceUrl} target="_blank" rel="noopener noreferrer">官方资料与图片来源 ↗</a>:<p>活动结束的独立生效日期未确认。</p>}</div></section><section><Chapter title="她的作品"/><p className="vu-muted">按已有成员与作品关系展示；MV 个人造型图尚未收录。</p><div className="vu-videos">{items.map(item=><VideoCard key={item.work.id} work={item.work} returnTo={returnTo}/>)}</div>{!items.length&&<p className="vu-empty">尚无已关联的作品记录。</p>}</section></>;
  }
  function releasePage(){
   const r=releases.entries.find(r=>r.id===releaseId);

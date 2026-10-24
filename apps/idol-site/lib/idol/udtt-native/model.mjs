@@ -9,7 +9,8 @@ export function readReviewUrl(value) {
   if (typeof value !== 'string' || !value.startsWith(REVIEW_PATH) || /[\\\u0000-\u0020]/.test(value)) return null;
   try {
     const url = new URL(value, 'https://review.invalid');
-    if (url.origin !== 'https://review.invalid' || url.pathname !== REVIEW_PATH) return null;
+    const canonicalPath=url.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+    if (url.origin !== 'https://review.invalid' || canonicalPath !== REVIEW_PATH) return null;
     if(url.hash)return parseReviewRoute(group,url.hash);
     const section=url.searchParams.get('section'),member=url.searchParams.get('member');
     const page=member?'member':({members:'members',works:'works',records:'works',updates:'timeline'}[section]??'home');

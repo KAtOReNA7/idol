@@ -1,6 +1,18 @@
 # 项目协作入口
 
-## 最新执行决定：Cherry Bullet FNC 官方风格 v15 待确认（2026-10-25）
+## 最新执行决定：Weeekly 新审阅站 v1 待确认（2026-10-25）
+
+用户“同意，继续开发”已确认 Cherry Bullet v15。本轮仅推进 Weeekly，根据实际查看的 [官方 Weverse](https://weverse.io/weeekly/highlight)与[Genie《Bliss》官方发行专题](https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=14428)重写白底灰粉黑字页面，弃用旧周历便签视觉。完整官方横幅/校园团照、六人Bliss同系列具名原照、申智阭历史照与七份历年档案；22发行/58本团署名曲目行、14既有作品/24影像槽、73既有关联与14事件。合约公告日、生效日和Weverse服务结束分开，不推定解散。
+
+**复用 Cherry Bullet v15 的路由、只读公开投影、搜索、原图恢复和部分目录/详情结构；共享手帐沿用布局并换灰粉白黑。** 这是官方社区/发行语言的项目扩展，不是独立官网复刻，交审必须披露。
+
+旧站容量不足，本轮独立 **v1 owner-private 只读审阅已发布**；55原字节资源、63静态文件共39,698,685 bytes，旧v33/v15与主站v186未改。36专项/回归、类型、正式构建、90项九宽布局、55连续交互及线上服务身份Chrome两宽13项核心检查通过；IAB登录继续35秒超时，完整用户会话、真实保存/播放、原生缩放及线上逐素材SHA仍未验。Figma33可编辑画板、55原图组件、五个完整页面和三个手帐子节点取稿；三宽时间轴40px重复缩进已修，字体替代及完整像素保真未过。
+
+分支 codex/weeekly-review-completion，冻结基线 b8baf83c763328dbc6465e6655b18accf329d893，正式工程 apps/idol-site/。[打开 Weeekly 新站 v1](https://idol-weeekly-review-oct25.wuke40758.chatgpt.site/artists/weeekly/index.html)。详见 docs/codex/worklogs/20261025-weeekly-review-completion.md。原图、稳定ID、个人字段与权限保持，未合并main。
+
+**等待 Weeekly 网页确认后再开始下一团，公共功能例外。下方旧门槛均为历史。**
+
+## 历史执行决定：Cherry Bullet FNC 官方风格 v15（已确认，2026-10-25）
 
 用户“同意，继续开发”已确认 Rocket Punch v12。本轮仅推进 Cherry Bullet，按实际查看的 [FNC 官方图库](https://fncent.com/CherryBullet/b/gallery/55485)与[Cherry Dash 发行页](https://fncent.com/?bid=album&m=bbs&ma_cate=1&ma_lang=1&mod=view&r=CherryBullet&uid=55694)重写白灰珊瑚红页面，弃用旧 RED FILE 视觉。官网logo失效、介绍页为空，使用文字品牌；这是公司官网语言的项目扩展，不称完整官网复刻。十份历史成员档案、九发行/28本团署名曲目、七既有作品/14影像槽、55既有关联及九事件。照片为官网具名原图；早期三人照片说明校正为2019年。
 
@@ -10,7 +22,7 @@
 
 分支 `codex/cherrybullet-review-completion` / draft [PR #31](https://github.com/KAtOReNA7/idol/pull/31)，冻结基线 `255424dc8608ec4f8ab4bf8ce170faad228d2e34`，正式工程 `apps/idol-site/`。[打开 Cherry Bullet v15](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/cherrybullet/index.html)。详见 `docs/codex/worklogs/20261025-cherrybullet-review-completion.md`。
 
-**等待 Cherry Bullet 网页确认后再开始 Weeekly，公共功能例外。审阅站容量仅余约4.85 MiB，下一团先评估新站，不压缩原图。下方旧门槛均为历史。**
+**Cherry Bullet 已获用户网页确认；本轮 Weeekly 已使用独立审阅站。下方旧门槛均为历史。**
 
 ## 历史执行决定：Rocket Punch 官方发行视觉 v12（已确认，2026-10-25）
 

@@ -1,0 +1,66 @@
+{
+  "fileKey": "zeLNExz4TbpWRW3uiahef7",
+  "pageId": "1258:1095",
+  "frameCount": 33,
+  "widths": [
+    1440,
+    390,
+    320
+  ],
+  "imageComponents": 55,
+  "frames": {
+    "320": [
+      "1258:1124",
+      "1258:1134"
+    ],
+    "390": [
+      "1258:1113",
+      "1258:1123"
+    ],
+    "1440": [
+      "1258:1102",
+      "1258:1112"
+    ]
+  },
+  "fullPageContexts": [
+    "1258:1102",
+    "1258:1113",
+    "1258:1107",
+    "1258:1120",
+    "1258:1116"
+  ],
+  "fullNotebookSubnodeContexts": [
+    "1260:7136",
+    "1260:7194",
+    "1260:7344"
+  ],
+  "sparseContexts": [
+    "1258:1121",
+    "1260:7184"
+  ],
+  "timelineRepair": {
+    "frames": [
+      "1258:1109",
+      "1258:1120",
+      "1258:1131"
+    ],
+    "itemsPerFrame": 14,
+    "issue": "Absolute timeline markers consumed 40px in horizontal flow; title widths exceeded parent by 2px",
+    "fix": "Marker wrapper positioned absolutely at x=-40; event remains in flow at x=0; title fixed to event width",
+    "eventX": {
+      "320": 76,
+      "390": 76,
+      "1440": 200
+    },
+    "titleOverflow": 0,
+    "screenshotsInspected": true,
+    "final390ContextRead": true
+  },
+  "fontSubstitution": {
+    "Georgia": "Noto Serif",
+    "Arial": "Inter",
+    "Microsoft YaHei": "Noto Sans SC"
+  },
+  "completeFontAndPixelFidelity": false,
+  "capture": "Native capture lacked image fills; reference frame 1256:1095 removed. Real images independently uploaded to editable frames."
+}

@@ -1,7 +1,14 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {createHash} from 'node:crypto';import {createRequire} from 'node:module';
 import {createIzoneReviewCatalog as create} from '../review/izone/catalog.mjs';import {createReadOnlyReviewFetch} from '../review/izone/read-only-fetch.mjs';
-import {reviewArtistHref,reviewRecordHref} from '../review/izone/routes.mjs';
+import {reviewArtistHref,reviewRecordHref,canonicalReviewPath,normalizeReviewLocation} from '../review/izone/routes.mjs';
 const require=createRequire(import.meta.url),load=require('./helpers/public-artist-loader.cjs');
+test('Sites extensionless record redirect resolves only the owned IZ*ONE notebook',()=>{
+ for(const pathname of ['/review-izone/records.html','/review-izone/records']){
+  const location={pathname,search:'?view=members&member=recvxyICzHYJy3&returnTo=%2Fartists%2Fizone'};
+  const before={...location};assert.equal(normalizeReviewLocation(location,{}),'/review-izone/records.html');assert.deepEqual(location,before);
+ }
+ for(const p of ['/','/review-idle/records','/review-izone/records-extra','/review-izone/records/foreign'])assert.equal(canonicalReviewPath(p),p);
+});
 test('historical portraits require IZ*ONE return context and preserve other group journeys',()=>{const {izoneMemberPortrait}=load('lib/idol/izone-photos.ts');for(const m of design.members){assert(izoneMemberPortrait(m,'/artists/izone?section=members&member='+m.id));for(const route of [undefined,'/artists/ive','/artists/lesserafim','/artists/saymyname','https://evil.test/artists/izone','/artists/izone?unknown=x'])assert.equal(izoneMemberPortrait(m,route),null);}});
 test('all release versions keep exact return routes',()=>{const {safeArtistReturn}=load('lib/idol/artist-navigation.ts'),d=JSON.parse(fs.readFileSync(new URL('../data/izone-public.json',import.meta.url)));for(const r of d.releases){const route='/artists/izone?section=records&q=Rose&release='+r.id;assert.equal(safeArtistReturn(route),'/artists/izone?section=records&q=Rose&release='+r.id);}assert.equal(safeArtistReturn('/artists/izone?section=records&release=unknown'),null);assert.equal(d.releases.find(r=>r.id==='izone-bugs-4027020').date,'2021-01-26');assert.equal(design.works.find(w=>w.title==='D-D-DANCE').date,'2023-08-31');assert.equal(d.media.filter(m=>m.kind==='stage').length,7);assert(d.releases.filter(r=>r.scope==='compilation').every(r=>r.tracks.length===1));});
 const design=JSON.parse(fs.readFileSync(new URL('../data/izone-review-editorial.json',import.meta.url))),poison='PRIVATE_MUST_NOT_ENTER_REVIEW';

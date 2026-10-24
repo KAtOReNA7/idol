@@ -67,7 +67,7 @@ const result = await build({
     builder.onResolve({filter:/^izone-review-catalog$/},()=>({path:'catalog',namespace:'review-catalog'}));
     builder.onLoad({filter:/.*/,namespace:'review-catalog'},()=>({contents:'export default '+catalogText,loader:'js'}));
     builder.onResolve({filter:/\.css\?url$/},args=>({path:args.path,namespace:'review-style-url'}));
-    builder.onLoad({filter:/.*/,namespace:'review-style-url'},args=>({contents:'export default '+(args.path.endsWith('/izone-experience.css?url')?'"/review-izone/izone-experience.css"':'undefined'),loader:'js'}));
+    builder.onLoad({filter:/.*/,namespace:'review-style-url'},args=>({contents:'export default '+(args.path.endsWith('/izone-experience.css?url')?JSON.stringify('/review-izone/izone-experience.css?v='+sha(read('app/izone-experience.css')).slice(0,16)):'undefined'),loader:'js'}));
     builder.onLoad({filter:/[/\\]app[/\\][^/\\]+-experience\.css$/},args=>{
       if (['candidate-experience.css','izone-experience.css'].includes(path.basename(args.path))) return;
       ignoredStyles.push(path.relative(root,args.path).split(path.sep).join('/'));
@@ -124,7 +124,7 @@ const csp = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inl
 const jsVersion=sha(fs.readFileSync(path.join(out,'review-izone/app.js'))).slice(0,16);
 const cssVersion=sha(fs.readFileSync(path.join(out,'review-izone/app.css'))).slice(0,16);
 const html = `<!doctype html>
-<html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="${csp}"><title>IZ*ONE · 页面审阅</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/review-izone/app.css?v=${cssVersion}"><style>#izone-review-context{position:relative;z-index:5;padding:8px 16px;background:#fbf4f0;color:#573d46;text-align:center;font:12px/1.5 system-ui,sans-serif}#izone-review-context a{text-decoration:underline;margin-left:12px}</style></head><body><aside id="izone-review-context" role="note">示例资料 · 评分不写入正式手帐<a href="/artists/izone">IZ*ONE 首页</a></aside><div id="root"></div><script type="module" src="/review-izone/app.js?v=${jsVersion}"></script></body></html>\n`;
+<html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="${csp}"><title>IZ*ONE · 页面审阅</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/review-izone/app.css?v=${cssVersion}"><style>#izone-review-context{position:relative;z-index:5;padding:8px 16px;background:#000;color:#d2d0d4;text-align:center;font:12px/1.5 system-ui,sans-serif}#izone-review-context a{text-decoration:underline;margin-left:12px}</style></head><body><aside id="izone-review-context" role="note">示例资料 · 评分不写入正式手帐<a href="/artists/izone">IZ*ONE 首页</a></aside><div id="root"></div><script type="module" src="/review-izone/app.js?v=${jsVersion}"></script></body></html>\n`;
 const entries=['artists/izone/index.html','review-izone/index.html','review-izone/records.html'];
 for (const entry of entries) {fs.mkdirSync(path.dirname(path.join(out,entry)),{recursive:true});fs.writeFileSync(path.join(out,entry),html);}
 const extraInputs=['review/izone/native-navigation.mjs','review/izone/catalog.mjs','scripts/build-izone-review.mjs','data/izone-review-editorial.json','data/izone-review-assets.json',recordStyle.source];

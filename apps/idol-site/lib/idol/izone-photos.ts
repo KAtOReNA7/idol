@@ -8,5 +8,5 @@ export function izoneMemberPortrait(member:Pick<Member,'id'|'groupIds'|'formerGr
  if(!route||new URL(route,'https://site.invalid').pathname!=='/artists/izone')return null;
  if(!member.groupIds.includes(data.group.id)&&!member.formerGroupIds?.includes(data.group.id))return null;
  const person=data.members.find(p=>p.id===member.id);
- return person?{image:person.image,label:'IZ*ONE · One-reeler 宣传照（DBKpop 转载）',date:'2020-11-27'}:null;
+ return person?{image:person.image,label:'IZ*ONE · Panorama 时期官网照片（历史存档）',date:person.photoDate}:null;
 }

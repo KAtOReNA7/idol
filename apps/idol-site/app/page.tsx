@@ -86,6 +86,9 @@ function WorkCard({work,data,onOpen}:{work:Work;data:Catalog;onOpen:()=>void}){r
 function experienceClassFor(data:Catalog|null,route:Route){
  // Match the rendered detail: a valid work takes precedence over a member query.
  const chosenWork=data?.works.find(w=>w.id===route.work);const chosenMember=chosenWork?undefined:data?.members.find(m=>m.id===route.member);
+ // Keep the historical theme on a validated local artist return journey.
+ // A member's current group remains authoritative everywhere else.
+ if(chosenMember&&izoneMemberPortrait(chosenMember,route.artistReturn))return 'candidate-experience candidate-izone-experience';
  const bmExperience=!!(chosenWork?.groupIds.includes(BABYMONSTER_GROUP_ID)||chosenMember?.groupIds.includes(BABYMONSTER_GROUP_ID));
  const xgExperience=!!(chosenWork?.groupIds.includes(XG_GROUP_ID)||chosenMember?.groupIds.includes(XG_GROUP_ID));
  const katseyeExperience=!!(chosenWork?.groupIds.includes(KATSEYE_GROUP_ID)||chosenMember?.groupIds.includes(KATSEYE_GROUP_ID));

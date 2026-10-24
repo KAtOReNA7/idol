@@ -4,6 +4,8 @@ export const RECORDS_PATH = '/review-izone/records.html';
 // Normalize only physical aliases owned by this review. The accepted GENBLUE
 // root page and all unknown paths retain their existing identity.
 export function canonicalReviewPath(pathname) {
+  // Sites redirects named HTML files to extensionless URLs before rendering.
+  if(pathname==='/review-izone/records')return RECORDS_PATH;
   return ['/artists/izone/', '/artists/izone/index.html', '/review-izone', '/review-izone/', '/review-izone/index.html'].includes(pathname) ? ARTIST_PATH : pathname;
 }
 

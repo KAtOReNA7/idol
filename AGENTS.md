@@ -6,9 +6,9 @@
 
 **复用 Rocket Punch v12 的路由、公开投影、搜索、原图恢复和部分目录/详情结构；共享手帐沿用布局并换白灰珊瑚红。** 团页重新编排，搜索/时间轴/手帐为项目扩展，交审必须披露。
 
-同站 **v15 owner-private 只读审阅已发布**。35专项/回归、类型、正式构建、90项九宽布局与51连续交互通过；最终线上验证另见本轮日志。Figma33可编辑画板、六个完整页面节点及三个MV手帐子节点取稿；公告日期、手帐品牌对比度与缺图提示已同步。字体替代和完整像素保真未过。432旧非root文件SHA保持，root仅新增入口；旧站v33与主站v186未改。原图、稳定ID、用户评分/备注/观看状态与权限保持。
+同站 **v15 owner-private 只读审阅已发布**。35专项/回归、类型、正式构建、90项九宽布局与51连续交互通过；最终v15服务身份Chrome的12组桌面/手机核心流程与代码指纹核对通过；IAB最终刷新/恢复超时，完整用户会话、真实保存/播放与80%/125%原生缩放未验。Figma33可编辑画板、六个完整页面节点及三个MV手帐子节点取稿；公告日期、手帐品牌对比度与缺图提示已同步。字体替代和完整像素保真未过。432旧非root文件SHA保持，root仅新增入口；旧站v33与主站v186未改。原图、稳定ID、用户评分/备注/观看状态与权限保持。
 
-分支 `codex/cherrybullet-review-completion`，冻结基线 `255424dc8608ec4f8ab4bf8ce170faad228d2e34`，正式工程 `apps/idol-site/`。[打开 Cherry Bullet v15](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/cherrybullet/index.html)。详见 `docs/codex/worklogs/20261025-cherrybullet-review-completion.md`。
+分支 `codex/cherrybullet-review-completion` / draft [PR #31](https://github.com/KAtOReNA7/idol/pull/31)，冻结基线 `255424dc8608ec4f8ab4bf8ce170faad228d2e34`，正式工程 `apps/idol-site/`。[打开 Cherry Bullet v15](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/cherrybullet/index.html)。详见 `docs/codex/worklogs/20261025-cherrybullet-review-completion.md`。
 
 **等待 Cherry Bullet 网页确认后再开始 Weeekly，公共功能例外。审阅站容量仅余约4.85 MiB，下一团先评估新站，不压缩原图。下方旧门槛均为历史。**
 

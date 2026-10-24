@@ -63,6 +63,23 @@
 - 当前同站 **v15** 部署成功：`https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/cherrybullet/index.html`。站点 `appgprj_6adc93a0d3008191a9ebeb5700dd2d0a`；回读确认owner/custom，仅owner一人、external0、groups0。
 - Sites source commit `e1957a56e171561418190df2be0711f14e356a18`；deployment `appgdep_6add0f35c5408191950152f3236cc017`；version ID `appgprj_6adc93a0d3008191a9ebeb5700dd2d0a~appgver_430c827b1ca4819196d885f8f728bc0b`。
 - 最终代码指纹 `0388cc3a8f08fe599a952e76da43b1e53ea4e10fbf2a1765bd4435ba3e0add21`；打包tar 263,720,960 bytes、477项，SHA `dcc16806a88e3f83ab150c831973510630fbfc37d8bf0cac1fa11fc16a276e38`。未发布的source中间提交不冒充部署版本。v13/v14为本轮已替代修正过程。
-- 最终浏览器实际读到线上manifest并与本地指纹一致，390首页全部图片加载、七人及团照原图打开/关闭已通过；剩余最终流程复验中。
+- 最终浏览器实际读到线上manifest并与本地指纹一致，390首页全部图片加载、七人及团照原图打开/关闭已通过；最终两宽流程已复验通过，见下表。
 - 直接API资源请求为Cloudflare 403，不据此声称线上36素材HTTP/SHA已验；也不能据此认定token失效。正常Chrome带站点服务凭证可读manifest与页面。IAB曾读到v13完整首页；最终刷新45秒、恢复getTab20秒超时，完整最终IAB流程未验，不跨版本继承。
 - 源码仓库已核实public；仅追加公开资料和原图，不新增个人快照。凭证仅内存/stdin，无令牌或认证产物入仓；Windows CRLF检查采用 `git -c core.whitespace=cr-at-eol diff --check`。
+
+- 代码与进度提交 `c43ade79d0842307bd256f06ec55a72be97499d4` 已推送；draft [PR #31](https://github.com/KAtOReNA7/idol/pull/31)，base为已确认Rocket Punch分支。最终文档补充以远端HEAD为准，未合并main。
+
+## 最终 v15 线上验证
+
+2026-10-25，本机Chrome服务身份，390×1000与1440×1000。不是用户IAB会话；只发送同站服务认证头，外站不携带。直接API请求403后，改用正常Chrome加载manifest成功，未绕过证书或安全警告。测试曾在异步导航和主题CSS加载前读取DOM，等待实际页面/样式就绪后完整重跑；最终13项通过、pageerror为0。
+
+| 检查 | 最终结果 |
+| --- | --- |
+| 身份/版本 | 在线manifest与最终源码指纹完全一致。 |
+| 非空白/错误覆盖层 | 两宽首页七人成员、完整团照及主要内容可见，无框架错误覆盖层。 |
+| 图片与布局 | 首页所有图片decode成功、无横向溢出；两宽截图已留。 |
+| 运行错误 | 最终线上pageerror 0；本地90项布局记录的console error/pageerror均为0。 |
+| 连续交互 | 两宽各6组：主页/团照原图，十人名册→MIRAE→手帐→精确返回，发行搜索→5曲详情→返回，舞台筛选→舞台手帐→返回，9事件→作品→时间轴返回；包括2019公告显示及紧凑缺图提示。 |
+| 原始字节 | 本地36资产pins与432旧托管文件SHA通过；线上API逐资源SHA受403限制，未宣称通过。 |
+
+证据：`docs/codex/evidence/20261025-cherrybullet/online-qa.json`，最终截图在scratch `online-home-390.png`、`online-home-1440.png`；交审显示1440截图。命令为 `node --test tests/cherrybullet-review-boundary.test.mjs tests/rocketpunch-review-boundary.test.mjs tests/everglow-review-boundary.test.mjs`、`node node_modules/typescript/bin/tsc --noEmit`、`npm run build`，临时Playwright脚本为scratch `qa.mjs`、`interactions.mjs`、`online-final-browser.mjs`。最后一项的凭证仅stdin，不入证据。

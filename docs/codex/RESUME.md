@@ -6,7 +6,7 @@
 - [本轮实现、验证、发布日志](worklogs/20261024-tracer-review-completion.md)
 - [Figma 30 个可编辑画板](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1076-1095)
 - [Figma 节点索引](worklogs/20261024-tracer-figma-frames.json)
-- GitHub 分支 `codex/tracer-review-completion`，PR base 为 `codex/geenius-review-completion`；实际 PR 链接创建后记录于日志。
+- GitHub 分支 `codex/tracer-review-completion`，PR base 为 `codex/geenius-review-completion`；draft [PR #19](https://github.com/KAtOReNA7/idol/pull/19)；代码 `3dca0012bd6f809270d82ec019085a0b229c5110` 已推送，后续交接以本分支最新远端 HEAD 为准。
 
 正式工程 `apps/idol-site/`。冻结起点 `d94c11d0554d4414a02cf09630fce0b516b35816`。先检查工作树，再显式 fetch 任务分支并比较远端 HEAD；不从旧 main 开工，不 reset/clean/force push。全局 Git 代理 10808 不可用，本轮命令级使用已配置的 7877 代理，未改全局设置。
 

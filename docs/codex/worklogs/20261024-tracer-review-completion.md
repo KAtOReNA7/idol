@@ -57,6 +57,6 @@ npm run build
 本机证据根：`C:/Users/61919/.codex/visualizations/2026/10/23/01a1694f-9d8c-7f82-a9a8-1732f12fea0e/`。
 `tracer/browser.json`、`additional-qa.json`、`site-additive-proof.json`、`source-upload-batches.json`、`build-final.log`、`online-final.png`、`home-1440-viewport.png`、`home-390.png`；独立复审见 `tracer-research/independent-*`。公开摘要见 [发布证据](20261024-tracer-public-delivery.json)。不把含临时凭证、签名链接或私人快照的工具全量响应入仓。
 
-GitHub PR 创建后在此记录实际链接。结束前代码与本日志同提交并推送任务分支，第二次文档提交补实际PR；不merge main。线上交付标签保留；本机审阅服务是本次临时服务，交付结束停止。下一步为用户网页确认以及明确未验项，不先开发 W!TCHX。
+GitHub draft [PR #19](https://github.com/KAtOReNA7/idol/pull/19) 已创建并附到本会话，base 为 `codex/geenius-review-completion`。代码与本日志已同提交 `3dca0012bd6f809270d82ec019085a0b229c5110` 并正常推送；本次文档提交补实际PR，不merge main。线上交付标签已保留；本机临时审阅服务 session 45760 已停止。下一步为用户网页确认以及明确未验项，不先开发 W!TCHX。
 
 提交前规范化五个新增 JSON 的 CRLF→LF，并修正文档字体名称为 DM Sans。重新构建审阅包，30 个运行文件逐字节相同；仅来源 manifest 的源码指纹变为 `2f341331777ac43813a1dbf95550c09c8d2b101127b258fc39594bc39d692255`。发布指纹保留为原值，不为纯换行重复发布。最终 staged diff --check 通过。

@@ -1,46 +1,41 @@
-@font-face{font-family:CherryBulletDetail;src:url('/fonts/Anton-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-.candidate-cherrybullet-experience{--paper:#fff6ef;--white:#fffaf5;--ink:#4a1822;--muted:#825c62;--line:#d7aaa9;--rose:#b42d43;--blush:#f4dfd8;--lilac:#ead0ca;background:var(--paper);color:var(--ink)}
-.candidate-cherrybullet-experience .work-detail-top>*{min-width:0}
-.candidate-cherrybullet-experience .work-aside h1,.candidate-cherrybullet-experience .mobile-work-heading h1{font-family:CherryBulletDetail,Georgia,serif;line-height:1.15;overflow-wrap:anywhere}
-.candidate-cherrybullet-experience .work-aside h1{font-size:clamp(32px,3.4vw,50px)}
-.candidate-cherrybullet-experience .video-mode-tabs{border:1px solid var(--line);background:var(--white);border-radius:0}
-.candidate-cherrybullet-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:var(--paper)}
-.candidate-cherrybullet-experience .video-play{border-radius:0;background:var(--rose);color:var(--paper);min-height:48px}
-.candidate-cherrybullet-experience .button{border-radius:0;white-space:normal;line-height:1.45;min-height:44px}
-.candidate-cherrybullet-experience .button.primary{background:var(--rose);color:var(--paper);border-color:var(--rose)}
-.candidate-cherrybullet-experience .editor-fields input,.candidate-cherrybullet-experience .editor-fields textarea,.candidate-cherrybullet-experience .editor-fields select{background:var(--white);color:var(--ink);border-color:var(--line);border-radius:0}
-.candidate-cherrybullet-experience .editor,.candidate-cherrybullet-experience .editor-actions{border-radius:0}
-.candidate-cherrybullet-experience .cast-card{border-radius:0;background:var(--white)}
-.candidate-cherrybullet-experience .cast-scores{flex-wrap:wrap;gap:10px}
-.candidate-cherrybullet-experience .image-label{background:var(--white);color:var(--muted);border-radius:0}
-.candidate-cherrybullet-experience .member-detail{display:grid;align-items:start}
-.candidate-cherrybullet-experience .member-detail h1{font-size:clamp(36px,4.3vw,66px);line-height:1.25;overflow-wrap:anywhere}
-.candidate-cherrybullet-experience .member-work-card{border-radius:0;border:1px solid var(--line)}
-.candidate-cherrybullet-experience .detail-return{border:1px solid var(--line);border-radius:0;background:var(--white);padding:20px}
+@font-face{font-family:CherryBulletGothic;src:url('/artist/cherrybullet/fonts/NanumGothic.woff') format('woff');font-weight:400;font-display:swap}
+.candidate-cherrybullet-experience{--paper:#fff;--white:#fff;--ink:#1f1f1f;--muted:#646464;--line:#ddd;--rose:#e54132;--blush:#f5f5f5;--lilac:#f5f5f5;min-height:100vh;background:#fff;color:var(--ink);color-scheme:light;font-family:var(--font-body),Arial,sans-serif;overflow-wrap:anywhere}
+.candidate-cherrybullet-experience .header{height:auto;min-height:90px;border-bottom:1px solid var(--line);background:#fff;gap:24px}
+.candidate-cherrybullet-experience .brand{font:30px/1.2 CherryBulletGothic,Arial,serif;letter-spacing:.04em}.candidate-cherrybullet-experience .header nav{background:#fff}
+.candidate-cherrybullet-experience .work-aside,.candidate-cherrybullet-experience .cast-card,.candidate-cherrybullet-experience .editor,.candidate-cherrybullet-experience .member-work-summary,.candidate-cherrybullet-experience .stage-source,.candidate-cherrybullet-experience .watch-next,.candidate-cherrybullet-experience .photo,.candidate-cherrybullet-experience .member-work-card,.candidate-cherrybullet-experience .video-stage,.candidate-cherrybullet-experience .button,.candidate-cherrybullet-experience .video-mode-tabs,.candidate-cherrybullet-experience .video-mode-tabs button{border-radius:0;min-width:0;box-shadow:none}
+.candidate-cherrybullet-experience .button{white-space:normal;max-width:100%;min-height:44px;border-color:var(--line);background:transparent;color:var(--ink)}
+.candidate-cherrybullet-experience .button.primary,.candidate-cherrybullet-experience .button.primary:hover{background:var(--rose);border-color:var(--rose);color:#1f1f1f}
+.candidate-cherrybullet-experience .video-mode-tabs{border:1px solid var(--line);background:#fff}.candidate-cherrybullet-experience .video-mode-tabs button{min-height:44px}.candidate-cherrybullet-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:#1f1f1f}
+.candidate-cherrybullet-experience .photo-empty,.candidate-cherrybullet-experience .video-fallback,.candidate-cherrybullet-experience .video-caption{color:var(--muted)}
+.candidate-cherrybullet-experience .photo{background:#fff}.candidate-cherrybullet-experience .member-detail>.photo img{object-fit:contain}.candidate-cherrybullet-experience .member-name{font-size:20px;line-height:1.4}.candidate-cherrybullet-experience .cast-scores{flex-wrap:wrap}
+.candidate-cherrybullet-experience .editor-fields input,.candidate-cherrybullet-experience .editor-fields select,.candidate-cherrybullet-experience .editor-fields textarea,.candidate-cherrybullet-experience .score-input{background:#f5f5f5;color:var(--ink);border-color:var(--line);border-radius:0}
+.candidate-cherrybullet-experience .editor,.candidate-cherrybullet-experience .work-score{background:#fff;border-color:var(--line)}
+.candidate-cherrybullet-experience .my-note,.candidate-cherrybullet-experience .caption-help{background:var(--white);border:1px solid var(--line);border-radius:0;color:var(--muted)}
+.candidate-cherrybullet-experience .detail-return{border:0;border-bottom:1px solid var(--line);background:#fff;border-radius:0;padding:14px 0 24px}
+.candidate-cherrybullet-experience .alternative-card,.candidate-cherrybullet-experience .watch-lead-card{background:var(--white);border-color:var(--line);border-radius:0}
+.candidate-cherrybullet-experience .stage-view .mobile-work-heading h1{overflow-wrap:anywhere}
+.candidate-cherrybullet-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(280px,1fr);gap:40px;align-items:start;padding-top:30px}
+.candidate-cherrybullet-experience .work-aside{padding:0 0 0 30px;border:0;border-left:1px solid var(--line);background:#fff}
+.candidate-cherrybullet-experience .work-aside h1{font:clamp(32px,3.5vw,52px)/1.2 CherryBulletGothic,Arial,'Microsoft YaHei',serif;font-weight:400}
+.candidate-cherrybullet-experience .video-stage{border:1px solid var(--line);background:#f5f5f5}.candidate-cherrybullet-experience .video-play{border-radius:50%;background:var(--rose);color:#1f1f1f}
+.candidate-cherrybullet-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}
+.candidate-cherrybullet-experience .cast-card{display:grid;grid-template-columns:minmax(100px,.65fr) minmax(0,1fr);gap:24px;padding:24px 0;border:0;border-top:1px solid var(--line);background:#fff;align-items:start}
+.candidate-cherrybullet-experience .cast-copy{padding:0}.candidate-cherrybullet-experience .cast-card .photo{aspect-ratio:3/4;align-self:start}.candidate-cherrybullet-experience .cast-card .photo img{object-fit:contain}
+.candidate-cherrybullet-experience .stage-source{border:1px solid var(--line);padding:24px;background:var(--white)}.candidate-cherrybullet-experience .stage-overall-note{border-top:1px solid var(--line);padding-top:22px}
+.candidate-cherrybullet-experience .watch-next{border:1px solid var(--line);background:var(--white)}
+.candidate-cherrybullet-experience .member-detail{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:72px;align-items:center;border:0;padding-block:36px 60px}
+.candidate-cherrybullet-experience .member-detail>.photo{border:0;background:#fff;max-height:680px;aspect-ratio:3/4}.candidate-cherrybullet-experience .member-detail h1{font-weight:400;letter-spacing:.04em}.candidate-cherrybullet-experience .member-work-summary{border:1px solid var(--line);background:var(--white)}
+.candidate-cherrybullet-experience .member-work-card{background:#fff;border-color:var(--line)}
+.candidate-cherrybullet-experience .member-work-card__art:has(.member-work-photo-button:disabled .member-work-card__empty){aspect-ratio:auto;background:#f5f5f5}
+.candidate-cherrybullet-experience .member-work-photo-button:disabled:has(.member-work-card__empty){position:static;height:auto;min-height:60px;padding:16px;aspect-ratio:auto;opacity:1}
+.candidate-cherrybullet-experience .header .brand,.candidate-cherrybullet-experience .header .brand small{color:#fff}
+.candidate-cherrybullet-experience .image-label{background:#f5f5f5;color:#1f1f1f;border:1px solid #ddd;border-radius:0;left:12px;right:12px;bottom:12px;max-width:calc(100% - 24px);padding:8px 10px;font-size:11px;line-height:1.5;white-space:normal}
+@media(max-width:1000px){.candidate-cherrybullet-experience .work-detail-top{grid-template-columns:1fr;gap:30px}.candidate-cherrybullet-experience .work-aside{padding:28px 0 0;border:0;border-top:1px solid var(--line)}.candidate-cherrybullet-experience .work-aside>.editor,.candidate-cherrybullet-experience .work-score{max-width:760px}.candidate-cherrybullet-experience .cast-grid{grid-template-columns:1fr}.candidate-cherrybullet-experience .cast-card{grid-template-columns:minmax(120px,.5fr) minmax(0,1fr)}}
+@media(max-width:760px){.candidate-cherrybullet-experience .header{flex-wrap:wrap;min-height:76px;padding-top:16px;gap:16px}.candidate-cherrybullet-experience .header nav{height:auto;gap:18px}.candidate-cherrybullet-experience .video-mode-tabs{width:100%;flex:1}.candidate-cherrybullet-experience .video-mode-tabs button{flex:1}.candidate-cherrybullet-experience .editor-fields input,.candidate-cherrybullet-experience .editor-fields select,.candidate-cherrybullet-experience .editor-fields textarea{font-size:16px}.candidate-cherrybullet-experience .cast-copy{min-width:0}.candidate-cherrybullet-experience .member-name{font-size:19px}.candidate-cherrybullet-experience .detail-return .button{min-height:48px;min-width:0;white-space:normal}.candidate-cherrybullet-experience .stage-view .mobile-work-heading{display:block}.candidate-cherrybullet-experience .work-detail-top,.candidate-cherrybullet-experience .member-detail{min-width:0}.candidate-cherrybullet-experience .work-aside h1{font-size:34px}.candidate-cherrybullet-experience .cast-card{grid-template-columns:1fr;gap:22px;padding:24px 0}.candidate-cherrybullet-experience .cast-card .photo{aspect-ratio:3/4;max-height:460px}.candidate-cherrybullet-experience .member-detail{grid-template-columns:1fr;gap:28px;padding-block:24px}.candidate-cherrybullet-experience .stage-source{padding:18px}}
+@media(prefers-reduced-motion:reduce){.candidate-cherrybullet-experience *{scroll-behavior:auto!important;transition:none!important}}
 
-.candidate-cherrybullet-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,1fr);gap:26px}
-.candidate-cherrybullet-experience .work-aside{border-top:8px solid var(--rose);padding:26px 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 34px}
-.candidate-cherrybullet-experience .work-aside>h1,.candidate-cherrybullet-experience .work-aside>.tags{grid-column:1/-1}
-.candidate-cherrybullet-experience .work-aside>.editor{grid-column:2;grid-row:4/8}
-.candidate-cherrybullet-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.candidate-cherrybullet-experience .cast-card{border-top:4px solid var(--rose);padding:16px}
-.candidate-cherrybullet-experience .stage-view .work-detail-top{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:30px}
-.candidate-cherrybullet-experience .stage-view .work-aside{display:block;border-top-width:1px;border-left:7px solid var(--rose);padding:24px}
-.candidate-cherrybullet-experience .stage-source{border-inline:0;border-bottom:3px double var(--line);padding:22px 0}
-.candidate-cherrybullet-experience .member-detail{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:50px}
-.candidate-cherrybullet-experience .member-detail>div:last-child{border-top:8px solid var(--rose);padding-top:22px}
+.candidate-cherrybullet-experience .work-aside h1{font-style:normal}.candidate-cherrybullet-experience .member-detail h1{font-family:Arial,'Microsoft YaHei',sans-serif}.candidate-cherrybullet-experience .header nav{display:flex;flex-wrap:wrap}.candidate-cherrybullet-experience .brand{font-style:normal}.candidate-cherrybullet-experience .private-pill{white-space:normal}.candidate-cherrybullet-experience .image-label{background:#fff;color:#1f1f1f}
 
-@media(max-width:1100px){.candidate-cherrybullet-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:760px){
- .candidate-cherrybullet-experience .work-detail-top,.candidate-cherrybullet-experience .stage-view .work-detail-top{grid-template-columns:minmax(0,1fr);gap:24px}
- .candidate-cherrybullet-experience .cast-grid{grid-template-columns:1fr}
- .candidate-cherrybullet-experience .member-detail{grid-template-columns:1fr}
- .candidate-cherrybullet-experience .work-aside h1,.candidate-cherrybullet-experience .mobile-work-heading h1{font-size:36px}
- .candidate-cherrybullet-experience .member-detail h1{font-size:36px}
- .candidate-cherrybullet-experience .video-mode-tabs{width:100%}
- .candidate-cherrybullet-experience .video-mode-tabs button{flex:1;min-width:0}
- .candidate-cherrybullet-experience .detail-return{padding:16px 12px}
- .candidate-cherrybullet-experience .member-name{font-size:18px;line-height:1.4;overflow-wrap:anywhere}
- .candidate-cherrybullet-experience .editor-fields input,.candidate-cherrybullet-experience .editor-fields textarea,.candidate-cherrybullet-experience .editor-fields select{font-size:16px}
- .candidate-cherrybullet-experience .work-aside{display:block;padding:22px 18px}.candidate-cherrybullet-experience .work-aside>.editor{grid-column:auto;grid-row:auto}.candidate-cherrybullet-experience .stage-view .work-aside{border-left-width:4px;padding:20px 16px}
-}
+.candidate-cherrybullet-experience{color:#1f1f1f}.candidate-cherrybullet-experience .image-label{color:#1f1f1f}.candidate-cherrybullet-experience .brand,.candidate-cherrybullet-experience .work-aside h1{font-weight:700}
+
+.candidate-cherrybullet-experience .header{background:#1f1f1f;color:#fff}.candidate-cherrybullet-experience .header nav{background:#1f1f1f}.candidate-cherrybullet-experience .brand,.candidate-cherrybullet-experience .header nav button{color:#fff}.candidate-cherrybullet-experience .header nav button.active{color:#e54132}.candidate-cherrybullet-experience .button.primary,.candidate-cherrybullet-experience .button.primary:hover,.candidate-cherrybullet-experience .video-mode-tabs button[aria-selected=true],.candidate-cherrybullet-experience .video-play{color:#fff}.candidate-cherrybullet-experience .image-label{background:#fff;color:#646464}

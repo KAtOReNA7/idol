@@ -133,4 +133,3 @@ const sourceFingerprint=sha(JSON.stringify({inputs,assets:assetManifest,catalog:
 const manifest={kind:'fromis9-static-read-only-review',sourceFingerprint,sourceInputs:inputs,catalogSha256:sha(catalogText),sanitizedRelations:catalog.ratings.length,apiIsolationChecks:isolationCases.length,entries,recordsPath:'/review-fromis9/records.html',preservesExistingRoot:true,ignoredOtherGroupStyles:ignoredStyles.sort(),assets:assetManifest,bundleInputs:Object.keys(result.metafile.inputs).sort()};
 fs.writeFileSync(path.join(out,'review-fromis9/manifest.json'),JSON.stringify(manifest,null,2)+'\n');
 console.log(JSON.stringify({output:out,sourceFingerprint,assets:assetManifest.length,assetBytes:assetManifest.reduce((sum,item)=>sum+item.bytes,0),sanitizedRelations:catalog.ratings.length,apiIsolationChecks:isolationCases.length,jsBytes:fs.statSync(path.join(out,'review-fromis9/app.js')).size,cssBytes:fs.statSync(path.join(out,'review-fromis9/app.css')).size},null,2));
-

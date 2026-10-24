@@ -38,4 +38,4 @@
 - 未验：真实owner保存、真实播放器播放、80%/125%原生缩放、用户IAB会话全流程、Figma全量像素保真、张圭悧官方照片和个别历史日期/当前活动人数。
 - 本机scratch：`C:/Users/61919/.codex/visualizations/2026/10/23/01a1694f-9d8c-7f82-a9a8-1732f12fea0e/fromis9/`；包括qa.json、interactions-hosting.json、live-check.json、increment-proof.json、图片与可重现脚本，无凭证入仓。运行审阅：`node scripts/build-fromis9-review.mjs --out <absolute scratch path>` 后静态服务，托管无扩展名records跳转已覆盖。
 
-- 收尾仅规范化CSS行尾；重新构建 fingerprint 为 `77a017a64edcd81a6629fec7fdfc3426b78fa64864876002a63bbd9c854d4788`，76个运行时交付文件与v9字节一致（仅manifest来源指纹改变），无需重复发布。
+- 收尾仅规范化CSS和新增脚本行尾；重新构建 fingerprint 为 `f22504ddeae95536278186d1112c8f8c2974de002f0d7073124b9b45663c1e17`，76个运行时交付文件与v9字节一致（仅manifest来源指纹改变），无需重复发布。

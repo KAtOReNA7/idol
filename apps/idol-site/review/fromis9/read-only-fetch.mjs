@@ -19,4 +19,3 @@ export function createReadOnlyReviewFetch(catalog, origin) {
     return json(catalog, 200);
   };
 }
-

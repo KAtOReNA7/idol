@@ -13,4 +13,3 @@ export function reviewTimelineSource(file,source) {
   if(!needle||source.split(needle).length!==2)throw new Error('Native timeline location changed; review this adapter before building');
   return 'import {canonicalReviewPath} from "../review/fromis9/routes.mjs";\n'+source.replace(needle,'canonicalReviewPath(location.pathname)+location.search');
 }
-

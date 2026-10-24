@@ -35,4 +35,3 @@ createRoot(target).render(<PublicAccessProvider canEdit={false}>
     {route===ARTIST_PATH?<Fromis9Artist content={content}/>:route===RECORDS_PATH?<App/>:<main><h1>此审阅页仅提供 Fromis9</h1><a href={ARTIST_PATH}>返回 fromis_9 首页</a></main>}
   </ArtistTimelineHostProvider>
 </PublicAccessProvider>);
-

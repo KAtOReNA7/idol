@@ -75,4 +75,3 @@ export function installReviewLinks(root, location, Observer = MutationObserver) 
   update();
   return () => observer.disconnect();
 }
-

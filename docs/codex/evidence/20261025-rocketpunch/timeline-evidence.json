@@ -1,0 +1,105 @@
+{
+  "checkedAt": "2026-10-25",
+  "entries": [
+    {
+      "key": "juri-contract",
+      "sourceUrl": "https://weverse.io/rocketpunch/notice/19667",
+      "sourceTitle": "[NOTICE] 로켓펀치 쥬리 계약 종료 안내",
+      "sourceType": "official-company-notice",
+      "accessMethod": "Search connector read official indexed notice text; local raw HTML is shell only",
+      "shortExcerpt": "오늘(24일)을 기점으로 당사와의 매니지먼트 계약을 종료하고",
+      "claim": "JURI与Woollim的管理合同于公告所说24日结束；公告另称团体之后以五人体制活动。",
+      "eventDate": "2024-05-24",
+      "eventDatePrecision": "day; day 24 from official notice, year/month corroborated by dated contemporary report",
+      "officialPublishedDate": null,
+      "officialPublishedDatePrecision": "not exposed by retrieved official text",
+      "dateEvidence": [
+        {
+          "url": "https://weverse.io/rocketpunch/notice/19667",
+          "value": "24日",
+          "precision": "day-of-month only"
+        },
+        {
+          "url": "https://www.soompi.com/article/1663731wpp/rocket-punchs-takahashi-juri-to-leave-the-group-and-woollim",
+          "value": "2024-05-24",
+          "precision": "full publication day; report says announcement was made May 24"
+        }
+      ],
+      "doNotInfer": [
+        "Do not reuse five-member statement as proof of 2026 active roster",
+        "Do not infer group disbandment"
+      ]
+    },
+    {
+      "key": "four-members-contract",
+      "sourceUrl": "https://weverse.io/rocketpunch/notice/24507",
+      "sourceTitle": "[NOTICE] 로켓펀치 전속 계약 관련 안내",
+      "sourceType": "official-company-notice",
+      "accessMethod": "Search connector read official indexed notice text; local raw HTML is shell only",
+      "shortExcerpt": "연희, 윤경, 소희, 다현의 전속 계약이 오는 12월 31일부로 종료되어",
+      "claim": "公告称延熙、尹景、素姬、多玹的Woollim专属合同将于12月31日结束。",
+      "eventDate": "2024-12-31",
+      "eventDatePrecision": "day; December 31 explicit in official notice, year corroborated by dated contemporary report",
+      "officialPublishedDate": null,
+      "officialPublishedDatePrecision": "not exposed by retrieved official text",
+      "dateEvidence": [
+        {
+          "url": "https://weverse.io/rocketpunch/notice/24507",
+          "value": "12月31日",
+          "precision": "month/day only"
+        },
+        {
+          "url": "https://www.soompi.com/article/1712733wpp/4-out-of-5-rocket-punch-members-leave-woollim-entertainment",
+          "value": "2024-12-27",
+          "precision": "full publication day; reports December 27 announcement of forthcoming December 31 contract conclusion"
+        }
+      ],
+      "doNotInfer": [
+        "Contract conclusion is not an official group-disbandment date",
+        "Do not silently treat publication date December 27 as contract end"
+      ]
+    },
+    {
+      "key": "suyun-company-contract",
+      "sourceUrl": "https://weverse.io/rocketpunch/notice/38032",
+      "sourceTitle": "[NOTICE] Notification of the Expiration of Rocket Punch Member SUYUN’s Exclusive Contract",
+      "sourceType": "official-company-notice",
+      "accessMethod": "Search connector open read official notice body; local raw HTML is shell only",
+      "shortExcerpt": "the exclusive contract of SuYun, a member of Rocket Punch, has come to an end",
+      "claim": "Woollim官方确认SUYUN专属合同已经结束。所读正文不含具体生效日。",
+      "eventDate": null,
+      "eventDatePrecision": "unknown",
+      "officialPublishedDate": null,
+      "officialPublishedDatePrecision": "not exposed by retrieved official text",
+      "dateEvidence": [],
+      "doNotInfer": [
+        "Do not assign 2026-08-06 as exact contract effective/end date solely from artist letter",
+        "Do not infer group disbandment"
+      ]
+    },
+    {
+      "key": "suyun-personal-letter",
+      "sourceUrl": "https://weverse.io/rocketpunch/artist/3-238220157",
+      "sourceTitle": "SuYun公开信：结束与Woollim的专属合同",
+      "sourceType": "official-artist-post",
+      "accessMethod": "Search connector open read dated public artist post",
+      "shortExcerpt": "오랜 시간 함께해 온 울림엔터테인먼트와의 전속계약을 마무리하게 되었습니다.",
+      "claim": "SUYUN在2026-08-06公开信中确认已结束与Woollim的专属合同。该日期可证为公开信发表日。",
+      "eventDate": null,
+      "eventDatePrecision": "exact contract end day not stated",
+      "officialPublishedDate": "2026-08-06",
+      "officialPublishedDatePrecision": "day",
+      "dateEvidence": [
+        {
+          "url": "https://weverse.io/rocketpunch/artist/3-238220157",
+          "value": "Aug 6, 2026",
+          "precision": "full publication date visible in retrieved post"
+        }
+      ],
+      "doNotInfer": [
+        "If added to timeline, label as published personal letter/confirmation on 2026-08-06, not exact contract expiration",
+        "Do not infer group disbandment"
+      ]
+    }
+  ]
+}

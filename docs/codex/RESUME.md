@@ -1,6 +1,18 @@
-# 接续：EVERGLOW 官网风格 v11 待确认
+# 接续：Rocket Punch 官方发行视觉 v12 待确认
 
-## 最新执行决定：EVERGLOW 官网风格 v11 待确认（2026-10-25）
+## 最新执行决定：Rocket Punch 官方发行视觉 v12 待确认（2026-10-25）
+
+用户“同意，继续开发”已确认 EVERGLOW v11。本轮仅推进 Rocket Punch，依据实际查看的 [Woollim《BOOM》官方发行页](https://www.woolliment.com/album/boom)独立重写黑白黄、Open Sans、细线与完整团照，弃用旧票券视觉。这是公司官方发行页的项目扩展，不称独立团官网复刻。六位历年成员使用同系列官网具名原照、等大显示框；15发行/55本团署名曲目、11既有作品/20影像槽、54关系及13事件。合同结束日期与公告日期分开，不推定解散或当前活动阵容。
+
+**团页视觉独立重写；路由、公开投影、搜索、原图恢复与手帐业务复用 EVERGLOW v11 / fromis_9 v10；共享手帐沿用布局并换黑黄配色。** 交审必须披露，目录/时间轴/手帐属于项目扩展。
+
+同站 **v12 owner-private 只读审阅已发布**。43专项/回归、类型、正式构建、90项九宽布局、45连续交互与12组桌面/手机线上核心流程通过；线上补查为服务身份Chrome，非用户IAB会话。IAB实际读到首页，成员点击40秒超时，完整IAB流程未验。Figma30可编辑画板、七个关键完整节点取稿，字体替代和完整像素保真未过；自动capture完成但缺图，参考Frame已清理，原生画板保留。381旧非root文件SHA保持，root仅新增入口；旧站v33、主站v186未改。真实保存/播放、80%/125%原生缩放未验。
+
+分支 `codex/rocketpunch-review-completion` / draft [PR #30](https://github.com/KAtOReNA7/idol/pull/30)，冻结基线 `1e49aa316c2c02bc7afc23fa915cdb548efded6d`，正式工程 `apps/idol-site/`。[打开 Rocket Punch v12](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/rocketpunch/index.html)。详见 `docs/codex/worklogs/20261025-rocketpunch-review-completion.md`。
+
+**等待 Rocket Punch 网页确认后再开始下一团，公共功能例外。下方旧门槛均为历史。**
+
+## 历史执行决定：EVERGLOW 官网风格 v11（已确认，2026-10-25）
 
 用户“同意，继续开发”已确认 fromis_9 v10。本轮仅推进 EVERGLOW，依据实际查看的 [CHXXTA 艺人官网](https://www.chxxta.com/everglow)与[官方社区](https://everglow.bstage.in/)重写黑底、紫色原字标、官网窄体字及完整四人团照，弃用旧棕橙放映室视觉。当前四人与历来六人分开；六张单人照沿用具名旧 Weverse 原图，明确标注历史时期。16项发行 / 42条本团署名曲目行、10既有作品 / 19影像槽、58既有关联及13原事件保持。
 

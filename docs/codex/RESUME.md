@@ -17,6 +17,7 @@
 - 仓库 KAtOReNA7/idol，正式工程 `apps/idol-site/`；活动分支 `codex/hitgs-review-completion`，PR base `codex/vcha-review-completion`。
 - 先检查工作树，显式fetch活动分支并比较最新远端HEAD。默认fetch refspec只覆盖旧KiiiKiii，不能据默认fetch判断最新进度；不reset/clean/force push。
 - [HITGS完整交接](worklogs/20261024-hitgs-review-completion.md)、[发布证据](worklogs/20261024-hitgs-public-delivery.json)、[Figma画板索引与缺口](worklogs/20261024-hitgs-figma-frames.json)。以任务分支最新远端HEAD接续。
+- draft [PR #24](https://github.com/KAtOReNA7/idol/pull/24)，代码提交 `8b93802920305f8a1b4fdc3cae96fb8125fbbf32` 已推送；后续文档提交以远端最新HEAD为准。
 - 新站 `appgprj_6adc93a0d3008191a9ebeb5700dd2d0a` v2；旧站 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3` 仍v33；正式主站仍v186。不能混淆版本或覆盖主站。
 - 审阅构建 `node scripts/build-hitgs-review.mjs --out <仓库外独立绝对目录>`；28资产（26图片及2字体）全部本地原字节。静态审阅清空个人字段，生产保存未验。
 - 代码、服务、Playwright均在用户本机Windows；服务4191仅为本地验证，最终交审使用线上URL。

@@ -60,4 +60,6 @@ Browser plugin not available；本地使用已有Playwright/Chrome，不安装�
 
 ## 接续与验收边界
 
+代码提交 `8b93802920305f8a1b4fdc3cae96fb8125fbbf32` 已推送，draft [PR #24](https://github.com/KAtOReNA7/idol/pull/24)，base为VCHA分支。最终本地HTTP服务4191已停止；线上链接保留。大封面图在Chrome中已解码为3000×3000、捕获脚本存在且无控制台错误，但Figma持续pending，未靠新ID循环重试或降低原图质量。
+
 本轮停止在HITGS网页交审，等待用户确认后才开始AtHeart。Figma6发行画板、完整保真、真实保存/播放/缩放及线上完整交互保持未完成。GitHub活动分支和本日志是换机入口。源文件/运行：`apps/idol-site`使用现有npm依赖；`npm run dev -- --host 127.0.0.1`为正式工程开发；只读包通过上述build-hitgs-review脚本独立输出，再以普通静态HTTP服务查看。不能把本机localhost当云端链接。

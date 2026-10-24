@@ -7,6 +7,7 @@ const kiiikiiiRouteKeys={"release":["whykiiikiii","delulu-pack","to-me-from-me",
 import hearts2heartsRouteKeys from '../../data/hearts2hearts-navigation-keys.json';
 import idleRouteKeys from '../../data/idle-navigation-keys.json';
 import izoneRouteKeys from '../../data/izone-navigation-keys.json';
+import everglowRouteKeys from '../../data/everglow-navigation-keys.json';
 import fromis9RouteKeys from '../../data/fromis9-navigation-keys.json';
 import iveRouteKeys from '../../data/ive-navigation-keys.json';
 import badvillainRouteKeys from '../../data/badvillain-navigation-keys.json';
@@ -55,7 +56,7 @@ export function safeArtistReturn(value:string|null|undefined):string|null{
  if(!validPublicArtistRoute(value,u))return null;
  const publicKeys=publicArtistKeysForPath(u.pathname);
  if(['timelineType','timelineImportance','timelineOrder'].some(key=>u.searchParams.has(key))&&!readTimelineFilters(u.pathname+u.search,registry51.map(group=>group.path)).ok)return null;
- const designCatalog=u.pathname==='/artists/fromis9'?fromis9RouteKeys:u.pathname==='/artists/izone'?izoneRouteKeys:u.pathname==='/artists/billlie'?billlieRouteKeys:u.pathname==='/artists/idle'?idleRouteKeys:u.pathname==='/artists/ive'?iveRouteKeys:u.pathname==='/artists/badvillain'?badvillainRouteKeys:u.pathname==='/artists/newjeans'?newjeansRouteKeys:null;
+ const designCatalog=u.pathname==='/artists/everglow'?everglowRouteKeys:u.pathname==='/artists/fromis9'?fromis9RouteKeys:u.pathname==='/artists/izone'?izoneRouteKeys:u.pathname==='/artists/billlie'?billlieRouteKeys:u.pathname==='/artists/idle'?idleRouteKeys:u.pathname==='/artists/ive'?iveRouteKeys:u.pathname==='/artists/badvillain'?badvillainRouteKeys:u.pathname==='/artists/newjeans'?newjeansRouteKeys:null;
  if(u.searchParams.has('release')&&!(u.pathname==='/artists/vvup'?vvupReleaseKeys.includes(u.searchParams.get('release')!):u.pathname===KATSEYE_PATH?(u.searchParams.get('section')==='records'&&!u.searchParams.has('member')&&!u.searchParams.has('format')&&katseyeRouteKeys.release.includes(u.searchParams.get('release')!)):u.pathname===SAYMYNAME_PATH?saymynameReleaseKeys.includes(u.searchParams.get('release')!):u.pathname===KIIIKIII_PATH?kiiikiiiRouteKeys.release.includes(u.searchParams.get('release')!):u.pathname===HEARTS2HEARTS_PATH?hearts2heartsRouteKeys.release.includes(u.searchParams.get('release')!):u.pathname==='/artists/triples'?triplesRouteKeys.releases.some(entry=>entry.key===u.searchParams.get('release')):publicKeys?publicKeys.releases.includes(u.searchParams.get('release')!):designCatalog?.releases.some(entry=>entry.id===u.searchParams.get('release'))))return null;
  if(u.searchParams.has('media')&&!(publicKeys?publicKeys.media.some(entry=>entry.key===u.searchParams.get('media')&&entry.kind===u.searchParams.get('format')):designCatalog?.media.some(entry=>entry.id===u.searchParams.get('media'))))return null;
  if(u.searchParams.has('media')&&u.searchParams.has('release'))return null;

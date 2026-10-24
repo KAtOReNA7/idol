@@ -1,75 +1,34 @@
-@font-face{font-family:EverglowScreen;src:url('/fonts/Syne.ttf') format('truetype');font-display:swap}
-.candidate-everglow-experience{--paper:#191715;--white:#29241f;--ink:#f8f1e8;--muted:#b5aca1;--line:#5f4f43;--rose:#fb915c;--blush:#423026;--lilac:#30261e;background:var(--paper);color:var(--ink);min-height:100vh;font-family:var(--font-body),system-ui,sans-serif;overflow-wrap:anywhere}
-.candidate-everglow-experience .work-detail-top,.candidate-everglow-experience .member-detail{align-items:start}
-.candidate-everglow-experience .work-aside,.candidate-everglow-experience .cast-card,.candidate-everglow-experience .editor,.candidate-everglow-experience .member-work-summary,.candidate-everglow-experience .stage-source,.candidate-everglow-experience .watch-next{border-radius:0;min-width:0}
-.candidate-everglow-experience .video-stage,.candidate-everglow-experience .button,.candidate-everglow-experience .video-mode-tabs,.candidate-everglow-experience .video-mode-tabs button{border-radius:0}
-.candidate-everglow-experience .button{white-space:normal;max-width:100%;min-height:44px}
-.candidate-everglow-experience .button.primary,.candidate-everglow-experience .button.primary:hover{background:var(--rose);border-color:var(--rose);color:#191715}
-.candidate-everglow-experience .video-mode-tabs{border:1px solid var(--line);background:var(--white)}
-.candidate-everglow-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:#191715}
-.candidate-everglow-experience .video-mode-tabs button{min-height:44px}
+@font-face{font-family:EverglowCondensed;src:url('/artist/everglow/official-20261025/heading.woff2') format('woff2');font-weight:400 900;font-display:swap}
+.candidate-everglow-experience{--paper:#000;--white:#000;--ink:#f3f1fa;--muted:#aaa4b7;--line:#49434f;--rose:#a58adb;--blush:#16131c;--lilac:#16131c;min-height:100vh;background:#000;color:var(--ink);color-scheme:dark;font-family:var(--font-body),Arial,sans-serif;overflow-wrap:anywhere}
+.candidate-everglow-experience .header{height:auto;min-height:90px;border-bottom:1px solid var(--line);background:#000;gap:24px}
+.candidate-everglow-experience .brand{font:30px/1.2 EverglowCondensed,Arial,serif;letter-spacing:.04em}.candidate-everglow-experience .header nav{background:#000}
+.candidate-everglow-experience .work-aside,.candidate-everglow-experience .cast-card,.candidate-everglow-experience .editor,.candidate-everglow-experience .member-work-summary,.candidate-everglow-experience .stage-source,.candidate-everglow-experience .watch-next,.candidate-everglow-experience .photo,.candidate-everglow-experience .member-work-card,.candidate-everglow-experience .video-stage,.candidate-everglow-experience .button,.candidate-everglow-experience .video-mode-tabs,.candidate-everglow-experience .video-mode-tabs button{border-radius:0;min-width:0;box-shadow:none}
+.candidate-everglow-experience .button{white-space:normal;max-width:100%;min-height:44px;border-color:var(--line);background:transparent;color:var(--ink)}
+.candidate-everglow-experience .button.primary,.candidate-everglow-experience .button.primary:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+.candidate-everglow-experience .video-mode-tabs{border:1px solid var(--line);background:#000}.candidate-everglow-experience .video-mode-tabs button{min-height:44px}.candidate-everglow-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:#fff}
 .candidate-everglow-experience .photo-empty,.candidate-everglow-experience .video-fallback,.candidate-everglow-experience .video-caption{color:var(--muted)}
-.candidate-everglow-experience .image-label{color:#191715;background:#f8f1e8}
-.candidate-everglow-experience .photo,.candidate-everglow-experience .member-work-card{border-radius:0;background:var(--lilac)}
-.candidate-everglow-experience .member-detail>.photo img{object-fit:contain}
-.candidate-everglow-experience .member-name{font-size:20px;line-height:1.4}
-.candidate-everglow-experience .cast-scores{flex-wrap:wrap}
-.candidate-everglow-experience .editor-fields input,.candidate-everglow-experience .editor-fields select,.candidate-everglow-experience .editor-fields textarea,.candidate-everglow-experience .score-input{background:var(--paper);color:var(--ink);border-color:var(--line);border-radius:0}
+.candidate-everglow-experience .photo{background:#000}.candidate-everglow-experience .member-detail>.photo img{object-fit:contain}.candidate-everglow-experience .member-name{font-size:20px;line-height:1.4}.candidate-everglow-experience .cast-scores{flex-wrap:wrap}
+.candidate-everglow-experience .editor-fields input,.candidate-everglow-experience .editor-fields select,.candidate-everglow-experience .editor-fields textarea,.candidate-everglow-experience .score-input{background:#16131c;color:var(--ink);border-color:var(--line);border-radius:0}
+.candidate-everglow-experience .editor,.candidate-everglow-experience .work-score{background:#000;border-color:var(--line)}
 .candidate-everglow-experience .my-note,.candidate-everglow-experience .caption-help{background:var(--white);border:1px solid var(--line);border-radius:0;color:var(--muted)}
-.candidate-everglow-experience .detail-return{border:1px solid var(--line);background:var(--white);border-radius:0;padding:18px}
+.candidate-everglow-experience .detail-return{border:0;border-bottom:1px solid var(--line);background:#000;border-radius:0;padding:14px 0 24px}
 .candidate-everglow-experience .alternative-card,.candidate-everglow-experience .watch-lead-card{background:var(--white);border-color:var(--line);border-radius:0}
 .candidate-everglow-experience .stage-view .mobile-work-heading h1{overflow-wrap:anywhere}
-.candidate-everglow-experience .header{border-bottom:2px solid var(--rose)}
-.candidate-everglow-experience .brand{font:700 29px/1.1 EverglowScreen,sans-serif;letter-spacing:-.05em}
-.candidate-everglow-experience .work-detail-top{grid-template-columns:1fr;gap:36px;border-top:2px solid var(--rose);padding-top:24px}
-.candidate-everglow-experience .work-aside{width:100%;max-width:920px;margin-inline:auto;background:var(--paper);border:0;border-bottom:3px solid var(--rose);padding:28px 0}
-.candidate-everglow-experience .work-aside h1{font-size:clamp(34px,4.5vw,64px);line-height:1.25;font-weight:500}
-.candidate-everglow-experience .video-stage{border:18px solid #0d0d0d;outline:1px solid var(--line)}
-.candidate-everglow-experience .video-play{border-radius:0;background:var(--rose);color:var(--paper)}
-.candidate-everglow-experience .cast-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
-.candidate-everglow-experience .cast-card{padding:22px 18px;border:1px solid var(--line);border-radius:55px 55px 0 0;background:var(--white)}
-.candidate-everglow-experience .cast-card .photo{border-radius:36px 36px 0 0;aspect-ratio:4/5;background:#17130f}
-.candidate-everglow-experience .stage-view .work-detail-top{padding:24px;background:#0d0d0d;border:1px solid var(--line);border-top:6px solid var(--rose)}
-.candidate-everglow-experience .stage-view .work-aside{border-bottom:0;background:#0d0d0d}
-.candidate-everglow-experience .stage-source{border-top:1px solid var(--line);padding:24px;background:var(--white)}
-.candidate-everglow-experience .stage-overall-note{border-top:1px solid var(--line);padding-top:24px}
-.candidate-everglow-experience .watch-next{border:1px solid var(--line);border-left:7px solid var(--rose);background:var(--white)}
-.candidate-everglow-experience .member-detail{display:flex;flex-direction:column;gap:36px;border-top:2px solid var(--rose);padding-top:30px}
-.candidate-everglow-experience .member-detail>.photo{width:100%;height:340px;aspect-ratio:auto;border:18px solid #0d0d0d;outline:1px solid var(--line);background:var(--white)}
-.candidate-everglow-experience .member-detail>div:not(.photo){width:100%;max-width:920px;margin-inline:auto}
-.candidate-everglow-experience .member-detail h1{font-weight:500;font-size:clamp(38px,4.5vw,70px)}
-.candidate-everglow-experience .member-work-summary{border-block:2px solid var(--rose);background:var(--paper)}
-@media(max-width:760px){
-.candidate-everglow-experience .header{height:auto;min-height:76px;flex-wrap:wrap;padding-top:12px}
-.candidate-everglow-experience .header nav{height:auto;gap:18px;background:var(--paper)}
-.candidate-everglow-experience .video-mode-tabs{width:100%;flex:1}
-.candidate-everglow-experience .video-mode-tabs button{flex:1}
-.candidate-everglow-experience .editor-fields input,.candidate-everglow-experience .editor-fields select,.candidate-everglow-experience .editor-fields textarea{font-size:16px}
-.candidate-everglow-experience .cast-copy{min-width:0}
-.candidate-everglow-experience .member-name{font-size:18px}
-.candidate-everglow-experience .detail-return{padding:14px 12px}
-.candidate-everglow-experience .detail-return .button{min-height:48px;min-width:0;white-space:normal}
-.candidate-everglow-experience .stage-view .mobile-work-heading{display:block}
-.candidate-everglow-experience .work-detail-top,.candidate-everglow-experience .member-detail{min-width:0}
-.candidate-everglow-experience .work-detail-top{gap:24px}
-.candidate-everglow-experience .work-aside{padding:22px 0}
-.candidate-everglow-experience .work-aside h1{font-size:34px}
-.candidate-everglow-experience .video-stage{border-width:8px}
-.candidate-everglow-experience .cast-grid{grid-template-columns:1fr;gap:24px}
-.candidate-everglow-experience .cast-card{border-radius:44px 44px 0 0;padding:22px 18px}
-.candidate-everglow-experience .cast-card .photo{aspect-ratio:5/4}
-.candidate-everglow-experience .stage-view .work-detail-top{padding:14px}
-.candidate-everglow-experience .stage-source{padding:18px}
-.candidate-everglow-experience .member-detail{gap:26px}
-.candidate-everglow-experience .member-detail>.photo{height:250px;border-width:10px}
-.candidate-everglow-experience .member-detail h1{font-size:36px}
-}
+.candidate-everglow-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(280px,1fr);gap:40px;align-items:start;padding-top:30px}
+.candidate-everglow-experience .work-aside{padding:0 0 0 30px;border:0;border-left:1px solid var(--line);background:#000}
+.candidate-everglow-experience .work-aside h1{font:clamp(32px,3.5vw,52px)/1.2 EverglowCondensed,Arial,'Microsoft YaHei',serif;font-weight:400}
+.candidate-everglow-experience .video-stage{border:1px solid var(--line);background:#16131c}.candidate-everglow-experience .video-play{border-radius:50%;background:var(--rose);color:#fff}
+.candidate-everglow-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}
+.candidate-everglow-experience .cast-card{display:grid;grid-template-columns:minmax(100px,.65fr) minmax(0,1fr);gap:24px;padding:24px 0;border:0;border-top:1px solid var(--line);background:#000;align-items:start}
+.candidate-everglow-experience .cast-copy{padding:0}.candidate-everglow-experience .cast-card .photo{aspect-ratio:3/4;align-self:start}.candidate-everglow-experience .cast-card .photo img{object-fit:contain}
+.candidate-everglow-experience .stage-source{border:1px solid var(--line);padding:24px;background:var(--white)}.candidate-everglow-experience .stage-overall-note{border-top:1px solid var(--line);padding-top:22px}
+.candidate-everglow-experience .watch-next{border:1px solid var(--line);background:var(--white)}
+.candidate-everglow-experience .member-detail{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:72px;align-items:center;border:0;padding-block:36px 60px}
+.candidate-everglow-experience .member-detail>.photo{border:0;background:#000;max-height:680px;aspect-ratio:3/4}.candidate-everglow-experience .member-detail h1{font-weight:400;letter-spacing:.04em}.candidate-everglow-experience .member-work-summary{border:1px solid var(--line);background:var(--white)}
+.candidate-everglow-experience .member-work-card{background:#000;border-color:var(--line)}
+.candidate-everglow-experience .image-label{background:#16131c;color:#f3f1fa;border:1px solid #36323e;border-radius:0;left:12px;right:12px;bottom:12px;max-width:calc(100% - 24px);padding:8px 10px;font-size:11px;line-height:1.5;white-space:normal}
+@media(max-width:1000px){.candidate-everglow-experience .work-detail-top{grid-template-columns:1fr;gap:30px}.candidate-everglow-experience .work-aside{padding:28px 0 0;border:0;border-top:1px solid var(--line)}.candidate-everglow-experience .work-aside>.editor,.candidate-everglow-experience .work-score{max-width:760px}.candidate-everglow-experience .cast-grid{grid-template-columns:1fr}.candidate-everglow-experience .cast-card{grid-template-columns:minmax(120px,.5fr) minmax(0,1fr)}}
+@media(max-width:760px){.candidate-everglow-experience .header{flex-wrap:wrap;min-height:76px;padding-top:16px;gap:16px}.candidate-everglow-experience .header nav{height:auto;gap:18px}.candidate-everglow-experience .video-mode-tabs{width:100%;flex:1}.candidate-everglow-experience .video-mode-tabs button{flex:1}.candidate-everglow-experience .editor-fields input,.candidate-everglow-experience .editor-fields select,.candidate-everglow-experience .editor-fields textarea{font-size:16px}.candidate-everglow-experience .cast-copy{min-width:0}.candidate-everglow-experience .member-name{font-size:19px}.candidate-everglow-experience .detail-return .button{min-height:48px;min-width:0;white-space:normal}.candidate-everglow-experience .stage-view .mobile-work-heading{display:block}.candidate-everglow-experience .work-detail-top,.candidate-everglow-experience .member-detail{min-width:0}.candidate-everglow-experience .work-aside h1{font-size:34px}.candidate-everglow-experience .cast-card{grid-template-columns:1fr;gap:22px;padding:24px 0}.candidate-everglow-experience .cast-card .photo{aspect-ratio:3/4;max-height:460px}.candidate-everglow-experience .member-detail{grid-template-columns:1fr;gap:28px;padding-block:24px}.candidate-everglow-experience .stage-source{padding:18px}}
 @media(prefers-reduced-motion:reduce){.candidate-everglow-experience *{scroll-behavior:auto!important;transition:none!important}}
 
-/* Batch B: local detail views retain full portraits and reachable controls. */
-.candidate-everglow-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid var(--rose);outline-offset:3px}
-.candidate-everglow-experience .cast-card .photo img,.candidate-everglow-experience .member-detail>.photo img{object-fit:contain}
-.candidate-everglow-experience .cast-card .photo{overflow:hidden;border-radius:0}
-.candidate-everglow-experience :is(.cast-copy,.work-aside,.member-detail>div){min-width:0}
-.candidate-everglow-experience .cast-scores{gap:10px}
-@media(max-width:390px){.candidate-everglow-experience .button{max-width:100%;min-width:0;line-height:1.5}.candidate-everglow-experience .detail-return{display:flex;flex-wrap:wrap;gap:12px}.candidate-everglow-experience .work-aside h1{font-size:30px;overflow-wrap:anywhere}}
+.candidate-everglow-experience .work-aside h1{font-style:normal}.candidate-everglow-experience .member-detail h1{font-family:Arial,'Microsoft YaHei',sans-serif}.candidate-everglow-experience .header nav{display:flex;flex-wrap:wrap}.candidate-everglow-experience .brand{font-style:normal}.candidate-everglow-experience .private-pill{white-space:normal}.candidate-everglow-experience .image-label{background:#000;color:#f3f1fa}

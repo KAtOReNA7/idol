@@ -1,5 +1,7 @@
 # Codex 首次执行文件
 
+当前接续请以 [RESUME](RESUME.md) 和 [STATUS](STATUS.md) 顶部为准：fromis_9 v10 已获确认，EVERGLOW v11 已交审待确认，分支 `codex/everglow-review-completion`。本文件下方旧确认门槛均为历史记录。
+
 ## 最新执行决定：IZ*ONE Panorama 重设计 v8 待确认（2026-10-25）
 
 用户明确否决 v6 奶油玫瑰/Bodoni 展册视觉。本轮依据 [Panorama 时期韩国官网存档](https://web.archive.org/web/20210103153505/http://iz-one.co.kr/)实际取得的 HTML、CSS、原字标、字体与具名原图重写黑银页面；[BLOOM*IZ 预告历史镜像](https://iz-one.co.kr/20191103/)和 [Melon 官方专题](https://www.melon.com/musicstory/inform.htm?mstorySeq=10961)为辅助参考。原存档浏览器停在 loading，不冒称完整原站加载成功；依据是实际读取的源码、资产及辅助页面。

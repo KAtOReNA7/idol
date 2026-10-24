@@ -44,3 +44,9 @@
 
 - 收尾发现历来九人目录打开现行成员时会丢失roster=history；已让卡片、详情与手帐往返保留名册和搜索。五当前成员×390/1440共10组完整往返通过，类型和正式构建重新通过。仅本团JS/三个HTML/manifest变化，70资产与CSS字节保持，253旧非root文件继续保持。
 - 此提交保存实际补修；v10部署和最终线上结果随后补记，v9仍保留上方证据。
+
+- v10部署成功：Sites source `0cdc7df6c534a553607a1f8a0065aa76f711bfe2`；version ID `appgprj_6adc93a0d3008191a9ebeb5700dd2d0a~appgver_3bf86c396448819188e396dda59a62c3`；deployment `appgdep_6adcee7879b88191ae880409cc40a948`。fingerprint `c1b2374a2ed45d23812d1574f6e77d2c427ed4270f061610f06435998df31d6d`。源码短效凭证过期后按工具续期，未落盘凭证。
+- v10重新执行28专项/回归、90九宽布局、56基础交互；另10名册上下文回归通过。原图、CSS、Figma视觉与v9相同，仅修复合法导航上下文。draft [PR #28](https://github.com/KAtOReNA7/idol/pull/28)已创建并附加；代码提交 `9a214fedba97ce90eaf65e85ee8d4d7e4cecc8b2` 已推送。
+
+- v10线上最终10组通过：1440/390各包含首页、成员搜索/原图/手帐、发行搜索/详情、Vitamin ME精确绑定、九人目录中的现行成员/手帐/带搜索返回；无脚本错误，首页14图片均加载成功。最终证据覆盖v10，非继承v9。仍为服务身份Chrome，非用户IAB；真实保存/播放未验。
+- 已确认同站最新version number 10，owner一人、external visitor 0。最终入口和证据随本提交推送；停止本轮本地4196静态服务，线上审阅可继续访问。

@@ -1,6 +1,18 @@
 # 共享开发状态
 
-## 最新执行决定：Rocket Punch 官方发行视觉 v12 待确认（2026-10-25）
+## 最新执行决定：Cherry Bullet FNC 官方风格 v15 待确认（2026-10-25）
+
+用户“同意，继续开发”已确认 Rocket Punch v12。本轮仅推进 Cherry Bullet，按实际查看的 [FNC 官方图库](https://fncent.com/CherryBullet/b/gallery/55485)与[Cherry Dash 发行页](https://fncent.com/?bid=album&m=bbs&ma_cate=1&ma_lang=1&mod=view&r=CherryBullet&uid=55694)重写白灰珊瑚红页面，弃用旧 RED FILE 视觉。官网logo失效、介绍页为空，使用文字品牌；这是公司官网语言的项目扩展，不称完整官网复刻。十份历史成员档案、九发行/28本团署名曲目、七既有作品/14影像槽、55既有关联及九事件。照片为官网具名原图；早期三人照片说明校正为2019年。
+
+**复用 Rocket Punch v12 的路由、公开投影、搜索、原图恢复和部分目录/详情结构；共享手帐沿用布局并换白灰珊瑚红。** 团页重新编排，搜索/时间轴/手帐为项目扩展，交审必须披露。
+
+同站 **v15 owner-private 只读审阅已发布**。35专项/回归、类型、正式构建、90项九宽布局与51连续交互通过；最终v15服务身份Chrome的12组桌面/手机核心流程与代码指纹核对通过；IAB最终刷新/恢复超时，完整用户会话、真实保存/播放与80%/125%原生缩放未验。Figma33可编辑画板、六个完整页面节点及三个MV手帐子节点取稿；公告日期、手帐品牌对比度与缺图提示已同步。字体替代和完整像素保真未过。432旧非root文件SHA保持，root仅新增入口；旧站v33与主站v186未改。原图、稳定ID、用户评分/备注/观看状态与权限保持。
+
+分支 `codex/cherrybullet-review-completion` / draft [PR #31](https://github.com/KAtOReNA7/idol/pull/31)，冻结基线 `255424dc8608ec4f8ab4bf8ce170faad228d2e34`，正式工程 `apps/idol-site/`。[打开 Cherry Bullet v15](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/cherrybullet/index.html)。详见 `docs/codex/worklogs/20261025-cherrybullet-review-completion.md`。
+
+**等待 Cherry Bullet 网页确认后再开始 Weeekly，公共功能例外。审阅站容量仅余约4.85 MiB，下一团先评估新站，不压缩原图。下方旧门槛均为历史。**
+
+## 历史执行决定：Rocket Punch 官方发行视觉 v12（已确认，2026-10-25）
 
 用户“同意，继续开发”已确认 EVERGLOW v11。本轮仅推进 Rocket Punch，依据实际查看的 [Woollim《BOOM》官方发行页](https://www.woolliment.com/album/boom)独立重写黑白黄、Open Sans、细线与完整团照，弃用旧票券视觉。这是公司官方发行页的项目扩展，不称独立团官网复刻。六位历年成员使用同系列官网具名原照、等大显示框；15发行/55本团署名曲目、11既有作品/20影像槽、54关系及13事件。合同结束日期与公告日期分开，不推定解散或当前活动阵容。
 
@@ -10,7 +22,7 @@
 
 分支 `codex/rocketpunch-review-completion` / draft [PR #30](https://github.com/KAtOReNA7/idol/pull/30)，冻结基线 `1e49aa316c2c02bc7afc23fa915cdb548efded6d`，正式工程 `apps/idol-site/`。[打开 Rocket Punch v12](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/rocketpunch/index.html)。详见 `docs/codex/worklogs/20261025-rocketpunch-review-completion.md`。
 
-**等待 Rocket Punch 网页确认后再开始下一团，公共功能例外。下方旧门槛均为历史。**
+**Rocket Punch 已获用户网页确认；下方旧门槛均为历史。**
 
 ## 历史执行决定：EVERGLOW 官网风格 v11（已确认，2026-10-25）
 

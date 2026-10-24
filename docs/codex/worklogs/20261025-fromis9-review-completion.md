@@ -39,3 +39,8 @@
 - 本机scratch：`C:/Users/61919/.codex/visualizations/2026/10/23/01a1694f-9d8c-7f82-a9a8-1732f12fea0e/fromis9/`；包括qa.json、interactions-hosting.json、live-check.json、increment-proof.json、图片与可重现脚本，无凭证入仓。运行审阅：`node scripts/build-fromis9-review.mjs --out <absolute scratch path>` 后静态服务，托管无扩展名records跳转已覆盖。
 
 - 收尾仅规范化CSS和新增脚本行尾；重新构建 fingerprint 为 `f22504ddeae95536278186d1112c8f8c2974de002f0d7073124b9b45663c1e17`，76个运行时交付文件与v9字节一致（仅manifest来源指纹改变），无需重复发布。
+
+## v10 返回上下文补修
+
+- 收尾发现历来九人目录打开现行成员时会丢失roster=history；已让卡片、详情与手帐往返保留名册和搜索。五当前成员×390/1440共10组完整往返通过，类型和正式构建重新通过。仅本团JS/三个HTML/manifest变化，70资产与CSS字节保持，253旧非root文件继续保持。
+- 此提交保存实际补修；v10部署和最终线上结果随后补记，v9仍保留上方证据。

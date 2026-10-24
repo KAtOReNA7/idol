@@ -6,7 +6,8 @@ const fn=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='exp
 assert.ok(fn);
 const constants=Object.fromEntries([...fs.readFileSync('lib/idol/artist-navigation.ts','utf8').matchAll(/export const (\w+_GROUP_ID)='([^']+)';/g)].map(m=>[m[1],m[2]]));
 const code=ts.transpileModule(fn.getText(ast),{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText;
-const resolve=vm.runInNewContext(code+';experienceClassFor',{...constants,candidateExperienceClass:candidateRegistry.candidateExperienceClass});
+const {izoneMemberPortrait}=require('./helpers/public-artist-loader.cjs')('lib/idol/izone-photos.ts');
+const resolve=vm.runInNewContext(code+';experienceClassFor',{...constants,izoneMemberPortrait,candidateExperienceClass:candidateRegistry.candidateExperienceClass});
 // Public identities independently checked against the existing catalog; no scores or user state.
 const works=[{id:'recvxyOz5XuYef',groupIds:['recvxyEBDZqkpg']},{id:'recvxyH5pzBi6D',groupIds:['recvxyEBDZPXW9']}];
 const member={id:'rec28ldbniB9dP',groupIds:[constants.BABYMONSTER_GROUP_ID]};
@@ -29,4 +30,14 @@ test('work-first rule preserves existing within-record group precedence',()=>{
  const data={works:[{id:'synthetic-work',groupIds:[constants.ILLIT_GROUP_ID,constants.BABYMONSTER_GROUP_ID]}],members:[{id:'synthetic-member',groupIds:['recvxyEBDZPXW9']}]};
  assert.equal(resolve(data,{work:'synthetic-work',member:'synthetic-member'}),'bm-experience');
  assert.equal(resolve(data,{member:'synthetic-member'}),'candidate-experience candidate-billlie-experience');
+});
+test('IZ*ONE historical journeys keep their cinema theme without overriding current groups or works',()=>{
+ const historical=JSON.parse(fs.readFileSync('data/izone-review-editorial.json','utf8')).members;
+ const data={works,members:historical};
+ for(const m of historical){
+  const route={member:m.id};const ordinary=resolve(data,route);
+  assert.equal(resolve(data,{...route,artistReturn:'/artists/izone?section=members&member='+m.id}),'candidate-experience candidate-izone-experience');
+  for(const artistReturn of ['/artists/ive','/artists/lesserafim','/artists/saymyname','https://evil.test/artists/izone','/artists/izone?unknown=x'])assert.equal(resolve(data,{...route,artistReturn}),ordinary);
+  assert.equal(resolve(data,{...route,work:works[0].id,artistReturn:'/artists/izone'}),'candidate-experience candidate-idle-experience');
+ }
 });

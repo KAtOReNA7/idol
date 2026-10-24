@@ -1,4 +1,4 @@
-# 全51团与团体索引统一检查（进行中）
+# 全51团与团体索引统一检查（已交付，待统一验收）
 
 ## 最新用户决定
 
@@ -46,3 +46,14 @@
 - 远端模式发现React keyed/spread图片走createElement绕过叶子JSX重写；将传输地址在上层图片组件props转换，tripleS等已恢复。UDTT受保护照片等待viewer完成后9首页图片全部实际解码。
 - 最终集中测试111/111通过，无跳过；类型/正式构建正在最后复验。完整公开问题清单见 `docs/codex/all-groups-audit-20261025.md`，列42张新增公开原图、133个关系待核作品、14 hold事件及其他未验边界。
 - Sites source helper初次Git使用失效本机代理失败，未完成push或部署；仅在独立Site checkout将http.proxy设为已验证的127.0.0.1:7877，再使用同一Site身份重试。没有创建新凭证绕过访问限制。
+
+## 最终发布与验证
+
+- 新站同一项目 `appgprj_6add2704bc6c81918d3e0e2f13130422` 已发布 **v2 owner-private**：[统一索引](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/?view=groups)。v1部署成功后发现部分registry没有name字段，v2修正标签标题为实际catalog团名。
+- v2 Sites源提交 `af1aafde4ce62cc26aca1c30113ec065efe71e17`，saved version `appgprj_6add2704bc6c81918d3e0e2f13130422~appgver_cade703b4a188191b4bfed28d62cbd46`，部署 `appgdep_6add2b47e48c819198d11a0e30644421` succeeded。公开原图固定Git提交 `6665e7016c0fa35b4c4433dd2bc0236b061b2b88`，42新增图远端HTTP/SHA全部一致。原图未压缩，旧审阅与正式主站v186未改。
+- 111项集中测试无跳过通过；最终类型检查和正式构建通过。正式构建先于仅审阅标题修正，标题修正后类型及审阅构建另过。
+- 153个发布模式手机内页追加error占位检查后全部通过；全部51首页原图加载通过，UDTT需等待串行队列完成，ITZY五图修复后复验通过。Hyunny团页→成员手帐已显示同一历史图→精确原目录返回通过。
+- 线上v1服务身份Chrome：1440/390索引、搜索Geenius→进入、izna shadow首页、ITZY五人成员、NewJeans完整作品、IZ*ONE时间轴通过。UDTT初次截图过早，队列中尚无src的图片被误判为complete；改为等待每张有效src且naturalWidth后，桌面/手机均通过。此为服务身份验证，非用户IAB。IAB getTab单次10秒超时；open_in_codex两次返回queued，未声称已向用户展示成功。
+- 私密源仓短期凭证过期后按Sites工具续期同一项目，凭证仅内存/隐藏stdin，未入仓。主GitHub draft [PR #33](https://github.com/KAtOReNA7/idol/pull/33)已创建并附到本聊天，基于Weeekly分支，未合并main。
+- 完整已解决/未解决清单及设计沿用来源：[Markdown](../all-groups-audit-20261025.md)、[公开结构化审计](../all-groups-audit-20261025.json)。133作品关系需要来源/实时资料，14 hold事件、HURRICANE精确URL、Figma全量保真、真实保存/播放/原生缩放和完整用户会话仍未通过；不冒称资料无缺口或生产全功能通过。
+- 最终v2线上服务身份复验：桌面索引51项、搜索Geenius只返回1项并跳转正确；ITZY成员页标题为“ITZY · 全团只读审阅”，5成员原照可用；无JS异常、坏图、错误占位或横向溢出。v2仅标题改动，其他流程以上述v1及相同发布资源模式验证为依据。

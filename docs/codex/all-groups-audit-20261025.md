@@ -1,5 +1,9 @@
 # 全团统一审阅：修复与遗留问题
 
+[打开v2私密只读审阅](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/?view=groups) · [Draft PR #33](https://github.com/KAtOReNA7/idol/pull/33)
+
+111专项测试、类型和正式构建通过；42新增图远端SHA全部一致，153发布模式内页无坏图/错误占位/溢出。线上服务身份核心流程通过，用户IAB读取超时。等待统一人工验收。
+
 范围：51团；Weeekly确认后的剩余开发、索引匹配、资料和图片补缺。基线为10afded，工作分支codex/all-groups-index-audit。正式主站v186与旧审阅站未覆盖。
 
 ## 已解决
@@ -79,6 +83,25 @@
 |NewJeans|`components/candidate/newjeans-design.tsx`|[来源1](https://www.newjeans.jp/profile/)|
 
 另14个专属入口继续沿用对应团页视觉：BABYMONSTER、ILLIT、XG、aespa、IVE、KISS OF LIFE、STAYC、NMIXX、Hearts2Hearts、KiiiKiii、ITZY、LE SSERAFIM、SAY MY NAME、KATSEYE。IVE仅校正索引标题色。
+
+这些专属卡片的资料/视觉来源入口如下。沿用的自有排版、目录、索引和手帐属于项目扩展；未把资料官网当作逐像素设计验收。
+
+|团体|既有参考入口|
+|---|---|
+|BABYMONSTER|[官网/官方资料](https://www.ygfamily.com/en/artists/babymonster/profile)|
+|ILLIT|[官网/官方资料](https://beliftlab.com/artist/profile/ILLIT?lang=en)|
+|XG|[官网/官方资料](https://xgalx.com/en/xg/profile/)|
+|aespa|[官网/官方资料](https://aespa-official.jp/)|
+|IVE|[官网/官方资料](https://ive-official.jp/mob/pageShw.php?site=DIVE&cd=profile)|
+|KISS OF LIFE|[官网/官方资料](https://columbia.jp/artist-info/kissoflife/prof.html)|
+|STAYC|[官网/官方资料](https://www.highup-ent.com/en/stayc/)|
+|NMIXX|[官网/官方资料](https://nmixx.jype.com/profile)|
+|Hearts2Hearts|[官网/官方资料](https://hearts2heartsofficial.jp/profile/)|
+|KiiiKiii|[官网/官方资料](https://www.starship-ent.com/musician/kiiikiii?page=1&tab=1)|
+|ITZY|[官网/官方资料](https://itzy.jype.com/profile)|
+|LE SSERAFIM|[官网/官方资料](https://www.sourcemusic.com/artist/profile/LE%20SSERAFIM)|
+|SAY MY NAME|[官网/官方资料](https://saymyname.jp/profile/)|
+|KATSEYE|[官网/官方资料](https://www.katseye.world/story-of-katseye/)|
 
 ## 缺少快照参演关系的精确作品
 

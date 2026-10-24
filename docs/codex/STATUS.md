@@ -49,7 +49,7 @@ v27修复补充：用户反馈的大片内容缺失已复现为广告拦截规�
 
 [打开 W!TCHX v31](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/witchx/index.html) · [本轮日志](worklogs/20261024-witchx-review-completion.md) · [接续入口](RESUME.md)。
 
-GitHub：`codex/witchx-review-completion`，base为`codex/tracer-review-completion`；最终提交/PR见RESUME，以任务分支最新远端HEAD为准。
+GitHub：`codex/witchx-review-completion`，draft [PR #20](https://github.com/KAtOReNA7/idol/pull/20)，base `codex/tracer-review-completion`；代码提交 `b9008f36e2cb67330d425366dd4fd8af36c3138b` 已推送。后续交接以任务分支最新远端HEAD为准。
 
 ## 已核基线与交接入口
 

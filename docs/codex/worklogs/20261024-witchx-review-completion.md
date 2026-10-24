@@ -59,3 +59,5 @@ helper首次受失效全局代理10808阻断，进程级7877后成功，未改�
 ## 下一步
 
 代码与本日志共同提交/推送任务分支，最终commit/PR见RESUME补录。等待W!TCHX网页确认后再推进下一团；线上浏览器、真实保存/播放、原生缩放和完整Figma细节仍待验。接续先查工作树、显式fetch任务分支，不从旧main开工。
+
+GitHub交付：draft [PR #20](https://github.com/KAtOReNA7/idol/pull/20)，base `codex/tracer-review-completion`；代码提交 `b9008f36e2cb67330d425366dd4fd8af36c3138b` 已推送。后续交接以任务分支最新远端HEAD为准。

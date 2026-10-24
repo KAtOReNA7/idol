@@ -79,3 +79,5 @@ node scripts/build-weeekly-review.mjs --out <本机临时目录>
 - 最终source fingerprint `91cf99e673098c009a489c48ead0a0788b2d4892254aa57bfcc3079ace2c07a1`；白名单63文件，共39,698,685 bytes。仅独立source checkout的hosting配置指向新站，**不可使用正式工程现有 `.openai/hosting.json` 发布，它指向主站**。
 - GitHub仓库已重新核实PUBLIC，本次只增加公开资料、原图与去个人值的审阅投影，没有新增个人快照；凭证只在内存/隐藏stdin，不入仓。
 - 本轮仅完成Weeekly审阅候选；等待用户网页确认后再推进下一团。不要合并main或将只读审阅视为生产保存/播放验收。
+- 代码与完整进度提交 `e833420fda32b807304e6f4fb5a298053127f433` 已推送；draft [PR #32](https://github.com/KAtOReNA7/idol/pull/32)，base 为 `codex/cherrybullet-review-completion`。收尾文档以该分支最新远端HEAD为准。
+- 收尾重新用 `ls-remote` 核对远端Cherry Bullet仍为冻结基线。默认fetch refspec只覆盖历史KiiiKiii分支，因此另显式fetch本轮base分支；没有改写他人分支。首次commit因本机未配置身份失败，随后使用既有提交相同的GitHub noreply身份作为单条命令配置提交，没有修改全局Git配置；真正代码提交与PR均已确认。

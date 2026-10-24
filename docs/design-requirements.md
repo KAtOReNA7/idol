@@ -8,7 +8,7 @@
 
 旧站容量不足，本轮独立 **v1 owner-private 只读审阅已发布**；55原字节资源、63静态文件共39,698,685 bytes，旧v33/v15与主站v186未改。36专项/回归、类型、正式构建、90项九宽布局、55连续交互及线上服务身份Chrome两宽13项核心检查通过；IAB登录继续35秒超时，完整用户会话、真实保存/播放、原生缩放及线上逐素材SHA仍未验。Figma33可编辑画板、55原图组件、五个完整页面和三个手帐子节点取稿；三宽时间轴40px重复缩进已修，字体替代及完整像素保真未过。
 
-分支 codex/weeekly-review-completion，冻结基线 b8baf83c763328dbc6465e6655b18accf329d893，正式工程 apps/idol-site/。[打开 Weeekly 新站 v1](https://idol-weeekly-review-oct25.wuke40758.chatgpt.site/artists/weeekly/index.html)。详见 docs/codex/worklogs/20261025-weeekly-review-completion.md。原图、稳定ID、个人字段与权限保持，未合并main。
+分支 codex/weeekly-review-completion / draft [PR #32](https://github.com/KAtOReNA7/idol/pull/32)，冻结基线 b8baf83c763328dbc6465e6655b18accf329d893，正式工程 apps/idol-site/。[打开 Weeekly 新站 v1](https://idol-weeekly-review-oct25.wuke40758.chatgpt.site/artists/weeekly/index.html)。详见 docs/codex/worklogs/20261025-weeekly-review-completion.md。原图、稳定ID、个人字段与权限保持，未合并main。
 
 **等待 Weeekly 网页确认后再开始下一团，公共功能例外。下方旧门槛均为历史。**
 

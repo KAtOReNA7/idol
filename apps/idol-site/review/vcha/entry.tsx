@@ -34,5 +34,3 @@ createRoot(target).render(<PublicAccessProvider canEdit={false}>
     {route===ARTIST_PATH?<VchaArtist/>:route===RECORDS_PATH?<App/>:<main><h1>此审阅页仅提供 Vcha</h1><a href={ARTIST_PATH}>返回 VCHA 首页</a></main>}
   </ArtistTimelineHostProvider>
 </PublicAccessProvider>);
-
-

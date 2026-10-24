@@ -88,4 +88,8 @@ Sites源位于本机证据目录的 `site-source/`，manifest使用新project_id
 
 仓库 `KAtOReNA7/idol` 本轮已核实公开可写；沿用此前对当前代码及既有快照的分享授权，不扩展到新私人数据。当前提交仅公开资料、代码和交接文档，snapshot/用户字段未变。Git全局10808代理失效，命令级 `git -c http.proxy=` 直连；不修改全局设置。本地fetch refspec仅旧KiiiKiii，收尾需显式fetch当前任务基线，不把无输出的默认fetch视为全远端更新。
 
-任务分支和本日志同提交推送，PR base 为 `codex/katseye-review-completion`；PR编号与实际代码提交在收尾补录。不合并main、不覆盖正式v186。下次先fetch本分支最新远端HEAD并读本日志，保留未提交改动，不reset/clean/force push。VCHA网页未确认前不开始下一团。
+代码和本日志已同提交 `7df98a3981c10958270b634cdab9555ab7e86240` 正常推送，draft [PR #23](https://github.com/KAtOReNA7/idol/pull/23)已附本会话，base 为 `codex/katseye-review-completion`。首次直连push网络超时，核对现有127.0.0.1:7877代理在监听后，使用命令级该代理成功推送；全局10808配置未改，没有force push。
+
+收尾清理审阅入口末尾两个空行（无运行行为变化），相对基线的 `git diff --check` 已通过；部署保留实际v1源和fingerprint，不因空白/文档补录重复发布。自己的4190静态服务已停止，永久审阅使用新站链接。最终交接补录另行提交并推送。
+
+不合并main、不覆盖正式v186。下次先fetch本分支最新远端HEAD并读本日志，保留未提交改动，不reset/clean/force push。VCHA网页未确认前不开始下一团。

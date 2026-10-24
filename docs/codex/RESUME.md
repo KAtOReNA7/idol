@@ -16,7 +16,7 @@
 
 - 仓库 KAtOReNA7/idol，正式工程 `apps/idol-site/`，活动分支 `codex/vcha-review-completion`，PR base `codex/katseye-review-completion`。
 - 先检查工作树，显式fetch活动分支并比较最新远端HEAD。默认fetch refspec只覆盖旧KiiiKiii，不能据默认fetch判断最新进度；不reset/clean/force push。
-- [VCHA完整交接](worklogs/20261024-vcha-review-completion.md)、[发布证据](worklogs/20261024-vcha-public-delivery.json)、[Figma画板索引](worklogs/20261024-vcha-figma-frames.json)。GitHub提交/PR编号见交接日志收尾。
+- draft [PR #23](https://github.com/KAtOReNA7/idol/pull/23)，代码 `7df98a3` 已推送；[VCHA完整交接](worklogs/20261024-vcha-review-completion.md)、[发布证据](worklogs/20261024-vcha-public-delivery.json)、[Figma画板索引](worklogs/20261024-vcha-figma-frames.json)。以任务分支最新远端HEAD接续。
 - 新站 `appgprj_6adc93a0d3008191a9ebeb5700dd2d0a` v1，旧站 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3` 仍v33；两站均owner-private，正式主站仍v186。不能混淆版本或覆盖旧站。
 - 审阅构建 `node scripts/build-vcha-review.mjs --out <仓库外独立绝对目录>`，21资产全部本地原字节。静态审阅清空个人字段，生产保存尚未验。
 - 本轮未新增子代理，无并行任务待回收。Figma 27画板已建立并修复关键排布；细节待验不等于没有设计稿。

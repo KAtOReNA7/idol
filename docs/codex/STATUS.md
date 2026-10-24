@@ -1,6 +1,14 @@
 # 共享开发状态
 
-## 最新执行决定：Geenius（2026-10-24，v28待确认）
+## 最新用户决定：Geenius 官网重设计 v29 待确认（2026-10-24）
+
+用户明确否决 Geenius v28 的仓库既有视觉，仅认可图片。本轮继续 `codex/geenius-review-completion` / PR #18，以 https://www.geeniushome.com/geenius 为直接视觉参考，重新处理字体、构图、导航、成员及作品内页和共享手帐；保留已核实图片、资料、稳定 ID、评分、备注、观看状态与访问权限。v28 的纸色蓝灰方案及旧 Figma 不构成设计通过。主站仍 v186，更新仅限同一 owner-private QA。**Geenius 重新交审并获确认前不开始 TRACER，公共功能例外。** 过程见 `docs/codex/worklogs/20261024-geenius-official-redesign.md`。
+
+v29 官网风格重设计已发布，27 个可编辑 Figma 画板已同步；39 项专项/回归、类型、正式构建和 45 项真实视口布局通过。394 个其他团审阅文件 SHA 不变。线上 IAB 导航超时，真实保存/播放和原生缩放仍未验，等待本轮网页确认。
+
+**长期交审规则：此后任何团体若沿用仓库已有设计，必须在交给用户审核的消息中明确说明沿用了哪一版/哪些部分，同时给出实际参考官网及差异；不能将旧设计沿用描述为按官网重新设计。** 用户此次要求不授权重做已确认的其他团。
+
+## 历史交付：Geenius v28（视觉已被用户否决）
 
 用户在 ADYA v27 修复后回复“同意，继续开发”，已确认 ADYA。本轮 Geenius 纸色蓝灰页面及 owner-private QA **v28** 已发布：五人成员、三项发行、七个精确视频、四事件与已有手帐往返。39项专项/导航回归、类型、正式构建、45项五宽布局和12个交互/恢复/广告规则场景通过。Figma有27个可编辑画板（含共享手帐）及16个图片组件；字体度量、少数标记/控件细节仍待逐板对照。线上导航及读取自动化超时，仅标签页标题/地址可见；真实保存/播放、80%/125%原生缩放未验。**等待 Geenius 网页确认后再开始 TRACER，公共功能例外。** 分支 `codex/geenius-review-completion`，主站仍v186；原图、稳定ID、评分、备注、观看状态和权限保持。详见 `docs/codex/worklogs/20261024-geenius-review-completion.md`。下方旧门槛为历史。
 
@@ -23,9 +31,9 @@ v27修复补充：用户反馈的大片内容缺失已复现为广告拦截规�
 
 更新：北京时间2026-10-24。
 
-[打开 Geenius v28](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/geenius/index.html) · [本轮日志](worklogs/20261024-geenius-review-completion.md) · [接续入口](RESUME.md)。
+[打开 Geenius v29](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/geenius/index.html) · [本轮日志](worklogs/20261024-geenius-official-redesign.md) · [接续入口](RESUME.md)。
 
-GitHub：`codex/geenius-review-completion`；代码与首轮交接提交 `48672554f2b9de6a6bbd22969aff7f7b16838737` 已推送；draft [PR #18](https://github.com/KAtOReNA7/idol/pull/18)，base为 `codex/adya-review-completion`。后续文档以本分支最新远端HEAD为准。
+GitHub：`codex/geenius-review-completion`；官网重设计与交接以活动分支远端最新 HEAD 为准；v28 视觉已被否决；draft [PR #18](https://github.com/KAtOReNA7/idol/pull/18)，base为 `codex/adya-review-completion`。后续文档以本分支最新远端HEAD为准。
 
 ## 已核基线与交接入口
 

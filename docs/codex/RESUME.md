@@ -14,6 +14,7 @@
 
 ## 开工入口
 
+- draft [PR #27](https://github.com/KAtOReNA7/idol/pull/27)，代码 `d5a747919f4c8ec3e18c215dcfdd8bb2cc8f4f79` 已推送并核对远端；以任务分支最新 HEAD 接续。
 - GitHub为多电脑接续入口；活动分支 `codex/izone-review-completion`，base `codex/idle-review-completion`，正式工程 `apps/idol-site/`。先核对工作树、显式fetch、远端HEAD和PR，不从旧main开工。
 - [本轮完整交接](worklogs/20261024-izone-review-completion.md)、[Figma索引](worklogs/20261024-izone-figma-frames.json)、[公开验证摘要](worklogs/20261024-izone-verification.json)。
 - 审阅构建 `node scripts/build-izone-review.mjs --out <仓库外独立绝对目录>`，49资产，108已有关系。真实个人字段清空，写入禁用；正式评分及用户数据保持。

@@ -63,8 +63,8 @@ v4修复补充：用户反馈首页发行区元素丢失，已复现为窗口留
 
 先读 [RESUME](RESUME.md)、根AGENTS、[STATUS](STATUS.md)、[PRD](PRD.md)、[CURRENT-STATE](CURRENT-STATE.md)、[ACCEPTANCE](ACCEPTANCE.md)、设计要求和协作手册，再核对源码与实际输入。
 
-- 活动分支 `codex/idle-review-completion`；正式工程 `apps/idol-site/`，根Next sandbox不是生产基线。
-- AtHeart新站v4及此前页面已确认，当前等待i-dle新站v5网页确认。主站仍v186，没有合并main。
+- 活动分支 `codex/izone-review-completion`，draft PR #27；正式工程 `apps/idol-site/`，根Next sandbox不是生产基线。
+- i-dle新站v5及此前页面已确认，当前等待IZ*ONE新站v6网页确认。主站仍v186，没有合并main。
 - 本地Windows开发，localhost只代表本机。GitHub是跨电脑接续入口；显式fetch活动分支，保留工作树改动和双方有效提交。
 - 原图、稳定ID、评分、备注、观看状态和权限保持；公开仓库分享授权不扩展到新私人数据或秘密。
 - 代码、worklog、公开验证证据共同提交推送。设计、资料、功能、上线分层验收；沿用设计必须在交审中披露版本、范围、官网及差异。

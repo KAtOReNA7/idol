@@ -7,6 +7,8 @@
 
 ## 可打开的结果与停止点
 
+代码 `d5a747919f4c8ec3e18c215dcfdd8bb2cc8f4f79` 已推送并与远端 HEAD 核对。draft [PR #27](https://github.com/KAtOReNA7/idol/pull/27) 已建立并附到当前任务，未合并。4194 自有临时静态服务已关闭。
+
 [IZ*ONE v6 owner-private 审阅](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/izone/index.html)。Sites 返回部署 succeeded，保存版本为 **6**。审阅仅使用公开身份资料和清空个人字段的投影，不能在这里保存正式评分。
 
 12 位历史成员、18 项发行版本/81 个曲目条目、17 个影像槽（10 MV、7 舞台）、108 条已有单成员/单作品关系、12 条既有 ready 时间轴事件已接入。目录搜索、成员与发行详情、真实原图、恢复机制、精确视频及既有手帐返回上下文可用。

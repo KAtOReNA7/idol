@@ -100,3 +100,5 @@ node scripts/build-rocketpunch-review.mjs --out <仓库外绝对路径>
 [打开Rocket Punch v12](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/rocketpunch/index.html)。IAB首页AX完整读到，初次导航45秒超时、恢复后成员点击40秒超时；不把它当线上完整流程通过。Browser插件未列出，按frontend-testing-debugging技能使用本机Chrome补验。Sites工具返回的服务访问token仅在内存并限同站请求头使用，没有访客身份、没有真实保存，未写入源码/日志/文件。首次漏Bearer前缀返回401，按Sites文档修正后200；无权限调整。线上脚本首次误用data-event-id计数为0，实际DOM有全部13事件；改为data-timeline-event-id后通过，非产品数据丢失。
 
 1440与390各六组，共12组核心流程通过，console/page errors为空：首页图片/布局、团照原图、JURI历史搜索/详情/手帐精确往返、BOOM曲目/搜索返回、BOOM作品绑定/返回、13事件与时间轴往返。证据见 [online-proof](../evidence/20261025-rocketpunch/online-proof.json)。真实保存、真实播放、80%/125%原生缩放仍未验。
+
+代码提交 `91d025810d072f9a3a79cf8a30d81d90ef27135e` 已推送，draft [PR #30](https://github.com/KAtOReNA7/idol/pull/30) 已创建并附加本会话，base为 `codex/everglow-review-completion`。后续接续以远端分支最新文档HEAD为准；当前等待Rocket Punch网页确认。

@@ -8,7 +8,7 @@
 
 同站 **v12 owner-private 只读审阅已发布**。43专项/回归、类型、正式构建、90项九宽布局、45连续交互与12组桌面/手机线上核心流程通过；线上补查为服务身份Chrome，非用户IAB会话。IAB实际读到首页，成员点击40秒超时，完整IAB流程未验。Figma30可编辑画板、七个关键完整节点取稿，字体替代和完整像素保真未过；自动capture完成但缺图，参考Frame已清理，原生画板保留。381旧非root文件SHA保持，root仅新增入口；旧站v33、主站v186未改。真实保存/播放、80%/125%原生缩放未验。
 
-分支 `codex/rocketpunch-review-completion`，冻结基线 `1e49aa316c2c02bc7afc23fa915cdb548efded6d`，正式工程 `apps/idol-site/`。[打开 Rocket Punch v12](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/rocketpunch/index.html)。详见 `docs/codex/worklogs/20261025-rocketpunch-review-completion.md`。
+分支 `codex/rocketpunch-review-completion` / draft [PR #30](https://github.com/KAtOReNA7/idol/pull/30)，冻结基线 `1e49aa316c2c02bc7afc23fa915cdb548efded6d`，正式工程 `apps/idol-site/`。[打开 Rocket Punch v12](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/rocketpunch/index.html)。详见 `docs/codex/worklogs/20261025-rocketpunch-review-completion.md`。
 
 **等待 Rocket Punch 网页确认后再开始下一团，公共功能例外。下方旧门槛均为历史。**
 

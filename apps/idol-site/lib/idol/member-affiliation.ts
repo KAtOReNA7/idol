@@ -7,6 +7,7 @@ export function memberAffiliationLabel(member:Pick<Member,'groupIds'|'formerGrou
 
 // Read-only historical roster rollout; never changes relation records or index counts.
 const HISTORY_ROSTERS:Record<string,string>={
+ 'recvxyEBDZqkpg':'/artists/idle',
  'recvxyEBDZ9qVl':'/artists/newjeans',
  'recvxyEBDZJAXm':'/artists/loona',
  'recvxyEBDZ9Jl3':'/artists/everglow',

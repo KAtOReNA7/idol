@@ -1,28 +1,30 @@
-# 接续：SPIA v32 待网页确认
+# 接续：VCHA 新审阅站 v1 待网页确认
 
-## 最新执行决定：KATSEYE v33 待确认（2026-10-24）
+## 最新执行决定：VCHA 新审阅站 v1 待确认（2026-10-24）
 
-用户“同意，继续开发”已确认 SPIA v32；本轮继续原 Sol 批次内 KATSEYE。已发布 **v33 owner-private 只读审阅**，六成员、十发行、九条原生作品（含合作）/17影像槽、11既有关系、14事件及手帐往返。补上成员/发行搜索、原图与精确返回，修复手机隐藏导航/首页影像及审阅入口空时间轴。
+用户“同意，继续开发”已确认 KATSEYE v33。本轮 VCHA 已发布到新的 **owner-private 只读审阅站 v1**：六历史成员、四张VCHA发行、四条既有作品/八影像槽、六既有关系、九事件及手帐往返。旧站v33容量只余955,546 bytes，新站不压缩原图、不修改旧页面。正式主站仍v186。
 
-**沿用 v186 导入后现存 KATSEYE 松绿米白独立视觉及共享手帐布局**，不是按当前官网重做；实际参考 https://www.katseye.world/the-members/ 当前为粉红青绿、衬线字及三列肖像，交审必须披露差异。六张具名官网照片沿用。32张既有公开图片以GitHub固定提交原字节交付，HTTP/SHA全部核对；498旧文件不变，未压缩原图。
+弃用旧VCHA米色档案视觉，以实际查看的环球《Only One》官方发行艺术重写白底品红团页。旧VCHA域名现跳转JYP总站，GIRLSET域名现跳转官方商店；不能称VCHA官网复刻。复用六人历史照片、既有ID/资料、TRACER v30至KATSEYE v33导航/原图/只读机制及共享手帐布局；共享手帐改配色，交审明确披露。
 
-43测试、类型、正式构建、45项五宽布局、38交互与5项时间轴往返通过。Figma新增27个可编辑画板、5个最终关键节点实际取稿；展示字体、逐字间距及全量像素保真仍待完善。线上部署成功、IAB标签可见但读取35秒超时；线上完整交互、真实保存/播放及80%/125%原生缩放未验。设计、资料、功能、上线分别验收。
+31专项/回归、类型、正式构建、45项五宽布局与28交互通过。27个可编辑Figma画板、7个不同关键节点实际取稿；修复时间轴文字重叠，完整字体/装饰/像素保真待完善。线上部署成功、IAB标签可见但读取40秒超时；线上完整交互、真实保存/播放与80%/125%原生缩放未验。
 
-分支 `codex/katseye-review-completion`，基线 `d1abaf88a1b37101ae7de03326669d4d0073c2f0`；正式工程 `apps/idol-site/`，主站仍v186，未合并main，用户字段/稳定ID/权限保持。[打开 KATSEYE v33](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/katseye/index.html)。详见 `docs/codex/worklogs/20261024-katseye-review-completion.md`。
+分支 `codex/vcha-review-completion`，基线 `2870eb1589df4b51ae2163e4b52fcdc8f9cc371c`；正式工程 `apps/idol-site/`。原图、稳定ID、评分、备注、观看状态与权限保持。[打开VCHA新站v1](https://idol-sol-review-oct24.wuke40758.chatgpt.site/artists/vcha/index.html)。详见 `docs/codex/worklogs/20261024-vcha-review-completion.md`。
 
-**等待 KATSEYE 网页确认后再开始下一团，公共功能例外。下方旧门槛均为历史。**
+**等待 VCHA 网页确认后再开始 HITGS 或下一团，公共功能例外。下方旧门槛均为历史。**
 
-用户已确认 W!TCHX v31。本轮 SPIA 已发布 owner-private v32，只推进这一团；等待用户确认后再开始下一团，公共功能例外。主站仍 v186，未合并 main。
+## 开工入口
 
-- [SPIA v32 审阅](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/spia/index.html)
-- draft [PR #21](https://github.com/KAtOReNA7/idol/pull/21)，base `codex/witchx-review-completion`
-- [完整交接日志](worklogs/20261024-spia-review-completion.md) · [公开发布证据](worklogs/20261024-spia-public-delivery.json)
-- [33个可编辑 Figma 画板](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1113-1095) · [画板索引](worklogs/20261024-spia-figma-frames.json)
+- 仓库 KAtOReNA7/idol，正式工程 `apps/idol-site/`，活动分支 `codex/vcha-review-completion`，PR base `codex/katseye-review-completion`。
+- 先检查工作树，显式fetch活动分支并比较最新远端HEAD。默认fetch refspec只覆盖旧KiiiKiii，不能据默认fetch判断最新进度；不reset/clean/force push。
+- draft [PR #23](https://github.com/KAtOReNA7/idol/pull/23)，代码 `7df98a3` 已推送；[VCHA完整交接](worklogs/20261024-vcha-review-completion.md)、[发布证据](worklogs/20261024-vcha-public-delivery.json)、[Figma画板索引](worklogs/20261024-vcha-figma-frames.json)。以任务分支最新远端HEAD接续。
+- 新站 `appgprj_6adc93a0d3008191a9ebeb5700dd2d0a` v1，旧站 `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3` 仍v33；两站均owner-private，正式主站仍v186。不能混淆版本或覆盖旧站。
+- 审阅构建 `node scripts/build-vcha-review.mjs --out <仓库外独立绝对目录>`，21资产全部本地原字节。静态审阅清空个人字段，生产保存尚未验。
+- 本轮未新增子代理，无并行任务待回收。Figma 27画板已建立并修复关键排布；细节待验不等于没有设计稿。
+- 真实保存/播放、原生缩放、线上完整交互仍待验；下一团只能在用户确认VCHA网页后开始，公共功能例外。
 
-分支 `codex/spia-review-completion`，基于 `88d9b3e4e40cc0ed3411b2067a1e8e250482108c`，代码提交 `84d0b28ff4920ee82ddf2e7272684d2b1a6274bb` 已推送，交接以本分支最新远端 HEAD 为准。正式工程 `apps/idol-site/`。先检查工作树、fetch 后比较，不 reset/clean/force push。Git 命令级代理 7877，未改失效的全局10808设置。
+## 历史记录
 
-未找到可访问独立官网；页面是《Deeeep》公司宣传素材的原创延展，五人照片为 Kprofiles 具名转载。复用 TRACER v30 精确绑定/目录投影与 W!TCHX v31 导航、原图、恢复、只读机制；共享手帐保留布局并换 SPIA 配色。交审必须明确披露，不称官网复刻。
-
-五成员、两发行/四曲、四精确视频、五事件。Daddy's Little Girl 原生作品 `rec28ldfRTrPua` 的 MV/舞台分别绑定，五条既有成员关系保留；Deeeep 无原生记录，不编造 ID。37 测试、类型、构建、45 真视口布局、主流程及28补充场景通过。线上导航和读取两次超时，线上渲染/交互不能记通过；真实保存/播放及原生80%/125%缩放待验。Figma 8节点取稿、246处排布修复，完整逐字像素对照待验。
-
-v32 source `7ceaa4124a1bc8fc682db9e8d3ee89a384f0519a`，部署 `appgdep_6adc83d082b88191b7d4348723a34836` succeeded。483旧静态文件SHA不变，最终498文件、266163361字节。五张原PNG通过公开 GitHub 固定提交 `84d0b28ff4920ee82ddf2e7272684d2b1a6274bb` 提供，SHA逐字节复核；无需重复发布。源码默认构建仍复制全部本地原图，线上包使用 `--public-originals-ref` 选项。访问权限仍owner-only。
+- [KATSEYE v33，现已确认](worklogs/20261024-katseye-review-completion.md)
+- [SPIA v32，已确认](worklogs/20261024-spia-review-completion.md)
+- [W!TCHX v31，已确认](worklogs/20261024-witchx-review-completion.md)
+- 历史阶段和长期协作规则见 [STATUS](STATUS.md)、[设计要求](../design-requirements.md)、[协作手册](../collaboration-playbook.md)。旧日志中的等待门槛以当前最新用户决定为准。

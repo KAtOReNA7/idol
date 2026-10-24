@@ -11,3 +11,6 @@
 .candidate-vcha-experience :is(.cast-copy,.work-aside,.member-detail>div){min-width:0}
 .candidate-vcha-experience .cast-scores{gap:10px}
 @media(max-width:390px){.candidate-vcha-experience .button{max-width:100%;min-width:0;line-height:1.5}.candidate-vcha-experience .detail-return{display:flex;flex-wrap:wrap;gap:12px}.candidate-vcha-experience .work-aside h1{font-size:30px;overflow-wrap:anywhere}}
+
+/* VCHA v34: retain the shared notebook layout, align its palette with the artist. */
+.candidate-vcha-experience{--paper:#fff;--white:#fff;--ink:#211f22;--muted:#796b74;--line:#dedadd;--rose:#d41477;--blush:#f9dfec;--lilac:#f9dfec;--experience-display:Arial,sans-serif}.candidate-vcha-experience .header{background:#fff}.candidate-vcha-experience .brand{color:#d41477}.candidate-vcha-experience .work-aside h1,.candidate-vcha-experience .member-detail h1{font-family:Arial,sans-serif}

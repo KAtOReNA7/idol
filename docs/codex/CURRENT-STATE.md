@@ -1,6 +1,6 @@
 # Codex 迁移状态快照（2026-10-22）
 
-> 这是迁移当时的历史记录。最新接续（2026-10-24）：HITGS新站v2已确认，AtHeart新站v3待网页确认；分支 `codex/atheart-review-completion`、draft PR #25。详见 [RESUME](RESUME.md)、[STATUS](STATUS.md) 和 [AtHeart交接](worklogs/20261024-atheart-review-completion.md)。下文旧“等待人工反馈”和初始Sites source不能作为当前结论。
+> 这是迁移当时的历史记录。最新接续（2026-10-24）：HITGS新站v2已确认，AtHeart新站v4（宽屏发行区已修复）待网页确认；分支 `codex/atheart-review-completion`、draft PR #25。详见 [RESUME](RESUME.md)、[STATUS](STATUS.md) 和 [AtHeart交接](worklogs/20261024-atheart-review-completion.md)。下文旧“等待人工反馈”和初始Sites source不能作为当前结论。
 
 > 完整 v186 源码已在提交 `f24075fc98893793e82adbc92cadc9e58257728f` 推送并读回核验，工作目录为 `apps/idol-site/`。本次文档和三个隔离候选随当前交接提交提供。用户已批准本次现有评分、备注、观看快照公开入仓；不扩展到未来任意数据、秘密或凭证。
 

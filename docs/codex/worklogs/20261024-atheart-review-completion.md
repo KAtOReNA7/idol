@@ -51,3 +51,8 @@
 - GitHub代码 `6e527a21f582fe0d9aad493025741f7f31bc59d0` 已推送；draft [PR #25](https://github.com/KAtOReNA7/idol/pull/25)，base为HITGS分支，未合并main。后续交接文档以远端最新HEAD为准。公开仓库，仅新增公开来源资料与原图，不加入秘密或新私有数据。
 - 本轮只交付AtHeart，等待用户确认网页后再开始下一团；设计、资料、功能、上线各自验收，不用测试/构建代替设计通过。27画板的完整字体/像素保真、真实保存/播放/原生缩放及线上完整流程继续待办。
 - 可复现：正式工程使用现有npm依赖；审阅构建命令见RESUME，输出到仓库外独立目录，用普通静态HTTP服务浏览。详细本地证据位于 `C:/Users/61919/.codex/visualizations/2026/10/23/01a1694f-9d8c-7f82-a9a8-1732f12fea0e/atheart/`；关键JSON证据已入GitHub。本轮自有服务4192及素材捕获headless Chrome在交接时关闭。
+
+
+## 后续修复：v4宽屏发行区
+
+用户反馈已复现为发行grid零宽，v3布局证据仅验证了naturalWidth与整页溢出，未覆盖内部可见尺寸。修复、9宽27场景、Figma同步及v4发布见 [宽屏修复日志](20261024-atheart-wide-layout-fix.md)。当前交审版本为v4，尚未获用户确认。

@@ -52,9 +52,11 @@ Figma字体清单不含网页的Nimbus Sans Narrow/KeDisplay，使用Space Grote
 
 Site `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3`，实际v33；owner/custom、唯一owner、0外部访客，权限不变。Deployment `appgdep_6adc8f3b59d881919ef850cf8651ccba`，succeeded，2026-10-24T10:58:13.939547+00:00。Version `appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_16e7514e53ac8191829c0f58de3f411b`；Sites source `252690e5a36213b370e3389eb09326fa190745f6`。Fingerprint `a3d763b71b7e8d5f1a01f233325f6a32d305ad9cd877abebfd72f15b4320fe47`。
 
-GitHub仍PUBLIC，已核对当前分享边界；推送代码及本工作日志，不合并main、不覆盖正式v186。默认Git代理127.0.0.1:10808不可达，本轮命令临时清空http.proxy恢复直连，未修改用户全局配置。Sites过期凭证通过同站连接器刷新，仅隐藏stdin传入helper，没有持久化凭证。
+GitHub仍PUBLIC，已核对当前分享边界；代码 `d5ef629832d82d832c48c8938bbd6acfed4a089c` 已正常推送，draft [PR #22](https://github.com/KAtOReNA7/idol/pull/22)已附本会话，base为 `codex/spia-review-completion`。本补录后从任务分支最新远端HEAD接续，不合并main、不覆盖正式v186。默认Git代理127.0.0.1:10808不可达，本轮命令临时清空http.proxy恢复直连，未修改用户全局配置。Sites过期凭证通过同站连接器刷新，仅隐藏stdin传入helper，没有持久化凭证。
 
 本机证据根：`C:/Users/61919/.codex/visualizations/2026/10/23/01a1694f-9d8c-7f82-a9a8-1732f12fea0e/katseye/`，包含browser-public.json、interactions-public.json、timeline-final-qa.json、remote-original-proof.json、site-additive-proof.json、tests-final.log、build-final.log及参考/页面截图。线上超时没有截图，不用本地图冒充线上证据。等待KATSEYE网页确认后再开始下一团，公共功能例外。
+
+收尾：最终类型复验通过。自己的4190/4191本地静态服务停止；长期交审使用v33永久链接。文档补录另行提交并推送，不因文档变更重复部署。
 
 ## 阻塞边界
 

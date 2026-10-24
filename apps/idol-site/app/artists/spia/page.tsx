@@ -1,5 +1,3 @@
-import Design from '@/components/candidate/spia-design';
+import SpiaArtist from '@/components/spia-artist';
 import content from '@/data/spia-artist.json';
-import './spia-artist.css';
-
-export default function Page(){return <Design content={content}/>;}
+export default function Page(){return <SpiaArtist content={content}/>;}

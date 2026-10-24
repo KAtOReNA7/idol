@@ -1,5 +1,3 @@
-import Design from '@/components/candidate/tracer-design';
+import TracerArtist from '@/components/tracer-artist';
 import content from '@/data/tracer-artist.json';
-import './tracer-artist.css';
-
-export default function Page(){return <Design content={content}/>;}
+export default function Page(){return <TracerArtist content={content}/>;}

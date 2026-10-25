@@ -8,18 +8,13 @@ test('approved main photo label never inherits screenshot text; legacy photos re
 test('main and original retain distinct actual private attachment indices',()=>{assert.equal(model.privatePhotoSource(primary),'/api/media?table=ratings&record=rating-a&index=3');assert.equal(model.privatePhotoSource(model.mvReferencePhoto(primary,reference)),'/api/media?table=ratings&record=rating-a&index=0');const props={photo:primary,referencePhoto:reference,label:'张员瑛 · Violeta'};const closed=render(props);assert.match(closed,/原MV截图/);assert.doesNotMatch(closed,/data-reference-src|https?:/);const open=render(props,JSON.stringify([model.privatePhotoSource(reference),props.label]));assert.match(open,/index=0/);assert.doesNotMatch(open,/index=3/);assert.match(open,/张员瑛 · Violeta · 原MV截图/);});
 test('reference does not appear for snapshots, absent candidates, portrait fallback, wrong binding or same attachment',()=>{for(const photo of [null,reference,{...primary,table:'members'}])assert.equal(render({photo,referencePhoto:reference,label:'member'}),'');for(const ref of [null,{...reference,table:'members'},{...reference,recordId:'other'},{...reference,fieldId:'other'},{...reference,index:3},{...reference,index:-1},{...reference,sourceKind:'mv_look_photo'},...['档案照','资料照','概念照','本 MV 具名全员拼图'].map(kind=>({...reference,kind}))])assert.equal(render({photo:primary,referencePhoto:ref,label:'member'}),'');assert.equal(render({photo:primary,referencePhoto:reference,label:'member',live:false}),'');});
 test('reference UI is bound to current source and label rather than stale open state',()=>{const props={photo:primary,referencePhoto:reference,label:'member'};assert.doesNotMatch(render(props,JSON.stringify([model.privatePhotoSource(reference),'previous member'])),/data-reference-src/);});
-test('all six existing MV cast branches and both requested member surfaces are wired without replacing editors',()=>{const page=fs.readFileSync('app/page.tsx','utf8'),ive=fs.readFileSync('components/ive-artist.tsx','utf8');assert.equal((page.match(/<PhotoView referencePhoto=\{r.referencePhoto\}/g)||[]).length,6);assert.match(page,/kind=mvPhotoLabel\(photo,kind\)/);for(const source of [page,ive])assert.match(source,/<MvPhotoReference photo=\{(?:p|item.photo)\} referencePhoto=\{item.referencePhoto\}/);assert.match(page,/onDirtyChange=\{markDirty\} onNavigationBlockedChange=\{markNavigationBlocked\}/);assert.match(page,/data-unrated=\{value===null\}/);assert.match(ive,/memberWorks\(data,m.id\)/);});
-
-test('approved original sizing is native-aspect and scoped across all three primary surfaces',()=>{
- const page=fs.readFileSync('app/page.tsx','utf8'),ive=fs.readFileSync('components/ive-artist.tsx','utf8'),css=fs.readFileSync('components/mv-photo-reference.css','utf8');
- assert.match(page,/photo\?\.sourceKind==='mv_look_photo'\?' mv-look-native':''/);
- assert.match(page,/member-work-card__art'\+\(p\?\.sourceKind==='mv_look_photo'\?' mv-look-native':''\)/);
- assert.match(ive,/iv-portrait'\+\(item.photo\?\.sourceKind==='mv_look_photo'\?' mv-look-native':''\)/);
- const frame=css.match(/\.mv-look-native\{([^}]+)\}/)[1],img=css.match(/\.mv-look-native img\{([^}]+)\}/)[1];
- assert.match(frame,/aspect-ratio:auto!important/);assert.match(frame,/height:auto!important/);assert.match(frame,/width:fit-content!important/);
- assert.match(img,/position:static!important/);assert.match(img,/width:auto!important;height:auto!important/);assert.match(img,/max-width:100%!important/);assert.match(img,/max-height:min\(70svh,600px\)!important/);assert.doesNotMatch(img,/object-fit:cover|stretch/);
- // Native ratios remain 3:2 / 2:3 under simultaneous width + height caps.
- for(const [w,h]of [[1500,1000],[2000,3000],[450,675]])for(const [available,heightCap]of [[420,600],[280,480],[1200,900]]){const scale=Math.min(1,available/w,heightCap/h);assert.ok(Math.abs((w*scale)/(h*scale)-w/h)<1e-12);assert.ok(w*scale<=available+1e-9);assert.ok(h*scale<=heightCap+1e-9);assert.ok(w*scale<=w);assert.ok(h*scale<=h);}
+test('shared MV and member cards use exact identity component while retaining references and editors',()=>{
+ const page=fs.readFileSync('app/page.tsx','utf8'),identity=fs.readFileSync('components/mv-identity-photo.tsx','utf8'),css=fs.readFileSync('components/mv-identity-photo.css','utf8');
+ assert.match(page,/<MvIdentityPhoto work=\{work\}/);assert.match(page,/<MvIdentityPhoto work=\{item.work\}/);
+ assert.match(page,/<MvPhotoReference photo=\{r.photo\} referencePhoto=\{r.referencePhoto\}/);
+ assert.match(page,/onDirtyChange=\{markDirty\} onNavigationBlockedChange=\{markNavigationBlocked\}/);
+ assert.match(identity,/publicMvPortrait\(work,memberId\)/);assert.match(identity,/publicImage\?publicImage.sourceCrop:focus\?\.sourceCrop/);
+ assert.match(css,/aspect-ratio:3\/4/);assert.match(identity,/<PhotoLightbox src=\{src\}/);
 });
 
 test('LE SSERAFIM and shared XG gallery hooks use the same approved-only native frame and private reference',()=>{

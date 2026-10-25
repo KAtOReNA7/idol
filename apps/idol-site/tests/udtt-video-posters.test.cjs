@@ -1,14 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto'),vm=require('node:vm'),path=require('node:path');
-const {approvedVideoPoster}=require('./helpers/image-dependency-loader.cjs').imageDependency('@/lib/idol/approved-video-poster');
-const entries=JSON.parse(fs.readFileSync('data/udtt-video-posters.json')).entries;
-const expected=[['aKRY80dEkJw','mv','4139391550e96a783d920ff4cbb6563b864684b299089cebbc550f8de44ab0c1',101380],['nZa0Th64v00','stage','96bec21c388b48ec491b09b40e3b48601fae39df100e85faa6d8079889db5d95',110130]];
-test('only the two exact UDTT work/video/slot tuples reuse unchanged publisher preview bytes',()=>{assert.equal(entries.length,2);for(const [videoId,view,sha,bytes] of expected){const entry=approvedVideoPoster('rec28ldfRTrPxZ',videoId,view);assert.ok(entry);assert.equal(entry.src,`/design-review/sol15/assets/${sha}.jpg`);assert.equal(entry.label,'YouTube 发布者预览图');const image=fs.readFileSync('public'+entry.src);assert.equal(image.length,bytes);assert.equal(crypto.createHash('sha256').update(image).digest('hex'),sha);for(const tuple of [['foreign',videoId,view],['rec28ldfRTrPxZ','XXXXXXXXXXX',view],['rec28ldfRTrPxZ',videoId,view==='mv'?'stage':'mv'],['rec28ldfRTrPxZ',null,view]])assert.equal(approvedVideoPoster(...tuple),null);}});
-function harness(){const prefix=fs.readFileSync(path.join(__dirname,'editor-flow.test.cjs'),'utf8').split('(async()=>{')[0];return vm.runInNewContext('(function(require,__dirname){'+prefix+'\nreturn {wp,find,render:()=>w.render(wp),requests};})',{console,crypto:globalThis.crypto,URL,URLSearchParams,Date,AbortController,setTimeout,clearTimeout,setImmediate,structuredClone})(require,__dirname);}
-test('actual notebook player keeps UDTT exact video/source and contain poster; clips and foreign IDs get no local poster; no save',()=>{
- const h=harness(),stage=JSON.parse(fs.readFileSync('tests/fixtures/udtt-review-catalog.json')).works.find(w=>w.id==='rec28ldfRTrPxZ').stage;
- h.wp.work={...h.wp.work,id:'rec28ldfRTrPxZ',groupIds:['rec28ldfRTiDPs'],url:'https://www.youtube.com/watch?v=aKRY80dEkJw',videoType:'官方MV',stage:structuredClone(stage)};
- const player=()=>h.find(h.render(),n=>n.props.workId==='rec28ldfRTrPxZ'&&'posterSrc'in n.props);
- assert.equal(player().props.posterSrc,entries[0].src);assert.equal(player().props.videoId,'aKRY80dEkJw');assert.equal(player().props.posterFit,'contain');h.find(h.render(),n=>n.props.id==='stage-tab').props.onClick();assert.equal(player().props.posterSrc,entries[1].src);assert.equal(player().props.videoId,'nZa0Th64v00');assert.equal(player().props.url,stage.url);assert.equal(player().props.posterLabel,'YouTube 发布者预览图');
- h.wp.work.stage={...stage,clip:{startSeconds:1,endSeconds:2,sourceDurationSeconds:10}};assert.equal(player().props.posterSrc,undefined);h.wp.work.stage={...stage,videoId:'XXXXXXXXXXX',url:'https://www.youtube.com/watch?v=XXXXXXXXXXX'};assert.equal(player().props.posterSrc,undefined);assert.equal(h.requests.length,0);
-});
+const {checkOriginals}=require('./helpers/poster-provenance.cjs');
+const entries=require('../data/udtt-video-posters.json').entries;
+checkOriginals('UDTT',entries.map(p=>({...p,sha256:p.src.match(/([a-f0-9]{64})\.jpg$/)[1]})));

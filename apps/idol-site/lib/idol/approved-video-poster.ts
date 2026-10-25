@@ -12,11 +12,14 @@ import spiaPosters from '../../data/spia-video-posters.json';
 import tracerPosters from '../../data/tracer-video-posters.json';
 import newjeansPosters from '../../data/newjeans-video-posters.json';
 import vvupPosters from '../../data/vvup-video-posters.json';
+import {publicMvCover,publicCoverZoom} from './mv-public-media';
 
 export type VideoPoster = {
  src:string;
  label:string;
  intrinsicSize?:{width:number;height:number};
+ fit?:'cover'|'contain';
+ zoom?:number;
 };
 
 // SAY MY NAME entries are publisher illustrations. These retained assets
@@ -36,6 +39,8 @@ const retainedVideoPosters=[
 // Stage support is bounded to explicitly reviewed tuples; the caller also rejects clips.
 export function approvedVideoPoster(workId:string,videoId:string|null,view:'mv'|'stage'):VideoPoster|null{
  if(!videoId)return null;
+ const refreshed=view==='mv'?publicMvCover(workId,videoId):null;
+ if(refreshed)return {src:refreshed.src,label:refreshed.label,fit:'cover',zoom:publicCoverZoom(refreshed.src)};
  const vvup=vvupPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view);
  if(vvup)return vvup;
  const newjeans=newjeansPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view);

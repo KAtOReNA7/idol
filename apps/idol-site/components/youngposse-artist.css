@@ -21,3 +21,5 @@
 [data-yp-native] .photo-open:hover{outline:1px solid var(--acid);outline-offset:4px}
 @media(max-width:959px){[data-yp-native] .member-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:599px){[data-yp-native] .member-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}[data-yp-native] .member-grid .member-caption h2{font-size:22px}[data-yp-native] .member-grid .member-caption p{font-size:12px}[data-yp-native] .member-grid .member-index{font-size:24px;margin-bottom:12px}}
+
+.public-video-preview{display:block;width:160px;flex:none;aspect-ratio:16/9;overflow:hidden}.public-video-preview img,.public-film-preview img{width:100%;height:100%;object-fit:cover}.public-film-preview{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;align-self:start}@media(max-width:600px){.public-video-preview{width:100%;margin-bottom:18px}}

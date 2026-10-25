@@ -1,4 +1,5 @@
 'use client';
+import {publicVideoCover} from '@/lib/idol/mv-public-media';
 
 import type {ComponentProps, CSSProperties, ReactNode} from 'react';
 import type {Photo, Work} from '../lib/idol/types';
@@ -36,8 +37,8 @@ export function WorkCoverImage({work,label,fallback,onStateChange}:{
   work:Pick<Work,'id'|'url'|'song'|'name'>; label?:string; fallback?:ReactNode; onStateChange?:ImageStateListener;
 }) {
   const id=videoId(work.url),poster=approvedVideoPoster(work.id,id,'mv')??katseyeVideoPoster(work.id,id,'mv');
-  return <ReliableImage src={poster?.src??(id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:null)}
-    identityKey={`work:${work.id}:video-cover`} alt={poster?`${work.song||work.name} · ${poster.label}`:label??`${work.song||work.name} 官方视频封面`} style={poster?{objectFit:'contain',maxWidth:poster.intrinsicSize?.width,maxHeight:poster.intrinsicSize?.height}:undefined}
+  return <ReliableImage src={poster?.src??(id?(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null)}
+    identityKey={`work:${work.id}:video-cover`} alt={poster?`${work.song||work.name} · ${poster.label}`:label??`${work.song||work.name} 官方视频封面`} style={poster?{objectFit:poster.fit??'contain',maxWidth:poster.intrinsicSize?.width,maxHeight:poster.intrinsicSize?.height}:undefined}
     loading="lazy" referrerPolicy="no-referrer" fallback={fallback} onStateChange={onStateChange}/>;
 }
 

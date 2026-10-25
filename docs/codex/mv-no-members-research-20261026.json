@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-26",
+  "scope": "11 bounded exact-video candidates; no runtime edits",
+  "decisionRule": "Only confirmed absence of real group-member imagery can disable member scoring. Empty relationships, missing pictures, lyric labels, OST labels and animated-character collaboration labels do not establish absence.",
+  "statusSemantics": {
+    "confirmed-no-members": "An explicit reliable description states replacement of member imagery; recommendation for owner integration, not a claim of full-playback verification.",
+    "unknown": "No new no-members designation. Separate researchFinding distinguishes affirmative appearance reports from insufficient exclusion evidence."
+  },
+  "summary": {
+    "candidates": 11,
+    "recommendedNoMembersAdditions": 1,
+    "memberAppearanceReportedKeepScoring": 5,
+    "insufficientExclusionEvidenceKeepScoring": 5,
+    "fullVideosWatched": 0
+  },
+  "alreadyExistingExcludedFromThisResearch": [
+    "C3GouGa0noM",
+    "pc-WRrxjrBk",
+    "qwieCy-T4zw",
+    "tvTdg7sgsgU"
+  ],
+  "entries": [
+    {
+      "workId": "rec28ldfRTrI0Y",
+      "videoId": "80-Q7b1qaFg",
+      "groups": [
+        "Hearts2Hearts"
+      ],
+      "song": "The Chase",
+      "version": "Lyric Video",
+      "videoUrl": "https://www.youtube.com/watch?v=80-Q7b1qaFg",
+      "status": "unknown",
+      "researchFinding": "member-appearance-reported",
+      "reason": "歌词版含成员画面的报道明确，不能按 lyric 标签关闭。",
+      "sourceIds": [
+        "chase-members",
+        "chase-id"
+      ],
+      "recommendDisableMemberScoring": false,
+      "fullVideoWatched": false,
+      "notes": "这是精确视频级的排除判断，不能移植到同曲其他视频或用于推定成员出演名单。"
+    },
+    {
+      "workId": "rec28ldfRTrI8S",
+      "videoId": "z14Z86oQ-1E",
+      "groups": [
+        "Hearts2Hearts"
+      ],
+      "song": "STYLE",
+      "version": "Teenieping 合作版",
+      "videoUrl": "https://www.youtube.com/watch?v=z14Z86oQ-1E",
+      "status": "confirmed-no-members",
+      "researchFinding": "explicit-negative-description",
+      "reason": "Teenieping 角色版；Yonhap 明确说明动画角色代替成员画面，并区分正式 MV。",
+      "sourceIds": [
+        "style-negative",
+        "style-official",
+        "style-sm"
+      ],
+      "recommendDisableMemberScoring": true,
+      "fullVideoWatched": false,
+      "notes": "这是精确视频级的排除判断，不能移植到同曲其他视频或用于推定成员出演名单。"
+    },
+    {
+      "workId": "rec28ldfRTrIkV",
+      "videoId": "Txyb_mVaPyE",
+      "groups": [
+        "Hearts2Hearts"
+      ],
+      "song": "FOCUS",
+      "version": "DJ Seinfeld Remix",
+      "videoUrl": "https://www.youtube.com/watch?v=Txyb_mVaPyE",
+      "status": "unknown",
+      "researchFinding": "member-appearance-reported",
+      "reason": "精确嵌入视频的报道描述成员课桌与舞蹈画面，应保留评分能力。",
+      "sourceIds": [
+        "focus-members"
+      ],
+      "recommendDisableMemberScoring": false,
+      "fullVideoWatched": false,
+      "notes": "这是精确视频级的排除判断，不能移植到同曲其他视频或用于推定成员出演名单。"
+    },
+    {
+      "workId": "rec28ldfRTrINH",
+      "videoId": "OncJ5v1keww",
+      "groups": [
+        "KiiiKiii"
+      ],
+      "song": "딸기게임 (Strawberry Cheesegame)",
+      "version": "Lyric Video",
+      "videoUrl": "https://www.youtube.com/watch?v=OncJ5v1keww",
+      "status": "unknown",
+      "researchFinding": "member-appearance-reported",
+      "reason": "精确歌词版的报道点名五名成员在游乐场出镜，应保留评分能力。",
+      "sourceIds": [
+        "kiiikiii-members"
+      ],
+      "recommendDisableMemberScoring": false,
+      "fullVideoWatched": false,
+      "notes": "这是精确视频级的排除判断，不能移植到同曲其他视频或用于推定成员出演名单。"
+    },
+    {
+      "workId": "rec28ldfRTrNO2",
+      "videoId": "xu0fU46Cd7M",
+      "groups": [
+        "izna"
+      ],
+      "song": "Love All",
+      "version": "Lyric Video",
+      "videoUrl": "https://www.youtube.com/watch?v=xu0fU46Cd7M",
+      "status": "unknown",
+      "researchFinding": "insufficient-exclusion-evidence",
+      "reason": "仅确认歌词视频身份；无全片排除成员真人的证据。",
+      "sourceIds": [
+        "izna-official",
+        "izna-context"
+      ],
+      "recommendDisableMemberScoring": false,
+      "fullVideoWatched": false,
+      "notes": "这是精确视频级的排除判断，不能移植到同曲其他视频或用于推定成员出演名单。"
+    },
+    {
+      "workId": "recvxyHuKMwrIt",
+      "videoId": "rNGPgQB4Be8",
+      "groups": [
+        "IVE"
+      ],
+      "song": "BANG BANG (MINIVE VER.)",
+      "version": "MINIVE动画版",
+      "videoUrl": "https://www.youtube.com/watch?v=rNGPgQB4Be8",
+      "status": "unknown",
+      "researchFinding": "insufficient-exclusion-evidence",
+      "reason": "MINIVE 版本名称与合作角色不足以排除真人片段；未完成精确视频内容读取。",
+      "sourceIds": [
+        "ive-official",
+        "ive-context"
+      ],
+      "recommendDisableMemberScoring": false,
+      "fullVideoWatched": false,
+      "notes": "这是精确视频级的排除判断，不能移植到同曲其他视频或用于推定成员出演名单。"
+    },
+    {
+      "workId": "recvxyOz5XFVzt",
+      "videoId": "peoZYyEvY-k",
+      "groups": [
+        "fromis_9"
+      ],
+      "song": "Touchdown",
+      "version": "OST MV",
+      "videoUrl": "https://www.youtube.com/watch?v=peoZYyEvY-k",
+      "status": "unknown",
+      "researchFinding": "insufficient-exclusion-evidence",
+      "reason": "只核对 OST 发布入口；没有全片是否插入歌手镜头的可靠说明。",
+      "sourceIds": [
+        "fromis-id"
+      ],
+      "recommendDisableMemberScoring": false,
+      "fullVideoWatched": false,
+      "notes": "这是精确视频级的排除判断，不能移植到同曲其他视频或用于推定成员出演名单。"
+    },
+    {
+      "workId": "recvxyOz5Xr917",
+      "videoId": "jgD_U2t6qXQ",
+      "groups": [
+        "NewJeans"
+      ],
+      "song": "Beautiful Restriction",
+      "version": "OST Special MV",
+      "videoUrl": "https://www.youtube.com/watch?v=jgD_U2t6qXQ",
+      "status": "unknown",
+      "researchFinding": "insufficient-exclusion-evidence",
+      "reason": "Netflix 特别 MV 身份确定，但描述剧情／OST 不等于全片没有演唱者。",
+      "sourceIds": [
+        "newjeans-official",
+        "newjeans-context"
+      ],
+      "recommendDisableMemberScoring": false,
+      "fullVideoWatched": false,
+      "notes": "这是精确视频级的排除判断，不能移植到同曲其他视频或用于推定成员出演名单。"
+    },
+    {
+      "workId": "recvxyOz5XmFwB",
+      "videoId": "-1llaBEyOXA",
+      "groups": [
+        "ITZY"
+      ],
+      "song": "SUPERPOWERS",
+      "version": "韩文OST原版",
+      "videoUrl": "https://www.youtube.com/watch?v=-1llaBEyOXA",
+      "status": "unknown",
+      "researchFinding": "insufficient-exclusion-evidence",
+      "reason": "媒体只描述剧情镜头，未完整排除 ITZY 画面；保持 unknown。",
+      "sourceIds": [
+        "itzy-context",
+        "itzy-official-catalog"
+      ],
+      "recommendDisableMemberScoring": false,
+      "fullVideoWatched": false,
+      "notes": "这是精确视频级的排除判断，不能移植到同曲其他视频或用于推定成员出演名单。"
+    },
+    {
+      "workId": "recvxyOz5XsgVc",
+      "videoId": "0T8d3pRjmi4",
+      "groups": [
+        "NMIXX"
+      ],
+      "song": "Sprinkle Party",
+      "version": "韩文OST原版",
+      "videoUrl": "https://www.youtube.com/watch?v=0T8d3pRjmi4",
+      "status": "unknown",
+      "researchFinding": "member-appearance-reported",
+      "reason": "同期报道明确有 NMIXX 实拍活动画面，不应按动画 OST 关闭。",
+      "sourceIds": [
+        "sprinkle-members",
+        "sprinkle-id"
+      ],
+      "recommendDisableMemberScoring": false,
+      "fullVideoWatched": false,
+      "notes": "这是精确视频级的排除判断，不能移植到同曲其他视频或用于推定成员出演名单。"
+    },
+    {
+      "workId": "recvxyOz5X6G1q",
+      "videoId": "eJd4ii5avNw",
+      "groups": [
+        "NMIXX"
+      ],
+      "song": "Caution",
+      "version": "合作OST版",
+      "videoUrl": "https://www.youtube.com/watch?v=eJd4ii5avNw",
+      "status": "unknown",
+      "researchFinding": "member-appearance-reported",
+      "reason": "官方制作名单的镜像、演员目录与导演作品目录共同反对“无成员出镜”。",
+      "sourceIds": [
+        "caution-official-description",
+        "caution-imdb",
+        "caution-creator"
+      ],
+      "recommendDisableMemberScoring": false,
+      "fullVideoWatched": false,
+      "notes": "这是精确视频级的排除判断，不能移植到同曲其他视频或用于推定成员出演名单。"
+    }
+  ],
+  "recommendedAdditions": [
+    {
+      "workId": "rec28ldfRTrI8S",
+      "videoId": "z14Z86oQ-1E",
+      "status": "confirmed-no-members",
+      "reason": "Teenieping 角色版；Yonhap 明确说明动画角色代替成员画面，并区分正式 MV。",
+      "sources": [
+        "https://www.yna.co.kr/amp/view/AKR20251002193600005",
+        "https://www.youtube.com/watch?v=z14Z86oQ-1E",
+        "https://www.smbrandmarketing.com/portfolio/index.php?cat_no=2&idx=196&mode=view&offset="
+      ]
+    }
+  ],
+  "sources": {
+    "style-negative": {
+      "url": "https://www.yna.co.kr/amp/view/AKR20251002193600005",
+      "publisher": "Yonhap News Agency",
+      "publishedAt": "2025-10-07",
+      "kind": "reported-explicit-absence",
+      "access": "full-text-read",
+      "title": "티니핑·포켓몬·케어 베어와 K팝…팬덤 확대 노린 캐릭터 협업",
+      "finding": "正文明确写该 STYLE 视频用动画角色代替成员画面，另说明此版独立于正式 MV、6 月 30 日发布，并由八人的 Teenieping 角色推进故事。",
+      "shortQuote": "멤버들의 모습 대신",
+      "locator": "正文第 1–4 段；抓取文本行 23–28"
+    },
+    "style-sm": {
+      "url": "https://www.smbrandmarketing.com/portfolio/index.php?cat_no=2&idx=196&mode=view&offset=",
+      "publisher": "SM Brand Marketing",
+      "kind": "official-context",
+      "access": "search-index-read; direct-open-timeout",
+      "title": "Teenieping x Hearts2Hearts IN KWANGYA",
+      "finding": "官方企划页确认 STYLE 与 Teenieping 的合作内容和角色；此页本身不单独证明没有真人。"
+    },
+    "style-official": {
+      "url": "https://www.youtube.com/watch?v=z14Z86oQ-1E",
+      "publisher": "Teenieping TV / SAMG",
+      "kind": "official-video-identity",
+      "access": "search-index-read; watch-fetch-429",
+      "title": "[Teenieping X Hearts2Hearts] 'STYLE’ MV @hearts2hearts.official",
+      "finding": "官方视频搜索索引为同一视频 ID，描述含 SAMG 与 SM 版权信息；本轮未完成播放。"
+    },
+    "chase-members": {
+      "url": "https://www.hanteonews.com/en/article/76882",
+      "publisher": "Hanteo News",
+      "publishedAt": "2025-03-12",
+      "kind": "reported-member-appearance",
+      "access": "full-text-read",
+      "title": "Hearts2Hearts, First Music Broadcast Win with 'The Chase'",
+      "finding": "正文描述官方频道新发布的 The Chase 歌词视频含成员画面与歌词，不能把 Lyric Video 视为无人出镜。",
+      "locator": "抓取文本行 54"
+    },
+    "chase-id": {
+      "url": "https://www.nehannn.com/mv-play/g_323/80-Q7b1qaFg.html",
+      "publisher": "Nehannn",
+      "kind": "video-identity-crosscheck",
+      "access": "search-index-read",
+      "title": "The Chase｜Hearts2Hearts 하츠투하츠 'The Chase' Lyric Video",
+      "finding": "将精确 ID 与歌词版标题对应。"
+    },
+    "focus-members": {
+      "url": "https://www.allkpop.com/video/2025/11/hearts2hearts-release-vibrant-mv-for-focus-dj-seinfeld-remix",
+      "publisher": "allkpop",
+      "publishedAt": "2025-11-21",
+      "kind": "reported-member-appearance",
+      "access": "full-text-read; embedded-video-id-read",
+      "title": "Hearts2Hearts release vibrant MV for FOCUS (DJ Seinfeld Remix)",
+      "finding": "正文描述开场成员坐在课桌前拿着试卷，随后有团体舞蹈画面；页面播放器指向 Txyb_mVaPyE。",
+      "locator": "抓取文本行 60–64；iframe https://www.youtube.com/embed/Txyb_mVaPyE"
+    },
+    "kiiikiii-members": {
+      "url": "https://vancitykpopreports.wordpress.com/2025/08/27/kiiikiii-explores-vancouvers-playland-in-strawberry-cheesegame-lyric-video/",
+      "publisher": "Vancity K-pop Reports",
+      "publishedAt": "2025-08-27",
+      "kind": "reported-member-appearance",
+      "access": "full-text-read; embedded-video-id-read",
+      "title": "KiiiKiii Explores Vancouver’s Playland in Strawberry Cheesegame Lyric Video",
+      "finding": "报道逐一点名五名成员在 Playland 乘坐游乐设施、玩游戏的画面；所嵌视频为 OncJ5v1keww。",
+      "locator": "抓取文本行 24–31；iframe https://www.youtube.com/embed/OncJ5v1keww"
+    },
+    "izna-official": {
+      "url": "https://izna-official.jp/s/n198/diary/movie/list?ima=0000&link=ROBO004",
+      "publisher": "izna Japan Official Site",
+      "kind": "official-video-list",
+      "access": "search-index-read",
+      "title": "MOVIE | izna JAPAN OFFICIAL SITE",
+      "finding": "官方目录确认 Love All 的 Lyric Video 条目；未给出全片是否出镜的说明。"
+    },
+    "izna-context": {
+      "url": "https://kanstarpress.com/?p=194901",
+      "publisher": "KanStarpress",
+      "publishedAt": "2026-03-31",
+      "kind": "release-context",
+      "access": "full-text-read",
+      "title": "izna インタビュー／Love All リリックビデオ公開中",
+      "finding": "采访页确认歌曲及歌词视频背景，正文所读取部分不描述全片画面；不能由成员手写歌词或 Lyric 标签推定无真人。"
+    },
+    "ive-official": {
+      "url": "https://www.youtube.com/watch?v=rNGPgQB4Be8",
+      "publisher": "IVE official YouTube",
+      "kind": "official-video-identity",
+      "access": "search-index-read; watch-fetch-throttled; browser-state-timeout",
+      "title": "IVE 아이브 'BANG BANG' (MINIVE VER.) MV",
+      "finding": "精确版本标题已确认。浏览器标签曾创建并显示此标题，但内容读取超时，未完整观看。"
+    },
+    "ive-context": {
+      "url": "https://sports.khan.co.kr/article/202608141659003/",
+      "publisher": "Sports Kyunghyang",
+      "publishedAt": "2026-08-14",
+      "kind": "official-statement-reported",
+      "access": "search-index-read",
+      "title": "아이브 사세요",
+      "finding": "根据 Starship 公告报道 MINIVE 快闪与官方频道 BANG BANG MINIVE 版；未明确排除真人插入。"
+    },
+    "fromis-id": {
+      "url": "https://theqoo.net/fromis9/3851730893?category=838277925",
+      "publisher": "Theqoo (fan repost of official X)",
+      "publishedAt": "2025-08-01",
+      "kind": "video-identity-crosscheck",
+      "access": "search-index-read",
+      "title": "250801 공엑 / 트라이 OST 프로미스나인 Touch Down",
+      "finding": "转载官方 X 发布信息，关联 peoZYyEvY-k；只证明版本身份，不能证明画面仅有演员。"
+    },
+    "newjeans-official": {
+      "url": "https://www.youtube.com/watch?v=jgD_U2t6qXQ",
+      "publisher": "Netflix K-Content",
+      "kind": "official-video-identity",
+      "access": "search-index-read; watch-fetch-failed",
+      "title": "NewJeans - Beautiful Restriction (아름다운 구속) | A Time Called You Special MV | Netflix",
+      "finding": "Netflix 官方精确特殊 MV 已确认；本轮播放器无法读取。"
+    },
+    "newjeans-context": {
+      "url": "https://rollingstoneindia.com/a-time-called-yous-special-mv-beautiful-restriction-by-newjeans-evokes-nostalgia/",
+      "publisher": "Rolling Stone India",
+      "kind": "release-context",
+      "access": "search-index-read; direct-open-403",
+      "title": "A Time Called You’s Special MV Beautiful Restriction by NewJeans Evokes Nostalgia",
+      "finding": "描述该剧特别 MV 与歌曲，但可读内容不足以确认全片绝无 NewJeans 画面。"
+    },
+    "itzy-context": {
+      "url": "https://www.allkpop.com/video/2023/10/itzy-reveals-superpowers-music-video-for-strong-girl-namsoon-ost",
+      "publisher": "allkpop",
+      "publishedAt": "2023-10-08",
+      "kind": "reported-drama-footage",
+      "access": "full-text-read",
+      "title": "ITZY reveals SUPERPOWERS music video for Strong Girl Namsoon OST",
+      "finding": "正文描述李瑜美饰演姜南顺的剧情画面，未明确说全片不含 ITZY；保留 unknown。",
+      "locator": "抓取文本行 65–70"
+    },
+    "itzy-official-catalog": {
+      "url": "https://music.apple.com/us/music-video/superpowers/1710699475",
+      "publisher": "Apple Music",
+      "kind": "official-distributor-video-catalog",
+      "access": "search-index-read",
+      "title": "SUPERPOWERS - Music Video by ITZY",
+      "finding": "发行平台的视频目录身份辅助证据；不是精确 YouTube 版本全片内容证据。"
+    },
+    "sprinkle-members": {
+      "url": "https://www.bandwagon.asia/articles/nmixx-release-music-video-for-gabby-s-dollhouse-ost-sprinkle-party-on-korea-s-children-day-watch--hey-gabby-music-video-netflix-dreamworks-soundtrack-may-2022",
+      "publisher": "Bandwagon",
+      "publishedAt": "2022-05-05",
+      "kind": "reported-member-appearance",
+      "access": "full-text-read",
+      "title": "NMIXX celebrate Children Day with Sprinkle Party — watch",
+      "finding": "报道明确描述 MV 中 NMIXX 穿柔和色衣服、玩甜点；不能因动画 OST 身份关闭成员评分。",
+      "locator": "抓取文本行 59"
+    },
+    "sprinkle-id": {
+      "url": "https://www.allkpop.com/video/2022/05/nmixx-throw-a-sprinkle-party-in-sweet-mv-for-collaboration-song-2-with-gabbys-doll-house",
+      "publisher": "allkpop",
+      "publishedAt": "2022-05-04",
+      "kind": "release-context",
+      "access": "full-text-read",
+      "title": "NMIXX throw a Sprinkle Party in sweet MV for collaboration song #2 with Gabbys Doll House",
+      "finding": "同期音乐视频发布报道；作为版本辅助证据。"
+    },
+    "caution-official-description": {
+      "url": "https://video.korea.com/view/?id=eJd4ii5avNw",
+      "publisher": "Korea.com / mirrored AndersonPaakVEVO description",
+      "kind": "mirrored-official-video-credits",
+      "access": "search-index-read",
+      "title": "NMIXX, Anderson .Paak - Caution",
+      "finding": "精确视频页转录官方制作名单，列出 NMIXX 的妆发、造型及团队，并写 NMIXX 与 Anderson .Paak 表演 Caution。该镜像是辅助证据，不冒充直接读到官方完整影片。"
+    },
+    "caution-imdb": {
+      "url": "https://www.imdb.com/title/tt43229734/",
+      "publisher": "IMDb",
+      "kind": "cast-catalog",
+      "access": "search-index-read",
+      "title": "Nmixx feat. Anderson.Paak: Caution (Music Video 2026)",
+      "finding": "演出名单列出 NMIXX 成员，导演 Luke Orlando；反对将此版本归为无成员出镜。"
+    },
+    "caution-creator": {
+      "url": "https://www.larkcreative.tv/work?play=16",
+      "publisher": "Lark Creative",
+      "kind": "creator-agency-portfolio",
+      "access": "search-index-read",
+      "title": "Work / Caution by Luke Orlando / Anderson .Paak & NMIXX",
+      "finding": "导演代理机构作品目录与 NMIXX/Anderson .Paak 的 Caution 对应；不单独证明成员全名单或全片内容。"
+    }
+  },
+  "limitations": [
+    "YouTube watch pages returned 429/throttling/fetch failures through web search.",
+    "IAB was unavailable. A Chrome tab for rNGPgQB4Be8 was created but reading its state timed out; no full-playback claim.",
+    "Sources are individually labeled as direct full-text reads, search-index reads or mirrored official descriptions.",
+    "Five affirmative appearance reports retain scoring but do not establish which individual members may be scored or create personal rating relationships.",
+    "No changes to runtime, existing member-score decisions, stable IDs, personal records or user permissions."
+  ]
+}

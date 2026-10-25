@@ -1,17 +1,4 @@
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto'),React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
-const {approvedVideoPoster,WorkCoverImage}=require('./helpers/image-dependency-loader.cjs').imageDependency('@/components/app-image-presentation');
-const manifest=JSON.parse(fs.readFileSync('evidence/day19-mv-video-posters.json'));
-const runtime=JSON.parse(fs.readFileSync('data/day19-mv-video-posters.json')).entries;
-const live=JSON.parse(fs.readFileSync('evidence/mv-poster-batch2/live-tuples-20261019.json'));
-const expected=['recvxyH5pzZo3m','recvxyH5pzNPXg','rec28ldfRTrzPI','rec28ldfRTrJOZ','rec28ldfRTrAb0','rec28ldfRTrAfx','rec28ldfRTrAPA','rec28ldfRTrACM','rec28ldfRTrBpe','rec28ldfRTrBl8'];
-function jpegDimensions(b){assert.equal(b.readUInt16BE(0),0xffd8);let o=2;while(o<b.length){assert.equal(b[o++],255);while(b[o]===255)o++;const m=b[o++],n=b.readUInt16BE(o);if([192,193,194].includes(m))return[b.readUInt16BE(o+5),b.readUInt16BE(o+3)];o+=n;}throw Error('JPEG dimensions missing');}
-function harness(){const prefix=fs.readFileSync(path.join(__dirname,'editor-flow.test.cjs'),'utf8').split('(async()=>{')[0];return vm.runInNewContext('(function(require,__dirname){'+prefix+'\nreturn {wp,find,render:()=>w.render(wp),requests};})',{console,crypto:globalThis.crypto,URL,URLSearchParams,Date,AbortController,setTimeout,clearTimeout,setImmediate,structuredClone})(require,__dirname);}
-for(const id of expected)test('day19 exact original and isolated card/player '+id,()=>{
- const a=manifest.assets.find(x=>x.workId===id),r=runtime.find(x=>x.workId===id),w=live.works.find(x=>x.id===id);assert.ok(a&&r&&w);assert.equal(w.videoType,'官方MV');assert.equal(w.url,'https://www.youtube.com/watch?v='+a.videoId);assert.equal(w.song,a.song);
- const b=fs.readFileSync(a.repositoryFile);assert.equal(b.length,a.bytes);assert.equal(crypto.createHash('sha256').update(b).digest('hex'),a.sha256);assert.deepEqual(jpegDimensions(b),[a.width,a.height]);assert.equal(a.repositoryFile,'public'+a.src);
- assert.deepEqual(Object.keys(r).sort(),['workId','videoId','view','src','label'].sort());assert.equal(r.label,'MV 预览图（Bugs 来源）');assert.deepEqual(approvedVideoPoster(id,a.videoId,'mv'),r);
- for(const args of [[id,a.videoId,'stage'],[id,null,'mv'],[id,'wrong-video','mv'],['wrong-work',a.videoId,'mv']])assert.equal(approvedVideoPoster(...args),null);
- const html=renderToStaticMarkup(React.createElement(WorkCoverImage,{work:{id,url:w.url,song:a.song,name:a.song}}));assert.ok(html.includes(a.src));assert.match(html,/object-fit:contain/);assert.ok(html.includes(r.label));assert.doesNotMatch(html,/i.ytimg/);
- const h=harness();h.wp.work={...h.wp.work,id,url:w.url,song:a.song};const before=JSON.stringify(h.wp.work);let p=h.find(h.render(),n=>n.props.workId===id&&'posterSrc'in n.props);assert.equal(p.props.posterSrc,a.src);assert.equal(p.props.posterFit,'contain');assert.equal(p.props.videoId,a.videoId);assert.equal(p.props.posterLabel,r.label);h.find(h.render(),n=>n.props.id==='stage-tab').props.onClick();p=h.find(h.render(),n=>n.props.workId===id&&'posterSrc'in n.props);assert.equal(p.props.posterSrc,undefined);assert.equal(h.requests.length,0);assert.equal(JSON.stringify(h.wp.work),before);
-});
-test('day19 exactly ten bounded originals with native Midas ratio and no audit fields shipped',()=>{assert.equal(manifest.assets.length,10);assert.equal(runtime.length,10);assert.equal(new Set(runtime.map(x=>x.workId)).size,10);assert.equal(manifest.assets.reduce((s,a)=>s+a.bytes,0),606608);assert.deepEqual(manifest.assets.filter(a=>a.height!==282).map(a=>[a.song,a.width,a.height]),[['Midas Touch',500,348]]);assert.doesNotMatch(JSON.stringify(runtime),/sha256|sourcePage|evidence|workspace|api\/posters/);});
+// Superseded missing-cover/legacy-precedence assertions are covered by the full inventory test.
+const {checkOriginals}=require('./helpers/poster-provenance.cjs');
+const evidence=require('../evidence/day19-mv-video-posters.json');
+checkOriginals('day19-mv',evidence.entries??evidence.assets);

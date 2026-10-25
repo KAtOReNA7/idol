@@ -1,3 +1,4 @@
+import {nativeMvImage,nativeMvCoverHtml} from '../native-mv-cover.mjs';
 import {renderGroupInformation} from '../group-information.mjs';
 export function createIfeyeModule(runtime){'use strict';
 
@@ -17,7 +18,7 @@ export function createIfeyeModule(runtime){'use strict';
   return {group,accounts:raw.publicAccounts??[],
    members:raw.members.map(row=>{const out=selectFields(row,['id','recordId','cnName','stageName','nationality','birthDate','joined','left','relationship','displayRelationship']);const copy=content.members?.[row.id];out.role=copy?copy.role:'';out.profile=copy?copy.profile:'';out.status=copy?copy.status:'';out.portrait=displayAsset(row.portrait);return out;}),
    releases:raw.releases.map(row=>({...selectFields(row,['key','recordId','title','date','type','languageMarket','creditScope','creditedArtists','memberIds','canonicalEventId','url','sourceUrl','trackVersions']),cover:displayAsset(row.cover)})),
-   works:raw.works.map(row=>({...selectFields(row,['id','recordId','key','title','type','videoType','videoId','url','date','releaseKey','memberIds','version','officialTitle','sourceUrl','previewState','participantStatus']),publicLabel:content.works?.[row.key]?.typeLabel||(row.type==='STAGE'?'舞台':'影像'),image:displayAsset(row.image)})),
+   works:raw.works.map(row=>({...selectFields(row,['id','recordId','key','title','type','videoType','videoId','url','date','releaseKey','memberIds','version','officialTitle','sourceUrl','previewState','participantStatus']),publicLabel:content.works?.[row.key]?.typeLabel||(row.type==='STAGE'?'舞台':'影像'),image:displayAsset(nativeMvImage(row))})),
    events:raw.events.map(row=>({...selectFields(row,['id','candidateKey','date','precision','releaseKey','memberIds','workIds','sourceUrl','eventType']),title:content.events?.[row.id||row.candidateKey]?.title||''}))};
  }
  function publicVideoLabel(work){return work.publicLabel||(work.type==='STAGE'?'舞台':'影像');}
@@ -60,6 +61,7 @@ export function createIfeyeModule(runtime){'use strict';
   return {width:width>0?width*ratio:0,height:height>0?height*ratio:0};
  }
  function scopedImage(asset,alt,extra={}){
+  const cover=nativeMvCoverHtml(asset,alt,'photo',!!extra.eager);if(cover)return cover;
   const purpose=mediaPurpose(asset,extra.purpose||'related-illustration'),q=A.assetQuality(asset,purpose),size=nativeDimensions(asset,purpose),cap=cappedDimensions(asset,purpose,size.width,size.height);
   const css=mediaStyle(asset,purpose)+(cap.width?'--native-width:'+cap.width+'px;':'')+(size.width&&size.height?'--native-ratio:'+size.width+' / '+size.height+';':'');
   return '<span class="native-frame quality-media" data-image-purpose="'+e(purpose)+'" style="'+e(css)+'">'+A.image(asset,purpose==='video-preview'&&!asset?alt+' · 预览图暂缺':alt,{className:'photo',eager:!!extra.eager,zoom:!!extra.zoom&&A.zoomAllowed(asset,purpose),purpose})+'</span>';

@@ -1,3 +1,4 @@
+import {nativeMvImage,nativeMvCoverHtml} from '../native-mv-cover.mjs';
 import {renderGroupInformation} from '../group-information.mjs';
 export function createIznaModule(runtime){
  'use strict';
@@ -19,7 +20,7 @@ export function createIznaModule(runtime){
   return {group,accounts:raw.publicAccounts??[],
    members:raw.members.map(row=>{const out=selectFields(row,['id','recordId','cnName','stageName','nationality','birthDate','joined','left','relationship','displayRelationship']);const copy=content.members?.[row.id];out.role=copy?copy.role:'';out.profile=copy?copy.profile:'';out.status=copy?copy.status:'';out.portrait=displayAsset(row.portrait);return out;}),
    releases:raw.releases.map(row=>({...selectFields(row,['key','recordId','title','date','type','languageMarket','creditScope','creditedArtists','memberIds','promotionalMemberIds','canonicalEventId','url','sourceUrl','trackVersions']),cover:displayAsset(row.cover)})),
-   works:raw.works.map(row=>({...selectFields(row,['id','recordId','key','title','type','videoType','videoId','url','date','releaseKey','memberIds','version','officialTitle','sourceUrl','previewState']),publicLabel:content.works?.[row.key]?.typeLabel||(row.type==='STAGE'?'舞台':'影像'),image:displayAsset(row.image)})),
+   works:raw.works.map(row=>({...selectFields(row,['id','recordId','key','title','type','videoType','videoId','url','date','releaseKey','memberIds','version','officialTitle','sourceUrl','previewState']),publicLabel:content.works?.[row.key]?.typeLabel||(row.type==='STAGE'?'舞台':'影像'),image:displayAsset(nativeMvImage(row))})),
    events:raw.events.map(row=>({...selectFields(row,['id','candidateKey','date','precision','releaseKey','memberIds','workIds','sourceUrl','eventType']),title:content.events?.[row.id||row.candidateKey]?.title||''}))};
  }
  function publicVideoLabel(work){return work.publicLabel||(work.type==='STAGE'?'舞台':'影像');}
@@ -52,6 +53,7 @@ export function createIznaModule(runtime){
  // This outer wrapper includes the credit; pixel caps remain on A.image's actual frame/img.
  function mediaStyle(asset,purpose){return A.qualityStyle(asset,purpose)+'max-height:none!important;aspect-ratio:auto!important;overflow:visible!important;';}
  function photo(asset,alt,kind='',eager=false,zoom=false,purpose='related-illustration'){
+  const cover=nativeMvCoverHtml(asset,alt,kind,eager);if(cover)return cover;
   const use=mediaPurpose(asset,purpose),quality=A.assetQuality(asset,use),caption=quality.caption?'':(asset&&asset.label)||'';
   const text=asset?.usage==='mv_related_article_illustration'?String(alt||'').replace(/\s*预览$/,'')+' · 报道配图':alt;
   if(!A.assetUrl(asset)||quality.effectivePurpose==='unavailable')return `<div class="photo quality-media image-empty ${kind}" data-image-purpose="${e(use)}" style="${e(mediaStyle(asset,use))}"><span role="img" aria-label="${e(text)}">${e(text)}${purpose==='video-preview'&&!asset?' · 预览图暂缺':''}</span></div>`;

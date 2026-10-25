@@ -11,3 +11,6 @@
 .ri-recovery li>span{min-width:0}
 @media(max-width:390px){.ri-recovery li{align-items:stretch;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.ri-placeholder,.ri-fallback,.ri-retry,.ri-recovery{animation:none;transition:none;scroll-behavior:auto}}
+
+/* Native image remains a direct child; clipping contains reviewed border zoom. */
+:where(a,div,button,figure,span):has(>img[data-video-cover-cropped]){overflow:hidden}

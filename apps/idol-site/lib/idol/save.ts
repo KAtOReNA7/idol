@@ -2,7 +2,10 @@ import {ownControl} from './native-storage';
 import {saveNativeRecord} from './native-save';
 import {env} from 'cloudflare:workers';
 import {getRecord,updateRecord,isTable,AppError,TableKey} from './feishu';
-import {schema,validatePatch,matchesPatch,editableValues} from './live';
+import {schema,validatePatch,matchesPatch,editableValues,byId} from './live';
+import {F} from './fields';
+import {asIds,asUrl} from './values';
+import {assertMemberScoreAllowed} from './member-score-policy';
 import {hash} from './hash';
 import {invalidateCatalog} from './catalog';
 import {invalidateDurableCatalog} from './durable-catalog';
@@ -28,6 +31,7 @@ export async function saveRecord(userId:string,input:any){
  let sourceAudit:Record<string,unknown>|undefined;
  if(table==='works'&&values&&Object.hasOwn(values,'stageScore')){const selected=stageForWork(recordId);const key=sourceKeyFor(selected);if(!stageScoreIsBound(selected)||stageVideoId!==selected?.videoId||(selected?.clip?stageSourceKey!==key:stageSourceKey!==undefined&&stageSourceKey!==key))throw new AppError('STAGE_SOURCE_CHANGED','舞台来源或片段范围尚未绑定或已更新，本次没有写入。草稿已保留，请核对当前视频范围后决定是否重新读取。',409);sourceAudit={videoId:selected!.videoId,sourceKey:key,...(selected!.clip?{startSeconds:selected!.clip.startSeconds,endSeconds:selected!.clip.endSeconds}:{})};}
  const fields=await schema(table,true);const patch=validatePatch(table,values,fields);const before=await getRecord(table,recordId);
+ if(table==='ratings')await assertMemberScoreAllowed(values,asIds(byId(before,fields)[F.ratings.works]),async id=>({id,url:asUrl(byId(await getRecord('works',id),await schema('works'))[F.works.url])}));
  if(await hash(before.fields)!==revision)throw new AppError('EDIT_CONFLICT','这条记录已在别处更新。本次未覆盖，请重新读取后再保存。',409);
  const lockKey=table+':'+recordId;const now=Date.now();
  try{await db.batch([

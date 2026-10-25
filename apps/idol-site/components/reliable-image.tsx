@@ -3,6 +3,7 @@
 import {cloneElement, createContext, isValidElement, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ImgHTMLAttributes, type ReactElement, type ReactNode} from 'react';
 import {activateImageSession, cachedImageResult, canRetryImage, commitImageResult, createImagePresentation, deactivateImageSession, imageAttemptSource, imageInputKey, IMAGE_RETRY_COOLDOWN_MS, isImageRetryActivationKey, isImageSessionCurrent, retryImagePresentation, type ImageStatus} from '../lib/idol/image-presentation';
 import './reliable-image.css';
+import {publicCoverZoom} from '../lib/idol/mv-public-media';
 
 export interface ReliableImageState {
   status: ImageStatus;
@@ -15,6 +16,9 @@ export interface ReliableImageState {
   retry: () => boolean;
 }
 export interface ReliableImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt'> {
+  'data-video-cover-cropped'?: boolean;
+  /** Original viewers never apply the reviewed thumbnail border presentation. */
+  original?: boolean;
   src?: string | null;
   alt: string;
   identityKey?: string;
@@ -98,9 +102,12 @@ function statusNode(node: ReactNode, status: 'missing' | 'error', alt: string, r
 
 /** Direct native img preserves host child selectors, SSR discovery and layout. */
 export function ReliableImage(props: ReliableImageProps) {
+  const {original,...imageProps}=props;
+  const zoom=original?1:publicCoverZoom(props.src);
+  if(zoom>1){imageProps.style={...props.style,transform:`scale(${zoom})`,transformOrigin:'50% 50%',objectFit:'cover'};imageProps['data-video-cover-cropped']=true;}
   const identityKey = props.identityKey ?? props.alt;
   const inputKey = imageInputKey(props.src, identityKey, props.attemptKey);
-  return <ImageGeneration key={inputKey} {...props} identityKey={identityKey} inputKey={inputKey}/>;
+  return <ImageGeneration key={inputKey} {...imageProps} identityKey={identityKey} inputKey={inputKey}/>;
 }
 
 function ImageGeneration({src, alt, identityKey, inputKey, attemptKey: _attemptKey, priority = false, missing, fallback, errorFallback, fallbackStyle, retryMode = 'external', retryLabel = '重试图片', retryClassName, retryCooldownMs = IMAGE_RETRY_COOLDOWN_MS, onStateChange, onLoad, onError, loading, fetchPriority, decoding, ...native}: ReliableImageProps & {identityKey: string; inputKey: string}) {

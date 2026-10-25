@@ -2,6 +2,7 @@
 import fs from 'node:fs';import path from 'node:path';import vm from 'node:vm';
 import {createRequire} from 'node:module';import {fileURLToPath} from 'node:url';import {createHash} from 'node:crypto';
 import {build} from 'esbuild';import {clearReviewPersonalValues} from '../review/all/catalog.mjs';
+import {writeCompletionReport} from './build-completion-report.mjs';
 import {fixture} from '../tests/helpers/udtt-private-fixture.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),repo=path.resolve(root,'../..');
 const args=process.argv.slice(2),opts=Object.fromEntries(Array.from({length:args.length/2},(_,i)=>[args[i*2],args[i*2+1]]));
@@ -37,6 +38,13 @@ const assetBase=ref?'https://raw.githubusercontent.com/KAtOReNA7/idol/'+ref+'/ap
 const localPublicAssets=new Set(JSON.parse(read('data/music-index-artwork.json')).map(row=>row.image));
 const repairedArtist=JSON.parse(read('data/lesserafim-artist.json'));
 for(const row of [...Object.values(repairedArtist.memberVisuals),...repairedArtist.releases])localPublicAssets.add(row.image);
+// Deliver every video cover and as many unchanged portrait originals as fit the
+// site's 256 MiB limit. Remaining originals use the immutable public source ref.
+const mvMedia=JSON.parse(read('data/mv-public-media.json'));
+for(const row of mvMedia.covers)localPublicAssets.add(row.src);
+let localBytes=[...localPublicAssets].reduce((sum,url)=>sum+fs.statSync(path.join(root,'public',url)).size,0);
+const portraitFiles=[...new Set(mvMedia.portraits.map(row=>row.src))].map(src=>({src,bytes:fs.statSync(path.join(root,'public',src)).size})).sort((a,b)=>a.bytes-b.bytes||a.src.localeCompare(b.src));
+for(const row of portraitFiles)if(!localPublicAssets.has(row.src)&&localBytes+row.bytes<=230*1024*1024){localPublicAssets.add(row.src);localBytes+=row.bytes;}
 for(const url of localPublicAssets)if(!url.startsWith('/artist/')||url.includes('..')||!fs.existsSync(path.join(root,'public',url)))throw Error('Invalid same-origin public original: '+url);
 const jsxReal=require.resolve('react/jsx-runtime'),styleFiles=new Map();
 const result=await build({entryPoints:[path.join(root,'review/all/entry.tsx')],absWorkingDir:root,outfile:path.join(out,'review-all/app.js'),bundle:true,format:'esm',platform:'browser',target:['es2022'],jsx:'automatic',minify:true,metafile:true,define:{'process.env.NODE_ENV':'"production"'},plugins:[{name:'all-review',setup(b){
@@ -76,4 +84,5 @@ const version=sha(fs.readFileSync(path.join(out,'review-all/app.js'))).slice(0,1
 const html=`<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>全团只读审阅</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/review-all/app.css?v=${version}"><style>#review-context{padding:8px 16px;text-align:center;background:#161616;color:#fff;font:12px/1.5 system-ui}#review-context a{color:inherit;text-decoration:underline;margin-left:16px}</style></head><body><aside id="review-context">只读审阅 · 个人评分与备注未载入<a href="/?view=groups">全部团体</a></aside><div id="root"></div><script type="module" src="/review-all/app.js?v=${version}"></script></body></html>`;
 for(const dest of ['index.html',...registry.map(g=>'artists/'+g.slug+'/index.html')]){fs.mkdirSync(path.dirname(path.join(out,dest)),{recursive:true});const slug=dest==='index.html'?'index':dest.split('/')[1];fs.writeFileSync(path.join(out,dest),(slug==='index'?html.replace(/<aside id="review-context">[\s\S]*?<\/aside>/,'').replace('<title>全团只读审阅</title>','<title>stage. 女团手帐</title>'):html).replace('/review-all/app.css','/review-all/routes/'+slug+'.css')); }
 fs.writeFileSync(path.join(out,'review-all/manifest.json'),JSON.stringify({kind:'all-groups-read-only',publicRef:ref??null,groups:registry.length,catalogSha256:sha(payload),assets:assetManifest,bundleInputs:Object.keys(result.metafile.inputs)},null,2)+'\n');
+writeCompletionReport(out);
 console.log(JSON.stringify({output:out,groups:registry.length,assets:assetManifest.length,jsBytes:fs.statSync(path.join(out,'review-all/app.js')).size,publicRef:ref??null}));

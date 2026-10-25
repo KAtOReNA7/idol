@@ -5,6 +5,9 @@ import {nativeDb,ownControl,nativeRow,nativeSchema,type NativeRow} from './nativ
 import {namedFields,patchById} from './native-format';
 import {stageForWork,stageScoreIsBound} from './stage';
 import {stageSourceKey as sourceKeyFor} from './stage-source';
+import {assertMemberScoreAllowed} from './member-score-policy';
+import {F} from './fields';
+import {asIds,asUrl} from './values';
 export async function nativeRevision(snapshotId:string,table:TableKey,id:string,version:number,fields:Record<string,unknown>){return hash({snapshotId,table,id,version,fields});}
 export async function saveNativeRecord(userId:string,input:any){
  const {table,recordId,revision,operationId,values,stageVideoId,stageSourceKey}=input??{};
@@ -17,6 +20,7 @@ export async function saveNativeRecord(userId:string,input:any){
  if(table==='works'&&values&&Object.hasOwn(values,'stageScore')){const selected=stageForWork(recordId),key=sourceKeyFor(selected);if(!stageScoreIsBound(selected)||stageVideoId!==selected?.videoId||(selected?.clip?stageSourceKey!==key:stageSourceKey!==undefined&&stageSourceKey!==key))throw new AppError('STAGE_SOURCE_CHANGED','舞台版本已变化，输入已保留。请重新打开后再保存。',409);sourceAudit={videoId:selected!.videoId,sourceKey:key,...(selected!.clip?{startSeconds:selected!.clip.startSeconds,endSeconds:selected!.clip.endSeconds}:{})};}
  const snapshot=control.active_snapshot,fields=await nativeSchema(snapshot,table),patch=validatePatch(table,values,fields),before=await nativeRow(snapshot,table,recordId);
  if(before.revision!==revision)throw new AppError('EDIT_CONFLICT','这条资料已更新，输入已保留。请重新打开后再保存。',409);
+ if(table==='ratings')await assertMemberScoreAllowed(values,asIds(JSON.parse(before.fields_json)[F.ratings.works]),async id=>({id,url:asUrl(JSON.parse((await nativeRow(snapshot,'works',id)).fields_json)[F.works.url])}));
  const raw=JSON.parse(before.fields_json),next=patchById(raw,fields,patch),version=before.version+1,nextRevision=await nativeRevision(snapshot,table,recordId,version,next),now=Date.now();
  const record={record_id:recordId,fields:namedFields(next,fields)},result={saved:true,verified:true,operationId,table,recordId,revision:nextRevision,values:editableValues(table,record,fields),savedAt:new Date(now).toISOString(),...(sourceAudit?{stageSource:sourceAudit}:{})};
  // Conditional journal + CAS + cache fence are one D1 transaction. A stale

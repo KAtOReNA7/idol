@@ -1,4 +1,5 @@
 'use client';
+import {publicVideoCover} from '@/lib/idol/mv-public-media';
 import {ArtistInformation,ArtistHomeTimeline} from '@/components/artist-information';
 import {publicCustomArtistText,publicCustomArtistCaption} from '@/lib/idol/custom-artist-copy';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
@@ -48,7 +49,7 @@ async function readCatalog(signal:AbortSignal){
 }
 function WorkCard({work,returnTo,stage=false}:{work:Work;returnTo:string;stage?:boolean}){
  const id=stage?work.stage?.videoId:videoId(work.url), art=katseyeVideoArt[work.id]?.[stage?'stage':'mv'];
- const src=id?(art?.id===id?art.image:`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null;
+ const src=id?(art?.id===id?art.image:(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`)):null;
  return <article className="ke-work"><A href={artistWorkUrl(work,stage,returnTo)}><div className="ke-work-thumb"><ReliableImage src={src} identityKey={'work:'+work.id+(stage?':stage':':mv')} alt={`${work.song||work.name} ${stage?'舞台':'MV'}封面`} referrerPolicy="no-referrer" fallback={<div className="ke-text-cover"><strong>{work.song||work.name}</strong><span>{stage?'舞台图片暂未收录':'图片暂未收录'}</span></div>}/></div><h3>{work.song||work.name}</h3><p>{[stage?work.stage?.publishedDate:work.releaseDate,stage?'舞台 / PERFORMANCE':work.videoType,work.version].filter(Boolean).join(' · ')}</p><span className="ke-score">我的{stage?'舞台':isMv(work)?' MV':'作品'}分 <b>{artistWorkScoreLabel(stage?work.stageScore:work.score)}{(stage?work.stageScore:work.score)===null?'':' / 10'}</b></span></A><div className="ke-work-actions"><A className="ke-button" href={artistWorkUrl(work,stage,returnTo)}><Play size={13}/>观看与评分</A>{!stage&&!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className="ke-button secondary" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;
 }
 export default function KatseyeArtist({content}:{content:KatseyeContent}){

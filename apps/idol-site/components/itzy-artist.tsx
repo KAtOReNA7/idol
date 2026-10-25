@@ -1,4 +1,5 @@
 'use client';
+import {publicVideoCover} from '@/lib/idol/mv-public-media';
 import {ArtistInformation} from '@/components/artist-information';
 import {publicCustomArtistText,publicCustomArtistCaption} from '@/lib/idol/custom-artist-copy';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
@@ -41,7 +42,7 @@ async function readCatalog(signal:AbortSignal){
 }
 function WorkCard({work,returnTo}:{work:Work;returnTo:string}){
  const id=videoId(work.url);
- return <article className="iz-work"><A href={artistWorkUrl(work,false,returnTo)}><div className="iz-work-thumb">{<ReliableImage src={id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:null} identityKey={'work:'+work.id} alt={`${work.song||work.name} 视频封面`} referrerPolicy="no-referrer" fallback={<div className="iz-text-cover"><strong>{work.song||work.name}</strong><Play size={24}/></div>}/>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className="iz-score">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className="iz-work-actions"><A className="iz-button" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className="iz-button" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;
+ return <article className="iz-work"><A href={artistWorkUrl(work,false,returnTo)}><div className="iz-work-thumb">{<ReliableImage src={id?(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null} identityKey={'work:'+work.id} alt={`${work.song||work.name} 视频封面`} referrerPolicy="no-referrer" fallback={<div className="iz-text-cover"><strong>{work.song||work.name}</strong><Play size={24}/></div>}/>}</div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className="iz-score">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className="iz-work-actions"><A className="iz-button" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className="iz-button" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;
 }
 export default function ItzyArtist({content}:{content:ItzyContent}){
  const timelineHostOptions=useArtistTimelineHostOptions();

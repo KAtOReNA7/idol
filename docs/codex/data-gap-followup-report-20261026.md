@@ -2,6 +2,8 @@
 
 用户确认v8后，本轮已先将完整v8报告及发布原件上传GitHub，再完成以下续作并发布同一指定站点v9。保留51团已确认视觉、Apple Music风格共享主站和手帐；没有复用旧设计冒称重新设计。站点仍为owner-private只读，个人评分、备注和观看状态未修改。
 
+实现提交 `693180a4900776b30acfd41e3058b79615548246` 已推送至 `codex/data-gap-followup`；draft [PR #39](https://github.com/KAtOReNA7/idol/pull/39)，未合并main。
+
 - [指定正式站点](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/)
 - [当前线上完整报告](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/review-all/completion-report.html)
 - [v9完整51团数据与个人页表HTML](reports/20261026-v9/completion-report.html) · [1579条待补图CSV](reports/20261026-v9/missing-mv-identities.csv)

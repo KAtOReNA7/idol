@@ -1,5 +1,7 @@
 # 接续：指定站点v9已发布，新增112图及历史档案修复，资料缺口待续
 
+当前实现 `693180a4900776b30acfd41e3058b79615548246` 已推送，draft [PR #39](https://github.com/KAtOReNA7/idol/pull/39)；从 `codex/data-gap-followup` 最新HEAD接续，先fetch比较，勿从旧main开始。
+
 ## 最新交付：指定站点 v9 发布、报告归档与缺口续作（2026-10-26）
 
 用户已确认 v8 并授权发布全部当前进度及继续开发。指定站点 [v9](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/) 已成功发布，沿用51团已确认设计、共享手帐布局与当前owner-private只读权限；旧v186、main、个人记录及稳定ID不改。分支 `codex/data-gap-followup`，冻结基线 `0801fc366cb385375f6d68e2495a73ee07c13831`。

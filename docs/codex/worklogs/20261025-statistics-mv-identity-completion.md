@@ -42,6 +42,6 @@
 - 线上使用服务身份Chrome，非用户本人IAB。共享40布局/5流程、8团40独立页封面检查通过；信息区及作品抽样最终结果以验证JSON为准。首轮WOOAH在字体/容器布局尚未稳定时读到scrollWidth416，单独复核3秒后390且无越界元素；检查器改为等待document.fonts.ready及双动画帧，再复验51团，不改生产CSS掩盖问题。
 - 仍有1691条既有关系缺合格公开认人图，400作品无本轮公开认人图（含133条原本无成员关系）；47条card_only需提高清晰度。QWER无安全具名单人MV图；12条无关系旧候选隔离，不擅自增加评分关系。完整逐项缺口见报告/CSV与素材审计。
 - 真实生产保存、所有视频完整播放、80%/125%原生缩放、用户本人IAB、新Figma同步未验。open_in_codex返回queued，不视为用户浏览器通过。
-- 大型审计JSON换行从CRLF归一LF导致较大diff，未改写已推送提交。结束前须提交最终实现、证据和文档并推送本分支；draft PR基于`codex/group-photo-information-refresh`，不合并main。
+- 大型审计JSON换行从CRLF归一LF导致较大diff，未改写已推送提交。实现、证据和文档已提交并推送`dee9ed4c4bf5fcd50cf90764df541bd03511ebd6`；draft [PR #38](https://github.com/KAtOReNA7/idol/pull/38)已创建并附加当前任务，基于`codex/group-photo-information-refresh`，不合并main。本轮自建4240本地服务已停止。
 
 最终线上复验通过：51团手机信息区、22条作品封面/认人图抽样、5条无成员规则与1条原图/关闭交互；无运行时错误。结合此前线上40共享布局/5流程、40独立页封面检查，均为v8服务身份Chrome，未扩大到用户IAB或全量线上作品验收。

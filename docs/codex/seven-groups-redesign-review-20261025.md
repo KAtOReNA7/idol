@@ -1,6 +1,6 @@
 # 七团重设计统一交审（2026-10-25）
 
-七团已按用户批准参考依次完成，统一私密只读审阅 **v3** 已发布。当前等待用户统一验收；此前七团旧设计的否决状态不被技术验证自动解除。其余44团保持用户已通过版本，正式主站仍为v186。
+七团已按用户批准参考依次完成，统一私密只读审阅 **v3** 已发布。用户于2026-10-25明确确认七团新版全部通过；此确认来自用户，不由技术检查推定。其余44团保持用户已通过版本，正式主站仍为v186。
 
 ## 审阅链接与视觉依据
 
@@ -8,7 +8,7 @@
 
 | 团体与新版链接 | 已批准的参考 | 本轮实现与资料边界 |
 | --- | --- | --- |
-| [MADEIN](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/artists/madein/) | [日本官网](https://www.madein-official.net/) | 黑红摄影、白色原字标、Hammersmith One；官网四人首页摄影与六张LOVE, AFRAID具名单人照分开标注，GAEUN历史档案保留。部分发行仍缺封面，以文字档案呈现。 |
+| [MADEIN](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/artists/madein/) | [日本官网](https://www.madein-official.net/) | 黑红摄影、白色原字标、Hammersmith One；官网四人首页摄影与六张LOVE, AFRAID具名单人照分开标注，GAEUN历史档案保留。v3交付时BLUE缺封面；后续v4已补Bugs原字节封面，当前登记四项发行封面齐全，历年目录完整性另行核对。 |
 | [QWER](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/artists/qwer/) | [日本官网](https://qwerjapan.com/) | 黑底乐队摄影、手写字标、完整四人乐器构图；官网只提供SHOW DOWN发行条目，未宣称韩国唱片目录完整。 |
 | [PURPLE KISS](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/artists/purplekiss/) | [HIDE & SEEK官方发行专题](https://m.melon.com/musicstory/detail.htm?mstorySeq=11666) | 紫绿、七人时期官方团照与拍立得构图；个人照保留具名档案来源，不猜未具名概念照身份。 |
 | [IVE](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/artists/ive/) | [I’VE MINE / Baddie官方发行专题](https://www.genie.co.kr/magazine/subMain?mgz_seq=13648) | 冷青摄影、黑色标题与六人官方具名花絮照；目录、详情与时间轴为该视觉语言的项目延展。 |

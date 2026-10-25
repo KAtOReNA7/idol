@@ -2,6 +2,12 @@
 
 51团页面设计已全部获用户认可。本轮沿用这些已认可设计与共享手帐布局，继续补公开资料、图片、精确视频和时间轴，不宣称全团按官网重新设计。
 
+[打开v4团体索引](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/?view=groups) · [HURRICANE](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrEng&returnTo=%2Fartists%2Fbadvillain%3Fsection%3Dworks) · [BLUE](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/artists/madein/?section=works&release=madein-s-blue)
+
+七团设计沿用已确认v3，其余44团沿用各自已确认版本；新增资料区承接现有字体与颜色。原官网参考及项目扩展差异见[七团参考表](seven-groups-redesign-review-20261025.md)和[全团来源记录](all-groups-audit-20261025.md)。
+
+线上服务身份Chrome已验证40项手机/桌面布局和5条操作流程，51团索引正常；无应用写请求或页面JS错误。它不等同用户IAB会话或生产保存验证。
+
 ## 本轮解决
 
 | 项目 | 已交付内容 | 证据与范围 |
@@ -24,3 +30,5 @@
 - 真实生产保存、全部视频完整播放、原生80%/125%缩放、用户IAB完整会话未验。Figma沿用上一轮112画板，本轮新增公开资料区和封面尚未同步。
 
 审阅站保持owner-private、只读，正式主站v186未改；上线验证记录见[工作日志](worklogs/20261025-all-groups-data-completion.md)。
+
+代码与交接已推送至 [draft PR #35](https://github.com/KAtOReNA7/idol/pull/35)。

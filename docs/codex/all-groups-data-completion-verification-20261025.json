@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "status": "published-verified-read-only",
+  "branch": "codex/all-groups-data-completion",
+  "baseline": "352affd5f439726058cf12795151bc3568b273b8",
+  "publishedCodeCommit": "0741347992ce86b8dabe276347e104de94b13c8e",
+  "review": {
+    "version": 4,
+    "url": "https://idol-all-groups-review-oct25.wuke40758.chatgpt.site",
+    "access": "owner-private-read-only",
+    "siteSourceCommit": "a924dbd993f409067be0f80de0feb22e788aa94a",
+    "archiveBytes": 4417447,
+    "archiveSha256": "6628ba660dd6e2bfeb846244783af7c6f1ba406c9b24bb924de45e3a9f4df0c9",
+    "mainVersionUnchanged": 186
+  },
+  "checks": {
+    "targetedTests": {
+      "passed": 77,
+      "failed": 0
+    },
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "localLayouts": 70,
+    "localFlows": [
+      "BLUE original image open/Escape",
+      "HURRICANE exact MV player mounts and unmounts on stage switch",
+      "YUNAH public credit -> exact See U Tonight journal",
+      "Hazy partial credit -> actual ifeye member archive",
+      "51-group index"
+    ],
+    "localErrors": [],
+    "localWriteRequests": [],
+    "legacyTimelineSSR": {
+      "passed": 8,
+      "failed": 44,
+      "baselineReproduced": true,
+      "status": "unresolved historical harness / DOM assumptions",
+      "baselineComparisonScope": "Frozen text/JSON read overlay, not a separate complete checkout. Both runs: 8 passed, 44 failed; changed events pass SHA validation and fail old heading assumption."
+    },
+    "online": {
+      "identity": "Sites service authorization in local Chrome; not user IAB session",
+      "widths": [
+        390,
+        1440
+      ],
+      "layouts": 40,
+      "flows": [
+        "BLUE original image open/Escape",
+        "HURRICANE exact MV player mounts and unmounts on stage switch",
+        "YUNAH public credit -> exact See U Tonight journal",
+        "Hazy partial credit -> actual ifeye member archive",
+        "51-group index"
+      ],
+      "errors": [],
+      "applicationWriteRequests": 0,
+      "platformRequests": [
+        "POST /cdn-cgi/challenge-platform/"
+      ],
+      "verificationNote": "All 40 layout checks and 5 flows completed. Initial final write assertion counted one Cloudflare platform challenge POST. Classified separately after inspecting the recorded exact path; no application write requests. No security challenge was bypassed."
+    }
+  },
+  "newRemoteImages": [
+    {
+      "path": "/artist/madein/data-completion-20261025/blue-cover.jpg",
+      "status": 200,
+      "bytes": 147719,
+      "sha256": "0d80676d663d21d952d47d329efa0fdc82f0957f09063b717e440380b6f0b733"
+    },
+    {
+      "path": "/artist/badvillain/data-completion-20261025/hurricane-mv.jpg",
+      "status": 200,
+      "bytes": 106595,
+      "sha256": "e1286d6e122ed02de44074969359e3d6fdcc9f9887c081f0f4f057f79c54bf73"
+    }
+  ],
+  "publicCredits": {
+    "works": 4,
+    "memberEntries": 15,
+    "newPersonalRatingRows": 0
+  },
+  "timelineReview": {
+    "originalHoldCandidates": 14,
+    "newOfficialCorrections": 2,
+    "existingPublicAlternatives": 4,
+    "retainPending": 8,
+    "precisionNotes": "Announcement/report/planned dates do not prove effective dates."
+  },
+  "verificationLimits": [
+    "Production save",
+    "Complete video playback",
+    "Native browser 80%/125% zoom",
+    "User IAB full session",
+    "Figma sync for new data sections"
+  ],
+  "pullRequest": "https://github.com/KAtOReNA7/idol/pull/35"
+}

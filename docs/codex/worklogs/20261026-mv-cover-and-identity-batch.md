@@ -43,3 +43,5 @@
 源凭证过期后通过同站原生工具正常续期；没有绕过权限。新增原图提交a250a4d已推送。研究JSON/MD只规范化LF行尾，图像字节未改。GitHub初次657项校验648通过、9项SSL连接异常，降至2并发且保留证书验证后9项全过，原始异常保存在验证归档。
 
 最终v11已实际查看桌面作品封面及XG、IVE、BABYMONSTER线上认人图截图，图片解码完成且无封面黑块。`open_in_codex`打开作品页返回queued，未将其视为用户IAB验收。推送前28份新增/修改文本的凭证模式检查无命中，`git diff --check`通过；远端任务分支与本地提交一致，无其他电脑分叉。
+
+GitHub实现与完整报告已推送：`74007464dc10ef1d9b5c41d28c653fcf98044d43`；[draft PR #40](https://github.com/KAtOReNA7/idol/pull/40)，目标分支`codex/data-gap-followup`，未合并main。

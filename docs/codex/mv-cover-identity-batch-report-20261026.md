@@ -66,3 +66,7 @@ Browser plugin not available，使用既有Playwright与系统Chrome。线上是
 
 ![修复后的作品封面](reports/20261026-v11/online-cover-after-1440.png)
 ![本轮IVE认人图](reports/20261026-v11/online-IVE-identities.png)
+
+## GitHub交接
+
+GitHub实现与完整报告已推送：`74007464dc10ef1d9b5c41d28c653fcf98044d43`；[draft PR #40](https://github.com/KAtOReNA7/idol/pull/40)，目标分支`codex/data-gap-followup`，未合并main。

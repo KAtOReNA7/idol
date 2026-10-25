@@ -1,3 +1,13 @@
+# 当前完整报告：v11，附v9/v8历史记录
+
+2026-10-26最新：作品封面遮挡已修复，新增657条认人图；累计1906条/312作品/42团，仍922条缺图、47条需提高清晰度、18项统计未知。保留当前设计、原图、稳定ID、个人记录及owner-private只读权限。
+
+当前完整结果：[v11报告](mv-cover-identity-batch-report-20261026.md)、[51团完整表](reports/20261026-v11/completion-report.html)、[922条待补CSV](reports/20261026-v11/missing-mv-identities.csv)、[验证](mv-cover-identity-batch-verification-20261026.json)及[可重复补图方法](mv-identity-batch-method-20261026.md)。
+
+下方为v9及v8历史记录，旧累计/缺口数字不代表当前版本。
+
+---
+
 # 全团开发完整报告：当前 v9，附 v8 历史原件
 
 2026-10-26：用户确认v8后，续作v9已发布到同一指定正式地址。当前完整51团数据、个人页模块表与待补项见 [v9报告](data-gap-followup-report-20261026.md)、[完整HTML](reports/20261026-v9/completion-report.html)、[1579条待补认人图CSV](reports/20261026-v9/missing-mv-identities.csv)及[验证证据](data-gap-followup-verification-20261026.json)。

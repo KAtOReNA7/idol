@@ -4,7 +4,7 @@ import {Search,X} from 'lucide-react';
 import type {CatalogView,Member} from '@/lib/idol/types';
 import type {BrowseFilters} from '@/lib/idol/journey';
 import {groupIndexOptions,indexGroupNames,matchingIndexedGroups} from '@/lib/idol/group-index';
-import {GroupIndexCard} from './group-detail';
+import {MusicGroupCard} from './music-home';
 
 export function GroupIndex({data,filters,onFilters,onOpen,renderPhoto}:{data:CatalogView;filters:BrowseFilters;onFilters:(patch:Partial<BrowseFilters>)=>void;onOpen:(id:string)=>void;renderPhoto:(member:Member)=>ReactNode}){
  const input=useRef<HTMLInputElement>(null);
@@ -22,7 +22,7 @@ export function GroupIndex({data,filters,onFilters,onOpen,renderPhoto}:{data:Cat
    {active&&<button className="filter-reset text-button" onClick={reset}><X size={14}/>重置团体筛选</button>}
   </div>
   <p className="result-line" role="status" aria-live="polite" aria-atomic="true">显示 {groups.length} / {data.groups.length} 个团体</p>
-  <div id="group-index-results" className="group-grid">{groups.map(group=><GroupIndexCard key={group.id} group={group} data={data} onOpen={()=>onOpen(group.id)} renderPhoto={renderPhoto}/>)}</div>
+  <div id="group-index-results" className="music-group-grid">{groups.map(group=><MusicGroupCard key={group.id} group={group} onOpen={()=>onOpen(group.id)}/>)}</div>
   {!groups.length&&<div className="empty"><h2>{data.groups.length?'没有符合条件的团体':'暂未收录团体'}</h2><p>{data.groups.length?'试试其他团体名称、公司，或放宽筛选条件。':'收录团体后，可以在这里搜索和筛选。'}</p>{active&&<button className="button" onClick={reset}>查看全部团体</button>}</div>}
  </section>;
 }

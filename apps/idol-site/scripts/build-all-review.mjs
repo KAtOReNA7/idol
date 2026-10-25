@@ -32,6 +32,12 @@ const timelines=Object.fromEntries(registry.map(g=>{const published='data/'+g.sl
 const payload=JSON.stringify({catalogs,registry,timelines,viewer,nativePortrait:portrait,imageRoutes});
 const pages=registry.map((g,i)=>`import P${i} from './app/artists/${g.slug}/page';`).join('\n')+'\nexport default {'+registry.map((g,i)=>JSON.stringify(g.slug)+':P'+i).join(',')+'};';
 const assetBase=ref?'https://raw.githubusercontent.com/KAtOReNA7/idol/'+ref+'/apps/idol-site/public':'';
+// Keep the browse grid and repaired official portraits on the Site's own CDN.
+// The rest of the large archive still uses immutable public originals.
+const localPublicAssets=new Set(JSON.parse(read('data/music-index-artwork.json')).map(row=>row.image));
+const repairedArtist=JSON.parse(read('data/lesserafim-artist.json'));
+for(const row of [...Object.values(repairedArtist.memberVisuals),...repairedArtist.releases])localPublicAssets.add(row.image);
+for(const url of localPublicAssets)if(!url.startsWith('/artist/')||url.includes('..')||!fs.existsSync(path.join(root,'public',url)))throw Error('Invalid same-origin public original: '+url);
 const jsxReal=require.resolve('react/jsx-runtime'),styleFiles=new Map();
 const result=await build({entryPoints:[path.join(root,'review/all/entry.tsx')],absWorkingDir:root,outfile:path.join(out,'review-all/app.js'),bundle:true,format:'esm',platform:'browser',target:['es2022'],jsx:'automatic',minify:true,metafile:true,define:{'process.env.NODE_ENV':'"production"'},plugins:[{name:'all-review',setup(b){
  b.onResolve({filter:/^all-review-(payload|pages)$/},a=>({path:a.path,namespace:'virtual-review'}));
@@ -46,16 +52,16 @@ const result=await build({entryPoints:[path.join(root,'review/all/entry.tsx')],a
  // the exact identity and hash fields, changing only public transport addresses.
  b.onLoad({filter:/data[/\\](izna|ifeye)-assets\.json$/},a=>{const rows=JSON.parse(fs.readFileSync(a.path,'utf8'));if(assetBase)for(const row of rows){if(!row.url.startsWith('/artist/'))throw Error('Unexpected native public asset');row.url=assetBase+row.url;}return {loader:'json',contents:JSON.stringify(rows)};});
  b.onResolve({filter:/^react\/jsx-runtime$/},a=>a.namespace==='review-jsx'?{path:jsxReal}:{path:'jsx',namespace:'review-jsx'});
- b.onLoad({filter:/.*/,namespace:'review-jsx'},()=>({loader:'js',contents:`import {jsx as j,jsxs as s,Fragment} from 'react/jsx-runtime';export {Fragment};const base=${JSON.stringify(assetBase)},images=${JSON.stringify(imageRoutes)};function url(v){if(typeof v!=='string')return v;if(images[v])return images[v];return base&&/^\\/(?:artist|fonts|design-review)\\//.test(v)&&!v.split('?')[0].endsWith('.css')?base+v:v;}function props(type,p){if(!p)return p;const q={...p};if(q.src)q.src=url(q.src);if(q.poster)q.poster=url(q.poster);if(q.href)q.href=url(q.href);return q;}export const jsx=(t,p,k)=>j(t,props(t,p),k);export const jsxs=(t,p,k)=>s(t,props(t,p),k);`}));
+ b.onLoad({filter:/.*/,namespace:'review-jsx'},()=>({loader:'js',contents:`import {jsx as j,jsxs as s,Fragment} from 'react/jsx-runtime';export {Fragment};const base=${JSON.stringify(assetBase)},images=${JSON.stringify(imageRoutes)},local=new Set(${JSON.stringify([...localPublicAssets])});function url(v){if(typeof v!=='string')return v;if(images[v])return images[v];if(local.has(v.split('?')[0]))return v;return base&&/^\\/(?:artist|fonts|design-review)\\//.test(v)&&!v.split('?')[0].endsWith('.css')?base+v:v;}function props(type,p){if(!p)return p;const q={...p};if(q.src)q.src=url(q.src);if(q.poster)q.poster=url(q.poster);if(q.href)q.href=url(q.href);return q;}export const jsx=(t,p,k)=>j(t,props(t,p),k);export const jsxs=(t,p,k)=>s(t,props(t,p),k);`}));
  b.onResolve({filter:/\.css\?url$/},a=>({path:a.path.startsWith('@/')?path.join(root,a.path.slice(2).replace(/\?url$/,'')):path.resolve(path.dirname(a.importer),a.path.replace(/\?url$/,'')),namespace:'review-css-url'}));
  b.onLoad({filter:/.*/,namespace:'review-css-url'},a=>{const url='/review-all/styles/'+path.basename(a.path);styleFiles.set(url,a.path);return {loader:'js',contents:'export default '+JSON.stringify(url)};});
  b.onResolve({filter:/^\/(?:artist|fonts|design-review)\//},a=>a.kind==='url-token'?{path:a.path,external:true}:undefined);
  }}],logLevel:'warning'});
 for(const input of Object.keys(result.metafile.inputs))if(/data\/(?:snapshot|snapshot-import|snapshot-fallback)|lib\/idol\/(?:native-save|public-access|public-reader)|app\/api\/|cloudflare:|server-only/.test(input))throw Error('Private/server module in review: '+input);
-const rewriteCss=s=>assetBase?s.replace(/url\((['"]?)(\/(?:artist|fonts|design-review)\/[^)'"\s]+)\1\)/g,(_,q,url)=>'url('+JSON.stringify(assetBase+url)+')'):s;
+const rewriteCss=s=>assetBase?s.replace(/url\((['"]?)(\/(?:artist|fonts|design-review)\/[^)'"\s]+)\1\)/g,(_,q,url)=>'url('+JSON.stringify(localPublicAssets.has(url)?url:assetBase+url)+')'):s;
 for(const [dest,source]of styleFiles){fs.mkdirSync(path.dirname(path.join(out,dest)),{recursive:true});fs.writeFileSync(path.join(out,dest),rewriteCss(fs.readFileSync(source,'utf8')));}
 fs.writeFileSync(path.join(out,'review-all/app.css'),rewriteCss(fs.readFileSync(path.join(out,'review-all/app.css'),'utf8')));
-function publicFiles(dir){for(const item of fs.readdirSync(dir,{withFileTypes:true})){const source=path.join(dir,item.name);if(item.isDirectory())publicFiles(source);else if(item.isFile()){const rel='/'+path.relative(path.join(root,'public'),source).split(path.sep).join('/');if(!ref||rel.endsWith('.css')){if(rel.startsWith('/design-review/sol15/assets/'))continue;copyAsset(source,rel);if(ref&&rel.endsWith('.css'))fs.writeFileSync(path.join(out,rel),rewriteCss(fs.readFileSync(source,'utf8')));}}}}
+function publicFiles(dir){for(const item of fs.readdirSync(dir,{withFileTypes:true})){const source=path.join(dir,item.name);if(item.isDirectory())publicFiles(source);else if(item.isFile()){const rel='/'+path.relative(path.join(root,'public'),source).split(path.sep).join('/');if(!ref||rel.endsWith('.css')||localPublicAssets.has(rel)){if(rel.startsWith('/design-review/sol15/assets/'))continue;copyAsset(source,rel);if(ref&&rel.endsWith('.css'))fs.writeFileSync(path.join(out,rel),rewriteCss(fs.readFileSync(source,'utf8')));}}}}
 publicFiles(path.join(root,'public'));
 // Keep each route's styles separate: several independently designed pages use
 // the same short class prefix. Loading every artist's CSS together changes them.

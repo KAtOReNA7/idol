@@ -79,4 +79,11 @@
 
 ## 验证与发布记录
 
-详见本轮工作日志与验证JSON。网页设计是否通过仍由用户验收；自动检查不能代替设计确认。
+已发布用户指定同一站点 **v7**：[打开51团索引](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/?view=groups)。仍为owner-private只读，待用户验收；旧v186主站未覆盖。
+
+- 本地：55项专项/边界/路由测试、类型和正式构建通过；51团×五宽共255首页布局、40共享布局/5交互、255索引图片槽通过。
+- 线上：服务身份Chrome验证255索引图片槽、51团信息区/117账号链接、40共享布局/5交互通过；无浏览器脚本错误、无写入请求。全页截图中Candy Shop曾暂缺像素，滚动到真实视口并等待解码后逐卡截图确认正常。
+- 图片交付：51张索引照片及LE SSERAFIM 16原图共67份原字节改为同站提供，全部固定来源SHA和长度核对通过。源仓库体积上限通过固定清单重建静态图片解决，没有压缩或换图。
+- 发布代码：GitHub `49746f92a8751c72f4928cd3eb7df5ecff5b8c0a`；Sites源码 `924214c62e5e793e171dc8d1123cc5b4b461b872`；[PR #37](https://github.com/KAtOReNA7/idol/pull/37)保持draft、未合并main。
+
+用户浏览器打开工具仅返回queued，不能算用户IAB验证。完整记录见[本轮日志](worklogs/20261025-group-photo-information-refresh.md)和[验证JSON](group-photo-information-verification-20261025.json)。网页设计是否通过仍由用户验收；自动检查不能代替设计确认。

@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 const evidence=JSON.parse(fs.readFileSync('../../docs/codex/mv-identity-asset-audit-20261025.json','utf8'));
 const safe=row=>{
- if(!/^\/artist\/mv-identity-20261025\/[\w./-]+$/.test(row.src)||row.src.includes('..'))throw Error('Invalid public asset path');
+ if(!/^\/artist\/mv-identity-(?:20261025|20261026)\/[\w./-]+$/.test(row.src)||row.src.includes('..'))throw Error('Invalid public asset path');
  const bytes=fs.readFileSync('public'+row.src);
  if(createHash('sha256').update(bytes).digest('hex')!==row.sha256)throw Error('Original SHA changed: '+row.src);
  if(!Number.isSafeInteger(row.width)||!Number.isSafeInteger(row.height)||row.width<=0||row.height<=0)throw Error('Dimensions missing');

@@ -1,0 +1,48 @@
+✔ public collaboration projection retains exact credited guest members without creating ratings (1.4705ms)
+✔ artist query permits only published slugs and never accepts arbitrary IDs or duplicate scope (0.5015ms)
+✔ artist projection retains cross-group personal works, full row values and original order (0.8367ms)
+✔ roster members personal calculations are equal before and after narrow response (1.4923ms)
+✔ zero remains scored, null stays unscored, scoped counts cannot claim global coverage (0.3283ms)
+✔ owner check and source fence precede response projection; refresh and full catalog untouched (2.1088ms)
+✔ version navigation never exposes links outside the final artist projection or mutates shared catalog (0.3084ms)
+✔ follower counts retain published precision in ten-thousands without approximate prefix (0.9814ms)
+✔ undated accounts cannot show a count and renamed accounts remain identified (14.1385ms)
+✔ rendered account text and links cannot inject markup or executable schemes (0.7839ms)
+✔ all group metrics have explicit scope, sources and conflict handling (2.7506ms)
+✔ public metrics do not mutate catalog records or copy private fields (0.6499ms)
+✔ all 51 completion rows render only verified accounts and keep unavailable zero distinct (6.5141ms)
+✔ nmixx: historical detail renders, while current roster and source relations stay unchanged (27.4208ms)
+✔ lesserafim: historical detail renders, while current roster and source relations stay unchanged (14.6365ms)
+✔ all seven BADVILLAIN profiles link to their exact shared journal and preserve artist return (17.147ms)
+✔ absence requires the exact work and current video; animation labels and missing photos have no authority (1.0196ms)
+✔ score guard uses resolved works and cannot be disabled by a client appearance claim (0.5565ms)
+✔ native save blocks no-member scores before a journal/write while preserving existing ratings and MV scoring (227.9508ms)
+✔ all catalog and editorial covers are exact original bytes, with unique video bindings (2179.6079ms)
+✔ every current work cover uses its precise video; another work, video or stage does not inherit it (82.9661ms)
+✔ MV identity pictures require exact work, member and video and never fabricate a missing picture (319.1541ms)
+✔ verified historical stage maps are still selected by exact tuple (1.5372ms)
+✔ actual shared player forwards the current cover and exact video without changing scores or stage identity (1098.6737ms)
+✔ NMIXX existing stable group and return context are bounded (212.0158ms)
+✔ NMIXX search queue and format roundtrip (102.4562ms)
+✔ NMIXX featured release cards show actual MV scores including zero and null (631.505ms)
+✔ NMIXX collection cannot invent stage sources or mix member scores (213.3397ms)
+✔ NMIXX member summaries preserve zero, dimension sample counts and exact MV photo absence (203.3712ms)
+✔ NMIXX official six portraits preserve provenance and all local asset hashes (26.0994ms)
+✔ NMIXX missing performance records are unknown, never invented zero (83.088ms)
+✔ NMIXX reads only the authenticated catalog and retains shared member math (0.3491ms)
+✔ NMIXX social dates are retained historical observations (0.1243ms)
+✔ NMIXX styles are scoped and preserve photos without cropping (0.7584ms)
+✔ NMIXX queue counts follow the active format and search (192.4979ms)
+✔ NMIXX member MV links expose the work key for return focus (77.8492ms)
+✔ NMIXX information module uses the current evidence and retains old observations without rendering them (46.3599ms)
+✔ member roster and detail visibly render Chinese first without renaming identity (199.7305ms)
+✔ NMIXX upcoming and supplemental releases render in dedicated sections (94.8127ms)
+✔ nmixx approved looks use uniform display, exact private primary and qualified individual reference (391.1721ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4106.7418

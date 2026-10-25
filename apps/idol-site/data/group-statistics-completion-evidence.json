@@ -14,8 +14,8 @@
     "salesLowerBoundsAdded": 10,
     "salesFallbackZero": 9,
     "winsObserved": 27,
-    "winsConfirmedZero": 20,
-    "winsFallbackZero": 4,
+    "winsConfirmedZero": 21,
+    "winsFallbackZero": 3,
     "unresolvedSourceDifferences": [
       "triples.sales",
       "fromis9.sales",
@@ -7378,23 +7378,40 @@
         }
       },
       "wins": {
-        "observedValue": null,
+        "observedValue": 0,
         "displayValue": 0,
-        "status": "unavailable",
-        "unit": "wins",
-        "title": "打歌一位累计",
-        "scope": "韩国音乐节目一位；未取得足够可信的当前累计，按用户要求显示0。",
+        "status": "confirmed-zero",
+        "unit": "次",
+        "title": "打歌一位",
+        "scope": "韩国音乐节目一位；Soridata具名艺人页快照明确记录0，不含年末奖。",
         "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.889410+00:00",
-        "sourceUrl": null,
-        "sourceTitle": null,
-        "sources": [],
-        "notes": [
-          "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
-          "已检索团体名、Music Show Wins及Soridata等公开记录；未将搜索无结果当作确认零。",
-          "检索到Soridata旧快照明确0，但该缓存明显较旧且没有可靠统计截至日，因此本轮仍归为当前数据缺失，observedValue=null。"
+        "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+        "sourceUrl": "https://soridata.com/artists/XG.html",
+        "sourceTitle": "Soridata · XG · Music Show Awards",
+        "sources": [
+          {
+            "url": "https://soridata.com/artists/XG.html",
+            "title": "Soridata · XG · Music Show Awards",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+            "kind": "third-party-public"
+          }
         ],
-        "evidence": {}
+        "notes": [
+          "此次为新的具名艺人统计页，明确显示Music Show Awards 2006+: 0；页面含2026-09-03最新发行记录，区别于上一轮1.4年前旧awards缓存。",
+          "确认范围仅为该公开来源快照；页面未给该计数独立的统计截至日，因此asOf=null，checkedAt不代表实时统计。",
+          "没有依据此页修改XG销量；其物理销量覆盖与本项目既有来源不同。"
+        ],
+        "evidence": {
+          "kind": "explicit-source-zero",
+          "observedText": "Music Show Awards 2006+: 0",
+          "sourcePageLastReleaseDate": "2026-09-03",
+          "pageCountAsOf": null,
+          "retrievalMethod": "public-web-open",
+          "sourceFreshnessEvidence": "搜索工具将该艺人页标为三周内抓取；页内发行日期为2026-09-03。该信息仅说明来源页较新，不等于一位统计截至日。",
+          "previousStatus": "unavailable",
+          "previousObservedValue": null
+        }
       }
     },
     "aespa": {

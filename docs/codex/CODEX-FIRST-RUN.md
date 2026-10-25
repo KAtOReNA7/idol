@@ -1,8 +1,8 @@
 # Codex 首次执行文件
 
-当前接续请以 [RESUME](RESUME.md) 和 [STATUS](STATUS.md) 顶部为准：fromis_9 v10 已获确认，EVERGLOW v11 已交审待确认，分支 `codex/everglow-review-completion`。本文件下方旧确认门槛均为历史记录。
+跨电脑优先阅读 [快速接续文件](NEXT-COMPUTER-HANDOFF.md)，再核对 [RESUME](RESUME.md) 和 [STATUS](STATUS.md) 顶部。当前为已获用户确认并上线的全团站点v11，活动分支 `codex/mv-cover-and-identity-batch`；下一任务是922条认人图缺口、47张旧图质量与18项未知统计。先fetch最新远端；本文件下方逐团版本和确认门槛均为历史记录，不能从旧分支接续。
 
-## 最新执行决定：IZ*ONE Panorama 重设计 v8 待确认（2026-10-25）
+## 历史执行决定：IZ*ONE Panorama 重设计 v8（2026-10-25）
 
 用户明确否决 v6 奶油玫瑰/Bodoni 展册视觉。本轮依据 [Panorama 时期韩国官网存档](https://web.archive.org/web/20210103153505/http://iz-one.co.kr/)实际取得的 HTML、CSS、原字标、字体与具名原图重写黑银页面；[BLOOM*IZ 预告历史镜像](https://iz-one.co.kr/20191103/)和 [Melon 官方专题](https://www.melon.com/musicstory/inform.htm?mstorySeq=10961)为辅助参考。原存档浏览器停在 loading，不冒称完整原站加载成功；依据是实际读取的源码、资产及辅助页面。
 
@@ -77,9 +77,9 @@ v4修复补充：用户反馈首页发行区元素丢失，已复现为窗口留
 
 先读 [RESUME](RESUME.md)、根AGENTS、[STATUS](STATUS.md)、[PRD](PRD.md)、[CURRENT-STATE](CURRENT-STATE.md)、[ACCEPTANCE](ACCEPTANCE.md)、设计要求和协作手册，再核对源码与实际输入。
 
-- 活动分支 `codex/izone-review-completion`，draft PR #27；正式工程 `apps/idol-site/`，根Next sandbox不是生产基线。
-- i-dle新站v5及此前页面已确认，当前等待IZ*ONE Panorama重设计v8网页确认。主站仍v186，没有合并main。
+- 当前活动分支 `codex/mv-cover-and-identity-batch`，draft PR #40；正式工程 `apps/idol-site/`，根Next sandbox不是生产基线。后续以STATUS最新接续点为准。
+- 全团指定站点v11已获确认，全部已完成修改已上线；旧v186没有改动，未合并main。剩余资料缺口不等于等待逐团设计确认。
 - 本地Windows开发，localhost只代表本机。GitHub是跨电脑接续入口；显式fetch活动分支，保留工作树改动和双方有效提交。
 - 原图、稳定ID、评分、备注、观看状态和权限保持；公开仓库分享授权不扩展到新私人数据或秘密。
 - 代码、worklog、公开验证证据共同提交推送。设计、资料、功能、上线分层验收；沿用设计必须在交审中披露版本、范围、官网及差异。
-- 新站/旧站ID与容量原因、依赖/运行/验证命令、Figma和待验项见 [AtHeart交接](worklogs/20261024-atheart-review-completion.md)。
+- 当前站点ID、跨电脑恢复发布源、运行与验证命令见 [快速接续文件](NEXT-COMPUTER-HANDOFF.md)。[AtHeart交接](worklogs/20261024-atheart-review-completion.md)仅为历史背景，不能用其旧站ID发布当前站点。

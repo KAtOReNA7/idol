@@ -1,8 +1,9 @@
+@font-face{font-family:SevenPixel;src:url('/artist/illit/redesign-20261025/pixelify-sans-bold.ttf') format('truetype');font-weight:700;font-display:swap}
 /* Rebuilt 2026-10-25: illit official reference journal. Stable player/editor markup only. */
 .illit-experience{--paper:#edf5ff;--white:#fff;--ink:#1d326e;--muted:#556b91;--line:#a8bedf;--rose:#3a60b0;--blush:#fff;--lilac:#fff;background:#edf5ff;color:#1d326e;font-family:Arial,'Noto Sans SC',sans-serif;min-height:100vh}
-.illit-experience :is(h1,h2,h3){color:#1d326e;font-family:monospace,'Noto Sans SC',sans-serif;letter-spacing:-.04em}
+.illit-experience :is(h1,h2,h3){color:#1d326e;font-family:SevenPixel,monospace,'Noto Sans SC',sans-serif;letter-spacing:-.04em}
 .illit-experience .header{background:#edf5ff;color:#1d326e;border-bottom:1px solid #a8bedf;padding:24px 5%;min-height:90px}
-.illit-experience .brand{font:900 28px/1 monospace,sans-serif;letter-spacing:-.06em;color:inherit}
+.illit-experience .brand{font:900 28px/1 SevenPixel,monospace,sans-serif;letter-spacing:-.06em;color:inherit}
 .illit-experience .brand small{font:400 10px/1.5 Arial,sans-serif;color:inherit;letter-spacing:.08em}
 .illit-experience .header nav button{color:inherit;font-family:Arial,sans-serif;border-radius:0}
 .illit-experience .private-pill{border:1px solid currentColor;border-radius:0;color:inherit;background:transparent}
@@ -12,7 +13,7 @@
 .illit-experience .button.primary,.illit-experience .video-mode-tabs button[aria-selected=true]{background:#3a60b0;color:#fff}
 .illit-experience :is(.work-detail-top,.madein-detail-hero){display:grid;grid-template-columns:minmax(0,1.8fr) minmax(260px,.8fr);gap:36px;align-items:start;margin:30px 0 60px}
 .illit-experience :is(.work-aside,.madein-detail-identity){padding:30px 0;border:0;border-top:5px solid #3a60b0;border-radius:0;background:transparent}
-.illit-experience :is(.work-aside h1,.madein-detail-identity h1,.ive-work-heading h1){font:900 clamp(32px,4vw,62px)/1.08 monospace,sans-serif;letter-spacing:-.06em;overflow-wrap:anywhere;margin:20px 0}
+.illit-experience :is(.work-aside h1,.madein-detail-identity h1,.ive-work-heading h1){font:900 clamp(32px,4vw,62px)/1.08 SevenPixel,monospace,sans-serif;letter-spacing:-.06em;overflow-wrap:anywhere;margin:20px 0}
 .illit-experience :is(.work-aside p,.madein-detail-identity p){font-size:12px;color:#556b91}
 .illit-experience .video-stage{border-radius:0;background:#050505;overflow:hidden}
 .illit-experience :is(.video-play,.score-indicator){background:#3a60b0}
@@ -21,18 +22,18 @@
 .illit-experience .cast-card .photo{aspect-ratio:3/4;max-height:520px;border-radius:0;background:#fff}
 .illit-experience .cast-card .photo img{object-fit:contain}
 .illit-experience :is(.cast-copy,.cast-card>div:last-child){padding:20px 4px}
-.illit-experience .member-name{font:700 22px/1.2 monospace,sans-serif}
+.illit-experience .member-name{font:700 22px/1.2 SevenPixel,monospace,sans-serif}
 .illit-experience .section-heading{border-bottom:1px solid #a8bedf;padding-bottom:24px;margin-bottom:30px}
-.illit-experience .section-heading h2{font:800 36px/1.2 monospace,sans-serif}
+.illit-experience .section-heading h2{font:800 36px/1.2 SevenPixel,monospace,sans-serif}
 .illit-experience :is(.stage-source,.alternative-card,.watch-lead-card,.member-work-card){border:1px solid #a8bedf;border-radius:0;background:#fff;box-shadow:none}
 .illit-experience :is(.detail-return,.stage-view>.detail-return,.watch-next,.caption-help){border:0;border-top:1px solid #a8bedf;border-radius:0;background:transparent;padding:25px 0}
 .illit-experience .member-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7%;align-items:start}
-.illit-experience .member-detail h1{font:900 clamp(40px,5vw,76px)/1.1 monospace,sans-serif;letter-spacing:-.05em;overflow-wrap:anywhere}
+.illit-experience .member-detail h1{font:900 clamp(40px,5vw,76px)/1.1 SevenPixel,monospace,sans-serif;letter-spacing:-.05em;overflow-wrap:anywhere}
 .illit-experience .member-detail>.photo{width:100%;height:auto;aspect-ratio:3/4;max-height:none;background:#fff;border-radius:0}
 .illit-experience .member-detail>.photo img{object-fit:contain}
 .illit-experience .member-work-summary{border:1px solid #a8bedf;border-radius:0;background:#fff;padding:28px}
-.illit-experience .member-work-summary strong{font-family:monospace,sans-serif;color:#3a60b0}
-.illit-experience .member-work-card__title{font:700 25px/1.2 monospace,sans-serif}
+.illit-experience .member-work-summary strong{font-family:SevenPixel,monospace,sans-serif;color:#3a60b0}
+.illit-experience .member-work-card__title{font:700 25px/1.2 SevenPixel,monospace,sans-serif}
 .illit-experience .member-work-card__art{background:#fff}
 .illit-experience .image-label{border-radius:0;background:#fff;color:#556b91}
 .illit-experience .editor{border:1px solid #a8bedf;background:#fff;padding:24px}
@@ -40,4 +41,4 @@
 .illit-experience :is(.back,.text-button){color:#1d326e}
 .illit-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid #3a60b0;outline-offset:4px}
 @media(max-width:720px){.illit-experience .header{padding:20px 5%;flex-wrap:wrap;gap:16px}.illit-experience .header nav{max-width:100%;flex-wrap:wrap}.illit-experience main{padding:28px 5% 60px}.illit-experience :is(.work-detail-top,.madein-detail-hero,.member-detail){grid-template-columns:1fr;gap:25px}.illit-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.illit-experience .member-detail h1{font-size:44px}.illit-experience .section-heading h2{font-size:28px}.illit-experience .member-work-summary{padding:20px}.illit-experience .cast-copy{padding:18px 0}.illit-experience .member-name{font-size:18px}}
-.illit-experience .member-detail>.photo{border:8px solid white;box-shadow:7px 7px #b8ccf0}.illit-experience .work-aside{border-top:2px solid #284c93}.illit-experience .section-heading h2{font-family:'Courier New',monospace;letter-spacing:-.08em}
+.illit-experience .member-detail>.photo{border:8px solid white;box-shadow:7px 7px #b8ccf0}.illit-experience .work-aside{border-top:2px solid #284c93}.illit-experience .section-heading h2{font-family:SevenPixel,monospace;letter-spacing:-.08em}

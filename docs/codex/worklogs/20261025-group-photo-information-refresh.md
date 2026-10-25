@@ -27,3 +27,6 @@
 v6已部署成功，Sites源码038de58b、GitHub源码d620aded。67份固定GitHub原图HTTP/SHA核对全部一致。但线上首次索引检查在1秒等待内有多张原图仍在传输，未宣称图片检查通过。随后调整审阅打包：51张索引团照与LE SSERAFIM的16张现用原图（69,920,573字节）随同一站点原字节交付，其他大图库保留固定GitHub源；不压缩、不改图片，不扩大私密资料。
 
 将据此发布下一版本并重做线上加载检查。线上图片检查等待真实load/解码完成，不以本地快速加载时间替代线上等待。
+
+
+Sites源仓库拒绝一次性上传全部67张原图（receive-pack request exceeds maximum size），不是部署/访问权限拒绝。失败本地提交dd362901保留于旧Sites checkout，未reset/force push。采用常规生成资源构建：源中保存固定SHA清单与hydrate-review-originals.mjs，67张派生静态资源从固定GitHub原字节重建并逐一核对SHA/长度；它们不进入Sites源码Git上传，但进入同一版本的静态部署归档。新建同Site来源checkout从远端038de58b恢复，既有站点身份、权限和私密资源范围保持。

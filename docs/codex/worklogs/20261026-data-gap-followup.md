@@ -2,6 +2,8 @@
 
 最终实现及v9验证提交：`693180a4900776b30acfd41e3058b79615548246`，已推送；draft [PR #39](https://github.com/KAtOReNA7/idol/pull/39)，base为`codex/statistics-mv-identity-completion`。未合并main。完整报告与v9表格/CSV/截图/验证日志均已上传GitHub；后续从本分支最新HEAD继续。
 
+截图收尾复查：初次原图流程后的QWER截图早于懒加载图片解码，显示灰色占位。补充IZ*ONE/QWER/Geenius三组“卡片完整解码→原图完整解码→关闭→再次确认卡片解码”流程后重拍并实际查看，三组照片显示正常，已替换报告中的QWER截图。生产代码没有因此变化；新证据`reports/20261026-v9/online-visual-qa.json`。
+
 - 用户于2026-10-26确认目前进度，要求全部发布到指定正式站点、完整报告上传GitHub并继续任务。
 - 分支`codex/data-gap-followup`，冻结基线`0801fc366cb385375f6d68e2495a73ee07c13831`。开工工作树干净，fetch确认远端同HEAD。
 - Sites核对指定站点已是v8：源`28ce1d204bd2500a8f1a459e00531c795c8ef348`，部署`appgdep_6ade34f6f4a88191a422f47f764017db`。当前仅owner访问，保留权限；不重复发布相同版本。v8含上轮全部网页修改；保存逻辑源代码已有合成测试，静态站仍只读，不将发布解释为已实测真实保存。

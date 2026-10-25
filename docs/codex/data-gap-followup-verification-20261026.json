@@ -130,6 +130,17 @@
       "consoleErrors": 0,
       "pageErrors": 0,
       "frameworkOverlays": 0
+    },
+    "finalVisualCapture": {
+      "groups": [
+        "IZ*ONE",
+        "QWER",
+        "Geenius"
+      ],
+      "passedFlows": 3,
+      "awaitedImageDecode": true,
+      "originalDialogDecodedBeforeClosing": true,
+      "note": "Initial post-flow screenshot ran before lazy images decoded. Added explicit image decode wait and retook evidence; production code unchanged."
     }
   },
   "notVerified": [
@@ -180,13 +191,17 @@
       "bytes": 9649,
       "sha256": "5ed5b73760d4a162fc624e48f5985857153eed7b9b011ef3d8464058f123b7d3"
     },
+    "online-visual-qa.json": {
+      "bytes": 538,
+      "sha256": "f61609cf82584f4b374d5fd252737a1045c9509e9545b936e6bf0218eee359e1"
+    },
     "production-build.txt": {
       "bytes": 4784,
       "sha256": "ce2e66b55fbe76bf70fbb729287e8be6d994335b8396db97996107dfb9ad1cf7"
     },
     "QWER-identity.png": {
-      "bytes": 54259,
-      "sha256": "0b1eafaa17cecae1cfa8dfc5744ed5094eec1276eb82d67a4aa7b53c8a4688f4"
+      "bytes": 723474,
+      "sha256": "d3114830e8a7aa345770c6f55eba6597e38a05cabe9a62a1e7dbfd1cfdf60f8c"
     },
     "typecheck.txt": {
       "bytes": 0,

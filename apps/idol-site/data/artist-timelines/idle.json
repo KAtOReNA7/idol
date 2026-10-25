@@ -155,13 +155,16 @@
       "id": "e-idle-cube-renewal",
       "groupId": "recvxyEBDZqkpg",
       "eventType": "other",
-      "title": "全员与CUBE续约候选（待原文）",
-      "summary": "E已存结构化转录声称全员于2024年12月续约；当前保存的原始摘录只支持更名，续约事实与月份仍待原文核验。",
-      "scopeNote": "续约与独立更名节点分开。已保存原句不支持续约，eventDate保留null、状态uncertain/hold；不由更名或现经纪名册推续约，不补合同生效日。",
-      "eventDate": null,
+      "title": "全员与CUBE续约",
+      "summary": "CUBE日本官方后续稿确认，当时五位成员于2024年12月全员续约。",
+      "scopeNote": "只确认续约事实与月份；具体签署日和合同生效日未公开。2025年5月2日是回顾稿刊日，不是续约发生日，与更名节点分开。",
+      "eventDate": {
+        "value": "2024-12",
+        "precision": "month"
+      },
       "announcementDate": null,
       "plannedDate": null,
-      "status": "uncertain",
+      "status": "confirmed",
       "importance": "major",
       "memberIds": [],
       "workIds": [],
@@ -180,12 +183,23 @@
           "checkedAt": "2026-10-16",
           "scopeNote": "E保存的最小原始摘录仅直接支持团名更改；同收据contractRenewedMonth/renewedMembers是结构化转录，缺续约原句，故本续约节点暂hold。原checkedAt沿用，不代表本轮重抓。",
           "evidenceRef": "evidence/E01/baseline-evidence/task03/sources/new-receipts.json#/receipts/idle-rename"
+        },
+        {
+          "id": "es-idle-official-recheck-20261025",
+          "url": "https://prtimes.jp/main/html/rd/p/000000059.000124555.html",
+          "publisher": "CUBE ENTERTAINMENT JAPAN",
+          "title": "全员与CUBE续约（官方正文复核）",
+          "sourcePublishedAt": {
+            "value": "2025-05-02",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-25",
+          "scopeNote": "本轮实际读取的官方正文：昨年12月にメンバー全員がCUBE ENTERTAINMENTと再契約。只确认续约事实与月份；具体签署日和合同生效日未公开。2025年5月2日是回顾稿刊日，不是续约发生日，与更名节点分开。",
+          "evidenceRef": "docs/codex/evidence/20261025-data-completion/timeline-evidence.json#/idle"
         }
       ],
-      "reviewStatus": "hold",
-      "holdReasons": [
-        "缺全员续约及2024年12月的最小原始证据；已保存的CUBE原文摘录仅支持更名，转录facts不能替代续约原句。"
-      ]
+      "reviewStatus": "ready",
+      "holdReasons": []
     },
     {
       "id": "e-idle-name-change-announcement",

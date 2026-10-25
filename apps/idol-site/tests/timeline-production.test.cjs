@@ -6,7 +6,7 @@ const esbuild=require('esbuild'),React=require('react'),{renderToStaticMarkup}=r
 const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'timeline-production-'));
 const registry=require('../data/artist-timeline-registry.json'),hashes=require('./fixtures/timeline/canonical-sha256.json'),accepted=require('./fixtures/timeline/batch-f-expected-events.json');
 esbuild.buildSync({stdin:{contents:[...registry.map((g,i)=>`import Page${i} from './app/artists/${g.slug}/page';`),`export const routes={${registry.map((g,i)=>JSON.stringify(g.slug)+':Page'+i).join(',')}};`,"export {ArtistTimelineBackground} from './components/artist-timeline-background';","export {ArtistTimelineHost,ArtistTimelineHostProvider} from './components/artist-timeline-host';","export {projectArtistCatalog} from './lib/idol/artist-catalog';","export {prepareTimelinePresentation} from './lib/idol/timeline/presentation';","export {selectChronologicalTimeline} from './lib/idol/timeline/model';","export {loadArtistTimeline} from './lib/idol/timeline/production';","export {asIds,asText} from './lib/idol/values';","export {F} from './lib/idol/fields';"].join('\n'),resolveDir:root,sourcefile:'production-proof.ts'},bundle:true,outfile:path.join(dir,'bundle.cjs'),platform:'node',format:'cjs',jsx:'automatic',external:['react','react/*'],loader:{'.css':'empty'},alias:{'cloudflare:workers':path.join(root,'tests/fixtures/timeline/cloudflare-unavailable.cjs')},logLevel:'silent'});
-const product=require(path.join(dir,'bundle.cjs'));
+const Module=require('node:module'),bundlePath=path.join(dir,'bundle.cjs'),bundle=new Module(bundlePath,module);bundle.filename=bundlePath;bundle.paths=module.paths;bundle._compile(fs.readFileSync(bundlePath,'utf8'),bundlePath);const product=bundle.exports;
 const raw=JSON.parse(fs.readFileSync(path.join(root,'data/snapshot.json'),'utf8')).tables;
 const {asIds,asText,F}=product;
 const catalog={mode:'snapshot',groups:registry.map(g=>({id:g.groupId,name:g.name})),members:raw.members.records.map(({recordId,fields:v})=>({id:recordId,name:asText(v[F.members.name]),stageName:asText(v[F.members.stageName]),cnName:asText(v[F.members.cnName]),groupIds:asIds(v[F.members.groups]),formerGroupIds:asIds(v[F.members.formerGroups]),favorite:null,role:'',status:'',birthDate:'',country:'',note:'',profile:'',photo:null})),works:raw.works.records.map(({recordId,fields:v})=>({id:recordId,song:asText(v[F.works.song]),name:asText(v[F.works.name]),groupIds:asIds(v[F.works.groups]),score:null,stageScore:null,watched:'',note:'',releaseDate:'',url:'',videoType:'',version:'',stage:null,stageSupplement:null})),ratings:raw.ratings.records.map(({recordId,fields:v})=>({id:recordId,memberIds:asIds(v[F.ratings.members]),workIds:asIds(v[F.ratings.works]),score:null,stylingScore:null,note:'',memory:'',photo:null})),counts:{}};
@@ -18,6 +18,9 @@ for(const group of registry)test(`${group.slug}: canonical byte hash, actual sco
   const correction=require('../HANDOFF/timeline-corrections/triples-assemble24.json');
   const {validateCorrectionChain,hash}=require('./helpers/timeline-correction-chain.cjs');
   const events=new Map(registry.flatMap(g=>JSON.parse(fs.readFileSync(path.join(root,`data/artist-timelines/${g.slug}.json`))).events.map(e=>[e.id,e])));
+  // This ledger predates the two independently verified official-source corrections.
+  // Their exact before/after bytes and identities are checked below and in public-data-completion.
+  for(const item of Object.values(require('../../../docs/codex/evidence/20261025-data-completion/timeline-evidence.json')))events.set(item.eventId,item.before);
   validateCorrectionChain({corrections:[correction,require('../evidence/approved-visual-repairs/badvillain-overstep-correction.json'),require('../evidence/approved-visual-repairs/madein-rise-correction.json')],events,ledger:require('../HANDOFF/batch-f/integration-ledger.json'),readBytes:p=>fs.readFileSync(path.join(root,p)),snapshot:{tables:raw}});
   assert.equal(hash(bytes),correction.afterDocumentSha256);
   const historical=JSON.parse(bytes);historical.events=historical.events.map(e=>e.id===correction.eventId?correction.before:e);
@@ -25,6 +28,12 @@ for(const group of registry)test(`${group.slug}: canonical byte hash, actual sco
   assert.equal(correction.beforeDocumentSha256,hashes[file]);
  }else if(['badvillain','madein'].includes(group.slug)){
   const correction=require('../evidence/approved-visual-repairs/'+(group.slug==='madein'?'madein-rise':'badvillain-overstep')+'-correction.json');
+  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),correction.afterDocumentSha256);
+  const historical=JSON.parse(bytes);historical.events=historical.events.map(e=>e.id===correction.eventId?correction.before:e);historical.gaps=correction.beforeGaps;
+  assert.equal(crypto.createHash('sha256').update(JSON.stringify(historical,null,2)+'\n').digest('hex'),hashes[file]);
+  assert.equal(correction.beforeDocumentSha256,hashes[file]);
+ }else if(['idle','newjeans'].includes(group.slug)){
+  const correction=require('../../../docs/codex/evidence/20261025-data-completion/timeline-evidence.json')[group.slug];
   assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),correction.afterDocumentSha256);
   const historical=JSON.parse(bytes);historical.events=historical.events.map(e=>e.id===correction.eventId?correction.before:e);historical.gaps=correction.beforeGaps;
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(historical,null,2)+'\n').digest('hex'),hashes[file]);
@@ -38,7 +47,8 @@ for(const group of registry)test(`${group.slug}: canonical byte hash, actual sco
  const renderRoute=serverRoute=>renderToStaticMarkup(React.createElement(product.ArtistTimelineHostProvider,{value:{catalog:scoped,input,hideLegacyBackground:true,loading:false,navigate(){},serverRoute}},React.createElement(product.routes[group.slug])));
  const ready=input.events.filter(e=>e.reviewStatus==='ready'),held=input.events.filter(e=>e.reviewStatus==='hold');
  const baselineGroup=accepted.groups[group.slug],riseId='e-madein-rise-release-carrier-hold';
- const acceptedGroup=group.slug==='madein'?{...baselineGroup,ready:[...baselineGroup.ready,riseId].sort(),hold:baselineGroup.hold.filter(id=>id!==riseId)}:baselineGroup;
+ const promoted=group.slug==='madein'?riseId:group.slug==='idle'?'e-idle-cube-renewal':group.slug==='newjeans'?'e-newjeans-attention-mv':null;
+ const acceptedGroup=promoted?{...baselineGroup,ready:[...baselineGroup.ready,promoted].sort(),hold:baselineGroup.hold.filter(id=>id!==promoted)}:baselineGroup;
  assert.equal(input.groupId,acceptedGroup.groupId);
  assert.deepEqual(ready.map(e=>e.id).sort(),acceptedGroup.ready,'canonical ready IDs must equal the independently recorded accepted set');
  assert.deepEqual(held.map(e=>e.id).sort(),acceptedGroup.hold,'held IDs must remain the exact accepted set');
@@ -65,4 +75,4 @@ for(const group of registry)test(`${group.slug}: canonical byte hash, actual sco
  totalReady+=ready.length;totalHold+=held.length;
  assert.equal(JSON.stringify(catalog),before);
 });
-test.after(()=>{assert.equal(registry.length,51);assert.equal(totalReady,609);assert.equal(totalHold,14);assert.deepEqual(Object.keys(accepted.groups).sort(),registry.map(g=>g.slug).sort());fs.rmSync(dir,{recursive:true,force:true});});
+test.after(()=>{assert.equal(registry.length,51);assert.equal(totalReady,611);assert.equal(totalHold,12);assert.deepEqual(Object.keys(accepted.groups).sort(),registry.map(g=>g.slug).sort());fs.rmSync(dir,{recursive:true,force:true});});

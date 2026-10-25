@@ -15,7 +15,7 @@ import {MemberPhysicalFacts} from '@/components/member-physical-facts';
 import {MemberCareerFacts} from '@/components/member-career-facts';
 import publicData from '@/data/badvillain-figma-public.json';
 const PATH='/artists/badvillain';
-const WORK_IDS:Record<string,string>={'badvillain-mv-thriller':'rec28ldfRTrQ0L','badvillain-mv-zoom':'rec28ldfRTrEL4','badvillain-mv-badtitude':'rec28ldfRTrEGO','badvillain-mv-badvillain':'rec28ldfRTrEzJ'};
+const WORK_IDS:Record<string,string>={'badvillain-mv-hurricane':'rec28ldfRTrEng','badvillain-mv-thriller':'rec28ldfRTrQ0L','badvillain-mv-zoom':'rec28ldfRTrEL4','badvillain-mv-badtitude':'rec28ldfRTrEGO','badvillain-mv-badvillain':'rec28ldfRTrEzJ'};
 type Release=typeof publicData.releases[number];type Media=typeof publicData.media[number];type Person=typeof publicData.members[number];
 function subscribe(fn:()=>void){window.addEventListener('popstate',fn);window.addEventListener('artist-location-change',fn);return()=>{window.removeEventListener('popstate',fn);window.removeEventListener('artist-location-change',fn);};}
 function path(section='overview',extra?:Record<string,string>){const p=new URLSearchParams(section==='overview'?{}:{section});for(const [k,v] of Object.entries(extra??{}))p.set(k,v);return PATH+(p.size?'?'+p:'');}

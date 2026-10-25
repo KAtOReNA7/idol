@@ -44,13 +44,16 @@
       "id": "e-newjeans-attention-mv",
       "groupId": "recvxyEBDZ9qVl",
       "eventType": "release",
-      "title": "待核：Attention首支MV公开",
-      "summary": "继承资料保留Attention MV的事件身份；公开行为与首次公开日期尚缺已保存原文。",
-      "scopeNote": "B摘要与中文转述不重新认证为原始MV公开证据；不以音源发行日期替代MV公开日。",
-      "eventDate": null,
+      "title": "Attention首支MV公开",
+      "summary": "HYBE JAPAN当日官方稿确认，首支Attention MV于2022年7月22日零时公开。",
+      "scopeNote": "本条仅记录首支MV公开；当日正午Performance MV、8月1日音源及8月8日实体计划是不同节点，不以其中任何日期替代本条。",
+      "eventDate": {
+        "value": "2022-07-22",
+        "precision": "day"
+      },
       "announcementDate": null,
       "plannedDate": null,
-      "status": "uncertain",
+      "status": "confirmed",
       "importance": "supporting",
       "memberIds": [],
       "workIds": [
@@ -71,12 +74,23 @@
           "checkedAt": "2026-10-15",
           "scopeNote": "仅B继承摘要与中文scope，不是MV公开原文；仅保留事件身份线索。",
           "evidenceRef": "evidence/E02/task05/sources/batch-e--task02--sources--newjeans-attention-b.json"
+        },
+        {
+          "id": "es-newjeans-official-recheck-20261025",
+          "url": "https://prtimes.jp/main/html/rd/p/000000148.000045862.html",
+          "publisher": "HYBE JAPAN",
+          "title": "Attention首支MV公开（官方正文复核）",
+          "sourcePublishedAt": {
+            "value": "2022-07-22",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-25",
+          "scopeNote": "本轮实际读取的官方正文：本日（22日）0時に公開したコンテンツ。本条仅记录首支MV公开；当日正午Performance MV、8月1日音源及8月8日实体计划是不同节点，不以其中任何日期替代本条。",
+          "evidenceRef": "docs/codex/evidence/20261025-data-completion/timeline-evidence.json#/newjeans"
         }
       ],
-      "reviewStatus": "hold",
-      "holdReasons": [
-        "已保存材料只有2022-07-22 · Attention继承摘要，缺当日零时公开MV的原始正文。"
-      ]
+      "reviewStatus": "ready",
+      "holdReasons": []
     },
     {
       "id": "e-newjeans-first-ep-plan",

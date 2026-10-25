@@ -1,0 +1,917 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "status": "published-awaiting-user-review",
+  "source": {
+    "branch": "codex/seven-groups-official-redesign",
+    "baseline": "c578183e608c01eb797da0591bf75e7b3b0ea98e",
+    "publishedCommit": "4cd279717a25938bedeb543a145204d25e3fa95f"
+  },
+  "review": {
+    "url": "https://idol-all-groups-review-oct25.wuke40758.chatgpt.site",
+    "version": 3,
+    "access": "owner-private-read-only",
+    "productionMainVersionUnchanged": 186,
+    "deploymentStatus": "succeeded",
+    "siteSourceCommit": "d3b7977f9a2bbf189c663abc9fa353929d250ac0",
+    "archiveSha256": "56040f25316e1829be237c4f846ced78d4231c623d907e200ca7389c38175927",
+    "archiveBytes": 17448960,
+    "archiveFiles": 170
+  },
+  "automated": {
+    "testPass": 28,
+    "testFail": 0,
+    "typecheck": "passed",
+    "productionBuild": "passed"
+  },
+  "browser": {
+    "implementation": "local Playwright / Chrome",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1440
+    ],
+    "local": [
+      {
+        "slug": "madein",
+        "layouts": 50,
+        "interactions": 14,
+        "passed": true
+      },
+      {
+        "slug": "qwer",
+        "layouts": 50,
+        "interactions": 13,
+        "passed": true
+      },
+      {
+        "slug": "purplekiss",
+        "layouts": 50,
+        "interactions": 13,
+        "passed": true
+      },
+      {
+        "slug": "ive",
+        "layouts": 50,
+        "interactions": 13,
+        "passed": true
+      },
+      {
+        "slug": "triples",
+        "layouts": 50,
+        "interactions": 13,
+        "passed": true
+      },
+      {
+        "slug": "rescene",
+        "layouts": 50,
+        "interactions": 13,
+        "passed": true
+      },
+      {
+        "slug": "illit",
+        "layouts": 50,
+        "interactions": 13,
+        "passed": true
+      }
+    ],
+    "protectedGroupHomeChecks": 88,
+    "indexWidthChecks": 5,
+    "newIndexLinks": 7,
+    "reviewWriteRequests": 0,
+    "publicRefMode": {
+      "pages": 42,
+      "journalRoundTrips": 14,
+      "index": {
+        "count": 51,
+        "seven": 7
+      },
+      "passed": true
+    },
+    "online": {
+      "identity": "Sites service identity Chrome; not user IAB",
+      "pages": 42,
+      "journalRoundTrips": 14,
+      "index": {
+        "count": 51,
+        "seven": 7
+      },
+      "passed": true
+    }
+  },
+  "figma": {
+    "fileKey": "zeLNExz4TbpWRW3uiahef7",
+    "pageId": "1266:1095",
+    "url": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1266-1095",
+    "editableFrames": 112,
+    "originalAssetComponents": 261,
+    "bitmapUploads": 259,
+    "svgComponents": 2,
+    "textNodes": 11491,
+    "imageInstances": 805,
+    "allFramesHaveContent": true,
+    "fullPixelFidelity": "not-verified",
+    "automatedCapture": "pending-not-used-as-completion-evidence",
+    "frames": [
+      {
+        "id": "1267:1113",
+        "name": "madein / home / 1440",
+        "width": 1440,
+        "height": 5740.91015625,
+        "heroNodeId": "1271:45110"
+      },
+      {
+        "id": "1267:1114",
+        "name": "madein / members / 1440",
+        "width": 1440,
+        "height": 3068.919921875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1115",
+        "name": "madein / member / 1440",
+        "width": 1440,
+        "height": 2522.090087890625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1116",
+        "name": "madein / works / 1440",
+        "width": 1440,
+        "height": 3815.02001953125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1117",
+        "name": "madein / release / 1440",
+        "width": 1440,
+        "height": 1751.969970703125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1118",
+        "name": "madein / updates / 1440",
+        "width": 1440,
+        "height": 1548.719970703125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1119",
+        "name": "madein / memberJournal / 1440",
+        "width": 1440,
+        "height": 5032.72998046875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1120",
+        "name": "madein / workJournal / 1440",
+        "width": 1440,
+        "height": 1721.8800048828125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1121",
+        "name": "madein / home / 390",
+        "width": 390,
+        "height": 5142.390625,
+        "heroNodeId": "1273:2728"
+      },
+      {
+        "id": "1267:1122",
+        "name": "madein / members / 390",
+        "width": 390,
+        "height": 2355.72998046875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1123",
+        "name": "madein / member / 390",
+        "width": 390,
+        "height": 4122.25,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1124",
+        "name": "madein / works / 390",
+        "width": 390,
+        "height": 5192.83984375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1125",
+        "name": "madein / release / 390",
+        "width": 390,
+        "height": 2515.449951171875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1126",
+        "name": "madein / updates / 390",
+        "width": 390,
+        "height": 1331.890625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1127",
+        "name": "madein / memberJournal / 390",
+        "width": 390,
+        "height": 10960.28125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1128",
+        "name": "madein / workJournal / 390",
+        "width": 390,
+        "height": 1838.969970703125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1130",
+        "name": "qwer / home / 1440",
+        "width": 1440,
+        "height": 4560.080078125,
+        "heroNodeId": "1273:5866"
+      },
+      {
+        "id": "1267:1131",
+        "name": "qwer / members / 1440",
+        "width": 1440,
+        "height": 1472.31005859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1132",
+        "name": "qwer / member / 1440",
+        "width": 1440,
+        "height": 2227.1298828125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1133",
+        "name": "qwer / works / 1440",
+        "width": 1440,
+        "height": 4350.33984375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1134",
+        "name": "qwer / release / 1440",
+        "width": 1440,
+        "height": 1329.06005859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1135",
+        "name": "qwer / updates / 1440",
+        "width": 1440,
+        "height": 2129.090087890625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1136",
+        "name": "qwer / memberJournal / 1440",
+        "width": 1440,
+        "height": 2864.280029296875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1137",
+        "name": "qwer / workJournal / 1440",
+        "width": 1440,
+        "height": 1820.280029296875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1138",
+        "name": "qwer / home / 390",
+        "width": 390,
+        "height": 3680.969970703125,
+        "heroNodeId": "1273:8292"
+      },
+      {
+        "id": "1267:1139",
+        "name": "qwer / members / 390",
+        "width": 390,
+        "height": 1559.3399658203125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1140",
+        "name": "qwer / member / 390",
+        "width": 390,
+        "height": 2628.5,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1141",
+        "name": "qwer / works / 390",
+        "width": 390,
+        "height": 4501.47998046875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1142",
+        "name": "qwer / release / 390",
+        "width": 390,
+        "height": 1205.6700439453125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1143",
+        "name": "qwer / updates / 390",
+        "width": 390,
+        "height": 1878.719970703125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1144",
+        "name": "qwer / memberJournal / 390",
+        "width": 390,
+        "height": 4973.93994140625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1145",
+        "name": "qwer / workJournal / 390",
+        "width": 390,
+        "height": 2037.219970703125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1147",
+        "name": "purplekiss / home / 1440",
+        "width": 1440,
+        "height": 5937.7001953125,
+        "heroNodeId": "1274:1152"
+      },
+      {
+        "id": "1267:1148",
+        "name": "purplekiss / members / 1440",
+        "width": 1440,
+        "height": 3016.31005859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1149",
+        "name": "purplekiss / member / 1440",
+        "width": 1440,
+        "height": 2454.530029296875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1150",
+        "name": "purplekiss / works / 1440",
+        "width": 1440,
+        "height": 6385.56005859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1151",
+        "name": "purplekiss / release / 1440",
+        "width": 1440,
+        "height": 1309.06005859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1152",
+        "name": "purplekiss / updates / 1440",
+        "width": 1440,
+        "height": 2494.830078125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1153",
+        "name": "purplekiss / memberJournal / 1440",
+        "width": 1440,
+        "height": 4272.18994140625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1154",
+        "name": "purplekiss / workJournal / 1440",
+        "width": 1440,
+        "height": 1820.280029296875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1155",
+        "name": "purplekiss / home / 390",
+        "width": 390,
+        "height": 5259.52001953125,
+        "heroNodeId": "1274:4567"
+      },
+      {
+        "id": "1267:1156",
+        "name": "purplekiss / members / 390",
+        "width": 390,
+        "height": 2318.919921875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1157",
+        "name": "purplekiss / member / 390",
+        "width": 390,
+        "height": 3791,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1158",
+        "name": "purplekiss / works / 390",
+        "width": 390,
+        "height": 8863.6904296875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1159",
+        "name": "purplekiss / release / 390",
+        "width": 390,
+        "height": 1135.52001953125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1160",
+        "name": "purplekiss / updates / 390",
+        "width": 390,
+        "height": 2273.68994140625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1161",
+        "name": "purplekiss / memberJournal / 390",
+        "width": 390,
+        "height": 8489.33984375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1162",
+        "name": "purplekiss / workJournal / 390",
+        "width": 390,
+        "height": 2037.219970703125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1164",
+        "name": "ive / home / 1440",
+        "width": 1440,
+        "height": 5314.47021484375,
+        "heroNodeId": "1275:1152"
+      },
+      {
+        "id": "1267:1165",
+        "name": "ive / members / 1440",
+        "width": 1440,
+        "height": 2262.669921875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1166",
+        "name": "ive / member / 1440",
+        "width": 1440,
+        "height": 3413.580078125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1167",
+        "name": "ive / works / 1440",
+        "width": 1440,
+        "height": 9975.66015625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1168",
+        "name": "ive / release / 1440",
+        "width": 1440,
+        "height": 1309.06005859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1169",
+        "name": "ive / updates / 1440",
+        "width": 1440,
+        "height": 4012.52001953125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1170",
+        "name": "ive / memberJournal / 1440",
+        "width": 1440,
+        "height": 9298.73046875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1171",
+        "name": "ive / workJournal / 1440",
+        "width": 1440,
+        "height": 3299.43994140625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1172",
+        "name": "ive / home / 390",
+        "width": 390,
+        "height": 4832.859375,
+        "heroNodeId": "1275:6612"
+      },
+      {
+        "id": "1267:1173",
+        "name": "ive / members / 390",
+        "width": 390,
+        "height": 1932.640625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1174",
+        "name": "ive / member / 390",
+        "width": 390,
+        "height": 6719.81005859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1175",
+        "name": "ive / works / 390",
+        "width": 390,
+        "height": 15366,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1176",
+        "name": "ive / release / 390",
+        "width": 390,
+        "height": 1403.8299560546875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1177",
+        "name": "ive / updates / 390",
+        "width": 390,
+        "height": 3787.109375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1178",
+        "name": "ive / memberJournal / 390",
+        "width": 390,
+        "height": 21592.390625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1179",
+        "name": "ive / workJournal / 390",
+        "width": 390,
+        "height": 2770.159912109375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1181",
+        "name": "triples / home / 1440",
+        "width": 1440,
+        "height": 9294.8095703125,
+        "heroNodeId": "1276:1160"
+      },
+      {
+        "id": "1267:1182",
+        "name": "triples / members / 1440",
+        "width": 1440,
+        "height": 6728.47021484375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1183",
+        "name": "triples / member / 1440",
+        "width": 1440,
+        "height": 2234.859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1184",
+        "name": "triples / works / 1440",
+        "width": 1440,
+        "height": 9835.5498046875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1185",
+        "name": "triples / release / 1440",
+        "width": 1440,
+        "height": 1668.969970703125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1186",
+        "name": "triples / updates / 1440",
+        "width": 1440,
+        "height": 3515.530029296875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1187",
+        "name": "triples / memberJournal / 1440",
+        "width": 1440,
+        "height": 3458.969970703125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1188",
+        "name": "triples / workJournal / 1440",
+        "width": 1440,
+        "height": 2127.93994140625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1189",
+        "name": "triples / home / 390",
+        "width": 390,
+        "height": 7946.22998046875,
+        "heroNodeId": "1276:5940"
+      },
+      {
+        "id": "1267:1190",
+        "name": "triples / members / 390",
+        "width": 390,
+        "height": 5583.72998046875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1191",
+        "name": "triples / member / 390",
+        "width": 390,
+        "height": 2917.469970703125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1192",
+        "name": "triples / works / 390",
+        "width": 390,
+        "height": 15321,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1193",
+        "name": "triples / release / 390",
+        "width": 390,
+        "height": 1423.550048828125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1194",
+        "name": "triples / updates / 390",
+        "width": 390,
+        "height": 3379.68994140625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1195",
+        "name": "triples / memberJournal / 390",
+        "width": 390,
+        "height": 6642.68994140625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1196",
+        "name": "triples / workJournal / 390",
+        "width": 390,
+        "height": 2340.06005859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1198",
+        "name": "rescene / home / 1440",
+        "width": 1440,
+        "height": 4472.919921875,
+        "heroNodeId": "1276:10561"
+      },
+      {
+        "id": "1267:1199",
+        "name": "rescene / members / 1440",
+        "width": 1440,
+        "height": 1346.25,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1200",
+        "name": "rescene / member / 1440",
+        "width": 1440,
+        "height": 2355.22998046875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1201",
+        "name": "rescene / works / 1440",
+        "width": 1440,
+        "height": 4403.859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1202",
+        "name": "rescene / release / 1440",
+        "width": 1440,
+        "height": 1329.06005859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1203",
+        "name": "rescene / updates / 1440",
+        "width": 1440,
+        "height": 2054.909912109375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1204",
+        "name": "rescene / memberJournal / 1440",
+        "width": 1440,
+        "height": 4174.33984375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1205",
+        "name": "rescene / workJournal / 1440",
+        "width": 1440,
+        "height": 3278.169921875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1206",
+        "name": "rescene / home / 390",
+        "width": 390,
+        "height": 4837.580078125,
+        "heroNodeId": "1276:13979"
+      },
+      {
+        "id": "1267:1207",
+        "name": "rescene / members / 390",
+        "width": 390,
+        "height": 1960.050048828125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1208",
+        "name": "rescene / member / 390",
+        "width": 390,
+        "height": 3303.25,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1209",
+        "name": "rescene / works / 390",
+        "width": 390,
+        "height": 6344.08984375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1210",
+        "name": "rescene / release / 390",
+        "width": 390,
+        "height": 1240.27001953125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1211",
+        "name": "rescene / updates / 390",
+        "width": 390,
+        "height": 1807.72998046875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1212",
+        "name": "rescene / memberJournal / 390",
+        "width": 390,
+        "height": 7853.390625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1213",
+        "name": "rescene / workJournal / 390",
+        "width": 390,
+        "height": 3539.699951171875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1215",
+        "name": "illit / home / 1440",
+        "width": 1440,
+        "height": 4436.109375,
+        "heroNodeId": "1277:1279"
+      },
+      {
+        "id": "1267:1216",
+        "name": "illit / members / 1440",
+        "width": 1440,
+        "height": 1336.449951171875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1217",
+        "name": "illit / member / 1440",
+        "width": 1440,
+        "height": 2530.5,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1218",
+        "name": "illit / works / 1440",
+        "width": 1440,
+        "height": 6811.77978515625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1219",
+        "name": "illit / release / 1440",
+        "width": 1440,
+        "height": 1309.06005859375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1220",
+        "name": "illit / updates / 1440",
+        "width": 1440,
+        "height": 2148.550048828125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1221",
+        "name": "illit / memberJournal / 1440",
+        "width": 1440,
+        "height": 4880.97021484375,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1222",
+        "name": "illit / workJournal / 1440",
+        "width": 1440,
+        "height": 1898.1700439453125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1223",
+        "name": "illit / home / 390",
+        "width": 390,
+        "height": 5017.97998046875,
+        "heroNodeId": "1277:4902"
+      },
+      {
+        "id": "1267:1224",
+        "name": "illit / members / 390",
+        "width": 390,
+        "height": 1927.030029296875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1225",
+        "name": "illit / member / 390",
+        "width": 390,
+        "height": 3881.090087890625,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1226",
+        "name": "illit / works / 390",
+        "width": 390,
+        "height": 12405.580078125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1227",
+        "name": "illit / release / 390",
+        "width": 390,
+        "height": 1178.52001953125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1228",
+        "name": "illit / updates / 390",
+        "width": 390,
+        "height": 2008.8800048828125,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1229",
+        "name": "illit / memberJournal / 390",
+        "width": 390,
+        "height": 9662.2998046875,
+        "heroNodeId": null
+      },
+      {
+        "id": "1267:1230",
+        "name": "illit / workJournal / 390",
+        "width": 390,
+        "height": 2282.25,
+        "heroNodeId": null
+      }
+    ]
+  },
+  "openItems": [
+    "133 works across 39 groups lack snapshot performance relationships",
+    "14 evidence-hold timeline events remain hidden",
+    "BADVILLAIN HURRICANE exact video missing",
+    "QWER Japanese official discography has limited coverage",
+    "Some MADEIN release artwork remains unavailable",
+    "Real production saves not verified",
+    "Complete playback of all videos not verified",
+    "Native 80% and 125% browser zoom not verified",
+    "Complete user IAB session not verified",
+    "Full Figma font and pixel fidelity not verified",
+    "Seven redesigned pages await user visual acceptance"
+  ]
+}

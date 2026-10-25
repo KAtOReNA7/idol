@@ -1,10 +1,14 @@
 # 女团页面设计要求与验收基准
 
-## 最新执行决定：七团参考已确认，依次重做并统一交审（2026-10-25）
+## 最新交付：七团重设计v3已发布，等待统一验收（2026-10-25）
 
 用户已批准参考清单，要求依次重做 MADEIN → QWER → PURPLE KISS → IVE → tripleS → RESCENE → ILLIT，弃用七团旧视觉与布局，全部完成后统一提供链接审核，不逐团等待。保留核实资料、原图、稳定 ID、个人记录及权限；其余 44 团设计保护。同步七团索引及手帐视觉，主站 v186 不覆盖。
 
-实现分支 `codex/seven-groups-official-redesign`，冻结基线 `c578183e608c01eb797da0591bf75e7b3b0ea98e`；已批准依据见 `docs/codex/seven-groups-design-references-20261025.md`，执行记录 `docs/codex/worklogs/20261025-seven-groups-official-redesign.md`。下方“参考待确认”及逐团门槛为历史。当前为实现中，尚未发布重做版本。
+七团全新网页、索引入口及手帐视觉已完成，统一 **v3 owner-private 只读审阅已发布，等待用户统一验收**：[团体索引](https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/?view=groups)。七团旧页面组件不再渲染；核实资料、稳定 ID、原图和共享手帐业务 DOM、播放器、编辑器与权限逻辑保留，视觉重新设计，不称官网逐像素复刻。其余44团页面与正式主站v186保持。
+
+实现分支 `codex/seven-groups-official-redesign`，冻结基线 `c578183e608c01eb797da0591bf75e7b3b0ea98e`，发布网页固定代码 `4cd279717a25938bedeb543a145204d25e3fa95f`。28专项/回归、类型、正式构建、350项五宽布局、92交互、其余44团88项首页回归通过；线上服务身份Chrome的42项页面、14项手帐往返及51卡片索引通过，非用户IAB完整会话。Figma已同步112个可编辑画板及261原图/矢量组件，完整字体与像素保真未验。真实生产保存、全视频播放、80%/125%原生缩放以及既有资料缺口未关闭。
+
+七团链接、来源差异、已解决/未解决问题见 `docs/codex/seven-groups-redesign-review-20261025.md`；可读验证摘要及Figma节点映射见 `docs/codex/seven-groups-redesign-verification-20261025.json`；过程见 `docs/codex/worklogs/20261025-seven-groups-official-redesign.md`。下方逐团门槛、参考待确认与实现中状态均为历史；不因技术检查通过自动登记七团设计获用户认可。
 
 
 ## 最新执行决定：7团设计否决，其余44团页面通过（2026-10-25）

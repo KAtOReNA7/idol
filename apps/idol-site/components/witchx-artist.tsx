@@ -1,4 +1,5 @@
 'use client';
+import {ArtistInformation} from '@/components/artist-information';
 import {createContext,useContext,useEffect,useMemo,useState,useSyncExternalStore,type MouseEvent,type ReactNode} from 'react';
 import type {CatalogView} from '@/lib/idol/types';
 import type {CandidateContent} from '@/lib/idol/candidate/types';
@@ -72,6 +73,15 @@ export default function WitchxArtist({content}:{content:CandidateContent}){
  else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName,m.nativeName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="wk-result">{people.length} 份档案</p>{people.length?roster(people):<p className="wk-empty">没有符合条件的成员。</p>}<p className="wk-roster-note">IN MEDIA A&D 官网完整具名档案卡 · 五位成员</p></>;}
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','TIMELINE')}{timeline()}<p className="wk-note">公司出道标注、音源发行和视频公开采用各自日期；活动预告不作为已经举办的证明。</p></>;
- else body=<><header className="wk-page-title"><h1>W!TCHX</h1></header><section className="wk-introduction"><Picture src={design.logo} alt="W!TCHX 官方标识" priority/><div><h2>W!TCHX</h2><p className="wk-debut">公司标注出道 · 2024.10.31</p><p>五位成员，三张单曲。认识她们的声音、舞台与作品。</p><a href="https://kpopmedia.co.kr/#artists" target="_blank" rel="noopener noreferrer">IN MEDIA A&D · 官方艺人介绍 ↗</a></div></section><figure className="wk-group"><button className="wk-photo-button" aria-label="查看团体原图" onClick={()=>showPhoto(content.hero.image!,'W!TCHX · Bugs 艺人资料合照')}><Picture src={content.hero.image!} alt="W!TCHX · Bugs 艺人资料合照" priority/></button><figcaption>Bugs 艺人资料合照 · 拍摄时期未注明 · 点击查看原图</figcaption></figure><section className="wk-home-members" aria-label="成员">{heading('成员','MEMBERS')}{roster()}<p className="wk-roster-note">公司官网列示的五位成员。完整具名档案卡保留原始构图；中文名为艺名转写。</p></section><section className="wk-section">{heading('发行','ALBUM')}{releases()}</section><section className="wk-section">{heading('影像与舞台','VIDEO')}{videos(design.works)}</section><section className="wk-section">{heading('时间轴','TIMELINE')}{timeline()}</section></>;
+ else body=<>
+<figure className="wk-group"><button className="wk-photo-button" aria-label="查看团体原图" onClick={()=>showPhoto(content.hero.image!,'W!TCHX · Bugs 艺人资料合照')}><Picture src={content.hero.image!} alt="W!TCHX · Bugs 艺人资料合照" priority/></button><figcaption>Bugs 艺人资料合照 · 拍摄时期未注明 · 点击查看原图</figcaption></figure>
+<header className="wk-page-title"><h1>W!TCHX</h1></header>
+<ArtistInformation slug="witchx"/>
+<section className="wk-home-members" aria-label="成员">{heading('成员','MEMBERS')}{roster()}<p className="wk-roster-note">公司官网列示的五位成员。完整具名档案卡保留原始构图；中文名为艺名转写。</p></section>
+<section className="wk-section">{heading('发行','ALBUM')}{releases()}</section>
+<section className="wk-section">{heading('影像与舞台','VIDEO')}{videos(design.works)}</section>
+<section className="wk-section">{heading('时间轴','TIMELINE')}{timeline()}</section>
+<section className="wk-introduction"><Picture src={design.logo} alt="W!TCHX 官方标识" priority/><div><h2>W!TCHX</h2><p className="wk-debut">公司标注出道 · 2024.10.31</p><p>五位成员，三张单曲。认识她们的声音、舞台与作品。</p><a href="https://kpopmedia.co.kr/#artists" target="_blank" rel="noopener noreferrer">IN MEDIA A&D · 官方艺人介绍 ↗</a></div></section>
+</>;
  return <Navigation.Provider value={go}><ImageRecoveryProvider><div data-idol-witchx-native><a className="wk-skip" href="#artist-content">跳到正文</a><header className="wk-masthead"><div className="wk-header-inner"><Link className="wk-wordmark" to={path}>W!TCHX<small>IN MEDIA A&amp;D</small></Link><nav aria-label="团体内容">{nav.map(([key,label,en])=><Link key={key} to={sectionHref(key)} className={(route.section==='records'?'works':route.section)===key?'is-current':''}><span>{en}</span><small>{label}</small></Link>)}</nav></div></header><main id="artist-content" tabIndex={-1}>{body}</main><footer className="wk-footer"><Link className="wk-wordmark" to={path}>W!TCHX<small>IN MEDIA A&amp;D</small></Link><div><a href="https://kpopmedia.co.kr/#artists" target="_blank" rel="noopener noreferrer">IN MEDIA A&D · 官网 ↗</a><a href="/?view=groups">团体索引 <Arrow/></a></div></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}<ImageRecoveryControls/></div></ImageRecoveryProvider></Navigation.Provider>;
 }

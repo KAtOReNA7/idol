@@ -66,7 +66,7 @@ export function ifeyeVideoMemberIds(catalog:CatalogView|null,video:IfeyeVideo):s
 export function prepareIfeyeDisplayData(catalog:CatalogView|null){
  // The public editorial list has its own exact-video evidence. Do not expand it
  // using personal record rows, even when those records have stable native IDs.
- return design;
+ return {...design,publicAccounts:(catalog?.groups.find(g=>g.id===design.group.id)?.social??[]).map(({platform,url,subjectName,countLabel,observedAt})=>({platform,url,subjectName,countLabel,observedAt}))};
 }
 /** Every address is a checked-in public file with the exact candidate digest.
  * No private image API, original-source fallback or external download occurs. */

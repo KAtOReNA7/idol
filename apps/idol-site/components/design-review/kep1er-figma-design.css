@@ -377,3 +377,12 @@
 .kep1er-figma .kf-native-page-background,.kep1er-figma .kf-native-hero-background,.kep1er-figma .kf-native-selected-background{overflow:clip}
 /* Native control positioning must not displace the authored hero CTA anchor. */
 .kep1er-figma .kf-hero-members.kf-has-native-control{position:absolute}
+
+/* Home modules keep the approved palette while giving releases their own row. */
+.kf-home .kf-home-hero{display:block}.kf-home .kf-hero-visual{width:100%}.kf-home-releases .kf-selected{max-width:1000px;margin:auto;padding:28px 0}.kf-home-releases .kf-native-selected-background,.kf-home-releases .kf-selected-header-rule{display:none}.kf-home-releases .kf-selected .kf-section-title{height:auto;min-height:100px}.kf-home-releases .kf-selected-release{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}.kf-home-releases .kf-selected-release .kf-button{position:static;margin-top:24px}.kf-home-releases .kf-selected-release h2{line-height:1.2;margin:20px 0}.kf-home-releases .kf-selected-native-title{display:none}.kf-home-releases .kf-selected-live-title{display:block}.kf-home-releases .kf-selected .kf-section-title .kf-italic{position:static}
+
+.kf-home .kf-home-music,.kf-home .kf-home-timeline{display:block}.kf-home .kf-home-music .kf-section-title{height:auto;padding:28px 0}.kf-home .kf-home-music .kf-section-title h2{font-size:34px;line-height:1.2}.kf-home .kf-home-music .kf-section-title h2>.kf-responsive-art{position:static;height:auto}.kf-home-releases .kf-selected .kf-section-title h2{display:block}.kf-home-releases .kf-section-title h2>.kf-responsive-art{position:static!important}.kf-home-releases .kf-selected .kf-section-title .kf-italic{display:none}
+
+.kf-home .kf-home-music{border-top:1px solid var(--kf-line)}
+.kep1er-figma .kf-responsive-stretch{overflow:clip}
+@media(min-width:761px) and (max-width:1100px){.kep1er-figma .kf-desktop-nav .kf-control-variant{display:none}}

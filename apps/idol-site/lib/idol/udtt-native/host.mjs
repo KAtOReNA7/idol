@@ -208,7 +208,8 @@ export function createUdttNative({host,catalog,viewer,production,canEdit=false,n
     link.onload=()=>{lifetime.clearTimeout(timer);render(true).then(resolve,reject);};
     link.onerror=()=>{lifetime.clearTimeout(timer);reject(new Error('UDTT 样式暂时无法载入。'));};
     lifetime.addCleanup(()=>{link.onload=null;link.onerror=null;resolve({status:'destroyed'});});
-    shadow.replaceChildren(style,link,recovery.element,root,parking);
+    const informationStyle=document.createElement('link');informationStyle.rel='stylesheet';informationStyle.href='/artist/group-information.css';
+    shadow.replaceChildren(style,link,informationStyle,recovery.element,root,parking);
   });
   return {ready,root,shadow,navigate,images,destroy(){if(dead)return;remember();dead=true;++sequence;images.destroy();recovery.destroy();nativePortrait?.destroy();handle?.destroy();lifetime.destroy();shadow.replaceChildren();}};
 }

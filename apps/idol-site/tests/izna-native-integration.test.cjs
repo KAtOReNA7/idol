@@ -16,7 +16,7 @@ test('all 20 original assets retain exact bytes and strict group/size/digest res
  }
  assert.equal(assets.filter(a=>a.url.includes('/native-v3/')).length,12);
 });
-test('candidate source stays byte-exact outside the approved izna opening and original-asset metadata',()=>{
+test('candidate source stays byte-exact outside the approved opening, public information, and original-asset metadata',()=>{
  const base='../../handoffs/codex-20261022/astra-izna-ifeye-v3/source';
  const read=(file,current)=>fs.readFileSync(current?'lib/idol/izna-runtime/'+file:base+'/lib/idol/design-review/astra-izna-ifeye-runtime/'+file,'utf8');
  assert.equal(read('focus.mjs',true),read('focus.mjs',false));
@@ -30,6 +30,7 @@ test('candidate source stays byte-exact outside the approved izna opening and or
  }
  assert.equal(unchangedRuntime(read('runtime.mjs',true)),unchangedRuntime(read('runtime.mjs',false)));
  function unchangedRenderer(source,current){
+  if(current){assert.ok(source.startsWith("import {renderGroupInformation} from '../group-information.mjs';\n"));source=source.replace("import {renderGroupInformation} from '../group-information.mjs';\n",'');assert.ok(source.includes('return {group,accounts:raw.publicAccounts??[],'));source=source.replace('return {group,accounts:raw.publicAccounts??[],','return {group,');}
   if(current){const helper=source.indexOf(' // The separate text control'),end=source.indexOf(' function home(){',helper);assert.ok(helper>0&&end>helper);source=source.slice(0,helper)+source.slice(end);}
   const hero=source.indexOf(current?'<section class="home-hero"':'<section class="night-hero"'),chapter=source.indexOf('<section class="chapter home-members">',hero);assert.ok(hero>0&&chapter>hero);
   source=source.slice(0,hero)+'APPROVED_HOME_HERO'+source.slice(chapter);

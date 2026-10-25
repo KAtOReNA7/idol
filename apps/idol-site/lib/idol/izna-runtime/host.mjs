@@ -35,7 +35,8 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
   if(shadow.childNodes.length)throw new Error('Refusing to overwrite an unowned ShadowRoot');
   const style=doc.createElement('style');style.textContent=reset;
   const root=doc.createElement('div');root.dataset.astraReviewRoot=slug;root.style.visibility='hidden';
-  shadow.append(style,root);
+  const informationStyle=doc.createElement('link');informationStyle.rel='stylesheet';informationStyle.href='/artist/group-information.css';
+  shadow.append(style,informationStyle,root);
   const runtime=createAstraRuntime(win),module=createIznaModule(runtime);
   const path=reviewPath(slug),baseUrl=new URL(path+'/',win.location.origin).href;
   let handle=null,dead=false,mountedUrl=null,mountedRoute=null,replaying=false,settleStyles=null,deferredNativeFocus=null;
@@ -139,7 +140,7 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
     try{handle?.destroy();}finally{
       handle=null;
       try{module.destroy();}finally{
-        root.remove();style.remove();
+        root.remove();style.remove();informationStyle.remove();
         if(owners.get(host)===owner)owners.delete(host);
       }
     }

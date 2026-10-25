@@ -14,6 +14,7 @@ function bundled(file){
  return result;
 }
 function timelineDependency(name){
+ if(['@/components/artist-information','./artist-information','../artist-information'].includes(name))return bundled('components/artist-information.tsx');
  if(name==='./public-work-credits')return bundled('lib/idol/public-work-credits.ts');
  if(/^\.\.\/\.\.\/data\/[a-z0-9-]+-navigation-keys\.json$/.test(name))return {default:JSON.parse(fs.readFileSync(path.join(root,name.slice(6)),'utf8'))};
  if(name==='../../data/izone-navigation-keys.json')return {default:JSON.parse(fs.readFileSync(path.join(root,'data/izone-navigation-keys.json'),'utf8'))};

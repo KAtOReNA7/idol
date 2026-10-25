@@ -10,10 +10,10 @@ const out=path.resolve(opts['--out']),ref=opts['--public-ref'];if(out===repo||ou
 if(ref&&!/^[a-f0-9]{40}$/.test(ref))throw Error('Immutable public Git ref required');
 if(fs.existsSync(out)&&fs.readdirSync(out).length&&!fs.existsSync(path.join(out,'review-all/build-owner.json')))throw Error('Output directory is not a prior all-review build');
 const read=p=>fs.readFileSync(path.join(root,p)),sha=b=>createHash('sha256').update(b).digest('hex'),require=createRequire(path.join(root,'package.json'));
-const projection=await build({stdin:{contents:"export {projectCatalog} from './lib/idol/catalog';export {projectPublicCatalog} from './lib/idol/public-catalog';export {projectArtistCatalog} from './lib/idol/artist-catalog';",resolveDir:root,loader:'ts'},bundle:true,write:false,platform:'node',format:'cjs',external:['cloudflare:workers','server-only'],logLevel:'silent'});
+const projection=await build({stdin:{contents:"export {projectCatalog} from './lib/idol/catalog';export {projectPublicCatalog} from './lib/idol/public-catalog';export {projectArtistCatalog} from './lib/idol/artist-catalog';export {withSocialFacts} from './lib/idol/social-facts';",resolveDir:root,loader:'ts'},bundle:true,write:false,platform:'node',format:'cjs',external:['cloudflare:workers','server-only'],logLevel:'silent'});
 const mod={exports:{}};vm.runInThisContext('(function(require,module,exports){'+projection.outputFiles[0].text+'\n})')(n=>n==='cloudflare:workers'?{env:{}}:n==='server-only'?{}:require(n),mod,mod.exports);
 const snap=JSON.parse(read('data/snapshot.json')),registry=JSON.parse(read('data/artist-timeline-registry.json'));
-const all=clearReviewPersonalValues(mod.exports.projectPublicCatalog(mod.exports.projectCatalog(snap.tables,'snapshot',snap.capturedAt)));
+const all=clearReviewPersonalValues(mod.exports.projectPublicCatalog(await mod.exports.withSocialFacts(mod.exports.projectCatalog(snap.tables,'snapshot',snap.capturedAt),snap.tables)));
 const catalogs={all};for(const g of registry)catalogs[g.slug]=mod.exports.projectArtistCatalog(all,g.groupId);
 const lu=catalogs.udtt.members.find(m=>m.id==='recvxAPQCF66Sl');lu.photo={table:'members',recordId:lu.id,index:0,fieldId:'',publicBinding:'member-primary-v1'};
 fs.mkdirSync(path.join(out,'review-all'),{recursive:true});

@@ -1,21 +1,43 @@
-.candidate-rescene-experience{--paper:#f3edf3;--white:#fffbff;--ink:#3c2945;--muted:#7b657c;--line:#d5c6d8;--rose:#77537f;--blush:#f3edf3;--lilac:#fffbff;background:var(--paper);color:var(--ink);min-height:100vh}
-.candidate-rescene-experience .button{white-space:normal;max-width:100%}
-.candidate-rescene-experience .work-aside,.candidate-rescene-experience .member-detail>div{min-width:0}
-.candidate-rescene-experience .work-aside h1,.candidate-rescene-experience .member-detail h1{overflow-wrap:anywhere}
-.candidate-rescene-experience .header{background:var(--paper)}
-.candidate-rescene-experience .video-play{background:var(--rose);color:#ffffff}
-.candidate-rescene-experience .editor-fields input,.candidate-rescene-experience .editor-fields select,.candidate-rescene-experience .editor-fields textarea{background:var(--white);color:var(--ink)}
-.candidate-rescene-experience .work-detail-top>div .video-caption{color:#f5eef6}
-.candidate-rescene-experience .work-detail-top>div .video-caption>a{color:#f5eef6;text-decoration:underline;text-underline-offset:3px}
-.candidate-rescene-experience .work-detail-top>div .video-fallback{color:#e3d5e6}
-.candidate-rescene-experience .work-detail-top>div .video-fallback a{color:#f5eef6;text-decoration:underline;text-underline-offset:3px}
-.candidate-rescene-experience .work-detail-top{display:grid;grid-template-columns:1fr;gap:30px;max-width:1040px;margin-inline:auto}.candidate-rescene-experience .work-detail-top>div{padding:22px;background:#302037;border-block:8px solid #4c3553}.candidate-rescene-experience .video-stage{border-radius:0}.candidate-rescene-experience .work-aside{border:0;border-radius:0;background:transparent;padding:16px 0 28px;border-bottom:1px solid var(--line)}.candidate-rescene-experience .work-aside h1{font-size:clamp(32px,4vw,58px);font-weight:400}.candidate-rescene-experience .stage-view .work-detail-top{max-width:none;grid-template-columns:minmax(0,1.6fr) minmax(0,.8fr);gap:30px}.candidate-rescene-experience .stage-view .work-aside{border-top:1px solid var(--line);padding:24px 0}.candidate-rescene-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}.candidate-rescene-experience .cast-card{padding:18px;border:0;border-radius:0;background:var(--white)}.candidate-rescene-experience .cast-card .photo{padding:12px;background:#e2d8e4;border-radius:0}.candidate-rescene-experience .member-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:52px;align-items:center;border-block:1px solid var(--line);padding:32px 0}.candidate-rescene-experience .member-detail>.photo{border-radius:0;padding:18px;background:#e2d8e4}.candidate-rescene-experience .stage-source{border-radius:0;border-block:1px solid var(--line)}@media(max-width:900px){.candidate-rescene-experience .stage-view .work-detail-top,.candidate-rescene-experience .member-detail{grid-template-columns:1fr}}@media(max-width:760px){.candidate-rescene-experience .work-detail-top>div{padding:10px;border-block-width:5px}.candidate-rescene-experience .cast-grid{grid-template-columns:1fr 1fr;gap:12px}.candidate-rescene-experience .cast-card{padding:12px}.candidate-rescene-experience .cast-card .photo{padding:6px}.candidate-rescene-experience .cast-copy{padding:12px 0 0}.candidate-rescene-experience .member-name{font-size:16px}.candidate-rescene-experience .cast-scores{gap:12px;flex-wrap:wrap}.candidate-rescene-experience .member-detail{gap:24px}.candidate-rescene-experience .stage-view .work-aside{border-top:4px solid var(--rose)}}
-@media(max-width:760px){.candidate-rescene-experience .header{height:auto;min-height:78px;flex-wrap:wrap}.candidate-rescene-experience .header nav{height:auto;flex-wrap:wrap}.candidate-rescene-experience .editor-fields input,.candidate-rescene-experience .editor-fields select,.candidate-rescene-experience .editor-fields textarea{font-size:16px}}
+/* Rebuilt 2026-10-25: rescene official reference journal. Stable player/editor markup only. */
+.candidate-experience.candidate-rescene-experience{--paper:#fff;--white:#eaf0f3;--ink:#141719;--muted:#67767d;--line:#c6d0d6;--rose:#4e7180;--blush:#eaf0f3;--lilac:#eaf0f3;background:#fff;color:#141719;font-family:Arial,'Noto Sans SC',sans-serif;min-height:100vh}
+.candidate-experience.candidate-rescene-experience :is(h1,h2,h3){color:#141719;font-family:Arial,'Noto Sans SC',sans-serif;letter-spacing:-.04em}
+.candidate-experience.candidate-rescene-experience .header{background:#fff;color:#141719;border-bottom:1px solid #c6d0d6;padding:24px 5%;min-height:90px}
+.candidate-experience.candidate-rescene-experience .brand{font:900 28px/1 Arial,sans-serif;letter-spacing:-.06em;color:inherit}
+.candidate-experience.candidate-rescene-experience .brand small{font:400 10px/1.5 Arial,sans-serif;color:inherit;letter-spacing:.08em}
+.candidate-experience.candidate-rescene-experience .header nav button{color:inherit;font-family:Arial,sans-serif;border-radius:0}
+.candidate-experience.candidate-rescene-experience .private-pill{border:1px solid currentColor;border-radius:0;color:inherit;background:transparent}
+.candidate-experience.candidate-rescene-experience main{max-width:1440px;padding:40px 5% 80px;margin:auto}
+.candidate-experience.candidate-rescene-experience :is(.button,.video-mode-tabs,.video-mode-tabs button,.editor,.editor-actions,.score-input,.editor input,.editor textarea,.editor select){border-radius:0;font-family:Arial,sans-serif}
+.candidate-experience.candidate-rescene-experience .button{min-height:44px;border:1px solid #c6d0d6;background:#eaf0f3;color:#141719;padding:12px 18px}
+.candidate-experience.candidate-rescene-experience .button.primary,.candidate-experience.candidate-rescene-experience .video-mode-tabs button[aria-selected=true]{background:#4e7180;color:#fff}
+.candidate-experience.candidate-rescene-experience :is(.work-detail-top,.madein-detail-hero){display:grid;grid-template-columns:minmax(0,1.8fr) minmax(260px,.8fr);gap:36px;align-items:start;margin:30px 0 60px}
+.candidate-experience.candidate-rescene-experience :is(.work-aside,.madein-detail-identity){padding:30px 0;border:0;border-top:5px solid #4e7180;border-radius:0;background:transparent}
+.candidate-experience.candidate-rescene-experience :is(.work-aside h1,.madein-detail-identity h1,.ive-work-heading h1){font:900 clamp(32px,4vw,62px)/1.08 Arial,sans-serif;letter-spacing:-.06em;overflow-wrap:anywhere;margin:20px 0}
+.candidate-experience.candidate-rescene-experience :is(.work-aside p,.madein-detail-identity p){font-size:12px;color:#67767d}
+.candidate-experience.candidate-rescene-experience .video-stage{border-radius:0;background:#050505;overflow:hidden}
+.candidate-experience.candidate-rescene-experience :is(.video-play,.score-indicator){background:#4e7180}
+.candidate-experience.candidate-rescene-experience .cast-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.candidate-experience.candidate-rescene-experience .cast-card{padding:0;border:0;border-bottom:1px solid #c6d0d6;border-radius:0;background:transparent;overflow:hidden}
+.candidate-experience.candidate-rescene-experience .cast-card .photo{aspect-ratio:3/4;max-height:520px;border-radius:0;background:#eaf0f3}
+.candidate-experience.candidate-rescene-experience .cast-card .photo img{object-fit:contain}
+.candidate-experience.candidate-rescene-experience :is(.cast-copy,.cast-card>div:last-child){padding:20px 4px}
+.candidate-experience.candidate-rescene-experience .member-name{font:700 22px/1.2 Arial,sans-serif}
+.candidate-experience.candidate-rescene-experience .section-heading{border-bottom:1px solid #c6d0d6;padding-bottom:24px;margin-bottom:30px}
+.candidate-experience.candidate-rescene-experience .section-heading h2{font:800 36px/1.2 Arial,sans-serif}
+.candidate-experience.candidate-rescene-experience :is(.stage-source,.alternative-card,.watch-lead-card,.member-work-card){border:1px solid #c6d0d6;border-radius:0;background:#eaf0f3;box-shadow:none}
+.candidate-experience.candidate-rescene-experience :is(.detail-return,.stage-view>.detail-return,.watch-next,.caption-help){border:0;border-top:1px solid #c6d0d6;border-radius:0;background:transparent;padding:25px 0}
+.candidate-experience.candidate-rescene-experience .member-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7%;align-items:start}
+.candidate-experience.candidate-rescene-experience .member-detail h1{font:900 clamp(40px,5vw,76px)/1.1 Arial,sans-serif;letter-spacing:-.05em;overflow-wrap:anywhere}
+.candidate-experience.candidate-rescene-experience .member-detail>.photo{width:100%;height:auto;aspect-ratio:3/4;max-height:none;background:#eaf0f3;border-radius:0}
+.candidate-experience.candidate-rescene-experience .member-detail>.photo img{object-fit:contain}
+.candidate-experience.candidate-rescene-experience .member-work-summary{border:1px solid #c6d0d6;border-radius:0;background:#eaf0f3;padding:28px}
+.candidate-experience.candidate-rescene-experience .member-work-summary strong{font-family:Arial,sans-serif;color:#4e7180}
+.candidate-experience.candidate-rescene-experience .member-work-card__title{font:700 25px/1.2 Arial,sans-serif}
+.candidate-experience.candidate-rescene-experience .member-work-card__art{background:#eaf0f3}
+.candidate-experience.candidate-rescene-experience .image-label{border-radius:0;background:#eaf0f3;color:#67767d}
+.candidate-experience.candidate-rescene-experience .editor{border:1px solid #c6d0d6;background:#eaf0f3;padding:24px}
+.candidate-experience.candidate-rescene-experience .editor-fields :is(input,textarea,select){color:#141719;background:#fff;border:1px solid #c6d0d6}
+.candidate-experience.candidate-rescene-experience :is(.back,.text-button){color:#141719}
+.candidate-experience.candidate-rescene-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid #4e7180;outline-offset:4px}
+@media(max-width:720px){.candidate-experience.candidate-rescene-experience .header{padding:20px 5%;flex-wrap:wrap;gap:16px}.candidate-experience.candidate-rescene-experience .header nav{max-width:100%;flex-wrap:wrap}.candidate-experience.candidate-rescene-experience main{padding:28px 5% 60px}.candidate-experience.candidate-rescene-experience :is(.work-detail-top,.madein-detail-hero,.member-detail){grid-template-columns:1fr;gap:25px}.candidate-experience.candidate-rescene-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.candidate-experience.candidate-rescene-experience .member-detail h1{font-size:44px}.candidate-experience.candidate-rescene-experience .section-heading h2{font-size:28px}.candidate-experience.candidate-rescene-experience .member-work-summary{padding:20px}.candidate-experience.candidate-rescene-experience .cast-copy{padding:18px 0}.candidate-experience.candidate-rescene-experience .member-name{font-size:18px}}
 
-/* Batch B: visible focus and unbroken values within the existing player/editor. */
-.candidate-rescene-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid var(--rose);outline-offset:4px}
-.candidate-rescene-experience .cast-scores b,.candidate-rescene-experience .work-score strong{white-space:nowrap;font-variant-numeric:tabular-nums}
-.candidate-rescene-experience .cast-card .photo img{object-fit:contain}
-.candidate-rescene-experience .work-detail-top>*,.candidate-rescene-experience .member-detail>*{min-width:0}
-.candidate-rescene-experience .video-mode-tabs{flex-wrap:wrap}
-@media(max-width:390px){.candidate-rescene-experience .cast-grid{gap:10px}.candidate-rescene-experience .cast-card{padding:10px}.candidate-rescene-experience .cast-scores{flex-wrap:wrap;gap:8px}}

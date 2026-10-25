@@ -1,149 +1,43 @@
-/* Theme only: the existing player, record editor and navigation guards retain ownership. */
-.candidate-triples-experience {
-  --paper: #eeefea;
-  --white: #f7f8f3;
-  --ink: #16242b;
-  --muted: #566770;
-  --line: #9eaaa9;
-  --rose: #07506a;
-  --blush: #dde5e3;
-  --lilac: #e3e9e7;
-  background: var(--paper);
-  color: var(--ink);
-  min-height: 100vh;
-}
-.candidate-triples-experience .header { background: var(--paper); border-bottom: 1px solid var(--line); }
-.candidate-triples-experience .private-pill { background: var(--lilac); color: var(--muted); border-radius: 0; }
-.candidate-triples-experience .work-detail-top { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(260px,.9fr); gap: 32px; border-top: 1px solid var(--line); padding-top: 24px; align-items: start; }
-.candidate-triples-experience .work-detail-top > *, .candidate-triples-experience .member-detail > * { min-width: 0; }
-.candidate-triples-experience .work-aside { background: transparent; border: 0; border-radius: 0; padding: 12px 0; }
-.candidate-triples-experience .work-aside h1 { font-size: clamp(32px,4vw,54px); font-weight: 400; line-height: 1.15; overflow-wrap: anywhere; }
-.candidate-triples-experience .video-stage { background: #10262f; color: #eeefea; border-radius: 0; }
-.candidate-triples-experience .video-play { background: #eeefea; color: #10262f; border-radius: 0; }
-.candidate-triples-experience .video-cover-fallback { background: #10262f; color: #eeefea; }
-.candidate-triples-experience .video-cover-fallback span { color: #eeefea; }
-.candidate-triples-experience .video-mode-tabs { border-radius: 0; background: var(--lilac); }
-.candidate-triples-experience .video-mode-tabs button { border-radius: 0; min-height: 44px; }
-.candidate-triples-experience .video-mode-tabs button[aria-selected=true] { background: var(--rose); color: white; }
-.candidate-triples-experience .button { border-radius: 0; white-space: normal; max-width: 100%; min-height: 44px; }
-.candidate-triples-experience .button.primary { background: var(--rose); color: white; }
-.candidate-triples-experience .cast-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 20px; }
-.candidate-triples-experience .cast-card { border-radius: 0; border: 0; border-top: 1px solid var(--line); padding: 16px 0; background: transparent; min-width: 0; }
-.candidate-triples-experience .cast-card .photo { border-radius: 0; background: var(--lilac); }
-.candidate-triples-experience .cast-card .photo img { object-fit: contain; }
-.candidate-triples-experience .cast-scores { flex-wrap: wrap; }
-.candidate-triples-experience .cast-scores b, .candidate-triples-experience .work-score strong { white-space: nowrap; font-variant-numeric: tabular-nums; }
-.candidate-triples-experience .image-label { background: #eeefeaed; color: #16242b; border-radius: 0; }
-.candidate-triples-experience .editor, .candidate-triples-experience .editor-actions, .candidate-triples-experience .editor-fields input, .candidate-triples-experience .editor-fields select, .candidate-triples-experience .editor-fields textarea { border-radius: 0; }
-.candidate-triples-experience .editor-fields input, .candidate-triples-experience .editor-fields select, .candidate-triples-experience .editor-fields textarea { background: var(--white); color: var(--ink); border-color: var(--line); }
-.candidate-triples-experience .my-note, .candidate-triples-experience .caption-help, .candidate-triples-experience .stage-source, .candidate-triples-experience .alternative-card { background: var(--lilac); color: var(--ink); border: 1px solid var(--line); border-radius: 0; }
-.candidate-triples-experience .detail-return { background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 0; }
-.candidate-triples-experience .member-detail { display: grid; grid-template-columns: minmax(240px,.8fr) minmax(0,1.2fr); gap: 40px; border-top: 1px solid var(--line); padding-top: 24px; }
-.candidate-triples-experience .member-detail h1 { font-weight: 400; overflow-wrap: anywhere; }
-.candidate-triples-experience .member-detail .photo img { object-fit: contain; }
-.candidate-triples-experience :is(button,a,input,select,textarea):focus-visible { outline: 3px solid #2e6b8a; outline-offset: 4px; }
-@media (max-width:900px) {
-  .candidate-triples-experience .work-detail-top, .candidate-triples-experience .member-detail { grid-template-columns: 1fr; }
-  .candidate-triples-experience .cast-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-}
-@media (max-width:760px) {
-  .candidate-triples-experience .header { height: auto; min-height: 78px; flex-wrap: wrap; }
-  .candidate-triples-experience .header nav { height: auto; flex-wrap: wrap; }
-  .candidate-triples-experience .work-detail-top { gap: 20px; }
-  .candidate-triples-experience .work-aside h1 { font-size: 34px; }
-  .candidate-triples-experience .editor-fields input, .candidate-triples-experience .editor-fields select, .candidate-triples-experience .editor-fields textarea { font-size: 16px; }
-  .candidate-triples-experience .member-name { font-size: 16px; }
-  .candidate-triples-experience .stage-view .mobile-work-heading { display: block; }
-  .candidate-triples-experience .detail-return { bottom: 64px; padding: 14px 12px calc(14px + env(safe-area-inset-bottom)); }
-  .candidate-triples-experience .detail-return .button { min-height: 48px; }
-}
+/* Rebuilt 2026-10-25: triples official reference journal. Stable player/editor markup only. */
+.candidate-experience.candidate-triples-experience{--paper:#fff;--white:#eee;--ink:#050505;--muted:#666;--line:#ccc;--rose:#000;--blush:#eee;--lilac:#eee;background:#fff;color:#050505;font-family:Arial,'Noto Sans SC',sans-serif;min-height:100vh}
+.candidate-experience.candidate-triples-experience :is(h1,h2,h3){color:#050505;font-family:Arial,'Noto Sans SC',sans-serif;letter-spacing:-.04em}
+.candidate-experience.candidate-triples-experience .header{background:#080808;color:#fff;border-bottom:1px solid #ccc;padding:24px 5%;min-height:90px}
+.candidate-experience.candidate-triples-experience .brand{font:900 28px/1 Arial,sans-serif;letter-spacing:-.06em;color:inherit}
+.candidate-experience.candidate-triples-experience .brand small{font:400 10px/1.5 Arial,sans-serif;color:inherit;letter-spacing:.08em}
+.candidate-experience.candidate-triples-experience .header nav button{color:inherit;font-family:Arial,sans-serif;border-radius:0}
+.candidate-experience.candidate-triples-experience .private-pill{border:1px solid currentColor;border-radius:0;color:inherit;background:transparent}
+.candidate-experience.candidate-triples-experience main{max-width:1440px;padding:40px 5% 80px;margin:auto}
+.candidate-experience.candidate-triples-experience :is(.button,.video-mode-tabs,.video-mode-tabs button,.editor,.editor-actions,.score-input,.editor input,.editor textarea,.editor select){border-radius:0;font-family:Arial,sans-serif}
+.candidate-experience.candidate-triples-experience .button{min-height:44px;border:1px solid #ccc;background:#eee;color:#050505;padding:12px 18px}
+.candidate-experience.candidate-triples-experience .button.primary,.candidate-experience.candidate-triples-experience .video-mode-tabs button[aria-selected=true]{background:#000;color:#fff}
+.candidate-experience.candidate-triples-experience :is(.work-detail-top,.madein-detail-hero){display:grid;grid-template-columns:minmax(0,1.8fr) minmax(260px,.8fr);gap:36px;align-items:start;margin:30px 0 60px}
+.candidate-experience.candidate-triples-experience :is(.work-aside,.madein-detail-identity){padding:30px 0;border:0;border-top:5px solid #000;border-radius:0;background:transparent}
+.candidate-experience.candidate-triples-experience :is(.work-aside h1,.madein-detail-identity h1,.ive-work-heading h1){font:900 clamp(32px,4vw,62px)/1.08 Arial,sans-serif;letter-spacing:-.06em;overflow-wrap:anywhere;margin:20px 0}
+.candidate-experience.candidate-triples-experience :is(.work-aside p,.madein-detail-identity p){font-size:12px;color:#666}
+.candidate-experience.candidate-triples-experience .video-stage{border-radius:0;background:#050505;overflow:hidden}
+.candidate-experience.candidate-triples-experience :is(.video-play,.score-indicator){background:#000}
+.candidate-experience.candidate-triples-experience .cast-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.candidate-experience.candidate-triples-experience .cast-card{padding:0;border:0;border-bottom:1px solid #ccc;border-radius:0;background:transparent;overflow:hidden}
+.candidate-experience.candidate-triples-experience .cast-card .photo{aspect-ratio:3/4;max-height:520px;border-radius:0;background:#eee}
+.candidate-experience.candidate-triples-experience .cast-card .photo img{object-fit:contain}
+.candidate-experience.candidate-triples-experience :is(.cast-copy,.cast-card>div:last-child){padding:20px 4px}
+.candidate-experience.candidate-triples-experience .member-name{font:700 22px/1.2 Arial,sans-serif}
+.candidate-experience.candidate-triples-experience .section-heading{border-bottom:1px solid #ccc;padding-bottom:24px;margin-bottom:30px}
+.candidate-experience.candidate-triples-experience .section-heading h2{font:800 36px/1.2 Arial,sans-serif}
+.candidate-experience.candidate-triples-experience :is(.stage-source,.alternative-card,.watch-lead-card,.member-work-card){border:1px solid #ccc;border-radius:0;background:#eee;box-shadow:none}
+.candidate-experience.candidate-triples-experience :is(.detail-return,.stage-view>.detail-return,.watch-next,.caption-help){border:0;border-top:1px solid #ccc;border-radius:0;background:transparent;padding:25px 0}
+.candidate-experience.candidate-triples-experience .member-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7%;align-items:start}
+.candidate-experience.candidate-triples-experience .member-detail h1{font:900 clamp(40px,5vw,76px)/1.1 Arial,sans-serif;letter-spacing:-.05em;overflow-wrap:anywhere}
+.candidate-experience.candidate-triples-experience .member-detail>.photo{width:100%;height:auto;aspect-ratio:3/4;max-height:none;background:#eee;border-radius:0}
+.candidate-experience.candidate-triples-experience .member-detail>.photo img{object-fit:contain}
+.candidate-experience.candidate-triples-experience .member-work-summary{border:1px solid #ccc;border-radius:0;background:#eee;padding:28px}
+.candidate-experience.candidate-triples-experience .member-work-summary strong{font-family:Arial,sans-serif;color:#000}
+.candidate-experience.candidate-triples-experience .member-work-card__title{font:700 25px/1.2 Arial,sans-serif}
+.candidate-experience.candidate-triples-experience .member-work-card__art{background:#eee}
+.candidate-experience.candidate-triples-experience .image-label{border-radius:0;background:#eee;color:#666}
+.candidate-experience.candidate-triples-experience .editor{border:1px solid #ccc;background:#eee;padding:24px}
+.candidate-experience.candidate-triples-experience .editor-fields :is(input,textarea,select){color:#050505;background:#fff;border:1px solid #ccc}
+.candidate-experience.candidate-triples-experience :is(.back,.text-button){color:#050505}
+.candidate-experience.candidate-triples-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid #000;outline-offset:4px}
+@media(max-width:720px){.candidate-experience.candidate-triples-experience .header{padding:20px 5%;flex-wrap:wrap;gap:16px}.candidate-experience.candidate-triples-experience .header nav{max-width:100%;flex-wrap:wrap}.candidate-experience.candidate-triples-experience main{padding:28px 5% 60px}.candidate-experience.candidate-triples-experience :is(.work-detail-top,.madein-detail-hero,.member-detail){grid-template-columns:1fr;gap:25px}.candidate-experience.candidate-triples-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.candidate-experience.candidate-triples-experience .member-detail h1{font-size:44px}.candidate-experience.candidate-triples-experience .section-heading h2{font-size:28px}.candidate-experience.candidate-triples-experience .member-work-summary{padding:20px}.candidate-experience.candidate-triples-experience .cast-copy{padding:18px 0}.candidate-experience.candidate-triples-experience .member-name{font-size:18px}}
 
-/* Approved October 2026 detail design: a full-width film still, then the real notebook.
-   All selectors stay in tripleS; the shared editor continues to own persistence. */
-.candidate-triples-experience {
- --paper:#f2eee7; --white:#fff; --ink:#111316; --muted:#686c75;
- --line:#d3cfc9; --rose:#111316; --blush:#ddc7cc; --lilac:#b8c7d8;
-}
-.candidate-triples-experience .detail > .back { margin-bottom:16px; }
-.candidate-triples-experience .triples-work-heading { margin-bottom:28px; }
-.candidate-triples-experience .triples-work-brand { display:flex; align-items:center; gap:24px; padding:24px 28px 16px; background:var(--ink); color:#fff; }
-.candidate-triples-experience .triples-work-brand > button:first-child { border:0; background:transparent; padding:0; flex:0 0 auto; }
-.candidate-triples-experience .triples-work-brand img { display:block; object-fit:contain; filter:brightness(0) invert(1); }
-.candidate-triples-experience .triples-work-brand > .button { margin-left:auto; min-width:96px; background:#fff; color:var(--ink); }
-.candidate-triples-experience .triples-work-heading nav { display:flex; gap:8px; padding:0 28px 24px; background:var(--ink); }
-.candidate-triples-experience .triples-work-heading nav .button { width:180px; background:#fff; color:var(--ink); justify-content:center; }
-.candidate-triples-experience .triples-work-heading h1 { font-size:40px; line-height:1.4; margin:36px 0 24px; font-weight:500; overflow-wrap:anywhere; }
-.candidate-triples-experience .triples-video-identity { display:flex; flex-direction:column; gap:12px; padding:24px; background:var(--blush); }
-.candidate-triples-experience .triples-video-identity.is-stage { background:var(--lilac); }
-.candidate-triples-experience .triples-video-identity strong { font-size:14px; }
-.candidate-triples-experience .work-detail-top { display:grid; grid-template-columns:minmax(0,1fr); gap:48px; padding-top:0; border:0; }
-.candidate-triples-experience .video-stage { aspect-ratio:16/9; }
-.candidate-triples-experience .video-stage > img { object-fit:contain; }
-.candidate-triples-experience .video-caption { display:flex; flex-wrap:wrap; gap:12px; padding:16px 0; }
-.candidate-triples-experience .video-caption > a { background:var(--ink); color:#fff; min-height:48px; padding:14px 18px; justify-content:center; }
-.candidate-triples-experience .work-aside { padding:0; }
-.candidate-triples-experience .work-aside > .group-links,
-.candidate-triples-experience .work-aside > h1 { display:none; }
-.candidate-triples-experience .work-score { background:transparent; border:0; padding:0 0 24px; }
-.candidate-triples-experience .work-score > span { font-size:24px; color:var(--ink); }
-.candidate-triples-experience .editor { border:0; background:transparent; padding:0; }
-.candidate-triples-experience .editor-heading { font-size:20px; margin-bottom:24px; }
-.candidate-triples-experience .editor-fields { gap:24px; }
-.candidate-triples-experience .editor-fields > label { min-width:0; }
-.candidate-triples-experience .loona-score-control { display:grid; gap:12px; width:100%; }
-.candidate-triples-experience .loona-score-stepper { display:grid; grid-template-columns:48px minmax(0,1fr) 48px; gap:12px; align-items:center; }
-.candidate-triples-experience .loona-score-stepper > button { width:48px; height:48px; border:1px solid var(--line); background:transparent; color:var(--ink); font-size:20px; }
-.candidate-triples-experience .loona-score-stepper .score-input { display:flex; min-width:0; background:#fff; border:1px solid transparent; padding:0 16px; }
-.candidate-triples-experience .loona-score-stepper .score-input:focus-within { outline:3px solid var(--lilac); }
-.candidate-triples-experience .loona-score-stepper input { width:100%; min-width:0; height:72px; text-align:center; font-size:32px; font-weight:600; border:0; background:#fff; appearance:textfield; }
-.candidate-triples-experience .loona-score-stepper input::-webkit-inner-spin-button { appearance:none; }
-.candidate-triples-experience .loona-score-stepper small { white-space:nowrap; }
-.candidate-triples-experience .loona-score-clear { justify-self:start; min-height:44px; padding:8px 12px; border:1px solid var(--line); background:transparent; }
-.candidate-triples-experience .loona-score-control > small { font-size:13px; line-height:1.6; color:var(--muted); }
-.candidate-triples-experience button:disabled { opacity:.45; cursor:not-allowed; }
-.candidate-triples-experience .editor-actions { display:flex; margin-top:24px; }
-.candidate-triples-experience .editor-actions > .primary { width:100%; justify-content:center; min-height:48px; }
-.candidate-triples-experience .triples-detail-connections { display:grid; gap:64px; margin-top:64px; }
-.candidate-triples-experience .triples-detail-connections h2 { margin:0 0 24px; font-size:28px; font-weight:500; }
-.candidate-triples-experience .triples-associated-release > button { display:flex; gap:24px; align-items:center; border:0; padding:0; background:transparent; text-align:left; max-width:100%; color:inherit; }
-.candidate-triples-experience .triples-associated-release img { width:136px; height:136px; object-fit:contain; }
-.candidate-triples-experience .triples-associated-release span { min-width:0; overflow-wrap:anywhere; font-size:20px; }
-.candidate-triples-experience .triples-associated-release small { display:block; color:var(--muted); font-size:14px; margin-top:8px; }
-.candidate-triples-experience .triples-other-video { max-width:880px; }
-.candidate-triples-experience .triples-other-video > img { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:contain; }
-.candidate-triples-experience .triples-other-video .button { display:flex; width:100%; justify-content:center; margin-top:16px; background:#fff; }
-.candidate-triples-experience .cast-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
-.candidate-triples-experience .cast-scores { gap:10px; }
-.candidate-triples-experience .detail-return { background:var(--paper); }
-@media(max-width:900px){
- .candidate-triples-experience .cast-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-}
-@media(max-width:600px){
- .candidate-triples-experience .triples-work-brand { padding:20px 16px 16px; gap:12px; flex-wrap:wrap; }
- .candidate-triples-experience .triples-work-brand img { width:120px; height:auto; }
- .candidate-triples-experience .triples-work-brand > span { font-size:13px; }
- .candidate-triples-experience .triples-work-brand > .button { min-width:64px; }
- .candidate-triples-experience .triples-work-heading nav { padding:0 16px 20px; gap:6px; }
- .candidate-triples-experience .triples-work-heading nav .button { min-width:0; width:25%; padding:8px 3px; font-size:13px; }
- .candidate-triples-experience .triples-work-heading h1 { font-size:28px; margin:28px 0 20px; }
- .candidate-triples-experience .triples-video-identity { padding:16px; }
- .candidate-triples-experience .work-detail-top { gap:32px; }
- .candidate-triples-experience .editor-fields { grid-template-columns:minmax(0,1fr); }
- .candidate-triples-experience .loona-score-stepper { grid-template-columns:44px minmax(0,1fr) 44px; gap:8px; }
- .candidate-triples-experience .loona-score-stepper > button { width:44px; height:48px; }
- .candidate-triples-experience .loona-score-stepper input { font-size:28px; padding:0; }
- .candidate-triples-experience .loona-score-stepper .score-input { padding:0 8px; }
- .candidate-triples-experience .triples-detail-connections { margin-top:48px; gap:48px; }
- .candidate-triples-experience .triples-detail-connections h2 { font-size:24px; }
- .candidate-triples-experience .triples-associated-release > button { gap:16px; }
- .candidate-triples-experience .triples-associated-release img { width:88px; height:88px; }
- .candidate-triples-experience .triples-associated-release span { font-size:17px; }
- .candidate-triples-experience .cast-grid { grid-template-columns:minmax(0,1fr); }
-}
-.candidate-triples-experience main { max-width:1440px; padding-inline:64px; margin-inline:auto; }
-.candidate-triples-experience .mobile-work-heading { display:none!important; }
-.candidate-triples-experience .work-aside .editor-fields > label:has(.loona-score-control) { grid-column:1/-1; }
-.candidate-triples-experience .video-caption { flex-direction:column; align-items:stretch; }
-.candidate-triples-experience .video-caption > span { max-width:none; line-height:1.5; }
-.candidate-triples-experience .video-caption > a { display:flex; }
-@media(max-width:760px){ .candidate-triples-experience main { padding-inline:16px; } }

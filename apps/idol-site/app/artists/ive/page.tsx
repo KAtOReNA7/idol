@@ -1,4 +1,3 @@
-import IveArtist from '@/components/ive-artist';
-import content from '@/data/ive-artist.json';
-import './ive-artist.css';
-export default function Page(){return <IveArtist content={content}/>;}
+import SevenArtist from '@/components/seven-redesign/artist';
+import '@/components/seven-redesign/artist.css';
+export default function Page(){return <SevenArtist slug="ive"/>;}

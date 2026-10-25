@@ -1,5 +1,12 @@
 # 女团页面设计要求与验收基准
 
+## 最新执行决定：七团参考已确认，依次重做并统一交审（2026-10-25）
+
+用户已批准参考清单，要求依次重做 MADEIN → QWER → PURPLE KISS → IVE → tripleS → RESCENE → ILLIT，弃用七团旧视觉与布局，全部完成后统一提供链接审核，不逐团等待。保留核实资料、原图、稳定 ID、个人记录及权限；其余 44 团设计保护。同步七团索引及手帐视觉，主站 v186 不覆盖。
+
+实现分支 `codex/seven-groups-official-redesign`，冻结基线 `c578183e608c01eb797da0591bf75e7b3b0ea98e`；已批准依据见 `docs/codex/seven-groups-design-references-20261025.md`，执行记录 `docs/codex/worklogs/20261025-seven-groups-official-redesign.md`。下方“参考待确认”及逐团门槛为历史。当前为实现中，尚未发布重做版本。
+
+
 ## 最新执行决定：7团设计否决，其余44团页面通过（2026-10-25）
 
 用户明确要求 **MADEIN、QWER、PURPLE KISS、IVE、tripleS、RESCENE、ILLIT 放弃原设计，重新制作；其余团体通过审核**。这7团的旧网页/Figma不能作为新设计的验收依据；保留其已核实资料、原图、稳定ID与既有个人记录。其余44团页面设计按用户意见通过并保护，不把本次认可扩大为真实保存、全视频播放、生产部署或资料无缺口。

@@ -1,4 +1,3 @@
-import Design from '@/components/candidate/qwer-design';
-import content from '@/data/qwer-artist.json';
-import './qwer-artist.css';
-export default function ArtistPage(){return <Design content={content}/>;}
+import SevenArtist from '@/components/seven-redesign/artist';
+import '@/components/seven-redesign/artist.css';
+export default function Page(){return <SevenArtist slug="qwer"/>;}

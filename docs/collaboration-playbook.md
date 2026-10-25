@@ -1,5 +1,11 @@
 # 跨会话派工与验收手册
 
+## 最新确认：v11已获用户确认，全部当前进度已上线（2026-10-26）
+
+用户在v11交付后回复“同意”，要求将全部当前进度发布至指定正式站点，并同步最新开发进度到仓库。已重新核对：指定站点当前最新版本为v11，部署状态succeeded；站点源HEAD与已发布源提交`c28c945987e22803b81ea266e6aaadf1ce972cb0`一致且无未提交文件。全部已完成网页修改已在站点中，本次无需重复发布相同产物。现有owner-private只读权限保持。
+
+GitHub接续分支为`codex/mv-cover-and-identity-batch`，实现`74007464dc10ef1d9b5c41d28c653fcf98044d43`，此前交接HEAD`4008b959bb84df282f856d9242a8e021d1061df7`；[PR #40](https://github.com/KAtOReNA7/idol/pull/40)。本次fetch确认无远端分叉、开工工作树干净，并同步本次用户确认及当前进度。仍有922条认人图缺口、47张旧图清晰度待提升、18项统计未知；个人页统一排版仍待用户下一步决定，不能将本次确认写成全部缺口完成。完整核对见`docs/codex/worklogs/20261026-v11-publication-confirmation.md`及`docs/codex/v11-publication-confirmation-20261026.json`。
+
 ## 最新交付：封面遮挡修复与657条认人图补齐，v11（2026-10-26）
 
 用户已确认v9，要求修复作品列表封面遮挡并尽快批量补齐缺图。指定站点先发布v10封面修复，再发布v11图片增量；均保留owner-private只读权限、51团已认可设计、原图字节、稳定ID和个人记录，旧v186/main不改。分支`codex/mv-cover-and-identity-batch`，冻结`9e46361ef8aa3a112637a997443feb4dafc437ff`。

@@ -1,5 +1,7 @@
 # 当前完整报告：v11，附v9/v8历史记录
 
+用户已确认v11。2026-10-26再次核对指定正式站点部署成功，已包含全部当前已完成修改；最新接续分支为`codex/mv-cover-and-identity-batch`。本次发布核对与仓库同步见[工作记录](worklogs/20261026-v11-publication-confirmation.md)。剩余缺口仍如下记录。
+
 2026-10-26最新：作品封面遮挡已修复，新增657条认人图；累计1906条/312作品/42团，仍922条缺图、47条需提高清晰度、18项统计未知。保留当前设计、原图、稳定ID、个人记录及owner-private只读权限。
 
 当前完整结果：[v11报告](mv-cover-identity-batch-report-20261026.md)、[51团完整表](reports/20261026-v11/completion-report.html)、[922条待补CSV](reports/20261026-v11/missing-mv-identities.csv)、[验证](mv-cover-identity-batch-verification-20261026.json)及[可重复补图方法](mv-identity-batch-method-20261026.md)。

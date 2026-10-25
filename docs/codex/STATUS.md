@@ -1,5 +1,11 @@
 # 共享开发状态
 
+## 最新确认：v11已获用户确认，全部当前进度已上线（2026-10-26）
+
+用户在v11交付后回复“同意”，要求将全部当前进度发布至指定正式站点，并同步最新开发进度到仓库。已重新核对：指定站点当前最新版本为v11，部署状态succeeded；站点源HEAD与已发布源提交`c28c945987e22803b81ea266e6aaadf1ce972cb0`一致且无未提交文件。全部已完成网页修改已在站点中，本次无需重复发布相同产物。现有owner-private只读权限保持。
+
+GitHub接续分支为`codex/mv-cover-and-identity-batch`，实现`74007464dc10ef1d9b5c41d28c653fcf98044d43`，此前交接HEAD`4008b959bb84df282f856d9242a8e021d1061df7`；[PR #40](https://github.com/KAtOReNA7/idol/pull/40)。本次fetch确认无远端分叉、开工工作树干净，并同步本次用户确认及当前进度。仍有922条认人图缺口、47张旧图清晰度待提升、18项统计未知；个人页统一排版仍待用户下一步决定，不能将本次确认写成全部缺口完成。完整核对见`docs/codex/worklogs/20261026-v11-publication-confirmation.md`及`docs/codex/v11-publication-confirmation-20261026.json`。
+
 ## 最新交付：封面遮挡修复与657条认人图补齐，v11（2026-10-26）
 
 GitHub实现与完整报告已推送：`74007464dc10ef1d9b5c41d28c653fcf98044d43`；[draft PR #40](https://github.com/KAtOReNA7/idol/pull/40)，目标分支`codex/data-gap-followup`，未合并main。
@@ -12,7 +18,7 @@ GitHub实现与完整报告已推送：`74007464dc10ef1d9b5c41d28c653fcf98044d43
 
 完整结果与仍未解决项：`docs/codex/mv-cover-identity-batch-report-20261026.md`、验证JSON及同名工作日志。复用方法见`docs/codex/mv-identity-batch-method-20261026.md`；最新922条待补CSV与51团完整表在`docs/codex/reports/20261026-v11/`。18项统计未知、个人页统一排版仍保留原决定；下方v9及更早数字为历史。
 
-当前实现 `693180a4900776b30acfd41e3058b79615548246` 已推送，draft [PR #39](https://github.com/KAtOReNA7/idol/pull/39)；从 `codex/data-gap-followup` 最新HEAD接续。
+历史v9实现 `693180a4900776b30acfd41e3058b79615548246`，draft [PR #39](https://github.com/KAtOReNA7/idol/pull/39)；该接续点已被上方v11分支取代。
 
 ## 最新交付：指定站点 v9 发布、报告归档与缺口续作（2026-10-26）
 

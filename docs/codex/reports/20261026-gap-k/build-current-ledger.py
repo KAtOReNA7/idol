@@ -62,6 +62,11 @@ for filename in ['research-same-video.json','research-official.json','research-p
   assert key(row) not in research
   research[key(row)]={'file':filename,'row':row}
 assert len(research)==862 # 868 open before this batch, minus six parent-reviewed AtHeart rows.
+part2=folder/'research-profiles-part2.json'
+if part2.exists():
+ for row in load(part2)['openResults']:
+  c={'clarity_composition':'obscured_composition','member_identity_unproven':'identity_unproven'}[row['primaryCategory']]
+  research[key(row)]={'file':part2.name,'row':{**row,'primaryCategory':c,'nextSteps':[row['nextStep']],'validationStage':'官方原生视频、人工字幕及实际裁切已核；仍未达到采用条件'}}
 
 def links(value):
  if isinstance(value,dict):

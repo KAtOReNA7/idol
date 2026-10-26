@@ -13,8 +13,11 @@
   ],
   "currentAuditSha256": "24c60b043bae89fd35e6e353bfee4bb72dae57b276d21857c203b964bcfff40f",
   "release": {
-    "status": "not_yet_published",
-    "version": null
+    "status": "succeeded",
+    "version": 188,
+    "url": "https://idol-lens-private.wuke40758.chatgpt.site/",
+    "sourceCommit": "f3b295ce5822dc6ea3c9fd95869290d0a8ebe98d",
+    "deploymentId": "appgdep_6adf2a1ac5c08191a038d6d894f5dac4"
   },
   "categories": [
     {
@@ -71,9 +74,9 @@
       "source_access": 5,
       "insufficient_pixels": 77,
       "not_mv_shoot": 138,
-      "identity_unproven": 85,
-      "wrong_version": 75,
-      "obscured_composition": 11,
+      "identity_unproven": 89,
+      "wrong_version": 70,
+      "obscured_composition": 12,
       "research_incomplete": 64,
       "provenance_mismatch": 0
     },
@@ -82,9 +85,9 @@
       "source_access": 5,
       "insufficient_pixels": 77,
       "not_mv_shoot": 138,
-      "identity_unproven": 85,
-      "wrong_version": 75,
-      "obscured_composition": 11,
+      "identity_unproven": 89,
+      "wrong_version": 70,
+      "obscured_composition": 12,
       "research_incomplete": 64,
       "provenance_mismatch": 0
     }
@@ -25705,15 +25708,15 @@
       "song": "Supernatural",
       "group": "NewJeans",
       "stageName": "DANIELLE",
-      "primaryCategory": "wrong_version",
+      "primaryCategory": "obscured_composition",
       "sourcePrimaryProblem": "known_named_member_profile_target_chapter_review_pending",
       "secondaryCategories": [],
       "secondaryDetails": [],
       "status": "open",
-      "validationStage": "已记录本次来源/原件核查；尚未通过全部采用条件",
-      "problemEvidence": "具名原图开场画面已在 Part.1 官方样本出现；Part.2 是否出现这些相同镜头未穷尽检查，不能直接复用。",
+      "validationStage": "官方原生视频、人工字幕及实际裁切已核；仍未达到采用条件",
+      "problemEvidence": "Official manual subtitles30.989–32.240s say I’m Danielle Marsh / 저는 다니엘 마쉬입니다. The corresponding central microphone-holder footage after31.083s is a wide shot with a small soft face; actual540×720 crops rejected by parent.31.000s is still the preceding different shot and is not linked to this name. Ending portrait178s cannot be assigned by face or clothes.",
       "steps": [
-        "逐条核对该 videoId 的官方画面/字幕与具名原图；只在完整画面证据能证明版本时采用。"
+        "Seek a higher-native-resolution official copy of this same explicitly self-named interview sequence, or an official source that explicitly names a clear Part.2 still. Only consider a new crop after face clarity is rechecked; do not upscale1080p or move the name to the ending portrait."
       ],
       "acceptanceCriteria": [
         "保持既有 workId / videoId / memberId / ratingId，不推定出镜或增删评分关系。",
@@ -25725,17 +25728,7 @@
       ],
       "sources": [
         {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/2023/06/05/member-profile-danielle-newjeans/",
-          "label": "本次来源或明确的下一步入口",
-          "depth": "具体已执行范围见研究记录；入口不等于采用证据"
-        },
-        {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/tag/newjeans/",
-          "label": "本次来源或明确的下一步入口",
-          "depth": "具体已执行范围见研究记录；入口不等于采用证据"
-        },
-        {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/wp-content/uploads/2023/06/new-jeans-supernatural-danielle.png",
+          "url": "https://www.youtube.com/watch?v=A4S8zl50AdM",
           "label": "本次来源或明确的下一步入口",
           "depth": "具体已执行范围见研究记录；入口不等于采用证据"
         }
@@ -25743,8 +25736,8 @@
       "evidenceFile": "evidence-inventory.json",
       "previousPrimaryCategory": "research_incomplete",
       "previousProblemEvidence": "检索或来源正文待补；已找到该成员资料页入口，目标歌曲章节尚未完成逐图审核。",
-      "detailedProblem": "selected_image_part1_not_proven_in_target_part2",
-      "researchEvidenceFile": "research-profiles.json",
+      "detailedProblem": "obscured_composition",
+      "researchEvidenceFile": "research-profiles-part2.json",
       "researchExhausted": false
     },
     {
@@ -25756,15 +25749,15 @@
       "song": "Supernatural",
       "group": "NewJeans",
       "stageName": "HAERIN",
-      "primaryCategory": "wrong_version",
+      "primaryCategory": "identity_unproven",
       "sourcePrimaryProblem": "known_named_member_profile_target_chapter_review_pending",
       "secondaryCategories": [],
       "secondaryDetails": [],
       "status": "open",
-      "validationStage": "已记录本次来源/原件核查；尚未通过全部采用条件",
-      "problemEvidence": "具名原图开场画面已在 Part.1 官方样本出现；Part.2 是否出现这些相同镜头未穷尽检查，不能直接复用。",
+      "validationStage": "官方原生视频、人工字幕及实际裁切已核；仍未达到采用条件",
+      "problemEvidence": "Part.2 ending has clear portrait-like footage but no unique textual attribution to HAERIN; both complete official manual subtitle tracks contain no HAERIN name. Similar Part.1 styling and different expressions do not establish a same-frame mapping.",
       "steps": [
-        "逐条核对该 videoId 的官方画面/字幕与具名原图；只在完整画面证据能证明版本时采用。"
+        "Seek official Part.2-specific individually named stills or a source with explicit HAERIN subtitle/frame attribution; alternatively prove the entire visual frame/continuous clip is the same as an officially named Part.1 sequence, excluding face-recognition or clothing-only matching. Do not substitute Part.1 portraits."
       ],
       "acceptanceCriteria": [
         "保持既有 workId / videoId / memberId / ratingId，不推定出镜或增删评分关系。",
@@ -25776,17 +25769,7 @@
       ],
       "sources": [
         {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/2022/08/05/member-profile-haerin-newjeans/",
-          "label": "本次来源或明确的下一步入口",
-          "depth": "具体已执行范围见研究记录；入口不等于采用证据"
-        },
-        {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/tag/newjeans/",
-          "label": "本次来源或明确的下一步入口",
-          "depth": "具体已执行范围见研究记录；入口不等于采用证据"
-        },
-        {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/wp-content/uploads/2022/08/new-jeans-supernatural-haerin.png",
+          "url": "https://www.youtube.com/watch?v=A4S8zl50AdM",
           "label": "本次来源或明确的下一步入口",
           "depth": "具体已执行范围见研究记录；入口不等于采用证据"
         }
@@ -25794,8 +25777,8 @@
       "evidenceFile": "evidence-inventory.json",
       "previousPrimaryCategory": "research_incomplete",
       "previousProblemEvidence": "检索或来源正文待补；已找到该成员资料页入口，目标歌曲章节尚未完成逐图审核。",
-      "detailedProblem": "selected_image_part1_not_proven_in_target_part2",
-      "researchEvidenceFile": "research-profiles.json",
+      "detailedProblem": "identity_unproven",
+      "researchEvidenceFile": "research-profiles-part2.json",
       "researchExhausted": false
     },
     {
@@ -25807,15 +25790,15 @@
       "song": "Supernatural",
       "group": "NewJeans",
       "stageName": "HANNI",
-      "primaryCategory": "wrong_version",
+      "primaryCategory": "identity_unproven",
       "sourcePrimaryProblem": "known_named_member_profile_target_chapter_review_pending",
       "secondaryCategories": [],
       "secondaryDetails": [],
       "status": "open",
-      "validationStage": "已记录本次来源/原件核查；尚未通过全部采用条件",
-      "problemEvidence": "具名原图开场画面已在 Part.1 官方样本出现；Part.2 是否出现这些相同镜头未穷尽检查，不能直接复用。",
+      "validationStage": "官方原生视频、人工字幕及实际裁切已核；仍未达到采用条件",
+      "problemEvidence": "Part.2 ending has clear portrait-like footage but no unique textual attribution to HANNI; both complete official manual subtitle tracks contain no HANNI name. Similar Part.1 styling and different expressions do not establish a same-frame mapping.",
       "steps": [
-        "逐条核对该 videoId 的官方画面/字幕与具名原图；只在完整画面证据能证明版本时采用。"
+        "Seek official Part.2-specific individually named stills or a source with explicit HANNI subtitle/frame attribution; alternatively prove the entire visual frame/continuous clip is the same as an officially named Part.1 sequence, excluding face-recognition or clothing-only matching. Do not substitute Part.1 portraits."
       ],
       "acceptanceCriteria": [
         "保持既有 workId / videoId / memberId / ratingId，不推定出镜或增删评分关系。",
@@ -25827,12 +25810,7 @@
       ],
       "sources": [
         {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/2022/08/05/member-profile-hanni-newjeans/",
-          "label": "本次来源或明确的下一步入口",
-          "depth": "具体已执行范围见研究记录；入口不等于采用证据"
-        },
-        {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/wp-content/uploads/2022/08/new-jeans-supernatural-hanni.png",
+          "url": "https://www.youtube.com/watch?v=A4S8zl50AdM",
           "label": "本次来源或明确的下一步入口",
           "depth": "具体已执行范围见研究记录；入口不等于采用证据"
         }
@@ -25840,8 +25818,8 @@
       "evidenceFile": "evidence-inventory.json",
       "previousPrimaryCategory": "research_incomplete",
       "previousProblemEvidence": "检索或来源正文待补；已找到该成员资料页入口，目标歌曲章节尚未完成逐图审核。",
-      "detailedProblem": "selected_image_part1_not_proven_in_target_part2",
-      "researchEvidenceFile": "research-profiles.json",
+      "detailedProblem": "identity_unproven",
+      "researchEvidenceFile": "research-profiles-part2.json",
       "researchExhausted": false
     },
     {
@@ -25853,15 +25831,15 @@
       "song": "Supernatural",
       "group": "NewJeans",
       "stageName": "HYEIN",
-      "primaryCategory": "wrong_version",
+      "primaryCategory": "identity_unproven",
       "sourcePrimaryProblem": "known_named_member_profile_target_chapter_review_pending",
       "secondaryCategories": [],
       "secondaryDetails": [],
       "status": "open",
-      "validationStage": "已记录本次来源/原件核查；尚未通过全部采用条件",
-      "problemEvidence": "具名原图开场画面已在 Part.1 官方样本出现；Part.2 是否出现这些相同镜头未穷尽检查，不能直接复用。",
+      "validationStage": "官方原生视频、人工字幕及实际裁切已核；仍未达到采用条件",
+      "problemEvidence": "Part.2 ending has clear portrait-like footage but no unique textual attribution to HYEIN; both complete official manual subtitle tracks contain no HYEIN name. Similar Part.1 styling and different expressions do not establish a same-frame mapping.",
       "steps": [
-        "逐条核对该 videoId 的官方画面/字幕与具名原图；只在完整画面证据能证明版本时采用。"
+        "Seek official Part.2-specific individually named stills or a source with explicit HYEIN subtitle/frame attribution; alternatively prove the entire visual frame/continuous clip is the same as an officially named Part.1 sequence, excluding face-recognition or clothing-only matching. Do not substitute Part.1 portraits."
       ],
       "acceptanceCriteria": [
         "保持既有 workId / videoId / memberId / ratingId，不推定出镜或增删评分关系。",
@@ -25873,17 +25851,7 @@
       ],
       "sources": [
         {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/2022/08/05/member-profile-hyein-newjeans/",
-          "label": "本次来源或明确的下一步入口",
-          "depth": "具体已执行范围见研究记录；入口不等于采用证据"
-        },
-        {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/tag/newjeans/",
-          "label": "本次来源或明确的下一步入口",
-          "depth": "具体已执行范围见研究记录；入口不等于采用证据"
-        },
-        {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/wp-content/uploads/2022/08/new-jeans-supernatural-hyein.png",
+          "url": "https://www.youtube.com/watch?v=A4S8zl50AdM",
           "label": "本次来源或明确的下一步入口",
           "depth": "具体已执行范围见研究记录；入口不等于采用证据"
         }
@@ -25891,8 +25859,8 @@
       "evidenceFile": "evidence-inventory.json",
       "previousPrimaryCategory": "research_incomplete",
       "previousProblemEvidence": "检索或来源正文待补；已找到该成员资料页入口，目标歌曲章节尚未完成逐图审核。",
-      "detailedProblem": "selected_image_part1_not_proven_in_target_part2",
-      "researchEvidenceFile": "research-profiles.json",
+      "detailedProblem": "identity_unproven",
+      "researchEvidenceFile": "research-profiles-part2.json",
       "researchExhausted": false
     },
     {
@@ -25904,15 +25872,15 @@
       "song": "Supernatural",
       "group": "NewJeans",
       "stageName": "MINJI",
-      "primaryCategory": "wrong_version",
+      "primaryCategory": "identity_unproven",
       "sourcePrimaryProblem": "known_named_member_profile_target_chapter_review_pending",
       "secondaryCategories": [],
       "secondaryDetails": [],
       "status": "open",
-      "validationStage": "已记录本次来源/原件核查；尚未通过全部采用条件",
-      "problemEvidence": "具名原图开场画面已在 Part.1 官方样本出现；Part.2 是否出现这些相同镜头未穷尽检查，不能直接复用。",
+      "validationStage": "官方原生视频、人工字幕及实际裁切已核；仍未达到采用条件",
+      "problemEvidence": "Part.2 ending has clear portrait-like footage but no unique textual attribution to MINJI; both complete official manual subtitle tracks contain no MINJI name. Similar Part.1 styling and different expressions do not establish a same-frame mapping.",
       "steps": [
-        "逐条核对该 videoId 的官方画面/字幕与具名原图；只在完整画面证据能证明版本时采用。"
+        "Seek official Part.2-specific individually named stills or a source with explicit MINJI subtitle/frame attribution; alternatively prove the entire visual frame/continuous clip is the same as an officially named Part.1 sequence, excluding face-recognition or clothing-only matching. Do not substitute Part.1 portraits."
       ],
       "acceptanceCriteria": [
         "保持既有 workId / videoId / memberId / ratingId，不推定出镜或增删评分关系。",
@@ -25924,17 +25892,7 @@
       ],
       "sources": [
         {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/2022/08/05/member-profile-minji-newjeans/",
-          "label": "本次来源或明确的下一步入口",
-          "depth": "具体已执行范围见研究记录；入口不等于采用证据"
-        },
-        {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/tag/newjeans/",
-          "label": "本次来源或明确的下一步入口",
-          "depth": "具体已执行范围见研究记录；入口不等于采用证据"
-        },
-        {
-          "url": "https://allaboutkpopgirlgroups.wordpress.com/wp-content/uploads/2022/08/new-jeans-supernatural-minji.png",
+          "url": "https://www.youtube.com/watch?v=A4S8zl50AdM",
           "label": "本次来源或明确的下一步入口",
           "depth": "具体已执行范围见研究记录；入口不等于采用证据"
         }
@@ -25942,8 +25900,8 @@
       "evidenceFile": "evidence-inventory.json",
       "previousPrimaryCategory": "research_incomplete",
       "previousProblemEvidence": "检索或来源正文待补；已找到该成员资料页入口，目标歌曲章节尚未完成逐图审核。",
-      "detailedProblem": "selected_image_part1_not_proven_in_target_part2",
-      "researchEvidenceFile": "research-profiles.json",
+      "detailedProblem": "identity_unproven",
+      "researchEvidenceFile": "research-profiles-part2.json",
       "researchExhausted": false
     },
     {

@@ -3,7 +3,7 @@
 import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const key=p=>[p.workId,p.videoId,p.memberId].join(':');
-export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghi]-20261026)\/identities\/[\w.-]+$/;
+export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghij]-20261026)\/identities\/[\w.-]+$/;
 export function planIdentityBatch(audit,deltas,verifyOriginal){
  const result=structuredClone(audit),keys=new Set(result.identityImages.map(key)),admitted=[];
  for(const delta of deltas)for(const p of delta.identityImages){

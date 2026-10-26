@@ -3,7 +3,7 @@
 import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const key=p=>[p.workId,p.videoId,p.memberId].join(':');
-export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcde]-20261026)\/identities\/[\w.-]+$/;
+export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefg]-20261026)\/identities\/[\w.-]+$/;
 export function planIdentityBatch(audit,deltas,verifyOriginal){
  const result=structuredClone(audit),keys=new Set(result.identityImages.map(key)),admitted=[];
  for(const delta of deltas)for(const p of delta.identityImages){
@@ -15,6 +15,9 @@ export function planIdentityBatch(audit,deltas,verifyOriginal){
   if(!p.label||!p.sourcePageUrl?.startsWith('https://')||p.qualityTier!=='source_resolution')throw Error('Missing source or candidate below this batch quality threshold');
   if(!Number.isSafeInteger(p.width)||!Number.isSafeInteger(p.height)||p.width<=0||p.height<=0)throw Error('Invalid original dimensions');
   const c=p.sourceCrop;if(c&&(![c.x,c.y,c.width,c.height].every(Number.isFinite)||c.x<0||c.y<0||c.width<=0||c.height<=0||c.x+c.width>p.width||c.y+c.height>p.height))throw Error('Crop outside original');
+  // The visible 3:4 frame, not the source_resolution label or full landscape
+  // width, determines whether the original meets the reviewed pixel threshold.
+  if(Math.min(c?.width??p.width,(c?.height??p.height)*3/4)<540)throw Error('Effective 3:4 crop below 540px quality threshold');
   verifyOriginal(p);keys.add(key(p));admitted.push(p);result.identityImages.push(p);w.publicIdentityCount++;
   w.missingIdentityRelationships=w.missingIdentityRelationships.filter(m=>m.memberId!==p.memberId);
  }
@@ -32,7 +35,9 @@ async function main(){
  const deltas=files.map(file=>{const d=JSON.parse(fs.readFileSync(file,'utf8'));if(d.baseAuditSha256&&d.baseAuditSha256!==baseSha)throw Error('Frozen audit has changed: '+file);return d;});
  const {imageSize}=await import('image-size');
  const {audit,admitted}=planIdentityBatch(JSON.parse(bytes),deltas,p=>{const b=fs.readFileSync(path.join(root,'public',p.src));if(b.length!==p.byteLength||createHash('sha256').update(b).digest('hex')!==p.sha256)throw Error('Original SHA/bytes changed: '+p.src);const dims=imageSize(b);if(dims.width!==p.width||dims.height!==p.height)throw Error('Original dimensions differ: '+p.src);});
- audit.checkedAt='2026-10-26';audit.batch20261026={sources:files.map(p=>path.relative(path.resolve(root,'../..'),p).replaceAll('\\','/')),addedBindings:admitted.length,existingRelationshipsOnly:true,originalBytesPreserved:true};
+ // Retain the previous batch receipt when a later reviewed batch is applied.
+ audit.batchHistory??=[];if(audit.batch20261026)audit.batchHistory.push(audit.batch20261026);
+ audit.checkedAt='2026-10-26';audit.batch20261026={sources:files.map(p=>path.relative(path.resolve(root,'../..'),p).replaceAll('\\','/')),baseAuditSha256:baseSha,addedBindings:admitted.length,existingRelationshipsOnly:true,originalBytesPreserved:true};
  if(apply)fs.writeFileSync(auditPath,JSON.stringify(audit,null,2)+'\n');
  console.log(JSON.stringify({applied:apply,added:admitted.length,summary:audit.summary}));
 }

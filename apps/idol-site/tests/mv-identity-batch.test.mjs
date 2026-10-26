@@ -7,7 +7,17 @@ test('same-song alternate video or an unbound member cannot receive the portrait
 test('one failed original prevents partial application; duplicated tuples and traversal are rejected',()=>{const source=fixture(),before=structuredClone(source);assert.throws(()=>planIdentityBatch(source,[{identityImages:[row]}],()=>{throw Error('Original SHA changed');}),/Original SHA/);assert.deepEqual(source,before);assert.throws(()=>planIdentityBatch(source,[{identityImages:[row,row]}],()=>{}),/Duplicate/);assert.throws(()=>planIdentityBatch(source,[{identityImages:[{...row,src:'/artist/mv-identity-batch-a-20261026/identities/../test.jpg'}]}],()=>{}),/Invalid public/);});
 test('pending concept provenance and out-of-frame crops cannot silently enter the public runtime',()=>{assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...row,evidenceLevel:'concept-photo-pending'}]}],()=>{}),/Unreviewed provenance/);assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...row,sourceCrop:{x:100,y:0,width:600,height:800}}]}],()=>{}),/Crop outside original/);});
 test('the batch cannot reduce missing counts by admitting card-only low-resolution candidates',()=>{assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...row,qualityTier:'card_only'}]}],()=>{}),/quality threshold/);});
-test('only the reviewed D/E directories extend the original path boundary',()=>{
- for(const batch of ['d','e'])assert.equal(planIdentityBatch(fixture(),[{identityImages:[{...row,src:`/artist/mv-identity-batch-${batch}-20261026/identities/test.jpg`}]}],()=>{}).admitted.length,1);
- for(const src of ['/artist/mv-identity-batch-f-20261026/identities/test.jpg','/artist/mv-identity-batch-d-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261026/identities/nested/test.jpg','/artist/private/identities/test.jpg'])assert.equal(publicIdentityPath.test(src),false,src);
+test('only the reviewed D/E/F/G directories extend the original path boundary',()=>{
+ for(const batch of ['d','e','f','g'])assert.equal(planIdentityBatch(fixture(),[{identityImages:[{...row,src:`/artist/mv-identity-batch-${batch}-20261026/identities/test.jpg`}]}],()=>{}).admitted.length,1);
+ for(const src of ['/artist/mv-identity-batch-h-20261026/identities/test.jpg','/artist/mv-identity-batch-d-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261026/identities/nested/test.jpg','/artist/private/identities/test.jpg'])assert.equal(publicIdentityPath.test(src),false,src);
+});
+test('a high-resolution label cannot admit a small visible crop from a wide original',()=>{
+ for(const change of [{width:736,height:491,sourceCrop:undefined},{width:539,height:1000,sourceCrop:undefined},{width:1200,height:1600,sourceCrop:{x:0,y:0,width:800,height:719}}]){
+  const source=fixture(),before=structuredClone(source);
+  assert.throws(()=>planIdentityBatch(source,[{identityImages:[{...row,...change}]}],()=>{}),/540px quality threshold/);
+  assert.deepEqual(source,before);
+ }
+});
+test('the exact 540px visible-width boundary is accepted without upscaling',()=>{
+ assert.equal(planIdentityBatch(fixture(),[{identityImages:[{...row,width:1280,height:720,sourceCrop:undefined}]}],()=>{}).admitted.length,1);
 });

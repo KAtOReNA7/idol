@@ -1,0 +1,100 @@
+{
+  "checkedAt": "2026-10-26T03:49:13.958Z",
+  "status": "candidate_verified_upload_blocked",
+  "branch": "codex/mv-identity-quality-followup",
+  "pullRequest": 41,
+  "baseCommit": "6c409262b3172f90fb561cf1508b48250334d11b",
+  "implementationCommit": "970addc7ef30794ff800d02acedd965d093f63c1",
+  "totals": {
+    "bindings": 1943,
+    "works": 321,
+    "groups": 44,
+    "missing": 885,
+    "cardOnly": 43,
+    "unknownStatistics": 18,
+    "covers": 628
+  },
+  "increment": {
+    "newBindings": 18,
+    "newOriginalBytes": 8081921,
+    "qualityPromotions": 0
+  },
+  "checks": {
+    "focusedTests": 25,
+    "typecheck": "passed",
+    "productionBuild": "passed with existing large-chunk and plugin-timing warnings",
+    "runtimeProjection": "passed",
+    "localNew": {
+      "layouts": 18,
+      "portraitChecks": 54,
+      "originalFlows": 24
+    },
+    "localRetained": {
+      "layouts": 18,
+      "portraitChecks": 69,
+      "originalFlows": 29
+    },
+    "viewports": [
+      320,
+      390,
+      1440
+    ],
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "pageErrors": 0,
+    "nonReadRequests": 0,
+    "remoteNewOriginals": 18,
+    "sourceCssRoutes": 52,
+    "sameOriginOriginals": 735,
+    "archiveStaticFiles": 859
+  },
+  "preservation": {
+    "approvedDesign": true,
+    "personalSnapshotAndData": true,
+    "idsAndRelationships": true,
+    "memberScoringPolicy": true,
+    "ownerOnlyReadOnly": true,
+    "oldSelectedAndAlternateImages": true,
+    "previousBatchReceipt": true
+  },
+  "research": {
+    "statisticsFieldsInvestigated": 18,
+    "fieldsWithRelevantSourceBody": 2,
+    "fieldsSearchOnly": 16,
+    "newQualifiedValues": 0,
+    "qualityCandidatePending": 1
+  },
+  "publication": {
+    "projectId": "appgprj_6add2704bc6c81918d3e0e2f13130422",
+    "url": "https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/",
+    "liveVersion": 11,
+    "liveVersionId": "appgprj_6add2704bc6c81918d3e0e2f13130422~appgver_fc0f8a37c5f481919dd2cae7fba98ae4",
+    "liveDeploymentId": "appgdep_6ade4ada7ef08191b35e4a0adf0a4b6d",
+    "liveSourceCommit": "c28c945987e22803b81ea266e6aaadf1ce972cb0",
+    "candidateSourceCommit": "b57ea40acff8035bb02916868722dd14bab9e9cc",
+    "candidateArchiveBytes": 148157598,
+    "candidateArchiveSha256": "a07be14962b89df3cbb2ad4c63285560503952c74350c144acdf329c56bed192",
+    "candidateSavedOrDeployed": false,
+    "attempt": {
+      "testedSourceCommit": "e709d347e61bb867e41c441a961e9266c08bd824",
+      "archiveBytes": 148157406,
+      "elapsedMs": 300011,
+      "host": "sdmntprsouthcentralus.oaiusercontent.com",
+      "requestId": "f8c4a417-c66f-4051-86ed-e8ad60d30b4f",
+      "result": "blob transport timeout; no version or deployment id"
+    },
+    "afterAttemptLatestVersion": 11,
+    "afterNewSourcePushLatestVersion": 11,
+    "rootCause": "unknown; root-domain connectivity succeeds but native archive upload times out",
+    "automaticRetry": false
+  },
+  "unverified": [
+    "candidate online rendering (not deployed)",
+    "real personal save",
+    "full video playback",
+    "native 80%/125% zoom",
+    "user IAB session",
+    "new Figma sync",
+    "full repository suite"
+  ]
+}

@@ -29,9 +29,17 @@ F/G从同一冻结审计SHA `31b9fda0398a1679b3c17a60fb1916c44bed77fe1e5572d3807
 
 上轮两次westus3和本轮一次southcentralus上传均超时，根因仍未知。没有改变代理、关闭TLS、另建站点或省略可用archive。停止重复失败路径；保留同项目可恢复候选，等待上传环境实际恢复后续发。
 
-## 验证进度
+## 验证结果
 
-25项专项、类型检查与正式构建通过；保留既有大chunk/插件耗时提示。原图字节/尺寸与最终3:4联系表已复核。最终浏览器及远端原图核对进行中，完成后在本报告更新，不继承旧版本结论。
+25项专项、类型检查、运行投影check与正式构建通过；保留既有大chunk/插件耗时提示。
+
+Windows同机HTTP200、既有Playwright与系统Chrome155；Browser plugin not available。验证路径为具体作品→具名图→原图解码→Tab/Shift+Tab/Escape→焦点回归→返回作品库。320/390/1440三宽：本轮6作品18布局/54图片检查/24原图流程；上批6作品在最终同一构建重新检查18布局/69图片/29流程。合计36布局、123图片检查、53原图流程，页面身份/非空白/无错误层/无横向溢出通过；console error/warning、pageerror、非读取请求均0。实际查看本轮桌面和手机截图。
+
+18新原图远端HTTP/类型/长度/SHA/完整解码全部通过；735同站原文件字节与SHA通过。52路由CSS仅不可变公共资源引用/行尾规范化后一致，bundle实际公开payload深比仅52个loadedAt构建时间戳变化。最终TAR的859静态文件逐份与源输出SHA比较通过，无越界路径/符号链接。
+
+[验证摘要](mv-publication-recovery-verification-20261026.json) · [新增浏览器](reports/20261026-recovery/local-browser.json) · [上批回归](reports/20261026-recovery/retained-browser.json) · [远端原图](reports/20261026-recovery/remote-originals.json) · [发布预检](reports/20261026-recovery/publication-preflight.json) · [TAR验证](reports/20261026-recovery/archive-verification.json)
+
+当前公开原图固定提交970addc7ef30794ff800d02acedd965d093f63c1；原生helper已将同一Sites候选推送为b57ea40acff8035bb02916868722dd14bab9e9cc。静态163,158,966 bytes/859文件；gzip包148,157,598 bytes，SHA256 a07be14962b89df3cbb2ad4c63285560503952c74350c144acdf329c56bed192。源工作区干净，推送后再次核对最新保存仍v11。新候选没有重复上传，未保存/部署。恢复时按[NEXT-COMPUTER-HANDOFF](NEXT-COMPUTER-HANDOFF.md)使用最新候选。
 
 ## 仍待完成
 
@@ -40,3 +48,8 @@ F/G从同一冻结审计SHA `31b9fda0398a1679b3c17a60fb1916c44bed77fe1e5572d3807
 ## 统计与旧图研究边界
 
 18项均有本轮针对性检索记录，其中2项读取相关正文、16项仍仅检索层；0项合格新数值，不能称18项事实全部核实。[逐项JSON](reports/20261026-recovery/statistics-followup-next-20261026.json)与[来源/排除报告](reports/20261026-recovery/statistics-quality-followup-next-20261026.md)保留范围。单曲一位0不能当团体累计0，商品存在/售罄不能推定销量，社媒抓取日期不能替代计数日期。KiiiKiii具名转刊旧图候选仅pending，未自动把43减为42。
+
+## 最终画面
+
+![KILLA手机原图卡片](reports/20261026-recovery/local-killa-390.png)
+![MACARONI CHEESE桌面原图卡片](reports/20261026-recovery/local-macaroni-1440.png)

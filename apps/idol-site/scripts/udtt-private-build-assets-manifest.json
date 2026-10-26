@@ -182,20 +182,20 @@
       "sha256": "d3aeabb883545770437dafd4c6abaade76e2321b57db3d64d2a5f3c18086ebbc"
     },
     "lib/idol/udtt-native/host.mjs": {
-      "bytes": 19251,
-      "sha256": "45d27a32d5343c3a68d3d8d8fc2e528a52b14fd5bbef8e91cfdb35a2feb626bb"
+      "bytes": 19415,
+      "sha256": "0e98355caf28fa6f7aaa5618218509232b9d453130899c56e53656c48d263612"
     },
     "lib/idol/udtt-native/image-recovery.mjs": {
       "bytes": 2272,
       "sha256": "083fa59d32bda391a40d3f0f2b04f3b5089b863500d6ec4331d65cf737c4e493"
     },
     "lib/idol/udtt-native/model.mjs": {
-      "bytes": 5330,
-      "sha256": "9f169bfbbc5fc787b71989e9c6bad869a742b62f146fdf1d3d87c0a049290ce1"
+      "bytes": 5418,
+      "sha256": "927108cb2d5cc54c613655aa05746334f4632cfe3a6a80148d3736b788b631ca"
     },
     "lib/idol/udtt-native/presentation.mjs": {
-      "bytes": 15108,
-      "sha256": "8b9d7d57cf3f143b775c0b362c7d4c83ca0ec4b7355eddda0e0fe9f6d8f99eef"
+      "bytes": 15803,
+      "sha256": "a94675dd27ec92879cf8fa3f775221e383cc69e768b59388690b6ea8a1110725"
     }
   },
   "builtContractCarriers": {
@@ -207,5 +207,45 @@
       "bytes": 109834,
       "sha256": "6766b04e3bc3b2dccb6d09c3fe228d4c3ab1f09fdf58d1ff90b6a8fb2c012acc"
     }
+  },
+  "sourceGuardReview20261026": {
+    "baselineApplicationCommit": "0635659bf2dc3ec18722b187d68f4ee7f9c2a841",
+    "approvedChangeCommit": "d620ade",
+    "scope": "Three accepted public presentation/router-normalization changes only; private transport, identities, save checks, fixed nine originals, two shared posters and compiled contract pins unchanged.",
+    "changes": [
+      {
+        "path": "lib/idol/udtt-native/host.mjs",
+        "previous": {
+          "bytes": 19251,
+          "sha256": "45d27a32d5343c3a68d3d8d8fc2e528a52b14fd5bbef8e91cfdb35a2feb626bb"
+        },
+        "reviewed": {
+          "bytes": 19415,
+          "sha256": "0e98355caf28fa6f7aaa5618218509232b9d453130899c56e53656c48d263612"
+        }
+      },
+      {
+        "path": "lib/idol/udtt-native/model.mjs",
+        "previous": {
+          "bytes": 5330,
+          "sha256": "9f169bfbbc5fc787b71989e9c6bad869a742b62f146fdf1d3d87c0a049290ce1"
+        },
+        "reviewed": {
+          "bytes": 5418,
+          "sha256": "927108cb2d5cc54c613655aa05746334f4632cfe3a6a80148d3736b788b631ca"
+        }
+      },
+      {
+        "path": "lib/idol/udtt-native/presentation.mjs",
+        "previous": {
+          "bytes": 15108,
+          "sha256": "8b9d7d57cf3f143b775c0b362c7d4c83ca0ec4b7355eddda0e0fe9f6d8f99eef"
+        },
+        "reviewed": {
+          "bytes": 15803,
+          "sha256": "a94675dd27ec92879cf8fa3f775221e383cc69e768b59388690b6ea8a1110725"
+        }
+      }
+    ]
   }
 }

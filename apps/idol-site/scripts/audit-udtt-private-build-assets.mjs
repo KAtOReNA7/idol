@@ -15,6 +15,7 @@ function files(dir){if(!fs.existsSync(dir))return [];if(fs.lstatSync(dir).isSymb
 // adjacent unescaped literal concatenations; unknown namespace assembly fails.
 const normalize=text=>{for(let i=0;i<32;i++){const next=text.replace(/(["'`])([^"'`\\\r\n]*)\1\s*\+\s*(["'`])([^"'`\\\r\n]*)\3/g,(_,q,a,r,b)=>'`'+a+b+'`');if(next===text)return text;text=next;}throw new Error('UDTT excessive literal assembly requires review');};
 const same=(a,b)=>JSON.stringify([...a].sort())===JSON.stringify([...b].sort());
+const relativePath=(root,file)=>path.relative(root,file).split(path.sep).join('/');
 function verify(p,e){if(!e||!Number.isSafeInteger(e.bytes)||e.bytes<=0||!/^[a-f0-9]{64}$/.test(e.sha256)||!fs.existsSync(p)||fs.lstatSync(p).isSymbolicLink()||!fs.statSync(p).isFile()||fs.statSync(p).size!==e.bytes||hash(p)!==e.sha256)throw new Error(`UDTT integrity mismatch: ${p}`);}
 export function auditUdttPrivateBuildAssets(root,manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'))){
  root=path.resolve(root);if(fs.lstatSync(root).isSymbolicLink())throw new Error('UDTT symlink root');
@@ -26,13 +27,13 @@ export function auditUdttPrivateBuildAssets(root,manifest=JSON.parse(fs.readFile
  if(!same(manifest.files.map(e=>e.path),eligible.map(e=>e.targetUrl))||!same(manifest.retainedShared.map(e=>e.path),retained.map(e=>e.targetUrl)))throw new Error('UDTT fixed asset scope changed');
  const guardNames=Object.keys(manifest.runtimeGuards??{});
  if(!same(guardNames,requiredGuards))throw new Error('UDTT renderer guard inventory changed');
- for(const dir of ['lib/idol/design-review/sol15-runtime','lib/idol/udtt-native'])if(!same(files(path.join(root,dir)).map(p=>path.relative(root,p)),requiredGuards.filter(p=>p.startsWith(dir+'/'))))throw new Error('UDTT runtime source inventory changed: '+dir);
+ for(const dir of ['lib/idol/design-review/sol15-runtime','lib/idol/udtt-native'])if(!same(files(path.join(root,dir)).map(p=>relativePath(root,p)),requiredGuards.filter(p=>p.startsWith(dir+'/'))))throw new Error('UDTT runtime source inventory changed: '+dir);
  if(!guardNames.includes(contractPath)||!guardNames.includes('components/design-review/udtt-review.tsx')||!guardNames.includes('lib/idol/design-review/sol15-runtime/host.mjs')||!guardNames.includes('lib/idol/design-review/sol15-runtime/private-images.mjs'))throw new Error('UDTT required renderer guards missing');
  for(const name of guardNames)verify(path.join(root,name),manifest.runtimeGuards[name]);
  for(const entry of fs.readdirSync(root,{withFileTypes:true}))if(entry.isSymbolicLink()&&ext.test(entry.name))throw new Error('UDTT root runtime symlink: '+entry.name);
  const sourceFiles=[...fs.readdirSync(root,{withFileTypes:true}).filter(e=>e.isFile()).map(e=>path.join(root,e.name)),...['app','components','lib','hooks','data','db','public','vendor'].flatMap(d=>files(path.join(root,d)))].filter(p=>ext.test(p));
  const urls=eligible.map(e=>e.targetUrl);
- for(const p of sourceFiles){const relative=path.relative(root,p),text=normalize(fs.readFileSync(p,'utf8'));
+ for(const p of sourceFiles){const relative=relativePath(root,p),text=normalize(fs.readFileSync(p,'utf8'));
   if(!guardNames.includes(relative)&&(text.includes('sol15-runtime')||eligible.some(e=>text.includes(e.sha256))||text.includes('/design-review/sol15/assets/'))) {
    // Other reviewed group assets and the two retained poster URLs are unrelated.
    if(text.includes('sol15-runtime')||eligible.some(e=>text.includes(e.sha256))||text.replace(/\/design-review\/sol15\/assets\/[a-f0-9]{64}\.(?:jpg|webp|png)/g,'').includes('/design-review/sol15/assets/'))throw new Error(`UDTT unknown source consumer: ${relative}`);
@@ -49,7 +50,7 @@ export function auditUdttPrivateBuildAssets(root,manifest=JSON.parse(fs.readFile
   if(text.replace(/\/design-review\/sol15\/assets\/[a-f0-9]{64}\.(?:jpg|webp|png)/g,'').includes('/design-review/sol15/assets/'))throw new Error(`UDTT dynamic built static consumer: ${p}`);
   // Exempt metadata only in the exact audited generated contract carriers. A changed
   // build carrier requires re-audit; no other targetUrl object is exempt.
-  const carrier=builtContractCarriers[path.relative(root,p)];
+  const carrier=builtContractCarriers[relativePath(root,p)];
   if(carrier)verify(p,carrier);
   for(const url of urls){const escaped=url.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');if(carrier)text=text.replace(new RegExp('(?:"targetUrl"|targetUrl)\\s*:\\s*(["\'`])'+escaped+'\\1','g'),'targetUrl:null');if(text.includes(url))throw new Error(`UDTT built static consumer: ${p}`);}
  }

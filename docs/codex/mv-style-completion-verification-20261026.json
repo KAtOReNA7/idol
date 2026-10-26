@@ -1,0 +1,189 @@
+{
+  "date": "2026-10-26",
+  "branch": "codex/mv-identity-quality-followup",
+  "pullRequest": "https://github.com/KAtOReNA7/idol/pull/41",
+  "baseCommit": "4e7c13adb7cad420081c01ad81c460fa720307c7",
+  "implementationCommit": "09005390a7aa887e618a74dbff31ab108c634a07",
+  "status": "implemented_and_locally_verified_publication_blocked",
+  "userConfirmedFollowerDisplay": {
+    "unitAtLeast10000": "integer 万 rounded",
+    "unitBelow10000": "integer 人 rounded",
+    "hideHomepageXAtZeroOrUnknown": true,
+    "rawSourcePrecisionPreserved": true
+  },
+  "coverage": {
+    "catalogGroups": 51,
+    "catalogWorks": 605,
+    "editorialExtraVideoIds": 23,
+    "covers": 628,
+    "coverBytes": 73433666,
+    "identitySourceRecords": 2058,
+    "identityImages": 1957,
+    "identityWorks": 325,
+    "identityGroups": 44,
+    "identityBytes": 1104511671,
+    "identityUniqueFiles": 1950,
+    "cardOnlyImages": 43,
+    "borderMetadataComplete": true,
+    "borderMetadataReview": "Prior reviews preserved; every admitted batch image reviewed at actual 3:4 display. Original-byte, dimension and crop validation required; see batch source reports for composition changes and excluded candidates.",
+    "evidenceLevels": {
+      "previously_reviewed_exact_original": 182,
+      "source_named_unique_mv_chapter": 1158,
+      "source_named_exact_mv_page": 532,
+      "official_exact_mv_shoot_provenance": 12,
+      "official_named_member_video_thumbnail": 6,
+      "source_named_explicit_version_mv_chapter": 1,
+      "official_named_mv_shoot_unique_version": 66
+    },
+    "coverSourceCrops": 39,
+    "identitySourceCrops": 1047,
+    "worksWithoutPublicIdentity": 280,
+    "worksWithNoRelationships": 133,
+    "missingRelationshipImages": 871,
+    "displayCropAdjustments": 323,
+    "actual3By4ContactSheetsReviewed": 55
+  },
+  "thisIteration": {
+    "newIdentityBindings": 14,
+    "newOriginalBytes": 5632615,
+    "newPublicVideoDates": 20,
+    "publicProductionCreditWorks": 4,
+    "oldLowQualityImprovements": 0,
+    "newKnownStatisticValues": 0
+  },
+  "validation": {
+    "targetedTests": 52,
+    "targetedTestsPassed": 52,
+    "editorFlowMockRegression": "passed; no real write",
+    "typecheck": "passed",
+    "productionBuild": "passed with existing bundle/classification warnings",
+    "projectionAndThemeTokenChecks": "passed",
+    "browser": "Local Windows Playwright with existing system Chrome 155.0.8059.85; Browser plugin unavailable",
+    "widths": [
+      320,
+      390,
+      1440
+    ],
+    "workLayouts": 1815,
+    "realWorkIds": 605,
+    "groupsWithRealWorks": 50,
+    "groupThemeDefinitions": 51,
+    "witchxRealWorks": 0,
+    "editorialLayouts": 69,
+    "editorialVideos": 23,
+    "informationLayouts": 153,
+    "informationGroups": 51,
+    "newImageLayouts": 15,
+    "newImageChecks": 42,
+    "originalImageFlows": 19,
+    "navigationAndPublicMetadataFlows": 40,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "pageErrors": 0,
+    "nonReadRequestsInInstrumentedWorkAndImageFlows": 0,
+    "remoteNewOriginalsHttpShaDecode": 14,
+    "artistCssPreservedExceptAuthorizedInformationLayout": 51,
+    "publicCatalogChanges": "Only 20 reviewed empty video dates in their 40 catalog occurrences plus 52 loadedAt fields; all other fields deeply equal",
+    "localOriginalWorkspace": "22 dirty paths unchanged; 5 untracked files equal backup"
+  },
+  "source": {
+    "projectId": "appgprj_6add2704bc6c81918d3e0e2f13130422",
+    "candidateSourceCommit": "1c7d7d9dd157b0c595118c3cba5d71eae594c227",
+    "publicRef": "09005390a7aa887e618a74dbff31ab108c634a07",
+    "staticBytes": 163717267,
+    "staticFiles": 909,
+    "sameOriginPublicOriginals": 724,
+    "manifestOriginalsVerified": 735,
+    "removedStaleGeneratedAssets": 0
+  },
+  "package": {
+    "status": "passed",
+    "archiveBytes": 148240469,
+    "archiveSha256": "dc1b54658ee0605bb30988b62cd5142bebe26121cadd9d5bdfa936ff99d57d75",
+    "staticFiles": 909,
+    "staticBytes": 163717267,
+    "archiveFileCount": 910,
+    "projectId": "appgprj_6add2704bc6c81918d3e0e2f13130422",
+    "noTraversalOrSymlinks": true,
+    "allStaticBytesEqualSource": true,
+    "additionalHelperHostingCopyVerified": "dist/.openai/hosting.json",
+    "hostingCopyOnlyCRLFNormalized": true
+  },
+  "publication": {
+    "liveVersion": 11,
+    "liveSourceCommit": "c28c945987e22803b81ea266e6aaadf1ce972cb0",
+    "url": "https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/",
+    "freshNativeSiteRead": "latest_version_number=11; current_user_role=owner; 1 allowed owner; 0 external visitors; 0 allowed groups",
+    "accessChanged": false,
+    "newUploadAttempted": false,
+    "savedVersionId": null,
+    "deploymentId": null,
+    "blocker": "Prior three archive blob uploads timed out at 300 seconds; no material recovery evidence. Candidate source push and package are not deployment.",
+    "lastFailedRequestId": "f8c4a417-c66f-4051-86ed-e8ad60d30b4f"
+  },
+  "remaining": {
+    "missingRelationshipImages": 871,
+    "lowQuality": 43,
+    "unknownStatistics": 18,
+    "worksWithoutPublicIdentity": 280,
+    "worksWithoutOriginalMemberRelationships": 133,
+    "noLivePersonRules": 5,
+    "imageResearch": "H: 19 works/70 frozen missing, 5 admitted. I: 178 works/815 frozen missing, 9 admitted; 29 works blocked at official body retrieval, 125 inventory/archive-index level only. Research coverage is not factual completion."
+  },
+  "notVerified": [
+    "new candidate online browser checks",
+    "real personal save",
+    "complete video playback",
+    "80%/125% native zoom",
+    "user IAB session",
+    "new Figma synchronization",
+    "entire repository test suite",
+    "user acceptance of new work/info presentation"
+  ],
+  "evidence": [
+    {
+      "path": "docs/codex/reports/20261026-mv-style/all-work-layout.json",
+      "sha256": "daaf18104d65322f51d7248b177561a4189e4c285ac01f64ceadbbdb071e62df"
+    },
+    {
+      "path": "docs/codex/reports/20261026-mv-style/information-layout.json",
+      "sha256": "5f46eeb02682faa3bd16b0b11c732da56950af480f520ba7ab3221ab23b08464"
+    },
+    {
+      "path": "docs/codex/reports/20261026-mv-style/editorial-layout.json",
+      "sha256": "41fb4fad7309242710b31d004ea140122c8a6464cbc4ea6e29d9a8be2dfd76b7"
+    },
+    {
+      "path": "docs/codex/reports/20261026-mv-style/navigation-flows.json",
+      "sha256": "e968121fe15374e109ae219d505cc32c10db463086a9d25e46f342ffa6a1c08e"
+    },
+    {
+      "path": "docs/codex/reports/20261026-mv-style/local-browser.json",
+      "sha256": "dfb088d9e1656a80c5d677654a5cda26fd2ee4b3e09570f641872fd9841bbbec"
+    },
+    {
+      "path": "docs/codex/reports/20261026-mv-style/remote-originals.json",
+      "sha256": "a4901ca540bec5a575f50c501bb5e9500c979ac27fc4a4aeb9d447ae98304903"
+    },
+    {
+      "path": "docs/codex/reports/20261026-mv-style/catalog-preservation.json",
+      "sha256": "9927e71f08b9aade2de04afa6a0f18e3de8c6efc453d84b2915d56d1d081c533"
+    },
+    {
+      "path": "docs/codex/reports/20261026-mv-style/artist-style-preservation.json",
+      "sha256": "9dbd6f478444ef0d6c98079c120466bc1b52c7525bafa5eca3ab5bcb59440b99"
+    },
+    {
+      "path": "docs/codex/reports/20261026-mv-style/source-sync.json",
+      "sha256": "d8a933a2d3ea1e93ba2d80a4bc303b901a0e0da008b47579bfb90d0c62179148"
+    },
+    {
+      "path": "docs/codex/reports/20261026-mv-style/package-verification.json",
+      "sha256": "8d87f2a5f8f17a7769bc0e744805e05907df8b27c29e1f1974c75514e4cc2379"
+    },
+    {
+      "path": "docs/codex/reports/20261026-mv-style/local-preservation.json",
+      "sha256": "8f35d4763ad14656e0348410e01240c3ca21ec8cb7921cd82d87465947048476"
+    }
+  ]
+}

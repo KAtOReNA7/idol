@@ -1,0 +1,128 @@
+/* Approved LOONA inner-page edition. All rules stay within the artist scope. */
+.candidate-loona-experience{--paper:#fff;--white:#fff;--ink:#121316;--muted:#616369;--line:#d9d9db;--rose:#121316;--blush:#f5f5f5;--lilac:#f5f5f5;background:var(--paper);color:var(--ink);min-height:100vh;font-family:'Noto Sans SC',var(--font-body),sans-serif;overflow-wrap:break-word}
+.candidate-loona-experience main{max-width:1440px;padding-inline:64px;margin-inline:auto}
+.candidate-loona-experience .header{border-bottom:1px solid var(--line);background:#fff}
+.candidate-loona-experience .detail{padding-top:24px}
+.candidate-loona-experience .button,.candidate-loona-experience .detail>.back{border-radius:0;min-height:48px;white-space:normal;max-width:100%;background:#f5f5f5;border-color:transparent;color:var(--ink)}
+.candidate-loona-experience .button.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.candidate-loona-experience :is(button,a,input,select,textarea):focus-visible{outline:2px solid #52565f;outline-offset:3px}
+.candidate-loona-experience .loona-work-heading{display:grid;gap:24px;margin-block:0 24px}
+.candidate-loona-experience .loona-work-heading>a{width:174px;display:block}
+.candidate-loona-experience .loona-work-heading img{display:block;width:174px;height:37px;object-fit:contain}
+.candidate-loona-experience .loona-work-heading nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;border-bottom:1px solid var(--line);padding-bottom:24px}
+.candidate-loona-experience .loona-work-heading nav a{display:flex;align-items:center;justify-content:center;min-height:48px;background:#f5f5f5;font-size:14px;text-decoration:none;color:var(--ink)}
+.candidate-loona-experience .loona-work-heading h1{font-size:36px;line-height:1.5;font-weight:500;margin:12px 0 0}
+.candidate-loona-experience .loona-work-heading p{font-size:16px;line-height:1.5;color:var(--muted);margin:0}
+.candidate-loona-experience .loona-work-heading p:first-of-type{font-size:14px}
+.candidate-loona-experience .mobile-work-heading{display:none!important}
+.candidate-loona-experience .video-mode-row{display:block;margin:24px 0}
+.candidate-loona-experience .video-mode-row>span{display:block;font-size:14px;margin-top:12px;color:var(--muted)}
+.candidate-loona-experience .video-mode-tabs{display:flex;width:100%;gap:12px;background:none;border:0;padding:0;border-radius:0}
+.candidate-loona-experience .video-mode-tabs button{width:50%;min-height:48px;background:#f5f5f5;border-radius:0;color:var(--ink);font-size:14px}
+.candidate-loona-experience .video-mode-tabs button[aria-selected=true]{background:var(--ink);color:#fff}
+.candidate-loona-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,1fr);gap:48px;padding:0;border:0;align-items:start}
+.candidate-loona-experience .work-detail-top>div,.candidate-loona-experience .work-aside{min-width:0}
+.candidate-loona-experience .video-stage{aspect-ratio:16/9;background:#17191e;border:0;border-radius:0}
+.candidate-loona-experience .video-stage>img{object-fit:cover}
+.candidate-loona-experience .video-play{background:#fff;color:#121316;border-radius:50%}
+.candidate-loona-experience .video-caption{display:flex;flex-direction:column;align-items:stretch;gap:16px;font-size:14px;margin-top:20px}
+.candidate-loona-experience .video-caption>span{max-width:none;line-height:1.5;color:var(--muted)}
+.candidate-loona-experience .video-caption a{background:#121316;color:#fff;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px}
+.candidate-loona-experience .video-fallback,.candidate-loona-experience .caption-help{font-size:14px;line-height:1.6;color:var(--muted)}
+.candidate-loona-experience .caption-help{border-radius:0;background:#f5f5f5}
+.candidate-loona-experience .work-aside{display:block;background:#fff;border:0;border-radius:0;padding:0}
+.candidate-loona-experience .work-aside>h1,.candidate-loona-experience .work-aside>.group-links{display:none}
+.candidate-loona-experience .tags{gap:8px;flex-wrap:wrap}
+.candidate-loona-experience .tags span{font-size:14px;border-radius:0;padding:6px 10px}
+.candidate-loona-experience .work-score{display:flex;flex-wrap:wrap;gap:16px;padding:24px 0;border:0;margin:0}
+.candidate-loona-experience .work-score>span{font-size:28px;color:var(--ink)}
+.candidate-loona-experience .work-score strong{font-size:28px;color:var(--ink)}
+.candidate-loona-experience .work-score small{font-size:14px;color:var(--muted)}
+.candidate-loona-experience .editor{border:0;padding:0;margin-top:24px}
+.candidate-loona-experience .editor-heading{font-size:18px;margin-bottom:20px}
+.candidate-loona-experience .editor-fields{grid-template-columns:minmax(0,1fr);gap:24px}
+.candidate-loona-experience .editor-fields label>span{font-size:16px;color:var(--ink)}
+.candidate-loona-experience .editor-fields :is(input,textarea,select){border:1px solid var(--line);border-radius:0;background:#f5f5f5;color:var(--ink);font-size:16px;min-height:48px}
+.candidate-loona-experience .editor-fields textarea{min-height:110px}
+.candidate-loona-experience .loona-score-control{display:grid;gap:10px}
+.candidate-loona-experience .loona-score-stepper{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;gap:8px;padding:8px;background:#f5f5f5}
+.candidate-loona-experience .loona-score-stepper>button{min-width:0;min-height:48px;background:#f5f5f5;color:var(--ink);font-size:20px}
+.candidate-loona-experience .loona-score-stepper .score-input input{border:0;background:#fff;text-align:center;padding:8px 48px 8px 8px;font-size:28px;height:48px;appearance:textfield}
+.candidate-loona-experience .loona-score-stepper input::-webkit-inner-spin-button{appearance:none}
+.candidate-loona-experience .score-input small{font-size:14px;top:14px;right:10px}
+.candidate-loona-experience .loona-score-clear{min-height:48px;background:#f5f5f5;font-size:14px;color:var(--ink)}
+.candidate-loona-experience .loona-score-control>small{font-size:14px;color:var(--muted);line-height:1.6}
+.candidate-loona-experience button:disabled{opacity:.5;cursor:not-allowed}
+.candidate-loona-experience .editor-actions .button{width:100%;font-size:14px}
+.candidate-loona-experience :is(.save-message,.unsaved,.readonly-note,.my-note,.verification){font-size:14px;line-height:1.6}
+.candidate-loona-experience .my-note{padding:16px;background:#f5f5f5}
+.candidate-loona-experience .cast-section{margin-block:64px}
+.candidate-loona-experience .section-heading h2{font-size:32px;font-weight:500}
+.candidate-loona-experience .eyebrow{font-size:14px;letter-spacing:.04em}
+.candidate-loona-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.candidate-loona-experience .cast-card{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;padding:12px;background:#f5f5f5;border:0;border-radius:0}
+.candidate-loona-experience .cast-card .photo{width:48px;height:72px;aspect-ratio:2/3;border-radius:0;background:#ececef}
+.candidate-loona-experience .cast-card .photo img{object-fit:cover}
+.candidate-loona-experience .cast-card .image-label{display:none}
+.candidate-loona-experience .cast-copy{padding:0;min-width:0}
+.candidate-loona-experience .member-name{font-size:16px;line-height:1.5}
+.candidate-loona-experience .cast-scores{display:flex;flex-wrap:wrap;gap:8px 20px;border:0;margin-top:8px;padding:0;font-size:14px}
+.candidate-loona-experience .cast-scores b{display:inline;font-size:14px}
+.candidate-loona-experience .cast-copy :is(.memory,.cast-note,.cast-verification){font-size:14px;line-height:1.5}
+.candidate-loona-experience .editor-open{border:0;font-size:14px;color:var(--ink);min-height:48px;margin:8px 0 0;padding:8px 0}
+.candidate-loona-experience .cast-card:has(.editor){grid-column:1/-1;grid-template-columns:96px minmax(0,640px);gap:24px;padding:24px}
+.candidate-loona-experience .cast-card:has(.editor) .photo{width:96px;height:144px}
+.candidate-loona-experience .mv-member-shortcuts{border:0;background:#f5f5f5;border-radius:0}
+.candidate-loona-experience .mv-member-shortcuts button{border-radius:0;font-size:14px}
+.candidate-loona-experience .mv-member-shortcuts>small{font-size:14px}
+.candidate-loona-experience .stage-view .video-stage:has(.loona-programme-ticket){aspect-ratio:auto}
+.candidate-loona-experience .loona-programme-ticket{display:flex;flex-direction:column;gap:28px;background:#17191e;color:#fff;padding:40px}
+.candidate-loona-experience .loona-programme-ticket p{font-size:48px;line-height:1.3;font-weight:700;margin:0}
+.candidate-loona-experience .loona-programme-ticket h2{font-size:clamp(28px,4vw,64px);line-height:1.3;overflow-wrap:anywhere}
+.candidate-loona-experience .loona-programme-ticket hr{width:100%;border:0;border-top:1px solid #6a6a6d}
+.candidate-loona-experience .loona-programme-ticket strong{font-size:44px;line-height:1.4}
+.candidate-loona-experience .loona-programme-ticket span{font-size:16px}
+.candidate-loona-experience .loona-programme-ticket small{font-size:14px}
+.candidate-loona-experience .stage-source,.candidate-loona-experience .stage-overall-note{border-radius:0;background:#f5f5f5;padding:20px;font-size:14px;line-height:1.6}
+.candidate-loona-experience .detail-return{position:static;display:flex;flex-wrap:wrap;gap:20px;background:#fff;backdrop-filter:none;padding:24px 0;border-color:var(--line)}
+.candidate-loona-experience .detail-return>span{max-width:none;font-size:14px}
+.candidate-loona-experience .detail-return>div{display:flex;flex-wrap:wrap;gap:12px}
+.candidate-loona-experience .watch-next{border-radius:0;background:#f5f5f5}
+.candidate-loona-experience .member-detail{align-items:start;gap:64px}
+.candidate-loona-experience .member-detail>.photo{border-radius:0;height:auto;aspect-ratio:2/3;padding:0}
+.candidate-loona-experience .member-detail>.photo img{object-fit:cover}
+.candidate-loona-experience .member-work-card{border-radius:0}
+@media(max-width:900px){.candidate-loona-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+.candidate-loona-experience main{padding-inline:16px}
+.candidate-loona-experience .header{padding-inline:16px}
+.candidate-loona-experience .loona-work-heading{gap:20px}
+.candidate-loona-experience .loona-work-heading h1{font-size:28px}
+.candidate-loona-experience .loona-work-heading nav{gap:8px}
+.candidate-loona-experience .loona-work-heading p{font-size:14px}
+.candidate-loona-experience .work-detail-top{gap:36px}
+.candidate-loona-experience .cast-grid{grid-template-columns:minmax(0,1fr)}
+.candidate-loona-experience .section-heading h2{font-size:28px}
+.candidate-loona-experience .cast-section{margin-block:40px}
+.candidate-loona-experience .cast-card:has(.editor){grid-template-columns:48px minmax(0,1fr);padding:12px;gap:12px}
+.candidate-loona-experience .cast-card:has(.editor) .photo{width:48px;height:72px}
+.candidate-loona-experience .cast-card:has(.editor) .cast-copy{display:contents}
+.candidate-loona-experience .cast-card:has(.editor) .cast-copy>.editor{grid-column:1/-1}
+.candidate-loona-experience .cast-card:has(.editor) .cast-copy>:not(.editor){grid-column:2}
+.candidate-loona-experience .loona-score-stepper{grid-template-columns:32px minmax(0,1fr) 32px;gap:4px}
+.candidate-loona-experience .loona-score-stepper .score-input input{font-size:20px}
+.candidate-loona-experience .loona-programme-ticket{padding:20px;gap:24px}
+.candidate-loona-experience .loona-programme-ticket p{font-size:24px}
+.candidate-loona-experience .loona-programme-ticket h2{font-size:30px}
+.candidate-loona-experience .loona-programme-ticket strong{font-size:28px}
+.candidate-loona-experience .detail-return>div{width:100%}
+.candidate-loona-experience .detail-return>div>.button{width:100%}
+.candidate-loona-experience .member-detail{grid-template-columns:1fr;gap:28px}
+.candidate-loona-experience .member-detail>.photo{max-width:100%}
+}
+@media(prefers-reduced-motion:reduce){.candidate-loona-experience *{scroll-behavior:auto!important;transition:none!important}}
+.candidate-loona-experience .loona-associated-release{display:flex;align-items:center;gap:16px;margin-top:24px}
+.candidate-loona-experience .loona-associated-release img{width:96px;height:96px;object-fit:contain;flex:none}
+.candidate-loona-experience .loona-associated-release>div{display:grid;gap:8px;font-size:16px}
+.candidate-loona-experience .loona-associated-release span{font-size:14px;color:var(--muted)}
+@media(max-width:760px){.candidate-loona-experience .loona-associated-release img{width:80px;height:80px}}

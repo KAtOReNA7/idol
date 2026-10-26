@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-26T03:39:53.063Z",
+  "baseCommit": "6c409262b3172f90fb561cf1508b48250334d11b",
+  "baseStatisticsSha256": "50a335fc58017bb5d92cdf66136b8fe33d807990835e809e4d220bc631d6cd45",
+  "status": "research-only-no-data-applied",
+  "coverage": {
+    "unknownSnapshotFields": 18,
+    "freshlyInvestigatedFields": 18,
+    "freshSourceBodyFields": 2,
+    "searchOnlyFields": 16,
+    "verifiedNewNumericFields": 0,
+    "remainingUnknownFields": 18
+  },
+  "summary": {
+    "socialUnknown": 6,
+    "salesUnknown": 9,
+    "winsUnknown": 3
+  },
+  "deltas": [],
+  "fields": [
+    {
+      "slug": "genblue",
+      "field": "x",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"GENBLUE_ten\" statistics -site:j-enta.com",
+        "\"GENBLUE_ten\" \"followers\" \"2026\""
+      ],
+      "sourceUrls": [
+        "https://www.tenentcorp.com/pages/genblue",
+        "https://www.j-enta.com/en/artist/752/GENBLUE",
+        "https://selca.kastden.org/owner/"
+      ],
+      "reason": "Official agency and archive results confirm account identity, not its count. J-enta search result still shows 0/0 without Last update. No qualified dated count."
+    },
+    {
+      "slug": "genblue",
+      "field": "wins",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-source-body-read",
+      "queries": [
+        "\"GENBLUE\" \"music show wins\"",
+        "\"젠블루\" \"첫 1위\""
+      ],
+      "sourceUrls": [
+        "https://www.kpopdb.net/en/artist/752/GENBLUE",
+        "https://www.kpopdb.net/en/artist/696/song.php?a=752&s=2840"
+      ],
+      "reason": "Current song page explicitly says Total wins: 0 for ACT LIKE THAT, with a THE SHOW second place; artist page has no aggregate. A song zero cannot establish all-group cumulative zero."
+    },
+    {
+      "slug": "badvillain",
+      "field": "sales",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"BADVILLAIN\" \"Sales Summary\"",
+        "\"배드빌런\" \"누적\" \"판매량\""
+      ],
+      "sourceUrls": [
+        "https://koreansalestwt.blogspot.com/2021/03/artist-sales-summary-directory.html",
+        "https://d.namu.moe/w/OVERSTEP"
+      ],
+      "reason": "No group summary found. OVERSTEP first-week/cumulative-week clues do not provide current full-group cumulative sales. Masked Hanteo values are not exact counts; no new official cumulative table read this round."
+    },
+    {
+      "slug": "vvup",
+      "field": "x",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"vvup_official\" \"Twitter\" \"2026\" followers"
+      ],
+      "sourceUrls": [
+        "https://www.weverse.io/vvup/highlight",
+        "https://www.nehannn.com/group-detail/314.html"
+      ],
+      "reason": "Current official-community and profile results confirm account identity. Third-party associated cards show 30K with no counter observation date; not adopted."
+    },
+    {
+      "slug": "vvup",
+      "field": "sales",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"VVUP\" \"Sales Summary\"",
+        "\"VVUP\" \"누적\" \"판매량\"",
+        "\"VVUP\" \"sales\" \"copies\""
+      ],
+      "sourceUrls": [
+        "https://koreansalestwt.blogspot.com/2021/03/artist-sales-summary-directory.html",
+        "https://sports.khan.co.kr/en/article/202605111503007"
+      ],
+      "reason": "No group cumulative sales. Multi-artist KMA coverage attributes million sales to other groups; VVUP text gives chart ranks. Artist attribution and rank cannot become sales."
+    },
+    {
+      "slug": "bewave",
+      "field": "sales",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"BEWAVE\" \"Sales Summary\"",
+        "\"BEWAVE\" \"cumulative\" sales",
+        "\"비웨이브\" \"판매\" \"장\""
+      ],
+      "sourceUrls": [
+        "https://koreansalestwt.blogspot.com/2021/03/artist-sales-summary-directory.html",
+        "https://soridata.com/en/artists/BEWAVE.html",
+        "https://namu.moe/w/Be%20your%20Wave"
+      ],
+      "reason": "Soridata search result remains Physical Sales 0+ despite known physical releases; not a confirmed zero. Album/first-week and retail pages do not establish a full cumulative total."
+    },
+    {
+      "slug": "geenius",
+      "field": "sales",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"Geenius\" \"album sales\""
+      ],
+      "sourceUrls": [
+        "https://www.kpopalbums.com/products/geenius-spoiler-book-1st-instrumental-album-qr-version"
+      ],
+      "reason": "A retail listing identifies a 2026-01-15 physical QR release, SPOILER BOOK. Existence, out-of-stock status, price and chart-counting boilerplate do not disclose sales. Do not infer zero from earlier digital-only releases."
+    },
+    {
+      "slug": "tracer",
+      "field": "sales",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"트레이서\" 걸그룹 \"음반\" \"판매량\""
+      ],
+      "sourceUrls": [],
+      "reason": "No qualifying group-sales source returned. No absence-of-search-results zero inference."
+    },
+    {
+      "slug": "tracer",
+      "field": "wins",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-source-body-read",
+      "queries": [
+        "\"TRACER\" \"음악 방송\" \"1위\""
+      ],
+      "sourceUrls": [
+        "https://www.kpopdb.net/en/artist/522/TRACER",
+        "https://soridata.com/artists.html"
+      ],
+      "reason": "Artist page still contains an anomalous Founded date (October 25, 2026), empty member/release tables, and no wins aggregate. Soridata directory does not resolve this artist. Not evidence of zero."
+    },
+    {
+      "slug": "witchx",
+      "field": "sales",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"W!TCHX\" \"album sales\""
+      ],
+      "sourceUrls": [
+        "https://aimcontents.com/en/"
+      ],
+      "reason": "No group cumulative number found; artist-directory and reputation-ranking results are not sales statistics."
+    },
+    {
+      "slug": "spia",
+      "field": "sales",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"SPIA\" \"album sales\""
+      ],
+      "sourceUrls": [
+        "https://birthdayadjp.shop/en/blogs/k-pop-special/2024-k-pop-group-special-feature-in-the-first-half-of-the-year-introducing-the-initial-ranking-of-the-video-album"
+      ],
+      "reason": "Debut-release/profile and brand-reputation results do not give a verifiable group cumulative figure."
+    },
+    {
+      "slug": "udtt",
+      "field": "sales",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"UDTT\" \"Sales Summary\"",
+        "\"UDTT\" \"누적\" \"판매량\"",
+        "\"UDTT\" \"sales\" \"copies\""
+      ],
+      "sourceUrls": [
+        "https://koreansalestwt.blogspot.com/2021/03/artist-sales-summary-directory.html",
+        "https://namu.moe/w/School%20Rush"
+      ],
+      "reason": "Only release/first-week-section leads and unrelated same-ticker company results; no cumulative number. Prior known School Rush/VIPER product existence still cannot give sold units."
+    },
+    {
+      "slug": "vcha",
+      "field": "x",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"GIRLSETofficial\" Twitter statistics followers -site:twitter.com -site:x.com"
+      ],
+      "sourceUrls": [
+        "https://mobile.twstalker.com/hashtag/%23Girlset"
+      ],
+      "reason": "Associated card shows GIRLSET 38K but no observation date; not adopted. GIRLSET is the later brand and cannot be presented as VCHA historical audience."
+    },
+    {
+      "slug": "vcha",
+      "field": "sales",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"VCHA\" \"physical album\" sales -GIRLSET -girlset -Spotify -streams"
+      ],
+      "sourceUrls": [
+        "https://jyplevel2storage01.blob.core.windows.net/homepage/%5BJYP%20ENT%5D%2024Q3_Result_KOR_F-6ea67580b4404eb6b0b8a5173ea192a6.pdf",
+        "https://main.dq1r0u4v664m9.amplifyapp.com/es/board/ir-data/o486guua"
+      ],
+      "reason": "JYP IR search leads do not provide a VCHA unit total. Flattened multi-column 2024 slide mentions 500K for NiziU, not VCHA; PDF layout was not verified here. Revenue at company level is not group physical units. No GIRLSET later product is assigned to VCHA."
+    },
+    {
+      "slug": "vcha",
+      "field": "wins",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"VCHA\" \"music show wins\""
+      ],
+      "sourceUrls": [
+        "https://board.twicehub.com/News/46"
+      ],
+      "reason": "Only explicit zero narrative found is from November 2023, before official debut. It does not prove a current total through the VCHA era; later GIRLSET appearances are not wins."
+    },
+    {
+      "slug": "everglow",
+      "field": "x",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"everglow_offcl\" \"Followers\"",
+        "\"everglow_offcl\" statistics"
+      ],
+      "sourceUrls": [
+        "https://linktr.ee/everglow_offcl"
+      ],
+      "reason": "Current-brand identity remains; associated-card 11K has no counter date. Old-company accounts are different subjects."
+    },
+    {
+      "slug": "everglow",
+      "field": "instagram",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"everglow.offcl\" followers statistics -site:instagram.com -site:facebook.com -site:instastatistics.com -site:hypeauditor.com -site:socialblade.com",
+        "\"everglow.offcl\" \"Instagram\" \"K\" followers -reddit -TwStalker -Instalker"
+      ],
+      "sourceUrls": [
+        "https://linktr.ee/everglow_offcl",
+        "https://bookingagentinfo.com/celebrity/everglow/"
+      ],
+      "reason": "Identity/contact-only results, no qualified dated Instagram count. Did not repeat the prior throttled official-profile or rejected statistic-site routes."
+    },
+    {
+      "slug": "cherrybullet",
+      "field": "x",
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "checkedAt": "2026-10-26T03:39:53.063Z",
+      "asOf": null,
+      "status": "unresolved-no-qualified-delta",
+      "method": "fresh-web-search",
+      "queries": [
+        "\"cherrybullet\" Twitter followers statistics -site:socialblade.com -site:wikidata.org",
+        "\"cherrybullet\" \"Twitter\" \"October\" \"2026\""
+      ],
+      "sourceUrls": [
+        "https://ww.twstalker.com/search/%24CHERRY"
+      ],
+      "reason": "An associated card shows 187K without count date; source crawl/update date is not the measurement date. Not adopted."
+    }
+  ],
+  "limits": [
+    "Research coverage is not numeric verification. Two fields had newly read relevant source bodies; sixteen remain search-level evidence.",
+    "No company revenue, streaming equivalents, first-week sales, product existence, associated-card count, or other-artist total is substituted for the requested metric.",
+    "No future or later-brand statistics assigned to historical VCHA.",
+    "No formal data, personal fields, permissions, commits or deployments changed."
+  ]
+}

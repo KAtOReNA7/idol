@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "correctionId": "madein-rise-20261018",
+  "baseCommit": "dd42066a822b4b8591c0b09a5e3f944cd4915b06",
+  "eventId": "e-madein-rise-release-carrier-hold",
+  "slug": "madein",
+  "allowedFields": [
+    "eventDate",
+    "holdReasons",
+    "reviewStatus",
+    "scopeNote",
+    "sources",
+    "status",
+    "summary",
+    "title"
+  ],
+  "beforeSha256": "b3e0b5ac1aeec9570ebd19fc61dd52109f3e864dc26b3062659cf4aae35603b2",
+  "afterSha256": "af0aa415d51d81f9b0361d716e9058f5cbaee27195aaa08303dd8ced7d9d776b",
+  "beforeDocumentSha256": "fae2fe21e4b7bef0b05aa3cd30a40106d6c0e84e4206e2ca858ce475297bfe64",
+  "afterDocumentSha256": "939dace7fe267be13622fb173bd5ecb5c9ce20fbaa2161f01efe6a3469093b12",
+  "before": {
+    "id": "e-madein-rise-release-carrier-hold",
+    "groupId": "rec28ldfRTiCzI",
+    "eventType": "release",
+    "title": "《RISE / 상승》发行载体待补实际发行证据",
+    "summary": "官方作品页列EP《상승》及UNO、DADARIDA、DOPAMINE、TIMELINE，目录标注2024年9月3日。",
+    "scopeNote": "日期留作目录观测；不能把DADARIDA/DOPAMINE后续Performance MV日当EP日。全EP合为一个候选。 新增原创MV幕后专题仍有9月3日出师的前瞻口吻；未以问候语、试听入口或活动日期单独推实际发行。",
+    "eventDate": null,
+    "announcementDate": null,
+    "plannedDate": null,
+    "status": "uncertain",
+    "importance": "major",
+    "memberIds": [],
+    "workIds": [
+      "rec28ldfRTrCvB",
+      "rec28ldfRTrCzF",
+      "rec28ldfRTrCDJ"
+    ],
+    "releaseKey": "madein-rise",
+    "relatedEventIds": [],
+    "sources": [
+      {
+        "id": "es-a5b7c477447d47bc",
+        "url": "https://madein-official.net/discography/rise/",
+        "publisher": "MADEIN JAPAN OFFICIAL",
+        "title": "상승(サンスン)",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-16",
+        "scopeNote": "Original artist catalogue describes one EP; catalogue-only date not confirmed launch, all matched tracks grouped.",
+        "evidenceRef": "evidence/E01/baseline-evidence/task01/sources/reused-madein-rise.json"
+      },
+      {
+        "id": "es-e01-cfe3c83fa7532e73",
+        "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=14590",
+        "publisher": "Genie Magazine / original MADEIN behind-the-scenes feature",
+        "title": "MADEIN DEBUT EP 상승 original UNO MV behind-the-scenes",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-16",
+        "scopeNote": "原创幕后专题正文仍包含9月3日出师的前瞻口吻；可补强发行预告与载体身份，不以问候语/活动日推实际发行，因此仍hold。",
+        "evidenceRef": "evidence/E01/task06/sources/madein-rise-original-plan.json"
+      }
+    ],
+    "reviewStatus": "hold",
+    "holdReasons": [
+      "新增原始幕后专题补强首EP身份及9月3日安排，但正文前瞻口吻不能独立证明实际发行已兑现；eventDate继续未知。"
+    ]
+  },
+  "after": {
+    "id": "e-madein-rise-release-carrier-hold",
+    "groupId": "rec28ldfRTiCzI",
+    "eventType": "release",
+    "title": "发行首张 EP《RISE / 상승》",
+    "summary": "MADEIN 官方作品目录与 Apple Music 已发行四曲 EP 对应，数字发行日期为 2024 年 9 月 3 日。",
+    "scopeNote": "仅确认数字 EP 发行：官方目录的四首曲目、日期与 Apple Music 143 Entertainment 发行页及实际可获取音频一致。保留原事件及作品关联；不把后续 Performance MV 日期当 EP 日，不推实体发行日期。",
+    "eventDate": {
+      "value": "2024-09-03",
+      "precision": "day"
+    },
+    "announcementDate": null,
+    "plannedDate": null,
+    "status": "confirmed",
+    "importance": "major",
+    "memberIds": [],
+    "workIds": [
+      "rec28ldfRTrCvB",
+      "rec28ldfRTrCzF",
+      "rec28ldfRTrCDJ"
+    ],
+    "releaseKey": "madein-rise",
+    "relatedEventIds": [],
+    "sources": [
+      {
+        "id": "es-a5b7c477447d47bc",
+        "url": "https://madein-official.net/discography/rise/",
+        "publisher": "MADEIN JAPAN OFFICIAL",
+        "title": "상승(サンスン)",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-16",
+        "scopeNote": "Original artist catalogue describes one EP; catalogue-only date not confirmed launch, all matched tracks grouped.",
+        "evidenceRef": "evidence/E01/baseline-evidence/task01/sources/reused-madein-rise.json"
+      },
+      {
+        "id": "es-e01-cfe3c83fa7532e73",
+        "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=14590",
+        "publisher": "Genie Magazine / original MADEIN behind-the-scenes feature",
+        "title": "MADEIN DEBUT EP 상승 original UNO MV behind-the-scenes",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-16",
+        "scopeNote": "原创幕后专题正文仍包含9月3日出师的前瞻口吻；可补强发行预告与载体身份，不以问候语/活动日推实际发行，因此仍hold。",
+        "evidenceRef": "evidence/E01/task06/sources/madein-rise-original-plan.json"
+      },
+      {
+        "id": "visual-repair-madein-rise-apple",
+        "url": "https://music.apple.com/us/album/rise-ep/1766046545",
+        "publisher": "Apple Music / 143 Entertainment",
+        "title": "RISE - EP — MADEIN",
+        "sourcePublishedAt": null,
+        "checkedAt": "2026-10-18",
+        "scopeNote": "发行平台四曲 EP 与官方目录同一载体、同一日期；AudioObject 与成功获取的音频提供已发行依据，历史日期由两平台资料交叉确认。",
+        "evidenceRef": "evidence/approved-visual-repairs/madein-rise-distribution.json"
+      }
+    ],
+    "reviewStatus": "ready",
+    "holdReasons": []
+  },
+  "beforeGaps": [
+    "成员加入：原文确认七人新团及LIMELIGHT/Kep1er谱系，但未给七人独立加入日；未制造rename。",
+    "《RISE》仅有官方目录及分曲载体日期，留hold；DADARIDA与DOPAMINE不拆独立专辑发行。",
+    "GAEUN退团：媒体有2024-11-29声明引述，但允许的原公告未定位；不从六人卡片或历史暂停推退团。",
+    "SUHYE暂停/恢复及YESEO后续活动：原指定SUHYE日本公告先前已拒绝，本轮另一原页403；2025-12-27四人声明只有媒体线索，未从四人图片推退团。",
+    "日本出道：2025-07-07官方宣布大幅调整日程；缺原定日期和新日程，未因时间经过确认日本已出道。",
+    "《Girl Meets Boy》《MADE in BLUE》等只发现目录/媒体线索，实际发行原公告未建立；未用PUNG! MV日当音乐日。",
+    "B ZONE日本专属合作与143主体：已发现媒体线索，缺允许的原合同公告；现网页版权不提供准确签约日。",
+    "解散：没有合格原文声明；unknown不代表已证明没有发生。",
+    "日本出道延期旧节点保留，无已完成日本出道证据，不因日站存在推已出道。",
+    "RISE旧carrier hold不强转；按eventId保留原候选和出道节点待dot最终去重，不新增同义RISE ID。"
+  ],
+  "afterGaps": [
+    "成员加入：原文确认七人新团及LIMELIGHT/Kep1er谱系，但未给七人独立加入日；未制造rename。",
+    "GAEUN退团：媒体有2024-11-29声明引述，但允许的原公告未定位；不从六人卡片或历史暂停推退团。",
+    "SUHYE暂停/恢复及YESEO后续活动：原指定SUHYE日本公告先前已拒绝，本轮另一原页403；2025-12-27四人声明只有媒体线索，未从四人图片推退团。",
+    "日本出道：2025-07-07官方宣布大幅调整日程；缺原定日期和新日程，未因时间经过确认日本已出道。",
+    "《Girl Meets Boy》《MADE in BLUE》等只发现目录/媒体线索，实际发行原公告未建立；未用PUNG! MV日当音乐日。",
+    "B ZONE日本专属合作与143主体：已发现媒体线索，缺允许的原合同公告；现网页版权不提供准确签约日。",
+    "解散：没有合格原文声明；unknown不代表已证明没有发生。",
+    "日本出道延期旧节点保留，无已完成日本出道证据，不因日站存在推已出道。"
+  ],
+  "evidence": {
+    "path": "evidence/approved-visual-repairs/madein-rise-distribution.json",
+    "sha256": "6fb4a38054f864e4177932f7c3687e559335b9582415b53db13212303277f2d7"
+  }
+}

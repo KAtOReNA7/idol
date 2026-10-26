@@ -1,0 +1,5 @@
+--- reference-only/MemberDetail-concept-image.tsx.txt
++++ proposal-only/MemberDetail-concept-image.tsx.txt
+@@ -1 +1 @@
+-<div className="photo bm-concept-photo"><img src={concept.image} alt={m.stageName+' · '+concept.label} loading="eager"/><span className="image-label">{concept.label} · {concept.date}</span></div>
++<div className="photo bm-concept-photo"><ConceptPhotoImage src={concept.image} memberId={m.id} label={m.stageName+' · '+concept.label}/><span className="image-label">{concept.label} · {concept.date}</span></div>

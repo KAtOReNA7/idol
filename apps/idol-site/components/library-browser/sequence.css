@@ -1,0 +1,15 @@
+.lb-sequence{max-width:100%;min-width:0;border:1px solid #8a8a8a;border-radius:.6rem;margin-block:1rem}
+.lb-sequence-toggle{cursor:pointer;padding:.8rem;min-height:44px;box-sizing:border-box}
+.lb-sequence-panel{padding:0 1rem 1rem;overflow-wrap:anywhere}
+.lb-sequence-label{font-weight:600}
+.lb-sequence-list{padding-inline-start:2.5rem}
+.lb-sequence-row{padding:.5rem .25rem;border-block-end:1px solid #aaa6}
+.lb-sequence-row[aria-current="step"]{font-weight:700;background:#7771}
+.lb-sequence-name,.lb-sequence-state{display:block;overflow-wrap:anywhere}
+.lb-sequence-state{font-size:.875rem}
+.lb-sequence-paging{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem}
+.lb-sequence button,.lb-sequence select{min-height:44px;max-width:100%;font:inherit;padding:.45rem .65rem}
+.lb-sequence-next{margin-block-start:.75rem}
+.lb-sequence :focus-visible{outline:3px solid #346de0;outline-offset:3px}
+.lb-sequence button:disabled{opacity:.55;cursor:not-allowed}
+@media(prefers-reduced-motion:reduce){.lb-sequence *{scroll-behavior:auto;animation:none;transition:none}}

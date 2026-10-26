@@ -1,0 +1,2 @@
+// Slot IDs are component input keys; labels and dates are explicitly synthetic.
+export default {events:['e-loona-xx-kr-repackage','e-loona-hash-kr-release','e-loona-and-release','e-loona-luminous-japan-single-plan','e-loona-monthly-member-reveal-project','e-loona-complete-group-debut'].map((id,index)=>({id,title:'合成历史条目',eventDate:{value:'2026-10-16',precision:'day'},workIds:[] as string[],releaseKey:`fixture-loona-release-${index}`,summary:'合成测试',sources:[]}))};

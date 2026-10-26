@@ -1,0 +1,67 @@
+{
+  "status": "implementation_verified_browser_qa_pending",
+  "checks": [
+    {
+      "command": "NODE_PATH=\"$PWD/node_modules\" node --test tests/library-browser/*.test.cjs",
+      "exitCode": 0,
+      "passed": 27,
+      "log": "module-tests.log"
+    },
+    {
+      "command": "node --test tests/watch-sequence.test.cjs tests/library-search.test.cjs tests/catalog-name-search.test.cjs tests/journey.test.cjs tests/navigation-save-guard.test.cjs tests/personal-record-search.test.cjs",
+      "exitCode": 0,
+      "passed": 63,
+      "log": "regressions.log"
+    },
+    {
+      "command": "node_modules/.bin/tsc -p tests/library-browser/tsconfig.json --pretty false",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/tsc --noEmit --incremental false --pretty false",
+      "exitCode": 0,
+      "log": "full-tsc.log"
+    },
+    {
+      "command": "node_modules/.bin/vite build --config examples/library-browser/vite.config.ts",
+      "exitCode": 0,
+      "log": "browser-build.log"
+    },
+    {
+      "command": "git apply --check handoff/library-browser/APP_WIRING.patch",
+      "exitCode": 0
+    },
+    {
+      "command": "node_modules/.bin/tsc -p /tmp/library-wiring/tsconfig.json --pretty false",
+      "exitCode": 0,
+      "log": "wiring-tsc.log",
+      "scope": "temporary proposed-only source overlay"
+    },
+    {
+      "command": "node --test tests/library-browser/wiring-hook.test.cjs",
+      "exitCode": 0,
+      "passed": 4,
+      "log": "wiring-hook.log",
+      "scope": "Actual proposed hook with deterministic React hook scheduler and browser-state adapters; not real DOM"
+    },
+    {
+      "command": "node --test tests/*.test.cjs",
+      "exitCode": 1,
+      "log": "full-suite.log",
+      "classification": "baseline fixture environment: temporary compiled files require NODE_PATH to resolve react; rerun pending"
+    },
+    {
+      "command": "NODE_PATH=\"$PWD/node_modules\" node --test tests/*.test.cjs",
+      "exitCode": 0,
+      "passed": 1680,
+      "log": "full-suite-nodepath.log"
+    }
+  ],
+  "browser": {
+    "status": "Core three-width/history/focus/guard/legacy tests passed in independent worker; query-memo and filtered-anchor/member-link extension retest pending",
+    "actualApp": "not_run"
+  },
+  "networkAndStorageRuntimeAudit": "pending_browser_qa",
+  "memoRegression": "actual component hook dependency scheduler counts query runs across page/pageSize/new filters identity; all seven query fields and catalog refresh invalidate",
+  "openFocusRegression": "Actual ResultsView callback called with unrelated focus and no native click focus: enabled matching card focused with preventScroll before host navigation callback"
+}

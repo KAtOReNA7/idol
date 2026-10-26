@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "upstreamAdmissionSHA256": "d93b40e1e98790447308e4aa559684cfcd6a5c55e4614824e21ff5d151d63755",
+  "reviewedAtUTC": "2026-10-19T07:47:45.717763+00:00",
+  "reviewer": "independent-review",
+  "decision": "approved_for_bugs_mv_preview_admission",
+  "candidateId": "babymonster-sheesh-7320be42d4b6",
+  "candidateVersion": "mv-poster-20261019-batch2",
+  "originalFile": "tests/fixtures/mv-poster-batch2/babymonster-sheesh-original-624049.jpg",
+  "approvedFacts": {
+    "approved": true,
+    "status": "approved_for_bugs_mv_preview_admission",
+    "group": "BABYMONSTER",
+    "song": "SHEESH",
+    "workId": "rec28ldfRTrACM",
+    "videoId": "2wA_b6YHjqQ",
+    "videoType": "官方MV",
+    "youtubeUrl": "https://www.youtube.com/watch?v=2wA_b6YHjqQ",
+    "catalogWorkName": "BABYMONSTER · SHEESH",
+    "label": "MV 预览图（Bugs 来源）",
+    "sourceProvider": "Bugs",
+    "sourcePage": "https://music.bugs.co.kr/mv/624049",
+    "bugsMvId": "624049",
+    "originalUrl": "https://image.bugsm.co.kr/mvhd/images/500/6240/624049.jpg",
+    "sourceTitle": "SHEESH",
+    "sourceOGTitle": "SHEESH / BABYMONSTER",
+    "sourceArtist": "BABYMONSTER",
+    "sourceOGArtist": "BABYMONSTER",
+    "sourceAlbum": "BABYMONS7ER",
+    "sourceType": "정규",
+    "sourceRegistrationDate": "2024-04-01",
+    "duration": "03:05",
+    "durationSeconds": 185,
+    "sha256": "7320be42d4b6f1a257343d89683c8dc45fa1c42ca937fc5ddd4d9e31f4357827",
+    "bytes": 51964,
+    "width": 500,
+    "height": 282,
+    "dimensions": [
+      500,
+      282
+    ],
+    "mime": "image/jpeg",
+    "format": "JPEG",
+    "mode": "RGB",
+    "fullDecode": true,
+    "decodedPixelSHA256": "0a18b8c97fece3156abfb86b6aeb80d2538976c80486d254a567f8f75f5f9d50",
+    "decodedPixelHashMethod": "Pillow native RGB image.tobytes(), row-major, no conversion or edits",
+    "decodeLibrary": "Pillow 12.3.0",
+    "pixelExtremaRGB": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "pixelStddevRGB": [
+      52.63001398079742,
+      67.40724969435054,
+      71.16076548441777
+    ],
+    "visualInspection": {
+      "passed": true,
+      "method": "Each original viewed independently at native dimensions through view_image",
+      "finding": "Group posed in a blue-lit theatrical scene with a source YG OFFICIAL logo; no visible corruption.",
+      "faceIdentityInferred": false
+    },
+    "sourceHTMLSha256": "e97e17699c72db4f6979fa997d4df11734a62071fa03fd0a66bfc773c0cf02cc",
+    "durationEvidenceSHA256": "2237b0d85b612f62ee4335e7b1154d7e0c32c0b218dce848d9772172fab05eec",
+    "durationEvidenceSelector": "figure[mvId=\"624049\"] time.duration",
+    "durationFigureText": "03:05 [12세 이상 관람가] SHEESH BABYMONSTER 2024.04.01 정규 기타 기능",
+    "imageHeadersSHA256": "1720b1ad7550c4212012d6ae9f76f6922f77261879bd606d80e6f9266454083b",
+    "capturedImageHTTPStatus": 200,
+    "capturedImageContentType": "image/jpeg",
+    "capturedImageContentLength": 51964,
+    "researchEvidenceSHA256": "f339eec6b52c7346f170db0062921fb1b6a06ea9f3ec40244a7c08d1a1bfb0d9",
+    "liveCatalogVerified": true,
+    "liveTuple": {
+      "id": "rec28ldfRTrACM",
+      "name": "BABYMONSTER · SHEESH",
+      "song": "SHEESH",
+      "url": "https://www.youtube.com/watch?v=2wA_b6YHjqQ",
+      "videoType": "官方MV"
+    },
+    "liveEvidenceCapturedAt": "2026-10-19T07:40:21.312Z",
+    "liveEvidenceScope": "Independent comparison to parent-supplied authenticated live API capture; reviewer did not re-fetch the private API",
+    "repositoryOfficialMetadata": {
+      "title": "BABYMONSTER - 'SHEESH' M/V",
+      "channel": "BABYMONSTER",
+      "releaseDate": "2024-04-01T00:00:00.000Z",
+      "provenance": "Repository snapshot and inventory, not independently re-fetched YouTube metadata"
+    },
+    "excludedObservedVariants": [
+      {
+        "bugsMvId": "624035",
+        "sourcePage": "https://music.bugs.co.kr/mv/624035",
+        "title": "‘SHEESH’ㅣBABY I’mma MONSTER (Teaser)",
+        "sourceType": "티저",
+        "duration": "00:20"
+      }
+    ],
+    "selectedTitleHasNoTeaserOrPerformanceQualifier": true,
+    "teaserExclusionScope": "Exact selected MV ID is regular with unqualified song title and full-length source duration. Listed variants are separately observed IDs, not an exhaustive universe of variants.",
+    "directBugsToYouTubeLinkFound": false,
+    "catalogYouTubeIdFoundInSourceHTML": false,
+    "crossPlatformVideoByteEqualityVerified": false,
+    "crossPlatformFramePixelIdentityVerified": false,
+    "crossPlatformAssessment": "Sufficient for a Bugs-source preview associated with this catalog work: exact artist/song, matching date, regular type, exact Bugs-ID duration and verified live catalog tuple. Does not establish a direct platform bridge, an identical video edit, a YouTube thumbnail, or a specific video frame/timecode.",
+    "historicalOriginalHashEqualityVerified": false,
+    "priorExpectedSHA256": null,
+    "sourceBytesMatchResearchManifest": true,
+    "reviewerModifiedOriginal": false,
+    "issues": []
+  },
+  "provenance": {
+    "sourceHTML": {
+      "sha256": "e97e17699c72db4f6979fa997d4df11734a62071fa03fd0a66bfc773c0cf02cc",
+      "retainedOutsideRepository": true,
+      "archiveName": "babymonster/sheesh/source.html",
+      "sourceUrl": "https://music.bugs.co.kr/mv/624049"
+    },
+    "durationHTML": {
+      "sha256": "2237b0d85b612f62ee4335e7b1154d7e0c32c0b218dce848d9772172fab05eec",
+      "retainedOutsideRepository": true,
+      "archiveName": "babymonster/drip/source.html",
+      "sourceUrl": "https://music.bugs.co.kr/mv/628466"
+    },
+    "imageHeaders": {
+      "sha256": "1720b1ad7550c4212012d6ae9f76f6922f77261879bd606d80e6f9266454083b",
+      "retainedOutsideRepository": true,
+      "archiveName": "babymonster/sheesh/image.headers",
+      "sourceUrl": "https://image.bugsm.co.kr/mvhd/images/500/6240/624049.jpg"
+    },
+    "researchEvidence": {
+      "sha256": "f339eec6b52c7346f170db0062921fb1b6a06ea9f3ec40244a7c08d1a1bfb0d9",
+      "retainedOutsideRepository": true,
+      "archiveName": "babymonster/sheesh/evidence.json"
+    },
+    "excludedVariantCaptures": [
+      {
+        "bugsMvId": "624035",
+        "sha256": "e97e17699c72db4f6979fa997d4df11734a62071fa03fd0a66bfc773c0cf02cc",
+        "retainedOutsideRepository": true,
+        "archiveName": "babymonster/sheesh/source.html",
+        "sourceUrl": "https://music.bugs.co.kr/mv/624049"
+      }
+    ]
+  },
+  "admissionBoundary": {
+    "allowedUse": "Work-associated Bugs-source MV preview with exact required source label",
+    "directYouTubeBridgeVerified": false,
+    "videoOrFramePixelIdentityVerified": false,
+    "youtubeThumbnailClaimAllowed": false,
+    "HDClaimAllowed": false,
+    "historicalDownloadHashEqualityVerified": false,
+    "nativeAspectRatioMustBePreserved": true,
+    "originalBytesMustBePreserved": true,
+    "soBadPilotExcluded": true
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "groupId": "recSyntheticGroup",
+  "slug": "synthetic-group",
+  "events": [
+    {
+      "id": "synthetic-debut",
+      "groupId": "recSyntheticGroup",
+      "eventType": "debut",
+      "title": "合成测试：闰日出道",
+      "summary": "仅供独立工程测试，不是真实团体事件。",
+      "scopeNote": "合成测试数据，禁止导入生产资料。",
+      "eventDate": { "value": "2024-02-29", "precision": "day" },
+      "announcementDate": { "value": "2024-02-20", "precision": "day" },
+      "plannedDate": null,
+      "status": "confirmed",
+      "importance": "major",
+      "memberIds": ["recSyntheticMember"],
+      "workIds": ["recSyntheticWork"],
+      "releaseKey": null,
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "synthetic-source",
+          "url": "https://timeline-fixture.example/evidence",
+          "publisher": "合成测试发布者",
+          "title": "合成证据：仅供测试",
+          "sourcePublishedAt": { "value": "2024-02-20", "precision": "day" },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "不是生产来源，不作任何真实断言。",
+          "evidenceRef": null
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    }
+  ],
+  "gaps": ["合成夹具，不代表任何真实团体覆盖率。"]
+}

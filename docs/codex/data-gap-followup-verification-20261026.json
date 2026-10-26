@@ -1,0 +1,214 @@
+{
+  "checkedAt": "2026-10-26",
+  "branch": "codex/data-gap-followup",
+  "frozenBaseline": "0801fc366cb385375f6d68e2495a73ee07c13831",
+  "publicOriginalsCommit": "bee7df466f7d1e5cce6f671420675e48e7dc751e",
+  "deployment": {
+    "version": 9,
+    "projectId": "appgprj_6add2704bc6c81918d3e0e2f13130422",
+    "sourceCommit": "4bb5d31affc55f92c3f87db2733dc422c62963c2",
+    "deploymentId": "appgdep_6ade3f474db8819185f5bad9ca9afa3b",
+    "savedVersionId": "appgprj_6add2704bc6c81918d3e0e2f13130422~appgver_befa10b06ed8819197458080168f0a50",
+    "status": "succeeded",
+    "url": "https://idol-all-groups-review-oct25.wuke40758.chatgpt.site",
+    "openInCodex": "queued",
+    "audience": "owner-private",
+    "readOnly": true,
+    "archiveBytes": 239196932,
+    "staticBytes": 259163908,
+    "sameOriginOriginals": 1166,
+    "removedStaleGeneratedAssets": 44,
+    "publicRef": "bee7df466f7d1e5cce6f671420675e48e7dc751e",
+    "oldV186Changed": false,
+    "mainMerged": false
+  },
+  "statistics": {
+    "groups": 51,
+    "verifiedAccountEntrances": 153,
+    "socialAvailable": 147,
+    "socialUnknownDisplayZero": 6,
+    "salesAvailableOrPublishedLowerBound": 42,
+    "salesUnknownDisplayZero": 9,
+    "winsPositive": 27,
+    "winsConfirmedZero": 21,
+    "winsUnknownDisplayZero": 3,
+    "change": "XG unknown zero -> source-confirmed zero; asOf=null because source has no count-specific cutoff"
+  },
+  "media": {
+    "catalogGroups": 51,
+    "catalogWorks": 605,
+    "editorialExtraVideoIds": 23,
+    "covers": 628,
+    "coverBytes": 73433666,
+    "identitySourceRecords": 1350,
+    "identityImages": 1249,
+    "identityWorks": 218,
+    "identityGroups": 42,
+    "identityBytes": 694636818,
+    "identityUniqueFiles": 1242,
+    "cardOnlyImages": 47,
+    "borderMetadataComplete": true,
+    "borderMetadataReview": "All selected original files scanned; original border candidates and H2H named cells reviewed; 1137 actual 3:4 renders reviewed in 19 contact sheets, with 125 presentation-only crop corrections checked against full originals.",
+    "evidenceLevels": {
+      "previously_reviewed_exact_original": 186,
+      "source_named_unique_mv_chapter": 526,
+      "source_named_exact_mv_page": 528,
+      "official_exact_mv_shoot_provenance": 4,
+      "official_named_member_video_thumbnail": 5
+    },
+    "coverSourceCrops": 39,
+    "identitySourceCrops": 335,
+    "worksWithoutPublicIdentity": 387,
+    "worksWithNoRelationships": 133,
+    "missingRelationshipImages": 1579,
+    "displayCropAdjustments": 146,
+    "actual3By4ContactSheetsReviewed": 22,
+    "addedBindings": 112,
+    "addedOriginalBytes": 20350347,
+    "newPublicOriginalsHttpShaVerified": 112,
+    "noMemberScoringRules": 5,
+    "notes": "Named chapter sources are not independently frame-by-frame verified; no new work/member relationship; original bytes preserved; large dimensions do not establish universal HD."
+  },
+  "personalLayouts": {
+    "groups": 51,
+    "contexts": 338,
+    "uniqueMembers": 331,
+    "validIndependentDetails": 338,
+    "repairedDetails": [
+      "NMIXX/JINNI",
+      "LE SSERAFIM/KIM GARAM"
+    ],
+    "sharedJournalLinksAdded": 7,
+    "sharedJournalLinkGroup": "BADVILLAIN",
+    "layoutFamilies": 7,
+    "collapsedInformationDetails": 33,
+    "collapsedInformationGroups": 4,
+    "withoutNarrativeBiographyDetails": 56,
+    "withoutNarrativeBiographyGroups": 7,
+    "uniformRedesign": false,
+    "currentRostersChanged": false
+  },
+  "validation": {
+    "focusedTests": {
+      "passed": 40,
+      "failed": 0
+    },
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "local": {
+      "profileLayouts": 45,
+      "profileFlows": 11,
+      "mediaLayouts": 30,
+      "mediaFlows": 3
+    },
+    "onlineServiceIdentityChrome": {
+      "profileLayouts": 45,
+      "profileFlows": 11,
+      "mediaLayouts": 30,
+      "mediaFlows": 3,
+      "pageErrors": 0,
+      "newImagesVerified": 112,
+      "reportTables": 2,
+      "rowsPerReportTable": 51
+    },
+    "viewportWidths": [
+      320,
+      390,
+      768,
+      1440,
+      2560
+    ],
+    "mediaViewportWidths": [
+      390,
+      1440
+    ],
+    "browserPath": "Browser plugin not available; existing Playwright and system Chrome",
+    "knownUnchangedTestFailure": "historical-affiliation.test.cjs legacy IZ*ONE .candidate-izone .ca-ordinal CSS assertion; same unchanged source/test as baseline; not a full-suite pass",
+    "onlineHealth": {
+      "routes": 4,
+      "consoleWarnings": 0,
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "frameworkOverlays": 0
+    },
+    "finalVisualCapture": {
+      "groups": [
+        "IZ*ONE",
+        "QWER",
+        "Geenius"
+      ],
+      "passedFlows": 3,
+      "awaitedImageDecode": true,
+      "originalDialogDecodedBeforeClosing": true,
+      "note": "Initial post-flow screenshot ran before lazy images decoded. Added explicit image decode wait and retook evidence; production code unchanged."
+    }
+  },
+  "notVerified": [
+    "real production writes",
+    "complete playback of all videos",
+    "80%/125% native zoom",
+    "user IAB session",
+    "new Figma synchronization"
+  ],
+  "artifacts": {
+    "completion-report.html": {
+      "bytes": 49882,
+      "sha256": "e3d27c130c681f984d05e3812d17259dbd83cde15cf7f474d04a19dda8d98127"
+    },
+    "focused-tests.txt": {
+      "bytes": 4003,
+      "sha256": "304e6691e5ec9ea17d31db0e93d9af341758ae81495c9fd13edcf69fa1807ab0"
+    },
+    "github-originals-http.json": {
+      "bytes": 109,
+      "sha256": "f8aae2f5bbae33c5d4ba77ea27e62f1c0c975358b33761f233529f34e919cf32"
+    },
+    "local-media-qa.json": {
+      "bytes": 3493,
+      "sha256": "90b169c524dc92000a8b0ff84ecea7483384d87a4fb98c0866c239ffc4ab24bd"
+    },
+    "local-profile-qa.json": {
+      "bytes": 9611,
+      "sha256": "3b010336561a53e9346d490248d043e79e31e0e1662b2cef81caf99d71f955ab"
+    },
+    "missing-mv-identities.csv": {
+      "bytes": 137721,
+      "sha256": "3df7a0434a7b9f5b0bb8f6b8512eb64dc02775f820d7f2f59d687becb2092b92"
+    },
+    "nmixx-390.png": {
+      "bytes": 204071,
+      "sha256": "90424eaab798afb976c6fc5954c98f775ff9bb48d8ae267aee793dcf0f3e65ea"
+    },
+    "online-health-qa.json": {
+      "bytes": 865,
+      "sha256": "07f8bb2c5d6b8b037c10c04ee087715ac319f845882bd033cf4bbd8955dbad82"
+    },
+    "online-media-qa.json": {
+      "bytes": 3531,
+      "sha256": "9e9e68af826708d3ec4d4b9b3d625fa20662eaa5331fda43fd1d3ed025a8b5d9"
+    },
+    "online-profile-qa.json": {
+      "bytes": 9649,
+      "sha256": "5ed5b73760d4a162fc624e48f5985857153eed7b9b011ef3d8464058f123b7d3"
+    },
+    "online-visual-qa.json": {
+      "bytes": 538,
+      "sha256": "f61609cf82584f4b374d5fd252737a1045c9509e9545b936e6bf0218eee359e1"
+    },
+    "production-build.txt": {
+      "bytes": 4784,
+      "sha256": "ce2e66b55fbe76bf70fbb729287e8be6d994335b8396db97996107dfb9ad1cf7"
+    },
+    "QWER-identity.png": {
+      "bytes": 723474,
+      "sha256": "d3114830e8a7aa345770c6f55eba6597e38a05cabe9a62a1e7dbfd1cfdf60f8c"
+    },
+    "typecheck.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "artifactNormalization": "Text archive line endings normalized to LF; build log trailing spaces removed. Original local command logs retained separately. HTML/CSV contents unchanged.",
+  "implementationCommit": "693180a4900776b30acfd41e3058b79615548246",
+  "pullRequest": "https://github.com/KAtOReNA7/idol/pull/39"
+}

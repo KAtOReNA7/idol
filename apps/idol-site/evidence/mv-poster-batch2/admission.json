@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUTC": "2026-10-19T07:47:45.717763+00:00",
+  "reviewer": "independent-review",
+  "decision": "approved_for_bugs_mv_preview_admission",
+  "approvedCount": 9,
+  "heldCount": 0,
+  "totalOriginalBytes": 536205,
+  "label": "MV 预览图（Bugs 来源）",
+  "scope": "Independent evidence review only; no upload, repository write, registry change, original-image modification, credentials, permissions, sharing, scores, notes, or viewing-state changes.",
+  "admissionBoundary": {
+    "allowedUse": "Work-associated Bugs-source MV preview with exact required source label",
+    "directYouTubeBridgeVerified": false,
+    "videoOrFramePixelIdentityVerified": false,
+    "youtubeThumbnailClaimAllowed": false,
+    "HDClaimAllowed": false,
+    "historicalDownloadHashEqualityVerified": false,
+    "nativeAspectRatioMustBePreserved": true,
+    "originalBytesMustBePreserved": true,
+    "soBadPilotExcluded": true
+  },
+  "preservation": {
+    "allNineOriginalHashesUnchangedDuringReview": true,
+    "soBadPilotTouched": false,
+    "repositoryEdited": false,
+    "uploadsPerformed": false
+  },
+  "holds": [],
+  "summaryFormat": "portable-reviewed-evidence-v1",
+  "upstreamAdmission": {
+    "sha256": "d93b40e1e98790447308e4aa559684cfcd6a5c55e4614824e21ff5d151d63755",
+    "retainedOutsideRepository": true,
+    "archiveName": "independent-admission.json"
+  },
+  "inputs": {
+    "researchManifest": {
+      "sha256": "44382849776b310f0fad6b8851c18ae33df5dfb696ceadd1f6239209d910e6e3",
+      "retainedOutsideRepository": true,
+      "archiveName": "manifest.json"
+    },
+    "liveCatalogEvidence": {
+      "sha256": "07f625a4cc1646d89c811ba1c42f5ded36572638f3a1a47c8f886d5725c51dac",
+      "capturedAt": "2026-10-19T07:40:21.312Z",
+      "mode": "live",
+      "sourceEndpoint": "/api/catalog?shape=display-v1",
+      "provenance": "Parent reports reading authenticated rendered API at approximately 07:41 UTC; independently compared the supplied captured tuples."
+    },
+    "repositorySnapshot": {
+      "sha256": "dedbfb37f19a55d9cc1916ddb0a0ae21e537843343956731fe4089ade6606547",
+      "capturedAt": "2026-10-11T08:45:38.562181+00:00",
+      "file": "data/snapshot.json"
+    },
+    "repositoryInventory": {
+      "sha256": "ecf62833e56fdab160ca382c3de3816d405e7b127bffef01a322a31ec05d74a7",
+      "file": "data/stages/inventory.json"
+    }
+  },
+  "pilotBaselineFile": "evidence/mv-poster-batch2/pilot-ledger-baseline.json",
+  "liveCatalogFile": "evidence/mv-poster-batch2/live-tuples-20261019.json",
+  "items": [
+    {
+      "candidateId": "stayc-asap-38cfc43c8f72",
+      "evidenceFile": "evidence/mv-poster-batch2/stayc-asap-approval.json",
+      "evidenceSHA256": "4b3c3a1ae479b59e96056b1e2a1f69cadab23f8a05e1989f61e85693a0708cfb",
+      "originalFile": "tests/fixtures/mv-poster-batch2/stayc-asap-original-591778.jpg"
+    },
+    {
+      "candidateId": "illit-magnetic-7e6dea822de5",
+      "evidenceFile": "evidence/mv-poster-batch2/illit-magnetic-approval.json",
+      "evidenceSHA256": "11a41854f5caacf270c488081ca4d1e98656a8df2e24e99d7eec734e616ad57a",
+      "originalFile": "tests/fixtures/mv-poster-batch2/illit-magnetic-original-623863.jpg"
+    },
+    {
+      "candidateId": "illit-cherish-my-love-546318c871d6",
+      "evidenceFile": "evidence/mv-poster-batch2/illit-cherish-my-love-approval.json",
+      "evidenceSHA256": "22d75ad94315d26d1a61c5a8f8ef18f5cd5107e6c93172abc77a3e078990a8a0",
+      "originalFile": "tests/fixtures/mv-poster-batch2/illit-cherish-my-love-original-628203.jpg"
+    },
+    {
+      "candidateId": "kiiikiii-i-do-me-93cd2515de40",
+      "evidenceFile": "evidence/mv-poster-batch2/kiiikiii-i-do-me-approval.json",
+      "evidenceSHA256": "2ea6a4d44496ac04ea6da8f9eca13684a945395236913dbaa0b137bf37a943be",
+      "originalFile": "tests/fixtures/mv-poster-batch2/kiiikiii-i-do-me-original-630526.jpg"
+    },
+    {
+      "candidateId": "kiiikiii-debut-song-85a082e4bab1",
+      "evidenceFile": "evidence/mv-poster-batch2/kiiikiii-debut-song-approval.json",
+      "evidenceSHA256": "06dd8464039bb0de4ab5a756ef8a7d9d5bfb9fb1f9ab55c7988a601a8cf0ddab",
+      "originalFile": "tests/fixtures/mv-poster-batch2/kiiikiii-debut-song-original-630656.jpg"
+    },
+    {
+      "candidateId": "babymonster-drip-f9a4cedc3986",
+      "evidenceFile": "evidence/mv-poster-batch2/babymonster-drip-approval.json",
+      "evidenceSHA256": "a18f433f895c4022ea94a25f4579109cc0bb1c1c6a9193d1fc828b1291e63744",
+      "originalFile": "tests/fixtures/mv-poster-batch2/babymonster-drip-original-628466.jpg"
+    },
+    {
+      "candidateId": "babymonster-sheesh-7320be42d4b6",
+      "evidenceFile": "evidence/mv-poster-batch2/babymonster-sheesh-approval.json",
+      "evidenceSHA256": "0868e283883a516619d96d298aff10f6d8fedb56a04d2066e2fbc3d03a0a8a67",
+      "originalFile": "tests/fixtures/mv-poster-batch2/babymonster-sheesh-original-624049.jpg"
+    },
+    {
+      "candidateId": "kiss-of-life-sticky-833fa8ea44db",
+      "evidenceFile": "evidence/mv-poster-batch2/kiss-of-life-sticky-approval.json",
+      "evidenceSHA256": "609d972762ca49ad6aa63d79066b10ed7c0b7ed70e4348e78a46ae03d444a516",
+      "originalFile": "tests/fixtures/mv-poster-batch2/kiss-of-life-sticky-original-626071.jpg"
+    },
+    {
+      "candidateId": "kiss-of-life-midas-touch-2f738f99974e",
+      "evidenceFile": "evidence/mv-poster-batch2/kiss-of-life-midas-touch-approval.json",
+      "evidenceSHA256": "c7b8ffaee0991059972e9cd8ccc8297818d0f828d240d1f214971c5d26312414",
+      "originalFile": "tests/fixtures/mv-poster-batch2/kiss-of-life-midas-touch-original-624111.jpg"
+    }
+  ],
+  "ledgerCount": 10,
+  "ledgerBytes": 606608
+}

@@ -1,0 +1,31 @@
+.mv-photo-stack{min-width:0;width:100%}
+.mv-photo-reference{margin:8px 0;font-size:12px}
+.mv-photo-reference>button{min-height:44px;text-decoration:underline;text-underline-offset:3px;background:transparent;color:inherit}
+.mv-look-photo-caption{display:block;margin:8px 0;font-size:12px;color:inherit}
+
+/* Approved same-look originals have mixed orientations. Their actual pixels,
+   not a fixed screenshot/portrait slot, determine the frame and caption flow.
+   Scoped overrides beat artist-specific legacy dimensions without changing them. */
+.mv-look-native{
+ width:fit-content!important;max-width:100%;height:auto!important;min-height:0!important;
+ aspect-ratio:auto!important;background:transparent!important;margin-inline:auto;
+ align-self:start;padding:0;
+}
+.mv-look-native>a,.mv-look-native>.member-work-photo-button{
+ position:relative!important;inset:auto!important;display:block;width:fit-content!important;
+ max-width:100%;height:auto!important;min-height:0!important;aspect-ratio:auto!important;
+ padding:0;background:transparent;
+}
+.mv-look-native img{
+ position:static!important;inset:auto!important;display:block;width:auto!important;height:auto!important;
+ min-width:0!important;min-height:0!important;max-width:100%!important;
+ max-height:min(70svh,600px)!important;object-fit:contain!important;margin-inline:auto;
+}
+@media(max-width:600px){.mv-look-native img{max-height:min(68svh,480px)!important}}
+/* Custom member galleries use flex-centered legacy screenshot slots. */
+.member-mv-look.mv-look-native{display:block;background:transparent!important}
+
+/* The reviewed Nxde original is a two-scene collage. Display only the approved
+   right scene on cards; the existing source link/lightbox retains all bytes. */
+.mv-reviewed-focus{display:block;position:relative;overflow:hidden;width:min(350px,38.888svh);max-width:100%;aspect-ratio:350/612;margin-inline:auto}
+.mv-look-native .mv-reviewed-focus img{position:absolute!important;left:-100%!important;top:0!important;right:auto!important;bottom:auto!important;width:200%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:fill!important;margin:0!important}

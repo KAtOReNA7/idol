@@ -1,0 +1,49 @@
+{
+  "tests": {
+    "passed": 113,
+    "failed": 0
+  },
+  "typecheck": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "productionBuild": {
+    "command": "npm run build via installed npm-cli.js",
+    "exitCode": 0
+  },
+  "browser": {
+    "implementation": "bundled Playwright with installed Chrome",
+    "reason": "Browser plugin not available",
+    "server": "http://127.0.0.1:4178",
+    "interactions": 9,
+    "viewportPages": 35,
+    "widths": [
+      320,
+      390,
+      1440,
+      2048,
+      2560
+    ],
+    "nativeZoom": "not tested",
+    "online": "in-app browser first navigation timed out"
+  },
+  "figma": {
+    "fileKey": "zeLNExz4TbpWRW3uiahef7",
+    "nodeId": "239:1102",
+    "designContextAndScreenshotRead": true,
+    "result": "older placeholder design; current existing native page preserved, new inner pages not accepted"
+  },
+  "sourceFingerprint": "d6c533be164d1a9b8a6fdde461c04dbcb3e8309277dc8cc64a153ece2f8767d2",
+  "publication": {
+    "version": 19,
+    "projectId": "appgprj_6ad9800421f8819188ffdf3bc8a8e0f3",
+    "sourceCommit": "ef1d2082de92fb79e4de3fdf5962d213a4e26a8e",
+    "deploymentId": "appgdep_6adb7e60da5c8191b5cd636e75a49eb5",
+    "status": "succeeded",
+    "preservedFiles": 192,
+    "fullTarBytes": 65701376,
+    "gzipBytes": 56774145
+  },
+  "privateWrites": "not enabled in static review; real owner save not verified",
+  "independentReview": "No reproducible issue found; reviewed identity isolation, routes and original asset hashes"
+}

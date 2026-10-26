@@ -1,0 +1,367 @@
+{
+  "schema": "codex-handoff-directory/1",
+  "repositoryPath": "handoffs/codex-20261022/combined-integration",
+  "excludedSelf": "DIRECTORY-SHA256.json",
+  "files": [
+    {
+      "path": "ASSET-BUDGET.json",
+      "bytes": 621,
+      "sha256": "e5d9b32d0c4282e4b2dd523ee6e879a9feb86c900a6994e8c151cbfbe399395d"
+    },
+    {
+      "path": "BASELINE-CHECK.json",
+      "bytes": 1128,
+      "sha256": "447bb8ace76ab31cdacb301ec447670fe13bfd1f09916e4b0507490cce782fdd"
+    },
+    {
+      "path": "OVERLAY-SHA256.json",
+      "bytes": 20588,
+      "sha256": "50e231c7fdc02b86720df3bbdd0d5aa2a08d6deb5c1ed927c3b95b9217ef1b33"
+    },
+    {
+      "path": "PACKAGING-GATE.json",
+      "bytes": 2972,
+      "sha256": "e328acd7547c1ff43b2dd1e5c7c79aff02bb625a2abd0425941f662df6d91760"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3278,
+      "sha256": "360e79dca8d1964e1c72127a6393454a40bfe245778eda67ff6dfd2fc45fe93a"
+    },
+    {
+      "path": "REQUIRED-PUBLIC-ASSETS.json",
+      "bytes": 27704,
+      "sha256": "8c1465c3d691b4f99660417f611bf1038063131423dbc8659421a3678224cbbf"
+    },
+    {
+      "path": "SAFETY.md",
+      "bytes": 848,
+      "sha256": "29ea840e88e78981985b91be3f83d15affbf6316368589672305d51bdaa9da0e"
+    },
+    {
+      "path": "TARGETED-TYPECHECK-CONFIG.json",
+      "bytes": 432,
+      "sha256": "6848b1addfba7745fac6938ad9e375094aaaff8490cce9abacdfffe19af739b7"
+    },
+    {
+      "path": "check-overlay.py",
+      "bytes": 1029,
+      "sha256": "8be4090fd3ec748a79ae80b1f2da66d4cfac0aee37153de92c8919adef95afb2"
+    },
+    {
+      "path": "native-source.patch",
+      "bytes": 225327,
+      "sha256": "a907a0677ab88609181a880b34d79c45d50dc5f00419907e8721d36d7c277cb1"
+    },
+    {
+      "path": "overlay/app/artists/genblue/page.tsx",
+      "bytes": 149,
+      "sha256": "5b1657ccd611e120f2ba488adb65b60b5228fd77a29f6cbb3f87091df903ce1b"
+    },
+    {
+      "path": "overlay/app/artists/wooah/page.tsx",
+      "bytes": 128,
+      "sha256": "ad8bb1afa1c6f91ea647f8a1b2d7213540cd1b26e596134cf5b82f214523759d"
+    },
+    {
+      "path": "overlay/components/genblue/bluecut-experience.tsx",
+      "bytes": 23714,
+      "sha256": "f1b5ffa87fe0981071ccf5edb26f9fbf1038c5fa44c3ccf6cabe2f45fe493490"
+    },
+    {
+      "path": "overlay/components/genblue/bluecut.css",
+      "bytes": 44241,
+      "sha256": "440d4715f70e515af988ea3ba15ff2584970789823e901a1c287b6c12b9dd8af"
+    },
+    {
+      "path": "overlay/components/wooah/editorial.css",
+      "bytes": 50091,
+      "sha256": "21a2c6fd0f15f5d64ea601035b0bd55fedf2db30a49fc46becba76de62cf2c2d"
+    },
+    {
+      "path": "overlay/components/wooah/editorial.tsx",
+      "bytes": 28693,
+      "sha256": "8f72f0c9e60eef872b55da2c86519e3d86404bbe9357eff57ab7e7c434c06ba4"
+    },
+    {
+      "path": "overlay/components/wooah/timeline.tsx",
+      "bytes": 1810,
+      "sha256": "1c0d98af4d56f5c7b2b4b3f3d6b19f00b3a418902ff83405a90b514a1fc7c6b2"
+    },
+    {
+      "path": "overlay/components/wooah/use-return-focus.ts",
+      "bytes": 2514,
+      "sha256": "74731c69c0fecf27242c9e797e1eca004e3682b73fbccc61984b31339edb172c"
+    },
+    {
+      "path": "overlay/data/genblue-bluecut.json",
+      "bytes": 10435,
+      "sha256": "73819f80eef8d3eda92e25131edf8103904dbb522124f7272e959bf9b742d5f4"
+    },
+    {
+      "path": "overlay/data/public-artist-navigation-keys.json",
+      "bytes": 21112,
+      "sha256": "51a5a875877be78f6bff99970f18e0280673972a76200f65c30842dc5b2f7bc9"
+    },
+    {
+      "path": "overlay/data/wooah-editorial.json",
+      "bytes": 27032,
+      "sha256": "260b1d8d8039da595263dc1dade6a2ddfdd523af87eb513e28ceb7b4c1d8d124"
+    },
+    {
+      "path": "overlay/data/wooah-native-navigation.json",
+      "bytes": 2432,
+      "sha256": "dde23bc65a39ffb9fd964ba28f6c634d4f8646ba71596514c5de2cff341430b2"
+    },
+    {
+      "path": "overlay/lib/idol/genblue-bluecut.ts",
+      "bytes": 12641,
+      "sha256": "10f4e202bd3918cf5c2795d26b92d74a16a0d5ec1c468e86c1553f9355994adb"
+    },
+    {
+      "path": "overlay/lib/idol/wooah-editorial.ts",
+      "bytes": 9493,
+      "sha256": "235368c183a6f5558c77d2552eb2ec0ef10a3f9d8d55e9785e6a40a385f76de8"
+    },
+    {
+      "path": "overlay/lib/idol/wooah-return-focus.ts",
+      "bytes": 1028,
+      "sha256": "d8d13e0e25c8fcf4430e2573cf1708d848a891c28db9dfa48d1e2f247e4b0ca6"
+    },
+    {
+      "path": "overlay/lib/idol/wooah-timeline.ts",
+      "bytes": 1422,
+      "sha256": "446809a9ae2f00e93e9e76b65841c6f67bab16790abcc5aeaed3bf2f1bf9877c"
+    },
+    {
+      "path": "overlay/public/artist/genblue/bluecut-originals-20261022/cover-act-like-that.jpg",
+      "bytes": 21217,
+      "sha256": "5c63dc37cf76cc26aab2474d7a715056045661846e2906d30651dd399b5d1bdf"
+    },
+    {
+      "path": "overlay/public/artist/genblue/bluecut-originals-20261022/vnext2-cover-genblue-cococo.jpg",
+      "bytes": 476426,
+      "sha256": "4aae262c674545ce549631144143436bd90fe6cececda0c00f681874adb7ad01"
+    },
+    {
+      "path": "overlay/public/artist/genblue/bluecut-originals-20261022/vnext2-cover-genblue-for-you.jpg",
+      "bytes": 105420,
+      "sha256": "5b5aa7342fa02947983ad6a1745d65f61c8c7102651d176fc4c11863638f3954"
+    },
+    {
+      "path": "overlay/public/artist/genblue/bluecut-originals-20261022/vnext2-cover-genblue-listen-to-you.jpg",
+      "bytes": 84242,
+      "sha256": "085a6f2996c9c678d59a95cf91d1578a8a6d427ff365249966931806f9029f32"
+    },
+    {
+      "path": "overlay/public/artist/genblue/bluecut-originals-20261022/vnext2-cover-genblue-mirror.jpg",
+      "bytes": 649835,
+      "sha256": "c43ec2a2b270a4ea928972b4318a2beb6cce021ac932ba150bcc4bfa1d4ef4a3"
+    },
+    {
+      "path": "overlay/public/artist/genblue/bluecut-originals-20261022/vnext2-cover-genblue-miss-you-1000.webp",
+      "bytes": 35400,
+      "sha256": "03a8063c0646ea3198e1e33691111e4f6e8fdf02f76ea3e2309af30319b8e6a7"
+    },
+    {
+      "path": "overlay/public/artist/genblue/bluecut-originals-20261022/vnext2-cover-genblue-night-market-queen.jpg",
+      "bytes": 140855,
+      "sha256": "43f84257409e05795e719574b9ab328459f3bc801a378d8417a643737ecd050e"
+    },
+    {
+      "path": "overlay/public/artist/genblue/bluecut-originals-20261022/vnext2-cover-genblue-the-summer.webp",
+      "bytes": 41498,
+      "sha256": "605905f30a9d2acef963e7bfc27a0a18f84c71418e59de78dabfe8e2437ee2ab"
+    },
+    {
+      "path": "overlay/public/artist/wooah/editorial-20261022/release-09fRNZvZnqJqm7024Sa7uP-platform.jpg",
+      "bytes": 170015,
+      "sha256": "3d7b06a0f402cceddf0c46a3cb31103276977235d9a98d3bd13046a422f8a1d7"
+    },
+    {
+      "path": "overlay/public/artist/wooah/editorial-20261022/release-13maoZj59uUsJEh99CbCxY-platform.jpg",
+      "bytes": 193166,
+      "sha256": "6183360be3940795c60cfe4837a106a09ebd1aff232c89572e863f658e653899"
+    },
+    {
+      "path": "overlay/public/artist/wooah/editorial-20261022/release-1VX9QyM1VF5Bfh7wP2ZjiG-platform.jpg",
+      "bytes": 160948,
+      "sha256": "46c1ec96f7c34da04917c641ab68bdf8d071370c30574bfada87f6581eab6602"
+    },
+    {
+      "path": "overlay/public/artist/wooah/editorial-20261022/release-4iHtzmB65LzS88mAtbckKG-platform.jpg",
+      "bytes": 157156,
+      "sha256": "418c6289bd43673fb2d3296cfc908fd08f99d1275e9c7ff6f9ac7bfe0b6e1bab"
+    },
+    {
+      "path": "overlay/public/artist/wooah/editorial-20261022/release-4wiRKxMEo5agPSLttu18FQ-platform.jpg",
+      "bytes": 139879,
+      "sha256": "8e19dbb76898edef9cd1e24e4e4048af1e68f509644f7dd000178a6d6fb3de77"
+    },
+    {
+      "path": "overlay/public/artist/wooah/editorial-20261022/release-6wwhS7RzJx0qQS9SOeohZe-platform.jpg",
+      "bytes": 174406,
+      "sha256": "57103474a12488fce670b733b0c2bc5666c40ab832be931996d7185c275a2200"
+    },
+    {
+      "path": "overlay/public/artist/wooah/editorial-20261022/release-7IHkMRNQRxK5N0uRytCKA1-platform.jpg",
+      "bytes": 117646,
+      "sha256": "d6ef9e8cded4d7c5ae25ddc364a9674595baf0009ced0149da62e472773148d9"
+    },
+    {
+      "path": "overlay/public/artist/wooah/editorial-20261022/release-7t8xBLIkt24xrDwvyfzUJ5-platform.jpg",
+      "bytes": 172123,
+      "sha256": "89e28028fd5d50c50c7c8a65a6c28ee761c6a9bdf93772f057748780541ae955"
+    },
+    {
+      "path": "overlay/public/artist/wooah/editorial-20261022/songyee-edaily-2020.jpg",
+      "bytes": 105861,
+      "sha256": "3c19c768e76505e35065e79dba2cb61fb288e8a7f0da148eb0700ebf1cb1854b"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/Apache-2.0-RobotoCondensed.txt",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/NotoSansSC-supplements-provenance.json",
+      "bytes": 12681,
+      "sha256": "599bd4924ddc22517a3fc324c86eea6efb43466a95130a6c8cbac5561a8e481f"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/OFL-NotoSansSC.txt",
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/OFL-RobotoCondensed.txt",
+      "bytes": 4393,
+      "sha256": "0e4cc6ece88573545be2ed25835363662a6182ba4a4c1b5c8feda52add30e8a6"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/RobotoCondensed-PROVENANCE.txt",
+      "bytes": 2822,
+      "sha256": "e48e80d9c612188f0833a2a9e861e709b6987f784323e4b8f38b50d7cdf197a0"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/RobotoCondensed-googlefonts-source.txt",
+      "bytes": 2723,
+      "sha256": "a8551bde0845e5d2f52949b1f8e822b99b6275de479c27728fcfa44d4f00b489"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/RobotoCondensed-verification.json",
+      "bytes": 2078,
+      "sha256": "9bb2af5336d5539d27372a6f02329c9e6ad341f1f4c5607ea23358c3d9ce775b"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/genblue-text.css",
+      "bytes": 32512,
+      "sha256": "f358b655b0b7fa3b740abc0651167358160981cfad3e2f53476e4f38d39468ea"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/noto-sans-sc-supplement-101.woff2",
+      "bytes": 58028,
+      "sha256": "a33308bf652e64ac2884bfe830996e933322b939b915bb823fd47383580664ad"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/noto-sans-sc-supplement-104.woff2",
+      "bytes": 61404,
+      "sha256": "1e716b78655e396075808be52a9e749df1b6b5d17bd0ccedc6dcb89586903737"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/noto-sans-sc-supplement-27.woff2",
+      "bytes": 47324,
+      "sha256": "4e0dafaa26d924f5612a138a34a817aa06b8f72bad9798fe64d221fb13001d31"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/noto-sans-sc-supplement-36.woff2",
+      "bytes": 41692,
+      "sha256": "21b841e271833161fe5f70a2052399e79faac029667abdcdffe81f260f2ce6b5"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/noto-sans-sc-supplement-43.woff2",
+      "bytes": 46488,
+      "sha256": "a98ffa0839e353eb7e768084e27892596616f6a3d8bb65c94202898bccb1fd68"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/noto-sans-sc-supplement-44.woff2",
+      "bytes": 54096,
+      "sha256": "aa1a541dfacfcad0c66fb7f9dd4f9c12ce729d98311336c634702d066aabbbc2"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/noto-sans-sc-supplement-61.woff2",
+      "bytes": 45096,
+      "sha256": "21c21d2375925f742573edc50e3bca85a63350bf1d5d566d2d762f8ce2b259d9"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/noto-sans-sc-supplement-73.woff2",
+      "bytes": 39096,
+      "sha256": "92f8b99dc1a79089d18b1684447e31ef62abf48de736555cf5840b781aeb9d56"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/noto-sans-sc-supplement-75.woff2",
+      "bytes": 43824,
+      "sha256": "216c1c94ee016db46f8d1dc5c51f402215dbf9013fbf9f60f3db3901f9a3b035"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/noto-sans-sc-supplement-76.woff2",
+      "bytes": 48240,
+      "sha256": "8a31272bf31f9340747866ad1a59ff6073bf92fe802e2ba5a531f6a8aac2a42b"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/noto-sans-sc-supplement-80.woff2",
+      "bytes": 32448,
+      "sha256": "c9ce6e0654379a2dd291a6f29323ff2d7f06156389ffb3e4d087a9d211887a6b"
+    },
+    {
+      "path": "overlay/public/fonts/genblue/roboto-condensed-black-latin.woff2",
+      "bytes": 20996,
+      "sha256": "e319d623bef9b8bfe3f86d6eda5c5d94a983eab3794f04a3513c5a73cfc90973"
+    },
+    {
+      "path": "overlay/public/fonts/wooah/NotoSansSC-OFL.txt",
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+    },
+    {
+      "path": "overlay/public/fonts/wooah/PROVENANCE.json",
+      "bytes": 1166,
+      "sha256": "febb65064e8527e624d6a4d88e15d2fc81db14ce570e5b72381218f2f784e31f"
+    },
+    {
+      "path": "overlay/public/fonts/wooah/noto-sans-sc-supplement-55.woff2",
+      "bytes": 47948,
+      "sha256": "70105493871b782981352a0cf696487afc098a69a4708d87a7931607fe15a128"
+    },
+    {
+      "path": "overlay/public/fonts/wooah/wooah-text.css",
+      "bytes": 389,
+      "sha256": "574d97aca6d5fbdedfe72b450858e24db79dde4c04551737a564404007aa7af1"
+    },
+    {
+      "path": "tests/README.md",
+      "bytes": 1008,
+      "sha256": "1bdf5ccf5f5bb3e8c261522b76496cd35a869293029e0a84d7e56ec44232c17b"
+    },
+    {
+      "path": "tests/fixtures/genblue.synthetic-catalog.json",
+      "bytes": 10046,
+      "sha256": "5dad1a5f79dcbc5cae8ee8bfb4fbafe40208dd3f11e1eb1709da35d913bc9d77"
+    },
+    {
+      "path": "tests/fixtures/wooah.synthetic-catalog.json",
+      "bytes": 22477,
+      "sha256": "f7f5932d5d79525f2d9875a226773f0077b8106f664400a015e871ca073803d7"
+    }
+  ],
+  "listedFileCount": 70,
+  "listedBytes": 4166063,
+  "frozenOverlayFileCount": 57,
+  "frozenOverlayBytes": 3848605,
+  "actuallyApplied": false,
+  "newRepositoryTestsRun": false,
+  "documentationRevision": {
+    "originalManifestSha256": "edf1edd4d55e12eb0a33d5da482a83745e6206a7c82c9b60b2c515b124ecf0c3",
+    "scope": "Portable README/status correction only; all product source, runtime assets and original patches unchanged."
+  }
+}

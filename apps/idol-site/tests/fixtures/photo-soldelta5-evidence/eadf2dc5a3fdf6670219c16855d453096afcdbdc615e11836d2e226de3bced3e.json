@@ -1,0 +1,150 @@
+{
+  "schema": "sol-delta5-billlie-tenor-independent-reproduction.v1",
+  "verifiedAt": "2026-10-19T09:40:07.141174+00:00",
+  "outcome": "passed",
+  "networkRequests": 2,
+  "requestMethod": "Two ordinary unauthenticated public HTTPS GETs, source page then its literal og:video URL; no API/authentication/alternate route.",
+  "sourcePageFetch": {
+    "url": "https://tenor.com/view/billlie-kpop-eunoia-music-video-dance-gif-3931019550095685792",
+    "finalUrl": "https://tenor.com/view/billlie-kpop-eunoia-music-video-dance-gif-3931019550095685792",
+    "status": 200,
+    "bytes": 125724,
+    "sha256": "73ab311909ebdac56c1f8711716a45e370171f5fa773c622354ad302a96601f7",
+    "elapsedSeconds": 18.102651596069336
+  },
+  "currentSourceHTML": {
+    "path": "/workspace/scratch/1274e297e819/sol-delta5-audit/public-recovery/billlie/tenor-eunoia-current.html",
+    "bytes": 125724,
+    "sha256": "73ab311909ebdac56c1f8711716a45e370171f5fa773c622354ad302a96601f7"
+  },
+  "publicOgVideoLiteral": "<meta class=\"dynamic\" property=\"og:video\" content=\"https://media.tenor.com/No3JdBCRuKAAAAPo/billlie-kpop.mp4\">",
+  "currentMinimalSourceSnapshot": {
+    "path": "/workspace/scratch/1274e297e819/sol-delta5-audit/public-recovery/billlie/tenor-eunoia-current-public-clip.raw.html",
+    "bytes": 494,
+    "sha256": "655ec3170199b32523af3435abc7155fe5c56afdad80a5486c1b243cedf25b23"
+  },
+  "currentSourceReproducesAllDeliveredRawProofRangesExactly": true,
+  "sourceRangeChecks": [
+    {
+      "start": 1224,
+      "endExclusive": 1321,
+      "sha256": "f7a7c7490432ef1c96f7ffa084644a0dcd202d5cfdba69f10dfa34e3eebd6ff4",
+      "actualSHA256": "f7a7c7490432ef1c96f7ffa084644a0dcd202d5cfdba69f10dfa34e3eebd6ff4",
+      "matchesDeliveredRangeSHA256": true
+    },
+    {
+      "start": 1451,
+      "endExclusive": 1613,
+      "sha256": "863e0b74caacbf332dfc28ff1c98a977ce4907aae6d3fc52db2ac7238eb2adec",
+      "actualSHA256": "863e0b74caacbf332dfc28ff1c98a977ce4907aae6d3fc52db2ac7238eb2adec",
+      "matchesDeliveredRangeSHA256": true
+    },
+    {
+      "start": 5717,
+      "endExclusive": 5827,
+      "sha256": "8b661e0d05da677c08ed8841747a2b71a5dbdee7396c1bc1d50018c00c684c05",
+      "actualSHA256": "8b661e0d05da677c08ed8841747a2b71a5dbdee7396c1bc1d50018c00c684c05",
+      "matchesDeliveredRangeSHA256": true
+    },
+    {
+      "start": 6015,
+      "endExclusive": 6077,
+      "sha256": "8bf8cc32ebe7ad66fe17f3fe9bff85c7abbd15ad8ed10d85d36b2daf5c6c4b27",
+      "actualSHA256": "8bf8cc32ebe7ad66fe17f3fe9bff85c7abbd15ad8ed10d85d36b2daf5c6c4b27",
+      "matchesDeliveredRangeSHA256": true
+    },
+    {
+      "start": 6077,
+      "endExclusive": 6140,
+      "sha256": "83414b5b16b6d54f67bd5d6d33a4715086a1f879415924355059d0149f2d441d",
+      "actualSHA256": "83414b5b16b6d54f67bd5d6d33a4715086a1f879415924355059d0149f2d441d",
+      "matchesDeliveredRangeSHA256": true
+    }
+  ],
+  "sourceClipFetch": {
+    "url": "https://media.tenor.com/No3JdBCRuKAAAAPo/billlie-kpop.mp4",
+    "finalUrl": "https://media.tenor.com/No3JdBCRuKAAAAPo/billlie-kpop.mp4",
+    "status": 200,
+    "bytes": 942401,
+    "sha256": "6a952be3bc1c6f9de3db15d9c8e0bea6990000c1a5f2a1935f83d6a56ec7c920",
+    "elapsedSeconds": 3.9871156215667725,
+    "sourcePageURL": "https://tenor.com/view/billlie-kpop-eunoia-music-video-dance-gif-3931019550095685792",
+    "sourceRawTag": "<meta class=\"dynamic\" property=\"og:video\" content=\"https://media.tenor.com/No3JdBCRuKAAAAPo/billlie-kpop.mp4\">",
+    "sourceTagByteStart": 5717,
+    "sourceTagSHA256": "8b661e0d05da677c08ed8841747a2b71a5dbdee7396c1bc1d50018c00c684c05"
+  },
+  "clip": {
+    "path": "/workspace/scratch/1274e297e819/sol-delta5-audit/public-recovery/billlie/eunoia-tenor-fresh.mp4",
+    "bytes": 942401,
+    "sha256": "6a952be3bc1c6f9de3db15d9c8e0bea6990000c1a5f2a1935f83d6a56ec7c920"
+  },
+  "clipSHA256MatchesProducer": true,
+  "clipDimensions": [
+    498,
+    282
+  ],
+  "clipDurationSeconds": 9.6,
+  "frameRate": "25/1",
+  "frames": [
+    {
+      "frameNumberZeroBased": 165,
+      "relativePTSSeconds": 6.6,
+      "officialMVTimecode": false,
+      "delivered": {
+        "path": "/workspace/scratch/1274e297e819/sol-delta5-audit/billlie/evidence/eunoia-tenor-n165.png",
+        "bytes": 199198,
+        "sha256": "756fc4cde1fc4c6972699784e3df16fe4c3fcb83e0d4475eeb57292e18d090e3"
+      },
+      "reproduced": {
+        "path": "/workspace/scratch/1274e297e819/sol-delta5-audit/public-recovery/billlie/eunoia-tenor-fresh-n165.png",
+        "bytes": 199198,
+        "sha256": "756fc4cde1fc4c6972699784e3df16fe4c3fcb83e0d4475eeb57292e18d090e3"
+      },
+      "dimensions": [
+        498,
+        282
+      ],
+      "byteForByteEqual": true,
+      "decodedRGBPixelsEqual": true,
+      "rescaled": false,
+      "cropped": false,
+      "sharpened": false,
+      "extractionCommand": "ffmpeg -hide_banner -loglevel error -i eunoia-tenor-fresh.mp4 -vf select='eq(n,165)' -frames:v 1 eunoia-tenor-fresh-n165.png"
+    },
+    {
+      "frameNumberZeroBased": 170,
+      "relativePTSSeconds": 6.8,
+      "officialMVTimecode": false,
+      "delivered": {
+        "path": "/workspace/scratch/1274e297e819/sol-delta5-audit/billlie/evidence/eunoia-tenor-n170.png",
+        "bytes": 203453,
+        "sha256": "02a10de1d5ee2f44bc64cd4927395d752beff015950a4aea2b88fb70617f5be4"
+      },
+      "reproduced": {
+        "path": "/workspace/scratch/1274e297e819/sol-delta5-audit/public-recovery/billlie/eunoia-tenor-fresh-n170.png",
+        "bytes": 203453,
+        "sha256": "02a10de1d5ee2f44bc64cd4927395d752beff015950a4aea2b88fb70617f5be4"
+      },
+      "dimensions": [
+        498,
+        282
+      ],
+      "byteForByteEqual": true,
+      "decodedRGBPixelsEqual": true,
+      "rescaled": false,
+      "cropped": false,
+      "sharpened": false,
+      "extractionCommand": "ffmpeg -hide_banner -loglevel error -i eunoia-tenor-fresh.mp4 -vf select='eq(n,170)' -frames:v 1 eunoia-tenor-fresh-n170.png"
+    }
+  ],
+  "limitations": [
+    "This is a 9.6-second fan-published excerpt. Its times are relative excerpt PTS, not official-MV timestamps.",
+    "Exact-MV identity still relies on the separately verified Kstyle/MyDaily publication-image bridge; Tenor page has no YouTube ID.",
+    "Fresh full-page SHA differs from historical producer page SHA, but all original delivered title/keyword/og-video/dimension source ranges are reproduced exactly at their documented offsets."
+  ],
+  "oldPhotosRedownloaded": false,
+  "registryWrites": 0,
+  "backendWrites": 0,
+  "uploads": 0,
+  "credentialUse": false
+}

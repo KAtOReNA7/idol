@@ -49,8 +49,14 @@ test('CLI checks synthetic tracked paths, including names containing newlines', 
     assert.equal(clean.status, 0, clean.stderr);
     assert.match(clean.stdout, /1 tracked paths checked/);
     const forbidden = 'synthetic\nstate.db';
-    writeFileSync(join(cwd, forbidden), 'synthetic fixture');
-    execFileSync('git', ['add', '--', forbidden], { cwd });
+    // Exercise Git's NUL-delimited paths without asking Windows to create an
+    // unsupported newline filename. The CLI reads the index, not the worktree.
+    const blob = execFileSync('git', ['hash-object', '-w', '--stdin'], {
+      cwd, input: 'synthetic fixture', encoding: 'utf8',
+    }).trim();
+    execFileSync('git', ['-c', 'core.protectNTFS=false', 'update-index', '-z', '--index-info'], {
+      cwd, input: `100644 ${blob}\t${forbidden}\0`,
+    });
     const dirty = spawnSync(process.execPath, [script], { cwd, encoding: 'utf8' });
     assert.equal(dirty.status, 1, dirty.stderr);
     assert.ok(dirty.stderr.includes(JSON.stringify(forbidden)));

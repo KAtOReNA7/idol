@@ -1,0 +1,13 @@
+import {memberCareerMetadata} from '@/lib/idol/member-career-display';
+import {ownControl,assertSourceUnchanged,nativeExportSnapshot} from '@/lib/idol/native-storage';
+import {configured} from '@/lib/idol/feishu';
+import {liveTables} from '@/lib/idol/live';
+import {requireUser,failure} from '@/lib/idol/http';
+import {stageSourceMetadata,stageResearchMetadata} from '@/lib/idol/stage';
+import {groupPlaceholderMetadata} from '@/lib/idol/placeholders';
+import {stageSupplementMetadata} from '@/lib/idol/supplements';
+import {groupMilestoneMetadata} from '@/lib/idol/group-milestones';
+import {hash} from '@/lib/idol/hash';
+import {snapshotBackupBase64,snapshotBackupSha256} from '@/data/backup';
+export const dynamic='force-dynamic';
+export async function GET(){try{const user=await requireUser();const before=await ownControl(user.userId);const snapshot=await nativeExportSnapshot(user.userId);if(snapshot){const {tables,journal,photos}=snapshot;const backup={formatVersion:'idol.native-data-export.v1',capturedAt:new Date().toISOString(),source:'native',tables,journal,photos:{containsImageBytes:false,manifest:photos},siteMetadata:{stageVideos:stageSourceMetadata,stageResearch:stageResearchMetadata,groupPlaceholders:groupPlaceholderMetadata,stageSupplements:stageSupplementMetadata,groupMilestones:groupMilestoneMetadata,memberCareers:memberCareerMetadata}};await assertSourceUnchanged(user.userId,before);return new Response(JSON.stringify(backup,null,2),{headers:{'Content-Type':'application/json; charset=utf-8','Content-Disposition':'attachment; filename="stage-data-backup.json"','Cache-Control':'private, no-store','X-Canonical-SHA256':await hash(backup)}});}if(!configured()){await assertSourceUnchanged(user.userId,before);const bytes=Uint8Array.from(atob(snapshotBackupBase64),c=>c.charCodeAt(0));return new Response(bytes,{headers:{'Content-Type':'application/gzip','Content-Disposition':'attachment; filename="stage-snapshot-20261011.json.gz"','Cache-Control':'private, no-store','X-Content-SHA256':snapshotBackupSha256}});}const tables=await liveTables();const backup={formatVersion:'idol.live-backup.v1',capturedAt:new Date().toISOString(),source:'feishu',tables,siteMetadata:{stageVideos:stageSourceMetadata,stageResearch:stageResearchMetadata,groupPlaceholders:groupPlaceholderMetadata,stageSupplements:stageSupplementMetadata,groupMilestones:groupMilestoneMetadata,memberCareers:memberCareerMetadata}};await assertSourceUnchanged(user.userId,before);return new Response(JSON.stringify(backup,null,2),{headers:{'Content-Type':'application/json; charset=utf-8','Content-Disposition':'attachment; filename="stage-live-backup.json"','Cache-Control':'private, no-store','X-Canonical-SHA256':await hash(backup)}});}catch(e){return failure(e);}}

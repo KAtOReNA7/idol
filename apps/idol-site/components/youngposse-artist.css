@@ -1,0 +1,25 @@
+@import './candidate/youngposse-native-design.css';
+@font-face{font-family:YPInter;src:url('/fonts/hearts2hearts/Inter-Latin-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+[data-yp-native]{font-family:YPInter,"Noto Sans SC","Microsoft YaHei",sans-serif}
+[data-yp-native] .photo{min-height:0;border-radius:0}
+[data-yp-native] .hero-photo{flex-direction:column}
+[data-yp-native] .group-footer{display:block}
+[data-yp-native] .footer-links{flex-direction:row}
+[data-yp-native] main,[data-yp-native] .masthead{max-width:1600px;margin-inline:auto}
+[data-yp-native] .member-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;align-items:start}
+[data-yp-native] .member-grid .person-tile{width:100%;max-width:none}
+[data-yp-native] .member-grid .portrait{width:100%;aspect-ratio:1;object-fit:contain}
+[data-yp-native] .member-grid .member-caption h2{font-size:26px}
+[data-yp-native] .member-grid .member-caption p{font-size:14px}
+[data-yp-native] .search-clear{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:8px 16px;text-decoration:underline}
+[data-yp-native] .search-form>div{flex-wrap:wrap}
+[data-yp-native] .search-form input{flex:1;min-width:100px}
+[data-yp-native] .result-count{color:var(--muted);font-size:14px;margin-bottom:24px}
+[data-yp-native] .work-tabs a:has([aria-current]){border-color:var(--acid)}
+[data-yp-native] .hero-photo .photo-open{aspect-ratio:1000/566}
+[data-yp-native] .hero-photo .group{width:100%;height:100%;object-fit:contain}
+[data-yp-native] .photo-open:hover{outline:1px solid var(--acid);outline-offset:4px}
+@media(max-width:959px){[data-yp-native] .member-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:599px){[data-yp-native] .member-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}[data-yp-native] .member-grid .member-caption h2{font-size:22px}[data-yp-native] .member-grid .member-caption p{font-size:12px}[data-yp-native] .member-grid .member-index{font-size:24px;margin-bottom:12px}}
+
+.public-video-preview{display:block;width:160px;flex:none;aspect-ratio:16/9;overflow:hidden}.public-video-preview img,.public-film-preview img{width:100%;height:100%;object-fit:cover}.public-film-preview{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;align-self:start}@media(max-width:600px){.public-video-preview{width:100%;margin-bottom:18px}}

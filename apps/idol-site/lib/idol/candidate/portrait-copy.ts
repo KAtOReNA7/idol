@@ -1,0 +1,32 @@
+// Exact editorial projections of photo credits. Raw provenance and limitations stay in the source records.
+const credits:Record<string,string>={
+  "Mnet Smart+ / CJ ENM Japan": "Mnet Smart+ / CJ ENM Japan",
+  "官方具名资料照 · 核于 2026-10-16；拍摄日期未确认": "官方具名资料照",
+  "2024 年 2 月 Welcome to Candy Shop 出道前 YUINA 具名自我介绍卡；不据此更新体格字段。": "2024 年 2 月 Welcome to Candy Shop 出道前 YUINA 具名自我介绍卡",
+  "Campus Entertainment 提供 / Newsen 正式访谈 · 2024.04.24刊载": "Campus Entertainment 提供 / Newsen 正式访谈 · 2024.04.24刊载",
+  "2024-06-07 Edaily原采访发布者所附具名单人照片；不等同公司官网概念图；不替未具名概念图赋名。": "2024-06-07 Edaily原采访发布者所附具名单人照片",
+  "官方资料页具名照片 · 拍摄日期未知": "官方资料页具名照片",
+  "2021-08-03 官方宣传资料照 · 非当前拍摄": "2021-08-03 官方宣传资料照",
+  "ifeye 官方具名资料照 · 核于2026-10-16；拍摄日期未确认": "ifeye 官方具名资料照",
+  "MADEIN 官方具名资料照 · 核于2026-10-16；拍摄日期未确认": "MADEIN 官方具名资料照",
+  "QWER 官方成员资料照 · 核于2026-10-16，拍摄日期未确认": "QWER 官方成员资料照",
+  "IN MEDIA A&D 官网具名档案卡 · 完整未裁切 · 拍摄时期未注明": "IN MEDIA A&D 官网具名档案卡",
+  "公司供图的历史具名肖像；不代表当前活动状态。": "公司供图的历史具名肖像",
+  "日本官方 fanclub 同一资料页具名肖像集合；摄影时期未知": "日本官方 fanclub 资料照",
+  "GENBLUE 官方具名资料卡 · 核于2026-10-16；拍摄日期未确认": "GENBLUE 官方具名资料卡",
+  "WOOAH 日本官网 NANA 具名资料页肖像；资料集合不等于同次拍摄。": "WOOAH 日本官网 NANA 具名资料页肖像",
+  "Singles 2024-06-24 原访谈所附单人照片；属于2024年7月号刊物内容。期号、发布日、CDN路径日期均不作拍摄日期，也不代表当前活动阵容。": "Singles · 2024 年 7 月号访谈肖像 · 2024.06.24 发布",
+  "日本官网同一 PROFILE 卡片集合；摄影系列及时期未确认": "日本官网 PROFILE 资料照",
+  "2024 年 1 月 Girls of the Year 出道概念历史肖像；不是 GIRLSET 当前肖像。": "2024 年 1 月 Girls of the Year 出道概念历史肖像",
+  "i-dle 日本官方资料照": "i-dle 日本官方资料照",
+  "HOMe 官方艺人页 · 拍摄时期未注明": "HOMe 官方艺人页",
+  "官方Weverse公开资料头像；仅证明此资料页姓名与头像绑定。六张公开具名头像不构成核验日实际活动阵容证明。": "官方Weverse公开资料头像",
+  "2025-07-03 Kstyle本人专访历史肖像；仅绑定已有YOUNGEUN记录，不表当前成员关系。正文另列元記事配信日時2025-06-05 17:19，单列为来源字段，不替代主发布日或拍摄日。": "Kstyle · 2025.07.03 本人专访历史肖像",
+  "izna 官方具名资料照 · 核于2026-10-16；拍摄日期未确认": "izna 官方具名资料照",
+  "2024-11-25 izna 出道发布会具名新闻肖像；保留 SPOTV 水印，不代表当前成员状态。": "2024-11-25 izna 出道发布会具名新闻肖像；保留 SPOTV 水印，不代表当前成员状态。",
+  "UNIS 官方成员资料照 · 核于2026-10-16，拍摄日期未确认": "UNIS 官方成员资料照",
+  "2021 时期 Universal 日本历史 PROFILE 具名肖像；原艺名大小写/空格对应，不改当前成员关系": "2021 时期 Universal 日本历史 PROFILE 具名肖像",
+  "官方Weverse公开资料头像；仅证明此资料页姓名与头像绑定。该旧社区为历史资料来源，不能据六人列示改写现有活动关系。": "历史 Weverse 公开资料头像",
+  "tripleS 官方具名资料照 · 核于2026-10-16；拍摄日期未确认": "tripleS 官方具名资料照"
+};
+export function publicPortraitCredit(credit:string){return credits[credit]??credit;}

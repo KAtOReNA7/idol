@@ -1,0 +1,263 @@
+{
+  "checkedAt": "2026-10-19T09:47:11.204510+00:00",
+  "scope": "Independent local server-proposal validation only. No public research repeated; no repository, private backend, upload, credential or sharing changes.",
+  "result": "PASS_WITH_INTEGRATION_GATES",
+  "failures": [],
+  "sourceValidator": {
+    "path": "lib/idol/photo-source-proof.ts",
+    "sha256": "cfd7445c1dde5d6223bd0b0721aa3894b1d54722b523bd305eb84fe0f65d3c16",
+    "exact14FieldsChecked": [
+      "identityBasis",
+      "sourceIdentityName",
+      "identityEvidence",
+      "identitySelector",
+      "sourceSnapshotSha256",
+      "sourcePageUrl",
+      "sourceImageUrl",
+      "sourceName",
+      "sourceCredit",
+      "lookBasis",
+      "lookEvidence",
+      "lookEvidenceUrl",
+      "lookEvidenceSelector",
+      "lookEvidenceSnapshotSha256"
+    ],
+    "allNineCurrentValidatorPass": true,
+    "isolatedExactPolicyAndTenNegativeChecksPerCandidatePass": true
+  },
+  "counts": {
+    "candidates": 9,
+    "normalAppend": 4,
+    "controlledSuccessors": 5,
+    "uniqueProofFilesChecked": 44,
+    "originalImagesDecoded": 9,
+    "eunoiaOldLocalOriginals": 2,
+    "existingRegistry": 206,
+    "hypotheticalRegistryAfterAddition": 215
+  },
+  "bytes": {
+    "newUploadBytes": 5720007,
+    "largestOriginal": 1619011,
+    "allStrictlyBelow3000000": true,
+    "existingRegistryBytes": 72533311,
+    "hypotheticalRegistryBytesAfterAddition": 78253318
+  },
+  "proposalFileHashes": {
+    "proposed-append-candidates.json": "20887b5c91f9ba73e5f8b529b009442bd053f9a0f0e97f587ab4188c3b8ae5d4",
+    "proposed-append-proof-files.json": "3d4159db91279b52cf53d16323c4b60bcc8143ce41b8197b5fa8edd0851cd6df",
+    "proposed-nxde-controlled-successors.json": "7ac00f7e75a1f7bbaa585b05d7ab4a6b9b3eec71128e8d7953c0b7c499b3a7c4",
+    "proposed-upload-paths.json": "a479b1184c64d1f35c3b0b0c58fd508c6739bf4572c73471c5da6e627a713476"
+  },
+  "immutableRegistry": {
+    "head": "536b6fb9bf79ef62b7d2461d21b539c890ca3b44",
+    "files": {
+      "data/photo-import-candidates.json": {
+        "sha256": "9ac69b04c345ad832c0f1a54da5528a4292f6742a06edda260c4fb5a63da0fed",
+        "matchesGitHEAD": true
+      },
+      "lib/idol/photo-append-candidates.ts": {
+        "sha256": "1449c0dcb5e2175bd0afd4bc251c83fc519c6fb8ecbacde9b42191f87db57114",
+        "matchesGitHEAD": true
+      }
+    },
+    "published206RegressionTests": {
+      "passed": true,
+      "tests": 5
+    },
+    "allOldEntriesRetained": true
+  },
+  "liveTupleEvidence": {
+    "path": "/workspace/scratch/1274e297e819/sol-delta5-audit/live-nine-tuples-proof.json",
+    "sha256": "6b6101c6b22f049a7e23f48ec2e249acaec5506cf53de511ed4d3d5171403ff7",
+    "capturedAt": "2026-10-19T09:33:50.861Z",
+    "exactNineTuplesCrossChecked": true,
+    "limitation": "Supplied authenticated read-only capture, not a new backend read. Display catalog does not expose candidate IDs or SHA; old IDs/SHA established independently from immutable registry, retained proof bytes and previous live admission receipt."
+  },
+  "candidateResults": [
+    {
+      "candidateId": "recvxBAlQAjrj6:mv-look.20261019.soldelta5:16525c7463a99573d850750e964655596763dda18f23d3e16f9990becd801f71",
+      "song": "Supersonic",
+      "memberName": "李瑞渊（LEE SEOYEON）",
+      "sourceName": "Dispatch · HEAT 概念写真",
+      "integrationKind": "normal_append",
+      "qualityTier": "clear_main_published_source",
+      "width": 3000,
+      "height": 2000,
+      "byteLength": 1619011,
+      "proofFilesChecked": 9,
+      "passes": true
+    },
+    {
+      "candidateId": "recvxBAlQAr9Om:mv-look.20261019.soldelta5:8293c5d35ce33f67f6666df83830a009d9a5502f63cf17db816453a7118fd38a",
+      "song": "Supersonic",
+      "memberName": "李彩煐（LEE CHAEYOUNG）",
+      "sourceName": "Dispatch · HEAT 概念写真",
+      "integrationKind": "normal_append",
+      "qualityTier": "clear_main_published_source",
+      "width": 2000,
+      "height": 3000,
+      "byteLength": 1571883,
+      "proofFilesChecked": 9,
+      "passes": true
+    },
+    {
+      "candidateId": "recvxARiP2wQ44:mv-look.20261019.soldelta5:6171656003f5fda844d98806b6de40ce8f9343b1208f457ff4f38082689b54e9",
+      "song": "EUNOIA",
+      "memberName": "春奈（艺名音译）（HARUNA）",
+      "sourceName": "Dispatch · 发布会同造型照",
+      "integrationKind": "normal_append",
+      "qualityTier": "clear_main_published_source",
+      "width": 1000,
+      "height": 1500,
+      "byteLength": 287378,
+      "proofFilesChecked": 14,
+      "passes": true
+    },
+    {
+      "candidateId": "recvxARiP206Lb:mv-look.20261019.soldelta5:c89c11400fc873b3ddc036840f0959cc2504934eca12b328c3666fa31b155f69",
+      "song": "EUNOIA",
+      "memberName": "金秀炫（SUHYEON）",
+      "sourceName": "Dispatch · 发布会同造型照",
+      "integrationKind": "normal_append",
+      "qualityTier": "clear_main_published_source",
+      "width": 1000,
+      "height": 1500,
+      "byteLength": 163379,
+      "proofFilesChecked": 14,
+      "passes": true
+    },
+    {
+      "candidateId": "recvxARiP2zH0q:mv-look.20261019.soldelta5:15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9",
+      "song": "Nxde",
+      "memberName": "赵美延（MIYEON）",
+      "sourceName": "Dispatch · 发布会同造型照",
+      "integrationKind": "controlled_successor",
+      "qualityTier": "main_photo",
+      "width": 1000,
+      "height": 1500,
+      "byteLength": 443253,
+      "proofFilesChecked": 4,
+      "passes": true
+    },
+    {
+      "candidateId": "recvxARiP22f9m:mv-look.20261019.soldelta5:9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346",
+      "song": "Nxde",
+      "memberName": "妮查·约塔拉拉克（音译）（MINNIE）",
+      "sourceName": "SportsChosun / Chosun · 发布会同造型照",
+      "integrationKind": "controlled_successor",
+      "qualityTier": "card_only",
+      "width": 640,
+      "height": 961,
+      "byteLength": 425403,
+      "proofFilesChecked": 4,
+      "passes": true
+    },
+    {
+      "candidateId": "recvxARiP2fYjn:mv-look.20261019.soldelta5:9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14",
+      "song": "Nxde",
+      "memberName": "田小娟（SOYEON）",
+      "sourceName": "iMBC · 发布会同造型照",
+      "integrationKind": "controlled_successor",
+      "qualityTier": "main_photo",
+      "width": 800,
+      "height": 1120,
+      "byteLength": 367214,
+      "proofFilesChecked": 4,
+      "passes": true
+    },
+    {
+      "candidateId": "recvxARiP2SvGc:mv-look.20261019.soldelta5:5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4",
+      "song": "Nxde",
+      "memberName": "宋雨琦（YUQI）",
+      "sourceName": "SportsChosun / Chosun · 发布会同造型照",
+      "integrationKind": "controlled_successor",
+      "qualityTier": "card_only",
+      "width": 640,
+      "height": 882,
+      "byteLength": 413623,
+      "proofFilesChecked": 6,
+      "passes": true
+    },
+    {
+      "candidateId": "recvxARiP2xniJ:mv-look.20261019.soldelta5:ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d",
+      "song": "Nxde",
+      "memberName": "叶舒华（SHUHUA）",
+      "sourceName": "SportsChosun / Chosun · 发布会同造型照",
+      "integrationKind": "controlled_successor",
+      "qualityTier": "card_only",
+      "width": 640,
+      "height": 941,
+      "byteLength": 428863,
+      "proofFilesChecked": 4,
+      "passes": true
+    }
+  ],
+  "eunoiaOldOriginals": [
+    {
+      "ratingId": "recvxARiP2wQ44",
+      "originalFile": "/workspace/scratch/1274e297e819/sol-delta4-audit/public-recovery/billlie/eunoia-haruna-dispatch-showcase.jpg",
+      "sha256": "6171656003f5fda844d98806b6de40ce8f9343b1208f457ff4f38082689b54e9",
+      "byteLength": 287378,
+      "locallyPresentAndDecoded": true,
+      "priorExpectedSHAMatches": true
+    },
+    {
+      "ratingId": "recvxARiP206Lb",
+      "originalFile": "/workspace/scratch/1274e297e819/sol-delta4-audit/public-recovery/billlie/eunoia-suhyeon-dispatch-showcase.jpg",
+      "sha256": "c89c11400fc873b3ddc036840f0959cc2504934eca12b328c3666fa31b155f69",
+      "byteLength": 163379,
+      "locallyPresentAndDecoded": true,
+      "priorExpectedSHAMatches": true
+    }
+  ],
+  "nxdeChainResults": [
+    {
+      "oldCandidateId": "recvxARiP2zH0q:mv-look.20261019.soldelta4:ae76173048105b271b83cb7db7dd6d33bc790be8c58bbbc7e2204d64adf59588",
+      "newCandidateId": "recvxARiP2zH0q:mv-look.20261019.soldelta5:15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9",
+      "oldEvidenceId": "cd6b25456428f0fc40cfca5b0ea5e34c5663bb2473bf84c4ce082dec94aee186",
+      "newEvidenceId": "02bc4eccaaf5dbba3e10ad241c5bb7122b76d7590a5db276f1e45afc4ab4defb",
+      "oldOriginalLocallyPresentAndExact": true,
+      "passes": true
+    },
+    {
+      "oldCandidateId": "recvxARiP22f9m:mv-look.20261019.soldelta4:15183e04703b96ef172346bd6c66750b74fb77d8a2b038f424f59b0e4d7fad46",
+      "newCandidateId": "recvxARiP22f9m:mv-look.20261019.soldelta5:9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346",
+      "oldEvidenceId": "fb3d6403312df643e2eb032fa4f3dd71712b8f90f908df8ab010302c69299fce",
+      "newEvidenceId": "2819632045fbd0cbb03acdb0806a9a57510b165f0d327246947edbb8fa6e30dd",
+      "oldOriginalLocallyPresentAndExact": true,
+      "passes": true
+    },
+    {
+      "oldCandidateId": "recvxARiP2fYjn:mv-look.20261019.soldelta4:96f6bda8acdbe1042501f175d4a26df786124be03d3dfdf3e6ac2fb076f165f1",
+      "newCandidateId": "recvxARiP2fYjn:mv-look.20261019.soldelta5:9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14",
+      "oldEvidenceId": "b2ab0d29bcd63dd4dc16650e28ce459e788bba4019c46722c6afbbad3929e81e",
+      "newEvidenceId": "0f5d102e0f84823b2c41ffb628b36f62c9cc9163560807de80debf8a84714d02",
+      "oldOriginalLocallyPresentAndExact": true,
+      "passes": true
+    },
+    {
+      "oldCandidateId": "recvxARiP2SvGc:mv-look.20261019.soldelta4:f273785926c0c8895c7128c7bc049bcf7682292bfde40bfb8616b8bd988e09f7",
+      "newCandidateId": "recvxARiP2SvGc:mv-look.20261019.soldelta5:5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4",
+      "oldEvidenceId": "521774ec4eb4b625f886bbc0e4919cc928dd8dc8b2c652270b90a5f0cda08163",
+      "newEvidenceId": "7760bc6f8810ffc3a68196f2b112e6bd55528ff9a8e4ff0c1b129aac652f7078",
+      "oldOriginalLocallyPresentAndExact": true,
+      "passes": true
+    },
+    {
+      "oldCandidateId": "recvxARiP2xniJ:mv-look.20261019.soldelta4:46011f56f82824c9acbe2ccdbbfc676835b3cc582cfa21013333da077c3f4f54",
+      "newCandidateId": "recvxARiP2xniJ:mv-look.20261019.soldelta5:ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d",
+      "oldEvidenceId": "5e413e8f331e9b01c78a676e89f113bc817d2d96b60c3438aa4acd5335314324",
+      "newEvidenceId": "1ebb31a0b6e3860de206555c46cbcb40b115bf57dc2da65ce8e3f141fad22aa6",
+      "oldOriginalLocallyPresentAndExact": true,
+      "passes": true
+    }
+  ],
+  "integrationGates": [
+    "Four normal appends have no existing approved candidate for the exact tuple.",
+    "Five Nxde originals remain registered and locally retained. Current catalog selects only exactly one approved look; merely appending another approval falls back to the legacy reference. Implement exact old-to-new controlled successor selection before admission, without weakening ambiguity rejection.",
+    "Do not inherit the old 350px right-half collage crop. Preserve full originals, index-0 references, unrelated attachments, ratings, notes and watch state.",
+    "Retain HEAT concept-photography label for Supersonic and showcase label for EUNOIA/Nxde; keep the three 640px Nxde portraits card-only.",
+    "All nine proposals remain unregistered and unuploaded. Recheck current exact tuple/revision at prepare and upload."
+  ],
+  "qualification": "This validates prepared evidence bytes, bindings, labels and code contracts; it does not claim to have repeated visual/source research or completed deployment, upload, rendering or current backend mutation."
+}

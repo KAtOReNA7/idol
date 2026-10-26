@@ -1,0 +1,9 @@
+dot专属App图片接入提案（仅参考切片，未修改app/page.tsx）
+
+图片import提案：import {CatalogPhotoImage,WorkCoverImage,ConceptPhotoImage} from "@/components/app-image-presentation"; import {ImageRecoveryProvider,ImageRecoveryControls,type ReliableImageState} from "@/components/reliable-image"。沿用或补齐useState/useEffect/useCallback/useMemo/useRef React import。
+依赖components/app-image-presentation.tsx三个图片适配组件及reliable-image.tsx的ImageRecoveryProvider/ImageRecoveryControls；保留App所有业务/评分/Editor/播放器/dirty与uncertain策略。
+在App现有顶层安全容器外提供DOMless ImageRecoveryProvider，把ImageRecoveryControls放在卡片button/a之外的可见区域。此激活点缺完整App，故不虚构顶层return或可自动应用的完整App补丁。CatalogPhotoImage/WorkCoverImage默认external恢复，不能漏掉Provider/Controls，否则需通过onStateChange自行挂接外置恢复按钮。
+4个diff以附件精确切片为before、有限适配为after；行号只相对切片，不是app/page.tsx完整行号。必须用sourceFileSHA256和函数锚点人工合入，不能把切片当可覆盖App。
+PhotoView保留显式retryable策略、ratings原图链接、分类标注和容器；默认对已有live图片开放手动恢复，ratings沿原retry协议，其它源原URL重挂；新图片失败时阻止原图链接导航。若其调用位于button/a中，dot还需保留既有合法交互策略，不在此新增按钮。MemberWorkCard保留独立body评分入口和0分；图片重试走外置恢复panel，不能触发body保存/导航。
+本轮提案未合入真实App，独立适配/引用切片测试不验证Editor生命周期、App保存、播放器互斥或实际全局Back/Forward。dot合入后跑这些集成门槛。
+所有例子只用已给Photo属性和原API协议，不创造字段或替换照片。非ratings API的手动恢复只重挂当前源，不追加新协议；外部官方/YouTube URL不得加token/time戳。

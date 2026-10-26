@@ -1,0 +1,126 @@
+{
+  "status": "parent_reviewed_ready_for_import",
+  "reproducedHistoricalFrames": 34,
+  "sampledAdditionalFrames": 163,
+  "selected": [
+    {
+      "name": "A-NA",
+      "file": "selects/635.000.png",
+      "crop": [
+        640,
+        0,
+        675,
+        900
+      ],
+      "text": "A-NA speaker label; sole foreground speaker"
+    },
+    {
+      "name": "CARMEN",
+      "file": "carmen/770.500.png",
+      "crop": [
+        570,
+        0,
+        675,
+        900
+      ],
+      "text": "CARMEN speaker label; sole foreground speaker"
+    },
+    {
+      "name": "IAN",
+      "file": "selects/81.000.png",
+      "crop": [
+        550,
+        20,
+        660,
+        880
+      ],
+      "text": "IAN speaker label; sole foreground speaker"
+    },
+    {
+      "name": "JIWOO",
+      "file": "selects/561.000.png",
+      "crop": [
+        620,
+        0,
+        675,
+        900
+      ],
+      "text": "JIWOO speaker label; sole foreground speaker"
+    },
+    {
+      "name": "JUUN",
+      "file": "focused/945.000.png",
+      "crop": [
+        680,
+        50,
+        660,
+        880
+      ],
+      "text": "JUUN label; center member speaks and holds camera"
+    },
+    {
+      "name": "STELLA",
+      "file": "stella/693.250.png",
+      "crop": [
+        610,
+        10,
+        600,
+        800
+      ],
+      "text": "STELLA label; foreground member speaks to camera"
+    },
+    {
+      "name": "YE-ON",
+      "file": "focused/290.300.png",
+      "crop": [
+        420,
+        30,
+        600,
+        800
+      ],
+      "text": "Next solo shoot YE-ON; sole foreground subject"
+    },
+    {
+      "name": "YUHA",
+      "file": "finalize/176.000.png",
+      "crop": [
+        580,
+        30,
+        645,
+        860
+      ],
+      "text": "YUHA speaker label; sole foreground speaker"
+    }
+  ],
+  "excludedMisattributions": [
+    {
+      "time": 81.581,
+      "searchedName": "A-NA",
+      "actualSpeakerLabel": "IAN"
+    },
+    {
+      "time": 484.692,
+      "searchedName": "STELLA",
+      "actualSpeakerLabel": "YUHA"
+    },
+    {
+      "time": 641,
+      "searchedName": "STELLA",
+      "reason": "Label speaker offscreen initially; foreground is A-NA, confirmed by preceding segment."
+    },
+    {
+      "time": 945,
+      "searchedName": "JIWOO",
+      "actualSpeakerLabel": "JUUN"
+    },
+    {
+      "time": 1022,
+      "searchedName": "A-NA",
+      "reason": "Offscreen speaker label; cannot bind to foreground JIWOO."
+    }
+  ],
+  "notes": [
+    "Only official named MV-shoot provenance claimed, not finished-MV frame comparison.",
+    "CARMEN upper cap edge clipped in original; native video mild softness/lighting retained."
+  ]
+}

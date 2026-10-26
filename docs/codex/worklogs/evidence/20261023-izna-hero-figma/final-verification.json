@@ -1,0 +1,498 @@
+{
+  "nodes": [
+    {
+      "id": "812:19251",
+      "type": "FRAME",
+      "name": "01 · 首页 · 1440 · 首屏实图调整 · 下方图片待落地",
+      "width": 1440,
+      "height": 4247.66650390625,
+      "x": 600,
+      "y": 200,
+      "visible": true,
+      "layoutMode": "VERTICAL",
+      "clipsContent": false,
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.03529411926865578,
+            "g": 0.054901961237192154,
+            "b": 0.11372549086809158
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:812:19214"
+            }
+          }
+        }
+      ],
+      "children": [
+        {
+          "id": "812:19252",
+          "type": "FRAME",
+          "name": "Navigation",
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 80
+        },
+        {
+          "id": "812:19257",
+          "type": "RECTANGLE",
+          "name": "Section rule",
+          "x": 0,
+          "y": 80,
+          "width": 1440,
+          "height": 1
+        },
+        {
+          "id": "812:19258",
+          "type": "FRAME",
+          "name": "Main · home",
+          "x": 0,
+          "y": 81,
+          "width": 1440,
+          "height": 4166.66650390625
+        }
+      ]
+    },
+    {
+      "id": "812:19252",
+      "type": "FRAME",
+      "name": "Navigation",
+      "width": 1440,
+      "height": 80,
+      "x": 0,
+      "y": 0,
+      "visible": true,
+      "layoutMode": "HORIZONTAL",
+      "clipsContent": false,
+      "fills": [],
+      "children": [
+        {
+          "id": "812:19253",
+          "type": "TEXT",
+          "name": "Group identifier (ordinary text)",
+          "x": 160,
+          "y": 19,
+          "width": 84,
+          "height": 42,
+          "text": "izna"
+        },
+        {
+          "id": "812:19262",
+          "type": "TEXT",
+          "name": "Company",
+          "x": 1222,
+          "y": 31.5,
+          "width": 58,
+          "height": 17,
+          "text": "WAKEONE"
+        }
+      ]
+    },
+    {
+      "id": "812:19259",
+      "type": "FRAME",
+      "name": "Photo-led opening · 2026-10-23",
+      "width": 1312,
+      "height": 806.6666870117188,
+      "x": 64,
+      "y": 24,
+      "visible": true,
+      "layoutMode": "VERTICAL",
+      "clipsContent": false,
+      "fills": [],
+      "children": [
+        {
+          "id": "812:19265",
+          "type": "FRAME",
+          "name": "Official group portrait · full members viewport",
+          "x": 96,
+          "y": 0,
+          "width": 1120,
+          "height": 746.6666870117188
+        },
+        {
+          "id": "812:19263",
+          "type": "FRAME",
+          "name": "Navigation below photograph",
+          "x": 96,
+          "y": 762.6666870117188,
+          "width": 1120,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "id": "812:19265",
+      "type": "FRAME",
+      "name": "Official group portrait · full members viewport",
+      "width": 1120,
+      "height": 746.6666870117188,
+      "x": 96,
+      "y": 0,
+      "visible": true,
+      "layoutMode": "NONE",
+      "clipsContent": true,
+      "fills": [],
+      "children": [
+        {
+          "id": "964:1167",
+          "type": "RECTANGLE",
+          "name": "Original PNG · 1500×2100 · source y850–1850 visible",
+          "x": 0,
+          "y": -634.6666870117188,
+          "width": 1120,
+          "height": 1568
+        }
+      ]
+    },
+    {
+      "id": "964:1167",
+      "type": "RECTANGLE",
+      "name": "Original PNG · 1500×2100 · source y850–1850 visible",
+      "width": 1120,
+      "height": 1568,
+      "x": 0,
+      "y": -634.6666870117188,
+      "visible": true,
+      "fills": [
+        {
+          "type": "IMAGE",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "scaleMode": "FIT",
+          "scalingFactor": 1,
+          "rotation": 0,
+          "filters": {
+            "exposure": 0,
+            "contrast": 0,
+            "saturation": 0,
+            "temperature": 0,
+            "tint": 0,
+            "highlights": 0,
+            "shadows": 0
+          },
+          "imageTransform": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          "imageHash": "2b559a69f818be778715f5271e87a25692c2392b"
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "812:19263",
+      "type": "FRAME",
+      "name": "Navigation below photograph",
+      "width": 1120,
+      "height": 44,
+      "x": 96,
+      "y": 762.6666870117188,
+      "visible": true,
+      "layoutMode": "HORIZONTAL",
+      "clipsContent": false,
+      "fills": [],
+      "children": [
+        {
+          "id": "812:19254",
+          "type": "TEXT",
+          "name": "Nav · 成员",
+          "x": 0,
+          "y": 10.5,
+          "width": 52,
+          "height": 23,
+          "text": "成员 →"
+        },
+        {
+          "id": "812:19255",
+          "type": "TEXT",
+          "name": "Nav · 作品",
+          "x": 343.3333435058594,
+          "y": 10.5,
+          "width": 52,
+          "height": 23,
+          "text": "作品 →"
+        },
+        {
+          "id": "812:19256",
+          "type": "TEXT",
+          "name": "Nav · 时间轴",
+          "x": 686.6666870117188,
+          "y": 10.5,
+          "width": 68,
+          "height": 23,
+          "text": "时间轴 →"
+        },
+        {
+          "id": "812:19264",
+          "type": "TEXT",
+          "name": "Label",
+          "x": 1046,
+          "y": 12,
+          "width": 74,
+          "height": 20,
+          "text": "查看原图 ↗"
+        }
+      ]
+    },
+    {
+      "id": "812:19340",
+      "type": "FRAME",
+      "name": "01 · 首页 · 390 · 首屏实图调整 · 下方图片待落地",
+      "width": 390,
+      "height": 3471.199951171875,
+      "x": 2260,
+      "y": 200,
+      "visible": true,
+      "layoutMode": "VERTICAL",
+      "clipsContent": false,
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0.03529411926865578,
+            "g": 0.054901961237192154,
+            "b": 0.11372549086809158
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:812:19214"
+            }
+          }
+        }
+      ],
+      "children": [
+        {
+          "id": "812:19341",
+          "type": "FRAME",
+          "name": "Navigation",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 59
+        },
+        {
+          "id": "812:19346",
+          "type": "RECTANGLE",
+          "name": "Section rule",
+          "x": 0,
+          "y": 59,
+          "width": 390,
+          "height": 1
+        },
+        {
+          "id": "812:19347",
+          "type": "FRAME",
+          "name": "Main · home",
+          "x": 0,
+          "y": 60,
+          "width": 390,
+          "height": 3411.199951171875
+        }
+      ]
+    },
+    {
+      "id": "812:19341",
+      "type": "FRAME",
+      "name": "Navigation",
+      "width": 390,
+      "height": 59,
+      "x": 0,
+      "y": 0,
+      "visible": true,
+      "layoutMode": "HORIZONTAL",
+      "clipsContent": false,
+      "fills": [],
+      "children": [
+        {
+          "id": "812:19342",
+          "type": "TEXT",
+          "name": "Group identifier (ordinary text)",
+          "x": 16,
+          "y": 14,
+          "width": 63,
+          "height": 31,
+          "text": "izna"
+        },
+        {
+          "id": "812:19351",
+          "type": "TEXT",
+          "name": "Company",
+          "x": 316,
+          "y": 21,
+          "width": 58,
+          "height": 17,
+          "text": "WAKEONE"
+        }
+      ]
+    },
+    {
+      "id": "812:19348",
+      "type": "FRAME",
+      "name": "Photo-led opening · 2026-10-23",
+      "width": 358,
+      "height": 557.2000122070312,
+      "x": 16,
+      "y": 16,
+      "visible": true,
+      "layoutMode": "VERTICAL",
+      "clipsContent": false,
+      "fills": [],
+      "children": [
+        {
+          "id": "812:19354",
+          "type": "FRAME",
+          "name": "Official group portrait · full image",
+          "x": 0,
+          "y": 0,
+          "width": 358,
+          "height": 501.20001220703125
+        },
+        {
+          "id": "812:19352",
+          "type": "FRAME",
+          "name": "Navigation below photograph",
+          "x": 0,
+          "y": 513.2000122070312,
+          "width": 358,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "id": "812:19354",
+      "type": "FRAME",
+      "name": "Official group portrait · full image",
+      "width": 358,
+      "height": 501.20001220703125,
+      "x": 0,
+      "y": 0,
+      "visible": true,
+      "layoutMode": "NONE",
+      "clipsContent": true,
+      "fills": [
+        {
+          "type": "IMAGE",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "scaleMode": "FIT",
+          "scalingFactor": 1,
+          "rotation": 0,
+          "filters": {
+            "exposure": 0,
+            "contrast": 0,
+            "saturation": 0,
+            "temperature": 0,
+            "tint": 0,
+            "highlights": 0,
+            "shadows": 0
+          },
+          "imageTransform": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          "imageHash": "2b559a69f818be778715f5271e87a25692c2392b"
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "812:19352",
+      "type": "FRAME",
+      "name": "Navigation below photograph",
+      "width": 358,
+      "height": 44,
+      "x": 0,
+      "y": 513.2000122070312,
+      "visible": true,
+      "layoutMode": "HORIZONTAL",
+      "clipsContent": false,
+      "fills": [],
+      "children": [
+        {
+          "id": "812:19343",
+          "type": "TEXT",
+          "name": "Nav · 成员",
+          "x": 0,
+          "y": 12,
+          "width": 46,
+          "height": 20,
+          "text": "成员 →"
+        },
+        {
+          "id": "812:19344",
+          "type": "TEXT",
+          "name": "Nav · 作品",
+          "x": 93.66667175292969,
+          "y": 12,
+          "width": 46,
+          "height": 20,
+          "text": "作品 →"
+        },
+        {
+          "id": "812:19345",
+          "type": "TEXT",
+          "name": "Nav · 时间轴",
+          "x": 187.33334350585938,
+          "y": 12,
+          "width": 60,
+          "height": 20,
+          "text": "时间轴 →"
+        },
+        {
+          "id": "812:19353",
+          "type": "TEXT",
+          "name": "Label",
+          "x": 295,
+          "y": 13.5,
+          "width": 63,
+          "height": 17,
+          "text": "查看原图 ↗"
+        }
+      ]
+    }
+  ],
+  "layoutFailures": [],
+  "imageHash": "2b559a69f818be778715f5271e87a25692c2392b",
+  "imageSize": {
+    "width": 1500,
+    "height": 2100
+  },
+  "desktopSourceViewport": {
+    "x": 0,
+    "y": 850,
+    "width": 1500,
+    "height": 1000
+  },
+  "mobileWholeImage": true,
+  "hiddenDuplicateIdentities": true
+}

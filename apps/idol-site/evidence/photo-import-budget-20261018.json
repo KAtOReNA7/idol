@@ -1,0 +1,11 @@
+{
+  "candidateCount": 62,
+  "legacyCandidates": 20,
+  "ownerConfirmedPilots": 2,
+  "sourceNamedCandidates": 40,
+  "applicationBudgetBytes": 28151074,
+  "hardFileLimitBytes": 3000000,
+  "uploadBodyLimit": "Exact byteLength from authenticated immutable operation, capped at hardFileLimitBytes",
+  "admissionCounter": "Cumulative SUM(byte_length) for all owner operations across every status and snapshot; no history reset or subtraction",
+  "providerQuota": "Unchanged; quota failure pauses the operation as storage-blocked, with no upgrade or credential change"
+}

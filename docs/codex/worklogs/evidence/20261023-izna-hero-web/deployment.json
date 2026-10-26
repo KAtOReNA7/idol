@@ -1,0 +1,58 @@
+{
+  "deployment": {
+    "id": "appgdep_6adb28bc8a448191b3d36354713d79b9",
+    "project_id": "appgprj_6ad9800421f8819188ffdf3bc8a8e0f3",
+    "title": "Billlie 私有合成页面测试",
+    "version_id": "appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_cff5858b7cbc8191baf7c02dd741f69e",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://idol-billlie-qa-oct22.wuke40758.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ad9800421f8819188ffdf3bc8a8e0f3",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-10-23T09:28:39.590747+00:00"
+  },
+  "version": {
+    "id": "appgprj_6ad9800421f8819188ffdf3bc8a8e0f3~appgver_cff5858b7cbc8191baf7c02dd741f69e",
+    "project_id": "appgprj_6ad9800421f8819188ffdf3bc8a8e0f3",
+    "version_number": 14,
+    "source": {
+      "commit_sha": "02191c188af0a0d373581afd89b8e7d292c6d61a"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000e2dc81f5be381c360874986e",
+      "content_hash": "sha256:8968b0bec70b5abc8748ca57a5f8f1a2c6e02fb13e6c1bec57ac56027a994dcf",
+      "size_bytes": 29153280,
+      "file_count": 131
+    },
+    "deployment_id": "appgdep_6adb28bc8a448191b3d36354713d79b9"
+  },
+  "sourceOpening": {
+    "project_id": "appgprj_6ad9800421f8819188ffdf3bc8a8e0f3",
+    "checkout_path": "E:\\project\\idol-review-20261023",
+    "commit_sha": "a6a8ff71a759de6936a0285a0ebdf18a6a69eb63"
+  },
+  "package": {
+    "project_id": "appgprj_6ad9800421f8819188ffdf3bc8a8e0f3",
+    "checkout_path": "E:\\project\\idol-review-20261023",
+    "commit_sha": "02191c188af0a0d373581afd89b8e7d292c6d61a",
+    "archive": "E:/project/idol-hero-web-20261023/izna-hero-review-final.tar.gz"
+  },
+  "liveBrowser": {
+    "attempts": 1,
+    "tool": "cua.createBrowserTab(iab)",
+    "url": "https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/izna/index.html",
+    "result": "js execution timed out; kernel reset",
+    "elapsedSeconds": 30.1168,
+    "verified": false
+  },
+  "github": {
+    "repository": "KAtOReNA7/idol",
+    "branch": "codex/izna-native-integration",
+    "pullRequest": 6,
+    "startingHead": "2087e3c1f467be1ddaa1efb5526cab632f818b40"
+  }
+}

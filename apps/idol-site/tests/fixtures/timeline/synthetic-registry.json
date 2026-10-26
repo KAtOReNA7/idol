@@ -1,0 +1,14 @@
+{
+  "groups": [
+    { "groupId": "recSyntheticGroup", "slug": "synthetic-group" },
+    { "groupId": "recSyntheticOtherGroup", "slug": "synthetic-other-group" }
+  ],
+  "members": [
+    { "id": "recSyntheticMember", "groupIds": ["recSyntheticGroup"] },
+    { "id": "recSyntheticOtherMember", "groupIds": ["recSyntheticOtherGroup"] }
+  ],
+  "works": [
+    { "id": "recSyntheticWork", "groupIds": ["recSyntheticGroup"] },
+    { "id": "recSyntheticOtherWork", "groupIds": ["recSyntheticOtherGroup"] }
+  ]
+}

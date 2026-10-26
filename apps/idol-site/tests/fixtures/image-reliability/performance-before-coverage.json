@@ -1,0 +1,2347 @@
+{
+  "capturedAt": "2026-10-16T13:25:24.858Z",
+  "baselineCommit": "adb7501342baf9c4d28707db3072a99b21cb122c",
+  "sourceCaptureAt": "2026-10-16T13:18:34.169368+00:00",
+  "components": {
+    "components/artist-sample.tsx": {
+      "file": "components/artist-sample.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 87,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 73,
+          "src": "{memberVisual(m)?.image??(m.photo?imageUrl(m.photo):undefined)}",
+          "alt": "{`${memberDisplayName(m)} · BABYMONS7ER 官方概念照`}",
+          "fit": "\"contain\""
+        },
+        {
+          "line": 85,
+          "src": "{visual?.image??(m.photo?imageUrl(m.photo):undefined)}",
+          "alt": "{m.stageName+' · '+(visual?.label??'成员档案照')}",
+          "fit": "\"contain\"",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 85,
+          "src": "{x.photo?imageUrl(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}",
+          "fit": "\"contain\""
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 32,
+          "tag": "img",
+          "function": "VideoThumbImage",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 73,
+          "src": "{memberVisual(m)?.image??(m.photo?imageUrl(m.photo):undefined)}",
+          "alt": "{`${memberDisplayName(m)} · BABYMONS7ER 官方概念照`}",
+          "fit": "\"contain\""
+        },
+        {
+          "line": 75,
+          "src": "{u.image}",
+          "alt": "{u.title}",
+          "fit": "\"contain\""
+        },
+        {
+          "line": 76,
+          "src": "{r.image}",
+          "alt": "{`${r.title} 专辑封面`}",
+          "fit": "\"contain\""
+        },
+        {
+          "line": 85,
+          "src": "{visual?.image??(m.photo?imageUrl(m.photo):undefined)}",
+          "alt": "{m.stageName+' · '+(visual?.label??'成员档案照')}",
+          "fit": "\"contain\"",
+          "priority": true
+        },
+        {
+          "line": 85,
+          "src": "{x.photo?imageUrl(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}",
+          "fit": "\"contain\""
+        },
+        {
+          "line": 87,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "allImages": [
+        {
+          "line": 29,
+          "tag": "img",
+          "function": "PictureImage",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "style": "{{objectFit:fit}}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 32,
+          "tag": "img",
+          "function": "VideoThumbImage",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 73,
+          "tag": "Picture",
+          "function": "ArtistSample",
+          "src": "{memberVisual(m)?.image??(m.photo?imageUrl(m.photo):undefined)}",
+          "alt": "{`${memberDisplayName(m)} · BABYMONS7ER 官方概念照`}",
+          "fit": "\"contain\""
+        },
+        {
+          "line": 75,
+          "tag": "Picture",
+          "function": "ArtistSample",
+          "src": "{u.image}",
+          "alt": "{u.title}",
+          "fit": "\"contain\""
+        },
+        {
+          "line": 76,
+          "tag": "Picture",
+          "function": "ArtistSample",
+          "src": "{r.image}",
+          "alt": "{`${r.title} 专辑封面`}",
+          "fit": "\"contain\""
+        },
+        {
+          "line": 85,
+          "tag": "Picture",
+          "function": "renderMember",
+          "src": "{visual?.image??(m.photo?imageUrl(m.photo):undefined)}",
+          "alt": "{m.stageName+' · '+(visual?.label??'成员档案照')}",
+          "fit": "\"contain\"",
+          "priority": true
+        },
+        {
+          "line": 85,
+          "tag": "Picture",
+          "function": "renderMember",
+          "src": "{x.photo?imageUrl(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}",
+          "fit": "\"contain\""
+        },
+        {
+          "line": 87,
+          "tag": "Picture",
+          "function": "ArtistSample",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ]
+    },
+    "components/illit-artist.tsx": {
+      "file": "components/illit-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 69,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 64,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · SUPER ME 官方概念照'}"
+        },
+        {
+          "line": 68,
+          "src": "{photo?.image}",
+          "alt": "{m.stageName+' · SUPER ME 官方概念照'}",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 68,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 28,
+          "tag": "img",
+          "function": "Thumb",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "\"lazy\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 64,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · SUPER ME 官方概念照'}"
+        },
+        {
+          "line": 65,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 66,
+          "src": "{r.image}",
+          "alt": "{r.title+' 发行封面'}"
+        },
+        {
+          "line": 67,
+          "src": "{r.image}",
+          "alt": "{r.title+' 专辑封面'}"
+        },
+        {
+          "line": 68,
+          "src": "{photo?.image}",
+          "alt": "{m.stageName+' · SUPER ME 官方概念照'}",
+          "priority": true
+        },
+        {
+          "line": 68,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 69,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "allImages": [
+        {
+          "line": 27,
+          "tag": "img",
+          "function": "PictureImage",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 28,
+          "tag": "img",
+          "function": "Thumb",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "\"lazy\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 64,
+          "tag": "Picture",
+          "function": "IllitArtist",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · SUPER ME 官方概念照'}"
+        },
+        {
+          "line": 65,
+          "tag": "Picture",
+          "function": "IllitArtist",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 66,
+          "tag": "Picture",
+          "function": "IllitArtist",
+          "src": "{r.image}",
+          "alt": "{r.title+' 发行封面'}"
+        },
+        {
+          "line": 67,
+          "tag": "Picture",
+          "function": "IllitArtist",
+          "src": "{r.image}",
+          "alt": "{r.title+' 专辑封面'}"
+        },
+        {
+          "line": 68,
+          "tag": "Picture",
+          "function": "renderMember",
+          "src": "{photo?.image}",
+          "alt": "{m.stageName+' · SUPER ME 官方概念照'}",
+          "priority": true
+        },
+        {
+          "line": 68,
+          "tag": "Picture",
+          "function": "renderMember",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 69,
+          "tag": "Picture",
+          "function": "IllitArtist",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ]
+    },
+    "components/expanded-artist.tsx": {
+      "file": "components/expanded-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 83,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 74,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 81,
+          "src": "{photo?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 81,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 40,
+          "tag": "img",
+          "function": "Thumb",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "\"lazy\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 74,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 75,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 77,
+          "src": "{r.image}",
+          "alt": "{r.title+' 发行封面'}"
+        },
+        {
+          "line": 80,
+          "src": "{r.image}",
+          "alt": "{r.title+' 专辑封面'}"
+        },
+        {
+          "line": 81,
+          "src": "{photo?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 81,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 83,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "allImages": [
+        {
+          "line": 37,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 40,
+          "tag": "img",
+          "function": "Thumb",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "\"lazy\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 74,
+          "tag": "Picture",
+          "function": "ExpandedArtistSession",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 75,
+          "tag": "Picture",
+          "function": "ExpandedArtistSession",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 77,
+          "tag": "Picture",
+          "function": "ExpandedArtistSession",
+          "src": "{r.image}",
+          "alt": "{r.title+' 发行封面'}"
+        },
+        {
+          "line": 80,
+          "tag": "Picture",
+          "function": "renderRecords",
+          "src": "{r.image}",
+          "alt": "{r.title+' 专辑封面'}"
+        },
+        {
+          "line": 81,
+          "tag": "Picture",
+          "function": "renderMember",
+          "src": "{photo?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 81,
+          "tag": "Picture",
+          "function": "renderMember",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 83,
+          "tag": "Picture",
+          "function": "ExpandedArtistSession",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ]
+    },
+    "components/ive-artist.tsx": {
+      "file": "components/ive-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 87,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 86,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 86,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 78,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 80,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 84,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 86,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 86,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 87,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        },
+        {
+          "line": 93,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ],
+      "allImages": [
+        {
+          "line": 30,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 76,
+          "tag": "Picture",
+          "function": "roster",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 78,
+          "tag": "Picture",
+          "function": "news",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 80,
+          "tag": "Picture",
+          "function": "collectionFeature",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 84,
+          "tag": "Picture",
+          "function": "records",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 86,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 86,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 87,
+          "tag": "Picture",
+          "function": "IveArtist",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        },
+        {
+          "line": 93,
+          "tag": "Picture",
+          "function": "IveArtist",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ]
+    },
+    "components/kiof-artist.tsx": {
+      "file": "components/kiof-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 87,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 86,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 86,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 78,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 80,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 84,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 86,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 86,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 87,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        },
+        {
+          "line": 93,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ],
+      "allImages": [
+        {
+          "line": 30,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 76,
+          "tag": "Picture",
+          "function": "roster",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 78,
+          "tag": "Picture",
+          "function": "news",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 80,
+          "tag": "Picture",
+          "function": "collectionFeature",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 84,
+          "tag": "Picture",
+          "function": "records",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 86,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 86,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 87,
+          "tag": "Picture",
+          "function": "KiofArtist",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        },
+        {
+          "line": 93,
+          "tag": "Picture",
+          "function": "KiofArtist",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ]
+    },
+    "components/stayc-artist.tsx": {
+      "file": "components/stayc-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 84,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 77,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 83,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 83,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 77,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 79,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 82,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 83,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 83,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 84,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "allImages": [
+        {
+          "line": 30,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 77,
+          "tag": "Picture",
+          "function": "roster",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 79,
+          "tag": "Picture",
+          "function": "news",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "tag": "Picture",
+          "function": "collectionFeature",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 82,
+          "tag": "Picture",
+          "function": "records",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 83,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 83,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 84,
+          "tag": "Picture",
+          "function": "StaycArtist",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ]
+    },
+    "components/nmixx-artist.tsx": {
+      "file": "components/nmixx-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 89,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 77,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 88,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 88,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 77,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 79,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 86,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 88,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 88,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 89,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        },
+        {
+          "line": 95,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ],
+      "allImages": [
+        {
+          "line": 30,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 77,
+          "tag": "Picture",
+          "function": "roster",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 79,
+          "tag": "Picture",
+          "function": "news",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "tag": "Picture",
+          "function": "collectionFeature",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 86,
+          "tag": "Picture",
+          "function": "records",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 88,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 88,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 89,
+          "tag": "Picture",
+          "function": "NmixxArtist",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        },
+        {
+          "line": 95,
+          "tag": "Picture",
+          "function": "NmixxArtist",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ]
+    },
+    "components/hearts2hearts-artist.tsx": {
+      "file": "components/hearts2hearts-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 84,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 83,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 83,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 78,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行商品图'}"
+        },
+        {
+          "line": 82,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行商品图'}"
+        },
+        {
+          "line": 83,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 83,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 84,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "allImages": [
+        {
+          "line": 30,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 76,
+          "tag": "Picture",
+          "function": "roster",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 78,
+          "tag": "Picture",
+          "function": "news",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "tag": "Picture",
+          "function": "collectionFeature",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行商品图'}"
+        },
+        {
+          "line": 82,
+          "tag": "Picture",
+          "function": "records",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行商品图'}"
+        },
+        {
+          "line": 83,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 83,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 84,
+          "tag": "Picture",
+          "function": "Hearts2HeartsArtist",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ]
+    },
+    "components/kiiikiii-artist.tsx": {
+      "file": "components/kiiikiii-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 89,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true,
+          "missingLabel": "\"官方团体照暂缺\""
+        }
+      ],
+      "portraits": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "missingLabel": "\"官方成员照暂缺\""
+        },
+        {
+          "line": 88,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true,
+          "missingLabel": "\"官方成员照暂缺\""
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 88,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "missingLabel": "\"官方成员照暂缺\""
+        },
+        {
+          "line": 78,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 86,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 88,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true,
+          "missingLabel": "\"官方成员照暂缺\""
+        },
+        {
+          "line": 88,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 89,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true,
+          "missingLabel": "\"官方团体照暂缺\""
+        },
+        {
+          "line": 95,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ],
+      "allImages": [
+        {
+          "line": 30,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 76,
+          "tag": "Picture",
+          "function": "roster",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "missingLabel": "\"官方成员照暂缺\""
+        },
+        {
+          "line": 78,
+          "tag": "Picture",
+          "function": "news",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "tag": "Picture",
+          "function": "collectionFeature",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 86,
+          "tag": "Picture",
+          "function": "records",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 88,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true,
+          "missingLabel": "\"官方成员照暂缺\""
+        },
+        {
+          "line": 88,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 89,
+          "tag": "Picture",
+          "function": "KiiikiiiArtist",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true,
+          "missingLabel": "\"官方团体照暂缺\""
+        },
+        {
+          "line": 95,
+          "tag": "Picture",
+          "function": "KiiikiiiArtist",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ]
+    },
+    "components/lesserafim-artist.tsx": {
+      "file": "components/lesserafim-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 84,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 83,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 83,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 78,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 82,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 83,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 83,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 84,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "allImages": [
+        {
+          "line": 30,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 76,
+          "tag": "Picture",
+          "function": "roster",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 78,
+          "tag": "Picture",
+          "function": "news",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "tag": "Picture",
+          "function": "collectionFeature",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 82,
+          "tag": "Picture",
+          "function": "records",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 83,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 83,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 84,
+          "tag": "Picture",
+          "function": "LesserafimArtist",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ]
+    },
+    "components/itzy-artist.tsx": {
+      "file": "components/itzy-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 86,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 74,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 85,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 85,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 74,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 76,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 83,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 85,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 85,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 86,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        },
+        {
+          "line": 92,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ],
+      "allImages": [
+        {
+          "line": 30,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 74,
+          "tag": "Picture",
+          "function": "roster",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 76,
+          "tag": "Picture",
+          "function": "news",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 83,
+          "tag": "Picture",
+          "function": "records",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 85,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 85,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 86,
+          "tag": "Picture",
+          "function": "ItzyArtist",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        },
+        {
+          "line": 92,
+          "tag": "Picture",
+          "function": "ItzyArtist",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ]
+    },
+    "components/saymyname-artist.tsx": {
+      "file": "components/saymyname-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 90,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true,
+          "missingLabel": "\"官方团体图待接\""
+        }
+      ],
+      "portraits": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "missingLabel": "\"官方成员照暂缺\""
+        },
+        {
+          "line": 88,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true,
+          "missingLabel": "\"官方成员照暂缺\""
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 88,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 76,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "missingLabel": "\"官方成员照暂缺\""
+        },
+        {
+          "line": 78,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 86,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 88,
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true,
+          "missingLabel": "\"官方成员照暂缺\""
+        },
+        {
+          "line": 88,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 90,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true,
+          "missingLabel": "\"官方团体图待接\""
+        },
+        {
+          "line": 96,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ],
+      "allImages": [
+        {
+          "line": 30,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 44,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 76,
+          "tag": "Picture",
+          "function": "roster",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "missingLabel": "\"官方成员照暂缺\""
+        },
+        {
+          "line": 78,
+          "tag": "Picture",
+          "function": "news",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 81,
+          "tag": "Picture",
+          "function": "collectionFeature",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 86,
+          "tag": "Picture",
+          "function": "records",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 88,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{visual(m)?.image}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true,
+          "missingLabel": "\"官方成员照暂缺\""
+        },
+        {
+          "line": 88,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 90,
+          "tag": "Picture",
+          "function": "SaymynameArtist",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true,
+          "missingLabel": "\"官方团体图待接\""
+        },
+        {
+          "line": 96,
+          "tag": "Picture",
+          "function": "SaymynameArtist",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        }
+      ]
+    },
+    "components/katseye-artist.tsx": {
+      "file": "components/katseye-artist.tsx",
+      "rawImg": 2,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 85,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 77,
+          "src": "{portrait(m)}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 84,
+          "src": "{portrait(m)}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 84,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 45,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 77,
+          "src": "{portrait(m)}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 79,
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 82,
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 84,
+          "src": "{portrait(m)}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 84,
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 85,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ],
+      "allImages": [
+        {
+          "line": 31,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "src": "{src}",
+          "alt": "{alt}",
+          "referrerPolicy": "\"no-referrer\"",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 45,
+          "tag": "img",
+          "function": "WorkCard",
+          "src": "{`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "loading": "\"lazy\"",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 77,
+          "tag": "Picture",
+          "function": "roster",
+          "src": "{portrait(m)}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}"
+        },
+        {
+          "line": 79,
+          "tag": "Picture",
+          "function": "news",
+          "src": "{u.image}",
+          "alt": "{u.title}"
+        },
+        {
+          "line": 82,
+          "tag": "Picture",
+          "function": "collectionFeature",
+          "src": "{r.image}",
+          "alt": "{r.title+' 官方发行封面'}"
+        },
+        {
+          "line": 84,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{portrait(m)}",
+          "alt": "{m.stageName+' · '+content.portraitSet.label}",
+          "priority": true
+        },
+        {
+          "line": 84,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{x.photo?media(x.photo):undefined}",
+          "alt": "{m.stageName+' · '+x.work.song+' MV造型'}"
+        },
+        {
+          "line": 85,
+          "tag": "Picture",
+          "function": "KatseyeArtist",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption}",
+          "priority": true
+        }
+      ]
+    },
+    "components/candidate-artist-experience.tsx": {
+      "file": "components/candidate-artist-experience.tsx",
+      "rawImg": 1,
+      "reliableNodes": 0,
+      "provider": 0,
+      "controls": 0,
+      "pictureDelegates": false,
+      "hero": [
+        {
+          "line": 75,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption||`${content.name} 团体资料照`}",
+          "priority": true
+        }
+      ],
+      "portraits": [
+        {
+          "line": 72,
+          "complete": "{!!portrait(m)?.official}",
+          "src": "{portrait(m)?.image}",
+          "alt": "{`${memberDisplayName(m)} ${portrait(m)?.official?'资料照':'档案照片'}`}",
+          "empty": "\"成员照片暂缺\""
+        },
+        {
+          "line": 75,
+          "complete": "{!!portrait(m)?.official}",
+          "src": "{portrait(m)?.image}",
+          "alt": "{`${memberDisplayName(m)} ${portrait(m)?.official?'资料照':'档案照片'}`}",
+          "empty": "\"成员照片暂缺\""
+        },
+        {
+          "line": 76,
+          "complete": "{!!selected?.official}",
+          "src": "{selected?.image}",
+          "alt": "{`${memberDisplayName(m)} ${portrait(m)?.official?'资料照':'档案照片'}`}",
+          "empty": "\"成员照片暂缺\"",
+          "priority": true
+        }
+      ],
+      "mvLooks": [
+        {
+          "line": 76,
+          "src": "{item.photo?media(item.photo):null}",
+          "alt": "{`${memberDisplayName(m)} · ${item.work.song}`}",
+          "empty": "\"本 MV 个人造型图暂缺\""
+        }
+      ],
+      "thumbCalls": [
+        {
+          "line": 29,
+          "tag": "Picture",
+          "function": "WorkCard",
+          "src": "{id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:null}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "empty": "\"视频封面暂缺\""
+        }
+      ],
+      "pictureCalls": [
+        {
+          "line": 29,
+          "src": "{id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:null}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "empty": "\"视频封面暂缺\""
+        },
+        {
+          "line": 72,
+          "complete": "{!!portrait(m)?.official}",
+          "src": "{portrait(m)?.image}",
+          "alt": "{`${memberDisplayName(m)} ${portrait(m)?.official?'资料照':'档案照片'}`}",
+          "empty": "\"成员照片暂缺\""
+        },
+        {
+          "line": 75,
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption||`${content.name} 团体资料照`}",
+          "priority": true
+        },
+        {
+          "line": 75,
+          "complete": "{!!portrait(m)?.official}",
+          "src": "{portrait(m)?.image}",
+          "alt": "{`${memberDisplayName(m)} ${portrait(m)?.official?'资料照':'档案照片'}`}",
+          "empty": "\"成员照片暂缺\""
+        },
+        {
+          "line": 75,
+          "alt": "{`${content.name} 团体资料照`}",
+          "empty": "\"团体与成员照片待补\""
+        },
+        {
+          "line": 76,
+          "complete": "{!!selected?.official}",
+          "src": "{selected?.image}",
+          "alt": "{`${memberDisplayName(m)} ${portrait(m)?.official?'资料照':'档案照片'}`}",
+          "empty": "\"成员照片暂缺\"",
+          "priority": true
+        },
+        {
+          "line": 76,
+          "src": "{item.photo?media(item.photo):null}",
+          "alt": "{`${memberDisplayName(m)} · ${item.work.song}`}",
+          "empty": "\"本 MV 个人造型图暂缺\""
+        }
+      ],
+      "allImages": [
+        {
+          "line": 27,
+          "tag": "img",
+          "function": "ImageWithFallback",
+          "ref": "{imageRef}",
+          "style": "{complete?{objectFit:'contain'}:undefined}",
+          "src": "{src}",
+          "alt": "{alt}",
+          "loading": "{priority?'eager':'lazy'}",
+          "fetchPriority": "{priority?'high':'auto'}",
+          "referrerPolicy": "\"no-referrer\"",
+          "onError": "{()=>setFailed(true)}"
+        },
+        {
+          "line": 29,
+          "tag": "Picture",
+          "function": "WorkCard",
+          "src": "{id?`https://i.ytimg.com/vi/${id}/hqdefault.jpg`:null}",
+          "alt": "{`${work.song||work.name} 视频封面`}",
+          "empty": "\"视频封面暂缺\""
+        },
+        {
+          "line": 72,
+          "tag": "Picture",
+          "function": "CandidateArtistExperience",
+          "complete": "{!!portrait(m)?.official}",
+          "src": "{portrait(m)?.image}",
+          "alt": "{`${memberDisplayName(m)} ${portrait(m)?.official?'资料照':'档案照片'}`}",
+          "empty": "\"成员照片暂缺\""
+        },
+        {
+          "line": 75,
+          "tag": "Picture",
+          "function": "CandidateArtistExperience",
+          "src": "{content.hero.image}",
+          "alt": "{content.hero.caption||`${content.name} 团体资料照`}",
+          "priority": true
+        },
+        {
+          "line": 75,
+          "tag": "Picture",
+          "function": "CandidateArtistExperience",
+          "complete": "{!!portrait(m)?.official}",
+          "src": "{portrait(m)?.image}",
+          "alt": "{`${memberDisplayName(m)} ${portrait(m)?.official?'资料照':'档案照片'}`}",
+          "empty": "\"成员照片暂缺\""
+        },
+        {
+          "line": 75,
+          "tag": "Picture",
+          "function": "CandidateArtistExperience",
+          "alt": "{`${content.name} 团体资料照`}",
+          "empty": "\"团体与成员照片待补\""
+        },
+        {
+          "line": 76,
+          "tag": "Picture",
+          "function": "memberPage",
+          "complete": "{!!selected?.official}",
+          "src": "{selected?.image}",
+          "alt": "{`${memberDisplayName(m)} ${portrait(m)?.official?'资料照':'档案照片'}`}",
+          "empty": "\"成员照片暂缺\"",
+          "priority": true
+        },
+        {
+          "line": 76,
+          "tag": "Picture",
+          "function": "memberPage",
+          "src": "{item.photo?media(item.photo):null}",
+          "alt": "{`${memberDisplayName(m)} · ${item.work.song}`}",
+          "empty": "\"本 MV 个人造型图暂缺\""
+        }
+      ]
+    }
+  }
+}

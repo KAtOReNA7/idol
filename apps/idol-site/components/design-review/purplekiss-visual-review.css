@@ -1,0 +1,730 @@
+/* Existing public CJK fonts, isolated family aliases; no additional asset copy. */
+@font-face{font-family:PurplekissReviewChinese;src:url('/fonts/unis/NotoSansSC-Regular.woff2') format('woff2');font-weight:400 500;font-style:normal;font-display:swap}
+@font-face{font-family:PurplekissReviewChinese;src:url('/fonts/unis/NotoSansSC-Bold.woff2') format('woff2');font-weight:600 900;font-style:normal;font-display:swap}
+/* PURPLE KISS v1: original theatre/programme design, scoped for host integration. */
+.purplekiss-visual-review {--ink:#211b25;--paper:#eee8df;--paper-light:#f7f2ec;--muted:#bcb0bf;--violet:#c5a9d4;--pink:#ddb2c5;--line:rgba(236,227,239,.24);--dark-line:rgba(33,27,37,.25);--body:"PurplekissReviewChinese","Microsoft YaHei","PingFang SC",Arial,sans-serif;--serif:Georgia,"Times New Roman","Noto Serif CJK SC",serif;--gutter:clamp(22px,5vw,76px);--max:1352px}
+.purplekiss-visual-review * {box-sizing:border-box}
+.purplekiss-visual-review {scroll-behavior:smooth}
+.purplekiss-visual-review {margin:0;background:var(--ink);color:var(--paper);font:16px/1.75 var(--body)}
+.purplekiss-visual-review button,
+.purplekiss-visual-review input,
+.purplekiss-visual-review select {font:inherit}
+.purplekiss-visual-review button,
+.purplekiss-visual-review a,
+.purplekiss-visual-review input,
+.purplekiss-visual-review select,
+.purplekiss-visual-review summary {-webkit-tap-highlight-color:transparent}
+.purplekiss-visual-review button,
+.purplekiss-visual-review a {touch-action:manipulation}
+.purplekiss-visual-review a {color:inherit;text-decoration:none}
+.purplekiss-visual-review button {cursor:pointer;color:inherit}
+.purplekiss-visual-review button:disabled {cursor:default}
+.purplekiss-visual-review a:focus-visible,
+.purplekiss-visual-review button:focus-visible,
+.purplekiss-visual-review input:focus-visible,
+.purplekiss-visual-review select:focus-visible,
+.purplekiss-visual-review summary:focus-visible {outline:3px solid var(--pink);outline-offset:5px}
+.purplekiss-visual-review button {border:0;background:none}
+.purplekiss-visual-review h1,
+.purplekiss-visual-review h2,
+.purplekiss-visual-review h3,
+.purplekiss-visual-review p,
+.purplekiss-visual-review figure {margin:0}
+.purplekiss-visual-review h1,
+.purplekiss-visual-review h2,
+.purplekiss-visual-review h3 {font-weight:400}
+.purplekiss-visual-review h1,
+.purplekiss-visual-review h2 {line-height:1.28}
+.purplekiss-visual-review img {max-width:100%;display:block}
+.purplekiss-visual-review p {overflow-wrap:anywhere}
+.purplekiss-visual-review main {outline:0;min-height:65vh}
+.purplekiss-visual-review .wrap {max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.purplekiss-visual-review .skip {position:absolute;top:-80px;left:16px;background:var(--paper);color:var(--ink);padding:12px;z-index:50}
+.purplekiss-visual-review .skip:focus {top:12px}
+.purplekiss-visual-review header {min-height:104px;max-width:1600px;margin:auto;padding:20px var(--gutter);display:flex;gap:40px;align-items:center;border-bottom:1px solid var(--line)}
+.purplekiss-visual-review .brand {display:flex;gap:14px;align-items:center;min-width:220px}
+.purplekiss-visual-review .brand img {width:58px;height:58px;object-fit:contain}
+.purplekiss-visual-review .brand>span:not(.media-frame) {font-size:17px;font-weight:600;letter-spacing:.04em;line-height:1.4}
+.purplekiss-visual-review .brand-sub {display:block;font-size:12px;font-weight:400;letter-spacing:.22em;color:var(--muted);margin-top:5px}
+.purplekiss-visual-review nav {display:flex;gap:36px;margin-inline:auto}
+.purplekiss-visual-review nav a {font-size:15px;padding-block:10px;white-space:nowrap;border-bottom:1px solid transparent}
+.purplekiss-visual-review nav a[aria-current] {border-color:var(--pink);color:var(--pink)}
+.purplekiss-visual-review nav a:hover {color:var(--pink)}
+.purplekiss-visual-review .header-source {font-size:13px;color:var(--muted);white-space:nowrap}
+.purplekiss-visual-review .home-masthead {max-width:1600px;margin:auto;padding:44px var(--gutter) 72px}
+.purplekiss-visual-review .masthead-title {display:flex;gap:30px;justify-content:space-between;align-items:center;margin-bottom:28px}
+.purplekiss-visual-review .masthead-title h1 {font:clamp(64px,10.3vw,158px)/.98 var(--serif);letter-spacing:-.065em;white-space:nowrap}
+.purplekiss-visual-review .masthead-title>p {font-size:15px;line-height:1.8;color:var(--muted);min-width:138px}
+.purplekiss-visual-review .hero-composition {display:grid;grid-template-columns:minmax(0,2.1fr) minmax(250px,.9fr);gap:0}
+.purplekiss-visual-review .hero-photo img {width:100%;height:100%;max-height:690px;aspect-ratio:1.5;object-fit:contain;background:#37303a}
+.purplekiss-visual-review .hero-photo {display:flex;flex-direction:column}
+.purplekiss-visual-review .hero-photo figcaption {font-size:12px;color:var(--muted);padding-top:12px}
+.purplekiss-visual-review .hero-note {background:var(--paper);color:var(--ink);padding:38px 34px 30px;display:flex;flex-direction:column;margin-bottom:33px}
+.purplekiss-visual-review .note-rule {width:34px;border-top:2px solid var(--ink);margin-bottom:28px}
+.purplekiss-visual-review .hero-note h2 {font-size:clamp(28px,3vw,43px);letter-spacing:.06em}
+.purplekiss-visual-review .hero-note h2 em {font-family:var(--serif);font-style:italic;color:#785369}
+.purplekiss-visual-review .hero-note>p {font-size:14px;line-height:2;margin:26px 0}
+.purplekiss-visual-review .text-link {display:inline-flex;align-items:center;gap:26px;font-size:14px;width:fit-content;border-bottom:1px solid currentColor;padding:3px 0 8px}
+.purplekiss-visual-review .text-link span {font-size:22px;line-height:1}
+.purplekiss-visual-review .archive-status {margin-top:auto;padding-top:28px;border-top:1px solid var(--dark-line);display:flex;align-items:flex-start;gap:20px;font-size:12px}
+.purplekiss-visual-review .archive-status>span {font-family:var(--serif);font-size:20px;white-space:nowrap}
+.purplekiss-visual-review .archive-status>p {line-height:1.6}
+.purplekiss-visual-review .paper {background:var(--paper);color:var(--ink)}
+.purplekiss-visual-review .record-feature {padding:55px max(var(--gutter),calc((100vw - 1200px)/2)) 70px}
+.purplekiss-visual-review .feature-number,
+.purplekiss-visual-review .section-index {font:12px/1.6 Arial,sans-serif;letter-spacing:.18em}
+.purplekiss-visual-review .feature-number {padding-bottom:25px;border-bottom:1px solid var(--dark-line)}
+.purplekiss-visual-review .feature-content {display:grid;grid-template-columns:1fr 1fr .7fr;gap:44px;align-items:center;margin-top:36px}
+.purplekiss-visual-review .feature-copy h2 {font-size:36px;line-height:1.55;letter-spacing:.02em}
+.purplekiss-visual-review .feature-copy>p {font-size:14px;line-height:1.9;margin:22px 0}
+.purplekiss-visual-review .feature-cover {padding:0;width:100%;box-shadow:10px 12px 0 #d3c7d1;transition:transform .2s}
+.purplekiss-visual-review .feature-cover:hover {transform:translateY(-4px)}
+.purplekiss-visual-review .feature-cover img {width:100%;aspect-ratio:1;object-fit:contain}
+.purplekiss-visual-review .feature-detail h3 {font:36px/1.2 var(--serif);margin:14px 0 22px}
+.purplekiss-visual-review .feature-detail>p:not(.small-label) {font-size:14px;line-height:1.9}
+.purplekiss-visual-review .small-label {font-size:12px;line-height:1.6;letter-spacing:.04em;color:inherit}
+.purplekiss-visual-review .underline-button {padding:3px 0 7px;border-bottom:1px solid currentColor;font-size:14px;margin-top:24px;display:inline-flex;align-items:center;gap:20px}
+.purplekiss-visual-review .people-section {padding-block:84px 58px}
+.purplekiss-visual-review .section-heading {display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px}
+.purplekiss-visual-review .section-index {color:inherit;opacity:.68;margin-bottom:12px}
+.purplekiss-visual-review .section-heading h2 {font-size:30px;line-height:1.6;letter-spacing:.04em}
+.purplekiss-visual-review .home-members {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+.purplekiss-visual-review .member-card {position:relative;display:block;min-width:0}
+.purplekiss-visual-review .member-card figure {position:relative;background:#18151b}
+.purplekiss-visual-review .member-card figure img {aspect-ratio:2/3;object-fit:contain;width:100%;transition:filter .2s}
+.purplekiss-visual-review .member-card:hover img {filter:brightness(1.08)}
+.purplekiss-visual-review .member-card figcaption {font-size:10px;line-height:1.5;color:var(--muted);padding:8px 0;background:var(--ink)}
+.purplekiss-visual-review .member-number {font:italic 24px/1.1 var(--serif);color:var(--violet);margin-bottom:14px}
+.purplekiss-visual-review .member-label {border-top:1px solid var(--line);padding-top:14px;display:grid;grid-template-columns:1fr auto;align-items:center}
+.purplekiss-visual-review .member-label h3 {font-size:18px;line-height:1.4}
+.purplekiss-visual-review .member-label>span:not([aria-hidden]) {font-size:12px;color:var(--muted);grid-row:2;grid-column:1;margin-top:3px}
+.purplekiss-visual-review .member-label>[aria-hidden] {grid-column:2;grid-row:1/3;font-size:22px;color:var(--violet)}
+.purplekiss-visual-review .section-footnote {font-size:12px;color:inherit;opacity:.62;margin-top:25px}
+.purplekiss-visual-review .selected-records {padding-block:40px 85px}
+.purplekiss-visual-review .selected-sleeves {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px}
+.purplekiss-visual-review .sleeve {text-align:left;padding:0;min-width:0;width:100%;display:block}
+.purplekiss-visual-review .sleeve-art {position:relative;background:#17121b;padding:0;overflow:hidden}
+.purplekiss-visual-review .sleeve-art img {width:100%;aspect-ratio:1;object-fit:contain;transition:transform .3s}
+.purplekiss-visual-review .sleeve:hover .sleeve-art img {transform:scale(1.015)}
+.purplekiss-visual-review .sleeve-open {position:absolute;bottom:12px;right:12px;background:var(--paper);color:var(--ink);font-size:12px;line-height:1.6;padding:8px 12px;opacity:0;transition:opacity .2s}
+.purplekiss-visual-review .sleeve:hover .sleeve-open,
+.purplekiss-visual-review .sleeve:focus-visible .sleeve-open {opacity:1}
+.purplekiss-visual-review .sleeve-date {display:block;font-size:12px;letter-spacing:.03em;color:var(--muted);margin-top:18px}
+.purplekiss-visual-review .sleeve h3 {font:30px/1.3 var(--serif);margin-top:5px;overflow-wrap:anywhere}
+.purplekiss-visual-review .history-invitation {padding:65px max(var(--gutter),calc((100vw - 1200px)/2));display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.purplekiss-visual-review .history-invitation h2 {font-size:44px;line-height:1.55}
+.purplekiss-visual-review .history-invitation em {font-style:normal;color:#7a546d}
+.purplekiss-visual-review .history-preview>div {display:grid;grid-template-columns:120px 1fr;gap:20px;border-top:1px solid var(--dark-line);padding:16px 0;font-size:14px}
+.purplekiss-visual-review .history-preview time {font:18px/1.6 var(--serif);white-space:nowrap}
+.purplekiss-visual-review .history-preview>.text-link {margin-top:15px}
+.purplekiss-visual-review .page-heading {padding-block:58px 48px}
+.purplekiss-visual-review .page-heading h1 {font-size:56px;line-height:1.5;letter-spacing:.06em}
+.purplekiss-visual-review .page-heading h1>span {font-size:18px;letter-spacing:.04em;color:var(--muted);display:block;margin-top:15px}
+.purplekiss-visual-review .page-intro {font-size:14px;color:var(--muted);line-height:2;margin-top:25px}
+.purplekiss-visual-review .member-directory {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:55px 35px;padding-bottom:80px}
+.purplekiss-visual-review .member-directory .member-card figure img {max-height:550px}
+.purplekiss-visual-review .member-directory .member-label h3 {font-size:24px}
+.purplekiss-visual-review .member-directory .member-label>span:not([aria-hidden]) {font-size:15px}
+.purplekiss-visual-review .member-directory .member-number {font-size:34px}
+.purplekiss-visual-review .member-directory .member-card figcaption {font-size:11px}
+.purplekiss-visual-review .historical-member {padding:56px max(var(--gutter),calc((100vw - 1200px)/2));display:grid;grid-template-columns:1.1fr 1fr;gap:90px;align-items:center}
+.purplekiss-visual-review .historical-member h2 {font-size:32px;margin-bottom:20px}
+.purplekiss-visual-review .historical-member>div>p:not(.section-index) {font-size:14px}
+.purplekiss-visual-review .historic-card {display:grid;grid-template-columns:160px 1fr;gap:30px;align-items:center}
+.purplekiss-visual-review .historic-card img {width:160px;aspect-ratio:4/5;object-fit:contain}
+.purplekiss-visual-review .historic-card h3 {font-size:28px;margin:8px 0}
+.purplekiss-visual-review .historic-card span,
+.purplekiss-visual-review .historic-card p {font-size:13px}
+.purplekiss-visual-review .member-breadcrumb {padding-block:30px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:13px}
+.purplekiss-visual-review .member-detail {display:grid;grid-template-columns:1fr 1.05fr;gap:70px;padding-bottom:70px}
+.purplekiss-visual-review .detail-portrait {background:#17131a;align-self:start}
+.purplekiss-visual-review .detail-portrait img {max-height:800px;width:100%;object-fit:contain}
+.purplekiss-visual-review .detail-portrait>figcaption {font-size:11px;color:var(--muted);padding:12px;background:var(--ink)}
+.purplekiss-visual-review .member-story {padding-top:28px}
+.purplekiss-visual-review .member-story h1 {font-size:56px;line-height:1.4}
+.purplekiss-visual-review .member-stage {font:italic 45px/1.3 var(--serif);color:var(--violet);margin-top:6px}
+.purplekiss-visual-review .member-role {font-size:13px;color:var(--muted);margin-top:20px}
+.purplekiss-visual-review .profile-rule {width:48px;border-top:1px solid var(--pink);margin:32px 0}
+.purplekiss-visual-review .member-bio {font-size:16px;line-height:1.9;max-width:510px}
+.purplekiss-visual-review dl {margin:30px 0}
+.purplekiss-visual-review dl>div {border-top:1px solid var(--line);display:grid;grid-template-columns:100px 1fr;gap:20px;padding:15px 0;font-size:13px}
+.purplekiss-visual-review dt {color:var(--muted)}
+.purplekiss-visual-review dd {margin:0;font-variant-numeric:tabular-nums}
+.purplekiss-visual-review .source-details {font-size:13px;line-height:1.9}
+.purplekiss-visual-review .source-details summary {cursor:pointer;padding:10px 0;width:fit-content;color:inherit}
+.purplekiss-visual-review .source-details p {margin:6px 0;color:inherit;opacity:.85}
+.purplekiss-visual-review .source-details a {text-decoration:underline;text-underline-offset:4px}
+.purplekiss-visual-review .member-story>.text-link {margin-top:28px}
+.purplekiss-visual-review .member-records {padding:50px max(var(--gutter),calc((100vw - 1200px)/2)) 60px}
+.purplekiss-visual-review .member-records .sleeve-date {color:#675866}
+.purplekiss-visual-review .other-voices {padding-block:50px 70px}
+.purplekiss-visual-review .other-voices h2 {font-size:26px;margin-bottom:25px}
+.purplekiss-visual-review .other-voices>div {display:grid;grid-template-columns:repeat(3,1fr);gap:0 25px}
+.purplekiss-visual-review .other-voices a {display:grid;grid-template-columns:1fr auto;border-top:1px solid var(--line);padding:16px 0;font-size:16px}
+.purplekiss-visual-review .other-voices a>span:not([aria-hidden]) {font-size:12px;color:var(--muted);grid-column:1;grid-row:2}
+.purplekiss-visual-review .other-voices a>[aria-hidden] {grid-column:2;grid-row:1/3}
+.purplekiss-visual-review .works-title {padding-bottom:35px}
+.purplekiss-visual-review .works-controls {display:flex;gap:40px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:22px}
+.purplekiss-visual-review .type-tabs {display:flex;gap:32px}
+.purplekiss-visual-review .type-tabs button {font-size:22px;padding:8px 0;border-bottom:2px solid transparent}
+.purplekiss-visual-review .type-tabs button[aria-selected=true] {border-color:var(--pink);color:var(--pink)}
+.purplekiss-visual-review .type-tabs span {font:13px/1 Arial,sans-serif;opacity:.65;margin-left:9px}
+.purplekiss-visual-review .search-label {display:flex;align-items:center;gap:16px}
+.purplekiss-visual-review .search-label>span {font-size:12px;color:var(--muted);white-space:nowrap}
+.purplekiss-visual-review .search-label input {width:240px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--paper);padding:10px 0;font-size:14px;border-radius:0}
+.purplekiss-visual-review .search-label input::placeholder {color:#a899ac}
+.purplekiss-visual-review .works-results {padding-block:25px 40px}
+.purplekiss-visual-review .result-meta {font-size:12px;color:var(--muted);margin-bottom:26px}
+.purplekiss-visual-review .sleeve-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:42px 32px}
+.purplekiss-visual-review .video-list {display:flex;flex-direction:column}
+.purplekiss-visual-review .video-row {display:grid;grid-template-columns:35px 224px minmax(0,1fr) 120px;gap:25px;align-items:center;text-align:left;padding:23px 0;border-top:1px solid var(--line);min-width:0}
+.purplekiss-visual-review .video-index {font:italic 21px var(--serif);color:var(--violet)}
+.purplekiss-visual-review .video-row figure {position:relative;background:#151117}
+.purplekiss-visual-review .video-row figure img {width:224px;aspect-ratio:16/9;object-fit:contain}
+.purplekiss-visual-review .video-row figure>.video-duration {position:absolute;bottom:5px;right:7px;font-size:11px;background:#211b25;padding:0 4px}
+.purplekiss-visual-review .video-row h3 {font:30px/1.3 var(--serif);margin:8px 0}
+.purplekiss-visual-review .video-row time {font-size:13px;color:var(--muted)}
+.purplekiss-visual-review .video-row .small-label {color:var(--violet)}
+.purplekiss-visual-review .video-link {font-size:13px;display:flex;justify-content:space-between}
+.purplekiss-visual-review .works-boundary {font-size:12px;color:var(--muted);padding-bottom:65px}
+.purplekiss-visual-review .empty-state {grid-column:1/-1;text-align:center;padding:70px 20px;border:1px solid var(--line);min-height:250px}
+.purplekiss-visual-review .empty-state h2 {font-size:26px;margin-bottom:15px}
+.purplekiss-visual-review .empty-state p {color:var(--muted);font-size:14px}
+.purplekiss-visual-review .timeline-layout {display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px;padding-bottom:80px}
+.purplekiss-visual-review .timeline-sidebar {align-self:start;position:sticky;top:25px}
+.purplekiss-visual-review .timeline-sidebar h2 {font-size:36px;line-height:1.6;margin-bottom:30px}
+.purplekiss-visual-review .timeline-sidebar label {font-size:13px;display:block;margin-bottom:20px}
+.purplekiss-visual-review .timeline-sidebar select {display:block;border:1px solid var(--line);background:var(--ink);color:var(--paper);width:100%;padding:12px;font-size:14px;margin-top:7px}
+.purplekiss-visual-review .timeline-sidebar>p:last-child {font-size:12px;color:var(--muted);margin-top:32px}
+.purplekiss-visual-review .result-count {font-size:12px;color:var(--muted);padding-bottom:20px}
+.purplekiss-visual-review .single-timeline {min-width:0}
+.purplekiss-visual-review .timeline-event {position:relative;border-left:1px solid #79647f;display:grid;grid-template-columns:125px minmax(0,1fr) 90px;gap:25px;padding:0 0 42px 27px;margin-left:4px}
+.purplekiss-visual-review .timeline-dot {position:absolute;left:-5px;top:7px;width:9px;height:9px;background:var(--violet);border-radius:50%}
+.purplekiss-visual-review .event-date {font-size:12px;color:var(--muted);padding-top:1px}
+.purplekiss-visual-review .event-date>time {font:20px/1.4 var(--serif);color:var(--paper);white-space:nowrap}
+.purplekiss-visual-review .event-date>span {display:block;font-size:11px;margin-top:7px;line-height:1.7}
+.purplekiss-visual-review .event-copy .small-label {color:var(--violet);font-size:11px;margin-bottom:6px}
+.purplekiss-visual-review .event-copy h2 {font-size:21px;line-height:1.65}
+.purplekiss-visual-review .event-copy>p:not(.small-label) {font-size:13px;color:var(--muted);margin-top:8px}
+.purplekiss-visual-review .event-copy .underline-button {font-size:12px;margin-top:14px}
+.purplekiss-visual-review .event-copy .source-details {font-size:12px;margin-top:5px}
+.purplekiss-visual-review .event-cover {width:90px;aspect-ratio:1;object-fit:contain}
+.purplekiss-visual-review .event-copy {padding-bottom:20px;border-bottom:1px solid var(--line)}
+.purplekiss-visual-review footer {border-top:1px solid var(--line);padding:48px var(--gutter) 26px;max-width:1600px;margin:auto}
+.purplekiss-visual-review .footer-brand {font:clamp(45px,7vw,100px)/1.1 var(--serif);letter-spacing:-.045em;color:var(--violet)}
+.purplekiss-visual-review footer>p {font-size:13px;margin-top:18px;color:var(--muted)}
+.purplekiss-visual-review .footer-bottom {display:flex;gap:25px;justify-content:flex-end;font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:20px;margin-top:35px}
+.purplekiss-visual-review .footer-bottom>span {margin-right:auto}
+.purplekiss-visual-review dialog {border:1px solid #9a819b;background:var(--paper);color:var(--ink);width:min(900px,90vw);max-height:90dvh;padding:28px 35px 38px;overflow:auto}
+.purplekiss-visual-review dialog::backdrop {background:#110b17c9}
+.purplekiss-visual-review .dialog-close {display:block;margin-left:auto;padding:6px 0 20px;font-size:14px}
+.purplekiss-visual-review .dialog-content {display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.purplekiss-visual-review .dialog-content img {width:100%;aspect-ratio:1;object-fit:contain;background:#ded4df}
+.purplekiss-visual-review .dialog-content h2 {font:42px/1.15 var(--serif);overflow-wrap:anywhere}
+.purplekiss-visual-review .dialog-content .section-index {font-size:10px}
+.purplekiss-visual-review .dialog-date {font:22px/1.4 var(--serif);margin:20px 0 5px}
+.purplekiss-visual-review .dialog-content p:not(.dialog-date):not(.section-index) {font-size:13px;line-height:1.9}
+.purplekiss-visual-review .dialog-description {margin-top:20px}
+.purplekiss-visual-review .dialog-links {display:flex;gap:20px;flex-wrap:wrap;margin-top:25px}
+.purplekiss-visual-review .dialog-links a {font-size:14px;text-decoration:underline;text-underline-offset:5px}
+.purplekiss-visual-review .video-dialog img {aspect-ratio:16/9;image-rendering:auto}
+.purplekiss-visual-review .dialog-open {overflow:hidden}
+@media(min-width:1800px) {
+.purplekiss-visual-review {--gutter:72px}
+.purplekiss-visual-review .home-masthead {padding-top:55px}
+.purplekiss-visual-review .masthead-title h1 {font-size:158px}
+.purplekiss-visual-review .hero-note {padding:45px}
+.purplekiss-visual-review .hero-note h2 {font-size:45px}
+.purplekiss-visual-review .record-feature,
+.purplekiss-visual-review .history-invitation,
+.purplekiss-visual-review .member-records,
+.purplekiss-visual-review .historical-member {padding-inline:max(72px,calc((100vw - 1200px)/2))}
+}
+@media(max-width:1100px) {
+.purplekiss-visual-review header {gap:20px}
+.purplekiss-visual-review .brand {min-width:180px}
+.purplekiss-visual-review .header-source {display:none}
+.purplekiss-visual-review nav {margin-left:auto;margin-right:0;gap:28px}
+.purplekiss-visual-review .hero-note {padding:25px}
+.purplekiss-visual-review .hero-note>p {font-size:13px}
+.purplekiss-visual-review .archive-status {flex-direction:column;gap:8px}
+.purplekiss-visual-review .feature-content {gap:25px}
+.purplekiss-visual-review .feature-copy h2 {font-size:29px}
+.purplekiss-visual-review .feature-detail h3 {font-size:30px}
+.purplekiss-visual-review .home-members {grid-template-columns:repeat(3,1fr);gap:30px 24px}
+.purplekiss-visual-review .home-members .member-card figure img {max-height:330px}
+.purplekiss-visual-review .home-members figcaption {font-size:11px}
+.purplekiss-visual-review .timeline-layout {gap:35px;grid-template-columns:180px 1fr}
+.purplekiss-visual-review .timeline-event {grid-template-columns:110px 1fr;gap:18px}
+.purplekiss-visual-review .event-cover {display:none}
+.purplekiss-visual-review .member-detail {gap:40px}
+.purplekiss-visual-review .video-row {grid-template-columns:28px 190px 1fr;gap:20px}
+.purplekiss-visual-review .video-row figure img {width:190px}
+.purplekiss-visual-review .video-link {display:none}
+.purplekiss-visual-review .feature-detail .small-label {font-size:11px}
+.purplekiss-visual-review .historical-member {gap:40px}
+.purplekiss-visual-review .member-story h1 {font-size:46px}
+.purplekiss-visual-review .member-stage {font-size:36px}
+}
+@media(max-width:700px) {
+.purplekiss-visual-review {--gutter:22px}
+.purplekiss-visual-review {font-size:15px;line-height:1.8}
+.purplekiss-visual-review header {padding:16px var(--gutter) 0;min-height:120px;display:grid;grid-template-columns:1fr;gap:12px}
+.purplekiss-visual-review .brand {min-width:0;gap:10px}
+.purplekiss-visual-review .brand img {width:42px;height:42px}
+.purplekiss-visual-review .brand>span:not(.media-frame) {font-size:14px;display:flex;align-items:center;gap:15px}
+.purplekiss-visual-review .brand-sub {font-size:10px;letter-spacing:.15em;margin-top:0}
+.purplekiss-visual-review nav {display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:0;width:100%;text-align:center}
+.purplekiss-visual-review nav a {font-size:14px;min-height:44px;padding:10px 0 12px;border-bottom-width:2px}
+.purplekiss-visual-review .home-masthead {padding-top:28px;padding-bottom:38px}
+.purplekiss-visual-review .masthead-title {display:block;margin-bottom:22px}
+.purplekiss-visual-review .masthead-title h1 {font-size:clamp(36px,10.2vw,64px);letter-spacing:-.055em;white-space:nowrap}
+.purplekiss-visual-review .masthead-title>p {font-size:12px;line-height:1.6;margin-top:14px}
+.purplekiss-visual-review .masthead-title>p br {display:none}
+.purplekiss-visual-review .hero-composition {display:flex;flex-direction:column}
+.purplekiss-visual-review .hero-photo img {aspect-ratio:1.5;width:100%;height:auto;object-fit:contain}
+.purplekiss-visual-review .hero-photo figcaption {font-size:10px;padding-top:9px}
+.purplekiss-visual-review .hero-note {margin:20px 0 0;padding:27px 25px 24px;display:grid;grid-template-columns:1fr;gap:0}
+.purplekiss-visual-review .note-rule {margin-bottom:20px;width:28px}
+.purplekiss-visual-review .hero-note h2 {font-size:29px;line-height:1.5;letter-spacing:.06em}
+.purplekiss-visual-review .hero-note h2 br:nth-of-type(2) {display:none}
+.purplekiss-visual-review .hero-note>p {font-size:13px;line-height:1.9;margin:20px 0}
+.purplekiss-visual-review .hero-note .text-link {font-size:13px}
+.purplekiss-visual-review .archive-status {margin-top:25px;padding-top:20px;flex-direction:row;gap:25px;align-items:center}
+.purplekiss-visual-review .archive-status>span {font-size:20px}
+.purplekiss-visual-review .archive-status>p {font-size:11px}
+.purplekiss-visual-review .record-feature {padding-block:32px 40px;padding-inline:var(--gutter)}
+.purplekiss-visual-review .feature-number {font-size:10px;padding-bottom:18px}
+.purplekiss-visual-review .feature-content {grid-template-columns:1fr;gap:26px;margin-top:25px}
+.purplekiss-visual-review .feature-copy h2 {font-size:28px;line-height:1.55}
+.purplekiss-visual-review .feature-copy>p {font-size:13px;line-height:1.9;margin:17px 0}
+.purplekiss-visual-review .feature-cover {width:calc(100% - 10px);max-width:360px}
+.purplekiss-visual-review .feature-detail h3 {font-size:32px;margin:10px 0 16px}
+.purplekiss-visual-review .feature-detail>p:not(.small-label) {font-size:13px}
+.purplekiss-visual-review .feature-detail>p:not(.small-label) br {display:none}
+.purplekiss-visual-review .feature-detail .underline-button {margin-top:18px}
+.purplekiss-visual-review .people-section {padding-block:40px 32px}
+.purplekiss-visual-review .section-heading {display:block;margin-bottom:25px}
+.purplekiss-visual-review .section-heading h2 {font-size:23px;line-height:1.65}
+.purplekiss-visual-review .section-heading>.text-link {margin-top:18px;font-size:13px}
+.purplekiss-visual-review .section-index {font-size:10px;letter-spacing:.16em;margin-bottom:8px}
+.purplekiss-visual-review .home-members {grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+.purplekiss-visual-review .home-members .member-card figure img {max-height:none}
+.purplekiss-visual-review .member-number {font-size:24px;margin-bottom:10px}
+.purplekiss-visual-review .member-card figcaption,
+.purplekiss-visual-review .home-members figcaption {font-size:9px;line-height:1.5;padding:6px 0;min-height:39px}
+.purplekiss-visual-review .member-label {padding-top:10px}
+.purplekiss-visual-review .member-label h3 {font-size:17px}
+.purplekiss-visual-review .member-label>span:not([aria-hidden]) {font-size:11px}
+.purplekiss-visual-review .member-label>[aria-hidden] {font-size:18px}
+.purplekiss-visual-review .section-footnote {font-size:11px;line-height:1.8;margin-top:22px}
+.purplekiss-visual-review .selected-records {padding-block:20px 40px}
+.purplekiss-visual-review .selected-sleeves {grid-template-columns:1fr;gap:28px}
+.purplekiss-visual-review .selected-sleeves .sleeve {display:grid;grid-template-columns:120px minmax(0,1fr);gap:0 20px;align-items:start}
+.purplekiss-visual-review .selected-sleeves .sleeve-art {grid-row:1/3}
+.purplekiss-visual-review .selected-sleeves .sleeve-date {margin-top:8px;font-size:10px;align-self:end}
+.purplekiss-visual-review .selected-sleeves .sleeve h3 {font-size:25px;margin-top:5px;align-self:start}
+.purplekiss-visual-review .sleeve-open {display:none}
+.purplekiss-visual-review .history-invitation {padding:35px var(--gutter) 40px;grid-template-columns:1fr;gap:28px}
+.purplekiss-visual-review .history-invitation h2 {font-size:31px;line-height:1.5}
+.purplekiss-visual-review .history-preview>div {grid-template-columns:100px 1fr;gap:16px;font-size:12px;padding:13px 0}
+.purplekiss-visual-review .history-preview time {font-size:16px}
+.purplekiss-visual-review .history-preview>.text-link {font-size:13px}
+.purplekiss-visual-review .page-heading {padding-block:35px 30px}
+.purplekiss-visual-review .page-heading h1 {font-size:36px;line-height:1.5;letter-spacing:.04em}
+.purplekiss-visual-review .page-heading h1>span {font-size:15px;line-height:1.8;margin-top:10px;letter-spacing:.02em}
+.purplekiss-visual-review .page-intro {font-size:13px;line-height:1.9;margin-top:20px}
+.purplekiss-visual-review .member-directory {grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 16px;padding-bottom:38px}
+.purplekiss-visual-review .member-directory .member-label h3 {font-size:18px}
+.purplekiss-visual-review .member-directory .member-label>span:not([aria-hidden]) {font-size:11px}
+.purplekiss-visual-review .member-directory .member-number {font-size:25px}
+.purplekiss-visual-review .member-directory .member-card figcaption {font-size:9px}
+.purplekiss-visual-review .historical-member {padding:35px var(--gutter) 40px;grid-template-columns:1fr;gap:25px}
+.purplekiss-visual-review .historical-member h2 {font-size:25px;margin-bottom:15px}
+.purplekiss-visual-review .historical-member>div>p:not(.section-index) {font-size:12px;line-height:1.9}
+.purplekiss-visual-review .historic-card {grid-template-columns:125px 1fr;gap:22px}
+.purplekiss-visual-review .historic-card img {width:125px}
+.purplekiss-visual-review .historic-card h3 {font-size:25px}
+.purplekiss-visual-review .historic-card span,
+.purplekiss-visual-review .historic-card p {font-size:11px}
+.purplekiss-visual-review .member-breadcrumb {padding-block:22px;font-size:11px;gap:12px;flex-wrap:wrap}
+.purplekiss-visual-review .member-detail {display:flex;flex-direction:column;gap:25px;padding-bottom:35px}
+.purplekiss-visual-review .detail-portrait {width:100%}
+.purplekiss-visual-review .detail-portrait img {max-height:580px}
+.purplekiss-visual-review .detail-portrait>figcaption {font-size:10px;padding:10px 0}
+.purplekiss-visual-review .member-story {padding-top:0}
+.purplekiss-visual-review .member-story h1 {font-size:39px}
+.purplekiss-visual-review .member-stage {font-size:37px;line-height:1.4}
+.purplekiss-visual-review .member-role {font-size:12px;margin-top:15px}
+.purplekiss-visual-review .profile-rule {margin:23px 0}
+.purplekiss-visual-review .member-bio {font-size:14px;line-height:1.9}
+.purplekiss-visual-review .member-story dl {margin:22px 0}
+.purplekiss-visual-review .member-story dl>div {grid-template-columns:85px 1fr;gap:10px;padding:13px 0;font-size:12px}
+.purplekiss-visual-review .source-details {font-size:12px}
+.purplekiss-visual-review .member-story>.text-link {margin-top:20px;font-size:13px}
+.purplekiss-visual-review .member-records {padding:35px var(--gutter) 40px}
+.purplekiss-visual-review .other-voices {padding-block:35px 45px}
+.purplekiss-visual-review .other-voices h2 {font-size:23px;margin-bottom:20px}
+.purplekiss-visual-review .other-voices>div {grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
+.purplekiss-visual-review .other-voices a {font-size:15px;padding:13px 0}
+.purplekiss-visual-review .other-voices a>span:not([aria-hidden]) {font-size:11px}
+.purplekiss-visual-review .works-controls {display:block;padding-bottom:20px}
+.purplekiss-visual-review .type-tabs {gap:30px}
+.purplekiss-visual-review .type-tabs button {font-size:20px;padding:7px 0}
+.purplekiss-visual-review .search-label {display:block;margin-top:24px}
+.purplekiss-visual-review .search-label>span {display:block;font-size:11px}
+.purplekiss-visual-review .search-label input {width:100%;font-size:14px;padding:9px 0}
+.purplekiss-visual-review .works-results {padding-top:22px}
+.purplekiss-visual-review .sleeve-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 18px}
+.purplekiss-visual-review .sleeve-grid .sleeve-date {font-size:10px;line-height:1.8;margin-top:11px}
+.purplekiss-visual-review .sleeve-grid .sleeve h3 {font-size:22px;line-height:1.35}
+.purplekiss-visual-review .video-row {grid-template-columns:110px minmax(0,1fr);gap:14px;padding:18px 0}
+.purplekiss-visual-review .video-index {display:none}
+.purplekiss-visual-review .video-row figure img {width:110px}
+.purplekiss-visual-review .video-row h3 {font-size:23px;line-height:1.25;margin:5px 0 7px}
+.purplekiss-visual-review .video-row time {font-size:11px}
+.purplekiss-visual-review .video-row .small-label {font-size:10px}
+.purplekiss-visual-review .video-row figure>.video-duration {font-size:9px;right:3px;bottom:2px}
+.purplekiss-visual-review .works-boundary {font-size:11px;line-height:1.9;padding-bottom:40px}
+.purplekiss-visual-review .timeline-layout {grid-template-columns:1fr;gap:28px;padding-bottom:45px}
+.purplekiss-visual-review .timeline-sidebar {position:static;display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.purplekiss-visual-review .timeline-sidebar h2,
+.purplekiss-visual-review .timeline-sidebar>.section-index,
+.purplekiss-visual-review .timeline-sidebar>p:last-child {display:none}
+.purplekiss-visual-review .timeline-sidebar label {font-size:11px;margin:0}
+.purplekiss-visual-review .timeline-sidebar select {font-size:13px;padding:11px;margin-top:7px;min-height:44px}
+.purplekiss-visual-review .timeline-event {grid-template-columns:1fr;gap:10px;padding:0 0 26px 23px}
+.purplekiss-visual-review .event-date {display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.purplekiss-visual-review .event-date>time {font-size:20px}
+.purplekiss-visual-review .event-date>span {font-size:10px;margin-top:0}
+.purplekiss-visual-review .event-copy .small-label {font-size:10px;margin-bottom:4px}
+.purplekiss-visual-review .event-copy h2 {font-size:19px;line-height:1.65}
+.purplekiss-visual-review .event-copy>p:not(.small-label) {font-size:12px;line-height:1.9;margin-top:7px}
+.purplekiss-visual-review .event-copy .source-details {font-size:11px}
+.purplekiss-visual-review .event-copy {padding-bottom:18px}
+.purplekiss-visual-review .result-count {font-size:11px;padding-bottom:25px}
+.purplekiss-visual-review .event-cover {display:none}
+.purplekiss-visual-review footer {padding:35px var(--gutter) 22px}
+.purplekiss-visual-review .footer-brand {font-size:47px;white-space:nowrap}
+.purplekiss-visual-review footer>p {font-size:12px;line-height:1.8;margin-top:15px}
+.purplekiss-visual-review .footer-bottom {justify-content:flex-start;flex-wrap:wrap;gap:12px 25px;margin-top:25px;padding-top:18px;font-size:10px}
+.purplekiss-visual-review .footer-bottom>span {width:100%}
+.purplekiss-visual-review dialog {width:calc(100vw - 28px);padding:18px 20px 28px;max-height:92dvh}
+.purplekiss-visual-review .dialog-close {font-size:13px;padding:4px 0 15px}
+.purplekiss-visual-review .dialog-content {grid-template-columns:1fr;gap:25px}
+.purplekiss-visual-review .dialog-content img {max-width:300px;margin:auto}
+.purplekiss-visual-review .dialog-content h2 {font-size:35px}
+.purplekiss-visual-review .dialog-date {font-size:20px;margin-top:18px}
+.purplekiss-visual-review .dialog-links {gap:18px}
+.purplekiss-visual-review .dialog-links a {font-size:13px}
+.purplekiss-visual-review .dialog-content p:not(.dialog-date):not(.section-index) {font-size:12px}
+}
+@media(max-width:350px) {
+.purplekiss-visual-review {--gutter:17px}
+.purplekiss-visual-review .brand>span:not(.media-frame) {gap:9px}
+.purplekiss-visual-review .brand-sub {font-size:9px}
+.purplekiss-visual-review .hero-note {padding:23px 20px}
+.purplekiss-visual-review .hero-note h2 {font-size:26px}
+.purplekiss-visual-review .archive-status {gap:20px}
+.purplekiss-visual-review .archive-status>span {font-size:18px}
+.purplekiss-visual-review .archive-status>p {font-size:10px}
+.purplekiss-visual-review .page-heading h1 {font-size:33px}
+.purplekiss-visual-review .member-label h3,
+.purplekiss-visual-review .member-directory .member-label h3 {font-size:16px}
+.purplekiss-visual-review .member-label>span:not([aria-hidden]) {font-size:10px}
+.purplekiss-visual-review .member-directory .member-card figcaption,
+.purplekiss-visual-review .home-members .member-card figcaption {font-size:9px;min-height:53px}
+.purplekiss-visual-review .sleeve-grid {gap:25px 14px}
+.purplekiss-visual-review .sleeve-grid .sleeve h3 {font-size:21px}
+.purplekiss-visual-review .selected-sleeves .sleeve {grid-template-columns:105px 1fr;gap:0 15px}
+.purplekiss-visual-review .selected-sleeves .sleeve h3 {font-size:23px}
+.purplekiss-visual-review .selected-sleeves .sleeve-date {font-size:9px}
+.purplekiss-visual-review .video-row {grid-template-columns:94px 1fr;gap:13px}
+.purplekiss-visual-review .video-row figure img {width:94px}
+.purplekiss-visual-review .video-row h3 {font-size:21px}
+.purplekiss-visual-review .footer-brand {font-size:41px}
+.purplekiss-visual-review .timeline-sidebar {gap:0 12px}
+.purplekiss-visual-review .history-preview>div {grid-template-columns:90px 1fr;gap:12px}
+.purplekiss-visual-review .history-preview time {font-size:15px}
+.purplekiss-visual-review .event-copy h2 {font-size:18px}
+}
+@media(prefers-reduced-motion:reduce) {
+.purplekiss-visual-review {scroll-behavior:auto}
+.purplekiss-visual-review *,
+.purplekiss-visual-review *::before,
+.purplekiss-visual-review *::after {transition:none!important;animation:none!important}
+}
+@media(max-width:700px) {
+.purplekiss-visual-review .member-card figcaption,
+.purplekiss-visual-review .home-members figcaption,
+.purplekiss-visual-review .member-directory .member-card figcaption {font-size:11px;line-height:1.65;min-height:55px}
+.purplekiss-visual-review .hero-photo figcaption,
+.purplekiss-visual-review .detail-portrait>figcaption,
+.purplekiss-visual-review .feature-number,
+.purplekiss-visual-review .section-index,
+.purplekiss-visual-review .small-label,
+.purplekiss-visual-review .sleeve-grid .sleeve-date,
+.purplekiss-visual-review .selected-sleeves .sleeve-date,
+.purplekiss-visual-review .event-date>span,
+.purplekiss-visual-review .event-copy .small-label,
+.purplekiss-visual-review .event-copy .source-details,
+.purplekiss-visual-review .result-count,
+.purplekiss-visual-review .works-boundary,
+.purplekiss-visual-review .section-footnote,
+.purplekiss-visual-review .footer-bottom,
+.purplekiss-visual-review .historic-card span,
+.purplekiss-visual-review .historic-card p {font-size:12px;line-height:1.8}
+.purplekiss-visual-review .member-label>span:not([aria-hidden]),
+.purplekiss-visual-review .member-directory .member-label>span:not([aria-hidden]) {font-size:12px;line-height:1.6}
+.purplekiss-visual-review .search-label>span,
+.purplekiss-visual-review .timeline-sidebar label {font-size:13px}
+.purplekiss-visual-review .video-row .small-label,
+.purplekiss-visual-review .video-row time {font-size:12px}
+.purplekiss-visual-review .archive-status>p {font-size:12px;line-height:1.8}
+.purplekiss-visual-review .archive-status {flex-wrap:wrap;gap:10px 22px}
+.purplekiss-visual-review .selected-sleeves .sleeve {align-items:center}
+.purplekiss-visual-review .member-card figcaption {color:#c9bfcb}
+}
+@media(max-width:350px) {
+.purplekiss-visual-review .member-directory .member-card figcaption,
+.purplekiss-visual-review .home-members .member-card figcaption {font-size:11px;min-height:73px}
+.purplekiss-visual-review .selected-sleeves .sleeve-date {font-size:11px}
+.purplekiss-visual-review .archive-status>p {font-size:12px}
+}
+.purplekiss-visual-review .work-detail {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:0;padding-bottom:60px;align-items:stretch}
+.purplekiss-visual-review .work-stage {background:#17131b;padding:40px;display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:0}
+.purplekiss-visual-review .work-stage>.section-index {align-self:flex-start;margin-bottom:32px}
+.purplekiss-visual-review .work-art {width:100%;max-width:520px}
+.purplekiss-visual-review .work-art img {width:100%;aspect-ratio:1;object-fit:contain}
+.purplekiss-visual-review .work-art figcaption {font-size:12px;color:var(--muted);line-height:1.8;margin-top:15px}
+.purplekiss-visual-review .work-stage>a {font-size:14px;border-bottom:1px solid currentColor;margin-top:30px;padding-bottom:6px}
+.purplekiss-visual-review .work-program {padding:45px 38px;min-width:0}
+.purplekiss-visual-review .work-program h1 {font:clamp(36px,4vw,58px)/1.18 var(--serif);overflow-wrap:anywhere}
+.purplekiss-visual-review .work-language {font-size:13px;margin-top:16px}
+.purplekiss-visual-review .work-program>p:not(.section-index):not(.work-language) {font-size:14px;line-height:1.9}
+.purplekiss-visual-review .work-program dl>div {grid-template-columns:110px minmax(0,1fr);border-color:var(--dark-line);gap:15px}
+.purplekiss-visual-review .work-program dt {color:#68566b}
+.purplekiss-visual-review .work-program .profile-rule {border-color:#87658c}
+.purplekiss-visual-review .work-official {margin-top:30px;margin-bottom:12px}
+.purplekiss-visual-review .work-official>a {display:inline-block;padding:12px 18px;border:1px solid var(--dark-line);font-size:14px;min-height:48px}
+.purplekiss-visual-review .work-footer {display:flex;gap:40px;padding-bottom:65px;flex-wrap:wrap}
+.purplekiss-visual-review .work-related {padding-bottom:40px}
+.purplekiss-visual-review .work-related h2 {font-size:24px;margin-bottom:24px}
+.purplekiss-visual-review .work-related>a {display:block;border-top:1px solid var(--line);padding-block:16px;font-size:15px}
+.purplekiss-visual-review .native-preview {width:224px;max-width:224px;justify-self:center}
+.purplekiss-visual-review .native-preview img {width:224px!important;max-width:224px!important;height:auto;aspect-ratio:16/9!important;object-fit:contain!important;image-rendering:auto}
+.purplekiss-visual-review .work-video-stage {min-height:420px}
+.purplekiss-visual-review .dialog-art {min-width:0;margin:0}
+.purplekiss-visual-review .dialog-art img {width:100%;aspect-ratio:1;object-fit:contain;background:#ded4df}
+.purplekiss-visual-review .dialog-art figcaption {font-size:12px;line-height:1.8;margin-top:10px}
+.purplekiss-visual-review .video-dialog {grid-template-columns:224px minmax(0,1fr);align-items:start}
+.purplekiss-visual-review .video-dialog .native-preview {margin-top:8px}
+.purplekiss-visual-review .dialog-content img {max-width:100%}
+.purplekiss-visual-review .sleeve:hover .sleeve-art img {transform:none}
+.purplekiss-visual-review .sleeve-open {position:static;display:block;opacity:1;padding:10px 0 0;font-size:12px;background:none;color:var(--violet);text-align:right}
+.purplekiss-visual-review .sleeve-art {overflow:visible}
+.purplekiss-visual-review .paper .sleeve-open {color:#68516e}
+.purplekiss-visual-review .image-failed {min-height:90px;background:#38303d;outline:1px solid #9c839e;outline-offset:-1px;color:#efe4f0;font-size:12px;object-fit:contain}
+.purplekiss-visual-review .image-failure-label {display:block;padding:10px 8px;background:#342a3b;color:#efe4f0;font-size:12px;line-height:1.8;text-align:center}
+.purplekiss-visual-review .image-recovery {position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:100;width:min(430px,calc(100vw - 30px));display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 18px;background:var(--paper);border:1px solid #8c708f;color:var(--ink);box-shadow:0 4px 20px #0004}
+.purplekiss-visual-review .image-recovery p {font-size:13px;line-height:1.7}
+.purplekiss-visual-review .image-recovery button {padding:9px 12px;border:1px solid var(--dark-line);white-space:nowrap;min-height:44px;font-size:13px}
+.purplekiss-visual-review dialog .image-recovery {position:sticky;bottom:0;left:auto;transform:none;width:100%;margin-top:20px;box-shadow:none}
+.purplekiss-visual-review .member-stage,
+.purplekiss-visual-review .member-breadcrumb>span,
+.purplekiss-visual-review .member-label>span:not([aria-hidden]),
+.purplekiss-visual-review .historic-card p,
+.purplekiss-visual-review .brand>span:not(.media-frame) {overflow-wrap:anywhere}
+.purplekiss-visual-review .member-story dd {overflow-wrap:anywhere}
+.purplekiss-visual-review .video-row time,
+.purplekiss-visual-review .dialog-date {white-space:normal}
+.purplekiss-visual-review .video-row {width:100%}
+@media(max-width:700px) {
+.purplekiss-visual-review .work-detail {grid-template-columns:1fr;padding-bottom:35px}
+.purplekiss-visual-review .work-stage {padding:25px 20px}
+.purplekiss-visual-review .work-stage>.section-index {margin-bottom:24px}
+.purplekiss-visual-review .work-program {padding:30px 25px}
+.purplekiss-visual-review .work-program h1 {font-size:39px}
+.purplekiss-visual-review .work-program dl>div {grid-template-columns:95px minmax(0,1fr);font-size:12px;gap:12px}
+.purplekiss-visual-review .work-program>p:not(.section-index):not(.work-language) {font-size:13px}
+.purplekiss-visual-review .work-art figcaption {font-size:12px}
+.purplekiss-visual-review .work-video-stage {min-height:290px}
+.purplekiss-visual-review .work-stage>a {font-size:13px;margin-top:20px}
+.purplekiss-visual-review .work-footer {gap:25px;padding-bottom:40px}
+.purplekiss-visual-review .work-related h2 {font-size:22px}
+.purplekiss-visual-review .video-dialog {grid-template-columns:1fr;gap:25px}
+.purplekiss-visual-review .native-preview,
+.purplekiss-visual-review .video-dialog .native-preview {width:224px;max-width:224px;margin-inline:auto}
+.purplekiss-visual-review .dialog-art:not(.native-preview) img {max-width:300px;margin-inline:auto}
+.purplekiss-visual-review .sleeve-open {display:none}
+.purplekiss-visual-review .member-stage {max-width:100%;font-size:clamp(30px,9vw,37px)}
+.purplekiss-visual-review .image-recovery {padding:12px;gap:10px}
+.purplekiss-visual-review .image-recovery p {font-size:12px}
+.purplekiss-visual-review .sleeve-grid .sleeve-date {font-size:12px}
+.purplekiss-visual-review .brand>span:not(.media-frame) {flex-wrap:wrap;gap:0 15px}
+.purplekiss-visual-review .brand-sub {line-height:1.6}
+.purplekiss-visual-review .member-directory .member-label>span:not([aria-hidden]) {line-height:1.7}
+}
+@media(max-width:350px) {
+.purplekiss-visual-review .work-program {padding:26px 20px}
+.purplekiss-visual-review .work-program h1 {font-size:34px}
+.purplekiss-visual-review .work-art:not(.native-preview) {max-width:100%}
+.purplekiss-visual-review .work-stage {padding:23px 15px}
+.purplekiss-visual-review .brand>span:not(.media-frame) {font-size:13px}
+.purplekiss-visual-review .brand-sub {font-size:11px}
+.purplekiss-visual-review .historic-card {gap:16px;grid-template-columns:110px minmax(0,1fr)}
+.purplekiss-visual-review .historic-card img {width:110px}
+.purplekiss-visual-review .footer-brand {font-size:clamp(30px,12.5vw,41px)}
+}
+.purplekiss-visual-review .image-failed {visibility:hidden}
+.purplekiss-visual-review .video-date-kind {font-size:12px;color:var(--muted);display:inline-block;margin-right:8px;line-height:1.8}
+.purplekiss-visual-review .dialog-content .dialog-art img {object-fit:contain}
+.purplekiss-visual-review .work-program .source-details {overflow-wrap:anywhere}
+.purplekiss-visual-review .work-detail .work-program dd {font-variant-numeric:tabular-nums}
+
+/* React host adapters: preserve the original composition through reliable-image wrappers. */
+.purplekiss-visual-review .media-frame {display:block;min-width:0;max-width:100%}
+.purplekiss-visual-review .media-frame img {display:block;max-width:100%;object-fit:contain}
+.purplekiss-visual-review .media-frame .ri-fallback {display:flex;align-items:center;justify-content:center;min-height:120px;padding:20px;background:#302737;color:var(--paper);font-size:13px;line-height:1.8;overflow-wrap:anywhere;text-align:center}
+.purplekiss-visual-review .brand .media-frame {width:58px;flex:0 0 58px}
+.purplekiss-visual-review .brand .media-frame .ri-fallback {min-height:58px;padding:5px;font-size:10px}
+.purplekiss-visual-review .hero-photo .media-frame {width:100%}
+.purplekiss-visual-review .hero-photo .ri-fallback {aspect-ratio:1.5}
+.purplekiss-visual-review .member-card .media-frame .ri-fallback {aspect-ratio:2/3}
+.purplekiss-visual-review .sleeve-art .media-frame .ri-fallback,
+.purplekiss-visual-review .feature-cover .media-frame .ri-fallback {aspect-ratio:1}
+.purplekiss-visual-review .detail-portrait .ri-fallback {aspect-ratio:2/3}
+.purplekiss-visual-review .sleeve-open {position:static;display:block;width:fit-content;opacity:1;padding:8px 0 0;color:var(--violet);background:none;text-align:left;font-size:12px}
+.purplekiss-visual-review .paper .sleeve-open {color:#68516e}
+.purplekiss-visual-review .selected-sleeves .sleeve {position:relative}
+.purplekiss-visual-review .feature-content-empty {grid-template-columns:1fr}
+.purplekiss-visual-review .type-tabs button[aria-pressed="true"] {border-color:var(--pink);color:var(--pink)}
+.purplekiss-visual-review .type-tabs button {min-height:44px}
+.purplekiss-visual-review .work-filter-fields {display:flex;align-items:flex-end;gap:24px;min-width:0}
+.purplekiss-visual-review .work-sort {display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--muted)}
+.purplekiss-visual-review .work-sort select {min-height:44px;max-width:100%;padding:8px 24px 8px 8px;border:1px solid var(--line);border-radius:0;background:var(--ink);color:var(--paper);font-size:13px}
+.purplekiss-visual-review .works-controls {flex-wrap:wrap;gap:20px 40px}
+.purplekiss-visual-review .search-label input {min-height:44px}
+.purplekiss-visual-review .video-row .media-frame {width:224px;max-width:100%}
+.purplekiss-visual-review .video-row .media-frame img {width:100%;aspect-ratio:16/9}
+.purplekiss-visual-review .video-row .ri-fallback {aspect-ratio:16/9;min-height:0}
+.purplekiss-visual-review .empty-state .underline-button + .underline-button {margin-left:24px}
+.purplekiss-visual-review .works-boundary p + p {margin-top:8px}
+.purplekiss-visual-review .record-action {display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:48px;padding:11px 16px;border:1px solid currentColor;font-size:14px;text-align:left}
+.purplekiss-visual-review .member-actions {display:flex;align-items:flex-start;flex-wrap:wrap;gap:24px;margin-top:28px}
+.purplekiss-visual-review .member-actions .record-action {color:var(--pink)}
+.purplekiss-visual-review .member-actions .text-link {margin-top:4px}
+.purplekiss-visual-review .member-pagination,
+.purplekiss-visual-review .work-pagination,
+.purplekiss-visual-review .event-pagination {display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:0;max-width:none;width:100%;padding-block:0 44px;text-align:left}
+.purplekiss-visual-review .member-pagination a,
+.purplekiss-visual-review .work-pagination a,
+.purplekiss-visual-review .event-pagination a {display:flex;flex-direction:column;gap:8px;padding:17px 0;border-top:1px solid var(--line);white-space:normal;font-size:13px;line-height:1.7;min-width:0}
+.purplekiss-visual-review .member-pagination strong {font-weight:400;color:var(--violet);font-size:15px}
+.purplekiss-visual-review .member-pagination a:last-child,
+.purplekiss-visual-review .work-pagination a:last-child,
+.purplekiss-visual-review .event-pagination a:last-child {text-align:right;align-items:flex-end}
+.purplekiss-visual-review .work-pagination a span,
+.purplekiss-visual-review .event-pagination a span {font-size:15px;color:var(--violet)}
+.purplekiss-visual-review .pagination-end {display:block;font-size:12px;color:var(--muted);padding:17px 0;border-top:1px solid var(--line)}
+.purplekiss-visual-review .pagination-end:last-child {text-align:right}
+.purplekiss-visual-review .year-navigation {display:flex;flex-wrap:wrap;gap:8px;margin:25px 0 0}
+.purplekiss-visual-review .year-navigation a {min-width:52px;min-height:44px;padding:10px 8px;border:1px solid var(--line);font-size:12px;text-align:center}
+.purplekiss-visual-review .year-navigation a[aria-current] {border-color:var(--pink);color:var(--pink)}
+.purplekiss-visual-review .timeline-year-heading {font:italic 32px/1.2 var(--serif);color:var(--violet);padding:0 0 25px;margin:0;scroll-margin-top:24px}
+.purplekiss-visual-review .timeline-entry + .timeline-entry .timeline-year-heading {padding-top:12px}
+.purplekiss-visual-review .timeline-event {scroll-margin-top:24px}
+.purplekiss-visual-review .timeline-event:focus,
+.purplekiss-visual-review .timeline-year-heading:focus {outline:2px solid var(--pink);outline-offset:8px}
+.purplekiss-visual-review .timeline-event .event-cover img {width:90px;aspect-ratio:1;object-fit:contain}
+.purplekiss-visual-review .event-date .date-precision {display:block;color:var(--muted);font-size:11px;line-height:1.7}
+.purplekiss-visual-review .event-source {margin-top:16px;padding-top:8px;border-top:1px solid var(--line)}
+.purplekiss-visual-review .event-copy h2 a:hover {text-decoration:underline;text-underline-offset:5px}
+.purplekiss-visual-review .event-copy .event-caution {color:var(--pink)}
+.purplekiss-visual-review .event-copy .related-event-links {display:flex;flex-direction:column;gap:10px;font-size:12px;margin-top:15px}
+.purplekiss-visual-review .timeline-message {margin:0 0 24px;padding:18px;border:1px solid var(--line);font-size:14px;line-height:1.8}
+.purplekiss-visual-review .timeline-message .underline-button {margin-top:14px}
+.purplekiss-visual-review .selected-event-navigation {margin-bottom:30px}
+.purplekiss-visual-review .selected-event-navigation p {font-size:12px;color:var(--muted);margin-top:14px}
+.purplekiss-visual-review .detail-dialog {width:min(1180px,calc(100vw - 40px));padding:18px 0 0;background:var(--ink);color:var(--paper);max-height:92dvh}
+.purplekiss-visual-review .detail-dialog > .dialog-close {margin-right:24px;min-height:44px;padding:8px 0}
+.purplekiss-visual-review .purplekiss-work-detail {background:var(--ink);color:var(--paper);--gutter:30px}
+.purplekiss-visual-review .purplekiss-work-detail .work-detail {padding-bottom:36px}
+.purplekiss-visual-review .work-program h2 {font:clamp(36px,4vw,58px)/1.18 var(--serif);overflow-wrap:anywhere}
+.purplekiss-visual-review .work-program .work-date-note {margin-top:16px;font-size:12px;line-height:1.9;color:#675866}
+.purplekiss-visual-review .work-program .work-actions {display:flex;flex-direction:column;gap:12px;margin:24px 0}
+.purplekiss-visual-review .work-actions .record-action {border-color:var(--dark-line)}
+.purplekiss-visual-review .action-unavailable {font-size:13px;line-height:1.8}
+.purplekiss-visual-review .work-tracklist {margin-top:26px;padding-top:20px;border-top:1px solid var(--dark-line)}
+.purplekiss-visual-review .work-tracklist h3 {font-size:14px;letter-spacing:.06em}
+.purplekiss-visual-review .work-tracklist ol {padding-left:25px;margin:12px 0 0;font-size:13px;line-height:1.9}
+.purplekiss-visual-review .work-tracklist li {padding-left:5px;overflow-wrap:anywhere}
+.purplekiss-visual-review .native-preview .media-frame {width:224px;max-width:224px}
+.purplekiss-visual-review .native-preview .ri-fallback {width:224px;max-width:224px;aspect-ratio:16/9;min-height:0}
+.purplekiss-visual-review .native-preview figcaption {max-width:224px}
+.purplekiss-visual-review .work-stage .work-art:not(.native-preview) img {aspect-ratio:1;width:100%;object-fit:contain}
+.purplekiss-visual-review .work-art .sol-image-zoom {padding:0}
+.purplekiss-visual-review .sol-image-dialog {background:var(--ink);color:var(--paper)}
+.purplekiss-visual-review .sol-image-dialog .dialog-close {position:static}
+.purplekiss-visual-review .sol-image-dialog figure {min-width:0}
+.purplekiss-visual-review .sol-image-dialog img {max-width:100%;object-fit:contain}
+.purplekiss-visual-review .source-details a {overflow-wrap:anywhere}
+
+@media(max-width:1100px) {
+  .purplekiss-visual-review .work-filter-fields {gap:18px}
+  .purplekiss-visual-review .video-row .media-frame {width:190px}
+  .purplekiss-visual-review .work-program {padding:35px 28px}
+  .purplekiss-visual-review .work-stage {padding:30px}
+}
+@media(max-width:700px) {
+  .purplekiss-visual-review .brand .media-frame {width:42px;flex-basis:42px}
+  .purplekiss-visual-review .brand .media-frame .ri-fallback {min-height:42px}
+  .purplekiss-visual-review .work-filter-fields {display:grid;grid-template-columns:minmax(0,1fr) 105px;gap:16px;align-items:end}
+  .purplekiss-visual-review .work-sort {font-size:12px;gap:6px}
+  .purplekiss-visual-review .work-sort select {font-size:12px;min-height:44px;padding:8px}
+  .purplekiss-visual-review .search-label {min-width:0}
+  .purplekiss-visual-review .search-label input {min-width:0}
+  .purplekiss-visual-review .type-tabs {gap:24px;flex-wrap:wrap}
+  .purplekiss-visual-review .type-tabs button {font-size:19px}
+  .purplekiss-visual-review .type-tabs span {margin-left:6px}
+  .purplekiss-visual-review .selected-sleeves .sleeve-open {display:none}
+  .purplekiss-visual-review .sleeve-grid .sleeve-open {font-size:12px;padding-top:8px}
+  .purplekiss-visual-review .video-row .media-frame {width:110px}
+  .purplekiss-visual-review .video-row .media-frame .ri-fallback {font-size:11px;padding:8px}
+  .purplekiss-visual-review .member-actions {gap:20px}
+  .purplekiss-visual-review .record-action {font-size:13px}
+  .purplekiss-visual-review .member-pagination,
+  .purplekiss-visual-review .work-pagination,
+  .purplekiss-visual-review .event-pagination {gap:20px;padding-bottom:30px}
+  .purplekiss-visual-review .member-pagination strong,
+  .purplekiss-visual-review .work-pagination a span,
+  .purplekiss-visual-review .event-pagination a span {font-size:13px}
+  .purplekiss-visual-review .year-navigation {grid-column:1/-1;display:flex;gap:8px;margin-top:20px}
+  .purplekiss-visual-review .year-navigation a {font-size:12px;padding:9px 11px;min-width:50px}
+  .purplekiss-visual-review .timeline-year-heading {font-size:29px;padding-bottom:24px}
+  .purplekiss-visual-review .event-date .date-precision {font-size:12px}
+  .purplekiss-visual-review .event-copy .source-details,
+  .purplekiss-visual-review .event-copy .related-event-links {font-size:12px;line-height:1.85}
+  .purplekiss-visual-review .timeline-message {font-size:13px;padding:16px}
+  .purplekiss-visual-review .detail-dialog {width:calc(100vw - 24px);padding-top:8px;max-height:93dvh}
+  .purplekiss-visual-review .detail-dialog > .dialog-close {margin-right:20px}
+  .purplekiss-visual-review .purplekiss-work-detail {--gutter:18px}
+  .purplekiss-visual-review .work-program {padding:28px 23px}
+  .purplekiss-visual-review .work-program h2 {font-size:39px}
+  .purplekiss-visual-review .work-stage {padding:25px 20px}
+  .purplekiss-visual-review .work-art:not(.native-preview) {max-width:420px}
+  .purplekiss-visual-review .empty-state .underline-button + .underline-button {margin-left:16px}
+}
+@media(max-width:350px) {
+  .purplekiss-visual-review .work-filter-fields {grid-template-columns:1fr}
+  .purplekiss-visual-review .work-sort {margin-top:12px}
+  .purplekiss-visual-review .work-sort select {width:100%}
+  .purplekiss-visual-review .video-row .media-frame {width:94px}
+  .purplekiss-visual-review .purplekiss-work-detail {--gutter:12px}
+  .purplekiss-visual-review .work-stage {padding:23px 12px}
+  .purplekiss-visual-review .work-program {padding:26px 18px}
+  .purplekiss-visual-review .work-program h2 {font-size:34px}
+  .purplekiss-visual-review .member-pagination,
+  .purplekiss-visual-review .work-pagination,
+  .purplekiss-visual-review .event-pagination {grid-template-columns:1fr;gap:4px}
+}

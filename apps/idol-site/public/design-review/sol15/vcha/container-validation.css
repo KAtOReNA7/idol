@@ -1,0 +1,107 @@
+/* Validation candidate only; loaded inside its own ShadowRoot after original VCHA CSS.
+ * VCHA rules copied from Sol host connection v1 with the isolated 31/32cqw fix.
+ * No HITGS rules, clipping, imagery changes, or production route replacement. */
+/* Fixed host widths are deliberate test inputs. Do not clamp them to a scrollbar-
+ * reduced document width, which would silently test a different container. */
+[data-review-root][data-host-connection="vcha-container-validation"]{container:sol-artist / inline-size;min-width:0;max-width:none;margin-inline:auto;}
+@container sol-artist (max-width:760px){
+ [data-artist="vcha"] .vc-site{padding:0 22px}
+ [data-artist="vcha"] .vc-header{display:block;padding:20px 0 0}
+ [data-artist="vcha"] .vc-brand{font-size:25px}
+ [data-artist="vcha"] .vc-header nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:16px;font-size:14px}
+ [data-artist="vcha"] .vc-cover{grid-template-columns:1fr;gap:24px;padding-top:25px}
+ [data-artist="vcha"] .vc-cover-title{display:block;grid-column:1}
+ [data-artist="vcha"] .vc-cover-title h1{font-size:clamp(107px,31cqw,178px);line-height:.95;margin:0 0 22px;letter-spacing:-.065em}
+ [data-artist="vcha"] .vc-cover-title>p{font-size:26px;line-height:1.6;border-left:0;border-top:1px solid var(--vc-rust);padding:18px 0 0}
+ [data-artist="vcha"] .vc-cover-title>p br{display:none}
+ [data-artist="vcha"] .vc-cover-art img{padding:5px}
+ [data-artist="vcha"] .vc-cover-art figcaption{font-size:10px;line-height:1.8}
+ [data-artist="vcha"] .vc-description{font-size:13px;line-height:1.95;margin-bottom:23px}
+ [data-artist="vcha"] .vc-reading-index>a{min-height:76px;padding:12px 10px 12px 0}
+ [data-artist="vcha"] .vc-reading-index strong{font-size:28px}
+ [data-artist="vcha"] .vc-reading-index>a>span{font-size:29px}
+ [data-artist="vcha"] .vc-names{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 0;padding:24px 0}
+ [data-artist="vcha"] .vc-names>a:nth-child(2n){border-right:0}
+ [data-artist="vcha"] .vc-names strong{font-size:21px}
+ [data-artist="vcha"] .vc-names span{font-size:14px}
+ [data-artist="vcha"] .vc-home-releases{padding:30px 0}
+ [data-artist="vcha"] .vc-section-title{gap:15px;margin-bottom:5px}
+ [data-artist="vcha"] .vc-section-title h2{font-size:29px}
+ [data-artist="vcha"] .vc-section-title>a{font-size:12px}
+ [data-artist="vcha"] .vc-release-pair{grid-template-columns:1fr;gap:0}
+ [data-artist="vcha"] .vc-work-row{grid-template-columns:105px minmax(0,1fr) 15px;gap:17px;padding:24px 0}
+ [data-artist="vcha"] .vc-work-caption>strong{font-size:23px;line-height:1.35}
+ [data-artist="vcha"] .vc-work-caption>small{font-size:11px;line-height:1.9}
+ [data-artist="vcha"] .vc-arrow{font-size:21px}
+ [data-artist="vcha"] .vc-next-chapter{display:block;padding:28px 0}
+ [data-artist="vcha"] .vc-next-chapter h2{font-size:25px;margin-bottom:17px}
+ [data-artist="vcha"] .vc-next-chapter p{font-size:13px;line-height:1.9}
+ [data-artist="vcha"] .vc-next-chapter>a{font-size:13px;margin-top:12px;display:inline-block}
+ [data-artist="vcha"] .vc-footer{display:grid;grid-template-columns:1fr auto;gap:15px;padding:25px 0}
+ [data-artist="vcha"] .vc-footer p{grid-column:1/-1;grid-row:2;font-size:11px}
+ [data-artist="vcha"] .vc-footer button{grid-column:2;grid-row:1;font-size:12px}
+ [data-artist="vcha"] .vc-page-title{padding:30px 0 23px;margin-bottom:20px}
+ [data-artist="vcha"] .vc-page-title h1{font-size:42px;line-height:1.3;margin-bottom:17px}
+ [data-artist="vcha"] .vc-page-title p{font-size:13px;line-height:1.8}
+ [data-artist="vcha"] .vc-members,[data-artist="vcha"] .vc-library,[data-artist="vcha"] .vc-biography,[data-artist="vcha"] .vc-work-detail,[data-artist="vcha"] .vc-timeline-page{padding-bottom:35px}
+ [data-artist="vcha"] .vc-member-register{grid-template-columns:1fr}
+ [data-artist="vcha"] .vc-member-row{grid-template-columns:23px 85px minmax(0,1fr) 15px;gap:13px;padding:24px 0}
+ [data-artist="vcha"] .vc-index{font-size:18px}
+ [data-artist="vcha"] .vc-member-photo,[data-artist="vcha"] .vc-type-portrait{height:110px}
+ [data-artist="vcha"] .vc-type-portrait{font-size:18px}
+ [data-artist="vcha"] .vc-member-label{gap:4px}
+ [data-artist="vcha"] .vc-member-label strong{font-size:23px;line-height:1.4}
+ [data-artist="vcha"] .vc-member-label>span{font-size:15px}
+ [data-artist="vcha"] .vc-member-label small{font-size:11px;line-height:1.7}
+ [data-artist="vcha"] .vc-roster-note{margin-top:25px;font-size:12px;line-height:1.95}
+ [data-artist="vcha"] .vc-biography-heading{grid-template-columns:1fr auto;gap:6px 20px;padding:20px 0;margin-bottom:25px}
+ [data-artist="vcha"] .vc-biography-heading>span{font-size:13px;grid-column:1/-1}
+ [data-artist="vcha"] .vc-biography-heading h1{font-size:42px;grid-column:1/-1;line-height:1.4;margin-top:10px}
+ [data-artist="vcha"] .vc-biography-heading>p{font-size:25px;grid-column:1/-1}
+ [data-artist="vcha"] .vc-biography-body{grid-template-columns:1fr;gap:28px}
+ [data-artist="vcha"] .vc-biography-photo{padding:8px}
+ [data-artist="vcha"] .vc-biography-photo figcaption{font-size:10px;line-height:1.8}
+ [data-artist="vcha"] .vc-biography-text{padding-top:0}
+ [data-artist="vcha"] .vc-biography-text h2{font-size:29px;margin-bottom:20px}
+ [data-artist="vcha"] .vc-biography-text>p{font-size:14px;line-height:2}
+ [data-artist="vcha"] .vc-biography-text dl,[data-artist="vcha"] .vc-work-facts dl{grid-template-columns:100px minmax(0,1fr);font-size:13px;padding-block:15px}
+ [data-artist="vcha"] .vc-biography-text dt,[data-artist="vcha"] .vc-work-facts dt{font-size:11px}
+ [data-artist="vcha"] .vc-button{font-size:13px;padding:10px 18px;line-height:1.75}
+ [data-artist="vcha"] .vc-nameplate{min-height:320px}
+ [data-artist="vcha"] .vc-nameplate strong{font-size:55px}
+ [data-artist="vcha"] .vc-nameplate>span:last-child{font-size:24px}
+ [data-artist="vcha"] .vc-next-person{margin-top:34px;padding:22px 0}
+ [data-artist="vcha"] .vc-next-person strong{font-size:23px}
+ [data-artist="vcha"] .vc-search{grid-template-columns:minmax(0,1fr) auto;gap:8px 15px;margin-top:28px;font-size:13px}
+ [data-artist="vcha"] .vc-search label{grid-column:1/-1}
+ [data-artist="vcha"] .vc-search button{padding:10px 20px}
+ [data-artist="vcha"] .vc-type-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;text-align:center;margin-bottom:32px}
+ [data-artist="vcha"] .vc-type-tabs a{font-size:13px;padding:12px 8px}
+ [data-artist="vcha"] .vc-chapter{margin-bottom:40px}
+ [data-artist="vcha"] .vc-chapter-heading{align-items:start;gap:15px}
+ [data-artist="vcha"] .vc-chapter-heading h2{font-size:27px}
+ [data-artist="vcha"] .vc-chapter-heading>span{font-size:11px;max-width:8em;padding-top:5px}
+ [data-artist="vcha"] .vc-work-register{grid-template-columns:1fr}
+ [data-artist="vcha"] .vc-chapter-girlset{margin-inline:-8px;padding:22px 8px}
+ [data-artist="vcha"] .vc-chapter-girlset .vc-chapter-heading{display:block}
+ [data-artist="vcha"] .vc-chapter-girlset .vc-chapter-heading>span{display:block;max-width:none;margin-top:5px}
+ [data-artist="vcha"] .vc-chapter-girlset .vc-work-row{grid-template-columns:75px minmax(0,1fr) 15px}
+ [data-artist="vcha"] .vc-type-work{height:90px;padding-left:10px;font-size:23px}
+ [data-artist="vcha"] .vc-type-work>span{font-size:10px}
+ [data-artist="vcha"] .vc-work-detail-title{padding:15px 0 25px;margin-bottom:28px}
+ [data-artist="vcha"] .vc-work-detail-title h1{font-size:42px;line-height:1.3}
+ [data-artist="vcha"] .vc-work-detail-body{grid-template-columns:1fr;gap:28px}
+ [data-artist="vcha"] .vc-programme{min-height:310px;padding:25px;gap:25px}
+ [data-artist="vcha"] .vc-programme>strong{font-size:39px;line-height:1.35}
+ [data-artist="vcha"] .vc-timeline{margin:35px 0 0;padding-left:24px;border-left:1px solid var(--vc-rust)}
+ [data-artist="vcha"] .vc-timeline>li{display:block;padding-bottom:34px}
+ [data-artist="vcha"] .vc-timeline>li::before{display:none}
+ [data-artist="vcha"] .vc-timeline>li::after{left:-29px;top:11px}
+ [data-artist="vcha"] .vc-timeline time{display:block;font-size:19px;margin-bottom:13px}
+ [data-artist="vcha"] .vc-timeline h2{font-size:24px;line-height:1.55}
+}
+
+@container sol-artist (max-width:350px){[data-artist="vcha"] .vc-site{padding-inline:16px}[data-artist="vcha"] .vc-header nav{font-size:13px}[data-artist="vcha"] .vc-cover-title h1{font-size:32cqw}[data-artist="vcha"] .vc-cover-title>p{font-size:24px}[data-artist="vcha"] .vc-member-row{grid-template-columns:21px 72px minmax(0,1fr) 13px;gap:10px}[data-artist="vcha"] .vc-member-photo,[data-artist="vcha"] .vc-type-portrait{height:96px}[data-artist="vcha"] .vc-member-label strong{font-size:21px}[data-artist="vcha"] .vc-work-row{grid-template-columns:86px minmax(0,1fr) 13px;gap:13px}[data-artist="vcha"] .vc-work-caption>strong{font-size:21px}[data-artist="vcha"] .vc-work-caption>small{font-size:10px}}
+
+@container sol-artist (max-width:760px){[data-artist="vcha"] .vc-career-facts>h2{font-size:26px}[data-artist="vcha"] .vc-career-period h3{font-size:19px}[data-artist="vcha"] .vc-career-dates{font-size:12px;line-height:1.9}[data-artist="vcha"] .vc-related-notices article h2{font-size:23px}}
+

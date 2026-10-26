@@ -1,0 +1,9 @@
+export function asText(v:unknown):string{if(v===null||v===undefined)return '';if(typeof v==='string')return v;if(typeof v==='number')return String(v);if(Array.isArray(v))return v.map(asText).join('');if(typeof v==='object'){const o=v as any;return asText(o.text??o.name??o.link??o.url??o.value??'');}return '';}
+export function asNumber(v:unknown):number|null{const t=asText(v).trim();if(!t)return null;const n=Number(t);return Number.isFinite(n)?n:null;}
+export function asIds(v:unknown):string[]{if(!v)return [];if(typeof v==='string')return /^rec[A-Za-z0-9]+$/.test(v)?[v]:[];if(Array.isArray(v))return v.flatMap(asIds);if(typeof v==='object'){const o=v as any;return asIds(o.recordIds??o.record_ids??o.recordId??o.record_id??o.link_record_ids??[]);}return [];}
+export function asUrl(v:unknown):string{if(Array.isArray(v))return v.map(asUrl).find(Boolean)??'';const t=typeof v==='object'&&v&&!Array.isArray(v)?String((v as any).link??(v as any).url??''):asText(v);try{const u=new URL(t);return u.protocol==='https:'||u.protocol==='http:'?u.href:'';}catch{return '';}}
+export function videoId(v:string):string|null{try{const u=new URL(v);const h=u.hostname.toLowerCase();const id=h==='youtu.be'?u.pathname.slice(1):['youtube.com','www.youtube.com','m.youtube.com'].includes(h)?u.searchParams.get('v')??u.pathname.match(/^\/(?:shorts|embed)\/([^/]+)/)?.[1]:null;return id&&/^[A-Za-z0-9_-]{11}$/.test(id)?id:null;}catch{return null;}}
+
+// Plain-text editors retain hyperlink targets, matching the legacy GET view.
+// Display text remains asText; untouched raw segments stay in storage.
+export function asEditableText(v:unknown):string{if(Array.isArray(v))return v.map(asEditableText).join('');if(v&&typeof v==='object'){const o=v as Record<string,unknown>;if(o.type==='url'&&typeof o.link==='string')return o.link;}return asText(v);}

@@ -1,0 +1,42 @@
+{
+  "e-fromis9-debut/scopeNote": {
+    "before": "仅采用正文明确的月份；未从已有作品字段补为1月24日。",
+    "after": "正文仅明确出道月份，不能用作品目录所列1月24日代替精确出道日。"
+  },
+  "e-fromis9-from-our-20s/scopeNote": {
+    "before": "D目录加官方合作方完成式回顾，确认该次发行；ASND简介不另造签约日期。",
+    "after": "目录信息与官方合作方事后回顾共同支持该次发行；ASND简介不能单独确定签约日期。"
+  },
+  "e-fromis9-gyuri-departure-announcement/scopeNote": {
+    "before": "合格事实限定为PLEDIS关于Gyuri结束团队活动及合同的公告；主公告缺年份/发表日，三个日期均null，不从相邻2022-08-01平台处理计划反推实际退团。status仍announced，历史member_departure blocked保留。",
+    "after": "此处仅确认PLEDIS公布Gyuri结束团队活动及合同的安排。主公告缺少年份及发表日，公告、计划和实际生效日期均未知；邻近的2022年8月1日平台处理计划不能反推实际退团日。"
+  },
+  "e-fromis9-gyuri-departure-announcement/sources/es-3decb0e9d54b7acc/scopeNote": {
+    "before": "明确2022年8月1日的平台计划，保留旧帖子；不以这份平台公告替代7月31日实际退团兑现回执。",
+    "after": "此来源明确的是2022年8月1日平台处理计划，不能证明7月31日实际退团已经生效。"
+  },
+  "e-fromis9-japan-ep/scopeNote": {
+    "before": "只确认发行计划公告：announcementDate=2026-02-10、plannedDate=2026-04-01；eventDate=null，status=announced。实际兑现仍未知；不把韩文原版MV映射日文版或新增占位workId。",
+    "after": "2026年2月10日公告的发行计划日期为2026年4月1日，实际发行是否完成仍未知。韩文原版MV不能视为日文版作品。"
+  },
+  "e-fromis9-japan-ep/sources/es-4531d2da46539089/scopeNote": {
+    "before": "官方简介中的发行日期说明；本条为B已验收的限定事实回执，未重抓原URL。",
+    "after": "此来源是官方简介中发行日期说明的摘要线索，原页面未重新核对。"
+  },
+  "e-fromis9-pledis-contract-end-announcement/scopeNote": {
+    "before": "仅确认PLEDIS公布八名成员合约终止计划；原文12月31日缺年份和发稿日期，三个日期均null，status仍announced。不是八人同时退团或团体解散，也不把核验日已经过当计划兑现。",
+    "after": "仅确认PLEDIS公布八名成员的合约终止计划；原文所述12月31日缺年份，也没有发稿日期，因此公告日、计划日及实际生效日均未知。这不等于八人同时退团或团体解散，时间经过也不能证明计划已实现。"
+  },
+  "e-fromis9-pledis-contract-end-announcement/sources/es-973c0039a9395f57/scopeNote": {
+    "before": "Body gives December 31 but no year; direct native GET returned a 5967-byte application shell without date metadata. Exact official X linked by a third party was blocked.",
+    "after": "正文提到12月31日但没有年份，页面也缺少日期元数据；另有官方X链接无法读取，因此公告及独立生效日期仍未知。"
+  },
+  "gaps/3": {
+    "before": "日本EP4月1日尚为目录/简介范围；White Memories及2026年新发行Vitamin ME留后续目标，不用基线日期直接提升。",
+    "after": "日本EP的4月1日仍是计划及目录线索；White Memories和Vitamin ME的实际发行尚待直接原文确认，不能只依据目录日期。"
+  },
+  "gaps/4": {
+    "before": "未取得明确解散声明，unknown不表示无该事件。",
+    "after": "尚未取得明确解散声明，情况未知不表示事件没有发生。"
+  }
+}

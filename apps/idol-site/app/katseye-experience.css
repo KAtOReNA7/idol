@@ -1,0 +1,56 @@
+/* KATSEYE · native Figma 241:1095, readback-confirmed structural views.
+   Image slots remain separately tracked pending approved integration. */
+@font-face{font-family:KatseyeDisplay;src:url('/fonts/Katseye-NimbusSansNarrow-Bold.otf') format('opentype');font-weight:300 700;font-display:swap}
+.katseye-experience{--paper:#F3F1E8;--white:#F3F1E8;--ink:#142B27;--muted:#53635a;--line:#b9c0b6;--rose:#142B27;--blush:#DEED77;--lilac:#DEED77;--page-gutter:clamp(20px,4.444vw,64px);background:var(--paper);color:var(--ink);min-height:100vh;font-family:var(--font-body)}
+.katseye-experience .header{background:var(--paper);border-bottom:1px solid var(--line)}
+.katseye-experience .brand{font-family:KatseyeDisplay,sans-serif;font-weight:700;letter-spacing:-.06em}
+.katseye-experience .private-pill{border-color:var(--line);border-radius:2px;background:var(--white)}
+.katseye-experience .katseye-work-heading{padding:28px 0;margin:28px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.katseye-experience .katseye-work-heading:before{content:'KATSEYE / THE VIEWING ARCHIVE';display:block;font:500 10px/1.5 KatseyeDisplay,sans-serif;letter-spacing:.2em;color:var(--rose);margin-bottom:20px}
+.katseye-experience .katseye-work-heading h1{font:700 clamp(38px,5vw,76px)/1.08 KatseyeDisplay,'Noto Sans SC',sans-serif;letter-spacing:-.055em;overflow-wrap:anywhere;margin:14px 0}
+.katseye-experience .katseye-work-heading>p{font-size:12px;color:var(--muted)}
+.katseye-experience .mobile-work-heading{display:none}
+.katseye-experience .work-detail-top{grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:32px;align-items:start}
+.katseye-experience .video-stage{border-radius:0;background:var(--ink)}
+.katseye-experience .video-mode-tabs{border-radius:2px;background:var(--white);border:1px solid var(--line)}
+.katseye-experience .video-mode-tabs button{border-radius:0;min-height:44px}
+.katseye-experience .video-mode-tabs button[aria-selected=true],.katseye-experience .video-play{background:var(--rose);color:var(--white);border-radius:2px}
+.katseye-experience .work-aside{background:var(--white);border:1px solid var(--line);border-radius:0;padding:24px}
+.katseye-experience .work-aside h1{font-family:KatseyeDisplay,'Noto Sans SC',sans-serif;font-weight:700;overflow-wrap:anywhere}
+.katseye-experience .button,.katseye-experience .editor,.katseye-experience .editor-actions,.katseye-experience .score-input,.katseye-experience .editor-fields input,.katseye-experience .editor-fields textarea,.katseye-experience .editor-fields select{border-radius:2px}
+.katseye-experience .button{min-height:44px}
+.katseye-experience .section-heading h2,.katseye-experience .watch-next h2{font:700 30px/1.2 KatseyeDisplay,'Noto Sans SC',sans-serif;letter-spacing:-.035em}
+.katseye-experience .cast-grid{gap:24px}
+.katseye-experience .cast-card,.katseye-experience .member-work-card{background:var(--white);border:1px solid var(--line);border-radius:0}
+.katseye-experience .cast-card .photo,.katseye-experience .member-work-card__art{border-radius:0;background:var(--blush)}
+.katseye-experience .photo img,.katseye-experience .bm-concept-photo img{object-fit:contain}
+.katseye-experience .image-label{background:var(--paper);color:var(--muted);border-radius:0}
+.katseye-experience .stage-source,.katseye-experience .alternative-card,.katseye-experience .watch-lead-card{border:1px solid var(--line);border-radius:0;background:var(--white)}
+.katseye-experience .stage-overall-note,.katseye-experience .member-work-summary{background:var(--blush);border-radius:0}
+.katseye-experience .detail-return,.katseye-experience .stage-view>.detail-return{background:var(--white);border:1px solid var(--line);border-radius:0}
+.katseye-experience .member-detail h1{font:700 clamp(42px,6vw,80px)/1.08 KatseyeDisplay,'Noto Sans SC',sans-serif;letter-spacing:-.05em;overflow-wrap:anywhere}
+.katseye-experience .member-detail>.bm-concept-photo{aspect-ratio:2/3;height:auto;border-radius:0;background:var(--white)}
+.katseye-experience :is(button,a,input,textarea,select):focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.group-index-card.katseye-index-card{padding:0;text-align:left;background:#F3F1E8;color:#142B27;border:1px solid #b9c0b6;border-radius:0;overflow:hidden}
+.katseye-index-image{aspect-ratio:5/4;background:#DEED77}
+.katseye-index-image img{width:100%;height:100%;object-fit:contain}
+.katseye-index-pending{height:100%;min-height:160px;display:flex;align-items:center;justify-content:center;color:#53635a;font-size:12px}
+.katseye-index-copy{padding:24px;display:flex;flex-direction:column;gap:14px}
+.katseye-index-copy h2{font:700 clamp(34px,4vw,60px)/1 KatseyeDisplay,sans-serif;letter-spacing:-.06em;color:#142B27;margin:0;overflow-wrap:anywhere}
+.katseye-index-copy p,.katseye-index-copy small{font-size:11px;line-height:1.7}
+.katseye-index-copy>span{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;min-height:44px;background:#142B27;color:#fff;font-size:12px}
+@media(max-width:760px){.katseye-experience .header{height:auto;min-height:78px;flex-wrap:wrap;padding-top:12px}.katseye-experience .header nav{height:auto;margin-top:10px;gap:16px;overflow-x:auto}.katseye-experience .header nav button{font-size:10px;padding:12px 0}.katseye-experience .work-detail-top{grid-template-columns:1fr;gap:24px}.katseye-experience .work-aside{padding:20px}.katseye-experience .katseye-work-heading{padding:24px 0;margin:24px 0}.katseye-experience .cast-grid{grid-template-columns:1fr}.katseye-experience .editor-fields input,.katseye-experience .editor-fields textarea,.katseye-experience .editor-fields select{font-size:16px}.katseye-experience .member-detail{gap:24px}.katseye-index-copy{padding:20px}}
+@media(prefers-reduced-motion:reduce){.katseye-experience *,.katseye-index-card{scroll-behavior:auto!important;transition:none!important}}
+
+/* Native photographic editorial palette. Keep the real editor DOM and all save states intact. */
+.katseye-experience .header{background:#142B27;color:#F3F1E8;border-color:#4C6156}
+.katseye-experience .header :is(button,a){color:inherit}
+.katseye-experience .header .private-pill{background:transparent;color:#F3F1E8}
+.katseye-experience .video-play{background:#142B27;color:#DEED77}
+.katseye-experience .work-aside{border:0;padding-top:0}
+.katseye-experience .katseye-work-heading h1{text-transform:uppercase;letter-spacing:-.02em}
+.katseye-experience .editor{background:#F3F1E8;color:#142B27;border-color:#b9c0b6}
+.katseye-experience .editor-actions{background:#F3F1E8}
+.katseye-experience .editor :is(input,textarea,select){background:#F3F1E8;color:#142B27;border-color:#b9c0b6}
+.katseye-experience :is(.error,.form-error,[role=alert]){overflow-wrap:anywhere}
+@media(max-width:600px){.katseye-experience .katseye-work-heading h1{font-size:54px}.katseye-experience .editor{max-width:100%}.katseye-experience .editor :is(input,textarea,select){min-width:0}.katseye-experience .editor-actions{flex-wrap:wrap}}

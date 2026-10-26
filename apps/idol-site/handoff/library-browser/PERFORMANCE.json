@@ -1,0 +1,149 @@
+{
+  "kind": "SYNTHETIC client-loaded pure model benchmark",
+  "seed": 20261016,
+  "node": "v24.19.0",
+  "platform": "linux",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "build": "esbuild CommonJS, no minification; Node execution, not browser production",
+  "method": "Frozen fixture construction excluded. Parity before timing. One first measured sample after parity (not a process-cold measurement), then one untimed warm-up and seven warm samples. Existing oracle baseline includes all six queue and four stage facets. p95 is descriptive for small samples. No browser performance inference.",
+  "sizes": [
+    {
+      "size": 100,
+      "parityCases": 48,
+      "firstMeasuredAfterParityMs": 1.1148069999999848,
+      "model": {
+        "samplesMs": [
+          1.027134999999987,
+          1.0074149999999804,
+          1.0762680000000273,
+          0.9163279999999645,
+          0.9328330000000165,
+          0.9068740000000162,
+          0.9343349999999759
+        ],
+        "medianMs": 0.9343349999999759,
+        "p95Ms": 1.0762680000000273
+      },
+      "existingOracle": {
+        "samplesMs": [
+          1.309208999999953,
+          0.888306,
+          0.9475949999999784,
+          1.212693999999999,
+          0.8582210000000146,
+          0.8418060000000196,
+          0.7368880000000217
+        ],
+        "medianMs": 0.888306,
+        "p95Ms": 1.309208999999953
+      },
+      "initialRows": 24,
+      "deepPageRows": 2
+    },
+    {
+      "size": 1000,
+      "parityCases": 48,
+      "firstMeasuredAfterParityMs": 6.818824999999947,
+      "model": {
+        "samplesMs": [
+          4.6680410000000165,
+          8.364049000000023,
+          8.036356000000069,
+          4.675991999999951,
+          5.6265019999999595,
+          5.960774000000015,
+          6.947818999999981
+        ],
+        "medianMs": 5.960774000000015,
+        "p95Ms": 8.364049000000023
+      },
+      "existingOracle": {
+        "samplesMs": [
+          4.915541999999959,
+          8.803819999999973,
+          5.258648999999991,
+          5.005562999999938,
+          8.554971000000023,
+          10.038086000000021,
+          5.219078999999965
+        ],
+        "medianMs": 5.258648999999991,
+        "p95Ms": 10.038086000000021
+      },
+      "initialRows": 24,
+      "deepPageRows": 21
+    },
+    {
+      "size": 5000,
+      "parityCases": 48,
+      "firstMeasuredAfterParityMs": 23.74513100000013,
+      "model": {
+        "samplesMs": [
+          30.034148999999616,
+          26.112861000000066,
+          24.767869000000246,
+          30.929085000000214,
+          30.735477000000174,
+          23.72991699999966,
+          25.88685099999975
+        ],
+        "medianMs": 26.112861000000066,
+        "p95Ms": 30.929085000000214
+      },
+      "existingOracle": {
+        "samplesMs": [
+          26.8310919999999,
+          26.540204999999787,
+          23.809276999999838,
+          29.389299000000392,
+          21.947478000000046,
+          22.66678899999988,
+          23.382474999999886
+        ],
+        "medianMs": 23.809276999999838,
+        "p95Ms": 29.389299000000392
+      },
+      "initialRows": 24,
+      "deepPageRows": 9
+    }
+  ],
+  "browser": {
+    "status": "independent-worker samples received; full evidence and environment metadata retained by parent QA",
+    "method": "5000 SYNTHETIC entries at 390px, two next-page gestures to page 3; event through two requestAnimationFrame proxy, not browser paint attribution. Same path before/after memo. Five samples each, descriptive only.",
+    "beforeMemoSamplesMs": [
+      453.9,
+      522.1,
+      501.4,
+      426.7,
+      455
+    ],
+    "beforeMemoMedianMs": 455,
+    "afterMemoSamplesMs": [
+      68.6,
+      64,
+      47.3,
+      46.1,
+      36.6
+    ],
+    "afterMemoMedianMs": 47.3,
+    "domCards": {
+      "bounded": 24,
+      "legacyAfterThreeLoadMore": 96
+    },
+    "legacyWarning": "Old cumulative path used three load-more actions; timings are not directly comparable to two next-page gestures.",
+    "retainedEvidence": "library-browser-qa/evidence/performance-raw.json (independent cloud browser workspace; parent owns evidence transfer)"
+  },
+  "integratedInitialClientClosure": {
+    "source": "Parent integration report 2026-10-16 15:40 UTC, scripts/report-client-graph.mjs same method",
+    "baselineCommit": "a3e3be4",
+    "integrationHead": "78560a7",
+    "productCommit": "517f15a",
+    "baselineBytes": 762105,
+    "baselineGzipBytes": 201161,
+    "integratedBytes": 779705,
+    "integratedGzipBytes": 206780,
+    "deltaBytes": 17600,
+    "deltaGzipBytes": 5619,
+    "interpretation": "Initial JS closure grew; no faster-initial-load claim."
+  }
+}

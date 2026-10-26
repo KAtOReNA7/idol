@@ -1,0 +1,16 @@
+✔ all physical artist aliases normalize before native routing; other group and record paths retain identity (2.1215ms)
+✔ record mapping preserves exact query and returnTo, supports copy/new-tab, and leaves artist/external targets intact (0.6991ms)
+✔ real native MV and stage links retain exact slots and safe return context after review mapping (306.1949ms)
+✔ actual anchor hrefs are rewritten on mount and later React commits, without event interception (0.9519ms)
+✔ the real shared App navigation hook keeps records.html on initialization, navigation, reload and back (27.6408ms)
+✔ history adapter leaves state, missing URLs and non-root destinations unchanged (0.3814ms)
+✔ build produces additive physical entries, actual components and original images without changing accepted reviews (3681.4795ms)
+✔ builder refuses the repository, drive root and unrelated nonempty output without modifying them (205.8638ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4375.3537

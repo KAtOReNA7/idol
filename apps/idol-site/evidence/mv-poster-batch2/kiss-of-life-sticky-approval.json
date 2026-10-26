@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "upstreamAdmissionSHA256": "d93b40e1e98790447308e4aa559684cfcd6a5c55e4614824e21ff5d151d63755",
+  "reviewedAtUTC": "2026-10-19T07:47:45.717763+00:00",
+  "reviewer": "independent-review",
+  "decision": "approved_for_bugs_mv_preview_admission",
+  "candidateId": "kiss-of-life-sticky-833fa8ea44db",
+  "candidateVersion": "mv-poster-20261019-batch2",
+  "originalFile": "tests/fixtures/mv-poster-batch2/kiss-of-life-sticky-original-626071.jpg",
+  "approvedFacts": {
+    "approved": true,
+    "status": "approved_for_bugs_mv_preview_admission",
+    "group": "KISS OF LIFE",
+    "song": "Sticky",
+    "workId": "rec28ldfRTrBpe",
+    "videoId": "IajeQM00yfE",
+    "videoType": "官方MV",
+    "youtubeUrl": "https://www.youtube.com/watch?v=IajeQM00yfE",
+    "catalogWorkName": "KISS OF LIFE · Sticky",
+    "label": "MV 预览图（Bugs 来源）",
+    "sourceProvider": "Bugs",
+    "sourcePage": "https://music.bugs.co.kr/mv/626071",
+    "bugsMvId": "626071",
+    "originalUrl": "https://image.bugsm.co.kr/mvhd/images/500/6260/626071.jpg",
+    "sourceTitle": "Sticky",
+    "sourceOGTitle": "Sticky / KISS OF LIFE",
+    "sourceArtist": "KISS OF LIFE",
+    "sourceOGArtist": "KISS OF LIFE",
+    "sourceAlbum": "Sticky",
+    "sourceType": "정규",
+    "sourceRegistrationDate": "2024-07-01",
+    "duration": "03:11",
+    "durationSeconds": 191,
+    "sha256": "833fa8ea44db1f6006c89c81bb2a24a657f5ea6a7934131dd2ac4f1006b50a47",
+    "bytes": 41009,
+    "width": 500,
+    "height": 282,
+    "dimensions": [
+      500,
+      282
+    ],
+    "mime": "image/jpeg",
+    "format": "JPEG",
+    "mode": "RGB",
+    "fullDecode": true,
+    "decodedPixelSHA256": "30839e30c3f4f9e6cb4c7864fcdfcfa834e2c078aa9a29c2fe7d1ded68f193ff",
+    "decodedPixelHashMethod": "Pillow native RGB image.tobytes(), row-major, no conversion or edits",
+    "decodeLibrary": "Pillow 12.3.0",
+    "pixelExtremaRGB": [
+      [
+        0,
+        231
+      ],
+      [
+        0,
+        231
+      ],
+      [
+        0,
+        223
+      ]
+    ],
+    "pixelStddevRGB": [
+      67.83340822353921,
+      65.27512849987518,
+      54.136483974055196
+    ],
+    "visualInspection": {
+      "passed": true,
+      "method": "Each original viewed independently at native dimensions through view_image",
+      "finding": "Three people outdoors with greenery; native black top/bottom letterboxing retained, no visible corruption.",
+      "faceIdentityInferred": false
+    },
+    "sourceHTMLSha256": "ae14c39d30bcd3eee0a6e99025b1dfb0530390c9d75aeaf56df5ed1e2a9e88f6",
+    "durationEvidenceSHA256": "d86043576ba10d932334da75a9eca870987b85996701f4de91930445fc6743b6",
+    "durationEvidenceSelector": "figure[mvId=\"626071\"] time.duration",
+    "durationFigureText": "03:11 [12세 이상 관람가] Sticky KISS OF LIFE 2024.07.01 정규 기타 기능",
+    "imageHeadersSHA256": "d5fee473309b929411e96c9cb4341417417227352ccc4de7a73cd9f1264c6ced",
+    "capturedImageHTTPStatus": 200,
+    "capturedImageContentType": "image/jpeg",
+    "capturedImageContentLength": 41009,
+    "researchEvidenceSHA256": "a45f6efcc7c0e6a1422099fffcea8a2752e0da02115d0570197eb192a9fbc672",
+    "liveCatalogVerified": true,
+    "liveTuple": {
+      "id": "rec28ldfRTrBpe",
+      "name": "KISS OF LIFE · Sticky",
+      "song": "Sticky",
+      "url": "https://www.youtube.com/watch?v=IajeQM00yfE",
+      "videoType": "官方MV"
+    },
+    "liveEvidenceCapturedAt": "2026-10-19T07:40:21.312Z",
+    "liveEvidenceScope": "Independent comparison to parent-supplied authenticated live API capture; reviewer did not re-fetch the private API",
+    "repositoryOfficialMetadata": {
+      "title": "KISS OF LIFE (키스오브라이프) 'Sticky' Official Music Video",
+      "channel": "KISS OF LIFE",
+      "releaseDate": "2024-07-01T00:00:00.000Z",
+      "provenance": "Repository snapshot and inventory, not independently re-fetched YouTube metadata"
+    },
+    "excludedObservedVariants": [
+      {
+        "bugsMvId": "637527",
+        "sourcePage": "https://music.bugs.co.kr/mv/637527",
+        "title": "Ep.4 Reset Day : Again - Sticky | GUESS THE NEXT ERA",
+        "sourceType": "티저",
+        "duration": "01:59"
+      },
+      {
+        "bugsMvId": "625985",
+        "sourcePage": "https://music.bugs.co.kr/mv/625985",
+        "title": "Sticky (Teaser)",
+        "sourceType": "티저",
+        "duration": "00:27"
+      }
+    ],
+    "selectedTitleHasNoTeaserOrPerformanceQualifier": true,
+    "teaserExclusionScope": "Exact selected MV ID is regular with unqualified song title and full-length source duration. Listed variants are separately observed IDs, not an exhaustive universe of variants.",
+    "directBugsToYouTubeLinkFound": false,
+    "catalogYouTubeIdFoundInSourceHTML": false,
+    "crossPlatformVideoByteEqualityVerified": false,
+    "crossPlatformFramePixelIdentityVerified": false,
+    "crossPlatformAssessment": "Sufficient for a Bugs-source preview associated with this catalog work: exact artist/song, matching date, regular type, exact Bugs-ID duration and verified live catalog tuple. Does not establish a direct platform bridge, an identical video edit, a YouTube thumbnail, or a specific video frame/timecode.",
+    "historicalOriginalHashEqualityVerified": false,
+    "priorExpectedSHA256": null,
+    "sourceBytesMatchResearchManifest": true,
+    "reviewerModifiedOriginal": false,
+    "issues": []
+  },
+  "provenance": {
+    "sourceHTML": {
+      "sha256": "ae14c39d30bcd3eee0a6e99025b1dfb0530390c9d75aeaf56df5ed1e2a9e88f6",
+      "retainedOutsideRepository": true,
+      "archiveName": "kissoflife/sticky-source.html",
+      "sourceUrl": "https://music.bugs.co.kr/mv/626071"
+    },
+    "durationHTML": {
+      "sha256": "d86043576ba10d932334da75a9eca870987b85996701f4de91930445fc6743b6",
+      "retainedOutsideRepository": true,
+      "archiveName": "kissoflife/midas-teaser-discovery.html",
+      "sourceUrl": "https://music.bugs.co.kr/mv/624059"
+    },
+    "imageHeaders": {
+      "sha256": "d5fee473309b929411e96c9cb4341417417227352ccc4de7a73cd9f1264c6ced",
+      "retainedOutsideRepository": true,
+      "archiveName": "kissoflife/sticky-image-headers.txt",
+      "sourceUrl": "https://image.bugsm.co.kr/mvhd/images/500/6260/626071.jpg"
+    },
+    "researchEvidence": {
+      "sha256": "a45f6efcc7c0e6a1422099fffcea8a2752e0da02115d0570197eb192a9fbc672",
+      "retainedOutsideRepository": true,
+      "archiveName": "kissoflife/sticky-evidence.json"
+    },
+    "excludedVariantCaptures": [
+      {
+        "bugsMvId": "637527",
+        "sha256": "ae14c39d30bcd3eee0a6e99025b1dfb0530390c9d75aeaf56df5ed1e2a9e88f6",
+        "retainedOutsideRepository": true,
+        "archiveName": "kissoflife/sticky-source.html",
+        "sourceUrl": "https://music.bugs.co.kr/mv/626071"
+      },
+      {
+        "bugsMvId": "625985",
+        "sha256": "ae14c39d30bcd3eee0a6e99025b1dfb0530390c9d75aeaf56df5ed1e2a9e88f6",
+        "retainedOutsideRepository": true,
+        "archiveName": "kissoflife/sticky-source.html",
+        "sourceUrl": "https://music.bugs.co.kr/mv/626071"
+      }
+    ]
+  },
+  "admissionBoundary": {
+    "allowedUse": "Work-associated Bugs-source MV preview with exact required source label",
+    "directYouTubeBridgeVerified": false,
+    "videoOrFramePixelIdentityVerified": false,
+    "youtubeThumbnailClaimAllowed": false,
+    "HDClaimAllowed": false,
+    "historicalDownloadHashEqualityVerified": false,
+    "nativeAspectRatioMustBePreserved": true,
+    "originalBytesMustBePreserved": true,
+    "soBadPilotExcluded": true
+  }
+}

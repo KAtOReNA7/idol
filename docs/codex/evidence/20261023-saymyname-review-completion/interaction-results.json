@@ -1,0 +1,43 @@
+{
+  "browser": "installed Chrome with bundled Playwright; Browser plugin not available",
+  "base": "http://127.0.0.1:4178/artists/saymyname/index.html",
+  "checks": [
+    {
+      "label": "原图 Escape 关闭并恢复焦点",
+      "pass": true
+    },
+    {
+      "label": "MV 切换精确舞台",
+      "pass": true
+    },
+    {
+      "label": "作品返回成员保留搜索",
+      "pass": true
+    },
+    {
+      "label": "成员搜索刷新保留",
+      "pass": true
+    },
+    {
+      "label": "发行到作品返回保留精确发行与搜索",
+      "pass": true
+    },
+    {
+      "label": "发行目录保留搜索",
+      "pass": true
+    },
+    {
+      "label": "时间轴到作品往返",
+      "pass": true
+    },
+    {
+      "label": "封面查看关闭恢复焦点",
+      "pass": true
+    },
+    {
+      "label": "无应用运行时错误",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

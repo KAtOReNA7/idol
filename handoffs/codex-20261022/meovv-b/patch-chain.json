@@ -1,0 +1,113 @@
+{
+  "format": "meovv-b-portable-source-chain.v1",
+  "sourcePathInRepository": "apps/idol-site",
+  "handoffPathInRepository": "handoffs/codex-20261022/meovv-b",
+  "baseDeploymentVersion": 186,
+  "baseCommit": "f0391481cccd85a4eb53cbe9bf63cdd77d30e350",
+  "baseTree": "a1fbe5d034b23be8a88572a3ab25e4d68d67734e",
+  "targetCommit": "7d76d3d42acaed953f3158e659274ced9889b0d5",
+  "targetTree": "6cea369d93db3293418ba6e6ebc788a847fe89b8",
+  "targetSourceManifest": "final-source-manifest.json",
+  "targetSourceManifestSHA256": "1733fc08c4e61c65a8adc42a162a716d75b9f4013747fb379f32a1ba648ba216",
+  "verification": {
+    "scope": "Each frozen diff was byte-compared with its exact Git base/target and apply --cached --check was run against a temporary index loaded from that exact base; all base/target links form one chain.",
+    "allFourChecksPassed": true,
+    "sourceOrWorktreeChanged": false,
+    "patchesActuallyApplied": false
+  },
+  "steps": [
+    {
+      "order": 1,
+      "patch": "patches/01-inspect-plus-b-source.patch",
+      "bytes": 111416,
+      "sha256": "4cf5fd2dc10095bf2cc27fc2d3f7bfebf96fbe2b19d45cbfabc33bb04b43a955",
+      "baseCommit": "f0391481cccd85a4eb53cbe9bf63cdd77d30e350",
+      "baseTree": "a1fbe5d034b23be8a88572a3ab25e4d68d67734e",
+      "targetCommit": "589b421dde4e419dee1e164d02dc79aeec3bc29e",
+      "targetTree": "44074db0e1b52a694bc35a999b021a7e3dd5b12b",
+      "changedFiles": [
+        "app/manage/build-assets/client.tsx",
+        "components/candidate/meovv-design.tsx",
+        "docs/build-assets/meovv-four-anonymous-access.json",
+        "docs/build-assets/meovv-four-consumer-proof.md",
+        "docs/build-assets/meovv-four-cutover-candidate.md",
+        "docs/build-assets/meovv-four-owner-readback-original.json",
+        "docs/build-assets/meovv-four-owner-readback.json",
+        "lib/idol/build-asset-cutover.json",
+        "lib/idol/candidate/meovv-build-asset-portrait.ts",
+        "scripts/audit-meovv-build-asset-cutover.mjs",
+        "scripts/meovv-build-asset-cutover-guards.json",
+        "tests/build-assets-inspect.test.cjs",
+        "tests/helpers/meovv-consumer-build.cjs",
+        "tests/helpers/meovv-consumer-harness.cjs",
+        "tests/meovv-build-asset-audit.test.mjs",
+        "tests/meovv-build-asset-consumer.test.cjs",
+        "tests/meovv-build-asset-cutover.test.cjs"
+      ],
+      "exactFrozenGitDiff": true,
+      "temporaryIndexApplyCheckPassed": true,
+      "patchActuallyApplied": false
+    },
+    {
+      "order": 2,
+      "patch": "patches/02-deferred-public-copy.patch",
+      "bytes": 20669,
+      "sha256": "61c0a66c476762d4d9ae034ea95440531089600c654a2bdf37a27f703476b020",
+      "baseCommit": "589b421dde4e419dee1e164d02dc79aeec3bc29e",
+      "baseTree": "44074db0e1b52a694bc35a999b021a7e3dd5b12b",
+      "targetCommit": "e3ef00ae2a26560a8411bed5a58f2c327a5bf745",
+      "targetTree": "9f659466b8518961ec9ca90ff3fce3eb794050ec",
+      "changedFiles": [
+        "docs/build-assets/deferred-public-copy.md",
+        "package.json",
+        "scripts/build-deferred-public.mjs",
+        "tests/deferred-public-build.test.mjs",
+        "vite.config.ts"
+      ],
+      "exactFrozenGitDiff": true,
+      "temporaryIndexApplyCheckPassed": true,
+      "patchActuallyApplied": false
+    },
+    {
+      "order": 3,
+      "patch": "patches/03-compiled-carrier-pins.patch",
+      "bytes": 20642,
+      "sha256": "b8e389953d26b5054fba7b91bd87666d75c95fcb0dd8197ada9a8ce730879f22",
+      "baseCommit": "e3ef00ae2a26560a8411bed5a58f2c327a5bf745",
+      "baseTree": "9f659466b8518961ec9ca90ff3fce3eb794050ec",
+      "targetCommit": "69dc651d1f938433a2fa73c707c0ebb674fe7e51",
+      "targetTree": "2bac9bded7904b9c5d0d529705298ba34a54e29f",
+      "changedFiles": [
+        "scripts/candyshop-unused-group-original-manifest.json",
+        "scripts/meovv-build-asset-cutover-guards.json",
+        "scripts/prune-candyshop-unused-group-original.mjs",
+        "scripts/prune-youngposse-replaced-build-portraits.mjs",
+        "scripts/udtt-font-retention-manifest.json",
+        "scripts/udtt-private-build-assets-manifest.json",
+        "scripts/youngposse-original-retention-manifest.json",
+        "scripts/youngposse-replaced-portrait-build-manifest.json",
+        "tests/meovv-build-asset-audit.test.mjs"
+      ],
+      "exactFrozenGitDiff": true,
+      "temporaryIndexApplyCheckPassed": true,
+      "patchActuallyApplied": false
+    },
+    {
+      "order": 4,
+      "patch": "patches/04-reviewed-gate-and-fixtures.patch",
+      "bytes": 5787,
+      "sha256": "457777fb52ddb27fe5dbe11ce124480d84fc0267dc5631d15b90a9c258261561",
+      "baseCommit": "69dc651d1f938433a2fa73c707c0ebb674fe7e51",
+      "baseTree": "2bac9bded7904b9c5d0d529705298ba34a54e29f",
+      "targetCommit": "7d76d3d42acaed953f3158e659274ced9889b0d5",
+      "targetTree": "6cea369d93db3293418ba6e6ebc788a847fe89b8",
+      "changedFiles": [
+        "scripts/meovv-build-asset-cutover-guards.json",
+        "tests/meovv-build-asset-audit.test.mjs"
+      ],
+      "exactFrozenGitDiff": true,
+      "temporaryIndexApplyCheckPassed": true,
+      "patchActuallyApplied": false
+    }
+  ]
+}

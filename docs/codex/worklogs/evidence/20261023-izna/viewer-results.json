@@ -1,0 +1,233 @@
+{
+  "sourceFingerprint": "dc2988774adc8ccb1a17089a9186236f7e318a3f05ed18e32ff13a054b6fbe40",
+  "flow": "izna home -> member -> original image viewer -> Escape/close -> opener focus; blocked member portrait -> visible error -> retry -> decoded portrait",
+  "browserReason": "Browser plugin not available; regular Playwright permitted",
+  "startedAt": "2026-10-23T06:45:03.321Z",
+  "cases": [
+    {
+      "width": 320,
+      "height": 1000,
+      "scenario": "viewer",
+      "passed": true,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "blockedExternal": [],
+      "blockedPortrait": 0,
+      "screenshots": [
+        "E:/project/idol-qa-20261023/viewer-320-viewer-open.png",
+        "E:/project/idol-qa-20261023/viewer-320-viewer-closed.png"
+      ],
+      "url": "http://127.0.0.1:4173/artists/izna?section=members&member=rec28ldbniBc6L",
+      "title": "izna · 页面审阅",
+      "nonblank": true,
+      "frameworkOverlayCount": 0,
+      "portrait": {
+        "complete": true,
+        "naturalWidth": 900,
+        "naturalHeight": 900,
+        "hidden": false,
+        "display": "block",
+        "visibility": "visible",
+        "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/mai-display.jpg"
+      },
+      "viewerImage": {
+        "complete": true,
+        "naturalWidth": 900,
+        "naturalHeight": 900,
+        "hidden": false,
+        "display": "block",
+        "visibility": "visible",
+        "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/mai-display.jpg"
+      },
+      "openFocus": {
+        "tag": "BUTTON",
+        "label": "关闭图片",
+        "text": "关闭"
+      },
+      "dialogBox": {
+        "x": 12,
+        "y": 430.96875,
+        "width": 296,
+        "height": 424
+      },
+      "escapeFocus": {
+        "tag": "BUTTON",
+        "label": "放大富冈茉衣",
+        "text": "富冈茉衣"
+      },
+      "closeFocus": {
+        "tag": "BUTTON",
+        "label": "放大富冈茉衣",
+        "text": "富冈茉衣"
+      },
+      "unexpectedConsoleErrors": []
+    },
+    {
+      "width": 320,
+      "height": 1000,
+      "scenario": "portrait-retry",
+      "passed": true,
+      "pageErrors": [],
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: net::ERR_FAILED",
+          "location": {
+            "url": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/mai-display.jpg",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "blockedExternal": [],
+      "blockedPortrait": 1,
+      "screenshots": [
+        "E:/project/idol-qa-20261023/viewer-320-portrait-retry-error.png",
+        "E:/project/idol-qa-20261023/viewer-320-portrait-retry-recovered.png"
+      ],
+      "url": "http://127.0.0.1:4173/artists/izna?section=members&member=rec28ldbniBc6L",
+      "title": "izna · 页面审阅",
+      "nonblank": true,
+      "frameworkOverlayCount": 0,
+      "errorImage": {
+        "complete": true,
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "hidden": true,
+        "display": "none",
+        "visibility": "visible",
+        "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/mai-display.jpg"
+      },
+      "recoveredImage": {
+        "complete": true,
+        "naturalWidth": 900,
+        "naturalHeight": 900,
+        "hidden": false,
+        "display": "block",
+        "visibility": "visible",
+        "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/mai-display.jpg"
+      },
+      "retryFocus": {
+        "tag": "BUTTON",
+        "label": "放大富冈茉衣",
+        "text": "富冈茉衣"
+      },
+      "unexpectedConsoleErrors": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "scenario": "viewer",
+      "passed": true,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "blockedExternal": [],
+      "blockedPortrait": 0,
+      "screenshots": [
+        "E:/project/idol-qa-20261023/viewer-1440-viewer-open.png",
+        "E:/project/idol-qa-20261023/viewer-1440-viewer-closed.png"
+      ],
+      "url": "http://127.0.0.1:4173/artists/izna?section=members&member=rec28ldbniBc6L",
+      "title": "izna · 页面审阅",
+      "nonblank": true,
+      "frameworkOverlayCount": 0,
+      "portrait": {
+        "complete": true,
+        "naturalWidth": 900,
+        "naturalHeight": 900,
+        "hidden": false,
+        "display": "block",
+        "visibility": "visible",
+        "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/mai-display.jpg"
+      },
+      "viewerImage": {
+        "complete": true,
+        "naturalWidth": 900,
+        "naturalHeight": 900,
+        "hidden": false,
+        "display": "block",
+        "visibility": "visible",
+        "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/mai-display.jpg"
+      },
+      "openFocus": {
+        "tag": "BUTTON",
+        "label": "关闭图片",
+        "text": "关闭"
+      },
+      "dialogBox": {
+        "x": 12,
+        "y": 247.71875,
+        "width": 600,
+        "height": 728
+      },
+      "escapeFocus": {
+        "tag": "BUTTON",
+        "label": "放大富冈茉衣",
+        "text": "富冈茉衣"
+      },
+      "closeFocus": {
+        "tag": "BUTTON",
+        "label": "放大富冈茉衣",
+        "text": "富冈茉衣"
+      },
+      "unexpectedConsoleErrors": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "scenario": "portrait-retry",
+      "passed": true,
+      "pageErrors": [],
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: net::ERR_FAILED",
+          "location": {
+            "url": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/mai-display.jpg",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "blockedExternal": [],
+      "blockedPortrait": 1,
+      "screenshots": [
+        "E:/project/idol-qa-20261023/viewer-1440-portrait-retry-error.png",
+        "E:/project/idol-qa-20261023/viewer-1440-portrait-retry-recovered.png"
+      ],
+      "url": "http://127.0.0.1:4173/artists/izna?section=members&member=rec28ldbniBc6L",
+      "title": "izna · 页面审阅",
+      "nonblank": true,
+      "frameworkOverlayCount": 0,
+      "errorImage": {
+        "complete": true,
+        "naturalWidth": 0,
+        "naturalHeight": 0,
+        "hidden": true,
+        "display": "none",
+        "visibility": "visible",
+        "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/mai-display.jpg"
+      },
+      "recoveredImage": {
+        "complete": true,
+        "naturalWidth": 900,
+        "naturalHeight": 900,
+        "hidden": false,
+        "display": "block",
+        "visibility": "visible",
+        "src": "http://127.0.0.1:4173/artist/izna/batch-b-20261016/mai-display.jpg"
+      },
+      "retryFocus": {
+        "tag": "BUTTON",
+        "label": "放大富冈茉衣",
+        "text": "富冈茉衣"
+      },
+      "unexpectedConsoleErrors": []
+    }
+  ],
+  "finishedAt": "2026-10-23T06:45:13.642Z"
+}

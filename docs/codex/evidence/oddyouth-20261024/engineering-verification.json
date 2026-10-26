@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-24",
+  "typecheck": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false",
+    "exitCode": 0
+  },
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "afterFinalCssFix": true
+  },
+  "tests": {
+    "count": 49,
+    "passed": 49,
+    "failed": 0,
+    "scope": [
+      "oddyouth-*",
+      "artist-navigation",
+      "artist-navigation-scroll",
+      "navigation-save-guard",
+      "candyshop-content",
+      "candyshop-review-catalog",
+      "candyshop-review-isolation"
+    ],
+    "fullSuiteClaimed": false
+  },
+  "review": {
+    "fingerprint": "3f3d129dd65a32da8cc47c7d9c766e8ac850eba3f6a9d7176d07a859eaee68ed",
+    "assets": 29,
+    "assetBytes": 12396467,
+    "sanitizedRelations": 15,
+    "apiIsolationChecks": 9
+  },
+  "mainSiteVersion": 186,
+  "personalRecordsModified": false
+}

@@ -1,0 +1,43 @@
+/* Rebuilt 2026-10-25: ive official reference journal. Stable player/editor markup only. */
+.ive-experience{--paper:#e6f0f1;--white:#fff;--ink:#0c1518;--muted:#586d73;--line:#a5bfc4;--rose:#1d535f;--blush:#fff;--lilac:#fff;background:#e6f0f1;color:#0c1518;font-family:Arial,'Noto Sans SC',sans-serif;min-height:100vh}
+.ive-experience :is(h1,h2,h3){color:#0c1518;font-family:Arial,'Noto Sans SC',sans-serif;letter-spacing:-.04em}
+.ive-experience .header{background:#080808;color:#fff;border-bottom:1px solid #a5bfc4;padding:24px 5%;min-height:90px}
+.ive-experience .brand{font:900 28px/1 Arial,sans-serif;letter-spacing:-.06em;color:inherit}
+.ive-experience .brand small{font:400 10px/1.5 Arial,sans-serif;color:inherit;letter-spacing:.08em}
+.ive-experience .header nav button{color:inherit;font-family:Arial,sans-serif;border-radius:0}
+.ive-experience .private-pill{border:1px solid currentColor;border-radius:0;color:inherit;background:transparent}
+.ive-experience main{max-width:1440px;padding:40px 5% 80px;margin:auto}
+.ive-experience :is(.button,.video-mode-tabs,.video-mode-tabs button,.editor,.editor-actions,.score-input,.editor input,.editor textarea,.editor select){border-radius:0;font-family:Arial,sans-serif}
+.ive-experience .button{min-height:44px;border:1px solid #a5bfc4;background:#fff;color:#0c1518;padding:12px 18px}
+.ive-experience .button.primary,.ive-experience .video-mode-tabs button[aria-selected=true]{background:#1d535f;color:#fff}
+.ive-experience :is(.work-detail-top,.madein-detail-hero){display:grid;grid-template-columns:minmax(0,1.8fr) minmax(260px,.8fr);gap:36px;align-items:start;margin:30px 0 60px}
+.ive-experience :is(.work-aside,.madein-detail-identity){padding:30px 0;border:0;border-top:5px solid #1d535f;border-radius:0;background:transparent}
+.ive-experience :is(.work-aside h1,.madein-detail-identity h1,.ive-work-heading h1){font:900 clamp(32px,4vw,62px)/1.08 Arial,sans-serif;letter-spacing:-.06em;overflow-wrap:anywhere;margin:20px 0}
+.ive-experience :is(.work-aside p,.madein-detail-identity p){font-size:12px;color:#586d73}
+.ive-experience .video-stage{border-radius:0;background:#050505;overflow:hidden}
+.ive-experience :is(.video-play,.score-indicator){background:#1d535f}
+.ive-experience .cast-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.ive-experience .cast-card{padding:0;border:0;border-bottom:1px solid #a5bfc4;border-radius:0;background:transparent;overflow:hidden}
+.ive-experience .cast-card .photo{aspect-ratio:3/4;max-height:520px;border-radius:0;background:#fff}
+.ive-experience .cast-card .photo img{object-fit:contain}
+.ive-experience :is(.cast-copy,.cast-card>div:last-child){padding:20px 4px}
+.ive-experience .member-name{font:700 22px/1.2 Arial,sans-serif}
+.ive-experience .section-heading{border-bottom:1px solid #a5bfc4;padding-bottom:24px;margin-bottom:30px}
+.ive-experience .section-heading h2{font:800 36px/1.2 Arial,sans-serif}
+.ive-experience :is(.stage-source,.alternative-card,.watch-lead-card,.member-work-card){border:1px solid #a5bfc4;border-radius:0;background:#fff;box-shadow:none}
+.ive-experience :is(.detail-return,.stage-view>.detail-return,.watch-next,.caption-help){border:0;border-top:1px solid #a5bfc4;border-radius:0;background:transparent;padding:25px 0}
+.ive-experience .member-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7%;align-items:start}
+.ive-experience .member-detail h1{font:900 clamp(40px,5vw,76px)/1.1 Arial,sans-serif;letter-spacing:-.05em;overflow-wrap:anywhere}
+.ive-experience .member-detail>.photo{width:100%;height:auto;aspect-ratio:3/4;max-height:none;background:#fff;border-radius:0}
+.ive-experience .member-detail>.photo img{object-fit:contain}
+.ive-experience .member-work-summary{border:1px solid #a5bfc4;border-radius:0;background:#fff;padding:28px}
+.ive-experience .member-work-summary strong{font-family:Arial,sans-serif;color:#1d535f}
+.ive-experience .member-work-card__title{font:700 25px/1.2 Arial,sans-serif}
+.ive-experience .member-work-card__art{background:#fff}
+.ive-experience .image-label{border-radius:0;background:#fff;color:#586d73}
+.ive-experience .editor{border:1px solid #a5bfc4;background:#fff;padding:24px}
+.ive-experience .editor-fields :is(input,textarea,select){color:#0c1518;background:#e6f0f1;border:1px solid #a5bfc4}
+.ive-experience :is(.back,.text-button){color:#0c1518}
+.ive-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid #1d535f;outline-offset:4px}
+@media(max-width:720px){.ive-experience .header{padding:20px 5%;flex-wrap:wrap;gap:16px}.ive-experience .header nav{max-width:100%;flex-wrap:wrap}.ive-experience main{padding:28px 5% 60px}.ive-experience :is(.work-detail-top,.madein-detail-hero,.member-detail){grid-template-columns:1fr;gap:25px}.ive-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.ive-experience .member-detail h1{font-size:44px}.ive-experience .section-heading h2{font-size:28px}.ive-experience .member-work-summary{padding:20px}.ive-experience .cast-copy{padding:18px 0}.ive-experience .member-name{font-size:18px}}
+.ive-experience .ive-work-heading{border-bottom:2px solid #111;padding:20px 0;margin-bottom:25px}.ive-experience .member-detail h1,.ive-experience .work-aside h1{font-style:italic}.ive-experience .mobile-work-heading{display:none}

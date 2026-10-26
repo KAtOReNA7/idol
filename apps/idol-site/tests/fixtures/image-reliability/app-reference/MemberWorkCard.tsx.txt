@@ -1,0 +1,17 @@
+function MemberWorkCard({item,member,data,onOpen}:{item:MemberWork;member:Member;data:Catalog;onOpen:()=>void}){
+ const [expanded,setExpanded]=useState(false);const p=item.photo;
+ const [imageState,setImageState]=useState<{request:object;value:ReliableImageState}|null>(null);
+ useEffect(()=>{setExpanded(false);},[member.id,item.work.id,p?.recordId,p?.index]);
+ const src=p&&data.mode==='live'?`/api/media?table=ratings&record=${p.recordId}&index=${p.index}`:'';
+ const imageKey=JSON.stringify([src,member.id,item.work.id]);
+ const request=useMemo(()=>({}),[imageKey]),currentRequest=useRef(request);currentRequest.current=request;
+ const receiveImageState=useCallback((value:ReliableImageState)=>{if(currentRequest.current===request)setImageState({request,value});},[request]);
+ const currentImageState=imageState?.request===request?imageState.value:null;
+ const number=(n:number|null)=>n===null?'待评':n.toFixed(1),label=memberDisplayName(member)+' · '+item.work.song+' · 本 MV 个人造型';
+ const closePhoto=useCallback(()=>setExpanded(false),[]);
+ return <article data-browse-anchor={'work-'+item.work.id} className="member-work-wrap member-work-card">
+  <div className="member-work-card__art"><button type="button" className="member-work-photo-button" aria-haspopup="dialog" aria-label={'放大'+label} disabled={!src||currentImageState?.status==='error'} onClick={()=>setExpanded(true)}><CatalogPhotoImage photo={p?{...p,table:'ratings'}:null} live={data.mode==='live'} identityKey={`member:${member.id}:work:${item.work.id}:look`} label={label} fit="contain" onStateChange={receiveImageState} missing={<span className="member-work-card__empty">本 MV 个人造型图暂缺</span>} fallback={<span className="member-work-card__empty">图片暂时打不开</span>}/><span className="member-photo-expand">查看大图</span></button></div>
+  <button data-member-work-trigger={item.work.id} className="member-work-card__body" onClick={onOpen}><small className="member-work-card__meta">{names(data,item.work.groupIds)} · {item.work.videoType||'MV'}{item.work.version?' · '+item.work.version:''}</small><h3 className="member-work-card__title">{item.work.song||item.work.name}</h3><span className="member-work-card__scores">{([['个人表现',item.performance],['个人造型',item.styling]] as const).map(([label,value])=><span className="member-work-card__score" key={label}><small className="member-work-card__score-label">{label}</small><strong className="member-work-card__score-value" data-unrated={value===null}>{number(value)}</strong></span>)}</span><span className="member-work-card__open">查看作品<ArrowUpRight size={16}/></span></button>
+  {expanded&&src&&<PhotoLightbox src={currentImageState?.src||src} label={label} onClose={closePhoto}/>}
+ </article>;
+}

@@ -1,0 +1,59 @@
+.artist-timeline {
+  --at-style-ready: 1;
+  --at-accent: var(--artist-timeline-accent, var(--ca-accent, currentColor));
+  --at-line: var(--artist-timeline-line, color-mix(in srgb, currentColor 28%, transparent));
+  --at-focus: var(--artist-timeline-focus, #397ab9);
+  color: inherit;
+  font: inherit;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.artist-sample .artist-timeline { --artist-timeline-accent: var(--as-red); }
+.illit-artist .artist-timeline { --artist-timeline-accent: var(--il-accent); }
+.ive-artist .artist-timeline { --artist-timeline-accent: var(--iv-berry); }
+.kiof-artist .artist-timeline { --artist-timeline-accent: var(--kf-cherry); }
+.stayc-artist .artist-timeline { --artist-timeline-accent: var(--sc-cherry); }
+.nmixx-artist .artist-timeline { --artist-timeline-accent: var(--nx-accent); }
+.hearts2hearts-artist .artist-timeline { --artist-timeline-accent: var(--h-accent); }
+.kiiikiii-artist .artist-timeline { --artist-timeline-accent: var(--kk-green); }
+.lesserafim-artist .artist-timeline { --artist-timeline-accent: var(--lf-orange); }
+.saymyname-artist .artist-timeline { --artist-timeline-accent: var(--smn-blue); }
+.katseye-artist .artist-timeline { --artist-timeline-accent: var(--ke-orange); }
+.artist-timeline :where(*, *::before, *::after) { box-sizing: border-box; }
+/* Existing group headings remain the only title, with a quiet timeline scale. */
+[class$="-heading"]:has(+ [data-timeline-host]) h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); line-height: 1.4; }
+.artist-timeline .at-heading h2 { margin: 0 0 22px; font: inherit; font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 650; line-height: 1.4; color: inherit; }
+.artist-timeline .at-list { padding: 0 0 0 28px; margin: 12px 0 0 12px; list-style: none; }
+.artist-timeline .at-list > li { position: relative; min-width: 0; padding: 0 0 22px; }
+.artist-timeline .at-list > li:last-child { padding-bottom: 0; }
+/* One shared vertical axis; each segment stops at the next decorative node. */
+.artist-timeline .at-list > li:not(:last-child)::after { content: ''; position: absolute; inset-inline-start: -28px; top: 26px; bottom: 0; width: 1px; background: var(--at-line); }
+.artist-timeline .at-node { position: absolute; inset-inline-start: -40px; top: 0; width: 25px; height: 25px; display: grid; place-items: center; color: inherit; pointer-events: none; }
+.artist-timeline .at-node svg { display: block; width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+.artist-timeline .at-node--debut svg { width: 28px; height: 28px; stroke-width: 1.7; }
+.artist-timeline .at-node-emphasis { fill: var(--at-accent); fill-opacity: .2; }
+.artist-timeline .at-node-accent { stroke: var(--at-accent); }
+.artist-timeline .at-node-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--at-accent); }
+.artist-timeline .at-event-kind { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.artist-timeline .at-event { padding: 0; border: 0; background: transparent; color: inherit; min-width: 0; }
+.artist-timeline .at-event .at-when { margin: 0 0 5px; font: inherit; font-size: .84rem; font-variant-numeric: tabular-nums; line-height: 1.6; color: inherit; }
+.artist-timeline .at-event h3 { margin: 0; font-family: inherit; font-size: clamp(1rem, 1.7vw, 1.18rem); font-weight: 600; line-height: 1.65; letter-spacing: normal; color: inherit; }
+.artist-timeline .at-event h3 .at-title-punctuation { font-family: "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif; }
+.artist-timeline [data-timeline-visual="debut"] .at-event h3 { font-size: clamp(1.13rem, 1.9vw, 1.28rem); font-weight: 700; }
+.artist-timeline [data-timeline-visual="debut"] .at-event h3::after { content: ''; display: block; width: 36px; height: 2px; margin-top: 8px; background: var(--at-accent); }
+.artist-timeline [data-timeline-visual="people"] .at-event h3 { padding-inline-start: 10px; border-inline-start: 2px solid var(--at-accent); }
+.artist-timeline [data-timeline-visual="organization"] .at-event h3 { font-weight: 500; }
+.artist-timeline .at-references { display: flex; flex-wrap: wrap; align-items: center; gap: 0 16px; margin-top: 2px; font-size: .88rem; }
+.artist-timeline .at-references > span { padding: 9px 0; line-height: 1.55; }
+.artist-timeline :is(.at-references, .at-state) button,
+.artist-timeline :is(.at-references, .at-state) button:hover { min-height: 44px; min-width: 44px; max-width: 100%; padding: 9px 0; border: 0; border-radius: 0; background: transparent; color: inherit; font: inherit; line-height: 1.55; text-align: start; text-decoration: underline; text-underline-offset: .25em; text-decoration-thickness: 1px; white-space: normal; overflow-wrap: anywhere; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.artist-timeline :is(.at-references, .at-state) button:focus-visible,
+.artist-timeline .at-event:focus { outline: 3px solid var(--at-focus); outline-offset: 3px; }
+.artist-timeline .at-state { margin: 16px 0; padding: 12px 0; color: inherit; font-size: .95rem; line-height: 1.7; }
+.artist-timeline .at-state p { margin: 0; }
+@media (max-width: 430px) {
+  .artist-timeline .at-list > li { padding-bottom: 20px; }
+  .artist-timeline .at-list > li:last-child { padding-bottom: 0; }
+}

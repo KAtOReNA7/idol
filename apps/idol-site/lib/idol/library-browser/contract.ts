@@ -1,0 +1,15 @@
+import type {ReactNode} from 'react';
+import type {BrowseFilters,WatchSequence} from '../journey';
+import type {CatalogView,Work} from '../types';
+export type PageSize=24|48;
+export type ConditionKey='search'|'group'|'generation'|'queue'|'stageFilter'|'watch'|'sort';
+export type ActiveCondition={key:ConditionKey;label:string;value:string};
+export type PageModel={page:number;pageSize:PageSize;pageCount:number;total:number;start:number;end:number};
+export type LibraryModel={orderedWorks:Work[];orderedIds:string[];rows:Work[];pagination:PageModel;facetCounts:{queue:Record<string,number>;stage:Record<string,number>};activeConditions:ActiveCondition[];watchableIds:string[]};
+export type RestoreTarget={anchorId?:string;offset?:number;page?:number;legacyLimit?:number;focusId?:string;requestKey?:string|number};
+export type RestoreResolution={page:number;anchorId:string|null;offset:number;focus:'anchor'|'search';reason:'anchor'|'missing-anchor'|'page'};
+export type ResultsViewProps={model:LibraryModel;page:number;pageSize:PageSize;onPageChange:(page:number,pageSize:PageSize)=>void;renderWork:(work:Work,onOpen:()=>void)=>ReactNode;onOpenWork:(workId:string,sequence:WatchSequence)=>void;sequence:WatchSequence;restoreTarget?:RestoreTarget;restoreReady?:boolean;onRestoreReady?:(resolution:RestoreResolution)=>void;loading?:boolean;error?:string|null;searchId?:string};
+export type SequenceStatus='available'|'missing'|'unavailable'|'filtered'|'member-unlinked';
+export type SequenceRow={id:string;position:number;name:string;status:SequenceStatus;current:boolean;next:boolean};
+export type SequenceModel={rows:SequenceRow[];total:number;currentPosition:number|null;nextId:string|null;continuableCount:number;unrecoverable:boolean};
+export type SequencePreviewProps={sequence:WatchSequence;currentId:string;catalog:CatalogView;onNext?:()=>void;nextDisabled?:boolean};

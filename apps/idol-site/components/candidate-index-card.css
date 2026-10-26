@@ -1,0 +1,32 @@
+.group-index-card.candidate-index-card{display:flex;flex-direction:column;padding:0;min-width:0;text-align:left;background:var(--ci-bg);color:var(--ci-ink);border:1px solid var(--ci-line);border-radius:0;overflow:hidden;box-shadow:none}
+.candidate-index-card .candidate-index-visual{position:relative;margin:18px 18px 0;background:var(--ci-panel);border:1px solid var(--ci-line);min-width:0}
+.candidate-index-card .candidate-index-visual>img{display:block;width:100%;height:240px;object-fit:contain}
+.candidate-index-card .candidate-index-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;height:240px}
+.candidate-index-card .candidate-index-gallery img{width:100%;height:100%;min-width:0;object-fit:contain}
+.candidate-index-card .candidate-index-caption{display:block;padding:8px 10px;font-size:10px;line-height:1.5;color:var(--ci-muted);border-top:1px solid var(--ci-line);letter-spacing:.03em}
+.candidate-index-card .candidate-index-body{display:flex;flex-direction:column;flex:1;padding:22px;gap:14px}
+.candidate-index-card .candidate-index-eyebrow{font-size:10px;line-height:1.7;letter-spacing:.1em;overflow-wrap:anywhere;color:var(--ci-muted)}
+.candidate-index-card h2{font-size:clamp(27px,3vw,42px);line-height:1.05;letter-spacing:-.04em;font-weight:700;margin:0;overflow-wrap:anywhere;color:var(--ci-ink)}
+.candidate-index-card p{margin:0;color:var(--ci-ink);line-height:1.7;font-size:12px}
+.candidate-index-card .candidate-index-meta{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11px;line-height:1.7;color:var(--ci-muted);margin-top:auto;padding-top:6px}
+.candidate-index-card .candidate-index-enter{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--ci-line);padding-top:14px;font-size:12px;font-weight:600;color:var(--ci-ink)}
+.candidate-index-card .candidate-index-wordmark{min-height:240px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px;padding:20px;background:var(--ci-panel)}
+.candidate-index-card .candidate-index-wordmark strong{font-size:40px;line-height:1.1;text-align:center;overflow-wrap:anywhere}
+.candidate-index-card .candidate-index-wordmark span{font-size:11px;color:var(--ci-muted)}
+.candidate-index-card .candidate-index-missing{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;min-height:240px;font-size:10px;color:var(--ci-muted);padding:10px;text-align:center}
+.candidate-index-card.ci-editorial h2{font-family:Georgia,'Songti SC','SimSun',serif;font-weight:500}
+.candidate-index-card.ci-editorial .candidate-index-visual{padding:8px;background:var(--ci-panel)}
+.candidate-index-card.ci-grid .candidate-index-body{background-image:linear-gradient(var(--ci-line) 1px,transparent 1px),linear-gradient(90deg,var(--ci-line) 1px,transparent 1px);background-size:32px 32px}
+.candidate-index-card.ci-grid .candidate-index-body>*{background:var(--ci-bg);width:fit-content;max-width:100%}
+.candidate-index-card.ci-grid .candidate-index-enter{width:100%}
+.candidate-index-card.ci-score .candidate-index-visual{border-width:2px 0}
+.candidate-index-card.ci-score .candidate-index-body{border-top:4px double var(--ci-accent);margin-top:18px}
+.candidate-index-card.ci-soft{border-radius:22px}
+.candidate-index-card.ci-soft .candidate-index-visual{border-radius:14px;overflow:hidden}
+.candidate-index-card.ci-noir .candidate-index-visual{margin:0;border:0}
+.candidate-index-card.ci-noir h2{font-size:46px;letter-spacing:-.06em}
+.candidate-index-card:focus-visible{outline:3px solid var(--ci-accent);outline-offset:4px}
+@media(max-width:600px){.candidate-index-card .candidate-index-body{padding:18px}.candidate-index-card .candidate-index-visual{margin:12px 12px 0}.candidate-index-card h2{font-size:34px}.candidate-index-card .candidate-index-visual>img,.candidate-index-card .candidate-index-gallery{height:220px}}
+@media(max-width:600px){.candidate-index-card.ci-noir h2{font-size:clamp(28px,9vw,38px)}}
+@media(max-width:600px){.candidate-index-card .candidate-index-wordmark strong{font-size:clamp(24px,7vw,32px)}}
+.candidate-index-card.ci-page{font-family:var(--ci-body);border-color:var(--ci-line)}.candidate-index-card.ci-page .candidate-index-visual{margin:0;border:0}.candidate-index-card.ci-page h2{font-family:var(--ci-display);font-size:clamp(32px,3.2vw,48px);font-weight:500;letter-spacing:-.035em}.candidate-index-card.ci-page .candidate-index-caption{border-color:var(--ci-line);opacity:.8}.candidate-index-card.ci-page .candidate-index-enter{color:var(--ci-accent)}.candidate-index-card.ci-page .candidate-index-eyebrow{color:var(--ci-accent)}.candidate-index-card.ci-page-geenius h2,.candidate-index-card.ci-page-atheart h2,.candidate-index-card.ci-page-izone h2{letter-spacing:.02em}.candidate-index-card.ci-page-fromis9 h2{font-style:italic}.candidate-index-card.ci-page-vvup h2,.candidate-index-card.ci-page-oddyouth h2,.candidate-index-card.ci-page-everglow h2,.candidate-index-card.ci-page-rocketpunch h2{font-weight:800}.candidate-index-card.ci-page-billlie .candidate-index-visual>img,.candidate-index-card.ci-page-vcha .candidate-index-visual>img{height:280px}.candidate-index-card.ci-page-newjeans{border-radius:16px}.candidate-index-card.ci-page-tracer .candidate-index-enter,.candidate-index-card.ci-page-cherrybullet .candidate-index-enter{border-top-width:2px}

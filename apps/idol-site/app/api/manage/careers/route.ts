@@ -1,0 +1,6 @@
+import {careerPreview,careerApply,careerStatus,careerRollback} from '@/lib/idol/member-careers';
+import {requireUser,sameOrigin,json,failure} from '@/lib/idol/http';
+import {AppError} from '@/lib/idol/feishu';
+export const dynamic='force-dynamic';
+export async function GET(request:Request){try{const user=await requireUser();return json(await careerStatus(user.userId,new URL(request.url).searchParams.get('operationId')??''));}catch(e){return failure(e);}}
+export async function POST(request:Request){try{const user=await requireUser();sameOrigin(request);if(!request.headers.get('content-type')?.startsWith('application/json'))throw new AppError('INVALID_CONTENT_TYPE','请求格式不正确。',400);const text=await request.text();if(text.length>24000)throw new AppError('REQUEST_TOO_LARGE','请求过长。',413);const input=JSON.parse(text);if(!input||Object.keys(input).some(k=>!['action','operationId','revisions','expected'].includes(k)))throw new AppError('INVALID_REQUEST','请求内容无效。',400);switch(input.action){case 'preview':return json(await careerPreview(user.userId,input.operationId));case 'apply':return json(await careerApply(user.userId,input.operationId,input.revisions,input.expected));case 'rollback':return json(await careerRollback(user.userId,input.operationId));default:throw new AppError('INVALID_REQUEST','请选择预览、更新或恢复。',400);}}catch(e){return failure(e);}}

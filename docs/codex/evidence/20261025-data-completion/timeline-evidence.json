@@ -1,0 +1,246 @@
+{
+  "idle": {
+    "eventId": "e-idle-cube-renewal",
+    "documentPath": "apps/idol-site/data/artist-timelines/idle.json",
+    "checkedAt": "2026-10-25",
+    "beforeDocumentSha256": "30af12b2879c69bf1294c98d29337f51b7345fb12430b9a3a1f3db5691718c24",
+    "afterDocumentSha256": "ab387edde35300b4be46e66c8558f8d9a04fbaed49f4331cae75cbe5cc1e2c56",
+    "before": {
+      "id": "e-idle-cube-renewal",
+      "groupId": "recvxyEBDZqkpg",
+      "eventType": "other",
+      "title": "全员与CUBE续约候选（待原文）",
+      "summary": "E已存结构化转录声称全员于2024年12月续约；当前保存的原始摘录只支持更名，续约事实与月份仍待原文核验。",
+      "scopeNote": "续约与独立更名节点分开。已保存原句不支持续约，eventDate保留null、状态uncertain/hold；不由更名或现经纪名册推续约，不补合同生效日。",
+      "eventDate": null,
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "uncertain",
+      "importance": "major",
+      "memberIds": [],
+      "workIds": [],
+      "releaseKey": null,
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "es-c7953e3e921f9bc3",
+          "url": "https://prtimes.jp/main/html/rd/p/000000059.000124555.html",
+          "publisher": "VT CUBE JAPAN 株式会社 / CUBE ENTERTAINMENT JAPAN",
+          "title": "デビュー7周年の(G)I-DLE、「i-dle」にグループ名を変更",
+          "sourcePublishedAt": {
+            "value": "2025-05-02",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "E保存的最小原始摘录仅直接支持团名更改；同收据contractRenewedMonth/renewedMembers是结构化转录，缺续约原句，故本续约节点暂hold。原checkedAt沿用，不代表本轮重抓。",
+          "evidenceRef": "evidence/E01/baseline-evidence/task03/sources/new-receipts.json#/receipts/idle-rename"
+        }
+      ],
+      "reviewStatus": "hold",
+      "holdReasons": [
+        "缺全员续约及2024年12月的最小原始证据；已保存的CUBE原文摘录仅支持更名，转录facts不能替代续约原句。"
+      ]
+    },
+    "after": {
+      "id": "e-idle-cube-renewal",
+      "groupId": "recvxyEBDZqkpg",
+      "eventType": "other",
+      "title": "全员与CUBE续约",
+      "summary": "CUBE日本官方后续稿确认，当时五位成员于2024年12月全员续约。",
+      "scopeNote": "只确认续约事实与月份；具体签署日和合同生效日未公开。2025年5月2日是回顾稿刊日，不是续约发生日，与更名节点分开。",
+      "eventDate": {
+        "value": "2024-12",
+        "precision": "month"
+      },
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "importance": "major",
+      "memberIds": [],
+      "workIds": [],
+      "releaseKey": null,
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "es-c7953e3e921f9bc3",
+          "url": "https://prtimes.jp/main/html/rd/p/000000059.000124555.html",
+          "publisher": "VT CUBE JAPAN 株式会社 / CUBE ENTERTAINMENT JAPAN",
+          "title": "デビュー7周年の(G)I-DLE、「i-dle」にグループ名を変更",
+          "sourcePublishedAt": {
+            "value": "2025-05-02",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "E保存的最小原始摘录仅直接支持团名更改；同收据contractRenewedMonth/renewedMembers是结构化转录，缺续约原句，故本续约节点暂hold。原checkedAt沿用，不代表本轮重抓。",
+          "evidenceRef": "evidence/E01/baseline-evidence/task03/sources/new-receipts.json#/receipts/idle-rename"
+        },
+        {
+          "id": "es-idle-official-recheck-20261025",
+          "url": "https://prtimes.jp/main/html/rd/p/000000059.000124555.html",
+          "publisher": "CUBE ENTERTAINMENT JAPAN",
+          "title": "全员与CUBE续约（官方正文复核）",
+          "sourcePublishedAt": {
+            "value": "2025-05-02",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-25",
+          "scopeNote": "本轮实际读取的官方正文：昨年12月にメンバー全員がCUBE ENTERTAINMENTと再契約。只确认续约事实与月份；具体签署日和合同生效日未公开。2025年5月2日是回顾稿刊日，不是续约发生日，与更名节点分开。",
+          "evidenceRef": "docs/codex/evidence/20261025-data-completion/timeline-evidence.json#/idle"
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    },
+    "beforeGaps": [
+      "SOOJIN退出与其后合约结束的媒体线索已发现，但CUBE／官方原公告未取得；不据媒体转载或历史关系生成日期事件。",
+      "成员加入、解散、实际换公司仍未知；全员CUBE续约和团名更改不等于经纪公司改变。",
+      "保留历史(G)I-DLE署名；We are i-dle重录集不能映射旧原版作品。",
+      "LATATA日本CD与美国数字商品日期不同；日本CD采用7月31日，保留美国数字7月29日差异。",
+      "Allergy/Girlfriend的已核MV与音源阶段分开；作为专辑音乐载体归并，不另造独立音源日。",
+      "旧Cube续约节点保持hold；本批发行证据不补合同原句。",
+      "未映射到既有作品的载体workIds为空，不新造ID。"
+    ],
+    "afterGaps": [
+      "SOOJIN退出与其后合约结束的媒体线索已发现，但CUBE／官方原公告未取得；不据媒体转载或历史关系生成日期事件。",
+      "成员加入、解散、实际换公司仍未知；全员CUBE续约和团名更改不等于经纪公司改变。",
+      "保留历史(G)I-DLE署名；We are i-dle重录集不能映射旧原版作品。",
+      "LATATA日本CD与美国数字商品日期不同；日本CD采用7月31日，保留美国数字7月29日差异。",
+      "Allergy/Girlfriend的已核MV与音源阶段分开；作为专辑音乐载体归并，不另造独立音源日。",
+      "旧Cube续约节点保持hold；本批发行证据不补合同原句。",
+      "未映射到既有作品的载体workIds为空，不新造ID。"
+    ],
+    "source": {
+      "id": "es-idle-official-recheck-20261025",
+      "url": "https://prtimes.jp/main/html/rd/p/000000059.000124555.html",
+      "publisher": "CUBE ENTERTAINMENT JAPAN",
+      "title": "全员与CUBE续约（官方正文复核）",
+      "sourcePublishedAt": {
+        "value": "2025-05-02",
+        "precision": "day"
+      },
+      "checkedAt": "2026-10-25",
+      "scopeNote": "本轮实际读取的官方正文：昨年12月にメンバー全員がCUBE ENTERTAINMENTと再契約。只确认续约事实与月份；具体签署日和合同生效日未公开。2025年5月2日是回顾稿刊日，不是续约发生日，与更名节点分开。",
+      "evidenceRef": "docs/codex/evidence/20261025-data-completion/timeline-evidence.json#/idle"
+    }
+  },
+  "newjeans": {
+    "eventId": "e-newjeans-attention-mv",
+    "documentPath": "apps/idol-site/data/artist-timelines/newjeans.json",
+    "checkedAt": "2026-10-25",
+    "beforeDocumentSha256": "542a145d0578fbd2ce6c3f7c73a8563a79e79e857ad221ccbc592afe15f21d95",
+    "afterDocumentSha256": "1f3932f210f6259b17475727feb31847fda04c74c38e7633d9063bd7e25f7f7e",
+    "before": {
+      "id": "e-newjeans-attention-mv",
+      "groupId": "recvxyEBDZ9qVl",
+      "eventType": "release",
+      "title": "待核：Attention首支MV公开",
+      "summary": "继承资料保留Attention MV的事件身份；公开行为与首次公开日期尚缺已保存原文。",
+      "scopeNote": "B摘要与中文转述不重新认证为原始MV公开证据；不以音源发行日期替代MV公开日。",
+      "eventDate": null,
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "uncertain",
+      "importance": "supporting",
+      "memberIds": [],
+      "workIds": [
+        "recvxyOz5X2J0A"
+      ],
+      "releaseKey": "newjeans-attention-mv",
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "es-16cf78292046286f",
+          "url": "https://prtimes.jp/main/html/rd/p/000000148.000045862.html",
+          "publisher": "HYBE JAPAN",
+          "title": "首支 MV 公开",
+          "sourcePublishedAt": {
+            "value": "2022-07-22",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-15",
+          "scopeNote": "仅B继承摘要与中文scope，不是MV公开原文；仅保留事件身份线索。",
+          "evidenceRef": "evidence/E02/task05/sources/batch-e--task02--sources--newjeans-attention-b.json"
+        }
+      ],
+      "reviewStatus": "hold",
+      "holdReasons": [
+        "已保存材料只有2022-07-22 · Attention继承摘要，缺当日零时公开MV的原始正文。"
+      ]
+    },
+    "after": {
+      "id": "e-newjeans-attention-mv",
+      "groupId": "recvxyEBDZ9qVl",
+      "eventType": "release",
+      "title": "Attention首支MV公开",
+      "summary": "HYBE JAPAN当日官方稿确认，首支Attention MV于2022年7月22日零时公开。",
+      "scopeNote": "本条仅记录首支MV公开；当日正午Performance MV、8月1日音源及8月8日实体计划是不同节点，不以其中任何日期替代本条。",
+      "eventDate": {
+        "value": "2022-07-22",
+        "precision": "day"
+      },
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "importance": "supporting",
+      "memberIds": [],
+      "workIds": [
+        "recvxyOz5X2J0A"
+      ],
+      "releaseKey": "newjeans-attention-mv",
+      "relatedEventIds": [],
+      "sources": [
+        {
+          "id": "es-16cf78292046286f",
+          "url": "https://prtimes.jp/main/html/rd/p/000000148.000045862.html",
+          "publisher": "HYBE JAPAN",
+          "title": "首支 MV 公开",
+          "sourcePublishedAt": {
+            "value": "2022-07-22",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-15",
+          "scopeNote": "仅B继承摘要与中文scope，不是MV公开原文；仅保留事件身份线索。",
+          "evidenceRef": "evidence/E02/task05/sources/batch-e--task02--sources--newjeans-attention-b.json"
+        },
+        {
+          "id": "es-newjeans-official-recheck-20261025",
+          "url": "https://prtimes.jp/main/html/rd/p/000000148.000045862.html",
+          "publisher": "HYBE JAPAN",
+          "title": "Attention首支MV公开（官方正文复核）",
+          "sourcePublishedAt": {
+            "value": "2022-07-22",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-25",
+          "scopeNote": "本轮实际读取的官方正文：本日（22日）0時に公開したコンテンツ。本条仅记录首支MV公开；当日正午Performance MV、8月1日音源及8月8日实体计划是不同节点，不以其中任何日期替代本条。",
+          "evidenceRef": "docs/codex/evidence/20261025-data-completion/timeline-evidence.json#/newjeans"
+        }
+      ],
+      "reviewStatus": "ready",
+      "holdReasons": []
+    },
+    "beforeGaps": [
+      "个人加入日期未知；初公开五人/当下官网四卡均不是加入或退出公告。",
+      "成员离团、团体解散与经纪主体变化缺本包合格直接声明；未依据官网版权或四卡作结论，未研究法律细节。",
+      "首张EP8月1日音源/8月8日实体目前只保留2022年原计划；How Sweet尚未补得实际发行正文。"
+    ],
+    "afterGaps": [
+      "个人加入日期未知；初公开五人/当下官网四卡均不是加入或退出公告。",
+      "成员离团、团体解散与经纪主体变化缺本包合格直接声明；未依据官网版权或四卡作结论，未研究法律细节。",
+      "首张EP8月1日音源/8月8日实体目前只保留2022年原计划；How Sweet尚未补得实际发行正文。"
+    ],
+    "source": {
+      "id": "es-newjeans-official-recheck-20261025",
+      "url": "https://prtimes.jp/main/html/rd/p/000000148.000045862.html",
+      "publisher": "HYBE JAPAN",
+      "title": "Attention首支MV公开（官方正文复核）",
+      "sourcePublishedAt": {
+        "value": "2022-07-22",
+        "precision": "day"
+      },
+      "checkedAt": "2026-10-25",
+      "scopeNote": "本轮实际读取的官方正文：本日（22日）0時に公開したコンテンツ。本条仅记录首支MV公开；当日正午Performance MV、8月1日音源及8月8日实体计划是不同节点，不以其中任何日期替代本条。",
+      "evidenceRef": "docs/codex/evidence/20261025-data-completion/timeline-evidence.json#/newjeans"
+    }
+  }
+}

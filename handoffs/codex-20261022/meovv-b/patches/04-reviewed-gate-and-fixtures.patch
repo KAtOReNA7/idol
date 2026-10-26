@@ -1,0 +1,54 @@
+diff --git a/scripts/meovv-build-asset-cutover-guards.json b/scripts/meovv-build-asset-cutover-guards.json
+index 03ad58c..81af263 100644
+--- a/scripts/meovv-build-asset-cutover-guards.json
++++ b/scripts/meovv-build-asset-cutover-guards.json
+@@ -138,7 +138,7 @@
+     }
+   },
+   "compiled": {
+-    "status": "pending-full-build-and-independent-review",
++    "status": "independently-reviewed",
+     "carriers": {
+       "dist/client/.vite/manifest.json": {
+         "bytes": 78999,
+diff --git a/tests/meovv-build-asset-audit.test.mjs b/tests/meovv-build-asset-audit.test.mjs
+index a80b9ed..55034d5 100644
+--- a/tests/meovv-build-asset-audit.test.mjs
++++ b/tests/meovv-build-asset-audit.test.mjs
+@@ -13,6 +13,8 @@ function fixture({compiled=false,dist=true}={}){
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'meovv-exact-four-test-'));
+  const put=(name,bytes)=>{const p=path.join(dir,name);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,bytes);};
+  const guards=structuredClone(guard),saveGuard=()=>put('scripts/meovv-build-asset-cutover-guards.json',JSON.stringify(guards));
++ // Fixture review state is explicit; never inherit production review approval.
++ guards.compiled.status='pending-full-build-and-independent-review';
+  for(const name of Object.keys(guards.sourceGuards))put(name,fs.readFileSync(path.join(root,name)));
+  for(const name of Object.keys(guards.evidenceGuards))put('docs/build-assets/'+name,fs.readFileSync(path.join(root,'docs/build-assets',name)));
+  for(const a of manifest.entries)for(const prefix of ['public','readback',...(dist?['dist/client']:[])])put(prefix+(prefix==='readback'?'/'+a.id+'.jpg':a.sourceUrl),fs.readFileSync(path.join(root,'public',a.sourceUrl)));
+@@ -29,13 +31,25 @@ function snapshot(root,prefix=''){
+  const result={};for(const name of fs.readdirSync(path.join(root,prefix))){const relative=path.join(prefix,name),full=path.join(root,relative),stat=fs.lstatSync(full);if(stat.isDirectory())Object.assign(result,snapshot(root,relative));else result[relative]=stat.isSymbolicLink()?'link:'+fs.readlinkSync(full):sha(fs.readFileSync(full));}return result;
+ }
+ function noWrites(f,run,pattern){const before=snapshot(f.dir);assert.throws(run,pattern);assert.deepEqual(snapshot(f.dir),before);}
+-test('production guard remains pending; dry-run requires build, exact pins and real saved bodies',()=>{
+- assert.equal(guard.compiled.status,'pending-full-build-and-independent-review');assert.equal(Object.keys(guard.compiled.carriers).length,16);assert.deepEqual(Object.keys(guard.compiled.carriers).sort(),[...new Set([...guard.compiled.dynamicPathCarriers,...guard.compiled.originalPathCarriers])].sort());
++test('production guard records independently reviewed complete sixteen-carrier pins',()=>{
++ assert.equal(guard.compiled.status,'independently-reviewed');assert.equal(Object.keys(guard.compiled.carriers).length,16);assert.equal(guard.compiled.dynamicPathCarriers.length,16);assert.equal(guard.compiled.originalPathCarriers.length,9);assert.deepEqual(Object.keys(guard.compiled.carriers).sort(),[...new Set([...guard.compiled.dynamicPathCarriers,...guard.compiled.originalPathCarriers])].sort());
++ for(const value of Object.values(guard.compiled.carriers)){assert.ok(Number.isSafeInteger(value.bytes)&&value.bytes>0);assert.match(value.sha256,/^[a-f0-9]{64}$/);}
++});
++test('explicit pending fixture requires build, exact pins and real saved bodies',()=>{
+  const f=fixture({dist:false});try{const before=snapshot(f.dir),result=auditMeovvCutover(f.dir);assert.equal(result.candidates.length,4);assert.equal(result.payloadBytes,6004463);assert.equal(result.mayDelete,false);assert.equal(result.cutoverEnabled,true);assert.equal(result.blockers.length,3);assert.deepEqual(snapshot(f.dir),before);noWrites(f,()=>pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}),/Prune blocked/);}finally{f.dispose();}
+ });
+ test('saved body verification and human incognito evidence remain explicitly distinct',()=>{
+  const f=fixture();try{const result=auditMeovvCutover(f.dir,{readbackDir:f.readbackDir});assert.deepEqual(result.evidence,{ownerBodyBytesVerified:true,anonymousAccessKind:'user-confirmed-incognito-visibility',anonymousBodyVerified:false});assert.equal(result.mayDelete,false);assert.equal(result.blockers.length,1);noWrites(f,()=>pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}),/Prune blocked/);}finally{f.dispose();}
+ });
++test('synthetic reviewed status still fails closed without build, saved bodies or nonempty exact pins',()=>{
++ const cases=[
++  {mutate:f=>fs.rmSync(path.join(f.dir,'dist'),{recursive:true}),pattern:/Reviewed compiled pins without a complete build/},
++  {withoutBodies:true,pattern:/Saved owner-browser response bodies/},
++  {mutate:f=>{f.guards.compiled.carriers={};f.saveGuard();},pattern:/Exact compiled carrier pins/},
++  {mutate:f=>fs.unlinkSync(path.join(f.dir,'dist/server/meovv-compiled-fixture.js')),pattern:/Compiled dynamic inventory changed/},
++ ];
++ for(const item of cases){const f=fixture({compiled:true});try{item.mutate?.(f);noWrites(f,()=>pruneMeovvCutover(f.dir,item.withoutBodies?{}:{readbackDir:f.readbackDir}),item.pattern);}finally{f.dispose();}}
++});
+ test('synthetic reviewed-pin fixture removes exactly four generated copies, retaining source/roster/SOOIN/all other files',()=>{
+  const f=fixture({compiled:true});try{const before=snapshot(f.dir),result=pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}),after=snapshot(f.dir);assert.equal(result.removed.length,4);assert.equal(result.mode,'applied');for(const a of manifest.entries){assert.equal(after['public'+a.sourceUrl],a.sha256);delete before['dist/client'+a.sourceUrl];}assert.deepEqual(after,before);noWrites(f,()=>pruneMeovvCutover(f.dir,{readbackDir:f.readbackDir}));}finally{f.dispose();}
+ });

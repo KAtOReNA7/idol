@@ -1,0 +1,212 @@
+{
+  "version": 1,
+  "relativeTo": "WOOAH-Editorial-Motion-v0 libfile_ce5307ba17fc819181bfb33ab9690f03 v0",
+  "changes": [
+    {
+      "path": "groups/wooah/index.js",
+      "before": {
+        "bytes": 18766,
+        "sha256": "c3514f7ec04d6e286928303e2682cb8771d7390fa228093e73a792a45b0ffe37"
+      },
+      "after": {
+        "bytes": 22976,
+        "sha256": "870d52e388f948e80c7fa2a65fd8bee0a3dcb7fa3bb0b78e85f7e7df5b13209d"
+      }
+    },
+    {
+      "path": "groups/wooah/styles.css",
+      "before": {
+        "bytes": 29634,
+        "sha256": "a3f757b55257659f6c77e808ef2d636b30ae7ba145385a5ac02b1df599b0964f"
+      },
+      "after": {
+        "bytes": 44123,
+        "sha256": "4a362bc635800213197e8956aaa0afca23bf2c2baf16e485842f42212dbd4daa"
+      }
+    }
+  ],
+  "patch": {
+    "path": "wooah-photo-v1-from-v0.patch",
+    "bytes": 51060,
+    "sha256": "5a97db414d1af261a3029b29c2c28e8756ede04082e92722217fbca3838ddb8c"
+  },
+  "actualApplyAndReverse": [
+    {
+      "command": [
+        "git",
+        "apply",
+        "--check",
+        "wooah-photo-v1-from-v0.patch"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "apply",
+        "wooah-photo-v1-from-v0.patch"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "apply",
+        "--reverse",
+        "--check",
+        "wooah-photo-v1-from-v0.patch"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "apply",
+        "--reverse",
+        "wooah-photo-v1-from-v0.patch"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "rawDataAndMediaUnchanged": true,
+  "nonWooahUnchanged": [
+    {
+      "path": "registry.js",
+      "sha256": "2baba1241bb5032eb0d000a4ff1f806cbe47b8ff08f5316abe65f1c443bda119"
+    },
+    {
+      "path": "serve.py",
+      "sha256": "f9b24052e52a660dc2a4e8f4257ce18a0d2c8c88bc819463c9b320b4185d5b20"
+    },
+    {
+      "path": "CONTRACT-API.md",
+      "sha256": "e65902a9e835a3cdf2f46f802800bf7ccc82a50a102aa93a3ce90054557e1c90"
+    },
+    {
+      "path": "HANDOFF-ORIGIN.json",
+      "sha256": "71329f2262e913cff73afee5f41be46815829b8f0b2e99a9d2eb5f82377db692"
+    },
+    {
+      "path": "index.html",
+      "sha256": "86e140b80610f3eaa8c6c89a9249354710eecd46e7f4bc9143664a0f430ce5a5"
+    },
+    {
+      "path": "package.json",
+      "sha256": "1b95d8b833718d52129a74c580b0684b6c1e3111fb2b721669dae50b66595261"
+    },
+    {
+      "path": "app.js",
+      "sha256": "346cb4f47777348d5b77b9fe3fe87e857e0e183744d41aa70499de47d4aaf1cd"
+    },
+    {
+      "path": "shared/helpers.js",
+      "sha256": "b72b7a9c5678809abfc2b3ebc46dac69b4867d14264d8f52b053c6be10136056"
+    },
+    {
+      "path": "shared/IMAGERY-API.md",
+      "sha256": "c922983549e41f96cb479db0c6841d35b9304c160785264113f2424fc702e35c"
+    },
+    {
+      "path": "shared/apply-imagery.js",
+      "sha256": "8bc53dd77758cb690b77c104e4cc6e49ad2d09d4337f6a51f7ecd3cdaa003925"
+    },
+    {
+      "path": "shared/reconcile.js",
+      "sha256": "fa199fc9b363ec4acaae8080898712a493e4b81625904378d02d81bb4f324b54"
+    },
+    {
+      "path": "shared/identity.js",
+      "sha256": "04503f5ed472c808445aadbb6056596b5878fdbdb6824ba71b039abc093e3ed8"
+    },
+    {
+      "path": "shared/imagery-targets.js",
+      "sha256": "2c95e17872e54b7fd21a46508202e054d1b662ecc446e244b85f3e90df2100a7"
+    },
+    {
+      "path": "shared/transition.js",
+      "sha256": "527a66df7238497f1dd6f5bc41903101e1aea9a684b47a9a423689bf1ad6fa0c"
+    },
+    {
+      "path": "shared/imagery-manifest.js",
+      "sha256": "c8fa97b0b25dd60e2d70aaf4d8a6e6a41ff87dd5fd90c8ca677ad72df4f2d60c"
+    },
+    {
+      "path": "shared/router.js",
+      "sha256": "4495c3974cf25309ab61581da31f607add972880369cc950ce02875cfe4ea33a"
+    },
+    {
+      "path": "shared/host.css",
+      "sha256": "f2204d7de32d0a265f366050b06ad63e8ccb0e55d5fe53f29e6e38ba64c856db"
+    },
+    {
+      "path": "shared/lifecycle.js",
+      "sha256": "8336a23d34f3d15d771a404d16e7a230be41ae53fd1fa900fac793c4edcc6337"
+    },
+    {
+      "path": "groups/billlie/asset-map.json",
+      "sha256": "49cffae6a4e71360e5f03bf86a35594337a93be70a37f893a310e4181fffcf9d"
+    },
+    {
+      "path": "groups/billlie/HANDOFF.md",
+      "sha256": "268317654e6661ef7b4a6f52cfc42fe6a745a93ba39d52256c9200d254babc8a"
+    },
+    {
+      "path": "groups/billlie/video-relations.js",
+      "sha256": "aa49ee0a3f5a4ce1496d8421bd54000f766b3a332ec62f911b3be69776d75eef"
+    },
+    {
+      "path": "groups/billlie/data.js",
+      "sha256": "dbd5a2f372aee72e6f09811d9d61375d90cce196221f5ae001003e4d09461fc9"
+    },
+    {
+      "path": "groups/billlie/public-copy.js",
+      "sha256": "f8b4b18085c9c6a3cdf62228db7cc6dbe5671877ef66adc670d7b7a41e845602"
+    },
+    {
+      "path": "groups/billlie/reconciliation-validation.json",
+      "sha256": "ea2282555daaf936b7dfc0c75881ff5b9fcab5786bc4c686fc3c22229450b005"
+    },
+    {
+      "path": "groups/billlie/index.js",
+      "sha256": "b9fc8c128fefdbf27e28539d3fb33894f353b3acb947c7032cd33f2282fbb43a"
+    },
+    {
+      "path": "groups/billlie/styles.css",
+      "sha256": "2f14786997dcbe838cd749cc6bd56b094506007cd1d37c892f12b14a516aad04"
+    },
+    {
+      "path": "groups/billlie/event-preservation-map.json",
+      "sha256": "96b65042e259fac6d32870b7faf5aad13722e999544062ec91604c3d3cb13706"
+    },
+    {
+      "path": "groups/billlie/reconciliation.js",
+      "sha256": "1e68b26c1b8a18f1fd1b6e75e34590a880d9fd08c3b0d4b0838a0908450b55b6"
+    },
+    {
+      "path": "groups/billlie/reconciliation.test.mjs",
+      "sha256": "e8a7173da15874c254dd34f4c11d37dced66349e7a3bbb529babed50563c45ce"
+    },
+    {
+      "path": "groups/billlie/public-content.js",
+      "sha256": "419f658447e6f738a2fe0f50c56c69ab455b89a4560ade6f08ab63be02b5481c"
+    },
+    {
+      "path": "groups/billlie/design-reference.json",
+      "sha256": "3fcca592f4d8ec4f46d4269a923d99dc5b9066d0c070c9c5c3177e63aa2c078d"
+    },
+    {
+      "path": "groups/billlie/asset-checks.json",
+      "sha256": "c5ae5d6baaea46576fda1b6409746286d071da0d84804250e4bd5f362ec209f0"
+    },
+    {
+      "path": "groups/billlie/RECONCILIATION.md",
+      "sha256": "ccec1dc9673369ab7c888b3cad0e2bce03315a580638a3c43ae24a6f4446d109"
+    }
+  ],
+  "browserTestPerformed": false,
+  "figmaWriter": "root only; new image-backed context read before source adaptation",
+  "lastRefinement": [
+    "WOOAH image open button follows the image in normal flow, right aligned, without changing the button or media handlers.",
+    "Only WOOYEON exact memberId recvxyICzHzhWr receives a display-only newline after the existing semicolon; original profile text and canonical data are unchanged."
+  ]
+}

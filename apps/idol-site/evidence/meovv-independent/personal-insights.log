@@ -1,0 +1,198 @@
+Strict TypeScript feature check passed. SSR/source tests follow; browser checks are separate.
+SSR-only omitted style: components/personal-insights/personal-insights.css
+TAP version 13
+# Subtest: SSR leaves private fields and birthdays unread across every input table
+ok 1 - SSR leaves private fields and birthdays unread across every input table
+  ---
+  duration_ms: 43.043944
+  type: 'test'
+  ...
+# Subtest: SSR empty state exposes separate domains and honest empty values
+ok 2 - SSR empty state exposes separate domains and honest empty values
+  ---
+  duration_ms: 4.858567
+  type: 'test'
+  ...
+# Subtest: SSR zero appears in the MV summary and independent member cells, not as missing
+ok 3 - SSR zero appears in the MV summary and independent member cells, not as missing
+  ---
+  duration_ms: 22.931416
+  type: 'test'
+  ...
+# Subtest: SSR disabled state disables native controls and never calls drilldown callbacks
+ok 4 - SSR disabled state disables native controls and never calls drilldown callbacks
+  ---
+  duration_ms: 7.331195
+  type: 'test'
+  ...
+# Subtest: SSR without host callbacks renders identities as text and invents no navigation URLs
+ok 5 - SSR without host callbacks renders identities as text and invents no navigation URLs
+  ---
+  duration_ms: 7.347109
+  type: 'test'
+  ...
+# Subtest: SSR distinguishes wholly invalid member scores from genuinely empty scores
+ok 6 - SSR distinguishes wholly invalid member scores from genuinely empty scores
+  ---
+  duration_ms: 3.452151
+  type: 'test'
+  ...
+# Subtest: SSR first page bounds all three data lists at ten items without simulating clicks
+ok 7 - SSR first page bounds all three data lists at ten items without simulating clicks
+  ---
+  duration_ms: 7.634011
+  type: 'test'
+  ...
+# Subtest: source boundary keeps native controls and local analysis; this is not a mounted behavior test
+ok 8 - source boundary keeps native controls and local analysis; this is not a mounted behavior test
+  ---
+  duration_ms: 56.551458
+  type: 'test'
+  ...
+# Subtest: controlled view state renders restored stage domain, pagination and member drilldown
+ok 9 - controlled view state renders restored stage domain, pagination and member drilldown
+  ---
+  duration_ms: 8.72403
+  type: 'test'
+  ...
+# Subtest: restored deleted member and out-of-range pages render honest fallback immediately
+ok 10 - restored deleted member and out-of-range pages render honest fallback immediately
+  ---
+  duration_ms: 4.330272
+  type: 'test'
+  ...
+# Subtest: actual host stage binding adapter rejects missing, mismatched and invalid bindings
+ok 11 - actual host stage binding adapter rejects missing, mismatched and invalid bindings
+  ---
+  duration_ms: 6.946197
+  type: 'test'
+  ...
+# Subtest: validScore preserves zero and accepts only finite numeric values in [0,10]
+ok 12 - validScore preserves zero and accepts only finite numeric values in [0,10]
+  ---
+  duration_ms: 0.385199
+  type: 'test'
+  ...
+# Subtest: MV statistics distinguish missing and invalid fields and use floor bins
+ok 13 - MV statistics distinguish missing and invalid fields and use floor bins
+  ---
+  duration_ms: 4.0356
+  type: 'test'
+  ...
+# Subtest: MV and stage have separate scores; stage requires a stage and exact adapter approval
+ok 14 - MV and stage have separate scores; stage requires a stage and exact adapter approval
+  ---
+  duration_ms: 8.912313
+  type: 'test'
+  ...
+# Subtest: a throwing stage adapter fails closed without throwing from analysis
+ok 15 - a throwing stage adapter fails closed without throwing from analysis
+  ---
+  duration_ms: 0.400522
+  type: 'test'
+  ...
+# Subtest: ineligible stage scores never enter missing or invalid counts
+ok 16 - ineligible stage scores never enter missing or invalid counts
+  ---
+  duration_ms: 0.443367
+  type: 'test'
+  ...
+# Subtest: multi-group works count once globally and once per distinct canonical group
+ok 17 - multi-group works count once globally and once per distinct canonical group
+  ---
+  duration_ms: 0.700143
+  type: 'test'
+  ...
+# Subtest: watch states use exact source strings and an honest known-state denominator
+ok 18 - watch states use exact source strings and an honest known-state denominator
+  ---
+  duration_ms: 3.07914
+  type: 'test'
+  ...
+# Subtest: revisit lists preserve versions, use raw null for MV pending reviews, and never infer stage watching
+ok 19 - revisit lists preserve versions, use raw null for MV pending reviews, and never infer stage watching
+  ---
+  duration_ms: 2.239187
+  type: 'test'
+  ...
+# Subtest: member axes have independent denominators; all-invalid records remain diagnosed
+ok 20 - member axes have independent denominators; all-invalid records remain diagnosed
+  ---
+  duration_ms: 10.282354
+  type: 'test'
+  ...
+# Subtest: duplicate IDs are quarantined; raw placeholder diagnostics may overlap duplicate records
+ok 21 - duplicate IDs are quarantined; raw placeholder diagnostics may overlap duplicate records
+  ---
+  duration_ms: 0.577409
+  type: 'test'
+  ...
+# Subtest: a duplicated group or member is not selected arbitrarily for a canonical relationship
+ok 22 - a duplicated group or member is not selected arbitrarily for a canonical relationship
+  ---
+  duration_ms: 0.323407
+  type: 'test'
+  ...
+# Subtest: empty catalogs produce zeros and null means without invented comparisons
+ok 23 - empty catalogs produce zeros and null means without invented comparisons
+  ---
+  duration_ms: 1.096159
+  type: 'test'
+  ...
+# Subtest: frozen inputs remain intact and refreshing a catalog recomputes the same IDs
+ok 24 - frozen inputs remain intact and refreshing a catalog recomputes the same IDs
+  ---
+  duration_ms: 0.427894
+  type: 'test'
+  ...
+# Subtest: analysis never reads personal notes, memories, profiles, favorites, or sources
+ok 25 - analysis never reads personal notes, memories, profiles, favorites, or sources
+  ---
+  duration_ms: 0.619782
+  type: 'test'
+  ...
+# Subtest: deterministic generated catalogs satisfy count, range, and identity invariants
+ok 26 - deterministic generated catalogs satisfy count, range, and identity invariants
+  ---
+  duration_ms: 111.071742
+  type: 'test'
+  ...
+# Subtest: score boundaries retain tiny positive values and distinguish bins immediately below 9 and 10
+ok 27 - score boundaries retain tiny positive values and distinguish bins immediately below 9 and 10
+  ---
+  duration_ms: 5.821284
+  type: 'test'
+  ...
+# Subtest: permuting source works does not alter aggregate or per-group statistics
+ok 28 - permuting source works does not alter aggregate or per-group statistics
+  ---
+  duration_ms: 16.282057
+  type: 'test'
+  ...
+# Subtest: relationship order and repeated identical links never pick an arbitrary ambiguous entity
+ok 29 - relationship order and repeated identical links never pick an arbitrary ambiguous entity
+  ---
+  duration_ms: 0.727835
+  type: 'test'
+  ...
+# Subtest: one-sided rating associations are excluded even when the other direction is populated
+ok 30 - one-sided rating associations are excluded even when the other direction is populated
+  ---
+  duration_ms: 0.25982
+  type: 'test'
+  ...
+# Subtest: 5000 distinct synthetic works and ratings retain exact counts without a timing claim
+ok 31 - 5000 distinct synthetic works and ratings retain exact counts without a timing claim
+  ---
+  duration_ms: 263.485155
+  type: 'test'
+  ...
+1..31
+# tests 31
+# suites 0
+# pass 31
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 961.519617

@@ -1,0 +1,16 @@
+.ri-placeholder{display:grid;place-items:center;gap:.5rem;width:100%;min-height:8rem;padding:1rem;box-sizing:border-box;text-align:center;color:inherit;background:color-mix(in srgb,currentColor 6%,transparent)}
+.ri-fallback{max-width:100%;box-sizing:border-box;overflow-wrap:anywhere}
+.ri-retry{display:inline-flex;align-items:center;justify-content:center;min-height:44px;max-width:100%;padding:.5rem .8rem;border:1px solid currentColor;border-radius:.35rem;color:inherit;background:transparent;font:inherit;line-height:1.3;text-align:center;white-space:normal;overflow-wrap:anywhere;cursor:pointer}
+.ri-retry:disabled{opacity:.55;cursor:wait}
+.ri-retry:focus-visible,.ri-recovery summary:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.ri-recovery{margin:1rem 0;padding:.75rem 1rem;border:1px solid currentColor;border-radius:.35rem;color:inherit;font-size:.875rem}
+.ri-recovery summary{min-height:44px;display:list-item;align-content:center;cursor:pointer}
+.ri-recovery p{margin:.5rem 0;line-height:1.6}
+.ri-recovery ul{list-style:none;padding:0;margin:.5rem 0;display:grid;gap:.5rem}
+.ri-recovery li{display:flex;align-items:center;justify-content:space-between;gap:.75rem;min-width:0;overflow-wrap:anywhere}
+.ri-recovery li>span{min-width:0}
+@media(max-width:390px){.ri-recovery li{align-items:stretch;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){.ri-placeholder,.ri-fallback,.ri-retry,.ri-recovery{animation:none;transition:none;scroll-behavior:auto}}
+
+/* Native image remains a direct child; clipping contains reviewed border zoom. */
+:where(a,div,button,figure,span):has(>img[data-video-cover-cropped]){overflow:hidden}

@@ -1,0 +1,38 @@
+✔ actual ResultsView programmatic open focuses matching enabled card before host captures navigation (140.933723ms)
+✔ actual LibraryBrowser retains full query cache across new navigation filter objects and page sizes (235.296282ms)
+✔ actual ResultsView SSR mounts only requested 24/48 rows on deep pages (86.741973ms)
+✔ card slot receives original complete sequence, never a page-sized replacement (2.020343ms)
+✔ loading, error, empty library and no-match states are honest and do not render stale cards (4.835038ms)
+✔ SSR restoration does not invoke host or steal focus; client layout effect handles ready gate (1.869297ms)
+✔ actual read-only SequencePreview remains bounded and states original total/current/next (4.178132ms)
+✔ queue preview displays missing/unavailable/filtered and refuses unknown current continuation (2.456888ms)
+✔ pending-save host guard disables exposed next button despite available successor (0.896956ms)
+✔ bounded 1-based pagination covers empty/out-of-range/invalid input and 24/48 only (3.24397ms)
+✔ anchor wins over page and legacy limit; offsets preserved; unavailable anchor falls back to clamped page/search (0.435834ms)
+✔ legacy DOM anchor prefix resolves only after literal business ID lookup (0.346671ms)
+✔ all queue/watch/stage/sort combinations execute the existing semantic oracle on frozen data (497.329943ms)
+✔ public names normalize and combine; group/generation/unknown relations preserve oracle parity (60.259223ms)
+✔ clear changes exactly its dimension, preserving limit/company and every other condition (1.135715ms)
+✔ duplicate identity uses first record, never song name; placeholder and no URL remain distinct (0.498748ms)
+✔ zero is scored; unknown watched is not unwatched; ties and invalid dates use stable existing sorting (0.572529ms)
+MODEL_PERFORMANCE {"size":100,"parityCases":48,"firstMeasuredAfterParityMs":1.3982389999999896,"model":{"samplesMs":[0.9689250000000129,0.9884640000000218,0.9198509999999942,0.9091949999999542,1.0107080000000224,1.6749750000000176,0.7448279999999841],"medianMs":0.9689250000000129,"p95Ms":1.6749750000000176},"existingOracle":{"samplesMs":[1.9444990000000075,0.8701169999999934,1.373392000000024,1.217647999999997,0.8860499999999547,0.7045279999999821,1.1562549999999874],"medianMs":1.1562549999999874,"p95Ms":1.9444990000000075},"initialRows":24,"deepPageRows":2}
+MODEL_PERFORMANCE {"size":1000,"parityCases":48,"firstMeasuredAfterParityMs":6.402421000000004,"model":{"samplesMs":[4.516579999999976,6.569913000000042,7.298266000000012,4.748538999999937,4.178563000000054,4.573735999999826,4.525743999999804],"medianMs":4.573735999999826,"p95Ms":7.298266000000012},"existingOracle":{"samplesMs":[4.350110000000086,6.701310000000035,3.9737749999999323,4.065954000000033,5.262099000000035,4.087506000000076,4.049479999999903],"medianMs":4.087506000000076,"p95Ms":6.701310000000035},"initialRows":24,"deepPageRows":21}
+MODEL_PERFORMANCE {"size":5000,"parityCases":48,"firstMeasuredAfterParityMs":25.960692999999992,"model":{"samplesMs":[27.9423569999999,26.61148000000003,27.26665299999968,26.251930000000357,25.424818000000414,24.193700000000263,25.842555000000175],"medianMs":26.251930000000357,"p95Ms":27.9423569999999},"existingOracle":{"samplesMs":[38.40558599999986,23.857274999999845,23.97083500000008,23.831646999999975,25.144608000000062,26.152670999999827,25.175594000000274],"medianMs":25.144608000000062,"p95Ms":38.40558599999986},"initialRows":24,"deepPageRows":9}
+✔ SYNTHETIC 100: full order/facets parity, page bounds and raw performance (127.044051ms)
+✔ SYNTHETIC 1000: full order/facets parity, page bounds and raw performance (677.556067ms)
+✔ SYNTHETIC 5000: full order/facets parity, page bounds and raw performance (2519.021967ms)
+✔ full original positions, availability states, member links and actual next oracle survive frozen refresh (4.630271ms)
+✔ sequence order never re-sorts after scores change; deleted current retains original position (1.471429ms)
+✔ duplicate catalog IDs retain first; malformed duplicate session IDs retain positions and only actual next/current slot flags (1.131789ms)
+✔ actual proposed hook keeps restored page in React entry and history after takeover/rerender (53.201317ms)
+✔ actual hook page/size survives detail, next, Back and Forward with original full sequence (39.157975ms)
+✔ actual hook still rejects dirty and pending navigation, preserving current route and preferences (35.429117ms)
+✔ proposed readEntry accepts legacy limit and valid navigation paging but rejects malformed values (0.990557ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3638.380274

@@ -1,0 +1,434 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+  "scope": "Follow-up on the 19 remaining public statistics gaps only; no baseline/UI mutation.",
+  "baseCommit": "0801fc366cb385375f6d68e2495a73ee07c13831",
+  "baselineFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+  "baselineSha256": "0dd87fb50a9a487ac4a83a2b391000f4ba1ea3869fd6fe4cf4edfe204ec01a63",
+  "summary": {
+    "reviewedGaps": 19,
+    "socialGapsReviewed": 6,
+    "salesGapsReviewed": 9,
+    "winsGapsReviewed": 4,
+    "readyDeltas": 1,
+    "confirmedZeroDeltas": 1,
+    "newPositiveValueDeltas": 0,
+    "remainingUnknownAfterSuggestedDelta": 18,
+    "remainingSocialUnknown": 6,
+    "remainingSalesUnknown": 9,
+    "remainingWinsUnknown": 3
+  },
+  "deltas": [
+    {
+      "slug": "xg",
+      "groupName": "XG",
+      "metric": "wins",
+      "platform": null,
+      "readyForIntegration": true,
+      "expectedBefore": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable"
+      },
+      "proposedAfter": {
+        "observedValue": 0,
+        "displayValue": 0,
+        "status": "confirmed-zero",
+        "unit": "次",
+        "title": "打歌一位",
+        "scope": "韩国音乐节目一位；Soridata具名艺人页快照明确记录0，不含年末奖。",
+        "asOf": null,
+        "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+        "sourceUrl": "https://soridata.com/artists/XG.html",
+        "sourceTitle": "Soridata · XG · Music Show Awards",
+        "sources": [
+          {
+            "url": "https://soridata.com/artists/XG.html",
+            "title": "Soridata · XG · Music Show Awards",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+            "kind": "third-party-public"
+          }
+        ],
+        "notes": [
+          "此次为新的具名艺人统计页，明确显示Music Show Awards 2006+: 0；页面含2026-09-03最新发行记录，区别于上一轮1.4年前旧awards缓存。",
+          "确认范围仅为该公开来源快照；页面未给该计数独立的统计截至日，因此asOf=null，checkedAt不代表实时统计。",
+          "没有依据此页修改XG销量；其物理销量覆盖与本项目既有来源不同。"
+        ],
+        "evidence": {
+          "kind": "explicit-source-zero",
+          "observedText": "Music Show Awards 2006+: 0",
+          "sourcePageLastReleaseDate": "2026-09-03",
+          "pageCountAsOf": null,
+          "retrievalMethod": "public-web-open",
+          "sourceFreshnessEvidence": "搜索工具将该艺人页标为三周内抓取；页内发行日期为2026-09-03。该信息仅说明来源页较新，不等于一位统计截至日。",
+          "previousStatus": "unavailable",
+          "previousObservedValue": null
+        }
+      },
+      "reason": "新艺人页给出明确零记录且有2026年内容锚点，满足与既有确认零相同的证据口径；不作为实时平台统计。"
+    }
+  ],
+  "checks": [
+    {
+      "slug": "genblue",
+      "groupName": "GENBLUE",
+      "metric": "social",
+      "platform": "x",
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "具名J-enta页面仍为0/0且无Last update，不是确认零。新查SocialBlade不可读取；官方公开follow-button端点返回200空体，没有人数。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://www.j-enta.com/en/artist/752/GENBLUE",
+        "https://socialblade.com/twitter/user/genblue_ten",
+        "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=GENBLUE_ten,vvup_official,GIRLSETofficial,everglow_offcl,cherrybullet"
+      ],
+      "rejectedCandidates": [
+        {
+          "value": 0,
+          "sourceUrl": "https://www.j-enta.com/en/artist/752/GENBLUE",
+          "reason": "缺更新时间，符合来源缺数占位，不能认定真实0"
+        }
+      ]
+    },
+    {
+      "slug": "vvup",
+      "groupName": "VVUP",
+      "metric": "social",
+      "platform": "x",
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "新查未得到带时间的账号人数；公开follow-button端点空体。搜索仍落到30K无日期第三方关联卡，不复用。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://linktr.ee/vvup_official",
+        "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=GENBLUE_ten,vvup_official,GIRLSETofficial,everglow_offcl,cherrybullet"
+      ],
+      "rejectedCandidates": [
+        {
+          "value": 30000,
+          "reason": "无日期第三方关联卡，上一轮已排除；未重新视为当前观察"
+        }
+      ]
+    },
+    {
+      "slug": "vcha",
+      "groupName": "VCHA",
+      "metric": "social",
+      "platform": "x",
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "GIRLSETofficial身份继续成立，但没有带日期的可靠人数；公开follow-button端点空体。后续品牌人数不能冒充VCHA历史人数。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://socialcounts.org/youtube-video-live-view-count/iQzBz-JV2zg",
+        "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=GENBLUE_ten,vvup_official,GIRLSETofficial,everglow_offcl,cherrybullet"
+      ],
+      "rejectedCandidates": [
+        {
+          "value": 38000,
+          "reason": "无日期第三方关联卡，未采纳"
+        }
+      ]
+    },
+    {
+      "slug": "everglow",
+      "groupName": "EVERGLOW",
+      "metric": "social",
+      "platform": "x",
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "新查询只得到11K无日期Instalker关联卡；公开follow-button端点空体，不将旧官方账号数移植。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://www.instalker.org/mybstrvv",
+        "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=GENBLUE_ten,vvup_official,GIRLSETofficial,everglow_offcl,cherrybullet"
+      ],
+      "rejectedCandidates": [
+        {
+          "value": 11000,
+          "reason": "无日期第三方关联卡；没有当前账号直接计数观察"
+        }
+      ]
+    },
+    {
+      "slug": "everglow",
+      "groupName": "EVERGLOW",
+      "metric": "social",
+      "platform": "instagram",
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "HypeAuditor/SocialBlade新路径不可读取；Instastatistics搜索缓存89,829已过时且无数值时间。实际公开HTTP200页面仍为加载壳，未包含计数/更新时间。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://hypeauditor.com/instagram/everglow.offcl/",
+        "https://socialblade.com/instagram/user/everglow.offcl",
+        "https://instastatistics.com/everglow.offcl"
+      ],
+      "rejectedCandidates": [
+        {
+          "value": 89829,
+          "sourceUrl": "https://instastatistics.com/everglow.offcl",
+          "reason": "搜索缓存无统计时间；实际页面无值，不冒称当前值"
+        }
+      ]
+    },
+    {
+      "slug": "cherrybullet",
+      "groupName": "Cherry Bullet",
+      "metric": "social",
+      "platform": "x",
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "新查SocialBlade不可读取，公开follow-button端点空体。Wikidata带日期的记录均属历史；其页面编辑于2026不等于人数在2026更新。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://socialblade.com/twitter/user/cherrybullet",
+        "https://www.wikidata.org/wiki/Q59325270",
+        "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=GENBLUE_ten,vvup_official,GIRLSETofficial,everglow_offcl,cherrybullet"
+      ],
+      "rejectedCandidates": [
+        {
+          "value": 187000,
+          "reason": "无日期第三方关联卡，上一轮已排除；未使用"
+        }
+      ]
+    },
+    {
+      "slug": "badvillain",
+      "groupName": "BADVILLAIN",
+      "metric": "sales",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "ChartMasters是流媒体等价专辑量与流媒体指标；报道仅为早期OVERSTEP单张/首周数据。均不是本团累计实体唱片销量，维持未知。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://chartmasters.org/artist/badvillain/",
+        "https://www.koreaboo.com/news/kpop-rookie-girl-group-badvillain-surpasses-newjeans-records-fails-impress-fans/"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "vvup",
+      "groupName": "VVUP",
+      "metric": "sales",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "英文检索存在同缩写企业销量噪声；韩文新闻的百万销量属于同场其他男团。没有找到VVUP自身可核查累计。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://news.nate.com/view/20260511n03761",
+        "https://sports.donga.com/ent/article/all/20260511/133895847/1"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "bewave",
+      "groupName": "BEWAVE",
+      "metric": "sales",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "找到Be your Wave专辑页面及初动表入口，但单张首周/日数据不等于BEWAVE全发行累计；没有合格团体累计。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://namu.moe/w/Be%20your%20Wave"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "geenius",
+      "groupName": "Geenius",
+      "metric": "sales",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "英文结果混入同名媒体公司的营业收入；韩文精确检索未找到本团累计。原Soridata缺销量记录仍不能作真实0。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://soridata.com/artists/Geenius.html"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "tracer",
+      "groupName": "TRACER",
+      "metric": "sales",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "英文检索主要为同名韩剧OST，与本团无关；韩文团名检索只找到艺人资料，没有累计销量。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://www.kpopalbums.com/products/tracer-mbc-drama-ost",
+        "https://aimcontents.com/"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "witchx",
+      "groupName": "W!TCHX",
+      "metric": "sales",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "英韩文精确团名检索只找到艺人资料及新人品牌排名，未得团体累计；不把其他同文艺人销量移植。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://aimcontents.com/en/"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "spia",
+      "groupName": "SPIA",
+      "metric": "sales",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "韩文检索得到Soridata艺人页，但没有可信累计数字；未通过缺榜推断真实0。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://soridata.com/ko/artists/SPIA.html"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "udtt",
+      "groupName": "UDTT",
+      "metric": "sales",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "确认School Rush及2026-07-09 VIPER实体发行与零售活动；商品页面说计入榜单，但未提供实际售出数量。售罄/商品价格/单张初动栏均不作团体累计。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://www.makestar.com/product/10385",
+        "https://www.kpopalbums.com/products/udtt-viper-2nd-single-album",
+        "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=396816303"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "vcha",
+      "groupName": "VCHA",
+      "metric": "sales",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "未找到VCHA时期可靠累计实体数字；不将GIRLSET后续CHAT实体产品或其销量归给VCHA历史作品。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://shop.girlset.com/"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "genblue",
+      "groupName": "GENBLUE",
+      "metric": "wins",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "KPopDB有成员/作品页与ACT LIKE THAT节目分数，但空获胜表不是明确0，节目积分不是一位次数；Soridata具名页不可读取。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://www.kpopdb.net/en/artist/752/GENBLUE",
+        "https://www.kpopdb.net/en/artist/696/song.php?a=752&s=2840",
+        "https://soridata.com/artists/GENBLUE.html"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "tracer",
+      "groupName": "TRACER",
+      "metric": "wins",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "KPopDB资料页没有可用的一位合计且成立日期出现当前日期异常；Soridata具名页不可读取。未用空表认定0。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://www.kpopdb.net/en/artist/522/TRACER",
+        "https://soridata.com/artists/TRACER.html"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "vcha",
+      "groupName": "VCHA",
+      "metric": "wins",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "retain-unavailable-zero",
+      "reason": "找到的没有获胜叙述为早期讨论；后续GIRLSET演出不证明获胜或VCHA时期总数；Soridata旧品牌具名页不可读取。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://board.twicehub.com/News/46",
+        "https://soridata.com/artists/VCHA.html"
+      ],
+      "rejectedCandidates": []
+    },
+    {
+      "slug": "xg",
+      "groupName": "XG",
+      "metric": "wins",
+      "platform": null,
+      "baselineStatus": "unavailable",
+      "baselineObservedValue": null,
+      "baselineDisplayValue": 0,
+      "recommendation": "integrate-confirmed-zero-snapshot",
+      "reason": "新艺人页给出明确零记录且有2026年内容锚点，满足与既有确认零相同的证据口径；不作为实时平台统计。",
+      "checkedAt": "2026-10-25T17:24:50.537464+00:00",
+      "sourcesChecked": [
+        "https://soridata.com/artists/XG.html",
+        "https://www.kpopdb.net/en/artist/512/XG"
+      ],
+      "rejectedCandidates": []
+    }
+  ],
+  "methodLimitations": [
+    "公开follow-button接口普通无认证请求返回HTTP200空体，未推定任何账号真实人数为0。",
+    "HypeAuditor/SocialBlade页面不可用后未重复绕过；gayo.wiki robots阻止后停止该来源。",
+    "不把搜索引擎抓取时间当作数值统计时间；不把无日期关联卡、旧账号数、首周销量、流媒体等价销量或同文其他艺人数值用于填充。"
+  ]
+}

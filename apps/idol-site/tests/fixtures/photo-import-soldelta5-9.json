@@ -1,0 +1,1037 @@
+{
+  "schema": "photo-import-soldelta5-integration-v1",
+  "candidateVersion": "mv-look.20261019.soldelta5",
+  "reviewDecision": "independently_accepted_exact_nine_with_five_controlled_successor_edges",
+  "reviewedInputHashes": {
+    "proposed-append-candidates.json": "20887b5c91f9ba73e5f8b529b009442bd053f9a0f0e97f587ab4188c3b8ae5d4",
+    "proposed-append-proof-files.json": "3d4159db91279b52cf53d16323c4b60bcc8143ce41b8197b5fa8edd0851cd6df",
+    "proposed-nxde-controlled-successors.json": "7ac00f7e75a1f7bbaa585b05d7ab4a6b9b3eec71128e8d7953c0b7c499b3a7c4",
+    "proposed-upload-paths.json": "a479b1184c64d1f35c3b0b0c58fd508c6739bf4572c73471c5da6e627a713476",
+    "proposal-summary.json": "66a874a6f1fc10d5e3292bbc9e372ba214e51a35813cb294f14f77bedd19915d",
+    "server-proposal-validation.json": "0273b7855998743b26fe7f5414655eeac8cb2191f1478a8d04d3beb66e7abcc5",
+    "independent-server-proposal-validation.json": "d6b2398aa4726197d35ad936eb581cb54c5127dd4b6e1f3a53ecec838149ed1e"
+  },
+  "oldRegistrySourceSHA256": "1449c0dcb5e2175bd0afd4bc251c83fc519c6fb8ecbacde9b42191f87db57114",
+  "legacyRegistrySourceSHA256": "9ac69b04c345ad832c0f1a54da5528a4292f6742a06edda260c4fb5a63da0fed",
+  "summary": {
+    "appendBefore": 186,
+    "legacy": 20,
+    "appendAfter": 195,
+    "allAfter": 215,
+    "newCandidates": 9,
+    "normalAppends": 4,
+    "controlledSuccessors": 5,
+    "totalNewBytes": 5720007,
+    "totalRegistryBytes": 78253318,
+    "uniqueReviewedProofFiles": 44,
+    "retainedUniqueProofFiles": 43
+  },
+  "entries": [
+    {
+      "assetId": "fromis9-supersonic-seoyeon-dispatch-2300080-delta5",
+      "qualityTier": "clear_main_published_source",
+      "integrationKind": "normal_append",
+      "candidate": {
+        "id": "recvxBAlQAjrj6:mv-look.20261019.soldelta5:16525c7463a99573d850750e964655596763dda18f23d3e16f9990becd801f71",
+        "ratingId": "recvxBAlQAjrj6",
+        "workId": "recvxyOz5XKR8M",
+        "memberId": "recvxyICzHhcJq",
+        "memberName": "李瑞渊（LEE SEOYEON）",
+        "song": "Supersonic",
+        "version": "韩文原版",
+        "videoId": "0LiQp7y8Wwc",
+        "fileName": "0LiQp7y8Wwc-lee-seoyeon-mv-look-delta5.jpg",
+        "sha256": "16525c7463a99573d850750e964655596763dda18f23d3e16f9990becd801f71",
+        "byteLength": 1619011,
+        "mime": "image/jpeg",
+        "width": 3000,
+        "height": 2000,
+        "kind": "mv_look_photo",
+        "mode": "append-look-preserve-reference",
+        "candidateVersion": "mv-look.20261019.soldelta5",
+        "evidenceId": "b04c44fe5e61d001fb698966ab78c977f89aa13e0aa8b87b52a41cfcabadc2cd",
+        "ownerScope": "current-native-project-owner",
+        "decodedPixelsVerified": true,
+        "timestampSeconds": null,
+        "verifiedAt": "2026-10-19T09:43:50.326698+00:00",
+        "identityBasis": "source_named",
+        "sourceIdentityName": "이서연",
+        "identityEvidence": "The current Dispatch article contains the exact data-il image URL immediately followed by the literal member-name caption. Full original byte fragment was found unchanged in freshly fetched publisher HTML; freshly fetched image SHA matches delivery. No filename or facial inference.",
+        "identitySelector": "article > p.dp-image-container img[data-il] immediately followed by p > strong",
+        "sourceSnapshotSha256": "82a6839db5ab2963d0ccb4fd7a958cde871bd5f729013d06243b8b5dbbeb1124",
+        "sourcePageUrl": "https://www.dispatch.co.kr/2300080",
+        "sourceImageUrl": "https://dispatch.cdnser.be/cms-content/uploads/2024/07/27/8e7b6527-97fc-4e0c-8eff-23250c146a64.jpg",
+        "sourceName": "Dispatch · HEAT 概念写真",
+        "sourceCredit": "PLEDIS Entertainment official HEAT published photograph via Dispatch; original Supersonic/HEAT markings intact.",
+        "lookBasis": "exact_mv_visual_match",
+        "lookEvidence": "The source-named photograph shows a white ribbed cropped camisole with dark red trim/straps, long loose dark hair, distressed wide full-length blue jeans and red/white shoes. Freshly reproduced frame n75 shows the matching combined neckline/trim, cropped hem, hair, full-length denim and shoe colors on the center-front figure. The seated photo and moving front view differ in pose; no exact earring, seam, tiny distress placement, shoe-brand or hair-strand identity claim is made. Fresh public 13-second fragment has SHA 4ba90dceb7438ff155e3737434343671c8a38f9f7e3438b00f71e28305e254e7; its frame PNG reproduces byte-for-byte. Water-dance set/costume cohort matches the original-MV still published in the same current Tistory article containing the precise 0LiQp7y8Wwc embed. This is a combined evidence bridge, not an assertion that Tenor supplies the YouTube ID.",
+        "lookEvidenceUrl": "https://tenor.com/view/fromis9-supersonic-kpop-fromis-9-flover-gif-9632938716979152991",
+        "lookEvidenceSelector": "posted original 13-second fragment decoded frame index 75, relative PTS 2.500s, original498×374; same-article Tistory water-stage still plus iframe[src=\"https://www.youtube.com/embed/0LiQp7y8Wwc\"]",
+        "lookEvidenceSnapshotSha256": "f49a651d1e7ecf6a147b974dfa701f3da9bbcce70dcf5f83882e3d3ae3471abc"
+      },
+      "originalFile": "tests/fixtures/photo-soldelta5-evidence/16525c7463a99573d850750e964655596763dda18f23d3e16f9990becd801f71.jpg",
+      "proofRecord": "tests/fixtures/photo-soldelta5-evidence/b04c44fe5e61d001fb698966ab78c977f89aa13e0aa8b87b52a41cfcabadc2cd.json",
+      "sourceIdentitySnapshot": "tests/fixtures/photo-soldelta5-evidence/82a6839db5ab2963d0ccb4fd7a958cde871bd5f729013d06243b8b5dbbeb1124.html",
+      "lookEvidenceSnapshot": "tests/fixtures/photo-soldelta5-evidence/f49a651d1e7ecf6a147b974dfa701f3da9bbcce70dcf5f83882e3d3ae3471abc.png",
+      "evidenceFiles": [
+        "tests/fixtures/photo-soldelta5-evidence/82a6839db5ab2963d0ccb4fd7a958cde871bd5f729013d06243b8b5dbbeb1124.html",
+        "tests/fixtures/photo-soldelta5-evidence/460bfa3aafb63a75793201dec4a49b592203202c013bc037ac9a535eba0ce198.html",
+        "tests/fixtures/photo-soldelta5-evidence/f49a651d1e7ecf6a147b974dfa701f3da9bbcce70dcf5f83882e3d3ae3471abc.png",
+        "tests/fixtures/photo-soldelta5-evidence/7b8121b480eb44df586cf94e6b92ac95d49084915200497b92474e78987ce384.html",
+        "tests/fixtures/photo-soldelta5-evidence/1ca973fd4294aecf94e4130da75b0314f38b51a18b7581fac88aef3e8ee25244.png",
+        "tests/fixtures/photo-soldelta5-evidence/427db582cba7be2de21abce15bd5c900d4693ea615a1407f39ebf5c3065cb893.json",
+        "tests/fixtures/photo-soldelta5-evidence/93c54a7174851f93805a62c031ae04498043894c076c368804607b78d85f0e8b.json",
+        "tests/fixtures/photo-soldelta5-evidence/4bd6f4b4d484a551a418f55dec06f5105ab71621bc556aa450fb9e2a8ee8d46b.json",
+        "tests/fixtures/photo-soldelta5-evidence/b04c44fe5e61d001fb698966ab78c977f89aa13e0aa8b87b52a41cfcabadc2cd.json"
+      ],
+      "displayConstraints": [
+        "Keep complete original published bytes and watermark. Do not label camera-original or MV-set photography.",
+        "Keep original index-0 reference, unrelated attachments, ratings, notes and watch state.",
+        "Normal append to existing exact tuple; no new relation required.",
+        "Preserve showcase label for EUNOIA, HEAT concept-photography label for Supersonic."
+      ],
+      "liveTuplePreflightStillRequired": true,
+      "uploaded": false,
+      "renderTested": false
+    },
+    {
+      "assetId": "fromis9-supersonic-chaeyoung-dispatch-2300080-delta5",
+      "qualityTier": "clear_main_published_source",
+      "integrationKind": "normal_append",
+      "candidate": {
+        "id": "recvxBAlQAr9Om:mv-look.20261019.soldelta5:8293c5d35ce33f67f6666df83830a009d9a5502f63cf17db816453a7118fd38a",
+        "ratingId": "recvxBAlQAr9Om",
+        "workId": "recvxyOz5XKR8M",
+        "memberId": "recvxyICzHoZAl",
+        "memberName": "李彩煐（LEE CHAEYOUNG）",
+        "song": "Supersonic",
+        "version": "韩文原版",
+        "videoId": "0LiQp7y8Wwc",
+        "fileName": "0LiQp7y8Wwc-lee-chaeyoung-mv-look-delta5.jpg",
+        "sha256": "8293c5d35ce33f67f6666df83830a009d9a5502f63cf17db816453a7118fd38a",
+        "byteLength": 1571883,
+        "mime": "image/jpeg",
+        "width": 2000,
+        "height": 3000,
+        "kind": "mv_look_photo",
+        "mode": "append-look-preserve-reference",
+        "candidateVersion": "mv-look.20261019.soldelta5",
+        "evidenceId": "c4899ec69dd2f0e9e292c7820c0ea297b0b777032a5946956465ab2865bf87d1",
+        "ownerScope": "current-native-project-owner",
+        "decodedPixelsVerified": true,
+        "timestampSeconds": null,
+        "verifiedAt": "2026-10-19T09:43:50.326698+00:00",
+        "identityBasis": "source_named",
+        "sourceIdentityName": "이채영",
+        "identityEvidence": "The current Dispatch article contains the exact data-il image URL immediately followed by the literal member-name caption. Full original byte fragment was found unchanged in freshly fetched publisher HTML; freshly fetched image SHA matches delivery. No filename or facial inference.",
+        "identitySelector": "article > p.dp-image-container img[data-il] immediately followed by p > strong",
+        "sourceSnapshotSha256": "7f83fda2a04166b94669d55bf9aa5e48f54362cebbc2ec3fb16edad1640a9324",
+        "sourcePageUrl": "https://www.dispatch.co.kr/2300080",
+        "sourceImageUrl": "https://dispatch.cdnser.be/cms-content/uploads/2024/07/27/da1de1eb-afa4-45df-aea8-a529e2370c82.jpg",
+        "sourceName": "Dispatch · HEAT 概念写真",
+        "sourceCredit": "PLEDIS Entertainment official HEAT published photograph via Dispatch; original Supersonic/HEAT markings intact.",
+        "lookBasis": "exact_mv_visual_match",
+        "lookEvidence": "The source-named photograph shows a red camisole with white narrow straps and neckline/side trim, high ponytail with bangs, and folded-down V-shaped denim waist with wide knee-length jeans. Freshly reproduced frame n210 shows the same color-blocked top, ponytail/bangs and distinctive V-folded waist/long shorts combination on the center-front figure. Fine chest lettering, all side stripes, jewelry engravings and shoes are not resolved on both sources and are not claimed matched. Fresh public 13-second fragment has SHA 4ba90dceb7438ff155e3737434343671c8a38f9f7e3438b00f71e28305e254e7; its frame PNG reproduces byte-for-byte. Water-dance set/costume cohort matches the original-MV still published in the same current Tistory article containing the precise 0LiQp7y8Wwc embed. This is a combined evidence bridge, not an assertion that Tenor supplies the YouTube ID.",
+        "lookEvidenceUrl": "https://tenor.com/view/fromis9-supersonic-kpop-fromis-9-flover-gif-9632938716979152991",
+        "lookEvidenceSelector": "posted original 13-second fragment decoded frame index 210, relative PTS 7.000s, original498×374; same-article Tistory water-stage still plus iframe[src=\"https://www.youtube.com/embed/0LiQp7y8Wwc\"]",
+        "lookEvidenceSnapshotSha256": "fd4c78a202dfbfc0be60f0aedd710bf875f58f96ed320b6d678ee982225326e7"
+      },
+      "originalFile": "tests/fixtures/photo-soldelta5-evidence/8293c5d35ce33f67f6666df83830a009d9a5502f63cf17db816453a7118fd38a.jpg",
+      "proofRecord": "tests/fixtures/photo-soldelta5-evidence/c4899ec69dd2f0e9e292c7820c0ea297b0b777032a5946956465ab2865bf87d1.json",
+      "sourceIdentitySnapshot": "tests/fixtures/photo-soldelta5-evidence/7f83fda2a04166b94669d55bf9aa5e48f54362cebbc2ec3fb16edad1640a9324.html",
+      "lookEvidenceSnapshot": "tests/fixtures/photo-soldelta5-evidence/fd4c78a202dfbfc0be60f0aedd710bf875f58f96ed320b6d678ee982225326e7.png",
+      "evidenceFiles": [
+        "tests/fixtures/photo-soldelta5-evidence/7f83fda2a04166b94669d55bf9aa5e48f54362cebbc2ec3fb16edad1640a9324.html",
+        "tests/fixtures/photo-soldelta5-evidence/460bfa3aafb63a75793201dec4a49b592203202c013bc037ac9a535eba0ce198.html",
+        "tests/fixtures/photo-soldelta5-evidence/fd4c78a202dfbfc0be60f0aedd710bf875f58f96ed320b6d678ee982225326e7.png",
+        "tests/fixtures/photo-soldelta5-evidence/7b8121b480eb44df586cf94e6b92ac95d49084915200497b92474e78987ce384.html",
+        "tests/fixtures/photo-soldelta5-evidence/1ca973fd4294aecf94e4130da75b0314f38b51a18b7581fac88aef3e8ee25244.png",
+        "tests/fixtures/photo-soldelta5-evidence/427db582cba7be2de21abce15bd5c900d4693ea615a1407f39ebf5c3065cb893.json",
+        "tests/fixtures/photo-soldelta5-evidence/93c54a7174851f93805a62c031ae04498043894c076c368804607b78d85f0e8b.json",
+        "tests/fixtures/photo-soldelta5-evidence/feb557ba0b9e09c2681c620d4e4aa11d540853e6c7ff174ef077e1e9a5676240.json",
+        "tests/fixtures/photo-soldelta5-evidence/c4899ec69dd2f0e9e292c7820c0ea297b0b777032a5946956465ab2865bf87d1.json"
+      ],
+      "displayConstraints": [
+        "Keep complete original published bytes and watermark. Do not label camera-original or MV-set photography.",
+        "Keep original index-0 reference, unrelated attachments, ratings, notes and watch state.",
+        "Normal append to existing exact tuple; no new relation required.",
+        "Preserve showcase label for EUNOIA, HEAT concept-photography label for Supersonic."
+      ],
+      "liveTuplePreflightStillRequired": true,
+      "uploaded": false,
+      "renderTested": false
+    },
+    {
+      "assetId": "billlie-eunoia-haruna-dispatch-2243884-delta3",
+      "qualityTier": "clear_main_published_source",
+      "integrationKind": "normal_append",
+      "candidate": {
+        "id": "recvxARiP2wQ44:mv-look.20261019.soldelta5:6171656003f5fda844d98806b6de40ce8f9343b1208f457ff4f38082689b54e9",
+        "ratingId": "recvxARiP2wQ44",
+        "workId": "recvxyH5pzsCJu",
+        "memberId": "recvxyICzH2hbG",
+        "memberName": "春奈（艺名音译）（HARUNA）",
+        "song": "EUNOIA",
+        "version": "韩文原版",
+        "videoId": "MVjQIQGqNFM",
+        "fileName": "MVjQIQGqNFM-haruna-mv-look-delta5.jpg",
+        "sha256": "6171656003f5fda844d98806b6de40ce8f9343b1208f457ff4f38082689b54e9",
+        "byteLength": 287378,
+        "mime": "image/jpeg",
+        "width": 1000,
+        "height": 1500,
+        "kind": "mv_look_photo",
+        "mode": "append-look-preserve-reference",
+        "candidateVersion": "mv-look.20261019.soldelta5",
+        "evidenceId": "7c8435f67ddf87f360b64293c9642b0af17399bbcdfdb0f39c2637eac256b7b9",
+        "ownerScope": "current-native-project-owner",
+        "decodedPixelsVerified": true,
+        "timestampSeconds": null,
+        "verifiedAt": "2026-10-19T09:43:50.326698+00:00",
+        "identityBasis": "source_named",
+        "sourceIdentityName": "하루나",
+        "identityEvidence": "Cached current original Dispatch HTML immediately captions this exact decoded original image URL 하루나. Fragment bytes match historical delivered identity evidence for HARUNA/SUHYEON. The original 1000×1500 image was individually viewed; source naming supplies identity, never filename or face. Showcase headset and Dispatch watermark remain.",
+        "identitySelector": "Publisher img[data-il] decoded exact original URL immediately followed by literal ▲ 하루나 caption.",
+        "sourceSnapshotSha256": "7baf0adb60fa65b9c0fcaf27c18732b4bdbaa67b81e4b79a51890c81b613923f",
+        "sourcePageUrl": "https://www.dispatch.co.kr/2243884",
+        "sourceImageUrl": "https://dispatch.cdnser.be/cms-content/uploads/2023/03/28/c578c834-6c90-4098-934f-9c104c87da06.jpg",
+        "sourceName": "Dispatch · 发布会同造型照",
+        "sourceCredit": "Dispatch original published photograph; original watermark retained",
+        "lookBasis": "exact_mv_visual_match",
+        "lookEvidence": "The source-named original shows a gray ribbed cropped zip-front jacket, narrow pale horizontal trim at the lower chest/waist, white pointed collar, diagonal red/navy tie, dark pleated skirt and long straight dark hair with bangs. In each new unscaled Tenor frame the far-left figure reveals the same cropped zip-front structure, trim, collar/tie and skirt, unlike the longer button-front pocket cardigan. This resolves the prior lack of a readable garment construction; no face-based identity is used. Exact-version bridge: cached Kstyle literal MVjQIQGqNFM iframe + published grass/indoor-line collage; matching MyDaily final-MV collage shares those panels and the amber-window gym present in both new Tenor frames. Tenor page itself has no YouTube ID, and the Newsis teaser is not used to prove final version. Preserve showcase label/headset/watermark. Current public Tenor source and literal og:video clip were independently read back; source ranges match the delivered raw snapshot, clip SHA matches, and n165/n170 reproduce byte-for-byte and in decoded pixels.",
+        "lookEvidenceUrl": "https://tenor.com/view/billlie-kpop-eunoia-music-video-dance-gif-3931019550095685792",
+        "lookEvidenceSelector": "Tenor head title/keywords/og:video exact fragment URL with n165/n170 diagnostic frames; precise original version independently anchored by retained Kstyle iframe and matching MyDaily final-MV publication panels.",
+        "lookEvidenceSnapshotSha256": "655ec3170199b32523af3435abc7155fe5c56afdad80a5486c1b243cedf25b23"
+      },
+      "originalFile": "tests/fixtures/photo-soldelta5-evidence/6171656003f5fda844d98806b6de40ce8f9343b1208f457ff4f38082689b54e9.jpg",
+      "proofRecord": "tests/fixtures/photo-soldelta5-evidence/7c8435f67ddf87f360b64293c9642b0af17399bbcdfdb0f39c2637eac256b7b9.json",
+      "sourceIdentitySnapshot": "tests/fixtures/photo-soldelta5-evidence/7baf0adb60fa65b9c0fcaf27c18732b4bdbaa67b81e4b79a51890c81b613923f.html",
+      "lookEvidenceSnapshot": "tests/fixtures/photo-soldelta5-evidence/655ec3170199b32523af3435abc7155fe5c56afdad80a5486c1b243cedf25b23.html",
+      "evidenceFiles": [
+        "tests/fixtures/photo-soldelta5-evidence/7baf0adb60fa65b9c0fcaf27c18732b4bdbaa67b81e4b79a51890c81b613923f.html",
+        "tests/fixtures/photo-soldelta5-evidence/655ec3170199b32523af3435abc7155fe5c56afdad80a5486c1b243cedf25b23.html",
+        "tests/fixtures/photo-soldelta5-evidence/756fc4cde1fc4c6972699784e3df16fe4c3fcb83e0d4475eeb57292e18d090e3.png",
+        "tests/fixtures/photo-soldelta5-evidence/02a10de1d5ee2f44bc64cd4927395d752beff015950a4aea2b88fb70617f5be4.png",
+        "tests/fixtures/photo-soldelta5-evidence/e2fa1ae8b573e17e72e35a14d1c48c135bc3761ae580d41efe0c541d41ce1ff6.html",
+        "tests/fixtures/photo-soldelta5-evidence/6200c9601faafe310cb9839b6607342dd20e1383de28cd9147e0bcc38a5d19e2.html",
+        "tests/fixtures/photo-soldelta5-evidence/0991c986554b29641dd7340e834242590521455540fcff9810ea46b6b1dd600d.html",
+        "tests/fixtures/photo-soldelta5-evidence/0af521afca433c6bc6d757a0896bba2a1add447217b6125cdb93ca65d2adefda.jpg",
+        "tests/fixtures/photo-soldelta5-evidence/005c0bd11f37ccde358191b6b24618c42db9d3bf4e629dfd8772d31bf18f0a83.html",
+        "tests/fixtures/photo-soldelta5-evidence/1782cb84461f201e851a546d6aa2c90faf222576baeace9503f4fc0918bdfbd7.jpg",
+        "tests/fixtures/photo-soldelta5-evidence/655ec3170199b32523af3435abc7155fe5c56afdad80a5486c1b243cedf25b23.html",
+        "tests/fixtures/photo-soldelta5-evidence/eadf2dc5a3fdf6670219c16855d453096afcdbdc615e11836d2e226de3bced3e.json",
+        "tests/fixtures/photo-soldelta5-evidence/9b814e26e920485e66e9d34f8237e01faba1d142b31d0223be3f8e055b8bea14.json",
+        "tests/fixtures/photo-soldelta5-evidence/7c8435f67ddf87f360b64293c9642b0af17399bbcdfdb0f39c2637eac256b7b9.json"
+      ],
+      "displayConstraints": [
+        "Keep complete original published bytes and watermark. Do not label camera-original or MV-set photography.",
+        "Keep original index-0 reference, unrelated attachments, ratings, notes and watch state.",
+        "Normal append to existing exact tuple; no new relation required.",
+        "Preserve showcase label for EUNOIA, HEAT concept-photography label for Supersonic."
+      ],
+      "liveTuplePreflightStillRequired": true,
+      "uploaded": false,
+      "renderTested": false
+    },
+    {
+      "assetId": "billlie-eunoia-suhyeon-dispatch-2243884-delta3",
+      "qualityTier": "clear_main_published_source",
+      "integrationKind": "normal_append",
+      "candidate": {
+        "id": "recvxARiP206Lb:mv-look.20261019.soldelta5:c89c11400fc873b3ddc036840f0959cc2504934eca12b328c3666fa31b155f69",
+        "ratingId": "recvxARiP206Lb",
+        "workId": "recvxyH5pzsCJu",
+        "memberId": "recvxyICzHJHn8",
+        "memberName": "金秀炫（SUHYEON）",
+        "song": "EUNOIA",
+        "version": "韩文原版",
+        "videoId": "MVjQIQGqNFM",
+        "fileName": "MVjQIQGqNFM-suhyeon-mv-look-delta5.jpg",
+        "sha256": "c89c11400fc873b3ddc036840f0959cc2504934eca12b328c3666fa31b155f69",
+        "byteLength": 163379,
+        "mime": "image/jpeg",
+        "width": 1000,
+        "height": 1500,
+        "kind": "mv_look_photo",
+        "mode": "append-look-preserve-reference",
+        "candidateVersion": "mv-look.20261019.soldelta5",
+        "evidenceId": "992e81e08dd50aefb3e548683c8f0d8fae8bb8af39a8e9193b384e52b910bc9b",
+        "ownerScope": "current-native-project-owner",
+        "decodedPixelsVerified": true,
+        "timestampSeconds": null,
+        "verifiedAt": "2026-10-19T09:43:50.326698+00:00",
+        "identityBasis": "source_named",
+        "sourceIdentityName": "수현",
+        "identityEvidence": "Cached current original Dispatch HTML immediately captions this exact decoded original image URL 수현. Fragment bytes match historical delivered identity evidence for HARUNA/SUHYEON. The original 1000×1500 image was individually viewed; source naming supplies identity, never filename or face. Showcase headset and Dispatch watermark remain.",
+        "identitySelector": "Publisher img[data-il] decoded exact original URL immediately followed by literal ▲ 수현 caption.",
+        "sourceSnapshotSha256": "8895ddbc066095ca40b6e463dd706e56c6b8e7e1811b58259a6e10efc657e3b9",
+        "sourcePageUrl": "https://www.dispatch.co.kr/2243884",
+        "sourceImageUrl": "https://dispatch.cdnser.be/cms-content/uploads/2023/03/28/d90a906a-9b77-4425-911f-a14d6c4c5055.jpg",
+        "sourceName": "Dispatch · 发布会同造型照",
+        "sourceCredit": "Dispatch original published photograph; original watermark retained",
+        "lookBasis": "exact_mv_visual_match",
+        "lookEvidence": "The source-named original shows a white zip-front hoodie with drawstrings over a white pointed collar and red/navy diagonal tie, plus high dark ponytail and bangs. In each new unscaled Tenor frame the second figure from the left, immediately left of the LOVE-letter pullover, has the white hoodie front, split/open lower front, exposed collar/tie and dark short skirt. This resolves the prior front-construction obstruction and distinguishes the hoodie from the adjacent pullover. The Lee logo and tiny jewelry remain unreadable in the fragment and are not claimed as verified. Exact-version bridge: cached Kstyle literal MVjQIQGqNFM iframe + published grass/indoor-line collage; matching MyDaily final-MV collage shares those panels and the amber-window gym present in both new Tenor frames. Tenor page itself has no YouTube ID, and the Newsis teaser is not used to prove final version. Preserve showcase label/headset/watermark. Current public Tenor source and literal og:video clip were independently read back; source ranges match the delivered raw snapshot, clip SHA matches, and n165/n170 reproduce byte-for-byte and in decoded pixels.",
+        "lookEvidenceUrl": "https://tenor.com/view/billlie-kpop-eunoia-music-video-dance-gif-3931019550095685792",
+        "lookEvidenceSelector": "Tenor head title/keywords/og:video exact fragment URL with n165/n170 diagnostic frames; precise original version independently anchored by retained Kstyle iframe and matching MyDaily final-MV publication panels.",
+        "lookEvidenceSnapshotSha256": "655ec3170199b32523af3435abc7155fe5c56afdad80a5486c1b243cedf25b23"
+      },
+      "originalFile": "tests/fixtures/photo-soldelta5-evidence/c89c11400fc873b3ddc036840f0959cc2504934eca12b328c3666fa31b155f69.jpg",
+      "proofRecord": "tests/fixtures/photo-soldelta5-evidence/992e81e08dd50aefb3e548683c8f0d8fae8bb8af39a8e9193b384e52b910bc9b.json",
+      "sourceIdentitySnapshot": "tests/fixtures/photo-soldelta5-evidence/8895ddbc066095ca40b6e463dd706e56c6b8e7e1811b58259a6e10efc657e3b9.html",
+      "lookEvidenceSnapshot": "tests/fixtures/photo-soldelta5-evidence/655ec3170199b32523af3435abc7155fe5c56afdad80a5486c1b243cedf25b23.html",
+      "evidenceFiles": [
+        "tests/fixtures/photo-soldelta5-evidence/8895ddbc066095ca40b6e463dd706e56c6b8e7e1811b58259a6e10efc657e3b9.html",
+        "tests/fixtures/photo-soldelta5-evidence/655ec3170199b32523af3435abc7155fe5c56afdad80a5486c1b243cedf25b23.html",
+        "tests/fixtures/photo-soldelta5-evidence/756fc4cde1fc4c6972699784e3df16fe4c3fcb83e0d4475eeb57292e18d090e3.png",
+        "tests/fixtures/photo-soldelta5-evidence/02a10de1d5ee2f44bc64cd4927395d752beff015950a4aea2b88fb70617f5be4.png",
+        "tests/fixtures/photo-soldelta5-evidence/e2fa1ae8b573e17e72e35a14d1c48c135bc3761ae580d41efe0c541d41ce1ff6.html",
+        "tests/fixtures/photo-soldelta5-evidence/6200c9601faafe310cb9839b6607342dd20e1383de28cd9147e0bcc38a5d19e2.html",
+        "tests/fixtures/photo-soldelta5-evidence/0991c986554b29641dd7340e834242590521455540fcff9810ea46b6b1dd600d.html",
+        "tests/fixtures/photo-soldelta5-evidence/0af521afca433c6bc6d757a0896bba2a1add447217b6125cdb93ca65d2adefda.jpg",
+        "tests/fixtures/photo-soldelta5-evidence/005c0bd11f37ccde358191b6b24618c42db9d3bf4e629dfd8772d31bf18f0a83.html",
+        "tests/fixtures/photo-soldelta5-evidence/1782cb84461f201e851a546d6aa2c90faf222576baeace9503f4fc0918bdfbd7.jpg",
+        "tests/fixtures/photo-soldelta5-evidence/655ec3170199b32523af3435abc7155fe5c56afdad80a5486c1b243cedf25b23.html",
+        "tests/fixtures/photo-soldelta5-evidence/eadf2dc5a3fdf6670219c16855d453096afcdbdc615e11836d2e226de3bced3e.json",
+        "tests/fixtures/photo-soldelta5-evidence/a0ed974b1e9596b2ad40fa2d22068045564a759dd3eef7956a1af0a7a0afc3b9.json",
+        "tests/fixtures/photo-soldelta5-evidence/992e81e08dd50aefb3e548683c8f0d8fae8bb8af39a8e9193b384e52b910bc9b.json"
+      ],
+      "displayConstraints": [
+        "Keep complete original published bytes and watermark. Do not label camera-original or MV-set photography.",
+        "Keep original index-0 reference, unrelated attachments, ratings, notes and watch state.",
+        "Normal append to existing exact tuple; no new relation required.",
+        "Preserve showcase label for EUNOIA, HEAT concept-photography label for Supersonic."
+      ],
+      "liveTuplePreflightStillRequired": true,
+      "uploaded": false,
+      "renderTested": false
+    },
+    {
+      "assetId": "idle-delta5-nxde-miyeon-quality-upgrade",
+      "qualityTier": "main_photo",
+      "integrationKind": "controlled_successor",
+      "candidate": {
+        "id": "recvxARiP2zH0q:mv-look.20261019.soldelta5:15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9",
+        "ratingId": "recvxARiP2zH0q",
+        "workId": "recvxyOz5X93Kc",
+        "memberId": "recvxyIzFgRD0w",
+        "memberName": "赵美延（MIYEON）",
+        "song": "Nxde",
+        "version": "韩文原版",
+        "videoId": "fCO7f0SmrDc",
+        "fileName": "fCO7f0SmrDc-miyeon-mv-look-delta5.jpg",
+        "sha256": "15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9",
+        "byteLength": 443253,
+        "mime": "image/jpeg",
+        "width": 1000,
+        "height": 1500,
+        "kind": "mv_look_photo",
+        "mode": "append-look-preserve-reference",
+        "candidateVersion": "mv-look.20261019.soldelta5",
+        "evidenceId": "02bc4eccaaf5dbba3e10ad241c5bb7122b76d7590a5db276f1e45afc4ab4defb",
+        "ownerScope": "current-native-project-owner",
+        "decodedPixelsVerified": true,
+        "timestampSeconds": null,
+        "verifiedAt": "2026-10-19T09:43:50.326698+00:00",
+        "identityBasis": "source_named",
+        "sourceIdentityName": "미연",
+        "identityEvidence": "The original single-person Dispatch article title names 미연; the first selected image URL and explicit body sentence describing her black dress bind the photograph. Public page reopened independently; title, event paragraph and body naming agree. Original downloaded publication bytes and watermark retained. No facial identification.",
+        "identitySelector": "single-subject original title MIYEON and article first img.post-image src ending2f60c09c...jpg; body explicitly MIYEON",
+        "sourceSnapshotSha256": "47e567dfb9a0ffb1efb63b84b2fc154ebd28cb882939b702d1e11a87f78235f4",
+        "sourcePageUrl": "https://www.dispatch.co.kr/2222390",
+        "sourceImageUrl": "https://dispatch.cdnser.be/cms-content/uploads/2022/10/17/2f60c09c-5537-4d45-8a6e-8f98399acc97.jpg",
+        "sourceName": "Dispatch · 发布会同造型照",
+        "sourceCredit": "Dispatch 오민아 / Dispatch watermark preserved",
+        "lookBasis": "exact_mv_visual_match",
+        "lookEvidence": "Same-MV visible black-tweed ensemble in independently named release-showcase photograph. Long-sleeved fitted black textured continuous-waist dress with round ring-like front buttons; Long white pearl strands and metallic necklaces crossing upper torso and waist; Loose long side-part blonde hair and visible pearl-drop earring. New portrait stops above full hem/garter view; it cannot newly verify all lower dress/garter details.; MV arm motion, warm illumination and limited frame sharpness do not permit a precise sleeve-transparency/material claim. No contradiction is established by that frame alone; exact textile fiber or opacity is not certified.; Pendant arrangement moves with pose; tiny charm identity and every bead are not separately verified. No official YouTube playback/timecode or website crop/render test claimed. Original source bytes and watermark preserved. Quality upgrade for the existing member-work pair; controlled supersession required before integration.",
+        "lookEvidenceUrl": "https://magoforest.tistory.com/entry/%EC%97%AC%EC%9E%90%EC%95%84%EC%9D%B4%EB%93%A4-Nxde-%EB%88%84%EB%93%9C-%ED%95%B4%EC%84%9D",
+        "lookEvidenceSelector": "Original Nxde iframe containing fCO7f0SmrDc and exact published black-tweed five-person finished-MV still in the same original-analysis HTML; comparison position: foreground right of exact black-tweed MV diagnostic",
+        "lookEvidenceSnapshotSha256": "e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5"
+      },
+      "originalFile": "tests/fixtures/photo-soldelta5-evidence/15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9.jpg",
+      "proofRecord": "tests/fixtures/photo-soldelta5-evidence/02bc4eccaaf5dbba3e10ad241c5bb7122b76d7590a5db276f1e45afc4ab4defb.json",
+      "sourceIdentitySnapshot": "tests/fixtures/photo-soldelta5-evidence/47e567dfb9a0ffb1efb63b84b2fc154ebd28cb882939b702d1e11a87f78235f4.html",
+      "lookEvidenceSnapshot": "tests/fixtures/photo-soldelta5-evidence/e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5.html",
+      "evidenceFiles": [
+        "tests/fixtures/photo-soldelta5-evidence/47e567dfb9a0ffb1efb63b84b2fc154ebd28cb882939b702d1e11a87f78235f4.html",
+        "tests/fixtures/photo-soldelta5-evidence/e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5.html",
+        "tests/fixtures/photo-soldelta5-evidence/1cbd40762b2e454df3d2ba66dab3ef7c66cb236fe7c180d76bfb40bb34a0a488.jpg",
+        "tests/fixtures/photo-soldelta5-evidence/02bc4eccaaf5dbba3e10ad241c5bb7122b76d7590a5db276f1e45afc4ab4defb.json"
+      ],
+      "displayConstraints": [
+        "Keep complete original published bytes and watermark. Do not label camera-original or MV-set photography.",
+        "Keep original index-0 reference, unrelated attachments, ratings, notes and watch state.",
+        "Nxde controlled successor selection required; do not plain-append without exact old-to-new policy.",
+        "Do not inherit old 350px right-half collage crop. New single-scene source uses a new full-original display policy.",
+        "Preserve honest release-showcase label; no HD claim for the 640px card-only portraits."
+      ],
+      "liveTuplePreflightStillRequired": true,
+      "uploaded": false,
+      "renderTested": false
+    },
+    {
+      "assetId": "idle-delta5-nxde-minnie-quality-upgrade",
+      "qualityTier": "card_only",
+      "integrationKind": "controlled_successor",
+      "candidate": {
+        "id": "recvxARiP22f9m:mv-look.20261019.soldelta5:9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346",
+        "ratingId": "recvxARiP22f9m",
+        "workId": "recvxyOz5X93Kc",
+        "memberId": "recvxyICzHYDdj",
+        "memberName": "妮查·约塔拉拉克（音译）（MINNIE）",
+        "song": "Nxde",
+        "version": "韩文原版",
+        "videoId": "fCO7f0SmrDc",
+        "fileName": "fCO7f0SmrDc-minnie-mv-look-delta5.jpg",
+        "sha256": "9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346",
+        "byteLength": 425403,
+        "mime": "image/jpeg",
+        "width": 640,
+        "height": 961,
+        "kind": "mv_look_photo",
+        "mode": "append-look-preserve-reference",
+        "candidateVersion": "mv-look.20261019.soldelta5",
+        "evidenceId": "2819632045fbd0cbb03acdb0806a9a57510b165f0d327246947edbb8fa6e30dd",
+        "ownerScope": "current-native-project-owner",
+        "decodedPixelsVerified": true,
+        "timestampSeconds": null,
+        "verifiedAt": "2026-10-19T09:43:50.326698+00:00",
+        "identityBasis": "source_named",
+        "sourceIdentityName": "민니",
+        "identityEvidence": "Literal 민니 in the caption and the selected exact original image URL are inside one original Chosun image object, _id LP465IG5V35OECRPJD3NXAJL4E. Independently read live HTML object; no filename, gallery-order or facial identification. Original downloaded publication bytes and watermark retained. No facial identification.",
+        "identitySelector": "script#fusion-metadata Fusion.globalContent.content_elements[type=image][_id=LP465IG5V35OECRPJD3NXAJL4E]; literal caption names 민니; url in the SAME image object",
+        "sourceSnapshotSha256": "8a17ddc0adea74caad2385c9ab63e43a0f037f41ce4cd58ae498351f4cd79b9f",
+        "sourcePageUrl": "https://www.chosun.com/entertainments/music/2022/10/17/O7ES6KHIMAEOCYC3RQN4PWA2AA/",
+        "sourceImageUrl": "https://cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/LP465IG5V35OECRPJD3NXAJL4E.jpg",
+        "sourceName": "SportsChosun / Chosun · 发布会同造型照",
+        "sourceCredit": "SportsChosun 허상욱 / original SportsChosun watermark preserved",
+        "lookBasis": "exact_mv_visual_match",
+        "lookEvidence": "Same-MV visible black-tweed ensemble in independently named release-showcase photograph. Sleeveless V-front black tweed cropped waistcoat and broad exposed midriff; Long curved/crescent pendant, layered necklaces, crossed pearl body chain and visible low waist chain; Long straight light-brown/blonde hair with full blunt fringe. New image stops at the hip; full wide-leg trousers and shoes are not visible and must not be newly claimed verified.; MV subject is partly occluded by the foreground arm. Fine earrings, rear hair tie and exact pearl counts are not resolved. No official YouTube playback/timecode or website crop/render test claimed. Original source bytes and watermark preserved. Quality upgrade for the existing member-work pair; controlled supersession required before integration.",
+        "lookEvidenceUrl": "https://magoforest.tistory.com/entry/%EC%97%AC%EC%9E%90%EC%95%84%EC%9D%B4%EB%93%A4-Nxde-%EB%88%84%EB%93%9C-%ED%95%B4%EC%84%9D",
+        "lookEvidenceSelector": "Original Nxde iframe containing fCO7f0SmrDc and exact published black-tweed five-person finished-MV still in the same original-analysis HTML; comparison position: far right, partly occluded in exact black-tweed MV diagnostic",
+        "lookEvidenceSnapshotSha256": "e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5"
+      },
+      "originalFile": "tests/fixtures/photo-soldelta5-evidence/9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346.jpg",
+      "proofRecord": "tests/fixtures/photo-soldelta5-evidence/2819632045fbd0cbb03acdb0806a9a57510b165f0d327246947edbb8fa6e30dd.json",
+      "sourceIdentitySnapshot": "tests/fixtures/photo-soldelta5-evidence/8a17ddc0adea74caad2385c9ab63e43a0f037f41ce4cd58ae498351f4cd79b9f.html",
+      "lookEvidenceSnapshot": "tests/fixtures/photo-soldelta5-evidence/e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5.html",
+      "evidenceFiles": [
+        "tests/fixtures/photo-soldelta5-evidence/8a17ddc0adea74caad2385c9ab63e43a0f037f41ce4cd58ae498351f4cd79b9f.html",
+        "tests/fixtures/photo-soldelta5-evidence/e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5.html",
+        "tests/fixtures/photo-soldelta5-evidence/1cbd40762b2e454df3d2ba66dab3ef7c66cb236fe7c180d76bfb40bb34a0a488.jpg",
+        "tests/fixtures/photo-soldelta5-evidence/2819632045fbd0cbb03acdb0806a9a57510b165f0d327246947edbb8fa6e30dd.json"
+      ],
+      "displayConstraints": [
+        "Keep complete original published bytes and watermark. Do not label camera-original or MV-set photography.",
+        "Keep original index-0 reference, unrelated attachments, ratings, notes and watch state.",
+        "Nxde controlled successor selection required; do not plain-append without exact old-to-new policy.",
+        "Do not inherit old 350px right-half collage crop. New single-scene source uses a new full-original display policy.",
+        "Preserve honest release-showcase label; no HD claim for the 640px card-only portraits."
+      ],
+      "liveTuplePreflightStillRequired": true,
+      "uploaded": false,
+      "renderTested": false
+    },
+    {
+      "assetId": "idle-delta5-nxde-soyeon-quality-upgrade",
+      "qualityTier": "main_photo",
+      "integrationKind": "controlled_successor",
+      "candidate": {
+        "id": "recvxARiP2fYjn:mv-look.20261019.soldelta5:9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14",
+        "ratingId": "recvxARiP2fYjn",
+        "workId": "recvxyOz5X93Kc",
+        "memberId": "recvxyICzH4cgr",
+        "memberName": "田小娟（SOYEON）",
+        "song": "Nxde",
+        "version": "韩文原版",
+        "videoId": "fCO7f0SmrDc",
+        "fileName": "fCO7f0SmrDc-soyeon-mv-look-delta5.jpg",
+        "sha256": "9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14",
+        "byteLength": 367214,
+        "mime": "image/jpeg",
+        "width": 800,
+        "height": 1120,
+        "kind": "mv_look_photo",
+        "mode": "append-look-preserve-reference",
+        "candidateVersion": "mv-look.20261019.soldelta5",
+        "evidenceId": "0f5d102e0f84823b2c41ffb628b36f62c9cc9163560807de80debf8a84714d02",
+        "ownerScope": "current-native-project-owner",
+        "decodedPixelsVerified": true,
+        "timestampSeconds": null,
+        "verifiedAt": "2026-10-19T09:43:50.326698+00:00",
+        "identityBasis": "source_named",
+        "sourceIdentityName": "소연",
+        "identityEvidence": "Original iMBC opening sentence explicitly names 소연 and is immediately followed by the selected lead photograph. Public article independently reopened and the same first-name/lead-image context confirmed; no facial identification. Original downloaded publication bytes and watermark retained. No facial identification.",
+        "identitySelector": "div.ent-cont[itemprop=articleBody] literal SOYEON lead immediately followed by sole img ea9fc5fb",
+        "sourceSnapshotSha256": "726b6562178a9d9063579e0c2748838f27904bc2c14ca600b50c6759ec703d7a",
+        "sourcePageUrl": "https://enews.imbc.com/News/RetrieveNewsInfo/362692",
+        "sourceImageUrl": "https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2022/10/17/ea9fc5fb-3234-4a01-b414-6f801945ae17.jpg",
+        "sourceName": "iMBC · 发布会同造型照",
+        "sourceCredit": "iMBC 고대현 / iMBC watermark preserved",
+        "lookBasis": "exact_mv_visual_match",
+        "lookEvidence": "Same-MV visible black-tweed ensemble in independently named release-showcase photograph. Boxy black tweed long-sleeve cropped jacket with prominent round/ring buttons; Exposed midriff, short black textured lower garment, upper stocking/garter bands; Low pearl-and-metal waist chain with hanging necklace strands; Short pale-blonde wavy bob with split front pieces. Angled moving diagnostic does not resolve every lower-garment seam, so skirt-versus-shorts construction is not independently certified.; Motion and pose obscure some buttons and jewelry; exact attachment points or small engraving are not claimed. No official YouTube playback/timecode or website crop/render test claimed. Original source bytes and watermark preserved. Quality upgrade for the existing member-work pair; controlled supersession required before integration.",
+        "lookEvidenceUrl": "https://magoforest.tistory.com/entry/%EC%97%AC%EC%9E%90%EC%95%84%EC%9D%B4%EB%93%A4-Nxde-%EB%88%84%EB%93%9C-%ED%95%B4%EC%84%9D",
+        "lookEvidenceSelector": "Original Nxde iframe containing fCO7f0SmrDc and exact published black-tweed five-person finished-MV still in the same original-analysis HTML; comparison position: far left of exact black-tweed MV diagnostic",
+        "lookEvidenceSnapshotSha256": "e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5"
+      },
+      "originalFile": "tests/fixtures/photo-soldelta5-evidence/9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14.jpg",
+      "proofRecord": "tests/fixtures/photo-soldelta5-evidence/0f5d102e0f84823b2c41ffb628b36f62c9cc9163560807de80debf8a84714d02.json",
+      "sourceIdentitySnapshot": "tests/fixtures/photo-soldelta5-evidence/726b6562178a9d9063579e0c2748838f27904bc2c14ca600b50c6759ec703d7a.html",
+      "lookEvidenceSnapshot": "tests/fixtures/photo-soldelta5-evidence/e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5.html",
+      "evidenceFiles": [
+        "tests/fixtures/photo-soldelta5-evidence/726b6562178a9d9063579e0c2748838f27904bc2c14ca600b50c6759ec703d7a.html",
+        "tests/fixtures/photo-soldelta5-evidence/e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5.html",
+        "tests/fixtures/photo-soldelta5-evidence/1cbd40762b2e454df3d2ba66dab3ef7c66cb236fe7c180d76bfb40bb34a0a488.jpg",
+        "tests/fixtures/photo-soldelta5-evidence/0f5d102e0f84823b2c41ffb628b36f62c9cc9163560807de80debf8a84714d02.json"
+      ],
+      "displayConstraints": [
+        "Keep complete original published bytes and watermark. Do not label camera-original or MV-set photography.",
+        "Keep original index-0 reference, unrelated attachments, ratings, notes and watch state.",
+        "Nxde controlled successor selection required; do not plain-append without exact old-to-new policy.",
+        "Do not inherit old 350px right-half collage crop. New single-scene source uses a new full-original display policy.",
+        "Preserve honest release-showcase label; no HD claim for the 640px card-only portraits."
+      ],
+      "liveTuplePreflightStillRequired": true,
+      "uploaded": false,
+      "renderTested": false
+    },
+    {
+      "assetId": "idle-delta5-nxde-yuqi-quality-upgrade",
+      "qualityTier": "card_only",
+      "integrationKind": "controlled_successor",
+      "candidate": {
+        "id": "recvxARiP2SvGc:mv-look.20261019.soldelta5:5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4",
+        "ratingId": "recvxARiP2SvGc",
+        "workId": "recvxyOz5X93Kc",
+        "memberId": "recvxyICzHZFRP",
+        "memberName": "宋雨琦（YUQI）",
+        "song": "Nxde",
+        "version": "韩文原版",
+        "videoId": "fCO7f0SmrDc",
+        "fileName": "fCO7f0SmrDc-yuqi-mv-look-delta5.jpg",
+        "sha256": "5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4",
+        "byteLength": 413623,
+        "mime": "image/jpeg",
+        "width": 640,
+        "height": 882,
+        "kind": "mv_look_photo",
+        "mode": "append-look-preserve-reference",
+        "candidateVersion": "mv-look.20261019.soldelta5",
+        "evidenceId": "7760bc6f8810ffc3a68196f2b112e6bd55528ff9a8e4ff0c1b129aac652f7078",
+        "ownerScope": "current-native-project-owner",
+        "decodedPixelsVerified": true,
+        "timestampSeconds": null,
+        "verifiedAt": "2026-10-19T09:43:50.326698+00:00",
+        "identityBasis": "source_named",
+        "sourceIdentityName": "우기",
+        "identityEvidence": "Literal 우기 caption and selected exact original URL are inside the same Chosun image object, _id GEV5H2NKB3B6AOABENV4EFPODM, independently confirmed in live HTML. Original downloaded publication bytes and watermark retained. No facial identification.",
+        "identitySelector": "script#fusion-metadata Fusion.globalContent.content_elements[type=image][_id=GEV5H2NKB3B6AOABENV4EFPODM]; literal caption names 우기; url in the SAME image object",
+        "sourceSnapshotSha256": "c285ea42b0a4e0016939f0fea8c7dea4830f70900dc16a3de0cf1611c3557272",
+        "sourcePageUrl": "https://www.chosun.com/entertainments/music/2022/10/17/O7ES6KHIMAEOCYC3RQN4PWA2AA/",
+        "sourceImageUrl": "https://cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/GEV5H2NKB3B6AOABENV4EFPODM.jpg",
+        "sourceName": "SportsChosun / Chosun · 发布会同造型照",
+        "sourceCredit": "SportsChosun 허상욱 / original SportsChosun watermark preserved",
+        "lookBasis": "exact_mv_visual_match",
+        "lookEvidence": "Same-MV visible black-tweed ensemble in independently named release-showcase photograph. Black textured cropped jacket over a short black inner top; White short pearl strand with layered metallic/black necklaces and low waist pearl chain; Swept-back tied orange-blonde hair and star-shaped drop earrings. New portrait ends at the waistband: full trouser legs are not visible and cannot be certified from these new pixels.; Apple PTS22 means time within the public sample, not an official YouTube timecode.; Tiny charm engravings unresolved. No official YouTube playback/timecode or website crop/render test claimed. Original source bytes and watermark preserved. Quality upgrade for the existing member-work pair; controlled supersession required before integration.",
+        "lookEvidenceUrl": "https://magoforest.tistory.com/entry/%EC%97%AC%EC%9E%90%EC%95%84%EC%9D%B4%EB%93%A4-Nxde-%EB%88%84%EB%93%9C-%ED%95%B4%EC%84%9D",
+        "lookEvidenceSelector": "Original Nxde iframe containing fCO7f0SmrDc and exact published black-tweed five-person finished-MV still in the same original-analysis HTML; comparison position: center of exact black-tweed MV diagnostic, with supplementary Apple public-preview relative PTS22 frame",
+        "lookEvidenceSnapshotSha256": "e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5"
+      },
+      "originalFile": "tests/fixtures/photo-soldelta5-evidence/5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4.jpg",
+      "proofRecord": "tests/fixtures/photo-soldelta5-evidence/7760bc6f8810ffc3a68196f2b112e6bd55528ff9a8e4ff0c1b129aac652f7078.json",
+      "sourceIdentitySnapshot": "tests/fixtures/photo-soldelta5-evidence/c285ea42b0a4e0016939f0fea8c7dea4830f70900dc16a3de0cf1611c3557272.html",
+      "lookEvidenceSnapshot": "tests/fixtures/photo-soldelta5-evidence/e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5.html",
+      "evidenceFiles": [
+        "tests/fixtures/photo-soldelta5-evidence/c285ea42b0a4e0016939f0fea8c7dea4830f70900dc16a3de0cf1611c3557272.html",
+        "tests/fixtures/photo-soldelta5-evidence/e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5.html",
+        "tests/fixtures/photo-soldelta5-evidence/1cbd40762b2e454df3d2ba66dab3ef7c66cb236fe7c180d76bfb40bb34a0a488.jpg",
+        "tests/fixtures/photo-soldelta5-evidence/31e390be1d196eb8aed121c544f834f1e09ed54725cc315dc98b889cd3e53c09.png",
+        "tests/fixtures/photo-soldelta5-evidence/195cf9de6b95e85c2c2aed4873a1f23c13f9064eec7cccd3933d2660ca21b8ec.html",
+        "tests/fixtures/photo-soldelta5-evidence/7760bc6f8810ffc3a68196f2b112e6bd55528ff9a8e4ff0c1b129aac652f7078.json"
+      ],
+      "displayConstraints": [
+        "Keep complete original published bytes and watermark. Do not label camera-original or MV-set photography.",
+        "Keep original index-0 reference, unrelated attachments, ratings, notes and watch state.",
+        "Nxde controlled successor selection required; do not plain-append without exact old-to-new policy.",
+        "Do not inherit old 350px right-half collage crop. New single-scene source uses a new full-original display policy.",
+        "Preserve honest release-showcase label; no HD claim for the 640px card-only portraits."
+      ],
+      "liveTuplePreflightStillRequired": true,
+      "uploaded": false,
+      "renderTested": false
+    },
+    {
+      "assetId": "idle-delta5-nxde-shuhua-quality-upgrade",
+      "qualityTier": "card_only",
+      "integrationKind": "controlled_successor",
+      "candidate": {
+        "id": "recvxARiP2xniJ:mv-look.20261019.soldelta5:ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d",
+        "ratingId": "recvxARiP2xniJ",
+        "workId": "recvxyOz5X93Kc",
+        "memberId": "recvxyICzHP2fv",
+        "memberName": "叶舒华（SHUHUA）",
+        "song": "Nxde",
+        "version": "韩文原版",
+        "videoId": "fCO7f0SmrDc",
+        "fileName": "fCO7f0SmrDc-shuhua-mv-look-delta5.jpg",
+        "sha256": "ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d",
+        "byteLength": 428863,
+        "mime": "image/jpeg",
+        "width": 640,
+        "height": 941,
+        "kind": "mv_look_photo",
+        "mode": "append-look-preserve-reference",
+        "candidateVersion": "mv-look.20261019.soldelta5",
+        "evidenceId": "1ebb31a0b6e3860de206555c46cbcb40b115bf57dc2da65ce8e3f141fad22aa6",
+        "ownerScope": "current-native-project-owner",
+        "decodedPixelsVerified": true,
+        "timestampSeconds": null,
+        "verifiedAt": "2026-10-19T09:43:50.326698+00:00",
+        "identityBasis": "source_named",
+        "sourceIdentityName": "슈화",
+        "identityEvidence": "Literal 슈화 caption and the selected exact original URL belong to the same Chosun image object, _id AO6CSC6C5PZ7ONCGFY5KP7Y4LE, independently read in live HTML. Original downloaded publication bytes and watermark retained. No facial identification.",
+        "identitySelector": "script#fusion-metadata Fusion.globalContent.content_elements[type=image][_id=AO6CSC6C5PZ7ONCGFY5KP7Y4LE]; literal caption names 슈화; url in the SAME image object",
+        "sourceSnapshotSha256": "4a2b72c16542e03ea89240538470e532581e7c6fc6e1787eb66cea1fafb43df2",
+        "sourcePageUrl": "https://www.chosun.com/entertainments/music/2022/10/17/O7ES6KHIMAEOCYC3RQN4PWA2AA/",
+        "sourceImageUrl": "https://cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/AO6CSC6C5PZ7ONCGFY5KP7Y4LE.jpg",
+        "sourceName": "SportsChosun / Chosun · 发布会同造型照",
+        "sourceCredit": "SportsChosun 허상욱 / original SportsChosun watermark preserved",
+        "lookBasis": "exact_mv_visual_match",
+        "lookEvidence": "Same-MV visible black-tweed ensemble in independently named release-showcase photograph. Black long-sleeve cropped textured jacket with prominent pearl-like double front buttons; Large cross pendant, dark layered necklaces and long white pearl strand; Visible black lower garment top and pearl/metal waist chain; Loose center-part long blonde hair with front strands. New portrait cuts before the full lower hem; full lower-garment silhouette is not independently verified here.; Motion makes tiny earrings, charms and exact bead arrangement uncertain. No official YouTube playback/timecode or website crop/render test claimed. Original source bytes and watermark preserved. Quality upgrade for the existing member-work pair; controlled supersession required before integration.",
+        "lookEvidenceUrl": "https://magoforest.tistory.com/entry/%EC%97%AC%EC%9E%90%EC%95%84%EC%9D%B4%EB%93%A4-Nxde-%EB%88%84%EB%93%9C-%ED%95%B4%EC%84%9D",
+        "lookEvidenceSelector": "Original Nxde iframe containing fCO7f0SmrDc and exact published black-tweed five-person finished-MV still in the same original-analysis HTML; comparison position: foreground left of exact black-tweed MV diagnostic",
+        "lookEvidenceSnapshotSha256": "e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5"
+      },
+      "originalFile": "tests/fixtures/photo-soldelta5-evidence/ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d.jpg",
+      "proofRecord": "tests/fixtures/photo-soldelta5-evidence/1ebb31a0b6e3860de206555c46cbcb40b115bf57dc2da65ce8e3f141fad22aa6.json",
+      "sourceIdentitySnapshot": "tests/fixtures/photo-soldelta5-evidence/4a2b72c16542e03ea89240538470e532581e7c6fc6e1787eb66cea1fafb43df2.html",
+      "lookEvidenceSnapshot": "tests/fixtures/photo-soldelta5-evidence/e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5.html",
+      "evidenceFiles": [
+        "tests/fixtures/photo-soldelta5-evidence/4a2b72c16542e03ea89240538470e532581e7c6fc6e1787eb66cea1fafb43df2.html",
+        "tests/fixtures/photo-soldelta5-evidence/e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5.html",
+        "tests/fixtures/photo-soldelta5-evidence/1cbd40762b2e454df3d2ba66dab3ef7c66cb236fe7c180d76bfb40bb34a0a488.jpg",
+        "tests/fixtures/photo-soldelta5-evidence/1ebb31a0b6e3860de206555c46cbcb40b115bf57dc2da65ce8e3f141fad22aa6.json"
+      ],
+      "displayConstraints": [
+        "Keep complete original published bytes and watermark. Do not label camera-original or MV-set photography.",
+        "Keep original index-0 reference, unrelated attachments, ratings, notes and watch state.",
+        "Nxde controlled successor selection required; do not plain-append without exact old-to-new policy.",
+        "Do not inherit old 350px right-half collage crop. New single-scene source uses a new full-original display policy.",
+        "Preserve honest release-showcase label; no HD claim for the 640px card-only portraits."
+      ],
+      "liveTuplePreflightStillRequired": true,
+      "uploaded": false,
+      "renderTested": false
+    }
+  ],
+  "successorEdges": [
+    {
+      "ratingId": "recvxARiP2zH0q",
+      "memberId": "recvxyIzFgRD0w",
+      "workId": "recvxyOz5X93Kc",
+      "videoId": "fCO7f0SmrDc",
+      "predecessor": {
+        "candidateId": "recvxARiP2zH0q:mv-look.20261019.soldelta4:ae76173048105b271b83cb7db7dd6d33bc790be8c58bbbc7e2204d64adf59588",
+        "sha256": "ae76173048105b271b83cb7db7dd6d33bc790be8c58bbbc7e2204d64adf59588"
+      },
+      "successor": {
+        "candidateId": "recvxARiP2zH0q:mv-look.20261019.soldelta5:15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9",
+        "sha256": "15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9"
+      }
+    },
+    {
+      "ratingId": "recvxARiP22f9m",
+      "memberId": "recvxyICzHYDdj",
+      "workId": "recvxyOz5X93Kc",
+      "videoId": "fCO7f0SmrDc",
+      "predecessor": {
+        "candidateId": "recvxARiP22f9m:mv-look.20261019.soldelta4:15183e04703b96ef172346bd6c66750b74fb77d8a2b038f424f59b0e4d7fad46",
+        "sha256": "15183e04703b96ef172346bd6c66750b74fb77d8a2b038f424f59b0e4d7fad46"
+      },
+      "successor": {
+        "candidateId": "recvxARiP22f9m:mv-look.20261019.soldelta5:9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346",
+        "sha256": "9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346"
+      }
+    },
+    {
+      "ratingId": "recvxARiP2fYjn",
+      "memberId": "recvxyICzH4cgr",
+      "workId": "recvxyOz5X93Kc",
+      "videoId": "fCO7f0SmrDc",
+      "predecessor": {
+        "candidateId": "recvxARiP2fYjn:mv-look.20261019.soldelta4:96f6bda8acdbe1042501f175d4a26df786124be03d3dfdf3e6ac2fb076f165f1",
+        "sha256": "96f6bda8acdbe1042501f175d4a26df786124be03d3dfdf3e6ac2fb076f165f1"
+      },
+      "successor": {
+        "candidateId": "recvxARiP2fYjn:mv-look.20261019.soldelta5:9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14",
+        "sha256": "9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14"
+      }
+    },
+    {
+      "ratingId": "recvxARiP2SvGc",
+      "memberId": "recvxyICzHZFRP",
+      "workId": "recvxyOz5X93Kc",
+      "videoId": "fCO7f0SmrDc",
+      "predecessor": {
+        "candidateId": "recvxARiP2SvGc:mv-look.20261019.soldelta4:f273785926c0c8895c7128c7bc049bcf7682292bfde40bfb8616b8bd988e09f7",
+        "sha256": "f273785926c0c8895c7128c7bc049bcf7682292bfde40bfb8616b8bd988e09f7"
+      },
+      "successor": {
+        "candidateId": "recvxARiP2SvGc:mv-look.20261019.soldelta5:5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4",
+        "sha256": "5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4"
+      }
+    },
+    {
+      "ratingId": "recvxARiP2xniJ",
+      "memberId": "recvxyICzHP2fv",
+      "workId": "recvxyOz5X93Kc",
+      "videoId": "fCO7f0SmrDc",
+      "predecessor": {
+        "candidateId": "recvxARiP2xniJ:mv-look.20261019.soldelta4:46011f56f82824c9acbe2ccdbbfc676835b3cc582cfa21013333da077c3f4f54",
+        "sha256": "46011f56f82824c9acbe2ccdbbfc676835b3cc582cfa21013333da077c3f4f54"
+      },
+      "successor": {
+        "candidateId": "recvxARiP2xniJ:mv-look.20261019.soldelta5:ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d",
+        "sha256": "ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d"
+      }
+    }
+  ],
+  "controlledChains": [
+    {
+      "ratingId": "recvxARiP2zH0q",
+      "workId": "recvxyOz5X93Kc",
+      "memberId": "recvxyIzFgRD0w",
+      "videoId": "fCO7f0SmrDc",
+      "oldCandidateId": "recvxARiP2zH0q:mv-look.20261019.soldelta4:ae76173048105b271b83cb7db7dd6d33bc790be8c58bbbc7e2204d64adf59588",
+      "oldSHA256": "ae76173048105b271b83cb7db7dd6d33bc790be8c58bbbc7e2204d64adf59588",
+      "oldEvidenceId": "cd6b25456428f0fc40cfca5b0ea5e34c5663bb2473bf84c4ce082dec94aee186",
+      "newCandidateId": "recvxARiP2zH0q:mv-look.20261019.soldelta5:15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9",
+      "newSHA256": "15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9",
+      "newEvidenceId": "02bc4eccaaf5dbba3e10ad241c5bb7122b76d7590a5db276f1e45afc4ab4defb",
+      "retainOldCandidateAndOriginal": true,
+      "newQualityTier": "main_photo",
+      "doNotInheritOldRightHalfCrop": true,
+      "oldOriginalFile": "tests/fixtures/photo-soldelta5-evidence/ae76173048105b271b83cb7db7dd6d33bc790be8c58bbbc7e2204d64adf59588.jpg",
+      "newOriginalFile": "tests/fixtures/photo-soldelta5-evidence/15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9.jpg"
+    },
+    {
+      "ratingId": "recvxARiP22f9m",
+      "workId": "recvxyOz5X93Kc",
+      "memberId": "recvxyICzHYDdj",
+      "videoId": "fCO7f0SmrDc",
+      "oldCandidateId": "recvxARiP22f9m:mv-look.20261019.soldelta4:15183e04703b96ef172346bd6c66750b74fb77d8a2b038f424f59b0e4d7fad46",
+      "oldSHA256": "15183e04703b96ef172346bd6c66750b74fb77d8a2b038f424f59b0e4d7fad46",
+      "oldEvidenceId": "fb3d6403312df643e2eb032fa4f3dd71712b8f90f908df8ab010302c69299fce",
+      "newCandidateId": "recvxARiP22f9m:mv-look.20261019.soldelta5:9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346",
+      "newSHA256": "9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346",
+      "newEvidenceId": "2819632045fbd0cbb03acdb0806a9a57510b165f0d327246947edbb8fa6e30dd",
+      "retainOldCandidateAndOriginal": true,
+      "newQualityTier": "card_only",
+      "doNotInheritOldRightHalfCrop": true,
+      "oldOriginalFile": "tests/fixtures/photo-soldelta5-evidence/15183e04703b96ef172346bd6c66750b74fb77d8a2b038f424f59b0e4d7fad46.jpg",
+      "newOriginalFile": "tests/fixtures/photo-soldelta5-evidence/9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346.jpg"
+    },
+    {
+      "ratingId": "recvxARiP2fYjn",
+      "workId": "recvxyOz5X93Kc",
+      "memberId": "recvxyICzH4cgr",
+      "videoId": "fCO7f0SmrDc",
+      "oldCandidateId": "recvxARiP2fYjn:mv-look.20261019.soldelta4:96f6bda8acdbe1042501f175d4a26df786124be03d3dfdf3e6ac2fb076f165f1",
+      "oldSHA256": "96f6bda8acdbe1042501f175d4a26df786124be03d3dfdf3e6ac2fb076f165f1",
+      "oldEvidenceId": "b2ab0d29bcd63dd4dc16650e28ce459e788bba4019c46722c6afbbad3929e81e",
+      "newCandidateId": "recvxARiP2fYjn:mv-look.20261019.soldelta5:9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14",
+      "newSHA256": "9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14",
+      "newEvidenceId": "0f5d102e0f84823b2c41ffb628b36f62c9cc9163560807de80debf8a84714d02",
+      "retainOldCandidateAndOriginal": true,
+      "newQualityTier": "main_photo",
+      "doNotInheritOldRightHalfCrop": true,
+      "oldOriginalFile": "tests/fixtures/photo-soldelta5-evidence/96f6bda8acdbe1042501f175d4a26df786124be03d3dfdf3e6ac2fb076f165f1.jpg",
+      "newOriginalFile": "tests/fixtures/photo-soldelta5-evidence/9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14.jpg"
+    },
+    {
+      "ratingId": "recvxARiP2SvGc",
+      "workId": "recvxyOz5X93Kc",
+      "memberId": "recvxyICzHZFRP",
+      "videoId": "fCO7f0SmrDc",
+      "oldCandidateId": "recvxARiP2SvGc:mv-look.20261019.soldelta4:f273785926c0c8895c7128c7bc049bcf7682292bfde40bfb8616b8bd988e09f7",
+      "oldSHA256": "f273785926c0c8895c7128c7bc049bcf7682292bfde40bfb8616b8bd988e09f7",
+      "oldEvidenceId": "521774ec4eb4b625f886bbc0e4919cc928dd8dc8b2c652270b90a5f0cda08163",
+      "newCandidateId": "recvxARiP2SvGc:mv-look.20261019.soldelta5:5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4",
+      "newSHA256": "5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4",
+      "newEvidenceId": "7760bc6f8810ffc3a68196f2b112e6bd55528ff9a8e4ff0c1b129aac652f7078",
+      "retainOldCandidateAndOriginal": true,
+      "newQualityTier": "card_only",
+      "doNotInheritOldRightHalfCrop": true,
+      "oldOriginalFile": "tests/fixtures/photo-soldelta5-evidence/f273785926c0c8895c7128c7bc049bcf7682292bfde40bfb8616b8bd988e09f7.jpg",
+      "newOriginalFile": "tests/fixtures/photo-soldelta5-evidence/5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4.jpg"
+    },
+    {
+      "ratingId": "recvxARiP2xniJ",
+      "workId": "recvxyOz5X93Kc",
+      "memberId": "recvxyICzHP2fv",
+      "videoId": "fCO7f0SmrDc",
+      "oldCandidateId": "recvxARiP2xniJ:mv-look.20261019.soldelta4:46011f56f82824c9acbe2ccdbbfc676835b3cc582cfa21013333da077c3f4f54",
+      "oldSHA256": "46011f56f82824c9acbe2ccdbbfc676835b3cc582cfa21013333da077c3f4f54",
+      "oldEvidenceId": "5e413e8f331e9b01c78a676e89f113bc817d2d96b60c3438aa4acd5335314324",
+      "newCandidateId": "recvxARiP2xniJ:mv-look.20261019.soldelta5:ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d",
+      "newSHA256": "ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d",
+      "newEvidenceId": "1ebb31a0b6e3860de206555c46cbcb40b115bf57dc2da65ce8e3f141fad22aa6",
+      "retainOldCandidateAndOriginal": true,
+      "newQualityTier": "card_only",
+      "doNotInheritOldRightHalfCrop": true,
+      "oldOriginalFile": "tests/fixtures/photo-soldelta5-evidence/46011f56f82824c9acbe2ccdbbfc676835b3cc582cfa21013333da077c3f4f54.jpg",
+      "newOriginalFile": "tests/fixtures/photo-soldelta5-evidence/ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d.jpg"
+    }
+  ],
+  "evidenceFiles": {
+    "tests/fixtures/photo-soldelta5-evidence/82a6839db5ab2963d0ccb4fd7a958cde871bd5f729013d06243b8b5dbbeb1124.html": {
+      "sha256": "82a6839db5ab2963d0ccb4fd7a958cde871bd5f729013d06243b8b5dbbeb1124",
+      "bytes": 313
+    },
+    "tests/fixtures/photo-soldelta5-evidence/460bfa3aafb63a75793201dec4a49b592203202c013bc037ac9a535eba0ce198.html": {
+      "sha256": "460bfa3aafb63a75793201dec4a49b592203202c013bc037ac9a535eba0ce198",
+      "bytes": 246
+    },
+    "tests/fixtures/photo-soldelta5-evidence/f49a651d1e7ecf6a147b974dfa701f3da9bbcce70dcf5f83882e3d3ae3471abc.png": {
+      "sha256": "f49a651d1e7ecf6a147b974dfa701f3da9bbcce70dcf5f83882e3d3ae3471abc",
+      "bytes": 220149
+    },
+    "tests/fixtures/photo-soldelta5-evidence/7b8121b480eb44df586cf94e6b92ac95d49084915200497b92474e78987ce384.html": {
+      "sha256": "7b8121b480eb44df586cf94e6b92ac95d49084915200497b92474e78987ce384",
+      "bytes": 980
+    },
+    "tests/fixtures/photo-soldelta5-evidence/1ca973fd4294aecf94e4130da75b0314f38b51a18b7581fac88aef3e8ee25244.png": {
+      "sha256": "1ca973fd4294aecf94e4130da75b0314f38b51a18b7581fac88aef3e8ee25244",
+      "bytes": 1561245
+    },
+    "tests/fixtures/photo-soldelta5-evidence/427db582cba7be2de21abce15bd5c900d4693ea615a1407f39ebf5c3065cb893.json": {
+      "sha256": "427db582cba7be2de21abce15bd5c900d4693ea615a1407f39ebf5c3065cb893",
+      "bytes": 1716
+    },
+    "tests/fixtures/photo-soldelta5-evidence/93c54a7174851f93805a62c031ae04498043894c076c368804607b78d85f0e8b.json": {
+      "sha256": "93c54a7174851f93805a62c031ae04498043894c076c368804607b78d85f0e8b",
+      "bytes": 407
+    },
+    "tests/fixtures/photo-soldelta5-evidence/4bd6f4b4d484a551a418f55dec06f5105ab71621bc556aa450fb9e2a8ee8d46b.json": {
+      "sha256": "4bd6f4b4d484a551a418f55dec06f5105ab71621bc556aa450fb9e2a8ee8d46b",
+      "bytes": 2768
+    },
+    "tests/fixtures/photo-soldelta5-evidence/b04c44fe5e61d001fb698966ab78c977f89aa13e0aa8b87b52a41cfcabadc2cd.json": {
+      "sha256": "b04c44fe5e61d001fb698966ab78c977f89aa13e0aa8b87b52a41cfcabadc2cd",
+      "bytes": 5014
+    },
+    "tests/fixtures/photo-soldelta5-evidence/7f83fda2a04166b94669d55bf9aa5e48f54362cebbc2ec3fb16edad1640a9324.html": {
+      "sha256": "7f83fda2a04166b94669d55bf9aa5e48f54362cebbc2ec3fb16edad1640a9324",
+      "bytes": 313
+    },
+    "tests/fixtures/photo-soldelta5-evidence/fd4c78a202dfbfc0be60f0aedd710bf875f58f96ed320b6d678ee982225326e7.png": {
+      "sha256": "fd4c78a202dfbfc0be60f0aedd710bf875f58f96ed320b6d678ee982225326e7",
+      "bytes": 180998
+    },
+    "tests/fixtures/photo-soldelta5-evidence/feb557ba0b9e09c2681c620d4e4aa11d540853e6c7ff174ef077e1e9a5676240.json": {
+      "sha256": "feb557ba0b9e09c2681c620d4e4aa11d540853e6c7ff174ef077e1e9a5676240",
+      "bytes": 2772
+    },
+    "tests/fixtures/photo-soldelta5-evidence/c4899ec69dd2f0e9e292c7820c0ea297b0b777032a5946956465ab2865bf87d1.json": {
+      "sha256": "c4899ec69dd2f0e9e292c7820c0ea297b0b777032a5946956465ab2865bf87d1",
+      "bytes": 5023
+    },
+    "tests/fixtures/photo-soldelta5-evidence/7baf0adb60fa65b9c0fcaf27c18732b4bdbaa67b81e4b79a51890c81b613923f.html": {
+      "sha256": "7baf0adb60fa65b9c0fcaf27c18732b4bdbaa67b81e4b79a51890c81b613923f",
+      "bytes": 289
+    },
+    "tests/fixtures/photo-soldelta5-evidence/655ec3170199b32523af3435abc7155fe5c56afdad80a5486c1b243cedf25b23.html": {
+      "sha256": "655ec3170199b32523af3435abc7155fe5c56afdad80a5486c1b243cedf25b23",
+      "bytes": 494
+    },
+    "tests/fixtures/photo-soldelta5-evidence/756fc4cde1fc4c6972699784e3df16fe4c3fcb83e0d4475eeb57292e18d090e3.png": {
+      "sha256": "756fc4cde1fc4c6972699784e3df16fe4c3fcb83e0d4475eeb57292e18d090e3",
+      "bytes": 199198
+    },
+    "tests/fixtures/photo-soldelta5-evidence/02a10de1d5ee2f44bc64cd4927395d752beff015950a4aea2b88fb70617f5be4.png": {
+      "sha256": "02a10de1d5ee2f44bc64cd4927395d752beff015950a4aea2b88fb70617f5be4",
+      "bytes": 203453
+    },
+    "tests/fixtures/photo-soldelta5-evidence/e2fa1ae8b573e17e72e35a14d1c48c135bc3761ae580d41efe0c541d41ce1ff6.html": {
+      "sha256": "e2fa1ae8b573e17e72e35a14d1c48c135bc3761ae580d41efe0c541d41ce1ff6",
+      "bytes": 131
+    },
+    "tests/fixtures/photo-soldelta5-evidence/6200c9601faafe310cb9839b6607342dd20e1383de28cd9147e0bcc38a5d19e2.html": {
+      "sha256": "6200c9601faafe310cb9839b6607342dd20e1383de28cd9147e0bcc38a5d19e2",
+      "bytes": 110
+    },
+    "tests/fixtures/photo-soldelta5-evidence/0991c986554b29641dd7340e834242590521455540fcff9810ea46b6b1dd600d.html": {
+      "sha256": "0991c986554b29641dd7340e834242590521455540fcff9810ea46b6b1dd600d",
+      "bytes": 259
+    },
+    "tests/fixtures/photo-soldelta5-evidence/0af521afca433c6bc6d757a0896bba2a1add447217b6125cdb93ca65d2adefda.jpg": {
+      "sha256": "0af521afca433c6bc6d757a0896bba2a1add447217b6125cdb93ca65d2adefda",
+      "bytes": 92628
+    },
+    "tests/fixtures/photo-soldelta5-evidence/005c0bd11f37ccde358191b6b24618c42db9d3bf4e629dfd8772d31bf18f0a83.html": {
+      "sha256": "005c0bd11f37ccde358191b6b24618c42db9d3bf4e629dfd8772d31bf18f0a83",
+      "bytes": 305
+    },
+    "tests/fixtures/photo-soldelta5-evidence/1782cb84461f201e851a546d6aa2c90faf222576baeace9503f4fc0918bdfbd7.jpg": {
+      "sha256": "1782cb84461f201e851a546d6aa2c90faf222576baeace9503f4fc0918bdfbd7",
+      "bytes": 1030800
+    },
+    "tests/fixtures/photo-soldelta5-evidence/eadf2dc5a3fdf6670219c16855d453096afcdbdc615e11836d2e226de3bced3e.json": {
+      "sha256": "eadf2dc5a3fdf6670219c16855d453096afcdbdc615e11836d2e226de3bced3e",
+      "bytes": 6506
+    },
+    "tests/fixtures/photo-soldelta5-evidence/9b814e26e920485e66e9d34f8237e01faba1d142b31d0223be3f8e055b8bea14.json": {
+      "sha256": "9b814e26e920485e66e9d34f8237e01faba1d142b31d0223be3f8e055b8bea14",
+      "bytes": 3647
+    },
+    "tests/fixtures/photo-soldelta5-evidence/7c8435f67ddf87f360b64293c9642b0af17399bbcdfdb0f39c2637eac256b7b9.json": {
+      "sha256": "7c8435f67ddf87f360b64293c9642b0af17399bbcdfdb0f39c2637eac256b7b9",
+      "bytes": 6494
+    },
+    "tests/fixtures/photo-soldelta5-evidence/8895ddbc066095ca40b6e463dd706e56c6b8e7e1811b58259a6e10efc657e3b9.html": {
+      "sha256": "8895ddbc066095ca40b6e463dd706e56c6b8e7e1811b58259a6e10efc657e3b9",
+      "bytes": 286
+    },
+    "tests/fixtures/photo-soldelta5-evidence/a0ed974b1e9596b2ad40fa2d22068045564a759dd3eef7956a1af0a7a0afc3b9.json": {
+      "sha256": "a0ed974b1e9596b2ad40fa2d22068045564a759dd3eef7956a1af0a7a0afc3b9",
+      "bytes": 3716
+    },
+    "tests/fixtures/photo-soldelta5-evidence/992e81e08dd50aefb3e548683c8f0d8fae8bb8af39a8e9193b384e52b910bc9b.json": {
+      "sha256": "992e81e08dd50aefb3e548683c8f0d8fae8bb8af39a8e9193b384e52b910bc9b",
+      "bytes": 6564
+    },
+    "tests/fixtures/photo-soldelta5-evidence/47e567dfb9a0ffb1efb63b84b2fc154ebd28cb882939b702d1e11a87f78235f4.html": {
+      "sha256": "47e567dfb9a0ffb1efb63b84b2fc154ebd28cb882939b702d1e11a87f78235f4",
+      "bytes": 327
+    },
+    "tests/fixtures/photo-soldelta5-evidence/e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5.html": {
+      "sha256": "e49d8a0fdabc92706046ddd3c22fa6af34a20a5250125bb35d12fc70a44570b5",
+      "bytes": 1743
+    },
+    "tests/fixtures/photo-soldelta5-evidence/1cbd40762b2e454df3d2ba66dab3ef7c66cb236fe7c180d76bfb40bb34a0a488.jpg": {
+      "sha256": "1cbd40762b2e454df3d2ba66dab3ef7c66cb236fe7c180d76bfb40bb34a0a488",
+      "bytes": 224240
+    },
+    "tests/fixtures/photo-soldelta5-evidence/02bc4eccaaf5dbba3e10ad241c5bb7122b76d7590a5db276f1e45afc4ab4defb.json": {
+      "sha256": "02bc4eccaaf5dbba3e10ad241c5bb7122b76d7590a5db276f1e45afc4ab4defb",
+      "bytes": 4047
+    },
+    "tests/fixtures/photo-soldelta5-evidence/8a17ddc0adea74caad2385c9ab63e43a0f037f41ce4cd58ae498351f4cd79b9f.html": {
+      "sha256": "8a17ddc0adea74caad2385c9ab63e43a0f037f41ce4cd58ae498351f4cd79b9f",
+      "bytes": 185
+    },
+    "tests/fixtures/photo-soldelta5-evidence/2819632045fbd0cbb03acdb0806a9a57510b165f0d327246947edbb8fa6e30dd.json": {
+      "sha256": "2819632045fbd0cbb03acdb0806a9a57510b165f0d327246947edbb8fa6e30dd",
+      "bytes": 3979
+    },
+    "tests/fixtures/photo-soldelta5-evidence/726b6562178a9d9063579e0c2748838f27904bc2c14ca600b50c6759ec703d7a.html": {
+      "sha256": "726b6562178a9d9063579e0c2748838f27904bc2c14ca600b50c6759ec703d7a",
+      "bytes": 275
+    },
+    "tests/fixtures/photo-soldelta5-evidence/0f5d102e0f84823b2c41ffb628b36f62c9cc9163560807de80debf8a84714d02.json": {
+      "sha256": "0f5d102e0f84823b2c41ffb628b36f62c9cc9163560807de80debf8a84714d02",
+      "bytes": 3866
+    },
+    "tests/fixtures/photo-soldelta5-evidence/c285ea42b0a4e0016939f0fea8c7dea4830f70900dc16a3de0cf1611c3557272.html": {
+      "sha256": "c285ea42b0a4e0016939f0fea8c7dea4830f70900dc16a3de0cf1611c3557272",
+      "bytes": 185
+    },
+    "tests/fixtures/photo-soldelta5-evidence/31e390be1d196eb8aed121c544f834f1e09ed54725cc315dc98b889cd3e53c09.png": {
+      "sha256": "31e390be1d196eb8aed121c544f834f1e09ed54725cc315dc98b889cd3e53c09",
+      "bytes": 373344
+    },
+    "tests/fixtures/photo-soldelta5-evidence/195cf9de6b95e85c2c2aed4873a1f23c13f9064eec7cccd3933d2660ca21b8ec.html": {
+      "sha256": "195cf9de6b95e85c2c2aed4873a1f23c13f9064eec7cccd3933d2660ca21b8ec",
+      "bytes": 211
+    },
+    "tests/fixtures/photo-soldelta5-evidence/7760bc6f8810ffc3a68196f2b112e6bd55528ff9a8e4ff0c1b129aac652f7078.json": {
+      "sha256": "7760bc6f8810ffc3a68196f2b112e6bd55528ff9a8e4ff0c1b129aac652f7078",
+      "bytes": 4387
+    },
+    "tests/fixtures/photo-soldelta5-evidence/4a2b72c16542e03ea89240538470e532581e7c6fc6e1787eb66cea1fafb43df2.html": {
+      "sha256": "4a2b72c16542e03ea89240538470e532581e7c6fc6e1787eb66cea1fafb43df2",
+      "bytes": 185
+    },
+    "tests/fixtures/photo-soldelta5-evidence/1ebb31a0b6e3860de206555c46cbcb40b115bf57dc2da65ce8e3f141fad22aa6.json": {
+      "sha256": "1ebb31a0b6e3860de206555c46cbcb40b115bf57dc2da65ce8e3f141fad22aa6",
+      "bytes": 3875
+    },
+    "tests/fixtures/photo-soldelta5-evidence/16525c7463a99573d850750e964655596763dda18f23d3e16f9990becd801f71.jpg": {
+      "sha256": "16525c7463a99573d850750e964655596763dda18f23d3e16f9990becd801f71",
+      "bytes": 1619011
+    },
+    "tests/fixtures/photo-soldelta5-evidence/8293c5d35ce33f67f6666df83830a009d9a5502f63cf17db816453a7118fd38a.jpg": {
+      "sha256": "8293c5d35ce33f67f6666df83830a009d9a5502f63cf17db816453a7118fd38a",
+      "bytes": 1571883
+    },
+    "tests/fixtures/photo-soldelta5-evidence/6171656003f5fda844d98806b6de40ce8f9343b1208f457ff4f38082689b54e9.jpg": {
+      "sha256": "6171656003f5fda844d98806b6de40ce8f9343b1208f457ff4f38082689b54e9",
+      "bytes": 287378
+    },
+    "tests/fixtures/photo-soldelta5-evidence/c89c11400fc873b3ddc036840f0959cc2504934eca12b328c3666fa31b155f69.jpg": {
+      "sha256": "c89c11400fc873b3ddc036840f0959cc2504934eca12b328c3666fa31b155f69",
+      "bytes": 163379
+    },
+    "tests/fixtures/photo-soldelta5-evidence/15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9.jpg": {
+      "sha256": "15e09f16546bfe8fa342b95c8e5fc37453272f2aad1ad08652e762093d4c28c9",
+      "bytes": 443253
+    },
+    "tests/fixtures/photo-soldelta5-evidence/9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346.jpg": {
+      "sha256": "9c6eb4cc168de3c4e83e921ca6bdf589a8b7e890cd212d382cc65dc245a16346",
+      "bytes": 425403
+    },
+    "tests/fixtures/photo-soldelta5-evidence/9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14.jpg": {
+      "sha256": "9230d7f8e7a465735debae745732f60875159199a51b0c17ba456a77891bef14",
+      "bytes": 367214
+    },
+    "tests/fixtures/photo-soldelta5-evidence/5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4.jpg": {
+      "sha256": "5c6375c0ab8a5a697052da38ed5c9601b26a8300d929c69d1824489beeb64fc4",
+      "bytes": 413623
+    },
+    "tests/fixtures/photo-soldelta5-evidence/ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d.jpg": {
+      "sha256": "ca07067a1c3ce69dcc3efd96487b3844c3e58ae22fea016f4db00cf7ee55ee6d",
+      "bytes": 428863
+    },
+    "tests/fixtures/photo-soldelta5-evidence/ae76173048105b271b83cb7db7dd6d33bc790be8c58bbbc7e2204d64adf59588.jpg": {
+      "sha256": "ae76173048105b271b83cb7db7dd6d33bc790be8c58bbbc7e2204d64adf59588",
+      "bytes": 100705
+    },
+    "tests/fixtures/photo-soldelta5-evidence/15183e04703b96ef172346bd6c66750b74fb77d8a2b038f424f59b0e4d7fad46.jpg": {
+      "sha256": "15183e04703b96ef172346bd6c66750b74fb77d8a2b038f424f59b0e4d7fad46",
+      "bytes": 110183
+    },
+    "tests/fixtures/photo-soldelta5-evidence/96f6bda8acdbe1042501f175d4a26df786124be03d3dfdf3e6ac2fb076f165f1.jpg": {
+      "sha256": "96f6bda8acdbe1042501f175d4a26df786124be03d3dfdf3e6ac2fb076f165f1",
+      "bytes": 100911
+    },
+    "tests/fixtures/photo-soldelta5-evidence/f273785926c0c8895c7128c7bc049bcf7682292bfde40bfb8616b8bd988e09f7.jpg": {
+      "sha256": "f273785926c0c8895c7128c7bc049bcf7682292bfde40bfb8616b8bd988e09f7",
+      "bytes": 109773
+    },
+    "tests/fixtures/photo-soldelta5-evidence/46011f56f82824c9acbe2ccdbbfc676835b3cc582cfa21013333da077c3f4f54.jpg": {
+      "sha256": "46011f56f82824c9acbe2ccdbbfc676835b3cc582cfa21013333da077c3f4f54",
+      "bytes": 114230
+    },
+    "tests/fixtures/photo-soldelta5-evidence/a2fca067b27fbd738f4d5aea924c75906e308b83cf4973a2c63ac0f59475ea68.json": {
+      "sha256": "a2fca067b27fbd738f4d5aea924c75906e308b83cf4973a2c63ac0f59475ea68",
+      "bytes": 1941
+    },
+    "tests/fixtures/photo-soldelta5-evidence/d6b2398aa4726197d35ad936eb581cb54c5127dd4b6e1f3a53ecec838149ed1e.json": {
+      "sha256": "d6b2398aa4726197d35ad936eb581cb54c5127dd4b6e1f3a53ecec838149ed1e",
+      "bytes": 11967
+    },
+    "tests/fixtures/photo-soldelta5-evidence/0273b7855998743b26fe7f5414655eeac8cb2191f1478a8d04d3beb66e7abcc5.json": {
+      "sha256": "0273b7855998743b26fe7f5414655eeac8cb2191f1478a8d04d3beb66e7abcc5",
+      "bytes": 4129
+    },
+    "tests/fixtures/photo-soldelta5-evidence/6b6101c6b22f049a7e23f48ec2e249acaec5506cf53de511ed4d3d5171403ff7.json": {
+      "sha256": "6b6101c6b22f049a7e23f48ec2e249acaec5506cf53de511ed4d3d5171403ff7",
+      "bytes": 14379
+    }
+  },
+  "reviewArtifacts": {
+    "PROPOSAL-RESULT.json": "tests/fixtures/photo-soldelta5-evidence/a2fca067b27fbd738f4d5aea924c75906e308b83cf4973a2c63ac0f59475ea68.json",
+    "independent-server-proposal-validation.json": "tests/fixtures/photo-soldelta5-evidence/d6b2398aa4726197d35ad936eb581cb54c5127dd4b6e1f3a53ecec838149ed1e.json",
+    "server-proposal-validation.json": "tests/fixtures/photo-soldelta5-evidence/0273b7855998743b26fe7f5414655eeac8cb2191f1478a8d04d3beb66e7abcc5.json",
+    "live-nine-tuples-proof.json": "tests/fixtures/photo-soldelta5-evidence/6b6101c6b22f049a7e23f48ec2e249acaec5506cf53de511ed4d3d5171403ff7.json"
+  }
+}

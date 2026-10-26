@@ -1,0 +1,16 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),ts=require('typescript');
+function route(file,{control={mode:'feishu',epoch:0,active_snapshot:null},configured=true,change=false}={}){let reads=0,fences=0;const before={...control};class AppError extends Error{constructor(code,msg,status=503){super(msg);this.code=code;this.status=status;}}
+const json=(d,status=200)=>Response.json(d,{status});const stubs={
+'@/lib/idol/member-career-display':require('./helpers/member-career-loader.cjs'),
+'@/lib/idol/native-storage':{ownControl:async()=>({...before}),activeNative:async()=>control.mode==='native'||control.mode==='frozen'&&control.active_snapshot?control:null,nativeSchema:async()=>[],nativeExportSnapshot:async()=>null,assertSourceUnchanged:async()=>{fences++;if(change)throw new AppError('STORAGE_CHANGING','changed',409)}},
+'@/lib/idol/native-reader':{readNativeCatalog:async()=>({mode:'live',loadedAt:'time',groups:[],members:[],works:[],ratings:[]})},
+'@/lib/idol/feishu':{configured:()=>configured,TABLES:{groups:'g',members:'m',works:'w',ratings:'r'},AppError},
+'@/lib/idol/catalog':{getCatalog:async()=>{reads++;return {mode:'live',loadedAt:'time',groups:[],members:[],works:[],ratings:[]}}},
+'@/lib/idol/live':{schema:async()=>[],liveTables:async()=>{reads++;return {}}},
+'@/lib/idol/fields':{EDITABLE:{groups:{},members:{},works:{},ratings:{}}},
+'@/lib/idol/http':{json,requireUser:async()=>({userId:'owner'}),failure:e=>json({error:e.code},e.status??500)},
+'@/lib/idol/group-milestones':{},'@/lib/idol/stage':{},'@/lib/idol/supplements':{},'@/lib/idol/placeholders':{},'@/lib/idol/hash':{hash:async()=>''},'@/data/backup':{snapshotBackupBase64:'AA==',snapshotBackupSha256:'test'}};
+const exports={},js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext(`(function(require,exports){${js}})`,{Response,Uint8Array,Date,atob})(n=>{const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(n);if(timelineModule!==undefined)return timelineModule;if(!(n in stubs))throw Error(n);return stubs[n]},exports);return {...exports,get reads(){return reads},get fences(){return fences}};}
+test('health rejects both configured and unavailable Feishu responses after source transition',async()=>{for(const configured of [true,false]){const h=route('app/api/health/route.ts',{configured,change:true});const r=await h.GET();assert.equal(r.status,409);assert.equal(h.fences,1);}});
+test('export snapshot fallback is fenced before it can return stale packaged data',async()=>{const h=route('app/api/export/route.ts',{configured:false,change:true});assert.equal((await h.GET()).status,409);assert.equal(h.reads,0);assert.equal(h.fences,1);});
+test('frozen native status consistently reports the native reader and paused writes',async()=>{for(const configured of [true,false]){const h=route('app/api/status/route.ts',{configured,control:{mode:'frozen',epoch:2,active_snapshot:'snap'}});const r=await(await h.GET()).json();assert.equal(r.source,'native');assert.equal(r.mode,'read-only');assert.equal(r.writesPaused,true);assert.equal(r.configured,true);}});

@@ -1,0 +1,72 @@
+@font-face{font-family:HitgsZine;src:url('/fonts/Anton-Regular.ttf') format('truetype');font-display:swap}
+.candidate-hitgs-experience{--paper:#e4eff8;--white:#ffffff;--ink:#143c7b;--muted:#516581;--line:#a6bfd7;--rose:#143c7b;--blush:#edf3f9;--lilac:#d5e5f4;background:var(--paper);color:var(--ink);min-height:100vh;font-family:var(--font-body),system-ui,sans-serif;overflow-wrap:anywhere}
+.candidate-hitgs-experience .work-detail-top,.candidate-hitgs-experience .member-detail{align-items:start}
+.candidate-hitgs-experience .work-aside,.candidate-hitgs-experience .cast-card,.candidate-hitgs-experience .editor,.candidate-hitgs-experience .member-work-summary,.candidate-hitgs-experience .stage-source,.candidate-hitgs-experience .watch-next{border-radius:0;min-width:0}
+.candidate-hitgs-experience .video-stage,.candidate-hitgs-experience .button,.candidate-hitgs-experience .video-mode-tabs,.candidate-hitgs-experience .video-mode-tabs button{border-radius:0}
+.candidate-hitgs-experience .button{white-space:normal;max-width:100%;min-height:44px}
+.candidate-hitgs-experience .button.primary,.candidate-hitgs-experience .button.primary:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+.candidate-hitgs-experience .video-mode-tabs{border:1px solid var(--line);background:var(--white)}
+.candidate-hitgs-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:#fff}
+.candidate-hitgs-experience .video-mode-tabs button{min-height:44px}
+.candidate-hitgs-experience .photo-empty,.candidate-hitgs-experience .video-fallback,.candidate-hitgs-experience .video-caption{color:var(--muted)}
+.candidate-hitgs-experience .photo,.candidate-hitgs-experience .member-work-card{border-radius:0;background:var(--lilac)}
+.candidate-hitgs-experience .member-detail>.photo img{object-fit:contain}
+.candidate-hitgs-experience .member-name{font-size:20px;line-height:1.4}
+.candidate-hitgs-experience .cast-scores{flex-wrap:wrap}
+.candidate-hitgs-experience .editor-fields input,.candidate-hitgs-experience .editor-fields select,.candidate-hitgs-experience .editor-fields textarea,.candidate-hitgs-experience .score-input{background:var(--paper);color:var(--ink);border-color:var(--line);border-radius:0}
+.candidate-hitgs-experience .my-note,.candidate-hitgs-experience .caption-help{background:var(--white);border:1px solid var(--line);border-radius:0;color:var(--muted)}
+.candidate-hitgs-experience .detail-return{border:1px solid var(--line);background:var(--white);border-radius:0;padding:18px}
+.candidate-hitgs-experience .alternative-card,.candidate-hitgs-experience .watch-lead-card{background:var(--white);border-color:var(--line);border-radius:0}
+.candidate-hitgs-experience .stage-view .mobile-work-heading h1{overflow-wrap:anywhere}
+.candidate-hitgs-experience .header{border-bottom:3px solid var(--ink)}
+.candidate-hitgs-experience .brand{font:400 32px/1.1 HitgsZine,sans-serif;letter-spacing:0}
+.candidate-hitgs-experience .work-detail-top{grid-template-columns:1fr;gap:28px;border-top:3px solid var(--ink);padding-top:24px}
+.candidate-hitgs-experience .work-aside{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;border:2px solid var(--ink);border-bottom:7px double var(--ink);padding:30px;background:var(--white)}
+.candidate-hitgs-experience .work-aside>*{grid-column:1}
+.candidate-hitgs-experience .work-aside>.editor{grid-column:2;grid-row:1/span 8;align-self:start;margin-top:0}
+.candidate-hitgs-experience .work-aside h1{font-size:clamp(32px,4vw,56px);line-height:1.25}
+.candidate-hitgs-experience .video-stage{border:8px solid var(--ink)}
+.candidate-hitgs-experience .video-play{border-radius:0;background:var(--paper);color:var(--ink)}
+.candidate-hitgs-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.candidate-hitgs-experience .cast-card{padding:20px;border:2px solid var(--ink);border-bottom:6px double var(--ink)}
+.candidate-hitgs-experience .cast-card .photo{aspect-ratio:5/3}
+.candidate-hitgs-experience .stage-view .work-detail-top{border-top-color:#b02f2b}
+.candidate-hitgs-experience .stage-overall-note{border-left:5px solid #b02f2b;padding:18px;background:#f0e3ce}
+.candidate-hitgs-experience .stage-source{border:1px solid var(--ink);background:var(--white);padding:20px}
+.candidate-hitgs-experience .watch-next{border:2px solid var(--ink);border-left:8px solid #b02f2b;background:var(--white)}
+.candidate-hitgs-experience .member-detail{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;border-top:3px solid var(--ink);padding-top:28px}
+.candidate-hitgs-experience .member-detail>.photo{order:2;border:3px solid var(--ink);padding:14px;background:var(--white)}
+.candidate-hitgs-experience .member-detail>div:not(.photo){order:1}
+.candidate-hitgs-experience .member-work-summary{border:2px solid var(--ink);background:var(--white)}
+.candidate-hitgs-experience .member-work-card{border-bottom:5px double var(--ink)}
+@media(max-width:760px){
+.candidate-hitgs-experience .header{height:auto;min-height:76px;flex-wrap:wrap;padding-top:12px}
+.candidate-hitgs-experience .header nav{height:auto;gap:18px;background:var(--paper)}
+.candidate-hitgs-experience .video-mode-tabs{width:100%;flex:1}
+.candidate-hitgs-experience .video-mode-tabs button{flex:1}
+.candidate-hitgs-experience .editor-fields input,.candidate-hitgs-experience .editor-fields select,.candidate-hitgs-experience .editor-fields textarea{font-size:16px}
+.candidate-hitgs-experience .cast-copy{min-width:0}
+.candidate-hitgs-experience .member-name{font-size:18px}
+.candidate-hitgs-experience .detail-return{padding:14px 12px}
+.candidate-hitgs-experience .detail-return .button{min-height:48px;min-width:0;white-space:normal}
+.candidate-hitgs-experience .stage-view .mobile-work-heading{display:block}
+.candidate-hitgs-experience .work-detail-top,.candidate-hitgs-experience .member-detail{min-width:0}
+.candidate-hitgs-experience .work-aside{display:block;padding:20px;border-width:2px;border-bottom-width:7px}
+.candidate-hitgs-experience .work-aside>.editor{margin-top:22px}
+.candidate-hitgs-experience .work-aside h1{font-size:30px}
+.candidate-hitgs-experience .video-stage{border-width:4px}
+.candidate-hitgs-experience .cast-grid{grid-template-columns:1fr;gap:20px}
+.candidate-hitgs-experience .cast-card{padding:16px}
+.candidate-hitgs-experience .member-detail{grid-template-columns:1fr;gap:28px}
+.candidate-hitgs-experience .member-detail>.photo{order:2}
+.candidate-hitgs-experience .stage-source{padding:16px}
+}
+@media(prefers-reduced-motion:reduce){.candidate-hitgs-experience *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Batch B: local detail views retain full portraits and reachable controls. */
+.candidate-hitgs-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.candidate-hitgs-experience .cast-card .photo img,.candidate-hitgs-experience .member-detail>.photo img{object-fit:contain}
+.candidate-hitgs-experience .cast-card .photo{overflow:hidden;border-radius:0}
+.candidate-hitgs-experience :is(.cast-copy,.work-aside,.member-detail>div){min-width:0}
+.candidate-hitgs-experience .cast-scores{gap:10px}
+@media(max-width:390px){.candidate-hitgs-experience .button{max-width:100%;min-width:0;line-height:1.5}.candidate-hitgs-experience .detail-return{display:flex;flex-wrap:wrap;gap:12px}.candidate-hitgs-experience .work-aside h1{font-size:30px;overflow-wrap:anywhere}}

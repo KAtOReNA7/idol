@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "auditCommit": "c407c2e77f17da55f10b544526c874dfffc62102",
+  "reason": "Seven unused ifeye old-batch PNG originals are excluded only from the generated deployment. The exact original bytes stay in public/ and Git. Every currently rendered WebP, layout, source link and personal record is unchanged. The audited generic ifeye renderer never constructs an original URL; re-audit if rendering changes.",
+  "runtimeGuards": {
+    "app/artists/ifeye/page.tsx": {
+      "bytes": 203,
+      "sha256": "52c52fe9e05b1cf083a674c07f2becd5cbfaf0761dc477c8ff64f337d1141d3e"
+    },
+    "components/candidate/ifeye-design.tsx": {
+      "bytes": 1361,
+      "sha256": "cb04581fe11fbce227819c8d00c01734a42fb40d0d4d603b14807ca2a50cf487"
+    },
+    "components/candidate-artist-experience.tsx": {
+      "bytes": 19211,
+      "sha256": "00b469d538abc1f119bc55f4a27b158f4213ecbed3591483eacdeed55d1113f0"
+    },
+    "components/candidate-index-card.tsx": {
+      "bytes": 3512,
+      "sha256": "eb6493d4674124fae6558d67da17bc7ca8612b8d5774b45cf9f3ee701b9813e0"
+    },
+    "lib/idol/candidate/portrait.ts": {
+      "bytes": 992,
+      "sha256": "08e8870cd1713a0935b24baa1cc941df9add6e60afe292b0c26af7bbb09b6216"
+    },
+    "components/reliable-image.tsx": {
+      "bytes": 12702,
+      "sha256": "d99db30b791ece5cfd9110dfb176b7a636492887dbb86e0cf34e8b1822116339"
+    },
+    "components/photo-lightbox.tsx": {
+      "bytes": 6113,
+      "sha256": "3daba994be17c12eb83d6b80eaeb9a1dd7b656684f1a6a2fabd2245de4ac58c9"
+    },
+    "lib/idol/image-presentation.ts": {
+      "bytes": 4250,
+      "sha256": "7b4492ca26032c7f6fe3d1663812d887616c147e06496c53336713bd331b7d3e"
+    }
+  },
+  "files": [
+    {
+      "path": "/artist/ifeye/batch-b-20261016/group-original.png",
+      "bytes": 5679952,
+      "sha256": "a4d2dbd3aa1aa0cf28ce81141a671a500c369c3c308e29b761faf82430079617",
+      "replacement": "/artist/ifeye/batch-b-20261016-webp-v1/group-display.webp",
+      "replacementIntegrity": {
+        "bytes": 210612,
+        "sha256": "f61abbc27e224ae1e7dd12ae09e34c571c41c63e1042a3d0119337dde81ab55d"
+      },
+      "sourceGitBlob": "17ccef103885900bdde3e451f5fa1f7da7a7a760"
+    },
+    {
+      "path": "/artist/ifeye/batch-b-20261016/kasia-original.png",
+      "bytes": 2062611,
+      "sha256": "2f2e2438e04af295e1b4dd7bc4deb21b92ba2f42a3e83a30131df3e245bdf050",
+      "replacement": "/artist/ifeye/batch-b-20261016-webp-v1/kasia-display.webp",
+      "replacementIntegrity": {
+        "bytes": 60376,
+        "sha256": "bb194fe70063822cdcf3a99aca62006acbb1ba4f5bec453e020400c67c15e3e1"
+      },
+      "sourceGitBlob": "522c52757df5c34efaf831537519e31b1211f307"
+    },
+    {
+      "path": "/artist/ifeye/batch-b-20261016/meu-original.png",
+      "bytes": 1870496,
+      "sha256": "c07509cc40cdc777d760eb1e6438c88213fdd52fe48ced75ef9539d571a8f352",
+      "replacement": "/artist/ifeye/batch-b-20261016-webp-v1/meu-display.webp",
+      "replacementIntegrity": {
+        "bytes": 55458,
+        "sha256": "1c5fcf56d1449d4c90c36f6c2bffd4fbe8ef4da044323fd7e452a8f199fe1f95"
+      },
+      "sourceGitBlob": "79f1bb0e427afc51850584ffa691433c74647c52"
+    },
+    {
+      "path": "/artist/ifeye/batch-b-20261016/rahee-original.png",
+      "bytes": 2170500,
+      "sha256": "b5a25f0383a2d6a591d91c34448786c0bc964527cefc0766859b5ddbbd681cb5",
+      "replacement": "/artist/ifeye/batch-b-20261016-webp-v1/rahee-display.webp",
+      "replacementIntegrity": {
+        "bytes": 77138,
+        "sha256": "c77ba36aa08632f2174442ff68aa13ad2be54e718d69a9d1263e4649d81bcffd"
+      },
+      "sourceGitBlob": "9b0c05d60348813b74b9c731dd558d926b7616ee"
+    },
+    {
+      "path": "/artist/ifeye/batch-b-20261016/sasha-original.png",
+      "bytes": 1999324,
+      "sha256": "dc5e5f0dfa1783f756f1859b9fa75937083179ef89cda9517f2ec484976e088e",
+      "replacement": "/artist/ifeye/batch-b-20261016-webp-v1/sasha-display.webp",
+      "replacementIntegrity": {
+        "bytes": 68036,
+        "sha256": "b6cfb1019f3d3d2659fc3d66fcac962a5916e728641c4f786c99bd77eff695a0"
+      },
+      "sourceGitBlob": "78505eda2b0064d5394efc29444662789ea0cf04"
+    },
+    {
+      "path": "/artist/ifeye/batch-b-20261016/taerin-original.png",
+      "bytes": 2119227,
+      "sha256": "d91fef0e5d31945cba500fbe9af07ff661dd6fb6f11afb9aebf6d590c0af521f",
+      "replacement": "/artist/ifeye/batch-b-20261016-webp-v1/taerin-display.webp",
+      "replacementIntegrity": {
+        "bytes": 61908,
+        "sha256": "3eaf2e936c738475610fa3c465e335c476856f66b36714290abb44495a28d859"
+      },
+      "sourceGitBlob": "af29feadd1b2fb79806b696dd4323edf0c573dbe"
+    },
+    {
+      "path": "/artist/ifeye/batch-b-20261016/won-hwayeon-original.png",
+      "bytes": 2303737,
+      "sha256": "ef960d62fa63169a1bf66a4e9081ca3dbe871c010efbf972a085b3a180514231",
+      "replacement": "/artist/ifeye/batch-b-20261016-webp-v1/won-hwayeon-display.webp",
+      "replacementIntegrity": {
+        "bytes": 96192,
+        "sha256": "02ec7f9d72252755850ca9b3dcde82979ba742393a75a0990ae26033c4eee784"
+      },
+      "sourceGitBlob": "9146c816800e7b95da5546a86b49b108411a89e2"
+    }
+  ]
+}

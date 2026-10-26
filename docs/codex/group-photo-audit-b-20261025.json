@@ -1,0 +1,730 @@
+{
+  "auditedAt": "2026-10-25",
+  "scope": "music-index-artwork.json rows 27–51; 25 groups, group index sources and member portrait sets",
+  "method": "Viewed original pixels/contact sheets; retrieved current official pages and new candidates for problematic index images. Original bytes retained. No face generation, no original file transformation. Same outfit means same shoot/era, not identical clothing across different people.",
+  "rows": [
+    {
+      "slug": "fromis9",
+      "groupId": "recvxyEBDZcosR",
+      "name": "fromis_9",
+      "currentImage": "/artist/fromis9/official-20261025/hero-original.jpeg",
+      "currentIssue": "原日本官网2000×1166横图两侧人物贴边，3:2裁切会切到右侧成员；原保留建议撤回。换用2025年From Our 20’s官方宣传五人合照，中心3:2已实际查看，全部面孔完整且无边框。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "当前五人白色上装/维生素道具为同系列；三位历史成员来自另一粉红花景系列，张圭悧为历史单独照片。应分开当前与历史档案，五人现行图片构图近远不同。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/fromis9/photo-audit-20261025/group-from-our-20s-original.jpg",
+        "caption": "fromis_9 · 2025 年《From Our 20’s》五人官方宣传照",
+        "sourceUrl": "https://genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15337",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 840,
+        "height": 473,
+        "sha256": "763834f3557245ec4cd57261bf094ad84314d9d5e7c929ee23a494be6643a395",
+        "sourcePhotoUrl": "https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/15337/Mgz_Sub_IMG_20250620174605.jpg",
+        "bytes": 346165
+      },
+      "unresolved": [
+        "历史成员与当前成员照片不是同套，须保留时期标注/分区；未找到或未核实的同套图不冒充补齐。"
+      ],
+      "action": "replace-index-source",
+      "cropVerification": {
+        "aspectRatio": "3 / 2",
+        "objectFit": "cover",
+        "objectPosition": "50% 50%",
+        "allFiveFacesComplete": true,
+        "embeddedBorders": false,
+        "method": "Original and centered 3:2 inspection preview visually examined. Original bytes are delivered without crop/resize."
+      }
+    },
+    {
+      "slug": "loona",
+      "groupId": "recvxyEBDZJAXm",
+      "name": "LOONA",
+      "currentImage": "/artist/loona/approved-home/hero.jpg",
+      "currentIssue": "历史十二人合照近3:2，无原生边框，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "11张已映射成员图同白房间/黑金白服装系列、均640×960；共享索引Chuu未映射，不能将11张当十二人完整覆盖。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/loona/approved-home/hero.jpg",
+        "caption": "LOONA · 2021 年 Universal 日本资料照 · 历史十二人阵容",
+        "sourceUrl": "https://www.universal-music.co.jp/loona/biography/",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1576,
+        "height": 1051,
+        "sha256": "9cf61b8e7b452ef59ba3b1ace890e4bcf102161c5991abbe1a0cff124b559f75"
+      },
+      "unresolved": [
+        "历史成员与当前成员照片不是同套，须保留时期标注/分区；未找到或未核实的同套图不冒充补齐。"
+      ],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "everglow",
+      "groupId": "recvxyEBDZ9Jl3",
+      "name": "EVERGLOW",
+      "currentImage": "/artist/everglow/official-20261025/hero.png",
+      "currentIssue": "现行四人竖图可用顶端3:2裁切保留四张脸；居中会切掉站立成员。已搜索Genie CODE新团照，但远景和摄影机前景更不适合索引，未采用。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "六位历史成员头像均640×640、黑色造型同风格；首页当前四人与历史六人要明确分组，不把历史照片标成当前CODE造型。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/everglow/official-20261025/hero.png",
+        "caption": "EVERGLOW · CHXXTA 官网四人团体照",
+        "sourceUrl": "https://www.chxxta.com/everglow",
+        "objectPosition": "50% 0%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 666,
+        "height": 821,
+        "sha256": "27b92f94b335c9d8def2ab10c1dd461e7f9681c9bd6b481ee57ebc6aabfccf43"
+      },
+      "unresolved": [],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "rocketpunch",
+      "groupId": "recvxyEBDZB3pz",
+      "name": "Rocket Punch",
+      "currentImage": "/artist/rocketpunch/official-boom/boom-1-group-original.jpg",
+      "currentIssue": "六人BOOM课堂合照近3:2，完整且无边框，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "六位均BOOM同系列同场景；Suyun为横图，其他为竖图，等框cover须逐人定位并保留原图，不可contain留白。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/rocketpunch/official-boom/boom-1-group-original.jpg",
+        "caption": "Rocket Punch · BOOM 官方概念照 · 历史六人阵容",
+        "sourceUrl": "https://www.woolliment.com/album/boom",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1984,
+        "height": 1403,
+        "sha256": "f1b7191f79ddd31a34482772d2a22af647faf115aa0d780f5d457e539b2cd26e"
+      },
+      "unresolved": [
+        "成员照片景别或横竖比例有差异，本轮仅审查并提出焦点/同套替换建议，最终网页显示尺寸需根任务浏览器验证。"
+      ],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "cherrybullet",
+      "groupId": "recvxyEBDZm40w",
+      "name": "Cherry Bullet",
+      "currentImage": "/artist/cherrybullet/official/group-fashion-house.jpg",
+      "currentIssue": "七人Cherry Dash合照正好3:2，无边框，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "七位Cherry Dash Fashion House为同套系列，三位2019历史成员另一个Loading系列；应历史分区。照片有官方文字设计，非黑白边框，不建议抹除。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/cherrybullet/official/group-fashion-house.jpg",
+        "caption": "Cherry Bullet ·《Cherry Dash》Fashion House 概念照 · 2023.02.23 发布",
+        "sourceUrl": "https://fncent.com/CherryBullet",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 2700,
+        "height": 1800,
+        "sha256": "34b72c63c30c712f3bbf3c6ae5a2b4be2213bc162fb3b68d4ac80a1efaa9ffe3"
+      },
+      "unresolved": [
+        "历史成员与当前成员照片不是同套，须保留时期标注/分区；未找到或未核实的同套图不冒充补齐。"
+      ],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "weeekly",
+      "groupId": "recvxyEBDZPbu5",
+      "name": "Weeekly",
+      "currentImage": "/artist/weeekly/official/group-1.jpg",
+      "currentIssue": "六人Bliss宣传图无留边，轻裁3:2保留六人；保留官方字标。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "六位Bliss校园系列、均2000×2800，但近景/全身尺度不同；Shin Jiyoon为另时期历史资料，应单列。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/weeekly/official/group-1.jpg",
+        "caption": "Weeekly · 官方 Bliss 时期资料照",
+        "sourceUrl": "https://weverse.io/weeekly/highlight",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 2800,
+        "height": 2000,
+        "sha256": "435907f92d58ed9cb3db4c0305c938b93ad71d10a6dbc65fc849d624bb88f5dc"
+      },
+      "unresolved": [
+        "历史成员与当前成员照片不是同套，须保留时期标注/分区；未找到或未核实的同套图不冒充补齐。"
+      ],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "wooah",
+      "groupId": "recvxyEBDZs5Ic",
+      "name": "WOOAH",
+      "currentImage": "/artist/wooah/batch-b-20261016/group-original.png",
+      "currentIssue": "官网五人横向同场景团照近3:2，可保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "实际wooah-editorial的NANA为官网夏日泳池系列，其余四位是Singles 2024年7月号，非同一套；Wooyeon横躺姿1350×1080与其他竖图不同。历史Songyee缺图；建议后续整套具名五人官图替换，不能只统一外框即声明同系列。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/wooah/batch-b-20261016/group-original.png",
+        "caption": "WOOAH · 日本官方资料照",
+        "sourceUrl": "https://wooahjapan.jp/profile/",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 799,
+        "height": 533,
+        "sha256": "b499e3fde0e51cf12cd069675d7a10442a7e4e3656f2edb0ffd04de62cf5e189"
+      },
+      "unresolved": [
+        "历史成员与当前成员照片不是同套，须保留时期标注/分区；未找到或未核实的同套图不冒充补齐。",
+        "成员照片景别或横竖比例有差异，本轮仅审查并提出焦点/同套替换建议，最终网页显示尺寸需根任务浏览器验证。"
+      ],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "purplekiss",
+      "groupId": "recvxyEBDZllCe",
+      "name": "PURPLE KISS",
+      "currentImage": "/artist/purplekiss/redesign-20261025/official-group-01.jpg",
+      "currentIssue": "七人HIDE & SEEK官方宣传横图近3:2，无边框，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "实际art-direction：六位2023 Cabin Fever系列，一位Jieun为2021出道展示会历史照；Chaein为横向侧躺照。建议历史分区、其他六人统一显示框并定位，七人同套目前未齐。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/purplekiss/redesign-20261025/official-group-01.jpg",
+        "caption": "HIDE & SEEK · 2021 年七人时期官方宣传照",
+        "sourceUrl": "https://m.melon.com/musicstory/detail.htm?mstorySeq=11666",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 736,
+        "height": 491,
+        "sha256": "501eae4f630394feaa7f5cf9f2ea581f8898ca333c88245d7f3278ac994e4073"
+      },
+      "unresolved": [
+        "历史成员与当前成员照片不是同套，须保留时期标注/分区；未找到或未核实的同套图不冒充补齐。",
+        "成员照片景别或横竖比例有差异，本轮仅审查并提出焦点/同套替换建议，最终网页显示尺寸需根任务浏览器验证。"
+      ],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "billlie",
+      "groupId": "recvxyEBDZPXW9",
+      "name": "Billlie",
+      "currentImage": "/artist/billlie/display/billlie-apple-1895807762.webp",
+      "currentIssue": "旧索引用专辑封面，没有人物；替换为刚取得的官网七人合照。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "七人红底黑红服装官网资料系列，均800×800，视觉一致；新团照同官网系列可承接。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/billlie/photo-audit-20261025/group-official.jpg",
+        "caption": "Billlie · 日本官网七人团体资料照 · 2605 资料系列",
+        "sourceUrl": "https://billlie.jp/profile/",
+        "objectPosition": "50% 35%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "sourcePhotoUrl": "https://billlie.jp/shared/img/profile/2605/main.jpg",
+        "width": 1000,
+        "height": 750,
+        "sha256": "8a5795ab16d82601a2e43b45d19352ddc946f9616374ebdcf38933e2a407a21e"
+      },
+      "unresolved": [],
+      "action": "replace-index-source"
+    },
+    {
+      "slug": "kep1er",
+      "groupId": "recvxyEBDZ8A0W",
+      "name": "Kep1er",
+      "currentImage": "/artist/kep1er/batch-c-20261016/c-task01-kep1er-wakeone-group.display.webp",
+      "currentIssue": "旧竖图人物小且上方大量黑空场；替换为日本官网六人正面构图、底部定向3:2裁切。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "六位黑色皮衣同系列、均670×670；Youngeun为Kstyle历史照，需单列历史成员；不要强行把7人当当前阵容。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/kep1er/photo-audit-20261025/group-official.jpg",
+        "caption": "Kep1er · 日本官网六人团体资料照 · 2026-10-25 核验",
+        "sourceUrl": "https://kep1er.jp/profile/",
+        "objectPosition": "50% 70%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "sourcePhotoUrl": "https://kep1er.jp/wp-content/themes/theme01/assets/images/members/profile_main.jpg",
+        "width": 1600,
+        "height": 1600,
+        "sha256": "900931d1c2642aab28b02c9e709536bae9e2b0fe2279f08e1f9fde24f97bbad4"
+      },
+      "unresolved": [
+        "历史成员与当前成员照片不是同套，须保留时期标注/分区；未找到或未核实的同套图不冒充补齐。"
+      ],
+      "action": "replace-index-source"
+    },
+    {
+      "slug": "newjeans",
+      "groupId": "recvxyEBDZ9qVl",
+      "name": "NewJeans",
+      "currentImage": "/artist/newjeans/figma-display/hero-37008550e0.jpg",
+      "currentIssue": "既有画面实际为四人（下方躺姿一人），小图容易漏看；重新下载官网3501×2301原字节，保留全体四人和下方人像，不用历史五人图冒充当前。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "当前日本官网四人单人像是同一资料系列，均800×1109；Danielle历史资料需要明确区分，不能推造同系列照片。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/newjeans/photo-audit-20261025/group-official.webp",
+        "caption": "NewJeans · 日本官网四人资料合照 · 2026-10-25 核验",
+        "sourceUrl": "https://www.newjeans.jp/profile/",
+        "objectPosition": "50% 55%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "sourcePhotoUrl": "https://officialsite.cds-jp.online/prod/profile_main/105/65/a52410d02ffc4488aded92052bb8ffe2.webp",
+        "width": 3501,
+        "height": 2301,
+        "sha256": "66b25b4161cced2dd50b367d518e6bb5b7127889ff1b8afd388ba878f37b4a2c"
+      },
+      "unresolved": [
+        "历史成员与当前成员照片不是同套，须保留时期标注/分区；未找到或未核实的同套图不冒充补齐。"
+      ],
+      "action": "replace-index-source"
+    },
+    {
+      "slug": "babymonster",
+      "groupId": "rec28ldfRTiC1X",
+      "name": "BABYMONSTER",
+      "currentImage": "/artist/babymonster/hanteo-debut-0.webp",
+      "currentIssue": "七人团照接近3:2、白色为摄影棚背景并非嵌入边框，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "七人均BABYMONS7ER出道概念照，800×1200，同一系列；浅色背景不应误判成白边。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/babymonster/hanteo-debut-0.webp",
+        "caption": "BABYMONS7ER 出道采访时期七人团体照，YG Entertainment 供图；Hanteo News 于 2024-04-04 刊载。",
+        "sourceUrl": "https://www.hanteonews.com/es/article/62594",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1600,
+        "height": 1066,
+        "sha256": "046b4aab1abc44630020c2b1d76d3c5e1eb77d800b8a30eae9ac139ea7408d1e"
+      },
+      "unresolved": [],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "illit",
+      "groupId": "rec28ldfRTiBON",
+      "name": "ILLIT",
+      "currentImage": "/artist/illit/redesign-20261025/real-me-41.jpg",
+      "currentIssue": "REAL ME五人车窗合照接近3:2，无边框，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "五张SUPER ME官方具名照片同发行主题，900×1192/1193，仅1px差异，显示比例可统一；画面景别不同但不是错套图。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/illit/redesign-20261025/real-me-41.jpg",
+        "caption": "SUPER REAL ME · REAL ME · 2024 年五人官方概念照",
+        "sourceUrl": "https://beliftlab.com/artist/discography/ILLIT/8",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1500,
+        "height": 1003,
+        "sha256": "e78727d350ac82d7cb561ca5d8e2953bb4d14644b156de8fef917f15871a2dd1"
+      },
+      "unresolved": [],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "xg",
+      "groupId": "recvxDKdOtKdWD",
+      "name": "XG",
+      "currentImage": "/artist/xg/cover-core.webp",
+      "currentIssue": "旧索引用THE CORE封面含字标且竖向层叠；替换为官网七人衬衫领带同系列团照，按上偏30%裁切可保留七张脸。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "七人CORE具名头像均900×900，同专辑强造型系列；Juria为全身/侧面、其他多近景，视觉尺度不齐，建议下一套统一景别成员图后续替换，当前仅审查不改。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/xg/photo-audit-20261025/group-official.jpg",
+        "caption": "XG · XGALX 官网七人团体资料照 · 2026-10-25 核验",
+        "sourceUrl": "https://xgalx.com/xg/profile/",
+        "objectPosition": "50% 30%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "sourcePhotoUrl": "https://img.imageimg.net/artist/xg/img/profile.jpg",
+        "width": 3000,
+        "height": 2500,
+        "sha256": "756bef745f65876547660b45fbaf1714efd894ef82945b4f59ae6418f9c752e5"
+      },
+      "unresolved": [
+        "成员照片景别或横竖比例有差异，本轮仅审查并提出焦点/同套替换建议，最终网页显示尺寸需根任务浏览器验证。"
+      ],
+      "action": "replace-index-source"
+    },
+    {
+      "slug": "aespa",
+      "groupId": "recvxyEBDZxfeD",
+      "name": "aespa",
+      "currentImage": "/artist/aespa/hero.webp",
+      "currentIssue": "四人沙龙合照近3:2，可保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "四位同沙龙吹风机/座椅系列，均900×1200，构图和服装主题一致。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/aespa/hero.webp",
+        "caption": "KISS N TELL 日本官网沙龙企划四人概念照 · SM Entertainment",
+        "sourceUrl": "https://aespa-official.jp/",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1600,
+        "height": 1067,
+        "sha256": "4012adaf04e1c932d6c069963791bd220e060f059fe002f70f60b0013dbcf80e"
+      },
+      "unresolved": [],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "ive",
+      "groupId": "recvxyEBDZT8Xj",
+      "name": "IVE",
+      "currentImage": "/artist/ive/hero.webp",
+      "currentIssue": "六人I’VE MINE近景合照可3:2裁切保留全部面孔；保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "实际七团重设计使用Baddie官网花絮，不是公共索引旧柔色头像；六人同白棚/街装系列，前三竖图后三横图，需统一3:4框并个别定位，不能contain。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/ive/hero.webp",
+        "caption": "I’VE MINE · Baddie · 2023 年官方宣传照",
+        "sourceUrl": "https://www.genie.co.kr/magazine/subMain?mgz_seq=13648",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1720,
+        "height": 1216,
+        "sha256": "1c59166744fa0feff3cd12df85d17dd7043eb339c64a9aaf9468fb7f1e3dd6d5"
+      },
+      "unresolved": [
+        "成员照片景别或横竖比例有差异，本轮仅审查并提出焦点/同套替换建议，最终网页显示尺寸需根任务浏览器验证。"
+      ],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "kissoflife",
+      "groupId": "rec28ldfRTiCdf",
+      "name": "KISS OF LIFE",
+      "currentImage": "/artist/kissoflife/20260828.webp",
+      "currentIssue": "四人SWEAT日版团照可安全裁为3:2，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "四人同红金舞台背景/西部服装系列，均720×1080。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/kissoflife/20260828.webp",
+        "caption": "SWEAT -JAPANESE EP- 官方四人团体视觉",
+        "sourceUrl": "https://columbia.jp/artist-info/kissoflife/prof.html",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1720,
+        "height": 1061,
+        "sha256": "8dbf01a481f29f4f2319fa9ceb0c60154821acd73537484563f4cdcd73c8724d"
+      },
+      "unresolved": [],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "stayc",
+      "groupId": "recvxyEBDZ2V3c",
+      "name": "STAYC",
+      "currentImage": "/artist/stayc/hero.webp",
+      "currentIssue": "六人2:LOVE横图近3:2，字标为官方宣传元素，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "六人同白粉衣/泳池场景系列，均720×1008，但ISA更近，建议逐人定位保证脸部尺度。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/stayc/hero.webp",
+        "caption": "2:LOVE 官方六人团体视觉",
+        "sourceUrl": "https://www.highup-ent.com/en/stayc/",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1600,
+        "height": 1067,
+        "sha256": "b728f79e1cbb04d12ac060ed3484911f8646ebb6dfae8f59b74f470acf507d33"
+      },
+      "unresolved": [],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "nmixx",
+      "groupId": "recvxyEBDZOpTf",
+      "name": "NMIXX",
+      "currentImage": "/artist/nmixx/hero.webp",
+      "currentIssue": "六人合照略宽，3:2中心裁切仍保留所有面孔，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "六人同服装主题/建筑场景系列，1412/1413×1800，仅1px宽度差，等框可统一。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/nmixx/hero.webp",
+        "caption": "NMIXX 官方网站团体视觉",
+        "sourceUrl": "https://nmixx.jype.com/profile",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1800,
+        "height": 1013,
+        "sha256": "a5def1ba5e95c055edc43274dc398488e304c3042546b0e8dc5a7f7361c1fd43"
+      },
+      "unresolved": [],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "hearts2hearts",
+      "groupId": "rec28ldfRTiBAq",
+      "name": "Hearts2Hearts",
+      "currentImage": "/artist/hearts2hearts/hero.webp",
+      "currentIssue": "八人星光合照正好3:2，无边框，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "八张同童话森林系列、均1000×1000；照明有日景/夜景区别，但未据此判断为不同宣传套系。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/hearts2hearts/hero.webp",
+        "caption": "Hearts2Hearts · 日本官网团体视觉",
+        "sourceUrl": "https://hearts2heartsofficial.jp/profile/",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1800,
+        "height": 1200,
+        "sha256": "b78c6d2ecd7bdb5dbc6989c352e4211f0f0f3cb25c00723d22822dfaf838ba8e"
+      },
+      "unresolved": [],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "kiiikiii",
+      "groupId": "rec28ldfRTiBUk",
+      "name": "KiiiKiii",
+      "currentImage": "/artist/kiiikiii/hero.png",
+      "currentIssue": "旧1200×460官方logo横幅不适合索引；替换STARSHIP1920×1281五人团照，无logo和留边。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "五张出道白棚红袜同系列，尺寸比例接近；Kya近景而其余全身，视觉尺度差异需后续统一景别，不裁成假全身。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/kiiikiii/photo-audit-20261025/group-official.jpg",
+        "caption": "KiiiKiii · STARSHIP 官网五人团体资料照 · 2026-10-25 核验",
+        "sourceUrl": "https://www.starship-ent.com/musician/kiiikiii",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "sourcePhotoUrl": "https://cdn.starship-ent.com/uploads/profile/kiiikiii.jpg",
+        "width": 1920,
+        "height": 1281,
+        "sha256": "c1079563b83c99ac944807c3f985c41c5b1e3612d1a9b515188537fa941c1a1c"
+      },
+      "unresolved": [
+        "成员照片景别或横竖比例有差异，本轮仅审查并提出焦点/同套替换建议，最终网页显示尺寸需根任务浏览器验证。"
+      ],
+      "action": "replace-index-source"
+    },
+    {
+      "slug": "itzy",
+      "groupId": "recvxyEBDZqxjD",
+      "name": "ITZY",
+      "currentImage": "/artist/itzy/hero.webp",
+      "currentIssue": "五人JYP团照近3:2、无边框，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "五张同白色造型/JYP资料系列均1004×1280，背景色有差异但一套主题，保留。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/itzy/hero.webp",
+        "caption": "ITZY · JYP 官方图库五人合照",
+        "sourceUrl": "https://itzy.jype.com/profile",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1800,
+        "height": 1202,
+        "sha256": "284a5201f1a5df7d6be0c2ae076931d1c8a6b33fd23f6372419eaef30ef0486d"
+      },
+      "unresolved": [],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "lesserafim",
+      "groupId": "recvxyEBDZvpPh",
+      "name": "LE SSERAFIM",
+      "currentImage": "/artist/lesserafim/hero.webp",
+      "currentIssue": "原1800×788过宽；3:2中心裁切可保留五张脸但两侧手臂会裁切，禁止改成更窄卡片。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "五张日本官网具名同系列图为远端原字节，已下载到scratch实际查看；同夜景/霓虹服装主题，统一竖框；不能把本地无文件当作网页图片缺失。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/lesserafim/hero.webp",
+        "caption": "SOURCE MUSIC 官网五人团体合照",
+        "sourceUrl": "https://www.sourcemusic.com/artist/profile/LE%20SSERAFIM",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1800,
+        "height": 788,
+        "sha256": "e383891f6eebdd3a162aae4a0b820e603c05efc7a3631cf21b30687686fed46f"
+      },
+      "unresolved": [],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "saymyname",
+      "groupId": "rec28ldfRTiChs",
+      "name": "SAY MY NAME",
+      "currentImage": "/artist/saymyname/hero.webp",
+      "currentIssue": "八人粉色房间合照近3:2，无嵌入边框，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "八人官网同浅背景系列均2000×3000，但SOHA是全身蹲姿，其他多半身；建议同框逐人定位，避免把她误放大裁掉脸。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/saymyname/hero.webp",
+        "caption": "SAY MY NAME 日本官网八人团体照",
+        "sourceUrl": "https://saymyname.jp/profile/",
+        "objectPosition": "50% 50%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1920,
+        "height": 1256,
+        "sha256": "340b9dcf920e0d7020eed0116670f7f26db0d64443c9ca23f8aa9b0401a7ffd8"
+      },
+      "unresolved": [
+        "成员照片景别或横竖比例有差异，本轮仅审查并提出焦点/同套替换建议，最终网页显示尺寸需根任务浏览器验证。"
+      ],
+      "action": "retain-reviewed-photo-adjust-framing"
+    },
+    {
+      "slug": "katseye",
+      "groupId": "rec28ldfRTiDUd",
+      "name": "KATSEYE",
+      "currentImage": "/artist/katseye/hero.webp",
+      "currentIssue": "六人汽车场景合照4:3，3:2轻裁可完整保留面孔，保留。",
+      "visualInspected": true,
+      "memberAudit": {
+        "visualInspected": true,
+        "summary": "实际native六张官网同汽车场景系列，近景与全身混排；同系列成立，但需统一容器与逐人焦点，不能强称景别相同。",
+        "action": "仅审查，未修改成员图片映射；历史成员与当前资料分开标注。"
+      },
+      "recommendation": {
+        "image": "/artist/katseye/hero.webp",
+        "caption": "KATSEYE 官网六人团体合照",
+        "sourceUrl": "https://www.katseye.world/story-of-katseye/",
+        "objectPosition": "50% 35%",
+        "objectFit": "cover",
+        "aspectRatio": "3 / 2",
+        "width": 1000,
+        "height": 800,
+        "sha256": "fbac7db47921a0e4cba6b1f12d067db86f1f3f23e4e5eafd9da19804cf864287"
+      },
+      "unresolved": [
+        "成员照片景别或横竖比例有差异，本轮仅审查并提出焦点/同套替换建议，最终网页显示尺寸需根任务浏览器验证。"
+      ],
+      "action": "retain-reviewed-photo-adjust-framing"
+    }
+  ],
+  "rejectedCandidates": [
+    {
+      "slug": "everglow",
+      "image": "/artist/everglow/photo-audit-20261025/code-group.jpg",
+      "sourceUrl": "https://genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15951",
+      "reason": "Official CODE vertical distant view; smaller human scale than current official portrait."
+    },
+    {
+      "slug": "everglow",
+      "image": "/artist/everglow/photo-audit-20261025/code-behind-group.jpg",
+      "sourceUrl": "https://genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15951",
+      "reason": "Official four-person behind-the-scenes photo has foreground camera obscuring left third."
+    },
+    {
+      "slug": "fromis9",
+      "image": "/artist/fromis9/official-20261025/hero-original.jpeg",
+      "sourceUrl": "https://fromis9.fanpla.jp/",
+      "reason": "3:2 cover framing clips rightmost face/hair; original retain suggestion withdrawn after full-size crop review."
+    }
+  ],
+  "scratchDirectory": "C:\\Users\\61919\\.codex\\visualizations\\2026\\10\\25\\photo-audit-b",
+  "scratchScripts": [
+    "C:\\Users\\61919\\.codex\\visualizations\\2026\\10\\25\\photo-audit-b\\.scratch-photo-b.py",
+    "C:\\Users\\61919\\.codex\\visualizations\\2026\\10\\25\\photo-audit-b\\.scratch-photo-b-fetch.py",
+    "C:\\Users\\61919\\.codex\\visualizations\\2026\\10\\25\\photo-audit-b\\.scratch-photo-b-download.py",
+    "C:\\Users\\61919\\.codex\\visualizations\\2026\\10\\25\\photo-audit-b\\.scratch-photo-b-extra.py",
+    "C:\\Users\\61919\\.codex\\visualizations\\2026\\10\\25\\photo-audit-b\\.scratch-photo-b-report.py"
+  ]
+}

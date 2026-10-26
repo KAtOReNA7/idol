@@ -1,0 +1,28 @@
+{
+  "kind": "actual official build file sizes; not runtime/network timing",
+  "baseline_commit": "f2797657a5dc0f62eac609d83d9eccc85a1a5bd5",
+  "candidate_commit": "6a3436e88f27f8c751d2616040c87345980eca37",
+  "results": {
+    "before": {
+      "js_files": 13,
+      "raw_bytes": 700584,
+      "gzip_bytes": 193501,
+      "app_chunk_raw_bytes": 214669,
+      "app_chunk_gzip_bytes": 53603
+    },
+    "after": {
+      "js_files": 13,
+      "raw_bytes": 713092,
+      "gzip_bytes": 198109,
+      "app_chunk_raw_bytes": 215552,
+      "app_chunk_gzip_bytes": 53972
+    }
+  },
+  "delta": {
+    "js_files": 0,
+    "raw_bytes": 12508,
+    "gzip_bytes": 4608,
+    "app_chunk_raw_bytes": 883,
+    "app_chunk_gzip_bytes": 369
+  }
+}

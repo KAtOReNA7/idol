@@ -1,3 +1,11 @@
+# 当前开发候选：1925条认人图已验，发布受阻；线上仍为已确认v11
+
+2026-10-26续作新增19条认人图并提升4张旧图，剩余903/43/18。23专项、类型/构建、最终本地三宽18布局/69图片/29原图流程、23受影响及588改外域原图校验通过。两份不同体积包均在原生文件blob上传超时，未保存新版本；推送后私密发布accepted=false。
+
+当前完整结果：[本批报告](mv-identity-quality-followup-report-20261026.md)、[验证JSON](mv-identity-quality-followup-verification-20261026.json)、[候选51团表](reports/20261026-v12/completion-report.html)、[903待补CSV](reports/20261026-v12/missing-mv-identities.csv)及[续发入口](NEXT-COMPUTER-HANDOFF.md)。本地通过不等于已上线，下面v11/v9/v8均为历史已发布记录。
+
+---
+
 # 当前完整报告：v11，附v9/v8历史记录
 
 用户已确认v11。2026-10-26再次核对指定正式站点部署成功，已包含全部当前已完成修改；最新接续分支为`codex/mv-cover-and-identity-batch`。本次发布核对与仓库同步见[工作记录](worklogs/20261026-v11-publication-confirmation.md)。剩余缺口仍如下记录。

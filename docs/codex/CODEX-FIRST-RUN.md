@@ -1,6 +1,6 @@
 # Codex 首次执行文件
 
-跨电脑优先阅读 [快速接续文件](NEXT-COMPUTER-HANDOFF.md)，再核对 [RESUME](RESUME.md) 和 [STATUS](STATUS.md) 顶部。当前为已获用户确认并上线的全团站点v11，活动分支 `codex/mv-cover-and-identity-batch`；下一任务是922条认人图缺口、47张旧图质量与18项未知统计。先fetch最新远端；本文件下方逐团版本和确认门槛均为历史记录，不能从旧分支接续。
+跨电脑优先阅读 [快速接续文件](NEXT-COMPUTER-HANDOFF.md)，再核对 [RESUME](RESUME.md) 和 [STATUS](STATUS.md)顶部。活动分支 `codex/mv-identity-quality-followup` / draft PR #41；19新增和4提质的1925条绑定候选已本地验证，发布被两次文件blob上传超时阻断，线上仍是用户已确认v11。剩余903条缺图、43旧低清、18未知统计。先fetch最新远端，保留本地修改；下方逐团版本和等待门槛均属历史。
 
 ## 历史执行决定：IZ*ONE Panorama 重设计 v8（2026-10-25）
 

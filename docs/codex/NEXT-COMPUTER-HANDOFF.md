@@ -1,118 +1,86 @@
-# 跨电脑快速接续：已确认并上线的 v11
+# 跨电脑接续：1925条认人图候选已验，发布上传受阻；线上仍v11
 
-更新时间：2026-10-26。此文件是另一台电脑的快速入口；开始时仍要 fetch 最新分支并核对 STATUS，不能把本文的提交固定成永久基线。
+更新：2026-10-26。先fetch活动分支最新远端，读STATUS/RESUME与本文件。下面的提交用于识别成果，不是让下一台电脑回退到旧HEAD。
 
-## 直接交给新电脑 Codex 的指令
+## 可直接转交的指令
 
-【请接续 GitHub 仓库 https://github.com/KAtOReNA7/idol 的当前任务。活动分支为 `codex/mv-cover-and-identity-batch`，不要从旧 main 或根目录 Next sandbox 开始。先检查本地改动并 fetch；保留已有改动，比较远端后接续活动分支最新 HEAD。阅读 `docs/codex/NEXT-COMPUTER-HANDOFF.md`、AGENTS、STATUS、RESUME、设计要求与协作手册的最新决定，正式工程为 `apps/idol-site/`。
+【请接续 https://github.com/KAtOReNA7/idol 的 codex/mv-identity-quality-followup 最新远端，正式工程在 apps/idol-site/。先保护本地修改并fetch，不从旧main或根Next sandbox开始；核对AGENTS、STATUS、RESUME、设计要求、协作手册和本文件最新决定。
 
-用户已确认 v11；全部已完成网页修改已发布至 https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/ ，保持 owner-private 只读。当前累计 1906 条认人图绑定、628 个精确视频封面；下一任务优先补齐仍缺的 922 条认人图关系，同时改善 47 张旧图清晰度、继续核实 18 项未知统计。根据最新审计重新计算缺口，优先可核实具名来源、同一精确 MV 版本和成员的原图，统一 3:4 展示，保留来源与原字节。不要重新导入已完成的 A/B/C 批次，不凭脸猜身份，不跨视频版本套图，不用概念照冒充 MV 图。只有已确认没有成员真人出镜的精确 MV 才能关闭成员评分，缺图不能关闭。
+用户已确认并上线v11。本批19条新认人图与4张旧图提质已apply并完成本地验证，候选累计1925绑定/316作品/44团，剩余903条缺图、43张旧图待提质、18项统计未知。不要重跑已apply的A/B/C/D/E或旧图提升delta。继续按具名、精确MV、有效像素与实际3:4要求补图，不凭脸、不跨视频版本、不拿概念照代替MV图，不因缺图关闭成员评分。
 
-保持 51 团已确认设计、主站 Apple Music 风格、稳定 ID、既有关系和个人数据；个人页统一排版仍待我决定。按合理批次持续完成资料与网页增量、验证、完整报告、GitHub 提交推送及指定站点发布，不需要再次确认已有授权。发布前核对同一 Sites 项目与当前权限；旧 v186 工程的 hosting.json 不是此次站点，不能混用。报告分别说明解决、未解决和未验证项。先简短告知已核对的版本、剩余缺口与首批目标，然后直接开展实际补图与开发，不要停在整理计划。】
+本批发布受阻：242.2MB和148.2MB两个包都在OpenAI文件blob上传层300秒超时，未保存新版本/未产生部署ID；恢复核对最新仍v11。Sites推送后私密发布返回accepted=false。Sites候选源码e709d347e61bb867e41c441a961e9266c08bd824已推送，尚未上线。若新电脑有已验证可用的上传环境，可按同一项目恢复源与原图后续发；不要盲目重试旧失败路径，不换权限、不建替代站、不省略本地可用archive规避上传流程。工具/网络仍不可用就保留具体阻断，继续不依赖发布的实际资料/代码工作。
 
-推荐：使用 Codex 当前编程主力模型，高推理；资料缺口涉及版本与身份核对，不建议仅凭低成本自动抓取批量入库。
+保持51团已确认设计和Apple Music主站、稳定ID、个人数据、既有关联、5条精确无真人规则、owner-private只读权限。个人页统一排版仍待用户决定。按合理批次交付实际网页/资料增量、验证、报告及GitHub提交推送；沿用已给授权，不重复等待旧逐团确认。先简短汇报核对版本/阻断/本批目标，再继续实际开发。】
 
-## 1. 在新电脑取代码
+推荐：Codex当前编程主力模型，高推理。资料身份和版本需逐条核对，不能只抓图计数。
 
-新目录可以执行：
+已有仓库的默认fetch可能仅跟踪旧分支，可明确获取本任务：
 
-```sh
-git clone --branch codex/mv-cover-and-identity-batch https://github.com/KAtOReNA7/idol.git idol
-cd idol
-git status --short
-git log -5 --oneline
-```
+~~~sh
+git fetch origin refs/heads/codex/mv-identity-quality-followup:refs/remotes/origin/codex/mv-identity-quality-followup
+git log -1 --oneline origin/codex/mv-identity-quality-followup
+~~~
 
-已有仓库先检查 `git status`，再显式 fetch 活动分支。若本地已有分支，比较双方提交后只进行可快进更新；有未提交修改或分叉则先保留、比较，不能 reset/clean/force push。新任务按仓库规则从最新接续点创建 `codex/` 分支，并更新 STATUS/RESUME，避免后续继续使用旧入口。
+检查本地/远端及工作树后再快进或建隔离工作区，保留现有修改和分叉。
 
-本文件编写前的已同步 HEAD：`de56a565c068ee0cdeb8068afe886709617c6ed0`。读取时以远端最新 HEAD 为准，不 checkout 回这个旧提交。
+## 当前共享成果
 
-当前 [PR #40](https://github.com/KAtOReNA7/idol/pull/40) 为 draft，目标 `codex/data-gap-followup`；未合并 main。主代理已结束本批次，没有需要等待的远程代理或后台研究。
+- 分支：codex/mv-identity-quality-followup，draft [PR #41](https://github.com/KAtOReNA7/idol/pull/41)，基线codex/mv-cover-and-identity-batch的3d36849735767b374075e03779a35b61ba5b900e；未合并GitHub main。
+- 公开原图/运行实现：e3f9933f999a1c18c5efb40f76e1732b10a4d94b。发布预算工具：b8071d937a37df7d296de52f4f6e6b9a8b8fd51c。后续文档与证据以分支最新HEAD为准。
+- [本批报告](mv-identity-quality-followup-report-20261026.md)、[验证JSON](mv-identity-quality-followup-verification-20261026.json)、[本轮worklog](worklogs/20261026-mv-identity-quality-followup.md)、[903条待补CSV](reports/20261026-v12/missing-mv-identities.csv)。目录名v12是候选归档，不是已保存/已上线版本。
+- [D批](mv-batch-d-20261026.md)：ifeye r u ok? 3，ODD YOUTH I Like You 4；[E批](mv-batch-e-20261026.md)：GENBLUE ACT LIKE THAT与BADASS各6。[旧图提升](mv-quality-promotions-20261026.md)：Jisun WE GO、小娟/Minnie/雨琦TOMBOY共4。
+- 19公开原文件10,475,508 bytes已完整入仓，未压缩；4个旧主图完整留为alternate，旧原文件仍在。研究/最终3:4联系表、截图、原字节验证在reports/20261026-v12/和reports/20261026-quality-promotions/。
+- 本批主代理与研究子任务均已收尾，无须等待远程代理。原电脑旧izna工作区22个未提交文件保留且另存补丁备份；不能把它们混入此任务。
 
-## 2. 先读这些当前资料
+## 实际验证和边界
 
-1. 根 `AGENTS.md`、[STATUS](STATUS.md)、[RESUME](RESUME.md)、[设计要求](../design-requirements.md)、[协作手册](../collaboration-playbook.md)顶部。下方逐团“待确认”多数属于历史，不能覆盖 v11 最新确认。
-2. [完整报告入口](full-completion-report-20261026.md)、[v11报告](mv-cover-identity-batch-report-20261026.md)、[发布确认](worklogs/20261026-v11-publication-confirmation.md)。
-3. [主审计JSON](mv-identity-asset-audit-20261025.json)、[922条待补CSV](reports/20261026-v11/missing-mv-identities.csv)、[批量补图方法](mv-identity-batch-method-20261026.md)。CSV是v11快照；修改后由主审计重新生成，不把旧CSV当实时数据。
-4. [A批](mv-batch-a-20261026.md)、[B批](mv-batch-b-20261026.md)、[C批](mv-batch-c-20261026.md)及相应JSON，包含已采用来源、精确版本依据、未采用候选和原因。
-5. [统计后续](statistics-followup-20261026.md)、[个人页排版盘点](member-page-layout-inventory-20261025.md)。个人页仅盘点与修复缺档，不擅自统一重设计。
+- 23专项、类型与正式构建、运行投影check通过。2种预算错误CLI实测拒绝，防止把必要封面/索引图移出站内。
+- Windows同机Playwright+实际系统Chrome155，320/390/1440：18作品布局、69图加载/3:4、29原图/键盘焦点/返回流程通过，console warning/error、pageerror、非读取请求均0。首份大包本地也通过；最终小包独立复验，不继承v11。
+- 23受影响远端原图及588份改GitHub传输图，HTTP/类型/长度/SHA/解码全通过。最终735份同站原文件长度/SHA通过；724为/artist公开原图，其余含既有私密UDTT。
+- 52路由CSS仅固定资源引用与行尾规范化后相同。实际bundle深比仅catalog.loadedAt构建时间戳不同，其他公开值、ID、关系相同。
+- 候选线上浏览器未验（根本未部署）；真实保存、全视频完整播放、80%/125%原生缩放、用户IAB、新Figma、全仓测试未验。不能用本地或旧v11结果替代。
 
-## 3. 已完成与当前剩余
+## Sites身份：候选源与已上线版本分开
 
-- v11：MV卡片标签四边定位拉伸造成的黑块已修复；新增657条认人图，涉及22团114作品。累计1906绑定，312作品、42团；628封面包含MV、舞台等精确版本。
-- 剩余922条已有成员关系缺图；293作品无公开认人图，其中133作品原无成员关系，不能猜全员参与。
-- 旧47条 `card_only` 图仍待提高质量，本轮没有新增。18项统计未知：6社媒、9团销量、3团一位；按用户要求展示0，证据保持“未知”和“确认零”的区别，没有账号的平台不显示。
-- 重点候选限制：Hearts2Hearts五MV40格拼图裁切后仅390px；ILLIT两MV10格实际柔糊，Tick-Tack另5张存在正式/Performance版歧义；AtHeart六张文字覆盖。原候选未发布，要寻找更好来源或解决版本依据，不能直接批准。
-- 同歌曲名不等于同一视频；同服装也不能独自消除版本歧义。可采用官方具名MV拍摄现场图，但应明确标注与MV截图的区别。
-- 仅原已核实的5个精确视频关闭成员评分；缺图、动画标签或缺关系都不自动触发关闭。
+|字段|当前值|
+|---|---|
+|指定站点|https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/|
+|project_id|appgprj_6add2704bc6c81918d3e0e2f13130422|
+|权限|owner-private，静态只读，仅owner，无外部访客|
+|最新已保存/已上线|v11，用户已确认|
+|v11保存版本|appgprj_6add2704bc6c81918d3e0e2f13130422~appgver_fc0f8a37c5f481919dd2cae7fba98ae4|
+|v11成功部署|appgdep_6ade4ada7ef08191b35e4a0adf0a4b6d|
+|v11已发布源|c28c945987e22803b81ea266e6aaadf1ce972cb0|
+|最新候选源仓库HEAD|e709d347e61bb867e41c441a961e9266c08bd824，未保存/部署|
+|候选publicRef|e3f9933f999a1c18c5efb40f76e1732b10a4d94b|
+|最终静态 / gzip包|163,153,529 / 148,157,406 bytes|
+|同站预算|138MiB，695份必要封面/索引/修复图共143,354,239 bytes仍在站内|
 
-## 4. 代码位置和安全运行
+**apps/idol-site/.openai/hosting.json仍属于旧v186项目，不能用于本次发布。** 先读Sites技能，以同一project_id的原生工具恢复专用源checkout，核对其中hosting.json和实际远端HEAD。候选源HEAD比已上线源新，不得据此宣称已上线。
 
-正式工程 `apps/idol-site/`。安装 Node.js >=22.13.0，使用该目录的 lockfile：
+恢复后运行根部hydrate-review-originals.mjs dist：依据manifest从固定公开GitHub提交恢复精确忽略的724份原图并核长度/SHA；源README的67是旧数。按新机实际网络配置，不复制旧代理、token或Chrome路径。Lu历史图已跟踪在同一Sites源，SHA256=b80720a772b8000518fad7d71e0b3c5867a8dbef7b4c2219dcaf2ec58dba8ca9；其他既有UDTT限制图保持原Sites范围，发布包不进公开GitHub。
 
-```sh
-cd apps/idol-site
-npm run install:ci
-npm run dev
-```
+若直接续发已冻结候选，可恢复原字节后用Sites原生helper从同一e709源打包、推送和发布，无需重新开发。若有新的网页/数据变化，从正式工程生成新的仓库外输出：
 
-只使用命令实际打印的本机地址；不要把另一台电脑的 localhost 或 `D:/porject/idol` 当作新电脑固定路径。原机代理 `127.0.0.1:7877`、系统Chrome路径与临时素材目录均不可照搬。GitHub/Sites凭证通过新机器现有授权取得，不复制旧token。
+~~~text
+node scripts/build-all-review.mjs --out <仓库外绝对目录> --udtt-portrait <恢复Sites源>/dist/review-all/udtt/lu-historical.jpg --public-ref <含全部公开原图且已推送的40位GitHub提交> --portrait-budget-mib 138
+~~~
 
-关键文件：
+默认预算仍230MiB，仅本批为降低上传负担用138；不能低于必要封面/索引。原图通过固定GitHub传输，未重压缩。同步新产物时只删除经旧manifest/SHA确认的旧生成载体，不删源码原图。再核ignore精确清单、容量、权限及当前源状态；有新证据恢复后做受控发布，未成功则如实保留阻断，不建立循环重试或新站。
 
-- `data/mv-public-media.json`：前端公开图片投影。
-- `../../docs/codex/mv-identity-asset-audit-20261025.json`：逐条证据与缺口源。
-- `scripts/import-mv-identity-batch.mjs`：审核后批量导入，默认dry-run；校验冻结审计SHA、精确关系、来源类型、原图SHA/字节/尺寸、裁切与重复。
-- `scripts/build-mv-public-media.mjs`：从审计生成运行数据。
-- `scripts/build-completion-report.mjs`：生成完整表与待补CSV。
-- `app/music-experience.css`：本次封面标签修复；不要回退。
-- `scripts/build-all-review.mjs`、`scripts/hydrate-review-originals.mjs`：当前只读静态站生成与原图恢复。
+## 下批缺口与使用工具
 
-新批次先冻结当前主审计SHA，再建立新的具名来源记录和原文件。已有A/B/C已apply，不要再执行旧方法文档中的apply示例。导入器当前原图路径白名单只覆盖截至本批的目录；新日期/新批次若需扩展，精确扩展并保持边界测试。旧图替换另行审查，不通过“新增”偷偷覆盖。
+当前1925绑定覆盖316作品/44团；903条已有关系缺图、43低清主图、18未知统计。289作品无公开认人图，其中133原无成员关系不能猜全员。部分统计本批实际复查无新合格数值，未宣称18项全部重新覆盖。个人页统一排版仍待决定。
 
-修改图片/导入逻辑后，按变更运行：
+H2H 390px拼图、ILLIT柔糊/精确版本歧义、AtHeart文字覆盖候选继续pending；Kaede及LOONA6个旧图备选也未提升。官方具名MV现场照可采用，但须明确区别于MV截图；没有精确版本依据的同歌/同妆造不能套用。
 
-```sh
-node --test tests/mv-identity-batch.test.mjs tests/mv-public-media.test.cjs tests/mv-member-policy.test.cjs
+正式工程安装Node>=22.13.0，在apps/idol-site使用自身lockfile运行npm run install:ci。新批次先冻结当前审计SHA，使用scripts/import-mv-identity-batch.mjs默认dry-run；路径白名单目前精确到batch-[abcde]-20261026，新日期/批次需有界扩展。旧图提升用scripts/promote-mv-identity-alternatives.mjs，仍默认dry-run并另审；不偷偷覆盖原图。
+
+~~~text
+node --test tests/mv-identity-batch.test.mjs tests/promote-mv-identity-alternatives.test.mjs tests/mv-public-media.test.cjs tests/mv-member-policy.test.cjs
+node scripts/build-mv-public-media.mjs --check
 npx tsc --noEmit
 npm run build
-```
+~~~
 
-再验证全部本批新增作品的桌面/手机3:4显示、图片解码、原图打开与返回、精确绑定以及线上加载。不要通过真实评分保存测试修改用户数据。
-
-## 5. 换电脑恢复发布工程
-
-GitHub保存可编辑源码、全部采用的公开原图、研究记录与验证报告；当前站点的静态发布源码另在 Sites 管理的源仓库中。另一台电脑发布时先读 Sites 技能，使用同一账号的 Sites 原生工具恢复该项目源仓库，不依赖原机临时目录。
-
-| 项目 | 当前值 |
-| --- | --- |
-| 指定站点 | https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/ |
-| Sites project_id | `appgprj_6add2704bc6c81918d3e0e2f13130422` |
-| 最新确认版本 | v11 |
-| 保存版本ID | `appgprj_6add2704bc6c81918d3e0e2f13130422~appgver_fc0f8a37c5f481919dd2cae7fba98ae4` |
-| 成功部署ID | `appgdep_6ade4ada7ef08191b35e4a0adf0a4b6d` |
-| 已发布源提交 | `c28c945987e22803b81ea266e6aaadf1ce972cb0` |
-| 公开原图固定提交 | `a250a4d683871624d36b0283499532daea63e9de` |
-| 权限 | owner-private、静态只读 |
-
-**注意：`apps/idol-site/.openai/hosting.json`仍属于旧v186项目 `appgprj_6acb4fa532b88191ae2588c24b724b17`，不是上表指定站点。** 不直接用它发布本次站点；恢复Sites专用发布checkout后核对其`.openai/hosting.json`。
-
-恢复源checkout后，根部的 `hydrate-review-originals.mjs` 根据 `dist/review-all/manifest.json` 从固定公开提交恢复精确忽略的图片，并校验长度/SHA。运行 `node hydrate-review-originals.mjs dist`；代理仅按新机器的实际环境配置。当前清单为1314份同站公开原图，源README里的67是旧数字。其余大原图来自固定GitHub提交。保持原图字节，静态包v11为259,580,239 bytes，接近256 MiB限制。
-
-生成新的全团只读输出需要：
-
-```text
-node scripts/build-all-review.mjs --out <仓库之外的绝对临时目录> --udtt-portrait <恢复的Sites源checkout>/dist/review-all/udtt/lu-historical.jpg --public-ref <包含全部采用原图且已推送的40位GitHub提交>
-```
-
-上述 Lu 原图已跟踪在 Sites 源仓库，SHA256为 `b80720a772b8000518fad7d71e0b3c5867a8dbef7b4c2219dcaf2ec58dba8ca9`。UDTT受限素材只保留原有私有托管范围，不为了换电脑把它们复制进公开GitHub。原机未采用候选与中间联系表部分仅在临时目录，新电脑可按JSON来源重新取得；不能假设它们已上传。
-
-检查生成产物、精确ignore清单和容量后，按Sites技能把源推送、从同一提交打包、保存并部署到同一项目。保留权限与旧站点，不新建替代站、不压缩原图凑容量。新图片必须先在GitHub固定提交可获取，才能把该提交用作public-ref。工具或输入不可用时记录具体阻断，并继续不依赖它的素材/代码工作。
-
-## 6. 验证和交接边界
-
-上轮v11已验：13专项、类型与正式构建；本地228布局/22原图流程；线上84布局/22原图流程；本地/线上各六宽144封面卡片；657远端原图HTTP/长度/SHA通过。详细证据在 `reports/20261026-v11/` 和 `mv-cover-identity-batch-verification-20261026.json`。
-
-线上检查使用服务身份Chrome，不是用户IAB。真实写入、全视频完整播放、80%/125%原生缩放、新Figma与全仓测试未完成。不得把旧版本或构建通过当成新页面/新素材全部通过。
-
-继续时先汇总最新缺口和可落地的第一批，再交付实际图片/数据增量；每批代码、来源、报告与worklog一起提交推送。结束时维护STATUS/RESUME、说明线上版本及仍未解决事项。默认沿用已有授权，不因历史逐团门槛重复等待确认；新权限、无法确认的身份/版本或共享代码分叉应具体说明，保留有效结果。
+以上是校验命令，不要重新apply已完成的D/E或提升delta。每批代码、来源、报告和worklog同提交，推送前复查公开仓库与数据分享范围；结束维护STATUS/RESUME与本入口，分别报告资料、功能、设计保护和上线状态。

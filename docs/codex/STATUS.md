@@ -1,12 +1,12 @@
 # 共享开发状态
 
-## 最新接续：19条认人图与4张旧图提质，候选验证中（2026-10-26）
+## 最新交付：19条认人图与4张旧图提质已验证，发布受阻（2026-10-26）
 
-从已确认上线v11的最新远端3d368497接续，任务分支 `codex/mv-identity-quality-followup`。已接入19条官方具名MV拍摄图（ifeye3、ODD YOUTH4、GENBLUE12）与4张既有备选提质，累计1925绑定/316作品/44团，缺图903、旧低清43、未知统计18。23专项、类型及正式构建通过，浏览器与同站发布进行中；当前线上仍v11。保留51团设计、个人数据/关系/ID和owner-private只读权限，个人页统一排版仍待决定。详情见 `docs/codex/mv-identity-quality-followup-report-20261026.md` 与同名worklog。下方v11为已确认基线。
+任务分支 `codex/mv-identity-quality-followup` / draft [PR #41](https://github.com/KAtOReNA7/idol/pull/41)，从已确认上线v11的最新远端 `3d368497` 接续。候选累计1925绑定/316作品/44团，缺图903、旧低清43、未知统计18；23专项、类型/正式构建、本地三宽18布局/69图/29原图流程、23受影响原图及588转外域原图校验通过。51团设计、Apple Music主站、个人数据/关系/ID、5条无真人规则及owner-private只读权限保持。
 
-跨电脑接续入口：[NEXT-COMPUTER-HANDOFF](NEXT-COMPUTER-HANDOFF.md)，包含可复制指令、分支/站点身份、缺口、运行命令与Sites源恢复步骤。
+**线上仍是已确认的v11。** 两份不同体积发布包均在文件blob上传层300秒超时，未保存新版本/未产生部署ID；原生推送后私密发布返回accepted=false。Sites候选源已推送 `e709d347e61bb867e41c441a961e9266c08bd824`，不等于已上线。停止重复已失败上传路径；在上传环境有新证据恢复后，从同一项目候选源续发。完整结果见 [报告](mv-identity-quality-followup-report-20261026.md)、[验证](mv-identity-quality-followup-verification-20261026.json)、[NEXT-COMPUTER-HANDOFF](NEXT-COMPUTER-HANDOFF.md)。个人页统一排版仍待用户决定，下方v11为已确认基线。
 
-## 最新确认：v11已获用户确认，全部当前进度已上线（2026-10-26）
+## 已确认基线：v11已获用户确认并上线（本批前状态，2026-10-26）
 
 用户在v11交付后回复“同意”，要求将全部当前进度发布至指定正式站点，并同步最新开发进度到仓库。已重新核对：指定站点当前最新版本为v11，部署状态succeeded；站点源HEAD与已发布源提交`c28c945987e22803b81ea266e6aaadf1ce972cb0`一致且无未提交文件。全部已完成网页修改已在站点中，本次无需重复发布相同产物。现有owner-private只读权限保持。
 

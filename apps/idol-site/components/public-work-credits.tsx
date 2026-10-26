@@ -1,8 +1,15 @@
 'use client';
 import type {CatalogView,Work} from '@/lib/idol/types';
 import {publicCreditForWork,publicCreditsForMember} from '@/lib/idol/public-work-credits';
+import {publicProductionForWork} from '@/lib/idol/public-production-credits';
 import {memberDisplayName} from '@/lib/idol/member-display-name';
 import './public-work-credits.css';
+
+export function PublicProductionCredits({work}:{work:Work}){
+ const row=publicProductionForWork(work);
+ if(!row)return null;
+ return <section className="public-work-credits" aria-label="MV制作资料" data-production-work={work.id}><h2>MV 制作资料</h2><ul>{row.credits.map(c=><li key={c.role}><span>{c.role}</span><strong>{c.name}</strong></li>)}</ul><a href={row.sourceUrl} target="_blank" rel="noopener noreferrer">公开制作名单 · 来源 ↗</a></section>;
+}
 
 export function PublicWorkCredits({work,data,onMember}:{work:Work;data:CatalogView;onMember:(id:string)=>void}){
  const credit=publicCreditForWork(work);

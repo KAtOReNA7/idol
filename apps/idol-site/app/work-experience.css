@@ -1,0 +1,36 @@
+/* Shared navigation and current work controls; the selected artist stylesheet
+   supplies the work's typography, palette, borders and card treatments. */
+.work-experience{min-height:100vh;padding-left:260px;font-size:14px;line-height:1.6;--font-body:Arial,'Microsoft YaHei',sans-serif;--font-editorial:var(--font-body);--font-number:var(--font-body)}
+.work-experience *{box-sizing:border-box}
+.work-experience>main{width:100%;max-width:1760px;margin:0 auto;padding:24px 40px 32px;min-width:0}
+.work-experience .music-sidebar,.work-experience .music-mobile-header,.work-experience .music-bottom-nav{background:var(--paper);color:var(--ink);border-color:var(--line)}
+.work-experience .music-brand,.work-experience .music-menu,.work-experience .music-sidebar nav button{color:var(--ink)}
+.work-experience .music-sidebar nav button svg{color:inherit}
+.work-experience .music-sidebar nav button[aria-current=page],.work-experience .music-bottom-nav button[aria-current=page]{background:var(--blush);color:var(--rose)}
+.work-experience .music-search{background:var(--white);border-color:var(--line);color:var(--muted)}
+.work-experience .music-search input{background:transparent;color:var(--ink)}
+.work-experience .music-search button,.work-experience .music-access,.work-experience .music-nav-heading,.work-experience .music-bottom-nav button{color:var(--muted)}
+.work-experience .music-work-title{border-color:var(--line)}
+.work-experience .music-work-title h1{font-family:inherit;color:inherit;font-size:clamp(32px,5vw,72px);line-height:1.15;overflow-wrap:anywhere}
+.work-experience[data-work-theme] :is(h1,h2,h3,.member-name){font-family:var(--font-editorial);font-style:var(--work-heading-style);color:var(--ink)}
+.work-experience[data-work-theme] :is(.work-aside,.cast-card,.editor,.caption-help,.stage-source,.alternative-card,.watch-lead-card,.watch-next,.detail-return){background:var(--white);color:var(--ink);border-color:var(--line)}
+.work-experience[data-work-theme] :is(.readonly-note,.video-caption,.video-fallback,.work-score small,.work-score span,.watch-context,.subtle){color:var(--muted)}
+.work-experience[data-work-theme] :is(.tags span,.mv-member-shortcuts,.stage-overall-note){background:var(--blush);color:var(--ink);border-color:var(--line)}
+.work-experience[data-work-theme] :is(.work-score strong,.cast-scores b,.section-heading h2){color:var(--ink)}
+.work-experience[data-work-theme] :is(.button,.video-mode-tabs button,.editor-open,.text-button,.mv-member-shortcuts button){background:var(--white);color:var(--ink);border-color:var(--line)}
+.work-experience[data-work-theme] :is(.button.primary,.video-play,.video-mode-tabs button[aria-selected=true]){background:var(--rose);color:var(--work-on-accent);border-color:var(--rose)}
+.work-experience[data-work-theme] .video-mode-tabs{background:var(--blush);border-color:var(--line)}
+.work-experience[data-work-theme] :is(.editor-fields input,.editor-fields select,.editor-fields textarea){background:var(--paper);color:var(--ink);border-color:var(--line)}
+.work-experience[data-work-theme] :is(button,a,input,textarea,select):focus-visible{outline:2px solid var(--rose);outline-offset:4px}
+.work-experience[data-work-theme] .music-sidebar nav button[aria-current=page],.work-experience[data-work-theme] .music-bottom-nav button[aria-current=page]{background:var(--rose);color:var(--work-on-accent)}
+.work-experience .music-work-title>p{color:var(--muted)}
+.work-experience .work-detail-top>div,.work-experience .cast-copy{min-width:0}
+.work-experience .cast-card .photo{aspect-ratio:3/4;height:auto}
+.work-experience .cast-card .photo img{object-fit:contain}
+.work-experience .detail-return,.work-experience .stage-view>.detail-return{position:static;margin-top:24px}
+.work-experience .source-status{font-size:11px;gap:12px;min-height:24px;height:auto;flex-wrap:wrap}
+.work-experience footer{margin-top:48px;padding:22px 0;border-top:1px solid var(--line);display:flex;gap:20px;align-items:center}
+.work-experience footer p{font-size:11px;color:var(--muted)}
+@media(max-width:1199px){.work-experience{padding-left:220px}.work-experience>main{padding-inline:28px}.work-experience .work-detail-top{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:760px){.work-experience{padding:0 0 calc(68px + env(safe-area-inset-bottom));font-size:13px}.work-experience>main{padding:14px 20px 28px}.work-experience .music-work-title h1{font-size:32px}.work-experience .detail{padding-top:0}.work-experience .cast-grid{grid-template-columns:minmax(0,1fr)}.work-experience .cast-card{min-width:0}.work-experience .cast-scores{flex-wrap:wrap}.work-experience .video-mode-tabs button{white-space:normal}.work-experience .editor-fields input,.work-experience .editor-fields textarea,.work-experience .editor-fields select{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.work-experience *{transition:none!important;animation:none!important;scroll-behavior:auto!important}}

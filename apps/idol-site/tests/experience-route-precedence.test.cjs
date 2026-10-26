@@ -1,43 +1,10 @@
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),ts=require('typescript');
-const {candidateRegistry}=require('./candidate-harness.cjs');
-const source=fs.readFileSync('app/page.tsx','utf8');
-const ast=ts.createSourceFile('page.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
-const fn=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='experienceClassFor');
-assert.ok(fn);
-const constants=Object.fromEntries([...fs.readFileSync('lib/idol/artist-navigation.ts','utf8').matchAll(/export const (\w+_GROUP_ID)='([^']+)';/g)].map(m=>[m[1],m[2]]));
-const code=ts.transpileModule(fn.getText(ast),{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText;
-const {izoneMemberPortrait}=require('./helpers/public-artist-loader.cjs')('lib/idol/izone-photos.ts');
-const resolve=vm.runInNewContext(code+';experienceClassFor',{...constants,izoneMemberPortrait,candidateExperienceClass:candidateRegistry.candidateExperienceClass});
-// Public identities independently checked against the existing catalog; no scores or user state.
-const works=[{id:'recvxyOz5XuYef',groupIds:['recvxyEBDZqkpg']},{id:'recvxyH5pzBi6D',groupIds:['recvxyEBDZPXW9']}];
-const member={id:'rec28ldbniB9dP',groupIds:[constants.BABYMONSTER_GROUP_ID]};
-test('rendered work keeps its own style even with another group member query',()=>{
- const data={works,members:[member]};
- for(const [index,slug] of ['idle','billlie'].entries()){
-  const expected='candidate-experience candidate-'+slug+'-experience';
-  assert.equal(resolve(data,{work:works[index].id}),expected);
-  assert.equal(resolve(data,{work:works[index].id,member:member.id}),expected);
- }
+const test=require('node:test'),assert=require('node:assert/strict');
+const {workExperience:resolve}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-experience.ts');
+const works=[{id:'idle-work',groupIds:['recvxyEBDZqkpg']},{id:'izone-work',groupIds:['recvxyEBDZjpqw']}];
+test('a valid Work owns its theme even with a foreign member or artist return query',()=>{
+ const data={works};assert.equal(resolve(data,{work:'idle-work',member:'foreign',artistReturn:'/artists/ive'}).slug,'idle');
+ assert.equal(resolve(data,{work:'idle-work',artistReturn:'https://evil.test/artists/izone'}).slug,'idle');
 });
-test('invalid work falls back to member; missing data and ordinary routes retain behavior',()=>{
- const data={works,members:[member]};
- assert.equal(resolve(data,{work:'missing',member:member.id}),'bm-experience');
- assert.equal(resolve(data,{member:member.id}),'bm-experience');
- assert.equal(resolve(data,{}),candidateRegistry.candidateExperienceClass([]));
- assert.equal(resolve(null,{work:works[0].id,member:member.id}),candidateRegistry.candidateExperienceClass([]));
-});
-test('work-first rule preserves existing within-record group precedence',()=>{
- const data={works:[{id:'synthetic-work',groupIds:[constants.ILLIT_GROUP_ID,constants.BABYMONSTER_GROUP_ID]}],members:[{id:'synthetic-member',groupIds:['recvxyEBDZPXW9']}]};
- assert.equal(resolve(data,{work:'synthetic-work',member:'synthetic-member'}),'bm-experience');
- assert.equal(resolve(data,{member:'synthetic-member'}),'candidate-experience candidate-billlie-experience');
-});
-test('IZ*ONE historical journeys keep their cinema theme without overriding current groups or works',()=>{
- const historical=JSON.parse(fs.readFileSync('data/izone-review-editorial.json','utf8')).members;
- const data={works,members:historical};
- for(const m of historical){
-  const route={member:m.id};const ordinary=resolve(data,route);
-  assert.equal(resolve(data,{...route,artistReturn:'/artists/izone?section=members&member='+m.id}),'candidate-experience candidate-izone-experience');
-  for(const artistReturn of ['/artists/ive','/artists/lesserafim','/artists/saymyname','https://evil.test/artists/izone','/artists/izone?unknown=x'])assert.equal(resolve(data,{...route,artistReturn}),ordinary);
-  assert.equal(resolve(data,{...route,work:works[0].id,artistReturn:'/artists/izone'}),'candidate-experience candidate-idle-experience');
- }
+test('member pages and invalid work URLs retain the confirmed shared member layout',()=>{
+ for(const route of [{member:'member'},{work:'missing',member:'member',artistReturn:'/artists/izone'},{nav:'groups'},{}])assert.equal(resolve({works},route),null);
 });

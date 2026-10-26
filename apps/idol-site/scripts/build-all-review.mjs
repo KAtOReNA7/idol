@@ -9,6 +9,9 @@ const args=process.argv.slice(2),opts=Object.fromEntries(Array.from({length:args
 if(!opts['--out']||!path.isAbsolute(opts['--out'])||!opts['--udtt-portrait'])throw Error('Use --out <absolute scratch dir> --udtt-portrait <verified public original> [--public-ref <40char SHA>]');
 const out=path.resolve(opts['--out']),ref=opts['--public-ref'];if(out===repo||out.startsWith(repo+path.sep)||out===path.parse(out).root)throw Error('Dedicated scratch output required');
 if(ref&&!/^[a-f0-9]{40}$/.test(ref))throw Error('Immutable public Git ref required');
+const portraitBudgetMiB=Number(opts['--portrait-budget-mib']??230);
+if(!Number.isSafeInteger(portraitBudgetMiB)||portraitBudgetMiB<1||portraitBudgetMiB>230)throw Error('Portrait budget must be an integer from 1 to 230 MiB');
+const portraitBudgetBytes=portraitBudgetMiB*1024*1024;
 if(fs.existsSync(out)&&fs.readdirSync(out).length&&!fs.existsSync(path.join(out,'review-all/build-owner.json')))throw Error('Output directory is not a prior all-review build');
 const read=p=>fs.readFileSync(path.join(root,p)),sha=b=>createHash('sha256').update(b).digest('hex'),require=createRequire(path.join(root,'package.json'));
 const projection=await build({stdin:{contents:"export {projectCatalog} from './lib/idol/catalog';export {projectPublicCatalog} from './lib/idol/public-catalog';export {projectArtistCatalog} from './lib/idol/artist-catalog';export {withSocialFacts} from './lib/idol/social-facts';",resolveDir:root,loader:'ts'},bundle:true,write:false,platform:'node',format:'cjs',external:['cloudflare:workers','server-only'],logLevel:'silent'});
@@ -43,8 +46,10 @@ for(const row of [...Object.values(repairedArtist.memberVisuals),...repairedArti
 const mvMedia=JSON.parse(read('data/mv-public-media.json'));
 for(const row of mvMedia.covers)localPublicAssets.add(row.src);
 let localBytes=[...localPublicAssets].reduce((sum,url)=>sum+fs.statSync(path.join(root,'public',url)).size,0);
+const mandatorySameOriginBytes=localBytes;
+if(portraitBudgetBytes<mandatorySameOriginBytes)throw Error('Portrait budget cannot remove mandatory same-origin covers or index artwork');
 const portraitFiles=[...new Set(mvMedia.portraits.map(row=>row.src))].map(src=>({src,bytes:fs.statSync(path.join(root,'public',src)).size})).sort((a,b)=>a.bytes-b.bytes||a.src.localeCompare(b.src));
-for(const row of portraitFiles)if(!localPublicAssets.has(row.src)&&localBytes+row.bytes<=230*1024*1024){localPublicAssets.add(row.src);localBytes+=row.bytes;}
+for(const row of portraitFiles)if(!localPublicAssets.has(row.src)&&localBytes+row.bytes<=portraitBudgetBytes){localPublicAssets.add(row.src);localBytes+=row.bytes;}
 for(const url of localPublicAssets)if(!url.startsWith('/artist/')||url.includes('..')||!fs.existsSync(path.join(root,'public',url)))throw Error('Invalid same-origin public original: '+url);
 const jsxReal=require.resolve('react/jsx-runtime'),styleFiles=new Map();
 const result=await build({entryPoints:[path.join(root,'review/all/entry.tsx')],absWorkingDir:root,outfile:path.join(out,'review-all/app.js'),bundle:true,format:'esm',platform:'browser',target:['es2022'],jsx:'automatic',minify:true,metafile:true,define:{'process.env.NODE_ENV':'"production"'},plugins:[{name:'all-review',setup(b){
@@ -83,6 +88,6 @@ for(const item of [{slug:'index',entry:'app/page.tsx'},...registry.map(g=>({slug
 const version=sha(fs.readFileSync(path.join(out,'review-all/app.js'))).slice(0,16);
 const html=`<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>全团只读审阅</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/review-all/app.css?v=${version}"><style>#review-context{padding:8px 16px;text-align:center;background:#161616;color:#fff;font:12px/1.5 system-ui}#review-context a{color:inherit;text-decoration:underline;margin-left:16px}</style></head><body><aside id="review-context">只读审阅 · 个人评分与备注未载入<a href="/?view=groups">全部团体</a></aside><div id="root"></div><script type="module" src="/review-all/app.js?v=${version}"></script></body></html>`;
 for(const dest of ['index.html',...registry.map(g=>'artists/'+g.slug+'/index.html')]){fs.mkdirSync(path.dirname(path.join(out,dest)),{recursive:true});const slug=dest==='index.html'?'index':dest.split('/')[1];fs.writeFileSync(path.join(out,dest),(slug==='index'?html.replace(/<aside id="review-context">[\s\S]*?<\/aside>/,'').replace('<title>全团只读审阅</title>','<title>stage. 女团手帐</title>'):html).replace('/review-all/app.css','/review-all/routes/'+slug+'.css')); }
-fs.writeFileSync(path.join(out,'review-all/manifest.json'),JSON.stringify({kind:'all-groups-read-only',publicRef:ref??null,groups:registry.length,catalogSha256:sha(payload),assets:assetManifest,bundleInputs:Object.keys(result.metafile.inputs)},null,2)+'\n');
+fs.writeFileSync(path.join(out,'review-all/manifest.json'),JSON.stringify({kind:'all-groups-read-only',publicRef:ref??null,groups:registry.length,catalogSha256:sha(payload),delivery:ref?{portraitBudgetMiB,mandatorySameOriginBytes,originalBytesPreserved:true}:null,assets:assetManifest,bundleInputs:Object.keys(result.metafile.inputs)},null,2)+'\n');
 writeCompletionReport(out);
 console.log(JSON.stringify({output:out,groups:registry.length,assets:assetManifest.length,jsBytes:fs.statSync(path.join(out,'review-all/app.js')).size,publicRef:ref??null}));

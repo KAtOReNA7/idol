@@ -2,6 +2,14 @@
 
 用户授权：整理众多分支，将已完成成果合并主线。整合分支为 `codex/mainline-consolidation-20261026`，通过非 squash 的 merge PR 进入 `main`，保留完整历史及不可变图片提交。未强推、未重写历史、未部署站点。
 
+## 实际完成结果
+
+[PR #42](https://github.com/KAtOReNA7/idol/pull/42) 已成功合并，合并提交 `99a8ef14712f3312aaf5db3e1691527d36b2884f`。远端原54条分支现为3条：`main`、`codex/member-photo-consensus`、`handoff/sol-safe-source-20261016`。原51条已整合非main分支加本轮整合分支，共52条已逐条核对完整SHA、主线包含关系及远端归档tag，原子推送删除成功。52个对应恢复标签仍在远端。
+
+原40个开放草稿PR（#2–#41）均已更新说明并关闭；它们的head完整进入main，GitHub状态为closed而非逐个操作merged。PR42状态为merged；复查开放PR为0。无GitHub checks/statuses配置，本次依据上述本地实际验证合并，没有绕过失败CI。
+
+本机已切换到跟踪 `origin/main` 的 `main`；原仅追踪KiiiKiii单分支的fetch配置已在本仓库改为追踪全部heads，并清理失效远端跟踪引用，未删除本地历史分支。接续文件中的基线已同步。此次结果补记只改文档。
+
 ## 核查与选择
 
 - 开工工作树干净，显式 fetch 全部远端 heads；发现本地为浅克隆后执行 unshallow。完整历史确认旧 main `b9e101262c696c2c77ed6aee62d004370c53cd21` 是最新实现 `a27cc9793fd0d00ef3fea062e346627eadeb7575` 的祖先（0/124），不是需要丢弃一边的分叉。

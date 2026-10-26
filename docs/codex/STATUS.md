@@ -1,5 +1,15 @@
 # 共享开发状态
 
+## 最新交付：Hearts2Hearts M批24条已补，正式v190上线（2026-10-26）
+
+从 `codex/mv-identity-quality-followup` 远端279a1e9接续，显式fetch、开工干净。优先的Butterflies / Pretty Please / RUDE!共24条均已逐镜头核验、一次导入并发布；A–L未重复。现 **2121认人图绑定 / 348作品 / 45团，628封面，707缺图**；原871累计已补164。另43旧低清、18统计未知仍开放，个人页统一排版待用户决定。H2H在当前缺口表仅余Lemon Tang STELLA一条。
+
+正式站 https://idol-lens-private.wuke40758.chatgpt.site/ **v190 / succeeded**；正式源 `0842a321033152cacd6c5a0c8c6790d654d33ea0`，部署 `appgdep_6adf62e9eed08191bf2bd6c7251af40b`。24完整原生PNG45,098,917bytes固定于GitHub `9733e6bbddaa989e700090c08eea98ba2a009217`。51团设计、原图、ID/关系、DB/R2/MCP、个人记录和实际public受众1owner/0外部/0组保持，未合main。
+
+27专项、类型、正式构建、完整TAR62,668,288bytes/1417文件通过；本地公开目录夹具与线上真实目录分别9布局/72图/24原图流程，24新图远端HTTP/bytes/SHA通过。2097旧绑定、628封面、5463旧交付记录及公开目录全部投影字段/关系指纹保持；原生epoch6/原快照/done206未变。少数自拍源画面部分帽顶/头顶出框已披露，不伪造补边；线上favicon.ico404为非阻断遗留。真实保存、全视频播放、原生缩放、用户IAB、新Figma未验。
+
+完整报告 `docs/codex/identity-gap-m-report-20261026.md`；最新871逐条清单 `docs/codex/reports/20261026-gap-m/ledger.json/html/csv`；接续入口 `docs/codex/NEXT-COMPUTER-HANDOFF.md`。A–M已apply，禁止重导；继续707开放tuple。旧v189/731及更早数字均为历史。
+
 ## 本轮收官：正式站v189已上线，原871已补140、剩731（2026-10-26）
 
 用户要求尽快收官、全部提交仓库并给出跨电脑接续指令。本轮已完成：正式站由旧v186依次更新到v187、v188、**v189 / succeeded**，地址 https://idol-lens-private.wuke40758.chatgpt.site/ 。主页、成员目录/详情、605作品团体主题、23团内展示视频、整数粉丝和隐藏0/未知X均已同步；个人页未额外统一重设计。K新增121、L新增16，原871累计J3+K121+L16=140已补、**731仍缺**；全站2097认人绑定/345作品/45团，628封面、43旧低清、18未知统计。A至L已导入，禁止重复导入。

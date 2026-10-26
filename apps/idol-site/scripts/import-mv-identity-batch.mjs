@@ -3,7 +3,7 @@
 import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const key=p=>[p.workId,p.videoId,p.memberId].join(':');
-export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijkl]-20261026)\/identities\/[\w.-]+$/;
+export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026)\/identities\/[\w.-]+$/;
 const visualEvidenceTypes=new Set(['source_named_frame_with_official_video_match','official_named_shoot_with_official_mv_set_match','official_named_shoot_with_official_mv_scene_match']);
 function verifyVisualVersionEvidence(p){
  if(!visualEvidenceTypes.has(p.evidenceLevel))return;

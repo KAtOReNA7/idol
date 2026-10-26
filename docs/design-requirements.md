@@ -1,5 +1,9 @@
 # 女团页面设计要求与验收基准
 
+## 当前接续：正式v190 / M批24条已上线（2026-10-26）
+
+活动分支codex/mv-identity-quality-followup / PR41；2121绑定、707缺图、43旧低清、18未知统计。A–M均已apply，51团设计/原图/个人记录/ID/权限保持。正式项目appgprj_6acb4fa532b88191ae2588c24b724b17实际public受众不变；不是旧审阅v11。详见[codex最新入口](codex/NEXT-COMPUTER-HANDOFF.md)及[M批报告](codex/identity-gap-m-report-20261026.md)。以下历史上线限制和数字不能覆盖最新决定。
+
 ## 当前续作边界（2026-10-26）
 
 51团设计与Apple Music主站继续保持。最新资料候选1943绑定/321作品/44团，剩885缺图、43低清、18未知；代码与验证已推送PR #41。发布仍卡文件blob上传，线上仅已确认v11；候选源b57ea40不等于上线。以[codex接续入口](codex/NEXT-COMPUTER-HANDOFF.md)、[本轮报告](codex/mv-publication-recovery-report-20261026.md)为准。下方“全部当前进度已上线”只指当时v11基线。个人页统一排版仍待决定。

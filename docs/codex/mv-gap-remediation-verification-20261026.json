@@ -1,0 +1,490 @@
+{
+  "checkedAt": "2026-10-26",
+  "branch": "codex/mv-identity-quality-followup",
+  "pullRequest": "https://github.com/KAtOReNA7/idol/pull/41",
+  "baseCommit": "ef52512f772d93e80cea3e00300b5ed4f5a93573",
+  "implementationCommit": "4cba985af060284122ef46541df4ea9c1ade4e0c",
+  "status": "871_classified_3_resolved_868_open_publication_blocked",
+  "classification": {
+    "status": "passed",
+    "checks": {
+      "frozen871ExactTupleCoverage": true,
+      "duplicateTuples": 0,
+      "unexpectedTuples": 0,
+      "missingSolutions": 0,
+      "idsAndNamesMatchFrozenBaseline": true,
+      "sourceFreezeMatchesAllThreeEvidenceBuckets": true,
+      "allRowsHaveStepsSourcesAndAcceptanceConditions": true,
+      "onePrimaryCategoryPerTuple": true,
+      "resolvedEqualsJDeltaAndCurrentAuditIntersection": true,
+      "remainingEqualsCurrentAudit": true,
+      "openTupleSetExactlyMatchesCurrentAudit": true,
+      "primaryCountsSum871": true,
+      "works196Groups45": true
+    },
+    "summary": {
+      "frozen": 871,
+      "resolved": 3,
+      "remaining": 868,
+      "works": 196,
+      "groups": 45,
+      "byCategory": {
+        "research_incomplete": 493,
+        "identity_unproven": 56,
+        "provenance_mismatch": 1,
+        "insufficient_pixels": 62,
+        "source_access": 156,
+        "wrong_version": 40,
+        "not_mv_shoot": 59,
+        "obscured_composition": 4
+      },
+      "openByCategory": {
+        "research_incomplete": 491,
+        "identity_unproven": 56,
+        "insufficient_pixels": 62,
+        "source_access": 156,
+        "wrong_version": 40,
+        "not_mv_shoot": 59,
+        "obscured_composition": 4
+      },
+      "byEvidenceBucket": {
+        "evidence-inventory.json": 542,
+        "evidence-i.json": 264,
+        "evidence-h.json": 65
+      },
+      "selectedMelonBlockedTuples": 179
+    },
+    "ledgerSha256": "79bc47ac259b1dc67f8d0a8a8237f6a7a809f7efa8856c5b449e8487ecba0518",
+    "sourceHashes": {
+      "evidence-h.json": "9e3365d9e97f5d92936bd9b59942d9a4def091e66ef06da2a480a12a2445ab70",
+      "evidence-i.json": "2b8282555d2c8957614dfc0d49e45536e1b51cfc19552a590db05950966ba037",
+      "evidence-inventory.json": "222b550caa42f582a24a787b9472fb71458109713857f2389cca1a3cdc0dbbb9"
+    }
+  },
+  "coverage": {
+    "catalogGroups": 51,
+    "catalogWorks": 605,
+    "editorialExtraVideoIds": 23,
+    "covers": 628,
+    "coverBytes": 73433666,
+    "identitySourceRecords": 2061,
+    "identityImages": 1960,
+    "identityWorks": 326,
+    "identityGroups": 44,
+    "identityBytes": 1105248775,
+    "identityUniqueFiles": 1953,
+    "cardOnlyImages": 43,
+    "borderMetadataComplete": true,
+    "borderMetadataReview": "Prior reviews preserved; every admitted batch image reviewed at actual 3:4 display. Original-byte, dimension and crop validation required; see batch source reports for composition changes and excluded candidates.",
+    "evidenceLevels": {
+      "previously_reviewed_exact_original": 182,
+      "source_named_unique_mv_chapter": 1158,
+      "source_named_exact_mv_page": 532,
+      "official_exact_mv_shoot_provenance": 12,
+      "official_named_member_video_thumbnail": 6,
+      "source_named_explicit_version_mv_chapter": 1,
+      "official_named_mv_shoot_unique_version": 69
+    },
+    "coverSourceCrops": 39,
+    "identitySourceCrops": 1050,
+    "worksWithoutPublicIdentity": 279,
+    "worksWithNoRelationships": 133,
+    "missingRelationshipImages": 868,
+    "displayCropAdjustments": 326,
+    "actual3By4ContactSheetsReviewed": 57
+  },
+  "implemented": {
+    "newBindings": 3,
+    "originalBytes": 737104,
+    "oldQualityPromotionsThisRound": 0,
+    "memberScoringPolicyChanged": false,
+    "personalDataOrPermissionsChanged": false
+  },
+  "checks": {
+    "focusedTests": {
+      "passed": 25,
+      "failed": 0
+    },
+    "typecheck": "passed",
+    "productionBuild": "passed_with_existing_classification_and_bundle_warnings",
+    "publicProjection": "passed",
+    "newImageBrowser": {
+      "mode": "local",
+      "base": "local_static_preview",
+      "browser": "Browser plugin not available; existing Playwright with verified system Chrome 155.0.8059.85",
+      "viewports": [
+        320,
+        390,
+        1440
+      ],
+      "layouts": [
+        {
+          "width": 320,
+          "workId": "rec28ldfRTrL4q",
+          "videoId": "naoGk-Zjc1s",
+          "checked": [
+            {
+              "memberId": "rec28ldbniB9lW",
+              "src": "/artist/mv-identity-batch-j-20261026/identities/naoGk-Zjc1s-rec28ldbniB9lW-23a98439d7.jpg",
+              "natural": {
+                "width": 840,
+                "height": 1260
+              },
+              "frame": {
+                "width": 278,
+                "height": 370.65625
+              }
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "width": 320,
+          "workId": "rec28ldfRTrH26",
+          "videoId": "8WQZzvE4fJg",
+          "checked": [
+            {
+              "memberId": "recvxAPQCFeo1A",
+              "src": "/artist/mv-identity-batch-j-20261026/identities/8WQZzvE4fJg-recvxAPQCFeo1A-77e824ea51.jpg",
+              "natural": {
+                "width": 736,
+                "height": 1104
+              },
+              "frame": {
+                "width": 133,
+                "height": 177.328125
+              }
+            },
+            {
+              "memberId": "recvxAPQCF8okQ",
+              "src": "/artist/mv-identity-batch-j-20261026/identities/8WQZzvE4fJg-recvxAPQCF8okQ-45245e1565.jpg",
+              "natural": {
+                "width": 736,
+                "height": 1104
+              },
+              "frame": {
+                "width": 133,
+                "height": 177.328125
+              }
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "workId": "rec28ldfRTrL4q",
+          "videoId": "naoGk-Zjc1s",
+          "checked": [
+            {
+              "memberId": "rec28ldbniB9lW",
+              "src": "/artist/mv-identity-batch-j-20261026/identities/naoGk-Zjc1s-rec28ldbniB9lW-23a98439d7.jpg",
+              "natural": {
+                "width": 840,
+                "height": 1260
+              },
+              "frame": {
+                "width": 348,
+                "height": 464
+              }
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "workId": "rec28ldfRTrH26",
+          "videoId": "8WQZzvE4fJg",
+          "checked": [
+            {
+              "memberId": "recvxAPQCFeo1A",
+              "src": "/artist/mv-identity-batch-j-20261026/identities/8WQZzvE4fJg-recvxAPQCFeo1A-77e824ea51.jpg",
+              "natural": {
+                "width": 736,
+                "height": 1104
+              },
+              "frame": {
+                "width": 168,
+                "height": 224
+              }
+            },
+            {
+              "memberId": "recvxAPQCF8okQ",
+              "src": "/artist/mv-identity-batch-j-20261026/identities/8WQZzvE4fJg-recvxAPQCF8okQ-45245e1565.jpg",
+              "natural": {
+                "width": 736,
+                "height": 1104
+              },
+              "frame": {
+                "width": 168,
+                "height": 224
+              }
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "width": 1440,
+          "workId": "rec28ldfRTrL4q",
+          "videoId": "naoGk-Zjc1s",
+          "checked": [
+            {
+              "memberId": "rec28ldbniB9lW",
+              "src": "/artist/mv-identity-batch-j-20261026/identities/naoGk-Zjc1s-rec28ldbniB9lW-23a98439d7.jpg",
+              "natural": {
+                "width": 840,
+                "height": 1260
+              },
+              "frame": {
+                "width": 255,
+                "height": 340
+              }
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "width": 1440,
+          "workId": "rec28ldfRTrH26",
+          "videoId": "8WQZzvE4fJg",
+          "checked": [
+            {
+              "memberId": "recvxAPQCFeo1A",
+              "src": "/artist/mv-identity-batch-j-20261026/identities/8WQZzvE4fJg-recvxAPQCFeo1A-77e824ea51.jpg",
+              "natural": {
+                "width": 736,
+                "height": 1104
+              },
+              "frame": {
+                "width": 204,
+                "height": 272
+              }
+            },
+            {
+              "memberId": "recvxAPQCF8okQ",
+              "src": "/artist/mv-identity-batch-j-20261026/identities/8WQZzvE4fJg-recvxAPQCF8okQ-45245e1565.jpg",
+              "natural": {
+                "width": 736,
+                "height": 1104
+              },
+              "frame": {
+                "width": 204,
+                "height": 272
+              }
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "originals": [
+        {
+          "width": 390,
+          "workId": "rec28ldfRTrL4q",
+          "memberId": "rec28ldbniB9lW",
+          "decoded": true,
+          "keyboard": true,
+          "focusReturned": true
+        },
+        {
+          "width": 390,
+          "workId": "rec28ldfRTrH26",
+          "memberId": "recvxAPQCFeo1A",
+          "decoded": true,
+          "keyboard": true,
+          "focusReturned": true
+        },
+        {
+          "width": 390,
+          "workId": "rec28ldfRTrH26",
+          "memberId": "recvxAPQCF8okQ",
+          "decoded": true,
+          "keyboard": true,
+          "focusReturned": true
+        },
+        {
+          "width": 1440,
+          "workId": "rec28ldfRTrL4q",
+          "memberId": "rec28ldbniB9lW",
+          "decoded": true,
+          "keyboard": true,
+          "focusReturned": true
+        },
+        {
+          "width": 1440,
+          "workId": "rec28ldfRTrH26",
+          "memberId": "recvxAPQCFeo1A",
+          "decoded": true,
+          "keyboard": true,
+          "focusReturned": true
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "pageErrors": [],
+      "nonReadRequests": [],
+      "status": "passed"
+    },
+    "ledgerBrowser": {
+      "status": "passed",
+      "results": [
+        {
+          "width": 320,
+          "allRows": 871,
+          "resolved": 3,
+          "accessRows": 156,
+          "overflow": 0,
+          "searchPassed": true,
+          "csvPassed": true,
+          "detailsPassed": true,
+          "groupFilterPassed": true
+        },
+        {
+          "width": 390,
+          "allRows": 871,
+          "resolved": 3,
+          "accessRows": 156,
+          "overflow": 0,
+          "searchPassed": true,
+          "csvPassed": true,
+          "detailsPassed": true,
+          "groupFilterPassed": true
+        },
+        {
+          "width": 1440,
+          "allRows": 871,
+          "resolved": 3,
+          "accessRows": 156,
+          "overflow": 0,
+          "searchPassed": true,
+          "csvPassed": true,
+          "detailsPassed": true,
+          "groupFilterPassed": true
+        }
+      ],
+      "pageErrors": []
+    },
+    "remoteOriginals": {
+      "commit": "4cba985af060284122ef46541df4ea9c1ade4e0c",
+      "checkedAt": "2026-10-26T05:14:39.891Z",
+      "status": "passed",
+      "total": 3,
+      "results": [
+        {
+          "src": "/artist/mv-identity-batch-j-20261026/identities/naoGk-Zjc1s-rec28ldbniB9lW-23a98439d7.jpg",
+          "status": "passed",
+          "http": 200,
+          "contentType": "image/jpeg",
+          "bytes": 121585,
+          "sha256": "23a98439d7a03c0728b75d37c5c9c3a9aa4008cc46e56ac936ad4cbc0737bcdb",
+          "width": 840,
+          "height": 1260,
+          "decoded": true
+        },
+        {
+          "src": "/artist/mv-identity-batch-j-20261026/identities/8WQZzvE4fJg-recvxAPQCFeo1A-77e824ea51.jpg",
+          "status": "passed",
+          "http": 200,
+          "contentType": "image/jpeg",
+          "bytes": 367288,
+          "sha256": "77e824ea51163d87fea6b8d6be35e0c6da17f391f64bd9963dc707dab985d583",
+          "width": 736,
+          "height": 1104,
+          "decoded": true
+        },
+        {
+          "src": "/artist/mv-identity-batch-j-20261026/identities/8WQZzvE4fJg-recvxAPQCF8okQ-45245e1565.jpg",
+          "status": "passed",
+          "http": 200,
+          "contentType": "image/jpeg",
+          "bytes": 248231,
+          "sha256": "45245e1565ce5d50c056042b0fe636001544c43324f2c39a3447210d3e673036",
+          "width": 736,
+          "height": 1104,
+          "decoded": true
+        }
+      ]
+    },
+    "catalogPreservation": {
+      "status": "passed",
+      "oldRawSha256": "844d76a9c1299e35fad553cd47b6dbe2366bab3b80bcebe0a35f346167adc7f3",
+      "newRawSha256": "889fb2dacb09c87df19d3e816b8b3c483c195a157935223fdc1d6775f5543315",
+      "normalizedSha256": "191565a40c7a9a731b38121b3eec75d1093111e479d383453752ab0ce70c808a",
+      "catalogContexts": 52,
+      "loadedAtChanges": 52,
+      "onlyLoadedAtChanged": true,
+      "onlyReviewedPublicDatesAndLoadedAtChanged": true,
+      "publicDateChanges": [],
+      "idsRelationshipsAndReadOnlyValuesUnchanged": true
+    },
+    "publicationSync": {
+      "status": "passed",
+      "projectId": "appgprj_6add2704bc6c81918d3e0e2f13130422",
+      "publicRef": "4cba985af060284122ef46541df4ea9c1ade4e0c",
+      "publicCatalogSha256": "889fb2dacb09c87df19d3e816b8b3c483c195a157935223fdc1d6775f5543315",
+      "publicCatalogUnchangedExceptBuildLoadedAt": true,
+      "catalogProof": {
+        "status": "passed",
+        "oldRawSha256": "844d76a9c1299e35fad553cd47b6dbe2366bab3b80bcebe0a35f346167adc7f3",
+        "newRawSha256": "889fb2dacb09c87df19d3e816b8b3c483c195a157935223fdc1d6775f5543315",
+        "normalizedSha256": "191565a40c7a9a731b38121b3eec75d1093111e479d383453752ab0ce70c808a",
+        "catalogContexts": 52,
+        "loadedAtChanges": 52,
+        "onlyLoadedAtChanged": true,
+        "onlyReviewedPublicDatesAndLoadedAtChanged": true,
+        "publicDateChanges": [],
+        "idsRelationshipsAndReadOnlyValuesUnchanged": true
+      },
+      "approvedRouteCssUnchangedAfterPublicRefAndLineEndingNormalization": 52,
+      "staticBytes": 163718174,
+      "staticFiles": 909,
+      "sameOriginOriginals": 724,
+      "manifestOriginalsVerified": 735,
+      "sourceCssDescriptorsExcluded": 14,
+      "removedStaleGeneratedAssets": []
+    },
+    "oldWorktreePreservation": {
+      "status": "passed",
+      "trackedPatchUnchanged": true,
+      "untrackedBackupFilesUnchanged": 5
+    }
+  },
+  "publication": {
+    "projectId": "appgprj_6add2704bc6c81918d3e0e2f13130422",
+    "currentLiveVersion": 11,
+    "currentLiveUrl": "https://idol-all-groups-review-oct25.wuke40758.chatgpt.site/",
+    "ownerOnly": true,
+    "allowedUsers": 1,
+    "externalVisitors": 0,
+    "allowedGroups": 0,
+    "sourceHead": "a5ea40846f69679628aa1f141d817c3d70781a0a",
+    "sourcePushed": true,
+    "archive": {
+      "status": "passed",
+      "archiveBytes": 148240824,
+      "archiveSha256": "0bbf66b55dc24f6ffee1d6a0349527e2183df9f11c270b93ebc8e91254807c13",
+      "staticFiles": 909,
+      "staticBytes": 163718174,
+      "archiveFileCount": 910,
+      "projectId": "appgprj_6add2704bc6c81918d3e0e2f13130422",
+      "noTraversalOrSymlinks": true,
+      "allStaticBytesEqualSource": true,
+      "additionalHelperHostingCopyVerified": "dist/.openai/hosting.json",
+      "hostingCopyOnlyCRLFNormalized": true
+    },
+    "uploadAttemptedThisRound": false,
+    "savedVersionCreatedThisRound": false,
+    "deploymentIdThisRound": null,
+    "reason": "Prior blob upload timed out; no recovery evidence, so no repeated failed upload. Source push and package are not publication."
+  },
+  "notVerified": [
+    "all remaining 868 images",
+    "exhaustive individual web research for all871",
+    "new online candidate deployment/browser",
+    "real personal saves",
+    "all videos full playback",
+    "native80/125percent zoom",
+    "user IAB",
+    "new Figma",
+    "whole repository test suite"
+  ],
+  "sources": "reports/20261026-gap-remediation/"
+}

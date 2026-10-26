@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "checks": {
+    "frozen871ExactTupleCoverage": true,
+    "duplicateTuples": 0,
+    "unexpectedTuples": 0,
+    "missingSolutions": 0,
+    "idsAndNamesMatchFrozenBaseline": true,
+    "sourceFreezeMatchesAllThreeEvidenceBuckets": true,
+    "allRowsHaveStepsSourcesAndAcceptanceConditions": true,
+    "onePrimaryCategoryPerTuple": true,
+    "resolvedEqualsJDeltaAndCurrentAuditIntersection": true,
+    "remainingEqualsCurrentAudit": true,
+    "openTupleSetExactlyMatchesCurrentAudit": true,
+    "primaryCountsSum871": true,
+    "works196Groups45": true
+  },
+  "summary": {
+    "frozen": 871,
+    "resolved": 3,
+    "remaining": 868,
+    "works": 196,
+    "groups": 45,
+    "byCategory": {
+      "research_incomplete": 493,
+      "identity_unproven": 56,
+      "provenance_mismatch": 1,
+      "insufficient_pixels": 62,
+      "source_access": 156,
+      "wrong_version": 40,
+      "not_mv_shoot": 59,
+      "obscured_composition": 4
+    },
+    "openByCategory": {
+      "research_incomplete": 491,
+      "identity_unproven": 56,
+      "insufficient_pixels": 62,
+      "source_access": 156,
+      "wrong_version": 40,
+      "not_mv_shoot": 59,
+      "obscured_composition": 4
+    },
+    "byEvidenceBucket": {
+      "evidence-inventory.json": 542,
+      "evidence-i.json": 264,
+      "evidence-h.json": 65
+    },
+    "selectedMelonBlockedTuples": 179
+  },
+  "ledgerSha256": "79bc47ac259b1dc67f8d0a8a8237f6a7a809f7efa8856c5b449e8487ecba0518",
+  "sourceHashes": {
+    "evidence-h.json": "9e3365d9e97f5d92936bd9b59942d9a4def091e66ef06da2a480a12a2445ab70",
+    "evidence-i.json": "2b8282555d2c8957614dfc0d49e45536e1b51cfc19552a590db05950966ba037",
+    "evidence-inventory.json": "222b550caa42f582a24a787b9472fb71458109713857f2389cca1a3cdc0dbbb9"
+  }
+}

@@ -1,5 +1,9 @@
 # 共享开发状态
 
+## 最新接续：19条认人图与4张旧图提质，候选验证中（2026-10-26）
+
+从已确认上线v11的最新远端3d368497接续，任务分支 `codex/mv-identity-quality-followup`。已接入19条官方具名MV拍摄图（ifeye3、ODD YOUTH4、GENBLUE12）与4张既有备选提质，累计1925绑定/316作品/44团，缺图903、旧低清43、未知统计18。23专项、类型及正式构建通过，浏览器与同站发布进行中；当前线上仍v11。保留51团设计、个人数据/关系/ID和owner-private只读权限，个人页统一排版仍待决定。详情见 `docs/codex/mv-identity-quality-followup-report-20261026.md` 与同名worklog。下方v11为已确认基线。
+
 跨电脑接续入口：[NEXT-COMPUTER-HANDOFF](NEXT-COMPUTER-HANDOFF.md)，包含可复制指令、分支/站点身份、缺口、运行命令与Sites源恢复步骤。
 
 ## 最新确认：v11已获用户确认，全部当前进度已上线（2026-10-26）

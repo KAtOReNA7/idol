@@ -1,27 +1,20 @@
 # Idol：正式开发与跨电脑交接
 
-正式工作目录是 [`apps/idol-site/`](apps/idol-site/)，不是仓库根的旧 Next sandbox。当前完整接续分支为 `codex/ifeye-native-integration`，从 `codex/izna-review-followup` 的 `665fed5` 接续，保留 GENBLUE、WOOAH、izna 已认可页面并接入ifeye。先读 [新电脑接续 RESUME](docs/codex/RESUME.md)；没有明确合并记录前，不从旧main开始。
+正式工程是 [`apps/idol-site/`](apps/idol-site/)，当前接续基线是远端最新 `main`。先检查并保护本地修改，显式 fetch，再从 `origin/main` 创建新的 `codex/` 任务分支。根目录 Next sandbox 与 `handoffs/` 中冻结候选只保留历史，不用于覆盖正式站。
 
-v186 原生源码已在提交 `f24075fc98893793e82adbc92cadc9e58257728f` 推送并读回核验：3954 文件、642362678 字节，应用子树 `a1fbe5d034b23be8a88572a3ab25e4d68d67734e`。其 Sites source `f0391481cccd85a4eb53cbe9bf63cdd77d30e350` 是来源身份，不是本仓库可 fetch 的 commit。当前文档与三个隔离候选随本次交接提交提供；首次检出仍须核实际分支、清单与素材。
+正式站 [Idol Lens](https://idol-lens-private.wuke40758.chatgpt.site/) 已上线 **v190**。现2121认人图绑定、628封面，仍有707缺图、43旧低清和18未知统计；A–M批已导入。51团已确认视觉、原图、稳定ID、个人数据和owner保存鉴权保持。GitHub合并不等于重新部署。
 
-## 接手入口
+## 接续与整理记录
 
-- [CODEX-FIRST-RUN：首次执行文件](docs/codex/CODEX-FIRST-RUN.md)
-- [PRD](docs/codex/PRD.md)、[CURRENT-STATE](docs/codex/CURRENT-STATE.md)、[ACCEPTANCE](docs/codex/ACCEPTANCE.md)
-- [STATUS：共享进度与任务索引](docs/codex/STATUS.md)、[多电脑规则](docs/codex/AGENTS-MULTI-MACHINE.md)、[任务记录模板](docs/codex/worklogs/TEMPLATE.md)
-- [根 AGENTS](AGENTS.md)：适用于正式源码及整个仓库；先查活动分支/PR，每任务独立分支，代码和 worklog 同提交，换机前推送合规 WIP，不覆盖用户改动。
+- [跨电脑快速接续](docs/codex/NEXT-COMPUTER-HANDOFF.md)
+- [当前状态](docs/codex/STATUS.md) · [下一步](docs/codex/RESUME.md) · [首次执行](docs/codex/CODEX-FIRST-RUN.md)
+- [主线整理报告](docs/codex/mainline-consolidation-20261026.md) · [全部分支SHA与处理方式](docs/codex/mainline-branch-inventory-20261026.json)
+- [M批完整报告](docs/codex/identity-gap-m-report-20261026.md) · [707缺图的逐条清单](docs/codex/reports/20261026-gap-m/ledger.html)
+- [多电脑协作](docs/codex/AGENTS-MULTI-MACHINE.md) · [协作入口](AGENTS.md)
 
-## 原始候选与当前接入状态
+旧逐团PR和分支已完成内容统一进入主线；独立旧沙盒照片共识与Sol交接分支保留待评估。已合分支使用 `archive/20261026/<原分支名>` tag保留原HEAD，可按清单恢复。历史的待验收/未合main/旧版本描述不覆盖当前状态。
 
-- [GENBLUE v2.2 / WOOAH v1.2 combined-integration](handoffs/codex-20261022/combined-integration/README.md)：原始冻结候选；GENBLUE与WOOAH已在当前分支接入并继续修订，不用旧候选覆盖新代码。
-- [MEOVV B](handoffs/codex-20261022/meovv-b/README.md)：四段冻结 patch 与四份真实 owner readback；B 尚未上线，不能冒称已通过正式 Sites 完整包验收。
-- [izna / ifeye v3](handoffs/codex-20261022/astra-izna-ifeye-v3/README.md)：保留原始15份源码、30图候选；izna与ifeye均已接入正式工程原生宿主、精确图片resolver和既有手帐入口；不再用原始候选覆盖当前代码。
-
-线上主站仍为v186 A-only。GENBLUE v10/WOOAH v12/izna v15页面已获确认；[ifeye v16只读审阅页](https://idol-billlie-qa-oct22.wuke40758.chatgpt.site/artists/ifeye/index.html) 已发布，保持owner-private，等待人工验收。6成员、3发行、7影像、10原图和既有手帐往返已落地；58项针对性测试、类型/正式构建通过。完整生产剪枝仍受旧izna引用阻断，Figma实图/内页、精确视频图和真实保存等未验项见 [本轮日志](docs/codex/worklogs/20261023-ifeye-native-integration.md)。本轮draft [PR #8](https://github.com/KAtOReNA7/idol/pull/8)以 `codex/izna-review-followup` 为base，未合并main。未确认ifeye前不开发下一团。
-
-Astra 与 Sol 已收官，Sol最终反馈已归档为 [SOL-HANDOFF](docs/codex/SOL-HANDOFF.md)；有界交接入口复核不等于全部产品验收通过。完整原生源码足以继续，无需等待旧会话回复。
-
-仓库保持公开。用户于 2026-10-22 13:22 UTC 已批准本次现有评分、备注、观看快照随源码公开；该批准不扩展到未来任意数据导出、密钥或凭证。公开读仍不等于开放写，owner-only 保存保护保持。没有当前生产发布授权时交预览，有明确授权后可按上线门槛继续。
+仓库保持原有可见性。既有公开源码授权不扩展到未来任意数据导出或凭证；公开读不等于开放写。
 
 ## 历史文件的范围
 

@@ -1,5 +1,11 @@
 # Codex 首次执行文件
 
+## 主线整理（2026-10-26）
+
+用户已授权将当前已完成成果合并至 `main`。本次整合包含 v190 对应 GitHub 实现 `a27cc9793fd0d00ef3fea062e346627eadeb7575`，以及早期工具分支历史和开发计划；正式工程 `apps/idol-site/` 的 Git 子树保持完全一致。以后以远端最新 `main` 为接续基线，新任务从它建立 `codex/` 分支。下文“未合 main / 不从 main 开始”及旧逐团门槛均为历史，不能覆盖本条。
+
+正式站仍为 v190；2121绑定、628封面、707缺图、43低清及18统计未知保持，A–M不得重复导入。本轮只整理 GitHub，不重新部署或改个人数据、设计和访问权限。2条独立旧候选分支保留；已整合历史分支先归档tag再清理，完整SHA与原因见 `docs/codex/mainline-branch-inventory-20261026.json`，过程及验证见 `docs/codex/mainline-consolidation-20261026.md`。
+
 跨电脑优先阅读 [快速接续文件](NEXT-COMPUTER-HANDOFF.md)，再核对 [RESUME](RESUME.md) 和 [STATUS](STATUS.md)顶部。活动分支codex/mv-identity-quality-followup / draft PR #41；当前1943绑定/321作品/44团，885缺图、43低清、18未知统计。新增18图与导入540px门槛已验证。三次文件blob上传超时，线上仍用户已确认v11；最新同项目候选源b57ea40已推送但未发布。先fetch最新远端并保护本地修改，不重跑已apply的A至G或4张提质。下方逐团门槛均属历史。
 
 ## 历史执行决定：IZ*ONE Panorama 重设计 v8（2026-10-25）

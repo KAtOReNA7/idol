@@ -1,10 +1,10 @@
 # 跨电脑接续：正式v190 / 原871已补164，剩707
 
-更新：2026-10-26。正式工程 `apps/idol-site/`，活动分支 `codex/mv-identity-quality-followup`，draft [PR41](https://github.com/KAtOReNA7/idol/pull/41)，未合main。以远端最新HEAD为准；279a1e9、9733e6b是本轮基线/原图提交，不是要求回退的接续点。
+更新：2026-10-26。正式工程 `apps/idol-site/`，当前接续基线为远端最新 `main`；PR41的成果已纳入主线整合。以远端最新HEAD为准；279a1e9、9733e6b是本轮基线/原图提交，不是要求回退的接续点。
 
 ## 可直接复制给下一台电脑
 
-请接续 https://github.com/KAtOReNA7/idol 的 codex/mv-identity-quality-followup 最新远端。先检查并保护本地未提交及未跟踪文件，显式fetch该分支，不从旧main开始，不reset/clean/强推。阅读本文件、AGENTS.md、docs/codex/STATUS.md和docs/codex/RESUME.md，简短核对后实际开发。
+请接续 https://github.com/KAtOReNA7/idol 的 main 最新远端。先检查并保护本地未提交及未跟踪文件，显式fetch main，在工作树干净且核对远端后从 origin/main 创建新的 codex/ 任务分支，不reset/clean/强推。阅读本文件、AGENTS.md、docs/codex/STATUS.md和docs/codex/RESUME.md，简短核对后实际开发。
 
 正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已上线v190，M批Hearts2Hearts Butterflies/Pretty Please/RUDE!24条已核验导入发布，不要重复。A至M已apply。现2121绑定/348作品/45团，628封面；原871累计已补164，剩707。43旧低清、18未知统计仍开放。当前逐条表为docs/codex/reports/20261026-gap-m/ledger.json；L表及旧731数字为历史。
 
@@ -12,15 +12,15 @@
 
 ## 获取代码
 
-新电脑：`git clone --branch codex/mv-identity-quality-followup --single-branch https://github.com/KAtOReNA7/idol.git idol`
+新电脑：`git clone --branch main --single-branch https://github.com/KAtOReNA7/idol.git idol`
 
 已有目录先保护修改，再执行：
 
 ```sh
-git fetch origin refs/heads/codex/mv-identity-quality-followup:refs/remotes/origin/codex/mv-identity-quality-followup
-git log -1 --oneline origin/codex/mv-identity-quality-followup
-git switch codex/mv-identity-quality-followup
-git merge --ff-only origin/codex/mv-identity-quality-followup
+git fetch origin refs/heads/main:refs/remotes/origin/main
+git log -1 --oneline origin/main
+# 核对工作树干净后，替换下面的任务名为尚未使用的新名字
+git switch -c codex/your-next-task origin/main
 ```
 
 默认remote.fetch可能仍只追踪旧分支。若本地分叉或该分支在其他worktree，先保护双方状态，不强制覆盖。原图较多，保留完整Git字节；Windows Git换行转换可能改变SVG/固定声明文件，必须先比对Git blob，仅换行等价时恢复原字节，不能放宽SHA校验。

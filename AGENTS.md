@@ -1,5 +1,11 @@
 # 项目协作入口
 
+## 主线整理（2026-10-26）
+
+用户已授权将当前已完成成果合并至 `main`。本次整合包含 v190 对应 GitHub 实现 `a27cc9793fd0d00ef3fea062e346627eadeb7575`，以及早期工具分支历史和开发计划；正式工程 `apps/idol-site/` 的 Git 子树保持完全一致。以后以远端最新 `main` 为接续基线，新任务从它建立 `codex/` 分支。下文“未合 main / 不从 main 开始”及旧逐团门槛均为历史，不能覆盖本条。
+
+正式站仍为 v190；2121绑定、628封面、707缺图、43低清及18统计未知保持，A–M不得重复导入。本轮只整理 GitHub，不重新部署或改个人数据、设计和访问权限。2条独立旧候选分支保留；已整合历史分支先归档tag再清理，完整SHA与原因见 `docs/codex/mainline-branch-inventory-20261026.json`，过程及验证见 `docs/codex/mainline-consolidation-20261026.md`。
+
 ## 最新交付：Hearts2Hearts M批24条已补，正式v190上线（2026-10-26）
 
 从 `codex/mv-identity-quality-followup` 远端279a1e9接续，显式fetch、开工干净。优先的Butterflies / Pretty Please / RUDE!共24条均已逐镜头核验、一次导入并发布；A–L未重复。现 **2121认人图绑定 / 348作品 / 45团，628封面，707缺图**；原871累计已补164。另43旧低清、18统计未知仍开放，个人页统一排版待用户决定。H2H在当前缺口表仅余Lemon Tang STELLA一条。

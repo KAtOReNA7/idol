@@ -1,4 +1,11 @@
-# 跨电脑接续：同套认人图持续补齐，仓库2293绑定/535缺图
+# 跨电脑接续：同套认人图持续补齐，仓库2391绑定/437缺图
+
+## 当前续作：R新增98，仓库2391绑定／437缺图（2026-10-27）
+
+Q162之后，R98已入库，83完整原件167,325,795 bytes；累计2391绑定/406作品/45团、628封面，原871已补434、剩437。A–R禁止重导；清单`docs/codex/reports/20261027-gap-r/ledger.json`，报告`docs/codex/identity-gap-r-report-20261027.md`。2293旧绑定/628封面/原关系与策略保持；29相关测试、三宽75布局/294新图与原图流程通过。继续补齐，不在小批次后停工。
+
+正式站仍v190，累计270条待发布；P原生blob上传超时，Q/R不在旧P包中。Q提交0cbaa96的首次Git推送HTTP408，按远端读回结果正在普通重试；GitHub真实远端状态与Sites部署分开记录。51团设计、个人数据、ID、访问及owner保存鉴权保持。
+
 
 ## 当前续作：Q批新增162，仓库2293绑定／535缺图（2026-10-27）
 
@@ -13,7 +20,7 @@
 
 请接续 https://github.com/KAtOReNA7/idol 。先检查并保护本地未提交和未跟踪文件，显式 fetch origin/main；工作树干净后从最新 origin/main 建立新 codex/ 任务分支，不 reset、clean 或强推。未克隆则先克隆。核对 PR43，若尚未合并，fetch codex/mv-identity-gap-n-20261027 并普通 merge 到新分支，以纳入已完成N/O/P/Q，不回退旧逐团分支。
 
-依次读本文件、AGENTS.md、docs/codex/STATUS.md、RESUME.md、mainline-consolidation-20261026.md，然后读 identity-photo-selection-policy-20261027.md 和 identity-gap-q-report-20261027.md。最新仓库2293绑定/386作品/45团、628封面、535缺图，43旧低清、18未知统计；原871已补336。A–Q禁止重复导入，最新逐条清单为 docs/codex/reports/20261027-gap-q/ledger.json。
+依次读本文件、AGENTS.md、docs/codex/STATUS.md、RESUME.md、mainline-consolidation-20261026.md，然后读 identity-photo-selection-policy-20261027.md 和 identity-gap-q-report-20261027.md。最新仓库2391绑定/406作品/45团、628封面、437缺图，43旧低清、18未知统计；原871已补434。A–R禁止重复导入，最新逐条清单为 docs/codex/reports/20261027-gap-r/ledger.json。
 
 用户最新选图顺序：同套概念照/封套照优先，其次同套写真、自然清晰幕后，MV截图只作后备。官方、粉丝站和民间图集都可；人物有可靠具名依据、同套可追溯、清晰自然好看即可，不再强制精确MV拍摄/版本。保持完整原件、不猜脸、不生成补脸或插值放大。图片仍绑定原作品/成员评分关系，但如实标注认人参考，不能冒称MV造型证据。页面设计与个人评分/备注/观看、ID/关系、访问和owner保存鉴权保持。
 

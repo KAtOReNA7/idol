@@ -1,4 +1,16 @@
-# 接续：正式v192与当前缺口分类
+# 接续：正式v194与报道时间轴续作
+
+## 最新已上线：v194；报道时间轴续作中（2026-10-28）
+
+正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 当前 **v194 / succeeded**。GitHub实现 `8f99e70db60deca54cc4761fddc6b2e189fda6a7`，回执与复验已推送 `828b7ad`；继续 `codex/statistics-relations-followup-20261027` / [PR44](https://github.com/KAtOReNA7/idol/pull/44)，尚未合main。Sites源 `1838c81f5ed2667fe6d13ad4adf36ae61257c899`，部署 `appgdep_6ae0c730f540819191236443f683180f`。GitHub提交和正式部署分别记录。
+
+登录读取问题已确认是旧浏览器标签连接失效及非浏览器请求没有用户会话，并非用户未登录。同一Chrome新标签读取owner目录成功；v193完整个人字段/关系指纹一致，v194除4个明确授权的静态stage对象外全部一致。未私人保存。native/epoch6/原快照/done206，public/1owner/0外部/0组及owner鉴权保持。
+
+累计38作品244人次公开署名与认人参考，不创建私人关系；131原无关系作品=38有限公开资料+5既有无真人规则+88待证。原2828公共图片绑定+12原生图保持无缺图，628既有封面另加4精确舞台封面=632。四舞台按用户选择正式绑定，478→482，范围文案明确完整播放未验；123未配舞台及9无歌曲身份占位仍保留。26作品30空值、5时间轴hold和3统计冲突已解决；17未知统计、2销量分歧、7canonical hold尚未证实。
+
+126相关测试、TypeScript、正式构建和完整包通过；线上四舞台12布局与ILLIT2布局、真实owner入口及保护指纹已验，详见 `category-resolution-v194-20261027.md`。旧favicon404非阻断；未真实私人保存、全视频播放、原生缩放或新Figma。
+
+用户随后选择7hold按报道记录展示、注明生效日期未确认。该增量正在实现：保留7canonical hold和全部稳定ID，以独立公开报道/目录层接入AtHeart、BEWAVE、CandyShop、Geenius、UDTT实际时间轴；不能把展示完成写成实际事实已证。v195尚未发布，以后续回执为准。51团设计、Apple Music主站、A–Y/Z已完成批次和个人页待决定边界保持。
 
 ## 最新审计：线上缺口分类与解决路线（2026-10-27）
 

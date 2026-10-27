@@ -1,3 +1,4 @@
+import {withReportedTimelineIdentity} from '../timeline/reported-records.mjs';
 import {createImageRecovery,reloadVerifiedPage} from './image-recovery.mjs';
 import {createMediaViewer} from '../design-review/sol15-runtime/shared/media-viewer.js';
 import {releaseEventPairs} from '../design-review/sol15-runtime/groups/udtt/relations.mjs';
@@ -12,6 +13,7 @@ export async function prepareUdttNativePortrait({catalog,viewer,production,windo
  if(publicMode){validatePublicViewer(viewer);return preparePublicNativePortrait({catalog,scheduler:win,signal});}
  validatePrivateViewer(viewer);return prepareNativePortrait({catalog,scheduler:win,signal});
 }
+const identityArtist=withReportedTimelineIdentity(sourceModule.artist);
 const STYLE_URL='/artist/udtt/figma-native.css';
 const reset=`
 :host{all:initial;display:block;min-width:0;color-scheme:light;isolation:isolate}
@@ -119,7 +121,7 @@ export function createUdttNative({host,catalog,viewer,production,canEdit=false,n
     const binding=entity&&entity.kind!=='member'?` data-source-key="${e(entity.sourceKey)}" data-original-type="${e(entity.originalType)}" data-slot-type="${entity.slotType}" data-clip="null"`:'';
     return `<section class="ud-native-records" ${context}><p>评分、备注与观看状态沿用原有记录。</p>${actions.map(([action,label])=>`<button type="button" data-native-action="${action}"${binding}${!entity||entity.kind==='stage'&&action==='records'&&!entity.stageScoreBindingValid?' disabled':''}>${label}</button>`).join('')}${!entity?'<p role="status">当前资料的精确身份未匹配，记录入口暂不开放。</p>':''}</section>`;
   };
-  const reviewModule={...sourceModule,render:({route,...args})=>{
+  const reviewModule={...sourceModule,artist:identityArtist,render:({route,...args})=>{
     const html=sourceModule.render({route,...args,catalog,canEdit,resolvedNative:referenceFor(route)?resolveNative(referenceFor(route),catalog,production):null});
     return html.replace('<!-- native-record-controls -->',nativeControls(route));
   },afterRender:({root:scoped,route,scope})=>{
@@ -146,7 +148,7 @@ export function createUdttNative({host,catalog,viewer,production,canEdit=false,n
       if(dead||leaving||serial!==sequence||urlNow(win)!==url){deny(event);return;}
       const action=element.dataset.nativeAction;
       if(action&&event.type==='click') {
-        deny(event);const reference=validateNativeActivation({element,identity,artist:sourceModule.artist,route,catalog,production});
+        deny(event);const reference=validateNativeActivation({element,identity,artist:identityArtist,route,catalog,production});
         if(!reference){onStatus('记录入口身份不匹配，未执行跳转。');return;}
         const href=nativeHref({reference,action,catalog,route,mountedUrl:url,currentUrl:urlNow(win),mayLeave:mayLeave()},production);
         if(href){remember();leaving=true;try{win.location.assign(href);}catch{leaving=false;onStatus('记录页面未能打开，请重试。');}}else onStatus('当前记录入口暂不可用。');return;
@@ -165,7 +167,7 @@ export function createUdttNative({host,catalog,viewer,production,canEdit=false,n
         deny(event);navigate(href,element.classList.contains('ud-back'));return;
       }
       if(['/artists/udtt','/design-review'].includes(href)){remember();if(event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey)leaving=true;return;}
-      if(!sourceAllowed(identity,sourceModule.artist,nativePortrait)){deny(event);onStatus('来源链接不属于当前条目，未打开。');}
+      if(!sourceAllowed(identity,identityArtist,nativePortrait)){deny(event);onStatus('来源链接不属于当前条目，未打开。');}
     };
     handle=mountArtist({root,module:reviewModule,route,helpers,scheduler:win,onIdentityError:()=>onStatus('该入口的身份核验未通过，未执行跳转。'),onActivation});
     const result=await handle.ready;
@@ -175,7 +177,7 @@ export function createUdttNative({host,catalog,viewer,production,canEdit=false,n
       // and route activation inside the same immutable identity boundary too.
       handle.scope.on(root,'auxclick',event=>{
         const element=event.target?.closest?.('a[href]');if(!element||!root.contains(element))return;
-        try{const identity=JSON.parse(element.getAttribute('data-action-identity'));const expected=actionIdentity(element,{artist:sourceModule.artist,route});if(!validateIdentity(identity,expected).valid)throw new Error('Source identity changed');onActivation({event,element,identity});}
+        try{const identity=JSON.parse(element.getAttribute('data-action-identity'));const expected=actionIdentity(element,{artist:identityArtist,route});if(!validateIdentity(identity,expected).valid)throw new Error('Source identity changed');onActivation({event,element,identity});}
         catch{deny(event);onStatus('该来源的身份核验未通过，未打开。');}
       },{capture:true});
       onStatus('UDTT · 资料已载入');restore(url,initial,restoreMode);}

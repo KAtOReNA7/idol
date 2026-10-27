@@ -1,5 +1,7 @@
 # GitHub 主线整理 · 2026-10-26
 
+本文记录2026-10-26的历史整理。2026-10-27新增成果已通过PR43合入main，正式站为v191、现有关系缺图及旧低清均为0；请以[NEXT-COMPUTER-HANDOFF](NEXT-COMPUTER-HANDOFF.md)和[最新合并记录](mainline-identity-merge-20261027.md)为接续依据。下文旧707/43缺口、v190和分支数量为当时快照。
+
 用户授权：整理众多分支，将已完成成果合并主线。整合分支为 `codex/mainline-consolidation-20261026`，通过非 squash 的 merge PR 进入 `main`，保留完整历史及不可变图片提交。未强推、未重写历史、未部署站点。
 
 ## 实际完成结果

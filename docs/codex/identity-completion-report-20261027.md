@@ -40,7 +40,7 @@
 
 ## GitHub与正式站分开登记
 
-GitHub：任务分支 `codex/mv-identity-gap-n-20261027`，draft [PR43](https://github.com/KAtOReNA7/idol/pull/43)；应用与证据提交a08ba0976740a8749480002d4d369a6903906ced已推送并远端读回，最终发布回执与本报告同分支归档，以分支最新HEAD接续。486个新公共原件路径已交付；辅助资产分支通过普通合并7ee8a2d进入历史，合并前后文件树完全相同，使Git无需再次传输已上传的约710MB对象。没有reset、clean或强推，main未合并。
+GitHub：任务分支 `codex/mv-identity-gap-n-20261027`，[PR43](https://github.com/KAtOReNA7/idol/pull/43)（已合并）；应用与证据提交a08ba0976740a8749480002d4d369a6903906ced已推送并远端读回，最终发布回执与本报告同分支归档，后续以显式fetch后的最新origin/main接续。486个新公共原件路径已交付；辅助资产分支通过普通合并7ee8a2d进入历史，合并前后文件树完全相同，使Git无需再次传输已上传的约710MB对象。没有reset、clean或强推。用户随后确认合并，PR43已于2026-10-27 18:44:04（北京时间）通过普通merge进入main，合并提交cde017d9d2ad355a287dcdd1e099f6e59c556e12；全仓树与已验证任务HEAD47060f6d98697bed5820540ce0f4f01b15eb5b97相同。主线合并没有再次部署，详情见[合并记录](mainline-identity-merge-20261027.md)。
 
 正式站：[打开v191](https://idol-lens-private.wuke40758.chatgpt.site/)，部署状态 **succeeded**。707条相对v190新增的认人绑定、43条提质及26团成员图库接入均已发布。
 

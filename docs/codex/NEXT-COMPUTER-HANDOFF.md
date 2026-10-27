@@ -1,4 +1,4 @@
-# 跨电脑接续：认人图完成，正式站v191已上线
+# 跨电脑接续：PR43已合入main，正式站v191
 
 2026-10-27。正式工程是 `apps/idol-site/`。当前代码、来源证据和发布状态以[本轮报告](identity-completion-report-20261027.md)为准；GitHub推送与正式站部署分别验证。
 
@@ -11,26 +11,35 @@
 - 54专项、最终TypeScript和正式构建通过；本地43提质三宽51布局/129原图流程、26团52布局/580图槽按钮/52原图流程通过；线上43提质51布局/129原图流程、29原图HTTP/完整字节/SHA通过。没有真实私人保存、全视频播放、原生缩放、用户IAB或新Figma验收。
 - 正式站26团成员页390宽、290公共控件/271缩略图、26最大原图流程及9索引布局通过；首次脚本误拦正常浏览器校验造成两页超时，纠正后已过，见production-member-gallery-verification.json。作品页另有1条未归因console404，后续监听未复现，受检图均正常载入，保留记录不隐去。
 
-## GitHub状态
+## GitHub状态：已经进入main
 
-任务分支 `codex/mv-identity-gap-n-20261027`，draft [PR43](https://github.com/KAtOReNA7/idol/pull/43)。应用、完整原件和证据已推送并读回至a08ba0976740a8749480002d4d369a6903906ced；最终发布记录与本交接同分支归档，以最新远端HEAD接续。辅助资产分支 `codex/asset-transfer-20261027` 只用于完整原件传输，已普通合并入任务历史（7ee8a2d，合并前后文件树相同），不是应用开发基线，不需重复合并它。main未合并。
+[PR43](https://github.com/KAtOReNA7/idol/pull/43) 已于2026-10-27 18:44:04（北京时间）合并；合并提交 `cde017d9d2ad355a287dcdd1e099f6e59c556e12`，任务HEAD `47060f6d98697bed5820540ce0f4f01b15eb5b97`。普通merge保留完整历史，合并后全仓树与任务HEAD完全一致。后续交接文档也提交至main，接续时使用最新远端main，不把以上固定历史SHA当作当前HEAD。
 
-先保护所有未提交、未跟踪文件；显式fetch最新main。工作树干净后从origin/main创建新的codex/分支；若PR43尚未合并，再fetch并普通merge任务分支。不要从旧逐团分支开工，不reset、clean或强推，不将固定原件SHA当成接续HEAD。
+正式应用实现a08ba097、原件ref7ee8a2d及辅助资产历史均已被main包含。不要再合入旧任务分支或辅助资产分支，不需要重复传输原件。未删除原分支，不reset、clean、rebase或强推。
+
+**尚未克隆的电脑：**
 
 ```sh
 git clone --branch main https://github.com/KAtOReNA7/idol.git idol
-# 已有仓库先保护本地修改和未跟踪文件，再继续
+cd idol
 git fetch origin refs/heads/main:refs/remotes/origin/main
 git status --short
 git switch -c codex/your-next-task origin/main
-# 仅当PR43尚未进入main时
-git fetch origin refs/heads/codex/mv-identity-gap-n-20261027:refs/remotes/origin/codex/mv-identity-gap-n-20261027
-git merge origin/codex/mv-identity-gap-n-20261027
 ```
+
+**已有仓库的电脑：**先检查并安全备份或提交本地未提交、未跟踪文件。确认工作树干净后执行下列命令，分支名换成当前任务的新名称：
+
+```sh
+git status --short --untracked-files=all
+git fetch origin refs/heads/main:refs/remotes/origin/main
+git switch -c codex/your-next-task origin/main
+```
+
+不要用reset/clean丢弃本地内容；若有未保护修改，先处理它们，不强制切换。新任务只基于显式fetch后的origin/main。
 
 ## 必读顺序与证据
 
-依次读本文件、根AGENTS.md、STATUS.md、RESUME.md、mainline-consolidation-20261026.md，然后读identity-photo-selection-policy-20261027.md和identity-completion-report-20261027.md。
+依次读本文件、根AGENTS.md、STATUS.md、RESUME.md、mainline-consolidation-20261026.md，再读mainline-identity-merge-20261027.md、identity-photo-selection-policy-20261027.md和identity-completion-report-20261027.md。20261026主线整理报告为历史背景，最新状态以本文件及20261027合并记录为准。
 
 - 缺图完成：`reports/20261027-quality-z/ledger.json/html/csv`，原871全部有选中原件。
 - 旧704分类最终结果：`reports/20261027-quality-z/route-resolution.json`，六类全部逐tuple核对解决。
@@ -57,4 +66,14 @@ save使用helper返回的同SHA/同包，拿到version_id后再deploy；不明�
 
 ## 复制给下一台电脑
 
-请接续GitHub项目https://github.com/KAtOReNA7/idol。保护本地所有修改和未跟踪文件，显式fetch origin/main，干净后从最新main建codex/分支。核对PR43，若尚未合并则普通merge其最新远端分支codex/mv-identity-gap-n-20261027。按NEXT-COMPUTER-HANDOFF规定顺序读最新文档。正式工程apps/idol-site；当前2828认人绑定、628封面、现有关系缺图0、旧card_only0，原871全部解决；A–Y补图和Z提质禁止重复。正式站https://idol-lens-private.wuke40758.chatgpt.site/已上线v191，源5644d219、部署appgdep_6ae07a8904008191b8de2068c80af476，GitHub与正式发布分别留证，不需重复部署相同内容。保持51团设计、个人字段/ID/关系/访问和owner保存鉴权。18未知统计与133无成员关系作品仍有资料范围限制，个人页统一排版待用户另行决定。先简短核对最新远端及线上状态，再推进新任务；不得从旧逐团分支或旧P包开始，不reset、clean或强推。
+请接续GitHub项目https://github.com/KAtOReNA7/idol。PR43已合入main，后续只从最新main开始，不再接续旧任务或逐团分支。
+
+先检查并保护本地未提交和未跟踪文件，显式fetch origin/main；工作树干净后从origin/main建立新的codex/任务分支。尚未克隆则先克隆main。禁止reset、clean、强推，不重复合并PR43或辅助资产分支。
+
+依次阅读docs/codex/NEXT-COMPUTER-HANDOFF.md、AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md、docs/codex/mainline-consolidation-20261026.md、docs/codex/mainline-identity-merge-20261027.md，然后核对选图政策与完成报告。
+
+正式工程apps/idol-site/，根目录是旧sandbox。正式站https://idol-lens-private.wuke40758.chatgpt.site/已上线v191。当前2828认人图绑定、628封面，现有关系缺图0、旧低清0；原871全部解决，A–Y补图及Z提质禁止重复。优先同套概念/封套照，官方和可追溯民间具名图集均可；保留完整原图，不猜脸、不放大或生成补脸，来源标签如实。
+
+保持51团已确认设计、Apple Music主站、稳定ID/关系、个人评分/备注/观看记录、现有访问权限和owner保存鉴权。18项未知统计与133个无既有成员关系作品仍待核实，不能推定全员或伪造数据；个人页统一排版待用户另行决定。
+
+先简短核对最新main与正式站状态，再继续实际工作。GitHub提交与正式站部署分别记录，不重复部署相同内容，不使用旧P包；未来发布按当前4MiB一般光栅预算及完整包/原件哈希校验流程执行。

@@ -1,5 +1,12 @@
 # 接续：同套认人图持续补齐，本地2606绑定/222缺图
 
+## 当前续作：V新增45，本地2651绑定／177缺图（2026-10-27）
+
+Q–V本轮共520条已导入；原871补694、剩177。2651绑定/447作品/48团、628封面；A–V禁止重导。Geenius、SPIA、BEWAVE、CandyShop、HITGS、QWER、ODD YOUTH、YOUNG POSSE现有缺口清零。最新`docs/codex/reports/20261027-gap-v/ledger.json`及`identity-gap-v-report-20261027.md`。30专项、三宽42布局/135新图及原图流程通过。
+
+GitHub Q–U本地提交但远端仍706754，原件逐文件官方API上传进行中；正式站仍v190，530条待发布。旧P包不可代发Q–V。继续直至全部完成或确需用户确认；保持设计、个人数据和权限。
+
+
 ## 当前续作：U新增67，本地2606绑定／222缺图（2026-10-27）
 
 Q至U本轮共475已导入；原871补649、剩222。2606绑定/437作品/45团、628封面，A–U禁止重导。XG/KiiiKiii/izna/UNIS/BABYMONSTER/SAY MY NAME缺口清零；先前STAYC/LSF/NMIXX已清零。最新`docs/codex/reports/20261027-gap-u/ledger.json`及`identity-gap-u-report-20261027.md`。30相关测试、三宽45布局/201新图及原图流程通过；6次旧私人媒体本地502不属于新图。

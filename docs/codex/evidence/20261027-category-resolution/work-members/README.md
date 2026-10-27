@@ -59,6 +59,7 @@ ILLIT《Almond Chocolate》Special Film已通过共同通信系OVO当日具名�
 - `suhyeon-zap-quality-candidate.json`：原生全身图的独立近景候选，接入由主任务记录。
 - `eight-target-boundary-followup.json`：8项续查结果、1项已采用、制作/官方入口新证据与是否需要用户选择。
 - `illit-special-film-local-qa.json`：390/1440两布局、10图实例、2原图、1成员跳转及声明验证；实际截图等待解码后检查。
+- `illit-special-film-production-qa.json`：v194正式匿名真实目录，390/1440、10图实例、2原图与成员跳转通过；favicon.ico旧404单列，不改个人数据。
 - `data-validation.json`：原16记录逐字段不变、精确work/video/group/member集合一致、无重复和无私人字段检查。
 
-交付状态：37/239基线已由主任务发布v193；本次新增ILLIT5人为待发布增量，不能写成已上线。本子任务没有 GitHub commit/push 或正式站部署；浏览器布局、主任务整合和部署分别记录。个人页统一排版仍待用户决定。
+交付状态：37/239基线已由主任务发布v193；ILLIT新增5人已随v194上线并完成正式站匿名复验，当前38/244。本子任务没有 GitHub commit/push 或正式站部署；浏览器布局、主任务整合和部署分别记录。个人页统一排版仍待用户决定。

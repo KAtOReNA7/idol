@@ -4,7 +4,7 @@ import json, hashlib, subprocess, csv
 from collections import Counter
 root=Path(__file__).resolve().parents[4];out=Path(__file__).resolve().parent
 def read(f):return json.loads(f.read_text(encoding='utf8'))
-def write(f,d):f.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+def write(f,d):f.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf8',newline='\n')
 def key(r):return (r['workId'],r['videoId'],r['memberId'])
 auditPath=root/'docs/codex/mv-identity-asset-audit-20261025.json';a=read(auditPath)
 baseline='c15995737b58c67a25edff2da5ebbdc7b1cd2c93';old=json.loads(subprocess.check_output(['git','show',baseline+':docs/codex/mv-identity-asset-audit-20261025.json'],cwd=root))
@@ -33,7 +33,7 @@ openkeys={key(r) for r in ledger['entries'] if r['status']=='open'};actual={(w['
 ledger['summary'].update(resolved=164+len(delta),remaining=707-len(delta),newSinceJ=161+len(delta),byCategory=dict(Counter(r['primaryCategory'] for r in ledger['entries'])),openByCategory=dict(Counter(r['primaryCategory'] for r in ledger['entries'] if r['status']=='open')))
 write(out/'ledger.json',ledger)
 with (out/'ledger.csv').open('w',encoding='utf-8-sig',newline='') as f:
- fields=['group','song','stageName','memberName','workId','videoId','memberId','ratingId','status','primaryCategory','validationStage','problemEvidence'];writer=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore');writer.writeheader();writer.writerows(ledger['entries'])
+ fields=['group','song','stageName','memberName','workId','videoId','memberId','ratingId','status','primaryCategory','validationStage','problemEvidence'];writer=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore',lineterminator='\n');writer.writeheader();writer.writerows(ledger['entries'])
 write(out/'integration-verification.json',{'status':'passed','batch':'N','baselineCommit':baseline,'addedBindings':len(delta),'beforeMissing':707,'afterMissing':707-len(delta),'oldBindingsUnchanged':2121,'oldCoversUnchanged':628,'existingRelationshipsAndPoliciesUnchanged':True,'originalBytes':sum(r['byteLength'] for r in delta),'originals':[{k:r[k] for k in ['workId','videoId','memberId','src','sha256','byteLength','width','height','sourceCrop']} for r in delta],'ledgerRows':871,'ledgerOpenSetEqualsAudit':True,'summary':a['summary']})
 print(json.dumps({'new':len(delta),'remaining':707-len(delta),'totalBindings':2121+len(delta),'originalBytes':sum(r['byteLength'] for r in delta)}))
 

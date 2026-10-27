@@ -1,0 +1,208 @@
+{
+  "reviewer": "statistics_gap_resolution independent read-only review",
+  "reviewedAt": "2026-10-27T16:03:18.245681+00:00",
+  "status": "passed-static-boundary-review",
+  "baselineCommit": "828b7ad",
+  "scope": "10 application files plus one author test reviewed; no application edits by reviewer. Static review, not browser validation, full source provenance re-research, or deployment certification.",
+  "canonicalFiles": [
+    {
+      "path": "apps/idol-site/data/artist-timelines/atheart.json",
+      "sha256": "82dab6b7057818a60acb933f57617877eced2a664b0a64206f9a38a5c3bac853",
+      "baselineByteIdentical": true
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/bewave.json",
+      "sha256": "cfed63175dbcf2be685f67c94f5511235e8e1000eff880942e1ecd8d2eab7565",
+      "baselineByteIdentical": true
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/candyshop.json",
+      "sha256": "480ebf439d9de4824b9d3d2c54c2a6a54e67024c7622c70acd71ac38202b4af2",
+      "baselineByteIdentical": true
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/geenius.json",
+      "sha256": "6827b5a3cbaa18a718854729a86b571b085f1d3251f139e3c21950571b242421",
+      "baselineByteIdentical": true
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/udtt.json",
+      "sha256": "f2fc3be3ed849ce23e8dfea4da27607e1f20b4699efc027cd1a23b7efcd311e3",
+      "baselineByteIdentical": true
+    }
+  ],
+  "events": [
+    {
+      "eventId": "e-atheart-aurora-hiatus-observed",
+      "groupId": "rec28ldfRTiEaV",
+      "memberIds": [
+        "recvxAPQCFJ093"
+      ],
+      "canonicalStatus": "confirmed",
+      "canonicalReviewStatus": "hold",
+      "eventDate": null,
+      "reportDate": "2026-03-13",
+      "recordKind": "report",
+      "originalHoldReasonsPreserved": true
+    },
+    {
+      "eventId": "e-atheart-aurora-second-hiatus-announcement",
+      "groupId": "rec28ldfRTiEaV",
+      "memberIds": [],
+      "canonicalStatus": "announced",
+      "canonicalReviewStatus": "hold",
+      "eventDate": null,
+      "reportDate": "2026-08-18",
+      "recordKind": "report",
+      "originalHoldReasonsPreserved": true
+    },
+    {
+      "eventId": "e-bewave-six-member-phase-end-announcement",
+      "groupId": "rec28ldfRTiDh1",
+      "memberIds": [],
+      "canonicalStatus": "announced",
+      "canonicalReviewStatus": "hold",
+      "eventDate": null,
+      "reportDate": "2025-09-04",
+      "recordKind": "report",
+      "originalHoldReasonsPreserved": true
+    },
+    {
+      "eventId": "e-candyshop-yuina-hiatus-announcement",
+      "groupId": "rec28ldfRTiDlb",
+      "memberIds": [
+        "recvxAPQCFyiww"
+      ],
+      "canonicalStatus": "announced",
+      "canonicalReviewStatus": "hold",
+      "eventDate": null,
+      "reportDate": "2024-05-09",
+      "recordKind": "report",
+      "originalHoldReasonsPreserved": true
+    },
+    {
+      "eventId": "e-geenius-spoiler-book-instrumental",
+      "groupId": "rec28ldfRTiDxx",
+      "memberIds": [],
+      "canonicalStatus": "uncertain",
+      "canonicalReviewStatus": "hold",
+      "eventDate": null,
+      "reportDate": "2026-01-15",
+      "recordKind": "catalog",
+      "originalHoldReasonsPreserved": true
+    },
+    {
+      "eventId": "e-udtt-jessica-provisional-join-candidate",
+      "groupId": "rec28ldfRTiDPs",
+      "memberIds": [],
+      "canonicalStatus": "uncertain",
+      "canonicalReviewStatus": "hold",
+      "eventDate": null,
+      "reportDate": "2025-05-08",
+      "recordKind": "report",
+      "originalHoldReasonsPreserved": true
+    },
+    {
+      "eventId": "e-udtt-sena-predebut-departure-candidate",
+      "groupId": "rec28ldfRTiDPs",
+      "memberIds": [],
+      "canonicalStatus": "uncertain",
+      "canonicalReviewStatus": "hold",
+      "eventDate": null,
+      "reportDate": null,
+      "recordKind": "repost",
+      "originalHoldReasonsPreserved": true
+    }
+  ],
+  "reviewedFiles": [
+    {
+      "path": "apps/idol-site/components/artist-timeline.tsx",
+      "sha256": "8b35b7d27fc78eef91b921aa4f530cdf504d16ebe628ea6c512f84937ec8e88b"
+    },
+    {
+      "path": "apps/idol-site/components/bewave-artist.tsx",
+      "sha256": "bc0fbd44b06719f6af37280eb3549a7da6c6b40e5c237997fe66c0db7bb6c863"
+    },
+    {
+      "path": "apps/idol-site/components/candyshop-artist.tsx",
+      "sha256": "81346d5b8efa8b112c5d3a453c329394a78e0c10da902056eb49eaebc4125d3c"
+    },
+    {
+      "path": "apps/idol-site/components/geenius-artist.tsx",
+      "sha256": "b800b79ba3128a53716c212c895a2b7ed821b4e9c1c9040a432934fea822cf23"
+    },
+    {
+      "path": "apps/idol-site/components/timeline-reported-records.tsx",
+      "sha256": "20103eece5784eb9ecd85338e55c2fbd2cf1f14c4c65cba70b5ea431451a5bf0"
+    },
+    {
+      "path": "apps/idol-site/data/timeline-reported-records.json",
+      "sha256": "a0b7a4c7271cae3b8d16d349abc6cd1a34c8254ab1521e698b87ae13e5a4b051"
+    },
+    {
+      "path": "apps/idol-site/lib/idol/timeline/reported-records.d.mts",
+      "sha256": "24ef29bf1dbab7fb080391f34213a965ed14f9bc926c06929f83b6c382f768ab"
+    },
+    {
+      "path": "apps/idol-site/lib/idol/timeline/reported-records.mjs",
+      "sha256": "90b05d1fbc366db49cfc4e41b0634f1eadfec401cfa9d59498830c18d8821c12"
+    },
+    {
+      "path": "apps/idol-site/lib/idol/udtt-native/host.mjs",
+      "sha256": "8a25f37dc9e6e2da52c5ab5a5c2a237eb63ad2a31b688b456e4c2d5f8c015d67"
+    },
+    {
+      "path": "apps/idol-site/lib/idol/udtt-native/presentation.mjs",
+      "sha256": "5f05bab95cc98e500d7577cbf652290dc2f8cba443cf764caa76f2bcf4ed412e"
+    },
+    {
+      "path": "apps/idol-site/tests/timeline-reported-records.test.cjs",
+      "sha256": "993c8d11b2a2ef07a51447a237856ae1495c67cf13ae21869f1530077109d61e"
+    }
+  ],
+  "nativeCallChains": [
+    "AtHeartArtist updates -> ArtistTimelineHost -> ArtistTimeline -> TimelineReportedRecords",
+    "BewaveArtist native timeline -> TimelineReportedRecords(bewave, content.groupId)",
+    "CandyshopArtist native timeline -> exact superseded ID filter -> TimelineReportedRecords(candyshop, content.groupId), old anchor alias + existing Yuina member Link preserved",
+    "GeeniusArtist native timeline -> TimelineReportedRecords(geenius, content.groupId)",
+    "UdttNativeDesign -> createUdttNative -> sourceModule.render -> presentation.render timeline branch -> reportedTimelineRecords"
+  ],
+  "boundaries": [
+    "Five canonical timeline JSON files are byte-identical to baseline; all seven reviewStatus=hold and hold reasons remain",
+    "Event/group/member arrays match original exact identities; no inferred all-member link or merge",
+    "Reported recordDate remains separate from canonical eventDate; all eventDate=null; no actualDate field",
+    "Five report items, one retail catalog, one explicitly uncertain community repost; Sena date null",
+    "No inaccessible X URL is represented as read source; current sources accurately labelled interview/media/retail/community",
+    "UDTT identityArtist is a new in-memory projection for exact source ownership checks only; sourceModule.artist and its members/works remain unchanged; it has no date fields on appended report identities",
+    "Both click and auxclick keep actionIdentity/validateIdentity/sourceAllowed checks; arbitrary source URL is not accepted",
+    "Raw HTML route uses existing escape and sources helpers; React text is escaped; target=_blank links retain noopener noreferrer",
+    "No new database, API save, auth, permissions, personal field or media changes"
+  ],
+  "findings": [],
+  "risksAndLimits": [
+    "Report layer does not resolve seven canonical factual holds; actual effective dates remain unknown",
+    "Sena remains weaker community repost evidence; null date and visible limitations must stay",
+    "Native identity projection should continue to be used only for reporting source guards, never canonical date sorting or business writes",
+    "Rendered layout/source-link activation verification remains timeline agent responsibility; this review certifies code/data boundaries only"
+  ],
+  "lineEndingRefresh": {
+    "checkedAt": "2026-10-27T16:04:57.862687+00:00",
+    "changes": [
+      {
+        "path": "apps/idol-site/components/candyshop-artist.tsx",
+        "priorSha256": "b91084513a63b35042d325a7cec7cdfd914355c473b612604395496c2769803e",
+        "currentSha256": "81346d5b8efa8b112c5d3a453c329394a78e0c10da902056eb49eaebc4125d3c",
+        "onlyChange": "CRLF to LF",
+        "verifiedBy": "Reconstructing CRLF from current LF exactly reproduces prior reviewed SHA256"
+      },
+      {
+        "path": "apps/idol-site/lib/idol/udtt-native/host.mjs",
+        "priorSha256": "94cf78c2ccca9f3b58cd9e40b0fa25ac98dfd1a089ad25af940b703857be055f",
+        "currentSha256": "8a25f37dc9e6e2da52c5ab5a5c2a237eb63ad2a31b688b456e4c2d5f8c015d67",
+        "onlyChange": "CRLF to LF",
+        "verifiedBy": "Reconstructing CRLF from current LF exactly reproduces prior reviewed SHA256"
+      }
+    ],
+    "semanticReReviewRequired": false
+  }
+}

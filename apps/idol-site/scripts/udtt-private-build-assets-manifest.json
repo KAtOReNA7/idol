@@ -182,8 +182,8 @@
       "sha256": "d3aeabb883545770437dafd4c6abaade76e2321b57db3d64d2a5f3c18086ebbc"
     },
     "lib/idol/udtt-native/host.mjs": {
-      "bytes": 19415,
-      "sha256": "0e98355caf28fa6f7aaa5618218509232b9d453130899c56e53656c48d263612"
+      "bytes": 19573,
+      "sha256": "8a25f37dc9e6e2da52c5ab5a5c2a237eb63ad2a31b688b456e4c2d5f8c015d67"
     },
     "lib/idol/udtt-native/image-recovery.mjs": {
       "bytes": 2272,
@@ -194,8 +194,16 @@
       "sha256": "927108cb2d5cc54c613655aa05746334f4632cfe3a6a80148d3736b788b631ca"
     },
     "lib/idol/udtt-native/presentation.mjs": {
-      "bytes": 15803,
-      "sha256": "a94675dd27ec92879cf8fa3f775221e383cc69e768b59388690b6ea8a1110725"
+      "bytes": 16414,
+      "sha256": "5f05bab95cc98e500d7577cbf652290dc2f8cba443cf764caa76f2bcf4ed412e"
+    },
+    "lib/idol/timeline/reported-records.mjs": {
+      "bytes": 1059,
+      "sha256": "90b05d1fbc366db49cfc4e41b0634f1eadfec401cfa9d59498830c18d8821c12"
+    },
+    "data/timeline-reported-records.json": {
+      "bytes": 6230,
+      "sha256": "a0b7a4c7271cae3b8d16d349abc6cd1a34c8254ab1521e698b87ae13e5a4b051"
     }
   },
   "builtContractCarriers": {
@@ -244,6 +252,52 @@
         "reviewed": {
           "bytes": 15803,
           "sha256": "a94675dd27ec92879cf8fa3f775221e383cc69e768b59388690b6ea8a1110725"
+        }
+      }
+    ]
+  },
+  "sourceGuardReview20261028": {
+    "baselineApplicationCommit": "828b7ad",
+    "approvedApplicationCommit": "fd0c1996915b61d467e22f3dcb30650469eeaf66",
+    "scope": "User-approved reporting overlay only. The native host uses an additive read-only event/source identity projection; report dates never enter canonical facts. The projection helper and its JSON data now receive mandatory exact runtime pins because they determine allowed report-source links. Existing guards, conservative scans, nine restricted originals, two shared posters, private save/access checks, and full compiled contract pins remain unchanged.",
+    "independentReview": "docs/codex/evidence/20261027-category-resolution/timeline/reported-records-independent-review.json",
+    "changes": [
+      {
+        "path": "lib/idol/udtt-native/host.mjs",
+        "previous": {
+          "bytes": 19415,
+          "sha256": "0e98355caf28fa6f7aaa5618218509232b9d453130899c56e53656c48d263612"
+        },
+        "reviewed": {
+          "bytes": 19573,
+          "sha256": "8a25f37dc9e6e2da52c5ab5a5c2a237eb63ad2a31b688b456e4c2d5f8c015d67"
+        }
+      },
+      {
+        "path": "lib/idol/udtt-native/presentation.mjs",
+        "previous": {
+          "bytes": 15803,
+          "sha256": "a94675dd27ec92879cf8fa3f775221e383cc69e768b59388690b6ea8a1110725"
+        },
+        "reviewed": {
+          "bytes": 16414,
+          "sha256": "5f05bab95cc98e500d7577cbf652290dc2f8cba443cf764caa76f2bcf4ed412e"
+        }
+      },
+      {
+        "path": "lib/idol/timeline/reported-records.mjs",
+        "previous": null,
+        "reviewed": {
+          "bytes": 1059,
+          "sha256": "90b05d1fbc366db49cfc4e41b0634f1eadfec401cfa9d59498830c18d8821c12"
+        }
+      },
+      {
+        "path": "data/timeline-reported-records.json",
+        "previous": null,
+        "reviewed": {
+          "bytes": 6230,
+          "sha256": "a0b7a4c7271cae3b8d16d349abc6cd1a34c8254ab1521e698b87ae13e5a4b051"
         }
       }
     ]

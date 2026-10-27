@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-28",
+  "status": "passed",
+  "testFiles": [
+    "category-followup-v196.test.mjs",
+    "public-credit-absence-ui.test.cjs",
+    "public-work-recognition.test.cjs",
+    "public-data-completion.test.cjs",
+    "mv-member-policy.test.cjs",
+    "group-information.test.mjs",
+    "statistics-category-resolution.test.mjs",
+    "mv-member-shortcuts.test.cjs",
+    "navigation-save-guard.test.cjs"
+  ],
+  "testCount": 40,
+  "failed": 0,
+  "typescript": "passed: node node_modules/typescript/bin/tsc --noEmit",
+  "localTestLogSha256": "72de1f0c02b11a836b9385df68b2beee9c2633ed8eee6a8ff304b128e41a47b3",
+  "notes": [
+    "Updated obsolete global 16-public-credits assertion to assert its exact historical researched subset.",
+    "Initial UI test harness failures (functions cannot be structured-cloned and VM prototypes) fixed by comparing only serialized data; app logic unchanged by those fixes.",
+    "Tests exercise synthetic writes only; no production save performed."
+  ]
+}

@@ -1,6 +1,14 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {build} from 'esbuild';
 const bundle=await build({entryPoints:['lib/idol/group-information.mjs'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
 const {followersInWan,renderGroupInformation,groupInformationModel}=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
+test('fromis9 displays reconciled observed sales with source scope and historical monthly evidence intact',()=>{
+ const model=groupInformationModel('fromis9',{}),html=renderGroupInformation('fromis9',{});
+ assert.equal(model.sales.observedValue,1152076);
+ assert.equal(model.sales.evidence.monthRows.reduce((sum,row)=>sum+row.sales,0),1151613);
+ assert.match(html,/<strong>1,152,076<em>张<\/em><\/strong>/);
+ assert.match(html,/不是全球完整累计/);assert.match(html,/年榜修正/);
+ assert.match(html,/历史记录（2026-10-27，已于2026-10-28解决）/);
+});
 test('EVERGLOW new Instagram count retains its historical date and account identity',()=>{
  const evidence=JSON.parse(fs.readFileSync('data/group-statistics-completion-evidence.json','utf8'));
  const row=evidence.groups.everglow.social.find(a=>a.platform==='instagram');

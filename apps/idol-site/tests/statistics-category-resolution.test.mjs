@@ -13,12 +13,44 @@ test('fromis_9 monthly update adds two distinct rows without changing old rows',
  assert.deepEqual(row.evidence.monthRows.slice(2),change.before.evidence.monthRows);
  assert.equal(row.evidence.monthRows.length,39);
  assert.equal(new Set(row.evidence.monthRows.map(r=>[r.year,r.month,r.album].join('/'))).size,39);
- assert.equal(row.evidence.monthRows.reduce((n,r)=>n+r.sales,0),row.observedValue);
- assert.equal(row.observedValue-change.before.observedValue,115009);
- assert.equal(row.observedValue,1151613);
+ assert.equal(row.evidence.monthRows.reduce((n,r)=>n+r.sales,0),row.evidence.monthlyRecomputedSum);
+ assert.equal(row.evidence.monthlyRecomputedSum-change.before.observedValue,115009);
+ assert.equal(row.evidence.monthlyRecomputedSum,1151613);
  assert.equal(row.asOf,'2026-07');assert.equal(row.lowerBound,true);
- assert.equal(row.evidence.sourceDifferenceReview.aggregateTotal-row.observedValue,463);
- assert.ok(data.summary.unresolvedSourceDifferences.includes('fromis9.sales'));
+ assert.deepEqual(row.evidence.previousEvidence,change.before.evidence.previousEvidence);
+ assert.equal(row.evidence.sourceDifferenceReview.previousReview.remainingDifference,463);
+});
+
+test('fromis_9 annual reconciliation replaces overlapping standard rows while retaining separate editions once',()=>{
+ const row=data.groups.fromis9.sales,e=row.evidence;
+ const replaced=new Set();let sum=0;
+ for(const adjustment of e.annualReplacements){
+  let monthly=0;
+  for(const {rowIndex,...original} of adjustment.replacedMonthlyRows){
+   assert.ok(!replaced.has(rowIndex));replaced.add(rowIndex);
+   assert.deepEqual(e.monthRows[rowIndex],original);
+   assert.equal(original.year,adjustment.year);assert.equal(original.album,adjustment.album);
+   monthly+=original.sales;
+  }
+  assert.equal(monthly,adjustment.monthlySum);
+  assert.equal(adjustment.annual-monthly,adjustment.delta);
+  assert.match(adjustment.sourceAccess.primary,/search-index-only/);
+  assert.match(adjustment.sourceAccess.readable,/full-page-read/);
+  sum+=adjustment.annual;
+ }
+ sum+=e.monthRows.filter((_,i)=>!replaced.has(i)).reduce((n,r)=>n+r.sales,0);
+ assert.equal(replaced.size,5);assert.equal(sum,1152076);
+ assert.equal(sum,row.observedValue);assert.equal(sum,row.displayValue);assert.equal(sum,e.recomputedSum);
+ assert.equal(sum-e.monthlyRecomputedSum,463);
+ assert.deepEqual(e.annualReplacements.map(r=>r.delta),[-347,810]);
+ const editions=e.monthRows.filter(r=>['FUN FACTORY (KiT)','from our Memento Box (Weverse)','from our Memento Box (KiT)'].includes(r.album));
+ assert.equal(editions.reduce((n,r)=>n+r.sales,0),39999);
+ assert.ok(editions.every(r=>!replaced.has(e.monthRows.indexOf(r))));
+ assert.equal(e.sourceDifferenceReview.remainingDifference,0);
+ assert.equal(e.sourceDifferenceReview.aggregateTotal,sum);
+ assert.equal(e.sourceDifferenceReview.status,'resolved-by-yearly-reconciliation');
+ assert.match(row.scope,/来源覆盖下界/);assert.match(row.scope,/不是全球完整累计/);
+ assert.ok(data.summary.resolvedSourceDifferences.includes('fromis9.sales'));
 });
 
 test('award source adjudication preserves accepted totals and explains discrepancies',()=>{
@@ -50,5 +82,5 @@ test('17 unresolved metrics retain null evidence; 22 reviewed topics are unique 
  assert.deepEqual(actual.sort(),review.unknown.map(r=>r.key).sort());
  assert.ok(review.unknown.every(r=>r.applied===false&&r.status==='open-evidence-required'));
  assert.equal(new Set([...review.unknown,...review.sourceDifferences].map(r=>r.key)).size,22);
- assert.deepEqual(data.summary.unresolvedSourceDifferences,['triples.sales','fromis9.sales']);
+ assert.deepEqual(data.summary.unresolvedSourceDifferences,['triples.sales']);
 });

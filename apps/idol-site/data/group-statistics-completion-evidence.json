@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-27",
+  "checkedAt": "2026-10-28",
   "researchStatus": "completed-best-effort",
   "baseCommit": "d412376bd7f72df83d6a6bf46d9cd8e3b0a78f65",
   "displayPolicy": "User-directed fallback zero for unavailable data. observedValue remains null; zero must not be interpreted as verified absence. Omit unverified/nonexistent social accounts.",
@@ -17,13 +17,13 @@
     "winsConfirmedZero": 21,
     "winsFallbackZero": 3,
     "unresolvedSourceDifferences": [
-      "triples.sales",
-      "fromis9.sales"
+      "triples.sales"
     ],
     "resolvedSourceDifferences": [
       "lesserafim.wins",
       "newjeans.wins",
-      "ive.wins"
+      "ive.wins",
+      "fromis9.sales"
     ]
   },
   "groups": {
@@ -4683,14 +4683,14 @@
       ],
       "omittedPlatforms": [],
       "sales": {
-        "observedValue": 1151613,
-        "displayValue": 1151613,
+        "observedValue": 1152076,
+        "displayValue": 1152076,
         "status": "observed",
         "unit": "张",
         "title": "已公开累计",
-        "scope": "fromis_9公开Circle月榜39行可复算累计，截至2026-07；为来源覆盖下界，不是全球完整累计。",
+        "scope": "fromis_9韩国Circle公开月榜39行及2019/2022两项标准版年榜修正累计，截至2026-07；为来源覆盖下界，不是全球完整累计。",
         "asOf": "2026-07",
-        "checkedAt": "2026-10-27",
+        "checkedAt": "2026-10-28",
         "sourceUrl": "https://soridata.com/en/sales/fromis-9.html",
         "sourceTitle": "Soridata · Circle公开累计",
         "sources": [
@@ -4714,12 +4714,54 @@
             "sourceDate": null,
             "checkedAt": "2026-10-27",
             "kind": "third-party-public"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?hitYear=2019&nationGbn=T&targetTime=2019&termGbn=year&yearTime=3",
+            "title": "FUN FACTORY · 2019 标准版年榜交叉核验 (官方索引)",
+            "sourceDate": "2019",
+            "checkedAt": "2026-10-28",
+            "kind": "primary-chart",
+            "access": "search-index-only"
+          },
+          {
+            "url": "https://bestsellingalbums.org/year-end/South_Korea_Top_Albums_2019",
+            "title": "FUN FACTORY · 2019 标准版年榜交叉核验 (可读复本)",
+            "sourceDate": "2019",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read"
+          },
+          {
+            "url": "https://kpopmerchandiseguide.com/discography/fromis-9-albums",
+            "title": "FUN FACTORY · 2019 标准版年榜交叉核验 (可读复本)",
+            "sourceDate": "2019",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read"
+          },
+          {
+            "url": "https://circlechart.co.kr/page_chart/album.circle?hitYear=2022&nationGbn=T&targetTime=2022&termGbn=year&yearTime=3",
+            "title": "from our Memento Box · 2022 标准版年榜交叉核验 (官方索引)",
+            "sourceDate": "2022",
+            "checkedAt": "2026-10-28",
+            "kind": "primary-chart",
+            "access": "search-index-only"
+          },
+          {
+            "url": "https://bestsellingalbums.org/album/62583",
+            "title": "from our Memento Box · 2022 标准版年榜交叉核验 (可读复本)",
+            "sourceDate": "2022",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read"
           }
         ],
         "notes": [
           "显示值为可核查的公开累计下限，不是全球完整累计；未加总Circle与Hanteo以免重复。",
           "2026-10-27复核新增2026-07两行：Glow ME 105,009及kiwee版10,000；旧37行保持，39行合计1,151,613。",
-          "同次艺人汇总页1,152,076+仍比月榜和多463。月榜与年榜修正口径不同可解释差异机制，但未逐行证明463来源，冲突继续开放。"
+          "历史记录（2026-10-27，已于2026-10-28解决）：同次艺人汇总页1,152,076+仍比月榜和多463。月榜与年榜修正口径不同可解释差异机制，但未逐行证明463来源，冲突继续开放。",
+          "2026-10-28逐发行复算：FUN FACTORY标准版2019年榜56,121替换同年月和56,468（-347）；Memento Box标准版2022年榜158,682替换同年月和157,872（+810）。净调整+463，累计1,152,076，与来源艺人汇总相符。原39月行保留；KiT/Weverse独立版本不重复加总。",
+          "年榜数字由官方搜索索引及完整可读第三方榜单复本交叉核实；官方页面直接读取仅返回榜单框架，不宣称已读取完整官方榜。该复算解决此项来源差额，不代表全球销量已完整覆盖。"
         ],
         "evidence": {
           "kind": "public-cumulative-lower-bound",
@@ -5006,21 +5048,106 @@
               "album": "To. Heart"
             }
           ],
-          "recomputedSum": 1151613,
+          "recomputedSum": 1152076,
           "sourceDifferenceReview": {
-            "checkedAt": "2026-10-27",
-            "status": "partially-resolved",
+            "checkedAt": "2026-10-28",
+            "status": "resolved-by-yearly-reconciliation",
             "previousMonthlySum": 1036604,
             "addedMonthlySales": 115009,
             "aggregateTotal": 1152076,
-            "remainingDifference": 463,
+            "remainingDifference": 0,
             "aggregateUrl": "https://soridata.com/artists/fromis-9.html",
             "methodologyUrl": "https://soridata.com/transparency.html",
-            "reason": "Monthly and yearly totals can differ due to returns and chart coverage. Exact residual not yet reconstructed."
-          }
+            "reason": "Two standard-edition annual replacements (-347 and +810) exactly reconcile monthly rows to the artist aggregate; separate KiT/Weverse rows remain included once. Primary chart rows are search-index evidence corroborated by full readable third-party chart reproductions; global completeness is not claimed.",
+            "previousReview": {
+              "checkedAt": "2026-10-27",
+              "status": "partially-resolved",
+              "previousMonthlySum": 1036604,
+              "addedMonthlySales": 115009,
+              "aggregateTotal": 1152076,
+              "remainingDifference": 463,
+              "aggregateUrl": "https://soridata.com/artists/fromis-9.html",
+              "methodologyUrl": "https://soridata.com/transparency.html",
+              "reason": "Monthly and yearly totals can differ due to returns and chart coverage. Exact residual not yet reconstructed."
+            },
+            "monthlySum": 1151613,
+            "annualNetAdjustment": 463,
+            "reconciledSum": 1152076
+          },
+          "annualReplacements": [
+            {
+              "year": 2019,
+              "album": "FUN FACTORY",
+              "annual": 56121,
+              "primary": "https://circlechart.kr/page_chart/album.circle?hitYear=2019&nationGbn=T&targetTime=2019&termGbn=year&yearTime=3",
+              "readable": "https://bestsellingalbums.org/year-end/South_Korea_Top_Albums_2019",
+              "corroborating": "https://kpopmerchandiseguide.com/discography/fromis-9-albums",
+              "rank": 91,
+              "replacedMonthlyRows": [
+                {
+                  "rowIndex": 27,
+                  "year": 2019,
+                  "month": 8,
+                  "sales": 1212,
+                  "album": "FUN FACTORY"
+                },
+                {
+                  "rowIndex": 28,
+                  "year": 2019,
+                  "month": 7,
+                  "sales": 5406,
+                  "album": "FUN FACTORY"
+                },
+                {
+                  "rowIndex": 29,
+                  "year": 2019,
+                  "month": 6,
+                  "sales": 49850,
+                  "album": "FUN FACTORY"
+                }
+              ],
+              "monthlySum": 56468,
+              "delta": -347,
+              "sourceAccess": {
+                "primary": "search-index-only; direct-open returned chart shell",
+                "readable": "full-page-read; secondary chart transcription"
+              }
+            },
+            {
+              "year": 2022,
+              "album": "from our Memento Box",
+              "annual": 158682,
+              "primary": "https://circlechart.co.kr/page_chart/album.circle?hitYear=2022&nationGbn=T&targetTime=2022&termGbn=year&yearTime=3",
+              "readable": "https://bestsellingalbums.org/album/62583",
+              "rank": 92,
+              "replacedMonthlyRows": [
+                {
+                  "rowIndex": 12,
+                  "year": 2022,
+                  "month": 7,
+                  "sales": 20640,
+                  "album": "from our Memento Box"
+                },
+                {
+                  "rowIndex": 14,
+                  "year": 2022,
+                  "month": 6,
+                  "sales": 137232,
+                  "album": "from our Memento Box"
+                }
+              ],
+              "monthlySum": 157872,
+              "delta": 810,
+              "sourceAccess": {
+                "primary": "search-index-only; direct-open returned chart shell",
+                "readable": "full-page-read; secondary chart transcription"
+              }
+            }
+          ],
+          "monthlyRecomputedSum": 1151613
         },
         "lowerBound": true,
-        "rawDisplay": "1,151,613+"
+        "rawDisplay": "1,152,076+"
       },
       "wins": {
         "observedValue": 19,

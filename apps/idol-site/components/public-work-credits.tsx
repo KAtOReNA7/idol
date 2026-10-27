@@ -3,6 +3,7 @@ import type {CatalogView,Work} from '@/lib/idol/types';
 import {publicCreditForWork,publicCreditsForMember} from '@/lib/idol/public-work-credits';
 import {publicProductionForWork} from '@/lib/idol/public-production-credits';
 import {publicWorkRecognition} from '@/lib/idol/public-work-recognition';
+import {mvMemberAbsence} from '@/lib/idol/mv-member-appearance';
 import {PublicCreditRecognitionPhoto} from './mv-identity-photo';
 import {memberDisplayName} from '@/lib/idol/member-display-name';
 import './public-work-credits.css';
@@ -17,9 +18,11 @@ export function PublicWorkCredits({work,data,onMember}:{work:Work;data:CatalogVi
  const credit=publicCreditForWork(work);
  const members=credit?.memberIds.flatMap(id=>data.members.filter(m=>m.id===id))??[];
  const portraits=publicWorkRecognition(work);
+ const absence=mvMemberAbsence(work);
  if(!credit||!members.length)return null;
  return <section className="public-work-credits" aria-label={credit.label} data-credit-work={work.id}>
   <h2>{credit.label}</h2><p>{credit.note}</p>
+  {absence&&<p>本视频没有成员真人出镜；以下仅为公开署名人物的认人参考，不提供成员评分。</p>}
   {portraits.length>0&&<p>照片用于识别公开署名人物，不代表已核实其在本视频出镜或同期造型。</p>}
   <ul className={portraits.length?'public-recognition-grid':undefined}>{members.map(m=>{const portrait=portraits.find(p=>p.memberId===m.id);return <li key={m.id}>
    {portrait&&<PublicCreditRecognitionPhoto work={work} memberId={m.id} label={memberDisplayName(m)} reference={portrait}/>}

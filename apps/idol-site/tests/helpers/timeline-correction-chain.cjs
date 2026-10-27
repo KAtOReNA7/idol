@@ -104,7 +104,8 @@ function validateCorrectionChain({corrections,events,ledger,readBytes,snapshot})
  assert.deepEqual(madeinDoc.gaps,m.afterGaps);assert.deepEqual(m.afterGaps,m.beforeGaps.filter(g=>!g.startsWith('《RISE》仅有官方目录')&&!g.startsWith('RISE旧carrier hold')));
  madeinDoc.events=madeinDoc.events.map(event=>event.id===madeinId?m.before:event);madeinDoc.gaps=m.beforeGaps;
  assert.equal(hash(JSON.stringify(madeinDoc,null,2)+'\n'),m.beforeDocumentSha256);
- const historical=new Map(events);historical.set(EVENT_ID,c.before);historical.set(badId,b.before);historical.set(madeinId,m.before);
+ const {historical}=require('./timeline-category-corrections.cjs').validateCategoryCorrections({events,ledger,readBytes});
+ historical.set(EVENT_ID,c.before);historical.set(badId,b.before);historical.set(madeinId,m.before);
  for(const row of ledger.events){assert.ok(historical.has(row.eventId));assert.equal(digest(historical.get(row.eventId)),row.adoptedEventSha256,row.eventId);}
  return historical;
 }

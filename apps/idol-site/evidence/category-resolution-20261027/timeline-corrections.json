@@ -1,0 +1,675 @@
+{
+  "schemaVersion": 1,
+  "correctionId": "timeline-category-resolution-20261027",
+  "checkedAt": "2026-10-27",
+  "scope": "Five existing hold events only. Original event/source identities and personal data preserved.",
+  "corrections": [
+    {
+      "eventId": "e-rocketpunch-suyun-contract-announcement",
+      "slug": "rocketpunch",
+      "before": {
+        "id": "e-rocketpunch-suyun-contract-announcement",
+        "groupId": "recvxyEBDZB3pz",
+        "eventType": "contract_end",
+        "title": "SUYUN合同说明候选（待本人原文）",
+        "summary": "B继承摘要记作2026年8月6日的SUYUN本人说明，称其谈及Woollim合同结束；本人原始正文尚缺，保留线索。",
+        "scopeNote": "本轮按用户指定降为hold：仅有继承事实摘要，无法由已保存材料核对SUYUN本人原话。原摘要日期保留在来源元数据作线索，announcementDate=null，不认证发表日或独立合同生效日。与JURI、四名成员合同公告分别保留，不推实际退团、全团解散或当前关系。",
+        "eventDate": null,
+        "announcementDate": null,
+        "plannedDate": null,
+        "status": "uncertain",
+        "importance": "major",
+        "memberIds": [
+          "recvxyICzHfdEb"
+        ],
+        "workIds": [],
+        "releaseKey": null,
+        "relatedEventIds": [],
+        "sources": [
+          {
+            "id": "es-11df2527eaeb22c0",
+            "url": "https://weverse.io/rocketpunch/artist/3-238220157",
+            "publisher": "SUYUN / official Weverse",
+            "title": "SuYun 本人说明",
+            "sourcePublishedAt": {
+              "value": "2026-08-06",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-15",
+            "scopeNote": "仅继承B中文摘要及元数据作待核线索，缺SUYUN本人原话、原文截图或可核正文；不属于本轮已核合格事实。原checkedAt沿用，不表示重新获取；原sourcePublishedAt仅继承日期线索，未据此确认公告日或合同生效日。",
+            "evidenceRef": "evidence/E01/baseline-evidence/task02/sources/rocket-suyun-b.json"
+          }
+        ],
+        "reviewStatus": "hold",
+        "holdReasons": [
+          "缺SUYUN本人原始声明正文、截图或可核原文；现有B继承摘要与E包装不构成该条独立合格证据。",
+          "本轮只读搜查已有B/C/D/E及ZIP未找到完整本人原文；不新增网络、不重试拒绝来源，日期与事件范围继续待核。"
+        ]
+      },
+      "after": {
+        "id": "e-rocketpunch-suyun-contract-announcement",
+        "groupId": "recvxyEBDZB3pz",
+        "eventType": "contract_end",
+        "title": "SUYUN公开说明与Woollim合同结束",
+        "summary": "SUYUN于2026年8月6日在官方Weverse本人帖说明与Woollim的专属合同结束，独立生效日未说明。",
+        "scopeNote": "本轮按用户指定降为hold：仅有继承事实摘要，无法由已保存材料核对SUYUN本人原话。原摘要日期保留在来源元数据作线索，announcementDate=null，不认证发表日或独立合同生效日。与JURI、四名成员合同公告分别保留，不推实际退团、全团解散或当前关系。 2026-10-27补核本人原帖可读首段与发表日；仅确认说明，合同实际生效日仍未知，不推退团或解散。",
+        "eventDate": null,
+        "announcementDate": {
+          "value": "2026-08-06",
+          "precision": "day"
+        },
+        "plannedDate": null,
+        "status": "announced",
+        "importance": "major",
+        "memberIds": [
+          "recvxyICzHfdEb"
+        ],
+        "workIds": [],
+        "releaseKey": null,
+        "relatedEventIds": [],
+        "sources": [
+          {
+            "id": "es-11df2527eaeb22c0",
+            "url": "https://weverse.io/rocketpunch/artist/3-238220157",
+            "publisher": "SUYUN / official Weverse",
+            "title": "SuYun 本人说明",
+            "sourcePublishedAt": {
+              "value": "2026-08-06",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-15",
+            "scopeNote": "仅继承B中文摘要及元数据作待核线索，缺SUYUN本人原话、原文截图或可核正文；不属于本轮已核合格事实。原checkedAt沿用，不表示重新获取；原sourcePublishedAt仅继承日期线索，未据此确认公告日或合同生效日。",
+            "evidenceRef": "evidence/E01/baseline-evidence/task02/sources/rocket-suyun-b.json"
+          },
+          {
+            "id": "category-20261027-suyun-weverse",
+            "url": "https://weverse.io/rocketpunch/artist/3-238220157",
+            "publisher": "SuYun / official Weverse",
+            "title": "SUYUN公开说明与Woollim合同结束",
+            "sourcePublishedAt": {
+              "value": "2026-08-06",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-27",
+            "scopeNote": "2026-10-27补核本人原帖可读首段与发表日；仅确认说明，合同实际生效日仍未知，不推退团或解散。",
+            "evidenceRef": "evidence/category-resolution-20261027/suyun-weverse.json"
+          }
+        ],
+        "reviewStatus": "ready",
+        "holdReasons": []
+      },
+      "beforeSha256": "8bfa245c5ea2122dcc4ddcbd191af12d25ea732dd04ccd8aca7d9f1dd6717453",
+      "afterSha256": "69883ce2819dfa49f6afb872cf42212f029eadc46431882bfc48ec3cfa052ef6",
+      "allowedFields": [
+        "announcementDate",
+        "holdReasons",
+        "reviewStatus",
+        "scopeNote",
+        "sources",
+        "status",
+        "summary",
+        "title"
+      ],
+      "evidence": [
+        {
+          "path": "evidence/category-resolution-20261027/suyun-weverse.json",
+          "sha256": "c73801d8cb3a136b6bebdc7241c9846a7281037f5e8e094052a2cc926a98f346"
+        }
+      ]
+    },
+    {
+      "eventId": "e-ifeye-sasha-hiatus-announcement",
+      "slug": "ifeye",
+      "before": {
+        "id": "e-ifeye-sasha-hiatus-announcement",
+        "groupId": "rec28ldfRTiCGa",
+        "eventType": "hiatus",
+        "title": "公告线索：SASHA暂时中止团队活动",
+        "summary": "2026年3月3日官方平台搜索索引载有团队活动暂时中止及之后五人行程公告。",
+        "scopeNote": "不涉及具体医疗原因；不是退团。原始1月部分行程公告未取得，不能将两阶段混为同日起始。",
+        "eventDate": null,
+        "announcementDate": {
+          "value": "2026-03-03",
+          "precision": "day"
+        },
+        "plannedDate": null,
+        "status": "announced",
+        "importance": "major",
+        "memberIds": [],
+        "workIds": [],
+        "releaseKey": null,
+        "relatedEventIds": [
+          "e-ifeye-sasha-resume-announcement"
+        ],
+        "sources": [
+          {
+            "id": "es-9b299c51dfd543e3",
+            "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/699fd28a83e517146af565b2",
+            "publisher": "HI-HAT ENTERTAINMENT / Mnet Plus（仅搜索索引）",
+            "title": "SASHA今后活动公告",
+            "sourcePublishedAt": {
+              "value": "2026-03-03",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-16",
+            "scopeNote": "索引摘录仅作hold；open返回0行，不重新尝试；不记录任何医学原因。",
+            "evidenceRef": "evidence/E/task05/sources/ifeye-sasha-march-index.json"
+          }
+        ],
+        "reviewStatus": "hold",
+        "holdReasons": [
+          "直接原帖正文打开0行，只有搜索索引摘录。"
+        ]
+      },
+      "after": {
+        "id": "e-ifeye-sasha-hiatus-announcement",
+        "groupId": "rec28ldfRTiCGa",
+        "eventType": "hiatus",
+        "title": "公布SASHA暂时中止团队活动",
+        "summary": "HI-HAT于2026年3月3日在官方Mnet Plus公告SASHA暂时中止团队活动，其后团体行程计划以五人进行。",
+        "scopeNote": "不涉及具体医疗原因；不是退团。原始1月部分行程公告未取得，不能将两阶段混为同日起始。 2026-10-27从公开页面内嵌正文核验公告；活动暂停公告为ready，独立起始日及1月阶段仍未知。",
+        "eventDate": null,
+        "announcementDate": {
+          "value": "2026-03-03",
+          "precision": "day"
+        },
+        "plannedDate": null,
+        "status": "announced",
+        "importance": "major",
+        "memberIds": [],
+        "workIds": [],
+        "releaseKey": null,
+        "relatedEventIds": [
+          "e-ifeye-sasha-resume-announcement"
+        ],
+        "sources": [
+          {
+            "id": "es-9b299c51dfd543e3",
+            "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/699fd28a83e517146af565b2",
+            "publisher": "HI-HAT ENTERTAINMENT / Mnet Plus（仅搜索索引）",
+            "title": "SASHA今后活动公告",
+            "sourcePublishedAt": {
+              "value": "2026-03-03",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-16",
+            "scopeNote": "索引摘录仅作hold；open返回0行，不重新尝试；不记录任何医学原因。",
+            "evidenceRef": "evidence/E/task05/sources/ifeye-sasha-march-index.json"
+          },
+          {
+            "id": "category-20261027-sasha-march",
+            "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/699fd28a83e517146af565b2",
+            "publisher": "HI-HAT ENTERTAINMENT / ifeye Mnet Plus",
+            "title": "[NOTICE] ifeye (이프아이) SASHA 향후 활동 관련 안내",
+            "sourcePublishedAt": {
+              "value": "2026-03-03",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-27",
+            "scopeNote": "2026-10-27从公开页面内嵌正文核验公告；活动暂停公告为ready，独立起始日及1月阶段仍未知。",
+            "evidenceRef": "evidence/category-resolution-20261027/sasha-march.json"
+          }
+        ],
+        "reviewStatus": "ready",
+        "holdReasons": []
+      },
+      "beforeSha256": "fad6dc3f95de80de7391eb44aa6750d300d2e463a0395205bea8a8ebc0cee1ae",
+      "afterSha256": "74b9d6c3894b12600ec35def843eca9d6b109ec48b009db8d47ecc4345e8c98a",
+      "allowedFields": [
+        "holdReasons",
+        "reviewStatus",
+        "scopeNote",
+        "sources",
+        "summary",
+        "title"
+      ],
+      "evidence": [
+        {
+          "path": "evidence/category-resolution-20261027/sasha-march.json",
+          "sha256": "150ce6d77bc16a0edc4fa273858dec4898721143d29fc0f76d3d87a872e046ef"
+        }
+      ]
+    },
+    {
+      "eventId": "e-ifeye-sasha-resume-announcement",
+      "slug": "ifeye",
+      "before": {
+        "id": "e-ifeye-sasha-resume-announcement",
+        "groupId": "rec28ldfRTiCGa",
+        "eventType": "resume",
+        "title": "公告线索：SASHA计划恢复团队活动",
+        "summary": "6月15日索引公告计划从APAC巡演参与；6月25日追加公告把首个参与计划改为7月1日空军演出。",
+        "scopeNote": "同一恢复过程合一节点保留追加公告；医学细节不采集。",
+        "eventDate": null,
+        "announcementDate": {
+          "value": "2026-06-15",
+          "precision": "day"
+        },
+        "plannedDate": {
+          "value": "2026-07-01",
+          "precision": "day"
+        },
+        "status": "announced",
+        "importance": "major",
+        "memberIds": [],
+        "workIds": [],
+        "releaseKey": null,
+        "relatedEventIds": [
+          "e-ifeye-sasha-hiatus-announcement"
+        ],
+        "sources": [
+          {
+            "id": "es-b508fdfedca4ab69",
+            "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/6a2f5fc4a92a684281b0a9f3",
+            "publisher": "HI-HAT ENTERTAINMENT / Mnet Plus（仅搜索索引）",
+            "title": "SASHA活动恢复公告",
+            "sourcePublishedAt": {
+              "value": "2026-06-15",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-16",
+            "scopeNote": "不得把公告日当恢复生效日；与6月25日修订合并同一恢复事件。",
+            "evidenceRef": "evidence/E/task05/sources/ifeye-sasha-june-index.json"
+          },
+          {
+            "id": "es-faabe9d9fce17250",
+            "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/6a3c9d091d4a5353e1f3e17b",
+            "publisher": "HI-HAT ENTERTAINMENT / Mnet Plus（仅搜索索引）",
+            "title": "SASHA参与活动日程追加公告",
+            "sourcePublishedAt": {
+              "value": "2026-06-25",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-16",
+            "scopeNote": "仍是计划；direct open0行且不重试，review hold；不把经过日期升confirmed。",
+            "evidenceRef": "evidence/E/task05/sources/ifeye-sasha-june-update-index.json"
+          }
+        ],
+        "reviewStatus": "hold",
+        "holdReasons": [
+          "两份直接原帖均打开0行，仅索引原文可读。",
+          "未取得独立参与原文，不把6月15日公告日或7月1日计划日当实际恢复生效日。"
+        ]
+      },
+      "after": {
+        "id": "e-ifeye-sasha-resume-announcement",
+        "groupId": "rec28ldfRTiCGa",
+        "eventType": "resume",
+        "title": "公布SASHA恢复活动计划",
+        "summary": "HI-HAT于6月15日公告SASHA将从APAC巡演参与，6月25日追加公告将首个参与计划改为7月1日空军演出。",
+        "scopeNote": "同一恢复过程合一节点保留追加公告；医学细节不采集。 2026-10-27从两份公开公告正文核验计划与修订；保留announced，7月1日仍仅plannedDate，未确认实际恢复日。",
+        "eventDate": null,
+        "announcementDate": {
+          "value": "2026-06-15",
+          "precision": "day"
+        },
+        "plannedDate": {
+          "value": "2026-07-01",
+          "precision": "day"
+        },
+        "status": "announced",
+        "importance": "major",
+        "memberIds": [],
+        "workIds": [],
+        "releaseKey": null,
+        "relatedEventIds": [
+          "e-ifeye-sasha-hiatus-announcement"
+        ],
+        "sources": [
+          {
+            "id": "es-b508fdfedca4ab69",
+            "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/6a2f5fc4a92a684281b0a9f3",
+            "publisher": "HI-HAT ENTERTAINMENT / Mnet Plus（仅搜索索引）",
+            "title": "SASHA活动恢复公告",
+            "sourcePublishedAt": {
+              "value": "2026-06-15",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-16",
+            "scopeNote": "不得把公告日当恢复生效日；与6月25日修订合并同一恢复事件。",
+            "evidenceRef": "evidence/E/task05/sources/ifeye-sasha-june-index.json"
+          },
+          {
+            "id": "es-faabe9d9fce17250",
+            "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/6a3c9d091d4a5353e1f3e17b",
+            "publisher": "HI-HAT ENTERTAINMENT / Mnet Plus（仅搜索索引）",
+            "title": "SASHA参与活动日程追加公告",
+            "sourcePublishedAt": {
+              "value": "2026-06-25",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-16",
+            "scopeNote": "仍是计划；direct open0行且不重试，review hold；不把经过日期升confirmed。",
+            "evidenceRef": "evidence/E/task05/sources/ifeye-sasha-june-update-index.json"
+          },
+          {
+            "id": "category-20261027-sasha-june",
+            "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/6a2f5fc4a92a684281b0a9f3",
+            "publisher": "HI-HAT ENTERTAINMENT / ifeye Mnet Plus",
+            "title": "[NOTICE] ifeye (이프아이) SASHA 활동 재개 관련 안내",
+            "sourcePublishedAt": {
+              "value": "2026-06-15",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-27",
+            "scopeNote": "2026-10-27从两份公开公告正文核验计划与修订；保留announced，7月1日仍仅plannedDate，未确认实际恢复日。",
+            "evidenceRef": "evidence/category-resolution-20261027/sasha-june.json"
+          },
+          {
+            "id": "category-20261027-sasha-june-update",
+            "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/6a3c9d091d4a5353e1f3e17b",
+            "publisher": "HI-HAT ENTERTAINMENT / ifeye Mnet Plus",
+            "title": "[NOTICE] ifeye SASHA 활동 참여 일정 관련 추가 안내",
+            "sourcePublishedAt": {
+              "value": "2026-06-25",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-27",
+            "scopeNote": "2026-10-27从两份公开公告正文核验计划与修订；保留announced，7月1日仍仅plannedDate，未确认实际恢复日。",
+            "evidenceRef": "evidence/category-resolution-20261027/sasha-june-update.json"
+          }
+        ],
+        "reviewStatus": "ready",
+        "holdReasons": []
+      },
+      "beforeSha256": "2f9291099b25048b0b9e53e2da88fe04407e8d3953f2d84c6b4610d6e53bef1b",
+      "afterSha256": "8137720ddaaa66498641fe6b92f929ef499dc021175d93d79ab3213abdb09743",
+      "allowedFields": [
+        "holdReasons",
+        "reviewStatus",
+        "scopeNote",
+        "sources",
+        "summary",
+        "title"
+      ],
+      "evidence": [
+        {
+          "path": "evidence/category-resolution-20261027/sasha-june.json",
+          "sha256": "7155328fcb509f933920c406030c52fd87bcd8cf11b54f88fab982e77bcc5031"
+        },
+        {
+          "path": "evidence/category-resolution-20261027/sasha-june-update.json",
+          "sha256": "6c8e2d6dfc82668ea93b983e1b6f49e0bc2fe0622c9ec9d18a72bcb2515610f4"
+        }
+      ]
+    },
+    {
+      "eventId": "e-genblue-swing-dance-single",
+      "slug": "genblue",
+      "before": {
+        "id": "e-genblue-swing-dance-single",
+        "groupId": "rec28ldfRTiCKv",
+        "eventType": "release",
+        "title": "动画合作单曲《SWING DANCE》",
+        "summary": "现存只有单曲目录及作品介绍，实际首次发行待直接原文。",
+        "scopeNote": "",
+        "eventDate": null,
+        "announcementDate": null,
+        "plannedDate": null,
+        "status": "uncertain",
+        "importance": "major",
+        "memberIds": [],
+        "workIds": [],
+        "releaseKey": "genblue-swing-dance",
+        "relatedEventIds": [],
+        "sources": [
+          {
+            "id": "f04-genblue-swing-line",
+            "url": "https://music-tw.line.me/album/7742428",
+            "publisher": "LINE MUSIC Taiwan",
+            "title": "SWING DANCE（動畫《妖果小學》片尾曲）",
+            "sourcePublishedAt": null,
+            "checkedAt": "2026-10-16",
+            "scopeNote": "载体标题、2025-08-04标签和合作说明已读；原合作方公告502，未取得直接实际首发原句，候选保留hold，不用版权或曲目创作冒充发行完成。",
+            "evidenceRef": "evidence/task04/evidence/genblue-swing-line.json"
+          }
+        ],
+        "reviewStatus": "hold",
+        "holdReasons": [
+          "原合作方公告502后停止；目录日和共同创作说明不能单独证明实际首次发行。"
+        ]
+      },
+      "after": {
+        "id": "e-genblue-swing-dance-single",
+        "groupId": "rec28ldfRTiCKv",
+        "eventType": "release",
+        "title": "数字发行动画合作单曲《SWING DANCE》",
+        "summary": "Apple Music授权目录及实际可交付音频支持2025年8月4日的《SWING DANCE》数字单曲发行。",
+        "scopeNote": "限定为授权平台标示日期的已发行数字音频；不冒称公司首发公告、实体发行或MV上线日期，不新增成员/作品关系。",
+        "eventDate": {
+          "value": "2025-08-04",
+          "precision": "day"
+        },
+        "announcementDate": null,
+        "plannedDate": null,
+        "status": "confirmed",
+        "importance": "major",
+        "memberIds": [],
+        "workIds": [],
+        "releaseKey": "genblue-swing-dance",
+        "relatedEventIds": [],
+        "sources": [
+          {
+            "id": "f04-genblue-swing-line",
+            "url": "https://music-tw.line.me/album/7742428",
+            "publisher": "LINE MUSIC Taiwan",
+            "title": "SWING DANCE（動畫《妖果小學》片尾曲）",
+            "sourcePublishedAt": null,
+            "checkedAt": "2026-10-16",
+            "scopeNote": "载体标题、2025-08-04标签和合作说明已读；原合作方公告502，未取得直接实际首发原句，候选保留hold，不用版权或曲目创作冒充发行完成。",
+            "evidenceRef": "evidence/task04/evidence/genblue-swing-line.json"
+          },
+          {
+            "id": "category-20261027-genblue-swing",
+            "url": "https://music.apple.com/us/album/swing-dance-%E5%8B%95%E7%95%AB-%E5%A6%96%E6%9E%9C%E5%B0%8F%E5%AD%B8-%E7%89%87%E5%B0%BE%E6%9B%B2-single/1828905104",
+            "publisher": "Apple Music / iTunes authorized distribution",
+            "title": "数字发行动画合作单曲《SWING DANCE》",
+            "sourcePublishedAt": null,
+            "checkedAt": "2026-10-27",
+            "scopeNote": "限定为授权平台标示日期的已发行数字音频；不冒称公司首发公告、实体发行或MV上线日期，不新增成员/作品关系。",
+            "evidenceRef": "evidence/category-resolution-20261027/genblue-swing.json"
+          }
+        ],
+        "reviewStatus": "ready",
+        "holdReasons": []
+      },
+      "beforeSha256": "02ee3dd8a6287fa788a95563158e59bf856b872153f1a785b8a0c32e41313582",
+      "afterSha256": "128f7d9bcc0adccd977d14c3b0dede3b678b672058d476d3e3296f123012d8a0",
+      "allowedFields": [
+        "eventDate",
+        "holdReasons",
+        "reviewStatus",
+        "scopeNote",
+        "sources",
+        "status",
+        "summary",
+        "title"
+      ],
+      "evidence": [
+        {
+          "path": "evidence/category-resolution-20261027/genblue-swing.json",
+          "sha256": "0c61eaf78294b7ad7660eee43ecef30905ac0eb4561734f10b30381c7cff8db8"
+        }
+      ]
+    },
+    {
+      "eventId": "e-genblue-oh-chinese-single",
+      "slug": "genblue",
+      "before": {
+        "id": "e-genblue-oh-chinese-single",
+        "groupId": "rec28ldfRTiCKv",
+        "eventType": "release",
+        "title": "中文版本单曲《OH!》",
+        "summary": "独立华语版目录存在，实际首次发行待直接原文。",
+        "scopeNote": "",
+        "eventDate": null,
+        "announcementDate": null,
+        "plannedDate": null,
+        "status": "uncertain",
+        "importance": "major",
+        "memberIds": [],
+        "workIds": [],
+        "releaseKey": "genblue-oh-chinese",
+        "relatedEventIds": [],
+        "sources": [
+          {
+            "id": "f04-genblue-oh-chinese-carrier",
+            "url": "https://music-tw.line.me/album/7685105",
+            "publisher": "LINE MUSIC Taiwan",
+            "title": "OH!",
+            "sourcePublishedAt": null,
+            "checkedAt": "2026-10-16",
+            "scopeNote": "独立华语版本目录和歌曲指代已读；未取得可直接支持实际日的发布正文，保留候选，不将4月28日MV当音乐发行日。",
+            "evidenceRef": "evidence/task04/evidence/genblue-oh-chinese-carrier.json"
+          }
+        ],
+        "reviewStatus": "hold",
+        "holdReasons": [
+          "缺实际发行正文；保留目录2025-04-29线索，不当实际日期。"
+        ]
+      },
+      "after": {
+        "id": "e-genblue-oh-chinese-single",
+        "groupId": "rec28ldfRTiCKv",
+        "eventType": "release",
+        "title": "数字发行中文版本单曲《OH!》",
+        "summary": "Apple Music授权目录及实际可交付音频支持2025年4月29日《OH! (Chinese Version)》数字单曲发行；Bugs目录同日。",
+        "scopeNote": "限定独立中文版本数字音频，不与其他语言版本合并；不把4月28日MV上传当音频发行日，不新增成员/作品关系。",
+        "eventDate": {
+          "value": "2025-04-29",
+          "precision": "day"
+        },
+        "announcementDate": null,
+        "plannedDate": null,
+        "status": "confirmed",
+        "importance": "major",
+        "memberIds": [],
+        "workIds": [],
+        "releaseKey": "genblue-oh-chinese",
+        "relatedEventIds": [],
+        "sources": [
+          {
+            "id": "f04-genblue-oh-chinese-carrier",
+            "url": "https://music-tw.line.me/album/7685105",
+            "publisher": "LINE MUSIC Taiwan",
+            "title": "OH!",
+            "sourcePublishedAt": null,
+            "checkedAt": "2026-10-16",
+            "scopeNote": "独立华语版本目录和歌曲指代已读；未取得可直接支持实际日的发布正文，保留候选，不将4月28日MV当音乐发行日。",
+            "evidenceRef": "evidence/task04/evidence/genblue-oh-chinese-carrier.json"
+          },
+          {
+            "id": "category-20261027-genblue-oh-chinese",
+            "url": "https://music.apple.com/us/album/oh-chinese-version-single/1809432474",
+            "publisher": "Apple Music / iTunes authorized distribution",
+            "title": "数字发行中文版本单曲《OH!》",
+            "sourcePublishedAt": null,
+            "checkedAt": "2026-10-27",
+            "scopeNote": "限定独立中文版本数字音频，不与其他语言版本合并；不把4月28日MV上传当音频发行日，不新增成员/作品关系。",
+            "evidenceRef": "evidence/category-resolution-20261027/genblue-oh-chinese.json"
+          }
+        ],
+        "reviewStatus": "ready",
+        "holdReasons": []
+      },
+      "beforeSha256": "7a70340d1d0a98dd2fd343489ea9172e3d600fbabb4472061ecc038fbd5183e9",
+      "afterSha256": "1f2c140f4364f3c2b0d02ebdf570b0ef7fa2f2b04019066e2060fa45d15670ed",
+      "allowedFields": [
+        "eventDate",
+        "holdReasons",
+        "reviewStatus",
+        "scopeNote",
+        "sources",
+        "status",
+        "summary",
+        "title"
+      ],
+      "evidence": [
+        {
+          "path": "evidence/category-resolution-20261027/genblue-oh-chinese.json",
+          "sha256": "8b8e2d5f0a45d18ea513c92b657a6fd33149baf9b384af5f4975364e2cc68bec"
+        }
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "slug": "rocketpunch",
+      "path": "data/artist-timelines/rocketpunch.json",
+      "beforeDocumentSha256": "2147fe17b40c214784b2b7e753d94e47b463382148724f17fc3256de6cf8addf",
+      "afterDocumentSha256": "570c118093da0c9a85fabbfe1d298262538b9f2e9ef7a143d0b91d39d35713c1",
+      "beforeGaps": [
+        "六名历史出道成员有直接具名证据；加入日仍未知。",
+        "JURI原文只说当日24日，四成员原文只说12月31日，月/年及公告日缺失；不从相邻公告猜。",
+        "JURI合同结束后的五人体制是未来计划，不等于合格的实际退团/当前五人状态。",
+        "SUYUN本人说明只沿用发表时点，独立合同生效日未知；四成员合同不是全团解散。",
+        "明确解散/新公司签约的原文未建立；BOOM后续选发行待更强实际原文。",
+        "SUYUN合同说明继续hold，缺本人原文，本轮发行资料不代填合同证据。",
+        "SODA三人项目、Secret Playlist OST若后续另有实体模块需单独补录，不造分队ID。",
+        "未发现截至日需要另列2024—2026正式完整团体原创唱片的可读新正文，不据合同/停更推解散。"
+      ],
+      "afterGaps": [
+        "六名历史出道成员有直接具名证据；加入日仍未知。",
+        "JURI原文只说当日24日，四成员原文只说12月31日，月/年及公告日缺失；不从相邻公告猜。",
+        "JURI合同结束后的五人体制是未来计划，不等于合格的实际退团/当前五人状态。",
+        "SUYUN本人说明只沿用发表时点，独立合同生效日未知；四成员合同不是全团解散。",
+        "明确解散/新公司签约的原文未建立；BOOM后续选发行待更强实际原文。",
+        "SUYUN本人2026-08-06说明原帖已核，独立合同生效日仍未知，不推退团或解散。",
+        "SODA三人项目、Secret Playlist OST若后续另有实体模块需单独补录，不造分队ID。",
+        "未发现截至日需要另列2024—2026正式完整团体原创唱片的可读新正文，不据合同/停更推解散。"
+      ]
+    },
+    {
+      "slug": "ifeye",
+      "path": "data/artist-timelines/ifeye.json",
+      "beforeDocumentSha256": "7b20af5970285f8a36e3bf0741b62018471f850181e70e5ffefcacea4d213a0d",
+      "afterDocumentSha256": "1f799a4ce2520ddc4c0510cacc0221fd9136d914d4fa2a13cfbd548e03807f1e",
+      "beforeGaps": [
+        "SASHA1月部分行程缺席与3月团队暂停、6月恢复公告为不同阶段，不能从五人照片倒推。",
+        "3月3日、6月15日、6月25日直接Mnet原帖均0行；仅索引摘录，暂停/恢复候选均hold。",
+        "6月25日追加公告把首个参与计划提前至7月1日；没有独立实际上台原文，保持announced。",
+        "KASIA6月5–7日具体签售缺席线索属于短期行程，本批未扩成持续暂停；无退团推断。",
+        "成员加入、退出、解散、经纪关系变化无合格原文。既有中文名/艺名冲突及照片人数边界保持。",
+        "loverfory目前只能建立MV业务线索，独立音乐发行日/类型未知；不写成ready。",
+        "SASHA两条旧活动hold保持不变；未重试Mnet原空正文和Reddit拒绝路径。"
+      ],
+      "afterGaps": [
+        "SASHA1月部分行程缺席与3月团队暂停、6月恢复公告为不同阶段，不能从五人照片倒推。",
+        "3月3日、6月15日、6月25日Mnet Plus公开内嵌正文已核；暂停/恢复公告ready，实际起止仍未知。",
+        "6月25日追加公告把首个参与计划提前至7月1日；没有独立实际上台原文，保持announced。",
+        "KASIA6月5–7日具体签售缺席线索属于短期行程，本批未扩成持续暂停；无退团推断。",
+        "成员加入、退出、解散、经纪关系变化无合格原文。既有中文名/艺名冲突及照片人数边界保持。",
+        "loverfory目前只能建立MV业务线索，独立音乐发行日/类型未知；不写成ready。",
+        "SASHA两条公告已通过直接正文核验；恢复计划尚未独立证实实际履行，不推退团。"
+      ]
+    },
+    {
+      "slug": "genblue",
+      "path": "data/artist-timelines/genblue.json",
+      "beforeDocumentSha256": "e4f7d69e0e3fb40f96c75394c01335429082c691108f9bd9f49cb03f4ed5c319",
+      "afterDocumentSha256": "17a4f86bbeeb117135bcc3e9e324938a042cdf9d21fffefec527529059b921fb",
+      "beforeGaps": [
+        "2023台湾节目曝光、For You纪念专辑、2024韩国出道严格区分。",
+        "九转六的培训/阵容变化只有纪录片及媒体线索，未播放视频；原告知正文与既有stable身份范围不足，不生成三名离团/个人合同事件。",
+        "For You、ACT LIKE THAT、MIRROR目前仅目录候选；HitFM超时、Mnet Plus空正文后停用，无重试。",
+        "HYBE制作人署名不是经纪合约；明确解散或经纪转移未知。",
+        "夜市王/Ye Shi Wang的同名映射与8/28载体对8/31继承视频日期冲突沿用D，不强行合并。",
+        "1000次实际日冲突保留未知。",
+        "SWING DANCE与OH!中文版本仍hold；不把资料集合存在当实际首发已证。",
+        "MIRROR、For You已发生沿用旧ready，实际日仍未知；台湾零售进口MIRROR9月23日不替代全球数字日。",
+        "除夜市王外新单曲在公开作品基线没有对应workId，[]保留。"
+      ],
+      "afterGaps": [
+        "2023台湾节目曝光、For You纪念专辑、2024韩国出道严格区分。",
+        "九转六的培训/阵容变化只有纪录片及媒体线索，未播放视频；原告知正文与既有stable身份范围不足，不生成三名离团/个人合同事件。",
+        "For You、ACT LIKE THAT、MIRROR目前仅目录候选；HitFM超时、Mnet Plus空正文后停用，无重试。",
+        "HYBE制作人署名不是经纪合约；明确解散或经纪转移未知。",
+        "夜市王/Ye Shi Wang的同名映射与8/28载体对8/31继承视频日期冲突沿用D，不强行合并。",
+        "1000次实际日冲突保留未知。",
+        "SWING DANCE与OH!中文版本已凭授权目录及实际音频交付核准数字发行；公司首次公告/实体发行日不作推断。",
+        "MIRROR、For You已发生沿用旧ready，实际日仍未知；台湾零售进口MIRROR9月23日不替代全球数字日。",
+        "除夜市王外新单曲在公开作品基线没有对应workId，[]保留。"
+      ]
+    }
+  ]
+}

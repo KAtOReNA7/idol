@@ -1,7 +1,8 @@
 'use client';
 import {useState,type CSSProperties} from 'react';
 import type {Photo,Work} from '@/lib/idol/types';
-import {publicMvPortrait} from '@/lib/idol/mv-public-media';
+import {publicMvPortrait,type MvPublicPortrait} from '@/lib/idol/mv-public-media';
+import {reviewedNativeRecognition} from '@/lib/idol/reviewed-native-recognition';
 import {ReliableImage} from './reliable-image';
 import {PhotoLightbox} from './photo-lightbox';
 import './mv-identity-photo.css';
@@ -12,10 +13,21 @@ function croppedStyle(width:number,height:number,crop:{x:number;y:number;width:n
 }
 /** Reviewed portraits use exact catalog bindings; a reference need not be an MV still. */
 export function MvIdentityPhoto({work,memberId,label,photo,live=false}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean}){
- const publicImage=publicMvPortrait(work,memberId);
+ const selected=publicMvPortrait(work,memberId);
+ const reference=selected?null:reviewedNativeRecognition(work,memberId,photo);
+ return <IdentityPhotoFrame work={work} memberId={memberId} label={label} photo={photo} live={live} publicImage={selected??reference} retainNative={Boolean(reference)}/>;
+}
+
+/** A read-only public credit can show a named reference without inventing a rating. */
+export function PublicCreditRecognitionPhoto({work,memberId,label,reference}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;reference:Pick<MvPublicPortrait,'src'|'width'|'height'|'label'|'sourceUrl'|'objectPosition'|'sourceCrop'>}){
+ return <IdentityPhotoFrame work={work} memberId={memberId} label={label} publicImage={{...reference,workId:work.id,videoId:'',memberId}}/>;
+}
+
+function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,retainNative=false}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;publicImage:MvPublicPortrait|null;retainNative?:boolean}){
  const src=publicImage?.src??(photo&&live?`/api/media?table=${photo.table}&record=${encodeURIComponent(photo.recordId)}&index=${photo.index}`:'');
  const key=[work.id,work.url,memberId,src].join(':');
  const [opened,setOpened]=useState<string|null>(null);
+ const nativeSrc=retainNative&&photo&&live?`/api/media?table=${photo.table}&record=${encodeURIComponent(photo.recordId)}&index=${photo.index}`:null;
  const focus=photo?.sourceKind==='mv_look_photo'?photo.displayFocus:null;
  const crop=publicImage?publicImage.sourceCrop:focus?.sourceCrop;
  const width=publicImage?publicImage.width:focus?.sourceWidth,height=publicImage?publicImage.height:focus?.sourceHeight;
@@ -27,6 +39,8 @@ export function MvIdentityPhoto({work,memberId,label,photo,live=false}:{work:Pic
    {src&&<span className="mv-identity-expand">查看原图 ↗</span>}
   </button>
   <figcaption>{src?caption:'保留成员评分，待补清晰认人图'}{publicImage&&<a href={publicImage.sourceUrl} target="_blank" rel="noopener noreferrer">来源 ↗</a>}</figcaption>
+  {nativeSrc&&<button className="mv-identity-native" type="button" onClick={()=>setOpened(key+':native')}>查看原有照片 ↗</button>}
   {opened===key&&src&&<PhotoLightbox src={src} label={`${label} · ${caption}`} onClose={()=>setOpened(null)}/>}
+  {opened===key+':native'&&nativeSrc&&<PhotoLightbox src={nativeSrc} label={`${label} · 原有照片`} onClose={()=>setOpened(null)}/>}
  </figure>;
 }

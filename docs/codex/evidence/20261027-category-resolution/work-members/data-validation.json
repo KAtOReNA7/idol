@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-27",
+  "old16CreditsPreservedExactly": true,
+  "uniqueWorkKeys": 37,
+  "publicPersonCredits": 239,
+  "recognitionSlots": 239,
+  "exactWorkVideoGroupMatch": true,
+  "memberSetsMatchExactly": true,
+  "duplicateWorkOrPortraitKeys": 0,
+  "privateRelationshipsAdded": 0,
+  "sourceManifestsChanged": false,
+  "visualReview": "10 new selected originals and reuse contact sheets visually inspected. Final two use reviewed IZ*ONE official One-reeler profile crops and AtHeart Plot Twist Melon series; actual 3:4 crops reviewed. Final browser layout is parent validation.",
+  "knownCompositionLimits": [
+    "Some approved concept photos are medium/full body rather than closeups; no blanket claim that every face is high resolution.",
+    "tripleS Kotone uses a natural one-eye wink in the coherent Baby Flower series.",
+    "MADEIN Fallin series uses mixed blue/pink backgrounds; same named photo campaign, no claim identical clothing.",
+    "SUHYEON candidate shares the same named article and MV shoot series but has different black clothing/hair styling from old full-body photo.",
+    "IZ*ONE original official profile has black and blue circular studio background, not added padding; Minju has a hand near one eye. AtHeart includes medium/full body images within the same purple-uniform campaign."
+  ],
+  "uniqueOriginals": 102,
+  "allOriginalSHAAndDimensionsVerified": true,
+  "allCropsWithinOriginalAnd3By4": true,
+  "targetedTests": {
+    "command": "node --test tests/public-work-recognition.test.cjs",
+    "passed": 2,
+    "failed": 0,
+    "gitDiffCheck": "passed for owned paths"
+  }
+}

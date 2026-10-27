@@ -167,13 +167,16 @@
       "id": "e-rocketpunch-suyun-contract-announcement",
       "groupId": "recvxyEBDZB3pz",
       "eventType": "contract_end",
-      "title": "SUYUN合同说明候选（待本人原文）",
-      "summary": "B继承摘要记作2026年8月6日的SUYUN本人说明，称其谈及Woollim合同结束；本人原始正文尚缺，保留线索。",
-      "scopeNote": "本轮按用户指定降为hold：仅有继承事实摘要，无法由已保存材料核对SUYUN本人原话。原摘要日期保留在来源元数据作线索，announcementDate=null，不认证发表日或独立合同生效日。与JURI、四名成员合同公告分别保留，不推实际退团、全团解散或当前关系。",
+      "title": "SUYUN公开说明与Woollim合同结束",
+      "summary": "SUYUN于2026年8月6日在官方Weverse本人帖说明与Woollim的专属合同结束，独立生效日未说明。",
+      "scopeNote": "本轮按用户指定降为hold：仅有继承事实摘要，无法由已保存材料核对SUYUN本人原话。原摘要日期保留在来源元数据作线索，announcementDate=null，不认证发表日或独立合同生效日。与JURI、四名成员合同公告分别保留，不推实际退团、全团解散或当前关系。 2026-10-27补核本人原帖可读首段与发表日；仅确认说明，合同实际生效日仍未知，不推退团或解散。",
       "eventDate": null,
-      "announcementDate": null,
+      "announcementDate": {
+        "value": "2026-08-06",
+        "precision": "day"
+      },
       "plannedDate": null,
-      "status": "uncertain",
+      "status": "announced",
       "importance": "major",
       "memberIds": [
         "recvxyICzHfdEb"
@@ -194,13 +197,23 @@
           "checkedAt": "2026-10-15",
           "scopeNote": "仅继承B中文摘要及元数据作待核线索，缺SUYUN本人原话、原文截图或可核正文；不属于本轮已核合格事实。原checkedAt沿用，不表示重新获取；原sourcePublishedAt仅继承日期线索，未据此确认公告日或合同生效日。",
           "evidenceRef": "evidence/E01/baseline-evidence/task02/sources/rocket-suyun-b.json"
+        },
+        {
+          "id": "category-20261027-suyun-weverse",
+          "url": "https://weverse.io/rocketpunch/artist/3-238220157",
+          "publisher": "SuYun / official Weverse",
+          "title": "SUYUN公开说明与Woollim合同结束",
+          "sourcePublishedAt": {
+            "value": "2026-08-06",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-27",
+          "scopeNote": "2026-10-27补核本人原帖可读首段与发表日；仅确认说明，合同实际生效日仍未知，不推退团或解散。",
+          "evidenceRef": "evidence/category-resolution-20261027/suyun-weverse.json"
         }
       ],
-      "reviewStatus": "hold",
-      "holdReasons": [
-        "缺SUYUN本人原始声明正文、截图或可核原文；现有B继承摘要与E包装不构成该条独立合格证据。",
-        "本轮只读搜查已有B/C/D/E及ZIP未找到完整本人原文；不新增网络、不重试拒绝来源，日期与事件范围继续待核。"
-      ]
+      "reviewStatus": "ready",
+      "holdReasons": []
     },
     {
       "id": "e-rocketpunch-four-contract-end-announcement",
@@ -561,7 +574,7 @@
     "JURI合同结束后的五人体制是未来计划，不等于合格的实际退团/当前五人状态。",
     "SUYUN本人说明只沿用发表时点，独立合同生效日未知；四成员合同不是全团解散。",
     "明确解散/新公司签约的原文未建立；BOOM后续选发行待更强实际原文。",
-    "SUYUN合同说明继续hold，缺本人原文，本轮发行资料不代填合同证据。",
+    "SUYUN本人2026-08-06说明原帖已核，独立合同生效日仍未知，不推退团或解散。",
     "SODA三人项目、Secret Playlist OST若后续另有实体模块需单独补录，不造分队ID。",
     "未发现截至日需要另列2024—2026正式完整团体原创唱片的可读新正文，不据合同/停更推解散。"
   ]

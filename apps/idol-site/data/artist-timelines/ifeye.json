@@ -168,9 +168,9 @@
       "id": "e-ifeye-sasha-hiatus-announcement",
       "groupId": "rec28ldfRTiCGa",
       "eventType": "hiatus",
-      "title": "公告线索：SASHA暂时中止团队活动",
-      "summary": "2026年3月3日官方平台搜索索引载有团队活动暂时中止及之后五人行程公告。",
-      "scopeNote": "不涉及具体医疗原因；不是退团。原始1月部分行程公告未取得，不能将两阶段混为同日起始。",
+      "title": "公布SASHA暂时中止团队活动",
+      "summary": "HI-HAT于2026年3月3日在官方Mnet Plus公告SASHA暂时中止团队活动，其后团体行程计划以五人进行。",
+      "scopeNote": "不涉及具体医疗原因；不是退团。原始1月部分行程公告未取得，不能将两阶段混为同日起始。 2026-10-27从公开页面内嵌正文核验公告；活动暂停公告为ready，独立起始日及1月阶段仍未知。",
       "eventDate": null,
       "announcementDate": {
         "value": "2026-03-03",
@@ -198,20 +198,31 @@
           "checkedAt": "2026-10-16",
           "scopeNote": "索引摘录仅作hold；open返回0行，不重新尝试；不记录任何医学原因。",
           "evidenceRef": "evidence/E/task05/sources/ifeye-sasha-march-index.json"
+        },
+        {
+          "id": "category-20261027-sasha-march",
+          "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/699fd28a83e517146af565b2",
+          "publisher": "HI-HAT ENTERTAINMENT / ifeye Mnet Plus",
+          "title": "[NOTICE] ifeye (이프아이) SASHA 향후 활동 관련 안내",
+          "sourcePublishedAt": {
+            "value": "2026-03-03",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-27",
+          "scopeNote": "2026-10-27从公开页面内嵌正文核验公告；活动暂停公告为ready，独立起始日及1月阶段仍未知。",
+          "evidenceRef": "evidence/category-resolution-20261027/sasha-march.json"
         }
       ],
-      "reviewStatus": "hold",
-      "holdReasons": [
-        "直接原帖正文打开0行，只有搜索索引摘录。"
-      ]
+      "reviewStatus": "ready",
+      "holdReasons": []
     },
     {
       "id": "e-ifeye-sasha-resume-announcement",
       "groupId": "rec28ldfRTiCGa",
       "eventType": "resume",
-      "title": "公告线索：SASHA计划恢复团队活动",
-      "summary": "6月15日索引公告计划从APAC巡演参与；6月25日追加公告把首个参与计划改为7月1日空军演出。",
-      "scopeNote": "同一恢复过程合一节点保留追加公告；医学细节不采集。",
+      "title": "公布SASHA恢复活动计划",
+      "summary": "HI-HAT于6月15日公告SASHA将从APAC巡演参与，6月25日追加公告将首个参与计划改为7月1日空军演出。",
+      "scopeNote": "同一恢复过程合一节点保留追加公告；医学细节不采集。 2026-10-27从两份公开公告正文核验计划与修订；保留announced，7月1日仍仅plannedDate，未确认实际恢复日。",
       "eventDate": null,
       "announcementDate": {
         "value": "2026-06-15",
@@ -255,22 +266,45 @@
           "checkedAt": "2026-10-16",
           "scopeNote": "仍是计划；direct open0行且不重试，review hold；不把经过日期升confirmed。",
           "evidenceRef": "evidence/E/task05/sources/ifeye-sasha-june-update-index.json"
+        },
+        {
+          "id": "category-20261027-sasha-june",
+          "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/6a2f5fc4a92a684281b0a9f3",
+          "publisher": "HI-HAT ENTERTAINMENT / ifeye Mnet Plus",
+          "title": "[NOTICE] ifeye (이프아이) SASHA 활동 재개 관련 안내",
+          "sourcePublishedAt": {
+            "value": "2026-06-15",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-27",
+          "scopeNote": "2026-10-27从两份公开公告正文核验计划与修订；保留announced，7月1日仍仅plannedDate，未确认实际恢复日。",
+          "evidenceRef": "evidence/category-resolution-20261027/sasha-june.json"
+        },
+        {
+          "id": "category-20261027-sasha-june-update",
+          "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/6a3c9d091d4a5353e1f3e17b",
+          "publisher": "HI-HAT ENTERTAINMENT / ifeye Mnet Plus",
+          "title": "[NOTICE] ifeye SASHA 활동 참여 일정 관련 추가 안내",
+          "sourcePublishedAt": {
+            "value": "2026-06-25",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-27",
+          "scopeNote": "2026-10-27从两份公开公告正文核验计划与修订；保留announced，7月1日仍仅plannedDate，未确认实际恢复日。",
+          "evidenceRef": "evidence/category-resolution-20261027/sasha-june-update.json"
         }
       ],
-      "reviewStatus": "hold",
-      "holdReasons": [
-        "两份直接原帖均打开0行，仅索引原文可读。",
-        "未取得独立参与原文，不把6月15日公告日或7月1日计划日当实际恢复生效日。"
-      ]
+      "reviewStatus": "ready",
+      "holdReasons": []
     }
   ],
   "gaps": [
     "SASHA1月部分行程缺席与3月团队暂停、6月恢复公告为不同阶段，不能从五人照片倒推。",
-    "3月3日、6月15日、6月25日直接Mnet原帖均0行；仅索引摘录，暂停/恢复候选均hold。",
+    "3月3日、6月15日、6月25日Mnet Plus公开内嵌正文已核；暂停/恢复公告ready，实际起止仍未知。",
     "6月25日追加公告把首个参与计划提前至7月1日；没有独立实际上台原文，保持announced。",
     "KASIA6月5–7日具体签售缺席线索属于短期行程，本批未扩成持续暂停；无退团推断。",
     "成员加入、退出、解散、经纪关系变化无合格原文。既有中文名/艺名冲突及照片人数边界保持。",
     "loverfory目前只能建立MV业务线索，独立音乐发行日/类型未知；不写成ready。",
-    "SASHA两条旧活动hold保持不变；未重试Mnet原空正文和Reddit拒绝路径。"
+    "SASHA两条公告已通过直接正文核验；恢复计划尚未独立证实实际履行，不推退团。"
   ]
 }

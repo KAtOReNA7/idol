@@ -11,6 +11,7 @@ const raw=JSON.parse(fs.readFileSync(path.join(root,'data/snapshot.json'),'utf8'
 const {asIds,asText,F}=product;
 const catalog={mode:'snapshot',groups:registry.map(g=>({id:g.groupId,name:g.name})),members:raw.members.records.map(({recordId,fields:v})=>({id:recordId,name:asText(v[F.members.name]),stageName:asText(v[F.members.stageName]),cnName:asText(v[F.members.cnName]),groupIds:asIds(v[F.members.groups]),formerGroupIds:asIds(v[F.members.formerGroups]),favorite:null,role:'',status:'',birthDate:'',country:'',note:'',profile:'',photo:null})),works:raw.works.records.map(({recordId,fields:v})=>({id:recordId,song:asText(v[F.works.song]),name:asText(v[F.works.name]),groupIds:asIds(v[F.works.groups]),score:null,stageScore:null,watched:'',note:'',releaseDate:'',url:'',videoType:'',version:'',stage:null,stageSupplement:null})),ratings:raw.ratings.records.map(({recordId,fields:v})=>({id:recordId,memberIds:asIds(v[F.ratings.members]),workIds:asIds(v[F.ratings.works]),score:null,stylingScore:null,note:'',memory:'',photo:null})),counts:{}};
 const before=JSON.stringify(catalog);
+const categoryCorrections=require('../evidence/category-resolution-20261027/timeline-corrections.json');
 let totalReady=0,totalHold=0;
 for(const group of registry)test(`${group.slug}: canonical byte hash, actual scoped identities and exact ready-only production rendering`,async()=>{
  const file=group.slug+'.json',bytes=fs.readFileSync(path.join(root,'data/artist-timelines',file));
@@ -38,6 +39,10 @@ for(const group of registry)test(`${group.slug}: canonical byte hash, actual sco
   const historical=JSON.parse(bytes);historical.events=historical.events.map(e=>e.id===correction.eventId?correction.before:e);historical.gaps=correction.beforeGaps;
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(historical,null,2)+'\n').digest('hex'),hashes[file]);
   assert.equal(correction.beforeDocumentSha256,hashes[file]);
+ }else if(categoryCorrections.documents.some(d=>d.slug===group.slug)){
+  const d=categoryCorrections.documents.find(d=>d.slug===group.slug);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),d.afterDocumentSha256);
+  const historical=JSON.parse(bytes);historical.events=historical.events.map(e=>categoryCorrections.corrections.find(c=>c.eventId===e.id)?.before??e);historical.gaps=d.beforeGaps;
+  assert.equal(crypto.createHash('sha256').update(JSON.stringify(historical,null,2)+'\n').digest('hex'),hashes[file]);assert.equal(d.beforeDocumentSha256,hashes[file]);
  }else assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),hashes[file]);
  const input=JSON.parse(bytes),loaded=await product.loadArtistTimeline(group.slug);
  assert.deepEqual(loaded.input,input);assert.deepEqual(Object.keys(loaded),['input'],'retired display/background files are not loaded');
@@ -48,7 +53,8 @@ for(const group of registry)test(`${group.slug}: canonical byte hash, actual sco
  const ready=input.events.filter(e=>e.reviewStatus==='ready'),held=input.events.filter(e=>e.reviewStatus==='hold');
  const baselineGroup=accepted.groups[group.slug],riseId='e-madein-rise-release-carrier-hold';
  const promoted=group.slug==='madein'?riseId:group.slug==='idle'?'e-idle-cube-renewal':group.slug==='newjeans'?'e-newjeans-attention-mv':null;
- const acceptedGroup=promoted?{...baselineGroup,ready:[...baselineGroup.ready,promoted].sort(),hold:baselineGroup.hold.filter(id=>id!==promoted)}:baselineGroup;
+ const promotedIds=[...(promoted?[promoted]:[]),...categoryCorrections.corrections.filter(c=>c.slug===group.slug).map(c=>c.eventId)];
+ const acceptedGroup={...baselineGroup,ready:[...baselineGroup.ready,...promotedIds].sort(),hold:baselineGroup.hold.filter(id=>!promotedIds.includes(id))};
  assert.equal(input.groupId,acceptedGroup.groupId);
  assert.deepEqual(ready.map(e=>e.id).sort(),acceptedGroup.ready,'canonical ready IDs must equal the independently recorded accepted set');
  assert.deepEqual(held.map(e=>e.id).sort(),acceptedGroup.hold,'held IDs must remain the exact accepted set');
@@ -75,4 +81,4 @@ for(const group of registry)test(`${group.slug}: canonical byte hash, actual sco
  totalReady+=ready.length;totalHold+=held.length;
  assert.equal(JSON.stringify(catalog),before);
 });
-test.after(()=>{assert.equal(registry.length,51);assert.equal(totalReady,611);assert.equal(totalHold,12);assert.deepEqual(Object.keys(accepted.groups).sort(),registry.map(g=>g.slug).sort());fs.rmSync(dir,{recursive:true,force:true});});
+test.after(()=>{assert.equal(registry.length,51);assert.equal(totalReady,616);assert.equal(totalHold,7);assert.deepEqual(Object.keys(accepted.groups).sort(),registry.map(g=>g.slug).sort());fs.rmSync(dir,{recursive:true,force:true});});

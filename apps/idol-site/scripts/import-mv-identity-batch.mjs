@@ -3,7 +3,7 @@
 import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const key=p=>[p.workId,p.videoId,p.memberId].join(':');
-export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026|batch-n-20261027)\/identities\/[\w.-]+$/;
+export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026|batch-[no]-20261027)\/identities\/[\w.-]+$/;
 export function batchReviewDate(rows){
  const dates=[...new Set(rows.map(p=>p.checkedAt).filter(Boolean))];
  if(rows.some(p=>!p.checkedAt)||dates.length!==1||!/^\d{4}-\d{2}-\d{2}$/.test(dates[0])||!Number.isFinite(Date.parse(dates[0]))||new Date(dates[0]).toISOString().slice(0,10)!==dates[0])throw Error('Batch needs one valid explicit review date');

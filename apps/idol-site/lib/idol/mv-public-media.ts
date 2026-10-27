@@ -3,7 +3,7 @@ import {videoId} from './values';
 import type {Work} from './types';
 
 export type MvPublicCover={workId?:string;videoId:string;src:string;width:number;height:number;label:string;sourceCrop?:{x:number;y:number;width:number;height:number}};
-export type MvPublicPortrait={workId:string;videoId:string;memberId:string;src:string;width:number;height:number;label:string;sourceUrl:string;objectPosition?:string;sourceCrop?:{x:number;y:number;width:number;height:number}};
+export type MvPublicPortrait={workId:string;videoId:string;memberId:string;src:string;width:number;height:number;label:string;sourceUrl:string;photoKind?:'concept_photo'|'jacket_photo'|'portrait_photo';photoSetId?:string;objectPosition?:string;sourceCrop?:{x:number;y:number;width:number;height:number}};
 const data=manifest as {covers:MvPublicCover[];portraits:MvPublicPortrait[]};
 const covers=new Map(data.covers.map(row=>[row.videoId,row]));
 const coverSources=new Map(data.covers.map(row=>[row.src,row]));

@@ -146,7 +146,10 @@ test('reviewed static photos reserve exact native and fallback geometry before i
 test('static geometry lookup fails closed for changed sources and never sizes runtime personal MV photos',()=>{
  const r=renderer(scene()),dims=r.load('lib/idol/loona-curation.ts').loonaImageDimensions;
  for(const src of [undefined,null,'','/api/media?table=ratings&record=recAny&index=0','/api/media?table=members&record=recvxyICzHTm4b&index=0',content.hero.image+'?changed=1','https://example.com/unit-13.jpg',Object.values(content.portraits)[0].image])assert.equal(dims(src),undefined);
- const source=fs.readFileSync('components/candidate/loona-design.tsx','utf8');const look=source.split('<Picture src={media(item.photo)}')[1].split('/>')[0];assert.doesNotMatch(look,/width=|height=|loonaImageDimensions/);
+ const data=scene();data.mode='live';const member=data.members[0],work={id:'recGeometryWork',name:'Geometry',song:'Geometry',groupIds:member.groupIds,url:'https://youtu.be/abcdefghijk',score:null,stageScore:null,stage:null};data.works.push(work);
+ data.ratings.push({id:'recGeometryRating',memberIds:[member.id],workIds:[work.id],score:0,stylingScore:0,personalPhotoEligible:true,photo:{table:'ratings',recordId:'recGeometryRating',fieldId:'photos',index:4}});
+ const html=renderer(data,'/artists/loona?section=members&member='+member.id).html,look=[...html.matchAll(/<img\b[^>]*>/g)].map(match=>match[0]).find(tag=>tag.includes('record=recGeometryRating'));
+ assert.ok(look,'actual private fallback remains reachable through the shared display component');assert.doesNotMatch(look,/\bwidth=|\bheight=|aspect-ratio/);
 });
 
  test('approved home assets, release identities and MV dates remain separate',()=>{

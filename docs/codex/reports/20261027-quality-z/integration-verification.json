@@ -1,0 +1,1755 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-27T09:46:54.052790+00:00",
+  "reviewer": "photo_sets_q_series independent read-only integration check",
+  "status": "passed",
+  "baselineCommit": "25503529fa6bf719a9f76eafb469ede8cd1e343e",
+  "baselineAuditSha256": "ffc1b48c16d7284a4b19bfdd1b509d56228da6a831dee97ffce6bffa96c055da",
+  "currentAuditSha256": "66b69f68c70f1af5dfbf5b886e549a5aa86c0aaa92568cb5d29748096c4b96a8",
+  "currentRuntimeSha256": "44b2ac7478850d3c28f301ad099783341f1f35a40835d3e5fbb229f4ca7b52e6",
+  "qualityDeltaSha256": "be3453a22aba49e0c05373000b82d41afa265d1fb3e06cd848f6584f8b09db73",
+  "scope": {
+    "performed": [
+      "Compare baseline and current audit deeply; verify exact replacement delta and previous-selection retention",
+      "Compare all selected tuples and runtime projections; zero missing/card_only counts",
+      "Verify 43 existing rating/work/member relationships and unchanged catalog/absence/scoring policy files",
+      "Rehash and inspect physical image dimensions for all 43 before plus 43 after records",
+      "Verify 12 new records against frozen research and 31 reused records against existing same-member source bindings"
+    ],
+    "notPerformed": [
+      "No mutation of audit/runtime/application scripts",
+      "No independent live-source re-fetch in this integration check",
+      "No rehash of every unrelated original or 628 cover file; their full metadata records were compared",
+      "No UI/browser, deployment, actual private save, or full video playback test"
+    ],
+    "visualReviewReference": "12 new images were visually reviewed in the preceding research phase; parent separately reviewed all 43. This report validates integration and preservation."
+  },
+  "summary": {
+    "checks": 24,
+    "passed": 24,
+    "failed": 0,
+    "selectedBindings": 2828,
+    "replacements": 43,
+    "unchangedSelected": 2785,
+    "missing": 0,
+    "cardOnly": 0,
+    "physicalOriginalRecordChecks": 86,
+    "physicalUniqueFiles": 78
+  },
+  "checks": [
+    {
+      "name": "baseline_matches_frozen_delta",
+      "passed": true,
+      "detail": {
+        "baselineCommit": "25503529fa6bf719a9f76eafb469ede8cd1e343e",
+        "baselineAuditSha256": "ffc1b48c16d7284a4b19bfdd1b509d56228da6a831dee97ffce6bffa96c055da",
+        "deltaBaseAuditSha256": "ffc1b48c16d7284a4b19bfdd1b509d56228da6a831dee97ffce6bffa96c055da"
+      }
+    },
+    {
+      "name": "exactly_43_unique_replacements",
+      "passed": true,
+      "detail": {
+        "replacements": 43,
+        "uniqueTuples": 43,
+        "baselineCardOnlyTuples": 43
+      }
+    },
+    {
+      "name": "selected_count_and_tuple_set_preserved",
+      "passed": true,
+      "detail": {
+        "baseline": 2828,
+        "current": 2828,
+        "uniqueCurrentTuples": 2828
+      }
+    },
+    {
+      "name": "selected_tuple_order_preserved",
+      "passed": true,
+      "detail": {
+        "count": 2828
+      }
+    },
+    {
+      "name": "2785_unreplaced_selected_records_deep_equal",
+      "passed": true,
+      "detail": {
+        "count": 2785,
+        "differentTuples": []
+      }
+    },
+    {
+      "name": "43_expected_before_and_after_deep_equal",
+      "passed": true,
+      "detail": {
+        "beforeMismatches": [],
+        "afterMismatches": []
+      }
+    },
+    {
+      "name": "43_previous_complete_records_preserved_as_alternates",
+      "passed": true,
+      "detail": {
+        "oldSelectionsFound": 43,
+        "missingOldSelections": [],
+        "baselineAlternates": 101,
+        "currentAlternates": 144,
+        "baselineAlternatesRemoved": 0
+      }
+    },
+    {
+      "name": "43_rating_identities_preserved",
+      "passed": true,
+      "detail": {
+        "mismatchTuples": []
+      }
+    },
+    {
+      "name": "628_cover_records_deep_equal",
+      "passed": true,
+      "detail": {
+        "count": 628
+      }
+    },
+    {
+      "name": "work_coverage_and_member_scoring_decisions_deep_equal",
+      "passed": true,
+      "detail": {
+        "workCoverageCount": 605,
+        "missingTupleCount": 0
+      }
+    },
+    {
+      "name": "other_audit_sections_preserved",
+      "passed": true,
+      "detail": {
+        "excludedIntentionalSections": [
+          "alternateIdentityImages",
+          "checkedAt",
+          "identityImages",
+          "qualityReplacementHistory",
+          "summary"
+        ],
+        "unexpectedChangedSections": []
+      }
+    },
+    {
+      "name": "unrelated_summary_fields_preserved",
+      "passed": true,
+      "detail": {
+        "unexpectedChangedFields": []
+      }
+    },
+    {
+      "name": "missing_and_card_only_both_zero",
+      "passed": true,
+      "detail": {
+        "missingRelationshipImages": 0,
+        "cardOnlyImages": 0
+      }
+    },
+    {
+      "name": "catalog_snapshot_relationship_and_scoring_policy_files_preserved",
+      "passed": true,
+      "detail": [
+        {
+          "path": "apps/idol-site/data/snapshot.json",
+          "baselineSha256": "dedbfb37f19a55d9cc1916ddb0a0ae21e537843343956731fe4089ade6606547",
+          "currentSha256": "dedbfb37f19a55d9cc1916ddb0a0ae21e537843343956731fe4089ade6606547",
+          "byteIdentical": true,
+          "normalizedTextIdentical": true
+        },
+        {
+          "path": "apps/idol-site/data/mv-member-appearance.json",
+          "baselineSha256": "902494a5cb80f6f329b470cdc9de0ebd9ac41aa674232ec96c138e76a7239599",
+          "currentSha256": "902494a5cb80f6f329b470cdc9de0ebd9ac41aa674232ec96c138e76a7239599",
+          "byteIdentical": true,
+          "normalizedTextIdentical": true
+        },
+        {
+          "path": "apps/idol-site/lib/idol/member-score-policy.ts",
+          "baselineSha256": "981325415e13741391de070a2f675c5abca4c959d1bd7ccd53ff0b9c5b84c747",
+          "currentSha256": "981325415e13741391de070a2f675c5abca4c959d1bd7ccd53ff0b9c5b84c747",
+          "byteIdentical": true,
+          "normalizedTextIdentical": true
+        },
+        {
+          "path": "apps/idol-site/lib/idol/mv-member-appearance.ts",
+          "baselineSha256": "4817680eef3269d5c345c8e64fe862373f956dffe077389426d38b5a4bd05352",
+          "currentSha256": "4817680eef3269d5c345c8e64fe862373f956dffe077389426d38b5a4bd05352",
+          "byteIdentical": true,
+          "normalizedTextIdentical": true
+        },
+        {
+          "path": "apps/idol-site/lib/idol/relation-maintenance.ts",
+          "baselineSha256": "21b45038f945472edd8ae8a58219e6827d85a2d215c45e9b93a858128da46500",
+          "currentSha256": "21b45038f945472edd8ae8a58219e6827d85a2d215c45e9b93a858128da46500",
+          "byteIdentical": true,
+          "normalizedTextIdentical": true
+        }
+      ]
+    },
+    {
+      "name": "43_existing_snapshot_relationships_match",
+      "passed": true,
+      "detail": {
+        "count": 43,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "12_new_plus_31_reused_originals",
+      "passed": true,
+      "detail": {
+        "new": 12,
+        "reused": 31
+      }
+    },
+    {
+      "name": "12_new_after_values_match_frozen_research",
+      "passed": true,
+      "detail": {
+        "mismatches": [],
+        "allowedPackagingChanges": [
+          "localOriginalPath removed",
+          "src assigned to preserved public copy",
+          "operation renamed replace_card_only"
+        ]
+      }
+    },
+    {
+      "name": "31_reused_originals_match_existing_same_member_sources",
+      "passed": true,
+      "detail": {
+        "checkedSourceFields": [
+          "src",
+          "sha256",
+          "byteLength",
+          "width",
+          "height",
+          "sourceCrop",
+          "kind",
+          "sourceImageUrl",
+          "identityEvidence",
+          "photoReview"
+        ],
+        "mismatches": []
+      }
+    },
+    {
+      "name": "43_quality_metadata_and_actual_3by4_crops_valid",
+      "passed": true,
+      "detail": {
+        "mismatches": [],
+        "minimumCropWidth": 999
+      }
+    },
+    {
+      "name": "43_before_and_43_after_original_bytes_and_dimensions_verified",
+      "passed": true,
+      "detail": {
+        "recordChecks": 86,
+        "uniqueFiles": 78,
+        "uniqueBytesRead": 73585606,
+        "failures": []
+      }
+    },
+    {
+      "name": "runtime_2828_unique_tuples_and_628_covers_preserved",
+      "passed": true,
+      "detail": {
+        "runtimePortraits": 2828,
+        "uniqueRuntimeTuples": 2828,
+        "runtimeCovers": 628
+      }
+    },
+    {
+      "name": "2785_unreplaced_runtime_portraits_deep_equal",
+      "passed": true,
+      "detail": {
+        "mismatchTuples": []
+      }
+    },
+    {
+      "name": "43_runtime_projections_match_reviewed_after_values",
+      "passed": true,
+      "detail": {
+        "mismatches": []
+      }
+    },
+    {
+      "name": "inputs_stable_during_verification",
+      "passed": true,
+      "detail": {
+        "auditStable": true,
+        "runtimeStable": true
+      }
+    }
+  ],
+  "originalFileChecks": [
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrAb0",
+        "hAEfi_SKTEU",
+        "rec28ldbniB8Oo"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/hAEfi_SKTEU-rec28ldbniB8Oo-70a3d5f847.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/hAEfi_SKTEU-rec28ldbniB8Oo-70a3d5f847.jpg",
+        "sha256": "70a3d5f847d66516b25a7c4ba59d15f8fb695215bfab9d7ee26256d2969e72fe",
+        "byteLength": 91755,
+        "width": 736,
+        "height": 491
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrAb0",
+        "hAEfi_SKTEU",
+        "rec28ldbniB8Oo"
+      ],
+      "src": "/artist/mv-identity-batch-q-20261027/identities/kiiikiii-fdaf74fef35f8e.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-q-20261027/identities/kiiikiii-fdaf74fef35f8e.jpg",
+        "sha256": "fdaf74fef35f8e1e0ae16c039f62bae3f2ecbbae2dd818403d245e3330cf9dec",
+        "byteLength": 237141,
+        "width": 2560,
+        "height": 1708
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrAb0",
+        "hAEfi_SKTEU",
+        "rec28ldbniB8wf"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/hAEfi_SKTEU-rec28ldbniB8wf-759e85924c.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/hAEfi_SKTEU-rec28ldbniB8wf-759e85924c.jpg",
+        "sha256": "759e85924c95c261a02d0a9abf34cc35c5bada0119d27f10a3ffe43f605aa306",
+        "byteLength": 115246,
+        "width": 736,
+        "height": 491
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrAb0",
+        "hAEfi_SKTEU",
+        "rec28ldbniB8wf"
+      ],
+      "src": "/artist/mv-identity-batch-q-20261027/identities/kiiikiii-ef545070e94ca4.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-q-20261027/identities/kiiikiii-ef545070e94ca4.jpg",
+        "sha256": "ef545070e94ca4390a2abe93360f6353a2ddfbd1a45202bae119a27e6c743d75",
+        "byteLength": 269262,
+        "width": 2560,
+        "height": 1708
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrBGz",
+        "d3mqW9wqqx0",
+        "rec28ldbniBcnd"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/d3mqW9wqqx0-rec28ldbniBcnd-c2fe53fcdd.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/d3mqW9wqqx0-rec28ldbniBcnd-c2fe53fcdd.png",
+        "sha256": "c2fe53fcddf2cc4b51ffd79e9a979c9917bb923a52aac1bb6ef1a28cc5e727c4",
+        "byteLength": 473816,
+        "width": 856,
+        "height": 707
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrBGz",
+        "d3mqW9wqqx0",
+        "rec28ldbniBcnd"
+      ],
+      "src": "/artist/mv-identity-batch-q-20261027/identities/izna-ab55cf81baae7e.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-q-20261027/identities/izna-ab55cf81baae7e.jpg",
+        "sha256": "ab55cf81baae7edc7d6d2de85e55db2f4e2bf18b6ec8de69c5bc99ead4833449",
+        "byteLength": 555820,
+        "width": 1366,
+        "height": 2048
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrBgQ",
+        "unLuba-TQiE",
+        "rec28ldbniBaWW"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/unLuba-TQiE-rec28ldbniBaWW-04c6b2990e.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/unLuba-TQiE-rec28ldbniBaWW-04c6b2990e.png",
+        "sha256": "04c6b2990e34a8b883572b3f7245415d4c5a07086eae5d5cca09cf28a5987784",
+        "byteLength": 372893,
+        "width": 872,
+        "height": 718
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrBgQ",
+        "unLuba-TQiE",
+        "rec28ldbniBaWW"
+      ],
+      "src": "/artist/mv-identity-batch-w-20261027/identities/kiss-of-life-6f269aa5cabab4.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-w-20261027/identities/kiss-of-life-6f269aa5cabab4.jpg",
+        "sha256": "6f269aa5cabab444650100ed3210a5e6e06b6e5acf6eb79e8955713f0a79d8ca",
+        "byteLength": 3362843,
+        "width": 3000,
+        "height": 3750
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrBgQ",
+        "unLuba-TQiE",
+        "rec28ldbniBb4p"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/unLuba-TQiE-rec28ldbniBb4p-0b9fe68dd5.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/unLuba-TQiE-rec28ldbniBb4p-0b9fe68dd5.png",
+        "sha256": "0b9fe68dd59ef3b7e9ba64d4fae37025dc7cbc62d5339351ce303ee6af7f3c21",
+        "byteLength": 373812,
+        "width": 846,
+        "height": 706
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrBgQ",
+        "unLuba-TQiE",
+        "rec28ldbniBb4p"
+      ],
+      "src": "/artist/mv-identity-batch-w-20261027/identities/kiss-of-life-80fcd4767daeef.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-w-20261027/identities/kiss-of-life-80fcd4767daeef.jpg",
+        "sha256": "80fcd4767daeef9ee9480e09639911cd2184f52edff6f2489d27e8ba25b1c817",
+        "byteLength": 3396321,
+        "width": 3000,
+        "height": 3750
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrCjG",
+        "2tda_TCjz8w",
+        "rec28ldbniBe2M"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/2tda_TCjz8w-rec28ldbniBe2M-1aeb69bbbe.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/2tda_TCjz8w-rec28ldbniBe2M-1aeb69bbbe.jpg",
+        "sha256": "1aeb69bbbe238a70af33bb6b48dc942e02a2dca7433893885656320dc2b659f5",
+        "byteLength": 46989,
+        "width": 600,
+        "height": 412
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrCjG",
+        "2tda_TCjz8w",
+        "rec28ldbniBe2M"
+      ],
+      "src": "/artist/mv-identity-batch-x-20261027/identities/triples-62b58e940396f0.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-x-20261027/identities/triples-62b58e940396f0.jpg",
+        "sha256": "62b58e940396f0b821676863eb4baf603f89c6105bc1dfea9acd4ea53eed753d",
+        "byteLength": 2528572,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrCjG",
+        "2tda_TCjz8w",
+        "rec28ldbniBeIh"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/2tda_TCjz8w-rec28ldbniBeIh-e88440a4f7.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/2tda_TCjz8w-rec28ldbniBeIh-e88440a4f7.jpg",
+        "sha256": "e88440a4f7590d8c8fdbb8fcad36ce567bcad793b835f7467f8f816610607da5",
+        "byteLength": 44402,
+        "width": 600,
+        "height": 400
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrCjG",
+        "2tda_TCjz8w",
+        "rec28ldbniBeIh"
+      ],
+      "src": "/artist/mv-identity-batch-y-20261027/identities/triples-62b95d8f6444de.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-y-20261027/identities/triples-62b95d8f6444de.jpg",
+        "sha256": "62b95d8f6444de8684dc055405be684e485630e1a2e806ae513a2ef4146d77e9",
+        "byteLength": 2157141,
+        "width": 2745,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrD6r",
+        "zpSejlkSXLA",
+        "recvxAPQCFmsPH"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/zpSejlkSXLA-recvxAPQCFmsPH-aa2535e7f3.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/zpSejlkSXLA-recvxAPQCFmsPH-aa2535e7f3.png",
+        "sha256": "aa2535e7f3e3a5619bebded7ba8fee359a08546f7a1b002aac568ebc9129c616",
+        "byteLength": 254386,
+        "width": 996,
+        "height": 710
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrD6r",
+        "zpSejlkSXLA",
+        "recvxAPQCFmsPH"
+      ],
+      "src": "/artist/mv-identity-batch-y-20261027/identities/rescene-95be5a1efe72e6.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-y-20261027/identities/rescene-95be5a1efe72e6.jpg",
+        "sha256": "95be5a1efe72e6cbb1b2d86ebabe220b1a0646c2e8cffec61bea8d1ac614d502",
+        "byteLength": 1039314,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrEGO",
+        "GJzq_xBSDWI",
+        "recvxAPQCFDGQx"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/GJzq_xBSDWI-recvxAPQCFDGQx-fa584fccec.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/GJzq_xBSDWI-recvxAPQCFDGQx-fa584fccec.png",
+        "sha256": "fa584fccecf97dc79d6a06022ffc08500223e2a79193026e617fa4da32ca8480",
+        "byteLength": 390284,
+        "width": 403,
+        "height": 923
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrEGO",
+        "GJzq_xBSDWI",
+        "recvxAPQCFDGQx"
+      ],
+      "src": "/artist/mv-identity-batch-y-20261027/identities/badvillain-a8e6405f5e74b9.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-y-20261027/identities/badvillain-a8e6405f5e74b9.jpg",
+        "sha256": "a8e6405f5e74b92bc5cf7aa54d4a546cea7d4406cdbd57bde8a117ee587e1f80",
+        "byteLength": 807548,
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrEGO",
+        "GJzq_xBSDWI",
+        "recvxAPQCFPbLs"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/GJzq_xBSDWI-recvxAPQCFPbLs-c81cd7d604.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/GJzq_xBSDWI-recvxAPQCFPbLs-c81cd7d604.png",
+        "sha256": "c81cd7d604b4cb05af3bab32cdec7b551bce2f511a4fba77783dd9481151bc1c",
+        "byteLength": 537608,
+        "width": 523,
+        "height": 883
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrEGO",
+        "GJzq_xBSDWI",
+        "recvxAPQCFPbLs"
+      ],
+      "src": "/artist/mv-identity-batch-y-20261027/identities/badvillain-2c528d64a40d99.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-y-20261027/identities/badvillain-2c528d64a40d99.jpg",
+        "sha256": "2c528d64a40d99dd267c4e393aa6825cd54341b08fadb8fb179b4da6a6def60f",
+        "byteLength": 806331,
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrFUq",
+        "Pi9wf7sONz8",
+        "recvxAPQCF89Dz"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/Pi9wf7sONz8-recvxAPQCF89Dz-701b73f344.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/Pi9wf7sONz8-recvxAPQCF89Dz-701b73f344.png",
+        "sha256": "701b73f3444106dabb45d062f9825760721a68fd28ce21fd6de942b654c119d9",
+        "byteLength": 541585,
+        "width": 1591,
+        "height": 880
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrFUq",
+        "Pi9wf7sONz8",
+        "recvxAPQCF89Dz"
+      ],
+      "src": "/artist/mv-identity-batch-v-20261027/identities/young-posse-66a641cece09d9.webp",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-v-20261027/identities/young-posse-66a641cece09d9.webp",
+        "sha256": "66a641cece09d970bbbea970cc4f08a2a47df182a5daf06225aa407fe6e51449",
+        "byteLength": 150330,
+        "width": 1080,
+        "height": 1620
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrJc9",
+        "sL0pCS6K9bc",
+        "rec28ldbniBa8G"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/sL0pCS6K9bc-rec28ldbniBa8G-1496233e00.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/sL0pCS6K9bc-rec28ldbniBa8G-1496233e00.jpg",
+        "sha256": "1496233e003da6df015cf0e843b07c9bff65bdd899ae36f810766e1374f57810",
+        "byteLength": 37822,
+        "width": 452,
+        "height": 567
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrJc9",
+        "sL0pCS6K9bc",
+        "rec28ldbniBa8G"
+      ],
+      "src": "/artist/mv-identity-batch-w-20261027/identities/meovv-7c2cad2ba2be28.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-w-20261027/identities/meovv-7c2cad2ba2be28.jpg",
+        "sha256": "7c2cad2ba2be287e079d4d1091727bef51ee433f705db172d087a36aabd21f7e",
+        "byteLength": 633480,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrJc9",
+        "sL0pCS6K9bc",
+        "rec28ldbniBaBx"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/sL0pCS6K9bc-rec28ldbniBaBx-f989450260.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/sL0pCS6K9bc-rec28ldbniBaBx-f989450260.jpg",
+        "sha256": "f989450260b23b92694d586bd849b5be18ea02416a1a5d0adc1ed661be9a645a",
+        "byteLength": 38617,
+        "width": 457,
+        "height": 573
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrJc9",
+        "sL0pCS6K9bc",
+        "rec28ldbniBaBx"
+      ],
+      "src": "/artist/mv-identity-batch-w-20261027/identities/meovv-9a8a9b9e65ea9e.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-w-20261027/identities/meovv-9a8a9b9e65ea9e.jpg",
+        "sha256": "9a8a9b9e65ea9e21bb70602c0336882999ec6cc2ac1ed7400e136cbac94ba955",
+        "byteLength": 869363,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrJc9",
+        "sL0pCS6K9bc",
+        "rec28ldbniBafU"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/sL0pCS6K9bc-rec28ldbniBafU-52267dbd10.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/sL0pCS6K9bc-rec28ldbniBafU-52267dbd10.jpg",
+        "sha256": "52267dbd105bf57e83eda5c0f81adb3dccafaef5d2917d228d339706f689cbba",
+        "byteLength": 38752,
+        "width": 454,
+        "height": 572
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrJc9",
+        "sL0pCS6K9bc",
+        "rec28ldbniBafU"
+      ],
+      "src": "/artist/mv-identity-batch-w-20261027/identities/meovv-567cfa88bf2a92.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-w-20261027/identities/meovv-567cfa88bf2a92.jpg",
+        "sha256": "567cfa88bf2a928e136094fffdf2392002194a5a32598aecc3497086f9d86a6f",
+        "byteLength": 915953,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrJc9",
+        "sL0pCS6K9bc",
+        "rec28ldbniBan4"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/sL0pCS6K9bc-rec28ldbniBan4-480c84b76a.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/sL0pCS6K9bc-rec28ldbniBan4-480c84b76a.jpg",
+        "sha256": "480c84b76a9c220c3881c2df8fa5e50d97004cb02c7ee3d162c490003f639e4f",
+        "byteLength": 37811,
+        "width": 455,
+        "height": 573
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrJc9",
+        "sL0pCS6K9bc",
+        "rec28ldbniBan4"
+      ],
+      "src": "/artist/mv-identity-batch-w-20261027/identities/meovv-c1a5932f6a8998.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-w-20261027/identities/meovv-c1a5932f6a8998.jpg",
+        "sha256": "c1a5932f6a899841b9a7bf0fdfa0f27e5da114715ac2f5e1739232d37461582c",
+        "byteLength": 800810,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrJc9",
+        "sL0pCS6K9bc",
+        "rec28ldbniBauu"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/sL0pCS6K9bc-rec28ldbniBauu-a36161a196.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/sL0pCS6K9bc-rec28ldbniBauu-a36161a196.jpg",
+        "sha256": "a36161a196d603efaad6e3e8b42fd7aab1ec322f95a7b287beeb1b8e2d90dd78",
+        "byteLength": 34887,
+        "width": 454,
+        "height": 569
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrJc9",
+        "sL0pCS6K9bc",
+        "rec28ldbniBauu"
+      ],
+      "src": "/artist/mv-identity-batch-w-20261027/identities/meovv-4079ca2d691357.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-w-20261027/identities/meovv-4079ca2d691357.jpg",
+        "sha256": "4079ca2d691357109c2991265e965352f79b5004d710ddc006ce1a95e0873a58",
+        "byteLength": 637643,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrKOA",
+        "wlHwjkYpSr0",
+        "rec28ldbniBa1w"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/wlHwjkYpSr0-rec28ldbniBa1w-6ead3b9c34.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/wlHwjkYpSr0-rec28ldbniBa1w-6ead3b9c34.jpg",
+        "sha256": "6ead3b9c3465e5b40610160efc99a92c4deacb2e7a569e34f9448e092f06b37e",
+        "byteLength": 52597,
+        "width": 736,
+        "height": 491
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrKOA",
+        "wlHwjkYpSr0",
+        "rec28ldbniBa1w"
+      ],
+      "src": "/artist/mv-identity-batch-u-20261027/identities/babymonster-761cd583c34bc1.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-u-20261027/identities/babymonster-761cd583c34bc1.jpg",
+        "sha256": "761cd583c34bc113f8e485325f251d6af63f9632c8abb5fb8c9cf29097fc0e2c",
+        "byteLength": 399149,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyH5pzO1vr",
+        "DskqpUrvlmw",
+        "recvxyICzH6sk8"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/DskqpUrvlmw-recvxyICzH6sk8-9394128a74.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/DskqpUrvlmw-recvxyICzH6sk8-9394128a74.png",
+        "sha256": "9394128a74a07cc5ac0a366379d59745cc86e28f3ffc5ad4fd783643a50ccb7b",
+        "byteLength": 263593,
+        "width": 454,
+        "height": 850
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyH5pzO1vr",
+        "DskqpUrvlmw",
+        "recvxyICzH6sk8"
+      ],
+      "src": "/artist/mv-identity-batch-r-20261027/identities/stayc-7f7ec6f869ccc4.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-r-20261027/identities/stayc-7f7ec6f869ccc4.jpg",
+        "sha256": "7f7ec6f869ccc4d1350b7a415eea8a564736ea45063a4e280fb840d28d3eb535",
+        "byteLength": 1041579,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyH5pzO1vr",
+        "DskqpUrvlmw",
+        "recvxyICzHiov0"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/DskqpUrvlmw-recvxyICzHiov0-aed68a2238.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/DskqpUrvlmw-recvxyICzHiov0-aed68a2238.png",
+        "sha256": "aed68a22381628fda1d6a954476c5b48b4f40bff0e3d27de3eb13889fca1668e",
+        "byteLength": 399364,
+        "width": 531,
+        "height": 862
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyH5pzO1vr",
+        "DskqpUrvlmw",
+        "recvxyICzHiov0"
+      ],
+      "src": "/artist/mv-identity-batch-r-20261027/identities/stayc-067f2a7cf0bf7d.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-r-20261027/identities/stayc-067f2a7cf0bf7d.jpg",
+        "sha256": "067f2a7cf0bf7d2a58233f695b1a6971e82f4da6503416d6b6800455f52a3842",
+        "byteLength": 901733,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyH5pzbZjn",
+        "3-ptVHZZdBg",
+        "recvxyICzHViPG"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/3-ptVHZZdBg-recvxyICzHViPG-0cab2cee1b.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/3-ptVHZZdBg-recvxyICzHViPG-0cab2cee1b.png",
+        "sha256": "0cab2cee1bfcb65d8fc68c96cc925810d2cd81bbab7e53f9af9c33776cfe4db3",
+        "byteLength": 773319,
+        "width": 1210,
+        "height": 598
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyH5pzbZjn",
+        "3-ptVHZZdBg",
+        "recvxyICzHViPG"
+      ],
+      "src": "/artist/mv-identity-batch-r-20261027/identities/stayc-90e61279559d4b.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-r-20261027/identities/stayc-90e61279559d4b.jpg",
+        "sha256": "90e61279559d4bf9aecc77d02d42491199fb6205e970d6a4a31525cb3e4e3d29",
+        "byteLength": 1857260,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyH5pzbZjn",
+        "3-ptVHZZdBg",
+        "recvxyICzHe3x8"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/3-ptVHZZdBg-recvxyICzHe3x8-36c8292448.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/3-ptVHZZdBg-recvxyICzHe3x8-36c8292448.png",
+        "sha256": "36c82924487a8a94c003c496ee31fa1590f3c46ed067902adc737668749f3204",
+        "byteLength": 898005,
+        "width": 1164,
+        "height": 585
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyH5pzbZjn",
+        "3-ptVHZZdBg",
+        "recvxyICzHe3x8"
+      ],
+      "src": "/artist/mv-identity-batch-r-20261027/identities/stayc-60889212b350de.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-r-20261027/identities/stayc-60889212b350de.jpg",
+        "sha256": "60889212b350de13c2beb81b33c745daef1e2cdedb373bbaeb214b5122ad0c94",
+        "byteLength": 1552462,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyH5pzbZjn",
+        "3-ptVHZZdBg",
+        "recvxyICzHqYKx"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/3-ptVHZZdBg-recvxyICzHqYKx-085bfd1e1b.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/3-ptVHZZdBg-recvxyICzHqYKx-085bfd1e1b.png",
+        "sha256": "085bfd1e1bb80c65704c38240b299e57d8698948420e7253255a67e65d77176b",
+        "byteLength": 551141,
+        "width": 1016,
+        "height": 592
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyH5pzbZjn",
+        "3-ptVHZZdBg",
+        "recvxyICzHqYKx"
+      ],
+      "src": "/artist/mv-identity-batch-r-20261027/identities/stayc-24a7105771e908.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-r-20261027/identities/stayc-24a7105771e908.jpg",
+        "sha256": "24a7105771e908b839a1f910b78b196b31d8af5236cfe93a2aab73bb0be46daf",
+        "byteLength": 1592884,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyH5pzbZjn",
+        "3-ptVHZZdBg",
+        "recvxyICzHvtEe"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/3-ptVHZZdBg-recvxyICzHvtEe-2399b98dcb.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/3-ptVHZZdBg-recvxyICzHvtEe-2399b98dcb.png",
+        "sha256": "2399b98dcbf0cd8e11eee3f5a710cbce954c3a3a34f04529087aba43365281d0",
+        "byteLength": 649886,
+        "width": 1173,
+        "height": 592
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyH5pzbZjn",
+        "3-ptVHZZdBg",
+        "recvxyICzHvtEe"
+      ],
+      "src": "/artist/mv-identity-batch-r-20261027/identities/stayc-d89c6e2fea3031.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-r-20261027/identities/stayc-d89c6e2fea3031.jpg",
+        "sha256": "d89c6e2fea3031b4013483e54355022a3b30de79ff5a912fe781187b614a80e3",
+        "byteLength": 1714678,
+        "width": 4096,
+        "height": 2731
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyHuKMKF5f",
+        "M2WTUoy4y6E",
+        "recvxyICzH9h49"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/M2WTUoy4y6E-recvxyICzH9h49-77c42e20af.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/M2WTUoy4y6E-recvxyICzH9h49-77c42e20af.jpg",
+        "sha256": "77c42e20afb4bd797402037437b6f2b13adf84db068f0c2bb03233cf305c9d28",
+        "byteLength": 97556,
+        "width": 800,
+        "height": 540
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyHuKMKF5f",
+        "M2WTUoy4y6E",
+        "recvxyICzH9h49"
+      ],
+      "src": "/artist/mv-identity-batch-q-20261027/identities/aespa-95291ba29100b8.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-q-20261027/identities/aespa-95291ba29100b8.jpg",
+        "sha256": "95291ba29100b87f632f7378818d751f0097962f54c68527c9158a1d01b57c4e",
+        "byteLength": 1418316,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyHuKMKF5f",
+        "M2WTUoy4y6E",
+        "recvxyICzHE7ST"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/M2WTUoy4y6E-recvxyICzHE7ST-29ff4d347d.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/M2WTUoy4y6E-recvxyICzHE7ST-29ff4d347d.jpg",
+        "sha256": "29ff4d347d551729224f2d9d7fa628ecb5af26e18a5cba73fd3328bc7768fb3d",
+        "byteLength": 260571,
+        "width": 800,
+        "height": 540
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyHuKMKF5f",
+        "M2WTUoy4y6E",
+        "recvxyICzHE7ST"
+      ],
+      "src": "/artist/mv-identity-batch-q-20261027/identities/aespa-c17657a6a9222d.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-q-20261027/identities/aespa-c17657a6a9222d.jpg",
+        "sha256": "c17657a6a9222db5c3b2ce7cff3e9029dff71f9c17965b2fd7fe89b764123583",
+        "byteLength": 1407429,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyHuKMKF5f",
+        "M2WTUoy4y6E",
+        "recvxyICzHT9Ft"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/M2WTUoy4y6E-recvxyICzHT9Ft-55dd905253.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/M2WTUoy4y6E-recvxyICzHT9Ft-55dd905253.jpg",
+        "sha256": "55dd905253f003a9b3d30760557f7283dcfbb57fb42ccdb1e621dc2bd83d9787",
+        "byteLength": 121009,
+        "width": 800,
+        "height": 540
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyHuKMKF5f",
+        "M2WTUoy4y6E",
+        "recvxyICzHT9Ft"
+      ],
+      "src": "/artist/mv-identity-batch-q-20261027/identities/aespa-b534344bee5d9d.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-q-20261027/identities/aespa-b534344bee5d9d.jpg",
+        "sha256": "b534344bee5d9dd8e234ee2c65bef95340f7f670bf34ddf52f63643af78e57fb",
+        "byteLength": 1728004,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyHuKMKF5f",
+        "M2WTUoy4y6E",
+        "recvxyICzHaPe7"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/M2WTUoy4y6E-recvxyICzHaPe7-7c0eb62a3a.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/M2WTUoy4y6E-recvxyICzHaPe7-7c0eb62a3a.jpg",
+        "sha256": "7c0eb62a3a6af0230c311ae4d921d59688705e060e5e88ca8d17d4aaba5b6ee1",
+        "byteLength": 109215,
+        "width": 800,
+        "height": 540
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyHuKMKF5f",
+        "M2WTUoy4y6E",
+        "recvxyICzHaPe7"
+      ],
+      "src": "/artist/mv-identity-batch-q-20261027/identities/aespa-bd210873d726fd.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-q-20261027/identities/aespa-bd210873d726fd.jpg",
+        "sha256": "bd210873d726fd82c26c149c20ede44c5fe6b15c7626c8ebc2b66c7b25bafd18",
+        "byteLength": 2484385,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyHuKMvCMO",
+        "gfk3QLU1x0E",
+        "recvxyICzHT9Ft"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/gfk3QLU1x0E-recvxyICzHT9Ft-47ffbe7f5d.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/gfk3QLU1x0E-recvxyICzHT9Ft-47ffbe7f5d.png",
+        "sha256": "47ffbe7f5de2b0b88b5cf381472681125d176f96e1ac4a99fa9f91a35e616f98",
+        "byteLength": 770757,
+        "width": 1175,
+        "height": 598
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyHuKMvCMO",
+        "gfk3QLU1x0E",
+        "recvxyICzHT9Ft"
+      ],
+      "src": "/artist/mv-identity-batch-q-20261027/identities/aespa-b534344bee5d9d.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-q-20261027/identities/aespa-b534344bee5d9d.jpg",
+        "sha256": "b534344bee5d9dd8e234ee2c65bef95340f7f670bf34ddf52f63643af78e57fb",
+        "byteLength": 1728004,
+        "width": 2731,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyOz5XAxxU",
+        "Q3K0TOvTOno",
+        "recvxyICzHLSfX"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/Q3K0TOvTOno-recvxyICzHLSfX-419b0ffa89.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/Q3K0TOvTOno-recvxyICzHLSfX-419b0ffa89.png",
+        "sha256": "419b0ffa89f5c23f06409713fdc9f9656a276b0fbc2f142948e4af068c018dde",
+        "byteLength": 395481,
+        "width": 512,
+        "height": 817
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyOz5XAxxU",
+        "Q3K0TOvTOno",
+        "recvxyICzHLSfX"
+      ],
+      "src": "/artist/mv-identity-batch-q-20261027/identities/newjeans-83ba92c4f98726.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-q-20261027/identities/newjeans-83ba92c4f98726.png",
+        "sha256": "83ba92c4f987268747e91148f065e9922dacfc792f020b3c97e85b8b12622b0f",
+        "byteLength": 2637410,
+        "width": 1000,
+        "height": 1497
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyOz5XKR8M",
+        "0LiQp7y8Wwc",
+        "recvxyICzHn2aM"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/0LiQp7y8Wwc-recvxyICzHn2aM-7b75138016.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/0LiQp7y8Wwc-recvxyICzHn2aM-7b75138016.jpg",
+        "sha256": "7b75138016d22edfbd94f70e717dbed8a38d85e884537ad637ce7c421d6f316d",
+        "byteLength": 222515,
+        "width": 560,
+        "height": 373
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyOz5XKR8M",
+        "0LiQp7y8Wwc",
+        "recvxyICzHn2aM"
+      ],
+      "src": "/artist/mv-identity-batch-s-20261027/identities/fromis-9-ce675445938613.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-s-20261027/identities/fromis-9-ce675445938613.jpg",
+        "sha256": "ce675445938613e2ee35f4bfa60456b5208ade0d28d8c46175a4596e739eef36",
+        "byteLength": 2881072,
+        "width": 2000,
+        "height": 2500
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyOz5XKqG0",
+        "AFJPFfnzZ7w",
+        "recvxyICzHRB0v"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/AFJPFfnzZ7w-recvxyICzHRB0v-99a7134417.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/AFJPFfnzZ7w-recvxyICzHRB0v-99a7134417.jpg",
+        "sha256": "99a71344174a52dc2b635f92dfc80a9a7d5827f38a7406e60f4b48e6f8dfd0c2",
+        "byteLength": 56511,
+        "width": 1000,
+        "height": 667
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyOz5XKqG0",
+        "AFJPFfnzZ7w",
+        "recvxyICzHRB0v"
+      ],
+      "src": "/artist/mv-identity-batch-w-20261027/identities/loona-50a1c49ed2e19c.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-w-20261027/identities/loona-50a1c49ed2e19c.jpg",
+        "sha256": "50a1c49ed2e19cb210f07dc26b59e26710d171b79b6bc5fa9387f9e3558aafcc",
+        "byteLength": 4075466,
+        "width": 6066,
+        "height": 4044
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB6Jp"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+        "sha256": "ed71b22a78a5582a3150b0f074f2994a9756dd329d3fcfa24b5837c17158f87f",
+        "byteLength": 4513893,
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB6Jp"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-2802098f8f8f0e.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-2802098f8f8f0e.jpg",
+        "sha256": "2802098f8f8f0e68ae2b142dcbad265792b8105c66e560ea9d5b497bbfacdf18",
+        "byteLength": 1038538,
+        "width": 2925,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB6Rt"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+        "sha256": "ed71b22a78a5582a3150b0f074f2994a9756dd329d3fcfa24b5837c17158f87f",
+        "byteLength": 4513893,
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB6Rt"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-af0d13072244e8.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-af0d13072244e8.jpg",
+        "sha256": "af0d13072244e8efc8279b65f61e7aa20d05d08efe86dd3d55f46c219d0f8207",
+        "byteLength": 1307093,
+        "width": 2926,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB6s5"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+        "sha256": "ed71b22a78a5582a3150b0f074f2994a9756dd329d3fcfa24b5837c17158f87f",
+        "byteLength": 4513893,
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB6s5"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-4e66c5c6cf40fc.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-4e66c5c6cf40fc.jpg",
+        "sha256": "4e66c5c6cf40fc049171881152599f1903259cd316ea47587b02cbf91555416c",
+        "byteLength": 1523215,
+        "width": 4096,
+        "height": 2731
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB70B"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+        "sha256": "ed71b22a78a5582a3150b0f074f2994a9756dd329d3fcfa24b5837c17158f87f",
+        "byteLength": 4513893,
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB70B"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-7649e74896ba7c.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-7649e74896ba7c.jpg",
+        "sha256": "7649e74896ba7cb37d058dfb703e76cb45cb8f012a7296db572959f20ab112fd",
+        "byteLength": 1303412,
+        "width": 2926,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB7F7"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+        "sha256": "ed71b22a78a5582a3150b0f074f2994a9756dd329d3fcfa24b5837c17158f87f",
+        "byteLength": 4513893,
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB7F7"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-97a3bdb3350897.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-97a3bdb3350897.jpg",
+        "sha256": "97a3bdb3350897c4d800c6de6aeaad49331a318d68ef24da710340e9672cee87",
+        "byteLength": 1214793,
+        "width": 2926,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB7cX"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+        "sha256": "ed71b22a78a5582a3150b0f074f2994a9756dd329d3fcfa24b5837c17158f87f",
+        "byteLength": 4513893,
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB7cX"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-0e8ab0b3e7c530.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-0e8ab0b3e7c530.jpg",
+        "sha256": "0e8ab0b3e7c5302246263c69eec8c8e16ae319fe2bd134160852c9f5b7ed23fa",
+        "byteLength": 1336744,
+        "width": 2926,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB7m2"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+        "sha256": "ed71b22a78a5582a3150b0f074f2994a9756dd329d3fcfa24b5837c17158f87f",
+        "byteLength": 4513893,
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB7m2"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-60922d24003efa.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-60922d24003efa.jpg",
+        "sha256": "60922d24003efaeccfd24e612031d91457869c4181c4ce93f4582fed21e9f9dc",
+        "byteLength": 1273392,
+        "width": 2926,
+        "height": 4096
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB7vO"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/kxUA2wwYiME-captioned-original-ed71b22a78.png",
+        "sha256": "ed71b22a78a5582a3150b0f074f2994a9756dd329d3fcfa24b5837c17158f87f",
+        "byteLength": 4513893,
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "rec28ldfRTrzDX",
+        "kxUA2wwYiME",
+        "rec28ldbniB7vO"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-2d3ddf6a883471.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-2d3ddf6a883471.jpg",
+        "sha256": "2d3ddf6a88347187c58f602814168d515718bdde7c0e2808cf455011da5be821",
+        "byteLength": 1004869,
+        "width": 4096,
+        "height": 2731
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyOz5XKqG0",
+        "AFJPFfnzZ7w",
+        "recvxyICzHTm4b"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/AFJPFfnzZ7w-recvxyICzHTm4b-124c8c5a38.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/AFJPFfnzZ7w-recvxyICzHTm4b-124c8c5a38.jpg",
+        "sha256": "124c8c5a389dc0a78fcc1242f8f2445edba811e34e1f0bb7fabd34f2feff0242",
+        "byteLength": 53187,
+        "width": 1000,
+        "height": 667
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyOz5XKqG0",
+        "AFJPFfnzZ7w",
+        "recvxyICzHTm4b"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/loona-a1461657ceddb6.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/loona-a1461657ceddb6.jpg",
+        "sha256": "a1461657ceddb6a5655398e2a2014131859396b6d6359995e185083dc08dcc40",
+        "byteLength": 1161209,
+        "width": 3840,
+        "height": 5760
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyOz5XKqG0",
+        "AFJPFfnzZ7w",
+        "recvxyICzHkFju"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/AFJPFfnzZ7w-recvxyICzHkFju-32858beb11.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/AFJPFfnzZ7w-recvxyICzHkFju-32858beb11.jpg",
+        "sha256": "32858beb11bc2d0fc9f6ed9f90e4ad044f29b76273d91a6529ebe6780e18709d",
+        "byteLength": 78705,
+        "width": 1000,
+        "height": 667
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyOz5XKqG0",
+        "AFJPFfnzZ7w",
+        "recvxyICzHkFju"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/loona-f40f1a249e2207.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/loona-f40f1a249e2207.jpg",
+        "sha256": "f40f1a249e2207d01d81fa0d90fb053d28e2f8bd98accee05cc6c9e9e7d1f9d6",
+        "byteLength": 1060612,
+        "width": 3840,
+        "height": 5760
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyOz5XKqG0",
+        "AFJPFfnzZ7w",
+        "recvxyICzHrAo6"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/AFJPFfnzZ7w-recvxyICzHrAo6-ba560f6399.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/AFJPFfnzZ7w-recvxyICzHrAo6-ba560f6399.jpg",
+        "sha256": "ba560f6399ddbf4670aeea594b4cf9ec0a457f277a4c584f141c4b28d470f02a",
+        "byteLength": 61745,
+        "width": 1000,
+        "height": 667
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyOz5XKqG0",
+        "AFJPFfnzZ7w",
+        "recvxyICzHrAo6"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/loona-014b3fb45623fb.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/loona-014b3fb45623fb.jpg",
+        "sha256": "014b3fb45623fb921bcb800880781968ad18daaf4f8c39f274c924e09ae935fe",
+        "byteLength": 1387597,
+        "width": 3707,
+        "height": 5641
+      }
+    },
+    {
+      "side": "before",
+      "tuple": [
+        "recvxyOz5XKqG0",
+        "AFJPFfnzZ7w",
+        "recvxyICzHzxW0"
+      ],
+      "src": "/artist/mv-identity-20261025/identities/AFJPFfnzZ7w-recvxyICzHzxW0-ef9ec20f9e.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-20261025/identities/AFJPFfnzZ7w-recvxyICzHzxW0-ef9ec20f9e.jpg",
+        "sha256": "ef9ec20f9e33e97491520e7e93cfa87675b993e5764b528de56127b11dbe41d8",
+        "byteLength": 104116,
+        "width": 1000,
+        "height": 667
+      }
+    },
+    {
+      "side": "after",
+      "tuple": [
+        "recvxyOz5XKqG0",
+        "AFJPFfnzZ7w",
+        "recvxyICzHzxW0"
+      ],
+      "src": "/artist/mv-identity-batch-z-20261027/identities/loona-9a170e6ee0dcb7.jpg",
+      "passed": true,
+      "actual": {
+        "path": "apps/idol-site/public/artist/mv-identity-batch-z-20261027/identities/loona-9a170e6ee0dcb7.jpg",
+        "sha256": "9a170e6ee0dcb75a91e57b60e235af7e811ebfbb811e7cf3f6a5e0e809b89b40",
+        "byteLength": 1250602,
+        "width": 3840,
+        "height": 5760
+      }
+    }
+  ],
+  "failures": []
+}

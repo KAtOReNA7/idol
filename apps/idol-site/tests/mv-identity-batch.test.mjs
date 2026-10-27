@@ -1,15 +1,32 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {planIdentityBatch,publicIdentityPath} from '../scripts/import-mv-identity-batch.mjs';
+import {planIdentityBatch,publicIdentityPath,batchReviewDate,identityPhotoPriority,photoSetLabels} from '../scripts/import-mv-identity-batch.mjs';
+test('receipt date follows the reviewed batch and rejects missing, mixed or invalid dates',()=>{
+ assert.equal(batchReviewDate([{checkedAt:'2026-10-27'}]),'2026-10-27');
+ assert.equal(batchReviewDate([{checkedAt:'2026-10-26'},{checkedAt:'2026-10-26'}]),'2026-10-26');
+ for(const rows of [[],[{}],[{checkedAt:'2026-10-27'},{}],[{checkedAt:'2026-02-30'}],[{checkedAt:'2026-10-26'},{checkedAt:'2026-10-27'}]])assert.throws(()=>batchReviewDate(rows),/review date/);
+});
 const row={workId:'work-a',videoId:'exact-video',memberId:'member-a',src:'/artist/mv-identity-batch-a-20261026/identities/test.jpg',width:600,height:800,byteLength:123,sha256:'a'.repeat(64),label:'第三方具名 MV 截图',sourcePageUrl:'https://example.test/named-mv',qualityTier:'source_resolution',evidenceLevel:'source_named_unique_mv_chapter',sourceCrop:{x:0,y:0,width:600,height:800}};
 const fixture=()=>({identityImages:[],summary:{identitySourceRecords:0},workCoverage:[{workId:'work-a',videoId:'exact-video',groups:['Fixture'],relationshipCount:1,publicIdentityCount:0,missingIdentityRelationships:[{memberId:'member-a'}],memberScoringDecision:'keep',noExistingRelationships:false}],personalRecord:'unchanged sentinel'});
+const photoSet=()=>({...row,src:'/artist/mv-identity-batch-p-20261027/identities/test.jpg',kind:'concept_photo',evidenceLevel:'source_named_photo_set',label:photoSetLabels.concept_photo,identityBasis:'source_named',faceIdentityInferred:false,preserveOriginal:true,actual3By4ContactSheetReviewed:true,photoSet:{id:'album-set-a',title:'Album concept A',sourcePageUrl:'https://example.test/named-set',sourceMemberName:'Member A',nameEvidence:'Individual caption Member A',seriesEvidence:'All photos under Concept A',workAssociation:'same_release',workAssociationEvidence:'Target song appears on the release track list',publisherKind:'fan',purpose:'recognition_reference'},photoReview:{reviewed:true,naturalExpression:true,faceClear:true,compositionComplete:true,sameSetReviewed:true,noUpscale:true}});
+test('named fan concept and jacket sets may fill an existing tuple without inventing MV provenance',()=>{
+ for(const publisherKind of ['fan','official','media'])for(const kind of ['concept_photo','jacket_photo']){const p=photoSet();Object.assign(p,{kind,label:photoSetLabels[kind]});p.photoSet.publisherKind=publisherKind;const {audit}=planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{});assert.equal(audit.summary.missingRelationshipImages,0);assert.equal(audit.personalRecord,'unchanged sentinel');assert.equal(audit.identityImages[0].exactVideoEvidence,undefined);}
+ assert.equal(identityPhotoPriority.concept_photo,identityPhotoPriority.jacket_photo);assert(identityPhotoPriority.concept_photo<identityPhotoPriority.mv_frame);
+});
+test('relaxed photo purpose does not permit guesses, unnatural crops, missing series or false MV captions',()=>{
+ for(const change of [{identityBasis:'visual_guess'},{faceIdentityInferred:true},{label:'本MV截图'},{exactVideoEvidence:{videoId:row.videoId}},{actual3By4ContactSheetReviewed:false}])assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...photoSet(),...change}]}],()=>{}),/photo|Photo/);
+ for(const field of ['nameEvidence','seriesEvidence','workAssociationEvidence']){const p=photoSet();p.photoSet[field]='';assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{}),/provenance/);}
+ for(const field of ['naturalExpression','faceClear','compositionComplete','sameSetReviewed','noUpscale']){const p=photoSet();p.photoReview[field]=false;assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{}),/review/);}
+ const p=photoSet();p.memberId='unbound';assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{}),/No existing/);
+});
 test('reviewed batch supplements an existing exact tuple without changing its relationship or scoring policy',()=>{const source=fixture(),before=structuredClone(source);const {audit,admitted}=planIdentityBatch(source,[{identityImages:[row]}],()=>{});assert.deepEqual(source,before);assert.equal(admitted.length,1);assert.equal(audit.workCoverage[0].relationshipCount,1);assert.equal(audit.workCoverage[0].memberScoringDecision,'keep');assert.equal(audit.personalRecord,before.personalRecord);assert.equal(audit.summary.missingRelationshipImages,0);});
 test('same-song alternate video or an unbound member cannot receive the portrait',()=>{for(const change of [{videoId:'alternate-video'},{memberId:'unbound-member'},{workId:'other-work'}])assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...row,...change}]}],()=>{}),/No existing exact-video member relationship/);});
 test('one failed original prevents partial application; duplicated tuples and traversal are rejected',()=>{const source=fixture(),before=structuredClone(source);assert.throws(()=>planIdentityBatch(source,[{identityImages:[row]}],()=>{throw Error('Original SHA changed');}),/Original SHA/);assert.deepEqual(source,before);assert.throws(()=>planIdentityBatch(source,[{identityImages:[row,row]}],()=>{}),/Duplicate/);assert.throws(()=>planIdentityBatch(source,[{identityImages:[{...row,src:'/artist/mv-identity-batch-a-20261026/identities/../test.jpg'}]}],()=>{}),/Invalid public/);});
 test('pending concept provenance and out-of-frame crops cannot silently enter the public runtime',()=>{assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...row,evidenceLevel:'concept-photo-pending'}]}],()=>{}),/Unreviewed provenance/);assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...row,sourceCrop:{x:100,y:0,width:600,height:800}}]}],()=>{}),/Crop outside original/);});
 test('the batch cannot reduce missing counts by admitting card-only low-resolution candidates',()=>{assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...row,qualityTier:'card_only'}]}],()=>{}),/quality threshold/);});
-test('only reviewed directories through M extend the original path boundary',()=>{
+test('only reviewed A-M and the exact dated N through Z directories extend the original path boundary',()=>{
  for(const batch of ['d','e','f','g','h','i','j','k','l','m'])assert.equal(planIdentityBatch(fixture(),[{identityImages:[{...row,src:`/artist/mv-identity-batch-${batch}-20261026/identities/test.jpg`}]}],()=>{}).admitted.length,1);
- for(const src of ['/artist/mv-identity-batch-n-20261026/identities/test.jpg','/artist/mv-identity-batch-d-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261026/identities/nested/test.jpg','/artist/private/identities/test.jpg'])assert.equal(publicIdentityPath.test(src),false,src);
+ for(const batch of ['n','o','p','q','r','s','t','u','v','w','x','y','z'])assert.equal(planIdentityBatch(fixture(),[{identityImages:[{...row,src:`/artist/mv-identity-batch-${batch}-20261027/identities/test.jpg`}]}],()=>{}).admitted.length,1);
+ for(const src of ['/artist/mv-identity-batch-n-20261026/identities/test.jpg','/artist/mv-identity-batch-aa-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261026/identities/nested/test.jpg','/artist/private/identities/test.jpg'])assert.equal(publicIdentityPath.test(src),false,src);
 });
 test('a high-resolution label cannot admit a small visible crop from a wide original',()=>{
  for(const change of [{width:736,height:491,sourceCrop:undefined},{width:539,height:1000,sourceCrop:undefined},{width:1200,height:1600,sourceCrop:{x:0,y:0,width:800,height:719}}]){
@@ -54,4 +71,11 @@ test('decoded frames retain native dimensions and require explicit name and vide
  assert.equal(planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{}).admitted.length,1);
  p.frameEvidence.timestampSeconds=14;
  assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{}),/explicit name/);
+});
+
+test('documented recognition-only sets do not need a fabricated release or era claim',()=>{
+ const p=photoSet();p.kind='portrait_photo';p.label=photoSetLabels.portrait_photo;p.photoSet.workAssociation='recognition_reference';p.photoSet.workAssociationEvidence='Named coherent group portrait set; no contemporaneous MV evidence found. Selected for recognition only after release-specific research.';
+ const before=fixture(),result=planIdentityBatch(before,[{identityImages:[p]}],()=>{});assert.equal(result.admitted.length,1);assert.equal(result.audit.personalRecord,before.personalRecord);assert.equal(result.audit.workCoverage[0].memberScoringDecision,'keep');assert.equal(result.admitted[0].photoSet.workAssociation,'recognition_reference');
+ p.photoSet.workAssociationEvidence='';assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{}),/provenance/);
+ p.photoSet.workAssociationEvidence='Recognition only';p.exactVideoEvidence={verified:true};assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{}),/truthful non-MV/);
 });

@@ -20,7 +20,9 @@ const mv=read('data/mv-public-media.json');
 const publicRoot=path.join(root,'public');
 // Keep the upload small enough to complete on the current publishing path.
 // Every other original is still served at the same URL by the immutable proxy.
-const rasterBudgetMiB=24,budget=rasterBudgetMiB*1024*1024;
+// The local archive upload currently times out on the former 24 MiB raster set.
+// A smaller local set keeps the same original URLs/bytes through the existing proxy.
+const rasterBudgetMiB=4,budget=rasterBudgetMiB*1024*1024;
 let used=0;
 for(const row of read('data/music-index-artwork.json')){const bytes=fs.statSync(path.join(publicRoot,row.image)).size;if(!local.has(row.image)&&used+bytes<=budget){local.add(row.image);used+=bytes;}}
 const covers=mv.covers.map(row=>({src:row.src,bytes:fs.statSync(path.join(publicRoot,row.src)).size})).sort((a,b)=>a.bytes-b.bytes||a.src.localeCompare(b.src));

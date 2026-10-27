@@ -1,5 +1,15 @@
 # 跨电脑接续：PR43已合入main，正式站v191
 
+## 最新增量：公开署名与统计续作，正式v192（2026-10-27）
+
+从显式fetch后的最新main `852f7506a4f921fff4e4d24fe70e8d607c7d40f5` 新建 `codex/statistics-relations-followup-20261027`；开工干净，PR43已包含。GitHub实现 `8cc3d9f`，本批 [PR44](https://github.com/KAtOReNA7/idol/pull/44) 尚未合main，不重导A–Y/Z，不从历史逐团分支开始。
+
+新增12支tripleS作品106人次公开署名，修正Password来源，公开署名覆盖16支；私人关系未新增，133支无既有关系作品数量保持，117支仍无可靠公开署名。录音/分队名单不是逐人MV出镜核验。EVERGLOW新INS补2026-05-30历史快照86501（9万），非实时；未知统计18→17（5社媒/9销量/3一位）。2828认人绑定、628封面、现有缺图0/旧低清0保持。官方与具名民间同套图均可，来源标注真实；个人页统一排版仍待决定。
+
+正式站 https://idol-lens-private.wuke40758.chatgpt.site/ **v192 / succeeded**；Sites源 `721a0cf28e26d48c611bd2a06183412d1889e861`，部署 `appgdep_6ae0a42959108191aa2c4a64d61f87e9`。public/1owner/0外部/0组、native/epoch6/原快照/done206、全部公开字段及关系保持。GitHub与正式部署分开记录，本PR未自动合并。
+
+27相关测试、TypeScript、正式构建及完整TAR1398文件通过；本地与线上各28布局/2成员跳转通过。完整问题与线上复验以 `docs/codex/statistics-relations-followup-20261027.md` 及 `docs/codex/evidence/20261027-statistics-relations/` 为准。未做私人保存、完整播放、逐人出镜、原生缩放、用户IAB或新Figma验收。下方18未知/v191为历史基线，不能覆盖本节。
+
 2026-10-27。正式工程是 `apps/idol-site/`。当前代码、来源证据和发布状态以[本轮报告](identity-completion-report-20261027.md)为准；GitHub推送与正式站部署分别验证。
 
 ## 当前成果

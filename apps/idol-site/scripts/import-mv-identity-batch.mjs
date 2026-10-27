@@ -3,7 +3,19 @@
 import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const key=p=>[p.workId,p.videoId,p.memberId].join(':');
-export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026|batch-[no]-20261027)\/identities\/[\w.-]+$/;
+export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026|batch-[nop]-20261027)\/identities\/[\w.-]+$/;
+// Photo purpose, not official/fan authorship, controls the research order.
+// This does not replace already selected originals or change catalog bindings.
+export const identityPhotoPriority=Object.freeze({concept_photo:0,jacket_photo:0,portrait_photo:1,mv_behind_photo:2,mv_frame:3});
+export const photoSetLabels=Object.freeze({concept_photo:'同系列概念照 · 认人参考',jacket_photo:'同系列封套照 · 认人参考',portrait_photo:'同系列写真 · 认人参考'});
+function verifyNamedPhotoSet(p){
+ if(p.evidenceLevel!=='source_named_photo_set')return;
+ const s=p.photoSet,r=p.photoReview;
+ const https=u=>{try{return new URL(u).protocol==='https:';}catch{return false;}};
+ if(!Object.hasOwn(photoSetLabels,p.kind)||p.label!==photoSetLabels[p.kind]||p.identityBasis!=='source_named'||p.faceIdentityInferred!==false||p.preserveOriginal!==true||p.exactVideoEvidence)throw Error('Photo-set reference must retain named identity and truthful non-MV labeling');
+ if(!s?.id?.trim()||!s.title?.trim()||!https(s.sourcePageUrl)||!s.sourceMemberName?.trim()||!s.nameEvidence?.trim()||!s.seriesEvidence?.trim()||!s.workAssociationEvidence?.trim()||!['same_release','same_era'].includes(s.workAssociation)||!['official','fan','media'].includes(s.publisherKind)||s.purpose!=='recognition_reference')throw Error('Missing named photo-set provenance');
+ if(!r||r.reviewed!==true||r.naturalExpression!==true||r.faceClear!==true||r.compositionComplete!==true||r.sameSetReviewed!==true||r.noUpscale!==true||p.actual3By4ContactSheetReviewed!==true)throw Error('Photo set needs actual clarity, expression, composition and series review');
+}
 export function batchReviewDate(rows){
  const dates=[...new Set(rows.map(p=>p.checkedAt).filter(Boolean))];
  if(rows.some(p=>!p.checkedAt)||dates.length!==1||!/^\d{4}-\d{2}-\d{2}$/.test(dates[0])||!Number.isFinite(Date.parse(dates[0]))||new Date(dates[0]).toISOString().slice(0,10)!==dates[0])throw Error('Batch needs one valid explicit review date');
@@ -31,8 +43,8 @@ function verifyNamedVideoFrame(p){
 }
 export function validateIdentityCandidate(p,verifyOriginal){
  if(!publicIdentityPath.test(p.src)||p.src.includes('..'))throw Error('Invalid public original path');
- if(!['previously_reviewed_exact_original','source_named_unique_mv_chapter','source_named_exact_mv_page','official_exact_mv_shoot_provenance','official_named_member_video_thumbnail','official_named_mv_shoot_unique_version','source_named_explicit_version_mv_chapter','official_named_mv_video_frame',...visualEvidenceTypes].includes(p.evidenceLevel))throw Error('Unreviewed provenance type');
- verifyVisualVersionEvidence(p);verifyNamedVideoFrame(p);
+ if(!['source_named_photo_set','previously_reviewed_exact_original','source_named_unique_mv_chapter','source_named_exact_mv_page','official_exact_mv_shoot_provenance','official_named_member_video_thumbnail','official_named_mv_shoot_unique_version','source_named_explicit_version_mv_chapter','official_named_mv_video_frame',...visualEvidenceTypes].includes(p.evidenceLevel))throw Error('Unreviewed provenance type');
+ verifyVisualVersionEvidence(p);verifyNamedVideoFrame(p);verifyNamedPhotoSet(p);
  if(!p.label||!p.sourcePageUrl?.startsWith('https://')||p.qualityTier!=='source_resolution')throw Error('Missing source or candidate below this batch quality threshold');
  if(!Number.isSafeInteger(p.width)||!Number.isSafeInteger(p.height)||p.width<=0||p.height<=0)throw Error('Invalid original dimensions');
  const c=p.sourceCrop;if(c&&(![c.x,c.y,c.width,c.height].every(Number.isFinite)||c.x<0||c.y<0||c.width<=0||c.height<=0||c.x+c.width>p.width||c.y+c.height>p.height))throw Error('Crop outside original');

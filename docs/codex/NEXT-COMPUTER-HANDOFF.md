@@ -1,12 +1,19 @@
-# 跨电脑接续：概念/封套优先，仓库2131绑定/697缺图
+# 跨电脑接续：同套认人图持续补齐，仓库2293绑定/535缺图
 
-2026-10-27。正式工程 `apps/idol-site/`，PR43承载N/O/P，尚未合并。GitHub提交与正式站部署分开记录。
+## 当前续作：Q批新增162，仓库2293绑定／535缺图（2026-10-27）
+
+用户明确要求全部认人图完成前持续开发，只有确需用户确认的关键节点才暂停。按同套概念/封套优先的新规则，Q162条已入库，125张完整原件217,661,221 bytes；原871已补336、剩535，628封面、43旧低清、18未知统计保持。A–Q禁止重复导入。最新逐条清单`docs/codex/reports/20261027-gap-q/ledger.json`，报告`docs/codex/identity-gap-q-report-20261027.md`。
+
+2131旧选中绑定/628封面/既有关系和评分策略保持；34相关测试、TypeScript、三宽117布局/486新图及原图流程通过，1项P之前已复现的旧源字符串断言仍失败。51团设计、个人数据、访问与owner保存鉴权保持。正式站仍v190：P完整包上传300009ms超时后未生成版本/部署，Sites候选源bafe825a0d84501f66825919a281e63ddb033a15仅含P，不能直接发布Q。N/O/P/Q共172条待发布，GitHub推送与正式上线分别记录。继续R及剩余535，不因完成一个批次停止。
+
+
+2026-10-27。正式工程 `apps/idol-site/`，PR43承载N/O/P/Q，尚未合并。GitHub提交与正式站部署分开记录。
 
 ## 复制给下一台电脑
 
-请接续 https://github.com/KAtOReNA7/idol 。先检查并保护本地未提交和未跟踪文件，显式 fetch origin/main；工作树干净后从最新 origin/main 建立新 codex/ 任务分支，不 reset、clean 或强推。未克隆则先克隆。核对 PR43，若尚未合并，fetch codex/mv-identity-gap-n-20261027 并普通 merge 到新分支，以纳入已完成N/O/P，不回退旧逐团分支。
+请接续 https://github.com/KAtOReNA7/idol 。先检查并保护本地未提交和未跟踪文件，显式 fetch origin/main；工作树干净后从最新 origin/main 建立新 codex/ 任务分支，不 reset、clean 或强推。未克隆则先克隆。核对 PR43，若尚未合并，fetch codex/mv-identity-gap-n-20261027 并普通 merge 到新分支，以纳入已完成N/O/P/Q，不回退旧逐团分支。
 
-依次读本文件、AGENTS.md、docs/codex/STATUS.md、RESUME.md、mainline-consolidation-20261026.md，然后读 identity-photo-selection-policy-20261027.md 和 identity-gap-p-report-20261027.md。最新仓库2131绑定/353作品/45团、628封面、697缺图，43旧低清、18未知统计；原871已补174。A–P禁止重复导入，最新逐条清单为 docs/codex/reports/20261027-gap-p/ledger.json。
+依次读本文件、AGENTS.md、docs/codex/STATUS.md、RESUME.md、mainline-consolidation-20261026.md，然后读 identity-photo-selection-policy-20261027.md 和 identity-gap-q-report-20261027.md。最新仓库2293绑定/386作品/45团、628封面、535缺图，43旧低清、18未知统计；原871已补336。A–Q禁止重复导入，最新逐条清单为 docs/codex/reports/20261027-gap-q/ledger.json。
 
 用户最新选图顺序：同套概念照/封套照优先，其次同套写真、自然清晰幕后，MV截图只作后备。官方、粉丝站和民间图集都可；人物有可靠具名依据、同套可追溯、清晰自然好看即可，不再强制精确MV拍摄/版本。保持完整原件、不猜脸、不生成补脸或插值放大。图片仍绑定原作品/成员评分关系，但如实标注认人参考，不能冒称MV造型证据。页面设计与个人评分/备注/观看、ID/关系、访问和owner保存鉴权保持。
 
@@ -28,7 +35,7 @@ git merge origin/codex/mv-identity-gap-n-20261027
 
 以远端最新HEAD接续，以下冻结值仅为原图来源：P `25f63e605aee686bbdd37154084bd81546fd8a0c`；O `bc338bd5a1b555b50bd96c96ba6fe65c7ef137cc`。新delivery清单引用P不可变提交，旧5490资源记录保持，新增5原件。
 
-## 正式发布仍待完成
+## 正式发布仍待完成（以下P以前说明为历史；以上Q和Q报告优先）
 
 最近核实正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 为v190/2121绑定/707缺图；N/O/P累计10条待发布。本轮P已用原生get_site读回最新版本190及public/1owner/0外部/0组，未保存新版本或部署；详见P目录site-state.json。
 

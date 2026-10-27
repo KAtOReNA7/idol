@@ -1,0 +1,2854 @@
+
+
+
+<!DOCTYPE html>
+
+	
+	
+		<html lang="ko">
+	
+
+
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+<title>Melon</title>
+<meta name="format-detection" content="telephone=no" />
+<meta property="og:title" content="aespa 세계관의 새로운 챕터, 'WDA (Whole Different Animal)'">
+<meta property="fb:app_id" content="4022717807957185">
+<meta property="og:image" content="https://cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/6e/dff/imgUrl20260508110527518.jpg/melon/quality/90/optimize">
+<meta property="og:url" content="https://m.melon.com/musicstory/detail.htm?mstorySeq=16924"/>
+<meta property="og:type" content="website"/>
+<meta property="og:description" content="음악이 필요한 순간, 멜론">
+<meta property="og:site_name" content="멜론"/>
+<link rel="apple-touch-icon-precomposed" href="//cdnimg.melon.co.kr/resource/mobile40/cds/common/image/mobile_apple_120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="//cdnimg.melon.co.kr/resource/mobile40/cds/common/image/mobile_apple_180x180.png">
+<link rel="shortcut icon" type="image/x-icon" href="//cdnimg.melon.co.kr/resource/mobile40/cds/common/image/favicon.ico">
+
+<script type="text/javascript" src="/resource/mobile40/cds/common/js/comment.js?_resVer=3a79b6c85da8a80b4a4ee8a5eeeaff09"></script>
+
+
+
+	<script type="text/javascript" src="/resource/mobile40/cds/common/js/melon_player_apps.js?_resVer=f34560ebad1461d9a0afe2f329192b80"></script>
+
+<script type="text/javascript" src="/resource/mobile40/cds/common/js/common.js?_resVer=f80c2888b755fe164f075dca95381995"></script>
+<script type="text/javascript" src="https://member.melon.com/resource/script/muid/mobile/authCookie.js"></script>
+<script type="text/javascript" src="/resource/script/commerce/download/mobile40/commerce_dl.js?_resVer=6b73b6ed0634ad58a56d7b1017c67569"></script>
+<script type="text/javascript" src="/resource/script/videoplayer/videoPlayerframeControll.js?_resVer=8937535b32d09b2ff5f0e4005db06e6d"></script>
+
+<link rel="stylesheet" type="text/css" href="//static.melon.co.kr/services/css/common-m-267b1ba3bc.css">
+<script src="//static.melon.co.kr/services/js/vendor/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="/resource/mobile40/cds/common/js/iscroll.js?_resVer=dceedba8286c7b5b08e8f622326af7de"></script>
+<script type="text/javascript" src="/resource/mobile40/cds/common/js/slider.js?_resVer=9034c5d16a7722bb3f39d68d7979d9d3"></script>
+<script type="text/javascript" src="/resource/mobile40/cds/common/js/jquery.ba-bbq.min.js?_resVer=40d65bcadf27061a6042d247e492d5be"></script>
+<script type="text/javascript" src="//static.melon.co.kr/services/js/_uiscript.js"></script>
+<script type="text/javascript" src="//static.melon.co.kr/services/js/melonui-0243e59da6.js"></script>
+
+
+
+<link href="//static.melon.co.kr/services/css/review-6da91447fc.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//static.melon.co.kr/services/css/magazine-9f41afbbc9.css">
+<script type="text/javascript" src="//static.melon.co.kr/services/js/magazine-693464678b.js"></script>
+<script type="text/javascript" src="//static.melon.co.kr/services/js/vendor/swiper-8.0.6.js"></script>
+<script type="text/javascript" src="/resource/mobile40/cds/common/js/commerce_api.js?_resVer=3be4a69429902f23e7b988e16b9090ad"></script>
+<script type="text/javascript">
+	var httpWww = "http://m2.melon.com";
+	var httpsWww = "https://m2.melon.com";
+	var POC_ID = getCookie("POC");
+	var UA_TYPE_CODE = "";
+	var ANDROID_VERSION = "";
+
+	$(document).ready(function() {
+		POC_ID = getCookie("POC");
+
+		if(POC_ID == "" || typeof POC_ID == "undefined" || POC_ID == "XXXX" || POC_ID == "STON"){
+			$.ajax({
+				async:false,
+				url: 'https://m2.melon.com/common/useragent_info.json',
+				dataType: 'json',
+				error: function(request, status, error) {},
+				success: function(data){
+					var pocId = data.pocId;
+					// iOS13 부터 아이패드의경우 UA값이 "Macintosh"으로 넘오기 때문에 pocId가 정상적으로 세팅되지 않음 (MP10으로 넘어옴)
+					// pocId가 "MP10" 이고 터치포인트 정보가 1보다 크면 패드로 인식하고 pocId를 "IT10"으로 전환해준다.
+					if(data.pocId == "MP10" && navigator.maxTouchPoints > 1){
+						pocId = "IT10";
+					}
+					setCookie("POC", pocId, 10, "/", ".melon.com");
+				}
+			});
+			POC_ID = getCookie("POC");
+			
+			applyAosAppClass();
+		}
+
+		if(POC_ID == "AS20" || POC_ID == "IS20"){
+			viewport = document.querySelector("meta[name=viewport]");
+			viewport.setAttribute("content", "initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover");
+		}
+
+		var dsplayYn = getCookie("melon-floating");
+		if(POC_ID.indexOf("IS") > -1 && dsplayYn == ""){
+			var expireDate = localStorage.getItem("melon-floating");
+			if(expireDate != "" && typeof expireDate != "undefined"){
+				var todayDate = new Date();
+				if(expireDate < todayDate.getTime()){
+					localStorage.removeItem("melon-floating");
+				} else {
+					dsplayYn = "Y";
+				}
+			}
+		}
+
+		if(dsplayYn != "Y" && (POC_ID == "AS20" || POC_ID == "IS20")){
+			$(".melon-floating").show();
+		}
+	});
+
+	function checkXInAppBrowser() {
+		var ua = navigator.userAgent || navigator.vendor || window.opera;
+		var isIOS = /iPhone|iPad|iPod/.test(ua);
+		var isXApp = /Twitter|XApp/i.test(ua);
+		return isIOS && isXApp;
+	}
+
+	
+	(function() {
+		var isMstoryDetailPath = /\/musicstory\/detail\.htm$/.test(location.pathname);
+		var isM2Host = /^(rel-|sandbox-|cbt-)?m2\.melon\.com$/.test(location.host);
+		if (checkXInAppBrowser() && isMstoryDetailPath && isM2Host) {
+			location.replace(location.href.replace(location.host, location.host.replace("m2.melon.com", "m.melon.com")));
+		}
+	})();
+
+	function openMelonApp(contsId) {
+		var urlScheme = "";
+		var webviewType = convertWebviewType("ZA");
+
+		if (checkXInAppBrowser()) {
+			
+			var pageUrl = location.href.replace(location.host, location.host.replace("m.melon.com", "m2.melon.com"));
+			location.href = "https://m2.melon.com/link/webview?url=" + encodeURIComponent(pageUrl) + "&title=&memberKey=&type=" + webviewType;
+			return;
+		}
+
+		var url = encodeURIComponent(location.href);
+		var webviewPath = "webview?url=" + url + "&title=&memberKey=&type=" + webviewType;
+
+		if (POC_ID == "AS20") {
+			urlScheme = "melonapp://" + webviewPath;
+		} else if (POC_ID == "IS20") {
+			urlScheme = "meloniphone://" + webviewPath;
+		}
+
+		if(typeof urlScheme == "undefined" || urlScheme == null || urlScheme == ""){
+			alert("이용 중인 기기에서는 지원하지 않습니다.");
+			return;
+		}else{
+			appLaunch(urlScheme, "", true, false);
+		}
+	}
+
+	/**
+	 * 웹뷰 헤더 safe-area-* 대응
+	 * AOS 앱(AS40)인 경우 aos-app 클래스 추가
+	 */
+	function applyAosAppClass() {
+		if (POC_ID === "AS40") {
+			document.documentElement.classList.add('aos-app');
+		}
+	}
+
+	
+	(function() { applyAosAppClass(); })();
+</script>
+
+<!-- TikTok Pixel -->
+<script type="text/javascript">
+	!function (w, d, t) {
+		try {
+			w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++
+			)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=i+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+			ttq.load('CKJ59IJC77UF4DIA1870');
+			ttq.page();
+		}catch (e) {}
+	}(window, document, 'ttq');
+
+	$(window).load(function(){
+		try {
+			ttq.track('ViewContent', {
+				content_id: '16924',
+				content_type: 'product',
+				description: encodeURIComponent("aespa 세계관의 새로운 챕터, 'WDA (Whole Different Animal)'")
+			});
+		}catch (e) {}
+	});
+</script>
+
+</head>
+<body>
+<div class="melon-container melon-magazine magazine-media">
+	<!-- Header -->
+	<header class="melon-header transparent-header transparent-bg transparent-title transparent">
+		<div class="melon-gnb">
+			<div class="wrap-title">
+				<h1 class="tit-gnb">aespa 세계관의 새로운 챕터, 'WDA (Whole Different Animal)'</h1>
+			</div>
+			<button id="headerBack" type="button" class="btn-gnb btn-prev" onclick="headerBackClose()" style="display:none;">
+				<span class="ico-sprite ico-gnb-prev">이전</span>
+			</button>
+			<button type="button" class="btn-gnb btn-more" data-button-type="modal" data-target="#bottomsheetFont">
+				<span class="ico-sprite ico-gnb-more">콘텐츠 부가 기능</span>
+			</button>
+			<span class="blank-gnb blank-gnb-left"></span>
+			<span class="blank-gnb blank-gnb-right"></span>
+		</div>
+	</header>
+	<script type="text/javascript">
+
+		POC_ID = getCookie("POC");
+		if(POC_ID == "" || typeof POC_ID == "undefined" || POC_ID == "XXXX" || POC_ID == "STON"){
+			$.ajax({
+				async:false,
+				url: '/common/useragent_info.json',
+				dataType: 'json',
+				error: function(request, status, error) {},
+				success: function(data){
+					var pocId = data.pocId;
+					// iOS13 부터 아이패드의경우 UA값이 "Macintosh"으로 넘오기 때문에 pocId가 정상적으로 세팅되지 않음 (MP10으로 넘어옴)
+					// pocId가 "MP10" 이고 터치포인트 정보가 1보다 크면 패드로 인식하고 pocId를 "IT10"으로 전환해준다.
+					if(data.pocId == "MP10" && navigator.maxTouchPoints > 1){
+						pocId = "IT10";
+					}
+					setCookie("POC", pocId, 10, "/", ".melon.com");
+				}
+			});
+			POC_ID = getCookie("POC");
+		}
+
+		// 안드/아이폰 6.1.0 이상 버젼 이전버튼 활성화(시점을 줄이기 위해 재선언)
+		if((POC_ID == 'AS40' || POC_ID == 'IS40') && appVerCompare(6,1,0)){
+				$("#headerBack").attr("style", "");
+		}
+
+		// 안드 6.1.0 미만일경우 웹뷰 SA 기준으로 더보기 버튼을 왼쪽으로 이동
+		if(POC_ID == "AS40" && !appVerCompare(6,1,0)){
+			$("header").addClass("melon-header-aos");
+		}
+
+	</script>
+
+
+	<script>
+			(function(a_,i_,r_,_b,_r,_i,_d,_g,_e){if(!a_[_b]){var n=function(){var c=i_.createElement(r_);c.onerror=function(){h.queue.filter(function(a){return 0<=_d.indexOf(a[0])}).forEach(function(a){a=a[1];a=a[a.length-1];"function"===typeof a&&a("error occur when load airbridge")})};c.async=1;c.src=_r;"complete"===i_.readyState?i_.head.appendChild(c):a_.addEventListener("load",function k(){a_.removeEventListener("load",k);i_.head.appendChild(c)})},h={queue:[],get isSDKEnabled(){return!1}};_i.concat(_d).forEach(function(c){var a=c.split("."),k=a.pop();a.reduce(function(p,q){return p[q]=p[q]||{}},h)[k]=function(){h.queue.push([c,arguments])}});a_[_b]=h;"undefined"!==typeof i_.documentMode&&(_r=_r.replace(/^https:/,""));0<_g?(_b=new (a_.XDomainRequest||a_.XMLHttpRequest),_i=function(){},_b.open("GET",_r),_b.timeout=_g,_b.onload=function(){n()},_b.onerror=_i,_b.onprogress=_i,_b.ontimeout=_i,_b.send()):n()}})(window,document,"script","airbridge","https://static.airbridge.io/sdk/latest/airbridge.min.js","init startTracking stopTracking openBanner setBanner setDownload setDownloads openDeeplink setDeeplinks sendWeb setUserAgent setMobileAppData setUserID clearUserID setUserEmail clearUserEmail setUserPhone clearUserPhone setUserAttribute removeUserAttribute clearUserAttributes setUserAlias removeUserAlias clearUserAlias clearUser setUserId setUserAttributes addUserAlias setDeviceAlias removeDeviceAlias clearDeviceAlias setDeviceIFV setDeviceIFA setDeviceGAID events.send events.signIn events.signUp events.signOut events.purchased events.addedToCart events.productDetailsViewEvent events.homeViewEvent events.productListViewEvent events.searchResultViewEvent".split(" "),["events.wait","fetchResource","createTouchpoint","createTrackingLink"],0);
+
+			var host = location.host;
+			var airbridgeApp = "melon";
+			var airbridgeWebToken = "42050fd2577d4c20ae084eee94019e8a";
+			if (host.indexOf('localhost') > -1 || host.indexOf('sandbox-') > -1 || host.indexOf('cbt-') > -1) {
+				airbridgeApp = "melondev";
+				airbridgeWebToken = "8cfc57e6fb464702a4d7d0fc09000d4b";
+			}
+			airbridge.init({
+				app: airbridgeApp,
+				webToken: airbridgeWebToken,
+				utmParsing: true
+			});
+
+			airbridge.events.send('view_magazine_page', {
+				action: '16924',
+				semanticAttributes: {
+					action: '16924'
+				},
+				customAttributes: {
+					magazine_id: '16924',
+					is_logged_in: (getMemberKey() != null && getMemberKey() != "")
+				}
+			});
+		</script>
+	<!-- //Header -->
+	<main class="melon-main">
+		
+
+
+
+
+
+
+
+    
+
+
+
+    
+        <div style="display:none !important;" tlog="%7B%22MENUID%22%3A%221000000498%22%2C%22SECTION%22%3A%22%EB%A9%9C%EB%A1%A0%EB%A7%A4%EA%B1%B0%EC%A7%84%22%2C%22PAGE%22%3A%22%EB%A9%9C%EB%A1%A0%EB%A7%A4%EA%B1%B0%EC%A7%84_%EB%A7%A4%EA%B1%B0%EC%A7%84%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80%22%2C%22CONTSTYPECODE%22%3A%22N10007%22%2C%22CONTSTYPENAME%22%3A%22%EB%A7%A4%EA%B1%B0%EC%A7%84%22%2C%22CONTSID%22%3A%2216924%22%2C%22CONTSNAME%22%3A%22aespa%20%EC%84%B8%EA%B3%84%EA%B4%80%EC%9D%98%20%EC%83%88%EB%A1%9C%EC%9A%B4%20%EC%B1%95%ED%84%B0%2C%20%27WDA%20%28Whole%20Different%20Animal%29%27%22%7D" section="멜론매거진" page="멜론매거진_매거진상세페이지" data-logging="https://log.melon.com/pv?log=@CR2@%5E@CR3@%5E@CR4@%5E%5E1000000498%5E@CR1@%5E@CR5@%5EN10007%5E16924%5E%5E%5E%5E%5E%5E%5E%5E" menu-id="1000000498"></div>
+    
+    
+
+
+<div class="cover-common cover-magazine "><div class="cover-thumb">
+				<span class="thumb-img" style="background-image:url(https://cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/83/274/imgUrl20260508110555325.jpg);"></span>
+			</div>
+			<div class="cover-contents">
+				<div class="cover-head">
+					<span class="img-logo" style="background-image:url(//cdnimg.melon.co.kr);"></span>
+					<span class="txt-corner txt-corner" onclick="goCategoryDetail(64)">매거진 이벤트</span> <h2 class="tit-g">aespa 세계관의 새로운 챕터, 'WDA (Whole Different Animal)'</h2>
+				</div>
+				<div class="cover-info">
+					<span class="txt-date">2026.05.11</span>
+				</div>
+				<div class="user-action">
+					<button id="likeYn" type="button" class="btn-action btn-like" aria-pressed="false"
+							onclick="magazinePost.like('16924');">
+						<!-- 좋아요 클릭시 on 클래스가 추가됩니다. -->
+						<span id="likeSrOnly" class="screen-out">선택 해제됨</span>
+						<span class="ico-sprite ico-common-like-22">좋아요</span>
+						<span id="likeCnt" class="txt-btn"></span>
+					</button>
+					<button type="button" class="btn-action btn-comment" onclick="magazinePost.commentList()">
+						<!-- 새로운 댓글 작성시 new 클래스가 추가됩니다. -->
+						<span class="ico-sprite ico-common-comment-22">댓글</span>
+						<span id="commentCnt" class="txt-btn"></span>
+						<!--<span class="ico-sprite ico-new">새글 등록됨</span>-->
+					</button>
+					<button type="button" class="btn-action btn-share" onclick="magazinePost.share('#bottomsheetShare')">
+						<span class="ico-sprite ico-common-share-22">공유하기</span>
+					</button>
+				</div>
+				<div class="play-action">
+						<div class="inner-play-action">
+							<button class="btn-play" onclick="playAllTrack()">
+								<span class="ico-sprite ic-common-play-01"></span>
+								<span class="txt-btn">선곡 전체재생</span>
+							</button>
+						</div>
+					</div>
+				</div>
+		</div>
+		<!-- //cover-common -->
+		<div class="wrap-magazine">
+			<div class="content-melon">
+            <div class="content-head content-head-corner aos-init aos-animate" data-aos="fade-up" data-aos-offset="-40" data-aos-duration="550">
+                <span class="tag-txt color-type">Special</span>
+                    <h3 class="tit-content"><span class="inner-title">aespa 세계관의 새로운 챕터, 'WDA (Whole Different Animal)'</span></h3>
+                </div>
+        </div>
+    <div class="content-melon">
+            <div class="group-desc" data-aos="fade" data-aos-offset="-30" data-aos-duration="300">
+                <p class="txt-info"><b>aespa가 5월 29일 정규 2집 [LEMONADE] 발매에 앞서, 더블 타이틀곡 'WDA (Whole Different Animal) (Feat. G-DRAGON)'를 선공개했습니다!</b><br/><br/>2024년 폭발적인 신드롬을 일으킨 정규 1집 <b>[Armageddon]</b> 이후 약 2년 만에 발매하는 정규 앨범인 만큼, 이번 앨범에서는 한층 더 견고해진 <b>aespa</b>의 세계관을 만나볼 수 있는데요. 지난해 싱글 <b>[Dirty Work]</b>와 미니 6집 <b>[Rich Man]</b>을 통해 쉼 없이 음악적 스펙트럼을 넓혀온 <b>aespa</b>이기에, 다시 열린 P.O.S를 통해 돌아온 이들의 역대급 컴백에 그 어느 때보다 뜨거운 이목이 쏠렸습니다!</p>
+            </div>
+        </div>
+    <div id="video_3513728" class="content-melon"></div>
+<div class="content-melon">
+            <div class="group-desc" data-aos="fade" data-aos-offset="-30" data-aos-duration="300">
+                <p class="txt-info">본격적인 컴백을 예고한 티징 콘텐츠 역시 <b>aespa</b>다운 감각적인 비주얼로 큰 화제를 모았는데요. 특히, 이번 트레일러에는 <b>'Savage'</b>부터 <b>'MY WORLD'</b>, <b>'Armageddon'</b>, <b>'Whiplash'</b> 등 그동안 <b>aespa</b>가 경험해 온 다양한 세계에 '특이점'이 발생한 모습이 담겼습니다. 이는 서로 다른 세계가 뒤섞이며 생기는 균열을 암시하며, 정규 2집 <b>[LEMONADE]</b>에서 펼쳐질 새로운 세계관에 대한 기대감을 최고조로 끌어올렸죠.<br/><br/>특유의 '쇠 맛' 매력과 톡 쏘는 짜릿함으로 '극강의 신맛'을 선사할 <b>aespa</b>의 정규 2집! 그 거대한 서막을 알리는 <b>'WDA (Whole Different Animal) (Feat. G-DRAGON)'</b>를 먼저 만나볼까요?<br/><br/><i>*멜론 가족분들에게만 특별히 공개하는 독점 이미지도 준비되어 있으니 끝까지 놓치지 마세요!</i></p>
+            </div>
+        </div>
+    <div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/5f/e24/imgUrl20260508104019524.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+            <div class="content-head content-head-corner aos-init aos-animate" data-aos="fade-up" data-aos-offset="-40" data-aos-duration="550">
+                <span class="tag-txt color-type">Single</span>
+                    <h3 class="tit-content"><span class="inner-title">aespa 'WDA (Whole Different Animal) (Feat. G-DRAGON)'</span></h3>
+                </div>
+        </div>
+    <div class="content-melon">
+            <div class="group-album" data-aos="fade-up" data-aos-offset="-50">
+                <span class="img-album" style="background-image:url(//cdnimg.melon.co.kr/cm2/album/images/133/84/085/13384085_20260528181046_500.jpg?YUV444);" onclick="goDetail('album', '13384085')"></span>
+                <span class="screen-out">LEMONADE - The 2nd Album 앨범 커버</span>
+            </div>
+        </div>
+        <div class="content-melon">
+            <div class="group-desc" data-aos="fade" data-aos-offset="-30" data-aos-duration="300">
+                <p class="txt-info"></p>
+            </div>
+        </div>
+    <div class="content-melon">
+            <div class="group-songlist" data-aos="fade" data-aos-offset="-30" data-aos-duration="500">
+                <ul id="readyBox_3513733" class="list-melon list-song">
+                        <li>
+                            <div class="box-item box-song ">
+                                <div class="inner-item">
+                                    <div onclick="landingDetail('song', '601968268')" class="link-detail">  <div class="box-thumb">
+                                            <span class="img-thumb" style="background-image: url('//cdnimg.melon.co.kr/cm2/album/images/133/84/085/13384085_20260528181046_500.jpg?YUV444/melon/resize/144');"></span>
+                                        </div>
+                                        <div class="info-content">
+                                            <strong class="tit-content">
+                                            <span class="txt-title ellipsis" id="titleSong_3513733_601968268">WDA (Whole Different Animal) (Feat. G-DRAGON)</span>
+                                            </strong>
+                                            <span class="desc-content">
+                                                <span class="screen-out">아티스트명 : </span>
+                                                <span class="txt-description ellipsis">aespa</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <a href="javascript:goDetail('album', '13384085')" class="link-album">
+                                        <span class="screen-out">앨범 자세히보기</span>
+                                    </a>
+                                    <button type="button" class="btn-util btn-play" onclick="__appContentPlay('1000000498', 1, '601968268')" aria-describedby="titleSong_3513733_601968268">
+                                        <span class="ico-sprite ico-common-play-02">재생</span>
+                                            <input type="hidden" name="songid" value="601968268" />
+                                            <input type="hidden" name="adultFlg" value="false" />
+                                    </button>
+                                    </div>
+                            </div>
+                        </li>
+                        </ul>
+
+                    <form name="streamForm" id="streamForm_3513733" method="post" style="display: none; margin:0px;">
+                        <ol>
+                            <li>
+                                    <input type="checkbox" name="dlsongid_3513733" value="601968268" checked="checked" />
+                                </li>
+                            </ol>
+                    </form>
+
+                    <div class="area-more">
+                        <button class="btn-download songs-download-btn" style="display: none;"
+                                onclick="goBuyProduct('streamForm_3513733', '', '3C0001', 'dlsongid_3513733', '0', '1000000498')">
+                            <span class="ico-sprite ico-download-22"></span> 다운로드
+                        </button>
+                    </div>
+                </div>
+        </div>
+    <div class="content-melon">
+            <div class="group-desc" data-aos="fade" data-aos-offset="-30" data-aos-duration="300">
+                <p class="txt-info">정규 2집의 더블 타이틀곡 <b>'WDA (Whole Different Animal) (Feat. G-DRAGON)'</b>는 웅장한 신스 베이스와 묵직한 훅이 강렬한 인상을 남기는 힙합 기반의 댄스곡입니다. <b>'Whole Different Animal'</b>이라는 제목처럼, 한층 견고해진 <b>aespa</b>의 성장을 담은 가사는 세계관의 새로운 챕터가 시작되었음을 선포하는데요. <b>aespa</b> 보컬 특유의 '쇠 맛' 매력은 피처링 아티스트로 참여한 'G-DRAGON'의 강렬한 래핑과 어우러지며 강렬한 시너지를 완성합니다.</p>
+            </div>
+        </div>
+    <div id="video_3513735" class="content-melon"></div>
+<div class="content-melon">
+            <div class="content-head content-head-corner aos-init aos-animate" data-aos="fade-up" data-aos-offset="-40" data-aos-duration="550">
+                <span class="tag-txt color-type">Exclusive Photo </span>
+                    <h3 class="tit-content"><span class="inner-title">She's a Whole Different Animal</span></h3>
+                </div>
+        </div>
+    <div class="content-melon">
+            <div class="group-desc" data-aos="fade" data-aos-offset="-30" data-aos-duration="300">
+                <p class="txt-info">묘한 긴장감이 감도는 <b>aespa</b>의 독점 이미지를 지금 바로 만나 보세요!</p>
+            </div>
+        </div>
+    <div class="content-melon">
+        <div class="group-desc" data-aos="fade-up" data-aos-offset="-70" data-aos-duration="150">
+                    <strong class="tit-info">#카리나 (KARINA)</strong>
+            </div>
+        </div>
+    <div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/44/b07/imgUrl20260508104146520.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/73/5ef/imgUrl20260508104152570.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/14/c0f/imgUrl20260508104159002.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/66/d42/imgUrl20260508104205147.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+        <div class="group-desc" data-aos="fade-up" data-aos-offset="-70" data-aos-duration="150">
+                    <strong class="tit-info">#지젤 (GISELLE)</strong>
+            </div>
+        </div>
+    <div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/d2/e8b/imgUrl20260508104222845.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/a5/e79/imgUrl20260508104229389.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/89/128/imgUrl20260508104235862.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/14/b6d/imgUrl20260508104242512.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+        <div class="group-desc" data-aos="fade-up" data-aos-offset="-70" data-aos-duration="150">
+                    <strong class="tit-info">#윈터 (WINTER)</strong>
+            </div>
+        </div>
+    <div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/82/c8b/imgUrl20260508104256894.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/f9/c0e/imgUrl20260508104306694.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/0f/140/imgUrl20260508104312097.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/d9/47f/imgUrl20260508104317830.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+        <div class="group-desc" data-aos="fade-up" data-aos-offset="-70" data-aos-duration="150">
+                    <strong class="tit-info">#닝닝 (NINGNING)</strong>
+            </div>
+        </div>
+    <div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/00/27e/imgUrl20260508104333268.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/15/5d8/imgUrl20260508104338422.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/78/ccf/imgUrl20260508104345991.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/64/d33/imgUrl20260508104351283.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+            <div class="content-head content-head-corner aos-init aos-animate" data-aos="fade-up" data-aos-offset="-40" data-aos-duration="550">
+                <span class="tag-txt color-type">From aespa</span>
+                    <h3 class="tit-content"><span class="inner-title">To Melon</span></h3>
+                </div>
+        </div>
+    <div id="video_3513759" class="content-melon"></div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/f7/3d0/imgUrl20260508104414996.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/4a/a51/imgUrl20260508104419683.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/d8/0ed/imgUrl20260508104424991.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+    <div class="module-img" data-aos="fade-up" data-aos-offset="-50">
+                <span class="inner-img"><img src="//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/44/03f/imgUrl20260508104428831.jpg/melon/optimize/90" alt="" class="photoViewer"></span>
+                </div>
+        </div>
+<div class="content-melon">
+            <div class="group-desc" data-aos="fade" data-aos-offset="-30" data-aos-duration="300">
+                <p class="txt-info">독보적인 세계관 맛집, <b>aespa</b>의 새로운 시작을 알리는 <b>'WDA (Whole Different Animal) (Feat. G-DRAGON)'</b> 재미있게 즐겨 주시고요! 앞으로 쏟아질 다채로운 'LEMONADE' 맛의 티징 콘텐츠와 함께, 5월 29일 13시 공개될 <b>aespa</b>의 정규 2집을 설레는 마음으로 기다려 주세요!</p>
+            </div>
+        </div>
+    <div class="cover-common cover-magazine-event">
+        <div class="cover-thumb">
+                <span class="thumb-img" style="background-image:url(//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/4f/c1d/imgUrl20260508040936366.jpg/melon/optimize/90);"></span>
+            </div>
+        <div class="cover-contents">
+            <div class="cover-head">
+                <span class="txt-corner txt-corner">EVENT</span>
+                    <h2 class="tit-g">aespa 댓글 이벤트</h2>
+            </div>
+            <div class="cover-body">
+                    <div class="info-event">
+                        <p class="desc-g">aespa 'WDA (Whole Different Animal)' 매거진 좋아요 & 감상평 남기고 선물 받으세요!</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="wrap-magazine">
+        <h2 class="screen-out">이벤트</h2>
+        <div class="content-melon">
+            <div class="content-body content-magazine-event">
+                <dl class="list-event">
+                    <div class="unit-event">
+                        <dt class="tit-g">참여기간</dt>
+                        <dd class="txt-g">2026.05.11 ~ 2026.05.25</dd>
+                    </div>
+                    <div class="unit-event">
+                        <dt class="tit-g">당첨발표</dt>
+                        <dd class="txt-g">2026.06.01</dd>
+                    </div>
+                    <div class="unit-event">
+                        <dt class="tit-g">대상자</dt>
+                        <dd class="txt-g">이용권 보유 고객 중 댓글 작성자</dd>
+                    </div>
+                    <div class="unit-event">
+                        <dt class="tit-g">당첨경품</dt>
+                        <dd class="txt-g">단체 사인 미니 포스터 + 독점 엽서 세트 6명</dd>
+                    </div>
+                </dl>
+                <div class="area-btn">
+                    <button class="btn-event" onclick="eventStandardEntryCheck('37733')"><span class="txt-g txt-corner">이벤트 참여하기</span></button>
+                </div>
+                <ul class="list-noti">
+                    <li>당첨안내를 위해 휴대폰번호가 정확한지 꼭 확인 부탁 드리며, 해당 연락처를 통해 주소 별도 수집 예정입니다.</li>
+                    <li>연락처 미기재 또는 개인정보 취급/제공 미동의 시 당첨대상에서 제외됩니다.</li>
+                    <li>계정 통합 회원의 경우, 멜론 카카오톡 채널을 통해 당첨 안내 및 연락처, 주소 별도 수집 예정입니다.</li>
+                    <li>이벤트 경품은 기획사 사정에 의해 변경될 수 있습니다.</li>
+                    <li>'이벤트 참여하기' 버튼까지 누르셔야 응모가 완료됩니다.</li>
+                    <li>당첨 발표 시, 당첨 대상자가 이용권 미보유일 경우 당첨에서 제외됩니다.</li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+<div class="content-melon content-artist">
+        <div class="content-head" data-aos="fade" data-aos-duration="300"><!-- 240611 MMQA-15767 모션 효과 추가 -->
+            <h3 class="tit-content">
+                <span class="inner-title">연관 아티스트</span>
+            </h3>
+        </div>
+    </div>
+    <div class="content-melon">
+        <div class="group-artist" data-aos="fade" data-aos-duration="300"><!-- 240611 MMQA-15767 모션 효과 추가 -->
+            <ul class="list-melon list-artist">
+                <li>
+                        <div class="box-item box-artist">
+                            <div class="inner-item">
+                                <a href="javascript:pauseVideo();goDetail('artist', '2899555')" class="link-detail">
+                                    <div class="box-thumb">
+                                        <span class="img-thumb" style="background-image: url('//cdnimg.melon.co.kr/cm2/artistcrop/images/028/99/555/2899555_20260526185858.jpg/melon/optimize/90/optimize/90');"></span>
+                                    </div>
+                                    <div class="info-content">
+                                        <strong class="tit-content">
+                                            <span class="txt-title">aespa</span>
+                                        </strong>
+                                    </div>
+                                </a>
+                                <!--<button type="button" class="btn-util btn-fan" data-button-type="modal" data-target="#alertApp">-->
+                                <button name="fan_2899555" type="button" class="btn-util btn-fan" onclick="fn_artist_like(this, '2899555')">
+                                    <span class="ico-sprite ico-common-fan-list-22">팬맺기</span>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+        </div>
+        </div>
+<div class="content-melon content-tag">
+					<div class="content-head">
+						<h3 class="tit-content">
+							<span class="inner-title">연관 태그</span>
+						</h3>
+					</div>
+					<div class="group-tag">
+						<div class="inner-group">
+							<button type="button" class="btn-tag" onclick="goTagDetailPage(83772)">
+									<span class="txt-btn ellipsis">#aespa</span>
+								</button>
+							<button type="button" class="btn-tag" onclick="goTagDetailPage(98775)">
+									<span class="txt-btn ellipsis">#매거진이벤트</span>
+								</button>
+							<button type="button" class="btn-tag" onclick="goTagDetailPage(8189)">
+									<span class="txt-btn ellipsis">#이벤트</span>
+								</button>
+							</div>
+					</div>
+				</div>
+			
+
+
+
+    <!-- document.domain -->
+    <script type="text/javascript">document.domain='melon.com';</script>
+
+    
+    
+        <!-- melon comment plugin -->
+        <div id="d_cmtpgn_list" class="content-melon content-comment"
+             data-sqwidget="templateType:mobile6-list-page;pageType:summary-page;"
+             data-sqwidget-settings="cmtPocType:m.web;pocId:;menuId:1000000498;useInWebveiw:false;chnlSeq:501;contsRefValue:16924;listPageUrl:/m6/comment/list.htm?chnlSeq=501&contsRefValue=16924;writePageUrl:/m6/comment/write.htm?chnlSeq=501&contsRefValue=16924;viewPageUrl:/m6/comment/view.htm?chnlSeq=501&contsRefValue=16924;">
+        </div>
+        <script type="text/javascript">
+          (function ($) {
+            try {
+              if (POC_ID == 'AS40' || POC_ID == 'IS40') {
+                var $cmtpgn = $("#d_cmtpgn_list");
+                if( $cmtpgn != null ){
+                  cmtDataSqwidgetSettings = $cmtpgn.attr("data-sqwidget-settings") + ";useInWebveiw:true;";
+                  $cmtpgn.attr("data-sqwidget-settings", cmtDataSqwidgetSettings);
+                }
+              }
+            } catch (e) {}
+          })(jQuery);
+        </script>
+    
+    <!-- 댓글플러그인 리소스 -->
+    
+<script type="text/javascript" src="//cmt.melon.com/cmt/plugin/release/melonweb_cmtpgn_mobile6_list.js?tm=202207201752"></script>
+
+    <!-- //melon comment plugin -->
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    let appPocIds = ['AS40', 'IS40'];
+
+    // 상단 댓글 버튼 클릭
+    let $cmtBtn = $(".user-action .btn-comment");
+    if ($cmtBtn){
+      $cmtBtn.click(function(event){
+        let cmtListUrl =  "https://m2.melon.com/m6/comment/list.htm"
+            + "?pocId=&cmtPocType=m.web&chnlSeq=501&contsRefValue=16924&returnPage=" + encodeURIComponent(location.href);
+        if (appPocIds.includes(POC_ID))
+          commentObj.openWebview({url : cmtListUrl});
+        else
+          location.href = cmtListUrl;
+      });
+    }
+
+    // 상단 댓글 카운트, HOT 세팅
+    let $cmtCntTxt = $(".user-action .btn-comment .txt-btn").not(".cmtpgn-exclude-set-cnt");
+    let $cmtHotIcon = $(".user-action .btn-comment .ic-common-hot-24").not(".cmtpgn-exclude-set-hot");
+    if ($cmtCntTxt.length > 0 || $cmtHotIcon.length > 0) {
+        getCmtContsSumm('501', '16924', function (cmtCnt, isHot) {
+          if ($cmtCntTxt){
+            var cmtTotCnt = (cmtCnt != null) ? cmtCnt : 0;
+            var strCmtTotCnt = cmtTotCnt > 9999999 ? "9,999,999+" : cmtTotCnt.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+            $cmtCntTxt.text(strCmtTotCnt);
+          }
+
+          if ($cmtHotIcon && isHot != null)
+            isHot == true ? $cmtHotIcon.show() : $cmtHotIcon.hide();
+        });
+      }
+  });
+
+  function getCmtContsSumm(chnlSeq, contsRefValue, callback){
+    let cmtContsSummUrl = "https://cmt.melon.com/cmt/api/api_informCmtContsSumm.json"
+        + "?pocId=&cmtPocType=m.web&chnlSeq="+chnlSeq+"&contsRefValue="+contsRefValue;
+
+    $.getJSON(cmtContsSummUrl, function(data) {
+      if (data && data.result != undefined) {
+        let cmtContsSumm = data.result.cmtContsSumm;
+        if (typeof callback === "function") {
+          callback(cmtContsSumm.validCmtCnt, cmtContsSumm.hotFlag);
+        }
+      }
+    });
+  }
+</script><div id="recommendMagazine"></div>
+			<div id="bannerMagazine"></div>
+			<div class="content-melon">
+				<div id="cornerAllBtn" class="group-btn group-btn-webview">
+					<button class="btn-type01" onclick="magazinePost.list()">카테고리 전체보기</button>
+				</div>
+			</div>
+		</div>
+	</main>
+</div><!-- //melon-container -->
+<div class="melon-floating" style="display: none;">
+	<div class="inner-floating">
+		<p class="txt-g">멜론 앱에서 더 많은 콘텐츠를 즐기세요.</p>
+		<button type="button" class="btn-app"  data-button-type="app" onclick="openMelonApp(16924)">
+			<span class="txt-btn">앱 열기</span>
+		</button>
+		<button type="button" class="btn-close" id="melonFloatingClose">
+			<span class="ico-sprite ico-web-toolbar-close">닫기</span>
+		</button>
+	</div>
+</div><div class="melon-modal" id="djFollowModal" style="display: none;">
+	<div class="modal-dialog modal-alert">
+		<div class="modal-layer">
+			<div class="inner-layer">
+				<div class="layer-body">
+					<p class="txt-alert"></p>
+				</div>
+				<div class="layer-foot">
+					<button type="button" class="btn-modal btn-cancel">
+						<span class="txt-btn">취소</span>
+					</button>
+					<button type="button" class="btn-modal btn-submit" id="popVarLink" data-href="#none" data-djmemberkey = "" onclick="unFollow(this)">
+						<span class="txt-btn">팔로우 취소</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="popup-toast" style="display:none;">
+	<span class="txt-toast"></span>
+</div>
+
+<!-- MELONUIT-2600 좋아요 팬맺기 디자인 가이드 변경 -->
+<div class="popup-toast popup-toast-like    ">
+	<span class="txt-toast" aria-live="polite"></span> <!-- 접근성QA MELONACC-3003 aria 추가 -->
+	<span class="icon-lottie" id="likeIcon"> </span>
+</div>
+
+<!-- MELONUIT-2600 좋아요 팬맺기 디자인 가이드 변경 -->
+<div class="popup-toast popup-toast-fan    ">
+	<span class="txt-toast" aria-live="polite"></span> <!-- 접근성QA MELONACC-3003 aria 추가 -->
+	<span class="icon-lottie" id="fanIcon"> </span>
+</div>
+
+
+<!-- footer -->
+
+
+
+<footer class="melon-footer simple-footer">
+    <div class="inner-footer">
+        <h2 class="screen-out">서비스 이용정보</h2>
+        <small class="txt-copyright"><a href="javascript:window.open('https://kakaoent.com','POP_POLICY','');" class="link-copyright">&copy; Kakao Entertainment Corp.</a></small>
+    </div>
+</footer>
+
+<!-- 공유하기 -->
+<div class="melon-modal" id="bottomsheetShare">
+	<div class="modal-dialog modal-bottomsheet">
+		<div class="modal-layer">
+			<div class="inner-layer">
+				<div class="layer-head">
+					<strong class="tit-layer">공유하기</strong>
+				</div>
+				<div class="layer-body">
+					<div class="box-bottomsheet bottomsheet-share">
+						<div class="inner-box">
+							<ul class="list-bottomsheet">
+								<li>
+									<button id="kakaotalk" type="button" class="btn-bottomsheet">
+                    					<span class="ico-thumb">
+											<span class="ico-sprite ic-common-kakao-20"></span>
+                    					</span>
+										<span class="txt-btn">카카오톡</span>
+									</button>
+								</li>
+								<li>
+									<button id="twitter" type="button" class="btn-bottomsheet">
+										<span class="ico-thumb">
+											<span class="ico-sprite ic-common-twitter-20"></span>
+                    					</span>
+										<span class="txt-btn">X</span>
+									</button>
+								</li>
+								<li>
+									<button id="facebook" type="button" class="btn-bottomsheet">
+                    					<span class="ico-thumb">
+											<span class="ico-sprite ic-common-facebook-20"></span>
+                    					</span>
+										<span class="txt-btn">페이스북</span>
+									</button>
+								</li>
+								<li>
+									<button id="copyUrl" type="button" class="btn-bottomsheet">
+										<span class="ico-thumb">
+											<span class="ico-sprite ic-common-url-20"></span>
+                   						 </span>
+										<span class="txt-btn">URL 복사</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="btn-close">
+					<span class="ico-sprite ico-common-close-30">닫기</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //공유하기 -->
+<div id="postName" style="display:none;">[매거진 이벤트]aespa 세계관의 새로운 챕터, 'WDA (Whole Different Animal)'</div>
+<script type="text/javascript" src="/resource/mobile40/cds/common/js/kakao.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+  	$.HOME = "https://m2.melon.com";
+  	var postId = '16924';
+	var type ='mus';
+	var postName = $("#postName").text();
+	var postDescription = "";
+	var postImg = "https://cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/6e/dff/imgUrl20260508110527518.jpg";
+	var artistPostName = "";
+	var isAdult = ("" == 'true');
+	var totSongCnt = "";
+	var twitterPostUrl = "";
+	$.longUrl = $.HOME + "/pda/msvc/snsGatePage.jsp?type="+type+"&sId=" + postId;
+
+	var spotlightEventId = '';
+	if('spotlight' == type){
+		spotlightEventId = $('input[name=d_event_id]').val();
+		postDescription = $('input[name=d_sns_desc]').val();
+		postImg = $('input[name=d_sns_img]').val();
+		postName = $('input[name=d_sns_title]').val();
+	}
+		if('gt' == type){
+			postImg = fimgurl;
+		}
+
+		// 신규 URL 링크 복사 (iOS 18 ~ 지원)
+		$('#copyUrl').click(function() {
+
+			if('gt' == type) {
+				$.longUrl = $.HOME +"/m6/getTitle/share.htm?memberKey=&type="+gtype+"&code="+code+"&bgImg="+bgImg+"&statFlag="+status;
+			}
+
+			var copyUrl = getNShortenUrl({longUrl:$.longUrl, ref:'copyurl'});
+
+			if ('kpop100' == type) {
+				copyUrl = 'https://into.melon.com/kpop100';
+			}else if('spotlight' == type){
+				if(typeof insertSpotlightActionLog == 'function'){
+					insertSpotlightActionLog('CP', spotlightEventId);
+				}
+
+				// url 복사하기
+				copyUrl = 'https://into.melon.com/bridge/normal/spotlight/' + spotlightSeq;
+			}
+
+			if (navigator.clipboard && navigator.clipboard.writeText) {
+				navigator.clipboard.writeText(copyUrl)
+						.then(() => alert("URL이 복사되었습니다."))
+						.catch(err => {
+							fn_sns_url_old(copyUrl);
+						});
+			} else {
+				fn_sns_url_old(copyUrl);
+			}
+		});
+
+		// 구버전 URL 링크 복사 (~ iOS 17 까지 지원)
+		function fn_sns_url_old(shareUrl) {
+			let el = document.createElement('textarea');
+			el.value = shareUrl;
+
+			el.setAttribute('readonly', '');
+			el.style = {position: 'absolute', left: '-9999px'};
+			document.body.appendChild(el);
+
+			if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+				let editable = el.contentEditable;
+				let readOnly = el.readOnly;
+
+				el.contentEditable = true;
+				el.readOnly = true;
+
+				let range = document.createRange();
+				range.selectNodeContents(el);
+
+				let selection = window.getSelection();
+				selection.removeAllRanges();
+				selection.addRange(range);
+				el.setSelectionRange(0, 999999);
+
+				el.contentEditable = editable;
+				el.readOnly = readOnly;
+			} else {
+				el.select();
+			}
+
+			let successful = document.execCommand('copy');
+			if (successful) {
+				alert("URL이 복사되었습니다.");
+			} else {
+				alert("fail");
+			}
+			document.body.removeChild(el);
+		}
+
+	//트위터 클릭(S) 
+	$('#twitter').click(function() {
+		
+		if(artistPostName.length > 30){
+			artistPostName = artistPostName.substring(0, 30) + "...";
+		}
+		
+		if('art'==type){
+			
+			//artist
+			$.adjTitle = artistPostName + " - 좋아합니다.";
+			twitterPostUrl = "https://www.melon.com/restful/sns/posting/twitter/art/"+postId+".htm"
+			
+		}else if('son'==type){
+			
+			//song
+			var songName = postName;
+			 if(songName != null && songName.length > 60){
+				 songName = songName.substring(0, 60) + "...";
+				}
+			$.adjTitle = songName + " - " + artistPostName + " - 들어보세요.";
+			twitterPostUrl = "https://www.melon.com/restful/sns/posting/twitter/son/"+postId+".htm"
+			
+		}else if('alb'==type){
+			
+			//album
+			var albumName = postName;
+			 if(albumName != null && albumName.length > 60){
+				 albumName = albumName.substring(0, 60) + "...";
+				}
+			$.adjTitle = artistPostName + "의 "+ albumName +" - 추천합니다.";
+			twitterPostUrl = "https://www.melon.com/restful/sns/posting/twitter/alb/"+postId+".htm"
+			
+		}else if('mvd'==type){
+			
+			//melontv
+			var mvName = postName;
+			if(mvName != null && mvName.length > 50){
+				mvName = mvName.substring(0, 50) + "...";
+			}
+			$.adjTitle = artistPostName + "의 " + mvName + " - 감상해보세요.";
+			twitterPostUrl = "https://www.melon.com/restful/sns/posting/twitter/mvd/"+postId+".htm"
+
+		}else if('ntz' == type) {
+			
+			$.adjTitle = '멜론 주간 어워드 투표 진행중! 빨리 투표에 참여하세요.';
+			twitterPostUrl = "https://www.melon.com/restful/sns/posting/twitter/ntz/0.htm"
+
+		}else if('mus' == type) {
+
+			$.adjTitle = postName;
+			twitterPostUrl = "https://www.melon.com/restful/sns/posting/twitter/mus/"+postId+".htm";
+
+		}else if('musc' == type) {
+
+			$.adjTitle = postName;
+			twitterPostUrl = "https://www.melon.com/restful/sns/posting/twitter/musc/"+postId+".htm";
+		} else if('kpop100' == type) {
+			$.adjTitle = "["+ postName +"] "+postDescription;
+
+		} else if('gt' == type) {
+			$.adjTitle = "["+ postName +"] "+postDescription;
+			$.longUrl = $.HOME +"/m6/getTitle/share.htm?memberKey=&type="+gtype+"&code="+code+"&bgImg="+bgImg+"&statFlag="+status
+
+
+		} else if('spotlight' == type) {
+			if(typeof insertSpotlightActionLog == 'function'){
+				insertSpotlightActionLog('TW', spotlightEventId);
+			}
+			postName = $('input[name=d_sns_title]').val();
+			postDescription = $('input[name=d_sns_desc]').val();
+			$.adjTitle = "[" + postName + "] " + postDescription + " #Melon #스포트라이트";
+
+		}else{
+			
+			$.adjTitle = postName;
+
+		}
+
+		//트위터 이미지 공유 기능 추가
+		if(twitterPostUrl != ""){
+			$.cbUrl = getNShortenUrl({longUrl:twitterPostUrl, ref:'twitter', isRef:'N'});
+			$.encodeUrl = encodeURIComponent($.cbUrl);
+			$.encodeTitle	= encodeURIComponent($.adjTitle);
+			if('mus' == type){
+				if(POC_ID == "AS40" || POC_ID == "IS40"){
+					$.twitURL = encodeURIComponent("https://twitter.com/intent/tweet?url=" + $.cbUrl + "&text=" + $.adjTitle + "&hashtags=Melon");
+				}else{
+					$.twitURL = "https://twitter.com/intent/tweet?url=" + $.encodeUrl + "&text=" + $.encodeTitle + "&hashtags=Melon";
+				}
+			}else{
+				$.twitURL = "https://twitter.com/intent/tweet?url=" + $.encodeUrl + "&text=" + $.encodeTitle + "&hashtags=Melon";
+			}
+		} else if('kpop100' == type) {
+			$.cbUrl = 'https://into.melon.com/kpop100';
+			$.strStatus	= encodeURIComponent($.adjTitle + " " + $.cbUrl + " #Melon #kpop");
+			$.twitURL = "https://twitter.com/intent/tweet?lang=ko&text=" + $.strStatus;
+
+		} else if('gt' == type) {
+			$.linkUrl = $.HOME +"/m6/getTitle/share.htm?memberKey=&type="+gtype+"&code="+code+"&bgImg="+bgImg+"&statFlag="+status;
+			$.cbUrl = getShareUrl({title: decodeURIComponent($.adjTitle), desc: decodeURIComponent($.description), imgUrl: decodeURIComponent(postImg), landingUrl: $.linkUrl});
+			$.strStatus	= encodeURIComponent($.adjTitle + " " + $.cbUrl + " #Melon #멜론 #마이활동뱃지");
+			$.twitURL = "https://twitter.com/intent/tweet?lang=ko&text=" + $.strStatus;
+
+
+
+		}else if('spotlight' == type) {
+			$.cbUrl = getNShortenUrl({longUrl:('https://into.melon.com/bridge/tw/spotlight/' + spotlightSeq), ref:'twitter', isRef:'N'});
+			$.encodeUrl = encodeURIComponent($.cbUrl);
+			$.encodeTitle	= encodeURIComponent($.adjTitle);
+			if (POC_ID == "AS40" || POC_ID == "IS40") {
+				$.twitURL = encodeURIComponent("https://twitter.com/intent/tweet?url=" + $.cbUrl + "&text=" + $.encodeTitle);
+			} else {
+				$.twitURL = "https://twitter.com/intent/tweet?url=" + $.encodeUrl + "&text=" + $.encodeTitle;
+			}
+		}else{
+			$.cbUrl = getNShortenUrl({longUrl:$.longUrl, ref:'twitter'});
+			$.strStatus	= encodeURIComponent($.adjTitle + " " + $.cbUrl + " #Melon");
+			$.twitURL = "https://twitter.com/intent/tweet?lang=ko&text=" + $.strStatus;
+		}
+
+		if(POC_ID == "AS40" || POC_ID == "IS40" ){
+
+			$.parantUrl = window.document.location.href;
+
+			if ('mus' == type || 'spotlight' == type) {
+				if (POC_ID == "AS40") {
+					appLaunch('melonapp://webview?url=' + $.twitURL + '&type=OA&source=tweetbutton&original_referer=' + encodeURIComponent($.parantUrl),'',false);
+				} else if(POC_ID == "IS40") {
+					appLaunch('meloniphone://webview?url=' + $.twitURL + '&type=OA&source=tweetbutton&original_referer=' + encodeURIComponent($.parantUrl), '', false);
+				}
+			} else {
+				window.location.href = $.twitURL + "&source=tweetbutton&original_referer=" + encodeURIComponent($.parantUrl);
+			}
+
+		}else{
+			window.open($.twitURL);
+			
+			var currUrl = window.document.location.href;
+			currUrl = currUrl.replace("snsGate=Y", "snsGate=N");
+			location.href = currUrl;
+		}
+	});
+
+	//페이스북 클릭(S)
+	$('#facebook').click(function() {
+		//로그인 체크 제거 기획자 요청 김미선M
+		if('art'==type){
+			
+			//artist
+			$.adjTitle = encodeURIComponent(artistPostName);
+			
+		}else if('son'==type){
+			
+			//song
+			$.adjTitle = encodeURIComponent(postName +" - "+artistPostName);
+			
+		}else if('alb'==type){
+			
+			//album
+			$.adjTitle = encodeURIComponent(postName +" - "+artistPostName);
+			
+		}else if('mvd'==type){
+			
+			//melontv
+			$.adjTitle = encodeURIComponent(postName +" - "+artistPostName);
+			
+		}else if('ntz' == type) {
+			
+			//주간어워드
+			$.adjTitle = encodeURIComponent('멜론 주간 어워드 투표 진행중! 빨리 투표에 참여하세요.');
+			
+		}else if('kpop100' == type) {
+
+			// K-POP 명곡 100
+			$.adjTitle = encodeURIComponent(postName+'\n'+postDescription);
+		}else if('gt' == type) {
+			//
+			$.adjTitle = encodeURIComponent(postName+'\n'+postDescription);
+		}else if('spotlight' == type) {
+			// 페이스북
+			if(typeof insertSpotlightActionLog == 'function'){
+				insertSpotlightActionLog('FB', spotlightEventId);
+			}
+			postName = $('input[name=d_sns_title]').val();
+			postDescription = $('input[name=d_sns_desc]').val();
+			$.adjTitle = encodeURIComponent(postName+'\n'+postDescription);
+
+		}else{
+			
+			$.adjTitle = encodeURIComponent(postName);
+
+		} 
+		
+		$.description = encodeURIComponent("음악이 필요한 순간, 멜론");
+		if ('kpop100' == type) {
+			$.linkUrl = 'https://into.melon.com/kpop100';
+		} else if ('gt' == type) {
+			postImg = fimgurl;
+			$.linkUrl =  $.HOME +"/m6/getTitle/share.htm?memberKey=&type="+gtype+"&code="+code+"&bgImg="+bgImg+"&statFlag="+status;
+		}else if ('spotlight' == type) { // deprecated - ios 노티 가려지는 이슈
+			// 페이스북
+			$.linkUrl = 'https://into.melon.com/bridge/fb/spotlight/' + spotlightSeq;
+			postImg = $('input[name=d_sns_img]').val();
+			// console.log('fb', postImg);
+		} else {
+			$.linkUrl = getNShortenUrl({longUrl:$.longUrl, ref:'facebook'});
+		}
+
+		$.caption = encodeURIComponent("www.melon.com");
+		if(postImg == null || postImg == ""){
+			postImg = encodeURIComponent("https://cdnimg.melon.co.kr/resource/image/cds/common/mobilempoc/musiclog_melon_150x150.png");
+		}else{
+			postImg = encodeURIComponent(postImg);
+		}
+
+		let shareUrl = getShareUrl({title: decodeURIComponent($.adjTitle), desc: decodeURIComponent($.description), imgUrl: decodeURIComponent(postImg), landingUrl: $.linkUrl});
+		let closeUrl = "https://m2.melon.com" + "/cds/support/mobile2/sns_close.htm?pocId=" + POC_ID; // 페이스북 공유 후 닫기 URL (PA, m.com)
+		$.facebookURL = 'https://www.facebook.com/dialog/feed?app_id=4022717807957185&display=page&link=' + encodeURIComponent(shareUrl) + "&redirect_uri=" + encodeURIComponent(closeUrl);
+
+		if(POC_ID == "AS40" || POC_ID == "IS40" ){
+
+			if ('kpop100' == type || 'mus' == type || 'gt' == type || 'spotlight' == type) {
+				openSns('', $.facebookURL);
+ 			} else {
+			  window.location.href = $.facebookURL;
+			}
+
+		}else{
+			window.open($.facebookURL);
+			
+			var currUrl = window.document.location.href;
+			currUrl = currUrl.replace("snsGate=Y", "snsGate=N");
+			location.href = currUrl;
+		}
+	});
+
+	var appKey = "4d545a185d172754667d621049004aa1";		//상용 key
+//    var appKey = "deaa7e074c7cdb9b0071820769aa7df5";			//sandbox key 
+	Kakao.init(appKey);
+	// kakaotalk v2 설정
+	$('#kakaotalk').click(function() {
+		if('son'==type) {
+			Kakao.Link.sendCustom({
+				templateId : 17141,
+				templateArgs : {
+					'THUMB_URL': postImg,
+					'TITLE': postName,
+					'ARTIST': artistPostName,
+					'SONG_ID': postId,
+					'KMA': isAdult
+				}
+			});
+		} else if ('alb' == type) {
+			Kakao.Link.sendCustom({
+				templateId : 17142,
+				templateArgs : {
+					'THUMB_URL': postImg,
+					'TITLE': postName,
+					'ARTIST': artistPostName,
+					'ALBUM_ID': postId,
+					'SONG_COUNT': totSongCnt
+				}
+			});
+		}  else if ('ply' == type || 'djc' == type) {
+				var songCnt = '';
+				if(songCnt == 0){
+					alert('수록곡이 없는 플레이리스트는 카카오톡 공유가 불가합니다.');
+					return;
+				}
+
+				var tmpId = 10548;
+				if ('djc' == type ){
+					tmpId = 10549;
+				}
+			Kakao.Link.sendCustom({
+				templateId : tmpId,
+				templateArgs : {
+					'HEADER_TITLE': postName,
+					'SONG_COUNT' : songCnt,
+					
+					'LIST_TITLE1' : '',
+					'LIST_THUMB_URL1' : '',
+					'LIST_SUB_TITLE1' : '',
+					'LIST_SONG_ID1' : '',
+					
+					'LIST_TITLE2' : '',
+					'LIST_THUMB_URL2' : '',
+					'LIST_SUB_TITLE2' : '',
+					'LIST_SONG_ID2' : '',
+
+					'LIST_TITLE3' : '',
+					'LIST_THUMB_URL3' : '',
+					'LIST_SUB_TITLE3' : '',
+					'LIST_SONG_ID3' : '',
+					
+					'LIST_TITLE4' : '',
+					'LIST_THUMB_URL4' : '',
+					'LIST_SUB_TITLE4' : '',
+					'LIST_SONG_ID4' : '',
+					
+					'PLYLSTSEQ' : '16924'
+				}
+			});
+		} else if ('kpop100' == type) {
+			var snsKakaoTitleName = 'K-POP with Melon';
+			var snsKakaoDescName = postDescription.split(',')[0];
+			var outpostingUri = 'https://into.melon.com/kpop100';
+			var outpostingImgUrl = postImg;
+
+			Kakao.Link.sendDefault({
+				objectType: 'feed',
+				content: {
+					title: snsKakaoTitleName,
+					imageUrl: outpostingImgUrl,
+					imageWidth: 600,
+					imageHeight: 300,
+					description: snsKakaoDescName,
+					link: {
+						mobileWebUrl: outpostingUri,
+						webUrl: outpostingUri
+					}
+				}
+			});
+		}else if ('gt' == type) {
+			var snsKakaoTitleName = '[마이 활동 뱃지]';
+			var snsKakaoDescName = postDescription.split(',')[0];
+			var outpostingUri = $.HOME +"/m6/getTitle/share.htm?memberKey=&type="+gtype+"&code="+code+"&bgImg="+bgImg+"&statFlag="+status;
+			var outpostingImgUrl = fimgurl;
+
+			Kakao.Link.sendDefault({
+				objectType: 'feed',
+				content: {
+					title: snsKakaoTitleName,
+					imageUrl: outpostingImgUrl,
+					imageWidth: 600,
+					imageHeight: 300,
+					description: snsKakaoDescName,
+					link: {
+						mobileWebUrl: outpostingUri,
+						webUrl: outpostingUri
+					}
+				}
+			});
+		}
+		else if ('spotlight' == type) {
+			kakaotalkAppFlg(3000);
+			// 카카오톡
+			if(typeof insertSpotlightActionLog == 'function'){
+				insertSpotlightActionLog('KT', spotlightEventId);
+			}
+			var snsKakaoTitleName = $('input[name=d_sns_title]').val();
+			var snsKakaoDescName = $('input[name=d_sns_desc]').val();
+			var outpostingUri = 'https://into.melon.com/bridge/kakaotalk/spotlight/' + spotlightSeq;
+			var outpostingImgUrl = $('input[name=d_sns_img]').val();
+
+			Kakao.Link.sendDefault({
+				objectType: 'feed',
+				content: {
+					title: snsKakaoTitleName,
+					imageUrl: outpostingImgUrl,
+					imageWidth: 600,
+					imageHeight: 300,
+					description: snsKakaoDescName,
+					link: {
+						mobileWebUrl: outpostingUri,
+						webUrl: outpostingUri
+					}
+				}
+			});
+		}else if ('mus' == type) {	//매거진
+			kakaotalkAppFlg(3000);
+			Kakao.Link.sendDefault({
+				objectType: 'feed',
+				content: {
+					title: postName,
+					imageUrl: postImg,
+					imageWidth: 600,
+					imageHeight: 300,
+					link: {
+						mobileWebUrl: $.longUrl + '&ref=kakao',
+						webUrl: $.longUrl + '&ref=kakao'
+					}
+				}
+			});
+		}else {
+			// 멜론 기본 타입 공유
+			// 아티스트, 영상, 주간어워드 투표, 매거진
+			Kakao.Link.sendCustom({
+				templateId : 6964,
+				templateArgs : {
+					'TITLE': postName,
+					'THUMB_URL' : postImg,
+					'LINK_URL' : $.longUrl + '&ref=kakao'
+				}
+			});
+		}
+
+	});
+
+});
+
+function openSns(webviewType, url){
+  if(POC_ID == 'AS40'){
+	if(webviewType == null || webviewType == '' || typeof webviewType == undefined) {
+	  location.href = 'melonapp://webview?url=' + encodeURIComponent(url) + '&type=PA';
+	} else {
+	  location.href = 'melonapp://webview?url=' + encodeURIComponent(url) + '&type=' + webviewType;
+	}
+  }else if(POC_ID == 'IS40'){
+	if(appVerCompare(4,0,0)) {
+	  if (webviewType == null || webviewType == '' || typeof webviewType == undefined) {
+		appLaunch('meloniphone://webview?url=' + url + '&type=PA', '', false);
+	  } else {
+		appLaunch('meloniphone://webview?url=' + url + '&type=' + webviewType, '', false);
+	  }
+	} else {
+	  location.href = url;
+	}
+  }else {
+	window.open(url);
+  }
+}
+
+var kakaotalkAndroidStore = "https://play.google.com/store/apps/details?id=com.kakao.talk";
+var kakaotalkIosStore = "https://itunes.apple.com/kr/app/id362057947";
+function kakaotalkAppFlg(a) {
+    var d = navigator.userAgent.toLocaleLowerCase();
+    if (d.indexOf("kakaotalk") > -1) {
+        return
+    }
+    var f = 1500;
+    try {
+        f = parseInt(a)
+    } catch (g) {
+        f = 1500
+    }
+    if (f == null || f == "" || isNaN(f)) {
+        f = 1500
+    }
+    function c() {
+        clearInterval(iv);
+        clearTimeout(timer)
+    }
+    function b() {
+        if (document.webkitHidden || document.hidden) {
+            c()
+        }
+    }
+    iv = setInterval(b, 200);
+    timer = setTimeout(function() {
+        alert("카카오톡 설치 페이지로 이동합니다.");
+        if (POC_ID == "AS40") {
+            appLaunch("melonapp://webview?url=" + encodeURIComponent(kakaotalkAndroidStore) + "&type=OA&title=&close=N", false)
+        } else {
+            if (POC_ID == "IS40") {
+                appLaunch("meloniphone://webview?url=" + encodeURIComponent(kakaotalkIosStore) + "&title=&type=OA&webReload=Y", "", false)
+            } else {
+                if (POC_ID == "AS20") {
+                    location.href = kakaotalkAndroidStore
+                } else {
+                    if (POC_ID == "IS20") {
+                        location.href = kakaotalkIosStore
+                    }
+                }
+            }
+        }
+    }, f)
+}
+
+</script><div class="melon-modal modal-half" id="bottomsheetFont"> <!-- 250808 더보기 수정 -->
+    <div class="modal-dialog modal-bottomsheet">
+        <div class="modal-layer">
+            <div class="control-half">
+                <button type="button" class="btn-close">하프뷰 닫기</button> <!-- 250808 더보기 수정 -->
+                <button type="button" class="btn-control">하프뷰 높이 컨트롤</button>
+            </div>
+            <div class="inner-layer">
+                <div class="layer-head">
+                    <div class="box-item box-magazine">
+                        <div class="inner-item">
+                            <a href="#none" class="link-detail">
+                                <div class="box-thumb">
+                                    <span class="img-thumb" style="background-image: url('//cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/6e/dff/imgUrl20260508110527518.jpg');"></span>
+                                </div>
+                                <div class="info-content">
+                                    <strong class="tit-content">
+                                        <span class="txt-title">aespa 세계관의 새로운 챕터, 'WDA (Whole Different Animal)'</span>
+                                    </strong>
+                                    <span class="desc-content">
+                                      <span class="txt-description">매거진 이벤트</span>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="layer-body">
+                    <div class="box-bottomsheet">
+                        <div class="group-btn">
+                            <button id="bottomLikeYn" type="button" class="btn btn-action btn-like"
+                                    onclick="magazinePost.like('16924');">
+                                <span class="ico-sprite ico-like-off-16"></span>
+                                <span class="txt-btn">좋아요</span>
+                            </button>
+                            <button type="button" class="btn btn-action btn-share" data-button-type="modal" data-target="#bottomsheetShare"
+                                    onclick="hideModal('#bottomsheetFont');magazinePost.share('#bottomsheetShare')">
+                                <span class="ico-sprite ico-share-16"></span>
+                                <span class="txt-btn">공유하기</span>
+                            </button>
+                        </div>
+                        <ul class="list-bottomsheet">
+                            <li>
+                                <div class="item-btn">
+                                    <button type="button" class="btn-list" onclick="magazinePost.list();">
+                                        <span class="ico-sprite ico-category-22"></span>
+                                        <span class="txt-btn">카테고리 전체보기</span>
+                                    </button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-btn">
+                                    <button type="button" class="btn-list" onclick="allSongPlay()">
+                                        <span class="ico-sprite ico-curation-22"></span>
+                                        <span class="txt-btn">선곡 전체보기</span>
+                                    </button>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-left">
+                                    <span class="ico-sprite ico-font-size-22"></span>
+                                    <span class="txt-btn">글자 크기 조정</span>
+                                </div>
+                                <div class="item-right">
+                                    <button class="btn-font on">원본</button>
+                                    <button class="btn-font">x2</button>
+                                    <button class="btn-font">x3</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // MELONUIT-2782 더보기 개선
+    $(".melon-gnb .btn-gnb").on("click", function() {
+        $(".modal-half").show();
+    })
+</script>
+
+
+<!-- 아티스트 선택 -->
+
+	<!-- //아티스트 선택 --><script src="//cdnimg.melon.co.kr/services/js/vendor/lottie.min.js"></script> <!-- MELONUIT-2600 좋아요 팬맺기 디자인 가이드 변경 -->
+<script src="//cdnimg.melon.co.kr/services/js/vendor/lottie-animation.js"></script> <!-- MELONUIT-2600 좋아요 팬맺기 디자인 가이드 변경 -->
+<script type="text/javascript" src="//cdnimg.melon.co.kr/services/js/magazine-693464678b.js"></script>
+<script type="text/javascript">
+	var megazimeMcomUrl = location.protocol + "//" + location.host;
+
+	var viewType = true; // true : slide, false : vertical
+	var likeYn = "N";
+	var likeCnt = 0;
+	var fanList = null;
+	var voteHist = new Array();
+	var isFanSearch = true; // 팬여부 조회 여부
+	var mstorySeq = "16924";
+
+	$(document).ready(function(){
+		$("hr").remove();
+		//setTimeout(function(){$("body").removeAttr("style");}, 2500);
+
+		var ua = navigator.userAgent.toLowerCase();
+
+		if(POC_ID == 'AS20' || POC_ID == 'IS20'){
+			if(ua.indexOf("kakaotalk") > -1){
+				ui.layout.header('hide');
+			} else {
+				$("#headerBack").attr("style", "");
+			}
+
+            $("#cornerAllBtn").removeClass("group-btn-webview");
+		}
+		else{
+			$(".melon-footer").attr('style', 'display:none;');
+		}
+
+		if(POC_ID == 'AS40' || POC_ID == 'IS40'){
+			$(".songs-download-btn").show();
+		}
+
+		setPersonalInfo();			//매거진 내 개인화 정보 셋팅(매거진 좋아요, 투표, DJ팔로우)
+		commentTotCnt();			//댓글 총 개수 조회
+		magazinePost.init();
+		recommendMagazine();		//추천 영역
+		setMagazineBanner_BNG00004();	// 하단 배너
+		setOutLinkModule();			//외부링크 모듈 display
+
+		$(".wrap-magazine").on("click", "input[name^=vote-item]", function() {
+			var _this = $(this).closest(".group-vote");
+			var voteId = _this.attr("id");
+			var startDate = _this.attr("start_date");
+			var endDate = _this.attr("end_date");
+			voteId = voteId.substring(voteId.indexOf("_")+1, voteId.length);
+			startDate = startDate.replace(/\./gi, "");
+			endDate = endDate.replace(/\./gi, "");
+			var toDay = getToday();
+
+			if(toDay < startDate || toDay > endDate) {
+				alert("종료된 투표입니다.");
+				$(this).removeAttr("checked");
+				return;
+			}
+
+			voteJoinNew(this, voteId);
+		});
+
+		// 화면 전환이 있을때 실행시키지 못하는 오류가 있다.
+		setVideo();
+
+		// fan여부를 체크 한다.
+		var artistIdList = new Array();
+		
+		artistIdList.push("2899555");
+		
+
+		if(artistIdList != null && artistIdList.length > 0) {
+			getArtistFanList(artistIdList);
+		}
+
+		//조회수를 올려준다.
+		$.ajax({
+			async:true,
+			url: '/musicstory/updateViewCount.json',
+			type : "POST",
+			dataType: 'json',
+			data : {mstorySeq : mstorySeq, memberKey : getMemberKey(), pocId : POC_ID},
+			error: function(request, status, error) {},
+			success: function(data){
+			}
+		});
+	});
+
+	setOutLinkModule = function() {
+		$(".outlinkModule").each(function() {
+			var $this = $(this);
+			var displayPOC = $this.attr("linkDisplayPoc");
+			if(POC_ID != "" && (displayPOC == "ALL" || displayPOC == POC_ID.substring(0,2))){
+				$this.attr('style', 'display: block;');
+			}
+		});
+	};
+
+	recommendMagazine = function() {
+		var artistId = "";
+		if($('.btn-fan').length == 1){//단일 아티스트
+			artistId = $(".btn-fan").attr("name").replace("fan_", "");
+		}
+
+		$.ajax({
+			url: '/musicstory/recommendMagazine.htm',
+			data: {
+				  mstorySeq : '16924'
+				, excludeMstorySeq : '16924'
+				, artistId : artistId
+			},
+			async : false
+		}).done(function(html) {
+			$('#recommendMagazine').html(html);
+		});
+	};
+
+	setMagazineBanner_BNG00004 = function() {
+		var param =  "?cpId=" + POC_ID;
+			param += "&appVer=" + getPlainCurrentAppVersion();
+			param += "&contsTypeCode=N10007";
+			param += "&ipAddress=23.186.200.191";
+			param += "&contsId=16924";
+
+		var userMemberKey = getMemberKey() == null || getMemberKey() == "" ? "0" : getMemberKey();
+
+		if(userMemberKey != "0"){
+			param += "&memberKey=" + userMemberKey;
+		}
+
+		$.ajax({
+			url: "/musicstory/banner/list.htm" + param,
+			async: false
+		}).done(function(html) {
+			$('#bannerMagazine').html(html);
+			var swiper = new Swiper(".swiper-banner", {
+				loop: false,
+				slidesPerView: 1.13,
+				spaceBetween: 11,
+				centeredSlides: true,
+				breakpoints: {
+					375: {
+						slidesPerView: 1.12
+					}
+				}
+			});
+		});
+	};
+
+	setMagazineBanner_BN000046 = function (callbackFn) {
+		var bannerApiUrl = 'https://banner.melon.com/api/public/v1/banner/BN000046';
+		var param =  "?cpId=" + POC_ID;
+		param += "&appVer=" + getPlainCurrentAppVersion();
+		param += "&contsTypeCode=N10007";
+		param += "&contsId=16924";
+
+		var userMemberKey = getMemberKey() == null || getMemberKey() == "" ? "0" : getMemberKey();
+
+		if(userMemberKey != "0"){
+			param += "&memberKey=" + userMemberKey;
+		}
+
+		var cpId = POC_ID || 'AS20';
+		$.ajax({
+			url: (bannerApiUrl + param),
+			type: 'GET',
+			dataType: 'json',
+			timeout: 5000,
+			xhrFields: { withCredentials: true },
+			success: function(data) {
+				if (data && data.response && $.isArray(data.response.banners) && data.response.banners.length > 0) {
+					var bnrInfo = data.response.banners[0];
+					var $bnr = $('#bnr_BN000046');
+					$bnr.find("#bnr_BN000046_img").css('background-image', 'url('+ bnrInfo.imgUrl +')');
+					$bnr.find("#bnr_BN000046_text1").text(bnrInfo.text1);
+					if(bnrInfo.text2 != '')
+						$bnr.find("#bnr_BN000046_text2").show().text(bnrInfo.text2);
+					$bnr.click(()=> gateLinkFunc(bnrInfo.linkType, bnrInfo.linkUrl, 'N') );
+					$bnr.css('background-color', '#'+bnrInfo.bgColor);
+					$bnr.show();
+				}
+			}
+		});
+	};
+
+	playAllTrack = function (){
+		var songIdList = new Array();
+		
+		songIdList.push("601968268");
+		
+
+		if(songIdList.length > 0) {
+			content_play('1000000498', '1', songIdList);
+		}
+	};
+
+	$( window ).load( function(){
+
+		// 접근성QA MELONACC-3030 타이틀변경
+		$(document).attr("title","멜론 매거진 이벤트");
+
+		var snsGate = 'N';
+
+		// 멜론 앱 매거진 상세 이동
+		if(snsGate == 'Y' && (document.referrer == '' || history.length < 2)){
+			var urlStr = encodeURIComponent(location.href);
+			var webviewType = "ZA";
+
+			if(POC_ID == "AS20") {
+				appLaunch('melonapp://webview?url=' + urlStr + '&type='+webviewType+'&title=&close=N','',false);
+			} else if(POC_ID == "IS20") {
+				appLaunch('meloniphone://webview?url=' + urlStr + '&title=&type='+webviewType+'&webReload=Y','',false);
+			}
+		}
+	});
+
+	var magazinePost = {
+		init : function() {
+		},
+		like : function(obj, mStorySeq) {
+			likeMstory(obj, mStorySeq);
+		},
+		commentList : function() {
+			// 공통 처리로 제외
+		},
+		commentWrite : function() {
+			goLinkUrl("SA", "/musicstory/writeComment.htm?mstorySeq=16924");
+		},
+		share : function(obj) {
+			if(obj.indexOf("bottomsheetShare") != -1) {
+				if(appVerCompare(6,0,0)){
+					//서버 바텀시트
+					$('#bottomsheetShare').attr('style', 'display: block;');
+				}else{
+					if(POC_ID == 'AS40' || POC_ID == 'IS40'){
+						//앱 바텀시트
+						var type = 'mus';
+						var content = "[매거진 이벤트]aespa 세계관의 새로운 챕터, 'WDA (Whole Different Animal)'";
+						var postimg = 'https://cdnimg.melon.co.kr/resource/image/cds/musicstory/2026/05/6e/dff/imgUrl20260508110527518.jpg';
+						var id = '16924';
+						var link = megazimeMcomUrl + "/pda/msvc/snsGatePage.jsp?type="+type+"&sId="+id
+						var qString = "{\"POSTIMG\":\"" + postimg + "\",\"LINK\":\""+ link +"\",\"ID\":\"" + id +"\",\"CONTENT\":\"" + content +"\"}";
+
+						if(POC_ID == 'AS40') {
+							window.melonapp.requestCommand("shareSNS", type, qString, "");
+						}else {
+							location.href = "meloniphone://S5002/command=shareSNSPopup&param1=mma&param2=" +encodeURIComponent(qString);
+						}
+					}else {
+						//서버 바텀시트
+						$('#bottomsheetShare').attr('style', 'display: block;');
+					}
+				}
+			}else {
+				//modalToggle(obj);
+			}
+
+			$('body').css('height', '');
+		},
+		playlist : function(boxNm, menuId) {
+			allSongPlay();
+		},
+		list : function() {
+			hideModal('#bottomsheetFont');
+			goCategoryList('64');
+		},
+		viewType : function(obj) {
+			viewChange(obj);
+		}
+	}
+
+	setVideo = function(){
+		var html5VideoMode = true;
+		try{
+			if(POC_ID == 'AS40' || POC_ID == 'AS20'){
+				if(parseFloat(getAndroidVersion()) < 5){
+					html5VideoMode = false;
+				}
+			}
+		}catch(e){}
+
+		var mvHtml = "";
+		
+		if(!html5VideoMode) {
+			mvHtml += "<div class=\"group-video\">";
+			if(movie.ADULTGRADE != '') {
+				mvHtml += "		 <span class=\"tag-badge ico-sprite ico-common-19\">19금</span>";
+			}
+			mvHtml += "		<div class=\"thumb-video\">";
+			mvHtml += "			<span class=\"thumb-img\" style=\"background-image:url(//cdnimg.melon.co.kr/cm2/mv/images/wide/502/88/841/50288841_1_20260427113042_640.jpg/melon/optimize/90/optimize/90);\"></span>";
+			mvHtml += "			<button onclick=\"onMovPlay('50288841')\"><span class=\"ico-sprite ico-video\">영상 재생</span></button>";
+			mvHtml += "		</div>";
+			
+			mvHtml += "</div>";
+		}else{
+			mvHtml = "<div class='group-video'>";
+			mvHtml += "		<div style='width:100%;position: relative; padding-top: 56.25%' class='d_video_area'>";
+			mvHtml += "			<iframe style='width:100%; height:100%; position : absolute;top:0; left:0' id='frame_video_3513728' scrolling='no' src='/video/player.htm?mvId=50288841&ref=magazine&menuId=64' frameborder='0' allowfullscreen='true' webkitallowfullscreen='true' mozallowfullscreen='true'></iframe>";
+			mvHtml += "		</div>";
+			
+			mvHtml += "	</div>";
+
+		}
+		$("#video_3513728").html(mvHtml);
+		
+		if(!html5VideoMode) {
+			mvHtml += "<div class=\"group-video\">";
+			if(movie.ADULTGRADE != '') {
+				mvHtml += "		 <span class=\"tag-badge ico-sprite ico-common-19\">19금</span>";
+			}
+			mvHtml += "		<div class=\"thumb-video\">";
+			mvHtml += "			<span class=\"thumb-img\" style=\"background-image:url(//cdnimg.melon.co.kr/cm2/mv/images/wide/502/89/184/50289184_20260511165232_640.jpg?a254a0329c40706a5b1caf9c390be9e3/melon/optimize/90/optimize/90);\"></span>";
+			mvHtml += "			<button onclick=\"onMovPlay('50289184')\"><span class=\"ico-sprite ico-video\">영상 재생</span></button>";
+			mvHtml += "		</div>";
+			
+			mvHtml += "</div>";
+		}else{
+			mvHtml = "<div class='group-video'>";
+			mvHtml += "		<div style='width:100%;position: relative; padding-top: 56.25%' class='d_video_area'>";
+			mvHtml += "			<iframe style='width:100%; height:100%; position : absolute;top:0; left:0' id='frame_video_3513735' scrolling='no' src='/video/player.htm?mvId=50289184&ref=magazine&menuId=64' frameborder='0' allowfullscreen='true' webkitallowfullscreen='true' mozallowfullscreen='true'></iframe>";
+			mvHtml += "		</div>";
+			
+			mvHtml += "	</div>";
+
+		}
+		$("#video_3513735").html(mvHtml);
+		
+		if(!html5VideoMode) {
+			mvHtml += "<div class=\"group-video\">";
+			if(movie.ADULTGRADE != '') {
+				mvHtml += "		 <span class=\"tag-badge ico-sprite ico-common-19\">19금</span>";
+			}
+			mvHtml += "		<div class=\"thumb-video\">";
+			mvHtml += "			<span class=\"thumb-img\" style=\"background-image:url(//cdnimg.melon.co.kr/cm2/mv/images/wide/502/89/111/50289111_10_20260508100633_640.jpg/melon/optimize/90/optimize/90);\"></span>";
+			mvHtml += "			<button onclick=\"onMovPlay('50289111')\"><span class=\"ico-sprite ico-video\">영상 재생</span></button>";
+			mvHtml += "		</div>";
+			
+			mvHtml += "</div>";
+		}else{
+			mvHtml = "<div class='group-video'>";
+			mvHtml += "		<div style='width:100%;position: relative; padding-top: 56.25%' class='d_video_area'>";
+			mvHtml += "			<iframe style='width:100%; height:100%; position : absolute;top:0; left:0' id='frame_video_3513759' scrolling='no' src='/video/player.htm?mvId=50289111&ref=magazine&menuId=64' frameborder='0' allowfullscreen='true' webkitallowfullscreen='true' mozallowfullscreen='true'></iframe>";
+			mvHtml += "		</div>";
+			
+			mvHtml += "	</div>";
+
+		}
+		$("#video_3513759").html(mvHtml);
+		
+		pauseAll();
+	}
+
+	// 태그 상세
+	goTagDetailPage = function(tagSeq) {
+		location.href = "/musicstory/listByTagSeq.htm?tagSeq=" + tagSeq;
+	};
+
+	//코너 상세
+	goCategoryDetail = function(categoryId) {
+		var webviewType = (appVerCompare(6,0,0)) ? "EA" : "IA";
+		goLinkUrl(webviewType, '/musicstory/category/info.htm?mstoryCateSeq='+categoryId);
+	};
+	//좋아요
+	likeMstory = function(mStorySeq) {
+		if(!fn_login_check()) {
+			return;
+		}
+
+		$.ajax({
+			async:false,
+			cache : false,
+			url: '/cds/personal/mobilempoc/mylike_updateContentsLike.json',
+			type : "POST",
+			data : {contentsId : mStorySeq,
+				contsTypeCode : 'MUSICSTORY',
+				existUserLike : likeYn,
+				menuId        : '64',
+				memberKey : getMemberKey()
+			} ,
+			dataType: 'json',
+			success: function(data) {
+				if(data != null) {
+					if(data.STATUS != '0') {
+						alert(data.ERRORMSG);
+					}else{
+						var objLike = $("#likeYn");
+						var objBottomLike = $("#bottomLikeYn");
+						var objLikeCnt = $("#likeCnt");
+						var objSrOnly = $("#likeSrOnly");
+
+						if(data.EXISTUSERLIKE == 'Y') {
+							likeYn = "Y";
+							likeCnt++;
+							objLike.addClass("on");
+							objLike.attr("aria-pressed", "true"); //접근성QA MELONACC-3013 aria 추가
+							objSrOnly.html("선택됨");
+							objBottomLike.addClass("on");
+							objLikeCnt.html(magazineDisplayNum(likeCnt));
+							setTimeout(()=>popupToast("좋아요 반영 되었습니다.", "like", true), 100);
+						}else{
+							likeYn = "N";
+							likeCnt--;
+							objLike.removeClass("on");
+							objLike.attr("aria-pressed", "false"); //접근성QA MELONACC-3013 aria 추가
+							objSrOnly.html("선택 해제됨");
+							objBottomLike.removeClass("on");
+							objLikeCnt.html(magazineDisplayNum(likeCnt));
+							popupToast("좋아요 취소 되었습니다.", "like", false);
+						}
+					}
+				}
+			},
+			error : function() {
+				popupToast("좋아요 실패", "like", false);
+			}
+		});
+	};
+
+	/*
+	매거진 개인화 정보 셋팅(매거진 좋아요, 투표모듈 참여, DJ 팔로우)
+	로그인 후 앱 내 쿠키 동기화 딜레이 이슈로 로그인 맴버키는 최대한 늦게 조회해야 한다.
+	웹뷰 컨트롤러에서 바라보는 헤더값에는 아직 동기화되지 않는 경우가 대부분임.
+	해결책으로 페이지 로드후 getMemberKey() 로 맴버키를 조회하면 됨.
+	https://podo.agit.in/g/300026582/wall/347162066#comment_panel_347433704
+
+	이렇게 확인된 맴버키로 개인화 정보를 조회하는 api는 스톤 캐시를 타면 안되므로
+	아래와 같이 memberKey가 url 내 queryString 으로 포함되도록 해야 한다.
+	(스톤 내 bypass 규칙임)
+	*/
+	setPersonalInfo = function() {
+
+		//dj 모듈 중 로그인 한 사람의 dj모듈이 있는 경우 해당 모듈의 팔로우 버튼 제거
+		if(getMemberKey()){
+			$('div[data-djmemberkey='+getMemberKey()+'] .btn-follow').remove();
+		}
+
+		$.ajax({
+			url: '/musicstory/getMagazinePersonalInfo.json',
+			type : "GET",
+			dataType: 'json',
+			data : {
+				mstorySeq : '16924',
+				memberKey : getMemberKey()
+			} ,
+			error: function(request, status, error) {},
+			success: function(data) {
+				if(data){
+					var joinVoteSeqArr = JSON.parse(data.joinVoteSeqs);
+					var followDjMemberKeyArr = JSON.parse(data.followDjMemberKeys);
+
+					//매거진 좋아요 상태 적용
+					if(data.mStoryLikeYn == 'Y'){
+						likeYn = 'Y';
+						$("#bottomLikeYn").addClass("on");
+						$("#likeYn").addClass("on");
+					}
+					likeCnt = data.mStoryLikeCnt;
+					$("#likeCnt").html(magazineDisplayNum(likeCnt));
+
+					//투표모듈 투표참여 여부 적용
+					$.each(joinVoteSeqArr, function(idx, value){
+						$('#vote-item'+value).prop('checked', true);
+					});
+
+					//dj 팔로우 상태 적용
+					$.each(followDjMemberKeyArr, function(idx, value){
+						$('div[data-djmemberkey='+value+'] .btn-follow').addClass('on');
+					});
+				}
+			}
+		});
+
+	};
+
+	// 필진 상세(노출 Y)
+	goWrtrDetail = function(contentId, contentType) {
+		goLinkUrl(convertWebviewType("IA"), "/musicstory/writer/info.htm?wrtrNo="+contentId);
+	};
+	// 필진 상세(노출 N)
+	goOutLinkDetail = function(outUrl, contentId, contentType) {
+		if(outUrl != null && outUrl != "") {
+			goLinkUrl("PA", outUrl);
+			//self.location.href = outUrl;
+		}else {
+			if(contentType == "N10023" || contentType == "N10009" || contentType == "N10080"){
+				return;
+			}
+			if(contentType == "N10001") {
+				goDetail("song", contentId);
+				pauseVideo();
+			}else if(contentType == "N10002") {
+				goDetail("album", contentId);
+				pauseVideo();
+			}else if(contentType == "N10003") {
+				goDetail("mv", contentId);
+				pauseVideo();
+			}else if(contentType == "N10006") {
+				goDetail("artist", contentId);
+				pauseVideo();
+			}else{
+				goLinkUrl(convertWebviewType("IA"), "/musicstory/writer/info.htm?wrtrNo="+contentId);
+				pauseVideo();
+			}
+		}
+	};
+	// 외부링크
+	goOutLink = function(type, contsId) {
+		var linkContsType = "";
+		if(type == "R60025") {
+			linkContsType = "N10035";
+		}
+		$.ajax({
+			async:false,
+			url: '/musicstory/getOutLinkUrl.json',
+			type : "GET",
+			dataType: 'json',
+			data : {linkContsTypeCode : linkContsType
+				,linkContsId : contsId
+				,pocId : POC_ID},
+			error: function(request, status, error) {},
+			success: function(data){
+				if(data.resultCode == "success") {
+					var url = "";
+					if(POC_ID == "IS40") {
+						url = encodeURIComponent(data.linkUrl) + '&memberKey=&type=';
+						appLaunch('meloniphone://webview?url=' + url,'',false);
+					}else if(POC_ID == "AS40") {
+						url = encodeURIComponent(data.linkUrl) + '&type=PA&title&memberkey=';
+						appLaunch('melonapp://webview?url=' + url,'',false);
+					}
+				}
+			}
+		});
+	};
+
+	function popupToast(msg, toastType, runAni) {
+		let btnFanIcon = document.querySelectorAll(".btn-fan");
+		let btnLikeIcon = document.querySelectorAll(".btn-like");
+		let fanLottie = document.querySelector("#fanIcon");
+		let likeLottie = document.querySelector("#likeIcon");
+		let toastLike = document.querySelector(".popup-toast-like");
+		let toastFan = document.querySelector(".popup-toast-fan");
+
+		let handleClick = (btn, icon, ani, popup) => {
+			if (btn && icon && ani && popup) {
+
+				let timeoutId;
+
+				function showPopupToast(time) {
+					popup.style.display = "block";
+					// MELONACC-543,550: 실행 버튼 disabled 처리 시 초점이 소실되어 제거 (스크린리더 초점 유지)
+					clearTimeout(timeoutId);
+					timeoutId = setTimeout(() => {
+						popup.style.display = "none";
+					}, time);
+				}
+
+				if (runAni) {
+					ani.play();
+					icon.classList.add("on")
+					setTimeout(() => {
+						icon.classList.remove("on");
+						ani.stop();
+					}, 1000);
+					showPopupToast(3000);
+				} else {
+					icon.classList.remove("on")
+					showPopupToast(1000);
+				}
+			}
+		};
+
+		var fanClick = (runAni) => handleClick($(".btn-fan"), fanLottie, aniFan, toastFan, runAni);
+		var likeClick = (runAni) => handleClick($("#likeYn"), likeLottie, aniLike, toastLike, runAni);
+
+		var $toastPopup = $(".popup-toast-" + toastType);
+		var $toastPopupText = $toastPopup.children(".txt-toast");
+
+		$toastPopupText.html(msg);
+		if (toastType == 'fan')	fanClick(runAni);
+		else if	(toastType == 'like') likeClick(runAni);
+	}
+
+	//팬 맺기
+	function fn_artist_like(obj, artistId) {
+		if(!fn_login_check()) {
+			return;
+		}
+
+		var fanYn = "Y";
+		if($(obj).attr("class") == "btn-util btn-fan") {
+			fanYn = "N";
+		}
+
+		$.getJSON('/cds/personal/mobilempoc/mymusic_insertArtistMyFan.json',
+				{artistId:artistId
+					,existUserFan:fanYn
+					,memberKey:getMemberKey()
+					,menuId:'64'},
+				function(data) {
+					if(data == null || data.STATUS != '0') {
+						if(data.STATUS == '3050') {	// 토큰 파기
+							if (POC_ID == "AS40") {
+								if(appVerCompare(4, 0, 0)) { // 4.x 버젼
+									alert(data.ERRORMSG);
+									location.href = "melonapp://token/expire";
+								} else { // 3.x 버젼
+									window.melonapp.requestCommand("toast", data.ERRORMSG, "long", "");
+								}
+							} else if (POC_ID == "IS40") {
+								alert(data.ERRORMSG);
+								if(appVerCompare(4, 5, 0)) { // 4.5.0 버젼 이상
+									location.href = "melonapp://token/expire";
+								}else{
+									location.href = "meloniphone://M4015";
+								}
+							}else{  // m.com
+								alert(data.ERRORMSG);
+								location.href = "https://accounts.melon.com/logout/logout?returnPage=https://accounts.melon.com/login/login.htm&cpId=" + POC_ID;
+							}
+						}else{
+							popupToast('팬맺기 처리 중 에러가 발생했습니다.', 'fan', false);
+						}
+					}else {
+						if(fanYn == "N") {
+							$('button[name=fan_'+artistId+']').attr("class", "btn-util btn-fan on");
+						}else {
+							$('button[name=fan_'+artistId+']').attr("class", "btn-util btn-fan");
+						}
+						popupToast(data.MESSAGE, 'fan', fanYn == 'N');
+					}
+				}).error(function() {
+			popupToast('팬맺기 처리 중 에러가 발생했습니다.', 'fan', false);
+		});
+	}
+	//로그인 체크
+	fn_login_check = function() {
+		if(!isMelonLogin()) {
+			if (POC_ID == "AS40") {
+				window.melonapp.requestCommand('LoginNeed', '', '', '');
+			}else if (POC_ID == "IS40") {
+				if (confirm("로그인이 필요한 서비스입니다.\n로그인하시겠습니까?")) {
+					location.href = "meloniphone://M4001?webReload=Y";
+				}
+			}else{
+				location.href = "https://accounts.melon.com/login/login.htm?redirectURL=" + encodeURIComponent(document.location.href) + "&cpId=" + POC_ID;
+			}
+			return false;
+		}
+		return true;
+	};
+	//전체 선곡 목록
+	allSongPlay = function() {
+		hideModal('#bottomsheetFont');
+		goLinkUrl(convertWebviewType("SA"), "/musicstory/listAllSong.htm?mstorySeq=16924");
+	};
+	//댓글 총 수
+	commentTotCnt = function() {
+		$.getJSON("https://cmt.melon.com/cmt/api/api_listCmtContsSumm.json?chnlSeq=501&contsRefValueList=16924",
+			function(data) {
+				var cmtCnt = data.result.cmtContsSummList[0].validCmtCnt;
+				var commentCnt = magazineDisplayNum(cmtCnt);
+				$("#commentCnt").html(commentCnt);
+			}).error(function() {}
+		);
+	};
+
+	var magazineDisplayNum = function(cnt) {
+		try{
+			if(cnt > 9999999){
+				return "9,999,999+";
+			}else{
+				return cnt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+		}catch(e){
+			return "0";
+		}
+	};
+
+	//투표하기
+	voteJoinNew = function(obj, medLibSeq) {
+		if(!fn_login_check()) {
+			$(obj).removeAttr("checked");
+			return;
+		}
+
+		var voteName = $(obj).attr("name");
+		var voteId = $(obj).attr("id");
+
+		var voteSeq = $(obj).attr("voteseq");
+		var voteContsSeq = $(obj).attr("votecontsseq");
+
+		var selfCertYn = $(obj).attr("selfCertYn");
+
+		$.ajax({
+			async:false,
+			url: '/musicstory/isVoteJoin.json',
+			type : "POST",
+			dataType: 'json',
+			data : {voteSeq : voteSeq, selfCertYn : selfCertYn},
+			error: function(request, status, error) {},
+			success: function(data){
+				if(data != null) {
+
+					if(data.isUserSelfCertErr){
+						if (confirm("본인인증 ID만 투표에 참여 가능합니다.\n본인인증 하시겠습니까?")) {
+							if(POC_ID == 'AS20' || POC_ID == 'IS20'){
+								window.open(data.authUrl, '_blank');
+							}else{
+								goLinkUrl('CA', data.authUrl);
+							}
+						}
+						$(obj).removeAttr("checked");
+						return;
+					}
+
+					if(data.isUserProfileErr){
+						alert("본인인증 식별정보 조회에 실패하였습니다.\n잠시 후 다시 시도해주세요.");
+						$(obj).removeAttr("checked");
+						return;
+					}
+
+					if(data.isVotedOtherMemberKey) {
+						alert("이미 참여한 투표입니다.\n해당 투표는 본인인증 완료한 ID 중 한 개의 ID만 참여 가능합니다.");
+						$(obj).removeAttr("checked");
+					}else if(data.isVoted){
+						alert("이미 참여한 투표입니다.");
+						$(obj).closest('ul').find("input[votecontsseq="+data.voteContsSeq+"]").prop('checked', true);
+					}else {
+						$.ajax({
+							async:false,
+							url: '/musicstory/updateVote.json',
+							type : "POST",
+							dataType: 'json',
+							data : {voteSeq : voteSeq, voteContsSeq : voteContsSeq, ipinCi: data.ipinCi},
+							error: function(request, status, error) {},
+							success: function(data){
+								if(data.resultCode == "success") {
+									var totVoteCnt = data.voteSum;
+									var voteList = data.voteList;
+									alert("투표 완료하였습니다.");
+
+									//$(obj).closest(".group-vote").find(".noti-vote").children().eq(1).find(".voteTotCnt").text(totVoteCnt);
+									$("#voteTotCnt_"+medLibSeq).html(totVoteCnt);
+
+									if(voteList != null && ($(obj).closest("ul").find(".box-progress").length == voteList.length)) {
+										$.each($(obj).closest("ul").find(".box-progress"), function(idx, obj) {
+											var votePer = totVoteCnt <= 0 ? 0 : Math.round((voteList[idx].VOTECNT/totVoteCnt)*100);
+											$(this).find(".prog-bar").children().eq(0).css("width", votePer+"%")
+											$(this).find(".prog-label").text(votePer+"%")
+										});
+									}
+
+								}else {
+									alert("투표 처리 중 에러가 발생했습니다.");
+									$(obj).removeAttr("checked");
+								}
+							}
+						});
+					}
+				}
+			}
+		});
+	};
+
+	gateLinkFunc = function(type, url, target) {
+		if(type == "MA"){
+			appLaunch(url, "", true, false);
+		}else{
+			if(POC_ID == 'AS20' || POC_ID == 'IS20'){
+				if(target == "N"){
+					window.open(url, '_blank');
+				}else{
+					location.href = url;
+				}
+			}else{
+				goLinkUrl(type, url);
+			}
+		}
+	}
+
+	goLinkUrl = function(type, url) {
+		if(!appVerCompare(4,0,0)){
+			location.href = url;
+		}else {
+			if(appVerCompare(6,1,0)){ //6.1.0 이상
+				if((type=='IA' || type=='GA' || type=='SA') && url.indexOf('event.melon.com') < 0){
+					type = "ZA";
+				}
+			}else{ //6.1.0 미만
+				if(type=='ZA' || type=='YA' || type=='EA'){
+					type = "SA";
+				}
+			}
+
+			if(type == undefined || type == null || type == ""){
+				location.href = url;
+			}else{
+				if(POC_ID == 'AS40'){
+					if(url.indexOf("http") == -1) {
+						url = megazimeMcomUrl + url;
+					}
+					url = encodeURIComponent(url);
+					appLaunch('melonapp://webview?url=' + url + '&type=' + type + '&title&memberkey=','',false);
+				}else if(POC_ID == 'IS40'){
+					if(url.indexOf("http") == -1) {
+						url = megazimeMcomUrl + url;
+					}
+					appLaunch('meloniphone://webview?url=' + url + '&title&memberKey=&type=' + type,'',false);
+				}else {
+					location.href = url;
+				}
+			}
+		}
+	}
+
+	getToday = function() {
+		var d = new Date();
+		var s = leadingZeros(d.getFullYear(), 4) +
+				leadingZeros(d.getMonth() + 1, 2) +
+				leadingZeros(d.getDate(), 2);
+		return s;
+	}
+
+	leadingZeros = function(n, digits) {
+		var zero = '';
+		n = n.toString();
+		if (n.length < digits) {
+			for (i = 0; i < digits - n.length; i++)
+				zero += '0';
+		}
+		return zero + n;
+	}
+
+	onMovPlay = function(contsId) {
+		document.location.href = "melonapp://play?cid=" + contsId + "&ctype=21&menuid=64";
+	};
+
+	function goCategoryList(mstoryCateSeq) {
+		goDetail('muscateList', mstoryCateSeq);
+	}
+
+	function photoView(medDsplyOrder){
+		var path = "/musicstory/photoList.htm?mstorySeq=" + 16924 + "&dsplyOrder=" + medDsplyOrder;
+		var url = megazimeMcomUrl + path;
+
+		if (POC_ID == "AS40") {
+			window.melonapp.requestCommand('InvokeWeb', url, '', '');
+		} else if (POC_ID == "IS40") {
+			if( appVerCompare(6,0,0) ) {
+				appLaunch('melonapp://webview?url=' + encodeURIComponent(url) + '&type=OA','',false); // meloniphone://webview
+			} else {
+				location.href="melonoutlink://"+url;
+			}
+			//location.href="melonapp://webview?type=OA&url=" + url;
+		} else {
+			window.open(url);
+		}
+	}
+
+	/**
+	 * 아티스트 팬리스트를 가져온다.
+	 **/
+	getArtistFanList = function(artistIds){
+		if(isFanSearch){
+			$.ajax({
+				async:true,
+				url: '/musicstory/listMedLibArtistFan.json',
+				type : "POST",
+				dataType: 'json',
+				data : {artistIds:artistIds,memberKey:getMemberKey()},
+
+				success: function(data){
+					fanList = data.FANLIST;
+					if(fanList != null && fanList.length > 0) {
+						$.each(fanList, function(idx, obj) {
+							$('button[name=fan_'+obj.ARTISTID+']').attr("class", "btn-util btn-fan on");
+						});
+					}
+					isFanSearch = false;
+				},
+				error: function(request, status, error) {
+				}
+			});
+		}
+	}
+
+	landingDetail = function(type, contentId){
+		if(POC_ID=="AS20" || POC_ID=="IS20"){
+			goDetail(type, contentId);
+		}
+	}
+
+	$(document).on('click','a',function(){pauseVideo();});
+
+	function getAndroidVersion(ua) {
+		ua = (ua || navigator.userAgent).toLowerCase();
+		var match = ua.match(/android\s([0-9\.]*)/);
+		return match ? match[1] : false;
+	}
+
+	function pauseVideo(){
+		pauseAll();
+	}
+
+	function goPlaylistDetail(playListSeq){
+		var urlScheme = "";
+
+		if (POC_ID == "AS40") {
+			urlScheme = "melonapp://details/djcollection/"+playListSeq;
+		}else if (POC_ID == "IS40") {
+			urlScheme = "meloniphone://S5002/command=djcollectionDetail&param1="+playListSeq + "&param3=DJ";
+		}else {
+			location.href = "/m6/landing/djplayList.htm?plylstSeq=" + playListSeq;
+			return;
+		}
+
+		appLaunch(urlScheme, "", false);
+	}
+
+	function playPlyList(plyLstSeq) {
+		var urlScheme = "";
+
+		if (POC_ID == "IT10" || POC_ID == "IT40") {
+			urlScheme = "melonipad://play?cid=" + plyLstSeq + "&ctype=ply&menuid=1000000498";
+		} else if (POC_ID == "AS40" || POC_ID == "AS20" || POC_ID == "IS40" || POC_ID == "IS20") {
+			if(POC_ID == "AS40" && appVerCompare(4,7,4)){
+				urlScheme = "melonapp://playback?cid=" + plyLstSeq + "&ctype=ply&menuid=1000000498";
+			} else {
+				urlScheme = "melonapp://play?cid=" + plyLstSeq + "&ctype=ply&menuid=1000000498";
+			}
+		} else {
+			// alert("이용 중인 기기에서는 지원하지 않습니다.");
+			return;
+		}
+
+		appLaunch(urlScheme, '', true);
+	}
+
+	function moveStation(type, seq){
+		var appSchemaUrl = "";
+
+		switch(type){
+			case "prog":
+				appSchemaUrl = "melonapp://station/program?seq="+seq;
+				break;
+			case "cast-detail":
+				if((POC_ID == 'IS40' && appVerCompare(6,4,5))
+					|| (POC_ID == 'AS40' && appVerCompare(6,4,6))
+					|| POC_ID == 'IS20' || POC_ID == 'AS20'){
+					appSchemaUrl = "melonapp://station/episode?seq="+seq;
+				}else{
+					appSchemaUrl = "melonapp://station/listen?seq="+seq;
+				}
+				break
+			case "cast-play":
+				appSchemaUrl = "melonapp://station/listen?seq="+seq;
+				break
+		}
+
+		appLaunch(appSchemaUrl, '', true, false);
+
+	}
+	//############################## 이벤트 응모 관련 스크립트 Start ##############################
+
+	var isLock = false;                             // 중복 클릭 방지
+
+	/**
+	 * 이벤트 응모여부 체크
+	 */
+	function eventStandardEntryCheck(eventId) {
+		// 중복클릭 방지
+		if (isLock) {
+			return;
+		}
+		isLock = true;
+
+		// 이벤트 응모여부 체크
+		$.ajax({
+			url: '/event/api/v2/standard/entry/check.json',
+			type: 'GET',
+			async: false,
+			data: {
+				eventId: eventId,
+				memberKey: getMemberKey(),
+				cpId: POC_ID
+			},
+			success: function(data, status, jqxhr) {
+				if (data != null && data.RESULTCODE != null) {
+					switch (data.RESULTCODE) {
+						case 500:   // 서버에러
+							alert('이벤트 응모 처리 중 에러가 발생했습니다.\n잠시 후 다시 시도해주세요.');
+							break;
+						case 400:   // 유효성 검증 실패
+							alert('잘못된 접근입니다.');
+							break;
+						case 401:    // 로그인이 필요합니다.
+							fn_login_check('alert');
+							break;
+						case 402:   // 이벤트 정보가 없음
+						case 403:   // 종료된 이벤트
+							alert('종료된 이벤트입니다.');
+							break;
+						case 405:    // 이미 응모
+							alert('이미 참여한 이벤트입니다.');
+							break;
+						case 421:    // 응모 대상이 아닙니다.
+							if (data.ENTRYTARGET == 'PROD') {
+								if (confirm('이용권 보유 회원만 참여 가능한 이벤트입니다. 멜론 이용권을 구매하시겠습니까?')) {
+									goProd();
+								}
+							} else if (data.ENTRYTARGET == 'SUBSCRIBE') {
+								if (confirm('정기결제 이용권 보유 회원만 참여 가능한 이벤트입니다. 멜론 이용권을 구매하시겠습니까?')) {
+									goProd();
+								}
+							}
+							break;
+						case 432: 	// 대상 등급이 아닙니다.
+							alert(data.ENTRYGRADE + ' 등급 회원만 참여 가능한 이벤트입니다. 회원님은 ' + data.MEMBERGRADE + ' 등급입니다.');
+							break;
+						case 200:   // 응모 가능
+							if (data.BPINFO != null && data.BPINFO.BPNAME != null) {
+								// 개인정보 제3자 제공 동의 팝업 이동
+								goLinkUrl(convertWebviewType("SA"), '/musicstory/informEventPolicy.htm?eventId=' + eventId + '&mstorySeq=16924&pocId=' + POC_ID);
+							} else {
+								// 이벤트 바로 응모 가능
+								eventStandardEntryAdd(eventId);
+							}
+							break;
+						default:    // 이벤트 응모 처리 중 에러가 발생했습니다.
+							alert('이벤트 응모 처리 중 에러가 발생했습니다.');
+							break;
+					}
+				} else {
+					alert('이벤트 응모 처리 중 에러가 발생했습니다.(2)');
+				}
+
+				isLock = false;
+			}, error: function (request, status, error) {
+				alert('이벤트 응모 처리 중 에러가 발생했습니다.\n잠시 후 다시 시도해주세요.(2)');
+				isLock = false;
+			}
+		});
+	}
+
+	/**
+	 * 이벤트 응모
+	 */
+	function eventStandardEntryAdd(eventId) {
+
+		// 이벤트 응모하기
+		$.ajax({
+			url: '/event/api/v2/standard/entry/add.json',
+			type: 'POST',
+			async: false,
+			data: {
+				eventId: eventId,
+				memberKey: getMemberKey(),
+				cpId: POC_ID
+			},
+			success: function(data, status, jqxhr) {
+				if (data != null && data.RESULTCODE != null) {
+					switch (data.RESULTCODE) {
+						case 500:   // 서버에러
+							alert('이벤트 응모 처리 중 에러가 발생했습니다.\n잠시 후 다시 시도해주세요.');
+							break;
+						case 400:   // 유효성 검증 실패
+							alert('잘못된 접근입니다.');
+							break;
+						case 401:    // 로그인이 필요합니다.
+							fn_login_check('alert');
+							break;
+						case 402:   // 이벤트 정보가 없음
+						case 403:   // 종료된 이벤트
+							alert('종료된 이벤트입니다.');
+							break;
+						case 405:    // 이미 응모
+							alert('이미 참여한 이벤트입니다.');
+							break;
+						case 421:    // 응모 대상이 아닙니다.
+							if (data.ENTRYTARGET == 'PROD') {
+								if (confirm('이용권 보유 회원만 참여 가능한 이벤트입니다. 멜론 이용권을 구매하시겠습니까?')) {
+									goProd();
+								}
+							} else if (data.ENTRYTARGET == 'SUBSCRIBE') {
+								if (confirm('정기결제 이용권 보유 회원만 참여 가능한 이벤트입니다. 멜론 이용권을 구매하시겠습니까?')) {
+									goProd();
+								}
+							}
+							break;
+						case 432: 	// 대상 등급이 아닙니다.
+							alert(data.ENTRYGRADE + ' 등급 회원만 참여 가능한 이벤트입니다. 회원님은 ' + data.MEMBERGRADE + ' 등급입니다.');
+							break;
+						case 200:   // 응모 완료
+							alert('이벤트 응모가 완료되었습니다.\n당첨 확률을 높이기 위해 댓글을 남겨주세요!');
+							goComment();
+							break;
+						default:    // 이벤트 응모 처리 중 에러가 발생했습니다.
+							alert('이벤트 응모 처리 중 에러가 발생했습니다.');
+							break;
+					}
+				} else {
+					alert('이벤트 응모 처리 중 에러가 발생했습니다.(2)');
+				}
+			}, error: function (request, status, error) {
+				alert('이벤트 응모 처리 중 에러가 발생했습니다.\n잠시 후 다시 시도해주세요.(2)');
+			}
+		});
+	}
+
+	/**
+	 * 댓글로 이동
+	 */
+	function goComment() {
+		// 댓글 URL
+		var cmtListUrl =  "https://m2.melon.com/m6/comment/list.htm"
+				+ "?pocId=&cmtPocType=m.web&chnlSeq=501&contsRefValue=16924&returnPage=" + encodeURIComponent(location.href);
+
+		if (!appVerCompare(4,0,0)) {
+			location.href = url;
+		} else {
+			if (POC_ID == 'AS40' || POC_ID == 'IS40') {
+				commentObj.openWebview({url : cmtListUrl});
+			}
+			else {
+				location.href = cmtListUrl;
+			}
+		}
+	}
+	//############################## 이벤트 응모 관련 스크립트 End ##############################
+
+	if(POC_ID.indexOf('IS') == 0){
+		$(window).scroll(function() {
+		  var topCurrent = $(document).scrollTop();
+		  var melonHeader = $(".transparent-header");
+		  if ($(".cover-magazine").hasClass("cover-type-vertical") === true) {
+			if (topCurrent > 130) {
+			  melonHeader.removeClass("transparent");
+			} else {
+			  melonHeader.addClass("transparent");
+			}
+		  } else {
+			if (topCurrent > 230) {
+			  melonHeader.removeClass("transparent");
+			} else {
+			  melonHeader.addClass("transparent");
+			}
+		  }
+		});
+	}else{
+		function scrollHeaderEvent(){
+		  var topCurrent = $(document).scrollTop();
+		  var melonHeader = $(".transparent-header");
+		  if(topCurrent > 0){
+			melonHeader.removeClass("transparent");
+		  } else {
+			melonHeader.addClass("transparent");
+		  }
+		}
+		scrollHeaderEvent();
+		$(window).scroll(function(){
+		  scrollHeaderEvent();
+		});
+	}
+
+	var $item = $('.photoViewer').on('click', function() {
+		var idx = $item.index(this);
+		var path = "/musicstory/photoList.htm?mstorySeq=" + 16924 + "&dsplyOrder=" + idx;
+		var url = megazimeMcomUrl + path;
+		if(POC_ID == 'AS40' && appVerCompare(6,1,0)){
+			//aos 로테이션 방지
+			gateLinkFunc("BA", url, "N");
+		}else{
+			gateLinkFunc("YA", url, "N");
+		}
+	});
+
+	$(".swiper-container").each(function(index, element) {
+		var $this = $(this);
+		$this.addClass('swipeBanner-' + index);
+		var swiper = new Swiper('.swipeBanner-' + index, {
+			slidesPerView: "auto",
+			spaceBetween: 10,
+			freeMode: true,
+			initialSlide: 0,
+			// on: {
+			//   sliderMove: function () {
+			//     $this.parents(".wrap-imgswiper").addClass("on");
+			//     if ($this.find(".swiper-slide:first-child").hasClass('swiper-slide-active')) {
+			//       $this.parents(".wrap-imgswiper").removeClass("on");
+			//     }
+			//   }
+			// }
+		});
+	});
+
+	//dj 상세 페이지로 이동
+	function goDjDetail(memberKey){
+		appLaunch("melonapp://mymusic/myorother?targetMemberKey=" + memberKey, "", true);
+	}
+
+	//dj 팔로우/언팔로우
+  	$(".box-dj .btn-follow").on("click", function() {
+  		if(!fn_login_check()) {
+			return;
+		}
+  		const djMemberKey = $(this).closest('div.box-dj').data('djmemberkey');
+  		const djNickName = $(this).closest('div.box-dj').find("span.txt-title").html();
+
+  		if ($(this).hasClass("on")) { //언팔로우
+			$("#djFollowModal .txt-alert").html(djNickName+'님 팔로우를<br>취소하시겠습니까?');
+			$("#djFollowModal .btn-submit").data('djmemberkey', djMemberKey);
+			$("#djFollowModal").show();
+	  	} else { //팔로우
+	  		followingAction('F', djMemberKey);
+		}
+  	});
+
+  	function unFollow(_this){
+		$("#djFollowModal").hide();
+  		followingAction('UF', $(_this).data('djmemberkey'));
+  	}
+
+    function followingAction(actionType, targetMemberKey) {
+    	const followUrl = (targetMemberKey == -1 ? '/m5/mymusic/like/insertLike.json' : '/m6/mymusic/friend/insertFriend.json');
+    	const unFollowUrl = (targetMemberKey == -1 ? '/m5/mymusic/like/deleteLike.json' : '/m6/mymusic/friend/deleteFriend.json');
+    	let params;
+    	if(targetMemberKey == -1){
+			params = {
+				contsTypeCode: 'N10022',
+				actTypeCode: 'N20001',
+				contsId: targetMemberKey,
+				menuId : '1000000498',
+				memberKey : getMemberKey(),
+				cpId: POC_ID
+			}
+    	}else{
+			params = {
+				memberKey : getMemberKey(),
+				cpId: POC_ID,
+				menuId : '1000000498',
+				targetMemberKey : targetMemberKey
+			}
+    	}
+
+		$.ajax({
+			type: 'POST',
+			async: false,
+			cache : false,
+			url: actionType == 'F' ? followUrl : unFollowUrl,
+			data: params,
+			dataType: 'json',
+			error: function(request, status, error) {},
+			success: function(data) {
+
+			  let resultMsg;
+			  if(data.notification.message !== 'undefined' && data.notification.message !== ''){
+			  	resultMsg = data.notification.message;
+			  }else{
+			    resultMsg = actionType == 'F' ? '팔로우 했습니다' : '팔로우를 취소했습니다';
+			  }
+
+			  $("div.box-dj[data-djmemberkey="+targetMemberKey+"] .btn-follow").toggleClass('on');
+
+			  $(".popup-toast .txt-toast").text(resultMsg);
+				$(".popup-toast").show();
+				setTimeout(function() {
+				  $(".popup-toast").hide();
+				}, 4500);
+
+			}
+		});
+    }
+
+    function goProd(){
+    	if(POC_ID == "IS40"){
+			window.location.href = "melonapp://appstorelist";
+		}else{
+			window.location.href = location.protocol + "//" + location.host + "/buy/pamphlet/index.htm";
+		}
+    }
+</script>
+<form id="appsActionFrm" name="appsActionFrm" method="post" action="/cds/common/android2/apps_play.json">
+	<input type="hidden" name="menuId" />
+	<input type="hidden" name="items" />
+	<input type="hidden" name="ctype" />
+</form>
+
+<!-- pv log script -->
+
+
+<script type="text/javascript" src="https://static.melon.co.kr/statistics/js/pvlog.f3002c5db64c46e2dffb.js"></script>
+<script type="text/javascript" src="/resource/script/cds/common/mobile_svc_tiara.js?_resVer=0d8f2debaa1fd45e091ae733f8e6d98b"></script>
+
+
+<script type="text/javascript">
+	$("#melonFloatingClose").on("click", function(){
+		var todayDate = new Date();
+		var key = "melon-floating";
+		setCookie(key, "Y", 1, "/", "melon.com");
+		if(POC_ID.indexOf("IS") > -1){
+			var noneDpTermDate = new Date();
+			noneDpTermDate.setDate(todayDate.getDate() + 1);
+
+			localStorage.setItem(key, noneDpTermDate.getTime());
+		}
+
+		$(this).hide();
+	});
+</script>
+<!-- 카카오 픽셀 로그 분석 소스  -->
+<script type="text/javascript" charset="UTF-8" src="//t1.kakaocdn.net/adfit/static/kp.js"></script>
+<script type="text/javascript">
+	kakaoPixel('7142705976963675270').pageView();
+</script>
+<!-- 네이버 프리미엄 로그 분석 소스  -->
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script>
+<script type="text/javascript" src="/resource/mobile40/cds/common/js/loganalysis.js?_resVer=506e74444e2a739d90d12e857a320fb4"></script>
+</body>
+</html>

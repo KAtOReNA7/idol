@@ -1,0 +1,2984 @@
+<!doctype html>
+<html class="flex flex-col min-h-full" lang="en">
+<head><script data-source-attribution="shopify.exit_interstitial">(()=>{var s=Function.prototype.bind.bind(Function.prototype.call),yt=(l,r)=>{for(let f=l;f;f=Object.getPrototypeOf(f)){let y=Object.getOwnPropertyDescriptor(f,r);if(y)return y}throw new TypeError(`${r} is not defined`)},u=(l,r)=>s(yt(l,r).get),B=(l,r)=>s(yt(l,r).set);var Se=s(String.prototype.endsWith),k=s(RegExp.prototype.exec),Re=/^_(self|top|parent)$/i,xe=/(^|\s)noreferrer(\s|$)/i,ht=/^(no-referrer(-when-downgrade)?|same-origin|(strict-)?origin(-when-cross-origin)?|unsafe-url)$/i,Pe=/^(never|default|always|origin-when-crossorigin)$/i,Et=/^(no-referrer|same-origin|never)$/i,mt=l=>{let r=`.${l}`;return f=>f===l||Se(f,r)},wt=(l,r,f)=>l!==void 0&&(l.protocol==="https:"||l.protocol==="http:")&&l.origin!==r&&!f(l.hostname),bt=(l,r,f)=>l!==null&&k(xe,l)!==null?!0:r!==null&&k(ht,r)!==null?k(Et,r)!==null:f,_t=(l,r)=>k(ht,l)!==null||k(Pe,l)!==null?k(Et,l)!==null:r,A=(l,{metaKey:r,ctrlKey:f,shiftKey:y,button:S})=>l&&k(Re,l)===null?l:r||f||y||S===1?"_blank":"";var Le="http://www.w3.org/2000/svg",Oe="http://www.w3.org/1999/xlink",G=["rel","referrerpolicy","download","ping","hreflang","type"];function kt(l){let r=window;if(r.top!==r)return;let f=document,y=r.navigation,S=location.origin,v=URL,q=u(v.prototype,"href"),vt=u(v.prototype,"origin"),Nt=u(v.prototype,"protocol"),St=u(v.prototype,"hostname"),Y=s(Event.prototype.preventDefault),Rt=s(Event.prototype.stopPropagation),j=s(Event.prototype.stopImmediatePropagation),V=s(Event.prototype.composedPath),xt=u(Event.prototype,"type"),Pt=u(Event.prototype,"cancelable"),X=u(Event.prototype,"defaultPrevented"),Lt=u(Event.prototype,"bubbles"),Ot=u(Event.prototype,"currentTarget"),At=u(Event.prototype,"eventPhase"),{CAPTURING_PHASE:It}=Event,z=u(Event.prototype,"cancelBubble"),Tt=B(Event.prototype,"cancelBubble"),Wt=u(MouseEvent.prototype,"button"),Mt=u(MouseEvent.prototype,"metaKey"),Ct=u(MouseEvent.prototype,"ctrlKey"),Dt=u(MouseEvent.prototype,"shiftKey"),Ft=y&&u(NavigateEvent.prototype,"destination"),Ht=y&&u(NavigationDestination.prototype,"url"),J=y&&u(NavigateEvent.prototype,"navigationType"),$t=y&&u(NavigateEvent.prototype,"formData"),Q=y&&"sourceElement"in NavigateEvent.prototype?u(NavigateEvent.prototype,"sourceElement"):void 0,m=s(Element.prototype.getAttribute),Kt=s(Element.prototype.getAttributeNS),I=s(Element.prototype.setAttribute),Ut=u(Element.prototype,"localName"),Bt=u(Element.prototype,"namespaceURI"),Gt=s(Document.prototype.querySelector),qt=s(Document.prototype.querySelectorAll),Yt=u(NodeList.prototype,"length"),jt=s(NodeList.prototype.item),T=u(Node.prototype,"baseURI"),Vt=s(Document.prototype.createElement),Xt=s(HTMLElement.prototype.click),zt=s(r.open),Jt=s(location.assign),Qt=s(location.replace),Zt=encodeURIComponent,te=s(String.prototype.startsWith),Z=s(r.setTimeout),ee=s(r.addEventListener),ne=s(r.removeEventListener),tt=s(EventTarget.prototype.addEventListener),et=s(EventTarget.prototype.removeEventListener),nt=Object.defineProperties,ot=t=>{let e=[],n=[HTMLElement.prototype,SVGElement.prototype,Document.prototype,r];for(let o=0;o<n.length;o+=1)try{e[e.length]={get:u(n[o],t),set:B(n[o],t)}}catch{}return e},oe={click:ot("onclick"),auxclick:ot("onauxclick")},rt=WeakMap,re=WeakSet,st=s(WeakMap.prototype.get),se=s(WeakMap.prototype.set),ce=s(WeakMap.prototype.delete),ie=s(WeakSet.prototype.add),ae=s(WeakSet.prototype.has),le=mt(l.site),ct=q(new v(l.exitPath,S)),ue=`${ct}?`,P=(t,e)=>{try{let n=new v(t,e);return{href:q(n),origin:vt(n),protocol:Nt(n),hostname:St(n)}}catch{return}},pe=(t,e,n)=>{let o=n?"&noreferrer=1":"";return`${ct}?q=${Zt(t.href)}&trigger=${e}${o}`},it=()=>{let t=qt(f,'meta[name="referrer" i][content]'),e=!1;for(let n=0;n<Yt(t);n+=1)e=_t(m(jt(t,n),"content"),e);return e},at=(t,e,{target:n,noReferrer:o,replaces:i})=>{let d=pe(t,e,o);if(n){zt(r,d,n,"noopener");return}(i?Qt:Jt)(location,d)},W=t=>wt(t,S,le),L=0,M,C=!1,fe=t=>{if(L>0){M=t;return}t()},de=t=>{if(L-=1,t&&(C=!0),L>0)return;let e=C?void 0:M;M=void 0,C=!1,e&&e()},ge=t=>t!==void 0&&te(t.href,ue),lt=t=>{try{return Ut(t)}catch{return}},ut=t=>bt(m(t,"rel"),m(t,"referrerpolicy"),it()),ye=t=>{let e=Q?Q(t):null,n=e===null?void 0:lt(e);return n==="a"||n==="area"?ut(e):it()},he=t=>{let e=P(Ht(Ft(t)));if(ge(e)){j(t);return}if(!Pt(t)||J(t)==="traverse"||!W(e)||$t(t)!==null)return;Y(t);let n={target:"",noReferrer:ye(t),replaces:J(t)==="replace"};fe(()=>at(e,"navigate",n))},R=t=>{let e=m(t,"href");return e===null&&Bt(t)===Le?Kt(t,Oe,"href"):e},Ee=t=>{let e=V(t);for(let n=0;n<e.length;n+=1){let o=e[n],i=lt(o);if(i==="a"||i==="area"){let d=R(o);if(d!==null)return{node:o,href:d}}}},D=t=>{let e=m(t,"target");if(e!==null)return e;let n=Gt(f,"base[target]");return n?m(n,"target"):""},me=t=>{try{return{metaKey:Mt(t),ctrlKey:Ct(t),shiftKey:Dt(t),button:Wt(t)}}catch{return}},pt=new re,we=t=>{let e=!1,n=()=>{e=!0},o=()=>e||ae(pt,t);return nt(t,{__proto__:null,preventDefault:{__proto__:null,configurable:!0,value:n},defaultPrevented:{__proto__:null,configurable:!0,get:o},returnValue:{__proto__:null,configurable:!0,get:()=>!o(),set:i=>{i||n()}}}),o},be={click:new rt,auxclick:new rt},_e=(t,e)=>{let n=oe[t],o=be[t],i=[],d=p=>{for(let a=0;a<i.length;a+=1)if(i[a]===p)return!0;return!1},w=(p,a,E)=>{let g=s(E);function O(_){let x=g(this,_);return x===!1&&typeof _=="object"&&_!==null&&ie(pt,_),x}return{target:p,accessor:a,handler:E,wrapper:O,inFlight:0}},b=()=>{for(let p=0;p<e.length;p+=1)for(let a=0;a<n.length;a+=1){let E;try{E=n[a].get(e[p])}catch{continue}if(typeof E=="function"){let g=st(o,e[p]);(!g||g.wrapper!==E)&&(g=w(e[p],n[a],E),n[a].set(e[p],g.wrapper),se(o,e[p],g)),d(g)||(g.inFlight+=1,i[i.length]=g)}break}};return b(),{wrap:b,unwrap:()=>{for(let p=0;p<i.length;p+=1){let a=i[p];a.inFlight-=1,!(a.inFlight>0)&&(st(o,a.target)===a&&ce(o,a.target),a.accessor.get(a.target)===a.wrapper&&a.accessor.set(a.target,a.handler))}}}},ft=(t,e,n)=>{let o=R(t),i=o===null?void 0:P(o,T(f));if(!W(i))return;let d={target:A(D(t),n),noReferrer:ut(t),replaces:!1};return{inWindow:d.target==="",go:()=>at(i,e,d)}},dt=t=>{let e=R(t);if(e===null||m(t,"download")===null)return!1;let n=P(e,T(f));return n!==void 0&&(n.origin===S||n.protocol==="blob:"||n.protocol==="data:")},ke=(t,e)=>R(t)!==null&&!dt(t)&&A(D(t),e)==="",ve=(t,e)=>{let n=R(t);if(n===null)return!1;let o=Vt(f,"a"),i=A(D(t),e);I(o,"href",n),I(o,"target",i||"_self");for(let d=0;d<G.length;d+=1){let w=m(t,G[d]);w!==null&&I(o,G[d],w)}return Xt(o),i===""&&!dt(t)},Ne=(t,e,n,o)=>{L+=1;let i=V(t),d=i.length-1,w=0,b=!1,F=!1,p=c=>{F||(F=!0,de(c))},a=c=>{if(b)return;b=!0;let N=X(t),h=N?void 0:ft(n,e,o),U;!N&&(h||c)&&(Y(t),U=we(t)),Z(r,()=>{if(!U){p(!X(t)&&ke(n,o));return}if(U()){p(!1);return}if(c&&(h=ft(n,e,o),!h)){p(ve(n,o));return}h.go(),p(h.inWindow)},0)},E=(c,N)=>{for(let h=0;h<i.length;h+=1)if(i[h]===c)return N===It?d-h:i.length+h;return-1},g=()=>{E(Ot(t),At(t))<=w&&a(!0)},O=c=>{c===t&&a(!1)},_=_e(e,i),x=c=>N=>{if(N===t){if(w=c,z(t)){a(!1);return}_.wrap()}},H=[],$=[],K=Lt(t);if(K){for(let c=0;c<d;c+=1)H[c]=x(d-c),$[c]=x(i.length+c),tt(i[c],e,H[c],!0),tt(i[c],e,$[c],!1);ee(r,e,O,!1)}if(Z(r,()=>{if(b||p(!1),b=!0,_.unwrap(),!!K){for(let c=0;c<d;c+=1)et(i[c],e,H[c],!0),et(i[c],e,$[c],!1);ne(r,e,O,!1)}},0),!K){a(!0);return}nt(t,{__proto__:null,stopPropagation:{__proto__:null,configurable:!0,value:()=>{g(),Rt(t)}},stopImmediatePropagation:{__proto__:null,configurable:!0,value:()=>{a(!0),j(t)}},cancelBubble:{__proto__:null,configurable:!0,get:()=>z(t),set:c=>{c&&g(),Tt(t,c)}}})},gt=t=>{let e=xt(t),n=me(t);if(!n||e==="auxclick"&&n.button!==1)return;let o=Ee(t);!o||!W(P(o.href,T(f)))||Ne(t,e,o.node,n)};y?.addEventListener("navigate",he,!0),r.addEventListener("click",gt,!0),r.addEventListener("auxclick",gt,!0)}kt({"site":"nmixxshopus.com","exitPath":"\/url"});})();
+//# sourceURL=exit-interstitial.js
+</script>
+
+<script>
+vice= {
+  config: {
+    viceAccountId: 'umusic',
+    viceSiteId: 'nmixxstore',
+    viceSectionId: ''
+  }
+}
+</script>
+<script src='//vice-prod.sdiapi.com/vice_loader/umusic/nmixxstore'></script><meta charset="utf-8">
+  <meta name="robots" content="noai, noimageai">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"><style data-shopify>
+/* TYPOGRAPHY */@font-face {
+  font-family: "PT Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//nmixxshopus.com/cdn/fonts/pt_sans/ptsans_n4.83e02f6420db1e9af259d3d7856d73a9dc4fb7ab.woff2") format("woff2"),
+       url("//nmixxshopus.com/cdn/fonts/pt_sans/ptsans_n4.031cf9b26e734268d68c385b0ff08ff26d8b4b6b.woff") format("woff");
+}
+@font-face {
+  font-family: "PT Sans";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("//nmixxshopus.com/cdn/fonts/pt_sans/ptsans_n7.304287b69b0b43b7d5b0f947011857fe41849126.woff2") format("woff2"),
+       url("//nmixxshopus.com/cdn/fonts/pt_sans/ptsans_n7.6044f7e686f0b0c443754a8289995e64f1aba322.woff") format("woff");
+}
+@font-face {
+  font-family: "PT Sans";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("//nmixxshopus.com/cdn/fonts/pt_sans/ptsans_n7.304287b69b0b43b7d5b0f947011857fe41849126.woff2") format("woff2"),
+       url("//nmixxshopus.com/cdn/fonts/pt_sans/ptsans_n7.6044f7e686f0b0c443754a8289995e64f1aba322.woff") format("woff");
+}
+@font-face {
+  font-family: "PT Sans";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("//nmixxshopus.com/cdn/fonts/pt_sans/ptsans_n7.304287b69b0b43b7d5b0f947011857fe41849126.woff2") format("woff2"),
+       url("//nmixxshopus.com/cdn/fonts/pt_sans/ptsans_n7.6044f7e686f0b0c443754a8289995e64f1aba322.woff") format("woff");
+}
+:root {
+--typeface_primary: "PT Sans", sans-serif;--typeface_secondary: "PT Sans", sans-serif;--typeface_tertiary: "PT Sans", sans-serif;--font_display_md: var(--typeface_primary);
+  --font_display_md_weight: 400;
+  --font_display_md_letter: -0.0125rem;
+  --font_display_md_line: 1.2;
+  --font_display_md_text_transform: uppercase;--font_display_md_size: 1.0rem;
+  --font_display_md_size_md: 1.3125rem;--font_heading_2xl: var(--typeface_primary);
+  --font_heading_2xl_weight: 700;
+  --font_heading_2xl_letter: 0.0rem;
+  --font_heading_2xl_line: 1.2;
+  --font_heading_2xl_text_transform: uppercase;--font_heading_2xl_size: 1.75rem;
+  --font_heading_2xl_size_md: 2.0rem;--font_heading_xl: var(--typeface_primary);
+  --font_heading_xl_weight: 700;
+  --font_heading_xl_letter: 0.0rem;
+  --font_heading_xl_line: 1.2;
+  --font_heading_xl_text_transform: uppercase;--font_heading_xl_size: 1.5625rem;
+  --font_heading_xl_size_md: 1.75rem;--font_heading_lg: var(--typeface_secondary);
+  --font_heading_lg_weight: 700;
+  --font_heading_lg_letter: 0.0rem;
+  --font_heading_lg_line: 1.2;
+  --font_heading_lg_text_transform: uppercase;--font_heading_lg_size: 1.3125rem;
+  --font_heading_lg_size_md: 1.5625rem;--font_heading_md: var(--typeface_secondary);
+  --font_heading_md_weight: 700;
+  --font_heading_md_letter: 0.0rem;
+  --font_heading_md_line: 1.2;
+  --font_heading_md_text_transform: uppercase;--font_heading_md_size: 1.125rem;
+  --font_heading_md_size_md: 1.375rem;--font_body_lg: var(--typeface_primary);
+  --font_body_lg_weight: 700;
+  --font_body_lg_letter: 0.0rem;
+  --font_body_lg_line: 1.5;
+  --font_body_lg_text_transform: uppercase;--font_body_lg_size: 1.0rem;
+  --font_body_lg_size_md: 1.125rem;--font_body_md: var(--typeface_primary);
+  --font_body_md_weight: 700;
+  --font_body_md_letter: 0.0rem;
+  --font_body_md_line: 1.5;
+  --font_body_md_text_transform: uppercase;--font_body_md_size: 0.875rem;
+  --font_body_md_size_md: 1.0rem;--font_body_sm: var(--typeface_primary);
+  --font_body_sm_weight: 700;
+  --font_body_sm_letter: 0.0rem;
+  --font_body_sm_line: 1.5;
+  --font_body_sm_text_transform: uppercase;--font_body_sm_size: 0.75rem;
+  --font_body_sm_size_md: 0.875rem;--font_body_xs: var(--typeface_primary);
+  --font_body_xs_weight: 400;
+  --font_body_xs_letter: 0.0rem;
+  --font_body_xs_line: 1.5;
+  --font_body_xs_text_transform: uppercase;--font_body_xs_size: 0.75rem;
+  --font_body_xs_size_md: 0.75rem;--font_button: var(--typeface_tertiary);
+  --font_button_weight: 700;
+  --font_button_letter: 0.0rem;
+  --font_button_line: 1;
+  --font_button_text_transform: uppercase;--font_button_size: 1.25rem;
+  --font_button_size_md: 1.25rem;--font_navigation_lg: var(--typeface_primary);
+  --font_navigation_lg_weight: 400;
+  --font_navigation_lg_letter: 0.0rem;
+  --font_navigation_lg_line: 1.5;
+  --font_navigation_lg_text_transform: uppercase;--font_navigation_lg_size: 1.125rem;
+  --font_navigation_lg_size_md: 1.125rem;--font_navigation_md: var(--typeface_primary);
+  --font_navigation_md_weight: 400;
+  --font_navigation_md_letter: 0.0rem;
+  --font_navigation_md_line: 1.5;
+  --font_navigation_md_text_transform: uppercase;--font_navigation_md_size: 1.0rem;
+  --font_navigation_md_size_md: 1.0rem;--font_navigation_sm: var(--typeface_primary);
+  --font_navigation_sm_weight: 400;
+  --font_navigation_sm_letter: 0.0rem;
+  --font_navigation_sm_line: 1.5;
+  --font_navigation_sm_text_transform: uppercase;--font_navigation_sm_size: 0.875rem;
+  --font_navigation_sm_size_md: 0.875rem;
+}
+/* TYPOGRAPHY */
+
+</style><style data-shopify>
+  /**
+      Set Color Variable from shopify
+  */
+  :root {
+    --color-outline: #2563eb;
+    --color-black: hsl(0 0% 5%);
+    --color-white: hsl(0 0% 95%);
+    --color-transparent: rgba(0,0,0,0);
+
+    --color-gray-50: hsl(210 20% 98%);
+    --color-gray-100: hsl(220 14% 96%);
+    --color-gray-200: hsl(220 13% 91%);
+    --color-gray-300: hsl(216 12% 84%);
+    --color-gray-400: hsl(218 11% 65%);
+    --color-gray-500: hsl(220 9% 46%);
+    --color-gray-600: hsl(215 14% 34%);
+    --color-gray-700: hsl(217 19% 27%);
+    --color-gray-800: hsl(215 28% 17%);
+    --color-gray-900: hsl(221 39% 11%);
+
+    --color-gray-100-on: hsl(221 39% 11%);
+    --color-gray-900-on: hsl(220 14% 96%);--scheme1-content-base:126 32% 88%;
+      --scheme1-content-subtle:126 32% 88%;
+      --scheme1-content-emphasis:126 32% 88%;
+      --scheme1-content-heading:126 32% 88%;
+
+      --scheme1-surface:220 14% 96%;
+      --scheme1-surface-gradient: ;
+      --scheme1-background:202 100% 7%;
+      --scheme1-background-gradient: ;
+
+      --scheme1-primary:126 32% 88%;
+      --scheme1-primary-light:0 0% 100%;
+      --scheme1-primary-dark:126 32% 68%;
+      --scheme1-primary-on:0 0% 0%;
+      --scheme1-primary-gradient: ;
+
+      --scheme1-secondary:126 32% 88%;
+      --scheme1-secondary-light:0 0% 100%;
+      --scheme1-secondary-dark:126 32% 68%;
+      --scheme1-secondary-on:0 0% 0%;
+      --scheme1-secondary-gradient: ;
+
+      --scheme1-tertiary:0 0% 100%;
+      --scheme1-tertiary-light:0 0% 100%;
+      --scheme1-tertiary-dark:0 0% 80%;
+      --scheme1-tertiary-on:0 0% 0%;
+      --scheme1-tertiary-gradient: ;--scheme1-notification-on:172 53% 17%;
+      --scheme1-notification:220 6% 90%;
+      --scheme1-notification-mix: hsl(175, 20%, 43%);--scheme1-success-on:220 6% 90%;
+      --scheme1-success:141 79% 85%;
+      --scheme1-success-mix: hsl(144, 57%, 77%);--scheme1-error-on:0 74% 42%;
+      --scheme1-error:0 100% 97%;
+      --scheme1-error-mix: hsl(0, 66%, 60%);--scheme2-content-base:215 28% 17%;
+      --scheme2-content-subtle:215 14% 34%;
+      --scheme2-content-emphasis:224 71% 4%;
+      --scheme2-content-heading:221 39% 11%;
+
+      --scheme2-surface:220 14% 96%;
+      --scheme2-surface-gradient: ;
+      --scheme2-background:0 0% 100%;
+      --scheme2-background-gradient: ;
+
+      --scheme2-primary:221 39% 11%;
+      --scheme2-primary-light:221 39% 31%;
+      --scheme2-primary-dark:0 0% 0%;
+      --scheme2-primary-on:0 0% 98%;
+      --scheme2-primary-gradient: ;
+
+      --scheme2-secondary:217 19% 27%;
+      --scheme2-secondary-light:217 19% 47%;
+      --scheme2-secondary-dark:220 18% 7%;
+      --scheme2-secondary-on:0 0% 98%;
+      --scheme2-secondary-gradient: ;
+
+      --scheme2-tertiary:215 14% 34%;
+      --scheme2-tertiary-light:216 14% 54%;
+      --scheme2-tertiary-dark:216 14% 14%;
+      --scheme2-tertiary-on:0 0% 98%;
+      --scheme2-tertiary-gradient: ;--scheme2-notification-on:200 4% 13%;
+      --scheme2-notification:220 6% 90%;
+      --scheme2-notification-mix: hsl(211, 11%, 42%);--scheme2-success-on:150 3% 13%;
+      --scheme2-success:141 79% 85%;
+      --scheme2-success-mix: hsl(141, 22%, 39%);--scheme2-error-on:0 74% 42%;
+      --scheme2-error:0 100% 97%;
+      --scheme2-error-mix: hsl(0, 66%, 60%);--scheme3-content-base:220 13% 91%;
+      --scheme3-content-subtle:216 12% 84%;
+      --scheme3-content-emphasis:210 20% 98%;
+      --scheme3-content-heading:210 20% 98%;
+
+      --scheme3-surface:221 39% 11%;
+      --scheme3-surface-gradient: ;
+      --scheme3-background:224 71% 4%;
+      --scheme3-background-gradient: ;
+
+      --scheme3-primary:224 71% 4%;
+      --scheme3-primary-light:224 71% 24%;
+      --scheme3-primary-dark:0 0% 0%;
+      --scheme3-primary-on:210 20% 98%;
+      --scheme3-primary-gradient: ;
+
+      --scheme3-secondary:221 39% 11%;
+      --scheme3-secondary-light:221 39% 31%;
+      --scheme3-secondary-dark:0 0% 0%;
+      --scheme3-secondary-on:220 13% 91%;
+      --scheme3-secondary-gradient: ;
+
+      --scheme3-tertiary:217 19% 27%;
+      --scheme3-tertiary-light:217 19% 47%;
+      --scheme3-tertiary-dark:220 18% 7%;
+      --scheme3-tertiary-on:210 20% 98%;
+      --scheme3-tertiary-gradient: ;--scheme3-notification-on:200 4% 13%;
+      --scheme3-notification:220 6% 90%;
+      --scheme3-notification-mix: hsl(211, 11%, 42%);--scheme3-success-on:150 3% 13%;
+      --scheme3-success:141 79% 85%;
+      --scheme3-success-mix: hsl(141, 22%, 39%);--scheme3-error-on:0 74% 42%;
+      --scheme3-error:0 100% 97%;
+      --scheme3-error-mix: hsl(0, 66%, 60%);--scheme4-content-base:226 100% 94%;
+      --scheme4-content-subtle:228 96% 89%;
+      --scheme4-content-emphasis:0 0% 100%;
+      --scheme4-content-heading:0 0% 100%;
+
+      --scheme4-surface:244 47% 20%;
+      --scheme4-surface-gradient: ;
+      --scheme4-background:242 47% 34%;
+      --scheme4-background-gradient: ;
+
+      --scheme4-primary:0 0% 100%;
+      --scheme4-primary-light:0 0% 100%;
+      --scheme4-primary-dark:0 0% 80%;
+      --scheme4-primary-on:230 94% 82%;
+      --scheme4-primary-gradient: ;
+
+      --scheme4-secondary:226 100% 94%;
+      --scheme4-secondary-light:0 0% 100%;
+      --scheme4-secondary-dark:226 100% 74%;
+      --scheme4-secondary-on:0 0% 98%;
+      --scheme4-secondary-gradient: ;
+
+      --scheme4-tertiary:230 94% 82%;
+      --scheme4-tertiary-light:0 0% 100%;
+      --scheme4-tertiary-dark:230 94% 62%;
+      --scheme4-tertiary-on:0 0% 98%;
+      --scheme4-tertiary-gradient: ;--scheme4-notification-on:200 4% 13%;
+      --scheme4-notification:220 6% 90%;
+      --scheme4-notification-mix: hsl(211, 11%, 42%);--scheme4-success-on:150 3% 13%;
+      --scheme4-success:141 79% 85%;
+      --scheme4-success-mix: hsl(141, 22%, 39%);--scheme4-error-on:0 74% 42%;
+      --scheme4-error:0 100% 97%;
+      --scheme4-error-mix: hsl(0, 66%, 60%);}.scheme-scheme1 {
+        /* Content */
+        --color-content-base: hsl(var(--scheme1-content-base));
+        --color-content-subtle: hsl(var(--scheme1-content-subtle));
+        --color-content-emphasis: hsl(var(--scheme1-content-emphasis));
+        --color-content-heading: hsl(var(--scheme1-content-heading));
+
+        /* Surface */
+        --color-surface: hsl(var(--scheme1-surface, var(--scheme1-background)));--color-surface-gradient: hsl(var(--scheme1-surface));
+        /* Background */
+        --color-background: hsl(var(--scheme1-background));--color-background-gradient: hsl(var(--scheme1-background));/* Primary Color */
+        --color-primary-on: hsl(var(--scheme1-primary-on));
+        --color-primary: hsl(var(--scheme1-primary));
+        --color-primary-dark: hsl(var(--scheme1-primary-dark));
+        --color-primary-light: hsl(var(--scheme1-primary-light));--color-primary-gradient: hsl(var(--scheme1-primary));/* Secondary Color */
+        --color-secondary-on: hsl(var(--scheme1-secondary-on));
+        --color-secondary: hsl(var(--scheme1-secondary));
+        --color-secondary-dark: hsl(var(--scheme1-secondary-dark));
+        --color-secondary-light: hsl(var(--scheme1-secondary-light));--color-secondary-gradient: hsl(var(--scheme1-secondary));/* Tertiary Color */
+        --color-tertiary-on: hsl(var(--scheme1-tertiary-on));
+        --color-tertiary: hsl(var(--scheme1-tertiary));
+        --color-tertiary-dark: hsl(var(--scheme1-tertiary-dark));
+        --color-tertiary-light: hsl(var(--scheme1-tertiary-light));--color-tertiary-gradient: hsl(var(--scheme1-tertiary));/* Accent Colors */
+        /* Notification */
+        --color-on-notification: hsl(var(--scheme1-notification-on));
+        --color-notification: hsl(var(--scheme1-notification));
+        --color-notification-mix: var(--scheme1-notification-mix);
+
+        /* Success */
+        --color-on-success: hsl(var(--scheme1-success-on));
+        --color-success: hsl(var(--scheme1-success));
+        --color-success-mix: var(--scheme1-success-mix);
+
+        /* Error */
+        --color-on-error: hsl(var(--scheme1-error-on));
+        --color-error-on: var(--color-on-error);
+        --color-error: hsl(var(--scheme1-error));
+        --color-error-mix: var(--scheme1-error-mix);--color-error-mix-on: var(--color-black);
+
+        /* Section */--color-text: var(--color-content-base, var(--color-content-base));
+        --color-border: var(--color-transparent, var(--border-default-color));
+        /* Section */
+
+        /* Tables BG Color */
+        --color-table-bg: var(--color-default, var(--color-background));
+
+        /* Input Color */
+        --color-input-text: hsl(var(--scheme1-content-base));
+      }
+    .scheme-scheme2 {
+        /* Content */
+        --color-content-base: hsl(var(--scheme2-content-base));
+        --color-content-subtle: hsl(var(--scheme2-content-subtle));
+        --color-content-emphasis: hsl(var(--scheme2-content-emphasis));
+        --color-content-heading: hsl(var(--scheme2-content-heading));
+
+        /* Surface */
+        --color-surface: hsl(var(--scheme2-surface, var(--scheme2-background)));--color-surface-gradient: hsl(var(--scheme2-surface));
+        /* Background */
+        --color-background: hsl(var(--scheme2-background));--color-background-gradient: hsl(var(--scheme2-background));/* Primary Color */
+        --color-primary-on: hsl(var(--scheme2-primary-on));
+        --color-primary: hsl(var(--scheme2-primary));
+        --color-primary-dark: hsl(var(--scheme2-primary-dark));
+        --color-primary-light: hsl(var(--scheme2-primary-light));--color-primary-gradient: hsl(var(--scheme2-primary));/* Secondary Color */
+        --color-secondary-on: hsl(var(--scheme2-secondary-on));
+        --color-secondary: hsl(var(--scheme2-secondary));
+        --color-secondary-dark: hsl(var(--scheme2-secondary-dark));
+        --color-secondary-light: hsl(var(--scheme2-secondary-light));--color-secondary-gradient: hsl(var(--scheme2-secondary));/* Tertiary Color */
+        --color-tertiary-on: hsl(var(--scheme2-tertiary-on));
+        --color-tertiary: hsl(var(--scheme2-tertiary));
+        --color-tertiary-dark: hsl(var(--scheme2-tertiary-dark));
+        --color-tertiary-light: hsl(var(--scheme2-tertiary-light));--color-tertiary-gradient: hsl(var(--scheme2-tertiary));/* Accent Colors */
+        /* Notification */
+        --color-on-notification: hsl(var(--scheme2-notification-on));
+        --color-notification: hsl(var(--scheme2-notification));
+        --color-notification-mix: var(--scheme2-notification-mix);
+
+        /* Success */
+        --color-on-success: hsl(var(--scheme2-success-on));
+        --color-success: hsl(var(--scheme2-success));
+        --color-success-mix: var(--scheme2-success-mix);
+
+        /* Error */
+        --color-on-error: hsl(var(--scheme2-error-on));
+        --color-error-on: var(--color-on-error);
+        --color-error: hsl(var(--scheme2-error));
+        --color-error-mix: var(--scheme2-error-mix);--color-error-mix-on: var(--color-black);
+
+        /* Section */--color-bg: var(--color-transparent, var(--color-background));--color-text: var(--color-content-base, var(--color-content-base));
+        --color-border: var(--color-transparent, var(--border-default-color));
+        /* Section */
+
+        /* Tables BG Color */
+        --color-table-bg: var(--color-default, var(--color-background));
+
+        /* Input Color */
+        --color-input-text: hsl(var(--scheme2-content-base));
+      }
+    .scheme-scheme3 {
+        /* Content */
+        --color-content-base: hsl(var(--scheme3-content-base));
+        --color-content-subtle: hsl(var(--scheme3-content-subtle));
+        --color-content-emphasis: hsl(var(--scheme3-content-emphasis));
+        --color-content-heading: hsl(var(--scheme3-content-heading));
+
+        /* Surface */
+        --color-surface: hsl(var(--scheme3-surface, var(--scheme3-background)));--color-surface-gradient: hsl(var(--scheme3-surface));
+        /* Background */
+        --color-background: hsl(var(--scheme3-background));--color-background-gradient: hsl(var(--scheme3-background));/* Primary Color */
+        --color-primary-on: hsl(var(--scheme3-primary-on));
+        --color-primary: hsl(var(--scheme3-primary));
+        --color-primary-dark: hsl(var(--scheme3-primary-dark));
+        --color-primary-light: hsl(var(--scheme3-primary-light));--color-primary-gradient: hsl(var(--scheme3-primary));/* Secondary Color */
+        --color-secondary-on: hsl(var(--scheme3-secondary-on));
+        --color-secondary: hsl(var(--scheme3-secondary));
+        --color-secondary-dark: hsl(var(--scheme3-secondary-dark));
+        --color-secondary-light: hsl(var(--scheme3-secondary-light));--color-secondary-gradient: hsl(var(--scheme3-secondary));/* Tertiary Color */
+        --color-tertiary-on: hsl(var(--scheme3-tertiary-on));
+        --color-tertiary: hsl(var(--scheme3-tertiary));
+        --color-tertiary-dark: hsl(var(--scheme3-tertiary-dark));
+        --color-tertiary-light: hsl(var(--scheme3-tertiary-light));--color-tertiary-gradient: hsl(var(--scheme3-tertiary));/* Accent Colors */
+        /* Notification */
+        --color-on-notification: hsl(var(--scheme3-notification-on));
+        --color-notification: hsl(var(--scheme3-notification));
+        --color-notification-mix: var(--scheme3-notification-mix);
+
+        /* Success */
+        --color-on-success: hsl(var(--scheme3-success-on));
+        --color-success: hsl(var(--scheme3-success));
+        --color-success-mix: var(--scheme3-success-mix);
+
+        /* Error */
+        --color-on-error: hsl(var(--scheme3-error-on));
+        --color-error-on: var(--color-on-error);
+        --color-error: hsl(var(--scheme3-error));
+        --color-error-mix: var(--scheme3-error-mix);--color-error-mix-on: var(--color-black);
+
+        /* Section */--color-bg: var(--color-transparent, var(--color-background));--color-text: var(--color-content-base, var(--color-content-base));
+        --color-border: var(--color-transparent, var(--border-default-color));
+        /* Section */
+
+        /* Tables BG Color */
+        --color-table-bg: var(--color-default, var(--color-background));
+
+        /* Input Color */
+        --color-input-text: hsl(var(--scheme3-content-base));
+      }
+    .scheme-scheme4 {
+        /* Content */
+        --color-content-base: hsl(var(--scheme4-content-base));
+        --color-content-subtle: hsl(var(--scheme4-content-subtle));
+        --color-content-emphasis: hsl(var(--scheme4-content-emphasis));
+        --color-content-heading: hsl(var(--scheme4-content-heading));
+
+        /* Surface */
+        --color-surface: hsl(var(--scheme4-surface, var(--scheme4-background)));--color-surface-gradient: hsl(var(--scheme4-surface));
+        /* Background */
+        --color-background: hsl(var(--scheme4-background));--color-background-gradient: hsl(var(--scheme4-background));/* Primary Color */
+        --color-primary-on: hsl(var(--scheme4-primary-on));
+        --color-primary: hsl(var(--scheme4-primary));
+        --color-primary-dark: hsl(var(--scheme4-primary-dark));
+        --color-primary-light: hsl(var(--scheme4-primary-light));--color-primary-gradient: hsl(var(--scheme4-primary));/* Secondary Color */
+        --color-secondary-on: hsl(var(--scheme4-secondary-on));
+        --color-secondary: hsl(var(--scheme4-secondary));
+        --color-secondary-dark: hsl(var(--scheme4-secondary-dark));
+        --color-secondary-light: hsl(var(--scheme4-secondary-light));--color-secondary-gradient: hsl(var(--scheme4-secondary));/* Tertiary Color */
+        --color-tertiary-on: hsl(var(--scheme4-tertiary-on));
+        --color-tertiary: hsl(var(--scheme4-tertiary));
+        --color-tertiary-dark: hsl(var(--scheme4-tertiary-dark));
+        --color-tertiary-light: hsl(var(--scheme4-tertiary-light));--color-tertiary-gradient: hsl(var(--scheme4-tertiary));/* Accent Colors */
+        /* Notification */
+        --color-on-notification: hsl(var(--scheme4-notification-on));
+        --color-notification: hsl(var(--scheme4-notification));
+        --color-notification-mix: var(--scheme4-notification-mix);
+
+        /* Success */
+        --color-on-success: hsl(var(--scheme4-success-on));
+        --color-success: hsl(var(--scheme4-success));
+        --color-success-mix: var(--scheme4-success-mix);
+
+        /* Error */
+        --color-on-error: hsl(var(--scheme4-error-on));
+        --color-error-on: var(--color-on-error);
+        --color-error: hsl(var(--scheme4-error));
+        --color-error-mix: var(--scheme4-error-mix);--color-error-mix-on: var(--color-black);
+
+        /* Section */--color-bg: var(--color-transparent, var(--color-background));--color-text: var(--color-content-base, var(--color-content-base));
+        --color-border: var(--color-transparent, var(--border-default-color));
+        /* Section */
+
+        /* Tables BG Color */
+        --color-table-bg: var(--color-default, var(--color-background));
+
+        /* Input Color */
+        --color-input-text: hsl(var(--scheme4-content-base));
+      }
+    
+</style>
+<style data-shopify>:root {
+    --border-default-width: nonepx;
+    --border-default-width-narrow: nonepx;
+    --border-default-width-wide: nonepx;
+    --border-default-radius: 0;
+    --border-default-color: var(--color-content-subtle);
+  }</style><style data-shopify>
+  :root {--button-px-sm: 0.75rem; --button-py-sm: 0.5rem; --button-px-md: 1rem; --button-py-md: 0.625rem; --button-px-lg: 1.25rem; --button-py-lg: 0.75rem; --button-font-size: var(--font_button_size);--button-all-border-radius: 0;--border-button-width: var(--border-default-width-narrow);--button-px-default: var(--button-px-sm);--button-py-default: var(--button-py-sm);}
+
+  .btn {--tw-shadow: 0 0px 0px 0 var(--button-shadow-color); --button-box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow); display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; position: relative; overflow: hidden; color: var(--button-color); border: var(--border-button-width) solid var(--border-color); border-radius: var(--button-all-border-radius); box-shadow: var(--button-box-shadow); padding: var(--button-py-default) var(--button-px-default); font-size: var(--button-font-size); font-family: var(--font_button); font-weight: var(--font_button_weight); letter-spacing: var(--font_button_letter); line-height: var(--font_button_line); text-transform: var(--font_button_text_transform); transition: .2s ease-out; --border-color: var(--color-transparent,var(--color-tertiary)); --button-color: var(--color-tertiary-on); --button-shadow-color: var(--color-tertiary-20); text-decoration-color: transparent; --button-fill: var(--color-tertiary);--button-fill-hover: var(--color-primary); background: var(--button-fill); --button-gradient-visible: hidden;}
+
+  .btn:before,
+  .btn:after {
+    content: '';
+    background: transparent;
+    inset: 0;
+    position: absolute;
+    display: block;
+    visibility: var(--button-gradient-visible, hidden);
+    z-index: -1;
+    transition: .2s ease-out;
+    transform: translate3d(0,0,0);
+  }
+  .btn:before {
+    background: var(--button-fill-hover);
+    opacity: 0;
+  }
+  .btn:hover::before {
+    opacity: var(--button-bg-opacity, 1);
+  }
+
+  .btn:after {
+    background: var(--button-fill);
+    opacity: var(--button-bg-opacity, 1);
+  }
+  .btn:hover::after {
+    opacity: 0;
+  }
+
+  input.btn {
+    background: var(--button-fill);
+  }
+  input.btn:before {
+    display: none;
+  }
+  input.btn:after {
+    display: none;
+  }
+  input.btn:hover {
+    background: var(--button-fill-hover);
+  }
+
+  .btn--sm {
+    --button-py-default: var(--button-py-sm);
+    --button-px-default: var(--button-px-sm);
+    font-size: max(calc(var(--button-font-size) * .618em ), 14px)
+  }
+  .btn--md {
+    --button-py-default: var(--button-py-md);
+    --button-px-default: var(--button-px-md);
+  }
+  .btn--lg {
+    --button-py-default: var(--button-py-lg);
+    --button-px-default: var(--button-px-lg);
+  }
+
+  .btn:hover,
+  .btn--primary:hover {--border-color: var(--color-transparent,var(--color-primary)); --button-color: var(--color-primary-on); --button-shadow-color: var(--color-primary-20); text-decoration-color: transparent; background: var(--button-fill-hover);}
+
+  .btn--secondary {--border-color: var(--color-transparent,var(--color-secondary)); --button-color: var(--color-secondary-on); --button-shadow-color: var(--color-secondary-20); text-decoration-color: transparent; --button-fill: var(--color-secondary);--button-fill-hover: var(--color-secondary-dark); background: var(--button-fill); --button-gradient-visible: hidden;}
+
+  .btn--secondary:hover {--border-color: var(--color-transparent,var(--color-secondary-dark)); --button-color: var(--color-secondary-on); --button-shadow-color: var(--color-secondary-dark-20); text-decoration-color: transparent; background: var(--button-fill-hover);}
+
+  .btn--tertiary {--button-color: var(--color-primary); --border-color: transparent; --button-shadow-color: transparent; text-decoration-color: transparent; --button-fill: var(--color-transparent);--button-fill-hover: var(--color-primary); background: var(--button-fill); --button-gradient-visible: hidden;}
+
+  .btn--tertiary:hover {--border-color: var(--default,var(--color-primary)); --button-color: var(--color-primary-on); --button-shadow-color: var(--color-primary-20); text-decoration-color: transparent; background: var(--button-fill-hover);}
+
+  .btn--light {--border-color: var(--color-gray-100,var(--color-gray-100)); --button-color: var(--color-gray-100-on); --button-shadow-color: var(--color-gray-100-20); text-decoration-color: transparent; --button-fill: var(--color-gray-100);--button-fill-hover: var(--color-gray-100);}
+
+  .btn--light:hover {--border-color: var(--color-gray-100,var(--color-gray-100)); --button-color: var(--color-gray-100-on); --button-shadow-color: var(--color-gray-100-20); text-decoration-color: transparent;}
+
+  .btn--dark {--border-color: var(--color-gray-900,var(--color-gray-900)); --button-color: var(--color-gray-900-on); --button-shadow-color: var(--color-gray-900-20); text-decoration-color: transparent; --button-fill: var(--color-gray-900);--button-fill-hover: var(--color-gray-900);}
+
+  .btn--dark:hover {--border-color: var(--color-gray-900,var(--color-gray-900)); --button-color: var(--color-gray-900-on); --button-shadow-color: var(--color-gray-900-20); text-decoration-color: transparent;}
+
+  @media screen and (min-width: 48em) {
+    .btn {
+      --button-font-size: var(--font_button_size_md);
+    }
+  }
+</style>
+<style data-shopify>
+:root {
+  --gap-sm-2xs: 0.25rem;
+  --gap-sm-xs: 0.5rem;
+  --gap-sm-sm: 0.75rem;
+  --gap-sm-md: 1.0rem;
+  --gap-sm-lg: 1.25rem;
+  --gap-sm-xl: 1.5rem;
+  --gap-sm-2xl: 2.0rem;
+  --gap-lg-2xs: 0.5rem;
+  --gap-lg-xs: 1.0rem;
+  --gap-lg-sm: 1.5rem;
+  --gap-lg-md: 2.0rem;
+  --gap-lg-lg: 2.5rem;
+  --gap-lg-xl: 3.0rem;
+  --gap-lg-2xl: 3.5rem;
+  --gap-container-2xs: 0.5rem;
+  --gap-container-xs: 1.0rem;
+  --gap-container-sm: 2.0rem;
+  --gap-container-md: 3.0rem;
+  --gap-container-lg: 4.0rem;
+  --gap-container-xl: 5.0rem;
+  --gap-container-2xl: 6.0rem;
+  --padding-xs-2xs: 0.125rem;
+  --padding-xs-xs: 0.25rem;
+  --padding-xs-sm: 0.375rem;
+  --padding-xs-md: 0.5rem;
+  --padding-xs-lg: 0.625rem;
+  --padding-xs-xl: 0.75rem;
+  --padding-xs-2xl: 1.0rem;
+  --padding-sm-2xs: 0.25rem;
+  --padding-sm-xs: 0.5rem;
+  --padding-sm-sm: 0.75rem;
+  --padding-sm-md: 1.0rem;
+  --padding-sm-lg: 1.25rem;
+  --padding-sm-xl: 1.5rem;
+  --padding-sm-2xl: 2.0rem;
+  --padding-lg-2xs: 0.5rem;
+  --padding-lg-xs: 1.0rem;
+  --padding-lg-sm: 1.5rem;
+  --padding-lg-md: 2.0rem;
+  --padding-lg-lg: 2.5rem;
+  --padding-lg-xl: 3.0rem;
+  --padding-lg-2xl: 3.5rem;
+  --padding-container-2xs: 0.5rem;
+  --padding-container-xs: 1.0rem;
+  --padding-container-sm: 2.0rem;
+  --padding-container-md: 3.0rem;
+  --padding-container-lg: 4.0rem;
+  --padding-container-xl: 5.0rem;
+  --padding-container-2xl: 6.0rem;
+  --padding-section-desktop-2xs: .5rem;
+  --padding-section-desktop-xs: 1rem;
+  --padding-section-desktop-sm: 2rem;
+  --padding-section-desktop-md: 3rem;
+  --padding-section-desktop-lg: 4rem;
+  --padding-section-desktop-xl: 5rem;
+  --padding-section-desktop-2xl: 6rem;
+  --padding-section-mobile-2xs: .25rem;
+  --padding-section-mobile-xs: .5rem;
+  --padding-section-mobile-sm: 1.5rem;
+  --padding-section-mobile-md: 2rem;
+  --padding-section-mobile-lg: 2.5rem;
+  --padding-section-mobile-xl: 3rem;
+  --padding-section-mobile-2xl: 4rem;
+  --margin-sm-2xs: 0.25rem;
+  --margin-sm-xs: 0.5rem;
+  --margin-sm-sm: 0.75rem;
+  --margin-sm-md: 1.0rem;
+  --margin-sm-lg: 1.25rem;
+  --margin-sm-xl: 1.5rem;
+  --margin-sm-2xl: 2.0rem;
+  --margin-lg-2xs: 0.5rem;
+  --margin-lg-xs: 1.0rem;
+  --margin-lg-sm: 1.5rem;
+  --margin-lg-md: 2.0rem;
+  --margin-lg-lg: 2.5rem;
+  --margin-lg-xl: 3.0rem;
+  --margin-lg-2xl: 3.5rem;
+  --margin-container-2xs: 0.5rem;
+  --margin-container-xs: 1.0rem;
+  --margin-container-sm: 2.0rem;
+  --margin-container-md: 3.0rem;
+  --margin-container-lg: 4.0rem;
+  --margin-container-xl: 5.0rem;
+  --margin-container-2xl: 6.0rem;
+  --w-tooltip-sm: 180px;
+  --w-tooltip-md: 210px;
+  --w-tooltip-lg: 240px;
+  --w-tooltip-xl: 270px;
+
+  --container-max-w-sm: 100rem;
+  --container-max-w-lg: 200rem;--select-pad-r: calc(var(--border-default-width) + 1rem + (2 * var(--padding-sm-xs)));
+}
+
+</style><link href="//nmixxshopus.com/cdn/shop/t/14/assets/styles-critical.bundle.css?v=88399899110766794351785976605" rel="stylesheet" type="text/css" media="all" />
+  <title>Fe3O4: FORWARD (Ready Ver.) - NMIXX OFFICIAL STORE</title><script src="//nmixxshopus.com/cdn/shop/t/14/assets/runtime.bundle.js?v=120729513204241209351785976605"></script><script defer="defer" src="//nmixxshopus.com/cdn/shop/t/14/assets/geolocation.bundle.js?v=74604393885868608461785976605"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  
+window.dataLayer.push({
+    event:'page_data_loaded',
+    user: {
+      logged_in: 'false'
+    },
+    pageType: 'product',
+    platform: 'shopify',
+    shopify_consent: 'false',
+    platform_theme: 'global',
+    platform_version: '2026.07.2.0'
+  });
+</script>
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TCTNQT2');</script>
+
+
+<link rel="canonical" href="https://nmixxshopus.com/products/fe3o4-forward-ready-ver">
+
+  <script>window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.start');</script><meta name="google-site-verification" content="YnDm75YB5u9d9a91JOIZjOy34qfALSHzrs4fKmdmqp8">
+<meta id="shopify-digital-wallet" name="shopify-digital-wallet" content="/78217675050/digital_wallets/dialog">
+<meta id="in-context-paypal-metadata" data-shop-id="78217675050" data-venmo-supported="false" data-environment="production" data-locale="en_US" data-paypal-v4="true" data-currency="USD">
+<link rel="ucp" href="/.well-known/ucp" version="2026-08-25"><link rel="buy" href="/cart/49935984230698:1?ucp/version=2026-08-25&amp;context/payment/0/handler=dev.shopify.shop_pay" payment="dev.shopify.shop_pay com.google.pay dev.shopify.card"><link rel="alternate" type="application/json+oembed" href="https://nmixxshopus.com/products/fe3o4-forward-ready-ver.oembed">
+<script async="async" src="/checkouts/internal/preloads.js?locale=en-US&default_configuration_id=5528322346"></script>
+<link rel="preconnect" href="https://shop.app" crossorigin="anonymous">
+<script async="async" src="https://shop.app/checkouts/internal/preloads.js?locale=en-US&default_configuration_id=5528322346&shop_id=78217675050" crossorigin="anonymous"></script>
+<script id="apple-pay-shop-capabilities" type="application/json">{"shopId":78217675050,"countryCode":"US","currencyCode":"USD","merchantCapabilities":["supports3DS"],"merchantId":"gid:\/\/shopify\/Shop\/78217675050","merchantName":"NMIXX OFFICIAL STORE","requiredBillingContactFields":["postalAddress","email","phone"],"requiredShippingContactFields":["postalAddress","email","phone"],"shippingType":"shipping","supportedNetworks":["visa","masterCard","amex","discover","elo","jcb"],"total":{"type":"pending","label":"NMIXX OFFICIAL STORE","amount":"1.00"},"shopifyPaymentsEnabled":true,"supportsSubscriptions":true}</script>
+<script id="shopify-features" type="application/json">{"accessToken":"7bd38a77363b3209b0afcd40b6d2199d","betas":["rich-media-storefront-analytics"],"domain":"nmixxshopus.com","predictiveSearch":true,"shopId":78217675050,"locale":"en"}</script>
+<script>var Shopify = Shopify || {};
+Shopify.shop = "nmixx-store.myshopify.com";
+Shopify.locale = "en";
+Shopify.currency = {"active":"USD","rate":"1.0"};
+Shopify.country = "US";
+Shopify.theme = {"name":"Rhythm-2026.07.2.0-Aug6","id":189595418922,"schema_name":"Rhythm","schema_version":"2026.07.2.0","theme_store_id":null,"role":"main"};
+Shopify.theme.handle = "null";
+Shopify.theme.style = {"id":null,"handle":null};
+Shopify.cdnHost = "nmixxshopus.com/cdn";
+Shopify.routes = Shopify.routes || {};
+Shopify.routes.root = "/";
+Shopify.shopJsCdnBaseUrl = "https://cdn.shopify.com/shopifycloud/shop-js";
+Shopify.SignInWithShop = Shopify.SignInWithShop || {};
+Shopify.SignInWithShop.User = Shopify.SignInWithShop.User || {};
+Shopify.SignInWithShop.User.recognized = false;</script>
+<script type="module">!function(o){(o.Shopify=o.Shopify||{}).modules=!0}(window);</script>
+<script>!function(o){function n(){var o=[];function n(){o.push(Array.prototype.slice.apply(arguments))}return n.q=o,n}var t=o.Shopify=o.Shopify||{};t.loadFeatures=n(),t.autoloadFeatures=n()}(window);</script>
+<script>
+  window.ShopifyPay = window.ShopifyPay || {};
+  window.ShopifyPay.apiHost = "shop.app\/pay";
+  window.ShopifyPay.redirectState = null;
+</script>
+<script>
+  window.Shopify = window.Shopify || {};
+  window.Shopify.SignInWithShop = window.Shopify.SignInWithShop || {};
+  window.Shopify.SignInWithShop.assetMetrics = { sampleRate: 0.25 };
+  window.Shopify.SignInWithShop.eligible = true;
+</script>
+<script id="shop-js-analytics" type="application/json">{"pageType":"product"}</script>
+<script defer="defer" async type="module" src="https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js"></script>
+<script type="module">
+  await import("https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js");
+
+  window.Shopify.SignInWithShop?.initShopCartSync?.({"fedCMEnabled":true,"windoidEnabled":true,"backendHost":"bm1peHhzaG9wdXMuY29t"});
+
+</script>
+<script>
+  window.Shopify = window.Shopify || {};
+  if (!window.Shopify.featureAssets) window.Shopify.featureAssets = {};
+  window.Shopify.featureAssets['shop-js'] = {"avatar":["modules/v2/loader.avatar.en.esm.js"],"checkout-modal":["modules/v2/loader.checkout-modal.en.esm.js"],"init-customer-accounts-sign-up":["modules/v2/loader.init-customer-accounts-sign-up.en.esm.js"],"init-customer-accounts":["modules/v2/loader.init-customer-accounts.en.esm.js"],"init-fed-cm":["modules/v2/loader.init-fed-cm.en.esm.js"],"init-shop-cart-sync":["modules/v2/loader.init-shop-cart-sync.en.esm.js"],"init-shop-email-lookup-coordinator":["modules/v2/loader.init-shop-email-lookup-coordinator.en.esm.js"],"init-shop-for-new-customer-accounts":["modules/v2/loader.init-shop-for-new-customer-accounts.en.esm.js"],"init-shop-user-recognition":["modules/v2/loader.init-shop-user-recognition.en.esm.js"],"init-windoid":["modules/v2/loader.init-windoid.en.esm.js"],"lead-capture":["modules/v2/loader.lead-capture.en.esm.js"],"listener":["modules/v2/loader.listener.en.esm.js"],"pay-button":["modules/v2/loader.pay-button.en.esm.js"],"payment-terms":["modules/v2/loader.payment-terms.en.esm.js"],"shop-button":["modules/v2/loader.shop-button.en.esm.js"],"shop-cart-sync":["modules/v2/loader.shop-cart-sync.en.esm.js"],"shop-cash-offers":["modules/v2/loader.shop-cash-offers.en.esm.js"],"shop-follow-button":["modules/v2/loader.shop-follow-button.en.esm.js"],"shop-login-button":["modules/v2/loader.shop-login-button.en.esm.js"],"shop-login":["modules/v2/loader.shop-login.en.esm.js"],"shop-toast-manager":["modules/v2/loader.shop-toast-manager.en.esm.js"],"shop-user-recognition":["modules/v2/loader.shop-user-recognition.en.esm.js"]};
+</script>
+<script>(function() {
+  var isLoaded = false;
+  function asyncLoad() {
+    if (isLoaded) return;
+    isLoaded = true;
+    var urls = ["\/\/shopify.privy.com\/widget.js?shop=nmixx-store.myshopify.com","https:\/\/r2-t.trackedlink.net\/_dmspt.js?shop=nmixx-store.myshopify.com","https:\/\/r2-t.trackedlink.net\/shopify\/ddgtag.js?shop=nmixx-store.myshopify.com"];
+    for (var i = 0; i < urls.length; i++) {
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = urls[i];
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+  };
+  if(window.attachEvent) {
+    window.attachEvent('onload', asyncLoad);
+  } else {
+    window.addEventListener('load', asyncLoad, false);
+  }
+})();</script>
+<script id="__st">var __st={"a":78217675050,"offset":-14400,"reqid":"30d68952-3ca2-4479-a705-59515acfe086-1793084657","pageurl":"nmixxshopus.com\/products\/fe3o4-forward-ready-ver","u":"0008c6a39da6","p":"product","rtyp":"product","rid":9702610403626};</script>
+<script>window.ShopifyPaypalV4VisibilityTracking = true;</script>
+<script id="captcha-bootstrap">!function(){'use strict';const t='contact',e='account',n='new_comment',o=[[t,t],['blogs',n],['comments',n],[t,'customer']],c=[[e,'customer_login'],[e,'guest_login'],[e,'recover_customer_password'],[e,'create_customer']],r=t=>t.map((([t,e])=>`form[action*='/${t}']:not([data-nocaptcha='true']) input[name='form_type'][value='${e}']`)).join(','),a=t=>()=>t?[...document.querySelectorAll(t)].map((t=>t.form)):[];function s(){const t=[...o],e=r(t);return a(e)}const i='password',u='form_key',d=['recaptcha-v3-token','g-recaptcha-response','h-captcha-response',i],f=()=>{try{return window.sessionStorage}catch{return}},m='__shopify_v',_=t=>t.elements[u];function p(t,e,n=!1){try{const o=window.sessionStorage,c=JSON.parse(o.getItem(e)),{data:r}=function(t){const{data:e,action:n}=t;return t[m]||n?{data:e,action:n}:{data:t,action:n}}(c);for(const[e,n]of Object.entries(r))t.elements[e]&&(t.elements[e].value=n);n&&o.removeItem(e)}catch(o){console.error('form repopulation failed',{error:o})}}const l='form_type',E='cptcha';function T(t){t.dataset[E]=!0}const w=window,h=w.document,L='Shopify',v='ce_forms',y='captcha';let A=!1;((t,e)=>{const n=(g='f06e6c50-85a8-45c8-87d0-21a2b65856fe',I='https://cdn.shopify.com/shopifycloud/storefront-forms-hcaptcha/ce_storefront_forms_captcha_hcaptcha.v1.5.3.iife.js',D={infoText:'Protected by hCaptcha',privacyText:'Privacy',termsText:'Terms'},(t,e,n)=>{const o=w[L][v],c=o.bindForm;if(c)return c(t,g,e,D).then(n);var r;o.q.push([[t,g,e,D],n]),r=I,A||(h.body.append(Object.assign(h.createElement('script'),{id:'captcha-provider',async:!0,src:r})),A=!0)});var g,I,D;w[L]=w[L]||{},w[L][v]=w[L][v]||{},w[L][v].q=[],w[L][y]=w[L][y]||{},w[L][y].protect=function(t,e){n(t,void 0,e),T(t)},Object.freeze(w[L][y]),function(t,e,n,w,h,L){const[v,y,A,g]=function(t,e,n){const i=e?o:[],u=t?c:[],d=[...i,...u],f=r(d),m=r(i),_=r(d.filter((([t,e])=>n.includes(e))));return[a(f),a(m),a(_),s()]}(w,h,L),I=t=>{const e=t.target;return e instanceof HTMLFormElement?e:e&&e.form},D=t=>v().includes(t);t.addEventListener('submit',(t=>{const e=I(t);if(!e)return;const n=D(e)&&!e.dataset.hcaptchaBound&&!e.dataset.recaptchaBound,o=_(e),c=g().includes(e)&&(!o||!o.value);(n||c)&&t.preventDefault(),c&&!n&&(function(t){try{if(!f())return;!function(t){const e=f();if(!e)return;const n=_(t);if(!n)return;const o=n.value;o&&e.removeItem(o)}(t);const e=Array.from(Array(32),(()=>Math.random().toString(36)[2])).join('');!function(t,e){_(t)||t.append(Object.assign(document.createElement('input'),{type:'hidden',name:u})),t.elements[u].value=e}(t,e),function(t,e){const n=f();if(!n)return;const o=[...t.querySelectorAll(`input[type='${i}']`)].map((({name:t})=>t)),c=[...d,...o],r={};for(const[a,s]of new FormData(t).entries())c.includes(a)||(r[a]=s);n.setItem(e,JSON.stringify({[m]:1,action:t.action,data:r}))}(t,e)}catch(e){console.error('failed to persist form',e)}}(e),e.submit())}));const S=(t,e)=>{t&&!t.dataset[E]&&(n(t,e.some((e=>e===t))),T(t))};for(const o of['focusin','change'])t.addEventListener(o,(t=>{const e=I(t);D(e)&&S(e,y())}));const B=e.get('form_key'),M=e.get(l),P=B&&M;t.addEventListener('DOMContentLoaded',(()=>{const t=y();if(P)for(const e of t)e.elements[l].value===M&&p(e,B);[...new Set([...A(),...v().filter((t=>'true'===t.dataset.shopifyCaptcha))])].forEach((e=>S(e,t)))}))}(h,new URLSearchParams(w.location.search),n,t,e,['guest_login'])})(!0,!0)}();</script>
+<script integrity="sha256-FYHzja/5XSmzkjz6zHj7s4rACJGFuVoYZdumgoO2Ecs=" data-source-attribution="shopify.loadfeatures" defer="defer" src="//nmixxshopus.com/cdn/shopifycloud/storefront/assets/storefront/load_feature-ed94c51f.js" crossorigin="anonymous"></script>
+<script>(function () {var userAgent = navigator.userAgent;var platform = navigator.platform;var maxTouchPoints = navigator.maxTouchPoints || 0;var isIOS = /iPad|iPhone|iPod/.test(platform) || (platform === 'MacIntel' && maxTouchPoints > 1);var isMacSafari = platform.indexOf('Mac') === 0 && /Safari/.test(userAgent) && !/Chrome|Chromium|CriOS|FxiOS|Edg|OPR|Android/.test(userAgent);var isAppleSafari = isIOS || isMacSafari;if (isAppleSafari) {fetch('/sf_private_access_tokens' + location.search).catch(function () {});}function browserMajorVersion(pattern) {var match = userAgent.match(pattern);return match ? parseInt(match[1], 10) : null;}function shouldLoadAutosizesPolyfill() {if (!window.PerformanceObserver?.supportedEntryTypes?.includes('paint')) {return false;}var chromeVersion = browserMajorVersion(/Chrome\/(\d+)/);if (chromeVersion !== null) {return chromeVersion < 126;}var firefoxVersion = browserMajorVersion(/Firefox\/(\d+)/);if (firefoxVersion !== null) {return firefoxVersion < 150;}var safariVersion = isAppleSafari ? browserMajorVersion(/Version\/(\d+).*Safari\//) : null;if (safariVersion !== null) {return safariVersion < 27;}return true;}if (shouldLoadAutosizesPolyfill()) {var autosizesScript = document.createElement('script');autosizesScript.async = true;autosizesScript.crossOrigin = 'anonymous';autosizesScript.src = "//nmixxshopus.com/cdn/shopifycloud/storefront/assets/storefront/autosizes-84416378.js";(document.head || document.documentElement).appendChild(autosizesScript);}window.ShopifyAnalytics = window.ShopifyAnalytics || {};window.ShopifyAnalytics.performance = window.ShopifyAnalytics.performance || {};(function () {var LONG_FRAME_THRESHOLD = 50;var longAnimationFrames = [];var activeRafId = null;function collectLongFrames() {var previousTime = null;function rafMonitor(now) {if (activeRafId === null) {return;}var delta = now - previousTime;if (delta > LONG_FRAME_THRESHOLD) {longAnimationFrames.push({startTime: previousTime,endTime: now,});}previousTime = now;activeRafId = requestAnimationFrame(rafMonitor);}previousTime = performance.now();activeRafId = requestAnimationFrame(rafMonitor);}if (!window.PerformanceObserver?.supportedEntryTypes?.includes('long-animation-frame')) {collectLongFrames();var timeoutId = setTimeout(function () {cancelAnimationFrame(activeRafId);}, 10000);window.ShopifyAnalytics.performance.getLongAnimationFrames = function (stopCollection) {if (stopCollection === undefined) {stopCollection = false;}if (stopCollection) {clearTimeout(timeoutId);cancelAnimationFrame(activeRafId);}return longAnimationFrames;};}})();})();</script><script crossorigin="anonymous" defer="defer" src="//nmixxshopus.com/cdn/shopifycloud/storefront/assets/shopify_pay/storefront-f0e26bdf.js?v=20250812"></script>
+<script id="shopify-origin-trials" async="async" integrity="sha256-qJbe/jEZBHtr5W/BlA2cKAz3vkXu6vJQyLjgvgCC86g=" src="//cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-318ab40a.js" crossorigin="anonymous" onload="window.__shopifyOriginTrialsDone = true" onerror="window.__shopifyOriginTrialsDone = true"></script>
+<script>(()=>{var d="shopify:webmcp_adapter_loaded",n=Symbol.for("shopify.webmcp_adapter_loading");function s(c,a,{win:r=window,doc:o=document}={}){function p(){try{return r.localStorage.getItem(d)==="true"}catch{return!1}}function l(){try{r.localStorage.setItem(d,"true")}catch{}}function u(){return typeof(o.modelContext||r.navigator?.modelContext)?.registerTool=="function"}function f(){if(r[n]||!u())return;let t=o.head||o.getElementsByTagName("head")[0];if(!t)return;let e=o.createElement("script");e.type="module",e.crossOrigin="anonymous",a&&(e.integrity=a),e.src=c,e.addEventListener("load",l,{once:!0}),e.addEventListener("error",()=>{r[n]=!1},{once:!0}),t.appendChild(e),r[n]=!0}function _(t){let e=o.getElementById("shopify-origin-trials");if(!e||r.__shopifyOriginTrialsDone){t();return}e.addEventListener("load",t,{once:!0}),e.addEventListener("error",t,{once:!0})}function i(){_(()=>r.setTimeout(f,0))}function m(){o.addEventListener("DOMContentLoaded",i,{once:!0})}p()?i():m()}s("\/\/nmixxshopus.com\/cdn\/shopifycloud\/storefront\/assets\/storefront\/webmcp-23c12384.js","sha256-r8Pww6V2udgtSdaVbcRtdZ4Kg+gXP7aLPZOtQSJPrbM=");})();
+</script>
+<script data-source-attribution="shopify.dynamic_checkout.dynamic.init">var Shopify=Shopify||{};Shopify.PaymentButton=Shopify.PaymentButton||{isStorefrontPortableWallets:!0,init:function(){window.Shopify.PaymentButton.init=function(){};var t=document.createElement("script");t.src="https://nmixxshopus.com/cdn/shopifycloud/portable-wallets/latest/portable-wallets.en.js",t.type="module",document.head.appendChild(t)}};
+</script>
+<script data-source-attribution="shopify.dynamic_checkout.buyer_consent">
+  function portableWalletsHideBuyerConsent(e){var t=document.getElementById("shopify-buyer-consent"),n=document.getElementById("shopify-subscription-policy-button");t&&n&&(t.classList.add("hidden"),t.setAttribute("aria-hidden","true"),n.removeEventListener("click",e))}function portableWalletsShowBuyerConsent(e){var t=document.getElementById("shopify-buyer-consent"),n=document.getElementById("shopify-subscription-policy-button");t&&n&&(t.classList.remove("hidden"),t.removeAttribute("aria-hidden"),n.addEventListener("click",e))}window.Shopify?.PaymentButton&&(window.Shopify.PaymentButton.hideBuyerConsent=portableWalletsHideBuyerConsent,window.Shopify.PaymentButton.showBuyerConsent=portableWalletsShowBuyerConsent);
+</script>
+<script data-source-attribution="shopify.dynamic_checkout.cart.bootstrap">document.addEventListener("DOMContentLoaded",(function(){function t(){return document.querySelector("shopify-accelerated-checkout-cart, shopify-accelerated-checkout")}if(t())Shopify.PaymentButton.init();else{new MutationObserver((function(e,n){t()&&(Shopify.PaymentButton.init(),n.disconnect())})).observe(document.body,{childList:!0,subtree:!0})}}));
+</script>
+<link id="shopify-accelerated-checkout-styles" rel="stylesheet" media="screen" href="https://nmixxshopus.com/cdn/shopifycloud/portable-wallets/latest/accelerated-checkout-backwards-compat.css" crossorigin="anonymous">
+<style id="shopify-accelerated-checkout-cart">
+        #shopify-buyer-consent {
+  margin-top: 1em;
+  display: inline-block;
+  width: 100%;
+}
+
+#shopify-buyer-consent.hidden {
+  display: none;
+}
+
+#shopify-subscription-policy-button {
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+#shopify-subscription-policy-button::before {
+  box-shadow: none;
+}
+
+      </style>
+
+<script id="shopify-cfh-end">window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.end');</script> <style>
+  dialog[open]::backdrop,
+  .umg-backdrop {
+    
+      --theme-color: ;
+      background: hsl(126 32% 88% / 0.4);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+  }
+  
+  #PBarNextFrameWrapper::backdrop,
+  #web-pixels-helper-sandbox-container::backdrop {
+    --theme-color: unset;
+    background: unset;
+    -webkit-backdrop-filter: unset;
+    backdrop-filter: unset;
+  }
+</style><link href="//nmixxshopus.com/cdn/shop/t/14/assets/styles.bundle.css?v=99904993461377734071785976605" rel="stylesheet" type="text/css" media="print" id="styles_css_bundle" onload="this.media=`all`;this.removeAttribute(`onload`)" />
+  <noscript><link href="//nmixxshopus.com/cdn/shop/t/14/assets/styles.bundle.css?v=99904993461377734071785976605" rel="stylesheet" type="text/css" media="all" id="styles_css_bundle" /></noscript><script defer="defer" src="//nmixxshopus.com/cdn/shop/t/14/assets/alpine.bundle.js?v=171037108278180649291785976605"></script><link rel="apple-touch-icon" sizes="180x180" href="//nmixxshopus.com/cdn/shop/files/NMIXX.png?crop=center&height=180&v=1736368517&width=180">
+    <link rel="icon" href="//nmixxshopus.com/cdn/shop/files/NMIXX.png?crop=center&height=32&v=1736368517&width=32"><meta name="description" content="Gen-Z K-Pop girl group icons NMIXX (LILY, HAEWON, SULLYOON, BAE, JIWOO &amp;amp; KYUJIN) are back with a new sound showcasing their powerhouse vocals with a new release titled Fe3O4: FORWARD and available in 2 versions: Ready Ver. and Go Ver. Contents of the album include: CD,  Booklet (2each / 24 pages), Lyric Poster, Acc">
+
+  <meta property="og:site_name" content="NMIXX OFFICIAL STORE">
+  <meta property="og:url" content="https://nmixxshopus.com/products/fe3o4-forward-ready-ver">
+  <meta property="og:title" content="Fe3O4: FORWARD (Ready Ver.) - NMIXX OFFICIAL STORE">
+  <meta property="og:type" content="product">
+  <meta property="og:description" content="Gen-Z K-Pop girl group icons NMIXX (LILY, HAEWON, SULLYOON, BAE, JIWOO &amp;amp; KYUJIN) are back with a new sound showcasing their powerhouse vocals with a new release titled Fe3O4: FORWARD and available in 2 versions: Ready Ver. and Go Ver. Contents of the album include: CD,  Booklet (2each / 24 pages), Lyric Poster, Acc"><meta property="og:image" content="http://nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063">
+  <meta property="og:image:secure_url" content="https://nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063">
+  <meta property="og:image:width" content="1000">
+  <meta property="og:image:height" content="1000"><meta property="og:price:amount" content="24.00">
+    <meta property="og:price:currency" content="USD"><meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fe3O4: FORWARD (Ready Ver.) - NMIXX OFFICIAL STORE">
+  <meta name="twitter:description" content="Gen-Z K-Pop girl group icons NMIXX (LILY, HAEWON, SULLYOON, BAE, JIWOO &amp;amp; KYUJIN) are back with a new sound showcasing their powerhouse vocals with a new release titled Fe3O4: FORWARD and available in 2 versions: Ready Ver. and Go Ver. Contents of the album include: CD,  Booklet (2each / 24 pages), Lyric Poster, Acc"><script>
+      window.dotDigital = {
+        shopDomain: 'nmixxshopus.com',
+        insightId: 'DM-9563578047-02'
+      }
+    </script><script>
+        window.customerEmail = ''
+        window.product = {
+          title: `Fe3O4: FORWARD (Ready Ver.)`,
+          url: '/products/fe3o4-forward-ready-ver',
+          featuredImage: 'files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png',
+          sku: '00198704286599',
+          price: '$24.00',
+          currency: 'USD',
+          brand: 'BrandDrop'
+        }
+      </script><script defer="defer" src="//nmixxshopus.com/cdn/shop/t/14/assets/dot-digital.bundle.js?v=111676681593682757461785976605"></script><link href="https://monorail-edge.shopifysvc.com" rel="dns-prefetch">
+<script>(function(){if ("sendBeacon" in navigator && "performance" in window) {try {var session_token_from_headers = performance.getEntriesByType('navigation')[0].serverTiming.find(x => x.name == '_s').description;} catch {var session_token_from_headers = undefined;}var session_cookie_matches = document.cookie.match(/_shopify_s=([^;]*)/);var session_token_from_cookie = session_cookie_matches && session_cookie_matches.length === 2 ? session_cookie_matches[1] : "";var session_token = session_token_from_headers || session_token_from_cookie || "";function handle_abandonment_event(e) {var entries = performance.getEntries().filter(function(entry) {return /monorail-edge.shopifysvc.com/.test(entry.name);});if (!window.abandonment_tracked && entries.length === 0) {window.abandonment_tracked = true;var currentMs = Date.now();var navigation_start = performance.timing.navigationStart;var payload = {shop_id: 78217675050,url: window.location.href,navigation_start,duration: currentMs - navigation_start,session_token,page_type: "product"};window.navigator.sendBeacon("https://monorail-edge.shopifysvc.com/v1/produce", JSON.stringify({schema_id: "online_store_buyer_site_abandonment/1.1",payload: payload,metadata: {event_created_at_ms: currentMs,event_sent_at_ms: currentMs}}));}}window.addEventListener('pagehide', handle_abandonment_event);}}());</script>
+<script>
+  window.__TREKKIE_SHIM_QUEUE = window.__TREKKIE_SHIM_QUEUE || [];
+</script>
+<script>(function(){var wpmLoader=function(){"use strict";var e=/Googlebot|Storebot-Google|bingbot|Baiduspider|YandexBot|DuckDuckBot|Slurp|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|AdsBot-Google|Mediapartners-Google|APIs-Google|PetalBot|SemrushBot|AhrefsBot|MJ12bot|DotBot|Acunetix|PerplexityBot|Perplexity-User/i,t=/bytedance/i;function i(){try{var e=document.cookie;if(!e||"string"!=typeof e)return;for(var t=0,i=e.split(";");t<i.length;t++){var n=i[t],r=n.indexOf("=");if(-1!==r){var o=n.slice(0,r).trim();if(o){var a=void 0;try{a=decodeURIComponent(o)}catch(e){a=o}if("_shopify_s"===a){var d=n.slice(r+1).trim();try{return decodeURIComponent(d)}catch(e){return d}}}}}return}catch(e){return}}function n(e){try{"undefined"!=typeof console&&"function"==typeof console.warn&&console.warn(e)}catch(e){}}function r(e,t){return"string"==typeof e&&e.length>0&&e.length<=t?e:void 0}function o(e){var t;switch(null==(t=null==e?void 0:e.navigation)?void 0:t.type){case 0:return"navigate";case 1:return"reload";case 2:return"back_forward";default:return}}function a(){var e,t,i;try{var n=null==(i=null==(t=null==(e=self.ShopifyAnalytics)?void 0:e.lib)?void 0:t.trekkie)?void 0:i.state;return"awaiting-consent"===n||"initialized"===n?n:void 0}catch(e){return}}return function(d,s,u,l){var c=arguments.length>4&&void 0!==arguments[4]?arguments[4]:{};try{var p=c.trekkieShim;!0!==p&&"true"!==p||null!=window.__TREKKIE_SHIM_QUEUE||(window.__TREKKIE_SHIM_QUEUE=[])}catch(e){}var f,v,h,y,g=(v=(f={modern:/Edge?\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Firefox\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(9{2}|\d{3,})\.\d+(\.\d+|)|(Maci|X1{2}).+ Version\/(15\.\d+|(1[6-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(9{2}|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(15[._]\d+|(1[6-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Android.+Firefox\/(15\d|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|SamsungBrowser\/([2-9]\d|\d{3,})\.\d+/,legacy:/Edge?\/(1[6-9]|[2-9]\d|\d{3,})\.\d+(\.\d+|)|Firefox\/(5[4-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)|Chrom(ium|e)\/(5[1-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)([\d.]+$|.*Safari\/(?![\d.]+ Edge\/[\d.]+$))|(Maci|X1{2}).+ Version\/(10\.\d+|(1[1-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(3[89]|[4-9]\d|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(10[._]\d+|(1[1-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(15\d|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/(5\.\d+|([6-9]|\d{2,})\.\d+)|Android.+MQ{2}Browser\/(14(\.(9|\d{2,})|)|(1[5-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(3\.\d+|([4-9]|\d{2,})\.\d+)(\.\d+|)/}).modern,h=f.legacy,(y=navigator.userAgent).match(e)?"bot":y.match(v)?"modern":y.match(h)?"legacy":y.match(t)?"bot":"unknown"),m=function(e){var t,i,n=r(e,128);try{var a=window.performance,d=null==(t=null==a?void 0:a.getEntriesByType)?void 0:t.call(a,"navigation")[0];if(!d)return{requestId:n,navigationType:o(a)};var s="type"in d?r(d.type,64):void 0,u="serverTiming"in d&&Array.isArray(d.serverTiming)?d.serverTiming:[];return{requestId:null!=n?n:r(null==(i=u.find(function(e){return"requestID"===e.name}))?void 0:i.description,128),navigationType:s}}catch(e){return{requestId:n}}}(c.requestId),w=function(e){var t=e.version,r=e.browserTarget,o=e.surface,a=e.shopId,d=e.monorailEndpoint,s=window.location.href;return{emit:function(e){var u=e.status,l=e.errorMsg,c=e.failureReason,p=e.useKeepaliveFallback,f=void 0!==p&&p,v=e.navigationType,h=e.pagehidePersisted,y=e.requestId,g=e.trekkieState;if(d){var m,w;try{var b=(new Date).getTime();m=JSON.stringify({metadata:{event_sent_at_ms:b},events:[{schema_id:"web_pixels_manager_load/3.3",payload:{version:t,bundle_target:r,page_url:s,status:u,surface:o,error_msg:l,failure_reason:c,navigation_type:v,pagehide_persisted:h,request_id:y,trekkie_state:g,shop_id:a,visit_token:i()},metadata:{event_created_at_ms:b}}]})}catch(e){return}try{if("function"==typeof window.navigator.sendBeacon&&-1===(w=window.navigator.userAgent).indexOf("iPhone; CPU iPhone OS 12_")&&-1===w.indexOf("iPad; CPU OS 12_")&&-1===w.indexOf("iPod touch; CPU iPhone OS 12_")&&window.navigator.sendBeacon.bind(window.navigator)(d,m))return}catch(e){}if(f)try{"function"==typeof window.fetch&&window.fetch(d,{method:"POST",headers:{"Content-Type":"text/plain"},body:m,keepalive:!0}).catch(function(){})}catch(e){}else try{var _=new XMLHttpRequest;_.open("POST",d,!0),_.setRequestHeader("Content-Type","text/plain"),_.send(m)}catch(e){n("[Web Pixels Manager] Got an unhandled error while logging to Monorail.")}}else n("[Web Pixels Manager] No Monorail endpoint provided, skipping logging.")}}}({version:u,browserTarget:g,surface:d.surface,shopId:d.shopId,monorailEndpoint:d.monorailEndpoint});if(Boolean(null==(_=null==(b=window.Shopify)?void 0:b.analytics)?void 0:_.replayQueue))w.emit({status:"setup-skipped",errorMsg:"replay queue already initialized."});else{var b,_;w.emit({status:"setup-started"}),window.Shopify=window.Shopify||{};var S=window.Shopify;S.analytics=S.analytics||{};var P=S.analytics;P.replayQueue=[],P.publish=function(e,t,i){return P.replayQueue.push([e,t,i]),!0};try{self.performance.mark("wpm:start")}catch(e){}var k,C="modern"===g?"modern":"legacy",E=(null!=l?l:{modern:"",legacy:""})[C],I=[(k={baseUrl:s,hashVersion:u,buildTarget:C}).baseUrl,"/wpm","/b",k.hashVersion,"modern"===k.buildTarget?"m":"l",".js"].join(""),O=!1,T=!1;try{c.browserTarget=g,function(){O=!0;try{window.addEventListener("pagehide",M)}catch(e){O=!1}}(),R(function(){try{R(x)}catch(e){D(e)}}),w.emit({status:"loading",requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()})}catch(e){D(e)}}function U(){var e;if(q(),!function(){var e,t;return Boolean(null==(t=null==(e=window.Shopify)?void 0:e.analytics)?void 0:t.initialized)}()){var t,i,n;try{if("function"!=typeof(null==(e=window.webPixelsManager)?void 0:e.init))return void A();if(!(null!==(n=i=t=window.webPixelsManager.init(d))&&"function"!=typeof n&&Object(n)===n&&"publish"in i&&"function"==typeof i.publish&&"publishCustomEvent"in i&&"function"==typeof i.publishCustomEvent&&"visitor"in i&&"function"==typeof i.visitor))return void A()}catch(e){return void A(e)}var r=window.Shopify.analytics;r.replayQueue.forEach(function(e){var i=e[0],n=e[1],r=e[2];t.publishCustomEvent(i,n,r)}),r.replayQueue=[],r.publish=t.publishCustomEvent,r.visitor=t.visitor,r.initialized=!0}}function A(e){B("manager_api_unavailable",void 0===e?void 0:Q(e))}function x(){B("script_load_failed","".concat(I," has failed to load"))}function B(e,t){T||(T=!0,q(),w.emit({status:"failed",errorMsg:t,failureReason:e,requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()}))}function M(e){O&&(q(),w.emit({status:"pagehide-while-loading",useKeepaliveFallback:!0,pagehidePersisted:e.persisted,requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()}))}function q(){O=!1;try{window.removeEventListener("pagehide",M)}catch(e){}}function R(e){var t;!function(e){var t=e.src,i=e.async,n=void 0===i||i,r=e.onload,o=e.onerror,a=e.sri,d=e.scriptDataAttributes,s=void 0===d?{}:d,u=document.createElement("script"),l=document.querySelector("head"),c=document.querySelector("body");if(u.async=n,u.src=t,a&&(u.integrity=a,u.crossOrigin="anonymous"),s)for(var p in s)if(Object.prototype.hasOwnProperty.call(s,p))try{u.dataset[p]=String(s[p])}catch(e){}if(r&&u.addEventListener("load",r),o&&u.addEventListener("error",o),l)l.appendChild(u);else{if(!c)throw new Error("Did not find a head or body element to append the script");c.appendChild(u)}}({src:I,async:!0,onload:U,onerror:e,sri:(t=E,"string"==typeof t&&/^sha384-[A-Za-z0-9+/=]+$/.test(t)?E:""),scriptDataAttributes:c})}function D(e){B("script_append_failed",Q(e))}function Q(e){return e instanceof Error?e.message:"Unknown error"}}}();wpmLoader({shopId: 78217675050,storefrontBaseUrl: "https://nmixxshopus.com",extensionsBaseUrl: "https://extensions.shopifycdn.com/cdn/shopifycloud/web-pixels-manager",monorailEndpoint: "https://nmixxshopus.com/.well-known/shopify/monorail/unstable/produce_batch",surface: "storefront-renderer",enabledBetaFlags: ["7b21cf0b","4c64608a"],webPixelsConfigList: [{"id":"3157164330","configuration":"{\"tagId\":\"DM-9563578047-02\",\"freshRelevanceWebsiteId\":\"undefined\",\"baseWebBehaviourAppUrl\":\"https:\/\/r2.trackedweb.net\"}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"8a598dbae7ca628fbf9f36eecb29b518","type":"APP","apiClientId":1479713,"privacyPurposes":["ANALYTICS","MARKETING"],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized"},{"id":"2932932906","configuration":"{\"forter_site_id\":\"98110a8cd268\"}","eventPayloadVersion":"v1","runtimeContext":"LAX","scriptVersion":"7e4b4da7292f3a5a38b14e41b6ff19b5","type":"APP","apiClientId":332912361473,"privacyPurposes":[],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_phone","read_customer_personal_data"],"dataSharingControls":["share_all_events"]},"dataSharingState":"unrestricted"},{"id":"973504810","configuration":"{\"config\":\"{\\\"pixel_id\\\":\\\"GT-5TPXD35D\\\",\\\"target_country\\\":\\\"US\\\",\\\"gtag_events\\\":[{\\\"type\\\":\\\"purchase\\\",\\\"action_label\\\":\\\"MC-DER5J3HP2M\\\"},{\\\"type\\\":\\\"page_view\\\",\\\"action_label\\\":\\\"MC-DER5J3HP2M\\\"},{\\\"type\\\":\\\"view_item\\\",\\\"action_label\\\":\\\"MC-DER5J3HP2M\\\"}],\\\"enable_monitoring_mode\\\":false}\"}","eventPayloadVersion":"v1","runtimeContext":"OPEN","scriptVersion":"a3321ca85cf5aaf6b57585fcd8d67b3a","type":"APP","apiClientId":1780363,"privacyPurposes":[],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized","enabledFlags":["9a3ed68a"]},{"id":"491061546","configuration":"{\"gtm_id\":\"GTM-TCTNQT2\"}","eventPayloadVersion":"v1","runtimeContext":"LAX","scriptVersion":"f2a111d9a647a953121840760ca3cefa","type":"APP","apiClientId":37773246465,"privacyPurposes":[],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_phone","read_customer_personal_data"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized"},{"id":"shopify-app-pixel","configuration":"{}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"0530","apiClientId":"shopify-pixel","type":"APP","privacyPurposes":["ANALYTICS","MARKETING"]},{"id":"shopify-custom-pixel","eventPayloadVersion":"v1","runtimeContext":"LAX","scriptVersion":"0530","apiClientId":"shopify-pixel","type":"CUSTOM","privacyPurposes":["ANALYTICS","MARKETING"]}],isMerchantRequest: false,initData: {"shop":{"name":"NMIXX OFFICIAL STORE","paymentSettings":{"currencyCode":"USD"},"myshopifyDomain":"nmixx-store.myshopify.com","countryCode":"US","storefrontUrl":"https:\/\/nmixxshopus.com"},"customer":null,"cart":null,"checkout":null,"productVariants":[{"price":{"amount":24.0,"currencyCode":"USD"},"product":{"title":"Fe3O4: FORWARD (Ready Ver.)","vendor":"NMIXX OFFICIAL STORE","id":"9702610403626","untranslatedTitle":"Fe3O4: FORWARD (Ready Ver.)","url":"\/products\/fe3o4-forward-ready-ver","type":"Box Set (Music Only)"},"id":"49935984230698","image":{"src":"\/\/nmixxshopus.com\/cdn\/shop\/files\/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063"},"sku":"00198704286599","title":"Default Title","untranslatedTitle":"Default Title"}],"products":[{"id":"9702610403626","handle":"fe3o4-forward-ready-ver","isCollective":null,"title":"Fe3O4: FORWARD (Ready Ver.)","type":"Box Set (Music Only)","untranslatedTitle":"Fe3O4: FORWARD (Ready Ver.)","url":"\/products\/fe3o4-forward-ready-ver","vendor":"NMIXX OFFICIAL STORE","remoteShopId":null,"variants":[{"id":"49935984230698","image":{"src":"\/\/nmixxshopus.com\/cdn\/shop\/files\/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063"},"price":{"amount":24.0,"currencyCode":"USD"},"sku":"00198704286599","title":"Default Title","untranslatedTitle":"Default Title"}]}],"purchasingCompany":null},},"https://nmixxshopus.com/cdn","ec790c88wf78f89cdp106eb8c0mb54b3ae5",{"modern":"","legacy":""},{"trekkieShim":true,"agentContext":true,"apiClientId":"580111","facebookCapiEnabled":"false","themeId":"189595418922","themePublished":"true","eventMetadataId":"e7c98a2c-d34e-4839-a2eb-e6630729ea93","pageType":"product","resourceId":"9702610403626","shopId":"78217675050","storefrontBaseUrl":"https:\/\/nmixxshopus.com","extensionBaseUrl":"https:\/\/extensions.shopifycdn.com\/cdn\/shopifycloud\/web-pixels-manager","surface":"storefront-renderer","enabledBetaFlags":"[\"7b21cf0b\", \"4c64608a\"]","isMerchantRequest":"false","hashVersion":"ec790c88wf78f89cdp106eb8c0mb54b3ae5","publish":"custom","events":"[[\"page_viewed\",{}],[\"product_viewed\",{\"productVariant\":{\"price\":{\"amount\":24.0,\"currencyCode\":\"USD\"},\"product\":{\"title\":\"Fe3O4: FORWARD (Ready Ver.)\",\"vendor\":\"NMIXX OFFICIAL STORE\",\"id\":\"9702610403626\",\"untranslatedTitle\":\"Fe3O4: FORWARD (Ready Ver.)\",\"url\":\"\/products\/fe3o4-forward-ready-ver\",\"type\":\"Box Set (Music Only)\"},\"id\":\"49935984230698\",\"image\":{\"src\":\"\/\/nmixxshopus.com\/cdn\/shop\/files\/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063\"},\"sku\":\"00198704286599\",\"title\":\"Default Title\",\"untranslatedTitle\":\"Default Title\"}}]]"});})();</script><script>
+  window.ShopifyAnalytics = window.ShopifyAnalytics || {};
+  window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
+  window.ShopifyAnalytics.meta.currency = 'USD';
+  var meta = {"product":{"id":9702610403626,"gid":"gid:\/\/shopify\/Product\/9702610403626","vendor":"NMIXX OFFICIAL STORE","type":"Box Set (Music Only)","handle":"fe3o4-forward-ready-ver","variants":[{"id":49935984230698,"price":2400,"name":"Fe3O4: FORWARD (Ready Ver.)","public_title":null,"sku":"00198704286599"}],"remote":false},"page":{"pageType":"product","resourceType":"product","resourceId":9702610403626,"requestId":"30d68952-3ca2-4479-a705-59515acfe086-1793084657"}};
+  for (var attr in meta) {
+    window.ShopifyAnalytics.meta[attr] = meta[attr];
+  }
+</script>
+<script class="analytics">
+  (function () {
+    var customDocumentWrite = function(content) {
+      var jquery = null;
+
+      if (window.jQuery) {
+        jquery = window.jQuery;
+      } else if (window.Checkout && window.Checkout.$) {
+        jquery = window.Checkout.$;
+      }
+
+      if (jquery) {
+        jquery('body').append(content);
+      }
+    };
+
+    var hasLoggedConversion = function(token) {
+      if (token) {
+        return document.cookie.indexOf('loggedConversion=' + token) !== -1;
+      }
+      return false;
+    }
+
+    var setCookieIfConversion = function(token) {
+      if (token) {
+        var twoMonthsFromNow = new Date(Date.now());
+        twoMonthsFromNow.setMonth(twoMonthsFromNow.getMonth() + 2);
+
+        document.cookie = 'loggedConversion=' + token + '; expires=' + twoMonthsFromNow;
+      }
+    }
+
+    var trekkie = window.ShopifyAnalytics.lib = window.trekkie = window.trekkie || [];
+    window.ShopifyAnalytics.lib.trekkie = window.trekkie;
+    if (trekkie.integrations) {
+      return;
+    }
+    trekkie.methods = [
+      'identify',
+      'page',
+      'ready',
+      'track',
+      'trackForm',
+      'trackLink'
+    ];
+    trekkie.factory = function(method) {
+      return function() {
+        var args = Array.prototype.slice.call(arguments);
+        args.unshift(method);
+        trekkie.push(args);
+        if (method == 'track' || method == 'page') {
+          var pageUrl;
+          try {
+            pageUrl = window.location.href;
+          } catch (e) {}
+          var pageReferrer;
+          try {
+            pageReferrer = document.referrer;
+          } catch (e) {}
+          try {
+            if (window.__TREKKIE_SHIM_QUEUE == null) {
+              window.__TREKKIE_SHIM_QUEUE = [];
+            }
+            window.__TREKKIE_SHIM_QUEUE.push({
+              from: 'trekkie-stub',
+              method: method,
+              args: args.slice(1),
+              pageContext: {
+                url: pageUrl,
+                referrer: pageReferrer
+              }
+            });
+          } catch (e) {
+            // no-op
+          }
+        }
+        return trekkie;
+      };
+    };
+    for (var i = 0; i < trekkie.methods.length; i++) {
+      var key = trekkie.methods[i];
+      trekkie[key] = trekkie.factory(key);
+    }
+    trekkie.load = function(config) {
+      trekkie.config = config || {};
+      trekkie.config.initialDocumentCookie = document.cookie;
+      var first = document.getElementsByTagName('script')[0];
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.onerror = function(e) {
+  var scriptFallback = document.createElement('script');
+  scriptFallback.type = 'text/javascript';
+  scriptFallback.onerror = function(error) {
+          var Monorail = {
+      produce: function produce(monorailDomain, schemaId, payload) {
+        var currentMs = new Date().getTime();
+        var event = {
+          schema_id: schemaId,
+          payload: payload,
+          metadata: {
+            event_created_at_ms: currentMs,
+            event_sent_at_ms: currentMs
+          }
+        };
+        return Monorail.sendRequest("https://" + monorailDomain + "/v1/produce", JSON.stringify(event));
+      },
+      sendRequest: function sendRequest(endpointUrl, payload) {
+        // Try the sendBeacon API
+        if (window && window.navigator && typeof window.navigator.sendBeacon === 'function' && typeof window.Blob === 'function' && !Monorail.isIos12()) {
+          var blobData = new window.Blob([payload], {
+            type: 'text/plain'
+          });
+
+          if (window.navigator.sendBeacon(endpointUrl, blobData)) {
+            return true;
+          } // sendBeacon was not successful
+
+        } // XHR beacon
+
+        var xhr = new XMLHttpRequest();
+
+        try {
+          xhr.open('POST', endpointUrl);
+          xhr.setRequestHeader('Content-Type', 'text/plain');
+          xhr.send(payload);
+        } catch (e) {
+          console.log(e);
+        }
+
+        return false;
+      },
+      isIos12: function isIos12() {
+        return window.navigator.userAgent.lastIndexOf('iPhone; CPU iPhone OS 12_') !== -1 || window.navigator.userAgent.lastIndexOf('iPad; CPU OS 12_') !== -1;
+      }
+    };
+    Monorail.produce('monorail-edge.shopifysvc.com',
+      'trekkie_storefront_load_errors/1.1',
+      {shop_id: 78217675050,
+      theme_id: 189595418922,
+      app_name: "storefront",
+      context_url: window.location.href,
+      source_url: "//nmixxshopus.com/cdn/s/trekkie.storefront.6efba1340ec6769622eb0d10b5cb070d43fb8d55.min.js"});
+
+  };
+  scriptFallback.async = true;
+  scriptFallback.src = '//nmixxshopus.com/cdn/s/trekkie.storefront.6efba1340ec6769622eb0d10b5cb070d43fb8d55.min.js';
+  first.parentNode.insertBefore(scriptFallback, first);
+};
+script.async = true;
+script.src = '//nmixxshopus.com/cdn/s/trekkie.storefront.6efba1340ec6769622eb0d10b5cb070d43fb8d55.min.js';
+first.parentNode.insertBefore(script, first);
+
+    };
+    trekkie.load(
+      {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":78217675050,"isMerchantRequest":null,"themeId":189595418922,"themeCityHash":"18411411572941236483","contentLanguage":"en","currency":"USD","eventMetadataId":"e7c98a2c-d34e-4839-a2eb-e6630729ea93"},"isServerSideCookieWritingEnabled":true,"monorailRegion":"shop_domain","enabledBetaFlags":["7b21cf0b","4c64608a"]},"Session Attribution":{},"S2S":{"facebookCapiEnabled":false,"source":"trekkie-storefront-renderer","apiClientId":580111}}
+    );
+
+    var loaded = false;
+    trekkie.ready(function() {
+      if (loaded) return;
+      loaded = true;
+
+      window.ShopifyAnalytics.lib = window.trekkie;
+
+      var originalDocumentWrite = document.write;
+      document.write = customDocumentWrite;
+      try { window.ShopifyAnalytics.merchantGoogleAnalytics.call(this); } catch(error) {};
+      document.write = originalDocumentWrite;
+
+      var match = window.location.pathname.match(/checkouts\/(.+)\/(thank_you|post_purchase)/)
+      var token = match? match[1]: undefined;
+      if (!hasLoggedConversion(token)) {
+        setCookieIfConversion(token);
+        window.ShopifyAnalytics.lib.track("Viewed Product",{"currency":"USD","variantId":49935984230698,"productId":9702610403626,"productGid":"gid:\/\/shopify\/Product\/9702610403626","name":"Fe3O4: FORWARD (Ready Ver.)","price":"24.00","sku":"00198704286599","brand":"NMIXX OFFICIAL STORE","variant":null,"category":"Box Set (Music Only)","nonInteraction":true,"remote":false,"available":true},undefined,undefined,{"shopifyEmitted":true});
+      }
+    });
+
+    window.ShopifyAnalytics.lib.page(null,{"pageType":"product","resourceType":"product","resourceId":9702610403626,"requestId":"30d68952-3ca2-4479-a705-59515acfe086-1793084657","shopifyEmitted":true});
+
+    var eventsListenerScript = document.createElement('script');
+    eventsListenerScript.async = true;
+    eventsListenerScript.src = "//nmixxshopus.com/cdn/shopifycloud/storefront/assets/shop_events_listener-4e26a9ce.js";
+    document.getElementsByTagName('head')[0].appendChild(eventsListenerScript);
+})();</script>
+<script
+  defer
+  src="https://nmixxshopus.com/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.11.0.min.js"
+  data-application="storefront-renderer"
+  data-shop-id="78217675050"
+  data-render-region="gcp-us-west1"
+  data-page-type="product"
+  data-theme-instance-id="189595418922"
+  data-theme-name="Rhythm"
+  data-theme-version="2026.07.2.0"
+  data-monorail-region="shop_domain"
+  data-resource-timing-sampling-rate="10"
+  data-shs="true"
+  data-shs-beacon="true"
+  data-shs-export-with-fetch="true"
+  data-shs-logs-sample-rate="1"
+  data-shs-beacon-endpoint="https://nmixxshopus.com/api/collect"
+></script>
+<meta name="shopify-y" content="72d74162-909b-4e1e-a2a4-c47b89001d57" data-expiration="1824642257000"><meta name="shopify-s" content="7d1af0fc-993e-4c65-8a76-16ba9e0a6785" data-expiration="1793086457000">
+</head><body class="template__product flex flex-col grow min-h-full relative md:relative scheme-scheme1 c-bg-background c-text-content-base" data-theme="rhythm" data-themev="2026.07.2.0">
+  <span class="sr-only" data-e2e="aria-countdown-change" aria-live="assertive"></span><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCTNQT2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><a class="skip-to-content-link button sr-only focus:not-sr-only" href="#MainContent">Skip to content</a><content-overlay>
+  <div class="overlay hidden fixed top-0 left-0 w-full h-full z-[1000001] c-bg-gray-900 opacity-50"></div>
+</content-overlay><!-- BEGIN sections: header-group -->
+<header id="shopify-section-sections--27776442728746__header" class="shopify-section shopify-section-group-header-group site-header md:hidden"><style>
+	#shopify-section-sections--27776442728746__header {
+		position: sticky;top: 0;z-index: 999997;
+    width: 100%;
+	}
+	</style>
+  <script>document.getElementById('shopify-section-sections--27776442728746__header').classList.add('umg-sticky', 'transition-[transform]')</script>
+
+
+
+
+
+
+<div id="header-wrapper--27776442728746" class="header__wrapper scheme-scheme1 z-[10] mx-auto h-auto w-full section__wrapper scheme-scheme1 grid columns-1 rows-1 place-items-center relative z-0 overflow-visible mb-none" x-data="{ hamburgerMenuOpen: false, searchBarOpen: false, dropDownMenuOpen: null }" data-position="static_sticky_header" style=" --icon-width: 1.75rem; --icon-height: 1.75rem; ">
+  <div id="header-container--27776442728746" class="header__container grid gap-y-sm-sm gap-x-sm-sm grid-cols-4 section-spacing mx-auto w-full relative z-10 py-container-sm px-lg-md max-w-full md:px-container-md md:max-w-full c-border-default-color border-default-width border-x-0 border-t-0 mx-auto text-center" >
+    
+      
+          
+
+<div class="header__column header__column--0 header__column--logo flex col-span-2 justify-center items-center" >
+  <div x-ref="logoContainer" class="logo-container" >
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  <a class="logo-cntr block" href="/" style=" --logo-width: 12.5rem; " aria-label="NMIXX OFFICIAL STORE Home">
+    
+      
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+  <picture class="image__adaptive">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+<source data-src="//nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=1152" alt="NMIXX OFFICIAL STORE" srcset="//nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=100 100w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=300 300w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=400 400w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=500 500w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=600 600w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=800 800w" width="1152" height="476" loading="eager" sizes="(min-width: 768px) 200px, 200px" media="(min-width: 760px)">
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<img aria-hidden="true" src="//nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=900" alt="NMIXX OFFICIAL STORE" srcset="//nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=100 100w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=300 300w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=400 400w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=500 500w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=600 600w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=800 800w" width="900" height="372" loading="eager" sizes="(min-width: 768px) 200px, 200px" class="w-full object-cover image__responsive">
+
+
+
+
+  </picture>
+
+
+
+    
+  </a>
+  </div>
+</div>
+        
+    
+      
+          
+
+<div class="header__column header__column--1 header__column--actions flex col-span-2 justify-end items-center"  >
+  <div class="actions-container flex flex-row flex-wrap gap-y-sm-sm gap-sm-xxs">
+    
+
+
+
+<a href="https://shopify.com/78217675050/account/orders?locale=en&region_country=US&buyer_flags=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJubWl4eC1zdG9yZS5teXNob3BpZnkuY29tIiwiZmxhZ3MiOltdLCJleHAiOjE3OTM2ODk0NTcsIm5iZiI6MTc5MzA4NDY1N30.4ltp9dUrHXw4EPwxZ5RJWSfDEBl1QGQsStxtkB1agp4" class="header__action header__action--account-link text_navigation_md no-underline c-text-primary flex h-full fill-current items-center justify-center min-w-min-click-space min-h-min-click-space block overflow-hidden">
+  
+      <div class="icon-wrapper">
+        
+
+
+
+  
+  
+  
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 576 512" class="icon icon--user umg-icon" fill="currentColor">
+        <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+      </svg>
+    
+
+        <span class="sr-only">Account</span>
+      </div>
+    
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+  <cart-drawer-toggle-button class="header__action header__action--cart-trigger cart-toggle cursor-pointer text-center relative text_navigation_md no-underline c-text-primary" tabindex="-1">
+    
+  <a href="/cart" class="flex items-center flex h-full fill-current items-center justify-center min-w-min-click-space min-h-min-click-space">
+    
+      <div class="cart-toggle__innerwrapper cart-toggle__innerwrapper--icon items-center">
+        
+
+
+
+  
+  
+  
+      
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon icon--cart umg-icon" fill="currentColor">
+            <path d="M24 0C10.7 0 0 10.7 0 24S10.7 48 24 48H76.1l60.3 316.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24-10.7 24-24s-10.7-24-24-24H179.9l-9.1-48h317c14.3 0 26.9-9.5 30.8-23.3l54-192C578.3 52.3 563 32 541.8 32H122l-2.4-12.5C117.4 8.2 107.5 0 96 0H24zM176 512c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm336-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48z"/>
+          </svg>
+      
+    
+
+      </div>
+      <span class="sr-only">Cart</span>
+    
+    <div id="header-cart-count" class="cart-count grid place-items-center min-w-[22px] text_body_xs min-h-[22px] absolute place-content-center rounded-full -top-[0.3rem] -right-1 c-bg-primary c-text-primary-on empty:hidden"></div>
+    
+  </a>
+
+  </cart-drawer-toggle-button>
+
+    
+
+  </div>
+</div>
+          
+        
+    
+  </div>
+  
+  
+
+  
+
+  
+
+
+
+
+</div>
+
+</header><header id="shopify-section-sections--27776442728746__header-md" class="shopify-section shopify-section-group-header-group site-header site-header--md hidden md:grid">
+
+
+
+
+
+
+<div id="header-md-wrapper--27776442728746" class="header__wrapper header__wrapper--md scheme-scheme1 z-[10] mx-auto h-auto w-full section__wrapper scheme-scheme1 grid columns-1 rows-1 place-items-center relative z-0 overflow-visible mb-none border-default-width-wide c-border-default-color border-x-0 border-t-0" x-data="{ hamburgerMenuOpen: false, searchBarOpen: false, dropDownMenuOpen: null }" data-position="static_header" style=" --icon-width: 1.75rem; --icon-height: 1.75rem; ">
+  <div id="header-md-container--27776442728746" class="header__container header__container--md grid gap-y-sm-lg gap-x-sm-sm grid-cols-10 section-spacing mx-auto w-full relative z-10 py-container-xs px-lg-sm max-w-full md:px-container-sm md:max-w-full mx-auto text-center" >
+    
+      
+          
+
+
+
+
+
+
+<div class="navigation-wrapper header__column flex header-md__column--0 col-span-1 justify-center items-center"  >
+
+  
+
+        <nav class="nav-wrapper" aria-label="Header main menu" >
+          <ul class="navigation-container flex flex-row flex-wrap justify-center items-center text-center gap-x-sm-xl gap-y-sm-lg"  role="menubar">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+
+  <li class=""  role="none">
+
+    
+      
+      
+      
+      <a href="/" class="header__navigation-link flex relative w-full text_navigation_md c-text-primary no-underline hover:no-underline"   role="menuitem">
+        Home
+      </a>
+    
+    
+  </li>
+
+  
+  
+  
+  
+  
+  
+
+  <li class=""  role="none">
+
+    
+      <button href="/collections/all-1" class="header__navigation-link flex relative w-full text_navigation_md c-text-primary no-underline hover:no-underline w-full justify-between items-center gap-sm-2xs group" type="button" x-on:click="dropDownMenuOpen = (dropDownMenuOpen === 'collections' ? null : 'collections')" role="menuitem" :aria-expanded="(dropDownMenuOpen === 'collections').toString()" aria-controls="dropdown_menu_collections" aria-haspopup="menu">
+        Collections
+        <div class="header__navigation-link-arrow flex justify-center items-center h-[1em] w-[1em]" style="--icon-width:1em;--icon-width-md:1em;" :class="{ 'rotate-180': dropDownMenuOpen === 'collections' }">
+          
+
+
+
+  
+  
+  
+  
+      
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon--arrow w-full h-full icon--arrow--chevron" fill="currentColor">
+            <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
+          </svg>
+        
+    
+
+        </div>
+      </button>
+      
+      
+          <ul class="header__navigation-dropdown-container menu-container text-left flex absolute z-[11] flex-col mt-lg-2xs gap-y-sm-lg gap-x-lg-xl md:gap-x-container-xl py-container-xs px-container-xs c-bg-surface c-text-on-surface" role="menu" id="dropdown_menu_collections" x-show="dropDownMenuOpen === 'collections'" x-cloak @click.outside="dropDownMenuOpen = (dropDownMenuOpen === 'collections' ? null : dropDownMenuOpen)">
+            
+            
+              
+                  
+                  
+                  <li class="c-text-background px-lg-md no-underline default gap-x-sm-xl gap-y-sm-lg" role="none">
+                    <a href="/collections/strange-muse" role="menuitem">
+                      Strange Muse
+                    </a>
+                  </li>
+                  
+              
+            
+              
+                  
+                  
+                  <li class="c-text-background px-lg-md no-underline default gap-x-sm-xl gap-y-sm-lg" role="none">
+                    <a href="/collections/heavy-serenade" role="menuitem">
+                      Heavy Serenade
+                    </a>
+                  </li>
+                  
+              
+            
+              
+                  
+                  
+                  <li class="c-text-background px-lg-md no-underline default gap-x-sm-xl gap-y-sm-lg" role="none">
+                    <a href="/collections/blue-valentine" role="menuitem">
+                      Blue Valentine
+                    </a>
+                  </li>
+                  
+              
+            
+              
+                  
+                  
+                  <li class="c-text-background px-lg-md no-underline default gap-x-sm-xl gap-y-sm-lg" role="none">
+                    <a href="/collections/fe3o4" role="menuitem">
+                      Fe3O4
+                    </a>
+                  </li>
+                  
+              
+            
+              
+                  
+                  
+                  <li class="c-text-background px-lg-md no-underline default gap-x-sm-xl gap-y-sm-lg" role="none">
+                    <a href="/collections/a-midsummer-nmixxs-dream" role="menuitem">
+                      A Midsummer NMIXX's Dream
+                    </a>
+                  </li>
+                  
+              
+            
+          </ul>
+        
+    
+    
+  </li>
+
+  
+  
+  
+  
+  
+  
+
+  <li class=""  role="none">
+
+    
+      
+      
+      
+      <a href="/pages/watermelon-game" class="header__navigation-link flex relative w-full text_navigation_md c-text-primary no-underline hover:no-underline"   role="menuitem">
+        Watermelon Game
+      </a>
+    
+    
+  </li>
+
+            
+          </ul>          
+        </nav>
+
+  
+
+</div>
+          
+        
+    
+      
+          
+
+<div class="header__column header__column--1 header__column--logo flex col-span-8 justify-center items-center" >
+  <div x-ref="logoContainer" class="logo-container" >
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  <a class="logo-cntr block" href="/" style=" --logo-width: 23.75rem; " aria-label="NMIXX OFFICIAL STORE Home">
+    
+      
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+  <picture class="image__adaptive">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+<source data-src="//nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=1152" alt="NMIXX OFFICIAL STORE" srcset="//nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=100 100w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=300 300w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=400 400w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=500 500w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=600 600w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=800 800w" width="1152" height="476" loading="eager" sizes="(min-width: 768px) 380px, 380px" media="(min-width: 760px)">
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<img aria-hidden="true" src="//nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=900" alt="NMIXX OFFICIAL STORE" srcset="//nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=100 100w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=300 300w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=400 400w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=500 500w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=600 600w, //nmixxshopus.com/cdn/shop/files/NMIXX_Logo_W.png?v=1739370555&amp;width=800 800w" width="900" height="372" loading="eager" sizes="(min-width: 768px) 380px, 380px" class="w-full object-cover image__responsive">
+
+
+
+
+  </picture>
+
+
+
+    
+  </a>
+  </div>
+</div>
+        
+    
+      
+          
+
+<div class="header__column header__column--2 header__column--actions flex col-span-1 justify-end items-center"  >
+  <div class="actions-container flex flex-row flex-wrap gap-y-sm-sm gap-sm-xxs">
+    
+
+
+
+<a href="https://shopify.com/78217675050/account/orders?locale=en&region_country=US&buyer_flags=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJubWl4eC1zdG9yZS5teXNob3BpZnkuY29tIiwiZmxhZ3MiOltdLCJleHAiOjE3OTM2ODk0NTcsIm5iZiI6MTc5MzA4NDY1N30.4ltp9dUrHXw4EPwxZ5RJWSfDEBl1QGQsStxtkB1agp4" class="header__action header__action--account-link text_navigation_md no-underline hover:no-underline c-text-primary hover:c-text-gray-300 flex h-full fill-current items-center justify-center min-w-min-click-space min-h-min-click-space block overflow-hidden">
+  
+      <div class="icon-wrapper">
+        
+
+
+
+  
+  
+  
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 576 512" class="icon icon--user umg-icon" fill="currentColor">
+        <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+      </svg>
+    
+
+        <span class="sr-only">Account</span>
+      </div>
+    
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+  <cart-drawer-toggle-button class="header__action header__action--cart-trigger cart-toggle cursor-pointer text-center relative text_navigation_md no-underline hover:no-underline c-text-primary hover:c-text-gray-300" tabindex="-1">
+    
+  <a href="/cart" class="flex items-center flex h-full fill-current items-center justify-center min-w-min-click-space min-h-min-click-space">
+    
+      <div class="cart-toggle__innerwrapper cart-toggle__innerwrapper--icon items-center">
+        
+
+
+
+  
+  
+  
+      
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon icon--cart umg-icon" fill="currentColor">
+            <path d="M24 0C10.7 0 0 10.7 0 24S10.7 48 24 48H76.1l60.3 316.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24-10.7 24-24s-10.7-24-24-24H179.9l-9.1-48h317c14.3 0 26.9-9.5 30.8-23.3l54-192C578.3 52.3 563 32 541.8 32H122l-2.4-12.5C117.4 8.2 107.5 0 96 0H24zM176 512c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm336-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48z"/>
+          </svg>
+      
+    
+
+      </div>
+      <span class="sr-only">Cart</span>
+    
+    <div id="header-cart-count_md" class="cart-count grid place-items-center min-w-[22px] text_body_xs min-h-[22px] absolute place-content-center rounded-full -top-[0.3rem] -right-1 c-bg-primary c-text-primary-on empty:hidden"></div>
+    
+  </a>
+
+  </cart-drawer-toggle-button>
+
+    
+
+  </div>
+</div>
+          
+        
+    
+  </div>
+  
+  
+
+  
+
+  
+
+
+
+</div>
+
+</header><aside id="shopify-section-sections--27776442728746__global-messaging" class="shopify-section shopify-section-group-header-group global-messaging"></aside><aside id="shopify-section-sections--27776442728746__soft-redirect" class="shopify-section shopify-section-group-header-group section-soft-redirects">
+
+</aside>
+<!-- END sections: header-group --><cart-drawer hidden id="cart-drawer" class="cart-drawer fixed z-[1000002] top-0 max-w-11/12 h-full w-full md:max-w-xs motion-safe:animate-none right-0 translate-x-full transition-transform duration-300 ease-in-out">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  <style>
+    .cart-drawer.active {
+      transform: translateX(0);
+    }
+  </style>
+  <div class="cart-drawer__innerwrapper grid grid-rows-[auto_1fr_auto] h-full overflow-y-scroll overscroll-x-contain cart-drawer--empty section__container grid py-none px-none md:px-none gap-y-sm-md c-bg-primary c-text-primary-on border-default-width-narrow c-border-transparent rounded-none shadow-none rounded-tr-none rounded-br-none border-r-0">
+    <div class="cart-drawer__header flex justify-between items-start px-sm-md pt-sm-xl">
+      
+      <button class="cart-drawer__close ml-auto appearance-none h-[3rem] w-[3rem] p-sm-xs">
+        <span class="sr-only">Close cart</span>
+        
+
+
+
+  
+  
+  
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon icon--close umg-icon" fill="currentColor">
+        <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+      </svg>
+    
+
+      </button>
+    </div>
+
+    <div class="cart-drawer__main grow flex flex-col items-stretch px-sm-md" id="cart-drawer-main">
+      
+
+
+
+  <div class="cart__empty grow flex flex-col justify-center items-center gap-sm-lg">
+
+    <h4 class="cart__empty-title text_heading_lg">Your cart is empty</h4>
+    <p class="cart__empty-message text_body">Time to fill up the cart</p>
+
+    <cart-drawer-toggle-button class="cart__empty-action" tabindex="0">
+      
+      
+      <button class="btn btn--primary block z-10 relative">Continue shopping</button>
+    </cart-drawer-toggle-button>
+  </div>
+    </div>
+    
+  </div>
+
+  
+
+
+</cart-drawer><main id="MainContent" role="main" class="z-10 grow scroll-mt-[var(--header-sticky-height)]"><aside id="shopify-section-template--27776443515178__spacer_1" class="shopify-section spacer">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <div class="spacer__wrapper section__wrapper c-text- c-border- grid columns-1 rows-1 place-items-center relative z-0 overflow-hidden">
+    
+
+    
+    
+      
+  <div class="spacer__spacing section-spacing mx-auto w-full relative z-10 py-container-xs px-none max-w-full md:px-none md:max-w-full">
+  </div>
+
+    
+  </div>
+
+  
+
+
+
+
+
+</aside><div id="shopify-section-template--27776443515178__breadcrumbs" class="shopify-section breadcrumbs">
+
+
+
+
+
+<div class="breadcrumbs__wrapper section__wrapper scheme-scheme1 grid columns-1 rows-1 place-items-center relative z-0 overflow-hidden">
+  <div class="breadcrumbs__spacing section-spacing mx-auto w-full relative z-10 py-none px-lg-md max-w-md md:px-container-md md:max-w-md">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="breadcrumb-nav text_body_sm c-text-gray-50" role="navigation" aria-label="Breadcrumbs">
+	<a href="/" title="Back to home" class="underline hover:no-underline c-text-content-emphasis">Home</a>
+
+	
+		
+		<span aria-hidden="true">&rsaquo;</span>
+		<span>Fe3O4: FORWARD (Ready Ver.)</span>
+
+	
+</nav>
+  </div>
+</div>
+
+</div><aside id="shopify-section-template--27776443515178__spacer_2" class="shopify-section spacer">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <div class="spacer__wrapper section__wrapper c-text- c-border- grid columns-1 rows-1 place-items-center relative z-0 overflow-hidden">
+    
+
+    
+    
+      
+  <div class="spacer__spacing section-spacing mx-auto w-full relative z-10 py-container-xs px-none max-w-full md:px-none md:max-w-full">
+  </div>
+
+    
+  </div>
+
+  
+
+
+
+
+
+</aside><div id="shopify-section-template--27776443515178__template" class="shopify-section template-product relative z-20">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="template-product__wrapper section__wrapper scheme-scheme1 grid columns-1 rows-1 place-items-center relative z-0 overflow-visible" data-product="9702610403626" data-initial-variant="49935984230698">
+  
+  <div class="template-product__spacing section-spacing mx-auto w-full relative z-10 py-none px-lg-md max-w-md md:px-container-md md:max-w-md">
+    <div class="section-container grid grid-cols-1 gap-lg-sm grid-flow-row-dense md:gap-lg-lg md:grid-cols-pdp-media-width-left-md lg:grid-cols-pdp-media-width-left-lg" style="--media-width-md:45%; --media-width-lg:55%;">
+    
+      
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="product_media" class="product__media -mx-lg-md md:mx-none -my-none md:my-none mb-0">
+  <a href="#ProductInfo-template--27776443515178__template" class="pdp-media__skip-link sr-only focus:not-sr-only absolute z-50 p-sm-md">
+    Skip to product information
+  </a>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pdp-media__wrapper pdp-media__carousel relative flex flex-col md:grid gap-sm-sm md:grid-rows-pdp-container-bottom" x-data="pdpDialog" style="--pdp-thumb-size:75px;--grid-gap: var(--gap-container-xs,0);"> <div data-items-element="swiper__parent" class="carousel-wrapper min-w-0 relative w-full" data-carousel-type="pdp-media" data-carousel-class="carousel-wrapper min-w-0 relative w-full" data-carousel-layout="carousel" data-carousel-layout-md="carousel" data-slides-per-view="1" data-slides-per-view-md="1" data-slides-per-view-lg="1" data-carousel-loop="false" data-carousel-loop-md="false" data-carousel-autoplay="0" data-carousel-peek="false" data-carousel-peek-md="false" data-carousel-peek-value="0.15" data-carousel-dragfree="false" data-carousel-align="start" data-carousel-align-md="start" data-carousel-gap-x="xs" data-carousel-gap-y="none" data-carousel-zoom="false" data-carousel-pagination-type="bullets" style="--cols: 1; --cols-md: 1; --cols-lg: 1; --peek-value: 0.15; --grid-gap: var(--gap-container-xs,0); --grid-gap-x: var(--gap-container-xs,0); --grid-gap-y: 0rem;" > <div data-items-element="swiper__viewport" class="w-full min-w-0 overflow-hidden [&~.carousel-nav]:hidden [&.swiper-initialized~.carousel-nav]:flex [&~.swiper__pagination]:hidden [&.swiper-initialized~.swiper__pagination]:flex swiper__viewport md:px-none" data-carousel-class="w-full min-w-0 overflow-hidden [&~.carousel-nav]:hidden [&.swiper-initialized~.carousel-nav]:flex [&~.swiper__pagination]:hidden [&.swiper-initialized~.swiper__pagination]:flex swiper__viewport md:px-none"> <ul data-items-element="swiper-wrapper" class="pdp-media-tablet__container standard carousel max-md:gap-var-grid-gap-x max-md:columns-var-cols max-md:overflow-x-scroll" data-initial-class="pdp-media-tablet__container standard carousel max-md:gap-var-grid-gap-x max-md:columns-var-cols max-md:overflow-x-scroll" data-class="pdp-media-tablet__container standard carousel" data-carousel-class="z-10 relative max-w-full w-full pb-none pdp-media-tablet__container standard carousel" data-next-url="" > <li class="swiper-slide relative break-after-column break-inside-avoid"> <button class="pdp-image-wrapper relative block pb-var-ratio md:pb-var-ratio-md w-full h-0 cursor-zoom-in pointer-events-none md:pointer-events-auto" data-class="pdp-image-wrapper relative block pb-var-ratio md:pb-var-ratio-md w-full h-0 cursor-zoom-in pointer-events-none md:pointer-events-auto" data-index="0" data-variant-ids="" data-media-id="39781423612202" aria-label="Zoom" x-on:click="window.innerWidth >= 768 ? openDialog : null" style="--ratio: calc( 1.0 * 100%);--ratio-md: calc( 1.0 * 100%);" > <img src="//nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=1000" alt="Fe3O4: FORWARD (Ready Ver.) 1" srcset="//nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=100 100w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=300 300w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=400 400w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=500 500w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=600 600w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=800 800w" width="1000" height="1000" loading="eager" sizes="(min-width: 760px and max-width: 61rem) 100vw, (min-width: 1024px) 61rem, (min-width: 760px) 61rem, (max-width: 759px) 50vw," class=" w-full block max-w-full h-full max-h-full object-cover absolute inset-0 image__responsive"> </button> </li> <li class="swiper-slide relative break-after-column break-inside-avoid"> <button class="pdp-image-wrapper relative block pb-var-ratio md:pb-var-ratio-md w-full h-0 cursor-zoom-in pointer-events-none md:pointer-events-auto hidden" data-class="pdp-image-wrapper relative block pb-var-ratio md:pb-var-ratio-md w-full h-0 cursor-zoom-in pointer-events-none md:pointer-events-auto" data-index="1" data-variant-ids="" data-media-id="39781423644970" aria-label="Zoom" x-on:click="window.innerWidth >= 768 ? openDialog : null" style="--ratio: calc( 1.0 * 100%);--ratio-md: calc( 1.0 * 100%);" > <img src="//nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=1000" alt="Fe3O4: FORWARD (Ready Ver.) 2" srcset="//nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=100 100w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=300 300w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=400 400w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=500 500w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=600 600w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=800 800w" width="1000" height="1000" loading="lazy" sizes="(min-width: 760px and max-width: 61rem) 100vw, (min-width: 1024px) 61rem, (min-width: 760px) 61rem, (max-width: 759px) 50vw," class=" w-full block max-w-full h-full max-h-full object-cover absolute inset-0 image__responsive"> </button> </li> </ul> </div> <div class="carousel-nav flex justify-between absolute top-1/2 px-sm-xs z-50 -translate-y-0.5 invisible opacity-0 transition duration-300 translate-x-[0px] md:translate-x-[0px] left-0 md:flex"> <button class="carousel-nav__button block grid place-items-center swiper__navigation--prev disabled:opacity-0 w-12 h-12"> <div class="carousel-nav__button-bg group grid place-items-center w-10 h-10 c-bg-surface hover:c-bg-primary active:c-bg-primary c-border-transparent hover:c-border-transparent border-none rounded-xl c-text-content-subtle hover:c-text-primary-on"> <div class="carousel-nav__icon block w-6 h-6 carousel-nav__icon rotate-90 carousel-nav__icon--prev"> <span class="sr-only">Previous</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon--arrow w-full h-full icon--arrow--chevron" fill="currentColor"> <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/> </svg> </div> </div> </button> </div> <div class="carousel-nav flex justify-between absolute top-1/2 px-sm-xs z-50 -translate-y-0.5 invisible opacity-0 transition duration-300 translate-x-[0px] md:translate-x-[0px] right-0 md:flex"> <button class="carousel-nav__button block grid place-items-center swiper__navigation--next disabled:opacity-0 w-12 h-12"> <div class="carousel-nav__button-bg group grid place-items-center w-10 h-10 c-bg-surface hover:c-bg-primary active:c-bg-primary c-border-transparent hover:c-border-transparent border-none rounded-xl c-text-content-subtle hover:c-text-primary-on"> <div class="carousel-nav__icon block w-6 h-6 carousel-nav__icon rotate-[-90deg] carousel-nav__icon--next"> <span class="sr-only">Next</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon icon--arrow w-full h-full icon--arrow--chevron" fill="currentColor"> <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/> </svg> </div> </div> </button> </div> <div class="swiper__pagination flex w-full justify-center absolute z-10 overflow-hidden md:flex" style="--swiper-pagination-color: #d8ebda; --swiper-pagination-bottom: 16px; --swiper-pagination-bullet-inactive-opacity:1; --swiper-pagination-bullet-inactive-color: #d8ebda;" data-label="Go to slide {{ index }}" ></div> </div> <div class=" swiper--thumbs w-full max-w-full max-h-pdp-thumb-wrapper overflow-y-hidden " data-class=" swiper--thumbs w-full max-w-full max-h-pdp-thumb-wrapper overflow-y-hidden " data-direction-md="horizontal" data-centered="left" data-centered-md="left" > <div class="swiper-viewport swiper-viewport--thumbs overflow-hidden p-3px -mt-3px -ml-3px"> <div class="swiper-wrapper swiper-wrapper--thumbs w-full max-w-full" data-class=" md:justify-start"> <button class="swiper-slide swiper-thumb group relative max-w-pdp-thumb-wrapper max-h-pdp-thumb-wrapper overflow-hidden w-full" data-pdp-media-item data-index="0" data-variant-ids=""> <span class="swiper-slide__inner block w-full group-[.swiper-slide-thumb-active]:border-default-width c-border-transparent"> <img src="//nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=1000" alt="Fe3O4: FORWARD (Ready Ver.) 1" srcset="//nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=100 100w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=300 300w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=400 400w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=500 500w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=600 600w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=800 800w" width="1000" height="1000" loading="lazy" sizes="(min-width: 760px and max-width: 61rem) 100vw, (min-width: 1024px) 61rem, (min-width: 760px) 61rem, (max-width: 759px) 50vw," class="block aspect-square object-cover image__responsive"> </span> </button> <button class="swiper-slide swiper-thumb group relative max-w-pdp-thumb-wrapper max-h-pdp-thumb-wrapper overflow-hidden w-full" data-pdp-media-item data-index="1" data-variant-ids=""> <span class="swiper-slide__inner block w-full group-[.swiper-slide-thumb-active]:border-default-width c-border-transparent"> <img src="//nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=1000" alt="Fe3O4: FORWARD (Ready Ver.) 2" srcset="//nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=100 100w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=300 300w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=400 400w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=500 500w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=600 600w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=800 800w" width="1000" height="1000" loading="lazy" sizes="(min-width: 760px and max-width: 61rem) 100vw, (min-width: 1024px) 61rem, (min-width: 760px) 61rem, (max-width: 759px) 50vw," class="block aspect-square object-cover image__responsive"> </span> </button> </div> </div> </div> </div> <div x-data="{ 'popup_Open': false }" class="popup-cntr overscroll-none flex justify-start md:justify-start " id="" > <dialog data-modal="" class="popup-dialog p-none overscroll-none w-full max-w-[90%] max-h-[90%]" x-on:click="if($event.target === $el) popup_Open = false, $el.close(), $event.target.classList.remove('!block'), document.body.classList.remove('overflow-hidden')" > <div class="popup__wrapper section__wrapper scheme-scheme1 grid columns-1 rows-1 place-items-center relative z-0 overflow-hidden c-bg-surface c-text-on-surface rounded-none w-full px-lg-md py-lg-md"> <div class="popup__container z-10 overflow-hidden c-bg-transparent section__container grid py-container-xs px-lg-xs md:px-container-xs gap-y-none border-none c-border-content-subtle rounded-none shadow-none pt-lg-md w-full h-full grid-cols-1 gap-y-sm-sm justify-center text-center items-center"> <button class="block top-2 right-2 z-100 pointer w-6 h-6 absolute" aria-label="Close" x-on:click="popup_Open = false, $event.target.closest('dialog').close(), $event.target.closest('dialog').classList.remove('!block'), document.body.classList.remove('overflow-hidden')" x-ref="modalClose" > <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon icon--close umg-icon" fill="currentColor"> <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/> </svg> <span class="sr-only">Close</span> </button> <div class="dialog-media-zoom grid relative z-0 md:grid-cols-1" > <div class="dialog-media-container relative w-full h-full z-0 grid items-center md:col-span-1" data-dialog-media="0"> <img src="//nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=1000" alt="Fe3O4: FORWARD (Ready Ver.) 1" srcset="//nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=100 100w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=300 300w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=400 400w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=500 500w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=600 600w, //nmixxshopus.com/cdn/shop/files/ready1_ab0bd7fc-6416-4088-86e8-c7b4aea795b1.png?v=1741108063&amp;width=800 800w" width="1000" height="1000" loading="lazy" sizes="(min-width: 760px and max-width: 61rem) 100vw, (min-width: 1024px) 61rem, (min-width: 760px) 61rem, (max-width: 759px) 50vw," class="block object-contain max-h-[75vh] w-full image__responsive"> </div> <div class="dialog-media-container relative w-full h-full z-0 grid items-center md:col-span-1" data-dialog-media="1"> <img src="//nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=1000" alt="Fe3O4: FORWARD (Ready Ver.) 2" srcset="//nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=100 100w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=300 300w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=400 400w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=500 500w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=600 600w, //nmixxshopus.com/cdn/shop/files/ready2_bc69fc34-f70b-4d94-947e-08664c2dee8c.png?v=1741108063&amp;width=800 800w" width="1000" height="1000" loading="lazy" sizes="(min-width: 760px and max-width: 61rem) 100vw, (min-width: 1024px) 61rem, (min-width: 760px) 61rem, (max-width: 759px) 50vw," class="block object-contain max-h-[75vh] w-full image__responsive"> </div> </div> </div> </div> </dialog> </div>
+
+</div>
+
+    
+    <div id="ProductInfo-template--27776443515178__template" class="product__info flex flex-col gap-y-sm-sm w-full z-1 overflow-hidden text-left md:text-left max-w-xs py-none px-none sticky top-[calc(1rem+var(--header-sticky-height))] transition-[top] self-start xs" >
+
+        
+        
+
+        
+
+        
+          
+
+          
+              
+              
+              
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+          
+
+          
+				
+          
+
+          
+				
+          
+
+          
+
+              
+              <h1 class="product-title text_heading_md c-text-primary">Fe3O4: FORWARD (Ready Ver.)</h1>
+				
+          
+
+          
+              
+                
+
+                    
+            
+              <div id="price-template--27776443515178__template" class="product-price price__layout flex items-center gap-sm-md text_body_lg c-text-primary justify-start md:justify-start"><span class="price-item price-item--regular">$24.00</span>
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </div>
+              
+            
+          
+                  
+
+
+                
+              
+
+            
+				
+          
+
+          
+              
+
+  
+    <div class="quantity-picker relative">
+  
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+<div class="quantity-spinner-wrapper flex flex-col gap-y-1 items-start md:items-start">
+	<label class="form__label text_body_sm" for="product-info-quantity-picker">
+		Quantity
+	</label>
+	
+	
+
+  
+
+	<quantity-spinner class="quantity-spinner flex relative border-solid border-none rounded-none c-border-transparent overflow-hidden items-start"  data-section="template--27776443515178__template" data-variant-id="49935984230698">
+    
+
+    
+
+    
+
+    <button type="button" aria-label="Decrease quantity for Fe3O4: FORWARD (Ready Ver.)" class="quantity-spinner__button js-quantity-spinner-decrease c-bg-transparent px-sm-sm z-10">-</button>
+    <input
+      id="product-info-quantity-picker"
+      type="number"
+      name="quantity"
+      min="1"
+      pattern="[0-9]*"
+      disabled
+      class="quantity-spinner__input js-quantity-spinner-input text-center appearance-none border-none p-none max-w-[4ch] opacity-100 c-bg-transparent  "
+      value="1"
+      max="4"
+      
+    
+  
+      
+      form="product-form-template--27776443515178__template"
+    >
+    <button  type="button" aria-label="Increase quantity for Fe3O4: FORWARD (Ready Ver.)" class="quantity-spinner__button js-quantity-spinner-increase c-bg-transparent px-sm-sm z-10">+</button>
+	</quantity-spinner>
+</div>
+  
+  
+    </div>
+  
+
+
+            
+				
+          
+
+          
+              
+                
+
+              
+            
+				
+          
+
+          
+              
+                
+                  
+                  
+
+
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<product-form
+  class="product-form-cntr"
+  data-variant="49935984230698"
+  
+    data-purchase-limit="4"
+  
+  data-section="template--27776443515178__template"
+  
+>
+  
+
+  
+  
+<form method="post" action="/cart/add" id="product-form-template--27776443515178__template" accept-charset="UTF-8" class="product-form flex flex-wrap gap-sm-xs w-full justify-start md:justify-start" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form"><input type="hidden" name="form_type" value="product" /><input type="hidden" name="utf8" value="✓" />
+    <input type="hidden" name="id" value="49935984230698" aria-hidden="true">
+    
+      
+      
+        
+        <umg-dates hidden data-dates="[{&quot;id&quot;:49935984230698,&quot;title&quot;:&quot;Fe3O4: FORWARD (Ready Ver.)&quot;,&quot;fixed&quot;:&quot;2025-03-21&quot;,&quot;rolling&quot;:&quot;3&quot;}]">
+          <input type="hidden" name="properties[_shipdate]" value="0" class="promise-msg" aria-hidden="true">
+          <input type="hidden" name="properties[_date-fixed]" value="0" class="date-fixed" aria-hidden="true">
+          <input type="hidden" name="properties[_date-fixed-unix]" value="0" class="date-fixed-unix" aria-hidden="true">
+          <input type="hidden" name="properties[_date-rolling]" value="0" class="date-rolling" aria-hidden="true">
+          <input type="hidden" name="properties[_date-rolling-unix]" value="0" class="date-rolling-unix" aria-hidden="true">
+          
+        </umg-dates>
+      
+    
+    
+    <input type="hidden" name="product_id" value="9702610403626" aria-hidden="true">
+    <input type="hidden" name="product_type" value="Box Set (Music Only)" aria-hidden="true">
+    
+    
+  
+
+    
+
+    
+      
+        
+      
+    
+
+    
+  
+
+
+  
+  
+
+  
+
+    
+    
+      
+        
+        <button type="submit" aria-label="Add to cart, Fe3O4: FORWARD (Ready Ver.)" name="add" class="product-form__submit relative btn btn--primary" data-card-classes="product-form__submit relative btn btn--primary" 
+          
+          
+
+            
+          
+        >
+          
+            <span class="buybutton_label" aria-hidden="true">
+              Add to cart
+            </span>
+          
+          
+            <span class="
+  icon icon--activity-spinning absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6
+  
+    hidden
+  
+" aria-hidden="true">
+              
+
+  
+  
+  
+      
+          
+          <svg class="w-full h-full icon icon--spinner animate-spin" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M256 0c-17.7 0-32 14.3-32 32s14.3 32 32 32V0zM422.3 352c-8.9 15.3-3.6 34.9 11.7 43.7s34.9 3.6 43.7-11.7L422.3 352zM256 64c106 0 192 86 192 192h64C512 114.6 397.4 0 256 0V64zM448 256c0 35-9.4 67.8-25.7 96L477.7 384c21.8-37.7 34.3-81.5 34.3-128H448z"/>
+          </svg>
+      
+    
+
+            </span>
+          
+        </button>
+      
+    
+  
+
+<input type="hidden" name="product-id" value="9702610403626" /><input type="hidden" name="section-id" value="template--27776443515178__template" /></form>
+  
+
+
+
+
+<aside class="notification notification__error product-form__error-message-wrapper mt-sm-xs text_body_sm c-text-error-on c-bg-error text-left py-sm-xs px-sm-xs" hidden>
+  
+  <span class="notification__text" data-notification-text ><span class="product-form__error-message"></span></span>
+</aside>
+
+
+  <div hidden class="hidden">
+    <span name="gtm_item_name" value="Fe3O4: FORWARD (Ready Ver.)"></span>
+    <span name="gtm_item_id" value="9702610403626"></span>
+    <span name="gtm_item_collection" value=""></span>
+    <span name="gtm_item_variant" value="Default Title"></span>
+    <span name="gtm_item_upc" value="00198704286599"></span>
+    <span
+      name="gtm_item_price"
+      value="24.00"
+    ></span>
+    
+      <span name="component_ref" value=""""></span>
+    
+    
+  </div>
+</product-form>
+
+
+
+
+
+
+
+<div class="purchase-limit-error form_message c-text-error-on c-bg-error hidden text-left text_body_sm py-sm-sm px-sm-sm" aria-hidden="true" data-variant-id="49935984230698" data-section="template--27776443515178__template"></div>
+
+              
+
+            
+				
+          
+
+          
+              
+                
+                  
+                  
+                  
+
+                  
+                    
+
+
+
+
+<div class="notification notification__notification text_body_md c-text-notification-on c-bg-notification text-left py-sm-sm px-sm-sm" >
+  
+  <span class="notification__text" data-notification-text >
+                    <product-gating-info
+                      class="invisible"
+                      data-countries='["US"]'
+                      data-countries-count-to-display="3"
+                    >
+                      
+                    <p class="product-gating-info__message">This product is only available in { country_short_list }.</p>
+                  
+                    </product-gating-info>
+                  </span>
+</div>
+                  
+                
+
+            
+				
+          
+
+          
+              
+                
+              
+            
+				
+          
+
+          
+              
+                
+
+                    
+                      
+
+
+  
+
+  
+  
+<umg-dates class="product__date-container flex-col gap-y-sm-xs hidden block-if-some-children-visible" data-dates="[{&quot;id&quot;:49935984230698,&quot;title&quot;:&quot;Fe3O4: FORWARD (Ready Ver.)&quot;,&quot;fixed&quot;:&quot;2025-03-21&quot;,&quot;rolling&quot;:&quot;3&quot;}]" data-release-date-active="true">
+    
+      <p class="product__date text_body_sm c-text-content-base">
+      
+    </p>
+    
+
+  </umg-dates>
+
+
+                    
+                    
+                  
+                
+              
+
+            
+				
+          
+
+          
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="product-description rte text_body_sm">
+    <p>Gen-Z K-Pop girl group icons NMIXX (LILY, HAEWON, SULLYOON, BAE, JIWOO &amp; KYUJIN) are back with a new sound showcasing their powerhouse vocals with a new release titled <em>Fe3O4: FORWARD </em>and available in 2 versions: Ready Ver. and Go Ver. Contents of the album include: CD,  Booklet (2each / 24 pages), Lyric Poster, Accordion Postcard, Boarding Ticket (1 of 6), Photo Card (1 of 6), Unit Photo Card (1 of 3), Poster (1 of 2).</p>
+<p>Dimensions: 300 x 215 x 15 mm</p>
+<p><meta charset="utf-8">Tracklist:<br><br><span style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; font-size: 0.875rem;">1. High Horse<br></span>2. KNOW ABOUT ME<br>3. Slingshot <meta charset="utf-8"><span>(&lt;★)<br></span>4. Golden Recipe <br>5. Papillon <br>6. Ocean </p>
+  </div>
+
+
+
+
+            
+				
+          
+
+          
+              
+                
+                  
+                  <p class="purchase-limit-info text_body_sm">Limited to 4 per customer.</p>
+
+                
+              
+            
+				
+          
+
+          
+              
+            
+				
+          
+
+          
+              
+            
+				
+          
+
+          
+              
+            
+				
+          
+
+          
+              
+            
+				
+          
+
+          
+              
+
+
+            
+				
+          
+
+          
+              
+
+
+            
+				
+          
+
+          
+              
+
+            
+				
+          
+
+          
+              
+              
+
+              
+
+              
+                
+              
+
+            
+				
+          
+
+          
+              
+              
+
+
+
+
+            
+				
+        
+			</div>
+		</div>
+	</div>
+</div>
+<script defer="defer" src="//nmixxshopus.com/cdn/shop/t/14/assets/product-detail-page.bundle.js?v=158524869303149181951785976605"></script>
+
+
+
+
+
+
+
+
+
+</div><div id="shopify-section-template--27776443515178__template-bottom" class="shopify-section template-product-bottom"></div></main>
+
+  <script defer="defer" src="//nmixxshopus.com/cdn/shop/t/14/assets/theme.bundle.js?v=26757888534073874811785976606"></script><script>
+    window.focusVariantOnLoad = false;
+    window.shop_iso_code = "US";
+    window.shopUrl = 'https://nmixxshopus.com';
+    window.currentCurrency = 'USD';
+    window.shopCurrencyFormat = "${{amount}}"
+    window.routes = {
+      cart_add_url: '/cart/add',
+      cart_change_url: '/cart/change',
+      cart_update_url: '/cart/update',
+      search_url: '/search',
+      predictive_search_url: '/search/suggest',
+      privacy_policy_url: '/policies/privacy-policy',
+      legal_notice_url: '/policies/legal-notice',
+      terms_of_sale_url: '/policies/terms-of-sale'
+    };
+    window.cartStrings = {
+      error: `There was an error while updating your cart. Please try again.`,
+      quantityError: `You can only add [quantity] of this item to your cart.`,
+      pauseFrameUnavailableMessage: `Sorry, this frame is not available at this time`,
+      pauseFrameSoldOutMessage: `Sorry this frame is no longer available`,
+      pauseFrame: `Frame`
+    };
+    window.variantStrings = {
+      addToCart: `Add to cart`,
+      soldOut: `Sorry Sold out`,
+      unavailable: `Unavailable`,
+      extendCartTimer: `Extend cart timer`,
+      chooseThisStyle: `Choose this style`
+    };
+    window.accessibilityStrings = {
+      imageAvailable: `Image [index] is now available in gallery view`,
+      shareSuccess: `Link copied to clipboard`,
+      pauseSlideshow: `Pause slideshow`,
+      playSlideshow: `Play slideshow`,
+      nextSlide: `Next slide`,
+      prevSlide: `Previous slide`,
+      pauseFrameAltHtml: `{{ title }} frame {frameNum} from Video`,
+      enterFullScreen: `Enter Fullscreen`,
+      exitFullScreen: `Exit Fullscreen`,
+      hideFilters: `Hide filters`,
+      showFilters: `Show filters`,
+      countdownElementChange: `The countdown has ended. Some elements on the page may have changed.`
+    };
+    window.shareStrings = {
+      copyToClipboard: "Copy link",
+      successMessage: "Link copied to clipboard",
+      copyToClipboardError: "Error copying to clipboard",
+      shareUrlError: "Error opening sharer"
+    };
+    window.quickModalStrings = {
+      productError: "Product details not available.",
+    };
+    window.videoButtonStates = {
+      playButton: "Play Button",
+      pauseButton: "Pause Button"
+    };window.shipDateLabel = 'Ships on: {{ date }}';
+      window.shipDateLabelTitled = '<b>{{ title }}:</b> Ships on {{ date }}';window.jsDateLocale = "en-US";</script><!-- BEGIN sections: footer-group -->
+<footer id="shopify-section-sections--27776442695978__footer" class="shopify-section shopify-section-group-footer-group site-footer">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section__wrapper scheme-scheme3 c-text- c-border- grid columns-1 rows-1 place-items-center relative z-0 overflow-visible mt-none c-border-transparent border-default-width border-x-0 border-b-0 z-10">
+  <div class="section-spacing mx-auto w-full relative z-10 py-container-sm px-lg-xs max-w-md md:px-container-xs md:max-w-md grid gap-y-sm-2xl gap-x-sm-xl md:grid-cols-1 mx-auto text-center">
+
+
+<div  class="footer__griditem footer__griditem--0 footer__griditem--social md:col-span-10 md:row-span-1 py-none px-none">
+  
+    
+    
+
+    
+    
+
+    <div class="social-container social-component w-full h-full flex flex-col md:justify-center">
+      
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+<nav aria-label="Socials menu">
+  <ul class="flex flex-wrap justify-center md:justify-center gap-none" style="--icon-width: 1.25rem; --icon-height: 1.25rem;">
+     
+      <li>
+        <a href="https://www.facebook.com/NMIXXOfficial/" target="_blank" aria-label="Open Facebook social link" class="icon_facebook flex h-full fill-current justify-center items-center h-min-click-space w-min-click-space c-text-content-subtle hover:c-text-tertiary">
+          <div class="social-icons__wrapper">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="currentColor" class="umg-icon" xmlns="http://www.w3.org/2000/svg"><path d="M24 0C10.7453 0 0 10.7453 0 24C0 35.255 7.74912 44.6995 18.2026 47.2934V31.3344H13.2538V24H18.2026V20.8397C18.2026 12.671 21.8995 8.8848 29.9194 8.8848C31.44 8.8848 34.0637 9.18336 35.137 9.48096V16.129C34.5706 16.0694 33.5866 16.0397 32.3645 16.0397C28.4294 16.0397 26.9088 17.5306 26.9088 21.4061V24H34.7482L33.4013 31.3344H26.9088V47.8243C38.7926 46.3891 48.001 36.2707 48.001 24C48 10.7453 37.2547 0 24 0Z" /></svg>
+          </div>
+        </a>
+      </li> 
+    
+     
+      <li>
+        <a href="https://twitter.com/NMIXX_official?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" aria-label="Open Twitter social link" class="icon_twitter flex h-full fill-current justify-center items-center h-min-click-space w-min-click-space c-text-content-subtle hover:c-text-tertiary">
+          <div class="social-icons__wrapper">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="currentColor" class="umg-icon" xmlns="http://www.w3.org/2000/svg"><path d="M36.6526 3.80786H43.3995L28.6594 20.6548L46 43.5798H32.4225L21.7881 29.6759L9.61989 43.5798H2.86886L18.6349 25.5601L2 3.80786H15.9222L25.5348 16.5165L36.6526 3.80786ZM34.2846 39.5414H38.0232L13.8908 7.63413H9.87892L34.2846 39.5414Z" /></svg>
+          </div>
+        </a>
+      </li> 
+    
+     
+      <li>
+        <a href="https://www.instagram.com/nmixx_official/" target="_blank" aria-label="Open Instagram social link" class="icon_instagram flex h-full fill-current justify-center items-center h-min-click-space w-min-click-space c-text-content-subtle hover:c-text-tertiary">
+          <div class="social-icons__wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="umg-icon"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+          </div>
+        </a>
+      </li> 
+    
+     
+      <li>
+        <a href="https://www.youtube.com/channel/UCnUAyD4t2LkvW68YrDh7fDg" target="_blank" aria-label="Open YouTube social link" class="icon_youtube flex h-full fill-current justify-center items-center h-min-click-space w-min-click-space c-text-content-subtle hover:c-text-tertiary">
+          <div class="social-icons__wrapper">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="currentColor" class="umg-icon" xmlns="http://www.w3.org/2000/svg"><path d="M47.5219 14.4001C47.5219 14.4001 47.0531 11.0907 45.6094 9.6376C43.7812 7.7251 41.7375 7.71572 40.8 7.60322C34.0875 7.11572 24.0094 7.11572 24.0094 7.11572H23.9906C23.9906 7.11572 13.9125 7.11572 7.2 7.60322C6.2625 7.71572 4.21875 7.7251 2.39062 9.6376C0.946875 11.0907 0.4875 14.4001 0.4875 14.4001C0.4875 14.4001 0 18.2907 0 22.172V25.8095C0 29.6907 0.478125 33.5813 0.478125 33.5813C0.478125 33.5813 0.946875 36.8907 2.38125 38.3438C4.20937 40.2563 6.60938 40.1907 7.67813 40.397C11.5219 40.7626 24 40.8751 24 40.8751C24 40.8751 34.0875 40.8563 40.8 40.3782C41.7375 40.2657 43.7812 40.2563 45.6094 38.3438C47.0531 36.8907 47.5219 33.5813 47.5219 33.5813C47.5219 33.5813 48 29.7001 48 25.8095V22.172C48 18.2907 47.5219 14.4001 47.5219 14.4001ZM19.0406 30.2251V16.7345L32.0062 23.5032L19.0406 30.2251Z" /></svg>
+          </div>
+        </a>
+      </li> 
+    
+     
+      <li>
+        <a href="https://music.apple.com/us/artist/nmixx/1600411676" target="_blank" aria-label="Open Apple Music social link" class="icon_apple flex h-full fill-current justify-center items-center h-min-click-space w-min-click-space c-text-content-subtle hover:c-text-tertiary">
+          <div class="social-icons__wrapper">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="currentColor" class="umg-icon" xmlns="http://www.w3.org/2000/svg"><path d="M43.5839 37.4071C42.858 39.0841 41.9988 40.6277 41.0033 42.0469C39.6463 43.9817 38.5352 45.3209 37.6789 46.0646C36.3516 47.2853 34.9294 47.9105 33.4065 47.946C32.3132 47.946 30.9947 47.6349 29.4599 47.0038C27.9201 46.3757 26.5051 46.0646 25.2112 46.0646C23.8542 46.0646 22.3988 46.3757 20.8421 47.0038C19.2831 47.6349 18.0271 47.9638 17.0668 47.9964C15.6064 48.0586 14.1508 47.4157 12.6978 46.0646C11.7704 45.2557 10.6105 43.8691 9.22087 41.9047C7.72995 39.807 6.50422 37.3745 5.54395 34.6012C4.51554 31.6058 4 28.7051 4 25.8969C4 22.6801 4.69509 19.9057 6.08734 17.5807C7.18153 15.7132 8.63718 14.2401 10.4591 13.1586C12.2809 12.0772 14.2495 11.5261 16.3694 11.4908C17.5293 11.4908 19.0505 11.8496 20.9408 12.5548C22.8258 13.2623 24.0361 13.6211 24.5667 13.6211C24.9635 13.6211 26.308 13.2016 28.5874 12.3652C30.7428 11.5895 32.562 11.2683 34.0524 11.3948C38.0908 11.7207 41.1247 13.3127 43.1425 16.1807C39.5307 18.3691 37.7441 21.4342 37.7797 25.3662C37.8123 28.429 38.9233 30.9776 41.107 33.0013C42.0966 33.9405 43.2017 34.6664 44.4313 35.182C44.1646 35.9553 43.8832 36.696 43.5839 37.4071V37.4071ZM34.322 0.960762C34.322 3.36131 33.445 5.6027 31.6969 7.6773C29.5873 10.1436 27.0357 11.5687 24.2687 11.3439C24.2334 11.0559 24.213 10.7528 24.213 10.4343C24.213 8.12973 25.2162 5.66343 26.9978 3.6469C27.8872 2.6259 29.0185 1.77694 30.3903 1.09972C31.7591 0.432598 33.0539 0.0636663 34.2716 0.000488281C34.3072 0.321404 34.322 0.64234 34.322 0.960731V0.960762Z" /></svg>
+          </div>
+        </a>
+      </li> 
+    
+     
+      <li>
+        <a href="https://open.spotify.com/artist/28ot3wh4oNmoFOdVajibBl?si=Nk0VPfW5TzunZprjuQch8g" target="_blank" aria-label="Open Spotify social link" class="icon_spotify flex h-full fill-current justify-center items-center h-min-click-space w-min-click-space c-text-content-subtle hover:c-text-tertiary">
+          <div class="social-icons__wrapper">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="currentColor" class="umg-icon" xmlns="http://www.w3.org/2000/svg"><path d="M23.9266 0C10.7126 0 0 10.7123 0 23.9263C0 37.1409 10.7126 47.8523 23.9266 47.8523C37.142 47.8523 47.8534 37.1409 47.8534 23.9263C47.8534 10.7131 37.142 0.00114285 23.9263 0.00114285L23.9266 0ZM34.8991 34.5086C34.4706 35.2114 33.5506 35.4343 32.8477 35.0029C27.23 31.5714 20.158 30.7943 11.8294 32.6971C11.0269 32.88 10.2269 32.3771 10.044 31.5743C9.86029 30.7714 10.3611 29.9714 11.1657 29.7886C20.28 27.7054 28.098 28.6029 34.4049 32.4571C35.1077 32.8886 35.3306 33.8057 34.8991 34.5086ZM37.8277 27.9929C37.2877 28.8714 36.1391 29.1486 35.262 28.6086C28.8306 24.6546 19.0269 23.5097 11.4197 25.8189C10.4331 26.1169 9.39114 25.5609 9.09171 24.576C8.79457 23.5894 9.35086 22.5494 10.3357 22.2494C19.0251 19.6129 29.8277 20.89 37.2134 25.4286C38.0906 25.9686 38.3677 27.1169 37.8277 27.9929ZM38.0791 21.2089C30.3677 16.6286 17.6449 16.2074 10.2823 18.442C9.1 18.8006 7.84971 18.1331 7.49143 16.9509C7.13314 15.768 7.8 14.5186 8.98314 14.1591C17.4349 11.5934 31.4849 12.0891 40.3631 17.3597C41.4289 17.9909 41.7774 19.3643 41.146 20.4263C40.5174 21.4897 39.1403 21.8403 38.0803 21.2089H38.0791Z" /></svg>  
+          </div>
+        </a>
+      </li> 
+    
+     
+      <li>
+        <a href="https://www.tiktok.com/@nmixx_official?lang=en" target="_blank" aria-label="Open TikTok social link" class="icon_tiktok flex h-full fill-current justify-center items-center h-min-click-space w-min-click-space c-text-content-subtle hover:c-text-tertiary">
+          <div class="social-icons__wrapper">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="currentColor" class="umg-icon" xmlns="http://www.w3.org/2000/svg"><path d="M34.1451 0H26.0556V32.6956C26.0556 36.5913 22.9444 39.7913 19.0725 39.7913C15.2007 39.7913 12.0894 36.5913 12.0894 32.6956C12.0894 28.8696 15.1315 25.7391 18.8651 25.6V17.3913C10.6374 17.5304 4 24.2783 4 32.6956C4 41.1827 10.7757 48 19.1417 48C27.5075 48 34.2833 41.1131 34.2833 32.6956V15.9304C37.3255 18.1565 41.059 19.4783 45 19.5479V11.3391C38.9157 11.1304 34.1451 6.12173 34.1451 0Z" /></svg>
+          </div>
+        </a>
+      </li> 
+    
+    
+    
+  </ul>
+</nav>
+
+      
+    </div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div  class="footer__griditem footer__griditem--1 footer__griditem--navigation md:col-span-12 md:row-span-1 py-none px-none">
+  <div class="navigation-container w-full h-full flex flex-col items-center gap-y-sm-2xs text-center md:text-center md:justify-start">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="w-full md:flex md:items-start justify-center md:justify-center nav-wrapper" aria-label="Support Links">
+  <ul class="menu-nav text-center md:text-center md:flex justify-start md:flex-wrap md:justify-center gap-x-sm-lg gap-y-sm-2xs nav-container flex flex-col md:flex-row">
+    
+      
+        
+        
+        
+        
+          <li class="text_navigation_sm c-text-gray-300 hover:c-text-gray-300 no-underline hover:no-underline">
+            <a href="/pages/help">Help & Support</a>
+          </li>
+        
+      
+    
+      
+        
+        
+        
+        
+          <li class="text_navigation_sm c-text-gray-300 hover:c-text-gray-300 no-underline hover:no-underline">
+            <a href="/policies/terms-of-sale">Terms</a>
+          </li>
+        
+      
+    
+      
+        
+        
+        
+        
+          <li class="text_navigation_sm c-text-gray-300 hover:c-text-gray-300 no-underline hover:no-underline">
+            <a href="/policies/privacy-policy">Privacy</a>
+          </li>
+        
+      
+    
+      
+        
+        
+        
+        
+          <li class="text_navigation_sm c-text-gray-300 hover:c-text-gray-300 no-underline hover:no-underline">
+            <a href="/policies/legal-notice">Do not sell my personal information</a>
+          </li>
+        
+      
+    
+      
+        
+        
+        
+        
+          <li class="text_navigation_sm c-text-gray-300 hover:c-text-gray-300 no-underline hover:no-underline">
+            <a href="#"
+              
+                onclick="event.preventDefault();transcend.showConsentManager({'viewState': 'CompleteOptions' });"
+              
+              
+              data-linklist="transcend"
+            >Cookie Choices</a>
+          </li>
+        
+      
+    
+  </ul>
+</nav>
+
+
+    
+  </div>
+</div>
+
+
+
+
+
+<div  class="footer__griditem footer__griditem--2 footer__griditem--text md:col-span-12 md:row-span-1 py-none px-none text_body_xs c-text-content-subtle">
+  <div class="text-container w-full h-full flex flex-col text-center md:text-center md:justify-center">
+
+    
+      
+
+      
+        
+          <p>
+            If you are using a screen reader and are having problems using this website, please call 866-682-4413 for assistance.
+          </p>
+        
+      
+    
+
+    
+  </div>
+</div></div>
+
+  
+
+
+
+</div>
+
+
+</footer>
+<!-- END sections: footer-group --><script defer="defer" src="//nmixxshopus.com/cdn/shop/t/14/assets/utm-params.bundle.js?v=44857160626880170391785976605"></script>
+  <script defer="defer" src="//nmixxshopus.com/cdn/shop/t/14/assets/section-render.bundle.js?v=63812219370653911181785976605"></script><script defer="defer" src="//nmixxshopus.com/cdn/shop/t/14/assets/product.bundle.js?v=142950999983394162271785976606"></script><script defer="defer" src="//nmixxshopus.com/cdn/shop/t/14/assets/cart-drawer.bundle.js?v=2388108109159057011785976605"></script><script async="async" src="//nmixxshopus.com/cdn/shop/t/14/assets/content-overlay.bundle.js?v=37908579092181384011785976605"></script><!-- BEGIN sections: background-group -->
+
+<!-- END sections: background-group --><script>Shopify.analytics.publish('view_product', {
+            currency: 'USD',
+            items: [
+              {
+                item_name: 'Fe3O4: FORWARD (Ready Ver.)',
+                item_id: '9702610403626',
+                item_category: '',
+                item_variant: 'Default Title',
+                upc: '00198704286599',
+                price: 24.00,}
+            ]
+            })</script><script async="async" src="//nmixxshopus.com/cdn/shop/t/14/assets/url-params.bundle.js?v=51352056378978385121785976605"></script><script async="async" src="//nmixxshopus.com/cdn/shop/t/14/assets/dotdigital-site-tracking.bundle.js?v=56115862656055679041785976605"></script><script>
+      window.customerEmail = ''
+      window.customerAcceptsMarketing = ''
+      window.dotDigitalCartInsights = {
+        programId: '79365',
+        currency: 'USD',
+        subtotal: '0.00',
+        discountAmount: '0.00',
+        grandTotal: '0.00',
+        cartUrl: 'https://nmixxshopus.com',
+        lineItems: '[]'
+      }
+    </script><script async="async" src="//nmixxshopus.com/cdn/shop/t/14/assets/dotdigital-cart-insight.bundle.js?v=73368649038972163841785976605"></script>
+<script src="https://cdn.shopify.com/storefront/standard-actions.js" type="module" data-source-attribution="shopify.standard_actions"></script>
+</body>
+</html>

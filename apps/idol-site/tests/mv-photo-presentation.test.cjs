@@ -17,14 +17,14 @@ test('shared MV and member cards use exact identity component while retaining re
  assert.match(css,/aspect-ratio:3\/4/);assert.match(identity,/<PhotoLightbox src=\{src\}/);
 });
 
-test('LE SSERAFIM public identity and XG native photo paths both retain private references',()=>{
+test('LE SSERAFIM and XG public identity paths both retain private references',()=>{
  const lesserafim=fs.readFileSync('components/lesserafim-artist.tsx','utf8');
  assert.match(lesserafim,/<MvIdentityPhoto work=\{x.work\} memberId=\{m.id\}/);
  assert.match(lesserafim,/<MvPhotoReference photo=\{x.photo\} referencePhoto=\{x.referencePhoto\}/);
  assert.match(lesserafim,/live=\{data.mode==='live'\}/);
  for(const [file,prefix]of [['components/expanded-artist.tsx','nx']]){
   const source=fs.readFileSync(file,'utf8');assert.ok(source.includes("className={'"+prefix+"-member-look member-mv-look'+(x.photo?.sourceKind==='mv_look_photo'?' mv-look-native':'')}"));
-  assert.match(source,/<MvPhotoReference photo=\{x.photo\} referencePhoto=\{x.referencePhoto\}/);assert.match(source,/live=\{data.mode==='live'\}/);assert.match(source,/mvPhotoLabel\(x.photo,/);
+  assert.match(source,/<MvPhotoReference photo=\{x.photo\} referencePhoto=\{x.referencePhoto\}/);assert.match(source,/live=\{data.mode==='live'\}/);assert.match(source,/<MemberWorkIdentityPhoto work=\{x.work\} memberId=\{m.id\}/);
  }
  const css=fs.readFileSync('components/mv-photo-reference.css','utf8');assert.match(css,/\.member-mv-look\.mv-look-native\{display:block;background:transparent!important\}/);
 });

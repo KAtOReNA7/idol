@@ -379,7 +379,8 @@ export default function App(){
 function PlaceholderDetail({onBack}:{work:Work;data:Catalog;onBack:()=>void}){return <section className="empty"><h2>这项内容还没有歌曲</h2><p>先到作品库看看其他作品吧。</p><button className="button" onClick={onBack}>返回作品库</button></section>}
 const platformLabel={x:'X',youtube:'YouTube',bilibili:'bilibili',naver:'NAVER TV',weverse:'Weverse',official_site:'官方网站'};
 function StageSupplements({work}:{work:Work}){
- const supplement=work.stageSupplement;
+ const original=work.stageSupplement;
+ const supplement=original&&work.stage&&!work.stage.clip?{...original,alternatives:original.alternatives.filter(a=>a.platform!=='youtube'||a.sourceId!==work.stage!.videoId)}:original;
  if(!supplement||(!supplement.alternatives.length&&!supplement.watchLeads?.length))return null;
  return <section id="other-performances" className="stage-supplements" aria-label="其他观看选择">
   {!!supplement.alternatives.length&&<><h2>其他现场</h2><p className="subtle">挑一支继续看。以下视频仅供观看，不用于本条舞台评分。</p><div className="alternative-grid">{supplement.alternatives.map(a=><article className="alternative-card" key={a.id}>
@@ -443,7 +444,7 @@ function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,onVersio
  {loonaButterfly&&<div className="loona-associated-release"><img src="/artist/loona/approved-home/butterfly-album.jpg" width="96" height="96" alt="关联发行《X X》封面"/><div><strong>关联发行《X X》</strong><span>发行封面</span></div></div>}
  {view==='mv'&&people.length>0&&<nav className="mv-member-shortcuts" aria-label="本支成员"><span>本支成员</span><div>{people.map(r=>{const m=data.members.find(m=>r.memberIds.includes(m.id)),label=m?memberDisplayName(m):r.name;return <button type="button" key={r.id} aria-controls={'mv-cast-'+r.id} onClick={()=>jumpToCast(r.id)}>{label}</button>;})}</div><small>点名字，定位认人图与个人评分</small></nav>}
  {vid&&<CaptionHelp/>}
- {view==='stage'&&stage&&<div className="stage-source"><p>{stage.channel} · {stageKindLabel(stage.kind)}</p>{stage.clip&&<p className="stage-reuse-note">整场中的单曲片段 · {formatStageTime(stage.clip.startSeconds)}–{formatStageTime(stage.clip.endSeconds)}<br/>站内播放此片段；打开原视频会从起点开始，需自行在终点停止。</p>}{stage.reusesOriginalVideo&&<p className="stage-reuse-note">与 MV 页为同一支表演视频。</p>}{stage.higherCandidate&&<p className="stage-reuse-note">另有更高赞舞台可看，当前评分仍对应这支视频。<a href={stage.higherCandidate.url} target="_blank" rel="noopener noreferrer">观看另一版 ↗</a></p>}{!stageBound&&work.stageScore!==null&&<p className="stage-version-note">原有舞台分已保留，但对应的视频还未确认；暂不为这支视频改分。</p>}</div>}
+ {view==='stage'&&stage&&<div className="stage-source"><p>{stage.channel} · {stageKindLabel(stage.kind)}</p>{stage.verificationNote&&<p className="stage-version-note">{stage.verificationNote}</p>}{stage.clip&&<p className="stage-reuse-note">整场中的单曲片段 · {formatStageTime(stage.clip.startSeconds)}–{formatStageTime(stage.clip.endSeconds)}<br/>站内播放此片段；打开原视频会从起点开始，需自行在终点停止。</p>}{stage.reusesOriginalVideo&&<p className="stage-reuse-note">与 MV 页为同一支表演视频。</p>}{stage.higherCandidate&&<p className="stage-reuse-note">另有更高赞舞台可看，当前评分仍对应这支视频。<a href={stage.higherCandidate.url} target="_blank" rel="noopener noreferrer">观看另一版 ↗</a></p>}{!stageBound&&work.stageScore!==null&&<p className="stage-version-note">原有舞台分已保留，但对应的视频还未确认；暂不为这支视频改分。</p>}</div>}
 
  {view==='stage'&&<StageSupplements work={work}/>}
  </div><aside className={'work-aside '+(view==='stage'?'stage-aside':'')}><GroupLinks data={data} ids={work.groupIds} onGroup={onGroup}/><h1>{work.song||work.name}</h1>

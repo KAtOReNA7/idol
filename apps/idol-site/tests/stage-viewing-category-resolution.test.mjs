@@ -26,14 +26,23 @@ test('six new public viewing alternatives validate and never acquire score bindi
  assert.match(rock.version.differences.join(' '),/歌词与原音源不同/);
 });
 
-test('all prior supplement records and formal stage files are preserved',()=>{
+test('all prior supplement records and formal stage records are preserved through the authorized four-source addition',()=>{
  for(const [id,baseline]of Object.entries(evidence.preservation.oldRows)){
   const row=structuredClone(data.works[id]);
   row.alternatives=row.alternatives.slice(0,baseline.alternativeCount);
   if(baseline.hadWatchLeads)row.watchLeads=row.watchLeads.slice(0,baseline.watchLeadCount);else delete row.watchLeads;
   assert.equal(hash(JSON.stringify(sort(row))),baseline.hash,id);
  }
- for(const [file,expected]of Object.entries(evidence.preservation.protectedFiles))assert.equal(hash(fs.readFileSync(file)),expected,file);
+ const adoption=read('../../docs/codex/evidence/20261027-category-resolution/stages/formal-four-adoption.json');
+ const added=new Set(adoption.items.map(item=>item.recordId));
+ for(const [file,expected]of Object.entries(evidence.preservation.protectedFiles)){
+  if(file==='data/stage-videos.json'){
+   const stages=read(file);for(const id of added)delete stages[id];
+   assert.equal(hash(JSON.stringify(sort(stages))),adoption.preservation.stageCanonicalSha256);
+  }else if(file==='data/stages/status.json'){
+   const statuses=read(file);for(const[id,oldHash]of Object.entries(adoption.preservation.statusRows))if(!added.has(id))assert.equal(hash(JSON.stringify(sort(statuses.works[id]))),oldHash,id);
+  }else assert.equal(hash(fs.readFileSync(file)),expected,file);
+ }
 });
 
 test('existing Best Friendz uncertainty and ROTY shortened chapter are not duplicated or promoted',()=>{

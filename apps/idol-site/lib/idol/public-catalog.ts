@@ -12,7 +12,7 @@ const social:Shape=[fields('platform url subjectName countLabel observedAt')];
 const photo:Shape={...fields('table recordId index kind sourceKind'),
  displayFocus:{...fields('sourceWidth sourceHeight qualityTier maxEffectiveWidth preserveOriginal'),sourceCrop:fields('x y width height')},
  approvedLookIdentity:fields('memberId workId videoId sameLook'),nativeIdentity:fields('memberId workId videoId')};
-const stage:Shape={...fields('sourceClass platform completeness likesScope videoId url title channel kind publishedDate checkedAt reusesOriginalVideo comparisonLimited comparisonLimitation candidateCount'),
+const stage:Shape={...fields('sourceClass platform completeness likesScope videoId url title channel kind publishedDate checkedAt verificationNote reusesOriginalVideo comparisonLimited comparisonLimitation candidateCount'),
  clip:{...fields('startSeconds endSeconds sourceDurationSeconds'),evidence},
  audioEquivalence:{...fields('originalBoundWorkId sameAudio')},
  scoreBinding:fields('videoId sourceKey initializedAt initialScore'),likes,

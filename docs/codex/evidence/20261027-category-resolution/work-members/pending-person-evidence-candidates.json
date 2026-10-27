@@ -26,7 +26,24 @@
       "fullVideoWatched": false,
       "memberScoringChanged": false,
       "privateRelationshipsAdded": 0,
-      "blocker": "Need a second explicit reliable source and exact-video full playback."
+      "blocker": "Need a second explicit reliable source and exact-video full playback.",
+      "boundaryFollowupOutcome": "director_external_performer_credit_recovered",
+      "boundaryFollowupSources": [
+        {
+          "url": "https://vimeo.com/908158963",
+          "sourceKind": "director_portfolio",
+          "read": true,
+          "summary": "EEHOSOO portfolio identifies 2024 aespa remake, 680HOUSE production and named FRIENDS roles/performers. The list is positive external-performer evidence, not an explicit exhaustive absence statement."
+        },
+        {
+          "url": "https://www.imdb.com/title/tt32394097/",
+          "sourceKind": "search_only_user_edited_database",
+          "read": false,
+          "summary": "Search lists aespa members as cast, contradicting absence archive and not distinguishing recording/appearance. Not adopted."
+        }
+      ],
+      "nextAction": "先比对导演版与官方xjBY3MLdvVQ的剪辑一致性，再完整看片并对照片尾外部演员；不得把未列aespa当作穷尽名单。",
+      "needsUserDecision": false
     },
     {
       "workId": "recvxyHuKMlGJW",
@@ -49,7 +66,24 @@
       "fullVideoWatched": false,
       "memberScoringChanged": false,
       "privateRelationshipsAdded": 0,
-      "blocker": "Do not substitute Other World video; second explicit source and full playback missing."
+      "blocker": "Do not substitute Other World video; second explicit source and full playback missing.",
+      "boundaryFollowupOutcome": "second_absence_source_not_found",
+      "boundaryFollowupSources": [
+        {
+          "url": "https://theneedledrop.com/news/grimes-goes-back-to-cyber-twee-for-new-remix-of-aespa-supernova/",
+          "sourceKind": "music_news",
+          "read": true,
+          "summary": "Confirms remix release and links target remix, but supplies no all-video member absence proof."
+        },
+        {
+          "url": "https://www.imdb.com/name/nm12194559/",
+          "sourceKind": "search_only_user_edited_database",
+          "read": false,
+          "summary": "Lists Karina voice role for remix; not sufficient proof for all members or fullvideo absence."
+        }
+      ],
+      "nextAction": "保留原4kMcaEz1WrQ与Other World tY2q55Sw3jA分开；下次核原版全片与动画制作方作品页，而非重复发行稿搜索。",
+      "needsUserDecision": false
     },
     {
       "workId": "recvxyHuKMCSdB",
@@ -67,7 +101,25 @@
       "fullVideoWatched": false,
       "memberScoringChanged": false,
       "privateRelationshipsAdded": 0,
-      "blocker": "Second independent explicit source and full playback missing."
+      "blocker": "Second independent explicit source and full playback missing.",
+      "boundaryFollowupOutcome": "production_portfolio_found_but_unreadable",
+      "boundaryFollowupSources": [
+        {
+          "url": "https://www.behance.net/gallery/209019195/aespa-Armageddon%28Flava-D-Remix%29-MV",
+          "sourceKind": "production_portfolio_lead",
+          "read": false,
+          "failure": "inaccessible_via_web_reader",
+          "summary": "Exact remix portfolio located; search snippet gives production director Chae Jeonghee, but full page inaccessible. Search snippet not adopted."
+        },
+        {
+          "url": "https://www.imdb.com/name/nm12194559/",
+          "sourceKind": "search_only_user_edited_database",
+          "read": false,
+          "summary": "Voice-role listing is only a lead, not a validated all-cast absence record."
+        }
+      ],
+      "nextAction": "使用能正常打开的Behance公开作品页或制作工作室镜像核动画pipeline，再完整检查精确视频；目前不修改无人规则。",
+      "needsUserDecision": false
     },
     {
       "workId": "recvxyHuKMlAhN",
@@ -90,7 +142,31 @@
       "fullVideoWatched": false,
       "memberScoringChanged": false,
       "privateRelationshipsAdded": 0,
-      "blocker": "Production technique corroborated, absence of actual members still needs explicit source and full playback."
+      "blocker": "Production technique corroborated, absence of actual members still needs explicit source and full playback.",
+      "boundaryFollowupOutcome": "explicit_absence_report_recovered_fullplayback_open",
+      "boundaryFollowupSources": [
+        {
+          "url": "https://www.blognone.com/node/148254",
+          "sourceKind": "named_technology_news",
+          "read": true,
+          "summary": "Named September21 report distinguishes conventional Rich Man master from all-AI Yellow Claw remix, explicitly notes no group members appear. Official aespa post is embedded.",
+          "supportsNoRealMember": true
+        },
+        {
+          "url": "https://cvmsekai.com/aespa-rich-man-yellow-claw-remix-mv-react/",
+          "sourceKind": "fan_review_secondary_only",
+          "read": true,
+          "summary": "Review identifies exact lWIQ72KFgrg and claims generated performers rather than aespa. Kept as a secondary lead; its broad roster and metadata opinions are not adopted as instructions or proof."
+        },
+        {
+          "url": "https://www.hanteonews.com/en/article/83473",
+          "sourceKind": "production_news_previously_read",
+          "read": true,
+          "summary": "Corroborates Flow/Veo production but does not alone prove absence."
+        }
+      ],
+      "nextAction": "已有明确无成员报道，优先完整核lWIQ72KFgrg并核片尾/官方披露；生成角色不绑定成真人。证据待完整视频检查完成后才改变规则。",
+      "needsUserDecision": false
     },
     {
       "workId": "recvxyHuKMwrIt",
@@ -108,7 +184,18 @@
       "fullVideoWatched": false,
       "memberScoringChanged": false,
       "privateRelationshipsAdded": 0,
-      "blocker": "Character identity alone insufficient; full playback and independent explicit absence evidence required."
+      "blocker": "Character identity alone insufficient; full playback and independent explicit absence evidence required.",
+      "boundaryFollowupOutcome": "character_branding_only_no_exhaustive_cast",
+      "boundaryFollowupSources": [
+        {
+          "url": "https://sports.khan.co.kr/en/article/202608141701017",
+          "sourceKind": "label_supplied_event_report_previously_read",
+          "read": true,
+          "summary": "Names each official MINIVE character and confirms target BANG BANG character video; does not rule out live-action inserts."
+        }
+      ],
+      "nextAction": "核精确MINIVE整片、片尾与Starship角色项目官方说明；不以角色是成员化身推定真人出镜，也不以动画标题推定无人。",
+      "needsUserDecision": false
     }
   ],
   "negativeOrBlockedRoutes": [

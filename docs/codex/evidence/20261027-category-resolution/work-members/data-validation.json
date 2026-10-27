@@ -1,9 +1,9 @@
 {
   "checkedAt": "2026-10-27",
   "old16CreditsPreservedExactly": true,
-  "uniqueWorkKeys": 37,
-  "publicPersonCredits": 239,
-  "recognitionSlots": 239,
+  "uniqueWorkKeys": 38,
+  "publicPersonCredits": 244,
+  "recognitionSlots": 244,
   "exactWorkVideoGroupMatch": true,
   "memberSetsMatchExactly": true,
   "duplicateWorkOrPortraitKeys": 0,
@@ -17,13 +17,21 @@
     "SUHYEON candidate shares the same named article and MV shoot series but has different black clothing/hair styling from old full-body photo.",
     "IZ*ONE original official profile has black and blue circular studio background, not added padding; Minju has a hand near one eye. AtHeart includes medium/full body images within the same purple-uniform campaign."
   ],
-  "uniqueOriginals": 102,
+  "uniqueOriginals": 105,
   "allOriginalSHAAndDimensionsVerified": true,
   "allCropsWithinOriginalAnd3By4": true,
   "targetedTests": {
-    "command": "node --test tests/public-work-recognition.test.cjs",
-    "passed": 2,
-    "failed": 0,
-    "gitDiffCheck": "passed for owned paths"
+    "command": "node --test tests/public-work-recognition.test.cjs tests/illit-special-film-public-credit.test.cjs",
+    "passed": 3,
+    "failed": 0
+  },
+  "latestIncrement": {
+    "workId": "rec28ldfRTrLwE",
+    "newReferences": 5,
+    "existing37CreditsAnd239ReferencesPreservedExactly": true,
+    "sourceReportLinksExactVideo": true,
+    "directYouTubeMetadataRecovered": false,
+    "fullVideoWatched": false,
+    "privateRelationsAdded": 0
   }
 }

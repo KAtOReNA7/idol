@@ -1,111 +1,67 @@
-# 跨电脑接续：正式v194，PR44续作
+# 跨电脑接续：正式v195，PR44未合并
 
-## 最新已上线：v194；报道时间轴续作中（2026-10-28）
+当前正式工程为 `apps/idol-site/`。根目录旧sandbox不是发布工程。本文件是当前操作入口；历史发布记录留在报告及Git历史中，不能使用旧v191/main指令覆盖最新成果。
 
-正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 当前 **v194 / succeeded**。GitHub实现 `8f99e70db60deca54cc4761fddc6b2e189fda6a7`，回执与复验已推送 `828b7ad`；继续 `codex/statistics-relations-followup-20261027` / [PR44](https://github.com/KAtOReNA7/idol/pull/44)，尚未合main。Sites源 `1838c81f5ed2667fe6d13ad4adf36ae61257c899`，部署 `appgdep_6ae0c730f540819191236443f683180f`。GitHub提交和正式部署分别记录。
+## 最新已上线：v195；继续证据补全（2026-10-28）
 
-登录读取问题已确认是旧浏览器标签连接失效及非浏览器请求没有用户会话，并非用户未登录。同一Chrome新标签读取owner目录成功；v193完整个人字段/关系指纹一致，v194除4个明确授权的静态stage对象外全部一致。未私人保存。native/epoch6/原快照/done206，public/1owner/0外部/0组及owner鉴权保持。
+正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已为 **v195 / succeeded**。GitHub实现 `fdb7193052fb8caed7cc99f3d98b05afef20dacc`；Sites源 `2d8d23c8d04ce092ae82f7768a72a162cc0f352a`，部署 `appgdep_6ae0ceb763ec8191b583bee182827045`。继续 `codex/statistics-relations-followup-20261027` / [PR44](https://github.com/KAtOReNA7/idol/pull/44)，未合main。不要以旧main覆盖本分支；GitHub提交和正式部署分别记录。
 
-累计38作品244人次公开署名与认人参考，不创建私人关系；131原无关系作品=38有限公开资料+5既有无真人规则+88待证。原2828公共图片绑定+12原生图保持无缺图，628既有封面另加4精确舞台封面=632。四舞台按用户选择正式绑定，478→482，范围文案明确完整播放未验；123未配舞台及9无歌曲身份占位仍保留。26作品30空值、5时间轴hold和3统计冲突已解决；17未知统计、2销量分歧、7canonical hold尚未证实。
+按用户选择，AtHeart2、BEWAVE1、CandyShop1、Geenius1、UDTT2共7项以报道/目录/转载记录展示，注明生效日期未确认；7个事实hold、稳定ID和5份canonical原文件保持。Sena仅为社区转载线索，原始发布日期未知。登录读取已恢复：用户本来已登录，旧浏览器连接及无cookie请求才是原因；同一Chrome新标签只读核对个人字段和关系完整hash与v194完全一致。未私人保存。
 
-126相关测试、TypeScript、正式构建和完整包通过；线上四舞台12布局与ILLIT2布局、真实owner入口及保护指纹已验，详见 `category-resolution-v194-20261027.md`。旧favicon404非阻断；未真实私人保存、全视频播放、原生缩放或新Figma。
+151项定向测试、TypeScript、正式构建、1402文件完整包通过；本地/正式各15布局、8来源点击及2个UDTT来源守卫通过。native/epoch6/原快照/done206，public/1owner/0外部/0组及owner保存鉴权保持。详见 `docs/codex/timeline-reported-records-v195-20261028.md` 及其证据。
 
-用户随后选择7hold按报道记录展示、注明生效日期未确认。该增量正在实现：保留7canonical hold和全部稳定ID，以独立公开报道/目录层接入AtHeart、BEWAVE、CandyShop、Geenius、UDTT实际时间轴；不能把展示完成写成实际事实已证。v195尚未发布，以后续回执为准。51团设计、Apple Music主站、A–Y/Z已完成批次和个人页待决定边界保持。
+当前38作品244人次公开资料；131原无关系作品=38有限公开资料+5无真人+88待证。88均已分类，86说明已读、2受阻，但未穷尽逐曲人物研究或全片核查。2828公共图片绑定+12原生图无缺图，632封面（628旧+4新舞台）；482已配舞台，123待证（57未找到/50版本不符/16受阻）及9歌曲身份占位，未完成全部候选核验。17未知统计（5X/9销量/3一位）、tripleS/fromis9两销量分歧仍开放。7项报道展示完成不等于原事实确认。
 
-## 最新审计：线上缺口分类与解决路线（2026-10-27）
+继续寻找新的具名人物/精确版本及统计来源，研究记录独立于已发布计数；不得推定全员、虚构统计、重复A–Y/Z。51团设计、Apple Music主站、完整原图和个人数据保护；个人页统一排版待用户决定。未真实私人保存、全视频播放、原生缩放或新Figma；历史SSR失败和favicon404仍列出。以下旧章节只作历史，不能覆盖本节。
 
-当前正式站仍 **v192**，本轮只有只读审计、来源研究和文档更新，没有新部署。继续 `codex/statistics-relations-followup-20261027` / [PR44](https://github.com/KAtOReNA7/idol/pull/44)，未合main。完整报告 `docs/codex/current-gap-classification-20261027.md`，逐项证据 `docs/codex/evidence/20261027-current-gap-classification/`。
+## 安全接续
 
-线上2840有效成员/作品关系=2828公共图片绑定+12已有原生图；12图HTTP/完整SHA通过，当前未发现关系缺图。12条不在公共清单不等于12空白图；其中SUHYEON《ZAP》1张全身构图待找近景。628封面保持。冻结133无关系作品更新为线上131：Touch与ZAP已有关系；131中16已有有限公开署名、5已证无成员真人，110尚须人物/版本证据，不能推全员。旧127下载失败全部已有替代图，不再当当前缺口，A–Y/Z不重做。
+先保护本地未提交和未跟踪文件，显式fetch主线及任务分支，不reset、clean或强推。PR43已合main；PR44尚未合main，已上线v192–v195仍在该任务分支。先核对PR44最新状态：未合并时接续下面任务分支；若已合并且最新main包含本轮实现，再从最新main建立新codex/任务分支。
 
-剩余17未知统计（X5/销量9/一位3），另5来源口径冲突；12时间轴hold；127无匹配舞台（未找到59/版本不符50/受阻18，属于旧研究状态，未全量重新搜索）；26作品涉及23日期/2标题/5频道空值。此次已找回6作品的7个标题/频道候选与SUYUN本人公告，尚未应用或发布；公告不证明合同实际生效日。逐作品分类131互斥无漏项，结构/引用/重复与个人字段排除检查通过。个人页统一排版仍待决定。
-
-下方133/117、旧127失败及早期缺图数字是历史口径。新电脑先读本节和报告；PR44未合并前，不以main覆盖其中已完成v192成果。设计、原图、ID/关系、个人记录、访问权限和owner鉴权不变。
-
-## 最新增量：公开署名与统计续作，正式v192（2026-10-27）
-
-从显式fetch后的最新main `852f7506a4f921fff4e4d24fe70e8d607c7d40f5` 新建 `codex/statistics-relations-followup-20261027`；开工干净，PR43已包含。GitHub实现 `8cc3d9f`，本批 [PR44](https://github.com/KAtOReNA7/idol/pull/44) 尚未合main，不重导A–Y/Z，不从历史逐团分支开始。
-
-新增12支tripleS作品106人次公开署名，修正Password来源，公开署名覆盖16支；私人关系未新增，133支无既有关系作品数量保持，117支仍无可靠公开署名。录音/分队名单不是逐人MV出镜核验。EVERGLOW新INS补2026-05-30历史快照86501（9万），非实时；未知统计18→17（5社媒/9销量/3一位）。2828认人绑定、628封面、现有缺图0/旧低清0保持。官方与具名民间同套图均可，来源标注真实；个人页统一排版仍待决定。
-
-正式站 https://idol-lens-private.wuke40758.chatgpt.site/ **v192 / succeeded**；Sites源 `721a0cf28e26d48c611bd2a06183412d1889e861`，部署 `appgdep_6ae0a42959108191aa2c4a64d61f87e9`。public/1owner/0外部/0组、native/epoch6/原快照/done206、全部公开字段及关系保持。GitHub与正式部署分开记录，本PR未自动合并。
-
-27相关测试、TypeScript、正式构建及完整TAR1398文件通过；本地与线上各28布局/2成员跳转通过。完整问题与线上复验以 `docs/codex/statistics-relations-followup-20261027.md` 及 `docs/codex/evidence/20261027-statistics-relations/` 为准。未做私人保存、完整播放、逐人出镜、原生缩放、用户IAB或新Figma验收。下方18未知/v191为历史基线，不能覆盖本节。
-
-2026-10-27。正式工程是 `apps/idol-site/`。当前代码、来源证据和发布状态以[本轮报告](identity-completion-report-20261027.md)为准；GitHub推送与正式站部署分别验证。
-
-## 当前成果
-
-- Q–Y本轮补入697条；当前2828认人绑定、472作品、49团、628封面，现有成员关系缺图0。原871清单全部解决。
-- Z完成43条旧低清替换，card_only0；31复用已审原件，12新原件14,862,076字节。旧43完整记录和文件保留。A–Y和Z均不得重复执行。
-- 26团成员图库/原有按钮已经接入公共图；51团设计、Apple Music主站、个人字段、稳定ID/关系、访问权限及owner保存鉴权保持。个人页统一排版仍待用户决定。
-- 133作品没有既有成员关系，不能猜测全员；18项未知统计仍开放，不伪造补齐。
-- 54专项、最终TypeScript和正式构建通过；本地43提质三宽51布局/129原图流程、26团52布局/580图槽按钮/52原图流程通过；线上43提质51布局/129原图流程、29原图HTTP/完整字节/SHA通过。没有真实私人保存、全视频播放、原生缩放、用户IAB或新Figma验收。
-- 正式站26团成员页390宽、290公共控件/271缩略图、26最大原图流程及9索引布局通过；首次脚本误拦正常浏览器校验造成两页超时，纠正后已过，见production-member-gallery-verification.json。作品页另有1条未归因console404，后续监听未复现，受检图均正常载入，保留记录不隐去。
-
-## GitHub状态：已经进入main
-
-[PR43](https://github.com/KAtOReNA7/idol/pull/43) 已于2026-10-27 18:44:04（北京时间）合并；合并提交 `cde017d9d2ad355a287dcdd1e099f6e59c556e12`，任务HEAD `47060f6d98697bed5820540ce0f4f01b15eb5b97`。普通merge保留完整历史，合并后全仓树与任务HEAD完全一致。后续交接文档也提交至main，接续时使用最新远端main，不把以上固定历史SHA当作当前HEAD。
-
-正式应用实现a08ba097、原件ref7ee8a2d及辅助资产历史均已被main包含。不要再合入旧任务分支或辅助资产分支，不需要重复传输原件。未删除原分支，不reset、clean、rebase或强推。
-
-**尚未克隆的电脑：**
+尚未克隆时：
 
 ```sh
-git clone --branch main https://github.com/KAtOReNA7/idol.git idol
+git clone --branch codex/statistics-relations-followup-20261027 https://github.com/KAtOReNA7/idol.git idol
 cd idol
-git fetch origin refs/heads/main:refs/remotes/origin/main
-git status --short
-git switch -c codex/your-next-task origin/main
-```
-
-**已有仓库的电脑：**先检查并安全备份或提交本地未提交、未跟踪文件。确认工作树干净后执行下列命令，分支名换成当前任务的新名称：
-
-```sh
+git fetch origin refs/heads/main:refs/remotes/origin/main refs/heads/codex/statistics-relations-followup-20261027:refs/remotes/origin/codex/statistics-relations-followup-20261027
 git status --short --untracked-files=all
-git fetch origin refs/heads/main:refs/remotes/origin/main
-git switch -c codex/your-next-task origin/main
 ```
 
-不要用reset/clean丢弃本地内容；若有未保护修改，先处理它们，不强制切换。新任务只基于显式fetch后的origin/main。
+已有仓库时，先 `git status --short --untracked-files=all` 并备份或提交本地工作，干净后显式fetch上述两分支。现有任务分支无分叉时使用 `git merge --ff-only origin/codex/statistics-relations-followup-20261027`；否则保留两边修改并检查差异，不强制覆盖。没有本地任务分支则 `git switch --track origin/codex/statistics-relations-followup-20261027`。
 
-## 必读顺序与证据
+## 阅读顺序
 
-依次读本文件、根AGENTS.md、STATUS.md、RESUME.md、mainline-consolidation-20261026.md，再读mainline-identity-merge-20261027.md、identity-photo-selection-policy-20261027.md和identity-completion-report-20261027.md。20261026主线整理报告为历史背景，最新状态以本文件及20261027合并记录为准。
+1. 本文件、根 `AGENTS.md`、`docs/codex/STATUS.md`、`docs/codex/RESUME.md`。
+2. `docs/codex/timeline-reported-records-v195-20261028.md`、`category-resolution-v194-20261027.md`、`category-resolution-20261027.md`。
+3. `docs/codex/current-gap-classification-20261027.md` 与 `evidence/20261027-category-resolution/work-members/README.md`，以v195当前数字覆盖历史分类统计。
+4. `docs/codex/identity-photo-selection-policy-20261027.md`；必要时再看 `mainline-identity-merge-20261027.md` 与历史主线整理报告。
 
-- 缺图完成：`reports/20261027-quality-z/ledger.json/html/csv`，原871全部有选中原件。
-- 旧704分类最终结果：`reports/20261027-quality-z/route-resolution.json`，六类全部逐tuple核对解决。
-- 提质：`reports/20261027-quality-z/quality-reviewed-delta.json`、integration-verification.json。
-- 成员页：`reports/20261027-quality-z/member-gallery/verification.json`、member-urls.json。
-- 发布回执：`reports/20261027-quality-z/formal-v191-publication.json`；完整包与原件独立核对formal-independent-verification.json，生产复验production-browser-verification.json及production-originals-verification.json。
-- 当前审计：`mv-identity-asset-audit-20261025.json`；当前运行时：`apps/idol-site/data/mv-public-media.json`。
+## 已完成与保护项
 
-选图顺序为同套概念/封套优先、同套写真其次、自然清晰幕后再次、MV帧后备。官方和民间同标准；人物具名与系列可追溯、完整原件、自然清晰是必要条件。优先同发行/近时期，认人用途后备必须明示未证MV同期，不伪填same_era或精确MV证据，不猜脸、不AI补脸或放大。缺图不能关闭评分，5条确无真人精确视频规则保持。
+A–Y补图及Z提质已完成，原871清单全部解决；不得重做。图片来源可为官方或可追溯的民间具名同套图集，优先同套概念/封套、同套写真、自然清晰幕后，MV帧为后备。完整原件保留，不猜脸、不AI补脸或放大；同系列认人后备如实标记，不能假称目标MV同期。缺图不关闭评分；原5个确无成员规则保持。
 
-## 正式站状态与发布接续
+v193补齐26作品30空字段、公开资料与SUHYEON ZAP近景，处理5项时间轴事实和3统计口径冲突；v194按用户选择绑定IVE WAVE/CRUSH、XG HOWLING/MILLION PLACES四舞台并加4封面，注明只核官方资料、未完整播放。v195只增加7报道展示层，canonical事实未改。个人页统一排版尚待用户决定。
 
-正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已成功上线 **v191 / succeeded**，包含707条相对v190新增绑定、43提质和26团成员图库修复，当前2828绑定。GitHub提交和正式部署已分别留证，无需重复部署相同内容。
+## 下一步
 
-同一项目 `appgprj_6acb4fa532b88191ae2588c24b724b17`；v191源 `5644d219a4226d32fbb3d14a05033e3808f5692b`，部署 `appgdep_6ae07a8904008191b8de2068c80af476`。发布后只读确认public、1owner、0外部、0组，native/epoch6/快照0180f4aa-664f-48e9-a98a-958d4ae649f9/done206不变。公开目录全部字段和关系指纹发布前后相同。名称private不代表权限，DB/R2/MCP和owner保存鉴权必须保留。
+- 17未知统计与2销量分歧：只采用可溯源、口径明确、可复算数据。未知内部null，适用显示0；0/未知X隐藏，无账号另行省略。未知X账号存在，不把未知人数误写为没有账号。
+- 88待核作品：已有说明读取和格式分类，但人物证据并未全面完成。优先具名幕后、制作字幕、采访和明确录音/发行阵容；公开资料独立于私人关系，不自动推全员。
+- 123舞台：已刷新搜索，部分候选深查；继续精确歌曲/语种/版本核对。新绑定前只读核对原stage与stageScore，未知原评分对应版本不能随意重绑。四已授权绑定不重复。
+- 7时间轴hold：展示已补，实际生效日期仍未确认；来源不足时继续保留报道标签。不要将记录日作为生效日。
+- 新研究暂存 `docs/codex/evidence/20261028-followup/`；候选未集成/未发布不计入v195。
 
-旧P包曾上传超时，已被本轮成功发布取代，不能再作为当前阻塞或发布包。当前生产资源清单固定GitHub原件ref `7ee8a2d16e53358302ab8000af66a550bbb921cc`，5981原件中578随包、5403按既有同源流式交付、10受限副本/旧别名排除；原件不压缩。一般光栅打包预算已设4MiB（另保留两张原有公共海报211,510字节），完整gzip18,950,975字节，展开TAR42,063,872字节/1398文件，原生save在129729ms成功。
+## 发布及验证
 
-未来有新改动需发布时，先读取Sites技能，用原生helper打开同项目最新源，核对源HEAD与站点版本；凭证只在内存/隐藏stdin。按最新已推送原件commit重建production-asset-delivery.json，再同步正式源并构建完整新包。不要用旧P包/bafe825，也不要恢复24MiB预算导致超时重现。
+同一项目 `appgprj_6acb4fa532b88191ae2588c24b724b17`。v195回执：`evidence/20261027-category-resolution/publication-v195.json`；包核验 `package-verification-v195.json`；实际用户Chrome只读保护 `auth/owner-v195-verification.json`；生产五团 `work-members/reported-five-production-qa.json`。
 
-发布前核对所有carrier字节、hosting/迁移、完整展开TAR容量、local素材逐SHA、remote素材不随包以及10受限副本排除；使用prepare-production-assets.mjs --apply，仅清理经SHA核对的生成副本。不要删除public原件、改变权限、关闭TLS或省略可正常打包的archive绕过上传故障。
+正式受众实际为public、1owner/0外部/0组，名称private不代表权限；不得自行调整。native/epoch6/快照0180f4aa-664f-48e9-a98a-958d4ae649f9/done206保持。不要将 shell/API 未带浏览器cookie的登录错误当作用户未登录；旧Chrome标签失效时在同一浏览器创建新标签，只读检查，不重复要求登录。
 
-save使用helper返回的同SHA/同包，拿到version_id后再deploy；不明结果先查询版本/部署，不重复创建。正式成功后复验新图片原图、主页/成员页/作品页，并比较公开目录字段关系指纹和原生存储状态。若再次上传受阻，清楚记录无新版本/部署，保留最新冻结包，避免无恢复证据的重复失败上传。
+未来有应用变更时先读Sites技能，用原生source helper打开同项目，凭证只放内存/隐藏stdin。原件ref当前 `b8eac29b77eebf12103f0f5174d41c73744a3ba3`；5996原件=578随包+5418同源流式远端，10受限副本/别名排除。一般光栅预算4MiB，保留既有2公共海报，不修改原字节。UDTT源码守卫现36项，有变更须独立复核精确hash，不放宽扫描。
 
-## 复制给下一台电脑
+核对完整TAR、所有构建字节、hosting/23迁移及原件后save同SHA同包，再deploy返回version_id；未明结果先查状态，不重复发布。正式成功后验证受影响布局、来源/原图流程及个人字段完整hash；不记录具体私人评分/备注。GitHub提交与Sites部署分别记录。
 
-请接续GitHub项目https://github.com/KAtOReNA7/idol。PR43已合入main，后续只从最新main开始，不再接续旧任务或逐团分支。
+## 可复制指令
 
-先检查并保护本地未提交和未跟踪文件，显式fetch origin/main；工作树干净后从origin/main建立新的codex/任务分支。尚未克隆则先克隆main。禁止reset、clean、强推，不重复合并PR43或辅助资产分支。
+请接续 https://github.com/KAtOReNA7/idol 的最新 `codex/statistics-relations-followup-20261027` / PR44。PR43已合main，但PR44尚未合；先保护本地未提交/未跟踪文件，显式fetch main及任务分支并核对PR状态。未合并时接续最新任务分支；已合并才从包含本轮成果的最新main建codex/分支。不要reset、clean或强推。
 
-依次阅读docs/codex/NEXT-COMPUTER-HANDOFF.md、AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md、docs/codex/mainline-consolidation-20261026.md、docs/codex/mainline-identity-merge-20261027.md，然后核对选图政策与完成报告。
-
-正式工程apps/idol-site/，根目录是旧sandbox。正式站https://idol-lens-private.wuke40758.chatgpt.site/已上线v191。当前2828认人图绑定、628封面，现有关系缺图0、旧低清0；原871全部解决，A–Y补图及Z提质禁止重复。优先同套概念/封套照，官方和可追溯民间具名图集均可；保留完整原图，不猜脸、不放大或生成补脸，来源标签如实。
-
-保持51团已确认设计、Apple Music主站、稳定ID/关系、个人评分/备注/观看记录、现有访问权限和owner保存鉴权。18项未知统计与133个无既有成员关系作品仍待核实，不能推定全员或伪造数据；个人页统一排版待用户另行决定。
-
-先简短核对最新main与正式站状态，再继续实际工作。GitHub提交与正式站部署分别记录，不重复部署相同内容，不使用旧P包；未来发布按当前4MiB一般光栅预算及完整包/原件哈希校验流程执行。
+先读docs/codex/NEXT-COMPUTER-HANDOFF.md、根AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md，再按交接读取最新报告与选图政策。正式工程apps/idol-site/，正式站https://idol-lens-private.wuke40758.chatgpt.site/已上线v195。2828公共图片绑定+12原生图无缺图，632封面，A–Y/Z禁止重做。38作品244公开资料人次、88作品待证；17未知统计、2销量分歧、123舞台待核及7事实hold仍开放。保持设计、完整原图、ID/关系、个人数据、现有访问与owner鉴权；个人页统一排版待决定。先简短核对远端与线上，再继续证据补全；候选、GitHub提交与正式部署分别记录。

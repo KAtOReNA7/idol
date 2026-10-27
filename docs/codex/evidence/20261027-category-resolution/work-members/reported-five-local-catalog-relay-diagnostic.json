@@ -1,0 +1,120 @@
+{
+  "base": "http://127.0.0.1:4261",
+  "liveApiRelay": {
+    "origin": "https://idol-lens-private.wuke40758.chatgpt.site",
+    "mode": "anonymous GET only; freshly fetched per request; no saved fixture",
+    "responses": [
+      {
+        "url": "https://idol-lens-private.wuke40758.chatgpt.site/api/catalog?artist=atheart&shape=display-v1",
+        "status": 200,
+        "bytes": 12118,
+        "sha256": "7fb3b1732098aae5dff6729332b426e7436afe4eb829949236abe18341dbe160",
+        "fetchedAt": "2026-10-27T16:06:42.607Z"
+      },
+      {
+        "url": "https://idol-lens-private.wuke40758.chatgpt.site/api/catalog?artist=udtt&shape=display-v1",
+        "status": 200,
+        "bytes": 7351,
+        "sha256": "98049a877369e61e0fec7d179f0f601d42d1f4c8cbc77423a2677f955892bec5",
+        "fetchedAt": "2026-10-27T16:06:44.501Z"
+      },
+      {
+        "url": "https://idol-lens-private.wuke40758.chatgpt.site/api/editorial-assets/viewer",
+        "status": 200,
+        "bytes": 3865,
+        "sha256": "a131099231c96248f4fb97a96a51eea6abf5ec596a7d7fdfaa4d39a27b431423",
+        "fetchedAt": "2026-10-27T16:06:48.764Z"
+      }
+    ]
+  },
+  "checkedAt": "2026-10-27T16:06:36.572Z",
+  "browser": "Playwright Chrome; Browser plugin not available",
+  "dataMode": "fresh anonymous browser; actual catalog and viewer endpoints; no fixture, login or private save",
+  "layouts": [
+    {
+      "slug": "atheart",
+      "width": 390,
+      "url": "http://127.0.0.1:4261/artists/atheart?section=updates",
+      "title": "stage. · 私人女团手帐",
+      "records": [
+        {
+          "eventId": "e-atheart-aurora-hiatus-observed",
+          "recordDate": "2026-03-13",
+          "effectiveDateUnconfirmed": true,
+          "links": [
+            {
+              "href": "https://m.nocutnews.co.kr/news/amp/6484186",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null
+            }
+          ]
+        },
+        {
+          "eventId": "e-atheart-aurora-second-hiatus-announcement",
+          "recordDate": "2026-08-18",
+          "effectiveDateUnconfirmed": true,
+          "links": [
+            {
+              "href": "https://www.soompi.com/article/1863734wpp/athearts-aurora-to-go-on-hiatus-due-to-health-just-2-months-after-return",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null
+            }
+          ]
+        }
+      ],
+      "panelWidth": 315,
+      "panelScrollWidth": 315,
+      "viewport": 390,
+      "documentScrollWidth": 390,
+      "overlay": false
+    }
+  ],
+  "links": [],
+  "guards": [],
+  "candy": [],
+  "failures": [
+    {
+      "active": "udtt@390",
+      "error": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-reported-timeline=\"udtt\"]') to be visible\u001b[22m\n"
+    }
+  ],
+  "console": [
+    {
+      "active": "udtt@390",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 502 (Bad Gateway)",
+      "url": "http://127.0.0.1:4261/api/media"
+    }
+  ],
+  "pageErrors": [],
+  "apiResponses": [
+    {
+      "active": "atheart@390",
+      "path": "/api/catalog",
+      "status": 200
+    },
+    {
+      "active": "udtt@390",
+      "path": "/api/catalog",
+      "status": 200
+    },
+    {
+      "active": "udtt@390",
+      "path": "/api/editorial-assets/viewer",
+      "status": 200
+    },
+    {
+      "active": "udtt@390",
+      "path": "/api/media",
+      "status": 502
+    }
+  ],
+  "applicationWrites": [],
+  "externalNavigationRequests": [],
+  "screenshots": [
+    "D:/porject/idol/.codex-local/category-qa/reported-five-local/atheart-390.png"
+  ],
+  "status": "issues"
+}

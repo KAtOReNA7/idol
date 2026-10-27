@@ -1,4 +1,16 @@
-# 接续：正式v194与报道时间轴续作
+# 接续：正式v195与资料补全
+
+## 最新已上线：v195；继续证据补全（2026-10-28）
+
+正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已为 **v195 / succeeded**。GitHub实现 `fdb7193052fb8caed7cc99f3d98b05afef20dacc`；Sites源 `2d8d23c8d04ce092ae82f7768a72a162cc0f352a`，部署 `appgdep_6ae0ceb763ec8191b583bee182827045`。继续 `codex/statistics-relations-followup-20261027` / [PR44](https://github.com/KAtOReNA7/idol/pull/44)，未合main。不要以旧main覆盖本分支；GitHub提交和正式部署分别记录。
+
+按用户选择，AtHeart2、BEWAVE1、CandyShop1、Geenius1、UDTT2共7项以报道/目录/转载记录展示，注明生效日期未确认；7个事实hold、稳定ID和5份canonical原文件保持。Sena仅为社区转载线索，原始发布日期未知。登录读取已恢复：用户本来已登录，旧浏览器连接及无cookie请求才是原因；同一Chrome新标签只读核对个人字段和关系完整hash与v194完全一致。未私人保存。
+
+151项定向测试、TypeScript、正式构建、1402文件完整包通过；本地/正式各15布局、8来源点击及2个UDTT来源守卫通过。native/epoch6/原快照/done206，public/1owner/0外部/0组及owner保存鉴权保持。详见 `docs/codex/timeline-reported-records-v195-20261028.md` 及其证据。
+
+当前38作品244人次公开资料；131原无关系作品=38有限公开资料+5无真人+88待证。88均已分类，86说明已读、2受阻，但未穷尽逐曲人物研究或全片核查。2828公共图片绑定+12原生图无缺图，632封面（628旧+4新舞台）；482已配舞台，123待证（57未找到/50版本不符/16受阻）及9歌曲身份占位，未完成全部候选核验。17未知统计（5X/9销量/3一位）、tripleS/fromis9两销量分歧仍开放。7项报道展示完成不等于原事实确认。
+
+继续寻找新的具名人物/精确版本及统计来源，研究记录独立于已发布计数；不得推定全员、虚构统计、重复A–Y/Z。51团设计、Apple Music主站、完整原图和个人数据保护；个人页统一排版待用户决定。未真实私人保存、全视频播放、原生缩放或新Figma；历史SSR失败和favicon404仍列出。以下旧章节只作历史，不能覆盖本节。
 
 ## 最新已上线：v194；报道时间轴续作中（2026-10-28）
 

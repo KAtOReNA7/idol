@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {photoSetLabels} from './import-mv-identity-batch.mjs';
 const evidence=JSON.parse(fs.readFileSync('../../docs/codex/mv-identity-asset-audit-20261025.json','utf8'));
 const safe=row=>{
- if(!/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026|batch-[nopqrstuv]-20261027)\/[\w./-]+$/.test(row.src)||row.src.includes('..'))throw Error('Invalid public asset path');
+ if(!/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026|batch-[nopqrstuvw]-20261027)\/[\w./-]+$/.test(row.src)||row.src.includes('..'))throw Error('Invalid public asset path');
  if(row.evidenceLevel==='source_named_photo_set'&&(!Object.hasOwn(photoSetLabels,row.kind)||row.label!==photoSetLabels[row.kind]))throw Error('Photo-set reference must not be labeled as an MV still');
  const bytes=fs.readFileSync('public'+row.src);
  if(createHash('sha256').update(bytes).digest('hex')!==row.sha256)throw Error('Original SHA changed: '+row.src);

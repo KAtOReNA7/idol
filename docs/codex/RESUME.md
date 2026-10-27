@@ -1,5 +1,12 @@
 # 接续：同套认人图持续补齐，本地2606绑定/222缺图
 
+## 当前续作：W新增73，本地2724绑定／104缺图（2026-10-27）
+
+Q–W本轮共593条已导入；原871补767、剩104。2724绑定/466作品/48团、628封面，A–W禁止重导。KISS OF LIFE、MEOVV、ITZY、WOOAH、MADEIN、ADYA、EVERGLOW、VVUP、IZ*ONE、LOONA现有缺口清零。最新`docs/codex/reports/20261027-gap-w/ledger.json`及`identity-gap-w-report-20261027.md`。30专项、TypeScript、三宽69布局/219新图及原图流程通过。
+
+Q–V本地提交、原件官方API逐文件上传进行中，GitHub任务分支尚未同步；正式站仍v190，603条待发布。UDTT4因远景人脸太小/偏暗暂缓，继续找清晰同套。保护既有设计、个人数据与权限；全部认人图完成前持续开发。
+
+
 ## 当前续作：V新增45，本地2651绑定／177缺图（2026-10-27）
 
 Q–V本轮共520条已导入；原871补694、剩177。2651绑定/447作品/48团、628封面；A–V禁止重导。Geenius、SPIA、BEWAVE、CandyShop、HITGS、QWER、ODD YOUTH、YOUNG POSSE现有缺口清零。最新`docs/codex/reports/20261027-gap-v/ledger.json`及`identity-gap-v-report-20261027.md`。30专项、三宽42布局/135新图及原图流程通过。

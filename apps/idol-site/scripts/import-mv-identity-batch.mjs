@@ -3,7 +3,7 @@
 import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const key=p=>[p.workId,p.videoId,p.memberId].join(':');
-export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026|batch-[nopqrst]-20261027)\/identities\/[\w.-]+$/;
+export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026|batch-[nopqrstu]-20261027)\/identities\/[\w.-]+$/;
 // Photo purpose, not official/fan authorship, controls the research order.
 // This does not replace already selected originals or change catalog bindings.
 export const identityPhotoPriority=Object.freeze({concept_photo:0,jacket_photo:0,portrait_photo:1,mv_behind_photo:2,mv_frame:3});

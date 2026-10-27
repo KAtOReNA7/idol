@@ -2,6 +2,16 @@
 
 正式工程为 `apps/idol-site/`。根目录旧sandbox不是发布工程。以本文件最新交付为准，保留后文列明的历史证据。
 
+## 最新选源决定：舞台采用打歌节目／练习室（2026-10-28）
+
+用户否决此前推荐的QWER `l9GLV8Kd-MU`、NewJeans `saY9KS7mKvI`、ITZY `BnmwjH-suLg`三个候选；所需现场版一般为音乐节目打歌或练习室，不要演唱会录像。新政策见 `docs/codex/stage-selection-policy-20261028.md`，覆盖旧“排除练习室／接受演唱会”的选源规定。三项只在研究建议，未绑定评分；旧研究保留但不得继续推荐。
+
+先核真实场合，不能因官方上传／电视转播就当普通打歌节目。演唱会／巡演退出候选，音乐节等活动不默认充当打歌来源；其他棚内表演单独核验类型。完整同曲、同语种／版本要求及原评分保护继续有效。图片来源放宽不适用于舞台录像。已有482选源数不等于新标准合格数，123旧缺口也不包含新查出的历史来源替换需求。
+
+IVE WAVE／CRUSH的Golden Wave活动与XG MILLION PLACES巡演需要寻找替代；XG HOWLING的Music Bank类型符合要求。已评分来源不可静默更换；替换前核owner原评分／绑定，空分数按原安全条件采用新来源。复筛报告 `docs/codex/stage-policy-review-20261028.md`，逐项清单 `docs/codex/evidence/20261028-stage-policy/`。
+
+本轮是用户标准记录与研究队列重排，未替换线上舞台或修改应用，正式站保持v196。运行时practice排除和concert接受逻辑仍须随后按本政策调整，不能将本轮报告写成已发布过滤修复。下方旧候选优先级不覆盖本决定。
+
 ## 最新审计：v196已发布，剩余问题已分类（2026-10-28）
 
 已显式fetch并核对：此前完成的应用修改均已推送任务分支，正式站仍为 **v196 / succeeded**；[PR44](https://github.com/KAtOReNA7/idol/pull/44) open/draft、未合main。审计起点 `e3f390d72d49a92184b6674b52e1c5b8c1d713f7` 与远端一致，正式应用目录与已发布实现 `ec13cce54daf3df0274f0fc1e9f86b17da554be7` 无差异。本轮只更新审计与交接文档，没有应用改动、私人写入或重复部署。
@@ -44,7 +54,7 @@ git status --short --untracked-files=all
 ## 阅读顺序
 
 1. 本文件、根 `AGENTS.md`、`docs/codex/STATUS.md`、`docs/codex/RESUME.md`。
-2. `docs/codex/current-gap-classification-20261028.md` 与 `evidence/20261028-current-audit/`，再看 `docs/codex/category-followup-v196-20261028.md`、`docs/codex/timeline-reported-records-v195-20261028.md`、`category-resolution-v194-20261027.md`、`category-resolution-20261027.md`。
+2. `docs/codex/stage-selection-policy-20261028.md` 与 `evidence/20261028-stage-policy/`，再看 `docs/codex/current-gap-classification-20261028.md` 与 `evidence/20261028-current-audit/`，再看 `docs/codex/category-followup-v196-20261028.md`、`docs/codex/timeline-reported-records-v195-20261028.md`、`category-resolution-v194-20261027.md`、`category-resolution-20261027.md`。
 3. 必要时查看 `docs/codex/current-gap-classification-20261027.md` 与 `evidence/20261027-category-resolution/work-members/README.md`；以10月28日审计的当前集合覆盖历史分类统计。
 4. `docs/codex/identity-photo-selection-policy-20261027.md`；必要时再看 `mainline-identity-merge-20261027.md` 与历史主线整理报告。
 
@@ -82,3 +92,5 @@ v193补齐26作品30空字段、公开资料与SUHYEON ZAP近景，处理5项时
 先读docs/codex/NEXT-COMPUTER-HANDOFF.md、根AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md，再按交接读取最新报告与选图政策。正式工程apps/idol-site/，正式站https://idol-lens-private.wuke40758.chatgpt.site/已上线v196。2828公共图片绑定+12原生图无缺图，628作品／展示视频封面另加4舞台海报，A–Y/Z禁止重做。42作品263公开资料人次、84作品待证；17未知统计、1销量分歧、123舞台待核及7事实hold仍开放。保持设计、完整原图、ID/关系、个人数据、现有访问与owner鉴权；个人页统一排版待决定。先简短核对远端与线上，再继续证据补全；候选、GitHub提交与正式部署分别记录。
 
 最新逐项路线以docs/codex/current-gap-classification-20261028.md及其证据目录为准。先修2项舞台标签及旧SSR测试43失败，再继续候选核验；Soridata路线已封禁，不再要求下载SQL。本轮审计没有应用变更，正式站保持v196。
+
+舞台新标准：优先音乐节目打歌或官方练习室；不采用演唱会。先读stage-selection-policy-20261028.md及新审计清单，撤回三个用户否决候选，重新检查已有来源；不能沿用旧24同版候选作为合格计数，不静默移动原评分。

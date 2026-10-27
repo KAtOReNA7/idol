@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28",
+  "scope": "Bounded replacement research after user restricted stage types. No app/private edits, binding, commit, deployment, or Soridata requests.",
+  "allowedTypes": [
+    "regular promotional music show",
+    "artist official complete single-song practice"
+  ],
+  "excludedTypes": [
+    "concert",
+    "festival",
+    "medley",
+    "excerpt"
+  ],
+  "userRejectedVideoIds": [
+    "l9GLV8Kd-MU",
+    "saY9KS7mKvI",
+    "BnmwjH-suLg"
+  ],
+  "searchQueryCount": 8,
+  "searchQueries": [
+    "QWER \"FAKE IDOL\" \"practice\"",
+    "뉴진스 \"Right Now\" \"Dance Practice\"",
+    "ITZY \"Not Shy\" \"English\" \"practice\" -BnmwjH-suLg",
+    "QWER \"가짜 아이돌\" \"음악중심\" OR \"뮤직뱅크\" OR \"인기가요\" OR \"밴드 연습\"",
+    "QWER \"FAKE IDOL\" \"Band Practice\" OR \"M COUNTDOWN\" OR \"THE SHOW\"",
+    "ITZY \"Not Shy\" \"English Ver.\" \"Dance Practice\" site:youtube.com/watch",
+    "QWER 가짜아이돌 연습실 Band practice",
+    "ITZY Not Shy English version music show performance official"
+  ],
+  "reusedEvidenceFiles": [
+    "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+    "docs/codex/evidence/20261028-followup/stages/fresh-watch-metadata.json",
+    "docs/codex/evidence/20261028-followup/stages/targeted-search.json"
+  ],
+  "counts": {
+    "works": 3,
+    "newCandidateVideos": 2,
+    "worksWithNewCandidates": 1,
+    "reusedMusicShowLeads": 1,
+    "worksWithNoQualifyingReplacementFound": 2,
+    "adopted": 0,
+    "fullVideosWatched": 0,
+    "scoreChanges": 0
+  },
+  "records": [
+    {
+      "workId": "rec28ldfRTrF2E",
+      "song": "FAKE IDOL",
+      "artist": "QWER",
+      "queryIndexes": [
+        0,
+        3,
+        4,
+        6
+      ],
+      "status": "no_qualifying_replacement_found_in_bounded_search",
+      "newCandidates": [],
+      "rejectedOrExcluded": [
+        {
+          "videoId": "l9GLV8Kd-MU",
+          "reason": "user-rejected; festival reporter recording"
+        },
+        {
+          "videoId": "nnnu-1KYYGI",
+          "reason": "military entertainment event; not established regular promotional music show"
+        },
+        {
+          "videoId": "PkEl_Z9B2y4",
+          "reason": "two-song LIVE CLIP; not established complete single-song practice"
+        }
+      ],
+      "missingEvidence": [
+        "Eligible regular promotional music show or artist official full single-song practice original page",
+        "Exact version and complete performance evidence"
+      ],
+      "absenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5XHEju",
+      "song": "Right Now",
+      "artist": "NewJeans",
+      "queryIndexes": [
+        1
+      ],
+      "status": "two_new_official_practice_candidates_not_adopted",
+      "newCandidates": [
+        {
+          "videoId": "4xer6EPtYdw",
+          "url": "https://www.youtube.com/watch?v=4xer6EPtYdw",
+          "title": "NewJeans Right Now Dance Practice",
+          "publisher": "NewJeans",
+          "publishedDateFromSearchIndex": "2024-07-25",
+          "type": "artist_official_single_song_dance_practice_candidate",
+          "officialCorroboration": "https://weverse.io/newjeansofficial/media/0-145722292",
+          "officialPageAccess": "read",
+          "officialPageLinkedEmbed": "https://www.youtube.com/embed/4xer6EPtYdw",
+          "videoMetadataAccess": "search_index; direct watch failed or shell; embedded fetch throttled",
+          "durationSeconds": null,
+          "fullVideoWatched": false,
+          "audioLanguageVerified": false,
+          "exactVersionVerified": false,
+          "adopted": false,
+          "missingEvidence": [
+            "Actual sung language and arrangement",
+            "Continuous single-song start/end verification",
+            "Owner original-score source check before any binding"
+          ]
+        },
+        {
+          "videoId": "y4Tr8LE5yV4",
+          "url": "https://www.youtube.com/watch?v=y4Tr8LE5yV4",
+          "title": "NewJeans Right Now Dance Practice (Fix ver.)",
+          "publisher": "NewJeans",
+          "publishedDateFromSearchIndex": "2024-07-25",
+          "type": "artist_official_single_song_dance_practice_candidate",
+          "officialCorroboration": "https://weverse.io/newjeansofficial/media/3-172133538",
+          "officialPageAccess": "read",
+          "officialPageLinkedEmbed": "https://www.youtube.com/embed/y4Tr8LE5yV4",
+          "videoMetadataAccess": "search_index; direct watch failed or shell; embedded fetch throttled",
+          "durationSeconds": null,
+          "fullVideoWatched": false,
+          "audioLanguageVerified": false,
+          "exactVersionVerified": false,
+          "adopted": false,
+          "missingEvidence": [
+            "Actual sung language and arrangement",
+            "Continuous single-song start/end verification",
+            "Owner original-score source check before any binding"
+          ]
+        }
+      ],
+      "reusedCandidate": {
+        "videoId": "7XhRd6cVIyI",
+        "url": "https://www.youtube.com/watch?v=7XhRd6cVIyI",
+        "publisher": "KBS WORLD TV",
+        "type": "Music Bank regular music show",
+        "publishedDate": "2024-07-12",
+        "durationSeconds": 170,
+        "metadataEvidenceDate": "2026-10-27",
+        "metadataEvidenceFile": "docs/codex/evidence/20261028-followup/stages/fresh-watch-metadata.json",
+        "currentDirectAccess": "fetch_failed",
+        "audioLanguageVerified": false,
+        "fullVideoWatched": false,
+        "adopted": false
+      },
+      "rejectedOrExcluded": [
+        {
+          "videoId": "saY9KS7mKvI",
+          "reason": "user-rejected; festival and three-song medley"
+        }
+      ]
+    },
+    {
+      "workId": "recvxyOz5XmMQe",
+      "song": "Not Shy (English Ver.)",
+      "artist": "ITZY",
+      "queryIndexes": [
+        2,
+        5,
+        7
+      ],
+      "status": "no_qualifying_english_replacement_found_in_bounded_search",
+      "newCandidates": [],
+      "rejectedOrExcluded": [
+        {
+          "videoId": "BnmwjH-suLg",
+          "reason": "user-rejected; multi-song MTV arrangement; English not established"
+        },
+        {
+          "videoId": "VTPdXVtPwvM",
+          "reason": "existing search evidence identifies uploader K-POP FMVS, not artist official; English title does not prove original performance"
+        },
+        {
+          "videoId": "9mmSBbQ68ZE",
+          "url": "https://www.youtube.com/watch?v=9mmSBbQ68ZE",
+          "reason": "new search index identifies End of 2020 Seoul Music Awards practice, not established regular show/full single song; promotional English album links do not establish audio language"
+        },
+        {
+          "videoId": "WZnd05f8GfI",
+          "url": "https://www.youtube.com/watch?v=WZnd05f8GfI",
+          "reason": "official English audio search result; not stage evidence"
+        }
+      ],
+      "releaseContextOnly": {
+        "url": "https://itzy.jype.com/discography/sz8bsnas?AmSeq=undefined&PgIndex=undefined",
+        "access": "search_index_only",
+        "supports": "English release existence; no stage claim"
+      },
+      "missingEvidence": [
+        "Exact English audio",
+        "Eligible official complete single-song practice or regular promotional music show",
+        "Full performance boundaries"
+      ],
+      "absenceClaim": false
+    }
+  ],
+  "limits": [
+    "No search hit does not prove no eligible video exists.",
+    "Source/title corroboration is not complete playback or language verification.",
+    "Do not ask user to re-review rejected videos."
+  ]
+}

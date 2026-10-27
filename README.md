@@ -2,14 +2,14 @@
 
 正式工程是 [`apps/idol-site/`](apps/idol-site/)，当前接续基线是远端最新 `main`。先检查并保护本地修改，显式 fetch，再从 `origin/main` 创建新的 `codex/` 任务分支。根目录 Next sandbox 与 `handoffs/` 中冻结候选只保留历史，不用于覆盖正式站。
 
-正式站 [Idol Lens](https://idol-lens-private.wuke40758.chatgpt.site/) 已上线 **v190**。现2121认人图绑定、628封面，仍有707缺图、43旧低清和18未知统计；A–M批已导入。51团已确认视觉、原图、稳定ID、个人数据和owner保存鉴权保持。GitHub合并不等于重新部署。
+正式站 [Idol Lens](https://idol-lens-private.wuke40758.chatgpt.site/) 已上线 **v190**。线上2121认人图绑定/707缺图；N候选已推送，仓库2122绑定/706缺图、628封面，A–N已导入。N在Sites文件上传层超时，尚未上线；43旧低清和18未知统计仍开放。51团已确认视觉、原图、稳定ID、个人数据和owner保存鉴权保持。GitHub合并不等于重新部署。
 
 ## 接续与整理记录
 
 - [跨电脑快速接续](docs/codex/NEXT-COMPUTER-HANDOFF.md)
 - [当前状态](docs/codex/STATUS.md) · [下一步](docs/codex/RESUME.md) · [首次执行](docs/codex/CODEX-FIRST-RUN.md)
 - [主线整理报告](docs/codex/mainline-consolidation-20261026.md) · [全部分支SHA与处理方式](docs/codex/mainline-branch-inventory-20261026.json)
-- [M批完整报告](docs/codex/identity-gap-m-report-20261026.md) · [707缺图的逐条清单](docs/codex/reports/20261026-gap-m/ledger.html)
+- [N批完整报告](docs/codex/identity-gap-n-report-20261027.md) · [706缺图的逐条清单](docs/codex/reports/20261027-gap-n/ledger.html)
 - [多电脑协作](docs/codex/AGENTS-MULTI-MACHINE.md) · [协作入口](AGENTS.md)
 
 旧逐团PR和分支已完成内容统一进入主线；独立旧沙盒照片共识与Sol交接分支保留待评估。已合分支使用 `archive/20261026/<原分支名>` tag保留原HEAD，可按清单恢复。历史的待验收/未合main/旧版本描述不覆盖当前状态。

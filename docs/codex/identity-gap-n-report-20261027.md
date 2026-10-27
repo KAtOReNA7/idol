@@ -24,4 +24,10 @@
 
 完整871逐项清单已更新为 `reports/20261027-gap-n/ledger.json`（另有HTML、CSV），706条开放tuple集合与主审计一致。51团已确认设计、Apple Music主站、个人页编排、私人记录、访问权限与owner保存鉴权没有产品变更。
 
-GitHub与正式站发布独立记录，当前仍在执行发布验证。正式站开工基线v190；最终版本/部署结果在本节与交接文件补记。真实私人记录保存、全视频播放、原生缩放、新Figma及用户IAB未验。
+GitHub与正式站发布独立记录。实现/原图提交 `593c32634bbf6d567c3438c0c1a9b47de2f87b70`、清单提交 `526f63b59df9aa66990c086b74b30bafd7ef42d5` 已推送，[草稿PR43](https://github.com/KAtOReNA7/idol/pull/43)目标main，尚未合并。N原图在固定GitHub地址HTTP200，872,917 bytes与SHA均一致。
+
+**正式站仍v190，N未上线。** 同一正式项目候选源 `5e00cd94933a1c84f9eb7299a7127977f601f644` 已构建、推送并打包；完整TAR62,303,744 bytes/1417文件逐字节通过，601随包资源/4887远端原图/受限10项/hosting和23迁移文件校验通过。5487条旧交付记录原字节、SHA和交付方式保持。
+
+单次 `save_site_version` 在文件blob上传到 `sdmntprwestus3.oaiusercontent.com` 时300,013ms超时（request id `cdd14a40-002d-4a4d-86fa-9c85a62689de`），没有返回新版本或部署ID；随后原生get_site与list_site_versions确认最新仍190。停止同路径重复上传，保留完整源和包，未绕过archive或改动受众。公开目录51团/338成员/614作品/2845关系的全部投影字段指纹、原生epoch6/原快照/done206、public/1owner/0外部/0组保持。没有新部署，所以本轮没有执行N线上页面/原图验收，也不能将GitHub图片可读写成正式站已更新。
+
+其他ILLIT/ITZY研究分工本轮没有取得可验收文件，未计候选或完成数量。真实私人记录保存、全视频播放、原生缩放、新Figma及用户IAB未验。跨电脑接续指令已更新，明确PR43未合并时须在新的main任务分支纳入N，防止重复补图或覆盖候选源。

@@ -13,9 +13,11 @@
   ],
   "currentAuditSha256": "f640949891cb499e26ef77609be68de7d29b72220e9c3c2a074421f9ec64b329",
   "release": {
-    "status": "pending",
+    "status": "blocked_archive_upload",
     "baseVersion": 190,
-    "url": "https://idol-lens-private.wuke40758.chatgpt.site/"
+    "url": "https://idol-lens-private.wuke40758.chatgpt.site/",
+    "candidateSourceCommit": "5e00cd94933a1c84f9eb7299a7127977f601f644",
+    "reason": "文件blob上传300秒超时；无新版本或部署ID，正式站仍v190。"
   },
   "categories": [
     {
@@ -6533,9 +6535,10 @@
       "secondaryDetails": [],
       "status": "resolved",
       "validationStage": "N批已导入；发布状态见release字段",
-      "problemEvidence": "具名来源、精确MV版本、完整原件及实际3:4已逐项复核；详见本条resolution。",
+      "problemEvidence": "官方具名MV预告帖有两张图片；旧流程只取到裁切额头的首图，本次核验第二张3001×2000完整原图并补入。",
       "steps": [
-        "保留完整原件、具名证据与裁切元数据；源画面限制在逐条qualityNotes披露。"
+        "读取官方帖完整图片列表，不以首图失败推定整帖无可用图。",
+        "第二张原图字节/SHA和1140×1520显示裁切已核验；正式发布受blob上传超时阻塞。"
       ],
       "acceptanceCriteria": [
         "保持既有 workId / videoId / memberId / ratingId，不推定出镜或增删评分关系。",
@@ -6555,7 +6558,7 @@
       "evidenceFile": "evidence-inventory.json",
       "previousPrimaryCategory": "obscured_composition",
       "previousProblemEvidence": "STELLA / 1VqxWNwgf5Q：8 位官方 MV TEASER IMAGE 原图已读取，其中 7 位通过；STELLA 原图额头与眼睛上缘被裁断，不能靠再次裁切恢复。",
-      "detailedProblem": "resolved_by_N_reviewed_named_exact_mv_source",
+      "detailedProblem": "resolved_official_multi_image_post_later_photo_not_enumerated",
       "researchEvidenceFile": "research-followup.json",
       "researchExhausted": false,
       "researchEvidence": "docs/codex/reports/20261027-gap-n/",
@@ -6568,7 +6571,9 @@
         "qualityNotes": [
           "Full original and actual 1140x1520 display crop reviewed; complete crown, both eyes, nose, mouth and chin retained. No second face or caption overlay.",
           "Original intentional photographic softness, grain and bright beach treatment retained, without sharpening, upscaling, recompression or generated pixels."
-        ]
+        ],
+        "sourcePhotoIndex": 2,
+        "sourcePhotoCount": 2
       }
     },
     {

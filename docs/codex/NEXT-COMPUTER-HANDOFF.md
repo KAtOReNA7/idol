@@ -2,6 +2,18 @@
 
 正式工程为 `apps/idol-site/`。根目录旧sandbox不是发布工程。以本文件最新交付为准，保留后文列明的历史证据。
 
+## 最新审计：v196已发布，剩余问题已分类（2026-10-28）
+
+已显式fetch并核对：此前完成的应用修改均已推送任务分支，正式站仍为 **v196 / succeeded**；[PR44](https://github.com/KAtOReNA7/idol/pull/44) open/draft、未合main。审计起点 `e3f390d72d49a92184b6674b52e1c5b8c1d713f7` 与远端一致，正式应用目录与已发布实现 `ec13cce54daf3df0274f0fc1e9f86b17da554be7` 无差异。本轮只更新审计与交接文档，没有应用改动、私人写入或重复部署。
+
+当前匿名线上结构：51团、338成员上下文、605具名作品和9历史占位。2840有效关系＝2828公共图片绑定＋12原生有图，既有关系缺图0；628作品／展示视频封面另加4舞台海报，具名作品日期／标题／频道空值0。5双端空关系行保留。结构覆盖不等于本轮全量图片目视／下载检查，A–Y/Z不重做。
+
+剩余84作品人物证据按9类处理，123未匹配舞台按24同版只读候选／6版本未证／36仅别版节选／6观看线索／51无有用补充处理；17统计未知（X5／销量9／一位3）及tripleS销量差371,716仍开放，7时间轴报道已展示、原事实生效日未证。各维度重叠，不相加成总缺失作品数。个人页统一排版仍待用户决定。
+
+新发现2项应用标签待修：IVE I WANT的TVDaily来源应为原始媒体；NewJeans Right Now的韩语别版推断证据不足。旧时间轴SSR测试实测52项9过43失败，须逐项区分夹具与实际问题。favicon匿名HEAD为403，当前浏览器404未确认。tripleS年榜、三舞台及Caution幕后已有新候选，但均未应用。Soridata下载与验证码均被封禁，停止请求，不要求用户下载SQL，改查Circle年榜与可核转录。
+
+完整报告 `docs/codex/current-gap-classification-20261028.md`，逐项清单及校验回执 `docs/codex/evidence/20261028-current-audit/`；离线复算 `python docs/codex/scripts/verify-current-audit-20261028.py`。下一步先修两项标签与旧SSR回归，再按证据队列补充；保护51团设计、完整原图、稳定ID／关系、个人记录、访问与owner鉴权。下方较早统计及Soridata下载建议不覆盖本节。
+
 ## 最新已上线：v196；公开署名与销量校正（2026-10-28）
 
 正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已为 **v196 / succeeded**。GitHub实现 `ec13cce54daf3df0274f0fc1e9f86b17da554be7`；Sites源 `2d41b09d477112e65f72536cdeea2791ac9b3bf8`，部署 `appgdep_6ae0d4e45eac8191bf38dc9358b358d0`。继续 `codex/statistics-relations-followup-20261027` / [PR44](https://github.com/KAtOReNA7/idol/pull/44)，未合main。GitHub与正式部署分别记录。
@@ -32,8 +44,8 @@ git status --short --untracked-files=all
 ## 阅读顺序
 
 1. 本文件、根 `AGENTS.md`、`docs/codex/STATUS.md`、`docs/codex/RESUME.md`。
-2. `docs/codex/category-followup-v196-20261028.md`、`docs/codex/timeline-reported-records-v195-20261028.md`、`category-resolution-v194-20261027.md`、`category-resolution-20261027.md`。
-3. `docs/codex/current-gap-classification-20261027.md` 与 `evidence/20261027-category-resolution/work-members/README.md`，以v196当前数字覆盖历史分类统计。
+2. `docs/codex/current-gap-classification-20261028.md` 与 `evidence/20261028-current-audit/`，再看 `docs/codex/category-followup-v196-20261028.md`、`docs/codex/timeline-reported-records-v195-20261028.md`、`category-resolution-v194-20261027.md`、`category-resolution-20261027.md`。
+3. 必要时查看 `docs/codex/current-gap-classification-20261027.md` 与 `evidence/20261027-category-resolution/work-members/README.md`；以10月28日审计的当前集合覆盖历史分类统计。
 4. `docs/codex/identity-photo-selection-policy-20261027.md`；必要时再看 `mainline-identity-merge-20261027.md` 与历史主线整理报告。
 
 ## 已完成与保护项
@@ -44,6 +56,8 @@ v193补齐26作品30空字段、公开资料与SUHYEON ZAP近景，处理5项时
 
 ## 下一步
 
+- 先修IVE I WANT原始媒体标签与Right Now未证版本断言，保留观看／评分边界；维护旧SSR测试52项中的43个失败，不预设全部为夹具问题。
+- 新候选：tripleS Performante Cosmo年榜替换净增2,415待审核，ASSEMBLE25 Cosmo净增2,751仍须消歧月行；QWER FAKE IDOL、Right Now、Not Shy English和NMIXX Caution幕后见10月28日逐项清单，均未应用。
 - 17未知统计与1销量分歧：只采用可溯源、口径明确、可复算数据。未知内部null，适用显示0；0/未知X隐藏，无账号另行省略。未知X账号存在，不把未知人数误写为没有账号。
 - 84待核作品：已有说明读取和格式分类，但人物证据并未全面完成。优先具名幕后、制作字幕、采访和明确录音/发行阵容；公开资料独立于私人关系，不自动推全员。
 - 123舞台：已刷新搜索，部分候选深查；继续精确歌曲/语种/版本核对。新绑定前只读核对原stage与stageScore，未知原评分对应版本不能随意重绑。四已授权绑定不重复。
@@ -65,4 +79,6 @@ v193补齐26作品30空字段、公开资料与SUHYEON ZAP近景，处理5项时
 
 请接续 https://github.com/KAtOReNA7/idol 的最新 `codex/statistics-relations-followup-20261027` / PR44。PR43已合main，但PR44尚未合；先保护本地未提交/未跟踪文件，显式fetch main及任务分支并核对PR状态。未合并时接续最新任务分支；已合并才从包含本轮成果的最新main建codex/分支。不要reset、clean或强推。
 
-先读docs/codex/NEXT-COMPUTER-HANDOFF.md、根AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md，再按交接读取最新报告与选图政策。正式工程apps/idol-site/，正式站https://idol-lens-private.wuke40758.chatgpt.site/已上线v196。2828公共图片绑定+12原生图无缺图，632封面，A–Y/Z禁止重做。42作品263公开资料人次、84作品待证；17未知统计、1销量分歧、123舞台待核及7事实hold仍开放。保持设计、完整原图、ID/关系、个人数据、现有访问与owner鉴权；个人页统一排版待决定。先简短核对远端与线上，再继续证据补全；候选、GitHub提交与正式部署分别记录。
+先读docs/codex/NEXT-COMPUTER-HANDOFF.md、根AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md，再按交接读取最新报告与选图政策。正式工程apps/idol-site/，正式站https://idol-lens-private.wuke40758.chatgpt.site/已上线v196。2828公共图片绑定+12原生图无缺图，628作品／展示视频封面另加4舞台海报，A–Y/Z禁止重做。42作品263公开资料人次、84作品待证；17未知统计、1销量分歧、123舞台待核及7事实hold仍开放。保持设计、完整原图、ID/关系、个人数据、现有访问与owner鉴权；个人页统一排版待决定。先简短核对远端与线上，再继续证据补全；候选、GitHub提交与正式部署分别记录。
+
+最新逐项路线以docs/codex/current-gap-classification-20261028.md及其证据目录为准。先修2项舞台标签及旧SSR测试43失败，再继续候选核验；Soridata路线已封禁，不再要求下载SQL。本轮审计没有应用变更，正式站保持v196。

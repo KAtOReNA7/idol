@@ -1,0 +1,423 @@
+{
+  "checkedAt": "2026-10-28",
+  "command": "node --test tests/timeline-production.test.cjs",
+  "exitCode": 1,
+  "tests": 52,
+  "passed": 9,
+  "failed": 43,
+  "note": "Fresh rerun of legacy SSR suite; failure is not automatically proof of missing production data. No application sources modified.",
+  "logSha256": "411f4f33981adb4c8b84aee21137bf3821f04b8420e94483aed16cecfda5c298",
+  "failureDiagnostics": [
+    {
+      "test": "meovv: canonical byte hash, actual scoped identities and exact ready-only production rendering (17.3845ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "izna: canonical byte hash, actual scoped identities and exact ready-only production rendering (3.7241ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "triples: canonical byte hash, actual scoped identities and exact ready-only production rendering (39.7975ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "madein: canonical byte hash, actual scoped identities and exact ready-only production rendering (5.4198ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "ifeye: canonical byte hash, actual scoped identities and exact ready-only production rendering (2.5677ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "genblue: canonical byte hash, actual scoped identities and exact ready-only production rendering (3.9954ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "rescene: canonical byte hash, actual scoped identities and exact ready-only production rendering (5.9755ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "unis: canonical byte hash, actual scoped identities and exact ready-only production rendering (13.7868ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "badvillain: canonical byte hash, actual scoped identities and exact ready-only production rendering (3.9074ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "qwer: canonical byte hash, actual scoped identities and exact ready-only production rendering (6.5339ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "vvup: canonical byte hash, actual scoped identities and exact ready-only production rendering (5.8334ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "youngposse: canonical byte hash, actual scoped identities and exact ready-only production rendering (4.8062ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "bewave: canonical byte hash, actual scoped identities and exact ready-only production rendering (3.6317ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "candyshop: canonical byte hash, actual scoped identities and exact ready-only production rendering (3.9833ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "oddyouth: canonical byte hash, actual scoped identities and exact ready-only production rendering (4.4457ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "adya: canonical byte hash, actual scoped identities and exact ready-only production rendering (4.6284ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "geenius: canonical byte hash, actual scoped identities and exact ready-only production rendering (3.8083ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "tracer: canonical byte hash, actual scoped identities and exact ready-only production rendering (3.9139ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "witchx: canonical byte hash, actual scoped identities and exact ready-only production rendering (4.1085ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "spia: canonical byte hash, actual scoped identities and exact ready-only production rendering (4.1469ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "udtt: canonical byte hash, actual scoped identities and exact ready-only production rendering (1.7135ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "TypeError: Cannot read properties of null (reading '0')",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:64:79)"
+      ]
+    },
+    {
+      "test": "vcha: canonical byte hash, actual scoped identities and exact ready-only production rendering (5.7658ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "hitgs: canonical byte hash, actual scoped identities and exact ready-only production rendering (5.1956ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "atheart: canonical byte hash, actual scoped identities and exact ready-only production rendering (8.3947ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: actual page must render every accepted ready event and no other event",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:66:10)",
+        "actual: [ 'e-atheart-aurora-hiatus-observed', 'e-atheart-aurora-resume-announcement', 'e-atheart-aurora-second-hiatus-announcement', 'e-atheart-butterfly-doors-single', 'e-atheart-good-girl-predebut-digital-release', 'e-atheart-official-debut', 'e-atheart-plot-twist-english-digital-release', 'e-atheart-say-it-single', 'e-atheart-shut-up-single', 'e-atheart-three-four-single' ],",
+        "expected: [ 'e-atheart-aurora-resume-announcement', 'e-atheart-butterfly-doors-single', 'e-atheart-good-girl-predebut-digital-release', 'e-atheart-official-debut', 'e-atheart-plot-twist-english-digital-release', 'e-atheart-say-it-single', 'e-atheart-shut-up-single', 'e-atheart-three-four-single' ],"
+      ]
+    },
+    {
+      "test": "idle: canonical byte hash, actual scoped identities and exact ready-only production rendering (12.2221ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "izone: canonical byte hash, actual scoped identities and exact ready-only production rendering (7.5813ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "fromis9: canonical byte hash, actual scoped identities and exact ready-only production rendering (9.8534ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "loona: canonical byte hash, actual scoped identities and exact ready-only production rendering (1.5891ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.",
+        "at renderRoute (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:52:33)",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:63:14)"
+      ]
+    },
+    {
+      "test": "everglow: canonical byte hash, actual scoped identities and exact ready-only production rendering (6.3642ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "rocketpunch: canonical byte hash, actual scoped identities and exact ready-only production rendering (6.9587ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "cherrybullet: canonical byte hash, actual scoped identities and exact ready-only production rendering (5.0684ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "weeekly: canonical byte hash, actual scoped identities and exact ready-only production rendering (6.236ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "wooah: canonical byte hash, actual scoped identities and exact ready-only production rendering (7.3049ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: actual page must render every accepted ready event and no other event",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:66:10)",
+        "actual: [ 'e-wooah-blush-release', 'e-wooah-catch-the-stars-release', 'e-wooah-exclamation-music-release', 'e-wooah-formal-debut', 'e-wooah-joy-digital-release', 'e-wooah-pit-a-pat-release', 'e-wooah-qurious-release', 'e-wooah-shining-on-you-release', 'e-wooah-unframed-release', 'e-wooah-wish-release', 'e-wooah-wish-with-w-vol3-release', 'e-wooah-wxw-release' ],",
+        "expected: [ 'e-wooah-blush-release', 'e-wooah-catch-the-stars-release', 'e-wooah-exclamation-music-release', 'e-wooah-formal-debut', 'e-wooah-joy-cd-postponement', 'e-wooah-joy-digital-release', 'e-wooah-pit-a-pat-release', 'e-wooah-qurious-release', 'e-wooah-shining-on-you-release', 'e-wooah-unframed-comeback-live-announcement', 'e-wooah-unframed-release', 'e-wooah-wish-release', 'e-wooah-wish-with-w-vol3-release', 'e-wooah-wxw-release' ],"
+      ]
+    },
+    {
+      "test": "purplekiss: canonical byte hash, actual scoped identities and exact ready-only production rendering (7.6696ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "billlie: canonical byte hash, actual scoped identities and exact ready-only production rendering (1.7371ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.",
+        "at renderRoute (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:52:33)",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:63:14)"
+      ]
+    },
+    {
+      "test": "kep1er: canonical byte hash, actual scoped identities and exact ready-only production rendering (79.9659ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "newjeans: canonical byte hash, actual scoped identities and exact ready-only production rendering (8.3269ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "illit: canonical byte hash, actual scoped identities and exact ready-only production rendering (7.9178ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "ive: canonical byte hash, actual scoped identities and exact ready-only production rendering (3.9405ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "hearts2hearts: canonical byte hash, actual scoped identities and exact ready-only production rendering (3.3655ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "lesserafim: canonical byte hash, actual scoped identities and exact ready-only production rendering (5.2399ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /发行第四张迷你专辑《CRAZY》/. Input:",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:79:114)",
+        "actual: '<section class=\"artist-timeline\" aria-label=\"大事时间轴\"><ol class=\"at-list\"><li data-timeline-event-type=\"notice\" data-timeline-visual=\"ordinary\"><span class=\"at-node at-node--ordinary\" aria-hidden=\"true\"><span class=\"at-node-dot\"></span></span><article class=\"at-event\" tabindex=\"-1\" data-timeline-event-id=\"e-lesserafim-source-new-group-announcement\" aria-labelledby=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-73-6f-75-72-63-65-2d-6e-65-77-2d-67-72-6f-75-70-2d-61-6e-6e-6f-75-6e-63-65-6d-65-6e-74\"><span class=\"at-event-kind\">公告</span><p class=\"at-when\"><time dateTime=\"2022-03-14\">2022 年 3 月 14 日</time></p><h3 id=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-73-6f-75-72-63-65-2d-6e-65-77-2d-67-72-6f-75-70-2d-61-6e-6e-6f-75-6e-63-65-6d-65-6e-74\">公布宫胁咲良、金采源签约SOURCE MUSIC</h3><div class=\"at-references\" aria-label=\"关联成员与作品\"><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-source-new-group-announcement\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHDMgU\">金采源</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-source-new-group-announcement\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHYJy3\">宫胁咲良</button></div></article></li><li data-timeline-event-type=\"notice\" data-timeline-visual=\"ordinary\"><span class=\"at-node at-node--ordinary\" aria-hidden=\"true\"><span class=\"at-node-dot\"></span></span><article class=\"at-event\" tabindex=\"-1\" data-timeline-event-id=\"e-lesserafim-six-member-lineup-announcement\" aria-labelledby=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-73-69-78-2d-6d-65-6d-62-65-72-2d-6c-69-6e-65-75-70-2d-61-6e-6e-6f-75-6e-63-65-6d-65-6e-74\"><span class=\"at-event-kind\">公告</span><p class=\"at-when\"><time dateTime=\"2022-04-13\">2022 年 4 月 13 日</time></p><h3 id=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-73-69-78-2d-6d-65-6d-62-65-72-2d-6c-69-6e-65-75-70-2d-61-6e-6e-6f-75-6e-63-65-6d-65-6e-74\">公布六人阵容及5月2日出道计划</h3><div class=\"at-references\" aria-label=\"关联成员与作品\"><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-six-member-lineup-announcement\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHDMgU\">金采源</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-six-member-lineup-announcement\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHYJy3\">宫胁咲良</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-six-member-lineup-announcement\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHubvD\">许允真</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-six-member-lineup-announcement\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHwF1x\">中村一叶</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-six-member-lineup-announcement\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHeqSw\">金佳览</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-six-member-lineup-announcement\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHKBAo\">洪恩采</button></div></article></li><li data-timeline-event-type=\"debut\" data-timeline-visual=\"debut\"><span class=\"at-node at-node--debut\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" focusable=\"false\"><path class=\"at-node-emphasis\" d=\"m12 2.5 2.9 6 6.6 1-4.8 4.6 1.1 6.6-5.8-3.1-5.8 3.1 1.1-6.6-4.8-4.6 6.6-1Z\"></path></svg></span><article class=\"at-event\" tabindex=\"-1\" data-timeline-event-id=\"e-lesserafim-formal-debut\" aria-labelledby=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-66-6f-72-6d-61-6c-2d-64-65-62-75-74\"><span class=\"at-event-kind\">出道</span><p class=\"at-when\"><time dateTime=\"2022-05-02\">2022 年 5 月 2 日</time></p><h3 id=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-66-6f-72-6d-61-6c-2d-64-65-62-75-74\">发行首张迷你专辑<span class=\"at-title-punctuation\">《</span>FEARLESS<span class=\"at-title-punctuation\">》</span>并正式出道</h3><div class=\"at-references\" aria-label=\"关联成员与作品\"><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-formal-debut\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHDMgU\">金采源</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-formal-debut\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHYJy3\">宫胁咲良</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-formal-debut\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHubvD\">许允真</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-formal-debut\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHwF1x\">中村一叶</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-formal-debut\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHeqSw\">金佳览</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-formal-debut\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHKBAo\">洪恩采</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-formal-debut\" data-timeline-target-kind=\"work\" data-timeline-target-id=\"recvxyOz5XwAaP\">FEARLESS</button></div></article></li><li data-timeline-event-type=\"hiatus\" data-timeline-visual=\"people\"><span class=\"at-node at-node--people\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" focusable=\"false\"><circle cx=\"12\" cy=\"7\" r=\"3.3\"></circle><path d=\"M5 21v-2a7 7 0 0 1 14 0v2M8 21h8\"></path></svg></span><article class=\"at-event\" tabindex=\"-1\" data-timeline-event-id=\"e-lesserafim-garam-hiatus\" aria-labelledby=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-67-61-72-61-6d-2d-68-69-61-74-75-73\"><span class=\"at-event-kind\">活动暂停</span><p class=\"at-when\"><time dateTime=\"2022-05-20\">2022 年 5 月 20 日</time></p><h3 id=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-67-61-72-61-6d-2d-68-69-61-74-75-73\">金佳览暂停活动，团体暂以五人活动</h3><div class=\"at-references\" aria-label=\"关联成员与作品\"><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-garam-hiatus\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHeqSw\">金佳览</button></div></article></li><li data-timeline-event-type=\"contract_end\" data-timeline-visual=\"people\"><span class=\"at-node at-node--people\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" focusable=\"false\"><circle cx=\"12\" cy=\"7\" r=\"3.3\"></circle><path d=\"M5 21v-2a7 7 0 0 1 14 0v2M8 21h8\"></path></svg></span><article class=\"at-event\" tabindex=\"-1\" data-timeline-event-id=\"e-lesserafim-garam-contract-announcement\" aria-labelledby=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-67-61-72-61-6d-2d-63-6f-6e-74-72-61-63-74-2d-61-6e-6e-6f-75-6e-63-65-6d-65-6e-74\"><span class=\"at-event-kind\">合约变动</span><p class=\"at-when\"><time dateTime=\"2022-07-20\">2022 年 7 月 20 日</time></p><h3 id=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-67-61-72-61-6d-2d-63-6f-6e-74-72-61-63-74-2d-61-6e-6e-6f-75-6e-63-65-6d-65-6e-74\">宣布金佳览离团并解约</h3><div class=\"at-references\" aria-label=\"关联成员与作品\"><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-garam-contract-announcement\" data-timeline-target-kind=\"member\" data-timeline-target-id=\"recvxyICzHeqSw\">金佳览</button></div></article></li><li data-timeline-event-type=\"release\" data-timeline-visual=\"release\"><span class=\"at-node at-node--release\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle><path class=\"at-node-accent\" d=\"M12 6a6 6 0 0 1 6 6M6 12a6 6 0 0 0 6 6\"></path></svg></span><article class=\"at-event\" tabindex=\"-1\" data-timeline-event-id=\"e-lesserafim-antifragile\" aria-labelledby=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-61-6e-74-69-66-72-61-67-69-6c-65\"><span class=\"at-event-kind\">音乐发行</span><p class=\"at-when\"><time dateTime=\"2022-10-17\">2022 年 10 月 17 日</time></p><h3 id=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-61-6e-74-69-66-72-61-67-69-6c-65\">第二张迷你专辑<span class=\"at-title-punctuation\">《</span>ANTIFRAGILE<span class=\"at-title-punctuation\">》</span>发行</h3><div class=\"at-references\" aria-label=\"关联成员与作品\"><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-antifragile\" data-timeline-target-kind=\"work\" data-timeline-target-id=\"recvxyOz5XnR7U\">ANTIFRAGILE</button><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-antifragile\" data-timeline-target-kind=\"work\" data-timeline-target-id=\"recvxyOz5XaetA\">Impurities</button></div></article></li><li data-timeline-event-type=\"release\" data-timeline-visual=\"release\"><span class=\"at-node at-node--release\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle><path class=\"at-node-accent\" d=\"M12 6a6 6 0 0 1 6 6M6 12a6 6 0 0 0 6 6\"></path></svg></span><article class=\"at-event\" tabindex=\"-1\" data-timeline-event-id=\"e-lesserafim-fearless-japan\" aria-labelledby=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-66-65-61-72-6c-65-73-73-2d-6a-61-70-61-6e\"><span class=\"at-event-kind\">音乐发行</span><p class=\"at-when\"><time dateTime=\"2023-01-25\">2023 年 1 月 25 日</time></p><h3 id=\"_R_jd_-event-65-2d-6c-65-73-73-65-72-61-66-69-6d-2d-66-65-61-72-6c-65-73-73-2d-6a-61-70-61-6e\">日本出道单曲<span class=\"at-title-punctuation\">《</span>FEARLESS<span class=\"at-title-punctuation\">》</span>发行</h3><div class=\"at-references\" aria-label=\"关联成员与作品\"><button type=\"button\" data-timeline-event-trigger=\"e-lesserafim-fearless-japan\" data-timeline-target-kind=\"work\" data-timeline-target-id=\"recvxyOz5X7Tw7\">FEARLESS (Japanese Ver.)</button></div></article></li><li data-timeline-event-type=\"release\" data-timeline-visual=\"release\"><span class=\"at-node at-node--release\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle><path class=\"at-node-accent\" d=\"M12 6a6 6 0 0 1 6 6M6 12a6 6 0 0 0 6 6\"></path></svg></span><article class=\"at-event\" tabindex=\"-1\" data-timeline-event-id=\"e-lesserafim-unforgiven\" aria-labelledby=\"_R_jd_-event'... 19251 more characters,",
+        "expected: /发行第四张迷你专辑《CRAZY》/,"
+      ]
+    },
+    {
+      "test": "saymyname: canonical byte hash, actual scoped identities and exact ready-only production rendering (3.7395ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:16:29",
+        "AssertionError [ERR_ASSERTION]: one visible timeline heading",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:70:10)",
+        "actual: 0,",
+        "expected: 1,"
+      ]
+    },
+    {
+      "test": "D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs (0.2032ms)",
+      "diagnostics": [
+        "test at tests\\timeline-production.test.cjs:84:6",
+        "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+        "at TestContext.<anonymous> (D:\\porject\\idol\\apps\\idol-site\\tests\\timeline-production.test.cjs:84:57)",
+        "actual: 149,",
+        "expected: 616,"
+      ]
+    }
+  ],
+  "diagnosticGroups": {
+    "AssertionError [ERR_ASSERTION]: one visible timeline heading": 24,
+    "TypeError: Cannot read properties of null (reading '0')": 13,
+    "AssertionError [ERR_ASSERTION]: actual page must render every accepted ready event and no other event": 2,
+    "Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.": 2,
+    "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /发行第四张迷你专辑《CRAZY》/. Input:": 1,
+    "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:": 1
+  },
+  "interpretation": "Failures include obsolete fixed heading/section selectors and a total counter after earlier per-group failures. Keep canonical byte hashes, IDs, held-event exclusion and navigation assertions; adapt route-specific renderer fixtures instead of weakening checks. Not all failures are independently proven fixture-only."
+}

@@ -23,10 +23,10 @@ test('same-song alternate video or an unbound member cannot receive the portrait
 test('one failed original prevents partial application; duplicated tuples and traversal are rejected',()=>{const source=fixture(),before=structuredClone(source);assert.throws(()=>planIdentityBatch(source,[{identityImages:[row]}],()=>{throw Error('Original SHA changed');}),/Original SHA/);assert.deepEqual(source,before);assert.throws(()=>planIdentityBatch(source,[{identityImages:[row,row]}],()=>{}),/Duplicate/);assert.throws(()=>planIdentityBatch(source,[{identityImages:[{...row,src:'/artist/mv-identity-batch-a-20261026/identities/../test.jpg'}]}],()=>{}),/Invalid public/);});
 test('pending concept provenance and out-of-frame crops cannot silently enter the public runtime',()=>{assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...row,evidenceLevel:'concept-photo-pending'}]}],()=>{}),/Unreviewed provenance/);assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...row,sourceCrop:{x:100,y:0,width:600,height:800}}]}],()=>{}),/Crop outside original/);});
 test('the batch cannot reduce missing counts by admitting card-only low-resolution candidates',()=>{assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...row,qualityTier:'card_only'}]}],()=>{}),/quality threshold/);});
-test('only reviewed A-M and the exact dated N/O/P/Q directories extend the original path boundary',()=>{
+test('only reviewed A-M and the exact dated N through T directories extend the original path boundary',()=>{
  for(const batch of ['d','e','f','g','h','i','j','k','l','m'])assert.equal(planIdentityBatch(fixture(),[{identityImages:[{...row,src:`/artist/mv-identity-batch-${batch}-20261026/identities/test.jpg`}]}],()=>{}).admitted.length,1);
- for(const batch of ['n','o','p','q','r','s'])assert.equal(planIdentityBatch(fixture(),[{identityImages:[{...row,src:`/artist/mv-identity-batch-${batch}-20261027/identities/test.jpg`}]}],()=>{}).admitted.length,1);
- for(const src of ['/artist/mv-identity-batch-n-20261026/identities/test.jpg','/artist/mv-identity-batch-t-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261026/identities/nested/test.jpg','/artist/private/identities/test.jpg'])assert.equal(publicIdentityPath.test(src),false,src);
+ for(const batch of ['n','o','p','q','r','s','t'])assert.equal(planIdentityBatch(fixture(),[{identityImages:[{...row,src:`/artist/mv-identity-batch-${batch}-20261027/identities/test.jpg`}]}],()=>{}).admitted.length,1);
+ for(const src of ['/artist/mv-identity-batch-n-20261026/identities/test.jpg','/artist/mv-identity-batch-u-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261026/identities/nested/test.jpg','/artist/private/identities/test.jpg'])assert.equal(publicIdentityPath.test(src),false,src);
 });
 test('a high-resolution label cannot admit a small visible crop from a wide original',()=>{
  for(const change of [{width:736,height:491,sourceCrop:undefined},{width:539,height:1000,sourceCrop:undefined},{width:1200,height:1600,sourceCrop:{x:0,y:0,width:800,height:719}}]){
@@ -71,4 +71,11 @@ test('decoded frames retain native dimensions and require explicit name and vide
  assert.equal(planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{}).admitted.length,1);
  p.frameEvidence.timestampSeconds=14;
  assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{}),/explicit name/);
+});
+
+test('documented recognition-only sets do not need a fabricated release or era claim',()=>{
+ const p=photoSet();p.kind='portrait_photo';p.label=photoSetLabels.portrait_photo;p.photoSet.workAssociation='recognition_reference';p.photoSet.workAssociationEvidence='Named coherent group portrait set; no contemporaneous MV evidence found. Selected for recognition only after release-specific research.';
+ const before=fixture(),result=planIdentityBatch(before,[{identityImages:[p]}],()=>{});assert.equal(result.admitted.length,1);assert.equal(result.audit.personalRecord,before.personalRecord);assert.equal(result.audit.workCoverage[0].memberScoringDecision,'keep');assert.equal(result.admitted[0].photoSet.workAssociation,'recognition_reference');
+ p.photoSet.workAssociationEvidence='';assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{}),/provenance/);
+ p.photoSet.workAssociationEvidence='Recognition only';p.exactVideoEvidence={verified:true};assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[p]}],()=>{}),/truthful non-MV/);
 });

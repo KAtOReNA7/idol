@@ -3,7 +3,7 @@
 import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const key=p=>[p.workId,p.videoId,p.memberId].join(':');
-export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026|batch-[nopqrs]-20261027)\/identities\/[\w.-]+$/;
+export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026|batch-[nopqrst]-20261027)\/identities\/[\w.-]+$/;
 // Photo purpose, not official/fan authorship, controls the research order.
 // This does not replace already selected originals or change catalog bindings.
 export const identityPhotoPriority=Object.freeze({concept_photo:0,jacket_photo:0,portrait_photo:1,mv_behind_photo:2,mv_frame:3});
@@ -13,7 +13,7 @@ function verifyNamedPhotoSet(p){
  const s=p.photoSet,r=p.photoReview;
  const https=u=>{try{return new URL(u).protocol==='https:';}catch{return false;}};
  if(!Object.hasOwn(photoSetLabels,p.kind)||p.label!==photoSetLabels[p.kind]||p.identityBasis!=='source_named'||p.faceIdentityInferred!==false||p.preserveOriginal!==true||p.exactVideoEvidence)throw Error('Photo-set reference must retain named identity and truthful non-MV labeling');
- if(!s?.id?.trim()||!s.title?.trim()||!https(s.sourcePageUrl)||!s.sourceMemberName?.trim()||!s.nameEvidence?.trim()||!s.seriesEvidence?.trim()||!s.workAssociationEvidence?.trim()||!['same_release','same_era'].includes(s.workAssociation)||!['official','fan','media'].includes(s.publisherKind)||s.purpose!=='recognition_reference')throw Error('Missing named photo-set provenance');
+ if(!s?.id?.trim()||!s.title?.trim()||!https(s.sourcePageUrl)||!s.sourceMemberName?.trim()||!s.nameEvidence?.trim()||!s.seriesEvidence?.trim()||!s.workAssociationEvidence?.trim()||!['same_release','same_era','recognition_reference'].includes(s.workAssociation)||!['official','fan','media'].includes(s.publisherKind)||s.purpose!=='recognition_reference')throw Error('Missing named photo-set provenance');
  if(!r||r.reviewed!==true||r.naturalExpression!==true||r.faceClear!==true||r.compositionComplete!==true||r.sameSetReviewed!==true||r.noUpscale!==true||p.actual3By4ContactSheetReviewed!==true)throw Error('Photo set needs actual clarity, expression, composition and series review');
 }
 export function batchReviewDate(rows){

@@ -42,8 +42,19 @@ test('every public credit requires matching stable work, group and exact video, 
  }
 });
 test('public evidence has no personal IDs or scores and preserves its limited credit kind',()=>{
- assert.deepEqual(credits.map(c=>[c.kind,c.memberIds.length]),[['partial_mv_participation',3],['official_recording_lineup',8],['named_artist_credit',2],['named_artist_credit',2]]);
+ assert.deepEqual(credits.slice(0,4).map(c=>[c.kind,c.memberIds.length]),[['partial_mv_participation',3],['official_recording_lineup',8],['named_artist_credit',2],['named_artist_credit',2]]);
  for(const row of credits){assert.equal(new Set(row.memberIds).size,row.memberIds.length);assert.ok(row.sourceUrl.startsWith('https://'));for(const key of ['ratingId','score','stylingScore','memory','notePrivate','photo'])assert.ok(!(key in row));}
+});
+
+test('researched tripleS credits resolve named people and preserve exact video versions',()=>{
+ const evidence=require('../../../docs/codex/evidence/20261027-statistics-relations/triples-credits.json').records;
+ const members=require('../data/snapshot.json').tables.members.records;
+ const names=new Map(members.map(m=>[m.recordId,m.fields.fld1jPwSAP]));
+ assert.equal(credits.length,16);assert.equal(evidence.length,13);
+ for(const e of evidence){const row=credits.find(c=>c.workId===e.workId);assert.equal(row.videoId,e.videoId);assert.deepEqual(row.memberIds.map(id=>names.get(id)),e.memberNames);assert.equal(row.sourceUrl,e.sourceUrl);assert.match(row.note,/不表示逐人 MV 出镜已核实/);}
+ const password=credits.find(c=>c.workId==='rec28ldfRTrOnV');assert.equal(password.sourceUrl,'https://news.joysound.com/article/638622');assert.ok(password.supportingUrls.includes('https://www.sonymusic.co.jp/artist/tripleS/info/576822'));
+ const cherry=credits.find(c=>c.workId==='rec28ldfRTrO2v');assert.equal(cherry.kind,'documented_project_lineup');assert.match(cherry.label,/民间/);
+ const ledger=require('../../../docs/codex/evidence/20261027-statistics-relations/unbound-work-ledger.json');assert.equal(ledger.records.length,133);assert.equal(new Set(ledger.records.map(r=>r.workId)).size,133);assert.equal(ledger.privateRelationsCreated,0);assert.equal(ledger.withLimitedPublicCredits,16);
 });
 test('public member works do not create editable ratings, duplicate existing relations or affect score means',()=>{
  for(const row of credits){const work=credited(row),memberId=row.memberIds[0],data={works:[work],ratings:[]},before=JSON.stringify(data);

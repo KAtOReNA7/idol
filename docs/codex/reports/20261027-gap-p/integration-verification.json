@@ -31,5 +31,23 @@
     "legacyMedia502": 15
   },
   "productionDeployment": "not_attempted",
-  "build": "pending"
+  "build": "passed",
+  "assetDeliveryTests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "immutableOriginals": {
+    "count": 5,
+    "httpBytesSha": "passed",
+    "publicRef": "25f63e605aee686bbdd37154084bd81546fd8a0c"
+  },
+  "assetDelivery": {
+    "oldRecordsPreserved": 5490,
+    "newOriginals": 5,
+    "local": 601,
+    "remote": 4894,
+    "restrictedExcluded": 10,
+    "generatedCopiesPrepared": true
+  },
+  "productionStateReadback": "site-state.json"
 }

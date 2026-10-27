@@ -3,7 +3,12 @@
 import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const key=p=>[p.workId,p.videoId,p.memberId].join(':');
-export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026)\/identities\/[\w.-]+$/;
+export const publicIdentityPath=/^\/artist\/mv-identity-(?:20261025|20261026|batch-[abcdefghijklm]-20261026|batch-n-20261027)\/identities\/[\w.-]+$/;
+export function batchReviewDate(rows){
+ const dates=[...new Set(rows.map(p=>p.checkedAt).filter(Boolean))];
+ if(rows.some(p=>!p.checkedAt)||dates.length!==1||!/^\d{4}-\d{2}-\d{2}$/.test(dates[0])||!Number.isFinite(Date.parse(dates[0]))||new Date(dates[0]).toISOString().slice(0,10)!==dates[0])throw Error('Batch needs one valid explicit review date');
+ return dates[0];
+}
 const visualEvidenceTypes=new Set(['source_named_frame_with_official_video_match','official_named_shoot_with_official_mv_set_match','official_named_shoot_with_official_mv_scene_match']);
 function verifyVisualVersionEvidence(p){
  if(!visualEvidenceTypes.has(p.evidenceLevel))return;
@@ -61,7 +66,10 @@ async function main(){
  const {audit,admitted}=planIdentityBatch(JSON.parse(bytes),deltas,p=>{const b=fs.readFileSync(path.join(root,'public',p.src));if(b.length!==p.byteLength||createHash('sha256').update(b).digest('hex')!==p.sha256)throw Error('Original SHA/bytes changed: '+p.src);const dims=imageSize(b);if(dims.width!==p.width||dims.height!==p.height)throw Error('Original dimensions differ: '+p.src);});
  // Retain the previous batch receipt when a later reviewed batch is applied.
  audit.batchHistory??=[];if(audit.batch20261026)audit.batchHistory.push(audit.batch20261026);
- audit.checkedAt='2026-10-26';audit.batch20261026={sources:files.map(p=>path.relative(path.resolve(root,'../..'),p).replaceAll('\\','/')),baseAuditSha256:baseSha,addedBindings:admitted.length,existingRelationshipsOnly:true,originalBytesPreserved:true};
+ const checkedAt=batchReviewDate(admitted);
+ // Retain the legacy receipt key for existing report readers; its date follows
+ // the reviewed rows rather than the original October 26 import session.
+ audit.checkedAt=checkedAt;audit.batch20261026={checkedAt,sources:files.map(p=>path.relative(path.resolve(root,'../..'),p).replaceAll('\\','/')),baseAuditSha256:baseSha,addedBindings:admitted.length,existingRelationshipsOnly:true,originalBytesPreserved:true};
  if(apply)fs.writeFileSync(auditPath,JSON.stringify(audit,null,2)+'\n');
  console.log(JSON.stringify({applied:apply,added:admitted.length,summary:audit.summary}));
 }

@@ -1,5 +1,17 @@
 # 项目协作入口
 
+## 最新已上线：v196；公开署名与销量校正（2026-10-28）
+
+正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已为 **v196 / succeeded**。GitHub实现 `ec13cce54daf3df0274f0fc1e9f86b17da554be7`；Sites源 `2d41b09d477112e65f72536cdeea2791ac9b3bf8`，部署 `appgdep_6ae0d4e45eac8191bf38dc9358b358d0`。继续 `codex/statistics-relations-followup-20261027` / [PR44](https://github.com/KAtOReNA7/idol/pull/44)，未合main。GitHub与正式部署分别记录。
+
+新增NMIXX FEIFEI六人、BADVILLAIN +82仅Emma、Weeekly Stranger六人、Rocket PunchドキドキLOVE六人公开资料，共4作品19人次；累计42作品263认人参考槽、123份既有原件，新增原图文件0。录音／发行名单不冒称逐人MV出镜；私人关系不新增。Stranger韩文9qRmlYPJB10经本人采访确认无真人，保留演唱者认人参考与MV评分、关闭成员评分，未独立完整播放。原5规则保持，另一上传版本不继承。
+
+fromis_9月榜与年榜差额已复算，1,151,613→1,152,076，净增463；39原月行和独立版本保留，不重复加总。仍为韩国Circle来源覆盖下界，不是全球累计。17未知统计与tripleS单项销量差异仍开放；可请用户手工完成Soridata公开SQL下载的人类验证码，数据可能辅助逐发行核对，不能保证覆盖全部差额。
+
+131原无关系作品中42公开署名与6无真人重叠1，去重47，剩84待证；不是既有关系缺图。2828公共绑定+12原生图无缺图、632封面保持；482舞台已配、123待核及9歌曲身份占位不变。7时间轴事实日期仍未证实，但报道展示已于v195完成。A–Y/Z不重做，个人页统一排版待用户决定。
+
+40定向测试、TypeScript、正式构建、1402文件完整包通过；实际owner个人字段与关系完整hash和v195一致，native/epoch6/原快照/done206、public/1owner/0外部/0组保持。详见 `docs/codex/category-followup-v196-20261028.md` 与 `evidence/20261028-followup/`。未真实私人保存、全视频播放、原生缩放或新Figma验收。下方v195及更早为历史。
+
 ## 最新已上线：v195；继续证据补全（2026-10-28）
 
 正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已为 **v195 / succeeded**。GitHub实现 `fdb7193052fb8caed7cc99f3d98b05afef20dacc`；Sites源 `2d8d23c8d04ce092ae82f7768a72a162cc0f352a`，部署 `appgdep_6ae0ceb763ec8191b583bee182827045`。继续 `codex/statistics-relations-followup-20261027` / [PR44](https://github.com/KAtOReNA7/idol/pull/44)，未合main。不要以旧main覆盖本分支；GitHub提交和正式部署分别记录。

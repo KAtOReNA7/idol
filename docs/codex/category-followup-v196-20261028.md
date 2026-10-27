@@ -1,6 +1,8 @@
 # 公开署名、认人参考与销量校正（2026-10-28）
 
-本文件记录 v195 之后的新增量。当前仍在验证，正式版本、GitHub SHA 与发布结果将在完成后填写；不能把候选当作上线成果。
+本批已发布 **v196 / succeeded**：[正式站](https://idol-lens-private.wuke40758.chatgpt.site/)。GitHub实现 `ec13cce54daf3df0274f0fc1e9f86b17da554be7`，仍在 `codex/statistics-relations-followup-20261027` / [PR44](https://github.com/KAtOReNA7/idol/pull/44)，未合main。Sites源 `2d41b09d477112e65f72536cdeea2791ac9b3bf8`；部署 `appgdep_6ae0d4e45eac8191bf38dc9358b358d0` 于2026-10-27 16:44:36 UTC成功（北京时间2026-10-28 00:44）。GitHub提交与正式发布分别留证。
+
+用户选择的7条报道时间轴已在v195发布，实际生效日期仍保留未知；本批接续新的内容补全。
 
 ## 本批处理
 
@@ -30,4 +32,21 @@ tripleS下一步可用[Soridata公开SQL下载](https://soridata.com/en/database
 
 本批证据目录：`docs/codex/evidence/20261028-followup/`。逐作品账本为 `131-work-resolution-ledger.json`；来源、原件SHA及范围见 `work-members/`、`root-credit-candidates/`；销量复算见 `statistics/`。
 
-定向测试、类型、构建、三宽页面/原图/来源流程、完整发布包、线上只读保护核对结果将在发布后补入。不进行真实私人保存，不宣称全视频播放、原生缩放、新Figma或全仓测试通过。历史SSR夹具及favicon404继续列为遗留。
+40项定向测试（9文件）、TypeScript和正式构建通过。已修正过期测试的“全局16作品”固定数，改为核对原13项研究子集；新增UI测试中的函数克隆和VM对象比较问题也已修复。没有以移除业务断言通过测试。
+
+本地与正式分别通过12作品布局、57图片槽及12实际流程（4原图、4来源、4成员跳转）；另fromis9信息与Stranger无真人政策各3宽。正式使用实际匿名目录API，未使用relay或fixture；全部API200、无页面/控制台错误、应用写入0。本地因既有开发API限制，使用实时匿名正式GET响应原样转发，15次转发有SHA记录，不冒称本地原生存储验证。生产fromis9首次320/1440截图遇到目录重绘导致DOM节点断开，保存初次诊断，等待真实catalog响应后仅重验这两宽并通过；不是资料缺失或布局回归。
+
+完整冻结包1402文件、展开TAR43,095,552 bytes、gzip19,132,841 bytes，SHA256 `9748724513c755e20c93d0377a3701b2c2649bb03f6c812f5efd091e4afaa089`。上传回执内容字节和42,936,320是另一统计口径，不等于带TAR头/填充的展开大小。全部包内字节、578本地原件、5418远端排除、10受限副本/别名排除、23迁移与hosting通过；原件manifest5996及固定ref、UDTT守卫/原件策略、authority源均保持v195。
+
+实际用户Chrome既有登录的新标签只读核对：51团/338成员/614作品/2845原始评分行的保护字段完整hash与v195一致，不保存具体个人值。2845包含5既有空/无效行，有效关系2840，不当作缺图。native/epoch6/原快照/done206、public/1owner/0外部/0组/revision2及owner保存鉴权保持。原登录问题已解决，不要求用户重复登录。
+
+各研究子目录README和findings保留准备候选时的原文状态；最终是否采用、数量和发布以根账本与publication-v196.json为准。不进行真实私人保存，不宣称全视频播放、原生缩放、新Figma或全仓测试通过。历史SSR夹具及favicon404继续列为遗留。
+
+
+## 本批入口
+
+- [NMIXX · FEIFEI](https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XRfn5)
+- [BADVILLAIN · +82](https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrEsc)
+- [Weeekly · Stranger](https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzr7Nc)
+- [Rocket Punch · ドキドキLOVE](https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzA9lj)
+- [fromis_9 信息](https://idol-lens-private.wuke40758.chatgpt.site/artists/fromis9/)

@@ -1,0 +1,244 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-27T10:19:43.375290+00:00",
+  "reviewer": "photo_sets_q_large independent read-only verification",
+  "sourceHead": "5644d219a4226d32fbb3d14a05033e3808f5692b",
+  "sourceCleanBeforeAndAfter": true,
+  "scope": "Current source-carrier bytes after build; exact frozen archive, built data semantics, original asset bytes and retained hosting/migration configuration. No source/archive mutation, save/deploy action, remote HTTP check or production DB write performed.",
+  "carrier": {
+    "evidencePath": "E:\\project\\idol-quality-root-research-20261027\\source-carrier-verification.json",
+    "evidenceSha256": "eb5e4c512951b5e79d2836a97ba0f2aa4765c38437955fe8f4f8fd423f39f945",
+    "recordedFiles": 3232,
+    "rehashedFiles": 3232,
+    "drift": [],
+    "manifestOfChecksSha256": "7708811d3a522185736f12706dbda1ac2388c0cf4ee62f68fd5bf8d4eeb7e3ac",
+    "newFilesIncluded": [
+      "components/member-work-identity-photo.tsx",
+      "lib/idol/member-work-photo.ts",
+      "data/mv-public-media.json",
+      "data/production-asset-delivery.json"
+    ]
+  },
+  "archive": {
+    "path": "E:\\project\\idol-quality-root-research-20261027\\formal-identity-complete.tar.gz",
+    "sha256": "52b6d7651cbf828d8b0ddebd0f54beb59fdf77cd0b4b148e52bc3feb979ddaf9",
+    "gzipBytes": 18950975,
+    "expandedTarBytes": 42063872,
+    "payloadBytes": 40862105,
+    "regularFiles": 1398,
+    "exactBuildFiles": 1398,
+    "missingOrExtraFiles": [],
+    "unsafeEntries": [],
+    "unchangedAfterCheck": true
+  },
+  "hosting": {
+    "config": {
+      "d1": "DB",
+      "r2": "BUCKET",
+      "project_id": "appgprj_6acb4fa532b88191ae2588c24b724b17",
+      "capabilities": [
+        "mcp"
+      ]
+    },
+    "sha256": "6bd80cd82a15bbd73df370290887255f235698709367ef11017cb76b48cf71af",
+    "unchangedFrom": "bafe825a0d84501f66825919a281e63ddb033a15",
+    "migrationFiles": 23,
+    "sqlMigrations": 11,
+    "migrationMetadata": 12,
+    "allMigrationBytesExact": true,
+    "files": [
+      {
+        "path": "dist/.openai/drizzle/0000_classy_tenebrous.sql",
+        "sha256": "60e133d585978c4c2d3f56f6df735aaa138de49eb1db7e59cc67f696c12f9a93"
+      },
+      {
+        "path": "dist/.openai/drizzle/0001_material_emma_frost.sql",
+        "sha256": "03f2a92cae791b270cd4de42cc22b2d09bc16e0e769ef70a4dbc86184cc79edf"
+      },
+      {
+        "path": "dist/.openai/drizzle/0002_plain_magus.sql",
+        "sha256": "96a15bafd79de21ee64264920a2d56ea08c41e93d56daa2f7331c510fc4beb2d"
+      },
+      {
+        "path": "dist/.openai/drizzle/0003_melodic_blob.sql",
+        "sha256": "349f68267ecd59075223f541a7525d8a688e3ae6e798fdf19a178b3d6dacd25c"
+      },
+      {
+        "path": "dist/.openai/drizzle/0004_polite_war_machine.sql",
+        "sha256": "80b58dae24b107c726480b1bd4cb40c7476ed433dad5d193573d45773d571011"
+      },
+      {
+        "path": "dist/.openai/drizzle/0005_tired_mister_sinister.sql",
+        "sha256": "1b3cbb99a889a6a3bb1f79f0beafe27bee91bd40aaa1fa13c3c2338052523d7a"
+      },
+      {
+        "path": "dist/.openai/drizzle/0006_serious_caretaker.sql",
+        "sha256": "9bdf9babf660d838318bf5169e527b6116505cd61772efbf471bb2e548854226"
+      },
+      {
+        "path": "dist/.openai/drizzle/0007_legacy_journal_fence.sql",
+        "sha256": "124f811da555fdf7ef8a9fddcc04c51f469fb9a9c4abd6e726ac5786858888fe"
+      },
+      {
+        "path": "dist/.openai/drizzle/0008_curvy_lord_tyger.sql",
+        "sha256": "ea987ced437f9d22b5c6833d82f779b30ccd6eec352ff2ed45e0932adb886ae3"
+      },
+      {
+        "path": "dist/.openai/drizzle/0009_regular_iron_patriot.sql",
+        "sha256": "e56e51c0128ca102abe46c2b5c63fcaf4527cc9c172997ca05b3a68cdb991623"
+      },
+      {
+        "path": "dist/.openai/drizzle/0010_icy_magma.sql",
+        "sha256": "8fbaab61c76c384d34e4170c5cdf2d8d8391d6143b6f9f75858a9e70d1a27f55"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/0000_snapshot.json",
+        "sha256": "66da60fd03665adfbf5daee6b2b680ab31f10931c1237fcfaca1ba757e9c2fa2"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/0001_snapshot.json",
+        "sha256": "ca32df4818892c9f11ed255512a97b9d12e6945e2e31c6d87478f971a92d6aa8"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/0002_snapshot.json",
+        "sha256": "996804a0e927258f356df128cb03dc5792ea194ef1a18a03b0da7d13b4703a0f"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/0003_snapshot.json",
+        "sha256": "8e4b7cb4231b2ddbe71baeff786cda2bed3ebb531808afe9adeceed2cc86f33f"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/0004_snapshot.json",
+        "sha256": "e3a74152206b72857e17ccb2409af310537bfe0eae7e4389b6ecad10385a39d9"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/0005_snapshot.json",
+        "sha256": "6560cb015c7c54b37bdfbb3d93a75c9ad32089116b9f77625829a014e143310a"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/0006_snapshot.json",
+        "sha256": "b729c1be07c58811d01341d7c10cb202370786ebe0af6e8019d51095e2a9118c"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/0007_snapshot.json",
+        "sha256": "685e1fcbeb929c1613316f68728fd838e5fe508b210c0c8ffe3801361ea33f11"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/0008_snapshot.json",
+        "sha256": "3255d71706dbeaa00857fc14002554d41d2bb04948cd111af3bb0cfb182a2424"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/0009_snapshot.json",
+        "sha256": "47de1bfbada43b340b29d1a88f92ee31d3ee2514a969cf0e1f327ec0df711621"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/0010_snapshot.json",
+        "sha256": "5af73c6f68e5a52e579e1a9eecada05a92bfa6aaad783e38b6816fe8500b4095"
+      },
+      {
+        "path": "dist/.openai/drizzle/meta/_journal.json",
+        "sha256": "945e33e0b65c93f0608efdd567589d534081b7f9e2bec1434071a6cc32e42ea4"
+      }
+    ]
+  },
+  "runtime": {
+    "portraitBindings": 2828,
+    "covers": 628,
+    "allClientAndServerFieldsExactlyMatchSource": true,
+    "chunks": [
+      {
+        "path": "dist/server/ssr/_next/static/mv-public-media-C_WYR1ZE.js",
+        "sha256": "7c9dcf0e7a7030fa1b80ed335c21012a871fdbce35d9ae482badd9590ac4f3bc",
+        "portraits": 2828,
+        "covers": 628,
+        "semanticSha256": "db09207d9faded33701c6bc1b6138ffcfb670084fdbf94cf778dae3436ed2e03"
+      },
+      {
+        "path": "dist/client/_next/static/chunks/mv-public-media-C15Do7EX.js",
+        "sha256": "7c9dcf0e7a7030fa1b80ed335c21012a871fdbce35d9ae482badd9590ac4f3bc",
+        "portraits": 2828,
+        "covers": 628,
+        "semanticSha256": "db09207d9faded33701c6bc1b6138ffcfb670084fdbf94cf778dae3436ed2e03"
+      }
+    ],
+    "memberGalleryChunks": [
+      {
+        "path": "dist/server/ssr/_next/static/member-work-identity-photo-B9ofv5FL.js",
+        "sha256": "6e94a508ef010e9f363031897477161e30d3c4c1ed951b9cc381e4200984b699",
+        "consumerChunks": [
+          "dist/server/ssr/_next/static/adya-artist-B-_eER3M.js",
+          "dist/server/ssr/_next/static/artist-BkVh_QtI.js",
+          "dist/server/ssr/_next/static/artist-sample-B4vQHzEZ.js",
+          "dist/server/ssr/_next/static/bewave-artist-BtrNy00Y.js",
+          "dist/server/ssr/_next/static/candyshop-artist-DEbSTDQe.js",
+          "dist/server/ssr/_next/static/expanded-artist-sGiHgAbE.js",
+          "dist/server/ssr/_next/static/geenius-artist-lTQu7Z8j.js",
+          "dist/server/ssr/_next/static/hearts2hearts-artist-DX4Qrayq.js",
+          "dist/server/ssr/_next/static/itzy-artist-BLbfcPHp.js",
+          "dist/server/ssr/_next/static/katseye-artist-CRKgcqY0.js",
+          "dist/server/ssr/_next/static/kiiikiii-artist-Bsc-i-mm.js",
+          "dist/server/ssr/_next/static/kiof-artist-CSCmnvxQ.js",
+          "dist/server/ssr/_next/static/loona-design-393o1IzJ.js",
+          "dist/server/ssr/_next/static/meovv-design-BI6SmDJr.js",
+          "dist/server/ssr/_next/static/newjeans-design-D0mkpNuo.js",
+          "dist/server/ssr/_next/static/oddyouth-artist-C3HL5e2S.js",
+          "dist/server/ssr/_next/static/saymyname-artist-AaX6tSnY.js",
+          "dist/server/ssr/_next/static/stayc-artist-CXOnHERo.js",
+          "dist/server/ssr/_next/static/youngposse-artist-BjCKa_lr.js"
+        ]
+      },
+      {
+        "path": "dist/client/_next/static/chunks/member-work-identity-photo-Bpy5yLhr.js",
+        "sha256": "fdbf95162953c1e3a02dfc9e41fd7817841da152c33391fb45fce6115d2d3f89",
+        "consumerChunks": [
+          "dist/client/_next/static/chunks/adya-artist-l-YlimNb.js",
+          "dist/client/_next/static/chunks/artist-C60x4v1l.js",
+          "dist/client/_next/static/chunks/artist-sample-BJD8Pmfi.js",
+          "dist/client/_next/static/chunks/bewave-artist-DO-wcmtx.js",
+          "dist/client/_next/static/chunks/candyshop-artist-DS9I7lh7.js",
+          "dist/client/_next/static/chunks/expanded-artist-DL6CC1FT.js",
+          "dist/client/_next/static/chunks/geenius-artist-lklOLiCy.js",
+          "dist/client/_next/static/chunks/hearts2hearts-artist-CII-KGMR.js",
+          "dist/client/_next/static/chunks/index-CgAP9VqU.js",
+          "dist/client/_next/static/chunks/itzy-artist-D-rElYus.js",
+          "dist/client/_next/static/chunks/katseye-artist-CFYpmEvU.js",
+          "dist/client/_next/static/chunks/kiiikiii-artist-Dp5nxWFN.js",
+          "dist/client/_next/static/chunks/kiof-artist-BeHmiHCB.js",
+          "dist/client/_next/static/chunks/loona-design-Dg3nkwSL.js",
+          "dist/client/_next/static/chunks/meovv-design-Bjes2PgI.js",
+          "dist/client/_next/static/chunks/newjeans-design-Ds9FVlow.js",
+          "dist/client/_next/static/chunks/oddyouth-artist-53yBWylz.js",
+          "dist/client/_next/static/chunks/saymyname-artist-BarQL_Qf.js",
+          "dist/client/_next/static/chunks/stayc-artist-1gqI1WDO.js",
+          "dist/client/_next/static/chunks/youngposse-artist-xuTEOcHU.js",
+          "dist/server/__vite_rsc_assets_manifest.js",
+          "dist/server/ssr/__vite_rsc_assets_manifest.js",
+          "dist/server/ssr/vinext-client-assets.js",
+          "dist/server/vinext-client-assets.js"
+        ]
+      }
+    ]
+  },
+  "delivery": {
+    "fixedPublicCommit": "7ee8a2d16e53358302ab8000af66a550bbb921cc",
+    "manifestSha256": "4e4659aa49114392c6a59086f4dcace3e7c2a19963853a59f111f074a53fe95c",
+    "assets": 5981,
+    "remotePathsAbsentFromArchive": 5403,
+    "restrictedPathsAbsent": 10,
+    "allOriginalFilesSha256AndGitBlobChecked": 5981,
+    "allOriginalBytes": 3230995115,
+    "previousCarrierAssets": 5495,
+    "oldOriginalMetadataPreserved": 5495,
+    "newAssets": 486,
+    "removedAssets": [],
+    "oldDeliveryAssignmentsChanged": 23,
+    "rasterSelectionBudgetBytes": 4194304,
+    "selectedRasterBytes": 4192159,
+    "retainedSharedRasterFiles": 2,
+    "retainedSharedRasterBytes": 211510,
+    "totalLocalRasterBytes": 4403669,
+    "budgetNote": "4 MiB caps the selected raster pool. Two existing retainedShared public posters are explicitly additional; sources and bytes are unchanged. Fonts, styles, vectors and metadata are not raster-budget entries.",
+    "localOriginalFilesChecked": 578
+  },
+  "errors": []
+}

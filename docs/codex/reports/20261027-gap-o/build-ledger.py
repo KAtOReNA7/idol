@@ -21,6 +21,7 @@ ledger=read(out.parent/'20261027-gap-n/ledger.json');ledger['checkedAt']='2026-1
 if (out/'native-evidence.json').exists():
  n=read(out/'native-evidence.json')
  if (n.get('deployment') or {}).get('status')=='succeeded':ledger['release']={'status':'succeeded','version':n['version']['version_number'],'url':n['url'],'sourceCommit':n['source']['commit_sha'],'deploymentId':n['deployment']['id']}
+ elif n.get('status')=='not_attempted_prior_upload_blocker':ledger['release'].update(status=n['status'],candidateSourceCommit=n['source']['commit_sha'],reason='N批文件blob上传超时后未有恢复证据；O候选已同步并完整打包，本轮未再次保存或部署。')
  elif n.get('status')=='blocked_archive_upload':ledger['release'].update(status='blocked_archive_upload',candidateSourceCommit=n['source']['commit_sha'],reason='文件blob上传300秒超时；无新版本或部署ID，正式站仍v190。')
 for row in ledger['entries']:
  if key(row) not in new:continue
@@ -47,4 +48,7 @@ html=html.replace('2026-10-26 · 当前补图进度','2026-10-27 · 当前补图
 (out/'ledger.html').write_text(html,encoding='utf-8',newline='\n')
 
 html=(out/'ledger.html').read_text(encoding='utf-8').replace('N批新增1条已导入仓库，但文件上传超时，正式站仍v190；A–M批保持已上线。','N/O批累计新增3条已导入仓库；正式站仍v190，发布状态另见报告。')
+(out/'ledger.html').write_text(html,encoding='utf-8',newline='\n')
+
+html=(out/'ledger.html').read_text(encoding='utf-8').replace("release.status==='blocked_archive_upload'","['blocked_archive_upload','not_attempted_prior_upload_blocker'].includes(release.status)")
 (out/'ledger.html').write_text(html,encoding='utf-8',newline='\n')

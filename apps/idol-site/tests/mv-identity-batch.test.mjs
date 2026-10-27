@@ -25,8 +25,8 @@ test('pending concept provenance and out-of-frame crops cannot silently enter th
 test('the batch cannot reduce missing counts by admitting card-only low-resolution candidates',()=>{assert.throws(()=>planIdentityBatch(fixture(),[{identityImages:[{...row,qualityTier:'card_only'}]}],()=>{}),/quality threshold/);});
 test('only reviewed A-M and the exact dated N/O/P/Q directories extend the original path boundary',()=>{
  for(const batch of ['d','e','f','g','h','i','j','k','l','m'])assert.equal(planIdentityBatch(fixture(),[{identityImages:[{...row,src:`/artist/mv-identity-batch-${batch}-20261026/identities/test.jpg`}]}],()=>{}).admitted.length,1);
- for(const batch of ['n','o','p','q','r'])assert.equal(planIdentityBatch(fixture(),[{identityImages:[{...row,src:`/artist/mv-identity-batch-${batch}-20261027/identities/test.jpg`}]}],()=>{}).admitted.length,1);
- for(const src of ['/artist/mv-identity-batch-n-20261026/identities/test.jpg','/artist/mv-identity-batch-s-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261026/identities/nested/test.jpg','/artist/private/identities/test.jpg'])assert.equal(publicIdentityPath.test(src),false,src);
+ for(const batch of ['n','o','p','q','r','s'])assert.equal(planIdentityBatch(fixture(),[{identityImages:[{...row,src:`/artist/mv-identity-batch-${batch}-20261027/identities/test.jpg`}]}],()=>{}).admitted.length,1);
+ for(const src of ['/artist/mv-identity-batch-n-20261026/identities/test.jpg','/artist/mv-identity-batch-t-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261027/identities/test.jpg','/artist/mv-identity-batch-d-20261026/identities/nested/test.jpg','/artist/private/identities/test.jpg'])assert.equal(publicIdentityPath.test(src),false,src);
 });
 test('a high-resolution label cannot admit a small visible crop from a wide original',()=>{
  for(const change of [{width:736,height:491,sourceCrop:undefined},{width:539,height:1000,sourceCrop:undefined},{width:1200,height:1600,sourceCrop:{x:0,y:0,width:800,height:719}}]){

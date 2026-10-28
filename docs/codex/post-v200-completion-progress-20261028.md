@@ -1,6 +1,6 @@
 # v200后持续补全：未发布增量与剩余证据边界
 
-日期：2026-10-28。任务分支 `codex/stage-person-followup-v199-20261028`，PR45基于未合并的PR44。用户要求全部任务完成后再发布；本轮没有保存新Sites版本或请求部署。正式站仍为 **v200 / 493舞台**，本地进度为 **496舞台**。GitHub推送另见 `evidence/20261028-post-v200/github-sync.json`；不能将GitHub完成写成正式上线。
+日期：2026-10-28。任务分支 `codex/stage-person-followup-v199-20261028`，PR45基于未合并的PR44。用户要求全部任务完成后再发布；本轮没有保存新Sites版本或请求部署。正式站仍为 **v200 / 493舞台**，当前GitHub分支为 **496舞台**，实现提交 `60d8b2bf8254afcbef7639405ea8b2e73a50fea5` 已普通推送并逐字读回。详见 `evidence/20261028-post-v200/github-sync.json`；不能将GitHub完成写成正式上线。
 
 ## 已实际完成
 
@@ -64,7 +64,7 @@ SPAGHETTI采用明确Member ver.练习 `OsPt0BY1_Wk`；官方Weverse精确嵌入
 
 ## 验证与环境
 
-本轮专项见 [validation.json](evidence/20261028-post-v200/validation.json)。TypeScript、正式构建和舞台结构校验通过；构建仍有既有大chunk及动态路由分类提示。本轮只构建，没有生成发布包、保存Sites版本或部署。
+本轮109项专项见 [validation.json](evidence/20261028-post-v200/validation.json)。TypeScript、正式构建和舞台结构校验通过；构建仍有既有大chunk及动态路由分类提示。本轮只构建，没有生成发布包、保存Sites版本或部署。离线复算：`python docs/codex/scripts/verify-post-v200-progress-20261028.py`，不读取私人导出。
 
 本地 `http://127.0.0.1:4271`，隔离无头Chromium，390/1440两宽；Browser插件不可用，内置页此前超时，不复用用户Chrome资料。公开显示夹具已去除私人评分/备注/观看/私人照片，并阻断写入。主流程34布局、23交互：11作品39图槽、3:4显示、原图开关、两组统计展开、4个精确舞台封面及成员版文字。UDTT另2布局、2来源点击、2身份/链接防篡改守卫通过。最终console、pageerror和HTTP错误均0；截图保存在本机Temp，已目视抽查。
 

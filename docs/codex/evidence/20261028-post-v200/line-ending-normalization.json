@@ -230,5 +230,12 @@
       "afterSha256": "2e3911d1db42fafc85adaee8c1a28f09bebbc8dfb20393c6e70684d8dc1d99ce",
       "onlyLineEndingsChanged": true
     }
+  ],
+  "subsequentEdits": [
+    {
+      "path": "docs/codex/evidence/20261028-post-v200/statistics/verify-statistics-evidence.py",
+      "reason": "Offline verifier now writes UTF-8 bytes with LF to avoid regenerating CRLF evidence on Windows. Application data remains untouched.",
+      "currentSha256": "eac586dc8183509b84b127bec1bf7dc28138b555046b34c6c77048278f87671f"
+    }
   ]
 }

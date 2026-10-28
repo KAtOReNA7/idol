@@ -10,9 +10,9 @@
     "socialObserved": 153,
     "socialFallbackZero": 0,
     "omittedPlatforms": 0,
-    "salesObserved": 44,
-    "salesLowerBoundsAdded": 12,
-    "salesFallbackZero": 7,
+    "salesObserved": 45,
+    "salesLowerBoundsAdded": 13,
+    "salesFallbackZero": 6,
     "winsObserved": 27,
     "winsConfirmedZero": 21,
     "winsFallbackZero": 3,
@@ -468,16 +468,16 @@
       ],
       "omittedPlatforms": [],
       "sales": {
-        "observedValue": 2092239,
-        "displayValue": 2092239,
+        "observedValue": 2098086,
+        "displayValue": 2098086,
         "status": "observed",
         "unit": "张",
         "title": "已公开累计",
-        "scope": "tripleS及该来源归入tripleS的子团韩国Circle公开月榜36行，加2024年Performante Cosmo与2025年ASSEMBLE25 Cosmo同年同版年榜替换修正；截至2026-06的来源覆盖下界，不是全球完整累计。",
+        "scope": "tripleS及该来源归入tripleS的子团韩国Circle公开月榜36行，加2024年Performante Cosmo与2025年ASSEMBLE25 Cosmo同年同版年榜替换修正，以及4条不重叠官方周榜补充；截至2026-06的已核来源覆盖下界，不是全球完整累计。",
         "asOf": "2026-06",
         "checkedAt": "2026-10-28",
-        "sourceUrl": "https://soridata.com/sales/TripleS.html",
-        "sourceTitle": "Soridata · Circle公开累计",
+        "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2022&targetTime=50&yearTime=3",
+        "sourceTitle": "Circle Album Chart · 官方周榜与既有月/年榜复算",
         "sources": [
           {
             "url": "https://soridata.com/sales/TripleS.html",
@@ -591,6 +591,42 @@
             "kind": "primary-chart",
             "access": "native-public-api-read-backed-by-official-page-script",
             "sha256": "b732cd2f917913ef176f872b16b7713b29fa19782cb570ee37125be1dcfba195"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2022&targetTime=50&yearTime=3",
+            "title": "Circle Album · 2022年第50周 · Acid Angel from Asia ＜ ACCESS ＞",
+            "sourceDate": "2022.12.04~2022.12.10 (50)",
+            "checkedAt": "2026-10-28T13:27:10.751290+00:00",
+            "kind": "primary-chart",
+            "access": "official-page-native-public-api",
+            "sha256": "d6643cf54e686ffd793b8af4ce46e0285c96bdfd646f5f59ba9ec0e7035388ba"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2022&targetTime=51&yearTime=3",
+            "title": "Circle Album · 2022年第51周 · Acid Angel from Asia ＜ ACCESS ＞",
+            "sourceDate": "2022.12.11~2022.12.17 (51)",
+            "checkedAt": "2026-10-28T13:27:16.155611+00:00",
+            "kind": "primary-chart",
+            "access": "official-page-native-public-api",
+            "sha256": "ac7dd5a61307dffb7816f2da47c7c2756870c1a70bfbbc5f35b256647bed3990"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=10&yearTime=3",
+            "title": "Circle Album · 2023年第10周 · ASSEMBLE",
+            "sourceDate": "2023.03.05~2023.03.11 (10)",
+            "checkedAt": "2026-10-28T13:27:33.035051+00:00",
+            "kind": "primary-chart",
+            "access": "official-page-native-public-api",
+            "sha256": "d99684156019dc331cfcb3faa17173018f973721756bdcc221559bbc09401aff"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=46&yearTime=3",
+            "title": "Circle Album · 2023年第46周 · LOVElution < ↀ >",
+            "sourceDate": "2023.11.12~2023.11.18 (46)",
+            "checkedAt": "2026-10-28T13:28:20.770911+00:00",
+            "kind": "primary-chart",
+            "access": "official-page-native-public-api",
+            "sha256": "54021026c9a6d14bca0030db6cab3733aad33a53952d88d989034ec976812c7c"
           }
         ],
         "notes": [
@@ -599,9 +635,10 @@
           "历史基线（2026-10-25）：艺人汇总页2,458,789+与本轮可见36行月表2,087,073不一致；采用可复算下限，差额371,716未解释，不将差异标为彻底解决。",
           "2026-10-28逐版复算：2024年Performante Cosmo年榜289,224替换同年月和286,809（+2,415）；2025年ASSEMBLE25 Cosmo年榜406,744替换同年月和403,993（+2,751），净修正+5,166，累计2,092,239。36条原月行保留，不把年榜重复相加。",
           "5/8/9/11月的ASSEMBLE25完整标题、Cosmo版本及各月数量已由可读具名月榜转录核对；2025年1月9,888为ASSEMBLE24 Cosmo，保持独立。Performante标准版、ASSEMBLE25标准/WITHVUU及Beyond Beauty跨年记录均未并入这两项年榜。",
-          "与已保存的艺人汇总2,458,789仍差366,550，来源差异继续开放。该汇总本轮未重新访问；不得将局部修正写成全团累计已完整闭合，也不混加日本、Hanteo或Retail。",
+          "历史核对记录：与已保存的艺人汇总2,458,789仍差366,550，来源差异继续开放。该汇总本轮未重新访问；不得将局部修正写成全团累计已完整闭合，也不混加日本、Hanteo或Retail。",
           "前轮核对时：年榜及月榜依据可读第三方Circle转录/报道；2024年榜与2025年11月有官方搜索索引交叉核对。官方直读仅返回页面框架，不宣称完整官方榜已读取。",
-          "2026-10-28后续已直接读取Circle官方页面所用Album接口：2024年Performante Cosmo为289,224，2025年ASSEMBLE25 Cosmo为406,744，均与已采用年榜同值。采用期内Album_CNT核对，不采用Total_CNT，不新增加总、不混Retail；历史月行、年榜替换、2,092,239下界及366,550未解释差额均保持。"
+          "历史核对记录：2026-10-28后续已直接读取Circle官方页面所用Album接口：2024年Performante Cosmo为289,224，2025年ASSEMBLE25 Cosmo为406,744，均与已采用年榜同值。采用期内Album_CNT核对，不采用Total_CNT，不新增加总、不混Retail；历史月行、年榜替换、2,092,239下界及366,550未解释差额均保持。",
+          "2026-10-28补查4个同版本未覆盖期间的官方周榜，新增5,847张，来源覆盖下界2,098,086；与旧汇总2,458,789尚差360,703，未彻底解决。保留36原月行与2项年榜替换，不重复加总。"
         ],
         "evidence": {
           "kind": "public-cumulative-lower-bound",
@@ -854,7 +891,7 @@
               "album": "Acid Angel from Asia"
             }
           ],
-          "recomputedSum": 2092239,
+          "recomputedSum": 2098086,
           "monthlyRecomputedSum": 2087073,
           "annualReplacements": [
             {
@@ -1010,11 +1047,12 @@
             "status": "partially-resolved",
             "monthlySum": 2087073,
             "annualNetAdjustment": 5166,
-            "reconciledSum": 2092239,
+            "reconciledSum": 2098086,
             "aggregateTotal": 2458789,
-            "remainingDifference": 366550,
+            "remainingDifference": 360703,
             "aggregateAccess": "previously stored observation only; not fetched in this audit",
-            "reason": "Two disjoint same-year Cosmo annual replacements are verified; artist aggregate remains unexplained by 366550. No assumption about missing subunits, Japan or alternate counting systems is accepted."
+            "reason": "Two disjoint annual replacements and four non-overlapping weekly Album values are verified; remaining aggregate difference360703 is still open. No Retail/Hanteo/Japan addition.",
+            "weeklyContribution": 5847
           },
           "officialAnnualReadback20261028": {
             "checkedAt": "2026-10-28",
@@ -1078,7 +1116,128 @@
             "coverageComplete": false,
             "remainingDifferenceResolved": false,
             "evidenceRef": "docs/codex/evidence/20261028-continuous/circle-annual-c.json"
-          }
+          },
+          "weeklyAdditions": [
+            {
+              "year": 2022,
+              "week": 50,
+              "dateRange": "2022.12.04~2022.12.10 (50)",
+              "album": "Acid Angel from Asia ＜ ACCESS ＞",
+              "artist": "tripleS (트리플에스)",
+              "albumId": "70531",
+              "sales": 1364,
+              "metricField": "Album_CNT",
+              "rank": 76,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2022&targetTime=50&yearTime=3",
+              "checkedAt": "2026-10-28T13:27:10.751290+00:00",
+              "responseSha256": "d6643cf54e686ffd793b8af4ce46e0285c96bdfd646f5f59ba9ec0e7035388ba",
+              "pageSha256": "a640e01ce9a3208bdebae9f0e5e0f02ba58f32425149e64a1f97120c331d899c"
+            },
+            {
+              "year": 2022,
+              "week": 51,
+              "dateRange": "2022.12.11~2022.12.17 (51)",
+              "album": "Acid Angel from Asia ＜ ACCESS ＞",
+              "artist": "tripleS (트리플에스)",
+              "albumId": "70531",
+              "sales": 871,
+              "metricField": "Album_CNT",
+              "rank": 94,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2022&targetTime=51&yearTime=3",
+              "checkedAt": "2026-10-28T13:27:16.155611+00:00",
+              "responseSha256": "ac7dd5a61307dffb7816f2da47c7c2756870c1a70bfbbc5f35b256647bed3990",
+              "pageSha256": "fab460fd59683d4a1860ca381b62135233c4294e985f1922454034db79e09367"
+            },
+            {
+              "year": 2023,
+              "week": 10,
+              "dateRange": "2023.03.05~2023.03.11 (10)",
+              "album": "ASSEMBLE",
+              "artist": "tripleS (트리플에스)",
+              "albumId": "71789",
+              "sales": 2587,
+              "metricField": "Album_CNT",
+              "rank": 52,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=10&yearTime=3",
+              "checkedAt": "2026-10-28T13:27:33.035051+00:00",
+              "responseSha256": "d99684156019dc331cfcb3faa17173018f973721756bdcc221559bbc09401aff",
+              "pageSha256": "31d5f663375362d37397a3b1722ade3b07d2f96c424e8074d12158b8dd41b796"
+            },
+            {
+              "year": 2023,
+              "week": 46,
+              "dateRange": "2023.11.12~2023.11.18 (46)",
+              "album": "LOVElution < ↀ >",
+              "artist": "tripleS (트리플에스)",
+              "albumId": "73936",
+              "sales": 1025,
+              "metricField": "Album_CNT",
+              "rank": 77,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=46&yearTime=3",
+              "checkedAt": "2026-10-28T13:28:20.770911+00:00",
+              "responseSha256": "54021026c9a6d14bca0030db6cab3733aad33a53952d88d989034ec976812c7c",
+              "pageSha256": "9a94264b26d8bcb9e25e5d1623ebb0a3d3320d377ee7e87cbc13ce65b017cae1"
+            }
+          ],
+          "weeklyOverlapReview": [
+            {
+              "albumId": "70531",
+              "album": "Acid Angel from Asia <ACCESS> (standard)",
+              "newIntervals": [
+                "2022-12-04/2022-12-10",
+                "2022-12-11/2022-12-17"
+              ],
+              "existingSameVersionMonthRows": [
+                {
+                  "rowIndex": 35,
+                  "year": 2022,
+                  "month": 11,
+                  "sales": 23674
+                }
+              ],
+              "separateVersionExclusion": "2025-02 ACCESS Cosmo row 15 is an independent version and period, unchanged.",
+              "overlap": false
+            },
+            {
+              "albumId": "71789",
+              "album": "ASSEMBLE (standard)",
+              "newIntervals": [
+                "2023-03-05/2023-03-11"
+              ],
+              "existingSameVersionMonthRows": [
+                {
+                  "rowIndex": 33,
+                  "year": 2023,
+                  "month": 4,
+                  "sales": 5203
+                },
+                {
+                  "rowIndex": 34,
+                  "year": 2023,
+                  "month": 2,
+                  "sales": 40221
+                }
+              ],
+              "overlap": false
+            },
+            {
+              "albumId": "73936",
+              "album": "LOVElution <ↀ> (standard)",
+              "newIntervals": [
+                "2023-11-12/2023-11-18"
+              ],
+              "existingSameVersionMonthRows": [
+                {
+                  "rowIndex": 31,
+                  "year": 2023,
+                  "month": 8,
+                  "sales": 28647
+                }
+              ],
+              "separateVersionExclusion": "2025-01 LOVElution Cosmo row 17 is an independent version and period, unchanged.",
+              "overlap": false
+            }
+          ]
         },
         "lowerBound": true,
         "rawDisplay": "2,092,239+"
@@ -3549,22 +3708,79 @@
       ],
       "omittedPlatforms": [],
       "sales": {
-        "observedValue": null,
-        "displayValue": 0,
-        "status": "unavailable",
-        "unit": "copies",
-        "title": "韩国发行累计销量",
-        "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。",
-        "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.889410+00:00",
-        "sourceUrl": null,
-        "sourceTitle": null,
-        "sources": [],
-        "notes": [
-          "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
-          "已检索Circle相关公开榜单、团体名与album sales；单张/单周/单日零售数字及sold out描述不替代团体累计。"
+        "observedValue": 217,
+        "displayValue": 217,
+        "status": "observed",
+        "unit": "张",
+        "title": "已核单日零售下界",
+        "scope": "Geenius《Spoiler Book (WITHVUU)》Circle Retail Album Chart 2026-05-18单日零售217张；仅为这一日、此版本的已核来源下界，不是Circle Album出货量，也不是全团、全渠道或全球完整累计；其他日期、版本及作品未覆盖。",
+        "asOf": "2026-05-18",
+        "checkedAt": "2026-10-28",
+        "sourceUrl": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20260518",
+        "sourceTitle": "Circle Retail Album Chart · Spoiler Book (WITHVUU) · 2026-05-18",
+        "sources": [
+          {
+            "url": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20260518",
+            "title": "Circle Retail Album Chart · 2026-05-18 日零售",
+            "sourceDate": "2026-05-18",
+            "checkedAt": "2026-10-28T13:19:22.345069+00:00",
+            "kind": "primary-chart",
+            "access": "official-page-native-public-api",
+            "sha256": "7668d572643255223325cb0b9bc0a28e553968c9da8d4837f32fcfc5deac88ef"
+          }
         ],
-        "evidence": {}
+        "notes": [
+          "Retail为零售榜；不与Circle Album出货榜、Hanteo及其他统计口径相加。",
+          "下列日数据与所查周、月覆盖期重叠，不能重复累计。",
+          "全团完整累计仍未知；其他日期未上Top50不等于销量为0。"
+        ],
+        "lowerBound": true,
+        "evidence": {
+          "kind": "public-period-lower-bound",
+          "lowerBound": true,
+          "replacedStatus": "unavailable",
+          "previousRecord": {
+            "observedValue": null,
+            "displayValue": 0,
+            "status": "unavailable",
+            "unit": "copies",
+            "title": "韩国发行累计销量",
+            "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。",
+            "asOf": null,
+            "checkedAt": "2026-10-25T16:25:50.889410+00:00",
+            "sourceUrl": null,
+            "sourceTitle": null,
+            "sources": [],
+            "notes": [
+              "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
+              "已检索Circle相关公开榜单、团体名与album sales；单张/单周/单日零售数字及sold out描述不替代团体累计。"
+            ],
+            "evidence": {}
+          },
+          "chart": "Circle Retail Album Chart",
+          "metricField": "rowSum",
+          "artist": "Geenius",
+          "album": "Spoiler Book (WITHVUU)",
+          "barcode": "8800331307821",
+          "distributor": "코팬글로벌",
+          "dayRows": [
+            {
+              "date": "2026-05-18",
+              "album": "Spoiler Book (WITHVUU)",
+              "barcode": "8800331307821",
+              "sales": 217,
+              "domestic": 217,
+              "overseas": 0,
+              "rank": 41,
+              "sourceUrl": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20260518",
+              "checkedAt": "2026-10-28T13:19:22.345069+00:00",
+              "responseSha256": "7668d572643255223325cb0b9bc0a28e553968c9da8d4837f32fcfc5deac88ef"
+            }
+          ],
+          "recomputedSum": 217,
+          "sourceEvidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/geenius-retail-observations.json",
+          "coverageComplete": false
+        }
       },
       "wins": {
         "observedValue": 0,

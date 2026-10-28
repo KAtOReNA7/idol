@@ -15,7 +15,7 @@ export function safePublicStageUrl(value:unknown):value is string {
 }
 function evidence(v:StageEvidence|undefined){return !!v&&typeof v.note==='string'&&!!v.note.trim()&&Array.isArray(v.urls)&&v.urls.length>0&&v.urls.every(safePublicStageUrl);}
 function date(v:unknown){return typeof v==='string'&&/(?:Z|\+00:00)$/.test(v)&&Number.isFinite(Date.parse(v))&&Date.parse(v)<=Date.now()+60000;}
-function validSelection(v:StageSelection|undefined){return v===undefined||!!v&&typeof v==='object'&&!Array.isArray(v)&&occasions.has(v.occasion)&&evidence(v.evidence);}
+function validSelection(v:StageSelection|undefined){return v===undefined||!!v&&typeof v==='object'&&!Array.isArray(v)&&occasions.has(v.occasion)&&evidence(v.evidence)&&(v.camera===undefined||!!v.camera&&['fixed','moving','mixed'].includes(v.camera.mode)&&evidence(v.camera.evidence));}
 // Historical source records remain structurally verifiable. Eligibility for the
 // current viewing queue is applied separately, without changing score bindings.
 export function validStageAlternative(a:StageAlternative):boolean{
@@ -24,7 +24,7 @@ export function validStageAlternative(a:StageAlternative):boolean{
  if(!['official','audience_original','press_original'].includes(a.sourceClass)||!['full_group','subunit','solo'].includes(a.performerScope)||!['full','excerpt'].includes(a.completeness))return false;
  if(a.performanceType==='practice_room'&&(a.sourceClass!=='official'||a.completeness!=='full'||a.selection?.occasion!=='practice_room'))return false;
  if(a.selection?.occasion==='practice_room'&&a.performanceType!=='practice_room')return false;
- if(a.selection?.occasion==='music_program'&&['concert_stage','showcase_stage','press_concert_recording'].includes(a.performanceType))return false;
+ if(['music_program','produced_performance','studio_live','special_program'].includes(a.selection?.occasion??'')&&['concert_stage','showcase_stage','press_concert_recording'].includes(a.performanceType))return false;
  if(practiceTitle.test(`${a.title} ${a.kind}`)&&a.performanceType!=='practice_room')return false;
  if(a.performanceType==='press_concert_recording'&&(a.sourceClass!=='press_original'||a.completeness!=='full'))return false;
  if(a.sourceClass==='press_original'&&a.performanceType!=='press_concert_recording')return false;
@@ -46,7 +46,7 @@ export function validStageAlternative(a:StageAlternative):boolean{
 }
 export function validStageWatchLead(a:StageWatchLead):boolean{
  if(!a||typeof a!=='object'||Array.isArray(a)||a.sourceClass!=='official'||a.completeness!=='unconfirmed'||a.scorePolicy!=='view_only'||!platforms.has(a.platform)||!['full_group','subunit','solo','unconfirmed'].includes(a.performerScope)||!validSelection(a.selection))return false;
- if(a.selection?.occasion==='practice_room'||a.selection?.occasion==='music_program'&&['official_concert_full_event','official_showcase_full_event'].includes(a.sourceType))return false;
+ if(a.selection?.occasion==='practice_room'||['music_program','produced_performance','studio_live','special_program'].includes(a.selection?.occasion??'')&&['official_concert_full_event','official_showcase_full_event'].includes(a.sourceType))return false;
  const keys=new Set(['id','platform','sourceId','sourceClass','performerScope','completeness','selection','url','title','channel','sourceType','kind','checkedAt','scorePolicy','sourceEvidence','sameSongEvidence','reason','leadTimeSeconds','leadTimeEvidence']);
  if(Object.keys(a).some(k=>!keys.has(k))||!['official_livestream_song_lead','official_multi_song_live_clip','official_showcase_full_event','official_concert_full_event','official_compilation','official_television_program'].includes(a.sourceType))return false;
  if(![a.id,a.sourceId,a.title,a.channel,a.kind,a.reason].every(v=>typeof v==='string'&&!!v.trim())||!safePublicStageUrl(a.url)||!date(a.checkedAt)||!evidence(a.sourceEvidence)||!evidence(a.sameSongEvidence))return false;
@@ -67,13 +67,13 @@ export function validStageSearchReview(r:StageSearchReview):boolean{
 function alternativeVisible(a:StageAlternative){
  if(rejectedVideoIds.has(a.sourceId))return false;
  if(a.selection&&excludedOccasions.has(a.selection.occasion))return false;
- if(['concert_stage','showcase_stage','press_concert_recording'].includes(a.performanceType))return !!a.selection&&a.selection.occasion!=='unconfirmed';
+ if(['concert_stage','showcase_stage','press_concert_recording'].includes(a.performanceType))return false;
  return true;
 }
 function watchLeadVisible(a:StageWatchLead){
  return !rejectedVideoIds.has(a.sourceId)&&!['official_concert_full_event','official_showcase_full_event'].includes(a.sourceType)&&!(a.selection&&excludedOccasions.has(a.selection.occasion));
 }
-function selectionPriority(a:{selection?:StageSelection}){return a.selection?.occasion==='music_program'?0:a.selection?.occasion==='practice_room'?1:2;}
+function selectionPriority(a:{selection?:StageSelection}){return a.selection?.occasion==='music_program'?0:a.selection?.occasion==='practice_room'?(a.selection.camera?.mode==='fixed'?1:2):a.selection?.occasion==='produced_performance'?3:4;}
 export function stageSupplementForWork(recordId:string):StageSupplement|null{
  const row=(metadata.works as Record<string,StageSupplement>)[recordId];if(!row)return null;
  const alternatives=Array.isArray(row.alternatives)?row.alternatives.filter(validStageAlternative).filter(alternativeVisible).sort((a,b)=>selectionPriority(a)-selectionPriority(b)):[];

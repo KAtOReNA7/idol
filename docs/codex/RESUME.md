@@ -1,6 +1,18 @@
 # 接续：正式v200与舞台／人物／统计缺口
 
-## 最新交付：v200上线，5项X人数与11作品人物资料（2026-10-28）
+## 当前未发布增量（2026-10-28；覆盖下方v200发布时队列）
+
+用户要求全部任务完成后再发布。**正式站仍v200，当前分支新增内容尚未上线**；不得保存新Sites版本或请求部署。GitHub同步以 `evidence/20261028-post-v200/github-sync.json` 为准，和正式发布分别记录。
+
+当前496舞台：新增MADEIN DADARIDA、XG IYKYK、LE SSERAFIM SPAGHETTI成员版3项；Right Now换为固定机位并完整保留旧来源。新鲜owner导出分别在13:34:46Z与14:32:13Z完成空分/完整206日志核对，私人写入0，备份仅本机忽略保存，已过期后不可继续用来换绑。新增缺口109、旧活动来源替换11；另9项有意保留团体占位不是9首缺歌名的作品。
+
+公开资料102作品527参考槽/233份既有原件，24作品待具名证据；9未知统计（销量6/一位3）、7事实日期与tripleS差360,703开放。Geenius217仅单日Retail下界；tripleS下界2,098,086。UDTT报道提前到4/30本人采访，不改实际生效日。现有认人图缺口0，4张新增原始舞台封面，全部旧设计/原图/ID/关系/个人数据/权限保持。
+
+最新政策允许完整同语种官方成员版后备，明确客串范围差异；对应原版优先，各范围内部打歌→练习室（同条件固定机位）→官方制作表演。不同语种/混音/节选/只有外部艺人或舞者不适用，0分或任何保存记录均不能换绑。成员版保持versionMatch:false，不能放宽完整原版校验来凑数量。
+
+先读 [本轮报告](post-v200-completion-progress-20261028.md)、[舞台剩余队列](evidence/20261028-post-v200/remaining-stage-ledger.json)、[人物统计日期队列](evidence/20261028-post-v200/remaining-person-statistics.json)。本轮已导项不要重复；全部工作未完成，不能将有界研究和分类完成写成内容全部补齐。个人页排版仍待用户决定。
+
+## 最新交付：v200上线，5项X人数与11作品人物资料（历史发布记录）
 
 正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已为 **v200 / succeeded**。GitHub实现 `aac36bd631ee1a84780fa1dbfb404561bba32dcf` 已推送并读回；本轮分支 `codex/stage-person-followup-v199-20261028` / [PR45](https://github.com/KAtOReNA7/idol/pull/45) 以PR44分支为base。PR44、PR45均draft/open、未合main。Sites源 `e27a7adf04140b130cd1d10568100c13f6258bde`，部署 `appgdep_6ae1efcd18648191bc43e2760bc2f9eb`，回执 `docs/codex/evidence/20261028-v200/publication.json`。GitHub与部署分别核对，不重复部署已成功版本。
 

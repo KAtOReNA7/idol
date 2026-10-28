@@ -9,7 +9,19 @@
 3. 干净后从最新origin/main新建codex/任务分支。如果main已包含v200实现，使用该最新main；否则普通merge最新PR45远端（已包含PR44）。仅PR44合并时仍须纳入PR45。不要从旧逐团分支续作，不要仅拉PR44而丢失v200，不重复合PR43/辅助资产分支。
 4. 依次读本文件、AGENTS.md、STATUS.md、RESUME.md、[本轮报告](v200-evidence-followup-20261028.md)、[v199历史报告](continuous-stage-person-report-20261028.md)、[舞台政策](stage-selection-policy-20261028.md)与[选图政策](identity-photo-selection-policy-20261027.md)。以本轮两份剩余队列为准。
 
-## 最新交付：v200上线，5项X人数与11作品人物资料（2026-10-28）
+## 当前未发布增量（2026-10-28；覆盖下方v200发布时队列）
+
+用户要求全部任务完成后再发布。**正式站仍v200，当前分支新增内容尚未上线**；不得保存新Sites版本或请求部署。GitHub同步以 `evidence/20261028-post-v200/github-sync.json` 为准，和正式发布分别记录。
+
+当前496舞台：新增MADEIN DADARIDA、XG IYKYK、LE SSERAFIM SPAGHETTI成员版3项；Right Now换为固定机位并完整保留旧来源。新鲜owner导出分别在13:34:46Z与14:32:13Z完成空分/完整206日志核对，私人写入0，备份仅本机忽略保存，已过期后不可继续用来换绑。新增缺口109、旧活动来源替换11；另9项有意保留团体占位不是9首缺歌名的作品。
+
+公开资料102作品527参考槽/233份既有原件，24作品待具名证据；9未知统计（销量6/一位3）、7事实日期与tripleS差360,703开放。Geenius217仅单日Retail下界；tripleS下界2,098,086。UDTT报道提前到4/30本人采访，不改实际生效日。现有认人图缺口0，4张新增原始舞台封面，全部旧设计/原图/ID/关系/个人数据/权限保持。
+
+最新政策允许完整同语种官方成员版后备，明确客串范围差异；对应原版优先，各范围内部打歌→练习室（同条件固定机位）→官方制作表演。不同语种/混音/节选/只有外部艺人或舞者不适用，0分或任何保存记录均不能换绑。成员版保持versionMatch:false，不能放宽完整原版校验来凑数量。
+
+先读 [本轮报告](post-v200-completion-progress-20261028.md)、[舞台剩余队列](evidence/20261028-post-v200/remaining-stage-ledger.json)、[人物统计日期队列](evidence/20261028-post-v200/remaining-person-statistics.json)。本轮已导项不要重复；全部工作未完成，不能将有界研究和分类完成写成内容全部补齐。个人页排版仍待用户决定。
+
+## 最新交付：v200上线，5项X人数与11作品人物资料（历史发布记录）
 
 正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已为 **v200 / succeeded**。GitHub实现 `aac36bd631ee1a84780fa1dbfb404561bba32dcf` 已推送并读回；本轮分支 `codex/stage-person-followup-v199-20261028` / [PR45](https://github.com/KAtOReNA7/idol/pull/45) 以PR44分支为base。PR44、PR45均draft/open、未合main。Sites源 `e27a7adf04140b130cd1d10568100c13f6258bde`，部署 `appgdep_6ae1efcd18648191bc43e2760bc2f9eb`，回执 `docs/codex/evidence/20261028-v200/publication.json`。GitHub与部署分别核对，不重复部署已成功版本。
 
@@ -21,7 +33,7 @@
 
 下一台电脑先保护本地修改，显式fetch main、PR44分支与PR45分支并核两PR。干净后从最新origin/main新建codex/任务分支；若main尚未包含v200，普通merge最新PR45远端（已包含PR44），不能只接PR44或用旧main覆盖。保留本机stash `7779dd2e08e211b1219c474b16838e9915ee1a0e`（8已修改＋8未跟踪），不自动重放旧v196补丁。禁止reset/clean/强推。最新报告 `docs/codex/v200-evidence-followup-20261028.md`，当前队列在 `docs/codex/evidence/20261028-v200/remaining-person-statistics.json` 和 `remaining-stage-ledger.json`；下方v199及更早章节均是历史。
 
-## 当前队列与优先办法
+## v200发布时队列与优先办法（历史，当前以前文为准）
 
 - [人物/统计队列](evidence/20261028-v200/remaining-person-statistics.json)：35作品人物证据、10未知统计（7销量、3一位）、7事实生效日期及tripleS独立差额。只证部分便保留部分；录音、发行、创作、封套与MV出镜是不同事实，不能推定全员或扩大私人关系。五项X人工观察已采用，不再重复索取。
 - [舞台队列](evidence/20261028-v200/remaining-stage-ledger.json)：112新增缺口，分类为场合/类型29、未找到合规来源34、完整范围3、参与者14、语种/编配28、原发/访问4；另11旧来源替换单列。493有源不等于493全符合新标准。v198新增11练习室、v199替换8舞台均不重做；队列中的旧研究记录与v200新增12作品研究分别注明范围。
@@ -45,4 +57,4 @@ v200包1421文件、展开45,805,568bytes；服务端归一化archive的大小/h
 
 请接续 https://github.com/KAtOReNA7/idol 。先保护本地未提交与未跟踪文件，显式fetch origin/main、codex/statistics-relations-followup-20261027和codex/stage-person-followup-v199-20261028，核对PR44/PR45。干净后从最新origin/main建codex/任务分支；若main未包含v200，普通merge最新PR45远端（已含PR44）。不要reset、clean或强推，不自动恢复旧stash。
 
-依次阅读docs/codex/NEXT-COMPUTER-HANDOFF.md、AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md、docs/codex/v200-evidence-followup-20261028.md及其当前队列。正式工程apps/idol-site/，正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已上线v200。493舞台，112新增缺口与11旧来源替换；公开人物91作品488参考槽，35作品待证；10未知统计、7事实日期及tripleS366550差额仍开放。五项X已采用，现有关系认人缺口0；所有已导批次不重做。按打歌优先、完整官方练习室其次继续，保留设计、原图、ID/关系、评分、访问及owner鉴权。优先内置页，不复用已结束的Chrome授权；先核远端和线上，再实际开发，同步代码/证据/交接，GitHub和正式部署分别验证。
+依次阅读docs/codex/NEXT-COMPUTER-HANDOFF.md、AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md、docs/codex/post-v200-completion-progress-20261028.md及evidence/20261028-post-v200/当前两份剩余队列。正式工程apps/idol-site/，正式站仍v200/493舞台；当前分支未发布增量496舞台、109新增缺口与11旧来源替换，102作品527参考槽、24待证，9未知统计、7事实日期和tripleS360703差额仍开放。9空歌曲行是有意保留团体占位，不猜歌。新增DADARIDA、IYKYK、SPAGHETTI成员版和Right Now固定机位已采用，所有旧批次不要重导。对应原版优先，打歌→练习室（同条件固定机位优先）→官方制作表演；允许完整同语种官方成员版后备，明确客串差异。再次换绑须重新取得真实新鲜owner导出，不修改capturedAt。保留设计、原图、ID/关系、个人评分/备注/观看、访问与owner鉴权；优先内置页，不复用旧Chrome授权。全部任务完成前不保存新Sites版本、不部署；继续实际开发，GitHub同步与正式发布分别留证。

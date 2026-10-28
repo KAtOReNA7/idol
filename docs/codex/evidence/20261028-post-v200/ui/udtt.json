@@ -1,0 +1,308 @@
+{
+  "checkedAt": "2026-10-28T14:37:06.193Z",
+  "base": "http://127.0.0.1:4271",
+  "flow": "UDTT timeline -> Jessica report and 17 Carat K-Pop link -> exact allowed destination; URL/event tampering blocked",
+  "environment": "isolated headless Chromium fresh context; Browser plugin not available; no user Chrome profile",
+  "dataMode": "local public display fixtures only, ten already-public editorial originals plus byte-verified existing public native portrait; external article destinations intercepted",
+  "preparationCorrections": [
+    "artist scope retained",
+    "public 10-entry viewer served",
+    "exact native public portrait binding and bytes served",
+    "canonical #/udtt/timeline route"
+  ],
+  "applicationEdits": 0,
+  "productionQa": false,
+  "ownerLoginOrSaveTested": false,
+  "privateDataReads": 0,
+  "layouts": [
+    {
+      "width": 390,
+      "url": "http://127.0.0.1:4271/artists/udtt#/udtt/timeline",
+      "title": "stage. · 私人女团手帐",
+      "records": [
+        {
+          "eventId": "e-udtt-jessica-provisional-join-candidate",
+          "date": "2025-04-30",
+          "links": [
+            {
+              "href": "https://www.hellokpop.com/interview/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview/",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null,
+              "identity": true
+            },
+            {
+              "href": "https://sports.donga.com/ent/article/all/20250509/131571164/1",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null,
+              "identity": true
+            },
+            {
+              "href": "https://17caratkpop.substack.com/p/feel-the-school-rush-with-udtt",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null,
+              "identity": true
+            }
+          ]
+        },
+        {
+          "eventId": "e-udtt-sena-predebut-departure-candidate",
+          "date": null,
+          "links": [
+            {
+              "href": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null,
+              "identity": true
+            }
+          ]
+        }
+      ],
+      "panelWidth": 390,
+      "panelScrollWidth": 390,
+      "viewport": 390,
+      "documentScrollWidth": 390,
+      "overlay": false
+    },
+    {
+      "width": 1440,
+      "url": "http://127.0.0.1:4271/artists/udtt#/udtt/timeline",
+      "title": "stage. · 私人女团手帐",
+      "records": [
+        {
+          "eventId": "e-udtt-jessica-provisional-join-candidate",
+          "date": "2025-04-30",
+          "links": [
+            {
+              "href": "https://www.hellokpop.com/interview/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview/",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null,
+              "identity": true
+            },
+            {
+              "href": "https://sports.donga.com/ent/article/all/20250509/131571164/1",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null,
+              "identity": true
+            },
+            {
+              "href": "https://17caratkpop.substack.com/p/feel-the-school-rush-with-udtt",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null,
+              "identity": true
+            }
+          ]
+        },
+        {
+          "eventId": "e-udtt-sena-predebut-departure-candidate",
+          "date": null,
+          "links": [
+            {
+              "href": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null,
+              "identity": true
+            }
+          ]
+        }
+      ],
+      "panelWidth": 1440,
+      "panelScrollWidth": 1440,
+      "viewport": 1440,
+      "documentScrollWidth": 1440,
+      "overlay": false
+    }
+  ],
+  "links": [
+    {
+      "width": 390,
+      "expected": "https://17caratkpop.substack.com/p/feel-the-school-rush-with-udtt",
+      "actual": "https://17caratkpop.substack.com/p/feel-the-school-rush-with-udtt",
+      "pass": true,
+      "externalBodyFetched": false
+    },
+    {
+      "width": 1440,
+      "expected": "https://17caratkpop.substack.com/p/feel-the-school-rush-with-udtt",
+      "actual": "https://17caratkpop.substack.com/p/feel-the-school-rush-with-udtt",
+      "pass": true,
+      "externalBodyFetched": false
+    }
+  ],
+  "guards": [
+    {
+      "test": "tampered new source URL",
+      "blocked": true
+    },
+    {
+      "test": "tampered report event identity",
+      "blocked": true
+    }
+  ],
+  "assets": [
+    {
+      "assetId": "udtt-hero",
+      "bytes": 245638,
+      "sha256": "c55959059143b87732e514646b3d81104bbc7195a5379c98c5720c50487945bf",
+      "verified": true
+    },
+    {
+      "assetId": "udtt-han-chaehee",
+      "bytes": 346270,
+      "sha256": "d8665766996b02bd6e2d9474c0762028faad3a1c09c91e2f283ed264be0efbb7",
+      "verified": true
+    },
+    {
+      "assetId": "udtt-gu-hanna",
+      "bytes": 324365,
+      "sha256": "a073524053353a2fb90831059af37edcc8c2753fbc519b383711ec693301b8b7",
+      "verified": true
+    },
+    {
+      "assetId": "udtt-really-really-mv",
+      "bytes": 101380,
+      "sha256": "4139391550e96a783d920ff4cbb6563b864684b299089cebbc550f8de44ab0c1",
+      "verified": true
+    },
+    {
+      "assetId": "udtt-retry-cover",
+      "bytes": 8884,
+      "sha256": "a197a59f8ced877376e9434b9c7dfd9f053e6f36412e7cfd5d788778300fa82c",
+      "verified": true
+    },
+    {
+      "assetId": "udtt-school-rush-cover",
+      "bytes": 18732,
+      "sha256": "fd945ca10f63316bd436437b7a8d89d72ac475f16880ac3f969894de551bf104",
+      "verified": true
+    },
+    {
+      "assetId": "udtt-viper-cover",
+      "bytes": 28424,
+      "sha256": "aa208cffba81469787c5b4807310e5ceabd1d4abd4d039cc45c2d422aa27f270",
+      "verified": true
+    },
+    {
+      "assetId": "udtt-risako",
+      "bytes": 282674,
+      "sha256": "c5c5b1b2e9c486cd30683454b3a20319d4f8bad246f7e7778163779fa11bdda6",
+      "verified": true
+    },
+    {
+      "assetId": "udtt-really-really-stage",
+      "bytes": 110130,
+      "sha256": "96bec21c388b48ec491b09b40e3b48601fae39df100e85faa6d8079889db5d95",
+      "verified": true
+    },
+    {
+      "assetId": "udtt-kwon-yejin",
+      "bytes": 312851,
+      "sha256": "63b26c338b52e00f599df134b76ababf49535c3a177c7e06323d8594f3fa9cae",
+      "verified": true
+    },
+    {
+      "assetId": "udtt-native-lu",
+      "bytes": 22101,
+      "sha256": "b80720a772b8000518fad7d71e0b3c5867a8dbef7b4c2219dcaf2ec58dba8ca9",
+      "verified": true
+    }
+  ],
+  "apiFixtures": [
+    {
+      "active": "udtt@390",
+      "path": "/api/catalog",
+      "query": "?artist=udtt&shape=display-v1"
+    },
+    {
+      "active": "udtt@390",
+      "path": "/api/editorial-assets/viewer",
+      "query": ""
+    },
+    {
+      "active": "udtt@390",
+      "path": "/api/media",
+      "query": "?table=members&record=recvxAPQCF66Sl&index=0"
+    },
+    {
+      "active": "udtt@390",
+      "path": "/api/editorial-assets",
+      "query": "?manifest=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&asset=udtt-retry-cover&version=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "active": "udtt@390",
+      "path": "/api/editorial-assets",
+      "query": "?manifest=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&asset=udtt-school-rush-cover&version=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "active": "udtt@390",
+      "path": "/api/editorial-assets",
+      "query": "?manifest=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&asset=udtt-viper-cover&version=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "active": "udtt@1440",
+      "path": "/api/catalog",
+      "query": "?artist=udtt&shape=display-v1"
+    },
+    {
+      "active": "udtt@1440",
+      "path": "/api/editorial-assets/viewer",
+      "query": ""
+    },
+    {
+      "active": "udtt@1440",
+      "path": "/api/media",
+      "query": "?table=members&record=recvxAPQCF66Sl&index=0"
+    },
+    {
+      "active": "udtt@1440",
+      "path": "/api/editorial-assets",
+      "query": "?manifest=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&asset=udtt-retry-cover&version=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "active": "udtt@1440",
+      "path": "/api/editorial-assets",
+      "query": "?manifest=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&asset=udtt-school-rush-cover&version=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "active": "udtt@1440",
+      "path": "/api/editorial-assets",
+      "query": "?manifest=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&asset=udtt-viper-cover&version=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  ],
+  "unexpectedApi": [],
+  "applicationWrites": [],
+  "console": [],
+  "pageErrors": [],
+  "httpErrors": [],
+  "externalNavigationRequests": [
+    "https://17caratkpop.substack.com/p/feel-the-school-rush-with-udtt",
+    "https://17caratkpop.substack.com/p/feel-the-school-rush-with-udtt"
+  ],
+  "screenshots": [
+    "C:/Users/61919/AppData/Local/Temp/idol-post200-udtt-public-qa/udtt-390-initial.png",
+    "C:/Users/61919/AppData/Local/Temp/idol-post200-udtt-public-qa/udtt-390-report.png",
+    "C:/Users/61919/AppData/Local/Temp/idol-post200-udtt-public-qa/udtt-1440-initial.png",
+    "C:/Users/61919/AppData/Local/Temp/idol-post200-udtt-public-qa/udtt-1440-report.png"
+  ],
+  "failures": [],
+  "status": "passed",
+  "visualReview": {
+    "inspectedAt": "2026-10-28T14:41:37.988Z",
+    "screenshotsInspected": 4,
+    "result": "390 and1440 initial and report screenshots inspected: readable text, coherent wrapping, no visible clipping/overlap/missing artwork in exercised timeline views.",
+    "newSourceVisible": true
+  },
+  "preparationAttempt": {
+    "status": "test_assertion_corrected",
+    "applicationIssue": false,
+    "detail": "Initial successful mount normalized /artists/udtt/ to /artists/udtt. Exact trailing-slash assertion was corrected to accept framework canonical path; no application change.",
+    "localReceipt": "C:/Users/61919/AppData/Local/Temp/idol-post200-udtt-public-qa/preparation-attempt-url.json"
+  }
+}

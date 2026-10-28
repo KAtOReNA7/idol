@@ -6,6 +6,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
 import {writeCompletionReport} from '../scripts/build-completion-report.mjs';
+import {beforePostV200Statistics} from './helpers/post-v200-statistics.cjs';
 import {beforeUserXObservations, userXObservationEvidence as evidence} from './helpers/user-x-observations.cjs';
 
 const data = JSON.parse(fs.readFileSync('data/group-statistics-completion-evidence.json', 'utf8'));
@@ -54,20 +55,21 @@ test('five direct user observations retain their source precision, date and exac
 });
 
 test('restoring precisely five social rows and two summary fields reproduces the complete frozen v199 statistics', () => {
+  const v200Data = beforePostV200Statistics(data);
   const original = beforeUserXObservations(data);
   assert.equal(hash(original), '925a0b8ccdf3852197adfa61f522d1427ad9ef8c0b718677e44b1d58ef7362b6');
   assert.equal(hash(original), evidence.expectedBeforeDataSha256Canonical);
-  assert.equal(hash(data), evidence.proposedAfterDataSha256Canonical);
-  assert.deepEqual(data.summary, {...original.summary, socialObserved: 153, socialFallbackZero: 0});
-  const unresolved = Object.values(data.groups).flatMap(group =>
+  assert.equal(hash(v200Data), evidence.proposedAfterDataSha256Canonical);
+  assert.deepEqual(v200Data.summary, {...original.summary, socialObserved: 153, socialFallbackZero: 0});
+  const unresolved = Object.values(v200Data.groups).flatMap(group =>
     [...group.social, group.sales, group.wins].filter(row => row.observedValue === null));
   assert.equal(unresolved.length, 10);
-  assert.equal(data.summary.salesFallbackZero, 7);
-  assert.equal(data.summary.winsFallbackZero, 3);
-  assert.equal(data.groups.triples.sales.observedValue, 2092239);
-  assert.equal(data.groups.triples.sales.evidence.sourceDifferenceReview.remainingDifference, 366550);
-  assert.equal(data.groups.fromis9.sales.observedValue, 1152076);
-  assert.deepEqual(data.summary.unresolvedSourceDifferences, ['triples.sales']);
+  assert.equal(v200Data.summary.salesFallbackZero, 7);
+  assert.equal(v200Data.summary.winsFallbackZero, 3);
+  assert.equal(v200Data.groups.triples.sales.observedValue, 2092239);
+  assert.equal(v200Data.groups.triples.sales.evidence.sourceDifferenceReview.remainingDifference, 366550);
+  assert.equal(v200Data.groups.fromis9.sales.observedValue, 1152076);
+  assert.deepEqual(v200Data.summary.unresolvedSourceDifferences, ['triples.sales']);
 });
 
 test('all five X accounts are visible with established display rounding and user-source labels', async () => {
@@ -105,7 +107,7 @@ test('the generated report uses current statistics while clearly dating its hist
   assert.match(html, /<h2 id="portraits">MV图片与成员评分（2026-10-26历史盘点）<\/h2>/);
   assert.match(html, /下载2026-10-26历史待补认人图清单（CSV，不代表当前缺口）/);
   assert.match(html, /153个已核实账号：153项人数可用，0项人数待核/);
-  assert.match(html, /44团有范围明确的销量数据，7团暂缺/);
+  assert.match(html, /45团有范围明确的销量数据，6团暂缺/);
   assert.doesNotMatch(html, /147项人数可用|6项未查得可靠数字|42团有范围明确/);
   for (const [slug, url, , , display] of expected) assert.ok(html.includes(`<a href="${url}">${display}</a>`), slug);
 });

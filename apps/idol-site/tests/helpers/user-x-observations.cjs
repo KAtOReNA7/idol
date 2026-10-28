@@ -1,6 +1,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const {beforePostV200Statistics} = require('./post-v200-statistics.cjs');
 
 const evidence = JSON.parse(fs.readFileSync(path.resolve(__dirname,
   '../../../../docs/codex/evidence/20261028-v200/statistics/user-x-observations.json'), 'utf8'));
@@ -8,7 +9,7 @@ const evidence = JSON.parse(fs.readFileSync(path.resolve(__dirname,
 // Reconstruct v199 for historical cohort tests without replacing their frozen hashes.
 // The exact current five objects must match this reviewed increment before restoration.
 function beforeUserXObservations(current) {
-  const restored = structuredClone(current);
+  const restored = beforePostV200Statistics(current);
   for (const change of evidence.changes) {
     const slug = change.key.split('.')[0];
     const index = change.accountIndex;

@@ -93,14 +93,14 @@ test('three disjoint official Album weekly rows recompute the limited counts wit
   assert.match(grounding.uiRenderScriptExcerpt, /Row_Album_CNT/);
 });
 
-test('all nine original unknown sales receive a result while the single-day Retail figure stays unapplied', () => {
+test('the historical nine-item audit retains its then-unapplied single-day Retail finding', () => {
   assert.equal(research.items.length, 9);
   assert.equal(new Set(research.items.map(item => item.key)).size, 9);
   const retail = research.items.find(item => item.key === 'geenius.sales');
   assert.equal(retail.value, 217);
   assert.equal(retail.status, 'conditional_scoped_retail_lower_bound');
   assert.equal(retail.metric, 'circle_retail_album_daily_count');
-  assert.equal(data.groups.geenius.sales.observedValue, null);
+  assert.equal(historicalData.groups.geenius.sales.observedValue, null);
   for (const slug of ['vvup', 'tracer', 'witchx', 'spia', 'udtt', 'vcha']) {
     assert.equal(data.groups[slug].sales.observedValue, null);
     assert.ok(research.items.find(item => item.key === slug + '.sales').nextAction);

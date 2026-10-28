@@ -1,6 +1,18 @@
 # 项目协作入口
 
-## 最新交付：v200上线，5项X人数与11作品人物资料（2026-10-28）
+## 最新执行要求：全部任务完成前持续开发，暂不发布（2026-10-28）
+
+用户进一步批准合作曲的完整、同语种官方成员版作为后备，必须明确标注“成员版／客串范围不同”。对应原版合格来源仍优先；成员版只放宽客串范围，不放宽歌曲、语种、其他编配、完整性或本团实际参与。仅原舞台分为空且完整保存日志无该作品记录时可采用，0分不为空；旧评分、旧来源和历史不得转移。证据不足保留待核，不把versionMatch改成true。本轮规则与增量均未发布，线上仍v200。
+
+用户随后放宽舞台后备：优先电视台常规打歌，其次练习室且同条件固定机位优先；都找不到时允许完整、同版本的官方专门拍摄表演视频（如ITZY Voltage Special Dance Clip、NMIXX MEXE Official Dance Video）。准确标注类型，不冒称现场人声。该决定覆盖此前一概暂不采用棚拍Performance/Dance/Choreo视频的限制；不扩大至演唱会/活动或错误歌曲/语种/片段。评分换绑仍需新鲜核对。
+
+用户明确要求继续所有剩余任务，不以小批次、GitHub同步或发布作为停工条件；全部任务完成后才发布。正式站保持v200，后续增量先在当前PR45分支本地实现、核验并记录。不得保存/部署v201等新正式版本。某类来源或浏览器受阻只暂停对应操作，继续其他可行类别；不得为了完成计数虚构名单、统计或舞台。当前工作证据在 `docs/codex/evidence/20261028-post-v200/`。个人页统一排版仍待用户决定，旧一次性Chrome授权不复用。
+
+## 当前本地进度：496舞台，未发布（2026-10-28）
+
+3新增舞台＋Right Now固定机位替换已通过两份真实新鲜owner导出核验；新增缺口109、旧活动替换11。公开人物102作品527槽/233旧原件，24待证；9未知统计、7生效日、tripleS差360703开放。Geenius217为单日Retail下界，tripleS下界2098086，UDTT4/30仅采访发表日。9空歌曲行是已证有意保留团体占位，不猜歌。报告 `docs/codex/post-v200-completion-progress-20261028.md`，当前队列 `docs/codex/evidence/20261028-post-v200/remaining-*.json`。GitHub与部署分别留证，正式站保持v200，不以本地496冒称线上已更新。
+
+## 最新交付：v200上线，5项X人数与11作品人物资料（历史发布记录）
 
 正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已为 **v200 / succeeded**。GitHub实现 `aac36bd631ee1a84780fa1dbfb404561bba32dcf` 已推送并读回；本轮分支 `codex/stage-person-followup-v199-20261028` / [PR45](https://github.com/KAtOReNA7/idol/pull/45) 以PR44分支为base。PR44、PR45均draft/open、未合main。Sites源 `e27a7adf04140b130cd1d10568100c13f6258bde`，部署 `appgdep_6ae1efcd18648191bc43e2760bc2f9eb`，回执 `docs/codex/evidence/20261028-v200/publication.json`。GitHub与部署分别核对，不重复部署已成功版本。
 

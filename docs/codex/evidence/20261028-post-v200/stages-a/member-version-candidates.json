@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T14:23:35Z",
+  "scope": "Nine collaboration-scope candidates from112 baseline pending works. Research and reviewed proposal only, not imported sources.",
+  "policy": {
+    "userAuthorized": "Full, same-language official target-group member versions may be fallback for collaboration songs with guest-scope difference visibly labelled.",
+    "priority": [
+      "qualified_exact_original_version",
+      "qualified_member_fallback_with_disclosure"
+    ],
+    "withinScope": [
+      "music_program",
+      "practice_room",
+      "official_dedicated_performance"
+    ],
+    "restrictions": [
+      "no_concert_tour_festival_commercial_event",
+      "no_other_language_or_remix",
+      "no_unverified_excerpt",
+      "target_group_must_be_present",
+      "owner_score_must_be_currently_empty_zero_is_not_empty"
+    ],
+    "inheritedEvidencePolicy": "Documentary completeness is disclosed separately from full playback and independent audio comparison."
+  },
+  "summary": {
+    "works": 9,
+    "readyForOwnerGuard": 1,
+    "held": 8,
+    "queryCount": 28,
+    "emptyQueryCount": 7,
+    "appliedSourcesByThisResearcher": 0,
+    "privateReads": 0,
+    "privateWrites": 0,
+    "applicationMutations": 0
+  },
+  "rawCache": {
+    "path": ".codex-local/stage-a-member-version-raw.json",
+    "sha256": "bf8e5dfcfbe8dd33c9d2a92ccd16bc580de1ccf5ac8671eba414ec598099dd92"
+  },
+  "metadataCache": {
+    "path": ".codex-local/stage-a-member-watch/metadata.json",
+    "sha256": "2fb49d6826bd6900f0a07e0e5dbfe261da0d234ecfde85794d91342ea0234da7"
+  },
+  "captionAttempts": {
+    "cache": ".codex-local/stage-a-member-watch/caption-attempt-summary.json",
+    "sha256": "77f4122f94b811cabb5e74074ef9a5dd3118509ba183ab20922bbef75e0c25bd",
+    "videos": [
+      "OsPt0BY1_Wk",
+      "jygGZMvtf0c"
+    ],
+    "result": "Public caption URLs returned HTTP200 but zero bytes; no transcript or audio comparison achieved, no retry."
+  },
+  "records": [
+    {
+      "workId": "rec28ldfRTrFYu",
+      "artist": "YOUNG POSSE",
+      "song": "YOUNG POSSE UP (feat. Verbal Jint, NSW yoon, Token)",
+      "decision": "hold_completeness_and_member_scope_unverified",
+      "candidates": [
+        {
+          "videoId": "tx9GAZpxo0w",
+          "url": "https://www.youtube.com/watch?v=tx9GAZpxo0w",
+          "type": "official_choreography",
+          "durationSeconds": 152,
+          "priorMetadata": "docs/codex/evidence/20261028-stage-fill/research-a-pages.json",
+          "metadataRefreshed": false
+        }
+      ],
+      "evidence": [
+        {
+          "url": "https://youngposse.bstage.in/contents/65cdc6196a758c09850c726c",
+          "finding": "Artist-owned bStage lists the exact song choreography upload; rendered article body was empty."
+        },
+        {
+          "url": "https://music.bugs.co.kr/track/6232429?wl_ref=list_tr_08_ab",
+          "finding": "Licensed collaboration track is200seconds; separately credited guest performers."
+        },
+        {
+          "url": "https://music.bugs.co.kr/track/6218691?wl_ref=list_tr_08_ab",
+          "finding": "Earlier POSSE UP! track is138seconds, so duration alone cannot identify this152second upload."
+        }
+      ],
+      "remaining": "Official video is48seconds shorter than the collaboration track; no first-party documentary closure that this is a complete named member arrangement rather than a shortened excerpt/other track. Guest-scope permission alone does not resolve it.",
+      "queryIds": [
+        "member-04",
+        "member-13",
+        "member-14",
+        "member28"
+      ]
+    },
+    {
+      "workId": "rec28ldfRTrLFz",
+      "artist": "ILLIT",
+      "song": "See U Tonight (feat. YUNAH & MINJU)",
+      "decision": "hold_no_qualified_source_found",
+      "candidates": [],
+      "evidence": [
+        {
+          "url": "https://www.dipe.co.kr/2323187",
+          "finding": "Contemporary release report identifies Yunah/Minju recording and Facetime-style MV with group appearances; this is not an independent full performance source."
+        }
+      ],
+      "remaining": "Bounded official-source and practice/program searches found MV/audio or unrelated practice-reaction combinations, not a full performance including ILLIT. Kylie solo tour clips are both wrong performer scope and excluded venue.",
+      "queryIds": [
+        "member-05",
+        "member-15",
+        "member-20"
+      ]
+    },
+    {
+      "workId": "recvxyHuKMDFye",
+      "artist": "aespa",
+      "song": "Welcome To MY World (Feat. nævis)",
+      "decision": "hold_main_availability_and_guest_audio_scope",
+      "candidates": [
+        {
+          "videoId": "_plU9O_4Pn8",
+          "url": "https://www.youtube.com/watch?v=_plU9O_4Pn8",
+          "kind": "program_main_stage",
+          "durationSeconds": 241,
+          "durationEvidence": "JTBC main clip, not fresh YouTube metadata",
+          "observedAt": "2026-10-28T14:09:42.735514+00:00",
+          "http": null,
+          "error": "TLS SSLEOFError; stopped without retry",
+          "likes": null
+        },
+        {
+          "videoId": "0TeYnotdeoE",
+          "url": "https://www.youtube.com/watch?v=0TeYnotdeoE",
+          "kind": "program_fullcam",
+          "durationSeconds": 236,
+          "channel": "Golden Disc",
+          "channelId": "UCesY-UN9tgibpFJ-lw3y_1A",
+          "http": 200,
+          "playability": "OK",
+          "checkedAt": "2026-10-28T13:44:29.298375+00:00",
+          "likes": 21015,
+          "likesPrecision": "exact",
+          "sha256": "c3ae307fe2accda2dd6900ada6256d6e7ca833c002ae6b14ffc12c04f46822f8",
+          "metadataSource": "../stages-b/followup-watch-metadata.json"
+        }
+      ],
+      "evidence": [
+        {
+          "url": "https://tv.jtbc.co.kr/clip/pr10011498/pm10065684/vo10685910/view",
+          "finding": "First-party K-909 regular program main clip dated2023-05-13,241seconds. Not a concert."
+        },
+        {
+          "url": "https://theqoo.net/aespa/3100180277",
+          "finding": "Actually fetched HTML maps _plU9O_4Pn8 to main stage and0TeYnotdeoE to fullcam; does not replace first-party scope verification.",
+          "sha256": "550c075777216bb3468c1d0f4bffc0ecd5231f7cc766572860eb6c49732c814c"
+        },
+        {
+          "url": "https://www.reddit.com/r/kpop/comments/13gcbj3/aespa_welcome_to_my_world_jtbc_k909_episode_13/",
+          "finding": "Conflicting audience descriptions of member vocal replacement versus retained low-volume nævis backing; research lead only."
+        }
+      ],
+      "remaining": "Main source fresh playable status/likes unavailable; exact guest audio retention and original-versus-member scope not resolved. Main and fullcam must not be conflated. Parent elected no adoption from this evidence.",
+      "queryIds": [
+        "member-03"
+      ]
+    },
+    {
+      "workId": "recvxyOz5X6G1q",
+      "artist": "NMIXX",
+      "song": "Caution",
+      "decision": "hold_no_qualified_source_found",
+      "candidates": [
+        {
+          "videoId": "tZO08cGQxM4",
+          "url": "https://www.youtube.com/watch?v=tZO08cGQxM4",
+          "kind": "behind_scenes_not_complete_song"
+        }
+      ],
+      "evidence": [
+        {
+          "url": "https://kpopanswers.com/all-nmixx-music-videos-every-official-mv/",
+          "finding": "Catalog points to K-POPS! collaboration MV; unrelated NMIXX performance entries cannot prove this work."
+        }
+      ],
+      "remaining": "New exact official practice search empty. Existing behind-the-scenes source does not establish standalone complete performance. No qualifying source found in bounded search; not a nonexistence claim.",
+      "queryIds": [
+        "member-06",
+        "member-16"
+      ]
+    },
+    {
+      "workId": "recvxyOz5X9qGD",
+      "artist": "ITZY",
+      "song": "Like Magic",
+      "decision": "hold_no_qualified_source_found",
+      "candidates": [
+        {
+          "videoId": "t6bBDAlpQZs",
+          "url": "https://www.youtube.com/watch?v=t6bBDAlpQZs",
+          "kind": "original_collaboration_mv",
+          "durationSeconds": 186
+        }
+      ],
+      "evidence": [],
+      "remaining": "Search returned JYP collaboration MV/behind the scenes or different songs; no full ITZY member performance located. Original MV cannot fill separate stage slot.",
+      "queryIds": [
+        "member-07",
+        "member-17"
+      ]
+    },
+    {
+      "workId": "recvxyOz5XJWXT",
+      "artist": "LE SSERAFIM",
+      "song": "SPAGHETTI",
+      "decision": "ready_documented_member_fallback_pending_owner_guard",
+      "selectedVideoId": "OsPt0BY1_Wk",
+      "candidates": [
+        {
+          "videoId": "OsPt0BY1_Wk",
+          "title": "LE SSERAFIM (르세라핌) 'SPAGHETTI (Member ver.)' Dance Practice",
+          "channel": "LE SSERAFIM",
+          "channelId": "UCs-QBT4qkj_YiQw1ZntDO3g",
+          "url": "https://www.youtube.com/watch?v=OsPt0BY1_Wk",
+          "sourceUrl": "https://weverse.io/lesserafim/media/0-166157934",
+          "publishedAt": "2025-10-28T03:59:55-07:00",
+          "checkedAt": "2026-10-28T14:09:42.735514+00:00",
+          "durationSeconds": 146,
+          "completeness": "full",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "官方五人成员版练习室，客串范围与 feat. j-hope 的原发行不同；成员版／客串范围不同。LE SSERAFIM 官方标题及 Weverse 精确嵌入确认本片，Bugs 将 Member ver. 列为独立完整 137 秒曲目，视频为 146 秒；按官方发行资料核对完整成员版范围，未完整播放、未逐句比对实际音轨，clean/explicit 实际音轨未独立核验，练习室不代表现场人声。KBS 音乐节目虽优先，但其标题未明确该成员版范围，本轮未把未证节目纳入合格比较。",
+              "urls": [
+                "https://www.youtube.com/watch?v=OsPt0BY1_Wk",
+                "https://weverse.io/lesserafim/media/0-166157934",
+                "https://music.bugs.co.kr/track/6366521?wl_ref=list_tr_08_ab",
+                "https://www.soompi.com/article/1793795wpp/watch-le-sserafim-serves-spaghetti-piping-hot-in-new-dance-practice-video"
+              ]
+            }
+          },
+          "versionMatch": false,
+          "memberVersionFallback": {
+            "sameSong": true,
+            "sameLanguage": true,
+            "fullGroup": true,
+            "sameArrangementExceptGuest": true,
+            "differenceType": "guest_scope",
+            "groupId": "recvxyEBDZvpPh",
+            "guestDifference": "官方 Member ver.，由 LE SSERAFIM 五成员表演，不包含原合作版 j-hope 的客串演唱；不是原 feat. j-hope 版本。",
+            "evidence": {
+              "note": "Documentary correspondence: official Member ver. title and exact Weverse embed; licensed 137-second Member track is separately catalogued from feat. j-hope and English versions; contemporary release report specifies five-member practice without j-hope. Completeness/group/version flags describe this documentary basis, not full playback or an audio-equality comparison. Clean and ordinary Member catalog tracks are distinct; actual audio edition has not been independently compared.",
+              "urls": [
+                "https://www.youtube.com/watch?v=OsPt0BY1_Wk",
+                "https://weverse.io/lesserafim/media/0-166157934",
+                "https://music.bugs.co.kr/track/6366521?wl_ref=list_tr_08_ab",
+                "https://www.soompi.com/article/1793795wpp/watch-le-sserafim-serves-spaghetti-piping-hot-in-new-dance-practice-video"
+              ]
+            }
+          },
+          "languageVersionEvidence": {
+            "basis": "official_member_version_and_licensed_catalog_documentary_correspondence",
+            "note": "The official practice and licensed Member track have the same song and Korean/English original-language member-version title. English ver. is separately catalogued. Guest scope differs from original MV. No claim of exact original audio, full playback or independently verified clean/explicit edition.",
+            "urls": [
+              "https://www.youtube.com/watch?v=OsPt0BY1_Wk",
+              "https://weverse.io/lesserafim/media/0-166157934",
+              "https://music.bugs.co.kr/track/6366521?wl_ref=list_tr_08_ab",
+              "https://www.soompi.com/article/1793795wpp/watch-le-sserafim-serves-spaghetti-piping-hot-in-new-dance-practice-video"
+            ],
+            "independentAudioComparison": false
+          },
+          "likes": {
+            "value": 129442,
+            "display": "129,442",
+            "precision": "exact",
+            "checkedAt": "2026-10-28T14:09:42.735514+00:00",
+            "source": "YouTube primary watch-page accessibilityText"
+          },
+          "verificationNote": "官方五人成员版练习室，客串范围与 feat. j-hope 的原发行不同；成员版／客串范围不同。LE SSERAFIM 官方标题及 Weverse 精确嵌入确认本片，Bugs 将 Member ver. 列为独立完整 137 秒曲目，视频为 146 秒；按官方发行资料核对完整成员版范围，未完整播放、未逐句比对实际音轨，clean/explicit 实际音轨未独立核验，练习室不代表现场人声。KBS 音乐节目虽优先，但其标题未明确该成员版范围，本轮未把未证节目纳入合格比较。",
+          "pageSha256": "7e3abf4a9aa4b9c104fb980d118de1990327371be9a1deebbf5b24b8a8841c3a",
+          "eligibility": "eligible",
+          "scorePolicy": "score",
+          "fullPlaybackVerified": false,
+          "actualAudioComparison": false,
+          "cleanExplicitAudioCompared": false,
+          "label": "官方练习室 · 成员版／客串范围不同"
+        },
+        {
+          "videoId": "jygGZMvtf0c",
+          "title": "SPAGHETTI - LE SSERAFIM (르세라핌) [뮤직뱅크/Music Bank] | KBS 251024 방송",
+          "channel": "KBS Kpop",
+          "channelId": "UCeLPm9yH_a_QH8n6445G-Ow",
+          "url": "https://www.youtube.com/watch?v=jygGZMvtf0c",
+          "publishedAt": "2025-10-24T02:32:20-07:00",
+          "checkedAt": "2026-10-28T14:09:45.333178+00:00",
+          "durationSeconds": 160,
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "music_program",
+          "completeness": "not_independently_verified",
+          "selection": {
+            "occasion": "music_program",
+            "evidence": {
+              "note": "Official KBS Music Bank normal stage, not concert or 8D edit; precise Member/clean scope not stated by title and not independently resolved.",
+              "urls": [
+                "https://www.youtube.com/watch?v=jygGZMvtf0c"
+              ]
+            }
+          },
+          "versionMatch": false,
+          "eligibility": "version_unverified",
+          "scorePolicy": "view_only",
+          "likes": {
+            "value": 17695,
+            "display": "17,695",
+            "precision": "exact",
+            "checkedAt": "2026-10-28T14:09:45.333178+00:00",
+            "source": "YouTube primary watch-page accessibilityText"
+          },
+          "pageSha256": "712688491e04e9caaf5fa047d2dd8b7683e6bf1ce990c79ed20b3a3c73b94218",
+          "reason": "Music-program priority applies only after same-version eligibility; title does not identify Member versus original/clean edition. Do not infer completeness solely from total160seconds."
+        }
+      ],
+      "evidence": [
+        {
+          "url": "https://weverse.io/lesserafim/media/0-166157934",
+          "finding": "Artist first-party media page links the exact OsPt0BY1_Wk embed as Member ver. Dance Practice. Embedded request throttled; no retry. Independent earlier public watch-page read succeeded."
+        },
+        {
+          "url": "https://music.bugs.co.kr/track/6366521?wl_ref=list_tr_08_ab",
+          "finding": "Licensed ordinary Member track is137seconds and has LE SSERAFIM-only vocal credit; separate from feat.j-hope and English tracks."
+        },
+        {
+          "url": "https://music.bugs.co.kr/track/6367621?wl_ref=list_tr_08_ab",
+          "finding": "Clean Member is a distinct137second catalog entry, so equal duration alone cannot distinguish audio editions."
+        },
+        {
+          "url": "https://www.soompi.com/article/1793795wpp/watch-le-sserafim-serves-spaghetti-piping-hot-in-new-dance-practice-video",
+          "finding": "Contemporary practice release report describes five LE SSERAFIM members and absence of j-hope."
+        }
+      ],
+      "remaining": "Parent fresh owner empty-score, journals and binding checks still required. Documentary full member-version evidence is accepted under user policy; actual audio comparison, full playback and clean/explicit verification were not performed.",
+      "queryIds": [
+        "member-01",
+        "member-02",
+        "member-09",
+        "member-10",
+        "member-21",
+        "member-22",
+        "member-23",
+        "member25",
+        "member26"
+      ]
+    },
+    {
+      "workId": "recvxyOz5XKzE5",
+      "artist": "LE SSERAFIM",
+      "song": "UNFORGIVEN (Japanese Ver.)",
+      "decision": "hold_current_first_party_full_video_unavailable",
+      "candidates": [],
+      "evidence": [
+        {
+          "url": "https://thetv.jp/news/detail/1154331/",
+          "finding": "2023-08-28 program preview announces full-size Japanese UNFORGIVEN for CDTV2023-09-04."
+        },
+        {
+          "url": "https://realsound.jp/2023/10/post-1448062_2.html",
+          "finding": "2023-10-03 sponsored music feature explicitly describes five-member Japanese performance on Music Station and CDTV; lists Ado on separate released CD credit."
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000001629.000000664.html",
+          "finding": "Universal release notice supports Japanese recording with Ado; not a streamable program source."
+        }
+      ],
+      "remaining": "New guest-scope policy can allow no-Ado member version if verified, but no current first-party full program/practice video was obtained. Do not substitute Korean practice8S9rHj7gTsA or fan uploads.",
+      "queryIds": [
+        "member-11",
+        "member-19",
+        "member-24",
+        "member27"
+      ]
+    },
+    {
+      "workId": "recvxyOz5XQZhy",
+      "artist": "NewJeans",
+      "song": "Be Who You Are (Real Magic)",
+      "decision": "hold_no_qualified_source_found",
+      "candidates": [],
+      "evidence": [],
+      "remaining": "Bounded official query found original collaboration MV, excluded SuperPop commercial/festival material, and solo Jon performances; none establishes complete same-language source including NewJeans. Original uses mixed languages; solo English version cannot be assumed equivalent.",
+      "queryIds": [
+        "member-08",
+        "member-18"
+      ]
+    },
+    {
+      "workId": "recvxyOz5Xqy0Q",
+      "artist": "NMIXX",
+      "song": "MEXE",
+      "decision": "hold_group_absent_or_behind_scenes",
+      "candidates": [
+        {
+          "videoId": "pVIbBEQB0GU",
+          "url": "https://www.youtube.com/watch?v=pVIbBEQB0GU",
+          "kind": "practice_and_mv_behind_scenes"
+        },
+        {
+          "videoId": "kN9MY-QjJMQ",
+          "url": "https://www.youtube.com/watch?v=kN9MY-QjJMQ",
+          "kind": "pabllo_plus_dancers_no_nmixx"
+        }
+      ],
+      "evidence": [],
+      "remaining": "Behind-the-scenes title does not prove a full independent song. Pabllo-only dance video lacks target NMIXX members and is not covered by the newly authorized member fallback. No qualifying full NMIXX performance found.",
+      "queryIds": [
+        "member-12"
+      ]
+    }
+  ],
+  "relatedEvidence": [
+    "final-candidates-followup.json",
+    "member-version-query-ledger.json",
+    "member-version-reviewed.json"
+  ],
+  "limits": [
+    "No full playback, acoustic fingerprint, line-by-line audio verification or fixed-camera assertion.",
+    "No use of Chrome or private owner APIs by this researcher.",
+    "No global maximum-like or exhaustive absence claims.",
+    "Root agent independently decides imports; prior research-ready status is not deployment status."
+  ]
+}

@@ -26,11 +26,11 @@ test('v200 appends eleven scoped public references without changing eighty prior
  assert.equal(hash(recognition.records.slice(0,80)),'51402f13448b26adf5b7aca72aeefaa89fa48286f8929e6551a541765224f6f1');
  assert.equal(hash(manifest),'db09207d9faded33701c6bc1b6138ffcfb670084fdbf94cf778dae3436ed2e03');
  assert.equal(hash(absence.entries),'ebc28ada6fd33e793d1454fb567a0ea2e456a629c0545a9c3b51aba33b70b459');
- assert.deepEqual(credits.records.slice(80),deltas);assert.deepEqual(recognition.records.slice(80),references);
- assert.equal(credits.records.length,91);assert.equal(new Set(credits.records.map(r=>r.workId)).size,91);
- assert.equal(recognition.records.reduce((n,r)=>n+r.portraits.length,0),488);
- assert.equal(new Set(recognition.records.flatMap(r=>r.portraits.map(p=>p.src))).size,229);
- assert.equal(new Set([...credits.records.map(r=>r.workId),...absence.entries.map(r=>r.workId)]).size,96);
+ assert.deepEqual(credits.records.slice(80,91),deltas);assert.deepEqual(recognition.records.slice(80,91),references);
+ assert.equal(new Set(credits.records.slice(0,91).map(r=>r.workId)).size,91);
+ assert.equal(recognition.records.slice(0,91).reduce((n,r)=>n+r.portraits.length,0),488);
+ assert.equal(new Set(recognition.records.slice(0,91).flatMap(r=>r.portraits.map(p=>p.src))).size,229);
+ assert.equal(new Set([...credits.records.slice(0,91).map(r=>r.workId),...absence.entries.map(r=>r.workId)]).size,96);
  assert.equal(adoption.remainingPersonWorks,35);assert.equal(adoption.preservation.privateWrites,0);
  assert.equal(adoption.preservation.privateRelationsAdded,0);assert.equal(adoption.preservation.newImageFiles,0);
 });

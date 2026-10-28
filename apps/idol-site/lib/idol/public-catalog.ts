@@ -15,6 +15,7 @@ const photo:Shape={...fields('table recordId index kind sourceKind'),
  approvedLookIdentity:fields('memberId workId videoId sameLook'),nativeIdentity:fields('memberId workId videoId')};
 const stage:Shape={...fields('sourceClass platform completeness likesScope videoId url title channel kind publishedDate checkedAt verificationNote reusesOriginalVideo comparisonLimited comparisonLimitation candidateCount'),
  selection,
+ memberVersionFallback:{...fields('sameSong sameLanguage fullGroup sameArrangementExceptGuest differenceType groupId guestDifference'),evidence},
  clip:{...fields('startSeconds endSeconds sourceDurationSeconds'),evidence},
  audioEquivalence:{...fields('originalBoundWorkId sameAudio')},
  scoreBinding:fields('videoId sourceKey initializedAt initialScore'),likes,

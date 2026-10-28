@@ -14,8 +14,11 @@ const {mvMemberAbsence}=load('lib/idol/mv-member-appearance.ts');
 const {F}=load('lib/idol/fields.ts');
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const hash=v=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
-const credits=read('data/public-work-credits.json').records;
-const recognition=read('data/public-work-recognition.json').records;
+// This release test owns the immutable v196 cohort, not later additions.
+const v196Ledger=read('../../docs/codex/evidence/20261028-followup/131-work-resolution-ledger.json');
+const v196CreditIds=new Set(v196Ledger.records.filter(r=>r.status.startsWith('public_credit_')).map(r=>r.workId));
+const credits=read('data/public-work-credits.json').records.filter(r=>v196CreditIds.has(r.workId));
+const recognition=read('data/public-work-recognition.json').records.filter(r=>v196CreditIds.has(r.workId));
 const absence=read('data/mv-member-appearance.json');
 const tuples=[
  ['recvxyOz5XRfn5','zrYC3LEpc6w','recvxyEBDZOpTf',6,'documented_project_lineup'],

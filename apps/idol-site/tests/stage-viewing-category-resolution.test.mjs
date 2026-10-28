@@ -26,7 +26,7 @@ test('six new public viewing alternatives validate and never acquire score bindi
  assert.match(rock.version.differences.join(' '),/歌词与原音源不同/);
 });
 
-test('all prior supplement records and formal stage records are preserved through the authorized four-source addition',()=>{
+test('prior supplement and stage records remain intact through the four earlier sources and eleven documented practices',()=>{
  for(const [id,baseline]of Object.entries(evidence.preservation.oldRows)){
   const row=structuredClone(data.works[id]);
   row.alternatives=row.alternatives.slice(0,baseline.alternativeCount).map(a=>{const copy={...a};delete copy.selection;return copy});
@@ -36,13 +36,21 @@ test('all prior supplement records and formal stage records are preserved throug
   assert.equal(hash(JSON.stringify(sort(row))),baseline.hash,id);
  }
  const adoption=read('../../docs/codex/evidence/20261027-category-resolution/stages/formal-four-adoption.json');
- const added=new Set(adoption.items.map(item=>item.recordId));
+ const practice=read('../../docs/codex/evidence/20261028-stage-fill/adoption.json');
+ const practiceEvidence=['stage-practice-20261028-batch.json','stage-practice-20261028-tayo.json'].flatMap(file=>read('data/stages/evidence/'+file).items);
+ assert.equal(practice.items.length,11);
+ assert.deepEqual(new Set(practiceEvidence.map(item=>item.recordId)),new Set(practice.items.map(item=>item.recordId)));
+ const added=new Set([...adoption.items,...practice.items].map(item=>item.recordId));assert.equal(added.size,15);
  for(const [file,expected]of Object.entries(evidence.preservation.protectedFiles)){
   if(file==='data/stage-videos.json'){
-   const stages=read(file);for(const id of added)delete stages[id];
+   const stages=read(file);
+   for(const item of practice.items)assert.equal(hash(JSON.stringify(sort(stages[item.recordId]))),item.sourceSha256,item.recordId);
+   for(const id of added)delete stages[id];
    assert.equal(hash(JSON.stringify(sort(stages))),adoption.preservation.stageCanonicalSha256);
   }else if(file==='data/stages/status.json'){
-   const statuses=read(file);for(const[id,oldHash]of Object.entries(adoption.preservation.statusRows))if(!added.has(id))assert.equal(hash(JSON.stringify(sort(statuses.works[id]))),oldHash,id);
+   const statuses=read(file);
+   for(const item of practiceEvidence)assert.deepEqual(statuses.works[item.recordId],{status:'verified',reason:item.reason,checkedAt:item.checkedAt},item.recordId);
+   for(const[id,oldHash]of Object.entries(adoption.preservation.statusRows))if(!added.has(id))assert.equal(hash(JSON.stringify(sort(statuses.works[id]))),oldHash,id);
   }else assert.equal(hash(fs.readFileSync(file)),expected,file);
  }
 });

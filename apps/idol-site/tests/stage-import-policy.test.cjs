@@ -20,7 +20,7 @@ function temporary(fn){const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'idol-stag
 function check(override){return spawnSync('python',['-c','import sys,json;sys.path.insert(0,"scripts");from stage_selection_policy import checked_selection;checked_selection(json.load(sys.stdin))'],{cwd:root,env,input:JSON.stringify(candidate('abcdefghijk','practice_room',10,override)),encoding:'utf8'});}
 function normalize(batch){return temporary(tmp=>{const input=path.join(tmp,'reviewed.json');fs.writeFileSync(input,JSON.stringify(batch));return spawnSync('python',[path.join(root,'scripts/normalize-stage-patch.py'),input],{cwd:root,env,encoding:'utf8'});});}
 function normalized(batch){const r=normalize(batch);assert.equal(r.status,0,r.stderr);return JSON.parse(r.stdout);}
-function merge(batch,{previous,score=null}={}){return temporary(tmp=>{
+function merge(batch,{previous,score=null,native=false,formatOverride,omitSchema=false}={}){return temporary(tmp=>{
  fs.mkdirSync(path.join(tmp,'scripts'),{recursive:true});fs.mkdirSync(path.join(tmp,'data/stages'),{recursive:true});
  for(const f of ['merge-stage-batch.py','stage_selection_policy.py'])fs.copyFileSync(path.join(root,'scripts',f),path.join(tmp,'scripts',f));
  const write=(f,obj)=>fs.writeFileSync(path.join(tmp,f),JSON.stringify(obj));
@@ -28,7 +28,7 @@ function merge(batch,{previous,score=null}={}){return temporary(tmp=>{
  write('data/stages/status.json',{inventoryCount:1,works:{[workId]:{status:previous?'verified':'pending',reason:'Fixture',checkedAt:now}}});
  write('data/stage-videos.json',previous?{[workId]:previous}:{});
  const before=fs.readFileSync(path.join(tmp,'data/stage-videos.json'),'utf8');
- write('batch.json',batch);write('fresh.json',{source:'feishu',formatVersion:'idol.live-backup.v1',capturedAt:now,tables:{works:{records:[{recordId:workId,fields:{fld641ausT:score}}]}}});
+ write('batch.json',batch);write('fresh.json',{source:native?'native':'feishu',formatVersion:formatOverride??(native?'idol.native-data-export.v1':'idol.live-backup.v1'),capturedAt:now,tables:{works:{fields:omitSchema?[]:[{field_id:'fld641ausT'}],records:[{recordId:workId,fields:{fld641ausT:score}}]}},...(native?{journal:[],siteMetadata:{stageVideos:previous?{[workId]:previous}:{}}}:{})});
  const r=spawnSync('python',[path.join(tmp,'scripts/merge-stage-batch.py'),path.join(tmp,'batch.json'),path.join(tmp,'fresh.json')],{cwd:tmp,env,encoding:'utf8'});
  const after=fs.readFileSync(path.join(tmp,'data/stage-videos.json'),'utf8');const archived=path.join(tmp,'data/stages/evidence/batch.json');
  return {...r,before,after,videos:JSON.parse(after),artifact:fs.existsSync(archived)?JSON.parse(fs.readFileSync(archived)):null};
@@ -91,4 +91,16 @@ test('policy-qualified replacement never moves an existing owner score to anothe
  assert.equal(r.videos[workId].videoId,previous.videoId);assert.deepEqual(r.videos[workId].scoreBinding,previous.scoreBinding);
  assert.equal(JSON.parse(r.stdout).retainedExistingSources.length,1);
  const unbound=merge(normalized(reviewed(selected)),{score:5});assert.equal(unbound.status,0,unbound.stderr);assert.equal(unbound.videos[workId].scoreBinding,null);
+});
+
+test('native owner exports preserve source provenance, zero scores and documentary limits',()=>{
+ const note='依据官方单曲资料采用；未完整播放或逐句比对音轨，不据此判断真唱。';
+ const batch=normalized(reviewed(candidate('abcdefghijk','practice_room',10,{verificationNote:note})));
+ const empty=merge(batch,{native:true});assert.equal(empty.status,0,empty.stderr);
+ assert.equal(empty.videos[workId].scoreBinding.sourceKey,'abcdefghijk');
+ assert.equal(empty.videos[workId].verificationNote,note);
+ const zero=merge(batch,{native:true,score:0});assert.equal(zero.status,0,zero.stderr);assert.equal(zero.videos[workId].scoreBinding,null);
+ for(const options of [{native:true,formatOverride:'idol.live-backup.v1'},{native:true,omitSchema:true}]){
+  const result=merge(batch,options);assert.notEqual(result.status,0);assert.equal(result.after,result.before);assert.equal(result.artifact,null);
+ }
 });

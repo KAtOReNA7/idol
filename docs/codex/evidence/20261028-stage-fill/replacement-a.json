@@ -1,0 +1,1644 @@
+{
+  "checkedAt": "2026-10-28T05:44:46.403551+00:00",
+  "scope": "16 existing concert/festival records, excluding IVE WAVE/CRUSH and XG MILLION PLACES assigned elsewhere; public research only",
+  "summary": {
+    "works": 16,
+    "queries": 32,
+    "queryErrors": 3,
+    "queryVideoRows": 432,
+    "documentaryCandidateWorksNeedingExactLikes": 7,
+    "performerOrVersionCandidateWorks": 3,
+    "remainingUnmatchedWorks": 6,
+    "newBindings": 0,
+    "privateWrites": 0
+  },
+  "watchAccessIncident": {
+    "status": "rate_limited_stopped",
+    "probeStatus": 429,
+    "pageMarkers": [
+      "unusual traffic",
+      "captcha"
+    ],
+    "rule": "No verification bypass or proxy/account rotation; stop direct YouTube watch route. First-party artist sites, licensed catalog and indexed source bodies researched separately.",
+    "note": "38 attempted watch metadata requests returned missing initial-data payloads or transport error; subsequent single diagnosis confirmed429. Do not interpret missing payload as removed video."
+  },
+  "records": [
+    {
+      "recordId": "recvxyOz5XmoUV",
+      "group": "ITZY",
+      "song": "ROCK & ROLL",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=cPQniD4MB0w",
+        "videoId": "cPQniD4MB0w",
+        "officialTitle": "ITZY「ROCK & ROLL」Music Video",
+        "channel": "ITZY JAPAN OFFICIAL YouTube Channel",
+        "releaseDate": "2025-10-07",
+        "videoType": "官方MV"
+      },
+      "version": "日文原版",
+      "previousSelection": {
+        "videoId": "1m67ssYnOU4",
+        "title": "ITZY \"ROCK & ROLL\" (CONCERT CAM VER.) @ 'TUNNEL VISION' in TOKYO",
+        "channel": "ITZY",
+        "url": "https://www.youtube.com/watch?v=1m67ssYnOU4",
+        "clip": null
+      },
+      "status": "documentary_candidate_needs_exact_likes",
+      "reason": "ROCK & ROLL日本原版练习室可按新政策重审；旧练习室排除理由已过时。",
+      "candidates": [
+        {
+          "videoId": "zdnssWkl8-w",
+          "title": "ITZY 「ROCK & ROLL」Dance Practice",
+          "channel": "ITZY JAPAN OFFICIAL YouTube Channel",
+          "duration": "3:12",
+          "published": "1y ago",
+          "url": "https://www.youtube.com/watch?v=zdnssWkl8-w",
+          "durationSeconds": 192,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "Japan official channel identifies ROCK & ROLL Dance Practice; Japanese label release identifies Collector original Japanese title; 3:12 practice vs 185947 ms licensed track.",
+              "urls": [
+                "https://www.youtube.com/watch?v=zdnssWkl8-w",
+                "https://www.itzyjapan.com/news/detail/504"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "Japan official channel identifies ROCK & ROLL Dance Practice; Japanese label release identifies Collector original Japanese title; 3:12 practice vs 185947 ms licensed track.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "itzy-jp-release"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass"
+          ],
+          "bindingChanged": false
+        }
+      ],
+      "searchQueryIndexes": [
+        0,
+        1
+      ],
+      "catalogMatches": [
+        {
+          "queryIndex": 0,
+          "results": [
+            {
+              "artistName": "ITZY",
+              "collectionName": "Collector",
+              "trackName": "ROCK & ROLL",
+              "trackTimeMillis": 185947,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2025-10-08T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/rock-roll/1842128746?i=1842128752&uo=4",
+              "trackId": 1842128752,
+              "collectionId": 1842128746
+            }
+          ]
+        }
+      ],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Acquire exact public watch metadata/likes and resolve listed version/performer limits; only then parent may use fresh owner export to guard score-bound replacement."
+    },
+    {
+      "recordId": "recvxyOz5XiuDr",
+      "group": "Kep1er",
+      "song": "Grand Prix",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=4nAdvTkoP1Q",
+        "videoId": "4nAdvTkoP1Q",
+        "officialTitle": "Kep1er 케플러 l 'Grand Prix' M/V",
+        "channel": "Kep1er",
+        "releaseDate": "2023-11-07",
+        "videoType": "官方MV"
+      },
+      "version": "日文原版",
+      "previousSelection": {
+        "videoId": "d-dktScWxKo",
+        "title": "Kep1er (케플러) - Grand Prix | KCON STAGE | KCON JAPAN 2024",
+        "channel": "KCON official",
+        "url": "https://www.youtube.com/watch?v=d-dktScWxKo",
+        "clip": null
+      },
+      "status": "documentary_candidate_needs_exact_likes",
+      "reason": "Grand Prix原日本发行九人期练习室；节目检索主要返回别曲或KCON，未发现更优可读普通节目完整源。",
+      "candidates": [
+        {
+          "videoId": "OeBUwbPVvkc",
+          "title": "Kep1er 케플러 | 'Grand Prix' Dance Practice",
+          "channel": "Kep1er",
+          "duration": "3:10",
+          "published": "2y ago",
+          "url": "https://www.youtube.com/watch?v=OeBUwbPVvkc",
+          "durationSeconds": 190,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "Official Kep1er indexed description explicitly identifies Japan 3rd Single FLY-HIGH (2023-11-22); Sony identifies original Japanese Grand Prix and exact MV 4nAdvTkoP1Q. Practice3:10 vs release187787ms; do not substitute later KOR version.",
+              "urls": [
+                "https://www.youtube.com/watch?v=OeBUwbPVvkc",
+                "https://www.sonymusic.co.jp/artist/Kep1er/info/556734",
+                "https://www.sonymusic.co.jp/artist/Kep1er/info/557669"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "Official Kep1er indexed description explicitly identifies Japan 3rd Single FLY-HIGH (2023-11-22); Sony identifies original Japanese Grand Prix and exact MV 4nAdvTkoP1Q. Practice3:10 vs release187787ms; do not substitute later KOR version.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "kep-grandprix-release",
+            "kep-grandprix-mv"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass"
+          ],
+          "bindingChanged": false
+        }
+      ],
+      "searchQueryIndexes": [
+        2,
+        3
+      ],
+      "catalogMatches": [
+        {
+          "queryIndex": 1,
+          "results": [
+            {
+              "artistName": "Kep1er",
+              "collectionName": "<FLY-HIGH> - Special Edition - - EP",
+              "trackName": "Grand Prix",
+              "trackTimeMillis": 187787,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2023-11-08T08:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/grand-prix/1713713285?i=1713713289&uo=4",
+              "trackId": 1713713289,
+              "collectionId": 1713713285
+            },
+            {
+              "artistName": "Kep1er",
+              "collectionName": "Kep1going",
+              "trackName": "Grand Prix",
+              "trackTimeMillis": 187027,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2023-11-08T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/grand-prix/1740911551?i=1740911561&uo=4",
+              "trackId": 1740911561,
+              "collectionId": 1740911551
+            },
+            {
+              "artistName": "Kep1er",
+              "collectionName": "Kep1going On",
+              "trackName": "Grand Prix (KOR Ver.)",
+              "trackTimeMillis": 186827,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2024-06-03T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/grand-prix-kor-ver/1748993849?i=1748993868&uo=4",
+              "trackId": 1748993868,
+              "collectionId": 1748993849
+            }
+          ]
+        }
+      ],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Acquire exact public watch metadata/likes and resolve listed version/performer limits; only then parent may use fresh owner export to guard score-bound replacement."
+    },
+    {
+      "recordId": "rec28ldfRTrKtW",
+      "group": "ILLIT",
+      "song": "It's Me",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=bMhDJ0S0OBA",
+        "videoId": "bMhDJ0S0OBA",
+        "officialTitle": "ILLIT (아일릿) 'It's Me' Official MV",
+        "channel": "HYBE LABELS",
+        "releaseDate": "2026-04-30T00:00:00.000Z",
+        "videoType": "官方MV"
+      },
+      "version": null,
+      "previousSelection": {
+        "videoId": "a2AvaSdqN28",
+        "title": "ILLIT (아일릿) 'It's Me' @2026 Weverse Con Festival",
+        "channel": "ILLIT",
+        "url": "https://www.youtube.com/watch?v=a2AvaSdqN28",
+        "clip": null
+      },
+      "status": "performer_and_exact_source_verification_pending",
+      "reason": "两作品沿用独立ID。末周打歌优先，不能把早期四人节目/MV表演版标题自动当完全同人员源；不能同时声称两个记录已经改绑。",
+      "candidates": [
+        {
+          "videoId": "F1ISRhRo3Vc",
+          "title": "ILLIT アイルリット 아일릿 - It's Me [Music Bank] | KBS WORLD TV 260529",
+          "channel": "KBS WORLD TV",
+          "duration": "2:29",
+          "published": "4mo ago",
+          "url": "https://www.youtube.com/watch?v=F1ISRhRo3Vc",
+          "durationSeconds": 149,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "official_program",
+          "selection": {
+            "occasion": "music_show",
+            "evidence": {
+              "note": "KBS WORLD TV exact title identifies Music Bank260529,2:29 vs licensed138284ms. BELIFT official notice36276 confirms MOKA returns at final-week Music Bank and explicitly misses Weverse Con. Prefer May29 scope over earlier May1/8/15 stages.",
+              "urls": [
+                "https://www.youtube.com/watch?v=F1ISRhRo3Vc",
+                "https://weverse.io/illit/notice/36276?hl=ko"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "KBS WORLD TV exact title identifies Music Bank260529,2:29 vs licensed138284ms. BELIFT official notice36276 confirms MOKA returns at final-week Music Bank and explicitly misses Weverse Con. Prefer May29 scope over earlier May1/8/15 stages.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "illit-moka-return"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass",
+            "Need current watch metadata/precise member scope; actual full playback not done",
+            "Performance-MV work el7A_SI7sxs needs current exact-source readback; search surfaced another performance upload lOpdrEgmYzY"
+          ],
+          "bindingChanged": false
+        },
+        {
+          "videoId": "00IPFnp2Tdg",
+          "title": "It‘s Me - 아일릿 (ILLIT) [뮤직뱅크/Music Bank] | KBS 260529 방송",
+          "channel": "KBS Kpop",
+          "duration": "2:29",
+          "published": "4mo ago",
+          "url": "https://www.youtube.com/watch?v=00IPFnp2Tdg",
+          "durationSeconds": 149,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "official_program",
+          "selection": {
+            "occasion": "music_show",
+            "evidence": {
+              "note": "KBS Kpop title identifies same Music Bank260529; exact likes and whole-group scope must be compared against KBS WORLD upload.",
+              "urls": [
+                "https://www.youtube.com/watch?v=00IPFnp2Tdg",
+                "https://weverse.io/illit/notice/36276?hl=ko"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "KBS Kpop title identifies same Music Bank260529; exact likes and whole-group scope must be compared against KBS WORLD upload.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "illit-moka-return"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass"
+          ],
+          "bindingChanged": false
+        },
+        {
+          "videoId": "LM875jeR-PM",
+          "title": "ILLIT (아일릿) 'It's Me' Dance Practice",
+          "channel": "ILLIT",
+          "duration": "2:24",
+          "published": "5mo ago",
+          "url": "https://www.youtube.com/watch?v=LM875jeR-PM",
+          "durationSeconds": 144,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "Official ILLIT/Weverse publish same-song Dance Practice2:24 versus138284ms release; title itself does not prove all five identities.",
+              "urls": [
+                "https://www.youtube.com/watch?v=LM875jeR-PM",
+                "https://weverse.io/illit/media/2-174226019"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "Official ILLIT/Weverse publish same-song Dance Practice2:24 versus138284ms release; title itself does not prove all five identities.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "illit-practice"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass",
+            "Need practice performer-scope confirmation before replacing original five-person work"
+          ],
+          "bindingChanged": false
+        }
+      ],
+      "searchQueryIndexes": [
+        4,
+        5
+      ],
+      "catalogMatches": [
+        {
+          "queryIndex": 3,
+          "results": [
+            {
+              "artistName": "ILLIT",
+              "collectionName": "MAMIHLAPINATAPAI - EP",
+              "trackName": "It's Me",
+              "trackTimeMillis": 138284,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2026-04-30T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/us/album/its-me/1887194024?i=1887194026&uo=4",
+              "trackId": 1887194026,
+              "collectionId": 1887194024
+            }
+          ]
+        }
+      ],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Acquire exact public watch metadata/likes and resolve listed version/performer limits; only then parent may use fresh owner export to guard score-bound replacement."
+    },
+    {
+      "recordId": "rec28ldfRTrKy2",
+      "group": "ILLIT",
+      "song": "It's Me",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=el7A_SI7sxs",
+        "videoId": "el7A_SI7sxs",
+        "officialTitle": "ILLIT (아일릿) 'It's Me' Official MV (Performance ver.)",
+        "channel": "HYBE LABELS",
+        "releaseDate": "2026-05-06T00:00:00.000Z",
+        "videoType": "表演版MV"
+      },
+      "version": "Performance ver.",
+      "previousSelection": {
+        "videoId": "a2AvaSdqN28",
+        "title": "ILLIT (아일릿) 'It's Me' @2026 Weverse Con Festival",
+        "channel": "ILLIT",
+        "url": "https://www.youtube.com/watch?v=a2AvaSdqN28",
+        "clip": null
+      },
+      "status": "performer_and_exact_source_verification_pending",
+      "reason": "两作品沿用独立ID。末周打歌优先，不能把早期四人节目/MV表演版标题自动当完全同人员源；不能同时声称两个记录已经改绑。",
+      "candidates": [
+        {
+          "videoId": "F1ISRhRo3Vc",
+          "title": "ILLIT アイルリット 아일릿 - It's Me [Music Bank] | KBS WORLD TV 260529",
+          "channel": "KBS WORLD TV",
+          "duration": "2:29",
+          "published": "4mo ago",
+          "url": "https://www.youtube.com/watch?v=F1ISRhRo3Vc",
+          "durationSeconds": 149,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "official_program",
+          "selection": {
+            "occasion": "music_show",
+            "evidence": {
+              "note": "KBS WORLD TV exact title identifies Music Bank260529,2:29 vs licensed138284ms. BELIFT official notice36276 confirms MOKA returns at final-week Music Bank and explicitly misses Weverse Con. Prefer May29 scope over earlier May1/8/15 stages.",
+              "urls": [
+                "https://www.youtube.com/watch?v=F1ISRhRo3Vc",
+                "https://weverse.io/illit/notice/36276?hl=ko"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "KBS WORLD TV exact title identifies Music Bank260529,2:29 vs licensed138284ms. BELIFT official notice36276 confirms MOKA returns at final-week Music Bank and explicitly misses Weverse Con. Prefer May29 scope over earlier May1/8/15 stages.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "illit-moka-return"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass",
+            "Need current watch metadata/precise member scope; actual full playback not done",
+            "Performance-MV work el7A_SI7sxs needs current exact-source readback; search surfaced another performance upload lOpdrEgmYzY"
+          ],
+          "bindingChanged": false
+        },
+        {
+          "videoId": "00IPFnp2Tdg",
+          "title": "It‘s Me - 아일릿 (ILLIT) [뮤직뱅크/Music Bank] | KBS 260529 방송",
+          "channel": "KBS Kpop",
+          "duration": "2:29",
+          "published": "4mo ago",
+          "url": "https://www.youtube.com/watch?v=00IPFnp2Tdg",
+          "durationSeconds": 149,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "official_program",
+          "selection": {
+            "occasion": "music_show",
+            "evidence": {
+              "note": "KBS Kpop title identifies same Music Bank260529; exact likes and whole-group scope must be compared against KBS WORLD upload.",
+              "urls": [
+                "https://www.youtube.com/watch?v=00IPFnp2Tdg",
+                "https://weverse.io/illit/notice/36276?hl=ko"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "KBS Kpop title identifies same Music Bank260529; exact likes and whole-group scope must be compared against KBS WORLD upload.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "illit-moka-return"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass"
+          ],
+          "bindingChanged": false
+        },
+        {
+          "videoId": "LM875jeR-PM",
+          "title": "ILLIT (아일릿) 'It's Me' Dance Practice",
+          "channel": "ILLIT",
+          "duration": "2:24",
+          "published": "5mo ago",
+          "url": "https://www.youtube.com/watch?v=LM875jeR-PM",
+          "durationSeconds": 144,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "Official ILLIT/Weverse publish same-song Dance Practice2:24 versus138284ms release; title itself does not prove all five identities.",
+              "urls": [
+                "https://www.youtube.com/watch?v=LM875jeR-PM",
+                "https://weverse.io/illit/media/2-174226019"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "Official ILLIT/Weverse publish same-song Dance Practice2:24 versus138284ms release; title itself does not prove all five identities.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "illit-practice"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass",
+            "Need practice performer-scope confirmation before replacing original five-person work"
+          ],
+          "bindingChanged": false
+        }
+      ],
+      "searchQueryIndexes": [
+        6,
+        7
+      ],
+      "catalogMatches": [
+        {
+          "queryIndex": 3,
+          "results": [
+            {
+              "artistName": "ILLIT",
+              "collectionName": "MAMIHLAPINATAPAI - EP",
+              "trackName": "It's Me",
+              "trackTimeMillis": 138284,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2026-04-30T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/us/album/its-me/1887194024?i=1887194026&uo=4",
+              "trackId": 1887194026,
+              "collectionId": 1887194024
+            }
+          ]
+        }
+      ],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Acquire exact public watch metadata/likes and resolve listed version/performer limits; only then parent may use fresh owner export to guard score-bound replacement."
+    },
+    {
+      "recordId": "recvxyOz5XmIH0",
+      "group": "Kep1er",
+      "song": "Straight Line",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=-8ECgGWuoew",
+        "videoId": "-8ECgGWuoew",
+        "officialTitle": "Kep1er 케플러 l 'Straight Line' M/V",
+        "channel": "Kep1er",
+        "releaseDate": "2024-04-23",
+        "videoType": "官方MV"
+      },
+      "version": "日文原版",
+      "previousSelection": {
+        "videoId": "DZgK9S4pliA",
+        "title": "Kep1er (케플러) - Straight Line | KCON STAGE | KCON JAPAN 2024",
+        "channel": "KCON official",
+        "url": "https://www.youtube.com/watch?v=DZgK9S4pliA",
+        "clip": null
+      },
+      "status": "documentary_candidate_needs_exact_likes",
+      "reason": "Sony直接给出精确练习室ID与日本专辑依据，可复审同版。",
+      "candidates": [
+        {
+          "videoId": "EhLxzdiOVN0",
+          "title": "Kep1er l 'Straight Line' Dance Practice",
+          "channel": "Kep1er",
+          "duration": "2:52",
+          "published": "2y ago",
+          "url": "https://www.youtube.com/watch?v=EhLxzdiOVN0",
+          "durationSeconds": 172,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "Sony official announcement on 2024-05-07 explicitly links this dance practice to Japan 1st Album Kep1going Straight Line; practice2:52 vs Japanese release165693ms. Later KOR album track excluded.",
+              "urls": [
+                "https://www.youtube.com/watch?v=EhLxzdiOVN0",
+                "https://www.sonymusic.co.jp/artist/Kep1er/info/563040"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "Sony official announcement on 2024-05-07 explicitly links this dance practice to Japan 1st Album Kep1going Straight Line; practice2:52 vs Japanese release165693ms. Later KOR album track excluded.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "kep-straightline-practice"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass"
+          ],
+          "bindingChanged": false
+        }
+      ],
+      "searchQueryIndexes": [
+        8,
+        9
+      ],
+      "catalogMatches": [
+        {
+          "queryIndex": 2,
+          "results": [
+            {
+              "artistName": "Kep1er",
+              "collectionName": "Kep1going",
+              "trackName": "Straight Line",
+              "trackTimeMillis": 165693,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2024-04-24T07:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/straight-line/1740911551?i=1740911558&uo=4",
+              "trackId": 1740911558,
+              "collectionId": 1740911551
+            },
+            {
+              "artistName": "Kep1er",
+              "collectionName": "Kep1going On",
+              "trackName": "Straight Line (KOR Ver.)",
+              "trackTimeMillis": 164920,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2024-06-03T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/straight-line-kor-ver/1748993849?i=1748993959&uo=4",
+              "trackId": 1748993959,
+              "collectionId": 1748993849
+            }
+          ]
+        }
+      ],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Acquire exact public watch metadata/likes and resolve listed version/performer limits; only then parent may use fresh owner export to guard score-bound replacement."
+    },
+    {
+      "recordId": "rec28ldfRTrINH",
+      "group": "KiiiKiii",
+      "song": "딸기게임 (Strawberry Cheesegame)",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=OncJ5v1keww",
+        "videoId": "OncJ5v1keww",
+        "officialTitle": "KiiiKiii 키키 '딸기게임 (Strawberry Cheesegame)' Official Lyric Video",
+        "channel": "KiiiKiii",
+        "releaseDate": "2025-08-27T00:00:00.000Z",
+        "videoType": "歌词视频"
+      },
+      "version": "Lyric Video",
+      "previousSelection": {
+        "videoId": "BwF8zZ_ZZDY",
+        "title": "[4K 직캠] KiiiKiii (키키) '딸기 게임(Strawberry Cheesegame)' | 260521 고려대학교 석탑대동제 KULIMAX 3일차",
+        "channel": "고려대학교 교육TV방송국 KUTV",
+        "url": "https://www.youtube.com/watch?v=BwF8zZ_ZZDY",
+        "clip": null
+      },
+      "status": "no_policy_eligible_candidate_found_in_scope",
+      "reason": "两轮检索仍主要是校园/粉丝活动、2025MBC年末串烧及音频；jgtUC6rRd8Y把本曲与DANCING ALONE串联，不能自动作完整单曲。检索未见合格源不等于不存在。",
+      "candidates": [],
+      "searchQueryIndexes": [
+        10,
+        11
+      ],
+      "catalogMatches": [],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Expand first-party regular-program/practice search for exact version; preserve old source and its score association until a qualifying replacement is established."
+    },
+    {
+      "recordId": "recvxyH5pzbUId",
+      "group": "STAYC",
+      "song": "POPPY",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=YkZvwVf7F9k",
+        "videoId": "YkZvwVf7F9k",
+        "officialTitle": "STAYC（ステイシー） 'POPPY' MV",
+        "channel": "STAYC Japan Official",
+        "releaseDate": "2022-11-16",
+        "videoType": "官方MV"
+      },
+      "version": "日文原版",
+      "previousSelection": {
+        "videoId": "wuICiuOUFGE",
+        "title": "Poppy (Japanese ver.) - STAYC｜韓国未放送シーン(미방)｜2024 Music Bank Global Festival in JAPAN  (2024.12.14)",
+        "channel": "KBS WORLD JAPAN",
+        "url": "https://www.youtube.com/watch?v=wuICiuOUFGE",
+        "clip": null
+      },
+      "status": "documentary_candidate_needs_exact_likes",
+      "reason": "日文练习室优先于2024 Global Festival旧来源；韩语打歌不混用。",
+      "candidates": [
+        {
+          "videoId": "kFw7ZWRydwU",
+          "title": "STAYC（ステイシー）'POPPY' Dance Practice",
+          "channel": "STAYC Japan Official",
+          "duration": "3:03",
+          "published": "3y ago",
+          "url": "https://www.youtube.com/watch?v=kFw7ZWRydwU",
+          "durationSeconds": 183,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "STAYC Japan official indexed description says Japan Debut Single POPPY 2022-11-23 and POPPY Dance Practice; Korean Music Bank results explicitly Korean Ver. and excluded. Practice3:03 vs Japanese licensed179867ms.",
+              "urls": [
+                "https://www.youtube.com/watch?v=kFw7ZWRydwU",
+                "https://www.youtube.com/watch?v=kFw7ZWRydwU"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "STAYC Japan official indexed description says Japan Debut Single POPPY 2022-11-23 and POPPY Dance Practice; Korean Music Bank results explicitly Korean Ver. and excluded. Practice3:03 vs Japanese licensed179867ms.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass"
+          ],
+          "bindingChanged": false
+        }
+      ],
+      "searchQueryIndexes": [
+        12,
+        13
+      ],
+      "catalogMatches": [
+        {
+          "queryIndex": 4,
+          "results": [
+            {
+              "artistName": "STAYC",
+              "collectionName": "POPPY - Single",
+              "trackName": "POPPY",
+              "trackTimeMillis": 179867,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2022-11-16T08:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/poppy/1654124214?i=1654124215&uo=4",
+              "trackId": 1654124215,
+              "collectionId": 1654124214
+            },
+            {
+              "artistName": "STAYC",
+              "collectionName": "Poppy (Korean Ver.) - Single",
+              "trackName": "Poppy (Korean Ver.)",
+              "trackTimeMillis": 178293,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2023-02-03T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/poppy-korean-ver/1669378321?i=1669378322&uo=4",
+              "trackId": 1669378322,
+              "collectionId": 1669378321
+            },
+            {
+              "artistName": "STAYC",
+              "collectionName": "Teddy Bear - Single",
+              "trackName": "Poppy (Korean Ver.)",
+              "trackTimeMillis": 178293,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2023-02-03T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/poppy-korean-ver/1670622072?i=1670622074&uo=4",
+              "trackId": 1670622074,
+              "collectionId": 1670622072
+            },
+            {
+              "artistName": "STAYC",
+              "collectionName": "STAY ALIVE",
+              "trackName": "POPPY (Japanese Ver.)",
+              "trackTimeMillis": 179942,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2022-11-16T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/poppy-japanese-ver/1874849626?i=1874849636&uo=4",
+              "trackId": 1874849636,
+              "collectionId": 1874849626
+            }
+          ]
+        }
+      ],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Acquire exact public watch metadata/likes and resolve listed version/performer limits; only then parent may use fresh owner export to guard score-bound replacement."
+    },
+    {
+      "recordId": "recvxyHuKMDKAR",
+      "group": "aespa",
+      "song": "Switchblade (Feat. Ty Dolla $ign)",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=xcFbyuzd9S8",
+        "videoId": "xcFbyuzd9S8",
+        "officialTitle": "aespa 에스파 'Switchblade (Feat. Ty Dolla $ign)' MV",
+        "channel": "SMTOWN",
+        "releaseDate": "2026-08-03",
+        "videoType": "官方MV"
+      },
+      "version": "Ty Dolla $ign联名",
+      "previousSelection": {
+        "videoId": "sVwYpHqdt3o",
+        "title": "aespa 에스파 'Switchblade (Feat. Ty Dolla $ign)' @2026-27 aespa LIVE TOUR - SYNK : COMPLæXITY -",
+        "channel": "aespa",
+        "url": "https://www.youtube.com/watch?v=sVwYpHqdt3o",
+        "clip": null
+      },
+      "status": "no_policy_eligible_candidate_found_in_scope",
+      "reason": "Switchblade检索集中在官方巡演、Lollapalooza、舞蹈翻跳/镜像及MV。Ty Dolla $ign合作段与参与范围仍须匹配，不能采用无Ty剪辑或团体单独短版。",
+      "candidates": [],
+      "searchQueryIndexes": [
+        14,
+        15
+      ],
+      "catalogMatches": [],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Expand first-party regular-program/practice search for exact version; preserve old source and its score association until a qualifying replacement is established."
+    },
+    {
+      "recordId": "recvxyH5pz62TB",
+      "group": "Billlie",
+      "song": "DOMINO ～ butterfly effect",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=DY-koSeZ6SE",
+        "videoId": "DY-koSeZ6SE",
+        "officialTitle": "Billlie 'DOMINO ～ butterfly effect - Japanese ver. -' MV",
+        "channel": "Victor K-POP",
+        "releaseDate": "2024-02-06",
+        "videoType": "官方MV"
+      },
+      "version": "日文原版",
+      "previousSelection": {
+        "videoId": "OTLdHfo0hTc",
+        "title": "Billlie | DOMINO ～ butterfly effect - Japanese ver. - Stage Cam | SHOW-CON \"Domino Effect\" IN JAPAN",
+        "channel": "Billlie",
+        "url": "https://www.youtube.com/watch?v=OTLdHfo0hTc",
+        "clip": null
+      },
+      "status": "documentary_candidate_needs_exact_likes",
+      "reason": "优先同发行日本原版练习室。另发现2026 ENA KPopUpChartShow dJOTQUckOzg，但活动场合、五人/七人发行及人员对应待证，不能仅因节目名自动采用。",
+      "candidates": [
+        {
+          "videoId": "epOtB2VfTm0",
+          "title": "Billlie | 'DOMINO ～ butterfly effect - Japanese ver. -' Choreography Practice",
+          "channel": "Billlie",
+          "duration": "3:06",
+          "published": "2y ago",
+          "url": "https://www.youtube.com/watch?v=epOtB2VfTm0",
+          "durationSeconds": 186,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "Official Billlie/Weverse explicitly identify DOMINO butterfly effect Japanese ver. choreography practice, published2024-02-19 in same February2024 Japanese debut-mini release; matching original Japanese MV DY-koSeZ6SE.",
+              "urls": [
+                "https://www.youtube.com/watch?v=epOtB2VfTm0",
+                "https://weverse.io/billlie/media/0-135973747",
+                "https://www.jvcmusic.co.jp/-/Artist/A028136.html",
+                "https://weverse.io/billlie/media/0-135973747?hl=zh-cn"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "Official Billlie/Weverse explicitly identify DOMINO butterfly effect Japanese ver. choreography practice, published2024-02-19 in same February2024 Japanese debut-mini release; matching original Japanese MV DY-koSeZ6SE.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "billlie-practice",
+            "billlie-jp-release"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass"
+          ],
+          "bindingChanged": false
+        }
+      ],
+      "searchQueryIndexes": [
+        16,
+        17
+      ],
+      "catalogMatches": [
+        {
+          "queryIndex": 5,
+          "results": [
+            {
+              "artistName": "Billlie",
+              "collectionName": "the collective soul and unconscious: chapter two",
+              "trackName": "DOMINO ~ butterfly effect",
+              "trackTimeMillis": 176567,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2026-05-06T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/domino-butterfly-effect/1895807762?i=6764497073&uo=4",
+              "trackId": 6764497073,
+              "collectionId": 1895807762
+            },
+            {
+              "artistName": "Billlie",
+              "collectionName": "Knock-on Effect - EP",
+              "trackName": "DOMINO ~ butterfly effect - Japanese ver. -",
+              "trackTimeMillis": 179867,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2024-02-07T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/jp/album/domino-butterfly-effect-japanese-ver/1726858400?i=1726858401&uo=4",
+              "trackId": 1726858401,
+              "collectionId": 1726858400
+            }
+          ]
+        }
+      ],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Acquire exact public watch metadata/likes and resolve listed version/performer limits; only then parent may use fresh owner export to guard score-bound replacement."
+    },
+    {
+      "recordId": "recvxyHuKMEruy",
+      "group": "IVE",
+      "song": "Supernova Love",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=fyk6vjwI3wc",
+        "videoId": "fyk6vjwI3wc",
+        "officialTitle": "IVE, David Guetta - Supernova Love Official Music Video",
+        "channel": "IVE",
+        "releaseDate": "2024-11-07",
+        "videoType": "官方MV"
+      },
+      "version": "David Guetta联名",
+      "previousSelection": {
+        "videoId": "qPoTrGxOOEA",
+        "title": "IVE 아이브 Live at Lollapalooza 2025 Berlin (Full Show) — Supernova Love (33:01–36:28)",
+        "channel": "IVE",
+        "url": "https://www.youtube.com/watch?v=qPoTrGxOOEA&t=1981s",
+        "clip": {
+          "startSeconds": 1981,
+          "endSeconds": 2188,
+          "evidence": {
+            "note": "Official uploader description explicitly gives 33:01–36:28 Supernova Love. Full song English IVE performance with live band; not an inferred timestamp.",
+            "urls": [
+              "https://www.youtube.com/watch?v=qPoTrGxOOEA&t=1981s"
+            ]
+          },
+          "sourceDurationSeconds": 3317
+        }
+      },
+      "status": "no_policy_eligible_candidate_found_in_scope",
+      "reason": "Supernova Love检索返回MV、幕后、舞蹈cover和巡演/音乐节；未找到合格普通节目/练习室。原MV2:34与3:19歌词版/活动长版亦须消歧，不能凭同名切换。",
+      "candidates": [],
+      "searchQueryIndexes": [
+        18,
+        19
+      ],
+      "catalogMatches": [],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Expand first-party regular-program/practice search for exact version; preserve old source and its score association until a qualifying replacement is established."
+    },
+    {
+      "recordId": "recvxIZd9vfxUk",
+      "group": "KATSEYE",
+      "song": "Gnarly",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=R2-yomhYAj4",
+        "videoId": "R2-yomhYAj4",
+        "officialTitle": "KATSEYE (캣츠아이) \"Gnarly\" Official MV",
+        "channel": "HYBE LABELS",
+        "releaseDate": "2025-04-30",
+        "videoType": "官方MV"
+      },
+      "version": "原版",
+      "previousSelection": {
+        "videoId": "Rz47IBr1GXM",
+        "title": "Lollapalooza Chicago 2025 “Gnarly” Performance | KATSEYE",
+        "channel": "KATSEYE",
+        "url": "https://www.youtube.com/watch?v=Rz47IBr1GXM",
+        "clip": null
+      },
+      "status": "version_evidence_pending",
+      "reason": "练习室来源可靠，但原版/Clean差异不能靠相同时长猜。音乐节目a0BJg4c064Q、ep8lhvs5958和AKZjE9YMtpI有Clean标识；保持待核。",
+      "candidates": [
+        {
+          "videoId": "xrm7PP1mbtI",
+          "title": "“Gnarly” Dance Practice | KATSEYE",
+          "channel": "KATSEYE",
+          "duration": "2:28",
+          "published": "1y ago",
+          "url": "https://www.youtube.com/watch?v=xrm7PP1mbtI",
+          "durationSeconds": 148,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "KATSEYE artist website lists official Gnarly Dance Practice with original MV; practice2:28 vs cleaned licensed137581ms only supports plausible full length. Known broadcast candidates are explicitly Clean ver.; original MV/uncensored practice audio equivalence not established.",
+              "urls": [
+                "https://www.youtube.com/watch?v=xrm7PP1mbtI",
+                "https://www.katseye.world/videos/"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "KATSEYE artist website lists official Gnarly Dance Practice with original MV; practice2:28 vs cleaned licensed137581ms only supports plausible full length. Known broadcast candidates are explicitly Clean ver.; original MV/uncensored practice audio equivalence not established.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "katseye-video"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass",
+            "Explicit/clean edit distinction requires documentary proof or actual audio comparison; unmodified title alone is insufficient here"
+          ],
+          "bindingChanged": false
+        }
+      ],
+      "searchQueryIndexes": [
+        20,
+        21
+      ],
+      "catalogMatches": [
+        {
+          "queryIndex": 6,
+          "results": [
+            {
+              "artistName": "KATSEYE",
+              "collectionName": "Gnarly - Single",
+              "trackName": "Gnarly",
+              "trackTimeMillis": 137581,
+              "trackExplicitness": "cleaned",
+              "releaseDate": "2025-04-30T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/us/album/gnarly/1809020555?i=1809020562&uo=4",
+              "trackId": 1809020562,
+              "collectionId": 1809020555
+            },
+            {
+              "artistName": "KATSEYE",
+              "collectionName": "BEAUTIFUL CHAOS - EP",
+              "trackName": "Gnarly",
+              "trackTimeMillis": 137581,
+              "trackExplicitness": "cleaned",
+              "releaseDate": "2025-04-30T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/us/album/gnarly/1828469793?i=1828469796&uo=4",
+              "trackId": 1828469796,
+              "collectionId": 1828469793
+            }
+          ]
+        }
+      ],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Acquire exact public watch metadata/likes and resolve listed version/performer limits; only then parent may use fresh owner export to guard score-bound replacement."
+    },
+    {
+      "recordId": "recvxDMFHNzaOb",
+      "group": "XG",
+      "song": "SOMETHING AIN'T RIGHT",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=kd5LJ4r-vEY",
+        "videoId": "kd5LJ4r-vEY",
+        "officialTitle": "XG - SOMETHING AIN'T RIGHT (Official Music Video)",
+        "channel": "XG",
+        "releaseDate": "2024-07-26",
+        "videoType": "官方MV"
+      },
+      "version": "原版",
+      "previousSelection": {
+        "videoId": "BWASDZZtO6w",
+        "title": "XG - Something Ain’t Right (Live at Capital's Summertime Ball 2026) | Capital",
+        "channel": "Capital",
+        "url": "https://www.youtube.com/watch?v=BWASDZZtO6w",
+        "clip": null
+      },
+      "status": "documentary_candidate_needs_exact_likes",
+      "reason": "固定/移动两练习室均是优先替代研究对象；不得因巡演视频点赞较高回选活动。",
+      "candidates": [
+        {
+          "videoId": "ai2QKOrTnjs",
+          "title": "XG - SOMETHING AIN'T RIGHT (Dance Practice Fix ver.)",
+          "channel": "XG",
+          "duration": "3:22",
+          "published": "2y ago",
+          "url": "https://www.youtube.com/watch?v=ai2QKOrTnjs",
+          "durationSeconds": 202,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "XGALX official announcement2024-08-28 embeds exact fixed-practice video and links same single SOMETHING AINT RIGHT;3:22 vs licensed190667ms original; no XDM modifier.",
+              "urls": [
+                "https://www.youtube.com/watch?v=ai2QKOrTnjs",
+                "https://xgalx.com/en/xg/news/detail.php?id=1118870"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "XGALX official announcement2024-08-28 embeds exact fixed-practice video and links same single SOMETHING AINT RIGHT;3:22 vs licensed190667ms original; no XDM modifier.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "xg-sar-practice"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass"
+          ],
+          "bindingChanged": false
+        },
+        {
+          "videoId": "YkXWfku2ioA",
+          "title": "XG - SOMETHING AIN'T RIGHT (Dance Practice Moving ver.)",
+          "channel": "XG",
+          "duration": "3:22",
+          "published": "2y ago",
+          "url": "https://www.youtube.com/watch?v=YkXWfku2ioA",
+          "durationSeconds": 202,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "Official XG search renderer identifies moving practice of exact single; need full watch metadata before comparing likes.",
+              "urls": [
+                "https://www.youtube.com/watch?v=YkXWfku2ioA"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "Official XG search renderer identifies moving practice of exact single; need full watch metadata before comparing likes.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass",
+            "Moving-version official announcement/body and precise metadata still pending"
+          ],
+          "bindingChanged": false
+        }
+      ],
+      "searchQueryIndexes": [
+        22,
+        23
+      ],
+      "catalogMatches": [
+        {
+          "queryIndex": 7,
+          "results": [
+            {
+              "artistName": "XG",
+              "collectionName": "SOMETHING AIN'T RIGHT - Single",
+              "trackName": "SOMETHING AIN'T RIGHT",
+              "trackTimeMillis": 190667,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2024-07-26T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/us/album/something-aint-right/1757581943?i=1757581944&uo=4",
+              "trackId": 1757581944,
+              "collectionId": 1757581943
+            },
+            {
+              "artistName": "XG",
+              "collectionName": "XG 1st WORLD TOUR “The first HOWL\" Live",
+              "trackName": "Tippy Toes & SOMETHING AIN'T RIGHT & IN THE RAIN (XG 1st WORLD TOUR “The first HOWL\" Live)",
+              "trackTimeMillis": 667000,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2025-08-08T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/us/album/tippy-toes-something-aint-right-in-the-rain-xg-1st/1831297909?i=1831298338&uo=4",
+              "trackId": 1831298338,
+              "collectionId": 1831297909
+            },
+            {
+              "artistName": "XG",
+              "collectionName": "AWE",
+              "trackName": "SOMETHING AIN'T RIGHT",
+              "trackTimeMillis": 190667,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2024-07-26T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/us/album/something-aint-right/1775445626?i=1775445631&uo=4",
+              "trackId": 1775445631,
+              "collectionId": 1775445626
+            },
+            {
+              "artistName": "XG",
+              "collectionName": "XDM Unidentified Waves",
+              "trackName": "SOMETHING AIN'T RIGHT x XDM",
+              "trackTimeMillis": 200578,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2025-01-31T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/us/album/something-aint-right-x-xdm/1791750109?i=1791750113&uo=4",
+              "trackId": 1791750113,
+              "collectionId": 1791750109
+            }
+          ]
+        }
+      ],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Acquire exact public watch metadata/likes and resolve listed version/performer limits; only then parent may use fresh owner export to guard score-bound replacement."
+    },
+    {
+      "recordId": "recvxDMwzBm3rz",
+      "group": "XG",
+      "song": "Tippy Toes",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=7bONJFH9A9A",
+        "videoId": "7bONJFH9A9A",
+        "officialTitle": "XG - Tippy Toes (Official Music Video)",
+        "channel": "XG",
+        "releaseDate": "2022-03-18",
+        "videoType": "官方MV"
+      },
+      "version": "原版",
+      "previousSelection": {
+        "videoId": "vJ1Yrh7_SSw",
+        "title": "XG - Tippy Toes (Live from XG WORLD TOUR: THE CORE at Yoyogi National Stadium 1st Gymnasium)",
+        "channel": "XG",
+        "url": "https://www.youtube.com/watch?v=vJ1Yrh7_SSw",
+        "clip": null
+      },
+      "status": "documentary_candidate_needs_exact_likes",
+      "reason": "先核普通THE SHOW完整单曲，练习室作后备；巡演含额外舞段不能充当本轮默认候选。",
+      "candidates": [
+        {
+          "videoId": "DZhqZ1SA2Q8",
+          "title": "XG, Tippy Toes [THE SHOW 220719]",
+          "channel": "THE K-POP",
+          "duration": "3:13",
+          "published": "4y ago",
+          "url": "https://www.youtube.com/watch?v=DZhqZ1SA2Q8",
+          "durationSeconds": 193,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "official_program",
+          "selection": {
+            "occasion": "music_show",
+            "evidence": {
+              "note": "SBS Medianet THE K-POP identifies THE SHOW220719; XGALX official video index embeds exact video under same program title; official compilation chapters give full3:15–6:28 single segment. Video3:13 vs licensed188213ms.",
+              "urls": [
+                "https://www.youtube.com/watch?v=DZhqZ1SA2Q8",
+                "https://xgalx.com/ko/xg/video/?page=27&tag=",
+                "https://www.youtube.com/watch?v=4fARPrP47pI"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "SBS Medianet THE K-POP identifies THE SHOW220719; XGALX official video index embeds exact video under same program title; official compilation chapters give full3:15–6:28 single segment. Video3:13 vs licensed188213ms.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "xg-tippy-program"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass"
+          ],
+          "bindingChanged": false
+        },
+        {
+          "videoId": "xl1Ms2VnaYM",
+          "title": "XG - Tippy Toes (Dance Practice Fix ver. )",
+          "channel": "XG",
+          "duration": "3:19",
+          "published": "4y ago",
+          "url": "https://www.youtube.com/watch?v=xl1Ms2VnaYM",
+          "durationSeconds": 199,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "XGALX official announcement directly embeds Tippy Toes Dance Practice Fix ver.; original3:08 track vs3:19 practice.",
+              "urls": [
+                "https://www.youtube.com/watch?v=xl1Ms2VnaYM",
+                "https://xgalx.com/zh-CHT/xg/news/detail.php?id=1098836"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "XGALX official announcement directly embeds Tippy Toes Dance Practice Fix ver.; original3:08 track vs3:19 practice.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "xg-tippy-practice"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass"
+          ],
+          "bindingChanged": false
+        },
+        {
+          "videoId": "lzS-NNKcwTo",
+          "title": "XG - Tippy Toes (Dance Practice Moving ver.)",
+          "channel": "XG",
+          "duration": "3:19",
+          "published": "4y ago",
+          "url": "https://www.youtube.com/watch?v=lzS-NNKcwTo",
+          "durationSeconds": 199,
+          "durationEvidence": "YouTube first-party search renderer; watch videoDetails unavailable this attempt",
+          "sourceClass": "official",
+          "platform": "youtube",
+          "type": "practice_room",
+          "selection": {
+            "occasion": "practice_room",
+            "evidence": {
+              "note": "XGALX official announcement directly embeds Tippy Toes Dance Practice Moving ver.; same original release.",
+              "urls": [
+                "https://www.youtube.com/watch?v=lzS-NNKcwTo",
+                "https://xgalx.com/zh-CHT/xg/news/detail.php?id=1098836"
+              ]
+            }
+          },
+          "likes": {
+            "value": null,
+            "display": null,
+            "precision": "unknown"
+          },
+          "versionEvidence": {
+            "basis": "XGALX official announcement directly embeds Tippy Toes Dance Practice Moving ver.; same original release.",
+            "actualAudioComparison": false
+          },
+          "completenessEvidence": {
+            "basis": "Single-song official title plus duration compared against licensed Apple catalog where available; no full playback",
+            "fullPlaybackVerified": false
+          },
+          "sourceSnapshotKeys": [
+            "xg-tippy-practice"
+          ],
+          "adoptionBlockers": [
+            "Fresh exact likes inaccessible after YouTube HTTP 429 / verification response; no attempt to bypass"
+          ],
+          "bindingChanged": false
+        }
+      ],
+      "searchQueryIndexes": [
+        24,
+        25
+      ],
+      "catalogMatches": [
+        {
+          "queryIndex": 8,
+          "results": [
+            {
+              "artistName": "XG",
+              "collectionName": "Tippy Toes - Single",
+              "trackName": "Tippy Toes",
+              "trackTimeMillis": 188213,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2022-03-18T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/us/album/tippy-toes/1609402380?i=1609402381&uo=4",
+              "trackId": 1609402381,
+              "collectionId": 1609402380
+            },
+            {
+              "artistName": "XG",
+              "collectionName": "XDM Unidentified Waves",
+              "trackName": "TIPPY TOES x XDM",
+              "trackTimeMillis": 182331,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2025-01-31T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/us/album/tippy-toes-x-xdm/1791750109?i=1791750116&uo=4",
+              "trackId": 1791750116,
+              "collectionId": 1791750109
+            },
+            {
+              "artistName": "XG",
+              "collectionName": "XG 1st WORLD TOUR “The first HOWL\" Live",
+              "trackName": "Tippy Toes & SOMETHING AIN'T RIGHT & IN THE RAIN (XG 1st WORLD TOUR “The first HOWL\" Live)",
+              "trackTimeMillis": 667000,
+              "trackExplicitness": "notExplicit",
+              "releaseDate": "2025-08-08T12:00:00Z",
+              "trackViewUrl": "https://music.apple.com/us/album/tippy-toes-something-aint-right-in-the-rain-xg-1st/1831297909?i=1831298338&uo=4",
+              "trackId": 1831298338,
+              "collectionId": 1831297909
+            }
+          ]
+        }
+      ],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Acquire exact public watch metadata/likes and resolve listed version/performer limits; only then parent may use fresh owner export to guard score-bound replacement."
+    },
+    {
+      "recordId": "recvxDMFHNojjN",
+      "group": "XG",
+      "song": "IS THIS LOVE",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=aHTI0SXGVS0",
+        "videoId": "aHTI0SXGVS0",
+        "officialTitle": "XG - IS THIS LOVE (Official Music Video)",
+        "channel": "XG",
+        "releaseDate": "2025-03-10",
+        "videoType": "官方MV"
+      },
+      "version": "原版",
+      "previousSelection": {
+        "videoId": "0A-XylDBKEU",
+        "title": "XG - IS THIS LOVE (from XG 1st WORLD TOUR \"The first HOWL\" FINAL Landing at TOKYO DOME)",
+        "channel": "XG",
+        "url": "https://www.youtube.com/watch?v=0A-XylDBKEU",
+        "clip": null
+      },
+      "status": "source_original_unverified",
+      "reason": "IS THIS LOVE的Sbz3V_nijrM、ki5X8tUFUq0为第三方镜像舞蹈/表演标题；未追到艺人原始练习室。可能使用巡演全景，不把民间标题当练习室证据。普通节目搜索返回HYPNOTIZE/NEW DANCE等别曲。",
+      "candidates": [],
+      "searchQueryIndexes": [
+        26,
+        27
+      ],
+      "catalogMatches": [],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Expand first-party regular-program/practice search for exact version; preserve old source and its score association until a qualifying replacement is established."
+    },
+    {
+      "recordId": "recvxyOz5Xr6ek",
+      "group": "NewJeans",
+      "song": "Cool With You / Get Up",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=nJDMAjwxthM",
+        "videoId": "nJDMAjwxthM",
+        "officialTitle": "NewJeans (뉴진스) 'Cool With You' & 'Get Up' Official MV (side B)",
+        "channel": "HYBE LABELS",
+        "releaseDate": "2023-07-19",
+        "videoType": "官方MV"
+      },
+      "version": "side B",
+      "previousSelection": {
+        "videoId": "Xw-rOxA0ItI",
+        "title": "NewJeans (뉴진스) Live @ Lollapalooza 2023 (Full Performance)",
+        "channel": "NewJeans",
+        "url": "https://www.youtube.com/watch?v=Xw-rOxA0ItI",
+        "clip": {
+          "startSeconds": 2279,
+          "endSeconds": 2460,
+          "evidence": {
+            "note": "Current official uploader expanded description:37:59–40:23 Cool With You,40:23–41:00 Get Up; Stage Talk from41:00. Both full tracks in continuous original-language programme, no Band ver. modifier on these tracks.",
+            "urls": [
+              "https://www.youtube.com/watch?v=Xw-rOxA0ItI"
+            ]
+          },
+          "sourceDurationSeconds": 2851
+        }
+      },
+      "status": "combined_track_scope_unmatched",
+      "reason": "目标side B包含Cool With You与Get Up两首连续内容；R-Vflly99ZM、f7cNY8vYA2Y普通练习室及Music Bank vS8jNklD5s8仅Cool With You；5RgDouqfy1M仅Get Up。MMA串烧练习 nDlNPbPnMUU 10:11需精确连续章节和同编配依据，不拼两条视频伪装单一完整来源。",
+      "candidates": [],
+      "searchQueryIndexes": [
+        28,
+        29
+      ],
+      "catalogMatches": [],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Expand first-party regular-program/practice search for exact version; preserve old source and its score association until a qualifying replacement is established."
+    },
+    {
+      "recordId": "recvxyHuKMKGBh",
+      "group": "aespa",
+      "song": "Live My Life",
+      "original": {
+        "url": "https://www.youtube.com/watch?v=YEA1ROHi0Eg",
+        "videoId": "YEA1ROHi0Eg",
+        "officialTitle": "aespa 에스파 'Live My Life' MV",
+        "channel": "SMTOWN",
+        "releaseDate": "2024-06-19",
+        "videoType": "官方MV"
+      },
+      "version": "完整MV版",
+      "previousSelection": {
+        "videoId": "gf2a-oVSn0k",
+        "title": "[4K] 에스파(aespa) - Live My Life | 2026 고려대학교 입실렌티 IPSELENTI",
+        "channel": "고려대학교 TV방송국 KTN",
+        "url": "https://www.youtube.com/watch?v=gf2a-oVSn0k",
+        "clip": null
+      },
+      "status": "no_policy_eligible_candidate_found_in_scope",
+      "reason": "Live My Life只有校园/巡演、MV、2分钟Universe特殊影像及第三方舞蹈cover；练习幕后tzG35N8IK5w不证明完整目标单曲。Music Bank查询未返回结构化结果，访问失败单独保留。",
+      "candidates": [],
+      "searchQueryIndexes": [
+        30,
+        31
+      ],
+      "catalogMatches": [],
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "bindingChanged": false,
+      "nextAction": "Expand first-party regular-program/practice search for exact version; preserve old source and its score association until a qualifying replacement is established."
+    }
+  ],
+  "evidenceFiles": [
+    "replacement-a-search.json",
+    "replacement-a-pages.json",
+    "replacement-a-sources.json",
+    "replacement-a-catalog.json"
+  ]
+}

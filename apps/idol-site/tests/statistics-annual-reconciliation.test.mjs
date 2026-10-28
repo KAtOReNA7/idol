@@ -7,6 +7,14 @@ import {build} from 'esbuild';
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const evidenceRoot = '../../docs/codex/evidence/20261028-continuation/statistics/';
 const data = read('data/group-statistics-completion-evidence.json');
+const laterSales = read('../../docs/codex/evidence/20261028-stage-fill/statistics-adoption-proposal.json');
+// Restore only the reviewed later changes when checking this historical cohort.
+const historicalData = structuredClone(data);
+for (const change of laterSales.items) {
+  const [slug, field] = change.key.split('.');
+  historicalData.groups[slug][field] = change.expectedBefore;
+}
+historicalData.summary = laterSales.expectedBeforeSummary;
 const proposal = read(evidenceRoot + 'triples-sales-proposal.json');
 const sourceEvidence = read(evidenceRoot + 'source-evidence.json');
 const officialEvidence = read(evidenceRoot + 'official-index-check.json');
@@ -155,15 +163,15 @@ test('partial reconciliation leaves the aggregate discrepancy and unknown metric
   assert.match(sales.scope, /来源覆盖下界.*不是全球完整累计/);
   assert.ok(data.summary.unresolvedSourceDifferences.includes('triples.sales'));
   assert.ok(!data.summary.resolvedSourceDifferences.includes('triples.sales'));
-  assert.equal(data.summary.socialFallbackZero + data.summary.salesFallbackZero + data.summary.winsFallbackZero, 17);
+  assert.equal(historicalData.summary.socialFallbackZero + historicalData.summary.salesFallbackZero + historicalData.summary.winsFallbackZero, 17);
 });
 
 test('the other 50 groups and tripleS non-sales fields match the pre-change git baseline', () => {
-  const otherGroups = Object.fromEntries(Object.entries(data.groups).filter(([slug]) => slug !== 'triples'));
+  const otherGroups = Object.fromEntries(Object.entries(historicalData.groups).filter(([slug]) => slug !== 'triples'));
   assert.equal(Object.keys(otherGroups).length, 50);
   assert.equal(hash(otherGroups), baseline.other50Groups);
   assert.equal(hash(Object.fromEntries(Object.entries(data.groups.triples).filter(([field]) => field !== 'sales'))), baseline.triplesOtherFields);
-  assert.equal(hash(data.summary), baseline.summary);
+  assert.equal(hash(historicalData.summary), baseline.summary);
 });
 
 test('the public group model renders the reconciled integer and retains the unresolved scope', async () => {

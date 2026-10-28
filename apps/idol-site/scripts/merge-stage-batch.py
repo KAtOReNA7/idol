@@ -15,7 +15,11 @@ def public(v):
  if isinstance(v,list):return [public(x) for x in v]
  return v
 batch=load(sys.argv[1]);fresh=load(sys.argv[2]);assert batch['formatVersion']=='idol.stage-evidence.v1'
-assert fresh['source']=='feishu' and fresh['formatVersion']=='idol.live-backup.v1'
+assert (fresh.get('source'),fresh.get('formatVersion')) in {
+ ('feishu','idol.live-backup.v1'),('native','idol.native-data-export.v1')
+},'Use an authenticated original export; never relabel a snapshot or public projection'
+if fresh['source']=='native':
+ assert isinstance(fresh.get('journal'),list) and isinstance(fresh.get('siteMetadata',{}).get('stageVideos'),dict),'Native export must include its save journal and published stage metadata'
 assert -60<=(now-dt(fresh['capturedAt'])).total_seconds()<900,'Refresh authenticated score preimage before binding sources'
 freshworks={w['recordId']:w for w in fresh['tables']['works']['records']}
 inv={w['recordId']:w for w in load(root/'data/stages/inventory.json')['works']}
@@ -60,6 +64,8 @@ for item in batch['items']:
  if s.get('publishedAt'):assert re.match(r'^\d{4}-\d{2}-\d{2}(?:T|$)',s['publishedAt']),f'Invalid known publication date {rid}'
  source_at=s['checkedAt'];assert dt(source_at)<=now+datetime.timedelta(minutes=5)
  old=freshworks[rid]['fields'].get('fld641ausT');empty=old is None or (isinstance(old,str) and not old.strip())
+ # A public or incomplete projection cannot establish an empty owner score.
+ assert 'fld641ausT' in {f.get('field_id') for f in fresh['tables']['works'].get('fields',[])} or fresh['source']=='feishu','Native work schema must include the stage score field'
  bind={'videoId':s['videoId'],'sourceKey':source_key(s),'initializedAt':fresh['capturedAt'],'initialScore':None} if empty else None
  history=previous.get('previousSources',[]) if previous else []
  if previous:
@@ -89,6 +95,9 @@ for item in batch['items']:
  if clip:candidates=[picked]
  videos[rid]={'sourceClass':'official','platform':'youtube','completeness':'full','videoId':s['videoId'],'url':s['url'],'title':s['title'],'channel':s['channel'],'kind':s.get('label') or s.get('type'),'publishedDate':(s.get('publishedAt') or '')[:10],'typeNote':note,'sourceUrl':s['sourceUrl'],'scoreBinding':bind,'likes':{'value':s['likes'],'display':display,'precision':'exact'},'checkedAt':source_at,'selectionNote':ranknote,'comparisonNote':item['reason'],'reusesOriginalVideo':reuse,'comparisonLimited':bool(item.get('comparisonLimited')),'comparisonLimitation':item.get('comparisonLimitation') or '', 'previousSources':history,'candidateCount':len(candidates),'candidates':[{'title':c['title'],'url':c['url'],'likesDisplay':f"{c['likes']['value']:,}",'kind':c.get('label') or c.get('kind') or '合格候选（见标题）'} for c in candidates]}
  videos[rid]['selection']=selection
+ if s.get('verificationNote'):
+  assert isinstance(s['verificationNote'],str) and s['verificationNote'].strip()
+  videos[rid]['verificationNote']=s['verificationNote']
  if len(candidates)==1:
   videos[rid]['comparisonLimited']=True
   videos[rid]['comparisonLimitation']=item.get('comparisonLimitation') or '本轮仅有一个符合新政策的同优先级候选；其他合格候选仍待比较。'
@@ -101,5 +110,5 @@ status['updatedAt']=now.isoformat()
 artifact=public(batch);name=pathlib.Path(sys.argv[1]).name;dest=root/'data/stages/evidence'/name
 if dest.exists():assert load(dest)==artifact,'Evidence batch names are immutable; use a new batch ID for a corrected/researched revision.'
 for path,obj in [(dest,artifact),(root/'data/stage-videos.json',videos),(root/'data/stages/status.json',status)]:
- path.parent.mkdir(parents=True,exist_ok=True);tmp=path.with_suffix(path.suffix+'.tmp');tmp.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');tmp.replace(path)
+ path.parent.mkdir(parents=True,exist_ok=True);tmp=path.with_suffix(path.suffix+'.tmp');tmp.write_bytes((json.dumps(obj,ensure_ascii=False,indent=2)+'\n').encode('utf-8'));tmp.replace(path)
 print(json.dumps({'retiredUnpublishedUnverifiedSources':retired_unpublished,'newSources':len(added),'sourceIds':added,'replacedUnscoredSources':replaced,'updatedSameVideoMetadata':metadata_updated,'updatedOtherStates':len(changed),'retainedExistingSources':held,'freshPreimageAt':fresh['capturedAt'],'batch':name},ensure_ascii=False,indent=2))

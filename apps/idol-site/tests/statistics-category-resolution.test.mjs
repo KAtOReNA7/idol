@@ -6,6 +6,7 @@ const data=read('data/group-statistics-completion-evidence.json');
 const evidenceRoot='../../docs/codex/evidence/20261027-category-resolution/statistics/';
 const changes=read(evidenceRoot+'changes.json');
 const review=read(evidenceRoot+'review.json');
+const laterSales=read('../../docs/codex/evidence/20261028-stage-fill/statistics-adoption-proposal.json');
 
 test('fromis_9 monthly update adds two distinct rows without changing old rows',()=>{
  const change=changes.changes.find(c=>c.key==='fromis9.sales');
@@ -72,9 +73,11 @@ test('award source adjudication preserves accepted totals and explains discrepan
  assert.ok(ive.events.some(e=>e.date==='2026-03-07'));
 });
 
-test('17 unresolved metrics retain null evidence; 22 reviewed topics are unique and complete',()=>{
+test('the historical 17 unresolved metrics and 22 reviewed topics remain reconstructable',()=>{
+ const historicalData=structuredClone(data);
+ for(const change of laterSales.items){const [slug,field]=change.key.split('.');historicalData.groups[slug][field]=change.expectedBefore;}
  const actual=[];
- for(const [slug,g]of Object.entries(data.groups)){
+ for(const [slug,g]of Object.entries(historicalData.groups)){
   for(const a of g.social)if(a.observedValue===null)actual.push(slug+'.'+a.platform);
   for(const m of ['sales','wins'])if(g[m].observedValue===null){actual.push(slug+'.'+m);assert.equal(g[m].displayValue,0);assert.equal(g[m].status,'unavailable');}
  }

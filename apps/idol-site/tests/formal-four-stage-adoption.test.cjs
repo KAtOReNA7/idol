@@ -1,6 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ts=require('typescript'),crypto=require('node:crypto'),{DatabaseSync}=require('node:sqlite');
 const root=path.resolve(__dirname,'..'),read=file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8'));
 const evidence=read('../../docs/codex/evidence/20261027-category-resolution/stages/formal-four-adoption.json'),videos=read('data/stage-videos.json'),statuses=read('data/stages/status.json');
+const practice=read('../../docs/codex/evidence/20261028-stage-fill/adoption.json'),ownerBaseline=read('../../docs/codex/evidence/20261028-stage-fill/owner-baseline.json');
 const sort=v=>Array.isArray(v)?v.map(sort):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sort(v[k])])):v;
 const sha=v=>crypto.createHash('sha256').update(typeof v==='string'||Buffer.isBuffer(v)?v:JSON.stringify(sort(v))).digest('hex');
 function harness(){
@@ -16,15 +17,28 @@ function harness(){
  async function init(recordId){const f=F.works,fields=[{field_id:f.score,field_name:'MV分数',type:2},{field_id:f.stageScore,field_name:'舞台分数',type:2},{field_id:f.note,field_name:'点评',type:1},{field_id:f.watched,field_name:'观看状态',type:3,property:{options:[{name:'已观看'}]}}],raw={[f.score]:7.25,[f.stageScore]:null,[f.note]:'synthetic note, never production',[f.watched]:'已观看'},revision=await native.nativeRevision('synthetic-snapshot','works',recordId,1,raw);sql.prepare("INSERT OR IGNORE INTO idol_storage_control VALUES ('main','synthetic-owner','native',1,'synthetic-snapshot',NULL,1)").run();sql.prepare('INSERT OR IGNORE INTO idol_native_fields VALUES (?,?,?,?)').run('synthetic-snapshot:works','synthetic-snapshot','works',JSON.stringify(fields));sql.prepare('INSERT INTO idol_native_records (key,snapshot_id,table_key,record_id,fields_json,revision,version,updated_at) VALUES (?,?,?,?,?,?,?,?)').run('synthetic-snapshot:works:'+recordId,'synthetic-snapshot','works',recordId,JSON.stringify(raw),revision,1,1);return{raw,revision,f};}
  return{sql,load,init,user(value){requestUser=value},post(input,origin='https://synthetic.test'){return route.POST(new Request('https://synthetic.test/api/save',{method:'POST',headers:{origin,'content-type':'application/json'},body:JSON.stringify(input)}))}};
 }
-test('only four precise stages and statuses are added; all 478 old sources and supplementary evidence remain identical',()=>{
- assert.equal(Object.keys(videos).length,482);assert.equal(Object.keys(evidence.preservation.stageRows).length,478);
+test('four earlier adoptions and eleven practices preserve all prior source objects and supplementary evidence',()=>{
+ assert.equal(Object.keys(videos).length,493);assert.equal(Object.keys(evidence.preservation.stageRows).length,478);
+ assert.equal(Object.keys(ownerBaseline.stageRowsSha256).length,482);
+ for(const[id,hash]of Object.entries(ownerBaseline.stageRowsSha256))assert.equal(sha(videos[id]),hash,id);
  for(const[id,hash]of Object.entries(evidence.preservation.stageRows))assert.equal(sha(videos[id]),hash,id);
- const ids=new Set(evidence.items.map(i=>i.recordId));assert.equal(ids.size,4);
+ const ids=new Set([...evidence.items,...practice.items].map(i=>i.recordId));assert.equal(ids.size,15);
  for(const[id,hash]of Object.entries(evidence.preservation.statusRows))if(!ids.has(id))assert.equal(sha(statuses.works[id]),hash,id);
  const current=read('data/stages/supplements.json'),delta=read('../../docs/codex/evidence/20261028-continuation/editorial-corrections.json');
  for(const row of Object.values(current.works)){row.alternatives=row.alternatives.filter(a=>a.sourceId!==delta.newViewOnlyCandidate.sourceId);for(const a of [...row.alternatives,...(row.watchLeads??[])])delete a.selection;}
  for(const c of delta.corrections){const row=current.works[c.workId];const i=row.alternatives.findIndex(a=>a.sourceId===c.sourceId);assert.deepEqual(row.alternatives[i],c.after);row.alternatives[i]=c.before;}
  current.updatedAt=delta.baselineUpdatedAt;assert.equal(sha(JSON.stringify(current,null,2)+'\n'),evidence.preservation.supplementsFileSha256);
+});
+
+test('eleven documented practices have exact empty-score bindings, original posters and public verification limits',()=>{
+ const h=harness(),stage=h.load('lib/idol/stage.ts'),source=h.load('lib/idol/stage-source.ts'),lookup=h.load('lib/idol/approved-video-poster.ts').approvedVideoPoster,project=h.load('lib/idol/public-catalog.ts').projectPublicCatalog;
+ assert.equal(practice.items.length,11);
+ for(const item of practice.items){
+  const s=stage.stageForWork(item.recordId);assert.equal(sha(s),item.sourceSha256);assert.equal(s.selection.occasion,'practice_room');assert.equal(source.stageHasValidBinding(s),true);assert.equal(source.stageSourceKey(s),item.videoId);assert.equal(s.scoreBinding.initializedAt,practice.ownerPreimageAt);assert.equal(item.fullPlaybackVerified,false);assert.match(s.verificationNote,/未完整播放/);assert.match(s.verificationNote,/练习室不代表现场人声/);assert.equal(statuses.works[item.recordId].status,'verified');
+  const p=project({groups:[],members:[],ratings:[],works:[{id:item.recordId,stage:s}],counts:{}});assert.equal(p.works[0].stage.verificationNote,s.verificationNote);assert.equal(p.works[0].stage.sourceUrl,'');
+  const poster=practice.posterEvidence.find(x=>x.workId===item.recordId),bytes=fs.readFileSync(path.join(root,'public',poster.src));assert.equal(sha(bytes),poster.sha256);assert.equal(bytes.length,poster.byteLength);assert.equal(lookup(item.recordId,item.videoId,'stage').src,poster.src);assert.equal(lookup(item.recordId,'wrongsource','stage'),null);assert.notEqual(lookup(item.recordId,item.videoId,'mv')?.src,poster.src);
+ }
+ h.sql.close();
 });
 test('precise bindings are accepted by actual stage helpers; public notes disclose documentary scope and no playback claim',()=>{
  const h=harness(),stage=h.load('lib/idol/stage.ts'),source=h.load('lib/idol/stage-source.ts'),project=h.load('lib/idol/public-catalog.ts').projectPublicCatalog;
@@ -45,13 +59,13 @@ test('only a duplicate of the selected whole-video stage is hidden from other vi
  const supplements=read('data/stages/supplements.json');
  for(const item of evidence.items){const original=supplements.works[item.recordId],work={stage:videos[item.recordId],stageSupplement:original},before=JSON.stringify(original);assert.ok(!links(output.StageSupplements({work})).includes(item.url));assert.ok(links(output.StageSupplements({work:{...work,stage:{...work.stage,clip:{}}}})).includes(item.url));assert.equal(JSON.stringify(original),before);}
 });
-test('actual native save schema and POST route accept the four new exact bindings in isolated memory, preserve other fields and reject mismatches',async()=>{
+test('actual native save schema and POST route accept all fifteen audited new bindings in isolated memory, preserve other fields and reject mismatches',async()=>{
  const h=harness();
- for(const item of evidence.items){const{raw,revision,f}=await h.init(item.recordId),input={table:'works',recordId:item.recordId,revision,operationId:crypto.randomUUID(),values:{stageScore:8.5},stageVideoId:item.videoId,stageSourceKey:item.videoId};
+ for(const item of [...evidence.items,...practice.items]){const{raw,revision,f}=await h.init(item.recordId),input={table:'works',recordId:item.recordId,revision,operationId:crypto.randomUUID(),values:{stageScore:8.5},stageVideoId:item.videoId,stageSourceKey:item.videoId};
   for(const invalid of [{...input,stageVideoId:'abcdefghijk'},{...input,stageSourceKey:'wrong'},{...input,values:{stageScore:11}}]){const response=await h.post(invalid);assert.notEqual(response.status,200);assert.ok(['STAGE_SOURCE_CHANGED','INVALID_SCORE'].includes((await response.json()).error));}
   h.user('synthetic-other');assert.equal((await h.post(input)).status,403);h.user('synthetic-owner');assert.equal((await h.post(input,'https://wrong.test')).status,403);
   const response=await h.post(input);assert.equal(response.status,200);const result=await response.json();assert.equal(result.verified,true);assert.equal(result.stageSource.videoId,item.videoId);assert.equal(result.stageSource.sourceKey,item.videoId);assert.equal(result.values.stageScore,8.5);
   assert.deepEqual(await(await h.post(input)).json(),result,'idempotent retry');const after=JSON.parse(h.sql.prepare('SELECT fields_json FROM idol_native_records WHERE record_id=?').get(item.recordId).fields_json);for(const key of Object.keys(raw))assert.deepEqual(after[key],key===f.stageScore?8.5:raw[key]);
  }
- assert.equal(h.sql.prepare('SELECT count(*) AS n FROM idol_saves').get().n,4);h.sql.close();
+ assert.equal(h.sql.prepare('SELECT count(*) AS n FROM idol_saves').get().n,15);h.sql.close();
 });

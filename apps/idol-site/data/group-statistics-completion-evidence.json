@@ -10,9 +10,9 @@
     "socialObserved": 148,
     "socialFallbackZero": 5,
     "omittedPlatforms": 0,
-    "salesObserved": 42,
-    "salesLowerBoundsAdded": 10,
-    "salesFallbackZero": 9,
+    "salesObserved": 44,
+    "salesLowerBoundsAdded": 12,
+    "salesFallbackZero": 7,
     "winsObserved": 27,
     "winsConfirmedZero": 21,
     "winsFallbackZero": 3,
@@ -2016,22 +2016,87 @@
       ],
       "omittedPlatforms": [],
       "sales": {
-        "observedValue": null,
-        "displayValue": 0,
-        "status": "unavailable",
-        "unit": "copies",
-        "title": "韩国发行累计销量",
-        "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。",
-        "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.889410+00:00",
-        "sourceUrl": null,
-        "sourceTitle": null,
-        "sources": [],
-        "notes": [
-          "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
-          "已检索Circle相关公开榜单、团体名与album sales；单张/单周/单日零售数字及sold out描述不替代团体累计。"
+        "observedValue": 5367,
+        "displayValue": 5367,
+        "status": "observed",
+        "unit": "张",
+        "title": "已核两周销量下界",
+        "scope": "BADVILLAIN《OVERSTEP》韩国Circle Album Chart 2024年第23、24周已核销量合计5,367张；仅为这两周的来源覆盖下界，不是全团或全球完整累计；其他时期、版本及作品未覆盖。",
+        "asOf": "2024-W24",
+        "checkedAt": "2026-10-28",
+        "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=23&hitYear=2024&termGbn=week&yearTime=3",
+        "sourceTitle": "Circle Album Chart · OVERSTEP · 2024第23、24周",
+        "sources": [
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=23&hitYear=2024&termGbn=week&yearTime=3",
+            "title": "Circle Album Chart · OVERSTEP · 2024-W23 周销量",
+            "sourceDate": "2024-W23",
+            "checkedAt": "2026-10-28T05:44:57.385378+00:00",
+            "kind": "primary-chart",
+            "access": "official-page-native-public-api",
+            "sha256": "adf48f7895bf40e41cdbce653c118231d52b988f6dbeef6911816c7138586010"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=24&hitYear=2024&termGbn=week&yearTime=3",
+            "title": "Circle Album Chart · OVERSTEP · 2024-W24 周销量",
+            "sourceDate": "2024-W24",
+            "checkedAt": "2026-10-28T05:45:01.645817+00:00",
+            "kind": "primary-chart",
+            "access": "official-page-native-public-api",
+            "sha256": "2498bf68869e202dcda891bb2c03529a3495750479ee1cd2f2a85238485b7efa"
+          }
         ],
-        "evidence": {}
+        "notes": [
+          "数值只包含下列已核周榜，按独立周相加；不是全团或全球完整累计。",
+          "使用Circle Album Chart当周Album_CNT，不使用累计范围未明的Total_CNT；不加总同期间月/年榜、Hanteo或Retail零售榜。",
+          "未覆盖其他周期、其他版本及其他作品；未上所查Top100不等于销售为0。"
+        ],
+        "lowerBound": true,
+        "evidence": {
+          "kind": "public-period-lower-bound",
+          "lowerBound": true,
+          "replacedStatus": "unavailable",
+          "previousEvidence": {},
+          "chart": "Circle Album Chart",
+          "metricField": "Album_CNT",
+          "artist": "배드빌런 (BADVILLAIN)",
+          "album": "OVERSTEP",
+          "albumId": "76819",
+          "distributor": "Kakao Entertainment",
+          "weekRows": [
+            {
+              "year": 2024,
+              "week": 23,
+              "album": "OVERSTEP",
+              "albumId": "76819",
+              "sales": 2962,
+              "rank": 38,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=23&hitYear=2024&termGbn=week&yearTime=3",
+              "checkedAt": "2026-10-28T05:44:57.385378+00:00",
+              "responseSha256": "adf48f7895bf40e41cdbce653c118231d52b988f6dbeef6911816c7138586010"
+            },
+            {
+              "year": 2024,
+              "week": 24,
+              "album": "OVERSTEP",
+              "albumId": "76819",
+              "sales": 2405,
+              "rank": 58,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=24&hitYear=2024&termGbn=week&yearTime=3",
+              "checkedAt": "2026-10-28T05:45:01.645817+00:00",
+              "responseSha256": "2498bf68869e202dcda891bb2c03529a3495750479ee1cd2f2a85238485b7efa"
+            }
+          ],
+          "recomputedSum": 5367,
+          "fieldGrounding": "原官方album.circle页内脚本POST /data/api/chart/album；termGbn=week分支只展示Album_CNT。与retail.circle及/data/api/chart/retail_list完全分开。",
+          "excludedCumulativeField": {
+            "Total_CNT": 5980,
+            "reason": "两周响应均有该数，但累计范围未经说明核实，本批完全不使用。"
+          },
+          "sourceEvidenceFile": "docs/codex/evidence/20261028-stage-fill/statistics-primary-observations-c.json",
+          "researchFile": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+          "coverageComplete": false
+        }
       },
       "wins": {
         "observedValue": 0,
@@ -2663,22 +2728,67 @@
       ],
       "omittedPlatforms": [],
       "sales": {
-        "observedValue": null,
-        "displayValue": 0,
-        "status": "unavailable",
-        "unit": "copies",
-        "title": "韩国发行累计销量",
-        "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。",
-        "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.889410+00:00",
-        "sourceUrl": null,
-        "sourceTitle": null,
-        "sources": [],
-        "notes": [
-          "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
-          "已检索Circle相关公开榜单、团体名与album sales；单张/单周/单日零售数字及sold out描述不替代团体累计。"
+        "observedValue": 725,
+        "displayValue": 725,
+        "status": "observed",
+        "unit": "张",
+        "title": "已核单周销量下界",
+        "scope": "BEWAVE《BE;WAVE》韩国Circle Album Chart 2024年第16周已核销量725张；仅为这一周的来源覆盖下界，不是全团或全球完整累计；其他时期、版本及作品未覆盖。",
+        "asOf": "2024-W16",
+        "checkedAt": "2026-10-28",
+        "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=16&yearTime=3",
+        "sourceTitle": "Circle Album Chart · BE;WAVE · 2024第16周",
+        "sources": [
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=16&yearTime=3",
+            "title": "Circle Album Chart · BE;WAVE · 2024-W16 周销量",
+            "sourceDate": "2024-W16",
+            "checkedAt": "2026-10-28T05:48:59.166622+00:00",
+            "kind": "primary-chart",
+            "access": "official-page-native-public-api",
+            "sha256": "d9b16dfc1523137ea5d9f60e2c3a893b0f141984207117f49989b291641cc725"
+          }
         ],
-        "evidence": {}
+        "notes": [
+          "数值只包含下列已核周榜，按独立周相加；不是全团或全球完整累计。",
+          "使用Circle Album Chart当周Album_CNT，不使用累计范围未明的Total_CNT；不加总同期间月/年榜、Hanteo或Retail零售榜。",
+          "未覆盖其他周期、其他版本及其他作品；未上所查Top100不等于销售为0。"
+        ],
+        "lowerBound": true,
+        "evidence": {
+          "kind": "public-period-lower-bound",
+          "lowerBound": true,
+          "replacedStatus": "unavailable",
+          "previousEvidence": {},
+          "chart": "Circle Album Chart",
+          "metricField": "Album_CNT",
+          "artist": "BEWAVE(비웨이브)",
+          "album": "BE;WAVE",
+          "albumId": "76300",
+          "distributor": "Kakao Entertainment",
+          "weekRows": [
+            {
+              "year": 2024,
+              "week": 16,
+              "album": "BE;WAVE",
+              "albumId": "76300",
+              "sales": 725,
+              "rank": 95,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=16&yearTime=3",
+              "checkedAt": "2026-10-28T05:48:59.166622+00:00",
+              "responseSha256": "d9b16dfc1523137ea5d9f60e2c3a893b0f141984207117f49989b291641cc725"
+            }
+          ],
+          "recomputedSum": 725,
+          "fieldGrounding": "album.circle页内同一week渲染分支只展示Album_CNT；使用公开chart/album响应，非Retail。",
+          "excludedCumulativeField": {
+            "Total_CNT": 1797,
+            "reason": "累计范围未独立核实，本批完全不使用。"
+          },
+          "sourceEvidenceFile": "docs/codex/evidence/20261028-stage-fill/statistics-primary-observations-c.json",
+          "researchFile": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+          "coverageComplete": false
+        }
       },
       "wins": {
         "observedValue": 0,

@@ -32,5 +32,18 @@
     "priorTransientHydrationWarningUnresolvedNotReproduced": true
   },
   "wholeRepositoryTested": false,
-  "privateWrites": 0
+  "privateWrites": 0,
+  "productionBrowser": {
+    "evidence": "production-browser.json",
+    "layouts": 15,
+    "interactions": 15,
+    "directAnonymousApiReads": 15,
+    "passed": true,
+    "fixtures": false,
+    "relay": false,
+    "applicationWrites": 0,
+    "applicationConsoleErrors": 0,
+    "readOnlyHarnessBlockedCloudflareChallengePosts": 14,
+    "initialHarnessAggregatePassed": false
+  }
 }

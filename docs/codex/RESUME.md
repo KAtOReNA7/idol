@@ -1,4 +1,16 @@
-# 接续：正式v196与资料补全
+# 接续：正式v197与剩余资料核对
+
+## 最新交付：v197上线，选源规则已落实（2026-10-28）
+
+正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已发布 **v197 / succeeded**。实现提交`a9d582b8f777ecaf8a7bec7a6313fa7e787f3862`已推送并读回`codex/statistics-relations-followup-20261027` / [PR44](https://github.com/KAtOReNA7/idol/pull/44)，仍draft/open、未合main。正式源`12d6600bdde596666c9a26543284634b6badccc8`，部署`appgdep_6ae1841550c88191972a859b5dfe1649`。GitHub与正式站回执分别见`docs/codex/evidence/20261028-continuation/publication.json`。
+
+舞台补充记录结构校验与展示政策已分开：87记录（79候选＋8线索）保留证据，展示41候选＋7线索、隐藏39活动等记录。打歌节目／完整官方练习室优先；三个否决视频不能再导入，比较点赞前先过滤不符政策来源。旧482精确舞台及评分绑定不变，新增正式绑定0，不能把展示数写成已匹配数。Right Now固定练习室`y4Tr8LE5yV4`仅观看，完整性沿用用户确认，实际音轨仍待核；不要再次索要完整性。旧Music Bank“韩语别版”推断已撤回；IVE I WANT TVDaily标成原始媒体，并按活动类型隐藏。
+
+tripleS采用同年同版年榜替换，36原月行保留，5行贡献被2项年榜替换；公开下限2,092,239，剩余差额366,550继续开放。fromis_9保持1,152,076。159定向测试（含52时间轴和39核心）、类型与正式构建通过；本地及线上各15布局／15交互通过，线上15次直接匿名API成功；只读测试拦截的14次Cloudflare挑战网络日志已单独归类。历史一次本地初始化属性警告未复现但未宣称已修。完整包1402文件／展开42,729,984bytes，578随包、5418远端及10受限排除通过。原生native/epoch6/原快照/done206、public/1owner/0外部/0组/revision2保持，真实私人写入0。本轮未重新读取owner全部个人字段，不能冒称做过全量个人值hash复验。
+
+保持51团设计、Apple Music主站、ID／关系／个人字段、全部原图与owner保存鉴权。2828公共认人绑定＋12原生图、现有有效关系缺图0、旧低清0；A–Y/Z禁止重导。仍84作品人物证据、123原待核舞台、17未知统计、7原事实生效日及历史活动替代待核；个人页统一排版仍待决定。当前报告`docs/codex/stage-policy-continuation-20261028.md`，继续用`docs/codex/current-gap-classification-20261028.md`逐项路线，并以本节新数字和已修复状态覆盖其旧描述。
+
+接续先保护本地修改和未跟踪文件，显式fetch origin/main与PR44分支。工作树干净后从最新origin/main建codex/任务分支；PR44未合并时普通merge其最新远端分支纳入v197，不能用main上的v191覆盖当前正式站。若PR44已合并，直接使用包含它的最新main。禁止reset、clean、强推，也不要重复合PR43或重复导入图片。本机临时任务分支为`codex/statistics-relationship-followup-20261028`，交付远端以PR44分支为准。下方旧“规则仅文档／两标签待修／SSR43失败／v196”均为历史。
 
 ## 最新选源决定：舞台采用打歌节目／练习室（2026-10-28）
 

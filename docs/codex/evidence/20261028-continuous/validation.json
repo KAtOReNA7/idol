@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-28T10:11:46.283394+00:00",
+  "tests": {
+    "focusedPassed": 167,
+    "focusedFailed": 0,
+    "additionalResourceAndGuardPassed": 16,
+    "additionalResourceAndGuardFailed": 0,
+    "overlapWithFocused": 5,
+    "uniqueTestsPassed": 178
+  },
+  "typeScript": "passed --noEmit --incremental false",
+  "formalBuild": "passed",
+  "localBrowser": "local-browser-summary.json",
+  "package": "package-verification.json",
+  "assetPreparation": {
+    "status": "passed",
+    "removedGeneratedRemoteCopies": 43,
+    "remoteBytes": 30913483,
+    "restrictedCopies": 10,
+    "privateStorageOrOriginalsChanged": false
+  },
+  "guardRefresh": "build-guard-refresh.json",
+  "guardIndependentReview": {
+    "other35GuardsUnchanged": true,
+    "udtt2ReportedRecordsUnchanged": true,
+    "fixed9RestrictedAnd2SharedOriginalsUnchanged": true,
+    "authSaveDatabaseFilesUnchanged": 58,
+    "formalPublicRoutingPaths": 650,
+    "formalPublicRoutingDifferences": 0
+  },
+  "prePublicationFailures": [
+    {
+      "phase": "first archive audit",
+      "reason": "Build recreated43 fixed remote asset copies; full archive audit stopped before upload. Original generated archive retained locally."
+    },
+    {
+      "phase": "first resource preparation",
+      "reason": "Exact runtime guard detected authorized three reported-record changes; independently reviewed only matching data digest refresh, then original full guard passed. No private exclusion or auth relaxed."
+    },
+    {
+      "phase": "additional package assertions",
+      "reason": "Verifier initially assumed23 posters were all local and23 total metadata files. Actual existing policy is19 local+4 fixed remote posters and23 migration files+hosting. Assertions corrected to test all actual exact inventories; no app/resource-policy change."
+    }
+  ],
+  "wholeRepositoryTests": false,
+  "privateWrites": 0
+}

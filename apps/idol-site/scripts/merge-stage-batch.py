@@ -1,9 +1,10 @@
 """Merge a reviewed public evidence batch. No network, Feishu write, or publication.
 Usage: python3 scripts/merge-stage-batch.py EVIDENCE_JSON FRESH_PRIVATE_EXPORT_JSON
-Existing selected video bindings are immutable; failures never erase sources.
+Rated, saved or uncertain bindings are retained. Documented replacements require
+a fresh empty score, complete journal and exact published source preimage.
 """
 import json,sys,datetime,pathlib,re,hashlib
-from stage_selection_policy import checked_selection, comparison_candidates
+from stage_selection_policy import checked_selection, comparison_candidates, replacement_preference
 root=pathlib.Path(__file__).resolve().parent.parent
 now=datetime.datetime.now(datetime.timezone.utc)
 def dt(v):return datetime.datetime.fromisoformat(v.replace('Z','+00:00'))
@@ -26,7 +27,14 @@ inv={w['recordId']:w for w in load(root/'data/stages/inventory.json')['works']}
 status=load(root/'data/stages/status.json');videos=load(root/'data/stage-videos.json')
 allowed={'pending','verified','likes_unverified','not_found','version_mismatch','blocked','missing_song_identity'}
 journal=load(sys.argv[3]) if len(sys.argv)>3 else None
-if journal:assert journal.get('complete') and -60<=(now-dt(journal['capturedAt'])).total_seconds()<300,'Fresh complete save journal required for source replacements'
+if fresh['source']=='native':
+ # The authenticated native export already contains the complete owner journal.
+ # Do not accept an unrelated hand-crafted journal in place of these rows.
+ rows=fresh['journal']
+ assert all(isinstance(r,dict) and isinstance(r.get('record_id'),str) and r['record_id'] and isinstance(r.get('table_key'),str) and isinstance(r.get('status'),str) for r in rows),'Native save journal rows must identify record, table and status'
+ journal={'complete':True,'capturedAt':fresh['capturedAt'],'records':[{'recordId':r['record_id']} for r in rows]}
+needs_replacement=any(i.get('selected') and i['recordId'] in videos and source_key(videos[i['recordId']])!=source_key(i['selected']) for i in batch['items'])
+if journal and (len(sys.argv)>3 or needs_replacement):assert journal.get('complete') and -60<=(now-dt(journal['capturedAt'])).total_seconds()<300,'Fresh complete save journal required for source replacements'
 seen=set();added=[];held=[];changed=[];replaced=[];metadata_updated=[];retired_unpublished=[]
 for item in batch['items']:
  rid=item['recordId'];assert rid in inv and rid in freshworks and rid not in seen, f'Unknown/duplicate/missing live record {rid}'
@@ -75,11 +83,13 @@ for item in batch['items']:
    if previous.get('clip') or clip:
     held.append({'recordId':rid,'reason':'Existing source retained: a changed clip scope is never silently rebound or ranked against a single-song video.'});continue
    saved=not journal or any(r.get('recordId')==rid for r in journal.get('records',[]))
-   higher=previous['likes']['precision']=='exact' and s['likes']>previous['likes']['value']
-   if not(empty and not saved and higher):
+   preference=replacement_preference(previous,s,item.get('previousOccasionReview'))
+   published=fresh.get('siteMetadata',{}).get('stageVideos',{}).get(rid)
+   assert published==previous,'Published source preimage differs from local source; reconcile before replacement'
+   if not(empty and not saved and preference):
     previous['higherCandidate']={'videoId':s['videoId'],'url':s['url'],'title':s['title'],'likes':{'value':s['likes'],'display':s.get('likesDisplay') or f"{s['likes']:,}",'precision':'exact'},'checkedAt':s['checkedAt']}
-    held.append({'recordId':rid,'reason':'Source retained: scored, saved, unconfirmed journal or no strictly higher comparable likes.'});continue
-   history=history+[{k:previous.get(k) for k in ['videoId','url','title','channel','kind','likes','checkedAt','scoreBinding','clip','likesScope'] }|{'changedAt':now.isoformat(),'reason':'本轮补全发现更高赞合格候选；更新前舞台分为空且未出现用户保存记录。'}]
+    held.append({'recordId':rid,'reason':'Source retained: scored, saved, unconfirmed journal or no documented policy/like preference.'});continue
+   history=history+[{k:v for k,v in previous.items() if k!='previousSources'}|{'changedAt':now.isoformat(),'reason':'按已确认节目／练习室政策更新；更新前舞台分为空且完整保存日志无该作品记录。','preference':preference,'previousOccasionReview':item.get('previousOccasionReview')}]
    replaced.append(rid)
  equiv=s.get('audioEquivalence');audio_equivalence=None
  if equiv:

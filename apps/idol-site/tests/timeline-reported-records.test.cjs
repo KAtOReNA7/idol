@@ -1,15 +1,19 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const load=require('./helpers/public-artist-loader.cjs'),React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
 const root=path.resolve(__dirname,'..'),data=require('../data/timeline-reported-records.json');
+const laterEvidence=require('../../../docs/codex/evidence/20261028-continuous/evidence-upgrade-proposal-c.json');
 const {reportedTimelineRecords,supersededNativeReportIds,withReportedTimelineIdentity}=load('lib/idol/timeline/reported-records.mjs');
 const {actionIdentity,validateIdentity}=load('lib/idol/design-review/sol15-runtime/shared/identity.js');
 const {TimelineReportedRecords}=load('components/timeline-reported-records.tsx');
 const {artist,render}=load('lib/idol/udtt-native/presentation.mjs');
 const hashes={atheart:'82dab6b7057818a60acb933f57617877eced2a664b0a64206f9a38a5c3bac853',bewave:'cfed63175dbcf2be685f67c94f5511235e8e1000eff880942e1ecd8d2eab7565',candyshop:'480ebf439d9de4824b9d3d2c54c2a6a54e67024c7622c70acd71ac38202b4af2',geenius:'6827b5a3cbaa18a718854729a86b571b085f1d3251f139e3c21950571b242421',udtt:'f2fc3be3ed849ce23e8dfea4da27607e1f20b4699efc027cd1a23b7efcd311e3'};
-test('seven reporting overlays preserve all canonical bytes, exact IDs and member sets',()=>{
+test('seven reporting overlays preserve historical canonical bytes through reviewed evidence preimages, exact IDs and member sets',()=>{
  const holds=[];for(const [slug,sha] of Object.entries(hashes)){
   const bytes=fs.readFileSync(path.join(root,'data/artist-timelines',slug+'.json'));
-  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),sha);
+  const change=laterEvidence.timelines.find(row=>row.slug===slug);
+  const historicalBytes=change?Buffer.from(change.expectedBeforeText,'utf8'):bytes;
+  assert.equal(crypto.createHash('sha256').update(historicalBytes).digest('hex'),sha);
+  if(change)assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),change.proposedAfterFileSha256);
   holds.push(...JSON.parse(bytes).events.filter(e=>e.reviewStatus==='hold').map(e=>({...e,slug})));
  }
  assert.equal(holds.length,7);assert.equal(data.records.length,7);

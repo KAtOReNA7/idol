@@ -1,5 +1,7 @@
 """New formal adoptions only. Historical bindings stay in their original scope."""
 from urllib.parse import urlsplit
+import hashlib
+import json
 
 REJECTED = {'l9GLV8Kd-MU', 'saY9KS7mKvI', 'BnmwjH-suLg'}
 PRIORITY = {'music_program': 0, 'practice_room': 1}
@@ -60,3 +62,36 @@ def comparison_candidates(candidates):
         return []
     priority = min(rank for rank, _ in eligible)
     return [candidate for rank, candidate in eligible if rank == priority]
+
+def replacement_preference(previous, selected, review=None):
+    """Compare eligible priority before likes; unknown historical context is held.
+
+    Excluding an old event requires an explicit review bound to every byte of its
+    canonical object. Missing legacy selection is never evidence of exclusion.
+    Owner-score, save-journal and clip guards are enforced separately by merger.
+    """
+    new_rank = PRIORITY[checked_selection(selected)['occasion']]
+    try:
+        old_rank = PRIORITY[checked_selection(previous)['occasion']]
+    except (AssertionError, TypeError, ValueError):
+        if not isinstance(review, dict):
+            return None
+        digest = hashlib.sha256(json.dumps(previous, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')).hexdigest()
+        assert review.get('previousVideoId') == previous['videoId'] and review.get('previousSha256') == digest, 'Historical occasion review must match exact current source'
+        assert review.get('occasion') in EXCLUDED_TYPES, 'Historical exclusion needs a documented excluded occasion'
+        ev = review.get('evidence') or {}
+        assert isinstance(ev.get('note'), str) and ev['note'].strip(), 'Historical occasion review note missing'
+        urls = ev.get('urls')
+        assert isinstance(urls, list) and previous.get('url') in urls, 'Historical review must cite the exact old source URL'
+        for url in urls:
+            parsed = urlsplit(url)
+            assert parsed.scheme == 'https' and parsed.hostname and not parsed.username and not parsed.password, 'Invalid historical evidence URL'
+        return 'excluded_historical_occasion'
+    if new_rank < old_rank:
+        return 'higher_policy_priority'
+    if new_rank > old_rank:
+        return None
+    old_likes = previous.get('likes') or {}
+    if old_likes.get('precision') == 'exact' and isinstance(old_likes.get('value'), int) and not isinstance(old_likes['value'], bool) and selected['likes'] > old_likes['value']:
+        return 'higher_comparable_likes'
+    return None

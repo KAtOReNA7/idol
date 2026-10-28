@@ -1,0 +1,1006 @@
+{
+  "checkedAt": "2026-10-28T09:32:38.647Z",
+  "base": "http://127.0.0.1:5199",
+  "mode": "local-public-projection",
+  "baselineCommit": "95fff6d6335cb683022d857727225d235a8882f2",
+  "flow": "Inspect each formally replaced stage, exact player link, new poster and documentary limitation, cycle MV/stage tabs and confirm matching viewing alternative is hidden. No playback or save.",
+  "browser": {
+    "isolatedHeadless": true,
+    "userProfileReused": false,
+    "bundledInstalled": false,
+    "version": "157.0.8103.15",
+    "startingCookies": 0
+  },
+  "preservation": {
+    "formalSourceCount": 493,
+    "replaced": 8,
+    "nonTargetSourcesDeepEqual": 485,
+    "previousSourceContentFieldsRetained": 8,
+    "emptyPreviousSourcesContainerOmittedByImporter": true,
+    "newInitialScoresNull": 8,
+    "privateValuesRead": false
+  },
+  "fixture": {
+    "mode": "Live anonymous production catalog, only eight target stage/stageResearch/stageSupplement rebuilt with actual local modules and public projection; all other fields asserted identical.",
+    "requests": [
+      {
+        "url": "https://idol-lens-private.wuke40758.chatgpt.site/api/catalog?shape=display-v1",
+        "status": 200,
+        "bytes": 2312523,
+        "sha256": "4fc0f986e9f7613fcfed49b50760671add4f0df4771000650368aaff7f044b5c",
+        "patchedIds": [
+          "rec28ldfRTrKtW",
+          "recvxyH5pz62TB",
+          "recvxyH5pzbUId",
+          "recvxyOz5XiuDr",
+          "recvxyOz5XmIH0",
+          "recvxyOz5XmoUV",
+          "recvxDMwzBm3rz",
+          "recvxDMFHNzaOb"
+        ],
+        "allOtherFieldsDeepEqual": true
+      }
+    ],
+    "moduleHashes": {
+      "lib/idol/stage.ts": "c4a64d1aaddf0dafe18a96ad4fbcb60c7d455cc3c6afc99ac55935fa5236b429",
+      "lib/idol/supplements.ts": "c003edee392611df0f7ec04b713d29fb1448c0da3a8432dd6e26d08948a66b20",
+      "lib/idol/public-catalog.ts": "0f1863ccd8bc9506397070ab693b621b0970f4d20eab6dc46931f482ac06c8fc",
+      "lib/idol/approved-video-poster.ts": "a3c120b81d59bc7874f162b213caddb5e19ca7eeaafd9ef65398f71da5331d17",
+      "data/stage-videos.json": "86752120c66da7e1b487d5418ed8234ddf6322da6ba98f4e3b900034054d248b",
+      "data/stages/status.json": "2895e7fd45c65f616b14a61cab383fa7c51be05ce08965bd90d296d18b618146",
+      "data/stages/supplements.json": "3b7166ea6d5072df04c4df3e266e49930197cea23b98a226e5b5cade32d98fb4",
+      "data/stage-selection-posters-20261027.json": "6124ab965cceb78a0eca885c710e749a97c9da97601c8247964180e5e1b738e0"
+    }
+  },
+  "checks": [
+    {
+      "workId": "recvxyOz5XmoUV",
+      "song": "ROCK & ROLL",
+      "width": 320,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyOz5XmoUV",
+      "videoId": "zdnssWkl8-w",
+      "previousVideoId": "1m67ssYnOU4",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmoUV-320-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=zdnssWkl8-w&hl=en",
+      "sourceText": "ITZY JAPAN OFFICIAL YouTube Channel · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/zdnssWkl8-w-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmoUV-320-replacement.png"
+    },
+    {
+      "workId": "recvxyOz5XmoUV",
+      "song": "ROCK & ROLL",
+      "width": 390,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyOz5XmoUV",
+      "videoId": "zdnssWkl8-w",
+      "previousVideoId": "1m67ssYnOU4",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmoUV-390-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=zdnssWkl8-w&hl=en",
+      "sourceText": "ITZY JAPAN OFFICIAL YouTube Channel · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/zdnssWkl8-w-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmoUV-390-replacement.png"
+    },
+    {
+      "workId": "recvxyOz5XmoUV",
+      "song": "ROCK & ROLL",
+      "width": 1440,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyOz5XmoUV",
+      "videoId": "zdnssWkl8-w",
+      "previousVideoId": "1m67ssYnOU4",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmoUV-1440-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=zdnssWkl8-w&hl=en",
+      "sourceText": "ITZY JAPAN OFFICIAL YouTube Channel · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/zdnssWkl8-w-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmoUV-1440-replacement.png"
+    },
+    {
+      "workId": "recvxyOz5XiuDr",
+      "song": "Grand Prix",
+      "width": 320,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyOz5XiuDr",
+      "videoId": "OeBUwbPVvkc",
+      "previousVideoId": "d-dktScWxKo",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XiuDr-320-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=OeBUwbPVvkc&hl=en",
+      "sourceText": "Kep1er · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/OeBUwbPVvkc-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XiuDr-320-replacement.png"
+    },
+    {
+      "workId": "recvxyOz5XiuDr",
+      "song": "Grand Prix",
+      "width": 390,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyOz5XiuDr",
+      "videoId": "OeBUwbPVvkc",
+      "previousVideoId": "d-dktScWxKo",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XiuDr-390-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=OeBUwbPVvkc&hl=en",
+      "sourceText": "Kep1er · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/OeBUwbPVvkc-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XiuDr-390-replacement.png"
+    },
+    {
+      "workId": "recvxyOz5XiuDr",
+      "song": "Grand Prix",
+      "width": 1440,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyOz5XiuDr",
+      "videoId": "OeBUwbPVvkc",
+      "previousVideoId": "d-dktScWxKo",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XiuDr-1440-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=OeBUwbPVvkc&hl=en",
+      "sourceText": "Kep1er · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/OeBUwbPVvkc-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XiuDr-1440-replacement.png"
+    },
+    {
+      "workId": "recvxyOz5XmIH0",
+      "song": "Straight Line",
+      "width": 320,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyOz5XmIH0",
+      "videoId": "EhLxzdiOVN0",
+      "previousVideoId": "DZgK9S4pliA",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmIH0-320-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=EhLxzdiOVN0&hl=en",
+      "sourceText": "Kep1er · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/EhLxzdiOVN0-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmIH0-320-replacement.png"
+    },
+    {
+      "workId": "recvxyOz5XmIH0",
+      "song": "Straight Line",
+      "width": 390,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyOz5XmIH0",
+      "videoId": "EhLxzdiOVN0",
+      "previousVideoId": "DZgK9S4pliA",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmIH0-390-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=EhLxzdiOVN0&hl=en",
+      "sourceText": "Kep1er · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/EhLxzdiOVN0-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmIH0-390-replacement.png"
+    },
+    {
+      "workId": "recvxyOz5XmIH0",
+      "song": "Straight Line",
+      "width": 1440,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyOz5XmIH0",
+      "videoId": "EhLxzdiOVN0",
+      "previousVideoId": "DZgK9S4pliA",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmIH0-1440-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=EhLxzdiOVN0&hl=en",
+      "sourceText": "Kep1er · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/EhLxzdiOVN0-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyOz5XmIH0-1440-replacement.png"
+    },
+    {
+      "workId": "recvxyH5pzbUId",
+      "song": "POPPY",
+      "width": 320,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyH5pzbUId",
+      "videoId": "kFw7ZWRydwU",
+      "previousVideoId": "wuICiuOUFGE",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pzbUId-320-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=kFw7ZWRydwU&hl=en",
+      "sourceText": "STAYC Japan Official · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/kFw7ZWRydwU-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pzbUId-320-replacement.png"
+    },
+    {
+      "workId": "recvxyH5pzbUId",
+      "song": "POPPY",
+      "width": 390,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyH5pzbUId",
+      "videoId": "kFw7ZWRydwU",
+      "previousVideoId": "wuICiuOUFGE",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pzbUId-390-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=kFw7ZWRydwU&hl=en",
+      "sourceText": "STAYC Japan Official · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/kFw7ZWRydwU-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pzbUId-390-replacement.png"
+    },
+    {
+      "workId": "recvxyH5pzbUId",
+      "song": "POPPY",
+      "width": 1440,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyH5pzbUId",
+      "videoId": "kFw7ZWRydwU",
+      "previousVideoId": "wuICiuOUFGE",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pzbUId-1440-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=kFw7ZWRydwU&hl=en",
+      "sourceText": "STAYC Japan Official · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/kFw7ZWRydwU-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pzbUId-1440-replacement.png"
+    },
+    {
+      "workId": "recvxyH5pz62TB",
+      "song": "DOMINO ～ butterfly effect",
+      "width": 320,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyH5pz62TB",
+      "videoId": "epOtB2VfTm0",
+      "previousVideoId": "OTLdHfo0hTc",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pz62TB-320-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=epOtB2VfTm0&hl=en",
+      "sourceText": "Billlie · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/epOtB2VfTm0-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pz62TB-320-replacement.png"
+    },
+    {
+      "workId": "recvxyH5pz62TB",
+      "song": "DOMINO ～ butterfly effect",
+      "width": 390,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyH5pz62TB",
+      "videoId": "epOtB2VfTm0",
+      "previousVideoId": "OTLdHfo0hTc",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pz62TB-390-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=epOtB2VfTm0&hl=en",
+      "sourceText": "Billlie · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/epOtB2VfTm0-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pz62TB-390-replacement.png"
+    },
+    {
+      "workId": "recvxyH5pz62TB",
+      "song": "DOMINO ～ butterfly effect",
+      "width": 1440,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxyH5pz62TB",
+      "videoId": "epOtB2VfTm0",
+      "previousVideoId": "OTLdHfo0hTc",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pz62TB-1440-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=epOtB2VfTm0&hl=en",
+      "sourceText": "Billlie · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/epOtB2VfTm0-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxyH5pz62TB-1440-replacement.png"
+    },
+    {
+      "workId": "recvxDMFHNzaOb",
+      "song": "SOMETHING AIN'T RIGHT",
+      "width": 320,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxDMFHNzaOb",
+      "videoId": "ai2QKOrTnjs",
+      "previousVideoId": "BWASDZZtO6w",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMFHNzaOb-320-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=ai2QKOrTnjs&hl=en",
+      "sourceText": "XG · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/ai2QKOrTnjs-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMFHNzaOb-320-replacement.png"
+    },
+    {
+      "workId": "recvxDMFHNzaOb",
+      "song": "SOMETHING AIN'T RIGHT",
+      "width": 390,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxDMFHNzaOb",
+      "videoId": "ai2QKOrTnjs",
+      "previousVideoId": "BWASDZZtO6w",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMFHNzaOb-390-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=ai2QKOrTnjs&hl=en",
+      "sourceText": "XG · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/ai2QKOrTnjs-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMFHNzaOb-390-replacement.png"
+    },
+    {
+      "workId": "recvxDMFHNzaOb",
+      "song": "SOMETHING AIN'T RIGHT",
+      "width": 1440,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxDMFHNzaOb",
+      "videoId": "ai2QKOrTnjs",
+      "previousVideoId": "BWASDZZtO6w",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMFHNzaOb-1440-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=ai2QKOrTnjs&hl=en",
+      "sourceText": "XG · 练习室\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/ai2QKOrTnjs-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMFHNzaOb-1440-replacement.png"
+    },
+    {
+      "workId": "recvxDMwzBm3rz",
+      "song": "Tippy Toes",
+      "width": 320,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxDMwzBm3rz",
+      "videoId": "DZhqZ1SA2Q8",
+      "previousVideoId": "vJ1Yrh7_SSw",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMwzBm3rz-320-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=DZhqZ1SA2Q8&hl=en",
+      "sourceText": "THE K-POP · 音乐节目舞台\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/DZhqZ1SA2Q8-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMwzBm3rz-320-replacement.png"
+    },
+    {
+      "workId": "recvxDMwzBm3rz",
+      "song": "Tippy Toes",
+      "width": 390,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxDMwzBm3rz",
+      "videoId": "DZhqZ1SA2Q8",
+      "previousVideoId": "vJ1Yrh7_SSw",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMwzBm3rz-390-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=DZhqZ1SA2Q8&hl=en",
+      "sourceText": "THE K-POP · 音乐节目舞台\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/DZhqZ1SA2Q8-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMwzBm3rz-390-replacement.png"
+    },
+    {
+      "workId": "recvxDMwzBm3rz",
+      "song": "Tippy Toes",
+      "width": 1440,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxDMwzBm3rz",
+      "videoId": "DZhqZ1SA2Q8",
+      "previousVideoId": "vJ1Yrh7_SSw",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMwzBm3rz-1440-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=DZhqZ1SA2Q8&hl=en",
+      "sourceText": "THE K-POP · 音乐节目舞台\n\n依据官方发行与完整单曲节目／练习室资料采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/DZhqZ1SA2Q8-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxDMwzBm3rz-1440-replacement.png"
+    },
+    {
+      "workId": "rec28ldfRTrKtW",
+      "song": "It's Me",
+      "width": 320,
+      "url": "http://127.0.0.1:5199/?view=works&work=rec28ldfRTrKtW",
+      "videoId": "00IPFnp2Tdg",
+      "previousVideoId": "a2AvaSdqN28",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-rec28ldfRTrKtW-320-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=00IPFnp2Tdg&hl=en",
+      "sourceText": "KBS Kpop · 音乐节目舞台\n\n依据官方发行、节目单及成员复归公告采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/00IPFnp2Tdg-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-rec28ldfRTrKtW-320-replacement.png"
+    },
+    {
+      "workId": "rec28ldfRTrKtW",
+      "song": "It's Me",
+      "width": 390,
+      "url": "http://127.0.0.1:5199/?view=works&work=rec28ldfRTrKtW",
+      "videoId": "00IPFnp2Tdg",
+      "previousVideoId": "a2AvaSdqN28",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-rec28ldfRTrKtW-390-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=00IPFnp2Tdg&hl=en",
+      "sourceText": "KBS Kpop · 音乐节目舞台\n\n依据官方发行、节目单及成员复归公告采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/00IPFnp2Tdg-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-rec28ldfRTrKtW-390-replacement.png"
+    },
+    {
+      "workId": "rec28ldfRTrKtW",
+      "song": "It's Me",
+      "width": 1440,
+      "url": "http://127.0.0.1:5199/?view=works&work=rec28ldfRTrKtW",
+      "videoId": "00IPFnp2Tdg",
+      "previousVideoId": "a2AvaSdqN28",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-rec28ldfRTrKtW-1440-replacement-first.png",
+      "videoHref": "https://www.youtube.com/watch?v=00IPFnp2Tdg&hl=en",
+      "sourceText": "KBS Kpop · 音乐节目舞台\n\n依据官方发行、节目单及成员复归公告采用；未完整播放或逐句比对音轨，不据此判断真唱。",
+      "poster": {
+        "src": "/artist/stage-continuous-20261028/00IPFnp2Tdg-maxresdefault.jpg",
+        "width": 1280,
+        "height": 720,
+        "fit": "contain"
+      },
+      "duplicateViewingCardCount": 0,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-rec28ldfRTrKtW-1440-replacement.png"
+    }
+  ],
+  "interactions": [
+    {
+      "workId": "recvxyOz5XmoUV",
+      "width": 320,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "zdnssWkl8-w",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyOz5XmoUV",
+      "width": 390,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "zdnssWkl8-w",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyOz5XmoUV",
+      "width": 1440,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "zdnssWkl8-w",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyOz5XiuDr",
+      "width": 320,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "OeBUwbPVvkc",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyOz5XiuDr",
+      "width": 390,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "OeBUwbPVvkc",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyOz5XiuDr",
+      "width": 1440,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "OeBUwbPVvkc",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyOz5XmIH0",
+      "width": 320,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "EhLxzdiOVN0",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyOz5XmIH0",
+      "width": 390,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "EhLxzdiOVN0",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyOz5XmIH0",
+      "width": 1440,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "EhLxzdiOVN0",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyH5pzbUId",
+      "width": 320,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "kFw7ZWRydwU",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyH5pzbUId",
+      "width": 390,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "kFw7ZWRydwU",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyH5pzbUId",
+      "width": 1440,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "kFw7ZWRydwU",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyH5pz62TB",
+      "width": 320,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "epOtB2VfTm0",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyH5pz62TB",
+      "width": 390,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "epOtB2VfTm0",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxyH5pz62TB",
+      "width": 1440,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "epOtB2VfTm0",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxDMFHNzaOb",
+      "width": 320,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "ai2QKOrTnjs",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxDMFHNzaOb",
+      "width": 390,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "ai2QKOrTnjs",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxDMFHNzaOb",
+      "width": 1440,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "ai2QKOrTnjs",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxDMwzBm3rz",
+      "width": 320,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "DZhqZ1SA2Q8",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxDMwzBm3rz",
+      "width": 390,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "DZhqZ1SA2Q8",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "recvxDMwzBm3rz",
+      "width": 1440,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "DZhqZ1SA2Q8",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "rec28ldfRTrKtW",
+      "width": 320,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "00IPFnp2Tdg",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "rec28ldfRTrKtW",
+      "width": 390,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "00IPFnp2Tdg",
+      "result": "Exact adopted source restored; no playback/save"
+    },
+    {
+      "workId": "rec28ldfRTrKtW",
+      "width": 1440,
+      "action": "MV -> stage -> MV -> stage",
+      "videoId": "00IPFnp2Tdg",
+      "result": "Exact adopted source restored; no playback/save"
+    }
+  ],
+  "posterChecks": [
+    {
+      "workId": "recvxyOz5XmoUV",
+      "url": "http://127.0.0.1:5199/artist/stage-continuous-20261028/zdnssWkl8-w-maxresdefault.jpg",
+      "status": 200,
+      "bytes": 92244,
+      "sha256": "d86b3adab03773b3b528ebc2310ebd8d45438deb739f8b217114a2b925dde85d",
+      "expectedSha256": "d86b3adab03773b3b528ebc2310ebd8d45438deb739f8b217114a2b925dde85d",
+      "method": "Normal browser image GET response",
+      "passed": true
+    },
+    {
+      "workId": "recvxyOz5XiuDr",
+      "url": "http://127.0.0.1:5199/artist/stage-continuous-20261028/OeBUwbPVvkc-maxresdefault.jpg",
+      "status": 200,
+      "bytes": 112181,
+      "sha256": "632da86b623953a05ae82c3c17b3bcbc184a9631aa1ba3fc72727ee70a3624b8",
+      "expectedSha256": "632da86b623953a05ae82c3c17b3bcbc184a9631aa1ba3fc72727ee70a3624b8",
+      "method": "Normal browser image GET response",
+      "passed": true
+    },
+    {
+      "workId": "recvxyOz5XmIH0",
+      "url": "http://127.0.0.1:5199/artist/stage-continuous-20261028/EhLxzdiOVN0-maxresdefault.jpg",
+      "status": 200,
+      "bytes": 91225,
+      "sha256": "0927b5664205628517ef3b96d3a9fb704b21379686db5d3ddbc14033ec1bb4c5",
+      "expectedSha256": "0927b5664205628517ef3b96d3a9fb704b21379686db5d3ddbc14033ec1bb4c5",
+      "method": "Normal browser image GET response",
+      "passed": true
+    },
+    {
+      "workId": "recvxyH5pzbUId",
+      "url": "http://127.0.0.1:5199/artist/stage-continuous-20261028/kFw7ZWRydwU-maxresdefault.jpg",
+      "status": 200,
+      "bytes": 110942,
+      "sha256": "7990f806acc97061ad2386e932d170e4e4651ca9936bb39099890a9fa88c4b9e",
+      "expectedSha256": "7990f806acc97061ad2386e932d170e4e4651ca9936bb39099890a9fa88c4b9e",
+      "method": "Normal browser image GET response",
+      "passed": true
+    },
+    {
+      "workId": "recvxyH5pz62TB",
+      "url": "http://127.0.0.1:5199/artist/stage-continuous-20261028/epOtB2VfTm0-maxresdefault.jpg",
+      "status": 200,
+      "bytes": 127502,
+      "sha256": "56490af5b89212e7a8604d0a4321c566cf63d6bb9b06b953378e5053ad15f427",
+      "expectedSha256": "56490af5b89212e7a8604d0a4321c566cf63d6bb9b06b953378e5053ad15f427",
+      "method": "Normal browser image GET response",
+      "passed": true
+    },
+    {
+      "workId": "recvxDMFHNzaOb",
+      "url": "http://127.0.0.1:5199/artist/stage-continuous-20261028/ai2QKOrTnjs-maxresdefault.jpg",
+      "status": 200,
+      "bytes": 60697,
+      "sha256": "b51b598bf1da90c05c32aa2e303fb4321e4a4374569c47f7b462e4aa3794cff4",
+      "expectedSha256": "b51b598bf1da90c05c32aa2e303fb4321e4a4374569c47f7b462e4aa3794cff4",
+      "method": "Normal browser image GET response",
+      "passed": true
+    },
+    {
+      "workId": "recvxDMwzBm3rz",
+      "url": "http://127.0.0.1:5199/artist/stage-continuous-20261028/DZhqZ1SA2Q8-maxresdefault.jpg",
+      "status": 200,
+      "bytes": 111021,
+      "sha256": "fa0ee1385d573b2156a7a3458d33821e4e2a77e913cdcf9da486eb97af27df25",
+      "expectedSha256": "fa0ee1385d573b2156a7a3458d33821e4e2a77e913cdcf9da486eb97af27df25",
+      "method": "Normal browser image GET response",
+      "passed": true
+    },
+    {
+      "workId": "rec28ldfRTrKtW",
+      "url": "http://127.0.0.1:5199/artist/stage-continuous-20261028/00IPFnp2Tdg-maxresdefault.jpg",
+      "status": 200,
+      "bytes": 118528,
+      "sha256": "87b22255f7e8836ba2e99b357fe9c4fd12f1383aa5e4f15b6ad43739fcfc7eeb",
+      "expectedSha256": "87b22255f7e8836ba2e99b357fe9c4fd12f1383aa5e4f15b6ad43739fcfc7eeb",
+      "method": "Normal browser image GET response",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "consoleIssues": [],
+  "resourceFailures": [],
+  "blockedMutations": [],
+  "blockedVideos": [],
+  "errors": [],
+  "notVerified": [
+    "Owner session/private values (parent checked separately)",
+    "Real personal save",
+    "Actual full playback or audio comparison",
+    "User Chrome/IAB",
+    "Native browser zoom"
+  ],
+  "moduleFilesUnchangedDuringRun": true,
+  "networkClassification": {
+    "consoleTotal": 0,
+    "cloudflareConsole": 0,
+    "applicationConsole": 0,
+    "blockedTotal": 0,
+    "blockedCloudflare": 0,
+    "blockedApplication": 0
+  },
+  "passed": true,
+  "completedAt": "2026-10-28T09:33:35.261Z",
+  "visualReview": {
+    "checkedAt": "2026-10-28T09:34:46.020104+00:00",
+    "method": "Actual view_image screenshot review",
+    "samples": [
+      {
+        "path": "E:/project/idol-continuous-qa-20261028/local-recvxyOz5XmoUV-320-replacement.png",
+        "result": "New practice poster/player visible in mobile layout; exact source and documentary playback limitation wrap legibly, no clipping or overflow."
+      },
+      {
+        "path": "E:/project/idol-continuous-qa-20261028/local-rec28ldfRTrKtW-1440-replacement.png",
+        "result": "New Music Bank poster and source visible; existing ILLIT design and read-only score panel retained, no overlap or overflow."
+      }
+    ],
+    "allEightOriginalPosters": "poster-browser-review.json"
+  },
+  "formatOnlyNormalization": {
+    "checkedAt": "2026-10-28T09:41:27.850312+00:00",
+    "path": "apps\\idol-site\\data\\stage-selection-posters-20261027.json",
+    "runRecordedSha256": "6124ab965cceb78a0eca885c710e749a97c9da97601c8247964180e5e1b738e0",
+    "currentSha256": "eb4d2c4003e4a82d8c7daa89aedd25f46508c73e43041fffc7d76c992cc2e259",
+    "normalization": "Parent normalized JSON line endings CRLF to LF after this successful run. Parent reports parsed poster objects, original image bytes and rendering logic unchanged.",
+    "rerun": false,
+    "scope": "Run hashes above remain the original run evidence; this annotation is a later filesystem read, not a claim that the browser run used the final byte hash. Online QA will read final files.",
+    "independentlyVerifiedCrlfReconstructionMatchesRunHash": true
+  }
+}

@@ -573,6 +573,24 @@
             "checkedAt": "2026-10-28",
             "kind": "primary-chart",
             "access": "search-index-only"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2024&targetTime=2024&yearTime=3",
+            "title": "Circle 2024年Album榜 · 官方原生接口读回",
+            "sourceDate": "2024",
+            "checkedAt": "2026-10-28T08:21:42.568617+00:00",
+            "kind": "primary-chart",
+            "access": "native-public-api-read-backed-by-official-page-script",
+            "sha256": "8483ba5741486119325f7e3411e77918d1dc0a3df4b21ef8902a17f2fe28294d"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2025&targetTime=2025&yearTime=3",
+            "title": "Circle 2025年Album榜 · 官方原生接口读回",
+            "sourceDate": "2025",
+            "checkedAt": "2026-10-28T08:21:49.937883+00:00",
+            "kind": "primary-chart",
+            "access": "native-public-api-read-backed-by-official-page-script",
+            "sha256": "b732cd2f917913ef176f872b16b7713b29fa19782cb570ee37125be1dcfba195"
           }
         ],
         "notes": [
@@ -582,7 +600,8 @@
           "2026-10-28逐版复算：2024年Performante Cosmo年榜289,224替换同年月和286,809（+2,415）；2025年ASSEMBLE25 Cosmo年榜406,744替换同年月和403,993（+2,751），净修正+5,166，累计2,092,239。36条原月行保留，不把年榜重复相加。",
           "5/8/9/11月的ASSEMBLE25完整标题、Cosmo版本及各月数量已由可读具名月榜转录核对；2025年1月9,888为ASSEMBLE24 Cosmo，保持独立。Performante标准版、ASSEMBLE25标准/WITHVUU及Beyond Beauty跨年记录均未并入这两项年榜。",
           "与已保存的艺人汇总2,458,789仍差366,550，来源差异继续开放。该汇总本轮未重新访问；不得将局部修正写成全团累计已完整闭合，也不混加日本、Hanteo或Retail。",
-          "年榜及月榜依据可读第三方Circle转录/报道；2024年榜与2025年11月有官方搜索索引交叉核对。官方直读仅返回页面框架，不宣称完整官方榜已读取。"
+          "前轮核对时：年榜及月榜依据可读第三方Circle转录/报道；2024年榜与2025年11月有官方搜索索引交叉核对。官方直读仅返回页面框架，不宣称完整官方榜已读取。",
+          "2026-10-28后续已直接读取Circle官方页面所用Album接口：2024年Performante Cosmo为289,224，2025年ASSEMBLE25 Cosmo为406,744，均与已采用年榜同值。采用期内Album_CNT核对，不采用Total_CNT，不新增加总、不混Retail；历史月行、年榜替换、2,092,239下界及366,550未解释差额均保持。"
         ],
         "evidence": {
           "kind": "public-cumulative-lower-bound",
@@ -996,6 +1015,69 @@
             "remainingDifference": 366550,
             "aggregateAccess": "previously stored observation only; not fetched in this audit",
             "reason": "Two disjoint same-year Cosmo annual replacements are verified; artist aggregate remains unexplained by 366550. No assumption about missing subunits, Japan or alternate counting systems is accepted."
+          },
+          "officialAnnualReadback20261028": {
+            "checkedAt": "2026-10-28",
+            "access": "official-page-native-public-api",
+            "chart": "Circle Album Chart",
+            "metricField": "Album_CNT",
+            "excludedMetricFields": [
+              "Total_CNT"
+            ],
+            "purpose": "Corroborate two existing annual replacements; no contribution added and no numeric change.",
+            "observations": [
+              {
+                "year": 2024,
+                "album": "Visionary Vision ＜Performante＞ (Cosmo)",
+                "artist": "tripleS (트리플에스)",
+                "albumId": "78113",
+                "metricField": "Album_CNT",
+                "annual": 289224,
+                "rank": 81,
+                "matchesExistingAnnual": true,
+                "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2024&targetTime=2024&yearTime=3",
+                "endpoint": "https://circlechart.kr/data/api/chart/album",
+                "parameters": {
+                  "nationGbn": "T",
+                  "termGbn": "year",
+                  "hitYear": "2024",
+                  "targetTime": "2024",
+                  "yearTime": "3",
+                  "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2024&targetTime=2024&yearTime=3"
+                },
+                "checkedAt": "2026-10-28T08:21:42.568617+00:00",
+                "pageSha256": "847840c9cc54b0d70741306eae37e1b6b8aac8f1669d298677a09d4fca5b2664",
+                "responseSha256": "8483ba5741486119325f7e3411e77918d1dc0a3df4b21ef8902a17f2fe28294d",
+                "evidenceRef": "docs/codex/evidence/20261028-continuous/circle-annual-c.json"
+              },
+              {
+                "year": 2025,
+                "album": "＜ASSEMBLE25＞(Cosmo)",
+                "artist": "tripleS (트리플에스)",
+                "albumId": "79676",
+                "metricField": "Album_CNT",
+                "annual": 406744,
+                "rank": 57,
+                "matchesExistingAnnual": true,
+                "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2025&targetTime=2025&yearTime=3",
+                "endpoint": "https://circlechart.kr/data/api/chart/album",
+                "parameters": {
+                  "nationGbn": "T",
+                  "termGbn": "year",
+                  "hitYear": "2025",
+                  "targetTime": "2025",
+                  "yearTime": "3",
+                  "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2025&targetTime=2025&yearTime=3"
+                },
+                "checkedAt": "2026-10-28T08:21:49.937883+00:00",
+                "pageSha256": "a9769eb9e384e5d0bd56caa0a78da56cc920b8b66ab28510df69c05b5f800f70",
+                "responseSha256": "b732cd2f917913ef176f872b16b7713b29fa19782cb570ee37125be1dcfba195",
+                "evidenceRef": "docs/codex/evidence/20261028-continuous/circle-annual-c.json"
+              }
+            ],
+            "coverageComplete": false,
+            "remainingDifferenceResolved": false,
+            "evidenceRef": "docs/codex/evidence/20261028-continuous/circle-annual-c.json"
           }
         },
         "lowerBound": true,

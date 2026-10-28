@@ -2,6 +2,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const root=path.resolve(__dirname,'..'),read=file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8'));
 const evidence=read('../../docs/codex/evidence/20261027-category-resolution/stages/formal-four-adoption.json'),videos=read('data/stage-videos.json'),statuses=read('data/stages/status.json');
 const practice=read('../../docs/codex/evidence/20261028-stage-fill/adoption.json'),ownerBaseline=read('../../docs/codex/evidence/20261028-stage-fill/owner-baseline.json');
+const replacements=read('../../docs/codex/evidence/20261028-continuous/stage-replacement-adoption.json');
 const sort=v=>Array.isArray(v)?v.map(sort):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sort(v[k])])):v;
 const sha=v=>crypto.createHash('sha256').update(typeof v==='string'||Buffer.isBuffer(v)?v:JSON.stringify(sort(v))).digest('hex');
 function harness(){
@@ -19,12 +20,30 @@ function harness(){
 }
 test('four earlier adoptions and eleven practices preserve all prior source objects and supplementary evidence',()=>{
  assert.equal(Object.keys(videos).length,493);assert.equal(Object.keys(evidence.preservation.stageRows).length,478);
+ const historicalVideos=structuredClone(videos),historicalStatuses=structuredClone(statuses.works);
+ assert.equal(replacements.items.length,8);
+ for(const item of replacements.items){
+  assert.equal(sha(videos[item.recordId]),item.afterSha256,item.recordId);
+  assert.equal(sha(statuses.works[item.recordId]),item.afterStatusSha256,item.recordId);
+  historicalVideos[item.recordId]=structuredClone(item.before);historicalStatuses[item.recordId]=structuredClone(item.beforeStatus);
+ }
+ assert.equal(sha(historicalVideos),replacements.preservation.stageCanonicalBefore);
  assert.equal(Object.keys(ownerBaseline.stageRowsSha256).length,482);
- for(const[id,hash]of Object.entries(ownerBaseline.stageRowsSha256))assert.equal(sha(videos[id]),hash,id);
- for(const[id,hash]of Object.entries(evidence.preservation.stageRows))assert.equal(sha(videos[id]),hash,id);
+ for(const[id,hash]of Object.entries(ownerBaseline.stageRowsSha256))assert.equal(sha(historicalVideos[id]),hash,id);
+ for(const[id,hash]of Object.entries(evidence.preservation.stageRows))assert.equal(sha(historicalVideos[id]),hash,id);
  const ids=new Set([...evidence.items,...practice.items].map(i=>i.recordId));assert.equal(ids.size,15);
- for(const[id,hash]of Object.entries(evidence.preservation.statusRows))if(!ids.has(id))assert.equal(sha(statuses.works[id]),hash,id);
+ for(const[id,hash]of Object.entries(evidence.preservation.statusRows))if(!ids.has(id))assert.equal(sha(historicalStatuses[id]),hash,id);
  const current=read('data/stages/supplements.json'),delta=read('../../docs/codex/evidence/20261028-continuation/editorial-corrections.json');
+ const viewing=read('../../docs/codex/evidence/20261028-continuous/stage-viewing-adoption.json');
+ assert.equal(viewing.adopted.length,8);
+ for(const[id,hash]of Object.entries(viewing.oldRows))assert.equal(sha(current.works[id]),hash,id);
+ for(const item of viewing.adopted){
+  assert.equal(Object.hasOwn(viewing.oldRows,item.workId),false);
+  const row=current.works[item.workId];assert.deepEqual(Object.keys(row),['alternatives']);assert.equal(row.alternatives.length,1);
+  assert.equal(sha(row.alternatives[0]),item.sha256,item.workId);delete current.works[item.workId];
+ }
+ assert.deepEqual(current.reviewedInputFiles,['alternatives-reviewed.json','watch-leads-reviewed.json','20261028-continuous/stage-replacements-normalized.json']);
+ current.reviewedInputFiles=current.reviewedInputFiles.slice(0,-1);
  for(const row of Object.values(current.works)){row.alternatives=row.alternatives.filter(a=>a.sourceId!==delta.newViewOnlyCandidate.sourceId);for(const a of [...row.alternatives,...(row.watchLeads??[])])delete a.selection;}
  for(const c of delta.corrections){const row=current.works[c.workId];const i=row.alternatives.findIndex(a=>a.sourceId===c.sourceId);assert.deepEqual(row.alternatives[i],c.after);row.alternatives[i]=c.before;}
  current.updatedAt=delta.baselineUpdatedAt;assert.equal(sha(JSON.stringify(current,null,2)+'\n'),evidence.preservation.supplementsFileSha256);

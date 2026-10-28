@@ -1,0 +1,928 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T09:11:49.593826+00:00",
+  "status": "locally_imported_tests_passed_pending_root_release",
+  "authorization": "Parent approved BEWAVE SING six release names, STAYC MWUAH only YOON recording, YOUNG POSSE Scars five original production names, Weeekly Love six named singers. No other C candidates approved.",
+  "baseline": {
+    "publicCreditWorks": 54,
+    "recognitionSlots": 321,
+    "uniqueOriginals": 153,
+    "absenceRules": 6,
+    "creditRecordsJsonSha256": "d81e26460816b9e9a3abc020b5bd0dd23d4e3501e733ff7ab2b7b9ac407ecf17",
+    "recognitionRecordsJsonSha256": "4e96f06ddecf36b83ca8e934f67cd7602fb9f76d3ca5051ec4dec1697ebcd78c"
+  },
+  "after": {
+    "publicCreditWorks": 58,
+    "recognitionSlots": 339,
+    "uniqueOriginals": 165,
+    "absenceRules": 6,
+    "personEvidenceUnion": 63,
+    "remainingPersonWorks": 68
+  },
+  "preservation": {
+    "old54CreditObjectsUnchanged": true,
+    "old54RecognitionObjectsUnchanged": true,
+    "oldMetadataUnchanged": true,
+    "existingOriginalSlotsReused": 18,
+    "existingOriginalFilesReused": 18,
+    "newImagesDownloaded": 0,
+    "privateDataRead": false,
+    "privateWrites": 0,
+    "privateRelationsAdded": 0,
+    "absenceRulesChanged": 0,
+    "fullVideoPlaybackPerformed": false
+  },
+  "items": [
+    {
+      "workId": "rec28ldfRTrGEy",
+      "videoId": "BbcxmtNaesk",
+      "groupId": "rec28ldfRTiDh1",
+      "song": "SING !",
+      "groups": [
+        "BEWAVE"
+      ],
+      "exactVideoUrl": "https://www.youtube.com/watch?v=BbcxmtNaesk",
+      "materialCategory": "performance_live",
+      "status": "locally_imported_pending_root_release",
+      "sources": [
+        {
+          "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=14192",
+          "publisher": "Genie Magazine; artist/label release feature",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:41:50.476070+00:00",
+          "facts": [
+            "BE;WAVE release feature names Zena, Ain, Yunseul, Lena, Jiun and Gowoon in individual jacket-shoot captions.",
+            "Includes SING title track and the SING Performance Video section; this is release packaging evidence, not named performance footage."
+          ],
+          "scope": "named_release_packaging",
+          "httpStatus": 200,
+          "pageSha256": "aacd59e57cfa108c5dda9129187050d3e92417953cb22ea59c9ac89721e42eb1",
+          "accessNote": "Genie names the SING Performance Video section but its HTML does not embed the target YouTube ID. Exact video tuple remains the existing audited catalog; this supports release lineup only."
+        },
+        {
+          "url": "https://www.edaily.co.kr/News/Read?mediaCodeNo=258&newsId=01492406638919424",
+          "publisher": "Edaily / Kim Hyun-sik; original June 7, 2024 group interview",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T09:01:47.914913+00:00",
+          "httpStatus": 200,
+          "pageSha256": "6d32992b6a840725243d7c82bf017e50278872628ca3ed54615149b306befa5c",
+          "facts": [
+            "Original interview names Zena, Ain, Lena, Yunseul, Jiun and Gowoon and discusses the SING debut activities and Shine follow-up.",
+            "Each of the six existing portrait originals is individually captioned; retained files match their prior reviewed hashes."
+          ],
+          "scope": "named_debut_release_and_portrait_identity"
+        }
+      ],
+      "nextRoute": "Parent review before scoped data integration; note these six originals already exist in native BEWAVE media, outside the 2828 MV portrait manifest.",
+      "remainingCondition": "No app import yet; release-only documentary scope and 670px originals require scoped review.",
+      "memberIds": [
+        "recvxAPQCFeMGQ",
+        "recvxAPQCF1S0j",
+        "recvxAPQCFRRHa",
+        "recvxAPQCF50Hn",
+        "recvxAPQCFGDkN",
+        "recvxAPQCFjMmI"
+      ],
+      "proposedCreditKind": "documented_project_lineup",
+      "proposedLabel": "公开发行阵容",
+      "proposedNote": "《BE;WAVE／SING !》首发资料逐名介绍Zena、Ain、Yunseul、Lena、Jiun、Gowoon，六人在原采访中谈到该次出道活动。仅补公开发行阵容，不据此推定本表演视频逐人出镜；认人照片沿用同一原采访的具名完整原件。",
+      "namedScope": "Named debut release participants, not an exhaustive performance-video appearance list.",
+      "referenceReuse": [
+        {
+          "memberId": "recvxAPQCFeMGQ",
+          "stageName": "Zena",
+          "reusedFrom": "existing BEWAVE native artist portrait and reviewed asset original",
+          "originalAssetRecord": {
+            "url": "/artist/bewave/batch-c-20261016/c-task02-bewave-zena-interview-portrait.original.jpg",
+            "bytes": 141955,
+            "sha256": "586bcf6e5f4caa0f43386965937c9edc101aac4aef2eff2d26150f16c7ecb896",
+            "width": 670,
+            "height": 1004,
+            "variant": "original"
+          },
+          "originalManifestRecord": {
+            "memberId": "recvxAPQCFeMGQ",
+            "src": "/artist/bewave/batch-c-20261016/c-task02-bewave-zena-interview-portrait.original.jpg",
+            "width": 670,
+            "height": 1004,
+            "label": "同系列采访写真 · 认人参考",
+            "sourceUrl": "https://www.edaily.co.kr/News/Read?mediaCodeNo=258&newsId=01492406638919424",
+            "objectPosition": "50% 50%",
+            "photoKind": "portrait_photo",
+            "photoSetId": "bewave-edaily-named-interview-20240607"
+          },
+          "sha256": "586bcf6e5f4caa0f43386965937c9edc101aac4aef2eff2d26150f16c7ecb896",
+          "bytes": 141955,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "apps/idol-site/data/bewave-review-assets.json",
+          "sourceNameEvidence": "Edaily original June 7, 2024 interview individually captions all six portraits; existing native artist record maps the stable IDs.",
+          "referenceUse": "recognition_reference",
+          "visualReview": {
+            "checkedAt": "2026-10-28T09:01:47.914913+00:00",
+            "originalViewed": true,
+            "result": "Natural editorial portrait, face unobscured; original 670px width retained without resizing or generated details.",
+            "limit": "Yunseul/Gowoon use wider framing; no close-up or upscale claim."
+          }
+        },
+        {
+          "memberId": "recvxAPQCF1S0j",
+          "stageName": "Ain",
+          "reusedFrom": "existing BEWAVE native artist portrait and reviewed asset original",
+          "originalAssetRecord": {
+            "url": "/artist/bewave/batch-c-20261016/c-task02-bewave-ain-interview-portrait.original.jpg",
+            "bytes": 111277,
+            "sha256": "a244c8cf98bdc32c86367f9bdbd3f5186a26f080eeb9cc3a42e1e703f3b1733d",
+            "width": 670,
+            "height": 1004,
+            "variant": "original"
+          },
+          "originalManifestRecord": {
+            "memberId": "recvxAPQCF1S0j",
+            "src": "/artist/bewave/batch-c-20261016/c-task02-bewave-ain-interview-portrait.original.jpg",
+            "width": 670,
+            "height": 1004,
+            "label": "同系列采访写真 · 认人参考",
+            "sourceUrl": "https://www.edaily.co.kr/News/Read?mediaCodeNo=258&newsId=01492406638919424",
+            "objectPosition": "50% 50%",
+            "photoKind": "portrait_photo",
+            "photoSetId": "bewave-edaily-named-interview-20240607"
+          },
+          "sha256": "a244c8cf98bdc32c86367f9bdbd3f5186a26f080eeb9cc3a42e1e703f3b1733d",
+          "bytes": 111277,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "apps/idol-site/data/bewave-review-assets.json",
+          "sourceNameEvidence": "Edaily original June 7, 2024 interview individually captions all six portraits; existing native artist record maps the stable IDs.",
+          "referenceUse": "recognition_reference",
+          "visualReview": {
+            "checkedAt": "2026-10-28T09:01:47.914913+00:00",
+            "originalViewed": true,
+            "result": "Natural editorial portrait, face unobscured; original 670px width retained without resizing or generated details.",
+            "limit": "Yunseul/Gowoon use wider framing; no close-up or upscale claim."
+          }
+        },
+        {
+          "memberId": "recvxAPQCFRRHa",
+          "stageName": "Yunseul",
+          "reusedFrom": "existing BEWAVE native artist portrait and reviewed asset original",
+          "originalAssetRecord": {
+            "url": "/artist/bewave/batch-c-20261016/c-task02-bewave-yunseul-interview-portrait.original.jpg",
+            "bytes": 62663,
+            "sha256": "07705910a6e2d95620fa23cec25c307718494fb00b946f65f798c2cdb9b888de",
+            "width": 670,
+            "height": 1004,
+            "variant": "original"
+          },
+          "originalManifestRecord": {
+            "memberId": "recvxAPQCFRRHa",
+            "src": "/artist/bewave/batch-c-20261016/c-task02-bewave-yunseul-interview-portrait.original.jpg",
+            "width": 670,
+            "height": 1004,
+            "label": "同系列采访写真 · 认人参考",
+            "sourceUrl": "https://www.edaily.co.kr/News/Read?mediaCodeNo=258&newsId=01492406638919424",
+            "objectPosition": "50% 50%",
+            "photoKind": "portrait_photo",
+            "photoSetId": "bewave-edaily-named-interview-20240607"
+          },
+          "sha256": "07705910a6e2d95620fa23cec25c307718494fb00b946f65f798c2cdb9b888de",
+          "bytes": 62663,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "apps/idol-site/data/bewave-review-assets.json",
+          "sourceNameEvidence": "Edaily original June 7, 2024 interview individually captions all six portraits; existing native artist record maps the stable IDs.",
+          "referenceUse": "recognition_reference",
+          "visualReview": {
+            "checkedAt": "2026-10-28T09:01:47.914913+00:00",
+            "originalViewed": true,
+            "result": "Natural editorial portrait, face unobscured; original 670px width retained without resizing or generated details.",
+            "limit": "Yunseul/Gowoon use wider framing; no close-up or upscale claim."
+          }
+        },
+        {
+          "memberId": "recvxAPQCF50Hn",
+          "stageName": "Lena",
+          "reusedFrom": "existing BEWAVE native artist portrait and reviewed asset original",
+          "originalAssetRecord": {
+            "url": "/artist/bewave/batch-c-20261016/c-task02-bewave-lena-interview-portrait.original.jpg",
+            "bytes": 97675,
+            "sha256": "dc24ba4e85a8ad8b59b48539585fb5017a381354ca5cb59caa8d65429224d005",
+            "width": 670,
+            "height": 1004,
+            "variant": "original"
+          },
+          "originalManifestRecord": {
+            "memberId": "recvxAPQCF50Hn",
+            "src": "/artist/bewave/batch-c-20261016/c-task02-bewave-lena-interview-portrait.original.jpg",
+            "width": 670,
+            "height": 1004,
+            "label": "同系列采访写真 · 认人参考",
+            "sourceUrl": "https://www.edaily.co.kr/News/Read?mediaCodeNo=258&newsId=01492406638919424",
+            "objectPosition": "50% 50%",
+            "photoKind": "portrait_photo",
+            "photoSetId": "bewave-edaily-named-interview-20240607"
+          },
+          "sha256": "dc24ba4e85a8ad8b59b48539585fb5017a381354ca5cb59caa8d65429224d005",
+          "bytes": 97675,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "apps/idol-site/data/bewave-review-assets.json",
+          "sourceNameEvidence": "Edaily original June 7, 2024 interview individually captions all six portraits; existing native artist record maps the stable IDs.",
+          "referenceUse": "recognition_reference",
+          "visualReview": {
+            "checkedAt": "2026-10-28T09:01:47.914913+00:00",
+            "originalViewed": true,
+            "result": "Natural editorial portrait, face unobscured; original 670px width retained without resizing or generated details.",
+            "limit": "Yunseul/Gowoon use wider framing; no close-up or upscale claim."
+          }
+        },
+        {
+          "memberId": "recvxAPQCFGDkN",
+          "stageName": "Jiun",
+          "reusedFrom": "existing BEWAVE native artist portrait and reviewed asset original",
+          "originalAssetRecord": {
+            "url": "/artist/bewave/batch-c-20261016/c-task02-bewave-jiun-interview-portrait.original.jpg",
+            "bytes": 70606,
+            "sha256": "aede1bee8d716116ca8651083369470f057531db5cae4744bef25a175974453d",
+            "width": 670,
+            "height": 1005,
+            "variant": "original"
+          },
+          "originalManifestRecord": {
+            "memberId": "recvxAPQCFGDkN",
+            "src": "/artist/bewave/batch-c-20261016/c-task02-bewave-jiun-interview-portrait.original.jpg",
+            "width": 670,
+            "height": 1005,
+            "label": "同系列采访写真 · 认人参考",
+            "sourceUrl": "https://www.edaily.co.kr/News/Read?mediaCodeNo=258&newsId=01492406638919424",
+            "objectPosition": "50% 50%",
+            "photoKind": "portrait_photo",
+            "photoSetId": "bewave-edaily-named-interview-20240607"
+          },
+          "sha256": "aede1bee8d716116ca8651083369470f057531db5cae4744bef25a175974453d",
+          "bytes": 70606,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "apps/idol-site/data/bewave-review-assets.json",
+          "sourceNameEvidence": "Edaily original June 7, 2024 interview individually captions all six portraits; existing native artist record maps the stable IDs.",
+          "referenceUse": "recognition_reference",
+          "visualReview": {
+            "checkedAt": "2026-10-28T09:01:47.914913+00:00",
+            "originalViewed": true,
+            "result": "Natural editorial portrait, face unobscured; original 670px width retained without resizing or generated details.",
+            "limit": "Yunseul/Gowoon use wider framing; no close-up or upscale claim."
+          }
+        },
+        {
+          "memberId": "recvxAPQCFjMmI",
+          "stageName": "Gowoon",
+          "reusedFrom": "existing BEWAVE native artist portrait and reviewed asset original",
+          "originalAssetRecord": {
+            "url": "/artist/bewave/batch-c-20261016/c-task02-bewave-gowoon-interview-portrait.original.jpg",
+            "bytes": 82709,
+            "sha256": "c7f2e96bf74afecb1809f9db7207bb36bd880a22506b5b0d478c2ae7bdd239ff",
+            "width": 670,
+            "height": 1004,
+            "variant": "original"
+          },
+          "originalManifestRecord": {
+            "memberId": "recvxAPQCFjMmI",
+            "src": "/artist/bewave/batch-c-20261016/c-task02-bewave-gowoon-interview-portrait.original.jpg",
+            "width": 670,
+            "height": 1004,
+            "label": "同系列采访写真 · 认人参考",
+            "sourceUrl": "https://www.edaily.co.kr/News/Read?mediaCodeNo=258&newsId=01492406638919424",
+            "objectPosition": "50% 50%",
+            "photoKind": "portrait_photo",
+            "photoSetId": "bewave-edaily-named-interview-20240607"
+          },
+          "sha256": "c7f2e96bf74afecb1809f9db7207bb36bd880a22506b5b0d478c2ae7bdd239ff",
+          "bytes": 82709,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "apps/idol-site/data/bewave-review-assets.json",
+          "sourceNameEvidence": "Edaily original June 7, 2024 interview individually captions all six portraits; existing native artist record maps the stable IDs.",
+          "referenceUse": "recognition_reference",
+          "visualReview": {
+            "checkedAt": "2026-10-28T09:01:47.914913+00:00",
+            "originalViewed": true,
+            "result": "Natural editorial portrait, face unobscured; original 670px width retained without resizing or generated details.",
+            "limit": "Yunseul/Gowoon use wider framing; no close-up or upscale claim."
+          }
+        }
+      ],
+      "importEvidence": "docs/codex/evidence/20261028-continuous/person-adoption-batch4.json",
+      "importedAt": "2026-10-28T09:11:49.593826+00:00"
+    },
+    {
+      "workId": "recvxyH5pzbluu",
+      "videoId": "udOf9JGMA7U",
+      "groupId": "recvxyEBDZ2V3c",
+      "song": "MWUAH",
+      "groups": [
+        "STAYC"
+      ],
+      "exactVideoUrl": "https://www.youtube.com/watch?v=udOf9JGMA7U",
+      "materialCategory": "standard_mv",
+      "status": "locally_imported_pending_root_release",
+      "sources": [
+        {
+          "url": "https://fan.books.rakuten.co.jp/articles/pw3z42hip7cbyklssm0x4wen",
+          "publisher": "Rakuten Books / 推し楽; original February 2, 2026 artist interview",
+          "checkedAt": "2026-10-28T09:03:26.343133+00:00",
+          "bodyRead": true,
+          "httpStatus": 200,
+          "facts": [
+            "Original public HTML serializes the article body in Next Flight JSON; that text was read without executing page code.",
+            "In the question specifically about MWUAH, Yoon describes the changing song structure and her recording experience.",
+            "J later describes high-pitched recording in an album-level question; that separate statement is not assigned to MWUAH."
+          ],
+          "scope": "named_partial_exact_track_recording",
+          "accessNote": "The web reader omitted the first section; ordinary HTTP body contained the original serialized interview paragraphs. No search-snippet-only adoption."
+        },
+        {
+          "url": "https://www.universal-music.co.jp/stayc/news/2025-11-11/",
+          "publisher": "Universal Music Japan; first-party album announcement",
+          "checkedAt": "2026-10-28T09:03:26.343133+00:00",
+          "bodyRead": true,
+          "facts": [
+            "Official album release page identifies MWUAH as the lead track on the first Japanese full album.",
+            "The explicit all-member-vocal wording concerns Satellite, not MWUAH; it is not used to expand the target song roster."
+          ],
+          "scope": "exact_release_identity_only"
+        }
+      ],
+      "nextRoute": "Parent review before application import; further named performers can be researched independently.",
+      "remainingCondition": "Candidate only, no data import or playback verification.",
+      "memberIds": [
+        "recvxyICzH6sk8"
+      ],
+      "proposedCreditKind": "documented_project_lineup",
+      "proposedLabel": "公开录音署名（部分名单）",
+      "proposedNote": "YOON在推し楽原采访中，回答《MWUAH》的专门问题时亲述录音体验。这里只补YOON的具名录音证据，不表示其为唯一演唱者，不扩成全员MV出镜名单，也不套用随后韩语舞台版本。",
+      "namedScope": "YOON only: original Japanese-release track-specific recording statement. Other members not inferred from general album roster.",
+      "referenceReuse": [
+        {
+          "memberId": "recvxyICzH6sk8",
+          "stageName": "YOON",
+          "reusedFromWorkId": "recvxyH5pzbZjn",
+          "originalManifestRecord": {
+            "workId": "recvxyH5pzbZjn",
+            "videoId": "3-ptVHZZdBg",
+            "memberId": "recvxyICzH6sk8",
+            "src": "/artist/mv-identity-batch-t-20261027/identities/stayc-ea7dd048f792f2.png",
+            "width": 800,
+            "height": 1200,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://kprofiles.com/stayc-concept-photos-archive/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 1,
+              "y": 0,
+              "width": 798,
+              "height": 1064
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "stayc-teenfresh-ver"
+          },
+          "sha256": "ea7dd048f792f2c9c708b5c6b89d46f921a5dd6c3d8f4a0ba10b09f740bec4a8",
+          "bytes": 779137,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-t/ledger.json",
+          "sourceNameEvidence": "YOON",
+          "referenceUse": "recognition_reference"
+        }
+      ],
+      "importEvidence": "docs/codex/evidence/20261028-continuous/person-adoption-batch4.json",
+      "importedAt": "2026-10-28T09:11:49.593826+00:00"
+    },
+    {
+      "workId": "rec28ldfRTrGou",
+      "videoId": "IVXJXo_AZyw",
+      "groupId": "rec28ldfRTiDcU",
+      "song": "Scars",
+      "groups": [
+        "YOUNG POSSE"
+      ],
+      "exactVideoUrl": "https://www.youtube.com/watch?v=IVXJXo_AZyw",
+      "materialCategory": "collaboration",
+      "status": "locally_imported_pending_root_release",
+      "sources": [
+        {
+          "url": "https://www.youtube.com/watch?v=IVXJXo_AZyw&hl=en",
+          "title": "YOUNG POSSE(영파씨) - Scars I MAPSQUARE Music",
+          "publisher": "슈퍼 맵스 SUPER MAPS",
+          "checkedAt": "2026-10-28T09:03:38.487329+00:00",
+          "pageSha256": "1a0ab62f728e57f06e745777926a4fce099bbb92305ac5f95ff6435012f5806d",
+          "access": "first-party-watch-page-read",
+          "finding": "原片精确ID与官方发布元数据相符；说明逐名列出此作品关联成员。",
+          "evidenceRef": "docs/codex/evidence/20261028-continuous/person-exact-video-observations-c.json"
+        }
+      ],
+      "nextRoute": "Parent review for public credits and reuse already-approved member reference images only.",
+      "remainingCondition": "不将公开发布署名提升为逐帧MV演员全名单；不修改私人关系或评分。",
+      "researchOwner": "C",
+      "delegationEvidence": "Parent assigned separate person-research-c.json; B avoids duplicate source search.",
+      "limits": [
+        "No full playback or person-by-person on-screen recognition",
+        "Public credits only; no private relations, scores or app mutations"
+      ],
+      "exactVideoEvidence": {
+        "videoId": "IVXJXo_AZyw",
+        "url": "https://www.youtube.com/watch?v=IVXJXo_AZyw&hl=en",
+        "checkedAt": "2026-10-28T09:03:38.487329+00:00",
+        "httpStatus": 200,
+        "pageSha256": "1a0ab62f728e57f06e745777926a4fce099bbb92305ac5f95ff6435012f5806d",
+        "bytes": 1366356,
+        "fullPlaybackVerified": false,
+        "personVisualIdentification": false,
+        "title": "YOUNG POSSE(영파씨) - Scars I MAPSQUARE Music",
+        "channel": "슈퍼 맵스 SUPER MAPS",
+        "channelId": "UCDLFOtJ6LIHFIb2bMr8DEvQ",
+        "durationSeconds": "203",
+        "publishedAt": "2024-09-11T00:00:15-07:00",
+        "playability": "OK",
+        "exactIdMatches": true
+      },
+      "publicNames": [
+        "SUNHYE",
+        "YEONJUNG",
+        "JIANA",
+        "DOEUN",
+        "JIEUN"
+      ],
+      "members": [
+        {
+          "memberId": "recvxAPQCFTDpN",
+          "name": "SUNHYE"
+        },
+        {
+          "memberId": "recvxAPQCF89Dz",
+          "name": "YEONJUNG"
+        },
+        {
+          "memberId": "recvxAPQCFg3or",
+          "name": "JIANA"
+        },
+        {
+          "memberId": "recvxAPQCFWkr2",
+          "name": "DOEUN"
+        },
+        {
+          "memberId": "recvxAPQCFgfgo",
+          "name": "JIEUN"
+        }
+      ],
+      "creditScope": "original_uploader_named_publication_participants",
+      "scopeNote": "MAPS原制作发布方为本期Scars现场逐人列出造型署名；本条可补5人公开出场/参与依据，未做完整播放与逐帧核验。",
+      "memberIds": [
+        "recvxAPQCFTDpN",
+        "recvxAPQCF89Dz",
+        "recvxAPQCFg3or",
+        "recvxAPQCFWkr2",
+        "recvxAPQCFgfgo"
+      ],
+      "referenceReuse": [
+        {
+          "memberId": "recvxAPQCFTDpN",
+          "stageName": "Sunhye",
+          "reusedFromWorkId": "recvxIZRWKntfT",
+          "originalManifestRecord": {
+            "workId": "recvxIZRWKntfT",
+            "videoId": "aAjb-d4UkPc",
+            "memberId": "recvxAPQCFTDpN",
+            "src": "/artist/mv-identity-batch-v-20261027/identities/young-posse-9998c6e0fad3ac.webp",
+            "width": 1080,
+            "height": 1620,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://kprofiles.com/young-posse-members-profile/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1080,
+              "height": 1440
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "yp-goahead-r-20261027"
+          },
+          "sha256": "9998c6e0fad3ac636f6b7007f45e36c66bf9630f443023f1abec1e6eae0f42cb",
+          "bytes": 121132,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-v/ledger.json",
+          "sourceNameEvidence": "KProfiles member section explicitly names SUNHYE; photo alt: Sunhye-young-posse-go-ahead-concept photo ",
+          "referenceUse": "recognition_reference"
+        },
+        {
+          "memberId": "recvxAPQCF89Dz",
+          "stageName": "Yeonjung",
+          "reusedFromWorkId": "rec28ldfRTrFUq",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrFUq",
+            "videoId": "Pi9wf7sONz8",
+            "memberId": "recvxAPQCF89Dz",
+            "src": "/artist/mv-identity-batch-v-20261027/identities/young-posse-66a641cece09d9.webp",
+            "width": 1080,
+            "height": 1620,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://kprofiles.com/young-posse-members-profile/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1080,
+              "height": 1440
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "yp-goahead-r-20261027"
+          },
+          "sha256": "66a641cece09d970bbbea970cc4f08a2a47df182a5daf06225aa407fe6e51449",
+          "bytes": 150330,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-v/ledger.json",
+          "sourceNameEvidence": "KProfiles member section explicitly names YEONJUNG; photo alt: Yeonjung-young-posse-go-ahead-concept-photo ",
+          "referenceUse": "recognition_reference"
+        },
+        {
+          "memberId": "recvxAPQCFg3or",
+          "stageName": "Jiana",
+          "reusedFromWorkId": "recvxIZY0lX8bP",
+          "originalManifestRecord": {
+            "workId": "recvxIZY0lX8bP",
+            "videoId": "LY4SA0X2kvg",
+            "memberId": "recvxAPQCFg3or",
+            "src": "/artist/mv-identity-batch-v-20261027/identities/young-posse-2471e686518925.webp",
+            "width": 1080,
+            "height": 1619,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://kprofiles.com/young-posse-members-profile/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1080,
+              "height": 1440
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "yp-goahead-r-20261027"
+          },
+          "sha256": "2471e68651892519727ccfb5f453c7dba2e143bb90e3fade9bea2cd1f956cdc0",
+          "bytes": 230246,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-v/ledger.json",
+          "sourceNameEvidence": "KProfiles member section explicitly names JIANA; photo alt: Jiana -young-posse-go-ahead-concept-photo ",
+          "referenceUse": "recognition_reference"
+        },
+        {
+          "memberId": "recvxAPQCFWkr2",
+          "stageName": "Doeun",
+          "reusedFromWorkId": "recvxIZY0lX8bP",
+          "originalManifestRecord": {
+            "workId": "recvxIZY0lX8bP",
+            "videoId": "LY4SA0X2kvg",
+            "memberId": "recvxAPQCFWkr2",
+            "src": "/artist/mv-identity-batch-v-20261027/identities/young-posse-c5e4651f8e92cb.webp",
+            "width": 1080,
+            "height": 1620,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://kprofiles.com/young-posse-members-profile/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1080,
+              "height": 1440
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "yp-goahead-r-20261027"
+          },
+          "sha256": "c5e4651f8e92cb0a858d1f6732ceacff8fc3967def24effa45d9c3a3df62d3d4",
+          "bytes": 201008,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-v/ledger.json",
+          "sourceNameEvidence": "KProfiles member section explicitly names DOEUN; photo alt: Doeun-young-posse-go-ahead-concept-photo ",
+          "referenceUse": "recognition_reference"
+        },
+        {
+          "memberId": "recvxAPQCFgfgo",
+          "stageName": "Jieun",
+          "reusedFromWorkId": "recvxIZRWKntfT",
+          "originalManifestRecord": {
+            "workId": "recvxIZRWKntfT",
+            "videoId": "aAjb-d4UkPc",
+            "memberId": "recvxAPQCFgfgo",
+            "src": "/artist/mv-identity-batch-v-20261027/identities/young-posse-81ab5d6a39b37b.webp",
+            "width": 1080,
+            "height": 1620,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://kprofiles.com/young-posse-members-profile/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1080,
+              "height": 1440
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "yp-goahead-r-20261027"
+          },
+          "sha256": "81ab5d6a39b37baf24a2593ad4d595c3b4a4dcae7396a5bf91e1f52bc87c140a",
+          "bytes": 219354,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-v/ledger.json",
+          "sourceNameEvidence": "KProfiles member section explicitly names JIEUN; photo alt: Jieun-young-posse-go-ahead-concept-photo ",
+          "referenceUse": "recognition_reference"
+        }
+      ],
+      "proposedCreditKind": "partial_mv_participation",
+      "proposedLabel": "公开视频参与署名（部分名单）",
+      "proposedNote": "MAPS原制作发布页在本期《Scars》的About Styling部分，逐名列出SUNHYE、YEONJUNG、JIANA、DOEUN、JIEUN的造型署名。仅补这五人的本视频公开参与依据，未完整播放或逐帧核验，不表示完整出演表；认人照片不代表该片服装或拍摄同期。",
+      "importEvidence": "docs/codex/evidence/20261028-continuous/person-adoption-batch4.json",
+      "importedAt": "2026-10-28T09:11:49.593826+00:00"
+    },
+    {
+      "workId": "recvxyH5pzoaOZ",
+      "videoId": "VACXoKdmofo",
+      "groupId": "recvxyEBDZPbu5",
+      "song": "Love",
+      "groups": [
+        "Weeekly"
+      ],
+      "exactVideoUrl": "https://www.youtube.com/watch?v=VACXoKdmofo",
+      "materialCategory": "collaboration",
+      "status": "locally_imported_pending_root_release",
+      "sources": [
+        {
+          "url": "https://www.youtube.com/watch?v=VACXoKdmofo&hl=en",
+          "title": "[MV] Weeekly(위클리) _ Love(Weeekly X Kim Eana Project) (위클리 X 김이나 프로젝트)",
+          "publisher": "1theK (원더케이)",
+          "checkedAt": "2026-10-28T09:03:55.433852+00:00",
+          "pageSha256": "df1f57eb6fc473e3e6f9b175c04d0d460e9d6c6d0c83364076a91e919b75bce8",
+          "access": "first-party-watch-page-read",
+          "finding": "原发行方1theK精确视频为Weeekly X Kim Eana Project Love；配合发行商说明及具名报道确定六人演唱参与。",
+          "evidenceRef": "docs/codex/evidence/20261028-continuous/person-exact-video-observations-c.json"
+        },
+        {
+          "url": "https://v.daum.net/v/20220721105818841",
+          "title": "위클리, 오늘 브아걸 러브 리메이크 곡 발표",
+          "publisher": "뉴스1 / 황미현",
+          "publishedAt": "2022-07-21",
+          "checkedAt": "2026-10-28",
+          "access": "full-body-read-via-web-tool",
+          "finding": "具名列出六位成员并明确其以本项目演唱者参与；不是仅通用团体介绍。"
+        },
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=82840546",
+          "title": "Love (위클리 X 김이나 프로젝트)",
+          "publisher": "Genie / AMD PEOPLE’S发行说明",
+          "publishedAt": "2022-07-21",
+          "checkedAt": "2026-10-28",
+          "access": "full-body-read-via-web-tool",
+          "finding": "官方发行说明明确Vocal为Weeekly，项目、曲名与目标视频对应；曲词作者/伴唱不当MV成员。"
+        }
+      ],
+      "nextRoute": "Parent review for public credits and reuse already-approved member reference images only.",
+      "remainingCondition": "不将公开发布署名提升为逐帧MV演员全名单；不修改私人关系或评分。",
+      "researchOwner": "C",
+      "delegationEvidence": "Parent assigned separate person-research-c.json; B avoids duplicate source search.",
+      "limits": [
+        "No full playback or person-by-person on-screen recognition",
+        "Public credits only; no private relations, scores or app mutations"
+      ],
+      "exactVideoEvidence": {
+        "videoId": "VACXoKdmofo",
+        "url": "https://www.youtube.com/watch?v=VACXoKdmofo&hl=en",
+        "checkedAt": "2026-10-28T09:03:55.433852+00:00",
+        "httpStatus": 200,
+        "pageSha256": "df1f57eb6fc473e3e6f9b175c04d0d460e9d6c6d0c83364076a91e919b75bce8",
+        "bytes": 1348604,
+        "fullPlaybackVerified": false,
+        "personVisualIdentification": false,
+        "title": "[MV] Weeekly(위클리) _ Love(Weeekly X Kim Eana Project) (위클리 X 김이나 프로젝트)",
+        "channel": "1theK (원더케이)",
+        "channelId": "UCweOkPb1wVVH0Q0Tlj4a5Pw",
+        "durationSeconds": "238",
+        "publishedAt": "2022-07-21T02:00:28-07:00",
+        "playability": "OK",
+        "exactIdMatches": true
+      },
+      "publicNames": [
+        "SOOJIN",
+        "MONDAY",
+        "SOEUN",
+        "JAEHEE",
+        "JIHAN",
+        "ZOA"
+      ],
+      "members": [
+        {
+          "memberId": null,
+          "name": "SOOJIN"
+        },
+        {
+          "memberId": "recvxyICzHbczT",
+          "name": "MONDAY"
+        },
+        {
+          "memberId": null,
+          "name": "SOEUN"
+        },
+        {
+          "memberId": null,
+          "name": "JAEHEE"
+        },
+        {
+          "memberId": "recvxyICzHrdSX",
+          "name": "JIHAN"
+        },
+        {
+          "memberId": "recvxyICzHXzUs",
+          "name": "ZOA"
+        }
+      ],
+      "creditScope": "named_release_vocal_participants",
+      "scopeNote": "原发布页逐名提及的本作参与者；可作为公开人物认人参考，不冒称逐人MV出镜核验。",
+      "memberIds": [
+        "recvxyICzHH702",
+        "recvxyICzHbczT",
+        "recvxyICzHn6vM",
+        "recvxyICzHBiSD",
+        "recvxyICzHrdSX",
+        "recvxyICzHXzUs"
+      ],
+      "referenceReuse": [
+        {
+          "memberId": "recvxyICzHH702",
+          "stageName": "LEE SOOJIN",
+          "reusedFromWorkId": "recvxyH5pzr7Nc",
+          "originalManifestRecord": {
+            "memberId": "recvxyICzHH702",
+            "src": "/artist/mv-identity-20261025/identities/o21QhCZZQJA-recvxyICzHH702-1138f0e5b4.png",
+            "width": 1820,
+            "height": 938,
+            "objectPosition": "50% 50%",
+            "label": "同系列照片 · 认人参考",
+            "sourceUrl": "https://allaboutkpopgirlgroups.wordpress.com/2017/12/17/contestant-sujin-lee/",
+            "sourceImageUrl": "https://allaboutkpopgirlgroups.wordpress.com/wp-content/uploads/2017/12/weeekly-happy-christmas-soojin.png",
+            "sha256": "1138f0e5b42c5427ee0f8da717aeaa097846af87c4851e97523d38f622613e75",
+            "photoSetId": "reviewed-series-recvxyH5pzoIOD",
+            "photoSetTitle": "Happy Christmas (2022)",
+            "workAssociation": "recognition_reference",
+            "note": "沿用已审具名同系列完整原图，仅帮助辨认演唱者；此动画 MV 无成员真人出镜，照片不代表该 MV 的造型或拍摄时期。"
+          },
+          "sha256": "1138f0e5b42c5427ee0f8da717aeaa097846af87c4851e97523d38f622613e75",
+          "bytes": 1233250,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/evidence/20261028-followup/",
+          "sourceNameEvidence": "Existing reviewed public Weeekly recognition record, same named Happy Christmas six-member image series; no absence rule inherited.",
+          "referenceUse": "recognition_reference"
+        },
+        {
+          "memberId": "recvxyICzHbczT",
+          "stageName": "MONDAY",
+          "reusedFromWorkId": "recvxyH5pzr7Nc",
+          "originalManifestRecord": {
+            "memberId": "recvxyICzHbczT",
+            "src": "/artist/mv-identity-20261025/identities/o21QhCZZQJA-recvxyICzHbczT-eef79a2ed1.png",
+            "width": 1901,
+            "height": 932,
+            "objectPosition": "50% 50%",
+            "sourceCrop": {
+              "x": 753,
+              "y": 0,
+              "width": 699,
+              "height": 932
+            },
+            "label": "同系列照片 · 认人参考",
+            "sourceUrl": "https://allaboutkpopgirlgroups.wordpress.com/2018/12/03/member-profile-monday-fave-girls/",
+            "sourceImageUrl": "https://allaboutkpopgirlgroups.wordpress.com/wp-content/uploads/2018/12/weeekly-happy-christmas-monday.png",
+            "sha256": "eef79a2ed123e387916d1f9fbf7a57c4194e5f1b3a0d91be427b3b1ce73ee106",
+            "photoSetId": "reviewed-series-recvxyH5pzoIOD",
+            "photoSetTitle": "Happy Christmas (2022)",
+            "workAssociation": "recognition_reference",
+            "note": "沿用已审具名同系列完整原图，仅帮助辨认演唱者；此动画 MV 无成员真人出镜，照片不代表该 MV 的造型或拍摄时期。"
+          },
+          "sha256": "eef79a2ed123e387916d1f9fbf7a57c4194e5f1b3a0d91be427b3b1ce73ee106",
+          "bytes": 1153794,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/evidence/20261028-followup/",
+          "sourceNameEvidence": "Existing reviewed public Weeekly recognition record, same named Happy Christmas six-member image series; no absence rule inherited.",
+          "referenceUse": "recognition_reference"
+        },
+        {
+          "memberId": "recvxyICzHn6vM",
+          "stageName": "PARK SOEUN",
+          "reusedFromWorkId": "recvxyH5pzr7Nc",
+          "originalManifestRecord": {
+            "memberId": "recvxyICzHn6vM",
+            "src": "/artist/mv-identity-20261025/identities/o21QhCZZQJA-recvxyICzHn6vM-8dce5ea085.png",
+            "width": 1872,
+            "height": 938,
+            "objectPosition": "50% 50%",
+            "label": "同系列照片 · 认人参考",
+            "sourceUrl": "https://allaboutkpopgirlgroups.wordpress.com/2017/12/18/contestant-soeun-park/",
+            "sourceImageUrl": "https://allaboutkpopgirlgroups.wordpress.com/wp-content/uploads/2017/12/weeekly-happy-christmas-soeun.png",
+            "sha256": "8dce5ea085e2045cfacb85db8ee9af4a10c25229d501b7f17abb9a2dbfd50c51",
+            "photoSetId": "reviewed-series-recvxyH5pzoIOD",
+            "photoSetTitle": "Happy Christmas (2022)",
+            "workAssociation": "recognition_reference",
+            "note": "沿用已审具名同系列完整原图，仅帮助辨认演唱者；此动画 MV 无成员真人出镜，照片不代表该 MV 的造型或拍摄时期。"
+          },
+          "sha256": "8dce5ea085e2045cfacb85db8ee9af4a10c25229d501b7f17abb9a2dbfd50c51",
+          "bytes": 1124805,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/evidence/20261028-followup/",
+          "sourceNameEvidence": "Existing reviewed public Weeekly recognition record, same named Happy Christmas six-member image series; no absence rule inherited.",
+          "referenceUse": "recognition_reference"
+        },
+        {
+          "memberId": "recvxyICzHBiSD",
+          "stageName": "LEE JAEHEE",
+          "reusedFromWorkId": "recvxyH5pzr7Nc",
+          "originalManifestRecord": {
+            "memberId": "recvxyICzHBiSD",
+            "src": "/artist/mv-identity-20261025/identities/o21QhCZZQJA-recvxyICzHBiSD-c31111cb83.png",
+            "width": 1903,
+            "height": 931,
+            "objectPosition": "50% 50%",
+            "label": "同系列照片 · 认人参考",
+            "sourceUrl": "https://allaboutkpopgirlgroups.wordpress.com/2018/12/03/member-profile-jaehee-fave-girls/",
+            "sourceImageUrl": "https://allaboutkpopgirlgroups.wordpress.com/wp-content/uploads/2018/12/weeekly-happy-christmas-jaehee.png",
+            "sha256": "c31111cb832ca2eef27d654295b3db39e1eab83c6a82579bc18633aec7ff9a7d",
+            "photoSetId": "reviewed-series-recvxyH5pzoIOD",
+            "photoSetTitle": "Happy Christmas (2022)",
+            "workAssociation": "recognition_reference",
+            "note": "沿用已审具名同系列完整原图，仅帮助辨认演唱者；此动画 MV 无成员真人出镜，照片不代表该 MV 的造型或拍摄时期。"
+          },
+          "sha256": "c31111cb832ca2eef27d654295b3db39e1eab83c6a82579bc18633aec7ff9a7d",
+          "bytes": 863387,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/evidence/20261028-followup/",
+          "sourceNameEvidence": "Existing reviewed public Weeekly recognition record, same named Happy Christmas six-member image series; no absence rule inherited.",
+          "referenceUse": "recognition_reference"
+        },
+        {
+          "memberId": "recvxyICzHrdSX",
+          "stageName": "JIHAN",
+          "reusedFromWorkId": "recvxyH5pzr7Nc",
+          "originalManifestRecord": {
+            "memberId": "recvxyICzHrdSX",
+            "src": "/artist/mv-identity-20261025/identities/o21QhCZZQJA-recvxyICzHrdSX-9cf91e1088.png",
+            "width": 1910,
+            "height": 928,
+            "objectPosition": "50% 50%",
+            "label": "同系列照片 · 认人参考",
+            "sourceUrl": "https://allaboutkpopgirlgroups.wordpress.com/2020/02/08/member-profile-jihyo-playm-girls/",
+            "sourceImageUrl": "https://allaboutkpopgirlgroups.wordpress.com/wp-content/uploads/2020/02/weeekly-happy-christmas-jihan.png",
+            "sha256": "9cf91e1088b53d813bee4347c7bdf9409133f4e2c424e65f17558ce1b09d604c",
+            "photoSetId": "reviewed-series-recvxyH5pzoIOD",
+            "photoSetTitle": "Happy Christmas (2022)",
+            "workAssociation": "recognition_reference",
+            "note": "沿用已审具名同系列完整原图，仅帮助辨认演唱者；此动画 MV 无成员真人出镜，照片不代表该 MV 的造型或拍摄时期。"
+          },
+          "sha256": "9cf91e1088b53d813bee4347c7bdf9409133f4e2c424e65f17558ce1b09d604c",
+          "bytes": 993077,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/evidence/20261028-followup/",
+          "sourceNameEvidence": "Existing reviewed public Weeekly recognition record, same named Happy Christmas six-member image series; no absence rule inherited.",
+          "referenceUse": "recognition_reference"
+        },
+        {
+          "memberId": "recvxyICzHXzUs",
+          "stageName": "ZOA",
+          "reusedFromWorkId": "recvxyH5pzr7Nc",
+          "originalManifestRecord": {
+            "memberId": "recvxyICzHXzUs",
+            "src": "/artist/mv-identity-20261025/identities/o21QhCZZQJA-recvxyICzHXzUs-e87b363a86.png",
+            "width": 1872,
+            "height": 928,
+            "objectPosition": "50% 50%",
+            "label": "同系列照片 · 认人参考",
+            "sourceUrl": "https://allaboutkpopgirlgroups.wordpress.com/2020/02/08/member-profile-hyewon-playm-girls/",
+            "sourceImageUrl": "https://allaboutkpopgirlgroups.wordpress.com/wp-content/uploads/2020/02/weeekly-happy-christmas-zoa.png",
+            "sha256": "e87b363a861eb41e2953bd2eb53f7f0efaa46a02861108ffc868e84bb7b752cd",
+            "photoSetId": "reviewed-series-recvxyH5pzoIOD",
+            "photoSetTitle": "Happy Christmas (2022)",
+            "workAssociation": "recognition_reference",
+            "note": "沿用已审具名同系列完整原图，仅帮助辨认演唱者；此动画 MV 无成员真人出镜，照片不代表该 MV 的造型或拍摄时期。"
+          },
+          "sha256": "e87b363a861eb41e2953bd2eb53f7f0efaa46a02861108ffc868e84bb7b752cd",
+          "bytes": 995181,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/evidence/20261028-followup/",
+          "sourceNameEvidence": "Existing reviewed public Weeekly recognition record, same named Happy Christmas six-member image series; no absence rule inherited.",
+          "referenceUse": "recognition_reference"
+        }
+      ],
+      "proposedCreditKind": "documented_project_lineup",
+      "proposedLabel": "公开演唱名单",
+      "proposedNote": "News1原报道明确列出LEE SOOJIN、MONDAY、PARK SOEUN、LEE JAEHEE、JIHAN、ZOA为《Love（Weeekly X Kim Eana Project）》演唱者，发行方资料确认该项目。仅补六人演唱名单，不据此证明MV逐人出镜，也不把其他作品的无真人规则套用到本视频。",
+      "importEvidence": "docs/codex/evidence/20261028-continuous/person-adoption-batch4.json",
+      "importedAt": "2026-10-28T09:11:49.593826+00:00"
+    }
+  ],
+  "tests": {
+    "status": "passed",
+    "command": "node --test tests/continuous-public-credits.test.cjs tests/stage-fill-public-credits.test.cjs tests/category-followup-v196.test.mjs",
+    "cwd": "apps/idol-site",
+    "tests": 20,
+    "pass": 20,
+    "fail": 0,
+    "checkedAt": "2026-10-28T09:13:25.680205+00:00",
+    "initialHarnessIssue": "First test-edit command used a repository-relative file path from the app directory and made no edit; the unchanged historical total assertion failed 58 vs 54. Corrected test path, retained old54 object hashes, and added batch4 exact scope/original/private guards; final 20 passed."
+  }
+}

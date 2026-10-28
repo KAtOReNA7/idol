@@ -1,0 +1,808 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T08:54:21.742585+00:00",
+  "status": "approved_evidence_only_local_implementation",
+  "authorization": "Parent approved only sources/evidence/explanations; no date promotion or statistic changes. Publication pending.",
+  "sourceEvidence": [
+    "docs/codex/evidence/20261028-continuous/statistics-research-c.json",
+    "docs/codex/evidence/20261028-continuous/circle-annual-c.json",
+    "docs/codex/evidence/20261028-continuous/archive-announcement-observations-c.json",
+    "docs/codex/evidence/20261028-continuous/geenius-archive-observations-c.json",
+    "docs/codex/evidence/20261028-continuous/bewave-original-images-receipt-c.json",
+    "docs/codex/evidence/20261028-continuous/geenius-manual-original-images-receipt-c.json"
+  ],
+  "restrictions": {
+    "unknownMetricsRemain": 15,
+    "effectiveDateHoldsRemain": 7,
+    "triplesObservedSalesRemain": 2092239,
+    "triplesRemainingDifferenceRemain": 366550,
+    "privateWrites": 0,
+    "gitOperations": 0,
+    "retailAddedToAlbum": false,
+    "girsetFollowerProposalAdopted": false
+  },
+  "timelines": [
+    {
+      "slug": "candyshop",
+      "eventId": "e-candyshop-yuina-hiatus-announcement",
+      "sourceFile": "apps/idol-site/data/artist-timelines/candyshop.json",
+      "expectedBeforeText": "{\n  \"schemaVersion\": 1,\n  \"groupId\": \"rec28ldfRTiDlb\",\n  \"slug\": \"candyshop\",\n  \"events\": [\n    {\n      \"id\": \"e-candyshop-formal-debut-hashtag\",\n      \"groupId\": \"rec28ldfRTiDlb\",\n      \"eventType\": \"debut\",\n      \"title\": \"以首张迷你专辑《Hashtag#》正式出道\",\n      \"summary\": \"3月27日18:25现场报道确认首迷你已发行；5月9日独立新闻回顾同日已正式出道。\",\n      \"scopeNote\": \"保留原正式出道候选ID；首迷你与Good Girl主打合一，不把当日showcase单独当发行证据。\",\n      \"eventDate\": {\n        \"value\": \"2024-03-27\",\n        \"precision\": \"day\"\n      },\n      \"announcementDate\": null,\n      \"plannedDate\": null,\n      \"status\": \"confirmed\",\n      \"importance\": \"major\",\n      \"memberIds\": [],\n      \"workIds\": [\n        \"rec28ldfRTrGMp\"\n      ],\n      \"releaseKey\": \"candyshop-hashtag\",\n      \"relatedEventIds\": [],\n      \"sources\": [\n        {\n          \"id\": \"es-3dedeb8b18e38238\",\n          \"url\": \"https://www.kpopmonster.jp/?p=169924\",\n          \"publisher\": \"KPOP monster（原创采访，JULIA本人答复）\",\n          \"title\": \"Candy Shopにインタビュー！\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2024-07-31\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"原创采访保存JULIA本人加入陈述；出道相关additionalObservedBodyFact只是转述，不视为原始出道证据。\",\n          \"evidenceRef\": \"evidence/inherited/E02/task02/sources/candyshop-formal-debut-hashtag-1.json\"\n        },\n        {\n          \"id\": \"es-58538ff55896f82d\",\n          \"url\": \"https://hubjapan.jp/candy-shop-discography/\",\n          \"publisher\": \"HUB JAPAN\",\n          \"title\": \"CANDY SHOP — DISCOGRAPHY\",\n          \"sourcePublishedAt\": null,\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"官方日本代理方目录列Hashtag#与2024.03.27 Release，仅保留目录线索，不独立证明正式出道。\",\n          \"evidenceRef\": \"evidence/inherited/E02/task02/sources/candyshop-formal-debut-hashtag-2.json\"\n        },\n        {\n          \"id\": \"fs05-candyshop-debut\",\n          \"url\": \"https://www.nocutnews.co.kr/news/6119213\",\n          \"publisher\": \"CBS노컷뉴스 / 김수정 现场采访\",\n          \"title\": \"[현장EN:]용형 성대모사까지 거뜬한 캔디샵 …\\\"스타가 될 거야\\\"\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2024-03-27\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"18:25现场采访直接确认当晚18时首迷你已发，非仅开showcase或未来出道计划；另段明确Good Girl为主打。\",\n          \"evidenceRef\": \"evidence/task05/evidence/candyshop-debut.json\"\n        },\n        {\n          \"id\": \"fs05-candyshop-debut-retrospective\",\n          \"url\": \"https://www.newsis.com/view/NISX20240509_0002728204\",\n          \"publisher\": \"NEWSIS / 추승현\",\n          \"title\": \"캔디샵 유이나, 활동 잠정 중단…\\\"새 멤버 영입\\\"\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2024-05-09\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"实际读到5月9日原报道，明确回顾3月27日已出道；本片不保存私人健康原因，YUINA暂缓活动与退出保持分开。\",\n          \"evidenceRef\": \"evidence/task05/evidence/candyshop-debut-retrospective.json\"\n        }\n      ],\n      \"reviewStatus\": \"ready\",\n      \"holdReasons\": []\n    },\n    {\n      \"id\": \"e-candyshop-girls-dont-cry\",\n      \"groupId\": \"rec28ldfRTiDlb\",\n      \"eventType\": \"release\",\n      \"title\": \"第二张迷你专辑《Girls Don’t Cry》发行\",\n      \"summary\": \"团体官网事后回顾确认第二张专辑已发行，官方日本代理档案明确2024年6月12日。\",\n      \"scopeNote\": \"6月12日来自独立代理方日期档案，5882页“先月12日”无发表月份不单独倒推；保留旧6月6日MV/字段语义冲突，不直接覆盖。\",\n      \"eventDate\": {\n        \"value\": \"2024-06-12\",\n        \"precision\": \"day\"\n      },\n      \"announcementDate\": null,\n      \"plannedDate\": null,\n      \"status\": \"confirmed\",\n      \"importance\": \"major\",\n      \"memberIds\": [],\n      \"workIds\": [\n        \"rec28ldfRTrGQ9\"\n      ],\n      \"releaseKey\": \"candyshop-girls-dont-cry\",\n      \"relatedEventIds\": [],\n      \"sources\": [\n        {\n          \"id\": \"es-a8e53d8bb71d4a5a\",\n          \"url\": \"https://candy-shop.jp/news/detail/5882\",\n          \"publisher\": \"Candy Shop JAPAN OFFICIAL WEBSITE\",\n          \"title\": \"Girls Don’t Cry 初動新記録達成\",\n          \"sourcePublishedAt\": null,\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"官方事后活动总结确认专辑实际已发行；页面正文未显示发表月份，精确日期另由日本代理方档案支持。\",\n          \"evidenceRef\": \"evidence/E/task04/sources/candyshop-girls-retrospective.json\"\n        },\n        {\n          \"id\": \"es-58538ff55896f82d\",\n          \"url\": \"https://hubjapan.jp/candy-shop-discography/\",\n          \"publisher\": \"HUB JAPAN\",\n          \"title\": \"CANDY SHOP — DISCOGRAPHY\",\n          \"sourcePublishedAt\": null,\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"日本正式代理方自己的发行档案，三次发行而非逐首/版本拆分；不直接当正式出道日证明。\",\n          \"evidenceRef\": \"evidence/E/task04/sources/candyshop-hub-releases.json\"\n        }\n      ],\n      \"reviewStatus\": \"ready\",\n      \"holdReasons\": []\n    },\n    {\n      \"id\": \"e-candyshop-julia-join\",\n      \"groupId\": \"rec28ldfRTiDlb\",\n      \"eventType\": \"member_join\",\n      \"title\": \"JULIA加入Candy Shop\",\n      \"summary\": \"JULIA在原创采访中说明加入时受到其他成员照顾，并首次参与偶像活动。\",\n      \"scopeNote\": \"本人加入事实直接可证，但导言5月加入与问句6月12日口径不同，独立生效日期未知；不把7月31日采访发表日当加入日。\",\n      \"eventDate\": null,\n      \"announcementDate\": null,\n      \"plannedDate\": null,\n      \"status\": \"confirmed\",\n      \"importance\": \"major\",\n      \"memberIds\": [\n        \"recvxAPQCFfv5C\"\n      ],\n      \"workIds\": [],\n      \"releaseKey\": null,\n      \"relatedEventIds\": [],\n      \"sources\": [\n        {\n          \"id\": \"es-3dedeb8b18e38238\",\n          \"url\": \"https://www.kpopmonster.jp/?p=169924\",\n          \"publisher\": \"KPOP monster（原创采访，JULIA本人答复）\",\n          \"title\": \"Candy Shopにインタビュー！\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2024-07-31\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"原创采访中本人直接确认加入；提问6月12日与导言5月两个口径不作独立正式生效日，eventDate未知。\",\n          \"evidenceRef\": \"evidence/E/task04/sources/candyshop-julia-interview.json\"\n        }\n      ],\n      \"reviewStatus\": \"ready\",\n      \"holdReasons\": []\n    },\n    {\n      \"id\": \"e-candyshop-tip-toe\",\n      \"groupId\": \"rec28ldfRTiDlb\",\n      \"eventType\": \"release\",\n      \"title\": \"首支数字单曲《TIP TOE》发行\",\n      \"summary\": \"5月5日原创采访完整过去式直接确认3月18日数字单曲已发表。\",\n      \"scopeNote\": \"保留同语义旧eventId；不从17时未来预告、目录或MV公开推发行日。\",\n      \"eventDate\": {\n        \"value\": \"2025-03-18\",\n        \"precision\": \"day\"\n      },\n      \"announcementDate\": null,\n      \"plannedDate\": null,\n      \"status\": \"confirmed\",\n      \"importance\": \"major\",\n      \"memberIds\": [],\n      \"workIds\": [\n        \"rec28ldfRTrGUf\"\n      ],\n      \"releaseKey\": \"candyshop-tip-toe\",\n      \"relatedEventIds\": [],\n      \"sources\": [\n        {\n          \"id\": \"es-58538ff55896f82d\",\n          \"url\": \"https://hubjapan.jp/candy-shop-discography/\",\n          \"publisher\": \"HUB JAPAN\",\n          \"title\": \"CANDY SHOP — DISCOGRAPHY\",\n          \"sourcePublishedAt\": null,\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"日本正式代理方自己的发行档案，三次发行而非逐首/版本拆分；不直接当正式出道日证明。\",\n          \"evidenceRef\": \"evidence/inherited/E/task04/sources/candyshop-hub-releases.json\"\n        },\n        {\n          \"id\": \"fs05-candyshop-tiptoe\",\n          \"url\": \"https://www.fnnews.com/news/202505050802018291\",\n          \"publisher\": \"NEWS1 / 安泰贤原创采访，파이낸셜뉴스授权刊载\",\n          \"title\": \"캔디샵 \\\"자체 프로듀싱이 목표…아티스트로 성장할 것\\\" [N인터뷰]②\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2025-05-05\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"5月5日原创采访过去式直接锚定3月18日TIP TOE已发行；不是3月18日17时预告或MV贴文。属于同一NEWS1稿链，不重复算独立源。\",\n          \"evidenceRef\": \"evidence/task05/evidence/candyshop-tiptoe.json\"\n        }\n      ],\n      \"reviewStatus\": \"ready\",\n      \"holdReasons\": []\n    },\n    {\n      \"id\": \"e-candyshop-yuina-hiatus-announcement\",\n      \"groupId\": \"rec28ldfRTiDlb\",\n      \"eventType\": \"hiatus\",\n      \"title\": \"公告候选：YUINA暂时停止团体活动\",\n      \"summary\": \"转载的Brave署名原声明图说明YUINA不参加之后预定行程，团体计划加入新成员后以四人活动。\",\n      \"scopeNote\": \"只保留公开活动安排，未存原因。原官方发表URL与独立日期未证，留hold；这不是退团公告，不从官网移除推退出。\",\n      \"eventDate\": null,\n      \"announcementDate\": null,\n      \"plannedDate\": null,\n      \"status\": \"announced\",\n      \"importance\": \"major\",\n      \"memberIds\": [\n        \"recvxAPQCFyiww\"\n      ],\n      \"workIds\": [],\n      \"releaseKey\": null,\n      \"relatedEventIds\": [],\n      \"sources\": [\n        {\n          \"id\": \"es-a2f9e55b34a31343\",\n          \"url\": \"https://0.soompi.io/wp-content/uploads/2024/05/08105357/Yuina.jpeg\",\n          \"publisher\": \"Brave Entertainment署名公告（Soompi转载图片，原刊待核）\",\n          \"title\": \"YUINA activity notice document\",\n          \"sourcePublishedAt\": null,\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"工具实际展示原声明图并读字；仅抄活动安排，未保存医疗原因或艺人照片。原官方发表URL和日期未核，不能提升ready；不是退团证明。\",\n          \"evidenceRef\": \"evidence/E/task04/sources/candyshop-yuina-document-hold.json\"\n        }\n      ],\n      \"reviewStatus\": \"hold\",\n      \"holdReasons\": [\n        \"已实际读到原声明图的转载，但缺原官方刊载位置与日期；媒体日期仅作线索，不提升ready。\"\n      ]\n    }\n  ],\n  \"gaps\": [\n    \"YUINA原声明图转载已读但原官方刊载位置/日期未核，保留hiatus hold；不当退团。\",\n    \"JULIA独立加入日未知；原采访5月与6月12日口径冲突保留。\",\n    \"TIP TOE仅第一方日期目录而hold；首专未把未直接核准曲目强行绑定Good Girl，没有占位记录。\",\n    \"成员退出、明确解散与经纪转移原文未建立；官网四人/移除网页不补事件。\",\n    \"三主要发行均已建立；未发现可独立核准的后续新团体载体，不用无新资料证明正式解散。\",\n    \"YUINA原官方刊载与独立日期仍旧hold，JULIA实际加入日仍未知；本片不重做成员资料。\"\n  ]\n}\n",
+      "expectedBeforeFileSha256": "480ebf439d9de4824b9d3d2c54c2a6a54e67024c7622c70acd71ac38202b4af2",
+      "expectedBeforeSha256Canonical": "8b3d5c681744b990d37e12dd23f1ecc762369dc8a388ad6f0ac4015386418953",
+      "allowedEventFields": [
+        "summary",
+        "scopeNote",
+        "sources",
+        "holdReasons"
+      ],
+      "allowedRootFields": [
+        "gaps"
+      ],
+      "proposedAfterFileSha256": "f51ca75ee0faa1d8332163c846a176b7953b07dfa1b413d5858b5ef707040fb8",
+      "proposedAfterSha256Canonical": "70d3647a3165e485e692a43f695848be4e110843ff115d5c16c68bccd1dce581"
+    },
+    {
+      "slug": "bewave",
+      "eventId": "e-bewave-six-member-phase-end-announcement",
+      "sourceFile": "apps/idol-site/data/artist-timelines/bewave.json",
+      "expectedBeforeText": "{\n  \"schemaVersion\": 1,\n  \"groupId\": \"rec28ldfRTiDh1\",\n  \"slug\": \"bewave\",\n  \"events\": [\n    {\n      \"id\": \"e-bewave-official-debut\",\n      \"groupId\": \"rec28ldfRTiDh1\",\n      \"eventType\": \"debut\",\n      \"title\": \"BEWAVE以同名出道专辑展开活动\",\n      \"summary\": \"2024年6月的原始采访回顾，BEWAVE于同年4月发表同名出道专辑。\",\n      \"scopeNote\": \"原始采访只给2024年4月，不标首张迷你或SING!/Shine活动完成；已保存完整原句直接具名SING!为该专辑主打，故仅保留该事件内作品关联。不以4月17日目录日替代精确出道日。\",\n      \"eventDate\": {\n        \"value\": \"2024-04\",\n        \"precision\": \"month\"\n      },\n      \"announcementDate\": null,\n      \"plannedDate\": null,\n      \"status\": \"confirmed\",\n      \"importance\": \"major\",\n      \"memberIds\": [],\n      \"workIds\": [\n        \"rec28ldfRTrGEy\"\n      ],\n      \"releaseKey\": null,\n      \"relatedEventIds\": [],\n      \"sources\": [\n        {\n          \"id\": \"es-90786aacc01d1980\",\n          \"url\": \"https://www.edaily.co.kr/News/Read?mediaCodeNo=258&newsId=01492406638919424\",\n          \"publisher\": \"이데일리（原始采访）\",\n          \"title\": \"BEWAVE出道活动结束后原始访谈\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2024-06-07\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"本地已保存完整原句支持2024年4月同名出道专辑及SING!主打对应；不支持首张迷你类型或精确日。\",\n          \"evidenceRef\": \"evidence/E02/task01/sources/bewave-debut-original-sentence.json\"\n        }\n      ],\n      \"reviewStatus\": \"ready\",\n      \"holdReasons\": []\n    },\n    {\n      \"id\": \"e-bewave-be-your-wave-release-plan\",\n      \"groupId\": \"rec28ldfRTiDh1\",\n      \"eventType\": \"release\",\n      \"title\": \"首张单曲专辑《Be your Wave》发行\",\n      \"summary\": \"2025年9月原报道明确回顾去年10月已发行首张单曲。\",\n      \"scopeNote\": \"实际只确立2024-10月精度，不把10月10日showcase/18时计划/目录独立当音源实际日；原计划字段保留。\",\n      \"eventDate\": {\n        \"value\": \"2024-10\",\n        \"precision\": \"month\"\n      },\n      \"announcementDate\": {\n        \"value\": \"2024-09-29\",\n        \"precision\": \"day\"\n      },\n      \"plannedDate\": {\n        \"value\": \"2024-10-10\",\n        \"precision\": \"day\"\n      },\n      \"status\": \"confirmed\",\n      \"importance\": \"major\",\n      \"memberIds\": [],\n      \"workIds\": [\n        \"rec28ldfRTrGIk\"\n      ],\n      \"releaseKey\": \"bewave:be-your-wave\",\n      \"relatedEventIds\": [],\n      \"sources\": [\n        {\n          \"id\": \"es-6bd3d43927b3e7d6\",\n          \"url\": \"https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/66f96c06f462384b21a6a8e6\",\n          \"publisher\": \"BEWAVE / GOLDDUST ENTERTAINMENT\",\n          \"title\": \"Be your Wave Concept Photo2官方发行计划\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2024-09-29\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"最小本地原文摘录；不重抓、不更新旧核验日。\",\n          \"evidenceRef\": \"evidence/inherited/E/task05/sources/reused/bewave-announcement.json\"\n        },\n        {\n          \"id\": \"es-50d96139cc968197\",\n          \"url\": \"https://m.etnews.com/20241010000406\",\n          \"publisher\": \"전자신문（原始showcase现场采访）\",\n          \"title\": \"BEWAVE Be your Wave回归现场\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2024-10-10\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"支持回归showcase已举行及当天音源发行计划；精确音源实际日仍需限定。\",\n          \"evidenceRef\": \"evidence/inherited/E/task05/sources/bewave-comeback-interview.json\"\n        },\n        {\n          \"id\": \"es-13d7ff47d6230cc6\",\n          \"url\": \"https://music.bugs.co.kr/album/4108284\",\n          \"publisher\": \"Bugs\",\n          \"title\": \"Be your Wave / BEWAVE — Bugs\",\n          \"sourcePublishedAt\": null,\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"复用D原始成功收据；目录日期单独不成为实际发行。若与本轮原始实际发行正文合用，逐事件说明。\",\n          \"evidenceRef\": \"evidence/inherited/E/task05/sources/reused/bewave-beyour-catalogue.json\"\n        },\n        {\n          \"id\": \"fs05-bewave-two-release-retrospective\",\n          \"url\": \"https://www.tenasia.co.kr/article/2025090543554\",\n          \"publisher\": \"텐아시아 / 김지원\",\n          \"title\": \"[공식] 데뷔 1년 반 만에 절반이 탈퇴…비웨이브, 6명→3명 개편\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2025-09-05\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"专业媒体事后回顾2024-04出道及2024-10首单已发行；本片只取发行事实，19blocked成员变化单元与原计划节点不作实际成员离开推断。\",\n          \"evidenceRef\": \"evidence/task05/evidence/bewave-two-release-retrospective.json\"\n        }\n      ],\n      \"reviewStatus\": \"ready\",\n      \"holdReasons\": []\n    },\n    {\n      \"id\": \"e-bewave-six-member-phase-end-announcement\",\n      \"groupId\": \"rec28ldfRTiDh1\",\n      \"eventType\": \"member_departure\",\n      \"title\": \"公告线索：结束六人活动阶段并重整阵容\",\n      \"summary\": \"报道指向2025年9月4日公司公告：计划10月31日结束六人活动阶段，其后以三人继续，另三人准备新团。\",\n      \"scopeNote\": \"不将媒体拼写错误绑定稳定成员ID，memberIds=[]；新团没有现成groupId，不创ID。\",\n      \"eventDate\": null,\n      \"announcementDate\": {\n        \"value\": \"2025-09-04\",\n        \"precision\": \"day\"\n      },\n      \"plannedDate\": {\n        \"value\": \"2025-10-31\",\n        \"precision\": \"day\"\n      },\n      \"status\": \"announced\",\n      \"importance\": \"major\",\n      \"memberIds\": [],\n      \"workIds\": [],\n      \"releaseKey\": null,\n      \"relatedEventIds\": [],\n      \"sources\": [\n        {\n          \"id\": \"es-db45bc6aa8c46ce7\",\n          \"url\": \"https://revistakoreain.com.br/2025/09/bewave-anuncia-mudancas-na-formacao-do-grupo/\",\n          \"publisher\": \"Revista KoreaIN（二手公告翻译，仅线索）\",\n          \"title\": \"BEWAVE阵容调整报道\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2025-09-18\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"只能保留hold/缺口，不把二手翻译升格直接公告；不推断计划实际执行或身份拼写。\",\n          \"evidenceRef\": \"evidence/E/task05/sources/bewave-restructure-lead.json\"\n        }\n      ],\n      \"reviewStatus\": \"hold\",\n      \"holdReasons\": [\n        \"只取得二手翻译正文；官方X原帖打开空白。\",\n        \"无独立原文证明计划实际生效；不填实际退团日，不把重整当解散或换公司。\"\n      ]\n    }\n  ],\n  \"gaps\": [\n    \"2024年4月出道有原始采访，4月17日精确日仍未从独立直接公告确认。\",\n    \"Be your Wave仅就公告计划ready；showcase报道发布时间早于当晚音源公开，未用时间经过替实际履行。\",\n    \"六人阶段重整公告仅二手正文，官方X0行；2025-10-31计划不得标实际退团或解散。\",\n    \"二手韩文全文存在지연/은솔/고은拼写差异，不直接绑定成员ID；新团计划不创业务ID。\",\n    \"新成员加入、解散、经纪公司变化无合格直接公告；保留unknown。\",\n    \"两个主要发行精确实际日未新证，保留月精度；原目录4月17日、10月10日仅索引。\",\n    \"六人活动结束/重组旧hold保留；不重试X公告空正文或Bstage失败路径。\"\n  ]\n}\n",
+      "expectedBeforeFileSha256": "cfed63175dbcf2be685f67c94f5511235e8e1000eff880942e1ecd8d2eab7565",
+      "expectedBeforeSha256Canonical": "d1f54e24b0d777b10aaf4587ad82d27090000f6cbf6928439f10c49cac0c0147",
+      "allowedEventFields": [
+        "summary",
+        "scopeNote",
+        "sources",
+        "holdReasons"
+      ],
+      "allowedRootFields": [
+        "gaps"
+      ],
+      "proposedAfterFileSha256": "3ea86955021317aadf87bb6c8d569d9852b365a16500d323b2cf8c090b2b916d",
+      "proposedAfterSha256Canonical": "6671300222345d7caf5ce6fc433b51c923e82e271ba463faa127e1703c63dc12"
+    },
+    {
+      "slug": "geenius",
+      "eventId": "e-geenius-spoiler-book-instrumental",
+      "sourceFile": "apps/idol-site/data/artist-timelines/geenius.json",
+      "expectedBeforeText": "{\n  \"schemaVersion\": 1,\n  \"groupId\": \"rec28ldfRTiDxx\",\n  \"slug\": \"geenius\",\n  \"events\": [\n    {\n      \"id\": \"e-geenius-official-debut\",\n      \"groupId\": \"rec28ldfRTiDxx\",\n      \"eventType\": \"debut\",\n      \"title\": \"以《Voyage》出道\",\n      \"summary\": \"Geenius于2024年1月5日以首支单曲《Voyage》出道。\",\n      \"scopeNote\": \"本批新取得专业原报道明确事后出道日，与原始当日报道交叉；沿用旧稳定ID及真实作品ID。旧公司合同、成员身份变化仍不据此核定。\",\n      \"eventDate\": {\n        \"value\": \"2024-01-05\",\n        \"precision\": \"day\"\n      },\n      \"announcementDate\": null,\n      \"plannedDate\": null,\n      \"status\": \"confirmed\",\n      \"importance\": \"major\",\n      \"memberIds\": [],\n      \"workIds\": [\n        \"rec28ldfRTrPmh\"\n      ],\n      \"releaseKey\": \"geenius:voyage\",\n      \"relatedEventIds\": [],\n      \"sources\": [\n        {\n          \"id\": \"f06-geenius-kraze-retrospective\",\n          \"url\": \"https://thekrazemag.com/latest-updates/2026/5/26/how-geenius-markets-their-first-full-album-through-games\",\n          \"publisher\": \"The Kraze / Jacob Aron Leung\",\n          \"title\": \"How Geenius Markets Their First Full Album Through Games\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2026-05-26\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"专业媒体可独立支持影像已公开和itch项目身份；1月5日年份未直接给出，故不赋实际完整日期。\",\n          \"evidenceRef\": \"evidence/task06/evidence/geenius-kraze-retrospective.json\"\n        },\n        {\n          \"id\": \"f06-geenius-voyage-day\",\n          \"url\": \"https://www.etnews.com/20240105000098\",\n          \"publisher\": \"电子新闻 / 洪恩惠\",\n          \"title\": \"지니어스, Voyage 발매→뮤직뱅크 출격…K팝 新 바람\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2024-01-05\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"专业原报道当日已过正午；与The Kraze明确事后出道日和基线已发音乐载体交叉，补精确日。\",\n          \"evidenceRef\": \"evidence/task06/evidence/geenius-voyage-day.json\"\n        }\n      ],\n      \"reviewStatus\": \"ready\",\n      \"holdReasons\": []\n    },\n    {\n      \"id\": \"e-geenius-ily-interactive-video\",\n      \"groupId\": \"rec28ldfRTiDxx\",\n      \"eventType\": \"release\",\n      \"title\": \"公开《I.L.Y》互动音乐影像\",\n      \"summary\": \"Geenius公开《I.L.Y》五个成员视角的互动音乐影像，作为完整专辑的预览项目。\",\n      \"scopeNote\": \"专业原文明确团体上传I.L.Y互动影像并直接链接itch项目，补足原身份关联。保持supporting；不是五次独立音乐发行，也不证明完整人声专辑已发；五个业务视频记录逐条版本对应仍不强绑。 原报道仅明确1月5日，未直接给该影像年份，故实际eventDate=null，不由文章2026年发布日期补成年。\",\n      \"eventDate\": null,\n      \"announcementDate\": null,\n      \"plannedDate\": null,\n      \"status\": \"confirmed\",\n      \"importance\": \"supporting\",\n      \"memberIds\": [],\n      \"workIds\": [],\n      \"releaseKey\": \"geenius:ily-interactive\",\n      \"relatedEventIds\": [],\n      \"sources\": [\n        {\n          \"id\": \"f06-geenius-kraze-retrospective\",\n          \"url\": \"https://thekrazemag.com/latest-updates/2026/5/26/how-geenius-markets-their-first-full-album-through-games\",\n          \"publisher\": \"The Kraze / Jacob Aron Leung\",\n          \"title\": \"How Geenius Markets Their First Full Album Through Games\",\n          \"sourcePublishedAt\": {\n            \"value\": \"2026-05-26\",\n            \"precision\": \"day\"\n          },\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"专业媒体可独立支持影像已公开和itch项目身份；1月5日年份未直接给出，故不赋实际完整日期。\",\n          \"evidenceRef\": \"evidence/task06/evidence/geenius-kraze-retrospective.json\"\n        }\n      ],\n      \"reviewStatus\": \"ready\",\n      \"holdReasons\": []\n    },\n    {\n      \"id\": \"e-geenius-spoiler-book-instrumental\",\n      \"groupId\": \"rec28ldfRTiDxx\",\n      \"eventType\": \"release\",\n      \"title\": \"《Spoiler Book》器乐预公开载体候选\",\n      \"summary\": \"零售产品说明将Spoiler Book限定为QR器乐预公开；完整人声专辑仍称未来公开。\",\n      \"scopeNote\": \"产品页明确不含CD；不与完整人声Love Don’t Change合并，不把未来完整专辑视为已经发行。\",\n      \"eventDate\": null,\n      \"announcementDate\": null,\n      \"plannedDate\": null,\n      \"status\": \"uncertain\",\n      \"importance\": \"major\",\n      \"memberIds\": [],\n      \"workIds\": [],\n      \"releaseKey\": \"geenius:spoiler-book-instrumental\",\n      \"relatedEventIds\": [],\n      \"sources\": [\n        {\n          \"id\": \"es-ba4baa1d6876fea5\",\n          \"url\": \"https://www.yes24.com/product/goods/170657075\",\n          \"publisher\": \"YES24 / COPAN GLOBAL・HOMe商品说明\",\n          \"title\": \"Geenius Spoiler Book QR instrumental产品页\",\n          \"sourcePublishedAt\": null,\n          \"checkedAt\": \"2026-10-16\",\n          \"scopeNote\": \"目录日期仅hold；不能把器乐Spoiler Book当完整人声Love Don’t Change实际发行。\",\n          \"evidenceRef\": \"evidence/E/task05/sources/geenius-spoiler-retail.json\"\n        }\n      ],\n      \"reviewStatus\": \"hold\",\n      \"holdReasons\": [\n        \"2026-01-15仅为零售发行栏，缺公司实际发行原文。\"\n      ]\n    }\n  ],\n  \"gaps\": [\n    \"Voyage出道/发行精确日依旧目录及预告报道；旧官方网页最小片段没有保存正文，不能用本轮搜索摘要重造。\",\n    \"I.L.Y互动站的官方归属尚未建立，五版本合一次内容候选，不绑定成员或五次发行。\",\n    \"Spoiler Book是QR器乐预公开载体，不是完整人声Love Don’t Change；2026-01-15零售日期hold。\",\n    \"旧Blockberry练习生合约结束→sure place/HOMe的说法仅媒体转述，没有直接原合同/声明，agency_change blocked。\",\n    \"官方NOTICE页成功但无可读条目；无条目不证明没有退出、解散或后续活动。\",\n    \"完整人声Love don’t change日期及实际完整发行仍未知；不可沿用粉丝目录错误2026-01-15为正式人声首专。\",\n    \"Spoiler Book继续hold；I.L.Y五个已存业务视频不在缺乏逐条读取时强绑成员或作品ID。\",\n    \"Geenius旧官方社交账号与Steam原文拒绝记录保留；本次未重试也未开Steam社区/SteamDB镜像绕过。\"\n  ]\n}\n",
+      "expectedBeforeFileSha256": "6827b5a3cbaa18a718854729a86b571b085f1d3251f139e3c21950571b242421",
+      "expectedBeforeSha256Canonical": "5373426c7c319c873e265c14b6bb152859fe66c06f0790a18696c0d812ca292a",
+      "allowedEventFields": [
+        "summary",
+        "scopeNote",
+        "sources",
+        "holdReasons"
+      ],
+      "allowedRootFields": [
+        "gaps"
+      ],
+      "proposedAfterFileSha256": "537016f582305ff38612ede157b2d1ff75b18ad39a2947284c37f718c1220a23",
+      "proposedAfterSha256Canonical": "ba9e6ba7afa4ce41550b96b7623256100d871f4a6ba8343241519558aef5ec6d"
+    }
+  ],
+  "reported": {
+    "sourceFile": "apps/idol-site/data/timeline-reported-records.json",
+    "expectedBefore": {
+      "schemaVersion": 1,
+      "checkedAt": "2026-10-27",
+      "scope": "User-approved public reporting layer. Canonical facts remain hold; record dates are never effective dates.",
+      "records": [
+        {
+          "eventId": "e-atheart-aurora-hiatus-observed",
+          "slug": "atheart",
+          "groupId": "rec28ldfRTiEaV",
+          "memberIds": [
+            "recvxAPQCFJ093"
+          ],
+          "kind": "report",
+          "recordDate": "2026-03-13",
+          "dateLabel": "采访报道日期",
+          "eventDate": null,
+          "title": "报道记录：Aurora此前未参与出道活动",
+          "summary": "团体原始访谈的背景说明提到，Aurora当时未参与出道专辑活动。这里只记录报道所述的历史情况，不代表当前活动状态。",
+          "boundary": "生效日期未确认；首次暂停的起始日、结束日均未由这篇访谈确定。",
+          "sources": [
+            {
+              "url": "https://m.nocutnews.co.kr/news/amp/6484186",
+              "label": "CBS NoCut News · 原始访谈",
+              "publishedDate": "2026-03-13"
+            }
+          ],
+          "legacyNativeIds": []
+        },
+        {
+          "eventId": "e-atheart-aurora-second-hiatus-announcement",
+          "slug": "atheart",
+          "groupId": "rec28ldfRTiEaV",
+          "memberIds": [],
+          "kind": "report",
+          "recordDate": "2026-08-18",
+          "dateLabel": "媒体报道日期",
+          "eventDate": null,
+          "title": "报道记录：Aurora再次暂停团队活动",
+          "summary": "Soompi报道引述公司关于再次暂停活动的说明。直接公司公告正文尚未取得，这里保留为媒体报道记录。",
+          "boundary": "生效日期未确认；报道日期不等于实际暂停起始日。",
+          "sources": [
+            {
+              "url": "https://www.soompi.com/article/1863734wpp/athearts-aurora-to-go-on-hiatus-due-to-health-just-2-months-after-return",
+              "label": "Soompi · 公告转载报道",
+              "publishedDate": "2026-08-18"
+            }
+          ],
+          "legacyNativeIds": []
+        },
+        {
+          "eventId": "e-bewave-six-member-phase-end-announcement",
+          "slug": "bewave",
+          "groupId": "rec28ldfRTiDh1",
+          "memberIds": [],
+          "kind": "report",
+          "recordDate": "2025-09-04",
+          "dateLabel": "媒体报道日期",
+          "eventDate": null,
+          "title": "报道记录：BEWAVE六人活动阶段调整计划",
+          "summary": "韩国原始报道刊载公司说明：计划于10月31日结束六人活动阶段，其后重整阵容。这里只记录当时公布的计划，不将计划视为已经执行。",
+          "boundary": "生效日期未确认；不据此认定实际离队、解散或新团成立，也不新增成员关联。",
+          "sources": [
+            {
+              "url": "https://isplus.com/article/view/isp202509040238",
+              "label": "日刊体育 · 公司声明报道",
+              "publishedDate": "2025-09-04"
+            }
+          ],
+          "legacyNativeIds": []
+        },
+        {
+          "eventId": "e-candyshop-yuina-hiatus-announcement",
+          "slug": "candyshop",
+          "groupId": "rec28ldfRTiDlb",
+          "memberIds": [
+            "recvxAPQCFyiww"
+          ],
+          "kind": "report",
+          "recordDate": "2024-05-09",
+          "dateLabel": "媒体报道日期",
+          "eventDate": null,
+          "title": "报道记录：YUINA暂停团体活动",
+          "summary": "媒体刊载公司声明，说明YUINA不参加之后预定行程，团体计划招募新成员。官方粉丝咖啡厅原帖位置及独立发表证据仍待核对。",
+          "boundary": "生效日期未确认；这不是退团公告，不从官网名册变化推定退出。",
+          "sources": [
+            {
+              "url": "https://www.starnewskorea.com/music/2024/05/09/2024050908033147420",
+              "label": "Star News · 公司声明报道",
+              "publishedDate": "2024-05-09"
+            }
+          ],
+          "legacyNativeIds": [
+            "e-candyshop-yuina-hiatus-report"
+          ]
+        },
+        {
+          "eventId": "e-geenius-spoiler-book-instrumental",
+          "slug": "geenius",
+          "groupId": "rec28ldfRTiDxx",
+          "memberIds": [],
+          "kind": "catalog",
+          "recordDate": "2026-01-15",
+          "dateLabel": "零售目录标示日期",
+          "eventDate": null,
+          "title": "目录记录：《Spoiler Book》QR器乐载体",
+          "summary": "YES24产品页列出QR形式的器乐预公开载体，不含CD。页面标示2026年1月15日；这仅作为零售目录信息，不等于已核实的实际发行日。",
+          "boundary": "生效日期未确认；不把本条写成完整人声专辑《Love Don’t Change》正式发行。",
+          "sources": [
+            {
+              "url": "https://www.yes24.com/product/goods/170657075",
+              "label": "YES24 · QR器乐产品目录",
+              "publishedDate": null
+            }
+          ],
+          "legacyNativeIds": []
+        },
+        {
+          "eventId": "e-udtt-jessica-provisional-join-candidate",
+          "slug": "udtt",
+          "groupId": "rec28ldfRTiDPs",
+          "memberIds": [],
+          "kind": "report",
+          "recordDate": "2025-05-08",
+          "dateLabel": "本人采访发表日期",
+          "eventDate": null,
+          "title": "采访与报道记录：Jessica／陆雨婷参与UDTT活动",
+          "summary": "本人在采访中以Jessica发言，自称陆雨婷，活动名为우정。次日Sports Donga报道以“留学生成员”介绍其参与；这一称谓不等于已核实的临时或永久合同身份。",
+          "boundary": "生效日期未确认；具体加入日期与加入性质尚未核实。保留原有独立成员记录，不合并身份或个人历史。",
+          "sources": [
+            {
+              "url": "https://www.hellokpop.com/interview/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview/",
+              "label": "Hellokpop · 本人采访（2025-05-08）",
+              "publishedDate": "2025-05-08"
+            },
+            {
+              "url": "https://sports.donga.com/ent/article/all/20250509/131571164/1",
+              "label": "Sports Donga · 参与报道（2025-05-09）",
+              "publishedDate": "2025-05-09"
+            }
+          ],
+          "legacyNativeIds": []
+        },
+        {
+          "eventId": "e-udtt-sena-predebut-departure-candidate",
+          "slug": "udtt",
+          "groupId": "rec28ldfRTiDPs",
+          "memberIds": [],
+          "kind": "repost",
+          "recordDate": null,
+          "dateLabel": "原始发布日期未核实",
+          "eventDate": null,
+          "title": "转载线索记录：Sena出道前离开",
+          "summary": "社区资料转述Sena在正式出道前离开。这里只保留转载线索，不作为公司或本人声明已核实的证明；旧主办方原稿链接本次已无法读取。",
+          "boundary": "生效日期未确认；不把原稿发表日或团体出道日当作离开日期，不创建或猜测成员ID。",
+          "sources": [
+            {
+              "url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+              "label": "KProfiles社区讨论 · 仅转载线索",
+              "publishedDate": null
+            }
+          ],
+          "legacyNativeIds": []
+        }
+      ]
+    },
+    "expectedBeforeSha256Canonical": "5400ed1cfefbd9c94d464b7e3facbea3cc8939ea5824eaac470eefe14c37e301",
+    "proposedAfterSha256Canonical": "04cf6d09a17e5b05abf67b198fa05236debb1d4a0c0a98cbe346ab6e62c5d92a",
+    "allowedRecordFields": [
+      "summary",
+      "notes",
+      "sources"
+    ]
+  },
+  "statistics": {
+    "sourceFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+    "key": "triples.sales",
+    "expectedBefore": {
+      "observedValue": 2092239,
+      "displayValue": 2092239,
+      "status": "observed",
+      "unit": "张",
+      "title": "已公开累计",
+      "scope": "tripleS及该来源归入tripleS的子团韩国Circle公开月榜36行，加2024年Performante Cosmo与2025年ASSEMBLE25 Cosmo同年同版年榜替换修正；截至2026-06的来源覆盖下界，不是全球完整累计。",
+      "asOf": "2026-06",
+      "checkedAt": "2026-10-28",
+      "sourceUrl": "https://soridata.com/sales/TripleS.html",
+      "sourceTitle": "Soridata · Circle公开累计",
+      "sources": [
+        {
+          "url": "https://soridata.com/sales/TripleS.html",
+          "title": "Soridata · Circle公开累计",
+          "sourceDate": "2026-06",
+          "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+          "kind": "third-party-public"
+        },
+        {
+          "url": "https://www.ptt.cc/bbs/KoreanPop/M.1736512580.A.BEF.html",
+          "title": "performante-annual-2024 · Circle榜单具名转录/报道",
+          "sourceDate": "2024",
+          "checkedAt": "2026-10-28",
+          "kind": "third-party-public",
+          "access": "full-page-read",
+          "sha256": "04b9cdebf043937767a2fbb70ceab77c755d8b402c484c913ec2daf033e2da37"
+        },
+        {
+          "url": "https://www.ptt.cc/bbs/KoreanPop/M.1730996662.A.A38.html",
+          "title": "performante-month-2024-10 · Circle榜单具名转录/报道",
+          "sourceDate": "2024-10",
+          "checkedAt": "2026-10-28",
+          "kind": "third-party-public",
+          "access": "full-page-read",
+          "sha256": "2db36aebbfb4dbe300369826a09777af18631c93301622d51a2ea4e95a6d4722"
+        },
+        {
+          "url": "https://www.ptt.cc/bbs/KoreanPop/M.1738853569.A.FCB.html",
+          "title": "assemble24-month-2025-01 · Circle榜单具名转录/报道",
+          "sourceDate": "2025-01",
+          "checkedAt": "2026-10-28",
+          "kind": "third-party-public",
+          "access": "full-page-read",
+          "sha256": "3a154738e9cc72fae8b351300342a09e1fc1776ba45a8bc418104de69b05e0bc"
+        },
+        {
+          "url": "https://www.ptt.cc/bbs/KoreanPop/M.1749743919.A.6DE.html",
+          "title": "assemble25-month-2025-05 · Circle榜单具名转录/报道",
+          "sourceDate": "2025-05",
+          "checkedAt": "2026-10-28",
+          "kind": "third-party-public",
+          "access": "full-page-read",
+          "sha256": "99dc28a3cf620d7ba08fd8f4b04d0da202d2e1d7be16cd88f2e06d74962c5253"
+        },
+        {
+          "url": "https://www.ptt.cc/bbs/KoreanPop/M.1758213746.A.F94.html",
+          "title": "assemble25-month-2025-08 · Circle榜单具名转录/报道",
+          "sourceDate": "2025-08",
+          "checkedAt": "2026-10-28",
+          "kind": "third-party-public",
+          "access": "full-page-read",
+          "sha256": "c7bf15caa67695317d11412743d462dce0bffa81b2bc75c3f3018fe5140bca4c"
+        },
+        {
+          "url": "https://www.ptt.cc/bbs/KoreanPop/M.1760535210.A.F46.html",
+          "title": "assemble25-month-2025-09 · Circle榜单具名转录/报道",
+          "sourceDate": "2025-09",
+          "checkedAt": "2026-10-28",
+          "kind": "third-party-public",
+          "access": "full-page-read",
+          "sha256": "b9422004ce82513b93249b586e3e1f4f2076249fd8afc5cb04ea6dfbee73c1af"
+        },
+        {
+          "url": "https://www.ptt.cc/bbs/KoreanPop/M.1766068117.A.F25.html",
+          "title": "assemble25-month-2025-11 · Circle榜单具名转录/报道",
+          "sourceDate": "2025-11",
+          "checkedAt": "2026-10-28",
+          "kind": "third-party-public",
+          "access": "full-page-read",
+          "sha256": "a58e0a662ff61f8dba985bee83cb7c63d4811af66862239be4ee73f5f2c2b1ef"
+        },
+        {
+          "url": "https://www.soompi.com/article/1812104wpp/circle",
+          "title": "cosmo-annual-2025 · Circle榜单具名转录/报道",
+          "sourceDate": "2025",
+          "checkedAt": "2026-10-28",
+          "kind": "third-party-public",
+          "access": "full-page-read",
+          "sha256": "1096bd7f09724d991a02e2e1fef806a9521cb0e10e80b88fc85dd56b8f434d33"
+        },
+        {
+          "url": "https://circlechart.kr/page_chart/album.circle?hitYear=2024&nationGbn=T&targetTime=2024&termGbn=year&yearTime=3",
+          "title": "Performante Cosmo · Circle 2024年榜官方索引",
+          "sourceDate": "2024",
+          "checkedAt": "2026-10-28",
+          "kind": "primary-chart",
+          "access": "search-index-only"
+        },
+        {
+          "url": "https://circlechart.kr/page_chart/album.circle?hitYear=2025&nationGbn=T&targetTime=11&termGbn=month&yearTime=3",
+          "title": "ASSEMBLE25 Cosmo · Circle 2025年11月官方索引",
+          "sourceDate": "2025-11",
+          "checkedAt": "2026-10-28",
+          "kind": "primary-chart",
+          "access": "search-index-only"
+        }
+      ],
+      "notes": [
+        "显示值为可核查的公开累计下限，不是全球完整累计；未加总Circle与Hanteo以免重复。",
+        "来源未公布精确截至日时asOf保持null；checkedAt不能解释为销量统计截至日。",
+        "历史基线（2026-10-25）：艺人汇总页2,458,789+与本轮可见36行月表2,087,073不一致；采用可复算下限，差额371,716未解释，不将差异标为彻底解决。",
+        "2026-10-28逐版复算：2024年Performante Cosmo年榜289,224替换同年月和286,809（+2,415）；2025年ASSEMBLE25 Cosmo年榜406,744替换同年月和403,993（+2,751），净修正+5,166，累计2,092,239。36条原月行保留，不把年榜重复相加。",
+        "5/8/9/11月的ASSEMBLE25完整标题、Cosmo版本及各月数量已由可读具名月榜转录核对；2025年1月9,888为ASSEMBLE24 Cosmo，保持独立。Performante标准版、ASSEMBLE25标准/WITHVUU及Beyond Beauty跨年记录均未并入这两项年榜。",
+        "与已保存的艺人汇总2,458,789仍差366,550，来源差异继续开放。该汇总本轮未重新访问；不得将局部修正写成全团累计已完整闭合，也不混加日本、Hanteo或Retail。",
+        "年榜及月榜依据可读第三方Circle转录/报道；2024年榜与2025年11月有官方搜索索引交叉核对。官方直读仅返回页面框架，不宣称完整官方榜已读取。"
+      ],
+      "evidence": {
+        "kind": "public-cumulative-lower-bound",
+        "lowerBound": true,
+        "replacedStatus": "conflict",
+        "previousEvidence": {
+          "reportedTotal": 2124086,
+          "albumRows": 10,
+          "albumRowSum": 2123697,
+          "yearRows": [
+            {
+              "year": 2022,
+              "value": 26063
+            },
+            {
+              "year": 2023,
+              "value": 157447
+            },
+            {
+              "year": 2024,
+              "value": 547232
+            },
+            {
+              "year": 2025,
+              "value": 854088
+            },
+            {
+              "year": 2026,
+              "value": 558585
+            }
+          ],
+          "yearRowSum": 2143415,
+          "japaneseReportedTotal": 19539
+        },
+        "monthRows": [
+          {
+            "year": 2026,
+            "month": 6,
+            "sales": 431030,
+            "album": "pt.1 (Cosmo)"
+          },
+          {
+            "year": 2026,
+            "month": 6,
+            "sales": 45375,
+            "album": "pt.1"
+          },
+          {
+            "year": 2026,
+            "month": 6,
+            "sales": 40000,
+            "album": "pt.1 (뮤지콘)"
+          },
+          {
+            "year": 2026,
+            "month": 3,
+            "sales": 16587,
+            "album": "msnz (Cosmo)"
+          },
+          {
+            "year": 2026,
+            "month": 2,
+            "sales": 14476,
+            "album": "msnz (Cosmo)"
+          },
+          {
+            "year": 2026,
+            "month": 1,
+            "sales": 6660,
+            "album": "msnz (Cosmo)"
+          },
+          {
+            "year": 2025,
+            "month": 12,
+            "sales": 36746,
+            "album": "msnz (Cosmo)"
+          },
+          {
+            "year": 2025,
+            "month": 11,
+            "sales": 273527,
+            "album": "msnz (Cosmo)"
+          },
+          {
+            "year": 2025,
+            "month": 11,
+            "sales": 28728,
+            "album": "msnz"
+          },
+          {
+            "year": 2025,
+            "month": 11,
+            "sales": 22316,
+            "album": "(Cosmo)"
+          },
+          {
+            "year": 2025,
+            "month": 9,
+            "sales": 15127,
+            "album": "(Cosmo)"
+          },
+          {
+            "year": 2025,
+            "month": 8,
+            "sales": 15134,
+            "album": "(Cosmo)"
+          },
+          {
+            "year": 2025,
+            "month": 5,
+            "sales": 351416,
+            "album": "(Cosmo)"
+          },
+          {
+            "year": 2025,
+            "month": 5,
+            "sales": 42124,
+            "album": ""
+          },
+          {
+            "year": 2025,
+            "month": 5,
+            "sales": 10000,
+            "album": "(WITHVUU)"
+          },
+          {
+            "year": 2025,
+            "month": 2,
+            "sales": 6883,
+            "album": "Acid Angel from Asia < ACCESS > (Cosmo)"
+          },
+          {
+            "year": 2025,
+            "month": 1,
+            "sales": 9888,
+            "album": "(Cosmo)"
+          },
+          {
+            "year": 2025,
+            "month": 1,
+            "sales": 6378,
+            "album": "LOVElution < ↀ > (Cosmo)"
+          },
+          {
+            "year": 2025,
+            "month": 1,
+            "sales": 6084,
+            "album": "EVOLution <⟡> (Cosmo)"
+          },
+          {
+            "year": 2025,
+            "month": 1,
+            "sales": 4655,
+            "album": "+(KR)ystal Eyes (Cosmo)"
+          },
+          {
+            "year": 2024,
+            "month": 10,
+            "sales": 286809,
+            "album": "Visionary Vision (Cosmo)"
+          },
+          {
+            "year": 2024,
+            "month": 10,
+            "sales": 41362,
+            "album": "Visionary Vision"
+          },
+          {
+            "year": 2024,
+            "month": 9,
+            "sales": 5907,
+            "album": ""
+          },
+          {
+            "year": 2024,
+            "month": 8,
+            "sales": 11512,
+            "album": "(뮤지콘)"
+          },
+          {
+            "year": 2024,
+            "month": 8,
+            "sales": 6781,
+            "album": ""
+          },
+          {
+            "year": 2024,
+            "month": 7,
+            "sales": 20408,
+            "album": "(뮤지콘)"
+          },
+          {
+            "year": 2024,
+            "month": 7,
+            "sales": 7398,
+            "album": ""
+          },
+          {
+            "year": 2024,
+            "month": 6,
+            "sales": 8125,
+            "album": ""
+          },
+          {
+            "year": 2024,
+            "month": 5,
+            "sales": 100000,
+            "album": "(뮤지콘)"
+          },
+          {
+            "year": 2024,
+            "month": 5,
+            "sales": 41590,
+            "album": ""
+          },
+          {
+            "year": 2023,
+            "month": 10,
+            "sales": 25728,
+            "album": "EVOLution <⟡>"
+          },
+          {
+            "year": 2023,
+            "month": 8,
+            "sales": 28647,
+            "album": "LOVElution < ↀ >"
+          },
+          {
+            "year": 2023,
+            "month": 5,
+            "sales": 50574,
+            "album": "+(KR)ystal Eyes"
+          },
+          {
+            "year": 2023,
+            "month": 4,
+            "sales": 5203,
+            "album": "ASSEMBLE"
+          },
+          {
+            "year": 2023,
+            "month": 2,
+            "sales": 40221,
+            "album": "ASSEMBLE"
+          },
+          {
+            "year": 2022,
+            "month": 11,
+            "sales": 23674,
+            "album": "Acid Angel from Asia"
+          }
+        ],
+        "recomputedSum": 2092239,
+        "monthlyRecomputedSum": 2087073,
+        "annualReplacements": [
+          {
+            "year": 2024,
+            "album": "Visionary Vision <Performante> (Cosmo)",
+            "annual": 289224,
+            "rank": 81,
+            "primary": "https://circlechart.kr/page_chart/album.circle?hitYear=2024&nationGbn=T&targetTime=2024&termGbn=year&yearTime=3",
+            "readable": "https://www.ptt.cc/bbs/KoreanPop/M.1736512580.A.BEF.html",
+            "replacedMonthlyRows": [
+              {
+                "rowIndex": 20,
+                "year": 2024,
+                "month": 10,
+                "sales": 286809,
+                "album": "Visionary Vision (Cosmo)"
+              }
+            ],
+            "monthlySum": 286809,
+            "delta": 2415,
+            "titleMappings": [
+              {
+                "rowIndex": 20,
+                "expectedBefore": {
+                  "year": 2024,
+                  "month": 10,
+                  "sales": 286809,
+                  "album": "Visionary Vision (Cosmo)"
+                },
+                "resolvedAlbum": "Visionary Vision <Performante> (Cosmo)",
+                "sourceId": "performante-month-2024-10",
+                "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1730996662.A.A38.html",
+                "exactSourceRow": "8 (NEW) tripleS - Visionary Vision ＜Performante＞ (Cosmo) 286,809 / 286,809",
+                "matchBasis": "same artist, chart year/month, exact sales number, full album title and Cosmo version"
+              }
+            ],
+            "sourceAccess": {
+              "primary": "search-index-only; direct annual-chart open returned shell",
+              "readable": "full-page-read; dated third-party Circle chart reproduction/report",
+              "monthly": "full-page-read; dated PTT reproductions of the exact month charts"
+            },
+            "annualSourceId": "performante-annual-2024",
+            "method": "replace same-year same-version covered monthly rows with annual total; never add annual total to those rows"
+          },
+          {
+            "year": 2025,
+            "album": "<ASSEMBLE25> (Cosmo)",
+            "annual": 406744,
+            "rank": 57,
+            "primary": "https://circlechart.kr/page_chart/album.circle?hitYear=2025&nationGbn=T&targetTime=2025&termGbn=year&yearTime=3",
+            "readable": "https://www.soompi.com/article/1812104wpp/circle",
+            "replacedMonthlyRows": [
+              {
+                "rowIndex": 9,
+                "year": 2025,
+                "month": 11,
+                "sales": 22316,
+                "album": "(Cosmo)"
+              },
+              {
+                "rowIndex": 10,
+                "year": 2025,
+                "month": 9,
+                "sales": 15127,
+                "album": "(Cosmo)"
+              },
+              {
+                "rowIndex": 11,
+                "year": 2025,
+                "month": 8,
+                "sales": 15134,
+                "album": "(Cosmo)"
+              },
+              {
+                "rowIndex": 12,
+                "year": 2025,
+                "month": 5,
+                "sales": 351416,
+                "album": "(Cosmo)"
+              }
+            ],
+            "monthlySum": 403993,
+            "delta": 2751,
+            "titleMappings": [
+              {
+                "rowIndex": 9,
+                "expectedBefore": {
+                  "year": 2025,
+                  "month": 11,
+                  "sales": 22316,
+                  "album": "(Cosmo)"
+                },
+                "resolvedAlbum": "<ASSEMBLE25> (Cosmo)",
+                "sourceId": "assemble25-month-2025-11",
+                "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1766068117.A.F25.html",
+                "exactSourceRow": "45 (NEW) tripleS ＜ASSEMBLE25＞(Cosmo) 22,316 / 406,744",
+                "matchBasis": "same artist, chart year/month, exact sales number, full album title and Cosmo version"
+              },
+              {
+                "rowIndex": 10,
+                "expectedBefore": {
+                  "year": 2025,
+                  "month": 9,
+                  "sales": 15127,
+                  "album": "(Cosmo)"
+                },
+                "resolvedAlbum": "<ASSEMBLE25> (Cosmo)",
+                "sourceId": "assemble25-month-2025-09",
+                "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1760535210.A.F46.html",
+                "exactSourceRow": "49 (↑1) tripleS ＜ASSEMBLE25＞(Cosmo) 15,127 / 384,428",
+                "matchBasis": "same artist, chart year/month, exact sales number, full album title and Cosmo version"
+              },
+              {
+                "rowIndex": 11,
+                "expectedBefore": {
+                  "year": 2025,
+                  "month": 8,
+                  "sales": 15134,
+                  "album": "(Cosmo)"
+                },
+                "resolvedAlbum": "<ASSEMBLE25> (Cosmo)",
+                "sourceId": "assemble25-month-2025-08",
+                "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1758213746.A.F94.html",
+                "exactSourceRow": "50 (↑HOT)tripleS ＜ASSEMBLE25＞ (Cosmo) 15,134 / 369,301",
+                "matchBasis": "same artist, chart year/month, exact sales number, full album title and Cosmo version"
+              },
+              {
+                "rowIndex": 12,
+                "expectedBefore": {
+                  "year": 2025,
+                  "month": 5,
+                  "sales": 351416,
+                  "album": "(Cosmo)"
+                },
+                "resolvedAlbum": "<ASSEMBLE25> (Cosmo)",
+                "sourceId": "assemble25-month-2025-05",
+                "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1749743919.A.6DE.html",
+                "exactSourceRow": "8 (NEW) tripleS ＜ASSEMBLE25＞ (Cosmo) 351,416 / 351,416",
+                "matchBasis": "same artist, chart year/month, exact sales number, full album title and Cosmo version"
+              }
+            ],
+            "sourceAccess": {
+              "primary": "2025 annual URL not read directly; dated Soompi annual report supplies the year total. Official November search index separately corroborates title/value; its direct open returned shell.",
+              "readable": "full-page-read; dated third-party Circle chart reproduction/report",
+              "monthly": "full-page-read; dated PTT reproductions of the exact month charts"
+            },
+            "annualSourceId": "cosmo-annual-2025",
+            "method": "replace same-year same-version covered monthly rows with annual total; never add annual total to those rows"
+          }
+        ],
+        "sourceDifferenceReview": {
+          "checkedAt": "2026-10-28",
+          "status": "partially-resolved",
+          "monthlySum": 2087073,
+          "annualNetAdjustment": 5166,
+          "reconciledSum": 2092239,
+          "aggregateTotal": 2458789,
+          "remainingDifference": 366550,
+          "aggregateAccess": "previously stored observation only; not fetched in this audit",
+          "reason": "Two disjoint same-year Cosmo annual replacements are verified; artist aggregate remains unexplained by 366550. No assumption about missing subunits, Japan or alternate counting systems is accepted."
+        }
+      },
+      "lowerBound": true,
+      "rawDisplay": "2,092,239+"
+    },
+    "expectedBeforeSha256Canonical": "1844749d1a99fd9c4591c6afe66e0631c38cca29679b9f82aaf7fb9f03b90cd0",
+    "proposedAfterSha256Canonical": "736ff34ed851258829fe9e6ab5c6870cff8d284fef6faefa70fb2099e4c30739",
+    "expectedBeforeDataSha256Canonical": "91f79ea02d5f32228e4a185a4e9342bb5c338ba903212c188ac8314cffd5748b",
+    "proposedAfterDataSha256Canonical": "925a0b8ccdf3852197adfa61f522d1427ad9ef8c0b718677e44b1d58ef7362b6",
+    "allowedSalesFields": [
+      "sources",
+      "notes",
+      "evidence"
+    ],
+    "allowedEvidenceFields": [
+      "officialAnnualReadback20261028"
+    ]
+  }
+}

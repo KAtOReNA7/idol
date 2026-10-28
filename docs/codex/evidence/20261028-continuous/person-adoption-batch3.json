@@ -1,0 +1,701 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T08:56:08.755781+00:00",
+  "status": "locally_imported_tests_passed_pending_root_release",
+  "authorization": "Parent approved three exact recording-only works / 15 reference slots; preserve five historical names and distinguish media reporting from first-party project pages.",
+  "baseline": {
+    "publicCreditWorks": 51,
+    "recognitionSlots": 306,
+    "uniqueOriginals": 143,
+    "absenceRules": 6,
+    "creditRecordsJsonSha256": "0bda3f83f6c02c65b71322e5969074a7d2f8500263e780d336167261c9af5329",
+    "recognitionRecordsJsonSha256": "54b15c656c2a7bd5f7476c947434bf72b81e1080c60db12ab6b0823c657c6629"
+  },
+  "after": {
+    "publicCreditWorks": 54,
+    "recognitionSlots": 321,
+    "uniqueOriginals": 153,
+    "absenceRules": 6,
+    "personEvidenceUnion": 59,
+    "remainingPersonWorks": 72
+  },
+  "items": [
+    {
+      "workId": "recvxyOz5XmFwB",
+      "videoId": "-1llaBEyOXA",
+      "groupId": "recvxyEBDZqxjD",
+      "memberIds": [
+        "recvxyICzHc0lT",
+        "recvxyICzHyGOi",
+        "recvxyICzHbVM4",
+        "recvxyICzHbJGN",
+        "recvxyICzHXdyy"
+      ],
+      "proposedCreditKind": "documented_project_lineup",
+      "namedScope": "Named recording performers only, not complete MV appearance or participant scoring.",
+      "sources": [
+        {
+          "url": "https://v.daum.net/v/20231005104011790",
+          "publisher": "MHN Sports / Jung Esther; publisher-distributed Daum copy of MostContents release statement",
+          "facts": [
+            "October 5, 2023 report directly attributes a statement to MostContents naming Yuna, Ryujin, Yeji, Lia and Chaeryeong as the singers of SUPERPOWERS.",
+            "The same statement identifies Strong Girl Nam-soon OST Part 1 and October 8 release."
+          ],
+          "scope": "named_recording_announcement",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:54:07.595222+00:00",
+          "httpStatus": 200
+        },
+        {
+          "url": "https://mostcontents.com/OST/view/447457",
+          "publisher": "MOST CONTENTS official production portfolio",
+          "facts": [
+            "Official portfolio identifies Strong Girl Nam-soon and lists track 1 SUPERPOWERS by ITZY.",
+            "The page was read through the web reader; ordinary HTTP returned 403 and was not retried."
+          ],
+          "scope": "first_party_release_identity",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:54:07.595222+00:00",
+          "accessNote": "Web reader returned source text; direct HTTP 403. No hidden player or video body read."
+        }
+      ],
+      "referenceReuse": [
+        {
+          "memberId": "recvxyICzHc0lT",
+          "stageName": "YEJI",
+          "reusedFromWorkId": "recvxyOz5X8Xwo",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5X8Xwo",
+            "videoId": "1jKnI_ib8c8",
+            "memberId": "recvxyICzHc0lT",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/itzy-331879f09feffe.png",
+            "width": 1200,
+            "height": 1500,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://www.pannchoa.com/2026/04/theqoo-itzy-motto-concept-photo-3.html",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 37,
+              "y": 0,
+              "width": 1125,
+              "height": 1500
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "itzy-motto-concept3-202604"
+          },
+          "sha256": "331879f09feffee0bcdee350ade2673adacb6b8aa900f00ff54ad359c55fdccd",
+          "bytes": 2475454,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "The Pannchoa article explicitly labels the image section Yeji; the selected full image is the first photo under that name.",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHyGOi",
+          "stageName": "LIA",
+          "reusedFromWorkId": "recvxyOz5X8Xwo",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5X8Xwo",
+            "videoId": "1jKnI_ib8c8",
+            "memberId": "recvxyICzHyGOi",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/itzy-9890cfe55b1edd.png",
+            "width": 1200,
+            "height": 1500,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://www.pannchoa.com/2026/04/theqoo-itzy-motto-concept-photo-3.html",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 37,
+              "y": 0,
+              "width": 1125,
+              "height": 1500
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "itzy-motto-concept3-202604"
+          },
+          "sha256": "9890cfe55b1edd73b69a33294bcd0c0e3d862c6cfc9f7dba7dfbcc49140a5119",
+          "bytes": 2732792,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "The Pannchoa article explicitly labels the image section Lia; the selected full image is the first photo under that name.",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHbVM4",
+          "stageName": "RYUJIN",
+          "reusedFromWorkId": "recvxyOz5X8Xwo",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5X8Xwo",
+            "videoId": "1jKnI_ib8c8",
+            "memberId": "recvxyICzHbVM4",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/itzy-be1f83687f7ec9.png",
+            "width": 1200,
+            "height": 1500,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://www.pannchoa.com/2026/04/theqoo-itzy-motto-concept-photo-3.html",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 37,
+              "y": 0,
+              "width": 1125,
+              "height": 1500
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "itzy-motto-concept3-202604"
+          },
+          "sha256": "be1f83687f7ec9914cec6ceaa5a3bf7894774a3003ceecc5ae3c626740bf2e44",
+          "bytes": 2465881,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "The Pannchoa article explicitly labels the image section Ryujin; the selected full image is the first photo under that name.",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHbJGN",
+          "stageName": "CHAERYEONG",
+          "reusedFromWorkId": "recvxyOz5X8Xwo",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5X8Xwo",
+            "videoId": "1jKnI_ib8c8",
+            "memberId": "recvxyICzHbJGN",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/itzy-f7fcca5dd236a5.png",
+            "width": 1080,
+            "height": 1350,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://www.pannchoa.com/2026/04/theqoo-itzy-motto-concept-photo-3.html",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 34,
+              "y": 0,
+              "width": 1011,
+              "height": 1348
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "itzy-motto-concept3-202604"
+          },
+          "sha256": "f7fcca5dd236a50e0d1fbe8e89e4b309c4f316d6be399fa5caf2e6e52d7fa564",
+          "bytes": 1677269,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "The Pannchoa article explicitly labels the image section Chaeryeong; the selected full image is the first photo under that name.",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHXdyy",
+          "stageName": "YUNA",
+          "reusedFromWorkId": "recvxyOz5X8Xwo",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5X8Xwo",
+            "videoId": "1jKnI_ib8c8",
+            "memberId": "recvxyICzHXdyy",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/itzy-79db510d111132.png",
+            "width": 1200,
+            "height": 1500,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://www.pannchoa.com/2026/04/theqoo-itzy-motto-concept-photo-3.html",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 37,
+              "y": 0,
+              "width": 1125,
+              "height": 1500
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "itzy-motto-concept3-202604"
+          },
+          "sha256": "79db510d111132f92c6cf17b62994f41a29794cadfe1851169e23ae96744b707",
+          "bytes": 2625630,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "The Pannchoa article explicitly labels the image section Yuna; the selected full image is the first photo under that name.",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        }
+      ],
+      "exactVersionEvidence": {
+        "basis": "Existing audited catalog exact video/channel/title + original title-specific release evidence; audio not played or compared.",
+        "catalogRecord": {
+          "id": "recvxyOz5XmFwB",
+          "song": "SUPERPOWERS",
+          "groupIds": [
+            "recvxyEBDZqxjD"
+          ],
+          "url": "https://www.youtube.com/watch?v=-1llaBEyOXA",
+          "placeholder": null,
+          "releaseDate": "2023-10-08",
+          "officialTitle": "[M/V] ITZY - SUPERPOWERS :: Strong Girl Nam-soon OST Part.1",
+          "channel": "모스트콘텐츠 MOSTCONTENTS",
+          "videoType": "官方MV",
+          "stageResearch": {
+            "status": "not_found",
+            "checkedAt": "2026-10-11T12:21:06.918553+00:00",
+            "reason": ""
+          },
+          "stagePresent": false
+        }
+      }
+    },
+    {
+      "workId": "recvxyOz5Xr917",
+      "videoId": "jgD_U2t6qXQ",
+      "groupId": "recvxyEBDZ9qVl",
+      "memberIds": [
+        "recvxyICzHGklh",
+        "recvxyICzHhlFz",
+        "recvxyICzHLSfX",
+        "recvxyICzHpQud",
+        "recvxyICzHLR6M"
+      ],
+      "proposedCreditKind": "documented_project_lineup",
+      "namedScope": "Named recording performers only, not complete MV appearance or participant scoring.",
+      "sources": [
+        {
+          "url": "https://www.fnnews.com/news/202309010948522545",
+          "publisher": "Financial News / Shin Jin-a; direct attribution of ADOR release announcement",
+          "facts": [
+            "September 1, 2023 report quotes ADOR naming Minji, Hanni, Danielle, Haerin and Hyein as singers of Beautiful Restriction.",
+            "Identifies the A Time Called You OST remake, not a later or different song."
+          ],
+          "scope": "named_recording_announcement",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:54:07.595222+00:00",
+          "httpStatus": 200,
+          "pageSha256": "4ac88e7c029ab8ad937af3e37b9bd6eb896fdc0402d275f7f4208dc2670f9e94"
+        },
+        {
+          "url": "https://www.mk.co.kr/news/musics/10819721",
+          "publisher": "Star Today / Lee Da-gyeom; ADOR announcement report",
+          "facts": [
+            "The original publisher report repeats the title-specific ADOR announcement and all five names."
+          ],
+          "scope": "corroborating_named_announcement",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:54:07.595222+00:00"
+        }
+      ],
+      "referenceReuse": [
+        {
+          "memberId": "recvxyICzHGklh",
+          "stageName": "MINJI",
+          "reusedFromWorkId": "recvxyOz5XdiFR",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5XdiFR",
+            "videoId": "V37TaRdVUQY",
+            "memberId": "recvxyICzHGklh",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/newjeans-cb2ae0a84498fa.jpg",
+            "width": 1333,
+            "height": 2000,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://dbkpop.com/2023/04/11/newjeans-omg-teaser-concept-photos-hd-hq/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1332,
+              "height": 1776
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "nj-omg-q-20261027"
+          },
+          "sha256": "cb2ae0a84498fa7aead903a30ce26bf10a7bd81dfe95f616957e89e73350df25",
+          "bytes": 553347,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "Newjeans Minji OMG Teaser",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHhlFz",
+          "stageName": "HANNI",
+          "reusedFromWorkId": "recvxyOz5XdiFR",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5XdiFR",
+            "videoId": "V37TaRdVUQY",
+            "memberId": "recvxyICzHhlFz",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/newjeans-354a3b37c1047b.jpg",
+            "width": 1333,
+            "height": 2000,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://dbkpop.com/2023/04/11/newjeans-omg-teaser-concept-photos-hd-hq/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1332,
+              "height": 1776
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "nj-omg-q-20261027"
+          },
+          "sha256": "354a3b37c1047bb7f2c714eba5cd05692bd91acfabd675f69be9d18d2a8b579b",
+          "bytes": 579977,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "Newjeans Hanni OMG Teaser",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHLSfX",
+          "stageName": "DANIELLE",
+          "reusedFromWorkId": "recvxyOz5XdiFR",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5XdiFR",
+            "videoId": "V37TaRdVUQY",
+            "memberId": "recvxyICzHLSfX",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/newjeans-8248331000c49b.jpg",
+            "width": 1333,
+            "height": 2000,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://dbkpop.com/2023/04/11/newjeans-omg-teaser-concept-photos-hd-hq/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1332,
+              "height": 1776
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "nj-omg-q-20261027"
+          },
+          "sha256": "8248331000c49bef392ff6f1431402b1d07dddba93d322cfaa4b2edd4bf706b1",
+          "bytes": 565644,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "Newjeans Danielle OMG Teaser",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHpQud",
+          "stageName": "HAERIN",
+          "reusedFromWorkId": "recvxyOz5XdiFR",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5XdiFR",
+            "videoId": "V37TaRdVUQY",
+            "memberId": "recvxyICzHpQud",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/newjeans-82212f75dce94e.jpg",
+            "width": 1333,
+            "height": 2000,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://dbkpop.com/2023/04/11/newjeans-omg-teaser-concept-photos-hd-hq/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1332,
+              "height": 1776
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "nj-omg-q-20261027"
+          },
+          "sha256": "82212f75dce94e036094016de1deff350e054e7f735cd9b313701a2b5819eb31",
+          "bytes": 475227,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "Newjeans Haerin OMG Teaser",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHLR6M",
+          "stageName": "HYEIN",
+          "reusedFromWorkId": "recvxyOz5XdiFR",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5XdiFR",
+            "videoId": "V37TaRdVUQY",
+            "memberId": "recvxyICzHLR6M",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/newjeans-05901814a09430.jpg",
+            "width": 1333,
+            "height": 2000,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://dbkpop.com/2023/04/11/newjeans-omg-teaser-concept-photos-hd-hq/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1332,
+              "height": 1776
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "nj-omg-q-20261027"
+          },
+          "sha256": "05901814a0943035f1f0161e3b46808cadec21f9220e9c4146ed1fce7b202631",
+          "bytes": 495480,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "Newjeans Hyein OMG Teaser",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        }
+      ],
+      "exactVersionEvidence": {
+        "basis": "Existing audited catalog exact video/channel/title + original title-specific release evidence; audio not played or compared.",
+        "catalogRecord": {
+          "id": "recvxyOz5Xr917",
+          "song": "Beautiful Restriction",
+          "groupIds": [
+            "recvxyEBDZ9qVl"
+          ],
+          "url": "https://www.youtube.com/watch?v=jgD_U2t6qXQ",
+          "placeholder": null,
+          "releaseDate": "2023-08-31",
+          "officialTitle": "NewJeans - Beautiful Restriction (아름다운 구속) | A Time Called You Special MV | Netflix",
+          "channel": "Netflix K-Content",
+          "videoType": "官方MV",
+          "stageResearch": {
+            "status": "not_found",
+            "checkedAt": "2026-10-11T12:21:06.918553+00:00",
+            "reason": ""
+          },
+          "stagePresent": false
+        }
+      }
+    },
+    {
+      "workId": "recvxyOz5XQZhy",
+      "videoId": "XEsrFIQOWZg",
+      "groupId": "recvxyEBDZ9qVl",
+      "memberIds": [
+        "recvxyICzHGklh",
+        "recvxyICzHhlFz",
+        "recvxyICzHLSfX",
+        "recvxyICzHpQud",
+        "recvxyICzHLR6M"
+      ],
+      "proposedCreditKind": "documented_project_lineup",
+      "namedScope": "Named recording performers only, not complete MV appearance or participant scoring.",
+      "sources": [
+        {
+          "url": "https://www.bandwagon.asia/articles/jon-batiste-newjeans-camilo-jid-and-cat-burns-unite-for-cheerful-new-single-be-who-you-are-real-magic-listen-coca-cola-coke-studio-release-2023",
+          "publisher": "Bandwagon / Brandon Raeburn; original release reporting",
+          "facts": [
+            "May 31, 2023 original article names Minji, Hanni, Danielle, Haerin and Hyein as the Korean-line singers of this multilingual song.",
+            "The original HTML embeds XEsrFIQOWZg; no personal listening or visual identity claim is made."
+          ],
+          "scope": "named_recording_exact_video",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:54:07.595222+00:00",
+          "httpStatus": 200,
+          "pageSha256": "a6a9e6f2ae8b1d1bcd4ca878e7e2594918a3984be9fe131317c4145fb98f8334"
+        },
+        {
+          "url": "https://www.coca-cola.com/xe/en/media-center/coke-studio-second-season-jon-batiste-new-anthem",
+          "publisher": "Coca-Cola; first-party May 31, 2023 release announcement",
+          "facts": [
+            "Primary partner announcement identifies this exact song, NewJeans and the other collaborating artists."
+          ],
+          "scope": "first_party_collaboration_identity",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:54:07.595222+00:00"
+        }
+      ],
+      "referenceReuse": [
+        {
+          "memberId": "recvxyICzHGklh",
+          "stageName": "MINJI",
+          "reusedFromWorkId": "recvxyOz5XdiFR",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5XdiFR",
+            "videoId": "V37TaRdVUQY",
+            "memberId": "recvxyICzHGklh",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/newjeans-cb2ae0a84498fa.jpg",
+            "width": 1333,
+            "height": 2000,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://dbkpop.com/2023/04/11/newjeans-omg-teaser-concept-photos-hd-hq/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1332,
+              "height": 1776
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "nj-omg-q-20261027"
+          },
+          "sha256": "cb2ae0a84498fa7aead903a30ce26bf10a7bd81dfe95f616957e89e73350df25",
+          "bytes": 553347,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "Newjeans Minji OMG Teaser",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHhlFz",
+          "stageName": "HANNI",
+          "reusedFromWorkId": "recvxyOz5XdiFR",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5XdiFR",
+            "videoId": "V37TaRdVUQY",
+            "memberId": "recvxyICzHhlFz",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/newjeans-354a3b37c1047b.jpg",
+            "width": 1333,
+            "height": 2000,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://dbkpop.com/2023/04/11/newjeans-omg-teaser-concept-photos-hd-hq/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1332,
+              "height": 1776
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "nj-omg-q-20261027"
+          },
+          "sha256": "354a3b37c1047bb7f2c714eba5cd05692bd91acfabd675f69be9d18d2a8b579b",
+          "bytes": 579977,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "Newjeans Hanni OMG Teaser",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHLSfX",
+          "stageName": "DANIELLE",
+          "reusedFromWorkId": "recvxyOz5XdiFR",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5XdiFR",
+            "videoId": "V37TaRdVUQY",
+            "memberId": "recvxyICzHLSfX",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/newjeans-8248331000c49b.jpg",
+            "width": 1333,
+            "height": 2000,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://dbkpop.com/2023/04/11/newjeans-omg-teaser-concept-photos-hd-hq/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1332,
+              "height": 1776
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "nj-omg-q-20261027"
+          },
+          "sha256": "8248331000c49bef392ff6f1431402b1d07dddba93d322cfaa4b2edd4bf706b1",
+          "bytes": 565644,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "Newjeans Danielle OMG Teaser",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHpQud",
+          "stageName": "HAERIN",
+          "reusedFromWorkId": "recvxyOz5XdiFR",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5XdiFR",
+            "videoId": "V37TaRdVUQY",
+            "memberId": "recvxyICzHpQud",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/newjeans-82212f75dce94e.jpg",
+            "width": 1333,
+            "height": 2000,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://dbkpop.com/2023/04/11/newjeans-omg-teaser-concept-photos-hd-hq/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1332,
+              "height": 1776
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "nj-omg-q-20261027"
+          },
+          "sha256": "82212f75dce94e036094016de1deff350e054e7f735cd9b313701a2b5819eb31",
+          "bytes": 475227,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "Newjeans Haerin OMG Teaser",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        },
+        {
+          "memberId": "recvxyICzHLR6M",
+          "stageName": "HYEIN",
+          "reusedFromWorkId": "recvxyOz5XdiFR",
+          "originalManifestRecord": {
+            "workId": "recvxyOz5XdiFR",
+            "videoId": "V37TaRdVUQY",
+            "memberId": "recvxyICzHLR6M",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/newjeans-05901814a09430.jpg",
+            "width": 1333,
+            "height": 2000,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://dbkpop.com/2023/04/11/newjeans-omg-teaser-concept-photos-hd-hq/",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1332,
+              "height": 1776
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "nj-omg-q-20261027"
+          },
+          "sha256": "05901814a0943035f1f0161e3b46808cadec21f9220e9c4146ed1fce7b202631",
+          "bytes": 495480,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "Newjeans Hyein OMG Teaser",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审具名同套完整原图，仅认人参考，不证明本视频出镜或同期。"
+        }
+      ],
+      "exactVersionEvidence": {
+        "basis": "Existing audited catalog exact video/channel/title + original title-specific release evidence; audio not played or compared.",
+        "catalogRecord": {
+          "id": "recvxyOz5XQZhy",
+          "song": "Be Who You Are (Real Magic)",
+          "groupIds": [
+            "recvxyEBDZ9qVl"
+          ],
+          "url": "https://www.youtube.com/watch?v=XEsrFIQOWZg",
+          "placeholder": null,
+          "releaseDate": "2023-05-31",
+          "officialTitle": "Be Who You Are (Music Video) | Coke Studio | Jon Batiste, J.I.D, NewJeans, Cat Burns, Camilo",
+          "channel": "Coke Studio",
+          "videoType": "官方MV",
+          "stageResearch": {
+            "status": "not_found",
+            "checkedAt": "2026-10-11T12:21:06.918553+00:00",
+            "reason": ""
+          },
+          "stagePresent": false
+        }
+      }
+    }
+  ],
+  "preservation": {
+    "old51CreditObjectsUnchanged": true,
+    "old51RecognitionObjectsUnchanged": true,
+    "oldMetadataUnchanged": true,
+    "existingOriginalSlotsReused": 15,
+    "existingOriginalFilesReused": 10,
+    "newImagesDownloaded": 0,
+    "privateDataRead": false,
+    "privateWrites": 0,
+    "privateRelationsAdded": 0,
+    "absenceRulesChanged": 0,
+    "fullVideoPlaybackPerformed": false
+  },
+  "tests": {
+    "status": "passed",
+    "command": "node --test tests/continuous-public-credits.test.cjs tests/stage-fill-public-credits.test.cjs tests/category-followup-v196.test.mjs",
+    "cwd": "apps/idol-site",
+    "tests": 19,
+    "pass": 19,
+    "fail": 0,
+    "checkedAt": "2026-10-28T08:57:05.427511+00:00"
+  }
+}

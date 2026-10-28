@@ -8,8 +8,10 @@ const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const evidenceRoot = '../../docs/codex/evidence/20261028-continuation/statistics/';
 const data = read('data/group-statistics-completion-evidence.json');
 const laterSales = read('../../docs/codex/evidence/20261028-stage-fill/statistics-adoption-proposal.json');
+const laterEvidence = read('../../docs/codex/evidence/20261028-continuous/evidence-upgrade-proposal-c.json');
 // Restore only the reviewed later changes when checking this historical cohort.
 const historicalData = structuredClone(data);
+historicalData.groups.triples.sales = laterEvidence.statistics.expectedBefore;
 for (const change of laterSales.items) {
   const [slug, field] = change.key.split('.');
   historicalData.groups[slug][field] = change.expectedBefore;
@@ -42,7 +44,7 @@ test('tripleS applies the reviewed sales object and preserves all 36 original mo
   assert.equal(hash(proposal.expectedBefore), baseline.beforeSales);
   assert.equal(hash(proposal.expectedBefore), proposal.expectedBeforeSha256Canonical);
   assert.equal(hash(proposal.proposedAfter), proposal.proposedAfterSha256Canonical);
-  assert.deepEqual(sales, proposal.proposedAfter);
+  assert.deepEqual(historicalData.groups.triples.sales, proposal.proposedAfter);
   assert.deepEqual(evidence.monthRows, proposal.expectedBefore.evidence.monthRows);
   assert.deepEqual(evidence.previousEvidence, proposal.expectedBefore.evidence.previousEvidence);
   assert.equal(evidence.monthRows.length, 36);

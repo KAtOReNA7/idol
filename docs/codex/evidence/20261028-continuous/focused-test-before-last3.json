@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-28T09:43:52.617602+00:00",
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "tests/continuous-stage-viewing.test.mjs",
+    "tests/continuous-public-credits.test.cjs",
+    "tests/continuous-evidence-protection.test.cjs",
+    "tests/stage-replacement-adoption.test.cjs",
+    "tests/stage-import-policy.test.cjs",
+    "tests/stage-selection-policy.test.mjs",
+    "tests/stage-validator.test.cjs",
+    "tests/formal-four-stage-adoption.test.cjs",
+    "tests/stage-viewing-category-resolution.test.mjs",
+    "tests/stage-fill-public-credits.test.cjs",
+    "tests/stage-fill-statistics.test.mjs",
+    "tests/public-work-recognition.test.cjs",
+    "tests/public-data-completion.test.cjs",
+    "tests/public-credit-absence-ui.test.cjs",
+    "tests/illit-special-film-public-credit.test.cjs",
+    "tests/category-followup-v196.test.mjs",
+    "tests/statistics-annual-reconciliation.test.mjs",
+    "tests/statistics-category-resolution.test.mjs",
+    "tests/timeline-reported-records.test.cjs",
+    "tests/native-timeline-category-resolution.test.cjs",
+    "tests/editor-score-precision.test.cjs",
+    "tests/core.test.cjs"
+  ],
+  "exitCode": 0,
+  "counts": {
+    "tests": 166,
+    "pass": 166,
+    "fail": 0,
+    "skipped": 0
+  },
+  "logSha256": "f77bd6d087b90b92f0cb1133c4c4b5621e34790dc57a737c448f07c287e30063",
+  "wholeRepositoryTests": false,
+  "unrelatedLegacyFailure": "Separate legacy kiof-sweat-stage two assertions require missing 86fe856... ref; recorded in stage-replacement-audit-tests-c.json, not modified or included here."
+}

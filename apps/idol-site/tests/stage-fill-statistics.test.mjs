@@ -8,6 +8,10 @@ const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const root = '../../docs/codex/evidence/20261028-stage-fill/';
 const data = read('data/group-statistics-completion-evidence.json');
 const proposal = read(root + 'statistics-adoption-proposal.json');
+const laterEvidence = read('../../docs/codex/evidence/20261028-continuous/evidence-upgrade-proposal-c.json');
+// Evidence-only additions are checked separately; restore their exact preimage for this historical cohort.
+const historicalData = structuredClone(data);
+historicalData.groups.triples.sales = laterEvidence.statistics.expectedBefore;
 const captures = read(root + 'statistics-primary-observations-c.json');
 const research = read(root + 'statistics-followup.json');
 const canonical = value => Array.isArray(value) ? value.map(canonical)
@@ -18,7 +22,7 @@ const hash = value => createHash('sha256').update(JSON.stringify(canonical(value
 const beforeHash = '57bf3cb6c825ced3fa3b1abea9d7c0c21918b18c2cdbfd10a4f081af0fc14658';
 
 test('only the two reviewed sales objects and summary counts differ from the frozen baseline', () => {
-  const restored = structuredClone(data);
+  const restored = structuredClone(historicalData);
   assert.deepEqual(proposal.items.map(row => row.key), ['badvillain.sales', 'bewave.sales']);
   for (const change of proposal.items) {
     const [slug, field] = change.key.split('.');
@@ -32,7 +36,7 @@ test('only the two reviewed sales objects and summary counts differ from the fro
   restored.summary = proposal.expectedBeforeSummary;
   assert.equal(proposal.expectedBeforeDataSha256Canonical, beforeHash);
   assert.equal(hash(restored), beforeHash);
-  assert.equal(hash(data), proposal.proposedAfterDataSha256Canonical);
+  assert.equal(hash(historicalData), proposal.proposedAfterDataSha256Canonical);
   const expectedSummary = {...proposal.expectedBeforeSummary,
     salesObserved: proposal.expectedBeforeSummary.salesObserved + 2,
     salesLowerBoundsAdded: proposal.expectedBeforeSummary.salesLowerBoundsAdded + 2,

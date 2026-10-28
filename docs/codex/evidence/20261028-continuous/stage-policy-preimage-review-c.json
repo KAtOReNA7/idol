@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-28T08:59:43.701793+00:00",
+  "scope": "synthetic temporary directory; no real private values, Git or application data changed",
+  "scriptSha256": {
+    "stage_selection_policy.py": "9dcab20ca64caac452cff9826c8bcc0d636c747f3857cca53b42535b60b6f4c0",
+    "merge-stage-batch.py": "348f3411536af6704b591db72245091b71412be96b197f986e0f71b5e27675c3"
+  },
+  "scenario": "Supported Feishu export has empty score and complete fresh external journal, but published stage metadata differs from local source.",
+  "expected": "Reject replacement on mismatch for every supported export source",
+  "actualExitCode": 0,
+  "actualResult": {
+    "retiredUnpublishedUnverifiedSources": [],
+    "newSources": 0,
+    "sourceIds": [],
+    "replacedUnscoredSources": [
+      "recPolicyFixture"
+    ],
+    "updatedSameVideoMetadata": [],
+    "updatedOtherStates": 0,
+    "retainedExistingSources": [],
+    "freshPreimageAt": "2026-10-28T08:59:43.701793+00:00",
+    "batch": "batch.json"
+  },
+  "bindingAfter": "program1234",
+  "publishedPreimageVideo": "livesource1",
+  "localPreviousVideo": "oldsource12",
+  "afterFix": {
+    "checkedAt": "2026-10-28T09:16:18.937319+00:00",
+    "verification": "Independent source reread confirms unified published==previous assertion for all supported source types; targeted synthetic regression rerun",
+    "command": "node --test --test-name-pattern=\"legacy Feishu replacements\" tests/stage-import-policy.test.cjs",
+    "result": "1 passed; absent and mismatched Feishu preimages rejected without writes; matching preimage allowed",
+    "files": {
+      "apps\\idol-site\\scripts\\stage_selection_policy.py": "9dcab20ca64caac452cff9826c8bcc0d636c747f3857cca53b42535b60b6f4c0",
+      "apps\\idol-site\\scripts\\merge-stage-batch.py": "1ecfbc5e90147beb1c6b4898981a5e216050485ae9259b9cd03395da23a1cbb5",
+      "apps\\idol-site\\tests\\stage-import-policy.test.cjs": "26fd1f8c647fff6780d20747dafca6eae90ac8b5c9a65c9a5b1f4e9fd3fcbb1b"
+    },
+    "status": "finding resolved; original failing evidence preserved",
+    "realPrivateWrites": 0
+  }
+}

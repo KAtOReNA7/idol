@@ -37,6 +37,8 @@ test('prior supplement and stage records remain intact through the four earlier 
  }
  const adoption=read('../../docs/codex/evidence/20261027-category-resolution/stages/formal-four-adoption.json');
  const practice=read('../../docs/codex/evidence/20261028-stage-fill/adoption.json');
+ const replacements=read('../../docs/codex/evidence/20261028-continuous/stage-replacement-adoption.json');
+ assert.equal(replacements.items.length,8);
  const practiceEvidence=['stage-practice-20261028-batch.json','stage-practice-20261028-tayo.json'].flatMap(file=>read('data/stages/evidence/'+file).items);
  assert.equal(practice.items.length,11);
  assert.deepEqual(new Set(practiceEvidence.map(item=>item.recordId)),new Set(practice.items.map(item=>item.recordId)));
@@ -44,11 +46,14 @@ test('prior supplement and stage records remain intact through the four earlier 
  for(const [file,expected]of Object.entries(evidence.preservation.protectedFiles)){
   if(file==='data/stage-videos.json'){
    const stages=read(file);
+   for(const item of replacements.items){assert.equal(hash(JSON.stringify(sort(stages[item.recordId]))),item.afterSha256,item.recordId);stages[item.recordId]=structuredClone(item.before);}
+   assert.equal(hash(JSON.stringify(sort(stages))),replacements.preservation.stageCanonicalBefore);
    for(const item of practice.items)assert.equal(hash(JSON.stringify(sort(stages[item.recordId]))),item.sourceSha256,item.recordId);
    for(const id of added)delete stages[id];
    assert.equal(hash(JSON.stringify(sort(stages))),adoption.preservation.stageCanonicalSha256);
   }else if(file==='data/stages/status.json'){
    const statuses=read(file);
+   for(const item of replacements.items){assert.equal(hash(JSON.stringify(sort(statuses.works[item.recordId]))),item.afterStatusSha256,item.recordId);statuses.works[item.recordId]=structuredClone(item.beforeStatus);}
    for(const item of practiceEvidence)assert.deepEqual(statuses.works[item.recordId],{status:'verified',reason:item.reason,checkedAt:item.checkedAt},item.recordId);
    for(const[id,oldHash]of Object.entries(adoption.preservation.statusRows))if(!added.has(id))assert.equal(hash(JSON.stringify(sort(statuses.works[id]))),oldHash,id);
   }else assert.equal(hash(fs.readFileSync(file)),expected,file);

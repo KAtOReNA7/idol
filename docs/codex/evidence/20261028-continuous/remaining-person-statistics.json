@@ -25,7 +25,7 @@
       "historical_lineup_or_unit_unproven": 2,
       "not_researched_this_wave": 3
     },
-    "publicationStatus": "pending_root_release_receipt",
+    "publicationStatus": "published_v199",
     "originalNoPrivateRelationWorkUniverse": 131,
     "publicCreditAbsenceUnion": 85,
     "unknownMetrics": 15,
@@ -1954,7 +1954,7 @@
       "canonicalStatus": "announced",
       "actualEventDate": null,
       "holdReasons": [
-        "只取得二手翻译正文；官方X原帖打开空白。",
+        "已读取官方署名原声明图，原帖及发表日期由公开归档定位；原图仅公布未来计划，不足以核定实际生效。",
         "无独立原文证明计划实际生效；不填实际退团日，不把重整当解散或换公司。"
       ],
       "canonicalSourceFile": "apps/idol-site/data/artist-timelines/bewave.json",
@@ -1971,6 +1971,32 @@
           "checkedAt": "2026-10-16",
           "scopeNote": "只能保留hold/缺口，不把二手翻译升格直接公告；不推断计划实际执行或身份拼写。",
           "evidenceRef": "evidence/E/task05/sources/bewave-restructure-lead.json"
+        },
+        {
+          "id": "continuous-bewave-original-en",
+          "url": "https://pbs.twimg.com/media/Gz_PoLUaoAA5erV.jpg",
+          "publisher": "GOLDDUST ENTERTAINMENT / BEWAVE_official",
+          "title": "BEWAVE六人活动阶段调整计划 · 英文声明原图",
+          "sourcePublishedAt": {
+            "value": "2025-09-04",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-28",
+          "scopeNote": "官方媒体原图已下载并目视读取；原帖https://x.com/BEWAVE_official/status/1963527459069923774及日期由公开归档定位，未独立读取X页面正文。仅证明当时公布的计划，不证明10月31日实际完成。",
+          "evidenceRef": "docs/codex/evidence/20261028-continuous/bewave-original-images-receipt-c.json"
+        },
+        {
+          "id": "continuous-bewave-original-ko",
+          "url": "https://pbs.twimg.com/media/Gz_PoLRbkAATt_c.jpg",
+          "publisher": "GOLDDUST ENTERTAINMENT / BEWAVE_official",
+          "title": "BEWAVE六人活动阶段调整计划 · 韩文声明原图",
+          "sourcePublishedAt": {
+            "value": "2025-09-04",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-28",
+          "scopeNote": "官方媒体原图已下载并目视读取；原帖https://x.com/BEWAVE_official/status/1963527459069923774及日期由公开归档定位，未独立读取X页面正文。仅证明当时公布的计划，不证明10月31日实际完成。",
+          "evidenceRef": "docs/codex/evidence/20261028-continuous/bewave-original-images-receipt-c.json"
         }
       ],
       "reportedRecordPresent": true,
@@ -1983,11 +2009,21 @@
           "url": "https://isplus.com/article/view/isp202509040238",
           "label": "日刊体育 · 公司声明报道",
           "publishedDate": "2025-09-04"
+        },
+        {
+          "url": "https://pbs.twimg.com/media/Gz_PoLUaoAA5erV.jpg",
+          "label": "GOLDDUST · 英文声明原图",
+          "publishedDate": "2025-09-04"
+        },
+        {
+          "url": "https://pbs.twimg.com/media/Gz_PoLRbkAATt_c.jpg",
+          "label": "GOLDDUST · 韩文声明原图",
+          "publishedDate": "2025-09-04"
         }
       ],
       "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
       "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
-      "remainingEvidence": "A planned 2025-10-31 six-member-phase ending does not prove the personnel changes actually occurred. Name-spelling issues cannot be used to bind IDs."
+      "remainingEvidence": "The GOLDDUST signed statement images have been read and added. They document a planned 2025-10-31 ending of the six-member phase, not proof that the plan took effect. The original X post body was not independently read; its date is an archive locator. Actual effective date and personnel changes remain unconfirmed; canonical eventDate stays null."
     },
     {
       "tuple": [
@@ -2016,6 +2052,19 @@
           "checkedAt": "2026-10-16",
           "scopeNote": "工具实际展示原声明图并读字；仅抄活动安排，未保存医疗原因或艺人照片。原官方发表URL和日期未核，不能提升ready；不是退团证明。",
           "evidenceRef": "evidence/E/task04/sources/candyshop-yuina-document-hold.json"
+        },
+        {
+          "id": "continuous-candyshop-kjd-retrospective",
+          "url": "https://www.koreajoongangdaily.com/entertainment/candy-shop-introduces-new-member-julia-comeback-scheduled-for-june/11846351",
+          "publisher": "Korea JoongAng Daily / KIM MIN-YOUNG",
+          "title": "Candy Shop introduces new member Julia, comeback scheduled for June",
+          "sourcePublishedAt": {
+            "value": "2024-05-14",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-28",
+          "scopeNote": "已读具名原创回顾报道正文；报道将暂停日表述为2024-05-09，只作为媒体所述日期，不提升实际日期或解除待核，不采原因或推定退出。",
+          "evidenceRef": "docs/codex/evidence/20261028-continuous/statistics-research-c.json"
         }
       ],
       "reportedRecordPresent": true,
@@ -2028,11 +2077,16 @@
           "url": "https://www.starnewskorea.com/music/2024/05/09/2024050908033147420",
           "label": "Star News · 公司声明报道",
           "publishedDate": "2024-05-09"
+        },
+        {
+          "url": "https://www.koreajoongangdaily.com/entertainment/candy-shop-introduces-new-member-julia-comeback-scheduled-for-june/11846351",
+          "label": "Korea JoongAng Daily · KIM MIN-YOUNG回顾报道",
+          "publishedDate": "2024-05-14"
         }
       ],
       "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
       "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
-      "remainingEvidence": "Official cafe publication URL/date evidence remains missing. Existing native media event already covers the report. Profile removal or personal social tags are not departure proof."
+      "remainingEvidence": "The named Korea JoongAng Daily retrospective has been added and describes a hiatus on 2024-05-09. This remains reported-date evidence: the original official cafe publication URL and independent publication evidence are still missing, and canonical eventDate remains null. Neither the retrospective nor a profile removal proves departure or changes member relations."
     },
     {
       "tuple": [
@@ -2061,6 +2115,32 @@
           "checkedAt": "2026-10-16",
           "scopeNote": "目录日期仅hold；不能把器乐Spoiler Book当完整人声Love Don’t Change实际发行。",
           "evidenceRef": "evidence/E/task05/sources/geenius-spoiler-retail.json"
+        },
+        {
+          "id": "continuous-geenius-manual-1",
+          "url": "https://pbs.twimg.com/media/G8gk5DKbYAA8bOX.jpg",
+          "publisher": "HOMe / geeniusofficial",
+          "title": "Geenius Spoiler Book官方器乐QR手册 · 1",
+          "sourcePublishedAt": {
+            "value": "2025-12-22",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-28",
+          "scopeNote": "官方媒体手册原图已下载并目视读取；原帖https://x.com/geeniusofficial/status/2003088133349376295及日期由公开归档定位，未独立读取X页面正文。证明QR器乐用途，未列实际发行日，不证明完整人声专辑发行。",
+          "evidenceRef": "docs/codex/evidence/20261028-continuous/geenius-manual-original-images-receipt-c.json"
+        },
+        {
+          "id": "continuous-geenius-manual-2",
+          "url": "https://pbs.twimg.com/media/G8gk50UakAQNIxZ.jpg",
+          "publisher": "HOMe / geeniusofficial",
+          "title": "Geenius Spoiler Book官方器乐QR手册 · 2",
+          "sourcePublishedAt": {
+            "value": "2025-12-22",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-28",
+          "scopeNote": "官方媒体手册原图已下载并目视读取；原帖https://x.com/geeniusofficial/status/2003088133349376295及日期由公开归档定位，未独立读取X页面正文。证明QR器乐用途，未列实际发行日，不证明完整人声专辑发行。",
+          "evidenceRef": "docs/codex/evidence/20261028-continuous/geenius-manual-original-images-receipt-c.json"
         }
       ],
       "reportedRecordPresent": true,
@@ -2073,11 +2153,21 @@
           "url": "https://www.yes24.com/product/goods/170657075",
           "label": "YES24 · QR器乐产品目录",
           "publishedDate": null
+        },
+        {
+          "url": "https://pbs.twimg.com/media/G8gk5DKbYAA8bOX.jpg",
+          "label": "HOMe · Spoiler Book官方手册原图1",
+          "publishedDate": "2025-12-22"
+        },
+        {
+          "url": "https://pbs.twimg.com/media/G8gk50UakAQNIxZ.jpg",
+          "label": "HOMe · Spoiler Book官方手册原图2",
+          "publishedDate": "2025-12-22"
         }
       ],
       "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
       "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
-      "remainingEvidence": "No newly found HOMe/COPAN actual release announcement or authorised delivered audio. Retail/import dates must not be equated with global release."
+      "remainingEvidence": "The HOMe Spoiler Book manual images have been read and added, establishing the QR instrumental-carrier purpose. They do not establish its actual release date. The original X post body was not independently read; archive post dates and retail 2026-01-15 remain distinct from an actual release. Canonical eventDate stays null; this is not proof of a full vocal Love Don’t Change release."
     },
     {
       "tuple": [
@@ -2478,5 +2568,11 @@
     "Individual lyrics/composition, historical release lineups, recording remarks and specific reported scenes retain their limited labels.",
     "No complete playback, independent per-person audio/camera audit, image download or private write performed by this agent.",
     "GitHub synchronization and Sites deployment are separate root-owned receipts; this file itself does not prove publication."
-  ]
+  ],
+  "publication": {
+    "version": 199,
+    "status": "succeeded",
+    "receipt": "docs/codex/evidence/20261028-continuous/publication.json",
+    "applicationSource": "747aa997a7512592a305a5e21161ded078fa519d"
+  }
 }

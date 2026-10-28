@@ -1,4 +1,4 @@
-"""Offline consistency checks for the unpublished post-v200 increment.
+"""Offline consistency checks for the frozen post-v200 increment, later published as v201.
 
 Does not read private exports, query production, write application data or deploy.
 Run from any working directory with Python 3. --refresh-receipt writes only
@@ -128,7 +128,7 @@ for ui_file in ['ui/main-flow.json', 'ui/udtt.json', 'ui/statistics-followup.jso
     ui = read(EVIDENCE / ui_file)
     check('public fixture browser validation ' + ui_file, ui['status'] == 'passed')
 hold = read(EVIDENCE / 'publication-hold.json')
-check('publication remains on hold', hold['version'] == 200 and hold['newVersionSaved'] is False and hold['newDeploymentRequested'] is False)
+check('historical pre-release hold receipt is preserved', hold['version'] == 200 and hold['newVersionSaved'] is False and hold['newDeploymentRequested'] is False)
 
 counts = {'newStageGaps': 109, 'legacyStageReplacements': 11, 'selectedLocalSources': 496,
           'remainingPersonWorks': 24, 'genericReferenceWorks': 24, 'genericReferenceGroups': 11,
@@ -149,4 +149,4 @@ else:
     assert receipt['queueCounts'] == counts
     for filename, record in receipt['sourceSnapshots'].items():
         assert sha(ROOT / filename) == record['sha256'], filename
-print(json.dumps({'valid': True, 'checks': len(checks), **counts, 'publishedVersion': 200, 'privateExportsRead': 0}))
+print(json.dumps({'valid': True, 'checks': len(checks), **counts, 'publicationBaselineVersion': 200, 'privateExportsRead': 0}))

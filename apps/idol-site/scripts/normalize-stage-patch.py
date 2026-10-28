@@ -3,7 +3,7 @@ Only emits a local patch; does not bind sources, write source files, or access t
 Usage: python3 scripts/normalize-stage-patch.py REVIEWED.json [REVIEWED2.json ...] > PATCH.json
 """
 import json,sys,copy,datetime,pathlib
-from stage_selection_policy import checked_selection, comparison_candidates
+from stage_selection_policy import checked_selection, comparison_candidates, version_eligible
 KINDS={'practice_room':'官方练习室','festival_stage':'官方音乐节舞台','staged_live_clip':'官方舞台化 Live Clip','radio_live_session':'官方电台现场表演','staged_performance':'官方舞台化表演','broadcast_stage':'官方节目完整舞台','official_stage':'官方舞台','concert_stage':'官方演唱会完整舞台','studio_performance':'官方录音棚完整表演','studio_live_session':'官方录音棚现场表演','staged_dance_performance':'官方舞台化表演','produced_dance_performance':'官方舞台化表演','official_performance_film':'官方特别表演','showcase_stage':'官方Showcase舞台','live_clip':'官方Live Clip','band_live':'官方乐队现场'}
 def likes(c):
  v=c.get('likes')
@@ -22,7 +22,7 @@ for filename in sys.argv[1:]:
   if item.get('status')!='verified' and item.get('resolutionStatus')!='verified_youtube':continue
   s=item.get('selected');assert s and s.get('sourceClass')=='official' and s.get('platform')=='youtube' and s.get('scorePolicy')!='view_only' and s.get('completeness')=='full',f'View-only/nonofficial/excerpt cannot enter formal sources {item.get("recordId")}'
   checked_selection(s)
-  assert ver(s),f'Exact selected version absent {item.get("recordId")}'
+  assert version_eligible(s),f'Exact selected version or documented member fallback absent {item.get("recordId")}'
   rid=item['recordId'];assert rid not in seen,f'Duplicate reviewed work {rid}; reconcile batches explicitly first';seen.add(rid)
   pick=copy.deepcopy(s);lk=likes(s);assert lk.get('precision')=='exact' and isinstance(lk.get('value'),int),f'Exact likes absent {rid}'
   pick.update(likes=lk['value'],likesDisplay=lk.get('display') or str(lk['value']),likesPrecision='exact',sourceUrl=s.get('sourceUrl') or s['url'],publishedAt=s.get('publishedAt') or s.get('publicationDate') or '',label=s.get('label') or KINDS.get(s.get('kind') or s.get('type')))
@@ -42,7 +42,8 @@ for filename in sys.argv[1:]:
   candidates=[normalize_candidate(c) for c in (item.get('candidates') or [s])]
   matching=[c for c in candidates if c.get('videoId')==s['videoId']];assert len(matching)==1,f'Selected candidate evidence absent or duplicate {rid}'
   eligible=comparison_candidates(candidates)
-  assert matching[0] in eligible and matching[0]['selection']['occasion']==s['selection']['occasion'],f'Selected not in highest-priority policy-eligible comparison {rid}'
+  assert matching[0].get('memberVersionFallback')==s.get('memberVersionFallback'),f'Selected member fallback evidence differs {rid}'
+  assert matching[0] in eligible and matching[0]['selection']==s['selection'],f'Selected not in highest-priority policy-eligible comparison or selection evidence differs {rid}'
   assert matching[0]['likes']['value']==pick['likes'],f'Selected likes differ from candidate evidence {rid}'
   assert eligible and (pick.get('clip') or max(c['likes']['value'] for c in eligible)==pick['likes']),f'Selected not maximum among reviewed comparable candidates {rid}'
   note=item.get('reason') or s.get('reason');assert note

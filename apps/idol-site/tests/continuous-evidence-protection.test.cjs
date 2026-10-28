@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const {createHash} = require('node:crypto');
+const {beforeUserXObservations} = require('./helpers/user-x-observations.cjs');
 
 const app = path.resolve(__dirname, '..');
 const repo = path.resolve(app, '../..');
@@ -85,7 +86,7 @@ test('reported records add only scoped sources and prose, leaving all effective 
 
 test('tripleS source upgrade preserves every statistic and all original monthly and annual rows', () => {
   const change = proposal.statistics;
-  const current = read(path.join(repo, change.sourceFile));
+  const current = beforeUserXObservations(read(path.join(repo, change.sourceFile)));
   const sales = current.groups.triples.sales;
   assert.equal(hash(change.expectedBefore), '1844749d1a99fd9c4591c6afe66e0631c38cca29679b9f82aaf7fb9f03b90cd0');
   assert.equal(hash(change.expectedBefore), change.expectedBeforeSha256Canonical);

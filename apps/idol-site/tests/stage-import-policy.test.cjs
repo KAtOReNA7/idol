@@ -34,11 +34,42 @@ function merge(batch,{previous,score=null,native=false,formatOverride,omitSchema
  const after=fs.readFileSync(path.join(tmp,'data/stage-videos.json'),'utf8');const archived=path.join(tmp,'data/stages/evidence/batch.json');
  return {...r,before,after,videos:JSON.parse(after),artifact:fs.existsSync(archived)?JSON.parse(fs.readFileSync(archived)):null};
 });}
-test('new formal imports require documented music-program or official complete practice context',()=>{
+test('new formal imports require documented program, official complete practice or produced-performance context',()=>{
  assert.equal(check({}).status,0);
  assert.equal(check({type:'broadcast_stage',selection:{occasion:'music_program',evidence}}).status,0);
- for(const occasion of ['concert','festival','showcase','fan_event','studio_live','produced_performance','special_program','unconfirmed'])assert.notEqual(check({selection:{occasion,evidence}}).status,0,occasion);
+ assert.equal(check({type:'produced_dance_performance',selection:{occasion:'produced_performance',evidence}}).status,0);
+ for(const occasion of ['concert','festival','showcase','fan_event','studio_live','special_program','unconfirmed'])assert.notEqual(check({selection:{occasion,evidence}}).status,0,occasion);
  for(const override of [{selection:null},{sourceClass:'press_original'},{sourceClass:'audience_original'},{completeness:'excerpt'},{selection:{occasion:'practice_room',evidence:{note:'',urls:[]}}}])assert.notEqual(check(override).status,0);
+});
+
+test('official produced performance is a fallback below programs and practice, never an event exemption',()=>{
+ const produced=candidate('produced001','produced_performance',1000,{type:'produced_dance_performance'});
+ const practice=candidate('practice123','practice_room',5);
+ const program=candidate('program1234','music_program',1);
+ const standalone=merge(normalized(reviewed(produced)),{native:true});assert.equal(standalone.status,0,standalone.stderr);
+ assert.equal(standalone.videos[workId].selection.occasion,'produced_performance');
+ for(const better of [practice,program])assert.notEqual(normalize(reviewed(produced,[produced,better])).status,0);
+ assert.equal(normalize(reviewed(practice,[produced,practice])).status,0);
+ assert.equal(normalize(reviewed(program,[produced,practice,program])).status,0);
+ for(const override of [{type:'concert_stage'},{sourceClass:'audience_original'},{completeness:'excerpt'},{versionMatch:false}])assert.notEqual(normalize(reviewed({...produced,...override})).status,0);
+});
+
+test('documented fixed practice wins before likes while unauthenticated camera claims cannot change priority',()=>{
+ const fixed=candidate('fixedcam001','practice_room',1,{selection:{occasion:'practice_room',evidence,camera:{mode:'fixed',evidence}}});
+ const moving=candidate('movingcam01','practice_room',1000,{selection:{occasion:'practice_room',evidence,camera:{mode:'moving',evidence}}});
+ const plain=candidate('plaincam001','practice_room',2000);
+ assert.equal(normalize(reviewed(fixed,[fixed,moving,plain])).status,0);
+ for(const weaker of [moving,plain])assert.notEqual(normalize(reviewed(weaker,[fixed,moving,plain])).status,0);
+ const program=candidate('program1234','music_program',0);
+ assert.notEqual(normalize(reviewed(fixed,[fixed,program])).status,0);
+ for(const camera of [{mode:'fixed'}, {mode:'automatic',evidence}, {mode:'fixed',evidence:{note:'No source',urls:[]}}])assert.notEqual(check({selection:{occasion:'practice_room',evidence,camera}}).status,0);
+ const mismatched=normalize(reviewed(fixed,[{...fixed,selection:{occasion:'practice_room',evidence}}]));assert.notEqual(mismatched.status,0);
+ const tampered=normalized(reviewed(fixed));tampered.items[0].selected.selection.camera.mode='moving';
+ const refused=merge(tampered,{native:true});assert.notEqual(refused.status,0);assert.equal(refused.before,refused.after);
+ const before=previousSource('practice_room');
+ const replacement=merge(normalized(reviewed(fixed)),{previous:before,native:true});assert.equal(replacement.status,0,replacement.stderr);
+ assert.equal(replacement.videos[workId].previousSources.at(-1).preference,'higher_policy_priority');
+ for(const score of [0,5]){const held=merge(normalized(reviewed(fixed)),{previous:before,native:true,score});assert.equal(held.status,0,held.stderr);assert.equal(held.videos[workId].videoId,before.videoId);}
 });
 test('all three exact user rejections fail even when normalized as practice',()=>{
  for(const videoId of ['l9GLV8Kd-MU','saY9KS7mKvI','BnmwjH-suLg']){
@@ -116,6 +147,60 @@ function previousSource(occasion='concert'){
 function replacementBatch(previous,selected,occasion='concert'){
  const batch=normalized(reviewed(selected));batch.items[0].previousOccasionReview={previousVideoId:previous.videoId,previousSha256:crypto.createHash('sha256').update(JSON.stringify(canonical(previous))).digest('hex'),occasion,evidence:{note:'Exact prior uploader describes an excluded concert; preserve its original source and score history.',urls:[previous.url]}};return batch;
 }
+
+function memberCandidate(override={}){
+ return candidate('memberver01','practice_room',100,{
+  versionMatch:false,label:'官方舞蹈练习室 · 成员版',verificationNote:'成员版；客串范围不同，未逐句核对音轨。',
+  memberVersionFallback:{sameSong:true,sameLanguage:true,fullGroup:true,sameArrangementExceptGuest:true,differenceType:'guest_scope',groupId:'fixture-group',guestDifference:'客串声部由本团成员承担',evidence},...override,
+ });
+}
+
+test('documented member fallback preserves the version difference and requires empty owner score and no save history',()=>{
+ const selected=memberCandidate(),batch=normalized(reviewed(selected));
+ assert.equal(batch.items[0].selected.versionMatch,false);assert.equal(batch.items[0].candidates[0].versionMatch,false);
+ const r=merge(batch,{native:true});assert.equal(r.status,0,r.stderr);
+ assert.deepEqual(r.videos[workId].memberVersionFallback,selected.memberVersionFallback);
+ assert.match(r.videos[workId].kind,/成员版/);assert.match(r.videos[workId].verificationNote,/客串/);
+ assert.equal(r.videos[workId].scoreBinding.sourceKey,selected.videoId);
+ for(const options of [{native:true,score:0},{native:true,score:5},{native:true,journalRows:[{record_id:workId,table_key:'works',status:'done'}]},{native:true,journalRows:[{record_id:workId,table_key:'works',status:'pending'}]},{}]){
+  const held=merge(batch,options);assert.equal(held.status,0,held.stderr);assert.deepEqual(JSON.parse(held.after),JSON.parse(held.before));
+  assert.equal(JSON.parse(held.stdout).retainedExistingSources.length,1);
+ }
+});
+
+test('member fallback refuses unsupported language, arrangement, participation, guest difference and fabricated exactness',()=>{
+ const good=memberCandidate();
+ for(const changes of [{sameSong:false},{sameLanguage:false},{fullGroup:false},{sameArrangementExceptGuest:false},{differenceType:'remix'},{groupId:''},{guestDifference:''},{evidence:undefined},{evidence:{note:'',urls:[]}},{evidence:{note:'bad',urls:[42]}}]){
+  const c={...good,memberVersionFallback:{...good.memberVersionFallback,...changes}};
+  assert.notEqual(normalize(reviewed(c)).status,0,JSON.stringify(changes));
+ }
+ for(const versionMatch of [true,'exact'])assert.notEqual(normalize(reviewed({...good,versionMatch})).status,0);
+ for(const change of [{memberVersionFallback:{...good.memberVersionFallback,groupId:'another-group'}},{label:'官方练习室'},{verificationNote:'未说明版本差异'}]){
+  const r=merge(normalized(reviewed({...good,...change})),{native:true});assert.notEqual(r.status,0);assert.equal(r.before,r.after);assert.equal(r.artifact,null);
+ }
+ const tampered=normalized(reviewed(good));tampered.items[0].selected.memberVersionFallback.guestDifference='Another scope';
+ const result=merge(tampered,{native:true});assert.notEqual(result.status,0);assert.equal(result.before,result.after);
+});
+
+test('corresponding original version wins before member-fallback program priority or likes',()=>{
+ const original=candidate('produced001','produced_performance',1,{type:'produced_dance_performance'}),member=memberCandidate({type:'broadcast_stage',selection:{occasion:'music_program',evidence}});
+ assert.equal(normalize(reviewed(original,[original,member])).status,0);
+ assert.notEqual(normalize(reviewed(member,[original,member])).status,0);
+ const previous=previousSource('practice_room');
+ const held=merge(normalized(reviewed(member)),{native:true,previous});assert.equal(held.status,0,held.stderr);assert.equal(held.videos[workId].videoId,previous.videoId);
+});
+
+test('missing exact likes at a higher eligible priority holds instead of silently selecting a lower tier',()=>{
+ const practice=candidate('practice123','practice_room',1000),program=candidate('program1234','music_program',1,{likes:{value:null,display:'1万',precision:'rounded'}});
+ assert.notEqual(normalize(reviewed(practice,[program,practice])).status,0);
+ const fixed=candidate('fixedcam001','practice_room',1,{selection:{occasion:'practice_room',evidence,camera:{mode:'fixed',evidence}},likes:{value:null,display:'未知',precision:'unknown'}});
+ assert.notEqual(normalize(reviewed(practice,[fixed,practice])).status,0);
+ const batch=normalized(reviewed(practice));batch.items[0].candidates.push(program);
+ const refused=merge(batch,{native:true});assert.notEqual(refused.status,0);assert.equal(refused.before,refused.after);
+ for(const field of ['performerScope','originalPerformerScope'])for(const scope of ['solo','subunit','unconfirmed']){
+  assert.notEqual(normalize(reviewed(memberCandidate({[field]:scope}))).status,0);
+ }
+});
 test('unscored native event replacement uses policy before likes and archives the complete old source',()=>{
  const previous=previousSource(),selected=candidate('program1234','music_program',5),batch=replacementBatch(previous,selected);
  const r=merge(batch,{previous,native:true});assert.equal(r.status,0,r.stderr);

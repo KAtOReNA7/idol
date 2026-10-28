@@ -1,0 +1,574 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T14:35:30.264524+00:00",
+  "scope": "Read-only review of9 missing_song_identity historical records using committed public stage inventory, placeholder registry and repository documentary evidence. No local private export opened.",
+  "summary": {
+    "stableRecords": 9,
+    "explicitlyRegisteredGroupPlaceholders": 9,
+    "concreteSongIdentitiesRecoverable": 0,
+    "recordsWithSongTitle": 0,
+    "recordsWithMVUrlOrVideoId": 0,
+    "recordsWithOfficialTitleOrChannel": 0,
+    "requiresImmediateUserAnswer": 0,
+    "webQueriesPerformed": 0,
+    "privateReads": 0,
+    "privateWrites": 0,
+    "applicationChanges": 0,
+    "newIdsRelationsBindings": 0
+  },
+  "conclusion": "These nine records are documented intentionally unselected group placeholders, not nine known songs awaiting metadata repair. Their categorical identity can be resolved from the registry, but no song can be assigned without new user intent. Keep them separate from named-work stage/cover/person gaps.",
+  "sourceHistory": {
+    "placeholderRegistryVerifiedAt": "2026-10-11T13:00:12Z",
+    "repositoryIntroductionCommit": "f24075fc98893793e82adbc92cadc9e58257728f",
+    "repositoryIntroductionDate": "2026-10-22",
+    "commitMeaning": "Imported exact v186 native Sites source; registry internal verification date is2026-10-11. Do not treat import date as placeholder creation date.",
+    "inventoryAndRegistryLaterTrackedChangesFound": 0
+  },
+  "inputs": [
+    {
+      "path": "apps/idol-site/data/stages/inventory.json",
+      "sha256": "ecf62833e56fdab160ca382c3de3816d405e7b127bffef01a322a31ec05d74a7",
+      "tracked": true
+    },
+    {
+      "path": "apps/idol-site/data/stages/status.json",
+      "sha256": "70a4dbdfd0ae7adc928441b472e74c02498c8b5bf4c65bd11fef4d6f134aa4fa",
+      "tracked": true
+    },
+    {
+      "path": "apps/idol-site/data/stages/group-placeholders.json",
+      "sha256": "5bda6bf914d9c1b21d272f4720ef46f7a517447036e8165f5a6879f7d4b3898b",
+      "tracked": true
+    },
+    {
+      "path": "apps/idol-site/data/stages/evidence/catalog-all-614-20261011-v2.json",
+      "sha256": "ab15b42f1636b0e43d98f723ed94f3ca96be03a741635330cde3561be4501c1c",
+      "tracked": true
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/katseye.json",
+      "sha256": "ff1728a062dd5d06762823d2877396a5ef9550551add6b5d26be52361ca2131d",
+      "tracked": true
+    },
+    {
+      "path": "apps/idol-site/data/witchx-source-evidence.json",
+      "sha256": "b4c725b0d1089bfef7f6eaecbeb9c1cf20aadaa5183ebbb72400a1e7c68fabc3",
+      "tracked": true
+    },
+    {
+      "path": "docs/codex/worklogs/20261024-atheart-review-completion.md",
+      "sha256": "e8ff1f02be410b35bcd101492f9a84111ea86495feee0b91f6cbea5a8b774d8e",
+      "tracked": true
+    },
+    {
+      "path": "docs/codex/worklogs/20261024-hitgs-review-completion.md",
+      "sha256": "e4ec3487ba506c431e2d37c5e73b8489b2464793de0774ddb6e93baf34a72d5c",
+      "tracked": true
+    },
+    {
+      "path": "docs/codex/worklogs/20261024-spia-review-completion.md",
+      "sha256": "8d7bac52a47af0c7fcf448821fd765375959af0eb1b2a9737efc8d663031324b",
+      "tracked": true
+    },
+    {
+      "path": "docs/codex/worklogs/20261024-tracer-review-completion.md",
+      "sha256": "3d2849225d59671e6d68ac38ff772ac8bace71326188c59fc74b14a4126c6442",
+      "tracked": true
+    },
+    {
+      "path": "docs/codex/worklogs/20261024-witchx-review-completion.md",
+      "sha256": "306f6beb0f9ebff0663df892f08f5f7f3900010dd25fa728e31c02bf50830527",
+      "tracked": true
+    }
+  ],
+  "records": [
+    {
+      "workId": "rec28ldfRTrHDo",
+      "groupId": "rec28ldfRTiDPs",
+      "publicFields": {
+        "name": "UDTT · 待补作品",
+        "song": "",
+        "groups": [
+          "UDTT"
+        ],
+        "groupIds": [
+          "rec28ldfRTiDPs"
+        ],
+        "version": null,
+        "language": null,
+        "mv": {
+          "url": null,
+          "videoId": null,
+          "officialTitle": null,
+          "channel": null,
+          "releaseDate": null,
+          "videoType": null
+        }
+      },
+      "currentStatus": "missing_song_identity",
+      "classification": "intentional_unselected_group_placeholder",
+      "identityRecoverableFromCurrentPublicFields": false,
+      "specificExistingTitleUrlChannelToResearch": null,
+      "evidence": [
+        {
+          "path": "apps/idol-site/data/stages/inventory.json",
+          "finding": "Current committed public inventory has group identity only; song, version, language and all MV identity fields are empty."
+        },
+        {
+          "path": "apps/idol-site/data/stages/group-placeholders.json",
+          "finding": "源表明确为尚未选择作品的团体占位",
+          "verifiedAt": "2026-10-11T13:00:12Z"
+        },
+        {
+          "path": "apps/idol-site/data/stages/evidence/catalog-all-614-20261011-v2.json",
+          "finding": "记录没有歌名，无法确证同歌/同版本；保留团名检索证据，未猜测绑定。",
+          "originalStatus": "insufficient_metadata"
+        }
+      ],
+      "alreadyNamedWorksForSameGroup": 1,
+      "whyNotInfer": "该记录被明确保存为未选作品占位；同团已有歌曲或官网发现的新曲都不能证明这个稳定ID原本指向哪首歌。",
+      "recommendedAction": "保留原ID及现状，将其列为非作品占位维护项，不计入具名作品的缺MV/缺舞台任务；不赋名、不删除、不新建关系。",
+      "humanInputNeededNow": false,
+      "optionalHumanQuestion": "若你今后想把 UDTT 的这个空占位指定为作品，请给出目标歌曲的官方MV链接（或明确歌名、语种和版本）；若只是保留占位，无需回答。",
+      "futureChangeGuard": "用户提供意图后仍需核当前是否已有同曲精确版本记录、原私人状态和绑定；不能自动回填或合并。"
+    },
+    {
+      "workId": "rec28ldfRTrHHv",
+      "groupId": "rec28ldfRTiDUd",
+      "publicFields": {
+        "name": "KATSEYE · 待补作品",
+        "song": "",
+        "groups": [
+          "KATSEYE"
+        ],
+        "groupIds": [
+          "rec28ldfRTiDUd"
+        ],
+        "version": null,
+        "language": null,
+        "mv": {
+          "url": null,
+          "videoId": null,
+          "officialTitle": null,
+          "channel": null,
+          "releaseDate": null,
+          "videoType": null
+        }
+      },
+      "currentStatus": "missing_song_identity",
+      "classification": "intentional_unselected_group_placeholder",
+      "identityRecoverableFromCurrentPublicFields": false,
+      "specificExistingTitleUrlChannelToResearch": null,
+      "evidence": [
+        {
+          "path": "apps/idol-site/data/stages/inventory.json",
+          "finding": "Current committed public inventory has group identity only; song, version, language and all MV identity fields are empty."
+        },
+        {
+          "path": "apps/idol-site/data/stages/group-placeholders.json",
+          "finding": "源表明确为尚未选择作品的团体占位",
+          "verifiedAt": "2026-10-11T13:00:12Z"
+        },
+        {
+          "path": "apps/idol-site/data/stages/evidence/catalog-all-614-20261011-v2.json",
+          "finding": "记录仅有团体身份，歌曲标题和原MV身份缺失，无法安全匹配舞台。",
+          "originalStatus": "insufficient_metadata"
+        },
+        {
+          "path": "apps/idol-site/data/artist-timelines/katseye.json",
+          "finding": "不能使用KATSEYE空白占位workId rec28ldfRTrHHv"
+        }
+      ],
+      "alreadyNamedWorksForSameGroup": 8,
+      "whyNotInfer": "该记录被明确保存为未选作品占位；同团已有歌曲或官网发现的新曲都不能证明这个稳定ID原本指向哪首歌。",
+      "recommendedAction": "保留原ID及现状，将其列为非作品占位维护项，不计入具名作品的缺MV/缺舞台任务；不赋名、不删除、不新建关系。",
+      "humanInputNeededNow": false,
+      "optionalHumanQuestion": "若你今后想把 KATSEYE 的这个空占位指定为作品，请给出目标歌曲的官方MV链接（或明确歌名、语种和版本）；若只是保留占位，无需回答。",
+      "futureChangeGuard": "用户提供意图后仍需核当前是否已有同曲精确版本记录、原私人状态和绑定；不能自动回填或合并。"
+    },
+    {
+      "workId": "rec28ldfRTrHLf",
+      "groupId": "rec28ldfRTiE0h",
+      "publicFields": {
+        "name": "VCHA · 待补作品",
+        "song": "",
+        "groups": [
+          "VCHA"
+        ],
+        "groupIds": [
+          "rec28ldfRTiE0h"
+        ],
+        "version": null,
+        "language": null,
+        "mv": {
+          "url": null,
+          "videoId": null,
+          "officialTitle": null,
+          "channel": null,
+          "releaseDate": null,
+          "videoType": null
+        }
+      },
+      "currentStatus": "missing_song_identity",
+      "classification": "intentional_unselected_group_placeholder",
+      "identityRecoverableFromCurrentPublicFields": false,
+      "specificExistingTitleUrlChannelToResearch": null,
+      "evidence": [
+        {
+          "path": "apps/idol-site/data/stages/inventory.json",
+          "finding": "Current committed public inventory has group identity only; song, version, language and all MV identity fields are empty."
+        },
+        {
+          "path": "apps/idol-site/data/stages/group-placeholders.json",
+          "finding": "源表明确为尚未选择作品的团体占位",
+          "verifiedAt": "2026-10-11T13:00:12Z"
+        },
+        {
+          "path": "apps/idol-site/data/stages/evidence/catalog-all-614-20261011-v2.json",
+          "finding": "记录没有歌名，无法确证同歌/同版本；保留团名检索证据，未猜测绑定。",
+          "originalStatus": "insufficient_metadata"
+        }
+      ],
+      "alreadyNamedWorksForSameGroup": 4,
+      "whyNotInfer": "该记录被明确保存为未选作品占位；同团已有歌曲或官网发现的新曲都不能证明这个稳定ID原本指向哪首歌。",
+      "recommendedAction": "保留原ID及现状，将其列为非作品占位维护项，不计入具名作品的缺MV/缺舞台任务；不赋名、不删除、不新建关系。",
+      "humanInputNeededNow": false,
+      "optionalHumanQuestion": "若你今后想把 VCHA 的这个空占位指定为作品，请给出目标歌曲的官方MV链接（或明确歌名、语种和版本）；若只是保留占位，无需回答。",
+      "futureChangeGuard": "用户提供意图后仍需核当前是否已有同曲精确版本记录、原私人状态和绑定；不能自动回填或合并。"
+    },
+    {
+      "workId": "rec28ldfRTrHPm",
+      "groupId": "rec28ldfRTiE4q",
+      "publicFields": {
+        "name": "HITGS · 待补作品",
+        "song": "",
+        "groups": [
+          "HITGS"
+        ],
+        "groupIds": [
+          "rec28ldfRTiE4q"
+        ],
+        "version": null,
+        "language": null,
+        "mv": {
+          "url": null,
+          "videoId": null,
+          "officialTitle": null,
+          "channel": null,
+          "releaseDate": null,
+          "videoType": null
+        }
+      },
+      "currentStatus": "missing_song_identity",
+      "classification": "intentional_unselected_group_placeholder",
+      "identityRecoverableFromCurrentPublicFields": false,
+      "specificExistingTitleUrlChannelToResearch": null,
+      "evidence": [
+        {
+          "path": "apps/idol-site/data/stages/inventory.json",
+          "finding": "Current committed public inventory has group identity only; song, version, language and all MV identity fields are empty."
+        },
+        {
+          "path": "apps/idol-site/data/stages/group-placeholders.json",
+          "finding": "源表明确为尚未选择作品的团体占位",
+          "verifiedAt": "2026-10-11T13:00:12Z"
+        },
+        {
+          "path": "apps/idol-site/data/stages/evidence/catalog-all-614-20261011-v2.json",
+          "finding": "记录没有歌名，无法确证同歌/同版本；保留团名检索证据，未猜测绑定。",
+          "originalStatus": "insufficient_metadata"
+        },
+        {
+          "path": "docs/codex/worklogs/20261024-hitgs-review-completion.md",
+          "finding": "空白作品 rec28ldfRTrHPm 保留原状、未投影、未赋名"
+        }
+      ],
+      "alreadyNamedWorksForSameGroup": 8,
+      "whyNotInfer": "该记录被明确保存为未选作品占位；同团已有歌曲或官网发现的新曲都不能证明这个稳定ID原本指向哪首歌。",
+      "recommendedAction": "保留原ID及现状，将其列为非作品占位维护项，不计入具名作品的缺MV/缺舞台任务；不赋名、不删除、不新建关系。",
+      "humanInputNeededNow": false,
+      "optionalHumanQuestion": "若你今后想把 HITGS 的这个空占位指定为作品，请给出目标歌曲的官方MV链接（或明确歌名、语种和版本）；若只是保留占位，无需回答。",
+      "futureChangeGuard": "用户提供意图后仍需核当前是否已有同曲精确版本记录、原私人状态和绑定；不能自动回填或合并。"
+    },
+    {
+      "workId": "rec28ldfRTrHT6",
+      "groupId": "rec28ldfRTiEaV",
+      "publicFields": {
+        "name": "AtHeart · 待补作品",
+        "song": "",
+        "groups": [
+          "AtHeart"
+        ],
+        "groupIds": [
+          "rec28ldfRTiEaV"
+        ],
+        "version": null,
+        "language": null,
+        "mv": {
+          "url": null,
+          "videoId": null,
+          "officialTitle": null,
+          "channel": null,
+          "releaseDate": null,
+          "videoType": null
+        }
+      },
+      "currentStatus": "missing_song_identity",
+      "classification": "intentional_unselected_group_placeholder",
+      "identityRecoverableFromCurrentPublicFields": false,
+      "specificExistingTitleUrlChannelToResearch": null,
+      "evidence": [
+        {
+          "path": "apps/idol-site/data/stages/inventory.json",
+          "finding": "Current committed public inventory has group identity only; song, version, language and all MV identity fields are empty."
+        },
+        {
+          "path": "apps/idol-site/data/stages/group-placeholders.json",
+          "finding": "源表明确为尚未选择作品的团体占位",
+          "verifiedAt": "2026-10-11T13:00:12Z"
+        },
+        {
+          "path": "apps/idol-site/data/stages/evidence/catalog-all-614-20261011-v2.json",
+          "finding": "记录仅有团体身份，歌曲标题和原MV身份缺失，无法安全匹配舞台。",
+          "originalStatus": "insufficient_metadata"
+        },
+        {
+          "path": "docs/codex/worklogs/20261024-atheart-review-completion.md",
+          "finding": "空白作品 rec28ldfRTrHT6 保留不赋名"
+        }
+      ],
+      "alreadyNamedWorksForSameGroup": 2,
+      "whyNotInfer": "该记录被明确保存为未选作品占位；同团已有歌曲或官网发现的新曲都不能证明这个稳定ID原本指向哪首歌。",
+      "recommendedAction": "保留原ID及现状，将其列为非作品占位维护项，不计入具名作品的缺MV/缺舞台任务；不赋名、不删除、不新建关系。",
+      "humanInputNeededNow": false,
+      "optionalHumanQuestion": "若你今后想把 AtHeart 的这个空占位指定为作品，请给出目标歌曲的官方MV链接（或明确歌名、语种和版本）；若只是保留占位，无需回答。",
+      "futureChangeGuard": "用户提供意图后仍需核当前是否已有同曲精确版本记录、原私人状态和绑定；不能自动回填或合并。"
+    },
+    {
+      "workId": "rec28ldfRTrHmu",
+      "groupId": "rec28ldfRTiDxx",
+      "publicFields": {
+        "name": "Geenius · 待补作品",
+        "song": "",
+        "groups": [
+          "Geenius"
+        ],
+        "groupIds": [
+          "rec28ldfRTiDxx"
+        ],
+        "version": null,
+        "language": null,
+        "mv": {
+          "url": null,
+          "videoId": null,
+          "officialTitle": null,
+          "channel": null,
+          "releaseDate": null,
+          "videoType": null
+        }
+      },
+      "currentStatus": "missing_song_identity",
+      "classification": "intentional_unselected_group_placeholder",
+      "identityRecoverableFromCurrentPublicFields": false,
+      "specificExistingTitleUrlChannelToResearch": null,
+      "evidence": [
+        {
+          "path": "apps/idol-site/data/stages/inventory.json",
+          "finding": "Current committed public inventory has group identity only; song, version, language and all MV identity fields are empty."
+        },
+        {
+          "path": "apps/idol-site/data/stages/group-placeholders.json",
+          "finding": "源表明确为尚未选择作品的团体占位",
+          "verifiedAt": "2026-10-11T13:00:12Z"
+        },
+        {
+          "path": "apps/idol-site/data/stages/evidence/catalog-all-614-20261011-v2.json",
+          "finding": "记录仅有团体身份，歌曲标题和原MV身份缺失，无法安全匹配舞台。",
+          "originalStatus": "insufficient_metadata"
+        }
+      ],
+      "alreadyNamedWorksForSameGroup": 6,
+      "whyNotInfer": "该记录被明确保存为未选作品占位；同团已有歌曲或官网发现的新曲都不能证明这个稳定ID原本指向哪首歌。",
+      "recommendedAction": "保留原ID及现状，将其列为非作品占位维护项，不计入具名作品的缺MV/缺舞台任务；不赋名、不删除、不新建关系。",
+      "humanInputNeededNow": false,
+      "optionalHumanQuestion": "若你今后想把 Geenius 的这个空占位指定为作品，请给出目标歌曲的官方MV链接（或明确歌名、语种和版本）；若只是保留占位，无需回答。",
+      "futureChangeGuard": "用户提供意图后仍需核当前是否已有同曲精确版本记录、原私人状态和绑定；不能自动回填或合并。"
+    },
+    {
+      "workId": "rec28ldfRTrHrQ",
+      "groupId": "rec28ldfRTiDBG",
+      "publicFields": {
+        "name": "TRACER · 待补作品",
+        "song": "",
+        "groups": [
+          "TRACER"
+        ],
+        "groupIds": [
+          "rec28ldfRTiDBG"
+        ],
+        "version": null,
+        "language": null,
+        "mv": {
+          "url": null,
+          "videoId": null,
+          "officialTitle": null,
+          "channel": null,
+          "releaseDate": null,
+          "videoType": null
+        }
+      },
+      "currentStatus": "missing_song_identity",
+      "classification": "intentional_unselected_group_placeholder",
+      "identityRecoverableFromCurrentPublicFields": false,
+      "specificExistingTitleUrlChannelToResearch": null,
+      "evidence": [
+        {
+          "path": "apps/idol-site/data/stages/inventory.json",
+          "finding": "Current committed public inventory has group identity only; song, version, language and all MV identity fields are empty."
+        },
+        {
+          "path": "apps/idol-site/data/stages/group-placeholders.json",
+          "finding": "源表明确为尚未选择作品的团体占位",
+          "verifiedAt": "2026-10-11T13:00:12Z"
+        },
+        {
+          "path": "apps/idol-site/data/stages/evidence/catalog-all-614-20261011-v2.json",
+          "finding": "记录没有歌名，无法确证同歌/同版本；保留团名检索证据，未猜测绑定。",
+          "originalStatus": "insufficient_metadata"
+        },
+        {
+          "path": "docs/codex/worklogs/20261024-tracer-review-completion.md",
+          "finding": "空白作品 rec28ldfRTrHrQ 不赋名、不展示"
+        }
+      ],
+      "alreadyNamedWorksForSameGroup": 1,
+      "whyNotInfer": "该记录被明确保存为未选作品占位；同团已有歌曲或官网发现的新曲都不能证明这个稳定ID原本指向哪首歌。",
+      "recommendedAction": "保留原ID及现状，将其列为非作品占位维护项，不计入具名作品的缺MV/缺舞台任务；不赋名、不删除、不新建关系。",
+      "humanInputNeededNow": false,
+      "optionalHumanQuestion": "若你今后想把 TRACER 的这个空占位指定为作品，请给出目标歌曲的官方MV链接（或明确歌名、语种和版本）；若只是保留占位，无需回答。",
+      "futureChangeGuard": "用户提供意图后仍需核当前是否已有同曲精确版本记录、原私人状态和绑定；不能自动回填或合并。"
+    },
+    {
+      "workId": "rec28ldfRTrHvz",
+      "groupId": "rec28ldfRTiDFM",
+      "publicFields": {
+        "name": "W!TCHX · 待补作品",
+        "song": "",
+        "groups": [
+          "W!TCHX"
+        ],
+        "groupIds": [
+          "rec28ldfRTiDFM"
+        ],
+        "version": null,
+        "language": null,
+        "mv": {
+          "url": null,
+          "videoId": null,
+          "officialTitle": null,
+          "channel": null,
+          "releaseDate": null,
+          "videoType": null
+        }
+      },
+      "currentStatus": "missing_song_identity",
+      "classification": "intentional_unselected_group_placeholder",
+      "identityRecoverableFromCurrentPublicFields": false,
+      "specificExistingTitleUrlChannelToResearch": null,
+      "evidence": [
+        {
+          "path": "apps/idol-site/data/stages/inventory.json",
+          "finding": "Current committed public inventory has group identity only; song, version, language and all MV identity fields are empty."
+        },
+        {
+          "path": "apps/idol-site/data/stages/group-placeholders.json",
+          "finding": "源表明确为尚未选择作品的团体占位",
+          "verifiedAt": "2026-10-11T13:00:12Z"
+        },
+        {
+          "path": "apps/idol-site/data/stages/evidence/catalog-all-614-20261011-v2.json",
+          "finding": "原记录只有W!TCHX团名，歌名为空、MV标识缺失；团名公开检索能确认存在多首舞台，但不能擅自认定此空记录属于哪一首作品。",
+          "originalStatus": "insufficient_metadata"
+        },
+        {
+          "path": "docs/codex/worklogs/20261024-witchx-review-completion.md",
+          "finding": "原生只有空白作品 rec28ldfRTrHvz，不赋名、不展示"
+        },
+        {
+          "path": "apps/idol-site/data/witchx-source-evidence.json",
+          "finding": "preserveBlankWorkId rec28ldfRTrHvz；发行与视频全部只浏览"
+        }
+      ],
+      "alreadyNamedWorksForSameGroup": 0,
+      "whyNotInfer": "该记录被明确保存为未选作品占位；同团已有歌曲或官网发现的新曲都不能证明这个稳定ID原本指向哪首歌。",
+      "recommendedAction": "保留原ID及现状，将其列为非作品占位维护项，不计入具名作品的缺MV/缺舞台任务；不赋名、不删除、不新建关系。",
+      "humanInputNeededNow": false,
+      "optionalHumanQuestion": "若你今后想把 W!TCHX 的这个空占位指定为作品，请给出目标歌曲的官方MV链接（或明确歌名、语种和版本）；若只是保留占位，无需回答。",
+      "futureChangeGuard": "用户提供意图后仍需核当前是否已有同曲精确版本记录、原私人状态和绑定；不能自动回填或合并。"
+    },
+    {
+      "workId": "rec28ldfRTrHzF",
+      "groupId": "rec28ldfRTiDJU",
+      "publicFields": {
+        "name": "SPIA · 待补作品",
+        "song": "",
+        "groups": [
+          "SPIA"
+        ],
+        "groupIds": [
+          "rec28ldfRTiDJU"
+        ],
+        "version": null,
+        "language": null,
+        "mv": {
+          "url": null,
+          "videoId": null,
+          "officialTitle": null,
+          "channel": null,
+          "releaseDate": null,
+          "videoType": null
+        }
+      },
+      "currentStatus": "missing_song_identity",
+      "classification": "intentional_unselected_group_placeholder",
+      "identityRecoverableFromCurrentPublicFields": false,
+      "specificExistingTitleUrlChannelToResearch": null,
+      "evidence": [
+        {
+          "path": "apps/idol-site/data/stages/inventory.json",
+          "finding": "Current committed public inventory has group identity only; song, version, language and all MV identity fields are empty."
+        },
+        {
+          "path": "apps/idol-site/data/stages/group-placeholders.json",
+          "finding": "源表明确为尚未选择作品的团体占位",
+          "verifiedAt": "2026-10-11T13:00:12Z"
+        },
+        {
+          "path": "apps/idol-site/data/stages/evidence/catalog-all-614-20261011-v2.json",
+          "finding": "已检查：本记录歌名为空，仅为SPIA待补作品占位；不能把团体搜索命中的任意歌曲绑定到空作品。",
+          "originalStatus": "insufficient_metadata"
+        },
+        {
+          "path": "docs/codex/worklogs/20261024-spia-review-completion.md",
+          "finding": "空白作品 rec28ldfRTrHzF 排除；Deeeep 无原生记录"
+        }
+      ],
+      "alreadyNamedWorksForSameGroup": 1,
+      "whyNotInfer": "该记录被明确保存为未选作品占位；同团已有歌曲或官网发现的新曲都不能证明这个稳定ID原本指向哪首歌。",
+      "recommendedAction": "保留原ID及现状，将其列为非作品占位维护项，不计入具名作品的缺MV/缺舞台任务；不赋名、不删除、不新建关系。",
+      "humanInputNeededNow": false,
+      "optionalHumanQuestion": "若你今后想把 SPIA 的这个空占位指定为作品，请给出目标歌曲的官方MV链接（或明确歌名、语种和版本）；若只是保留占位，无需回答。",
+      "futureChangeGuard": "用户提供意图后仍需核当前是否已有同曲精确版本记录、原私人状态和绑定；不能自动回填或合并。"
+    }
+  ],
+  "validation": {
+    "statusInventoryRegistryHistoricalEvidenceExactIdSet": true,
+    "all9songAndMVIdentityFieldsEmpty": true,
+    "all9groupStableIdsAgree": true,
+    "noPrivateExportRead": true,
+    "onlyWhitelistedPublicInventoryFieldsPublished": true,
+    "sourceTableRowPositionsNotCopied": true,
+    "noSongGuessesOrCandidateLinksAssigned": true
+  },
+  "recommendedHumanSummary": "9 个团体空占位已查明属于原表有意保留，暂不需要你补歌名。以后若希望指定某首作品，再提供对应官方MV链接即可；这些占位不应被反复计作缺舞台歌曲。"
+}

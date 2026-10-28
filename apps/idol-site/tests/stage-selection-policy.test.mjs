@@ -49,6 +49,16 @@ const {projectPublicCatalog}=await moduleFrom('lib/idol/public-catalog.ts');
 const {stageKindLabel,stageStatusLabel,stageMatches}=await moduleFrom('lib/idol/stage-display.ts');
 const current=await moduleFrom('lib/idol/supplements.ts');
 
+test('member-version labels and guest differences remain visible without publishing research details',()=>{
+ for(const [kind,label] of [['官方舞蹈练习室 · 成员版','舞蹈练习室 · 成员版'],['官方节目完整舞台 · 成员版','音乐节目舞台 · 成员版'],['官方表演视频 · 成员版','表演视频 · 成员版']])assert.equal(stageKindLabel(kind),label);
+ const fallback={sameSong:true,sameLanguage:true,fullGroup:true,sameArrangementExceptGuest:true,differenceType:'guest_scope',groupId:'fixture',guestDifference:'成员版／客串范围不同',evidence:proof};
+ const stage={memberVersionFallback:fallback,kind:'官方表演视频 · 成员版',verificationNote:'客串范围不同；未逐句核验'};
+ const view=projectPublicCatalog({mode:'snapshot',groups:[],members:[],ratings:[],works:[{id:'fixture',stage}],counts:{}});
+ assert.equal(view.works[0].stage.memberVersionFallback.guestDifference,fallback.guestDifference);
+ assert.deepEqual(view.works[0].stage.memberVersionFallback.evidence,{});
+ assert.equal(view.works[0].stage.verificationNote,stage.verificationNote);
+});
+
 test('complete official practice needs explicit occasion evidence and remains a viewing alternative',()=>{
  const p=practice();assert.equal(validStageAlternative(p),true);assert.equal(stageSourceKey({...p,videoId:p.sourceId}),null);assert.equal(stageHasValidBinding({...p,videoId:p.sourceId}),false);
  for(const change of [
@@ -86,9 +96,9 @@ test('occasion evidence controls priority; Concert and CON-TOUR titles do not im
  }
 });
 
-test('explicit concert or showcase type cannot be relabeled as practice or a music program',()=>{
- for(const performanceType of ['concert_stage','showcase_stage','press_concert_recording'])for(const occasion of ['practice_room','music_program'])assert.equal(validStageAlternative(alternative('Conflict001',{performanceType,selection:selection(occasion)})),false);
- for(const sourceType of ['official_concert_full_event','official_showcase_full_event'])assert.equal(validStageWatchLead(lead('ConflictLd1',{sourceType,selection:selection('music_program')})),false);
+test('explicit concert or showcase cannot be relabeled as practice, program, studio or produced fallback',()=>{
+ for(const performanceType of ['concert_stage','showcase_stage','press_concert_recording'])for(const occasion of ['practice_room','music_program','produced_performance','studio_live','special_program'])assert.equal(validStageAlternative(alternative('Conflict001',{performanceType,selection:selection(occasion)})),false);
+ for(const sourceType of ['official_concert_full_event','official_showcase_full_event'])for(const occasion of ['music_program','produced_performance','studio_live','special_program'])assert.equal(validStageWatchLead(lead('ConflictLd1',{sourceType,selection:selection(occasion)})),false);
  assert.equal(validStageWatchLead(lead('ConflictLd1',{selection:selection('practice_room')})),false);
 });
 
@@ -160,4 +170,18 @@ test('practice labels identify actual practice kind without claiming live vocals
  assert.equal(stageKindLabel('合奏练习室'),'合奏／演唱练习');
  assert.equal(stageKindLabel('官方练习室'),'练习室','an unspecified practice kind is not assumed to be dance or live vocals');
  assert.doesNotMatch(stageKindLabel('官方舞蹈练习室'),/现场|演唱/);
+});
+
+test('viewing alternatives prefer evidenced fixed practice and explicitly label produced-performance fallbacks',async()=>{
+ const fixed=practice('FixedCam001',{selection:{...selection('practice_room'),camera:{mode:'fixed',evidence:proof}}});
+ const moving=practice('MovingCam01',{selection:{...selection('practice_room'),camera:{mode:'moving',evidence:proof}}});
+ const produced=alternative('Produced001',{performanceType:'produced_dance_performance',selection:selection('produced_performance'),kind:'官方表演视频后备，不代表现场人声'});
+ const program=alternative('Program0001',{selection:selection('music_program')});
+ const input={works:{recCamera:{alternatives:[produced,moving,practice(),fixed,program]}}};
+ const frozen=JSON.stringify(input);const mod=await moduleFrom('lib/idol/supplements.ts',input);
+ assert.deepEqual(mod.stageSupplementForWork('recCamera').alternatives.map(a=>a.sourceId),['Program0001','FixedCam001','MovingCam01','Practice001','Produced001']);
+ assert.equal(JSON.stringify(input),frozen);
+ for(const camera of [{mode:'fixed'}, {mode:'unknown',evidence:proof}, {mode:'fixed',evidence:{note:'',urls:[]}}])assert.equal(mod.validStageAlternative({...fixed,selection:{...fixed.selection,camera}}),false);
+ for(const kind of ['Special Dance Clip','Official Dance Video','Performance Video','Choreography Version'])assert.equal(stageKindLabel(kind),'表演视频');
+ assert.equal(stageSourceKey({...produced,videoId:produced.sourceId}),null);
 });

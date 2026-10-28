@@ -3,11 +3,15 @@ import type {StageResearchStatus,Work} from './types';
 // Research states remain in the private catalog; the UI describes viewing options.
 export const stageStatusLabels:Record<StageResearchStatus,string>={pending:'暂无舞台',verified:'有舞台',likes_unverified:'暂无舞台',not_found:'暂无舞台',version_mismatch:'暂无舞台',blocked:'暂无舞台',missing_song_identity:'暂无作品'};
 export function stageKindLabel(kind:string){
+ const label=baseStageKindLabel(kind);
+ return /成员版/.test(kind)?label+' · 成员版':label;
+}
+function baseStageKindLabel(kind:string){
  if(/\bpractice\b|练习室/i.test(kind))return /band|vocal|合奏|演唱|声乐/i.test(kind)?'合奏／演唱练习':/dance|choreography|舞蹈/i.test(kind)?'舞蹈练习室':'练习室';
  if(/出道特别|DEBUT SPECIAL/i.test(kind))return /6人|六人/.test(kind)?'出道特别表演 · 6 人版':'出道特别表演';
- if(/DANCE PERFORMANCE|produced|舞台化|表演版|表演视频|特别表演/i.test(kind))return '表演视频';
+ if(/DANCE PERFORMANCE|DANCE VIDEO|DANCE CLIP|PERFORMANCE VIDEO|CHOREO(?:GRAPHY)?\s*(?:VER\.?|VERSION)|produced|舞台化|表演版|表演视频|特别表演/i.test(kind))return '表演视频';
  if(/录音棚|棚内|乐队|studio/i.test(kind))return /可能采用现场编曲/.test(kind)?'录音棚现场 · 可能采用现场编曲':'录音棚现场';
- if(/音乐节目|打歌|broadcast|电视|节目舞台/i.test(kind))return '音乐节目舞台';
+ if(/音乐节目|打歌|broadcast|电视|节目(?:完整)?舞台/i.test(kind))return '音乐节目舞台';
  if(/演唱会|巡演|concert/i.test(kind))return '演唱会现场';
  if(/showcase|展示|出道秀/i.test(kind))return '展示舞台';
  return '舞台表演';

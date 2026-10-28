@@ -1,5 +1,58 @@
 # 项目协作入口
 
+## 最新工作：分团人工补充清单（2026-10-29，仅文档）
+
+用户希望按熟悉的团体人工补充。详细清单 `docs/codex/human-help-by-group-20261029.md`、可填写CSV同名，45团有待办、6团不在当前队列；109舞台新增、11旧替换、24人物、7统计、7日期、1销量差额、2照片限制合161分类项，不能相加当独立缺歌数。数据与生成校验在 `docs/codex/evidence/20261029-human-help/`。
+
+优先处理用户返回的新链接、姓名／时间点、统计和原公告；清单完成不等于事实补齐。用户观察与官方署名分别记证，成员版后备仅放宽合作曲客串范围，不允许全团替代个人／二人分队或短片范围。没有新证据的混音舞台等保留待证，不重复已导批次。当前PR44／45均draft/open未合main；本轮没有应用修改或新部署，正式仍v201。跨电脑先按最新 `docs/codex/NEXT-COMPUTER-HANDOFF.md` 核远端，确保包含v201和本次清单，复制指令见 `docs/codex/RESUME-PROMPT-20261029.txt`。既有设计、原图、ID／关系、个人记录、访问与owner鉴权继续保护。
+
+## 最新交付：正式v201，未解决清单按用户选择保留（2026-10-29）
+
+正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已 **v201／succeeded／496舞台**。GitHub实现 `7cfba28a24b260163f4c5f7eb55c87a28da731d8`，Sites源 `374ebe6de70a2e51641361740dde68246aed8b1c`，部署 `appgdep_6ae2262ced008191a526c05ac512fcf5`。两种交付分别留证，PR44／PR45仍draft/open、未合main；不要重复部署v201。
+
+已发布24作品的独立通用认人参考（11团119槽／63既有原件），明确“未核实本作参与／出镜”，不创建成员评分或私人关系；原102作品527署名参考槽／233原件保持。24作品事实仍待证。WOOAH同套校服已落实；HITGS同次拍摄未证、MADEIN569×854原尺寸限制保留，新候选不符条件未采用，不猜脸或放大。
+
+VVUP Album单周下界1787、UDTT两个指定日Retail下界103，tripleS下界2108154／未解释差350635已上线。7未知统计（4销量／3一位）保留null并按设置显示0，7实际生效日期保持报道记录。用户明确接受109新增舞台缺口与11旧替换作为本轮未解决清单，不以错误版本补数。个人页统一排版仍待另行选择。
+
+此次发布同时包含前批DADARIDA、IYKYK、SPAGHETTI成员版3新增及Right Now固定机位，四项不得重导；对应原版优先，打歌→练习室（同条件固定机位）→官方制作表演，成员版仅放宽客串范围并标明差异。未来换绑须重新核新鲜owner空分、完整日志和线上原值，旧导出已过期。
+
+152专项、TypeScript、正式构建、274离线聚合通过；本地通用参考48布局／238图槽与成员跳转／11原图、统计6布局／18来源／4守卫通过。完整包1425文件逐字节核验；578随包／5418固定远端、23随包舞台封面＋4远端、10受限排除、DB/R2/MCP与23迁移元数据保持。发布前后public／1owner／0外部／0组／revision2及native／epoch6／原快照／done206一致。发布前保存日志206行ID/状态完整分页核对无4目标作品，但payload有截断，不冒称完整个人值hash。私人写入0。
+
+[完整报告](docs/codex/generic-reference-statistics-followup-20261029.md)、[发布回执](docs/codex/evidence/20261028-post-v200/release-publication.json)、[GitHub回执](docs/codex/evidence/20261028-post-v200/github-followup-sync.json)。两份remaining队列是本轮发布前冻结的事实/来源集合，其中local-only字段是当时状态；当前上线状态以release-publication为准，不改历史采用回执。正式匿名实测12代表布局／38图槽／3原图／4新海报原字节通过，使用真实公开目录51团／338成员上下文／614作品，无夹具或身份令牌；仅代表抽查，不称全团目视。详见ui/production-v201.json。既有关系缺图0、低清0，51团设计／完整原图／ID／个人记录／权限保持。旧v200、未发布及9未知字段均为历史。
+
+## 历史实现：24作品通用认人参考与统计续作，未发布（2026-10-29）
+
+用户已明确批准“团体通用认人参考”，注明未核实本作参与。现24作品／11团／119槽／63既有原件已独立实现，不新增credits、私人关系或成员评分；原102作品527事实资料槽与24人物待证保持。WOOAH同套校服已落实，HITGS同次拍摄未证、MADEIN569×854原尺寸如实标注，不放大。不能把通用参考当成已证MV演员表。
+
+本轮VVUP新增Album单周下界1787、UDTT两个指定日Retail下界103；tripleS另4不重叠周增10068，下界2108154，未解释差350635。未知7（4销量／3一位）、7事实日期、109新增舞台与11旧替换保持。930条民间获奖归档无匹配不证明真实零；页面继续按用户设置显示0并保留未知。UDTT新来源身份投影与构建依赖精确守卫、统计期间标签已修复。152定向测试、TypeScript和正式构建通过。
+
+正式站保持v200／493舞台，分支496未发布；全部任务完成前不保存新Sites版本、不部署。新报告docs/codex/generic-reference-statistics-followup-20261029.md，最新队列仍在evidence/20261028-post-v200/。PR44／PR45仍draft/open，GitHub同步与正式部署分别记录。新补统计、通用参考与先前舞台不要重复导入；既有关系缺图0、设计／原图／ID／个人字段／访问和owner鉴权保持。下方9未知及tripleS360703是历史。
+
+## 最新执行要求：全部任务完成前持续开发，暂不发布（2026-10-28）
+
+用户进一步批准合作曲的完整、同语种官方成员版作为后备，必须明确标注“成员版／客串范围不同”。对应原版合格来源仍优先；成员版只放宽客串范围，不放宽歌曲、语种、其他编配、完整性或本团实际参与。仅原舞台分为空且完整保存日志无该作品记录时可采用，0分不为空；旧评分、旧来源和历史不得转移。证据不足保留待核，不把versionMatch改成true。本轮规则与增量均未发布，线上仍v200。
+
+用户随后放宽舞台后备：优先电视台常规打歌，其次练习室且同条件固定机位优先；都找不到时允许完整、同版本的官方专门拍摄表演视频（如ITZY Voltage Special Dance Clip、NMIXX MEXE Official Dance Video）。准确标注类型，不冒称现场人声。该决定覆盖此前一概暂不采用棚拍Performance/Dance/Choreo视频的限制；不扩大至演唱会/活动或错误歌曲/语种/片段。评分换绑仍需新鲜核对。
+
+用户明确要求继续所有剩余任务，不以小批次、GitHub同步或发布作为停工条件；全部任务完成后才发布。正式站保持v200，后续增量先在当前PR45分支本地实现、核验并记录。不得保存/部署v201等新正式版本。某类来源或浏览器受阻只暂停对应操作，继续其他可行类别；不得为了完成计数虚构名单、统计或舞台。当前工作证据在 `docs/codex/evidence/20261028-post-v200/`。个人页统一排版仍待用户决定，旧一次性Chrome授权不复用。
+
+## 当前本地进度：496舞台，未发布（2026-10-28）
+
+3新增舞台＋Right Now固定机位替换已通过两份真实新鲜owner导出核验；新增缺口109、旧活动替换11。公开人物102作品527槽/233旧原件，24待证；9未知统计、7生效日、tripleS差360703开放。Geenius217为单日Retail下界，tripleS下界2098086，UDTT4/30仅采访发表日。9空歌曲行是已证有意保留团体占位，不猜歌。报告 `docs/codex/post-v200-completion-progress-20261028.md`，当前队列 `docs/codex/evidence/20261028-post-v200/remaining-*.json`。GitHub与部署分别留证，正式站保持v200，不以本地496冒称线上已更新。
+
+## 最新交付：v200上线，5项X人数与11作品人物资料（历史发布记录）
+
+正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已为 **v200 / succeeded**。GitHub实现 `aac36bd631ee1a84780fa1dbfb404561bba32dcf` 已推送并读回；本轮分支 `codex/stage-person-followup-v199-20261028` / [PR45](https://github.com/KAtOReNA7/idol/pull/45) 以PR44分支为base。PR44、PR45均draft/open、未合main。Sites源 `e27a7adf04140b130cd1d10568100c13f6258bde`，部署 `appgdep_6ae1efcd18648191bc43e2760bc2f9eb`，回执 `docs/codex/evidence/20261028-v200/publication.json`。GitHub与部署分别核对，不重复部署已成功版本。
+
+采用用户明确提供的GENBLUE 3277、VVUP 2.9万、GIRLSET 3.8万、EVERGLOW新账号1万、Cherry Bullet 18.5万；保留原文精度和2026-10-28观察日期，不冒称实时抓取。未知统计15→10（7销量、3一位）。公开人物新增11作品44槽，累计91作品488槽/229份既有原件；去重覆盖原131无私人关系作品中的96，剩35待证。录音、创作、发行、封套和Performance发布范围分别标注，不推定MV全员出镜、不新增私人关系。2828公共绑定＋12原生图、现有关系缺图0/旧低清0保持，所有已导批次不重做。
+
+舞台复查12作品/21精确查询，新增采用0；正式493来源，112新增缺口＋11旧来源替换保持。按打歌优先、完整官方练习室其次；替换前必须有新鲜owner评分/完整日志/线上来源核对，旧Chrome一次性授权已结束。本轮没有owner全量导出或舞台绑定变更。7事实日期、tripleS下界2,092,239及差额366,550、fromis_9下界1,152,076保持。个人页统一排版仍待用户决定。
+
+129项互不重复定向测试、TypeScript、正式构建、1421文件完整包字节核验通过；13项本轮应用文件精确同步，230受保护源文件保持。发布后public/1owner/0外部/0组/revision2与native/epoch6/原快照/done206保持；私人写入0，不声称全量个人字段hash复验。Codex内置页创建45秒超时，正式匿名HTTP403；未绕过或转用旧Chrome授权。四团本地完整HTML通过，VVUP客户端信息未验；正式打开queued不等于浏览器显示/视觉验收。
+
+下一台电脑先保护本地修改，显式fetch main、PR44分支与PR45分支并核两PR。干净后从最新origin/main新建codex/任务分支；若main尚未包含v200，普通merge最新PR45远端（已包含PR44），不能只接PR44或用旧main覆盖。保留本机stash `7779dd2e08e211b1219c474b16838e9915ee1a0e`（8已修改＋8未跟踪），不自动重放旧v196补丁。禁止reset/clean/强推。最新报告 `docs/codex/v200-evidence-followup-20261028.md`，当前队列在 `docs/codex/evidence/20261028-v200/remaining-person-statistics.json` 和 `remaining-stage-ledger.json`；下方v199及更早章节均是历史。
+
+
 ## 最新交付：v199上线，8舞台替换与35作品人物资料（2026-10-28）
 
 正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已上线 **v199 / succeeded**。GitHub实现`c17f6d0a14161068d160cad9f8b3a371cd4a64db`已普通推送并读回PR44任务分支；PR44仍draft/open、未合main。Sites源`747aa997a7512592a305a5e21161ded078fa519d`，部署`appgdep_6ae1cb52942c8191b0f93d099994fd3e`；两种交付分别记录于 `docs/codex/evidence/20261028-continuous/publication.json`。51团设计、Apple Music主站、个人评分/备注/观看、稳定ID/关系、访问和owner鉴权保持。

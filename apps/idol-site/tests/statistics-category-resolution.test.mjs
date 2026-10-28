@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {beforeUserXObservations} from './helpers/user-x-observations.cjs';
 const read=(path)=>JSON.parse(fs.readFileSync(path,'utf8'));
 const data=read('data/group-statistics-completion-evidence.json');
 const evidenceRoot='../../docs/codex/evidence/20261027-category-resolution/statistics/';
@@ -74,7 +75,7 @@ test('award source adjudication preserves accepted totals and explains discrepan
 });
 
 test('the historical 17 unresolved metrics and 22 reviewed topics remain reconstructable',()=>{
- const historicalData=structuredClone(data);
+ const historicalData=beforeUserXObservations(data);
  for(const change of laterSales.items){const [slug,field]=change.key.split('.');historicalData.groups[slug][field]=change.expectedBefore;}
  const actual=[];
  for(const [slug,g]of Object.entries(historicalData.groups)){

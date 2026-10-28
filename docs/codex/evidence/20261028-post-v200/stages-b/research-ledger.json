@@ -1,0 +1,3203 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T14:04:47.336689+00:00",
+  "scope": "v200 pending records[56:] only:56 stable work IDs. Offline classification of existing17 search batches and7 watch-page metadata observations; no new network requests.",
+  "baselineQueue": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+  "baselineSlice": {
+    "startInclusive": 56,
+    "endExclusive": 112
+  },
+  "inputs": [
+    {
+      "file": "search-session.json",
+      "sha256": "21ddee2236d375d16ef57b563e0185657e3428de360bbf7ee2d85943fecd8e83"
+    },
+    {
+      "file": "watch-metadata.json",
+      "sha256": "969a001aafd4b3d0f849517795bcaa74c3e6c4b01f1bffc83b3ca935df1ee3e5"
+    },
+    {
+      "file": "followup-watch-metadata.json",
+      "sha256": "a1340fd47e9952ebd22439d122fadc4228bc07aafb3736480fe4ec10e612b22c"
+    }
+  ],
+  "counts": {
+    "worksReviewed": 56,
+    "queryBatchesReferenced": 17,
+    "eligibleForFormalBinding": 0,
+    "absenceAssertions": 0,
+    "byCategory": {
+      "no_qualified_source_after_bounded_search": 14,
+      "format_or_occasion_unqualified_or_unverified": 11,
+      "exact_language_version_unverified": 7,
+      "official_full_source_not_retrieved": 4,
+      "exact_remix_version_unverified": 10,
+      "collaboration_or_performer_scope_unverified": 7,
+      "animation_version_scope_mismatch": 1,
+      "incomplete_excerpt": 1,
+      "official_origin_unverified": 1
+    },
+    "newPolicyReviewNeeded": 6
+  },
+  "categoryLabels": {
+    "no_qualified_source_after_bounded_search": "有限检索未取得可采用来源",
+    "exact_language_version_unverified": "精确语种版本未证",
+    "exact_remix_version_unverified": "精确混音版本未证",
+    "collaboration_or_performer_scope_unverified": "合作或表演者范围未证",
+    "format_or_occasion_unqualified_or_unverified": "表演形式或场合不符/未证",
+    "official_full_source_not_retrieved": "已有播出线索但完整一手片源未取得",
+    "incomplete_excerpt": "片段不足全曲",
+    "animation_version_scope_mismatch": "动画版本范围不符",
+    "official_origin_unverified": "原始发布身份未证"
+  },
+  "records": [
+    {
+      "workId": "recvxyH5pzJov0",
+      "artist": "Weeekly",
+      "song": "Top Secret",
+      "baselineIndex": 56,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "本轮Top Secret韩英精确查询主要返回其他艺人同名内容、团体资料和演唱会线索；库存中没有已核可用的同曲常规打歌或完整官方练习。",
+      "nextAction": "优先查Weeekly官方频道按曲目归档及发行期节目单；避免把Secret/其他艺人同名作品当本曲。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 1,
+            "queryIndex": 0,
+            "query": "위클리 \"Top Secret\" \"안무\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/0/queries/0",
+            "batchSourcesPointer": "/batches/0/sources",
+            "batchSourceCount": 37
+          },
+          {
+            "batch": 2,
+            "queryIndex": 0,
+            "query": "Weeekly \"Top Secret\" \"live\" official",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/1/queries/0",
+            "batchSourcesPointer": "/batches/1/sources",
+            "batchSourceCount": 55
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/56"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyH5pzQxpW",
+      "artist": "WOOAH",
+      "song": "SUMMER",
+      "baselineIndex": 57,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "SUMMER查询返回发行/MV报道、WOOAH目录与fan concert信息；尚无同曲合格原始表演上传。",
+      "nextAction": "按2026 SUMMER与WXW Vol.3精确发行范围核常规节目和官方完整练习。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 1,
+            "queryIndex": 1,
+            "query": "우아 \"SUMMER\" \"연습\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/0/queries/1",
+            "batchSourcesPointer": "/batches/0/sources",
+            "batchSourceCount": 37
+          },
+          {
+            "batch": 2,
+            "queryIndex": 1,
+            "query": "WOOAH \"SUMMER\" \"live\" 2026",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/1/queries/1",
+            "batchSourcesPointer": "/batches/1/sources",
+            "batchSourceCount": 55
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/57"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyH5pzVn2k",
+      "artist": "STAYC",
+      "song": "LIT",
+      "baselineIndex": 58,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "LIT查询出现日本MV、访谈和发行介绍；仅有这些标题不能建立完整节目/练习来源。",
+      "nextAction": "继续核日本官方节目档案及STAYC Japan正式练习，确认日语版本。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 3,
+            "queryIndex": 0,
+            "query": "STAYC LIT ステイシー テレビ パフォーマンス",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/2/queries/0",
+            "batchSourcesPointer": "/batches/2/sources",
+            "batchSourceCount": 43
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/58"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyH5pzZfyK",
+      "artist": "WOOAH",
+      "song": "Shining On You",
+      "baselineIndex": 59,
+      "category": "表演形式或场合不符/未证",
+      "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+      "status": "pending_evidence",
+      "reason": "发现Shining on you Side B视频与原M/V、文化院项目介绍；Side B名称本身不能证明是音乐节目或完整练习。",
+      "nextAction": "核Side B的制作/表演形态与完整音轨；若仍为宣传MV则仅保留观看资料。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 2,
+            "queryIndex": 3,
+            "query": "WOOAH \"Shining On You\" practice",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/1/queries/3",
+            "batchSourcesPointer": "/batches/1/sources",
+            "batchSourceCount": 55
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "Shining on you (Side B) with WOOAH - YouTube",
+          "url": "https://www.youtube.com/watch?v=2GNJuBVCz5E",
+          "reference": "turn988108youtube46",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/1/sources/1",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "WOOAH profile in English | Members, songs, official videos | KPOP DISCOVER",
+          "url": "https://kpopdiscover.com/en/groups/wooah/",
+          "reference": "turn988108search6",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/1/sources/7",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/59"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyH5pzbluu",
+      "artist": "STAYC",
+      "song": "MWUAH",
+      "baselineIndex": 60,
+      "category": "表演形式或场合不符/未证",
+      "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+      "status": "pending_evidence",
+      "reason": "本轮MWUAH练习查询未取得新的合格来源；旧3LGQGtnxEEg已证是STAY ALIVE Showcase舞台彩排，不因Rehearsal题名改为练习室。",
+      "nextAction": "保留showcase排除原因，寻找独立室内完整练习或常规音乐节目。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 4,
+            "queryIndex": 0,
+            "query": "STAYC \"MWUAH\" \"dance practice\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/3/queries/0",
+            "batchSourcesPointer": "/batches/3/sources",
+            "batchSourceCount": 38
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "showcase_rehearsal_excluded",
+        "reason": "3LGQGtnxEEg第一方正文明确KT Zepp Yokohama STAY ALIVE Showcase LIVE的舞台彩排；不是室内练习室，不因Stage Rehearsal自动合格。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/60"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyH5pzdckl",
+      "artist": "STAYC",
+      "song": "MEOW",
+      "baselineIndex": 61,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "MEOW查询返回发行商目录、发行纪念活动和setlist；活动/曲目存在不等于已取得常规节目原片。",
+      "nextAction": "从STAYC Japan官方节目表与完整练习查精确MEOW，排除发行见面活动与巡演。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 3,
+            "queryIndex": 1,
+            "query": "STAYC MEOW ダンス 練習 音楽番組",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/2/queries/1",
+            "batchSourcesPointer": "/batches/2/sources",
+            "batchSourceCount": 43
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/61"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyH5pzi1oo",
+      "artist": "IZ*ONE",
+      "song": "D-D-DANCE",
+      "baselineIndex": 62,
+      "category": "表演形式或场合不符/未证",
+      "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+      "status": "pending_evidence",
+      "reason": "本轮D-D-DANCE返回MV/音源资料；旧Universe活动及UNI-KON38秒片段不能转为合格全曲打歌。",
+      "nextAction": "查独立常规节目或全曲官方练习，保留活动/节选资料但不绑定。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 3,
+            "queryIndex": 3,
+            "query": "IZONE D D DANCE 안무 연습 공식",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/2/queries/3",
+            "batchSourcesPointer": "/batches/2/sources",
+            "batchSourceCount": 43
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "excluded_event_or_no_eligible_source",
+        "reason": "已知完整演出来自Universe粉丝活动/非官方转传；原官方UNI-KON公开片段仅38秒。未取得常规节目或练习室完整一手版本。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/62"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyH5pzoIOD",
+      "artist": "Weeekly",
+      "song": "Happy Christmas",
+      "baselineIndex": 63,
+      "category": "表演形式或场合不符/未证",
+      "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+      "status": "pending_evidence",
+      "reason": "YAOKI_official的243秒Happy Christmas Special Video已核元数据，Weeekly Weverse亦认领；官方性和时长已有依据，实际表演类型仍未证，不能直接称打歌/练习或反向断言没有舞台。",
+      "nextAction": "针对这支243秒视频核实际构成/场合；若为特制MV或其他棚内表演，分别标类型，仍优先常规节目及练习。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 3,
+            "queryIndex": 2,
+            "query": "Weeekly Happy Christmas live official YAOKI",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/2/queries/2",
+            "batchSourcesPointer": "/batches/2/sources",
+            "batchSourceCount": 43
+          },
+          {
+            "batch": 17,
+            "queryIndex": 3,
+            "query": "\"Happy Christmas\" \"xpH69uV9Ge0\" Weeekly",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/16/queries/3/q",
+            "batchSourcesPointer": "/batches/16/sources",
+            "batchSourceCount": 42
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "Weverse Weeekly Media - Weeekly(위클리) : 'Happy Christmas' Special Video",
+          "url": "https://weverse.io/weeekly/media/0-109831625",
+          "reference": "turn865193search5",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/2/sources/5",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "produced_performance_not_practice",
+        "reason": "YAOKI官方Special Video xpH69uV9Ge0为专门制作的视频，尚无证据说明是常规节目或练习室；短挑战不补全曲。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/63"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "watchMetadata": {
+        "evidenceFile": "followup-watch-metadata.json",
+        "jsonPointer": "/0",
+        "videoId": "xpH69uV9Ge0",
+        "url": "https://www.youtube.com/watch?v=xpH69uV9Ge0",
+        "title": "Weeekly (위클리) - Happy Christmas 스페셜비디오 | Weeekly | 해피크리스마스 | 스페셜비디오 | Special Video",
+        "channel": "YAOKI_official",
+        "channelId": "UCCnOby2RALbEbm5RLL2QEhg",
+        "durationSeconds": 243,
+        "publishedAt": "2022-12-09T01:00:06-08:00",
+        "sha256": "8fed2a222e4dc6920611ba332150f7775dc81280374c48b4eba6f0250f3dbc06",
+        "checkedAt": "2026-10-28T13:44:29.297374+00:00",
+        "readScope": "Previously fetched watch-page metadata; not complete playback or audio validation."
+      },
+      "verifiedAndPending": {
+        "officialAdoption": "Weeekly Weverse media/0-109831625 acknowledges Special Video",
+        "durationSeconds": 243,
+        "performanceTypeVerified": false
+      }
+    },
+    {
+      "workId": "recvxyH5pzoMAf",
+      "artist": "STAYC",
+      "song": "Teddy Bear",
+      "baselineIndex": 64,
+      "category": "精确语种版本未证",
+      "sourceCategory": "exact_language_version_unverified",
+      "status": "pending_evidence",
+      "reason": "目标是Teddy Bear日本版；本轮只出现日本综艺舞蹈报道/泛节目资料，未取得已核同语种全曲原片。",
+      "nextAction": "检查STAYC日本官方节目原上传与实际音轨；韩版练习和GFJ活动不自动替代。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 4,
+            "queryIndex": 1,
+            "query": "STAYC \"Teddy Bear\" \"Japanese\" \"CDTV\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/3/queries/1",
+            "batchSourcesPointer": "/batches/3/sources",
+            "batchSourceCount": 38
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "language_version_mismatch",
+        "reason": "目标Teddy Bear日本版；常见官方练习室_NZ8pGF3R-w和韩国打歌标题未证明日本语种，GFJ特别活动也不自动等于常规打歌。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/64"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyH5pzoaOZ",
+      "artist": "Weeekly",
+      "song": "Love",
+      "baselineIndex": 65,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "Love查询出现KBS广播歌单和Jihan/Park So Eun OST发行报道；广播播放不等于现场表演，不能推全团演出。",
+      "nextAction": "按A Business Proposal OST与Jihan/Park So Eun具名范围查官方完整表演，不再仅以泛Love检索。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 1,
+            "queryIndex": 2,
+            "query": "위클리 \"Love\" \"무대\" 콜린",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/0/queries/2",
+            "batchSourcesPointer": "/batches/0/sources",
+            "batchSourceCount": 37
+          },
+          {
+            "batch": 2,
+            "queryIndex": 2,
+            "query": "Weeekly \"Love\" \"KBS\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/1/queries/2",
+            "batchSourcesPointer": "/batches/1/sources",
+            "batchSourceCount": 55
+          },
+          {
+            "batch": 4,
+            "queryIndex": 2,
+            "query": "위클리 \"Love\" 김이나 라이브",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/3/queries/2",
+            "batchSourcesPointer": "/batches/3/sources",
+            "batchSourceCount": 38
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/65"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyH5pzrrSO",
+      "artist": "WOOAH",
+      "song": "WXW (Wish With W)",
+      "baselineIndex": 66,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "WXW查询主要是Bugs发行目录、项目报道与音源，尚未取得可采用的节目/练习原片。",
+      "nextAction": "按Wish With W曲名与发行期官方视频归档继续核查，不能把专辑宣传/音源当舞台。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 1,
+            "queryIndex": 3,
+            "query": "우아 \"Wish With W\" performance",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/0/queries/3",
+            "batchSourcesPointer": "/batches/0/sources",
+            "batchSourceCount": 37
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/66"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKM2Gwu",
+      "artist": "IVE",
+      "song": "ELEVEN -Japanese ver.-",
+      "baselineIndex": 67,
+      "category": "精确语种版本未证",
+      "sourceCategory": "exact_language_version_unverified",
+      "status": "pending_evidence",
+      "reason": "ELEVEN日版查询得到THE FIRST TAKE新闻，但显著命中是After LIKE；未证ELEVEN日语表演，更不能把日本节目所在地等同日语音轨。",
+      "nextAction": "继续找ELEVEN日语发行期官方节目或练习，逐曲核题名与音轨。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 4,
+            "queryIndex": 3,
+            "query": "IVE \"ELEVEN\" \"Japanese\" \"THE FIRST TAKE\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/3/queries/3",
+            "batchSourcesPointer": "/batches/3/sources",
+            "batchSourceCount": 38
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "language_version_mismatch",
+        "reason": "目标ELEVEN日本版；检索的EzyWv-eiABA为韩版推广期练习室，不能填日本版。日本节目存在历史线索，但未取得一手公开完整本版片源。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/67"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKM5r64",
+      "artist": "IVE",
+      "song": "Be Alright",
+      "baselineIndex": 68,
+      "category": "已有播出线索但完整一手片源未取得",
+      "sourceCategory": "official_full_source_not_retrieved",
+      "status": "pending_evidence",
+      "reason": "找到TBS CDTV歌曲档案Be Alright及节目报道线索；源库存尚无可审查的完整原上传。",
+      "nextAction": "从TBS该歌曲页/官方档案定位实际节目日期及完整片源，再核版本与时长。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 5,
+            "queryIndex": 0,
+            "query": "IVE \"Be Alright\" \"CDTV\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/4/queries/0",
+            "batchSourcesPointer": "/batches/4/sources",
+            "batchSourceCount": 50
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "曲名：Be Alright｜TBSテレビ『CDTV ライブ! ライブ!』",
+          "url": "https://www.tbs.co.jp/cdtv_livelive/songdb/song40449.html",
+          "reference": "turn204048search0",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/4/sources/0",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/68"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMBHQA",
+      "artist": "aespa",
+      "song": "Get Goin'",
+      "baselineIndex": 69,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "Get Goin查询主要指Fraggle Rock OST发布与音源信息，未取得艺人本人同曲完整打歌/练习来源。",
+      "nextAction": "按aespa官方及Apple节目宣传归档寻找实际表演，区分音乐录音/节目动画与现场。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 5,
+            "queryIndex": 1,
+            "query": "aespa \"Get Goin\" \"performance\" official",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/4/queries/1",
+            "batchSourcesPointer": "/batches/4/sources",
+            "batchSourceCount": 50
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/69"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMCSdB",
+      "artist": "aespa",
+      "song": "Armageddon (Flava D Remix)",
+      "baselineIndex": 70,
+      "category": "精确混音版本未证",
+      "sourceCategory": "exact_remix_version_unverified",
+      "status": "pending_evidence",
+      "reason": "Armageddon目标Flava D Remix；本轮无已核同混音的常规节目/完整练习，不得用原曲替代。",
+      "nextAction": "查ScreaM/艺人官方精确Flava D混音表演，先核混音版本再比较片源。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 5,
+            "queryIndex": 2,
+            "query": "aespa \"Armageddon\" \"Flava D\" \"practice\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/4/queries/2",
+            "batchSourcesPointer": "/batches/4/sources",
+            "batchSourceCount": 50
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "exact_remix_not_found",
+        "reason": "目标精确混音：Flava D混音版；本轮检索返回对应混音MV/音源及原曲舞台/练习室。原曲和不同混音均不能充当该版本，未取得艺人官方完整同混音节目/练习室。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/70"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMDFye",
+      "artist": "aespa",
+      "song": "Welcome To MY World (Feat. nævis)",
+      "baselineIndex": 71,
+      "category": "合作或表演者范围未证",
+      "sourceCategory": "collaboration_or_performer_scope_unverified",
+      "status": "pending_evidence",
+      "reason": "Golden Disc官方K-909全景0TeYnotdeoE，236秒，节目及上传身份已有依据；尚未核nævis原客演声部是否完整对应目标feat版本。",
+      "nextAction": "按用户新政策复核完整、同语种、官方成员表演后备，标明与原合作版的客串/声部差异；仍核音乐节目或完整练习类型、混音与全长，不把待审自动计为已采用。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 5,
+            "queryIndex": 3,
+            "query": "aespa \"Welcome To MY World\" \"K-909\" nævis",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/4/queries/3",
+            "batchSourcesPointer": "/batches/4/sources",
+            "batchSourceCount": 50
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "collaborator_or_occasion_unconfirmed",
+        "reason": "K-909团体全景0TeYnotdeoE可读，但nævis原声部对应与节目是否属于本栏目已接受类型仍待核；不以团体题名推定客演完整。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/71"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "watchMetadata": {
+        "evidenceFile": "followup-watch-metadata.json",
+        "jsonPointer": "/2",
+        "videoId": "0TeYnotdeoE",
+        "url": "https://www.youtube.com/watch?v=0TeYnotdeoE",
+        "title": "[909 직캠 4K] 에스파 풀캠 'Welcome To MY World' (aespa FullCam) | @JTBC K-909 230513",
+        "channel": "Golden Disc",
+        "channelId": "UCesY-UN9tgibpFJ-lw3y_1A",
+        "durationSeconds": 236,
+        "publishedAt": "2023-05-13T01:32:30-07:00",
+        "sha256": "c3ae307fe2accda2dd6900ada6256d6e7ca833c002ae6b14ffc12c04f46822f8",
+        "checkedAt": "2026-10-28T13:44:29.298375+00:00",
+        "readScope": "Previously fetched watch-page metadata; not complete playback or audio validation."
+      },
+      "verifiedAndPending": {
+        "officialBroadcast": "JTBC K-909 2023-05-13, official Golden Disc fullcam",
+        "broadcastTypePending": false,
+        "naevisPartVerified": false
+      },
+      "classificationBeforePolicyUpdate": {
+        "reason": "Golden Disc官方K-909全景0TeYnotdeoE，236秒，节目及上传身份已有依据；尚未核nævis原客演声部是否完整对应目标feat版本。",
+        "nextAction": "保留已证K-909节目类型，重点核音轨及nævis声部范围；不以aespa题名推合作版本已完整。"
+      },
+      "new_policy_review_needed": true,
+      "policyReview": {
+        "status": "new_policy_review_needed",
+        "basis": "Parent relay of current user decision: full-length, same-language official group-member versions may be used as fallback for a collaboration song, with the performer/version difference disclosed.",
+        "groupMemberPerformanceRequired": true,
+        "sameLanguageRequired": true,
+        "sameRemixRequired": true,
+        "fullLengthRequired": true,
+        "scopeDifferenceDisclosureRequired": true,
+        "acceptedOrBoundByThisClassification": false
+      }
+    },
+    {
+      "workId": "recvxyHuKMLz7L",
+      "artist": "aespa",
+      "song": "LEMONADE (2Spade Remix)",
+      "baselineIndex": 72,
+      "category": "精确混音版本未证",
+      "sourceCategory": "exact_remix_version_unverified",
+      "status": "pending_evidence",
+      "reason": "2Spade精确混音的Bugs/Qobuz/官方智能链接可定位发行；未取得该混音的合格完整表演。",
+      "nextAction": "从官方2Spade版本发行归档查表演/练习，原LEMONADE及其他Remix不替代。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 7,
+            "queryIndex": 0,
+            "query": "aespa \"LEMONADE\" \"2Spade\" choreography",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/6/queries/0",
+            "batchSourcesPointer": "/batches/6/sources",
+            "batchSourceCount": 63
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "LEMONADE (2Spade Remix)/aespa, 2Spade - 벅스",
+          "url": "https://music.bugs.co.kr/album/4149013",
+          "reference": "turn520975search0",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/6/sources/0",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "aespa, 2Spade - LEMONADE (2Spade Remix)",
+          "url": "https://aespa.lnk.to/2spade",
+          "reference": "turn520975search5",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/6/sources/6",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "exact_remix_not_found",
+        "reason": "目标精确混音：2Spade混音版；本轮检索返回对应混音MV/音源及原曲舞台/练习室。原曲和不同混音均不能充当该版本，未取得艺人官方完整同混音节目/练习室。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/72"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMNnpu",
+      "artist": "IVE",
+      "song": "SUMMER FESTA",
+      "baselineIndex": 73,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "SUMMER FESTA本轮未出现可核同曲官方节目/完整练习，旧活动资料不自动符合新政策。",
+      "nextAction": "继续精确曲名加IVE官方节目档案，区分广告MV、活动舞台和常规打歌。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 6,
+            "queryIndex": 0,
+            "query": "IVE \"SUMMER FESTA\" \"dance practice\" official",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/5/queries/0",
+            "batchSourcesPointer": "/batches/5/sources",
+            "batchSourceCount": 41
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/73"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMXVDa",
+      "artist": "aespa",
+      "song": "Regret of the Times (2024 aespa Remake Ver.)",
+      "baselineIndex": 74,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "Regret of the Times重制版查询只出现发行报道；未核到2024 aespa Remake实际完整表演。",
+      "nextAction": "查SM STATION/艺人官方排练与节目，不能用Seo Taiji原曲或他人翻唱替代。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 6,
+            "queryIndex": 1,
+            "query": "aespa \"시대유감\" \"안무\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/5/queries/1",
+            "batchSourcesPointer": "/batches/5/sources",
+            "batchSourceCount": 41
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/74"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMZLFT",
+      "artist": "aespa",
+      "song": "KISS N TELL",
+      "baselineIndex": 75,
+      "category": "已有播出线索但完整一手片源未取得",
+      "sourceCategory": "official_full_source_not_retrieved",
+      "status": "pending_evidence",
+      "reason": "新增Bazurhythm02的KISS N TELL播出目录线索；旧905秒Dance Practice Behind The Scenes仍是幕后，不能当完整单曲练习。",
+      "nextAction": "查2026-09-12该日本节目官方片源及全长，保持幕后与非官方转传独立。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 6,
+            "queryIndex": 2,
+            "query": "aespa \"KISS N TELL\" \"CDTV\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/5/queries/2",
+            "batchSourcesPointer": "/batches/5/sources",
+            "batchSourceCount": 41
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "少女時代のテレビ情報 | KISS N TELL/aespa | バズリズム 02(2026/09/12(土)00:59) | TVでた蔵",
+          "url": "https://datazoo.jp/w/%E5%B0%91%E5%A5%B3%E6%99%82%E4%BB%A3/74640554",
+          "reference": "turn378868search0",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/5/sources/0",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "behind_scenes_or_unofficial_reupload",
+        "reason": "TckIwsQHrJs原页905秒且明确Dance Practice Behind The Scenes；不能以幕后合集当完整单曲。Fuji节目存在非官方转传线索，未取得可采用一手完整上传。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/75"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMh5bM",
+      "artist": "IVE",
+      "song": "I WANT",
+      "baselineIndex": 76,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "I WANT查询显著误命中STAYC I WANT IT；没有由这些检索结果证明的IVE I WANT常规节目原片。",
+      "nextAction": "精确锁定IVE与I WANT及PEPSI发行范围，排除STAYC同名近似曲及旧活动。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 6,
+            "queryIndex": 3,
+            "query": "IVE \"I WANT\" \"음악중심\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/5/queries/3",
+            "batchSourcesPointer": "/batches/5/sources",
+            "batchSourceCount": 41
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_eligible_source_in_bounded_search",
+        "reason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/76"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMiDs4",
+      "artist": "aespa",
+      "song": "Girls (BRLLNT Remix)",
+      "baselineIndex": 77,
+      "category": "精确混音版本未证",
+      "sourceCategory": "exact_remix_version_unverified",
+      "status": "pending_evidence",
+      "reason": "Girls BRLLNT Remix官方MV/音源可定位；MV标题不证明艺人同混音打歌或练习。",
+      "nextAction": "只找BRLLNT版本完整表演；原Girls练习、其他混音、DJ演出不代填。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 7,
+            "queryIndex": 2,
+            "query": "aespa \"Girls\" \"BRLLNT\" performance",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/6/queries/2",
+            "batchSourcesPointer": "/batches/6/sources",
+            "batchSourceCount": 63
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "Girls (BRLLNT Remix) - YouTube",
+          "url": "https://www.youtube.com/watch?v=5B7OGKsErvY",
+          "reference": "turn520975youtube48",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/6/sources/9",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "aespa 에스파 'Girls (BRLLNT Remix)' MV - YouTube",
+          "url": "https://www.youtube.com/watch?v=ZlcvaEpCEJ4",
+          "reference": "turn520975youtube50",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/6/sources/15",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "exact_remix_not_found",
+        "reason": "目标精确混音：BRLLNT混音版；本轮检索返回对应混音MV/音源及原曲舞台/练习室。原曲和不同混音均不能充当该版本，未取得艺人官方完整同混音节目/练习室。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/77"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMisqR",
+      "artist": "aespa",
+      "song": "Next Level (Habstrakt Remix)",
+      "baselineIndex": 78,
+      "category": "精确混音版本未证",
+      "sourceCategory": "exact_remix_version_unverified",
+      "status": "pending_evidence",
+      "reason": "Weverse认领Next Level Habstrakt Remix MV，版本明确；还没有该混音的合格完整艺人表演来源。",
+      "nextAction": "保留混音MV资料，继续查同混音常规节目/练习；原曲不得替代。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 7,
+            "queryIndex": 1,
+            "query": "aespa \"Next Level\" \"Habstrakt\" live SM official",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/6/queries/1",
+            "batchSourcesPointer": "/batches/6/sources",
+            "batchSourceCount": 63
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "Weverse aespa Media - aespa 에스파 'Next Level (Habstrakt Remix)' MV",
+          "url": "https://weverse.io/aespa/media/2-124992297",
+          "reference": "turn520975search42",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/6/sources/47",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "exact_remix_not_found",
+        "reason": "目标精确混音：Habstrakt混音版；本轮检索返回对应混音MV/音源及原曲舞台/练习室。原曲和不同混音均不能充当该版本，未取得艺人官方完整同混音节目/练习室。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/78"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMlAhN",
+      "artist": "aespa",
+      "song": "Rich Man (Yellow Claw Remix)",
+      "baselineIndex": 79,
+      "category": "精确混音版本未证",
+      "sourceCategory": "exact_remix_version_unverified",
+      "status": "pending_evidence",
+      "reason": "Yellow Claw Rich Man检索有混音发行报道，缺同混音合格表演。",
+      "nextAction": "锁定Yellow Claw版本及表演者，排除原Rich Man和DPR等其他Remix。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 7,
+            "queryIndex": 3,
+            "query": "aespa \"Rich Man\" \"Yellow Claw\" dance practice",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/6/queries/3",
+            "batchSourcesPointer": "/batches/6/sources",
+            "batchSourceCount": 63
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "exact_remix_not_found",
+        "reason": "目标精确混音：Yellow Claw混音版；本轮检索返回对应混音MV/音源及原曲舞台/练习室。原曲和不同混音均不能充当该版本，未取得艺人官方完整同混音节目/练习室。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/79"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMlGJW",
+      "artist": "aespa",
+      "song": "Supernova (Grimes Remix)",
+      "baselineIndex": 80,
+      "category": "精确混音版本未证",
+      "sourceCategory": "exact_remix_version_unverified",
+      "status": "pending_evidence",
+      "reason": "Supernova Grimes Remix检索没有形成可采用的同混音官方节目/练习证据；原曲不相同。",
+      "nextAction": "核Grimes混音原发布及完整艺人表演，仍保留差异而不拿原曲补空。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 8,
+            "queryIndex": 0,
+            "query": "aespa \"Supernova\" \"Grimes\" \"dance practice\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/7/queries/0",
+            "batchSourcesPointer": "/batches/7/sources",
+            "batchSourceCount": 68
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "exact_remix_not_found",
+        "reason": "目标精确混音：Grimes混音版；本轮检索返回对应混音MV/音源及原曲舞台/练习室。原曲和不同混音均不能充当该版本，未取得艺人官方完整同混音节目/练习室。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/80"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMlNfX",
+      "artist": "aespa",
+      "song": "LEMONADE (Marlon Hoffstadt Remix)",
+      "baselineIndex": 81,
+      "category": "精确混音版本未证",
+      "sourceCategory": "exact_remix_version_unverified",
+      "status": "pending_evidence",
+      "reason": "Marlon Hoffstadt LEMONADE已有发行目录/MV目录线索，未核到合格全曲表演。",
+      "nextAction": "分别核Remix与Extended Mix，不以任一版本或原曲自动替代。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 8,
+            "queryIndex": 1,
+            "query": "aespa \"LEMONADE\" \"Marlon Hoffstadt\" performance",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/7/queries/1",
+            "batchSourcesPointer": "/batches/7/sources",
+            "batchSourceCount": 68
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "LEMONADE (Marlon Hoffstadt Remix)/aespa, Marlon Hoffstadt - 벅스",
+          "url": "https://music.bugs.co.kr/album/4148904?wl_ref=list_ab_03_ar",
+          "reference": "turn959350search4",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/7/sources/8",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "LEMONADE (Marlon Hoffstadt Remix) - aespa, Marlon Hoffstadt, SMTOWN | Music Video | Cinderblock TV",
+          "url": "https://cinderblock.tv/video/lemonade-marlon-hoffstadt-remix--zBiB0jww7_8",
+          "reference": "turn959350search14",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/7/sources/18",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "exact_remix_not_found",
+        "reason": "目标精确混音：Marlon Hoffstadt混音版；本轮检索返回对应混音MV/音源及原曲舞台/练习室。原曲和不同混音均不能充当该版本，未取得艺人官方完整同混音节目/练习室。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/81"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMwjsI",
+      "artist": "aespa",
+      "song": "Supernova (Grimes Remix) (The Other World Ver.)",
+      "baselineIndex": 82,
+      "category": "精确混音版本未证",
+      "sourceCategory": "exact_remix_version_unverified",
+      "status": "pending_evidence",
+      "reason": "The Other World明确属于Supernova Grimes Remix版本，不能因同曲名归回原Supernova；当前结果是MV/目录及混音介绍，没有合格表演证据。",
+      "nextAction": "继续按Grimes Remix The Other World精确范围查；原Supernova舞台和其他混音均不代填。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 17,
+            "queryIndex": 1,
+            "query": "aespa \"Supernova\" \"The Other World\" \"performance\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/16/queries/1/q",
+            "batchSourcesPointer": "/batches/16/sources",
+            "batchSourceCount": 42
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "exact_remix_not_found",
+        "reason": "目标精确混音：Grimes混音The Other World版；本轮检索返回对应混音MV/音源及原曲舞台/练习室。原曲和不同混音均不能充当该版本，未取得艺人官方完整同混音节目/练习室。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/82"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMwrIt",
+      "artist": "IVE",
+      "song": "BANG BANG (MINIVE VER.)",
+      "baselineIndex": 83,
+      "category": "动画版本范围不符",
+      "sourceCategory": "animation_version_scope_mismatch",
+      "status": "pending_evidence",
+      "reason": "目标rNGPgQB4Be8是74秒MINIVE动画版本；真人BANG BANG完整Performance uVpGElT--E8虽经用户认可，仍不能填充这个独立动画版本。",
+      "nextAction": "保留动画作品与真人作品独立ID/评分含义，不按真人全曲建立动画舞台绑定。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 17,
+            "queryIndex": 0,
+            "query": "IVE \"BANG BANG\" \"MINIVE\" performance",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/16/queries/0/q",
+            "batchSourcesPointer": "/batches/16/sources",
+            "batchSourceCount": 42
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "BANG BANG｜IVE 아이브 \\'BANG BANG\\' PERFORMANCE VIDEO",
+          "url": "https://www.nehannn.com/mv-play/g_173/uVpGElT--E8.html",
+          "reference": "turn418760search1",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/16/sources/1",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "BANG BANG（IVE）",
+          "url": "https://www.nehannn.com/mv-play/g_173/9qkpcLK422o.html",
+          "reference": "turn418760search2",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/16/sources/2",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "animated_version_scope_mismatch",
+        "reason": "原MV rNGPgQB4Be8为74秒MINIVE动画版本；真人全曲表演uVpGElT--E8的范围/性质不同，不自动填此动画版作品。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/83"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "versionGuard": {
+        "originalVideoId": "rNGPgQB4Be8",
+        "animationSeconds": 74,
+        "differentHumanPerformanceVideoId": "uVpGElT--E8",
+        "humanVersionApprovalDoesNotTransfer": true,
+        "source": "Prior queue and parent handoff; no repeated download."
+      }
+    },
+    {
+      "workId": "recvxyHuKMxwnW",
+      "artist": "aespa",
+      "song": "LEMONADE (Zedd Remix)",
+      "baselineIndex": 84,
+      "category": "精确混音版本未证",
+      "sourceCategory": "exact_remix_version_unverified",
+      "status": "pending_evidence",
+      "reason": "LEMONADE Zedd Remix音源及目录可定位，Extended Mix亦存在；尚无同版合格完整表演。",
+      "nextAction": "区分Zedd Remix/Extended Mix及原曲，核确切版本后再挑节目/练习。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 8,
+            "queryIndex": 2,
+            "query": "aespa \"LEMONADE\" \"Zedd\" performance",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/7/queries/2",
+            "batchSourcesPointer": "/batches/7/sources",
+            "batchSourceCount": 68
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "LEMONADE (Zedd Remix) - YouTube",
+          "url": "https://www.youtube.com/watch?v=pEnaBWnmxNE",
+          "reference": "turn959350youtube47",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/7/sources/1",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "LEMONADE (Zedd Extended Mix) - Single by aespa, Zedd | Spotify",
+          "url": "https://open.spotify.com/album/0ncFBVz5eEscgThDpwWxWm",
+          "reference": "turn959350search2",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/7/sources/5",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "exact_remix_not_found",
+        "reason": "目标精确混音：Zedd混音版；本轮检索返回对应混音MV/音源及原曲舞台/练习室。原曲和不同混音均不能充当该版本，未取得艺人官方完整同混音节目/练习室。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/84"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyHuKMyy5i",
+      "artist": "aespa",
+      "song": "Spicy (Nitepunk Remix)",
+      "baselineIndex": 85,
+      "category": "精确混音版本未证",
+      "sourceCategory": "exact_remix_version_unverified",
+      "status": "pending_evidence",
+      "reason": "Spicy Nitepunk Remix发行/MV介绍、Bugs/Beatport和官方SoundCloud可定位，未证同混音打歌或练习。",
+      "nextAction": "仅检索该混音实际艺人表演，MV和DJ制作资料不代填。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 8,
+            "queryIndex": 3,
+            "query": "aespa \"Spicy\" \"Nitepunk\" performance",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/7/queries/3",
+            "batchSourcesPointer": "/batches/7/sources",
+            "batchSourceCount": 68
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "aespa's Hit Single 'Spicy' Remixed By Nitepunk",
+          "url": "https://www.broadwayworld.com/bwwmusic/article/aespas-Hit-Single-Spicy-Remixed-By-Nitepunk-20230915",
+          "reference": "turn959350search15",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/7/sources/19",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Stream Spicy (Nitepunk Remix) by aespa | Listen online for free on SoundCloud",
+          "url": "https://soundcloud.com/aespaofficial/spicy-nitepunk-remix",
+          "reference": "turn959350search23",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/7/sources/27",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "exact_remix_not_found",
+        "reason": "目标精确混音：Nitepunk混音版；本轮检索返回对应混音MV/音源及原曲舞台/练习室。原曲和不同混音均不能充当该版本，未取得艺人官方完整同混音节目/练习室。",
+        "nextAction": "继续核该精确作品的常规音乐节目或官方完整练习室；保留原始语种、参与者及当前评分，不以其他表演凑数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/85"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5X0JJ9",
+      "artist": "i-dle",
+      "song": "Revenge",
+      "baselineIndex": 86,
+      "category": "表演形式或场合不符/未证",
+      "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+      "status": "pending_evidence",
+      "reason": "Revenge本轮命中官方MV及MV新闻，未出现新的合格练习/常规节目；旧特殊活动不自动准入。",
+      "nextAction": "继续找独立同曲练习或常规打歌；制作MV/巡演/特别活动分别保留类型。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 9,
+            "queryIndex": 0,
+            "query": "(G)I-DLE Revenge official performance video dance practice",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/8/queries/0",
+            "batchSourcesPointer": "/batches/8/sources",
+            "batchSourceCount": 65
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "(여자)아이들((G)I-DLE) - 'Revenge' Official Music Video - YouTube",
+          "url": "https://www.youtube.com/watch?v=KAymeaEyPr8",
+          "reference": "turn532829youtube46",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/8/sources/1",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "(G)I-DLE Releases Music Video for 'Revenge' l KBS WORLD",
+          "url": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=449466&lang=e",
+          "reference": "turn532829search5",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/8/sources/7",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "special_or_event_only",
+        "reason": "官方 KBS 2024 Song Festival 的113秒 Revenge 是年末特别舞台，且短于本曲完整范围；其他找到的是巡演观众录像。没有找到可核完整普通打歌／练习室。",
+        "nextAction": "查公司正式单曲练习档案；年末串烧不按完整标准补数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/86"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5X1VFs",
+      "artist": "i-dle",
+      "song": "I Want That",
+      "baselineIndex": 87,
+      "category": "表演形式或场合不符/未证",
+      "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+      "status": "pending_evidence",
+      "reason": "I Want That命中HEAT发行页、官方MV及Jingle Ball相关线索；未有已核常规节目/练习来源。",
+      "nextAction": "排除演唱会/节庆演出后继续查官方棚内来源，并单独核场合资格。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 9,
+            "queryIndex": 1,
+            "query": "(G)I-DLE \"I Want That\" official performance live studio",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/8/queries/1",
+            "batchSourcesPointer": "/batches/8/sources",
+            "batchSourceCount": 65
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "(G)I-DLE、本日6日に米国EPアルバム『HEAT』発売…タイトル曲は「I Want That」 - i-dle 日本オフィシャルサイト",
+          "url": "https://i-dle.cubeent.co.jp/news/1532/",
+          "reference": "turn532829search34",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/8/sources/36",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Weverse i-dle (아이들) Media - (여자)아이들((G)I-DLE) - 'I Want That' Official Music Video",
+          "url": "https://weverse.io/i-dle/media/3-135638657",
+          "reference": "turn532829search39",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/8/sources/43",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "event_or_unofficial_only",
+        "reason": "搜索返回 i-DOL/Syncopation/Jingle Ball 等活动／巡演与民间镜像教学；未找到原发布的完整普通节目或官方练习室。",
+        "nextAction": "查官方英专宣传节目档案；不拿活动观众录像替代。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/87"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5X3Fd8",
+      "artist": "i-dle",
+      "song": "Oh my god",
+      "baselineIndex": 88,
+      "category": "精确语种版本未证",
+      "sourceCategory": "exact_language_version_unverified",
+      "status": "pending_evidence",
+      "reason": "本轮找到Oh my god官方练习/Weverse链接，但未证目标日本语音轨；旧日本语Relay Dance属于接力形态。",
+      "nextAction": "查日版全队完整练习或常规节目，不以韩语练习/接力舞代替。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 9,
+            "queryIndex": 2,
+            "query": "(G)I-DLE \"Oh my god\" Japanese dance practice official",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/8/queries/2",
+            "batchSourcesPointer": "/batches/8/sources",
+            "batchSourceCount": 65
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "'Oh My God' Dance Practice Video ((G)I-DLE) - YouTube",
+          "url": "https://www.youtube.com/watch?v=wLlKktf0ZWE",
+          "reference": "turn532829youtube45",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/8/sources/0",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Weverse i-dle (아이들) Media - (G)I-DLE - 'Oh my god' (Choreography Practice Video)",
+          "url": "https://weverse.io/i-dle/media/2-111431923",
+          "reference": "turn532829search1",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/8/sources/3",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "version_or_format_mismatch",
+        "reason": "官方日本语 Relay Dance Ks2SkLVEx4s 原页可读，属于接力舞；wLlKktf0ZWE是未证日本语的旧韩版练习室。原曲精确日本语版本缺口保留。",
+        "nextAction": "查日本发行期完整常规音乐节目或日版全队练习；不能套韩版／接力舞。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/88"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5X6G1q",
+      "artist": "NMIXX",
+      "song": "Caution",
+      "baselineIndex": 89,
+      "category": "合作或表演者范围未证",
+      "sourceCategory": "collaboration_or_performer_scope_unverified",
+      "status": "pending_evidence",
+      "reason": "Caution查询返回NMIXX/Anderson .Paak发行、MV与社媒线索，未取得双方目标合作范围完整的合格表演。",
+      "nextAction": "按用户新政策复核完整、同语种、官方成员表演后备，标明与原合作版的客串/声部差异；仍核音乐节目或完整练习类型、混音与全长，不把待审自动计为已采用。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 9,
+            "queryIndex": 3,
+            "query": "NMIXX Anderson Paak Caution official live performance",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/8/queries/3",
+            "batchSourcesPointer": "/batches/8/sources",
+            "batchSourceCount": 65
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "Caution Album | ENMIXX",
+          "url": "https://www.enmixx.com/en/discography/caution",
+          "reference": "turn532829search0",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/8/sources/2",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Caution - Single by NMIXX, Anderson .Paak | Spotify",
+          "url": "https://open.spotify.com/album/65ENUeSiL5JAXbvt4P6nBg",
+          "reference": "turn532829search32",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/8/sources/34",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "no_qualifying_source_found",
+        "reason": "检索可定位 Anderson .Paak 与 NMIXX 合作 MV 和官方幕后 tZO08cGQxM4，未见完整合作舞台／练习室；ICONX教学不是原艺人表演。",
+        "nextAction": "继续两艺人及发行方音乐节目原档；必须保留合作人员范围。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/89"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "classificationBeforePolicyUpdate": {
+        "reason": "Caution查询返回NMIXX/Anderson .Paak发行、MV与社媒线索，未取得双方目标合作范围完整的合格表演。",
+        "nextAction": "寻找保留Anderson .Paak合作音轨范围的官方完整练习或节目，不推团体同曲就等于合作版。"
+      },
+      "new_policy_review_needed": true,
+      "policyReview": {
+        "status": "new_policy_review_needed",
+        "basis": "Parent relay of current user decision: full-length, same-language official group-member versions may be used as fallback for a collaboration song, with the performer/version difference disclosed.",
+        "groupMemberPerformanceRequired": true,
+        "sameLanguageRequired": true,
+        "sameRemixRequired": true,
+        "fullLengthRequired": true,
+        "scopeDifferenceDisclosureRequired": true,
+        "acceptedOrBoundByThisClassification": false
+      }
+    },
+    {
+      "workId": "recvxyOz5X7Tw7",
+      "artist": "LE SSERAFIM",
+      "song": "FEARLESS (Japanese Ver.)",
+      "baselineIndex": 90,
+      "category": "已有播出线索但完整一手片源未取得",
+      "sourceCategory": "official_full_source_not_retrieved",
+      "status": "pending_evidence",
+      "reason": "新增2023日本出道期CDTV及NHK全尺寸FEARLESS日版报道线索；源库存未取得可核完整官方视频。旧2022 CDTV韩版仍不能填日版。",
+      "nextAction": "从2023-01-30 CDTV及NHK官方归档定位完整原上传，再核日语音轨，避免旧2022片段。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 10,
+            "queryIndex": 0,
+            "query": "LE SSERAFIM FEARLESS Japanese official performance CDTV 2023",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/9/queries/0",
+            "batchSourcesPointer": "/batches/9/sources",
+            "batchSourceCount": 53
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "LE SSERAFIM、1月30日放送の「CDTVライブ!ライブ!」2時間SPに出演決定！日本デビューを記念して2曲を披露 - Kstyle",
+          "url": "https://kstyle.com/article.ksn?articleNo=2209764",
+          "reference": "turn720274search15",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/9/sources/17",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "1月30日放送「CDTVライブ！ライブ！」は2時間スペシャル。LE SSERAFIM、&TEAM、女王蜂、DISH//、KAT-TUN、INIら出演 - TOWER RECORDS ONLINE",
+          "url": "https://cdfront.tower.jp/article/news/2023/01/30/tg012",
+          "reference": "turn720274search16",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/9/sources/18",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "LE SSERAFIM『沼にハマってきいてみた』出演　「FEARLESS -Japanese ver.-」フルサイズパフォーマンスも - Real Sound｜リアルサウンド",
+          "url": "https://realsound.jp/2023/02/post-1260718.html",
+          "reference": "turn720274search21",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/9/sources/23",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "version_mismatch",
+        "reason": "官方 CDTV S1K06BmGm_o 的实际原页发布时间是2022-05-09，比日本语发行2023年早；不能因节目在日本就算日版。现有日本语电视命中为民间转载或发布会。",
+        "nextAction": "查2023日本语发行期节目原发布；旧韩语练习/舞台不替代。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/90"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5X7zV3",
+      "artist": "ITZY",
+      "song": "LOCO (Japanese Ver.)",
+      "baselineIndex": 91,
+      "category": "精确语种版本未证",
+      "sourceCategory": "exact_language_version_unverified",
+      "status": "pending_evidence",
+      "reason": "LOCO日版命中日本官方MV/音源与日本出道目录，尚未核到精确日版完整打歌/练习。",
+      "nextAction": "按ITZY Japan日版归档查完整节目/练习，不拿韩版LOCO替代。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 10,
+            "queryIndex": 1,
+            "query": "ITZY LOCO Japanese official performance video",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/9/queries/1",
+            "batchSourcesPointer": "/batches/9/sources",
+            "batchSourceCount": 53
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "ITZY「LOCO -Japanese ver.-」Music Video - YouTube",
+          "url": "https://www.youtube.com/watch?v=ytTlH0EpSqI",
+          "reference": "turn720274youtube46",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/9/sources/0",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "LOCO (Japanese ver.) - YouTube",
+          "url": "https://www.youtube.com/watch?v=MAulIwLyEug",
+          "reference": "turn720274youtube47",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/9/sources/2",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "version_or_unofficial_only",
+        "reason": "找到的是2021韩语 LOCO 练习和打歌，以及日本语MV、民间舞蹈教学；未找到能证日本语的官方完整练习／节目。",
+        "nextAction": "查日文发行期Sukkiri/音乐节目原始视频或公司日版练习。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/91"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5X9qGD",
+      "artist": "ITZY",
+      "song": "Like Magic",
+      "baselineIndex": 92,
+      "category": "合作或表演者范围未证",
+      "sourceCategory": "collaboration_or_performer_scope_unverified",
+      "status": "pending_evidence",
+      "reason": "Like Magic检索未取得原多艺人合作范围完整的合格表演；不能将单团挑战/广告制作内容当全合作舞台。",
+      "nextAction": "按用户新政策复核完整、同语种、官方成员表演后备，标明与原合作版的客串/声部差异；仍核音乐节目或完整练习类型、混音与全长，不把待审自动计为已采用。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 10,
+            "queryIndex": 2,
+            "query": "JYP \"Like Magic\" \"performance\" official",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/9/queries/2",
+            "batchSourcesPointer": "/batches/9/sources",
+            "batchSourceCount": 53
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "collaboration_scope_missing",
+        "reason": "四组合作的官方MV与幕后可定位，没有同一完整合作阵容的打歌/练习；其他JYP Nation表演是不同歌曲。",
+        "nextAction": "查JYP/Coke合作计划原发布，不拿单团短挑战覆盖四艺人原作。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/92"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "classificationBeforePolicyUpdate": {
+        "reason": "Like Magic检索未取得原多艺人合作范围完整的合格表演；不能将单团挑战/广告制作内容当全合作舞台。",
+        "nextAction": "核J.Y. Park/Stray Kids/ITZY/NMIXX原合作范围与完整单曲来源；评分不迁移。"
+      },
+      "new_policy_review_needed": true,
+      "policyReview": {
+        "status": "new_policy_review_needed",
+        "basis": "Parent relay of current user decision: full-length, same-language official group-member versions may be used as fallback for a collaboration song, with the performer/version difference disclosed.",
+        "groupMemberPerformanceRequired": true,
+        "sameLanguageRequired": true,
+        "sameRemixRequired": true,
+        "fullLengthRequired": true,
+        "scopeDifferenceDisclosureRequired": true,
+        "acceptedOrBoundByThisClassification": false
+      }
+    },
+    {
+      "workId": "recvxyOz5XFVzt",
+      "artist": "fromis_9",
+      "song": "Touchdown",
+      "baselineIndex": 93,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "查询附了치얼업词但结果实际指向SBS The Winning Try的2025 Touch Down OST；没有合格原片证据，错误剧名可能降低检索召回。",
+      "nextAction": "修正为The Winning Try/트라이 OST及Touch Down精确词，再查fromis_9和SBS官方表演，勿把Cheer Up相关视频混入。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 10,
+            "queryIndex": 3,
+            "query": "fromis_9 Touchdown 라이브 무대 치얼업",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/9/queries/3",
+            "batchSourcesPointer": "/batches/9/sources",
+            "batchSourceCount": 53
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_qualifying_source_found",
+        "reason": "针对Touchdown检索仅定位OST MV，其他可见音乐节目为Attitude、Supersonic等不同作品。",
+        "nextAction": "继续OST制作方与团体录音/演出档案，不能拿同团热门舞台充数。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/93"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "queryCaveat": "Original query included 치얼업; inventory results identify The Winning Try/트라이2025. Correct the drama term in the next research pass."
+    },
+    {
+      "workId": "recvxyOz5XGYPC",
+      "artist": "i-dle",
+      "song": "Last Dance",
+      "baselineIndex": 94,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "Last Dance精确表演查询主要返回艺人视频目录，尚未定位合格官方完整练习或常规节目。",
+      "nextAction": "从UNIVERSE/艺人官方该单曲归档追实际表演；MV或演唱会不自动合格。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 11,
+            "queryIndex": 0,
+            "query": "(G)I-DLE \"Last Dance\" \"performance video\" official",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/10/queries/0",
+            "batchSourcesPointer": "/batches/10/sources",
+            "batchSourceCount": 49
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_qualifying_source_found",
+        "reason": "仅找到Last Dance完整MV/预告及音源；Last Forever是另一歌曲，粉丝dance-studio音效不是实际练习录像。",
+        "nextAction": "查UNIVERSE/GENIE原档及真实单曲练习，不替换成Last Forever。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/94"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5XJWXT",
+      "artist": "LE SSERAFIM",
+      "song": "SPAGHETTI",
+      "baselineIndex": 95,
+      "category": "合作或表演者范围未证",
+      "sourceCategory": "collaboration_or_performer_scope_unverified",
+      "status": "pending_evidence",
+      "reason": "库存已定位明确Member ver的官方练习OsPt0BY1_Wk；旧政策曾因目标feat.j-hope阻止采用。用户现允许同语种完整官方成员版作为标差异后备，该项进入新政策复核，尚未在本分类中采用。",
+      "nextAction": "按用户新政策复核完整、同语种、官方成员表演后备，标明与原合作版的客串/声部差异；仍核音乐节目或完整练习类型、混音与全长，不把待审自动计为已采用。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 11,
+            "queryIndex": 1,
+            "query": "LE SSERAFIM SPAGHETTI \"j-hope\" \"Dance Practice\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/10/queries/1",
+            "batchSourcesPointer": "/batches/10/sources",
+            "batchSourceCount": 49
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "Watch: LE SSERAFIM Serves \"SPAGHETTI\" Piping Hot In New Dance Practice Video | Soompi",
+          "url": "https://www.soompi.com/article/1793795wpp/watch-le-sserafim-serves-spaghetti-piping-hot-in-new-dance-practice-video",
+          "reference": "turn264754search0",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/10/sources/0",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "LE SSERAFIM-SPAGHETTI(ft. J-HOPE) (dance practice mirrored) - YouTube",
+          "url": "https://www.youtube.com/watch?v=3uQw48IY4H4",
+          "reference": "turn264754youtube48",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/10/sources/1",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "collaboration_scope_mismatch",
+        "reason": "官方新练习 OsPt0BY1_Wk 明确 Member ver.；目标为feat.j-hope，团体成员版本不能覆盖。普通节目命中同名SPAGHETTI但未证明保留原合作范围。",
+        "nextAction": "只有找到完整feat.j-hope原范围且场合合格来源才采用；Member ver保留独立候选。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/95"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "classificationBeforePolicyUpdate": {
+        "reason": "SPAGHETTI本轮出现官方练习报道和镜像教程；既有官方OsPt0BY1_Wk明确Member ver，不能替代目标feat.j-hope。",
+        "nextAction": "优先取得带j-hope原范围的完整官方来源并核实际音轨；Member ver/教程/镜像只作独立资料。"
+      },
+      "new_policy_review_needed": true,
+      "policyReview": {
+        "status": "new_policy_review_needed",
+        "basis": "Parent relay of current user decision: full-length, same-language official group-member versions may be used as fallback for a collaboration song, with the performer/version difference disclosed.",
+        "groupMemberPerformanceRequired": true,
+        "sameLanguageRequired": true,
+        "sameRemixRequired": true,
+        "fullLengthRequired": true,
+        "scopeDifferenceDisclosureRequired": true,
+        "acceptedOrBoundByThisClassification": false
+      }
+    },
+    {
+      "workId": "recvxyOz5XKzE5",
+      "artist": "LE SSERAFIM",
+      "song": "UNFORGIVEN (Japanese Ver.)",
+      "baselineIndex": 96,
+      "category": "合作或表演者范围未证",
+      "sourceCategory": "collaboration_or_performer_scope_unverified",
+      "status": "pending_evidence",
+      "reason": "日版UNFORGIVEN额外含Ado，发行方和曲目目录明确该合作范围；普通韩版Nile Rodgers练习及非官方日语转载不能完成匹配。",
+      "nextAction": "按用户新政策复核完整、同语种、官方成员表演后备，标明与原合作版的客串/声部差异；仍核音乐节目或完整练习类型、混音与全长，不把待审自动计为已采用。 目标仍为日语版；韩版练习不合格。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 11,
+            "queryIndex": 2,
+            "query": "LE SSERAFIM UNFORGIVEN Japanese Ado official performance",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/10/queries/2",
+            "batchSourcesPointer": "/batches/10/sources",
+            "batchSourceCount": 49
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "LE SSERAFIM 日本2ndシングル 'UNFORGIVEN' 予約発売開始！ | NEWS | LE SSERAFIM OFFICIAL SITE",
+          "url": "https://www.le-sserafim.jp/news/qffdwp",
+          "reference": "turn264754search31",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/10/sources/33",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "‎UNFORGIVEN (feat. Nile Rodgers & Ado) [Japanese Version] - Song with Lyrics by LE SSERAFIM - Apple Music",
+          "url": "https://music.apple.com/us/song/1701142689",
+          "reference": "turn264754search32",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/10/sources/34",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "version_or_unofficial_only",
+        "reason": "官方练习8S9rHj7gTsA为原韩版feat.Nile Rodgers，日版目标额外含Ado；日文节目命中为民间转载，不能视作已验第一方全片。",
+        "nextAction": "查日本电视官方保存页与日文版艺人练习，并核Ado录音参与范围。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/96"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "classificationBeforePolicyUpdate": {
+        "reason": "日版UNFORGIVEN额外含Ado，发行方和曲目目录明确该合作范围；普通韩版Nile Rodgers练习及非官方日语转载不能完成匹配。",
+        "nextAction": "查第一方日语全曲节目/练习并核Ado声部，保留语种和合作者双重条件。"
+      },
+      "new_policy_review_needed": true,
+      "policyReview": {
+        "status": "new_policy_review_needed",
+        "basis": "Parent relay of current user decision: full-length, same-language official group-member versions may be used as fallback for a collaboration song, with the performer/version difference disclosed.",
+        "groupMemberPerformanceRequired": true,
+        "sameLanguageRequired": true,
+        "sameRemixRequired": true,
+        "fullLengthRequired": true,
+        "scopeDifferenceDisclosureRequired": true,
+        "acceptedOrBoundByThisClassification": false
+      }
+    },
+    {
+      "workId": "recvxyOz5XQMJt",
+      "artist": "LE SSERAFIM",
+      "song": "CRAZY (Japanese Ver.)",
+      "baselineIndex": 97,
+      "category": "已有播出线索但完整一手片源未取得",
+      "sourceCategory": "official_full_source_not_retrieved",
+      "status": "pending_evidence",
+      "reason": "新增日本官方2024-12-09 CDTV出演公告、节目单和日版MV；仍未取得可核完整节目原片。",
+      "nextAction": "从CDTV当期正式存档取全曲日版，再核音轨；告知出演不等于已核完整视频。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 11,
+            "queryIndex": 3,
+            "query": "LE SSERAFIM CRAZY Japanese official performance CDTV",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/10/queries/3",
+            "batchSourcesPointer": "/batches/10/sources",
+            "batchSourceCount": 49
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "12月9日(月) TBS系『CDTVライブ！ライブ！』に出演決定！ | NEWS | LE SSERAFIM OFFICIAL SITE",
+          "url": "https://www.le-sserafim.jp/news/lhdvbs",
+          "reference": "turn264754search13",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/10/sources/15",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "12月9日放送「CDTVライブ！ライブ！」、乃木坂46、LE SSERAFIM、PEOPLE 1、GRe4N BOYZ、Kis-My-Ft2、中島健人、King & Prince、なにわ男子等出演 - TOWER RECORDS ONLINE",
+          "url": "https://cdfront.tower.jp/article/news/2024/12/09/tg007",
+          "reference": "turn264754search20",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/10/sources/22",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Weverse LE SSERAFIM Media - LE SSERAFIM (르세라핌) 'CRAZY -Japanese ver.-' Official MV",
+          "url": "https://weverse.io/lesserafim/media/3-187259680",
+          "reference": "turn264754search25",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/10/sources/27",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "version_or_unofficial_only",
+        "reason": "官方CRAZY练习bbs_RSZwa-I未标日文且先于日文发行；日文CDTV/FNS相关命中为转载或节庆focus，不能作为已核官方完整节目。",
+        "nextAction": "查日本2024年12月常规节目官方原片；不要以日文转载标题替代版本核对。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/97"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5XQZhy",
+      "artist": "NewJeans",
+      "song": "Be Who You Are (Real Magic)",
+      "baselineIndex": 98,
+      "category": "合作或表演者范围未证",
+      "sourceCategory": "collaboration_or_performer_scope_unverified",
+      "status": "pending_evidence",
+      "reason": "Be Who You Are检索定位Jon Batiste/JID/NewJeans/Camilo合作发行智能链接；没有同合作范围合格完整表演。",
+      "nextAction": "按用户新政策复核完整、同语种、官方成员表演后备，标明与原合作版的客串/声部差异；仍核音乐节目或完整练习类型、混音与全长，不把待审自动计为已采用。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 12,
+            "queryIndex": 0,
+            "query": "NewJeans Be Who You Are Real Magic official live performance Jon Batiste",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/11/queries/0",
+            "batchSourcesPointer": "/batches/11/sources",
+            "batchSourceCount": 52
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "Be Who You Are (Real Magic) [feat. JID, NewJeans & Camilo] - Jon Batiste: Song Lyrics, Music Videos & Concerts",
+          "url": "https://www.shazam.com/song/1688797586/be-who-you-are-real-magic-feat-jid-newjeans-and-camilo",
+          "reference": "turn371902search32",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/11/sources/34",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Jon Batiste - Be Who You Are (Real Magic) [feat. JID, NewJeans & Camilo] - Single",
+          "url": "https://jon-batiste.lnk.to/bewhoyouare",
+          "reference": "turn371902search39",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/11/sources/41",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "collaboration_scope_mismatch",
+        "reason": "Be Who You Are涉及Jon Batiste/J.I.D/NewJeans/Cat Burns/Camilo；现有现场线索是SuperPop活动的部分合作或Jon独唱，均不覆盖完整原作。",
+        "nextAction": "查Coke Studio完整合作的正式节目/排练原片，部分艺人活动不自动合格。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/98"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "classificationBeforePolicyUpdate": {
+        "reason": "Be Who You Are检索定位Jon Batiste/JID/NewJeans/Camilo合作发行智能链接；没有同合作范围合格完整表演。",
+        "nextAction": "以原合作范围为条件查官方节目/练习，单人演出、品牌片和NewJeans片段不代填。"
+      },
+      "new_policy_review_needed": true,
+      "policyReview": {
+        "status": "new_policy_review_needed",
+        "basis": "Parent relay of current user decision: full-length, same-language official group-member versions may be used as fallback for a collaboration song, with the performer/version difference disclosed.",
+        "groupMemberPerformanceRequired": true,
+        "sameLanguageRequired": true,
+        "sameRemixRequired": true,
+        "fullLengthRequired": true,
+        "scopeDifferenceDisclosureRequired": true,
+        "acceptedOrBoundByThisClassification": false
+      }
+    },
+    {
+      "workId": "recvxyOz5XRfn5",
+      "artist": "NMIXX",
+      "song": "蜚蜚 (FEIFEI)",
+      "baselineIndex": 99,
+      "category": "表演形式或场合不符/未证",
+      "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+      "status": "pending_evidence",
+      "reason": "FEIFEI本轮返回官方MV及音源，旧活动/转载尚无合格替代；不能把MV本身重用为舞台评分来源。",
+      "nextAction": "继续按蜚蜚/FEIFEI双名核NMIXX官方完整练习及常规音乐节目。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 12,
+            "queryIndex": 1,
+            "query": "NMIXX 蜚蜚 FEIFEI official live performance video",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/11/queries/1",
+            "batchSourcesPointer": "/batches/11/sources",
+            "batchSourceCount": 52
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "FEIFEI (蜚蜚) (蜚蜚) - YouTube",
+          "url": "https://www.youtube.com/watch?v=AtEwj5oUUEI",
+          "reference": "turn371902youtube47",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/11/sources/0",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "NMIXX “蜚蜚 (FEIFEI)” M/V - YouTube",
+          "url": "https://www.youtube.com/watch?v=zrYC3LEpc6w",
+          "reference": "turn371902youtube48",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/11/sources/1",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "event_or_unofficial_only",
+        "reason": "蜚蜚原曲官方MV可定位，但现场候选为香港FANCON观众录像；其他官方电视结果为不同歌手。",
+        "nextAction": "查NMIXX声乐练习原发布；不以粉丝演唱会或其他演唱者替代。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/99"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5Xa1EK",
+      "artist": "i-dle",
+      "song": "LATATA",
+      "baselineIndex": 100,
+      "category": "精确语种版本未证",
+      "sourceCategory": "exact_language_version_unverified",
+      "status": "pending_evidence",
+      "reason": "LATATA日本出道官网/发行商目录可定位，但没有精确日版合格完整表演；旧GUIDE是应援指导，韩语练习不相同。",
+      "nextAction": "核2019日版全队练习或官方节目，保持GUIDE与韩语舞台分开。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 12,
+            "queryIndex": 2,
+            "query": "(G)I-DLE LATATA Japanese official dance performance",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/11/queries/2",
+            "batchSourcesPointer": "/batches/11/sources",
+            "batchSourceCount": 52
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "(G)I-DLE JAPAN DEBUT MINI ALBUM『LATATA』SPECIAL SITE",
+          "url": "https://sp.universal-music.co.jp/g-i-dle/latata/",
+          "reference": "turn371902search34",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/11/sources/36",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "7月31日にデビューミニアルバム『LATATA』で日本デビュー！ - i-dle",
+          "url": "https://www.universal-music.co.jp/i-dle/news/2019-05-20/",
+          "reference": "turn371902search35",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/11/sources/37",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "version_or_format_mismatch",
+        "reason": "日本官方ydQ6tQNOzys为GUIDE VIDEO；官方缩略图为坐姿持词纸、应援指导形态，非全队表演练习。韩语2018打歌/练习不能替代2019日本语版。",
+        "nextAction": "寻找日版完整常规音乐节目或实际练习，保留GUIDE为资料不补舞台。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/100"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5XkyEY",
+      "artist": "ITZY",
+      "song": "Voltage",
+      "baselineIndex": 101,
+      "category": "片段不足全曲",
+      "sourceCategory": "incomplete_excerpt",
+      "status": "pending_evidence",
+      "reason": "ITZY Japan官方Voltage Special Dance Clip 5uQuUCW-9aI只有160秒；原发行约221秒，不能作为完整同曲采用。官方身份/高点赞不消除61秒范围差。",
+      "nextAction": "寻找接近原全曲范围的日语常规节目或官方完整练习，并核是否删段/变速；该剪辑留研究记录不绑定。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 15,
+            "queryIndex": 0,
+            "query": "site.itzyjapan.com \"Voltage\" \"Special Dance\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/14/queries/0/q",
+            "batchSourcesPointer": "/batches/14/sources",
+            "batchSourceCount": 58
+          },
+          {
+            "batch": 15,
+            "queryIndex": 3,
+            "query": "site.itzyjapan.com Voltage 2022 4 13",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/14/queries/3/q",
+            "batchSourcesPointer": "/batches/14/sources",
+            "batchSourceCount": 58
+          },
+          {
+            "batch": 16,
+            "queryIndex": 0,
+            "query": "\"5uQuUCW-9aI\" \"Voltage\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/15/queries/0/q",
+            "batchSourcesPointer": "/batches/15/sources",
+            "batchSourceCount": 22
+          },
+          {
+            "batch": 16,
+            "queryIndex": 2,
+            "query": "\"Voltage\" \"2:41\" ITZY song",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/15/queries/2/q",
+            "batchSourcesPointer": "/batches/15/sources",
+            "batchSourceCount": 22
+          },
+          {
+            "batch": 17,
+            "queryIndex": 2,
+            "query": "ITZY \"Voltage\" \"3:41\" site.music.apple.com",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/16/queries/2/q",
+            "batchSourcesPointer": "/batches/16/sources",
+            "batchSourceCount": 42
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "JAPAN 1st Single『Voltage』リリース決定！｜ITZY OFFICIAL SITE",
+          "url": "https://www.itzyjapan.com/news/detail/72",
+          "reference": "turn884595search1",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/14/sources/1",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "ITZY 、初の日本オリジナル楽曲JAPAN 1st Single『Voltage』ミュージックビデオ解禁！ パワフルなダンスシーンはまさに”Voltage up”な見所満載の作品に！ | ITZY",
+          "url": "https://wmg.jp/itzy/news/87449",
+          "reference": "turn884595search16",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/14/sources/16",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Release “Voltage” by ITZY - MusicBrainz",
+          "url": "https://musicbrainz.org/release/9ff3e862-cfc3-41b7-b1cc-e7174a7cdf6c",
+          "reference": "turn418760search0",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/16/sources/0",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "produced_performance_not_practice",
+        "reason": "官方5uQuUCW-9aI为160秒Special Dance Clip，缩略图明确为造景棚拍而非已证练习室；发布会、YouTube短版和relay同样不符合。民间镜像不可当原发布。",
+        "nextAction": "查完整日本语练习/普通音乐节目；Special Dance Clip独立类型，不偷换为practice_room。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/101"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "watchMetadata": {
+        "evidenceFile": "watch-metadata.json",
+        "jsonPointer": "/2",
+        "videoId": "5uQuUCW-9aI",
+        "url": "https://www.youtube.com/watch?v=5uQuUCW-9aI",
+        "title": "ITZY「Voltage」Special Dance Clip",
+        "channel": "ITZY JAPAN OFFICIAL YouTube Channel",
+        "channelId": "UCJsfO4nKS3_c24zLbF8rT0A",
+        "durationSeconds": 160,
+        "publishedAt": "2022-04-13T21:00:02-07:00",
+        "sha256": "fd2ed5c44882ca0aec9d84f45ff1a5cfb579f8b14a5b85236551441abe62b99f",
+        "checkedAt": "2026-10-28T13:39:16.021838+00:00",
+        "readScope": "Previously fetched watch-page metadata; not complete playback or audio validation."
+      },
+      "durationComparison": {
+        "candidateSeconds": 160,
+        "originalTrackSeconds": 221,
+        "differenceSeconds": 61,
+        "originalTrackBasis": "Verified duration supplied in parent-agent task handoff; this classifier did not repeat source/network retrieval.",
+        "completeTrackAccepted": false
+      }
+    },
+    {
+      "workId": "recvxyOz5XlqWP",
+      "artist": "ITZY",
+      "song": "Boys Like You",
+      "baselineIndex": 102,
+      "category": "表演形式或场合不符/未证",
+      "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+      "status": "pending_evidence",
+      "reason": "Boys Like You本轮命中JYP官方发行及MV新闻，没有新的合格完整练习/常规节目，旧活动与转载仍不准入。",
+      "nextAction": "继续找官方完整英语练习/节目并核活动类型，保留英文原曲范围。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 12,
+            "queryIndex": 3,
+            "query": "ITZY Boys Like You official performance video",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/11/queries/3",
+            "batchSourcesPointer": "/batches/11/sources",
+            "batchSourceCount": 52
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "ITZY : Boys Like You",
+          "url": "https://itzy.jype.com/discography/k12hwhbe",
+          "reference": "turn371902search6",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/11/sources/8",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "event_or_unofficial_only",
+        "reason": "官方MBC年末SNEAKERS+Boys Like You为特别串烧；巡演录像与标Dance Practice的非官方上传不符合。未找到可核官方普通练习。",
+        "nextAction": "查英语单曲发行期官方节目和练习，先核原上传者。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/102"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5XmFwB",
+      "artist": "ITZY",
+      "song": "SUPERPOWERS",
+      "baselineIndex": 103,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "SUPERPOWERS精确查询未取得足以确认同曲常规节目/完整官方练习的原始来源。",
+      "nextAction": "按ITZY官方与OST项目归档追完整表演；不以影视片段或音源替代。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 13,
+            "queryIndex": 0,
+            "query": "ITZY SUPERPOWERS official performance dance practice",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/12/queries/0",
+            "batchSourcesPointer": "/batches/12/sources",
+            "batchSourceCount": 62
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "no_qualifying_source_found",
+        "reason": "找到OST MV和音源，舞台搜索混入Supernatural等其他歌，未找到同曲官方练习/常规节目。",
+        "nextAction": "继续OST及团体原档；歌曲相似名必须排除。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/103"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5XmMQe",
+      "artist": "ITZY",
+      "song": "Not Shy (English Ver.)",
+      "baselineIndex": 104,
+      "category": "精确语种版本未证",
+      "sourceCategory": "exact_language_version_unverified",
+      "status": "pending_evidence",
+      "reason": "本轮IOKMx1jeCjY未标英文，MTV资料写改编版，不能直接匹配Not Shy English；用户否决BnmwjH-suLg仍不可推荐。",
+      "nextAction": "只找独立新的完整英文官方节目/练习；换链接、镜像、换音轨不得绕回已否决候选。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 13,
+            "queryIndex": 1,
+            "query": "ITZY Not Shy English official performance video",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/12/queries/1",
+            "batchSourcesPointer": "/batches/12/sources",
+            "batchSourceCount": 62
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "ITZY \"Not Shy\" Performance Video - YouTube",
+          "url": "https://www.youtube.com/watch?v=IOKMx1jeCjY",
+          "reference": "turn619501youtube48",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/12/sources/0",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "ITZY : Not Shy (English Ver.)",
+          "url": "https://itzy.jype.com/discography/sz8bsnas?AmSeq=undefined&PgIndex=undefined",
+          "reference": "turn619501search2",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/12/sources/4",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "ITZY, 美 MTV 통해 'WANNABE', 'Not Shy' 편곡 ver. 퍼포먼스 공개",
+          "url": "https://enews.imbc.com/Tpl/View/304919?progcode=0",
+          "reference": "turn619501search15",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/12/sources/17",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "user_rejected_and_version_mismatch",
+        "reason": "用户否决BnmwjH-suLg不再推荐；普通Not Shy练习/Performance/Live Premiere为韩语范围，英语MV与Countdown不等于已核完整舞台。民间H5YJhB05ym4非官方英语练习。",
+        "nextAction": "只找独立新的完整英文节目/官方练习，不能把被否决内容换URL绕回推荐。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/104"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5XnOv7",
+      "artist": "LE SSERAFIM",
+      "song": "CRAZY (English Ver.)",
+      "baselineIndex": 105,
+      "category": "精确语种版本未证",
+      "sourceCategory": "exact_language_version_unverified",
+      "status": "pending_evidence",
+      "reason": "HYBE官方rtKP2TsP1W4为177秒CRAZY PERFORMANCE FILM，无English标记，发布2024-09-02且早于英文MV；英文MV与Performance幕后合并标题不证明此片英文。",
+      "nextAction": "独立核该片实际音轨或寻找明确英文完整原片；另行核棚内制作形式，不将语种待证写成已匹配。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 13,
+            "queryIndex": 2,
+            "query": "LE SSERAFIM CRAZY English official performance film",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/12/queries/2",
+            "batchSourcesPointer": "/batches/12/sources",
+            "batchSourceCount": 62
+          },
+          {
+            "batch": 15,
+            "queryIndex": 2,
+            "query": "site.weverse.io lesserafim \"CRAZY\" \"English\" \"PERFORMANCE\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/14/queries/2/q",
+            "batchSourcesPointer": "/batches/14/sources",
+            "batchSourceCount": 58
+          },
+          {
+            "batch": 16,
+            "queryIndex": 3,
+            "query": "\"rtKP2TsP1W4\" English Korean",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/15/queries/3/q",
+            "batchSourcesPointer": "/batches/15/sources",
+            "batchSourceCount": 22
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "LE SSERAFIM (르세라핌) 'CRAZY' OFFICIAL PERFORMANCE FILM - YouTube",
+          "url": "https://www.youtube.com/watch?v=rtKP2TsP1W4",
+          "reference": "turn619501youtube49",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/12/sources/1",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Weverse LE SSERAFIM Media - 'CRAZY' PERFORMANCE FILM",
+          "url": "https://weverse.io/lesserafim/media/3-177663622",
+          "reference": "turn619501search4",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/12/sources/6",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Weverse LE SSERAFIM Media - [BEHIND THE SCENE] LE SSERAFIM (르세라핌) 'CRAZY (English ver.)' MV & PERFORMANCE FILM Shoot Sketch",
+          "url": "https://weverse.io/lesserafim/media/3-180948948",
+          "reference": "turn619501search18",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/12/sources/20",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Weverse LE SSERAFIM Media - 'CRAZY(English ver.)' OFFICIAL MV",
+          "url": "https://weverse.io/lesserafim/media/2-148548744",
+          "reference": "turn619501search19",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/12/sources/21",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "version_or_format_mismatch",
+        "reason": "英文MV及官方PERFORMANCE FILM是制作表演；MTV EMAs是特别颁奖串烧。官方普通练习未证英文，粉丝换音轨镜像不采用。",
+        "nextAction": "查英文单曲完整常规音乐节目/明确英文官方练习；颁奖舞台另列类型。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/105"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "watchMetadata": {
+        "evidenceFile": "followup-watch-metadata.json",
+        "jsonPointer": "/1",
+        "videoId": "rtKP2TsP1W4",
+        "url": "https://www.youtube.com/watch?v=rtKP2TsP1W4",
+        "title": "LE SSERAFIM (르세라핌) 'CRAZY' OFFICIAL PERFORMANCE FILM",
+        "channel": "HYBE LABELS",
+        "channelId": "UC3IZKseVpdzPSBaWxBxundA",
+        "durationSeconds": 177,
+        "publishedAt": "2024-09-02T07:58:08-07:00",
+        "sha256": "63c3335a8c2c94bfe95adc5ad55911841892552ab741fb4f31d2a5eac4e4ee19",
+        "checkedAt": "2026-10-28T13:44:29.297874+00:00",
+        "readScope": "Previously fetched watch-page metadata; not complete playback or audio validation."
+      },
+      "languageGuard": {
+        "englishMarkerInCandidateTitle": false,
+        "englishAudioVerified": false,
+        "releaseOrder": "Candidate published2024-09-02 before English MV per parent handoff; timing is supporting context, not a standalone audio-language proof."
+      }
+    },
+    {
+      "workId": "recvxyOz5Xo5fW",
+      "artist": "NMIXX",
+      "song": "Hey Gabby!",
+      "baselineIndex": 106,
+      "category": "表演形式或场合不符/未证",
+      "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+      "status": "pending_evidence",
+      "reason": "Hey Gabby本轮主要是Gabby’s Dollhouse OST MV资料；特制MV或民间舞蹈不自动等于官方完整练习。",
+      "nextAction": "查艺人/项目官方实际全队表演视频，保持MV和评分舞台用途区别。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 13,
+            "queryIndex": 3,
+            "query": "NMIXX Hey Gabby official dance practice",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/12/queries/3",
+            "batchSourcesPointer": "/batches/12/sources",
+            "batchSourceCount": 62
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "NMIXX - 안녕 개비! (Hey Gabby!) M/V (Gabby’s Dollhouse OST)",
+          "url": "https://www.reddit.com/r/NMIXX/comments/ugls21",
+          "reference": "turn619501reddit58",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/12/sources/58",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "produced_mv_or_unofficial_only",
+        "reason": "官方Gabby频道发布K-POP Version音乐视频，VLENDING Extra Cut属MV；搜索Dance Practice命中民间镜像或教学，未证明真实官方练习来源。",
+        "nextAction": "向官方动画合作方核完整练习原片；不把音乐视频舞蹈剪辑叫练习室。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/106"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5Xqy0Q",
+      "artist": "NMIXX",
+      "song": "MEXE",
+      "baselineIndex": 107,
+      "category": "合作或表演者范围未证",
+      "sourceCategory": "collaboration_or_performer_scope_unverified",
+      "status": "pending_evidence",
+      "reason": "Pabllo官方MEXE Dance Video kN9MY-QjJMQ 146秒，正文署名Pabllo及6位具名舞者，未据此证明NMIXX实际表演；标题同时列NMIXX是歌曲署名，不能推出成员出镜。",
+      "nextAction": "先核NMIXX成员实际表演；仅有外部合作艺人或舞者的视频不受新成员版后备政策放宽。若找到NMIXX官方完整同语种成员版，再标差异复核；现存视频不绑定。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 15,
+            "queryIndex": 1,
+            "query": "\"MEXE\" \"Official Dance Video\" \"kN9MY\"",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/14/queries/1/q",
+            "batchSourcesPointer": "/batches/14/sources",
+            "batchSourceCount": 58
+          },
+          {
+            "batch": 16,
+            "queryIndex": 1,
+            "query": "\"kN9MY-QjJMQ\" NMIXX dance dancers",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/15/queries/1/q",
+            "batchSourcesPointer": "/batches/15/sources",
+            "batchSourceCount": 22
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [],
+      "priorClassification": {
+        "sourceCategory": "produced_performance_not_practice",
+        "reason": "Pabllo官方kN9MY-QjJMQ标题明确Official Dance Video；另有NMIXX官方制作幕后不是完整练习。Bloco/Carnival为活动，不能替代。",
+        "nextAction": "查完整合作练习/常规音乐节目，保存同曲舞蹈视频但不改场合类型。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/107"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged",
+      "watchMetadata": {
+        "evidenceFile": "watch-metadata.json",
+        "jsonPointer": "/3",
+        "videoId": "kN9MY-QjJMQ",
+        "url": "https://www.youtube.com/watch?v=kN9MY-QjJMQ",
+        "title": "Pabllo Vittar, NMIXX - MEXE (Official Dance Video)",
+        "channel": "Pabllo Vittar",
+        "channelId": "UCugD1HAP3INAiXo70S_sAFQ",
+        "durationSeconds": 146,
+        "publishedAt": "2025-08-26T07:01:25-07:00",
+        "sha256": "671f410df6cb009748114cc308f6c9bea50cfe0488070a988243ffdd858c1d98",
+        "checkedAt": "2026-10-28T13:39:16.021838+00:00",
+        "readScope": "Previously fetched watch-page metadata; not complete playback or audio validation."
+      },
+      "performerCredits": {
+        "creditedDancePerformers": [
+          "Augusto Follmann",
+          "Gabriel Carvalho",
+          "Jonatas Cardoso",
+          "Elio Barbosa",
+          "Thiago Rocha",
+          "Pedro Reis"
+        ],
+        "nmixxParticipationVerified": false,
+        "evidenceScope": "Extracted from exact stored official description; absence from credits is not proof of absent appearance."
+      },
+      "classificationBeforePolicyUpdate": {
+        "reason": "Pabllo官方MEXE Dance Video kN9MY-QjJMQ 146秒，正文署名Pabllo及6位具名舞者，未据此证明NMIXX实际表演；标题同时列NMIXX是歌曲署名，不能推出成员出镜。",
+        "nextAction": "核NMIXX是否参与该表演、合作音轨与表演类型；未证前保留资料不绑定，Carnival/Bloco活动也不替代。"
+      },
+      "new_policy_review_needed": false,
+      "policyReview": {
+        "status": "group_member_performance_still_unverified",
+        "basis": "New fallback policy does not accept external-collaborator/dancer-only performances without the target group members.",
+        "nmixxParticipationVerified": false,
+        "candidateEligibleForBinding": false
+      }
+    },
+    {
+      "workId": "recvxyOz5Xr917",
+      "artist": "NewJeans",
+      "song": "Beautiful Restriction",
+      "baselineIndex": 108,
+      "category": "有限检索未取得可采用来源",
+      "sourceCategory": "no_qualified_source_after_bounded_search",
+      "status": "pending_evidence",
+      "reason": "Beautiful Restriction本轮只有官方LIVE目录/社区询问等线索，无已核同曲全曲节目/练习来源；社区提问不是不存在的证明。",
+      "nextAction": "从OST发行方与NewJeans官方归档追同曲演出；无命中仍保持未知。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 14,
+            "queryIndex": 0,
+            "query": "NewJeans Beautiful Restriction official live performance",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/13/queries/0",
+            "batchSourcesPointer": "/batches/13/sources",
+            "batchSourceCount": 63
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "231210 Did NewJeans ever perform Beautiful Restriction live?",
+          "url": "https://www.reddit.com/r/NewJeans/comments/18fcy0v",
+          "reference": "turn308366reddit53",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/13/sources/52",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "no_qualifying_source_found",
+        "reason": "可定位OST Special MV与官方音源；带Dance Performance标签的2JZjx0Ni4Qo为非官方频道，另有少女时代同名歌不是NewJeans。",
+        "nextAction": "查ADOR或OST发行方官方声乐练习/节目，不将其他团体同名作品或粉丝混剪采用。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/108"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5XsgVc",
+      "artist": "NMIXX",
+      "song": "Sprinkle Party",
+      "baselineIndex": 109,
+      "category": "表演形式或场合不符/未证",
+      "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+      "status": "pending_evidence",
+      "reason": "Sprinkle Party本轮返回OST MV新闻和音源目录；MBC Party O’Clock是不同歌曲，不能误配。",
+      "nextAction": "核NMIXX与儿童项目官方完整表演，严格区分Sprinkle Party、Party O’Clock和MV。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 14,
+            "queryIndex": 1,
+            "query": "NMIXX Sprinkle Party official performance video",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/13/queries/1",
+            "batchSourcesPointer": "/batches/13/sources",
+            "batchSourceCount": 63
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "NMIXX celebrate Children Day with 'Sprinkle Party' — watch | Bandwagon",
+          "url": "https://www.bandwagon.asia/articles/nmixx-release-music-video-for-gabby-s-dollhouse-ost-sprinkle-party-on-korea-s-children-day-watch--hey-gabby-music-video-netflix-dreamworks-soundtrack-may-2022",
+          "reference": "turn308366search6",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/13/sources/8",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "no_qualifying_source_found",
+        "reason": "仅定位官方动画合作MV，搜索练习结果多为NMIXX其他歌，未找到目标完整官方练习/节目。",
+        "nextAction": "查Gabby/VLENDING正式练习档案，不能拿Hey Gabby或Party O Clock替代。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/109"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5XueI9",
+      "artist": "LOONA",
+      "song": "LUMINOUS",
+      "baselineIndex": 110,
+      "category": "原始发布身份未证",
+      "sourceCategory": "official_origin_unverified",
+      "status": "pending_evidence",
+      "reason": "LUMINOUS本轮有发行商目录，但既有INV0y_Cig7M官方身份仍未证；频道名LOONA与Posted by HyunJin说明不能替代原发布核验。",
+      "nextAction": "追成员公开原帖/正式官方归档及原视频身份；不以转载来源自述、同名频道或演唱会补位。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 14,
+            "queryIndex": 2,
+            "query": "LOONA LUMINOUS official dance practice Japan",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/13/queries/2",
+            "batchSourcesPointer": "/batches/13/sources",
+            "batchSourceCount": 63
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "LUMINOUS [通常盤・初回プレス][CD MAXI] - LOONA - UNIVERSAL MUSIC JAPAN",
+          "url": "https://www.universal-music.co.jp/loona/products/upch-89478/",
+          "reference": "turn308366search38",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/13/sources/39",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "LUMINOUS [生産限定 ビビ盤][CD MAXI] - LOONA - UNIVERSAL MUSIC JAPAN",
+          "url": "https://www.universal-music.co.jp/loona/products/upch-89483/",
+          "reference": "turn308366search46",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/13/sources/50",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "official_origin_unverified",
+        "reason": "INV0y_Cig7M虽然频道名LOONA，实际channelId UCCfsjT3cRoP5L2uufkpGkgw不同于已知官方，说明仅称Posted by HyunJin on fromm；未验证原发布，不能当官方。现场结果为2023演唱会。",
+        "nextAction": "先核成员原始公开发布及可公开原档；不因频道显示名或转载自称而升级官方。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/110"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    },
+    {
+      "workId": "recvxyOz5Xvsk1",
+      "artist": "Kep1er",
+      "song": "Sugar Rush",
+      "baselineIndex": 111,
+      "category": "表演形式或场合不符/未证",
+      "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+      "status": "pending_evidence",
+      "reason": "Sugar Rush命中两个官方MV条目及Challenge报道；短挑战/MV不是已核完整练习或常规节目。",
+      "nextAction": "从Kep1er/UNIVERSE正式归档找全曲练习或节目，保留短挑战与MV的独立用途。",
+      "researchCoverage": {
+        "pass": "post-v200 stages-b stored 17-batch search and watch-metadata review",
+        "queryEvidence": [
+          {
+            "batch": 14,
+            "queryIndex": 3,
+            "query": "Kep1er Sugar Rush official performance video",
+            "evidenceFile": "search-session.json",
+            "queryPointer": "/batches/13/queries/3",
+            "batchSourcesPointer": "/batches/13/sources",
+            "batchSourceCount": 63
+          }
+        ],
+        "newNetworkRequestsByClassifier": 0,
+        "fullPlaybackVerified": false,
+        "audioVersionVerified": false
+      },
+      "sources": [
+        {
+          "title": "Kep1er (케플러) - 'Sugar Rush’ Official Music Video - YouTube",
+          "url": "https://www.youtube.com/watch?v=w8N3nZ7reZk",
+          "reference": "turn308366youtube48",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/13/sources/0",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Kep1er (케플러) - ‘Sugar Rush’ Official Music Video - YouTube",
+          "url": "https://www.youtube.com/watch?v=-wDj4H6K-D4",
+          "reference": "turn308366youtube49",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/13/sources/1",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        },
+        {
+          "title": "Universe X Kep1er Releases New Song 'Sugar Rush' Challenge Video!",
+          "url": "https://www.kpopstarz.com/articles/309303/20220928/universe-kep1er-sugar-rush-challenge-video.htm",
+          "reference": "turn308366search22",
+          "evidenceFile": "search-session.json",
+          "jsonPointer": "/batches/13/sources/23",
+          "readScope": "Stored public search result title and URL only; no new network request in this classification pass."
+        }
+      ],
+      "priorClassification": {
+        "sourceCategory": "no_qualifying_source_found",
+        "reason": "第二轮恢复可读搜索后，命中MV、Male Official名下所谓练习、以及TXT不同歌Sugar Rush Ride；仍没有可核官方同曲完整舞台。",
+        "nextAction": "查Kep1er/KLAP原始练习档案，排除非官方频道与同词他团作品。",
+        "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+        "jsonPointer": "/records/111"
+      },
+      "absenceClaim": false,
+      "candidateEligibleForBinding": false,
+      "formalBindingAction": "none; keep source IDs, existing score bindings and private fields unchanged"
+    }
+  ],
+  "metadataOutOfSlice": [
+    {
+      "videoId": "Gm0apElS0sY",
+      "title": "MADEIN DADARIDA CHOREO Ver",
+      "reason": "Not in records[56:]; do not manufacture a matching work ID in this slice."
+    },
+    {
+      "videoId": "mU8adPiwpm4",
+      "title": "XG IYKYK Choreography",
+      "reason": "Not in records[56:]; handled by parent/first-half queue."
+    }
+  ],
+  "preservation": [
+    "No application changes or source bindings",
+    "No score migration/private reads or writes",
+    "Keep all stable work IDs and prior research",
+    "Music-show first, official full practice second; concert/festival/showcase and relay/guide/clip not silently promoted",
+    "Same language, remix and full length required; official group-member collaboration fallback may be reviewed only with disclosed scope differences under the new user policy",
+    "Titles/metadata, duration and official provenance alone do not prove full playback or actual audio version"
+  ],
+  "policyUpdate": {
+    "scope": "Collaboration performer scope only; this is an offline review queue, not a binding decision.",
+    "newPolicyReviewCount": 6,
+    "excludedFromRelaxation": [
+      "language",
+      "remix",
+      "full length",
+      "official origin",
+      "target group-member performance"
+    ],
+    "metadataRetrievalOrPlaybackRepeated": false,
+    "source": "Parent-agent relay of explicit current user decision during this classification pass."
+  },
+  "classificationCorrections": [
+    {
+      "workId": "recvxyH5pzoIOD",
+      "previousPointer": "/batches/16/queries/3",
+      "correctedPointer": "/batches/16/queries/3/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    },
+    {
+      "workId": "recvxyHuKMwjsI",
+      "previousPointer": "/batches/16/queries/1",
+      "correctedPointer": "/batches/16/queries/1/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    },
+    {
+      "workId": "recvxyHuKMwrIt",
+      "previousPointer": "/batches/16/queries/0",
+      "correctedPointer": "/batches/16/queries/0/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    },
+    {
+      "workId": "recvxyOz5XkyEY",
+      "previousPointer": "/batches/14/queries/0",
+      "correctedPointer": "/batches/14/queries/0/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    },
+    {
+      "workId": "recvxyOz5XkyEY",
+      "previousPointer": "/batches/14/queries/3",
+      "correctedPointer": "/batches/14/queries/3/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    },
+    {
+      "workId": "recvxyOz5XkyEY",
+      "previousPointer": "/batches/15/queries/0",
+      "correctedPointer": "/batches/15/queries/0/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    },
+    {
+      "workId": "recvxyOz5XkyEY",
+      "previousPointer": "/batches/15/queries/2",
+      "correctedPointer": "/batches/15/queries/2/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    },
+    {
+      "workId": "recvxyOz5XkyEY",
+      "previousPointer": "/batches/16/queries/2",
+      "correctedPointer": "/batches/16/queries/2/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    },
+    {
+      "workId": "recvxyOz5XnOv7",
+      "previousPointer": "/batches/14/queries/2",
+      "correctedPointer": "/batches/14/queries/2/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    },
+    {
+      "workId": "recvxyOz5XnOv7",
+      "previousPointer": "/batches/15/queries/3",
+      "correctedPointer": "/batches/15/queries/3/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    },
+    {
+      "workId": "recvxyOz5Xqy0Q",
+      "previousPointer": "/batches/14/queries/1",
+      "correctedPointer": "/batches/14/queries/1/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    },
+    {
+      "workId": "recvxyOz5Xqy0Q",
+      "previousPointer": "/batches/15/queries/1",
+      "correctedPointer": "/batches/15/queries/1/q",
+      "reason": "Stored batches 15-17 use query objects with q property; point to exact text instead of enclosing object."
+    }
+  ]
+}

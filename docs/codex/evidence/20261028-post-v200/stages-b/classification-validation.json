@@ -1,0 +1,1362 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T14:05:50.541307+00:00",
+  "scope": "Offline checks of stages-b research classification only; no application, binding, private or deployment mutation.",
+  "researchLedger": "research-ledger.json",
+  "researchLedgerSha256": "9ac7426be2fe11df4937ccd721c962fde605f39e791ab607d2d1234e51bf35fb",
+  "baselineQueue": "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json",
+  "baselineSha256": "d0bd9e63e4802c021a6a15f3474be1adc40e39215de47e76a0625a6962b0428a",
+  "counts": {
+    "checks": 329,
+    "passed": 329,
+    "failed": 0,
+    "records": 56,
+    "queryBatches": 17,
+    "uniqueQueries": 68,
+    "sourceTitleUrlReferences": 63,
+    "watchMetadataReferences": 5,
+    "newPolicyReviews": 6,
+    "eligibleForBinding": 0,
+    "newNetworkRequests": 0,
+    "privateReads": 0,
+    "privateWrites": 0,
+    "formalBindings": 0,
+    "deployments": 0
+  },
+  "limitations": [
+    "Validates stored source pointers and classification consistency; not a new source retrieval or playback review.",
+    "Source titles, duration and official provenance do not independently prove actual language, full song audio, or member appearance.",
+    "New member-version fallback policy is queued for review only.",
+    "Original Voltage duration and user policy relay originate in parent-agent handoff."
+  ],
+  "checks": [
+    {
+      "name": "56 stable records",
+      "passed": true
+    },
+    {
+      "name": "unique work IDs",
+      "passed": true
+    },
+    {
+      "name": "ordered IDs artists songs preserved",
+      "passed": true
+    },
+    {
+      "name": "baseline indexes preserved",
+      "passed": true
+    },
+    {
+      "name": "category counts exact",
+      "passed": true
+    },
+    {
+      "name": "nine categories total 56",
+      "passed": true
+    },
+    {
+      "name": "input SHA256 search-session.json",
+      "passed": true
+    },
+    {
+      "name": "input SHA256 watch-metadata.json",
+      "passed": true
+    },
+    {
+      "name": "input SHA256 followup-watch-metadata.json",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzJov0 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzJov0 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzJov0 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzJov0 query /batches/0/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzJov0 query /batches/1/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzQxpW bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzQxpW no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzQxpW prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzQxpW query /batches/0/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzQxpW query /batches/1/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzVn2k bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzVn2k no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzVn2k prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzVn2k query /batches/2/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzZfyK bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzZfyK no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzZfyK prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzZfyK query /batches/1/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzZfyK source /batches/1/sources/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzZfyK source /batches/1/sources/7",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzbluu bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzbluu no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzbluu prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzbluu query /batches/3/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzdckl bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzdckl no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzdckl prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzdckl query /batches/2/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzi1oo bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzi1oo no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzi1oo prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzi1oo query /batches/2/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoIOD bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoIOD no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoIOD prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoIOD query /batches/2/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoIOD query /batches/16/queries/3/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoIOD source /batches/2/sources/5",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoIOD watch metadata exact",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoMAf bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoMAf no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoMAf prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoMAf query /batches/3/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoaOZ bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoaOZ no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoaOZ prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoaOZ query /batches/0/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoaOZ query /batches/1/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzoaOZ query /batches/3/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzrrSO bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzrrSO no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzrrSO prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyH5pzrrSO query /batches/0/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKM2Gwu bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKM2Gwu no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKM2Gwu prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKM2Gwu query /batches/3/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKM5r64 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKM5r64 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKM5r64 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKM5r64 query /batches/4/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKM5r64 source /batches/4/sources/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMBHQA bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMBHQA no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMBHQA prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMBHQA query /batches/4/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMCSdB bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMCSdB no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMCSdB prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMCSdB query /batches/4/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMDFye bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMDFye no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMDFye prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMDFye query /batches/4/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMDFye watch metadata exact",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMLz7L bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMLz7L no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMLz7L prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMLz7L query /batches/6/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMLz7L source /batches/6/sources/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMLz7L source /batches/6/sources/6",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMNnpu bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMNnpu no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMNnpu prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMNnpu query /batches/5/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMXVDa bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMXVDa no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMXVDa prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMXVDa query /batches/5/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMZLFT bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMZLFT no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMZLFT prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMZLFT query /batches/5/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMZLFT source /batches/5/sources/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMh5bM bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMh5bM no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMh5bM prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMh5bM query /batches/5/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMiDs4 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMiDs4 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMiDs4 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMiDs4 query /batches/6/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMiDs4 source /batches/6/sources/9",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMiDs4 source /batches/6/sources/15",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMisqR bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMisqR no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMisqR prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMisqR query /batches/6/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMisqR source /batches/6/sources/47",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlAhN bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlAhN no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlAhN prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlAhN query /batches/6/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlGJW bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlGJW no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlGJW prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlGJW query /batches/7/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlNfX bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlNfX no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlNfX prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlNfX query /batches/7/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlNfX source /batches/7/sources/8",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMlNfX source /batches/7/sources/18",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMwjsI bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMwjsI no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMwjsI prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMwjsI query /batches/16/queries/1/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMwrIt bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMwrIt no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMwrIt prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMwrIt query /batches/16/queries/0/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMwrIt source /batches/16/sources/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMwrIt source /batches/16/sources/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMxwnW bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMxwnW no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMxwnW prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMxwnW query /batches/7/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMxwnW source /batches/7/sources/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMxwnW source /batches/7/sources/5",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMyy5i bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMyy5i no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMyy5i prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMyy5i query /batches/7/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMyy5i source /batches/7/sources/19",
+      "passed": true
+    },
+    {
+      "name": "recvxyHuKMyy5i source /batches/7/sources/27",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X0JJ9 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X0JJ9 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X0JJ9 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X0JJ9 query /batches/8/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X0JJ9 source /batches/8/sources/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X0JJ9 source /batches/8/sources/7",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X1VFs bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X1VFs no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X1VFs prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X1VFs query /batches/8/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X1VFs source /batches/8/sources/36",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X1VFs source /batches/8/sources/43",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X3Fd8 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X3Fd8 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X3Fd8 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X3Fd8 query /batches/8/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X3Fd8 source /batches/8/sources/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X3Fd8 source /batches/8/sources/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X6G1q bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X6G1q no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X6G1q prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X6G1q query /batches/8/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X6G1q source /batches/8/sources/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X6G1q source /batches/8/sources/34",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7Tw7 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7Tw7 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7Tw7 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7Tw7 query /batches/9/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7Tw7 source /batches/9/sources/17",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7Tw7 source /batches/9/sources/18",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7Tw7 source /batches/9/sources/23",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7zV3 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7zV3 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7zV3 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7zV3 query /batches/9/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7zV3 source /batches/9/sources/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X7zV3 source /batches/9/sources/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X9qGD bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X9qGD no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X9qGD prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5X9qGD query /batches/9/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XFVzt bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XFVzt no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XFVzt prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XFVzt query /batches/9/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XGYPC bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XGYPC no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XGYPC prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XGYPC query /batches/10/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XJWXT bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XJWXT no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XJWXT prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XJWXT query /batches/10/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XJWXT source /batches/10/sources/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XJWXT source /batches/10/sources/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XKzE5 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XKzE5 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XKzE5 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XKzE5 query /batches/10/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XKzE5 source /batches/10/sources/33",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XKzE5 source /batches/10/sources/34",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQMJt bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQMJt no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQMJt prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQMJt query /batches/10/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQMJt source /batches/10/sources/15",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQMJt source /batches/10/sources/22",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQMJt source /batches/10/sources/27",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQZhy bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQZhy no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQZhy prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQZhy query /batches/11/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQZhy source /batches/11/sources/34",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XQZhy source /batches/11/sources/41",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XRfn5 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XRfn5 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XRfn5 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XRfn5 query /batches/11/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XRfn5 source /batches/11/sources/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XRfn5 source /batches/11/sources/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xa1EK bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xa1EK no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xa1EK prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xa1EK query /batches/11/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xa1EK source /batches/11/sources/36",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xa1EK source /batches/11/sources/37",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY query /batches/14/queries/0/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY query /batches/14/queries/3/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY query /batches/15/queries/0/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY query /batches/15/queries/2/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY query /batches/16/queries/2/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY source /batches/14/sources/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY source /batches/14/sources/16",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY source /batches/16/sources/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XkyEY watch metadata exact",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XlqWP bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XlqWP no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XlqWP prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XlqWP query /batches/11/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XlqWP source /batches/11/sources/8",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XmFwB bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XmFwB no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XmFwB prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XmFwB query /batches/12/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XmMQe bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XmMQe no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XmMQe prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XmMQe query /batches/12/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XmMQe source /batches/12/sources/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XmMQe source /batches/12/sources/4",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XmMQe source /batches/12/sources/17",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XnOv7 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XnOv7 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XnOv7 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XnOv7 query /batches/12/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XnOv7 query /batches/14/queries/2/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XnOv7 query /batches/15/queries/3/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XnOv7 source /batches/12/sources/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XnOv7 source /batches/12/sources/6",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XnOv7 source /batches/12/sources/20",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XnOv7 source /batches/12/sources/21",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XnOv7 watch metadata exact",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xo5fW bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xo5fW no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xo5fW prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xo5fW query /batches/12/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xo5fW source /batches/12/sources/58",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xqy0Q bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xqy0Q no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xqy0Q prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xqy0Q query /batches/14/queries/1/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xqy0Q query /batches/15/queries/1/q",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xqy0Q watch metadata exact",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xr917 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xr917 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xr917 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xr917 query /batches/13/queries/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xr917 source /batches/13/sources/52",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XsgVc bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XsgVc no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XsgVc prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XsgVc query /batches/13/queries/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XsgVc source /batches/13/sources/8",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XueI9 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XueI9 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XueI9 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XueI9 query /batches/13/queries/2",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XueI9 source /batches/13/sources/39",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5XueI9 source /batches/13/sources/50",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xvsk1 bounded evidence limits",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xvsk1 no absence claim or binding",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xvsk1 prior classification preserved",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xvsk1 query /batches/13/queries/3",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xvsk1 source /batches/13/sources/0",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xvsk1 source /batches/13/sources/1",
+      "passed": true
+    },
+    {
+      "name": "recvxyOz5Xvsk1 source /batches/13/sources/23",
+      "passed": true
+    },
+    {
+      "name": "all 17 stored query batches referenced",
+      "passed": true
+    },
+    {
+      "name": "all 68 stored queries referenced",
+      "passed": true,
+      "detail": {
+        "covered": 68,
+        "available": 68,
+        "missing": []
+      }
+    },
+    {
+      "name": "five exact watch observations",
+      "passed": true
+    },
+    {
+      "name": "two out-of-slice observations not assigned",
+      "passed": true
+    },
+    {
+      "name": "Voltage excerpt guard",
+      "passed": true
+    },
+    {
+      "name": "MEXE group-member participation still unverified",
+      "passed": true
+    },
+    {
+      "name": "CRAZY English audio not inferred",
+      "passed": true
+    },
+    {
+      "name": "Happy Christmas official provenance and duration distinguished from type",
+      "passed": true
+    },
+    {
+      "name": "aespa K-909 type confirmed separately from naevis part",
+      "passed": true
+    },
+    {
+      "name": "six collaboration records queued under new policy",
+      "passed": true
+    },
+    {
+      "name": "four official full-source retrieval leads retained",
+      "passed": true
+    },
+    {
+      "name": "Touchdown query caveat explicit",
+      "passed": true
+    },
+    {
+      "name": "all source/metadata full playback bounds preserved",
+      "passed": true
+    },
+    {
+      "name": "MINIVE approval stays with separate human version",
+      "passed": true
+    },
+    {
+      "name": "Supernova The Other World remains exact remix scope",
+      "passed": true
+    },
+    {
+      "name": "Not Shy rejected candidate remains forbidden",
+      "passed": true
+    }
+  ],
+  "initialValidation": {
+    "checks": 326,
+    "passed": 314,
+    "failed": 12,
+    "finding": "12 query references pointed to enclosing query objects rather than exact q text in batches 15-17. Corrected precise pointers; source text unchanged.",
+    "applicationIssue": false
+  }
+}

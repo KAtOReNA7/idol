@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-28T12:44:53.537309+00:00",
+  "focusedTests": {
+    "parentPassed": 95,
+    "statisticsPassed": 34,
+    "uniquePassed": 129,
+    "failed": 0,
+    "parentCommand": [
+      "node",
+      "--test",
+      "tests/v200-public-credits.test.cjs",
+      "tests/continuous-public-credits.test.cjs",
+      "tests/public-work-recognition.test.cjs",
+      "tests/public-credit-absence-ui.test.cjs",
+      "tests/public-data-completion.test.cjs",
+      "tests/reviewed-native-recognition.test.cjs",
+      "tests/stage-selection-policy.test.mjs",
+      "tests/stage-replacement-adoption.test.cjs",
+      "tests/udtt-private-build-assets.test.mjs",
+      "tests/core.test.cjs"
+    ],
+    "logSha256": "e03a78dce274e77b2f4208bd51cd917f7873c5575d111a7eb9d75d4c36cae674",
+    "statisticsReceipt": "statistics/verification.json",
+    "wholeRepositorySuite": false
+  },
+  "typeScript": "passed --noEmit --incremental false",
+  "privateWrites": 0,
+  "localHttp": "local-http-statistics.json",
+  "localServerShutdown": "local-server-shutdown.json; five local catalog502 logs and a public-path warning observed, unresolved; not production failure evidence",
+  "browserVisual": "unverified: preferred IAB tab creation timed out after45s; no Chrome fallback",
+  "priorTestCorrections": [
+    "Existing group-information assertion expected9 missing sales; v199 had7. Historical cohort assertions preserved.",
+    "Initial new photo test incorrectly required1200px height for all reviewed originals; valid existing1228x819 KYA image retained and checked by exact SHA/dimensions/crop instead.",
+    "HTTP test initially expected VVUP client-loaded details in SSR; corrected verification scope, no component change."
+  ],
+  "buildAndPackage": {
+    "build": "passed",
+    "package": "package-verification.json",
+    "files": 1421,
+    "allBuildFileBytesVerified": true,
+    "sourceSync": "source-sync.json",
+    "credentialRenewal": "Initial package helper rejected expired short-lived credential before building; renewed same-site credential, then helper succeeded. No permission or audience changes.",
+    "assetPreparation": {
+      "removedGeneratedRemoteCopies": 5418,
+      "remoteBytes": 3222592791,
+      "restrictedGeneratedCopies": 10,
+      "originalFilesChanged": 0
+    },
+    "existingNonBlockingBuildWarnings": [
+      "Vite client chunks over500kB",
+      "vinext cannot statically classify some dynamic routes"
+    ]
+  },
+  "publication": {
+    "status": "succeeded",
+    "version": 200,
+    "receipt": "publication.json",
+    "deploymentId": "appgdep_6ae1efcd18648191bc43e2760bc2f9eb",
+    "source": "e27a7adf04140b130cd1d10568100c13f6258bde",
+    "browserVisual": "unverified; open_in_codex queued does not confirm a visible page"
+  }
+}

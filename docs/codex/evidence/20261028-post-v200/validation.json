@@ -1,0 +1,72 @@
+{
+  "checkedAt": "2026-10-28T14:53:39.174077+00:00",
+  "publication": "not_published_user_requested_hold",
+  "tests": {
+    "passed": 109,
+    "failed": 0,
+    "files": [
+      "stage-import-policy.test.cjs",
+      "stage-selection-policy.test.mjs",
+      "post-v200-statistics.test.mjs",
+      "post-v200-adoptions.test.cjs",
+      "continuation-person.test.cjs",
+      "v200-public-credits.test.cjs",
+      "stage-viewing-category-resolution.test.mjs",
+      "group-information.test.mjs",
+      "stage-fill-statistics.test.mjs",
+      "statistics-annual-reconciliation.test.mjs",
+      "user-x-observations.test.mjs",
+      "timeline-reported-records.test.cjs",
+      "udtt-private-build-assets.test.mjs",
+      "product-copy.test.cjs"
+    ],
+    "wholeRepositorySuite": false,
+    "logSha256": "f8e79164b440c63b154b1b1b156af36f5538d8fd11f0f77cfed3ec22c067ebe8"
+  },
+  "typeScript": {
+    "command": "npx tsc --noEmit",
+    "passed": true,
+    "generatedCacheRestoredToHead": true
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "packagePrepared": false,
+    "nonBlockingWarnings": [
+      "Existing client chunk-size warning",
+      "vinext static dynamic-route classification limitation"
+    ]
+  },
+  "stageValidator": {
+    "inventory": 614,
+    "selected": 496,
+    "newGaps": 109,
+    "intentionalGroupPlaceholders": 9,
+    "valid": true
+  },
+  "sourceProtection": "source-protection.json",
+  "oldPublicAssetFiles": 6025,
+  "oldPublicAssetsGitDiffEmpty": true,
+  "newStagePosterOriginals": 4,
+  "browser": {
+    "main": "ui/main-flow.json",
+    "udtt": "ui/udtt.json",
+    "mainLayouts": 34,
+    "mainInteractions": 23,
+    "udttLayouts": 2,
+    "udttSourceClicks": 2,
+    "udttGuards": 2,
+    "finalRelevantErrors": 0,
+    "publicDisplayFixtures": true,
+    "productionBrowserQa": false,
+    "privateSave": false,
+    "fullVideoAudioPlayback": false
+  },
+  "initialTestFailuresResolved": [
+    "Two new assertions used serialized whitespace/empty evidence projection expectations, corrected without changing runtime",
+    "Missing 14 historical viewing notes fixed in application data",
+    "Legacy product test references summary.ratedWorks after existing component refactor",
+    "SPAGHETTI browser check now waits for client render; UDTT fixture scope/viewer/route corrected"
+  ],
+  "privateWrites": 0
+}

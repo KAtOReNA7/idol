@@ -1,0 +1,472 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T15:45:35.070Z",
+  "scope": "Independent bounded follow-up of9 unknown metrics:6 sales/3 music-show wins. Research/proposals only; no application/queue mutation, git, deployment, owner access or private export.",
+  "baselineQueue": "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json",
+  "baselineQueueSha256": "66c38a641643fca27af82cc26412d640076987e8641c07715710431579bee739",
+  "priorResearch": "docs/codex/evidence/20261028-post-v200/statistics/research.json",
+  "priorResearchSha256": "bb526076228626aa9897ef81b95f6476b44fc5cc22612da9d7ebfbfcec339b64",
+  "summary": {
+    "queueItems": 9,
+    "numericProposals": 2,
+    "proposedValues": {
+      "vvup.sales": 1787,
+      "udtt.sales": 103
+    },
+    "potentialUnknownAfterBothAdopted": 7,
+    "remainingIfAdopted": {
+      "sales": 4,
+      "wins": 3
+    },
+    "adoptedByThisAgent": 0,
+    "completeCumulativeClaims": 0,
+    "zeroClaimsAdded": 0,
+    "chartRequestsRecorded": 33
+  },
+  "items": [
+    {
+      "key": "genblue.wins",
+      "priorFinding": "ACT LIKE THAT单曲Music Show Wins=0、2025-03-11 THE SHOW第2/3351分可以核实，但不能把单曲记录扩展到全团全时期0。中文采访是一位候补及下一次获奖目标，仍不覆盖2026全部作品。",
+      "status": "unresolved_full_period_zero_not_proven",
+      "scope": "新查2025下半年/2026首一位、中文采访及台湾第一称谓消歧；未做六节目全期逐集穷尽。",
+      "finding": "没有合格全期0或正数总计；台湾iTopChart第一、选秀冠军、一位候补、其他艺人在同场获首一位均不计入。",
+      "sources": [
+        {
+          "url": "https://www.starnewskorea.com/music/2024/12/11/2024121109242095731",
+          "access": "body_read",
+          "kind": "named_original_news",
+          "finding": "文完植署名报道明确此前台湾第一指iTopChart专辑销量榜，不能算韩国打歌一位。"
+        },
+        {
+          "url": "https://www.nownews.com/news/6657979",
+          "access": "body_read",
+          "kind": "original_news",
+          "finding": "一位候补报道，未给全时期获胜总数。"
+        },
+        {
+          "url": "https://news.pchome.com.tw/entertainment/m00361/20250813/index-75507384147997316006.html",
+          "access": "search_index_read",
+          "kind": "interview_republication",
+          "finding": "2025-08生日愿望希望九月获得韩国节目一位；不是2026全年0的证据。"
+        }
+      ],
+      "remaining": "需要有明确截止日的六音乐节目完整获奖汇总，或本人/经纪公司明确首次获奖及后续明细。",
+      "adopted": false,
+      "absenceProvesZero": false
+    },
+    {
+      "key": "spia.sales",
+      "priorFinding": "Deeeep数字发行已由正版音乐目录确认；未取得实体发行或全期销量数量，数字发行不证明全团实体累计0。",
+      "status": "unresolved_physical_count_missing",
+      "scope": "限定正确韩文수피아、发行商Kakao/Campus、两个数字发行；排除早期错拼스피아造成的无关结果。",
+      "finding": "数字发行已核，实体累计/公开数量仍无；不能从数字目录断言从未售实体。",
+      "sources": [
+        {
+          "url": "https://world.kbs.co.kr/service/contents_view.htm?board_code=music_news&board_seq=451476&id=&lang=k&menu_cate=enternews&page=426",
+          "access": "search_index_then_http429_route_stopped",
+          "kind": "broadcaster_release_news",
+          "finding": "6/5音源网站发行信息，无实体售出数量；429后停止该路线。"
+        },
+        {
+          "url": "https://music.bugs.co.kr/artist/20208411",
+          "access": "search_index_read",
+          "kind": "licensed_catalog",
+          "finding": "Daddy’s Little Girl与Deeeep两个发行条目；数字目录并非全渠道实体库存/销售记录。"
+        }
+      ],
+      "remaining": "发行商实体SKU/出货或可核销量数量，不能以榜单无行推0。",
+      "adopted": false,
+      "absenceProvesZero": false
+    },
+    {
+      "key": "tracer.sales",
+      "priorFinding": "精确限定GleamMedia四人女团TRACER及365，搜索仍大量同名剧集/硬件噪声；未取得销量数量。",
+      "status": "unresolved_no_numeric_evidence",
+      "scope": "Genie原始365发行特辑确认四人TRACER，排除同名电视剧OST和TREASURE。",
+      "finding": "取得发行与团体身份的新一手说明，没有销量数字。",
+      "sources": [
+        {
+          "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=14789",
+          "access": "body_read",
+          "kind": "licensed_original_release_feature",
+          "finding": "TRACER四人成团身份、365发行花絮与两轨目录可核；未给销量或全期一位。"
+        }
+      ],
+      "remaining": "实体发行SKU/厂牌数量或精确榜单。",
+      "adopted": false,
+      "absenceProvesZero": false
+    },
+    {
+      "key": "tracer.wins",
+      "priorFinding": "精确团名与music show wins检索无可靠全时期总数；First Win TBA是缺资料/尚未记首奖标识，不是可审计0。Soompi命中Tracer均为剧集取代音乐节目，与本团无关。",
+      "status": "unresolved_full_period_zero_not_proven",
+      "scope": "精确韩文团名+365+音乐节目一位检索；未取得完整六节目获奖档案。",
+      "finding": "检索持续混入同名电视剧收视第一，不能用于音乐节目获奖；暂无可采用0。",
+      "sources": [
+        {
+          "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=14789",
+          "access": "body_read",
+          "kind": "licensed_original_release_feature",
+          "finding": "TRACER四人成团身份、365发行花絮与两轨目录可核；未给销量或全期一位。"
+        }
+      ],
+      "remaining": "明确覆盖团体活动期的打歌获奖表/官方声明。",
+      "adopted": false,
+      "absenceProvesZero": false
+    },
+    {
+      "key": "udtt.sales",
+      "priorFinding": "Namu School Rush表合132（3+11+64+51+3），没有Hanteo原链。Ktown4u可读快照School Rush Sales16（旧17）及VIPER Sales3，需区分单店页面计数、退款与统计截止；不采用19为稳定历史下界。",
+      "status": "scoped_numeric_proposal_ready",
+      "scope": "21个初始Retail期间与12个定向补充Album/Retail期间，准确定位实体发行日，验证两个不同专辑条码。",
+      "finding": "采用提案为两选定日Retail64+39=103；不是社区Hanteo132或商家页面19。",
+      "sources": [
+        {
+          "url": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20250501",
+          "title": "School Rush",
+          "sourceDate": "2025-05-01",
+          "checkedAt": "2026-10-28T15:36:25.114986+00:00",
+          "kind": "primary-chart",
+          "access": "official-page-native-public-api",
+          "sha256": "6cd3062b02937ea83f26b22fa56664b62c07c9f373cb90a1ad2084535d59e1ef",
+          "finding": "64 copies for exact day/barcode only"
+        },
+        {
+          "url": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20260710",
+          "title": "VIPER",
+          "sourceDate": "2026-07-10",
+          "checkedAt": "2026-10-28T15:36:42.034708+00:00",
+          "kind": "primary-chart",
+          "access": "official-page-native-public-api",
+          "sha256": "0bd38073943d1d258e691ff4713c9dacbbc410c467984e384d2d2c9e045fa083",
+          "finding": "39 copies for exact day/barcode only"
+        }
+      ],
+      "proposal": "docs/codex/evidence/20261028-post-v200/statistics/udtt-retail-proposal.json",
+      "value": 103,
+      "remaining": "所有未覆盖日期/渠道/版本及全团完整累计仍未知。",
+      "adopted": false,
+      "absenceProvesZero": false
+    },
+    {
+      "key": "vcha.sales",
+      "priorFinding": "继续限定VCHA品牌期；检索未见可核实体累计，不能把GIRLSET后续商品/数字播放/出货放入VCHA，也不能因数字发行推0。",
+      "status": "unresolved_historical_scope",
+      "scope": "新查Republic官方商品集合及正版数字发行，保持VCHA品牌期，不迁移GIRLSET。",
+      "finding": "官方店当前空集合不能证明历史0；打印CD封面和数字目录不等于官方实体发行/销量。",
+      "sources": [
+        {
+          "url": "https://www.republicrecords.com/collections/vcha",
+          "access": "body_read",
+          "kind": "official_label_store",
+          "finding": "当前No products found是空商品集合，不证明历史没有销售或累计0。"
+        },
+        {
+          "url": "https://www.qobuz.com/ca-en/album/only-one-vcha/qtgri53mq0glb",
+          "access": "search_index_read",
+          "kind": "licensed_catalog",
+          "finding": "Only One归Republic/JYP数字发行；不提供实体销量。"
+        },
+        {
+          "url": "https://www.supraphonline.cz/album/799561-only-one",
+          "access": "search_index_read",
+          "kind": "licensed_digital_store",
+          "finding": "所谓CD封面下载说明是供用户自行烧录的打印物，不证明官方CD实体版本。"
+        }
+      ],
+      "remaining": "VCHA品牌期厂牌历史实体清单与数量；不能据GIRLSET现在商品反填。",
+      "adopted": false,
+      "absenceProvesZero": false
+    },
+    {
+      "key": "vcha.wins",
+      "priorFinding": "Twicehub 2023-11-09仅说明当时VCHA尚无音乐节目一位，不覆盖2024至品牌更名的完整时期；不将该早期快照当现在全期0。",
+      "status": "unresolved_full_period_zero_not_proven",
+      "scope": "检索VCHA节目获胜与0记录，排除2023旧Twicehub快照、同场其他艺人的获奖新闻。",
+      "finding": "没有覆盖2024至品牌更名的明确总数/零次记录；不重读早期快照冒称新证据。",
+      "sources": [
+        {
+          "url": "https://www.soompi.com/article/1615718wpp/akmu-takes-3rd-win-for-love-lee-on-music-core-performances-by-riize-vcha-evnne-and-more",
+          "access": "search_index_read",
+          "kind": "show_result_news",
+          "finding": "获胜为AKMU；VCHA仅表演者，不能从共同出现推获奖或全期0。"
+        }
+      ],
+      "remaining": "VCHA品牌期六节目完整结果集合及可审计无遗漏条件。",
+      "adopted": false,
+      "absenceProvesZero": false
+    },
+    {
+      "key": "vvup.sales",
+      "priorFinding": "Weverse Shop 2026-09-02更新官方公告把VVON实体发行/配送调整至2026-10-29；本轮日期2026-10-28，不能提前补未来销量或把预售当已售净量。",
+      "status": "scoped_numeric_proposal_ready",
+      "scope": "2024 Locked On实体而非未来VVON；官方Weverse发行日、Circle Album17周、Retail同周与日数据交叉。",
+      "finding": "强口径选单周Album1787；Retail846仅佐证不加，Total_CNT1996语义未完全核实不采用。",
+      "sources": [
+        {
+          "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=17&yearTime=3",
+          "title": "Circle Album17周",
+          "sourceDate": "2024-04-27",
+          "checkedAt": "2026-10-28T15:38:37.091535+00:00",
+          "kind": "primary-chart",
+          "access": "official-page-native-public-api",
+          "sha256": "2634d88dfa7924a16c0949451f005f626013c9216c76fa01bcad50386d2b95cb"
+        },
+        {
+          "url": "https://circlechart.kr/page_chart/retail.circle?termGbn=week&yyyymmdd=20240421",
+          "title": "Circle Retail17周（不加总）",
+          "sourceDate": "2024-04-27",
+          "checkedAt": "2026-10-28T15:35:31.327530+00:00",
+          "kind": "primary-chart",
+          "access": "official-page-native-public-api",
+          "sha256": "eb7e0fe67f229c477e1ad305a6174dbfcb2474c789fac6da42f6bbe2fd0dd9c5"
+        },
+        {
+          "url": "https://shop.weverse.io/en/shop/USD/artists/181/notices/5676",
+          "access": "body_read",
+          "kind": "official_merchant_notice",
+          "finding": "官方发行及发货2024-04-22，明确计入Hanteo/Circle。"
+        },
+        {
+          "url": "https://shop.weverse.io/en/shop/USD/artists/181/sales/24356",
+          "access": "body_read",
+          "kind": "official_merchant_product",
+          "finding": "egoENT / GENIE MUSIC / CD /2024-04-22。"
+        }
+      ],
+      "proposal": "docs/codex/evidence/20261028-post-v200/statistics/vvup-album-proposal.json",
+      "value": 1787,
+      "remaining": "其他时期、版本与作品全渠道累计；VVON未来量未预填。",
+      "adopted": false,
+      "absenceProvesZero": false
+    },
+    {
+      "key": "witchx.sales",
+      "priorFinding": "WTCHX/W!TCHX同团的正版数字目录和Run Baby Run检索未提供实体数量；自然搜索命中数据库0+只能作来源覆盖下界，不是真实全期0。",
+      "status": "unresolved_no_numeric_evidence",
+      "scope": "新查Quarter Music/Artform正版发行与Ktown4u主办showcase，未重试Soridata封禁路线。",
+      "finding": "找到发行方与实体活动线索，仍无可核实体销量；数字目录或售罄字样不推出0或任意数。",
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/album/20737747?wl_ref=list_ab_01",
+          "access": "body_read",
+          "kind": "licensed_catalog",
+          "finding": "Run Baby Run发行2025-07-07、Quarter Music发行、Artform制作；无实体售出数字。"
+        },
+        {
+          "url": "https://www.mhnse.com/news/articleView.html?idxno=413532",
+          "access": "body_read",
+          "kind": "named_original_news",
+          "finding": "郑Esther署名报道6/14 Ktown4u线下showcase，不能将举办活动/售罄表述换算为唱片数量。"
+        }
+      ],
+      "remaining": "发行商实体物料编号与可核净销售/出货数量。",
+      "adopted": false,
+      "absenceProvesZero": false
+    }
+  ],
+  "chartEvidenceFiles": [
+    "docs/codex/evidence/20261028-post-v200/statistics/followup-circle-observations.json",
+    "docs/codex/evidence/20261028-post-v200/statistics/followup-chart-definitions.json"
+  ],
+  "searchBatches": [
+    {
+      "batch": 1,
+      "searchQueries": [
+        "\"UDTT\" \"School Rush\" \"sales\" Hanteo",
+        "\"우당탕탕 소녀단\" \"초동\"",
+        "\"트레이서\" \"365\" \"음반\" 판매량",
+        "\"GENBLUE\" \"first win\" 2026 music show"
+      ],
+      "openUrls": [],
+      "clicks": [],
+      "finds": []
+    },
+    {
+      "batch": 2,
+      "searchQueries": [
+        "\"스피아\" \"Deeeep\" \"앨범\" \"판매\"",
+        "\"위치스\" \"앨범\" \"판매량\"",
+        "\"W!TCHX\" album physical sales Run Baby Run",
+        "\"VCHA\" \"music show wins\" 2025"
+      ],
+      "openUrls": [],
+      "clicks": [],
+      "finds": []
+    },
+    {
+      "batch": 3,
+      "searchQueries": [
+        "\"VVUP\" \"Doo Doom Chit\" \"physical\" album",
+        "\"스피아\" \"Up & Down\" 앨범 판매",
+        "\"트레이서\" \"365\" \"발매\" 음반",
+        "\"VCHA\" \"Republic Records\" CD album"
+      ],
+      "openUrls": [],
+      "clicks": [],
+      "finds": []
+    },
+    {
+      "batch": 4,
+      "searchQueries": [
+        "\"VVUP\" \"Locked On\" \"sales\" physical",
+        "\"비비업\" \"Locked On\" \"판매량\"",
+        "\"VVUP\" \"Locked On\" \"Circle\" 2024"
+      ],
+      "openUrls": [
+        "https://kpop.fandom.com/wiki/Locked_On",
+        "https://www.republicrecords.com/collections",
+        "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=14789"
+      ],
+      "clicks": [],
+      "finds": []
+    },
+    {
+      "batch": 5,
+      "searchQueries": [],
+      "openUrls": [
+        "https://shop.weverse.io/en/shop/USD/artists/181/notices/5676",
+        "https://shop.weverse.io/en/shop/USD/artists/181/sales/24356",
+        "https://www.kpopalbums.com/products/vvup-locked-on-1st-single-album",
+        "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=362775703"
+      ],
+      "clicks": [],
+      "finds": [
+        {
+          "ref_id": "turn452962view1",
+          "pattern": "VCHA"
+        }
+      ]
+    },
+    {
+      "batch": 6,
+      "searchQueries": [
+        "\"GENBLUE\" \"1위\" \"젠블루\" 2026",
+        "\"트레이서\" \"365\" \"음악방송\" \"1위\"",
+        "\"VCHA\" \"music show\" \"win\" -Stray -Layover -Love -Twicehub",
+        "\"SPIA\" \"Deeeep\" \"CD\""
+      ],
+      "openUrls": [],
+      "clicks": [
+        {
+          "ref_id": "turn452962view1",
+          "id": 363
+        }
+      ],
+      "finds": []
+    },
+    {
+      "batch": 7,
+      "searchQueries": [
+        "\"SPIA\" \"Deeeep\" \"수피아\" 발매",
+        "\"위치스\" \"Run Baby Run\" \"쿼터뮤직\""
+      ],
+      "openUrls": [
+        "https://circlechart.kr/page_chart/retail.circle?termGbn=week&yyyymmdd=20240421",
+        "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20250501"
+      ],
+      "clicks": [
+        {
+          "ref_id": "turn290670view4",
+          "id": 363
+        }
+      ],
+      "finds": []
+    },
+    {
+      "batch": 8,
+      "searchQueries": [
+        "\"GENBLUE\" \"첫 1위\" -대만 -데뷔확정",
+        "\"幻藍小熊\" \"音樂節目\" \"一位\" 2026",
+        "\"트레이서\" \"음악방송 1위\"",
+        "\"VCHA\" \"wins\" \"0\" music show -Twicehub -tumblr"
+      ],
+      "openUrls": [],
+      "clicks": [],
+      "finds": []
+    },
+    {
+      "batch": 9,
+      "searchQueries": [],
+      "openUrls": [
+        "https://www.starnewskorea.com/music/2024/12/11/2024121109242095731",
+        "https://www.nownews.com/news/6657979",
+        "https://world.kbs.co.kr/service/contents_view.htm?board_code=music_news&board_seq=451476&id=&lang=k&menu_cate=enternews&page=426",
+        "https://music.bugs.co.kr/album/20737747?wl_ref=list_ab_01",
+        "https://www.mhnse.com/news/articleView.html?idxno=413532"
+      ],
+      "clicks": [],
+      "finds": []
+    },
+    {
+      "batch": 10,
+      "searchQueries": [
+        "\"8809314516007\"",
+        "\"8809868449776\"",
+        "\"8808678800654\"",
+        "site.circlechart.kr \"Album Chart\" \"반품\""
+      ],
+      "openUrls": [],
+      "clicks": [],
+      "finds": []
+    },
+    {
+      "batch": 11,
+      "searchQueries": [],
+      "openUrls": [
+        "https://www.musickorea.asia/Mobile/Product/Detail/view/pid/224944",
+        "https://fanplee.com/product/udtt%EC%9A%B0%EB%8B%B9%ED%83%95%ED%83%95-%EC%86%8C%EB%85%80%EB%8B%A8-udtt-1st-single-album-school-rush/5861/"
+      ],
+      "clicks": [],
+      "finds": []
+    }
+  ],
+  "routeFailures": [
+    {
+      "route": "Aladin School Rush page",
+      "url": "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=362775703",
+      "status": 403,
+      "action": "stopped; Sales Point28 search snippet not a copy count"
+    },
+    {
+      "route": "KBS World SPIA release news",
+      "status": 429,
+      "action": "stopped; source remains search-index only"
+    },
+    {
+      "route": "Fandom Locked On",
+      "status": "restricted",
+      "action": "stopped; independent official Weverse used"
+    },
+    {
+      "route": "Circle in search tool",
+      "status": "tool_not_accessible",
+      "action": "No HTTP denial; already successful official page/native public API path recorded separately, no credentials or bypass."
+    },
+    {
+      "route": "Initial chart stdout",
+      "status": "local_gbk_encoding_error",
+      "action": "Saved observations and escaped terminal Unicode; did not treat as source denial or application bug."
+    },
+    {
+      "route": "Republic collections first click",
+      "status": "stale_link_index",
+      "action": "Opened unrelated Vengaboys from earlier page index; excluded; newest rendered link then opened actual VCHA collection."
+    }
+  ],
+  "testRecommendations": [
+    "Deep equality of each expectedBefore against current app field; preserve full old null record in evidence.previousRecord.",
+    "Only VVUP and UDTT sales fields; IDs, social, wins and all personal fields unchanged.",
+    "Verify1787 from one Album week, exclude1996/846/day duplicate additions.",
+    "Verify UDTT103=64+39, exact two distinct (barcode,date) tuples and each rowSum=KSum+ESum.",
+    "Render evidence.periodType week/selected_days with exact periodLabel in main index and group information details, no continuous累计 label.",
+    "If both adopted, unknown count9→7 (4sales/3wins), without claiming global cumulative completeness.",
+    "Dates/title/source UI responsive checks in VVUP and UDTT; no owner save necessary."
+  ],
+  "limits": [
+    "No full six-show historical award-table audit; seven unadopted metrics remain unknown.",
+    "No failed or absent search is interpreted as true zero.",
+    "Circle Album, Retail and Hanteo are never summed across definitions.",
+    "No new report of all-channel cumulative sales or future VVON sales."
+  ]
+}

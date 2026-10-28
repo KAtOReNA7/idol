@@ -20,7 +20,8 @@ const errors=[];
 const fail=m=>errors.push(m);
 const utc=v=>typeof v==='string'&&Number.isFinite(Date.parse(v))&&Date.parse(v)<=Date.now()+300000&&/(Z|\+00:00)$/.test(v);
 const https=v=>{try{const u=new URL(v);return typeof v==='string'&&u.protocol==='https:'&&!!u.hostname&&!u.username&&!u.password}catch{return false}};
-const documentedSelection=s=>['music_program','practice_room'].includes(s?.occasion)&&typeof s?.evidence?.note==='string'&&!!s.evidence.note.trim()&&Array.isArray(s.evidence.urls)&&s.evidence.urls.length>0&&s.evidence.urls.every(https);
+const evidence=e=>typeof e?.note==='string'&&!!e.note.trim()&&Array.isArray(e.urls)&&e.urls.length>0&&e.urls.every(https);
+const documentedSelection=s=>['music_program','practice_room','produced_performance'].includes(s?.occasion)&&evidence(s.evidence)&&(s.camera===undefined||!!s.camera&&['fixed','moving','mixed'].includes(s.camera.mode)&&evidence(s.camera.evidence));
 const videoID=v=>{try{const u=new URL(v);if(u.protocol!=='https:')return null;const id=u.hostname==='youtu.be'?u.pathname.slice(1):['youtube.com','www.youtube.com'].includes(u.hostname)?u.searchParams.get('v'):null;return /^[\w-]{11}$/.test(id??'')?id:null}catch{return null}};
 if(ids.size!==inventory.works.length)fail('Duplicate work identity in inventory');
 if(Object.keys(baseline).length!==482||hash(baseline)!=='6c95cff64e425a9ee99f8048d2785b96675527668f80bacb907f45890410d978')fail('Historical selection baseline changed; do not expand legacy exemptions');
@@ -31,11 +32,18 @@ for(const [id,s] of Object.entries(videos)){
  if(!ids.has(id))fail(`${id}: unknown video identity`);
  if(rejectedIds.has(s.videoId))fail(`${id}: user-rejected exact source`);
  const frozen=baseline[id]?.sourceKey===sourceKey(s)&&baseline[id]?.selectionSha256===hash(s.selection??null);
+ if(s.memberVersionFallback!==undefined){
+  const f=s.memberVersionFallback,w=inventory.works.find(w=>w.recordId===id);
+  if(!f||typeof f!=='object'||s.versionMatch===true||s.versionMatch==='exact'||!['sameSong','sameLanguage','fullGroup','sameArrangementExceptGuest'].every(k=>f[k]===true)||f.differenceType!=='guest_scope'||!w?.groupIds.includes(f.groupId)||typeof f.guestDifference!=='string'||!f.guestDifference.trim()||!evidence(f.evidence))fail(`${id}: invalid documented member-version fallback`);
+  if(!s.kind?.includes('成员版')||!s.verificationNote?.includes('客串'))fail(`${id}: member-version guest difference must be visible`);
+  if(!s.scoreBinding)fail(`${id}: member-version fallback requires confirmed empty original score binding`);
+ }
  if(!frozen){
-  if(!documentedSelection(s.selection)||s.sourceClass!=='official'||s.platform!=='youtube'||s.completeness!=='full')fail(`${id}: new or changed source requires documented official full music-program/practice selection`);
+  if(!documentedSelection(s.selection)||s.sourceClass!=='official'||s.platform!=='youtube'||s.completeness!=='full')fail(`${id}: new or changed source requires documented official full music-program/practice/produced-performance selection`);
   for(const field of ['type','kind','performanceType']){
    const classification=s[field];
    if(excludedTypes.has(classification)||classification==='practice_room'&&s.selection?.occasion!=='practice_room'||classification==='music_program'&&s.selection?.occasion!=='music_program')fail(`${id}: structured performance type conflicts with new-adoption occasion`);
+   if(['produced_dance_performance','staged_dance_performance','official_performance_film'].includes(classification)&&s.selection?.occasion!=='produced_performance')fail(`${id}: produced-performance type conflicts with new-adoption occasion`);
   }
  }
  if(('sourceClass' in s||'platform' in s||'completeness' in s)&&(s.sourceClass!=='official'||s.platform!=='youtube'||s.completeness!=='full')||s.scorePolicy==='view_only')fail(`${id}: ineligible source cannot become a formal player`);

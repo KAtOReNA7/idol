@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-28",
+  "checkpointReason": "Parent requested an immediate bounded handoff after interruption; no new research calls were started for this checkpoint.",
+  "scope": "Additional source checks on five of the 24 works left after the 11-work public-reference increment. This file does not change application data or count incomplete evidence as adopted.",
+  "reviewedWorks": 5,
+  "newlyAdoptedWorks": 0,
+  "remainingPersonWorks": 24,
+  "applicationRecordsChanged": 0,
+  "privateWrites": 0,
+  "newImageFiles": 0,
+  "fullPlayback": false,
+  "individualAudioComparison": false,
+  "fullWebExhaustion": false,
+  "activeToolCallsAtCheckpoint": [],
+  "lastCompletedCalls": [
+    "Public search-service body reads: Bugs Touchdown OST album, Star Today original Touchdown announcement, ManiaDB OUR NOW album credits.",
+    "Ordinary public HTTP GET of the observed ifeye official Mnet Plus content URL returned HTTP 200 and 50608 decoded characters. Only the RAHEE Official body marker was inspected; no director or performer role was established."
+  ],
+  "records": [
+    {
+      "workId": "recvxyOz5XFVzt",
+      "videoId": "peoZYyEvY-k",
+      "song": "Touchdown",
+      "group": "fromis_9",
+      "disposition": "not_adopted_collective_credit_only",
+      "queryCorrection": "Use the exact drama title 트라이: 우리는 기적이 된다 / The Winning Try and OST Part.2, rather than unrelated generic sports-drama searches.",
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/album/4124391?wl_ref=list_ab_01_ar",
+          "bodyRead": true,
+          "method": "public search-service source body",
+          "facts": [
+            "Exact OST introduction identifies fromis_9 collectively for Touchdown and the SBS drama.",
+            "Track credit block lists DRLDMFKR for lyrics/composition, IRIS for chorus and outside recording staff; no fromis_9 member is individually named."
+          ]
+        },
+        {
+          "url": "https://www.mk.co.kr/news/musics/11382289",
+          "bodyRead": true,
+          "method": "public search-service source body",
+          "facts": [
+            "The July 31, 2025 original Star Today report announces the August 1 Touchdown release and describes the drama.",
+            "Names in the report are drama actors, not identified fromis_9 recording participants."
+          ]
+        }
+      ],
+      "rejectedInference": "Do not map a current five-person artist roster or fan line distribution onto this OST recording; IRIS is not assumed to be a member alias.",
+      "nextRoute": "Obtain the OST label/session credits or an exact-song member recording interview with individual names.",
+      "usefulHumanEvidence": "A booklet credit or official recording-behind timestamp naming an individual participant would resolve a specific claim faster than identifying a whole group from a generic photo."
+    },
+    {
+      "workId": "recvxIZFpVLU0R",
+      "videoId": "ecQSl-6NSTA",
+      "song": "loverfory",
+      "group": "ifeye",
+      "disposition": "not_adopted_role_unproven",
+      "sources": [
+        {
+          "url": "https://artist.mnetplus.world/main/stg/ifeye/tag/music",
+          "bodyRead": true,
+          "method": "public search-service body and ordinary public HTTP page JSON",
+          "facts": [
+            "The official artist feed includes loverfory with embeddedMediaId ecQSl-6NSTA.",
+            "The original feed description begins with the short marker RAHEE Official, followed by group account links.",
+            "The generated page link contained undefined in the artist path; that route redirected to network-error."
+          ]
+        },
+        {
+          "url": "https://artist.mnetplus.world/main/stg/ifeye/contents/6ab4ae6abc67d615d9edae11",
+          "bodyRead": "partial_original_body_marker",
+          "method": "ordinary unauthenticated public HTTP GET after the source-tool reader could not access the page",
+          "httpStatus": 200,
+          "decodedCharacters": 50608,
+          "facts": [
+            "The original content object title is ifeye loverfory MV and its body starts RAHEE Official.",
+            "No explicit director, filming, singer or on-screen role was established from the inspected text."
+          ]
+        },
+        {
+          "url": "https://oseyokorea.com/kpop/460",
+          "bodyRead": false,
+          "method": "search result lead only",
+          "facts": [
+            "Secondary search results repeat the RAHEE marker; a wiki director claim is not adopted without original role evidence."
+          ]
+        }
+      ],
+      "rejectedInference": "RAHEE Official by itself is insufficient to label RAHEE the director or to infer six member appearances. An earlier YouTube throttling route was stopped and was not retried or bypassed.",
+      "nextRoute": "Read a complete original production credit or exact loverfory behind caption naming RAHEE's role; the newly located official page is a usable primary lead.",
+      "usefulHumanEvidence": "An exact timestamp from the official loverfory behind-the-scenes video identifying the director or other named crew/member roles would help."
+    },
+    {
+      "workId": "rec28ldfRTrPi9",
+      "videoId": "aer_X9NmhTc",
+      "song": "PUNG!",
+      "group": "MADEIN",
+      "disposition": "not_adopted_named_roster_unproven",
+      "sources": [
+        {
+          "url": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=466534&lang=k",
+          "bodyRead": true,
+          "method": "public search-service source body",
+          "facts": [
+            "The March 11, 2026 KBS World report identifies PUNG as a double title of Girl Meets Boy and announces Show Champion promotions.",
+            "The article credits 143 Entertainment for the photo but names no individual members."
+          ]
+        },
+        {
+          "url": "https://www.yes24.com/product/goods/175905520",
+          "bodyRead": true,
+          "method": "source body read in the preceding bounded pass",
+          "facts": [
+            "Five cover variants/four message-card variants coexist with a generic six-person artist bio; variant counts do not identify participants."
+          ]
+        }
+      ],
+      "rejectedInference": "Do not infer a four-, five- or six-person PUNG lineup from product counts, current biographies, or a later Japanese concert report.",
+      "nextRoute": "Locate named exact Girl Meets Boy member editions, official concept captions or a PUNG-specific filming/recording source.",
+      "usefulHumanEvidence": "A clear official cover/campaign caption tying a named member to Girl Meets Boy, or a named PUNG recording segment, can support a deliberately limited public reference."
+    },
+    {
+      "workId": "rec28ldfRTrNBu",
+      "videoId": "xZ5Ej-tLEjM",
+      "song": "SASS & Racecar",
+      "group": "izna",
+      "disposition": "not_adopted_exact_upload_cast_unproven",
+      "sources": [
+        {
+          "url": "https://izna-official.jp/s/n198/diary/movie/list?ima=0000&link=ROBO004",
+          "bodyRead": true,
+          "method": "public source body read in the preceding bounded pass",
+          "facts": [
+            "The official catalog lists SASS & Racecar Special Performance Video, without individual participant names."
+          ]
+        },
+        {
+          "url": "https://www2.osen.co.kr/article/G1112858793",
+          "bodyRead": false,
+          "method": "new bounded search result lead only",
+          "facts": [
+            "New searches mostly returned KCON LA 2026 and other concerts, a different performance context from the target upload."
+          ]
+        }
+      ],
+      "rejectedInference": "Do not transfer KCON/current six-member rosters, individual SASS or Racecar videos, or concert appearances to the combined Special Performance upload.",
+      "nextRoute": "Read an exact-upload official behind or production caption identifying participants; the combined arrangement remains a separate scope.",
+      "usefulHumanEvidence": "An official behind timestamp where members introduce themselves for this combined video can support named participation without guessing faces."
+    },
+    {
+      "workId": "recvxyH5pzFAPL",
+      "videoId": "os4driLeAiU",
+      "song": "DOREMI English",
+      "group": "PURPLE KISS",
+      "disposition": "not_adopted_exact_track_roles_unproven",
+      "sources": [
+        {
+          "url": "https://purplekiss.co.kr/contents/68a81a0423389d55f67c6226",
+          "bodyRead": true,
+          "method": "ordinary unauthenticated public HTTP and embedded public page JSON after the source reader returned zero lines",
+          "httpStatus": 200,
+          "decodedCharacters": 121067,
+          "facts": [
+            "The original title is OUR NOW SOLO CONCEPT PHOTO #2, published August 22, 2025.",
+            "The body contains six photo links, the English-album release date and DOREMI/WANT U BACK campaign tags.",
+            "NaGoEun, Dosie, Ireh, Yuki, Chaein and SWAN appear as page tags; the body does not map each photo to a named person or state exact-track recording roles."
+          ]
+        },
+        {
+          "url": "https://www.maniadb.com/album/1068508",
+          "bodyRead": true,
+          "method": "public search-service source body",
+          "facts": [
+            "The secondary album catalog lists DOREMI English as track one and an album-level generic performed-by member roster.",
+            "Album-wide chorus names are not assigned to DOREMI specifically; the roster is not promoted into a primary track or MV cast record."
+          ]
+        },
+        {
+          "url": "https://purplekiss.bstage.in/contents/68b03715762ede52c6efa005",
+          "bodyRead": false,
+          "method": "new bounded search result lead only",
+          "facts": [
+            "Official OUR NOW Track Story is a new exact-release lead; its indexed generic member hashtags do not alone prove individual appearance or vocal roles."
+          ]
+        }
+      ],
+      "rejectedInference": "Do not inherit the Korean version's lyric role, treat English guide recollections as English recording credits, or expand generic site tags into a complete singer/MV cast list.",
+      "nextRoute": "Read the official English recording-behind TGbfk7AEIzk or OUR NOW Track Story with named captions/roles; original page access has improved but evidence remains scoped.",
+      "usefulHumanEvidence": "A named recording-booth timestamp in the English-version behind would establish participation more directly than the concept-photo tag list."
+    }
+  ]
+}

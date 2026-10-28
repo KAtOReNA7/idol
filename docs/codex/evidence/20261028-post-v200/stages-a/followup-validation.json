@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-10-28T15:47:15.131205+00:00",
+  "checks": [
+    {
+      "name": "input_queue_hash_matches",
+      "passed": true
+    },
+    {
+      "name": "input_counts_109_and_11",
+      "passed": true
+    },
+    {
+      "name": "nine_unique_work_ids",
+      "passed": true
+    },
+    {
+      "name": "eight_new_one_legacy",
+      "passed": true
+    },
+    {
+      "name": "all_work_ids_in_public_inventory",
+      "passed": true
+    },
+    {
+      "name": "all_query_ids_resolve_to_correct_work",
+      "passed": true
+    },
+    {
+      "name": "all_27_queries_covered_once",
+      "passed": true
+    },
+    {
+      "name": "five_queries_returned_empty",
+      "passed": true
+    },
+    {
+      "name": "raw_hash_matches",
+      "passed": true
+    },
+    {
+      "name": "public_html_hashes_match",
+      "passed": true
+    },
+    {
+      "name": "exact_video_ids_have_valid_shape",
+      "passed": true
+    },
+    {
+      "name": "zero_eligible_or_adopted",
+      "passed": true
+    },
+    {
+      "name": "original_mv_urls_preserved_as_inventory_reference",
+      "passed": true
+    },
+    {
+      "name": "all_records_have_version_completeness_performer_type_and_next_condition",
+      "passed": true
+    }
+  ],
+  "passed": 14,
+  "failed": 0,
+  "outputs": {
+    "docs/codex/evidence/20261028-post-v200/stages-a/followup-candidates.json": "09ba1a221d45a46b58450bcbd9332107529f769f782545addf54760ce1ac7316",
+    "docs/codex/evidence/20261028-post-v200/stages-a/followup-query-ledger.json": "6f8985ecb869c6933c21c932a3ffb45bcfde96102a0b8da7dd4167d690298b48"
+  },
+  "scopeAttestation": "Research-only subagent: did not access owner exports or user Chrome, did not directly request YouTube, did not modify application/bindings/private data or perform Git/deploy actions. These are declared action boundaries, not a full repository preservation test."
+}

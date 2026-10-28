@@ -1,0 +1,49 @@
+{
+  "proposalOnly": true,
+  "adoptionRecommended": false,
+  "status": "hold_metric_definition_and_snapshot_difference",
+  "checkedAt": "2026-10-28T13:48:17.335205+00:00",
+  "candidateDisplayLabel": "单店商品页公开计数（快照）",
+  "candidateSum": 19,
+  "unitNotIndependentlyConfirmed": "Sales field appears alongside separate Mileage and product price; cannot certify net shipped units from current retrieved documentation.",
+  "observations": [
+    {
+      "url": "https://www.ktown4u.com/iteminfo?goods_no=136597",
+      "product": "UDTT - 1st Single Album [School Rush]",
+      "goodsCode": "GD00136597",
+      "release": "2025-04-29",
+      "field": "Sales",
+      "value": 16,
+      "mileage": 16,
+      "access": "search tool readable original merchant page snapshot",
+      "priorStoredValue": 17,
+      "changeReason": null
+    },
+    {
+      "url": "https://www.ktown4u.com/iteminfo?goods_no=165334",
+      "product": "UDTT - 2nd Single Album [VIPER]",
+      "goodsCode": "GD00165334",
+      "release": "2026-07-09",
+      "field": "Sales",
+      "value": 3,
+      "mileage": 16,
+      "access": "search tool readable original merchant page snapshot"
+    }
+  ],
+  "policySource": {
+    "url": "https://www.ktown4u.com/notices/5392",
+    "published": "2023-07-31",
+    "title": "Ktown4u Chart Renewal Guide",
+    "observation": "Chart accounts for order date and refund date; week/month/year periods are aggregated. Does not establish that this page Sales counter is net shipped copies or explain this SKU decrement."
+  },
+  "directHttpObservation": "udtt-merchant-observations.json",
+  "directHttpOutcome": "200 but loaded /_next/static/chunks/pages/accessRestriction-7bb740e4d28485f7.js; do not interpret as normal successful product retrieval. Stopped direct route and did not probe APIs.",
+  "adoptionRequirements": [
+    "Obtain original merchant field definition for current product Sales counters.",
+    "Use same cutoff and definition for both independent SKUs.",
+    "If ever displayed, label as merchant counter snapshot, not stable historical lower bound or all-channel total.",
+    "Keep old17 and new16 with distinct evidence/access/date and unknown change reason.",
+    "Do not claim either number is Hanteo/Circle.",
+    "Community132 remains unverified and cannot override this hold."
+  ]
+}

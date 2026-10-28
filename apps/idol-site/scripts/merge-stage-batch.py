@@ -4,7 +4,7 @@ Rated, saved or uncertain bindings are retained. Documented replacements require
 a fresh empty score, complete journal and exact published source preimage.
 """
 import json,sys,datetime,pathlib,re,hashlib
-from stage_selection_policy import checked_selection, comparison_candidates, replacement_preference
+from stage_selection_policy import checked_selection, comparison_candidates, replacement_preference, checked_member_fallback, version_eligible
 root=pathlib.Path(__file__).resolve().parent.parent
 now=datetime.datetime.now(datetime.timezone.utc)
 def dt(v):return datetime.datetime.fromisoformat(v.replace('Z','+00:00'))
@@ -55,12 +55,17 @@ for item in batch['items']:
  candidates=comparison_candidates(item['candidates'])
  exact=[c for c in candidates if c['videoId']==s['videoId']];assert len(exact)==1,f'Selection not verified/comparable {rid}'
  picked=exact[0];clip=s.get('clip')
- assert picked['selection']['occasion']==selection['occasion'],f'Selected occasion differs from candidate evidence {rid}'
+ assert picked['selection']==selection,f'Selected occasion/camera evidence differs from candidate evidence {rid}'
  if clip:
   a,b,total=clip.get('startSeconds'),clip.get('endSeconds'),clip.get('sourceDurationSeconds');ev=clip.get('evidence',{})
   assert isinstance(a,int) and not isinstance(a,bool) and isinstance(b,int) and not isinstance(b,bool) and isinstance(total,int) and not isinstance(total,bool) and 0<=a<b<=total<=86400,f'Invalid clip bounds {rid}'
   assert ev.get('note') and ev.get('urls') and all(u.startswith('https://') for u in ev['urls']) and s.get('likesScope')=='whole_video',f'Clip needs full boundary evidence and whole-video like label {rid}'
- assert picked.get('versionMatch') is True and s.get('languageVersionEvidence'),f'Exact version evidence missing {rid}'
+ assert version_eligible(picked) and version_eligible(s) and s.get('languageVersionEvidence'),f'Exact version or documented member fallback evidence missing {rid}'
+ fallback=checked_member_fallback(s)
+ assert picked.get('memberVersionFallback')==fallback,f'Selected member fallback evidence differs from candidate {rid}'
+ if fallback:
+  assert fallback['groupId'] in inv[rid]['groupIds'],f'Member fallback group differs from target {rid}'
+  assert '成员版' in s.get('label','') and '客串' in s.get('verificationNote',''),f'Member fallback must visibly disclose its scope {rid}'
  reuse=s['videoId']==inv[rid]['mv']['videoId']
  if reuse:
   assert s.get('reusesExistingVideo') is True and re.search(r'performance|special stage|live clip|showcase|dance practice|choreography practice',inv[rid]['mv']['officialTitle'] or '',re.I) and not re.search(r'official (?:music video|mv)',inv[rid]['mv']['officialTitle'] or '',re.I),f'Original MV cannot be relabelled stage without explicit performance evidence {rid}'
@@ -74,6 +79,8 @@ for item in batch['items']:
  old=freshworks[rid]['fields'].get('fld641ausT');empty=old is None or (isinstance(old,str) and not old.strip())
  # A public or incomplete projection cannot establish an empty owner score.
  assert 'fld641ausT' in {f.get('field_id') for f in fresh['tables']['works'].get('fields',[])} or fresh['source']=='feishu','Native work schema must include the stage score field'
+ if fallback and (not empty or not journal or any(r.get('recordId')==rid for r in journal.get('records',[]))):
+  held.append({'recordId':rid,'reason':'Member-version fallback held: existing score or save history, or journal not confirmed.'});continue
  bind={'videoId':s['videoId'],'sourceKey':source_key(s),'initializedAt':fresh['capturedAt'],'initialScore':None} if empty else None
  history=previous.get('previousSources',[]) if previous else []
  if previous:
@@ -89,7 +96,7 @@ for item in batch['items']:
    if not(empty and not saved and preference):
     previous['higherCandidate']={'videoId':s['videoId'],'url':s['url'],'title':s['title'],'likes':{'value':s['likes'],'display':s.get('likesDisplay') or f"{s['likes']:,}",'precision':'exact'},'checkedAt':s['checkedAt']}
     held.append({'recordId':rid,'reason':'Source retained: scored, saved, unconfirmed journal or no documented policy/like preference.'});continue
-   history=history+[{k:v for k,v in previous.items() if k!='previousSources'}|{'changedAt':now.isoformat(),'reason':'按已确认节目／练习室政策更新；更新前舞台分为空且完整保存日志无该作品记录。','preference':preference,'previousOccasionReview':item.get('previousOccasionReview')}]
+   history=history+[{k:v for k,v in previous.items() if k!='previousSources'}|{'changedAt':now.isoformat(),'reason':'按已确认节目／练习室／官方表演后备政策更新；更新前舞台分为空且完整保存日志无该作品记录。','preference':preference,'previousOccasionReview':item.get('previousOccasionReview')}]
    replaced.append(rid)
  equiv=s.get('audioEquivalence');audio_equivalence=None
  if equiv:
@@ -105,6 +112,7 @@ for item in batch['items']:
  if clip:candidates=[picked]
  videos[rid]={'sourceClass':'official','platform':'youtube','completeness':'full','videoId':s['videoId'],'url':s['url'],'title':s['title'],'channel':s['channel'],'kind':s.get('label') or s.get('type'),'publishedDate':(s.get('publishedAt') or '')[:10],'typeNote':note,'sourceUrl':s['sourceUrl'],'scoreBinding':bind,'likes':{'value':s['likes'],'display':display,'precision':'exact'},'checkedAt':source_at,'selectionNote':ranknote,'comparisonNote':item['reason'],'reusesOriginalVideo':reuse,'comparisonLimited':bool(item.get('comparisonLimited')),'comparisonLimitation':item.get('comparisonLimitation') or '', 'previousSources':history,'candidateCount':len(candidates),'candidates':[{'title':c['title'],'url':c['url'],'likesDisplay':f"{c['likes']['value']:,}",'kind':c.get('label') or c.get('kind') or '合格候选（见标题）'} for c in candidates]}
  videos[rid]['selection']=selection
+ if fallback:videos[rid]['memberVersionFallback']=fallback
  if s.get('verificationNote'):
   assert isinstance(s['verificationNote'],str) and s['verificationNote'].strip()
   videos[rid]['verificationNote']=s['verificationNote']

@@ -1,0 +1,19 @@
+{
+  "recordedAt": "2026-10-28T13:04:34.575Z",
+  "session": 91096,
+  "port": 4270,
+  "action": "Sent Ctrl-C to this round's dev server; process returned exit1 on interruption.",
+  "observedScope": "Local development server output returned at shutdown; not production responses.",
+  "httpHtml": "GENBLUE, VVUP, VCHA, EVERGLOW and Cherry Bullet routes returned200; separate receipt documents only four complete details and VVUP loading-state limitation.",
+  "localCatalog": {
+    "path": "/api/catalog?artist=genblue&shape=display-v1",
+    "status": 502,
+    "observedLogEntries": 5,
+    "rootCauseConfirmed": false,
+    "resolved": false
+  },
+  "warnings": [
+    "Development server warned about /public/artist/group-information.css path; no application modification or resolution claim in this round."
+  ],
+  "implication": "Local HTML/source assertions do not establish successful hydrated catalog UI or absence of network errors; browser verification remains incomplete."
+}

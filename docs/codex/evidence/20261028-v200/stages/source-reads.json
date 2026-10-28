@@ -1,0 +1,77 @@
+{
+  "researchDate": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "method": "Web search and page-open connector. All findings below are metadata/text evidence, not audiovisual playback.",
+  "sources": [
+    {
+      "url": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=456104&id=&lang=k&menu_cate=",
+      "publisher": "KBS WORLD Korean",
+      "publishedDate": "2025-02-28",
+      "readMode": "full-page text opened",
+      "status": "readable",
+      "finding": "Actual M Countdown performance named I DO ME. DEBUT SONG only appears in the VCR/cake-entry description. The same report says upcoming Music Bank, Music Core and Inkigayo appearances promote I DO ME.",
+      "supports": "Reject false-positive search matches assigning the I DO ME stage to DEBUT SONG.",
+      "doesNotSupport": "No claim that DEBUT SONG has never been performed."
+    },
+    {
+      "url": "https://www.katseye.world/videos/",
+      "publisher": "KATSEYE / HYBE-Geffen",
+      "readMode": "full-page text opened",
+      "status": "readable",
+      "finding": "Gameboy has original MV and multiple named audio versions in the visible official index. Performance and Dance Practice entries nearby name different songs. Tour clips explicitly name The Beautiful Chaos Tour.",
+      "supports": "Exact-song and source-type disambiguation only.",
+      "doesNotSupport": "No comprehensive absence claim for Gameboy practices or broadcaster performances."
+    },
+    {
+      "url": "https://www.universal-music.co.jp/stayc/news/2023-09-19/",
+      "publisher": "Universal Music Japan",
+      "publishedDate": "2023-09-19",
+      "readMode": "full-page text opened",
+      "status": "readable",
+      "finding": "LIT is an original Japanese release using Japanese and Korean together, released2023-12-06. The other track is Bubble Japanese Ver. The label announcement describes a release in-store event, not a regular music-show stage.",
+      "supports": "Mixed-language original and event-versus-program distinction.",
+      "doesNotSupport": "No full practice/program video or complete audio comparison established."
+    },
+    {
+      "url": "https://spice.eplus.jp/articles/240115/amp",
+      "publisher": "SPICE / eplus",
+      "publishedDate": "2019-06-01",
+      "readMode": "search excerpt readable; direct page-open HTTP403",
+      "status": "search-only",
+      "finding": "Contemporaneous search excerpt identifies Buenos Aires performance on NHK Shibuya Note,2019-06-01 24:05.",
+      "supports": "A specific historical broadcaster/date lookup lead.",
+      "doesNotSupport": "Accessible rights-holder original video, full single-song scope, current participant match or likes."
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=LZfaAxp7i5Q",
+      "publisher": "STAYC Japan Official (search metadata)",
+      "publishedDate": "2024-08-23",
+      "readMode": "search extraction only",
+      "status": "search-only",
+      "finding": "The exact title identifies MEOW Recording Behind. Official description distinguishes MEOW from Cheeky Icy Thang Japanese Ver.",
+      "supports": "Research lead classification as recording behind rather than a declared full-song practice.",
+      "doesNotSupport": "Full playback or any exact uninterrupted-song segment."
+    }
+  ],
+  "failedOpens": [
+    {
+      "url": "https://www.youtube.com/watch?v=QA83BdN4iOw",
+      "message": "Online fetch throttled",
+      "sourceIdentityVerified": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=w-WEZoiVs_E",
+      "message": "Online fetch throttled",
+      "sourceIdentityVerified": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=dTdz4Ls8XmQ",
+      "message": "Error fetching page",
+      "sourceIdentityVerified": false
+    }
+  ],
+  "followup": "Stopped direct YouTube page-open route after throttling; no alternate identity, browser-cookie reuse, private session, download workaround or repeated failing page-open.",
+  "applicationChanges": 0,
+  "scoreBindingChanges": 0,
+  "privateWrites": 0
+}

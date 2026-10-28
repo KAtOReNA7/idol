@@ -1,0 +1,105 @@
+{
+  "proposalOnly": true,
+  "group": "geenius",
+  "field": "sales",
+  "expectedBefore": {
+    "observedValue": null,
+    "displayValue": 0,
+    "status": "unavailable",
+    "unit": "copies",
+    "title": "韩国发行累计销量",
+    "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。",
+    "asOf": null,
+    "checkedAt": "2026-10-25T16:25:50.889410+00:00",
+    "sourceUrl": null,
+    "sourceTitle": null,
+    "sources": [],
+    "notes": [
+      "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
+      "已检索Circle相关公开榜单、团体名与album sales；单张/单周/单日零售数字及sold out描述不替代团体累计。"
+    ],
+    "evidence": {}
+  },
+  "replacement": {
+    "observedValue": 217,
+    "displayValue": 217,
+    "status": "observed",
+    "unit": "张",
+    "title": "已核单日零售下界",
+    "scope": "Geenius《Spoiler Book (WITHVUU)》Circle Retail Album Chart 2026-05-18单日零售217张；仅为这一日、此版本的已核来源下界，不是Circle Album出货量，也不是全团、全渠道或全球完整累计；其他日期、版本及作品未覆盖。",
+    "asOf": "2026-05-18",
+    "checkedAt": "2026-10-28",
+    "sourceUrl": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20260518",
+    "sourceTitle": "Circle Retail Album Chart · Spoiler Book (WITHVUU) · 2026-05-18",
+    "sources": [
+      {
+        "url": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20260518",
+        "title": "Circle Retail Album Chart · 2026-05-18 日零售",
+        "sourceDate": "2026-05-18",
+        "checkedAt": "2026-10-28T13:19:22.345069+00:00",
+        "kind": "primary-chart",
+        "access": "official-page-native-public-api",
+        "sha256": "7668d572643255223325cb0b9bc0a28e553968c9da8d4837f32fcfc5deac88ef"
+      }
+    ],
+    "notes": [
+      "Retail为零售榜；不与Circle Album出货榜、Hanteo及其他统计口径相加。",
+      "下列日数据与所查周、月覆盖期重叠，不能重复累计。",
+      "全团完整累计仍未知；其他日期未上Top50不等于销量为0。"
+    ],
+    "lowerBound": true,
+    "evidence": {
+      "kind": "public-period-lower-bound",
+      "lowerBound": true,
+      "replacedStatus": "unavailable",
+      "previousRecord": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable",
+        "unit": "copies",
+        "title": "韩国发行累计销量",
+        "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。",
+        "asOf": null,
+        "checkedAt": "2026-10-25T16:25:50.889410+00:00",
+        "sourceUrl": null,
+        "sourceTitle": null,
+        "sources": [],
+        "notes": [
+          "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
+          "已检索Circle相关公开榜单、团体名与album sales；单张/单周/单日零售数字及sold out描述不替代团体累计。"
+        ],
+        "evidence": {}
+      },
+      "chart": "Circle Retail Album Chart",
+      "metricField": "rowSum",
+      "artist": "Geenius",
+      "album": "Spoiler Book (WITHVUU)",
+      "barcode": "8800331307821",
+      "distributor": "코팬글로벌",
+      "dayRows": [
+        {
+          "date": "2026-05-18",
+          "album": "Spoiler Book (WITHVUU)",
+          "barcode": "8800331307821",
+          "sales": 217,
+          "domestic": 217,
+          "overseas": 0,
+          "rank": 41,
+          "sourceUrl": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20260518",
+          "checkedAt": "2026-10-28T13:19:22.345069+00:00",
+          "responseSha256": "7668d572643255223325cb0b9bc0a28e553968c9da8d4837f32fcfc5deac88ef"
+        }
+      ],
+      "recomputedSum": 217,
+      "sourceEvidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/geenius-retail-observations.json",
+      "coverageComplete": false
+    }
+  },
+  "integrationRequirements": [
+    "Update only Geenius sales, keep group IDs and other fields unchanged.",
+    "Display Retail and single-day lower-bound wording in card/title/source details.",
+    "Decrease unknown-value count by one only if adopted; complete all-channel cumulative remains unproven.",
+    "Preserve original unavailable record and evidence.",
+    "Verify no generic Circle Album or complete cumulative label replaces the scoped title."
+  ]
+}

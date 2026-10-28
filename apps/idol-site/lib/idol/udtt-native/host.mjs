@@ -1,4 +1,5 @@
 import {withReportedTimelineIdentity} from '../timeline/reported-records.mjs';
+import {withGroupInformationIdentity} from './information-identity.mjs';
 import {createImageRecovery,reloadVerifiedPage} from './image-recovery.mjs';
 import {createMediaViewer} from '../design-review/sol15-runtime/shared/media-viewer.js';
 import {releaseEventPairs} from '../design-review/sol15-runtime/groups/udtt/relations.mjs';
@@ -13,7 +14,6 @@ export async function prepareUdttNativePortrait({catalog,viewer,production,windo
  if(publicMode){validatePublicViewer(viewer);return preparePublicNativePortrait({catalog,scheduler:win,signal});}
  validatePrivateViewer(viewer);return prepareNativePortrait({catalog,scheduler:win,signal});
 }
-const identityArtist=withReportedTimelineIdentity(sourceModule.artist);
 const STYLE_URL='/artist/udtt/figma-native.css';
 const reset=`
 :host{all:initial;display:block;min-width:0;color-scheme:light;isolation:isolate}
@@ -61,6 +61,7 @@ export function validateNativeActivation({element,identity,artist,route,catalog,
 }
 export function createUdttNative({host,catalog,viewer,production,canEdit=false,nativePortrait=null,onStatus=()=>{},onImages=()=>{},window:win=host.ownerDocument.defaultView}) {
   if(!catalogBelongs(catalog))throw new Error('UDTT 资料归属无法核验。');
+  const identityArtist=withReportedTimelineIdentity(withGroupInformationIdentity(sourceModule.artist,catalog.groups.find(row=>row.id===sourceModule.artist.id)));
   const legacyReferences=canEdit?validatePrivateViewer(viewer):validatePublicViewer(viewer);
   if(!nativePortrait)throw new Error('陆雨婷原生照片未完成核验。');
   const references=canEdit?withNativePortrait(legacyReferences,nativePortrait):withPublicNativePortrait(legacyReferences,nativePortrait);

@@ -374,9 +374,10 @@ test('final four person records preserve old 73 objects, historical RAMI and Kor
 test('last three scoped release references preserve old 77 objects and keep specific scene evidence separate from the full cast',()=>{
  assert.equal(hash(credits.records.slice(0,77)),'251d97d3ec86a24245435dad5ce10ce3a76ea250e04225eeff300ddbaff2dd23');
  assert.equal(hash(recognition.records.slice(0,77)),'9578a75dbfcbba6c8246689aeab6898e33f85463cf774787662f1cba40c77d55');
- assert.equal(credits.records.length,80);assert.equal(recognition.records.length,80);assert.equal(new Set(credits.records.map(r=>r.workId)).size,80);
- assert.equal(recognition.records.reduce((n,r)=>n+r.portraits.length,0),444);assert.equal(new Set(recognition.records.flatMap(r=>r.portraits.map(p=>p.src))).size,202);
- const union=new Set([...credits.records.map(r=>r.workId),...absence.entries.map(r=>r.workId)]);assert.equal(union.size,85);assert.equal(historical.records.length-union.size,46);
+ const historicalCredits=credits.records.slice(0,80),historicalRecognition=recognition.records.slice(0,80);
+ assert.equal(historicalCredits.length,80);assert.equal(historicalRecognition.length,80);assert.equal(new Set(historicalCredits.map(r=>r.workId)).size,80);
+ assert.equal(historicalRecognition.reduce((n,r)=>n+r.portraits.length,0),444);assert.equal(new Set(historicalRecognition.flatMap(r=>r.portraits.map(p=>p.src))).size,202);
+ const union=new Set([...historicalCredits.map(r=>r.workId),...absence.entries.map(r=>r.workId)]);assert.equal(union.size,85);assert.equal(historical.records.length-union.size,46);
  const kiii=['rec28ldbniB8oY','rec28ldbniB8wf','rec28ldbniB8Oo','rec28ldbniB8WR','rec28ldbniB94X'];
  const tuples=[['rec28ldfRTrINH','OncJ5v1keww','rec28ldfRTiBUk',kiii],['rec28ldfRTrIRO','BTlj6Sls7KE','rec28ldfRTiBUk',kiii],['rec28ldfRTrK1S','xRU1XXHIpIc','rec28ldfRTiBON',['rec28ldbniB7Nx','rec28ldbniB7Vy','rec28ldbniB82H','rec28ldbniB89P','rec28ldbniB8ho']]];
  let slots=0;

@@ -1,0 +1,955 @@
+{
+  "checkedAt": "2026-10-28T16:09:23.460Z",
+  "status": "passed_no_blocking_findings",
+  "reviewer": "stage_v200_research independent of people implementation",
+  "scope": "Local static and rendered HTML/behavioral model review; no application edits, external requests, Git, deployment or private owner read",
+  "files": [
+    {
+      "path": "apps/idol-site/data/public-group-recognition.json",
+      "expected": "766e9f61cdb004ea26f7a3733415b8eb2e61417a62aec5046a769588306e48b9",
+      "actual": "766e9f61cdb004ea26f7a3733415b8eb2e61417a62aec5046a769588306e48b9",
+      "unchangedSinceHandoff": true
+    },
+    {
+      "path": "apps/idol-site/lib/idol/public-group-recognition.ts",
+      "expected": "b536f652b057b4ae905f805716939393513bb308f88d378cd25b7bf3608217b0",
+      "actual": "b536f652b057b4ae905f805716939393513bb308f88d378cd25b7bf3608217b0",
+      "unchangedSinceHandoff": true
+    },
+    {
+      "path": "apps/idol-site/components/public-group-recognition.tsx",
+      "expected": "6809066f462e9d86d360aa325b4dfa0264dbae8c46bd3dcd12baa55f7dc5491e",
+      "actual": "6809066f462e9d86d360aa325b4dfa0264dbae8c46bd3dcd12baa55f7dc5491e",
+      "unchangedSinceHandoff": true
+    },
+    {
+      "path": "apps/idol-site/components/public-work-credits.tsx",
+      "expected": "bf35e4b25204d5aeefebebb1c8c2e88b75d4e1ac9e0158ef364fac8b1c5acc18",
+      "actual": "bf35e4b25204d5aeefebebb1c8c2e88b75d4e1ac9e0158ef364fac8b1c5acc18",
+      "unchangedSinceHandoff": true
+    },
+    {
+      "path": "apps/idol-site/tests/public-group-recognition.test.cjs",
+      "expected": "db14a1dfd3b7475b81d6bc854f77659339f956e173358bebd4c753732aaca3bb",
+      "actual": "db14a1dfd3b7475b81d6bc854f77659339f956e173358bebd4c753732aaca3bb",
+      "unchangedSinceHandoff": true
+    }
+  ],
+  "protectedFiles": [
+    {
+      "path": "apps/idol-site/data/public-work-credits.json",
+      "expected": "40140590b8e352aa4accaf8db2b18c1d14c486e46694d62cd44dd5e4b7cdd2b6",
+      "actual": "40140590b8e352aa4accaf8db2b18c1d14c486e46694d62cd44dd5e4b7cdd2b6",
+      "unchanged": true,
+      "contentsParsed": true
+    },
+    {
+      "path": "apps/idol-site/data/public-work-recognition.json",
+      "expected": "0a32dc70d51ef7156c0bb8023913bd44eb70a907d51edbb247bae36650abb44b",
+      "actual": "0a32dc70d51ef7156c0bb8023913bd44eb70a907d51edbb247bae36650abb44b",
+      "unchanged": true,
+      "contentsParsed": true
+    },
+    {
+      "path": "apps/idol-site/data/mv-public-media.json",
+      "expected": "44b2ac7478850d3c28f301ad099783341f1f35a40835d3e5fbb229f4ca7b52e6",
+      "actual": "44b2ac7478850d3c28f301ad099783341f1f35a40835d3e5fbb229f4ca7b52e6",
+      "unchanged": true,
+      "contentsParsed": true
+    },
+    {
+      "path": "apps/idol-site/data/mv-member-appearance.json",
+      "expected": "8a15e4e66915766315e082f98daaabda7ba8d79264b1e98f49a307a89b479903",
+      "actual": "8a15e4e66915766315e082f98daaabda7ba8d79264b1e98f49a307a89b479903",
+      "unchanged": true,
+      "contentsParsed": true
+    },
+    {
+      "path": "apps/idol-site/data/snapshot.json",
+      "expected": "dedbfb37f19a55d9cc1916ddb0a0ae21e537843343956731fe4089ade6606547",
+      "actual": "dedbfb37f19a55d9cc1916ddb0a0ae21e537843343956731fe4089ade6606547",
+      "unchanged": true,
+      "contentsParsed": false
+    }
+  ],
+  "workChecks": [
+    {
+      "workId": "rec28ldfRTrIkV",
+      "videoId": "Txyb_mVaPyE",
+      "groupId": "rec28ldfRTiBAq",
+      "portraits": 8,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "rec28ldfRTrNsK",
+      "videoId": "LiZAgfmoQwc",
+      "groupId": "rec28ldfRTiCpp",
+      "portraits": 6,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "rec28ldfRTrNBu",
+      "videoId": "xZ5Ej-tLEjM",
+      "groupId": "rec28ldfRTiCpp",
+      "portraits": 6,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "rec28ldfRTrPi9",
+      "videoId": "aer_X9NmhTc",
+      "groupId": "rec28ldfRTiCzI",
+      "portraits": 6,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyH5pzrrSO",
+      "videoId": "ZtiThQN5ETc",
+      "groupId": "recvxyEBDZs5Ic",
+      "portraits": 5,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyH5pzQxpW",
+      "videoId": "8DwTAa5hPsA",
+      "groupId": "recvxyEBDZs5Ic",
+      "portraits": 5,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyH5pzFAPL",
+      "videoId": "os4driLeAiU",
+      "groupId": "recvxyEBDZllCe",
+      "portraits": 6,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMisqR",
+      "videoId": "EROYsCK0vK4",
+      "groupId": "recvxyEBDZxfeD",
+      "portraits": 4,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMiDs4",
+      "videoId": "ZlcvaEpCEJ4",
+      "groupId": "recvxyEBDZxfeD",
+      "portraits": 4,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMyy5i",
+      "videoId": "dn-fzIgHkg0",
+      "groupId": "recvxyEBDZxfeD",
+      "portraits": 4,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMBHQA",
+      "videoId": "wPnjKZFgeiE",
+      "groupId": "recvxyEBDZxfeD",
+      "portraits": 4,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMlGJW",
+      "videoId": "4kMcaEz1WrQ",
+      "groupId": "recvxyEBDZxfeD",
+      "portraits": 4,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMCSdB",
+      "videoId": "GnVRCX-Sfek",
+      "groupId": "recvxyEBDZxfeD",
+      "portraits": 4,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMwjsI",
+      "videoId": "tY2q55Sw3jA",
+      "groupId": "recvxyEBDZxfeD",
+      "portraits": 4,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMlAhN",
+      "videoId": "lWIQ72KFgrg",
+      "groupId": "recvxyEBDZxfeD",
+      "portraits": 4,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMxwnW",
+      "videoId": "P2loH5EOnr8",
+      "groupId": "recvxyEBDZxfeD",
+      "portraits": 4,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMlNfX",
+      "videoId": "zBiB0jww7_8",
+      "groupId": "recvxyEBDZxfeD",
+      "portraits": 4,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMLz7L",
+      "videoId": "yMvsKWGPEIU",
+      "groupId": "recvxyEBDZxfeD",
+      "portraits": 4,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyHuKMwrIt",
+      "videoId": "rNGPgQB4Be8",
+      "groupId": "recvxyEBDZT8Xj",
+      "portraits": 6,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyOz5XFVzt",
+      "videoId": "peoZYyEvY-k",
+      "groupId": "recvxyEBDZcosR",
+      "portraits": 5,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxyOz5XsgVc",
+      "videoId": "0T8d3pRjmi4",
+      "groupId": "recvxyEBDZOpTf",
+      "portraits": 6,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxIZy35rUeY",
+      "videoId": "L9VNIOcfSOU",
+      "groupId": "rec28ldfRTiE4q",
+      "portraits": 5,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxIZy3525BF",
+      "videoId": "IM-N8trjDzk",
+      "groupId": "rec28ldfRTiE4q",
+      "portraits": 5,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    },
+    {
+      "workId": "recvxIZFpVLU0R",
+      "videoId": "ecQSl-6NSTA",
+      "groupId": "rec28ldfRTiCGa",
+      "portraits": 6,
+      "inventoryTuple": true,
+      "wrongTupleOrHostRejected": 7,
+      "missingOrForeignMemberPairing": true,
+      "noCreditOrRelationGenerated": true,
+      "savedZeroPreserved": true,
+      "privateCanariesNotRendered": true,
+      "absence": null
+    }
+  ],
+  "absenceChecks": [
+    {
+      "workId": "recvxyOz5XqKXj",
+      "videoId": "C3GouGa0noM",
+      "statusUnchanged": true,
+      "genericReferenceAbsent": true
+    },
+    {
+      "workId": "recvxDMFHNSJcd",
+      "videoId": "pc-WRrxjrBk",
+      "statusUnchanged": true,
+      "genericReferenceAbsent": true
+    },
+    {
+      "workId": "recvxyHuKMNTOs",
+      "videoId": "qwieCy-T4zw",
+      "statusUnchanged": true,
+      "genericReferenceAbsent": true
+    },
+    {
+      "workId": "recvxyOz5XmMQe",
+      "videoId": "tvTdg7sgsgU",
+      "statusUnchanged": true,
+      "genericReferenceAbsent": true
+    },
+    {
+      "workId": "rec28ldfRTrI8S",
+      "videoId": "z14Z86oQ-1E",
+      "statusUnchanged": true,
+      "genericReferenceAbsent": true
+    },
+    {
+      "workId": "recvxyH5pzr7Nc",
+      "videoId": "9qRmlYPJB10",
+      "statusUnchanged": true,
+      "genericReferenceAbsent": true
+    }
+  ],
+  "portraitPairing": [
+    {
+      "memberId": "rec28ldbniB6s5",
+      "groupId": "rec28ldfRTiBAq",
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-4e66c5c6cf40fc.jpg",
+      "sha256": "4e66c5c6cf40fc049171881152599f1903259cd316ea47587b02cbf91555416c",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniB6Jp",
+      "groupId": "rec28ldfRTiBAq",
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-2802098f8f8f0e.jpg",
+      "sha256": "2802098f8f8f0e68ae2b142dcbad265792b8105c66e560ea9d5b497bbfacdf18",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniB6Rt",
+      "groupId": "rec28ldfRTiBAq",
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-af0d13072244e8.jpg",
+      "sha256": "af0d13072244e8efc8279b65f61e7aa20d05d08efe86dd3d55f46c219d0f8207",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniB70B",
+      "groupId": "rec28ldfRTiBAq",
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-7649e74896ba7c.jpg",
+      "sha256": "7649e74896ba7cb37d058dfb703e76cb45cb8f012a7296db572959f20ab112fd",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniB7cX",
+      "groupId": "rec28ldfRTiBAq",
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-0e8ab0b3e7c530.jpg",
+      "sha256": "0e8ab0b3e7c5302246263c69eec8c8e16ae319fe2bd134160852c9f5b7ed23fa",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniB7m2",
+      "groupId": "rec28ldfRTiBAq",
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-60922d24003efa.jpg",
+      "sha256": "60922d24003efaeccfd24e612031d91457869c4181c4ce93f4582fed21e9f9dc",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniB7vO",
+      "groupId": "rec28ldfRTiBAq",
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-2d3ddf6a883471.jpg",
+      "sha256": "2d3ddf6a88347187c58f602814168d515718bdde7c0e2808cf455011da5be821",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniB7F7",
+      "groupId": "rec28ldfRTiBAq",
+      "src": "/artist/mv-identity-batch-z-20261027/identities/hearts2hearts-97a3bdb3350897.jpg",
+      "sha256": "97a3bdb3350897c4d800c6de6aeaad49331a318d68ef24da710340e9672cee87",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniBc6L",
+      "groupId": "rec28ldfRTiCpp",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/izna-543ac932ca37cb.jpg",
+      "sha256": "543ac932ca37cbeb264541284e25b211aaac91b80abebcf69f44610c31f3608b",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniBcnd",
+      "groupId": "rec28ldfRTiCpp",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/izna-ab55cf81baae7e.jpg",
+      "sha256": "ab55cf81baae7edc7d6d2de85e55db2f4e2bf18b6ec8de69c5bc99ead4833449",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniBcvH",
+      "groupId": "rec28ldfRTiCpp",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/izna-9ca922a8708045.jpg",
+      "sha256": "9ca922a8708045313bdc660f272fb0664987755e1f01b586210eb3f2231adb4a",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniBcDI",
+      "groupId": "rec28ldfRTiCpp",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/izna-a46649c66be274.jpg",
+      "sha256": "a46649c66be2743a54ffb649a25727b13b4ef4c14dac339f2064a4b285df0dc8",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniBcMa",
+      "groupId": "rec28ldfRTiCpp",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/izna-47d09bb7a9c07c.jpg",
+      "sha256": "47d09bb7a9c07cef6910d485b41540576bbdcca88866896d234df2cfb0670e10",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniBcVa",
+      "groupId": "rec28ldfRTiCpp",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/izna-2216dc3a29466b.jpg",
+      "sha256": "2216dc3a29466b12f501f14b7833bfed0785d2ac3f13aef2cee04d28b8983e49",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "rec28ldbniBgam",
+      "groupId": "rec28ldfRTiCzI",
+      "src": "/artist/madein/batch-b-20261016/mashiro-original.jpg",
+      "sha256": "3681f888598ed64fe4443a98eb21facdf7432fd5a5439ae696701b194c6d5b36",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/madein.json",
+      "evidenceSha256": "7182f4915f8415916bc1df234168c3b0608c4b90b460da1b931e4296ef10b057",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "MASHIRO",
+      "commonPhotographySeriesVerified": false
+    },
+    {
+      "memberId": "rec28ldbniBghr",
+      "groupId": "rec28ldfRTiCzI",
+      "src": "/artist/madein/batch-b-20261016/miu-original.jpg",
+      "sha256": "f6f40deb0609a3aec6da4b31b5ba1f39c213e389f85938a04dd87a85c178beb1",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/madein.json",
+      "evidenceSha256": "7182f4915f8415916bc1df234168c3b0608c4b90b460da1b931e4296ef10b057",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "MiU",
+      "commonPhotographySeriesVerified": false
+    },
+    {
+      "memberId": "rec28ldbniBgJR",
+      "groupId": "rec28ldfRTiCzI",
+      "src": "/artist/madein/batch-b-20261016/nagomi-original.jpg",
+      "sha256": "563532cf105d35685651956daecf3c0b102d5a810dc1b27c4c75db65b30b90bd",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/madein.json",
+      "evidenceSha256": "7182f4915f8415916bc1df234168c3b0608c4b90b460da1b931e4296ef10b057",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "NAGOMI",
+      "commonPhotographySeriesVerified": false
+    },
+    {
+      "memberId": "rec28ldbniBgCI",
+      "groupId": "rec28ldfRTiCzI",
+      "src": "/artist/madein/batch-b-20261016/serina-original.jpg",
+      "sha256": "f84b5ae8b0fe812ec6e5e3a7594ccf550011d336c846810b61c532d79255e6ef",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/madein.json",
+      "evidenceSha256": "7182f4915f8415916bc1df234168c3b0608c4b90b460da1b931e4296ef10b057",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "SERINA",
+      "commonPhotographySeriesVerified": false
+    },
+    {
+      "memberId": "rec28ldbniBgoz",
+      "groupId": "rec28ldfRTiCzI",
+      "src": "/artist/madein/batch-b-20261016/suhye-original.jpg",
+      "sha256": "e113f3d4540d835d812344be63d84fab2f6bfd5040710cdbdece25ef9678bd12",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/madein.json",
+      "evidenceSha256": "7182f4915f8415916bc1df234168c3b0608c4b90b460da1b931e4296ef10b057",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "SUHYE",
+      "commonPhotographySeriesVerified": false
+    },
+    {
+      "memberId": "rec28ldbniBgvC",
+      "groupId": "rec28ldfRTiCzI",
+      "src": "/artist/madein/batch-b-20261016/yeseo-original.jpg",
+      "sha256": "9ea5c806008140ac18da8b4966ce322cebdcfc80598deb20bc474bc4fd144095",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/madein.json",
+      "evidenceSha256": "7182f4915f8415916bc1df234168c3b0608c4b90b460da1b931e4296ef10b057",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "YESEO",
+      "commonPhotographySeriesVerified": false
+    },
+    {
+      "memberId": "recvxyICzHGJek",
+      "groupId": "recvxyEBDZs5Ic",
+      "src": "/artist/mv-identity-batch-c-20261026/identities/g5B6zCSMrcc-recvxyICzHGJek-010b88622b.jpg",
+      "sha256": "010b88622b6fddc672ed97ccc08c4b6070ca5df2f12edc52fdf94215fa856043",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHzhWr",
+      "groupId": "recvxyEBDZs5Ic",
+      "src": "/artist/mv-identity-batch-c-20261026/identities/g5B6zCSMrcc-recvxyICzHzhWr-d09ccf2063.jpg",
+      "sha256": "d09ccf2063ca5d51ac4eb4b704c8a9b99ceedb41694d4f00f93c44f9ebd25d78",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHu6mX",
+      "groupId": "recvxyEBDZs5Ic",
+      "src": "/artist/mv-identity-batch-c-20261026/identities/g5B6zCSMrcc-recvxyICzHu6mX-8474dad854.jpg",
+      "sha256": "8474dad85467b66995f94ad4aed68139adf8a144757b7df44793f42fee3d1cc1",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzH84mF",
+      "groupId": "recvxyEBDZs5Ic",
+      "src": "/artist/mv-identity-batch-c-20261026/identities/g5B6zCSMrcc-recvxyICzH84mF-9e6cac7611.jpg",
+      "sha256": "9e6cac7611c358b99f95455d1847732f32b5bc64e82f48ebd9e5ef725d99fd34",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHi2X6",
+      "groupId": "recvxyEBDZs5Ic",
+      "src": "/artist/mv-identity-batch-c-20261026/identities/g5B6zCSMrcc-recvxyICzHi2X6-5ce3d703bd.jpg",
+      "sha256": "5ce3d703bd7ce901fc985e97d7f4c9c269b38ef0a4796fd25ee43a20250526d9",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHxdYR",
+      "groupId": "recvxyEBDZllCe",
+      "src": "/artist/mv-identity-batch-y-20261027/identities/purple-kiss-e0040d30d6fc71.jpg",
+      "sha256": "e0040d30d6fc712f9545e206e12758cd5bb7d0a71e8a4134056f52682852b904",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzH2DZh",
+      "groupId": "recvxyEBDZllCe",
+      "src": "/artist/mv-identity-batch-y-20261027/identities/purple-kiss-bb2867bf5a8b0d.jpg",
+      "sha256": "bb2867bf5a8b0d04ac3fd8dbe27c6fbee904fe2cba6921664f2cc69e5701f845",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHusbM",
+      "groupId": "recvxyEBDZllCe",
+      "src": "/artist/mv-identity-batch-y-20261027/identities/purple-kiss-c332b1cd12eec5.jpg",
+      "sha256": "c332b1cd12eec5f7164f75b8fdeee2c2d912375512f3144d6630de6d9272351c",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzH73gu",
+      "groupId": "recvxyEBDZllCe",
+      "src": "/artist/mv-identity-batch-y-20261027/identities/purple-kiss-e963e2181da518.jpg",
+      "sha256": "e963e2181da518daef2bdb9f452f3b7111460ad22eca9713818b685ebf0ad1c5",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHDkqn",
+      "groupId": "recvxyEBDZllCe",
+      "src": "/artist/mv-identity-batch-y-20261027/identities/purple-kiss-1a3f9cc6fe74ab.jpg",
+      "sha256": "1a3f9cc6fe74aba89abf6a45a7760da16229db8e741a0d7e553c7d97fea03666",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzH3dKs",
+      "groupId": "recvxyEBDZllCe",
+      "src": "/artist/mv-identity-batch-y-20261027/identities/purple-kiss-5acf9effd80ae3.jpg",
+      "sha256": "5acf9effd80ae3b1ebd3a67e983a15f349ebad95aa9f7030a5e81619847bff47",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzH9h49",
+      "groupId": "recvxyEBDZxfeD",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/aespa-95291ba29100b8.jpg",
+      "sha256": "95291ba29100b87f632f7378818d751f0097962f54c68527c9158a1d01b57c4e",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHaPe7",
+      "groupId": "recvxyEBDZxfeD",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/aespa-bd210873d726fd.jpg",
+      "sha256": "bd210873d726fd82c26c149c20ede44c5fe6b15c7626c8ebc2b66c7b25bafd18",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHT9Ft",
+      "groupId": "recvxyEBDZxfeD",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/aespa-b534344bee5d9d.jpg",
+      "sha256": "b534344bee5d9dd8e234ee2c65bef95340f7f670bf34ddf52f63643af78e57fb",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHE7ST",
+      "groupId": "recvxyEBDZxfeD",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/aespa-c17657a6a9222d.jpg",
+      "sha256": "c17657a6a9222db5c3b2ce7cff3e9029dff71f9c17965b2fd7fe89b764123583",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHJ8OM",
+      "groupId": "recvxyEBDZT8Xj",
+      "src": "/artist/mv-identity-batch-s-20261027/identities/ive-93222ba60ec6f1.jpg",
+      "sha256": "93222ba60ec6f1088c4140207338375c80f0adfce1606f0b6e4e6a149bababf4",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzH8OvK",
+      "groupId": "recvxyEBDZT8Xj",
+      "src": "/artist/mv-identity-batch-s-20261027/identities/ive-103e45a3913ad3.jpg",
+      "sha256": "103e45a3913ad3cc0b7d6bece2dfddef585acf68a7e1edf8879486104030b057",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHwHyh",
+      "groupId": "recvxyEBDZT8Xj",
+      "src": "/artist/mv-identity-batch-s-20261027/identities/ive-31a727ccf24ab1.jpg",
+      "sha256": "31a727ccf24ab15a5c5d882a63fa2b87280ef5a9e13e132646daccfff9027411",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzH0eFB",
+      "groupId": "recvxyEBDZT8Xj",
+      "src": "/artist/mv-identity-batch-s-20261027/identities/ive-867223a663675f.jpg",
+      "sha256": "867223a663675f5eea2c9d277a4e3bff56493d36d380ffa500518c1b2e9fff16",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzH6EEe",
+      "groupId": "recvxyEBDZT8Xj",
+      "src": "/artist/mv-identity-batch-s-20261027/identities/ive-b56849d68b95f9.jpg",
+      "sha256": "b56849d68b95f9824fae053709d3d5bc1deb567ab7dd2bd2dcedf53253722a2e",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHzmaT",
+      "groupId": "recvxyEBDZT8Xj",
+      "src": "/artist/mv-identity-batch-s-20261027/identities/ive-3cee08b6986d55.jpg",
+      "sha256": "3cee08b6986d55aaeaad69917031721107106cae83e086f819c129afadb3b881",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHxbOq",
+      "groupId": "recvxyEBDZcosR",
+      "src": "/artist/fromis9/batch-b-20261016/portrait-song-hayoung-original.jpg",
+      "sha256": "887a6ffe1eb0c1eed1cd823678b1fd14bfd14bf34ba9a56a0ad2dc6e59ebfb84",
+      "basis": "existing music-member-artwork exact groupId+memberId+src"
+    },
+    {
+      "memberId": "recvxyICzH7Kld",
+      "groupId": "recvxyEBDZcosR",
+      "src": "/artist/fromis9/batch-b-20261016/portrait-park-jiwon-original.jpg",
+      "sha256": "9881a27f1ed14e5d752d73f2e9340a7f5352528092fa549d3f7a255dda483237",
+      "basis": "existing music-member-artwork exact groupId+memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHoZAl",
+      "groupId": "recvxyEBDZcosR",
+      "src": "/artist/fromis9/batch-b-20261016/portrait-lee-chaeyoung-original.jpg",
+      "sha256": "ec493cbcee77191421e6502658d2dfa05706a9a12321964081ed405c0c47e58d",
+      "basis": "existing music-member-artwork exact groupId+memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHn2aM",
+      "groupId": "recvxyEBDZcosR",
+      "src": "/artist/fromis9/batch-b-20261016/portrait-lee-nagyung-original.jpg",
+      "sha256": "8916ea94206ea4fa621c01486b089d2e29f24def0c137a6ccdb46a7e6e659d62",
+      "basis": "existing music-member-artwork exact groupId+memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHu868",
+      "groupId": "recvxyEBDZcosR",
+      "src": "/artist/fromis9/batch-b-20261016/portrait-baek-jiheon-original.jpg",
+      "sha256": "1057bf543c63780225af1cec1f34363cbf6b2598d8eb37a6894103c2d43a3d2b",
+      "basis": "existing music-member-artwork exact groupId+memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHsxMe",
+      "groupId": "recvxyEBDZOpTf",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/nmixx-d1ce6e3950d7bc.jpg",
+      "sha256": "d1ce6e3950d7bc472b1a490e00a57e6430378f981a17c3f7c1275fdf6285f11d",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHcw9e",
+      "groupId": "recvxyEBDZOpTf",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/nmixx-baded6c0537d67.jpg",
+      "sha256": "baded6c0537d674e8d7880576f373dc7ac580580afab0a74622a9fc1108f102a",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzH9IoY",
+      "groupId": "recvxyEBDZOpTf",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/nmixx-c83cc136cdc05a.jpg",
+      "sha256": "c83cc136cdc05a4475b003dcb73ce5a2ef36d9a6d5cd0b578d2aeca15adea772",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHKyEb",
+      "groupId": "recvxyEBDZOpTf",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/nmixx-330d5f743347cf.jpg",
+      "sha256": "330d5f743347cf28eb76f9ccfdef6c0b33d095ddf6c5a5ddc60cab65823ae6f9",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHbCfX",
+      "groupId": "recvxyEBDZOpTf",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/nmixx-0f70284dddc452.jpg",
+      "sha256": "0f70284dddc452d82c3955c5d599d8c75ba4981a4c28fcbef3f6f8f23ff070cf",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxyICzHwrX4",
+      "groupId": "recvxyEBDZOpTf",
+      "src": "/artist/mv-identity-batch-q-20261027/identities/nmixx-6aa0b14c445c75.jpg",
+      "sha256": "6aa0b14c445c755af7db68b5b27711db10f07ea494f233b53bd492f0efca9b0f",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxAPQCFxcH2",
+      "groupId": "rec28ldfRTiE4q",
+      "src": "/artist/mv-identity-batch-v-20261027/identities/hitgs-c58f137add74fd.jpg",
+      "sha256": "c58f137add74fddf67cea30088c0550f4ddf4aae9e82d7c401bf505689879fdb",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxAPQCFYx1e",
+      "groupId": "rec28ldfRTiE4q",
+      "src": "/artist/mv-identity-batch-v-20261027/identities/hitgs-6df2e2915c7231.jpg",
+      "sha256": "6df2e2915c7231b69cf5ac81ffa3c3b1051ecf2acbef820e8be703b089cb22b2",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxAPQCFDTXs",
+      "groupId": "rec28ldfRTiE4q",
+      "src": "/artist/mv-identity-batch-v-20261027/identities/hitgs-7ba6c6bead6929.jpg",
+      "sha256": "7ba6c6bead6929708f5a2896e6d154b5565549f8399f4917880db0ca5a24e73c",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxAPQCFzCEc",
+      "groupId": "rec28ldfRTiE4q",
+      "src": "/artist/mv-identity-batch-v-20261027/identities/hitgs-20619510a6ef00.jpg",
+      "sha256": "20619510a6ef00fcad564daf82595acc46993d8fb692a8f1717cc7a3e99f2668",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxAPQCFQvki",
+      "groupId": "rec28ldfRTiE4q",
+      "src": "/artist/mv-identity-batch-v-20261027/identities/hitgs-30bc9852fddad2.jpg",
+      "sha256": "30bc9852fddad285e66b8c29cd1eefba8dc8a500d0502c714a83b9ecfdff24ee",
+      "basis": "existing public portrait exact memberId+src"
+    },
+    {
+      "memberId": "recvxAPQCFX60u",
+      "groupId": "rec28ldfRTiCGa",
+      "src": "/artist/ifeye/batch-b-20261016/kasia-original.png",
+      "sha256": "2f2e2438e04af295e1b4dd7bc4deb21b92ba2f42a3e83a30131df3e245bdf050",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/ifeye.json",
+      "evidenceSha256": "c3b53565afadff3ea4547ff799058639621e41215d1fc48a28224ba39feea42b",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "KASIA",
+      "commonPhotographySeriesVerified": false
+    },
+    {
+      "memberId": "recvxAPQCFkzV2",
+      "groupId": "rec28ldfRTiCGa",
+      "src": "/artist/ifeye/batch-b-20261016/meu-original.png",
+      "sha256": "c07509cc40cdc777d760eb1e6438c88213fdd52fe48ced75ef9539d571a8f352",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/ifeye.json",
+      "evidenceSha256": "c3b53565afadff3ea4547ff799058639621e41215d1fc48a28224ba39feea42b",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "MEU",
+      "commonPhotographySeriesVerified": false
+    },
+    {
+      "memberId": "recvxAPQCFJZLq",
+      "groupId": "rec28ldfRTiCGa",
+      "src": "/artist/ifeye/batch-b-20261016/rahee-original.png",
+      "sha256": "b5a25f0383a2d6a591d91c34448786c0bc964527cefc0766859b5ddbbd681cb5",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/ifeye.json",
+      "evidenceSha256": "c3b53565afadff3ea4547ff799058639621e41215d1fc48a28224ba39feea42b",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "RAHEE",
+      "commonPhotographySeriesVerified": false
+    },
+    {
+      "memberId": "recvxAPQCFuwFz",
+      "groupId": "rec28ldfRTiCGa",
+      "src": "/artist/ifeye/batch-b-20261016/sasha-original.png",
+      "sha256": "dc5e5f0dfa1783f756f1859b9fa75937083179ef89cda9517f2ec484976e088e",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/ifeye.json",
+      "evidenceSha256": "c3b53565afadff3ea4547ff799058639621e41215d1fc48a28224ba39feea42b",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "SASHA",
+      "commonPhotographySeriesVerified": false
+    },
+    {
+      "memberId": "recvxAPQCFVvLu",
+      "groupId": "rec28ldfRTiCGa",
+      "src": "/artist/ifeye/batch-b-20261016/taerin-original.png",
+      "sha256": "d91fef0e5d31945cba500fbe9af07ff661dd6fb6f11afb9aebf6d590c0af521f",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/ifeye.json",
+      "evidenceSha256": "c3b53565afadff3ea4547ff799058639621e41215d1fc48a28224ba39feea42b",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "TAERIN",
+      "commonPhotographySeriesVerified": false
+    },
+    {
+      "memberId": "recvxAPQCFjuA9",
+      "groupId": "rec28ldfRTiCGa",
+      "src": "/artist/ifeye/batch-b-20261016/won-hwayeon-original.png",
+      "sha256": "ef960d62fa63169a1bf66a4e9081ca3dbe871c010efbf972a085b3a180514231",
+      "basis": "existing named artist-evidence original plus explicit derivative recordId/path/SHA bridge to current member artwork",
+      "evidenceFile": "apps/idol-site/docs/artist-evidence/ifeye.json",
+      "evidenceSha256": "c3b53565afadff3ea4547ff799058639621e41215d1fc48a28224ba39feea42b",
+      "derivativeFile": "apps/idol-site/docs/batch-b-webp-derivatives-20261016.json",
+      "sourceNamed": "WON HWAYEON",
+      "commonPhotographySeriesVerified": false
+    }
+  ],
+  "findings": [],
+  "limits": [
+    "No production or owner-save test in this independent review; browser originals/navigation/layout are covered by the separate audit agent.",
+    "No new face identification, lyric/audio/MV full playback or image editing. Original identity evidence is reused; photos do not establish target-work participation.",
+    "MADEIN originals remain 569x854, and HITGS common-shoot provenance remains unverified and disclosed."
+  ],
+  "counts": {
+    "works": 24,
+    "groups": 11,
+    "genericSlots": 119,
+    "existingOriginals": 63,
+    "existingPublicCreditWorks": 102,
+    "existingPublicRecognitionSlots": 527,
+    "factEvidenceResolved": 0,
+    "newPrivateRelations": 0
+  },
+  "existingTestRun": {
+    "command": "node --test tests/public-group-recognition.test.cjs tests/continuation-person.test.cjs tests/public-work-recognition.test.cjs",
+    "passed": 43,
+    "failed": 0,
+    "log": ".codex-local/generic-independent-existing-tests.txt",
+    "sha256": "278193a961e321fb02cdfad19a57355fcb2752b4bbd8efb14e21d2cf9feca321"
+  },
+  "derivativeManifestSha256": "02df120d0a9059078290805f81e04f21b044a752ed3787ca1cc810d814601103",
+  "initialHarnessCorrection": "Initial missing-member assertion used raw stageName; canonical memberDisplayName aliases are the UI authority. Corrected only the review harness and reran; no application defect or code change."
+}

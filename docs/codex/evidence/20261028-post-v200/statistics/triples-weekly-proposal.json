@@ -1,0 +1,153 @@
+{
+  "proposalOnly": true,
+  "group": "triples",
+  "field": "sales",
+  "baseValue": 2092239,
+  "retainedMonthlyRowCount": 36,
+  "retainedAnnualNetAdjustment": 5166,
+  "additiveWeeklyContribution": 5847,
+  "proposedValue": 2098086,
+  "savedAggregateComparison": 2458789,
+  "proposedRemainingDifference": 360703,
+  "weeklyRows": [
+    {
+      "year": 2022,
+      "week": 50,
+      "dateRange": "2022.12.04~2022.12.10 (50)",
+      "album": "Acid Angel from Asia ＜ ACCESS ＞",
+      "artist": "tripleS (트리플에스)",
+      "albumId": "70531",
+      "sales": 1364,
+      "metricField": "Album_CNT",
+      "rank": 76,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2022&targetTime=50&yearTime=3",
+      "checkedAt": "2026-10-28T13:27:10.751290+00:00",
+      "responseSha256": "d6643cf54e686ffd793b8af4ce46e0285c96bdfd646f5f59ba9ec0e7035388ba",
+      "pageSha256": "a640e01ce9a3208bdebae9f0e5e0f02ba58f32425149e64a1f97120c331d899c"
+    },
+    {
+      "year": 2022,
+      "week": 51,
+      "dateRange": "2022.12.11~2022.12.17 (51)",
+      "album": "Acid Angel from Asia ＜ ACCESS ＞",
+      "artist": "tripleS (트리플에스)",
+      "albumId": "70531",
+      "sales": 871,
+      "metricField": "Album_CNT",
+      "rank": 94,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2022&targetTime=51&yearTime=3",
+      "checkedAt": "2026-10-28T13:27:16.155611+00:00",
+      "responseSha256": "ac7dd5a61307dffb7816f2da47c7c2756870c1a70bfbbc5f35b256647bed3990",
+      "pageSha256": "fab460fd59683d4a1860ca381b62135233c4294e985f1922454034db79e09367"
+    },
+    {
+      "year": 2023,
+      "week": 10,
+      "dateRange": "2023.03.05~2023.03.11 (10)",
+      "album": "ASSEMBLE",
+      "artist": "tripleS (트리플에스)",
+      "albumId": "71789",
+      "sales": 2587,
+      "metricField": "Album_CNT",
+      "rank": 52,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=10&yearTime=3",
+      "checkedAt": "2026-10-28T13:27:33.035051+00:00",
+      "responseSha256": "d99684156019dc331cfcb3faa17173018f973721756bdcc221559bbc09401aff",
+      "pageSha256": "31d5f663375362d37397a3b1722ade3b07d2f96c424e8074d12158b8dd41b796"
+    },
+    {
+      "year": 2023,
+      "week": 46,
+      "dateRange": "2023.11.12~2023.11.18 (46)",
+      "album": "LOVElution < ↀ >",
+      "artist": "tripleS (트리플에스)",
+      "albumId": "73936",
+      "sales": 1025,
+      "metricField": "Album_CNT",
+      "rank": 77,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=46&yearTime=3",
+      "checkedAt": "2026-10-28T13:28:20.770911+00:00",
+      "responseSha256": "54021026c9a6d14bca0030db6cab3733aad33a53952d88d989034ec976812c7c",
+      "pageSha256": "9a94264b26d8bcb9e25e5d1623ebb0a3d3320d377ee7e87cbc13ce65b017cae1"
+    }
+  ],
+  "overlapReview": [
+    {
+      "albumId": "70531",
+      "album": "Acid Angel from Asia <ACCESS> (standard)",
+      "newIntervals": [
+        "2022-12-04/2022-12-10",
+        "2022-12-11/2022-12-17"
+      ],
+      "existingSameVersionMonthRows": [
+        {
+          "rowIndex": 35,
+          "year": 2022,
+          "month": 11,
+          "sales": 23674
+        }
+      ],
+      "separateVersionExclusion": "2025-02 ACCESS Cosmo row 15 is an independent version and period, unchanged.",
+      "overlap": false
+    },
+    {
+      "albumId": "71789",
+      "album": "ASSEMBLE (standard)",
+      "newIntervals": [
+        "2023-03-05/2023-03-11"
+      ],
+      "existingSameVersionMonthRows": [
+        {
+          "rowIndex": 33,
+          "year": 2023,
+          "month": 4,
+          "sales": 5203
+        },
+        {
+          "rowIndex": 34,
+          "year": 2023,
+          "month": 2,
+          "sales": 40221
+        }
+      ],
+      "overlap": false
+    },
+    {
+      "albumId": "73936",
+      "album": "LOVElution <ↀ> (standard)",
+      "newIntervals": [
+        "2023-11-12/2023-11-18"
+      ],
+      "existingSameVersionMonthRows": [
+        {
+          "rowIndex": 31,
+          "year": 2023,
+          "month": 8,
+          "sales": 28647
+        }
+      ],
+      "separateVersionExclusion": "2025-01 LOVElution Cosmo row 17 is an independent version and period, unchanged.",
+      "overlap": false
+    }
+  ],
+  "excludedFields": [
+    "Total_CNT"
+  ],
+  "method": "Add only these four official Circle Album Chart period values. Exact corresponding physical variants have no covered month/annual contribution in these new intervals; never add weeks inside existing covered month/year intervals. Retain all original rows and both annual replacements.",
+  "scopeText": "tripleS及该来源归入tripleS的子团韩国Circle公开月榜36行，加2024年Performante Cosmo与2025年ASSEMBLE25 Cosmo同年同版年榜替换修正，以及4条不重叠官方周榜补充；截至2026-06的已核来源覆盖下界，不是全球完整累计。",
+  "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/triples-nonoverlap-weeks.json",
+  "dateRangeEvidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/triples-week-date-ranges.json",
+  "limitations": [
+    "Source-covered lower bound; not a complete all-channel total.",
+    "Saved artist aggregate 2458789 was not rerequested. Difference remains open at360703 if this proposal is adopted.",
+    "No Retail, Hanteo or Japan numbers added.",
+    "2022-W53 returned no rows and does not appear in page week selector; treated as invalid/empty query, never a zero-sales period.",
+    "2023-W36 and supplemental range-page read had connection/file errors. No absence or zero inference."
+  ],
+  "integrationRequirements": [
+    "Keep prior 2092239 and 366550 history as dated history; update current display and sourceDifferenceReview consistently.",
+    "Store new rows and overlap review without modifying original 36 monthly rows or both annual replacements.",
+    "Do not mark full 366550 discrepancy resolved: verified increment5847 leaves360703.",
+    "Use official Circle sources for the new contributions; old aggregate source can remain historical provenance but display should expose the actual official sources."
+  ]
+}

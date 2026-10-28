@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {build} from 'esbuild';
+import {beforePostV200Stages,beforePostV200StageStatuses} from './helpers/post-v200-stages.cjs';
 const read=(p)=>JSON.parse(fs.readFileSync(p,'utf8'));
 const data=read('data/stages/supplements.json');
 const evidence=read('../../docs/codex/evidence/20261027-category-resolution/stages/viewing-supplements-adoption.json');
@@ -45,14 +46,14 @@ test('prior supplement and stage records remain intact through the four earlier 
  const added=new Set([...adoption.items,...practice.items].map(item=>item.recordId));assert.equal(added.size,15);
  for(const [file,expected]of Object.entries(evidence.preservation.protectedFiles)){
   if(file==='data/stage-videos.json'){
-   const stages=read(file);
+   const stages=beforePostV200Stages(read(file));
    for(const item of replacements.items){assert.equal(hash(JSON.stringify(sort(stages[item.recordId]))),item.afterSha256,item.recordId);stages[item.recordId]=structuredClone(item.before);}
    assert.equal(hash(JSON.stringify(sort(stages))),replacements.preservation.stageCanonicalBefore);
    for(const item of practice.items)assert.equal(hash(JSON.stringify(sort(stages[item.recordId]))),item.sourceSha256,item.recordId);
    for(const id of added)delete stages[id];
    assert.equal(hash(JSON.stringify(sort(stages))),adoption.preservation.stageCanonicalSha256);
   }else if(file==='data/stages/status.json'){
-   const statuses=read(file);
+   const statuses=beforePostV200StageStatuses(read(file));
    for(const item of replacements.items){assert.equal(hash(JSON.stringify(sort(statuses.works[item.recordId]))),item.afterStatusSha256,item.recordId);statuses.works[item.recordId]=structuredClone(item.beforeStatus);}
    for(const item of practiceEvidence)assert.deepEqual(statuses.works[item.recordId],{status:'verified',reason:item.reason,checkedAt:item.checkedAt},item.recordId);
    for(const[id,oldHash]of Object.entries(adoption.preservation.statusRows))if(!added.has(id))assert.equal(hash(JSON.stringify(sort(statuses.works[id]))),oldHash,id);

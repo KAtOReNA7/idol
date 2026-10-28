@@ -1,0 +1,762 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-28T15:44:31.440530+00:00",
+  "reviewer": "people_v200_research independent overlap/arithmetic review",
+  "decision": "four proposed additions eligible; exclusions and corroboration retained separately",
+  "scope": "Evidence-only read of current tripleS sales object, all36 saved monthly rows,2 annual replacements,4 existing weekly additions,5 new official observations and saved title-mapping captures. No claim of a new source read of every monthly chart.",
+  "inputs": {
+    "applicationPath": "apps/idol-site/data/group-statistics-completion-evidence.json",
+    "applicationFileSha256": "4cbaadf28fcf45157e163917e522dde420b5baaad5c95d914b08410d026ce8d9",
+    "salesObjectSha256": "7fe91a058e49fdd68a26d09572eff1f023d1ad6b98099a19e1c72bd5bfab3bd3",
+    "observationsPath": "docs/codex/evidence/20261028-post-v200/statistics/triples-followup-observations.json",
+    "observationsFileSha256": "2ab2c381d86a9aecf72ea3b689e7eddbba77a2ec8546569fb47f2de9173163c7",
+    "mappingEvidencePath": "docs/codex/evidence/20261028-continuation/statistics/source-evidence.json",
+    "mappingEvidenceFileSha256": "8854b40852d397cfb9c2908f005bce812eda0833df8672449a2aad760089c9ba"
+  },
+  "metricPolicy": {
+    "accepted": "Album_CNT",
+    "excluded": [
+      "Total_CNT",
+      "Circle Retail",
+      "Hanteo",
+      "Japan totals",
+      "secondary aggregate as additive component"
+    ],
+    "allAdditionsWithinExistingAsOf": "2026-06",
+    "scopeIsGlobalTotal": false
+  },
+  "baseline": {
+    "monthlyRows": 36,
+    "monthlySum": 2087073,
+    "annualReplacements": 2,
+    "annualNetAdjustment": 5166,
+    "existingWeeklyRows": 4,
+    "existingWeeklySum": 5847,
+    "observedValue": 2098086,
+    "rawDisplay": "2,092,239+",
+    "savedAggregate": 2458789,
+    "currentUnexplainedDifference": 360703
+  },
+  "criticalTitleMappings": [
+    {
+      "rowIndex": 16,
+      "originalRow": {
+        "year": 2025,
+        "month": 1,
+        "sales": 9888,
+        "album": "(Cosmo)"
+      },
+      "resolvedAlbum": "<ASSEMBLE24> (Cosmo)",
+      "sourceEvidenceRef": "docs/codex/evidence/20261028-continuation/statistics/source-evidence.json",
+      "sourceId": "assemble24-month-2025-01",
+      "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1738853569.A.FCB.html",
+      "sourceCheckedAt": "2026-10-28T04:48:20.152132+00:00",
+      "responseSha256": "3a154738e9cc72fae8b351300342a09e1fc1776ba45a8bc418104de69b05e0bc",
+      "exactRelevantRows": [
+        "41 (NEW) tripleS ＜ASSEMBLE24＞ (Cosmo) 9,888 / 9,888"
+      ],
+      "accessThisReview": "read saved minimal full-page capture; no new network request"
+    },
+    {
+      "rowIndex": 13,
+      "originalRow": {
+        "year": 2025,
+        "month": 5,
+        "sales": 42124,
+        "album": ""
+      },
+      "resolvedAlbum": "<ASSEMBLE25> (standard)",
+      "sourceEvidenceRef": "docs/codex/evidence/20261028-continuation/statistics/source-evidence.json",
+      "sourceId": "assemble25-month-2025-05",
+      "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1749743919.A.6DE.html",
+      "sourceCheckedAt": "2026-10-28T04:48:20.854172+00:00",
+      "responseSha256": "99dc28a3cf620d7ba08fd8f4b04d0da202d2e1d7be16cd88f2e06d74962c5253",
+      "exactRelevantRows": [
+        "8 (NEW) tripleS ＜ASSEMBLE25＞ (Cosmo) 351,416 / 351,416",
+        "33 (NEW) tripleS ＜ASSEMBLE25＞ 42,124 / 42,124"
+      ],
+      "accessThisReview": "read saved minimal full-page capture; no new network request"
+    }
+  ],
+  "originalMonthRowReview": [
+    {
+      "rowIndex": 0,
+      "original": {
+        "year": 2026,
+        "month": 6,
+        "sales": 431030,
+        "album": "pt.1 (Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 1,
+      "original": {
+        "year": 2026,
+        "month": 6,
+        "sales": 45375,
+        "album": "pt.1"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 2,
+      "original": {
+        "year": 2026,
+        "month": 6,
+        "sales": 40000,
+        "album": "pt.1 (뮤지콘)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 3,
+      "original": {
+        "year": 2026,
+        "month": 3,
+        "sales": 16587,
+        "album": "msnz (Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 4,
+      "original": {
+        "year": 2026,
+        "month": 2,
+        "sales": 14476,
+        "album": "msnz (Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 5,
+      "original": {
+        "year": 2026,
+        "month": 1,
+        "sales": 6660,
+        "album": "msnz (Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 6,
+      "original": {
+        "year": 2025,
+        "month": 12,
+        "sales": 36746,
+        "album": "msnz (Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 7,
+      "original": {
+        "year": 2025,
+        "month": 11,
+        "sales": 273527,
+        "album": "msnz (Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 8,
+      "original": {
+        "year": 2025,
+        "month": 11,
+        "sales": 28728,
+        "album": "msnz"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 9,
+      "original": {
+        "year": 2025,
+        "month": 11,
+        "sales": 22316,
+        "album": "(Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "ASSEMBLE25 Cosmo monthly contribution already replaced by same-edition2025 annual; distinct from proposed standard edition."
+    },
+    {
+      "rowIndex": 10,
+      "original": {
+        "year": 2025,
+        "month": 9,
+        "sales": 15127,
+        "album": "(Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "ASSEMBLE25 Cosmo monthly contribution already replaced by same-edition2025 annual; distinct from proposed standard edition."
+    },
+    {
+      "rowIndex": 11,
+      "original": {
+        "year": 2025,
+        "month": 8,
+        "sales": 15134,
+        "album": "(Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "ASSEMBLE25 Cosmo monthly contribution already replaced by same-edition2025 annual; distinct from proposed standard edition."
+    },
+    {
+      "rowIndex": 12,
+      "original": {
+        "year": 2025,
+        "month": 5,
+        "sales": 351416,
+        "album": "(Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "ASSEMBLE25 Cosmo monthly contribution already replaced by same-edition2025 annual; distinct from proposed standard edition."
+    },
+    {
+      "rowIndex": 13,
+      "original": {
+        "year": 2025,
+        "month": 5,
+        "sales": 42124,
+        "album": ""
+      },
+      "proposedOverlap": false,
+      "review": "Resolved ASSEMBLE25 standard; May2025 does not overlap proposed June2025 week26; not covered by Cosmo annual replacement."
+    },
+    {
+      "rowIndex": 14,
+      "original": {
+        "year": 2025,
+        "month": 5,
+        "sales": 10000,
+        "album": "(WITHVUU)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 15,
+      "original": {
+        "year": 2025,
+        "month": 2,
+        "sales": 6883,
+        "album": "Acid Angel from Asia < ACCESS > (Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "ACCESS Cosmo February2025; distinct from ASSEMBLE Cosmo; excludes ACCESS week06 from addition."
+    },
+    {
+      "rowIndex": 16,
+      "original": {
+        "year": 2025,
+        "month": 1,
+        "sales": 9888,
+        "album": "(Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "Resolved ASSEMBLE24 Cosmo, distinct from ASSEMBLE Cosmo proposed weeks05/06 despite same January year."
+    },
+    {
+      "rowIndex": 17,
+      "original": {
+        "year": 2025,
+        "month": 1,
+        "sales": 6378,
+        "album": "LOVElution < ↀ > (Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 18,
+      "original": {
+        "year": 2025,
+        "month": 1,
+        "sales": 6084,
+        "album": "EVOLution <⟡> (Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 19,
+      "original": {
+        "year": 2025,
+        "month": 1,
+        "sales": 4655,
+        "album": "+(KR)ystal Eyes (Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "AESTHETIC Cosmo January2025; overlaps cross-month week05; excludes that observed row from addition."
+    },
+    {
+      "rowIndex": 20,
+      "original": {
+        "year": 2024,
+        "month": 10,
+        "sales": 286809,
+        "album": "Visionary Vision (Cosmo)"
+      },
+      "proposedOverlap": false,
+      "review": "Performante Cosmo October2024 already replaced by annual2024; newly observed month is corroboration only."
+    },
+    {
+      "rowIndex": 21,
+      "original": {
+        "year": 2024,
+        "month": 10,
+        "sales": 41362,
+        "album": "Visionary Vision"
+      },
+      "proposedOverlap": false,
+      "review": "Performante standard October2024 already counted; newly observed month is corroboration only."
+    },
+    {
+      "rowIndex": 22,
+      "original": {
+        "year": 2024,
+        "month": 9,
+        "sales": 5907,
+        "album": ""
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 23,
+      "original": {
+        "year": 2024,
+        "month": 8,
+        "sales": 11512,
+        "album": "(뮤지콘)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 24,
+      "original": {
+        "year": 2024,
+        "month": 8,
+        "sales": 6781,
+        "album": ""
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 25,
+      "original": {
+        "year": 2024,
+        "month": 7,
+        "sales": 20408,
+        "album": "(뮤지콘)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 26,
+      "original": {
+        "year": 2024,
+        "month": 7,
+        "sales": 7398,
+        "album": ""
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 27,
+      "original": {
+        "year": 2024,
+        "month": 6,
+        "sales": 8125,
+        "album": ""
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 28,
+      "original": {
+        "year": 2024,
+        "month": 5,
+        "sales": 100000,
+        "album": "(뮤지콘)"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 29,
+      "original": {
+        "year": 2024,
+        "month": 5,
+        "sales": 41590,
+        "album": ""
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 30,
+      "original": {
+        "year": 2023,
+        "month": 10,
+        "sales": 25728,
+        "album": "EVOLution <⟡>"
+      },
+      "proposedOverlap": false,
+      "review": "EVOLution standard October2023; does not overlap proposed December2023 week51."
+    },
+    {
+      "rowIndex": 31,
+      "original": {
+        "year": 2023,
+        "month": 8,
+        "sales": 28647,
+        "album": "LOVElution < ↀ >"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 32,
+      "original": {
+        "year": 2023,
+        "month": 5,
+        "sales": 50574,
+        "album": "+(KR)ystal Eyes"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 33,
+      "original": {
+        "year": 2023,
+        "month": 4,
+        "sales": 5203,
+        "album": "ASSEMBLE"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 34,
+      "original": {
+        "year": 2023,
+        "month": 2,
+        "sales": 40221,
+        "album": "ASSEMBLE"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    },
+    {
+      "rowIndex": 35,
+      "original": {
+        "year": 2022,
+        "month": 11,
+        "sales": 23674,
+        "album": "Acid Angel from Asia"
+      },
+      "proposedOverlap": false,
+      "review": "Year/month and/or named edition differ from proposed exact edition-period pairs; contributes no overlapping coverage."
+    }
+  ],
+  "annualReplacementReview": [
+    {
+      "year": 2024,
+      "album": "Visionary Vision <Performante> (Cosmo)",
+      "replacedMonthlyRows": [
+        20
+      ],
+      "monthlySum": 286809,
+      "annualValue": 289224,
+      "netContribution": 2415,
+      "proposedEditionOverlap": false
+    },
+    {
+      "year": 2025,
+      "album": "<ASSEMBLE25> (Cosmo)",
+      "replacedMonthlyRows": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "monthlySum": 403993,
+      "annualValue": 406744,
+      "netContribution": 2751,
+      "proposedEditionOverlap": false
+    }
+  ],
+  "existingWeeklyReview": [
+    {
+      "year": 2022,
+      "week": 50,
+      "dateRange": "2022.12.04~2022.12.10 (50)",
+      "album": "Acid Angel from Asia ＜ ACCESS ＞",
+      "artist": "tripleS (트리플에스)",
+      "albumId": "70531",
+      "sales": 1364,
+      "metricField": "Album_CNT",
+      "rank": 76,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2022&targetTime=50&yearTime=3",
+      "checkedAt": "2026-10-28T13:27:10.751290+00:00",
+      "responseSha256": "d6643cf54e686ffd793b8af4ce46e0285c96bdfd646f5f59ba9ec0e7035388ba",
+      "pageSha256": "a640e01ce9a3208bdebae9f0e5e0f02ba58f32425149e64a1f97120c331d899c"
+    },
+    {
+      "year": 2022,
+      "week": 51,
+      "dateRange": "2022.12.11~2022.12.17 (51)",
+      "album": "Acid Angel from Asia ＜ ACCESS ＞",
+      "artist": "tripleS (트리플에스)",
+      "albumId": "70531",
+      "sales": 871,
+      "metricField": "Album_CNT",
+      "rank": 94,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2022&targetTime=51&yearTime=3",
+      "checkedAt": "2026-10-28T13:27:16.155611+00:00",
+      "responseSha256": "ac7dd5a61307dffb7816f2da47c7c2756870c1a70bfbbc5f35b256647bed3990",
+      "pageSha256": "fab460fd59683d4a1860ca381b62135233c4294e985f1922454034db79e09367"
+    },
+    {
+      "year": 2023,
+      "week": 10,
+      "dateRange": "2023.03.05~2023.03.11 (10)",
+      "album": "ASSEMBLE",
+      "artist": "tripleS (트리플에스)",
+      "albumId": "71789",
+      "sales": 2587,
+      "metricField": "Album_CNT",
+      "rank": 52,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=10&yearTime=3",
+      "checkedAt": "2026-10-28T13:27:33.035051+00:00",
+      "responseSha256": "d99684156019dc331cfcb3faa17173018f973721756bdcc221559bbc09401aff",
+      "pageSha256": "31d5f663375362d37397a3b1722ade3b07d2f96c424e8074d12158b8dd41b796"
+    },
+    {
+      "year": 2023,
+      "week": 46,
+      "dateRange": "2023.11.12~2023.11.18 (46)",
+      "album": "LOVElution < ↀ >",
+      "artist": "tripleS (트리플에스)",
+      "albumId": "73936",
+      "sales": 1025,
+      "metricField": "Album_CNT",
+      "rank": 77,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=46&yearTime=3",
+      "checkedAt": "2026-10-28T13:28:20.770911+00:00",
+      "responseSha256": "54021026c9a6d14bca0030db6cab3733aad33a53952d88d989034ec976812c7c",
+      "pageSha256": "9a94264b26d8bcb9e25e5d1623ebb0a3d3320d377ee7e87cbc13ce65b017cae1"
+    }
+  ],
+  "proposedWeeklyReview": [
+    {
+      "year": 2023,
+      "week": 51,
+      "albumId": "74459",
+      "album": "EVOLution < ⟡ >",
+      "artist": "tripleS (트리플에스)",
+      "dateRange": [
+        "2023-12-17",
+        "2023-12-23"
+      ],
+      "officialPeriodLabel": "2023.12.17~2023.12.23 (51)",
+      "metricField": "Album_CNT",
+      "contribution": 1535,
+      "rank": 55,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=51&yearTime=3",
+      "sourceCheckedAt": "2026-10-28T15:35:08.384768+00:00",
+      "responseSha256": "8cb990539f332413e5a7b978dbc44bd2108beedcb1980471a083d40fad53a6bb",
+      "pageSha256": "1724f498296b9167527547581781278c8e8a3a56c5eb5f934184f31ba6a0bf34",
+      "savedSameVersionMonthRows": [
+        30
+      ],
+      "savedSameVersionMonths": [
+        "2023-10"
+      ],
+      "overlapWithOriginal36Months": false,
+      "overlapWithAnnualReplacementScopes": false,
+      "duplicateOfExistingFourWeeks": false,
+      "decision": "eligible-for-adoption",
+      "reason": "EVOLution standard; covered October month and proposed December week are disjoint; January 2025 Cosmo row18 is a different edition and period."
+    },
+    {
+      "year": 2025,
+      "week": 5,
+      "albumId": "78957",
+      "album": "＜ASSEMBLE＞ (Cosmo)",
+      "artist": "tripleS (트리플에스)",
+      "dateRange": [
+        "2025-01-26",
+        "2025-02-01"
+      ],
+      "officialPeriodLabel": "2025.01.26~2025.02.01 (05)",
+      "metricField": "Album_CNT",
+      "contribution": 3699,
+      "rank": 6,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2025&targetTime=05&yearTime=3",
+      "sourceCheckedAt": "2026-10-28T15:35:12.842853+00:00",
+      "responseSha256": "b0d2c274d345dcdeab5aad2455ba4e241049342815129b64d97c9449f474bcda",
+      "pageSha256": "e5b9dc9f6ef98ec94b8badc557c4acaf1f9699dea57a1369b79d944dcc8637f0",
+      "savedSameVersionMonthRows": [],
+      "savedSameVersionMonths": [],
+      "overlapWithOriginal36Months": false,
+      "overlapWithAnnualReplacementScopes": false,
+      "duplicateOfExistingFourWeeks": false,
+      "decision": "eligible-for-adoption",
+      "reason": "Week crosses January/February. No ASSEMBLE Cosmo monthly row in either month or any other saved month. January row16 is ASSEMBLE24 Cosmo, not ASSEMBLE Cosmo; February row15 is ACCESS Cosmo."
+    },
+    {
+      "year": 2025,
+      "week": 6,
+      "albumId": "78957",
+      "album": "＜ASSEMBLE＞ (Cosmo)",
+      "artist": "tripleS (트리플에스)",
+      "dateRange": [
+        "2025-02-02",
+        "2025-02-08"
+      ],
+      "officialPeriodLabel": "2025.02.02~2025.02.08 (06)",
+      "metricField": "Album_CNT",
+      "contribution": 2289,
+      "rank": 43,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2025&targetTime=06&yearTime=3",
+      "sourceCheckedAt": "2026-10-28T15:35:17.226851+00:00",
+      "responseSha256": "6c699dfc263f173d79035b4d393f3761c24887773fcb899ba9552dc375a770de",
+      "pageSha256": "1ea7130d8eeda56dc23da812d85dcbac036f08ddcc1a93c74d337bc7118d03de",
+      "savedSameVersionMonthRows": [],
+      "savedSameVersionMonths": [],
+      "overlapWithOriginal36Months": false,
+      "overlapWithAnnualReplacementScopes": false,
+      "duplicateOfExistingFourWeeks": false,
+      "decision": "eligible-for-adoption",
+      "reason": "Same ASSEMBLE Cosmo edition as proposed week05, but adjacent nonoverlapping dates. Neither saved monthly nor annual coverage includes this edition."
+    },
+    {
+      "year": 2025,
+      "week": 26,
+      "albumId": "79675",
+      "album": "＜ASSEMBLE25＞",
+      "artist": "tripleS (트리플에스)",
+      "dateRange": [
+        "2025-06-22",
+        "2025-06-28"
+      ],
+      "officialPeriodLabel": "2025.06.22~2025.06.28 (26)",
+      "metricField": "Album_CNT",
+      "contribution": 2545,
+      "rank": 35,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2025&targetTime=26&yearTime=3",
+      "sourceCheckedAt": "2026-10-28T15:35:24.509842+00:00",
+      "responseSha256": "4ff90a3cde95f749d22d64c3001d4f3141bf12d6755fd40d0de5a73cadcb5f24",
+      "pageSha256": "2fc0644d6c56c837fa8b9b67f501ef4868a7d9e8a973f867d9477703f6c4bd03",
+      "savedSameVersionMonthRows": [
+        13
+      ],
+      "savedSameVersionMonths": [
+        "2025-05"
+      ],
+      "overlapWithOriginal36Months": false,
+      "overlapWithAnnualReplacementScopes": false,
+      "duplicateOfExistingFourWeeks": false,
+      "decision": "eligible-for-adoption",
+      "reason": "ASSEMBLE25 standard row13 covers May only. Annual 2025 replacement covers Cosmo edition79676, not standard79675; WITHVUU row14 is also distinct."
+    }
+  ],
+  "excludedObservedRows": [
+    {
+      "year": 2025,
+      "week": 5,
+      "albumId": "78931",
+      "album": "+(KR)ystal Eyes ＜AESTHETIC＞ (Cosmo)",
+      "observedAlbumCNT": 482,
+      "contribution": 0,
+      "overlappingMonthRow": 19,
+      "decision": "exclude-overlap",
+      "reason": "AESTHETIC Cosmo week05 crosses January26-February1; January monthly row19 already covers part of interval. No day-level allocation available; entire week excluded conservatively."
+    },
+    {
+      "year": 2025,
+      "week": 6,
+      "albumId": "78987",
+      "album": "Acid Angel from Asia ＜ ACCESS ＞ (Cosmo) ",
+      "observedAlbumCNT": 5400,
+      "contribution": 0,
+      "overlappingMonthRow": 15,
+      "decision": "exclude-overlap",
+      "reason": "ACCESS Cosmo February2-8 lies fully inside saved February2025 monthly row15. Entire weekly value excluded."
+    }
+  ],
+  "officialMonthCorroborationOnly": [
+    {
+      "year": 2024,
+      "month": 10,
+      "albumId": "78104",
+      "album": "Visionary Vision ＜Performante＞",
+      "observedAlbumCNT": 41362,
+      "matchesOriginalMonthRow": 21,
+      "contribution": 0,
+      "decision": "corroboration-only",
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=month&hitYear=2024&targetTime=10&yearTime=3",
+      "responseSha256": "ced1dffd2a9f5002efdaaaece53b424b3d182719c192d1ca8783a6fff0b1d066",
+      "reason": "Original month value already counted or replaced by same-version annual; never add again."
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "albumId": "78113",
+      "album": "Visionary Vision ＜Performante＞ (Cosmo)",
+      "observedAlbumCNT": 286809,
+      "matchesOriginalMonthRow": 20,
+      "contribution": 0,
+      "decision": "corroboration-only",
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=month&hitYear=2024&targetTime=10&yearTime=3",
+      "responseSha256": "ced1dffd2a9f5002efdaaaece53b424b3d182719c192d1ca8783a6fff0b1d066",
+      "reason": "Original month value already counted or replaced by same-version annual; never add again."
+    }
+  ],
+  "arithmetic": {
+    "proposedContribution": 10068,
+    "allEightWeeklyContribution": 15915,
+    "formula": "2087073 + 5166 + 5847 + 10068 = 2108154",
+    "proposedRecomputedSum": 2108154,
+    "savedAggregate": 2458789,
+    "proposedRemainingDifference": 350635,
+    "differenceResolved": false
+  },
+  "rawDisplayCorrection": {
+    "finding": "stale numeric display text predates the already adopted5847 weekly contribution",
+    "before": "2,092,239+",
+    "beforeObservedValue": 2098086,
+    "expectedAfterIfAdopted": "2,108,154+",
+    "retainOriginal": "Preserve before rawDisplay and exact prior sales object in adoption receipt; update current rawDisplay with observedValue/displayValue/recomputedSum, not historical captures.",
+    "appliedByReviewer": false
+  },
+  "limits": {
+    "freshNetworkRequests": 0,
+    "newOfficialObservationsReadFromSavedEvidence": 5,
+    "allOriginalMonthlySourcesFreshlyRead": false,
+    "aggregateRevisited": false,
+    "applicationModified": false,
+    "gitModified": false,
+    "deploymentPerformed": false,
+    "privateApiRead": false,
+    "privateWrites": 0
+  }
+}

@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
+import {beforePostV200Statistics} from './helpers/post-v200-statistics.cjs';
+import {beforeUserXObservations} from './helpers/user-x-observations.cjs';
 
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const evidenceRoot = '../../docs/codex/evidence/20261028-continuation/statistics/';
@@ -10,7 +12,7 @@ const data = read('data/group-statistics-completion-evidence.json');
 const laterSales = read('../../docs/codex/evidence/20261028-stage-fill/statistics-adoption-proposal.json');
 const laterEvidence = read('../../docs/codex/evidence/20261028-continuous/evidence-upgrade-proposal-c.json');
 // Restore only the reviewed later changes when checking this historical cohort.
-const historicalData = structuredClone(data);
+const historicalData = beforeUserXObservations(data);
 historicalData.groups.triples.sales = laterEvidence.statistics.expectedBefore;
 for (const change of laterSales.items) {
   const [slug, field] = change.key.split('.');
@@ -21,7 +23,7 @@ const proposal = read(evidenceRoot + 'triples-sales-proposal.json');
 const sourceEvidence = read(evidenceRoot + 'source-evidence.json');
 const officialEvidence = read(evidenceRoot + 'official-index-check.json');
 const sources = new Map(sourceEvidence.captures.map(row => [row.id, row]));
-const sales = data.groups.triples.sales;
+const sales = beforePostV200Statistics(data).groups.triples.sales;
 const evidence = sales.evidence;
 const sum = rows => rows.reduce((total, row) => total + row.sales, 0);
 const canonical = value => Array.isArray(value) ? value.map(canonical)
@@ -183,9 +185,9 @@ test('the public group model renders the reconciled integer and retains the unre
   const before = structuredClone(input);
   const model = groupInformationModel('triples', input);
   const html = renderGroupInformation('triples', input);
-  assert.equal(model.sales.observedValue, 2092239);
-  assert.match(html, /<strong>2,092,239<em>张<\/em><\/strong>/);
-  assert.match(html, /366,550/);
+  assert.equal(model.sales.observedValue, 2108154);
+  assert.match(html, /<strong>2,108,154<em>张<\/em><\/strong>/);
+  assert.match(html, /350,635/);
   assert.match(html, /来源差异继续开放/);
   assert.match(html, /不是全球完整累计/);
   assert.doesNotMatch(html, /<strong>2,087,073<em>/);

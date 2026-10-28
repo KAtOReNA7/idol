@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T16:16:17.307962+00:00",
+  "scope": "四项剩余未知销量的新来源有界研究；仅公开证据，不修改应用、队列、私人字段、Git或部署。",
+  "baselineFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+  "baselineFileSha256": "d9cbdd9d3f58d5da5b4c6535824a5dfcdd0cdc08761081d8436e1e55111b6a97",
+  "priorResearch": [
+    "docs/codex/evidence/20261028-post-v200/statistics/research.json",
+    "docs/codex/evidence/20261028-post-v200/statistics/followup-research.json"
+  ],
+  "summary": {
+    "items": 4,
+    "numericProposals": 0,
+    "unknownItemsClosed": 0,
+    "zeroClaimsAdded": 0,
+    "newPhysicalCatalogFinding": "GIRLSET Tweak/CHAT official store; distinct from VCHA-period sales",
+    "applicationMutations": 0,
+    "privateReads": 0,
+    "privateWrites": 0,
+    "newDeployments": 0
+  },
+  "items": [
+    {
+      "key": "spia.sales",
+      "status": "unresolved_numeric_count_missing",
+      "newFinding": "Daddy’s Little Girl的发行商正版目录明确标为Digital Single Album；能确定发行格式说明，不能据此断言SPIA完整历史实体销量为0。",
+      "sources": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=84950678",
+          "kind": "licensed_distributor_catalog",
+          "access": "body_read",
+          "finding": "2024-04-02发行；Kakao Entertainment发行，Campus Entertainment制作；正文明确Digital Single Album。没有实体SKU或已售数量。"
+        },
+        {
+          "url": "https://sports.khan.co.kr/article/202406050806003",
+          "kind": "named_original_news",
+          "access": "search_index_read",
+          "finding": "Deeeep的2轨发行说明，没有销量数量。"
+        }
+      ],
+      "nextAction": "若有新增官方实体预售/发行公告，先取得准确SKU，再查同版Circle Album/零售期数或发行商售出数。现有两数字作品资料仅能限定已知发行格式。",
+      "excludedInferences": [
+        "数字单曲不是全团全时期实体零销量证据。",
+        "正版目录推荐的Buonsenso未完成同名艺人消歧，不并入。",
+        "旧KBS 429路线未重试。"
+      ],
+      "observedValue": null,
+      "numericProposal": null,
+      "adopted": false,
+      "absenceProvesZero": false,
+      "currentUnchanged": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable",
+        "title": "韩国发行累计销量"
+      },
+      "currentSalesObjectSha256": "5dcfe0e5ff8bacef90738b5252693d26501101e4ac8ea139b17ece6f99fc9a4e"
+    },
+    {
+      "key": "tracer.sales",
+      "status": "unresolved_numeric_count_missing",
+      "newFinding": "官方GleamMedia艺人页可读，但没有实体商店、SKU或销量字段；其公开news页面为2020年STARPLAY旧报道，不能冒称覆盖TRACER 2024年后的全部公告。",
+      "sources": [
+        {
+          "url": "https://www.gleammedia.co.kr/artist",
+          "kind": "official_label_page",
+          "access": "body_read",
+          "finding": "TRACER艺人资料与图片，没有唱片已售数量。"
+        },
+        {
+          "url": "https://www.gleammedia.co.kr/news",
+          "kind": "official_label_news_index",
+          "access": "body_read",
+          "finding": "本轮返回2020年STARPLAY新闻列表，没有TRACER 365实体发行或销量公告；仅覆盖可见索引。"
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/20682344?wl_ref=list_tr_11",
+          "kind": "licensed_catalog",
+          "access": "search_index_read",
+          "finding": "正确TRACER，2024-11-05，Genie Music发行、GleamMedia制作；2轨。目录未给实体已售数。"
+        }
+      ],
+      "nextAction": "等待或寻找GleamMedia/Genie明确的商业实体发行SKU或可核售出数量；同名工具、鞋服、TV剧情与TREASURE结果全部排除。",
+      "excludedInferences": [
+        "发行商目录数字下载按钮不等于实体从未发行。",
+        "官网没有销量字段不等于销量0。",
+        "其他艺人TRACE/TREASURE及同名商品不作为TRACER证据。"
+      ],
+      "observedValue": null,
+      "numericProposal": null,
+      "adopted": false,
+      "absenceProvesZero": false,
+      "currentUnchanged": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable",
+        "title": "韩国发行累计销量"
+      },
+      "currentSalesObjectSha256": "5dcfe0e5ff8bacef90738b5252693d26501101e4ac8ea139b17ece6f99fc9a4e"
+    },
+    {
+      "key": "vcha.sales",
+      "status": "unresolved_numeric_count_and_brand_scope",
+      "newFinding": "GIRLSET官方商店确有Tweak与CHAT实体产品。Tweak为7种CD和3种7寸vinyl；CHAT为6种CD。该发现否定把旧VCHA数字目录缺实体当作后续品牌也无实体的推理，但没有可采用售出量。",
+      "sources": [
+        {
+          "url": "https://shop.girlset.com/collections/music",
+          "kind": "official_store_catalog",
+          "access": "body_read",
+          "finding": "本轮可见16种商品：Tweak 10种（7 CD/3 vinyl）及CHAT 6种CD；商品版本数不是售出份数。"
+        },
+        {
+          "url": "https://shop.girlset.com/products/tweak-cd-kendall-version",
+          "kind": "official_store_product",
+          "access": "body_read",
+          "finding": "Tweak第三支单曲，Kendall CD单价USD5.99，限每客户4件；价格和限购数都不是销量。"
+        }
+      ],
+      "productObservations": {
+        "tweak": {
+          "cdVersions": 7,
+          "vinyl7inchVersions": 3
+        },
+        "chat": {
+          "cdVersions": 6
+        },
+        "salesQuantity": null
+      },
+      "nextAction": "后续从GIRLSET/JYP/Republic原始发行或销量公告核明确时期和地区的实体数；若拟纳入当前VCHA统计，先明确更名后品牌与韩国发行口径，不把美国店商品直接套用韩国累计标题。",
+      "excludedInferences": [
+        "商品存在、版本数、价格、每人限购量、库存、售罄均不是已售数量。",
+        "VCHA历史时期与GIRLSET后续品牌必须分别标注。",
+        "不能把美国数字单曲销量、流媒等价单位或榜位当韩国实体累计。"
+      ],
+      "observedValue": null,
+      "numericProposal": null,
+      "adopted": false,
+      "absenceProvesZero": false,
+      "currentUnchanged": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable",
+        "title": "韩国发行累计销量"
+      },
+      "currentSalesObjectSha256": "5dcfe0e5ff8bacef90738b5252693d26501101e4ac8ea139b17ece6f99fc9a4e"
+    },
+    {
+      "key": "witchx.sales",
+      "status": "unresolved_numeric_count_missing",
+      "newFinding": "官方经纪公司页列BLALA、Beautiful、RUN BABY RUN三支single album但不说明可售实体SKU或数量；韩国公共知识元数据补得Quarter Music发行/Artform制作链路，仍不证明实体销量。",
+      "sources": [
+        {
+          "url": "https://kpopmedia.co.kr/",
+          "kind": "official_label_page",
+          "access": "body_read",
+          "finding": "三支single album的作品目录及艺人身份，没有实体版本、条码或已售数；single album文字自身不能证明实体。"
+        },
+        {
+          "url": "https://k-knowledge.kr/srch/read.jsp?id=285844216",
+          "kind": "government_aggregated_catalog_metadata",
+          "access": "body_read",
+          "finding": "Beautiful story (highlight)条目列Quarter Music流通/发行、Artform Entertainment制作；页面日期2025-07-22不直接改作歌曲发行日期。未保留歌词。"
+        },
+        {
+          "url": "https://musicbrainz.org/release/a9db03a7-3108-4eb8-811a-5032e0b887b9",
+          "kind": "community_catalog_lead",
+          "access": "search_index_read",
+          "finding": "Run Baby Run条码198704592218条目格式为Digital Media；条码不证明实体发行，未经发行商独立确认不采用。"
+        }
+      ],
+      "nextAction": "按Quarter Music/Artform准确作品名寻找商业实体版本或原始chart row；避免混入2002年另一乐团Witches《Broomstick》。",
+      "excludedInferences": [
+        "公益/图书馆元数据不是销量统计。",
+        "single album、数字条码、Ktown4u场地活动均不能证明实体已售数量。",
+        "2002年Witches乐团不是2024年W!TCHX。"
+      ],
+      "observedValue": null,
+      "numericProposal": null,
+      "adopted": false,
+      "absenceProvesZero": false,
+      "currentUnchanged": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable",
+        "title": "韩国发行累计销量"
+      },
+      "currentSalesObjectSha256": "5dcfe0e5ff8bacef90738b5252693d26501101e4ac8ea139b17ece6f99fc9a4e"
+    }
+  ],
+  "methodLimits": [
+    "有限关键词与原始发行商/经纪公司/官方店页面研究；不是全网、全榜、全时期穷尽。",
+    "未请求Soridata、YouTube或旧SPIA KBS受限路线；搜索中出现Soridata片段未打开或采用。",
+    "未重新运行已有Circle周榜扫描；旧研究保留独立。",
+    "未使用用户Chrome、私人导出或owner会话。",
+    "显示0仍为用户指定的缺数后备；observedValue=null保持，不能写作已证实0。",
+    "四项仍开放；未来有效数值需准确团体/品牌、发行版本、地域、格式、时间范围和是否下界，且不重复合计。"
+  ]
+}

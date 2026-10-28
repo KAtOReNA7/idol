@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "preparedAt": "2026-10-29",
+  "scope": "v201剩余人物、统计、时间轴与图片可选提质的分团人工补充清单；只整理既有证据，不新增事实或改变评分关系。",
+  "source": "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json",
+  "versionSource": "apps/idol-site/data/stages/inventory.json",
+  "publicationVersion": 201,
+  "notes": [
+    "24项人物待证作品均已有通用认人图；缺的是具体作品参与证据，不是现有关系缺图。",
+    "用户辨认并提供时间点可作为逐人出镜线索；录音或混音采样参与需另有对应版本署名或可核资料，不由看脸推定。",
+    "7项未知统计页面显示0，事实仍未知；不要将页面0或搜索无结果视为真实零。",
+    "7项时间轴已有报道或目录记录，缺的是实际生效日，不重复索取已展示报道。",
+    "MADEIN与HITGS图片为可选提质项，已有图能认人；不计入原有关系缺图。"
+  ],
+  "groups": [
+    {
+      "name": "Hearts2Hearts",
+      "items": [
+        {"kind":"person","workId":"rec28ldfRTrIkV","song":"FOCUS","version":"DJ Seinfeld Remix","problem":"本混音仅有团体署名，未核到具体成员人声或采样名单；原版八人名单不能直接套用。","help":"若熟悉这个混音，可提供逐成员人声/采样的制作说明、封套署名或可靠逐段资料；仅知道原版全员参与还不足以关闭此项。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrIkV","effort":"较难：混音采样证据"}
+      ]
+    },
+    {
+      "name": "izna",
+      "items": [
+        {"kind":"person","workId":"rec28ldfRTrNsK","song":"BEEP (Japan Edition)","version":null,"problem":"日本版只署团名，缺该次录音的逐名参与依据；其他演出或一般成员名单不能代替。","help":"提供日本版录音幕后、采访或封套中明确成员姓名的链接/截图；请注明是Japan Edition。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrNsK","effort":"熟悉该版者可较快补线索"},
+        {"kind":"person","workId":"rec28ldfRTrNBu","song":"SASS & Racecar","version":"Performance Video","problem":"官方目录确认这支合并Special Performance，但未逐人署名；两首单独视频的名单不能拼接当成此版名单。","help":"观看这一支精确视频，提供能确认的成员姓名＋对应时间点，或该支拍摄幕后/具名图文；作为出镜证据线索继续复核。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrNBu","effort":"适合熟悉成员者人工辨认"}
+      ]
+    },
+    {
+      "name": "MADEIN",
+      "items": [
+        {"kind":"person","workId":"rec28ldfRTrPi9","song":"PUNG!","version":null,"problem":"商品封面/卡片版本数与旧团体简介人数不一致，不能据此确定PUNG!实际参与阵容。","help":"提供PUNG!的成员姓名＋视频时间点，或这一发行的具名封套、拍摄说明；不要只提供当前团体名单。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrPi9","effort":"适合熟悉成员者人工辨认"},
+        {"kind":"photo_quality","problem":"现用官方同页6张原件为569×854，已如实显示原尺寸，尚无更高清的同套替代。","help":"提供完整同套、逐张能对应姓名的高清图集链接；官方或民间均可。无需放大旧图。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/madein/","effort":"适合有存图或熟悉图集者"}
+      ]
+    },
+    {
+      "name": "WOOAH",
+      "items": [
+        {"kind":"person","workId":"recvxyH5pzrrSO","song":"WXW (Wish With W)","version":"韩文原版","problem":"现资料将演唱/创作合称WOOAH，缺本曲逐成员署名；后续活动名单不能证明这首歌的具体角色。","help":"提供本曲录音或拍摄幕后、成员采访、逐人创作登记；若提供视频辨认，请附姓名和时间点，并区分出镜与演唱/创作。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzrrSO","effort":"熟悉本曲者可补线索"},
+        {"kind":"person","workId":"recvxyH5pzQxpW","song":"SUMMER","version":"韩文原版","problem":"本曲只有团体演唱署名，尚无可核的逐成员录音或拍摄证据。","help":"提供SUMMER专属幕后、采访、宣传图文中的姓名；也可提供此支视频的成员＋时间点，留作出镜复核。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzQxpW","effort":"熟悉本曲者可补线索"}
+      ]
+    },
+    {
+      "name": "PURPLE KISS",
+      "items": [
+        {"kind":"person","workId":"recvxyH5pzFAPL","song":"DOREMI","version":"英文版","problem":"已定位英文录音幕后，但没有取得可读的逐人姓名证据；韩文版资料不能直接移用。","help":"可优先查看官方英文录音幕后TGbfk7AEIzk，给出明确字幕姓名/说话成员与时间点，或同版具名概念照链接。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzFAPL","candidateLink":"https://www.youtube.com/watch?v=TGbfk7AEIzk","effort":"有明确待读视频，人工较快"}
+      ]
+    },
+    {
+      "name": "aespa",
+      "items": [
+        {"kind":"person","workId":"recvxyHuKMisqR","song":"Next Level (Habstrakt Remix)","version":"Habstrakt混音版","problem":"该混音只有aespa集体署名，未核具体成员人声/采样。","help":"提供Habstrakt此版制作说明、封套或逐段采样依据；原曲分词不能直接当作混音成员名单。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMisqR","effort":"较难：混音采样证据"},
+        {"kind":"person","workId":"recvxyHuKMiDs4","song":"Girls (BRLLNT Remix)","version":"BRLLNT混音版","problem":"该混音只有团体及外部制作人署名，缺逐成员参与或该支影像的出镜依据。","help":"提供精确混音的人声/采样名单或制作花絮；出镜请另附该视频姓名和时间点。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMiDs4","effort":"较难：混音采样证据"},
+        {"kind":"person","workId":"recvxyHuKMyy5i","song":"Spicy (Nitepunk Remix)","version":"Nitepunk混音版","problem":"只署团体演唱，未核Nitepunk此版保留了哪些成员人声。","help":"提供该混音制作说明、逐名采样资料或精确视频出镜线索；原版四人名单不能直接继承。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMyy5i","effort":"较难：混音采样证据"},
+        {"kind":"person","workId":"recvxyHuKMBHQA","song":"Get Goin'","version":"Fraggle Rock联名","problem":"发行只署团名；四人简介和短预告尚不能证明这支完整目标视频或录音的逐人参与。","help":"提供Apple/Henson完整制作名单、成员录音采访，或本支视频能确认成员的姓名＋时间点。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMBHQA","effort":"熟悉联名内容者可人工核对"},
+        {"kind":"person","workId":"recvxyHuKMlGJW","song":"Supernova (Grimes Remix)","version":"Grimes混音版","problem":"缺该混音逐成员人声/采样与该视频出镜证据；不能继承原版或另一影像版本的名单。","help":"提供该版采样/制作署名；若只确认画面，请附此支视频时间点，不把Other World版观察混用。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMlGJW","effort":"较难：混音与影像版本需区分"},
+        {"kind":"person","workId":"recvxyHuKMCSdB","song":"Armageddon (Flava D Remix)","version":"Flava D混音版","problem":"缺Flava D此版逐成员人声/采样或该支视频出镜资料。","help":"提供精确混音制作说明、采样名单；视频辨认可附成员＋时间点，作为出镜线索。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMCSdB","effort":"较难：混音采样证据"},
+        {"kind":"person","workId":"recvxyHuKMwjsI","song":"Supernova (Grimes Remix) (The Other World Ver.)","version":"Grimes混音The Other World版","problem":"独立影像版本的逐人参与仍未证，不能因另一版本已知有/无真人而直接继承。","help":"提供The Other World这一支完整视频的成员出镜时间点或制作名单；采样人声另据精确混音资料确认。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMwjsI","effort":"熟悉视频者可先核画面，采样较难"},
+        {"kind":"person","workId":"recvxyHuKMlAhN","song":"Rich Man (Yellow Claw Remix)","version":"Yellow Claw混音版","problem":"只署aespa及外部作者，缺该混音具体成员人声/采样。","help":"提供Yellow Claw此版制作说明或逐名采样资料，不能用原专辑乐评代替。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMlAhN","effort":"较难：混音采样证据"},
+        {"kind":"person","workId":"recvxyHuKMxwnW","song":"LEMONADE (Zedd Remix)","version":"Zedd混音版","problem":"缺Zedd此版的逐成员人声/采样证据。","help":"提供Zedd精确混音的采样/录音说明或逐名资料；其他LEMONADE版本不自动继承。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMxwnW","effort":"较难：混音采样证据"},
+        {"kind":"person","workId":"recvxyHuKMlNfX","song":"LEMONADE (Marlon Hoffstadt Remix)","version":"Marlon Hoffstadt混音版","problem":"缺Marlon Hoffstadt此版的逐成员人声/采样证据。","help":"提供这一精确混音的采样/录音说明或逐名资料；不与Zedd或2Spade版本混用。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMlNfX","effort":"较难：混音采样证据"},
+        {"kind":"person","workId":"recvxyHuKMLz7L","song":"LEMONADE (2Spade Remix)","version":"2Spade混音版","problem":"缺2Spade此版的逐成员人声/采样证据。","help":"提供这一精确混音的采样/录音说明或逐名资料；不与其他LEMONADE版本混用。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMLz7L","effort":"较难：混音采样证据"}
+      ]
+    },
+    {
+      "name":"IVE",
+      "items":[
+        {"kind":"person","workId":"recvxyHuKMwrIt","song":"BANG BANG (MINIVE VER.)","version":"MINIVE动画版","problem":"已知六个MINIVE角色与成员的对应，但这不能直接证明该视频有无真人或逐成员录音参与。","help":"人工看完整支MINIVE版，说明是否出现真实成员及时间点；可补动画/配音制作说明。角色对应和真人出镜分开记录。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMwrIt","effort":"适合人工核画面；录音另证"}
+      ]
+    },
+    {
+      "name":"fromis_9",
+      "items":[
+        {"kind":"person","workId":"recvxyOz5XFVzt","song":"Touchdown","version":"OST MV","problem":"目前只找到团体OST资料，缺这次录音的逐成员证据，不能直接采用粉丝分词名单。","help":"提供Touchdown录音幕后、OST封套名单或成员本人谈这首歌的采访；MV出镜可另给姓名＋时间点。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XFVzt","effort":"熟悉OST者可补线索"}
+      ]
+    },
+    {
+      "name":"NMIXX",
+      "items":[
+        {"kind":"person","workId":"recvxyOz5XsgVc","song":"Sprinkle Party","version":"韩文OST原版","problem":"原资料称七人NMIXX但没有逐名录音名单；不能拿现在六人名单或另一首Hey Gabby资料替代。","help":"提供Sprinkle Party当时的七人逐名录音幕后、OST封套或成员采访；明确与Hey Gabby区分。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XsgVc","effort":"熟悉早期OST者可补线索"}
+      ]
+    },
+    {
+      "name":"HITGS",
+      "items":[
+        {"kind":"person","workId":"recvxIZy35rUeY","song":"Little By Little","version":"原版","problem":"只核到团体及外部制作人员，缺本曲逐成员录音/拍摄证据；VV另一首中文歌的作词不能移用。","help":"提供Little By Little专属幕后、成员采访或此视频的姓名＋时间点。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZy35rUeY","effort":"适合熟悉成员者人工辨认"},
+        {"kind":"person","workId":"recvxIZy3525BF","song":"Gulliver!","version":"原版","problem":"该曲只署团体和外部创作/和声，缺逐成员证据；Ctrl C的个人角色不能套用。","help":"提供Gulliver!专属录音/拍摄幕后或能辨认成员的时间点。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZy3525BF","effort":"适合熟悉成员者人工辨认"},
+        {"kind":"photo_quality","problem":"现有5张具名1000×1000图能认人，但尚未独立证实全部同一次拍摄/同套；影响上述2作品的10个通用参考槽。","help":"提供完整5人的同套清晰图集，逐张附姓名或有可靠姓名标注；官方、民间均可。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/hitgs/","effort":"适合有存图或熟悉图集者"}
+      ]
+    },
+    {
+      "name":"ifeye",
+      "items":[
+        {"kind":"person","workId":"recvxIZFpVLU0R","song":"loverfory","version":"原版","problem":"二手资料称RAHEE任导演，但原始发布说明未能读到；尚不能确认具体职责或全员参与。","help":"提供该MV官方发布说明/片尾职员表，尤其RAHEE导演署名；若熟悉画面，可附能确认的成员姓名＋时间点。","link":"https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZFpVLU0R","effort":"有明确待找署名，人工较快"}
+      ]
+    },
+    {
+      "name":"GENBLUE",
+      "items":[
+        {"kind":"statistics_wins","key":"genblue.wins","problem":"缺全团、截至明确日期的打歌一位总数；ACT LIKE THAT单曲0和THE SHOW第二名不能代替全时期统计。","help":"若熟悉获奖史，可提供首次获奖报道、完整获奖表或有截止日期的一位统计链接；没有获奖的记忆可作线索，但不会自动标成官方已证0。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/genblue/","effort":"熟悉团史者可缩小核查范围"}
+      ]
+    },
+    {
+      "name":"SPIA",
+      "items":[
+        {"kind":"statistics_sales","key":"spia.sales","problem":"缺可核实体销量。Deeeep及Daddy’s Little Girl的数字发行目录不能证明全团从未售出实体。","help":"提供实体专辑名称、商店商品/条码或销量统计原页；有数字请附统计期间及Circle Album、Retail、Hanteo或单店口径。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/spia/","effort":"有实体专辑/销量资料者最有帮助"}
+      ]
+    },
+    {
+      "name":"TRACER",
+      "items":[
+        {"kind":"statistics_sales","key":"tracer.sales","problem":"缺GleamMedia四人女团TRACER《365》的实体发行/销量数量；大量同名电视剧结果不可用。","help":"提供该女团实体专辑/条码、官方商品页或带统计期间和口径的销量资料，先确认团体身份。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/tracer/","effort":"有专辑资料者可快速排除同名干扰"},
+        {"kind":"statistics_wins","key":"tracer.wins","problem":"缺全时期打歌一位总数；资料站First Win TBA和搜索无结果不足以确认实际0。","help":"提供该团打歌时期及完整获奖记录/有截止日汇总；若记得从未获奖，也可告知观察范围，我再据此核查。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/tracer/","effort":"熟悉团史者可缩小范围"}
+      ]
+    },
+    {
+      "name":"VCHA / GIRLSET",
+      "items":[
+        {"kind":"statistics_sales","key":"vcha.sales","problem":"VCHA品牌时期实体销量未核；GIRLSET后续Tweak/CHAT实体商品不能直接反填VCHA历史销量。","help":"提供销量数字、作品/版本、统计截止日和来源，并注明属于VCHA还是GIRLSET时期；如有VCHA正式实体发行资料也有帮助。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/vcha/","effort":"需品牌时期和榜单口径，较难"},
+        {"kind":"statistics_wins","key":"vcha.wins","problem":"现有2023-11-09尚无一位资料未覆盖VCHA后续完整时期；GIRLSET记录不能不分时期直接并入。","help":"提供VCHA/GIRLSET各时期的打歌获奖史或有截止日的总表；请将音乐节目一位与其他奖项分开。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/vcha/","effort":"熟悉更名与获奖史者可补线索"}
+      ]
+    },
+    {
+      "name":"W!TCHX",
+      "items":[
+        {"kind":"statistics_sales","key":"witchx.sales","problem":"缺可核实体销量；WTCHX/W!TCHX数字目录和数据库0+不是实际全期0。","help":"提供Run Baby Run等实体发行的榜单数值、条码或发行方销售说明，附日期和统计口径；无需再尝试Soridata下载/验证码。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/witchx/","effort":"有实体/销量资料者最有帮助"}
+      ]
+    },
+    {
+      "name":"tripleS",
+      "items":[
+        {"kind":"sales_reconciliation","problem":"已核Circle口径下界2,108,154，与旧汇总2,458,789仍差350,635；未解释前不补成完整累计。","help":"若有各专辑逐版本销量表或旧汇总来源，请提供完整表及日期；Circle Album、Retail、Hanteo、日本榜分列，避免把首周、月榜、年榜重复相加。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/triples/","effort":"较难：需原始统计明细，不适合只给一个总数"}
+      ]
+    },
+    {
+      "name":"AtHeart",
+      "items":[
+        {"kind":"timeline","eventId":"e-atheart-aurora-hiatus-observed","problem":"Aurora首次暂停活动的实际起止日未证；已有人物采访和2025-07-02公告线索，但公告日期不能直接当实际开始日。","help":"若留存TITAN原公告或后续恢复公告，请提供完整图文/链接，尤其有“自某日起”的文字；无需个人健康细节。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/atheart/","candidateLink":"https://x.com/titan_content/status/1940244098105188584","effort":"有原公告存档者可较快补"},
+        {"kind":"timeline","eventId":"e-atheart-aurora-second-hiatus-announcement","problem":"Aurora再次暂停已有2026-08-18报道/声明转载，但未核独立实际生效日。","help":"提供公司完整原公告或明确实际开始日的后续声明；仅重复8月18日报道不算补齐生效日。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/atheart/","candidateLink":"https://x.com/atheart_titan/status/2089676602401821162","effort":"有原公告存档者可补"}
+      ]
+    },
+    {
+      "name":"BEWAVE",
+      "items":[
+        {"kind":"timeline","eventId":"e-bewave-six-member-phase-end-announcement","problem":"官方原公告计划2025-10-31结束六人活动，但缺实际离队/阵容重整生效的独立确认。","help":"提供10月31日前后公司或成员明确计划已执行、具体离队/转型日期的声明；当前三人资料页本身不能确认生效日。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/bewave/","effort":"熟悉阵容变化或有声明存档者可补"}
+      ]
+    },
+    {
+      "name":"CandyShop",
+      "items":[
+        {"kind":"timeline","eventId":"e-candyshop-yuina-hiatus-announcement","problem":"YUINA暂停已有2024-05-09报道及公司声明转载图，缺官方原刊位置和明确生效日；不是退团证据。","help":"提供Brave/官方Daum fancafe原帖或完整带刊载时间的公告，并指出是否写明实际暂停日期。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/candyshop/","effort":"有fancafe访问或公告存档者可较快补"}
+      ]
+    },
+    {
+      "name":"Geenius",
+      "items":[
+        {"kind":"timeline","eventId":"e-geenius-spoiler-book-instrumental","problem":"Spoiler Book器乐QR载体目录标2026-01-15，但缺公司确认实际发行日；不是完整人声Love Don’t Change专辑发行。","help":"提供公司/成员当日发售公告，或带日期的正式发行说明；一般商店预售目录已查，不需重复。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/geenius/","effort":"有发售公告存档者可补"}
+      ]
+    },
+    {
+      "name":"UDTT",
+      "items":[
+        {"kind":"timeline","eventId":"e-udtt-jessica-provisional-join-candidate","problem":"Jessica最晚2025-04-30已接受本人采访，但正式加入日期及临时/永久性质未证；作品角色不能代替成员身份。","help":"提供公司/本人明确加入性质及生效日的原公告；已有4月30日、5月8日、5月9日采访/报道无需重复。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/udtt/","effort":"熟悉成员变化或有公告存档者可补"},
+        {"kind":"timeline","eventId":"e-udtt-sena-predebut-departure-candidate","problem":"Sena出道前退出只有社区/粉丝转载；未找到公司或本人原始声明及实际退出日。","help":"寻找@udtt_official约2025-03-26的原公告或完整转载，附原帖链接、日期及正文；不要把粉丝账号转发日直接当退出日。","link":"https://idol-lens-private.wuke40758.chatgpt.site/artists/udtt/","effort":"有官方旧帖或存档者可较快补"}
+      ]
+    }
+  ]
+}

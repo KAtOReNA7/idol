@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-28T16:12:00.286045+00:00",
+  "tests": 151,
+  "passed": 148,
+  "failed": 3,
+  "logSha256": "e85f20fe73884393504e635b65c5ee0f69b3e6571cd477735a0d6aa46bb1474a",
+  "failures": [
+    {
+      "test": "stage-fill-statistics historical nine-item audit",
+      "type": "historical test reads current facts",
+      "resolution": "Read already-restored historicalData for historical null assertions; new adoption tested separately."
+    },
+    {
+      "test": "udtt-private-build-assets two checks",
+      "type": "build integrity manifest outdated after source identity fix",
+      "resolution": "Pending precise dependency and byte-pin update; guard remains enabled."
+    }
+  ],
+  "typeScript": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false",
+    "exitCode": 0
+  },
+  "testReporterNote": "Python console GBK encoding initially prevented summary receipt; original UTF-8 log retained."
+}

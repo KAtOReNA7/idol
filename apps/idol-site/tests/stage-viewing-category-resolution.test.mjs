@@ -14,7 +14,7 @@ const {validStageAlternative,stageSupplementForWork}=await import('data:text/jav
 test('six new public viewing alternatives validate and never acquire score bindings',()=>{
  assert.equal(evidence.adopted.length,6);
  for(const entry of evidence.adopted){
-  const items=stageSupplementForWork(entry.workId).alternatives.filter(a=>a.sourceId===entry.videoId);
+  const items=data.works[entry.workId].alternatives.filter(a=>a.sourceId===entry.videoId);
   assert.equal(items.length,1);const a=items[0];
   assert.equal(validStageAlternative(a),true);assert.equal(a.scorePolicy,'view_only');
   assert.equal('scoreBinding' in a,false);assert.match(a.kind+a.version.evidence.note,/未完整/);
@@ -29,8 +29,10 @@ test('six new public viewing alternatives validate and never acquire score bindi
 test('all prior supplement records and formal stage records are preserved through the authorized four-source addition',()=>{
  for(const [id,baseline]of Object.entries(evidence.preservation.oldRows)){
   const row=structuredClone(data.works[id]);
-  row.alternatives=row.alternatives.slice(0,baseline.alternativeCount);
-  if(baseline.hadWatchLeads)row.watchLeads=row.watchLeads.slice(0,baseline.watchLeadCount);else delete row.watchLeads;
+  row.alternatives=row.alternatives.slice(0,baseline.alternativeCount).map(a=>{const copy={...a};delete copy.selection;return copy});
+  const corrections=read('../../docs/codex/evidence/20261028-continuation/editorial-corrections.json');
+  for(const c of corrections.corrections.filter(c=>c.workId===id)){const index=row.alternatives.findIndex(a=>a.sourceId===c.sourceId);if(index>=0){assert.deepEqual(row.alternatives[index],c.after);row.alternatives[index]=c.before;}}
+  if(baseline.hadWatchLeads)row.watchLeads=row.watchLeads.slice(0,baseline.watchLeadCount).map(a=>{const copy={...a};delete copy.selection;return copy});else delete row.watchLeads;
   assert.equal(hash(JSON.stringify(sort(row))),baseline.hash,id);
  }
  const adoption=read('../../docs/codex/evidence/20261027-category-resolution/stages/formal-four-adoption.json');

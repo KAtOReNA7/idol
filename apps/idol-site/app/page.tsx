@@ -65,7 +65,7 @@ import './work-experience.css';
 import './work-theme-tokens.css';
 import {workExperience} from '@/lib/idol/work-experience';
 import {workExperienceStylesheet} from '@/lib/idol/work-experience-styles';
-import {requestMessage,performanceLabel,performerLabel,mvVersionWarning,castWarning,alternativeViewingNote} from '@/lib/idol/product-copy';
+import {requestMessage,performanceLabel,performerLabel,mvVersionWarning,castWarning,alternativeViewingNote,selectionNote} from '@/lib/idol/product-copy';
 const navs:[Nav,string][]=[['home','发现'],['works','作品'],['members','成员'],['groups','团体'],['insights','偏好统计'],['records','观看记录']];
 const score=(n:number|null)=>n===null?'未评分':n.toFixed(1);
 async function readResponse(response:Response){if(!(response.headers.get('content-type')??'').includes('application/json'))throw new Error('连接暂时中断，请稍后再试。未保存的输入仍保留。');try{return await response.json();}catch{throw new Error('内容暂时没能加载，请稍后重试。未保存的输入仍保留。');}}
@@ -383,11 +383,12 @@ function StageSupplements({work}:{work:Work}){
  const supplement=original&&work.stage&&!work.stage.clip?{...original,alternatives:original.alternatives.filter(a=>a.platform!=='youtube'||a.sourceId!==work.stage!.videoId)}:original;
  if(!supplement||(!supplement.alternatives.length&&!supplement.watchLeads?.length))return null;
  return <section id="other-performances" className="stage-supplements" aria-label="其他观看选择">
-  {!!supplement.alternatives.length&&<><h2>其他现场</h2><p className="subtle">挑一支继续看。以下视频仅供观看，不用于本条舞台评分。</p><div className="alternative-grid">{supplement.alternatives.map(a=><article className="alternative-card" key={a.id}>
+  {!!supplement.alternatives.length&&<><h2>其他观看选择</h2><p className="subtle">优先查看打歌节目与练习室。以下视频仅供观看，不用于本条舞台评分。</p><div className="alternative-grid">{supplement.alternatives.map(a=><article className="alternative-card" key={a.id}>
    <div className="alternative-source-class">{performanceLabel(a)} · {performerLabel(a.performerScope)}{a.completeness==='excerpt'?' · 短版表演':''}</div>
    <h3>{a.title}</h3>
    {!!a.performerNames?.length&&a.performerScope!=='full_group'&&<p className="alternative-performers">{a.performerNames.join(' / ')}</p>}
    {alternativeViewingNote(work,a)&&<p className="alternative-differences">{alternativeViewingNote(work,a)}</p>}
+   {selectionNote(a)&&<small>{selectionNote(a)}</small>}
    <small>{platformLabel[a.platform]} · {a.channel}</small>
    {a.durationScope==='whole_video'&&a.durationSeconds&&<small>整段视频 {formatStageTime(a.durationSeconds)}，不代表单曲时长。</small>}
    <a className="button" href={a.url} target="_blank" rel="noopener noreferrer">{a.performanceType==='press_concert_recording'?'前往原媒体观看':`在 ${platformLabel[a.platform]} 观看`}<ArrowUpRight size={15}/></a>

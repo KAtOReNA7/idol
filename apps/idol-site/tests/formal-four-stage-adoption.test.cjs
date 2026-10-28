@@ -21,7 +21,10 @@ test('only four precise stages and statuses are added; all 478 old sources and s
  for(const[id,hash]of Object.entries(evidence.preservation.stageRows))assert.equal(sha(videos[id]),hash,id);
  const ids=new Set(evidence.items.map(i=>i.recordId));assert.equal(ids.size,4);
  for(const[id,hash]of Object.entries(evidence.preservation.statusRows))if(!ids.has(id))assert.equal(sha(statuses.works[id]),hash,id);
- assert.equal(sha(fs.readFileSync(path.join(root,'data/stages/supplements.json'))),evidence.preservation.supplementsFileSha256);
+ const current=read('data/stages/supplements.json'),delta=read('../../docs/codex/evidence/20261028-continuation/editorial-corrections.json');
+ for(const row of Object.values(current.works)){row.alternatives=row.alternatives.filter(a=>a.sourceId!==delta.newViewOnlyCandidate.sourceId);for(const a of [...row.alternatives,...(row.watchLeads??[])])delete a.selection;}
+ for(const c of delta.corrections){const row=current.works[c.workId];const i=row.alternatives.findIndex(a=>a.sourceId===c.sourceId);assert.deepEqual(row.alternatives[i],c.after);row.alternatives[i]=c.before;}
+ current.updatedAt=delta.baselineUpdatedAt;assert.equal(sha(JSON.stringify(current,null,2)+'\n'),evidence.preservation.supplementsFileSha256);
 });
 test('precise bindings are accepted by actual stage helpers; public notes disclose documentary scope and no playback claim',()=>{
  const h=harness(),stage=h.load('lib/idol/stage.ts'),source=h.load('lib/idol/stage-source.ts'),project=h.load('lib/idol/public-catalog.ts').projectPublicCatalog;
@@ -37,7 +40,7 @@ test('only a duplicate of the selected whole-video stage is hidden from other vi
  const source=fs.readFileSync(path.join(root,'app/page.tsx'),'utf8'),tree=ts.createSourceFile('page.tsx',source,ts.ScriptTarget.ES2022,true,ts.ScriptKind.TSX),fn=tree.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='StageSupplements');
  const output={},jsx=(type,props)=>({type,props:props??{}}),runtime={jsx,jsxs:jsx,Fragment:'fragment'};
  const code=ts.transpileModule(fn.getText(tree)+'\nexport {StageSupplements};',{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
- vm.runInNewContext('(function(require,exports){'+code+'})',{performanceLabel:()=>'',performerLabel:()=>'',alternativeViewingNote:()=>'',platformLabel:{youtube:'YouTube'},ArrowUpRight:'arrow',formatStageTime:String})(()=>runtime,output);
+ vm.runInNewContext('(function(require,exports){'+code+'})',{performanceLabel:()=>'',performerLabel:()=>'',alternativeViewingNote:()=>'',selectionNote:()=>'',platformLabel:{youtube:'YouTube'},ArrowUpRight:'arrow',formatStageTime:String})(()=>runtime,output);
  function links(node){if(!node||typeof node!=='object')return[];return[...(node.type==='a'?[node.props.href]:[]),...[node.props?.children].flat(Infinity).flatMap(links)]}
  const supplements=read('data/stages/supplements.json');
  for(const item of evidence.items){const original=supplements.works[item.recordId],work={stage:videos[item.recordId],stageSupplement:original},before=JSON.stringify(original);assert.ok(!links(output.StageSupplements({work})).includes(item.url));assert.ok(links(output.StageSupplements({work:{...work,stage:{...work.stage,clip:{}}}})).includes(item.url));assert.equal(JSON.stringify(original),before);}

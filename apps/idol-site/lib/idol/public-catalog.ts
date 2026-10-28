@@ -9,18 +9,20 @@ const ids:Shape=[true];
 const evidence:Shape={};
 const likes:Shape=fields('value display precision');
 const social:Shape=[fields('platform url subjectName countLabel observedAt')];
+const selection:Shape=fields('occasion');
 const photo:Shape={...fields('table recordId index kind sourceKind'),
  displayFocus:{...fields('sourceWidth sourceHeight qualityTier maxEffectiveWidth preserveOriginal'),sourceCrop:fields('x y width height')},
  approvedLookIdentity:fields('memberId workId videoId sameLook'),nativeIdentity:fields('memberId workId videoId')};
 const stage:Shape={...fields('sourceClass platform completeness likesScope videoId url title channel kind publishedDate checkedAt verificationNote reusesOriginalVideo comparisonLimited comparisonLimitation candidateCount'),
+ selection,
  clip:{...fields('startSeconds endSeconds sourceDurationSeconds'),evidence},
  audioEquivalence:{...fields('originalBoundWorkId sameAudio')},
  scoreBinding:fields('videoId sourceKey initializedAt initialScore'),likes,
  higherCandidate:{...fields('videoId url title checkedAt'),likes},candidates:[fields('title url likesDisplay kind')]};
 const version:Shape={match:true,differences:ids,evidence};
 const supplement:Shape={
- alternatives:[{...fields('id platform sourceId sourceClass performerScope originalPerformerScope completeness durationSeconds durationScope eventDate url title channel performanceType kind checkedAt scorePolicy'),performerNames:ids,originalPerformerNames:ids,performerEvidence:evidence,eventEvidence:evidence,sourceEvidence:evidence,sameSongEvidence:evidence,version}],
- watchLeads:[{...fields('sourceType id platform sourceId sourceClass performerScope completeness url title channel kind checkedAt scorePolicy reason leadTimeSeconds'),sourceEvidence:evidence,sameSongEvidence:evidence,leadTimeEvidence:evidence}],
+ alternatives:[{...fields('id platform sourceId sourceClass performerScope originalPerformerScope completeness durationSeconds durationScope eventDate url title channel performanceType kind checkedAt scorePolicy'),selection,performerNames:ids,originalPerformerNames:ids,performerEvidence:evidence,eventEvidence:evidence,sourceEvidence:evidence,sameSongEvidence:evidence,version}],
+ watchLeads:[{...fields('sourceType id platform sourceId sourceClass performerScope completeness url title channel kind checkedAt scorePolicy reason leadTimeSeconds'),selection,sourceEvidence:evidence,sameSongEvidence:evidence,leadTimeEvidence:evidence}],
  };
 const shape:Shape={
  scope:fields('type groupId'),cache:fields('source refreshRecommended'),...fields('mode capturedAt loadedAt'),

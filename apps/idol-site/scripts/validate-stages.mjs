@@ -1,23 +1,43 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 const root=process.cwd();
 const read=f=>JSON.parse(fs.readFileSync(path.join(root,f),'utf8'));
 const inventory=read('data/stages/inventory.json');
 const status=read('data/stages/status.json');
 const videos=read('data/stage-videos.json');
+// Frozen before the 2026-10-28 policy: only these exact work/source/selection
+// triples may retain a historical occasion without reassigning its score.
+const baseline=read('data/stages/selection-policy-baseline-20261028.json');
+const canonical=v=>JSON.stringify(v&&typeof v==='object'?Array.isArray(v)?v.map(x=>JSON.parse(canonical(x))):Object.fromEntries(Object.keys(v).sort().map(k=>[k,JSON.parse(canonical(v[k]))])):v);
+const hash=v=>createHash('sha256').update(canonical(v)).digest('hex');
+const sourceKey=s=>s.clip?`${s.videoId}@${s.clip.startSeconds}-${s.clip.endSeconds}`:s.videoId;
+const rejectedIds=new Set(['l9GLV8Kd-MU','saY9KS7mKvI','BnmwjH-suLg']);
+const excludedTypes=new Set(['concert','concert_stage','press_concert_recording','official_concert_full_event','tour','tour_stage','festival','festival_stage','showcase','showcase_stage','official_showcase_full_event','fan_event','other_event']);
 const validStatus=new Set(['pending','verified','likes_unverified','not_found','version_mismatch','blocked','missing_song_identity']);
 const ids=new Set(inventory.works.map(w=>w.recordId));
 const errors=[];
 const fail=m=>errors.push(m);
 const utc=v=>typeof v==='string'&&Number.isFinite(Date.parse(v))&&Date.parse(v)<=Date.now()+300000&&/(Z|\+00:00)$/.test(v);
-const https=v=>{try{return new URL(v).protocol==='https:'}catch{return false}};
+const https=v=>{try{const u=new URL(v);return typeof v==='string'&&u.protocol==='https:'&&!!u.hostname&&!u.username&&!u.password}catch{return false}};
+const documentedSelection=s=>['music_program','practice_room'].includes(s?.occasion)&&typeof s?.evidence?.note==='string'&&!!s.evidence.note.trim()&&Array.isArray(s.evidence.urls)&&s.evidence.urls.length>0&&s.evidence.urls.every(https);
 const videoID=v=>{try{const u=new URL(v);if(u.protocol!=='https:')return null;const id=u.hostname==='youtu.be'?u.pathname.slice(1):['youtube.com','www.youtube.com'].includes(u.hostname)?u.searchParams.get('v'):null;return /^[\w-]{11}$/.test(id??'')?id:null}catch{return null}};
 if(ids.size!==inventory.works.length)fail('Duplicate work identity in inventory');
+if(Object.keys(baseline).length!==482||hash(baseline)!=='6c95cff64e425a9ee99f8048d2785b96675527668f80bacb907f45890410d978')fail('Historical selection baseline changed; do not expand legacy exemptions');
 if(status.inventoryCount!==ids.size)fail('Inventory and status counts differ');
 for(const id of ids){const s=status.works[id];if(!s){fail(`${id}: status absent`);continue}if(!validStatus.has(s.status))fail(`${id}: invalid status`);if(!s.reason?.trim())fail(`${id}: reason absent`);if(s.checkedAt!==null&&!utc(s.checkedAt))fail(`${id}: invalid observation time`);if(s.status==='verified'&&!videos[id])fail(`${id}: verified without playable source`);}
 for(const id of Object.keys(status.works))if(!ids.has(id))fail(`${id}: unknown status identity`);
 for(const [id,s] of Object.entries(videos)){
  if(!ids.has(id))fail(`${id}: unknown video identity`);
+ if(rejectedIds.has(s.videoId))fail(`${id}: user-rejected exact source`);
+ const frozen=baseline[id]?.sourceKey===sourceKey(s)&&baseline[id]?.selectionSha256===hash(s.selection??null);
+ if(!frozen){
+  if(!documentedSelection(s.selection)||s.sourceClass!=='official'||s.platform!=='youtube'||s.completeness!=='full')fail(`${id}: new or changed source requires documented official full music-program/practice selection`);
+  for(const field of ['type','kind','performanceType']){
+   const classification=s[field];
+   if(excludedTypes.has(classification)||classification==='practice_room'&&s.selection?.occasion!=='practice_room'||classification==='music_program'&&s.selection?.occasion!=='music_program')fail(`${id}: structured performance type conflicts with new-adoption occasion`);
+  }
+ }
  if(('sourceClass' in s||'platform' in s||'completeness' in s)&&(s.sourceClass!=='official'||s.platform!=='youtube'||s.completeness!=='full')||s.scorePolicy==='view_only')fail(`${id}: ineligible source cannot become a formal player`);
  if(videoID(s.url)!==s.videoId)fail(`${id}: URL/video ID mismatch`);
  if(!s.title?.trim()||!s.channel?.trim()||!s.kind?.trim()||!s.typeNote?.trim())fail(`${id}: incomplete source description`);
@@ -28,13 +48,14 @@ for(const [id,s] of Object.entries(videos)){
  if(s.likes?.precision!=='exact'&&s.likes?.value!==null)fail(`${id}: nonexact likes need null numeric value`);
  if(!s.likes?.display?.trim())fail(`${id}: like display absent`);
  if(s.candidateCount!==s.candidates?.length||!s.candidateCount)fail(`${id}: candidate count mismatch`);
- const urls=new Set();for(const c of s.candidates??[]){if(!videoID(c.url)||urls.has(c.url))fail(`${id}: malformed or duplicate candidate`);urls.add(c.url);if(!c.title?.trim()||!c.kind?.trim()||!c.likesDisplay?.trim())fail(`${id}: candidate description absent`)}
+ const urls=new Set();for(const c of s.candidates??[]){if(!videoID(c.url)||urls.has(c.url))fail(`${id}: malformed or duplicate candidate`);if(rejectedIds.has(videoID(c.url)))fail(`${id}: user-rejected exact source in runtime candidates`);urls.add(c.url);if(!c.title?.trim()||!c.kind?.trim()||!c.likesDisplay?.trim())fail(`${id}: candidate description absent`)}
  if(!urls.has(s.url))fail(`${id}: selected source absent from evidence candidates`);
  if(s.clip){const c=s.clip;const key=`${s.videoId}@${c.startSeconds}-${c.endSeconds}`;if(!Number.isSafeInteger(c.startSeconds)||!Number.isSafeInteger(c.endSeconds)||c.startSeconds<0||c.endSeconds<=c.startSeconds||!Number.isSafeInteger(c.sourceDurationSeconds)||c.sourceDurationSeconds<=0||c.sourceDurationSeconds>86400||c.endSeconds>c.sourceDurationSeconds||!c.evidence?.note?.trim()||!c.evidence?.urls?.length||!c.evidence.urls.every(https))fail(`${id}: invalid clip boundaries or missing evidence`);if(s.likesScope!=='whole_video'||s.selectionNote?.includes('点赞最高'))fail(`${id}: concert likes misrepresented as single-song ranking`);if(s.scoreBinding&&s.scoreBinding.sourceKey!==key)fail(`${id}: clip score binding lacks exact source key`);}
  if(!s.clip&&s.scoreBinding?.sourceKey&&s.scoreBinding.sourceKey!==s.videoId)fail(`${id}: whole-video source key mismatch`);
  if(s.scoreBinding&&(s.scoreBinding.videoId!==s.videoId||s.scoreBinding.initialScore!==null||!utc(s.scoreBinding.initializedAt)))fail(`${id}: invalid score source binding`);
- const w=inventory.works.find(w=>w.recordId===id);if(w?.mv?.videoId===s.videoId&&!(s.reusesOriginalVideo===true&&/performance|special stage|live clip|showcase/i.test(w.mv.officialTitle??'')&&!/official (?:music video|mv)|dance practice/i.test(w.mv.officialTitle??'')))fail(`${id}: selected video is original MV without explicit performance reuse evidence`);
- if(/DANCE\s+PRACTICE|CHOREOGRAPHY\s+PRACTICE|RELAY\s+DANCE|FANCAM/i.test(s.title))fail(`${id}: excluded performance type in title`);
+ const w=inventory.works.find(w=>w.recordId===id);if(w?.mv?.videoId===s.videoId&&!(s.reusesOriginalVideo===true&&/performance|special stage|live clip|showcase|dance practice|choreography practice/i.test(w.mv.officialTitle??'')&&!/official (?:music video|mv)/i.test(w.mv.officialTitle??'')))fail(`${id}: selected video is original MV without explicit performance reuse evidence`);
+ if(!frozen&&/(?:DANCE|CHOREOGRAPHY)\s+PRACTICE/i.test(s.title)&&!(s.selection?.occasion==='practice_room'&&documentedSelection(s.selection)))fail(`${id}: practice needs documented official full practice classification`);
+ if(/RELAY\s+DANCE|FANCAM/i.test(s.title))fail(`${id}: excluded performance type in title`);
 }
 const reused=new Map();for(const [id,s] of Object.entries(videos)){
  const w=inventory.works.find(w=>w.recordId===id);let identityWork=w;

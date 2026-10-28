@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28",
+  "method": "Fresh web search results and separate direct opens; source layers remain distinct.",
+  "observations": [
+    {
+      "url": "https://circlechart.kr/page_chart/album.circle?hitYear=2024&nationGbn=T&targetTime=2024&termGbn=year&yearTime=3",
+      "access": "official-search-index-only",
+      "chartYear": 2024,
+      "rank": 81,
+      "artist": "tripleS (트리플에스)",
+      "album": "Visionary Vision ＜Performante＞ (Cosmo)",
+      "annualSales": 289224,
+      "directOpenResult": "Chart navigation and shell only; no chart rows exposed by direct open."
+    },
+    {
+      "url": "https://circlechart.kr/page_chart/album.circle?hitYear=2025&nationGbn=T&targetTime=11&termGbn=month&yearTime=3",
+      "access": "official-search-index-only",
+      "chartPeriod": "2025-11",
+      "rank": 45,
+      "artist": "tripleS (트리플에스)",
+      "album": "＜ASSEMBLE25＞(Cosmo)",
+      "monthlySales": 22316,
+      "displayedYearCumulative": 406744,
+      "metric": "Album distribution volume: shipments minus returns; not Retail consumer sales or Hanteo.",
+      "directOpenResult": "Chart navigation and shell only; no chart rows exposed by direct open.",
+      "caveat": "The index can show a later refreshed annual cumulative on a historical month page. It is not treated as an independently dated November-only or annual observation. The dated November PTT transcription and January 2026 Soompi annual report supply the temporal checks."
+    }
+  ],
+  "excludedSearchResults": [
+    {
+      "url": "https://circlechart.kr/page_chart/album.circle?targetTime=2023&termGbn=year&yearTime=3",
+      "reason": "Returned 2025 albums despite URL targetTime=2023 and no explicit hitYear. Not used for annual year mapping."
+    },
+    {
+      "url": "https://circlechart.kr/page_chart/album.circle?targetTime=2024&termGbn=year&yearTime=3",
+      "reason": "Returned content headed 2025 despite URL targetTime=2024 and no explicit hitYear. Not used for annual year mapping."
+    }
+  ],
+  "soridataRequests": 0,
+  "captchaBypass": false,
+  "applicationDataModified": false
+}

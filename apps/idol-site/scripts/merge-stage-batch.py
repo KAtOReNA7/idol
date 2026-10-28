@@ -3,12 +3,13 @@ Usage: python3 scripts/merge-stage-batch.py EVIDENCE_JSON FRESH_PRIVATE_EXPORT_J
 Existing selected video bindings are immutable; failures never erase sources.
 """
 import json,sys,datetime,pathlib,re,hashlib
+from stage_selection_policy import checked_selection, comparison_candidates
 root=pathlib.Path(__file__).resolve().parent.parent
 now=datetime.datetime.now(datetime.timezone.utc)
 def dt(v):return datetime.datetime.fromisoformat(v.replace('Z','+00:00'))
 def source_key(s):
  c=s.get('clip');return s['videoId']+(f"@{c['startSeconds']}-{c['endSeconds']}" if c else '')
-def load(p):return json.loads(pathlib.Path(p).read_text())
+def load(p):return json.loads(pathlib.Path(p).read_text(encoding='utf-8'))
 def public(v):
  if isinstance(v,dict):return {k:public(x) for k,x in v.items() if k!='evidenceFile'}
  if isinstance(v,list):return [public(x) for x in v]
@@ -38,9 +39,11 @@ for item in batch['items']:
   status['works'][rid]={'status':state,'reason':item['reason'],'checkedAt':observation};changed.append(rid);continue
  s=item.get('selected');assert s and s['videoId']==item.get('selectedVideoId'),f'Selection absent {rid}'
  assert s.get('sourceClass')=='official' and s.get('platform')=='youtube' and s.get('completeness')=='full' and s.get('scorePolicy')!='view_only',f'Formal source must be explicit official YouTube full performance, never view-only {rid}'
- candidates=[c for c in item['candidates'] if c.get('eligibility') in ['eligible','qualified'] and c.get('likes',{}).get('precision')=='exact']
+ selection=checked_selection(s)
+ candidates=comparison_candidates(item['candidates'])
  exact=[c for c in candidates if c['videoId']==s['videoId']];assert len(exact)==1,f'Selection not verified/comparable {rid}'
  picked=exact[0];clip=s.get('clip')
+ assert picked['selection']['occasion']==selection['occasion'],f'Selected occasion differs from candidate evidence {rid}'
  if clip:
   a,b,total=clip.get('startSeconds'),clip.get('endSeconds'),clip.get('sourceDurationSeconds');ev=clip.get('evidence',{})
   assert isinstance(a,int) and not isinstance(a,bool) and isinstance(b,int) and not isinstance(b,bool) and isinstance(total,int) and not isinstance(total,bool) and 0<=a<b<=total<=86400,f'Invalid clip bounds {rid}'
@@ -48,11 +51,11 @@ for item in batch['items']:
  assert picked.get('versionMatch') is True and s.get('languageVersionEvidence'),f'Exact version evidence missing {rid}'
  reuse=s['videoId']==inv[rid]['mv']['videoId']
  if reuse:
-  assert s.get('reusesExistingVideo') is True and re.search(r'performance|special stage|live clip|showcase',inv[rid]['mv']['officialTitle'] or '',re.I) and not re.search(r'official (?:music video|mv)|dance practice',inv[rid]['mv']['officialTitle'] or '',re.I),f'Original MV cannot be relabelled stage without explicit performance evidence {rid}'
+  assert s.get('reusesExistingVideo') is True and re.search(r'performance|special stage|live clip|showcase|dance practice|choreography practice',inv[rid]['mv']['officialTitle'] or '',re.I) and not re.search(r'official (?:music video|mv)',inv[rid]['mv']['officialTitle'] or '',re.I),f'Original MV cannot be relabelled stage without explicit performance evidence {rid}'
  assert s.get('likesPrecision')=='exact' and isinstance(s.get('likes'),int) and s['likes']>=0,f'Exact likes missing {rid}'
  assert s['likes']==picked['likes']['value'] and (clip or all(s['likes']>=c['likes']['value'] for c in candidates)),f'Selected likes not highest in comparable candidates {rid}'
  assert re.fullmatch(r'[A-Za-z0-9_-]{11}',s['videoId'])
- assert not re.search(r'DANCE\s+PRACTICE|CHOREOGRAPHY\s+PRACTICE|RELAY\s+DANCE|FANCAM',s['title'],re.I),f'Excluded type {rid}'
+ assert not re.search(r'RELAY\s+DANCE|FANCAM',s['title'],re.I),f'Excluded type {rid}'
  assert s.get('channel') and s.get('sourceUrl','').startswith('https://')
  if s.get('publishedAt'):assert re.match(r'^\d{4}-\d{2}-\d{2}(?:T|$)',s['publishedAt']),f'Invalid known publication date {rid}'
  source_at=s['checkedAt'];assert dt(source_at)<=now+datetime.timedelta(minutes=5)
@@ -82,9 +85,13 @@ for item in batch['items']:
  language_evidence=s.get('languageVersionEvidence')
  if isinstance(language_evidence,dict):language_evidence='；'.join(str(language_evidence.get(k)) for k in ['basis','sourceVersion','sourceMVTitle','candidateTitle'] if language_evidence.get(k))
  note=' · '.join(str(v) for v in [s.get('label'),s.get('arrangement'),language_evidence,'依据公开标题、频道和说明核验，未逐句核对音轨；不据此判定真唱。'] if v)
- ranknote='已核整场内对应片段' if clip else '已核同曲同版本候选中点赞最高' if len(candidates)>1 else '本次唯一已核合格候选'
+ ranknote='已核整场内对应片段' if clip else '已核同曲同版本同优先级候选中点赞最高' if len(candidates)>1 else '本次唯一已核同优先级合格候选'
  if clip:candidates=[picked]
  videos[rid]={'sourceClass':'official','platform':'youtube','completeness':'full','videoId':s['videoId'],'url':s['url'],'title':s['title'],'channel':s['channel'],'kind':s.get('label') or s.get('type'),'publishedDate':(s.get('publishedAt') or '')[:10],'typeNote':note,'sourceUrl':s['sourceUrl'],'scoreBinding':bind,'likes':{'value':s['likes'],'display':display,'precision':'exact'},'checkedAt':source_at,'selectionNote':ranknote,'comparisonNote':item['reason'],'reusesOriginalVideo':reuse,'comparisonLimited':bool(item.get('comparisonLimited')),'comparisonLimitation':item.get('comparisonLimitation') or '', 'previousSources':history,'candidateCount':len(candidates),'candidates':[{'title':c['title'],'url':c['url'],'likesDisplay':f"{c['likes']['value']:,}",'kind':c.get('label') or c.get('kind') or '合格候选（见标题）'} for c in candidates]}
+ videos[rid]['selection']=selection
+ if len(candidates)==1:
+  videos[rid]['comparisonLimited']=True
+  videos[rid]['comparisonLimitation']=item.get('comparisonLimitation') or '本轮仅有一个符合新政策的同优先级候选；其他合格候选仍待比较。'
  if audio_equivalence:videos[rid]['audioEquivalence']=audio_equivalence
  if clip:videos[rid].update(clip=clip,likesScope='whole_video')
  status['works'][rid]={'status':'verified','reason':item['reason'],'checkedAt':observation}
@@ -94,5 +101,5 @@ status['updatedAt']=now.isoformat()
 artifact=public(batch);name=pathlib.Path(sys.argv[1]).name;dest=root/'data/stages/evidence'/name
 if dest.exists():assert load(dest)==artifact,'Evidence batch names are immutable; use a new batch ID for a corrected/researched revision.'
 for path,obj in [(dest,artifact),(root/'data/stage-videos.json',videos),(root/'data/stages/status.json',status)]:
- path.parent.mkdir(parents=True,exist_ok=True);tmp=path.with_suffix(path.suffix+'.tmp');tmp.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n');tmp.replace(path)
+ path.parent.mkdir(parents=True,exist_ok=True);tmp=path.with_suffix(path.suffix+'.tmp');tmp.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');tmp.replace(path)
 print(json.dumps({'retiredUnpublishedUnverifiedSources':retired_unpublished,'newSources':len(added),'sourceIds':added,'replacedUnscoredSources':replaced,'updatedSameVideoMetadata':metadata_updated,'updatedOtherStates':len(changed),'retainedExistingSources':held,'freshPreimageAt':fresh['capturedAt'],'batch':name},ensure_ascii=False,indent=2))

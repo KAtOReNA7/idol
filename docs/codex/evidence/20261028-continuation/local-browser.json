@@ -1,0 +1,562 @@
+{
+  "checkedAt": "2026-10-28T05:04:46.821Z",
+  "base": "http://127.0.0.1:5197",
+  "browser": "Playwright 1.62.1 / system Chrome, headless",
+  "browserRouting": "Browser plugin not available; listed frontend-testing skill permits regular Playwright",
+  "flow": "Open local work -> select stage tab -> inspect viewing alternatives and unchanged formal player; open artist homes -> verify sales labels at three widths.",
+  "fixture": {
+    "reason": "Anonymous local /api/catalog?shape=display-v1 returned HTTP502; live formal anonymous GET returned200.",
+    "mode": "Live anonymous formal catalog, with every work.stageSupplement regenerated in memory from current local supplements.ts then projected by current public-catalog.ts. No old formal supplements are reused.",
+    "requests": [
+      {
+        "url": "https://idol-lens-private.wuke40758.chatgpt.site/api/catalog?shape=display-v1",
+        "httpStatus": 200,
+        "bytes": 2338155,
+        "sha256": "8ef6c1a0bccee5f80838b018a776a23f44d16ff34e07a9cc4fa49d8b7c40c263",
+        "groups": 51,
+        "works": 614,
+        "generatedSupplementWorks": 106,
+        "protectedFieldsUnchanged": true
+      },
+      {
+        "url": "https://idol-lens-private.wuke40758.chatgpt.site/api/catalog?artist=triples&shape=display-v1",
+        "httpStatus": 200,
+        "bytes": 113233,
+        "sha256": "0c88bc532215ae47902a1cf5d1896f85815fcbec02d6190e44c6ad5f88827e11",
+        "groups": 1,
+        "works": 25,
+        "generatedSupplementWorks": 4,
+        "protectedFieldsUnchanged": true
+      },
+      {
+        "url": "https://idol-lens-private.wuke40758.chatgpt.site/api/catalog?artist=fromis9&shape=display-v1",
+        "httpStatus": 200,
+        "bytes": 76834,
+        "sha256": "2c1c00d066be22be48278dc9c2998746c05a687f305366a60a632be14f19d418",
+        "groups": 1,
+        "works": 16,
+        "generatedSupplementWorks": 1,
+        "protectedFieldsUnchanged": true
+      }
+    ],
+    "currentModuleSha256": {
+      "lib/idol/supplements.ts": "c003edee392611df0f7ec04b713d29fb1448c0da3a8432dd6e26d08948a66b20",
+      "lib/idol/public-catalog.ts": "0f1863ccd8bc9506397070ab693b621b0970f4d20eab6dc46931f482ac06c8fc",
+      "data/stages/supplements.json": "f7d43ddc753d33ede642c8e5ea94a9abdae474b975b327b1716ccef2a60de884"
+    }
+  },
+  "checks": [
+    {
+      "case": "right-now",
+      "width": 320,
+      "url": "http://127.0.0.1:5197/?view=works&work=recvxyOz5XHEju",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/?view=works&work=recvxyOz5XHEju",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\right-now-320-first.png",
+      "stageTabSelected": "true",
+      "alternativeLinks": [
+        {
+          "href": "https://www.youtube.com/watch?v=7XhRd6cVIyI",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://www.youtube.com/watch?v=y4Tr8LE5yV4",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        }
+      ],
+      "practiceAndUnconfirmedAudioVisible": true,
+      "falseKoreanMismatchAbsent": true,
+      "readOnlyLinksOnly": true,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\right-now-320-target.png",
+      "firstViewportSha256": "5d9cc97cc55f931a02640ddd4dca78b307ad3c2aa457c8e4f5ea1d69a2333545",
+      "screenshotSha256": "d1a3f3d2416fc3d8d7c04ed20ee80ee34d6ab26d8a25fae6f63f7f43e05fb136"
+    },
+    {
+      "case": "right-now",
+      "width": 390,
+      "url": "http://127.0.0.1:5197/?view=works&work=recvxyOz5XHEju",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/?view=works&work=recvxyOz5XHEju",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\right-now-390-first.png",
+      "stageTabSelected": "true",
+      "alternativeLinks": [
+        {
+          "href": "https://www.youtube.com/watch?v=7XhRd6cVIyI",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://www.youtube.com/watch?v=y4Tr8LE5yV4",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        }
+      ],
+      "practiceAndUnconfirmedAudioVisible": true,
+      "falseKoreanMismatchAbsent": true,
+      "readOnlyLinksOnly": true,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\right-now-390-target.png",
+      "firstViewportSha256": "51b072feeae06ce93b6a170bd8f060409a3207ccd1bbcbb24c3770953e2fbf68",
+      "screenshotSha256": "86fb4811daf940a01fce8a96a7018f98d866abac01d39a454902737a80170059"
+    },
+    {
+      "case": "right-now",
+      "width": 1440,
+      "url": "http://127.0.0.1:5197/?view=works&work=recvxyOz5XHEju",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/?view=works&work=recvxyOz5XHEju",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\right-now-1440-first.png",
+      "stageTabSelected": "true",
+      "alternativeLinks": [
+        {
+          "href": "https://www.youtube.com/watch?v=7XhRd6cVIyI",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "href": "https://www.youtube.com/watch?v=y4Tr8LE5yV4",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        }
+      ],
+      "practiceAndUnconfirmedAudioVisible": true,
+      "falseKoreanMismatchAbsent": true,
+      "readOnlyLinksOnly": true,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\right-now-1440-target.png",
+      "firstViewportSha256": "5b357b8d24d481b8135cbbc3a25ba0c9f838784267bfa5ff6cdb85be4920418f",
+      "screenshotSha256": "ffd32f3804ab8c96a995b3ac4ce1b045cae767ea3f43b0de7e63191ca0006c50"
+    },
+    {
+      "case": "i-want",
+      "width": 320,
+      "url": "http://127.0.0.1:5197/?view=works&work=recvxyHuKMh5bM",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/?view=works&work=recvxyHuKMh5bM",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\i-want-320-first.png",
+      "stageTabSelected": "true",
+      "oldPressEventHidden": true,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\i-want-320-target.png",
+      "firstViewportSha256": "bbb2a99cf8de6d71297a1016d560b6388e7054c813c65722b670569cf2addc36",
+      "screenshotSha256": "6b9c800efcc1acd276633f3993acc844848da73c0be353955193185572176c1d"
+    },
+    {
+      "case": "i-want",
+      "width": 390,
+      "url": "http://127.0.0.1:5197/?view=works&work=recvxyHuKMh5bM",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/?view=works&work=recvxyHuKMh5bM",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\i-want-390-first.png",
+      "stageTabSelected": "true",
+      "oldPressEventHidden": true,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\i-want-390-target.png",
+      "firstViewportSha256": "9abcfb9dd2bd056eabac1a47d3b75ab0600d997bf920a9b4bfee0facdbcc522e",
+      "screenshotSha256": "43c2592b8358e3ea7c4e047ea6d8f15aeb968cb2d1f277d9ff858dce07a98866"
+    },
+    {
+      "case": "i-want",
+      "width": 1440,
+      "url": "http://127.0.0.1:5197/?view=works&work=recvxyHuKMh5bM",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/?view=works&work=recvxyHuKMh5bM",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\i-want-1440-first.png",
+      "stageTabSelected": "true",
+      "oldPressEventHidden": true,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\i-want-1440-target.png",
+      "firstViewportSha256": "3a2c8fc19f4a9b9265031bb92138215046d1fa14294ad2164572270b9b1533fc",
+      "screenshotSha256": "c00caffda22d53d2b0c72022338486857acf1ae2fbaa34b71e02000cb89e8800"
+    },
+    {
+      "case": "million-places",
+      "width": 320,
+      "url": "http://127.0.0.1:5197/?view=works&work=recvxDMFHNSckK",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/?view=works&work=recvxDMFHNSckK",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\million-places-320-first.png",
+      "stageTabSelected": "true",
+      "formalVideoLinkCount": 1,
+      "formalVideoId": "nd2aaJ9AQjA",
+      "stageScoreBindingUnchanged": true,
+      "scoreFieldPresent": false,
+      "noSaveControls": true,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\million-places-320-target.png",
+      "firstViewportSha256": "31cac207bb307f563a3ab73eb5462af7d44d2f77c24c52ec550de60b79146331",
+      "screenshotSha256": "7dad8e2e42701b2509ff30d27632ec6b02949288d334d3a0ebf6e29f4d50d02a"
+    },
+    {
+      "case": "million-places",
+      "width": 390,
+      "url": "http://127.0.0.1:5197/?view=works&work=recvxDMFHNSckK",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/?view=works&work=recvxDMFHNSckK",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\million-places-390-first.png",
+      "stageTabSelected": "true",
+      "formalVideoLinkCount": 1,
+      "formalVideoId": "nd2aaJ9AQjA",
+      "stageScoreBindingUnchanged": true,
+      "scoreFieldPresent": false,
+      "noSaveControls": true,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\million-places-390-target.png",
+      "firstViewportSha256": "9b523a5d22cc4b02867e80c21fa8be40dc1e220af23acd0491b064b70b8014a5",
+      "screenshotSha256": "4ce269cc83f259b0715ba7fbd489aa675432d8b2bcb9727283d1340980c5a6a6"
+    },
+    {
+      "case": "million-places",
+      "width": 1440,
+      "url": "http://127.0.0.1:5197/?view=works&work=recvxDMFHNSckK",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/?view=works&work=recvxDMFHNSckK",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\million-places-1440-first.png",
+      "stageTabSelected": "true",
+      "formalVideoLinkCount": 1,
+      "formalVideoId": "nd2aaJ9AQjA",
+      "stageScoreBindingUnchanged": true,
+      "scoreFieldPresent": false,
+      "noSaveControls": true,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\million-places-1440-target.png",
+      "firstViewportSha256": "6bb0663cecd79d52ce93cb2cf76ab0cb4b5fe3923408e10e812a8b1fadd84bc7",
+      "screenshotSha256": "e6e3d9c05166b83a364cf93f5e271451e50aea408dad0ce3ca9dc602f8d2ebc2"
+    },
+    {
+      "case": "triples",
+      "width": 320,
+      "url": "http://127.0.0.1:5197/artists/triples/",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/artists/triples",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\triples-320-first.png",
+      "informationText": "INFORMATION\n信息\nINS ↗\n110万\n粉丝 · 2026-10-25\nX ↗\n23万\n粉丝 · 2026-10-25\nYouTube ↗\n297万\n订阅 · 2026-10-25\n唱片累计销量\n2,092,239张\n已公开累计\n截至 2026-06\n打歌一位总数\n6次\n团体音乐节目获奖\n统计日期与来源\n\n粉丝数以万为单位四舍五入显示整数；不足一万显示整数人数。原始精度保留在来源记录中，日期为对应观察或来源更新日。\n\n未查得可靠数字或来源冲突时按本页设置显示0；这类0不是已确认的零，核查状态与来源记录仍保留。\n\n销量：tripleS及该来源归入tripleS的子团韩国Circle公开月榜36行，加2024年Performante Cosmo与2025年ASSEMBLE25 Cosmo同年同版年榜替换修正；截至2026-06的来源覆盖下界，不是全球完整累计。 截至 2026-06\n\n显示值为可核查的公开累计下限，不是全球完整累计；未加总Circle与Hanteo以免重复。\n\n来源未公布精确截至日时asOf保持null；checkedAt不能解释为销量统计截至日。\n\n历史基线（2026-10-25）：艺人汇总页2,458,789+与本轮可见36行月表2,087,073不一致；采用可复算下限，差额371,716未解释，不将差异标为彻底解决。\n\n2026-10-28逐版复算：2024年Performante Cosmo年榜289,224替换同年月和286,809（+2,415）；2025年ASSEMBLE25 Cosmo年榜406,744替换同年月和403,993（+2,751），净修正+5,166，累计2,092,239。36条原月行保留，不把年榜重复相加。\n\n5/8/9/11月的ASSEMBLE25完整标题、Cosmo版本及各月数量已由可读具名月榜转录核对；2025年1月9,888为ASSEMBLE24 Cosmo，保持独立。Performante标准版、ASSEMBLE25标准/WITHVUU及Beyond Beauty跨年记录均未并入这两项年榜。\n\n与已保存的艺人汇总2,458,789仍差366,550，来源差异继续开放。该汇总本轮未重新访问；不得将局部修正写成全团累计已完整闭合，也不混加日本、Hanteo或Retail。\n\n年榜及月榜依据可读第三方Circle转录/报道；2024年榜与2025年11月有官方搜索索引交叉核对。官方直读仅返回页面框架，不宣称完整官方榜已读取。\n\n一位：团体及官方分队：kpopping 将 tripleS 5 次与 Visionary Vision 1 次分列，本页按团体合并为 6 次；不含成员个人获奖。 来源未注明统计截止日\n\n合并官方分队后与 Chukkae 的 6 次一致；不是把两个总数直接相加。\n\nINS · Chartmetric · tripleS · Official profiles / Quick Social Stats ↗\nX · Chartmetric · tripleS · Quick Social Stats ↗\nYouTube · tripleS 官方 YouTube 频道公开计数 ↗\nSoridata · Circle公开累计 ↗\nperformante-annual-2024 · Circle榜单具名转录/报道 ↗\nperformante-month-2024-10 · Circle榜单具名转录/报道 ↗\nassemble24-month-2025-01 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-05 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-08 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-09 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-11 · Circle榜单具名转录/报道 ↗\ncosmo-annual-2025 · Circle榜单具名转录/报道 ↗\nPerformante Cosmo · Circle 2024年榜官方索引 ↗\nASSEMBLE25 Cosmo · Circle 2025年11月官方索引 ↗\nkpopping · Artist Total Music Show Wins ↗",
+      "salesLowerBoundCorrect": true,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\triples-320-target.png",
+      "firstViewportSha256": "c112def29562d3f782a6a4a8fb5feef0908899723c179616f7ef7a3e578e59ff",
+      "screenshotSha256": "9a16c6889d8e9a279c2443d621bf6fc3a1f6904512ef8797d0824e20e5b4bb0d"
+    },
+    {
+      "case": "triples",
+      "width": 390,
+      "url": "http://127.0.0.1:5197/artists/triples/",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/artists/triples",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\triples-390-first.png",
+      "informationText": "INFORMATION\n信息\nINS ↗\n110万\n粉丝 · 2026-10-25\nX ↗\n23万\n粉丝 · 2026-10-25\nYouTube ↗\n297万\n订阅 · 2026-10-25\n唱片累计销量\n2,092,239张\n已公开累计\n截至 2026-06\n打歌一位总数\n6次\n团体音乐节目获奖\n统计日期与来源\n\n粉丝数以万为单位四舍五入显示整数；不足一万显示整数人数。原始精度保留在来源记录中，日期为对应观察或来源更新日。\n\n未查得可靠数字或来源冲突时按本页设置显示0；这类0不是已确认的零，核查状态与来源记录仍保留。\n\n销量：tripleS及该来源归入tripleS的子团韩国Circle公开月榜36行，加2024年Performante Cosmo与2025年ASSEMBLE25 Cosmo同年同版年榜替换修正；截至2026-06的来源覆盖下界，不是全球完整累计。 截至 2026-06\n\n显示值为可核查的公开累计下限，不是全球完整累计；未加总Circle与Hanteo以免重复。\n\n来源未公布精确截至日时asOf保持null；checkedAt不能解释为销量统计截至日。\n\n历史基线（2026-10-25）：艺人汇总页2,458,789+与本轮可见36行月表2,087,073不一致；采用可复算下限，差额371,716未解释，不将差异标为彻底解决。\n\n2026-10-28逐版复算：2024年Performante Cosmo年榜289,224替换同年月和286,809（+2,415）；2025年ASSEMBLE25 Cosmo年榜406,744替换同年月和403,993（+2,751），净修正+5,166，累计2,092,239。36条原月行保留，不把年榜重复相加。\n\n5/8/9/11月的ASSEMBLE25完整标题、Cosmo版本及各月数量已由可读具名月榜转录核对；2025年1月9,888为ASSEMBLE24 Cosmo，保持独立。Performante标准版、ASSEMBLE25标准/WITHVUU及Beyond Beauty跨年记录均未并入这两项年榜。\n\n与已保存的艺人汇总2,458,789仍差366,550，来源差异继续开放。该汇总本轮未重新访问；不得将局部修正写成全团累计已完整闭合，也不混加日本、Hanteo或Retail。\n\n年榜及月榜依据可读第三方Circle转录/报道；2024年榜与2025年11月有官方搜索索引交叉核对。官方直读仅返回页面框架，不宣称完整官方榜已读取。\n\n一位：团体及官方分队：kpopping 将 tripleS 5 次与 Visionary Vision 1 次分列，本页按团体合并为 6 次；不含成员个人获奖。 来源未注明统计截止日\n\n合并官方分队后与 Chukkae 的 6 次一致；不是把两个总数直接相加。\n\nINS · Chartmetric · tripleS · Official profiles / Quick Social Stats ↗\nX · Chartmetric · tripleS · Quick Social Stats ↗\nYouTube · tripleS 官方 YouTube 频道公开计数 ↗\nSoridata · Circle公开累计 ↗\nperformante-annual-2024 · Circle榜单具名转录/报道 ↗\nperformante-month-2024-10 · Circle榜单具名转录/报道 ↗\nassemble24-month-2025-01 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-05 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-08 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-09 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-11 · Circle榜单具名转录/报道 ↗\ncosmo-annual-2025 · Circle榜单具名转录/报道 ↗\nPerformante Cosmo · Circle 2024年榜官方索引 ↗\nASSEMBLE25 Cosmo · Circle 2025年11月官方索引 ↗\nkpopping · Artist Total Music Show Wins ↗",
+      "salesLowerBoundCorrect": true,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\triples-390-target.png",
+      "firstViewportSha256": "7916548c8dca14705f2d43fb7449e4e6aab1345547da6fb87b92b50e59cdd484",
+      "screenshotSha256": "c7f417746024e4a482eb9594874a2a2b86f7e7da5b33cbb3491432348a34ae9d"
+    },
+    {
+      "case": "triples",
+      "width": 1440,
+      "url": "http://127.0.0.1:5197/artists/triples/",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/artists/triples",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\triples-1440-first.png",
+      "informationText": "INFORMATION\n信息\nINS ↗\n110万\n粉丝 · 2026-10-25\nX ↗\n23万\n粉丝 · 2026-10-25\nYouTube ↗\n297万\n订阅 · 2026-10-25\n唱片累计销量\n2,092,239张\n已公开累计\n截至 2026-06\n打歌一位总数\n6次\n团体音乐节目获奖\n统计日期与来源\n\n粉丝数以万为单位四舍五入显示整数；不足一万显示整数人数。原始精度保留在来源记录中，日期为对应观察或来源更新日。\n\n未查得可靠数字或来源冲突时按本页设置显示0；这类0不是已确认的零，核查状态与来源记录仍保留。\n\n销量：tripleS及该来源归入tripleS的子团韩国Circle公开月榜36行，加2024年Performante Cosmo与2025年ASSEMBLE25 Cosmo同年同版年榜替换修正；截至2026-06的来源覆盖下界，不是全球完整累计。 截至 2026-06\n\n显示值为可核查的公开累计下限，不是全球完整累计；未加总Circle与Hanteo以免重复。\n\n来源未公布精确截至日时asOf保持null；checkedAt不能解释为销量统计截至日。\n\n历史基线（2026-10-25）：艺人汇总页2,458,789+与本轮可见36行月表2,087,073不一致；采用可复算下限，差额371,716未解释，不将差异标为彻底解决。\n\n2026-10-28逐版复算：2024年Performante Cosmo年榜289,224替换同年月和286,809（+2,415）；2025年ASSEMBLE25 Cosmo年榜406,744替换同年月和403,993（+2,751），净修正+5,166，累计2,092,239。36条原月行保留，不把年榜重复相加。\n\n5/8/9/11月的ASSEMBLE25完整标题、Cosmo版本及各月数量已由可读具名月榜转录核对；2025年1月9,888为ASSEMBLE24 Cosmo，保持独立。Performante标准版、ASSEMBLE25标准/WITHVUU及Beyond Beauty跨年记录均未并入这两项年榜。\n\n与已保存的艺人汇总2,458,789仍差366,550，来源差异继续开放。该汇总本轮未重新访问；不得将局部修正写成全团累计已完整闭合，也不混加日本、Hanteo或Retail。\n\n年榜及月榜依据可读第三方Circle转录/报道；2024年榜与2025年11月有官方搜索索引交叉核对。官方直读仅返回页面框架，不宣称完整官方榜已读取。\n\n一位：团体及官方分队：kpopping 将 tripleS 5 次与 Visionary Vision 1 次分列，本页按团体合并为 6 次；不含成员个人获奖。 来源未注明统计截止日\n\n合并官方分队后与 Chukkae 的 6 次一致；不是把两个总数直接相加。\n\nINS · Chartmetric · tripleS · Official profiles / Quick Social Stats ↗\nX · Chartmetric · tripleS · Quick Social Stats ↗\nYouTube · tripleS 官方 YouTube 频道公开计数 ↗\nSoridata · Circle公开累计 ↗\nperformante-annual-2024 · Circle榜单具名转录/报道 ↗\nperformante-month-2024-10 · Circle榜单具名转录/报道 ↗\nassemble24-month-2025-01 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-05 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-08 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-09 · Circle榜单具名转录/报道 ↗\nassemble25-month-2025-11 · Circle榜单具名转录/报道 ↗\ncosmo-annual-2025 · Circle榜单具名转录/报道 ↗\nPerformante Cosmo · Circle 2024年榜官方索引 ↗\nASSEMBLE25 Cosmo · Circle 2025年11月官方索引 ↗\nkpopping · Artist Total Music Show Wins ↗",
+      "salesLowerBoundCorrect": true,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\triples-1440-target.png",
+      "firstViewportSha256": "a509f283bd6015f72917519b6cfc030fd69e2212bffcc4939693448b8e2d4251",
+      "screenshotSha256": "774bb5f85c7ccadbb4012147cc5197d5d91316391d8554cfb6780510a434be8e"
+    },
+    {
+      "case": "fromis9",
+      "width": 320,
+      "url": "http://127.0.0.1:5197/artists/fromis9/",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/artists/fromis9",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\fromis9-320-first.png",
+      "informationText": "INFORMATION\n信息\nINS ↗\n190万\n粉丝 · 2026-10-25\nX ↗\n51万\n粉丝 · 2026-10-25\nYouTube ↗\n37万\n订阅 · 2026-10-25\n唱片累计销量\n1,152,076张\n已公开累计\n截至 2026-07\n打歌一位总数\n19次\n团体音乐节目获奖\n统计日期与来源\n\n粉丝数以万为单位四舍五入显示整数；不足一万显示整数人数。原始精度保留在来源记录中，日期为对应观察或来源更新日。\n\n未查得可靠数字或来源冲突时按本页设置显示0；这类0不是已确认的零，核查状态与来源记录仍保留。\n\n销量：fromis_9韩国Circle公开月榜39行及2019/2022两项标准版年榜修正累计，截至2026-07；为来源覆盖下界，不是全球完整累计。 截至 2026-07\n\n显示值为可核查的公开累计下限，不是全球完整累计；未加总Circle与Hanteo以免重复。\n\n2026-10-27复核新增2026-07两行：Glow ME 105,009及kiwee版10,000；旧37行保持，39行合计1,151,613。\n\n历史记录（2026-10-27，已于2026-10-28解决）：同次艺人汇总页1,152,076+仍比月榜和多463。月榜与年榜修正口径不同可解释差异机制，但未逐行证明463来源，冲突继续开放。\n\n2026-10-28逐发行复算：FUN FACTORY标准版2019年榜56,121替换同年月和56,468（-347）；Memento Box标准版2022年榜158,682替换同年月和157,872（+810）。净调整+463，累计1,152,076，与来源艺人汇总相符。原39月行保留；KiT/Weverse独立版本不重复加总。\n\n年榜数字由官方搜索索引及完整可读第三方榜单复本交叉核实；官方页面直接读取仅返回榜单框架，不宣称已读取完整官方榜。该复算解决此项来源差额，不代表全球销量已完整覆盖。\n\n一位：kpopping 已收录的团体音乐节目一位累计；成员个人获奖另列，非官方成绩总表。 来源未注明统计截止日\n\n与 Chukkae 对应累计相符；两个来源均为第三方整理，并非直接逐期官方复算。\n\nINS · Chartmetric · fromis_9 · Quick Social Stats ↗\nX · Chartmetric · fromis_9 · Quick Social Stats ↗\nYouTube · fromis_9 官方 YouTube 频道公开计数 ↗\nSoridata · Circle公开累计 ↗\nSoridata · Circle monthly rows refreshed through July 2026 ↗\nSoridata · monthly/yearly sales methodology ↗\nFUN FACTORY · 2019 标准版年榜交叉核验 (官方索引) ↗\nFUN FACTORY · 2019 标准版年榜交叉核验 (可读复本) ↗\nFUN FACTORY · 2019 标准版年榜交叉核验 (可读复本) ↗\nfrom our Memento Box · 2022 标准版年榜交叉核验 (官方索引) ↗\nfrom our Memento Box · 2022 标准版年榜交叉核验 (可读复本) ↗\nkpopping · Artist Total Music Show Wins ↗",
+      "fromis9ExistingSalesPreserved": true,
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\fromis9-320-target.png",
+      "firstViewportSha256": "2f06c8c2b74e0450c9e81c9240b68c521651cd5550f01f943ade88f7b189ae8c",
+      "screenshotSha256": "0e9a080edf15ef0cc5194b41dfd8f863996b0551ac13faef2ac558c72cc2df6d"
+    },
+    {
+      "case": "fromis9",
+      "width": 390,
+      "url": "http://127.0.0.1:5197/artists/fromis9/",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/artists/fromis9",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\fromis9-390-first.png",
+      "informationText": "INFORMATION\n信息\nINS ↗\n190万\n粉丝 · 2026-10-25\nX ↗\n51万\n粉丝 · 2026-10-25\nYouTube ↗\n37万\n订阅 · 2026-10-25\n唱片累计销量\n1,152,076张\n已公开累计\n截至 2026-07\n打歌一位总数\n19次\n团体音乐节目获奖\n统计日期与来源\n\n粉丝数以万为单位四舍五入显示整数；不足一万显示整数人数。原始精度保留在来源记录中，日期为对应观察或来源更新日。\n\n未查得可靠数字或来源冲突时按本页设置显示0；这类0不是已确认的零，核查状态与来源记录仍保留。\n\n销量：fromis_9韩国Circle公开月榜39行及2019/2022两项标准版年榜修正累计，截至2026-07；为来源覆盖下界，不是全球完整累计。 截至 2026-07\n\n显示值为可核查的公开累计下限，不是全球完整累计；未加总Circle与Hanteo以免重复。\n\n2026-10-27复核新增2026-07两行：Glow ME 105,009及kiwee版10,000；旧37行保持，39行合计1,151,613。\n\n历史记录（2026-10-27，已于2026-10-28解决）：同次艺人汇总页1,152,076+仍比月榜和多463。月榜与年榜修正口径不同可解释差异机制，但未逐行证明463来源，冲突继续开放。\n\n2026-10-28逐发行复算：FUN FACTORY标准版2019年榜56,121替换同年月和56,468（-347）；Memento Box标准版2022年榜158,682替换同年月和157,872（+810）。净调整+463，累计1,152,076，与来源艺人汇总相符。原39月行保留；KiT/Weverse独立版本不重复加总。\n\n年榜数字由官方搜索索引及完整可读第三方榜单复本交叉核实；官方页面直接读取仅返回榜单框架，不宣称已读取完整官方榜。该复算解决此项来源差额，不代表全球销量已完整覆盖。\n\n一位：kpopping 已收录的团体音乐节目一位累计；成员个人获奖另列，非官方成绩总表。 来源未注明统计截止日\n\n与 Chukkae 对应累计相符；两个来源均为第三方整理，并非直接逐期官方复算。\n\nINS · Chartmetric · fromis_9 · Quick Social Stats ↗\nX · Chartmetric · fromis_9 · Quick Social Stats ↗\nYouTube · fromis_9 官方 YouTube 频道公开计数 ↗\nSoridata · Circle公开累计 ↗\nSoridata · Circle monthly rows refreshed through July 2026 ↗\nSoridata · monthly/yearly sales methodology ↗\nFUN FACTORY · 2019 标准版年榜交叉核验 (官方索引) ↗\nFUN FACTORY · 2019 标准版年榜交叉核验 (可读复本) ↗\nFUN FACTORY · 2019 标准版年榜交叉核验 (可读复本) ↗\nfrom our Memento Box · 2022 标准版年榜交叉核验 (官方索引) ↗\nfrom our Memento Box · 2022 标准版年榜交叉核验 (可读复本) ↗\nkpopping · Artist Total Music Show Wins ↗",
+      "fromis9ExistingSalesPreserved": true,
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\fromis9-390-target.png",
+      "firstViewportSha256": "8c465fb907d9d9014fd539f8da8c40b3e4d99f71ea32f8afa53cf377b03e5f95",
+      "screenshotSha256": "8765a47105fb54a5360019a7635b991a9c702448bba9920b15c2595b7972bc36"
+    },
+    {
+      "case": "fromis9",
+      "width": 1440,
+      "url": "http://127.0.0.1:5197/artists/fromis9/",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "finalUrl": "http://127.0.0.1:5197/artists/fromis9",
+      "firstViewport": "E:\\project\\idol-continuation-qa-20261028\\fromis9-1440-first.png",
+      "informationText": "INFORMATION\n信息\nINS ↗\n190万\n粉丝 · 2026-10-25\nX ↗\n51万\n粉丝 · 2026-10-25\nYouTube ↗\n37万\n订阅 · 2026-10-25\n唱片累计销量\n1,152,076张\n已公开累计\n截至 2026-07\n打歌一位总数\n19次\n团体音乐节目获奖\n统计日期与来源\n\n粉丝数以万为单位四舍五入显示整数；不足一万显示整数人数。原始精度保留在来源记录中，日期为对应观察或来源更新日。\n\n未查得可靠数字或来源冲突时按本页设置显示0；这类0不是已确认的零，核查状态与来源记录仍保留。\n\n销量：fromis_9韩国Circle公开月榜39行及2019/2022两项标准版年榜修正累计，截至2026-07；为来源覆盖下界，不是全球完整累计。 截至 2026-07\n\n显示值为可核查的公开累计下限，不是全球完整累计；未加总Circle与Hanteo以免重复。\n\n2026-10-27复核新增2026-07两行：Glow ME 105,009及kiwee版10,000；旧37行保持，39行合计1,151,613。\n\n历史记录（2026-10-27，已于2026-10-28解决）：同次艺人汇总页1,152,076+仍比月榜和多463。月榜与年榜修正口径不同可解释差异机制，但未逐行证明463来源，冲突继续开放。\n\n2026-10-28逐发行复算：FUN FACTORY标准版2019年榜56,121替换同年月和56,468（-347）；Memento Box标准版2022年榜158,682替换同年月和157,872（+810）。净调整+463，累计1,152,076，与来源艺人汇总相符。原39月行保留；KiT/Weverse独立版本不重复加总。\n\n年榜数字由官方搜索索引及完整可读第三方榜单复本交叉核实；官方页面直接读取仅返回榜单框架，不宣称已读取完整官方榜。该复算解决此项来源差额，不代表全球销量已完整覆盖。\n\n一位：kpopping 已收录的团体音乐节目一位累计；成员个人获奖另列，非官方成绩总表。 来源未注明统计截止日\n\n与 Chukkae 对应累计相符；两个来源均为第三方整理，并非直接逐期官方复算。\n\nINS · Chartmetric · fromis_9 · Quick Social Stats ↗\nX · Chartmetric · fromis_9 · Quick Social Stats ↗\nYouTube · fromis_9 官方 YouTube 频道公开计数 ↗\nSoridata · Circle公开累计 ↗\nSoridata · Circle monthly rows refreshed through July 2026 ↗\nSoridata · monthly/yearly sales methodology ↗\nFUN FACTORY · 2019 标准版年榜交叉核验 (官方索引) ↗\nFUN FACTORY · 2019 标准版年榜交叉核验 (可读复本) ↗\nFUN FACTORY · 2019 标准版年榜交叉核验 (可读复本) ↗\nfrom our Memento Box · 2022 标准版年榜交叉核验 (官方索引) ↗\nfrom our Memento Box · 2022 标准版年榜交叉核验 (可读复本) ↗\nkpopping · Artist Total Music Show Wins ↗",
+      "fromis9ExistingSalesPreserved": true,
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "hasMeaningfulContent": true,
+        "frameworkOverlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuation-qa-20261028\\fromis9-1440-target.png",
+      "firstViewportSha256": "0b5eda930ed58bf7a07aa9a77d63e5f12dfaec09258a61ac9e82aba33f6f6a6f",
+      "screenshotSha256": "a765d3b89f8600f3a7f4ae2b5590032e9442cad8c666b9ca37da9b9b846c8b15"
+    }
+  ],
+  "interactions": [
+    {
+      "case": "right-now",
+      "width": 320,
+      "action": "select stage tab",
+      "result": "aria-selected=true"
+    },
+    {
+      "case": "right-now",
+      "width": 390,
+      "action": "select stage tab",
+      "result": "aria-selected=true"
+    },
+    {
+      "case": "right-now",
+      "width": 1440,
+      "action": "select stage tab",
+      "result": "aria-selected=true"
+    },
+    {
+      "case": "i-want",
+      "width": 320,
+      "action": "select stage tab",
+      "result": "aria-selected=true"
+    },
+    {
+      "case": "i-want",
+      "width": 390,
+      "action": "select stage tab",
+      "result": "aria-selected=true"
+    },
+    {
+      "case": "i-want",
+      "width": 1440,
+      "action": "select stage tab",
+      "result": "aria-selected=true"
+    },
+    {
+      "case": "million-places",
+      "width": 320,
+      "action": "select stage tab",
+      "result": "aria-selected=true"
+    },
+    {
+      "case": "million-places",
+      "width": 390,
+      "action": "select stage tab",
+      "result": "aria-selected=true"
+    },
+    {
+      "case": "million-places",
+      "width": 1440,
+      "action": "select stage tab",
+      "result": "aria-selected=true"
+    },
+    {
+      "case": "triples",
+      "width": 320,
+      "action": "expand statistics dates and sources",
+      "result": "details open"
+    },
+    {
+      "case": "triples",
+      "width": 390,
+      "action": "expand statistics dates and sources",
+      "result": "details open"
+    },
+    {
+      "case": "triples",
+      "width": 1440,
+      "action": "expand statistics dates and sources",
+      "result": "details open"
+    },
+    {
+      "case": "fromis9",
+      "width": 320,
+      "action": "expand statistics dates and sources",
+      "result": "details open"
+    },
+    {
+      "case": "fromis9",
+      "width": 390,
+      "action": "expand statistics dates and sources",
+      "result": "details open"
+    },
+    {
+      "case": "fromis9",
+      "width": 1440,
+      "action": "expand statistics dates and sources",
+      "result": "details open"
+    }
+  ],
+  "errors": [],
+  "pageErrors": [],
+  "consoleIssues": [],
+  "resourceFailures": [],
+  "blockedMutationRequests": [],
+  "mediaReadForwarding": {
+    "count": 0,
+    "failed": []
+  },
+  "notVerified": [
+    "Private or owner session",
+    "Personal save",
+    "Full video playback or audio equivalence",
+    "User IAB",
+    "Browser zoom",
+    "Production deployment"
+  ],
+  "passed": true,
+  "attemptHistory": {
+    "initialHarnessCorrection": "Initial artist locator .artist-information was corrected to .artist-information-host; statistics source details are now expanded before reading lower-bound scope. fromis9 expected value corrected from historical source evidence to current and baseline displayed 1152076. No product file was edited by this QA.",
+    "oneEarlierHydrationWarning": [
+      {
+        "case": "fromis9-390",
+        "level": "error",
+        "text": "A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:\n\n- A server/client branch `if (typeof window !== 'undefined')`.\n- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.\n- Date formatting in a user's locale which doesn't match the server.\n- External changing data without sending a sna"
+      }
+    ],
+    "warningLimitation": "The original one-off warning was truncated at450characters, so exact element/value could not be determined. This is not attributed to the fixture or claimed fixed.",
+    "repeatStatus": {
+      "focusedFromisThreeWidths": {
+        "passed": true,
+        "consoleIssues": 0,
+        "pageErrors": 0
+      },
+      "finalEntire15Layouts": {
+        "passed": true,
+        "consoleIssues": 0,
+        "pageErrors": 0
+      }
+    },
+    "externalRecords": [
+      "E:\\project\\idol-continuation-qa-20261028\\local-browser-first-attempt.json",
+      "E:\\project\\idol-continuation-qa-20261028\\artist-browser.json",
+      "E:\\project\\idol-continuation-qa-20261028\\fromis-console-recheck.json"
+    ]
+  },
+  "statisticsBaselineProof": {
+    "baselineCommit": "4f2a57bd",
+    "fromis9SalesObserved": 1152076,
+    "currentDisplayed": 1152076,
+    "equal": true
+  },
+  "visualInspection": {
+    "screenshotsViewed": [
+      "right-now-320-target.png",
+      "right-now-1440-target.png",
+      "triples-320-first.png",
+      "triples-320-target.png",
+      "triples-1440-target.png",
+      "fromis9-1440-target.png",
+      "fromis9-320-target.png",
+      "million-places-390-target.png",
+      "i-want-390-target.png"
+    ],
+    "result": "No blank page, framework overlay, clipped horizontal layout, or overlapping target cards. Existing group designs retained; narrow mobile pages scroll vertically to later card and source details."
+  }
+}

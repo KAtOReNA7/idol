@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-27",
+  "scope": "Local read-only QA with sanitized public identity fixture. Existing user Chrome/IAB was not touched; a separate owned headless Chrome process was used.",
+  "browser": {
+    "plugin": "Browser plugin/skill unavailable in this subtask; regular Playwright fallback",
+    "version": "Playwright 1.62.1",
+    "engine": "local Google Chrome",
+    "base": "http://127.0.0.1:4261"
+  },
+  "privacy": {
+    "personalScores": false,
+    "personalNotes": false,
+    "watched": false,
+    "favorites": false,
+    "catalogUploaded": false,
+    "screenshotCommitted": false,
+    "nativePhotoMetadataRetainedForZapGuardOnly": true,
+    "writes": 0
+  },
+  "recognition": {
+    "finalWorks": 37,
+    "finalPortraitSlots": 239,
+    "baseline32": {
+      "manifestSha256": "98bc4311e3930d183fcd5f0086aac7df8faed2462f860d3c6c60b8536ac034de",
+      "layouts": 73,
+      "imageChecks": 463
+    },
+    "increment3": {
+      "manifestSha256": "e6bf585ead3a88cd0a98ac6fa7d00acb251390c7fcd485730faf05aea465cee5",
+      "workIds": [
+        "recvxIZLpEopO1",
+        "recvxIZLpEd8EW",
+        "recvxIZRWKy9zg"
+      ],
+      "layouts": 6,
+      "imageChecks": 24
+    },
+    "totalLayouts": 83,
+    "totalImageChecks": 523,
+    "originalOpenCloseFlows": 23,
+    "initialDistinctSourcePages": 13,
+    "memberNavigations": 9,
+    "viewports": [
+      320,
+      390,
+      1440
+    ],
+    "allImageLoadsPassed": true,
+    "allFramesThreeByFour": true,
+    "horizontalOverflow": false,
+    "frameworkOverlay": false,
+    "pageErrors": [],
+    "consoleErrors": [],
+    "httpErrors": [],
+    "increment2": {
+      "manifestSha256": "cdb436d0de48671c5c02de27165eabcc8972726ad651ec6beb8944f3331b35dd",
+      "workIds": [
+        "recvxyH5pzi1oo",
+        "recvxIZy35ZBcF"
+      ],
+      "layouts": 4,
+      "imageChecks": 36
+    }
+  },
+  "stages": {
+    "alternatives": 6,
+    "layouts": 12,
+    "viewports": [
+      390,
+      1440
+    ],
+    "viewOnlyLabelsVisible": true,
+    "scoreBindings": 0,
+    "scoreInputsInCards": 0,
+    "externalUrlChecks": 12,
+    "playbackPerformed": false
+  },
+  "timeline": {
+    "groups": [
+      "ifeye",
+      "genblue",
+      "rocketpunch"
+    ],
+    "layouts": 6,
+    "checkedPublicClaims": 5,
+    "announcementAndPlanDatesKeptSeparate": true,
+    "nativeDataAdoptionProof": "apps/idol-site/evidence/category-resolution-20261027/native-timeline-corrections.json"
+  },
+  "zap": {
+    "layouts": 3,
+    "newReferenceCrop": {
+      "width": 699,
+      "height": 932
+    },
+    "newOriginal": {
+      "width": 700,
+      "height": 1050
+    },
+    "newOriginalOpenCloseFlows": 3,
+    "nativeUrlGuardAndCloseFlows": 3,
+    "nativePictureLoadingVerified": false,
+    "limitation": "Local /api/media returned HTTP 502 for the existing native photo. Exact original URL, relation identity and modal close were verified; original content was not replaced or claimed loaded.",
+    "buttonStyle390": {
+      "width": 390,
+      "style": {
+        "color": "rgb(241, 238, 231)",
+        "background": "rgba(0, 0, 0, 0)",
+        "border": "1px solid rgb(241, 238, 231)",
+        "ancestors": [
+          "rgb(17, 16, 16)",
+          "rgb(17, 16, 16)",
+          "rgb(250, 248, 246)"
+        ],
+        "focusOutline": "rgb(208, 197, 237) solid 2px"
+      },
+      "visible": true,
+      "transparentBackground": true,
+      "overflow": false
+    }
+  },
+  "findings": [
+    {
+      "id": "native-timeline-data-not-connected",
+      "status": "resolved",
+      "detail": "GENBLUE lacked the new two events; ifeye retained a superseded restoration-plan description. Connected the reviewed public facts in the native presentation datasets, retained original IDs/designs and prior Rocket Punch company evidence, and verified actual pages."
+    },
+    {
+      "id": "zap-native-button-contrast",
+      "status": "resolved",
+      "detail": "Owning agent added transparent background, inherited foreground and border, with visible focus outline. 390px screenshot and computed styles verified pale text on rgb(17,16,16), without white default background."
+    },
+    {
+      "id": "screenshot-decode-timing",
+      "status": "qa-method-corrected",
+      "detail": "One long screenshot initially captured offscreen images before decoder paint despite complete network loads. Scrolled the final card and awaited image.decode(); actual viewport and decoded screenshot show all images. No application change was required."
+    }
+  ],
+  "tests": {
+    "focused": {
+      "passed": 78,
+      "failed": 0,
+      "command": "node --test tests/native-timeline-category-resolution.test.cjs tests/ifeye-native-integration.test.cjs tests/rocketpunch-review-boundary.test.mjs tests/timeline-category-resolution.test.cjs tests/timeline-correction-chain.test.cjs tests/timeline-batch-f-adoption.test.cjs"
+    },
+    "historicalLegacyWholeRoute": {
+      "passed": 9,
+      "failed": 43,
+      "log": ".codex-local/timeline-production-resolution.log",
+      "note": "Historical run preserved: old headings, lazy-route synchronous Suspense, WOOAH expected IDs and LSF title expectations. Not a passing full-suite claim."
+    },
+    "historicalGenblueIntegration": {
+      "passed": 5,
+      "failed": 1,
+      "note": "Unrelated existing night-market evidence image.src string assertion did not match current portrait rendering; not weakened or counted as passed."
+    }
+  },
+  "visualInspection": [
+    {
+      "file": ".codex-local/category-qa/cards-recvxIZFknJ2Rq-390.png",
+      "sha256": "99674857a82c62a3118e1c594b62cdbbfd2622176b0aa4efe39741a5c858897d",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/cards-recvxIZFknJ2Rq-320.png",
+      "sha256": "911d5d920cbaa1216baed9690e7ce42baad38a2a39e8a7b18569247c0740d4e5",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/cards-rec28ldfRTrOnV-1440.png",
+      "sha256": "827c706ead65f86198b2b5b6569c6905a702e8b3f47f5f340da29264c915974a",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/badvillain-last-visible.png",
+      "sha256": "358430a9f458be4c9d6dbe0abf6d7458e4acf1629e7d209bc81593e1a5804847",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/badvillain-all-decoded.png",
+      "sha256": "8e35268378fc09c857c15165763467370cfa62becaf5ba3df61035230ba2f79e",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/timeline-native-ifeye-390.png",
+      "sha256": "80b79ee0a808d89fdf70375d45e71e2791814b7501833023be9955d4326b1826",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/timeline-native-genblue-390.png",
+      "sha256": "1df63954aead8bf0eeb2e6ff18f3e11e8c1677739e9df9ea506be1d004688ab0",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/increment-recvxIZLpEopO1-390.png",
+      "sha256": "197a0a95979b1b8aeb4d18c958527e80612d380e9f490834f06149ab27bb3847",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/stage-recvxyHuKM2wRG-390.png",
+      "sha256": "e7ec03d94eb6c0ac042144bde9c4f0423648b8719e6af407800767951843848c",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/zap-reference-390.png",
+      "sha256": "58f977cf30955eb051f96327745ec4b285aace3165fe7c560c1fd25004adb737",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/zap-original-390.png",
+      "sha256": "19442cc13f4ba9ef5e22d87f48605a315d76146938b882d7bc7040112711f31f",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/zap-button-fixed-390.png",
+      "sha256": "6760cdd3346f36a8d645597bf37854e984c9bae78c3abfed1558c406671a863b",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/login-320-sidebar.png",
+      "sha256": "d21082eb7ce76defc08cd73abdc1912deb6e92a7271704aeaa97e24430f68fa2",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/login-390-photos.png",
+      "sha256": "bb5c45907ca4a1370b8a205be85ca76f1b458cbd49607da206485cf2f63746e3",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/increment-recvxIZy35ZBcF-390.png",
+      "sha256": "7790c4be7758fd71689e366092a3c6b4eb20a4220606eb0165b278d631bdc171",
+      "inspected": true
+    },
+    {
+      "file": ".codex-local/category-qa/increment-recvxyH5pzi1oo-1440.png",
+      "sha256": "ee3669374f26306d8334582968bb3d6cae52c7c0227e3cf3af3529452097082b",
+      "inspected": true
+    }
+  ],
+  "remaining": [
+    "No production deployment/online checks in this subtask.",
+    "No actual private saves, video playback, user Chrome/IAB, or browser-native zoom tested.",
+    "Original native ZAP photo needs online storage verification."
+  ],
+  "login": {
+    "layouts": 6,
+    "viewports": [
+      320,
+      390
+    ],
+    "anonymous": true,
+    "returnToMatchesCurrentLocation": true,
+    "targetTop": true,
+    "actualSignInPerformed": false,
+    "writes": 0,
+    "report": "login-and-zap-style.json",
+    "note": "Return path is compared to actual current pathname/search/hash after hydration. Existing journey routing removed the test-only #detail hash on a repeated work navigation; links correctly followed the resulting URL."
+  }
+}

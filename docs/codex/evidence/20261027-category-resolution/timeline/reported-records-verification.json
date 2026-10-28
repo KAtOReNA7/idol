@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-27T16:04:02.874Z",
+  "scope": "Seven user-approved reporting records; canonical factual hold states remain unchanged",
+  "result": "passed",
+  "tests": {
+    "command": "NODE_PATH=<app>/node_modules node --test tests/timeline-react.test.cjs tests/timeline-model.test.cjs tests/timeline-reported-records.test.cjs",
+    "passed": 25,
+    "failed": 0,
+    "newFocusedCases": 4,
+    "initialEnvironmentIssue": "Existing timeline-react test bundles into OS temp; first invocation could not resolve React. Rerun with app node_modules in NODE_PATH passed all 25."
+  },
+  "typecheck": {
+    "command": "npx tsc --noEmit --pretty false --incremental false",
+    "exitCode": 0
+  },
+  "canonical": {
+    "filesByteUnchanged": 5,
+    "events": 623,
+    "ready": 616,
+    "held": 7,
+    "heldIdsAndMemberIdsPreserved": true
+  },
+  "presentation": {
+    "records": 7,
+    "groups": 5,
+    "types": {
+      "report": 5,
+      "catalog": 1,
+      "repost": 1
+    },
+    "eventDatesAllNull": true,
+    "candyshopLegacyAnchorAndMemberNavigationPreserved": true,
+    "udttIdentityProjection": "Read-only event/source projection used by existing click/auxclick guards; factual source artist unchanged"
+  },
+  "sourceLimitations": [
+    "Most report dates reused from retained evidence; not represented as fresh retrieval.",
+    "UDTT Sena original organiser URL reopened during research returned article unavailable; community repost remains lower-grade lead, with null record date and null effective date.",
+    "No inferred member IDs, contract statuses, effective dates, or medical detail added."
+  ],
+  "notIncluded": [
+    "Browser layout/source activation acceptance is recorded separately by QA agent",
+    "No private saves, video playback, or access changes tested"
+  ],
+  "testFileSha256": "993c8d11b2a2ef07a51447a237856ae1495c67cf13ae21869f1530077109d61e"
+}

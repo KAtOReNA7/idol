@@ -1,0 +1,175 @@
+{
+  "base": "http://127.0.0.1:4261",
+  "checkedAt": "2026-10-27T16:03:00.806Z",
+  "browser": "Playwright Chrome; Browser plugin not available",
+  "dataMode": "fresh anonymous browser; actual catalog and viewer endpoints; no fixture, login or private save",
+  "layouts": [
+    {
+      "slug": "bewave",
+      "width": 390,
+      "url": "http://127.0.0.1:4261/artists/bewave?section=updates",
+      "title": "stage. · 私人女团手帐",
+      "records": [
+        {
+          "eventId": "e-bewave-six-member-phase-end-announcement",
+          "recordDate": "2025-09-04",
+          "effectiveDateUnconfirmed": true,
+          "links": [
+            {
+              "href": "https://isplus.com/article/view/isp202509040238",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null
+            }
+          ]
+        }
+      ],
+      "panelWidth": 350,
+      "panelScrollWidth": 350,
+      "viewport": 390,
+      "documentScrollWidth": 390,
+      "overlay": false
+    },
+    {
+      "slug": "candyshop",
+      "width": 390,
+      "url": "http://127.0.0.1:4261/artists/candyshop?section=updates",
+      "title": "stage. · 私人女团手帐",
+      "records": [
+        {
+          "eventId": "e-candyshop-yuina-hiatus-announcement",
+          "recordDate": "2024-05-09",
+          "effectiveDateUnconfirmed": true,
+          "links": [
+            {
+              "href": "https://www.starnewskorea.com/music/2024/05/09/2024050908033147420",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null
+            }
+          ]
+        }
+      ],
+      "panelWidth": 358,
+      "panelScrollWidth": 358,
+      "viewport": 390,
+      "documentScrollWidth": 390,
+      "overlay": false
+    },
+    {
+      "slug": "geenius",
+      "width": 390,
+      "url": "http://127.0.0.1:4261/artists/geenius?section=updates",
+      "title": "stage. · 私人女团手帐",
+      "records": [
+        {
+          "eventId": "e-geenius-spoiler-book-instrumental",
+          "recordDate": "2026-01-15",
+          "effectiveDateUnconfirmed": true,
+          "links": [
+            {
+              "href": "https://www.yes24.com/product/goods/170657075",
+              "target": "_blank",
+              "rel": "noopener noreferrer",
+              "invalid": null
+            }
+          ]
+        }
+      ],
+      "panelWidth": 350,
+      "panelScrollWidth": 350,
+      "viewport": 390,
+      "documentScrollWidth": 390,
+      "overlay": false
+    }
+  ],
+  "links": [],
+  "guards": [],
+  "candy": [
+    {
+      "width": 390,
+      "legacyAliasPresent": true,
+      "oneReplacementRow": true,
+      "historicalEvents": 5,
+      "memberHref": "/artists/candyshop?section=members&member=recvxAPQCFyiww"
+    }
+  ],
+  "failures": [
+    {
+      "active": "atheart@390",
+      "error": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-reported-timeline=\"atheart\"]') to be visible\u001b[22m\n"
+    },
+    {
+      "active": "udtt@390",
+      "error": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-reported-timeline=\"udtt\"]') to be visible\u001b[22m\n"
+    }
+  ],
+  "console": [
+    {
+      "active": "atheart@390",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 502 (Bad Gateway)",
+      "url": "http://127.0.0.1:4261/api/catalog"
+    },
+    {
+      "active": "bewave@390",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 502 (Bad Gateway)",
+      "url": "http://127.0.0.1:4261/api/catalog"
+    },
+    {
+      "active": "candyshop@390",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 502 (Bad Gateway)",
+      "url": "http://127.0.0.1:4261/api/catalog"
+    },
+    {
+      "active": "udtt@390",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 502 (Bad Gateway)",
+      "url": "http://127.0.0.1:4261/api/catalog"
+    },
+    {
+      "active": "udtt@390",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 502 (Bad Gateway)",
+      "url": "http://127.0.0.1:4261/api/catalog"
+    }
+  ],
+  "pageErrors": [],
+  "apiResponses": [
+    {
+      "active": "atheart@390",
+      "path": "/api/catalog",
+      "status": 502
+    },
+    {
+      "active": "bewave@390",
+      "path": "/api/catalog",
+      "status": 502
+    },
+    {
+      "active": "candyshop@390",
+      "path": "/api/catalog",
+      "status": 502
+    },
+    {
+      "active": "udtt@390",
+      "path": "/api/catalog",
+      "status": 502
+    },
+    {
+      "active": "udtt@390",
+      "path": "/api/catalog",
+      "status": 502
+    }
+  ],
+  "applicationWrites": [],
+  "externalNavigationRequests": [],
+  "screenshots": [
+    "D:/porject/idol/.codex-local/category-qa/reported-five-local/bewave-390.png",
+    "D:/porject/idol/.codex-local/category-qa/reported-five-local/candyshop-390.png",
+    "D:/porject/idol/.codex-local/category-qa/reported-five-local/geenius-390.png"
+  ],
+  "status": "issues"
+}

@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-27",
+  "baseline": "20261027-current-gap-classification/timeline-remedies.json",
+  "summary": {
+    "beforeHolds": 12,
+    "resolved": 5,
+    "remainingHolds": 7,
+    "totalEvents": 623,
+    "readyEvents": 616
+  },
+  "records": [
+    {
+      "eventId": "e-atheart-aurora-hiatus-observed",
+      "group": "atheart",
+      "result": "hold_retained",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "hold",
+      "category": "missing_primary_start_notice",
+      "sources": [
+        {
+          "url": "https://atheart.me/news/32",
+          "result": "官网2026-06-16公告可读，回顾未参与出道活动并宣布将合流；已有独立ready复归节点，未给首次暂停起始日。"
+        },
+        {
+          "url": "https://m.nocutnews.co.kr/news/amp/6484186",
+          "result": "原始团体访谈的记者历史背景，可辅助确认此前缺席，不能替代公司首次暂停公告。"
+        }
+      ],
+      "decision": "保留原hold，不把6月复归公告再建为首次暂停日期。",
+      "nextAction": "取得公司首次暂停公告及其公开时间；若用户允许只展示无起始日的历史缺席事实，可另审精简表述，不能伪填日期。"
+    },
+    {
+      "eventId": "e-atheart-aurora-second-hiatus-announcement",
+      "group": "atheart",
+      "result": "hold_retained",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "hold",
+      "category": "secondary_notice_only",
+      "sources": [
+        {
+          "url": "https://www.soompi.com/article/1863734wpp/athearts-aurora-to-go-on-hiatus-due-to-health-just-2-months-after-return",
+          "result": "2026-08-18二手转载可读，称公司宣布再次暂停；不保存医疗内容。"
+        },
+        {
+          "url": "https://atheart.me/news",
+          "result": "官方新闻列表可读，当前所列新闻无目标原公告；不据列表缺失断言不存在。"
+        }
+      ],
+      "decision": "保留原hold，未将报道日或日历经过当实际生效。",
+      "nextAction": "需要公司官方帖子/公告原始链接；可选方案为用户批准后仅显示明确标为媒体报道的有限活动公告。"
+    },
+    {
+      "eventId": "e-bewave-six-member-phase-end-announcement",
+      "group": "bewave",
+      "result": "hold_retained",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "hold",
+      "category": "official_post_inaccessible",
+      "sources": [
+        {
+          "url": "https://isplus.com/article/view/isp202509040238",
+          "result": "韩国原始报道2025-09-04含公司声明全文；支持10月31日结束六人阶段的公告计划，文内姓名拼写有差异。"
+        },
+        {
+          "url": "https://x.com/BEWAVE_official/status/1963527459069923774",
+          "result": "由报道嵌入追得的官方帖子ID，直接读取403。"
+        },
+        {
+          "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FBEWAVE_official%2Fstatus%2F1963527459069923774",
+          "result": "官方公开嵌入接口在本次工具无法访问。"
+        },
+        {
+          "url": "https://bewave.bstage.in/",
+          "result": "公开主页可读但只有导航，无目标公告正文。"
+        }
+      ],
+      "decision": "保留原hold及announced，不推实际转队/解散，不绑定拼写不稳的成员ID。",
+      "nextAction": "取得官方原帖/公告图和原始刊载日期；若采用原始媒体声明转载，需保留reported/announced边界，绝不能补成实际离队日。"
+    },
+    {
+      "eventId": "e-candyshop-yuina-hiatus-announcement",
+      "group": "candyshop",
+      "result": "hold_retained",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "hold",
+      "category": "original_post_location_missing",
+      "sources": [
+        {
+          "url": "https://www.osen.co.kr/article/G1112332319",
+          "result": "2024-05-09原始记者报道说明公司当日提供立场；属于媒体承载，未取得官方原帖URL。"
+        },
+        {
+          "url": "https://www.xportsnews.com/article/1856885",
+          "result": "报道指向官方粉丝咖啡厅，未提供本次可核的精确公告链接。"
+        },
+        {
+          "url": "https://cafe.daum.net/Candy.Shop",
+          "result": "官方咖啡厅入口本次不可读取，未尝试登录或访问受限内容。"
+        },
+        {
+          "url": "https://0.soompi.io/wp-content/uploads/2024/05/08105357/Yuina.jpeg",
+          "result": "历史已读公司署名声明转载图；缺官方刊载位置及独立日期，沿原结论。"
+        }
+      ],
+      "decision": "保留原hold；已有candyshop-native-design内媒体报道事件，不重复建立同一报道，不视为退团。",
+      "nextAction": "需要原公开公告URL或含日期及官方账号的原帖证据；不从个人社媒标签/官网移除推退出。"
+    },
+    {
+      "eventId": "e-geenius-spoiler-book-instrumental",
+      "group": "geenius",
+      "result": "hold_retained",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "hold",
+      "category": "retail_only_release",
+      "sources": [
+        {
+          "url": "https://www.yes24.com/product/goods/170657075",
+          "result": "产品页给2026-01-15及QR器乐预公开；不能确认公司实际首发，也不能改成人声专辑。"
+        },
+        {
+          "url": "https://www.musickorea.com/Mobile/Product/Detail/view/pid/216995/cid/1281",
+          "result": "检索找到同类零售日期，只有索引，未计作独立发行证据。"
+        },
+        {
+          "url": "https://www.cdjapan.co.jp/product/NEOIMP-24187",
+          "result": "检索列进口版本2026-01-24，提示零售/进口时间口径差异，未采用。"
+        }
+      ],
+      "decision": "保留QR器乐载体hold，绝不把完整人声Love Don’t Change设为同日已发。",
+      "nextAction": "查发行方HOMe/COPAN的实际发布公告，或授权完整数字发行/可交付音频；后续若只展示零售目录，应另标目录上架，非发行事实。"
+    },
+    {
+      "eventId": "e-genblue-swing-dance-single",
+      "group": "genblue",
+      "result": "resolved_for_limited_public_claim",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "ready",
+      "title": "数字发行动画合作单曲《SWING DANCE》",
+      "eventDate": {
+        "value": "2025-08-04",
+        "precision": "day"
+      },
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "evidence": [
+        {
+          "path": "evidence/category-resolution-20261027/genblue-swing.json",
+          "sha256": "0c61eaf78294b7ad7660eee43ecef30905ac0eb4561734f10b30381c7cff8db8"
+        }
+      ],
+      "remainingBoundary": "限定为授权平台标示日期的已发行数字音频；不冒称公司首发公告、实体发行或MV上线日期，不新增成员/作品关系。"
+    },
+    {
+      "eventId": "e-genblue-oh-chinese-single",
+      "group": "genblue",
+      "result": "resolved_for_limited_public_claim",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "ready",
+      "title": "数字发行中文版本单曲《OH!》",
+      "eventDate": {
+        "value": "2025-04-29",
+        "precision": "day"
+      },
+      "announcementDate": null,
+      "plannedDate": null,
+      "status": "confirmed",
+      "evidence": [
+        {
+          "path": "evidence/category-resolution-20261027/genblue-oh-chinese.json",
+          "sha256": "8b8e2d5f0a45d18ea513c92b657a6fd33149baf9b384af5f4975364e2cc68bec"
+        }
+      ],
+      "remainingBoundary": "限定独立中文版本数字音频，不与其他语言版本合并；不把4月28日MV上传当音频发行日，不新增成员/作品关系。"
+    },
+    {
+      "eventId": "e-ifeye-sasha-hiatus-announcement",
+      "group": "ifeye",
+      "result": "resolved_for_limited_public_claim",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "ready",
+      "title": "公布SASHA暂时中止团队活动",
+      "eventDate": null,
+      "announcementDate": {
+        "value": "2026-03-03",
+        "precision": "day"
+      },
+      "plannedDate": null,
+      "status": "announced",
+      "evidence": [
+        {
+          "path": "evidence/category-resolution-20261027/sasha-march.json",
+          "sha256": "150ce6d77bc16a0edc4fa273858dec4898721143d29fc0f76d3d87a872e046ef"
+        }
+      ],
+      "remainingBoundary": "不涉及具体医疗原因；不是退团。原始1月部分行程公告未取得，不能将两阶段混为同日起始。 2026-10-27从公开页面内嵌正文核验公告；活动暂停公告为ready，独立起始日及1月阶段仍未知。"
+    },
+    {
+      "eventId": "e-ifeye-sasha-resume-announcement",
+      "group": "ifeye",
+      "result": "resolved_for_limited_public_claim",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "ready",
+      "title": "公布SASHA恢复活动计划",
+      "eventDate": null,
+      "announcementDate": {
+        "value": "2026-06-15",
+        "precision": "day"
+      },
+      "plannedDate": {
+        "value": "2026-07-01",
+        "precision": "day"
+      },
+      "status": "announced",
+      "evidence": [
+        {
+          "path": "evidence/category-resolution-20261027/sasha-june.json",
+          "sha256": "7155328fcb509f933920c406030c52fd87bcd8cf11b54f88fab982e77bcc5031"
+        },
+        {
+          "path": "evidence/category-resolution-20261027/sasha-june-update.json",
+          "sha256": "6c8e2d6dfc82668ea93b983e1b6f49e0bc2fe0622c9ec9d18a72bcb2515610f4"
+        }
+      ],
+      "remainingBoundary": "同一恢复过程合一节点保留追加公告；医学细节不采集。 2026-10-27从两份公开公告正文核验计划与修订；保留announced，7月1日仍仅plannedDate，未确认实际恢复日。"
+    },
+    {
+      "eventId": "e-rocketpunch-suyun-contract-announcement",
+      "group": "rocketpunch",
+      "result": "resolved_for_limited_public_claim",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "ready",
+      "title": "SUYUN公开说明与Woollim合同结束",
+      "eventDate": null,
+      "announcementDate": {
+        "value": "2026-08-06",
+        "precision": "day"
+      },
+      "plannedDate": null,
+      "status": "announced",
+      "evidence": [
+        {
+          "path": "evidence/category-resolution-20261027/suyun-weverse.json",
+          "sha256": "c73801d8cb3a136b6bebdc7241c9846a7281037f5e8e094052a2cc926a98f346"
+        }
+      ],
+      "remainingBoundary": "本轮按用户指定降为hold：仅有继承事实摘要，无法由已保存材料核对SUYUN本人原话。原摘要日期保留在来源元数据作线索，announcementDate=null，不认证发表日或独立合同生效日。与JURI、四名成员合同公告分别保留，不推实际退团、全团解散或当前关系。 2026-10-27补核本人原帖可读首段与发表日；仅确认说明，合同实际生效日仍未知，不推退团或解散。"
+    },
+    {
+      "eventId": "e-udtt-jessica-provisional-join-candidate",
+      "group": "udtt",
+      "result": "hold_retained",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "hold",
+      "category": "participation_verified_personnel_terms_unresolved",
+      "sources": [
+        {
+          "url": "https://www.hellokpop.com/interview/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview/",
+          "result": "2025-05-08原始采访可读：Jessica以陆雨婷/우정自我介绍；编辑称采访时刚加入，但未给精确加入日、临时/永久人事条款。",
+          "excerpt": "The interview was conducted when Jessica just joined the group, so her participation is limited."
+        },
+        {
+          "url": "https://17caratkpop.substack.com/p/feel-the-school-rush-with-udtt",
+          "result": "2025-04-30原始问答可读，Jessica说明参与School Rush；部分问答与Hellokpop重合，不能当两份完全独立人事确认。",
+          "excerpt": "I participated in the album production"
+        },
+        {
+          "url": "https://adv.tokyo-np.co.jp/prtimes/article75656/",
+          "result": "原主办方资料称临时成员，只是人事旁证；与参与访谈层级区分。"
+        }
+      ],
+      "decision": "保留临时加入hold和空memberIds；具名参与和艺名自述是新增可靠线索，但不擅自合并现有Jessica/Lu Yuting业务记录。",
+      "nextAction": "向用户确认现有重复身份处理意图，或取得公司关于加入性质和生效日的原公告；可以先单独评审展示本人访谈参与事实。"
+    },
+    {
+      "eventId": "e-udtt-sena-predebut-departure-candidate",
+      "group": "udtt",
+      "result": "hold_retained",
+      "reviewStatusBefore": "hold",
+      "reviewStatusAfter": "hold",
+      "category": "reposted_document_provenance_missing",
+      "sources": [
+        {
+          "url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+          "result": "读到论坛引述Sena退出及公告图片线索，但链接来自粉丝账号。"
+        },
+        {
+          "url": "https://x.com/udtt_global/status/1904823894105555307",
+          "result": "粉丝账号转载链接，非公司原始公告。"
+        },
+        {
+          "url": "https://pbs.twimg.com/media/Gm9LPLPW0AA5upR?format=jpg&name=large",
+          "result": "下载并人工查看英文公司署名文本图，图中未标原发布日，无法独立证明原官方刊载；不提交全文。"
+        },
+        {
+          "url": "https://swentertainment.co.kr/",
+          "result": "公司站域名断连，未取得原公告。"
+        }
+      ],
+      "decision": "保留原hold，不从论坛日期/首次出道倒推退出日，不创造成员ID。",
+      "nextAction": "需要公司原帖链接或具可靠原刊出处的声明；转载图片只作线索，不由粉丝帖日期直接确认退出日。"
+    }
+  ],
+  "verification": {
+    "focusedTests": {
+      "command": "node --test tests/timeline-category-resolution.test.cjs tests/timeline-correction-chain.test.cjs tests/timeline-batch-f-adoption.test.cjs",
+      "passed": 56,
+      "failed": 0
+    },
+    "legacyWholeRouteTest": {
+      "command": "node --test tests/timeline-production.test.cjs",
+      "passed": 9,
+      "failed": 43,
+      "observedFailures": [
+        "old single-heading expectations",
+        "synchronous Suspense for some lazy group routes",
+        "WOOAH expected event set",
+        "LSF old title text"
+      ],
+      "note": "New correction/hash handling is updated, but the legacy full-route suite is not passing. No design changes were made to satisfy obsolete assertions."
+    },
+    "buildAndLiveChecks": "Parent-owned and not performed by this subtask",
+    "gitAndDeployment": "No commit, push, branch switch or deployment in this subtask"
+  },
+  "boundaries": [
+    "不存医学原因或完整健康公告。",
+    "不新增私人关系/成员ID，不修改评分、观看、备注、权限、访问模式。",
+    "未解决项保留历史原对象；公开署名/目录/报道各自不冒充人事生效或公司原公告。"
+  ]
+}

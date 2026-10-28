@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28",
+  "applicationDataModified": false,
+  "baselineFile": "apps\\idol-site\\data\\group-statistics-completion-evidence.json",
+  "baselineFileSha256": "74c13cf09b9c32e32bc82a2c59a670b247d6efe1cbe14fae08555fba56305bc1",
+  "fromis9": {
+    "monthlyRows": 39,
+    "monthlySum": 1151613,
+    "annualReplacements": [
+      {
+        "year": 2019,
+        "album": "FUN FACTORY",
+        "annual": 56121,
+        "primary": "https://circlechart.kr/page_chart/album.circle?hitYear=2019&nationGbn=T&targetTime=2019&termGbn=year&yearTime=3",
+        "readable": "https://bestsellingalbums.org/year-end/South_Korea_Top_Albums_2019",
+        "corroborating": "https://kpopmerchandiseguide.com/discography/fromis-9-albums",
+        "rank": 91,
+        "replacedMonthlyRows": [
+          {
+            "rowIndex": 27,
+            "year": 2019,
+            "month": 8,
+            "sales": 1212,
+            "album": "FUN FACTORY"
+          },
+          {
+            "rowIndex": 28,
+            "year": 2019,
+            "month": 7,
+            "sales": 5406,
+            "album": "FUN FACTORY"
+          },
+          {
+            "rowIndex": 29,
+            "year": 2019,
+            "month": 6,
+            "sales": 49850,
+            "album": "FUN FACTORY"
+          }
+        ],
+        "monthlySum": 56468,
+        "delta": -347,
+        "sourceAccess": {
+          "primary": "search-index-only; direct-open returned chart shell",
+          "readable": "full-page-read; secondary chart transcription"
+        }
+      },
+      {
+        "year": 2022,
+        "album": "from our Memento Box",
+        "annual": 158682,
+        "primary": "https://circlechart.co.kr/page_chart/album.circle?hitYear=2022&nationGbn=T&targetTime=2022&termGbn=year&yearTime=3",
+        "readable": "https://bestsellingalbums.org/album/62583",
+        "rank": 92,
+        "replacedMonthlyRows": [
+          {
+            "rowIndex": 12,
+            "year": 2022,
+            "month": 7,
+            "sales": 20640,
+            "album": "from our Memento Box"
+          },
+          {
+            "rowIndex": 14,
+            "year": 2022,
+            "month": 6,
+            "sales": 137232,
+            "album": "from our Memento Box"
+          }
+        ],
+        "monthlySum": 157872,
+        "delta": 810,
+        "sourceAccess": {
+          "primary": "search-index-only; direct-open returned chart shell",
+          "readable": "full-page-read; secondary chart transcription"
+        }
+      }
+    ],
+    "preservedSeparateVersionRows": [
+      {
+        "year": 2022,
+        "month": 7,
+        "sales": 6158,
+        "album": "from our Memento Box (Weverse)"
+      },
+      {
+        "year": 2022,
+        "month": 6,
+        "sales": 17454,
+        "album": "from our Memento Box (Weverse)"
+      },
+      {
+        "year": 2022,
+        "month": 6,
+        "sales": 11251,
+        "album": "from our Memento Box (KiT)"
+      },
+      {
+        "year": 2019,
+        "month": 6,
+        "sales": 5136,
+        "album": "FUN FACTORY (KiT)"
+      }
+    ],
+    "preservedSeparateVersionSum": 39999,
+    "netDelta": 463,
+    "suggestedObservedValue": 1152076,
+    "aggregateComparison": 1152076,
+    "remainingAggregateDifference": 0,
+    "recommendation": "Keep all 39 original monthly rows; apply annual standard-edition replacements as a separate transparent reconciliation. Do not add annual rows to monthly rows. Label Korean Circle source-covered cumulative through July 2026, not global lifetime total.",
+    "sourceMethodology": "https://soridata.com/transparency.html",
+    "scopeCaveat": "Exact arithmetic reconstruction of the two displayed Soridata totals; no claim to independently inspect its private internal database or prove all worldwide sales."
+  },
+  "comparisonTables": {
+    "fromis9Chukkae": {
+      "values": [
+        115009,
+        97615,
+        142651,
+        194535,
+        194231,
+        149702,
+        23000,
+        58135,
+        55251,
+        61257,
+        36748,
+        20480,
+        22279
+      ],
+      "sum": 1170893
+    },
+    "triplesChukkae": {
+      "values": [
+        518253,
+        352610,
+        461413,
+        337203,
+        211609,
+        35162,
+        36144,
+        55229,
+        54857,
+        32946
+      ],
+      "sum": 2095426
+    },
+    "triplesKoreanSalesAlbums": {
+      "values": [
+        32946,
+        54857,
+        55229,
+        37213,
+        34093,
+        211609,
+        337203,
+        461024,
+        379895,
+        519628
+      ],
+      "sum": 2123697
+    },
+    "triplesKoreanSalesYears": {
+      "values": [
+        26063,
+        157447,
+        547232,
+        854088,
+        558585
+      ],
+      "sum": 2143415
+    }
+  },
+  "triples": {
+    "monthlyRows": 36,
+    "monthlySum": 2087073,
+    "artistAggregate": 2458789,
+    "unresolvedDifference": 371716,
+    "recommendedRuntimeDelta": 0,
+    "annualPerformanteCosmo2024": {
+      "monthly": 286809,
+      "annualIndexed": 289224,
+      "delta": 2415
+    },
+    "status": "Still open. A partial annual difference is insufficient; no scope/unit or double-count assumption accepted."
+  },
+  "databaseDownload": {
+    "url": "https://soridata.com/en/database_download.html",
+    "status": "Public page read; SQL download requires human CAPTCHA; no bypass attempted.",
+    "documentedFields": "Artists releases includes sales; full SQL refreshed every six hours.",
+    "possibleUserHelp": "User may manually download the SQL and provide the file for the two artist sales records."
+  }
+}

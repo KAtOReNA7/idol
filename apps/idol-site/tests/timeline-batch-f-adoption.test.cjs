@@ -16,7 +16,10 @@ const events=new Map([...docs.values()].flatMap(d=>d.events.map(e=>[e.id,e])));
 const files=new Map(manifest.files.map(f=>[f.path,f]));
 const {validateCorrectionChain}=require('./helpers/timeline-correction-chain.cjs');
 const correction=require('../HANDOFF/timeline-corrections/triples-assemble24.json');
-const historicalEvents=validateCorrectionChain({corrections:[correction,require('../evidence/approved-visual-repairs/badvillain-overstep-correction.json'),require('../evidence/approved-visual-repairs/madein-rise-correction.json')],events,ledger,
+const reviewedOctober25=require('../../../docs/codex/evidence/20261025-data-completion/timeline-evidence.json');
+const historicalInput=new Map(events);for(const c of Object.values(reviewedOctober25))historicalInput.set(c.eventId,c.before);
+const categoryCorrections=require('../evidence/category-resolution-20261027/timeline-corrections.json');
+const historicalEvents=validateCorrectionChain({corrections:[correction,require('../evidence/approved-visual-repairs/badvillain-overstep-correction.json'),require('../evidence/approved-visual-repairs/madein-rise-correction.json')],events:historicalInput,ledger,
  readBytes:p=>fs.readFileSync(path.join(root,p)),snapshot:read('data/snapshot.json')});
 
 test('Batch F eventId overlay preserves all 154 noops and exactly adopts 97 updates plus 345 inserts',()=>{
@@ -48,7 +51,7 @@ test('canonical group identities and previous gaps survive; empty incoming gaps 
  assert.equal(ledger.groups.length,50);
  for(const group of ledger.groups){
   const doc=docs.get(group.slug);assert.equal(doc.schemaVersion,1);assert.equal(doc.groupId,group.groupId);
-  const gaps=['badvillain','madein'].includes(group.slug)?require('../evidence/approved-visual-repairs/'+(group.slug==='madein'?'madein-rise':'badvillain-overstep')+'-correction.json').beforeGaps:doc.gaps;
+  const gaps=categoryCorrections.documents.find(d=>d.slug===group.slug)?.beforeGaps??reviewedOctober25[group.slug]?.beforeGaps??(['badvillain','madein'].includes(group.slug)?require('../evidence/approved-visual-repairs/'+(group.slug==='madein'?'madein-rise':'badvillain-overstep')+'-correction.json').beforeGaps:doc.gaps);
   assert.deepEqual(gaps,group.adoptedGaps);
   assert.deepEqual(gaps,[...new Set([...group.baselineGaps,...group.incomingGaps])]);
  }

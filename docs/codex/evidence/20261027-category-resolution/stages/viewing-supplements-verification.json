@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-27",
+  "validator": {
+    "command": "node scripts/validate-supplements.mjs",
+    "works": 129,
+    "alternatives": 78,
+    "reviews": 68,
+    "official": 47,
+    "audience": 31,
+    "excerpts": 5,
+    "watchLeads": 8,
+    "scoreBindings": 0
+  },
+  "tests": {
+    "command": "node --test tests/stage-viewing-category-resolution.test.mjs",
+    "passed": 3,
+    "failed": 0
+  },
+  "oldSupplementRecordsPreserved": 129,
+  "formalStageAndStatusFilesUnchanged": true,
+  "deployed": false,
+  "privateScoresRead": false
+}

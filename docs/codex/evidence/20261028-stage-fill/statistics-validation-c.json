@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-28T05:54:25.473085+00:00",
+  "command": "node --test tests/stage-fill-statistics.test.mjs tests/statistics-annual-reconciliation.test.mjs tests/statistics-category-resolution.test.mjs",
+  "workingDirectory": "apps/idol-site",
+  "result": {
+    "tests": 16,
+    "pass": 16,
+    "fail": 0
+  },
+  "checks": [
+    "两完整销售对象和summary之外全数据canonical hash可还原",
+    "三独立周行用Album_CNT精确复算，无Total_CNT/Retail混加",
+    "已核单周/两周范围在公共渲染中可见，个人canary输入不输出且不变",
+    "原tripleS/fromis_9年榜去重及历史cohort保护断言保留"
+  ],
+  "limits": [
+    "未部署或推送GitHub，由root负责",
+    "未检查真实私人保存",
+    "剩余7销量仍未知，另5社媒和3一位未知；Geenius217只作研究"
+  ]
+}

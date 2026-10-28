@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-27T14:54:11.445Z",
+  "method": "Same signed-in Chrome session; ordinary top-level GET to existing /api/status and /api/catalog?shape=display-v1; DOM read only",
+  "status": {"http": 200, "source": "native", "mode": "live-ready", "writesPaused": false},
+  "renderedOwnerState": "仅本人可编辑",
+  "personalWrites": 0,
+  "newStageBindings": 0,
+  "before": {
+    "mode": "live",
+    "counts": {"groups": 51, "members": 338, "works": 614, "ratings": 2845},
+    "protected": {
+      "groups": "ecc60283158e57009c502cb66df00ce0abedf21929f2ca86f14c010f053fb669",
+      "members": "c51aacd09d9d5cee7f3d45c331b97154fdca3e143dc2b527149d2727fed6f162",
+      "works": "7c975bfa650044286363dfd31530cd22adb12f2659722c1963eb598af1c7328c",
+      "ratings": "c06304fb8d1d4632cede23362735dab640a4a1713b0fa06155d93a03da6ea6fd"
+    }
+  },
+  "afterV193": {
+    "checkedBetweenUtc": ["2026-10-27T15:07:40Z", "2026-10-27T15:23:43Z"],
+    "counts": {"groups": 51, "members": 338, "works": 614, "ratings": 2845},
+    "protected": {
+      "groups": "ecc60283158e57009c502cb66df00ce0abedf21929f2ca86f14c010f053fb669",
+      "members": "c51aacd09d9d5cee7f3d45c331b97154fdca3e143dc2b527149d2727fed6f162",
+      "works": "7c975bfa650044286363dfd31530cd22adb12f2659722c1963eb598af1c7328c",
+      "ratings": "c06304fb8d1d4632cede23362735dab640a4a1713b0fa06155d93a03da6ea6fd"
+    },
+    "allProtectedHashesEqual": true,
+    "timePrecision": "interval bounded by succeeded deployment and subsequent tool-clock record; browser evaluation did not return its timestamp",
+    "sha256AbcSelfTest": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+  },
+  "stageAuthorizationRecheck": {
+    "recordedAt": "2026-10-27T15:23:43Z",
+    "userDecision": "按官方资料绑定，并注明核验范围",
+    "works": ["recvxyHuKM2wRG", "recvxyHuKMCtUB", "recvxDMFHNUJlD", "recvxDMFHNSckK"],
+    "allStageScoresNull": true,
+    "allStagesNull": true,
+    "writes": 0
+  },
+  "workProtectedFields": ["id", "name", "song", "groupIds", "url", "score", "stageScore", "note", "watched", "ratingIds", "source", "stage"],
+  "hashMethod": "SHA-256 of JSON in original response field/order; calculated inside DOM evaluation before tool transport truncation, self-tested with SHA-256(abc)",
+  "privacy": "Only aggregate counts and hashes retained; no private values, account identity, cookies or credentials saved here.",
+  "diagnosticCorrections": [
+    "Browser tab discovery success does not imply debugger attachment. Old tab returned Debugger unattached; fresh same-browser tab worked.",
+    "Shell/tool HTTP401 was not evidence that the user's browser was logged out.",
+    "Large arrays transported out of browser evaluation were truncated to2000; true DOM count2845 verified and complete fingerprints computed in-page instead. Earlier truncated fingerprints are not used."
+  ]
+}

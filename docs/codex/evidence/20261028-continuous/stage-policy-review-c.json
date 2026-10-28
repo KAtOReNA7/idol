@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-28T09:01:07.520870+00:00",
+  "reviewedFiles": {
+    "apps\\idol-site\\scripts\\stage_selection_policy.py": "9dcab20ca64caac452cff9826c8bcc0d636c747f3857cca53b42535b60b6f4c0",
+    "apps\\idol-site\\scripts\\merge-stage-batch.py": "f230b5f47bc797f8605b930617d81a6b992f2dd1c4427a8dabe3704815527d13",
+    "apps\\idol-site\\tests\\stage-import-policy.test.cjs": "26fd1f8c647fff6780d20747dafca6eae90ac8b5c9a65c9a5b1f4e9fd3fcbb1b"
+  },
+  "testResult": {
+    "tests": 13,
+    "passed": 13,
+    "command": "node --test tests/stage-import-policy.test.cjs"
+  },
+  "findings": [
+    {
+      "priority": "P2",
+      "file": "apps/idol-site/scripts/merge-stage-batch.py",
+      "line": 88,
+      "title": "Apply the published-source preimage guard to every accepted export type",
+      "trigger": "Feishu source, live-backup format, empty stage score, complete fresh external journal, and published stage metadata differing from the local previous source.",
+      "actual": "Replacement succeeds although old actual published source differs; current guard runs only for native.",
+      "recommended": "Require published source equality for every replacement, and reject missing source metadata; add Feishu mismatch/absent coverage.",
+      "evidence": "docs/codex/evidence/20261028-continuous/stage-policy-preimage-review-c.json",
+      "productionNativeImpact": "Native current path is guarded; no real private values or writes in review."
+    }
+  ],
+  "confirmedProtections": [
+    "explicit prior occasion evidence is bound to canonical source hash",
+    "priority is compared before likes",
+    "zero and nonempty owner scores stay bound to old source",
+    "native complete journal records from all statuses block replacement",
+    "native published exact source preimage checked",
+    "changed clips are held",
+    "full prior source fields and pre-existing history retained in archive chain",
+    "all batch validation precedes local writes"
+  ],
+  "limits": [
+    "Review used synthetic fixtures only; no owner export or private writes",
+    "No application or root-owned stage files changed by this reviewer"
+  ],
+  "status": "one_finding_reported_to_parent"
+}

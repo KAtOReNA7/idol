@@ -8,6 +8,7 @@ import {prepareTimelinePresentation} from '../lib/idol/timeline/presentation';
 import type {TimelineIdentityCatalog} from '../lib/idol/timeline/identity';
 import type {TimelineDisplayCopy} from '../lib/idol/timeline/display-copy';
 import './artist-timeline.css';
+import {TimelineReportedRecords} from './timeline-reported-records';
 
 export interface ArtistTimelineProps {
   /** Untrusted wire payload; validation precedes all event rendering. */
@@ -138,5 +139,6 @@ export function ArtistTimeline({input,context,catalog,title='大事时间轴',sh
           <EventLinks event={event} context={identityContext} onMember={onMember} onWork={onWork} memberLabels={memberLabels} workLabels={workLabels} releaseTargets={releaseTargets} onRelease={onRelease}/>
         </article>
       </li>)}</ol>}
+    {validation.ok&&!loading&&!error&&<TimelineReportedRecords slug={validation.value.slug} groupId={validation.value.groupId}/>}
   </section>;
 }

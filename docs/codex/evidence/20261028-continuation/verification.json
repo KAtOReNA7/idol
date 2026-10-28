@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-28T05:10:27.741809+00:00",
+  "tests": 159,
+  "passed": 159,
+  "failed": 0,
+  "testFiles": [
+    "core.test.cjs",
+    "formal-four-stage-adoption.test.cjs",
+    "watch-leads.test.cjs",
+    "stage-viewing-category-resolution.test.mjs",
+    "stage-selection-policy.test.mjs",
+    "stage-import-policy.test.cjs",
+    "stage-validator.test.cjs",
+    "statistics-annual-reconciliation.test.mjs",
+    "statistics-category-resolution.test.mjs",
+    "timeline-production.test.cjs"
+  ],
+  "testLogSha256": "f2f8f2c7a6c9212ec5809fd9daee2667cf5f7eda0396983317b984509c26c52f",
+  "typeScript": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false",
+    "exitCode": 0
+  },
+  "formalBuild": {
+    "command": "node <Sites plugin>/scripts/build-site.mjs",
+    "exitCode": 0
+  },
+  "localBrowser": {
+    "layouts": 15,
+    "interactions": 15,
+    "passed": true,
+    "finalConsoleIssues": 0,
+    "priorTransientHydrationWarningUnresolvedNotReproduced": true
+  },
+  "wholeRepositoryTested": false,
+  "privateWrites": 0,
+  "productionBrowser": {
+    "evidence": "production-browser.json",
+    "layouts": 15,
+    "interactions": 15,
+    "directAnonymousApiReads": 15,
+    "passed": true,
+    "fixtures": false,
+    "relay": false,
+    "applicationWrites": 0,
+    "applicationConsoleErrors": 0,
+    "readOnlyHarnessBlockedCloudflareChallengePosts": 14,
+    "initialHarnessAggregatePassed": false
+  }
+}

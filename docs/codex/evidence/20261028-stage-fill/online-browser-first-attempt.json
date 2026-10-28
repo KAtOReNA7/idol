@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-28T06:21:46.344Z",
+  "base": "https://idol-lens-private.wuke40758.chatgpt.site",
+  "mode": "production-readonly",
+  "browserRouting": "Browser plugin not available. IAB connection failed twice at parent. User requested avoiding their Chrome; installed bundled Chromium binary absent, so launch isolated headless system Chrome with fresh temporary context and no user profile.",
+  "flow": "Open work MV -> click stage tab -> verify exact source and practice note/poster/read-only score presentation -> return MV -> return stage. Play button structure only; no playback.",
+  "browser": {
+    "bundledExecutable": "C:\\Users\\20240513\\AppData\\Local\\ms-playwright\\chromium-1234\\chrome-win64\\chrome.exe",
+    "bundledInstalled": false,
+    "userProfileReused": false,
+    "version": "157.0.8103.15",
+    "startingCookies": 0
+  },
+  "fixture": {
+    "currentModuleSha256": {
+      "lib/idol/stage.ts": "c4a64d1aaddf0dafe18a96ad4fbcb60c7d455cc3c6afc99ac55935fa5236b429",
+      "lib/idol/public-catalog.ts": "0f1863ccd8bc9506397070ab693b621b0970f4d20eab6dc46931f482ac06c8fc",
+      "data/stage-videos.json": "fc2251beab2ea55caa729451068d0c0e21576ea191f8ce87d9111872de62656c",
+      "data/stages/status.json": "24c9b10bd5da2f69309a950ba2c1c2311fa3fcff69b6927b2861abbe9802f182"
+    },
+    "requests": [],
+    "mode": "No catalog interception or data patch; real anonymous production HTTP"
+  },
+  "checks": [],
+  "interactions": [],
+  "posterChecks": [
+    {
+      "workId": "rec28ldfRTrCrz",
+      "url": "https://idol-lens-private.wuke40758.chatgpt.site/artist/stage-practice-20261028/e-6iU-nTTs4-maxresdefault.jpg",
+      "status": 403,
+      "bytes": 4547,
+      "sha256": "9764b65c1cff52c7340371065a9823be525896c9f785046a2841ec7e2f530db9",
+      "expectedSha256": "32bdbe40ff7f3bdff9631194526b16a481a32086dcdcbd2fc70fdbb3c63e8f1f",
+      "passed": false
+    }
+  ],
+  "pageErrors": [],
+  "consoleIssues": [],
+  "resourceFailures": [],
+  "blockedMutationRequests": [],
+  "blockedVideoRequests": [],
+  "mediaReadForwarding": {
+    "count": 0,
+    "failed": []
+  },
+  "errors": [],
+  "notVerified": [
+    "Owner/private session",
+    "Personal save or score edit",
+    "Full video playback or audio comparison",
+    "User IAB / native Chrome session",
+    "Native zoom"
+  ],
+  "passed": false,
+  "completedAt": "2026-10-28T06:21:54.861Z"
+}

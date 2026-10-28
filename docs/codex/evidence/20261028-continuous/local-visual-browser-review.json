@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-28T09:52:11.475736+00:00",
+  "method": "Actual view_image screenshot review",
+  "samples": [
+    {
+      "path": "E:/project/idol-continuous-qa-20261028/local-recvxyH5pzbluu-320-evidence.png",
+      "observation": "Single-person partial recording credit clearly limited to YOON; image/name/source readable at 320px."
+    },
+    {
+      "path": "E:/project/idol-continuous-qa-20261028/local-targeted-recvxDMFHNSckK-1440-evidence.png",
+      "observation": "Seven release references painted after explicit image decode; disclosure says references are not MV appearance or contemporaneous styling proof."
+    },
+    {
+      "path": "E:/project/idol-continuous-qa-20261028/local-rec28ldfRTrGou-390-evidence.png",
+      "observation": "Five public participation references use native dark styling and two-column mobile grid; image controls and names do not overlap."
+    },
+    {
+      "path": "E:/project/idol-continuous-qa-20261028/local-bewave-320-evidence.png",
+      "observation": "Reported date, future plan, unknown effective date and three source links readable in existing timeline design."
+    },
+    {
+      "path": "E:/project/idol-continuous-qa-20261028/local-candyshop-390-evidence.png",
+      "observation": "Reported hiatus, independent effective-date uncertainty and not-a-departure boundary visible; new named-source link visible."
+    },
+    {
+      "path": "E:/project/idol-continuous-qa-20261028/local-geenius-1440-evidence.png",
+      "observation": "QR instrumental directory record and actual-release-date uncertainty remain explicit; three sources visible."
+    },
+    {
+      "path": "E:/project/idol-continuous-qa-20261028/local-triples-390-evidence.png",
+      "observation": "Existing tripleS layout retains 2,092,239 sales value and exposes expanded source details; DOM assertions separately verify official same-value annual note and 366,550 unresolved difference."
+    },
+    {
+      "path": "E:/project/idol-continuous-qa-20261028/local-targeted-rec28ldfRTrK1S-390-evidence.png",
+      "observation": "Final added ILLIT little monster references retain native blue palette and two-column mobile image/name layout; no clipping or missing loaded images."
+    }
+  ],
+  "screenshotTimingFinding": {
+    "initial": "local-recvxDMFHNSckK-1440-evidence.png",
+    "finding": "COCONA image had loaded natural dimensions but screenshot preceded async decoding/painting.",
+    "followup": "local-targeted-recvxDMFHNSckK-1440-evidence.png",
+    "resolution": "Targeted browser-only test now waits image.decode plus animation frames; all seven images visibly painted. No app files changed; initial screenshot retained."
+  },
+  "limits": [
+    "Targeted screenshot visual checks, not a full-frame visual review of every image.",
+    "Originals were loaded and dimensions/URLs checked across all cases; full video and individual MV appearance not checked."
+  ]
+}

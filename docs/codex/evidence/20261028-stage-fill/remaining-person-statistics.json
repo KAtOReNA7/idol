@@ -1,0 +1,4486 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-28T06:27:00.296768+00:00",
+  "scope": "Current public local-data continuation queues derived from exact version tuples and current observedValue nulls. No network research or private/owner data reads; not a deployment receipt.",
+  "sourceFiles": [
+    {
+      "path": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "sha256": "36534a5f9a42502f08d24d3be9e50f0dbe2081705b177045428b04d03850fc2a"
+    },
+    {
+      "path": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "sha256": "62136c1ddea40c4809ad6082cdea726e63118112b0a772386cd6ef87f64a2e20"
+    },
+    {
+      "path": "docs/codex/evidence/20261028-followup/131-work-resolution-ledger.json",
+      "sha256": "9db75a1be67256c9b9ca138b7e161301280669c687de9fae1215f6edbf3c2724"
+    },
+    {
+      "path": "apps/idol-site/data/public-work-credits.json",
+      "sha256": "be7133e9f1749f5f77f65062aceed5361c801444c8f497caf07b1622e653ba5b"
+    },
+    {
+      "path": "apps/idol-site/data/public-work-recognition.json",
+      "sha256": "f8c52716306b69d3649fe0fae64c1fb2d802c873152d850fd752380b469acc3d"
+    },
+    {
+      "path": "apps/idol-site/data/mv-member-appearance.json",
+      "sha256": "8a15e4e66915766315e082f98daaabda7ba8d79264b1e98f49a307a89b479903"
+    },
+    {
+      "path": "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "sha256": "f7d276323fad24e7fa85cf71a95f2dfed022c22a5b5cb36d6cb896996179fd42"
+    },
+    {
+      "path": "docs/codex/evidence/20261028-stage-fill/person-followup.json",
+      "sha256": "4136b77f9afc005ab0962ceaf6465e7ce8353e7d03a4f88d6e0cfa1fc7b58d1f"
+    },
+    {
+      "path": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+      "sha256": "924ed91a1f9f595ade76da9b597a4cbeebd2078e897b9cd144b8c93c5288b50f"
+    },
+    {
+      "path": "docs/codex/evidence/20261028-stage-fill/statistics-adoption-proposal.json",
+      "sha256": "02606c9366c7236e3d886d66770849738c81b9c936510b1bd5d11948ebac475e"
+    },
+    {
+      "path": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+      "sha256": "7c287c4a611e561eb2920408f362b083c6ba35c03b2dbf12c8541f1e8b46067a"
+    },
+    {
+      "path": "apps/idol-site/data/timeline-reported-records.json",
+      "sha256": "a0b7a4c7271cae3b8d16d349abc6cd1a34c8254ab1521e698b87ae13e5a4b051"
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/atheart.json",
+      "sha256": "82dab6b7057818a60acb933f57617877eced2a664b0a64206f9a38a5c3bac853"
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/bewave.json",
+      "sha256": "cfed63175dbcf2be685f67c94f5511235e8e1000eff880942e1ecd8d2eab7565"
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/candyshop.json",
+      "sha256": "480ebf439d9de4824b9d3d2c54c2a6a54e67024c7622c70acd71ac38202b4af2"
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/geenius.json",
+      "sha256": "6827b5a3cbaa18a718854729a86b571b085f1d3251f139e3c21950571b242421"
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/udtt.json",
+      "sha256": "f2fc3be3ed849ce23e8dfea4da27607e1f20b4699efc027cd1a23b7efcd311e3"
+    }
+  ],
+  "summary": {
+    "previousRemainingPersonWorks": 84,
+    "newlyCoveredPersonWorks": 3,
+    "currentRemainingPersonWorks": 81,
+    "currentPublicCreditWorks": 45,
+    "currentRecognitionSlots": 279,
+    "distinctReusedRecognitionOriginals": 128,
+    "originalNoPrivateRelationWorkUniverse": 131,
+    "currentCreditAbsenceOverlap": 1,
+    "currentCreditAbsenceCoveredUnion": 50,
+    "previousUnknownMetrics": 17,
+    "newlyObservedScopedSalesMetrics": 2,
+    "currentUnknownMetrics": 15,
+    "unknownByMetric": {
+      "x": 5,
+      "wins": 3,
+      "sales": 7
+    },
+    "separateUnknownEffectiveDateHolds": 7
+  },
+  "derivation": {
+    "personSet": "131-work exact (workId,videoId) universe minus current public credit tuples minus current confirmed-no-members tuples; equals old84 minus exactly the three adopted current-round tuples.",
+    "statisticsSet": "Enumerate all current group social/sales/wins rows with observedValue===null; equals old17 unknown keys minus badvillain.sales and bewave.sales.",
+    "effectiveDates": "The seven prior audit event IDs still have canonical reviewStatus=hold and eventDate=null; corresponding reported records exist with eventDate=null.",
+    "noDoubleCounting": "Covered person set is a union; one credit/absence overlap counted once. Geenius Retail217 stays unknown; the two observed sales are bounded period lower bounds, not full totals.",
+    "notAdditive": "81 personworks,15 metrics and7 event holds are distinct dimensions and must not be summed as a total missing-work count."
+  },
+  "validation": {
+    "old84MinusThreeEqualsCurrent81": true,
+    "current131MinusCreditAbsenceUnionEquals81": true,
+    "personTupleDuplicates": 0,
+    "currentCreditAndRecognitionPresentForAllThree": true,
+    "old17MinusTwoEqualsCurrent15": true,
+    "unknownMetricTupleDuplicates": 0,
+    "currentObservedValuesAllNull": true,
+    "currentAppSummaryUnknownCountMatches": true,
+    "allSevenCanonicalAndReportedEffectiveDatesRemainNull": true,
+    "sourcePublicOnly": true,
+    "filesModifiedByThisTask": [
+      "docs/codex/evidence/20261028-stage-fill/remaining-person-statistics.json"
+    ]
+  },
+  "newlyClosedPersonTuples": [
+    {
+      "tuple": [
+        "recvxIZnNLuycR",
+        "HcJUfVPvU4Y"
+      ],
+      "workId": "recvxIZnNLuycR",
+      "videoId": "HcJUfVPvU4Y",
+      "song": "GROSS",
+      "groups": [
+        "HITGS"
+      ],
+      "memberIds": [
+        "recvxAPQCFYx1e",
+        "recvxAPQCFxcH2",
+        "recvxAPQCFDTXs",
+        "recvxAPQCFzCEc",
+        "recvxAPQCFQvki"
+      ],
+      "creditKind": "documented_project_lineup",
+      "recognitionSlots": 5,
+      "creditSourceFile": "apps/idol-site/data/public-work-credits.json",
+      "recognitionSourceFile": "apps/idol-site/data/public-work-recognition.json",
+      "newPrivateRelationship": false
+    },
+    {
+      "tuple": [
+        "recvxIZxXupyDR",
+        "GGYo0Ya-4xE"
+      ],
+      "workId": "recvxIZxXupyDR",
+      "videoId": "GGYo0Ya-4xE",
+      "song": "CHARIZZMA",
+      "groups": [
+        "HITGS"
+      ],
+      "memberIds": [
+        "recvxAPQCFYx1e",
+        "recvxAPQCFxcH2",
+        "recvxAPQCFDTXs",
+        "recvxAPQCFzCEc",
+        "recvxAPQCFQvki"
+      ],
+      "creditKind": "documented_project_lineup",
+      "recognitionSlots": 5,
+      "creditSourceFile": "apps/idol-site/data/public-work-credits.json",
+      "recognitionSourceFile": "apps/idol-site/data/public-work-recognition.json",
+      "newPrivateRelationship": false
+    },
+    {
+      "tuple": [
+        "recvxyH5pzV22X",
+        "FY9PFBxxKR8"
+      ],
+      "workId": "recvxyH5pzV22X",
+      "videoId": "FY9PFBxxKR8",
+      "song": "Stranger",
+      "groups": [
+        "Weeekly"
+      ],
+      "memberIds": [
+        "recvxyICzHH702",
+        "recvxyICzHbczT",
+        "recvxyICzHn6vM",
+        "recvxyICzHBiSD",
+        "recvxyICzHrdSX",
+        "recvxyICzHXzUs"
+      ],
+      "creditKind": "documented_project_lineup",
+      "recognitionSlots": 6,
+      "creditSourceFile": "apps/idol-site/data/public-work-credits.json",
+      "recognitionSourceFile": "apps/idol-site/data/public-work-recognition.json",
+      "newPrivateRelationship": false
+    }
+  ],
+  "newlyObservedStatistics": [
+    {
+      "key": "badvillain.sales",
+      "tuple": [
+        "badvillain",
+        "sales"
+      ],
+      "observedValue": 5367,
+      "title": "已核两周销量下界",
+      "scope": "BADVILLAIN《OVERSTEP》韩国Circle Album Chart 2024年第23、24周已核销量合计5,367张；仅为这两周的来源覆盖下界，不是全团或全球完整累计；其他时期、版本及作品未覆盖。",
+      "lowerBound": true,
+      "proposalFile": "docs/codex/evidence/20261028-stage-fill/statistics-adoption-proposal.json",
+      "sourceFile": "apps/idol-site/data/group-statistics-completion-evidence.json"
+    },
+    {
+      "key": "bewave.sales",
+      "tuple": [
+        "bewave",
+        "sales"
+      ],
+      "observedValue": 725,
+      "title": "已核单周销量下界",
+      "scope": "BEWAVE《BE;WAVE》韩国Circle Album Chart 2024年第16周已核销量725张；仅为这一周的来源覆盖下界，不是全团或全球完整累计；其他时期、版本及作品未覆盖。",
+      "lowerBound": true,
+      "proposalFile": "docs/codex/evidence/20261028-stage-fill/statistics-adoption-proposal.json",
+      "sourceFile": "apps/idol-site/data/group-statistics-completion-evidence.json"
+    }
+  ],
+  "remainingPersonCategoryCounts": {
+    "performance_live": 16,
+    "special_film_video": 11,
+    "collaboration": 4,
+    "lyric_video": 3,
+    "remix": 11,
+    "standard_mv": 24,
+    "language_or_acoustic": 6,
+    "screen_ost": 5,
+    "character_edition": 1
+  },
+  "remainingPersonTuples": [
+    [
+      "rec28ldfRTrCzF",
+      "kLd8bHVpUUw"
+    ],
+    [
+      "rec28ldfRTrCDJ",
+      "PYEOubLoXDo"
+    ],
+    [
+      "rec28ldfRTrFGi",
+      "A-Hr8aYSEx0"
+    ],
+    [
+      "rec28ldfRTrGou",
+      "IVXJXo_AZyw"
+    ],
+    [
+      "rec28ldfRTrGwK",
+      "QsOnTCwooDs"
+    ],
+    [
+      "rec28ldfRTrGEy",
+      "BbcxmtNaesk"
+    ],
+    [
+      "rec28ldfRTrHhL",
+      "-Xqhrnql7mg"
+    ],
+    [
+      "rec28ldfRTrI0Y",
+      "80-Q7b1qaFg"
+    ],
+    [
+      "rec28ldfRTrIkV",
+      "Txyb_mVaPyE"
+    ],
+    [
+      "rec28ldfRTrIC0",
+      "gNUMxMuxH20"
+    ],
+    [
+      "rec28ldfRTrINH",
+      "OncJ5v1keww"
+    ],
+    [
+      "rec28ldfRTrIRO",
+      "BTlj6Sls7KE"
+    ],
+    [
+      "rec28ldfRTrIZT",
+      "UsbRoaH6y-Q"
+    ],
+    [
+      "rec28ldfRTrJ7M",
+      "yFGsw8phPn4"
+    ],
+    [
+      "rec28ldfRTrJne",
+      "peFN4squVuQ"
+    ],
+    [
+      "rec28ldfRTrJKM",
+      "GtPPT-qSXj8"
+    ],
+    [
+      "rec28ldfRTrJVj",
+      "1yMzV0NdB9g"
+    ],
+    [
+      "rec28ldfRTrK1S",
+      "xRU1XXHIpIc"
+    ],
+    [
+      "rec28ldfRTrKy2",
+      "el7A_SI7sxs"
+    ],
+    [
+      "rec28ldfRTrLgo",
+      "M8r3x4Re8-I"
+    ],
+    [
+      "rec28ldfRTrLku",
+      "Gz_yRl6703c"
+    ],
+    [
+      "rec28ldfRTrLow",
+      "sRLbqYkoaLc"
+    ],
+    [
+      "rec28ldfRTrLsE",
+      "vYq_Xzj8HUM"
+    ],
+    [
+      "rec28ldfRTrLBw",
+      "qjebIv8FYMI"
+    ],
+    [
+      "rec28ldfRTrMcf",
+      "U-8TNlJ1Mw4"
+    ],
+    [
+      "rec28ldfRTrMgm",
+      "pYn96ujbJX0"
+    ],
+    [
+      "rec28ldfRTrMsR",
+      "a6PBMuqpGto"
+    ],
+    [
+      "rec28ldfRTrMwG",
+      "xWHWl0vG-38"
+    ],
+    [
+      "rec28ldfRTrMEN",
+      "3L-v6Xh64FE"
+    ],
+    [
+      "rec28ldfRTrMMV",
+      "mAPPUwHVHmk"
+    ],
+    [
+      "rec28ldfRTrMW0",
+      "EJ2fIbl35Oc"
+    ],
+    [
+      "rec28ldfRTrN8c",
+      "W_VWfNkTamw"
+    ],
+    [
+      "rec28ldfRTrNsK",
+      "LiZAgfmoQwc"
+    ],
+    [
+      "rec28ldfRTrNBu",
+      "xZ5Ej-tLEjM"
+    ],
+    [
+      "rec28ldfRTrNO2",
+      "xu0fU46Cd7M"
+    ],
+    [
+      "rec28ldfRTrPi9",
+      "aer_X9NmhTc"
+    ],
+    [
+      "rec28ldfRTrPq2",
+      "924WxkHMdxU"
+    ],
+    [
+      "rec28ldfRTrQ4z",
+      "DrU5bxPcH0s"
+    ],
+    [
+      "recvxyH5pzuYEC",
+      "FypWEDYseBY"
+    ],
+    [
+      "recvxyH5pzoaOZ",
+      "VACXoKdmofo"
+    ],
+    [
+      "recvxyH5pzrrSO",
+      "ZtiThQN5ETc"
+    ],
+    [
+      "recvxyH5pzQxpW",
+      "8DwTAa5hPsA"
+    ],
+    [
+      "recvxyH5pzFAPL",
+      "os4driLeAiU"
+    ],
+    [
+      "recvxyH5pz4ojC",
+      "5oIIzNGeXco"
+    ],
+    [
+      "recvxyH5pzbYAm",
+      "a7d5aFNh-YE"
+    ],
+    [
+      "recvxyH5pzbluu",
+      "udOf9JGMA7U"
+    ],
+    [
+      "recvxyHuKMisqR",
+      "EROYsCK0vK4"
+    ],
+    [
+      "recvxyHuKMiDs4",
+      "ZlcvaEpCEJ4"
+    ],
+    [
+      "recvxyHuKMyy5i",
+      "dn-fzIgHkg0"
+    ],
+    [
+      "recvxyHuKMXVDa",
+      "xjBY3MLdvVQ"
+    ],
+    [
+      "recvxyHuKMBHQA",
+      "wPnjKZFgeiE"
+    ],
+    [
+      "recvxyHuKMlGJW",
+      "4kMcaEz1WrQ"
+    ],
+    [
+      "recvxyHuKMCSdB",
+      "GnVRCX-Sfek"
+    ],
+    [
+      "recvxyHuKMwjsI",
+      "tY2q55Sw3jA"
+    ],
+    [
+      "recvxyHuKMlAhN",
+      "lWIQ72KFgrg"
+    ],
+    [
+      "recvxyHuKMxwnW",
+      "P2loH5EOnr8"
+    ],
+    [
+      "recvxyHuKMlNfX",
+      "zBiB0jww7_8"
+    ],
+    [
+      "recvxyHuKMLz7L",
+      "yMvsKWGPEIU"
+    ],
+    [
+      "recvxyHuKMwrIt",
+      "rNGPgQB4Be8"
+    ],
+    [
+      "recvxyOz5XFVzt",
+      "peoZYyEvY-k"
+    ],
+    [
+      "recvxyOz5Xr917",
+      "jgD_U2t6qXQ"
+    ],
+    [
+      "recvxyOz5XQZhy",
+      "XEsrFIQOWZg"
+    ],
+    [
+      "recvxyOz5X7zV3",
+      "ytTlH0EpSqI"
+    ],
+    [
+      "recvxyOz5XmFwB",
+      "-1llaBEyOXA"
+    ],
+    [
+      "recvxyOz5XsgVc",
+      "0T8d3pRjmi4"
+    ],
+    [
+      "recvxyOz5X6G1q",
+      "eJd4ii5avNw"
+    ],
+    [
+      "recvxyOz5XueI9",
+      "lLug6h74acE"
+    ],
+    [
+      "recvxDMFHNSckK",
+      "c5Fc6r4A9d8"
+    ],
+    [
+      "recvxIYG1FSCws",
+      "nYrezqbjl3E"
+    ],
+    [
+      "recvxIZnNLkXMl",
+      "1XOmTvPWQSs"
+    ],
+    [
+      "recvxIZnNLgpyC",
+      "3ensCfpaUWI"
+    ],
+    [
+      "recvxIZy35Xwr7",
+      "6GUKqEfiX1I"
+    ],
+    [
+      "recvxIZy35rUeY",
+      "L9VNIOcfSOU"
+    ],
+    [
+      "recvxIZy3525BF",
+      "IM-N8trjDzk"
+    ],
+    [
+      "recvxIZFpVLU0R",
+      "ecQSl-6NSTA"
+    ],
+    [
+      "recvxIZLjZmGMf",
+      "o5EdYwk8k9o"
+    ],
+    [
+      "recvxIZLpETQNx",
+      "sqYNGZJWNcw"
+    ],
+    [
+      "recvxIZLpET3tB",
+      "FifVV3t38Vk"
+    ],
+    [
+      "recvxIZY0lR25A",
+      "GaqBpWroH68"
+    ],
+    [
+      "recvxIZY0lPdWr",
+      "J997YfFCw2I"
+    ],
+    [
+      "recvxJ03dOg1Gc",
+      "lFxXpXk35Eo"
+    ]
+  ],
+  "remainingPersonWorks": [
+    {
+      "workId": "rec28ldfRTrCzF",
+      "song": "DADARIDA",
+      "groups": [
+        "MADEIN"
+      ],
+      "videoId": "kLd8bHVpUUw",
+      "url": "https://www.youtube.com/watch?v=kLd8bHVpUUw",
+      "directMetadataTitle": "MADEIN - \"DADARIDA\" PERFORMANCE MV",
+      "directMetadataAuthor": "MADEIN",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "efa30cb645284875ea359bd65edd3e169ad0d223bd4525dc930ae0e178f3dba7",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "MADEIN DADARIDA kLd8bHVpUUw members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=kLd8bHVpUUw"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrCzF",
+        "kLd8bHVpUUw"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrCDJ",
+      "song": "DOPAMINE",
+      "groups": [
+        "MADEIN"
+      ],
+      "videoId": "PYEOubLoXDo",
+      "url": "https://www.youtube.com/watch?v=PYEOubLoXDo",
+      "directMetadataTitle": "MADEIN - \"DOPAMINE\" PERFORMANCE MV",
+      "directMetadataAuthor": "MADEIN",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "efa30cb645284875ea359bd65edd3e169ad0d223bd4525dc930ae0e178f3dba7",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "MADEIN DOPAMINE PYEOubLoXDo members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=PYEOubLoXDo"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrCDJ",
+        "PYEOubLoXDo"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrFGi",
+      "song": "4 Life",
+      "groups": [
+        "VVUP"
+      ],
+      "videoId": "A-Hr8aYSEx0",
+      "url": "https://www.youtube.com/watch?v=A-Hr8aYSEx0",
+      "directMetadataTitle": "VVUP (비비업) ‘4 Life’ Special Video (Full ver.)",
+      "directMetadataAuthor": "VVUP",
+      "materialCategory": "special_film_video",
+      "materialCategoryLabel": "特殊短片／品牌片／特别视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "special_film_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "324a7be8feede9e815cc52a2652c586bd4f7ef90caeb8c1d64aa51c0e79cd0bb",
+      "fullVideoWatched": false,
+      "missingEvidence": "短片中的成员、演员与纯叙事画面尚未区分。",
+      "sourceRoute": "优先制作公司/导演项目页、品牌/官方幕后及片尾署名，再找具名采访；必要时完整观看并记录证据时间点。",
+      "completionCondition": "公开录音署名和演员出镜分别标注；完整视频与可靠来源支持无成员时才禁评。",
+      "searchSeed": "VVUP 4 Life A-Hr8aYSEx0 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=A-Hr8aYSEx0"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrFGi",
+        "A-Hr8aYSEx0"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrGou",
+      "song": "Scars",
+      "groups": [
+        "YOUNG POSSE"
+      ],
+      "videoId": "IVXJXo_AZyw",
+      "url": "https://www.youtube.com/watch?v=IVXJXo_AZyw",
+      "directMetadataTitle": "YOUNG POSSE(영파씨) - Scars I MAPSQUARE Music",
+      "directMetadataAuthor": "슈퍼 맵스 SUPER MAPS",
+      "materialCategory": "collaboration",
+      "materialCategoryLabel": "项目／合作／频道企划",
+      "previousPrimaryCategory": "screen_collaboration",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "5d287fcab5d6e708ce636cbb4b0e3fc5717216953d55c2556aa9a61a6bee4248",
+      "fullVideoWatched": false,
+      "missingEvidence": "项目特定成员名单，不是品牌大使/作词者/团体当前简介。",
+      "sourceRoute": "查项目主办方、品牌/发行方、制作人说明、确切项目幕后和参与者采访。",
+      "completionCondition": "区分作词作曲、录音、MV演员、舞台嘉宾四种身份；有证到哪层就标哪层。",
+      "searchSeed": "YOUNG POSSE Scars IVXJXo_AZyw members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=IVXJXo_AZyw"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "classificationCorrection": "旧currentFormatCategory=standard_mv，但已读精确标题仅标Scars I MAPSQUARE Music，无MV/现场类型保证；改走MAPSQUARE项目制作方路线，不推定标准MV。",
+      "tuple": [
+        "rec28ldfRTrGou",
+        "IVXJXo_AZyw"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrGwK",
+      "song": "ㄱㅓ리에서... (With. 존박)",
+      "groups": [
+        "YOUNG POSSE"
+      ],
+      "videoId": "QsOnTCwooDs",
+      "url": "https://www.youtube.com/watch?v=QsOnTCwooDs",
+      "directMetadataTitle": "'ㄱㅓ리에서...(With. 존박)' ⎮ LIVE CLIP ⎮ MEN CONCERT]",
+      "directMetadataAuthor": "YOUNG POSSE • 영파씨",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "screen_collaboration",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "e411828709a9fc22a82ea3cd96ce0837e46b3280c182834959af3900a3f5d080",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "YOUNG POSSE ㄱㅓ리에서... (With. 존박) QsOnTCwooDs members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=QsOnTCwooDs"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrGwK",
+        "QsOnTCwooDs"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrGEy",
+      "song": "SING !",
+      "groups": [
+        "BEWAVE"
+      ],
+      "videoId": "BbcxmtNaesk",
+      "url": "https://www.youtube.com/watch?v=BbcxmtNaesk",
+      "directMetadataTitle": "[MV] BEWAVE(비웨이브) - SING ! (Performance Video)",
+      "directMetadataAuthor": "BEWAVE",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "5bf6c28e0f180ba8e583654fecf9d7d38a43d4284d02bd5edc3524b5cb598bcb",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "BEWAVE SING ! BbcxmtNaesk members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=BbcxmtNaesk"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrGEy",
+        "BbcxmtNaesk"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrHhL",
+      "song": "RIZZ",
+      "groups": [
+        "ADYA"
+      ],
+      "videoId": "-Xqhrnql7mg",
+      "url": "https://www.youtube.com/watch?v=-Xqhrnql7mg",
+      "directMetadataTitle": "ADYA 에이디야 'RIZZ' Official Performance Video",
+      "directMetadataAuthor": "ADYA",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "d2dbb8d0945af1de5a6f65860b79766aaa528fa4c2ece0cb368b6a581ef2acaa",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "ADYA RIZZ -Xqhrnql7mg members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=-Xqhrnql7mg"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrHhL",
+        "-Xqhrnql7mg"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrI0Y",
+      "song": "The Chase",
+      "groups": [
+        "Hearts2Hearts"
+      ],
+      "videoId": "80-Q7b1qaFg",
+      "url": "https://www.youtube.com/watch?v=80-Q7b1qaFg",
+      "directMetadataTitle": "Hearts2Hearts 하츠투하츠 'The Chase' Lyric Video",
+      "directMetadataAuthor": "Hearts2Hearts",
+      "materialCategory": "lyric_video",
+      "materialCategoryLabel": "歌词视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "lyric_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "c194ba1ed3ee387328e1ae5884ea16ec7d5bce1b6d89fafad6ce3fb180a3b2f9",
+      "fullVideoWatched": false,
+      "missingEvidence": "歌词版是否含真人片段，以及歌曲录音署名。",
+      "sourceRoute": "先完整检查精确歌词版开头至片尾，再读发行内页/官方录音名单；有真人则找具名镜头来源。",
+      "completionCondition": "Lyric字样不是无真人证明；歌曲演唱者参考不自动开启成员评分。",
+      "searchSeed": "Hearts2Hearts The Chase 80-Q7b1qaFg members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=80-Q7b1qaFg"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrI0Y",
+        "80-Q7b1qaFg"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrIkV",
+      "song": "FOCUS",
+      "groups": [
+        "Hearts2Hearts"
+      ],
+      "videoId": "Txyb_mVaPyE",
+      "url": "https://www.youtube.com/watch?v=Txyb_mVaPyE",
+      "directMetadataTitle": "Hearts2Hearts 하츠투하츠 'FOCUS (DJ Seinfeld Remix)' MV",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "remix",
+      "materialCategoryLabel": "Remix／重混影像",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "remix",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "3666cd9ccead2c8c15e6a7b62c224f10403360dbee9e4292418406e5d9506650",
+      "fullVideoWatched": false,
+      "missingEvidence": "各重混及Other World版独立的制作/真人画面证据。",
+      "sourceRoute": "先找SM/iScreaM/重混发行页和导演/动画制作档案；整片核验有无真人，再核原录音是否明确沿用及其署名。",
+      "completionCondition": "不因remix或AI标签禁评，不从原MV转移出镜名单；有明确无成员来源或完整视觉证据再采用。",
+      "searchSeed": "Hearts2Hearts FOCUS Txyb_mVaPyE members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=Txyb_mVaPyE"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrIkV",
+        "Txyb_mVaPyE"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrIC0",
+      "song": "Moonride",
+      "groups": [
+        "Hearts2Hearts"
+      ],
+      "videoId": "gNUMxMuxH20",
+      "url": "https://www.youtube.com/watch?v=gNUMxMuxH20",
+      "directMetadataTitle": "Hearts2Hearts 하츠투하츠 'Moonride' MV",
+      "directMetadataAuthor": "Hearts2Hearts",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "2999cb3b9fc86cb306857396678c667deee82e21ef08e2db7fbc8a3914cc7a41",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "Hearts2Hearts Moonride gNUMxMuxH20 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=gNUMxMuxH20"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrIC0",
+        "gNUMxMuxH20"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrINH",
+      "song": "딸기게임 (Strawberry Cheesegame)",
+      "groups": [
+        "KiiiKiii"
+      ],
+      "videoId": "OncJ5v1keww",
+      "url": "https://www.youtube.com/watch?v=OncJ5v1keww",
+      "directMetadataTitle": "KiiiKiii 키키 ‘딸기게임 (Strawberry Cheesegame)’ Official Lyric Video",
+      "directMetadataAuthor": "KiiiKiii",
+      "materialCategory": "lyric_video",
+      "materialCategoryLabel": "歌词视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "lyric_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "a176399837a25a2fb226d3dca25c6586b1f5d65c57ea055f2ed24d86453c0767",
+      "fullVideoWatched": false,
+      "missingEvidence": "歌词版是否含真人片段，以及歌曲录音署名。",
+      "sourceRoute": "先完整检查精确歌词版开头至片尾，再读发行内页/官方录音名单；有真人则找具名镜头来源。",
+      "completionCondition": "Lyric字样不是无真人证明；歌曲演唱者参考不自动开启成员评分。",
+      "searchSeed": "KiiiKiii 딸기게임 (Strawberry Cheesegame) OncJ5v1keww members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=OncJ5v1keww"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrINH",
+        "OncJ5v1keww"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrIRO",
+      "song": "Delulu",
+      "groups": [
+        "KiiiKiii"
+      ],
+      "videoId": "BTlj6Sls7KE",
+      "url": "https://www.youtube.com/watch?v=BTlj6Sls7KE",
+      "directMetadataTitle": "KiiiKiii 키키 ‘Delulu' Track Film",
+      "directMetadataAuthor": "STARSHIP",
+      "materialCategory": "special_film_video",
+      "materialCategoryLabel": "特殊短片／品牌片／特别视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "special_film_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "f4ea505442e2742ed9c8185d44acaed71ea91a85a2a61d11aadfc5aae20479f4",
+      "fullVideoWatched": false,
+      "missingEvidence": "短片中的成员、演员与纯叙事画面尚未区分。",
+      "sourceRoute": "优先制作公司/导演项目页、品牌/官方幕后及片尾署名，再找具名采访；必要时完整观看并记录证据时间点。",
+      "completionCondition": "公开录音署名和演员出镜分别标注；完整视频与可靠来源支持无成员时才禁评。",
+      "searchSeed": "KiiiKiii Delulu BTlj6Sls7KE members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=BTlj6Sls7KE"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrIRO",
+        "BTlj6Sls7KE"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrIZT",
+      "song": "Pop Off Pop Off",
+      "groups": [
+        "KiiiKiii"
+      ],
+      "videoId": "UsbRoaH6y-Q",
+      "url": "https://www.youtube.com/watch?v=UsbRoaH6y-Q",
+      "directMetadataTitle": "KiiiKiii 키키 'Pop Off Pop Off' MV",
+      "directMetadataAuthor": "STARSHIP",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "0a2106202b54b3f65f557ae664767d7d1d540542395d147b9a23c4078a124ce4",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "KiiiKiii Pop Off Pop Off UsbRoaH6y-Q members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=UsbRoaH6y-Q"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrIZT",
+        "UsbRoaH6y-Q"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrJ7M",
+      "song": "BODY",
+      "groups": [
+        "MEOVV"
+      ],
+      "videoId": "yFGsw8phPn4",
+      "url": "https://www.youtube.com/watch?v=yFGsw8phPn4",
+      "directMetadataTitle": "MEOVV - ‘BODY’ PERFORMANCE VIDEO",
+      "directMetadataAuthor": "THEBLACKLABEL",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "05c1a8f6da53c67cea254947ad49f76b14bcb347ffdd24c1653725449e7e6df5",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "MEOVV BODY yFGsw8phPn4 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=yFGsw8phPn4"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrJ7M",
+        "yFGsw8phPn4"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrJne",
+      "song": "LIT RIGHT NOW",
+      "groups": [
+        "MEOVV"
+      ],
+      "videoId": "peFN4squVuQ",
+      "url": "https://www.youtube.com/watch?v=peFN4squVuQ",
+      "directMetadataTitle": "[SPECIAL VIDEO] MEOVV(미야오) - ‘LIT RIGHT NOW’",
+      "directMetadataAuthor": "MEOVV",
+      "materialCategory": "special_film_video",
+      "materialCategoryLabel": "特殊短片／品牌片／特别视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "special_film_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "7ab8098d615c727090e573d3576e1f50528c4d54973c397ca302326b912cf40f",
+      "fullVideoWatched": false,
+      "missingEvidence": "短片中的成员、演员与纯叙事画面尚未区分。",
+      "sourceRoute": "优先制作公司/导演项目页、品牌/官方幕后及片尾署名，再找具名采访；必要时完整观看并记录证据时间点。",
+      "completionCondition": "公开录音署名和演员出镜分别标注；完整视频与可靠来源支持无成员时才禁评。",
+      "searchSeed": "MEOVV LIT RIGHT NOW peFN4squVuQ members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=peFN4squVuQ"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrJne",
+        "peFN4squVuQ"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrJKM",
+      "song": "The Chase",
+      "groups": [
+        "Hearts2Hearts"
+      ],
+      "videoId": "GtPPT-qSXj8",
+      "url": "https://www.youtube.com/watch?v=GtPPT-qSXj8",
+      "directMetadataTitle": "Hearts2Hearts 하츠투하츠 'The Chase' Performance Video",
+      "directMetadataAuthor": "Hearts2Hearts",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "d1237a7d653d992e1e505330116a8aee6a92c14cef635a8184fbfc9bf9ba0899",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "Hearts2Hearts The Chase GtPPT-qSXj8 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=GtPPT-qSXj8"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrJKM",
+        "GtPPT-qSXj8"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrJVj",
+      "song": "Tick-Tack",
+      "groups": [
+        "ILLIT"
+      ],
+      "videoId": "1yMzV0NdB9g",
+      "url": "https://www.youtube.com/watch?v=1yMzV0NdB9g",
+      "directMetadataTitle": "ILLIT (아일릿) ‘Tick-Tack’ Official MV (Performance ver.)",
+      "directMetadataAuthor": "HYBE LABELS",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "2b280df9a548a892674332d98fc643b58531ddcf107a4929565ff7954574996b",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "ILLIT Tick-Tack 1yMzV0NdB9g members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=1yMzV0NdB9g"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrJVj",
+        "1yMzV0NdB9g"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrK1S",
+      "song": "little monster",
+      "groups": [
+        "ILLIT"
+      ],
+      "videoId": "xRU1XXHIpIc",
+      "url": "https://www.youtube.com/watch?v=xRU1XXHIpIc",
+      "directMetadataTitle": "ILLIT (아일릿) 'bomb' Brand Film (little monster MV)",
+      "directMetadataAuthor": "HYBE LABELS",
+      "materialCategory": "special_film_video",
+      "materialCategoryLabel": "特殊短片／品牌片／特别视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "special_film_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "c2c0995aac4d114e8e1291678859b83eed1e073f4fd5e97e1e8f0f8de9c766dc",
+      "fullVideoWatched": false,
+      "missingEvidence": "短片中的成员、演员与纯叙事画面尚未区分。",
+      "sourceRoute": "优先制作公司/导演项目页、品牌/官方幕后及片尾署名，再找具名采访；必要时完整观看并记录证据时间点。",
+      "completionCondition": "公开录音署名和演员出镜分别标注；完整视频与可靠来源支持无成员时才禁评。",
+      "searchSeed": "ILLIT little monster xRU1XXHIpIc members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=xRU1XXHIpIc"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrK1S",
+        "xRU1XXHIpIc"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrKy2",
+      "song": "It's Me",
+      "groups": [
+        "ILLIT"
+      ],
+      "videoId": "el7A_SI7sxs",
+      "url": "https://www.youtube.com/watch?v=el7A_SI7sxs",
+      "directMetadataTitle": "ILLIT (아일릿) 'It’s Me’ Official MV (Performance ver.)",
+      "directMetadataAuthor": "HYBE LABELS",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "ILLIT It's Me el7A_SI7sxs members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=el7A_SI7sxs"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrKy2",
+        "el7A_SI7sxs"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrLgo",
+      "song": "LIKE THAT",
+      "groups": [
+        "BABYMONSTER"
+      ],
+      "videoId": "M8r3x4Re8-I",
+      "url": "https://www.youtube.com/watch?v=M8r3x4Re8-I",
+      "directMetadataTitle": "BABYMONSTER - 'LIKE THAT' EXCLUSIVE PERFORMANCE VIDEO",
+      "directMetadataAuthor": "BABYMONSTER",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "4363b2a1bff993eb60790254556ee1b28f319901d33a15ea38fa6aa8483febaa",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "BABYMONSTER LIKE THAT M8r3x4Re8-I members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=M8r3x4Re8-I"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrLgo",
+        "M8r3x4Re8-I"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrLku",
+      "song": "BILLIONAIRE",
+      "groups": [
+        "BABYMONSTER"
+      ],
+      "videoId": "Gz_yRl6703c",
+      "url": "https://www.youtube.com/watch?v=Gz_yRl6703c",
+      "directMetadataTitle": "BABYMONSTER - 'BILLIONAIRE' EXCLUSIVE PERFORMANCE VIDEO",
+      "directMetadataAuthor": "BABYMONSTER",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "08fa551fb6a436a424ed1c346e5a25b3446c9eb4752aa58c62dacabf76665b2c",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "BABYMONSTER BILLIONAIRE Gz_yRl6703c members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=Gz_yRl6703c"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrLku",
+        "Gz_yRl6703c"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrLow",
+      "song": "Ghost",
+      "groups": [
+        "BABYMONSTER"
+      ],
+      "videoId": "sRLbqYkoaLc",
+      "url": "https://www.youtube.com/watch?v=sRLbqYkoaLc",
+      "directMetadataTitle": "BABYMONSTER 'Ghost' Promotion Video",
+      "directMetadataAuthor": "Sony Music (Japan)",
+      "materialCategory": "special_film_video",
+      "materialCategoryLabel": "特殊短片／品牌片／特别视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "special_film_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "d9d623094105510cad7dd47d497650d2dc87c6b3e9f4777f98dc31e0f67cd643",
+      "fullVideoWatched": false,
+      "missingEvidence": "短片中的成员、演员与纯叙事画面尚未区分。",
+      "sourceRoute": "优先制作公司/导演项目页、品牌/官方幕后及片尾署名，再找具名采访；必要时完整观看并记录证据时间点。",
+      "completionCondition": "公开录音署名和演员出镜分别标注；完整视频与可靠来源支持无成员时才禁评。",
+      "searchSeed": "BABYMONSTER Ghost sRLbqYkoaLc members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=sRLbqYkoaLc"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrLow",
+        "sRLbqYkoaLc"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrLsE",
+      "song": "Hit 'Em",
+      "groups": [
+        "MEOVV"
+      ],
+      "videoId": "vYq_Xzj8HUM",
+      "url": "https://www.youtube.com/watch?v=vYq_Xzj8HUM",
+      "directMetadataTitle": "MEOVV(미야오) - ‘Hit 'Em’ PERFORMANCE VIDEO",
+      "directMetadataAuthor": "MEOVV",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "436d25b4494b85ff7ee656e1a580249550408aa855bd492e38597eb9a05ab921",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "MEOVV Hit 'Em vYq_Xzj8HUM members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=vYq_Xzj8HUM"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrLsE",
+        "vYq_Xzj8HUM"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrLBw",
+      "song": "Almond Chocolate (Korean Ver.)",
+      "groups": [
+        "ILLIT"
+      ],
+      "videoId": "qjebIv8FYMI",
+      "url": "https://www.youtube.com/watch?v=qjebIv8FYMI",
+      "directMetadataTitle": "ILLIT (아일릿) Almond Chocolate (Korean Ver.) Performance Video",
+      "directMetadataAuthor": "ILLIT",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "77b3818bce37ef0372924382cef42bfd4d0cdee0c59e8bade9f7c200cffd9c83",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "ILLIT Almond Chocolate (Korean Ver.) qjebIv8FYMI members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=qjebIv8FYMI"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrLBw",
+        "qjebIv8FYMI"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrMcf",
+      "song": "Nothing",
+      "groups": [
+        "KISS OF LIFE"
+      ],
+      "videoId": "U-8TNlJ1Mw4",
+      "url": "https://www.youtube.com/watch?v=U-8TNlJ1Mw4",
+      "directMetadataTitle": "KISS OF LIFE (키스오브라이프) 'Nothing' Short Film",
+      "directMetadataAuthor": "KISS OF LIFE",
+      "materialCategory": "special_film_video",
+      "materialCategoryLabel": "特殊短片／品牌片／特别视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "special_film_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "4feb5748c94e195b499dbd3c3f4cb22fc84b7243115610bedc3da022200b83a1",
+      "fullVideoWatched": false,
+      "missingEvidence": "短片中的成员、演员与纯叙事画面尚未区分。",
+      "sourceRoute": "优先制作公司/导演项目页、品牌/官方幕后及片尾署名，再找具名采访；必要时完整观看并记录证据时间点。",
+      "completionCondition": "公开录音署名和演员出镜分别标注；完整视频与可靠来源支持无成员时才禁评。",
+      "searchSeed": "KISS OF LIFE Nothing U-8TNlJ1Mw4 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=U-8TNlJ1Mw4"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrMcf",
+        "U-8TNlJ1Mw4"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrMgm",
+      "song": "Te Quiero",
+      "groups": [
+        "KISS OF LIFE"
+      ],
+      "videoId": "pYn96ujbJX0",
+      "url": "https://www.youtube.com/watch?v=pYn96ujbJX0",
+      "directMetadataTitle": "KISS OF LIFE (키스오브라이프) 'Te Quiero' Performance Video",
+      "directMetadataAuthor": "KISS OF LIFE",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "048592e2b02a6914eef18d4e139664fbc18abd8b3c4e78a99d44f9997560ac84",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "KISS OF LIFE Te Quiero pYn96ujbJX0 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=pYn96ujbJX0"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrMgm",
+        "pYn96ujbJX0"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrMsR",
+      "song": "k bye",
+      "groups": [
+        "KISS OF LIFE"
+      ],
+      "videoId": "a6PBMuqpGto",
+      "url": "https://www.youtube.com/watch?v=a6PBMuqpGto",
+      "directMetadataTitle": "KISS OF LIFE (키스오브라이프) ‘k bye’ B-Side Drop",
+      "directMetadataAuthor": "KISS OF LIFE",
+      "materialCategory": "special_film_video",
+      "materialCategoryLabel": "特殊短片／品牌片／特别视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "special_film_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "a24c6caae3eb9705ee6f86958d3667ff53460eabfd94fd58cdce301696a2f472",
+      "fullVideoWatched": false,
+      "missingEvidence": "短片中的成员、演员与纯叙事画面尚未区分。",
+      "sourceRoute": "优先制作公司/导演项目页、品牌/官方幕后及片尾署名，再找具名采访；必要时完整观看并记录证据时间点。",
+      "completionCondition": "公开录音署名和演员出镜分别标注；完整视频与可靠来源支持无成员时才禁评。",
+      "searchSeed": "KISS OF LIFE k bye a6PBMuqpGto members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=a6PBMuqpGto"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrMsR",
+        "a6PBMuqpGto"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrMwG",
+      "song": "Painting",
+      "groups": [
+        "KISS OF LIFE"
+      ],
+      "videoId": "xWHWl0vG-38",
+      "url": "https://www.youtube.com/watch?v=xWHWl0vG-38",
+      "directMetadataTitle": "KISS OF LIFE (키스오브라이프) 'Painting' Special Video",
+      "directMetadataAuthor": "KISS OF LIFE",
+      "materialCategory": "special_film_video",
+      "materialCategoryLabel": "特殊短片／品牌片／特别视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "special_film_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "5cd792635f78f5a669a5d5e4c9a944a0f115af5566724e79c1111f4449d7a2f2",
+      "fullVideoWatched": false,
+      "missingEvidence": "短片中的成员、演员与纯叙事画面尚未区分。",
+      "sourceRoute": "优先制作公司/导演项目页、品牌/官方幕后及片尾署名，再找具名采访；必要时完整观看并记录证据时间点。",
+      "completionCondition": "公开录音署名和演员出镜分别标注；完整视频与可靠来源支持无成员时才禁评。",
+      "searchSeed": "KISS OF LIFE Painting xWHWl0vG-38 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=xWHWl0vG-38"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrMwG",
+        "xWHWl0vG-38"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrMEN",
+      "song": "Lucky (Korean Ver.)",
+      "groups": [
+        "KISS OF LIFE"
+      ],
+      "videoId": "3L-v6Xh64FE",
+      "url": "https://www.youtube.com/watch?v=3L-v6Xh64FE",
+      "directMetadataTitle": "KISS OF LIFE (키스오브라이프) 'Lucky (Korean Ver.)’ Special Video",
+      "directMetadataAuthor": "KISS OF LIFE",
+      "materialCategory": "language_or_acoustic",
+      "materialCategoryLabel": "语言／不插电版本",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "language_or_acoustic",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "f5c7b38a0e4697a95a5b02f8b9c1fb8648c8c93a7eef40c3508bef1be9473ca3",
+      "fullVideoWatched": false,
+      "missingEvidence": "该语言或编曲版本的参与人/拍摄版本链。",
+      "sourceRoute": "查日本/地区发行官网、版本内页、制作说明与具名幕后；先消歧同名不同videoId。",
+      "completionCondition": "仅在来源证明沿用录音/影像时继承相应公开署名；否则版本独立核验。",
+      "searchSeed": "KISS OF LIFE Lucky (Korean Ver.) 3L-v6Xh64FE members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=3L-v6Xh64FE"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrMEN",
+        "3L-v6Xh64FE"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrMMV",
+      "song": "Don't mind me",
+      "groups": [
+        "KISS OF LIFE"
+      ],
+      "videoId": "mAPPUwHVHmk",
+      "url": "https://www.youtube.com/watch?v=mAPPUwHVHmk",
+      "directMetadataTitle": "KISS OF LIFE (키스오브라이프) 'Don't mind me' Special Video",
+      "directMetadataAuthor": "KISS OF LIFE",
+      "materialCategory": "special_film_video",
+      "materialCategoryLabel": "特殊短片／品牌片／特别视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "special_film_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "3f144de72db53d3ac57897c9e7c3d3aaf41fc43ab883b7fc49327e89adec3438",
+      "fullVideoWatched": false,
+      "missingEvidence": "短片中的成员、演员与纯叙事画面尚未区分。",
+      "sourceRoute": "优先制作公司/导演项目页、品牌/官方幕后及片尾署名，再找具名采访；必要时完整观看并记录证据时间点。",
+      "completionCondition": "公开录音署名和演员出镜分别标注；完整视频与可靠来源支持无成员时才禁评。",
+      "searchSeed": "KISS OF LIFE Don't mind me mAPPUwHVHmk members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=mAPPUwHVHmk"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrMMV",
+        "mAPPUwHVHmk"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrMW0",
+      "song": "WHAT!",
+      "groups": [
+        "KISS OF LIFE"
+      ],
+      "videoId": "EJ2fIbl35Oc",
+      "url": "https://www.youtube.com/watch?v=EJ2fIbl35Oc",
+      "directMetadataTitle": "KISS OF LIFE (키스오브라이프) 'WHAT!' Special Video",
+      "directMetadataAuthor": "KISS OF LIFE",
+      "materialCategory": "special_film_video",
+      "materialCategoryLabel": "特殊短片／品牌片／特别视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "special_film_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "64327eeb3852374cd604c1428e5f5d5a51bdf2bce66da32531ed2d4ce3f46719",
+      "fullVideoWatched": false,
+      "missingEvidence": "短片中的成员、演员与纯叙事画面尚未区分。",
+      "sourceRoute": "优先制作公司/导演项目页、品牌/官方幕后及片尾署名，再找具名采访；必要时完整观看并记录证据时间点。",
+      "completionCondition": "公开录音署名和演员出镜分别标注；完整视频与可靠来源支持无成员时才禁评。",
+      "searchSeed": "KISS OF LIFE WHAT! EJ2fIbl35Oc members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=EJ2fIbl35Oc"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrMW0",
+        "EJ2fIbl35Oc"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrN8c",
+      "song": "난 오늘 밤하늘에서 가장 빛나는 별이 된다 (Be a Star)",
+      "groups": [
+        "SAY MY NAME"
+      ],
+      "videoId": "W_VWfNkTamw",
+      "url": "https://www.youtube.com/watch?v=W_VWfNkTamw",
+      "directMetadataTitle": "SAY MY NAME(세이마이네임) '난 오늘 밤하늘에서 가장 빛나는 별이 된다' Music Story",
+      "directMetadataAuthor": "SAY MY NAME",
+      "materialCategory": "special_film_video",
+      "materialCategoryLabel": "特殊短片／品牌片／特别视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "special_film_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "eaba69440ef3f7adf34fce7116052e365cbc9ecc61b48e75b99dcec616936cb3",
+      "fullVideoWatched": false,
+      "missingEvidence": "短片中的成员、演员与纯叙事画面尚未区分。",
+      "sourceRoute": "优先制作公司/导演项目页、品牌/官方幕后及片尾署名，再找具名采访；必要时完整观看并记录证据时间点。",
+      "completionCondition": "公开录音署名和演员出镜分别标注；完整视频与可靠来源支持无成员时才禁评。",
+      "searchSeed": "SAY MY NAME 난 오늘 밤하늘에서 가장 빛나는 별이 된다 (Be a Star) W_VWfNkTamw members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=W_VWfNkTamw"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrN8c",
+        "W_VWfNkTamw"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrNsK",
+      "song": "BEEP (Japan Edition)",
+      "groups": [
+        "izna"
+      ],
+      "videoId": "LiZAgfmoQwc",
+      "url": "https://www.youtube.com/watch?v=LiZAgfmoQwc",
+      "directMetadataTitle": "izna 'BEEP (Japan Edition)' MV",
+      "directMetadataAuthor": "izna (이즈나)",
+      "materialCategory": "language_or_acoustic",
+      "materialCategoryLabel": "语言／不插电版本",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "language_or_acoustic",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "d97862286571d91ffe4c3bd4c34b32d3a763f8176482e8e6aa38a246bea25d8d",
+      "fullVideoWatched": false,
+      "missingEvidence": "该语言或编曲版本的参与人/拍摄版本链。",
+      "sourceRoute": "查日本/地区发行官网、版本内页、制作说明与具名幕后；先消歧同名不同videoId。",
+      "completionCondition": "仅在来源证明沿用录音/影像时继承相应公开署名；否则版本独立核验。",
+      "searchSeed": "izna BEEP (Japan Edition) LiZAgfmoQwc members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=LiZAgfmoQwc"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrNsK",
+        "LiZAgfmoQwc"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrNBu",
+      "song": "SASS & Racecar",
+      "groups": [
+        "izna"
+      ],
+      "videoId": "xZ5Ej-tLEjM",
+      "url": "https://www.youtube.com/watch?v=xZ5Ej-tLEjM",
+      "directMetadataTitle": "izna(이즈나) 'SASS & Racecar' Special Performance Video",
+      "directMetadataAuthor": "izna (이즈나)",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "c4f0d3ea6922f66f31db05e93bcfa94f69a21633936c60e6aaea68d437b7bd3d",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "izna SASS & Racecar xZ5Ej-tLEjM members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=xZ5Ej-tLEjM"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrNBu",
+        "xZ5Ej-tLEjM"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrNO2",
+      "song": "Love All",
+      "groups": [
+        "izna"
+      ],
+      "videoId": "xu0fU46Cd7M",
+      "url": "https://www.youtube.com/watch?v=xu0fU46Cd7M",
+      "directMetadataTitle": "izna Digital Single 『Love All』 Lyric Video",
+      "directMetadataAuthor": "Sony Music (Japan)",
+      "materialCategory": "lyric_video",
+      "materialCategoryLabel": "歌词视频",
+      "previousPrimaryCategory": "special_visual",
+      "previousFormatCategory": "lyric_video",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "882a66380610476e40dbcabf513a64c227dfa3edb0e0035ca6d305285539c8b4",
+      "fullVideoWatched": false,
+      "missingEvidence": "歌词版是否含真人片段，以及歌曲录音署名。",
+      "sourceRoute": "先完整检查精确歌词版开头至片尾，再读发行内页/官方录音名单；有真人则找具名镜头来源。",
+      "completionCondition": "Lyric字样不是无真人证明；歌曲演唱者参考不自动开启成员评分。",
+      "searchSeed": "izna Love All xu0fU46Cd7M members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=xu0fU46Cd7M"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrNO2",
+        "xu0fU46Cd7M"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrPi9",
+      "song": "PUNG!",
+      "groups": [
+        "MADEIN"
+      ],
+      "videoId": "aer_X9NmhTc",
+      "url": "https://www.youtube.com/watch?v=aer_X9NmhTc",
+      "directMetadataTitle": "MADEIN - \"PUNG!\" MV",
+      "directMetadataAuthor": "MADEIN",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "ee66ca00d4d0e6e9464a7e750ece1e2f10d90430a574996c84379f2860921965",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "MADEIN PUNG! aer_X9NmhTc members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=aer_X9NmhTc"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrPi9",
+        "aer_X9NmhTc"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrPq2",
+      "song": "365",
+      "groups": [
+        "TRACER"
+      ],
+      "videoId": "924WxkHMdxU",
+      "url": "https://www.youtube.com/watch?v=924WxkHMdxU",
+      "directMetadataTitle": "tracer(트레이서) \"365\" Official Performance Video Part.1",
+      "directMetadataAuthor": "TRACER",
+      "materialCategory": "performance_live",
+      "materialCategoryLabel": "表演／现场版本",
+      "previousPrimaryCategory": "performance",
+      "previousFormatCategory": "performance_live",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "7e74ffb8861112c47e90a2e08a418b1cb16090ace4b660f579bfabb032c0e304",
+      "fullVideoWatched": false,
+      "missingEvidence": "精确表演版本的具名阵容；另一MV或录音阵容不能证明本次实演。",
+      "sourceRoute": "先查原发布频道字幕/片尾与官方演出公告，再查当次具名幕后、电视台或主办方名单。",
+      "completionCondition": "逐人身份与本视频版本对应；只证部分就标部分，不补当前全团。",
+      "searchSeed": "TRACER 365 924WxkHMdxU members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=924WxkHMdxU"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrPq2",
+        "924WxkHMdxU"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "rec28ldfRTrQ4z",
+      "song": "もしもし♡ (MoshiMoshi♡)",
+      "groups": [
+        "UNIS"
+      ],
+      "videoId": "DrU5bxPcH0s",
+      "url": "https://www.youtube.com/watch?v=DrU5bxPcH0s",
+      "directMetadataTitle": "UNIS(유니스) ‘もしもし♡ (MoshiMoshi♡)’ Official M/V",
+      "directMetadataAuthor": "UNIS",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "e0126cb6734b4b03ba42da9b0cc50fe248df92c3a81786b95fa8dd3c77102ccc",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "UNIS もしもし♡ (MoshiMoshi♡) DrU5bxPcH0s members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=DrU5bxPcH0s"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "rec28ldfRTrQ4z",
+        "DrU5bxPcH0s"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyH5pzuYEC",
+      "song": "Ring Ring",
+      "groups": [
+        "Rocket Punch"
+      ],
+      "videoId": "FypWEDYseBY",
+      "url": "https://www.youtube.com/watch?v=FypWEDYseBY",
+      "directMetadataTitle": "로켓펀치(Rocket Punch) 'Ring Ring' (Acoustic Ver.) M/V",
+      "directMetadataAuthor": "woolliment",
+      "materialCategory": "language_or_acoustic",
+      "materialCategoryLabel": "语言／不插电版本",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "language_or_acoustic",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "fc09b57cef42d550962c5734bebd313c539b592ec8ff6d7716f8f6d6e0a8fcc3",
+      "fullVideoWatched": false,
+      "missingEvidence": "该语言或编曲版本的参与人/拍摄版本链。",
+      "sourceRoute": "查日本/地区发行官网、版本内页、制作说明与具名幕后；先消歧同名不同videoId。",
+      "completionCondition": "仅在来源证明沿用录音/影像时继承相应公开署名；否则版本独立核验。",
+      "searchSeed": "Rocket Punch Ring Ring FypWEDYseBY members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=FypWEDYseBY"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyH5pzuYEC",
+        "FypWEDYseBY"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyH5pzoaOZ",
+      "song": "Love",
+      "groups": [
+        "Weeekly"
+      ],
+      "videoId": "VACXoKdmofo",
+      "url": "https://www.youtube.com/watch?v=VACXoKdmofo",
+      "directMetadataTitle": "[MV] Weeekly(위클리) _ Love(Weeekly X Kim Eana Project) (위클리 X 김이나 프로젝트)",
+      "directMetadataAuthor": "1theK (원더케이)",
+      "materialCategory": "collaboration",
+      "materialCategoryLabel": "项目／合作／频道企划",
+      "previousPrimaryCategory": "screen_collaboration",
+      "previousFormatCategory": "collaboration",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "bb9f3f9bd41bb3dd6d811a6d07a7e15ca52f7a4d892c2a7d344bf1017ad5c6d1",
+      "fullVideoWatched": false,
+      "missingEvidence": "项目特定成员名单，不是品牌大使/作词者/团体当前简介。",
+      "sourceRoute": "查项目主办方、品牌/发行方、制作人说明、确切项目幕后和参与者采访。",
+      "completionCondition": "区分作词作曲、录音、MV演员、舞台嘉宾四种身份；有证到哪层就标哪层。",
+      "searchSeed": "Weeekly Love VACXoKdmofo members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=VACXoKdmofo"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyH5pzoaOZ",
+        "VACXoKdmofo"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyH5pzrrSO",
+      "song": "WXW (Wish With W)",
+      "groups": [
+        "WOOAH"
+      ],
+      "videoId": "ZtiThQN5ETc",
+      "url": "https://www.youtube.com/watch?v=ZtiThQN5ETc",
+      "directMetadataTitle": "WOOAH(우아) - ‘WXW(Wish With W)’ MV",
+      "directMetadataAuthor": "WOOAH 우아",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "d3e119f4e753d21b548c9eed85f0644d457a15c1271075aa89edecf4df504518",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "WOOAH WXW (Wish With W) ZtiThQN5ETc members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=ZtiThQN5ETc"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyH5pzrrSO",
+        "ZtiThQN5ETc"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyH5pzQxpW",
+      "song": "SUMMER",
+      "groups": [
+        "WOOAH"
+      ],
+      "videoId": "8DwTAa5hPsA",
+      "url": "https://www.youtube.com/watch?v=8DwTAa5hPsA",
+      "directMetadataTitle": "WOOAH(우아) - ‘SUMMER’ MV",
+      "directMetadataAuthor": "WOOAH 우아",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "08e5f19ba8f1e4f5d7390b6aaf307157176b2aeb794b49839324767b914efca3",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "WOOAH SUMMER 8DwTAa5hPsA members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=8DwTAa5hPsA"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyH5pzQxpW",
+        "8DwTAa5hPsA"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyH5pzFAPL",
+      "song": "DOREMI",
+      "groups": [
+        "PURPLE KISS"
+      ],
+      "videoId": "os4driLeAiU",
+      "url": "https://www.youtube.com/watch?v=os4driLeAiU",
+      "directMetadataTitle": "퍼플키스(PURPLE KISS) 'DOREMI -English ver.-' MV",
+      "directMetadataAuthor": "PURPLE KISS",
+      "materialCategory": "language_or_acoustic",
+      "materialCategoryLabel": "语言／不插电版本",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "language_or_acoustic",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "eee07817b7835118320b49f8118193262017d385f7a3b09122988bfce406d7a0",
+      "fullVideoWatched": false,
+      "missingEvidence": "该语言或编曲版本的参与人/拍摄版本链。",
+      "sourceRoute": "查日本/地区发行官网、版本内页、制作说明与具名幕后；先消歧同名不同videoId。",
+      "completionCondition": "仅在来源证明沿用录音/影像时继承相应公开署名；否则版本独立核验。",
+      "searchSeed": "PURPLE KISS DOREMI os4driLeAiU members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=os4driLeAiU"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyH5pzFAPL",
+        "os4driLeAiU"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyH5pz4ojC",
+      "song": "Breath",
+      "groups": [
+        "PURPLE KISS"
+      ],
+      "videoId": "5oIIzNGeXco",
+      "url": "https://www.youtube.com/watch?v=5oIIzNGeXco",
+      "directMetadataTitle": "퍼플키스(PURPLE KISS) 'Breath' MV",
+      "directMetadataAuthor": "PURPLE KISS",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "622703d22b1af0f34639cb1c4f55fd1aebb082f357c3a94bf9f1ae7891192b63",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "PURPLE KISS Breath 5oIIzNGeXco members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=5oIIzNGeXco"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyH5pz4ojC",
+        "5oIIzNGeXco"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyH5pzbYAm",
+      "song": "GingaMingaYo (the strange world)",
+      "groups": [
+        "Billlie"
+      ],
+      "videoId": "a7d5aFNh-YE",
+      "url": "https://www.youtube.com/watch?v=a7d5aFNh-YE",
+      "directMetadataTitle": "Billlie - GingaMingaYo (the strange world) - Japanese ver. -  (Music Video)",
+      "directMetadataAuthor": "Victor K-POP",
+      "materialCategory": "language_or_acoustic",
+      "materialCategoryLabel": "语言／不插电版本",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "language_or_acoustic",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "d12ea5b97bcfcaa4688a0ff5fc44e58e42ae7eac4580d3df66996226190fdf9a",
+      "fullVideoWatched": false,
+      "missingEvidence": "该语言或编曲版本的参与人/拍摄版本链。",
+      "sourceRoute": "查日本/地区发行官网、版本内页、制作说明与具名幕后；先消歧同名不同videoId。",
+      "completionCondition": "仅在来源证明沿用录音/影像时继承相应公开署名；否则版本独立核验。",
+      "searchSeed": "Billlie GingaMingaYo (the strange world) a7d5aFNh-YE members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=a7d5aFNh-YE"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyH5pzbYAm",
+        "a7d5aFNh-YE"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyH5pzbluu",
+      "song": "MWUAH",
+      "groups": [
+        "STAYC"
+      ],
+      "videoId": "udOf9JGMA7U",
+      "url": "https://www.youtube.com/watch?v=udOf9JGMA7U",
+      "directMetadataTitle": "STAYC（ステイシー）'MWUAH' MV",
+      "directMetadataAuthor": "STAYC Japan Official",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "f98108ea9521c0baf1952d8211d1030bf3dd5b94be54bb5d8fdcd4e56c51cb78",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "STAYC MWUAH udOf9JGMA7U members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=udOf9JGMA7U"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyH5pzbluu",
+        "udOf9JGMA7U"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMisqR",
+      "song": "Next Level (Habstrakt Remix)",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "EROYsCK0vK4",
+      "url": "https://www.youtube.com/watch?v=EROYsCK0vK4",
+      "directMetadataTitle": "aespa 에스파 'Next Level (Habstrakt Remix)' MV",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "remix",
+      "materialCategoryLabel": "Remix／重混影像",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "remix",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "77d713a3b58dcc56bbb5ea697e43213d17fc81375a65708c24ddc844cfb2c1f6",
+      "fullVideoWatched": false,
+      "missingEvidence": "各重混及Other World版独立的制作/真人画面证据。",
+      "sourceRoute": "先找SM/iScreaM/重混发行页和导演/动画制作档案；整片核验有无真人，再核原录音是否明确沿用及其署名。",
+      "completionCondition": "不因remix或AI标签禁评，不从原MV转移出镜名单；有明确无成员来源或完整视觉证据再采用。",
+      "searchSeed": "aespa Next Level (Habstrakt Remix) EROYsCK0vK4 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=EROYsCK0vK4"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyHuKMisqR",
+        "EROYsCK0vK4"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMiDs4",
+      "song": "Girls (BRLLNT Remix)",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "ZlcvaEpCEJ4",
+      "url": "https://www.youtube.com/watch?v=ZlcvaEpCEJ4",
+      "directMetadataTitle": "aespa 에스파 'Girls (BRLLNT Remix)' MV",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "remix",
+      "materialCategoryLabel": "Remix／重混影像",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "remix",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "02aacbf455477fdd3238584e306d1731f8d7b30e8e33813e1e2eabd504adccfc",
+      "fullVideoWatched": false,
+      "missingEvidence": "各重混及Other World版独立的制作/真人画面证据。",
+      "sourceRoute": "先找SM/iScreaM/重混发行页和导演/动画制作档案；整片核验有无真人，再核原录音是否明确沿用及其署名。",
+      "completionCondition": "不因remix或AI标签禁评，不从原MV转移出镜名单；有明确无成员来源或完整视觉证据再采用。",
+      "searchSeed": "aespa Girls (BRLLNT Remix) ZlcvaEpCEJ4 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=ZlcvaEpCEJ4"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyHuKMiDs4",
+        "ZlcvaEpCEJ4"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMyy5i",
+      "song": "Spicy (Nitepunk Remix)",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "dn-fzIgHkg0",
+      "url": "https://www.youtube.com/watch?v=dn-fzIgHkg0",
+      "directMetadataTitle": "aespa 에스파 'Spicy (Nitepunk Remix)' MV",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "remix",
+      "materialCategoryLabel": "Remix／重混影像",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "remix",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "a396cc9688bbc682e8da4ed1496f065113a79ef1d88b45f9836ccbecd1abc965",
+      "fullVideoWatched": false,
+      "missingEvidence": "各重混及Other World版独立的制作/真人画面证据。",
+      "sourceRoute": "先找SM/iScreaM/重混发行页和导演/动画制作档案；整片核验有无真人，再核原录音是否明确沿用及其署名。",
+      "completionCondition": "不因remix或AI标签禁评，不从原MV转移出镜名单；有明确无成员来源或完整视觉证据再采用。",
+      "searchSeed": "aespa Spicy (Nitepunk Remix) dn-fzIgHkg0 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=dn-fzIgHkg0"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyHuKMyy5i",
+        "dn-fzIgHkg0"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMXVDa",
+      "song": "Regret of the Times (2024 aespa Remake Ver.)",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "xjBY3MLdvVQ",
+      "url": "https://www.youtube.com/watch?v=xjBY3MLdvVQ",
+      "directMetadataTitle": "[STATION] aespa 에스파 '시대유감 (時代遺憾) (2024 aespa Remake Ver.)' MV",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "a1a77a27fbdd755786a476e00b6936a87dd188a2b445886674b3819f81f595df",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "aespa Regret of the Times (2024 aespa Remake Ver.) xjBY3MLdvVQ members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=xjBY3MLdvVQ"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyHuKMXVDa",
+        "xjBY3MLdvVQ"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMBHQA",
+      "song": "Get Goin'",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "wPnjKZFgeiE",
+      "url": "https://www.youtube.com/watch?v=wPnjKZFgeiE",
+      "directMetadataTitle": "aespa X Fraggle Rock 'Get Goin'' MV (Apple TV+)",
+      "directMetadataAuthor": "aespa",
+      "materialCategory": "screen_ost",
+      "materialCategoryLabel": "影视／动画OST",
+      "previousPrimaryCategory": "screen_collaboration",
+      "previousFormatCategory": "screen_ost",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "9f41bd45b03e9106549093952f87216feeef503eba30525b7becc72be9368c33",
+      "fullVideoWatched": false,
+      "missingEvidence": "音轨演唱者与剧集演员/动画角色、MV真人插入的区分。",
+      "sourceRoute": "查影视官方音乐片尾、原声发行内页、平台剧集宣传与具名录音报道，再完整核目标MV是否含录音棚/歌手段落。",
+      "completionCondition": "仅剧集画面或OST字样不能自动禁评；歌手可有公开录音参考，不能建立剧中演员的成员关系。",
+      "searchSeed": "aespa Get Goin' wPnjKZFgeiE members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=wPnjKZFgeiE"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyHuKMBHQA",
+        "wPnjKZFgeiE"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMlGJW",
+      "song": "Supernova (Grimes Remix)",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "4kMcaEz1WrQ",
+      "url": "https://www.youtube.com/watch?v=4kMcaEz1WrQ",
+      "directMetadataTitle": "aespa 에스파 'Supernova (Grimes Remix)' MV",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "remix",
+      "materialCategoryLabel": "Remix／重混影像",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "remix",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "58004214d5935fdfb08cc7356b467b745097c1fd4a98db2df59f05171ba0723d",
+      "fullVideoWatched": false,
+      "missingEvidence": "各重混及Other World版独立的制作/真人画面证据。",
+      "sourceRoute": "先找SM/iScreaM/重混发行页和导演/动画制作档案；整片核验有无真人，再核原录音是否明确沿用及其署名。",
+      "completionCondition": "不因remix或AI标签禁评，不从原MV转移出镜名单；有明确无成员来源或完整视觉证据再采用。",
+      "searchSeed": "aespa Supernova (Grimes Remix) 4kMcaEz1WrQ members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=4kMcaEz1WrQ",
+        "https://coloso.co.kr/products/3dartist-parkxohee2"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "existingLead": "Prior director portfolio lead; verify exact4kMcaEz1WrQ, not Other World tY2q55Sw3jA.",
+      "tuple": [
+        "recvxyHuKMlGJW",
+        "4kMcaEz1WrQ"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMCSdB",
+      "song": "Armageddon (Flava D Remix)",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "GnVRCX-Sfek",
+      "url": "https://www.youtube.com/watch?v=GnVRCX-Sfek",
+      "directMetadataTitle": "aespa 에스파 'Armageddon (Flava D Remix)' MV",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "remix",
+      "materialCategoryLabel": "Remix／重混影像",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "remix",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "ed111bdd3ca89070413ebd2c6c2a00c90203ac4e5988cac2e8ca69d68c7d8725",
+      "fullVideoWatched": false,
+      "missingEvidence": "各重混及Other World版独立的制作/真人画面证据。",
+      "sourceRoute": "先找SM/iScreaM/重混发行页和导演/动画制作档案；整片核验有无真人，再核原录音是否明确沿用及其署名。",
+      "completionCondition": "不因remix或AI标签禁评，不从原MV转移出镜名单；有明确无成员来源或完整视觉证据再采用。",
+      "searchSeed": "aespa Armageddon (Flava D Remix) GnVRCX-Sfek members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=GnVRCX-Sfek"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyHuKMCSdB",
+        "GnVRCX-Sfek"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMwjsI",
+      "song": "Supernova (Grimes Remix) (The Other World Ver.)",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "tY2q55Sw3jA",
+      "url": "https://www.youtube.com/watch?v=tY2q55Sw3jA",
+      "directMetadataTitle": "aespa 에스파 'Supernova (Grimes Remix)' MV (The Other World Ver.)",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "remix",
+      "materialCategoryLabel": "Remix／重混影像",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "remix",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "4cbd4342846e21e8384f347b134f628416b3cc95322eb6d288c63ac7e3666c71",
+      "fullVideoWatched": false,
+      "missingEvidence": "各重混及Other World版独立的制作/真人画面证据。",
+      "sourceRoute": "先找SM/iScreaM/重混发行页和导演/动画制作档案；整片核验有无真人，再核原录音是否明确沿用及其署名。",
+      "completionCondition": "不因remix或AI标签禁评，不从原MV转移出镜名单；有明确无成员来源或完整视觉证据再采用。",
+      "searchSeed": "aespa Supernova (Grimes Remix) (The Other World Ver.) tY2q55Sw3jA members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=tY2q55Sw3jA"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyHuKMwjsI",
+        "tY2q55Sw3jA"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMlAhN",
+      "song": "Rich Man (Yellow Claw Remix)",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "lWIQ72KFgrg",
+      "url": "https://www.youtube.com/watch?v=lWIQ72KFgrg",
+      "directMetadataTitle": "aespa 에스파 'Rich Man (Yellow Claw Remix)' MV",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "remix",
+      "materialCategoryLabel": "Remix／重混影像",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "remix",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "90e69031c9d5f4ff0abfa36830a288c84cbeba81ab07aae81dc63a16a9b7a3ce",
+      "fullVideoWatched": false,
+      "missingEvidence": "各重混及Other World版独立的制作/真人画面证据。",
+      "sourceRoute": "先找SM/iScreaM/重混发行页和导演/动画制作档案；整片核验有无真人，再核原录音是否明确沿用及其署名。",
+      "completionCondition": "不因remix或AI标签禁评，不从原MV转移出镜名单；有明确无成员来源或完整视觉证据再采用。",
+      "searchSeed": "aespa Rich Man (Yellow Claw Remix) lWIQ72KFgrg members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=lWIQ72KFgrg",
+        "https://www.blognone.com/node/148254"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "existingLead": "Prior verified article explicitly no members and exact embed; full visual verification still pending, no new rule.",
+      "tuple": [
+        "recvxyHuKMlAhN",
+        "lWIQ72KFgrg"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMxwnW",
+      "song": "LEMONADE (Zedd Remix)",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "P2loH5EOnr8",
+      "url": "https://www.youtube.com/watch?v=P2loH5EOnr8",
+      "directMetadataTitle": "aespa 에스파 'LEMONADE (Zedd Remix)' MV",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "remix",
+      "materialCategoryLabel": "Remix／重混影像",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "remix",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "753681b45650d363741205d431d11aabbad044f8bd2b35b21a62b54565c9213c",
+      "fullVideoWatched": false,
+      "missingEvidence": "各重混及Other World版独立的制作/真人画面证据。",
+      "sourceRoute": "先找SM/iScreaM/重混发行页和导演/动画制作档案；整片核验有无真人，再核原录音是否明确沿用及其署名。",
+      "completionCondition": "不因remix或AI标签禁评，不从原MV转移出镜名单；有明确无成员来源或完整视觉证据再采用。",
+      "searchSeed": "aespa LEMONADE (Zedd Remix) P2loH5EOnr8 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=P2loH5EOnr8"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyHuKMxwnW",
+        "P2loH5EOnr8"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMlNfX",
+      "song": "LEMONADE (Marlon Hoffstadt Remix)",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "zBiB0jww7_8",
+      "url": "https://www.youtube.com/watch?v=zBiB0jww7_8",
+      "directMetadataTitle": "aespa 에스파 'LEMONADE (Marlon Hoffstadt Remix)' MV",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "remix",
+      "materialCategoryLabel": "Remix／重混影像",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "remix",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "ec75ff431b3553e3dede8ba4545e14544723db766913a2df3033c68b3b6ba895",
+      "fullVideoWatched": false,
+      "missingEvidence": "各重混及Other World版独立的制作/真人画面证据。",
+      "sourceRoute": "先找SM/iScreaM/重混发行页和导演/动画制作档案；整片核验有无真人，再核原录音是否明确沿用及其署名。",
+      "completionCondition": "不因remix或AI标签禁评，不从原MV转移出镜名单；有明确无成员来源或完整视觉证据再采用。",
+      "searchSeed": "aespa LEMONADE (Marlon Hoffstadt Remix) zBiB0jww7_8 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=zBiB0jww7_8"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyHuKMlNfX",
+        "zBiB0jww7_8"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMLz7L",
+      "song": "LEMONADE (2Spade Remix)",
+      "groups": [
+        "aespa"
+      ],
+      "videoId": "yMvsKWGPEIU",
+      "url": "https://www.youtube.com/watch?v=yMvsKWGPEIU",
+      "directMetadataTitle": "aespa 에스파 'LEMONADE (2Spade Remix)' MV",
+      "directMetadataAuthor": "SMTOWN",
+      "materialCategory": "remix",
+      "materialCategoryLabel": "Remix／重混影像",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "remix",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "75bbaa074195dca517f04d9947db23cd214c25248441603b7bb60169de2b912a",
+      "fullVideoWatched": false,
+      "missingEvidence": "各重混及Other World版独立的制作/真人画面证据。",
+      "sourceRoute": "先找SM/iScreaM/重混发行页和导演/动画制作档案；整片核验有无真人，再核原录音是否明确沿用及其署名。",
+      "completionCondition": "不因remix或AI标签禁评，不从原MV转移出镜名单；有明确无成员来源或完整视觉证据再采用。",
+      "searchSeed": "aespa LEMONADE (2Spade Remix) yMvsKWGPEIU members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=yMvsKWGPEIU"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyHuKMLz7L",
+        "yMvsKWGPEIU"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyHuKMwrIt",
+      "song": "BANG BANG (MINIVE VER.)",
+      "groups": [
+        "IVE"
+      ],
+      "videoId": "rNGPgQB4Be8",
+      "url": "https://www.youtube.com/watch?v=rNGPgQB4Be8",
+      "directMetadataTitle": "IVE 아이브 'BANG BANG' (MINIVE VER.) MV",
+      "directMetadataAuthor": "IVE",
+      "materialCategory": "character_edition",
+      "materialCategoryLabel": "角色特别版",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "character_edition",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "95cfccabe167a4facc81cbc9d2d1a3a87600a70d0ecfa3143506dbd886ee74fb",
+      "fullVideoWatched": false,
+      "missingEvidence": "角色影像是否整片无成员真人（包括片头片尾/真人插入）。",
+      "sourceRoute": "核完整74秒MINIVE精确视频及片尾，辅以IVE/角色项目官方发布与制作方说明。",
+      "completionCondition": "不把角色名称当作无真人证明，也不继承原BANG BANG演员名单。",
+      "searchSeed": "IVE BANG BANG (MINIVE VER.) rNGPgQB4Be8 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=rNGPgQB4Be8"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyHuKMwrIt",
+        "rNGPgQB4Be8"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyOz5XFVzt",
+      "song": "Touchdown",
+      "groups": [
+        "fromis_9"
+      ],
+      "videoId": "peoZYyEvY-k",
+      "url": "https://www.youtube.com/watch?v=peoZYyEvY-k",
+      "directMetadataTitle": "[MV] fromis_9(프로미스나인) _ Touchdown (The Winning Try : Original Television Soundtrack)",
+      "directMetadataAuthor": "1theK (원더케이)",
+      "materialCategory": "screen_ost",
+      "materialCategoryLabel": "影视／动画OST",
+      "previousPrimaryCategory": "screen_collaboration",
+      "previousFormatCategory": "screen_ost",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "972a17b41161231e0a8fb3a82d003b4f50ea74aa74821e3e5fb3a46a8a2b1dd0",
+      "fullVideoWatched": false,
+      "missingEvidence": "音轨演唱者与剧集演员/动画角色、MV真人插入的区分。",
+      "sourceRoute": "查影视官方音乐片尾、原声发行内页、平台剧集宣传与具名录音报道，再完整核目标MV是否含录音棚/歌手段落。",
+      "completionCondition": "仅剧集画面或OST字样不能自动禁评；歌手可有公开录音参考，不能建立剧中演员的成员关系。",
+      "searchSeed": "fromis_9 Touchdown peoZYyEvY-k members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=peoZYyEvY-k"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyOz5XFVzt",
+        "peoZYyEvY-k"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyOz5Xr917",
+      "song": "Beautiful Restriction",
+      "groups": [
+        "NewJeans"
+      ],
+      "videoId": "jgD_U2t6qXQ",
+      "url": "https://www.youtube.com/watch?v=jgD_U2t6qXQ",
+      "directMetadataTitle": "NewJeans - Beautiful Restriction (아름다운 구속) | A Time Called You Special MV | Netflix",
+      "directMetadataAuthor": "Netflix K-Content",
+      "materialCategory": "screen_ost",
+      "materialCategoryLabel": "影视／动画OST",
+      "previousPrimaryCategory": "screen_collaboration",
+      "previousFormatCategory": "screen_ost",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "0b8f0e5b2e76140317835de50b50e4d832f2b7e1bc06b7b057873d91762155c3",
+      "fullVideoWatched": false,
+      "missingEvidence": "音轨演唱者与剧集演员/动画角色、MV真人插入的区分。",
+      "sourceRoute": "查影视官方音乐片尾、原声发行内页、平台剧集宣传与具名录音报道，再完整核目标MV是否含录音棚/歌手段落。",
+      "completionCondition": "仅剧集画面或OST字样不能自动禁评；歌手可有公开录音参考，不能建立剧中演员的成员关系。",
+      "searchSeed": "NewJeans Beautiful Restriction jgD_U2t6qXQ members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=jgD_U2t6qXQ"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyOz5Xr917",
+        "jgD_U2t6qXQ"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyOz5XQZhy",
+      "song": "Be Who You Are (Real Magic)",
+      "groups": [
+        "NewJeans"
+      ],
+      "videoId": "XEsrFIQOWZg",
+      "url": "https://www.youtube.com/watch?v=XEsrFIQOWZg",
+      "directMetadataTitle": "Be Who You Are (Music Video) | Coke Studio | Jon Batiste, J.I.D, NewJeans, Cat Burns, Camilo",
+      "directMetadataAuthor": "Coke Studio",
+      "materialCategory": "collaboration",
+      "materialCategoryLabel": "项目／合作／频道企划",
+      "previousPrimaryCategory": "screen_collaboration",
+      "previousFormatCategory": "collaboration",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "be3680e84187e2819c9415f8589479f9686704f9694614b4698da429aa468abc",
+      "fullVideoWatched": false,
+      "missingEvidence": "项目特定成员名单，不是品牌大使/作词者/团体当前简介。",
+      "sourceRoute": "查项目主办方、品牌/发行方、制作人说明、确切项目幕后和参与者采访。",
+      "completionCondition": "区分作词作曲、录音、MV演员、舞台嘉宾四种身份；有证到哪层就标哪层。",
+      "searchSeed": "NewJeans Be Who You Are (Real Magic) XEsrFIQOWZg members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=XEsrFIQOWZg"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyOz5XQZhy",
+        "XEsrFIQOWZg"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyOz5X7zV3",
+      "song": "LOCO (Japanese Ver.)",
+      "groups": [
+        "ITZY"
+      ],
+      "videoId": "ytTlH0EpSqI",
+      "url": "https://www.youtube.com/watch?v=ytTlH0EpSqI",
+      "directMetadataTitle": "ITZY「LOCO -Japanese ver.-」Music Video",
+      "directMetadataAuthor": "ITZY JAPAN OFFICIAL YouTube Channel",
+      "materialCategory": "language_or_acoustic",
+      "materialCategoryLabel": "语言／不插电版本",
+      "previousPrimaryCategory": "alternate_version",
+      "previousFormatCategory": "language_or_acoustic",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "08c9c228393134f8b74fd80f13722205611b445f866e4303161569dd29a41428",
+      "fullVideoWatched": false,
+      "missingEvidence": "该语言或编曲版本的参与人/拍摄版本链。",
+      "sourceRoute": "查日本/地区发行官网、版本内页、制作说明与具名幕后；先消歧同名不同videoId。",
+      "completionCondition": "仅在来源证明沿用录音/影像时继承相应公开署名；否则版本独立核验。",
+      "searchSeed": "ITZY LOCO (Japanese Ver.) ytTlH0EpSqI members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=ytTlH0EpSqI"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyOz5X7zV3",
+        "ytTlH0EpSqI"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyOz5XmFwB",
+      "song": "SUPERPOWERS",
+      "groups": [
+        "ITZY"
+      ],
+      "videoId": "-1llaBEyOXA",
+      "url": "https://www.youtube.com/watch?v=-1llaBEyOXA",
+      "directMetadataTitle": "[M/V] ITZY(있지) - SUPERPOWERS :: 힘쎈여자 강남순(Strong Girl Nam-soon) OST Part.1",
+      "directMetadataAuthor": "모스트콘텐츠 MOSTCONTENTS",
+      "materialCategory": "screen_ost",
+      "materialCategoryLabel": "影视／动画OST",
+      "previousPrimaryCategory": "screen_collaboration",
+      "previousFormatCategory": "screen_ost",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "f81681548d2950f0954a9d005deb2a112cdb46f14264eb5a19e5503c1235ce6a",
+      "fullVideoWatched": false,
+      "missingEvidence": "音轨演唱者与剧集演员/动画角色、MV真人插入的区分。",
+      "sourceRoute": "查影视官方音乐片尾、原声发行内页、平台剧集宣传与具名录音报道，再完整核目标MV是否含录音棚/歌手段落。",
+      "completionCondition": "仅剧集画面或OST字样不能自动禁评；歌手可有公开录音参考，不能建立剧中演员的成员关系。",
+      "searchSeed": "ITZY SUPERPOWERS -1llaBEyOXA members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=-1llaBEyOXA"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyOz5XmFwB",
+        "-1llaBEyOXA"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyOz5XsgVc",
+      "song": "Sprinkle Party",
+      "groups": [
+        "NMIXX"
+      ],
+      "videoId": "0T8d3pRjmi4",
+      "url": "https://www.youtube.com/watch?v=0T8d3pRjmi4",
+      "directMetadataTitle": "[MV] NMIXX - 스프링클 파티 (Sprinkle Party) [개비의 매직하우스 OST x NMIXX]",
+      "directMetadataAuthor": "VLENDING 블렌딩",
+      "materialCategory": "screen_ost",
+      "materialCategoryLabel": "影视／动画OST",
+      "previousPrimaryCategory": "screen_collaboration",
+      "previousFormatCategory": "screen_ost",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "4388579fccfcdfe7c56cdc4ccf20eb43a4c74f1cd2827a8fcde6a0a58f52f8aa",
+      "fullVideoWatched": false,
+      "missingEvidence": "音轨演唱者与剧集演员/动画角色、MV真人插入的区分。",
+      "sourceRoute": "查影视官方音乐片尾、原声发行内页、平台剧集宣传与具名录音报道，再完整核目标MV是否含录音棚/歌手段落。",
+      "completionCondition": "仅剧集画面或OST字样不能自动禁评；歌手可有公开录音参考，不能建立剧中演员的成员关系。",
+      "searchSeed": "NMIXX Sprinkle Party 0T8d3pRjmi4 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=0T8d3pRjmi4"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyOz5XsgVc",
+        "0T8d3pRjmi4"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxyOz5X6G1q",
+      "song": "Caution",
+      "groups": [
+        "NMIXX"
+      ],
+      "videoId": "eJd4ii5avNw",
+      "url": "https://www.youtube.com/watch?v=eJd4ii5avNw",
+      "directMetadataTitle": "NMIXX, Anderson .Paak - Caution",
+      "directMetadataAuthor": "AndersonPaakVEVO",
+      "materialCategory": "collaboration",
+      "materialCategoryLabel": "项目／合作／频道企划",
+      "previousPrimaryCategory": "screen_collaboration",
+      "previousFormatCategory": "collaboration",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "0103ba4cfa9db0a89257f75a1d31ad1f11b4521deb9c54164ad28b41fddbf610",
+      "fullVideoWatched": false,
+      "missingEvidence": "项目特定成员名单，不是品牌大使/作词者/团体当前简介。",
+      "sourceRoute": "查项目主办方、品牌/发行方、制作人说明、确切项目幕后和参与者采访。",
+      "completionCondition": "区分作词作曲、录音、MV演员、舞台嘉宾四种身份；有证到哪层就标哪层。",
+      "searchSeed": "NMIXX Caution eJd4ii5avNw members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=eJd4ii5avNw",
+        "https://nmixxjapan.com/s/222o/",
+        "https://www.youtube.com/watch?v=tZO08cGQxM4",
+        "https://theqoo.net/nmixx/4231962403"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "newLead": "Watch official behind with captions; extract explicitly named MV participants and cross-reference exact target shoot. Songwriting names Lily/Haewon alone are not singer/cast evidence.",
+      "tuple": [
+        "recvxyOz5X6G1q",
+        "eJd4ii5avNw"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence",
+      "latestTargetedResearch": {
+        "sourceFile": "docs/codex/evidence/20261028-stage-fill/person-followup.json",
+        "workId": "recvxyOz5X6G1q",
+        "videoId": "eJd4ii5avNw",
+        "song": "Caution",
+        "group": "NMIXX",
+        "status": "pending_named_mv_evidence",
+        "adoptableMemberIds": [],
+        "sourceUrls": [
+          "https://www.youtube.com/watch?v=tZO08cGQxM4",
+          "https://theqoo.net/nmixx/4231962403",
+          "https://nmixxjapan.com/s/222o/",
+          "https://www.enmixx.com/en/discography/caution"
+        ],
+        "checkedAt": "2026-10-28T05:44:27.553299Z",
+        "reason": "确认官方 MV 幕后入口仍可检索；普通 watch GET 返回 HTTP429，未取得字幕或可核逐人画面，停止重复该路径。官方团体简介、民间歌词分配、Lily/Haewon 作词作曲署名不证明全员 MV 出镜或录音分工，不导入。",
+        "nextStep": "在官方幕后恢复公开访问后，只采用字幕/屏幕姓名或具名制作说明直接证明的成员；保留部分名单也可，不猜脸。",
+        "fullVideoWatched": false
+      }
+    },
+    {
+      "workId": "recvxyOz5XueI9",
+      "song": "LUMINOUS",
+      "groups": [
+        "LOONA"
+      ],
+      "videoId": "lLug6h74acE",
+      "url": "https://www.youtube.com/watch?v=lLug6h74acE",
+      "directMetadataTitle": "［MV］LOONA (今月の少女) \"LUMINOUS \"",
+      "directMetadataAuthor": "loonatheworld japan",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "0fb8e38dc18f3b7754efe2cd2edaade3c25bd3613bf04c4a98fcc2bafe7e590e",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "LOONA LUMINOUS lLug6h74acE members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=lLug6h74acE"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxyOz5XueI9",
+        "lLug6h74acE"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxDMFHNSckK",
+      "song": "MILLION PLACES",
+      "groups": [
+        "XG"
+      ],
+      "videoId": "c5Fc6r4A9d8",
+      "url": "https://www.youtube.com/watch?v=c5Fc6r4A9d8",
+      "directMetadataTitle": "XG - MILLION PLACES (Official Music Video)",
+      "directMetadataAuthor": "XG",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "90ac3b84a85d278377f3826db59b7e4e6ab16e24fcafe824a1e5f5d27d0173be",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "XG MILLION PLACES c5Fc6r4A9d8 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=c5Fc6r4A9d8"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxDMFHNSckK",
+        "c5Fc6r4A9d8"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxIYG1FSCws",
+      "song": "VOODOO DOLL",
+      "groups": [
+        "WOOAH"
+      ],
+      "videoId": "nYrezqbjl3E",
+      "url": "https://www.youtube.com/watch?v=nYrezqbjl3E",
+      "directMetadataTitle": "WOOAH(우아) - ‘VOODOO DOLL’ MV",
+      "directMetadataAuthor": "WOOAH 우아",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "694cf187b4f7d51e9028eaed80955fb2f66466f1748f183d7c697e3dc3e950cf",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "WOOAH VOODOO DOLL nYrezqbjl3E members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=nYrezqbjl3E"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIYG1FSCws",
+        "nYrezqbjl3E"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxIZnNLkXMl",
+      "song": "A-HA!",
+      "groups": [
+        "HITGS"
+      ],
+      "videoId": "1XOmTvPWQSs",
+      "url": "https://www.youtube.com/watch?v=1XOmTvPWQSs",
+      "directMetadataTitle": "HITGS(힛지스) 'A-HA!' MV",
+      "directMetadataAuthor": "HITGS (힛지스)",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "260243cadc11061175e273bda67fde5beb8b39053516e5fc1565318db5980202",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "HITGS A-HA! 1XOmTvPWQSs members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=1XOmTvPWQSs"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIZnNLkXMl",
+        "1XOmTvPWQSs"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence",
+      "latestTargetedResearch": {
+        "sourceFile": "docs/codex/evidence/20261028-stage-fill/person-followup.json",
+        "workId": "recvxIZnNLkXMl",
+        "videoId": "1XOmTvPWQSs",
+        "song": "A-HA!",
+        "group": "HITGS",
+        "status": "pending_work_specific_named_list",
+        "adoptableMemberIds": [],
+        "sourceUrls": [
+          "https://sports.khan.co.kr/article/202511071918003",
+          "https://www.genie.co.kr/detail/albumInfo?axnm=86761799"
+        ],
+        "reason": "专辑曲目和 VV/Hyerin 讨论该曲可证，但本轮没有足够来源列出该 MV/录音完整具名名单；不从同专辑 GROSS/CHARIZZMA 或当前团体介绍自动复制。",
+        "nextStep": "发行采访/内页或官方具名拍摄幕后；允许有证据的部分名单。",
+        "fullVideoWatched": false
+      }
+    },
+    {
+      "workId": "recvxIZnNLgpyC",
+      "song": "HAPPY",
+      "groups": [
+        "HITGS"
+      ],
+      "videoId": "3ensCfpaUWI",
+      "url": "https://www.youtube.com/watch?v=3ensCfpaUWI",
+      "directMetadataTitle": "HITGS(힛지스) 'HAPPY' MV",
+      "directMetadataAuthor": "HITGS (힛지스)",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "c0d8137a8e5e883b100421bc4bfda55344e5a173ea90317025a526fec31eb0b0",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "HITGS HAPPY 3ensCfpaUWI members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=3ensCfpaUWI"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIZnNLgpyC",
+        "3ensCfpaUWI"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence",
+      "latestTargetedResearch": {
+        "sourceFile": "docs/codex/evidence/20261028-stage-fill/person-followup.json",
+        "workId": "recvxIZnNLgpyC",
+        "videoId": "3ensCfpaUWI",
+        "song": "HAPPY",
+        "group": "HITGS",
+        "status": "pending_work_specific_named_list",
+        "adoptableMemberIds": [],
+        "sourceUrls": [
+          "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15640&pg=1",
+          "https://sports.khan.co.kr/article/202510062216003",
+          "https://sports.khan.co.kr/article/202511071918003"
+        ],
+        "reason": "Genie 为精确 HAPPY MV 拍摄专题但可读正文未逐图具名；媒体明确五人女孩出镜但不列姓名。VV/Hyerin 广播采访讨论 HAPPY 与 A-HA!，海外拍摄回答未明确单一 MV，暂不写成精确参演证据。",
+        "nextStep": "核该专题照片的明确署名或官方拍摄字幕，或补到精确 HAPPY 发行公告具名名单。",
+        "fullVideoWatched": false
+      }
+    },
+    {
+      "workId": "recvxIZy35Xwr7",
+      "song": "Cherry Blossom",
+      "groups": [
+        "HITGS"
+      ],
+      "videoId": "6GUKqEfiX1I",
+      "url": "https://www.youtube.com/watch?v=6GUKqEfiX1I",
+      "directMetadataTitle": "HITGS(힛지스) 'Cherry Blossom' MV",
+      "directMetadataAuthor": "HITGS (힛지스)",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "2e3c5a717f4f4a12ecf8bca890d03985fad6c05ecd0df7d683bb0298e1eae92c",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "HITGS Cherry Blossom 6GUKqEfiX1I members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=6GUKqEfiX1I"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIZy35Xwr7",
+        "6GUKqEfiX1I"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxIZy35rUeY",
+      "song": "Little By Little",
+      "groups": [
+        "HITGS"
+      ],
+      "videoId": "L9VNIOcfSOU",
+      "url": "https://www.youtube.com/watch?v=L9VNIOcfSOU",
+      "directMetadataTitle": "HITGS(힛지스) 'Little By Little' MV",
+      "directMetadataAuthor": "HITGS (힛지스)",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "3e3256007e0669bb6e01b49cb8e43fd919337a5587b5df4dd36011c8b7e552a7",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "HITGS Little By Little L9VNIOcfSOU members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=L9VNIOcfSOU"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIZy35rUeY",
+        "L9VNIOcfSOU"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxIZy3525BF",
+      "song": "Gulliver!",
+      "groups": [
+        "HITGS"
+      ],
+      "videoId": "IM-N8trjDzk",
+      "url": "https://www.youtube.com/watch?v=IM-N8trjDzk",
+      "directMetadataTitle": "HITGS(힛지스) 'Gulliver!' MV",
+      "directMetadataAuthor": "HITGS (힛지스)",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "534049b0d30b7e18fdc0dc117fcd3db7b22fabd1738c7f0672724fbffa9118c2",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "HITGS Gulliver! IM-N8trjDzk members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=IM-N8trjDzk"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIZy3525BF",
+        "IM-N8trjDzk"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxIZFpVLU0R",
+      "song": "loverfory",
+      "groups": [
+        "ifeye"
+      ],
+      "videoId": "ecQSl-6NSTA",
+      "url": "https://www.youtube.com/watch?v=ecQSl-6NSTA",
+      "directMetadataTitle": "ifeye (이프아이) 'loverfory' MV",
+      "directMetadataAuthor": "ifeye 이프아이",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "cd8b039cf914a882d0f4fbc0f826a6592a2af88af7f180fc34ae30f5e9f35b49",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "ifeye loverfory ecQSl-6NSTA members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=ecQSl-6NSTA"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIZFpVLU0R",
+        "ecQSl-6NSTA"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxIZLjZmGMf",
+      "song": "夜市王 Night Market Queen",
+      "groups": [
+        "GENBLUE"
+      ],
+      "videoId": "o5EdYwk8k9o",
+      "url": "https://www.youtube.com/watch?v=o5EdYwk8k9o",
+      "directMetadataTitle": "[MV]GENBLUE幻藍小熊 ’夜市王 Night Market Queen‘ MV",
+      "directMetadataAuthor": "GENBLUE幻藍小熊",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "a35ddab244db158bcd29d1d54ea0d9764547bc5f85facffe630372abf055195b",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "GENBLUE 夜市王 Night Market Queen o5EdYwk8k9o members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=o5EdYwk8k9o"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIZLjZmGMf",
+        "o5EdYwk8k9o"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxIZLpETQNx",
+      "song": "ギミサマ☆(GimmeSummer☆)",
+      "groups": [
+        "UNIS"
+      ],
+      "videoId": "sqYNGZJWNcw",
+      "url": "https://www.youtube.com/watch?v=sqYNGZJWNcw",
+      "directMetadataTitle": "UNIS(유니스) 'ギミサマ☆(GimmeSummer☆)' M/V",
+      "directMetadataAuthor": "UNIS",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "3f2979428a1bfb3166331e381dfcc92e05649cc407057eaf27167be96f7a45ea",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "UNIS ギミサマ☆(GimmeSummer☆) sqYNGZJWNcw members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=sqYNGZJWNcw"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIZLpETQNx",
+        "sqYNGZJWNcw"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxIZLpET3tB",
+      "song": "Our Voyage",
+      "groups": [
+        "QWER"
+      ],
+      "videoId": "FifVV3t38Vk",
+      "url": "https://www.youtube.com/watch?v=FifVV3t38Vk",
+      "directMetadataTitle": "QWER 'Our Voyage' MV",
+      "directMetadataAuthor": "QWER",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "d98adce87a573273cdff7caad8c5192b0365608ad3c645c18ced87ee8b616053",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "QWER Our Voyage FifVV3t38Vk members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=FifVV3t38Vk"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIZLpET3tB",
+        "FifVV3t38Vk"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxIZY0lR25A",
+      "song": "Pilot2",
+      "groups": [
+        "YOUNG POSSE"
+      ],
+      "videoId": "GaqBpWroH68",
+      "url": "https://www.youtube.com/watch?v=GaqBpWroH68",
+      "directMetadataTitle": "영파씨 (YOUNG POSSE) 'Pilot2' MV",
+      "directMetadataAuthor": "YOUNG POSSE • 영파씨",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "ce088322af485b0f813c7031a49b3c7da465f1b6ee0acab8c8ca5450d60c2a9a",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "YOUNG POSSE Pilot2 GaqBpWroH68 members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=GaqBpWroH68"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIZY0lR25A",
+        "GaqBpWroH68"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxIZY0lPdWr",
+      "song": "GO해",
+      "groups": [
+        "YOUNG POSSE"
+      ],
+      "videoId": "J997YfFCw2I",
+      "url": "https://www.youtube.com/watch?v=J997YfFCw2I",
+      "directMetadataTitle": "영파씨 (YOUNG POSSE) 'GO해' MV",
+      "directMetadataAuthor": "YOUNG POSSE • 영파씨",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "a6361377534bcb8d096b965b38c429b82a6ad337c76e91ff2d3780f46c3bb2b8",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "YOUNG POSSE GO해 J997YfFCw2I members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=J997YfFCw2I"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxIZY0lPdWr",
+        "J997YfFCw2I"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    },
+    {
+      "workId": "recvxJ03dOg1Gc",
+      "song": "미스터 2026",
+      "groups": [
+        "YOUNG POSSE"
+      ],
+      "videoId": "lFxXpXk35Eo",
+      "url": "https://www.youtube.com/watch?v=lFxXpXk35Eo",
+      "directMetadataTitle": "영파씨 (YOUNG POSSE) '미스터 2026' MV",
+      "directMetadataAuthor": "YOUNG POSSE • 영파씨",
+      "materialCategory": "standard_mv",
+      "materialCategoryLabel": "常规MV",
+      "previousPrimaryCategory": "standard_mv",
+      "previousFormatCategory": "standard_mv",
+      "descriptionReadStatus": "read",
+      "descriptionSha256": "9b4ea6451453f69a23b24641920e4399ae484414708996ac84532f8c79de43e2",
+      "fullVideoWatched": false,
+      "missingEvidence": "与该MV或该次发行直接相关的逐人署名；团体简介不够。",
+      "sourceRoute": "查官方发行物内页、MV拍摄日记、Melon/Genie具名幕后、发行期采访或可靠具名报道。",
+      "completionCondition": "可采用有范围的录音/发行署名或已证部分参演，但不能将其写成完整MV演员名单。",
+      "searchSeed": "YOUNG POSSE 미스터 2026 lFxXpXk35Eo members behind credits",
+      "sourceEntrypoints": [
+        "https://www.youtube.com/watch?v=lFxXpXk35Eo"
+      ],
+      "publicCreditsAdopted": false,
+      "privateRelationshipAction": "none",
+      "tuple": [
+        "recvxJ03dOg1Gc",
+        "lFxXpXk35Eo"
+      ],
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/work-members.json",
+      "currentCreditPresent": false,
+      "currentAbsenceRulePresent": false,
+      "queueStatus": "open_person_evidence"
+    }
+  ],
+  "unknownMetricTuples": [
+    [
+      "cherrybullet",
+      "x"
+    ],
+    [
+      "everglow",
+      "x"
+    ],
+    [
+      "geenius",
+      "sales"
+    ],
+    [
+      "genblue",
+      "wins"
+    ],
+    [
+      "genblue",
+      "x"
+    ],
+    [
+      "spia",
+      "sales"
+    ],
+    [
+      "tracer",
+      "sales"
+    ],
+    [
+      "tracer",
+      "wins"
+    ],
+    [
+      "udtt",
+      "sales"
+    ],
+    [
+      "vcha",
+      "sales"
+    ],
+    [
+      "vcha",
+      "wins"
+    ],
+    [
+      "vcha",
+      "x"
+    ],
+    [
+      "vvup",
+      "sales"
+    ],
+    [
+      "vvup",
+      "x"
+    ],
+    [
+      "witchx",
+      "sales"
+    ]
+  ],
+  "unknownMetrics": [
+    {
+      "key": "cherrybullet.x",
+      "group": "cherrybullet",
+      "name": "Cherry Bullet",
+      "field": "groups.cherrybullet.social[2].observedValue",
+      "primaryCategory": "platform_access",
+      "categoryLabel": "平台访问限制",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "omit-X",
+      "accountExists": true,
+      "accountUrl": "https://x.com/cherrybullet",
+      "subjectName": "Cherry Bullet",
+      "reason": "0/0无日期为占位；186K/187K推荐卡冲突。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "取得cherrybullet带日期原页或可验证历史快照。",
+      "acceptance": "计数与账号/日期匹配；186K/187K推荐卡与数据库0不采用。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://www.twstalker.com/cherrybullet",
+      "tuple": [
+        "cherrybullet",
+        "x"
+      ],
+      "groupId": "recvxyEBDZm40w",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json"
+    },
+    {
+      "key": "everglow.x",
+      "group": "everglow",
+      "name": "EVERGLOW",
+      "field": "groups.everglow.social[1].observedValue",
+      "primaryCategory": "platform_access",
+      "categoryLabel": "平台访问限制",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "omit-X",
+      "accountExists": true,
+      "accountUrl": "https://x.com/everglow_offcl",
+      "subjectName": "EVERGLOW",
+      "reason": "新账号11K推荐卡无日期；旧账号统计不能移植。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "仅核新everglow_offcl账号，保留已确认新账号身份。",
+      "acceptance": "新账号带日期人数；旧公司账号数字不能搬用。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://x.com/everglow_offcl",
+      "tuple": [
+        "everglow",
+        "x"
+      ],
+      "groupId": "recvxyEBDZ9Jl3",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json"
+    },
+    {
+      "key": "geenius.sales",
+      "group": "geenius",
+      "name": "Geenius",
+      "field": "groups.geenius.sales.observedValue",
+      "primaryCategory": "scope_mismatch",
+      "categoryLabel": "数据口径不匹配/冲突",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "fallback-zero-not-confirmed-zero",
+      "accountExists": null,
+      "accountUrl": null,
+      "subjectName": null,
+      "reason": "未取得可用累计；实体商品存在不代表累计数量。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "核SpoilerBook(WITHVUU)的具体原始榜行；区分Circle Retail日榜与Album出货榜。",
+      "acceptance": "取得可读数量与统计口径；217候选未核原行，Retail不混加Album或重叠日/周/月。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20260518",
+      "tuple": [
+        "geenius",
+        "sales"
+      ],
+      "groupId": "rec28ldfRTiDxx",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "latestTargetedResearch": {
+        "sourceFile": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+        "key": "geenius.sales",
+        "group": "Geenius",
+        "status": "conditional_scoped_retail_lower_bound",
+        "value": 217,
+        "precision": "exact",
+        "coverage": "single_day_retail_only",
+        "scope": "Circle Retail Album Chart 2026-05-18 单日 Spoiler Book (WITHVUU) 零售计数217；非Album Chart出货量、非累计销量。",
+        "metric": "circle_retail_album_daily_count",
+        "sourceClass": "official",
+        "sourceLabel": "Circle Retail Album Chart",
+        "album": "Spoiler Book (WITHVUU)",
+        "barcode": "8800331307821",
+        "rank": 41,
+        "date": "2026-05-18",
+        "url": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20260518",
+        "rowFields": {
+          "KSum": 217,
+          "ESum": 0,
+          "rowSum": 217
+        },
+        "adoptionCondition": "仅当展示明确标成已核单日零售下界；不可套用Circle Album销量标签，不与同月/同周年榜相加。否则只作研究证据保留未知。",
+        "remainingUnknown": "其他日期、版本/渠道和累计范围未核。",
+        "evidenceFile": "statistics-primary-observations-c.json"
+      }
+    },
+    {
+      "key": "genblue.wins",
+      "group": "genblue",
+      "name": "GENBLUE",
+      "field": "groups.genblue.wins.observedValue",
+      "primaryCategory": "scope_mismatch",
+      "categoryLabel": "数据口径不匹配/冲突",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "fallback-zero-not-confirmed-zero",
+      "accountExists": null,
+      "accountUrl": null,
+      "subjectName": null,
+      "reason": "ACT LIKE THAT单曲明确0次，2025-03-11 THE SHOW第二/3351分；不是全团总计。纠正旧报告空表说法。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "核团体全时期的音乐节目获奖清单或明确有日期的团体级0记录。",
+      "acceptance": "ACT LIKE THAT单首0及THE SHOW第二不推出全团0；正数逐节目/日期/歌曲去重。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://www.kpopdb.net/",
+      "tuple": [
+        "genblue",
+        "wins"
+      ],
+      "groupId": "rec28ldfRTiCKv",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json"
+    },
+    {
+      "key": "genblue.x",
+      "group": "genblue",
+      "name": "GENBLUE",
+      "field": "groups.genblue.social[2].observedValue",
+      "primaryCategory": "platform_access",
+      "categoryLabel": "平台访问限制",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "omit-X",
+      "accountExists": true,
+      "accountUrl": "https://x.com/GENBLUE_ten",
+      "subjectName": "GENBLUE",
+      "reason": "0/0且无更新时间，视为数据库占位，不采用。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "读取GENBLUE_ten同账号带观察日期人数；可由用户已可访问的账号页截图辅助。",
+      "acceptance": "账号URL/身份、计数及观察日期共同可核；3K无日期推荐卡、0/0占位不能采用。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://www.twstalker.com/GENBLUE_ten",
+      "tuple": [
+        "genblue",
+        "x"
+      ],
+      "groupId": "rec28ldfRTiCKv",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json"
+    },
+    {
+      "key": "spia.sales",
+      "group": "spia",
+      "name": "SPIA",
+      "field": "groups.spia.sales.observedValue",
+      "primaryCategory": "insufficient_evidence",
+      "categoryLabel": "证据不足",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "fallback-zero-not-confirmed-zero",
+      "accountExists": null,
+      "accountUrl": null,
+      "subjectName": null,
+      "reason": "数字发行页面不能证明全团实体销量为0。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "先建立SPIA发行类型清单，再按实体发行查可读数量或发行方说明。",
+      "acceptance": "数字单曲页不能推出全团实体0；数量必须对应已确认发行与统计期间。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": null,
+      "tuple": [
+        "spia",
+        "sales"
+      ],
+      "groupId": "rec28ldfRTiDJU",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "latestTargetedResearch": {
+        "sourceFile": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+        "key": "spia.sales",
+        "group": "SPIA",
+        "status": "open_digital_catalog_no_physical_count",
+        "value": null,
+        "reason": "Genie发行方资料明确Daddy’s Little Girl为Digital Single Album；页面列Deeeep、Buonsenso但无销量。不能由数字单曲或目录没有实体条目推出全团销量0。",
+        "sources": [
+          {
+            "url": "https://www.genie.co.kr/detail/albumInfo?axnm=84950678",
+            "readStatus": "body_read",
+            "sourceClass": "licensed_music_service",
+            "observation": "2024-04-02数字单曲，Kakao发行、Campus企划；销量未提供。"
+          }
+        ],
+        "nextAction": "逐发行核正版实体/平台版条码与发行方，确有实体再核榜单；不存在完整来源前保持未知。"
+      }
+    },
+    {
+      "key": "tracer.sales",
+      "group": "tracer",
+      "name": "TRACER",
+      "field": "groups.tracer.sales.observedValue",
+      "primaryCategory": "insufficient_evidence",
+      "categoryLabel": "证据不足",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "fallback-zero-not-confirmed-zero",
+      "accountExists": null,
+      "accountUrl": null,
+      "subjectName": null,
+      "reason": "搜索混入同名OST，无法可靠归属；未知继续保留。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "先用发行方、韩文团名、具体实体标题消除TRACER同名OST，再查数量。",
+      "acceptance": "艺人/发行身份准确且有日期数量；同名OST、无结果都不证明0。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://kpopping.com/profiles/group/tracer",
+      "tuple": [
+        "tracer",
+        "sales"
+      ],
+      "groupId": "rec28ldfRTiDBG",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "latestTargetedResearch": {
+        "sourceFile": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+        "key": "tracer.sales",
+        "group": "TRACER",
+        "status": "open_physical_distribution_unverified",
+        "value": null,
+        "reason": "Bugs官方服务艺人页确认本团为Heejin/Soeun/Eunbi/Sejeong、GleamMedia、2024-11-05单曲365，可排除同名电视剧OST；未给实体销售记录。",
+        "sources": [
+          {
+            "url": "https://music.bugs.co.kr/artist/20222617?wl_ref=list_tr_10_ab",
+            "readStatus": "body_read",
+            "sourceClass": "licensed_music_service"
+          }
+        ],
+        "nextAction": "使用艺人ID20222617与365精确发行目录查实体条码/发行商，再查对应周期；未证实体不推断0。"
+      }
+    },
+    {
+      "key": "tracer.wins",
+      "group": "tracer",
+      "name": "TRACER",
+      "field": "groups.tracer.wins.observedValue",
+      "primaryCategory": "insufficient_evidence",
+      "categoryLabel": "证据不足",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "fallback-zero-not-confirmed-zero",
+      "accountExists": null,
+      "accountUrl": null,
+      "subjectName": null,
+      "reason": "First Win TBA未给完整累计，不以未找到一位推定确认0。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "按确认活动期核音乐节目结果或可靠团体级总数。",
+      "acceptance": "First Win TBA/缺栏目不等于0；真实0需明确全期范围，或完成覆盖节目结果核对。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://kpopping.com/profiles/group/tracer",
+      "tuple": [
+        "tracer",
+        "wins"
+      ],
+      "groupId": "rec28ldfRTiDBG",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json"
+    },
+    {
+      "key": "udtt.sales",
+      "group": "udtt",
+      "name": "UDTT",
+      "field": "groups.udtt.sales.observedValue",
+      "primaryCategory": "scope_mismatch",
+      "categoryLabel": "数据口径不匹配/冲突",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "fallback-zero-not-confirmed-zero",
+      "accountExists": null,
+      "accountUrl": null,
+      "subjectName": null,
+      "reason": "School Rush单店17、VIPER单店3，不是全渠道累计；后者goods_no=165334，日期不明。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "按School Rush及VIPER分别查发行方数值或Circle/Hanteo榜单。",
+      "acceptance": "售罄无数量、单店17/3及积分60不作全渠道销量；有范围数量才采用。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://star.ytn.co.kr/_sn/0117_202505271743475904",
+      "tuple": [
+        "udtt",
+        "sales"
+      ],
+      "groupId": "rec28ldfRTiDPs",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "latestTargetedResearch": {
+        "sourceFile": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+        "key": "udtt.sales",
+        "group": "UDTT",
+        "status": "open_physical_release_no_qualifying_count",
+        "value": null,
+        "reason": "MAKESTAR官方活动销售原页确认School Rush实体专辑与2025-04-29发行，声明计入Hanteo/Circle，但没有销售数量；活动名额不是销量。2025-04月/W18/W19及2026-06月/W26/W27的Album Top100无目标行，不据此填零。",
+        "sources": [
+          {
+            "url": "https://www.makestar.com/product/10385",
+            "readStatus": "body_read",
+            "sourceClass": "official_event_merchant",
+            "observation": "School Rush具名专辑销售活动；页面没有已售张数。"
+          }
+        ],
+        "nextAction": "School Rush发行后更晚补货周及VIPER确切实体出货周仍待查；不得把单店销量/积分/抽选人数或售罄状态当总量。"
+      }
+    },
+    {
+      "key": "vcha.sales",
+      "group": "vcha",
+      "name": "VCHA",
+      "field": "groups.vcha.sales.observedValue",
+      "primaryCategory": "scope_mismatch",
+      "categoryLabel": "数据口径不匹配/冲突",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "fallback-zero-not-confirmed-zero",
+      "accountExists": null,
+      "accountUrl": null,
+      "subjectName": null,
+      "reason": "不得将GIRLSET后续发行销量转归VCHA历史品牌；无可用累计。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "限定VCHA署名时期逐发行核查，单独保存GIRLSET后续发行。",
+      "acceptance": "排除NiziU及GIRLSET品牌混用；数量、发行方、统计日期及品牌范围均可核。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://kpopping.com/profiles/group/GIRLSET",
+      "tuple": [
+        "vcha",
+        "sales"
+      ],
+      "groupId": "rec28ldfRTiE0h",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "latestTargetedResearch": {
+        "sourceFile": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+        "key": "vcha.sales",
+        "group": "VCHA",
+        "status": "open_brand_scoped_no_physical_count",
+        "value": null,
+        "reason": "Qobuz正版目录确认Only One为VCHA、2024-03-15 Republic发行，售卖数字下载及串流；没有实体累计数。必须保留VCHA时期范围，GIRLSET新作品或其他团销量不能并入。",
+        "sources": [
+          {
+            "url": "https://www.qobuz.com/ca-en/album/only-one-vcha/qtgri53mq0glb",
+            "readStatus": "body_read_and_http_200",
+            "sourceClass": "licensed_music_service",
+            "observation": "VCHA发行身份与数字格式可核，销量缺失。"
+          }
+        ],
+        "nextAction": "核VCHA品牌期完整实物发行目录/官方发行声明；未能核出实体量时保持未知，不因数字目录推0。"
+      }
+    },
+    {
+      "key": "vcha.wins",
+      "group": "vcha",
+      "name": "VCHA",
+      "field": "groups.vcha.wins.observedValue",
+      "primaryCategory": "scope_mismatch",
+      "categoryLabel": "数据口径不匹配/冲突",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "fallback-zero-not-confirmed-zero",
+      "accountExists": null,
+      "accountUrl": null,
+      "subjectName": null,
+      "reason": "旧讨论没有全时期音乐节目累计证据，继续未知。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "独立核VCHA历史时期节目结果，不借用更名GIRLSET档案。",
+      "acceptance": "品牌/日期/节目覆盖明确；FirstWinTBA不作真实0，正数逐获奖记录核对。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://kpopping.com/profiles/group/VCHA",
+      "tuple": [
+        "vcha",
+        "wins"
+      ],
+      "groupId": "rec28ldfRTiE0h",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json"
+    },
+    {
+      "key": "vcha.x",
+      "group": "vcha",
+      "name": "VCHA",
+      "field": "groups.vcha.social[2].observedValue",
+      "primaryCategory": "platform_access",
+      "categoryLabel": "平台访问限制",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "omit-X",
+      "accountExists": true,
+      "accountUrl": "https://x.com/GIRLSETofficial",
+      "subjectName": "GIRLSET",
+      "reason": "28K缓存与38K推荐卡冲突，缺日期；不能转为VCHA历史人数。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "核GIRLSETofficial当前账号，显示账号现名GIRLSET。",
+      "acceptance": "带日期同账号人数；不得回填成VCHA历史人数，28K/38K无日期缓存不可比较。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://ww.twstalker.com/GIRLSETofficial",
+      "tuple": [
+        "vcha",
+        "x"
+      ],
+      "groupId": "rec28ldfRTiE0h",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json"
+    },
+    {
+      "key": "vvup.sales",
+      "group": "vvup",
+      "name": "VVUP",
+      "field": "groups.vvup.sales.observedValue",
+      "primaryCategory": "insufficient_evidence",
+      "categoryLabel": "证据不足",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "fallback-zero-not-confirmed-zero",
+      "accountExists": null,
+      "accountUrl": null,
+      "subjectName": null,
+      "reason": "VVON实体延期至2026-10-29，截至本轮尚未发行，不能填入已发生销量。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "按既有延期公告，2026-10-29之后核VVON实际出货与榜单；2026-10-28不先填未来销量。",
+      "acceptance": "实际发行确认及有日期数量；预售商品存在和延期公告不等于销量。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://weverse.io/vvup/notice",
+      "tuple": [
+        "vvup",
+        "sales"
+      ],
+      "groupId": "rec28ldfRTiD8K",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "latestTargetedResearch": {
+        "sourceFile": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+        "key": "vvup.sales",
+        "group": "VVUP",
+        "status": "open_physical_release_future",
+        "value": null,
+        "scope": "未补数",
+        "reason": "Weverse官方商店2026-09-02更新通知明确VVON实体发售及出货从2026-09-02改为2026-10-29，检查日2026-10-28尚未来临。数字发行、预订和未来发货不能作为已实现销量。",
+        "sources": [
+          {
+            "url": "https://shop.weverse.io/es/shop/MXN/artists/181/notices/12244",
+            "readStatus": "body_read",
+            "sourceClass": "official_merchant",
+            "observation": "VVON实体发行/出货延期至2026-10-29。"
+          }
+        ],
+        "nextAction": "实际发行后从Circle/Hanteo首个可核周期查起，并另外核Locked On是否存在正式实体版；不填0。"
+      }
+    },
+    {
+      "key": "vvup.x",
+      "group": "vvup",
+      "name": "VVUP",
+      "field": "groups.vvup.social[2].observedValue",
+      "primaryCategory": "platform_access",
+      "categoryLabel": "平台访问限制",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "omit-X",
+      "accountExists": true,
+      "accountUrl": "https://x.com/vvup_official",
+      "subjectName": "VVUP",
+      "reason": "原站受限；推荐卡30K缺统计日期，不采用。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "取得vvup_official带日期的原账号人数或可靠历史快照。",
+      "acceptance": "同账号、明确观察日期及人数；不移用30K无日期推荐卡。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://www.twstalker.com/VVUP_official",
+      "tuple": [
+        "vvup",
+        "x"
+      ],
+      "groupId": "rec28ldfRTiD8K",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json"
+    },
+    {
+      "key": "witchx.sales",
+      "group": "witchx",
+      "name": "W!TCHX",
+      "field": "groups.witchx.sales.observedValue",
+      "primaryCategory": "insufficient_evidence",
+      "categoryLabel": "证据不足",
+      "status": "open",
+      "observedValue": null,
+      "displayValue": 0,
+      "renderBehavior": "fallback-zero-not-confirmed-zero",
+      "accountExists": null,
+      "accountUrl": null,
+      "subjectName": null,
+      "reason": "Physical Sales 0+为数据库下限，不能认定真实0。",
+      "priorEvidenceCheckedAt": "2026-10-27",
+      "freshlyResearchedThisAudit": false,
+      "nextAction": "围绕Run Baby Run/READY SET RUN的具体版本查发行方或榜单数量。",
+      "acceptance": "商品页仅证明实体发行；需要可核数量/日期/版本，数据库0+不证明真实0。",
+      "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "previousNonSoridataLead": "https://www.kpopalbums.com/products/witchx-run-baby-run-ready-set-run-photobook-random-version",
+      "tuple": [
+        "witchx",
+        "sales"
+      ],
+      "groupId": "rec28ldfRTiDFM",
+      "currentDataStatus": "unavailable",
+      "queueStatus": "open_unknown_metric",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+      "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "latestTargetedResearch": {
+        "sourceFile": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+        "key": "witchx.sales",
+        "group": "W!TCHX",
+        "status": "open_product_format_and_count",
+        "value": null,
+        "reason": "零售商原页有RUN BABY RUN: READY, SET, RUN PHOTOBOOK，标2025-07-07，但所列内容是写真/卡片/海报，未明确列CD；商品和售罄状态均不是销量。2025-07月与W28/W29 Album Top100未找到目标。",
+        "sources": [
+          {
+            "url": "https://www.kpopalbums.com/products/witchx-run-baby-run-ready-set-run-photobook-random-version",
+            "readStatus": "body_read",
+            "sourceClass": "original_retailer",
+            "observation": "具名写真商品存在；当前可读内容没有明确CD条目，不能据此断定正规音盘实体销量。"
+          }
+        ],
+        "nextAction": "先核此版本是否音盘/平台音源实物并取得条码，再查Circle/Hanteo有效音盘行；不把商品价、售罄或数据库0+作销量。"
+      }
+    }
+  ],
+  "effectiveDateHoldTuples": [
+    [
+      "atheart",
+      "e-atheart-aurora-hiatus-observed"
+    ],
+    [
+      "atheart",
+      "e-atheart-aurora-second-hiatus-announcement"
+    ],
+    [
+      "bewave",
+      "e-bewave-six-member-phase-end-announcement"
+    ],
+    [
+      "candyshop",
+      "e-candyshop-yuina-hiatus-announcement"
+    ],
+    [
+      "geenius",
+      "e-geenius-spoiler-book-instrumental"
+    ],
+    [
+      "udtt",
+      "e-udtt-jessica-provisional-join-candidate"
+    ],
+    [
+      "udtt",
+      "e-udtt-sena-predebut-departure-candidate"
+    ]
+  ],
+  "effectiveDateHolds": [
+    {
+      "tuple": [
+        "atheart",
+        "e-atheart-aurora-hiatus-observed"
+      ],
+      "eventId": "e-atheart-aurora-hiatus-observed",
+      "slug": "atheart",
+      "groupId": "rec28ldfRTiEaV",
+      "title": "Aurora曾暂停活动（起始日未详）",
+      "eventType": "hiatus",
+      "canonicalReviewStatus": "hold",
+      "canonicalStatus": "confirmed",
+      "actualEventDate": null,
+      "holdReasons": [
+        "访谈中为记者背景陈述；尚缺公司原始暂停/恢复公告和起始日。"
+      ],
+      "canonicalSourceFile": "apps/idol-site/data/artist-timelines/atheart.json",
+      "canonicalSources": [
+        {
+          "id": "es-c054ec469a770962",
+          "url": "https://m.nocutnews.co.kr/news/amp/6484186",
+          "publisher": "CBS노컷뉴스（原始面对面访谈）",
+          "title": "AtHeart首次回归原始访谈",
+          "sourcePublishedAt": {
+            "value": "2026-03-13",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "仅歌曲原始访谈，Aurora状态仅为该时点的背景陈述；不采任何医学细节。",
+          "evidenceRef": "evidence/E/task05/sources/atheart-original-interview.json"
+        }
+      ],
+      "reportedRecordPresent": true,
+      "reportedKind": "report",
+      "reportedRecordDate": "2026-03-13",
+      "reportedDateLabel": "采访报道日期",
+      "reportedBoundary": "生效日期未确认；首次暂停的起始日、结束日均未由这篇访谈确定。",
+      "reportedSources": [
+        {
+          "url": "https://m.nocutnews.co.kr/news/amp/6484186",
+          "label": "CBS NoCut News · 原始访谈",
+          "publishedDate": "2026-03-13"
+        }
+      ],
+      "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+      "remainingEvidence": "Original initial notice and reliable publication evidence remain unread. An announcement date is not automatically the actual start of absence."
+    },
+    {
+      "tuple": [
+        "atheart",
+        "e-atheart-aurora-second-hiatus-announcement"
+      ],
+      "eventId": "e-atheart-aurora-second-hiatus-announcement",
+      "slug": "atheart",
+      "groupId": "rec28ldfRTiEaV",
+      "title": "公告线索：Aurora再次暂停团队活动",
+      "eventType": "hiatus",
+      "canonicalReviewStatus": "hold",
+      "canonicalStatus": "announced",
+      "actualEventDate": null,
+      "holdReasons": [
+        "原始公司声明尚未取得；仅二手公告转载。"
+      ],
+      "canonicalSourceFile": "apps/idol-site/data/artist-timelines/atheart.json",
+      "canonicalSources": [
+        {
+          "id": "es-bdbe249684eda5db",
+          "url": "https://www.soompi.com/article/1863734wpp/athearts-aurora-to-go-on-hiatus-due-to-health-just-2-months-after-return",
+          "publisher": "Soompi（二手公告转载）",
+          "title": "Aurora再次暂停团队活动报道",
+          "sourcePublishedAt": {
+            "value": "2026-08-18",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "只作hold线索，不保存医学细节，不推定独立生效日或截止日的活动状态。",
+          "evidenceRef": "evidence/E/task05/sources/atheart-aurora-second-hiatus-lead.json"
+        }
+      ],
+      "reportedRecordPresent": true,
+      "reportedKind": "report",
+      "reportedRecordDate": "2026-08-18",
+      "reportedDateLabel": "媒体报道日期",
+      "reportedBoundary": "生效日期未确认；报道日期不等于实际暂停起始日。",
+      "reportedSources": [
+        {
+          "url": "https://www.soompi.com/article/1863734wpp/athearts-aurora-to-go-on-hiatus-due-to-health-just-2-months-after-return",
+          "label": "Soompi · 公告转载报道",
+          "publishedDate": "2026-08-18"
+        }
+      ],
+      "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+      "remainingEvidence": "No newly readable primary notice. Existing media statement remains secondary; medical detail was not copied."
+    },
+    {
+      "tuple": [
+        "bewave",
+        "e-bewave-six-member-phase-end-announcement"
+      ],
+      "eventId": "e-bewave-six-member-phase-end-announcement",
+      "slug": "bewave",
+      "groupId": "rec28ldfRTiDh1",
+      "title": "公告线索：结束六人活动阶段并重整阵容",
+      "eventType": "member_departure",
+      "canonicalReviewStatus": "hold",
+      "canonicalStatus": "announced",
+      "actualEventDate": null,
+      "holdReasons": [
+        "只取得二手翻译正文；官方X原帖打开空白。",
+        "无独立原文证明计划实际生效；不填实际退团日，不把重整当解散或换公司。"
+      ],
+      "canonicalSourceFile": "apps/idol-site/data/artist-timelines/bewave.json",
+      "canonicalSources": [
+        {
+          "id": "es-db45bc6aa8c46ce7",
+          "url": "https://revistakoreain.com.br/2025/09/bewave-anuncia-mudancas-na-formacao-do-grupo/",
+          "publisher": "Revista KoreaIN（二手公告翻译，仅线索）",
+          "title": "BEWAVE阵容调整报道",
+          "sourcePublishedAt": {
+            "value": "2025-09-18",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "只能保留hold/缺口，不把二手翻译升格直接公告；不推断计划实际执行或身份拼写。",
+          "evidenceRef": "evidence/E/task05/sources/bewave-restructure-lead.json"
+        }
+      ],
+      "reportedRecordPresent": true,
+      "reportedKind": "report",
+      "reportedRecordDate": "2025-09-04",
+      "reportedDateLabel": "媒体报道日期",
+      "reportedBoundary": "生效日期未确认；不据此认定实际离队、解散或新团成立，也不新增成员关联。",
+      "reportedSources": [
+        {
+          "url": "https://isplus.com/article/view/isp202509040238",
+          "label": "日刊体育 · 公司声明报道",
+          "publishedDate": "2025-09-04"
+        }
+      ],
+      "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+      "remainingEvidence": "A planned 2025-10-31 six-member-phase ending does not prove the personnel changes actually occurred. Name-spelling issues cannot be used to bind IDs."
+    },
+    {
+      "tuple": [
+        "candyshop",
+        "e-candyshop-yuina-hiatus-announcement"
+      ],
+      "eventId": "e-candyshop-yuina-hiatus-announcement",
+      "slug": "candyshop",
+      "groupId": "rec28ldfRTiDlb",
+      "title": "公告候选：YUINA暂时停止团体活动",
+      "eventType": "hiatus",
+      "canonicalReviewStatus": "hold",
+      "canonicalStatus": "announced",
+      "actualEventDate": null,
+      "holdReasons": [
+        "已实际读到原声明图的转载，但缺原官方刊载位置与日期；媒体日期仅作线索，不提升ready。"
+      ],
+      "canonicalSourceFile": "apps/idol-site/data/artist-timelines/candyshop.json",
+      "canonicalSources": [
+        {
+          "id": "es-a2f9e55b34a31343",
+          "url": "https://0.soompi.io/wp-content/uploads/2024/05/08105357/Yuina.jpeg",
+          "publisher": "Brave Entertainment署名公告（Soompi转载图片，原刊待核）",
+          "title": "YUINA activity notice document",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-16",
+          "scopeNote": "工具实际展示原声明图并读字；仅抄活动安排，未保存医疗原因或艺人照片。原官方发表URL和日期未核，不能提升ready；不是退团证明。",
+          "evidenceRef": "evidence/E/task04/sources/candyshop-yuina-document-hold.json"
+        }
+      ],
+      "reportedRecordPresent": true,
+      "reportedKind": "report",
+      "reportedRecordDate": "2024-05-09",
+      "reportedDateLabel": "媒体报道日期",
+      "reportedBoundary": "生效日期未确认；这不是退团公告，不从官网名册变化推定退出。",
+      "reportedSources": [
+        {
+          "url": "https://www.starnewskorea.com/music/2024/05/09/2024050908033147420",
+          "label": "Star News · 公司声明报道",
+          "publishedDate": "2024-05-09"
+        }
+      ],
+      "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+      "remainingEvidence": "Official cafe publication URL/date evidence remains missing. Existing native media event already covers the report. Profile removal or personal social tags are not departure proof."
+    },
+    {
+      "tuple": [
+        "geenius",
+        "e-geenius-spoiler-book-instrumental"
+      ],
+      "eventId": "e-geenius-spoiler-book-instrumental",
+      "slug": "geenius",
+      "groupId": "rec28ldfRTiDxx",
+      "title": "《Spoiler Book》器乐预公开载体候选",
+      "eventType": "release",
+      "canonicalReviewStatus": "hold",
+      "canonicalStatus": "uncertain",
+      "actualEventDate": null,
+      "holdReasons": [
+        "2026-01-15仅为零售发行栏，缺公司实际发行原文。"
+      ],
+      "canonicalSourceFile": "apps/idol-site/data/artist-timelines/geenius.json",
+      "canonicalSources": [
+        {
+          "id": "es-ba4baa1d6876fea5",
+          "url": "https://www.yes24.com/product/goods/170657075",
+          "publisher": "YES24 / COPAN GLOBAL・HOMe商品说明",
+          "title": "Geenius Spoiler Book QR instrumental产品页",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-16",
+          "scopeNote": "目录日期仅hold；不能把器乐Spoiler Book当完整人声Love Don’t Change实际发行。",
+          "evidenceRef": "evidence/E/task05/sources/geenius-spoiler-retail.json"
+        }
+      ],
+      "reportedRecordPresent": true,
+      "reportedKind": "catalog",
+      "reportedRecordDate": "2026-01-15",
+      "reportedDateLabel": "零售目录标示日期",
+      "reportedBoundary": "生效日期未确认；不把本条写成完整人声专辑《Love Don’t Change》正式发行。",
+      "reportedSources": [
+        {
+          "url": "https://www.yes24.com/product/goods/170657075",
+          "label": "YES24 · QR器乐产品目录",
+          "publishedDate": null
+        }
+      ],
+      "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+      "remainingEvidence": "No newly found HOMe/COPAN actual release announcement or authorised delivered audio. Retail/import dates must not be equated with global release."
+    },
+    {
+      "tuple": [
+        "udtt",
+        "e-udtt-jessica-provisional-join-candidate"
+      ],
+      "eventId": "e-udtt-jessica-provisional-join-candidate",
+      "slug": "udtt",
+      "groupId": "rec28ldfRTiDPs",
+      "title": "Jessica临时加入线索：待公司原公告",
+      "eventType": "member_join",
+      "canonicalReviewStatus": "hold",
+      "canonicalStatus": "uncertain",
+      "actualEventDate": null,
+      "holdReasons": [
+        "非艺人或公司的人事原公告；加入生效日与永久/临时关系待核。"
+      ],
+      "canonicalSourceFile": "apps/idol-site/data/artist-timelines/udtt.json",
+      "canonicalSources": [
+        {
+          "id": "es-3606ab7cb98e1988",
+          "url": "https://adv.tokyo-np.co.jp/prtimes/article75656/",
+          "publisher": "在日本大韓民国民団大阪府本部（发行者原稿，东京新闻承载）",
+          "title": "KWAVE dance contest official organiser press release",
+          "sourcePublishedAt": {
+            "value": "2025-10-08",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "官方原文正文；仅保存核验所需摘录与结构化事实。",
+          "evidenceRef": "evidence/E/task06/sources/es-3606ab7cb98e1988.json"
+        }
+      ],
+      "reportedRecordPresent": true,
+      "reportedKind": "report",
+      "reportedRecordDate": "2025-05-08",
+      "reportedDateLabel": "本人采访发表日期",
+      "reportedBoundary": "生效日期未确认；具体加入日期与加入性质尚未核实。保留原有独立成员记录，不合并身份或个人历史。",
+      "reportedSources": [
+        {
+          "url": "https://www.hellokpop.com/interview/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview/",
+          "label": "Hellokpop · 本人采访（2025-05-08）",
+          "publishedDate": "2025-05-08"
+        },
+        {
+          "url": "https://sports.donga.com/ent/article/all/20250509/131571164/1",
+          "label": "Sports Donga · 参与报道（2025-05-09）",
+          "publishedDate": "2025-05-09"
+        }
+      ],
+      "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+      "remainingEvidence": "Temporary/permanent nature and precise effective date remain unknown. Do not translate 유학생 as temporary member. Public-name equivalence does not authorize merging stable business records or their personal histories."
+    },
+    {
+      "tuple": [
+        "udtt",
+        "e-udtt-sena-predebut-departure-candidate"
+      ],
+      "eventId": "e-udtt-sena-predebut-departure-candidate",
+      "slug": "udtt",
+      "groupId": "rec28ldfRTiDPs",
+      "title": "Sena出道前退出线索：待公司原公告",
+      "eventType": "member_departure",
+      "canonicalReviewStatus": "hold",
+      "canonicalStatus": "uncertain",
+      "actualEventDate": null,
+      "holdReasons": [
+        "未取得公司或本人原始退出声明；主办方历史简介仅旁证。"
+      ],
+      "canonicalSourceFile": "apps/idol-site/data/artist-timelines/udtt.json",
+      "canonicalSources": [
+        {
+          "id": "es-3606ab7cb98e1988",
+          "url": "https://adv.tokyo-np.co.jp/prtimes/article75656/",
+          "publisher": "在日本大韓民国民団大阪府本部（发行者原稿，东京新闻承载）",
+          "title": "KWAVE dance contest official organiser press release",
+          "sourcePublishedAt": {
+            "value": "2025-10-08",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-16",
+          "scopeNote": "官方原文正文；仅保存核验所需摘录与结构化事实。",
+          "evidenceRef": "evidence/E/task06/sources/es-3606ab7cb98e1988.json"
+        }
+      ],
+      "reportedRecordPresent": true,
+      "reportedKind": "repost",
+      "reportedRecordDate": null,
+      "reportedDateLabel": "原始发布日期未核实",
+      "reportedBoundary": "生效日期未确认；不把原稿发表日或团体出道日当作离开日期，不创建或猜测成员ID。",
+      "reportedSources": [
+        {
+          "url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+          "label": "KProfiles社区讨论 · 仅转载线索",
+          "publishedDate": null
+        }
+      ],
+      "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+      "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+      "remainingEvidence": "Original company notice location/date and provenance remain unavailable. Prior repost image does not independently close this requirement."
+    }
+  ],
+  "limits": [
+    "This is a deterministic reconciliation of saved public evidence and current app datasets, not fresh source verification of all81 works or15 metrics.",
+    "Published credits can be partial MV participation or recording/release lineup; they do not create private relations or prove every MV appearance.",
+    "The existing valid relationship image gap remains a different dimension; this file does not reopen completed A–Y/Z image batches.",
+    "The independent remaining-stage ledger and19 historical replacement queue are not duplicated here."
+  ]
+}

@@ -1,0 +1,1645 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-28T08:19:39.038906+00:00",
+  "baseline": "95fff6d / v198 per root verified baseline",
+  "scope": "15未知统计、tripleS剩余差额366550、7事实生效日hold；公开来源研究及提案，不写应用/私人数据。",
+  "state": "all_queue_rows_bounded_research_complete_proposals_pending_review",
+  "queue": [
+    {
+      "key": "cherrybullet.x",
+      "kind": "unknown_metric",
+      "status": "open_blocked_no_dated_count",
+      "finding": "官方X本轮403后停止；AIM目标记录中无此团，镜像本体页不可读。没有可靠日期计数，不以未知置0。",
+      "sourceUrls": [
+        "https://x.com/cherrybullet",
+        "https://aimcontents.com/data/sns-female.json"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "everglow.x",
+      "kind": "unknown_metric",
+      "status": "open_wrong_account_or_missing_count",
+      "finding": "AIM最新命中为2025-03旧时期514818，不能迁至2025-09创建的新账号everglow_offcl；公开归档216条只存帖子/account.unfollowed=0，不存followers_count。推荐栏11K无更新时间，未采用。",
+      "sourceUrls": [
+        "https://linktr.ee/everglow_offcl",
+        "https://aimcontents.com/data/sns-female.json",
+        "https://selca.kastden.org/owner/everglow/"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "geenius.sales",
+      "kind": "unknown_metric",
+      "status": "open_retail_only_no_album_count",
+      "finding": "本轮追加2026年第3/4/20/21周Album Top100没有目标行；已有2026-05-18 Retail217仅零售，不填Album销量。官方商店目录的QR版本与音盘出货记录须分开。",
+      "sourceUrls": [
+        "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=20&yearTime=3",
+        "https://www.kpopalbums.com/products/geenius-spoiler-book-1st-instrumental-album-qr-version"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "genblue.wins",
+      "kind": "unknown_metric",
+      "status": "open_song_zero_not_artist_zero",
+      "finding": "KpopDB只说明ACTLIKETHAT该曲0；GENBLUE艺人页没有完整一位表。kpoppingFirstWinTBA不是可核全团累计0，不采用。",
+      "sourceUrls": [
+        "https://www.kpopdb.net/en/artist/696/song.php?a=752&s=2840",
+        "https://www.kpopdb.net/en/artist/752/GENBLUE",
+        "https://kpopping.com/profiles/group/GENBLUE"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "genblue.x",
+      "kind": "unknown_metric",
+      "status": "open_blocked_no_dated_count",
+      "finding": "官网确认GENBLUE_ten，X403后停止；AIM没有目标记录，J-Enta0没有快照日期，不能当已核0。",
+      "sourceUrls": [
+        "https://www.tenentcorp.com/pages/genblue",
+        "https://x.com/GENBLUE_ten"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "spia.sales",
+      "kind": "unknown_metric",
+      "status": "open_digital_catalog_no_physical_count",
+      "finding": "正版Bugs原说明明确Deeeep第二张数字单曲及首张数字单曲，无实体销量。不存在公开完整实体发行清单时不能由数字目录推全团0。",
+      "sourceUrls": [
+        "https://music.bugs.co.kr/album/4102374?wl_ref=list_ab_01"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "tracer.sales",
+      "kind": "unknown_metric",
+      "status": "open_catalog_disambiguated_no_count",
+      "finding": "Bugs艺人ID20222617核四人TRACER及365，不混同名OST；未发现实体条码/可采用数量。",
+      "sourceUrls": [
+        "https://music.bugs.co.kr/artist/20222617?wl_ref=list_tr_10_ab"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "tracer.wins",
+      "kind": "unknown_metric",
+      "status": "open_incomplete_profile_not_zero",
+      "finding": "kpopping明确IncompleteProfile且FirstWinTBA，无所有节目完整获奖覆盖，未知保持。",
+      "sourceUrls": [
+        "https://kpopping.com/profiles/group/tracer"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "udtt.sales",
+      "kind": "unknown_metric",
+      "status": "open_album_count_missing_store_only",
+      "finding": "新核VIPER实体CD-R商品标2026-07-09，单店Sales3。本轮追加2026-W28/W29和7月Album均无目标，SchoolRush后续2025-W20/W21也无目标；单店不能混成Circle累计。",
+      "sourceUrls": [
+        "https://www.ktown4u.com/iteminfo?goods_no=165334"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "vcha.sales",
+      "kind": "unknown_metric",
+      "status": "open_brand_scoped_no_physical_count",
+      "finding": "正版Qobuz的OnlyOne属于VCHA品牌期数字下载/串流，无实体数量。民间实体猜测和GIRLSET后续作品不能补作VCHA销量。",
+      "sourceUrls": [
+        "https://www.qobuz.com/ca-en/album/only-one-vcha/qtgri53mq0glb"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "vcha.wins",
+      "kind": "unknown_metric",
+      "status": "open_historical_scope_not_zero",
+      "finding": "Twicehub2023年出道前没有获奖的叙述不涵盖品牌期全部活动；kpopping已重定向GIRLSET，不能据栏目缺失填VCHA0。",
+      "sourceUrls": [
+        "https://board.twicehub.com/News/46",
+        "https://kpopping.com/profiles/group/GIRLSET"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "vcha.x",
+      "kind": "unknown_metric",
+      "status": "candidate_third_party_snapshot_undated",
+      "finding": "GIRLSET官方当前账号本体TwStalker页明确38K，原更新时间未知；仅可作第三方约数页面读取快照，不称X精确实时统计，尚未采用。Chartmetric公开页无X。",
+      "sourceUrls": [
+        "https://ww.twstalker.com/GIRLSETofficial",
+        "https://chartmetric.com/artist/11069217"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false,
+      "additionalLimit": "web工具读取的镜像页面可见38K，但独立HTTP请求403挑战；该渠道不继续请求，日期未知候选不可称本轮平台实时精确复验。"
+    },
+    {
+      "key": "vvup.sales",
+      "kind": "unknown_metric",
+      "status": "open_album_count_missing_store_only",
+      "finding": "新核LockedOn确有CD、GENIE发行、实体日期2024-04-22/23商店有一天差异；Ktown4u单店Sales51不可充当Circle。追加W18/19/20无Album行。VVON官方延期至2026-10-29，检查日尚未发行。",
+      "sourceUrls": [
+        "https://www.ktown4u.com/iteminfo?goods_no=112758",
+        "https://books.rakuten.co.jp/rb/17859753/",
+        "https://shop.weverse.io/es/shop/MXN/artists/181/notices/12244"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "vvup.x",
+      "kind": "unknown_metric",
+      "status": "open_no_dated_count",
+      "finding": "Chartmetric当前页面无X；AIM没有目标。归档667条JSON仅account.unfollowed，非人数，不能当0；推荐栏30K无更新日期，不采用。",
+      "sourceUrls": [
+        "https://chartmetric.com/artist/11653998",
+        "https://selca.kastden.org/owner/vvup/"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "witchx.sales",
+      "kind": "unknown_metric",
+      "status": "open_product_format_and_count",
+      "finding": "商品原页列写真/卡片/贴纸，无CD或QR音源载体及数量；通用计榜宣传不证明该商品被Album榜统计。销量保持未知。",
+      "sourceUrls": [
+        "https://www.kpopalbums.com/products/witchx-run-baby-run-ready-set-run-photobook-random-version"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "triples.sales.source_difference",
+      "kind": "source_difference",
+      "status": "proposal_primary_evidence_upgrade_no_new_value",
+      "finding": "年榜2024/2025及2026半年、2026上半年6月表、20个此前未覆盖月表、12个发行周/月表均实际读取；匹配行均已覆盖，不重复加总。官方年榜289224/406744已直接确认；保持2092239，下差366550未解释。Total_CNT不作统计值。",
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false,
+      "evidenceFiles": [
+        "circle-annual-c.json",
+        "circle-months-c.json",
+        "circle-uncovered-months-c.json",
+        "circle-release-followup-c.json"
+      ]
+    },
+    {
+      "key": "e-atheart-aurora-hiatus-observed",
+      "slug": "atheart",
+      "kind": "effective_date_hold",
+      "status": "open_original_company_notice_unread",
+      "finding": "原TITAN公司X声明仍未实际读到；NME原文403即停。AtHeart团账号归档未包含公司原帖；官网新闻首页未显示暂停公告。实际起始日仍未证。",
+      "sourceUrls": [
+        "https://www.nme.com/news/music/atheart-make-their-debut-with-plot-twist-ep-launch-3884707",
+        "https://atheart.me/news",
+        "https://selca.kastden.org/owner/atheart/"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "e-atheart-aurora-second-hiatus-announcement",
+      "slug": "atheart",
+      "kind": "effective_date_hold",
+      "status": "open_secondary_statement_no_effective_date",
+      "finding": "Soompi原报道完整说明为未来暂停，但未给独立起始日；官网新闻和AtHeart账号归档未取得公司声明，不从2026-08-18报道日推起始日。",
+      "sourceUrls": [
+        "https://www.soompi.com/article/1863734wpp/athearts-aurora-to-go-on-hiatus-due-to-health-just-2-months-after-return",
+        "https://atheart.me/news"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "e-bewave-six-member-phase-end-announcement",
+      "slug": "bewave",
+      "kind": "effective_date_hold",
+      "status": "proposal_primary_document_upgrade_actual_date_open",
+      "finding": "通过公开媒体归档定位官方原始英/韩双语公告图片，HTTP200/完整哈希并实际目视。可核公告计划10/31结束六人阶段，但尚无独立证据实际执行；RISING36自述粉丝维护，不能当官方兑现确认。",
+      "sourceUrls": [
+        "https://x.com/BEWAVE_official/status/1963527459069923774",
+        "https://pbs.twimg.com/media/Gz_PoLUaoAA5erV.jpg",
+        "https://pbs.twimg.com/media/Gz_PoLRbkAATt_c.jpg",
+        "https://rising36.kontentsindex.com/bewave-2024"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "e-candyshop-yuina-hiatus-announcement",
+      "slug": "candyshop",
+      "kind": "effective_date_hold",
+      "status": "proposal_pending_parent_review",
+      "finding": "报道正文明确Yuina于2024年5月9日暂停团体活动；这是回顾已发生事件的日期，非仅当日计划。原官方刊载仍未取得；不是退团证据。",
+      "sourceUrls": [
+        "https://www.koreajoongangdaily.com/entertainment/candy-shop-introduces-new-member-julia-comeback-scheduled-for-june/11846351"
+      ]
+    },
+    {
+      "key": "e-geenius-spoiler-book-instrumental",
+      "slug": "geenius",
+      "kind": "effective_date_hold",
+      "status": "proposal_primary_document_upgrade_actual_date_open",
+      "finding": "官方2025-12-22 SpoilerBook Manual双原图已实际目视，QR卡/器乐载体由官方原文证实；仍无2026-01-15实际发行日，保留hold。",
+      "sourceUrls": [
+        "https://www.kpopalbums.com/products/geenius-spoiler-book-1st-instrumental-album-qr-version"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false,
+      "evidenceFiles": [
+        "geenius-archive-observations-c.json",
+        "geenius-manual-original-images-receipt-c.json"
+      ]
+    },
+    {
+      "key": "e-udtt-jessica-provisional-join-candidate",
+      "slug": "udtt",
+      "kind": "effective_date_hold",
+      "status": "open_interview_confirms_participation_not_effective_date",
+      "finding": "采访作者原站复刊明确采访时Jessica刚加入；仍无具体采访日/公司加入生效日或永久临时性质。Nugu采访线索未升格，保留独立成员ID和个人历史。",
+      "sourceUrls": [
+        "https://www.iamraeiam.com/post/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview",
+        "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    },
+    {
+      "key": "e-udtt-sena-predebut-departure-candidate",
+      "slug": "udtt",
+      "kind": "effective_date_hold",
+      "status": "open_repost_date_no_original_publication",
+      "finding": "KProfiles/SenaWiki均指3/26，但论坛实际链接为udtt_global1904823894105555307二手账号；Wiki称官方X却不可读且无可检查原帖ID。仍不把转载日期或群出道日期当实际退出日。",
+      "sourceUrls": [
+        "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+        "https://udangtangtang-sonyeondan-kpop.fandom.com/wiki/Jung_Sena"
+      ],
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "adopted": false
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://aimcontents.com/data/sns-female.json",
+      "checkedAt": "2026-10-28T08:19:42.477391+00:00",
+      "httpStatus": 200,
+      "sha256": "51f0706760659bd83f40c49aaaaafb377eeb091d16ae4e0964c03105ee0fd2dd",
+      "byteLength": 1895428,
+      "matches": [
+        {
+          "path": "$.data.웨이보.records[786]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-03",
+            "count": 569000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[823]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-02",
+            "count": 569000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[858]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-01",
+            "count": 569000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[891]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-12",
+            "count": 569000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[923]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-11",
+            "count": 568000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[954]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-10",
+            "count": 568000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[986]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-09",
+            "count": 568000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[1019]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-08",
+            "count": 568000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[1050]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-07",
+            "count": 568000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[1081]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-06",
+            "count": 568000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[1111]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-05",
+            "count": 567000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[1140]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-04",
+            "count": 567000
+          }
+        },
+        {
+          "path": "$.data.웨이보.records[1168]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-03",
+            "count": 567000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[1429]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-03",
+            "count": 49000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[1498]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-02",
+            "count": 49000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[1565]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-01",
+            "count": 49000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[1629]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-12",
+            "count": 49000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[1692]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-11",
+            "count": 49000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[1757]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-10",
+            "count": 49000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[1820]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-09",
+            "count": 49000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[1882]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-08",
+            "count": 49000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[1943]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-07",
+            "count": 50000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[2003]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-06",
+            "count": 50000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[2059]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-05",
+            "count": 49000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[2112]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-04",
+            "count": 49000
+          }
+        },
+        {
+          "path": "$.data.차오화.records[2158]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-03",
+            "count": 49000
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[1425]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-03",
+            "count": 514818
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[1494]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-02",
+            "count": 516217
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[1561]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-01",
+            "count": 517000
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[1625]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-12",
+            "count": 519000
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[1689]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-11",
+            "count": 521000
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[1755]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-10",
+            "count": 523000
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[1818]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-09",
+            "count": 524800
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[1880]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-08",
+            "count": 526300
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[1940]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-07",
+            "count": 528200
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[1999]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-06",
+            "count": 529600
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[2055]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-05",
+            "count": 531000
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[2107]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-04",
+            "count": 533000
+          }
+        },
+        {
+          "path": "$.data.X(트위터).records[2152]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-03",
+            "count": 534000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[1405]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-03",
+            "count": 1970000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[1473]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-02",
+            "count": 1970000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[1540]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-01",
+            "count": 1970000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[1604]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-12",
+            "count": 1970000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[1667]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-11",
+            "count": 1970000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[1733]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-10",
+            "count": 1970000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[1796]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-09",
+            "count": 1970000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[1858]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-08",
+            "count": 1970000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[1918]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-07",
+            "count": 1980000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[1978]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-06",
+            "count": 1970000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[2034]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-05",
+            "count": 1940000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[2088]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-04",
+            "count": 1940000
+          }
+        },
+        {
+          "path": "$.data.유튜브.records[2134]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-03",
+            "count": 1940000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[1409]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-03",
+            "count": 157000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[1477]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-02",
+            "count": 157000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[1544]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-01",
+            "count": 156000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[1608]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-12",
+            "count": 156000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[1671]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-11",
+            "count": 155000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[1737]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-10",
+            "count": 155000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[1798]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-09",
+            "count": 154000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[1858]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-08",
+            "count": 154000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[1917]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-07",
+            "count": 153000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[1976]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-06",
+            "count": 151000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[2032]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-05",
+            "count": 150000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[2085]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-04",
+            "count": 149000
+          }
+        },
+        {
+          "path": "$.data.QQ뮤직.records[2131]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-03",
+            "count": 148000
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[1417]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-03",
+            "count": 1469755
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[1483]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-02",
+            "count": 1614971
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[1550]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-01",
+            "count": 1666561
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[1614]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-12",
+            "count": 1666613
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[1678]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-11",
+            "count": 1688285
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[1741]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-10",
+            "count": 1833100
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[1802]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-09",
+            "count": 1877625
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[1863]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-08",
+            "count": 1999877
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[1920]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-07",
+            "count": 2088178
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[1980]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-06",
+            "count": 2066456
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[2036]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-05",
+            "count": 1908626
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[2089]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-04",
+            "count": 2013140
+          }
+        },
+        {
+          "path": "$.data.스포티파이.records[2135]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-03",
+            "count": 2061373
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[614]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-03",
+            "count": 67928
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[641]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-02",
+            "count": 67783
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[667]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2025-01",
+            "count": 68000
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[694]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-12",
+            "count": 67000
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[720]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-11",
+            "count": 67000
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[746]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-10",
+            "count": 67000
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[770]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-09",
+            "count": 67000
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[794]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-08",
+            "count": 67000
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[817]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-07",
+            "count": 67000
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[840]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-06",
+            "count": 66000
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[863]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-05",
+            "count": 62000
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[884]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-04",
+            "count": 61000
+          }
+        },
+        {
+          "path": "$.data.빌리빌리.records[905]",
+          "data": {
+            "name": "에버글로우",
+            "group": "EVERGLOW",
+            "date": "2024-03",
+            "count": 61000
+          }
+        }
+      ],
+      "topLevel": [
+        "generated",
+        "version",
+        "gender",
+        "snsList",
+        "data"
+      ]
+    },
+    {
+      "url": "https://aimcontents.com/data/metadata-female.json",
+      "checkedAt": "2026-10-28T08:19:48.680972+00:00",
+      "httpStatus": 200,
+      "sha256": "c1e60583351ce57e3e1c6d3108d271c7616ccd0f73be63d306419e7ccb4d3bf9",
+      "byteLength": 64335,
+      "matches": [],
+      "topLevel": [
+        "generated",
+        "gender",
+        "data"
+      ]
+    },
+    {
+      "url": "https://selca.kastden.org/account_media_list/metadata/owner/everglow/metadata-owner-everglow.txt",
+      "checkedAt": "2026-10-28T08:19:40.865457+00:00",
+      "httpStatus": 200,
+      "sha256": "e0ca6100386149ea3f92a05f20841d60b82ac609c33d97872ce7188ee8896c70",
+      "byteLength": 670,
+      "observedMetadata": "https://selca.kastden.org/account_media_metadata/3875/metadata-3875-twitter-everglow_offcl.zip\nhttps://selca.kastden.org/account_media_metadata/2700/metadata-2700-weverse-everglow.zip\nhttps://selca.kastden.org/account_media_metadata/2553/metadata-2553-naver_post-36198471_616261.zip\nhttps://selca.kastden.org/account_media_metadata/2331/metadata-2331-twitter-EVERGLOW_STAFF.zip\nhttps://selca.kastden.org/account_media_metadata/2326/metadata-2326-instagram-everglow_everday.zip\nhttps://selca.kastden.org/account_media_metadata/2130/metadata-2130-instagram-official_everglow.zip\nhttps://selca.kastden.org/account_media_metadata/2129/metadata-2129-twitter-EVERGLOW_twt.zip\n"
+    },
+    {
+      "url": "https://selca.kastden.org/account_media_list/metadata/owner/vvup/metadata-owner-vvup.txt",
+      "checkedAt": "2026-10-28T08:19:44.196091+00:00",
+      "httpStatus": 200,
+      "sha256": "00c6f924fa2fd2eebf7bc8485977b9fd1d3a4b053473842a06cdd44ae4c73691",
+      "byteLength": 179,
+      "observedMetadata": "https://selca.kastden.org/account_media_metadata/3291/metadata-3291-weverse-vvup.zip\nhttps://selca.kastden.org/account_media_metadata/3211/metadata-3211-twitter-vvup_official.zip\n"
+    },
+    {
+      "url": "https://chartmetric.com/artist/11069217",
+      "checkedAt": "2026-10-28T08:19:45.313354+00:00",
+      "httpStatus": 200,
+      "sha256": "6d0ae22bf3b5d403001168acc6f6a425b9904373ad8636086b39ac788dc810ed",
+      "byteLength": 80056,
+      "relevantContexts": [
+        "mances. Official profiles Instagram @girlset TikTok @girlset YouTube @girlset Quick Social Stats IG Followers 1.2M TikTok Followers 2.5M Spotify Followers 380.8K YouTube Subscribers 1.2M Facebook Followers 39K Streaming Stats Spotify Followers 380.8K Monthly ",
+        "les Instagram @girlset TikTok @girlset YouTube @girlset Quick Social Stats IG Followers 1.2M TikTok Followers 2.5M Spotify Followers 380.8K YouTube Subscribers 1.2M Facebook Followers 39K Streaming Stats Spotify Followers 380.8K Monthly Listeners 95.8K Playli",
+        "TikTok @girlset YouTube @girlset Quick Social Stats IG Followers 1.2M TikTok Followers 2.5M Spotify Followers 380.8K YouTube Subscribers 1.2M Facebook Followers 39K Streaming Stats Spotify Followers 380.8K Monthly Listeners 95.8K Playlist Count 5.3K Playlist ",
+        " Pricing English Sign In Start Trial Home Artists VCHA MUSIC STATS VCHA United States | Music Group Last Refreshed : Oct 27, 2026 19163rd Chartmetric Rank 95.8K Monthly Listeners 5.3K Playlist Count About VCHA GIRLSET, formerly known as VCHA, is an American girl g",
+        "ing English Sign In Start Trial Home Artists VCHA MUSIC STATS VCHA United States | Music Group Last Refreshed : Oct 27, 2026 19163rd Chartmetric Rank 95.8K Monthly Listeners 5.3K Playlist Count About VCHA GIRLSET, formerly known as VCHA, is an American girl"
+      ]
+    },
+    {
+      "url": "https://chartmetric.com/artist/11653998",
+      "checkedAt": "2026-10-28T08:19:49.099979+00:00",
+      "httpStatus": 200,
+      "sha256": "85989f466c00bf6c7461c50c5f722806bc8c0817cc9b4293cd664c2965ce1402",
+      "byteLength": 78658,
+      "relevantContexts": [
+        "rofiles Instagram @vvup.official TikTok @vvup_official YouTube @vvup_official Quick Social Stats IG Followers 507.5K TikTok Followers 927.8K Spotify Followers 123.7K YouTube Subscribers 417K Streaming Stats Spotify Followers 123.7K Monthly Listeners 65.6K Pla",
+        "official TikTok @vvup_official YouTube @vvup_official Quick Social Stats IG Followers 507.5K TikTok Followers 927.8K Spotify Followers 123.7K YouTube Subscribers 417K Streaming Stats Spotify Followers 123.7K Monthly Listeners 65.6K Playlist Count 1.9K Playlis",
+        "icial YouTube @vvup_official Quick Social Stats IG Followers 507.5K TikTok Followers 927.8K Spotify Followers 123.7K YouTube Subscribers 417K Streaming Stats Spotify Followers 123.7K Monthly Listeners 65.6K Playlist Count 1.9K Playlist Reach 357.2K TikTok Fol",
+        "es Pricing English Sign In Start Trial Home Artists VVUP MUSIC STATS VVUP South Korea | Music Group Last Refreshed : Oct 27, 2026 45626th Chartmetric Rank 65.6K Monthly Listeners 1.9K Playlist Count About VVUP VVUP (비비업) is a K-pop girl group. The group promotes t",
+        "icing English Sign In Start Trial Home Artists VVUP MUSIC STATS VVUP South Korea | Music Group Last Refreshed : Oct 27, 2026 45626th Chartmetric Rank 65.6K Monthly Listeners 1.9K Playlist Count About VVUP VVUP (비비업) is a K-pop girl group. The group promotes"
+      ]
+    },
+    {
+      "url": "https://selca.kastden.org/account_media_metadata/3875/metadata-3875-twitter-everglow_offcl.zip",
+      "checkedAt": "2026-10-28T08:22:07.379844+00:00",
+      "httpStatus": 200,
+      "sha256": "ecf93ef3f8b1fa74a302e1cb0c5d1b64acd97972ccd119f7043d85882bf4e53c",
+      "byteLength": 197093,
+      "fileCount": 216,
+      "fileNamesSample": [
+        "3875-06862423-G0inKIuaEAAHXWx.jpg.json",
+        "3875-06862424-G0jBe-haIAA-dXP.jpg.json",
+        "3875-06862425-G0jBe-4bUAAW38n.jpg.json",
+        "3875-06862426-G0jBie6aMAE4hSP.jpg.json",
+        "3875-06862427-G0jBie6aMAAGF6y.jpg.json"
+      ],
+      "sampleFields": [
+        {
+          "file": "3875-06862423-G0inKIuaEAAHXWx.jpg.json",
+          "type": "dict",
+          "keys": [
+            "media",
+            "post",
+            "account",
+            "owner",
+            "noona"
+          ],
+          "sample": "{'media': {'media_id': 6862423, 'ext_id': '1966005029929881600', 'id': '1966005029929881600', 'service': 'twitter', 'type': 'image', 'url': 'https://pbs.twimg.com/media/G0inKIuaEAAHXWx.jpg', 'filename"
+        },
+        {
+          "file": "3875-06862424-G0jBe-haIAA-dXP.jpg.json",
+          "type": "dict",
+          "keys": [
+            "media",
+            "post",
+            "account",
+            "owner",
+            "noona"
+          ],
+          "sample": "{'media': {'media_id': 6862424, 'ext_id': '1966033975270580224', 'id': '1966033975270580224', 'service': 'twitter', 'type': 'image', 'url': 'https://pbs.twimg.com/media/G0jBe-haIAA-dXP.jpg', 'filename"
+        },
+        {
+          "file": "3875-06862425-G0jBe-4bUAAW38n.jpg.json",
+          "type": "dict",
+          "keys": [
+            "media",
+            "post",
+            "account",
+            "owner",
+            "noona"
+          ],
+          "sample": "{'media': {'media_id': 6862425, 'ext_id': '1966033975367127040', 'id': '1966033975367127040', 'service': 'twitter', 'type': 'image', 'url': 'https://pbs.twimg.com/media/G0jBe-4bUAAW38n.jpg', 'filename"
+        }
+      ]
+    },
+    {
+      "url": "https://selca.kastden.org/account_media_metadata/3211/metadata-3211-twitter-vvup_official.zip",
+      "checkedAt": "2026-10-28T08:22:14.593652+00:00",
+      "httpStatus": 200,
+      "sha256": "fee1f190093245e7561c7b71ad6c45532cbb75c0bd897fbe8a96fe1e3c6eb1bd",
+      "byteLength": 590375,
+      "fileCount": 667,
+      "fileNamesSample": [
+        "3211-05426397-GHyNjpAaYAA0lUV.jpg.json",
+        "3211-05426398-GHyNjo_bEAAsAMY.jpg.json",
+        "3211-05426399-GHyNjo9b0AAb0ci.jpg.json",
+        "3211-05431265-GIG9xf6bYAAIcxf.jpg.json",
+        "3211-05431359-GIKB-dnbQAEht64.jpg.json"
+      ],
+      "sampleFields": [
+        {
+          "file": "3211-05426397-GHyNjpAaYAA0lUV.jpg.json",
+          "type": "dict",
+          "keys": [
+            "media",
+            "post",
+            "account",
+            "owner",
+            "noona"
+          ],
+          "sample": "{'media': {'media_id': 5426397, 'ext_id': '1764440797464911872', 'id': '1764440797464911872', 'service': 'twitter', 'type': 'image', 'url': 'https://pbs.twimg.com/media/GHyNjpAaYAA0lUV.jpg', 'filename"
+        },
+        {
+          "file": "3211-05426398-GHyNjo_bEAAsAMY.jpg.json",
+          "type": "dict",
+          "keys": [
+            "media",
+            "post",
+            "account",
+            "owner",
+            "noona"
+          ],
+          "sample": "{'media': {'media_id': 5426398, 'ext_id': '1764440797460762624', 'id': '1764440797460762624', 'service': 'twitter', 'type': 'image', 'url': 'https://pbs.twimg.com/media/GHyNjo_bEAAsAMY.jpg', 'filename"
+        },
+        {
+          "file": "3211-05426399-GHyNjo9b0AAb0ci.jpg.json",
+          "type": "dict",
+          "keys": [
+            "media",
+            "post",
+            "account",
+            "owner",
+            "noona"
+          ],
+          "sample": "{'media': {'media_id': 5426399, 'ext_id': '1764440797452423168', 'id': '1764440797452423168', 'service': 'twitter', 'type': 'image', 'url': 'https://pbs.twimg.com/media/GHyNjo9b0AAb0ci.jpg', 'filename"
+        }
+      ]
+    },
+    {
+      "url": "https://selca.kastden.org/account_media_metadata/3875/metadata-3875-twitter-everglow_offcl.zip",
+      "checkedAt": "2026-10-28T08:25:05.286390+00:00",
+      "kind": "public_archive_metadata_structure_check",
+      "fileCount": 216,
+      "accountSample": [
+        {
+          "account_id": 3875,
+          "ext_id": "1963147977373122560",
+          "id": "1963147977373122560",
+          "service": "twitter",
+          "username": "everglow_offcl",
+          "display_name": "EVERGLOW (에버글로우)",
+          "url": "https://x.com/everglow_offcl",
+          "unfollowed": 0,
+          "deleted": 0,
+          "account_set": null
+        }
+      ],
+      "followersFields": [
+        {
+          "file": "3875-06862423-G0inKIuaEAAHXWx.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3875-06862424-G0jBe-haIAA-dXP.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3875-06862425-G0jBe-4bUAAW38n.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3875-06862426-G0jBie6aMAE4hSP.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3875-06862427-G0jBie6aMAAGF6y.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3875-06862428-G0jBkXLaMAElk45.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3875-06862429-G0jBkXcaMAcNC-k.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3875-06862430-G0jBlaqaMAIz7JE.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3875-06862431-G0jBla1acAA-5W6.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3875-06862432-G0jBmo7aIAAjPIu.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        }
+      ],
+      "followerFieldMatches": 216,
+      "interpretation": "命中的是account.unfollowed状态字段，不是粉丝人数；全部文件未找到可采用followers_count。",
+      "actualFollowerCountFields": 0
+    },
+    {
+      "url": "https://selca.kastden.org/account_media_metadata/3211/metadata-3211-twitter-vvup_official.zip",
+      "checkedAt": "2026-10-28T08:25:09.355175+00:00",
+      "kind": "public_archive_metadata_structure_check",
+      "fileCount": 667,
+      "accountSample": [
+        {
+          "account_id": 3211,
+          "ext_id": "1762038456321290240",
+          "id": "1762038456321290240",
+          "service": "twitter",
+          "username": "vvup_official",
+          "display_name": "VVUP",
+          "url": "https://x.com/vvup_official",
+          "unfollowed": 0,
+          "deleted": 0,
+          "account_set": null
+        }
+      ],
+      "followersFields": [
+        {
+          "file": "3211-05426397-GHyNjpAaYAA0lUV.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3211-05426398-GHyNjo_bEAAsAMY.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3211-05426399-GHyNjo9b0AAb0ci.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3211-05431265-GIG9xf6bYAAIcxf.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3211-05431359-GIKB-dnbQAEht64.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3211-05439409-GInLNKRaUAAaV55.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3211-05439491-GIoLWj4aoAAwNSo.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3211-05439492-GIoLW5tbwAAYuue.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3211-05440432-GItHHLRb0AAXtgj.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        },
+        {
+          "file": "3211-05440540-GIsN5EUaEAA0QwE.jpg.json",
+          "path": "$.account.unfollowed",
+          "value": 0
+        }
+      ],
+      "followerFieldMatches": 667,
+      "interpretation": "命中的是account.unfollowed状态字段，不是粉丝人数；全部文件未找到可采用followers_count。",
+      "actualFollowerCountFields": 0
+    },
+    {
+      "url": "https://www.koreajoongangdaily.com/entertainment/candy-shop-introduces-new-member-julia-comeback-scheduled-for-june/11846351",
+      "checkedAt": "2026-10-28T08:30:27.420766+00:00",
+      "httpStatus": 200,
+      "sha256": "3f095c0ce3f334afcd3e0b232b61906bc2c6934e6de4304726f8868dd6223bc9",
+      "bytes": 151471,
+      "sourceClass": "named_original_reporting",
+      "publisher": "Korea JoongAng Daily",
+      "author": "KIM MIN-YOUNG",
+      "publishedAt": "2024-05-14",
+      "bodyRead": true,
+      "observation": "报道正文明确Yuina于2024年5月9日暂停团体活动；这是回顾已发生事件的日期，非仅当日计划。原官方刊载仍未取得；不是退团证据。"
+    },
+    {
+      "url": "https://www.ktown4u.com/iteminfo?goods_no=112758",
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "readStatus": "body_read_via_web_tool",
+      "sourceClass": "original_merchant",
+      "observation": "LockedOn CD商品，Sales51为单店计数，统计周期未知，不采用为Album。"
+    },
+    {
+      "url": "https://www.ktown4u.com/iteminfo?goods_no=165334",
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "readStatus": "body_read_via_web_tool",
+      "sourceClass": "original_merchant",
+      "observation": "VIPER CD-R商品，release2026-07-09，Sales3为单店计数，统计周期未知。"
+    },
+    {
+      "url": "https://ww.twstalker.com/GIRLSETofficial",
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "readStatus": "body_read_via_web_tool",
+      "sourceClass": "third_party_profile_mirror",
+      "observation": "账号本体Followers38K，原平台更新时间未知；非精确数。"
+    },
+    {
+      "url": "https://rising36.kontentsindex.com/bewave-2024",
+      "checkedAt": "2026-10-28T08:39:11.203419+00:00",
+      "readStatus": "body_read_via_web_tool",
+      "sourceClass": "fan_maintained_index",
+      "observation": "页面明确粉丝维护，叙述10/31实际结束但未给执行原始依据，不采用解除hold。"
+    },
+    {
+      "url": "https://x.com/geeniusofficial/status/2003088133349376295",
+      "sourceClass": "official_original_document_located_via_public_archive",
+      "checkedAt": "2026-10-28T08:43:55.269607+00:00",
+      "readStatus": "original_two_images_downloaded_and_visually_read",
+      "postCreatedAtFromArchive": "2025-12-22 13:00:01",
+      "observation": "官方SpoilerBook手册直接明确QR卡/整张器乐内容，无1/15实际发行日；与完整人声专辑保持分开。",
+      "evidenceFiles": [
+        "geenius-archive-observations-c.json",
+        "geenius-manual-original-images-receipt-c.json"
+      ]
+    },
+    {
+      "url": "https://swentertainment.co.kr/pages/udtt",
+      "checkedAt": "2026-10-28T08:43:55.269607+00:00",
+      "httpStatus": 403,
+      "readStatus": "blocked_stopped",
+      "observation": "一次直接公开页面请求403，停止，未绕过。"
+    }
+  ],
+  "proposals": [
+    {
+      "key": "e-candyshop-yuina-hiatus-announcement",
+      "status": "proposed_named_media_effective_date",
+      "proposedEventDate": {
+        "value": "2024-05-09",
+        "precision": "day"
+      },
+      "source": {
+        "url": "https://www.koreajoongangdaily.com/entertainment/candy-shop-introduces-new-member-julia-comeback-scheduled-for-june/11846351",
+        "checkedAt": "2026-10-28T08:30:27.420766+00:00",
+        "httpStatus": 200,
+        "sha256": "3f095c0ce3f334afcd3e0b232b61906bc2c6934e6de4304726f8868dd6223bc9",
+        "bytes": 151471,
+        "sourceClass": "named_original_reporting",
+        "publisher": "Korea JoongAng Daily",
+        "author": "KIM MIN-YOUNG",
+        "publishedAt": "2024-05-14",
+        "bodyRead": true,
+        "observation": "报道正文明确Yuina于2024年5月9日暂停团体活动；这是回顾已发生事件的日期，非仅当日计划。原官方刊载仍未取得；不是退团证据。"
+      },
+      "independentSupportingUrl": "https://www.soompi.com/article/1660072wpp/candy-shops-yuina-to-temporarily-halt-activities-brave-entertainment-to-recruit-new-member",
+      "scope": "暂停团体活动；不采原因，不当退团、不改成员关系",
+      "limitation": "原官方刊载URL/日期未取得，若继续要求一手公司原刊则hold不解除。由root审查能否采用具名原创回顾报道。",
+      "appMutation": false
+    },
+    {
+      "key": "e-bewave-six-member-phase-end-announcement",
+      "status": "proposed_evidence_upgrade_only",
+      "expectedEventDate": null,
+      "keepReviewStatus": "hold",
+      "change": "更新原文读取边界：官方英/韩原公告已目视，实际生效仍未知。",
+      "sourceUrls": [
+        "https://x.com/BEWAVE_official/status/1963527459069923774",
+        "https://pbs.twimg.com/media/Gz_PoLUaoAA5erV.jpg",
+        "https://pbs.twimg.com/media/Gz_PoLRbkAATt_c.jpg"
+      ],
+      "evidenceFiles": [
+        "archive-announcement-observations-c.json",
+        "bewave-original-images-receipt-c.json"
+      ],
+      "appMutation": false
+    },
+    {
+      "key": "triples.sales.source_difference",
+      "status": "proposed_evidence_upgrade_only",
+      "expectedValue": 2092239,
+      "keepDifference": 366550,
+      "change": "为两个已采用年榜追加本轮原生公开Circle响应哈希，将原先search-index-only的边界补充为本轮direct native API read；不改数值及原36月行。",
+      "evidenceFiles": [
+        "circle-annual-c.json"
+      ],
+      "appMutation": false
+    },
+    {
+      "key": "vcha.x",
+      "status": "conditional_third_party_rounded_snapshot_only",
+      "proposedValue": 38000,
+      "rawDisplay": "38K",
+      "precision": "rounded",
+      "sourceUrl": "https://ww.twstalker.com/GIRLSETofficial",
+      "sourceClass": "third_party_profile_mirror",
+      "sourceAsOf": null,
+      "observedAt": "2026-10-28T08:39:11.203419+00:00",
+      "scope": "GIRLSET当前官方账号，第三方页面所显示的约数；原平台更新日未知，不是VCHA时期历史人数。",
+      "condition": "须明确接受页面观测约数及未知原平台更新时间的展示语义；默认不改未知，不伪填sourceAsOf为observedAt。",
+      "appMutation": false
+    },
+    {
+      "key": "e-geenius-spoiler-book-instrumental",
+      "status": "proposed_evidence_upgrade_only",
+      "keepReviewStatus": "hold",
+      "expectedEventDate": null,
+      "change": "可补官方原手册为QR/整张器乐载体证据；实际发行日期仍未证，不把1/15目录日期当事实。",
+      "sourceUrl": "https://x.com/geeniusofficial/status/2003088133349376295",
+      "originalImageUrls": [
+        "https://pbs.twimg.com/media/G8gk5DKbYAA8bOX.jpg",
+        "https://pbs.twimg.com/media/G8gk50UakAQNIxZ.jpg"
+      ],
+      "evidenceFiles": [
+        "geenius-archive-observations-c.json",
+        "geenius-manual-original-images-receipt-c.json"
+      ],
+      "appMutation": false
+    }
+  ],
+  "limits": [
+    "公开源研究，不接触owner导出、私人浏览器、私人保存和Git。",
+    "Circle仅Album_CNT期间数量；不以Total_CNT作累计，不把Retail和Album相加。",
+    "页面显示单店Sales51/3只作商店范围事实，不当团体销量。",
+    "无匹配Top100行不是销量0；FirstWinTBA不是获奖0。",
+    "归档metadata本轮未读音视频，官方声明原图已目视；归档时间与发布实际生效日分开。",
+    "X镜像38K无源更新时间，只是条件候选；403/挑战后停止，不绕过。",
+    "没有新增统计或生效日期采用；全部修改仅研究证据，publication未执行。"
+  ],
+  "coverage": {
+    "unknownMetricsReviewed": 15,
+    "effectiveDateHoldsReviewed": 7,
+    "sourceDifferencesReviewed": 1,
+    "queueCount": 23,
+    "allQueueRowsHaveOutcome": true,
+    "sourceRequestsAreBounded": true,
+    "circleNativeReadArtifacts": [
+      "circle-annual-c.json",
+      "circle-months-c.json",
+      "circle-uncovered-months-c.json",
+      "circle-release-followup-c.json"
+    ],
+    "newDataValuesAdopted": 0,
+    "newDatesAdopted": 0
+  },
+  "updatedAt": "2026-10-28T08:43:55.269607+00:00",
+  "nextActions": [
+    "优先审CandyShop具名原创回顾报道能否解决单日事实。",
+    "审BEWAVE/tripleS仅证据边界更新，不降低未证实际日和销量差要求。",
+    "若GIRLSET镜像约数不符当前显示政策，继续保留未知并等待带计数日期的第一方页面。",
+    "仅基于新官方来源继续深入；已受限源不重试、不请求验证码，不把无榜行当0。"
+  ],
+  "reviewResolution": {
+    "checkedAt": "2026-10-28T09:01:07.519652+00:00",
+    "status": "approved_evidence_only_implemented_local",
+    "adoptedScope": [
+      "CandyShop named retrospective reporting without effective-date promotion",
+      "BEWAVE viewed statement originals without actual execution date",
+      "Geenius viewed official manual without actual release date",
+      "tripleS two annual official native API corroborations at unchanged quantities"
+    ],
+    "notAdopted": [
+      "GIRLSET undated 38K count",
+      "any of seven effective-date proposals",
+      "any new sales values or aggregate adjustment"
+    ],
+    "unknownMetricsRemain": 15,
+    "effectiveDateHoldsRemain": 7,
+    "triplesObservedSales": 2092239,
+    "triplesRemainingDifference": 366550,
+    "applicationEvidence": "docs/codex/evidence/20261028-continuous/evidence-upgrade-proposal-c.json",
+    "validation": "21/21 evidence and timeline/statistics tests pass; one initial test schema access error corrected; no data error",
+    "publication": "pending_root"
+  }
+}

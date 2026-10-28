@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-28T10:37:23.871060+00:00",
+  "initialReport": "online-people-evidence-browser.json",
+  "targetedReport": "online-people-evidence-browser-targeted-1793183582603.json",
+  "targetedLayouts": [
+    {
+      "id": "rec28ldfRTrK1S",
+      "width": 390,
+      "passed": true
+    },
+    {
+      "id": "geenius",
+      "width": 390,
+      "passed": true
+    }
+  ],
+  "findings": [
+    {
+      "case": "rec28ldfRTrK1S-390",
+      "firstObservation": "Two original image requests returned browser ERR_CONNECTION_CLOSED, no HTTP error response. The same work passed at 320/1440 in the initial run.",
+      "resolution": "Only this work at 390 rerun; all five original images loaded, decoded and matched source URLs and native dimensions. First two connection-closure logs retained. Underlying transport cause is not determined; no app change.",
+      "urls": [
+        "https://idol-lens-private.wuke40758.chatgpt.site/artist/mv-identity-batch-q-20261027/identities/illit-f93a4ec3e04bf9.jpg",
+        "https://idol-lens-private.wuke40758.chatgpt.site/artist/mv-identity-batch-q-20261027/identities/illit-a96cace4a7dc95.jpg"
+      ]
+    },
+    {
+      "case": "geenius-390",
+      "firstObservation": "Automation attempted to scroll a timeline element while initial client rendering replaced it; no page JavaScript exception.",
+      "resolution": "Waited for network-idle initial rendering before locating the record; only this 390 layout rerun and exact boundaries, three links and layout passed. No app change."
+    }
+  ],
+  "expandedTesting": false,
+  "applicationFilesChanged": false,
+  "privateWrites": 0
+}

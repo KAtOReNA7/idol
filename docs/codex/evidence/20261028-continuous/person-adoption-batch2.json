@@ -1,0 +1,650 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T08:48:36.126880+00:00",
+  "status": "locally_imported_tests_passed_pending_root_release",
+  "authorization": "Parent approved exact four-work scope: VVUP four-person release lineup, BELLE-only recording, UNIS original Japanese release eight-person lineup, NANA-only partial MV evidence.",
+  "baseline": {
+    "publicCreditWorks": 47,
+    "recognitionSlots": 292,
+    "uniqueOriginals": 134,
+    "absenceRules": 6,
+    "creditRecordsJsonSha256": "bf2717f89d46750b6a572eda1e200ec570a79ebf812bf938c1154daec168519e",
+    "recognitionRecordsJsonSha256": "5d2c6e61260732f246d473a274acd3bf77bbe7012c95aad421fe494bd43286e5"
+  },
+  "after": {
+    "publicCreditWorks": 51,
+    "recognitionSlots": 306,
+    "uniqueOriginals": 143,
+    "absenceRules": 6,
+    "personEvidenceUnion": 56,
+    "remainingPersonWorks": 75
+  },
+  "items": [
+    {
+      "workId": "rec28ldfRTrFGi",
+      "videoId": "A-Hr8aYSEx0",
+      "groupId": "rec28ldfRTiD8K",
+      "memberIds": [
+        "recvxAPQCFDPha",
+        "recvxAPQCFQR2I",
+        "recvxAPQCFtTIC",
+        "recvxAPQCF1Jqn"
+      ],
+      "proposedCreditKind": "documented_project_lineup",
+      "namedScope": "Four-person release lineup explicitly named for this single, excluding Hyunny; not per-frame cast verification.",
+      "sources": [
+        {
+          "url": "https://m.etnews.com/20250110000186",
+          "publisher": "ETNews / EGO ENT release announcement",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:41:50.476070+00:00",
+          "facts": [
+            "January 10, 2025 announcement names Kim, Paan, Suyeon and Jiyoon for the 4 Life single.",
+            "Explicitly identifies 4 Life as Jiyoon first vocal participation after joining, avoiding former-member substitution."
+          ],
+          "scope": "named_single_release"
+        },
+        {
+          "url": "https://www.cube-co.com/ja/ir/news/auto_20250124554553/pdfFile.pdf",
+          "publisher": "CUBE Co. / MARK & LONA; first-party January 24, 2025 press release",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:41:50.476070+00:00",
+          "facts": [
+            "Page 1 names the four collaborating VVUP members.",
+            "Page 2 explicitly links https://www.youtube.com/watch?v=A-Hr8aYSEx0 as the 4 Life promotional video."
+          ],
+          "scope": "exact_video_first_party_partner_release",
+          "pagesRead": [
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "referenceReuse": [
+        {
+          "memberId": "recvxAPQCFDPha",
+          "stageName": "Kim",
+          "reusedFromWorkId": "rec28ldfRTrQDO",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrQDO",
+            "videoId": "UG5jR87TtJA",
+            "memberId": "recvxAPQCFDPha",
+            "src": "/artist/mv-identity-batch-w-20261027/identities/vvup-2c5837d0043bfc.jpg",
+            "width": 1658,
+            "height": 2320,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/vvup_official/status/1990072369017417927",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 1,
+              "y": 0,
+              "width": 1656,
+              "height": 2208
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "vvup-vvon-alt-r-20261027"
+          },
+          "sha256": "2c5837d0043bfc043106d456c8f4eaa020041c4be7f9c37ea72e1f6478b54e59",
+          "bytes": 2029012,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-w/ledger.json",
+          "sourceNameEvidence": "VVUP ( profile ) on twitter at 2025-11-16 15:00:01 source: media post user VVUP (비비업) The 1st Mini Album ‘VVON’ Concept Photo ✴︎ 3 𝐊𝐢𝐦 2025.11.20 6PM (KST) #VVUP #비비업 #VVON #SuperModel #킴 #팬 #수연 #지윤 #Kim #Paan #Suyeon #Jiyoon; normalized title: VVUP ( profile ) on twitter at 2025-11-16 15:00:01 source: media post user VVUP (비비업) The 1st Mini Album ‘VVON’ Concept Photo ✴︎ 3 Kim 2025.11.20 6PM (KST) #VVUP #비비업 #VVON #SuperModel #킴 #팬 #수연 #지윤 #Kim #Paan #Suyeon #Jiyoon",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        },
+        {
+          "memberId": "recvxAPQCFQR2I",
+          "stageName": "Paan",
+          "reusedFromWorkId": "rec28ldfRTrQDO",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrQDO",
+            "videoId": "UG5jR87TtJA",
+            "memberId": "recvxAPQCFQR2I",
+            "src": "/artist/mv-identity-batch-w-20261027/identities/vvup-02f2528c4e8660.jpg",
+            "width": 2375,
+            "height": 1583,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/vvup_official/status/1990072617022402930",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 595,
+              "y": 0,
+              "width": 1185,
+              "height": 1580
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "vvup-vvon-alt-r-20261027"
+          },
+          "sha256": "02f2528c4e8660da41a1fef9c1cc67a761d759666eacd5a9c64ed30891a8665b",
+          "bytes": 2381533,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-w/ledger.json",
+          "sourceNameEvidence": "VVUP ( profile ) on twitter at 2025-11-16 15:01:00 source: media post user VVUP (비비업) The 1st Mini Album ‘VVON’ Concept Photo ✴︎ 3 𝐏𝐚𝐚𝐧 2025.11.20 6PM (KST) #VVUP #비비업 #VVON #SuperModel #킴 #팬 #수연 #지윤 #Kim #Paan #Suyeon #Jiyoon; normalized title: VVUP ( profile ) on twitter at 2025-11-16 15:01:00 source: media post user VVUP (비비업) The 1st Mini Album ‘VVON’ Concept Photo ✴︎ 3 Paan 2025.11.20 6PM (KST) #VVUP #비비업 #VVON #SuperModel #킴 #팬 #수연 #지윤 #Kim #Paan #Suyeon #Jiyoon",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        },
+        {
+          "memberId": "recvxAPQCFtTIC",
+          "stageName": "Suyeon",
+          "reusedFromWorkId": "rec28ldfRTrQDO",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrQDO",
+            "videoId": "UG5jR87TtJA",
+            "memberId": "recvxAPQCFtTIC",
+            "src": "/artist/mv-identity-batch-w-20261027/identities/vvup-9dd22ef30f5bfc.jpg",
+            "width": 1568,
+            "height": 2195,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/vvup_official/status/1990072868617756745",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 300,
+              "y": 100,
+              "width": 1002,
+              "height": 1336
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "vvup-vvon-alt-r-20261027"
+          },
+          "sha256": "9dd22ef30f5bfc70b90b48c4997f0b1db6edd43ea19641ef456331ac384005ba",
+          "bytes": 1961521,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-w/ledger.json",
+          "sourceNameEvidence": "VVUP ( profile ) on twitter at 2025-11-16 15:02:00 source: media post user VVUP (비비업) The 1st Mini Album ‘VVON’ Concept Photo ✴︎ 3 𝐒𝐮𝐲𝐞𝐨𝐧 2025.11.20 6PM (KST) #VVUP #비비업 #VVON #SuperModel #킴 #팬 #수연 #지윤 #Kim #Paan #Suyeon #Jiyoon; normalized title: VVUP ( profile ) on twitter at 2025-11-16 15:02:00 source: media post user VVUP (비비업) The 1st Mini Album ‘VVON’ Concept Photo ✴︎ 3 Suyeon 2025.11.20 6PM (KST) #VVUP #비비업 #VVON #SuperModel #킴 #팬 #수연 #지윤 #Kim #Paan #Suyeon #Jiyoon",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        },
+        {
+          "memberId": "recvxAPQCF1Jqn",
+          "stageName": "Jiyoon",
+          "reusedFromWorkId": "rec28ldfRTrQDO",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrQDO",
+            "videoId": "UG5jR87TtJA",
+            "memberId": "recvxAPQCF1Jqn",
+            "src": "/artist/mv-identity-batch-w-20261027/identities/vvup-be33d35e586556.jpg",
+            "width": 2538,
+            "height": 1692,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/vvup_official/status/1990073120338960650",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 1338,
+              "y": 0,
+              "width": 1200,
+              "height": 1600
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "vvup-vvon-alt-r-20261027"
+          },
+          "sha256": "be33d35e5865565cf590690a96cb75c54d7f51d60834abf5f90d4f1568d904d5",
+          "bytes": 2329909,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-w/ledger.json",
+          "sourceNameEvidence": "VVUP ( profile ) on twitter at 2025-11-16 15:03:00 source: media post user VVUP (비비업) The 1st Mini Album ‘VVON’ Concept Photo ✴︎ 3 𝐉𝐢𝐲𝐨𝐨𝐧 2025.11.20 6PM (KST) #VVUP #비비업 #VVON #SuperModel #킴 #팬 #수연 #지윤 #Kim #Paan #Suyeon #Jiyoon; normalized title: VVUP ( profile ) on twitter at 2025-11-16 15:03:00 source: media post user VVUP (비비업) The 1st Mini Album ‘VVON’ Concept Photo ✴︎ 3 Jiyoon 2025.11.20 6PM (KST) #VVUP #비비업 #VVON #SuperModel #킴 #팬 #수연 #지윤 #Kim #Paan #Suyeon #Jiyoon",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        }
+      ]
+    },
+    {
+      "workId": "rec28ldfRTrMsR",
+      "videoId": "a6PBMuqpGto",
+      "groupId": "rec28ldfRTiCdf",
+      "memberIds": [
+        "rec28ldbniBaWW"
+      ],
+      "proposedCreditKind": "documented_project_lineup",
+      "namedScope": "BELLE only, direct self-reported recording. Not a sole-vocalist claim.",
+      "sources": [
+        {
+          "url": "https://ksociety.fr/interview-kiss-of-life-renait-de-ses-cendres/",
+          "publisher": "Ksociety / K-Pop Mag; Alexia Français-Arnaud direct artist interview",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:41:50.476070+00:00",
+          "facts": [
+            "BELLE explicitly says she recorded k bye and describes its rap delivery.",
+            "The interview links the official k bye B-Side Drop in that response.",
+            "Publisher thanks KISS OF LIFE, S2 Entertainment and Kakao Entertainment for the interview."
+          ],
+          "scope": "named_partial_recording",
+          "accessNote": "Web reader returned original text. A separate ordinary HTTP request returned 403 and was not retried."
+        },
+        {
+          "url": "https://kstationtv.com/2025/06/09/kiss-of-life-an-album-representing-freedom/?lang=en",
+          "publisher": "KSTATION TV; direct showcase reporting",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:41:50.476070+00:00",
+          "facts": [
+            "The 224 release includes k bye. Four-member showcase attendance is corroborating context only, not used to infer all four in this recording."
+          ],
+          "scope": "release_identity_context"
+        }
+      ],
+      "referenceReuse": [
+        {
+          "memberId": "rec28ldbniBaWW",
+          "stageName": "BELLE",
+          "reusedFromWorkId": "rec28ldfRTrMRu",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrMRu",
+            "videoId": "eTvUZymLyGY",
+            "memberId": "rec28ldbniBaWW",
+            "src": "/artist/mv-identity-batch-q-20261027/identities/kiss-of-life-e9c5a2c29bb0f5.jpg",
+            "width": 1067,
+            "height": 1600,
+            "label": "同系列写真 · 认人参考",
+            "sourceUrl": "https://kissoflife.jp/biography/belle.html",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 1,
+              "y": 0,
+              "width": 1065,
+              "height": 1420
+            },
+            "photoKind": "portrait_photo",
+            "photoSetId": "kiof-japan-artist-20260828"
+          },
+          "sha256": "e9c5a2c29bb0f5ca155209e7568139c5dec2a12956b5d475243cc97840eed46e",
+          "bytes": 419403,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-q/ledger.json",
+          "sourceNameEvidence": "The official biography page is headed BELLE and the selected image alt text explicitly reads BELLE.",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        }
+      ]
+    },
+    {
+      "workId": "rec28ldfRTrQ4z",
+      "videoId": "DrU5bxPcH0s",
+      "groupId": "rec28ldfRTiCWc",
+      "memberIds": [
+        "recvxAPQCFeTtL",
+        "recvxAPQCFgu8Z",
+        "recvxAPQCFgfOW",
+        "recvxAPQCFWScb",
+        "recvxAPQCFwHoN",
+        "recvxAPQCFnjrP",
+        "recvxAPQCF822A",
+        "recvxAPQCFOtuE"
+      ],
+      "proposedCreditKind": "documented_project_lineup",
+      "namedScope": "Eight named participants in a direct Japanese-release interview, not a complete MV appearance list.",
+      "sources": [
+        {
+          "url": "https://thetv.jp/news/detail/1288656/",
+          "publisher": "WEBザテレビジョン / KADOKAWA; direct artist interview",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:41:50.476070+00:00",
+          "facts": [
+            "September 12, 2025 original interview individually names and interviews Hyeonju, Nana, Gehlee, Kotoko, Elisia, Yunha, Yoona and Seowon about this Japanese release.",
+            "Members describe Japanese pronunciation and song preparation; the article explicitly distinguishes September 12 Japanese original from September 15 English version."
+          ],
+          "scope": "named_exact_language_release",
+          "httpStatus": 200,
+          "pageSha256": "37214ebfba4e45ad6a1f21663ab8c45ba0a69537aa7aaa146bafe8518833166d"
+        },
+        {
+          "url": "https://realsound.jp/2026/08/post-2486397.html",
+          "publisher": "Real Sound; PR feature with exclusive artist and choreographer comments",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:41:50.476070+00:00",
+          "facts": [
+            "Original HTML was read successfully by ordinary HTTP after the web reader timed out.",
+            "lite-youtube elements explicitly link sqYNGZJWNcw for GimmeSummer and DrU5bxPcH0s for the original Japanese MoshiMoshi.",
+            "NANA directly describes the Okinawa shoot of this GimmeSummer MV."
+          ],
+          "scope": "exact_video_and_partial_shoot_interview",
+          "httpStatus": 200,
+          "pageSha256": "f0c2c5ec83cbac3eb4ee66265ee4addf5931d17d244edd5fe27d8a78e57269c4"
+        }
+      ],
+      "referenceReuse": [
+        {
+          "memberId": "recvxAPQCFeTtL",
+          "stageName": "Hyeonju",
+          "reusedFromWorkId": "rec28ldfRTrDsl",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrDsl",
+            "videoId": "eNdOWsNPmf8",
+            "memberId": "recvxAPQCFeTtL",
+            "src": "/artist/mv-identity-batch-u-20261027/identities/unis-47ced69df0929c.jpg",
+            "width": 1366,
+            "height": 2048,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/UNIS_offcl/status/1769378261979824415",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1365,
+              "height": 1820
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "unis-we-story1-r-20261027"
+          },
+          "sha256": "47ced69df0929c26b189e332e6f201bea0f897e5c11569ec18ebcb11647f1eef",
+          "bytes": 182408,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-u/ledger.json",
+          "sourceNameEvidence": "Official member-specific WE UNIS Story version1 concept post, preserved in public Selca archive, explicitly names HYEONJU. UNIS ( profile ) on twitter at 2024-03-17 15:00:25 source: media post user UNIS The 1st Mini Album 'WE UNIS' Concept Photo Story ver. #1 #HYEONJU #진현주 M/V & Album Release ➜ 2024.03.27 6PM [KST] #UNIS #유니스 #UNI_Story #WE_UNIS",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        },
+        {
+          "memberId": "recvxAPQCFgu8Z",
+          "stageName": "Nana",
+          "reusedFromWorkId": "rec28ldfRTrDsl",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrDsl",
+            "videoId": "eNdOWsNPmf8",
+            "memberId": "recvxAPQCFgu8Z",
+            "src": "/artist/mv-identity-batch-u-20261027/identities/unis-b353c42742915d.jpg",
+            "width": 1366,
+            "height": 2048,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/UNIS_offcl/status/1769378187954540742",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1365,
+              "height": 1820
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "unis-we-story1-r-20261027"
+          },
+          "sha256": "b353c42742915d8074e37dc32da367e9f1a190aa3b2ea28987f6e02dbbddc186",
+          "bytes": 291565,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-u/ledger.json",
+          "sourceNameEvidence": "Official member-specific WE UNIS Story version1 concept post, preserved in public Selca archive, explicitly names NANA. UNIS ( profile ) on twitter at 2024-03-17 15:00:08 source: media post user UNIS The 1st Mini Album 'WE UNIS' Concept Photo Story ver. #1 #NANA #나나 M/V & Album Release ➜ 2024.03.27 6PM [KST] #UNIS #유니스 #UNI_Story #WE_UNIS",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        },
+        {
+          "memberId": "recvxAPQCFgfOW",
+          "stageName": "Gehlee",
+          "reusedFromWorkId": "rec28ldfRTrDsl",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrDsl",
+            "videoId": "eNdOWsNPmf8",
+            "memberId": "recvxAPQCFgfOW",
+            "src": "/artist/mv-identity-batch-u-20261027/identities/unis-a9de66265d910c.jpg",
+            "width": 1366,
+            "height": 2048,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/UNIS_offcl/status/1769378224893841776",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1365,
+              "height": 1820
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "unis-we-story1-r-20261027"
+          },
+          "sha256": "a9de66265d910c9b0cc2f5113d507ddff36b944ab8cec9f37c6699ee30871aab",
+          "bytes": 223816,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-u/ledger.json",
+          "sourceNameEvidence": "Official member-specific WE UNIS Story version1 concept post, preserved in public Selca archive, explicitly names GEHLEE. UNIS ( profile ) on twitter at 2024-03-17 15:00:16 source: media post user UNIS The 1st Mini Album 'WE UNIS' Concept Photo Story ver. #1 #GEHLEE #젤리당카 M/V & Album Release ➜ 2024.03.27 6PM [KST] #UNIS #유니스 #UNI_Story #WE_UNIS",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        },
+        {
+          "memberId": "recvxAPQCFWScb",
+          "stageName": "Kotoko",
+          "reusedFromWorkId": "rec28ldfRTrDsl",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrDsl",
+            "videoId": "eNdOWsNPmf8",
+            "memberId": "recvxAPQCFWScb",
+            "src": "/artist/mv-identity-batch-u-20261027/identities/unis-309f3103739c13.jpg",
+            "width": 1366,
+            "height": 2048,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/UNIS_offcl/status/1769740631562133559",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1365,
+              "height": 1820
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "unis-we-story1-r-20261027"
+          },
+          "sha256": "309f3103739c13b035d00a280c221fd82927ec0bdda331592c774804539980a1",
+          "bytes": 200424,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-u/ledger.json",
+          "sourceNameEvidence": "Official member-specific WE UNIS Story version1 concept post, preserved in public Selca archive, explicitly names KOTOKO. UNIS ( profile ) on twitter at 2024-03-18 15:00:21 source: media post user UNIS The 1st Mini Album 'WE UNIS' Concept Photo Story ver. #1 #KOTOKO #코토코 M/V & Album Release ➜ 2024.03.27 6PM [KST] #UNIS #유니스 #UNI_Story #WE_UNIS",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        },
+        {
+          "memberId": "recvxAPQCFwHoN",
+          "stageName": "Elisia",
+          "reusedFromWorkId": "rec28ldfRTrDsl",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrDsl",
+            "videoId": "eNdOWsNPmf8",
+            "memberId": "recvxAPQCFwHoN",
+            "src": "/artist/mv-identity-batch-u-20261027/identities/unis-7eec37466e05c3.jpg",
+            "width": 1366,
+            "height": 2048,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/UNIS_offcl/status/1769740681655017902",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1365,
+              "height": 1820
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "unis-we-story1-r-20261027"
+          },
+          "sha256": "7eec37466e05c32313737ef891dde955209037e5510993ae1a8c033e1d573e74",
+          "bytes": 189099,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-u/ledger.json",
+          "sourceNameEvidence": "Official member-specific WE UNIS Story version1 concept post, preserved in public Selca archive, explicitly names ELISIA. UNIS ( profile ) on twitter at 2024-03-18 15:00:33 source: media post user UNIS The 1st Mini Album 'WE UNIS' Concept Photo Story ver. #1 #ELISIA #엘리시아 M/V & Album Release ➜ 2024.03.27 6PM [KST] #UNIS #유니스 #UNI_Story #WE_UNIS",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        },
+        {
+          "memberId": "recvxAPQCFnjrP",
+          "stageName": "Yunha",
+          "reusedFromWorkId": "rec28ldfRTrDsl",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrDsl",
+            "videoId": "eNdOWsNPmf8",
+            "memberId": "recvxAPQCFnjrP",
+            "src": "/artist/mv-identity-batch-u-20261027/identities/unis-4d292ef25b8fc6.jpg",
+            "width": 1366,
+            "height": 2048,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/UNIS_offcl/status/1769378298835177615",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1365,
+              "height": 1820
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "unis-we-story1-r-20261027"
+          },
+          "sha256": "4d292ef25b8fc632d20fd09339f7b86fdb7fb421ce07ed15f2d32a76462f52a8",
+          "bytes": 227736,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-u/ledger.json",
+          "sourceNameEvidence": "Official member-specific WE UNIS Story version1 concept post, preserved in public Selca archive, explicitly names YUNHA. UNIS ( profile ) on twitter at 2024-03-17 15:00:34 source: media post user UNIS The 1st Mini Album 'WE UNIS' Concept Photo Story ver. #1 #YUNHA #방윤하 M/V & Album Release ➜ 2024.03.27 6PM [KST] #UNIS #유니스 #UNI_Story #WE_UNIS",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        },
+        {
+          "memberId": "recvxAPQCF822A",
+          "stageName": "Yoona",
+          "reusedFromWorkId": "rec28ldfRTrDsl",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrDsl",
+            "videoId": "eNdOWsNPmf8",
+            "memberId": "recvxAPQCF822A",
+            "src": "/artist/mv-identity-batch-u-20261027/identities/unis-555a19ce9ee02e.jpg",
+            "width": 1366,
+            "height": 2048,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/UNIS_offcl/status/1769740720980492788",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1365,
+              "height": 1820
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "unis-we-story1-r-20261027"
+          },
+          "sha256": "555a19ce9ee02e3c2467332ad4504f112be683c26f245e285ca2e51828b7ffca",
+          "bytes": 188736,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-u/ledger.json",
+          "sourceNameEvidence": "Official member-specific WE UNIS Story version1 concept post, preserved in public Selca archive, explicitly names YOONA. UNIS ( profile ) on twitter at 2024-03-18 15:00:42 source: media post user UNIS The 1st Mini Album 'WE UNIS' Concept Photo Story ver. #1 #YOONA #오윤아 M/V & Album Release ➜ 2024.03.27 6PM [KST] #UNIS #유니스 #UNI_Story #WE_UNIS",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        },
+        {
+          "memberId": "recvxAPQCFOtuE",
+          "stageName": "Seowon",
+          "reusedFromWorkId": "rec28ldfRTrDsl",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrDsl",
+            "videoId": "eNdOWsNPmf8",
+            "memberId": "recvxAPQCFOtuE",
+            "src": "/artist/mv-identity-batch-u-20261027/identities/unis-63ee9905abef5c.jpg",
+            "width": 1366,
+            "height": 2048,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/UNIS_offcl/status/1769740582451028336",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1365,
+              "height": 1820
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "unis-we-story1-r-20261027"
+          },
+          "sha256": "63ee9905abef5c68e12c01bdd84c404891d8895172cfa4abae290b76501ad3ac",
+          "bytes": 188066,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-u/ledger.json",
+          "sourceNameEvidence": "Official member-specific WE UNIS Story version1 concept post, preserved in public Selca archive, explicitly names SEOWON. UNIS ( profile ) on twitter at 2024-03-18 15:00:09 source: media post user UNIS The 1st Mini Album 'WE UNIS' Concept Photo Story ver. #1 #SEOWON #임서원 M/V & Album Release ➜ 2024.03.27 6PM [KST] #UNIS #유니스 #UNI_Story #WE_UNIS",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        }
+      ]
+    },
+    {
+      "workId": "recvxIZLpETQNx",
+      "videoId": "sqYNGZJWNcw",
+      "groupId": "rec28ldfRTiCWc",
+      "memberIds": [
+        "recvxAPQCFgu8Z"
+      ],
+      "proposedCreditKind": "partial_mv_participation",
+      "namedScope": "NANA only: exact MV shoot stated by the participant; other members remain unconfirmed for MV appearance.",
+      "sources": [
+        {
+          "url": "https://realsound.jp/2026/08/post-2486397.html",
+          "publisher": "Real Sound; PR feature with exclusive artist and choreographer comments",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:41:50.476070+00:00",
+          "facts": [
+            "Original HTML was read successfully by ordinary HTTP after the web reader timed out.",
+            "lite-youtube elements explicitly link sqYNGZJWNcw for GimmeSummer and DrU5bxPcH0s for the original Japanese MoshiMoshi.",
+            "NANA directly describes the Okinawa shoot of this GimmeSummer MV."
+          ],
+          "scope": "exact_video_and_partial_shoot_interview",
+          "httpStatus": 200,
+          "pageSha256": "f0c2c5ec83cbac3eb4ee66265ee4addf5931d17d244edd5fe27d8a78e57269c4"
+        },
+        {
+          "url": "https://ar-mag.jp/articles/-/20329",
+          "publisher": "arweb; PR direct artist interview",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:41:50.476070+00:00",
+          "facts": [
+            "Original release interview names eight members and discusses the UNI Sparkle / GimmeSummer promotion.",
+            "This is corroborating release context only; the generic eight-person roster is not converted into a complete MV cast."
+          ],
+          "scope": "release_context_only",
+          "httpStatus": 200,
+          "pageSha256": "5dbf2d687941ce479d1e0c3713f1474f1ac532e37f4dd3873c195c17aa0746e2"
+        }
+      ],
+      "referenceReuse": [
+        {
+          "memberId": "recvxAPQCFgu8Z",
+          "stageName": "Nana",
+          "reusedFromWorkId": "rec28ldfRTrDsl",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrDsl",
+            "videoId": "eNdOWsNPmf8",
+            "memberId": "recvxAPQCFgu8Z",
+            "src": "/artist/mv-identity-batch-u-20261027/identities/unis-b353c42742915d.jpg",
+            "width": 1366,
+            "height": 2048,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/UNIS_offcl/status/1769378187954540742",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 1365,
+              "height": 1820
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "unis-we-story1-r-20261027"
+          },
+          "sha256": "b353c42742915d8074e37dc32da367e9f1a190aa3b2ea28987f6e02dbbddc186",
+          "bytes": 291565,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-u/ledger.json",
+          "sourceNameEvidence": "Official member-specific WE UNIS Story version1 concept post, preserved in public Selca archive, explicitly names NANA. UNIS ( profile ) on twitter at 2024-03-17 15:00:08 source: media post user UNIS The 1st Mini Album 'WE UNIS' Concept Photo Story ver. #1 #NANA #나나 M/V & Album Release ➜ 2024.03.27 6PM [KST] #UNIS #유니스 #UNI_Story #WE_UNIS",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图，仅用于认人，不证明新视频出镜或拍摄同期。"
+        }
+      ]
+    }
+  ],
+  "preservation": {
+    "old47CreditObjectsUnchanged": true,
+    "old47RecognitionObjectsUnchanged": true,
+    "oldMetadataUnchanged": true,
+    "existingOriginalSlotsReused": 14,
+    "existingOriginalFilesReused": 13,
+    "newImagesDownloaded": 0,
+    "privateDataRead": false,
+    "privateWrites": 0,
+    "privateRelationsAdded": 0,
+    "absenceRulesChanged": 0,
+    "fullVideoPlaybackPerformed": false
+  },
+  "tests": {
+    "status": "passed",
+    "command": "node --test tests/continuous-public-credits.test.cjs tests/stage-fill-public-credits.test.cjs tests/category-followup-v196.test.mjs",
+    "cwd": "apps/idol-site",
+    "tests": 18,
+    "pass": 18,
+    "fail": 0,
+    "checkedAt": "2026-10-28T08:49:39.681755+00:00"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-28T06:30:01.735Z",
+  "deployment": {
+    "version": 198,
+    "sourceCommitSha": "3af1db15c0fb3c15a07343c79ff0fa9a971f6263",
+    "deploymentId": "appgdep_6ae1941749f08191aafaa7fbbc2b356e",
+    "parentVerifiedSucceededAt": "2026-10-28T06:20:22Z"
+  },
+  "mode": "production-anonymous-readonly",
+  "catalogInterception": false,
+  "userBrowserOrProfileUsed": false,
+  "layoutChecks": 51,
+  "stageNewLayouts": 33,
+  "stageExistingBindingLayouts": 3,
+  "publicPeopleLayouts": 9,
+  "statisticsLayouts": 6,
+  "stageTabRoundTrips": 36,
+  "posterNormalBrowserHttpByteShaChecks": 11,
+  "posterDecodedDimensionChecks": 33,
+  "recognitionImageLoads": 48,
+  "originalOpenCloseInteractions": 9,
+  "statisticsSourceExpansions": 6,
+  "applicationPageErrors": 0,
+  "applicationConsoleIssues": 0,
+  "httpResourceFailures": 0,
+  "rawConsoleIssues": 51,
+  "readonlyGuardBlockedCloudflareRequests": 51,
+  "privateWrites": 0,
+  "passed": true,
+  "reports": [
+    "online-browser.json",
+    "online-people-statistics-browser.json"
+  ],
+  "preservedInitialReports": [
+    "online-browser-first-attempt.json",
+    "online-people-statistics-browser-first-attempt.json"
+  ],
+  "firstStandalonePosterRequestHttp403": true,
+  "limits": [
+    "Real anonymous production UI/API; no fixture or catalog patch. Isolated fresh headless system Chrome; no user session.",
+    "51 raw console resource errors are separately retained and classified as Cloudflare challenge POST requests stopped by the read-only guard.",
+    "First standalone poster API request was403; actual page image HTTP200 byte/SHA/dimensions all passed.",
+    "No owner/private-field hash verification in this subtask, private save, native zoom, or complete video playback/audio comparison."
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T05:51:03.731935+00:00",
+  "scope": "9项未知销量的公开来源续查；随后按root批准将两项明确Circle Album周榜下界写入正式数据，其余保持。",
+  "summary": {
+    "fullyResearched": true,
+    "reviewedUnknownKeys": 9,
+    "unconditionalScopedCandidates": 2,
+    "conditionalRetailCandidate": 1,
+    "remainOpen": 6,
+    "newStatisticsWritesByThisAgent": 2
+  },
+  "items": [
+    {
+      "key": "badvillain.sales",
+      "group": "BADVILLAIN",
+      "status": "adoptable_scoped_lower_bound",
+      "value": 5367,
+      "precision": "exact",
+      "coverage": "partial",
+      "scope": "Circle Album Chart 已核两周公开销量下界：OVERSTEP，2024年第23及24周；不是全团/全球累计销量。",
+      "metric": "circle_album_chart_period_count",
+      "album": "OVERSTEP",
+      "artist": "배드빌런 (BADVILLAIN)",
+      "albumId": "76819",
+      "distributor": "Kakao Entertainment",
+      "sourceClass": "official",
+      "sourceLabel": "Circle Album Chart",
+      "sourceRows": [
+        {
+          "period": "2024-W23",
+          "rank": 38,
+          "value": 2962,
+          "field": "Album_CNT",
+          "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=23&hitYear=2024&termGbn=week&yearTime=3",
+          "checkedAt": "2026-10-28T05:44:57.385378+00:00",
+          "responseSha256": "adf48f7895bf40e41cdbce653c118231d52b988f6dbeef6911816c7138586010"
+        },
+        {
+          "period": "2024-W24",
+          "rank": 58,
+          "value": 2405,
+          "field": "Album_CNT",
+          "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=24&hitYear=2024&termGbn=week&yearTime=3",
+          "checkedAt": "2026-10-28T05:45:01.645817+00:00",
+          "responseSha256": "2498bf68869e202dcda891bb2c03529a3495750479ee1cd2f2a85238485b7efa"
+        }
+      ],
+      "calculation": "2962 + 2405 = 5367",
+      "deduplication": "相邻独立周，同一seq_aoa；仅加当周Album_CNT，不加Total_CNT，不与月/年榜叠加。",
+      "fieldGrounding": "原官方album.circle页内脚本POST /data/api/chart/album；termGbn=week分支只展示Album_CNT。与retail.circle及/data/api/chart/retail_list完全分开。",
+      "ignoredFields": {
+        "Total_CNT": 5980,
+        "reason": "两周响应均有该数，但累计范围未经说明核实，本批完全不使用。"
+      },
+      "remainingUnknown": "其他周、发行版本、其他专辑及其他市场未覆盖；保留未覆盖状态。",
+      "evidenceFile": "statistics-primary-observations-c.json"
+    },
+    {
+      "key": "geenius.sales",
+      "group": "Geenius",
+      "status": "conditional_scoped_retail_lower_bound",
+      "value": 217,
+      "precision": "exact",
+      "coverage": "single_day_retail_only",
+      "scope": "Circle Retail Album Chart 2026-05-18 单日 Spoiler Book (WITHVUU) 零售计数217；非Album Chart出货量、非累计销量。",
+      "metric": "circle_retail_album_daily_count",
+      "sourceClass": "official",
+      "sourceLabel": "Circle Retail Album Chart",
+      "album": "Spoiler Book (WITHVUU)",
+      "barcode": "8800331307821",
+      "rank": 41,
+      "date": "2026-05-18",
+      "url": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20260518",
+      "rowFields": {
+        "KSum": 217,
+        "ESum": 0,
+        "rowSum": 217
+      },
+      "adoptionCondition": "仅当展示明确标成已核单日零售下界；不可套用Circle Album销量标签，不与同月/同周年榜相加。否则只作研究证据保留未知。",
+      "remainingUnknown": "其他日期、版本/渠道和累计范围未核。",
+      "evidenceFile": "statistics-primary-observations-c.json"
+    },
+    {
+      "key": "bewave.sales",
+      "group": "BEWAVE",
+      "status": "adoptable_scoped_lower_bound",
+      "value": 725,
+      "precision": "exact",
+      "coverage": "partial",
+      "scope": "Circle Album Chart 已核单周公开销量下界：BE;WAVE，2024年第16周；不是完整累计销量。",
+      "metric": "circle_album_chart_period_count",
+      "album": "BE;WAVE",
+      "artist": "BEWAVE(비웨이브)",
+      "albumId": "76300",
+      "distributor": "Kakao Entertainment",
+      "sourceClass": "official",
+      "sourceLabel": "Circle Album Chart",
+      "sourceRows": [
+        {
+          "period": "2024-W16",
+          "rank": 95,
+          "value": 725,
+          "field": "Album_CNT",
+          "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=16&yearTime=3",
+          "checkedAt": "2026-10-28T05:48:59.166622+00:00",
+          "responseSha256": "d9b16dfc1523137ea5d9f60e2c3a893b0f141984207117f49989b291641cc725"
+        }
+      ],
+      "fieldGrounding": "album.circle页内同一week渲染分支只展示Album_CNT；使用公开chart/album响应，非Retail。",
+      "deduplication": "只采用2024-W16当周725；未把Total_CNT=1797当成已核累计，不与月榜/年榜叠加。",
+      "remainingUnknown": "BE;WAVE其他周、Be your Wave及其他版本/市场未覆盖；2024-04/10月榜、W17/W41/W42未在所返Top100发现目标，未上榜不等于零。",
+      "evidenceFile": "statistics-primary-observations-c.json"
+    },
+    {
+      "key": "vvup.sales",
+      "group": "VVUP",
+      "status": "open_physical_release_future",
+      "value": null,
+      "scope": "未补数",
+      "reason": "Weverse官方商店2026-09-02更新通知明确VVON实体发售及出货从2026-09-02改为2026-10-29，检查日2026-10-28尚未来临。数字发行、预订和未来发货不能作为已实现销量。",
+      "sources": [
+        {
+          "url": "https://shop.weverse.io/es/shop/MXN/artists/181/notices/12244",
+          "readStatus": "body_read",
+          "sourceClass": "official_merchant",
+          "observation": "VVON实体发行/出货延期至2026-10-29。"
+        }
+      ],
+      "nextAction": "实际发行后从Circle/Hanteo首个可核周期查起，并另外核Locked On是否存在正式实体版；不填0。"
+    },
+    {
+      "key": "tracer.sales",
+      "group": "TRACER",
+      "status": "open_physical_distribution_unverified",
+      "value": null,
+      "reason": "Bugs官方服务艺人页确认本团为Heejin/Soeun/Eunbi/Sejeong、GleamMedia、2024-11-05单曲365，可排除同名电视剧OST；未给实体销售记录。",
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/artist/20222617?wl_ref=list_tr_10_ab",
+          "readStatus": "body_read",
+          "sourceClass": "licensed_music_service"
+        }
+      ],
+      "nextAction": "使用艺人ID20222617与365精确发行目录查实体条码/发行商，再查对应周期；未证实体不推断0。"
+    },
+    {
+      "key": "witchx.sales",
+      "group": "W!TCHX",
+      "status": "open_product_format_and_count",
+      "value": null,
+      "reason": "零售商原页有RUN BABY RUN: READY, SET, RUN PHOTOBOOK，标2025-07-07，但所列内容是写真/卡片/海报，未明确列CD；商品和售罄状态均不是销量。2025-07月与W28/W29 Album Top100未找到目标。",
+      "sources": [
+        {
+          "url": "https://www.kpopalbums.com/products/witchx-run-baby-run-ready-set-run-photobook-random-version",
+          "readStatus": "body_read",
+          "sourceClass": "original_retailer",
+          "observation": "具名写真商品存在；当前可读内容没有明确CD条目，不能据此断定正规音盘实体销量。"
+        }
+      ],
+      "nextAction": "先核此版本是否音盘/平台音源实物并取得条码，再查Circle/Hanteo有效音盘行；不把商品价、售罄或数据库0+作销量。"
+    },
+    {
+      "key": "spia.sales",
+      "group": "SPIA",
+      "status": "open_digital_catalog_no_physical_count",
+      "value": null,
+      "reason": "Genie发行方资料明确Daddy’s Little Girl为Digital Single Album；页面列Deeeep、Buonsenso但无销量。不能由数字单曲或目录没有实体条目推出全团销量0。",
+      "sources": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=84950678",
+          "readStatus": "body_read",
+          "sourceClass": "licensed_music_service",
+          "observation": "2024-04-02数字单曲，Kakao发行、Campus企划；销量未提供。"
+        }
+      ],
+      "nextAction": "逐发行核正版实体/平台版条码与发行方，确有实体再核榜单；不存在完整来源前保持未知。"
+    },
+    {
+      "key": "udtt.sales",
+      "group": "UDTT",
+      "status": "open_physical_release_no_qualifying_count",
+      "value": null,
+      "reason": "MAKESTAR官方活动销售原页确认School Rush实体专辑与2025-04-29发行，声明计入Hanteo/Circle，但没有销售数量；活动名额不是销量。2025-04月/W18/W19及2026-06月/W26/W27的Album Top100无目标行，不据此填零。",
+      "sources": [
+        {
+          "url": "https://www.makestar.com/product/10385",
+          "readStatus": "body_read",
+          "sourceClass": "official_event_merchant",
+          "observation": "School Rush具名专辑销售活动；页面没有已售张数。"
+        }
+      ],
+      "nextAction": "School Rush发行后更晚补货周及VIPER确切实体出货周仍待查；不得把单店销量/积分/抽选人数或售罄状态当总量。"
+    },
+    {
+      "key": "vcha.sales",
+      "group": "VCHA",
+      "status": "open_brand_scoped_no_physical_count",
+      "value": null,
+      "reason": "Qobuz正版目录确认Only One为VCHA、2024-03-15 Republic发行，售卖数字下载及串流；没有实体累计数。必须保留VCHA时期范围，GIRLSET新作品或其他团销量不能并入。",
+      "sources": [
+        {
+          "url": "https://www.qobuz.com/ca-en/album/only-one-vcha/qtgri53mq0glb",
+          "readStatus": "body_read_and_http_200",
+          "sourceClass": "licensed_music_service",
+          "observation": "VCHA发行身份与数字格式可核，销量缺失。"
+        }
+      ],
+      "nextAction": "核VCHA品牌期完整实物发行目录/官方发行声明；未能核出实体量时保持未知，不因数字目录推0。"
+    }
+  ],
+  "limits": [
+    "所有数字来自公开第一方原页及其原生公开数据接口；未请求Soridata或验证码。",
+    "下界不是全团全球累计；零售与出货榜不得混加。",
+    "Circle年累计Total_CNT虽随返回保留，但范围未独立核实，本批全部排除。",
+    "月榜未找到目标只说明该Top100返回中没有，不能解释成0。",
+    "初次按List为数组过滤的实现错误已在保存前更正为读取字典values并复核；初次retail_hour缺参数错误保留，正确day分支为retail_list。"
+  ],
+  "coverage": {
+    "circleDistinctAlbumPeriods": 22,
+    "circleRetailDays": 1,
+    "method": "发行月及相邻发行周有界检查；Album和Retail独立，官方页公开脚本参数与返回行均记录。",
+    "notExhaustive": "未枚举全部历史周/月/年，不声称其余销量不存在。"
+  },
+  "application": {
+    "approvedAndApplied": [
+      "badvillain.sales",
+      "bewave.sales"
+    ],
+    "proposalFile": "statistics-adoption-proposal.json",
+    "geeniusRetailApplied": false,
+    "unknownMetricsAfter": 15
+  }
+}

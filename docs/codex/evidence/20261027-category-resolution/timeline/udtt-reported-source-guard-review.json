@@ -1,0 +1,103 @@
+{
+  "reviewedAt": "2026-10-27T16:10:18.257694+00:00",
+  "status": "strict-source-guard-reregistration-passed",
+  "trigger": "v195 reporting-only host/presentation changes correctly failed prior exact source pins",
+  "applicationReview": "reported-records-independent-review.json",
+  "applicationChangesByReviewer": false,
+  "rationale": "The new reported-records helper and JSON determine exact native source link ownership. Their pins are necessary to make future changes fail closed instead of inheriting trust from a pinned host that imports unpinned mutable data. No other dependency, exemption, private asset inventory or scan is relaxed.",
+  "runtimeGuardCountBefore": 34,
+  "runtimeGuardCountAfter": 36,
+  "guardChanges": [
+    {
+      "path": "lib/idol/udtt-native/host.mjs",
+      "previous": {
+        "bytes": 19415,
+        "sha256": "0e98355caf28fa6f7aaa5618218509232b9d453130899c56e53656c48d263612"
+      },
+      "reviewed": {
+        "bytes": 19573,
+        "sha256": "8a25f37dc9e6e2da52c5ab5a5c2a237eb63ad2a31b688b456e4c2d5f8c015d67"
+      }
+    },
+    {
+      "path": "lib/idol/udtt-native/presentation.mjs",
+      "previous": {
+        "bytes": 15803,
+        "sha256": "a94675dd27ec92879cf8fa3f775221e383cc69e768b59388690b6ea8a1110725"
+      },
+      "reviewed": {
+        "bytes": 16414,
+        "sha256": "5f05bab95cc98e500d7577cbf652290dc2f8cba443cf764caa76f2bcf4ed412e"
+      }
+    },
+    {
+      "path": "lib/idol/timeline/reported-records.mjs",
+      "previous": null,
+      "reviewed": {
+        "bytes": 1059,
+        "sha256": "90b05d1fbc366db49cfc4e41b0634f1eadfec401cfa9d59498830c18d8821c12"
+      }
+    },
+    {
+      "path": "data/timeline-reported-records.json",
+      "previous": null,
+      "reviewed": {
+        "bytes": 6230,
+        "sha256": "a0b7a4c7271cae3b8d16d349abc6cd1a34c8254ab1521e698b87ae13e5a4b051"
+      }
+    }
+  ],
+  "preserved": {
+    "allOldGuardsPresent": true,
+    "other32RuntimePinsIdentical": true,
+    "restrictedOriginals": 9,
+    "restrictedOriginalBytes": 1587928,
+    "sharedPosters": 2,
+    "sharedPosterBytes": 211510,
+    "assetInventoryAndBytePinsUnchanged": true,
+    "compiledFullContentPinsUnchanged": true,
+    "auditScanLogicUnchanged": true
+  },
+  "compiledCarrierReadback": [
+    {
+      "path": "dist/client/_next/static/chunks/lifecycle-B-JVpm70.js",
+      "bytes": 109850,
+      "sha256": "e8b3d7bd22bc3aa5867f5ee6b592dbe8a5df2f628d4870dc3bb5e30ff769920d",
+      "fullContentsUnchanged": true
+    },
+    {
+      "path": "dist/server/ssr/_next/static/lifecycle-Abl4qaeu.js",
+      "bytes": 109834,
+      "sha256": "6766b04e3bc3b2dccb6d09c3fe228d4c3ab1f09fdf58d1ff90b6a8fb2c012acc",
+      "fullContentsUnchanged": true
+    }
+  ],
+  "focusedRegression": {
+    "command": [
+      "node",
+      "--test",
+      "tests/udtt-private-build-assets.test.mjs",
+      "tests/public-asset-delivery.test.cjs"
+    ],
+    "tests": 11,
+    "pass": 11,
+    "fail": 0,
+    "newCase": "Both new dependencies: deleting mandatory pin fails inventory check; altering bytes fails integrity check; restored content allows exact9 removal plan.",
+    "historical151NotAdded": true
+  },
+  "fullWorkspaceAudit": {
+    "status": "not-passed-stale-build-inventory",
+    "sourcePins": "passed",
+    "compiledPins": "unchanged and passed",
+    "error": "UDTT unknown public routing inventory",
+    "builtInventoryCount": 5497,
+    "currentPublicFileCount": 6006,
+    "missingFromOldBuildCount": 509,
+    "action": "Parent rebuilds formal source and runs complete prepare-production-assets/audit before save or deployment. No exemption or normalization added."
+  },
+  "fileSha256": {
+    "scripts/udtt-private-build-assets-manifest.json": "d692c2d7907954a87295180aeadad4394016a0e0deae3b2f2ac10a2f43d32913",
+    "scripts/audit-udtt-private-build-assets.mjs": "85ce9cc88510c016f07d5579ae0e8027d6216cf933911ab11b9c621988bfb7b0",
+    "tests/udtt-private-build-assets.test.mjs": "89e897c9dba7a00b8bc3f8527d9f4cd50123167f497ddedfbd97909d065fba4c"
+  }
+}

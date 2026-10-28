@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-10-28T09:32:36.648177+00:00",
+  "classification": "test-assumption-corrected-no-application-change",
+  "initialAssertion": "Complete historical source retained failed because old previousSources:[] is omitted in the archived entry.",
+  "inspection": "All 8 previous source histories were empty; every other key/value equals baseline. Importer flattens history and does not recursively nest empty history arrays.",
+  "resolution": "Assert all old history arrays empty, compare every source content field exactly, explicitly record omitted empty container.",
+  "browserLaunched": false,
+  "privateWrites": 0
+}

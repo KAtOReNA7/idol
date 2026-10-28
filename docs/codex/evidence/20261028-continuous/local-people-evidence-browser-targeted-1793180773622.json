@@ -1,0 +1,543 @@
+{
+  "checkedAt": "2026-10-28T09:45:42.487Z",
+  "base": "http://127.0.0.1:5199",
+  "mode": "local-anonymous-unchanged-catalog",
+  "baselineCommit": "95fff6d6335cb683022d857727225d235a8882f2",
+  "flow": "Inspect each added public credit and recognition image; open and close first original per work/width; inspect three reported-record boundaries and exact source links; expand tripleS statistics evidence without altering its numeric lower bound.",
+  "browser": {
+    "isolatedHeadless": true,
+    "userProfileReused": false,
+    "bundledInstalled": false,
+    "version": "157.0.8103.15",
+    "startingCookies": 0
+  },
+  "fixture": {
+    "mode": "Live anonymous production catalog, returned unchanged; local static modules supply public credit/timeline/statistics additions.",
+    "requests": [
+      {
+        "url": "https://idol-lens-private.wuke40758.chatgpt.site/api/catalog?shape=display-v1",
+        "status": 200,
+        "bytes": 2312523,
+        "sha256": "7ba1aea089e317b3620578eda88fcb3f48f4c7bcc44dfff2f2843a67eaf2651c",
+        "unchanged": true
+      }
+    ],
+    "moduleHashes": {
+      "data/public-work-credits.json": "6e6dbb8fa16f11d416e8d6fb21eff6b330c2f387aed5930480d3d25589f6a7e8",
+      "data/public-work-recognition.json": "1044f033ccd1bed31fd93d46a531affab39d40ea5ff0f2353d1269c304420a70",
+      "data/timeline-reported-records.json": "ae427003d924133554ad90f73ff625ae64342acdfe9f15e90844a8027cf24139",
+      "data/group-statistics-completion-evidence.json": "479c7063e75616f5da7012bcb20317939f16bc4921d81ffa45e488e36fd1956e"
+    }
+  },
+  "targets": {
+    "people": [
+      "recvxDMFHNSckK",
+      "recvxIZLjZmGMf",
+      "rec28ldfRTrFGi",
+      "rec28ldfRTrMsR",
+      "rec28ldfRTrQ4z",
+      "recvxIZLpETQNx",
+      "recvxyOz5XmFwB",
+      "recvxyOz5Xr917",
+      "recvxyOz5XQZhy",
+      "rec28ldfRTrGEy",
+      "recvxyH5pzbluu",
+      "rec28ldfRTrGou",
+      "recvxyH5pzoaOZ",
+      "rec28ldfRTrCzF",
+      "rec28ldfRTrCDJ",
+      "rec28ldfRTrGwK",
+      "recvxIZY0lR25A",
+      "recvxJ03dOg1Gc",
+      "recvxIZY0lPdWr",
+      "recvxyH5pzuYEC",
+      "rec28ldfRTrI0Y",
+      "rec28ldfRTrJKM",
+      "rec28ldfRTrIC0",
+      "rec28ldfRTrJne",
+      "recvxyH5pzbYAm",
+      "recvxyOz5X7zV3",
+      "recvxyHuKMXVDa",
+      "recvxyH5pz4ojC",
+      "rec28ldfRTrJ7M",
+      "rec28ldfRTrLgo",
+      "rec28ldfRTrLku",
+      "rec28ldfRTrLBw"
+    ],
+    "timelines": [
+      "e-bewave-six-member-phase-end-announcement",
+      "e-candyshop-yuina-hiatus-announcement",
+      "e-geenius-spoiler-book-instrumental"
+    ],
+    "statistics": [
+      "triples"
+    ]
+  },
+  "checks": [
+    {
+      "id": "recvxIZLjZmGMf",
+      "kind": "people",
+      "width": 320,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxIZLjZmGMf",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLjZmGMf-320-evidence-first.png",
+      "label": "报道具名参演成员（部分名单）",
+      "text": "报道具名参演成员（部分名单）\n\n天空娱乐提供的《夜市王》MV报道与宣传照逐名列出六位成员，并直接链接本视频。这里依据公开报道标注参演人物，未完整播放逐人核验，不新增个人评分关系。\n\n照片用于识别公开署名人物，不代表已核实其在本视频出镜或同期造型。\n\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n陳羿涵 · Nico ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n許媛媛 · Yuan ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n吳毓旋 · Lili ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n王心茗 · XXIN ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n王采甄 · Ayako ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n李娥妍 · Ayeon ↗\n查看资料来源 ↗",
+      "sourceUrl": "https://www.playmusic.tw/column_info.php?id=28418&type=news",
+      "names": [
+        {
+          "memberId": "recvxAPQCFWGjX",
+          "name": "陳羿涵 · Nico"
+        },
+        {
+          "memberId": "recvxAPQCFlVPw",
+          "name": "許媛媛 · Yuan"
+        },
+        {
+          "memberId": "recvxAPQCFSVcE",
+          "name": "吳毓旋 · Lili"
+        },
+        {
+          "memberId": "recvxAPQCFknfS",
+          "name": "王心茗 · XXIN"
+        },
+        {
+          "memberId": "recvxAPQCFaXuH",
+          "name": "王采甄 · Ayako"
+        },
+        {
+          "memberId": "recvxAPQCFvZsO",
+          "name": "李娥妍 · Ayeon"
+        }
+      ],
+      "referenceCount": 6,
+      "noRatingEditor": true,
+      "photos": [
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFWGjX-0836be59ca.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1261,
+          "alt": "陳羿涵 · Nico · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFlVPw-7211b16cd0.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1262,
+          "alt": "許媛媛 · Yuan · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFSVcE-7bc0885628.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1261,
+          "alt": "吳毓旋 · Lili · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFknfS-95d9b56717.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1261,
+          "alt": "王心茗 · XXIN · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFaXuH-63d1f1d86d.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1262,
+          "alt": "王采甄 · Ayako · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFvZsO-b2bade695a.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1260,
+          "alt": "李娥妍 · Ayeon · 同系列照片 · 认人参考"
+        }
+      ],
+      "original": {
+        "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFWGjX-0836be59ca.jpg",
+        "naturalWidth": 840,
+        "naturalHeight": 1261,
+        "alt": "陳羿涵 · Nico · 同系列照片 · 认人参考"
+      },
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLjZmGMf-320-evidence.png"
+    },
+    {
+      "id": "recvxIZLjZmGMf",
+      "kind": "people",
+      "width": 390,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxIZLjZmGMf",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLjZmGMf-390-evidence-first.png",
+      "label": "报道具名参演成员（部分名单）",
+      "text": "报道具名参演成员（部分名单）\n\n天空娱乐提供的《夜市王》MV报道与宣传照逐名列出六位成员，并直接链接本视频。这里依据公开报道标注参演人物，未完整播放逐人核验，不新增个人评分关系。\n\n照片用于识别公开署名人物，不代表已核实其在本视频出镜或同期造型。\n\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n陳羿涵 · Nico ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n許媛媛 · Yuan ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n吳毓旋 · Lili ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n王心茗 · XXIN ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n王采甄 · Ayako ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n李娥妍 · Ayeon ↗\n查看资料来源 ↗",
+      "sourceUrl": "https://www.playmusic.tw/column_info.php?id=28418&type=news",
+      "names": [
+        {
+          "memberId": "recvxAPQCFWGjX",
+          "name": "陳羿涵 · Nico"
+        },
+        {
+          "memberId": "recvxAPQCFlVPw",
+          "name": "許媛媛 · Yuan"
+        },
+        {
+          "memberId": "recvxAPQCFSVcE",
+          "name": "吳毓旋 · Lili"
+        },
+        {
+          "memberId": "recvxAPQCFknfS",
+          "name": "王心茗 · XXIN"
+        },
+        {
+          "memberId": "recvxAPQCFaXuH",
+          "name": "王采甄 · Ayako"
+        },
+        {
+          "memberId": "recvxAPQCFvZsO",
+          "name": "李娥妍 · Ayeon"
+        }
+      ],
+      "referenceCount": 6,
+      "noRatingEditor": true,
+      "photos": [
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFWGjX-0836be59ca.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1261,
+          "alt": "陳羿涵 · Nico · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFlVPw-7211b16cd0.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1262,
+          "alt": "許媛媛 · Yuan · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFSVcE-7bc0885628.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1261,
+          "alt": "吳毓旋 · Lili · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFknfS-95d9b56717.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1261,
+          "alt": "王心茗 · XXIN · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFaXuH-63d1f1d86d.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1262,
+          "alt": "王采甄 · Ayako · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFvZsO-b2bade695a.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1260,
+          "alt": "李娥妍 · Ayeon · 同系列照片 · 认人参考"
+        }
+      ],
+      "original": {
+        "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFWGjX-0836be59ca.jpg",
+        "naturalWidth": 840,
+        "naturalHeight": 1261,
+        "alt": "陳羿涵 · Nico · 同系列照片 · 认人参考"
+      },
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLjZmGMf-390-evidence.png"
+    },
+    {
+      "id": "recvxIZLjZmGMf",
+      "kind": "people",
+      "width": 1440,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxIZLjZmGMf",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLjZmGMf-1440-evidence-first.png",
+      "label": "报道具名参演成员（部分名单）",
+      "text": "报道具名参演成员（部分名单）\n\n天空娱乐提供的《夜市王》MV报道与宣传照逐名列出六位成员，并直接链接本视频。这里依据公开报道标注参演人物，未完整播放逐人核验，不新增个人评分关系。\n\n照片用于识别公开署名人物，不代表已核实其在本视频出镜或同期造型。\n\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n陳羿涵 · Nico ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n許媛媛 · Yuan ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n吳毓旋 · Lili ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n王心茗 · XXIN ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n王采甄 · Ayako ↗\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n李娥妍 · Ayeon ↗\n查看资料来源 ↗",
+      "sourceUrl": "https://www.playmusic.tw/column_info.php?id=28418&type=news",
+      "names": [
+        {
+          "memberId": "recvxAPQCFWGjX",
+          "name": "陳羿涵 · Nico"
+        },
+        {
+          "memberId": "recvxAPQCFlVPw",
+          "name": "許媛媛 · Yuan"
+        },
+        {
+          "memberId": "recvxAPQCFSVcE",
+          "name": "吳毓旋 · Lili"
+        },
+        {
+          "memberId": "recvxAPQCFknfS",
+          "name": "王心茗 · XXIN"
+        },
+        {
+          "memberId": "recvxAPQCFaXuH",
+          "name": "王采甄 · Ayako"
+        },
+        {
+          "memberId": "recvxAPQCFvZsO",
+          "name": "李娥妍 · Ayeon"
+        }
+      ],
+      "referenceCount": 6,
+      "noRatingEditor": true,
+      "photos": [
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFWGjX-0836be59ca.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1261,
+          "alt": "陳羿涵 · Nico · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFlVPw-7211b16cd0.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1262,
+          "alt": "許媛媛 · Yuan · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFSVcE-7bc0885628.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1261,
+          "alt": "吳毓旋 · Lili · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFknfS-95d9b56717.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1261,
+          "alt": "王心茗 · XXIN · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFaXuH-63d1f1d86d.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1262,
+          "alt": "王采甄 · Ayako · 同系列照片 · 认人参考"
+        },
+        {
+          "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFvZsO-b2bade695a.jpg",
+          "naturalWidth": 840,
+          "naturalHeight": 1260,
+          "alt": "李娥妍 · Ayeon · 同系列照片 · 认人参考"
+        }
+      ],
+      "original": {
+        "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFWGjX-0836be59ca.jpg",
+        "naturalWidth": 840,
+        "naturalHeight": 1261,
+        "alt": "陳羿涵 · Nico · 同系列照片 · 认人参考"
+      },
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLjZmGMf-1440-evidence.png"
+    },
+    {
+      "id": "recvxIZLpETQNx",
+      "kind": "people",
+      "width": 320,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxIZLpETQNx",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLpETQNx-320-evidence-first.png",
+      "label": "报道具名参演成员（部分名单）",
+      "text": "报道具名参演成员（部分名单）\n\nNANA在原采访中亲述《ギミサマ☆》MV于冲绳拍摄，原文嵌入本视频。仅据具名拍摄自述补充NANA，不扩为全员名单；未完整播放逐人核验。\n\n照片用于识别公开署名人物，不代表已核实其在本视频出镜或同期造型。\n\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n娜娜 · Nana ↗\n查看资料来源 ↗",
+      "sourceUrl": "https://realsound.jp/2026/08/post-2486397.html",
+      "names": [
+        {
+          "memberId": "recvxAPQCFgu8Z",
+          "name": "娜娜 · Nana"
+        }
+      ],
+      "referenceCount": 1,
+      "noRatingEditor": true,
+      "photos": [
+        {
+          "src": "/artist/mv-identity-batch-u-20261027/identities/unis-b353c42742915d.jpg",
+          "naturalWidth": 1366,
+          "naturalHeight": 2048,
+          "alt": "娜娜 · Nana · 同系列照片 · 认人参考"
+        }
+      ],
+      "original": {
+        "src": "/artist/mv-identity-batch-u-20261027/identities/unis-b353c42742915d.jpg",
+        "naturalWidth": 1366,
+        "naturalHeight": 2048,
+        "alt": "娜娜 · Nana · 同系列照片 · 认人参考"
+      },
+      "layout": {
+        "viewport": 320,
+        "scrollWidth": 320,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLpETQNx-320-evidence.png"
+    },
+    {
+      "id": "recvxIZLpETQNx",
+      "kind": "people",
+      "width": 390,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxIZLpETQNx",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLpETQNx-390-evidence-first.png",
+      "label": "报道具名参演成员（部分名单）",
+      "text": "报道具名参演成员（部分名单）\n\nNANA在原采访中亲述《ギミサマ☆》MV于冲绳拍摄，原文嵌入本视频。仅据具名拍摄自述补充NANA，不扩为全员名单；未完整播放逐人核验。\n\n照片用于识别公开署名人物，不代表已核实其在本视频出镜或同期造型。\n\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n娜娜 · Nana ↗\n查看资料来源 ↗",
+      "sourceUrl": "https://realsound.jp/2026/08/post-2486397.html",
+      "names": [
+        {
+          "memberId": "recvxAPQCFgu8Z",
+          "name": "娜娜 · Nana"
+        }
+      ],
+      "referenceCount": 1,
+      "noRatingEditor": true,
+      "photos": [
+        {
+          "src": "/artist/mv-identity-batch-u-20261027/identities/unis-b353c42742915d.jpg",
+          "naturalWidth": 1366,
+          "naturalHeight": 2048,
+          "alt": "娜娜 · Nana · 同系列照片 · 认人参考"
+        }
+      ],
+      "original": {
+        "src": "/artist/mv-identity-batch-u-20261027/identities/unis-b353c42742915d.jpg",
+        "naturalWidth": 1366,
+        "naturalHeight": 2048,
+        "alt": "娜娜 · Nana · 同系列照片 · 认人参考"
+      },
+      "layout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLpETQNx-390-evidence.png"
+    },
+    {
+      "id": "recvxIZLpETQNx",
+      "kind": "people",
+      "width": 1440,
+      "url": "http://127.0.0.1:5199/?view=works&work=recvxIZLpETQNx",
+      "passed": true,
+      "title": "stage. · 私人女团手帐",
+      "firstViewport": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLpETQNx-1440-evidence-first.png",
+      "label": "报道具名参演成员（部分名单）",
+      "text": "报道具名参演成员（部分名单）\n\nNANA在原采访中亲述《ギミサマ☆》MV于冲绳拍摄，原文嵌入本视频。仅据具名拍摄自述补充NANA，不扩为全员名单；未完整播放逐人核验。\n\n照片用于识别公开署名人物，不代表已核实其在本视频出镜或同期造型。\n\n查看原图 ↗\n同系列照片 · 认人参考\n来源 ↗\n娜娜 · Nana ↗\n查看资料来源 ↗",
+      "sourceUrl": "https://realsound.jp/2026/08/post-2486397.html",
+      "names": [
+        {
+          "memberId": "recvxAPQCFgu8Z",
+          "name": "娜娜 · Nana"
+        }
+      ],
+      "referenceCount": 1,
+      "noRatingEditor": true,
+      "photos": [
+        {
+          "src": "/artist/mv-identity-batch-u-20261027/identities/unis-b353c42742915d.jpg",
+          "naturalWidth": 1366,
+          "naturalHeight": 2048,
+          "alt": "娜娜 · Nana · 同系列照片 · 认人参考"
+        }
+      ],
+      "original": {
+        "src": "/artist/mv-identity-batch-u-20261027/identities/unis-b353c42742915d.jpg",
+        "naturalWidth": 1366,
+        "naturalHeight": 2048,
+        "alt": "娜娜 · Nana · 同系列照片 · 认人参考"
+      },
+      "layout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "meaningful": true,
+        "overlay": false
+      },
+      "screenshot": "E:\\project\\idol-continuous-qa-20261028\\local-recvxIZLpETQNx-1440-evidence.png"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "recvxIZLjZmGMf",
+      "width": 320,
+      "action": "open first original and close",
+      "result": "Exact full-source URL retained; dialog closed; no write"
+    },
+    {
+      "id": "recvxIZLjZmGMf",
+      "width": 390,
+      "action": "open first original and close",
+      "result": "Exact full-source URL retained; dialog closed; no write"
+    },
+    {
+      "id": "recvxIZLjZmGMf",
+      "width": 1440,
+      "action": "open first original and close",
+      "result": "Exact full-source URL retained; dialog closed; no write"
+    },
+    {
+      "id": "recvxIZLpETQNx",
+      "width": 320,
+      "action": "open first original and close",
+      "result": "Exact full-source URL retained; dialog closed; no write"
+    },
+    {
+      "id": "recvxIZLpETQNx",
+      "width": 390,
+      "action": "open first original and close",
+      "result": "Exact full-source URL retained; dialog closed; no write"
+    },
+    {
+      "id": "recvxIZLpETQNx",
+      "width": 1440,
+      "action": "open first original and close",
+      "result": "Exact full-source URL retained; dialog closed; no write"
+    }
+  ],
+  "pageErrors": [],
+  "consoleIssues": [],
+  "resourceFailures": [],
+  "blockedMutations": [],
+  "blockedVideos": [],
+  "errors": [],
+  "notVerified": [
+    "Owner/private session or values",
+    "Personal save",
+    "Full video playback or per-person visual appearance",
+    "Native browser zoom",
+    "User Chrome/IAB"
+  ],
+  "targetedRerun": [
+    "recvxIZLjZmGMf",
+    "recvxIZLpETQNx"
+  ],
+  "expectedPhotoChecks": 21,
+  "expectedLayouts": 6,
+  "moduleFilesUnchangedDuringRun": true,
+  "photoChecks": 21,
+  "networkClassification": {
+    "consoleTotal": 0,
+    "cloudflareConsole": 0,
+    "applicationConsole": 0,
+    "blockedTotal": 0,
+    "blockedCloudflare": 0,
+    "blockedApplication": 0
+  },
+  "passed": true,
+  "completedAt": "2026-10-28T09:46:13.622Z"
+}

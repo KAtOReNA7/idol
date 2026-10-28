@@ -4,13 +4,15 @@ const {validateCorrectionChain,digest}=require('./helpers/timeline-correction-ch
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p));
 const registry=require('../data/artist-timeline-registry.json');
 const baseline={corrections:[require('../HANDOFF/timeline-corrections/triples-assemble24.json'),require('../evidence/approved-visual-repairs/badvillain-overstep-correction.json'),require('../evidence/approved-visual-repairs/madein-rise-correction.json')],ledger:require('../HANDOFF/batch-f/integration-ledger.json'),snapshot:require('../data/snapshot.json'),events:new Map(registry.flatMap(g=>JSON.parse(read(`data/artist-timelines/${g.slug}.json`)).events.map(e=>[e.id,e])))};
+// The October 25 corrections have their own immutable before/after validation in public-data-completion.
+for(const c of Object.values(require('../../../docs/codex/evidence/20261025-data-completion/timeline-evidence.json')))baseline.events.set(c.eventId,c.before);
 function input(){return {...structuredClone(baseline),readBytes:read};}
 function rehash(a){const c=a.corrections[0];c.beforeSha256=digest(c.before);c.afterSha256=digest(c.after);c.diff=c.allowedFields.map(field=>({field,before:c.before[field],after:c.after[field]}));a.events.set(c.eventId,structuredClone(c.after));}
-test('three sourced corrections chain exact historical before to exact current after; 623 unique events remain',()=>{
+test('eight sourced corrections chain exact historical before to exact current after; 623 unique events remain',()=>{
  const a=input(),historical=validateCorrectionChain(a),c=a.corrections[0];
  assert.equal(a.events.size,623);assert.equal(historical.size,623);
  assert.deepEqual(historical.get(c.eventId),c.before);assert.equal(c.before.eventDate,null);assert.deepEqual(c.before.workIds,[]);
- assert.equal([...a.events].filter(([id,event])=>digest(event)!==digest(historical.get(id))).length,3);
+ assert.equal([...a.events].filter(([id,event])=>digest(event)!==digest(historical.get(id))).length,8);
  assert.deepEqual(c.after.sources[0],c.before.sources[0]);
 });
 const negatives={
@@ -46,6 +48,19 @@ for(const [label,mutate] of Object.entries({
  'BADVILLAIN missing new evidence':a=>a.readBytes=p=>{if(p.includes('badvillain-overstep-date'))throw Error('missing');return read(p);},
  'BADVILLAIN changed historical hash':a=>a.corrections[1].beforeDocumentSha256='0'.repeat(64),
 }))test(`correction fails closed: ${label}`,()=>{const a=input();mutate(a);assert.throws(()=>validateCorrectionChain(a));});
+
+for(const [label,mutate] of Object.entries({
+ 'missing fixed category bundle':a=>a.readBytes=p=>{if(p.endsWith('timeline-corrections.json'))throw Error('missing');return read(p);},
+ 'category bundle changed even with recomputed internal hashes':a=>a.readBytes=p=>{const b=read(p);if(!p.endsWith('timeline-corrections.json'))return b;const d=JSON.parse(b);d.corrections[0].after.eventDate={value:'2026-08-06',precision:'day'};d.corrections[0].afterSha256=digest(d.corrections[0].after);return Buffer.from(JSON.stringify(d));},
+ 'SUYUN announcement treated as effective contract date':a=>a.events.get('e-rocketpunch-suyun-contract-announcement').eventDate={value:'2026-08-06',precision:'day'},
+ 'SASHA resumption plan treated as confirmed participation':a=>a.events.get('e-ifeye-sasha-resume-announcement').status='confirmed',
+ 'SASHA planned date copied into actual date':a=>a.events.get('e-ifeye-sasha-resume-announcement').eventDate={value:'2026-07-01',precision:'day'},
+ 'GENBLUE inferred member association':a=>a.events.get('e-genblue-swing-dance-single').memberIds=['recFake'],
+ 'GENBLUE Chinese version replaced by video upload date':a=>a.events.get('e-genblue-oh-chinese-single').eventDate={value:'2025-04-28',precision:'day'},
+ 'Mnet public-body proof missing':a=>a.readBytes=p=>{if(p.endsWith('sasha-march.json'))throw Error('missing');return read(p);},
+ 'audio delivery proof changed':a=>a.readBytes=p=>p.endsWith('genblue-swing.json')?Buffer.from('{}'):read(p),
+ 'category unrelated gap erased':a=>a.readBytes=p=>{const b=read(p);if(p!=='data/artist-timelines/ifeye.json')return b;const d=JSON.parse(b);d.gaps=[];return Buffer.from(JSON.stringify(d));},
+}))test(`category correction fails closed: ${label}`,()=>{const a=input();mutate(a);assert.throws(()=>validateCorrectionChain(a));});
 
 for(const [label,mutate] of Object.entries({
  'missing MADEIN correction':a=>a.corrections.pop(),

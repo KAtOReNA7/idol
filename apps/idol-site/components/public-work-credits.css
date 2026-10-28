@@ -6,3 +6,8 @@
 .public-work-credits button,.public-work-credits a{font:inherit;color:inherit;text-align:left;text-decoration:underline;text-underline-offset:4px;background:none;border:0;padding:8px 0;cursor:pointer}
 .public-work-credits li span{font-size:12px;line-height:1.5}
 .public-work-credits :focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.public-work-credits .public-recognition-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr));gap:24px 16px;align-items:start}
+.public-recognition-grid .mv-identity-photo{margin:0;width:100%}
+.public-work-credits .public-recognition-grid .mv-identity-frame{display:block;padding:0;text-decoration:none;text-align:center;width:100%}
+.public-recognition-grid .mv-identity-photo figcaption{font-size:12px;line-height:1.5}
+@media(max-width:480px){.public-work-credits .public-recognition-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}}

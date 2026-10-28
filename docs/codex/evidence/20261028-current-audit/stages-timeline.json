@@ -1,0 +1,4134 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-27T17:16:28.844891+00:00",
+  "scope": "Read-only v196 production-projection and repository audit; no new network search, app edits, owner/private access, Soridata access, commits or deployments.",
+  "productionProjectionCapturedAt": "2026-10-27T17:14:27.535762+00:00",
+  "sourceFiles": {
+    "live": {
+      "path": "docs/codex/evidence/20261028-current-audit/catalog-audit-projection.json",
+      "sha256": "0e3fa50825eaa6b227c0affac2098cd9688df3abac39a8e908c05a0918e5289f"
+    },
+    "status": {
+      "path": "apps/idol-site/data/stages/status.json",
+      "sha256": "029dfb39efa813b0fb057dc19ed877c5d9760dd6a1f10cebacbb8be52e7d46b7"
+    },
+    "inventory": {
+      "path": "apps/idol-site/data/stages/inventory.json",
+      "sha256": "ecf62833e56fdab160ca382c3de3816d405e7b127bffef01a322a31ec05d74a7"
+    },
+    "supplements": {
+      "path": "apps/idol-site/data/stages/supplements.json",
+      "sha256": "fe03fa889eaf5276bed755b594e27922bf8ce2147174d63ba58103773582265a"
+    },
+    "selected": {
+      "path": "apps/idol-site/data/stage-videos.json",
+      "sha256": "547449186cd2167950b422e6611826f7aec4da54a202864a59b3b800216d2272"
+    },
+    "placeholders": {
+      "path": "apps/idol-site/data/stages/group-placeholders.json",
+      "sha256": "5bda6bf914d9c1b21d272f4720ef46f7a517447036e8165f5a6879f7d4b3898b"
+    },
+    "search": {
+      "path": "docs/codex/evidence/20261027-category-resolution/stages/search-refresh.json",
+      "sha256": "3e155b75a9b8678b621aab66fd8b2e5e466f9cd46e4f8335192f1cfbb97155f3"
+    },
+    "priority": {
+      "path": "docs/codex/evidence/20261028-followup/stages/priority-three-results.json",
+      "sha256": "11739e68da20cf92ede2546b1df7de6fa13206fd9c57d6bf518435a3d838b222"
+    },
+    "timelineReview": {
+      "path": "docs/codex/evidence/20261027-category-resolution/timeline/final-hold-review.json",
+      "sha256": "457684be4e7c3278f3394a040369d58bc7ba5bf0a09b2254d8ec77e08af07b27"
+    },
+    "reported": {
+      "path": "apps/idol-site/data/timeline-reported-records.json",
+      "sha256": "a0b7a4c7271cae3b8d16d349abc6cd1a34c8254ab1521e698b87ae13e5a4b051"
+    }
+  },
+  "counts": {
+    "inventory": 614,
+    "formalMatched": 482,
+    "unresolvedStage": 123,
+    "songIdentityPlaceholders": 9,
+    "runtimeLabels": {
+      "not_found": 57,
+      "version_mismatch": 50,
+      "blocked": 16
+    },
+    "supplementBucketsBeforeCorrection": {
+      "different_version_only": 37,
+      "search_only": 51,
+      "exact_view_only": 24,
+      "watch_lead_only": 6,
+      "version_unconfirmed": 5
+    },
+    "actionableAuditRoutes": {
+      "different_version_only": 36,
+      "search_only": 51,
+      "exact_view_only": 24,
+      "watch_lead_only": 6,
+      "version_unconfirmed": 6
+    },
+    "searchRefresh": {
+      "candidates_returned": 118,
+      "unavailable": 3,
+      "no_public_search_data": 2
+    },
+    "timelineFactHolds": 7,
+    "timelineReportedDisplays": 7,
+    "timelineReportedKinds": {
+      "report": 5,
+      "catalog": 1,
+      "repost": 1
+    }
+  },
+  "classificationRule": "Ordered mutually exclusive: exact alternative > unconfirmed alternative > different alternative > watch lead > search only. Override Right Now to version_unconfirmed after scoped source correction. Stored match/completeness describes prior documentary assessment, not fresh full playback or adoption.",
+  "routes": {
+    "exact_view_only": {
+      "label": "已有同版只读候选，需来源／全曲／绑定核验",
+      "action": "先复核原拍或原始媒体身份、授权与精确歌曲/语种/演出阵容，再连续检查首尾与实际音频；无评分绑定前只读展示。"
+    },
+    "version_unconfirmed": {
+      "label": "版本证据不足",
+      "action": "按原MV精确语种、录音/混音及成员范围核对；优先官方节目说明或可核听的完整视频，不能依据演出国家、标题或自动字幕语言判断。"
+    },
+    "different_version_only": {
+      "label": "仅有别版／节选补充",
+      "action": "保留明确别版标签与只读入口，继续查相同语言/混音/合作人及完整演出；找不到则保留缺口，不能迁移旧评分。"
+    },
+    "watch_lead_only": {
+      "label": "只有观看线索",
+      "action": "打开原始发布页核来源、完整性、语种和团体范围；实践/练习/relay/个人focus不自动视作完整团体舞台。"
+    },
+    "search_only": {
+      "label": "未形成可采用补充候选",
+      "action": "按艺人/电视台/原始活动来源分批检索；搜索结果先排除MV、音源、错误歌曲、饭制和非完整表演，不将未找到写成不存在。"
+    }
+  },
+  "records": [
+    {
+      "workId": "rec28ldfRTrAUD",
+      "song": "Love In My Heart",
+      "groupIds": [
+        "rec28ldfRTiC1X"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=1kXLsrun51s",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.982769+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "wyZC2BcFz1A",
+          "url": "https://www.youtube.com/watch?v=wyZC2BcFz1A&t=205s",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "观众现场原拍（非官方）；依据原拍者文字及视频元数据核验，尚未完整播放核验。三曲合辑内Love In My Heart 3:25–6:37（3:12），外链仅跳转起点；2025洛杉矶七人乐队现场版。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=BABYMONSTER%20Love%20In%20My%20Heart%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrAfx",
+      "song": "DEBUT SONG",
+      "groupIds": [
+        "rec28ldfRTiBUk"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=UAdxlj4Cgjw",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=KiiiKiii%20DEBUT%20SONG%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrCDJ",
+      "song": "DOPAMINE",
+      "groupIds": [
+        "rec28ldfRTiCzI"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=PYEOubLoXDo",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "KhUE3qy-PIY",
+          "url": "https://www.youtube.com/watch?v=KhUE3qy-PIY",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经交叉推定，未见作者本人声明；尚未完整播放核验。DOPAMINE（2:43），2024首尔ADVENTURE原七人。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 14,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=MADEIN%20DOPAMINE%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrCrz",
+      "song": "Untitled",
+      "groupIds": [
+        "rec28ldfRTiCtw"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=2EtFv4apgvo",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "fy5Yr42RSZY",
+          "url": "https://www.youtube.com/watch?v=fy5Yr42RSZY",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方，作者归属交叉推定，未见本人原拍声明）；原八人小分队，全曲长度推定，尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=tripleS%20Untitled%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrCzF",
+      "song": "DADARIDA",
+      "groupIds": [
+        "rec28ldfRTiCzI"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=kLd8bHVpUUw",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "Ybd8Ax0noI4",
+          "url": "https://www.youtube.com/watch?v=Ybd8Ax0noI4",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "尚未完整播放核验｜原作者饭拍：DADARIDA（2:55），2024首尔ADVENTURE原七人",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=MADEIN%20DADARIDA%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrF2E",
+      "song": "FAKE IDOL (가짜 아이돌)",
+      "groupIds": [
+        "rec28ldfRTiD4A"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=JFGRPgYeu38",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "bE25vNsyrtY",
+          "url": "https://www.youtube.com/watch?v=bE25vNsyrtY",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经交叉推定，未见作者本人声明；尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 1,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=QWER%20FAKE%20IDOL%20%28%EA%B0%80%EC%A7%9C%20%EC%95%84%EC%9D%B4%EB%8F%8C%29%20official%20live%20performance"
+      },
+      "priorityResearch": {
+        "workId": "rec28ldfRTrF2E",
+        "artist": "QWER",
+        "song": "FAKE IDOL",
+        "classification": "primary-press-single-song-candidate-and-official-medley",
+        "preferredResearchCandidate": {
+          "videoId": "l9GLV8Kd-MU",
+          "url": "https://www.youtube.com/watch?v=l9GLV8Kd-MU",
+          "publisher": "TVDaily",
+          "channelId": "UCSrUOjPamd67GxcMTdE8p7A",
+          "durationSeconds": 216,
+          "eventDate": "2024-10-25",
+          "sourceClass": "original-news-outlet-coverage",
+          "supported": [
+            "Exact single-song title and identifiable reporter original coverage, not unattributed fan reupload.",
+            "Description names Gwangyang festival date and all four QWER members as participants."
+          ],
+          "notEstablished": [
+            "Full first-to-last performance coverage and performed original arrangement not reviewed.",
+            "Not labelled artist or broadcaster official; news-outlet original category needs explicit policy handling before formal binding.",
+            "No stage score preimage accessed."
+          ],
+          "nextAction": "Review this exact original-press video, then approve source class or retain as separately labelled view-only original media coverage."
+        },
+        "alternative": {
+          "videoId": "PkEl_Z9B2y4",
+          "url": "https://www.youtube.com/watch?v=PkEl_Z9B2y4",
+          "sourceClass": "artist-official",
+          "durationSeconds": 410,
+          "supported": "Artist official LIVE CLIP explicitly contains FAKE IDOL and My Name Is Malguem; same title also published on artist Weverse media.",
+          "remaining": "Two songs; no supplied exact boundaries or full audiovisual verification. Do not use complete video as a single-song stage slot.",
+          "weverseUrl": "https://weverse.io/qwer/media/3-188265753",
+          "weverseExactVideoIdInFetchedHtml": false
+        },
+        "otherCandidates": [
+          {
+            "videoId": "nnnu-1KYYGI",
+            "decision": "retain-unconfirmed-source",
+            "reason": "Fresh @we_nal About describes noncommercial channel for people who love KFN programme; secondary press calls it programme channel, but direct broadcaster ownership/authorization not established. Noncommercial does not prove unofficial or official."
+          },
+          {
+            "videoId": "1E6jC8VB5PE",
+            "decision": "prefer-original-Korean-outlet-candidate",
+            "reason": "TVDaily Global upload exists but original Korean reporter-upload l9GLV8Kd-MU has clearer author/event provenance. Do not claim pixel identity between the two versions."
+          }
+        ],
+        "additionalPublisherPage": {
+          "url": "https://tvdaily.co.kr/read.php3?aid=17270604821726655003",
+          "date": "2024-09-23",
+          "eventDate": "2024-09-22",
+          "supports": "Separate PEPSI FESTA performance of FAKE IDOL; direct press page embeds Naver video61322883.",
+          "embeddedUrl": "https://tv.naver.com/v/61322883?autoPlay=true",
+          "limitation": "Current open redirects to Naver shorts and could not be read by web tool; no duration/completeness inferred. This is not the Gwangyang performance."
+        }
+      },
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrFGi",
+      "song": "4 Life",
+      "groupIds": [
+        "rec28ldfRTiD8K"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=A-Hr8aYSEx0",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "watch_lead_only",
+      "auditRoute": "watch_lead_only",
+      "alternatives": [],
+      "watchLeadCount": 1,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=VVUP%204%20Life%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrFYu",
+      "song": "YOUNG POSSE UP (feat. Verbal Jint, NSW yoon, Token)",
+      "groupIds": [
+        "rec28ldfRTiDcU"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=eaGsVrnH-5k",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.993551+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "0xRvDU-6zmY",
+          "url": "https://www.youtube.com/watch?v=0xRvDU-6zmY",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "官方电台短版现场，2:41。原作含 Verbal Jint、NSW yoon、Token 的发行版长3:20；本段客演是否实际参加未核实，页面点赞未展示数字。仅作明确短版只读入口。",
+          "completenessStored": "excerpt"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 13,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=YOUNG%20POSSE%20YOUNG%20POSSE%20UP%20%28feat.%20Verbal%20Jint%2C%20NSW%20yoon%2C%20Token%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrGY0",
+      "song": "Best Friendz",
+      "groupIds": [
+        "rec28ldfRTiDpi"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=JV_2SI-raz0",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:46.029646+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "version_unconfirmed",
+      "auditRoute": "version_unconfirmed",
+      "alternatives": [
+        {
+          "sourceId": "r1H2CzwNETU",
+          "url": "https://www.youtube.com/watch?v=r1H2CzwNETU",
+          "sourceClassStored": "official",
+          "versionMatchStored": "unconfirmed",
+          "scorePolicy": "view_only",
+          "kind": "官方 Best Friendz Live Clip，完整单曲2:46，只读。原 Brand MV 信用为 Best Friendz，本段音乐信用却为 English ver.；实际演唱语种尚未听辨，且表演发布时间早于英语单曲发行，不能仅凭平台信用定论。先标版本未确认，不算原版本正式补齐。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ODD%20YOUTH%20Best%20Friendz%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrGj0",
+      "song": "나의 이름은 (ROTY)",
+      "groupIds": [
+        "rec28ldfRTiDcU"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=6czkm_qdVlw",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.994761+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "nd9bPkKg3og",
+          "url": "https://www.youtube.com/watch?v=nd9bPkKg3og&t=414",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "官方短版：ROTY章节6:54–9:42（2:48），短于原曲3:21；整场17:11，外链仅跳转起点。",
+          "completenessStored": "excerpt"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=YOUNG%20POSSE%20%EB%82%98%EC%9D%98%20%EC%9D%B4%EB%A6%84%EC%9D%80%20%28ROTY%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrI8S",
+      "song": "STYLE",
+      "groupIds": [
+        "rec28ldfRTiBAq"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=z14Z86oQ-1E",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:46.003299+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "version_unconfirmed",
+      "auditRoute": "version_unconfirmed",
+      "alternatives": [
+        {
+          "sourceId": "A-rHQNVrim4",
+          "url": "https://www.youtube.com/watch?v=A-rHQNVrim4",
+          "sourceClassStored": "official",
+          "versionMatchStored": "unconfirmed",
+          "scorePolicy": "view_only",
+          "kind": "节目舞台",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Hearts2Hearts%20STYLE%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrIC0",
+      "song": "Moonride",
+      "groupIds": [
+        "rec28ldfRTiBAq"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=gNUMxMuxH20",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.999625+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Hearts2Hearts%20Moonride%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrIkV",
+      "song": "FOCUS",
+      "groupIds": [
+        "rec28ldfRTiBAq"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=Txyb_mVaPyE",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.997956+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "5ae0vFdR4xY",
+          "url": "https://www.youtube.com/watch?v=5ae0vFdR4xY",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲原编配舞台（非指定混音版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Hearts2Hearts%20FOCUS%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrJne",
+      "song": "LIT RIGHT NOW",
+      "groupIds": [
+        "rec28ldfRTiC6k"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=peFN4squVuQ",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:19:46.016817+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "312_u68JpTA",
+          "url": "https://www.youtube.com/watch?v=312_u68JpTA&t=636",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "MEOVV五人观众现场录像（非官方）；依据原拍者文字及视频元数据核验，尚未完整播放核验。整场内10:36–13:21对应曲目章节，外链仅跳转起点；精确音乐首尾未逐帧核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=MEOVV%20LIT%20RIGHT%20NOW%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrK1S",
+      "song": "little monster",
+      "groupIds": [
+        "rec28ldfRTiBON"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=xRU1XXHIpIc",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "QuEToahkbUU",
+          "url": "https://www.youtube.com/watch?v=QuEToahkbUU",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经交叉推定，未见作者本人声明；尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ILLIT%20little%20monster%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrKWv",
+      "song": "SUPA DUPA LUV",
+      "groupIds": [
+        "rec28ldfRTiC1X"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=SbdOIdg2McI",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.986692+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 0,
+        "result": "unavailable",
+        "error": "<urlopen error [Errno 2] No such file or directory>",
+        "url": "https://www.youtube.com/results?search_query=BABYMONSTER%20SUPA%20DUPA%20LUV%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrKm3",
+      "song": "Sunday Morning",
+      "groupIds": [
+        "rec28ldfRTiBON"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=-01oDwXKSuE",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ILLIT%20Sunday%20Morning%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrKqc",
+      "song": "NOT ME",
+      "groupIds": [
+        "rec28ldfRTiBON"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=9nEp9eeGaJk",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "sQ3zqlBsuqs",
+          "url": "https://www.youtube.com/watch?v=sQ3zqlBsuqs",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经交叉推定，未见作者本人声明；尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ILLIT%20NOT%20ME%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrLFz",
+      "song": "See U Tonight (feat. YUNAH & MINJU of ILLIT)",
+      "groupIds": [
+        "rec28ldfRTiBON"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=vJB6baLzeHw",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 9,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ILLIT%20See%20U%20Tonight%20%28feat.%20YUNAH%20%26%20MINJU%20of%20ILLIT%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrLow",
+      "song": "Ghost",
+      "groupIds": [
+        "rec28ldfRTiC1X"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=sRLbqYkoaLc",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.980741+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=BABYMONSTER%20Ghost%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrMwG",
+      "song": "Painting",
+      "groupIds": [
+        "rec28ldfRTiCdf"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=xWHWl0vG-38",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "tPhhxMMkSoQ",
+          "url": "https://www.youtube.com/watch?v=tPhhxMMkSoQ&t=921s",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场原拍（非官方）；依据原拍者文字及视频元数据核验，尚未完整播放核验。合集内Painting 15:21–17:55（2:34），外链仅跳转起点。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=KISS%20OF%20LIFE%20Painting%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrNO2",
+      "song": "Love All",
+      "groupIds": [
+        "rec28ldfRTiCpp"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=xu0fU46Cd7M",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 11,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=izna%20Love%20All%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrNYh",
+      "song": "DUMB HOT!",
+      "groupIds": [
+        "rec28ldfRTiCpp"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=_kxr2D8-tq8",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 11,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=izna%20DUMB%20HOT%21%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrNcl",
+      "song": "ShaLala (Japanese version)",
+      "groupIds": [
+        "rec28ldfRTiChs"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=aNBiA1NKdOg",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "H3Ncs0HIXoU",
+          "url": "https://www.youtube.com/watch?v=H3Ncs0HIXoU",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "舞台化表演",
+          "completenessStored": "full"
+        },
+        {
+          "sourceId": "d8anBYGFEzU",
+          "url": "https://www.youtube.com/watch?v=d8anBYGFEzU",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经公开作者帖与视频身份交叉推定，尚未完整播放核验。日语版；2026八人阵容，与2025原录音七人不同。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=SAY%20MY%20NAME%20ShaLala%20%28Japanese%20version%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrNsK",
+      "song": "BEEP (Japan Edition)",
+      "groupIds": [
+        "rec28ldfRTiCpp"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=LiZAgfmoQwc",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "ctfS0Rcq-gs",
+          "url": "https://www.youtube.com/watch?v=ctfS0Rcq-gs",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=izna%20BEEP%20%28Japan%20Edition%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrO2v",
+      "song": "Cherry Gene",
+      "groupIds": [
+        "rec28ldfRTiCtw"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=MfGdF9fftx4",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=tripleS%20Cherry%20Gene%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrOTb",
+      "song": "Baby Flower (Japanese Ver.)",
+      "groupIds": [
+        "rec28ldfRTiCtw"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=QYJROwbyeHQ",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "FWOh8wKclYQ",
+          "url": "https://www.youtube.com/watch?v=FWOh8wKclYQ",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=tripleS%20Baby%20Flower%20%28Japanese%20Ver.%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrOXn",
+      "song": "Dream Dress",
+      "groupIds": [
+        "rec28ldfRTiCtw"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=zqUO3zwllhc",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "2086355939263930837",
+          "url": "https://x.com/suisui_325/status/2086355939263930837",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "tripleS moon六人小分队观众现场录像（非官方）；拍摄归属经原帖及独立转载署名交叉推定，未见作者本人声明；已观察开场、中段及六人结尾，尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=tripleS%20Dream%20Dress%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrOnV",
+      "song": "Password",
+      "groupIds": [
+        "rec28ldfRTiCtw"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=m25wQkLg1jc",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "qrl0w3bIYHo",
+          "url": "https://www.youtube.com/watch?v=qrl0w3bIYHo",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方，作者归属交叉推定，未见本人原拍声明）；原八人小分队，全曲长度推定，尚未完整播放核验。 主办公告禁拍，未见拍摄例外或授权。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=tripleS%20Password%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrP1t",
+      "song": "DNA",
+      "groupIds": [
+        "rec28ldfRTiCtw"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=QhOtp2tWTY0",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=tripleS%20DNA%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrP5H",
+      "song": "Welcome to Heaven",
+      "groupIds": [
+        "rec28ldfRTiCtw"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=7MMIyGA5pOA",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=tripleS%20Welcome%20to%20Heaven%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "rec28ldfRTrQ8F",
+      "song": "Milky Way",
+      "groupIds": [
+        "rec28ldfRTiCWc"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=LhEBIGua1dM",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=UNIS%20Milky%20Way%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxDMFHN97Px",
+      "song": "4 SEASONS",
+      "groupIds": [
+        "recvxDKdOtKdWD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=-XrrMwG8jRI",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.962707+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "Iftbp9dB8go",
+          "url": "https://www.youtube.com/watch?v=Iftbp9dB8go",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "CHISA/HINATA/JURIA三人小分队现场录像（非官方）；依据原拍者文字及视频元数据核验，尚未完整播放核验。现场4:29与音源4:35长度不同。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=XG%204%20SEASONS%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxDMFHNHFyM",
+      "song": "IYKYK",
+      "groupIds": [
+        "recvxDKdOtKdWD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=QiYOkmrI1jg",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.968405+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "5vGxmlqHRAs",
+          "url": "https://www.youtube.com/watch?v=5vGxmlqHRAs",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众全团现场原拍（非官方）；依据原拍者文字及视频元数据核验，尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=XG%20IYKYK%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxDMFHNJME3",
+      "song": "IN THE RAIN",
+      "groupIds": [
+        "recvxDKdOtKdWD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=BydbhAzmAzg",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.967574+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "gXZwK_WihLM",
+          "url": "https://www.youtube.com/watch?v=gXZwK_WihLM",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众全团现场原拍（非官方）；依据原拍者文字及视频元数据核验，尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=XG%20IN%20THE%20RAIN%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxDMFHNyyeA",
+      "song": "O.R.B (Obviously Reads Bro)",
+      "groupIds": [
+        "recvxDKdOtKdWD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=9iK95Ez-Xto",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.972946+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "TqhDyb4c_TE",
+          "url": "https://www.youtube.com/watch?v=TqhDyb4c_TE",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众全团现场原拍（非官方）；依据原拍者文字及视频元数据核验，尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=XG%20O.R.B%20%28Obviously%20Reads%20Bro%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxDMFHNzJyr",
+      "song": "ROCK THE BOAT",
+      "groupIds": [
+        "recvxDKdOtKdWD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=8xb_P7ureNU",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.974548+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "version_unconfirmed",
+      "auditRoute": "version_unconfirmed",
+      "alternatives": [
+        {
+          "sourceId": "22000626588",
+          "url": "https://programs.sbs.co.kr/enter/gayo/clip/54768/22000626588",
+          "sourceClassStored": "official",
+          "versionMatchStored": "unconfirmed",
+          "scorePolicy": "view_only",
+          "kind": "SBS官方全团舞台；其他平台只读。原MV歌词特别版本与本舞台是否相同尚待核。",
+          "completenessStored": "full"
+        },
+        {
+          "sourceId": "0B0rjBk66t8",
+          "url": "https://www.youtube.com/watch?v=0B0rjBk66t8",
+          "sourceClassStored": "official",
+          "versionMatchStored": "unconfirmed",
+          "scorePolicy": "view_only",
+          "kind": "官方单曲节目表演（3:00）；原MV有特别歌词，现场版本未确认，仅供观看。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=XG%20ROCK%20THE%20BOAT%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIYG1FSCws",
+      "song": "VOODOO DOLL",
+      "groupIds": [
+        "recvxyEBDZs5Ic"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=nYrezqbjl3E",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 0,
+        "result": "no_public_search_data",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=WOOAH%20VOODOO%20DOLL%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZFpVLU0R",
+      "song": "loverfory",
+      "groupIds": [
+        "rec28ldfRTiCGa"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=ecQSl-6NSTA",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "yRNslSmbiW0",
+          "url": "https://www.youtube.com/watch?v=yRNslSmbiW0",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经交叉推定，未见作者本人声明；尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ifeye%20loverfory%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZLpET3tB",
+      "song": "Our Voyage",
+      "groupIds": [
+        "rec28ldfRTiD4A"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=FifVV3t38Vk",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "EIfk7XSGPag",
+          "url": "https://www.youtube.com/watch?v=EIfk7XSGPag",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经交叉推定，未见作者本人声明；尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=QWER%20Our%20Voyage%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZRQAko79",
+      "song": "I.L.Y",
+      "groupIds": [
+        "rec28ldfRTiDxx"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=oheqbYaOd3g",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:46.025360+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "watch_lead_only",
+      "auditRoute": "watch_lead_only",
+      "alternatives": [],
+      "watchLeadCount": 1,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Geenius%20I.L.Y%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZRWKBgDC",
+      "song": "I.L.Y",
+      "groupIds": [
+        "rec28ldfRTiDxx"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=BF3kLvjQE4Q",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:46.025598+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "watch_lead_only",
+      "auditRoute": "watch_lead_only",
+      "alternatives": [],
+      "watchLeadCount": 1,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Geenius%20I.L.Y%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZRWKKCeh",
+      "song": "I.L.Y",
+      "groupIds": [
+        "rec28ldfRTiDxx"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=NLa_eJYKcfQ",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:46.026040+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "watch_lead_only",
+      "auditRoute": "watch_lead_only",
+      "alternatives": [],
+      "watchLeadCount": 1,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Geenius%20I.L.Y%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZRWKntfT",
+      "song": "I know",
+      "groupIds": [
+        "rec28ldfRTiDcU"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=aAjb-d4UkPc",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.991008+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=YOUNG%20POSSE%20I%20know%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZRWKy9zg",
+      "song": "SHOW DOWN",
+      "groupIds": [
+        "rec28ldfRTiD4A"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=TcMV9YeT9Sw",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "XHNZYGNgRUc",
+          "url": "https://www.youtube.com/watch?v=XHNZYGNgRUc",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经交叉推定，未见作者本人声明；尚未完整播放核验。 韩语演唱版，原收录为日语版。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 1,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=QWER%20SHOW%20DOWN%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZXUpORHf",
+      "song": "I.L.Y",
+      "groupIds": [
+        "rec28ldfRTiDxx"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=BwbY56T9EXo",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:46.026428+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "watch_lead_only",
+      "auditRoute": "watch_lead_only",
+      "alternatives": [],
+      "watchLeadCount": 1,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Geenius%20I.L.Y%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZY0lR25A",
+      "song": "Pilot2",
+      "groupIds": [
+        "rec28ldfRTiDcU"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=GaqBpWroH68",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.992335+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=YOUNG%20POSSE%20Pilot2%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZY0lVCCr",
+      "song": "I.L.Y",
+      "groupIds": [
+        "rec28ldfRTiDxx"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=Qp3nqWwBKVk",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:46.026701+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "watch_lead_only",
+      "auditRoute": "watch_lead_only",
+      "alternatives": [],
+      "watchLeadCount": 1,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Geenius%20I.L.Y%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZY0lX8bP",
+      "song": "kawa",
+      "groupIds": [
+        "rec28ldfRTiDcU"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=LY4SA0X2kvg",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.993839+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=YOUNG%20POSSE%20kawa%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZnIaGCNq",
+      "song": "Gameboy",
+      "groupIds": [
+        "rec28ldfRTiDUd"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=-bC4iak3kxg",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:46.023783+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "YHsuyYkqPOI",
+          "url": "https://www.youtube.com/watch?v=YHsuyYkqPOI",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；原拍归属经交叉推定；直达页核验暂停，尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=KATSEYE%20Gameboy%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZy3525BF",
+      "song": "Gulliver!",
+      "groupIds": [
+        "rec28ldfRTiE4q"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=IM-N8trjDzk",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "c3MYVf7QecY",
+          "url": "https://www.youtube.com/watch?v=c3MYVf7QecY",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经公开作者帖与视频身份交叉推定，尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=HITGS%20Gulliver%21%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZy35Xwr7",
+      "song": "Cherry Blossom",
+      "groupIds": [
+        "rec28ldfRTiE4q"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=6GUKqEfiX1I",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "O-p-euu4gIE",
+          "url": "https://www.youtube.com/watch?v=O-p-euu4gIE",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经公开作者帖与视频身份交叉推定，尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 0,
+        "result": "no_public_search_data",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=HITGS%20Cherry%20Blossom%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxIZy35rUeY",
+      "song": "Little By Little",
+      "groupIds": [
+        "rec28ldfRTiE4q"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=L9VNIOcfSOU",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "VFsQW-jTwcM",
+          "url": "https://www.youtube.com/watch?v=VFsQW-jTwcM",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经公开作者帖与视频身份交叉推定，尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=HITGS%20Little%20By%20Little%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxJ03dOg1Gc",
+      "song": "미스터 2026",
+      "groupIds": [
+        "rec28ldfRTiDcU"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=lFxXpXk35Eo",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.995104+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=YOUNG%20POSSE%20%EB%AF%B8%EC%8A%A4%ED%84%B0%202026%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pz4ojC",
+      "song": "Breath",
+      "groupIds": [
+        "recvxyEBDZllCe"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=5oIIzNGeXco",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=PURPLE%20KISS%20Breath%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pz6LHw",
+      "song": "Promise",
+      "groupIds": [
+        "recvxyEBDZ9Jl3"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=JZmBo1EQnlE",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:46.021726+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=EVERGLOW%20Promise%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzA9lj",
+      "song": "ドキドキLOVE",
+      "groupIds": [
+        "recvxyEBDZB3pz"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=SLYos3_m3_A",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Rocket%20Punch%20%E3%83%89%E3%82%AD%E3%83%89%E3%82%ADLOVE%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzEDfw",
+      "song": "Buenos Aires",
+      "groupIds": [
+        "recvxyEBDZ52oG"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=M46FRJsB0Qw",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=IZ%2AONE%20Buenos%20Aires%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzFAPL",
+      "song": "DOREMI",
+      "groupIds": [
+        "recvxyEBDZllCe"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=os4driLeAiU",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "WWvGUnPKeAg",
+          "url": "https://www.youtube.com/watch?v=WWvGUnPKeAg",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=PURPLE%20KISS%20DOREMI%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzJov0",
+      "song": "Top Secret",
+      "groupIds": [
+        "recvxyEBDZPbu5"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=zBCK8Z4a0Js",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "cQLtH8sY5R4",
+          "url": "https://www.youtube.com/watch?v=cQLtH8sY5R4&t=5505s",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；尚未完整播放核验。整场内Top Secret 01:31:45–01:34:52（3:07），外链仅跳转起点；2024六人阵容，与原版七人不同。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Weeekly%20Top%20Secret%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzMCLp",
+      "song": "7days Tension",
+      "groupIds": [
+        "recvxyEBDZPbu5"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=zWzO3POfAJ8",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Weeekly%207days%20Tension%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzQxpW",
+      "song": "SUMMER",
+      "groupIds": [
+        "recvxyEBDZs5Ic"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=8DwTAa5hPsA",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "5nf6NO_WA2Y",
+          "url": "https://www.youtube.com/watch?v=5nf6NO_WA2Y",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场原拍（非官方）；依据原拍者文字及视频元数据核验，尚未完整播放核验；本轮直达页遇验证限制。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=WOOAH%20SUMMER%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzVn2k",
+      "song": "LIT",
+      "groupIds": [
+        "recvxyEBDZ2V3c"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=hB6B70NyZ7s",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=STAYC%20LIT%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzYOf3",
+      "song": "Vampire",
+      "groupIds": [
+        "recvxyEBDZ52oG"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=nRYCLOTRAK4",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=IZ%2AONE%20Vampire%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzZ4x9",
+      "song": "Bubble Up!",
+      "groupIds": [
+        "recvxyEBDZB3pz"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=XQX8bttrfpc",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Rocket%20Punch%20Bubble%20Up%21%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzZfyK",
+      "song": "Shining On You",
+      "groupIds": [
+        "recvxyEBDZs5Ic"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=jsfsisyG3Vo",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=WOOAH%20Shining%20On%20You%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzbluu",
+      "song": "MWUAH",
+      "groupIds": [
+        "recvxyEBDZ2V3c"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=udOf9JGMA7U",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "Pgy5mTSga1c",
+          "url": "https://www.youtube.com/watch?v=Pgy5mTSga1c",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "韩语改编版MWUAH，原收录为日语版。观众现场录像（非官方）；拍摄归属经独立摄影署名及视频身份交叉推定，未见作者本人声明；尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=STAYC%20MWUAH%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzdckl",
+      "song": "MEOW",
+      "groupIds": [
+        "recvxyEBDZ2V3c"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=b8yjHGQ4hA4",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=STAYC%20MEOW%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzi1oo",
+      "song": "D-D-DANCE",
+      "groupIds": [
+        "recvxyEBDZ52oG"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=1C77QDNoAgo",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=IZ%2AONE%20D-D-DANCE%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzoIOD",
+      "song": "Happy Christmas",
+      "groupIds": [
+        "recvxyEBDZPbu5"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=o21QhCZZQJA",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Weeekly%20Happy%20Christmas%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzoMAf",
+      "song": "Teddy Bear",
+      "groupIds": [
+        "recvxyEBDZ2V3c"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=2gm2t6fbc8s",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "6fkcQGNr-g0",
+          "url": "https://www.youtube.com/watch?v=6fkcQGNr-g0",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=STAYC%20Teddy%20Bear%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzoaOZ",
+      "song": "Love",
+      "groupIds": [
+        "recvxyEBDZPbu5"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=VACXoKdmofo",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Weeekly%20Love%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyH5pzrrSO",
+      "song": "WXW (Wish With W)",
+      "groupIds": [
+        "recvxyEBDZs5Ic"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=ZtiThQN5ETc",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 0,
+        "result": "unavailable",
+        "error": "<urlopen error [Errno 2] No such file or directory>",
+        "url": "https://www.youtube.com/results?search_query=WOOAH%20WXW%20%28Wish%20With%20W%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKM2Gwu",
+      "song": "ELEVEN -Japanese ver.-",
+      "groupIds": [
+        "recvxyEBDZT8Xj"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=XfEZzUtdINI",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "dHdABwhhDj8",
+          "url": "https://www.youtube.com/watch?v=dHdABwhhDj8",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=IVE%20ELEVEN%20-Japanese%20ver.-%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKM5r64",
+      "song": "Be Alright",
+      "groupIds": [
+        "recvxyEBDZT8Xj"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=gC7cURZsiH8",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=IVE%20Be%20Alright%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMBHQA",
+      "song": "Get Goin'",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=wPnjKZFgeiE",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.948580+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 9,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20Get%20Goin%27%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMCSdB",
+      "song": "Armageddon (Flava D Remix)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=GnVRCX-Sfek",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.942077+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "DmbiyCSEC_8",
+          "url": "https://www.youtube.com/watch?v=DmbiyCSEC_8",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲原编配舞台（非指定混音版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20Armageddon%20%28Flava%20D%20Remix%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMDFye",
+      "song": "Welcome To MY World (Feat. nævis)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=0xdB_vo4r2c",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.961318+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "version_unconfirmed",
+      "auditRoute": "version_unconfirmed",
+      "alternatives": [
+        {
+          "sourceId": "0TeYnotdeoE",
+          "url": "https://www.youtube.com/watch?v=0TeYnotdeoE",
+          "sourceClassStored": "official",
+          "versionMatchStored": "unconfirmed",
+          "scorePolicy": "view_only",
+          "kind": "aespa完整团体舞台，nævis客演音轨保留情况待核",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20Welcome%20To%20MY%20World%20%28Feat.%20n%C3%A6vis%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMLz7L",
+      "song": "LEMONADE (2Spade Remix)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=yMvsKWGPEIU",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.952227+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "0aEgFTk7B9o",
+          "url": "https://www.youtube.com/watch?v=0aEgFTk7B9o",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲原编配舞台（非指定混音版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20LEMONADE%20%282Spade%20Remix%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMNnpu",
+      "song": "SUMMER FESTA",
+      "groupIds": [
+        "recvxyEBDZT8Xj"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=9adnWMIVHQ0",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=IVE%20SUMMER%20FESTA%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMXVDa",
+      "song": "Regret of the Times (2024 aespa Remake Ver.)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=xjBY3MLdvVQ",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.955063+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "MTf-E7FS4gM",
+          "url": "https://www.youtube.com/watch?v=MTf-E7FS4gM",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；知名摄影作者BIMONG与视频身份已交叉核对，尚未完整播放核验。aespa 2024重制版，非原唱旧版。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20Regret%20of%20the%20Times%20%282024%20aespa%20Remake%20Ver.%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMZLFT",
+      "song": "KISS N TELL",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=inxzQt78lOk",
+      "runtimeStatus": "blocked",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.950911+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20KISS%20N%20TELL%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMh5bM",
+      "song": "I WANT",
+      "groupIds": [
+        "recvxyEBDZT8Xj"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=okVTSehE414",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "61314532",
+          "url": "https://tv.naver.com/v/61314532",
+          "sourceClassStored": "official",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "记者现场录像（TVDaily），整段视频约3:32（含片头片尾，非歌曲净时长）；已抽看开场/中段/结尾，未连续核听。",
+          "completenessStored": "full",
+          "sourceClassAudit": "original-news-outlet"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=IVE%20I%20WANT%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": [
+        "IVE I WANT的TVDaily原始记者录像被旧表标official；不能将媒体原拍表述为艺人/电视台官方。"
+      ]
+    },
+    {
+      "workId": "recvxyHuKMiDs4",
+      "song": "Girls (BRLLNT Remix)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=ZlcvaEpCEJ4",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.949990+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "5ClWDIInX0M",
+          "url": "https://www.youtube.com/watch?v=5ClWDIInX0M",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲原编配舞台（非指定混音版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20Girls%20%28BRLLNT%20Remix%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMisqR",
+      "song": "Next Level (Habstrakt Remix)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=EROYsCK0vK4",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.954719+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "82CnK4M2sxo",
+          "url": "https://www.youtube.com/watch?v=82CnK4M2sxo",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲原编配舞台（非指定混音版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20Next%20Level%20%28Habstrakt%20Remix%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMlAhN",
+      "song": "Rich Man (Yellow Claw Remix)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=lWIQ72KFgrg",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.956268+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "TE6aw22GfUo",
+          "url": "https://www.youtube.com/watch?v=TE6aw22GfUo",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲原编配舞台（非指定混音版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20Rich%20Man%20%28Yellow%20Claw%20Remix%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMlGJW",
+      "song": "Supernova (Grimes Remix)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=4kMcaEz1WrQ",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.959329+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "HEiiTiLCymg",
+          "url": "https://www.youtube.com/watch?v=HEiiTiLCymg",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲原编配舞台（非指定混音版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20Supernova%20%28Grimes%20Remix%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMlNfX",
+      "song": "LEMONADE (Marlon Hoffstadt Remix)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=zBiB0jww7_8",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.952607+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "0aEgFTk7B9o",
+          "url": "https://www.youtube.com/watch?v=0aEgFTk7B9o",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲原编配舞台（非指定混音版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20LEMONADE%20%28Marlon%20Hoffstadt%20Remix%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMwjsI",
+      "song": "Supernova (Grimes Remix) (The Other World Ver.)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=tY2q55Sw3jA",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.959637+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "HEiiTiLCymg",
+          "url": "https://www.youtube.com/watch?v=HEiiTiLCymg",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲原编配舞台（非指定混音版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20Supernova%20%28Grimes%20Remix%29%20%28The%20Other%20World%20Ver.%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMwrIt",
+      "song": "BANG BANG (MINIVE VER.)",
+      "groupIds": [
+        "recvxyEBDZT8Xj"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=rNGPgQB4Be8",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "version_unconfirmed",
+      "auditRoute": "version_unconfirmed",
+      "alternatives": [
+        {
+          "sourceId": "uVpGElT--E8",
+          "url": "https://www.youtube.com/watch?v=uVpGElT--E8",
+          "sourceClassStored": "official",
+          "versionMatchStored": "unconfirmed",
+          "scorePolicy": "view_only",
+          "kind": "特别表演",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=IVE%20BANG%20BANG%20%28MINIVE%20VER.%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMxwnW",
+      "song": "LEMONADE (Zedd Remix)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=P2loH5EOnr8",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.952886+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "0aEgFTk7B9o",
+          "url": "https://www.youtube.com/watch?v=0aEgFTk7B9o",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲原编配舞台（非指定混音版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20LEMONADE%20%28Zedd%20Remix%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyHuKMyy5i",
+      "song": "Spicy (Nitepunk Remix)",
+      "groupIds": [
+        "recvxyEBDZxfeD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=dn-fzIgHkg0",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:19:45.958209+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "tX3G0yzQqD4",
+          "url": "https://www.youtube.com/watch?v=tX3G0yzQqD4",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲原编配舞台（非指定混音版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=aespa%20Spicy%20%28Nitepunk%20Remix%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5X0JJ9",
+      "song": "Revenge",
+      "groupIds": [
+        "recvxyEBDZqkpg"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=KAymeaEyPr8",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "It1ZDGGGziQ",
+          "url": "https://www.youtube.com/watch?v=It1ZDGGGziQ",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经交叉推定，未见作者本人声明；尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=i-dle%20Revenge%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5X1VFs",
+      "song": "I Want That",
+      "groupIds": [
+        "recvxyEBDZqkpg"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=Iewisp9KYRw",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "exact_view_only",
+      "auditRoute": "exact_view_only",
+      "alternatives": [
+        {
+          "sourceId": "-_vX7v3HxsY",
+          "url": "https://www.youtube.com/watch?v=-_vX7v3HxsY",
+          "sourceClassStored": "audience_original",
+          "versionMatchStored": "exact",
+          "scorePolicy": "view_only",
+          "kind": "观众现场录像（非官方）；拍摄归属经交叉推定，未见作者本人声明；尚未完整播放核验。",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=i-dle%20I%20Want%20That%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5X3Fd8",
+      "song": "Oh my god",
+      "groupIds": [
+        "recvxyEBDZqkpg"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=u7wSlAgEcvg",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "L2XP2WOibxw",
+          "url": "https://www.youtube.com/watch?v=L2XP2WOibxw",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=i-dle%20Oh%20my%20god%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5X5dQ5",
+      "song": "Yum",
+      "groupIds": [
+        "recvxyEBDZ8A0W"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=3nMOUzBZ0ZI",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 0,
+        "result": "unavailable",
+        "error": "<urlopen error [Errno 2] No such file or directory>",
+        "url": "https://www.youtube.com/results?search_query=Kep1er%20Yum%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5X6G1q",
+      "song": "Caution",
+      "groupIds": [
+        "recvxyEBDZOpTf"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=eJd4ii5avNw",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 14,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=NMIXX%20Caution%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5X7Tw7",
+      "song": "FEARLESS (Japanese Ver.)",
+      "groupIds": [
+        "recvxyEBDZvpPh"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=DiGnWwgLAfE",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "LiNxfFkymTk",
+          "url": "https://www.youtube.com/watch?v=LiNxfFkymTk",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=LE%20SSERAFIM%20FEARLESS%20%28Japanese%20Ver.%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5X7zV3",
+      "song": "LOCO (Japanese Ver.)",
+      "groupIds": [
+        "recvxyEBDZqxjD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=ytTlH0EpSqI",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "IZAv5Tj8a8A",
+          "url": "https://www.youtube.com/watch?v=IZAv5Tj8a8A",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ITZY%20LOCO%20%28Japanese%20Ver.%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5X9qGD",
+      "song": "Like Magic",
+      "groupIds": [
+        "recvxyEBDZqxjD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=t6bBDAlpQZs",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 14,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ITZY%20Like%20Magic%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XCY9Z",
+      "song": "RESCUE TAYO",
+      "groupIds": [
+        "recvxyEBDZ8A0W"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=cHF0-s0kBME",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 12,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Kep1er%20RESCUE%20TAYO%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XEgYP",
+      "song": "HULA HOOP",
+      "groupIds": [
+        "recvxyEBDZJAXm"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=tnpUv1Vj5MA",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=LOONA%20HULA%20HOOP%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XFVzt",
+      "song": "Touchdown",
+      "groupIds": [
+        "recvxyEBDZcosR"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=peoZYyEvY-k",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=fromis_9%20Touchdown%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XGYPC",
+      "song": "Last Dance",
+      "groupIds": [
+        "recvxyEBDZqkpg"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=U6DG3TBcV6s",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=i-dle%20Last%20Dance%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XHEju",
+      "song": "Right Now",
+      "groupIds": [
+        "recvxyEBDZ9qVl"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=m6pTbEz4w3o",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "version_unconfirmed",
+      "alternatives": [
+        {
+          "sourceId": "7XhRd6cVIyI",
+          "url": "https://www.youtube.com/watch?v=7XhRd6cVIyI",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩语演出版，非含日语的原发行音频",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=NewJeans%20Right%20Now%20official%20live%20performance"
+      },
+      "priorityResearch": {
+        "workId": "recvxyOz5XHEju",
+        "artist": "NewJeans",
+        "song": "Right Now",
+        "classification": "official-medley-needs-version-and-boundary-check",
+        "preferredResearchCandidate": {
+          "videoId": "saY9KS7mKvI",
+          "url": "https://www.youtube.com/watch?v=saY9KS7mKvI",
+          "sourceClass": "artist-official",
+          "durationSeconds": 542,
+          "supported": [
+            "Artist description credits rockin’on japan footage.",
+            "Organizer setlist directly confirms Right Now at EARTH STAGE December31,2024."
+          ],
+          "source": "https://rockinon.com/quick/cdj2425/detail/211115",
+          "remaining": [
+            "Exact first-song boundaries must be observed, not calculated from album duration.",
+            "Actual lyric language and arrangement remain unverified; event in Japan alone is insufficient.",
+            "Whole-medley likes are not comparable to single-song likes."
+          ]
+        },
+        "otherCandidate": {
+          "videoId": "7XhRd6cVIyI",
+          "decision": "retain-version-unverified",
+          "reason": "KBS official single-song metadata does not specify language. Contemporary Star News quote explicitly says Supernatural prepared a Korean version; it is not a direct statement about Right Now. Do not use that quote as standalone proof of Right Now mismatch.",
+          "source": "https://www.starnewskorea.com/music/2024/07/12/2024071218315876353"
+        },
+        "nextAction": "Prioritize exact Japanese-original lyric comparison for the artist-owned concert segment, then capture verified chapter start/end."
+      },
+      "auditNotes": [
+        "旧补充将KBS视频断言为韩语版本，但最近复读Star News原文明确点名的是Supernatural，并非Right Now；PTT等旧线索不足替代本视频核听。保留runtime不改，审计路线降为未证。"
+      ]
+    },
+    {
+      "workId": "recvxyOz5XJWXT",
+      "song": "SPAGHETTI",
+      "groupIds": [
+        "recvxyEBDZvpPh"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=TvVtYaqCni8",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "tH1WVlGhnHQ",
+          "url": "https://www.youtube.com/watch?v=tH1WVlGhnHQ",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "成员版完整表演，不含j-hope原客演版本",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=LE%20SSERAFIM%20SPAGHETTI%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XKzE5",
+      "song": "UNFORGIVEN (Japanese Ver.)",
+      "groupIds": [
+        "recvxyEBDZvpPh"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=vMddOrUGwDw",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "NnTEZCxhxF4",
+          "url": "https://www.youtube.com/watch?v=NnTEZCxhxF4",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "韩语版团体舞台；不是日语Ado客演版",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=LE%20SSERAFIM%20UNFORGIVEN%20%28Japanese%20Ver.%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XQMJt",
+      "song": "CRAZY (Japanese Ver.)",
+      "groupIds": [
+        "recvxyEBDZvpPh"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=tsS69gld8Ls",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "wJwUjuKr_54",
+          "url": "https://www.youtube.com/watch?v=wJwUjuKr_54",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=LE%20SSERAFIM%20CRAZY%20%28Japanese%20Ver.%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XQZhy",
+      "song": "Be Who You Are (Real Magic)",
+      "groupIds": [
+        "recvxyEBDZ9qVl"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=XEsrFIQOWZg",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=NewJeans%20Be%20Who%20You%20Are%20%28Real%20Magic%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XRfn5",
+      "song": "蜚蜚 (FEIFEI)",
+      "groupIds": [
+        "recvxyEBDZOpTf"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=zrYC3LEpc6w",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=NMIXX%20%E8%9C%9A%E8%9C%9A%20%28FEIFEI%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XVlTp",
+      "song": "Supernatural",
+      "groupIds": [
+        "recvxyEBDZ9qVl"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=ZncbtRo7RXs",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "ZmPJyC0eVM8",
+          "url": "https://www.youtube.com/watch?v=ZmPJyC0eVM8",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩语演出版，非含日语的原发行音频",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=NewJeans%20Supernatural%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5Xa1EK",
+      "song": "LATATA",
+      "groupIds": [
+        "recvxyEBDZqkpg"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=ypNJMDlJvY4",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "eZRmP-l3Nz0",
+          "url": "https://www.youtube.com/watch?v=eZRmP-l3Nz0",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=i-dle%20LATATA%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XkyEY",
+      "song": "Voltage",
+      "groupIds": [
+        "recvxyEBDZqxjD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=krzf1hkFAZA",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "mH4CIO_YArc",
+          "url": "https://www.youtube.com/watch?v=mH4CIO_YArc",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "Showcase 舞台",
+          "completenessStored": "excerpt"
+        },
+        {
+          "sourceId": "1_sylBku10M",
+          "url": "https://www.youtube.com/watch?v=1_sylBku10M",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "官方专用短版表演（2:49）；非完整原曲，未完整播放核验。",
+          "completenessStored": "excerpt"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ITZY%20Voltage%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XlqWP",
+      "song": "Boys Like You",
+      "groupIds": [
+        "recvxyEBDZqxjD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=6uZy86ePgO0",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "EnouZqsFhRY",
+          "url": "https://www.youtube.com/watch?v=EnouZqsFhRY",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "官方组曲短版：整段视频5:36，含缩短版Boys Like You；单曲时长未核。",
+          "completenessStored": "excerpt"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ITZY%20Boys%20Like%20You%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XmFwB",
+      "song": "SUPERPOWERS",
+      "groupIds": [
+        "recvxyEBDZqxjD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=-1llaBEyOXA",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ITZY%20SUPERPOWERS%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XmMQe",
+      "song": "Not Shy (English Ver.)",
+      "groupIds": [
+        "recvxyEBDZqxjD"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=tvTdg7sgsgU",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "IOKMx1jeCjY",
+          "url": "https://www.youtube.com/watch?v=IOKMx1jeCjY",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=ITZY%20Not%20Shy%20%28English%20Ver.%29%20official%20live%20performance"
+      },
+      "priorityResearch": {
+        "workId": "recvxyOz5XmMQe",
+        "artist": "ITZY",
+        "song": "Not Shy (English Ver.)",
+        "classification": "no-new-exact-English-stage-proven",
+        "newCandidate": {
+          "videoId": "BnmwjH-suLg",
+          "url": "https://www.youtube.com/watch?v=BnmwjH-suLg",
+          "sourceClass": "artist-official",
+          "durationSeconds": 404,
+          "supported": "Official ITZY MTV Fresh Out performance practice. Contemporary reporting describes rearranged Not Shy and WANNABE in one presentation.",
+          "source": "https://www.hellokpop.com/internet/itzy-unleashes-exclusive-performance-practice-for-not-shy-wannabe-via-mtv-fresh-out/",
+          "remaining": "Official description links Not Shy English album as promotion; this does not establish performed audio language. Multi-song rearrangement not same exact source by default.",
+          "decision": "research-only; not English stage substitute"
+        },
+        "existingCountdown": {
+          "videoId": "kro7_IMCi1c",
+          "url": "https://www.youtube.com/watch?v=kro7_IMCi1c",
+          "decision": "retain-existing-unverified-chapter-lead",
+          "freshlyFetchedThisPass": false,
+          "reason": "Previous official4085s livestream evidence retained; no exact complete performance chapter established. Not counted among7 fresh pages."
+        },
+        "nextAction": "Locate publisher-listed English performance chapter or audio-verify exact official clip. Search results titled English on fan edits/lyrics cannot serve as official stage."
+      },
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XnOv7",
+      "song": "CRAZY (English Ver.)",
+      "groupIds": [
+        "recvxyEBDZvpPh"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=iI5hnXYo5as",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "different_version_only",
+      "auditRoute": "different_version_only",
+      "alternatives": [
+        {
+          "sourceId": "wJwUjuKr_54",
+          "url": "https://www.youtube.com/watch?v=wJwUjuKr_54",
+          "sourceClassStored": "official",
+          "versionMatchStored": "different",
+          "scorePolicy": "view_only",
+          "kind": "同曲韩文原版舞台（非指定译版）",
+          "completenessStored": "full"
+        }
+      ],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=LE%20SSERAFIM%20CRAZY%20%28English%20Ver.%29%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5Xo5fW",
+      "song": "Hey Gabby!",
+      "groupIds": [
+        "recvxyEBDZOpTf"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=xBrrdxtyWHw",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=NMIXX%20Hey%20Gabby%21%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5Xqy0Q",
+      "song": "MEXE",
+      "groupIds": [
+        "recvxyEBDZOpTf"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=0zgJgsbcAN8",
+      "runtimeStatus": "version_mismatch",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=NMIXX%20MEXE%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5Xr917",
+      "song": "Beautiful Restriction",
+      "groupIds": [
+        "recvxyEBDZ9qVl"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=jgD_U2t6qXQ",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=NewJeans%20Beautiful%20Restriction%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XsgVc",
+      "song": "Sprinkle Party",
+      "groupIds": [
+        "recvxyEBDZOpTf"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=0T8d3pRjmi4",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=NMIXX%20Sprinkle%20Party%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5XueI9",
+      "song": "LUMINOUS",
+      "groupIds": [
+        "recvxyEBDZJAXm"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=lLug6h74acE",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=LOONA%20LUMINOUS%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    },
+    {
+      "workId": "recvxyOz5Xvsk1",
+      "song": "Sugar Rush",
+      "groupIds": [
+        "recvxyEBDZ8A0W"
+      ],
+      "originalMvUrl": "https://www.youtube.com/watch?v=w8N3nZ7reZk",
+      "runtimeStatus": "not_found",
+      "runtimeCheckedAt": "2026-10-11T12:21:06.918553+00:00",
+      "supplementBucketBeforeEvidenceCorrection": "search_only",
+      "auditRoute": "search_only",
+      "alternatives": [],
+      "watchLeadCount": 0,
+      "searchRefresh": {
+        "date": "2026-10-27",
+        "candidateCount": 15,
+        "result": "candidates_returned",
+        "error": null,
+        "url": "https://www.youtube.com/results?search_query=Kep1er%20Sugar%20Rush%20official%20live%20performance"
+      },
+      "priorityResearch": null,
+      "auditNotes": []
+    }
+  ],
+  "placeholders": [
+    {
+      "workId": "rec28ldfRTrHDo",
+      "groupId": "rec28ldfRTiDPs",
+      "group": "UDTT",
+      "originalRow": 92,
+      "reason": "源表明确为尚未选择作品的团体占位",
+      "nextAction": "源表已确认是团体占位，不是9首已知歌曲丢失。保留稳定ID与历史；仅在owner选定具体作品并核原MV/语种/版本后走显式新增/关联流程，不凭同团已有歌猜填。"
+    },
+    {
+      "workId": "rec28ldfRTrHHv",
+      "groupId": "rec28ldfRTiDUd",
+      "group": "KATSEYE",
+      "originalRow": 93,
+      "reason": "源表明确为尚未选择作品的团体占位",
+      "nextAction": "源表已确认是团体占位，不是9首已知歌曲丢失。保留稳定ID与历史；仅在owner选定具体作品并核原MV/语种/版本后走显式新增/关联流程，不凭同团已有歌猜填。"
+    },
+    {
+      "workId": "rec28ldfRTrHLf",
+      "groupId": "rec28ldfRTiE0h",
+      "group": "VCHA",
+      "originalRow": 94,
+      "reason": "源表明确为尚未选择作品的团体占位",
+      "nextAction": "源表已确认是团体占位，不是9首已知歌曲丢失。保留稳定ID与历史；仅在owner选定具体作品并核原MV/语种/版本后走显式新增/关联流程，不凭同团已有歌猜填。"
+    },
+    {
+      "workId": "rec28ldfRTrHPm",
+      "groupId": "rec28ldfRTiE4q",
+      "group": "HITGS",
+      "originalRow": 95,
+      "reason": "源表明确为尚未选择作品的团体占位",
+      "nextAction": "源表已确认是团体占位，不是9首已知歌曲丢失。保留稳定ID与历史；仅在owner选定具体作品并核原MV/语种/版本后走显式新增/关联流程，不凭同团已有歌猜填。"
+    },
+    {
+      "workId": "rec28ldfRTrHT6",
+      "groupId": "rec28ldfRTiEaV",
+      "group": "AtHeart",
+      "originalRow": 96,
+      "reason": "源表明确为尚未选择作品的团体占位",
+      "nextAction": "源表已确认是团体占位，不是9首已知歌曲丢失。保留稳定ID与历史；仅在owner选定具体作品并核原MV/语种/版本后走显式新增/关联流程，不凭同团已有歌猜填。"
+    },
+    {
+      "workId": "rec28ldfRTrHmu",
+      "groupId": "rec28ldfRTiDxx",
+      "group": "Geenius",
+      "originalRow": 88,
+      "reason": "源表明确为尚未选择作品的团体占位",
+      "nextAction": "源表已确认是团体占位，不是9首已知歌曲丢失。保留稳定ID与历史；仅在owner选定具体作品并核原MV/语种/版本后走显式新增/关联流程，不凭同团已有歌猜填。"
+    },
+    {
+      "workId": "rec28ldfRTrHrQ",
+      "groupId": "rec28ldfRTiDBG",
+      "group": "TRACER",
+      "originalRow": 89,
+      "reason": "源表明确为尚未选择作品的团体占位",
+      "nextAction": "源表已确认是团体占位，不是9首已知歌曲丢失。保留稳定ID与历史；仅在owner选定具体作品并核原MV/语种/版本后走显式新增/关联流程，不凭同团已有歌猜填。"
+    },
+    {
+      "workId": "rec28ldfRTrHvz",
+      "groupId": "rec28ldfRTiDFM",
+      "group": "W!TCHX",
+      "originalRow": 90,
+      "reason": "源表明确为尚未选择作品的团体占位",
+      "nextAction": "源表已确认是团体占位，不是9首已知歌曲丢失。保留稳定ID与历史；仅在owner选定具体作品并核原MV/语种/版本后走显式新增/关联流程，不凭同团已有歌猜填。"
+    },
+    {
+      "workId": "rec28ldfRTrHzF",
+      "groupId": "rec28ldfRTiDJU",
+      "group": "SPIA",
+      "originalRow": 91,
+      "reason": "源表明确为尚未选择作品的团体占位",
+      "nextAction": "源表已确认是团体占位，不是9首已知歌曲丢失。保留稳定ID与历史；仅在owner选定具体作品并核原MV/语种/版本后走显式新增/关联流程，不凭同团已有歌猜填。"
+    }
+  ],
+  "timeline": [
+    {
+      "eventId": "e-atheart-aurora-hiatus-observed",
+      "slug": "atheart",
+      "title": "Aurora曾暂停活动（起始日未详）",
+      "canonicalReviewStatus": "hold",
+      "canonicalHoldReasons": [
+        "访谈中为记者背景陈述；尚缺公司原始暂停/恢复公告和起始日。"
+      ],
+      "reportedDisplayComplete": true,
+      "reportedKind": "report",
+      "reportedRecordDate": "2026-03-13",
+      "actualEventDate": null,
+      "displaySources": [
+        {
+          "url": "https://m.nocutnews.co.kr/news/amp/6484186",
+          "label": "CBS NoCut News · 原始访谈",
+          "publishedDate": "2026-03-13"
+        }
+      ],
+      "remainingEvidence": "Original initial notice and reliable publication evidence remain unread. An announcement date is not automatically the actual start of absence.",
+      "nextAction": "Read the exact official public post if normally accessible; retain unknown effective date.",
+      "lastBoundedResearchSources": [
+        {
+          "url": "https://x.com/titan_content/status/1940244098105188584",
+          "kind": "official-link-discovered",
+          "result": "Exact TITAN post located through cited references; direct request returned 403. References date it 2025-07-02, but primary content and date were not independently read."
+        },
+        {
+          "url": "https://atheartkpop.fandom.com/wiki/Aurora",
+          "kind": "lead-only",
+          "result": "Reference list identifies the official post; not adopted as primary announcement evidence."
+        },
+        {
+          "url": "https://atheart.me/news",
+          "kind": "official-index",
+          "result": "Current index read through 2026-10-20; target initial notice is not listed. This does not prove that no notice exists."
+        }
+      ]
+    },
+    {
+      "eventId": "e-atheart-aurora-second-hiatus-announcement",
+      "slug": "atheart",
+      "title": "公告线索：Aurora再次暂停团队活动",
+      "canonicalReviewStatus": "hold",
+      "canonicalHoldReasons": [
+        "原始公司声明尚未取得；仅二手公告转载。"
+      ],
+      "reportedDisplayComplete": true,
+      "reportedKind": "report",
+      "reportedRecordDate": "2026-08-18",
+      "actualEventDate": null,
+      "displaySources": [
+        {
+          "url": "https://www.soompi.com/article/1863734wpp/athearts-aurora-to-go-on-hiatus-due-to-health-just-2-months-after-return",
+          "label": "Soompi · 公告转载报道",
+          "publishedDate": "2026-08-18"
+        }
+      ],
+      "remainingEvidence": "No newly readable primary notice. Existing media statement remains secondary; medical detail was not copied.",
+      "nextAction": "Retain hold. A separately labelled media announcement could be considered without an actual effective date.",
+      "lastBoundedResearchSources": [
+        {
+          "url": "https://www.reddit.com/r/kpop/comments/1vrmpms/titan_entertainment_announced_that_athearts/",
+          "kind": "source-discovery-only",
+          "result": "Discussion links a source on X; link navigation returned Internal Error, and a normal direct Reddit request returned 403. No access bypass or repeated attempt."
+        },
+        {
+          "url": "https://atheart.me/news",
+          "kind": "official-index",
+          "result": "Readable current index still does not expose the requested second notice."
+        }
+      ]
+    },
+    {
+      "eventId": "e-bewave-six-member-phase-end-announcement",
+      "slug": "bewave",
+      "title": "公告线索：结束六人活动阶段并重整阵容",
+      "canonicalReviewStatus": "hold",
+      "canonicalHoldReasons": [
+        "只取得二手翻译正文；官方X原帖打开空白。",
+        "无独立原文证明计划实际生效；不填实际退团日，不把重整当解散或换公司。"
+      ],
+      "reportedDisplayComplete": true,
+      "reportedKind": "report",
+      "reportedRecordDate": "2025-09-04",
+      "actualEventDate": null,
+      "displaySources": [
+        {
+          "url": "https://isplus.com/article/view/isp202509040238",
+          "label": "日刊体育 · 公司声明报道",
+          "publishedDate": "2025-09-04"
+        }
+      ],
+      "remainingEvidence": "A planned 2025-10-31 six-member-phase ending does not prove the personnel changes actually occurred. Name-spelling issues cannot be used to bind IDs.",
+      "nextAction": "Keep announced/reported boundary; require an original statement or later direct confirmation for an actual transition.",
+      "lastBoundedResearchSources": [
+        {
+          "url": "https://news.nate.com/view/20250904n41722?mid=n0100",
+          "kind": "media-syndication",
+          "result": "Search still resolves to the existing 2025-09-04 announcement reproduction, not a later confirmation."
+        },
+        {
+          "url": "https://x.com/BEWAVE_official/status/1963527459069923774",
+          "kind": "previous-primary-link",
+          "result": "Previously inaccessible original post; not retried without new access evidence."
+        }
+      ]
+    },
+    {
+      "eventId": "e-candyshop-yuina-hiatus-announcement",
+      "slug": "candyshop",
+      "title": "公告候选：YUINA暂时停止团体活动",
+      "canonicalReviewStatus": "hold",
+      "canonicalHoldReasons": [
+        "已实际读到原声明图的转载，但缺原官方刊载位置与日期；媒体日期仅作线索，不提升ready。"
+      ],
+      "reportedDisplayComplete": true,
+      "reportedKind": "report",
+      "reportedRecordDate": "2024-05-09",
+      "actualEventDate": null,
+      "displaySources": [
+        {
+          "url": "https://www.starnewskorea.com/music/2024/05/09/2024050908033147420",
+          "label": "Star News · 公司声明报道",
+          "publishedDate": "2024-05-09"
+        }
+      ],
+      "remainingEvidence": "Official cafe publication URL/date evidence remains missing. Existing native media event already covers the report. Profile removal or personal social tags are not departure proof.",
+      "nextAction": "Keep hold and existing reported event, avoiding a duplicate. A usable original official post remains the useful missing input.",
+      "lastBoundedResearchSources": [
+        {
+          "url": "https://sports.donga.com/ent/article/all/20240509/124851118/1",
+          "kind": "additional-original-media-lead",
+          "result": "2024-05-09 company-statement report found in search; no new exact official cafe URL."
+        },
+        {
+          "url": "https://www.xportsnews.com/article/1856885",
+          "kind": "known-original-media",
+          "result": "Report refers to the official fan cafe but does not supply the needed original post location."
+        }
+      ]
+    },
+    {
+      "eventId": "e-geenius-spoiler-book-instrumental",
+      "slug": "geenius",
+      "title": "《Spoiler Book》器乐预公开载体候选",
+      "canonicalReviewStatus": "hold",
+      "canonicalHoldReasons": [
+        "2026-01-15仅为零售发行栏，缺公司实际发行原文。"
+      ],
+      "reportedDisplayComplete": true,
+      "reportedKind": "catalog",
+      "reportedRecordDate": "2026-01-15",
+      "actualEventDate": null,
+      "displaySources": [
+        {
+          "url": "https://www.yes24.com/product/goods/170657075",
+          "label": "YES24 · QR器乐产品目录",
+          "publishedDate": null
+        }
+      ],
+      "remainingEvidence": "No newly found HOMe/COPAN actual release announcement or authorised delivered audio. Retail/import dates must not be equated with global release.",
+      "nextAction": "A separately labelled retail-directory/QR instrumental item may be useful, while the original release claim remains on hold.",
+      "lastBoundedResearchSources": [
+        {
+          "url": "https://www.yes24.com/product/goods/170657075",
+          "kind": "retail-directory",
+          "result": "Still identifies Spoiler Book as an instrumental QR carrier; not first-party actual release confirmation."
+        },
+        {
+          "url": "https://www.musickorea.com/Product/Detail/view/pid/216995",
+          "kind": "retail-directory",
+          "result": "Same carrier appears in retail search; not independent confirmation of full vocal album release."
+        }
+      ]
+    },
+    {
+      "eventId": "e-udtt-jessica-provisional-join-candidate",
+      "slug": "udtt",
+      "title": "Jessica临时加入线索：待公司原公告",
+      "canonicalReviewStatus": "hold",
+      "canonicalHoldReasons": [
+        "非艺人或公司的人事原公告；加入生效日与永久/临时关系待核。"
+      ],
+      "reportedDisplayComplete": true,
+      "reportedKind": "report",
+      "reportedRecordDate": "2025-05-08",
+      "actualEventDate": null,
+      "displaySources": [
+        {
+          "url": "https://www.hellokpop.com/interview/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview/",
+          "label": "Hellokpop · 本人采访（2025-05-08）",
+          "publishedDate": "2025-05-08"
+        },
+        {
+          "url": "https://sports.donga.com/ent/article/all/20250509/131571164/1",
+          "label": "Sports Donga · 参与报道（2025-05-09）",
+          "publishedDate": "2025-05-09"
+        }
+      ],
+      "remainingEvidence": "Temporary/permanent nature and precise effective date remain unknown. Do not translate 유학생 as temporary member. Public-name equivalence does not authorize merging stable business records or their personal histories.",
+      "nextAction": "Consider source-backed alias/participation text only. Audit both records and personal-history conflicts separately before any requested merge.",
+      "lastBoundedResearchSources": [
+        {
+          "url": "https://www.hellokpop.com/interview/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview/",
+          "kind": "first-person-interview",
+          "publishedDate": "2025-05-08",
+          "result": "Read original interview: JESSICA self-identifies as Lu U-Ting / 陆雨婷 and gives stage name 우정. Editorial note says the interview was conducted just after she joined, without exact joining date or contract terms."
+        },
+        {
+          "url": "https://sports.donga.com/ent/article/all/20250509/131571164/1",
+          "kind": "new-named-original-media",
+          "publishedDate": "2025-05-09",
+          "result": "Read original reporting: 육우정(루위팅) participates as a 유학생 멤버 (student/exchange-student member). This public project role does not establish temporary or permanent contractual status."
+        },
+        {
+          "url": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=457660&id=&lang=k&menu_cate=",
+          "kind": "original-broadcaster-report",
+          "publishedDate": "2025-04-29",
+          "result": "Debut-day report lists the original four and says an unnamed Chinese student will participate in the debut stage. It does not itself name Jessica or establish a legal joining date."
+        }
+      ]
+    },
+    {
+      "eventId": "e-udtt-sena-predebut-departure-candidate",
+      "slug": "udtt",
+      "title": "Sena出道前退出线索：待公司原公告",
+      "canonicalReviewStatus": "hold",
+      "canonicalHoldReasons": [
+        "未取得公司或本人原始退出声明；主办方历史简介仅旁证。"
+      ],
+      "reportedDisplayComplete": true,
+      "reportedKind": "repost",
+      "reportedRecordDate": null,
+      "actualEventDate": null,
+      "displaySources": [
+        {
+          "url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+          "label": "KProfiles社区讨论 · 仅转载线索",
+          "publishedDate": null
+        }
+      ],
+      "remainingEvidence": "Original company notice location/date and provenance remain unavailable. Prior repost image does not independently close this requirement.",
+      "nextAction": "Retain hold; acquire the original public notice or date/account-bearing original publication evidence.",
+      "lastBoundedResearchSources": [
+        {
+          "url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+          "kind": "secondary-lead-only",
+          "result": "Search repeats the March 26 departure claim; no newly obtained original official notice or publication provenance."
+        }
+      ]
+    }
+  ],
+  "preservedFourAdoptedStages": [
+    {
+      "workId": "recvxyHuKM2wRG",
+      "videoId": "_rn2nefy610",
+      "stagePresent": true,
+      "runtimeStatus": "verified",
+      "preserved": true,
+      "fullPlaybackVerified": false,
+      "boundary": "用户已明确授权按来源资料采用；未完整播放是验证范围，不重新计入待匹配缺口。"
+    },
+    {
+      "workId": "recvxyHuKMCtUB",
+      "videoId": "crGAr4NQRa4",
+      "stagePresent": true,
+      "runtimeStatus": "verified",
+      "preserved": true,
+      "fullPlaybackVerified": false,
+      "boundary": "用户已明确授权按来源资料采用；未完整播放是验证范围，不重新计入待匹配缺口。"
+    },
+    {
+      "workId": "recvxDMFHNUJlD",
+      "videoId": "mf4X6i5cm_Q",
+      "stagePresent": true,
+      "runtimeStatus": "verified",
+      "preserved": true,
+      "fullPlaybackVerified": false,
+      "boundary": "用户已明确授权按来源资料采用；未完整播放是验证范围，不重新计入待匹配缺口。"
+    },
+    {
+      "workId": "recvxDMFHNSckK",
+      "videoId": "nd2aaJ9AQjA",
+      "stagePresent": true,
+      "runtimeStatus": "verified",
+      "preserved": true,
+      "fullPlaybackVerified": false,
+      "boundary": "用户已明确授权按来源资料采用；未完整播放是验证范围，不重新计入待匹配缺口。"
+    }
+  ],
+  "ownerScoreBoundary": "任何新正式绑定前，主任务需重新owner只读核对原舞台分值与save journal是否为空；已有分数但源未定则需用户选择精确视频，禁止迁移或借用。本审计不读取/储存私人值。先前四支授权不泛化给新候选。",
+  "nonContentItems": [
+    {
+      "category": "design_decision",
+      "item": "个人页统一排版",
+      "state": "待用户决定，不是新确认资料缺失",
+      "evidence": "docs/codex/member-page-layout-inventory-20261025.md",
+      "limit": "该338上下文/336详情统计为v7历史快照，不能作为v196仍缺2历史成员页的证据；本轮未重跑全部页面。"
+    },
+    {
+      "category": "verification_scope",
+      "item": "真实私人保存、全视频连续播放、80%/125%原生缩放、新Figma与全仓测试",
+      "state": "未验范围，不等于功能失败",
+      "evidence": "docs/codex/category-followup-v196-20261028.md"
+    },
+    {
+      "category": "historical_technical_issue",
+      "item": "历史SSR夹具及favicon404",
+      "state": "父级本轮复跑旧timeline-production套件9通过/43失败；favicon匿名HEAD403，无法确认历史浏览器404仍存在。",
+      "action": "按当前渲染器调整SSR夹具并保留事件/ID/来源/hold断言，逐一排除真实渲染问题；以正常浏览器分辨favicon应用404与中间层403。",
+      "evidence": [
+        "legacy-timeline-test.json",
+        "favicon-check.json"
+      ]
+    },
+    {
+      "category": "resolved_test_observation",
+      "item": "v196 fromis9两宽DOM重绘断开",
+      "state": "等待真实目录响应后已重验通过",
+      "action": "不计当前缺失。"
+    }
+  ]
+}

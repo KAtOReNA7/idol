@@ -1,0 +1,106 @@
+{
+  "base": "http://127.0.0.1:4261",
+  "browser": "Chromium/Chrome via Playwright; Browser plugin not available",
+  "fixture": "Public identity metadata with ratings, favorites, notes, watched states, private photos removed; no data writes",
+  "manifestSha256": "aad4dc844043713adfb98a846b8157db387d5d85ecabfb4950fda8d2eff6e69b",
+  "records": 1,
+  "portraits": 5,
+  "layouts": [
+    {
+      "workId": "rec28ldfRTrLwE",
+      "width": 390,
+      "images": 5,
+      "loaded": 5,
+      "ratioPass": true,
+      "overflow": false,
+      "frameworkOverlay": false,
+      "title": "stage. · 私人女团手帐",
+      "url": "http://127.0.0.1:4261/?view=works&work=rec28ldfRTrLwE"
+    },
+    {
+      "workId": "rec28ldfRTrLwE",
+      "width": 1440,
+      "images": 5,
+      "loaded": 5,
+      "ratioPass": true,
+      "overflow": false,
+      "frameworkOverlay": false,
+      "title": "stage. · 私人女团手帐",
+      "url": "http://127.0.0.1:4261/?view=works&work=rec28ldfRTrLwE"
+    }
+  ],
+  "flows": [
+    {
+      "kind": "original",
+      "workId": "rec28ldfRTrLwE",
+      "memberId": "rec28ldbniB7Nx",
+      "width": 390,
+      "src": "/artist/mv-identity-batch-q-20261027/identities/illit-a72f71dc23bd69.jpg",
+      "source": "https://weverse.io/illit/media/2-160176890",
+      "image": {
+        "src": "/artist/mv-identity-batch-q-20261027/identities/illit-a72f71dc23bd69.jpg",
+        "naturalWidth": 4500,
+        "naturalHeight": 3000,
+        "complete": true
+      },
+      "pass": true,
+      "closePassed": true
+    },
+    {
+      "kind": "original",
+      "workId": "rec28ldfRTrLwE",
+      "memberId": "rec28ldbniB7Vy",
+      "width": 390,
+      "src": "/artist/mv-identity-batch-q-20261027/identities/illit-a2908e9290470b.jpg",
+      "source": "https://weverse.io/illit/media/2-160176844",
+      "image": {
+        "src": "/artist/mv-identity-batch-q-20261027/identities/illit-a2908e9290470b.jpg",
+        "naturalWidth": 3283,
+        "naturalHeight": 2244,
+        "complete": true
+      },
+      "pass": true,
+      "closePassed": true
+    },
+    {
+      "kind": "member",
+      "workId": "rec28ldfRTrLwE",
+      "width": 390,
+      "memberId": "rec28ldbniB7Nx",
+      "url": "http://127.0.0.1:4261/artists/illit?section=members&member=rec28ldbniB7Nx",
+      "pass": true
+    }
+  ],
+  "timeline": [],
+  "failures": [],
+  "pageErrors": [],
+  "console": [],
+  "httpErrors": [],
+  "screenshots": [
+    {
+      "name": "cards-rec28ldfRTrLwE-390",
+      "path": "D:/porject/idol/.codex-local/category-qa/illit-special-film/cards-rec28ldfRTrLwE-390.png"
+    },
+    {
+      "name": "original-rec28ldfRTrLwE-0-390",
+      "path": "D:/porject/idol/.codex-local/category-qa/illit-special-film/original-rec28ldfRTrLwE-0-390.png"
+    },
+    {
+      "name": "original-rec28ldfRTrLwE-1-390",
+      "path": "D:/porject/idol/.codex-local/category-qa/illit-special-film/original-rec28ldfRTrLwE-1-390.png"
+    },
+    {
+      "name": "cards-rec28ldfRTrLwE-1440",
+      "path": "D:/porject/idol/.codex-local/category-qa/illit-special-film/cards-rec28ldfRTrLwE-1440.png"
+    }
+  ],
+  "manifestUnchanged": true,
+  "status": "passed",
+  "visualReview": "390 and 1440 screenshots inspected after explicit image.decode plus two animation frames; all five real crops painted, same series labels and source disclaimer visible. Initial capture before decode showed undecoded images despite naturalWidth; QA now waits for actual decode, no app change required.",
+  "untested": [
+    "full video playback",
+    "native browser zoom",
+    "private record saving",
+    "production v194 deployment"
+  ]
+}

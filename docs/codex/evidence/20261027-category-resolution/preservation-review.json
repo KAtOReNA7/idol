@@ -1,0 +1,549 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-27T15:01:18.487Z",
+  "reviewer": "timeline_gap_resolution independent preservation pass",
+  "baseline": "691695f026b24fc7285330b66de7fb272c31fb9d",
+  "head": "70813b45e28a9f82a7314ad4eb354f0f72ca78d4",
+  "scope": "Current Git workspace versus requested GitHub baseline; not a deployment or package validation.",
+  "permittedChanges": [
+    {
+      "path": "apps/idol-site/app/manage/layout.tsx",
+      "reason": "Preserve owner gate; use native login link with current return destination."
+    },
+    {
+      "path": "apps/idol-site/components/music-shell.tsx",
+      "reason": "Add login entry only for read-only navigation."
+    },
+    {
+      "path": "apps/idol-site/components/mv-identity-photo.css",
+      "reason": "Scoped transparent native-photo button and focus style; no existing rule replacement."
+    },
+    {
+      "path": "apps/idol-site/components/mv-identity-photo.tsx",
+      "reason": "Share existing image frame for public credits; precise native reference fallback plus preserved original-photo access."
+    },
+    {
+      "path": "apps/idol-site/components/public-work-credits.css",
+      "reason": "Scoped responsive recognition grid and frame/caption layout."
+    },
+    {
+      "path": "apps/idol-site/components/public-work-credits.tsx",
+      "reason": "Render public-credit recognition slots and explicit evidence boundary; member navigation retained."
+    },
+    {
+      "path": "apps/idol-site/components/site-sign-in-link.tsx",
+      "reason": "Native same-origin login anchor target=_top and current return_to."
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/genblue.json",
+      "reason": "Two sourced digital releases ready; original IDs retained."
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/ifeye.json",
+      "reason": "Two SASHA announcements ready; plan/effective dates kept distinct."
+    },
+    {
+      "path": "apps/idol-site/data/artist-timelines/rocketpunch.json",
+      "reason": "SUYUN public statement ready; actual contract date unknown."
+    },
+    {
+      "path": "apps/idol-site/data/genblue-bluecut.json",
+      "reason": "Append two native timeline release displays."
+    },
+    {
+      "path": "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "reason": "fromis9 sales lower bound +115009; three wins source conflict reviews without changing accepted wins."
+    },
+    {
+      "path": "apps/idol-site/data/ifeye-editorial.json",
+      "reason": "Update existing native announcement displays and sources, IDs retained."
+    },
+    {
+      "path": "apps/idol-site/data/production-asset-delivery.json",
+      "reason": "Append 11 complete originals, retain all 5981 old descriptors, update immutable delivery ref."
+    },
+    {
+      "path": "apps/idol-site/data/public-work-credits.json",
+      "reason": "Append 21 limited public-credit works; retain original 16 exactly."
+    },
+    {
+      "path": "apps/idol-site/data/public-work-metadata-completion.json",
+      "reason": "26 exact works/30 empty public metadata fields only."
+    },
+    {
+      "path": "apps/idol-site/data/public-work-recognition.json",
+      "reason": "37 public-credit works/239 read-only portrait references; no private relations."
+    },
+    {
+      "path": "apps/idol-site/data/reviewed-native-recognition.json",
+      "reason": "One exact native SUHYEON ZAP reference; original photo preserved."
+    },
+    {
+      "path": "apps/idol-site/data/rocketpunch-timeline-public.json",
+      "reason": "Add personal-statement evidence, preserve earlier company evidence."
+    },
+    {
+      "path": "apps/idol-site/data/stages/supplements.json",
+      "reason": "Six view-only supplements; no score binding."
+    },
+    {
+      "path": "apps/idol-site/evidence/category-resolution-20261027/genblue-oh-chinese.json",
+      "reason": "Public source/correction proof."
+    },
+    {
+      "path": "apps/idol-site/evidence/category-resolution-20261027/genblue-swing.json",
+      "reason": "Public source/correction proof."
+    },
+    {
+      "path": "apps/idol-site/evidence/category-resolution-20261027/native-timeline-corrections.json",
+      "reason": "Public source/correction proof."
+    },
+    {
+      "path": "apps/idol-site/evidence/category-resolution-20261027/sasha-june-update.json",
+      "reason": "Public source/correction proof."
+    },
+    {
+      "path": "apps/idol-site/evidence/category-resolution-20261027/sasha-june.json",
+      "reason": "Public source/correction proof."
+    },
+    {
+      "path": "apps/idol-site/evidence/category-resolution-20261027/sasha-march.json",
+      "reason": "Public source/correction proof."
+    },
+    {
+      "path": "apps/idol-site/evidence/category-resolution-20261027/suyun-weverse.json",
+      "reason": "Public source/correction proof."
+    },
+    {
+      "path": "apps/idol-site/evidence/category-resolution-20261027/timeline-corrections.json",
+      "reason": "Public source/correction proof."
+    },
+    {
+      "path": "apps/idol-site/lib/idol/public-work-recognition.ts",
+      "reason": "Only exact current public-credit member matches."
+    },
+    {
+      "path": "apps/idol-site/lib/idol/reviewed-native-recognition.ts",
+      "reason": "Exact work/video/member/native record/index guard."
+    },
+    {
+      "path": "apps/idol-site/lib/idol/reviewed-work-metadata.ts",
+      "reason": "Apply only empty public fields after exact work/group/video match."
+    },
+    {
+      "path": "apps/idol-site/public/artist/public-work-recognition-20261027/billlie-suhyeon-73c07ca63a99.jpg",
+      "reason": "New complete recognition original."
+    },
+    {
+      "path": "apps/idol-site/public/artist/public-work-recognition-20261027/girlset-camila-f17ece705f47.jpg",
+      "reason": "New complete recognition original."
+    },
+    {
+      "path": "apps/idol-site/public/artist/public-work-recognition-20261027/girlset-kendall-169c99cadaa3.jpg",
+      "reason": "New complete recognition original."
+    },
+    {
+      "path": "apps/idol-site/public/artist/public-work-recognition-20261027/girlset-lexi-1543506297d7.jpg",
+      "reason": "New complete recognition original."
+    },
+    {
+      "path": "apps/idol-site/public/artist/public-work-recognition-20261027/girlset-savanna-6c12e5d71ff4.jpg",
+      "reason": "New complete recognition original."
+    },
+    {
+      "path": "apps/idol-site/public/artist/public-work-recognition-20261027/katseye-daniela-aea127685841.jpg",
+      "reason": "New complete recognition original."
+    },
+    {
+      "path": "apps/idol-site/public/artist/public-work-recognition-20261027/katseye-lara-a67f34d1b630.jpg",
+      "reason": "New complete recognition original."
+    },
+    {
+      "path": "apps/idol-site/public/artist/public-work-recognition-20261027/katseye-manon-da7bff5d9bda.jpg",
+      "reason": "New complete recognition original."
+    },
+    {
+      "path": "apps/idol-site/public/artist/public-work-recognition-20261027/katseye-megan-4c35b2140736.jpg",
+      "reason": "New complete recognition original."
+    },
+    {
+      "path": "apps/idol-site/public/artist/public-work-recognition-20261027/katseye-sophia-14e199a22015.jpg",
+      "reason": "New complete recognition original."
+    },
+    {
+      "path": "apps/idol-site/public/artist/public-work-recognition-20261027/katseye-yoonchae-bf48ed5ee553.jpg",
+      "reason": "New complete recognition original."
+    },
+    {
+      "path": "apps/idol-site/tests/helpers/timeline-category-corrections.cjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/helpers/timeline-correction-chain.cjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/native-timeline-category-resolution.test.cjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/public-work-metadata-completion.test.cjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/public-work-recognition.test.cjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/reviewed-native-recognition.test.cjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/rocketpunch-review-boundary.test.mjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/sign-in-entry.test.cjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/stage-viewing-category-resolution.test.mjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/statistics-category-resolution.test.mjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/timeline-batch-f-adoption.test.cjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/timeline-category-resolution.test.cjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/timeline-correction-chain.test.cjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "apps/idol-site/tests/timeline-production.test.cjs",
+      "reason": "Focused evidence and preservation tests."
+    },
+    {
+      "path": "docs/codex/category-resolution-20261027.md",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/auth/diagnosis.md",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/browser/login-and-zap-style.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/browser/recognition-32.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/browser/recognition-35-increment.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/browser/recognition-37-increment.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/browser/summary.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/browser/timeline-native.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/browser/zap-recognition.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/focused-tests.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/metadata/video-date-research.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/source-sync.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/stages/additional-research.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/stages/search-refresh.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/stages/viewing-supplements-adoption.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/stages/viewing-supplements-verification.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/stages/watch-candidates.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/statistics/changes.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/statistics/verification.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/timeline/correction-bundle-reference.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/timeline/results.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/work-members/131-work-resolution-ledger.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/work-members/README.md",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/work-members/data-validation.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/work-members/new-public-credits-evidence.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/work-members/new-recognition-originals.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/work-members/pending-person-evidence-candidates.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/work-members/recognition-reuse-evidence.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/work-members/remaining-work-format-routes.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    },
+    {
+      "path": "docs/codex/evidence/20261027-category-resolution/work-members/suhyeon-zap-quality-candidate.json",
+      "reason": "Public task report / evidence / handoff documentation."
+    }
+  ],
+  "protectedChecks": {
+    "artistAndMainCss": {
+      "baselineFiles": 174,
+      "modified": [],
+      "unchanged": true
+    },
+    "snapshot": {
+      "baselineFiles": 4,
+      "modified": [],
+      "unchanged": true
+    },
+    "apiAndOwnerAuth": {
+      "baselineFiles": 29,
+      "modified": [],
+      "unchanged": true
+    },
+    "databaseAndHosting": {
+      "baselineFiles": 24,
+      "modified": [],
+      "unchanged": true
+    },
+    "personalDataLogic": {
+      "baselineFiles": 36,
+      "modified": [],
+      "unchanged": true
+    },
+    "existingPublicImages": {
+      "baselineFiles": 5991,
+      "modified": [],
+      "unchanged": true
+    }
+  },
+  "media": {
+    "portraits": 2828,
+    "covers": 628,
+    "baselineExactlyPreserved": true
+  },
+  "originals": {
+    "baselineAssets": 5981,
+    "currentAssets": 5992,
+    "oldDescriptorsExactlyPreserved": true,
+    "checkedFiles": 5992,
+    "checkedBytes": 3238206255,
+    "sha256AndBytesPassed": true,
+    "newFiles": [
+      {
+        "path": "/artist/public-work-recognition-20261027/billlie-suhyeon-73c07ca63a99.jpg",
+        "bytes": 76628,
+        "sha256": "73c07ca63a99529c0e24609a1f9d6e917b78d24d22b648683928a536de7fa6a3",
+        "mime": "image/jpeg",
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/public-work-recognition-20261027/girlset-camila-f17ece705f47.jpg",
+        "bytes": 755655,
+        "sha256": "f17ece705f47c17a54487f6a8e1ccf44f760808e7c5a8cd75d361663565c534a",
+        "mime": "image/jpeg",
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/public-work-recognition-20261027/girlset-kendall-169c99cadaa3.jpg",
+        "bytes": 702111,
+        "sha256": "169c99cadaa33ee87c138030b05d88c62867e9392fea13c2ba71aa153da6d7b6",
+        "mime": "image/jpeg",
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/public-work-recognition-20261027/girlset-lexi-1543506297d7.jpg",
+        "bytes": 871013,
+        "sha256": "1543506297d792048842370a06681d3d022f4aaee288aaa838c5cc0f82f90054",
+        "mime": "image/jpeg",
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/public-work-recognition-20261027/girlset-savanna-6c12e5d71ff4.jpg",
+        "bytes": 858781,
+        "sha256": "6c12e5d71ff46be56f67e5e15873f41ed93f4d833f02e5f6483324876c3263ab",
+        "mime": "image/jpeg",
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/public-work-recognition-20261027/katseye-daniela-aea127685841.jpg",
+        "bytes": 463616,
+        "sha256": "aea12768584182f049ecf401a8296c4e02d560dcde3909c77036f335331d80ad",
+        "mime": "image/jpeg",
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/public-work-recognition-20261027/katseye-lara-a67f34d1b630.jpg",
+        "bytes": 823200,
+        "sha256": "a67f34d1b630b73b1ee4950684930eaead16096b01081daedfd72a0b8df353c7",
+        "mime": "image/jpeg",
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/public-work-recognition-20261027/katseye-manon-da7bff5d9bda.jpg",
+        "bytes": 765614,
+        "sha256": "da7bff5d9bda92500896a6f11537d36cbff692170656b74039aca95f4fdf8768",
+        "mime": "image/jpeg",
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/public-work-recognition-20261027/katseye-megan-4c35b2140736.jpg",
+        "bytes": 427225,
+        "sha256": "4c35b21407366a1e9bbda19283866818dfbde3ad6f8a0c76433f56eb85bf0a54",
+        "mime": "image/jpeg",
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/public-work-recognition-20261027/katseye-sophia-14e199a22015.jpg",
+        "bytes": 760012,
+        "sha256": "14e199a22015c63cd08690acf6a638910f447d808081f484b5bcb86441657e00",
+        "mime": "image/jpeg",
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/public-work-recognition-20261027/katseye-yoonchae-bf48ed5ee553.jpg",
+        "bytes": 707285,
+        "sha256": "bf48ed5ee5536a403aa6e847c35fc91e3161873fbf1961c37a977978a6793709",
+        "mime": "image/jpeg",
+        "delivery": "remote"
+      }
+    ],
+    "beforeRef": "7ee8a2d16e53358302ab8000af66a550bbb921cc",
+    "afterRef": "775636115d881d799beac85eed474774a06251a5"
+  },
+  "recognition": {
+    "old16CreditsExactlyPreserved": true,
+    "currentWorks": 37,
+    "currentPortraits": 239,
+    "previous35Sha256": "e6bf585ead3a88cd0a98ac6fa7d00acb251390c7fcd485730faf05aea465cee5",
+    "previous35ReconstructedExactly": true,
+    "appendedWorks": [
+      "recvxyH5pzi1oo",
+      "recvxIZy35ZBcF"
+    ],
+    "appendedPortraits": 18,
+    "exactCreditMemberSets": true,
+    "noPrivateRelationWritePath": true
+  },
+  "statistics": {
+    "groupCount": 51,
+    "changedGroups": [
+      "fromis9",
+      "ive",
+      "lesserafim",
+      "newjeans"
+    ],
+    "fromis9Increment": 115009,
+    "fromis9Current": 1151613,
+    "unresolvedSourceDifferences": [
+      "triples.sales",
+      "fromis9.sales"
+    ],
+    "evidence": "statistics/changes.json",
+    "focusedTestsPassed": 3
+  },
+  "timeline": {
+    "canonicalProofSha256": "1159db653a3ead4c44c5ef1eb5286d611ff9bddc4137c7b047876b82cb15e673",
+    "nativeProofSha256": "d5350965ef15005c4c526a7deca4b0367e8e971e8183d44ec7a9b7c4f80a08db",
+    "events": 623,
+    "statusCounts": {
+      "ready": 616,
+      "hold": 7
+    },
+    "evidence": "timeline/results.json"
+  },
+  "metadata": {
+    "records": 26,
+    "emptyFieldsOnly": true,
+    "exactWorkGroupVideoGuard": true,
+    "personalValuesNeverReadFromEvidence": true
+  },
+  "login": {
+    "ownerAuthorizationFunctionUnchanged": true,
+    "manageGateRetained": true,
+    "readonlyLoginAffordanceOnly": true,
+    "returnToAndTopTargetBrowserVerified": true
+  },
+  "tests": {
+    "additionalIndependentFocused": 12,
+    "failed": 0,
+    "command": "node --test tests/public-work-recognition.test.cjs tests/statistics-category-resolution.test.mjs tests/public-work-metadata-completion.test.cjs tests/reviewed-native-recognition.test.cjs tests/sign-in-entry.test.cjs"
+  },
+  "limitations": [
+    "This checks workspace source and all listed local original bytes; does not read or mutate online private records.",
+    "Live storage/owner audience was not queried in this independent pass; source authorization and database paths are unchanged.",
+    "No package was inspected; waiting for a newly supplied package path.",
+    "Existing native SUHYEON photo local HTTP502 still needs online content verification."
+  ],
+  "result": "passed"
+}

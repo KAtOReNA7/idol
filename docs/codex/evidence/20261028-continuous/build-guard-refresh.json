@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-28T10:06:04.188034+00:00",
+  "reason": "Refresh only pinned data-file digest for three authorized reported records; fail-closed guard code and asset/renderer scope unchanged.",
+  "before": {
+    "bytes": 6230,
+    "sha256": "a0b7a4c7271cae3b8d16d349abc6cd1a34c8254ab1521e698b87ae13e5a4b051"
+  },
+  "after": {
+    "bytes": 7763,
+    "sha256": "ae427003d924133554ad90f73ff625ae64342acdfe9f15e90844a8027cf24139"
+  },
+  "changedReportedRecords": [
+    {
+      "slug": "bewave",
+      "eventId": "e-bewave-six-member-phase-end-announcement",
+      "fields": [
+        "notes",
+        "sources",
+        "summary"
+      ]
+    },
+    {
+      "slug": "candyshop",
+      "eventId": "e-candyshop-yuina-hiatus-announcement",
+      "fields": [
+        "notes",
+        "sources",
+        "summary"
+      ]
+    },
+    {
+      "slug": "geenius",
+      "eventId": "e-geenius-spoiler-book-instrumental",
+      "fields": [
+        "notes",
+        "sources",
+        "summary"
+      ]
+    }
+  ],
+  "allOtherManifestEntriesUnchanged": true,
+  "allGuardNamesUnchanged": true,
+  "udttRecordsUnchanged": true,
+  "failedPackageNotUploaded": true,
+  "firstArchivePreservedLocally": true
+}

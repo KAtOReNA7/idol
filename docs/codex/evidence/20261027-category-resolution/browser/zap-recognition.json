@@ -1,0 +1,121 @@
+{
+  "base": "http://127.0.0.1:4261",
+  "viewports": [
+    {
+      "width": 320,
+      "frame": {
+        "width": 250,
+        "height": 333.328125
+      },
+      "ratioPass": true,
+      "sourceCrop": {
+        "x": 0,
+        "y": 0,
+        "width": 699,
+        "height": 932
+      }
+    },
+    {
+      "width": 390,
+      "frame": {
+        "width": 320,
+        "height": 426.65625
+      },
+      "ratioPass": true,
+      "sourceCrop": {
+        "x": 0,
+        "y": 0,
+        "width": 699,
+        "height": 932
+      }
+    },
+    {
+      "width": 1440,
+      "frame": {
+        "width": 230,
+        "height": 306.65625
+      },
+      "ratioPass": true,
+      "sourceCrop": {
+        "x": 0,
+        "y": 0,
+        "width": 699,
+        "height": 932
+      }
+    }
+  ],
+  "flows": [
+    {
+      "kind": "new-original",
+      "width": 320,
+      "pass": true,
+      "image": {
+        "src": "/artist/public-work-recognition-20261027/billlie-suhyeon-73c07ca63a99.jpg",
+        "width": 700,
+        "height": 1050
+      }
+    },
+    {
+      "kind": "native-original",
+      "width": 320,
+      "urlGuardPassed": true,
+      "loaded": false,
+      "closePassed": true
+    },
+    {
+      "kind": "new-original",
+      "width": 390,
+      "pass": true,
+      "image": {
+        "src": "/artist/public-work-recognition-20261027/billlie-suhyeon-73c07ca63a99.jpg",
+        "width": 700,
+        "height": 1050
+      }
+    },
+    {
+      "kind": "native-original",
+      "width": 390,
+      "urlGuardPassed": true,
+      "loaded": false,
+      "closePassed": true
+    },
+    {
+      "kind": "new-original",
+      "width": 1440,
+      "pass": true,
+      "image": {
+        "src": "/artist/public-work-recognition-20261027/billlie-suhyeon-73c07ca63a99.jpg",
+        "width": 700,
+        "height": 1050
+      }
+    },
+    {
+      "kind": "native-original",
+      "width": 1440,
+      "urlGuardPassed": true,
+      "loaded": false,
+      "closePassed": true
+    }
+  ],
+  "pageErrors": [],
+  "nativeResponses": [
+    {
+      "status": 502,
+      "path": "/api/media",
+      "record": "recNative09b792d014994103aee212e8fbca9790"
+    },
+    {
+      "status": 502,
+      "path": "/api/media",
+      "record": "recNative09b792d014994103aee212e8fbca9790"
+    },
+    {
+      "status": 502,
+      "path": "/api/media",
+      "record": "recNative09b792d014994103aee212e8fbca9790"
+    }
+  ],
+  "writes": [],
+  "scope": "Read-only, one existing native recognition metadata retained; all scores, notes, favorites, memory and watched fields blank. Original native picture not screenshotted.",
+  "status": "passed_with_native_storage_unavailable"
+}

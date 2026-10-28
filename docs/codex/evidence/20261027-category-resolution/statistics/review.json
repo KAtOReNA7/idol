@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-27",
+  "baselineCommit": "691695f026b24fc7285330b66de7fb272c31fb9d",
+  "scope": "17 unknown metrics and 5 source differences; fresh targeted source research, not exhaustive internet proof",
+  "summary": {
+    "topics": 22,
+    "unknownBefore": 17,
+    "unknownAfter": 17,
+    "sourceDifferencesBefore": 5,
+    "sourceDifferencesAfter": 2,
+    "resolvedSourceDifferences": 3,
+    "updatedSalesMetrics": 1,
+    "fromis9AddedSalesLowerBound": 115009
+  },
+  "unknown": [
+    {
+      "key": "genblue.x",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "genblue",
+        "metric": "x",
+        "status": "unknown",
+        "url": "https://www.j-enta.com/en/artist/752/GENBLUE",
+        "reason": "0/0且无更新时间，视为数据库占位，不采用。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "先确认账号身份；读原主页或带观测日期的同账号统计，推荐卡/搜索摘要不采用。仍不可得则保留未知状态和用户要求的显示0。"
+      },
+      "followupSourceUrl": "https://www.twstalker.com/GENBLUE_ten",
+      "followupFinding": "Own-profile mirror shows 3K but no count refresh date; direct X blocked; Twitter followbutton endpoint returned empty body.",
+      "nextAction": "Dated same-account platform view or dated statistics export.",
+      "applied": false
+    },
+    {
+      "key": "vvup.x",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "vvup",
+        "metric": "x",
+        "status": "unknown",
+        "url": "https://x.com/VVUP_official",
+        "reason": "原站受限；推荐卡30K缺统计日期，不采用。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "先确认账号身份；读原主页或带观测日期的同账号统计，推荐卡/搜索摘要不采用。仍不可得则保留未知状态和用户要求的显示0。"
+      },
+      "followupSourceUrl": "https://www.twstalker.com/VVUP_official",
+      "followupFinding": "Own-profile unavailable; 30K recommendations lack observation date.",
+      "nextAction": "Dated VVUP_official count; do not reuse recommendation cards.",
+      "applied": false
+    },
+    {
+      "key": "vcha.x",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "vcha",
+        "metric": "x",
+        "status": "unknown",
+        "url": "https://ww.twstalker.com/GIRLSETofficial",
+        "reason": "28K缓存与38K推荐卡冲突，缺日期；不能转为VCHA历史人数。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "先确认账号身份；读原主页或带观测日期的同账号统计，推荐卡/搜索摘要不采用。仍不可得则保留未知状态和用户要求的显示0。"
+      },
+      "followupSourceUrl": "https://ww.twstalker.com/GIRLSETofficial",
+      "followupFinding": "28K and 38K caches have incompatible undated observations; GIRLSET is renamed account, not historical VCHA count.",
+      "nextAction": "Dated GIRLSETofficial count explicitly labelled GIRLSET.",
+      "applied": false
+    },
+    {
+      "key": "everglow.x",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "everglow",
+        "metric": "x",
+        "status": "unknown",
+        "url": "https://linktr.ee/everglow_offcl",
+        "reason": "新账号11K推荐卡无日期；旧账号统计不能移植。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "先确认账号身份；读原主页或带观测日期的同账号统计，推荐卡/搜索摘要不采用。仍不可得则保留未知状态和用户要求的显示0。"
+      },
+      "followupSourceUrl": "https://x.com/everglow_offcl",
+      "followupFinding": "Current account direct access blocked; 11K recommendation lacks metric date; old-company account cannot substitute.",
+      "nextAction": "Dated count for new everglow_offcl only.",
+      "applied": false
+    },
+    {
+      "key": "cherrybullet.x",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "cherrybullet",
+        "metric": "x",
+        "status": "unknown",
+        "url": "https://www.j-enta.com/en/artist/385/Cherry%2BBullet",
+        "reason": "0/0无日期为占位；186K/187K推荐卡冲突。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "先确认账号身份；读原主页或带观测日期的同账号统计，推荐卡/搜索摘要不采用。仍不可得则保留未知状态和用户要求的显示0。"
+      },
+      "followupSourceUrl": "https://www.twstalker.com/cherrybullet",
+      "followupFinding": "186K/187K recommendations disagree and lack observation date; social database zero is placeholder.",
+      "nextAction": "Dated direct account or verifiable archive screenshot.",
+      "applied": false
+    },
+    {
+      "key": "badvillain.sales",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "badvillain",
+        "metric": "sales",
+        "status": "unknown",
+        "url": "https://en.wikipedia.org/wiki/Overstep_(single_album)",
+        "reason": "二手单张5367并非全团累计；Circle周23/24原表未成功独立读取，暂不采用。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "建立实体发行清单，以Circle/Hanteo可读原表按发行/市场/周期去重汇总；只有局部证据时明确下限，不当全球总量。"
+      },
+      "followupSourceUrl": "https://en.wikipedia.org/wiki/Overstep_(single_album)",
+      "followupFinding": "5367 is a single-release secondary figure; Circle source chart rows not independently readable; Soridata0+ is not proven zero.",
+      "nextAction": "Readable Circle album rows, or explicitly scoped cumulative lower-bound source.",
+      "applied": false
+    },
+    {
+      "key": "vvup.sales",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "vvup",
+        "metric": "sales",
+        "status": "unknown",
+        "url": "https://shop.weverse.io/en/shop/USD/artists/181/notices/12244",
+        "reason": "VVON实体延期至2026-10-29，截至本轮尚未发行，不能填入已发生销量。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "建立实体发行清单，以Circle/Hanteo可读原表按发行/市场/周期去重汇总；只有局部证据时明确下限，不当全球总量。"
+      },
+      "followupSourceUrl": "https://weverse.io/vvup/notice",
+      "followupFinding": "Previously inspected VVON delay to2026-10-29 is later than audit date; shipment preorders do not prove sales. No newer numeric total obtained.",
+      "nextAction": "Confirm shipped release and cumulative chart evidence after launch.",
+      "applied": false
+    },
+    {
+      "key": "bewave.sales",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "bewave",
+        "metric": "sales",
+        "status": "unknown",
+        "url": "https://www.ktown4u.com/iteminfo?goods_no=112443",
+        "reason": "单店商品Sales12不代表韩国或全球累计。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "建立实体发行清单，以Circle/Hanteo可读原表按发行/市场/周期去重汇总；只有局部证据时明确下限，不当全球总量。"
+      },
+      "followupSourceUrl": "https://soridata.com/artists/BEWAVE.html",
+      "followupFinding": "Soridata0+ is no recorded sales; forum day61/week182 not independently sourced total.",
+      "nextAction": "Readable Hanteo/Circle release counts with date and metric.",
+      "applied": false
+    },
+    {
+      "key": "geenius.sales",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "geenius",
+        "metric": "sales",
+        "status": "unknown",
+        "url": "https://soridata.com/artists/Geenius.html",
+        "reason": "未取得可用累计；实体商品存在不代表累计数量。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "建立实体发行清单，以Circle/Hanteo可读原表按发行/市场/周期去重汇总；只有局部证据时明确下限，不当全球总量。"
+      },
+      "followupSourceUrl": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20260518",
+      "followupFinding": "Search candidate SpoilerBook(WITHVUU)217 refers to daily retail chart; original opens chart shell only. Not group lifetime or same Album Chart scope.",
+      "nextAction": "Read original dated row then decide a separate retail lower-bound metric without double counting.",
+      "applied": false
+    },
+    {
+      "key": "tracer.sales",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "tracer",
+        "metric": "sales",
+        "status": "unknown",
+        "url": null,
+        "reason": "搜索混入同名OST，无法可靠归属；未知继续保留。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "建立实体发行清单，以Circle/Hanteo可读原表按发行/市场/周期去重汇总；只有局部证据时明确下限，不当全球总量。"
+      },
+      "followupSourceUrl": "https://kpopping.com/profiles/group/tracer",
+      "followupFinding": "Korean album-sales searches are dominated by homonyms; no traceable group total found.",
+      "nextAction": "Release-specific official chart or distributor shipment evidence.",
+      "applied": false
+    },
+    {
+      "key": "witchx.sales",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "witchx",
+        "metric": "sales",
+        "status": "unknown",
+        "url": "https://soridata.com/artists/W-TCHX.html",
+        "reason": "Physical Sales 0+为数据库下限，不能认定真实0。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "建立实体发行清单，以Circle/Hanteo可读原表按发行/市场/周期去重汇总；只有局部证据时明确下限，不当全球总量。"
+      },
+      "followupSourceUrl": "https://www.kpopalbums.com/products/witchx-run-baby-run-ready-set-run-photobook-random-version",
+      "followupFinding": "Physical product exists, but retailer listing provides no cumulative group number; Soridata0+ cannot prove no sales.",
+      "nextAction": "Dated distributor/chart counts for Run Baby Run editions.",
+      "applied": false
+    },
+    {
+      "key": "spia.sales",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "spia",
+        "metric": "sales",
+        "status": "unknown",
+        "url": "https://www.genie.co.kr/detail/albumInfo?axnm=85265735",
+        "reason": "数字发行页面不能证明全团实体销量为0。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "建立实体发行清单，以Circle/Hanteo可读原表按发行/市场/周期去重汇总；只有局部证据时明确下限，不当全球总量。"
+      },
+      "followupSourceUrl": "https://soridata.com/artists/SPIA.html",
+      "followupFinding": "Korean first-week sales searches yielded no adopted quantity; retained database lacks count evidence.",
+      "nextAction": "Dated release-level chart row or distributor statement.",
+      "applied": false
+    },
+    {
+      "key": "udtt.sales",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "udtt",
+        "metric": "sales",
+        "status": "unknown",
+        "url": "https://www.ktown4u.com/iteminfo?goods_no=136597",
+        "reason": "School Rush单店17、VIPER单店3，不是全渠道累计；后者goods_no=165334，日期不明。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "建立实体发行清单，以Circle/Hanteo可读原表按发行/市场/周期去重汇总；只有局部证据时明确下限，不当全球总量。"
+      },
+      "followupSourceUrl": "https://star.ytn.co.kr/_sn/0117_202505271743475904",
+      "followupFinding": "Sold-out report has no number. Retailer single-store17/3 or points60 are not total sales; aimcontents has inconsistent debut/agency/member fields and is rejected.",
+      "nextAction": "Quantity-bearing publisher/distributor statement or chart row.",
+      "applied": false
+    },
+    {
+      "key": "vcha.sales",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "vcha",
+        "metric": "sales",
+        "status": "unknown",
+        "url": null,
+        "reason": "不得将GIRLSET后续发行销量转归VCHA历史品牌；无可用累计。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "建立实体发行清单，以Circle/Hanteo可读原表按发行/市场/周期去重汇总；只有局部证据时明确下限，不当全球总量。"
+      },
+      "followupSourceUrl": "https://kpopping.com/profiles/group/GIRLSET",
+      "followupFinding": "JYP reports mentioning NiziU500K cannot be attributed to VCHA; fabricated fandom discography200K rejected; no original cumulative figure found.",
+      "nextAction": "Dated VCHA release-specific chart data, separate from GIRLSET/NiziU.",
+      "applied": false
+    },
+    {
+      "key": "genblue.wins",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "genblue",
+        "metric": "wins",
+        "status": "unknown",
+        "url": "https://www.kpopdb.net/en/artist/696/song.php?a=752&s=2840",
+        "reason": "ACT LIKE THAT单曲明确0次，2025-03-11 THE SHOW第二/3351分；不是全团总计。纠正旧报告空表说法。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "按节目/日期/歌曲逐项核对官方获奖记录；排名榜缺席或单首歌曲0不证明全团0。"
+      },
+      "followupSourceUrl": "https://www.kpopdb.net/",
+      "followupFinding": "Search first-win headlines name other winners and GENBLUE as performer. Per-song0 does not prove lifetime0.",
+      "nextAction": "Artist-level explicit0 with scope/date or exhaustive dated programme result inventory.",
+      "applied": false
+    },
+    {
+      "key": "tracer.wins",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "tracer",
+        "metric": "wins",
+        "status": "unknown",
+        "url": null,
+        "reason": "First Win TBA未给完整累计，不以未找到一位推定确认0。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "按节目/日期/歌曲逐项核对官方获奖记录；排名榜缺席或单首歌曲0不证明全团0。"
+      },
+      "followupSourceUrl": "https://kpopping.com/profiles/group/tracer",
+      "followupFinding": "Page explicitly incomplete; absence of a win module cannot prove0.",
+      "nextAction": "Explicit artist-level zero or full programme results across active period.",
+      "applied": false
+    },
+    {
+      "key": "vcha.wins",
+      "status": "open-evidence-required",
+      "checkedAt": "2026-10-27",
+      "previousAudit": {
+        "group": "vcha",
+        "metric": "wins",
+        "status": "unknown",
+        "url": null,
+        "reason": "旧讨论没有全时期音乐节目累计证据，继续未知。",
+        "checkedAt": "2026-10-27",
+        "nextAction": "按节目/日期/歌曲逐项核对官方获奖记录；排名榜缺席或单首歌曲0不证明全团0。"
+      },
+      "followupSourceUrl": "https://kpopping.com/profiles/group/VCHA",
+      "followupFinding": "Redirects to GIRLSET with FirstWinTBA; does not independently verify all historical VCHA years.",
+      "nextAction": "Explicit historical VCHA total or exhaustive result inventory; do not infer from renamed profile.",
+      "applied": false
+    }
+  ],
+  "sourceDifferences": [
+    {
+      "key": "triples.sales",
+      "checkedAt": "2026-10-27",
+      "review": {
+        "status": "open",
+        "reason": "Monthly36 rows still sum2087073, aggregate2458789; yearly corrections/coverage differ but exact residual not reconstructed.",
+        "methodologyUrl": "https://soridata.com/transparency.html",
+        "sourceUrl": "https://soridata.com/sales/TripleS.html"
+      },
+      "applied": false
+    },
+    {
+      "key": "fromis9.sales",
+      "checkedAt": "2026-10-27",
+      "review": {
+        "checkedAt": "2026-10-27",
+        "status": "partially-resolved",
+        "previousMonthlySum": 1036604,
+        "addedMonthlySales": 115009,
+        "aggregateTotal": 1152076,
+        "remainingDifference": 463,
+        "aggregateUrl": "https://soridata.com/artists/fromis-9.html",
+        "methodologyUrl": "https://soridata.com/transparency.html",
+        "reason": "Monthly and yearly totals can differ due to returns and chart coverage. Exact residual not yet reconstructed."
+      },
+      "applied": true
+    },
+    {
+      "key": "lesserafim.wins",
+      "checkedAt": "2026-10-27",
+      "review": {
+        "checkedAt": "2026-10-27",
+        "status": "resolved-scope",
+        "comparisonTotal": 39,
+        "excludedCount": 2,
+        "acceptedTotal": 37,
+        "excludedComparisonEntries": [
+          {
+            "date": "2026-06-25",
+            "show": "M Countdown",
+            "episode": 934,
+            "song": "ICONIC BY MISTAKE",
+            "artist": "LE SSERAFIM x ILLIT x KATSEYE",
+            "sourceUrl": "https://kpopping.com/musicshows/m-countdown-ep934"
+          },
+          {
+            "date": "2026-07-09",
+            "show": "M Countdown",
+            "episode": 936,
+            "song": "ICONIC BY MISTAKE",
+            "artist": "LE SSERAFIM x ILLIT x KATSEYE",
+            "sourceUrl": "https://kpopping.com/musicshows/m-countdown-ep936"
+          }
+        ],
+        "independentlyVerifiedAwards": false
+      },
+      "applied": true
+    },
+    {
+      "key": "newjeans.wins",
+      "checkedAt": "2026-10-27",
+      "review": {
+        "checkedAt": "2026-10-27",
+        "status": "resolved-source-adjudication",
+        "comparisonTotal": 36,
+        "acceptedTotal": 35,
+        "song": "Super Shy",
+        "comparisonSongOrdinal": 7,
+        "acceptedSongCount": 6,
+        "events": [
+          {
+            "date": "2023-07-13",
+            "show": "M Countdown"
+          },
+          {
+            "date": "2023-07-22",
+            "show": "Music Core"
+          },
+          {
+            "date": "2023-07-23",
+            "show": "Inkigayo"
+          },
+          {
+            "date": "2023-08-16",
+            "show": "Show Champion"
+          },
+          {
+            "date": "2023-08-20",
+            "show": "Inkigayo"
+          },
+          {
+            "date": "2023-08-27",
+            "show": "Inkigayo"
+          }
+        ],
+        "eventListUrl": "https://www.kpopdb.net/en/artist/665/song.php?a=575&s=2397",
+        "contemporaryReportUrl": "https://www.soompi.com/article/1609582wpp/watch-newjeans-takes-6th-win-and-triple-crown-for-super-shy-on-inkigayo-performances-by-riize-twices-jihyo-itzy-and-more",
+        "limitation": "The conflicting ordinal is rejected; an additional valid seventh event was not found. External source remains unchanged."
+      },
+      "applied": true
+    },
+    {
+      "key": "ive.wins",
+      "checkedAt": "2026-10-27",
+      "review": {
+        "checkedAt": "2026-10-27",
+        "status": "resolved-source-adjudication",
+        "comparisonTotal": 82,
+        "acceptedTotal": 83,
+        "missingComparisonEvent": "2026-03-07/Music Core",
+        "misattributedComparisonEvent": "2026-03-06/Music Bank: BLACKHOLE instead of BANG BANG",
+        "events": [
+          {
+            "date": "2026-03-06",
+            "show": "Music Bank",
+            "song": "BANG BANG",
+            "ordinal": 5,
+            "points": 8840,
+            "sourceUrl": "https://www.soompi.com/article/1823390wpp/watch-ive-takes-5th-win-for-bang-bang-on-music-bank-performances-by-hearts2hearts-everglow-and-more"
+          },
+          {
+            "date": "2026-03-07",
+            "show": "Music Core",
+            "song": "BANG BANG",
+            "ordinal": 6,
+            "points": 7205,
+            "sourceUrl": "https://www.soompi.com/article/1823524wpp/watch-ive-takes-6th-win-for-bang-bang-on-music-core-performances-by-woodz-hearts2hearts-kiiikiii-and-more"
+          },
+          {
+            "date": "2026-03-13",
+            "show": "Music Bank",
+            "song": "BANG BANG",
+            "ordinal": 8,
+            "points": 4405,
+            "sourceUrl": "https://www.soompi.com/article/1824877wpp/watch-ive-takes-8th-win-and-triple-crown-for-bang-bang-on-music-bank-performances-by-onew-kickflip-and-more"
+          }
+        ]
+      },
+      "applied": true
+    }
+  ],
+  "decisionNeeded": "If user has dated platform screenshots/export or quantity-bearing distributor evidence, provide them. Without evidence leave unknown0 distinct from confirmed zero. No payment/access changes required.",
+  "publication": "Local candidate only; parent owns GitHub commit and formal deployment separately."
+}

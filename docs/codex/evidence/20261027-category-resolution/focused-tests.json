@@ -1,0 +1,23 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "tests/public-work-metadata-completion.test.cjs",
+    "tests/public-work-recognition.test.cjs",
+    "tests/reviewed-native-recognition.test.cjs",
+    "tests/public-video-dates.test.cjs",
+    "tests/mv-public-media.test.cjs",
+    "tests/group-information.test.mjs",
+    "tests/statistics-category-resolution.test.mjs",
+    "tests/timeline-category-resolution.test.cjs",
+    "tests/timeline-correction-chain.test.cjs",
+    "tests/timeline-batch-f-adoption.test.cjs",
+    "tests/native-timeline-category-resolution.test.cjs",
+    "tests/rocketpunch-review-boundary.test.mjs",
+    "tests/stage-viewing-category-resolution.test.mjs",
+    "tests/sign-in-entry.test.cjs",
+    "tests/public-asset-delivery.test.cjs"
+  ],
+  "exitCode": 0,
+  "outputTail": "lared whitelist expansion (42.7263ms)\n✔ correction fails closed: another event changed (59.4452ms)\n✔ correction fails closed: incorrect release day (42.4146ms)\n✔ correction fails closed: work record link drift (46.8196ms)\n✔ correction fails closed: work proof drift (52.0884ms)\n✔ correction fails closed: snapshot video identity drift (44.2209ms)\n✔ correction fails closed: snapshot official title drift (42.5011ms)\n✔ correction fails closed: snapshot group identity drift (48.9294ms)\n✔ correction fails closed: snapshot duplicate work (43.6944ms)\n✔ correction fails closed: missing BADVILLAIN correction (40.4235ms)\n✔ correction fails closed: BADVILLAIN incorrect release date (53.1478ms)\n✔ correction fails closed: BADVILLAIN changed original source (44.8217ms)\n✔ correction fails closed: BADVILLAIN changed member association (43.8425ms)\n✔ correction fails closed: BADVILLAIN missing new evidence (50.8459ms)\n✔ correction fails closed: BADVILLAIN changed historical hash (46.4514ms)\n✔ category correction fails closed: missing fixed category bundle (46.7009ms)\n✔ category correction fails closed: category bundle changed even with recomputed internal hashes (53.6506ms)\n✔ category correction fails closed: SUYUN announcement treated as effective contract date (48.37ms)\n✔ category correction fails closed: SASHA resumption plan treated as confirmed participation (47.3765ms)\n✔ category correction fails closed: SASHA planned date copied into actual date (55.6566ms)\n✔ category correction fails closed: GENBLUE inferred member association (49.7458ms)\n✔ category correction fails closed: GENBLUE Chinese version replaced by video upload date (49.2516ms)\n✔ category correction fails closed: Mnet public-body proof missing (55.739ms)\n✔ category correction fails closed: audio delivery proof changed (48.9339ms)\n✔ category correction fails closed: category unrelated gap erased (50.2233ms)\n✔ correction fails closed: missing MADEIN correction (46.0691ms)\n✔ correction fails closed: MADEIN unexpected review promotion (53.1498ms)\n✔ correction fails closed: MADEIN inferred physical release (44.9388ms)\n✔ correction fails closed: MADEIN replaced original work identity (53.308ms)\n✔ correction fails closed: MADEIN missing distribution evidence (46.1313ms)\n✔ correction fails closed: MADEIN modified distribution evidence (45.7731ms)\n✔ correction fails closed: MADEIN unrecorded extra event (55.7542ms)\nℹ tests 109\nℹ suites 0\nℹ pass 109\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 5077.4131\n"
+}

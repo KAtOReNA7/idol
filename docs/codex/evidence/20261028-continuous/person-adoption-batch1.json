@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-28T08:35:34.716225+00:00",
+  "status": "locally_imported_tests_passed_pending_root_release",
+  "authorization": "Parent approved exact two-work scope; no other application files edited.",
+  "baseline": {
+    "publicCreditWorks": 45,
+    "recognitionSlots": 279,
+    "uniqueOriginals": 128,
+    "absenceRules": 6,
+    "creditRecordsJsonSha256": "0923faf98f4372408d06a08f69b19221b47624f8b6c64ae16cbaad4e7d341214",
+    "recognitionRecordsJsonSha256": "13fc9cfbe7d1aa58bf7fc4bd9ba1863be94f6358773b9a31fd1679e20d9d042f"
+  },
+  "after": {
+    "publicCreditWorks": 47,
+    "recognitionSlots": 292,
+    "uniqueOriginals": 134,
+    "absenceRules": 6,
+    "personEvidenceUnion": 52,
+    "remainingPersonWorks": 79
+  },
+  "items": [
+    {
+      "workId": "recvxDMFHNSckK",
+      "videoId": "c5Fc6r4A9d8",
+      "groupId": "recvxDKdOtKdWD",
+      "memberIds": [
+        "recvxDM2kSglhG",
+        "recvxDM9ZFQUqc",
+        "recvxDM9ZFX1WW",
+        "recvxDM9ZF3RF2",
+        "recvxDM9ZF8TqH",
+        "recvxDM9ZFSz4m",
+        "recvxDM9ZFF60Q"
+      ],
+      "kind": "documented_project_lineup",
+      "sources": [
+        {
+          "url": "https://xgalx.com/en/xg/news/detail.php?id=1124983",
+          "publisher": "XGALX",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:31:08.509659+00:00",
+          "facts": [
+            "Official MV announcement dated 2025-05-14.",
+            "Ordinary public HTTP GET returned 200; iframe src is //www.youtube.com/embed/c5Fc6r4A9d8."
+          ],
+          "scope": "exact_video_identity",
+          "httpStatus": 200,
+          "pageSha256": "417ffaed39b75f90a7f25aabe690ba23bae9526ed7e0ca794e916f8124a162a5"
+        },
+        {
+          "url": "https://billboardphilippines.com/music/features/xg-on-completing-their-first-world-tour-and-performing-at-coachella-interview-million-places-new-single-may-2025-xgalx/",
+          "publisher": "Billboard Philippines; direct artist interview",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:31:08.509659+00:00",
+          "facts": [
+            "Interview explicitly discusses the new single MILLION PLACES and names JURIN, CHISA, HINATA, HARVEY, JURIA, MAYA and COCONA.",
+            "CHISA discusses recording the single; JURIA describes the seven-member project."
+          ],
+          "scope": "named_release_interview",
+          "caveat": "One body line says May 14, 2024, conflicting with the official 2025 release. This date is not adopted."
+        },
+        {
+          "url": "https://hollywoodreporter.jp/interviews/123522/",
+          "publisher": "The Hollywood Reporter Japan; authorized translation of its artist interview",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:31:08.509659+00:00",
+          "facts": [
+            "Names the seven members and discusses MILLION PLACES with named member responses."
+          ],
+          "scope": "corroborating_release_interview",
+          "caveat": "Japanese translation/abridgment, not a second original language transcript; original English page redirected to Tollbit and was not read."
+        }
+      ],
+      "referenceReuse": [
+        {
+          "memberId": "recvxDM2kSglhG",
+          "stageName": "JURIN",
+          "reusedFromWorkId": "recvxDMFHNJME3",
+          "originalManifestRecord": {
+            "workId": "recvxDMFHNJME3",
+            "videoId": "BydbhAzmAzg",
+            "memberId": "recvxDM2kSglhG",
+            "src": "/artist/mv-identity-batch-t-20261027/identities/xg-7ca88ca2cb68b7.jpg",
+            "width": 3277,
+            "height": 4096,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/XGOfficial_/status/1896849597189804391",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 102,
+              "y": 0,
+              "width": 3072,
+              "height": 4096
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "xg-is-this-love-official-release-visual"
+          },
+          "sha256": "7ca88ca2cb68b7b5367843a0bd2ca2e5a8559f98d0e0f0128297324f85792287",
+          "bytes": 902596,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-t/ledger.json",
+          "sourceImageUrl": null,
+          "sourceNameEvidence": "#JURIN\n\nXG\nIS THIS LOVE\n2025.03.07 Fri\n\n#XG #ISTHISLOVE\n#XG_ISTHISLOVE\n#XGALX",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        },
+        {
+          "memberId": "recvxDM9ZFQUqc",
+          "stageName": "CHISA",
+          "reusedFromWorkId": "recvxDMFHNJME3",
+          "originalManifestRecord": {
+            "workId": "recvxDMFHNJME3",
+            "videoId": "BydbhAzmAzg",
+            "memberId": "recvxDM9ZFQUqc",
+            "src": "/artist/mv-identity-batch-t-20261027/identities/xg-fb153277be7192.jpg",
+            "width": 3276,
+            "height": 4096,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/XGOfficial_/status/1896849345774793160",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 102,
+              "y": 0,
+              "width": 3072,
+              "height": 4096
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "xg-is-this-love-official-release-visual"
+          },
+          "sha256": "fb153277be71922e38cabd596264d92937cba845de16521c1347db81c91bad36",
+          "bytes": 931783,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-t/ledger.json",
+          "sourceImageUrl": null,
+          "sourceNameEvidence": "#CHISA\n\nXG\nIS THIS LOVE\n2025.03.07 Fri\n\n#XG #ISTHISLOVE\n#XG_ISTHISLOVE\n#XGALX",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        },
+        {
+          "memberId": "recvxDM9ZFX1WW",
+          "stageName": "HINATA",
+          "reusedFromWorkId": "recvxDMFHNJME3",
+          "originalManifestRecord": {
+            "workId": "recvxDMFHNJME3",
+            "videoId": "BydbhAzmAzg",
+            "memberId": "recvxDM9ZFX1WW",
+            "src": "/artist/mv-identity-batch-t-20261027/identities/xg-196bce6da9657e.jpg",
+            "width": 3277,
+            "height": 4096,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/XGOfficial_/status/1896849094330433954",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 102,
+              "y": 0,
+              "width": 3072,
+              "height": 4096
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "xg-is-this-love-official-release-visual"
+          },
+          "sha256": "196bce6da9657edd776e5210bd72963b9448c144346a34121d20cac850799671",
+          "bytes": 1364047,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-t/ledger.json",
+          "sourceImageUrl": null,
+          "sourceNameEvidence": "#HINATA\n\nXG\nIS THIS LOVE\n2025.03.07 Fri\n\n#XG #ISTHISLOVE\n#XG_ISTHISLOVE\n#XGALX",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        },
+        {
+          "memberId": "recvxDM9ZF3RF2",
+          "stageName": "HARVEY",
+          "reusedFromWorkId": "recvxDMFHNJME3",
+          "originalManifestRecord": {
+            "workId": "recvxDMFHNJME3",
+            "videoId": "BydbhAzmAzg",
+            "memberId": "recvxDM9ZF3RF2",
+            "src": "/artist/mv-identity-batch-t-20261027/identities/xg-0a7d6990454a8b.jpg",
+            "width": 3277,
+            "height": 4096,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/XGOfficial_/status/1896848842886467742",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 102,
+              "y": 0,
+              "width": 3072,
+              "height": 4096
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "xg-is-this-love-official-release-visual"
+          },
+          "sha256": "0a7d6990454a8b00511ba73d16da2b5feab5a06a367ccffbbd085d9f4d4702d8",
+          "bytes": 995609,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-t/ledger.json",
+          "sourceImageUrl": null,
+          "sourceNameEvidence": "#HARVEY\n\nXG\nIS THIS LOVE\n2025.03.07 Fri\n\n#XG #ISTHISLOVE\n#XG_ISTHISLOVE\n#XGALX",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        },
+        {
+          "memberId": "recvxDM9ZF8TqH",
+          "stageName": "JURIA",
+          "reusedFromWorkId": "recvxDMFHNJME3",
+          "originalManifestRecord": {
+            "workId": "recvxDMFHNJME3",
+            "videoId": "BydbhAzmAzg",
+            "memberId": "recvxDM9ZF8TqH",
+            "src": "/artist/mv-identity-batch-t-20261027/identities/xg-fd0cb48025b0bb.jpg",
+            "width": 3277,
+            "height": 4096,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/XGOfficial_/status/1896848590708056431",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 102,
+              "y": 0,
+              "width": 3072,
+              "height": 4096
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "xg-is-this-love-official-release-visual"
+          },
+          "sha256": "fd0cb48025b0bb1d79d6558954ea865c20bd70a25bdc1d9848cfb0bebda97900",
+          "bytes": 1099762,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-t/ledger.json",
+          "sourceImageUrl": null,
+          "sourceNameEvidence": "#JURIA\n\nXG\nIS THIS LOVE\n2025.03.07 Fri\n\n#XG #ISTHISLOVE\n#XG_ISTHISLOVE\n#XGALX",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        },
+        {
+          "memberId": "recvxDM9ZFSz4m",
+          "stageName": "MAYA",
+          "reusedFromWorkId": "recvxDMFHNJME3",
+          "originalManifestRecord": {
+            "workId": "recvxDMFHNJME3",
+            "videoId": "BydbhAzmAzg",
+            "memberId": "recvxDM9ZFSz4m",
+            "src": "/artist/mv-identity-batch-t-20261027/identities/xg-9d4974a049b382.jpg",
+            "width": 3277,
+            "height": 4096,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/XGOfficial_/status/1896848339171430503",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 102,
+              "y": 0,
+              "width": 3072,
+              "height": 4096
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "xg-is-this-love-official-release-visual"
+          },
+          "sha256": "9d4974a049b382f047b39e6c0569cdaa8ebce942f478a807272345ddda92cc2e",
+          "bytes": 850123,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-t/ledger.json",
+          "sourceImageUrl": null,
+          "sourceNameEvidence": "#MAYA\n\nXG\nIS THIS LOVE\n2025.03.07 Fri\n\n#XG #ISTHISLOVE\n#XG_ISTHISLOVE\n#XGALX",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        },
+        {
+          "memberId": "recvxDM9ZFF60Q",
+          "stageName": "COCONA",
+          "reusedFromWorkId": "recvxDMFHNJME3",
+          "originalManifestRecord": {
+            "workId": "recvxDMFHNJME3",
+            "videoId": "BydbhAzmAzg",
+            "memberId": "recvxDM9ZFF60Q",
+            "src": "/artist/mv-identity-batch-t-20261027/identities/xg-7143b158f4197a.jpg",
+            "width": 3277,
+            "height": 4096,
+            "label": "同系列概念照 · 认人参考",
+            "sourceUrl": "https://x.com/XGOfficial_/status/1896848092823175384",
+            "objectPosition": "50% 0%",
+            "sourceCrop": {
+              "x": 102,
+              "y": 0,
+              "width": 3072,
+              "height": 4096
+            },
+            "photoKind": "concept_photo",
+            "photoSetId": "xg-is-this-love-official-release-visual"
+          },
+          "sha256": "7143b158f4197a313fb44700e75381c5f0bf58a8ddf962460d914c878b66c01a",
+          "bytes": 1047781,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/reports/20261027-gap-t/ledger.json",
+          "sourceImageUrl": null,
+          "sourceNameEvidence": "#COCONA\n\nXG\nIS THIS LOVE\n2025.03.07 Fri\n\n#XG #ISTHISLOVE\n#XG_ISTHISLOVE\n#XGALX",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        }
+      ]
+    },
+    {
+      "workId": "recvxIZLjZmGMf",
+      "videoId": "o5EdYwk8k9o",
+      "groupId": "rec28ldfRTiCKv",
+      "memberIds": [
+        "recvxAPQCFWGjX",
+        "recvxAPQCFlVPw",
+        "recvxAPQCFSVcE",
+        "recvxAPQCFknfS",
+        "recvxAPQCFaXuH",
+        "recvxAPQCFvZsO"
+      ],
+      "kind": "partial_mv_participation",
+      "sources": [
+        {
+          "url": "https://www.playmusic.tw/column_info.php?id=28418&type=news",
+          "publisher": "PlayMusic; editorial article, information and photos supplied by Sky Entertainment",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:31:08.509659+00:00",
+          "facts": [
+            "2026-09-04 article discusses the Night Market Queen MV and its shoot.",
+            "Publicity photo caption names NICO, 許媛媛, 毓, XXIN, 采甄, AYEON.",
+            "Article directly links https://www.youtube.com/watch?v=o5EdYwk8k9o."
+          ],
+          "scope": "named_exact_mv_publicity"
+        },
+        {
+          "url": "https://reader.turnnewsapp.com/ct/20260905/bbc2b2/q1rfmjaynja5mdvfqjjfmg2/share",
+          "publisher": "中國時報 / 許雅淳",
+          "bodyRead": true,
+          "checkedAt": "2026-10-28T08:31:08.509659+00:00",
+          "facts": [
+            "2026-09-05 original report names the same six members in the exact MV photo caption and discusses the shoot."
+          ],
+          "scope": "corroborating_named_mv_publicity"
+        }
+      ],
+      "referenceReuse": [
+        {
+          "memberId": "recvxAPQCFWGjX",
+          "stageName": "Nico",
+          "reusedFromWorkId": "rec28ldfRTrCYg",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrCYg",
+            "videoId": "69QCKEYOAZs",
+            "memberId": "recvxAPQCFWGjX",
+            "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFWGjX-0836be59ca.jpg",
+            "width": 840,
+            "height": 1261,
+            "label": "官方具名 MV 拍摄现场",
+            "sourceUrl": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15063",
+            "objectPosition": "50% 50%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 840,
+              "height": 1120
+            }
+          },
+          "sha256": "0836be59ca9d8bd6b034b9d713836d91c57cb38a651070b03251947dd28f004e",
+          "bytes": 712701,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/mv-batch-e-20261026.json",
+          "sourceImageUrl": "https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/15063/Mgz_Sub_IMG_20250304164747.jpg",
+          "sourceNameEvidence": "Two consecutive photos immediately before the source-named 니코 caption in the official MV-shoot section; selected nico-1",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        },
+        {
+          "memberId": "recvxAPQCFlVPw",
+          "stageName": "Yuan",
+          "reusedFromWorkId": "rec28ldfRTrCYg",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrCYg",
+            "videoId": "69QCKEYOAZs",
+            "memberId": "recvxAPQCFlVPw",
+            "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFlVPw-7211b16cd0.jpg",
+            "width": 840,
+            "height": 1262,
+            "label": "官方具名 MV 拍摄现场",
+            "sourceUrl": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15063",
+            "objectPosition": "50% 50%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 840,
+              "height": 1120
+            }
+          },
+          "sha256": "7211b16cd004785bcaee51809657ce8f6a50cc9b281488cf25337d39aba1ca78",
+          "bytes": 1048180,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/mv-batch-e-20261026.json",
+          "sourceImageUrl": "https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/15063/Mgz_Sub_IMG_20250304164557.jpg",
+          "sourceNameEvidence": "Two consecutive photos immediately before the source-named 위엔 caption in the official MV-shoot section; selected yuan-2",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        },
+        {
+          "memberId": "recvxAPQCFSVcE",
+          "stageName": "Lili",
+          "reusedFromWorkId": "rec28ldfRTrCYg",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrCYg",
+            "videoId": "69QCKEYOAZs",
+            "memberId": "recvxAPQCFSVcE",
+            "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFSVcE-7bc0885628.jpg",
+            "width": 840,
+            "height": 1261,
+            "label": "官方具名 MV 拍摄现场",
+            "sourceUrl": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15063",
+            "objectPosition": "50% 50%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 840,
+              "height": 1120
+            }
+          },
+          "sha256": "7bc0885628c4ca9624f40f80f35683a0730c84646be9f77973c93baeb08fff3b",
+          "bytes": 1015162,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/mv-batch-e-20261026.json",
+          "sourceImageUrl": "https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/15063/Mgz_Sub_IMG_20250304164614.jpg",
+          "sourceNameEvidence": "Two consecutive photos immediately before the source-named 리리 caption in the official MV-shoot section; selected lili-1",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        },
+        {
+          "memberId": "recvxAPQCFknfS",
+          "stageName": "XXIN",
+          "reusedFromWorkId": "rec28ldfRTrCYg",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrCYg",
+            "videoId": "69QCKEYOAZs",
+            "memberId": "recvxAPQCFknfS",
+            "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFknfS-95d9b56717.jpg",
+            "width": 840,
+            "height": 1261,
+            "label": "官方具名 MV 拍摄现场",
+            "sourceUrl": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15063",
+            "objectPosition": "50% 50%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 840,
+              "height": 1120
+            }
+          },
+          "sha256": "95d9b56717058fec14c4295ad5a84c4bc78cb4e154764920af658bdd8c22926e",
+          "bytes": 1030632,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/mv-batch-e-20261026.json",
+          "sourceImageUrl": "https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/15063/Mgz_Sub_IMG_20250304164434.jpg",
+          "sourceNameEvidence": "Two consecutive photos immediately before the source-named 씬 caption in the official MV-shoot section; selected hsin-2",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        },
+        {
+          "memberId": "recvxAPQCFaXuH",
+          "stageName": "Ayako",
+          "reusedFromWorkId": "rec28ldfRTrCYg",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrCYg",
+            "videoId": "69QCKEYOAZs",
+            "memberId": "recvxAPQCFaXuH",
+            "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFaXuH-63d1f1d86d.jpg",
+            "width": 840,
+            "height": 1262,
+            "label": "官方具名 MV 拍摄现场",
+            "sourceUrl": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15063",
+            "objectPosition": "50% 50%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 840,
+              "height": 1120
+            }
+          },
+          "sha256": "63d1f1d86d5bfa062759f4b5bd450ed7ab4895dfd235dafdd233abe1ee00973a",
+          "bytes": 721350,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/mv-batch-e-20261026.json",
+          "sourceImageUrl": "https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/15063/Mgz_Sub_IMG_20250304164725.jpg",
+          "sourceNameEvidence": "Two consecutive photos immediately before the source-named 아야코 caption in the official MV-shoot section; selected ayako-2",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        },
+        {
+          "memberId": "recvxAPQCFvZsO",
+          "stageName": "Ayeon",
+          "reusedFromWorkId": "rec28ldfRTrCYg",
+          "originalManifestRecord": {
+            "workId": "rec28ldfRTrCYg",
+            "videoId": "69QCKEYOAZs",
+            "memberId": "recvxAPQCFvZsO",
+            "src": "/artist/mv-identity-batch-e-20261026/identities/69QCKEYOAZs-recvxAPQCFvZsO-b2bade695a.jpg",
+            "width": 840,
+            "height": 1260,
+            "label": "官方具名 MV 拍摄现场",
+            "sourceUrl": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15063",
+            "objectPosition": "50% 50%",
+            "sourceCrop": {
+              "x": 0,
+              "y": 0,
+              "width": 840,
+              "height": 1120
+            }
+          },
+          "sha256": "b2bade695adb37c0991533814603d66a2a1201d3f119ff627df03f637f086e06",
+          "bytes": 824889,
+          "fullOriginalLocalHashVerified": true,
+          "reviewEvidenceFile": "docs/codex/mv-batch-e-20261026.json",
+          "sourceImageUrl": "https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/15063/Mgz_Sub_IMG_20250304164514.jpg",
+          "sourceNameEvidence": "Two consecutive photos immediately before the source-named 아연 caption in the official MV-shoot section; selected ayeon-2",
+          "referenceUse": "recognition_reference",
+          "note": "沿用已审完整原图帮助识别具名人物；不证明新作品视频出镜、造型或拍摄时期。"
+        }
+      ]
+    }
+  ],
+  "preservation": {
+    "old45CreditObjectsUnchanged": true,
+    "old45RecognitionObjectsUnchanged": true,
+    "oldMetadataUnchanged": true,
+    "existingOriginalFilesReused": 13,
+    "newImagesDownloaded": 0,
+    "privateDataRead": false,
+    "privateWrites": 0,
+    "privateRelationsAdded": 0,
+    "absenceRulesChanged": 0,
+    "fullVideoPlaybackPerformed": false
+  },
+  "tests": {
+    "status": "passed",
+    "command": "node --test tests/continuous-public-credits.test.cjs tests/stage-fill-public-credits.test.cjs tests/category-followup-v196.test.mjs",
+    "workingDirectory": "apps/idol-site",
+    "pass": 16,
+    "fail": 0,
+    "checkedAt": "2026-10-28T08:37:09.914093+00:00",
+    "limits": "Synthetic read-only runtime and local original-byte checks; no private save, full playback or online release verification."
+  }
+}

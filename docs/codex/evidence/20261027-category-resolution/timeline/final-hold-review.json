@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-27",
+  "scope": "One bounded read-only follow-up of the seven remaining timeline holds. Existing holds, application, stable IDs, relationships and handoff files were not changed.",
+  "adoption": {"originalHoldsResolved": 0, "remainingHolds": 7, "applicationChanges": false},
+  "records": [
+    {
+      "eventId": "e-atheart-aurora-hiatus-observed",
+      "status": "hold_retained",
+      "sources": [
+        {"url": "https://x.com/titan_content/status/1940244098105188584", "kind": "official-link-discovered", "result": "Exact TITAN post located through cited references; direct request returned 403. References date it 2025-07-02, but primary content and date were not independently read."},
+        {"url": "https://atheartkpop.fandom.com/wiki/Aurora", "kind": "lead-only", "result": "Reference list identifies the official post; not adopted as primary announcement evidence."},
+        {"url": "https://atheart.me/news", "kind": "official-index", "result": "Current index read through 2026-10-20; target initial notice is not listed. This does not prove that no notice exists."}
+      ],
+      "unresolved": "Original initial notice and reliable publication evidence remain unread. An announcement date is not automatically the actual start of absence.",
+      "nextAction": "Read the exact official public post if normally accessible; retain unknown effective date."
+    },
+    {
+      "eventId": "e-atheart-aurora-second-hiatus-announcement",
+      "status": "hold_retained",
+      "sources": [
+        {"url": "https://www.reddit.com/r/kpop/comments/1vrmpms/titan_entertainment_announced_that_athearts/", "kind": "source-discovery-only", "result": "Discussion links a source on X; link navigation returned Internal Error, and a normal direct Reddit request returned 403. No access bypass or repeated attempt."},
+        {"url": "https://atheart.me/news", "kind": "official-index", "result": "Readable current index still does not expose the requested second notice."}
+      ],
+      "unresolved": "No newly readable primary notice. Existing media statement remains secondary; medical detail was not copied.",
+      "nextAction": "Retain hold. A separately labelled media announcement could be considered without an actual effective date."
+    },
+    {
+      "eventId": "e-bewave-six-member-phase-end-announcement",
+      "status": "hold_retained",
+      "sources": [
+        {"url": "https://news.nate.com/view/20250904n41722?mid=n0100", "kind": "media-syndication", "result": "Search still resolves to the existing 2025-09-04 announcement reproduction, not a later confirmation."},
+        {"url": "https://x.com/BEWAVE_official/status/1963527459069923774", "kind": "previous-primary-link", "result": "Previously inaccessible original post; not retried without new access evidence."}
+      ],
+      "unresolved": "A planned 2025-10-31 six-member-phase ending does not prove the personnel changes actually occurred. Name-spelling issues cannot be used to bind IDs.",
+      "nextAction": "Keep announced/reported boundary; require an original statement or later direct confirmation for an actual transition."
+    },
+    {
+      "eventId": "e-candyshop-yuina-hiatus-announcement",
+      "status": "hold_retained",
+      "sources": [
+        {"url": "https://sports.donga.com/ent/article/all/20240509/124851118/1", "kind": "additional-original-media-lead", "result": "2024-05-09 company-statement report found in search; no new exact official cafe URL."},
+        {"url": "https://www.xportsnews.com/article/1856885", "kind": "known-original-media", "result": "Report refers to the official fan cafe but does not supply the needed original post location."}
+      ],
+      "unresolved": "Official cafe publication URL/date evidence remains missing. Existing native media event already covers the report. Profile removal or personal social tags are not departure proof.",
+      "nextAction": "Keep hold and existing reported event, avoiding a duplicate. A usable original official post remains the useful missing input."
+    },
+    {
+      "eventId": "e-geenius-spoiler-book-instrumental",
+      "status": "hold_retained",
+      "sources": [
+        {"url": "https://www.yes24.com/product/goods/170657075", "kind": "retail-directory", "result": "Still identifies Spoiler Book as an instrumental QR carrier; not first-party actual release confirmation."},
+        {"url": "https://www.musickorea.com/Product/Detail/view/pid/216995", "kind": "retail-directory", "result": "Same carrier appears in retail search; not independent confirmation of full vocal album release."}
+      ],
+      "unresolved": "No newly found HOMe/COPAN actual release announcement or authorised delivered audio. Retail/import dates must not be equated with global release.",
+      "nextAction": "A separately labelled retail-directory/QR instrumental item may be useful, while the original release claim remains on hold."
+    },
+    {
+      "eventId": "e-udtt-jessica-provisional-join-candidate",
+      "status": "hold_retained",
+      "sources": [
+        {"url": "https://www.hellokpop.com/interview/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview/", "kind": "first-person-interview", "publishedDate": "2025-05-08", "result": "Read original interview: JESSICA self-identifies as Lu U-Ting / 陆雨婷 and gives stage name 우정. Editorial note says the interview was conducted just after she joined, without exact joining date or contract terms."},
+        {"url": "https://sports.donga.com/ent/article/all/20250509/131571164/1", "kind": "new-named-original-media", "publishedDate": "2025-05-09", "result": "Read original reporting: 육우정(루위팅) participates as a 유학생 멤버 (student/exchange-student member). This public project role does not establish temporary or permanent contractual status."},
+        {"url": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=457660&id=&lang=k&menu_cate=", "kind": "original-broadcaster-report", "publishedDate": "2025-04-29", "result": "Debut-day report lists the original four and says an unnamed Chinese student will participate in the debut stage. It does not itself name Jessica or establish a legal joining date."}
+      ],
+      "usableNarrowFacts": ["Interview provides public-name equivalence: Jessica / 陆雨婷 / 우정.", "A dated 2025-05-09 report explicitly associates Lu Yuting with student-member participation."],
+      "unresolved": "Temporary/permanent nature and precise effective date remain unknown. Do not translate 유학생 as temporary member. Public-name equivalence does not authorize merging stable business records or their personal histories.",
+      "nextAction": "Consider source-backed alias/participation text only. Audit both records and personal-history conflicts separately before any requested merge."
+    },
+    {
+      "eventId": "e-udtt-sena-predebut-departure-candidate",
+      "status": "hold_retained",
+      "sources": [
+        {"url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/", "kind": "secondary-lead-only", "result": "Search repeats the March 26 departure claim; no newly obtained original official notice or publication provenance."}
+      ],
+      "unresolved": "Original company notice location/date and provenance remain unavailable. Prior repost image does not independently close this requirement.",
+      "nextAction": "Retain hold; acquire the original public notice or date/account-bearing original publication evidence."
+    }
+  ],
+  "displaySuggestions": [
+    {"topic": "limited-reported-events", "suggestion": "Consider clearly labelled media reports or first-person participation statements with unknown actual effective dates, without presenting the original personnel claims as verified."},
+    {"topic": "udtt-duplicate-business-records", "suggestion": "Prefer reversible source-backed alias notes or cross-links first. Any merge needs separate review of stable IDs, relationships and personal-record conflicts."},
+    {"topic": "geenius-retail-item", "suggestion": "A separately labelled QR instrumental retail listing can be useful while the actual-release hold stays open."}
+  ],
+  "limitations": ["This bounded pass did not exhaust the internet.", "No access-control bypass, sign-in, messages, medical-detail storage, private-data edits or deployment.", "Suggestions concern presentation choices; user preference must not substitute for missing factual evidence."]
+}

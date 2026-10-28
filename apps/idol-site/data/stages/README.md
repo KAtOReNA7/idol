@@ -7,7 +7,7 @@ This directory is server-only editorial metadata, not a second score store. Orig
 - `evidence/`: immutable public-source research batches with URLs and observation time. No private user data belongs here.
 - `../stage-videos.json`: compiled, selected sources used by the player, keyed only by work record ID. Existing video IDs and score bindings are not silently replaced when popularity changes.
 
-An accepted performance must match the original song and precise language/version/performer scope. A same-group different song, official MV, dance practice, relay dance or member fancam does not qualify as the requested group stage. A professionally staged official special performance may qualify only when its type is explicitly evidenced and labelled. Existing alternate-version candidates can remain in evidence but must not win the original-version ranking.
+An accepted performance must match the original song and precise language/version/performer scope. New adoptions prioritize regular music-program stages, then documented official full-song practice-room versions. A same-group different song, official MV, relay dance or member fancam does not qualify. Produced performances, studio-live sessions and special/event stages remain separate research types unless explicitly approved. Practice footage does not establish live vocals. Existing alternate-version candidates can remain in evidence but must not win the original-version ranking.
 
 Record raw like display, precision and checked-at UTC. Unknown likes are not zero. A highest-liked claim refers only to eligible, comparable, verified candidates in the documented search. Do not turn rounded counts into fake exact integers.
 
@@ -19,10 +19,10 @@ All untrusted source titles/reasons are rendered as text. Source URLs must use H
 1. Read the latest authenticated work inventory; keep the raw export checkout-local under ignored `outputs/` and send researchers only public work fields. Missing song, official title and exact original MV ID is `missing_song_identity`, not a made-up song.
 2. Review and preserve public evidence with per-work language/version/performer matching. Keep failed attempts as explicit statuses; never remove a still-valid existing source just because a new search fails.
 3. Before binding any new selection, use a fresh authenticated read. If the existing stage score is not empty, leave `scoreBinding:null` and keep its old meaning unknown. Never change an existing source/binding without the owner's explicit version choice when a score exists.
-4. Run `node scripts/validate-stages.mjs`, repository tests and type/build checks. Check source reuse across distinct song identities. Publication uses the existing Site's official source workflow, owner-private audience and current environment revision.
+4. Run `node scripts/validate-stages.mjs`, repository tests and type/build checks. Check source reuse across distinct song identities. Publication uses the existing Site's official source workflow and preserves its actual current audience and environment revision (currently public with one owner, no external users or groups).
 5. Read back protected fields after publishing. Source metadata changes do not authorize any production score update. Mark unfinished coverage honestly; never call all records complete simply because they have a status.
 
-If the original work already contains an eligible official performance video (not a music video or dance practice), the highest verified candidate may be that same ID. Preserve it with `reusesOriginalVideo:true` and visibly state “原收录即表演版，与 MV 栏为同一视频”. Count it toward verified source coverage, but not as a newly added independent video. Keep any independently researched alternatives in evidence.
+If the original work already contains an eligible official performance or documented practice video (not a music video), the highest verified candidate may be that same ID. Preserve it with `reusesOriginalVideo:true` and visibly state “原收录即表演版，与 MV 栏为同一视频”. Count it toward verified source coverage, but not as a newly added independent video. Keep any independently researched alternatives in evidence.
 
 During the initially authorized completion pass only, a newly introduced binding with a still-empty live stage score and no user save-journal entry may move to a newly verified strictly-higher-liked eligible source. This needs a fresh complete save-journal snapshot and live score preimage. Preserve `previousSources` including old URL/title/likes/binding and change time. The original BATTER UP binding is always frozen. Scored/saved sources remain unchanged and can expose a `higherCandidate` hint instead. An unreviewed local draft selection never published to the Site may be retired when the final evidence invalidates it; do not confuse that with deleting a published/user-scored binding.
 
@@ -35,5 +35,11 @@ Only the nine corroborated IDs in group-placeholders.json may leave the named-wo
 
 Validate with node scripts/validate-supplements.mjs plus the regular tests/type/build checks. Evidence files are public-source editorial data, while live exports and private preimages stay in ignored outputs/.
 
-## Official concert chapters
+## Historical concert chapters (not eligible for new adoptions)
 Formal chapter sources require explicit start/end evidence, a separately verified full-video duration, and end no later than that duration. Their score binding and save journal include the canonical source key, never just video ID. Embedded playback uses start/end; the YouTube external link can only jump to the start, so viewers must observe the displayed endpoint. Whole-video likes are labelled as such and cannot win a single-song ranking. Existing full-video legacy bindings remain compatible; changing an already selected chapter scope does not automatically rebind a source.
+
+## Current native storage and practice increment
+
+The source merger accepts original authenticated `idol.native-data-export.v1` exports from native storage and legacy `idol.live-backup.v1` exports from Feishu. Do not relabel the source, synthesize a fresh capture timestamp, or substitute the public catalog. Native exports must include the work-field schema, save journal and published stage metadata. The 15-minute preimage freshness and empty-score checks remain mandatory; zero is a real score. Local exports stay under ignored outputs/.
+
+The 2026-10-28 practice increment adds eleven sources after an authenticated owner export and leaves all 482 prior source objects and bindings unchanged. Completeness and version correspondence use documented official single-song publications; the public verification note explicitly discloses no full playback or independent audio comparison. Full evidence: `docs/codex/evidence/20261028-stage-fill/` at repository root. Do not rerun these batches.

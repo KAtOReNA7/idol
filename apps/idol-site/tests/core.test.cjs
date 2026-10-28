@@ -15,7 +15,28 @@ function reset(){env.DB=d1();remote={record_id:'recTEST123',fields:{'MV分数':8
 async function input(values={score:9}){return {table:'works',recordId:'recTEST123',revision:await hash(remote.fields),operationId:crypto.randomUUID(),values};}
 test('snapshot counts and scores are exact',()=>{assert.deepEqual(JSON.parse(JSON.stringify(cat.counts)),{groups:51,members:338,works:614,ratings:2828,ratedWorks:83,scoreSum:692.5});});
 test('all current queues match verified source',()=>{for(const [k,n] of [['high',33],['surprise',4],['tonight',522],['rewatch',35]])assert.equal(cat.works.filter(w=>inQueue(w,k,cat.groups)).length,n,k)});
-test('source gaps are preserved',()=>{assert.equal(cat.works.filter(w=>!w.url).length,10);assert.equal(cat.works.filter(w=>!w.version).length,204);assert.equal(cat.works.filter(w=>!w.ratingIds.length).length,142);assert.equal(cat.members.filter(m=>m.photo).length,338);});
+test('source gaps are preserved except the exact reviewed display repair; no private relationships are invented',()=>{
+ const {asText}=load('lib/idol/values.ts'),rawWorks=snapshot.tables.works.records;
+ const rawMissingUrl=rawWorks.filter(r=>!asUrl(r.fields[F.works.url])).map(r=>r.recordId).sort();
+ const repaired=cat.works.filter(w=>rawMissingUrl.includes(w.id)&&w.url);
+ assert.deepEqual(Array.from(repaired,w=>w.id),['rec28ldfRTrEng']);
+ assert.equal(repaired[0].song,'HURRICANE');assert.equal(repaired[0].url,'https://www.youtube.com/watch?v=00tUzCOPI6g');
+ assert.deepEqual(Array.from(repaired[0].groupIds),['rec28ldfRTiD0h']);assert.equal(repaired[0].version,'Music Video');
+ assert.deepEqual(Array.from(cat.works.filter(w=>!w.url),w=>w.id).sort(),rawMissingUrl.filter(id=>id!==repaired[0].id));
+ const rawMissingVersion=rawWorks.filter(r=>!asText(r.fields[F.works.version])).map(r=>r.recordId).sort();
+ assert.deepEqual(Array.from(cat.works.filter(w=>!w.version),w=>w.id).sort(),rawMissingVersion.filter(id=>id!==repaired[0].id));
+ for(const work of cat.works){
+  const ids=snapshot.tables.ratings.records.filter(r=>asIds(r.fields[F.ratings.works]).includes(work.id)).map(r=>r.recordId);
+  assert.deepEqual(Array.from(work.ratingIds),ids,work.id);
+ }
+ assert.ok(cat.works.some(w=>!w.ratingIds.length),'unlinked works remain unlinked');
+ for(const member of cat.members){const raw=snapshot.tables.members.records.find(r=>r.recordId===member.id);assert.equal(!!member.photo,Array.isArray(raw.fields[F.members.photo])&&raw.fields[F.members.photo].length>0,member.id);}
+ assert.deepEqual(snapshot,JSON.parse(fs.readFileSync(path.join(root,'data/snapshot.json'))),'projection must not rewrite raw source gaps');
+ const {applyReviewedWorkMetadata}=load('lib/idol/reviewed-work-metadata.ts');
+ for(const patch of [{id:'recUnreviewed'},{groupIds:['recOther']},{song:'Another song'}]){
+  const work={...repaired[0],url:'',version:'',...patch};assert.equal(applyReviewedWorkMetadata(work).url,'');
+ }
+});
 test('empty numbers remain null, zero is zero',()=>{assert.equal(asNumber(null),null);assert.equal(asNumber(''),null);assert.equal(asNumber('0'),0);assert.equal(asNumber('bad'),null);});
 test('snapshot and API relations preserve ids',()=>{assert.equal(asIds([{recordId:'recABC',text:'Label'}])[0],'recABC');assert.equal(asIds({link_record_ids:['recABC']})[0],'recABC');});
 test('URLs and exact video IDs are bounded',()=>{assert.equal(asUrl([{url:'https://www.youtube.com/watch?v=5sT20edl02I',text:'label'}]),'https://www.youtube.com/watch?v=5sT20edl02I');assert.equal(videoId('https://evil.test/watch?v=5sT20edl02I'),null);assert.equal(videoId('https://www.youtube.com/watch?v=5sT20edl02I'),'5sT20edl02I');assert.equal(asUrl('javascript:alert(1)'),'');});
@@ -26,18 +47,82 @@ test('same id with different payload is rejected',async()=>{reset();const i=awai
 test('preimage conflict never overwrites fresh native edits',async()=>{reset();const i=await input();remote.fields['点评']='updated outside';await assert.rejects(()=>saveRecord('owner',i),e=>e.code==='EDIT_CONFLICT');assert.equal(sent,0);});
 test('second preimage check catches change after lock',async()=>{reset();mode='late-conflict';const i=await input();await assert.rejects(()=>saveRecord('owner',i),e=>e.code==='EDIT_CONFLICT');assert.equal(sent,0);});
 test('unknown mutation response is never sent again',async()=>{reset();mode='uncertain';const i=await input();await assert.rejects(()=>saveRecord('owner',i),e=>e.code==='SAVE_UNCERTAIN');await assert.rejects(()=>saveRecord('owner',i),e=>e.code==='SAVE_UNRESOLVED');await assert.rejects(()=>saveRecord('owner',{...i,operationId:crypto.randomUUID()}),e=>e.code==='SAVE_BUSY');assert.equal(sent,1);});
-test('no browser/public snapshot or secret files',()=>{for(const f of fs.readdirSync(path.join(root,'public')))assert.ok(!/json|secret|snapshot|backup/.test(f));const ui=fs.readFileSync(path.join(root,'app/page.tsx'),'utf8');assert.ok(!ui.includes('FEISHU_APP_SECRET'));const publicImports=[...ui.matchAll(/from ['"](@\/data\/[^'"]+)['"]/g)].map(x=>x[1]);assert.deepEqual(publicImports,['@/data/artist-visuals.json']);for(const source of publicImports){const facts=fs.readFileSync(path.join(root,source.slice(2)),'utf8');assert.doesNotMatch(facts,/file_token|FEISHU_APP_SECRET|tenant_access_token|\"(?:stageScore|stylingScore|recordId|journal)\"/);}});
+test('no browser/public snapshot or secret files',()=>{
+ for(const file of fs.readdirSync(path.join(root,'public')))assert.doesNotMatch(file,/json|secret|snapshot|backup/i);
+ const ui=fs.readFileSync(path.join(root,'app/page.tsx'),'utf8');assert.doesNotMatch(ui,/FEISHU_APP_SECRET|tenant_access_token/);
+ const ast=ts.createSourceFile('page.tsx',ui,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+ const publicImports=ast.statements.filter(ts.isImportDeclaration).map(n=>n.moduleSpecifier.text).filter(n=>n.startsWith('@/data/')).sort();
+ const reviewedPublicData=['@/data/artist-timeline-registry.json','@/data/artist-visuals.json','@/data/music-member-artwork.json'];
+ assert.deepEqual(publicImports,reviewedPublicData,'new direct browser data imports require an explicit public-data review');
+ for(const source of publicImports){
+  const facts=fs.readFileSync(path.join(root,source.slice(2)),'utf8');
+  assert.doesNotMatch(facts,/file_token|FEISHU_APP_SECRET|tenant_access_token|\"(?:stageScore|stylingScore|recordId|journal)\"/);
+ }
+ const bundle=require('esbuild').buildSync({absWorkingDir:root,entryPoints:['app/page.tsx'],bundle:true,write:false,outdir:'unused-test-output',platform:'browser',format:'esm',packages:'external',loader:{'.css':'empty'},metafile:true,logLevel:'silent'});
+ const inputs=Object.keys(bundle.metafile.inputs);assert.ok(inputs.includes('app/page.tsx'));
+ assert.ok(inputs.includes('data/music-member-artwork.json'));assert.ok(inputs.includes('data/artist-timeline-registry.json'));
+ for(const input of inputs){
+  assert.doesNotMatch(input,/(?:^|\/)(?:snapshot(?:-fallback)?|feishu|native-storage|save)\.(?:ts|tsx|json|mjs|cjs)$|(?:^|\/)\.env(?:\.|$)/i,'server-only dependency in browser: '+input);
+  if(input.endsWith('.json'))assert.doesNotMatch(fs.readFileSync(path.join(root,input),'utf8'),/file_token|FEISHU_APP_SECRET|tenant_access_token|\"(?:stageScore|stylingScore|journal)\"/,'private data in browser JSON: '+input);
+ }
+ const inspect=dir=>{for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const file=path.join(dir,entry.name);if(entry.isDirectory())inspect(file);else{
+  assert.doesNotMatch(entry.name,/^(?:snapshot|backup|secrets?)(?:[._-]|$)|^\.env(?:\.|$)|\.(?:sqlite|sqlite3|db|bak)$/i,file);
+  if(/\.(?:json|html?|txt|csv|js|mjs)$/i.test(entry.name))assert.doesNotMatch(fs.readFileSync(file,'utf8'),/FEISHU_APP_SECRET|tenant_access_token|\"file_token\"/,file);
+ }}};inspect(path.join(root,'public'));
+});
 const {stageForWork,stageScoreIsBound}=load('lib/idol/stage.ts');
 const stageId='rec28ldfRTrArg';
 test('verified stage source is exact and fixed, unknown works stay empty',()=>{const stage=stageForWork(stageId);assert.equal(stage.videoId,'B17yoLxkbPA');assert.equal(stage.likes.value,911156);assert.equal(stage.candidateCount,4);assert.equal(stageScoreIsBound(stage),true);assert.equal(stageForWork('recUNKNOWN'),null);assert.equal(stageScoreIsBound({...stage,scoreBinding:{...stage.scoreBinding,videoId:'wrong'}}),false);assert.equal(cat.works.filter(w=>w.stage).length,Object.keys(JSON.parse(fs.readFileSync(path.join(root,'data/stage-videos.json')))).length);});
 test('stage score saves only bound video and preserves MV score and notes',async()=>{reset();remote.record_id=stageId;const i={...await input({stageScore:8}),recordId:stageId,stageVideoId:'B17yoLxkbPA'};const r=await saveRecord('owner',i);assert.equal(r.verified,true);assert.equal(sent,1);assert.equal(remote.fields['舞台分数'],8);assert.equal(remote.fields['MV分数'],8);assert.equal(remote.fields['点评'],'original private note');await saveRecord('owner',i);assert.equal(sent,1);});
 test('stage score without exact binding cannot dispatch a write',async()=>{for(const stageVideoId of [undefined,'kmwrN2HDgJs']){reset();remote.record_id=stageId;const i={...await input({stageScore:8}),recordId:stageId,stageVideoId};await assert.rejects(()=>saveRecord('owner',i),e=>e.code==='STAGE_SOURCE_CHANGED');assert.equal(sent,0);}reset();const unknown={...await input({stageScore:8}),stageVideoId:'B17yoLxkbPA'};await assert.rejects(()=>saveRecord('owner',unknown),e=>e.code==='STAGE_SOURCE_CHANGED');assert.equal(sent,0);});
-test('UI keeps member editor mounted and does not give stage its own member scores',()=>{const ui=fs.readFileSync(path.join(root,'app/page.tsx'),'utf8');assert.ok(ui.includes("hidden={view==='stage'} className=\"section cast-section\""));const workEditors=[...ui.matchAll(/<Editor\b[\s\S]*?\/>/g)].map(m=>m[0]).filter(tag=>tag.includes('table="works"'));assert.ok(workEditors.length>0);for(const tag of workEditors)assert.match(tag,/key=\{work\.id\}/);assert.ok(!ui.includes('key={view}'));assert.ok(ui.includes('workSaveButton.current?.click()'));assert.ok(ui.includes('另一个视频页有未保存评分，将随本次作品修改一并保存。'));});
+test('UI keeps member editor mounted and does not give stage its own member scores',async()=>{
+ const h=require('./helpers/core-ui-harness.cjs')(load('lib/idol/stage-source.ts'));await h.settle();
+ const identities=()=>Array.from(h.walk(h.tree()).filter(x=>x.node.type===h.Editor),x=>[x.path,x.node.key,x.node.props.table,x.node.props.id]);
+ const before=identities();assert.equal(before.filter(x=>x[2]==='works').length,1);assert.equal(before.filter(x=>x[2]==='ratings').length,1);
+ assert.equal(before.find(x=>x[2]==='works')[1],h.wp.work.id);
+ h.click(h.find(h.memberEditor(),n=>n.type==='button'));await h.settle();
+ h.find(h.memberEditor(),n=>n.props['aria-label']==='表现分').props.onChange({target:{value:'9.5'}});
+ h.find(h.editor(),n=>n.props['aria-label']==='MV 分数').props.onChange({target:{value:'9'}});await h.settle();
+ h.click(h.find(h.tree(),n=>n.props.id==='stage-tab'));await h.settle();
+ assert.deepEqual(identities(),before);assert.equal(h.find(h.tree(),n=>n.props.className==='section cast-section').props.hidden,true);
+ assert.equal(h.find(h.memberEditor(),n=>n.props['aria-label']==='表现分').props.value,9.5);assert.equal(h.memberEditor().props['data-dirty'],'true');
+ assert.deepEqual(Array.from(h.all(h.editor(),n=>n.type==='input'),n=>n.props['aria-label']),['作品整体舞台分']);
+ assert.match(h.txt(h.editor()),/另一个视频页有未保存评分/);assert.ok(h.listeners.get('beforeunload')?.size);
+ assert.equal(h.requests.filter(r=>r.url==='/api/save').length,0);
+ assert.equal(h.requests.filter(r=>r.url.startsWith('/api/records?')&&r.url.includes('table=works')).length,1);
+ h.find(h.editor(),n=>n.props['aria-label']==='作品整体舞台分').props.onChange({target:{value:'8.5'}});await h.settle();
+ h.click(h.find(h.tree(),n=>n.props.id==='mv-tab'));await h.settle();assert.deepEqual(identities(),before);
+ assert.equal(h.find(h.editor(),n=>n.props['aria-label']==='MV 分数').props.value,9);
+ await h.click(h.footer());await h.settle();
+ const posts=h.requests.filter(r=>r.url==='/api/save');assert.equal(posts.length,1);const payload=JSON.parse(posts[0].body);
+ assert.deepEqual(payload.values,{score:9,stageScore:8.5});assert.equal(payload.table,'works');assert.equal(payload.recordId,h.wp.work.id);
+ assert.equal(payload.stageVideoId,h.wp.work.stage.videoId);assert.equal(payload.stageSourceKey,load('lib/idol/stage-source.ts').stageSourceKey(h.wp.work.stage));
+ assert.equal(h.records.ratings.score,7);assert.equal(h.memberEditor().props['data-dirty'],'true');
+});
 const {stageResearchForWork}=load('lib/idol/stage.ts');const {stageMatches,stageStatusLabel}=load('lib/idol/stage-display.ts');
 test('every current work has a truthful research state and new works fall back to pending',()=>{assert.equal(cat.works.every(w=>w.stageResearch&&w.stageResearch.reason),true);assert.equal(stageResearchForWork('recNEWUNSEARCHED').status,'pending');assert.equal(stageResearchForWork('recNEWUNSEARCHED').checkedAt,null);assert.equal(stageResearchForWork('rec28ldfRTrHT6').status,'missing_song_identity');assert.equal(stageForWork('rec28ldfRTrHT6'),null);});
 test('stage filters partition current work scope without touching ratings',()=>{const before=JSON.stringify(cat.works.map(w=>[w.id,w.score,w.stageScore,w.note]));const ready=cat.works.filter(w=>stageMatches(w,'ready')),pending=cat.works.filter(w=>stageMatches(w,'pending')),alternatives=cat.works.filter(w=>stageMatches(w,'alternative'));assert.equal(ready.length+pending.length+alternatives.length,cat.works.length);assert.equal(new Set([...ready,...pending,...alternatives].map(w=>w.id)).size,cat.works.length);assert.ok(ready.some(w=>w.id===stageId));assert.equal(before,JSON.stringify(cat.works.map(w=>[w.id,w.score,w.stageScore,w.note])));assert.equal(stageStatusLabel(cat.works.find(w=>w.id===stageId)),'有舞台');const no={...cat.works[0],stage:null,stageSupplement:null,stageResearch:{status:'blocked',reason:'访问受限，需稍后核查',checkedAt:null}};assert.equal(stageStatusLabel(no),'暂无舞台');});
 test('legacy nonempty unbound score cannot acquire a new video binding through UI',()=>{const src=fs.readFileSync(path.join(root,'app/page.tsx'),'utf8');assert.ok(src.includes('对应视频还未确认'));assert.equal(stageScoreIsBound({...stageForWork(stageId),scoreBinding:null}),false);});
-test('stage drafts retain the source ID from their first edit across metadata refresh',()=>{const ui=fs.readFileSync(path.join(root,'app/page.tsx'),'utf8');assert.ok(ui.includes('stageVideoId:stageDraftVideoId'));assert.ok(ui.includes("if(key==='stageScore'&&draft.stageScore===detail.values.stageScore){setStageDraftVideoId(stageVideoId??null);setStageDraftSourceKey(sourceKey??stageVideoId??null);}"));assert.ok(ui.includes('const canSave=!stageSourceMismatch'));assert.ok(ui.includes('你的输入仍对应上一支视频'));});
+test('stage drafts retain the source ID from their first edit across metadata refresh',async()=>{
+ const source=load('lib/idol/stage-source.ts'),h=require('./helpers/core-ui-harness.cjs')(source);await h.settle();
+ h.click(h.find(h.tree(),n=>n.props.id==='stage-tab'));await h.settle();
+ const input=()=>h.find(h.editor(),n=>n.props['aria-label']==='作品整体舞台分');
+ input().props.onChange({target:{value:'8'}});await h.settle();assert.equal(h.footer().props.disabled,false);
+ const original=h.wp.work.stage,newVideo='NEWstage_01';
+ h.wp.work={...h.wp.work,stage:{...original,videoId:newVideo,url:'https://www.youtube.com/watch?v='+newVideo,scoreBinding:{...original.scoreBinding,videoId:newVideo}}};
+ await h.settle();assert.equal(input().props.value,8);assert.equal(h.footer().props.disabled,true);assert.match(h.txt(h.editor()),/你的输入仍对应上一支视频/);
+ assert.equal(h.click(h.footer()),false);assert.equal(h.requests.filter(r=>r.url==='/api/save').length,0);
+ input().props.onChange({target:{value:'9'}});await h.settle();assert.equal(h.footer().props.disabled,true,'editing an already dirty score cannot rebind it');
+ input().props.onChange({target:{value:''}});await h.settle();input().props.onChange({target:{value:'9'}});await h.settle();assert.equal(h.footer().props.disabled,false);
+ h.wp.work={...h.wp.work,stage:{...h.wp.work.stage,clip:{startSeconds:100,endSeconds:200,sourceDurationSeconds:1000,evidence:{note:'synthetic clip',urls:['https://www.youtube.com/watch?v='+newVideo]}},likesScope:'whole_video',scoreBinding:{...h.wp.work.stage.scoreBinding,sourceKey:newVideo+'@100-200'}}};
+ await h.settle();assert.equal(input().props.value,9);assert.equal(h.footer().props.disabled,true,'same video with new clip bounds is a new scoring source');
+ assert.equal(h.click(h.footer()),false);assert.equal(h.requests.filter(r=>r.url==='/api/save').length,0);
+ input().props.onChange({target:{value:''}});await h.settle();input().props.onChange({target:{value:'8.5'}});await h.settle();assert.equal(h.footer().props.disabled,false);
+ await h.click(h.footer());await h.settle();const posts=h.requests.filter(r=>r.url==='/api/save');assert.equal(posts.length,1);const payload=JSON.parse(posts[0].body);
+ assert.equal(payload.stageVideoId,newVideo);assert.equal(payload.stageSourceKey,source.stageSourceKey(h.wp.work.stage));assert.equal(payload.stageSourceKey,newVideo+'@100-200');assert.deepEqual(payload.values,{stageScore:8.5});
+ h.wp.data={...h.wp.data,works:[h.wp.work]};h.setCanEdit(false);await h.settle();assert.equal(h.find(h.editor(),n=>n.type==='input'),undefined,'non-owner cannot acquire an editor');
+ assert.equal(h.requests.filter(r=>r.url==='/api/save').length,1);
+});
 test('retired GOLD video draft is rejected after unscored source upgrade, without any PUT',async()=>{reset();const id='recvxyOz5Xm7MH';const gold=stageForWork(id);assert.equal(gold.videoId,'H5ySkWolCGE');assert.equal(gold.previousSources.at(-1).videoId,'ew5ObLvl8mA');remote.record_id=id;const i={...await input({stageScore:8}),recordId:id,stageVideoId:'ew5ObLvl8mA'};await assert.rejects(()=>saveRecord('owner',i),e=>e.code==='STAGE_SOURCE_CHANGED');assert.equal(sent,0);assert.equal(remote.fields['舞台分数'],null);});
 const {groupPlaceholderFor,isEmptyPlaceholderValue}=load('lib/idol/placeholders.ts');
 const {validStageAlternative,validStageSearchReview,stageSupplementForWork,safePublicStageUrl}=load('lib/idol/supplements.ts');

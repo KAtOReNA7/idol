@@ -1,27 +1,29 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-25T16:25:50.998058+00:00",
+  "checkedAt": "2026-10-28",
   "researchStatus": "completed-best-effort",
   "baseCommit": "d412376bd7f72df83d6a6bf46d9cd8e3b0a78f65",
   "displayPolicy": "User-directed fallback zero for unavailable data. observedValue remains null; zero must not be interpreted as verified absence. Omit unverified/nonexistent social accounts.",
   "summary": {
     "groups": 51,
     "accountIdentities": 153,
-    "socialObserved": 147,
-    "socialFallbackZero": 6,
+    "socialObserved": 148,
+    "socialFallbackZero": 5,
     "omittedPlatforms": 0,
-    "salesObserved": 42,
-    "salesLowerBoundsAdded": 10,
-    "salesFallbackZero": 9,
+    "salesObserved": 44,
+    "salesLowerBoundsAdded": 12,
+    "salesFallbackZero": 7,
     "winsObserved": 27,
     "winsConfirmedZero": 21,
     "winsFallbackZero": 3,
     "unresolvedSourceDifferences": [
-      "triples.sales",
-      "fromis9.sales",
+      "triples.sales"
+    ],
+    "resolvedSourceDifferences": [
       "lesserafim.wins",
       "newjeans.wins",
-      "ive.wins"
+      "ive.wins",
+      "fromis9.sales"
     ]
   },
   "groups": {
@@ -466,14 +468,14 @@
       ],
       "omittedPlatforms": [],
       "sales": {
-        "observedValue": 2087073,
-        "displayValue": 2087073,
+        "observedValue": 2092239,
+        "displayValue": 2092239,
         "status": "observed",
         "unit": "张",
         "title": "已公开累计",
-        "scope": "tripleS及该来源归入tripleS的子团韩国Circle月榜36行可复算累计。 为来源公开下限，不是全球完整累计。",
+        "scope": "tripleS及该来源归入tripleS的子团韩国Circle公开月榜36行，加2024年Performante Cosmo与2025年ASSEMBLE25 Cosmo同年同版年榜替换修正；截至2026-06的来源覆盖下界，不是全球完整累计。",
         "asOf": "2026-06",
-        "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+        "checkedAt": "2026-10-28",
         "sourceUrl": "https://soridata.com/sales/TripleS.html",
         "sourceTitle": "Soridata · Circle公开累计",
         "sources": [
@@ -483,12 +485,123 @@
             "sourceDate": "2026-06",
             "checkedAt": "2026-10-25T16:25:50.781200+00:00",
             "kind": "third-party-public"
+          },
+          {
+            "url": "https://www.ptt.cc/bbs/KoreanPop/M.1736512580.A.BEF.html",
+            "title": "performante-annual-2024 · Circle榜单具名转录/报道",
+            "sourceDate": "2024",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read",
+            "sha256": "04b9cdebf043937767a2fbb70ceab77c755d8b402c484c913ec2daf033e2da37"
+          },
+          {
+            "url": "https://www.ptt.cc/bbs/KoreanPop/M.1730996662.A.A38.html",
+            "title": "performante-month-2024-10 · Circle榜单具名转录/报道",
+            "sourceDate": "2024-10",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read",
+            "sha256": "2db36aebbfb4dbe300369826a09777af18631c93301622d51a2ea4e95a6d4722"
+          },
+          {
+            "url": "https://www.ptt.cc/bbs/KoreanPop/M.1738853569.A.FCB.html",
+            "title": "assemble24-month-2025-01 · Circle榜单具名转录/报道",
+            "sourceDate": "2025-01",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read",
+            "sha256": "3a154738e9cc72fae8b351300342a09e1fc1776ba45a8bc418104de69b05e0bc"
+          },
+          {
+            "url": "https://www.ptt.cc/bbs/KoreanPop/M.1749743919.A.6DE.html",
+            "title": "assemble25-month-2025-05 · Circle榜单具名转录/报道",
+            "sourceDate": "2025-05",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read",
+            "sha256": "99dc28a3cf620d7ba08fd8f4b04d0da202d2e1d7be16cd88f2e06d74962c5253"
+          },
+          {
+            "url": "https://www.ptt.cc/bbs/KoreanPop/M.1758213746.A.F94.html",
+            "title": "assemble25-month-2025-08 · Circle榜单具名转录/报道",
+            "sourceDate": "2025-08",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read",
+            "sha256": "c7bf15caa67695317d11412743d462dce0bffa81b2bc75c3f3018fe5140bca4c"
+          },
+          {
+            "url": "https://www.ptt.cc/bbs/KoreanPop/M.1760535210.A.F46.html",
+            "title": "assemble25-month-2025-09 · Circle榜单具名转录/报道",
+            "sourceDate": "2025-09",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read",
+            "sha256": "b9422004ce82513b93249b586e3e1f4f2076249fd8afc5cb04ea6dfbee73c1af"
+          },
+          {
+            "url": "https://www.ptt.cc/bbs/KoreanPop/M.1766068117.A.F25.html",
+            "title": "assemble25-month-2025-11 · Circle榜单具名转录/报道",
+            "sourceDate": "2025-11",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read",
+            "sha256": "a58e0a662ff61f8dba985bee83cb7c63d4811af66862239be4ee73f5f2c2b1ef"
+          },
+          {
+            "url": "https://www.soompi.com/article/1812104wpp/circle",
+            "title": "cosmo-annual-2025 · Circle榜单具名转录/报道",
+            "sourceDate": "2025",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read",
+            "sha256": "1096bd7f09724d991a02e2e1fef806a9521cb0e10e80b88fc85dd56b8f434d33"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?hitYear=2024&nationGbn=T&targetTime=2024&termGbn=year&yearTime=3",
+            "title": "Performante Cosmo · Circle 2024年榜官方索引",
+            "sourceDate": "2024",
+            "checkedAt": "2026-10-28",
+            "kind": "primary-chart",
+            "access": "search-index-only"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?hitYear=2025&nationGbn=T&targetTime=11&termGbn=month&yearTime=3",
+            "title": "ASSEMBLE25 Cosmo · Circle 2025年11月官方索引",
+            "sourceDate": "2025-11",
+            "checkedAt": "2026-10-28",
+            "kind": "primary-chart",
+            "access": "search-index-only"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2024&targetTime=2024&yearTime=3",
+            "title": "Circle 2024年Album榜 · 官方原生接口读回",
+            "sourceDate": "2024",
+            "checkedAt": "2026-10-28T08:21:42.568617+00:00",
+            "kind": "primary-chart",
+            "access": "native-public-api-read-backed-by-official-page-script",
+            "sha256": "8483ba5741486119325f7e3411e77918d1dc0a3df4b21ef8902a17f2fe28294d"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2025&targetTime=2025&yearTime=3",
+            "title": "Circle 2025年Album榜 · 官方原生接口读回",
+            "sourceDate": "2025",
+            "checkedAt": "2026-10-28T08:21:49.937883+00:00",
+            "kind": "primary-chart",
+            "access": "native-public-api-read-backed-by-official-page-script",
+            "sha256": "b732cd2f917913ef176f872b16b7713b29fa19782cb570ee37125be1dcfba195"
           }
         ],
         "notes": [
           "显示值为可核查的公开累计下限，不是全球完整累计；未加总Circle与Hanteo以免重复。",
           "来源未公布精确截至日时asOf保持null；checkedAt不能解释为销量统计截至日。",
-          "艺人汇总页2,458,789+与本轮可见36行月表2,087,073不一致；采用可复算下限，差额371,716未解释，不将差异标为彻底解决。"
+          "历史基线（2026-10-25）：艺人汇总页2,458,789+与本轮可见36行月表2,087,073不一致；采用可复算下限，差额371,716未解释，不将差异标为彻底解决。",
+          "2026-10-28逐版复算：2024年Performante Cosmo年榜289,224替换同年月和286,809（+2,415）；2025年ASSEMBLE25 Cosmo年榜406,744替换同年月和403,993（+2,751），净修正+5,166，累计2,092,239。36条原月行保留，不把年榜重复相加。",
+          "5/8/9/11月的ASSEMBLE25完整标题、Cosmo版本及各月数量已由可读具名月榜转录核对；2025年1月9,888为ASSEMBLE24 Cosmo，保持独立。Performante标准版、ASSEMBLE25标准/WITHVUU及Beyond Beauty跨年记录均未并入这两项年榜。",
+          "与已保存的艺人汇总2,458,789仍差366,550，来源差异继续开放。该汇总本轮未重新访问；不得将局部修正写成全团累计已完整闭合，也不混加日本、Hanteo或Retail。",
+          "前轮核对时：年榜及月榜依据可读第三方Circle转录/报道；2024年榜与2025年11月有官方搜索索引交叉核对。官方直读仅返回页面框架，不宣称完整官方榜已读取。",
+          "2026-10-28后续已直接读取Circle官方页面所用Album接口：2024年Performante Cosmo为289,224，2025年ASSEMBLE25 Cosmo为406,744，均与已采用年榜同值。采用期内Album_CNT核对，不采用Total_CNT，不新增加总、不混Retail；历史月行、年榜替换、2,092,239下界及366,550未解释差额均保持。"
         ],
         "evidence": {
           "kind": "public-cumulative-lower-bound",
@@ -741,10 +854,234 @@
               "album": "Acid Angel from Asia"
             }
           ],
-          "recomputedSum": 2087073
+          "recomputedSum": 2092239,
+          "monthlyRecomputedSum": 2087073,
+          "annualReplacements": [
+            {
+              "year": 2024,
+              "album": "Visionary Vision <Performante> (Cosmo)",
+              "annual": 289224,
+              "rank": 81,
+              "primary": "https://circlechart.kr/page_chart/album.circle?hitYear=2024&nationGbn=T&targetTime=2024&termGbn=year&yearTime=3",
+              "readable": "https://www.ptt.cc/bbs/KoreanPop/M.1736512580.A.BEF.html",
+              "replacedMonthlyRows": [
+                {
+                  "rowIndex": 20,
+                  "year": 2024,
+                  "month": 10,
+                  "sales": 286809,
+                  "album": "Visionary Vision (Cosmo)"
+                }
+              ],
+              "monthlySum": 286809,
+              "delta": 2415,
+              "titleMappings": [
+                {
+                  "rowIndex": 20,
+                  "expectedBefore": {
+                    "year": 2024,
+                    "month": 10,
+                    "sales": 286809,
+                    "album": "Visionary Vision (Cosmo)"
+                  },
+                  "resolvedAlbum": "Visionary Vision <Performante> (Cosmo)",
+                  "sourceId": "performante-month-2024-10",
+                  "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1730996662.A.A38.html",
+                  "exactSourceRow": "8 (NEW) tripleS - Visionary Vision ＜Performante＞ (Cosmo) 286,809 / 286,809",
+                  "matchBasis": "same artist, chart year/month, exact sales number, full album title and Cosmo version"
+                }
+              ],
+              "sourceAccess": {
+                "primary": "search-index-only; direct annual-chart open returned shell",
+                "readable": "full-page-read; dated third-party Circle chart reproduction/report",
+                "monthly": "full-page-read; dated PTT reproductions of the exact month charts"
+              },
+              "annualSourceId": "performante-annual-2024",
+              "method": "replace same-year same-version covered monthly rows with annual total; never add annual total to those rows"
+            },
+            {
+              "year": 2025,
+              "album": "<ASSEMBLE25> (Cosmo)",
+              "annual": 406744,
+              "rank": 57,
+              "primary": "https://circlechart.kr/page_chart/album.circle?hitYear=2025&nationGbn=T&targetTime=2025&termGbn=year&yearTime=3",
+              "readable": "https://www.soompi.com/article/1812104wpp/circle",
+              "replacedMonthlyRows": [
+                {
+                  "rowIndex": 9,
+                  "year": 2025,
+                  "month": 11,
+                  "sales": 22316,
+                  "album": "(Cosmo)"
+                },
+                {
+                  "rowIndex": 10,
+                  "year": 2025,
+                  "month": 9,
+                  "sales": 15127,
+                  "album": "(Cosmo)"
+                },
+                {
+                  "rowIndex": 11,
+                  "year": 2025,
+                  "month": 8,
+                  "sales": 15134,
+                  "album": "(Cosmo)"
+                },
+                {
+                  "rowIndex": 12,
+                  "year": 2025,
+                  "month": 5,
+                  "sales": 351416,
+                  "album": "(Cosmo)"
+                }
+              ],
+              "monthlySum": 403993,
+              "delta": 2751,
+              "titleMappings": [
+                {
+                  "rowIndex": 9,
+                  "expectedBefore": {
+                    "year": 2025,
+                    "month": 11,
+                    "sales": 22316,
+                    "album": "(Cosmo)"
+                  },
+                  "resolvedAlbum": "<ASSEMBLE25> (Cosmo)",
+                  "sourceId": "assemble25-month-2025-11",
+                  "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1766068117.A.F25.html",
+                  "exactSourceRow": "45 (NEW) tripleS ＜ASSEMBLE25＞(Cosmo) 22,316 / 406,744",
+                  "matchBasis": "same artist, chart year/month, exact sales number, full album title and Cosmo version"
+                },
+                {
+                  "rowIndex": 10,
+                  "expectedBefore": {
+                    "year": 2025,
+                    "month": 9,
+                    "sales": 15127,
+                    "album": "(Cosmo)"
+                  },
+                  "resolvedAlbum": "<ASSEMBLE25> (Cosmo)",
+                  "sourceId": "assemble25-month-2025-09",
+                  "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1760535210.A.F46.html",
+                  "exactSourceRow": "49 (↑1) tripleS ＜ASSEMBLE25＞(Cosmo) 15,127 / 384,428",
+                  "matchBasis": "same artist, chart year/month, exact sales number, full album title and Cosmo version"
+                },
+                {
+                  "rowIndex": 11,
+                  "expectedBefore": {
+                    "year": 2025,
+                    "month": 8,
+                    "sales": 15134,
+                    "album": "(Cosmo)"
+                  },
+                  "resolvedAlbum": "<ASSEMBLE25> (Cosmo)",
+                  "sourceId": "assemble25-month-2025-08",
+                  "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1758213746.A.F94.html",
+                  "exactSourceRow": "50 (↑HOT)tripleS ＜ASSEMBLE25＞ (Cosmo) 15,134 / 369,301",
+                  "matchBasis": "same artist, chart year/month, exact sales number, full album title and Cosmo version"
+                },
+                {
+                  "rowIndex": 12,
+                  "expectedBefore": {
+                    "year": 2025,
+                    "month": 5,
+                    "sales": 351416,
+                    "album": "(Cosmo)"
+                  },
+                  "resolvedAlbum": "<ASSEMBLE25> (Cosmo)",
+                  "sourceId": "assemble25-month-2025-05",
+                  "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1749743919.A.6DE.html",
+                  "exactSourceRow": "8 (NEW) tripleS ＜ASSEMBLE25＞ (Cosmo) 351,416 / 351,416",
+                  "matchBasis": "same artist, chart year/month, exact sales number, full album title and Cosmo version"
+                }
+              ],
+              "sourceAccess": {
+                "primary": "2025 annual URL not read directly; dated Soompi annual report supplies the year total. Official November search index separately corroborates title/value; its direct open returned shell.",
+                "readable": "full-page-read; dated third-party Circle chart reproduction/report",
+                "monthly": "full-page-read; dated PTT reproductions of the exact month charts"
+              },
+              "annualSourceId": "cosmo-annual-2025",
+              "method": "replace same-year same-version covered monthly rows with annual total; never add annual total to those rows"
+            }
+          ],
+          "sourceDifferenceReview": {
+            "checkedAt": "2026-10-28",
+            "status": "partially-resolved",
+            "monthlySum": 2087073,
+            "annualNetAdjustment": 5166,
+            "reconciledSum": 2092239,
+            "aggregateTotal": 2458789,
+            "remainingDifference": 366550,
+            "aggregateAccess": "previously stored observation only; not fetched in this audit",
+            "reason": "Two disjoint same-year Cosmo annual replacements are verified; artist aggregate remains unexplained by 366550. No assumption about missing subunits, Japan or alternate counting systems is accepted."
+          },
+          "officialAnnualReadback20261028": {
+            "checkedAt": "2026-10-28",
+            "access": "official-page-native-public-api",
+            "chart": "Circle Album Chart",
+            "metricField": "Album_CNT",
+            "excludedMetricFields": [
+              "Total_CNT"
+            ],
+            "purpose": "Corroborate two existing annual replacements; no contribution added and no numeric change.",
+            "observations": [
+              {
+                "year": 2024,
+                "album": "Visionary Vision ＜Performante＞ (Cosmo)",
+                "artist": "tripleS (트리플에스)",
+                "albumId": "78113",
+                "metricField": "Album_CNT",
+                "annual": 289224,
+                "rank": 81,
+                "matchesExistingAnnual": true,
+                "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2024&targetTime=2024&yearTime=3",
+                "endpoint": "https://circlechart.kr/data/api/chart/album",
+                "parameters": {
+                  "nationGbn": "T",
+                  "termGbn": "year",
+                  "hitYear": "2024",
+                  "targetTime": "2024",
+                  "yearTime": "3",
+                  "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2024&targetTime=2024&yearTime=3"
+                },
+                "checkedAt": "2026-10-28T08:21:42.568617+00:00",
+                "pageSha256": "847840c9cc54b0d70741306eae37e1b6b8aac8f1669d298677a09d4fca5b2664",
+                "responseSha256": "8483ba5741486119325f7e3411e77918d1dc0a3df4b21ef8902a17f2fe28294d",
+                "evidenceRef": "docs/codex/evidence/20261028-continuous/circle-annual-c.json"
+              },
+              {
+                "year": 2025,
+                "album": "＜ASSEMBLE25＞(Cosmo)",
+                "artist": "tripleS (트리플에스)",
+                "albumId": "79676",
+                "metricField": "Album_CNT",
+                "annual": 406744,
+                "rank": 57,
+                "matchesExistingAnnual": true,
+                "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2025&targetTime=2025&yearTime=3",
+                "endpoint": "https://circlechart.kr/data/api/chart/album",
+                "parameters": {
+                  "nationGbn": "T",
+                  "termGbn": "year",
+                  "hitYear": "2025",
+                  "targetTime": "2025",
+                  "yearTime": "3",
+                  "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=year&hitYear=2025&targetTime=2025&yearTime=3"
+                },
+                "checkedAt": "2026-10-28T08:21:49.937883+00:00",
+                "pageSha256": "a9769eb9e384e5d0bd56caa0a78da56cc920b8b66ab28510df69c05b5f800f70",
+                "responseSha256": "b732cd2f917913ef176f872b16b7713b29fa19782cb570ee37125be1dcfba195",
+                "evidenceRef": "docs/codex/evidence/20261028-continuous/circle-annual-c.json"
+              }
+            ],
+            "coverageComplete": false,
+            "remainingDifferenceResolved": false,
+            "evidenceRef": "docs/codex/evidence/20261028-continuous/circle-annual-c.json"
+          }
         },
         "lowerBound": true,
-        "rawDisplay": "2,087,073+"
+        "rawDisplay": "2,092,239+"
       },
       "wins": {
         "observedValue": 6,
@@ -1761,22 +2098,87 @@
       ],
       "omittedPlatforms": [],
       "sales": {
-        "observedValue": null,
-        "displayValue": 0,
-        "status": "unavailable",
-        "unit": "copies",
-        "title": "韩国发行累计销量",
-        "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。",
-        "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.889410+00:00",
-        "sourceUrl": null,
-        "sourceTitle": null,
-        "sources": [],
-        "notes": [
-          "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
-          "已检索Circle相关公开榜单、团体名与album sales；单张/单周/单日零售数字及sold out描述不替代团体累计。"
+        "observedValue": 5367,
+        "displayValue": 5367,
+        "status": "observed",
+        "unit": "张",
+        "title": "已核两周销量下界",
+        "scope": "BADVILLAIN《OVERSTEP》韩国Circle Album Chart 2024年第23、24周已核销量合计5,367张；仅为这两周的来源覆盖下界，不是全团或全球完整累计；其他时期、版本及作品未覆盖。",
+        "asOf": "2024-W24",
+        "checkedAt": "2026-10-28",
+        "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=23&hitYear=2024&termGbn=week&yearTime=3",
+        "sourceTitle": "Circle Album Chart · OVERSTEP · 2024第23、24周",
+        "sources": [
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=23&hitYear=2024&termGbn=week&yearTime=3",
+            "title": "Circle Album Chart · OVERSTEP · 2024-W23 周销量",
+            "sourceDate": "2024-W23",
+            "checkedAt": "2026-10-28T05:44:57.385378+00:00",
+            "kind": "primary-chart",
+            "access": "official-page-native-public-api",
+            "sha256": "adf48f7895bf40e41cdbce653c118231d52b988f6dbeef6911816c7138586010"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=24&hitYear=2024&termGbn=week&yearTime=3",
+            "title": "Circle Album Chart · OVERSTEP · 2024-W24 周销量",
+            "sourceDate": "2024-W24",
+            "checkedAt": "2026-10-28T05:45:01.645817+00:00",
+            "kind": "primary-chart",
+            "access": "official-page-native-public-api",
+            "sha256": "2498bf68869e202dcda891bb2c03529a3495750479ee1cd2f2a85238485b7efa"
+          }
         ],
-        "evidence": {}
+        "notes": [
+          "数值只包含下列已核周榜，按独立周相加；不是全团或全球完整累计。",
+          "使用Circle Album Chart当周Album_CNT，不使用累计范围未明的Total_CNT；不加总同期间月/年榜、Hanteo或Retail零售榜。",
+          "未覆盖其他周期、其他版本及其他作品；未上所查Top100不等于销售为0。"
+        ],
+        "lowerBound": true,
+        "evidence": {
+          "kind": "public-period-lower-bound",
+          "lowerBound": true,
+          "replacedStatus": "unavailable",
+          "previousEvidence": {},
+          "chart": "Circle Album Chart",
+          "metricField": "Album_CNT",
+          "artist": "배드빌런 (BADVILLAIN)",
+          "album": "OVERSTEP",
+          "albumId": "76819",
+          "distributor": "Kakao Entertainment",
+          "weekRows": [
+            {
+              "year": 2024,
+              "week": 23,
+              "album": "OVERSTEP",
+              "albumId": "76819",
+              "sales": 2962,
+              "rank": 38,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=23&hitYear=2024&termGbn=week&yearTime=3",
+              "checkedAt": "2026-10-28T05:44:57.385378+00:00",
+              "responseSha256": "adf48f7895bf40e41cdbce653c118231d52b988f6dbeef6911816c7138586010"
+            },
+            {
+              "year": 2024,
+              "week": 24,
+              "album": "OVERSTEP",
+              "albumId": "76819",
+              "sales": 2405,
+              "rank": 58,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&targetTime=24&hitYear=2024&termGbn=week&yearTime=3",
+              "checkedAt": "2026-10-28T05:45:01.645817+00:00",
+              "responseSha256": "2498bf68869e202dcda891bb2c03529a3495750479ee1cd2f2a85238485b7efa"
+            }
+          ],
+          "recomputedSum": 5367,
+          "fieldGrounding": "原官方album.circle页内脚本POST /data/api/chart/album；termGbn=week分支只展示Album_CNT。与retail.circle及/data/api/chart/retail_list完全分开。",
+          "excludedCumulativeField": {
+            "Total_CNT": 5980,
+            "reason": "两周响应均有该数，但累计范围未经说明核实，本批完全不使用。"
+          },
+          "sourceEvidenceFile": "docs/codex/evidence/20261028-stage-fill/statistics-primary-observations-c.json",
+          "researchFile": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+          "coverageComplete": false
+        }
       },
       "wins": {
         "observedValue": 0,
@@ -2408,22 +2810,67 @@
       ],
       "omittedPlatforms": [],
       "sales": {
-        "observedValue": null,
-        "displayValue": 0,
-        "status": "unavailable",
-        "unit": "copies",
-        "title": "韩国发行累计销量",
-        "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。",
-        "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.889410+00:00",
-        "sourceUrl": null,
-        "sourceTitle": null,
-        "sources": [],
-        "notes": [
-          "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
-          "已检索Circle相关公开榜单、团体名与album sales；单张/单周/单日零售数字及sold out描述不替代团体累计。"
+        "observedValue": 725,
+        "displayValue": 725,
+        "status": "observed",
+        "unit": "张",
+        "title": "已核单周销量下界",
+        "scope": "BEWAVE《BE;WAVE》韩国Circle Album Chart 2024年第16周已核销量725张；仅为这一周的来源覆盖下界，不是全团或全球完整累计；其他时期、版本及作品未覆盖。",
+        "asOf": "2024-W16",
+        "checkedAt": "2026-10-28",
+        "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=16&yearTime=3",
+        "sourceTitle": "Circle Album Chart · BE;WAVE · 2024第16周",
+        "sources": [
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=16&yearTime=3",
+            "title": "Circle Album Chart · BE;WAVE · 2024-W16 周销量",
+            "sourceDate": "2024-W16",
+            "checkedAt": "2026-10-28T05:48:59.166622+00:00",
+            "kind": "primary-chart",
+            "access": "official-page-native-public-api",
+            "sha256": "d9b16dfc1523137ea5d9f60e2c3a893b0f141984207117f49989b291641cc725"
+          }
         ],
-        "evidence": {}
+        "notes": [
+          "数值只包含下列已核周榜，按独立周相加；不是全团或全球完整累计。",
+          "使用Circle Album Chart当周Album_CNT，不使用累计范围未明的Total_CNT；不加总同期间月/年榜、Hanteo或Retail零售榜。",
+          "未覆盖其他周期、其他版本及其他作品；未上所查Top100不等于销售为0。"
+        ],
+        "lowerBound": true,
+        "evidence": {
+          "kind": "public-period-lower-bound",
+          "lowerBound": true,
+          "replacedStatus": "unavailable",
+          "previousEvidence": {},
+          "chart": "Circle Album Chart",
+          "metricField": "Album_CNT",
+          "artist": "BEWAVE(비웨이브)",
+          "album": "BE;WAVE",
+          "albumId": "76300",
+          "distributor": "Kakao Entertainment",
+          "weekRows": [
+            {
+              "year": 2024,
+              "week": 16,
+              "album": "BE;WAVE",
+              "albumId": "76300",
+              "sales": 725,
+              "rank": 95,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=16&yearTime=3",
+              "checkedAt": "2026-10-28T05:48:59.166622+00:00",
+              "responseSha256": "d9b16dfc1523137ea5d9f60e2c3a893b0f141984207117f49989b291641cc725"
+            }
+          ],
+          "recomputedSum": 725,
+          "fieldGrounding": "album.circle页内同一week渲染分支只展示Album_CNT；使用公开chart/album响应，非Retail。",
+          "excludedCumulativeField": {
+            "Total_CNT": 1797,
+            "reason": "累计范围未独立核实，本批完全不使用。"
+          },
+          "sourceEvidenceFile": "docs/codex/evidence/20261028-stage-fill/statistics-primary-observations-c.json",
+          "researchFile": "docs/codex/evidence/20261028-stage-fill/statistics-followup.json",
+          "coverageComplete": false
+        }
       },
       "wins": {
         "observedValue": 0,
@@ -4681,14 +5128,14 @@
       ],
       "omittedPlatforms": [],
       "sales": {
-        "observedValue": 1036604,
-        "displayValue": 1036604,
+        "observedValue": 1152076,
+        "displayValue": 1152076,
         "status": "observed",
         "unit": "张",
         "title": "已公开累计",
-        "scope": "fromis_9韩国Circle月榜37行可复算累计；来源月表只至2025-07。 为来源公开下限，不是全球完整累计。",
-        "asOf": "2025-07",
-        "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+        "scope": "fromis_9韩国Circle公开月榜39行及2019/2022两项标准版年榜修正累计，截至2026-07；为来源覆盖下界，不是全球完整累计。",
+        "asOf": "2026-07",
+        "checkedAt": "2026-10-28",
         "sourceUrl": "https://soridata.com/en/sales/fromis-9.html",
         "sourceTitle": "Soridata · Circle公开累计",
         "sources": [
@@ -4698,12 +5145,68 @@
             "sourceDate": "2025-07",
             "checkedAt": "2026-10-25T16:25:50.781200+00:00",
             "kind": "third-party-public"
+          },
+          {
+            "url": "https://soridata.com/en/sales/fromis-9.html",
+            "title": "Soridata · Circle monthly rows refreshed through July 2026",
+            "sourceDate": "2026-07",
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://soridata.com/transparency.html",
+            "title": "Soridata · monthly/yearly sales methodology",
+            "sourceDate": null,
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?hitYear=2019&nationGbn=T&targetTime=2019&termGbn=year&yearTime=3",
+            "title": "FUN FACTORY · 2019 标准版年榜交叉核验 (官方索引)",
+            "sourceDate": "2019",
+            "checkedAt": "2026-10-28",
+            "kind": "primary-chart",
+            "access": "search-index-only"
+          },
+          {
+            "url": "https://bestsellingalbums.org/year-end/South_Korea_Top_Albums_2019",
+            "title": "FUN FACTORY · 2019 标准版年榜交叉核验 (可读复本)",
+            "sourceDate": "2019",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read"
+          },
+          {
+            "url": "https://kpopmerchandiseguide.com/discography/fromis-9-albums",
+            "title": "FUN FACTORY · 2019 标准版年榜交叉核验 (可读复本)",
+            "sourceDate": "2019",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read"
+          },
+          {
+            "url": "https://circlechart.co.kr/page_chart/album.circle?hitYear=2022&nationGbn=T&targetTime=2022&termGbn=year&yearTime=3",
+            "title": "from our Memento Box · 2022 标准版年榜交叉核验 (官方索引)",
+            "sourceDate": "2022",
+            "checkedAt": "2026-10-28",
+            "kind": "primary-chart",
+            "access": "search-index-only"
+          },
+          {
+            "url": "https://bestsellingalbums.org/album/62583",
+            "title": "from our Memento Box · 2022 标准版年榜交叉核验 (可读复本)",
+            "sourceDate": "2022",
+            "checkedAt": "2026-10-28",
+            "kind": "third-party-public",
+            "access": "full-page-read"
           }
         ],
         "notes": [
           "显示值为可核查的公开累计下限，不是全球完整累计；未加总Circle与Hanteo以免重复。",
-          "来源未公布精确截至日时asOf保持null；checkedAt不能解释为销量统计截至日。",
-          "艺人汇总页1,037,067+与可见37行月表1,036,604相差463；其他缓存另有1,152,076+。采用有明确月份的可复算下限，后续发行缺口未关闭。"
+          "2026-10-27复核新增2026-07两行：Glow ME 105,009及kiwee版10,000；旧37行保持，39行合计1,151,613。",
+          "历史记录（2026-10-27，已于2026-10-28解决）：同次艺人汇总页1,152,076+仍比月榜和多463。月榜与年榜修正口径不同可解释差异机制，但未逐行证明463来源，冲突继续开放。",
+          "2026-10-28逐发行复算：FUN FACTORY标准版2019年榜56,121替换同年月和56,468（-347）；Memento Box标准版2022年榜158,682替换同年月和157,872（+810）。净调整+463，累计1,152,076，与来源艺人汇总相符。原39月行保留；KiT/Weverse独立版本不重复加总。",
+          "年榜数字由官方搜索索引及完整可读第三方榜单复本交叉核实；官方页面直接读取仅返回榜单框架，不宣称已读取完整官方榜。该复算解决此项来源差额，不代表全球销量已完整覆盖。"
         ],
         "evidence": {
           "kind": "public-cumulative-lower-bound",
@@ -4755,6 +5258,18 @@
             "japaneseReportedTotal": null
           },
           "monthRows": [
+            {
+              "year": 2026,
+              "month": 7,
+              "sales": 105009,
+              "album": "Glow ME"
+            },
+            {
+              "year": 2026,
+              "month": 7,
+              "sales": 10000,
+              "album": "Glow ME (kiwee album)"
+            },
             {
               "year": 2025,
               "month": 7,
@@ -4978,10 +5493,106 @@
               "album": "To. Heart"
             }
           ],
-          "recomputedSum": 1036604
+          "recomputedSum": 1152076,
+          "sourceDifferenceReview": {
+            "checkedAt": "2026-10-28",
+            "status": "resolved-by-yearly-reconciliation",
+            "previousMonthlySum": 1036604,
+            "addedMonthlySales": 115009,
+            "aggregateTotal": 1152076,
+            "remainingDifference": 0,
+            "aggregateUrl": "https://soridata.com/artists/fromis-9.html",
+            "methodologyUrl": "https://soridata.com/transparency.html",
+            "reason": "Two standard-edition annual replacements (-347 and +810) exactly reconcile monthly rows to the artist aggregate; separate KiT/Weverse rows remain included once. Primary chart rows are search-index evidence corroborated by full readable third-party chart reproductions; global completeness is not claimed.",
+            "previousReview": {
+              "checkedAt": "2026-10-27",
+              "status": "partially-resolved",
+              "previousMonthlySum": 1036604,
+              "addedMonthlySales": 115009,
+              "aggregateTotal": 1152076,
+              "remainingDifference": 463,
+              "aggregateUrl": "https://soridata.com/artists/fromis-9.html",
+              "methodologyUrl": "https://soridata.com/transparency.html",
+              "reason": "Monthly and yearly totals can differ due to returns and chart coverage. Exact residual not yet reconstructed."
+            },
+            "monthlySum": 1151613,
+            "annualNetAdjustment": 463,
+            "reconciledSum": 1152076
+          },
+          "annualReplacements": [
+            {
+              "year": 2019,
+              "album": "FUN FACTORY",
+              "annual": 56121,
+              "primary": "https://circlechart.kr/page_chart/album.circle?hitYear=2019&nationGbn=T&targetTime=2019&termGbn=year&yearTime=3",
+              "readable": "https://bestsellingalbums.org/year-end/South_Korea_Top_Albums_2019",
+              "corroborating": "https://kpopmerchandiseguide.com/discography/fromis-9-albums",
+              "rank": 91,
+              "replacedMonthlyRows": [
+                {
+                  "rowIndex": 27,
+                  "year": 2019,
+                  "month": 8,
+                  "sales": 1212,
+                  "album": "FUN FACTORY"
+                },
+                {
+                  "rowIndex": 28,
+                  "year": 2019,
+                  "month": 7,
+                  "sales": 5406,
+                  "album": "FUN FACTORY"
+                },
+                {
+                  "rowIndex": 29,
+                  "year": 2019,
+                  "month": 6,
+                  "sales": 49850,
+                  "album": "FUN FACTORY"
+                }
+              ],
+              "monthlySum": 56468,
+              "delta": -347,
+              "sourceAccess": {
+                "primary": "search-index-only; direct-open returned chart shell",
+                "readable": "full-page-read; secondary chart transcription"
+              }
+            },
+            {
+              "year": 2022,
+              "album": "from our Memento Box",
+              "annual": 158682,
+              "primary": "https://circlechart.co.kr/page_chart/album.circle?hitYear=2022&nationGbn=T&targetTime=2022&termGbn=year&yearTime=3",
+              "readable": "https://bestsellingalbums.org/album/62583",
+              "rank": 92,
+              "replacedMonthlyRows": [
+                {
+                  "rowIndex": 12,
+                  "year": 2022,
+                  "month": 7,
+                  "sales": 20640,
+                  "album": "from our Memento Box"
+                },
+                {
+                  "rowIndex": 14,
+                  "year": 2022,
+                  "month": 6,
+                  "sales": 137232,
+                  "album": "from our Memento Box"
+                }
+              ],
+              "monthlySum": 157872,
+              "delta": 810,
+              "sourceAccess": {
+                "primary": "search-index-only; direct-open returned chart shell",
+                "readable": "full-page-read; secondary chart transcription"
+              }
+            }
+          ],
+          "monthlyRecomputedSum": 1151613
         },
         "lowerBound": true,
-        "rawDisplay": "1,036,604+"
+        "rawDisplay": "1,152,076+"
       },
       "wins": {
         "observedValue": 19,
@@ -5259,15 +5870,15 @@
           "platform": "instagram",
           "url": "https://www.instagram.com/everglow.offcl/",
           "accountExists": true,
-          "observedValue": null,
-          "displayValue": 0,
-          "status": "unavailable",
-          "rawDisplay": null,
-          "precision": "unknown",
-          "observedAt": null,
-          "checkedAt": "2026-10-25T16:25:50.781200+00:00",
-          "sourceUrl": "https://linktr.ee/everglow_offcl",
-          "sourceTitle": "官方账号身份入口",
+          "observedValue": 86501,
+          "displayValue": 86501,
+          "status": "observed",
+          "rawDisplay": "86,501 followers",
+          "precision": "third-party-reported-integer",
+          "observedAt": "2026-05-30",
+          "checkedAt": "2026-10-27",
+          "sourceUrl": "https://www.j-enta.com/en/artist/386/EVERGLOW",
+          "sourceTitle": "J-Enta · @everglow.offcl 历史人数（2026-05-30，非实时）",
           "sources": [
             {
               "url": "https://linktr.ee/everglow_offcl",
@@ -5275,15 +5886,20 @@
               "sourceDate": null,
               "checkedAt": "2026-10-25T16:25:50.781200+00:00",
               "kind": "third-party-public"
+            },
+            {
+              "url": "https://www.j-enta.com/en/artist/386/EVERGLOW",
+              "title": "J-Enta · @everglow.offcl 历史人数（2026-05-30，非实时）",
+              "sourceDate": "2026-05-30",
+              "checkedAt": "2026-10-27",
+              "kind": "third-party-public"
             }
           ],
           "identitySourceUrl": "https://linktr.ee/everglow_offcl",
           "subjectName": "EVERGLOW",
           "notes": [
-            "已验证公开账号身份，但未取得可核实且可明确归属的公开人数；按用户要求显示0，observedValue保留null。",
-            "搜索缓存中的无日期二手人数不作为本条数值。",
-            "排除旧公司EVERGLOW账号历史统计，未将旧账号的INS/X人数移植给新账号。",
-            "按用户设置显示0；0为显示占位，非经核实的真实人数。"
+            "第三方按账号列出的历史快照，非官方实时计数；保留来源原始更新日期。",
+            "仅新账号 @everglow.offcl；未使用旧账号 @official_everglow 的 2,400,599 人。"
           ]
         }
       ],
@@ -6823,7 +7439,7 @@
         "title": "打歌一位",
         "scope": "本团署名韩国音乐节目一位；排除成员solo及来源单独列出的跨团联合项目，不含年末奖。",
         "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+        "checkedAt": "2026-10-27",
         "sourceUrl": "https://chukkae.com/artists/newjeans",
         "sourceTitle": "Chukkae · 逐曲音乐节目一位",
         "sources": [
@@ -6847,10 +7463,32 @@
             "sourceDate": null,
             "checkedAt": "2026-10-25T16:25:50.781200+00:00",
             "kind": "third-party-public"
+          },
+          {
+            "url": "https://kpopping.com/profiles/group/NewJeans",
+            "title": "Kpopping · comparison total and Super Shy ordinal",
+            "sourceDate": null,
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://www.soompi.com/article/1609582wpp/watch-newjeans-takes-6th-win-and-triple-crown-for-super-shy-on-inkigayo-performances-by-riize-twices-jihyo-itzy-and-more",
+            "title": "Soompi · Super Shy sixth win",
+            "sourceDate": "2023-08-27",
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://www.kpopdb.net/en/artist/665/song.php?a=575&s=2397",
+            "title": "KPopDB · Super Shy individual music-show results",
+            "sourceDate": null,
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
           }
         ],
         "notes": [
-          "Chukkae、Karchives、Soridata均为35；Kpopping36的旧冲突记录保留，不采用其合计。"
+          "总数保持35。差异定位到Super Shy：Kpopping将2023-08-27写为第7次，而当期Soompi报道为第6次，KPopDB六条日期与Chukkae一致。",
+          "以逐场记录及当期报道裁定Super Shy=6，不采用Kpopping的7次序号；外站仍可显示不同总数，不声称已修改外站。"
         ],
         "evidence": {
           "kind": "reconciled-scope",
@@ -6868,6 +7506,44 @@
             "reportedTotal": 36,
             "comparisonTotal": 35,
             "comparisonUrl": "https://chukkae.com/music-shows/records/girl-groups"
+          },
+          "sourceDifferenceReview": {
+            "checkedAt": "2026-10-27",
+            "status": "resolved-source-adjudication",
+            "comparisonTotal": 36,
+            "acceptedTotal": 35,
+            "song": "Super Shy",
+            "comparisonSongOrdinal": 7,
+            "acceptedSongCount": 6,
+            "events": [
+              {
+                "date": "2023-07-13",
+                "show": "M Countdown"
+              },
+              {
+                "date": "2023-07-22",
+                "show": "Music Core"
+              },
+              {
+                "date": "2023-07-23",
+                "show": "Inkigayo"
+              },
+              {
+                "date": "2023-08-16",
+                "show": "Show Champion"
+              },
+              {
+                "date": "2023-08-20",
+                "show": "Inkigayo"
+              },
+              {
+                "date": "2023-08-27",
+                "show": "Inkigayo"
+              }
+            ],
+            "eventListUrl": "https://www.kpopdb.net/en/artist/665/song.php?a=575&s=2397",
+            "contemporaryReportUrl": "https://www.soompi.com/article/1609582wpp/watch-newjeans-takes-6th-win-and-triple-crown-for-super-shy-on-inkigayo-performances-by-riize-twices-jihyo-itzy-and-more",
+            "limitation": "The conflicting ordinal is rejected; an additional valid seventh event was not found. External source remains unchanged."
           }
         }
       }
@@ -7815,7 +8491,7 @@
         "title": "打歌一位",
         "scope": "本团署名韩国音乐节目一位；排除成员solo及来源单独列出的跨团联合项目，不含年末奖。",
         "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+        "checkedAt": "2026-10-27",
         "sourceUrl": "https://chukkae.com/artists/ive",
         "sourceTitle": "Chukkae · 逐曲音乐节目一位",
         "sources": [
@@ -7839,11 +8515,39 @@
             "sourceDate": null,
             "checkedAt": "2026-10-25T16:25:50.781200+00:00",
             "kind": "third-party-public"
+          },
+          {
+            "url": "https://kpopping.com/profiles/group/IVE",
+            "title": "Kpopping · comparison award table",
+            "sourceDate": null,
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://www.soompi.com/article/1823390wpp/watch-ive-takes-5th-win-for-bang-bang-on-music-bank-performances-by-hearts2hearts-everglow-and-more",
+            "title": "Soompi · IVE dated award report",
+            "sourceDate": "2026-03-06",
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://www.soompi.com/article/1823524wpp/watch-ive-takes-6th-win-for-bang-bang-on-music-core-performances-by-woodz-hearts2hearts-kiiikiii-and-more",
+            "title": "Soompi · IVE dated award report",
+            "sourceDate": "2026-03-07",
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://www.soompi.com/article/1824877wpp/watch-ive-takes-8th-win-and-triple-crown-for-bang-bang-on-music-bank-performances-by-onew-kickflip-and-more",
+            "title": "Soompi · IVE dated award report",
+            "sourceDate": "2026-03-13",
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
           }
         ],
         "notes": [
-          "Chukkae与Soridata83一致；Karchives旧69加XOXZ5、BANG BANG8、BLACKHOLE1为83。",
-          "Kpopping82含2026-03-06歌曲归属和2026-03-07条目差异，未将其合计采用。"
+          "总数保持83，BANG BANG=8、BLACKHOLE=1。Kpopping遗漏2026-03-07 Music Core一场，且将03-06 Music Bank错标BLACKHOLE。",
+          "当期Soompi逐场报道证明03-06为BANG BANG第5次、03-07第6次、03-13第8次；补回漏场解释82→83，纠正曲名本身不增加奖项。"
         ],
         "evidence": {
           "kind": "reconciled-scope",
@@ -7866,6 +8570,40 @@
             "reportedTotal": 82,
             "comparisonTotal": 83,
             "comparisonUrl": "https://chukkae.com/music-shows/records/girl-groups"
+          },
+          "sourceDifferenceReview": {
+            "checkedAt": "2026-10-27",
+            "status": "resolved-source-adjudication",
+            "comparisonTotal": 82,
+            "acceptedTotal": 83,
+            "missingComparisonEvent": "2026-03-07/Music Core",
+            "misattributedComparisonEvent": "2026-03-06/Music Bank: BLACKHOLE instead of BANG BANG",
+            "events": [
+              {
+                "date": "2026-03-06",
+                "show": "Music Bank",
+                "song": "BANG BANG",
+                "ordinal": 5,
+                "points": 8840,
+                "sourceUrl": "https://www.soompi.com/article/1823390wpp/watch-ive-takes-5th-win-for-bang-bang-on-music-bank-performances-by-hearts2hearts-everglow-and-more"
+              },
+              {
+                "date": "2026-03-07",
+                "show": "Music Core",
+                "song": "BANG BANG",
+                "ordinal": 6,
+                "points": 7205,
+                "sourceUrl": "https://www.soompi.com/article/1823524wpp/watch-ive-takes-6th-win-for-bang-bang-on-music-core-performances-by-woodz-hearts2hearts-kiiikiii-and-more"
+              },
+              {
+                "date": "2026-03-13",
+                "show": "Music Bank",
+                "song": "BANG BANG",
+                "ordinal": 8,
+                "points": 4405,
+                "sourceUrl": "https://www.soompi.com/article/1824877wpp/watch-ive-takes-8th-win-and-triple-crown-for-bang-bang-on-music-bank-performances-by-onew-kickflip-and-more"
+              }
+            ]
           }
         }
       }
@@ -9244,7 +9982,7 @@
         "title": "打歌一位",
         "scope": "本团署名韩国音乐节目一位；排除成员solo及来源单独列出的跨团联合项目，不含年末奖。",
         "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+        "checkedAt": "2026-10-27",
         "sourceUrl": "https://chukkae.com/artists/le-sserafim",
         "sourceTitle": "Chukkae · 逐曲音乐节目一位",
         "sources": [
@@ -9261,11 +9999,32 @@
             "sourceDate": null,
             "checkedAt": "2026-10-25T16:25:50.781200+00:00",
             "kind": "third-party-public"
+          },
+          {
+            "url": "https://kpopping.com/profiles/group/LE-SSERAFIM",
+            "title": "Kpopping · total and latest award entries",
+            "sourceDate": null,
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://kpopping.com/musicshows/m-countdown-ep934",
+            "title": "Kpopping · joint-artist award attribution",
+            "sourceDate": "2026-06-25",
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://kpopping.com/musicshows/m-countdown-ep936",
+            "title": "Kpopping · joint-artist award attribution",
+            "sourceDate": "2026-07-09",
+            "checkedAt": "2026-10-27",
+            "kind": "third-party-public"
           }
         ],
         "notes": [
-          "Chukkae本团10首合计37；Soridata明确37并另列合作项目1次，合作奖不并入本团独立署名口径。",
-          "Kpopping39的剩余差异没有完整解释，原冲突保留；本条采用可逐曲复算的37。"
+          "本团口径歌曲合计保持37。Kpopping总数39包含两条明确标作跨团合作的ICONIC BY MISTAKE；按既定范围排除后39−2=37。",
+          "这里只解释Kpopping自身条目的统计归属，不把社区合作条目当成另经官方验证的获奖事实，也不新增合作奖项。"
         ],
         "evidence": {
           "kind": "reconciled-scope",
@@ -9286,6 +10045,32 @@
             "reportedTotal": 39,
             "comparisonTotal": 37,
             "comparisonUrl": "https://chukkae.com/music-shows/records/girl-groups"
+          },
+          "sourceDifferenceReview": {
+            "checkedAt": "2026-10-27",
+            "status": "resolved-scope",
+            "comparisonTotal": 39,
+            "excludedCount": 2,
+            "acceptedTotal": 37,
+            "excludedComparisonEntries": [
+              {
+                "date": "2026-06-25",
+                "show": "M Countdown",
+                "episode": 934,
+                "song": "ICONIC BY MISTAKE",
+                "artist": "LE SSERAFIM x ILLIT x KATSEYE",
+                "sourceUrl": "https://kpopping.com/musicshows/m-countdown-ep934"
+              },
+              {
+                "date": "2026-07-09",
+                "show": "M Countdown",
+                "episode": 936,
+                "song": "ICONIC BY MISTAKE",
+                "artist": "LE SSERAFIM x ILLIT x KATSEYE",
+                "sourceUrl": "https://kpopping.com/musicshows/m-countdown-ep936"
+              }
+            ],
+            "independentlyVerifiedAwards": false
           }
         }
       }

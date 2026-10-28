@@ -6,5 +6,7 @@
 .mv-identity-expand{position:absolute;bottom:10px;right:10px;border-radius:4px;padding:5px 8px;background:#0009;color:#fff;font:400 11px/1.4 system-ui,sans-serif}
 .mv-identity-photo figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin:9px 0 12px;font:400 11px/1.6 system-ui,sans-serif;opacity:.7}
 .mv-identity-photo figcaption a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.mv-identity-photo .mv-identity-native{appearance:none;background:transparent;color:inherit;border:1px solid currentColor;border-radius:4px;padding:7px 10px;font:400 12px/1.5 system-ui,sans-serif;cursor:pointer}
+.mv-identity-photo .mv-identity-native:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 .mv-no-members{margin:24px 0;padding:24px;border-block:1px solid color-mix(in srgb,currentColor 16%,transparent)}
 .mv-no-members h2{font-size:20px;margin:0 0 10px}.mv-no-members p{margin:6px 0;font-size:14px;line-height:1.7}.mv-no-members a{color:inherit;text-decoration:underline;font-size:12px}

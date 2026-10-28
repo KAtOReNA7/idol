@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-28T09:36:44.970877+00:00",
+  "scope": "Independent public-source preservation audit; no private export access, Git writes or application data edits by this audit.",
+  "proof": "docs/codex/evidence/20261028-continuous/stage-replacement-adoption.json",
+  "finalRun": {
+    "workingDirectory": "apps/idol-site",
+    "command": "node --test tests/formal-four-stage-adoption.test.cjs tests/stage-viewing-category-resolution.test.mjs tests/stage-selection-policy.test.mjs tests/stage-validator.test.cjs tests/stage-replacement-adoption.test.cjs",
+    "tests": 40,
+    "passed": 40,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0
+  },
+  "retainedHistoricalAssertions": [
+    "478 original stage row hashes and 482 owner-baseline public source hashes remain asserted after restoring exactly the eight authorized public preimages.",
+    "Original full supplements file hash remains asserted after removing exactly eight separately hash-verified new viewing rows and restoring known metadata.",
+    "Complete frozen 493-source and 614-status canonical hashes are checked after restoring the exact eight old objects; all other 485 sources and 606 statuses stay hash-identical."
+  ],
+  "legacyFailureSeparate": {
+    "file": "apps/idol-site/tests/kiof-sweat-stage.test.cjs",
+    "observedRun": {
+      "tests": 39,
+      "passed": 35,
+      "failed": 4
+    },
+    "failureCountForThisFile": 2,
+    "reason": "Old test uses unavailable Git ref 86fe8568211340e8e149dda38986070f21c6e899 and root-level data/stage-videos.json / data/stages/supplements.json paths. Git reported upload-pack: not our ref and path does not exist. Not caused by the eight source replacements; left unchanged and excluded from the scoped final run.",
+    "unchanged": true
+  },
+  "testFileSha256": {
+    "apps/idol-site/tests/formal-four-stage-adoption.test.cjs": "9a371b048e2d2b49c08cd42e4f3947cd75a244720b5d68c6eb2ce282c938f27e",
+    "apps/idol-site/tests/stage-viewing-category-resolution.test.mjs": "78fcc952ed9b92952840e287c752be11abfc872a1016b242bc2f8f275120f300",
+    "apps/idol-site/tests/stage-replacement-adoption.test.cjs": "98107365950f14df753897599164f7a820128a2994778e46c3fbe2b2d001dbfb"
+  }
+}

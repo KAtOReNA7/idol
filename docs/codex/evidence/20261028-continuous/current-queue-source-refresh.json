@@ -1,0 +1,212 @@
+{
+  "checkedAt": "2026-10-28T10:32:53.230949+00:00",
+  "kind": "current_queue_source_snapshot_refresh_only",
+  "authorization": "Parent approved refreshing exactly three effective-date hold rows from current application canonical/report sources; no application or other documentation edits.",
+  "target": "docs/codex/evidence/20261028-continuous/remaining-person-statistics.json",
+  "beforeFileSha256": "b8564e1235bcf884799cbfdf9ecb47b4863ca06e070dc5712f4fd2b5a6aa9a50",
+  "afterFileSha256": "56b4392550ddd802230cfdc9a484c387730ca17cf8664e037df926f7d56e89cc",
+  "beforeSha256Canonical": "907d5d9e0cf339a63e5afca64783c7c8c3f6b9e2d6bfd7a1870e79183cc1593c",
+  "afterSha256Canonical": "0bd3a3ada2ae0bbcd508b56e25a07dde9df70d2148d08747129e20f3e716b07a",
+  "changedItems": [
+    {
+      "eventId": "e-bewave-six-member-phase-end-announcement",
+      "slug": "bewave",
+      "changedFields": [
+        "canonicalSources",
+        "holdReasons",
+        "remainingEvidence",
+        "reportedSources"
+      ],
+      "before": {
+        "tuple": [
+          "bewave",
+          "e-bewave-six-member-phase-end-announcement"
+        ],
+        "eventId": "e-bewave-six-member-phase-end-announcement",
+        "slug": "bewave",
+        "groupId": "rec28ldfRTiDh1",
+        "title": "公告线索：结束六人活动阶段并重整阵容",
+        "eventType": "member_departure",
+        "canonicalReviewStatus": "hold",
+        "canonicalStatus": "announced",
+        "actualEventDate": null,
+        "holdReasons": [
+          "只取得二手翻译正文；官方X原帖打开空白。",
+          "无独立原文证明计划实际生效；不填实际退团日，不把重整当解散或换公司。"
+        ],
+        "canonicalSourceFile": "apps/idol-site/data/artist-timelines/bewave.json",
+        "canonicalSources": [
+          {
+            "id": "es-db45bc6aa8c46ce7",
+            "url": "https://revistakoreain.com.br/2025/09/bewave-anuncia-mudancas-na-formacao-do-grupo/",
+            "publisher": "Revista KoreaIN（二手公告翻译，仅线索）",
+            "title": "BEWAVE阵容调整报道",
+            "sourcePublishedAt": {
+              "value": "2025-09-18",
+              "precision": "day"
+            },
+            "checkedAt": "2026-10-16",
+            "scopeNote": "只能保留hold/缺口，不把二手翻译升格直接公告；不推断计划实际执行或身份拼写。",
+            "evidenceRef": "evidence/E/task05/sources/bewave-restructure-lead.json"
+          }
+        ],
+        "reportedRecordPresent": true,
+        "reportedKind": "report",
+        "reportedRecordDate": "2025-09-04",
+        "reportedDateLabel": "媒体报道日期",
+        "reportedBoundary": "生效日期未确认；不据此认定实际离队、解散或新团成立，也不新增成员关联。",
+        "reportedSources": [
+          {
+            "url": "https://isplus.com/article/view/isp202509040238",
+            "label": "日刊体育 · 公司声明报道",
+            "publishedDate": "2025-09-04"
+          }
+        ],
+        "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+        "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+        "remainingEvidence": "A planned 2025-10-31 six-member-phase ending does not prove the personnel changes actually occurred. Name-spelling issues cannot be used to bind IDs."
+      },
+      "afterSha256Canonical": "9eec540b8612a88d25bdc83dba4c7239e38b4301b95c6b78586dd5ad0733a304",
+      "canonicalSourceFile": "apps/idol-site/data/artist-timelines/bewave.json",
+      "canonicalSourceFileSha256": "3ea86955021317aadf87bb6c8d569d9852b365a16500d323b2cf8c090b2b916d",
+      "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+      "reportedSourceFileSha256": "ae427003d924133554ad90f73ff625ae64342acdfe9f15e90844a8027cf24139"
+    },
+    {
+      "eventId": "e-candyshop-yuina-hiatus-announcement",
+      "slug": "candyshop",
+      "changedFields": [
+        "canonicalSources",
+        "remainingEvidence",
+        "reportedSources"
+      ],
+      "before": {
+        "tuple": [
+          "candyshop",
+          "e-candyshop-yuina-hiatus-announcement"
+        ],
+        "eventId": "e-candyshop-yuina-hiatus-announcement",
+        "slug": "candyshop",
+        "groupId": "rec28ldfRTiDlb",
+        "title": "公告候选：YUINA暂时停止团体活动",
+        "eventType": "hiatus",
+        "canonicalReviewStatus": "hold",
+        "canonicalStatus": "announced",
+        "actualEventDate": null,
+        "holdReasons": [
+          "已实际读到原声明图的转载，但缺原官方刊载位置与日期；媒体日期仅作线索，不提升ready。"
+        ],
+        "canonicalSourceFile": "apps/idol-site/data/artist-timelines/candyshop.json",
+        "canonicalSources": [
+          {
+            "id": "es-a2f9e55b34a31343",
+            "url": "https://0.soompi.io/wp-content/uploads/2024/05/08105357/Yuina.jpeg",
+            "publisher": "Brave Entertainment署名公告（Soompi转载图片，原刊待核）",
+            "title": "YUINA activity notice document",
+            "sourcePublishedAt": null,
+            "checkedAt": "2026-10-16",
+            "scopeNote": "工具实际展示原声明图并读字；仅抄活动安排，未保存医疗原因或艺人照片。原官方发表URL和日期未核，不能提升ready；不是退团证明。",
+            "evidenceRef": "evidence/E/task04/sources/candyshop-yuina-document-hold.json"
+          }
+        ],
+        "reportedRecordPresent": true,
+        "reportedKind": "report",
+        "reportedRecordDate": "2024-05-09",
+        "reportedDateLabel": "媒体报道日期",
+        "reportedBoundary": "生效日期未确认；这不是退团公告，不从官网名册变化推定退出。",
+        "reportedSources": [
+          {
+            "url": "https://www.starnewskorea.com/music/2024/05/09/2024050908033147420",
+            "label": "Star News · 公司声明报道",
+            "publishedDate": "2024-05-09"
+          }
+        ],
+        "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+        "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+        "remainingEvidence": "Official cafe publication URL/date evidence remains missing. Existing native media event already covers the report. Profile removal or personal social tags are not departure proof."
+      },
+      "afterSha256Canonical": "51cfaecc90cca293ab9a6c0f6e68a37b7b6c31bbce16858824e5eabddce7e648",
+      "canonicalSourceFile": "apps/idol-site/data/artist-timelines/candyshop.json",
+      "canonicalSourceFileSha256": "f51ca75ee0faa1d8332163c846a176b7953b07dfa1b413d5858b5ef707040fb8",
+      "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+      "reportedSourceFileSha256": "ae427003d924133554ad90f73ff625ae64342acdfe9f15e90844a8027cf24139"
+    },
+    {
+      "eventId": "e-geenius-spoiler-book-instrumental",
+      "slug": "geenius",
+      "changedFields": [
+        "canonicalSources",
+        "remainingEvidence",
+        "reportedSources"
+      ],
+      "before": {
+        "tuple": [
+          "geenius",
+          "e-geenius-spoiler-book-instrumental"
+        ],
+        "eventId": "e-geenius-spoiler-book-instrumental",
+        "slug": "geenius",
+        "groupId": "rec28ldfRTiDxx",
+        "title": "《Spoiler Book》器乐预公开载体候选",
+        "eventType": "release",
+        "canonicalReviewStatus": "hold",
+        "canonicalStatus": "uncertain",
+        "actualEventDate": null,
+        "holdReasons": [
+          "2026-01-15仅为零售发行栏，缺公司实际发行原文。"
+        ],
+        "canonicalSourceFile": "apps/idol-site/data/artist-timelines/geenius.json",
+        "canonicalSources": [
+          {
+            "id": "es-ba4baa1d6876fea5",
+            "url": "https://www.yes24.com/product/goods/170657075",
+            "publisher": "YES24 / COPAN GLOBAL・HOMe商品说明",
+            "title": "Geenius Spoiler Book QR instrumental产品页",
+            "sourcePublishedAt": null,
+            "checkedAt": "2026-10-16",
+            "scopeNote": "目录日期仅hold；不能把器乐Spoiler Book当完整人声Love Don’t Change实际发行。",
+            "evidenceRef": "evidence/E/task05/sources/geenius-spoiler-retail.json"
+          }
+        ],
+        "reportedRecordPresent": true,
+        "reportedKind": "catalog",
+        "reportedRecordDate": "2026-01-15",
+        "reportedDateLabel": "零售目录标示日期",
+        "reportedBoundary": "生效日期未确认；不把本条写成完整人声专辑《Love Don’t Change》正式发行。",
+        "reportedSources": [
+          {
+            "url": "https://www.yes24.com/product/goods/170657075",
+            "label": "YES24 · QR器乐产品目录",
+            "publishedDate": null
+          }
+        ],
+        "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+        "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+        "remainingEvidence": "No newly found HOMe/COPAN actual release announcement or authorised delivered audio. Retail/import dates must not be equated with global release."
+      },
+      "afterSha256Canonical": "57a392bc541a212d2f0ec833c65a0d1983890d9fa29abe1426aa05d565205b38",
+      "canonicalSourceFile": "apps/idol-site/data/artist-timelines/geenius.json",
+      "canonicalSourceFileSha256": "537016f582305ff38612ede157b2d1ff75b18ad39a2947284c37f718c1220a23",
+      "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+      "reportedSourceFileSha256": "ae427003d924133554ad90f73ff625ae64342acdfe9f15e90844a8027cf24139"
+    }
+  ],
+  "preservation": {
+    "effectiveDateHolds": 7,
+    "allActualDatesRemainNull": true,
+    "otherFourRowsDeepEqual": true,
+    "remainingPersonWorks": 46,
+    "unknownMetrics": 15,
+    "allOtherTopLevelValuesDeepEqual": true,
+    "allOtherTopLevelSha256Canonical": "dea96067c8c7f79af990e03b34b0b05ca1d7879cb0707c4d3454399aadcd9205",
+    "unchangedRowSha256Canonical": {
+      "e-atheart-aurora-hiatus-observed": "a9c8b89f99b79ba141a911c26790dc39480ad3cea6ec18728ee266a0ddef8c16",
+      "e-atheart-aurora-second-hiatus-announcement": "6c1c56239de8833b9e22c666885e2f4a4ce0dcd775fec6f18d28cf54c564154d",
+      "e-udtt-jessica-provisional-join-candidate": "42265439eb811338e6ef9d448cae80f0d47c42c3896dad3f8f53600fbd4ac64f",
+      "e-udtt-sena-predebut-departure-candidate": "67a7b4657a5f1331ea7e9754faa18f893141be4ad7f0fe38f1223eef8068f6c8"
+    }
+  },
+  "applicationWrites": 0,
+  "newCanonicalDates": 0,
+  "privateWrites": 0
+}

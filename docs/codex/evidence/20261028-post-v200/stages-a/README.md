@@ -50,3 +50,27 @@
 - YOUNG POSSE UP 的 152 秒编舞片相比 200 秒合作发行仍有完整范围疑问；UNFORGIVEN 日语定位 CDTV 完整节目报道但未取得当前合法原片；ILLIT、Caution、Like Magic、Be Who You Are 仍缺合格独立表演。MEXE 仅客串者与舞者的影片不含 NMIXX，不能使用新政策放宽。
 
 `member-version-reviewed.json` 是 1 项候选审核输入，`member-version-normalized.json` 已通过当前归一化程序；稳定 groupId 与 inventory 核对通过。10 项证据结构检查见 `member-version-validation.json`。公开查询只保留查询／URL／事实摘要，全文缓存位于已忽略 `.codex-local/` 并留 SHA。无完整播放、逐句音轨或固定机位主张，本研究员私人读写／应用变更／舞台导入均为 0；主代理须在全部候选准备后单独取得新鲜 owner 导出，0 分不为空。
+
+## 新增 8 项官方制作路线与队列集成（2026-10-29 北京时间）
+
+`next-official-routes.json` 记录另一批 8 项新缺口、20 条查询，其中 6 条空结果；与前一批 `followup-candidates.json` 的 9 项无重叠。新增合格来源和采用均为 0，不代表这些作品不存在舞台。重点排除了 XG 年度回顾中的 live 字样、KATSEYE 其他歌曲的节目表演、LE SSERAFIM EASY 的 Vevo 章节，以及 LOONA 仅标为 **LOONA Channel Vol.2** 的 DVD 栏目，不能把相邻标题或节目名称推为目标歌曲的完整舞台。
+
+已将 8 项逐一挂入 `../remaining-stage-ledger.json`：每项只在 `researchHistory` 末尾追加一个精确引用，并添加独立 `routeFollowup`。原原因、分类、`latestResearch`、所有来源/绑定和其他字段保持，仍为 109 新缺口、11 旧来源替换。历史输入 SHA `eea6b1b6700f567b722ab00b1843208b54f06a004dee718034411b228402b2fb` 没有改写；集成后 SHA 另存报告 `postIntegration`，为 `6192d1f36a8f9e35d61c155e785ad6163c7eaa2bdd46d7bb05e9e11bd3694e73`。
+
+验证器是只读核验报告与队列，另写验证回执，不再用现队列重写历史报告。移除本次精确追加的 8 个历史引用及 8 个 `routeFollowup` 后，按原 UTF-8、两空格缩进、末尾 LF 序列化，SHA 与历史输入完全一致；因此可在没有原始搜索缓存的新电脑上证明未改其他队列内容。
+
+完整复算命令：
+
+```text
+python -X utf8 docs/codex/evidence/20261028-post-v200/stages-a/validate-next-official-routes.py
+```
+
+完整模式保留原 17 项研究检查，增加 3 项集成检查，现为 20/20 通过。它要求本机被忽略的 `.codex-local/stage-a-next-official-routes-raw.json`；该文件包含工具原始响应，不上传 GitHub。前一批 `followup-validation.json` 是集成前冻结回执，旧 `build-followup-checkpoint.py` 会改写历史报告，不能当作当前队列验证器运行。
+
+新电脑不具备原始响应时使用：
+
+```text
+python -X utf8 docs/codex/evidence/20261028-post-v200/stages-a/validate-next-official-routes.py --portable
+```
+
+可移植模式为 16 项通过、4 项明确跳过，独立写入 `next-official-routes-portable-validation.json`，不覆盖完整回执。跳过项仅为本地 raw 的 SHA、查询文字/作品映射、返回状态、空结果复核；队列历史 SHA 重建、现队列 SHA、8 个精确作品/MV/版本及原原因、追加字段、来源资格零采用等仍验证。不能把可移植模式称为完整 20 项复验。

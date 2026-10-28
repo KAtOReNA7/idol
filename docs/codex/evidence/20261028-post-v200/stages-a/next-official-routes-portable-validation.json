@@ -1,0 +1,117 @@
+{
+  "checkedAt": "2026-10-28T16:27:35.477299+00:00",
+  "mode": "portable",
+  "checks": [
+    {
+      "name": "historical_input_queue_reconstructs_without_unrelated_changes",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "previous_nine_work_report_hash_matches",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "raw_hash_matches",
+      "passed": null,
+      "status": "skipped_local_raw_unavailable"
+    },
+    {
+      "name": "queue_counts_109_and_11",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "eight_unique_new_gap_works",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "disjoint_from_previous_nine_work_pass",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "all_work_ids_in_public_inventory",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "all_query_ids_resolve_to_correct_work",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "all_twenty_queries_covered_once",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "query_text_and_work_match_raw",
+      "passed": null,
+      "status": "skipped_local_raw_unavailable"
+    },
+    {
+      "name": "query_status_matches_raw",
+      "passed": null,
+      "status": "skipped_local_raw_unavailable"
+    },
+    {
+      "name": "six_empty_results_match_raw",
+      "passed": null,
+      "status": "skipped_local_raw_unavailable"
+    },
+    {
+      "name": "original_mv_and_version_match_inventory",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "prior_reasons_and_input_pointers_match_queue",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "historic_candidate_ids_have_valid_shape_and_not_requested",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "zero_eligible_and_adopted",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "all_records_have_scope_and_next_condition",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "post_integration_queue_hash_matches",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "eight_followup_objects_and_append_only_history_match",
+      "passed": true,
+      "status": "passed"
+    },
+    {
+      "name": "public_inventory_hash_matches",
+      "passed": true,
+      "status": "passed"
+    }
+  ],
+  "passed": 16,
+  "failed": 0,
+  "skipped": 4,
+  "outputs": {
+    "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json": "9d70f88bec2772d89a87a8f562a20ba903dd8a4a4f49f88a60a18bdbc9741a1a",
+    "docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json": "6192d1f36a8f9e35d61c155e785ad6163c7eaa2bdd46d7bb05e9e11bd3694e73"
+  },
+  "historicalInputSha256": "eea6b1b6700f567b722ab00b1843208b54f06a004dee718034411b228402b2fb",
+  "reconstructedHistoricalInputSha256": "eea6b1b6700f567b722ab00b1843208b54f06a004dee718034411b228402b2fb",
+  "scopeAttestation": "This eight-work research pass did not access owner exports or user Chrome, directly request YouTube, modify application/bindings/private data, or perform Git/deploy actions. These are declared action boundaries, not a repository preservation test. Raw provider responses remain local; public evidence records summaries, URLs, and hashes.",
+  "reproducibilityLimit": "The original 17 research checks plus 3 integration checks run in full mode. Four raw-hash/provider-result checks require the ignored .codex-local response cache and are explicitly skipped with --portable (16 pass, 4 skipped); the historical input SHA is preserved and independently reconstructed from the integrated queue without that cache. Raw responses are not published to GitHub."
+}

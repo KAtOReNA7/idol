@@ -3,13 +3,14 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
-import {beforePostV200Statistics} from './helpers/post-v200-statistics.cjs';
-const data=JSON.parse(fs.readFileSync('data/group-statistics-completion-evidence.json','utf8'));
+import {beforePostV200Statistics, beforeFollowupStatistics} from './helpers/post-v200-statistics.cjs';
+const currentData=JSON.parse(fs.readFileSync('data/group-statistics-completion-evidence.json','utf8'));
+const data=beforeFollowupStatistics(currentData);
 const canonical=v=>Array.isArray(v)?v.map(canonical):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,canonical(v[k])])):v;
 const hash=v=>createHash('sha256').update(JSON.stringify(canonical(v))).digest('hex');
 const read=p=>JSON.parse(fs.readFileSync('../../docs/codex/evidence/20261028-post-v200/statistics/'+p,'utf8'));
 test('only two reviewed sales objects and scoped summary counts change from v200',()=>{
- const old=beforePostV200Statistics(data);
+ const old=beforePostV200Statistics(currentData);
  const expected=JSON.parse(fs.readFileSync('../../docs/codex/evidence/20261028-v200/statistics/user-x-observations.json','utf8'));
  assert.equal(hash(old),expected.proposedAfterDataSha256Canonical);
  assert.deepEqual(data.summary,{...old.summary,salesObserved:45,salesFallbackZero:6,salesLowerBoundsAdded:13});

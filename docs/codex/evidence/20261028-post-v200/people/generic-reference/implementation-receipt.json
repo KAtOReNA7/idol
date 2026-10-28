@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-28T16:03:12.236689+00:00",
+  "status": "implementation-ready-for-independent-browser-and-guard-review",
+  "files": {
+    "data/public-group-recognition.json": "766e9f61cdb004ea26f7a3733415b8eb2e61417a62aec5046a769588306e48b9",
+    "lib/idol/public-group-recognition.ts": "b536f652b057b4ae905f805716939393513bb308f88d378cd25b7bf3608217b0",
+    "components/public-group-recognition.tsx": "6809066f462e9d86d360aa325b4dfa0264dbae8c46bd3dcd12baa55f7dc5491e",
+    "components/public-work-credits.tsx": "bf35e4b25204d5aeefebebb1c8c2e88b75d4e1ac9e0158ef364fac8b1c5acc18",
+    "tests/public-group-recognition.test.cjs": "db14a1dfd3b7475b81d6bc854f77659339f956e173358bebd4c753732aaca3bb"
+  },
+  "targetFlow": "Shared work MV detail -> independent generic group reference -> original image dialog and exact member navigation, without member scoring controls or new credit/relationship.",
+  "targetedTestCommand": "node --test tests/public-group-recognition.test.cjs tests/continuation-person.test.cjs tests/public-work-recognition.test.cjs",
+  "targetedTests": {
+    "passed": 43,
+    "failed": 0
+  },
+  "renderedBrowserValidation": "delegated to v200_final_audit; not yet claimed by this receipt",
+  "sourceOriginalsVisualReview": "actual displayed3:4 contact sheets reviewed; full source originals unchanged; no userChrome or private authentication",
+  "protectedBeforeReceipt": "baseline.json",
+  "newImages": 0,
+  "privateWrites": 0,
+  "gitAction": false,
+  "publicationAction": false,
+  "typeCheck": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false",
+    "exitCode": 0
+  }
+}

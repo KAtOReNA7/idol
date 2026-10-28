@@ -1,5 +1,7 @@
 # 跨电脑接续：正式v200，PR45增量与PR44均未合并
 
+最新验收决定（2026-10-29）：用户接受109舞台缺口与11旧替换保留未解决清单；照片与页面QA已完成，进入约定的统一交付。当前实际发布状态以新发布回执为准，未成功部署前仍v200。待证事实不写成已解决。
+
 正式工程为 `apps/idol-site/`，根目录旧sandbox不是发布工程。
 
 ## 先保护与核对
@@ -7,19 +9,21 @@
 1. 检查并保护本地未提交、未跟踪文件，记录可恢复备份；不要reset、clean或强推。本机旧任务16文件保存在stash `7779dd2e08e211b1219c474b16838e9915ee1a0e`（8已修改＋8未跟踪），保留且不自动应用旧v196补丁。
 2. 显式fetch `origin/main`、`origin/codex/statistics-relations-followup-20261027` 和 `origin/codex/stage-person-followup-v199-20261028`，核对 [PR44](https://github.com/KAtOReNA7/idol/pull/44) 与 [PR45](https://github.com/KAtOReNA7/idol/pull/45)。最近main为 `852f7506a4f921fff4e4d24fe70e8d607c7d40f5`，PR44为 `21b12a6f0d49f355ee639ae87bb2b294ba58513f`，两PR均draft/open。PR45包含本轮v200，base是PR44分支。
 3. 干净后从最新origin/main新建codex/任务分支。如果main已包含v200实现，使用该最新main；否则普通merge最新PR45远端（已包含PR44）。仅PR44合并时仍须纳入PR45。不要从旧逐团分支续作，不要仅拉PR44而丢失v200，不重复合PR43/辅助资产分支。
-4. 依次读本文件、AGENTS.md、STATUS.md、RESUME.md、[本轮报告](v200-evidence-followup-20261028.md)、[v199历史报告](continuous-stage-person-report-20261028.md)、[舞台政策](stage-selection-policy-20261028.md)与[选图政策](identity-photo-selection-policy-20261027.md)。以本轮两份剩余队列为准。
+4. 依次读本文件、AGENTS.md、STATUS.md、RESUME.md、[最新未发布报告](generic-reference-statistics-followup-20261029.md)、[v200发布报告](v200-evidence-followup-20261028.md)、[v199历史报告](continuous-stage-person-report-20261028.md)、[舞台政策](stage-selection-policy-20261028.md)与[选图政策](identity-photo-selection-policy-20261027.md)。以本轮两份剩余队列为准。
 
-## 当前未发布增量（2026-10-28；覆盖下方v200发布时队列）
+## 当前未发布增量（2026-10-29；覆盖下方历史数字）
 
-用户要求全部任务完成后再发布。**正式站仍v200，当前分支新增内容尚未上线**；不得保存新Sites版本或请求部署。GitHub同步以 `evidence/20261028-post-v200/github-sync.json` 为准，和正式发布分别记录。
+用户要求全部任务完成后再发布。**正式站仍v200／493舞台，当前分支496舞台及以下增量尚未上线**。不得保存新Sites版本或请求部署。PR44、PR45仍draft/open、未合main；本轮已显式fetch三个远端分支。GitHub同步和正式发布分别留证。
 
-当前496舞台：新增MADEIN DADARIDA、XG IYKYK、LE SSERAFIM SPAGHETTI成员版3项；Right Now换为固定机位并完整保留旧来源。新鲜owner导出分别在13:34:46Z与14:32:13Z完成空分/完整206日志核对，私人写入0，备份仅本机忽略保存，已过期后不可继续用来换绑。新增缺口109、旧活动来源替换11；另9项有意保留团体占位不是9首缺歌名的作品。
+本轮按用户选择给24作品增加“团体通用认人参考”：11团119槽、63份既有原件，明确未核实本作参与／出镜、非同期妆造，不新增作品署名、私人关系或成员评分。原102作品527署名参考槽／233份原件保持，24项人物事实仍待证。WOOAH同套校服已落实；HITGS同次拍摄未证、MADEIN原件569×854如实披露。
 
-公开资料102作品527参考槽/233份既有原件，24作品待具名证据；9未知统计（销量6/一位3）、7事实日期与tripleS差360,703开放。Geenius217仅单日Retail下界；tripleS下界2,098,086。UDTT报道提前到4/30本人采访，不改实际生效日。现有认人图缺口0，4张新增原始舞台封面，全部旧设计/原图/ID/关系/个人数据/权限保持。
+VVUP补Circle Album单周1,787，UDTT补两个指定日Retail64＋39＝103；均为有范围下界，不是全团完整累计。tripleS新增4个不重叠官方周榜10,068，下界2,108,154，旧汇总差350,635仍开放。当前7未知统计＝4销量＋3一位，7事实生效日期保持。930条民间获奖归档未匹配不能认定真实零。统计周期标签、UDTT新来源身份投影和构建依赖守卫已修复。
 
-最新政策允许完整同语种官方成员版后备，明确客串范围差异；对应原版优先，各范围内部打歌→练习室（同条件固定机位）→官方制作表演。不同语种/混音/节选/只有外部艺人或舞者不适用，0分或任何保存记录均不能换绑。成员版保持versionMatch:false，不能放宽完整原版校验来凑数量。
+舞台本地496：DADARIDA、IYKYK、SPAGHETTI成员版新增3项；Right Now换固定机位，旧来源完整保留。先前两份真实新鲜owner导出已用于当时导入，现已过期，不得继续复用。新增缺口109、旧活动替换11；9个空歌名行是有意团体占位。对应原版优先，各范围内打歌→练习室（同条件固定机位）→官方制作表演；允许完整同语种成员版后备，明示客串差异，不能伪填versionMatch:true。任何评分／保存记录都不能静默换绑。
 
-先读 [本轮报告](post-v200-completion-progress-20261028.md)、[舞台剩余队列](evidence/20261028-post-v200/remaining-stage-ledger.json)、[人物统计日期队列](evidence/20261028-post-v200/remaining-person-statistics.json)。本轮已导项不要重复；全部工作未完成，不能将有界研究和分类完成写成内容全部补齐。个人页排版仍待用户决定。
+152项定向、TypeScript和正式构建通过；浏览器与聚合证据详见新报告。只做本地公开夹具测试，不冒称正式站或真实owner保存验收。原有关系认人图缺口0、旧低清0，设计、原图、ID／关系、个人数据和权限保持。全部任务尚未完成；个人页统一排版仍待用户决定。
+
+先读[本轮报告](generic-reference-statistics-followup-20261029.md)、[舞台队列](evidence/20261028-post-v200/remaining-stage-ledger.json)、[人物统计日期队列](evidence/20261028-post-v200/remaining-person-statistics.json)。旧9未知、tripleS360703及未有通用参考的记录仅为历史，不覆盖当前状态。新数值与通用参考均已导入，不重复导入；不恢复旧stash，不复用旧Chrome授权。
 
 ## 最新交付：v200上线，5项X人数与11作品人物资料（历史发布记录）
 
@@ -57,4 +61,4 @@ v200包1421文件、展开45,805,568bytes；服务端归一化archive的大小/h
 
 请接续 https://github.com/KAtOReNA7/idol 。先保护本地未提交与未跟踪文件，显式fetch origin/main、codex/statistics-relations-followup-20261027和codex/stage-person-followup-v199-20261028，核对PR44/PR45。干净后从最新origin/main建codex/任务分支；若main未包含v200，普通merge最新PR45远端（已含PR44）。不要reset、clean或强推，不自动恢复旧stash。
 
-依次阅读docs/codex/NEXT-COMPUTER-HANDOFF.md、AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md、docs/codex/post-v200-completion-progress-20261028.md及evidence/20261028-post-v200/当前两份剩余队列。正式工程apps/idol-site/，正式站仍v200/493舞台；当前分支未发布增量496舞台、109新增缺口与11旧来源替换，102作品527参考槽、24待证，9未知统计、7事实日期和tripleS360703差额仍开放。9空歌曲行是有意保留团体占位，不猜歌。新增DADARIDA、IYKYK、SPAGHETTI成员版和Right Now固定机位已采用，所有旧批次不要重导。对应原版优先，打歌→练习室（同条件固定机位优先）→官方制作表演；允许完整同语种官方成员版后备，明确客串差异。再次换绑须重新取得真实新鲜owner导出，不修改capturedAt。保留设计、原图、ID/关系、个人评分/备注/观看、访问与owner鉴权；优先内置页，不复用旧Chrome授权。全部任务完成前不保存新Sites版本、不部署；继续实际开发，GitHub同步与正式发布分别留证。
+依次阅读docs/codex/NEXT-COMPUTER-HANDOFF.md、AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md、docs/codex/generic-reference-statistics-followup-20261029.md及evidence/20261028-post-v200/当前两份剩余队列。正式工程apps/idol-site/，正式站仍v200/493舞台；当前分支未发布增量496舞台、109新增缺口与11旧来源替换，102作品527署名参考槽，另24作品119通用认人槽（不证本作参与、不开放成员评分），24事实待证；7未知统计、7事实日期和tripleS350635差额仍开放。9空歌曲行是有意保留团体占位，不猜歌。新增DADARIDA、IYKYK、SPAGHETTI成员版和Right Now固定机位已采用，所有旧批次不要重导。对应原版优先，打歌→练习室（同条件固定机位优先）→官方制作表演；允许完整同语种官方成员版后备，明确客串差异。再次换绑须重新取得真实新鲜owner导出，不修改capturedAt。保留设计、原图、ID/关系、个人评分/备注/观看、访问与owner鉴权；优先内置页，不复用旧Chrome授权。全部任务完成前不保存新Sites版本、不部署；继续实际开发，GitHub同步与正式发布分别留证。

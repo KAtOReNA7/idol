@@ -102,7 +102,7 @@ test('the historical nine-item audit retains its then-unapplied single-day Retai
   assert.equal(retail.metric, 'circle_retail_album_daily_count');
   assert.equal(historicalData.groups.geenius.sales.observedValue, null);
   for (const slug of ['vvup', 'tracer', 'witchx', 'spia', 'udtt', 'vcha']) {
-    assert.equal(data.groups[slug].sales.observedValue, null);
+    assert.equal(historicalData.groups[slug].sales.observedValue, null);
     assert.ok(research.items.find(item => item.key === slug + '.sales').nextAction);
   }
 });

@@ -182,8 +182,8 @@
       "sha256": "d3aeabb883545770437dafd4c6abaade76e2321b57db3d64d2a5f3c18086ebbc"
     },
     "lib/idol/udtt-native/host.mjs": {
-      "bytes": 19573,
-      "sha256": "8a25f37dc9e6e2da52c5ab5a5c2a237eb63ad2a31b688b456e4c2d5f8c015d67"
+      "bytes": 19736,
+      "sha256": "2c65e07409b14f6349d3d757a3bf574e7ffc991d9dca5de9233ca27dcf3027bb"
     },
     "lib/idol/udtt-native/image-recovery.mjs": {
       "bytes": 2272,
@@ -204,6 +204,30 @@
     "data/timeline-reported-records.json": {
       "bytes": 8217,
       "sha256": "309d0ab6b726119eb87787afec9267d19409329c7e1d6f63a790428020729f5c"
+    },
+    "lib/idol/udtt-native/information-identity.mjs": {
+      "bytes": 1277,
+      "sha256": "365873aa0836d4b8ba9ace038fc571a7df299a3fd436bb33dfaae9f3adcb32ce"
+    },
+    "lib/idol/group-information.mjs": {
+      "bytes": 6002,
+      "sha256": "2dd4ba4c680d3b2940a4230a1c896a1088ecf38789a86895546ae5f89592eb3e"
+    },
+    "lib/idol/follower-count.mjs": {
+      "bytes": 916,
+      "sha256": "27ff01ce835ad6029d80373d8f7c78a1aea84630086dae658ceacf513af0ea09"
+    },
+    "data/music-index-artwork.json": {
+      "bytes": 16398,
+      "sha256": "af70739dc9099f799a741e0d4f1cb6f662cfab2298182ec1cfee254e6c28ed2e"
+    },
+    "data/group-information-facts.json": {
+      "bytes": 234401,
+      "sha256": "e1f889ec4a5d4e40465603695055cb8eb09922e598a695482987b692a83dd09b"
+    },
+    "data/group-statistics-completion-evidence.json": {
+      "bytes": 449825,
+      "sha256": "d9cbdd9d3f58d5da5b4c6535824a5dfcdd0cdc08761081d8436e1e55111b6a97"
     }
   },
   "builtContractCarriers": {
@@ -298,6 +322,73 @@
         "reviewed": {
           "bytes": 6230,
           "sha256": "a0b7a4c7271cae3b8d16d349abc6cd1a34c8254ab1521e698b87ae13e5a4b051"
+        }
+      }
+    ]
+  },
+  "sourceGuardReview20261029": {
+    "checkedAt": "2026-10-28T16:13:33.834998+00:00",
+    "status": "local_only_not_published",
+    "scope": "Current group statistics exact URL identity projection. Pin the new projection helper and all local model/data dependencies; retain exact source/event/private-owner checks, fixed nine originals, two shared posters, conservative consumer scans and existing compiled contract carrier pins.",
+    "reviewEvidence": "docs/codex/evidence/20261028-post-v200/ui/udtt-statistics-source-guard.json",
+    "changes": [
+      {
+        "path": "lib/idol/udtt-native/host.mjs",
+        "previous": {
+          "bytes": 19573,
+          "sha256": "8a25f37dc9e6e2da52c5ab5a5c2a237eb63ad2a31b688b456e4c2d5f8c015d67"
+        },
+        "reviewed": {
+          "bytes": 19736,
+          "sha256": "2c65e07409b14f6349d3d757a3bf574e7ffc991d9dca5de9233ca27dcf3027bb"
+        }
+      },
+      {
+        "path": "lib/idol/udtt-native/information-identity.mjs",
+        "previous": null,
+        "reviewed": {
+          "bytes": 1277,
+          "sha256": "365873aa0836d4b8ba9ace038fc571a7df299a3fd436bb33dfaae9f3adcb32ce"
+        }
+      },
+      {
+        "path": "lib/idol/group-information.mjs",
+        "previous": null,
+        "reviewed": {
+          "bytes": 6002,
+          "sha256": "2dd4ba4c680d3b2940a4230a1c896a1088ecf38789a86895546ae5f89592eb3e"
+        }
+      },
+      {
+        "path": "lib/idol/follower-count.mjs",
+        "previous": null,
+        "reviewed": {
+          "bytes": 916,
+          "sha256": "27ff01ce835ad6029d80373d8f7c78a1aea84630086dae658ceacf513af0ea09"
+        }
+      },
+      {
+        "path": "data/music-index-artwork.json",
+        "previous": null,
+        "reviewed": {
+          "bytes": 16398,
+          "sha256": "af70739dc9099f799a741e0d4f1cb6f662cfab2298182ec1cfee254e6c28ed2e"
+        }
+      },
+      {
+        "path": "data/group-information-facts.json",
+        "previous": null,
+        "reviewed": {
+          "bytes": 234401,
+          "sha256": "e1f889ec4a5d4e40465603695055cb8eb09922e598a695482987b692a83dd09b"
+        }
+      },
+      {
+        "path": "data/group-statistics-completion-evidence.json",
+        "previous": null,
+        "reviewed": {
+          "bytes": 449825,
+          "sha256": "d9cbdd9d3f58d5da5b4c6535824a5dfcdd0cdc08761081d8436e1e55111b6a97"
         }
       }
     ]

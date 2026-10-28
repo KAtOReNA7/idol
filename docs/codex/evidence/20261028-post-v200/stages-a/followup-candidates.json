@@ -1,0 +1,614 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-28T15:46:05.059Z",
+  "scope": "对post-v200剩余109新增与11旧替换队列定向选择9项（8新增、1旧替换）；本轮27个新查询与5组页面读取。不是109项全量重研。",
+  "input": {
+    "path": "docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json",
+    "sha256": "4a7b42a851d7f4ad0fbf214ae6bab1df336fe23392c87bcb9177721cc76ee688",
+    "generatedAt": "2026-10-28T14:41:37.988Z"
+  },
+  "counts": {
+    "selectedWorks": 9,
+    "newGapWorks": 8,
+    "legacyReplacementWorks": 1,
+    "queries": 27,
+    "emptyQueries": 5,
+    "eligibleCandidates": 0,
+    "adoptedSources": 0,
+    "newExactResearchLeads": 1
+  },
+  "publication": {
+    "publishedVersion": 200,
+    "publishedSelectedSources": 493,
+    "localSelectedSources": 496,
+    "status": "research_only_no_application_change_or_deployment"
+  },
+  "raw": {
+    "path": ".codex-local/stage-a-followup-candidates-raw.json",
+    "sha256": "d5011799ee4a3272ffae0a31406f0b5bc6da890ea90132ba1d8778b63807b992"
+  },
+  "records": [
+    {
+      "workId": "recvxyOz5XlqWP",
+      "artist": "ITZY",
+      "song": "Boys Like You",
+      "queryIds": [
+        "f01",
+        "f09"
+      ],
+      "newRoute": "JYP发行原页与精确练习室索引，区分独立制作表演与首次巡演披露。",
+      "candidateVideos": [
+        {
+          "videoId": "MDvx1iNTnr8",
+          "publisherFromSearch": "Male Official",
+          "type": "第三方练习/翻跳索引",
+          "decision": "排除：不是ITZY官方原始来源",
+          "url": "https://www.youtube.com/watch?v=MDvx1iNTnr8",
+          "directYouTubeRequestedThisPass": false,
+          "adopted": false
+        },
+        {
+          "videoId": "QA83BdN4iOw",
+          "publisherFromSearch": "MOVE Dance Studio_K-POP",
+          "type": "教学/翻跳",
+          "decision": "排除：不是本团完整表演",
+          "url": "https://www.youtube.com/watch?v=QA83BdN4iOw",
+          "directYouTubeRequestedThisPass": false,
+          "adopted": false
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://itzy.jype.com/discography/k12hwhbe",
+          "access": "Search open成功",
+          "summary": "发行方明确为英语单曲；首次表演指CHECKMATE美国巡演，不能据performance关键词推定练习室。"
+        }
+      ],
+      "versionAssessment": "原曲英文发行由JYP支持；没有新合格影片可核具体音轨。",
+      "completenessAssessment": "无新官方独立影片，完整性未证。",
+      "performerAssessment": "两条practice命中为其他频道/舞蹈教学，不以标题判为ITZY本人。",
+      "typeAssessment": "官方新路线证实巡演首次表演；巡演仍不合政策。",
+      "result": "no_new_eligible_source",
+      "nextCondition": "取得JYP/ITZY或普通打歌节目原始完整影片，核同曲同语种及成员范围后再保护评分。",
+      "queue": "new_gap",
+      "inputPointer": "/records/99",
+      "priorExclusion": {
+        "category": "场合或素材类型不符",
+        "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+        "reason": "Boys Like You本轮命中JYP官方发行及MV新闻，没有新的合格完整练习/常规节目，旧活动与转载仍不准入。"
+      },
+      "inventoryReference": {
+        "path": "apps/idol-site/data/stages/inventory.json",
+        "workId": "recvxyOz5XlqWP",
+        "groupIds": [
+          "recvxyEBDZqxjD"
+        ],
+        "versionLabel": "英文原版",
+        "originalMV": {
+          "url": "https://www.youtube.com/watch?v=6uZy86ePgO0",
+          "videoId": "6uZy86ePgO0",
+          "officialTitle": "ITZY \"Boys Like You\" M/V ‪@ITZY‬",
+          "channel": "JYP Entertainment",
+          "releaseDate": "2022-10-20",
+          "videoType": "官方MV"
+        }
+      },
+      "eligibleForBinding": false
+    },
+    {
+      "workId": "recvxyOz5XGYPC",
+      "artist": "i-dle",
+      "song": "Last Dance",
+      "queryIds": [
+        "f02",
+        "f10",
+        "f19"
+      ],
+      "newRoute": "UNIVERSE/NCSOFT宣传期performance与完整独立制作表演检索。",
+      "candidateVideos": [],
+      "sources": [
+        {
+          "url": "https://www.starnewskorea.com/music/2021/04/28/2021042810320277520",
+          "access": "Search索引",
+          "summary": "2021-04-28的performance报道指预告片，非全曲表演。"
+        },
+        {
+          "url": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202104280142",
+          "access": "Search索引",
+          "summary": "报道高潮片段预告，不能证明完整表演。"
+        },
+        {
+          "url": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202104290316",
+          "access": "Search索引",
+          "summary": "次日完整发行指UNIVERSE MV，不等于新独立表演。"
+        }
+      ],
+      "versionAssessment": "未定位新影片，不能证明与目标GENIE完整MV的同版本音轨。",
+      "completenessAssessment": "新命中performance资料是短预告。",
+      "performerAssessment": "艺人名称可靠不等于全片每位出镜与范围核对。",
+      "typeAssessment": "MV及预告不作为独立舞台。",
+      "result": "only_teaser_or_mv",
+      "nextCondition": "找到官方完整独立练习/表演；不把预告、MV另一个上传或邻接其他歌曲标题转为候选。",
+      "queue": "new_gap",
+      "inputPointer": "/records/92",
+      "priorExclusion": {
+        "category": "未找到合格来源",
+        "sourceCategory": "no_qualified_source_after_bounded_search",
+        "reason": "Last Dance精确表演查询主要返回艺人视频目录，尚未定位合格官方完整练习或常规节目。"
+      },
+      "inventoryReference": {
+        "path": "apps/idol-site/data/stages/inventory.json",
+        "workId": "recvxyOz5XGYPC",
+        "groupIds": [
+          "recvxyEBDZqkpg"
+        ],
+        "versionLabel": "UNIVERSE合作／GENIE完整重传",
+        "originalMV": {
+          "url": "https://www.youtube.com/watch?v=U6DG3TBcV6s",
+          "videoId": "U6DG3TBcV6s",
+          "officialTitle": "(여자)아이들 ((G)I-DLE) 'Last Dance (Prod. GroovyRoom)' Official Music Video",
+          "channel": "GENIE MUSIC",
+          "releaseDate": "2023-08-31",
+          "videoType": "官方MV"
+        }
+      },
+      "eligibleForBinding": false
+    },
+    {
+      "workId": "recvxyH5pzZfyK",
+      "artist": "WOOAH",
+      "song": "Shining On You",
+      "queryIds": [
+        "f03",
+        "f14"
+      ],
+      "newRoute": "文化院第一方Side B公告用于确认其是否属于新政策允许的独立完整表演。",
+      "candidateVideos": [
+        {
+          "videoId": "2GNJuBVCz5E",
+          "publisherFromSearch": "Koreanet",
+          "type": "MV Side B",
+          "indexedDuration": "约3:30，未作独立元数据复核",
+          "decision": "保留研究且不采用：第一方索引明确称MV Version Side B；未证为完整独立表演",
+          "url": "https://www.youtube.com/watch?v=2GNJuBVCz5E",
+          "directYouTubeRequestedThisPass": false,
+          "adopted": false
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://hk.korean-culture.org/hk/932/board/676/read/131130",
+          "access": "Search索引可读；open发生Redirect loop，已停止",
+          "summary": "官方活动公告把Side B归为MV版本；编舞活动为补充原MV副歌以外编舞。"
+        },
+        {
+          "url": "https://russia.korean-culture.org/ko/841/board/128/read/131335",
+          "access": "Search索引可读；open发生Redirect loop，已停止",
+          "summary": "文化院对应公告同样提供MV Side B及编舞项目语境。"
+        }
+      ],
+      "versionAssessment": "同歌SideB名称未证音轨同版，不作逐句音轨主张。",
+      "completenessAssessment": "搜索约3:30时长不证明完整连续表演。",
+      "performerAssessment": "未完整目视，不能补全成员范围。",
+      "typeAssessment": "已有第一方索引支持MV SideB；仍未证明它是独立完整表演。",
+      "result": "mv_side_b_not_established_as_independent_performance",
+      "nextCondition": "仅在官方进一步明确独立全曲表演且实际内容可核时复开；无需重试已循环页或受限YouTube。",
+      "queue": "new_gap",
+      "inputPointer": "/records/57",
+      "priorExclusion": {
+        "category": "场合或素材类型不符",
+        "sourceCategory": "format_or_occasion_unqualified_or_unverified",
+        "reason": "发现Shining on you Side B视频与原M/V、文化院项目介绍；Side B名称本身不能证明是音乐节目或完整练习。"
+      },
+      "inventoryReference": {
+        "path": "apps/idol-site/data/stages/inventory.json",
+        "workId": "recvxyH5pzZfyK",
+        "groupIds": [
+          "recvxyEBDZs5Ic"
+        ],
+        "versionLabel": "宣传合作",
+        "originalMV": {
+          "url": "https://www.youtube.com/watch?v=jsfsisyG3Vo",
+          "videoId": "jsfsisyG3Vo",
+          "officialTitle": "WOOAH (우아) - Shining on you Official M/V",
+          "channel": "GENIE MUSIC",
+          "releaseDate": "2024-07-15",
+          "videoType": "官方MV"
+        }
+      },
+      "eligibleForBinding": false
+    },
+    {
+      "workId": "recvxyH5pzVn2k",
+      "artist": "STAYC",
+      "song": "LIT",
+      "queryIds": [
+        "f04",
+        "f11",
+        "f17"
+      ],
+      "newRoute": "日本发行商STAY ALIVE完整DVD目录，排查混合索引中的Performance Music Video归属。",
+      "candidateVideos": [],
+      "sources": [
+        {
+          "url": "https://www.universal-music.co.jp/stayc/news/2025-11-11/",
+          "access": "Search open成功",
+          "summary": "目录逐行把LIT列作Music Video；Performance条目属于Lover,Killer和BEBE Japanese。"
+        },
+        {
+          "url": "https://www.highup-ent.com/en/stayc-confirmed-the-release-of-their-third-single-lit-on-december-6th-gaining-global-popularity-in-japan/",
+          "access": "Search索引",
+          "summary": "发行资料说明LIT原曲包含日语和韩语，不因此另造版本或舞台。"
+        }
+      ],
+      "versionAssessment": "原发行日/韩混合信息有第一方依据；未发现对应完整独立影片。",
+      "completenessAssessment": "无合格新片可核。",
+      "performerAssessment": "未发现本团全曲表演源。",
+      "typeAssessment": "LIT自身列MV，不能借同DVD其他歌曲Performance标签。",
+      "result": "adjacent_track_performance_false_positive",
+      "nextCondition": "需精确LIT标题的官方完整节目/练习/独立表演，不能采用相邻曲目或演唱会曲目表。",
+      "queue": "new_gap",
+      "inputPointer": "/records/56",
+      "priorExclusion": {
+        "category": "未找到合格来源",
+        "sourceCategory": "no_qualified_source_after_bounded_search",
+        "reason": "LIT查询出现日本MV、访谈和发行介绍；仅有这些标题不能建立完整节目/练习来源。"
+      },
+      "inventoryReference": {
+        "path": "apps/idol-site/data/stages/inventory.json",
+        "workId": "recvxyH5pzVn2k",
+        "groupIds": [
+          "recvxyEBDZ2V3c"
+        ],
+        "versionLabel": "日文原版",
+        "originalMV": {
+          "url": "https://www.youtube.com/watch?v=hB6B70NyZ7s",
+          "videoId": "hB6B70NyZ7s",
+          "officialTitle": "STAYC(ステイシー) 'LIT' MV",
+          "channel": "STAYC Japan Official",
+          "releaseDate": "2023-12-05",
+          "videoType": "官方MV"
+        }
+      },
+      "eligibleForBinding": false
+    },
+    {
+      "workId": "recvxyH5pzdckl",
+      "artist": "STAYC",
+      "song": "MEOW",
+      "queryIds": [
+        "f05",
+        "f12",
+        "f18"
+      ],
+      "newRoute": "日本发行商DVD明细和版本目录交叉确认独立表演标签与remix边界。",
+      "candidateVideos": [],
+      "sources": [
+        {
+          "url": "https://www.universal-music.co.jp/stayc/news/2025-11-11/",
+          "access": "Search open成功",
+          "summary": "MEOW条目是Music Video；同页Performance条目属于另外两首歌。"
+        },
+        {
+          "url": "https://www.universal-music.co.jp/stayc/products/upch-89573/",
+          "access": "Search索引",
+          "summary": "该版DVD记载MEOW MV和幕后，未证明独立全曲表演。"
+        },
+        {
+          "url": "https://www.universal-music.co.jp/stayc/news/2024-07-11/",
+          "access": "Search索引",
+          "summary": "单列Shlomi Remix，不能绑定为目标原曲。"
+        },
+        {
+          "url": "https://www.highup-ent.com/en/stayc-releases-4th-japanese-single-meow-cheeky-icy-thang-japanese-ver-continuing-their-local-popularity/",
+          "access": "Search索引",
+          "summary": "发行信息支持歌曲身份，不提供新的完整表演证据。"
+        }
+      ],
+      "versionAssessment": "原曲与Shlomi Remix须区分。",
+      "completenessAssessment": "DVD包含MV/幕后，不证明幕后内有完整表演。",
+      "performerAssessment": "无新合格精确源可核。",
+      "typeAssessment": "同页performance词不能从Lover,Killer或BEBE移到MEOW。",
+      "result": "adjacent_track_performance_false_positive",
+      "nextCondition": "精确原版MEOW官方完整独立表演，明确排除remix、节选与活动录像。",
+      "queue": "new_gap",
+      "inputPointer": "/records/59",
+      "priorExclusion": {
+        "category": "未找到合格来源",
+        "sourceCategory": "no_qualified_source_after_bounded_search",
+        "reason": "MEOW查询返回发行商目录、发行纪念活动和setlist；活动/曲目存在不等于已取得常规节目原片。"
+      },
+      "inventoryReference": {
+        "path": "apps/idol-site/data/stages/inventory.json",
+        "workId": "recvxyH5pzdckl",
+        "groupIds": [
+          "recvxyEBDZ2V3c"
+        ],
+        "versionLabel": "日文原版",
+        "originalMV": {
+          "url": "https://www.youtube.com/watch?v=b8yjHGQ4hA4",
+          "videoId": "b8yjHGQ4hA4",
+          "officialTitle": "STAYC（ステイシー）'MEOW' MV",
+          "channel": "STAYC Japan Official",
+          "releaseDate": "2024-08-20",
+          "videoType": "官方MV"
+        }
+      },
+      "eligibleForBinding": false
+    },
+    {
+      "workId": "recvxDMFHNJME3",
+      "artist": "XG",
+      "song": "IN THE RAIN",
+      "queryIds": [
+        "f06",
+        "f16"
+      ],
+      "newRoute": "XGALX官方live-party/REMIXX广告及MV幕后路线，检查是否有可接受制作表演。",
+      "candidateVideos": [],
+      "sources": [
+        {
+          "url": "https://xgalx.com/en/xg/news/detail.php?id=1122793",
+          "access": "Search open成功",
+          "summary": "McDonald's项目是特别重新编曲，发布15秒电视广告及60秒商业片；实时活动不是原曲完整单曲表演。"
+        },
+        {
+          "url": "https://xgalx.com/en/xg/news/detail.php?id=1124205",
+          "access": "Search索引",
+          "summary": "原MV发布信息不构成独立舞台。"
+        },
+        {
+          "url": "https://xgalx.com/en/xg/news/detail.php?id=1124450",
+          "access": "Search索引",
+          "summary": "MV/写真幕后信息不证明完整演唱。"
+        },
+        {
+          "url": "https://xgalx.com/xg/news/detail.php?id=1125686",
+          "access": "Search索引",
+          "summary": "XTRA#67幕后路线未得到完整独立同版表演证据。"
+        }
+      ],
+      "versionAssessment": "REMIXX是特别编曲，不同于目标原发行。",
+      "completenessAssessment": "官方广告长度15或60秒，非完整单曲。",
+      "performerAssessment": "本团出现或项目主办身份不能抵消版本/完整性不符。",
+      "typeAssessment": "商业短片/活动及巡演仍排除。",
+      "result": "commercial_remix_excerpt_excluded",
+      "nextCondition": "取得原编曲的官方全曲练习/节目/独立表演；不把商业直播或巡演当补位。",
+      "queue": "new_gap",
+      "inputPointer": "/records/36",
+      "priorExclusion": {
+        "category": "场合或素材类型不符",
+        "sourceCategory": "excluded_event_or_no_eligible_source",
+        "reason": "官方站没有检索到IN THE RAIN Choreography/Rehearsal原页；旧镜像及巡演全景不转成官方后备，保持原出处待证。"
+      },
+      "inventoryReference": {
+        "path": "apps/idol-site/data/stages/inventory.json",
+        "workId": "recvxDMFHNJME3",
+        "groupIds": [
+          "recvxDKdOtKdWD"
+        ],
+        "versionLabel": "原版",
+        "originalMV": {
+          "url": "https://www.youtube.com/watch?v=BydbhAzmAzg",
+          "videoId": "BydbhAzmAzg",
+          "officialTitle": "XG - IN THE RAIN (Official Music Video)",
+          "channel": "XG",
+          "releaseDate": "2025-04-11",
+          "videoType": "官方MV"
+        }
+      },
+      "eligibleForBinding": false
+    },
+    {
+      "workId": "recvxyOz5XFVzt",
+      "artist": "fromis_9",
+      "song": "Touchdown",
+      "queryIds": [
+        "f07",
+        "f13",
+        "f20",
+        "f23",
+        "f25",
+        "f26"
+      ],
+      "newRoute": "纠正电视剧身份后，检索2025 SBS The Winning Try OST Part2原始幕后/制作演唱路线。",
+      "candidateVideos": [
+        {
+          "videoId": "7ioDkpjgZbo",
+          "publisherFromSearch": "SBS Catch（社区同期链接归属，尚未读到第一方完整元数据）",
+          "type": "OST Making",
+          "title": "[Special] '프로미스나인' 메이킹 공개! 트라이 OST Part.2 #트라이 #TheWinningTry #SBSCatch",
+          "decision": "新精确研究线索；未证完整演唱，不可导入",
+          "url": "https://www.youtube.com/watch?v=7ioDkpjgZbo",
+          "directYouTubeRequestedThisPass": false,
+          "adopted": false
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.promise-publications.com/weekly-recaps/250803-fromis_9-weekly-recap/",
+          "access": "Search open及直接公开HTML GET成功；未请求嵌入视频",
+          "summary": "2025-08-02 OST Making栏目嵌入7ioDkpjgZbo；2025-08-01 Touchdown发行栏目另嵌peoZYyEvY-k，后者与库存原MV一致。"
+        },
+        {
+          "url": "https://www.ptt.cc/bbs/KoreaDrama/M.1755953311.A.503.html",
+          "access": "Search索引",
+          "summary": "同期剧集资料重复列出该Special幕后精确ID，只作辅助定位。"
+        }
+      ],
+      "versionAssessment": "剧名确认The Winning Try，旧检索中的Cheer Up错误已纠正；幕后实际音轨未核。",
+      "completenessAssessment": "Making不等于完整演唱；未知视频时长和连续单曲范围。",
+      "performerAssessment": "标题归属fromis_9，但未核实际成员演唱/出镜范围。",
+      "typeAssessment": "幕后只作线索，不能按独立完整制作表演直接采用。",
+      "result": "new_exact_making_lead_not_qualified",
+      "nextCondition": "路线正常可访问后取得第一方元数据与内容，确认完整连续演唱、原语种编曲和本团范围；未成立前不绑定。",
+      "htmlEvidence": {
+        "path": ".codex-local/stage-a-followup-promise.html",
+        "httpStatus": 200,
+        "bytes": 128764,
+        "sha256": "726a96476487f3a53ca295390e9b3d071636847b22f3c000991eae21cf59123a"
+      },
+      "queue": "new_gap",
+      "inputPointer": "/records/91",
+      "priorExclusion": {
+        "category": "未找到合格来源",
+        "sourceCategory": "no_qualified_source_after_bounded_search",
+        "reason": "查询附了치얼업词但结果实际指向SBS The Winning Try的2025 Touch Down OST；没有合格原片证据，错误剧名可能降低检索召回。"
+      },
+      "inventoryReference": {
+        "path": "apps/idol-site/data/stages/inventory.json",
+        "workId": "recvxyOz5XFVzt",
+        "groupIds": [
+          "recvxyEBDZcosR"
+        ],
+        "versionLabel": "OST MV",
+        "originalMV": {
+          "url": "https://www.youtube.com/watch?v=peoZYyEvY-k",
+          "videoId": "peoZYyEvY-k",
+          "officialTitle": "[MV] fromis_9(프로미스나인) _ Touchdown (The Winning Try : Original Television Soundtrack)",
+          "channel": "1theK (원더케이)",
+          "releaseDate": "2025-08-01",
+          "videoType": "官方MV"
+        }
+      },
+      "eligibleForBinding": false
+    },
+    {
+      "workId": "recvxyHuKMDKAR",
+      "artist": "aespa",
+      "song": "Switchblade (Feat. Ty Dolla $ign)",
+      "queryIds": [
+        "f08",
+        "f15",
+        "f24"
+      ],
+      "newRoute": "成员版政策下重新定向SMTOWN/Weverse独立练习与制作表演，不沿用普通MV或节庆。",
+      "candidateVideos": [],
+      "sources": [
+        {
+          "url": "https://sports.khan.co.kr/en/article/202608040927007",
+          "access": "Search索引",
+          "summary": "报道Lollapalooza合作演出，场合仍属音乐节；并非独立制作表演。"
+        },
+        {
+          "url": "https://riffmagazine.com/reviews/aespa-20261006/",
+          "access": "Search索引",
+          "summary": "Oakland演出报道属于SYNK COMPLæXITY巡演，不能当普通节目或练习室。"
+        }
+      ],
+      "versionAssessment": "feat范围允许合法成员版后备，但仍没有精确新完整源。",
+      "completenessAssessment": "未取得官方完整独立表演。",
+      "performerAssessment": "Lollapalooza资料即使有客串也不能解除音乐节排除。",
+      "typeAssessment": "检索主要为Lollapalooza、SYNK COMPLæXITY和MV，仍是活动/巡演或原MV。",
+      "result": "no_new_eligible_legacy_replacement",
+      "nextCondition": "保留旧来源/评分含义；取得官方同语种完整成员版或合作原版练习/节目/独立表演，再由父代理实时核owner保护后替换。",
+      "queue": "legacy_replacement",
+      "inputPointer": "/legacyReplacementsRemaining/2",
+      "priorExclusion": {
+        "category": null,
+        "sourceCategory": null,
+        "reason": "Bugs/Melon官方授权目录把Switchblade MV与WDA Performance分列；搜索共现不构成Switchblade独立表演。原合作Ty Dolla $ign范围保护继续。"
+      },
+      "inventoryReference": {
+        "path": "apps/idol-site/data/stages/inventory.json",
+        "workId": "recvxyHuKMDKAR",
+        "groupIds": [
+          "recvxyEBDZxfeD"
+        ],
+        "versionLabel": "Ty Dolla $ign联名",
+        "originalMV": {
+          "url": "https://www.youtube.com/watch?v=xcFbyuzd9S8",
+          "videoId": "xcFbyuzd9S8",
+          "officialTitle": "aespa 에스파 'Switchblade (Feat. Ty Dolla $ign)' MV",
+          "channel": "SMTOWN",
+          "releaseDate": "2026-08-03",
+          "videoType": "官方MV"
+        }
+      },
+      "eligibleForBinding": false
+    },
+    {
+      "workId": "rec28ldfRTrGY0",
+      "artist": "ODD YOUTH",
+      "song": "Best Friendz",
+      "queryIds": [
+        "f21",
+        "f22",
+        "f27"
+      ],
+      "newRoute": "TOPMEDIA精确表演页嵌入ID与Bugs原发行/英文重发说明，建立语种差异证据。",
+      "candidateVideos": [
+        {
+          "videoId": "nrcuK_sRJmY",
+          "publisherFromSearch": "TOP MEDIA官网精确嵌入",
+          "type": "English Ver. PERFORMANCE VIDEO",
+          "decision": "不同语言发行证据成立，不绑定到原Brand MV",
+          "url": "https://www.youtube.com/watch?v=nrcuK_sRJmY",
+          "directYouTubeRequestedThisPass": false,
+          "adopted": false
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://itopgroup.com/bbs/board.php?bo_table=ODDYOUTH_multimedia&wr_id=5",
+          "access": "Search open与直接公开HTML GET成功；未请求嵌入视频",
+          "summary": "官方标题明确English Ver.，iframe精确指向nrcuK_sRJmY。"
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/20681611?wl_ref=M_contents_01_04",
+          "access": "Search open成功",
+          "summary": "2024-11-01原出道单曲收录Best Friendz。"
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/20698794?wl_ref=list_tr_07",
+          "access": "Search open成功",
+          "summary": "2025-01-15授权发行说明明确原品牌歌曲重新发行英语版，并同发网球概念全新表演影片；英文曲162秒。"
+        }
+      ],
+      "versionAssessment": "发行方文字支持英文重发与原Brand曲的版本差异；不冒称逐句音轨比较。",
+      "completenessAssessment": "官方完整Performance标签/162秒音频资料仍不等于本轮全片播放。",
+      "performerAssessment": "官方本团表演，但逐人镜头未核；不新增私人关系。",
+      "typeAssessment": "官方独立制作表演的类型可接受，语种不匹配仍禁止跨版本绑定。",
+      "result": "different_language_documented",
+      "nextCondition": "寻找原Brand MV同语言版本的完整官方表演；或者未来单独明确建立英文作品后再依法关联，不能改原作品ID来迁就影片。",
+      "htmlEvidence": {
+        "path": ".codex-local/stage-a-followup-odd.html",
+        "httpStatus": 200,
+        "bytes": 43778,
+        "sha256": "047fd47d5bf5130f47de0ee6e8c45a59ba3190bbfad014bcbf82f19a1821a46c"
+      },
+      "queue": "new_gap",
+      "inputPointer": "/records/6",
+      "priorExclusion": {
+        "category": "语种或编配版本未匹配",
+        "sourceCategory": "version_unconfirmed",
+        "reason": "TOP MEDIA原始Multimedia页明确2025-01-15发布Best Friendz English Ver Performance Video。该证据支持排除把英语候选无标识绑定原Brand MV；原Brand音轨与候选的差异仍待听辨。"
+      },
+      "inventoryReference": {
+        "path": "apps/idol-site/data/stages/inventory.json",
+        "workId": "rec28ldfRTrGY0",
+        "groupIds": [
+          "rec28ldfRTiDpi"
+        ],
+        "versionLabel": null,
+        "originalMV": {
+          "url": "https://www.youtube.com/watch?v=JV_2SI-raz0",
+          "videoId": "JV_2SI-raz0",
+          "officialTitle": "ODD YOUTH (오드유스) 'Best Friendz' Brand MV",
+          "channel": "TOP MEDIA",
+          "releaseDate": null,
+          "videoType": "Brand MV"
+        }
+      },
+      "eligibleForBinding": false
+    }
+  ],
+  "limits": [
+    "未完整播放或逐句音轨比较，不主张现场人声或固定机位。",
+    "没有直接请求YouTube，未重试429、验证码、重定向循环；不使用Chrome。",
+    "只读取公开库存与研究证据；未读私人备份，未做Git操作、绑定、评分、应用或部署修改。",
+    "搜索未找到不等于来源不存在；候选不合格不代表原MV无真人。",
+    "原MV其他上传或剪辑不制造独立舞台，成员版政策不豁免语种、完整性、场合和原始出处。"
+  ],
+  "inventorySha256": "ecf62833e56fdab160ca382c3de3816d405e7b127bffef01a322a31ec05d74a7"
+}

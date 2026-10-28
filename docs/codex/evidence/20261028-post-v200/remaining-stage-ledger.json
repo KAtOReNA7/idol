@@ -630,7 +630,13 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "additionalResearch": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/followup-candidates.json",
+        "jsonPointer": "/records/8",
+        "result": "different_language_documented",
+        "nextCondition": "寻找原Brand MV同语言版本的完整官方表演；或者未来单独明确建立英文作品后再依法关联，不能改原作品ID来迁就影片。"
+      }
     },
     {
       "workId": "rec28ldfRTrGj0",
@@ -2676,6 +2682,10 @@
         {
           "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
           "jsonPointer": "/records/36"
+        },
+        {
+          "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+          "jsonPointer": "/records/1"
         }
       ],
       "latestResearch": {
@@ -2703,7 +2713,25 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "routeFollowup": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+        "jsonPointer": "/records/1",
+        "status": "pending_evidence",
+        "finding": "官网回顾页的live与4 SEASONS邻接不是该曲表演；FIRST TAKE精确官网查询为空。未取得新的独立完整分队表演。",
+        "result": "recap_promotion_false_positive",
+        "queryIds": [
+          "n02",
+          "n10"
+        ],
+        "sourceUrls": [
+          "https://xgalx.com/en/xg/news/detail.php?id=1130553",
+          "https://xgalx.com/en/xg/news/detail.php?id=1130530"
+        ],
+        "nextCondition": "取得明确4 SEASONS分队完整现场/录音表演页，核成员范围与原编曲。",
+        "eligibleForBinding": false,
+        "bindingChanged": false
+      }
     },
     {
       "workId": "recvxDMFHNJME3",
@@ -2752,7 +2780,13 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "additionalResearch": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/followup-candidates.json",
+        "jsonPointer": "/records/5",
+        "result": "commercial_remix_excerpt_excluded",
+        "nextCondition": "取得原编曲的官方全曲练习/节目/独立表演；不把商业直播或巡演当补位。"
+      }
     },
     {
       "workId": "recvxDMFHNyyeA",
@@ -3277,6 +3311,10 @@
         {
           "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
           "jsonPointer": "/records/48"
+        },
+        {
+          "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+          "jsonPointer": "/records/2"
         }
       ],
       "latestResearch": {
@@ -3310,7 +3348,24 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "routeFollowup": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+        "jsonPointer": "/records/2",
+        "status": "pending_evidence",
+        "finding": "NBC精确曲目查询为空；搜索中的Fallon表演关联Animal而不是Gameboy，不能从同艺人其他曲目迁移。官方目录未形成目标独立表演证据。",
+        "result": "other_song_tv_and_audio_variant_false_positive",
+        "queryIds": [
+          "n03",
+          "n11"
+        ],
+        "sourceUrls": [
+          "https://www.katseye.world/videos/"
+        ],
+        "nextCondition": "目标原版Gameboy的第一方完整独立表演，而非Animal/Gabriela或改编音源。",
+        "eligibleForBinding": false,
+        "bindingChanged": false
+      }
     },
     {
       "workId": "recvxIZy3525BF",
@@ -4100,7 +4155,13 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "additionalResearch": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/followup-candidates.json",
+        "jsonPointer": "/records/3",
+        "result": "adjacent_track_performance_false_positive",
+        "nextCondition": "需精确LIT标题的官方完整节目/练习/独立表演，不能采用相邻曲目或演唱会曲目表。"
+      }
     },
     {
       "workId": "recvxyH5pzZfyK",
@@ -4155,7 +4216,13 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "additionalResearch": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/followup-candidates.json",
+        "jsonPointer": "/records/2",
+        "result": "mv_side_b_not_established_as_independent_performance",
+        "nextCondition": "仅在官方进一步明确独立全曲表演且实际内容可核时复开；无需重试已循环页或受限YouTube。"
+      }
     },
     {
       "workId": "recvxyH5pzbluu",
@@ -4265,7 +4332,13 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "additionalResearch": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/followup-candidates.json",
+        "jsonPointer": "/records/4",
+        "result": "adjacent_track_performance_false_positive",
+        "nextCondition": "精确原版MEOW官方完整独立表演，明确排除remix、节选与活动录像。"
+      }
     },
     {
       "workId": "recvxyH5pzi1oo",
@@ -4977,6 +5050,10 @@
         {
           "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
           "jsonPointer": "/records/17"
+        },
+        {
+          "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+          "jsonPointer": "/records/5"
         }
       ],
       "latestResearch": {
@@ -4998,7 +5075,23 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "routeFollowup": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+        "jsonPointer": "/records/5",
+        "status": "pending_evidence",
+        "finding": "两站精确查询为空；广义performance命中PEPSI SUMMER FESTA音乐活动与MV幕后，且存在2023同名活动早于目标2024歌曲的混淆。没有取得完整独立同曲影片。",
+        "result": "same_named_brand_event_not_song_performance",
+        "queryIds": [
+          "n06",
+          "n14",
+          "n19"
+        ],
+        "sourceUrls": [],
+        "nextCondition": "明确SUMMER FESTA歌曲的Starship/IVE官方独立全曲表演，与同名品牌活动分开。",
+        "eligibleForBinding": false,
+        "bindingChanged": false
+      }
     },
     {
       "workId": "recvxyHuKMXVDa",
@@ -5762,6 +5855,10 @@
         {
           "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
           "jsonPointer": "/records/31"
+        },
+        {
+          "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+          "jsonPointer": "/records/0"
         }
       ],
       "latestResearch": {
@@ -5783,7 +5880,23 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "routeFollowup": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+        "jsonPointer": "/records/0",
+        "status": "pending_evidence",
+        "finding": "三次精确查询没有取得MTV或Vevo同曲第一方作品页；YouTube索引查询为空，其余主要为无关或社区索引。不得用Jingle Ball、发行MV或其他歌的棚内表演填补。",
+        "result": "no_additional_eligible_first_party_source",
+        "queryIds": [
+          "n01",
+          "n09",
+          "n17"
+        ],
+        "sourceUrls": [],
+        "nextCondition": "需官方播出方/艺人完整同曲英语表演原页及精确影片ID。",
+        "eligibleForBinding": false,
+        "bindingChanged": false
+      }
     },
     {
       "workId": "recvxyOz5X3Fd8",
@@ -6150,7 +6263,13 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "additionalResearch": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/followup-candidates.json",
+        "jsonPointer": "/records/6",
+        "result": "new_exact_making_lead_not_qualified",
+        "nextCondition": "路线正常可访问后取得第一方元数据与内容，确认完整连续演唱、原语种编曲和本团范围；未成立前不绑定。"
+      }
     },
     {
       "workId": "recvxyOz5XGYPC",
@@ -6205,7 +6324,13 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "additionalResearch": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/followup-candidates.json",
+        "jsonPointer": "/records/1",
+        "result": "only_teaser_or_mv",
+        "nextCondition": "找到官方完整独立练习/表演；不把预告、MV另一个上传或邻接其他歌曲标题转为候选。"
+      }
     },
     {
       "workId": "recvxyOz5XKzE5",
@@ -6441,6 +6566,10 @@
         {
           "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
           "jsonPointer": "/records/43"
+        },
+        {
+          "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+          "jsonPointer": "/records/4"
         }
       ],
       "latestResearch": {
@@ -6462,7 +6591,24 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "routeFollowup": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+        "jsonPointer": "/records/4",
+        "status": "pending_evidence",
+        "finding": "官方目录确认的是原MV；中文舞蹈/练习搜索主要仍为旧香港fan-concert报道与其他团舞台。未取得可接受新来源。",
+        "result": "original_mv_and_excluded_fan_concert_only",
+        "queryIds": [
+          "n05",
+          "n13"
+        ],
+        "sourceUrls": [
+          "https://nmixx.jype.com/video"
+        ],
+        "nextCondition": "NMIXX或节目方精确粤语全曲表演原页；不把原MV或fan-concert当新舞台。",
+        "eligibleForBinding": false,
+        "bindingChanged": false
+      }
     },
     {
       "workId": "recvxyOz5Xa1EK",
@@ -6663,7 +6809,13 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "additionalResearch": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/followup-candidates.json",
+        "jsonPointer": "/records/0",
+        "result": "no_new_eligible_source",
+        "nextCondition": "取得JYP/ITZY或普通打歌节目原始完整影片，核同曲同语种及成员范围后再保护评分。"
+      }
     },
     {
       "workId": "recvxyOz5XmFwB",
@@ -6697,6 +6849,10 @@
         {
           "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
           "jsonPointer": "/records/47"
+        },
+        {
+          "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+          "jsonPointer": "/records/3"
         }
       ],
       "latestResearch": {
@@ -6718,7 +6874,23 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "routeFollowup": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+        "jsonPointer": "/records/3",
+        "status": "pending_evidence",
+        "finding": "JTBC精确SUPERPOWERS/ITZY查询为空；Live Clip与录音查询主要无关或邻接其他艺人资料。没有新的制作演唱原页或精确ID。",
+        "result": "no_useful_target_studio_route",
+        "queryIds": [
+          "n04",
+          "n12",
+          "n18"
+        ],
+        "sourceUrls": [],
+        "nextCondition": "MOSTCONTENTS/JTBC/JYP发布具名完整录音/制作演唱原片后再核，不把电视剧原MV重用为舞台。",
+        "eligibleForBinding": false,
+        "bindingChanged": false
+      }
     },
     {
       "workId": "recvxyOz5XmMQe",
@@ -6807,6 +6979,10 @@
         {
           "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
           "jsonPointer": "/records/49"
+        },
+        {
+          "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+          "jsonPointer": "/records/6"
         }
       ],
       "latestResearch": {
@@ -6846,7 +7022,26 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "routeFollowup": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+        "jsonPointer": "/records/6",
+        "status": "pending_evidence",
+        "finding": "新官方制作路线不能证明旧rtKP2TsP1W4的英语音轨；Weverse/GRAMMY相关词分别属于EASY章节或原MV。旧候选保持版本未证。",
+        "result": "english_audio_unproven_no_new_source",
+        "queryIds": [
+          "n07",
+          "n15",
+          "n20"
+        ],
+        "sourceUrls": [
+          "https://weverse.io/lesserafim/notice/26612",
+          "https://www.grammy.com/news/k-pop-songs-that-electrified-2024-riize-kiss-of-life-aespa/"
+        ],
+        "nextCondition": "明确英文版的官方全曲表演或可靠具体音轨证据；不重试受限视频，不据幕后合并标题推断。",
+        "eligibleForBinding": false,
+        "bindingChanged": false
+      }
     },
     {
       "workId": "recvxyOz5Xo5fW",
@@ -7115,6 +7310,10 @@
         {
           "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
           "jsonPointer": "/records/54"
+        },
+        {
+          "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+          "jsonPointer": "/records/7"
         }
       ],
       "latestResearch": {
@@ -7136,7 +7335,26 @@
       },
       "status": "pending_evidence",
       "candidateEligibleForBinding": false,
-      "bindingChangedByQueueGeneration": false
+      "bindingChangedByQueueGeneration": false,
+      "routeFollowup": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/next-official-routes.json",
+        "jsonPointer": "/records/7",
+        "status": "pending_evidence",
+        "finding": "唱片公司目录没有提供旧INV0y_Cig7M的精确关联；DVD节目名称也不能推定包含同曲全程舞蹈。旧候选继续原始发布未证。",
+        "result": "official_dvd_does_not_resolve_candidate_origin",
+        "queryIds": [
+          "n08",
+          "n16"
+        ],
+        "sourceUrls": [
+          "https://www.universal-music.co.jp/loona/products/upch-89478/",
+          "https://www.universal-music.co.jp/loona/products/upch-89477",
+          "https://www.universal-music.co.jp/loona/news/2022-08-26/"
+        ],
+        "nextCondition": "精确旧ID的第一方声明/嵌入或另一个官方完整日语表演原页；不能依频道名或文件名认定官方。",
+        "eligibleForBinding": false,
+        "bindingChanged": false
+      }
     },
     {
       "workId": "recvxyOz5Xvsk1",
@@ -7857,7 +8075,13 @@
           "https://www.reddit.com/r/KpopGGs/comments/1urlegq/give_me_your_albummini_and_ill_give_you_my/"
         ]
       },
-      "absenceClaim": false
+      "absenceClaim": false,
+      "additionalResearch": {
+        "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/followup-candidates.json",
+        "jsonPointer": "/records/7",
+        "result": "no_new_eligible_legacy_replacement",
+        "nextCondition": "保留旧来源/评分含义；取得官方同语种完整成员版或合作原版练习/节目/独立表演，再由父代理实时核owner保护后替换。"
+      }
     },
     {
       "recordId": "recvxyHuKMEruy",
@@ -9291,5 +9515,12 @@
     "Source failure or no match does not prove performance nonexistence.",
     "Queue generation does not bind scores or change private records.",
     "Published v200 still has 493 sources; local 496 requires a separate deployment receipt."
-  ]
+  ],
+  "boundedFollowupReview": {
+    "reviewedWorks": 9,
+    "newGapWorks": 8,
+    "legacyReplacementWorks": 1,
+    "newSourcesAdopted": 0,
+    "evidenceFile": "docs/codex/evidence/20261028-post-v200/stages-a/followup-candidates.json"
+  }
 }

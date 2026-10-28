@@ -107,7 +107,7 @@ test('the generated report uses current statistics while clearly dating its hist
   assert.match(html, /<h2 id="portraits">MV图片与成员评分（2026-10-26历史盘点）<\/h2>/);
   assert.match(html, /下载2026-10-26历史待补认人图清单（CSV，不代表当前缺口）/);
   assert.match(html, /153个已核实账号：153项人数可用，0项人数待核/);
-  assert.match(html, /45团有范围明确的销量数据，6团暂缺/);
+  assert.match(html, /47团有范围明确的销量数据，4团暂缺/);
   assert.doesNotMatch(html, /147项人数可用|6项未查得可靠数字|42团有范围明确/);
   for (const [slug, url, , , display] of expected) assert.ok(html.includes(`<a href="${url}">${display}</a>`), slug);
 });

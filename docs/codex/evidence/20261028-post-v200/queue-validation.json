@@ -1,3088 +1,1191 @@
 {
-  "schemaVersion": 1,
-  "checkedAt": "2026-10-28T14:41:37.988Z",
-  "scope": "Offline reaggregation after the separately receipted SPAGHETTI member-version adoption. Includes source/object/set/reference checks and local public-fixture UDTT UI receipt; no private read/write, application edit, commit or deployment by this audit.",
+  "schemaVersion": 2,
+  "checkedAt": "2026-10-28T16:35:20.118964+00:00",
+  "scope": "Current offline check of local public queues, exact adoptions, image originals, protected source bytes and separately receipted public-fixture UI. Not production QA or private record readback.",
   "counts": {
-    "checks": 739,
-    "passed": 739,
+    "checks": 274,
+    "passed": 274,
     "failed": 0
   },
-  "sourceSnapshots": {
-    "docs/codex/evidence/20261028-v200/remaining-stage-ledger.json": {
-      "sha256": "d0bd9e63e4802c021a6a15f3474be1adc40e39215de47e76a0625a6962b0428a"
-    },
-    "docs/codex/evidence/20261028-v200/remaining-person-statistics.json": {
-      "sha256": "76fe786c9283fba909642c6523bc98116067aad12385c0b69b2f85449da7db72"
-    },
-    "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json": {
-      "sha256": "dd5054f2a0e689725b84bab01f48a0ac9511dcc19dc885ccc3784e23a6437c3d"
-    },
-    "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json": {
-      "sha256": "d9b0976a6aa33d7d5c577c8de82b6a7a6b6f2f4f8ae10ef5e68c9cc7843abb62"
-    },
-    "docs/codex/evidence/20261028-post-v200/stages-b/adoption.json": {
-      "sha256": "24effc798e3e69112bea11d1b740c43df862dfc18fa9de0f52a201f726e8d858"
-    },
-    "docs/codex/evidence/20261028-post-v200/stages-b/official-program-followup.json": {
-      "sha256": "1d271219f7cdc8878c09ac6520443b9f573366f8419c1e6c86e1c388bc19b2e7"
-    },
-    "docs/codex/evidence/20261028-post-v200/stages-a/final-candidates-followup.json": {
-      "sha256": "aadb1d9fbc2000e147f30c415b5605dd754f3d314d287ed35af5eb50b615bafe"
-    },
-    "docs/codex/evidence/20261028-post-v200/stages-a/focused-followup.json": {
-      "sha256": "53ba2bd07697e6297e35ec5714578a1dab1373f313458eed232110ea9cf2da02"
-    },
-    "docs/codex/evidence/20261028-post-v200/people/research.json": {
-      "sha256": "8d0247cbcde2d7b9661d939ef15378bf6b75cc0449dd433ea2b2b265f58f98ae"
-    },
-    "docs/codex/evidence/20261028-post-v200/people/adoption.json": {
-      "sha256": "fda2f5247d27ecb6f508dad07ae3609dbc379f558f490336b15fabb956f4e87d"
-    },
-    "docs/codex/evidence/20261028-post-v200/people/public-work-credits.delta.json": {
-      "sha256": "12cc4ed9c248d0944c53a7c8b38ea91e189a441de3d0196f4be60a4fc2ebeb32"
-    },
-    "docs/codex/evidence/20261028-post-v200/people/public-work-recognition.delta.json": {
-      "sha256": "630afca8e2023e173028c804d4d95daa19b888a66b0d815f547477780c32c608"
-    },
-    "docs/codex/evidence/20261028-post-v200/statistics/research.json": {
-      "sha256": "bb526076228626aa9897ef81b95f6476b44fc5cc22612da9d7ebfbfcec339b64"
-    },
-    "docs/codex/evidence/20261028-post-v200/statistics/geenius-adoption.json": {
-      "sha256": "82477c4ed1fb3d8b6f85f315da26c07fc5fca18e33555febca499c2750f92b05"
-    },
-    "docs/codex/evidence/20261028-post-v200/statistics/triples-adoption.json": {
-      "sha256": "76492e019aa33a6e4e8636d85cde6e61a5c283d918d509f11b4d3fb4137ba77a"
-    },
-    "docs/codex/evidence/20261028-post-v200/statistics/udtt-source-adoption.json": {
-      "sha256": "e2a9db3b95da7d1f689f49cb563da5d2904ec4bea9b33c353404d1142b6b56de"
-    },
-    "docs/codex/evidence/20261028-post-v200/stages-a/member-version-adoption.json": {
-      "sha256": "b83df6c715f2b5560b2dce026b0da062a82a47e488957c51abfa1c196689d696"
-    },
-    "apps/idol-site/data/public-work-credits.json": {
-      "sha256": "40140590b8e352aa4accaf8db2b18c1d14c486e46694d62cd44dd5e4b7cdd2b6"
-    },
-    "apps/idol-site/data/public-work-recognition.json": {
-      "sha256": "0a32dc70d51ef7156c0bb8023913bd44eb70a907d51edbb247bae36650abb44b"
-    },
-    "apps/idol-site/data/stage-videos.json": {
-      "sha256": "b8e276f3772c64c74095d5a363ce2b1d186a421854408677a91a478b2edd2bac"
-    },
-    "docs/codex/evidence/20261028-post-v200/ui/udtt.json": {
-      "sha256": "e43a41bce287d94278644d7014ebba9b7c5a1e8a9877a8b5696e0e6f3e3ad214"
-    }
-  },
-  "outputFiles": [
+  "checks": [
     {
-      "file": "docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json",
-      "sha256": "4a7b42a851d7f4ad0fbf214ae6bab1df336fe23392c87bcb9177721cc76ee688"
+      "name": "independent public facts and unresolved counters",
+      "passed": true
     },
     {
-      "file": "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json",
-      "sha256": "66c38a641643fca27af82cc26412d640076987e8641c07715710431579bee739"
+      "name": "stage gap inventory and selected sources",
+      "passed": true
+    },
+    {
+      "name": "generic references exactly cover24 unresolved works without resolving facts",
+      "passed": true
+    },
+    {
+      "name": "eleven reference groups with119 displayed slots",
+      "passed": true
+    },
+    {
+      "name": "generic receipt retains independent fact and relationship boundaries",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple rec28ldfRTrIkV",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple rec28ldfRTrNsK",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple rec28ldfRTrNBu",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple rec28ldfRTrPi9",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyH5pzrrSO",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyH5pzQxpW",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyH5pzFAPL",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMisqR",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMiDs4",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMyy5i",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMBHQA",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMlGJW",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMCSdB",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMwjsI",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMlAhN",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMxwnW",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMlNfX",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMLz7L",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyHuKMwrIt",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyOz5XFVzt",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxyOz5XsgVc",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxIZy35rUeY",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxIZy3525BF",
+      "passed": true
+    },
+    {
+      "name": "generic exact tuple recvxIZFpVLU0R",
+      "passed": true
+    },
+    {
+      "name": "unique named portraits rec28ldfRTiBAq",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniB6s5",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniB6s5",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniB6Jp",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniB6Jp",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniB6Rt",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniB6Rt",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniB70B",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniB70B",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniB7cX",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniB7cX",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniB7m2",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniB7m2",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniB7vO",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniB7vO",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniB7F7",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniB7F7",
+      "passed": true
+    },
+    {
+      "name": "unique named portraits rec28ldfRTiCpp",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBc6L",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBc6L",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBcnd",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBcnd",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBcvH",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBcvH",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBcDI",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBcDI",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBcMa",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBcMa",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBcVa",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBcVa",
+      "passed": true
+    },
+    {
+      "name": "unique named portraits rec28ldfRTiCzI",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBgam",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBgam",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBghr",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBghr",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBgJR",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBgJR",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBgCI",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBgCI",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBgoz",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBgoz",
+      "passed": true
+    },
+    {
+      "name": "original hash rec28ldbniBgvC",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition rec28ldbniBgvC",
+      "passed": true
+    },
+    {
+      "name": "unique named portraits recvxyEBDZs5Ic",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHGJek",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHGJek",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHzhWr",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHzhWr",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHu6mX",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHu6mX",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzH84mF",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzH84mF",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHi2X6",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHi2X6",
+      "passed": true
+    },
+    {
+      "name": "unique named portraits recvxyEBDZllCe",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHxdYR",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHxdYR",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzH2DZh",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzH2DZh",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHusbM",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHusbM",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzH73gu",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzH73gu",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHDkqn",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHDkqn",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzH3dKs",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzH3dKs",
+      "passed": true
+    },
+    {
+      "name": "unique named portraits recvxyEBDZxfeD",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzH9h49",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzH9h49",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHaPe7",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHaPe7",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHT9Ft",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHT9Ft",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHE7ST",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHE7ST",
+      "passed": true
+    },
+    {
+      "name": "unique named portraits recvxyEBDZT8Xj",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHJ8OM",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHJ8OM",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzH8OvK",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzH8OvK",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHwHyh",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHwHyh",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzH0eFB",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzH0eFB",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzH6EEe",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzH6EEe",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHzmaT",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHzmaT",
+      "passed": true
+    },
+    {
+      "name": "unique named portraits recvxyEBDZcosR",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHxbOq",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHxbOq",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzH7Kld",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzH7Kld",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHoZAl",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHoZAl",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHn2aM",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHn2aM",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHu868",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHu868",
+      "passed": true
+    },
+    {
+      "name": "unique named portraits recvxyEBDZOpTf",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHsxMe",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHsxMe",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHcw9e",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHcw9e",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzH9IoY",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzH9IoY",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHKyEb",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHKyEb",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHbCfX",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHbCfX",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxyICzHwrX4",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxyICzHwrX4",
+      "passed": true
+    },
+    {
+      "name": "unique named portraits rec28ldfRTiE4q",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxAPQCFxcH2",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxAPQCFxcH2",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxAPQCFYx1e",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxAPQCFYx1e",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxAPQCFDTXs",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxAPQCFDTXs",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxAPQCFzCEc",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxAPQCFzCEc",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxAPQCFQvki",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxAPQCFQvki",
+      "passed": true
+    },
+    {
+      "name": "unique named portraits rec28ldfRTiCGa",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxAPQCFX60u",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxAPQCFX60u",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxAPQCFkzV2",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxAPQCFkzV2",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxAPQCFJZLq",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxAPQCFJZLq",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxAPQCFuwFz",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxAPQCFuwFz",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxAPQCFVvLu",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxAPQCFVvLu",
+      "passed": true
+    },
+    {
+      "name": "original hash recvxAPQCFjuA9",
+      "passed": true
+    },
+    {
+      "name": "portrait is only recognition recvxAPQCFjuA9",
+      "passed": true
+    },
+    {
+      "name": "sixty-three reused originals",
+      "passed": true
+    },
+    {
+      "name": "protected facts and relationships public-work-credits.json",
+      "passed": true
+    },
+    {
+      "name": "protected facts and relationships public-work-recognition.json",
+      "passed": true
+    },
+    {
+      "name": "protected facts and relationships mv-public-media.json",
+      "passed": true
+    },
+    {
+      "name": "protected facts and relationships mv-member-appearance.json",
+      "passed": true
+    },
+    {
+      "name": "protected facts and relationships snapshot.json",
+      "passed": true
+    },
+    {
+      "name": "unknown queue exactly matches application null facts",
+      "passed": true
+    },
+    {
+      "name": "triples exact adopted statistic object",
+      "passed": true
+    },
+    {
+      "name": "triples remains unpublished",
+      "passed": true
+    },
+    {
+      "name": "vvup exact adopted statistic object",
+      "passed": true
+    },
+    {
+      "name": "vvup remains unpublished",
+      "passed": true
+    },
+    {
+      "name": "udtt exact adopted statistic object",
+      "passed": true
+    },
+    {
+      "name": "udtt remains unpublished",
+      "passed": true
+    },
+    {
+      "name": "tripleS remaining difference is not closed",
+      "passed": true
+    },
+    {
+      "name": "bounded archive absence does not become verified zero",
+      "passed": true
+    },
+    {
+      "name": "unavailable remains null, display fallback only genblue.wins",
+      "passed": true
+    },
+    {
+      "name": "archive research attached genblue.wins",
+      "passed": true
+    },
+    {
+      "name": "unavailable remains null, display fallback only spia.sales",
+      "passed": true
+    },
+    {
+      "name": "unavailable remains null, display fallback only tracer.sales",
+      "passed": true
+    },
+    {
+      "name": "unavailable remains null, display fallback only tracer.wins",
+      "passed": true
+    },
+    {
+      "name": "archive research attached tracer.wins",
+      "passed": true
+    },
+    {
+      "name": "unavailable remains null, display fallback only vcha.sales",
+      "passed": true
+    },
+    {
+      "name": "unavailable remains null, display fallback only vcha.wins",
+      "passed": true
+    },
+    {
+      "name": "archive research attached vcha.wins",
+      "passed": true
+    },
+    {
+      "name": "unavailable remains null, display fallback only witchx.sales",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/.openai/hosting.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/build-assets/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/catalog/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/editorial-assets/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/editorial-assets/viewer/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/export/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/health/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/backup/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/build-assets/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/careers/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/editorial-assets/backup/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/editorial-assets/catalog/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/editorial-assets/preflight/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/editorial-assets/relation-diagnostics/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/editorial-assets/restore/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/editorial-assets/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/editorial-assets/viewer/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/members/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/photos/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/posters/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/relations/billlie-zap/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/manage/relations/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/media/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/posters/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/records/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/save/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/app/api/status/route.ts",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/adya.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/aespa.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/atheart.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/babymonster.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/badvillain.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/bewave.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/billlie.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/candyshop.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/cherrybullet.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/everglow.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/fromis9.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/geenius.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/genblue.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/hearts2hearts.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/hitgs.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/idle.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/ifeye.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/illit.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/itzy.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/ive.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/izna.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/izone.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/katseye.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/kep1er.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/kiiikiii.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/kissoflife.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/lesserafim.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/loona.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/madein.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/meovv.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/newjeans.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/nmixx.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/oddyouth.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/purplekiss.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/qwer.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/rescene.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/rocketpunch.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/saymyname.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/spia.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/stayc.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/tracer.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/triples.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/udtt.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/unis.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/vcha.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/vvup.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/weeekly.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/witchx.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/wooah.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/xg.json",
+      "passed": true
+    },
+    {
+      "name": "protected application source apps/idol-site/data/artist-timelines/youngposse.json",
+      "passed": true
+    },
+    {
+      "name": "public fixture browser validation ui/main-flow.json",
+      "passed": true
+    },
+    {
+      "name": "public fixture browser validation ui/udtt.json",
+      "passed": true
+    },
+    {
+      "name": "public fixture browser validation ui/statistics-followup.json",
+      "passed": true
+    },
+    {
+      "name": "public fixture browser validation ui/generic-recognition.json",
+      "passed": true
+    },
+    {
+      "name": "publication remains on hold",
+      "passed": true
     }
   ],
   "queueCounts": {
     "newStageGaps": 109,
     "legacyStageReplacements": 11,
     "selectedLocalSources": 496,
-    "fixedCameraOptimizations": 1,
-    "remainingSecondHalfMemberVersionReviews": 5,
     "remainingPersonWorks": 24,
-    "unknownMetrics": 9,
+    "genericReferenceWorks": 24,
+    "genericReferenceGroups": 11,
+    "genericReferenceSlots": 119,
+    "genericUniqueExistingOriginals": 63,
+    "unknownMetrics": 7,
     "effectiveDateHolds": 7,
-    "tripleSLowerBound": 2098086,
-    "tripleSRemainingDifference": 360703
+    "tripleSLowerBound": 2108154,
+    "tripleSRemainingDifference": 350635
   },
-  "checks": [
-    {
-      "name": "three actual null-before source adoptions",
-      "passed": true
+  "sourceSnapshots": {
+    "apps/idol-site/data/group-statistics-completion-evidence.json": {
+      "sha256": "d9cbdd9d3f58d5da5b4c6535824a5dfcdd0cdc08761081d8436e1e55111b6a97"
     },
-    {
-      "name": "109 remaining is exact original112 minus adopted3",
-      "passed": true
+    "apps/idol-site/data/public-group-recognition.json": {
+      "sha256": "766e9f61cdb004ea26f7a3733415b8eb2e61417a62aec5046a769588306e48b9"
     },
-    {
-      "name": "all gap IDs unique",
-      "passed": true
+    "apps/idol-site/data/stage-selection-posters-20261027.json": {
+      "sha256": "6759153aec18d27f128a654aa75fe75fc5b8ee6f9f5c7c5b7f349377ea860138"
     },
-    {
-      "name": "legacy 11 identities unchanged",
-      "passed": true
+    "apps/idol-site/data/stage-videos.json": {
+      "sha256": "b8e276f3772c64c74095d5a363ce2b1d186a421854408677a91a478b2edd2bac"
     },
-    {
-      "name": "local496 = published493 +3; publication not claimed",
-      "passed": true
+    "apps/idol-site/data/stages/status.json": {
+      "sha256": "70a4dbdfd0ae7adc928441b472e74c02498c8b5bf4c65bd11fef4d6f134aa4fa"
     },
-    {
-      "name": "new and old category counts only109",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/people/generic-reference/adoption.json": {
+      "sha256": "fc2909f0808e6df0c96b2cd7093554ae7c33ddf03d8dad1752c88db1514f4189"
     },
-    {
-      "name": "Right Now remains optimization outside both gap queues",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/people/generic-reference/baseline.json": {
+      "sha256": "7b1fa703676727f856a78d1b47827cd42ef839abb984aca616f9004f781ad699"
     },
-    {
-      "name": "five of six second-half member policy reviews remain",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/publication-hold.json": {
+      "sha256": "792cf69c3ca1fd7f7f39ec42107de73d5db38f09d8e2b2f50f5f6b026c710c3a"
     },
-    {
-      "name": "SPAGHETTI exact documentary guest-scope evidence retained",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json": {
+      "sha256": "fd65eead13378a462e787ab27d5a8c15d44736a8071b21d8ba818704ce08a772"
     },
-    {
-      "name": "recvxyOz5XHEju current application exactly adopted after object",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json": {
+      "sha256": "6192d1f36a8f9e35d61c155e785ad6163c7eaa2bdd46d7bb05e9e11bd3694e73"
     },
-    {
-      "name": "rec28ldfRTrCzF current application exactly adopted after object",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/source-protection.json": {
+      "sha256": "460d3c94f56e113f46faaa7bb7298375745cbfe2328a9c8c8fd24cf80545dbf3"
     },
-    {
-      "name": "recvxDMFHNHFyM current application exactly adopted after object",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/stages-a/member-version-adoption.json": {
+      "sha256": "b83df6c715f2b5560b2dce026b0da062a82a47e488957c51abfa1c196689d696"
     },
-    {
-      "name": "recvxyOz5XJWXT current application exactly adopted after object",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/stages-b/adoption.json": {
+      "sha256": "24effc798e3e69112bea11d1b740c43df862dfc18fa9de0f52a201f726e8d858"
     },
-    {
-      "name": "rec28ldfRTrAUD stable source identity and remains unbound",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/statistics/triples-followup-adoption.json": {
+      "sha256": "43066d95ed732289815438b1cdd91bc40436ad34d42529aa8aaef5d1243ac654"
     },
-    {
-      "name": "rec28ldfRTrAfx stable source identity and remains unbound",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/statistics/udtt-followup-adoption.json": {
+      "sha256": "239c1c68c4fe53636d3f7c0a6618427431fe97ae7657c6c3b5f2deb656c9b9a4"
     },
-    {
-      "name": "rec28ldfRTrCDJ stable source identity and remains unbound",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/statistics/vvup-followup-adoption.json": {
+      "sha256": "964734687c59907dc9d12d17dbe72d5abe3e719e46903990ade2e00bc1d60203"
     },
-    {
-      "name": "rec28ldfRTrF2E stable source identity and remains unbound",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/statistics/win-archive-followup.json": {
+      "sha256": "e3d372ea4bad42bbe9685529b12f8ca614dd8f4b60e053afcb3dde58d135b2cb"
     },
-    {
-      "name": "rec28ldfRTrFGi stable source identity and remains unbound",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/ui/generic-recognition.json": {
+      "sha256": "a04c2c16dfbc678647dc05d4b21867ccec6b3176c59c5dfbf3b54665615a10c7"
     },
-    {
-      "name": "rec28ldfRTrFYu stable source identity and remains unbound",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/ui/main-flow.json": {
+      "sha256": "5c21f5cbef7e6e4e9e3353bd7a038a8f4b7401a319993696e03864a937307a01"
     },
-    {
-      "name": "rec28ldfRTrGY0 stable source identity and remains unbound",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/ui/statistics-followup.json": {
+      "sha256": "7b436b7f54362bac91b0a659f68834d1a59ff50a17b77134bb148af7c66ecf25"
     },
-    {
-      "name": "rec28ldfRTrGj0 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrI8S stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIC0 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIkV stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrJne stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrK1S stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKWv stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKm3 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKqc stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLFz stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLow stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrMwG stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNO2 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNcl stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNsK stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrO2v stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOTb stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOXn stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOnV stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrP1t stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrP5H stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrQ8F stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZLpET3tB stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKntfT stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKy9zg stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lR25A stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lX8bP stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxJ03dOg1Gc stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHN97Px stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNJME3 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNyyeA stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNzJyr stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIYG1FSCws stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZFpVLU0R stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRQAko79 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKBgDC stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKKCeh stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZXUpORHf stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lVCCr stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZnIaGCNq stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy3525BF stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35Xwr7 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35rUeY stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pz4ojC stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzA9lj stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzEDfw stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzFAPL stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzJov0 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzQxpW stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzVn2k stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzZfyK stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzbluu stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzdckl stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzi1oo stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoIOD stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoMAf stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoaOZ stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzrrSO stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM2Gwu stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM5r64 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMBHQA stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCSdB stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDFye stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMLz7L stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMNnpu stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMXVDa stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMZLFT stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMh5bM stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMiDs4 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMisqR stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlAhN stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlGJW stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlNfX stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwjsI stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwrIt stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMxwnW stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMyy5i stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X0JJ9 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X1VFs stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X3Fd8 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X6G1q stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7Tw7 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7zV3 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X9qGD stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XFVzt stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XGYPC stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XKzE5 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQMJt stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQZhy stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XRfn5 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xa1EK stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XkyEY stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XlqWP stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XmFwB stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XmMQe stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XnOv7 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xo5fW stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xqy0Q stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xr917 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XsgVc stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XueI9 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xvsk1 stable source identity and remains unbound",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKy2 legacy source retains exact old video identity",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrINH legacy source retains exact old video identity",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDKAR legacy source retains exact old video identity",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMEruy legacy source retains exact old video identity",
-      "passed": true
-    },
-    {
-      "name": "recvxIZd9vfxUk legacy source retains exact old video identity",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNojjN legacy source retains exact old video identity",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xr6ek legacy source retains exact old video identity",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMKGBh legacy source retains exact old video identity",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCtUB legacy source retains exact old video identity",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM2wRG legacy source retains exact old video identity",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNSckK legacy source retains exact old video identity",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrAUD pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrAUD pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrAUD pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrAUD pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrAfx pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrAfx pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrAfx pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrAfx pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrCDJ pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/2",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrCDJ pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/2",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrCDJ pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/2",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrCDJ pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/2",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrF2E pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/4",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrF2E pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/4",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrF2E pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/4",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrF2E pointer docs/codex/evidence/20261028-post-v200/stages-a/focused-followup.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrF2E pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/4",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrF2E pointer docs/codex/evidence/20261028-post-v200/stages-a/focused-followup.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrFGi pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/5",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrFGi pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/5",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrFGi pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/5",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrFGi pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/5",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrFYu pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/6",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrFYu pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/6",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrFYu pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/6",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrFYu pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/6",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrGY0 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/7",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrGY0 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/7",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrGY0 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/7",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrGY0 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/7",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrGj0 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/8",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrGj0 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/8",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrGj0 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/8",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrGj0 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/8",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrI8S pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/9",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrI8S pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/9",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrI8S pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/9",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrI8S pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/9",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIC0 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/10",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIC0 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/10",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIC0 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/10",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIC0 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/10",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIkV pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/11",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIkV pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/11",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIkV pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/11",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIkV pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/11",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrJne pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/12",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrJne pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/12",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrJne pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/12",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrJne pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/12",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrK1S pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/13",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrK1S pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/13",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrK1S pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/13",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrK1S pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/13",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKWv pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/14",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKWv pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/14",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKWv pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/14",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKWv pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/14",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKm3 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/15",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKm3 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/15",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKm3 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/15",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKm3 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/15",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKqc pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/16",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKqc pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/16",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKqc pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/16",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKqc pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/16",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLFz pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/17",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLFz pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/17",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLFz pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/17",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLFz pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/17",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLow pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/18",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLow pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/18",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLow pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/18",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLow pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/18",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrMwG pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/19",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrMwG pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/19",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrMwG pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/19",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrMwG pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/19",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNO2 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/20",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNO2 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/20",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNO2 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/20",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNO2 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/20",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNcl pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/21",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNcl pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/21",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNcl pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/21",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNcl pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/21",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNsK pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/22",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNsK pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/22",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNsK pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/22",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNsK pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/22",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrO2v pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/23",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrO2v pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/23",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrO2v pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/23",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrO2v pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/23",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOTb pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/24",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOTb pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/24",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOTb pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/24",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOTb pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/24",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOXn pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/25",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOXn pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/25",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOXn pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/25",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOXn pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/25",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOnV pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/26",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOnV pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/26",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOnV pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/26",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrOnV pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/26",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrP1t pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/27",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrP1t pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/27",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrP1t pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/27",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrP1t pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/27",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrP5H pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/28",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrP5H pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/28",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrP5H pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/28",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrP5H pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/28",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrQ8F pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/29",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrQ8F pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/29",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrQ8F pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/29",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrQ8F pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/29",
-      "passed": true
-    },
-    {
-      "name": "recvxIZLpET3tB pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/30",
-      "passed": true
-    },
-    {
-      "name": "recvxIZLpET3tB pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/30",
-      "passed": true
-    },
-    {
-      "name": "recvxIZLpET3tB pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/30",
-      "passed": true
-    },
-    {
-      "name": "recvxIZLpET3tB pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/30",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKntfT pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/31",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKntfT pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/31",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKntfT pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/31",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKntfT pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/31",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKy9zg pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/32",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKy9zg pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/32",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKy9zg pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/32",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKy9zg pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/32",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lR25A pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/33",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lR25A pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/33",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lR25A pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/33",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lR25A pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/33",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lX8bP pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/34",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lX8bP pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/34",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lX8bP pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/34",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lX8bP pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/34",
-      "passed": true
-    },
-    {
-      "name": "recvxJ03dOg1Gc pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/35",
-      "passed": true
-    },
-    {
-      "name": "recvxJ03dOg1Gc pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/35",
-      "passed": true
-    },
-    {
-      "name": "recvxJ03dOg1Gc pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/35",
-      "passed": true
-    },
-    {
-      "name": "recvxJ03dOg1Gc pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/35",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHN97Px pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/36",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHN97Px pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/36",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHN97Px pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/36",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHN97Px pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/36",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNJME3 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/38",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNJME3 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/38",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNJME3 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/38",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNJME3 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/38",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNyyeA pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/39",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNyyeA pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/39",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNyyeA pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/39",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNyyeA pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/39",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNzJyr pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/40",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNzJyr pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/40",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNzJyr pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/40",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNzJyr pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/40",
-      "passed": true
-    },
-    {
-      "name": "recvxIYG1FSCws pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/41",
-      "passed": true
-    },
-    {
-      "name": "recvxIYG1FSCws pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/41",
-      "passed": true
-    },
-    {
-      "name": "recvxIYG1FSCws pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/41",
-      "passed": true
-    },
-    {
-      "name": "recvxIYG1FSCws pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/41",
-      "passed": true
-    },
-    {
-      "name": "recvxIZFpVLU0R pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/42",
-      "passed": true
-    },
-    {
-      "name": "recvxIZFpVLU0R pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/42",
-      "passed": true
-    },
-    {
-      "name": "recvxIZFpVLU0R pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/42",
-      "passed": true
-    },
-    {
-      "name": "recvxIZFpVLU0R pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/42",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRQAko79 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/43",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRQAko79 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/43",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRQAko79 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/43",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRQAko79 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/43",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKBgDC pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/44",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKBgDC pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/44",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKBgDC pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/44",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKBgDC pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/44",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKKCeh pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/45",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKKCeh pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/45",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKKCeh pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/45",
-      "passed": true
-    },
-    {
-      "name": "recvxIZRWKKCeh pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/45",
-      "passed": true
-    },
-    {
-      "name": "recvxIZXUpORHf pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/46",
-      "passed": true
-    },
-    {
-      "name": "recvxIZXUpORHf pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/46",
-      "passed": true
-    },
-    {
-      "name": "recvxIZXUpORHf pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/46",
-      "passed": true
-    },
-    {
-      "name": "recvxIZXUpORHf pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/46",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lVCCr pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/47",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lVCCr pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/47",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lVCCr pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/47",
-      "passed": true
-    },
-    {
-      "name": "recvxIZY0lVCCr pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/47",
-      "passed": true
-    },
-    {
-      "name": "recvxIZnIaGCNq pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/48",
-      "passed": true
-    },
-    {
-      "name": "recvxIZnIaGCNq pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/48",
-      "passed": true
-    },
-    {
-      "name": "recvxIZnIaGCNq pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/48",
-      "passed": true
-    },
-    {
-      "name": "recvxIZnIaGCNq pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/48",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy3525BF pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/49",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy3525BF pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/49",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy3525BF pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/49",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy3525BF pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/49",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35Xwr7 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/50",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35Xwr7 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/50",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35Xwr7 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/50",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35Xwr7 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/50",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35rUeY pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/51",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35rUeY pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/51",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35rUeY pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/51",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35rUeY pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/51",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pz4ojC pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/52",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pz4ojC pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/52",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pz4ojC pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/52",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pz4ojC pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/52",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzA9lj pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/53",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzA9lj pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/53",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzA9lj pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/53",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzA9lj pointer docs/codex/evidence/20261028-post-v200/stages-a/focused-followup.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzA9lj pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/53",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzA9lj pointer docs/codex/evidence/20261028-post-v200/stages-a/focused-followup.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzEDfw pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/54",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzEDfw pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/54",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzEDfw pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/54",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzEDfw pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/54",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzFAPL pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/55",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzFAPL pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/55",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzFAPL pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/55",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzFAPL pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/55",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzJov0 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/56",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzJov0 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/56",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzJov0 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzJov0 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzQxpW pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/57",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzQxpW pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/57",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzQxpW pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzQxpW pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzVn2k pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/58",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzVn2k pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/58",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzVn2k pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/2",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzVn2k pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/2",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzZfyK pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/59",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzZfyK pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/59",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzZfyK pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/3",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzZfyK pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/3",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzbluu pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/60",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzbluu pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/60",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzbluu pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/4",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzbluu pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/4",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzdckl pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/61",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzdckl pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/61",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzdckl pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/5",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzdckl pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/5",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzi1oo pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/62",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzi1oo pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/62",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzi1oo pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/6",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzi1oo pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/6",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoIOD pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/63",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoIOD pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/63",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoIOD pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/7",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoIOD pointer docs/codex/evidence/20261028-post-v200/stages-a/final-candidates-followup.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoIOD pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/7",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoIOD pointer docs/codex/evidence/20261028-post-v200/stages-a/final-candidates-followup.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoMAf pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/64",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoMAf pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/64",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoMAf pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/8",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoMAf pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/8",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoaOZ pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/65",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoaOZ pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/65",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoaOZ pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/9",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzoaOZ pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/9",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzrrSO pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/66",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzrrSO pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/66",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzrrSO pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/10",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzrrSO pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/10",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM2Gwu pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/67",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM2Gwu pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/67",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM2Gwu pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/11",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM2Gwu pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/11",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM5r64 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/68",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM5r64 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/68",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM5r64 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/12",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM5r64 pointer docs/codex/evidence/20261028-post-v200/stages-b/official-program-followup.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM5r64 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/12",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM5r64 pointer docs/codex/evidence/20261028-post-v200/stages-b/official-program-followup.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMBHQA pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/69",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMBHQA pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/69",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMBHQA pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/13",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMBHQA pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/13",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCSdB pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/70",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCSdB pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/70",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCSdB pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/14",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCSdB pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/14",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDFye pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/71",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDFye pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/71",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDFye pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/15",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDFye pointer docs/codex/evidence/20261028-post-v200/stages-a/final-candidates-followup.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDFye pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/15",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDFye pointer docs/codex/evidence/20261028-post-v200/stages-a/final-candidates-followup.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMLz7L pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/72",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMLz7L pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/72",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMLz7L pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/16",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMLz7L pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/16",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMNnpu pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/73",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMNnpu pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/73",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMNnpu pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/17",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMNnpu pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/17",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMXVDa pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/74",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMXVDa pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/74",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMXVDa pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/18",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMXVDa pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/18",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMZLFT pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/75",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMZLFT pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/75",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMZLFT pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/19",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMZLFT pointer docs/codex/evidence/20261028-post-v200/stages-b/official-program-followup.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMZLFT pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/19",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMZLFT pointer docs/codex/evidence/20261028-post-v200/stages-b/official-program-followup.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMh5bM pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/76",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMh5bM pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/76",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMh5bM pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/20",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMh5bM pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/20",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMiDs4 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/77",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMiDs4 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/77",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMiDs4 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/21",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMiDs4 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/21",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMisqR pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/78",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMisqR pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/78",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMisqR pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/22",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMisqR pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/22",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlAhN pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/79",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlAhN pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/79",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlAhN pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/23",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlAhN pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/23",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlGJW pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/80",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlGJW pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/80",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlGJW pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/24",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlGJW pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/24",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlNfX pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/81",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlNfX pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/81",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlNfX pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/25",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlNfX pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/25",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwjsI pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/82",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwjsI pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/82",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwjsI pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/26",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwjsI pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/26",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwrIt pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/83",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwrIt pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/83",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwrIt pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/27",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwrIt pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/27",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMxwnW pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/84",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMxwnW pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/84",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMxwnW pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/28",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMxwnW pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/28",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMyy5i pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/85",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMyy5i pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/85",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMyy5i pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/29",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMyy5i pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/29",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X0JJ9 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/86",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X0JJ9 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/86",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X0JJ9 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/30",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X0JJ9 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/30",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X1VFs pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/87",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X1VFs pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/87",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X1VFs pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/31",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X1VFs pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/31",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X3Fd8 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/88",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X3Fd8 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/88",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X3Fd8 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/32",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X3Fd8 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/32",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X6G1q pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/89",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X6G1q pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/89",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X6G1q pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/33",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X6G1q pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/33",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7Tw7 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/90",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7Tw7 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/90",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7Tw7 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/34",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7Tw7 pointer docs/codex/evidence/20261028-post-v200/stages-b/official-program-followup.json#/records/2",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7Tw7 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/34",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7Tw7 pointer docs/codex/evidence/20261028-post-v200/stages-b/official-program-followup.json#/records/2",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7zV3 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/91",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7zV3 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/91",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7zV3 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/35",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X7zV3 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/35",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X9qGD pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/92",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X9qGD pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/92",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X9qGD pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/36",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X9qGD pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/36",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XFVzt pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/93",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XFVzt pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/93",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XFVzt pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/37",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XFVzt pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/37",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XGYPC pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/94",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XGYPC pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/94",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XGYPC pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/38",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XGYPC pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/38",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XKzE5 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/96",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XKzE5 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/96",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XKzE5 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/40",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XKzE5 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/40",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQMJt pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/97",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQMJt pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/97",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQMJt pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/41",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQMJt pointer docs/codex/evidence/20261028-post-v200/stages-b/official-program-followup.json#/records/3",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQMJt pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/41",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQMJt pointer docs/codex/evidence/20261028-post-v200/stages-b/official-program-followup.json#/records/3",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQZhy pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/98",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQZhy pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/98",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQZhy pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/42",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XQZhy pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/42",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XRfn5 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/99",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XRfn5 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/99",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XRfn5 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/43",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XRfn5 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/43",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xa1EK pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/100",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xa1EK pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/100",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xa1EK pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/44",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xa1EK pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/44",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XkyEY pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/101",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XkyEY pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/101",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XkyEY pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/45",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XkyEY pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/45",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XlqWP pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/102",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XlqWP pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/102",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XlqWP pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/46",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XlqWP pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/46",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XmFwB pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/103",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XmFwB pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/103",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XmFwB pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/47",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XmFwB pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/47",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XmMQe pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/104",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XmMQe pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/104",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XmMQe pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/48",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XmMQe pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/48",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XnOv7 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/105",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XnOv7 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/105",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XnOv7 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/49",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XnOv7 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/49",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xo5fW pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/106",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xo5fW pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/106",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xo5fW pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/50",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xo5fW pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/50",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xqy0Q pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/107",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xqy0Q pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/107",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xqy0Q pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/51",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xqy0Q pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/51",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xr917 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/108",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xr917 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/108",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xr917 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/52",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xr917 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/52",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XsgVc pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/109",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XsgVc pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/109",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XsgVc pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/53",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XsgVc pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/53",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XueI9 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/110",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XueI9 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/110",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XueI9 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/54",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XueI9 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/54",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xvsk1 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/111",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xvsk1 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/111",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xvsk1 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/55",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xvsk1 pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/55",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKy2 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/0",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKy2 pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/0",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKy2 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/56",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKy2 pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/56",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrINH pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/1",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrINH pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/1",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrINH pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/57",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrINH pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/57",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDKAR pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/2",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDKAR pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/2",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDKAR pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/58",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMDKAR pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/58",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMEruy pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/3",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMEruy pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/3",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMEruy pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/59",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMEruy pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/59",
-      "passed": true
-    },
-    {
-      "name": "recvxIZd9vfxUk pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/4",
-      "passed": true
-    },
-    {
-      "name": "recvxIZd9vfxUk pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/4",
-      "passed": true
-    },
-    {
-      "name": "recvxIZd9vfxUk pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/60",
-      "passed": true
-    },
-    {
-      "name": "recvxIZd9vfxUk pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/60",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNojjN pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/5",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNojjN pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/5",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNojjN pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/61",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNojjN pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/61",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xr6ek pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/6",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xr6ek pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/6",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xr6ek pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/62",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5Xr6ek pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/62",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMKGBh pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/7",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMKGBh pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/7",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMKGBh pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/63",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMKGBh pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/63",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCtUB pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/8",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCtUB pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/8",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCtUB pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/64",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCtUB pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/64",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM2wRG pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/9",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM2wRG pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/9",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM2wRG pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/65",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKM2wRG pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/65",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNSckK pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/10",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNSckK pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/legacyReplacementsRemaining/10",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNSckK pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/66",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNSckK pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/66",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrCzF pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/3",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrCzF pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/3",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrCzF pointer docs/codex/evidence/20261028-post-v200/stages-b/adoption.json#/changes/1",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNHFyM pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/37",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNHFyM pointer docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json#/records/37",
-      "passed": true
-    },
-    {
-      "name": "recvxDMFHNHFyM pointer docs/codex/evidence/20261028-post-v200/stages-b/adoption.json#/changes/2",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XJWXT pointer docs/codex/evidence/20261028-v200/remaining-stage-ledger.json#/records/95",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XJWXT pointer docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json#/records/39",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XJWXT pointer docs/codex/evidence/20261028-post-v200/stages-a/member-version-adoption.json#/changes/0",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XHEju pointer docs/codex/evidence/20261028-post-v200/stages-b/adoption.json#/changes/0",
-      "passed": true
-    },
-    {
-      "name": "person baseline35 minus11 =24 exact IDs",
-      "passed": true
-    },
-    {
-      "name": "102 public works 527 slots 233 existing originals",
-      "passed": true
-    },
-    {
-      "name": "person union107 plus24 reconciles131 baseline",
-      "passed": true
-    },
-    {
-      "name": "unknown nine is baseline10 minus Geenius and remains unasserted",
-      "passed": true
-    },
-    {
-      "name": "Geenius217 partial Retail and tripleS2098086 difference360703",
-      "passed": true
-    },
-    {
-      "name": "seven canonical date holds retain null effective dates",
-      "passed": true
-    },
-    {
-      "name": "existing relation and old low-resolution gaps remain zero",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIkV pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/0",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrIkV pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/0",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNsK pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/6",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNsK pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/6",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNBu pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/7",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrNBu pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/7",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrPi9 pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/8",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrPi9 pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/8",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzrrSO pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/10",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzrrSO pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/10",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzQxpW pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/11",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzQxpW pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/11",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzFAPL pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/12",
-      "passed": true
-    },
-    {
-      "name": "recvxyH5pzFAPL pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/12",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMisqR pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/13",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMisqR pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/13",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMiDs4 pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/14",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMiDs4 pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/14",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMyy5i pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/15",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMyy5i pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/15",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMBHQA pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/16",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMBHQA pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/16",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlGJW pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/17",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlGJW pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/17",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCSdB pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/18",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMCSdB pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/18",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwjsI pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/19",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwjsI pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/19",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlAhN pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/20",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlAhN pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/20",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMxwnW pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/21",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMxwnW pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/21",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlNfX pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/22",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMlNfX pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/22",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMLz7L pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/23",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMLz7L pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/23",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwrIt pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/24",
-      "passed": true
-    },
-    {
-      "name": "recvxyHuKMwrIt pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/24",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XFVzt pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/25",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XFVzt pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/25",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XsgVc pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/26",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5XsgVc pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/26",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35rUeY pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/31",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35rUeY pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/31",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy3525BF pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/32",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy3525BF pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/32",
-      "passed": true
-    },
-    {
-      "name": "recvxIZFpVLU0R pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/remainingPersonWorks/33",
-      "passed": true
-    },
-    {
-      "name": "recvxIZFpVLU0R pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/33",
-      "passed": true
-    },
-    {
-      "name": "genblue.wins pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/unknownMetrics/1",
-      "passed": true
-    },
-    {
-      "name": "genblue.wins pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/1",
-      "passed": true
-    },
-    {
-      "name": "spia.sales pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/2",
-      "passed": true
-    },
-    {
-      "name": "spia.sales pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/unknownMetrics/2",
-      "passed": true
-    },
-    {
-      "name": "tracer.sales pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/3",
-      "passed": true
-    },
-    {
-      "name": "tracer.sales pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/unknownMetrics/3",
-      "passed": true
-    },
-    {
-      "name": "tracer.wins pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/unknownMetrics/4",
-      "passed": true
-    },
-    {
-      "name": "tracer.wins pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/4",
-      "passed": true
-    },
-    {
-      "name": "udtt.sales pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/5",
-      "passed": true
-    },
-    {
-      "name": "udtt.sales pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/unknownMetrics/5",
-      "passed": true
-    },
-    {
-      "name": "vcha.sales pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/6",
-      "passed": true
-    },
-    {
-      "name": "vcha.sales pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/unknownMetrics/6",
-      "passed": true
-    },
-    {
-      "name": "vcha.wins pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/unknownMetrics/7",
-      "passed": true
-    },
-    {
-      "name": "vcha.wins pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/7",
-      "passed": true
-    },
-    {
-      "name": "vvup.sales pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/8",
-      "passed": true
-    },
-    {
-      "name": "vvup.sales pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/unknownMetrics/8",
-      "passed": true
-    },
-    {
-      "name": "witchx.sales pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/9",
-      "passed": true
-    },
-    {
-      "name": "witchx.sales pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/unknownMetrics/9",
-      "passed": true
-    },
-    {
-      "name": "e-atheart-aurora-hiatus-observed pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/effectiveDateHolds/0",
-      "passed": true
-    },
-    {
-      "name": "e-atheart-aurora-hiatus-observed pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/10",
-      "passed": true
-    },
-    {
-      "name": "e-atheart-aurora-second-hiatus-announcement pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/effectiveDateHolds/1",
-      "passed": true
-    },
-    {
-      "name": "e-atheart-aurora-second-hiatus-announcement pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/11",
-      "passed": true
-    },
-    {
-      "name": "e-bewave-six-member-phase-end-announcement pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/effectiveDateHolds/2",
-      "passed": true
-    },
-    {
-      "name": "e-bewave-six-member-phase-end-announcement pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/12",
-      "passed": true
-    },
-    {
-      "name": "e-candyshop-yuina-hiatus-announcement pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/effectiveDateHolds/3",
-      "passed": true
-    },
-    {
-      "name": "e-candyshop-yuina-hiatus-announcement pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/13",
-      "passed": true
-    },
-    {
-      "name": "e-geenius-spoiler-book-instrumental pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/effectiveDateHolds/4",
-      "passed": true
-    },
-    {
-      "name": "e-geenius-spoiler-book-instrumental pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/14",
-      "passed": true
-    },
-    {
-      "name": "e-udtt-jessica-provisional-join-candidate pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/effectiveDateHolds/5",
-      "passed": true
-    },
-    {
-      "name": "e-udtt-jessica-provisional-join-candidate pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/15",
-      "passed": true
-    },
-    {
-      "name": "e-udtt-jessica-provisional-join-candidate pointer docs/codex/evidence/20261028-post-v200/statistics/udtt-source-adoption.json#/after",
-      "passed": true
-    },
-    {
-      "name": "e-udtt-sena-predebut-departure-candidate pointer docs/codex/evidence/20261028-v200/remaining-person-statistics.json#/effectiveDateHolds/6",
-      "passed": true
-    },
-    {
-      "name": "e-udtt-sena-predebut-departure-candidate pointer docs/codex/evidence/20261028-post-v200/statistics/research.json#/items/16",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrKy2 pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/1",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLow pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/2",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrLsE pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/3",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrMEN pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/4",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrMW0 pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/5",
-      "passed": true
-    },
-    {
-      "name": "rec28ldfRTrPq2 pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/9",
-      "passed": true
-    },
-    {
-      "name": "recvxyOz5X6G1q pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/27",
-      "passed": true
-    },
-    {
-      "name": "recvxIZnNLkXMl pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/28",
-      "passed": true
-    },
-    {
-      "name": "recvxIZnNLgpyC pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/29",
-      "passed": true
-    },
-    {
-      "name": "recvxIZy35Xwr7 pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/30",
-      "passed": true
-    },
-    {
-      "name": "recvxIZLpET3tB pointer docs/codex/evidence/20261028-post-v200/people/research.json#/records/34",
-      "passed": true
-    },
-    {
-      "name": "UDTT public UI receipt 2 layouts 2 links 2 guards and no errors",
-      "passed": true
+    "docs/codex/evidence/20261028-post-v200/ui/udtt.json": {
+      "sha256": "e43a41bce287d94278644d7014ebba9b7c5a1e8a9877a8b5696e0e6f3e3ad214"
     }
-  ],
-  "previousAggregation": {
-    "checkedAt": "2026-10-28T14:25:09.431110+00:00",
-    "sha256": "a6f384905d47ae1385293de6f072bbb5290c8f23d4466186b717532283d6687d",
-    "counts": {
-      "checks": 320,
-      "passed": 320,
-      "failed": 0
-    },
-    "queueCounts": {
-      "newStageGaps": 110,
-      "legacyStageReplacements": 11,
-      "selectedLocalSources": 495,
-      "fixedCameraOptimizations": 1,
-      "remainingPersonWorks": 24,
-      "unknownMetrics": 9,
-      "effectiveDateHolds": 7,
-      "tripleSLowerBound": 2098086,
-      "tripleSRemainingDifference": 360703
-    },
-    "scope": "Prior snapshot before separate member-version adoption; not current counters."
   },
-  "initialValidation": {
-    "checks": 320,
-    "passed": 319,
-    "failed": 1,
-    "finding": "Unknown-metric aggregation initially grouped by full application field paths rather than metric suffix. Corrected to6 sales and3 wins; no numeric facts changed.",
-    "applicationIssue": false
-  },
-  "byteNormalizationReview": {
-    "checkedAt": "2026-10-28T15:05:36.410621+00:00",
-    "receipt": "line-ending-normalization.json",
-    "scope": "Current source hashes refreshed after CRLF-to-LF normalization; JSON contents unchanged. Historical hash observations retain their original byte basis."
-  }
+  "previousReceipt": "queue-validation-before-20261029.json",
+  "privateReads": 0,
+  "privateWrites": 0,
+  "published": false
 }

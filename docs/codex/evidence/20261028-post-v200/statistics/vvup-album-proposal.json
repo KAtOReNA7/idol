@@ -1,0 +1,180 @@
+{
+  "proposalOnly": true,
+  "checkedAt": "2026-10-28T15:45:35.070Z",
+  "group": "vvup",
+  "groupId": "rec28ldfRTiD8K",
+  "field": "sales",
+  "expectedBefore": {
+    "observedValue": null,
+    "displayValue": 0,
+    "status": "unavailable",
+    "unit": "copies",
+    "title": "韩国发行累计销量",
+    "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。",
+    "asOf": null,
+    "checkedAt": "2026-10-25T16:25:50.889410+00:00",
+    "sourceUrl": null,
+    "sourceTitle": null,
+    "sources": [],
+    "notes": [
+      "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
+      "已检索Circle相关公开榜单、团体名与album sales；单张/单周/单日零售数字及sold out描述不替代团体累计。"
+    ],
+    "evidence": {}
+  },
+  "replacement": {
+    "observedValue": 1787,
+    "displayValue": 1787,
+    "status": "observed",
+    "unit": "张",
+    "title": "已核单周Album销量下界",
+    "scope": "VVUP《Locked On》Circle Album Chart 2024年第17周（2024-04-21至2024-04-27）公开Album_CNT为1787张；仅为这一周、这一作品的已核Album榜来源下界，不是Retail零售、Hanteo首周或全团全渠道全球完整累计，其他时期和作品未覆盖。",
+    "asOf": "2024-04-27",
+    "checkedAt": "2026-10-28T15:45:35.070Z",
+    "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=17&yearTime=3",
+    "sourceTitle": "Circle Album Chart · Locked On · 2024年第17周",
+    "sources": [
+      {
+        "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=17&yearTime=3",
+        "title": "Circle Album Chart · 2024.04.21—2024.04.27",
+        "sourceDate": "2024-04-27",
+        "checkedAt": "2026-10-28T15:38:37.091535+00:00",
+        "kind": "primary-chart",
+        "access": "official-page-native-public-api",
+        "sha256": "2634d88dfa7924a16c0949451f005f626013c9216c76fa01bcad50386d2b95cb"
+      }
+    ],
+    "notes": [
+      "Circle Album与Retail零售、Hanteo为不同统计口径；本项只采用Album_CNT 1787。",
+      "Retail同周846仅核对作品、发行商与条码，不与1787相加；重叠日记录也不累加。",
+      "API中的Total_CNT 1996本轮未独立核实完整口径，明确不采用。",
+      "未上所查Top50/Top100不等于0；只记录已核历史周快照，未证明完整累计。"
+    ],
+    "lowerBound": true,
+    "evidence": {
+      "kind": "public-period-lower-bound",
+      "lowerBound": true,
+      "replacedStatus": "unavailable",
+      "previousRecord": {
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable",
+        "unit": "copies",
+        "title": "韩国发行累计销量",
+        "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。",
+        "asOf": null,
+        "checkedAt": "2026-10-25T16:25:50.889410+00:00",
+        "sourceUrl": null,
+        "sourceTitle": null,
+        "sources": [],
+        "notes": [
+          "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
+          "已检索Circle相关公开榜单、团体名与album sales；单张/单周/单日零售数字及sold out描述不替代团体累计。"
+        ],
+        "evidence": {}
+      },
+      "chart": "Circle Album Chart",
+      "metricField": "Album_CNT",
+      "periodType": "week",
+      "periodLabel": "2024-04-21—2024-04-27（2024年第17周）",
+      "periodStart": "2024-04-21",
+      "periodEnd": "2024-04-27",
+      "artist": "VVUP(비비업)",
+      "album": "Locked On",
+      "catalogId": "76394",
+      "barcode": "8809314516007",
+      "barcodeEvidence": {
+        "source": "Circle Retail same-week row",
+        "artistAlbumDistributorAndArtworkBasenameMatch": true,
+        "barcodeFieldPresentInAlbumResponse": false,
+        "officialReleaseNotice": "https://shop.weverse.io/en/shop/USD/artists/181/notices/5676",
+        "officialProduct": "https://shop.weverse.io/en/shop/USD/artists/181/sales/24356",
+        "releaseDate": "2024-04-22",
+        "manufacturer": "GENIE MUSIC"
+      },
+      "distributor": "지니뮤직",
+      "weekRows": [
+        {
+          "chartWeek": "2024-W17",
+          "startDate": "2024-04-21",
+          "endDate": "2024-04-27",
+          "album": "Locked On",
+          "sales": 1787,
+          "rank": 59,
+          "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=17&yearTime=3",
+          "checkedAt": "2026-10-28T15:38:37.091535+00:00",
+          "responseSha256": "2634d88dfa7924a16c0949451f005f626013c9216c76fa01bcad50386d2b95cb",
+          "rawRow": {
+            "ALBUM_NAME": "Locked On",
+            "ARTIST_NAME": "VVUP(비비업)",
+            "Album_CNT": "1787",
+            "Album_Hit_ratio": "",
+            "Certify_Grade": "N",
+            "CntYN": "Y",
+            "FILE_NAME": "/uploadDir/aoaAlbumImg/thumb/20240418_234C2599FABE39C0CC687858B98A3632.jpg",
+            "PRE_SERVICE_RANKING": "",
+            "RankChange": "0",
+            "RankStatus": "new",
+            "SERVICE_RANKING": "59",
+            "TotHitRatio": "",
+            "Total_CNT": "1996",
+            "de_nm": "지니뮤직",
+            "seq_aoa": "76394"
+          }
+        }
+      ],
+      "crossCheckOnly": [
+        {
+          "chart": "Circle Retail Album Chart",
+          "period": "2024-04-21—2024-04-27",
+          "sales": 846,
+          "barcode": "8809314516007",
+          "sourceUrl": "https://circlechart.kr/page_chart/retail.circle?termGbn=week&yyyymmdd=20240421",
+          "responseSha256": "eb7e0fe67f229c477e1ad305a6174dbfcb2474c789fac6da42f6bbe2fd0dd9c5",
+          "contributesToAdoptedValue": false,
+          "rawRow": {
+            "Album": "Locked On",
+            "Artist": "VVUP(비비업)",
+            "Barcode": "8809314516007",
+            "De_company_name": "지니뮤직",
+            "ESum": "10",
+            "E_Fri": "1",
+            "E_Mon": "7",
+            "E_Sat": "0",
+            "E_Sun": "0",
+            "E_Thu": "0",
+            "E_Tue": "2",
+            "E_Wed": "0",
+            "KSum": "836",
+            "K_Fri": "152",
+            "K_Mon": "310",
+            "K_Sat": "0",
+            "K_Sun": "0",
+            "K_Thu": "148",
+            "K_Tue": "199",
+            "K_Wed": "27",
+            "RankContinue": "1",
+            "RankHigh": "30",
+            "RankInt": "30",
+            "RankOrder": "30",
+            "RankStatus": "new",
+            "YYYYMMDD": "20240421",
+            "rowSum": "846",
+            "save_name": "aoaAlbumImg\\thumb\\20240418_234C2599FABE39C0CC687858B98A3632.jpg",
+            "sys_date": "2024-04-29 12:59:48.293 +0000 UTC"
+          }
+        }
+      ],
+      "recomputedSum": 1787,
+      "sourceEvidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/followup-circle-observations.json",
+      "dateDefinitionEvidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/followup-chart-definitions.json",
+      "coverageComplete": false
+    }
+  },
+  "integrationRequirements": [
+    "Only VVUP sales may change; keep old null record and all other fields.",
+    "Use evidence.periodType=week and periodLabel from official option, not a cumulative-through label.",
+    "Do not add the Retail846/day rows or unused Total_CNT1996.",
+    "If adopted alongside UDTT, no-numeric-evidence queue9 becomes7, but complete group cumulative sales remain unproven."
+  ]
+}

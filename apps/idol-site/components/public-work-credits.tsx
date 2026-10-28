@@ -5,6 +5,7 @@ import {publicProductionForWork} from '@/lib/idol/public-production-credits';
 import {publicWorkRecognition} from '@/lib/idol/public-work-recognition';
 import {mvMemberAbsence} from '@/lib/idol/mv-member-appearance';
 import {PublicCreditRecognitionPhoto} from './mv-identity-photo';
+import {PublicGroupRecognition} from './public-group-recognition';
 import {memberDisplayName} from '@/lib/idol/member-display-name';
 import './public-work-credits.css';
 
@@ -19,7 +20,8 @@ export function PublicWorkCredits({work,data,onMember}:{work:Work;data:CatalogVi
  const members=credit?.memberIds.flatMap(id=>data.members.filter(m=>m.id===id))??[];
  const portraits=publicWorkRecognition(work);
  const absence=mvMemberAbsence(work);
- if(!credit||!members.length)return null;
+ if(!credit)return <PublicGroupRecognition work={work} data={data} onMember={onMember}/>;
+ if(!members.length)return null;
  return <section className="public-work-credits" aria-label={credit.label} data-credit-work={work.id}>
   <h2>{credit.label}</h2><p>{credit.note}</p>
   {absence&&<p>本视频没有成员真人出镜；以下仅为公开署名人物的认人参考，不提供成员评分。</p>}

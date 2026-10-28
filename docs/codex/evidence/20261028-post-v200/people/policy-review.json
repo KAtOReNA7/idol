@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-28",
+  "reviewer": "people_v200_research child agent",
+  "scope": "Independent read and synthetic in-memory checks of the parent's stage policy changes; no stage source, private data, production state or parent-owned code was edited by this reviewer.",
+  "filesRead": [
+    "apps/idol-site/scripts/stage_selection_policy.py",
+    "apps/idol-site/scripts/merge-stage-batch.py",
+    "apps/idol-site/scripts/normalize-stage-patch.py",
+    "apps/idol-site/lib/idol/supplements.ts",
+    "apps/idol-site/lib/idol/stage-display.ts",
+    "apps/idol-site/lib/idol/types.ts",
+    "apps/idol-site/lib/idol/public-catalog.ts"
+  ],
+  "verifiedPositiveBoundaries": [
+    "The merger distinguishes numeric zero from an empty score.",
+    "A member-version fallback is held for an existing score or save-journal row and requires a confirmed journal.",
+    "The fallback groupId must belong to the target inventory groupIds.",
+    "Fallback evidence and selection/camera evidence must agree with the selected comparison candidate.",
+    "The normalization path does not turn a documented guest-scope fallback into versionMatch true; checked_member_fallback rejects true and exact claims.",
+    "Public projection retains the guestDifference disclosure while omitting detailed source evidence.",
+    "Existing source replacement remains subject to fresh score, save history, exact published preimage and clip-scope guards."
+  ],
+  "findings": [
+    {
+      "id": "concert-produced-conflict",
+      "observed": "A synthetic alternative with performanceType concert_stage and selection occasion produced_performance was structurally accepted and displayed.",
+      "reproductionResult": {
+        "validStageAlternative": true,
+        "visibleAlternatives": 1
+      },
+      "recommendation": "Reject explicit event-type contradictions and hide concert/showcase/press event alternatives regardless of a conflicting selection label.",
+      "parentResponse": "Parent reported the event visibility and selection-conflict guards fixed with new tests.",
+      "status": "parent_reported_fixed_not_independently_rerun_after_fix"
+    },
+    {
+      "id": "solo-full-group-contradiction",
+      "observed": "checked_member_fallback accepted performerScope solo together with fallback.fullGroup true.",
+      "reproductionResult": {
+        "accepted": true
+      },
+      "recommendation": "Reject explicit solo/subunit performerScope or originalPerformerScope when accepting a full-group fallback.",
+      "parentResponse": "Parent reported both explicit performer scopes now require full_group or omission, with new tests.",
+      "status": "parent_reported_fixed_not_independently_rerun_after_fix"
+    },
+    {
+      "id": "likes-before-priority",
+      "observed": "comparison_candidates discarded a qualified music-program candidate with rounded likes before priority calculation, leaving a lower-priority exact-like practice as the winner.",
+      "reproductionResult": {
+        "returnedVideoIds": [
+          "practice123"
+        ]
+      },
+      "recommendation": "Compute highest policy priority before filtering for exact likes; hold when the highest layer lacks exact comparable likes rather than selecting a lower layer.",
+      "parentResponse": "Parent reported priority is now determined first and the highest layer without exact likes is held, with new tests.",
+      "status": "parent_reported_fixed_not_independently_rerun_after_fix"
+    }
+  ],
+  "parentReportedValidation": {
+    "testsPassed": 109,
+    "githubCommit": "60d8b2b",
+    "productionDeploymentPerformed": false,
+    "independentlyExecutedByThisReviewer": false
+  },
+  "localPeopleValidation": {
+    "command": "node --test tests/continuation-person.test.cjs",
+    "workingDirectory": "apps/idol-site",
+    "tests": 14,
+    "passed": 14,
+    "failed": 0,
+    "executedByThisReviewer": true,
+    "scope": "11 new public references, 39 recognition slots, old91 object preservation, exact tuple guards, saved zero preservation, same-series original SHA/crop validation, complete 35-item bounded research ledger."
+  },
+  "limitations": [
+    "This is a targeted review, not an exhaustive security audit or proof of all policy paths.",
+    "The three parent fixes were reported after the synthetic reproductions; this child did not rerun the fixed parent code before the checkpoint.",
+    "No authenticated owner export, real save, production deployment, full video playback or per-person audio comparison was performed by this reviewer."
+  ]
+}

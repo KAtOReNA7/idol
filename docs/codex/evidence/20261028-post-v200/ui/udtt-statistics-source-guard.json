@@ -1,0 +1,142 @@
+{
+  "checkedAt": "2026-10-28T16:01:11.882065+00:00",
+  "status": "fixed_locally_verified_not_deployed",
+  "problem": "UDTT home statistics rendered current evidence URLs, but its immutable artist action identity only contained static source URLs and reporting timeline overlays. Valid Circle statistics links were denied by sourceAllowed.",
+  "change": "Build a per-mounted-catalog public group source projection from the same groupInformationModel used by presentation. Append only deduplicated canonical HTTPS URLs and deterministic exact source IDs. Preserve all member/work/event identities and existing URL, event, dirty-form, viewer and owner checks.",
+  "files": [
+    {
+      "path": "apps/idol-site/lib/idol/udtt-native/host.mjs",
+      "sha256": "2c65e07409b14f6349d3d757a3bf574e7ffc991d9dca5de9233ca27dcf3027bb"
+    },
+    {
+      "path": "apps/idol-site/lib/idol/udtt-native/information-identity.mjs",
+      "sha256": "365873aa0836d4b8ba9ace038fc571a7df299a3fd436bb33dfaae9f3adcb32ce"
+    },
+    {
+      "path": "apps/idol-site/tests/udtt-information-identity.test.cjs",
+      "sha256": "5d1b7e25e11b42b905cd28e534297f81d46cd0bda33a414c16ef8f06f9dcbaeb"
+    },
+    {
+      "path": "apps/idol-site/scripts/audit-udtt-private-build-assets.mjs",
+      "sha256": "891ed45a93dcbdfa43c192d4640f746fe35f8a14986ed103326c6cd730998c01"
+    },
+    {
+      "path": "apps/idol-site/scripts/udtt-private-build-assets-manifest.json",
+      "sha256": "9c8e3afe95e3bb6d60a69825eaf569bd95081d51c611eec6ecb08d9993b8b786"
+    },
+    {
+      "path": "apps/idol-site/tests/udtt-private-build-assets.test.mjs",
+      "sha256": "4acfe9ff1b944a730ecabc87a4c216336ffc9fbad513dc858f93f30c69b2c686"
+    }
+  ],
+  "tests": {
+    "command": "node --test tests/udtt-information-identity.test.cjs tests/timeline-reported-records.test.cjs tests/post-v200-statistics.test.mjs tests/statistics-period-followup.test.mjs",
+    "passed": 17,
+    "failed": 0,
+    "newTests": 5,
+    "log": ".codex-local/udtt-statistics-guard-tests.txt",
+    "logSha256": "718c04c925d0afe5cef545ff0369944f71847fb1deb73959b28cc947051066ca"
+  },
+  "browserValidation": {
+    "evidenceFile": "docs/codex/evidence/20261028-post-v200/ui/statistics-followup.json",
+    "checkedAt": "2026-10-28T15:59:04.563Z",
+    "agent": "v200_final_audit",
+    "base": "http://127.0.0.1:4271",
+    "status": "passed",
+    "layouts": 6,
+    "links": 18,
+    "guards": 4,
+    "console": 0,
+    "pageErrors": 0,
+    "httpErrors": 0,
+    "applicationWrites": 0,
+    "scope": "Fresh isolated headless browser with public fixture only. Source destination navigation intercepted; external source body intentionally not loaded. Independent agent owns final screenshot review receipt.",
+    "productionQa": false,
+    "ownerLoginOrSaveTested": false
+  },
+  "preservedFiles": [
+    {
+      "path": "apps/idol-site/lib/idol/group-information.mjs",
+      "before": "2dd4ba4c680d3b2940a4230a1c896a1088ecf38789a86895546ae5f89592eb3e",
+      "after": "2dd4ba4c680d3b2940a4230a1c896a1088ecf38789a86895546ae5f89592eb3e",
+      "unchanged": true
+    },
+    {
+      "path": "apps/idol-site/data/group-information-facts.json",
+      "before": "e1f889ec4a5d4e40465603695055cb8eb09922e598a695482987b692a83dd09b",
+      "after": "e1f889ec4a5d4e40465603695055cb8eb09922e598a695482987b692a83dd09b",
+      "unchanged": true
+    },
+    {
+      "path": "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "before": "d9cbdd9d3f58d5da5b4c6535824a5dfcdd0cdc08761081d8436e1e55111b6a97",
+      "after": "d9cbdd9d3f58d5da5b4c6535824a5dfcdd0cdc08761081d8436e1e55111b6a97",
+      "unchanged": true
+    },
+    {
+      "path": "apps/idol-site/data/stages/inventory.json",
+      "before": "ecf62833e56fdab160ca382c3de3816d405e7b127bffef01a322a31ec05d74a7",
+      "after": "ecf62833e56fdab160ca382c3de3816d405e7b127bffef01a322a31ec05d74a7",
+      "unchanged": true
+    },
+    {
+      "path": "apps/idol-site/lib/idol/design-review/sol15-runtime/shared/identity.js",
+      "before": "04503f5ed472c808445aadbb6056596b5878fdbdb6824ba71b039abc093e3ed8",
+      "after": "04503f5ed472c808445aadbb6056596b5878fdbdb6824ba71b039abc093e3ed8",
+      "unchanged": true
+    },
+    {
+      "path": "apps/idol-site/lib/idol/design-review/sol15-runtime/host.mjs",
+      "before": "884266f77ec25f3397d62c1ed1213ba0925e165588251871c0eee722c835c821",
+      "after": "884266f77ec25f3397d62c1ed1213ba0925e165588251871c0eee722c835c821",
+      "unchanged": true
+    },
+    {
+      "path": "apps/idol-site/lib/idol/udtt-native/presentation.mjs",
+      "before": "5f05bab95cc98e500d7577cbf652290dc2f8cba443cf764caa76f2bcf4ed412e",
+      "after": "5f05bab95cc98e500d7577cbf652290dc2f8cba443cf764caa76f2bcf4ed412e",
+      "unchanged": true
+    }
+  ],
+  "initialTestFindings": [
+    {
+      "test": "new projection preservation test",
+      "issue": "Initial test incorrectly assumed static artist.sources exists. UDTT has no group-level static sources.",
+      "resolution": "Changed the test to supply an explicit synthetic existing-source fixture and verify preservation; no application workaround."
+    },
+    {
+      "test": "tests/group-information.test.mjs EVERGLOW summary assertion at line 18",
+      "issue": "Existing hardcoded unknownSales=6 expectation now receives 4 after independently authorized statistics updates.",
+      "resolution": "The parent/concurrent task subsequently updated the stale expectation to 4; this agent did not edit it. Reran all 9 group-information tests and they pass. Historical failure only, not current unresolved issue."
+    }
+  ],
+  "limits": [
+    "No Git operation or deployment by this agent.",
+    "No read of actual owner backup or personal fields. Root stage inventory and protected public files were hashed, not a full repository/private preservation audit.",
+    "No design changes, source host blanket allowlist, arbitrary DOM-derived source trust, or relaxed event validation."
+  ],
+  "existingRendererRegression": {
+    "command": "node --test tests/group-information.test.mjs",
+    "passed": 9,
+    "failed": 0,
+    "log": ".codex-local/udtt-statistics-existing-renderer-tests.txt",
+    "logSha256": "9f9e38eb15f556b532b59aa85bf195a824a530917d91f4930175b4fc9c298bc4",
+    "trigger": "Parallel maintenance corrected old summary count expectation; reran affected suite only."
+  },
+  "totalDistinctTargetedTestsPassed": 31,
+  "buildGuardFollowup": {
+    "finding": "Parent broader regression identified stale host byte pin plus new helper omitted from exact native source inventory.",
+    "fix": "Updated only reviewed host pin; added six exact transitive statistics identity/model/data dependencies to requiredGuards and manifest. Fixed 9 restricted originals, 2 shared posters and compiled carrier pins remain unchanged.",
+    "runtimeGuards": 42,
+    "testCommand": "node --test tests/udtt-private-build-assets.test.mjs tests/udtt-information-identity.test.cjs",
+    "passed": 10,
+    "failed": 0,
+    "newGuardTest": 1,
+    "testLog": ".codex-local/udtt-statistics-build-guard-tests.txt",
+    "testLogSha256": "0c375be2ce0855814d23fc2fa5c5cc143791faab374f0de4ef5cf6660ae2f543",
+    "auditCommand": "node scripts/audit-udtt-private-build-assets.mjs",
+    "auditLog": ".codex-local/udtt-statistics-build-guard-audit.txt",
+    "auditLogSha256": "cefb141fd498c26e46f70169e89db8bdfd7235c96c23b306e15f62c34bf5c1ed",
+    "auditScope": "Existing local dist audited; this agent did not run a fresh full build or deploy."
+  }
+}

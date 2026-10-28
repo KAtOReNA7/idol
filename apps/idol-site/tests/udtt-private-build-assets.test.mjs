@@ -13,3 +13,13 @@ test('unknown source/built consumers, altered renderer, inventory, source bytes 
 test('scope and guard omissions cannot expand/relax fixed manifest',()=>{const f=fixture();try{for(const edit of [m=>m.files.push(m.retainedShared[0]),m=>m.files[0]=m.retainedShared[0],m=>delete m.runtimeGuards['lib/idol/design-review/sol15-runtime/model.mjs']]){const m=structuredClone(manifest);edit(m);assert.throws(()=>auditUdttPrivateBuildAssets(f.dir,m));}}finally{f.dispose();}});
 
 test('reporting source identity dependencies remain mandatory, byte pinned and fail closed',()=>{const f=fixture();try{for(const name of ['lib/idol/timeline/reported-records.mjs','data/timeline-reported-records.json']){const m=structuredClone(manifest);delete m.runtimeGuards[name];assert.throws(()=>auditUdttPrivateBuildAssets(f.dir,m),/guard inventory/);const original=fs.readFileSync(path.join(f.dir,name));f.put(name,Buffer.concat([original,Buffer.from(" ")]));assert.throws(()=>auditUdttPrivateBuildAssets(f.dir),/integrity mismatch/);f.put(name,original);}assert.equal(auditUdttPrivateBuildAssets(f.dir).length,9);}finally{f.dispose();}});
+
+test('statistics identity and every model dependency are mandatory, exact and fail closed',()=>{const f=fixture();try{
+ const dependencies=['lib/idol/udtt-native/information-identity.mjs','lib/idol/group-information.mjs','lib/idol/follower-count.mjs','data/music-index-artwork.json','data/group-information-facts.json','data/group-statistics-completion-evidence.json'];
+ for(const name of dependencies){
+  const omitted=structuredClone(manifest);delete omitted.runtimeGuards[name];assert.throws(()=>auditUdttPrivateBuildAssets(f.dir,omitted),/guard inventory/);
+  const original=fs.readFileSync(path.join(f.dir,name));f.put(name,Buffer.concat([original,Buffer.from(' ')]));assert.throws(()=>auditUdttPrivateBuildAssets(f.dir),/integrity mismatch/);f.put(name,original);
+  fs.unlinkSync(path.join(f.dir,name));assert.throws(()=>auditUdttPrivateBuildAssets(f.dir),/integrity mismatch|source inventory/);f.put(name,original);
+ }
+ assert.equal(auditUdttPrivateBuildAssets(f.dir).length,9);
+}finally{f.dispose();}});

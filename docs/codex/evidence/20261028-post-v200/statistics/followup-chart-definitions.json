@@ -1,0 +1,114 @@
+{
+  "checkedAt": "2026-10-28T15:41:40.050077+00:00",
+  "retailWeekDefinitions": {
+    "url": "https://circlechart.kr/data/api/chart_func/retail/datelist",
+    "method": "POST",
+    "parameters": {
+      "termGbn": "week"
+    },
+    "httpStatus": 200,
+    "responseSha256": "284c9defd24657df424bc7f0bdeb97a3356603a87e0e4ac3a71d0df59c711b5d",
+    "rowCount": 408,
+    "selectedRows": [
+      {
+        "WeekEnd": "20240504",
+        "WeekNum": "18",
+        "WeekStart": "20240428"
+      },
+      {
+        "WeekEnd": "20240427",
+        "WeekNum": "17",
+        "WeekStart": "20240421"
+      },
+      {
+        "WeekEnd": "20260718",
+        "WeekNum": "29",
+        "WeekStart": "20260712"
+      },
+      {
+        "WeekEnd": "20260711",
+        "WeekNum": "28",
+        "WeekStart": "20260705"
+      },
+      {
+        "WeekEnd": "20250510",
+        "WeekNum": "19",
+        "WeekStart": "20250504"
+      },
+      {
+        "WeekEnd": "20250503",
+        "WeekNum": "18",
+        "WeekStart": "20250427"
+      }
+    ],
+    "sourcePage": "https://circlechart.kr/page_chart/retail.circle?termGbn=week&yyyymmdd=20260705",
+    "sourcePageSha256": "c2c47d606e96764c3e11c4f40cf3963d038f3597a5fb57205530c7f3eee00b70",
+    "scriptBasis": {
+      "lines": "858-907",
+      "fields": [
+        "WeekStart",
+        "WeekEnd",
+        "WeekNum"
+      ],
+      "description": "Official retail HTML calls /data/api/chart_func/retail/datelist with termGbn=week and builds labels from returned WeekStart and WeekEnd."
+    }
+  },
+  "albumWeekDefinition": {
+    "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=17&yearTime=3",
+    "pageSha256": "a7a6724e514a12643ec204552435e023db02e1eb3ac0cdc1d2f44172ed9d63dd",
+    "optionValue": "202417",
+    "optionLabels": [
+      "2024.04.21~2024.04.27 (17)",
+      "2024.04.21~2024.04.27 (17)"
+    ],
+    "lines": [
+      499,
+      2527
+    ]
+  },
+  "apiRequestBasis": {
+    "retail": {
+      "endpoint": "https://circlechart.kr/data/api/chart/retail_list",
+      "method": "POST",
+      "formKeys": [
+        "yyyymmdd",
+        "termGbn"
+      ],
+      "scriptLines": "775-789",
+      "sourcePageSha256": "c2c47d606e96764c3e11c4f40cf3963d038f3597a5fb57205530c7f3eee00b70",
+      "metric": "rowSum",
+      "metricLabel": "판매량",
+      "metricRenderingLines": [
+        1164,
+        1268
+      ]
+    },
+    "album": {
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "method": "POST",
+      "formKeys": [
+        "nationGbn",
+        "termGbn",
+        "hitYear",
+        "targetTime",
+        "yearTime",
+        "curUrl"
+      ],
+      "sourcePageSha256": "a7a6724e514a12643ec204552435e023db02e1eb3ac0cdc1d2f44172ed9d63dd",
+      "metric": "Album_CNT",
+      "unusedField": "Total_CNT",
+      "metricRenderingLines": [
+        4220,
+        4221,
+        4252,
+        4256
+      ]
+    }
+  },
+  "dayDefinition": {
+    "sourcePage": "https://circlechart.kr/page_chart/retail.circle?termGbn=week&yyyymmdd=20260705",
+    "sourcePageSha256": "c2c47d606e96764c3e11c4f40cf3963d038f3597a5fb57205530c7f3eee00b70",
+    "lines": "851-855",
+    "description": "Official native renderer formats the request yyyymmdd as YYYY.MM.DD Days when termGbn is day; selected raw rows independently repeat YYYYMMDD."
+  }
+}

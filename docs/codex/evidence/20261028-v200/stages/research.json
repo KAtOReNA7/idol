@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "researchDate": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "baselineCommit": "21b12a6f0d49f355ee639ae87bb2b294ba58513f",
+  "baselineLedger": "docs/codex/evidence/20261028-continuous/remaining-stage-ledger.json",
+  "baselineLedgerSha256": "3552a332d2fe088df2ad59dd7987f22d94fc298dfe5f53d3c6796523acae4a21",
+  "method": "Bounded fresh internet searches and public source reads; official source-chain preference. Search-only leads remain labeled. No browser login, private owner export, video playback or application edits.",
+  "summary": {
+    "reviewedWorks": 12,
+    "exactQueries": 21,
+    "adoptableNewSources": 0,
+    "newBindings": 0,
+    "legacyBindingsReplaced": 0,
+    "remainingNew": 112,
+    "remainingLegacyReplacement": 11
+  },
+  "accessLimit": {
+    "service": "web search page-open",
+    "urls": [
+      "https://www.youtube.com/watch?v=QA83BdN4iOw",
+      "https://www.youtube.com/watch?v=w-WEZoiVs_E"
+    ],
+    "message": "Online fetch throttled",
+    "response": "Stopped direct YouTube page-open route; did not bypass or reuse user session."
+  },
+  "records": [
+    {
+      "workId": "rec28ldfRTrAfx",
+      "artist": "KiiiKiii",
+      "song": "DEBUT SONG",
+      "baselineCategory": "未找到合格来源",
+      "baselineReason": "检索大量返回 I DO ME 的打歌/练习室，因为DEBUT也是普通标签；目标是独立曲DEBUT SONG，不可用I DO ME补。",
+      "queries": [
+        "\"KiiiKiii\" \"DEBUT SONG\" \"뮤직뱅크\""
+      ],
+      "status": "official_wrong_song_disambiguated",
+      "finding": "KBS 2025-02-28 article identifies the actual M Countdown stage as I DO ME. DEBUT SONG occurs in the VCR/cake-introduction explanation, not as an independently documented full-song stage.",
+      "sourceUrls": [
+        "https://world.kbs.co.kr/service/contents_view.htm?board_seq=456104&id=&lang=k&menu_cate="
+      ],
+      "nextAction": "Seek an exact DEBUT SONG first-party complete practice or program upload; exclude debut-event results for I DO ME.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    },
+    {
+      "workId": "rec28ldfRTrIC0",
+      "artist": "Hearts2Hearts",
+      "song": "Moonride",
+      "baselineCategory": "未找到合格来源",
+      "baselineReason": "第一方原片与Kia合作MV明确；本次两个精确曲目检索未找到普通节目/完整练习室，同团其他曲不替代。",
+      "queries": [
+        "\"Hearts2Hearts\" \"Moonride\" dance practice"
+      ],
+      "status": "no_new_eligible_source_in_bounded_search",
+      "finding": "Search surfaced the Kia collaboration MV, MV behind and official timeline entries for other songs. No exact eligible program or full practice source was identified in this query.",
+      "sourceUrls": [
+        "https://www.soompi.com/article/1868750wpp/watch-hearts2hearts-teases-new-collaboration-single-moonride",
+        "https://fiji.kastden.org/owner/hearts2hearts/"
+      ],
+      "nextAction": "Continue artist/company Moonride-specific uploads; ICONIC HEART/15-LOVE practice titles are different works.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    },
+    {
+      "workId": "recvxIZnIaGCNq",
+      "artist": "KATSEYE",
+      "song": "Gameboy",
+      "baselineCategory": "未找到合格来源",
+      "baselineReason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+      "queries": [
+        "\"KATSEYE\" \"Gameboy\" performance official",
+        "site:youtube.com \"Gameboy\" \"KATSEYE\" \"Dance Practice\"",
+        "site:katseye.world \"Gameboy\" performance"
+      ],
+      "status": "official_index_disambiguated",
+      "finding": "Official video directory lists Gameboy MV plus extended/sped-up/acoustic-remix audios. Nearby Performance and Dance Practice entries belong to Gabriela and Gnarly. The bounded official-index read does not establish absence everywhere.",
+      "sourceUrls": [
+        "https://www.katseye.world/videos/",
+        "https://www.katseye.world/video/page/2/"
+      ],
+      "nextAction": "Look for an exact complete original-arrangement Gameboy program/practice from an artist or broadcaster. Do not use a different-song practice or remix/audio.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    },
+    {
+      "workId": "recvxyOz5X6G1q",
+      "artist": "NMIXX",
+      "song": "Caution",
+      "baselineCategory": "未找到合格来源",
+      "baselineReason": "检索可定位 Anderson .Paak 与 NMIXX 合作 MV 和官方幕后 tZO08cGQxM4，未见完整合作舞台／练习室；ICONX教学不是原艺人表演。",
+      "queries": [
+        "\"NMIXX\" \"Caution\" \"쇼챔피언\""
+      ],
+      "status": "no_new_eligible_source_in_bounded_search",
+      "finding": "Exact query surfaced references to Caution MV Behind and unrelated Show Champion history. It did not establish a Caution full-song show performance.",
+      "sourceUrls": [
+        "https://d.namu.moe/w/NMIXX/%EC%9C%A0%ED%8A%9C%EB%B8%8C"
+      ],
+      "nextAction": "Seek a first-party complete performance retaining the precise collaboration/version. Behind-the-scenes editing is not proof of a full stage.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    },
+    {
+      "workId": "recvxyOz5XlqWP",
+      "artist": "ITZY",
+      "song": "Boys Like You",
+      "baselineCategory": "场合或素材类型不符",
+      "baselineReason": "官方MBC年末SNEAKERS+Boys Like You为特别串烧；巡演录像与标Dance Practice的非官方上传不符合。未找到可核官方普通练习。",
+      "queries": [
+        "ITZY \"Boys Like You\" \"DANCE PRACTICE\""
+      ],
+      "status": "unverified_practice_title_leads",
+      "finding": "Search surfaced QA83BdN4iOw and w-WEZoiVs_E, both titled as Dance Practice. Search titles alone do not verify artist/company uploaders or original practice source. Exact page opens returned Online fetch throttled; stopped this route without bypass.",
+      "sourceUrls": [
+        "https://www.youtube.com/watch?v=QA83BdN4iOw",
+        "https://www.youtube.com/watch?v=w-WEZoiVs_E"
+      ],
+      "nextAction": "Only resume exact original uploader/source-chain checks after normal access recovers; reject fan/mirrored/edited concert sources. Do not repeat already excluded year-end medley.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    },
+    {
+      "workId": "recvxyOz5XkyEY",
+      "artist": "ITZY",
+      "song": "Voltage",
+      "baselineCategory": "场合或素材类型不符",
+      "baselineReason": "官方5uQuUCW-9aI为160秒Special Dance Clip，缩略图明确为造景棚拍而非已证练习室；发布会、YouTube短版和relay同样不符合。民间镜像不可当原发布。",
+      "queries": [
+        "ITZY \"Voltage\" \"DANCE PRACTICE\"",
+        "site:itzyjapan.com \"Voltage\" \"MUSIC STATION\"",
+        "site:itzyjapan.com \"Voltage\" \"CDTV\""
+      ],
+      "status": "no_new_eligible_source_in_bounded_search",
+      "finding": "Search again surfaced the already-known official Special Dance Clip, unrelated RINGO/#Twenty practices and release news. No new first-party full-song regular-program/practice video was established.",
+      "sourceUrls": [
+        "https://www.itzyjapan.com/feature/voltage",
+        "https://www.bandwagon.asia/articles/itzy-release-japanese-debut-single-album-voltage-warner-music-japan-jyp-april-2022"
+      ],
+      "nextAction": "Seek full Japanese regular music-show archive or actual artist practice. The known produced special clip stays a separate category.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    },
+    {
+      "workId": "recvxyH5pzVn2k",
+      "artist": "STAYC",
+      "song": "LIT",
+      "baselineCategory": "未找到合格来源",
+      "baselineReason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+      "queries": [
+        "STAYC \"LIT\" \"DANCE PRACTICE\"",
+        "\"STAYC\" \"LIT\" パフォーマンス 番組"
+      ],
+      "status": "no_new_eligible_source_in_bounded_search",
+      "finding": "Search found label release information, MV, Japan-activity behind and POPPY dance practice. No full LIT practice/program upload was established. Release-period behind dTdz4Ls8XmQ is not a declared complete practice.",
+      "sourceUrls": [
+        "https://www.universal-music.co.jp/stayc/news/2023-09-19/",
+        "https://www.youtube.com/watch?v=dTdz4Ls8XmQ"
+      ],
+      "nextAction": "Prioritize the Japanese rights-holder program archive and exact LIT title; do not replace it with POPPY or release-event footage.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    },
+    {
+      "workId": "recvxyH5pzdckl",
+      "artist": "STAYC",
+      "song": "MEOW",
+      "baselineCategory": "未找到合格来源",
+      "baselineReason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+      "queries": [
+        "STAYC \"MEOW\" \"Music Station\"",
+        "site:youtube.com \"STAYC\" \"MEOW\" \"STAYC Japan Official\"",
+        "site:universal-music.co.jp/stayc \"MEOW\" \"テレビ\""
+      ],
+      "status": "recording_behind_not_full_stage",
+      "finding": "Official search result identifies LZfaAxp7i5Q as MEOW Recording Behind, published2024-08-23, distinct from the MV b8yjHGQ4hA4. A recording-behind title does not prove complete single-song performance. Release description separates MEOW and Cheeky Icy Thang Japanese version.",
+      "sourceUrls": [
+        "https://www.youtube.com/watch?v=LZfaAxp7i5Q",
+        "https://www.youtube.com/watch?v=b8yjHGQ4hA4"
+      ],
+      "nextAction": "Continue exact MEOW program/practice lookup. Do not assign the other double-A-side song or label edited recording behind as a complete live take.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    },
+    {
+      "workId": "recvxDMFHNHFyM",
+      "artist": "XG",
+      "song": "IYKYK",
+      "baselineCategory": "场合或素材类型不符",
+      "baselineReason": "mU8adPiwpm4原页为Choreography，187秒；原始缩略图是森林布景制作表演，不是练习室，不能因舞蹈标题把它当practice_room。",
+      "queries": [
+        "\"XG\" \"IYKYK\" \"Inkigayo\""
+      ],
+      "status": "no_new_eligible_source_in_bounded_search",
+      "finding": "Search matched concert-setlist pages and a same-title ILLIT Inkigayo entry. Neither proves XG IYKYK at a normal show. Existing produced choreography source remains outside automatic practice eligibility.",
+      "sourceUrls": [
+        "https://xg-music.fandom.com/wiki/AWE/Videos",
+        "https://test2.sonichits.com/video/ILLIT/IYKYK_%28If_You_Know_You_Know%29"
+      ],
+      "nextAction": "Require XG exact artist and song plus broadcaster/artist source. Reject ILLIT same-title and tour setlist hits.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    },
+    {
+      "workId": "recvxDMFHNJME3",
+      "artist": "XG",
+      "song": "IN THE RAIN",
+      "baselineCategory": "场合或素材类型不符",
+      "baselineReason": "检索出现非官方mirrored练习室标签与巡演全景，未定位原官方练习室；不将粉丝拼接/镜像误作一手来源。",
+      "queries": [
+        "\"XG\" \"IN THE RAIN\" \"Music Bank\""
+      ],
+      "status": "no_new_eligible_source_in_bounded_search",
+      "finding": "Results combined IN THE RAIN MV/live-tour pages with HOWLING Music Bank entries; no same-work ordinary program/practice established.",
+      "sourceUrls": [
+        "https://xg-music.fandom.com/wiki/AWE/Videos",
+        "https://www.uta-net.com/movie/377929/93nXITK9CaY/"
+      ],
+      "nextAction": "Check exact IN THE RAIN artist/broadcaster video rather than neighboring HOWLING or tour chapters.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    },
+    {
+      "workId": "rec28ldfRTrMwG",
+      "artist": "KISS OF LIFE",
+      "song": "Painting",
+      "baselineCategory": "场合或素材类型不符",
+      "baselineReason": "同曲内容主要为粉丝见面会/现场合集；无已证官方完整练习室或常规打歌。",
+      "queries": [
+        "\"KISS OF LIFE\" \"Painting\" practice music show"
+      ],
+      "status": "no_new_eligible_source_in_bounded_search",
+      "finding": "The returned work-specific results describe Painting Special Video and behind. Practice/show titles in the results belong to Lips Hips Kiss/k bye. Encore-concert associations remain excluded.",
+      "sourceUrls": [
+        "https://kissoflife.fandom.com/wiki/Painting",
+        "https://kissoflife.fandom.com/wiki/Kiss_Of_Life/Videos"
+      ],
+      "nextAction": "Seek Painting-specific artist practice or ordinary promotional show. Do not re-use previously rejected Nothing/Sticky compilation or concert.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    },
+    {
+      "workId": "recvxyH5pzEDfw",
+      "artist": "IZ*ONE",
+      "song": "Buenos Aires",
+      "baselineCategory": "未找到合格来源",
+      "baselineReason": "本轮两组精确曲名检索未取得同版本、艺人本人、常规打歌或官方完整练习室的一手可采用片源。搜索中出现的MV、其他歌曲、幕后、编舞师/翻跳、活动和非官方转传不自动升级；这不是证明表演不存在。",
+      "queries": [
+        "\"IZ*ONE\" \"Buenos Aires\" NHK 2019 performance official",
+        "site:universal-music.co.jp/izone \"シブヤノオト\" \"Buenos\"",
+        "site:izone-official.com \"Buenos Aires\" \"シブヤノオト\""
+      ],
+      "status": "broadcast_date_found_rightsholder_video_missing",
+      "finding": "Contemporary Japanese reports identify NHK Shibuya Note appearance2019-06-01 at24:05 and Buenos Aires debut performance. No currently accessible full rights-holder source was established. An appearance announcement is not sufficient video adoption evidence.",
+      "sourceUrls": [
+        "https://spice.eplus.jp/articles/240115/amp",
+        "https://kstyle.com/article.ksn?articleNo=2118539",
+        "https://lp.p.pia.jp/article/news/53117/index.html"
+      ],
+      "nextAction": "Follow NHK/artist rights-holder archive for that precise broadcast; verify complete original Japanese song and participant scope, not fan repost title.",
+      "eligibleForAdoption": false,
+      "absenceClaim": false,
+      "fullPlaybackVerified": false,
+      "actualAudioComparison": false,
+      "privateDataRead": false,
+      "bindingChanged": false
+    }
+  ],
+  "additionalExploratoryQueries": [
+    "\"WOOAH\" \"SUMMER\" \"dance practice\"",
+    "\"fromis_9\" \"Touchdown\" \"practice\"",
+    "\"Weeekly\" \"Top Secret\" live music"
+  ],
+  "additionalExploratoryScope": "These three light searches only returned neighboring songs, MV/OST pages or concert reports. They are not included in the12-work focused-research count or claimed as completed evidence review."
+}

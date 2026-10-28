@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
+import {beforeUserXObservations} from './helpers/user-x-observations.cjs';
 
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const evidenceRoot = '../../docs/codex/evidence/20261028-continuation/statistics/';
@@ -10,7 +11,7 @@ const data = read('data/group-statistics-completion-evidence.json');
 const laterSales = read('../../docs/codex/evidence/20261028-stage-fill/statistics-adoption-proposal.json');
 const laterEvidence = read('../../docs/codex/evidence/20261028-continuous/evidence-upgrade-proposal-c.json');
 // Restore only the reviewed later changes when checking this historical cohort.
-const historicalData = structuredClone(data);
+const historicalData = beforeUserXObservations(data);
 historicalData.groups.triples.sales = laterEvidence.statistics.expectedBefore;
 for (const change of laterSales.items) {
   const [slug, field] = change.key.split('.');

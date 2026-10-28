@@ -1,0 +1,57 @@
+{
+  "recordedAt": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "scope": "Five user-observed X follower counts; current display and report; original statistics cohort reconstruction. No private state or stage changes.",
+  "command": [
+    "node",
+    "--test",
+    "tests/user-x-observations.test.mjs",
+    "tests/group-information.test.mjs",
+    "tests/statistics-category-resolution.test.mjs",
+    "tests/stage-fill-statistics.test.mjs",
+    "tests/continuous-evidence-protection.test.cjs",
+    "tests/statistics-annual-reconciliation.test.mjs"
+  ],
+  "exitCode": 0,
+  "tests": 34,
+  "passed": 34,
+  "failed": 0,
+  "logSha256": "e7f09d777e552f98a365f090c1409bdcf605d2b8aa9f20be2c8f2d2c1cbd24e6",
+  "preChangeBaseline": {
+    "tests": 30,
+    "passed": 29,
+    "failed": 1,
+    "finding": "group-information.test.mjs still expected nine unavailable sales, but v199 had seven after BADVILLAIN and BEWAVE lower bounds; adjusted current assertion to seven while historical cohort still reconstructs nine."
+  },
+  "verification": {
+    "fiveOriginalNullRowsRetained": true,
+    "onlyFiveSocialObjectsAndTwoSummaryCountsChanged": true,
+    "fullV199CanonicalHashRestored": "925a0b8ccdf3852197adfa61f522d1427ad9ef8c0b718677e44b1d58ef7362b6",
+    "priorHistoricalHashesUnchanged": true,
+    "accountIdentityAndGroupIdsUnchanged": true,
+    "allSalesAndWinsUnchanged": true,
+    "renderedCounts": [
+      "3277人",
+      "3万",
+      "4万",
+      "1万",
+      "19万"
+    ],
+    "rawCounts": [
+      "3277",
+      "2.9万",
+      "3.8万",
+      "1万",
+      "18.5万"
+    ],
+    "reportGeneratedAndTextVerified": true,
+    "reportHistoricalImagesAndLayoutClearlyDated": true,
+    "reportHistoricalSummaryHeadingAndCsvLabelVerified": true
+  },
+  "notPerformed": [
+    "Independent live X profile retrieval",
+    "Browser layout inspection",
+    "Production publication",
+    "Private writes"
+  ]
+}

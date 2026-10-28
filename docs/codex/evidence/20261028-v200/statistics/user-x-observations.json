@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "baseline": "21b12a6f0d49f355ee639ae87bb2b294ba58513f",
+  "source": "Direct user message in this Codex conversation; the five public X profile links and displayed counts were supplied by the user.",
+  "scope": "User-observed public follower counts only. No independent profile retrieval, private data, stage binding, sales or win changes.",
+  "expectedBeforeSummary": {
+    "groups": 51,
+    "accountIdentities": 153,
+    "socialObserved": 148,
+    "socialFallbackZero": 5,
+    "omittedPlatforms": 0,
+    "salesObserved": 44,
+    "salesLowerBoundsAdded": 12,
+    "salesFallbackZero": 7,
+    "winsObserved": 27,
+    "winsConfirmedZero": 21,
+    "winsFallbackZero": 3,
+    "unresolvedSourceDifferences": [
+      "triples.sales"
+    ],
+    "resolvedSourceDifferences": [
+      "lesserafim.wins",
+      "newjeans.wins",
+      "ive.wins",
+      "fromis9.sales"
+    ]
+  },
+  "proposedAfterSummary": {
+    "groups": 51,
+    "accountIdentities": 153,
+    "socialObserved": 153,
+    "socialFallbackZero": 0,
+    "omittedPlatforms": 0,
+    "salesObserved": 44,
+    "salesLowerBoundsAdded": 12,
+    "salesFallbackZero": 7,
+    "winsObserved": 27,
+    "winsConfirmedZero": 21,
+    "winsFallbackZero": 3,
+    "unresolvedSourceDifferences": [
+      "triples.sales"
+    ],
+    "resolvedSourceDifferences": [
+      "lesserafim.wins",
+      "newjeans.wins",
+      "ive.wins",
+      "fromis9.sales"
+    ]
+  },
+  "expectedBeforeDataSha256Canonical": "925a0b8ccdf3852197adfa61f522d1427ad9ef8c0b718677e44b1d58ef7362b6",
+  "proposedAfterDataSha256Canonical": "7a8ffe9f67596a9c662d93ae96a119a6b90e2658fc651be52fe81f78578a5055",
+  "changes": [
+    {
+      "key": "genblue.x",
+      "accountIndex": 2,
+      "expectedBefore": {
+        "platform": "x",
+        "url": "https://x.com/GENBLUE_ten",
+        "accountExists": true,
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable",
+        "rawDisplay": null,
+        "precision": "unknown",
+        "observedAt": null,
+        "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+        "sourceUrl": "https://linktr.ee/genblue.official",
+        "sourceTitle": "官方账号身份入口",
+        "sources": [
+          {
+            "url": "https://linktr.ee/genblue.official",
+            "title": "官方账号身份入口",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+            "kind": "third-party-public"
+          }
+        ],
+        "identitySourceUrl": "https://linktr.ee/genblue.official",
+        "subjectName": "GENBLUE",
+        "notes": [
+          "已验证公开账号身份，但未取得可核实且可明确归属的公开人数；按用户要求显示0，observedValue保留null。",
+          "搜索缓存中的无日期二手人数不作为本条数值。",
+          "按用户设置显示0；0为显示占位，非经核实的真实人数。"
+        ]
+      },
+      "proposedAfter": {
+        "platform": "x",
+        "url": "https://x.com/GENBLUE_ten",
+        "accountExists": true,
+        "observedValue": 3277,
+        "displayValue": 3277,
+        "status": "observed",
+        "rawDisplay": "3277",
+        "precision": "user-reported-integer",
+        "observedAt": "2026-10-28",
+        "checkedAt": "2026-10-28",
+        "sourceUrl": "https://x.com/GENBLUE_ten",
+        "sourceTitle": "X · 用户人工观察（2026-10-28，原始显示 3277；未独立抓取）",
+        "sources": [
+          {
+            "url": "https://linktr.ee/genblue.official",
+            "title": "官方账号身份入口",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://x.com/GENBLUE_ten",
+            "title": "X · 用户人工观察（2026-10-28，原始显示 3277；未独立抓取）",
+            "sourceDate": "2026-10-28",
+            "checkedAt": "2026-10-28",
+            "timezone": "Asia/Shanghai",
+            "kind": "user-provided-observation",
+            "rawDisplay": "3277",
+            "precision": "user-reported-integer",
+            "independentlyFetched": false
+          }
+        ],
+        "identitySourceUrl": "https://linktr.ee/genblue.official",
+        "subjectName": "GENBLUE",
+        "notes": [
+          "用户于2026-10-28（Asia/Shanghai）人工查看上述X账号并提供人数；不是本轮独立自动抓取或实时计数。",
+          "保留用户原文“3277”；按用户提供的整数保存。"
+        ],
+        "observedTimezone": "Asia/Shanghai"
+      },
+      "expectedBeforeSha256Canonical": "f9d6f7cf45f0d85d2130c97f0ef8e2de9c63cdaa89d7ad6a50244f189902eef0",
+      "proposedAfterSha256Canonical": "41ac0196073691fc0a594385d7e8d108b5248df845601c14d60f14bcd2133e22"
+    },
+    {
+      "key": "vvup.x",
+      "accountIndex": 2,
+      "expectedBefore": {
+        "platform": "x",
+        "url": "https://x.com/vvup_official",
+        "accountExists": true,
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable",
+        "rawDisplay": null,
+        "precision": "unknown",
+        "observedAt": null,
+        "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+        "sourceUrl": "https://linktr.ee/vvup_official",
+        "sourceTitle": "官方账号身份入口",
+        "sources": [
+          {
+            "url": "https://linktr.ee/vvup_official",
+            "title": "官方账号身份入口",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+            "kind": "third-party-public"
+          }
+        ],
+        "identitySourceUrl": "https://linktr.ee/vvup_official",
+        "subjectName": "VVUP",
+        "notes": [
+          "已验证公开账号身份，但未取得可核实且可明确归属的公开人数；按用户要求显示0，observedValue保留null。",
+          "搜索缓存中的无日期二手人数不作为本条数值。",
+          "按用户设置显示0；0为显示占位，非经核实的真实人数。"
+        ]
+      },
+      "proposedAfter": {
+        "platform": "x",
+        "url": "https://x.com/vvup_official",
+        "accountExists": true,
+        "observedValue": 29000,
+        "displayValue": 29000,
+        "status": "observed",
+        "rawDisplay": "2.9万",
+        "precision": "user-reported-rounded",
+        "observedAt": "2026-10-28",
+        "checkedAt": "2026-10-28",
+        "sourceUrl": "https://x.com/vvup_official",
+        "sourceTitle": "X · 用户人工观察（2026-10-28，原始显示 2.9万；未独立抓取）",
+        "sources": [
+          {
+            "url": "https://linktr.ee/vvup_official",
+            "title": "官方账号身份入口",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://x.com/vvup_official",
+            "title": "X · 用户人工观察（2026-10-28，原始显示 2.9万；未独立抓取）",
+            "sourceDate": "2026-10-28",
+            "checkedAt": "2026-10-28",
+            "timezone": "Asia/Shanghai",
+            "kind": "user-provided-observation",
+            "rawDisplay": "2.9万",
+            "precision": "user-reported-rounded",
+            "independentlyFetched": false
+          }
+        ],
+        "identitySourceUrl": "https://linktr.ee/vvup_official",
+        "subjectName": "VVUP",
+        "notes": [
+          "用户于2026-10-28（Asia/Shanghai）人工查看上述X账号并提供人数；不是本轮独立自动抓取或实时计数。",
+          "保留用户原文“2.9万”；换算数值仅用于现有万单位显示，不代表平台精确到个位的计数。"
+        ],
+        "observedTimezone": "Asia/Shanghai"
+      },
+      "expectedBeforeSha256Canonical": "d732322ea23054514faa09c399d5c48e82726da1437dc2abdb316434df4a50d1",
+      "proposedAfterSha256Canonical": "cf0e917d7d41c4068837c801c1d418b0f2305f43c51a8b9f0e44f200ea3c7100"
+    },
+    {
+      "key": "vcha.x",
+      "accountIndex": 2,
+      "expectedBefore": {
+        "platform": "x",
+        "url": "https://x.com/GIRLSETofficial",
+        "accountExists": true,
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable",
+        "rawDisplay": null,
+        "precision": "unknown",
+        "observedAt": null,
+        "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+        "sourceUrl": "https://socialcounts.org/youtube-video-live-view-count/iQzBz-JV2zg",
+        "sourceTitle": "官方账号身份入口",
+        "sources": [
+          {
+            "url": "https://socialcounts.org/youtube-video-live-view-count/iQzBz-JV2zg",
+            "title": "官方账号身份入口",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+            "kind": "third-party-public"
+          }
+        ],
+        "identitySourceUrl": "https://socialcounts.org/youtube-video-live-view-count/iQzBz-JV2zg",
+        "subjectName": "GIRLSET",
+        "notes": [
+          "已验证公开账号身份，但未取得可核实且可明确归属的公开人数；按用户要求显示0，observedValue保留null。",
+          "搜索缓存中的无日期二手人数不作为本条数值。",
+          "属于后续品牌GIRLSET，不表示VCHA历史活动时期人数。",
+          "此账号在本轮来源中名为GIRLSET；INS1.2M为Chartmetric2026-10-25公开刷新值、YouTube1.17M为2026-10-25频道观察值，不表示VCHA历史时期人数。未据此变更VCHA成员或作品资料。",
+          "按用户设置显示0；0为显示占位，非经核实的真实人数。"
+        ]
+      },
+      "proposedAfter": {
+        "platform": "x",
+        "url": "https://x.com/GIRLSETofficial",
+        "accountExists": true,
+        "observedValue": 38000,
+        "displayValue": 38000,
+        "status": "observed",
+        "rawDisplay": "3.8万",
+        "precision": "user-reported-rounded",
+        "observedAt": "2026-10-28",
+        "checkedAt": "2026-10-28",
+        "sourceUrl": "https://x.com/GIRLSETofficial",
+        "sourceTitle": "X · 用户人工观察（2026-10-28，原始显示 3.8万；未独立抓取）",
+        "sources": [
+          {
+            "url": "https://socialcounts.org/youtube-video-live-view-count/iQzBz-JV2zg",
+            "title": "官方账号身份入口",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://x.com/GIRLSETofficial",
+            "title": "X · 用户人工观察（2026-10-28，原始显示 3.8万；未独立抓取）",
+            "sourceDate": "2026-10-28",
+            "checkedAt": "2026-10-28",
+            "timezone": "Asia/Shanghai",
+            "kind": "user-provided-observation",
+            "rawDisplay": "3.8万",
+            "precision": "user-reported-rounded",
+            "independentlyFetched": false
+          }
+        ],
+        "identitySourceUrl": "https://socialcounts.org/youtube-video-live-view-count/iQzBz-JV2zg",
+        "subjectName": "GIRLSET",
+        "notes": [
+          "用户于2026-10-28（Asia/Shanghai）人工查看上述X账号并提供人数；不是本轮独立自动抓取或实时计数。",
+          "保留用户原文“3.8万”；换算数值仅用于现有万单位显示，不代表平台精确到个位的计数。",
+          "属于后续品牌GIRLSET，不表示VCHA历史活动时期人数。",
+          "此账号在本轮来源中名为GIRLSET；INS1.2M为Chartmetric2026-10-25公开刷新值、YouTube1.17M为2026-10-25频道观察值，不表示VCHA历史时期人数。未据此变更VCHA成员或作品资料。"
+        ],
+        "observedTimezone": "Asia/Shanghai"
+      },
+      "expectedBeforeSha256Canonical": "ea5b789f6680af99c832c5113b81442c8bf45bc1d11bcc4a344c85dd91ebfccd",
+      "proposedAfterSha256Canonical": "0e45db27ef9bfa8acbcee8d13300dc1fa89bcf848421770f655bcc73b55afac7"
+    },
+    {
+      "key": "everglow.x",
+      "accountIndex": 1,
+      "expectedBefore": {
+        "platform": "x",
+        "url": "https://x.com/everglow_offcl",
+        "accountExists": true,
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable",
+        "rawDisplay": null,
+        "precision": "unknown",
+        "observedAt": null,
+        "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+        "sourceUrl": "https://linktr.ee/everglow_offcl",
+        "sourceTitle": "官方账号身份入口",
+        "sources": [
+          {
+            "url": "https://linktr.ee/everglow_offcl",
+            "title": "官方账号身份入口",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+            "kind": "third-party-public"
+          }
+        ],
+        "identitySourceUrl": "https://linktr.ee/everglow_offcl",
+        "subjectName": "EVERGLOW",
+        "notes": [
+          "已验证公开账号身份，但未取得可核实且可明确归属的公开人数；按用户要求显示0，observedValue保留null。",
+          "搜索缓存中的无日期二手人数不作为本条数值。",
+          "排除旧公司EVERGLOW账号历史统计，未将旧账号的INS/X人数移植给新账号。",
+          "按用户设置显示0；0为显示占位，非经核实的真实人数。"
+        ]
+      },
+      "proposedAfter": {
+        "platform": "x",
+        "url": "https://x.com/everglow_offcl",
+        "accountExists": true,
+        "observedValue": 10000,
+        "displayValue": 10000,
+        "status": "observed",
+        "rawDisplay": "1万",
+        "precision": "user-reported-rounded",
+        "observedAt": "2026-10-28",
+        "checkedAt": "2026-10-28",
+        "sourceUrl": "https://x.com/everglow_offcl",
+        "sourceTitle": "X · 用户人工观察（2026-10-28，原始显示 1万；未独立抓取）",
+        "sources": [
+          {
+            "url": "https://linktr.ee/everglow_offcl",
+            "title": "官方账号身份入口",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://x.com/everglow_offcl",
+            "title": "X · 用户人工观察（2026-10-28，原始显示 1万；未独立抓取）",
+            "sourceDate": "2026-10-28",
+            "checkedAt": "2026-10-28",
+            "timezone": "Asia/Shanghai",
+            "kind": "user-provided-observation",
+            "rawDisplay": "1万",
+            "precision": "user-reported-rounded",
+            "independentlyFetched": false
+          }
+        ],
+        "identitySourceUrl": "https://linktr.ee/everglow_offcl",
+        "subjectName": "EVERGLOW",
+        "notes": [
+          "用户于2026-10-28（Asia/Shanghai）人工查看上述X账号并提供人数；不是本轮独立自动抓取或实时计数。",
+          "保留用户原文“1万”；换算数值仅用于现有万单位显示，不代表平台精确到个位的计数。",
+          "排除旧公司EVERGLOW账号历史统计，未将旧账号的INS/X人数移植给新账号。"
+        ],
+        "observedTimezone": "Asia/Shanghai"
+      },
+      "expectedBeforeSha256Canonical": "c3a570a0a964f94e0be163a63e84d1cf04673f5836dea02b42c78e561740dbb9",
+      "proposedAfterSha256Canonical": "bcc4689b11b1badc8da8ec0d4e72779c39f215f1d5704e8a8520f46a0396547d"
+    },
+    {
+      "key": "cherrybullet.x",
+      "accountIndex": 2,
+      "expectedBefore": {
+        "platform": "x",
+        "url": "https://x.com/cherrybullet",
+        "accountExists": true,
+        "observedValue": null,
+        "displayValue": 0,
+        "status": "unavailable",
+        "rawDisplay": null,
+        "precision": "unknown",
+        "observedAt": null,
+        "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+        "sourceUrl": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=412529&id=&lang=j&menu_cate=artist",
+        "sourceTitle": "官方账号身份入口",
+        "sources": [
+          {
+            "url": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=412529&id=&lang=j&menu_cate=artist",
+            "title": "官方账号身份入口",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+            "kind": "third-party-public"
+          }
+        ],
+        "identitySourceUrl": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=412529&id=&lang=j&menu_cate=artist",
+        "subjectName": "Cherry Bullet",
+        "notes": [
+          "已验证公开账号身份，但未取得可核实且可明确归属的公开人数；按用户要求显示0，observedValue保留null。",
+          "搜索缓存中的无日期二手人数不作为本条数值。",
+          "按用户设置显示0；0为显示占位，非经核实的真实人数。"
+        ]
+      },
+      "proposedAfter": {
+        "platform": "x",
+        "url": "https://x.com/cherrybullet",
+        "accountExists": true,
+        "observedValue": 185000,
+        "displayValue": 185000,
+        "status": "observed",
+        "rawDisplay": "18.5万",
+        "precision": "user-reported-rounded",
+        "observedAt": "2026-10-28",
+        "checkedAt": "2026-10-28",
+        "sourceUrl": "https://x.com/cherrybullet",
+        "sourceTitle": "X · 用户人工观察（2026-10-28，原始显示 18.5万；未独立抓取）",
+        "sources": [
+          {
+            "url": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=412529&id=&lang=j&menu_cate=artist",
+            "title": "官方账号身份入口",
+            "sourceDate": null,
+            "checkedAt": "2026-10-25T16:25:50.781200+00:00",
+            "kind": "third-party-public"
+          },
+          {
+            "url": "https://x.com/cherrybullet",
+            "title": "X · 用户人工观察（2026-10-28，原始显示 18.5万；未独立抓取）",
+            "sourceDate": "2026-10-28",
+            "checkedAt": "2026-10-28",
+            "timezone": "Asia/Shanghai",
+            "kind": "user-provided-observation",
+            "rawDisplay": "18.5万",
+            "precision": "user-reported-rounded",
+            "independentlyFetched": false
+          }
+        ],
+        "identitySourceUrl": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=412529&id=&lang=j&menu_cate=artist",
+        "subjectName": "Cherry Bullet",
+        "notes": [
+          "用户于2026-10-28（Asia/Shanghai）人工查看上述X账号并提供人数；不是本轮独立自动抓取或实时计数。",
+          "保留用户原文“18.5万”；换算数值仅用于现有万单位显示，不代表平台精确到个位的计数。"
+        ],
+        "observedTimezone": "Asia/Shanghai"
+      },
+      "expectedBeforeSha256Canonical": "adb8e1979f9227bcaf06516a89265bc810cd5ce91813727e2bc671126a3fc6be",
+      "proposedAfterSha256Canonical": "eb3500d2a6126cf052b229eda7f8e5b9c326967288ed594423c9fe46dbd63771"
+    }
+  ],
+  "remainingUnknown": {
+    "x": 0,
+    "sales": 7,
+    "wins": 3,
+    "total": 10
+  },
+  "unchanged": {
+    "tripleSSales": 2092239,
+    "tripleSDifference": 366550,
+    "fromis9Sales": 1152076
+  }
+}

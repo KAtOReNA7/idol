@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-28T12:32:39.709388+00:00",
+  "method": "Local HTTP rendered HTML, not browser layout or interaction QA",
+  "base": "http://127.0.0.1:4270",
+  "pages": [
+    {
+      "slug": "genblue",
+      "httpStatus": 200,
+      "bytes": 39817,
+      "countPresent": true,
+      "manualSourcePresent": true,
+      "datePresent": true,
+      "frameworkOverlay": false
+    },
+    {
+      "slug": "vvup",
+      "httpStatus": 200,
+      "bytes": 38166,
+      "ssrState": "正在打开 VVUP 档案…",
+      "classification": "client-loaded information; HTTP alone does not exercise hydration",
+      "source": "components/vvup-artist.tsx:104",
+      "browserVerified": false,
+      "dataAndSharedRendererTestsPassed": true
+    },
+    {
+      "slug": "vcha",
+      "httpStatus": 200,
+      "bytes": 38069,
+      "countPresent": true,
+      "manualSourcePresent": true,
+      "datePresent": true,
+      "frameworkOverlay": false
+    },
+    {
+      "slug": "everglow",
+      "httpStatus": 200,
+      "bytes": 48265,
+      "countPresent": true,
+      "manualSourcePresent": true,
+      "datePresent": true,
+      "frameworkOverlay": false
+    },
+    {
+      "slug": "cherrybullet",
+      "httpStatus": 200,
+      "bytes": 49973,
+      "countPresent": true,
+      "manualSourcePresent": true,
+      "datePresent": true,
+      "frameworkOverlay": false
+    }
+  ],
+  "passed": false,
+  "browserVisualVerified": false,
+  "privateWrites": 0,
+  "summary": {
+    "completeHtmlVerified": 4,
+    "clientHydrationUnverified": 1,
+    "applicationFailureConfirmed": 0
+  },
+  "initialAssertionDiagnosis": "Initial test incorrectly expected client-loaded VVUP information in server HTML. No component changed; browser verification remains pending."
+}

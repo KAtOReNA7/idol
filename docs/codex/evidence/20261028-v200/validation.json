@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-28T12:44:53.537309+00:00",
+  "focusedTests": {
+    "parentPassed": 95,
+    "statisticsPassed": 34,
+    "uniquePassed": 129,
+    "failed": 0,
+    "parentCommand": [
+      "node",
+      "--test",
+      "tests/v200-public-credits.test.cjs",
+      "tests/continuous-public-credits.test.cjs",
+      "tests/public-work-recognition.test.cjs",
+      "tests/public-credit-absence-ui.test.cjs",
+      "tests/public-data-completion.test.cjs",
+      "tests/reviewed-native-recognition.test.cjs",
+      "tests/stage-selection-policy.test.mjs",
+      "tests/stage-replacement-adoption.test.cjs",
+      "tests/udtt-private-build-assets.test.mjs",
+      "tests/core.test.cjs"
+    ],
+    "logSha256": "e03a78dce274e77b2f4208bd51cd917f7873c5575d111a7eb9d75d4c36cae674",
+    "statisticsReceipt": "statistics/verification.json",
+    "wholeRepositorySuite": false
+  },
+  "typeScript": "passed --noEmit --incremental false",
+  "privateWrites": 0,
+  "localHttp": "local-http-statistics.json",
+  "browserVisual": "unverified: preferred IAB tab creation timed out after45s; no Chrome fallback",
+  "priorTestCorrections": [
+    "Existing group-information assertion expected9 missing sales; v199 had7. Historical cohort assertions preserved.",
+    "Initial new photo test incorrectly required1200px height for all reviewed originals; valid existing1228x819 KYA image retained and checked by exact SHA/dimensions/crop instead.",
+    "HTTP test initially expected VVUP client-loaded details in SSR; corrected verification scope, no component change."
+  ],
+  "buildAndPackage": "pending",
+  "publication": "pending"
+}

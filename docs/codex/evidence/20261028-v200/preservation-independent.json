@@ -1,0 +1,1130 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent stage_v200_research agent",
+  "checkedAt": "2026-10-28T12:45:34.314928+00:00",
+  "status": "passed-final-local-application-diff",
+  "phase": "final statistics and 11-work public-person append reviewed; archive and deployment verified separately by parent",
+  "githubBaseline": "21b12a6f0d49f355ee639ae87bb2b294ba58513f",
+  "sitesBaseline": "747aa997a7512592a305a5e21161ded078fa519d",
+  "reviewedTrackedChanges": [
+    "data/group-statistics-completion-evidence.json",
+    "data/public-work-credits.json",
+    "data/public-work-recognition.json",
+    "scripts/build-completion-report.mjs",
+    "tests/continuous-evidence-protection.test.cjs",
+    "tests/continuous-public-credits.test.cjs",
+    "tests/group-information.test.mjs",
+    "tests/stage-fill-statistics.test.mjs",
+    "tests/statistics-annual-reconciliation.test.mjs",
+    "tests/statistics-category-resolution.test.mjs"
+  ],
+  "reviewedNewApplicationFiles": [
+    "tests/helpers/user-x-observations.cjs",
+    "tests/user-x-observations.test.mjs",
+    "tests/v200-public-credits.test.cjs"
+  ],
+  "reviewedApplicationFileHashes": [
+    {
+      "path": "data/group-statistics-completion-evidence.json",
+      "sha256": "010f36eb82cc721071abc121c16ee4cca8d0f780d7a53e4a4a220271e5854ca2"
+    },
+    {
+      "path": "data/public-work-credits.json",
+      "sha256": "d14aa081db244246f3b7f39d6511fbf20871628f6ca6a2b41ca06abdc8ee94b5"
+    },
+    {
+      "path": "data/public-work-recognition.json",
+      "sha256": "5278182dcfda9ba6d9db47dcbe3c7407aa07dc1d43fd34d1f8eadc6f2cea3972"
+    },
+    {
+      "path": "scripts/build-completion-report.mjs",
+      "sha256": "d0b05379d297e8abe697f515f5b3c5bea6ca88d0a726ead1e34a267d9f5ebfbc"
+    },
+    {
+      "path": "tests/continuous-evidence-protection.test.cjs",
+      "sha256": "5f4b2934a7acf57bcfc3416ce3987f84c941ffa9365cfeec8bd512bb6ba115a8"
+    },
+    {
+      "path": "tests/continuous-public-credits.test.cjs",
+      "sha256": "57bd3484cbf2c5bde5499dcd55ce3051c6747ad8e3da77477c7cbc44006e020e"
+    },
+    {
+      "path": "tests/group-information.test.mjs",
+      "sha256": "af712793d9e3c096c76309b3d78278c8033ee93b6a0f38b3bdd3ee63168b2433"
+    },
+    {
+      "path": "tests/stage-fill-statistics.test.mjs",
+      "sha256": "eb385f336ed2b0b648caf3b6fc2facd39a5020f3ac0a4d405dfd5d10fff9b369"
+    },
+    {
+      "path": "tests/statistics-annual-reconciliation.test.mjs",
+      "sha256": "81dd1dee4dc59ee44c1af251dd645b828365450eaef840144f84b14f81ddfc5c"
+    },
+    {
+      "path": "tests/statistics-category-resolution.test.mjs",
+      "sha256": "82b5e62e54563d96ca43fa2365c25f34e6d571fdbbd76e3ec6cf5622e2e286ab"
+    },
+    {
+      "path": "tests/helpers/user-x-observations.cjs",
+      "sha256": "6d9287331e20b18f87549fe7f4d4e2d579a97bd8c95e3aded72e52edf73119f5"
+    },
+    {
+      "path": "tests/user-x-observations.test.mjs",
+      "sha256": "547cd680740c8c324343bfa8ba204e135ec9184982c9cbd82d9eed071039f161"
+    },
+    {
+      "path": "tests/v200-public-credits.test.cjs",
+      "sha256": "c83b2972e0715fc0b33eecf6d9ba9e2a32709399a35c9f858ce1149030c85243"
+    }
+  ],
+  "blockingFindings": [],
+  "preservation": {
+    "apiAuthAndSaveCodeChanged": false,
+    "privateScoresNotesWatchedDataChanged": false,
+    "stableIdsRelationshipsOrStageBindingsChanged": false,
+    "approvedDesignCssChanged": false,
+    "reportInlineCssUnchanged": true,
+    "originalAssetsChanged": false,
+    "trackedPublicAssetPaths": 6025,
+    "directAllTrackedFileHashScanPerformed": true,
+    "allNonApprovedRawHashMismatchesWereCheckoutLineEndingOrKnownTextDifferences": "Working tree Git diff identifies only the seven reviewed files; raw scan also saw checkout CRLF/LF differences in untouched text files, not public image changes.",
+    "nativeDataOrAccessStateReadOrWrittenByReviewer": false
+  },
+  "statistics": {
+    "independentExactReconstructionOfV199": true,
+    "restoredCanonicalSha256": "925a0b8ccdf3852197adfa61f522d1427ad9ef8c0b718677e44b1d58ef7362b6",
+    "changedSummaryFields": [
+      "socialObserved",
+      "socialFallbackZero"
+    ],
+    "socialObserved": [
+      148,
+      153
+    ],
+    "socialFallbackZero": [
+      5,
+      0
+    ],
+    "salesAndWinsExactPreservation": true,
+    "observations": [
+      {
+        "key": "genblue.x",
+        "observedValue": 3277,
+        "rawDisplay": "3277",
+        "precision": "user-reported-integer",
+        "matchesDirectUserMessage": true,
+        "baselinePreimageMatchesGit": true,
+        "accountIdentityAndHistoricalSourcesUnchanged": true
+      },
+      {
+        "key": "vvup.x",
+        "observedValue": 29000,
+        "rawDisplay": "2.9万",
+        "precision": "user-reported-rounded",
+        "matchesDirectUserMessage": true,
+        "baselinePreimageMatchesGit": true,
+        "accountIdentityAndHistoricalSourcesUnchanged": true
+      },
+      {
+        "key": "vcha.x",
+        "observedValue": 38000,
+        "rawDisplay": "3.8万",
+        "precision": "user-reported-rounded",
+        "matchesDirectUserMessage": true,
+        "baselinePreimageMatchesGit": true,
+        "accountIdentityAndHistoricalSourcesUnchanged": true
+      },
+      {
+        "key": "everglow.x",
+        "observedValue": 10000,
+        "rawDisplay": "1万",
+        "precision": "user-reported-rounded",
+        "matchesDirectUserMessage": true,
+        "baselinePreimageMatchesGit": true,
+        "accountIdentityAndHistoricalSourcesUnchanged": true
+      },
+      {
+        "key": "cherrybullet.x",
+        "observedValue": 185000,
+        "rawDisplay": "18.5万",
+        "precision": "user-reported-rounded",
+        "matchesDirectUserMessage": true,
+        "baselinePreimageMatchesGit": true,
+        "accountIdentityAndHistoricalSourcesUnchanged": true
+      }
+    ],
+    "unknownMetricsNow": 10,
+    "unknownSales": 7,
+    "unknownWins": 3,
+    "independentExactReconstructionRecheckedAfterPeopleAppend": true
+  },
+  "testHelperReview": {
+    "repoRelativeEvidencePathCorrect": true,
+    "exactBeforeImagesVerifiedAgainstGitBaseline": true,
+    "currentObjectsAssertedBeforeHistoricalRestoration": true,
+    "historicalFrozenHashesNotChanged": true,
+    "sitesStandaloneTestLimitation": "New helper intentionally needs repository docs outside app. Full GitHub checkout supports it; Sites standalone app checkout does not contain those evidence docs. Build does not import test helper. Do not claim standalone Sites test execution without evidence docs.",
+    "v200PublicCreditsReview": {
+      "old80HashesIndependentlyRecomputedFromGit": true,
+      "historical80SliceCountsRemainAsserted": true,
+      "new11ExactProposalsCompared": true,
+      "savedZeroScorePreservationAsserted": true,
+      "mismatchedWorkGroupVideoRejected": true,
+      "privateRelationNotAutomaticallyCreatedAsserted": true,
+      "privateFieldsNotExposedAsserted": true,
+      "fullCastNotInferredScopedCreditAssertions": true,
+      "valid3x4SourceCropAndOriginalShaAsserted": true,
+      "reviewerRepeatedTestExecution": false,
+      "reason": "Current final test run already recorded as 25 passed; independent review verified inputs, frozen hashes, source-byte preservation and guard assertions without duplicate test execution."
+    }
+  },
+  "sourceTreeBaseline": {
+    "githubAppFiles": 8730,
+    "sitesFiles": 3355,
+    "exactGitBlobMatches": 3325,
+    "historicalDifferences": [
+      {
+        "path": ".gitignore",
+        "githubBlob": "094c1f7506f33f0d8465da6425fad20aad5aee84",
+        "sitesBlob": "c802cb62bb9f40f8d2ff1de08b34b49e67da37e1",
+        "githubSha256": "3d2626192ed92310514b367c2f174fe380df2327f0800afc212b02804c37426e",
+        "sitesSha256": "9a7e5657dc47d0b915a0b9a6c4dc56361291697c871a6562c15bd51a85224760",
+        "githubBytes": 867,
+        "sitesBytes": 406209,
+        "sameAfterCrLfNormalization": false,
+        "classification": "historical Sites remote-asset ignore expansion"
+      },
+      {
+        "path": "app/artists/everglow/everglow-artist.css",
+        "githubBlob": "ea7186ee6f0e06082cc5d39beca10c677fb8b1d7",
+        "sitesBlob": "44aecfc12d5e53a9d0a03afb6537e0306102fec9",
+        "githubSha256": "97d3dba7934f14a163b35928fadbc90ca33ffcd13732af6afee92aac4b657093",
+        "sitesSha256": "336f92394125245efe0d0cee71e2d5ac288262085b8fa98214163af6396594ec",
+        "githubBytes": 9604,
+        "sitesBytes": 9603,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "app/artists/rocketpunch/rocketpunch-artist.css",
+        "githubBlob": "b6e89051cde08c4fb81dbbcb86f087048648040e",
+        "sitesBlob": "c8bdf1ec47e938860cd5da152044825a2995a2c8",
+        "githubSha256": "d63a2f36dd680230a01dd1f92169a3269a8f3aeeabb6352e6997e20c0e2c5e36",
+        "sitesSha256": "d22b5a62d6c855846103592e655cd926d37d49a8aa6c1fcfab2469f1c66a54c7",
+        "githubBytes": 7896,
+        "sitesBytes": 7895,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "components/oddyouth-artist.css",
+        "githubBlob": "40f1af9c13a92c797a3c91778405152a4be14371",
+        "sitesBlob": "31d6a5b1e37a79dc0e5ef93adf5bbea01847605d",
+        "githubSha256": "77d7f247827c9f3ed0b02608046461971b1e078d0b5b2428a0ef527d59bba7df",
+        "sitesSha256": "acc3b3796de67b1050d44208808b8d4689c4ea56a448f78178bb46d0a4abce57",
+        "githubBytes": 16398,
+        "sitesBytes": 16380,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "data/candyshop-review-assets.json",
+        "githubBlob": "f612eafec9487b771de1cb415a67405631cd2d9c",
+        "sitesBlob": "5752245351e6c0c4564a35b6155dbfd97e3cb602",
+        "githubSha256": "2de10ebeb53bd64d17254c1bed009e01ceda219385f83f0941b75ab775e6bea2",
+        "sitesSha256": "e4a22e6cf76c5e1025543655e53d1f63fb32d820afe91b56e663ca3b4866b253",
+        "githubBytes": 6017,
+        "sitesBytes": 5837,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "data/geenius-review-assets.json",
+        "githubBlob": "9935114d856f2e927d6d645e8bc8d6f342625e71",
+        "sitesBlob": "4a1d749cc4703ada09282216e2bcb092009b3c89",
+        "githubSha256": "db34ef680154e08a8a37adbecf116df5193aa3e29f9cc75b66f25d8cc0344362",
+        "sitesSha256": "37ec826f9150c589396bfd44d1441d0cd068125a4287259d01b1430cf72fb39e",
+        "githubBytes": 12393,
+        "sitesBytes": 12134,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "data/oddyouth-review-assets.json",
+        "githubBlob": "f1b7c74619fbf21275f273fcee393994c66d58bb",
+        "sitesBlob": "7ce66b6cb0bbfdb49dbeb0d3851c1c1c46e60ad6",
+        "githubSha256": "c58ffc102ef8c2916d1bfcb5344f10478d68dbb5aab7a36be2ecc068d8de551a",
+        "sitesSha256": "c701c68fdeec06764dc2a51191761c4967124084f6d6e214b1b5a93ae274f7d2",
+        "githubBytes": 20496,
+        "sitesBytes": 20056,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "data/rocketpunch-artist.json",
+        "githubBlob": "25ac59db0fe67f4ee496f3f519af1f527542e27c",
+        "sitesBlob": "98c3e4a5f3088c060deeaae9fc265fbc00ac56a3",
+        "githubSha256": "537b901eb84cd43b4691af21a88c1cc426e0f465d7b08e9e4c56c1de271fe970",
+        "sitesSha256": "6b77799b998724aee38be698613bc1fe8fa9bd2100fc013160223074efc63337",
+        "githubBytes": 3962,
+        "sitesBytes": 3874,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "data/saymyname-portraits.json",
+        "githubBlob": "0ae2a58bf2ecfb1c6b63b1cec1c69b4a5710cfe9",
+        "sitesBlob": "4b5b208b6db013c6a06f3a35dda08f087ab3fdd8",
+        "githubSha256": "6efdeeb40edf6d4dce5f21f87efdca87c209919aa311f06ab89d8f3f11a6988b",
+        "sitesSha256": "a4ccb0cd981841cd28eda1551676531aa7ef87cac861e8331c00d5077623427e",
+        "githubBytes": 16509,
+        "sitesBytes": 16346,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "lib/idol/cherrybullet-photos.ts",
+        "githubBlob": "35f43704e7b60f569a831d24c3c45f5a52fd9c36",
+        "sitesBlob": "70a0d56760171380bc273fa5bd3b361ed74e45ca",
+        "githubSha256": "4a54ef3b1d9a26772e0a07f6f3844b54c6851384b904f4272f5a661d0e2d0e15",
+        "sitesSha256": "cdd7239f6baaa290b8dfac4ab00876b3d609918fd1694ff110b6ce0a3718217c",
+        "githubBytes": 922,
+        "sitesBytes": 921,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "lib/idol/rocketpunch-photos.ts",
+        "githubBlob": "6fad3d4c2cb11673f7dbc5ddeb06603c5b7436e8",
+        "sitesBlob": "d5833d1fe396b736f59b2d720a789d224026e1b7",
+        "githubSha256": "ec340c9364283d50613b5ce13a19491e319c5f189fb9facc1ebe4a7f8e657b79",
+        "sitesSha256": "5b0c7730be6ac9c27aade9b980f7b62999d17cb99fbb2503bc7d407ae16ee784",
+        "githubBytes": 916,
+        "sitesBytes": 915,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "lib/idol/weeekly-photos.ts",
+        "githubBlob": "e157587a307c3ef6064c4389f4543567835a4bd6",
+        "sitesBlob": "1d76331ca6dc63a3239b39ec054481f7998288c0",
+        "githubSha256": "2c7e8976dc384d2fe023eaf63bef7a5e6e679879ca7f4fb614633c071ff31559",
+        "sitesSha256": "c5f9555ededcf08c5d96ae8f1afda367ff4cf50bd56ddddb26cf1872f17535aa",
+        "githubBytes": 892,
+        "sitesBytes": 891,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "review/izna/read-only-fetch.mjs",
+        "githubBlob": "72f3761d5cd6d06d06dcd765d9ee5325220c226b",
+        "sitesBlob": "b88bb6c9b6c676a599df6a6dbf9d950459228980",
+        "githubSha256": "36f92c6ee460fb4ce44f9fbb60b6b3940c4ba021f74600dd457f25770cd6a67b",
+        "sitesSha256": "f6141d88b7cd3d2115b3e544d07a79a4e22abb42e397d1d497dee1d30283fbc7",
+        "githubBytes": 1495,
+        "sitesBytes": 1474,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "review/izna/routes.mjs",
+        "githubBlob": "bd93e5f2c64c59cc29c6fe8adbfc7810da5640d1",
+        "sitesBlob": "7575b3321ce571b8f705fd7b360eec793d45addb",
+        "githubSha256": "77c4f4b569917c90cd2dad7b9daee285fcc26e79198c44473378b9748fb2cf07",
+        "sitesSha256": "4bce12546455c6488262c4f27488b6ed5b1fe5e5e43c3bd7d3b4056b5621f2dd",
+        "githubBytes": 2907,
+        "sitesBytes": 2850,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "review/izone/catalog.mjs",
+        "githubBlob": "1c30ee5d9d87d4bd178801be4a67590b783a3106",
+        "sitesBlob": "96b4bfdd10b75cdaf51888b63329b81c2274bf5e",
+        "githubSha256": "425554d1851aca507a19c3ac2722495d2fc6eac91b5523870416da1acd396258",
+        "sitesSha256": "bc12b52bd677e09ac1f299733b379afdcad264868bb97824035b5fc7629e5348",
+        "githubBytes": 5728,
+        "sitesBytes": 5727,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "review/izone/entry.tsx",
+        "githubBlob": "e13f508fcdf1ebfe84695506142a330f28271122",
+        "sitesBlob": "f72ac27146c1633754168fe43d2e0285b3077735",
+        "githubSha256": "ea296ed897b8a49ec358136212fdb0ba2fb07fb613c075ddd11195950ca35e20",
+        "sitesSha256": "c9336dea74009c2593162e624c1e54c55e5672c4439cefa37af125ee59fc7889",
+        "githubBytes": 2622,
+        "sitesBytes": 2621,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "review/izone/native-navigation.mjs",
+        "githubBlob": "6c4c38563214bc1849bbb7b0949dcfb7dc75e978",
+        "sitesBlob": "3022d3be12edcef0118b4743c49478dbd02beba4",
+        "githubSha256": "9ebc1200beea9e819d25cdd63c1b3617ea2f90292a0b1cd910610c56ab751c09",
+        "sitesSha256": "28521d99a51415fd9dcb540058a31fb9221f798111f703c2840ba93054169dee",
+        "githubBytes": 1366,
+        "sitesBytes": 1365,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "review/izone/read-only-fetch.mjs",
+        "githubBlob": "92e53df6c9d7b477e3bd609b4017add7dfcbb26d",
+        "sitesBlob": "5d265f53f91a90703663cf5c638cf9dc77208970",
+        "githubSha256": "feb81e5c3d95883acafc894490436ee7c1e28dc1bf25d131bf2c94aa306ef0dc",
+        "sitesSha256": "52cf4685c9107f4db48490e8780060cdf27bb486080947ac8728e620286d3a53",
+        "githubBytes": 1477,
+        "sitesBytes": 1476,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "review/izone/routes.mjs",
+        "githubBlob": "f2e76ba6d370ac50383678234b0a539fa7d48522",
+        "sitesBlob": "404cbac7fabe6c3271419cb705c570b9c01334d1",
+        "githubSha256": "4db2f5a61f9190b8c178eea7e4aaea59cb346de37b88da933e80a20d1b6ff0f7",
+        "sitesSha256": "13c10b15074fce684ac2bb94c263116e94757d90e28cafd7cc36915b4b9afa3e",
+        "githubBytes": 3989,
+        "sitesBytes": 3988,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "scripts/build-mv-public-media.mjs",
+        "githubBlob": "48b6e6244a606fac11bf2a5c6e9c31dd732e231d",
+        "sitesBlob": "e45368ea444a710851697f1d1969231f7b32a4c7",
+        "githubSha256": "aa9d9be3a8f0b66a10afda2c637db43e47f1e21544811ae22b671bd4ca9d0314",
+        "sitesSha256": "9b8d0602feec5d9fee5b7beee96dae72295a938e676be5d018dfeffab49121f7",
+        "githubBytes": 2421,
+        "sitesBytes": 2400,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "scripts/import-mv-identity-batch.mjs",
+        "githubBlob": "09c0471b940e49d9eb988b741c8126a24a5ed195",
+        "sitesBlob": "2340b800389d9fb680c4b174d4f715fd7d033265",
+        "githubSha256": "0ece23a8cbd969dd8daad23f1090486e4d402ab4562bfd339c69d5596e44a6de",
+        "sitesSha256": "a81c20afb0a54d13d9e19c26397d59f0fc137af62ea93ab98fd0c43acc38bb55",
+        "githubBytes": 11266,
+        "sitesBytes": 11178,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "tests/hitgs-native-review.test.mjs",
+        "githubBlob": "39294afa5af1d60257b83b9f424370d26c394fbe",
+        "sitesBlob": "1e38b98e3bff4167f190790317440367a9d36c47",
+        "githubSha256": "ac1f36e2b75e1723cb9b0beebc3a1aa4896be6bffe196ca15831f5a004a73610",
+        "sitesSha256": "883fa146fe54cb05ec4a5e7ee705ff695296170367bedd8b1963cb99d3d2f9b5",
+        "githubBytes": 5186,
+        "sitesBytes": 5185,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "tests/izone-review-boundary.test.mjs",
+        "githubBlob": "dce49f93a8aecb3f493f31202047320e8aaa4167",
+        "sitesBlob": "045364ce831eadfc8832cec9f98f102f1e28edc0",
+        "githubSha256": "65f2d604bfe4fff4b1af35a82a69ddccd4ffb2c6b1aa42fe44254f785586a9ff",
+        "sitesSha256": "bd207f718d648ab486ed9c763d14e40411e67a4cab92e8e7be97dd81ba8bfe34",
+        "githubBytes": 6092,
+        "sitesBytes": 6091,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "tests/mv-identity-batch.test.mjs",
+        "githubBlob": "50e488f9a877e3615595187b3447322493aaaa2b",
+        "sitesBlob": "cee68c486a49246bda3ea128037eff82cacb3775",
+        "githubSha256": "fade7d076e28a78d68dba0c251a6a2d983d02b197804b79214e755c183fd3885",
+        "sitesSha256": "e601e9616d49df8aa85e25b240a9122e616a3be9ddc71cc2a0879032d7b1faa3",
+        "githubBytes": 13491,
+        "sitesBytes": 13410,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "tests/mv-photo-presentation.test.cjs",
+        "githubBlob": "3215465cea1a86df27005104cb219aa0d9ba2af8",
+        "sitesBlob": "4c050b7898aac91d4ab60e0c1bc6fa371b05acdb",
+        "githubSha256": "9179078c6dcf992537f600fe514be79be66ce408789e95ef62666cc87f91716f",
+        "sitesSha256": "5318257c8c2e1bc57688118ea753306bdf0931d3064ee7d0b523b0e1f3ff5549",
+        "githubBytes": 5267,
+        "sitesBytes": 5237,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "tests/oddyouth-content.test.mjs",
+        "githubBlob": "c82fe86a19b4baef20dffa51f5a2976edfcfcccf",
+        "sitesBlob": "2db3da8cb77ce9fec7180db0adfa1b2e7076472a",
+        "githubSha256": "377f909cb69fc228b2e2abd17e4ad165df8f69a893b23737ba17be090ed4a76a",
+        "sitesSha256": "af556b12bbfacbb41857bc84d0e72e901b0d0984bf14373614ab63b3eac1ac34",
+        "githubBytes": 4524,
+        "sitesBytes": 4482,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "tests/oddyouth-review-catalog.test.mjs",
+        "githubBlob": "dbc867a24370e526ca448e237b8658eaf82038ba",
+        "sitesBlob": "17add1216135e52990ddbd7d460adaed0296dfb8",
+        "githubSha256": "471586ac4e9f4c8f0e2415a95bd7cee163095e2900bf86fbdcb95ea0cd9b2c48",
+        "sitesSha256": "adfd3e6cc127abe8c311aa0a04c793564a1fa4585b6e82657f491536d98ea921",
+        "githubBytes": 3125,
+        "sitesBytes": 3105,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "tests/oddyouth-review-isolation.test.mjs",
+        "githubBlob": "54ec0ea7ce5b904664d23a19ebe0490f7bb0357a",
+        "sitesBlob": "04c5402da48014ec28fc5106392e78622403923e",
+        "githubSha256": "5f76f5006b17f9a88abd88d91ba8ebbdffa4ab252e8947ff4d8aabd0e406587d",
+        "sitesSha256": "54adfd7c371bd42de998467548c168b8abcdd14c085062822753991145748037",
+        "githubBytes": 1930,
+        "sitesBytes": 1908,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "tests/oddyouth-review-routing.test.mjs",
+        "githubBlob": "9d49766793476724c8e0985e70282910f07f303f",
+        "sitesBlob": "0d907cba0a3cc7390228b3d7a0613b61cc528d4a",
+        "githubSha256": "c114d8ad7e1c12bfa55a6c7e4b1869cfe8bd04f9f02ba07856bc6532f54da21a",
+        "sitesSha256": "16f8fab80a41152fd18a5abc000fd6c580c96f2915e16902b70a3901bb0984e6",
+        "githubBytes": 18178,
+        "sitesBytes": 17975,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      },
+      {
+        "path": "tests/saymyname-review-routing.test.mjs",
+        "githubBlob": "315226f5a82e4b4864c7adce650b198f7b0a7ba7",
+        "sitesBlob": "ef0775f1b7022cecbcf6886c161e932d78480211",
+        "githubSha256": "8beeb0862bfd918b4d33ed86551213c268c66498d40d3d6247b3e00a2a59c7cf",
+        "sitesSha256": "724a4c232c9964b8d8cc463fed8a0b3bd5a693f22bc0d5c0b80d13da7494423b",
+        "githubBytes": 18049,
+        "sitesBytes": 17846,
+        "sameAfterCrLfNormalization": true,
+        "classification": "historical line-ending-only difference"
+      }
+    ],
+    "lineEndingOnlyDifferenceCount": 29,
+    "substantiveDifferenceCount": 1,
+    "gitignoreExpansion": {
+      "githubLines": 60,
+      "sitesLines": 5465,
+      "removedLines": [],
+      "addedLines": 5405,
+      "addedRemoteAssetIgnorePaths": 5403,
+      "allAddedPathsMatchFixedRemoteManifest": true,
+      "otherAddedLines": [
+        "",
+        "# Immutable originals delivered by the verified public manifest."
+      ]
+    },
+    "githubOnlyFiles": 5375,
+    "allGithubOnlyFilesAreFixedRemoteAssets": true,
+    "sitesOnlyFiles": 0,
+    "doNotOverwriteHistoricalDifferences": true,
+    "finalChangedHistoricalDifferenceIntersection": []
+  },
+  "packageValidatorReview": {
+    "path": ".codex-local/verify-v200-package.py",
+    "sha256": "477772499465e72d6ff1b266e5b5df72558e285b486f2b7562073a8317b96f91",
+    "compatibleWithCurrentV199Metadata": true,
+    "sourceChangeParityAndImmutableHistoricalDifferenceGuardReviewed": true,
+    "all23PosterOriginalFilesVerifiedByBytesAndSha256": true,
+    "packagedPosterCountExpected": 19,
+    "remotePosterCountExpected": 4,
+    "posters": [
+      {
+        "path": "/artist/stage-selection-20261027/_rn2nefy610-maxresdefault.jpg",
+        "sha256": "aa4369c0d4193220f46cefab8ae09630b221a050470d13b55085e0a5cc4eb18c",
+        "bytes": 103166,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/stage-selection-20261027/crGAr4NQRa4-maxresdefault.jpg",
+        "sha256": "97d20350804d2c60b3e28fb07860fb600fdd9ff5bf477e68253a8ebff11dc5b1",
+        "bytes": 134944,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/stage-selection-20261027/mf4X6i5cm_Q-maxresdefault.jpg",
+        "sha256": "bcc909539a3857807a11a1d81bf297d636ea43fb1df44ef6ab09e093199e12e9",
+        "bytes": 99275,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/stage-selection-20261027/nd2aaJ9AQjA-maxresdefault.jpg",
+        "sha256": "4337a9b25982ccc46dc701b3527c7fe8cc095d9b83f7403c38e0986411918a50",
+        "bytes": 229320,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "remote"
+      },
+      {
+        "path": "/artist/stage-practice-20261028/e-6iU-nTTs4-maxresdefault.jpg",
+        "sha256": "32bdbe40ff7f3bdff9631194526b16a481a32086dcdcbd2fc70fdbb3c63e8f1f",
+        "bytes": 126609,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-practice-20261028/RgRCjpL6lAU-maxresdefault.jpg",
+        "sha256": "92231f43ca6fa7036426f26e3e3ed207170165f7f05f3eb1dc21f3757ecd1531",
+        "bytes": 168322,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-practice-20261028/axGr455BjFE-maxresdefault.jpg",
+        "sha256": "7ff6f1d71e7a9bacb18606ad5e6064357a12561c2508034075feb9d94db14844",
+        "bytes": 69230,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-practice-20261028/zue8OsuCkXE-maxresdefault.jpg",
+        "sha256": "6b1e6d60c2e9b4331e98feeb1251c4e5bdc80037dd02853b312f4ef2bfae69eb",
+        "bytes": 80918,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-practice-20261028/vr9h-epSUZQ-sddefault.jpg",
+        "sha256": "f70b5cc3e2bbdf614d1495843f7b8f3853e3631af5d4029745b7f04b6aba1675",
+        "bytes": 37753,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-practice-20261028/0Ar41kC-ECk-maxresdefault.jpg",
+        "sha256": "cc01b5dc2b12258a22895d10d60c68531e5fc6a2e9756353b6d994c5ca811c6c",
+        "bytes": 119174,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-practice-20261028/1p4Ta_74wFI-maxresdefault.jpg",
+        "sha256": "0a855be698987e6fd8c9a18d6c9f6e79a403c0c8e491541752fa3d6668c79d9c",
+        "bytes": 121103,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-practice-20261028/GdllW3A0Q8k-maxresdefault.jpg",
+        "sha256": "5ee850dd7096eca420e3705a399f81f1418ef53656ead1d31e7e60e7b768a0d1",
+        "bytes": 161342,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-practice-20261028/FKHqiV-9xLA-maxresdefault.jpg",
+        "sha256": "701276a36e98f1a51e6618ba95d93fc50e355553772c6433c787313ca5a1d736",
+        "bytes": 120422,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-practice-20261028/4xer6EPtYdw-maxresdefault.jpg",
+        "sha256": "5e1c4be79a50ad3ff93f8d8c22392fb707218a1cecb691d76cde2a6d4b764be2",
+        "bytes": 111915,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-practice-20261028/9mNMhHVj2Aw-maxresdefault.jpg",
+        "sha256": "285c58e3819e03c33f3907f39bcd08bf51cada492cdce77e3e3e625599e59cba",
+        "bytes": 111262,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-continuous-20261028/zdnssWkl8-w-maxresdefault.jpg",
+        "sha256": "d86b3adab03773b3b528ebc2310ebd8d45438deb739f8b217114a2b925dde85d",
+        "bytes": 92244,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-continuous-20261028/OeBUwbPVvkc-maxresdefault.jpg",
+        "sha256": "632da86b623953a05ae82c3c17b3bcbc184a9631aa1ba3fc72727ee70a3624b8",
+        "bytes": 112181,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-continuous-20261028/EhLxzdiOVN0-maxresdefault.jpg",
+        "sha256": "0927b5664205628517ef3b96d3a9fb704b21379686db5d3ddbc14033ec1bb4c5",
+        "bytes": 91225,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-continuous-20261028/kFw7ZWRydwU-maxresdefault.jpg",
+        "sha256": "7990f806acc97061ad2386e932d170e4e4651ca9936bb39099890a9fa88c4b9e",
+        "bytes": 110942,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-continuous-20261028/epOtB2VfTm0-maxresdefault.jpg",
+        "sha256": "56490af5b89212e7a8604d0a4321c566cf63d6bb9b06b953378e5053ad15f427",
+        "bytes": 127502,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-continuous-20261028/ai2QKOrTnjs-maxresdefault.jpg",
+        "sha256": "b51b598bf1da90c05c32aa2e303fb4321e4a4374569c47f7b462e4aa3794cff4",
+        "bytes": 60697,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-continuous-20261028/DZhqZ1SA2Q8-maxresdefault.jpg",
+        "sha256": "fa0ee1385d573b2156a7a3458d33821e4e2a77e913cdcf9da486eb97af27df25",
+        "bytes": 111021,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      },
+      {
+        "path": "/artist/stage-continuous-20261028/00IPFnp2Tdg-maxresdefault.jpg",
+        "sha256": "87b22255f7e8836ba2e99b357fe9c4fd12f1383aa5e4f15b6ad43739fcfc7eeb",
+        "bytes": 118528,
+        "sourceOriginalMatchesManifest": true,
+        "delivery": "packaged outside fixed asset manifest"
+      }
+    ],
+    "runtimeGuardCount": 36,
+    "validatorExecutedAgainstArchiveByReviewer": false,
+    "reason": "Current Sites checkout has no dist and historical E:/ v199 TAR is absent on this computer; parent will run validator after exact committed source build/package.",
+    "commitPrerequisite": "Run with exact implementation commit containing new helper/test files; git trees omit untracked files.",
+    "reviewScope": "Normal python execution, no -O; exact v199 metadata plus current allowed increment."
+  },
+  "limitations": [
+    "No private owner data export, write, browser use, or permission modification.",
+    "No full remote original media download or complete video playback in this review.",
+    "No deployment or final build archive verification by this reviewer.",
+    "New public references describe recording, writing, release packaging or documented project participation; this reviewer did not independently watch complete videos or verify each on-screen person."
+  ],
+  "publicPersonAppend": {
+    "oldCreditObjects": 80,
+    "oldRecognitionObjects": 80,
+    "oldObjectsExactlyPreserved": true,
+    "oldRootMetadataExactlyPreserved": true,
+    "oldCreditRecordsSha256": "20a26981d5124f4d27486df8fb7f121ba3b2d4fc37799b58fec7c9fcdde4b8b5",
+    "oldRecognitionRecordsSha256": "51402f13448b26adf5b7aca72aeefaa89fa48286f8929e6551a541765224f6f1",
+    "newWorks": 11,
+    "newSlots": 44,
+    "totalWorks": 91,
+    "totalSlots": 488,
+    "totalUniqueExistingOriginals": 229,
+    "newAppendDistinctExistingOriginals": 38,
+    "newOriginalFiles": 0,
+    "privateRelationsAdded": 0,
+    "stableExistingRelationshipAndStageFilesChanged": false,
+    "creditsAndRecognitionTuples": [
+      {
+        "workId": "recvxIYG1FSCws",
+        "videoId": "nYrezqbjl3E",
+        "groupId": "recvxyEBDZs5Ic",
+        "slots": 1,
+        "exactTupleAlignment": true,
+        "samePhotoSet": true,
+        "displayCrop3x4": true,
+        "scope": "named_artist_credit",
+        "label": "公开录音署名（部分）"
+      },
+      {
+        "workId": "rec28ldfRTrN8c",
+        "videoId": "W_VWfNkTamw",
+        "groupId": "rec28ldfRTiChs",
+        "slots": 1,
+        "exactTupleAlignment": true,
+        "samePhotoSet": true,
+        "displayCrop3x4": true,
+        "scope": "named_artist_credit",
+        "label": "公开作词署名（部分）"
+      },
+      {
+        "workId": "rec28ldfRTrMcf",
+        "videoId": "U-8TNlJ1Mw4",
+        "groupId": "rec28ldfRTiCdf",
+        "slots": 4,
+        "exactTupleAlignment": true,
+        "samePhotoSet": true,
+        "displayCrop3x4": true,
+        "scope": "official_recording_lineup",
+        "label": "公开录音参与署名"
+      },
+      {
+        "workId": "recvxyOz5XueI9",
+        "videoId": "lLug6h74acE",
+        "groupId": "recvxyEBDZJAXm",
+        "slots": 11,
+        "exactTupleAlignment": true,
+        "samePhotoSet": true,
+        "displayCrop3x4": true,
+        "scope": "documented_project_lineup",
+        "label": "公开本发行个人盘参考"
+      },
+      {
+        "workId": "rec28ldfRTrIZT",
+        "videoId": "UsbRoaH6y-Q",
+        "groupId": "rec28ldfRTiBUk",
+        "slots": 5,
+        "exactTupleAlignment": true,
+        "samePhotoSet": true,
+        "displayCrop3x4": true,
+        "scope": "documented_project_lineup",
+        "label": "公开本发行参与参考"
+      },
+      {
+        "workId": "rec28ldfRTrHhL",
+        "videoId": "-Xqhrnql7mg",
+        "groupId": "rec28ldfRTiDtr",
+        "slots": 5,
+        "exactTupleAlignment": true,
+        "samePhotoSet": true,
+        "displayCrop3x4": true,
+        "scope": "documented_project_lineup",
+        "label": "公开本发行报道名单"
+      },
+      {
+        "workId": "rec28ldfRTrNO2",
+        "videoId": "xu0fU46Cd7M",
+        "groupId": "rec28ldfRTiCpp",
+        "slots": 6,
+        "exactTupleAlignment": true,
+        "samePhotoSet": true,
+        "displayCrop3x4": true,
+        "scope": "documented_project_lineup",
+        "label": "公开本日文发行名单"
+      },
+      {
+        "workId": "rec28ldfRTrMwG",
+        "videoId": "xWHWl0vG-38",
+        "groupId": "rec28ldfRTiCdf",
+        "slots": 1,
+        "exactTupleAlignment": true,
+        "samePhotoSet": true,
+        "displayCrop3x4": true,
+        "scope": "named_artist_credit",
+        "label": "公开作词署名（部分）"
+      },
+      {
+        "workId": "rec28ldfRTrMgm",
+        "videoId": "pYn96ujbJX0",
+        "groupId": "rec28ldfRTiCdf",
+        "slots": 1,
+        "exactTupleAlignment": true,
+        "samePhotoSet": true,
+        "displayCrop3x4": true,
+        "scope": "named_artist_credit",
+        "label": "公开作词／作曲署名（部分）"
+      },
+      {
+        "workId": "rec28ldfRTrMMV",
+        "videoId": "mAPPUwHVHmk",
+        "groupId": "rec28ldfRTiCdf",
+        "slots": 4,
+        "exactTupleAlignment": true,
+        "samePhotoSet": true,
+        "displayCrop3x4": true,
+        "scope": "documented_project_lineup",
+        "label": "公开本发行封套参与参考"
+      },
+      {
+        "workId": "rec28ldfRTrJVj",
+        "videoId": "1yMzV0NdB9g",
+        "groupId": "rec28ldfRTiBON",
+        "slots": 5,
+        "exactTupleAlignment": true,
+        "samePhotoSet": true,
+        "displayCrop3x4": true,
+        "scope": "documented_project_lineup",
+        "label": "公开本Performance MV发布参与参考"
+      }
+    ],
+    "newAppendOriginalByteChecks": [
+      {
+        "path": "/artist/mv-identity-batch-w-20261027/identities/wooah-5830528247c01a.jpg",
+        "sha256": "5830528247c01a2651fe7d67c9c9c715dbf4e8de1c0236b5850129c951c80478",
+        "bytes": 2828837,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-u-20261027/identities/say-my-name-af44987bb7b4fb.png",
+        "sha256": "af44987bb7b4fb1f5f7801a1aed1df5f228b67cd9096f96587dd34aa7d5bbfa8",
+        "bytes": 3330156,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/kiss-of-life-7713aa74e668d5.jpg",
+        "sha256": "7713aa74e668d5b2162ced725ddad5012febd2328139a5c4434179d0e1e2afce",
+        "bytes": 420375,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/kiss-of-life-2b14be7277baa3.jpg",
+        "sha256": "2b14be7277baa346fea1d6b4aa8a8cc35806849b052d8dd0670cd057bd8c72ab",
+        "bytes": 482464,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/kiss-of-life-e9c5a2c29bb0f5.jpg",
+        "sha256": "e9c5a2c29bb0f5ca155209e7568139c5dec2a12956b5d475243cc97840eed46e",
+        "bytes": 419403,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/kiss-of-life-ed3ddbc9b4cabb.jpg",
+        "sha256": "ed3ddbc9b4cabb0fdceda99bce31da7ac8987d9ecff01d46e729e40ef222ff59",
+        "bytes": 412376,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/loona/batch-b-20261016/portrait-heejin-original.jpg",
+        "sha256": "455910715b88aff054eb2e793039cd263b86f9756bc52fae31ea56410334d8b8",
+        "bytes": 707157,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/loona/batch-b-20261016/portrait-hyunjin-original.jpg",
+        "sha256": "e0b468155c8ec1c34bb9441326c399b95be80e007944f1b3324d21d29246955f",
+        "bytes": 504050,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/loona/batch-b-20261016/portrait-haseul-original.jpg",
+        "sha256": "1a1e6f9be1a2c13b6e999f8db4caa2a4a91f4b1655ee1d83d7e9729170769986",
+        "bytes": 616815,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/loona/batch-b-20261016/portrait-yeojin-original.jpg",
+        "sha256": "260ea18ccfc8b6d53d7fa1a0b19e350dfe3c496dd7d4d5f93479eee4f3c8f179",
+        "bytes": 428899,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/loona/batch-b-20261016/portrait-vivi-original.jpg",
+        "sha256": "01e9695f5fdbca55823af2f9e280fb7315715c1cc8359b4035724891cf301f91",
+        "bytes": 626742,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/loona/batch-b-20261016/portrait-kim-lip-original.jpg",
+        "sha256": "8ac12f831e9b60b011c58f10bce4cc0a15810b5d67b61e982f2e301b1d66995c",
+        "bytes": 594395,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/loona/batch-b-20261016/portrait-jinsoul-original.jpg",
+        "sha256": "f8e371f54adc62f2dcdaaf49d0289d6ce5af676af982f24e7910d9b7e1cb2882",
+        "bytes": 697080,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/loona/batch-b-20261016/portrait-choerry-original.jpg",
+        "sha256": "c36e44cdcdc69608736743dcf5121bd6165bc7529e27c17ea5fc7145115fcedf",
+        "bytes": 730968,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/loona/batch-b-20261016/portrait-yves-original.jpg",
+        "sha256": "0ed6475decd8b73b54f33729e2df84789877d12f21aee4b7cf6808062105c4f7",
+        "bytes": 496585,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/loona/batch-b-20261016/portrait-gowon-original.jpg",
+        "sha256": "9dec21c358f0b40f2e21085f240a8a71bad056446dff9d37fa58ce888f0616a3",
+        "bytes": 613094,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/loona/batch-b-20261016/portrait-olivia-hye-original.jpg",
+        "sha256": "ce53943a6710ff7133155b420d5273163bb13759477d1a3263b9c09532377141",
+        "bytes": 506735,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/kiiikiii-9ec5788024ca81.jpg",
+        "sha256": "9ec5788024ca81125b6b6d6e8136c657f75aaa1ed7cf9e0e5506724b83ba6365",
+        "bytes": 387784,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/kiiikiii-ef545070e94ca4.jpg",
+        "sha256": "ef545070e94ca4390a2abe93360f6353a2ddfbd1a45202bae119a27e6c743d75",
+        "bytes": 269262,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/kiiikiii-fdaf74fef35f8e.jpg",
+        "sha256": "fdaf74fef35f8e1e0ae16c039f62bae3f2ecbbae2dd818403d245e3330cf9dec",
+        "bytes": 237141,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/kiiikiii-98b4246d210dd6.jpg",
+        "sha256": "98b4246d210dd68be993b3896bf7549e7f5d6e7ee57db3e4e56cdd74046830dc",
+        "bytes": 442480,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/kiiikiii-7831d9a2b04ecd.png",
+        "sha256": "7831d9a2b04ecd5a38e54de85962c382c978ab24632b7250013a455cd0fc3f62",
+        "bytes": 1751405,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-w-20261027/identities/adya-872c5dc1f3ce54.jpg",
+        "sha256": "872c5dc1f3ce54006485ced1beb5078313156ccc6ea8d717490e39bfb4c8b4d3",
+        "bytes": 139290,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-w-20261027/identities/adya-237ad03eeeca91.jpg",
+        "sha256": "237ad03eeeca91e00cef04f5ee87a1c4617a3203bef39e46d2cb69d01f920798",
+        "bytes": 110126,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-w-20261027/identities/adya-50368b8e3517f1.jpg",
+        "sha256": "50368b8e3517f188f36d54b9f103f92ca58d99869acef10bbe56af94f767d46c",
+        "bytes": 115102,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-w-20261027/identities/adya-6b3bef1157474f.jpg",
+        "sha256": "6b3bef1157474f90e31df84ee89365d7f882c840a2ce099d394554bb3ce87424",
+        "bytes": 135015,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-w-20261027/identities/adya-bd4eb0ea3c4306.jpg",
+        "sha256": "bd4eb0ea3c4306e4a08a3a0c6f3c70dcf15098d6fc7117f335245f123573e464",
+        "bytes": 132623,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/izna-543ac932ca37cb.jpg",
+        "sha256": "543ac932ca37cbeb264541284e25b211aaac91b80abebcf69f44610c31f3608b",
+        "bytes": 508623,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/izna-ab55cf81baae7e.jpg",
+        "sha256": "ab55cf81baae7edc7d6d2de85e55db2f4e2bf18b6ec8de69c5bc99ead4833449",
+        "bytes": 555820,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/izna-9ca922a8708045.jpg",
+        "sha256": "9ca922a8708045313bdc660f272fb0664987755e1f01b586210eb3f2231adb4a",
+        "bytes": 4056598,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/izna-a46649c66be274.jpg",
+        "sha256": "a46649c66be2743a54ffb649a25727b13b4ef4c14dac339f2064a4b285df0dc8",
+        "bytes": 578796,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/izna-47d09bb7a9c07c.jpg",
+        "sha256": "47d09bb7a9c07cef6910d485b41540576bbdcca88866896d234df2cfb0670e10",
+        "bytes": 3217304,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/izna-2216dc3a29466b.jpg",
+        "sha256": "2216dc3a29466b12f501f14b7833bfed0785d2ac3f13aef2cee04d28b8983e49",
+        "bytes": 3259173,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/illit-fab4f914772584.jpg",
+        "sha256": "fab4f914772584f040945056294bd975631f9bfd5d85dcc653d743f183649e76",
+        "bytes": 7782902,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/illit-7461cd44695f7d.jpg",
+        "sha256": "7461cd44695f7d676daa9426c79b95889f78e602d5da251be1e24f07a7146068",
+        "bytes": 8419826,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/illit-c1db2f9daf05b6.jpg",
+        "sha256": "c1db2f9daf05b61704e51d11e649010bc2f5cc9f6b52edd27a46b6888d6e10a9",
+        "bytes": 9276198,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/illit-f93a4ec3e04bf9.jpg",
+        "sha256": "f93a4ec3e04bf90c6875b37b147a99bf1bee6f23178c689a792a1592657d4b91",
+        "bytes": 7918095,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      },
+      {
+        "path": "/artist/mv-identity-batch-q-20261027/identities/illit-a96cace4a7dc95.jpg",
+        "sha256": "a96cace4a7dc956ea5204f3dbda3c3fd1a083b02300afd98504b8d5ea2ad49d2",
+        "bytes": 9001181,
+        "presentAtV199Baseline": true,
+        "exactGitBlobPreserved": true
+      }
+    ],
+    "fullVideoCastClaimed": false,
+    "recognitionReferenceNotSameEraClaim": true
+  }
+}

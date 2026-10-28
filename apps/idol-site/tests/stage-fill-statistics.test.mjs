@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
+import {beforeUserXObservations} from './helpers/user-x-observations.cjs';
 
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const root = '../../docs/codex/evidence/20261028-stage-fill/';
@@ -10,7 +11,7 @@ const data = read('data/group-statistics-completion-evidence.json');
 const proposal = read(root + 'statistics-adoption-proposal.json');
 const laterEvidence = read('../../docs/codex/evidence/20261028-continuous/evidence-upgrade-proposal-c.json');
 // Evidence-only additions are checked separately; restore their exact preimage for this historical cohort.
-const historicalData = structuredClone(data);
+const historicalData = beforeUserXObservations(data);
 historicalData.groups.triples.sales = laterEvidence.statistics.expectedBefore;
 const captures = read(root + 'statistics-primary-observations-c.json');
 const research = read(root + 'statistics-followup.json');
@@ -41,9 +42,9 @@ test('only the two reviewed sales objects and summary counts differ from the fro
     salesObserved: proposal.expectedBeforeSummary.salesObserved + 2,
     salesLowerBoundsAdded: proposal.expectedBeforeSummary.salesLowerBoundsAdded + 2,
     salesFallbackZero: proposal.expectedBeforeSummary.salesFallbackZero - 2};
-  assert.deepEqual(data.summary, expectedSummary);
-  assert.deepEqual(data.summary, proposal.proposedAfterSummary);
-  assert.equal(data.summary.socialFallbackZero + data.summary.salesFallbackZero + data.summary.winsFallbackZero, 15);
+  assert.deepEqual(historicalData.summary, expectedSummary);
+  assert.deepEqual(historicalData.summary, proposal.proposedAfterSummary);
+  assert.equal(historicalData.summary.socialFallbackZero + historicalData.summary.salesFallbackZero + historicalData.summary.winsFallbackZero, 15);
 });
 
 test('three disjoint official Album weekly rows recompute the limited counts without cumulative or Retail fields', () => {

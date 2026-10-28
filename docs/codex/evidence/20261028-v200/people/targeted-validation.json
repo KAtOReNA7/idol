@@ -1,0 +1,25 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "tests/v200-public-credits.test.cjs",
+    "tests/continuous-public-credits.test.cjs"
+  ],
+  "cwd": "apps/idol-site",
+  "exitCode": 0,
+  "tests": 25,
+  "passed": 25,
+  "failed": 0,
+  "limitations": [
+    "No full video playback or per-person vocal/visual proof",
+    "No real private save",
+    "No independent new pixel review"
+  ],
+  "earlierAttempt": {
+    "passed": 24,
+    "failed": 1,
+    "cause": "New test incorrectly imposed portrait dimensions on an existing reviewed 1228x819 KYA landscape original. Replaced arbitrary orientation/size threshold with positive original dimensions, original-byte SHA and valid uniform 3:4 display crop checks. No app or image repair claimed."
+  },
+  "lineEndingCorrection": "Windows default Python text output initially changed two JSON files to CRLF. Original LF restored; app diff is 224+968 inserted lines, zero deleted lines. Adoption script now preserves baseline line endings."
+}

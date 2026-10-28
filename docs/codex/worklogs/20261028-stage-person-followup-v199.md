@@ -20,4 +20,4 @@ Codex 内置页创建本次在 45 秒超时，未操作 Chrome，不沿用已结
 
 统计34项与联合95项测试通过，共129项互不重复的定向测试；TypeScript通过。独立复核确认5X之外统计不变、旧80人物对象不变、原图和舞台/私人关系/鉴权/设计不变。四团完整HTTP HTML可读新值；VVUP信息依赖客户端，HTTP只读到加载态，不能称五团浏览器验收通过。
 
-GitHub与Sites交付进行中；以最终publication回执为准，当前本地完成不代表正式站已更新。
+GitHub实现 `aac36bd631ee1a84780fa1dbfb404561bba32dcf` 已推送并读回。PR45为本轮增量draft，base是未合并PR44的分支；PR44与PR45均open/unmerged，main保持。Sites源 `e27a7adf04140b130cd1d10568100c13f6258bde` 已保存v200，部署 `appgdep_6ae1efcd18648191bc43e2760bc2f9eb` succeeded，终态时间2026-10-28T12:52:43.228066+00:00。完整1421文件包逐字节核对通过，发布后访问策略与native/epoch6/原快照/done206保持；没有私人写入或全量个人字段hash复验。发布回执见 `../evidence/20261028-v200/publication.json`。后续交接与回执提交不再重复部署。

@@ -22,8 +22,14 @@ summary={'publicCreditWorks':len(ids),'publicRecognitionSlots':sum(len(r['portra
 assert summary['publicRecognitionSlots']==488 and summary['uniqueOriginals']==229
 write('remaining-person-statistics.json',{'schemaVersion':1,'checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'Open queues derived from v199 and the precisely reviewed v200 increment. Public reference coverage does not mean complete MV cast evidence.','previousQueue':'docs/codex/evidence/20261028-continuous/remaining-person-statistics.json','summary':summary,'remainingPersonWorks':remaining,'unknownMetrics':unknown,'effectiveDateHolds':prior['effectiveDateHolds'],'statisticalScope':prior['statisticalScope'],'independentSalesDifference':{'group':'triples','lowerBound':stats['groups']['triples']['sales']['observedValue'],'remainingDifference':stats['groups']['triples']['sales']['evidence']['sourceDifferenceReview']['remainingDifference']},'newAdoptedCanonicalDates':0,'privateRelationshipAction':'none','limits':['Remaining rows retain their v199 source observations; not all were freshly searched this round.','Current partial public credits are not exhaustive individual MV-appearance verification.','No private write, full-video playback or owner-export reuse.']})
 stage=read('docs/codex/evidence/20261028-continuous/remaining-stage-ledger.json')
+historicalNames={'legacyReplacementsCompletedThisPass':'v199LegacyReplacementsCompleted','followupReviewedThisPass':'v199FollowupReviewed','publication':'baselinePublication'}
+stage={historicalNames.get(key,key):value for key,value in stage.items()}
 stage['previousQueue']='docs/codex/evidence/20261028-continuous/remaining-stage-ledger.json'
 stage['latestResearch']='docs/codex/evidence/20261028-v200/stages/research.json'
 stage['scope']='112新增缺口与11旧来源替换保持；本轮只对12作品/21精确查询补充有界研究，新增正式绑定0，不冒称全部重搜或完整播放。'
+receipt=out/'publication.json'
+if receipt.exists():
+    site=json.loads(receipt.read_text(encoding='utf8'))['site']
+    stage['publication']={'version':site['version'],'status':site['deploymentStatus'],'receipt':'docs/codex/evidence/20261028-v200/publication.json','applicationSource':site['source'],'newBindingsThisPass':0,'replacementsThisPass':0}
 write('remaining-stage-ledger.json',stage)
 print(json.dumps(summary,ensure_ascii=False))

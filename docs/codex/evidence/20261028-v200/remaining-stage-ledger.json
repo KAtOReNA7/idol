@@ -1510,7 +1510,7 @@
   ],
   "priorLedger": "docs/codex/evidence/20261028-stage-fill/remaining-stage-ledger.json",
   "generatedAt": "2026-10-28T09:38:51.208284+00:00",
-  "legacyReplacementsCompletedThisPass": [
+  "v199LegacyReplacementsCompleted": [
     "rec28ldfRTrKtW",
     "recvxDMFHNzaOb",
     "recvxDMwzBm3rz",
@@ -2903,7 +2903,7 @@
       "bindingChanged": false
     }
   ],
-  "followupReviewedThisPass": [
+  "v199FollowupReviewed": [
     "rec28ldfRTrGY0",
     "rec28ldfRTrI8S",
     "rec28ldfRTrNsK",
@@ -2912,12 +2912,20 @@
     "recvxyOz5XueI9"
   ],
   "sourceCount": 493,
-  "publication": {
+  "baselinePublication": {
     "version": 199,
     "status": "succeeded",
     "receipt": "docs/codex/evidence/20261028-continuous/publication.json",
     "applicationSource": "747aa997a7512592a305a5e21161ded078fa519d"
   },
   "previousQueue": "docs/codex/evidence/20261028-continuous/remaining-stage-ledger.json",
-  "latestResearch": "docs/codex/evidence/20261028-v200/stages/research.json"
+  "latestResearch": "docs/codex/evidence/20261028-v200/stages/research.json",
+  "publication": {
+    "version": 200,
+    "status": "succeeded",
+    "receipt": "docs/codex/evidence/20261028-v200/publication.json",
+    "applicationSource": "e27a7adf04140b130cd1d10568100c13f6258bde",
+    "newBindingsThisPass": 0,
+    "replacementsThisPass": 0
+  }
 }

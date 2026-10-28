@@ -1,4 +1,6 @@
-# v199 后资料补充与接续核验（2026-10-28）
+# v200 已发布：资料补充与接续核验（2026-10-28）
+
+正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已发布 **v200 / succeeded**。GitHub实现 `aac36bd631ee1a84780fa1dbfb404561bba32dcf` 已推送并读回，增量 [PR45](https://github.com/KAtOReNA7/idol/pull/45) 指向尚未合并的PR44分支；两PR均draft/open，main未改变。Sites源 `e27a7adf04140b130cd1d10568100c13f6258bde`，部署 `appgdep_6ae1efcd18648191bc43e2760bc2f9eb` 于2026-10-28 12:52:43 UTC成功。发布回执见 `evidence/20261028-v200/publication.json`；此后交接文档提交不改变已发布实现。
 
 本轮从显式 fetch 的最新 main 新建 `codex/stage-person-followup-v199-20261028`，普通合入 PR44 最新远端 `21b12a6f0d49f355ee639ae87bb2b294ba58513f`。PR44 仍未合并。中断遗留的 16 个文件完整保存在 stash `7779dd2e08e211b1219c474b16838e9915ee1a0e`，没有覆盖、重放或丢弃。
 
@@ -22,4 +24,8 @@
 
 Codex内置页本轮创建45秒超时；匿名正式HTTP返回403。没有绕过限制、操作日常Chrome或复用前次一次性授权。局部HTTP/渲染测试不能代替浏览器视觉和交互验收。VVUP服务端仅输出加载态，客户端完成后的信息模块未由本轮HTTP检查覆盖；其他四团的完整HTML已核对新X值、来源与日期。图像原件/裁框数据校验不冒称本轮全量目视审查。
 
-本轮不修改任何舞台评分绑定，不进行私人写入。保留51团视觉、Apple Music主站、全部ID/关系、照片、owner鉴权、DB/R2/MCP与受众。GitHub提交、Sites源、完整包、保存版本和部署终态将分别记录于 `evidence/20261028-v200/publication.json`；在该回执成功前不视为已上线。
+关闭本轮本地开发服务时，日志另有5条GENBLUE目录接口502及一个public路径警告，根因与客户端影响尚未确认；这不是正式站故障的证据，也不宣称已解决。本地HTML检查不能代表完整目录加载正常，记录见 `evidence/20261028-v200/local-server-shutdown.json`。
+
+本轮不修改任何舞台评分绑定，不进行私人写入。保留51团视觉、Apple Music主站、全部ID/关系、照片、owner鉴权、DB/R2/MCP与受众。129项互不重复定向测试、TypeScript和正式构建通过；完整包1421文件、展开45,805,568bytes逐项与构建核对，578既有随包原件、5418固定远端资源、23舞台封面与10受限副本排除保持。13项本轮应用文件精确同步，30项已有源差异为29项换行差异与1项已核固定远端路径忽略表；没有覆盖历史源差异。
+
+发布后读回public/1owner/0外部/0组/revision2，以及native/epoch6/原快照/done206。未做新鲜owner全量导出或全量个人字段hash复验，不能把状态与日志数量校验写成私人字段全量验证。正式页打开返回queued，不代表实际显示或视觉验收完成。后续使用本轮 `remaining-person-statistics.json`（35人物、10统计、7事实日期）与 `remaining-stage-ledger.json`（112新增、11替换）继续，不使用v199旧计数覆盖当前队列。

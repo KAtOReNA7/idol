@@ -1,5 +1,11 @@
 # 接续：正式v201与舞台／人物／统计缺口
 
+## 当前接续入口：人工分团补充（2026-10-29）
+
+先读 [NEXT-COMPUTER-HANDOFF](NEXT-COMPUTER-HANDOFF.md) 和[分团人工补充清单](human-help-by-group-20261029.md)，可填写表在 [CSV](human-help-by-group-20261029.csv)。45团有待办，6团无当前项；161分类任务有重叠，不能视为161首缺歌。下一步优先采用用户的新线索，区分出镜／录音／创作、准确版本和统计口径；没有新证据的项目继续保留待证，不重复已导入内容。
+
+本轮仅文档同步，无应用修改或部署，正式站保持v201。PR44／45本轮核实均未合并；从最新main开新codex/分支时必须纳入尚未合并的最新PR45，确保包含本清单。不要reset、clean、强推或恢复旧stash；保护现有原图、设计、ID／关系、个人记录及owner鉴权。完整可复制指令：[RESUME-PROMPT-20261029.txt](RESUME-PROMPT-20261029.txt)。
+
 ## 最新交付：正式v201，未解决清单按用户选择保留（2026-10-29）
 
 正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已 **v201／succeeded／496舞台**。GitHub实现 `7cfba28a24b260163f4c5f7eb55c87a28da731d8`，Sites源 `374ebe6de70a2e51641361740dde68246aed8b1c`，部署 `appgdep_6ae2262ced008191a526c05ac512fcf5`。两种交付分别留证，PR44／PR45仍draft/open、未合main；不要重复部署v201。

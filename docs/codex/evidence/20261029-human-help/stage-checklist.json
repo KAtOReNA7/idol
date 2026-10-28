@@ -1,0 +1,1589 @@
+{
+  "schemaVersion": 1,
+  "createdDate": "2026-10-29",
+  "scope": "按v201当前冻结待补队列整理的人工协助清单；仅文档，无新研究、采用或部署；条目是精确作品/版本记录，不等于不同歌曲数。",
+  "sources": [
+    "docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json",
+    "apps/idol-site/data/stages/inventory.json"
+  ],
+  "counts": {
+    "groups": 36,
+    "newGaps": 109,
+    "legacyReplacements": 11
+  },
+  "policy": "常规电视打歌优先，其次完整官方练习室（同条件固定机位），再完整官方独立制作表演；排除演唱会/活动、原MV重复占位、错误语种/混音和不完整片段。官方成员版后备须明确客串范围差异。",
+  "groups": [
+    {
+      "name": "aespa",
+      "newGapCount": 14,
+      "replacementCount": 2,
+      "items": [
+        {
+          "workId": "recvxyHuKMBHQA",
+          "song": "Get Goin'",
+          "version": "Fraggle Rock联名",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "Get Goin查询主要指Fraggle Rock OST发布与音源信息，未取得艺人本人同曲完整打歌/练习来源。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMBHQA",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=wPnjKZFgeiE"
+        },
+        {
+          "workId": "recvxyHuKMCSdB",
+          "song": "Armageddon (Flava D Remix)",
+          "version": "Flava D混音版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "Armageddon目标Flava D Remix；本轮无已核同混音的常规节目/完整练习，不得用原曲替代。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMCSdB",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=GnVRCX-Sfek"
+        },
+        {
+          "workId": "recvxyHuKMDFye",
+          "song": "Welcome To MY World (Feat. nævis)",
+          "version": "韩文原版",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "Golden Disc官方K-909全景0TeYnotdeoE，236秒，节目及上传身份已有依据；尚未核nævis原客演声部是否完整对应目标feat版本。",
+          "help": "核对K-909官方全景0TeYnotdeoE中nævis客演声部是否完整；若是成员版请指出差异。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMDFye",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=0xdB_vo4r2c"
+        },
+        {
+          "workId": "recvxyHuKMLz7L",
+          "song": "LEMONADE (2Spade Remix)",
+          "version": "2Spade混音版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "2Spade精确混音的Bugs/Qobuz/官方智能链接可定位发行；未取得该混音的合格完整表演。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMLz7L",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=yMvsKWGPEIU"
+        },
+        {
+          "workId": "recvxyHuKMXVDa",
+          "song": "Regret of the Times (2024 aespa Remake Ver.)",
+          "version": "STATION重制版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "Regret of the Times重制版查询只出现发行报道；未核到2024 aespa Remake实际完整表演。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMXVDa",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=xjBY3MLdvVQ"
+        },
+        {
+          "workId": "recvxyHuKMZLFT",
+          "song": "KISS N TELL",
+          "version": "日文原版",
+          "kind": "新增舞台缺口",
+          "category": "原始发布或可访问性未证",
+          "problem": "艺人官网与NTV当期页双源确认2026-09-11广播日的Studio Live；TVer官链未返回可播放单曲，搜索YouTube候选官方性、时长和范围均未核。",
+          "help": "提供2026-09-11 NTV Studio Live《KISS N TELL》可用完整节目章节／官方片源。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMZLFT",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=inxzQt78lOk"
+        },
+        {
+          "workId": "recvxyHuKMiDs4",
+          "song": "Girls (BRLLNT Remix)",
+          "version": "BRLLNT混音版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "Girls BRLLNT Remix官方MV/音源可定位；MV标题不证明艺人同混音打歌或练习。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMiDs4",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=ZlcvaEpCEJ4"
+        },
+        {
+          "workId": "recvxyHuKMisqR",
+          "song": "Next Level (Habstrakt Remix)",
+          "version": "Habstrakt混音版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "Weverse认领Next Level Habstrakt Remix MV，版本明确；还没有该混音的合格完整艺人表演来源。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMisqR",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=EROYsCK0vK4"
+        },
+        {
+          "workId": "recvxyHuKMlAhN",
+          "song": "Rich Man (Yellow Claw Remix)",
+          "version": "Yellow Claw混音版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "Yellow Claw Rich Man检索有混音发行报道，缺同混音合格表演。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMlAhN",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=lWIQ72KFgrg"
+        },
+        {
+          "workId": "recvxyHuKMlGJW",
+          "song": "Supernova (Grimes Remix)",
+          "version": "Grimes混音版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "Supernova Grimes Remix检索没有形成可采用的同混音官方节目/练习证据；原曲不相同。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMlGJW",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=4kMcaEz1WrQ"
+        },
+        {
+          "workId": "recvxyHuKMlNfX",
+          "song": "LEMONADE (Marlon Hoffstadt Remix)",
+          "version": "Marlon Hoffstadt混音版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "Marlon Hoffstadt LEMONADE已有发行目录/MV目录线索，未核到合格全曲表演。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMlNfX",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=zBiB0jww7_8"
+        },
+        {
+          "workId": "recvxyHuKMwjsI",
+          "song": "Supernova (Grimes Remix) (The Other World Ver.)",
+          "version": "Grimes混音The Other World版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "The Other World明确属于Supernova Grimes Remix版本，不能因同曲名归回原Supernova；当前结果是MV/目录及混音介绍，没有合格表演证据。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMwjsI",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=tY2q55Sw3jA"
+        },
+        {
+          "workId": "recvxyHuKMxwnW",
+          "song": "LEMONADE (Zedd Remix)",
+          "version": "Zedd混音版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "LEMONADE Zedd Remix音源及目录可定位，Extended Mix亦存在；尚无同版合格完整表演。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMxwnW",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=P2loH5EOnr8"
+        },
+        {
+          "workId": "recvxyHuKMyy5i",
+          "song": "Spicy (Nitepunk Remix)",
+          "version": "Nitepunk混音版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "Spicy Nitepunk Remix发行/MV介绍、Bugs/Beatport和官方SoundCloud可定位，未证同混音打歌或练习。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMyy5i",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=dn-fzIgHkg0"
+        },
+        {
+          "workId": "recvxyHuKMDKAR",
+          "song": "Switchblade (Feat. Ty Dolla $ign)",
+          "version": "Ty Dolla $ign联名",
+          "kind": "旧来源待替换",
+          "category": "旧活动来源不符现行标准／替代来源待核",
+          "problem": "Bugs/Melon官方授权目录把Switchblade MV与WDA Performance分列；搜索共现不构成Switchblade独立表演。原合作Ty Dolla $ign范围保护继续。",
+          "help": "提供同曲同版完整打歌、官方练习或独立官方表演来源；旧来源与评分先保留。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMDKAR",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=xcFbyuzd9S8"
+        },
+        {
+          "workId": "recvxyHuKMKGBh",
+          "song": "Live My Life",
+          "version": "完整MV版",
+          "kind": "旧来源待替换",
+          "category": "旧活动来源不符现行标准／替代来源待核",
+          "problem": "新检索官方授权视频目录确认Live My Life仅原MV，邻接Performance属于Armageddon等其他曲。Universe120秒仍短于整曲，tour behind926秒未有完整章节。",
+          "help": "提供同曲同版完整打歌、官方练习或独立官方表演来源；旧来源与评分先保留。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMKGBh",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=YEA1ROHi0Eg"
+        }
+      ]
+    },
+    {
+      "name": "BABYMONSTER",
+      "newGapCount": 3,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrAUD",
+          "song": "Love In My Heart",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "YG原始新闻6435只证实2024年11月曾计划三曲打歌，不证明Love In My Heart已有完整节目片源；6582为巡演，6698表演视频对应BILLIONAIRE。保留目标缺口。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrAUD",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=1kXLsrun51s"
+        },
+        {
+          "workId": "rec28ldfRTrKWv",
+          "song": "SUPA DUPA LUV",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "YG7068的dance practice关键词对应TREASURE Everything，7327/7326是本曲MV发布，年末舞台计划也非已取得普通打歌片源。",
+          "help": "提供这版实际参与的成员／合作方及完整表演链接；可用已授权的官方成员版后备，但需注明差异。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrKWv",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=SbdOIdg2McI"
+        },
+        {
+          "workId": "rec28ldfRTrLow",
+          "song": "Ghost",
+          "version": "Promotion Video版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "YG7581/7582/7580记录Ghost在京瓷巨蛋巡演；6808的FIRST TAKE对应DRIP，Ghost只是同文OST消息，不能误配。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrLow",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=sRLbqYkoaLc"
+        }
+      ]
+    },
+    {
+      "name": "fromis_9",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyOz5XFVzt",
+          "song": "Touchdown",
+          "version": "OST MV",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "查询附了치얼업词但结果实际指向SBS The Winning Try的2025 Touch Down OST；没有合格原片证据，错误剧名可能降低检索召回。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XFVzt",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=peoZYyEvY-k"
+        }
+      ]
+    },
+    {
+      "name": "Geenius",
+      "newGapCount": 5,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxIZRQAko79",
+          "song": "I.L.Y",
+          "version": "互动MV／Zoe ver.／约66秒",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "同曲检索仍无Zoe单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+          "help": "若有该成员、该约66秒版本对应的独立表演，请提供链接；也可说明这些互动短片是否本就无需单独舞台。现有成员版授权仅放宽合作曲客串范围，不允许直接用全团全曲替代个人短片。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZRQAko79",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=oheqbYaOd3g"
+        },
+        {
+          "workId": "recvxIZRWKBgDC",
+          "song": "I.L.Y",
+          "version": "互动MV／Sion ver.／约66秒",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "同曲检索仍无Sion单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+          "help": "若有该成员、该约66秒版本对应的独立表演，请提供链接；也可说明这些互动短片是否本就无需单独舞台。现有成员版授权仅放宽合作曲客串范围，不允许直接用全团全曲替代个人短片。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZRWKBgDC",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=BF3kLvjQE4Q"
+        },
+        {
+          "workId": "recvxIZRWKKCeh",
+          "song": "I.L.Y",
+          "version": "互动MV／Yeyoung ver.／约66秒",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "同曲检索仍无Yeyoung单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+          "help": "若有该成员、该约66秒版本对应的独立表演，请提供链接；也可说明这些互动短片是否本就无需单独舞台。现有成员版授权仅放宽合作曲客串范围，不允许直接用全团全曲替代个人短片。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZRWKKCeh",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=NLa_eJYKcfQ"
+        },
+        {
+          "workId": "recvxIZXUpORHf",
+          "song": "I.L.Y",
+          "version": "互动MV／Andamiro ver.／约66秒",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "同曲检索仍无Andamiro单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+          "help": "若有该成员、该约66秒版本对应的独立表演，请提供链接；也可说明这些互动短片是否本就无需单独舞台。现有成员版授权仅放宽合作曲客串范围，不允许直接用全团全曲替代个人短片。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZXUpORHf",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=BwbY56T9EXo"
+        },
+        {
+          "workId": "recvxIZY0lVCCr",
+          "song": "I.L.Y",
+          "version": "互动MV／Mika ver.／约66秒",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "同曲检索仍无Mika单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+          "help": "若有该成员、该约66秒版本对应的独立表演，请提供链接；也可说明这些互动短片是否本就无需单独舞台。现有成员版授权仅放宽合作曲客串范围，不允许直接用全团全曲替代个人短片。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZY0lVCCr",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=Qp3nqWwBKVk"
+        }
+      ]
+    },
+    {
+      "name": "Hearts2Hearts",
+      "newGapCount": 3,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrI8S",
+          "song": "STYLE",
+          "version": "Teenieping 合作版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "SM Brand Marketing案例196与KBS报道确认Teenieping合作范围，但未证与普通STYLE舞台音轨完全相同。保留版本核对，不能单凭合作名或相近时长采用。",
+          "help": "比较Teenieping合作MV与普通STYLE节目／练习音轨；指出是否有改词、节选或编配变化。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrI8S",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=z14Z86oQ-1E"
+        },
+        {
+          "workId": "rec28ldfRTrIC0",
+          "song": "Moonride",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "新增Moonride检索结果为Kia原MV/流媒体及另一首ICONIC HEART的节目信息，没有取得目标完整独立表演。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrIC0",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=gNUMxMuxH20"
+        },
+        {
+          "workId": "rec28ldfRTrIkV",
+          "song": "FOCUS",
+          "version": "DJ Seinfeld Remix",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "授权发行目录把FOCUS DJ Seinfeld Remix作为独立混音，Qobuz/Spotify资料有约2:32条目；普通FOCUS节目或练习不可覆盖指定混音。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrIkV",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=Txyb_mVaPyE"
+        }
+      ]
+    },
+    {
+      "name": "HITGS",
+      "newGapCount": 3,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxIZy3525BF",
+          "song": "Gulliver!",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "新精确检索Gulliver!仍为原MV，Performance Video关键词来自同页其他艺人或SOURPATCH；没有目标独立完整官方后备。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZy3525BF",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=IM-N8trjDzk"
+        },
+        {
+          "workId": "recvxIZy35Xwr7",
+          "song": "Cherry Blossom",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "新检索Cherry Blossom Performance得到专辑发行页和IYOO Taste表演邻接项；不是本曲完整表演，不扩大成员或歌曲范围。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZy35Xwr7",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=6GUKqEfiX1I"
+        },
+        {
+          "workId": "recvxIZy35rUeY",
+          "song": "Little By Little",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "新检索Little By Little Performance的匹配词来自其他歌/艺术家；此前棒球场表演属活动，不采用。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZy35rUeY",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=L9VNIOcfSOU"
+        }
+      ]
+    },
+    {
+      "name": "i-dle",
+      "newGapCount": 5,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyOz5X0JJ9",
+          "song": "Revenge",
+          "version": "韩文原版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "Revenge本轮命中官方MV及MV新闻，未出现新的合格练习/常规节目；旧特殊活动不自动准入。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5X0JJ9",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=KAymeaEyPr8"
+        },
+        {
+          "workId": "recvxyOz5X1VFs",
+          "song": "I Want That",
+          "version": "英文原版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "I Want That命中HEAT发行页、官方MV及Jingle Ball相关线索；未有已核常规节目/练习来源。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5X1VFs",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=Iewisp9KYRw"
+        },
+        {
+          "workId": "recvxyOz5X3Fd8",
+          "song": "Oh my god",
+          "version": "日文版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "本轮找到Oh my god官方练习/Weverse链接，但未证目标日本语音轨；旧日本语Relay Dance属于接力形态。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5X3Fd8",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=u7wSlAgEcvg"
+        },
+        {
+          "workId": "recvxyOz5XGYPC",
+          "song": "Last Dance",
+          "version": "UNIVERSE合作／GENIE完整重传",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "Last Dance精确表演查询主要返回艺人视频目录，尚未定位合格官方完整练习或常规节目。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XGYPC",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=U6DG3TBcV6s"
+        },
+        {
+          "workId": "recvxyOz5Xa1EK",
+          "song": "LATATA",
+          "version": "日文版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "LATATA日本出道官网/发行商目录可定位，但没有精确日版合格完整表演；旧GUIDE是应援指导，韩语练习不相同。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5Xa1EK",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=ypNJMDlJvY4"
+        }
+      ]
+    },
+    {
+      "name": "ifeye",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxIZFpVLU0R",
+          "song": "loverfory",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "新精确检索得到ifeye原loverfory MV、幕后及Mainz/Coex活动，没有取得独立完整官方表演；不把索引中其他歌表演视为目标。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZFpVLU0R",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=ecQSl-6NSTA"
+        }
+      ]
+    },
+    {
+      "name": "ILLIT",
+      "newGapCount": 4,
+      "replacementCount": 1,
+      "items": [
+        {
+          "workId": "rec28ldfRTrK1S",
+          "song": "little monster",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "Weverse Magazine1789讨论PRESS START巡演舞台与little monster造型，不能转作官方练习室证据。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrK1S",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=xRU1XXHIpIc"
+        },
+        {
+          "workId": "rec28ldfRTrKm3",
+          "song": "Sunday Morning",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "ILLIT日本官网c2ac32af70b6明确8RvWZDUYg-g为应援法；新检索的表演描述是原MV中餐厅表演情境，不是独立后备。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrKm3",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=-01oDwXKSuE"
+        },
+        {
+          "workId": "rec28ldfRTrKqc",
+          "song": "NOT ME",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "原始发布或可访问性未证",
+          "problem": "Weverse Magazine1789明确NOT ME在PRESS START巡演首次演出；镜像所谓practice不能消除此场合证据。",
+          "help": "提供可正常观看的版权方原始节目／练习链接；节目名称和播出日期也有助定位。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrKqc",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=9nEp9eeGaJk"
+        },
+        {
+          "workId": "rec28ldfRTrLFz",
+          "song": "See U Tonight (feat. YUNAH & MINJU of ILLIT)",
+          "version": "YUNAH／MINJU合作版",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "公开授权发行明确Kylie Cantrall与YUNAH/MINJU二人合作；新找到CKrNx6NN-NM和emaDhlvz8BY均Provided to YouTube音频，不是同合作范围表演影像。",
+          "help": "提供这版实际参与的成员／合作方及完整表演链接；可用已授权的官方成员版后备，但需注明差异。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrLFz",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=vJB6baLzeHw"
+        },
+        {
+          "workId": "rec28ldfRTrKy2",
+          "song": "It's Me",
+          "version": "Performance ver.",
+          "kind": "旧来源待替换",
+          "category": "旧活动来源不符现行标准／替代来源待核",
+          "problem": "Weverse官方Performance查询没有解决原el7A_SI7sxs60秒与完整发行/打歌148秒范围差。原作品稳定ID不改，不把完整后备当同范围。",
+          "help": "确认网站这条作品是否应保留约60秒Performance范围；若要改为完整歌曲需另行明确，不能拿148秒舞台直接换绑。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrKy2",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=el7A_SI7sxs"
+        }
+      ]
+    },
+    {
+      "name": "ITZY",
+      "newGapCount": 6,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyOz5X7zV3",
+          "song": "LOCO (Japanese Ver.)",
+          "version": "日文版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "LOCO日版命中日本官方MV/音源与日本出道目录，尚未核到精确日版完整打歌/练习。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5X7zV3",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=ytTlH0EpSqI"
+        },
+        {
+          "workId": "recvxyOz5X9qGD",
+          "song": "Like Magic",
+          "version": "跨团合作版",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "Like Magic检索未取得原多艺人合作范围完整的合格表演；不能将单团挑战/广告制作内容当全合作舞台。",
+          "help": "提供这版实际参与的成员／合作方及完整表演链接；可用已授权的官方成员版后备，但需注明差异。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5X9qGD",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=t6bBDAlpQZs"
+        },
+        {
+          "workId": "recvxyOz5XkyEY",
+          "song": "Voltage",
+          "version": "日文原版",
+          "kind": "新增舞台缺口",
+          "category": "单曲完整范围未证",
+          "problem": "ITZY Japan官方Voltage Special Dance Clip 5uQuUCW-9aI只有160秒；原发行约221秒，不能作为完整同曲采用。官方身份/高点赞不消除61秒范围差。",
+          "help": "需要Voltage完整版本；Special Dance Clip约160秒，比发行221秒短61秒，若找到完整版请给链接。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XkyEY",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=krzf1hkFAZA"
+        },
+        {
+          "workId": "recvxyOz5XlqWP",
+          "song": "Boys Like You",
+          "version": "英文原版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "Boys Like You本轮命中JYP官方发行及MV新闻，没有新的合格完整练习/常规节目，旧活动与转载仍不准入。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XlqWP",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=6uZy86ePgO0"
+        },
+        {
+          "workId": "recvxyOz5XmFwB",
+          "song": "SUPERPOWERS",
+          "version": "韩文OST原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "SUPERPOWERS精确查询未取得足以确认同曲常规节目/完整官方练习的原始来源。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XmFwB",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=-1llaBEyOXA"
+        },
+        {
+          "workId": "recvxyOz5XmMQe",
+          "song": "Not Shy (English Ver.)",
+          "version": "英文版（ZEPETO动画MV）",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "本轮IOKMx1jeCjY未标英文，MTV资料写改编版，不能直接匹配Not Shy English；用户否决BnmwjH-suLg仍不可推荐。",
+          "help": "协助听辨候选是否真的为英文原版，给具体歌词／时间点；已否决的BnmwjH-suLg不再推荐。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XmMQe",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=tvTdg7sgsgU"
+        }
+      ]
+    },
+    {
+      "name": "IVE",
+      "newGapCount": 5,
+      "replacementCount": 3,
+      "items": [
+        {
+          "workId": "recvxyHuKM2Gwu",
+          "song": "ELEVEN -Japanese ver.-",
+          "version": "日文版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "ELEVEN日版查询得到THE FIRST TAKE新闻，但显著命中是After LIKE；未证ELEVEN日语表演，更不能把日本节目所在地等同日语音轨。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKM2Gwu",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=XfEZzUtdINI"
+        },
+        {
+          "workId": "recvxyHuKM5r64",
+          "song": "Be Alright",
+          "version": "日文原版",
+          "kind": "新增舞台缺口",
+          "category": "原始发布或可访问性未证",
+          "problem": "原TBS线索实为排行榜页面；已取得跨年CDTV一手节目单，但本轮未取得常规打歌/官方完整练习/独立制作表演的可播放全曲源。",
+          "help": "提供可正常观看的版权方原始节目／练习链接；节目名称和播出日期也有助定位。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKM5r64",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=gC7cURZsiH8"
+        },
+        {
+          "workId": "recvxyHuKMNnpu",
+          "song": "SUMMER FESTA",
+          "version": "PEPSI品牌合作",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "SUMMER FESTA本轮未出现可核同曲官方节目/完整练习，旧活动资料不自动符合新政策。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMNnpu",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=9adnWMIVHQ0"
+        },
+        {
+          "workId": "recvxyHuKMh5bM",
+          "song": "I WANT",
+          "version": "PEPSI品牌合作",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "I WANT查询显著误命中STAYC I WANT IT；没有由这些检索结果证明的IVE I WANT常规节目原片。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMh5bM",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=okVTSehE414"
+        },
+        {
+          "workId": "recvxyHuKMwrIt",
+          "song": "BANG BANG (MINIVE VER.)",
+          "version": "MINIVE动画版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "目标rNGPgQB4Be8是74秒MINIVE动画版本；真人BANG BANG完整Performance uVpGElT--E8虽经用户认可，仍不能填充这个独立动画版本。",
+          "help": "此记录为74秒MINIVE动画版本；已认可真人完整版不能直接跨记录绑定，需核本条对应范围。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMwrIt",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=rNGPgQB4Be8"
+        },
+        {
+          "workId": "recvxyHuKMEruy",
+          "song": "Supernova Love",
+          "version": "David Guetta联名",
+          "kind": "旧来源待替换",
+          "category": "旧活动来源不符现行标准／替代来源待核",
+          "problem": "新发行报道及IVE官方MV仍指fyk6vjwI3wc，未取得可对齐原154秒版本的独立表演；DavidGuetta歌词视频198秒不是舞台。",
+          "help": "对比约154秒原MV剪辑和候选实际范围；需要匹配本条的独立完整表演，198秒歌词视频不是舞台。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMEruy",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=fyk6vjwI3wc"
+        },
+        {
+          "workId": "recvxyHuKMCtUB",
+          "song": "CRUSH",
+          "version": "日文原版",
+          "kind": "旧来源待替换",
+          "category": "旧活动来源不符现行标准／替代来源待核",
+          "problem": "IVE/Sony官方新闻重新确认CRUSH为ALIVE日本原曲；MV中的四场景舞蹈是原视频，不是独立后备。with MUSIC串烧与Venue101仍缺当前完整原片。",
+          "help": "优先找2024-10-26 Venue101完整CRUSH或09-14 with MUSIC完整本曲；串烧需核实际范围。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKMCtUB",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=D-geLVTaBAo"
+        },
+        {
+          "workId": "recvxyHuKM2wRG",
+          "song": "WAVE",
+          "version": "日文原版",
+          "kind": "旧来源待替换",
+          "category": "旧活动来源不符现行标准／替代来源待核",
+          "problem": "新增TV Asahi原始文章post-218906确认2023-05-26Music Station WAVE且说明日本原创曲；文章没有完整表演视频，也不能仅以六人团介绍证明REI实际出演。",
+          "help": "优先找2023-05-26 Music Station或05-27 Venue101完整WAVE，并确认REI是否出演；较早CDTV不能默认六人。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyHuKM2wRG",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=qD1kP_nJU3o"
+        }
+      ]
+    },
+    {
+      "name": "IZ*ONE",
+      "newGapCount": 2,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyH5pzEDfw",
+          "song": "Buenos Aires",
+          "version": "日文原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "新报道证实2019-06-01 NHK ShibuyaNote曾表演Buenos Aires；检索镜像1hCTF-tw2rA非官方。报道存在不等于当前完整版权方视频可用。",
+          "help": "提供2019-06-01 NHK ShibuyaNote本曲可用版权方全曲片源，或其他合规日语完整表演。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzEDfw",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=M46FRJsB0Qw"
+        },
+        {
+          "workId": "recvxyH5pzi1oo",
+          "song": "D-D-DANCE",
+          "version": "完整MV／GENIE官方重传",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "本轮D-D-DANCE返回MV/音源资料；旧Universe活动及UNI-KON38秒片段不能转为合格全曲打歌。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzi1oo",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=1C77QDNoAgo"
+        }
+      ]
+    },
+    {
+      "name": "izna",
+      "newGapCount": 2,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrNO2",
+          "song": "Love All",
+          "version": "Lyric Video",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "izna日本官网MOVIE明确Love All为Lyric Video；邻接的Special Performance属于SASS & Racecar，不能串行误读为Love All表演。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrNO2",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=xu0fU46Cd7M"
+        },
+        {
+          "workId": "rec28ldfRTrNsK",
+          "song": "BEEP (Japan Edition)",
+          "version": "日本发行版",
+          "kind": "新增舞台缺口",
+          "category": "单曲完整范围未证",
+          "problem": "OTOTOY日本发行报道确认Japan Edition与韩版同时发行且歌词语言有差异；官方Qfez0Db9Iqc Costume491秒仍需实际单曲边界和场合。SUMMER SONIC日本首演属于活动，不采用。",
+          "help": "给出完整视频或单曲起止时间；确认包含整首，而非串烧节选、短版或原MV另一上传。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrNsK",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=LiZAgfmoQwc"
+        }
+      ]
+    },
+    {
+      "name": "KATSEYE",
+      "newGapCount": 1,
+      "replacementCount": 1,
+      "items": [
+        {
+          "workId": "recvxIZnIaGCNq",
+          "song": "Gameboy",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "KATSEYE官方Videos目录的Performance/Practice为Gabriela/Gnarly，Gameboy有MV和音频变速/混音。官方Weverse28479还明确Gabriela表演缺Manon，不能借邻接条目假定本曲或全员。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZnIaGCNq",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=-bC4iak3kxg"
+        },
+        {
+          "workId": "recvxIZd9vfxUk",
+          "song": "Gnarly",
+          "version": "原版",
+          "kind": "旧来源待替换",
+          "category": "旧活动来源不符现行标准／替代来源待核",
+          "problem": "新clean查询没有给xrm7PP1mbtI练习室与原Gnarly显式/clean音轨等同证据。旧147秒官方练习可保留候选，但须听辨，不能仅凭同题名采用。",
+          "help": "听辨官方练习室xrm7PP1mbtI与原Gnarly的explicit／clean差异，给具体歌词及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZd9vfxUk",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=R2-yomhYAj4"
+        }
+      ]
+    },
+    {
+      "name": "Kep1er",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyOz5Xvsk1",
+          "song": "Sugar Rush",
+          "version": "UNIVERSE合作MV",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "Sugar Rush命中两个官方MV条目及Challenge报道；短挑战/MV不是已核完整练习或常规节目。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5Xvsk1",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=w8N3nZ7reZk"
+        }
+      ]
+    },
+    {
+      "name": "KiiiKiii",
+      "newGapCount": 1,
+      "replacementCount": 1,
+      "items": [
+        {
+          "workId": "rec28ldfRTrAfx",
+          "song": "DEBUT SONG",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "新检索的M Countdown首秀报道明确实际表演I DO ME，DEBUT SONG只是VCR蛋糕情境引用。不能把搜索共现当同曲节目。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrAfx",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=UAdxlj4Cgjw"
+        },
+        {
+          "workId": "rec28ldfRTrINH",
+          "song": "딸기게임 (Strawberry Cheesegame)",
+          "version": "Lyric Video",
+          "kind": "旧来源待替换",
+          "category": "旧活动来源不符现行标准／替代来源待核",
+          "problem": "新Performance检索仍无完整Strawberry Cheesegame独立第一方影像；旧MIC DRIVE只有53秒章节及MBC年末串烧不足，不能因后备类型放宽忽略节选。",
+          "help": "提供同曲同版完整打歌、官方练习或独立官方表演来源；旧来源与评分先保留。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrINH",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=OncJ5v1keww"
+        }
+      ]
+    },
+    {
+      "name": "KISS OF LIFE",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrMwG",
+          "song": "Painting",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "新来源均指Painting Special Video（原MV）或KISS ROAD演唱会首播记录；未取得独立官方完整表演。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrMwG",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=xWHWl0vG-38"
+        }
+      ]
+    },
+    {
+      "name": "LE SSERAFIM",
+      "newGapCount": 4,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyOz5X7Tw7",
+          "song": "FEARLESS (Japanese Ver.)",
+          "version": "日文版",
+          "kind": "新增舞台缺口",
+          "category": "原始发布或可访问性未证",
+          "problem": "TBS 2023-01-30归档与NHK两条艺人公告补强节目事实；2月20日日版全长有报道支持，但本轮仍未取得可公开审查原片。",
+          "help": "提供可正常观看的版权方原始节目／练习链接；节目名称和播出日期也有助定位。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5X7Tw7",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=DiGnWwgLAfE"
+        },
+        {
+          "workId": "recvxyOz5XKzE5",
+          "song": "UNFORGIVEN (Japanese Ver.)",
+          "version": "日文版／feat. Nile Rodgers, Ado",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "日版UNFORGIVEN额外含Ado，发行方和曲目目录明确该合作范围；普通韩版Nile Rodgers练习及非官方日语转载不能完成匹配。",
+          "help": "提供这版实际参与的成员／合作方及完整表演链接；可用已授权的官方成员版后备，但需注明差异。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XKzE5",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=vMddOrUGwDw"
+        },
+        {
+          "workId": "recvxyOz5XQMJt",
+          "song": "CRAZY (Japanese Ver.)",
+          "version": "日文版",
+          "kind": "新增舞台缺口",
+          "category": "原始发布或可访问性未证",
+          "problem": "CDTV 2024-12-09日版演出获官网及TBS归档确认，报道支持全曲；新闻称performance video的12月11日片与官方Official MV语境对应，不能凭此新增舞台。",
+          "help": "提供可正常观看的版权方原始节目／练习链接；节目名称和播出日期也有助定位。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XQMJt",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=tsS69gld8Ls"
+        },
+        {
+          "workId": "recvxyOz5XnOv7",
+          "song": "CRAZY (English Ver.)",
+          "version": "英文版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "HYBE官方rtKP2TsP1W4为177秒CRAZY PERFORMANCE FILM，无English标记，发布2024-09-02且早于英文MV；英文MV与Performance幕后合并标题不证明此片英文。",
+          "help": "比较官方PERFORMANCE FILM rtKP2TsP1W4与英文版MV的实际语言和歌词；标题未标英文。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XnOv7",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=iI5hnXYo5as"
+        }
+      ]
+    },
+    {
+      "name": "LOONA",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyOz5XueI9",
+          "song": "LUMINOUS",
+          "version": "日文原版",
+          "kind": "新增舞台缺口",
+          "category": "原始发布或可访问性未证",
+          "problem": "LUMINOUS本轮有发行商目录，但既有INV0y_Cig7M官方身份仍未证；频道名LOONA与Posted by HyunJin说明不能替代原发布核验。",
+          "help": "提供可正常观看的版权方原始节目／练习链接；节目名称和播出日期也有助定位。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XueI9",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=lLug6h74acE"
+        }
+      ]
+    },
+    {
+      "name": "MADEIN",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrCDJ",
+          "song": "DOPAMINE",
+          "version": "Performance ver.",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "新检索的DOPAMINE Performance MV即原作品PYEOubLoXDo；MADEIN视频目录区分DADARIDA另有CHOREO，未找到DOPAMINE独立官方完整后备。不重复用原MV制造舞台。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrCDJ",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=PYEOubLoXDo"
+        }
+      ]
+    },
+    {
+      "name": "MEOVV",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrJne",
+          "song": "LIT RIGHT NOW",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "官方Special Video仍为原LIT RIGHT NOW作品；新采访谈及创作和练习生时期，不证明独立完整表演。KCON与巡演仍排除。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrJne",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=peFN4squVuQ"
+        }
+      ]
+    },
+    {
+      "name": "NewJeans",
+      "newGapCount": 2,
+      "replacementCount": 1,
+      "items": [
+        {
+          "workId": "recvxyOz5XQZhy",
+          "song": "Be Who You Are (Real Magic)",
+          "version": "Coke Studio多艺人合作MV",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "Be Who You Are检索定位Jon Batiste/JID/NewJeans/Camilo合作发行智能链接；没有同合作范围合格完整表演。",
+          "help": "提供这版实际参与的成员／合作方及完整表演链接；可用已授权的官方成员版后备，但需注明差异。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XQZhy",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=XEsrFIQOWZg"
+        },
+        {
+          "workId": "recvxyOz5Xr917",
+          "song": "Beautiful Restriction",
+          "version": "OST Special MV",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "Beautiful Restriction本轮只有官方LIVE目录/社区询问等线索，无已核同曲全曲节目/练习来源；社区提问不是不存在的证明。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5Xr917",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=jgD_U2t6qXQ"
+        },
+        {
+          "workId": "recvxyOz5Xr6ek",
+          "song": "Cool With You / Get Up",
+          "version": "side B",
+          "kind": "旧来源待替换",
+          "category": "旧活动来源不符现行标准／替代来源待核",
+          "problem": "新报道确认两支Cool With You练习，但每支不含完整Get Up；原sideB为连续两曲。MMA611秒练习仍未证不改编连续完整双曲章节。",
+          "help": "提供连续包含完整Cool With You＋Get Up、未改编的官方节目／练习；单独一首或后期拼接不能匹配side B。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5Xr6ek",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=nJDMAjwxthM"
+        }
+      ]
+    },
+    {
+      "name": "NMIXX",
+      "newGapCount": 5,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyOz5X6G1q",
+          "song": "Caution",
+          "version": "合作OST版",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "Caution查询返回NMIXX/Anderson .Paak发行、MV与社媒线索，未取得双方目标合作范围完整的合格表演。",
+          "help": "提供这版实际参与的成员／合作方及完整表演链接；可用已授权的官方成员版后备，但需注明差异。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5X6G1q",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=eJd4ii5avNw"
+        },
+        {
+          "workId": "recvxyOz5XRfn5",
+          "song": "蜚蜚 (FEIFEI)",
+          "version": "中文翻唱版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "FEIFEI本轮返回官方MV及音源，旧活动/转载尚无合格替代；不能把MV本身重用为舞台评分来源。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XRfn5",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=zrYC3LEpc6w"
+        },
+        {
+          "workId": "recvxyOz5Xo5fW",
+          "song": "Hey Gabby!",
+          "version": "韩文OST原版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "Hey Gabby本轮主要是Gabby’s Dollhouse OST MV资料；特制MV或民间舞蹈不自动等于官方完整练习。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5Xo5fW",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=xBrrdxtyWHw"
+        },
+        {
+          "workId": "recvxyOz5Xqy0Q",
+          "song": "MEXE",
+          "version": "多语合作版",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "Pabllo官方MEXE Dance Video kN9MY-QjJMQ 146秒，正文署名Pabllo及6位具名舞者，未据此证明NMIXX实际表演；标题同时列NMIXX是歌曲署名，不能推出成员出镜。",
+          "help": "确认kN9MY-QjJMQ里是否有NMIXX成员实际表演，给姓名＋时间点或幕后署名；歌曲挂名不等于成员出镜。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5Xqy0Q",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=0zgJgsbcAN8"
+        },
+        {
+          "workId": "recvxyOz5XsgVc",
+          "song": "Sprinkle Party",
+          "version": "韩文OST原版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "Sprinkle Party本轮返回OST MV新闻和音源目录；MBC Party O’Clock是不同歌曲，不能误配。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyOz5XsgVc",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=0T8d3pRjmi4"
+        }
+      ]
+    },
+    {
+      "name": "ODD YOUTH",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrGY0",
+          "song": "Best Friendz",
+          "version": "Brand MV版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "TOP MEDIA原始Multimedia页明确2025-01-15发布Best Friendz English Ver Performance Video。该证据支持排除把英语候选无标识绑定原Brand MV；原Brand音轨与候选的差异仍待听辨。",
+          "help": "听辨Brand MV与官方English Ver. Performance是否相同音轨，指出语言／歌词差异和时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrGY0",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=JV_2SI-raz0"
+        }
+      ]
+    },
+    {
+      "name": "PURPLE KISS",
+      "newGapCount": 2,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyH5pz4ojC",
+          "song": "Breath",
+          "version": "韩文原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "PURPLE KISS官方OFFICIAL_VIDEO分类明确Breath MV、DOREMI Performance和巡演Spoiler为不同条目；Breath没有由本次搜索取得独立后备。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pz4ojC",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=5oIIzNGeXco"
+        },
+        {
+          "workId": "recvxyH5pzFAPL",
+          "song": "DOREMI",
+          "version": "英文版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "PURPLE KISS官网明确English MV与English Recording Behind，另有未标English的DOREMI MV Performance；不能用后者标题推定英文。未重试已受限的原MV。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzFAPL",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=os4driLeAiU"
+        }
+      ]
+    },
+    {
+      "name": "QWER",
+      "newGapCount": 3,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrF2E",
+          "song": "FAKE IDOL (가짜 아이돌)",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "补强既有两曲LIVE CLIP PkEl_Z9B2y4的官方Weverse3-188265753发布证据；它已在旧只读线索中，不能算新发现或重复导入。准确FAKE IDOL章节边界及真实录制场合未证。拒绝ID l9GLV8Kd-MU保持；缩略图TLS EOF及watch读取失败分别留证。",
+          "help": "协助确认官方两曲LIVE CLIP PkEl_Z9B2y4的录制场合，以及FAKE IDOL完整段落起止；此前否决视频不再推荐。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrF2E",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=JFGRPgYeu38"
+        },
+        {
+          "workId": "recvxIZLpET3tB",
+          "song": "Our Voyage",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "QWER Weverse Band Practice条目对应CEREMONY，Our Voyage仍为原MV及巡演/节庆；没有取得本曲合规独立表演。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZLpET3tB",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=FifVV3t38Vk"
+        },
+        {
+          "workId": "recvxIZRWKy9zg",
+          "song": "SHOW DOWN",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "原始发布或可访问性未证",
+          "problem": "NTV原始20260821节目页明确把QWER SHOW DOWN列入Studio Live，补强了真实节目类型与确切日期；页面仅给主嘉宾访谈TVer链接，未给目标完整视频。旧NTmQzjUchPU为转载，完整范围仍未证。",
+          "help": "提供2026-08-21 NTV Studio Live《SHOW DOWN》的可用版权方完整片源。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZRWKy9zg",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=TcMV9YeT9Sw"
+        }
+      ]
+    },
+    {
+      "name": "Rocket Punch",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyH5pzA9lj",
+          "song": "ドキドキLOVE",
+          "version": "日文原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "新增具体节目路线：Lemino let me Know K-POP! S1E4、2023-05-18，GGuide重播表与Kstyle2220632均明确三首日本原曲中包含ドキドキLOVE。aw2hcpeRd08只是预告，未取得完整第一方单曲或合法可用节目章节。",
+          "help": "提供Lemino《let me Know K-POP!》S1E4（2023-05-18）本曲合法可用完整章节，或其他完整官方舞台。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzA9lj",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=SLYos3_m3_A"
+        }
+      ]
+    },
+    {
+      "name": "SAY MY NAME",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrNcl",
+          "song": "ShaLala (Japanese version)",
+          "version": "日文版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "INCODE日本公告3287确认4月11日日语版独立发行；Hitomi/Mei电视片段不是整团完整同版；普通韩语练习不迁移。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrNcl",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=aNBiA1NKdOg"
+        }
+      ]
+    },
+    {
+      "name": "STAYC",
+      "newGapCount": 4,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyH5pzVn2k",
+          "song": "LIT",
+          "version": "日文原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "LIT查询出现日本MV、访谈和发行介绍；仅有这些标题不能建立完整节目/练习来源。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzVn2k",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=hB6B70NyZ7s"
+        },
+        {
+          "workId": "recvxyH5pzbluu",
+          "song": "MWUAH",
+          "version": "日文原版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "本轮MWUAH练习查询未取得新的合格来源；旧3LGQGtnxEEg已证是STAY ALIVE Showcase舞台彩排，不因Rehearsal题名改为练习室。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzbluu",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=udOf9JGMA7U"
+        },
+        {
+          "workId": "recvxyH5pzdckl",
+          "song": "MEOW",
+          "version": "日文原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "MEOW查询返回发行商目录、发行纪念活动和setlist；活动/曲目存在不等于已取得常规节目原片。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzdckl",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=b8yjHGQ4hA4"
+        },
+        {
+          "workId": "recvxyH5pzoMAf",
+          "song": "Teddy Bear",
+          "version": "日文版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "目标是Teddy Bear日本版；本轮只出现日本综艺舞蹈报道/泛节目资料，未取得已核同语种全曲原片。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzoMAf",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=2gm2t6fbc8s"
+        }
+      ]
+    },
+    {
+      "name": "tripleS",
+      "newGapCount": 6,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrO2v",
+          "song": "Cherry Gene",
+          "version": "Acid Eyes／Cherry Gene混音",
+          "kind": "新增舞台缺口",
+          "category": "单曲完整范围未证",
+          "problem": "新定位tripleS官方SIGNAL cRJdPN6X0IY及Gj-CYY2R0Vk，题名分别为表演讨论/舞蹈课；不能视为原分队完整同混音表演。Cherry Talk Special Performance是另一首歌。",
+          "help": "给出完整视频或单曲起止时间；确认包含整首，而非串烧节选、短版或原MV另一上传。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrO2v",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=MfGdF9fftx4"
+        },
+        {
+          "workId": "rec28ldfRTrOTb",
+          "song": "Baby Flower (Japanese Ver.)",
+          "version": "日文版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "Apple Music6772121264等证实Baby Flower Japanese独立发行；粉丝档案中Music Bank260612仍不能证明是日语音轨，韩版练习不替代。",
+          "help": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrOTb",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=QYJROwbyeHQ"
+        },
+        {
+          "workId": "rec28ldfRTrOXn",
+          "song": "Dream Dress",
+          "version": "moon分队／日本原曲",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "已纠正官网路线，Sony584980和triples-wav官方专题证实moon日本原曲；专题的Special Movie为会员内容未进入。未取得公开完整表演，Objekt活动不采用。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrOXn",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=zqUO3zwllhc"
+        },
+        {
+          "workId": "rec28ldfRTrOnV",
+          "song": "Password",
+          "version": "∞!分队／日本原曲",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "使用正确triples-wav官网检索，结果为Password MV Shooting图库及粉丝见面会；没有原官方练习页支持镜像LHnxtmJkytQ的出处。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrOnV",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=m25wQkLg1jc"
+        },
+        {
+          "workId": "rec28ldfRTrP1t",
+          "song": "DNA",
+          "version": "sun分队／日本原曲",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "正确triples-wav官网有sun DNA发行专题及Unit Photo；没有证实镜像CnS1nUqfNZc原官方练习出处。Objekt活动不作为普通舞台。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrP1t",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=QhOtp2tWTY0"
+        },
+        {
+          "workId": "rec28ldfRTrP5H",
+          "song": "Welcome to Heaven",
+          "version": "neptune分队／日本原曲",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "Sony586674明确neptune日本原曲发布及Objekt活动；Special Visual Clip即原视频，Andless Performance属于另一首歌/演唱会，不能补本曲。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrP5H",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=7MMIyGA5pOA"
+        }
+      ]
+    },
+    {
+      "name": "UNIS",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrQ8F",
+          "song": "Milky Way",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "官方Weverse Highlight把Milky Way列为MV，Performance Video Behind及节目幕后相邻条目属于Sky Land, Star Land，不能混配。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrQ8F",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=LhEBIGua1dM"
+        }
+      ]
+    },
+    {
+      "name": "VVUP",
+      "newGapCount": 1,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrFGi",
+          "song": "4 Life",
+          "version": "Special Video完整版",
+          "kind": "新增舞台缺口",
+          "category": "单曲完整范围未证",
+          "problem": "Weverse3-189987080明确Full ver，4-189811246是Special Video #2；Full ver仍是原作品本身，不是独立新表演，分段视频也不补完整舞台。",
+          "help": "给出完整视频或单曲起止时间；确认包含整首，而非串烧节选、短版或原MV另一上传。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrFGi",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=A-Hr8aYSEx0"
+        }
+      ]
+    },
+    {
+      "name": "Weeekly",
+      "newGapCount": 3,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxyH5pzJov0",
+          "song": "Top Secret",
+          "version": "韩文原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "本轮Top Secret韩英精确查询主要返回其他艺人同名内容、团体资料和演唱会线索；库存中没有已核可用的同曲常规打歌或完整官方练习。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzJov0",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=zBCK8Z4a0Js"
+        },
+        {
+          "workId": "recvxyH5pzoIOD",
+          "song": "Happy Christmas",
+          "version": "韩文原版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "YAOKI Special Video xpH69uV9Ge0获官方认领，但与既有1theK原发行视频同日同长243秒；资料及开头0–48秒抽样镜头一致，作为原MV另一上传保留，不能制造独立舞台。未作整片字节/音轨同一性证明。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzoIOD",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=o21QhCZZQJA"
+        },
+        {
+          "workId": "recvxyH5pzoaOZ",
+          "song": "Love",
+          "version": "韩文原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "Love查询出现KBS广播歌单和Jihan/Park So Eun OST发行报道；广播播放不等于现场表演，不能推全团演出。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzoaOZ",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=VACXoKdmofo"
+        }
+      ]
+    },
+    {
+      "name": "WOOAH",
+      "newGapCount": 4,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "recvxIYG1FSCws",
+          "song": "VOODOO DOLL",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "新检索多源具体指向WXW:WICKED粉丝演唱会，未取得独立官方普通节目/练习/专门表演；活动不采用。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIYG1FSCws",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=nYrezqbjl3E"
+        },
+        {
+          "workId": "recvxyH5pzQxpW",
+          "song": "SUMMER",
+          "version": "韩文原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "SUMMER查询返回发行/MV报道、WOOAH目录与fan concert信息；尚无同曲合格原始表演上传。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzQxpW",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=8DwTAa5hPsA"
+        },
+        {
+          "workId": "recvxyH5pzZfyK",
+          "song": "Shining On You",
+          "version": "宣传合作",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "发现Shining on you Side B视频与原M/V、文化院项目介绍；Side B名称本身不能证明是音乐节目或完整练习。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzZfyK",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=jsfsisyG3Vo"
+        },
+        {
+          "workId": "recvxyH5pzrrSO",
+          "song": "WXW (Wish With W)",
+          "version": "韩文原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "WXW查询主要是Bugs发行目录、项目报道与音源，尚未取得可采用的节目/练习原片。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzrrSO",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=ZtiThQN5ETc"
+        }
+      ]
+    },
+    {
+      "name": "XG",
+      "newGapCount": 4,
+      "replacementCount": 2,
+      "items": [
+        {
+          "workId": "recvxDMFHN97Px",
+          "song": "4 SEASONS",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "XGALX1130383确认4 SEASONS主唱分队歌曲，1130530为幕后；Music Station SuperLive排期并未把本曲指派到节目，巡演不采用。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxDMFHN97Px",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=-XrrMwG8jRI"
+        },
+        {
+          "workId": "recvxDMFHNJME3",
+          "song": "IN THE RAIN",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "官方站没有检索到IN THE RAIN Choreography/Rehearsal原页；旧镜像及巡演全景不转成官方后备，保持原出处待证。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxDMFHNJME3",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=BydbhAzmAzg"
+        },
+        {
+          "workId": "recvxDMFHNyyeA",
+          "song": "O.R.B (Obviously Reads Bro)",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "精确O.R.B官方站Choreography查询为空；原MV、THE CORE巡演和FUJI ROCK不作为合规替代。空结果不证明表演不存在。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxDMFHNyyeA",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=9iK95Ez-Xto"
+        },
+        {
+          "workId": "recvxDMFHNzJyr",
+          "song": "ROCK THE BOAT",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "语种或编配版本未匹配",
+          "problem": "官方SBS已有合规节目，但原特殊歌词版本和候选实际歌词仍未完成比对；新允许表演后备不解决版本冲突。",
+          "help": "对比原ROCK THE BOAT与SBS节目实际歌词，标出是否为删词／clean版及差异时间点。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxDMFHNzJyr",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=8xb_P7ureNU"
+        },
+        {
+          "workId": "recvxDMFHNojjN",
+          "song": "IS THIS LOVE",
+          "version": "原版",
+          "kind": "旧来源待替换",
+          "category": "旧活动来源不符现行标准／替代来源待核",
+          "problem": "XGALX索引的XTRA #70为宣传幕后，没有完整单曲边界；旧CDTV9U3MPAYIZ0g已到期/受限，本轮不重试或绕过。",
+          "help": "提供同曲同版完整打歌、官方练习或独立官方表演来源；旧来源与评分先保留。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxDMFHNojjN",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=aHTI0SXGVS0"
+        },
+        {
+          "workId": "recvxDMFHNSckK",
+          "song": "MILLION PLACES",
+          "version": "原版",
+          "kind": "旧来源待替换",
+          "category": "旧活动来源不符现行标准／替代来源待核",
+          "problem": "XGALX索引仍是MILLION PLACES巡演影像与宣传幕后；到期CDTVa8WdF6QdfFc不重试，MusicStation原档完整片源仍未取得。",
+          "help": "提供仍可观看的Music Station等版权方完整MILLION PLACES或后来官方练习；到期CDTV与巡演不作为替代。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxDMFHNSckK",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=c5Fc6r4A9d8"
+        }
+      ]
+    },
+    {
+      "name": "YOUNG POSSE",
+      "newGapCount": 6,
+      "replacementCount": 0,
+      "items": [
+        {
+          "workId": "rec28ldfRTrFYu",
+          "song": "YOUNG POSSE UP (feat. Verbal Jint, NSW yoon, Token)",
+          "version": "含Verbal Jint／NSW yoon／Token合作版",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "新检索仍为合作MV、节庆记录与原POSSE UP!的同名误配。既有tx9GAZpxo0w只有152秒、原合作MV201秒；新后备类型授权不消除合作段落/完整范围缺口。",
+          "help": "提供这版实际参与的成员／合作方及完整表演链接；可用已授权的官方成员版后备，但需注明差异。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrFYu",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=eaGsVrnH-5k"
+        },
+        {
+          "workId": "rec28ldfRTrGj0",
+          "song": "나의 이름은 (ROTY)",
+          "version": "原作品未另标版本",
+          "kind": "新增舞台缺口",
+          "category": "场合或素材类型不符",
+          "problem": "新检索找到本人采访推荐的是Scars performance video，并非ROTY；ROTY的演唱会/活动记录不采用。",
+          "help": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrGj0",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=6czkm_qdVlw"
+        },
+        {
+          "workId": "recvxIZRWKntfT",
+          "song": "I know",
+          "version": "原版／SUNHYE与JIEUN二人",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "YOUNG POSSE日本官网MV索引列出I know，Genie/Qobuz明确SUNHYE与JIEUN二人；未取得两人同曲完整节目/后备表演。",
+          "help": "提供该曲对应二人分队的完整打歌、官方练习或官方表演，并核对具体参与者与版本；合作曲成员版授权不允许改用全团或其他成员阵容。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZRWKntfT",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=aAjb-d4UkPc"
+        },
+        {
+          "workId": "recvxIZY0lR25A",
+          "song": "Pilot2",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "官方日本站列出2026-07-26 Pilot2 MV；其他检索为反应视频/授权音频/活动，未取得同曲独立官方表演。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZY0lR25A",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=GaqBpWroH68"
+        },
+        {
+          "workId": "recvxIZY0lX8bP",
+          "song": "kawa",
+          "version": "原版／DOEUN与JIANA二人",
+          "kind": "新增舞台缺口",
+          "category": "参与者范围不符或未证",
+          "problem": "新检索kawa仍为DOEUN/JIANA原MV及mixtape发行信息，没有可靠完整二人表演影像；不以全团演出代替。",
+          "help": "提供该曲对应二人分队的完整打歌、官方练习或官方表演，并核对具体参与者与版本；合作曲成员版授权不允许改用全团或其他成员阵容。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxIZY0lX8bP",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=LY4SA0X2kvg"
+        },
+        {
+          "workId": "recvxJ03dOg1Gc",
+          "song": "미스터 2026",
+          "version": "原版",
+          "kind": "新增舞台缺口",
+          "category": "未找到合格来源",
+          "problem": "新检索显示Mr2026为东京演唱会开场，Live Nation路线也是巡演；没有取得普通节目或完整官方后备。",
+          "help": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。",
+          "link": "https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxJ03dOg1Gc",
+          "originalVideoUrl": "https://www.youtube.com/watch?v=lFxXpXk35Eo"
+        }
+      ]
+    }
+  ]
+}

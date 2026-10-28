@@ -1,5 +1,11 @@
 # 状态：正式v201，PR45增量与PR44均未合并
 
+## 最新工作：分团人工补充清单（2026-10-29）
+
+用户选择对熟悉的团体手动补充信息。已整理 [45团详细待办](human-help-by-group-20261029.md)及[可填写CSV](human-help-by-group-20261029.csv)，另6团没有进入当前队列；161条分类任务不等于161首独立歌曲。109新增舞台／11旧替换、24人物、7统计、7日期逐项ID与冻结源匹配，另列tripleS差350635和2项照片限制。验证与生成器在 `evidence/20261029-human-help/`，不含私人记录或备份。
+
+优先核查用户新提供的链接、姓名／时间点、原公告和统计来源；待证事实未因生成清单而关闭。当前任务分支仍为 `codex/stage-person-followup-v199-20261028`，本轮核实PR44／45均draft/open且未合main。GitHub同步包含文档；正式站仍v201，本轮没有应用修改或部署。跨电脑见 [NEXT-COMPUTER-HANDOFF](NEXT-COMPUTER-HANDOFF.md) 和[可复制指令](RESUME-PROMPT-20261029.txt)。
+
 ## 最新交付：正式v201，未解决清单按用户选择保留（2026-10-29）
 
 正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已 **v201／succeeded／496舞台**。GitHub实现 `7cfba28a24b260163f4c5f7eb55c87a28da731d8`，Sites源 `374ebe6de70a2e51641361740dde68246aed8b1c`，部署 `appgdep_6ae2262ced008191a526c05ac512fcf5`。两种交付分别留证，PR44／PR45仍draft/open、未合main；不要重复部署v201。

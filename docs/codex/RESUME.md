@@ -1,4 +1,18 @@
-# 接续：正式v197与剩余资料核对
+# 接续：正式v198与舞台／人物／统计缺口
+
+## 最新交付：v198上线，新增11练习室、3作品人物资料与2项统计（2026-10-28）
+
+正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已发布 **v198 / succeeded**。GitHub实现`365c0244af3dd94e8a112e6238d9ee7cd9aba5e1`已推送并读回`codex/statistics-relations-followup-20261027` / [PR44](https://github.com/KAtOReNA7/idol/pull/44)，仍draft/open、未合main；后续交接提交在其后。Sites源`3af1db15c0fb3c15a07343c79ff0fa9a971f6263`，部署`appgdep_6ae1941749f08191aafaa7fbbc2b356e`。两套交付回执分别记录于`docs/codex/evidence/20261028-stage-fill/publication.json`。
+
+原123待核舞台全部做了新一轮有界来源研究，实际采用11个官方完整单曲资料支持的练习室，正式来源482→493，剩112。原482来源／评分绑定及87补充记录保持。新增11均由真实owner原生导出核实空分后建立精确来源，0分不视为空。未完整播放或逐句比对音轨的限制已显示，练习室不代表现场人声。Right Now普通版`4xer6EPtYdw`按同级点赞采用，用户确认完整的固定版`y4Tr8LE5yV4`仍是只读补充，不再次询问完整性。19旧活动来源替代单列，未改旧评分含义。
+
+新增Weeekly Stranger英文版、HITGS GROSS/CHARIZZMA共3作品16人次录音／发行署名，累计45作品279参考槽128份既有原件，新增认人原图0。6无真人规则保持；131原无私人关系作品去重覆盖50、仍81待证，不能自动补全员私人关系。BADVILLAIN 5,367是Circle Album两周下界，BEWAVE 725是单周下界，均不称全球累计；未知统计17→15（X5/销量7/一位3）。tripleS 2,092,239及差额366,550、fromis_9 1,152,076保持。
+
+186项定向测试、TypeScript、正式构建通过，本地与线上各51布局通过；每侧11封面字节/SHA、48次人物图片加载（16槽×3宽）、9原图开关通过。线上使用真实匿名目录，私人写入0。只读测试拦截的Cloudflare自动POST及初次独立下载403分开记录，不能称全部网络日志为0。3341正式源文件逐字节一致，5375缺席文件仅为固定远端原件；完整包1413文件、展开44,048,384bytes，578既有随包原件＋11新舞台封面、5418远端和10受限排除、23迁移及元数据文件保持。此前本地hydration期间过早点击的2项失败已留证，等待初始化后通过，不宣称应用修复。
+
+保持51团设计、Apple Music主站、原图、ID/关系、个人评分/备注/观看、访问及owner保存鉴权。现有关系认人缺口0、旧低清0，A–Y/Z禁止重导；628旧封面＋15舞台封面。public/1owner/0外部/0组/revision2及native/epoch6/原快照/done206保持。真实owner导出只在本地，发布前全表hash摘要可追溯；发布后核原生状态与日志，未再次全量读回个人值，不能称全量个人hash复验。个人页统一排版仍待用户决定。
+
+继续112舞台逐项清单`docs/codex/evidence/20261028-stage-fill/remaining-stage-ledger.json`，19旧活动替代、81作品人物证据、15未知统计及7原事实生效日；当前人物/统计逐项表`docs/codex/evidence/20261028-stage-fill/remaining-person-statistics.json`。YouTube后段429后停止该路线，不能绕过；Geenius单日Retail217只是研究，不与Album相加。优先Codex内置标签页，避免操作用户Chrome；本轮IAB两次超时，采用公开接口和独立临时无头验证，未干扰日常Chrome。报告`docs/codex/stage-practice-fill-report-20261028.md`；跨电脑入口`docs/codex/NEXT-COMPUTER-HANDOFF.md`。下方v197/123/84/17及未部署均为历史，不覆盖本节。
 
 ## 最新交付：v197上线，选源规则已落实（2026-10-28）
 

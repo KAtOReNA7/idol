@@ -1,14 +1,14 @@
 # 舞台练习室补齐、人物资料与统计续作（2026-10-28）
 
-本轮已在正式工程 `apps/idol-site/` 完成本地实现与验证：新增11条精确舞台来源，已选来源482→493，原123条待核舞台剩112；新增3作品16人次公开发行署名；补入2项有明确周期的销量下界，未知统计17→15。GitHub提交与正式站部署尚待主任务填写独立回执，本报告不把本地完成或源目录同步写成已上线。最近已确认的正式基线为v197。
+本轮已在正式工程 `apps/idol-site/` 完成本地实现与验证：新增11条精确舞台来源，已选来源482→493，原123条待核舞台剩112；新增3作品16人次公开发行署名；补入2项有明确周期的销量下界，未知统计17→15。本轮已推送GitHub并发布正式v198，两套回执分别记录，PR44仍未合main。
 
 | 交付位置 | 本报告状态 |
 | --- | --- |
 | 本地正式工程 | 实现及下列验证完成 |
-| GitHub任务分支／PR44 | 本轮提交、推送读回与最终提交ID待填写；不据此宣称合并main |
-| 正式站 | 本轮版本、Sites源ID、部署ID及线上复验待填写 |
+| GitHub任务分支／PR44 | 实现`365c0244af3dd94e8a112e6238d9ee7cd9aba5e1`已推送读回；PR44 draft/open未合main |
+| 正式站 | v198 / succeeded；源`3af1db15c0fb3c15a07343c79ff0fa9a971f6263`；部署`appgdep_6ae1941749f08191aafaa7fbbc2b356e`；线上51布局通过 |
 
-正式站地址：[idol-lens-private](https://idol-lens-private.wuke40758.chatgpt.site/)。本轮证据位于 [20261028-stage-fill](evidence/20261028-stage-fill/)，源目录同步记录见 [source-sync.json](evidence/20261028-stage-fill/source-sync.json)；该记录不是正式部署回执。
+正式站地址：[idol-lens-private](https://idol-lens-private.wuke40758.chatgpt.site/)。本轮证据位于 [20261028-stage-fill](evidence/20261028-stage-fill/)，源目录同步记录见 [source-sync.json](evidence/20261028-stage-fill/source-sync.json)；正式回执见 [publication.json](evidence/20261028-stage-fill/publication.json)。
 
 普通打歌节目优先、完整官方练习室其次的规则继续生效。候选先核真实场合、同曲同语种／版本及合作阵容，再比较合格候选的点赞；演唱会、节庆活动、制作型表演、别语种和节选不能凭点赞更高入选。用户否决的三个视频继续排除。原123条待核作品均经过本轮有界公开来源研究，不代表穷尽全网或完成逐条完整播放；后段YouTube请求遇HTTP429后停止新增该路线，没有绕过限制。
 
@@ -44,7 +44,7 @@ Right Now固定练习室 `y4Tr8LE5yV4` 的完整性沿用用户确认，不再�
 | 原始发布或可访问性未证 | 6 | 追溯第一方公开原档；访问受限保留原因，不将转载升级官方 |
 | 合计 | 112 | 各条保留已查来源与下一步路线 |
 
-另有19条历史活动来源需要寻找替代，属于独立队列，不并入112，也不从493直接扣除。此次未替换这些旧源；[历史来源研究](evidence/20261028-stage-fill/replacement-a.json) 中的新线索仍需精确版本、点赞及owner评分核验。493表示已有精确选源数量，不表示493条都重新通过新政策的全部采用条件。
+另有19条历史活动来源需要寻找替代，属于独立队列，不并入112，也不从493直接扣除。此次未替换这些旧源；[16项历史来源研究](evidence/20261028-stage-fill/replacement-a.json) 与 [IVE WAVE／CRUSH、XG MILLION PLACES三项研究](evidence/20261028-stage-fill/research-b.json) 合计覆盖19项，新线索仍需精确版本、点赞及owner评分核验。493表示已有精确选源数量，不表示493条都重新通过新政策的全部采用条件。
 
 人物资料本轮定向核6作品，采用Weeekly《Stranger》英文版六人、HITGS《GROSS》五人及《CHARIZZMA》五人的公开录音／发行阵容，共3作品16人次。累计45作品、279认人参考槽、128份不同的既有原件；新增认人原图文件0。署名来源与逐人MV出镜分开，不由发行名单推定真人出镜，不创建私人关系、不改变评分策略。原42作品记录、6项无真人规则及原件保持，NMIXX《Caution》、HITGS《HAPPY》《A-HA!》仍待更精确证据。详见 [人物研究及本地集成记录](evidence/20261028-stage-fill/person-followup.json)。
 
@@ -60,4 +60,10 @@ Right Now固定练习室 `y4Tr8LE5yV4` 的完整性沿用用户确认，不再�
 
 导入前通过既有已登录owner会话取得真实原生导出，时间为2026-10-28 05:27:38 UTC；原始导出仅留本地。可公开的 [保护摘要](evidence/20261028-stage-fill/owner-baseline.json) 仅含计数和哈希，无账号身份、cookies、备注或评分原值。日志基线206，真实私人写入0；本轮未改访问配置和owner保存鉴权。该导入前证据不代替发布后的完整个人值读回复验。
 
-未执行完整视频播放、逐句音轨比对、真实私人保存、原生缩放或新Figma验收。正式发布和线上复验完成后，须在本报告及独立发布回执中分别补齐GitHub提交、Sites源、部署版本／ID和读回结果；未取得回执前保持发布待完成状态。
+未执行完整视频播放、逐句音轨比对、真实私人保存、原生缩放或新Figma验收。正式v198与线上51布局已复验通过；线上真实匿名API、11封面字节/SHA、48次人物图片加载（16槽×3宽）和9原图开关通过。public/1owner/0外部/0组/revision2及native/epoch6/原快照/done206保持。3341正式源文件字节一致；完整TAR44,048,384bytes/1413文件，含11新舞台原图，23迁移及元数据文件保持。发布后未再次全量读取个人值；不能把原生状态与保存日志核对称为全表个人hash验收。
+
+线上复验使用真实匿名目录，各51布局检查的原始控制台网络日志对应只读守卫拦截的51次Cloudflare自动POST；应用页面错误、应用控制台问题、HTTP资源失败及私人写入均0。首次独立海报请求403记录保留，后续正常浏览器图片响应11/11为HTTP200且原字节/SHA/尺寸通过，未改应用或绕过验证码。详情见 [线上汇总](evidence/20261028-stage-fill/online-browser-summary.json)。
+
+当前跨电脑可直接使用 [112舞台队列](evidence/20261028-stage-fill/remaining-stage-ledger.json) 和 [81人物／15统计／7生效日队列](evidence/20261028-stage-fill/remaining-person-statistics.json)，均与本轮采用后的正式数据逐项复算一致；19历史活动替代仍单列。
+
+已随仓库保存两张正式站代表截图：[Right Now舞台](evidence/20261028-stage-fill/screenshots/online-right-now-390.png)、[BADVILLAIN统计](evidence/20261028-stage-fill/screenshots/online-badvillain-390.png)，其余布局以逐项浏览器断言记录为准。

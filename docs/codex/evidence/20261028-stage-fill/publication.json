@@ -1,0 +1,135 @@
+{
+  "checkedAt": "2026-10-28T06:21:58.588Z",
+  "githubImplementation": "365c0244af3dd94e8a112e6238d9ee7cd9aba5e1",
+  "githubRemote": "codex/statistics-relations-followup-20261027",
+  "githubReadback": true,
+  "pullRequest": {
+    "url": "https://github.com/KAtOReNA7/idol/pull/44",
+    "state": "OPEN",
+    "isDraft": true,
+    "merged": false
+  },
+  "version": {
+    "id": "appgprj_6acb4fa532b88191ae2588c24b724b17~appgver_5abf8153b3d08191a97c3893c0b436c3",
+    "project_id": "appgprj_6acb4fa532b88191ae2588c24b724b17",
+    "version_number": 198,
+    "source": {
+      "commit_sha": "3af1db15c0fb3c15a07343c79ff0fa9a971f6263"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_000000008b2081fd983fb115e61adf83",
+      "content_hash": "sha256:0a9f107287e2b56a75ac6a101bd74f222a211a68c9f314746330949f6c1edd33",
+      "size_bytes": 43929600,
+      "file_count": 1413
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6ae1941749f08191aafaa7fbbc2b356e",
+    "project_id": "appgprj_6acb4fa532b88191ae2588c24b724b17",
+    "title": "stage. · 私人女团手帐",
+    "version_id": "appgprj_6acb4fa532b88191ae2588c24b724b17~appgver_5abf8153b3d08191a97c3893c0b436c3",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://idol-lens-private.wuke40758.chatgpt.site",
+    "has_mcp": true,
+    "screenshot_asset_pointer": "sediment://file_00000000eb0081f88fa11fbd2a890ea9",
+    "provider_deployment_id": "site---6acb4fa532b88191ae2588c24b724b17",
+    "failure_message": null,
+    "env_set_revision": 2,
+    "updated_at": "2026-10-28T06:21:24.418401+00:00"
+  },
+  "accessBefore": {
+    "mode": "public",
+    "owners": 1,
+    "external": 0,
+    "groups": 0,
+    "revision": 2
+  },
+  "accessAfter": {
+    "mode": "public",
+    "owners": 1,
+    "external": 0,
+    "groups": 0,
+    "revision": 2
+  },
+  "storageBefore": {
+    "source": "native",
+    "epoch": 6,
+    "activeSnapshot": "0180f4aa-664f-48e9-a98a-958d4ae649f9",
+    "journal": [
+      {
+        "status": "done",
+        "count": 206
+      }
+    ]
+  },
+  "storageAfter": {
+    "source": "native",
+    "epoch": 6,
+    "activeSnapshot": "0180f4aa-664f-48e9-a98a-958d4ae649f9",
+    "journal": [
+      {
+        "status": "done",
+        "count": 206
+      }
+    ]
+  },
+  "privateWrites": 0,
+  "ownerExportBefore": "owner-baseline.json",
+  "ownerFullPersonalReadbackAfter": false,
+  "productionBrowserVerification": {
+    "checkedAt": "2026-10-28T06:30:01.735Z",
+    "deployment": {
+      "version": 198,
+      "sourceCommitSha": "3af1db15c0fb3c15a07343c79ff0fa9a971f6263",
+      "deploymentId": "appgdep_6ae1941749f08191aafaa7fbbc2b356e",
+      "parentVerifiedSucceededAt": "2026-10-28T06:20:22Z"
+    },
+    "mode": "production-anonymous-readonly",
+    "catalogInterception": false,
+    "userBrowserOrProfileUsed": false,
+    "layoutChecks": 51,
+    "stageNewLayouts": 33,
+    "stageExistingBindingLayouts": 3,
+    "publicPeopleLayouts": 9,
+    "statisticsLayouts": 6,
+    "stageTabRoundTrips": 36,
+    "posterNormalBrowserHttpByteShaChecks": 11,
+    "posterDecodedDimensionChecks": 33,
+    "recognitionImageLoads": 48,
+    "originalOpenCloseInteractions": 9,
+    "statisticsSourceExpansions": 6,
+    "applicationPageErrors": 0,
+    "applicationConsoleIssues": 0,
+    "httpResourceFailures": 0,
+    "rawConsoleIssues": 51,
+    "readonlyGuardBlockedCloudflareRequests": 51,
+    "privateWrites": 0,
+    "passed": true,
+    "reports": [
+      "online-browser.json",
+      "online-people-statistics-browser.json"
+    ],
+    "preservedInitialReports": [
+      "online-browser-first-attempt.json",
+      "online-people-statistics-browser-first-attempt.json"
+    ],
+    "firstStandalonePosterRequestHttp403": true,
+    "limits": [
+      "Real anonymous production UI/API; no fixture or catalog patch. Isolated fresh headless system Chrome; no user session.",
+      "51 raw console resource errors are separately retained and classified as Cloudflare challenge POST requests stopped by the read-only guard.",
+      "First standalone poster API request was403; actual page image HTTP200 byte/SHA/dimensions all passed.",
+      "No owner/private-field hash verification in this subtask, private save, native zoom, or complete video playback/audio comparison."
+    ]
+  },
+  "sourceVerification": "source-verification.json",
+  "packageVerification": "package-verification.json",
+  "focusedValidation": "validation.json",
+  "latestRemainingQueues": [
+    "remaining-stage-ledger.json",
+    "remaining-person-statistics.json"
+  ]
+}

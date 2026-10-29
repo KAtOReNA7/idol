@@ -1,5 +1,7 @@
 # 状态：正式v202；PR47本地500舞台未部署
 
+当前补充（2026-10-29）：用户暂无STAYC LIT／MEOW、IVE Be Alright片源，不推定无来源；新其他方向检索采用0。旧个人页JINNI／KIM GARAM缺页与BADVILLAIN七人入口已核为既有修复；修正历史名册测试的旧LOONA／EVERGLOW假设，10项通过。只有测试和文档修改，数据／原图／运行代码保持，正式仍v202，无部署／私人读写。个人页具体统一方案及待选范围见 `member-page-layout-followup-20261029.md`，尚未实施；旧338上下文统计未重复全量检查。
+
 ## 最新续作：本地500舞台，正式仍v202（2026-10-29，未部署）
 
 从PR47 `ec9efbc590673b8bbb98e6c98db303303a3b8aa0` 接续同一 `codex/group-evidence-followup-20261029`，远端仍draft/open/unmerged。GitHub交付单独见 `docs/codex/evidence/20261029-next-followup/github-delivery.json`；后续fetch最新PR47 HEAD，不从旧main接续，不reset/clean/强推或恢复旧stash。新增之前已保留本地57文件外部SHA备份；普通Git代理失败时以GitHub连接器精确Git对象快进交付，不冒称shell fetch成功。

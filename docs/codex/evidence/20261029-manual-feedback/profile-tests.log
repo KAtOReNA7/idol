@@ -1,0 +1,18 @@
+✔ nmixx: historical detail renders, while current roster and source relations stay unchanged (18.501ms)
+✔ lesserafim: historical detail renders, while current roster and source relations stay unchanged (11.4242ms)
+✔ all seven BADVILLAIN profiles link to their exact shared journal and preserve artist return (11.1414ms)
+✔ loona current 11, history 12: real IDs deduplicated and SSR scopes explicit (584.7339ms)
+✔ everglow current 4, history 6: real IDs deduplicated and SSR scopes explicit (264.6409ms)
+✔ kep1er current 6, history 9: real IDs deduplicated and SSR scopes explicit (181.1239ms)
+✔ union uses stable ID not names and does not expand unrelated artists (0.7248ms)
+✔ history API projection includes former solo/collaboration work and exact personal summaries without writes (1.8047ms)
+✔ only three artist routes preserve history through work return and reject unsafe variants (0.9433ms)
+✔ former portraits follow the current artist contract; known EVERGLOW archive links remain reachable and other fallbacks stay scoped (1198.1835ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2678.8583

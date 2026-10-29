@@ -1,5 +1,9 @@
 # 跨电脑接续：正式v202，PR47最新分支
 
+## 当前反馈与个人页复核（2026-10-29，未部署）
+
+用户暂未提供STAYC LIT／MEOW、IVE Be Alright新片源，不代表不存在，不重复问同一批。其他六作品新检索无新增合格绑定；500本地／497线上、105新增缺口／11替换等数字保持。旧个人页报告的JINNI／KIM GARAM缺页和BADVILLAIN七人入口已由既有代码解决；本次只修旧LOONA／EVERGLOW名册测试的退役设计假设，10项通过，应用／数据／图片未改。当前复核与待选方案：`docs/codex/member-page-layout-followup-20261029.md`；证据 `docs/codex/evidence/20261029-manual-feedback/review.json`。个人页统一范围正在等待用户选择，未提前改版；旧v7全量计数保留为历史，未重复338上下文目视。本轮仍不部署、无私人读写；最新GitHub HEAD看实际远端，不停留在下节实现SHA。
+
 ## 最新续作：本地500舞台，正式仍v202（2026-10-29，未部署）
 
 从PR47 `ec9efbc590673b8bbb98e6c98db303303a3b8aa0` 接续同一 `codex/group-evidence-followup-20261029`，远端仍draft/open/unmerged。GitHub交付单独见 `docs/codex/evidence/20261029-next-followup/github-delivery.json`；后续fetch最新PR47 HEAD，不从旧main接续，不reset/clean/强推或恢复旧stash。新增之前已保留本地57文件外部SHA备份；普通Git代理失败时以GitHub连接器精确Git对象快进交付，不冒称shell fetch成功。

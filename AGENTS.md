@@ -1,5 +1,9 @@
 # 项目协作入口
 
+## 当前反馈与个人页复核（2026-10-29，未部署）
+
+用户对STAYC LIT／MEOW、IVE Be Alright补充链接回答“没有”，只表示暂无线索，不代表视频不存在；不要重复索要同一批链接。新查其他六作品方向无新合格舞台，500本地／497线上及105新增缺口＋11旧替换保持。复核确认旧排版报告中的JINNI／KIM GARAM历史档案和BADVILLAIN七人手帐入口已在后续代码解决，不能再当当前缺失。旧LOONA／EVERGLOW历史名册测试假设已按当前批准设计修正，精确ID、来源图片、历史范围及未知ID拒绝仍核；10专项通过，仅测试／文档修改。旧v7的338上下文全量计数未重做，不冒称当前全量目视。个人页统一方案已具体列在 `docs/codex/member-page-layout-followup-20261029.md`，范围等待用户选择，未实施。反馈与研究记录 `docs/codex/evidence/20261029-manual-feedback/review.json`；正式仍v202，无新版本／部署／私人读写。
+
 ## 最新续作：本地500舞台，正式仍v202（2026-10-29，未部署）
 
 从PR47 `ec9efbc590673b8bbb98e6c98db303303a3b8aa0` 接续同一 `codex/group-evidence-followup-20261029`，远端仍draft/open/unmerged。GitHub交付单独见 `docs/codex/evidence/20261029-next-followup/github-delivery.json`；后续fetch最新PR47 HEAD，不从旧main接续，不reset/clean/强推或恢复旧stash。新增之前已保留本地57文件外部SHA备份；普通Git代理失败时以GitHub连接器精确Git对象快进交付，不冒称shell fetch成功。

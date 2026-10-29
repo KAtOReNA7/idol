@@ -1,5 +1,7 @@
 # 接续：正式v202与舞台／人物／统计缺口
 
+最新补充：用户对STAYC LIT／MEOW、IVE Be Alright补链接答“没有”，不推定无合格视频，不重复问。本地500／线上497及155分类项保持。旧个人页报告的两个历史缺页与BADVILLAIN七人入口已由后续实现解决；本轮修复旧LOONA／EVERGLOW名册测试假设，10项通过，仅测试／文档改变。看 `member-page-layout-followup-20261029.md` 与 `evidence/20261029-manual-feedback/review.json`；个人页统一方案等待用户选范围，未实施，旧338上下文统计不是本次全量验收。继续保留设计／数据／原图／关系／owner权限，不部署。
+
 ## 最新续作：本地500舞台，正式仍v202（2026-10-29，未部署）
 
 从PR47 `ec9efbc590673b8bbb98e6c98db303303a3b8aa0` 接续同一 `codex/group-evidence-followup-20261029`，远端仍draft/open/unmerged。GitHub交付单独见 `docs/codex/evidence/20261029-next-followup/github-delivery.json`；后续fetch最新PR47 HEAD，不从旧main接续，不reset/clean/强推或恢复旧stash。新增之前已保留本地57文件外部SHA备份；普通Git代理失败时以GitHub连接器精确Git对象快进交付，不冒称shell fetch成功。

@@ -1,5 +1,7 @@
 请接续 https://github.com/KAtOReNA7/idol 的最新PR47。
 
+最新补充：先读docs/codex/member-page-layout-followup-20261029.md和evidence/20261029-manual-feedback/review.json。用户暂无STAYC LIT／MEOW、IVE Be Alright新片源，不重复问、不推定不存在；新其他方向采用0，500本地／497线上保持。旧JINNI／KIM GARAM缺页和BADVILLAIN七人入口已核为既有修复，不重复整改；旧LOONA／EVERGLOW名册测试已修正，10专项通过，仅测试／文档变化。个人页统一范围正在等待用户选择，尚未实施；不把旧v7的338上下文统计冒称当前全量验收。后续仍不自动部署。
+
 先检查并保护本地未提交与未跟踪文件，未克隆则克隆。禁止reset、clean、强推、覆盖本地修改或自动恢复旧stash。
 显式fetch origin/main及codex/group-evidence-followup-20261029，核PR44—47；最新接续基线为PR47，不从旧main或PR44/45接续。另核codex/statistics-relations-followup-20261027、codex/stage-person-followup-v199-20261028、codex/human-help-handoff-sync-20261029，确保PR46／dada774及PR47全部成果都在。普通Git网络失败时记录失败，可用GitHub Git对象API普通快进，树SHA／父提交／预期远端HEAD和读回必须核实；不要伪称fetch成功。
 

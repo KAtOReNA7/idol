@@ -10,6 +10,6 @@
 
 本次运行四个相关测试文件，**22 项全部通过**，覆盖观看线索校验、禁用结束裁切、无评分提升、既有 Hey Gabby 和公开说明回归。仅数据与说明变更，没有修改类型／组件，没有重复构建或继承为新一轮生产验收。实际组件的当前数据静态渲染另见 `../evidence/20261029-beep-watch-position/ui-readback.json`；它不是浏览器目视、外链播放或真实 owner 保存验证。
 
-采纳与前后值见 `../evidence/20261029-beep-watch-position/adoption.json`。本次没有 Sites 版本保存或部署，正式站沿用此前只读核实的 v201；本次未重新查询线上，不声称新发布或实时生产回验。GitHub 提交及读回单独保存到同目录 `github-delivery.json`，接续须 fetch 最新 PR47。
+采纳与前后值见 `../evidence/20261029-beep-watch-position/adoption.json`。实现提交 `a18ba3de71a87d3c73f39404693f3875efacddf2` 已普通推送，远端分支与 GitHub PR 读回一致，仍 draft/open/unmerged；同目录 `github-delivery.json` 与独立 SSR 回执由后续文档提交保存，接续须 fetch 最新 PR47。本次没有 Sites 版本保存或部署，正式站沿用此前只读核实的 v201；本次未重新查询线上，不声称新发布或实时生产回验。
 
 下一步无需再次询问用户视频是否包含完整日语版；这一人工观察已收到。若要转为完整可评分舞台，仍需准确首尾／全片音轨及成员范围核验，并取得新鲜 owner 空分、完整保存日志与线上旧绑定。其余没有新证据的事项继续保留，个人页统一排版仍待决定。

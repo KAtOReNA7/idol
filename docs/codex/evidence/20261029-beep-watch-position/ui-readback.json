@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T07:38:31.995Z",
+  "result": "PASS",
+  "scope": "Independent public JSON diff and actual component SSR only; no raw human response or private state.",
+  "structuralAudit": {
+    "result": "PASS",
+    "baselineCommit": "750500b826c328ef1001ec2ea297bba4886e4c97",
+    "changedWorkCount": 1,
+    "changedLeadCount": 1,
+    "changedLeadFields": [
+      "checkedAt",
+      "kind",
+      "leadTimeEvidence",
+      "leadTimeSeconds",
+      "reason",
+      "url"
+    ],
+    "allOtherWorksUnchanged": 136,
+    "restoringOldLeadRestoresWholeSupplement": true,
+    "adoptionMatches": true,
+    "noPlayableClipEndDurationOrScoreBinding": true,
+    "formalSources": {
+      "count": 496,
+      "byteEqual": true,
+      "sha256": "b8e276f3772c64c74095d5a363ce2b1d186a421854408677a91a478b2edd2bac"
+    },
+    "trackedAppChanges": [
+      "apps/idol-site/data/stages/supplements.json",
+      "apps/idol-site/tests/helpers/pr47-continuation-baseline.cjs",
+      "apps/idol-site/tests/pr47-continuation-evidence.test.cjs"
+    ],
+    "otherTrackedApplicationImagesAuthPrivateFilesUnchanged": true,
+    "hashes": {
+      "supplements": "0ea798e6e9bfe21de5ebeb583d15b9a83e0002b621682ffbcef0fc1bd6ae2512",
+      "adoption": "ff785c0cf9f5dbd0885857f0ac7c4b838144d3fd730e765d2c5bf06bdc77fdf2"
+    }
+  },
+  "ssr": {
+    "result": "PASS",
+    "method": "Actual app/page.tsx StageSupplements TypeScript/VM extraction matching watch-leads.test.cjs; actual stageSupplementForWork projection of current data.",
+    "validLead": true,
+    "projectedLeadCount": 1,
+    "existingAlternativeCount": 1,
+    "href": "https://www.youtube.com/watch?v=Qfez0Db9Iqc&t=211",
+    "displayedNavigation": "可从 3:31 附近开始寻找歌曲；不是完整片段。",
+    "nearbyAndIncompleteClipDisclaimer": true,
+    "unconfirmedBoundariesVersionAndPerformerScope": true,
+    "viewOnlyAndNoStageScoringDisclaimer": true,
+    "allAnchorsTargetBlankNoopenerNoreferrer": true,
+    "noPlayerInputFormButtonOrScript": true,
+    "noEndWindowOrDurationOrOfficialChapterDisplayed": true,
+    "stageSourceKey": null,
+    "inputUnchanged": true,
+    "htmlSha256": "2032fe14cda4257fa8e4d14a5f5839a2d832937eb452cfb04de7b1abbe9d3cb1"
+  },
+  "checkHistory": [
+    {
+      "kind": "harness_only",
+      "detail": "Initial audit harness used a nonexistent source path, then hit Node's default git-output buffer limit; Python completed the full byte comparison. Initial SSR assertion expected wording that differed from the existing component; corrected to the observed unchanged component text. No application edits were made."
+    }
+  ],
+  "limitations": [
+    "Static rendering only; no browser layout, external video, full playback or audio verification.",
+    "Approximate viewing navigation is not an independently confirmed official chapter.",
+    "No service, production build, deployment or private read/write."
+  ],
+  "findings": []
+}

@@ -12,6 +12,6 @@
 
 HITGS 候选未达到同套与质量双条件，15 原件留本机 `E:\project\idol-local-backups\20261029-pr47-continuation\hitgs-candidates`；运行日志在该批次 `validation` 目录，QA 截图在相邻 `20261029-pr47-continuation-qa`，均不上传。生成 tsbuildinfo 单独备份后按基线字节恢复。浏览器／5189 QA 服务均已关闭。
 
-交付：沿原 PR47 普通推送代码与本工作记录，推送后核远端 SHA 与 PR 状态，回执 `../evidence/20261029-pr47-continuation/github-delivery.json` 单独记录实现提交。未合并 main，不申请发布，不把 GitHub 回执当正式部署。
+交付：实现提交 `2610667653e3a8d1cc07ae26a60be7d111f4fb36` 已沿原 PR47 普通推送，`ls-remote` 与 GitHub 插件读回一致，PR 保持 draft/open/unmerged；推送后工作树干净。回执 `../evidence/20261029-pr47-continuation/github-delivery.json` 在随后单独文档提交保存，不循环自引其自身 SHA；接续仍须 fetch 最新分支。未合并 main，不申请发布，不把 GitHub 回执当正式部署。
 
 接续：优先 BEEP 日语整首起止／完整视频、两条日语节目完整官方片源、其余具名／统计／日期原始证据；没有新输入保持队列。正式来源换绑需新鲜 owner 空分、完整日志、线上原值另核。个人页统一排版仍待决定；其余权限与素材不扩围。

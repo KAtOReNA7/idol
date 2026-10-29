@@ -43,7 +43,7 @@ HITGS 的 15 张候选原件经尺寸、遮挡、服装及来源分组核查，�
 
 ## GitHub 与正式站分开记录
 
-GitHub 保存到原 [draft PR47](https://github.com/KAtOReNA7/idol/pull/47)，不合并、不强推。实现提交与推送读回见本轮 `github-delivery.json`（交付后写入）；工作日志见 [20261029-pr47-continuation](worklogs/20261029-pr47-continuation.md)。公开仓库只新增公共研究、应用及验证资料，不新增私人记录、凭证或候选图片。
+GitHub 已保存到原 [draft PR47](https://github.com/KAtOReNA7/idol/pull/47)，实现提交 `2610667653e3a8d1cc07ae26a60be7d111f4fb36` 普通推送后，远端分支与 PR 读回一致；仍 open/draft/unmerged，不强推。推送回执见本轮 `github-delivery.json`，随后由独立文档提交保存；工作日志见 [20261029-pr47-continuation](worklogs/20261029-pr47-continuation.md)。公开仓库只新增公共研究、应用及验证资料，不新增私人记录、凭证或候选图片。
 
 Sites 只读核实正式站仍 **v201／succeeded**，源 `374ebe6de70a2e51641361740dde68246aed8b1c`，部署 `appgdep_6ae2262ced008191a526c05ac512fcf5`；public／1 owner／0 external／0 groups／revision2。见 `remote-live-readback.json`。本轮 **没有保存新 Sites 版本、没有部署、没有私人读写**；GitHub 更新不等于上线。
 

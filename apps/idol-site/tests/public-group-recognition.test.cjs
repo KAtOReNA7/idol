@@ -22,8 +22,14 @@ const workFor=row=>({id:row.workId,url:`https://www.youtube.com/watch?v=${row.vi
 const dataFor=(work,group)=>({works:[work],members:group.portraits.map(p=>({id:p.memberId,stageName:p.name,groupIds:[group.groupId],formerGroupIds:[]})),ratings:[]});
 
 test('generic references preserve existing public evidence, original bindings and private snapshot bytes',()=>{
- for(const [name,sha] of Object.entries(baseline.protectedFiles))assert.equal(fileHash(path.join(__dirname,'../data',name)),sha,name);
- assert.equal(credits.records.length,102);assert.equal(recognition.records.reduce((n,r)=>n+r.portraits.length,0),527);
+ for(const [name,sha] of Object.entries(baseline.protectedFiles)){
+  // These two append-only collections gained a source-scoped release reference.
+  // Reconstruct the entire v201 file, including its metadata, to keep its hash guard.
+  const collection=name==='public-work-credits.json'?credits:name==='public-work-recognition.json'?recognition:null;
+  const hash=collection?createHash('sha256').update(JSON.stringify({...collection,records:collection.records.slice(0,102)},null,2)+'\n').digest('hex'):fileHash(path.join(__dirname,'../data',name));
+  assert.equal(hash,sha,name);
+ }
+ assert.equal(credits.records.slice(0,102).length,102);assert.equal(recognition.records.slice(0,102).reduce((n,r)=>n+r.portraits.length,0),527);
  assert.equal(source.works.length,24);assert.equal(source.groups.length,11);
  assert.deepEqual(source.works.map(w=>w.workId).sort(),baseline.unverifiedWorkIds.slice().sort());
  assert.equal(new Set(source.works.map(w=>w.workId)).size,24);
@@ -48,7 +54,9 @@ test('all generic portraits retain full existing originals and consistent bounde
  assert.equal(paths.size,63);
 });
 
-for(const row of source.works)test(`read-only generic reference is exact-tuple scoped without participation claims: ${row.workId}`,()=>{
+// MADEIN now has a limited release-cover reference, separately tested in group-followup.
+// Keep its historical generic data and test every still-active generic fallback.
+for(const row of source.works.filter(r=>r.workId!=='rec28ldfRTrPi9'))test(`read-only generic reference is exact-tuple scoped without participation claims: ${row.workId}`,()=>{
  const work=workFor(row),group=publicGroupRecognitionForWork(work);
  assert.equal(group.groupId,row.groupId);assert.equal(publicCreditForWork(work),null);assert.deepEqual(publicWorkRecognition(work),[]);
  for(const mismatch of [{id:'wrong-work'},{groupIds:['wrong-group']},{url:'https://www.youtube.com/watch?v=other012345'},{placeholder:{reason:'placeholder'}}])assert.equal(publicGroupRecognitionForWork({...work,...mismatch}),null);

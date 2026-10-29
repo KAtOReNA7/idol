@@ -8604,22 +8604,30 @@
     "recvxyOz5Xo5fW": {
       "alternatives": [],
       "searchReview": {
-        "checkedAt": "2026-10-11T16:58:16.365610+00:00",
-        "accessLimited": false,
-        "outcome": "not_found_in_scope",
-        "summary": "DreamWorks/Gabby官方说明明确本视频为MV制作且属韩语K-POP翻唱合作；同系列Performance Ver.仍标MV，没有独立整曲舞台确证。官方曲长1:59，不能仅因短于两分钟误判，但现有内容仍为MV。",
+        "checkedAt": "2026-10-29T04:15:46.896884Z",
+        "accessLimited": true,
+        "outcome": "verification_limited",
+        "summary": "发行商VLENDING的[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.已有Bugs独立Dance Video目录和Newsis发行报道佐证。现行政策允许官方专门制作表演作为打歌、练习室之后的后备，因此不再仅因标题含[MV]或Performance Ver.排除；当前仅恢复为待核候选，完整首尾、实际语种/音轨与本团表演范围仍未独立核验，未新增舞台或评分绑定。",
         "scope": [
           {
             "url": "https://www.youtube.com/watch?v=xBrrdxtyWHw",
-            "label": "原作品身份参照：Hey Gabby!；原目录标记官方MV，不能仅因官方来源便当作独立舞台。"
+            "label": "原作品身份参照：Hey Gabby!原MV；本轮不以原MV替代独立制作表演。"
           },
           {
             "url": "https://www.youtube.com/watch?v=z7lv-qLQI3M",
-            "label": "DreamWorks/Gabby官方发布合作MV，不能由Performance Ver.字样改判为独立现场。"
+            "label": "DreamWorks/Gabby原合作MV及制作说明；保留为原作品参照。"
           },
           {
             "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
-            "label": "明确MV Performance Ver.及官方发行商声明。"
+            "label": "[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.；VLENDING 블렌딩，检索元数据标2022-05-09。保留原始标题，仅作待核官方制作表演候选，不改称练习室或现场人声。"
+          },
+          {
+            "url": "https://music.bugs.co.kr/album/20465227",
+            "label": "Bugs发行目录另列2022-05-09 안녕 개비! (Sung by NMIXX) (Dance Video) 02:00，与2022-05-02 MV 02:01分开。目录时长支持版本区分，不证明全程已播放或首尾完整。"
+          },
+          {
+            "url": "https://www.newsis.com/view/NISX20220518_0001876354",
+            "label": "2022-05-18 Newsis报道引用VLENDING，分别提到Hey Gabby MV及Performance video，支持发行来源与独立表演类型；不代替实际视频核验。"
           }
         ],
         "excluded": [
@@ -8627,11 +8635,6 @@
             "url": "https://www.youtube.com/watch?v=xBrrdxtyWHw",
             "title": "已核排除候选 xBrrdxtyWHw",
             "reason": "原作品官方MV，不是本轮要补的独立舞台。"
-          },
-          {
-            "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
-            "title": "已核排除候选 XSpYaEdpKxY",
-            "reason": "官方MV Performance Ver.，按本轮口径无独立舞台确证，保留作品相关视频而非stage。不是因时长排除。"
           },
           {
             "url": "https://www.youtube.com/watch?v=z7lv-qLQI3M",
@@ -8645,11 +8648,28 @@
           }
         ],
         "limitations": [
-          "以上时间为已采集公开证据的整理时间，不表示全部来源在此时重新访问。",
-          "已查范围：DreamWorks/Gabby原始合作说明、官方MV/Performance Ver.及发行曲长。"
+          "本次依据已读取的Bugs正文、Newsis报道和官方视频检索元数据更新研究结论；未重新直接打开或完整播放YouTube。此前YouTube节流后未重试该路线。",
+          "02:00只是Bugs目录时长，不能据此填写completeness=full或versionMatch=true；当前YouTube可播性、首尾完整、实际语种/音轨及本团表演范围仍待核。",
+          "候选原始标题含[MV]不再作为现政策的单独排除理由，但其发行/表演类型证据也不等于已经符合全部采用条件；既有原MV及加工重传的排除保留。",
+          "如完整视频核验合格，采用前仍须取得新鲜owner目标原值与完整分页保存日志，区分空分与0分并核对原来源；截断样本不能通过此门槛。本次没有读取私人值或创建评分绑定。"
         ],
-        "reviewComplete": true,
-        "reopenRequirement": "独立舞台出现后按原曲约1:59核完整性，不能因短于两分钟机械排除，也不能用MV升格。"
+        "publicNote": {
+          "summary": "已找到 NMIXX《Hey Gabby!》的官方 Performance 视频线索。Bugs 将 Dance Video 与原 MV 分开列出，Newsis 也有对应发行报道。视频首尾是否完整、语言和音轨是否与原曲一致仍待核验，目前尚未采用为本条舞台。",
+          "sources": [
+            {
+              "label": "官方 Performance 视频（待核）",
+              "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY"
+            },
+            {
+              "label": "Bugs：Dance Video 目录",
+              "url": "https://music.bugs.co.kr/album/20465227"
+            },
+            {
+              "label": "Newsis：Performance 发行报道",
+              "url": "https://www.newsis.com/view/NISX20220518_0001876354"
+            }
+          ]
+        }
       }
     },
     "recvxyOz5Xqy0Q": {

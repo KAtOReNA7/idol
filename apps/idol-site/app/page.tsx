@@ -57,6 +57,7 @@ import {stageSourceKey,stageHasValidBinding,stageEmbedUrl,stageWatchUrl,formatSt
 import {inQueue as queueIncludes,queueLabels} from '@/lib/idol/queues';
 import {indexWorkNames,matchingWorks,makeWatchSequence,nextInSequence,sortWorks} from '@/lib/idol/watch-sequence';
 import {stageStatusLabel,stageStatusDescription,stageKindLabel,stageMatches} from '@/lib/idol/stage-display';
+import {validStageResearchNote} from '@/lib/idol/stage-public-research';
 import {useBrowseJourney} from '@/components/use-browse-journey';
 import {defaultFilters,type Nav,type Route,type WorkSort} from '@/lib/idol/journey';
 import './music-experience.css';
@@ -381,7 +382,8 @@ const platformLabel={x:'X',youtube:'YouTube',bilibili:'bilibili',naver:'NAVER TV
 function StageSupplements({work}:{work:Work}){
  const original=work.stageSupplement;
  const supplement=original&&work.stage&&!work.stage.clip?{...original,alternatives:original.alternatives.filter(a=>a.platform!=='youtube'||a.sourceId!==work.stage!.videoId)}:original;
- if(!supplement||(!supplement.alternatives.length&&!supplement.watchLeads?.length))return null;
+ const researchNote=supplement?.researchNote&&validStageResearchNote(supplement.researchNote)?supplement.researchNote:null;
+ if(!supplement||(!supplement.alternatives.length&&!supplement.watchLeads?.length&&!researchNote))return null;
  return <section id="other-performances" className="stage-supplements" aria-label="其他观看选择">
   {!!supplement.alternatives.length&&<><h2>其他观看选择</h2><p className="subtle">优先查看打歌节目与练习室。以下视频仅供观看，不用于本条舞台评分。</p><div className="alternative-grid">{supplement.alternatives.map(a=><article className="alternative-card" key={a.id}>
    <div className="alternative-source-class">{performanceLabel(a)} · {performerLabel(a.performerScope)}{a.completeness==='excerpt'?' · 短版表演':''}</div>
@@ -400,6 +402,7 @@ function StageSupplements({work}:{work:Work}){
    {a.leadTimeSeconds!==undefined&&<p>可从 {formatStageTime(a.leadTimeSeconds)} 附近开始寻找歌曲；不是完整片段。</p>}
    <small>{platformLabel[a.platform]} · {a.channel}</small><a className="button" href={a.url} target="_blank" rel="noopener noreferrer">打开相关演出<ArrowUpRight size={15}/></a>
   </article>)}</div></>}
+  {researchNote?<details className="caption-help stage-research-note"><summary>待核说明与来源</summary><p>{researchNote.summary}</p><ul>{researchNote.sources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}<ArrowUpRight size={13}/></a></li>)}</ul><p className="subtle">仍待核验，不用于本条舞台评分。</p></details>:null}
  </section>;
 }
 function PageTitle({overline,title,text,count}:{overline:string;title:string;text:string;count:number}){return <section className="page-title"><span className="eyebrow">{overline}</span><h1>{title}<sup>{count}</sup></h1><p>{text}</p></section>}

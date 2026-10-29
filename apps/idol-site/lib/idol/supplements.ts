@@ -1,5 +1,7 @@
 import metadata from '@/data/stages/supplements.json';
 import type {StageAlternative,StageEvidence,StageSearchReview,StageSelection,StageSupplement,StageWatchLead} from './types';
+import {safePublicStageUrl,validStageResearchNote} from './stage-public-research';
+export {safePublicStageUrl} from './stage-public-research';
 export const stageSupplementMetadata=metadata;
 const kinds=new Set(['press_concert_recording','official_group_fancam','broadcast_stage','concert_stage','studio_performance','produced_dance_performance','showcase_stage','practice_room']);
 const platforms=new Set(['youtube','bilibili','naver','weverse','official_site','x']);
@@ -9,10 +11,6 @@ const rejectedVideoIds=new Set(['l9GLV8Kd-MU','saY9KS7mKvI','BnmwjH-suLg']);
 const practiceTitle=/\bpractice\b|练习室/i;
 // Links only: never proxy arbitrary URLs, load external HTML, embed an unvetted player,
 // or turn a supplement ID into a score-bearing video binding.
-export function safePublicStageUrl(value:unknown):value is string {
- if(typeof value!=='string'||value.length>2000)return false;
- try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&u.hostname.includes('.')&&!/^(?:localhost|127\.|10\.|192\.168\.|169\.254\.|172\.(?:1[6-9]|2\d|3[01])\.)/.test(u.hostname)&&!u.hostname.startsWith('[')&&!/^\d+(?:\.\d+){3}$/.test(u.hostname)&&!u.hostname.endsWith('.localhost')&&!u.hostname.endsWith('.local')&&!u.hostname.endsWith('.internal');}catch{return false;}
-}
 function evidence(v:StageEvidence|undefined){return !!v&&typeof v.note==='string'&&!!v.note.trim()&&Array.isArray(v.urls)&&v.urls.length>0&&v.urls.every(safePublicStageUrl);}
 function date(v:unknown){return typeof v==='string'&&/(?:Z|\+00:00)$/.test(v)&&Number.isFinite(Date.parse(v))&&Date.parse(v)<=Date.now()+60000;}
 function validSelection(v:StageSelection|undefined){return v===undefined||!!v&&typeof v==='object'&&!Array.isArray(v)&&occasions.has(v.occasion)&&evidence(v.evidence)&&(v.camera===undefined||!!v.camera&&['fixed','moving','mixed'].includes(v.camera.mode)&&evidence(v.camera.evidence));}
@@ -62,6 +60,7 @@ export function validStageWatchLead(a:StageWatchLead):boolean{
  return a.platform==='official_site'||(a.platform==='bilibili'&&['www.bilibili.com','bilibili.com'].includes(host))||(a.platform==='naver'&&host==='tv.naver.com')||(a.platform==='weverse'&&host==='weverse.io');
 }
 export function validStageSearchReview(r:StageSearchReview):boolean{
+ if(r?.publicNote!==undefined&&(r.outcome!=='verification_limited'||r.reviewComplete||!validStageResearchNote(r.publicNote)))return false;
  return !!r&&(r.reviewComplete===undefined||(r.reviewComplete===true&&typeof r.reopenRequirement==='string'&&!!r.reopenRequirement.trim()))&&(r.reopenRequirement===undefined||(r.reviewComplete===true&&typeof r.reopenRequirement==='string'&&!!r.reopenRequirement.trim()))&&typeof r.accessLimited==='boolean'&&date(r.checkedAt)&&['not_found_in_scope','verification_limited','alternate_version_found'].includes(r.outcome)&&typeof r.summary==='string'&&!!r.summary.trim()&&Array.isArray(r.scope)&&r.scope.length>0&&r.scope.every(x=>x.label&&safePublicStageUrl(x.url))&&Array.isArray(r.excluded)&&r.excluded.every(x=>x.title&&x.reason&&safePublicStageUrl(x.url))&&Array.isArray(r.limitations)&&r.limitations.every(x=>typeof x==='string'&&!!x.trim())&&!(r.outcome==='not_found_in_scope'&&r.accessLimited);
 }
 function alternativeVisible(a:StageAlternative){
@@ -79,5 +78,6 @@ export function stageSupplementForWork(recordId:string):StageSupplement|null{
  const alternatives=Array.isArray(row.alternatives)?row.alternatives.filter(validStageAlternative).filter(alternativeVisible).sort((a,b)=>selectionPriority(a)-selectionPriority(b)):[];
  const watchLeads=Array.isArray(row.watchLeads)?row.watchLeads.filter(validStageWatchLead).filter(watchLeadVisible).sort((a,b)=>selectionPriority(a)-selectionPriority(b)):[];
  const searchReview=row.searchReview&&validStageSearchReview(row.searchReview)?row.searchReview:undefined;
- return alternatives.length||watchLeads.length||searchReview?{alternatives,...(watchLeads.length?{watchLeads}:{}),...(searchReview?{searchReview}:{})}:null;
+ const researchNote=searchReview?.publicNote;
+ return alternatives.length||watchLeads.length||searchReview?{alternatives,...(watchLeads.length?{watchLeads}:{}),...(searchReview?{searchReview}:{}),...(researchNote?{researchNote:{summary:researchNote.summary,sources:researchNote.sources.map(source=>({label:source.label,url:source.url}))}}:{})}:null;
 }

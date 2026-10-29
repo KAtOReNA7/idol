@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-29T03:21:08.135Z",
+  "scope": "one bounded sample of live save log and native records; not a target-work export",
+  "projectId": "appgprj_6acb4fa532b88191ae2588c24b724b17",
+  "storageMode": "native",
+  "storageEpoch": 6,
+  "storageProjection": {
+    "truncated": false,
+    "truncated_values": 0,
+    "omitted_columns": 0,
+    "omitted_rows": 0,
+    "next_offset": null
+  },
+  "savesProjection": {
+    "truncated": true,
+    "truncated_values": 1,
+    "omitted_columns": 0,
+    "omitted_rows": 0,
+    "next_offset": 1
+  },
+  "nativeRecordsProjection": {
+    "truncated": true,
+    "truncated_values": 1,
+    "omitted_columns": 0,
+    "omitted_rows": 0,
+    "next_offset": 1
+  },
+  "completeTargetOwnerData": false,
+  "completeSaveLog": false,
+  "decision": "No stage adoption: bounded reader truncates values; fresh exact-target owner export and complete logs unavailable in this read. No fallback to historical export or private raw publication.",
+  "privateWrites": 0
+}

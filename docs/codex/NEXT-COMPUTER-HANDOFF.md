@@ -1,5 +1,14 @@
 # 跨电脑接续：正式v201，PR45增量与PR44均未合并
 
+## 当前续作：逐团证据与完整版本导航（2026-10-29，未部署）
+
+用户已要求按团继续，并决定 ILLIT《It’s Me》另行整理完整歌曲版。当前任务分支 `codex/group-evidence-followup-20261029`，基线为已含 `dada774`／PR45／PR44 的 PR46 `cef176580`；接续须显式 fetch 此分支并核最新 PR，不能只接旧 main 或 PR45 而漏掉 PR46 的人工填写保护。恢复后核 PR44／45／46 仍 draft/open/unmerged。旧 stash 不自动应用。
+
+本轮新增 MADEIN《PUNG!》四人具名发行封套参考（103 作品／531 槽；不称 MV 出镜／逐人录音），修正 Hey Gabby 官方 Performance 的过时排除说明，并明确 ILLIT 已有短版／完整原曲的双向导航；不重复创建完整作品或导入已有 Music Bank 舞台，不转移评分。45 团 161 分类项已对齐，仍全部保留事实待证，其中 1 项有限补强，0 完整事实关闭；原 CSV／冻结队列不覆盖。用户已回答 ILLIT 范围问题，不再重复询问。
+
+正式站只读核实仍 v201，访问配置保持；本轮没有保存新版本或部署。新代码与 GitHub 同步不等于上线。51 团设计／原图／ID／私人关系与记录／owner 鉴权保持，个人页统一排版仍待决定。当前事项以[本轮报告](group-evidence-followup-20261029.md)及[工作记录](worklogs/20261029-group-evidence-followup.md)为准；以下旧章节保留历史状态，不能覆盖此节。
+
+
 正式工程为 `apps/idol-site/`，根目录旧sandbox不是发布工程。
 
 ## 本轮新电脑接续（2026-10-29，人工填写保护，无新部署）
@@ -77,34 +86,4 @@ v200包1421文件、展开45,805,568bytes；服务端归一化archive的大小/h
 
 ## 可复制到另一台电脑的指令
 
-独立文本文件：[RESUME-PROMPT-20261029.txt](RESUME-PROMPT-20261029.txt)。
-
-```text
-请接续 GitHub 项目 https://github.com/KAtOReNA7/idol 。
-
-本次新电脑接续已保存到 codex/human-help-handoff-sync-20261029。除下列三个既有远端分支外，也显式 fetch 此任务分支并核对最新 PR；若其成果尚未合入新基线，比较后普通 merge，保留人工填写保护与最新交接。分支已删除时先查 PR 合并记录和 main 完整性。
-
-用户已换电脑且不知道新增人工答案位置；上次核查 GitHub dada774 的 161 行模板三个人工栏全部为空。不要假定存在未收到的答案；本机新增填写应先保护，再核查。生成器遇到人工填写或异常 CSV 结构时会在任何产物写入前停止，不要清空答案以通过重建，也不要自动将日后人工答案上传公开仓库。最新本机保护与验证见 docs/codex/worklogs/20261029-human-help-handoff-sync.md。
-
-先检查并保护本地未提交和未跟踪文件，保留可恢复备份，不自动恢复旧stash，不使用reset、clean或强推。尚未克隆则先克隆。显式fetch origin/main、codex/statistics-relations-followup-20261027和codex/stage-person-followup-v199-20261028，核对PR44/PR45最新状态；已删除的分支按PR合并记录核实，不使用陈旧本地ref替代。
-
-工作树干净后，从最新origin/main创建新的codex/任务分支。若main尚未包含最新PR45成果，普通merge最新origin/codex/stage-person-followup-v199-20261028（已含PR44）；若都已合并，使用包含全部成果的最新main。不能只接PR44或旧main，必须同时保留v201实现和2026-10-29人工补充清单。
-
-依次阅读：
-1. docs/codex/NEXT-COMPUTER-HANDOFF.md
-2. AGENTS.md
-3. docs/codex/STATUS.md
-4. docs/codex/RESUME.md
-5. docs/codex/human-help-by-group-20261029.md（可填写CSV同名）
-6. docs/codex/generic-reference-statistics-followup-20261029.md
-7. docs/codex/stage-selection-policy-20261028.md 与 identity-photo-selection-policy-20261027.md
-8. docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json 和 remaining-person-statistics.json
-
-正式工程是apps/idol-site/。正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已发布v201、496舞台；当前接续提交仅维护人工清单工具和交接，不重复部署v201。清单覆盖45团待办、6团无当前项：109新增舞台缺口、11旧源替换、24作品人物参与证据、7未知统计、7事实生效日期、tripleS销量差350635，另有HITGS同套证据及MADEIN原图分辨率限制。各维度重叠，不相加当缺歌总数。现有关系认人图缺口0、旧低清0；24待证作品已有119通用参考槽，不能当成已证参与或评分关系。
-
-用户将对熟悉团体提供人工补充，优先核查其新链接、成员姓名和时间点、节目日期、统计来源与原公告；其次继续有新证据的队列，不重复无新线索的搜索。舞台按打歌→官方练习室（同条件固定机位优先）→完整官方制作表演选取，同曲同语种/编配/完整范围；允许明确标注的合作曲成员版后备，只放宽客串范围，不允许全团替代个人/二人分队或短片。Right Now固定版、DADARIDA、IYKYK、SPAGHETTI成员版及所有已导批次不要重做。用户已接受无法补齐者保留待新证据。
-
-保持51团已确认设计、Apple Music主站、完整原图、稳定ID和关系、个人评分/备注/观看记录、访问权限与owner保存鉴权。未知统计显示0不代表真实零，报道日期不冒充实际生效日，逐人出镜/录音/创作证据分开记录。个人页统一排版仍待另行决定。任何舞台换绑先取得真实新鲜owner数据、完整保存日志与线上旧绑定核对；旧备份已过期，不改capturedAt，不上传私人备份。优先Codex内置页，不沿用已结束的一次Chrome授权。
-
-先简短核对最新远端和线上状态，再继续实际工作。新代码、证据与交接同步GitHub；GitHub提交和正式站部署分别验证记录，不把推送当上线。不要为这次文档同步再次发布正式站。
-```
+使用[最新独立续接指令](RESUME-PROMPT-20261029.txt)。本轮须包含逐团续作分支，旧 PR45／PR46 单独均不含全部新应用改动。

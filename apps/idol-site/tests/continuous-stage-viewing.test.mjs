@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {build} from 'esbuild';
+import restoreHeyGabbyReviewBaseline from './helpers/heygabby-review-baseline.cjs';
 
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const sort=v=>Array.isArray(v)?v.map(sort):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sort(v[k])])):v;
@@ -41,7 +42,8 @@ test('prior supplements and non-target sources stay unchanged; eight adopted sou
  }
  Object.assign(beforeStatuses,adoption.preservation.statusMetadataBefore);
  const reconstruct={'data/stage-videos.json':beforeStages,'data/stages/status.json':beforeStatuses};
- for(const [id,expected] of Object.entries(receipt.oldRows))assert.equal(hash(data.works[id]),expected,id);
+ const historicalSupplements=restoreHeyGabbyReviewBaseline(data);
+ for(const [id,expected] of Object.entries(receipt.oldRows))assert.equal(hash(historicalSupplements.works[id]),expected,id);
  for(const [file,expected] of Object.entries(receipt.protectedFiles)){
   const bytes=reconstruct[file]?Buffer.from(JSON.stringify(reconstruct[file],null,2)+'\n'):fs.readFileSync(file);
   assert.equal(hash(bytes),expected,file+' historical cohort with authorized replacements restored');

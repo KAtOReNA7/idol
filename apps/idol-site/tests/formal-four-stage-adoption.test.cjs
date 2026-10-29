@@ -3,6 +3,7 @@ const root=path.resolve(__dirname,'..'),read=file=>JSON.parse(fs.readFileSync(pa
 const evidence=read('../../docs/codex/evidence/20261027-category-resolution/stages/formal-four-adoption.json'),videos=read('data/stage-videos.json'),statuses=read('data/stages/status.json');
 const practice=read('../../docs/codex/evidence/20261028-stage-fill/adoption.json'),ownerBaseline=read('../../docs/codex/evidence/20261028-stage-fill/owner-baseline.json');
 const replacements=read('../../docs/codex/evidence/20261028-continuous/stage-replacement-adoption.json');
+const restoreHeyGabbyReviewBaseline=require('./helpers/heygabby-review-baseline.cjs');
 const sort=v=>Array.isArray(v)?v.map(sort):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sort(v[k])])):v;
 const sha=v=>crypto.createHash('sha256').update(typeof v==='string'||Buffer.isBuffer(v)?v:JSON.stringify(sort(v))).digest('hex');
 function harness(){
@@ -33,7 +34,7 @@ test('four earlier adoptions and eleven practices preserve all prior source obje
  for(const[id,hash]of Object.entries(evidence.preservation.stageRows))assert.equal(sha(historicalVideos[id]),hash,id);
  const ids=new Set([...evidence.items,...practice.items].map(i=>i.recordId));assert.equal(ids.size,15);
  for(const[id,hash]of Object.entries(evidence.preservation.statusRows))if(!ids.has(id))assert.equal(sha(historicalStatuses[id]),hash,id);
- const current=read('data/stages/supplements.json'),delta=read('../../docs/codex/evidence/20261028-continuation/editorial-corrections.json');
+ const current=restoreHeyGabbyReviewBaseline(read('data/stages/supplements.json')),delta=read('../../docs/codex/evidence/20261028-continuation/editorial-corrections.json');
  const viewing=read('../../docs/codex/evidence/20261028-continuous/stage-viewing-adoption.json');
  assert.equal(viewing.adopted.length,8);
  for(const[id,hash]of Object.entries(viewing.oldRows))assert.equal(sha(current.works[id]),hash,id);

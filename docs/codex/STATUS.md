@@ -1,5 +1,14 @@
 # 状态：正式v201，PR45增量与PR44均未合并
 
+## 当前续作：逐团证据与完整版本导航（2026-10-29，未部署）
+
+用户已要求按团继续，并决定 ILLIT《It’s Me》另行整理完整歌曲版。当前任务分支 `codex/group-evidence-followup-20261029`，基线为已含 `dada774`／PR45／PR44 的 PR46 `cef176580`；接续须显式 fetch 此分支并核最新 PR，不能只接旧 main 或 PR45 而漏掉 PR46 的人工填写保护。恢复后核 PR44／45／46 仍 draft/open/unmerged。旧 stash 不自动应用。
+
+本轮新增 MADEIN《PUNG!》四人具名发行封套参考（103 作品／531 槽；不称 MV 出镜／逐人录音），修正 Hey Gabby 官方 Performance 的过时排除说明，并明确 ILLIT 已有短版／完整原曲的双向导航；不重复创建完整作品或导入已有 Music Bank 舞台，不转移评分。45 团 161 分类项已对齐，仍全部保留事实待证，其中 1 项有限补强，0 完整事实关闭；原 CSV／冻结队列不覆盖。用户已回答 ILLIT 范围问题，不再重复询问。
+
+正式站只读核实仍 v201，访问配置保持；本轮没有保存新版本或部署。新代码与 GitHub 同步不等于上线。51 团设计／原图／ID／私人关系与记录／owner 鉴权保持，个人页统一排版仍待决定。当前事项以[本轮报告](group-evidence-followup-20261029.md)及[工作记录](worklogs/20261029-group-evidence-followup.md)为准；以下旧章节保留历史状态，不能覆盖此节。
+
+
 ## 当前任务：新电脑接续与人工填写保护（2026-10-29）
 
 活动分支为 `codex/human-help-handoff-sync-20261029`（draft [PR46](https://github.com/KAtOReNA7/idol/pull/46)，base为PR45分支），从最新 main 普通合入 PR45 的 `dada774`，包含 v201 实现和完整人工清单。10:35（Asia/Shanghai）只读核实正式站仍为 v201 / succeeded，public / 1 owner / 0 external / 0 groups / revision2，首页 HTTP 200；这不是新一轮浏览器验收，也没有重新部署。

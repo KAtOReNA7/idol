@@ -33,7 +33,7 @@ import {useEffect,useMemo,useState,useCallback,useRef,type RefObject} from 'reac
 import {ArrowUpRight,ArrowLeft,Search,Play,Heart,Check,RefreshCw,Download,LockKeyhole,ChevronRight,SlidersHorizontal,Music2,Users,Disc3,Star,X,LoaderCircle,ImageIcon} from 'lucide-react';
 import type {CatalogView as Catalog,Work,Member,RatingView as Rating,Photo,Group} from '@/lib/idol/types';
 import {videoId} from '@/lib/idol/values';
-import {approvedVideoPoster} from '@/lib/idol/approved-video-poster';
+import {approvedVideoPoster,approvedStagePoster} from '@/lib/idol/approved-video-poster';
 import {PhotoLightbox} from '@/components/photo-lightbox';
 import {MvPhotoReference} from '@/components/mv-photo-reference';
 import {MvIdentityPhoto} from '@/components/mv-identity-photo';
@@ -53,7 +53,7 @@ import {useCatalogGroupViews,needsCatalogGroupViews} from '@/components/use-cata
 // Keep existing index styles in the initial CSS boundary; only defer JavaScript.
 import '@/components/candidate-index-card.css';
 import {personalMvPhoto,memberWorks,memberWorkSummary,type MemberWork} from '@/lib/idol/member-works';
-import {stageSourceKey,stageHasValidBinding,stageEmbedUrl,stageWatchUrl,formatStageTime,youtubeEmbedUrl} from '@/lib/idol/stage-source';
+import {stageMatchesAlternative,stageSourceKey,stageHasValidBinding,stageEmbedUrl,stageWatchUrl,formatStageTime,youtubeEmbedUrl} from '@/lib/idol/stage-source';
 import {inQueue as queueIncludes,queueLabels} from '@/lib/idol/queues';
 import {indexWorkNames,matchingWorks,makeWatchSequence,nextInSequence,sortWorks} from '@/lib/idol/watch-sequence';
 import {stageStatusLabel,stageStatusDescription,stageKindLabel,stageMatches} from '@/lib/idol/stage-display';
@@ -381,7 +381,7 @@ function PlaceholderDetail({onBack}:{work:Work;data:Catalog;onBack:()=>void}){re
 const platformLabel={x:'X',youtube:'YouTube',bilibili:'bilibili',naver:'NAVER TV',weverse:'Weverse',official_site:'官方网站'};
 function StageSupplements({work}:{work:Work}){
  const original=work.stageSupplement;
- const supplement=original&&work.stage&&!work.stage.clip?{...original,alternatives:original.alternatives.filter(a=>a.platform!=='youtube'||a.sourceId!==work.stage!.videoId)}:original;
+ const supplement=original&&work.stage&&!work.stage.clip?{...original,alternatives:original.alternatives.filter(a=>!stageMatchesAlternative(work.stage!,a))}:original;
  const researchNote=supplement?.researchNote&&validStageResearchNote(supplement.researchNote)?supplement.researchNote:null;
  if(!supplement||(!supplement.alternatives.length&&!supplement.watchLeads?.length&&!researchNote))return null;
  return <section id="other-performances" className="stage-supplements" aria-label="其他观看选择">
@@ -391,16 +391,16 @@ function StageSupplements({work}:{work:Work}){
    {!!a.performerNames?.length&&a.performerScope!=='full_group'&&<p className="alternative-performers">{a.performerNames.join(' / ')}</p>}
    {alternativeViewingNote(work,a)&&<p className="alternative-differences">{alternativeViewingNote(work,a)}</p>}
    {selectionNote(a)&&<small>{selectionNote(a)}</small>}
-   <small>{platformLabel[a.platform]} · {a.channel}</small>
+   <small>{platformLabel[a.platform]} · {a.channel}{a.sourceClass==='reupload'?' · 转载':a.sourceClass==='third_party'?' · 第三方上传':''}</small>
    {a.durationScope==='whole_video'&&a.durationSeconds&&<small>整段视频 {formatStageTime(a.durationSeconds)}，不代表单曲时长。</small>}
    <a className="button" href={a.url} target="_blank" rel="noopener noreferrer">{a.performanceType==='press_concert_recording'?'前往原媒体观看':`在 ${platformLabel[a.platform]} 观看`}<ArrowUpRight size={15}/></a>
    <small>仅观看，不用于本条舞台评分。</small>
   </article>)}</div></>}
   {!!supplement.watchLeads?.length&&<><h2>相关演出</h2><p className="subtle">这些整场或合集提到了这首歌，暂未提供完整单曲片段。仅供观看，不用于本条舞台评分。</p><div className="alternative-grid">{supplement.watchLeads.map(a=><article className="alternative-card" key={a.id}>
-   <div className="alternative-source-class">官方整场或合集 · {performerLabel(a.performerScope)}</div><h3>{a.title}</h3>
+   <div className="alternative-source-class">{a.sourceClass==='official'?'官方整场或合集':a.sourceClass==='reupload'?'转载节目线索':'第三方节目线索'} · {performerLabel(a.performerScope)}</div><h3>{a.title}</h3>
    <p>尚未确认完整单曲的起止与对应版本。</p>
    {a.leadTimeSeconds!==undefined&&<p>可从 {formatStageTime(a.leadTimeSeconds)} 附近开始寻找歌曲；不是完整片段。</p>}
-   <small>{platformLabel[a.platform]} · {a.channel}</small><a className="button" href={a.url} target="_blank" rel="noopener noreferrer">打开相关演出<ArrowUpRight size={15}/></a>
+   <small>{platformLabel[a.platform]} · {a.channel}{a.sourceClass==='reupload'?' · 转载':a.sourceClass==='third_party'?' · 第三方上传':''}</small><a className="button" href={a.url} target="_blank" rel="noopener noreferrer">打开相关演出<ArrowUpRight size={15}/></a>
   </article>)}</div></>}
   {researchNote?<details className="caption-help stage-research-note"><summary>待核说明与来源</summary><p>{researchNote.summary}</p><ul>{researchNote.sources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}<ArrowUpRight size={13}/></a></li>)}</ul><p className="subtle">仍待核验，不用于本条舞台评分。</p></details>:null}
  </section>;
@@ -424,8 +424,8 @@ function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,onVersio
  const versionLinks=work.versionDisplay?.links??[];
  const versionGroups=[...new Set(versionLinks.map(link=>link.categories.join(' / ')))];
  const stage=work.stage;const stageBound=stageHasValidBinding(stage);
- const activeUrl=view==='stage'?(stage?stageWatchUrl(stage):''):work.url;const vid=videoId(activeUrl);const title=view==='stage'?stage?.title??'暂无舞台视频':work.officialTitle||work.name;
- const approvedPoster=view==='stage'&&(!stage||stage.videoId!==vid||stage.clip)?null:approvedVideoPoster(work.id,vid,view)??katseyeVideoPoster(work.id,vid,view);
+ const activeUrl=view==='stage'?(stage?stageWatchUrl(stage):''):work.url;const vid=view==='stage'?stage?.videoId??null:videoId(activeUrl);const activePlatform=view==='stage'?stage?.platform??'youtube':'youtube';const activePlatformLabel=activePlatform==='bilibili'?'B站':'YouTube';const title=view==='stage'?stage?.title??'暂无舞台视频':work.officialTitle||work.name;
+ const approvedPoster=view==='stage'?(stage?approvedStagePoster(work.id,stage)??(activePlatform==='youtube'&&!stage.clip?katseyeVideoPoster(work.id,vid,view):null):null):approvedVideoPoster(work.id,vid,view)??katseyeVideoPoster(work.id,vid,view);
  const absence=mvMemberAbsence(work);
  const people=absence?[]:data.ratings.filter(r=>r.workIds.includes(work.id));const memberDrafts=dirtyKeys.filter(k=>k.startsWith('ratings:'));const hasMemberDraft=memberDrafts.length>0;
  const switchView=(next:'mv'|'stage')=>{setView(next);onViewChange?.(next);};
@@ -443,12 +443,12 @@ function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,onVersio
   event.preventDefault();tabs[next].focus();
  }}><button role="tab" id="mv-tab" tabIndex={view==='mv'?0:-1} aria-selected={view==='mv'} aria-controls="work-video-panel" onClick={()=>switchView('mv')}>MV</button><button role="tab" id="stage-tab" tabIndex={view==='stage'?0:-1} aria-selected={view==='stage'} aria-controls="work-video-panel" onClick={()=>switchView('stage')}>舞台</button></div><span>{view==='stage'?'舞台整体评分':absence?'MV 整体评分':'MV 与本曲成员评分'}</span></div>
  <div className="work-detail-top" id="work-video-panel" role="tabpanel" aria-labelledby={view==='stage'?'stage-tab':'mv-tab'}><div>
- <div className={'video-stage '+(!activeUrl?'video-missing':'')}>{!activeUrl?<div className="stage-empty"><Disc3 size={44}/><h2>{view==='stage'?stageStatusLabel(work):'暂无视频'}</h2><p>{view==='stage'?stageStatusDescription(work):'暂时没有可播放的视频。'}</p>{view==='stage'&&<>{!!(work.stageSupplement?.alternatives.length||work.stageSupplement?.watchLeads?.length)&&<button className="button primary" onClick={()=>document.getElementById('other-performances')?.scrollIntoView({behavior:'smooth',block:'start'})}>看看其他表演</button>}<button className="button" onClick={()=>switchView('mv')}>返回 MV</button></>}</div>:<WorkVideoPlayer posterSrc={approvedPoster?.src??(loonaButterfly&&view==='mv'?'/artist/loona/approved-home/butterfly.jpg':triplesMedia?(view==='mv'?triplesMedia.poster:triplesMedia.stagePoster):undefined)} posterLabel={approvedPoster?.label} posterFit={approvedPoster?.fit??(approvedPoster?'contain':undefined)} posterSize={approvedPoster?.intrinsicSize} posterZoom={approvedPoster?.zoom} workId={work.id} view={view} url={activeUrl} videoId={vid} embedUrl={view==='stage'&&stage?stageEmbedUrl(stage):vid?youtubeEmbedUrl(vid):null} title={title}/>}</div>
- <div className="video-caption"><span>{title}</span>{activeUrl&&<a href={activeUrl} target="_blank" rel="noopener noreferrer">YouTube 原视频<ArrowUpRight size={13}/></a>}</div>{activeUrl&&<p className="video-fallback">播放不了？可在 YouTube 打开原视频。</p>}
+ <div className={'video-stage '+(!activeUrl?'video-missing':'')}>{!activeUrl?<div className="stage-empty"><Disc3 size={44}/><h2>{view==='stage'?stageStatusLabel(work):'暂无视频'}</h2><p>{view==='stage'?stageStatusDescription(work):'暂时没有可播放的视频。'}</p>{view==='stage'&&<>{!!(work.stageSupplement?.alternatives.length||work.stageSupplement?.watchLeads?.length)&&<button className="button primary" onClick={()=>document.getElementById('other-performances')?.scrollIntoView({behavior:'smooth',block:'start'})}>看看其他表演</button>}<button className="button" onClick={()=>switchView('mv')}>返回 MV</button></>}</div>:<WorkVideoPlayer posterSrc={approvedPoster?.src??(loonaButterfly&&view==='mv'?'/artist/loona/approved-home/butterfly.jpg':triplesMedia&&activePlatform==='youtube'?(view==='mv'?triplesMedia.poster:triplesMedia.stagePoster):undefined)} posterLabel={approvedPoster?.label} posterFit={approvedPoster?.fit??(approvedPoster?'contain':undefined)} posterSize={approvedPoster?.intrinsicSize} posterZoom={approvedPoster?.zoom} workId={work.id} view={view} platform={activePlatform} sourceKey={stage?stageSourceKey(stage):null} url={activeUrl} videoId={vid} embedUrl={view==='stage'&&stage?stageEmbedUrl(stage):vid?youtubeEmbedUrl(vid):null} title={title}/>}</div>
+ <div className="video-caption"><span>{title}</span>{activeUrl&&<a href={activeUrl} target="_blank" rel="noopener noreferrer">{activePlatformLabel} 原视频<ArrowUpRight size={13}/></a>}</div>{activeUrl&&<p className="video-fallback">{activePlatform==='bilibili'?'在 B站打开所选分P观看。':'播放不了？可在 YouTube 打开原视频。'}</p>}
  {loonaButterfly&&<div className="loona-associated-release"><img src="/artist/loona/approved-home/butterfly-album.jpg" width="96" height="96" alt="关联发行《X X》封面"/><div><strong>关联发行《X X》</strong><span>发行封面</span></div></div>}
  {view==='mv'&&people.length>0&&<nav className="mv-member-shortcuts" aria-label="本支成员"><span>本支成员</span><div>{people.map(r=>{const m=data.members.find(m=>r.memberIds.includes(m.id)),label=m?memberDisplayName(m):r.name;return <button type="button" key={r.id} aria-controls={'mv-cast-'+r.id} onClick={()=>jumpToCast(r.id)}>{label}</button>;})}</div><small>点名字，定位认人图与个人评分</small></nav>}
- {vid&&<CaptionHelp/>}
- {view==='stage'&&stage&&<div className="stage-source"><p>{stage.channel} · {stageKindLabel(stage.kind)}</p>{stage.verificationNote&&<p className="stage-version-note">{stage.verificationNote}</p>}{stage.clip&&<p className="stage-reuse-note">整场中的单曲片段 · {formatStageTime(stage.clip.startSeconds)}–{formatStageTime(stage.clip.endSeconds)}<br/>站内播放此片段；打开原视频会从起点开始，需自行在终点停止。</p>}{stage.reusesOriginalVideo&&<p className="stage-reuse-note">与 MV 页为同一支表演视频。</p>}{stage.higherCandidate&&<p className="stage-reuse-note">另有更高赞舞台可看，当前评分仍对应这支视频。<a href={stage.higherCandidate.url} target="_blank" rel="noopener noreferrer">观看另一版 ↗</a></p>}{!stageBound&&work.stageScore!==null&&<p className="stage-version-note">原有舞台分已保留，但对应的视频还未确认；暂不为这支视频改分。</p>}</div>}
+ {vid&&activePlatform==='youtube'&&<CaptionHelp/>}
+ {view==='stage'&&stage&&<div className="stage-source"><p>{stage.channel} · {stageKindLabel(stage.kind)}{stage.sourceClass==='reupload'?' · 转载':stage.sourceClass==='third_party'?' · 第三方上传':''}</p>{stage.verificationNote&&<p className="stage-version-note">{stage.verificationNote}</p>}{stage.clip&&<p className="stage-reuse-note">整场中的单曲片段 · {formatStageTime(stage.clip.startSeconds)}–{formatStageTime(stage.clip.endSeconds)}<br/>站内播放此片段；打开原视频会从起点开始，需自行在终点停止。</p>}{stage.reusesOriginalVideo&&<p className="stage-reuse-note">与 MV 页为同一支表演视频。</p>}{stage.higherCandidate&&<p className="stage-reuse-note">另有更高赞舞台可看，当前评分仍对应这支视频。<a href={stage.higherCandidate.url} target="_blank" rel="noopener noreferrer">观看另一版 ↗</a></p>}{!stageBound&&work.stageScore!==null&&<p className="stage-version-note">原有舞台分已保留，但对应的视频还未确认；暂不为这支视频改分。</p>}</div>}
 
  {view==='stage'&&<StageSupplements work={work}/>}
  </div><aside className={'work-aside '+(view==='stage'?'stage-aside':'')}><GroupLinks data={data} ids={work.groupIds} onGroup={onGroup}/><h1>{work.song||work.name}</h1>

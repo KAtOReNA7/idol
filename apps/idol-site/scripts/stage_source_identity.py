@@ -1,0 +1,73 @@
+"""Exact public stage identities. Never rewrites legacy YouTube source keys."""
+import re
+from urllib.parse import parse_qs, urlsplit
+
+MAX_SAFE_INTEGER = 9007199254740991
+SOURCE_CLASSES = {'official', 'reupload', 'third_party'}
+
+
+def source_key(source):
+    platform = source.get('platform', 'youtube')
+    video_id = source.get('videoId')
+    assert isinstance(video_id, str), 'Video identity missing'
+    if platform == 'bilibili':
+        assert re.fullmatch(r'BV[A-Za-z0-9]{10}', video_id), 'Invalid Bilibili BV identity'
+        part = source.get('bilibili')
+        assert isinstance(part, dict) and set(part) == {'cid', 'page'}, 'Bilibili needs exact CID and page'
+        assert isinstance(part['cid'], str) and re.fullmatch(r'[1-9][0-9]{0,19}', part['cid']), 'Invalid Bilibili CID'
+        assert type(part['page']) is int and 0 < part['page'] <= MAX_SAFE_INTEGER, 'Invalid Bilibili page'
+        assert source.get('clip') is None, 'Bilibili clips are not supported'
+        key = f"bilibili:{video_id}:cid:{part['cid']}:p:{part['page']}"
+        assert len(key) <= 80, 'Stage source key exceeds save contract'
+        return key
+    assert platform == 'youtube', 'Unsupported formal stage platform'
+    assert re.fullmatch(r'[A-Za-z0-9_-]{11}', video_id), 'Invalid YouTube identity'
+    assert source.get('bilibili') is None, 'YouTube identity cannot contain Bilibili part metadata'
+    clip = source.get('clip')
+    return video_id + (f"@{clip['startSeconds']}-{clip['endSeconds']}" if clip else '')
+
+
+def checked_identity(source):
+    key = source_key(source)
+    url = source.get('url')
+    assert isinstance(url, str), 'Source URL missing'
+    parsed = urlsplit(url)
+    assert parsed.scheme == 'https' and not parsed.username and not parsed.password and not parsed.port, 'Invalid public source URL'
+    query = parse_qs(parsed.query, keep_blank_values=True)
+    if source.get('platform', 'youtube') == 'bilibili':
+        assert parsed.hostname in ('bilibili.com', 'www.bilibili.com') and parsed.path in (
+            '/video/' + source['videoId'], '/video/' + source['videoId'] + '/'), 'Bilibili URL/BV mismatch'
+        expected = {'p': [str(source['bilibili']['page'])]}
+        if 'cid' in query:
+            expected['cid'] = [source['bilibili']['cid']]
+        assert query == expected and not parsed.fragment, 'Bilibili URL must explicitly identify the exact page and CID'
+    else:
+        host = parsed.hostname
+        actual = parsed.path[1:] if host == 'youtu.be' else query.get('v', [None])[0] if host in ('youtube.com', 'www.youtube.com', 'm.youtube.com') else None
+        assert actual == source['videoId'] and len(query.get('v', [actual])) == 1, 'YouTube URL/video ID mismatch'
+    return key
+
+
+def checked_likes(source):
+    raw = source.get('likes')
+    value = raw.get('value') if isinstance(raw, dict) else raw
+    precision = raw.get('precision') if isinstance(raw, dict) else source.get('likesPrecision')
+    display = raw.get('display') if isinstance(raw, dict) else source.get('likesDisplay')
+    metric = raw.get('metric', 'likes') if isinstance(raw, dict) else source.get('likesMetric', 'likes')
+    assert metric == 'likes', 'Views, coins and favorites cannot be substituted for likes'
+    if precision is None and value is None:
+        precision = 'unknown'
+    assert precision in ('exact', 'rounded', 'unknown'), 'Invalid likes precision'
+    if precision == 'exact':
+        assert type(value) is int and 0 <= value <= MAX_SAFE_INTEGER, 'Invalid exact likes'
+    else:
+        assert value is None, 'Unknown or rounded likes require null numeric value'
+    assert display is None or isinstance(display, str) and display.strip(), 'Invalid likes display'
+    return {'value': value, 'display': display or (str(value) if precision == 'exact' else '未知'), 'precision': precision}
+
+
+def comparison_group(source):
+    platform = source.get('platform', 'youtube')
+    scope = source.get('likesScope', 'whole_video' if platform == 'bilibili' or source.get('clip') else 'performance')
+    assert scope in ('performance', 'whole_video'), 'Unknown likes scope'
+    return platform, scope, 'likes'

@@ -4,12 +4,11 @@ Rated, saved or uncertain bindings are retained. Documented replacements require
 a fresh empty score, complete journal and exact published source preimage.
 """
 import json,sys,datetime,pathlib,re,hashlib
-from stage_selection_policy import checked_selection, comparison_candidates, replacement_preference, checked_member_fallback, version_eligible
+from stage_selection_policy import checked_selection, comparison_candidates, replacement_preference, checked_member_fallback, version_eligible, checked_comparison
+from stage_source_identity import SOURCE_CLASSES, source_key, checked_identity, checked_likes, comparison_group
 root=pathlib.Path(__file__).resolve().parent.parent
 now=datetime.datetime.now(datetime.timezone.utc)
 def dt(v):return datetime.datetime.fromisoformat(v.replace('Z','+00:00'))
-def source_key(s):
- c=s.get('clip');return s['videoId']+(f"@{c['startSeconds']}-{c['endSeconds']}" if c else '')
 def load(p):return json.loads(pathlib.Path(p).read_text(encoding='utf-8'))
 def public(v):
  if isinstance(v,dict):return {k:public(x) for k,x in v.items() if k!='evidenceFile'}
@@ -50,12 +49,16 @@ for item in batch['items']:
   if state not in ['pending','missing_song_identity']:assert item.get('searchEvidence'),f'Researched status needs public search evidence {rid}'
   status['works'][rid]={'status':state,'reason':item['reason'],'checkedAt':observation};changed.append(rid);continue
  s=item.get('selected');assert s and s['videoId']==item.get('selectedVideoId'),f'Selection absent {rid}'
- assert s.get('sourceClass')=='official' and s.get('platform')=='youtube' and s.get('completeness')=='full' and s.get('scorePolicy')!='view_only',f'Formal source must be explicit official YouTube full performance, never view-only {rid}'
+ assert s.get('sourceClass') in SOURCE_CLASSES and s.get('platform') in ('youtube','bilibili') and s.get('completeness')=='full' and s.get('scorePolicy')!='view_only',f'Formal source must have an explicit platform, upload provenance and full performance, never view-only {rid}'
+ selected_key=checked_identity(s)
+ if s['platform']=='bilibili':assert item.get('selectedSourceKey')==selected_key,f'Bilibili selection needs the complete source key {rid}'
+ if 'selectedSourceKey' in item:assert item['selectedSourceKey']==selected_key,f'Selected source key differs from full identity {rid}'
  selection=checked_selection(s)
  candidates=comparison_candidates(item['candidates'])
- exact=[c for c in candidates if c['videoId']==s['videoId']];assert len(exact)==1,f'Selection not verified/comparable {rid}'
+ exact=[c for c in candidates if checked_identity(c)==selected_key];assert len(exact)==1,f'Selection not verified/comparable {rid}'
  picked=exact[0];clip=s.get('clip')
  assert picked['selection']==selection,f'Selected occasion/camera evidence differs from candidate evidence {rid}'
+ assert picked['sourceClass']==s['sourceClass'] and picked.get('sourceEvidence')==s.get('sourceEvidence'),f'Selected upload provenance differs {rid}'
  if clip:
   a,b,total=clip.get('startSeconds'),clip.get('endSeconds'),clip.get('sourceDurationSeconds');ev=clip.get('evidence',{})
   assert isinstance(a,int) and not isinstance(a,bool) and isinstance(b,int) and not isinstance(b,bool) and isinstance(total,int) and not isinstance(total,bool) and 0<=a<b<=total<=86400,f'Invalid clip bounds {rid}'
@@ -66,12 +69,13 @@ for item in batch['items']:
  if fallback:
   assert fallback['groupId'] in inv[rid]['groupIds'],f'Member fallback group differs from target {rid}'
   assert '成员版' in s.get('label','') and '客串' in s.get('verificationNote',''),f'Member fallback must visibly disclose its scope {rid}'
- reuse=s['videoId']==inv[rid]['mv']['videoId']
+ reuse=s['platform']=='youtube' and s['videoId']==inv[rid]['mv']['videoId']
  if reuse:
   assert s.get('reusesExistingVideo') is True and re.search(r'performance|special stage|live clip|showcase|dance practice|choreography practice',inv[rid]['mv']['officialTitle'] or '',re.I) and not re.search(r'official (?:music video|mv)',inv[rid]['mv']['officialTitle'] or '',re.I),f'Original MV cannot be relabelled stage without explicit performance evidence {rid}'
- assert s.get('likesPrecision')=='exact' and isinstance(s.get('likes'),int) and s['likes']>=0,f'Exact likes missing {rid}'
- assert s['likes']==picked['likes']['value'] and (clip or all(s['likes']>=c['likes']['value'] for c in candidates)),f'Selected likes not highest in comparable candidates {rid}'
- assert re.fullmatch(r'[A-Za-z0-9_-]{11}',s['videoId'])
+ selected_likes=checked_likes(s)
+ assert selected_likes==checked_likes(picked),f'Selected likes differ from candidate evidence {rid}'
+ assert comparison_group(picked)==comparison_group(s),f'Selected likes scope differs from candidate evidence {rid}'
+ comparison=checked_comparison(s,candidates,item.get('selectionDecision'),item['candidates'])
  assert not re.search(r'RELAY\s+DANCE|FANCAM',s['title'],re.I),f'Excluded type {rid}'
  assert s.get('channel') and s.get('sourceUrl','').startswith('https://')
  if s.get('publishedAt'):assert re.match(r'^\d{4}-\d{2}-\d{2}(?:T|$)',s['publishedAt']),f'Invalid known publication date {rid}'
@@ -81,6 +85,10 @@ for item in batch['items']:
  assert 'fld641ausT' in {f.get('field_id') for f in fresh['tables']['works'].get('fields',[])} or fresh['source']=='feishu','Native work schema must include the stage score field'
  if fallback and (not empty or not journal or any(r.get('recordId')==rid for r in journal.get('records',[]))):
   held.append({'recordId':rid,'reason':'Member-version fallback held: existing score or save history, or journal not confirmed.'});continue
+ if not previous and (s['platform']=='bilibili' or s['sourceClass']!='official'):
+  assert rid not in fresh.get('siteMetadata',{}).get('stageVideos',{}),f'Published source preimage differs from absent local source {rid}'
+  if not empty or not journal or any(r.get('recordId')==rid for r in journal.get('records',[])):
+   held.append({'recordId':rid,'reason':'New platform/upload source held: existing score or save history, or complete journal not confirmed.'});continue
  bind={'videoId':s['videoId'],'sourceKey':source_key(s),'initializedAt':fresh['capturedAt'],'initialScore':None} if empty else None
  history=previous.get('previousSources',[]) if previous else []
  if previous:
@@ -90,11 +98,16 @@ for item in batch['items']:
    if previous.get('clip') or clip:
     held.append({'recordId':rid,'reason':'Existing source retained: a changed clip scope is never silently rebound or ranked against a single-song video.'});continue
    saved=not journal or any(r.get('recordId')==rid for r in journal.get('records',[]))
-   preference=replacement_preference(previous,s,item.get('previousOccasionReview'))
+   preference=replacement_preference(previous,s,item.get('previousOccasionReview'),item.get('replacementDecision') or item.get('selectionDecision'))
    published=fresh.get('siteMetadata',{}).get('stageVideos',{}).get(rid)
    assert published==previous,'Published source preimage differs from local source; reconcile before replacement'
    if not(empty and not saved and preference):
-    previous['higherCandidate']={'videoId':s['videoId'],'url':s['url'],'title':s['title'],'likes':{'value':s['likes'],'display':s.get('likesDisplay') or f"{s['likes']:,}",'precision':'exact'},'checkedAt':s['checkedAt']}
+    # Preserve an existing source byte-for-byte when an incomparable proposal
+    # has no reviewed preference; do not label it a higher-like candidate.
+    if comparison=='manual_evidence' or selected_likes['precision']!='exact' or checked_likes(previous)['precision']!='exact' or comparison_group(s)!=comparison_group(previous) or s['platform']=='bilibili' and s['videoId']==previous['videoId']:
+     held.append({'recordId':rid,'reason':'Source retained: cross-platform/unknown-like choice or owner protection is unresolved.'});continue
+    previous['higherCandidate']={'videoId':s['videoId'],'url':s['url'],'title':s['title'],'likes':selected_likes,'checkedAt':s['checkedAt']}
+    if s['platform']=='bilibili':previous['higherCandidate'].update(platform='bilibili',bilibili=s['bilibili'])
     held.append({'recordId':rid,'reason':'Source retained: scored, saved, unconfirmed journal or no documented policy/like preference.'});continue
    history=history+[{k:v for k,v in previous.items() if k!='previousSources'}|{'changedAt':now.isoformat(),'reason':'按已确认节目／练习室／官方表演后备政策更新；更新前舞台分为空且完整保存日志无该作品记录。','preference':preference,'previousOccasionReview':item.get('previousOccasionReview')}]
    replaced.append(rid)
@@ -104,13 +117,15 @@ for item in batch['items']:
   assert equiv.get('sameAudio') is True and equiv.get('basis') and proof_urls and original in videos and original in inv and not videos[original].get('audioEquivalence'),f'Uncorroborated audio equivalence {rid}'
   assert inv[original]['groupIds']==inv[rid]['groupIds'] and source_key(videos[original])==source_key(s),f'Audio equivalence must reference the same-group exact already-bound performance {rid}'
   audio_equivalence={'originalBoundWorkId':original,'sameAudio':True,'basis':equiv['basis'],'evidenceUrls':proof_urls}
- display=s.get('likesDisplay') or f"{s['likes']:,}"
+ display=selected_likes['display']
  language_evidence=s.get('languageVersionEvidence')
  if isinstance(language_evidence,dict):language_evidence='；'.join(str(language_evidence.get(k)) for k in ['basis','sourceVersion','sourceMVTitle','candidateTitle'] if language_evidence.get(k))
  note=' · '.join(str(v) for v in [s.get('label'),s.get('arrangement'),language_evidence,'依据公开标题、频道和说明核验，未逐句核对音轨；不据此判定真唱。'] if v)
- ranknote='已核整场内对应片段' if clip else '已核同曲同版本同优先级候选中点赞最高' if len(candidates)>1 else '本次唯一已核同优先级合格候选'
+ ranknote='已核整场内对应片段' if clip else '已核同曲同版本同优先级候选中点赞最高' if comparison=='comparable_likes' else '依据人工选择理由与来源证据采用；点赞不可完整比较' if comparison=='manual_evidence' else '本次唯一已核同优先级合格候选'
  if clip:candidates=[picked]
- videos[rid]={'sourceClass':'official','platform':'youtube','completeness':'full','videoId':s['videoId'],'url':s['url'],'title':s['title'],'channel':s['channel'],'kind':s.get('label') or s.get('type'),'publishedDate':(s.get('publishedAt') or '')[:10],'typeNote':note,'sourceUrl':s['sourceUrl'],'scoreBinding':bind,'likes':{'value':s['likes'],'display':display,'precision':'exact'},'checkedAt':source_at,'selectionNote':ranknote,'comparisonNote':item['reason'],'reusesOriginalVideo':reuse,'comparisonLimited':bool(item.get('comparisonLimited')),'comparisonLimitation':item.get('comparisonLimitation') or '', 'previousSources':history,'candidateCount':len(candidates),'candidates':[{'title':c['title'],'url':c['url'],'likesDisplay':f"{c['likes']['value']:,}",'kind':c.get('label') or c.get('kind') or '合格候选（见标题）'} for c in candidates]}
+ videos[rid]={'sourceClass':s['sourceClass'],'platform':s['platform'],'completeness':'full','videoId':s['videoId'],'url':s['url'],'title':s['title'],'channel':s['channel'],'kind':s.get('label') or s.get('type'),'publishedDate':(s.get('publishedAt') or '')[:10],'typeNote':note,'sourceUrl':s['sourceUrl'],'scoreBinding':bind,'likes':selected_likes,'checkedAt':source_at,'selectionNote':ranknote,'comparisonNote':item['reason'],'reusesOriginalVideo':reuse,'comparisonLimited':bool(item.get('comparisonLimited')) or comparison!='comparable_likes','comparisonLimitation':item.get('comparisonLimitation') or '', 'previousSources':history,'candidateCount':len(candidates),'candidates':[{'title':c['title'],'url':c['url'],'likesDisplay':f"{checked_likes(c)['value']:,}" if checked_likes(c)['precision']=='exact' else checked_likes(c)['display'],'kind':c.get('label') or c.get('kind') or '合格候选（见标题）',**({'platform':'bilibili','videoId':c['videoId'],'bilibili':c['bilibili']} if c['platform']=='bilibili' else {})} for c in candidates]}
+ if s['platform']=='bilibili':videos[rid].update(bilibili=s['bilibili'],likesScope=s.get('likesScope','whole_video'))
+ if s.get('sourceEvidence'):videos[rid]['sourceEvidence']=s['sourceEvidence']
  videos[rid]['selection']=selection
  if fallback:videos[rid]['memberVersionFallback']=fallback
  if s.get('verificationNote'):
@@ -121,6 +136,13 @@ for item in batch['items']:
   videos[rid]['comparisonLimitation']=item.get('comparisonLimitation') or '本轮仅有一个符合新政策的同优先级候选；其他合格候选仍待比较。'
  if audio_equivalence:videos[rid]['audioEquivalence']=audio_equivalence
  if clip:videos[rid].update(clip=clip,likesScope='whole_video')
+ # A BV alone is not a reusable source: sharing/equivalence uses the whole
+ # platform + part identity, just as legacy YouTube clips include their bounds.
+ target_identity=(inv[rid]['groupIds'],str(inv[rid].get('song','')).strip().casefold())
+ for other_id,other in videos.items():
+  if other_id==rid or source_key(other)!=selected_key:continue
+  other_identity=(inv[other_id]['groupIds'],str(inv[other_id].get('song','')).strip().casefold())
+  assert target_identity==other_identity or audio_equivalence and audio_equivalence['originalBoundWorkId']==other_id,f'Exact source reused for a different group/song without corroborated audio equivalence {rid}'
  status['works'][rid]={'status':'verified','reason':item['reason'],'checkedAt':observation}
  if not previous:added.append(rid)
 status['updatedAt']=now.isoformat()

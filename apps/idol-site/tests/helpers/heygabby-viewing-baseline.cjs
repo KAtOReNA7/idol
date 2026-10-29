@@ -53,6 +53,7 @@ function historicalHeyGabbySupplement(workId) {
     const compiled = {exports: {}};
     const dependency = name => {
       if (name === '@/data/stages/supplements.json') return metadata;
+      if (name === './stage-source') return require('./public-artist-loader.cjs')('lib/idol/stage-source.ts');
       if (name === './stage-public-research') return require('./public-artist-loader.cjs')('lib/idol/stage-public-research.ts');
       throw new Error('Unexpected historical supplement dependency: ' + name);
     };

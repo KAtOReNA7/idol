@@ -63,5 +63,5 @@ test('the existing player uses the selected source and hides duplicate viewing l
  const section=page.slice(page.indexOf('function StageSupplements('),page.indexOf('function PageTitle('));
  assert.match(section,/仅供观看，不用于本条舞台评分/);
  assert.match(section,/href=\{a.url\}/);assert.doesNotMatch(section,/RecordEditor|stageVideoId=|iframe|setStage/);
- assert.match(section,/a.sourceId!==work.stage!.videoId/,'a subsequently adopted exact source is hidden from duplicate alternatives');
+ assert.match(section,/stageMatchesAlternative\(work.stage!,a\)/,'a subsequently adopted exact source is hidden from duplicate alternatives');
 });

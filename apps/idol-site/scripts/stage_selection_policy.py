@@ -2,6 +2,7 @@
 from urllib.parse import urlsplit
 import hashlib
 import json
+from stage_source_identity import SOURCE_CLASSES, checked_identity, checked_likes, comparison_group, source_key
 
 REJECTED = {'l9GLV8Kd-MU', 'saY9KS7mKvI', 'BnmwjH-suLg'}
 PRIORITY = {'music_program': 0, 'practice_room': 1, 'produced_performance': 2}
@@ -67,7 +68,14 @@ def checked_selection(source):
         for url in proof['urls']:
             parsed = urlsplit(url)
             assert parsed.scheme == 'https' and parsed.hostname and not parsed.username and not parsed.password, 'Invalid camera evidence URL'
-    assert source.get('sourceClass') == 'official' and source.get('completeness') == 'full', 'Official full performance required'
+    assert source.get('sourceClass') in SOURCE_CLASSES and source.get('completeness') == 'full', 'Documented source class and full performance required'
+    checked_identity(source)
+    if source['sourceClass'] != 'official':
+        proof = source.get('sourceEvidence') or {}
+        assert isinstance(proof.get('note'), str) and proof['note'].strip() and isinstance(proof.get('urls'), list) and proof['urls'], 'Third-party upload provenance evidence missing'
+        for url in proof['urls']:
+            parsed = urlsplit(url)
+            assert parsed.scheme == 'https' and parsed.hostname and not parsed.username and not parsed.password, 'Invalid upload provenance URL'
     return selection
 
 def selection_rank(source):
@@ -77,7 +85,7 @@ def selection_rank(source):
     # the fallback is a higher-like program or practice upload.
     return (1 if checked_member_fallback(source) else 0, PRIORITY[selection['occasion']], 0 if fixed_practice else 1)
 
-def comparison_candidates(candidates):
+def comparison_candidates(candidates, best_only=True):
     """Return only qualified, version-matched sources at the best policy priority.
 
     The caller keeps the original research list for evidence. A concert, rejected
@@ -88,31 +96,60 @@ def comparison_candidates(candidates):
     for candidate in candidates:
         if candidate.get('eligibility') not in ('eligible', 'qualified'):
             continue
-        if candidate.get('platform') != 'youtube' or candidate.get('scorePolicy') == 'view_only':
+        if candidate.get('platform') not in ('youtube', 'bilibili') or candidate.get('scorePolicy') == 'view_only':
             continue
         if not version_eligible(candidate):
             continue
         try:
-            selection = checked_selection(candidate)
+            checked_selection(candidate)
+            checked_likes(candidate)
         except (AssertionError, TypeError, ValueError):
             continue
         eligible.append((selection_rank(candidate), candidate))
     if not eligible:
         return []
+    if not best_only:
+        return [candidate for _, candidate in eligible]
     priority = min(rank for rank, _ in eligible)
-    # Missing comparable likes at the best documented priority is a research
-    # hold, not permission to fall back to a lower-priority performance.
-    comparable = []
-    for rank, candidate in eligible:
-        if rank != priority:
-            continue
-        likes = candidate.get('likes') or {}
-        value = likes.get('value') if isinstance(likes, dict) else None
-        if isinstance(likes, dict) and likes.get('precision') == 'exact' and isinstance(value, int) and not isinstance(value, bool) and value >= 0:
-            comparable.append(candidate)
-    return comparable
+    # Unknown likes do not erase an otherwise qualified higher-priority source.
+    return [candidate for rank, candidate in eligible if rank == priority]
 
-def replacement_preference(previous, selected, review=None):
+
+def checked_manual_decision(decision, selected, compared):
+    assert isinstance(decision, dict) and decision.get('method') == 'manual_evidence', 'Manual selection reason and evidence required for incomparable sources'
+    assert decision.get('selectedSourceKey') == source_key(selected), 'Manual selection must identify exact selected source key'
+    keys = decision.get('comparedSourceKeys')
+    assert isinstance(keys, list) and all(isinstance(key, str) for key in keys) and len(keys) == len(set(keys)), 'Manual comparison keys invalid'
+    assert set(keys) == {source_key(source) for source in compared}, 'Manual comparison must cover exact compared sources'
+    assert isinstance(decision.get('reason'), str) and decision['reason'].strip(), 'Manual selection reason missing'
+    proof = decision.get('evidence') or {}
+    assert isinstance(proof.get('note'), str) and proof['note'].strip() and isinstance(proof.get('urls'), list), 'Manual selection evidence missing'
+    assert {source['url'] for source in compared} <= set(proof['urls']), 'Manual selection evidence must cite compared source URLs'
+    for url in proof['urls']:
+        parsed = urlsplit(url)
+        assert parsed.scheme == 'https' and parsed.hostname and not parsed.username and not parsed.password, 'Invalid manual selection URL'
+    return True
+
+
+def checked_comparison(selected, candidates, decision=None, reviewed_candidates=None):
+    assert candidates, 'No highest-priority policy-eligible comparison'
+    reviewed = comparison_candidates(reviewed_candidates, best_only=False) if reviewed_candidates is not None else candidates
+    if len({candidate.get('platform', 'youtube') for candidate in reviewed}) > 1:
+        checked_manual_decision(decision, selected, reviewed)
+        return 'manual_evidence'
+    selected_likes = checked_likes(selected)
+    groups = {comparison_group(candidate) for candidate in candidates}
+    exact = all(checked_likes(candidate)['precision'] == 'exact' for candidate in candidates)
+    bilibili_uploads = [candidate['videoId'] for candidate in candidates if candidate.get('platform') == 'bilibili']
+    shared_upload = len(bilibili_uploads) != len(set(bilibili_uploads))
+    if len(candidates) > 1 and (len(groups) != 1 or not exact or shared_upload):
+        checked_manual_decision(decision, selected, candidates)
+        return 'manual_evidence'
+    if exact and not selected.get('clip'):
+        assert selected_likes['value'] == max(checked_likes(candidate)['value'] for candidate in candidates), 'Selected not maximum among reviewed comparable candidates'
+    return 'comparable_likes' if len(candidates) > 1 else 'single_candidate'
+
+def replacement_preference(previous, selected, review=None, decision=None):
     """Compare eligible priority before likes; unknown historical context is held.
 
     Excluding an old event requires an explicit review bound to every byte of its
@@ -120,6 +157,14 @@ def replacement_preference(previous, selected, review=None):
     Owner-score, save-journal and clip guards are enforced separately by merger.
     """
     new_rank = selection_rank(selected)
+    # A cross-platform or unknown-like replacement is never automatic, even
+    # when its policy tier would otherwise win. Owner guards remain separate.
+    same_bv = selected.get('platform') == previous.get('platform') == 'bilibili' and previous['videoId'] == selected['videoId'] and source_key(previous) != source_key(selected)
+    incomparable = same_bv or comparison_group(previous) != comparison_group(selected) or checked_likes(previous)['precision'] != 'exact' or checked_likes(selected)['precision'] != 'exact'
+    if incomparable:
+        if decision is None:
+            return None
+        checked_manual_decision(decision, selected, [previous, selected])
     try:
         old_rank = selection_rank(previous)
     except (AssertionError, TypeError, ValueError):
@@ -141,6 +186,8 @@ def replacement_preference(previous, selected, review=None):
     if new_rank > old_rank:
         return None
     old_likes = previous.get('likes') or {}
-    if old_likes.get('precision') == 'exact' and isinstance(old_likes.get('value'), int) and not isinstance(old_likes['value'], bool) and selected['likes'] > old_likes['value']:
+    if incomparable:
+        return 'documented_manual_comparison'
+    if old_likes.get('precision') == 'exact' and isinstance(old_likes.get('value'), int) and not isinstance(old_likes['value'], bool) and checked_likes(selected)['value'] > old_likes['value']:
         return 'higher_comparable_likes'
     return None

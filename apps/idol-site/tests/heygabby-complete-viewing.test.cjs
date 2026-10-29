@@ -123,13 +123,13 @@ test('actual anonymous stage media SSR shows one formal player, its scope note a
   }
   collect(detail); assert.equal(regions.size, 3, 'real WorkDetail media and source regions');
   const regionCode = ts.transpileModule(`export function StageMedia({work}) {
-    const view='stage',stage=work.stage,stageBound=stageHasValidBinding(stage),activeUrl=stageWatchUrl(stage),
+    const view='stage',activePlatform='youtube',activePlatformLabel='YouTube',stage=work.stage,stageBound=stageHasValidBinding(stage),activeUrl=stageWatchUrl(stage),
       vid=videoId(activeUrl),title=stage.title,approvedPoster=approvedVideoPoster(work.id,vid,view),loonaButterfly=false,triplesMedia=null;
     return <>${[...regions.values()].join('\n')}<StageSupplements work={work}/></>;
   }`, {compilerOptions: {module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.React}}).outputText;
   const component = {};
   vm.runInNewContext(`(function(exports){${code}})`, {React, ArrowUpRight: () => null,
-    platformLabel: {youtube: 'YouTube'}, validStageResearchNote, formatStageTime, ...copy})(component);
+    platformLabel: {youtube: 'YouTube'}, ...stageSource, validStageResearchNote, formatStageTime, ...copy})(component);
   vm.runInNewContext(`(function(exports){${regionCode}})`, {React, ArrowUpRight: () => null,
     ...stageSource, ...load('lib/idol/values.ts'), ...load('lib/idol/stage-display.ts'),
     approvedVideoPoster, WorkVideoPlayer: player.WorkVideoPlayer, StageSupplements: component.StageSupplements})(component);

@@ -14,16 +14,16 @@ const photo:Shape={...fields('table recordId index kind sourceKind'),
  displayFocus:{...fields('sourceWidth sourceHeight qualityTier maxEffectiveWidth preserveOriginal'),sourceCrop:fields('x y width height')},
  approvedLookIdentity:fields('memberId workId videoId sameLook'),nativeIdentity:fields('memberId workId videoId')};
 const stage:Shape={...fields('sourceClass platform completeness likesScope videoId url title channel kind publishedDate checkedAt verificationNote reusesOriginalVideo comparisonLimited comparisonLimitation candidateCount'),
- selection,
+ selection,bilibili:fields('cid page'),
  memberVersionFallback:{...fields('sameSong sameLanguage fullGroup sameArrangementExceptGuest differenceType groupId guestDifference'),evidence},
  clip:{...fields('startSeconds endSeconds sourceDurationSeconds'),evidence},
  audioEquivalence:{...fields('originalBoundWorkId sameAudio')},
  scoreBinding:fields('videoId sourceKey initializedAt initialScore'),likes,
- higherCandidate:{...fields('videoId url title checkedAt'),likes},candidates:[fields('title url likesDisplay kind')]};
+ higherCandidate:{...fields('videoId url title checkedAt'),likes},candidates:[{...fields('title url likesDisplay kind platform videoId'),bilibili:fields('cid page')}]};
 const version:Shape={match:true,differences:ids,evidence};
 const supplement:Shape={
- alternatives:[{...fields('id platform sourceId sourceClass performerScope originalPerformerScope completeness durationSeconds durationScope eventDate url title channel performanceType kind checkedAt scorePolicy'),selection,performerNames:ids,originalPerformerNames:ids,performerEvidence:evidence,eventEvidence:evidence,sourceEvidence:evidence,sameSongEvidence:evidence,version}],
- watchLeads:[{...fields('sourceType id platform sourceId sourceClass performerScope completeness url title channel kind checkedAt scorePolicy reason leadTimeSeconds'),selection,sourceEvidence:evidence,sameSongEvidence:evidence,leadTimeEvidence:evidence}],
+ alternatives:[{...fields('id platform sourceId sourceClass performerScope originalPerformerScope completeness durationSeconds durationScope eventDate url title channel performanceType kind checkedAt scorePolicy'),selection,bilibili:fields('cid page'),performerNames:ids,originalPerformerNames:ids,performerEvidence:evidence,eventEvidence:evidence,sourceEvidence:evidence,sameSongEvidence:evidence,version}],
+ watchLeads:[{...fields('sourceType id platform sourceId sourceClass performerScope completeness url title channel kind checkedAt scorePolicy reason leadTimeSeconds'),selection,bilibili:fields('cid page'),sourceEvidence:evidence,sameSongEvidence:evidence,leadTimeEvidence:evidence}],
  researchNote:{summary:true,sources:[fields('label url')]},
  };
 const shape:Shape={

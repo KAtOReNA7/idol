@@ -1,13 +1,12 @@
 import stageVideos from '@/data/stage-videos.json';
 import research from '@/data/stages/status.json';
-import {videoId} from './values';
-import {stageSourceKey,stageHasValidBinding} from './stage-source';
+import {stageSourceKey,stageHasValidBinding,stageSourceMatchesUrl} from './stage-source';
 import type {StageVideo,StageResearch} from './types';
 // Editorial source metadata is keyed by the stable original work ID.
 // It never creates Feishu records or changes user ratings, notes, or links.
 export function stageForWork(recordId:string):StageVideo|null {
  const entry=(stageVideos as Record<string,StageVideo>)[recordId];
- if(!entry||videoId(entry.url)!==entry.videoId||!entry.checkedAt||!stageSourceKey(entry))return null;
+ if(!entry||!stageSourceMatchesUrl(entry)||!entry.checkedAt||!stageSourceKey(entry))return null;
  return entry;
 }
 export const stageSourceMetadata=stageVideos;

@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T10:22:04.659470+00:00",
+  "scope": "Bounded public Bilibili research for three exact Japanese-version works; no application, tests, private data or deployment changes.",
+  "policyApplied": {
+    "repostsAllowed": true,
+    "officialYoutubeBacklinkRequired": false,
+    "priority": [
+      "music_program",
+      "practice_room",
+      "produced_performance"
+    ],
+    "concertFestivalExcerptWrongLanguageExcluded": true,
+    "titleAndDurationDoNotProveFullPerformance": true,
+    "noRepeatQuestionAboutOldBeepBoundaries": true
+  },
+  "summary": {
+    "worksResearched": 3,
+    "qualifiedCandidates": 0,
+    "formalAdoptions": 0,
+    "playbackVerified": 0,
+    "bvidCidPairsVerified": 0,
+    "outcome": "Public repost permission removes uploader-origin rejection, but no exact allowed Bilibili file was verified for complete same-version performance in this bounded pass."
+  },
+  "access": {
+    "regularApi": {
+      "url": "https://api.bilibili.com/x/web-interface/search/type",
+      "parameters": {
+        "search_type": "video",
+        "keyword": "aespa KISS N TELL 260912"
+      },
+      "method": "one ordinary unauthenticated requests GET; no cookies, custom user-agent or proxy change",
+      "httpStatus": 412,
+      "responseType": "non-json",
+      "bodySha256": "e7badcc8c88ee24673ace7d93d15543ef41a0f6db1f93d17a2b1fe8ef6d8ee01",
+      "stoppedAfterResponse": true
+    },
+    "parallelQwerApi": {
+      "method": "Subagent independently sent one ordinary unauthenticated request before receiving the shared stop notice. No subsequent API request.",
+      "parameters": {
+        "search_type": "video",
+        "keyword": "QWER SHOW DOWN"
+      },
+      "httpStatus": 412,
+      "responseType": "non-json",
+      "bodySha256": "e7badcc8c88ee24673ace7d93d15543ef41a0f6db1f93d17a2b1fe8ef6d8ee01"
+    },
+    "publicPageReads": [
+      {
+        "url": "https://search.bilibili.com/all?keyword=%23Aespa%23",
+        "result": "Redirected to browser-upgrade informational page; exact video links unavailable."
+      },
+      {
+        "url": "https://www.bilibili.com/video/BV11eeczmEEA/",
+        "result": "web connector open returned HTTP 412; no retry."
+      },
+      {
+        "url": "https://www.bilibili.com/video/BV1KsazzHE2V/",
+        "result": "web connector open returned HTTP 412; no retry."
+      },
+      {
+        "url": "https://www.bilibili.com/video/BV1QCbW6wER1/",
+        "result": "web connector open returned HTTP 412; no retry; no factual candidate conclusion drawn."
+      },
+      {
+        "url": "https://www.bilibili.tv/video/4800949426985473",
+        "result": "Public title/uploader/date/Premium label readable; no protected playback attempted."
+      }
+    ],
+    "bypassAttempts": 0,
+    "cookiesOrTokensRead": false,
+    "mediaDownloaded": false
+  },
+  "works": [
+    {
+      "group": "izna",
+      "workId": "rec28ldfRTrNsK",
+      "song": "BEEP (Japan Edition)",
+      "version": "Japanese original",
+      "priorEvidence": [
+        "docs/codex/evidence/20261029-pr47-continuation/groups-ive-purple-delta.json",
+        "docs/codex/evidence/20261029-heygabby-complete/beep-official-metadata-followup.json"
+      ],
+      "priorConclusion": "Existing official Qfez0Db9Iqc is an 08:11 costume feature, with only approximate navigation. Exact single-song boundaries remain unconfirmed; do not ask the same boundary question again.",
+      "newRoutes": [
+        "Bilibili Japanese-version/full-stage search",
+        "Costume ver. / Special Package / cosplay and Chinese costume-related terms",
+        "Public page verification of precise indexed BVs"
+      ],
+      "candidates": [
+        {
+          "bvid": "BV11eeczmEEA",
+          "url": "https://www.bilibili.com/video/BV11eeczmEEA/",
+          "indexedTitle": "izna SUMMER SONIC 日本音乐节 舞台合集 250816",
+          "metadataBasis": "search index only; body returned 412",
+          "indexedTargetPart": {
+            "title": "BEEP日语版",
+            "displayDuration": "02:46",
+            "listedPosition": 5
+          },
+          "page": null,
+          "cid": null,
+          "durationSeconds": null,
+          "channel": "Hi_Eclipse (indexed uploader; not verified official)",
+          "classification": "festival_as_described",
+          "language": "Japanese title claim only; audio not played",
+          "completeness": "unconfirmed",
+          "performerScope": "unconfirmed",
+          "decision": "excluded_by_festival_occasion_as_described",
+          "reason": "Source relaxation does not permit a Summer Sonic festival recording; indexed 02:46 does not prove full song, p=5/CID were not verified."
+        },
+        {
+          "bvid": "BV1KsazzHE2V",
+          "url": "https://www.bilibili.com/video/BV1KsazzHE2V/",
+          "indexedTitle": "izna MV合集",
+          "metadataBasis": "search index only; body returned 412",
+          "page": null,
+          "cid": null,
+          "durationSeconds": null,
+          "classification": "music_video_compilation_as_described",
+          "language": "Japan Edition listed in compilation index only",
+          "completeness": "unconfirmed",
+          "performerScope": "unconfirmed",
+          "decision": "excluded_original_mv_compilation_not_independent_performance",
+          "reason": "No evidence of a separately produced dance performance or allowed music-program file."
+        }
+      ],
+      "qualifiedCandidates": [],
+      "remaining": [
+        "No exact allowed Japanese full-single-song Bilibili repost was located.",
+        "Precise BV/page/CID and playable file evidence remain unavailable.",
+        "Do not convert the existing 08:11 feature or approximate 03:31 navigation into a song clip."
+      ],
+      "needsRepeatedUserQuestion": false
+    },
+    {
+      "group": "QWER",
+      "workId": "recvxIZRWKy9zg",
+      "song": "SHOW DOWN",
+      "version": "Japanese original",
+      "priorEvidence": [
+        "docs/codex/evidence/20261029-pr47-continuation/groups-qwer-young.json"
+      ],
+      "priorConclusion": "NTV 2026-08-21 confirms Studio Live; previous YouTube repost NTmQzjUchPU did not establish complete range. Repost identity is no longer itself a rejection reason.",
+      "newRoutes": [
+        "Bilibili exact song/program/date search",
+        "One ordinary public search API request before shared stop notice",
+        "Independent official program and false-positive page-body read"
+      ],
+      "programEvidence": {
+        "url": "https://www.ntv.co.jp/buzzrhythm/oa/20260821.html",
+        "method": "subagent read live web page body",
+        "finding": "QWER SHOW DOWN listed under Studio Live; no target full video, duration, chapters or participant count supplied."
+      },
+      "candidates": [],
+      "excludedSearchFalsePositive": [
+        {
+          "bvid": "BV1Ye411Q7aj",
+          "url": "https://www.bilibili.com/video/BV1Ye411Q7aj/",
+          "method": "subagent read page body",
+          "finding": "Actual title and all five listed parts concern Harmony of Stars. SHOW DOWN occurs in related compilation context, not as a verified target part.",
+          "page": null,
+          "cid": null,
+          "durationSeconds": null
+        }
+      ],
+      "qualifiedCandidates": [],
+      "outcome": "targeted_search_no_exact_bilibili_candidate",
+      "remaining": [
+        "Exact Bilibili video/page/CID",
+        "Full beginning/end and same Japanese version",
+        "Actual full-group scope of the exact file"
+      ],
+      "nonexistenceClaim": false
+    },
+    {
+      "group": "aespa",
+      "workId": "recvxyHuKMZLFT",
+      "song": "KISS N TELL",
+      "version": "Japanese original",
+      "priorEvidence": [
+        "docs/codex/evidence/20261028-post-v200/stages-b/official-program-followup.json",
+        "docs/codex/evidence/20261029-group-followup/groups-root.json"
+      ],
+      "priorConclusion": "Artist/NTV sources establish 2026-09-11 late-night broadcast (calendar 2026-09-12); full exact performance file previously unavailable.",
+      "newRoutes": [
+        "Bilibili exact song with 260911/260912 and Buzz Rhythm terms",
+        "Exact indexed upload titles and uploader searches",
+        "One ordinary public search API request, stopped on 412",
+        "Public Bilibili international listing and NTV program body"
+      ],
+      "programEvidence": {
+        "url": "https://www.ntv.co.jp/buzzrhythm/oa/20260911.html",
+        "method": "live web connector body read",
+        "finding": "Body explicitly lists aespa KISS N TELL under Studio Live. TVer link is the audition feature, not a target-song file. This supports the broadcast occasion only."
+      },
+      "candidates": [
+        {
+          "url": "https://www.bilibili.tv/video/4800949426985473",
+          "platform": "bilibili_international",
+          "contentId": "4800949426985473",
+          "bvid": null,
+          "page": null,
+          "cid": null,
+          "durationSeconds": null,
+          "title": "〖4K 60fps〗aespa - KISS N TELL (260912)",
+          "uploader": "XIANVXIA",
+          "publishedDate": "2026-09-15",
+          "sourceClass": "repost_unverified_origin",
+          "metadataBasis": "public page body read; Premium label observed",
+          "publicPageReadable": true,
+          "playbackVerified": false,
+          "accessLabel": "Premium",
+          "indexedMainlandDisplayDuration": "03:04",
+          "durationBoundary": "03:04 belongs to a mainland search-index title match; it is not verified duration of this international content ID.",
+          "occasion": "unconfirmed_for_exact_file",
+          "completeness": "unconfirmed",
+          "language": "unconfirmed_for_exact_file",
+          "performerScope": "unconfirmed",
+          "decision": "hold_access_and_exact_file_scope_unverified",
+          "missingFacts": [
+            "No public mainland BV/page/CID mapping",
+            "Protected playback not attempted",
+            "No full beginning/end, language or participants verification",
+            "No proof that title-matched mainland and international uploads contain identical footage"
+          ]
+        },
+        {
+          "discoveryUrl": "https://search.bilibili.com/all?keyword=%23Aespa%23",
+          "url": null,
+          "bvid": null,
+          "page": null,
+          "cid": null,
+          "durationSeconds": null,
+          "indexedTitle": "新舞台美疯了! aespa 260912 KISS N TELL 高清全场",
+          "indexedUploader": "Okkkkk0k",
+          "indexedDisplayDuration": "05:30",
+          "metadataBasis": "search index only; search page redirected to browser-upgrade page",
+          "sourceClass": "repost_unverified_origin",
+          "completeness": "unconfirmed",
+          "language": "unconfirmed",
+          "performerScope": "unconfirmed",
+          "decision": "discovery_only_no_exact_video_identity",
+          "reason": "Cannot treat a 05:30 combined upload or the phrase 高清全场 as one complete song."
+        },
+        {
+          "discoveryUrl": "https://search.bilibili.com/all?keyword=%23Aespa%23",
+          "url": null,
+          "bvid": null,
+          "page": null,
+          "cid": null,
+          "durationSeconds": null,
+          "indexedTitle": "〖4K舞台〗aespa KISS N TELL 260912",
+          "indexedUploader": "BBSW0412",
+          "indexedDisplayDuration": "02:51",
+          "metadataBasis": "search index only; search page redirected to browser-upgrade page",
+          "sourceClass": "repost_unverified_origin",
+          "completeness": "unconfirmed",
+          "language": "unconfirmed",
+          "performerScope": "unconfirmed",
+          "decision": "discovery_only_no_exact_video_identity",
+          "reason": "A plausible title/date and duration are insufficient to bind exact footage, version and full-group range."
+        }
+      ],
+      "qualifiedCandidates": [],
+      "remaining": [
+        "Exact publicly accessible BV/page/CID for the program repost",
+        "Actual file beginning/end, original Japanese audio and full-group range",
+        "No substitution of concert uploads, covers, MV or Premium international listing for verified eligible footage"
+      ]
+    }
+  ],
+  "adoptionSuggestion": {
+    "objects": [],
+    "reason": "No candidate meets exact playable identity plus complete same-version participant-scope evidence. No guessed sourceId, page, CID, clip bounds or duration added. A verified repost can be accepted later without demanding an official-upload backlink, subject to current owner/score safeguards."
+  },
+  "changes": {
+    "application": 0,
+    "tests": 0,
+    "privateData": 0,
+    "deployment": 0,
+    "outputFiles": [
+      "docs/codex/evidence/20261029-multiplatform/research-japan.json"
+    ]
+  }
+}

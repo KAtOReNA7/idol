@@ -1,4 +1,19 @@
-# 跨电脑接续：正式v201，PR45增量与PR44均未合并
+# 跨电脑接续：正式v202，PR47最新分支
+
+## 最新接续：v202已上线，多平台视频可用（2026-10-29）
+
+本轮用户明确允许B站、转载及第三方上传，不必限定YouTube官方；随后要求先收尾、把当前全部进度发布正式站和GitHub，再提供换机指令。**正式站v202已部署成功**：https://idol-lens-private.wuke40758.chatgpt.site/ 。GitHub实现`d95f3ca45c98b970ac29622351eec71254f7160b`；Sites源`58dae62aea7df71b599e989452f8f682f247ea15`。PR47仍draft/open/unmerged，活动分支`codex/group-evidence-followup-20261029`；接续须fetch并取最新远端HEAD（包括之后的发布回执/交接提交），不能只检出实现提交或旧main。已包含PR46、PR45 dada774及PR44。
+
+本次发布全部此前未上线成果：MADEIN/PURPLE发行参考、ILLIT既有短版/完整版导航、Hey Gabby完整韩语七人舞台与原封面、tripleS销量下界2,110,833及差额347,956、AtHeart/BEWAVE原公告。正式497舞台源/28专属封面、104资料作品/537槽；剩108新增舞台、11旧源替换、原161分类项中的160项仍未解决，7未知统计及7实际日期仍待证。个人页排版仍未决定。
+
+新准入已实现：Bili用BV/CID/分P完整key保存和导入，先以精确分P外链观看；非官方来源如实标注，未知赞可保留，跨平台/整BV与分P赞不可直接排名。现有497条YouTube对象与key不迁移。**这轮六项新路线没有新增合格正式视频**：STAYC日版Teddy Bear定位到BV1bo4y1x7LV但分P/CID/完整性待核；LOONA LUMINOUS转载重新纳入但阵容存疑；BEEP、QWER、aespa、ILLIT缺证继续保留，详见多平台研究记录。不再单因非官方排除，也不凭标题/时长推定完整。
+
+新鲜owner空分/完整日志/线上原值保护继续保持。Hey Gabby七人、完整首尾、韩语原版已获用户确认且正式采用，不再重复询问；BEEP用户无法确认准确首尾，不重复问同一问题，也不用约03:31–07:30裁切。原人工CSV和冻结历史保持；当前队列为`docs/codex/evidence/20261029-heygabby-complete/remaining-stage-ledger.json`。
+
+最终148项/19文件定向测试、类型和正式构建通过；1,427包文件逐字节核验，42运行时保护、23迁移文件、578本地原件及5,418远端投递规则通过。发布后public/revision2/1 owner/0 external/0 groups、native/epoch6/原快照/done206保持，私人写入0。新浏览器画面核验未完成（一次IAB打开超时），匿名命令行GET为403；不将部署成功当完整视觉/播放/真实保存验收。core:148旧“整理时间”断言在未改HEAD同样失败，另记既存问题。
+
+报告与证据：`docs/codex/worklogs/20261029-multiplatform-release.md`、`docs/codex/evidence/20261029-multiplatform/release-publication.json`；换机直接用`docs/codex/RESUME-PROMPT-20261029.txt`。本轮发布授权已履行；后续批次不自动重复部署。以下段落为历史状态，不覆盖本节。
+
 
 ## 最新续作：Hey Gabby 完整韩语版已本地正式采用（2026-10-29，未部署）
 

@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-29",
+  "baseline": "c80a60e3",
+  "scope": "7作品的新第一方人物角色路线；只读研究，不改应用、人工答案、冻结队列、私人关系或部署。",
+  "priorEvidenceRead": [
+    "docs/codex/evidence/20261029-group-followup/groups-baby-itzy.json",
+    "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+    "docs/codex/evidence/20261029-pr47-continuation/groups-baby-itzy.json",
+    "docs/codex/evidence/20261029-pr47-continuation/groups-qwer-young.json",
+    "docs/codex/evidence/20261029-pr47-continuation/groups-ive-purple.json",
+    "docs/codex/evidence/20261028-continuous/person-research-b.json"
+  ],
+  "summary": {
+    "worksReviewed": 7,
+    "adoptableTargetMemberFacts": 0,
+    "closedPersonGaps": 0,
+    "externalContributorEvidenceOnly": 1,
+    "applicationDelta": []
+  },
+  "boundaries": [
+    "原第一方正文、检索摘要、来源发现、访问受阻分别记录；没有把无搜索结果写成不存在。",
+    "不从团名、当期名册、宣传照片或歌词分词推定某人演唱、录音或MV出镜。",
+    "旧受限YouTube/X路线未再次提取视频或字幕；不完整播放、不猜脸。",
+    "官方整曲目录时长不证明完整播放或逐人参与。",
+    "原图、作品ID、私人记录、owner鉴权与51团设计保持；本文件不含私人导出或身份令牌。"
+  ],
+  "works": [
+    {
+      "group": "ifeye",
+      "title": "loverfory",
+      "workId": "recvxIZFpVLU0R",
+      "videoId": "ecQSl-6NSTA",
+      "workUrl": "https://www.youtube.com/watch?v=ecQSl-6NSTA",
+      "priorReviewed": "旧Oseyo转载保留RAHEE Official；百科导演说法缺原始角色署名。已知MV/幕后标题没有完成逐人角色核实。",
+      "newRoutes": [
+        {
+          "route": "追溯官方PLUS CHAT的原帖及公开服务器页面元数据",
+          "novelty": "将旧转载中的RAHEE短语追到艺人官方原帖，并核对精确嵌入视频。",
+          "discoveryUrl": "https://artist.mnetplus.world/main/stg/ifeye/tag/music",
+          "sourceUrl": "https://artist.mnetplus.world/main/stg/ifeye/contents/6ab4ae6abc67d615d9edae11",
+          "access": "公开HTTP 200；读取原页__NEXT_DATA__.props.pageProps.contents完整正文；索引生成的undefined路径无效，使用同一艺人栏目实际内容ID，不涉及登录或受限视频。",
+          "observed": {
+            "id": "6ab4ae6abc67d615d9edae11",
+            "title": "ifeye (이프아이) 'loverfory' MV",
+            "bodyExcerpt": "RAHEE Official🐯\n이포리 하트 이프아이",
+            "contentType": "CONTENT_MEDIA_EMBEDDED",
+            "embeddedMediaId": "ecQSl-6NSTA",
+            "publishedAt": "2026-09-25T09:00:00.703Z"
+          },
+          "finding": "正文其余部分为ifeye社媒链接和标签，没有导演、拍摄、出演或录音角色词。RAHEE短语与精确MV的第一方关联可证；导演身份仍不可证。",
+          "adoptableAsTargetMemberRole": false
+        },
+        {
+          "route": "具名导演/官方帖文检索",
+          "queries": ["\"loverfory\" \"감독\"", "\"ifeye\" \"loverfory\" \"Directed\"", "\"loverfory\" site:hihat.co.kr", "\"loverfory\" site:instagram.com"],
+          "finding": "未得到可独立读取的新增具名角色原文；旧幕后标题不足以确认RAHEE导演或全员出镜。",
+          "adoptableAsTargetMemberRole": false
+        }
+      ],
+      "stillMissing": "明确将RAHEE与本精确MV导演、拍摄或其他具体角色相连的第一方署名/本人说明。",
+      "disposition": "保留待证；官方短语溯源补强不关闭导演事实。"
+    },
+    {
+      "group": "fromis_9",
+      "title": "Touchdown",
+      "workId": "recvxyOz5XFVzt",
+      "videoId": "peoZYyEvY-k",
+      "workUrl": "https://www.youtube.com/watch?v=peoZYyEvY-k",
+      "priorReviewed": "旧OSEN/发行资料未逐名列成员；SBS Catch幕后受限；Fromispedia不作为新增第一方人物证明。",
+      "newRoutes": [
+        {
+          "route": "录音检索发现参与乐手的本人作品集",
+          "query": "\"Touchdown\" \"프로미스나인\" \"녹음\"",
+          "sourceUrl": "https://nezmayo_gt.creatorlink.net/",
+          "novelty": "新增制作参与者本人的署名原页，而非团体名单或新闻转载。",
+          "access": "作品集全文与公开HTML均可读。",
+          "observedExcerpt": "'fromis_9(프로미스나인) Touchdown' 의 기타담당",
+          "observedEmbed": "//www.youtube.com/embed/peoZYyEvY-k",
+          "finding": "本人作品集将NezMayo的吉他职责绑定到Touchdown及精确MV；不证明fromis_9任一成员录音/出镜。",
+          "adoptableAsTargetMemberRole": false,
+          "externalEvidenceOnly": {"name": "NezMayo", "role": "吉他", "applicationDecision": "按主代理决定仅保留公开证据；本轮不引入外部艺人模型，也不作为成员资料。"}
+        },
+        {
+          "route": "官方制作节目与发行音乐故事检索",
+          "queries": ["\"프로미스나인\" \"Touchdown\" site:programs.sbs.co.kr", "\"Touchdown\" \"프로미스나인\" site:melon.com/musicstory", "\"Touchdown\" \"프로미스나인\" site:weverse.io/fromis9/media"],
+          "finding": "未取得新的成员具名录音原文；Melon艺人列表索引上的团员名册不是逐曲署名。",
+          "adoptableAsTargetMemberRole": false
+        }
+      ],
+      "stillMissing": "Touchdown精确录音版本的具名成员演唱/录音或MV角色证明。",
+      "disposition": "保留待证；仅新增外部吉他署名研究。"
+    },
+    {
+      "group": "HITGS",
+      "title": "Little By Little",
+      "workId": "recvxIZy35rUeY",
+      "videoId": "L9VNIOcfSOU",
+      "workUrl": "https://www.youtube.com/watch?v=L9VNIOcfSOU",
+      "priorReviewed": "旧Bugs4150410/Qobuz资料仅团体或外部制作署名；其他歌曲的VV写作署名不能转移。原图质量候选不属于歌曲参与证据。",
+      "newRoutes": [
+        {
+          "route": "官方帖文/录音/拍摄检索",
+          "novelty": "从发行目录转向录音和拍摄过程中的具名第一方内容。",
+          "queries": ["\"HITGS\" \"Little By Little\" site:instagram.com", "\"HITGS\" \"Little By Little\" \"서진\" \"녹음\"", "\"HITGS\" \"Little By Little\" \"Recording\" -site:lyricsbull.com", "\"HITGS\" \"Little By Little\" \"촬영\"", "\"HITGS\" \"Little By Little\" site:artist.mnetplus.world"],
+          "finding": "未找到可核原文的新成员角色；粉丝目录与其他歌曲混列不能移用。",
+          "adoptableAsTargetMemberRole": false
+        },
+        {
+          "route": "新增官方频道入口",
+          "sourceUrls": ["https://artist.mnetplus.world/main/stg/hitgs", "https://www.nventertainment.net/sub/hitgs/main.html", "https://space.bilibili.com/3546765477284187"],
+          "finding": "PLUS CHAT只返回导航壳，公开HTTP页面也无__NEXT_DATA__内容；官网读取超时；Bilibili返回412后停止。未获取目标歌曲人物原文，不声称查完频道全部内容。",
+          "adoptableAsTargetMemberRole": false
+        }
+      ],
+      "stillMissing": "精确Little By Little录音/拍摄的具名成员署名或本人说明。",
+      "disposition": "保留待证。"
+    },
+    {
+      "group": "HITGS",
+      "title": "Gulliver!",
+      "workId": "recvxIZy3525BF",
+      "videoId": "IM-N8trjDzk",
+      "workUrl": "https://www.youtube.com/watch?v=IM-N8trjDzk",
+      "priorReviewed": "旧Genie88073853/Bugs4154148未具名成员；学员机构关于Seojin的镜像不是已读取原帖；其他歌曲/概念照不可移用。",
+      "newRoutes": [
+        {
+          "route": "追溯MUDOCTOR机构原站新闻",
+          "novelty": "尝试将旧镜像中的Seojin线索追到发布机构第一方页面。",
+          "sourceUrls": ["https://mudoctor.kr/en/global", "https://www.mudoctor.kr/en/news"],
+          "access": "两页公开HTTP 200；第二页web读取超时后公开HTML可读。",
+          "finding": "global页实际链接到news；news返回Wix壳而未提供Gulliver/Seojin原文。没有取得原始祝贺贴，也没有确认本曲人物角色。",
+          "adoptableAsTargetMemberRole": false
+        },
+        {
+          "route": "限定原机构与官方频道检索",
+          "queries": ["\"HITGS\" \"Gulliver\" site:mudoctor.kr", "\"Gulliver\" \"서진\" \"뮤닥터\"", "\"HITGS\" \"Gulliver\" site:facebook.com", "\"HITGS\" \"Gulliver\" site:artist.mnetplus.world"],
+          "finding": "仅重现旧镜像或无匹配，没有新增第一方具名原文；官方频道入口访问结果与Little By Little条目相同，不重复计作两次取证。",
+          "adoptableAsTargetMemberRole": false
+        }
+      ],
+      "stillMissing": "原机构或艺人原帖中明确的Seojin本曲职责，或本精确版本的其他成员逐名署名。",
+      "disposition": "保留待证。"
+    },
+    {
+      "group": "NMIXX",
+      "title": "Sprinkle Party",
+      "workId": "recvxyOz5XsgVc",
+      "videoId": "0T8d3pRjmi4",
+      "workUrl": "https://www.youtube.com/watch?v=0T8d3pRjmi4",
+      "priorReviewed": "Genie11926七人拍摄字幕对应Hey Gabby，不能用于本曲；旧Bugs20465227为集合署名，Dork/LRCLIB分词不作为人物证据。",
+      "newRoutes": [
+        {
+          "route": "从旧制作名单追到MV制作方本人作品集",
+          "novelty": "读STUDIO T.A.M第一方项目目录，避免以另一首合作MV的成员字幕替代。",
+          "sourceUrl": "https://www.ta-m.com/portfolio",
+          "access": "公开作品集全文可读。",
+          "observedExcerpt": "NMIXX - 스프링클 파티 (Sprinkle Party)",
+          "finding": "作品集分别列Sprinkle Party和Hey Gabby，确认制作项目区分；没有列本曲具名表演成员。代表人姓名不是成员角色证明。",
+          "adoptableAsTargetMemberRole": false
+        },
+        {
+          "route": "另一授权音源平台的曲目级credits",
+          "sourceUrl": "https://www.qobuz.com/ca-en/album/gabbys-dollhouse-x-nmixx-original-soundtrack-nmixx/y1xjtkixtix4j",
+          "novelty": "读取曲目2具体credits，不沿用团体专辑名册。",
+          "access": "授权发行目录全文可读。",
+          "finding": "曲目2、时长2:16；演出主艺人只列NMIXX，制作作者为PT Walkley、Han Ayeong、Elum，没有七名成员逐名录音署名。没有播放音频或据时长确认完整性。",
+          "adoptableAsTargetMemberRole": false
+        },
+        {
+          "route": "原权利方、发行方及官方制作内容检索",
+          "queries": ["\"스프링클 파티\" site:vlending.co.kr", "\"Sprinkle Party\" \"NMIXX\" site:nbcuniversal.com", "\"스프링클 파티\" site:melon.com/musicstory", "\"스프링클 파티\" site:music.bugs.co.kr/musicpost", "\"Sprinkle Party\" site:nmixx.jype.com"],
+          "finding": "没有取得新的具名成员角色原文；不把索引无匹配当作成员未参与。",
+          "adoptableAsTargetMemberRole": false
+        }
+      ],
+      "stillMissing": "Sprinkle Party本曲逐名录音/表演证明，与Hey Gabby明确分开。",
+      "disposition": "保留待证。"
+    },
+    {
+      "group": "WOOAH",
+      "title": "WXW (Wish With W)",
+      "workId": "recvxyH5pzrrSO",
+      "videoId": "ZtiThQN5ETc",
+      "workUrl": "https://www.youtube.com/watch?v=ZtiThQN5ETc",
+      "priorReviewed": "旧Bugs4147372/6464766只有WOOAH集合创作署名；百科逐人署名尚未由原出处证实。",
+      "newRoutes": [
+        {
+          "route": "追查百科Wooyeon个人创作栏的具体上游引用",
+          "discoveryUrl": "https://en.wikipedia.org/wiki/Wooyeon",
+          "sourceUrl": "https://www.melon.com/album/detail.htm?albumId=13384591",
+          "novelty": "读取个人条目声称的原始发行来源，核其是否真的具名Wooyeon。百科仅用于发现来源。",
+          "access": "Melon完整专辑介绍及credits可读。",
+          "observedExcerpt": "Lyrics by WOOAH(우아), LAS, ZAE(MUMW), junotheloner",
+          "finding": "专辑日期2026-05-13。介绍说成员参与作词，但正式署名仍为WOOAH集合名，没有Wooyeon或五位成员逐名。该引用不能支持逐人拆分。",
+          "adoptableAsTargetMemberRole": false
+        },
+        {
+          "route": "检查百科所引著作权登记入口",
+          "sourceUrl": "https://www.komca.or.kr/srch2/srch_01.jsp",
+          "access": "仅读取公开通用入口；不是带Wooyeon/本曲记录的精确链接。",
+          "finding": "未获得任何本曲登记结果；页面明示禁止自动化AI/机器人使用作品检索，未提交自动查询、未绕过。",
+          "adoptableAsTargetMemberRole": false
+        },
+        {
+          "route": "官方发行活动与具名作词检索",
+          "queries": ["\"WXW\" \"WOOAH\" \"나나\" \"작사\"", "\"우아\" \"WXW\" \"전원\" \"작사\"", "\"WXW\" \"WOOAH\" site:weverse.io/wooah"],
+          "sourceUrl": "https://weverse.io/wooah/notice/35624?hl=ko",
+          "finding": "官方发行串流活动只证明发行宣传；其余命中为fan concert或旧粉丝文章，没有新增成员角色原文。未保留活动获奖者等无关个人名单。",
+          "adoptableAsTargetMemberRole": false
+        }
+      ],
+      "stillMissing": "本曲作词/演唱的逐名成员登记或官方具名说明；集合创作署名不能拆成五人。",
+      "disposition": "保留待证；拒绝百科引用中的越界拆名。"
+    },
+    {
+      "group": "WOOAH",
+      "title": "SUMMER",
+      "workId": "recvxyH5pzQxpW",
+      "videoId": "8DwTAa5hPsA",
+      "workUrl": "https://www.youtube.com/watch?v=8DwTAa5hPsA",
+      "priorReviewed": "旧Bugs4151414没有成员逐名录音；官方幕后1cZvvuw29s8已限流，X原帖403/空正文，照片镜像不等于歌曲参与。",
+      "newRoutes": [
+        {
+          "route": "官方社媒/Weverse制作内容与录音检索",
+          "novelty": "避开旧受限视频与X链接，寻找独立公开帖文或制作文字。",
+          "queries": ["\"WOOAH\" \"SUMMER\" site:instagram.com/wooah_hm", "\"SUMMER\" \"우아\" \"녹음\"", "\"WOOAH\" \"SUMMER\" \"BEHIND\" site:weverse.io/wooah/media"],
+          "finding": "未取得新的精确作品具名原文；Weverse命中有2021年日常summer用语，不能冒充2026年歌曲SUMMER证据。未重复请求旧受限视频。",
+          "adoptableAsTargetMemberRole": false
+        }
+      ],
+      "stillMissing": "2026年SUMMER精确录音或MV幕后中可读的具名成员角色说明/字幕。",
+      "disposition": "保留待证；新概念照和演唱会宣传不关闭人物缺口。"
+    }
+  ]
+}

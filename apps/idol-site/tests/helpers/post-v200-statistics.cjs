@@ -1,12 +1,13 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const {beforeGroupAdvanceStatistics} = require('./group-advance-evidence.cjs');
 const base = path.resolve(__dirname, '../../../../docs/codex/evidence/20261028-post-v200/statistics');
 const changes = ['geenius', 'triples'].map(slug => JSON.parse(fs.readFileSync(path.join(base, slug + '-adoption.json'), 'utf8')));
 const followupChanges = ['triples', 'vvup', 'udtt'].map(slug => JSON.parse(fs.readFileSync(path.join(base, slug + '-followup-adoption.json'), 'utf8')));
 
 function beforeFollowupStatistics(current) {
-  const restored = structuredClone(current);
+  const restored = beforeGroupAdvanceStatistics(current);
   for (const change of [...followupChanges].reverse()) {
     const [slug, field] = change.change.split('.');
     assert.deepEqual(restored.groups[slug][field], change.after);
@@ -33,4 +34,4 @@ function beforePostV200Statistics(current) {
   }
   return restored;
 }
-module.exports = {beforePostV200Statistics, beforeFollowupStatistics, postV200StatisticChanges: changes, followupStatisticChanges: followupChanges};
+module.exports = {beforePostV200Statistics, beforeFollowupStatistics, beforeGroupAdvanceStatistics, postV200StatisticChanges: changes, followupStatisticChanges: followupChanges};

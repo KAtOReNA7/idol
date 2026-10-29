@@ -185,9 +185,9 @@ test('the public group model renders the reconciled integer and retains the unre
   const before = structuredClone(input);
   const model = groupInformationModel('triples', input);
   const html = renderGroupInformation('triples', input);
-  assert.equal(model.sales.observedValue, 2108154);
-  assert.match(html, /<strong>2,108,154<em>张<\/em><\/strong>/);
-  assert.match(html, /350,635/);
+  assert.equal(model.sales.observedValue, 2110833);
+  assert.match(html, /<strong>2,110,833<em>张<\/em><\/strong>/);
+  assert.match(html, /347,956/);
   assert.match(html, /来源差异继续开放/);
   assert.match(html, /不是全球完整累计/);
   assert.doesNotMatch(html, /<strong>2,087,073<em>/);

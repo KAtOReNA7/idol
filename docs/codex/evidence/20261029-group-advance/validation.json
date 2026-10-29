@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T09:03:46.865046+00:00",
+  "baselineCommit": "c80a60e3b328300300d24aa85f2b3c296778649e",
+  "applicationHashes": {
+    "apps/idol-site/data/group-statistics-completion-evidence.json": "51372099b264bbf2af2bf55ac6c934a7aa3da20fda4344872a2740f984eb4979",
+    "apps/idol-site/data/stages/supplements.json": "6085ec68c7a4223a45fd9f571375a773f01e5c77876cb0f0821cf17ac34614c2",
+    "apps/idol-site/data/timeline-reported-records.json": "0480b00a3fa71b7307dff00c1438a0f7367d25d20115faafb85ad02bbf7a9973",
+    "apps/idol-site/scripts/udtt-private-build-assets-manifest.json": "35c1af990bcf94f80d546028381c1e1fcf586c72e82401de11d737e26c238b1f"
+  },
+  "targetedTests": {
+    "status": "pass",
+    "singleFinalRun": true,
+    "tests": 137,
+    "pass": 137,
+    "fail": 0,
+    "skipped": 0,
+    "fileCount": 19,
+    "files": [
+      "tests/continuous-evidence-protection.test.cjs",
+      "tests/continuous-stage-viewing.test.mjs",
+      "tests/formal-four-stage-adoption.test.cjs",
+      "tests/group-advance-evidence.test.cjs",
+      "tests/heygabby-research-followup.test.cjs",
+      "tests/post-v200-adoptions.test.cjs",
+      "tests/post-v200-statistics.test.mjs",
+      "tests/pr47-continuation-evidence.test.cjs",
+      "tests/stage-fill-statistics.test.mjs",
+      "tests/stage-research-note.test.cjs",
+      "tests/stage-viewing-category-resolution.test.mjs",
+      "tests/statistics-annual-reconciliation.test.mjs",
+      "tests/statistics-category-resolution.test.mjs",
+      "tests/statistics-period-followup.test.mjs",
+      "tests/timeline-production-guard.test.cjs",
+      "tests/timeline-production.test.cjs",
+      "tests/timeline-reported-records.test.cjs",
+      "tests/udtt-private-build-assets.test.mjs",
+      "tests/user-x-observations.test.mjs"
+    ],
+    "reproduceFrom": "apps/idol-site",
+    "reproductionCommand": "node --test tests/continuous-evidence-protection.test.cjs tests/continuous-stage-viewing.test.mjs tests/formal-four-stage-adoption.test.cjs tests/group-advance-evidence.test.cjs tests/heygabby-research-followup.test.cjs tests/post-v200-adoptions.test.cjs tests/post-v200-statistics.test.mjs tests/pr47-continuation-evidence.test.cjs tests/stage-fill-statistics.test.mjs tests/stage-research-note.test.cjs tests/stage-viewing-category-resolution.test.mjs tests/statistics-annual-reconciliation.test.mjs tests/statistics-category-resolution.test.mjs tests/statistics-period-followup.test.mjs tests/timeline-production-guard.test.cjs tests/timeline-production.test.cjs tests/timeline-reported-records.test.cjs tests/udtt-private-build-assets.test.mjs tests/user-x-observations.test.mjs",
+    "logPath": "E:\\project\\idol-local-backups\\20261029-group-advance\\validation\\group-advance-targeted-tests-verified.log",
+    "logSha256": "71e523c50d78feb84305c428ee12e54c4a21560e3dbb44229a11d4baca8a2c1d",
+    "newFocusedTests": 10
+  },
+  "checks": {
+    "typecheck": {
+      "completedAt": "2026-10-29T08:49:31.3213554Z",
+      "exitCode": 0,
+      "command": "npx tsc --noEmit --incremental false",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "logPath": "E:\\project\\idol-local-backups\\20261029-group-advance\\validation\\typecheck-final.log"
+    },
+    "build": {
+      "command": "npm run build",
+      "completedAt": "2026-10-29T08:51:07.6314653Z",
+      "exitCode": 0,
+      "logSha256": "dc8ada9d3ce73066b8a60816216ccb765660e6c24e209f6cbe19cf46ad606b26",
+      "logPath": "E:\\project\\idol-local-backups\\20261029-group-advance\\validation\\build-final.log"
+    }
+  },
+  "ssr": {
+    "status": "pass",
+    "receipt": "ui-readback.json",
+    "finalAudit": "final-application-audit.json",
+    "limits": "Older SSR timeline byte hash precedes the formatting-preservation pass; final audit proves equivalent JSON and final tests render current bytes."
+  },
+  "history": {
+    "earlierRunsNotAddedToTotal": true,
+    "initialFailures": "Stale historical data/hash assertions and two runtime dependency hashes; strict reviewed-before restoration and current dependency hashes corrected these. Original old assertions remain.",
+    "logs": [
+      "group-advance-targeted-tests-final.log",
+      "heygabby-stage-udtt-tests-01.log",
+      "statistics-timeline-pr47-tests-01.log",
+      "statistics-timeline-pr47-tests-02.log"
+    ]
+  },
+  "browser": {
+    "status": "not_verified",
+    "reason": "one normal IAB YouTube tab creation timed out; no blind retry"
+  },
+  "fullVideoPlayback": "not_verified",
+  "realOwnerSave": "not_run",
+  "deployment": "not_run",
+  "packageByteVerification": "not_run_no_release_requested"
+}

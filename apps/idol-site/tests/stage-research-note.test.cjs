@@ -24,12 +24,27 @@ test('Hey Gabby review-only content reaches anonymous projection and renders a c
  assert.equal(work.stageSupplement.researchNote.sources.length,3);
  const html=render(work);assert.match(html,/<details class="caption-help stage-research-note"><summary>待核说明与来源<\/summary>/);
  assert.doesNotMatch(html,/<details[^>]*\bopen\b/);
- for(const url of ['https://www.youtube.com/watch?v=XSpYaEdpKxY','https://music.bugs.co.kr/album/20465227','https://www.newsis.com/view/NISX20220518_0001876354'])assert.ok(html.includes(`href="${url}" target="_blank" rel="noopener noreferrer"`));
+ for(const url of ['https://www.youtube.com/watch?v=XSpYaEdpKxY','https://music.bugs.co.kr/mv/608040','https://www.newsis.com/view/NISX20220518_0001876354'])assert.ok(html.includes(`href="${url}" target="_blank" rel="noopener noreferrer"`));
  assert.match(html,/仍待核验，不用于本条舞台评分/);
  assert.doesNotMatch(html,/<input|<form|<iframe|<button|保存作品修改|owner|保存日志|versionMatch|completeness|verification_limited|Music Bank/);
  assert.equal(stageForWork(id),null);assert.equal(stageMatches(work,'ready'),false);assert.equal(work.stageScore,0);assert.equal(work.score,0);
  assert.deepEqual(work.stageSupplement.alternatives,[]);assert.equal(work.stageSupplement.watchLeads,undefined);
  assert.deepEqual(catalog,before);
+});
+
+test('anonymous Hey Gabby disclosure shows the human participation finding without creating stage or member scores',()=>{
+ const catalog=fixture(),snapshot=structuredClone(catalog),publicWork=projectPublicCatalog(catalog).works[0];
+ const html=render(publicWork);
+ assert.match(html,/人工看片已确认.*7名成员均参与/);
+ assert.match(html,/视频首尾是否完整、语言和音轨是否与原曲一致仍待核验/);
+ assert.match(html,/目前尚未采用为本条舞台/);
+ assert.ok(html.includes('https://www.youtube.com/watch?v=XSpYaEdpKxY'));
+ assert.ok(html.includes('https://music.bugs.co.kr/mv/608040'));
+ assert.doesNotMatch(html,/<iframe|<input|<button|cast-scores|版本已确认|完整播放已确认/);
+ assert.equal(publicWork.stage,null);assert.equal(stageMatches(publicWork,'ready'),false);
+ assert.equal(publicWork.score,0);assert.equal(publicWork.stageScore,0);
+ assert.deepEqual(publicWork.stageSupplement.alternatives,[]);assert.equal(publicWork.stageSupplement.watchLeads,undefined);
+ assert.deepEqual(catalog.ratings,[]);assert.deepEqual(catalog,snapshot);
 });
 
 test('only an explicitly reviewed note is public; historical raw review fields and nested unknown fields never cross the boundary',()=>{

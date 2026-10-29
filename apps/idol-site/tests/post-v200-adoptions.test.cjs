@@ -4,6 +4,7 @@ const read=p=>JSON.parse(fs.readFileSync(root+'/'+p,'utf8'));
 const baseline=p=>JSON.parse(execFileSync('git',['show','c02315392c4b2912883d63745eba876221c43b34:apps/idol-site/'+p],{cwd:root,encoding:'utf8',maxBuffer:20*1024*1024}));
 const receipt=read('../../docs/codex/evidence/20261028-post-v200/stages-b/adoption.json');
 const {beforePostV200Stages,beforePostV200StageStatuses}=require('./helpers/post-v200-stages.cjs');
+const {beforeGroupAdvanceTimelineRecords}=require('./helpers/group-advance-evidence.cjs');
 
 test('four documented stage changes preserve all other sources and statuses through exact preimages',()=>{
  const sources=read('data/stage-videos.json'),status=read('data/stages/status.json');
@@ -29,7 +30,7 @@ test('new exact-video posters preserve original bytes and all previous posters',
 });
 
 test('UDTT earlier interview adjusts only reporting evidence without inventing effective dates or identities',()=>{
- const current=read('data/timeline-reported-records.json'),before=baseline('data/timeline-reported-records.json');
+ const current=beforeGroupAdvanceTimelineRecords(read('data/timeline-reported-records.json')),before=baseline('data/timeline-reported-records.json');
  const change=read('../../docs/codex/evidence/20261028-post-v200/statistics/udtt-source-adoption.json'),row=current.records.find(r=>r.eventId===change.after.eventId);
  assert.deepEqual(row,change.after);assert.equal(row.recordDate,'2025-04-30');assert.equal(row.eventDate,null);assert.deepEqual(row.memberIds,change.expectedBefore.memberIds);
  assert.match(row.boundary,/生效日期未确认/);assert.match(row.summary,/不证明临时或永久合同/);

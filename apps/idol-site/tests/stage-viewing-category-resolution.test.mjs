@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {build} from 'esbuild';
 import {beforePostV200Stages,beforePostV200StageStatuses} from './helpers/post-v200-stages.cjs';
-import restorePr47ContinuationBaseline from './helpers/pr47-continuation-baseline.cjs';
+import restoreHeyGabbyReviewBaseline from './helpers/heygabby-review-baseline.cjs';
 const read=(p)=>JSON.parse(fs.readFileSync(p,'utf8'));
 const data=read('data/stages/supplements.json');
 const evidence=read('../../docs/codex/evidence/20261027-category-resolution/stages/viewing-supplements-adoption.json');
@@ -29,7 +29,7 @@ test('six new public viewing alternatives validate and never acquire score bindi
 });
 
 test('prior supplement and stage records remain intact through the four earlier sources and eleven documented practices',()=>{
- const historical=restorePr47ContinuationBaseline(data);
+ const historical=restoreHeyGabbyReviewBaseline(data);
  for(const [id,baseline]of Object.entries(evidence.preservation.oldRows)){
   const row=structuredClone(historical.works[id]);
   row.alternatives=row.alternatives.slice(0,baseline.alternativeCount).map(a=>{const copy={...a};delete copy.selection;return copy});

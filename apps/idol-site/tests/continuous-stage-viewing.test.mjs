@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {build} from 'esbuild';
 import restoreHeyGabbyReviewBaseline from './helpers/heygabby-review-baseline.cjs';
+import {beforePostV200Stages,beforePostV200StageStatuses} from './helpers/post-v200-stages.cjs';
 
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const sort=v=>Array.isArray(v)?v.map(sort):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sort(v[k])])):v;
@@ -33,8 +34,8 @@ test('eight historical viewing alternatives retain read-only semantics after for
 
 test('prior supplements and non-target sources stay unchanged; eight adopted sources retain full history',()=>{
  const adoption=read('../../docs/codex/evidence/20261028-continuous/stage-replacement-adoption.json');
- const beforeStages=read('data/stage-videos.json');
- const beforeStatuses=read('data/stages/status.json');
+ const beforeStages=beforePostV200Stages(read('data/stage-videos.json'));
+ const beforeStatuses=beforePostV200StageStatuses(read('data/stages/status.json'));
  for(const row of adoption.items){
   assert.equal(hash(beforeStages[row.recordId]),row.afterSha256);
   beforeStages[row.recordId]=structuredClone(row.before);
@@ -48,7 +49,7 @@ test('prior supplements and non-target sources stay unchanged; eight adopted sou
   const bytes=reconstruct[file]?Buffer.from(JSON.stringify(reconstruct[file],null,2)+'\n'):fs.readFileSync(file);
   assert.equal(hash(bytes),expected,file+' historical cohort with authorized replacements restored');
  }
- const stages=read('data/stage-videos.json');assert.equal(Object.keys(stages).length,493);
+ const stages=beforePostV200Stages(read('data/stage-videos.json'));assert.equal(Object.keys(stages).length,493);
  for(const row of receipt.adopted){
   assert.equal(hash(beforeStages[row.workId]),row.retainedSourceSha256);
   assert.equal(stages[row.workId].videoId,row.videoId);

@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T16:17:38+08:00",
+  "baseline": "c80a60e3b328300300d24aa85f2b3c296778649e",
+  "scope": "Four exact person/video evidence targets. Bounded public-source research; no application or frozen-queue edits.",
+  "counts": {
+    "targets": 4,
+    "adoptablePersonDeltas": 0,
+    "fullFactClosures": 0
+  },
+  "applicationDelta": [],
+  "items": [
+    {
+      "group": "IVE",
+      "workId": "recvxyHuKMwrIt",
+      "videoId": "rNGPgQB4Be8",
+      "song": "BANG BANG (MINIVE VER.)",
+      "exactScope": "Existing 74-second MINIVE version, separate from the human full performance.",
+      "reviewedPriorEvidence": [
+        "docs/codex/evidence/20261029-group-followup/groups-ive-purple.json",
+        "docs/codex/evidence/20261029-pr47-continuation/groups-ive-purple.json"
+      ],
+      "priorFinding": "六个角色与成员的映射已知；不证明本条全片无真人，也不证明逐人录音。真人完整版 uVpGElT--E8 不跨版本套用。",
+      "newRoutes": [
+        {
+          "url": "https://v.daum.net/v/20260814170107828",
+          "method": "Read normal web-extracted article body, syndicated Sports Kyunghyang report dated 2026-08-14.",
+          "finding": "正文可读，确认 MINIVE 快闪店、角色映射及官方角色版 MV 发布。前批原报道正文受阻，这次补到可读的同源转载正文。",
+          "limitation": "报道没有该 74 秒视频的完整画面核验、逐人录音/配音署名或无真人声明；这不是新的人员事实关闭。"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=rNGPgQB4Be8",
+          "method": "Primary-video search discovery followed by one normal web open.",
+          "accessResult": "Online fetch throttled; route stopped.",
+          "finding": "检索元数据呈现精确官方标题及通用社交链接；未取得可读视频正文、字幕或完整播放。",
+          "evidenceLevel": "Search metadata is a lead only, not adopted factual evidence."
+        }
+      ],
+      "decision": "keep-open",
+      "adoptable": false,
+      "unresolved": "精确 MINIVE 上传的具名录音/配音参与，或足以证明全片无真人的版本特定证据。"
+    },
+    {
+      "group": "izna",
+      "workId": "rec28ldfRTrNBu",
+      "videoId": "xZ5Ej-tLEjM",
+      "song": "SASS & Racecar",
+      "exactScope": "Combined Special Performance Video; neither separate-song uploads nor concert/KCON footage.",
+      "reviewedPriorEvidence": [
+        "docs/codex/evidence/20261029-group-followup/groups-ive-purple.json",
+        "docs/codex/evidence/20261029-pr47-continuation/groups-ive-purple.json"
+      ],
+      "priorFinding": "日本官网已列合并 Special Performance；IMDb 可编辑演员表缺原始署名与精确上传依据，不能当逐名第一方证据。",
+      "newRoutes": [
+        {
+          "url": "https://izna-official.jp/s/n198/diary/movie/list?ima=0000&link=ROBO004",
+          "method": "Read normal web body, then normal public HTTP GET HTML.",
+          "accessResult": {
+            "status": 200,
+            "responseBytes": 28738
+          },
+          "minimalSourceReadback": {
+            "title": "izna(이즈나) 'SASS ＆ Racecar' Special Performance Video",
+            "modalAttribute": "youtube:xZ5Ej-tLEjM"
+          },
+          "finding": "在同一官方列表项内直接核到标题与精确视频 ID，排除了相邻 Love All Lyric Video 的串行误读。",
+          "limitation": "该项没有逐名表演、录音或制作角色说明；官方目录身份确认不等于成员参与确认。"
+        },
+        {
+          "method": "Bounded searches for the exact combined title with member/production-credit terms.",
+          "finding": "未取得新的第一方逐名正文；检索出现的分曲资料、演唱会报道与可编辑影视目录均未扩大到合并上传。"
+        }
+      ],
+      "decision": "keep-open",
+      "adoptable": false,
+      "unresolved": "xZ5Ej-tLEjM 本条两曲合并版本的实际具名参与者。"
+    },
+    {
+      "group": "PURPLE KISS",
+      "workId": "recvxyH5pzFAPL",
+      "videoId": "os4driLeAiU",
+      "song": "DOREMI",
+      "exactScope": "English version recording evidence; existing six OUR NOW concept-photo references are already adopted limited release references.",
+      "reviewedPriorEvidence": [
+        "docs/codex/evidence/20261029-group-followup/groups-ive-purple.json",
+        "docs/codex/evidence/20261029-pr47-continuation/groups-ive-purple.json",
+        "docs/codex/evidence/20261029-pr47-continuation/groups-ive-purple-delta.json"
+      ],
+      "priorFinding": "TGbfk7AEIzk 为已定位的英文录音幕后；六人概念照不升级为录音或 MV 逐人证据，不重复采用。",
+      "newRoutes": [
+        {
+          "url": "https://www.purplekiss.co.kr/tag/PS_NOTE",
+          "method": "Read normal official tag-page body and follow the English Recording Behind link.",
+          "finding": "官网列表明确区分英文录音幕后、英文 MV 幕后及韩文录音幕后，取得具体英文录音内容页地址。"
+        },
+        {
+          "url": "https://www.purplekiss.co.kr/contents/68cbe80535cccf1ba859dc44",
+          "method": "Normal web open returned title with no body; one normal public HTTP GET.",
+          "accessResult": {
+            "status": 403,
+            "responseBytes": 5200,
+            "action": "Stopped this route; no header/proxy changes or retry."
+          },
+          "finding": "未取得 contents 正文、官方字幕或逐人录音说明。"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=TGbfk7AEIzk",
+          "method": "Search metadata only; no video fetch after the YouTube route was throttled.",
+          "finding": "索引描述广告示有 KOR/ENG 字幕并带六个常用成员标签；未读取字幕正文或时间点。",
+          "evidenceLevel": "Unconfirmed lead only. General member hashtags do not identify each person's actual English recording contribution."
+        }
+      ],
+      "decision": "keep-open",
+      "adoptable": false,
+      "unresolved": "英文录音幕后中的官方具名字幕/角色说明或同版逐人录音署名；韩文版、当前名册和发行概念照均不足以代替。"
+    },
+    {
+      "group": "aespa",
+      "workId": "recvxyHuKMBHQA",
+      "videoId": "wPnjKZFgeiE",
+      "song": "Get Goin'",
+      "exactScope": "Original Fraggle Rock collaboration upload; not a remix or nine-second teaser.",
+      "reviewedPriorEvidence": [
+        "docs/codex/evidence/20261029-group-followup/groups-root.json",
+        "docs/codex/evidence/20261029-pr47-continuation/groups-root.json"
+      ],
+      "priorFinding": "制作访谈仅提供集体拍摄与制作背景；预告具名不自动扩展到完整上传，分词歌词不作为录音名单。",
+      "newRoutes": [
+        {
+          "url": "https://music.apple.com/us/song/get-goin/1732730353",
+          "method": "Read primary distributor page body.",
+          "finding": "精确曲目列于 Fraggle Rock: Back to the Rock Season 2 配乐，署 aespa，发布日期 2024-03-29。",
+          "limitation": "可读正文只有团体署名，没有四人的逐名录音角色。"
+        },
+        {
+          "url": "https://www.dipe.co.kr/2284234",
+          "method": "Read Dispatch article body dated 2024-03-08.",
+          "finding": "正文依序提到 Winter、Karina、Giselle、Ningning，但明确描述的是 Apple 官方社媒九秒预告。",
+          "limitation": "此署名范围不能移植到 wPnjKZFgeiE 完整版；不是本轮可采用的完整版本人物增量。"
+        },
+        {
+          "url": "https://readdork.com/track/aespa-get-goin",
+          "method": "Read normal web-extracted full page; one later normal HTML GET returned 403 and was stopped.",
+          "finding": "精确曲目页的 Credits 区域列出 GISELLE、KARINA、NINGNING、WINTER 的 Vocals 字段，构成新的二级逐名线索。",
+          "limitation": "不是第一方；该 credits 区块没有可核录音署名出处。页面另列 LRCLIB 歌词来源，但不能据此断言 credits 也来自 LRCLIB。未升级为事实。"
+        },
+        {
+          "url": "https://readdork.com/credits/giselle",
+          "method": "Read linked credit-index body.",
+          "finding": "同名索引同时包含 aespa 与其他 Giselle 相关条目，索引允许人物资料申领。",
+          "limitation": "这仅表明该索引不足以独立验证曲目署名来源；没有据此判定 Get Goin' 的四人署名为假。"
+        },
+        {
+          "url": "https://www.henson.com/fraggle-rock/",
+          "method": "Read primary official show-page body.",
+          "finding": "未取得精确歌曲完整版的逐人录音/表演名单。"
+        }
+      ],
+      "decision": "keep-open-with-new-secondary-lead",
+      "adoptable": false,
+      "unresolved": "同一原版曲目/上传的第一方具名录音或画面参与说明。Dork 四人 Vocals 仍需原始来源交叉核实。"
+    }
+  ],
+  "limitations": [
+    "No complete video playback, frame-by-frame person identification, or official subtitle transcript was obtained.",
+    "No statement of absence is inferred from missing text or unsuccessful search.",
+    "Throttled/403 routes were stopped. No proxy, alternate frontend, altered authentication, or access-control bypass was used.",
+    "Only public source summaries are recorded; no private observations, credentials, cookies, personal records, candidate image files, or raw page dumps are included."
+  ],
+  "actions": {
+    "applicationEdits": 0,
+    "frozenQueueEdits": 0,
+    "privateDataReads": 0,
+    "privateWrites": 0,
+    "imageDownloads": 0,
+    "formalStageBindings": 0,
+    "scoreBindings": 0,
+    "deployments": 0
+  }
+}

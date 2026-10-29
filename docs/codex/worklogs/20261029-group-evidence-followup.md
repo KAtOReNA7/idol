@@ -41,3 +41,7 @@
 GitHub 推送与 PR 读回在执行后记录到 `evidence/20261029-group-followup/github-delivery.json`。仓库 public；仅现有批准范围、公开来源和脱敏证据进入提交，不增加秘密、凭证或新私人答案。接续先读 NEXT／最新报告，不只接旧 main／PR45，不重复已有完整歌曲、舞台或图片批次。
 
 剩余推进依赖：完整视频／音轨／具名字幕、同套原图或统计原出处；真正采用舞台还需新鲜 owner 数据和完整日志。ILLIT 的作品范围决定已经落实，不再重复询问。
+
+## 已核 GitHub 交付
+
+实现 `20f18b2889c0eb42bb6da616f783043dc4e1a695` 已普通 push，并由 ls-remote 和 GitHub head_sha 双重读回。draft [PR47](https://github.com/KAtOReNA7/idol/pull/47) 已创建并附加到本任务，base 为 PR46 分支；未合 main。回执 `github-delivery.json` 与正式 v201 的只读回执分开记录。Git 提交阶段触发自动 pack-objects，已正常完成 exit 0，无强制终止或强推。独立 QA 5189 服务及测试浏览器已关闭，端口监听 0。暂存检查发现 8 份新 JSON 的 CRLF，已仅转 LF、解析内容逐个深等并留证；应用源码不受影响，最终 staged diff-check 通过。

@@ -2,7 +2,7 @@
 
 ## 当前续作：逐团证据与完整版本导航（2026-10-29，未部署）
 
-用户已要求按团继续，并决定 ILLIT《It’s Me》另行整理完整歌曲版。当前任务分支 `codex/group-evidence-followup-20261029`，基线为已含 `dada774`／PR45／PR44 的 PR46 `cef176580`；接续须显式 fetch 此分支并核最新 PR，不能只接旧 main 或 PR45 而漏掉 PR46 的人工填写保护。恢复后核 PR44／45／46 仍 draft/open/unmerged。旧 stash 不自动应用。
+用户已要求按团继续，并决定 ILLIT《It’s Me》另行整理完整歌曲版。当前任务分支 `codex/group-evidence-followup-20261029`（draft [PR47](https://github.com/KAtOReNA7/idol/pull/47)，未合并），基线为已含 `dada774`／PR45／PR44 的 PR46 `cef176580`；接续须显式 fetch 此分支并核最新 PR，不能只接旧 main 或 PR45 而漏掉 PR46 的人工填写保护。恢复后核 PR44／45／46 仍 draft/open/unmerged。旧 stash 不自动应用。
 
 本轮新增 MADEIN《PUNG!》四人具名发行封套参考（103 作品／531 槽；不称 MV 出镜／逐人录音），修正 Hey Gabby 官方 Performance 的过时排除说明，并明确 ILLIT 已有短版／完整原曲的双向导航；不重复创建完整作品或导入已有 Music Bank 舞台，不转移评分。45 团 161 分类项已对齐，仍全部保留事实待证，其中 1 项有限补强，0 完整事实关闭；原 CSV／冻结队列不覆盖。用户已回答 ILLIT 范围问题，不再重复询问。
 

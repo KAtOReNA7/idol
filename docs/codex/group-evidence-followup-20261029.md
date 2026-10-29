@@ -1,6 +1,6 @@
 # 逐团补缺与版本范围续作（2026-10-29，未部署）
 
-用户已要求按团持续推进，并决定 ILLIT《It’s Me》另行整理完整歌曲版本。本轮从最新 main 创建 `codex/group-evidence-followup-20261029`，普通合入包含 PR45／PR44 的 PR46 `cef1765801ce62739c44308292a680b16e681597`，没有重新导入历史批次。正式站保持 v201；本轮代码、来源记录与交接保存在 GitHub 分支，不能当作已上线。
+用户已要求按团持续推进，并决定 ILLIT《It’s Me》另行整理完整歌曲版本。本轮从最新 main 创建 `codex/group-evidence-followup-20261029`（draft [PR47](https://github.com/KAtOReNA7/idol/pull/47)，未合并），普通合入包含 PR45／PR44 的 PR46 `cef1765801ce62739c44308292a680b16e681597`，没有重新导入历史批次。正式站保持 v201；本轮代码、来源记录与交接保存在 GitHub 分支，不能当作已上线。
 
 ## 实际增量
 

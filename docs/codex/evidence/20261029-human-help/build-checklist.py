@@ -15,6 +15,28 @@ KINDS = {
     'sales_reconciliation': '销量差额核对',
     'photo_quality': '照片提质／同套证据',
 }
+CSV_HEADERS = [
+    '团体', '问题类别', '作品或项目', '版本', '缺少的信息', '可提供的帮助',
+    '站内/资料链接', '原视频', '我的补充', '补充来源', '时间点或截止日',
+]
+
+
+def require_unfilled_csv(path):
+    """Refuse regeneration if it could erase an answer or unreadable input."""
+    if not path.exists():
+        return
+    try:
+        with path.open(encoding='utf-8-sig', newline='') as handle:
+            reader = csv.reader(handle, strict=True)
+            if next(reader, None) != CSV_HEADERS:
+                raise ValueError(f'{path}: CSV表头不匹配；已停止生成，未改写任何产物。')
+            for row in reader:
+                if len(row) != len(CSV_HEADERS):
+                    raise ValueError(f'{path}: 第{reader.line_num}行列数不匹配；已停止生成，未改写任何产物。')
+                if any(row[-3:]):
+                    raise ValueError(f'{path}: 第{reader.line_num}行含人工补充；请先核查并保留原文件，未改写任何产物。')
+    except (csv.Error, UnicodeError) as error:
+        raise ValueError(f'{path}: CSV无法安全读取；已停止生成，未改写任何产物。') from error
 
 
 def read(name):
@@ -26,6 +48,7 @@ def cell(value):
 
 
 def main():
+    require_unfilled_csv(DOCS / 'human-help-by-group-20261029.csv')
     stages, others = read('stage-checklist.json'), read('other-checklist.json')
     groups = {}
     for source in (stages, others):
@@ -145,7 +168,7 @@ def main():
     csv_path = DOCS / 'human-help-by-group-20261029.csv'
     with csv_path.open('w', encoding='utf-8-sig', newline='') as handle:
         writer = csv.writer(handle, lineterminator='\n')
-        writer.writerow(['团体', '问题类别', '作品或项目', '版本', '缺少的信息', '可提供的帮助', '站内/资料链接', '原视频', '我的补充', '补充来源', '时间点或截止日'])
+        writer.writerow(CSV_HEADERS)
         for row in rows:
             kind_label = KINDS.get(row['kind'], row['kind'])
             title = row.get('song') or event_titles.get(row.get('eventId')) or row.get('title') or kind_label

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T02:43:36.043121+00:00",
+  "timezone": "Asia/Shanghai",
+  "scope": "New-computer handoff and human-input protection only; no application data adoption or deployment.",
+  "git": {
+    "repository": "https://github.com/KAtOReNA7/idol",
+    "visibility": "public",
+    "originMain": "852f7506a4f921fff4e4d24fe70e8d607c7d40f5",
+    "pr44": {
+      "number": 44,
+      "head": "21b12a6f0d49f355ee639ae87bb2b294ba58513f",
+      "state": "open",
+      "draft": true,
+      "merged": false
+    },
+    "pr45": {
+      "number": 45,
+      "head": "dada774ba79aba8e9863a88822e71644669ce7cb",
+      "base": "codex/statistics-relations-followup-20261027",
+      "state": "open",
+      "draft": true,
+      "merged": false
+    },
+    "taskBranch": "codex/human-help-handoff-sync-20261029",
+    "createdFromLatestOriginMain": true,
+    "ordinaryMergeResult": "fast-forward to PR45; contains PR44 and dada774",
+    "applicationTree": "5bdd4cb1e31af3ec823e0d6ce89bde6f25ea8411",
+    "applicationDiffEmpty": true
+  },
+  "localProtection": {
+    "modifiedFiles": 17,
+    "untrackedFiles": 5,
+    "backupFilesSha256Verified": 22,
+    "backupPath": "E:\\project\\idol-local-backups\\20261029-human-handoff-103333",
+    "stash": "2d1acc90331c12ba56d339418a3295a063327fe3",
+    "oldStashApplied": false,
+    "backupUploaded": false
+  },
+  "humanInput": {
+    "templateRows": 161,
+    "groupsWithItems": 45,
+    "groupsWithoutCurrentItems": 6,
+    "filledRows": 0,
+    "receivedNewEvidence": false,
+    "status": "User has moved to a new computer and does not know an additional submission path. The fetched template is empty; no claim about unprovided old-computer files."
+  },
+  "validation": {
+    "regressionTestMethodsPassed": 6,
+    "regressionScenariosPassed": 18,
+    "offlineConsistencyChecksPassed": 274,
+    "offlineScriptHistoricalBaselineVersion": 200,
+    "currentProductionVersion": 201,
+    "newApplicationBuildRun": false,
+    "newBrowserQARun": false
+  },
+  "preservedFiles": {
+    "docs/codex/human-help-by-group-20261029.csv": {
+      "gitBlob": "bd438ebdfd6bf9f7ad1d5f5059c9ed66601e94cb",
+      "workingFileSha256": "793bf14476f93c9d3cf66ed621e27b322454482188aabb7e3c4105e70c91a09d"
+    },
+    "docs/codex/human-help-by-group-20261029.md": {
+      "gitBlob": "5b57fd4c6fc5075a8423df33cc02bbc2d71456a4",
+      "workingFileSha256": "dd691c05ed807b5ca33ff0e5b35fb0cdcf6d3456cd51d0d34d2c50a0e46f1e21"
+    },
+    "docs/codex/evidence/20261029-human-help/validation.json": {
+      "gitBlob": "c31aa5b572971d823da2cd88675f5589e1e11323",
+      "workingFileSha256": "61fbd868d73d90446825542e0dce444e6bf8c3fd9c52af0a287ba4373878d072"
+    },
+    "docs/codex/evidence/20261029-human-help/stage-checklist.json": {
+      "gitBlob": "21fa285117dca3468dd071fd4eba0f8bfe6bcca4",
+      "workingFileSha256": "2e3d88f895e6edf0b571239d6539e39a5cd169624fd2542bc1c78f4ba11a8736"
+    },
+    "docs/codex/evidence/20261029-human-help/other-checklist.json": {
+      "gitBlob": "54dd89846cd12096d5dac57a878d6d66fb300d24",
+      "workingFileSha256": "bdeff231c7ff9415ef85775188840ed3ea5db692a0eb739d796ef4278cc38d52"
+    },
+    "docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json": {
+      "gitBlob": "d056a5a6568123fcbb696afcde0638cf7037a58e",
+      "workingFileSha256": "6192d1f36a8f9e35d61c155e785ad6163c7eaa2bdd46d7bb05e9e11bd3694e73"
+    },
+    "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json": {
+      "gitBlob": "c000467fcf19818f22c1664394d801f84a40a116",
+      "workingFileSha256": "fd65eead13378a462e787ab27d5a8c15d44736a8071b21d8ba818704ce08a772"
+    }
+  },
+  "productionReadOnlyCheck": {
+    "checkedAt": "2026-10-29T02:35:01.5987888Z",
+    "projectId": "appgprj_6acb4fa532b88191ae2588c24b724b17",
+    "url": "https://idol-lens-private.wuke40758.chatgpt.site/",
+    "status": "active",
+    "latestVersionNumber": 201,
+    "versionId": "appgprj_6acb4fa532b88191ae2588c24b724b17~appgver_2229084de86c81918de5d78a1f156d2c",
+    "sourceCommit": "374ebe6de70a2e51641361740dde68246aed8b1c",
+    "deploymentId": "appgdep_6ae2262ced008191a526c05ac512fcf5",
+    "deploymentStatus": "succeeded",
+    "deploymentUpdatedAt": "2026-10-28T16:44:59.545277+00:00",
+    "access": {
+      "mode": "public",
+      "owners": 1,
+      "externalUsers": 0,
+      "groups": 0,
+      "revision": 2
+    },
+    "publicHomepage": {
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 21385,
+      "title": "stage. · 私人女团手帐"
+    },
+    "evidenceMethods": [
+      "Sites get_site",
+      "Sites get_site_version",
+      "Sites get_deployment_status",
+      "single public homepage GET"
+    ]
+  },
+  "privateRecordsRead": 0,
+  "privateWrites": 0,
+  "siteVersionsSaved": 0,
+  "deploymentsRequested": 0,
+  "accessChanges": 0
+}

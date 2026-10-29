@@ -2,6 +2,18 @@
 
 正式工程为 `apps/idol-site/`，根目录旧sandbox不是发布工程。
 
+## 本轮新电脑接续（2026-10-29，人工填写保护，无新部署）
+
+活动分支 `codex/human-help-handoff-sync-20261029`（draft [PR46](https://github.com/KAtOReNA7/idol/pull/46)，base为PR45分支） 已从最新 `origin/main`（`852f7506`）创建，普通 merge 最新 PR45 后 fast-forward 到 `dada774ba79aba8e9863a88822e71644669ce7cb`，包含 PR44、v201 与人工清单。PR44 / PR45 当前仍 draft/open/unmerged。本任务仅增加人工清单保护与交接，后续接续还须显式 fetch 本任务分支；若其最新成果尚未在新任务基线中，比较后普通 merge，不遗漏本轮修复，也不重复导入任何业务批次。
+
+本机原有 17 个修改文件＋5 个未跟踪文件，已复制到 `E:\project\idol-local-backups\20261029-human-handoff-103333` 并逐项核对 SHA-256，另存 stash `2d1acc90331c12ba56d339418a3295a063327fe3`。该恢复点属于本机旧 `codex/izna-native-integration`，与下文其他电脑的 `7779dd2...` 不同；均不自动应用。备份不进入 GitHub。
+
+用户说明已更换电脑，不知道新增人工补充所在位置。本轮核实远端 `dada774` 和本机 CSV 共 161 行、45 团，三个人工填写栏全部为空；当前没有新的人工答案。未解决集合完整保留，不把模板问题当成事实补齐，不重复没有新线索的搜索。生成器已加保护：已有填写内容或 CSV 结构异常时，在任何产物写入前报错停止；先保留原表核查，不能清空答案后重建。
+
+2026-10-29 10:35（Asia/Shanghai）Sites 只读核实最新版本 v201、既有部署 succeeded、源 `374ebe6de70a2e51641361740dde68246aed8b1c`，public / 1 owner / 0 external / 0 groups / revision2；首页公开 GET 为 200。未重新部署、未做浏览器交互或私人数据读回，不将首页可达性写成全站功能通过。证据见 [本轮记录](worklogs/20261029-human-help-handoff-sync.md) 与 `evidence/20261029-handoff-sync/`。
+
+下一步优先接收具体团体／歌曲／版本／链接／时间点或统计原出处，逐项核查后再决定采用；没有新证据则继续保留待办。51团设计、原图、稳定ID与关系、个人字段、访问和owner鉴权保持；个人页统一排版仍待决定。
+
 ## 最新工作：按团体人工补充清单（2026-10-29，仅文档同步）
 
 用户希望对熟悉的团体手动补充资料。已整理[分团详细清单](human-help-by-group-20261029.md)和[可填写CSV](human-help-by-group-20261029.csv)，45团有待办、6团不在当前队列。161条分类任务不等于161首歌：109新增舞台、11旧源替换、24人物参与、7未知统计、7事实日期、1销量差额及2照片提质／同套证据项。各事实ID与当前冻结队列逐项匹配；生成器与校验在 `evidence/20261029-human-help/`。
@@ -70,6 +82,10 @@ v200包1421文件、展开45,805,568bytes；服务端归一化archive的大小/h
 ```text
 请接续 GitHub 项目 https://github.com/KAtOReNA7/idol 。
 
+本次新电脑接续已保存到 codex/human-help-handoff-sync-20261029。除下列三个既有远端分支外，也显式 fetch 此任务分支并核对最新 PR；若其成果尚未合入新基线，比较后普通 merge，保留人工填写保护与最新交接。分支已删除时先查 PR 合并记录和 main 完整性。
+
+用户已换电脑且不知道新增人工答案位置；上次核查 GitHub dada774 的 161 行模板三个人工栏全部为空。不要假定存在未收到的答案；本机新增填写应先保护，再核查。生成器遇到人工填写或异常 CSV 结构时会在任何产物写入前停止，不要清空答案以通过重建，也不要自动将日后人工答案上传公开仓库。最新本机保护与验证见 docs/codex/worklogs/20261029-human-help-handoff-sync.md。
+
 先检查并保护本地未提交和未跟踪文件，保留可恢复备份，不自动恢复旧stash，不使用reset、clean或强推。尚未克隆则先克隆。显式fetch origin/main、codex/statistics-relations-followup-20261027和codex/stage-person-followup-v199-20261028，核对PR44/PR45最新状态；已删除的分支按PR合并记录核实，不使用陈旧本地ref替代。
 
 工作树干净后，从最新origin/main创建新的codex/任务分支。若main尚未包含最新PR45成果，普通merge最新origin/codex/stage-person-followup-v199-20261028（已含PR44）；若都已合并，使用包含全部成果的最新main。不能只接PR44或旧main，必须同时保留v201实现和2026-10-29人工补充清单。
@@ -84,7 +100,7 @@ v200包1421文件、展开45,805,568bytes；服务端归一化archive的大小/h
 7. docs/codex/stage-selection-policy-20261028.md 与 identity-photo-selection-policy-20261027.md
 8. docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json 和 remaining-person-statistics.json
 
-正式工程是apps/idol-site/。正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已发布v201、496舞台；当前接续提交仅新增人工清单和交接，不重复部署v201。清单覆盖45团待办、6团无当前项：109新增舞台缺口、11旧源替换、24作品人物参与证据、7未知统计、7事实生效日期、tripleS销量差350635，另有HITGS同套证据及MADEIN原图分辨率限制。各维度重叠，不相加当缺歌总数。现有关系认人图缺口0、旧低清0；24待证作品已有119通用参考槽，不能当成已证参与或评分关系。
+正式工程是apps/idol-site/。正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已发布v201、496舞台；当前接续提交仅维护人工清单工具和交接，不重复部署v201。清单覆盖45团待办、6团无当前项：109新增舞台缺口、11旧源替换、24作品人物参与证据、7未知统计、7事实生效日期、tripleS销量差350635，另有HITGS同套证据及MADEIN原图分辨率限制。各维度重叠，不相加当缺歌总数。现有关系认人图缺口0、旧低清0；24待证作品已有119通用参考槽，不能当成已证参与或评分关系。
 
 用户将对熟悉团体提供人工补充，优先核查其新链接、成员姓名和时间点、节目日期、统计来源与原公告；其次继续有新证据的队列，不重复无新线索的搜索。舞台按打歌→官方练习室（同条件固定机位优先）→完整官方制作表演选取，同曲同语种/编配/完整范围；允许明确标注的合作曲成员版后备，只放宽客串范围，不允许全团替代个人/二人分队或短片。Right Now固定版、DADARIDA、IYKYK、SPAGHETTI成员版及所有已导批次不要重做。用户已接受无法补齐者保留待新证据。
 

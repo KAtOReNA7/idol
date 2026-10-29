@@ -58,10 +58,10 @@ function rejects(edit, message) {
   assert.match(result.stderr, message);
 }
 
-test('the existing YouTube catalog and legacy source bindings remain valid', () => {
+test('the current catalog including X and all legacy source bindings validates', () => {
   const result = run();
   assert.equal(result.status, 0, result.stderr);
-  assert.equal(JSON.parse(result.stdout).sources, 499);
+  assert.equal(JSON.parse(result.stdout).sources, 500);
 });
 
 test('official, reupload and third-party Bilibili performances accept unknown likes and exact multipart bindings', () => {
@@ -125,6 +125,11 @@ test('Bili program clips require exact range keys, real full-part bounds and mat
  });
  assert.equal(result.status,0,result.stderr);
  rejects(s=>{s.clip={startSeconds:1,endSeconds:10,sourceDurationSeconds:120,evidence:proof};},/clip score binding lacks exact source key/);
+});
+test('X video sources validate only explicit media-index identities and truthful whole-post popularity scope',()=>{
+ const make=()=>{const x=bili({platform:'x',videoId:'2090845225845747984',url:'https://x.com/test_fixture/status/2090845225845747984/video/1',xMedia:{videoIndex:1},likesScope:'whole_post'});delete x.bilibili;x.scoreBinding={videoId:x.videoId,sourceKey:'x:'+x.videoId+':video:1',initializedAt:checkedAt,initialScore:null};x.candidates=[{platform:'x',videoId:x.videoId,xMedia:x.xMedia,title:x.title,url:x.url,likesDisplay:'未知',kind:x.kind}];return x;};
+ assert.equal(run((v,s,i)=>add(v,s,i,'synthetic-x',make())).status,0);
+ for(const mutate of [s=>{s.xMedia.videoIndex=2;},s=>{s.scoreBinding.sourceKey=s.videoId;},s=>{s.url=s.url.replace('/video/1','');},s=>{s.likesScope='performance';},s=>{s.selectionNote='点赞最高';}]){const r=run((v,s,i)=>{const x=make();mutate(x);add(v,s,i,'synthetic-x',x);});assert.notEqual(r.status,0);}
 });
 
 test('Bilibili score bindings and candidates must retain the complete CID/page identity', () => {

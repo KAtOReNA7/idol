@@ -23,6 +23,10 @@ function beforeV202Generic(current){
 }
 
 function beforeV202Supplements(current){
+ const qwer=require('./qwer-formal-baseline.cjs');
+ // Older helpers may call this again after restoring the exact QWER row.
+ // Their existing complete cohort hash still validates every remaining byte.
+ if(!isDeepStrictEqual(current.works[qwer.receipt.workId]?.searchReview,qwer.receipt.supplementChange.expectedBefore))current=qwer.beforeQwerSupplements(current);
  const changes=receipt.researchNoteChanges;
  assert.deepEqual(changes.map(c=>c.workId).sort(),['recvxyH5pzoMAf','rec28ldfRTrOnV'].sort());
  const out=structuredClone(current);

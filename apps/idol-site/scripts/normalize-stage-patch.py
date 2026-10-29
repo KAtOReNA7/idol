@@ -21,7 +21,7 @@ for filename in sys.argv[1:]:
  reviewed_hashes.extend(d.get('reviewedInputs',[]))
  for item in d['items']:
   if item.get('status')!='verified' and item.get('resolutionStatus')!='verified_youtube':continue
-  s=item.get('selected');assert s and s.get('sourceClass') in SOURCE_CLASSES and s.get('platform') in ('youtube','bilibili') and s.get('scorePolicy')!='view_only' and s.get('completeness')=='full',f'View-only/unclassified/excerpt cannot enter formal sources {item.get("recordId")}'
+  s=item.get('selected');assert s and s.get('sourceClass') in SOURCE_CLASSES and s.get('platform') in ('youtube','bilibili','x') and s.get('scorePolicy')!='view_only' and s.get('completeness')=='full',f'View-only/unclassified/excerpt cannot enter formal sources {item.get("recordId")}'
   checked_selection(s)
   assert version_eligible(s),f'Exact selected version or documented member fallback absent {item.get("recordId")}'
   rid=item['recordId'];assert rid not in seen,f'Duplicate reviewed work {rid}; reconcile batches explicitly first';seen.add(rid)
@@ -30,6 +30,7 @@ for filename in sys.argv[1:]:
   if label and s['sourceClass']!='official':label=('转载 · ' if s['sourceClass']=='reupload' else '第三方上传 · ')+label.removeprefix('官方')
   pick.update(likes=lk['value'],likesDisplay=lk['display'],likesPrecision=lk['precision'],sourceUrl=s.get('sourceUrl') or s['url'],publishedAt=s.get('publishedAt') or s.get('publicationDate') or '',label=label)
   if s['platform']=='bilibili':pick['likesScope']=s.get('likesScope','whole_video')
+  if s['platform']=='x':pick['likesScope']='whole_post'
   assert pick['label'],f'Review performance type label {rid}: {s.get("kind") or s.get("type")}'
   ev=s.get('languageVersionEvidence') or s.get('versionEvidence')
   if not ev:

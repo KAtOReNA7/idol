@@ -468,16 +468,16 @@
       ],
       "omittedPlatforms": [],
       "sales": {
-        "observedValue": 2110833,
-        "displayValue": 2110833,
+        "observedValue": 2113229,
+        "displayValue": 2113229,
         "status": "observed",
         "unit": "张",
         "title": "已公开累计",
-        "scope": "tripleS及该来源归入tripleS的子团韩国Circle公开月榜36行，加2024年Performante Cosmo与2025年ASSEMBLE25 Cosmo同年同版年榜替换修正，以及11条不重叠官方周榜补充；截至2026-06的已核来源覆盖下界，不是全球完整累计。",
+        "scope": "tripleS及该来源归入tripleS的子团韩国Circle公开月榜36行，加2024年Performante Cosmo与2025年ASSEMBLE25 Cosmo同年同版年榜替换修正，以及13条不重叠官方周榜补充；截至2026-06的已核来源覆盖下界，不是全球完整累计。",
         "asOf": "2026-06",
         "checkedAt": "2026-10-29",
         "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=03&yearTime=3",
-        "sourceTitle": "Circle Album Chart · 11条官方周榜与既有月／年榜复算",
+        "sourceTitle": "Circle Album Chart · 13条官方周榜与既有月／年榜复算",
         "sources": [
           {
             "url": "https://soridata.com/sales/TripleS.html",
@@ -690,6 +690,18 @@
             "kind": "primary-chart",
             "access": "native-public-api-read-backed-by-official-page-script",
             "sha256": "4ba00397cbadad69115da2fcb63a06daa4c704d17a65391e13d049b13b978a3a"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=48&yearTime=3",
+            "title": "Circle Album Chart · 2024-W48 · Visionary Vision ＜Performante＞",
+            "kind": "official-weekly-chart",
+            "checkedAt": "2026-10-29T14:03:04.293961+00:00"
+          },
+          {
+            "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=02&yearTime=3",
+            "title": "Circle Album Chart · 2026-W02 · msnz ＜Beyond Beauty＞",
+            "kind": "official-weekly-chart",
+            "checkedAt": "2026-10-29T14:03:12.029104+00:00"
           }
         ],
         "notes": [
@@ -703,7 +715,8 @@
           "历史核对记录：2026-10-28后续已直接读取Circle官方页面所用Album接口：2024年Performante Cosmo为289,224，2025年ASSEMBLE25 Cosmo为406,744，均与已采用年榜同值。采用期内Album_CNT核对，不采用Total_CNT，不新增加总、不混Retail；历史月行、年榜替换、2,092,239下界及366,550未解释差额均保持。",
           "2026-10-28补查4个同版本未覆盖期间的官方周榜，新增5,847张，来源覆盖下界2,098,086；与旧汇总2,458,789尚差360,703，未彻底解决。保留36原月行与2项年榜替换，不重复加总。",
           "2026-10-28追加核对：EVOLution标准版2023-W51为1,535；ASSEMBLE Cosmo 2025-W05/W06为3,699与2,289；ASSEMBLE25标准版2025-W26为2,545。四项共10,068，与此前月/年/周贡献不重叠；已核下界2,108,154，旧汇总差额350,635继续开放。上方历史数值保留，非新增当前差额。",
-          "2026-10-29新增同版本未覆盖周：EVOLution标准版2024-W03为840，Performante标准版2024-W46为1,126，Beyond Beauty标准版2026-W01为713；共2,679。标准版与Cosmo按原站albumId区分，跨年周不与同版月行重叠。已核下界2,110,833，旧汇总差额347,956仍未解释；截至2026-06与下界口径不变。上方均为历史核对记录。"
+          "2026-10-29新增同版本未覆盖周：EVOLution标准版2024-W03为840，Performante标准版2024-W46为1,126，Beyond Beauty标准版2026-W01为713；共2,679。标准版与Cosmo按原站albumId区分，跨年周不与同版月行重叠。已核下界2,110,833，旧汇总差额347,956仍未解释；截至2026-06与下界口径不变。上方均为历史核对记录。",
+          "2026-10-29追加同版本未覆盖周：Performante标准版2024-W48为1,162，Beyond Beauty标准版2026-W02为1,234，共2,396；与同版月行、既有周及Cosmo年覆盖不重复。已核下界2,113,229，旧汇总差额345,560仍未解释，统计截止仍2026-06；上方数字为历史核对记录。"
         ],
         "evidence": {
           "kind": "public-cumulative-lower-bound",
@@ -956,7 +969,7 @@
               "album": "Acid Angel from Asia"
             }
           ],
-          "recomputedSum": 2110833,
+          "recomputedSum": 2113229,
           "monthlyRecomputedSum": 2087073,
           "annualReplacements": [
             {
@@ -1112,12 +1125,12 @@
             "status": "partially-resolved",
             "monthlySum": 2087073,
             "annualNetAdjustment": 5166,
-            "reconciledSum": 2110833,
+            "reconciledSum": 2113229,
             "aggregateTotal": 2458789,
-            "remainingDifference": 347956,
+            "remainingDifference": 345560,
             "aggregateAccess": "previously stored observation only; not fetched in this audit",
-            "reason": "Two annual replacements and eleven non-overlapping official Album week rows are verified; aggregate difference347956 remains unresolved. No Total_CNT, Retail, Hanteo or Japan contribution.",
-            "weeklyContribution": 18594
+            "reason": "Two annual replacements and thirteen non-overlapping official Album week rows are verified; aggregate difference345560 remains unresolved. No Total_CNT, Retail, Hanteo or Japan contribution.",
+            "weeklyContribution": 20990
           },
           "officialAnnualReadback20261028": {
             "checkedAt": "2026-10-28",
@@ -1347,6 +1360,36 @@
               "checkedAt": "2026-10-29T08:20:16.281954+00:00",
               "responseSha256": "4ba00397cbadad69115da2fcb63a06daa4c704d17a65391e13d049b13b978a3a",
               "pageSha256": "98b20dddd4f4c3e5ee2101ae65bf3fc603d957c5a0f9d646e448b73b5625f6a6"
+            },
+            {
+              "year": 2024,
+              "week": 48,
+              "dateRange": "2024.11.24~2024.11.30 (48)",
+              "album": "Visionary Vision ＜Performante＞",
+              "artist": "tripleS (트리플에스)",
+              "albumId": "78104",
+              "sales": 1162,
+              "metricField": "Album_CNT",
+              "rank": 64,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=48&yearTime=3",
+              "checkedAt": "2026-10-29T14:03:04.293961+00:00",
+              "responseSha256": "95eef1525b977a21921ef5dfb75ba8deb5ac2c04e3d96dbbf45598feb6a0b8b8",
+              "pageSha256": "0268d1c736c83de82212f76a4090c749a527f234b2569d8d2f8c5ea21e363ad1"
+            },
+            {
+              "year": 2026,
+              "week": 2,
+              "dateRange": "2026.01.04~2026.01.10 (02)",
+              "album": "msnz ＜Beyond Beauty＞",
+              "artist": "tripleS (트리플에스)",
+              "albumId": "81284",
+              "sales": 1234,
+              "metricField": "Album_CNT",
+              "rank": 85,
+              "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=02&yearTime=3",
+              "checkedAt": "2026-10-29T14:03:12.029104+00:00",
+              "responseSha256": "3991d211729cb1660a2cb25bf43a72f288320cc73e39c402ea2739bb9822e153",
+              "pageSha256": "2a261e83d049513f2457e7f31d6939129a6507dd3183066217da0e8eff8cb4b1"
             }
           ],
           "weeklyOverlapReview": [
@@ -1507,11 +1550,53 @@
               ],
               "overlap": false,
               "separateVersionExclusion": "Cosmo albumId81285 rows3/4/5/6/7 is a distinct edition"
+            },
+            {
+              "albumId": "78104",
+              "album": "Visionary Vision ＜Performante＞",
+              "newIntervals": [
+                "2024-11-24/2024-11-30"
+              ],
+              "existingSameVersionMonthRows": [
+                {
+                  "rowIndex": 21,
+                  "year": 2024,
+                  "month": 10,
+                  "sales": 41362,
+                  "album": "Visionary Vision"
+                }
+              ],
+              "existingSameVersionWeekIntervals": [
+                "2024-11-10/2024-11-16"
+              ],
+              "overlap": false,
+              "separateVersionExclusion": "Cosmo editions and cumulative Total_CNT excluded; existing annual replacements cover different editions."
+            },
+            {
+              "albumId": "81284",
+              "album": "msnz ＜Beyond Beauty＞",
+              "newIntervals": [
+                "2026-01-04/2026-01-10"
+              ],
+              "existingSameVersionMonthRows": [
+                {
+                  "rowIndex": 8,
+                  "year": 2025,
+                  "month": 11,
+                  "sales": 28728,
+                  "album": "msnz"
+                }
+              ],
+              "existingSameVersionWeekIntervals": [
+                "2025-12-28/2026-01-03"
+              ],
+              "overlap": false,
+              "separateVersionExclusion": "Cosmo editions and cumulative Total_CNT excluded; existing annual replacements cover different editions."
             }
           ]
         },
         "lowerBound": true,
-        "rawDisplay": "2,110,833+"
+        "rawDisplay": "2,113,229+"
       },
       "wins": {
         "observedValue": 6,

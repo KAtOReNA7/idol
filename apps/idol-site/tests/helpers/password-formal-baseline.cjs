@@ -20,6 +20,7 @@ function beforePassword(kind,current){
  assert.equal(hash(bytes(out)),proof.beforeFileSha256,'complete v202 pre-Password bytes');return out;
 }
 function beforeStayc(kind,current){
+ current=require('./qwer-formal-baseline.cjs').beforeQwer(kind,current);
  const proof=stayc[kind],out=structuredClone(current),id=stayc.workId;
  if(kind==='stageVideos'){
   if(!out[id])return out;

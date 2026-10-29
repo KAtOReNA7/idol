@@ -11,6 +11,7 @@ const {memberWorks}=load('lib/idol/member-works.ts');
 const {PublicWorkCredits}=require('./helpers/shared-journal-dependency-loader.cjs').sharedJournalDependency('@/components/public-work-credits');
 const {beforeV202Generic,beforeV202Supplements,beforeMadeinWorkPhotos,receipt}=require('./helpers/v202-followup-evidence.cjs');
 const generic=require('../data/public-group-recognition.json'),credits=require('../data/public-work-credits.json'),recognition=require('../data/public-work-recognition.json'),supplements=require('../data/stages/supplements.json');
+const {beforeSummerReference}=require('./helpers/summer-reference-baseline.cjs');
 const hash=value=>createHash('sha256').update(value).digest('hex');
 const bytes=value=>JSON.stringify(value,null,2)+'\n';
 const group=generic.groups.find(g=>g.groupName==='HITGS');
@@ -43,8 +44,8 @@ test('same-collection evidence retains all five original images, names, crops an
 
 test('only the bounded append, HITGS context and two policy notes differ from the complete v202 data',()=>{
  for(const [name,data] of [['public-work-credits.json',credits],['public-work-recognition.json',recognition]]){
-  assert.equal(data.records.length,105);
-  const prior=beforeMadeinWorkPhotos(name,data);
+  const cohort=beforeSummerReference(name,data);assert.equal(cohort.records.length,105);
+  const prior=beforeMadeinWorkPhotos(name,cohort);
   assert.equal(hash(bytes({...prior,records:prior.records.slice(0,104)})),receipt.beforeFileSha256['apps/idol-site/data/'+name]);
  }
  assert.equal(hash(bytes(beforeV202Generic(generic))),receipt.beforeFileSha256['apps/idol-site/data/public-group-recognition.json']);

@@ -28,7 +28,7 @@ test('STAYC binds the confirmed Japanese song interval without changing the full
 
 test('Password real adoption keeps all 497 old objects and binds only the exact reviewed BV CID and page',()=>{
  const all=require('../data/stage-videos.json'),id=receipt.workId,s=stageForWork(id);
- assert.equal(Object.keys(all).length,499);assert.equal(Object.keys(beforePassword('stageVideos',all)).length,497);
+ assert.equal(Object.keys(require('./helpers/qwer-formal-baseline.cjs').beforeQwer('stageVideos',all)).length,499);assert.equal(Object.keys(beforePassword('stageVideos',all)).length,497);
  assert.deepEqual(s,receipt.stageVideos.afterRow);assert.equal(stageSourceKey(s),human.embedIdentity.sourceKey);assert.ok(stageScoreIsBound(s));
  assert.equal(stageWatchUrl(s),'https://www.bilibili.com/video/BV1bhU8BWEso/?p=1&cid=34265369310');assert.equal(stageEmbedUrl(s),null);
  assert.equal(s.sourceClass,'reupload');assert.equal(s.selection.occasion,'music_program');assert.equal(s.likes.precision,'unknown');

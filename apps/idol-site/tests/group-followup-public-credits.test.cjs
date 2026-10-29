@@ -21,11 +21,11 @@ test('new release-cover reference preserves v201 files, generic archive, origina
  for(const [collection,digest] of [[credits,baseline.originalCreditFileSha256],[recognition,baseline.originalRecognitionFileSha256]])
   assert.equal(hash(JSON.stringify({...collection,records:collection.records.slice(0,102)},null,2)+'\n'),digest);
  for(const [name,digest] of Object.entries(baseline.protectedFiles))assert.equal(hash(name==='public-group-recognition.json'?JSON.stringify(beforeV202Generic(source),null,2)+'\n':fs.readFileSync(path.join(__dirname,'../data',name))),digest,name);
- assert.equal(credits.records.length,105);assert.equal(recognition.records.length,105);
- assert.equal(recognition.records.reduce((n,r)=>n+r.portraits.length,0),541);
+ assert.equal(credits.records.length,106);assert.equal(recognition.records.length,106);
+ assert.equal(recognition.records.reduce((n,r)=>n+r.portraits.length,0),546);
  const active=source.works.filter(w=>publicGroupRecognitionForWork({id:w.workId,groupIds:[w.groupId],url:`https://www.youtube.com/watch?v=${w.videoId}`}));
- assert.equal(source.works.length,24);assert.equal(active.length,21);
- assert.equal(active.reduce((n,w)=>n+source.groups.find(g=>g.groupId===w.groupId).portraits.length,0),102);
+ assert.equal(source.works.length,24);assert.equal(active.length,20);
+ assert.equal(active.reduce((n,w)=>n+source.groups.find(g=>g.groupId===w.groupId).portraits.length,0),97);
  for(const p of publicWorkRecognition(work)){
   const original=group.portraits.find(q=>q.memberId===p.memberId);
   for(const key of ['src','sha256','width','height','sourceCrop','photoSetId','sourceUrl'])assert.deepEqual(p[key],original[key]);

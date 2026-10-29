@@ -10,6 +10,7 @@ const timelineBaselineSha = '309d0ab6b726119eb87787afec9267d19409329c7e1d6f63a79
 // Validate the complete reviewed object before reconstructing the earlier cohort.
 // A frozen whole-file hash also rejects unreviewed changes outside that object.
 function beforeGroupAdvanceStatistics(current) {
+  current = require('./next-followup-statistics.cjs').beforeNextFollowupStatistics(current);
   assert.equal(statisticsAdoption.change, 'triples.sales');
   assert.equal(statisticsAdoption.beforeFileSha256, statisticsBaselineSha);
   assert.deepEqual(current.groups.triples.sales, statisticsAdoption.after, 'complete group-advance sales object');

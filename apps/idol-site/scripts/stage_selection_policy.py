@@ -96,7 +96,7 @@ def comparison_candidates(candidates, best_only=True):
     for candidate in candidates:
         if candidate.get('eligibility') not in ('eligible', 'qualified'):
             continue
-        if candidate.get('platform') not in ('youtube', 'bilibili') or candidate.get('scorePolicy') == 'view_only':
+        if candidate.get('platform') not in ('youtube', 'bilibili', 'x') or candidate.get('scorePolicy') == 'view_only':
             continue
         if not version_eligible(candidate):
             continue
@@ -134,6 +134,9 @@ def checked_manual_decision(decision, selected, compared):
 def checked_comparison(selected, candidates, decision=None, reviewed_candidates=None):
     assert candidates, 'No highest-priority policy-eligible comparison'
     reviewed = comparison_candidates(reviewed_candidates, best_only=False) if reviewed_candidates is not None else candidates
+    if selected.get('platform') == 'x' and len(candidates) > 1:
+        checked_manual_decision(decision, selected, candidates)
+        return 'manual_evidence'
     if len({candidate.get('platform', 'youtube') for candidate in reviewed}) > 1:
         checked_manual_decision(decision, selected, reviewed)
         return 'manual_evidence'

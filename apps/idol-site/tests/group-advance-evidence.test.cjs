@@ -16,9 +16,9 @@ const evidence = file => read(path.join(evidenceRoot, file));
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const statsFile = path.join(app, 'data/group-statistics-completion-evidence.json');
 const timelineFile = path.join(app, 'data/timeline-reported-records.json');
-const statistics = read(statsFile);
+const statistics = require('./helpers/next-followup-statistics.cjs').beforeNextFollowupStatistics(read(statsFile));
 const timelines = read(timelineFile);
-const historicalStatistics = beforeGroupAdvanceStatistics(statistics);
+const historicalStatistics = beforeGroupAdvanceStatistics(read(statsFile));
 const historicalTimelines = beforeGroupAdvanceTimelineRecords(timelines);
 const sales = statistics.groups.triples.sales;
 const oldSales = historicalStatistics.groups.triples.sales;
@@ -40,7 +40,7 @@ const unknownFields = data => Object.entries(data.groups).flatMap(([slug, group]
     .filter(([, row]) => row.observedValue === null));
 
 test('the exact adoption restores the frozen statistics baseline and preserves all seven unknown fields', () => {
-  assert.equal(sha(fs.readFileSync(statsFile)), statisticsAdoption.afterFileSha256);
+  assert.equal(sha(JSON.stringify(statistics,null,2)+'\n'), statisticsAdoption.afterFileSha256);
   assert.equal(statisticsAdoption.addedContribution, 2679);
   assert.equal(Object.keys(statistics.groups).length, 51);
   assert.deepEqual(statistics.summary, historicalStatistics.summary);
@@ -192,11 +192,11 @@ test('rendered announcements expose official sources and publication dates while
 });
 
 test('historical restoration rejects changed evidence, unrelated records and metadata without mutating its input', () => {
-  const source = structuredClone(statistics), snapshot = structuredClone(source);
+  const source = read(statsFile), snapshot = structuredClone(source);
   beforeGroupAdvanceStatistics(source); assert.deepEqual(source, snapshot);
-  const badSales = structuredClone(statistics); badSales.groups.triples.sales.evidence.weeklyAdditions.at(-1).sales++;
+  const badSales = read(statsFile); badSales.groups.triples.sales.evidence.weeklyAdditions.at(-1).sales++;
   assert.throws(() => beforeGroupAdvanceStatistics(badSales), /complete group-advance sales object/);
-  const otherGroup = structuredClone(statistics); otherGroup.groups.vvup.sales.observedValue++;
+  const otherGroup = read(statsFile); otherGroup.groups.vvup.sales.observedValue++;
   assert.throws(() => beforeGroupAdvanceStatistics(otherGroup), /complete pre-advance statistics/);
   const badDate = structuredClone(timelines); badDate.records.find(row => row.slug === 'bewave').eventDate = '2025-10-31';
   assert.throws(() => beforeGroupAdvanceTimelineRecords(badDate), /complete group-advance announcement/);

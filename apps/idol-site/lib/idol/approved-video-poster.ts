@@ -13,6 +13,7 @@ import tracerPosters from '../../data/tracer-video-posters.json';
 import newjeansPosters from '../../data/newjeans-video-posters.json';
 import vvupPosters from '../../data/vvup-video-posters.json';
 import stageSelectionPosters from '../../data/stage-selection-posters-20261027.json';
+import biliPosters from '../../data/stage-bilibili-posters-20261029.json';
 import type {StageVideo} from './types';
 import {stageSourceKey} from './stage-source';
 import {publicMvCover,publicCoverZoom} from './mv-public-media';
@@ -68,7 +69,12 @@ export function approvedVideoPoster(workId:string,videoId:string|null,view:'mv'|
 
 // A multipart upload may have multiple media/cover identities under one BV.
 export function approvedStagePoster(workId:string,stage:StageVideo):VideoPoster|null{
- if(stage.clip||!stageSourceKey(stage))return null;
+ const key=stageSourceKey(stage);if(!key)return null;
+ // New multipart/interval posters must prove the complete source identity.
+ const exact=biliPosters.entries.find(p=>stage.platform==='bilibili'&&p.workId===workId&&p.videoId===stage.videoId&&p.view==='stage'&&p.sourceKey===key);
+ if(exact)return {src:exact.src,label:exact.label,intrinsicSize:exact.intrinsicSize,fit:'contain'};
+ if(stage.platform==='x')return null;
+ if(stage.clip)return null;
  if(stage.platform!=='bilibili')return approvedVideoPoster(workId,stage.videoId,'stage');
  const entry=(stageSelectionPosters.entries as {workId:string;videoId:string;view:string;sourceKey?:string;src:string;label:string;intrinsicSize?:{width:number;height:number}}[]).find(p=>p.workId===workId&&p.view==='stage'&&p.videoId===stage.videoId&&p.sourceKey===stageSourceKey(stage));
  return entry?{src:entry.src,label:entry.label,intrinsicSize:entry.intrinsicSize,fit:'contain'}:null;

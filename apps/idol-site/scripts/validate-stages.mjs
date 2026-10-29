@@ -13,12 +13,17 @@ const canonical=v=>JSON.stringify(v&&typeof v==='object'?Array.isArray(v)?v.map(
 const hash=v=>createHash('sha256').update(canonical(v)).digest('hex');
 const validBilibiliSource=s=>{
  const b=s?.bilibili;
- if(!/^BV[A-Za-z0-9]{10}$/.test(s?.videoId??'')||!b||Object.keys(b).sort().join(',')!=='cid,page'||typeof b.cid!=='string'||!/^[1-9]\d{0,19}$/.test(b.cid)||!Number.isSafeInteger(b.page)||b.page<1)return false;
+ if(!/^BV[A-Za-z0-9]{10}$/.test(s?.videoId??'')||!b||Object.keys(b).sort().join(',')!=='cid,page'||typeof b.cid!=='string'||!/^[1-9]\d{0,19}$/.test(b.cid)||!Number.isSafeInteger(b.page)||b.page<1||s.xMedia!==undefined)return false;
  try{const u=new URL(s.url);return u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&!u.hash&&['www.bilibili.com','bilibili.com'].includes(u.hostname)&&u.pathname.replace(/\/$/,'')===`/video/${s.videoId}`&&u.searchParams.getAll('p').length===1&&u.searchParams.get('p')===String(b.page)&&u.searchParams.getAll('cid').length<=1&&(!u.searchParams.has('cid')||u.searchParams.get('cid')===b.cid)&&[...u.searchParams.keys()].every(k=>k==='p'||k==='cid');}catch{return false;}
 };
-const sourceKey=s=>s?.platform==='bilibili'?validBilibiliSource(s)?`bilibili:${s.videoId}:cid:${s.bilibili.cid}:p:${s.bilibili.page}`+(s.clip?`@${s.clip.startSeconds}-${s.clip.endSeconds}`:''):null:s?.platform!==undefined&&s.platform!=='youtube'?null:s?.clip?`${s.videoId}@${s.clip.startSeconds}-${s.clip.endSeconds}`:s?.videoId;
+const validXSource=s=>{
+ const m=s?.xMedia;
+ if(!/^https:\/\/x\.com\//.test(s?.url??'')||!/^[1-9]\d{0,19}$/.test(s?.videoId??'')||!m||Object.keys(m).join(',')!=='videoIndex'||!Number.isSafeInteger(m.videoIndex)||m.videoIndex<1||m.videoIndex>4||s.clip!==undefined||s.bilibili!==undefined)return false;
+ try{const u=new URL(s.url),p=u.pathname.match(/^\/[A-Za-z0-9_]{1,15}\/status\/([1-9]\d{0,19})\/video\/([1-4])$/);return u.protocol==='https:'&&u.hostname==='x.com'&&!u.username&&!u.password&&!u.port&&!u.search&&!u.hash&&!!p&&p[1]===s.videoId&&p[2]===String(m.videoIndex);}catch{return false;}
+};
+const sourceKey=s=>s?.platform==='x'?validXSource(s)?`x:${s.videoId}:video:${s.xMedia.videoIndex}`:null:s?.platform==='bilibili'?validBilibiliSource(s)?`bilibili:${s.videoId}:cid:${s.bilibili.cid}:p:${s.bilibili.page}`+(s.clip?`@${s.clip.startSeconds}-${s.clip.endSeconds}`:''):null:s?.platform!==undefined&&s.platform!=='youtube'?null:s?.clip?`${s.videoId}@${s.clip.startSeconds}-${s.clip.endSeconds}`:s?.videoId;
 const sourceClasses=new Set(['official','reupload','third_party']);
-const platforms=new Set(['youtube','bilibili']);
+const platforms=new Set(['youtube','bilibili','x']);
 const rejectedIds=new Set(['l9GLV8Kd-MU','saY9KS7mKvI','BnmwjH-suLg']);
 const excludedTypes=new Set(['concert','concert_stage','press_concert_recording','official_concert_full_event','tour','tour_stage','festival','festival_stage','showcase','showcase_stage','official_showcase_full_event','fan_event','other_event']);
 const validStatus=new Set(['pending','verified','likes_unverified','not_found','version_mismatch','blocked','missing_song_identity']);
@@ -31,8 +36,9 @@ const evidence=e=>typeof e?.note==='string'&&!!e.note.trim()&&Array.isArray(e.ur
 const documentedSelection=s=>['music_program','practice_room','produced_performance'].includes(s?.occasion)&&evidence(s.evidence)&&(s.camera===undefined||!!s.camera&&['fixed','moving','mixed'].includes(s.camera.mode)&&evidence(s.camera.evidence));
 const videoID=v=>{try{const u=new URL(v);if(u.protocol!=='https:')return null;const id=u.hostname==='youtu.be'?u.pathname.slice(1):['youtube.com','www.youtube.com'].includes(u.hostname)?u.searchParams.get('v'):null;return /^[\w-]{11}$/.test(id??'')?id:null}catch{return null}};
 const candidateKey=c=>{
+ if(c.platform==='x')return sourceKey(c);
  if(c.platform==='bilibili')return sourceKey(c);
- if(c.platform!==undefined&&c.platform!=='youtube'||c.bilibili)return null;
+ if(c.platform!==undefined&&c.platform!=='youtube'||c.bilibili||c.xMedia!==undefined)return null;
  const id=videoID(c.url);return id&&(c.videoId===undefined||c.videoId===id)?id:null;
 };
 const claimsMaximum=s=>/点赞最高|最高赞|highest\s+likes|most\s+liked/i.test(s.selectionNote??'');
@@ -61,7 +67,8 @@ for(const [id,s] of Object.entries(videos)){
  }
  if(('sourceClass' in s||'platform' in s||'completeness' in s)&&(!sourceClasses.has(s.sourceClass)||!platforms.has(s.platform)||s.completeness!=='full')||s.scorePolicy==='view_only')fail(`${id}: ineligible source cannot become a formal player`);
  if(s.sourceClass!==undefined&&s.sourceClass!=='official'&&!evidence(s.sourceEvidence))fail(`${id}: third-party upload provenance evidence absent`);
- if(s.platform==='bilibili'?!validBilibiliSource(s):videoID(s.url)!==s.videoId||!!s.bilibili)fail(`${id}: URL/video ID mismatch or invalid exact Bilibili CID/page identity`);
+ if(s.platform==='x'?!validXSource(s):s.platform==='bilibili'?!validBilibiliSource(s):videoID(s.url)!==s.videoId||!!s.bilibili||s.xMedia!==undefined)fail(`${id}: URL/video ID mismatch or invalid exact Bilibili CID/page identity or X post/video identity`);
+ if(s.platform==='x'&&(s.likesScope!=='whole_post'||claimsMaximum(s)))fail(`${id}: X whole-post likes cannot claim per-video highest likes`);
  if(!s.title?.trim()||!s.channel?.trim()||!s.kind?.trim()||!s.typeNote?.trim())fail(`${id}: incomplete source description`);
  if(!utc(s.checkedAt))fail(`${id}: invalid source time`);
  if(!https(s.sourceUrl))fail(`${id}: invalid source URL`);
@@ -77,7 +84,8 @@ for(const [id,s] of Object.entries(videos)){
  if(candidatePlatforms.size>1&&claimsMaximum(s))fail(`${id}: cross-platform candidates cannot claim a direct highest-likes ranking`);
  if(s.clip){const c=s.clip;const key=sourceKey(s);if(!Number.isSafeInteger(c.startSeconds)||!Number.isSafeInteger(c.endSeconds)||c.startSeconds<0||c.endSeconds<=c.startSeconds||!Number.isSafeInteger(c.sourceDurationSeconds)||c.sourceDurationSeconds<=0||c.sourceDurationSeconds>86400||c.endSeconds>c.sourceDurationSeconds||!c.evidence?.note?.trim()||!c.evidence?.urls?.length||!c.evidence.urls.every(https))fail(`${id}: invalid clip boundaries or missing evidence`);if(s.likesScope!=='whole_video'||s.selectionNote?.includes('点赞最高'))fail(`${id}: concert likes misrepresented as single-song ranking`);if(s.scoreBinding&&s.scoreBinding.sourceKey!==key)fail(`${id}: clip score binding lacks exact source key`);}
  if(s.platform==='bilibili'&&s.scoreBinding&&s.scoreBinding.sourceKey!==sourceKey(s))fail(`${id}: Bilibili score binding requires exact CID/page source key`);
- if(!s.clip&&s.platform!=='bilibili'&&s.scoreBinding?.sourceKey&&s.scoreBinding.sourceKey!==s.videoId)fail(`${id}: whole-video source key mismatch`);
+ if(s.platform==='x'&&s.scoreBinding&&s.scoreBinding.sourceKey!==sourceKey(s))fail(`${id}: X score binding requires exact post/video source key`);
+ if(!s.clip&&s.platform!=='bilibili'&&s.platform!=='x'&&s.scoreBinding?.sourceKey&&s.scoreBinding.sourceKey!==s.videoId)fail(`${id}: whole-video source key mismatch`);
  if(s.scoreBinding&&(s.scoreBinding.videoId!==s.videoId||s.scoreBinding.initialScore!==null||!utc(s.scoreBinding.initializedAt)))fail(`${id}: invalid score source binding`);
  const w=inventory.works.find(w=>w.recordId===id);if(w?.mv?.videoId===s.videoId&&!(s.reusesOriginalVideo===true&&/performance|special stage|live clip|showcase|dance practice|choreography practice/i.test(w.mv.officialTitle??'')&&!/official (?:music video|mv)/i.test(w.mv.officialTitle??'')))fail(`${id}: selected video is original MV without explicit performance reuse evidence`);
  if(!frozen&&/(?:DANCE|CHOREOGRAPHY)\s+PRACTICE/i.test(s.title)&&!(s.selection?.occasion==='practice_room'&&documentedSelection(s.selection)))fail(`${id}: practice needs documented full practice classification`);

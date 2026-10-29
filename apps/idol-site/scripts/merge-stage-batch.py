@@ -49,9 +49,9 @@ for item in batch['items']:
   if state not in ['pending','missing_song_identity']:assert item.get('searchEvidence'),f'Researched status needs public search evidence {rid}'
   status['works'][rid]={'status':state,'reason':item['reason'],'checkedAt':observation};changed.append(rid);continue
  s=item.get('selected');assert s and s['videoId']==item.get('selectedVideoId'),f'Selection absent {rid}'
- assert s.get('sourceClass') in SOURCE_CLASSES and s.get('platform') in ('youtube','bilibili') and s.get('completeness')=='full' and s.get('scorePolicy')!='view_only',f'Formal source must have an explicit platform, upload provenance and full performance, never view-only {rid}'
+ assert s.get('sourceClass') in SOURCE_CLASSES and s.get('platform') in ('youtube','bilibili','x') and s.get('completeness')=='full' and s.get('scorePolicy')!='view_only',f'Formal source must have an explicit platform, upload provenance and full performance, never view-only {rid}'
  selected_key=checked_identity(s)
- if s['platform']=='bilibili':assert item.get('selectedSourceKey')==selected_key,f'Bilibili selection needs the complete source key {rid}'
+ if s['platform'] in ('bilibili','x'):assert item.get('selectedSourceKey')==selected_key,f'Bilibili selection needs the complete source key {rid}'
  if 'selectedSourceKey' in item:assert item['selectedSourceKey']==selected_key,f'Selected source key differs from full identity {rid}'
  selection=checked_selection(s)
  candidates=comparison_candidates(item['candidates'])
@@ -85,7 +85,7 @@ for item in batch['items']:
  assert 'fld641ausT' in {f.get('field_id') for f in fresh['tables']['works'].get('fields',[])} or fresh['source']=='feishu','Native work schema must include the stage score field'
  if fallback and (not empty or not journal or any(r.get('recordId')==rid for r in journal.get('records',[]))):
   held.append({'recordId':rid,'reason':'Member-version fallback held: existing score or save history, or journal not confirmed.'});continue
- if not previous and (s['platform']=='bilibili' or s['sourceClass']!='official'):
+ if not previous and (s['platform'] in ('bilibili','x') or s['sourceClass']!='official'):
   assert rid not in fresh.get('siteMetadata',{}).get('stageVideos',{}),f'Published source preimage differs from absent local source {rid}'
   if not empty or not journal or any(r.get('recordId')==rid for r in journal.get('records',[])):
    held.append({'recordId':rid,'reason':'New platform/upload source held: existing score or save history, or complete journal not confirmed.'});continue
@@ -123,8 +123,9 @@ for item in batch['items']:
  note=' · '.join(str(v) for v in [s.get('label'),s.get('arrangement'),language_evidence,'依据公开标题、频道和说明核验，未逐句核对音轨；不据此判定真唱。'] if v)
  ranknote='已核整场内对应片段' if clip else '已核同曲同版本同优先级候选中点赞最高' if comparison=='comparable_likes' else '依据人工选择理由与来源证据采用；点赞不可完整比较' if comparison=='manual_evidence' else '本次唯一已核同优先级合格候选'
  if clip:candidates=[picked]
- videos[rid]={'sourceClass':s['sourceClass'],'platform':s['platform'],'completeness':'full','videoId':s['videoId'],'url':s['url'],'title':s['title'],'channel':s['channel'],'kind':s.get('label') or s.get('type'),'publishedDate':(s.get('publishedAt') or '')[:10],'typeNote':note,'sourceUrl':s['sourceUrl'],'scoreBinding':bind,'likes':selected_likes,'checkedAt':source_at,'selectionNote':ranknote,'comparisonNote':item['reason'],'reusesOriginalVideo':reuse,'comparisonLimited':bool(item.get('comparisonLimited')) or comparison!='comparable_likes','comparisonLimitation':item.get('comparisonLimitation') or '', 'previousSources':history,'candidateCount':len(candidates),'candidates':[{'title':c['title'],'url':c['url'],'likesDisplay':f"{checked_likes(c)['value']:,}" if checked_likes(c)['precision']=='exact' else checked_likes(c)['display'],'kind':c.get('label') or c.get('kind') or '合格候选（见标题）',**({'platform':'bilibili','videoId':c['videoId'],'bilibili':c['bilibili']} if c['platform']=='bilibili' else {})} for c in candidates]}
+ videos[rid]={'sourceClass':s['sourceClass'],'platform':s['platform'],'completeness':'full','videoId':s['videoId'],'url':s['url'],'title':s['title'],'channel':s['channel'],'kind':s.get('label') or s.get('type'),'publishedDate':(s.get('publishedAt') or '')[:10],'typeNote':note,'sourceUrl':s['sourceUrl'],'scoreBinding':bind,'likes':selected_likes,'checkedAt':source_at,'selectionNote':ranknote,'comparisonNote':item['reason'],'reusesOriginalVideo':reuse,'comparisonLimited':bool(item.get('comparisonLimited')) or comparison!='comparable_likes','comparisonLimitation':item.get('comparisonLimitation') or '', 'previousSources':history,'candidateCount':len(candidates),'candidates':[{'title':c['title'],'url':c['url'],'likesDisplay':f"{checked_likes(c)['value']:,}" if checked_likes(c)['precision']=='exact' else checked_likes(c)['display'],'kind':c.get('label') or c.get('kind') or '合格候选（见标题）',**({'platform':'bilibili','videoId':c['videoId'],'bilibili':c['bilibili']} if c['platform']=='bilibili' else {'platform':'x','videoId':c['videoId'],'xMedia':c['xMedia']} if c['platform']=='x' else {})} for c in candidates]}
  if s['platform']=='bilibili':videos[rid].update(bilibili=s['bilibili'],likesScope=s.get('likesScope','whole_video'))
+ if s['platform']=='x':videos[rid].update(xMedia=s['xMedia'],likesScope='whole_post')
  if s.get('sourceEvidence'):videos[rid]['sourceEvidence']=s['sourceEvidence']
  if s['platform']=='bilibili' and clip:
   videos[rid]['candidates'][0]['clip']=clip

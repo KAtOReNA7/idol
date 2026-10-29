@@ -1,5 +1,19 @@
 # 跨电脑接续：正式v202，PR47最新分支
 
+## 最新续作：本地500舞台，正式仍v202（2026-10-29，未部署）
+
+从PR47 `ec9efbc590673b8bbb98e6c98db303303a3b8aa0` 接续同一 `codex/group-evidence-followup-20261029`，远端仍draft/open/unmerged。GitHub交付单独见 `docs/codex/evidence/20261029-next-followup/github-delivery.json`；后续fetch最新PR47 HEAD，不从旧main接续，不reset/clean/强推或恢复旧stash。新增之前已保留本地57文件外部SHA备份；普通Git代理失败时以GitHub连接器精确Git对象快进交付，不冒称shell fetch成功。
+
+QWER SHOW DOWN已用真实新鲜owner导出采用：`x:2090845225845747983:video:1`。用户确认完整日语原版、四人和唯一视频，不再问。使用时33.68秒、206条完整保存日志无目标、舞台空分、全部497线上来源相同及两条已审未发布来源保持；旧499对象不变，私人写入0。X精确视频序号已贯穿导入／外链／匿名投影／owner保存审计；整帖点赞不当单视频最高赞，不做X嵌入或区间。Password与STAYC既有采用不得重导；本轮备份到下一轮仍须检查15分钟有效期。
+
+Password补独立原封面1024×576／41986bytes，29专项舞台封面；STAYC整期OG是AKB48，拒绝误绑，该区间和QWER专属舞台封面仍待补。WOOAH SUMMER增加五名具名发行概念照参考，复用旧同套原图并注明非本期照片，不证明完整录音／MV cast。现106资料作品／546槽，通用归档24、实际回退20作品／97槽；24完整人物事实保持待证，不新建私人关系。
+
+tripleS两条独立Circle Album周数合2396，下界2113229／未解释差345560／13周；原36月行、2年替换、11旧周和2026-06截止保持，不加Total_CNT或Cosmo重叠。四未知销量新路线无合格值，7未知统计继续null。当前105新增舞台＋11旧替换、24人物、7统计、7实际日期、1差额＝155分类项，不能当独立缺歌数；照片原2项已解决。当前overlay为 `docs/codex/evidence/20261029-next-followup/remaining-stage-ledger.json`，原CSV／历史不改。
+
+160专项／21文件、类型／构建、UDTT精确guard及carrier审计通过，7原件与构建字节一致；历史测试按完整采用回执还原，旧全文SHA不放宽。未新做全站浏览器目视、完整播放或真实保存；旧IAB超时不转用日常Chrome。正式只读核仍v202／497源／public／revision2／1owner／0外部／0组，本轮Sites保存和部署0。51团设计、Apple Music主站、原图、ID／关系、私人字段／owner鉴权保持，个人页统一排版待决定。继续有新证据的任务，不以小批次或推送作停工点；后续暂不自动部署。
+
+报告 `docs/codex/next-evidence-followup-20261029.md`，证据 `docs/codex/evidence/20261029-next-followup/`；下方499／105资料／347956等均为历史，不覆盖本节。
+
 ## 最新续作：本地499舞台与105资料作品，正式仍v202（2026-10-29，未部署）
 
 从PR47 `14dfedbdd07f4ac511490d706afd385379be6a0d` 接续同一 `codex/group-evidence-followup-20261029`；PR44—47核查仍draft/open/unmerged。后续须fetch最新PR47 HEAD，不从旧main接续，不reset/clean/强推、不恢复旧stash。普通Git网络连接失败，GitHub交付状态以本轮单独回执为准，不能把本地修改或API尝试当作推送完成。

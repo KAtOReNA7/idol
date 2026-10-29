@@ -4,7 +4,7 @@ const {spawnSync} = require('node:child_process');
 const root = path.resolve(__dirname, '..'), now = new Date().toISOString(), id = 'recMultiPlatformFixture';
 const env = {...process.env, PYTHONDONTWRITEBYTECODE: '1', PYTHONIOENCODING: 'utf-8'};
 const evidence = {note: 'Synthetic reviewed same-song Korean full performance and upload provenance.', urls: ['https://example.org/source']};
-const key = source => source.platform === 'bilibili'
+const key = source => source.platform === 'x'?`x:${source.videoId}:video:${source.xMedia.videoIndex}`:source.platform === 'bilibili'
   ? `bilibili:${source.videoId}:cid:${source.bilibili.cid}:p:${source.bilibili.page}`+(source.clip?`@${source.clip.startSeconds}-${source.clip.endSeconds}`:'')
   : source.videoId + (source.clip ? `@${source.clip.startSeconds}-${source.clip.endSeconds}` : '');
 function candidate(overrides = {}) {
@@ -25,6 +25,9 @@ function youtube(overrides = {}) {
     sourceClass: 'official', likes: {value: 10, display: '10', precision: 'exact'}, ...overrides});
   delete source.bilibili;
   return source;
+}
+function xsource(overrides={}){
+ const s=candidate({platform:'x',videoId:'2090845225845747983',xMedia:{videoIndex:1},bilibili:undefined,likesScope:'whole_post',url:'https://x.com/ming_baragi/status/2090845225845747983/video/1',...overrides});delete s.bilibili;return s;
 }
 const reviewed = (selected, candidates = [selected], extra = {}) => ({checkedAt: now, items: [{recordId: id,
   status: 'verified', selected, candidates, reason: 'Explicit synthetic evidence review.', checkedAt: now, ...extra}]});
@@ -228,4 +231,16 @@ test('bounded Bili program intervals normalize, merge with fresh empty owner dat
  for(const score of [0,8]){const protectedResult=merge(batch,{score});assert.equal(protectedResult.status,0,protectedResult.stderr);assert.deepEqual(protectedResult.videos,{});}
  const saved=merge(batch,{journal:[{record_id:id,table_key:'works',status:'done'}]});assert.deepEqual(saved.videos,{});
  for(const bad of [{...clip,endSeconds:1470},{...clip,startSeconds:1273},{...clip,sourceDurationSeconds:undefined},{...clip,evidence:{note:'',urls:[]}}])assert.notEqual(identity({...s,clip:bad}).status,0);
+});
+test('exact X post/video sources require fresh empty owner state, complete history and no platform or media ambiguity',()=>{
+ for(const sourceClass of ['official','reupload','third_party']){
+  const s=xsource({sourceClass}),batch=normalized(reviewed(s));assert.equal(batch.items[0].selectedSourceKey,key(s));
+  const r=merge(batch);assert.equal(r.status,0,r.stderr);assert.equal(r.videos[id].scoreBinding.sourceKey,key(s));assert.deepEqual(r.videos[id].xMedia,{videoIndex:1});assert.equal(r.videos[id].likesScope,'whole_post');assert.equal(r.videos[id].candidates[0].platform,'x');
+  for(const score of [0,8])assert.deepEqual(merge(batch,{score}).videos,{});
+  assert.deepEqual(merge(batch,{journal:[{record_id:id,table_key:'works',status:'done'}]}).videos,{});
+ }
+ const s=xsource();for(const change of [{xMedia:undefined},{xMedia:{videoIndex:0}},{xMedia:{videoIndex:2}},{xMedia:{videoIndex:1,secret:true}},{videoId:'0'},{url:s.url.replace('/video/1','')},{url:s.url+'&redirect=https://evil.example'},{url:s.url.replace('x.com','x.com.evil.example')},{clip:{startSeconds:0,endSeconds:30,sourceDurationSeconds:30,evidence}},{bilibili:{cid:'1',page:1}}])assert.notEqual(identity({...s,...change}).status,0,JSON.stringify(change));
+ const expired=merge(normalized(reviewed(s)),{capturedAt:'2020-01-01T00:00:00Z'});assert.notEqual(expired.status,0);assert.equal(expired.before,expired.after);
+ const second=xsource({videoId:'2090845225845747984',url:s.url.replace('2090845225845747983','2090845225845747984')});assert.notEqual(normalize(reviewed(s,[s,second])).status,0,'whole-post popularity never automatically selects a video');
+ assert.equal(normalize(reviewed(s,[s,second],{selectionDecision:decision(s,[s,second])})).status,0);
 });

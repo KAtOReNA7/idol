@@ -6,7 +6,7 @@ import {Play} from 'lucide-react';
 type PlayerProps = {
  workId:string;
  view:'mv'|'stage';
- platform?:'youtube'|'bilibili';
+ platform?:'youtube'|'bilibili'|'x';
  sourceKey?:string|null;
  url:string;
  videoId:string|null;
@@ -36,6 +36,6 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',poster
  return <>
   {coverSrc&&!coverFailed?<img src={coverSrc} alt={posterLabel?title+' · '+posterLabel:title+' 视频封面'} style={posterFit?{position:'absolute',inset:0,width:'100%',height:'100%',maxWidth:posterSize?.width??'100%',maxHeight:posterSize?.height??'100%',margin:posterSize?'auto':undefined,objectFit:posterFit,transform:posterZoom>1?`scale(${posterZoom})`:undefined,transformOrigin:'50% 50%'}:undefined} referrerPolicy="no-referrer" onError={()=>setCoverFailed(true)}/>:<div className="video-cover-fallback"><span>{title}</span><small>{!coverSrc?'在原站观看此视频':coverRetried?'封面仍未加载，可直接播放视频':'封面暂时打不开'}</small></div>}
   {coverSrc&&coverFailed&&!coverRetried&&<button type="button" className="video-cover-retry" onClick={()=>{setCoverRetried(true);setCoverFailed(false);}}>重试封面</button>}
-  <button className="video-play" onClick={()=>embedUrl?setPlaying(true):window.open(url,'_blank','noopener,noreferrer')}><Play fill="currentColor" size={25}/><span>{platform==='bilibili'?'在 B站观看':view==='stage'?'播放舞台视频':'播放视频'}</span></button>
+  <button className="video-play" onClick={()=>embedUrl?setPlaying(true):window.open(url,'_blank','noopener,noreferrer')}><Play fill="currentColor" size={25}/><span>{platform==='bilibili'?'在 B站观看':platform==='x'?'在 X 观看':view==='stage'?'播放舞台视频':'播放视频'}</span></button>
  </>;
 }

@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-29T13:31:02.016Z",
+  "branch": "codex/group-evidence-followup-20261029",
+  "pullRequest": "https://github.com/KAtOReNA7/idol/pull/47",
+  "implementationCommit": "9fe102fe246188d79346df3634cb515a47f3df5c",
+  "implementationTree": "d37cb3fad9a3025cf6c6b0dadb3e03d23c13e81e",
+  "parentCommit": "14dfedbdd07f4ac511490d706afd385379be6a0d",
+  "delivery": {
+    "method": "GitHub Git objects connector; regular Git proxy/direct connection failed",
+    "changedFiles": 76,
+    "imageBlobs": 9,
+    "newPhotoOriginals": 6,
+    "evidenceContactSheets": 3,
+    "blobShaChecks": 76,
+    "completeTreeMatchesLocalIndex": true,
+    "refUpdate": {
+      "force": false,
+      "expectedHead": "14dfedbdd07f4ac511490d706afd385379be6a0d",
+      "remoteReadback": "9fe102fe246188d79346df3634cb515a47f3df5c"
+    },
+    "initialInlineTreeRequest": "HTTP500; recovered by individually SHA-verified blobs and SHA-only tree",
+    "localCheckout": "Exact remote commit reconstructed from its canonical Git metadata and matched SHA, imported locally, then fast-forwarded with expected-old-head ref guard; no reset/clean/stash restore/force push."
+  },
+  "production": {
+    "version": 202,
+    "status": "active",
+    "accessMode": "public",
+    "accessRevision": 2,
+    "owners": 1,
+    "external": 0,
+    "groups": 0,
+    "newVersionsSaved": 0,
+    "deployments": 0
+  },
+  "privateWrites": 0,
+  "validation": {
+    "targetedTests": 100,
+    "failed": 0,
+    "typescript": "passed",
+    "build": "passed",
+    "newOriginalBuildBytesChecked": 6
+  },
+  "followupReceiptPolicy": "This file records verification of the implementation commit; a later documentation-only commit carries this receipt. Resume from latest PR47 HEAD, not this parent or old main."
+}

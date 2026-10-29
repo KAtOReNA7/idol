@@ -2,7 +2,7 @@
 
 ## 当前任务：新电脑接续与人工填写保护（2026-10-29）
 
-活动分支为 `codex/human-help-handoff-sync-20261029`，从最新 main 普通合入 PR45 的 `dada774`，包含 v201 实现和完整人工清单。10:35（Asia/Shanghai）只读核实正式站仍为 v201 / succeeded，public / 1 owner / 0 external / 0 groups / revision2，首页 HTTP 200；这不是新一轮浏览器验收，也没有重新部署。
+活动分支为 `codex/human-help-handoff-sync-20261029`（draft [PR46](https://github.com/KAtOReNA7/idol/pull/46)，base为PR45分支），从最新 main 普通合入 PR45 的 `dada774`，包含 v201 实现和完整人工清单。10:35（Asia/Shanghai）只读核实正式站仍为 v201 / succeeded，public / 1 owner / 0 external / 0 groups / revision2，首页 HTTP 200；这不是新一轮浏览器验收，也没有重新部署。
 
 本轮确认 161 行、45 团的 CSV 人工填写栏均为空。用户已换电脑，不知道新增答案位置；没有新人工证据可采用，所有未解决项保留。发现并修复生成器重跑清空人工填写的风险：有填写内容或结构异常时，先停止再核查，不覆盖任何产物。应用源、原图、关系、个人记录与鉴权未修改，个人页排版仍待决定。
 

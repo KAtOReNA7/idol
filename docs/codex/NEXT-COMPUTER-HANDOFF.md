@@ -4,7 +4,7 @@
 
 ## 本轮新电脑接续（2026-10-29，人工填写保护，无新部署）
 
-活动分支 `codex/human-help-handoff-sync-20261029` 已从最新 `origin/main`（`852f7506`）创建，普通 merge 最新 PR45 后 fast-forward 到 `dada774ba79aba8e9863a88822e71644669ce7cb`，包含 PR44、v201 与人工清单。PR44 / PR45 当前仍 draft/open/unmerged。本任务仅增加人工清单保护与交接，后续接续还须显式 fetch 本任务分支；若其最新成果尚未在新任务基线中，比较后普通 merge，不遗漏本轮修复，也不重复导入任何业务批次。
+活动分支 `codex/human-help-handoff-sync-20261029`（draft [PR46](https://github.com/KAtOReNA7/idol/pull/46)，base为PR45分支） 已从最新 `origin/main`（`852f7506`）创建，普通 merge 最新 PR45 后 fast-forward 到 `dada774ba79aba8e9863a88822e71644669ce7cb`，包含 PR44、v201 与人工清单。PR44 / PR45 当前仍 draft/open/unmerged。本任务仅增加人工清单保护与交接，后续接续还须显式 fetch 本任务分支；若其最新成果尚未在新任务基线中，比较后普通 merge，不遗漏本轮修复，也不重复导入任何业务批次。
 
 本机原有 17 个修改文件＋5 个未跟踪文件，已复制到 `E:\project\idol-local-backups\20261029-human-handoff-103333` 并逐项核对 SHA-256，另存 stash `2d1acc90331c12ba56d339418a3295a063327fe3`。该恢复点属于本机旧 `codex/izna-native-integration`，与下文其他电脑的 `7779dd2...` 不同；均不自动应用。备份不进入 GitHub。
 

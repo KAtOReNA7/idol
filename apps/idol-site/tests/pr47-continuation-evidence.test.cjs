@@ -3,6 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),{createHash}=require('node
 const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
 const load=require('./helpers/public-artist-loader.cjs');
 const {beforeGroupAdvanceTimelineBytes}=require('./helpers/group-advance-evidence.cjs');
+const {beforeHeyGabbyFormalBytes}=require('./helpers/heygabby-formal-baseline.cjs');
 const {publicCreditForWork,publicCreditsForMember}=load('lib/idol/public-work-credits.ts');
 const {publicWorkRecognition}=load('lib/idol/public-work-recognition.ts');
 const {publicGroupRecognitionForWork}=load('lib/idol/public-group-recognition.ts');
@@ -23,7 +24,7 @@ test('continuation appends bounded evidence while preserving the prior 103 refer
   if(['apps/idol-site/data/public-work-credits.json','apps/idol-site/data/public-work-recognition.json','apps/idol-site/data/stages/supplements.json'].includes(name))continue;
   const bytes=fs.readFileSync(path.resolve(__dirname,'../../..',name));
   const historical=name==='apps/idol-site/data/timeline-reported-records.json'
-   ?beforeGroupAdvanceTimelineBytes(JSON.parse(bytes.toString('utf8'))):bytes;
+   ?beforeGroupAdvanceTimelineBytes(JSON.parse(bytes.toString('utf8'))):beforeHeyGabbyFormalBytes(name.replace('apps/idol-site/',''),bytes);
   assert.equal(hash(historical),digest,name);
  }
 });

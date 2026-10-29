@@ -1,9 +1,11 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),{createHash}=require('node:crypto');
 const load=require('./helpers/public-artist-loader.cjs');
-const {validStageSearchReview,stageSupplementForWork}=load('lib/idol/supplements.ts');
-const {stageForWork}=load('lib/idol/stage.ts');
+const {validStageSearchReview}=load('lib/idol/supplements.ts');
+const {beforeFormalStageForWork:stageForWork,beforeHeyGabbyFormalBytes}=require('./helpers/heygabby-formal-baseline.cjs');
 const currentSource=require('../data/stages/supplements.json');
+const {beforeHeyGabbyViewing,historicalHeyGabbySupplement}=require('./helpers/heygabby-viewing-baseline.cjs');
+const participationSource=beforeHeyGabbyViewing(currentSource);
 const {beforeHeyGabbyHuman,beforeHeyGabbyHumanBytes,heyGabbyHumanAdoption}=require('./helpers/heygabby-human-baseline.cjs');
 const source=beforeHeyGabbyHuman(currentSource);
 const receipt=require('../../../docs/codex/evidence/20261029-group-followup/heygabby-review-update.json');
@@ -40,18 +42,18 @@ test('the review edit preserves target alternatives, formal stage bindings and t
  assert.equal(receipt.preservation.stageBindingsChanged,0);
  for(const [relative,proof] of Object.entries(receipt.preservation.protectedFiles)){
   assert.equal(proof.beforeSha256,proof.afterSha256,relative);
-  assert.equal(hash(fs.readFileSync(path.join(__dirname,'..',relative))),proof.afterSha256,relative);
+  assert.equal(hash(beforeHeyGabbyFormalBytes(relative,fs.readFileSync(path.join(__dirname,'..',relative)))),proof.afterSha256,relative);
  }
- const runtime=stageSupplementForWork(id);
+ const runtime=historicalHeyGabbySupplement(id);
  assert.deepEqual(runtime.alternatives,[]);assert.equal(runtime.watchLeads,undefined);
- assert.deepEqual(runtime.searchReview,currentSource.works[id].searchReview);
+ assert.deepEqual(runtime.searchReview,participationSource.works[id].searchReview);
  assert.equal(stageForWork(id),null,'research metadata cannot initialize a formal stage or score binding');
  assert.equal('scoreBinding' in row,false);assert.equal('completeness' in row,false);assert.equal('versionMatch' in row,false);
  assert.equal(JSON.stringify(source),before);
 });
 
 test('human observation confirms only seven-member participation in the exact Performance candidate',()=>{
- const current=currentSource.works[id],r=current.searchReview,h=heyGabbyHumanAdoption;
+ const current=participationSource.works[id],r=current.searchReview,h=heyGabbyHumanAdoption;
  assert.equal(h.workId,id);assert.equal(h.candidateVideoId,'XSpYaEdpKxY');
  assert.equal(validStageSearchReview(r),true);assert.equal(r.outcome,'verification_limited');
  assert.match(r.summary,/人工看片确认片中7名成员均参与/);
@@ -74,7 +76,7 @@ test('exact human-review preimages preserve every other supplement byte and reje
  assert.equal(hash(historical),'0ea798e6e9bfe21de5ebeb583d15b9a83e0002b621682ffbcef0fc1bd6ae2512');
  const snapshot=structuredClone(currentSource);assert.deepEqual(beforeHeyGabbyHuman(currentSource),JSON.parse(historical));assert.deepEqual(currentSource,snapshot);
  const wrongScope=structuredClone(currentSource);wrongScope.works[id].searchReview.outcome='not_found_in_scope';
- assert.throws(()=>beforeHeyGabbyHuman(wrongScope),/complete human-reviewed Hey Gabby row/);
+ assert.throws(()=>beforeHeyGabbyHuman(wrongScope),/complete current Hey Gabby formal supplementsUpdate row/);
  const unrelated=structuredClone(currentSource);unrelated.works.rec28ldfRTrNsK.watchLeads[0].leadTimeSeconds++;
  assert.throws(()=>beforeHeyGabbyHuman(unrelated),/all other supplements and metadata preserved/);
  assert.throws(()=>beforeHeyGabbyHumanBytes(bytes+' '),/complete current supplements bytes/);

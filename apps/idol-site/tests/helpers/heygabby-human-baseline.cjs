@@ -6,8 +6,10 @@ const receipt = require('../../../../docs/codex/evidence/20261029-group-advance/
 const sha = value => createHash('sha256').update(value).digest('hex');
 const baselineSha = '0ea798e6e9bfe21de5ebeb583d15b9a83e0002b621682ffbcef0fc1bd6ae2512';
 const sourceFile = path.resolve(__dirname, '../../data/stages/supplements.json');
+const {beforeHeyGabbyViewingBytes,beforeHeyGabbyViewing} = require('./heygabby-viewing-baseline.cjs');
 
 function beforeHeyGabbyHumanBytes(currentText) {
+  currentText = beforeHeyGabbyViewingBytes(currentText).toString('utf8');
   assert.equal(receipt.beforeFileSha256, baselineSha);
   assert.equal(sha(currentText), receipt.afterFileSha256, 'complete current supplements bytes');
   assert.deepEqual(JSON.parse(receipt.afterReviewText), receipt.after.searchReview);
@@ -19,6 +21,7 @@ function beforeHeyGabbyHumanBytes(currentText) {
 }
 
 function beforeHeyGabbyHuman(source) {
+  source = beforeHeyGabbyViewing(source);
   assert.equal(receipt.workId, 'recvxyOz5Xo5fW');
   assert.equal(receipt.candidateVideoId, 'XSpYaEdpKxY');
   assert.deepEqual(source.works[receipt.workId], receipt.after, 'complete human-reviewed Hey Gabby row');

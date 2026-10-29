@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T09:48:40.356210+00:00",
+  "baselineCommit": "e5f49e0b9d4239648bb1f64675e8adfcaaa11a5a",
+  "finalTests": {
+    "singleRun": true,
+    "total": 70,
+    "pass": 70,
+    "fail": 0,
+    "skipped": 0,
+    "fileCount": 11,
+    "cwd": "apps/idol-site",
+    "command": "node --test tests/heygabby-complete-viewing.test.cjs tests/heygabby-research-followup.test.cjs tests/stage-research-note.test.cjs tests/pr47-continuation-evidence.test.cjs tests/continuous-stage-viewing.test.mjs tests/stage-viewing-category-resolution.test.mjs tests/formal-four-stage-adoption.test.cjs tests/product-copy.test.cjs tests/post-v200-adoptions.test.cjs tests/work-video-player.test.cjs tests/stage-import-policy.test.cjs",
+    "logSha256": "37b7b0412c1b39a487997969f2ce2df898ba5ca20121d4b30f10583ba97d67c2",
+    "newFocusedChecks": 4,
+    "intermediateRunsNotAdded": true
+  },
+  "checks": {
+    "typecheck": {
+      "completedAt": "2026-10-29T09:38:32.8370070Z",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build": {
+      "exitCode": 0,
+      "completedAt": "2026-10-29T09:40:47.2228148Z",
+      "logSha256": "b8b425ed578eddf0a8241f9b7582081b47be695ac29f79339764f3f6df701152"
+    }
+  },
+  "ssr": {
+    "actualWorkDetailAndWorkVideoPlayer": true,
+    "singleFormalPlayer": true,
+    "sameVideoAlternativeHidden": true,
+    "noLiveVocalClaim": true,
+    "evidence": "final-application-audit.json"
+  },
+  "scopeLimits": [
+    "Agent did not independently play the full video; completeness and Korean audio are explicitly human-verified.",
+    "No browser layout or real save test.",
+    "Complete owner target/journal verification was read-only; no private write.",
+    "Existing importer guard tests cover their actual implemented scope, not a claimed universal save-history guard."
+  ],
+  "deployment": false
+}

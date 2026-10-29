@@ -1,5 +1,6 @@
 const assert=require('node:assert/strict');
 const receipt=require('../../../../docs/codex/evidence/20261029-pr47-continuation/supplement-preservation.json');
+const position=require('../../../../docs/codex/evidence/20261029-beep-watch-position/adoption.json');
 const metadata=source=>Object.fromEntries(Object.entries(source).filter(([key])=>key!=='works'));
 
 // Verify every changed current row and its metadata before restoring the exact
@@ -7,8 +8,13 @@ const metadata=source=>Object.fromEntries(Object.entries(source).filter(([key])=
 module.exports=function restorePr47ContinuationBaseline(source){
  assert.deepEqual(metadata(source),receipt.afterMetadata,'complete current supplement metadata');
  const historical=structuredClone(source);
+ const leads=historical.works[position.workId].watchLeads;
+ const index=leads.findIndex(lead=>lead.sourceId===position.sourceId);
+ assert.ok(index>=0,'existing BEEP lead retained');
+ assert.deepEqual(leads[index],position.afterLead,'complete reviewed BEEP navigation-only update');
+ leads[index]=structuredClone(position.beforeLead);
  for(const change of receipt.changes){
-  assert.deepEqual(source.works[change.workId],change.after,'complete current research row '+change.workId);
+  assert.deepEqual(historical.works[change.workId],change.after,'complete current research row '+change.workId);
   if(change.before===null)delete historical.works[change.workId];
   else historical.works[change.workId]=structuredClone(change.before);
  }

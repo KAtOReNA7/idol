@@ -52,8 +52,12 @@ test('izna costume entry stays unconfirmed and view-only, without a fabricated c
  const row=stageSupplementForWork('rec28ldfRTrNsK');
  const lead=row.watchLeads.find(x=>x.sourceId==='Qfez0Db9Iqc');
  assert.ok(validStageWatchLead(lead));assert.equal(lead.completeness,'unconfirmed');assert.equal(lead.scorePolicy,'view_only');
- assert.equal(lead.performerScope,'unconfirmed');assert.equal(lead.leadTimeSeconds,undefined);assert.equal(lead.scoreBinding,undefined);
- assert.match(lead.reason,/完整单曲起止.*尚未核实/);
+ assert.equal(lead.performerScope,'unconfirmed');assert.equal(lead.leadTimeSeconds,211);assert.equal(lead.scoreBinding,undefined);
+ assert.equal(new URL(lead.url).searchParams.get('t'),'211');
+ assert.equal(new URL(lead.url).searchParams.has('end'),false);assert.equal(lead.durationSeconds,undefined);
+ assert.match(lead.reason,/待复核的观看窗口，并非歌曲净时长/);
+ assert.match(lead.leadTimeEvidence.note,/人工观看.*不是已验证的单曲章节/);
+ assert.equal(validStageWatchLead({...lead,url:lead.url+'&end=450'}),false);
  assert.deepEqual(row.alternatives.map(x=>x.sourceId),['ctfS0Rcq-gs']);
  assert.equal(row.alternatives[0].version.match,'different');
 });

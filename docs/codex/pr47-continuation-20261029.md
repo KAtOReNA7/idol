@@ -1,5 +1,7 @@
 # PR47 第二批逐团续查（2026-10-29，未部署）
 
+> 后续已收到 BEEP 日版人工观看位置并增加约03:31跳转，约03:31–07:30仍作为待复核窗口，不当净曲长或完整章节。最新见[补充工作记录](worklogs/20261029-beep-watch-position.md)，以下是此前第二批记录。
+
 从 PR47 最新远端 `b209073909b2f43254d836ffe139eba056582f09` 接续同一分支 `codex/group-evidence-followup-20261029`。先确认工作树干净、显式 fetch main 与 PR44／45／46／47 分支，并核实包含 `dada774` 人工清单及交接。PR44—47 开工时均为 draft／open／未合并；没有 reset、clean、强推或应用旧 stash。正式工程为 `apps/idol-site/`。
 
 这次增加四项可见资料：PURPLE KISS 英文《DOREMI》六人发行概念照参考、izna 日版《BEEP》一条待核观看入口、tripleS∞!《Password》和 STAYC 日版《Teddy Bear》各一条节目档案说明。没有关闭任何完整事实缺口，也没有新增或替换正式舞台。前批 MADEIN、Hey Gabby 与 ILLIT 成果保留，不重复导入。

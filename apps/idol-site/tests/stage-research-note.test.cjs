@@ -34,7 +34,7 @@ test('Hey Gabby review-only content reaches anonymous projection and renders a c
 
 test('only an explicitly reviewed note is public; historical raw review fields and nested unknown fields never cross the boundary',()=>{
  const ids=Object.keys(metadata.works),notes=ids.filter(workId=>stageSupplementForWork(workId)?.researchNote);
- assert.deepEqual(notes,[id]);assert.equal(ids.length-notes.length,136);
+ assert.deepEqual(notes.slice().sort(),[id,'recvxyH5pzoMAf','rec28ldfRTrOnV'].sort());assert.equal(ids.length-notes.length,134);
  const catalog=fixture(),s=catalog.works[0].stageSupplement;
  s.searchReview.summary='RAW_REVIEW_SECRET';s.searchReview.limitations.push('OWNER_LOG_SECRET');s.searchReview.excluded.push({title:'EXCLUDED_SECRET',url:'https://example.com/',reason:'PRIVATE_REASON'});
  s.researchNote.internal='PRIVATE_NOTE_EXTRA';s.researchNote.sources[0].credential='PRIVATE_SOURCE_EXTRA';

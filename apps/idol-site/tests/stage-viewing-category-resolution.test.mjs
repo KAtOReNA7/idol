@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {build} from 'esbuild';
 import {beforePostV200Stages,beforePostV200StageStatuses} from './helpers/post-v200-stages.cjs';
+import restorePr47ContinuationBaseline from './helpers/pr47-continuation-baseline.cjs';
 const read=(p)=>JSON.parse(fs.readFileSync(p,'utf8'));
 const data=read('data/stages/supplements.json');
 const evidence=read('../../docs/codex/evidence/20261027-category-resolution/stages/viewing-supplements-adoption.json');
@@ -28,8 +29,9 @@ test('six new public viewing alternatives validate and never acquire score bindi
 });
 
 test('prior supplement and stage records remain intact through the four earlier sources and eleven documented practices',()=>{
+ const historical=restorePr47ContinuationBaseline(data);
  for(const [id,baseline]of Object.entries(evidence.preservation.oldRows)){
-  const row=structuredClone(data.works[id]);
+  const row=structuredClone(historical.works[id]);
   row.alternatives=row.alternatives.slice(0,baseline.alternativeCount).map(a=>{const copy={...a};delete copy.selection;return copy});
   const corrections=read('../../docs/codex/evidence/20261028-continuation/editorial-corrections.json');
   for(const c of corrections.corrections.filter(c=>c.workId===id)){const index=row.alternatives.findIndex(a=>a.sourceId===c.sourceId);if(index>=0){assert.deepEqual(row.alternatives[index],c.after);row.alternatives[index]=c.before;}}

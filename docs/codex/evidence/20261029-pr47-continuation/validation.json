@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-29T07:10:50.828801+00:00",
+  "nodeTests": {
+    "total": 47,
+    "passed": 45,
+    "failed": 2,
+    "newContinuationTests": 4,
+    "newContinuationPassed": 4,
+    "remainingFailuresReproducedAt": "b209073909b2f43254d836ffe139eba056582f09",
+    "baselineEvidence": "historical-checks.json",
+    "initialFailures": "5 initially: 3 fixture/expected-count updates and 2 historical cohort cases; current result is recorded above",
+    "retestPolicy": "Only reran affected checks after edits."
+  },
+  "typecheck": {
+    "command": "npx tsc --noEmit",
+    "exitCode": 0
+  },
+  "productionBuild": {
+    "command": "npm run build",
+    "exitCode": 0
+  },
+  "independentReview": {
+    "file": "independent-audit.json",
+    "passed": true,
+    "testsPassed": 31,
+    "overlapsRootTests": true
+  },
+  "coverage": {
+    "groups": 45,
+    "keys": 161,
+    "missing": 0,
+    "extra": 0,
+    "duplicates": 0,
+    "fullFactClosures": 0
+  },
+  "browserEvidence": "ui-continuation.json",
+  "deployment": false,
+  "newSiteVersion": false,
+  "realPrivateWrites": 0,
+  "realPrivateSaveTest": false,
+  "fullVideoPlaybackOrAudioComparison": false,
+  "logFilesLocalOnly": true,
+  "browserLayouts": 9,
+  "visuallyInspectedScreenshots": 22
+}

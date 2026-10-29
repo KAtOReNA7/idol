@@ -54,9 +54,9 @@ test('all generic portraits retain full existing originals and consistent bounde
  assert.equal(paths.size,63);
 });
 
-// MADEIN now has a limited release-cover reference, separately tested in group-followup.
-// Keep its historical generic data and test every still-active generic fallback.
-for(const row of source.works.filter(r=>r.workId!=='rec28ldfRTrPi9'))test(`read-only generic reference is exact-tuple scoped without participation claims: ${row.workId}`,()=>{
+// These two works gained scoped release references, each tested independently.
+// Preserve their generic archive and test every remaining active fallback.
+for(const row of source.works.filter(r=>!['rec28ldfRTrPi9','recvxyH5pzFAPL'].includes(r.workId)))test(`read-only generic reference is exact-tuple scoped without participation claims: ${row.workId}`,()=>{
  const work=workFor(row),group=publicGroupRecognitionForWork(work);
  assert.equal(group.groupId,row.groupId);assert.equal(publicCreditForWork(work),null);assert.deepEqual(publicWorkRecognition(work),[]);
  for(const mismatch of [{id:'wrong-work'},{groupIds:['wrong-group']},{url:'https://www.youtube.com/watch?v=other012345'},{placeholder:{reason:'placeholder'}}])assert.equal(publicGroupRecognitionForWork({...work,...mismatch}),null);

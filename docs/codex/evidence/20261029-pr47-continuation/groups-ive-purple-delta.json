@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29",
+  "baseline": "b209073909b2f43254d836ffe139eba056582f09",
+  "scope": "Candidate deltas only. Parent reviews and implements. No private relations, scores, formal stage sources or deployment.",
+  "candidates": [
+    {
+      "id": "purplekiss-doremi-english-release-concept-reference",
+      "workId": "recvxyH5pzFAPL",
+      "groupId": "recvxyEBDZllCe",
+      "videoId": "os4driLeAiU",
+      "status": "adoptable_limited_release_concept_reference",
+      "kind": "release_concept_participants",
+      "label": "本发行概念照人物参考",
+      "memberIds": [
+        "recvxyICzHxdYR",
+        "recvxyICzH2DZh",
+        "recvxyICzHusbM",
+        "recvxyICzH73gu",
+        "recvxyICzHDkqn",
+        "recvxyICzH3dKs"
+      ],
+      "memberNames": [
+        "Na Go Eun",
+        "Dosie",
+        "Ireh",
+        "Yuki",
+        "Chaein",
+        "SWAN"
+      ],
+      "proposedNote": "《OUR NOW》发行页列明英文版 DOREMI；该发行第二组个人概念照逐名列出 Na Go Eun、Dosie、Ireh、Yuki、Chaein、SWAN。这里只展示发行概念照人物参考，不代表本曲逐人录音或本 MV 出镜已核实，也不生成成员评分。",
+      "sources": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=86664437",
+          "method": "live_full_body_open",
+          "finding": "发行方目录题为OUR NOW，2025-08-31、RBW/Kakao；第一曲DOREMI (English Ver.)。独立曲目介绍与英文录音版本对应，非韩文I Miss My。"
+        },
+        {
+          "url": "https://www.purplekiss.co.kr/contents/68a81a0423389d55f67c6226",
+          "method": "live_public_page_html_embedded_contents_read",
+          "finding": "web正文抽取0行，正常公开HTTP200的__NEXT_DATA__.props.pageProps.contents包含OUR NOW SOLO CONCEPT PHOTO #2标题、6张图片及NaGoEun/Dosie/Ireh/Yuki/Chaein/SWAN标签。正文为本发行概念照；不单靠标签证明MV出镜。",
+          "publishedAt": "2025-08-22T15:00:00.724Z"
+        },
+        {
+          "url": "https://www.kpopdays.com/archives/122872",
+          "method": "live_full_body_open",
+          "finding": "正文嵌入两条RBW_PURPLEKISS官方推文，第一条在SOLO CONCEPT PHOTO #2下逐名列NA GO EUN、DOSIE、IREH；第二条列YUKI、CHAEIN、SWAN，均指OUR NOW与DOREMI。原推文直读403，未绕过；具名正文来自已读嵌入转录。",
+          "originalPostUrls": [
+            "https://twitter.com/RBW_PURPLEKISS/status/1958907011019808873",
+            "https://twitter.com/RBW_PURPLEKISS/status/1958907073380663301"
+          ]
+        }
+      ],
+      "reuse": "public-group-recognition.json已有同发行6张具名原件，复用其memberId/src/width/height/sha256，不下载新增/重复原图。public-work-credits.json无目标workId；generic记录继续保护，避免双重展示。",
+      "limits": [
+        "只补本发行概念人物范围，不得改称逐人录音名单、MV演员表或事实完整关闭。",
+        "Genie专辑总Chorus区有Na Go Eun/Chaein/SWAN，但未逐曲分配，不能作为本曲三人声部证据。",
+        "原英文录音幕后TGbfk7AEIzk字幕姓名仍未取得。"
+      ],
+      "action": "Parent may add public-work-credits/public-work-recognition limited reference and update scoped explanatory copy, keeping frozen human queue."
+    },
+    {
+      "id": "izna-beep-japan-costume-readonly-evidence",
+      "workId": "rec28ldfRTrNsK",
+      "targetVideoId": "LiZAgfmoQwc",
+      "candidateVideoId": "Qfez0Db9Iqc",
+      "url": "https://www.youtube.com/watch?v=Qfez0Db9Iqc",
+      "status": "new_support_for_existing_research_lead",
+      "selection": "produced_dance_performance_candidate",
+      "scorePolicy": "view_only",
+      "versionMatch": false,
+      "fullPlaybackVerified": false,
+      "performanceBoundaryVerified": false,
+      "memberNamesInDescribedVideo": [
+        "MAI",
+        "BANG JEE MIN",
+        "KOKO",
+        "RYU SA RANG",
+        "CHOI JUNG EUN",
+        "JEONG SAE BI"
+      ],
+      "sources": [
+        {
+          "url": "https://kstyle.com/article.ksn?articleNo=2263560",
+          "method": "live_full_body_open_and_embedded_target_link",
+          "finding": "文章明确该片是BEEP Japan Edition特别编舞Cosplay Performance，逐名描述六人造型，并嵌入Qfez0Db9Iqc。不是Summer Sonic演出。标题/正文和目标ID精确相连。",
+          "published": "2025-07-02",
+          "originalReport": "2025-06-26"
+        }
+      ],
+      "priorEvidence": "catalog-all-614-20261011-v2.json与20261028-post-v200队列已有Qfez0Db9Iqc，491秒含前置过程；runtime supplements当前只有ctfS0Rcq-gs韩文M2候选，没有Qfez0Db9Iqc。",
+      "proposedNote": "官方日语版 Costume 特别编舞线索；Kstyle 具名描述六人造型并嵌入该视频。视频含造型任务过程，完整表演起止、全片音轨与当前可播放性尚未核实，仅供观看研究。",
+      "limits": [
+        "不得把这支Cosplay出镜名单转移给LiZAgfmoQwc原MV或Japan Edition逐人录音。",
+        "YouTube嵌入直读本轮Online fetch throttled，停止该路线；未作全片/字幕/音轨核验。",
+        "正式舞台采用仍需新鲜owner空分、完整日志、线上原值；此刻不具备。"
+      ],
+      "action": "Parent may append view-only unconfirmed lead or strengthen research note. Do not promote completeness to full or bind source."
+    }
+  ],
+  "sourceReadback": {
+    "minimumContentSummary": {
+      "sourceUrl": "https://www.purplekiss.co.kr/contents/68a81a0423389d55f67c6226",
+      "acquisition": "Earlier normal public HTTP200 Invoke-WebRequest; extracted __NEXT_DATA__.props.pageProps.contents. This minimum summary preserves fields observed in tool output. Raw HTTP response was not retained.",
+      "noRefetchAfterParent403": true,
+      "contentId": "68a81a0423389d55f67c6226",
+      "contentType": "CONTENT_POST",
+      "title": "PURPLE KISS 1st English Album [OUR NOW] SOLO CONCEPT PHOTO #2",
+      "publishedAt": "2025-08-22T15:00:00.724Z",
+      "createdAt": "2025-08-22T15:00:00.724Z",
+      "updatedAt": "2025-08-22T15:00:00.762Z",
+      "tags": [
+        "PURPLE_KISS",
+        "OUR_NOW",
+        "OFFICIAL_PHOTO",
+        "NaGoEun",
+        "Dosie",
+        "Ireh",
+        "Yuki",
+        "Chaein",
+        "SWAN"
+      ],
+      "bodyImageUrls": [
+        "https://image.static.bstage.in/cdn-cgi/image/metadata=none/purplekiss/de3eb9c2-9597-4cce-b4af-e5d08ec05944/458c5390-c031-4adb-9077-1cd3ec0cb33e/ori.jpg",
+        "https://image.static.bstage.in/cdn-cgi/image/metadata=none/purplekiss/1691ac79-b3b0-48c5-b8ae-e7bb60ad7c89/454f908a-0a5e-4a2a-a50a-d4a001d429d6/ori.jpg",
+        "https://image.static.bstage.in/cdn-cgi/image/metadata=none/purplekiss/04f99318-c2e2-4ea4-a445-3db75b85fa38/210dd6f6-acd5-42f2-8f8a-7a256a060441/ori.jpg",
+        "https://image.static.bstage.in/cdn-cgi/image/metadata=none/purplekiss/0f4570bb-567a-4f6f-85e6-c72b20c323be/105e8b44-d38d-4a12-8be5-d8ccee45cefe/ori.jpg",
+        "https://image.static.bstage.in/cdn-cgi/image/metadata=none/purplekiss/96d05698-98e8-43d6-bea4-67248aadb1e9/45fafadb-39eb-4590-950d-7b3c133b9015/ori.jpg",
+        "https://image.static.bstage.in/cdn-cgi/image/metadata=none/purplekiss/6c48a3f7-ae1b-4916-bdeb-56c2eb679bfb/f1eeacc6-f774-4111-b3ec-d41566ac0005/ori.jpg"
+      ],
+      "bodySummary": "Official RBW materials notice, six image figures, OUR NOW first English album solo concept photo 2, 2025-08-31 6PM release text, DOREMI and WANT U BACK tags.",
+      "namesLimit": "Member names are in this exact concept object tags and individually in the two official-X-post transcriptions read at Kpopdays. Tags alone are not per-photo mapping or MV cast evidence.",
+      "parentVerification": "Parent independent request returned403 and stopped; parent did not reproduce200."
+    },
+    "summarySha256": "a08c96bf00f27f9abed200637ab0757ef1620daad3ba922099ae1157d681f64c",
+    "hashDefinition": "SHA256 of UTF-8 JSON minimumContentSummary, sort_keys=True,separators=(comma,colon),ensure_ascii=False; not an HTTP response/content body hash."
+  },
+  "kstyleIframeReadback": {
+    "sourceUrl": "https://kstyle.com/article.ksn?articleNo=2263560",
+    "method": "web full-body page read and click of its YouTube video player link at body line67",
+    "embeddedUrl": "https://www.youtube.com/embed/Qfez0Db9Iqc?si=ugas5tekVtVYALjo",
+    "exactVideoId": "Qfez0Db9Iqc",
+    "clickOutcome": "Online fetch throttled",
+    "scope": "Proves link target in the read article; does not prove full playback, song boundary or audio."
+  }
+}

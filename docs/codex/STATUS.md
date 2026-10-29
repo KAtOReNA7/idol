@@ -1,6 +1,16 @@
 # 状态：正式v201，PR45增量与PR44均未合并
 
-## 当前续作：逐团证据与完整版本导航（2026-10-29，未部署）
+## 当前续作：PR47 第二批逐团核查（2026-10-29，未部署）
+
+用户最新要求从 PR47 最新分支接续。本批以 `b209073909b2f43254d836ffe139eba056582f09` 为冻结基线，继续 `codex/group-evidence-followup-20261029`／draft [PR47](https://github.com/KAtOReNA7/idol/pull/47)，包含 PR46、PR45 `dada774` 和 PR44。开工工作树干净，五个指定分支已显式 fetch；PR44—47 均 open／draft／未合并。旧 stash 与本地备份保留。接续先核最新远端，不从旧 main 开始或重复创建已完成对象。
+
+新增四项页面资料：PURPLE KISS 英文 DOREMI 六人具名发行概念照参考；izna 日版 BEEP 一条未确认完整性的企划观看入口；tripleS∞! Password、STAYC 日版 Teddy Bear 各一条默认折叠的官方节目档案说明。人物资料累计 **104 作品／537 槽**，通用回退实际展示 **22 作品／107 槽**。原图复用；没有将发行阵容当逐人录音或 MV 出镜，没有新建／替换正式舞台。前批 MADEIN／Hey Gabby／ILLIT 成果保持，ILLIT 范围决定已落实，不再询问或重导。
+
+45 团／161 分类项再次对齐，无遗漏或重复，完整事实关闭 0；原人工 CSV 与冻结队列保持。HITGS 15 候选仍不同时满足同套与质量条件，原五图保持。47 项定向测试 45 通过、2 历史失败在本批基线复现；TypeScript／构建通过，本地公开夹具 9 布局／22 截图通过，外链全片、音轨、真实 owner 保存未验。没有新证据的事实保留；下一步需要准确日语演出起止／完整官方片源，以及具名、统计、日期原始资料。正式换绑仍须新鲜 owner 空分／完整日志／线上原值。
+
+正式站只读核实仍 **v201／succeeded**，访问配置 revision2 保持。本批没有新 Sites 版本或部署，GitHub 提交与正式站分别留证。51 团设计、原图、稳定 ID／关系、个人评分／备注／观看和 owner 鉴权保持；个人页统一排版仍待决定。最新以[第二批报告](pr47-continuation-20261029.md)、[工作记录](worklogs/20261029-pr47-continuation.md)及其 GitHub 交付回执为准；下方第一批及旧章节保留历史状态。
+
+## 第一批历史：逐团证据与完整版本导航（2026-10-29，未部署）
 
 用户已要求按团继续，并决定 ILLIT《It’s Me》另行整理完整歌曲版。当前任务分支 `codex/group-evidence-followup-20261029`（draft [PR47](https://github.com/KAtOReNA7/idol/pull/47)，未合并），基线为已含 `dada774`／PR45／PR44 的 PR46 `cef176580`；接续须显式 fetch 此分支并核最新 PR，不能只接旧 main 或 PR45 而漏掉 PR46 的人工填写保护。恢复后核 PR44／45／46 仍 draft/open/unmerged。旧 stash 不自动应用。
 

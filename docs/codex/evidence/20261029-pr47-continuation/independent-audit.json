@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T07:08:56.785032+00:00",
+  "reviewer": "independent-subagent-followup-groups-ive-purple-2",
+  "baselineCommit": "b209073909b2f43254d836ffe139eba056582f09",
+  "result": "PASS",
+  "findings": [],
+  "scope": "Read-only application diff, adopted evidence and targeted tests; no build, deployment, score writes or full playback.",
+  "reviewedFiles": [
+    {
+      "path": "apps/idol-site/data/public-work-credits.json",
+      "sha256": "a3b543babfc9a4a97c5c9ff29a08f05aa51c54c975c1b8036ad374f15178336a"
+    },
+    {
+      "path": "apps/idol-site/data/public-work-recognition.json",
+      "sha256": "2a5b426a5f3bb745e2db19447d7fc670e7e215df6b7f2a86cfe00e777c1bd6d5"
+    },
+    {
+      "path": "apps/idol-site/data/stages/supplements.json",
+      "sha256": "8e9f72d958903d5ecb7a104150d9c08f13fa4315a905fc5b207466a871e56df9"
+    }
+  ],
+  "reviewedAdoptionFiles": [
+    {
+      "path": "docs/codex/evidence/20261029-pr47-continuation/purplekiss-adoption.json",
+      "sha256": "50b5d01cc62934a1a880e778d11eaf9e47d6eead50e7b6f49b33acfb7c0fca5b"
+    },
+    {
+      "path": "docs/codex/evidence/20261029-pr47-continuation/izna-watch-lead-adoption.json",
+      "sha256": "24970aaa0ed12ed9275dc5775ab1f543545bd57f32830ad2c5518f41d0668049"
+    },
+    {
+      "path": "docs/codex/evidence/20261029-pr47-continuation/program-notes-adoption.json",
+      "sha256": "233dc136ae2b4dec170764848efa627bc9b9c555883537c7e80d2171a6beffdb"
+    },
+    {
+      "path": "docs/codex/evidence/20261029-pr47-continuation/supplement-preservation.json",
+      "sha256": "90b6fd22dadc796ce2222cb6e4a6c6a627b7988ea44e27dd6cdae58f2f5ebe56"
+    }
+  ],
+  "structuralChecks": {
+    "publicCredits": {
+      "originalRecords": 103,
+      "currentRecords": 104,
+      "originalRecordsStructurallyEqual": true,
+      "originalMetadataEqual": true
+    },
+    "publicRecognition": {
+      "originalRecords": 103,
+      "currentRecords": 104,
+      "originalRecordsStructurallyEqual": true,
+      "originalMetadataEqual": true
+    },
+    "supplements": {
+      "totalWorks": 137,
+      "changedWorkIds": [
+        "recvxyH5pzoMAf",
+        "rec28ldfRTrNsK",
+        "rec28ldfRTrOnV"
+      ],
+      "unrelatedUnchangedWorks": 134,
+      "targetExistingFieldsAndArraysPreserved": true,
+      "metadataChanges": "updatedAt and append one reviewedInputFiles/reviewedInputHashes item"
+    },
+    "allOtherTrackedApplicationRuntimeFilesUnchanged": true,
+    "protectedBaselineFilesVerified": [
+      "docs/codex/human-help-by-group-20261029.csv",
+      "docs/codex/human-help-by-group-20261029.md",
+      "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json",
+      "docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json",
+      "apps/idol-site/data/stages/group-placeholders.json",
+      "apps/idol-site/data/stages/inventory.json",
+      "apps/idol-site/data/stages/selection-policy-baseline-20261028.json",
+      "apps/idol-site/data/stages/status.json",
+      "apps/idol-site/data/public-group-recognition.json",
+      "apps/idol-site/data/timeline-reported-records.json",
+      "apps/idol-site/.openai/hosting.json"
+    ]
+  },
+  "evidenceScopeChecks": [
+    {
+      "workId": "recvxyH5pzFAPL",
+      "decision": "Accept limited six-person OUR NOW release concept reference for DOREMI English Ver. only",
+      "versionVideoId": "os4driLeAiU",
+      "scope": "Concept participants; neither per-person recording nor MV cast confirmed",
+      "sources": [
+        "https://www.genie.co.kr/detail/albumInfo?axnm=86664437",
+        "https://www.kpopdays.com/archives/122872"
+      ],
+      "officialReadbackLimit": "Earlier researcher normal HTTP 200 extraction saved as minimal content summary; parent HTTP 403 was stopped and is not represented as a successful independent official recheck. Summary SHA is not raw-response SHA.",
+      "reusesGenericPortraits": true,
+      "retainsUnverifiedForWork": true
+    },
+    {
+      "workId": "rec28ldfRTrNsK",
+      "decision": "Accept one view-only Japan Edition costume-performance lead",
+      "candidateVideoId": "Qfez0Db9Iqc",
+      "source": "https://kstyle.com/article.ksn?articleNo=2263560",
+      "scope": "Exact iframe target and named costumes corroborated by article body. Full boundaries, current playback, individual audio and score adoption remain unverified.",
+      "completeness": "unconfirmed",
+      "performerScope": "unconfirmed",
+      "scorePolicy": "view_only",
+      "newScoreBinding": false
+    },
+    {
+      "workId": "recvxyH5pzoMAf",
+      "decision": "Accept public research note only",
+      "source": "https://www.tv-tokyo.co.jp/melodix_premium/backnumber/202305.html",
+      "independentBodyRead": "2023/5/1 O.A. STAYC Teddy Bear -Japanese ver.-",
+      "scope": "Broadcast archive establishes exact programme/date/version, not a playable full official candidate."
+    },
+    {
+      "workId": "rec28ldfRTrOnV",
+      "decision": "Accept public research note only",
+      "source": "https://www.tbs.co.jp/playlist-tbs/archive/20251125/",
+      "independentBodyRead": "2025-11-25 PLAYLIST; tripleS infinity unit; Password",
+      "scope": "Broadcast archive establishes title and programme, not historical mirror authentication or individual audio."
+    }
+  ],
+  "originalImageChecks": [
+    {
+      "memberId": "recvxyICzHxdYR",
+      "path": "apps/idol-site/public/artist/mv-identity-batch-y-20261027/identities/purple-kiss-e0040d30d6fc71.jpg",
+      "sha256": "e0040d30d6fc712f9545e206e12758cd5bb7d0a71e8a4134056f52682852b904",
+      "baselineBytesEqual": true
+    },
+    {
+      "memberId": "recvxyICzH2DZh",
+      "path": "apps/idol-site/public/artist/mv-identity-batch-y-20261027/identities/purple-kiss-bb2867bf5a8b0d.jpg",
+      "sha256": "bb2867bf5a8b0d04ac3fd8dbe27c6fbee904fe2cba6921664f2cc69e5701f845",
+      "baselineBytesEqual": true
+    },
+    {
+      "memberId": "recvxyICzHusbM",
+      "path": "apps/idol-site/public/artist/mv-identity-batch-y-20261027/identities/purple-kiss-c332b1cd12eec5.jpg",
+      "sha256": "c332b1cd12eec5f7164f75b8fdeee2c2d912375512f3144d6630de6d9272351c",
+      "baselineBytesEqual": true
+    },
+    {
+      "memberId": "recvxyICzH73gu",
+      "path": "apps/idol-site/public/artist/mv-identity-batch-y-20261027/identities/purple-kiss-e963e2181da518.jpg",
+      "sha256": "e963e2181da518daef2bdb9f452f3b7111460ad22eca9713818b685ebf0ad1c5",
+      "baselineBytesEqual": true
+    },
+    {
+      "memberId": "recvxyICzHDkqn",
+      "path": "apps/idol-site/public/artist/mv-identity-batch-y-20261027/identities/purple-kiss-1a3f9cc6fe74ab.jpg",
+      "sha256": "1a3f9cc6fe74aba89abf6a45a7760da16229db8e741a0d7e553c7d97fea03666",
+      "baselineBytesEqual": true
+    },
+    {
+      "memberId": "recvxyICzH3dKs",
+      "path": "apps/idol-site/public/artist/mv-identity-batch-y-20261027/identities/purple-kiss-5acf9effd80ae3.jpg",
+      "sha256": "5acf9effd80ae3b1ebd3a67e983a15f349ebad95aa9f7030a5e81619847bff47",
+      "baselineBytesEqual": true
+    }
+  ],
+  "privateAndScoreProtection": {
+    "formalStageSourcesChanged": false,
+    "scoreBindingsAddedOrChanged": false,
+    "privateRelationsAdded": false,
+    "privateWrites": 0,
+    "authImplementationChanged": false,
+    "inputMutationGuardPassed": true,
+    "existingZeroRatingPreservedTestPassed": true,
+    "noOwnerLiveExportPerformed": true
+  },
+  "validation": [
+    {
+      "command": "node --test tests/pr47-continuation-evidence.test.cjs tests/public-work-recognition.test.cjs tests/public-group-recognition.test.cjs",
+      "cwd": "apps/idol-site",
+      "passed": 31,
+      "failed": 0
+    },
+    {
+      "command": "git diff --check",
+      "passed": true
+    },
+    {
+      "method": "Independent Python comparison against git show b209, baseline protected-file SHA checks and six local image SHA/blob comparisons",
+      "passed": true
+    }
+  ],
+  "limits": [
+    "No build repeated; parent already completed build.",
+    "No fresh owner state or full personal data hash was read; claims apply to local implementation diff and targeted mutation guards.",
+    "No full video playback or individual audio comparison.",
+    "Historical stage tests were not rerun by this auditor; no guards were modified.",
+    "Concurrent test and handoff editing by parent is outside this application audit.",
+    "No deployment or saved Sites version."
+  ],
+  "observations": [
+    {
+      "severity": "informational",
+      "text": "tsconfig.tsbuildinfo was modified during review; generated output is outside the three application JSON data changes."
+    }
+  ]
+}

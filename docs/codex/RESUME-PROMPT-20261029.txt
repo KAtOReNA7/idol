@@ -1,17 +1,21 @@
-请接续 https://github.com/KAtOReNA7/idol 。
+请接续 https://github.com/KAtOReNA7/idol 的 PR47 最新远端分支。
 
-先保护本地未提交和未跟踪文件；未克隆则先克隆。不要 reset、clean、强推或自动恢复旧 stash。显式 fetch origin/main、codex/statistics-relations-followup-20261027、codex/stage-person-followup-v199-20261028、codex/human-help-handoff-sync-20261029、codex/group-evidence-followup-20261029，核 PR44／45／46 ／47 最新状态；逐团续作 draft PR47 尚未合并。分支已删除时查合并记录和 main 完整性，不能用旧本地 ref 顶替。
+先保护本地未提交和未跟踪文件；未克隆则先克隆。不要 reset、clean、强推或自动恢复旧 stash。显式 fetch origin/main、codex/statistics-relations-followup-20261027、codex/stage-person-followup-v199-20261028、codex/human-help-handoff-sync-20261029、codex/group-evidence-followup-20261029，核 PR44／45／46／47 最新状态。最近均 draft/open/unmerged；分支删除时核合并记录和 main 完整性，不用旧本地 ref 顶替。
 
-干净后从最新 origin/main 建新的 codex/任务分支；若尚未包含当前逐团续作成果，比较后普通 merge 最新 codex/group-evidence-followup-20261029（已含 PR46、PR45 dada774、PR44）。不能遗漏人工清单保护和本轮应用增量，不重复导入已完成批次。
+用户最新要求直接从 PR47 最新分支接续同一任务，干净后检出／普通更新 codex/group-evidence-followup-20261029；若另起任务则从最新 origin/main 建 codex/任务分支，尚未包含成果时普通合入最新 PR47 分支。该分支包含 PR46 人工填写保护、PR45 dada774、PR44及全部逐团增量；不能只从旧 main 或 PR44／45 开始。
 
-依次读 docs/codex/NEXT-COMPUTER-HANDOFF.md、AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md、docs/codex/group-evidence-followup-20261029.md、对应 worklog，再读 human-help-by-group-20261029.md／CSV 和现行舞台／选图政策。旧模板中的 ILLIT 问题已有用户回答，以当前续作报告为准。
+依次读 docs/codex/NEXT-COMPUTER-HANDOFF.md、AGENTS.md、docs/codex/STATUS.md、docs/codex/RESUME.md、docs/codex/pr47-continuation-20261029.md 与 worklogs/20261029-pr47-continuation.md，再读第一批报告、human-help-by-group-20261029.md／CSV 和现行舞台／选图政策。GitHub 最后交付 SHA 见本批 evidence/20261029-pr47-continuation/github-delivery.json 并重新读回远端，不能只接本批开工 b209073。
 
-正式工程 apps/idol-site/；正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 仍 v201。本轮后续代码未部署；不要重复部署或把 GitHub 推送当上线。用户希望按每团持续推进，优先核人工新补充，其次有新证据的项目，无可靠新证据的保留。
+正式工程 apps/idol-site/；正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 仍 v201。本轮后续代码未部署，暂不部署；不重复发布或把 GitHub 推送当上线。按每团继续核查，优先人工新补充，再处理有新证据的项目；没有可靠新证据继续保留，不重复已完成批次。
 
-已完成应用增量：MADEIN PUNG! 四人具名发行封套参考（103作品531槽，精确MV／录音仍待证）；Hey Gabby Performance 改回待核候选，不再仅凭MV标题排除；ILLIT短60秒Performance与已有完整歌曲版明确关联。用户已决定另行整理完整歌曲版，复用 rec28ldfRTrKtW／bMhDJ0S0OBA 及已有00IPFnp2Tdg舞台，不重复建立作品、不替换短版rec28ldfRTrKy2的旧舞台或转移评分。
+第一批已完成：MADEIN PUNG! 四人具名发行封套参考；Hey Gabby Performance 恢复为待核候选并显示有限说明；ILLIT 短60秒Performance与已有完整歌曲版明确关联。ILLIT 范围决定已落实，复用 rec28ldfRTrKtW／bMhDJ0S0OBA 及已有00IPFnp2Tdg舞台，不重复建作品、不替换短版rec28ldfRTrKy2旧舞台或转移评分。
 
-45团161分类项全部仍保留（其中1项有限补强，0完整事实关闭），6团无当前队列不代表新验收。109新舞台、11旧替换、24人物、7未知统计、7日期、tripleS差350635、2照片限制继续逐项记证。人工CSV三栏此前为空；生成器遇人工填写或结构异常须写入前停止，不清空答案，不自动公开新人工数据。
+第二批新增：PURPLE KISS 英文 DOREMI 六人发行概念照参考（非逐人录音／MV出镜）；izna 日版 BEEP 企划 Qfez0Db9Iqc 仅未确认观看线索；tripleS∞! Password 与 STAYC 日版 Teddy Bear 的官方节目档案说明。当前人物参考104作品537槽，历史通用库24作品119槽不变，实际回退22作品107槽。496正式舞台保持。HITGS候选未同时达到同套和质量要求，现有五图继续保留。
 
-保护51团设计、Apple Music主站、完整原图、稳定ID和关系、个人评分／备注／观看、访问权限与owner鉴权。个人页统一排版仍待决定。正式舞台新增或换绑须新鲜owner目标数据、完整保存日志与线上旧绑定核对；本次截断样本未通过，不能复用过期导出或把0分视为空。
+45团161分类项全部保持，遗漏／额外／重复0、完整事实关闭0。109新舞台、11旧替换、24人物、7未知统计、7日期、tripleS差350635、2照片限制继续逐项记证；分类项不等于独立作品数。人工CSV三栏此前为空；生成器遇人工填写或结构异常须写入前停止，不能清空答案或自动公开新人工数据。
 
-先简短核远端与线上状态，再实际开发；GitHub提交、测试／浏览器验证、正式部署分别记录。完成或换机前提交并普通push合规结果及worklog。
+第二批47项定向测试45通过、2历史失败在b209073复现；新增4项通过，独立31项与前者重叠不能相加。TypeScript／构建通过。本地公开合成夹具9布局22截图通过，完整外链播放／音轨／真实owner保存未验；不能当生产浏览器验收。QA服务已关闭，生成缓存未提交。
+
+下一步需要BEEP日语整首演出准确起止／完整官方视频、Password与Teddy Bear日版完整官方片源，以及其余具名参与、统计、日期的原始证据。正式舞台新增或换绑须新鲜owner目标空分、完整保存日志、线上旧绑定核对；旧截断样本与过期导出不复用，0分不视为空。在实际需要用户帮助之前完成可独立推进的工作。
+
+保护51团设计、Apple Music主站、完整原图、稳定ID和关系、个人评分／备注／观看、访问权限与owner鉴权。个人页统一排版仍待决定。先简短核远端与线上，再实际开发；GitHub提交、测试／浏览器验证、正式部署分别记录。结束或换机前提交并普通push合规成果及worklog。

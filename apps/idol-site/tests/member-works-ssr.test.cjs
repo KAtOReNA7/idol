@@ -17,3 +17,16 @@ test('ordinary member detail archive image is fully contained without changing s
 test('full framing is opt-in at the member-detail callsite, not a global photo or video crop change',()=>{const source=fs.readFileSync('app/page.tsx','utf8');assert.equal((source.match(/fit="contain"/g)||[]).length,1);assert.match(source,/<PhotoView photo=\{m.photo\}[^>]+fit="contain"/);const artist=fs.readFileSync('components/candidate-artist-experience.tsx','utf8');assert.equal((artist.match(/complete=\{!!(?:portrait\(m\)|selected)\?\.official\}/g)||[]).length,3);assert.match(artist,/style=\{complete\?\{objectFit:'contain'\}:undefined\}/);});
 
 test('root member detail renders database introduction and official link exactly once',()=>{const s=render();assert.equal((s.match(/数据库介绍唯一/g)||[]).length,1);assert.equal((s.match(/相关官方页面/g)||[]).length,1);});
+
+test('shared profile has real ordered modules and keeps private notes after both scored and public work lists',()=>{
+ const record=JSON.parse(fs.readFileSync('data/public-work-credits.json')).records.find(r=>r.workId==='recvxIZFknJ2Rq');
+ const m={...member,id:record.memberIds[0],groupIds:[record.groupId],formerGroupIds:[],note:'ordered-private-note'};
+ const scored={...work,id:'recLayoutScored',groupIds:[record.groupId]},reference={...work,id:record.workId,song:'Reference credited work',groupIds:[record.groupId],url:'https://www.youtube.com/watch?v='+record.videoId};
+ const data={mode:'live',members:[m],groups:[{id:record.groupId,name:'GROUP'}],works:[scored,reference],ratings:[{id:'recLayoutRating',memberIds:[m.id],workIds:[scored.id],score:0,stylingScore:0,note:'',memory:'',photo:null}]};
+ const before=JSON.stringify(data),html=renderToStaticMarkup(React.createElement(MemberDetail,{member:m,data,onBack(){},onWork(){},onSaved(){}}));
+ const modules=[...html.matchAll(/data-member-module="([^"]+)"/g)].map(m=>m[1]);
+ assert.deepEqual(modules,['identity','basic','scores','works','public','career','personal','sources']);
+ assert.equal((html.match(/数据库介绍唯一/g)||[]).length,1);assert.equal((html.match(/相关官方页面/g)||[]).length,1);
+ assert.ok(html.indexOf('ordered-private-note')>html.indexOf('data-credit-member='));assert.match(html,/>0\.0<\/strong>/);
+ assert.match(html,/这里的条目不生成个人评分/);assert.equal(JSON.stringify(data),before);
+});

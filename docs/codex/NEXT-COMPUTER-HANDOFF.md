@@ -1,5 +1,18 @@
 # 跨电脑接续：正式v202，PR47最新分支
 
+## 最新：个人页统一已完成并核验（2026-10-30，未部署）
+
+用户已批准统一独立成员页和共享手帐的模块顺序。现51团（48 React＋ifeye／izna／UDTT三原生）及共享MemberDetail已实施：肖像身份／原图 → 基本资料及已有账号 → 原有评分／私人关系作品 → 公开参与参考 → 经历动态 → 备注／原有编辑器及来源。保留各团视觉、原图、稳定ID／关系、历史身份、个人记录和owner鉴权，不再等待范围决定。
+
+234项定向测试230通过、4项可选LinkeDOM测试跳过；48团真实SSR、类型、正式构建及UDTT精确guard通过。51团代表桌面／手机102布局、14历史布局、6原生深层布局和2共享布局完成；初次NewJeans顺序、UDTT手机内边距及异常私人关系行崩溃已修复并复测。浏览器使用仓库快照／本地原件，未做生产owner保存或338上下文全量目视。正式只读核仍v202／succeeded、public／revision2／1owner／0外部／0组；本轮Sites保存和部署0。
+
+完整报告 `docs/codex/member-layout-implementation-20261030.md`，精确授权／最终应用摘要／逐页结果／生产保持记录在 `docs/codex/evidence/20261029-member-layout/`；GitHub与正式部署分开留证，最新提交以该目录github-delivery及实际远端为准。继续从PR47最新 `codex/group-evidence-followup-20261029` 接续，先保护本地并fetch，禁止reset／clean／强推或恢复旧stash。迁移脚本为阶段性实现记录，勿盲目重跑覆盖后续修正。500本地舞台／497线上、155剩余分类项及已导批次均保持。后续暂不自动部署。以下“尚未实施／等待选择／18团”等是本轮实施或更早历史状态，不能覆盖本节。
+
+
+## 当前执行：全体个人页模块顺序统一已授权，实施中
+
+用户已选“统一独立成员页和共享手帐的模块顺序”，不是继续等待决定。具体六阶段及保护边界见 `evidence/20261029-member-layout/authorization.json`。从GitHub `d07242bf99626d1948de6a78919ba037c5fa3658` 后的当前本地修改继续；共享模板、MemberCareerFacts可选part拆分及18团React模板已做第一轮，未全量完成、未提交本批、未做完整布局验收。继续剩余专属React与三原生模板，再核CSS、零分／私人关系、历史ID／原图与返回入口；不部署。`reorder-react-families.cjs` 固定读取d07242bf的10个预像、先全量校验再写，可核已变更结果；`reorder-seven.cjs`已执行勿重跑。旧个人页测试存在源码计数/单调用假设，须按真实split模块验证，不放宽事实guard。两项有界模板研究由Sites技能指示委派，只读无代写；ifeye/izna真实实现是Shadow runtime，不只改React壳。UDTT旧careerPeriods含已否决入团日，不能恢复旧renderer。此前500源／155分类项不变；正式仍v202／497源。下节等待范围的文字为历史。
+
 ## 当前反馈与个人页复核（2026-10-29，未部署）
 
 用户暂未提供STAYC LIT／MEOW、IVE Be Alright新片源，不代表不存在，不重复问同一批。其他六作品新检索无新增合格绑定；500本地／497线上、105新增缺口／11替换等数字保持。旧个人页报告的JINNI／KIM GARAM缺页和BADVILLAIN七人入口已由既有代码解决；本次只修旧LOONA／EVERGLOW名册测试的退役设计假设，10项通过，应用／数据／图片未改。当前复核与待选方案：`docs/codex/member-page-layout-followup-20261029.md`；证据 `docs/codex/evidence/20261029-manual-feedback/review.json`。个人页统一范围正在等待用户选择，未提前改版；旧v7全量计数保留为历史，未重复338上下文目视。本轮仍不部署、无私人读写；最新GitHub HEAD看实际远端，不停留在下节实现SHA。

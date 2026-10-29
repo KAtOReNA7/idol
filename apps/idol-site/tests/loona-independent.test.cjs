@@ -107,12 +107,14 @@ test('full timeline appears once only in updates; home uses a single preview and
  }
  const s=fs.readFileSync('components/candidate/loona-design.tsx','utf8');
  assert.doesNotMatch(s,/method:\s*['"](?:POST|PATCH|PUT|DELETE)|api\/(save|records)|CandidateArtistExperience|CandidateComposition/);
- assert.match(s,/memberWorks\(state.data, m.id\)/);assert.match(s,/PhotoLightbox/);assert.match(s,/仅自己可见/);
+ assert.match(s,/memberWorks\(state.data, m.id\)/);assert.match(s,/PhotoLightbox/);assert.match(s,/公开可读，只有本人可编辑/);
 });
 test('four originals retain audited bytes and all existing eleven portrait bindings remain exact',()=>{
  const crypto=require('node:crypto'),audit=JSON.parse(fs.readFileSync('research/loona-independent/asset-audit.json'));
  assert.equal(audit.length,4);for(const a of audit)assert.equal(crypto.createHash('sha256').update(fs.readFileSync(a.path)).digest('hex'),a.sha256);
- const {execFileSync}=require('node:child_process'),before=JSON.parse(execFileSync('git',['show','b7614d413a7a52af19f27fa3538f47d7922f894f:data/loona-artist.json'],{encoding:'utf8'}));
+ // The pre-layout PR47 checkpoint is reachable in this monorepo; the old
+ // standalone source hash/path was never part of its Git object history.
+ const {execFileSync}=require('node:child_process'),before=JSON.parse(execFileSync('git',['show','d07242bf99626d1948de6a78919ba037c5fa3658:apps/idol-site/data/loona-artist.json'],{encoding:'utf8'}));
  for(const [id,portrait] of Object.entries(before.portraits))assert.deepEqual(content.portraits[id],portrait);
  assert.equal(Object.keys(content.portraits).length,11);assert.deepEqual(content.hero,before.hero);const extra=renderer(scene()).load('lib/idol/loona-curation.ts').loonaHistoricalPortraits;assert.deepEqual(Object.keys(extra),['recvxyICzHTm4b']);assert.equal(extra.recvxyICzHTm4b.stageName,'CHUU');
 });

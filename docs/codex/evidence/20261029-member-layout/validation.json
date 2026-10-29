@@ -1,0 +1,405 @@
+{
+  "checkedAt": "2026-10-29T16:52:21.745989+00:00",
+  "baseline": "d07242bf99626d1948de6a78919ba037c5fa3658",
+  "scope": "51 independent member pages and shared notebook module order, no group visual redesign",
+  "status": "implemented_verified_not_deployed",
+  "testRun": {
+    "total": 234,
+    "passed": 230,
+    "failed": 0,
+    "skipped": 4,
+    "skipReason": "Existing optional LinkeDOM UDTT parsed-DOM tests need UDTT_DOM_MODULE. Actual native browser/portrait checks ran separately.",
+    "actualReactFamilies": 48,
+    "nativePortraitByteTests": 15
+  },
+  "typeScript": "passed",
+  "productionBuild": "passed",
+  "udttStrictAudit": {
+    "status": "passed",
+    "fixedExcludedCopies": 9,
+    "retainedSharedPosters": 2,
+    "changedRuntimePins": [
+      "lib/idol/udtt-native/presentation.mjs"
+    ],
+    "transportAndAuthPins": "unchanged",
+    "builtContractCarrierPins": "unchanged"
+  },
+  "browser": {
+    "groupLayouts": 102,
+    "historicalLayouts": 14,
+    "nativeDeepLayouts": 6,
+    "sharedLayouts": 2,
+    "finalOrderViolations": 0,
+    "horizontalOverflow": 0,
+    "runtimeErrors": 0,
+    "visibleImageFailures": 0
+  },
+  "unchangedTrackedPaths": [
+    "apps/idol-site/data",
+    "apps/idol-site/public",
+    "apps/idol-site/db",
+    "apps/idol-site/.openai",
+    "apps/idol-site/app/api"
+  ],
+  "originalImageChanges": 0,
+  "stableIdRelationChanges": 0,
+  "privateWrites": 0,
+  "ownerExportReads": 0,
+  "sitesSaves": 0,
+  "deployments": 0,
+  "applicationFiles": [
+    {
+      "file": "apps/idol-site/app/page.tsx",
+      "beforeSha256": "b417081baeb623ade88e76017dbbc8251d34dd32a448991954655423c566a2dc",
+      "afterSha256": "f23146fdf01c5e2f1f08c71fef879e78deebb2f5971c23672d15af77dcbcef3d",
+      "bytes": 77598
+    },
+    {
+      "file": "apps/idol-site/components/adya-artist.tsx",
+      "beforeSha256": "4ee259fa2eafc1fa647e683df225f3b66ce0c5e044625fb14f66a4f5dd5897d6",
+      "afterSha256": "2dfa8fb60f3868b09185f73145e54a053c60bced88549a85e58ed4c71fc7dc3a",
+      "bytes": 21946
+    },
+    {
+      "file": "apps/idol-site/components/artist-sample.tsx",
+      "beforeSha256": "6b063cde5608967d42d89aab5dc892e8e8b630c0100e0433bf7c425d245432b8",
+      "afterSha256": "019ef5a5e319e0e67b8bcadb375f3511d80e2ad72de24019d11dd870f41c9972",
+      "bytes": 25640
+    },
+    {
+      "file": "apps/idol-site/components/atheart-artist.tsx",
+      "beforeSha256": "a53b56da16bdd61fda0c1b263dabcba6eb71e9147f814f036547be1b02c7da44",
+      "afterSha256": "d2e5b6a142bf986250a846927d6554b76a62a55259c65d17d4076db0c3c42e04",
+      "bytes": 17699
+    },
+    {
+      "file": "apps/idol-site/components/bewave-artist.tsx",
+      "beforeSha256": "bc0fbd44b06719f6af37280eb3549a7da6c6b40e5c237997fe66c0db7bb6c863",
+      "afterSha256": "2f754f061a89ba9ac0a40e6d7f212dd3b032c15ea8082b2049f3cf13998de217",
+      "bytes": 21651
+    },
+    {
+      "file": "apps/idol-site/components/candidate/badvillain-design.tsx",
+      "beforeSha256": "f5106308e7b4e199a98259b1ce7b7ab5b13faa3d5ba7f42862fb6db7ff8bb8d3",
+      "afterSha256": "dec03ecb0241d15d3c335e14715698dd6d4b6b504c37c1af19beff0f412dc73f",
+      "bytes": 16981
+    },
+    {
+      "file": "apps/idol-site/components/candidate/billlie-design.tsx",
+      "beforeSha256": "3ffa79817a22fefa091cf2835fffa816d19999d7ce973cf34b6111ae00f4a58b",
+      "afterSha256": "d11f9c5cc601fc2563960f8dca404e2ba2cc3bf2cc502f43e7f640d2bdb833f8",
+      "bytes": 19638
+    },
+    {
+      "file": "apps/idol-site/components/candidate/cherrybullet-design.tsx",
+      "beforeSha256": "ea1ce634e1a76a6422707c9292664f1355244dcbc7cc2c6eb910f31a7a0f077c",
+      "afterSha256": "6daeee6b211a8f059ecdc6017bcb3089703f1860761ba9aa47dc5caf3ad51bf3",
+      "bytes": 17800
+    },
+    {
+      "file": "apps/idol-site/components/candidate/everglow-design.tsx",
+      "beforeSha256": "2532181788e2d3066c4a16191089cac71c6077ff9981d7a58f400e2f9137d39f",
+      "afterSha256": "31434fce85df7551d7b639dbc5e88850033ab520c31b39e2ca3a42f7f03e39c9",
+      "bytes": 18098
+    },
+    {
+      "file": "apps/idol-site/components/candidate/fromis9-design.tsx",
+      "beforeSha256": "18e2800d117655dce328bc4c15b2435815c8d32813fca46b8787c54687a1fabb",
+      "afterSha256": "e5ecf3f4d622218f0039627c585f600de210ab339144853329f4163825edf71a",
+      "bytes": 17650
+    },
+    {
+      "file": "apps/idol-site/components/candidate/idle-design.tsx",
+      "beforeSha256": "2e0b475b22364d795fd3b4f0a13d761eab84c87414529b4a2d09fa890490c188",
+      "afterSha256": "deb148860ffd502406b7a11d09c2c33e467e2cf381fdf116af75dc6cda4e2152",
+      "bytes": 22184
+    },
+    {
+      "file": "apps/idol-site/components/candidate/izone-design.tsx",
+      "beforeSha256": "b18e37ec4ea2428d26ac143152da9757749f5f82cba9e18b7a676c6bd80fbe1c",
+      "afterSha256": "0e81642783a8fe44bcf790ecc2083072e1c991a89f9771f7aff57f0695528288",
+      "bytes": 17713
+    },
+    {
+      "file": "apps/idol-site/components/candidate/loona-design.tsx",
+      "beforeSha256": "b339f6cf241818b87f6574d906b11573c534f5273aeae4906e09e5b48aa1e691",
+      "afterSha256": "e921550356d4004507c95ae92a6b4e1958b3cfd3d9a0d4a9565448748928fe10",
+      "bytes": 24874
+    },
+    {
+      "file": "apps/idol-site/components/candidate/meovv-design.tsx",
+      "beforeSha256": "254eb838e3066451ec8cc0dc5450c7d778733283542ceaa17ade903f863c1234",
+      "afterSha256": "a120b8a8c8134fb885aa4dc6340cd6c6291d401d108acd9f203fd5a9c5d238c6",
+      "bytes": 19420
+    },
+    {
+      "file": "apps/idol-site/components/candidate/newjeans-design.tsx",
+      "beforeSha256": "704545193ce2d1f6a7a40fe3840bcfb45d9f8b05078188c40b94a434c3f7ea0c",
+      "afterSha256": "51a11dc78d4becaebcfc469788ab4a9c5d77b4c3d6bab4875e78730999f545ed",
+      "bytes": 20942
+    },
+    {
+      "file": "apps/idol-site/components/candidate/rocketpunch-design.tsx",
+      "beforeSha256": "c6025b7ad73d9aac0de2ec8e0f7c0486f164271dad31d6806354dbc225385a78",
+      "afterSha256": "23635303b8b97c95209f04bd92d30c066fb65f9f99d310906a0036aacd8329a0",
+      "bytes": 17835
+    },
+    {
+      "file": "apps/idol-site/components/candidate/weeekly-design.tsx",
+      "beforeSha256": "2ee32c7567a1709bce06f37c2207844aaa75f13f07371408fba4d48b4b01cecb",
+      "afterSha256": "5cfc13a164b3ac7adffa109512792add43367773aacf2c66640bed836ae2565e",
+      "bytes": 17913
+    },
+    {
+      "file": "apps/idol-site/components/candyshop-artist.tsx",
+      "beforeSha256": "81346d5b8efa8b112c5d3a453c329394a78e0c10da902056eb49eaebc4125d3c",
+      "afterSha256": "7c58aea2c3ceda63abb06ad28e6a6af4c314446cd74886760324db173cdda678",
+      "bytes": 22461
+    },
+    {
+      "file": "apps/idol-site/components/design-review/kep1er-design-review.tsx",
+      "beforeSha256": "5193a37b528158845eb7447f506a0cfde92c0da8c735672da0a23ac7d5a7fc95",
+      "afterSha256": "18e1b25812b03c566b9afb8a905fadebcc4b161e4d6cc21e297659c643367929",
+      "bytes": 28829
+    },
+    {
+      "file": "apps/idol-site/components/design-review/unis-design-review.tsx",
+      "beforeSha256": "adaca286e6ab03cc9f997678fbd35f14dbb9ef1e8143185ab1084c6fea31a46e",
+      "afterSha256": "dacceeea8001fa490605819908f06948e78f45de1b0d1242b1a1b0c6921d3965",
+      "bytes": 25677
+    },
+    {
+      "file": "apps/idol-site/components/expanded-artist.tsx",
+      "beforeSha256": "3db7d9745fbd487162c32c7b8f5f3ccfee495d321275473e5d2a818499e06b26",
+      "afterSha256": "42d3bca37bdf6eec6170737b050a9f961e4af1d07808a6f2e1bfe49177e8ef36",
+      "bytes": 27985
+    },
+    {
+      "file": "apps/idol-site/components/geenius-artist.tsx",
+      "beforeSha256": "b800b79ba3128a53716c212c895a2b7ed821b4e9c1c9040a432934fea822cf23",
+      "afterSha256": "7c78ec31f760f2350bea899570a24c2d8b65272e389339267abee9044d7632cd",
+      "bytes": 23679
+    },
+    {
+      "file": "apps/idol-site/components/genblue/bluecut-experience.tsx",
+      "beforeSha256": "d688953d0919da1ce70e54e2cefd219f7e7834989a8068e1bb2cc98284f94cf4",
+      "afterSha256": "b587e867b3aa1ad826055c057d6540ddd2d4dd633b6cbd4c2301328127fad0a9",
+      "bytes": 25730
+    },
+    {
+      "file": "apps/idol-site/components/hearts2hearts-artist.tsx",
+      "beforeSha256": "1226ccc75b07d3d732c59ab7bd8a384d0f6ec4ccf04a322e2bd6175590659c6b",
+      "afterSha256": "6d80ca87ae87b3017e3d3ecb6b0d69ac297864f9a966eccbb34980988374e510",
+      "bytes": 23237
+    },
+    {
+      "file": "apps/idol-site/components/hitgs-artist.tsx",
+      "beforeSha256": "4f3e6ae34d047380306a57c58fc96d70d0e788385a90451bb1fc4eea75736d29",
+      "afterSha256": "4efde9e87bec4e2c10292d92c609b9fcb8e4584be2241e8ecdb7a28b8193f30c",
+      "bytes": 17477
+    },
+    {
+      "file": "apps/idol-site/components/itzy-artist.tsx",
+      "beforeSha256": "35f860a534d7e8f26091ee8b5a56090df051335cf2ce677f716b961f7fe31592",
+      "afterSha256": "8d509ae1e957233cc653150bc5546eb17b7533cdc1d10fa400388446cacdf535",
+      "bytes": 26548
+    },
+    {
+      "file": "apps/idol-site/components/katseye-artist.tsx",
+      "beforeSha256": "162d0bb4c18490505da17aa8a243ed7ee795ad0ad34417b12882c864fa37c03c",
+      "afterSha256": "2bc3041788fec91d45dd794fc27610883898ba1a3af919580e993241365a092f",
+      "bytes": 26821
+    },
+    {
+      "file": "apps/idol-site/components/kiiikiii-artist.tsx",
+      "beforeSha256": "c424cb198cfad7e3c47f919c612cc18acbb2e2dc316010deecccfffbe8d6e597",
+      "afterSha256": "db4fa4669ee131f86228243b3d0cf0a72b7b32a5afd44be29961ad71a65e51cf",
+      "bytes": 28613
+    },
+    {
+      "file": "apps/idol-site/components/kiof-artist.tsx",
+      "beforeSha256": "36d44c744238bfee5b624dfec79574787716d152473db5bf950c85a33c20084e",
+      "afterSha256": "62b762698ad6a28b4fec653f9a9961e1a3c626941c4280ed1c873fd3eca3a394",
+      "bytes": 23220
+    },
+    {
+      "file": "apps/idol-site/components/lesserafim-artist.tsx",
+      "beforeSha256": "e465ddb0d83b2a1cccafadd257136c7303b83a6038a19f6415ef9a8845d1d4c4",
+      "afterSha256": "5305ef447d7b99c016e650607c36efdbb44837b4bf903d07f41a5996c0c72d4c",
+      "bytes": 22186
+    },
+    {
+      "file": "apps/idol-site/components/member-career-facts.css",
+      "beforeSha256": "f8b5178579ea24af546214bc02f668117c50314fc8e4e2bbdc073f1d622965b8",
+      "afterSha256": "45f0ab66ac0961187268b1e74dbf939ebd8f72d998559f4b99d6f776dd9134f6",
+      "bytes": 1486
+    },
+    {
+      "file": "apps/idol-site/components/member-career-facts.tsx",
+      "beforeSha256": "ebd87425970fa4e29fd5bff90cbbc2f6a01fefc33b7dddc039f4d99641e4355e",
+      "afterSha256": "55735176e74df493b0ffc8d6d298ca3468e880cf3455d4c96bea6769f96fae4e",
+      "bytes": 2546
+    },
+    {
+      "file": "apps/idol-site/components/nmixx-artist.tsx",
+      "beforeSha256": "1b5abf67017faf6e5d7c2fea79b194fc0f9404faeac711abd6b29b28fe8a717d",
+      "afterSha256": "b2153fb08cf944e36e9d007be84e6467150d157854e97b129fb3b095afe11bff",
+      "bytes": 29145
+    },
+    {
+      "file": "apps/idol-site/components/oddyouth-artist.tsx",
+      "beforeSha256": "aceb28499c1d2f7da1eb694083497d404a0c9b9b00ea837a49de8d6cd04921ca",
+      "afterSha256": "beeed449cb051544f48bdf0f499b7d17ea8f727de0a3440d4c4da963df33fb55",
+      "bytes": 20771
+    },
+    {
+      "file": "apps/idol-site/components/public-work-credits.tsx",
+      "beforeSha256": "bf35e4b25204d5aeefebebb1c8c2e88b75d4e1ac9e0158ef364fac8b1c5acc18",
+      "afterSha256": "504bf87418e1c6bf9305b30ec9ab849d29c42b4fa76ff969da5a72f843af5fe3",
+      "bytes": 3276
+    },
+    {
+      "file": "apps/idol-site/components/saymyname-artist.tsx",
+      "beforeSha256": "214e26f0316437233c35b82b3d828ebebf15ae8cd4945a365d0eb2036681f037",
+      "afterSha256": "10b768c5b3e35babb81c5181dce7bc8c8520c2a72de9161437e484d57627be45",
+      "bytes": 29471
+    },
+    {
+      "file": "apps/idol-site/components/seven-redesign/artist.tsx",
+      "beforeSha256": "7f18ae5507405afe368bc022a46a3256f023fd607cfad3d251519629ebfad94e",
+      "afterSha256": "dbf81bf4960d18cfc716935b1df870093b618a5ca4fc228591b3105b711d6790",
+      "bytes": 26673
+    },
+    {
+      "file": "apps/idol-site/components/spia-artist.tsx",
+      "beforeSha256": "317fc9ab16463279cea5d011f7554bfc99f27d9e4ce99c1926a48da41a8fdcc4",
+      "afterSha256": "eb382312b093f00fed3e7672e36086f4bebf9f6c345511372778f859ab2d4152",
+      "bytes": 20315
+    },
+    {
+      "file": "apps/idol-site/components/stayc-artist.tsx",
+      "beforeSha256": "1310bfcddcd2685c1fa40d8009f91380aae477ffeb2e92e8c38b43db752023a5",
+      "afterSha256": "39d833051a6c67e9599e6a633079f30fbff3365cd2546a015471eb522b3549a0",
+      "bytes": 19941
+    },
+    {
+      "file": "apps/idol-site/components/tracer-artist.tsx",
+      "beforeSha256": "9b1621249c720e5d934dcad63bd8d5fa2487080723a9311e6e7b3f6c923a0175",
+      "afterSha256": "757b4965da0f83032c617177b05d9a4b79b80ba192f44a172a91aa9c5a643476",
+      "bytes": 20197
+    },
+    {
+      "file": "apps/idol-site/components/vcha-artist.tsx",
+      "beforeSha256": "9cc396ab46cd7cc2b0ab0f32b1e5487e7852e779c32eeb71fffde39c4cb2c0c5",
+      "afterSha256": "d315be938bb090a52c49e1ebd05d2fff5a20512ae5e9e6b8f232912407834610",
+      "bytes": 17693
+    },
+    {
+      "file": "apps/idol-site/components/vvup-artist.tsx",
+      "beforeSha256": "5073cfba7dea5127984bf536597815753415fcf04c9bedddf6647921569c4bbc",
+      "afterSha256": "85248f07261478c6f85cdfd128ce492ea0b5fccf8c4cd889e43410af5c29c8ee",
+      "bytes": 18383
+    },
+    {
+      "file": "apps/idol-site/components/witchx-artist.tsx",
+      "beforeSha256": "25e55c0cfc9c4ad9288cb641f9411f4b8bb48d192af9f3d8dad99aef35ae5b09",
+      "afterSha256": "084cb17e5447ba9ac0d0600ff68fb8ed66825526afb58a5daba1124a1419933d",
+      "bytes": 19518
+    },
+    {
+      "file": "apps/idol-site/components/wooah/editorial.tsx",
+      "beforeSha256": "f21990f5226acc61c81375594d5334d0a17d43569db10ff9a241c6debeefed07",
+      "afterSha256": "1e700a2169b79683e80e9a3e594be52a42952498f47c9d24aa49a23f88a14514",
+      "bytes": 32395
+    },
+    {
+      "file": "apps/idol-site/components/youngposse-artist.tsx",
+      "beforeSha256": "a69702a7e1a180f6dd33274c05864526c2fb3f85bc2c8dbe6bf6423747879da0",
+      "afterSha256": "1176c0d6bd852aaa2fd5f859f2edd2e8cfe5810f3e21cd49c1cda79e91e1f1b9",
+      "bytes": 19949
+    },
+    {
+      "file": "apps/idol-site/lib/idol/ifeye-runtime/host.mjs",
+      "beforeSha256": "a2b8672f97b367db8e810546f43420731f707279d0637c27f6524b963450b25b",
+      "afterSha256": "6668f52c8b24fd1ce04153f61857228df3d9f54d89105ddc8e1a55ca5dd7af1c",
+      "bytes": 16217
+    },
+    {
+      "file": "apps/idol-site/lib/idol/ifeye-runtime/ifeye.mjs",
+      "beforeSha256": "b64e4d124c75a26158e4974d3db2e9ad2fe91700c1efd33b05653d22426b1e64",
+      "afterSha256": "c8f36d6cf8a7da4691066732f2b7c8418f4801029fbc999b021c2f29f60350cb",
+      "bytes": 23704
+    },
+    {
+      "file": "apps/idol-site/lib/idol/izna-runtime/host.mjs",
+      "beforeSha256": "5a0728df645bcdcccd2c56954cfcfd7b0ebd0c718bd08f3b250da0620f527384",
+      "afterSha256": "a76a8b3a94e1ae3936b1edd3e90ed87b08a0681454ab87cf8812a3e6893cd2c8",
+      "bytes": 16156
+    },
+    {
+      "file": "apps/idol-site/lib/idol/izna-runtime/izna.mjs",
+      "beforeSha256": "c1a3455d7e22896d3d7ed4f32644ca20b4a7e862e480780bfd3fc53e80476ea0",
+      "afterSha256": "0601fd77d3554a8ff5259e37a8f6cf36b64dbe3a5a7740fc2ba44fecfb1801fe",
+      "bytes": 27130
+    },
+    {
+      "file": "apps/idol-site/lib/idol/public-work-credits.ts",
+      "beforeSha256": "e2ae7731c1e8c2dffbd341083244ae4e1695c2cdc6c6b299d22123dbda1e11da",
+      "afterSha256": "b330614ab6278ae5559a21bb6701a26cfc4f5c331b0d3e15a1f207e6dc8b298f",
+      "bytes": 1184
+    },
+    {
+      "file": "apps/idol-site/lib/idol/udtt-native/presentation.mjs",
+      "beforeSha256": "5f05bab95cc98e500d7577cbf652290dc2f8cba443cf764caa76f2bcf4ed412e",
+      "afterSha256": "b1cccda40a041ad5bbda6bec1e9776e042eadeb296a27236c1329b795771d101",
+      "bytes": 16584
+    },
+    {
+      "file": "apps/idol-site/scripts/udtt-private-build-assets-manifest.json",
+      "beforeSha256": "6a9ef4800e49188ad9a4889ef8c909d699bf51202e42081e9585d7958210fab4",
+      "afterSha256": "9609e4f3c37279f8f35c2ecd35627ea50a74c5f2780026621aa7d9defbb5cf5c",
+      "bytes": 16677
+    },
+    {
+      "file": "apps/idol-site/tests/izna-native-integration.test.cjs",
+      "beforeSha256": "52a891ab31157d78a2c6f5272a7ad141900e6828e4cb4d84b5fa190d9f3e68f3",
+      "afterSha256": "5c9a18bcfccab7af663077f835b2fadeb64fd926b4dbe6b790dc852be354bf52",
+      "bytes": 16085
+    },
+    {
+      "file": "apps/idol-site/tests/loona-independent.test.cjs",
+      "beforeSha256": "0cbbcef8cb22e8b00ef6fa206b841fac96dacac013745d1d1b3ea79d4751a576",
+      "afterSha256": "7381bae4a99ead09775b7502d606248dbe052e6c3ea79df97ab559aa47337ac7",
+      "bytes": 20533
+    },
+    {
+      "file": "apps/idol-site/tests/member-career-display.test.cjs",
+      "beforeSha256": "55a730a26b7b9eb7882ca44f5f479b9685e9bfaddb3d792b7ce5f97b2e4b1afb",
+      "afterSha256": "d0a7f6fd8d322e7e557bcd9780559779e59e785bbc982ad03a424507c011ab71",
+      "bytes": 9545
+    },
+    {
+      "file": "apps/idol-site/tests/member-public-profile.test.cjs",
+      "beforeSha256": "cfa077816b9d92bfcd32f765b262f4179e9eb9223d649af28c69af4fc7617121",
+      "afterSha256": "2bffc558f8b546e794a1b08899f1969480b994dccb4473695c820ea39fc58e2a",
+      "bytes": 8502
+    },
+    {
+      "file": "apps/idol-site/tests/member-works-ssr.test.cjs",
+      "beforeSha256": "8f09e8ed7c3223ca7c4b0b0ae51be997ae0f10f762939c3c3b26f56ff199d527",
+      "afterSha256": "c3d8dd119e9e7bb3480c05cb7809679b6e8c257113fdf2625001f57c86911c16",
+      "bytes": 7739
+    },
+    {
+      "file": "apps/idol-site/tests/stage-fill-public-credits.test.cjs",
+      "beforeSha256": "b27382f70972239ccdbb9c1c468163c3d1127ce5526f1ab58922e854b19ae199",
+      "afterSha256": "0f30411dac250f4c859e4790878ff01555125d89846327e8451104841f48d524",
+      "bytes": 9272
+    }
+  ],
+  "limits": [
+    "Representative member per group, not all 338 member contexts",
+    "No production owner login/save/export, full-video verification or newly deployed version",
+    "Historical izna portrait retains its existing no-enlargement policy; no invented original control"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-29",
+  "baseline": "d07242bf99626d1948de6a78919ba037c5fa3658",
+  "question": "个人页接下来按哪个范围统一？模块顺序采用刚整理的具体方案；原图、团体视觉、历史身份和评分关系保持。",
+  "answer": "统一独立成员页和共享手帐的模块顺序（推荐）",
+  "scope": "All independent group member detail templates and shared MemberDetail notebook",
+  "moduleOrder": [
+    "portrait, names, group and historical identity, original-image control",
+    "basic facts, introduction and existing official/personal accounts",
+    "score summary and existing personal-relation works",
+    "evidenced public participation/reference without new private relations",
+    "career and updates when present",
+    "private notes/editor and sources under existing owner permissions"
+  ],
+  "preserve": [
+    "51 approved group visual designs",
+    "Apple Music shared styling",
+    "all original image bytes",
+    "stable IDs and relations",
+    "historical identity",
+    "ratings/notes/watch history",
+    "access policy",
+    "owner save authentication"
+  ],
+  "deployment": "not authorized this pass; keep production v202",
+  "status": "implemented and verified; no deployment"
+}

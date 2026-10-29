@@ -157,6 +157,6 @@ test('UNIS integration removes only the duplicate raw paragraph and keeps both f
   else if (!alreadyIntegrated) assert.equal(source.split(duplicate).length - 1, 1);
   const staged = source.replace(duplicate, '');
   assert.doesNotMatch(staged, /\{person\.profile\s*&&/);
-  assert.equal((staged.match(/<MemberCareerFacts member=\{person\}\/>/g) || []).length, 1);
+  for(const part of ['intro','history','sources'])assert.equal((staged.match(new RegExp('<MemberCareerFacts member=\\{person\\} part="'+part+'"/>','g'))||[]).length,1);
   assert.equal((staged.match(/<MemberPhysicalFacts member=\{person\}\/>/g) || []).length, 1);
 });

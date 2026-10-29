@@ -483,7 +483,34 @@ function MusicPortrait({concept,member:m}:{concept:{image:string;label:string;da
 function MusicMemberPhoto({member:m,live}:{member:Member;live:boolean}){const concept=musicMemberPortrait(m);return concept?<div className="photo"><ConceptPhotoImage src={concept.image} memberId={m.id} label={m.stageName+' · '+concept.label}/></div>:<PhotoView photo={m.photo} label={memberDisplayName(m)} live={live}/>;}
 function MemberDetail({member:m,data,onBack,onWork,onGroup,onSaved,backLabel='返回成员档案',artistReturn}:{artistReturn?:string|null;member:Member;data:Catalog;onBack:()=>void;onWork:(id:string)=>void;onGroup?:(id:string)=>void;onSaved:()=>void;backLabel?:string}){
  const works=memberWorks(data,m.id),summary=memberWorkSummary(works),concept=musicMemberPortrait(m,artistReturn);const number=(n:number|null)=>n===null?'待评':n.toFixed(1);
- return <div className="detail"><button className="back text-button" onClick={onBack}><ArrowLeft size={16}/>{backLabel}</button><div className="member-detail">{concept?<MusicPortrait concept={concept} member={m}/>:<PhotoView photo={m.photo} label={m.name} live={data.mode==='live'} retryable fit="contain"/>}<div><GroupLinks data={data} ids={m.groupIds} onGroup={onGroup}/><h1><span className="member-display-name">{memberDisplayName(m)}</span></h1><MemberPhysicalFacts member={m}/><div className="tags">{[m.status,m.country,m.role].filter(Boolean).map(t=><span key={t}>{t}</span>)}</div><MemberCareerFacts member={weeeklyMemberContext(m,artistReturn)?{...m,officialUrl:latestWeeeklyOfficialUrl}:cherrybulletMemberContext(m,artistReturn)?{...m,officialUrl:latestCherrybulletOfficialUrl}:rocketpunchMemberContext(m,artistReturn)?{...m,officialUrl:latestRocketpunchOfficialUrl}:m}/>
-  <SocialLinks accounts={m.social??[]} title="个人动态" individual/><section className="member-work-summary" aria-label="作品综合分"><div className="member-work-summary__heading"><span className="member-work-summary__label">作品综合分</span><strong className="member-work-summary__value" data-unrated={summary.composite===null}>{number(summary.composite)}</strong></div><p className="member-work-summary__count">已评 {summary.ratedWorks} 部作品</p><div className="member-work-summary__dimensions">{([['表现均分',summary.performanceMean,summary.performanceCount],['造型均分',summary.stylingMean,summary.stylingCount]] as const).map(([label,value,count])=><div className="member-work-metric" key={label}><div className="member-work-metric__heading"><span className="member-work-metric__label">{label}</span><strong className="member-work-metric__value" data-unrated={value===null}>{number(value)}</strong></div><small className="member-work-metric__count">{count} 部已评</small></div>)}</div><p className="member-work-summary__explanation">表现与造型，各占一半{summary.composite===null&&summary.ratedWorks>0?'；再评另一项即可生成综合分':''}</p></section>
-  {m.note&&<p className="my-note">{m.note}</p>}<Editor table="members" id={m.id} mode={data.mode} publicCatalog={data} onSaved={onSaved}/></div></div><section className="section"><div className="section-heading"><h2>她的作品 <small>{works.length}</small></h2><span className="subtle">个人评分</span></div><div className="member-works-grid">{works.map(item=><MemberWorkCard key={item.work.id} item={item} member={m} data={data} onOpen={()=>onWork(item.work.id)}/>)}</div>{works.length===0&&<p className="subtle">{publicCreditsForMember(data,m.id).length?'个人评分记录待补，公开作品资料见下方。':'还没有收录她的 MV。'}</p>}</section><MemberPublicCredits memberId={m.id} data={data} onWork={onWork}/></div>;
+ const careerMember=weeeklyMemberContext(m,artistReturn)?{...m,officialUrl:latestWeeeklyOfficialUrl}:cherrybulletMemberContext(m,artistReturn)?{...m,officialUrl:latestCherrybulletOfficialUrl}:rocketpunchMemberContext(m,artistReturn)?{...m,officialUrl:latestRocketpunchOfficialUrl}:m;
+ return <div className="detail" data-member-layout="ordered-v1" data-member-id={m.id}>
+  <button className="back text-button" onClick={onBack}><ArrowLeft size={16}/>{backLabel}</button>
+  <div className="member-detail" data-member-module="identity">
+   {concept?<MusicPortrait concept={concept} member={m}/>:<PhotoView photo={m.photo} label={m.name} live={data.mode==='live'} retryable fit="contain"/>}
+   <div data-member-module="basic">
+    <GroupLinks data={data} ids={m.groupIds} onGroup={onGroup}/><h1><span className="member-display-name">{memberDisplayName(m)}</span></h1>
+    <MemberPhysicalFacts member={m}/><div className="tags">{[m.status,m.country,m.role].filter(Boolean).map(t=><span key={t}>{t}</span>)}</div>
+    <MemberCareerFacts member={careerMember} part="intro"/>
+    <SocialLinks accounts={m.social??[]} title="个人账号" individual/>
+   </div>
+  </div>
+  <section className="member-work-summary" aria-label="作品综合分" data-member-module="scores">
+   <div className="member-work-summary__heading"><span className="member-work-summary__label">作品综合分</span><strong className="member-work-summary__value" data-unrated={summary.composite===null}>{number(summary.composite)}</strong></div>
+   <p className="member-work-summary__count">已评 {summary.ratedWorks} 部作品</p>
+   <div className="member-work-summary__dimensions">{([['表现均分',summary.performanceMean,summary.performanceCount],['造型均分',summary.stylingMean,summary.stylingCount]] as const).map(([label,value,count])=><div className="member-work-metric" key={label}><div className="member-work-metric__heading"><span className="member-work-metric__label">{label}</span><strong className="member-work-metric__value" data-unrated={value===null}>{number(value)}</strong></div><small className="member-work-metric__count">{count} 部已评</small></div>)}</div>
+   <p className="member-work-summary__explanation">表现与造型，各占一半{summary.composite===null&&summary.ratedWorks>0?'；再评另一项即可生成综合分':''}</p>
+  </section>
+  <section className="section" data-member-module="works">
+   <div className="section-heading"><h2>她的作品 <small>{works.length}</small></h2><span className="subtle">个人评分</span></div>
+   <div className="member-works-grid">{works.map(item=><MemberWorkCard key={item.work.id} item={item} member={m} data={data} onOpen={()=>onWork(item.work.id)}/>)}</div>
+   {works.length===0&&<p className="subtle">{publicCreditsForMember(data,m.id).length?'个人评分记录待补，公开作品资料见下方。':'还没有收录她的 MV。'}</p>}
+  </section>
+  <MemberPublicCredits memberId={m.id} data={data} onWork={onWork}/>
+  <MemberCareerFacts member={careerMember} part="history"/>
+  <section data-member-module="personal">
+   {m.note&&<p className="my-note">{m.note}</p>}<Editor table="members" id={m.id} mode={data.mode} publicCatalog={data} onSaved={onSaved}/>
+  </section>
+  <MemberCareerFacts member={careerMember} part="sources"/>
+ </div>;
 }

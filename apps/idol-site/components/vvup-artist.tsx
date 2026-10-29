@@ -17,6 +17,7 @@ import {videoId} from '@/lib/idol/values';
 import {ArtistTimelineHost,useArtistTimelineHostOptions} from './artist-timeline-host';
 import {PhotoLightbox} from './photo-lightbox';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from './reliable-image';
+import {MemberPublicCredits} from '@/components/public-work-credits';
 import {MemberCareerFacts} from './member-career-facts';
 import {MemberPhysicalFacts} from './member-physical-facts';
 import {useArtistScroll} from './use-artist-scroll';
@@ -90,7 +91,12 @@ export default function VvupArtist({content}:{content:CandidateContent}){
  function retry(){if(host.onRetry)host.onRetry();else setAttempt(x=>x+1);}
  function memberPage(m:Member){
   const items=state.data?memberWorks(state.data,m.id):[],original=portraitOriginal(m);
-  return <><button className="vu-back" onClick={()=>navigate({section:'members',member:null})}><ArrowLeft size={16}/>返回成员</button><section className="vu-member-detail"><figure><Photo src={content.portraits[m.id]?.image??(m.id===historicalPortrait?.memberId?historicalPortrait.url:null)} alt={memberDisplayName(m)+' · 资料照'} priority/>{original&&<button className="vu-outline" onClick={()=>setLightbox({src:original,label:memberDisplayName(m)+' · 官方资料图'})}>查看原图 <ArrowUpRight size={16}/></button>}</figure><div><p className="vu-kicker">VVUP / {officialIds.has(m.id)?'MEMBER':'ARCHIVE'}</p><h1>{memberChineseName(m)||m.stageName}</h1><p className="vu-stage-name">{m.stageName}</p><p>{officialIds.has(m.id)?'官方资料页列示成员':'历史成员 · 已结束本团活动'}</p><p>{m.country}{m.birthDate?' · '+m.birthDate:''}</p>{!officialIds.has(m.id)&&<p>2024《Ain’t Nobody》官方历史概念照 · 活动结束的独立生效日期未确认。</p>}<MemberPhysicalFacts member={m}/><MemberCareerFacts member={m}/><a className="vu-outline" href={artistMemberUrl(m.id,returnTo)}>个人档案与记录 <ArrowUpRight size={16}/></a>{original?<a href={content.portraits[m.id]?.sourceUrl??historicalPortrait?.sourceUrl} target="_blank" rel="noopener noreferrer">官方资料与图片来源 ↗</a>:<p>活动结束的独立生效日期未确认。</p>}</div></section><section><Chapter title="她的作品"/><p className="vu-muted">按已有成员与作品关系展示；MV 个人造型图尚未收录。</p><div className="vu-videos">{items.map(item=><VideoCard key={item.work.id} work={item.work} returnTo={returnTo}/>)}</div>{!items.length&&<p className="vu-empty">尚无已关联的作品记录。</p>}</section></>;
+  return <><button className="vu-back" onClick={()=>navigate({section:'members',member:null})}><ArrowLeft size={16}/>返回成员</button><section className="vu-member-detail" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><figure><Photo src={content.portraits[m.id]?.image??(m.id===historicalPortrait?.memberId?historicalPortrait.url:null)} alt={memberDisplayName(m)+' · 资料照'} priority/>{original&&<button className="vu-outline" onClick={()=>setLightbox({src:original,label:memberDisplayName(m)+' · 官方资料图'})}>查看原图 <ArrowUpRight size={16}/></button>}</figure><div><p className="vu-kicker">VVUP / {officialIds.has(m.id)?'MEMBER':'ARCHIVE'}</p><h1>{memberChineseName(m)||m.stageName}</h1><p className="vu-stage-name">{m.stageName}</p><p>{officialIds.has(m.id)?'官方资料页列示成员':'历史成员 · 已结束本团活动'}</p><p>{m.country}{m.birthDate?' · '+m.birthDate:''}</p>{!officialIds.has(m.id)&&<p>2024《Ain’t Nobody》官方历史概念照 · 活动结束的独立生效日期未确认。</p>}<MemberPhysicalFacts member={m}/><MemberCareerFacts member={m} part="intro"/><a className="vu-outline" href={artistMemberUrl(m.id,returnTo)}>个人档案与记录 <ArrowUpRight size={16}/></a>{original?<a href={content.portraits[m.id]?.sourceUrl??historicalPortrait?.sourceUrl} target="_blank" rel="noopener noreferrer">官方资料与图片来源 ↗</a>:<p>活动结束的独立生效日期未确认。</p>}</div></section><section><Chapter title="她的作品"/><p className="vu-muted">按已有成员与作品关系展示；MV 个人造型图尚未收录。</p><div className="vu-videos" data-member-module="works">{items.map(item=><VideoCard key={item.work.id} work={item.work} returnTo={returnTo}/>)}</div>{!items.length&&<p className="vu-empty">尚无已关联的作品记录。</p>}</section>
+{state.data&&<MemberPublicCredits memberId={m.id} data={state.data} renderLink={(work,label)=><a href={artistWorkUrl(work,false,returnTo)}>{label}</a>}/>}
+<MemberCareerFacts member={m} part="history"/>
+<MemberCareerFacts member={m} part="sources"/>
+
+</>;
  }
  function releasePage(){
   const r=releases.entries.find(r=>r.id===releaseId);

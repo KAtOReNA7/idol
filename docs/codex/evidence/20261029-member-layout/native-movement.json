@@ -1,0 +1,39 @@
+[
+  {
+    "file": "lib/idol/ifeye-runtime/ifeye.mjs",
+    "beforeSha256": "b64e4d124c75a26158e4974d3db2e9ad2fe91700c1efd33b05653d22426b1e64",
+    "afterSha256": "c8f36d6cf8a7da4691066732f2b7c8418f4801029fbc999b021c2f29f60350cb",
+    "dataChanges": 0,
+    "privateTransportChanges": 0
+  },
+  {
+    "file": "lib/idol/ifeye-runtime/host.mjs",
+    "beforeSha256": "a2b8672f97b367db8e810546f43420731f707279d0637c27f6524b963450b25b",
+    "afterSha256": "6668f52c8b24fd1ce04153f61857228df3d9f54d89105ddc8e1a55ca5dd7af1c",
+    "dataChanges": 0,
+    "privateTransportChanges": 0
+  },
+  {
+    "file": "lib/idol/izna-runtime/izna.mjs",
+    "beforeSha256": "c1a3455d7e22896d3d7ed4f32644ca20b4a7e862e480780bfd3fc53e80476ea0",
+    "afterSha256": "0601fd77d3554a8ff5259e37a8f6cf36b64dbe3a5a7740fc2ba44fecfb1801fe",
+    "dataChanges": 0,
+    "privateTransportChanges": 0,
+    "previousPersonFunction": " function person(){const m=D.members.find(x=>x.id===A.route().id);if(!m)return `<main id=\"content\" class=\"page\" tabindex=\"-1\">${empty('成员',path('members'),'返回成员目录')}</main>`;const i=D.members.indexOf(m),related=D.releases.filter(r=>(r.memberIds||[]).includes(m.id)),promotions=D.releases.filter(r=>(r.promotionalMemberIds||[]).includes(m.id)),memberVideos=D.works.filter(w=>(w.memberIds||[]).includes(m.id));const facts=[['国籍',m.nationality],['生日',m.birthDate&&date(m.birthDate)],['活动状态',m.status],['加入',m.joined&&date(m.joined)],['离开',m.left&&date(m.left)]].filter(x=>x[1]);return `<main id=\"content\" class=\"personal page ${(m.displayRelationship||m.relationship)==='former'?'is-historical':''}\" tabindex=\"-1\"><a class=\"back\" href=\"${e(returnTo(path('members')))}\">← ${e(backLabel(returnTo(path('members'))))}</a><section class=\"identity-spread member-editorial\"><div class=\"identity-heading\"><span class=\"chapter-index\">IZNA / MEMBER</span><span class=\"identity-number\">${String(i+1).padStart(2,'0')}</span>${(m.displayRelationship||m.relationship)==='former'?'<span class=\"historical-label\">历史成员</span>':''}<h1>${e(name(m))}</h1><p lang=\"en\">${e(m.stageName)}</p></div><div class=\"identity-portrait\">${photo(m.portrait,name(m),'portrait',true,true,'member-detail')}${m.portrait?.usage==='historical_named_portrait'?sourceLink(m.portrait):''}<span class=\"orb identity-orb\" aria-hidden=\"true\"></span></div><div class=\"identity-profile\">${m.role?`<p class=\"profile-role\">${e(m.role)}</p>`:''}${m.profile?`<p class=\"profile-copy\">${e(m.profile)}</p>`:''}<dl>${facts.map(([label,value])=>`<div><dt>${label}</dt><dd>${e(value)}</dd></div>`).join('')}</dl></div></section>${related.length?`<section class=\"chapter\" data-member-release-roster><header class=\"chapter-head\"><h2>发行成员</h2></header><div class=\"record-grid\">${related.map(release).join('')}</div></section>`:''}${promotions.length?`<section class=\"chapter\" data-member-release-promotion><header class=\"chapter-head\"><h2>发行宣传</h2></header><div class=\"record-grid\">${promotions.map(release).join('')}</div></section>`:''}${['MV','STAGE'].map(type=>{const videos=memberVideos.filter(w=>w.type===type);return videos.length?`<section class=\"chapter\" data-member-video-slot=\"${type}\"><header class=\"chapter-head\"><h2>${type==='MV'?'参与影像':'参与舞台'}</h2></header>${videoGrid(videos)}</section>`:''}).join('')}<nav class=\"member-sequence\" aria-label=\"其他成员\">${i>0?`<a href=\"${path('person',D.members[i-1].id,{return:returnTo(path('members'))})}\"><span>上一位</span><strong>${e(name(D.members[i-1]))}</strong></a>`:'<span></span>'}${i<D.members.length-1?`<a href=\"${path('person',D.members[i+1].id,{return:returnTo(path('members'))})}\"><span>下一位</span><strong>${e(name(D.members[i+1]))}</strong></a>`:''}</nav></main>`}",
+    "reviewedPersonSha256": "276f2f7915f4538bd6c49793224b9c4bc61deea86909ff9e72c93bd67792f1df"
+  },
+  {
+    "file": "lib/idol/izna-runtime/host.mjs",
+    "beforeSha256": "5a0728df645bcdcccd2c56954cfcfd7b0ebd0c718bd08f3b250da0620f527384",
+    "afterSha256": "a76a8b3a94e1ae3936b1edd3e90ed87b08a0681454ab87cf8812a3e6893cd2c8",
+    "dataChanges": 0,
+    "privateTransportChanges": 0
+  },
+  {
+    "file": "lib/idol/udtt-native/presentation.mjs",
+    "beforeSha256": "5f05bab95cc98e500d7577cbf652290dc2f8cba443cf764caa76f2bcf4ed412e",
+    "afterSha256": "b1cccda40a041ad5bbda6bec1e9776e042eadeb296a27236c1329b795771d101",
+    "dataChanges": 0,
+    "privateTransportChanges": 0
+  }
+]

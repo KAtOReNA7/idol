@@ -5,7 +5,7 @@ const root = path.resolve(__dirname, '..'), now = new Date().toISOString(), id =
 const env = {...process.env, PYTHONDONTWRITEBYTECODE: '1', PYTHONIOENCODING: 'utf-8'};
 const evidence = {note: 'Synthetic reviewed same-song Korean full performance and upload provenance.', urls: ['https://example.org/source']};
 const key = source => source.platform === 'bilibili'
-  ? `bilibili:${source.videoId}:cid:${source.bilibili.cid}:p:${source.bilibili.page}`
+  ? `bilibili:${source.videoId}:cid:${source.bilibili.cid}:p:${source.bilibili.page}`+(source.clip?`@${source.clip.startSeconds}-${source.clip.endSeconds}`:'')
   : source.videoId + (source.clip ? `@${source.clip.startSeconds}-${source.clip.endSeconds}` : '');
 function candidate(overrides = {}) {
   const source = {videoId: 'BV1Ab2Cd3Ef4', platform: 'bilibili', bilibili: {cid: '123456789', page: 1},
@@ -206,9 +206,9 @@ test('cross-work reuse and audio equivalence compare the complete BV/CID/page id
 
 test('adding a separate Bilibili fixture preserves all 497 existing YouTube objects and legacy key bytes', () => {
   const catalogFile = path.join(root, 'data/stage-videos.json'), originalBytes = fs.readFileSync(catalogFile);
-  const catalog = JSON.parse(originalBytes), inventory = JSON.parse(fs.readFileSync(path.join(root, 'data/stages/inventory.json'))).works;
+  const catalog = require('./helpers/password-formal-baseline.cjs').beforePassword('stageVideos',JSON.parse(originalBytes)), inventory = JSON.parse(fs.readFileSync(path.join(root, 'data/stages/inventory.json'))).works;
   assert.equal(Object.keys(catalog).length, 497);
-  assert.equal(crypto.createHash('sha256').update(originalBytes).digest('hex'), 'b84a7261ed7b139526ca75e070779f84946ef6968bc2eeb4bb09e314f6d79b56');
+  assert.equal(crypto.createHash('sha256').update(JSON.stringify(catalog,null,2)+'\n').digest('hex'), 'b84a7261ed7b139526ca75e070779f84946ef6968bc2eeb4bb09e314f6d79b56');
   const result = merge(normalized(reviewed(candidate())), {catalog, inventory}); assert.equal(result.status, 0, result.stderr);
   delete result.videos[id]; assert.deepEqual(result.videos, catalog);
   for (const [workId, source] of Object.entries(catalog)) {
@@ -216,4 +216,16 @@ test('adding a separate Bilibili fixture preserves all 497 existing YouTube obje
     assert.equal(key(result.videos[workId]), key(source));
   }
   assert.deepEqual(fs.readFileSync(catalogFile), originalBytes, 'no application writes');
+});
+
+test('bounded Bili program intervals normalize, merge with fresh empty owner data and never borrow whole-part scores',()=>{
+ const clip={startSeconds:1085,endSeconds:1273,sourceDurationSeconds:1469,evidence};
+ const s=candidate({clip,fullVideoDurationSeconds:1469,likesScope:'whole_video'});
+ const batch=normalized(reviewed(s));assert.equal(batch.items[0].selectedSourceKey,key(s));
+ assert.match(batch.items[0].selected.label,/转载/);assert.doesNotMatch(batch.items[0].selected.label,/官方/);
+ const result=merge(batch);assert.equal(result.status,0,result.stderr);
+ assert.equal(result.videos[id].scoreBinding.sourceKey,key(s));assert.deepEqual(result.videos[id].candidates[0].clip,clip);
+ for(const score of [0,8]){const protectedResult=merge(batch,{score});assert.equal(protectedResult.status,0,protectedResult.stderr);assert.deepEqual(protectedResult.videos,{});}
+ const saved=merge(batch,{journal:[{record_id:id,table_key:'works',status:'done'}]});assert.deepEqual(saved.videos,{});
+ for(const bad of [{...clip,endSeconds:1470},{...clip,startSeconds:1273},{...clip,sourceDurationSeconds:undefined},{...clip,evidence:{note:'',urls:[]}}])assert.notEqual(identity({...s,clip:bad}).status,0);
 });

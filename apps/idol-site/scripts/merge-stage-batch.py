@@ -126,6 +126,8 @@ for item in batch['items']:
  videos[rid]={'sourceClass':s['sourceClass'],'platform':s['platform'],'completeness':'full','videoId':s['videoId'],'url':s['url'],'title':s['title'],'channel':s['channel'],'kind':s.get('label') or s.get('type'),'publishedDate':(s.get('publishedAt') or '')[:10],'typeNote':note,'sourceUrl':s['sourceUrl'],'scoreBinding':bind,'likes':selected_likes,'checkedAt':source_at,'selectionNote':ranknote,'comparisonNote':item['reason'],'reusesOriginalVideo':reuse,'comparisonLimited':bool(item.get('comparisonLimited')) or comparison!='comparable_likes','comparisonLimitation':item.get('comparisonLimitation') or '', 'previousSources':history,'candidateCount':len(candidates),'candidates':[{'title':c['title'],'url':c['url'],'likesDisplay':f"{checked_likes(c)['value']:,}" if checked_likes(c)['precision']=='exact' else checked_likes(c)['display'],'kind':c.get('label') or c.get('kind') or '合格候选（见标题）',**({'platform':'bilibili','videoId':c['videoId'],'bilibili':c['bilibili']} if c['platform']=='bilibili' else {})} for c in candidates]}
  if s['platform']=='bilibili':videos[rid].update(bilibili=s['bilibili'],likesScope=s.get('likesScope','whole_video'))
  if s.get('sourceEvidence'):videos[rid]['sourceEvidence']=s['sourceEvidence']
+ if s['platform']=='bilibili' and clip:
+  videos[rid]['candidates'][0]['clip']=clip
  videos[rid]['selection']=selection
  if fallback:videos[rid]['memberVersionFallback']=fallback
  if s.get('verificationNote'):

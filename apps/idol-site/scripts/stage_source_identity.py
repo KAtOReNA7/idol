@@ -16,8 +16,15 @@ def source_key(source):
         assert isinstance(part, dict) and set(part) == {'cid', 'page'}, 'Bilibili needs exact CID and page'
         assert isinstance(part['cid'], str) and re.fullmatch(r'[1-9][0-9]{0,19}', part['cid']), 'Invalid Bilibili CID'
         assert type(part['page']) is int and 0 < part['page'] <= MAX_SAFE_INTEGER, 'Invalid Bilibili page'
-        assert source.get('clip') is None, 'Bilibili clips are not supported'
         key = f"bilibili:{video_id}:cid:{part['cid']}:p:{part['page']}"
+        clip = source.get('clip')
+        if clip is not None:
+            assert isinstance(clip, dict), 'Invalid Bilibili clip'
+            start,end,total = (clip.get(k) for k in ('startSeconds','endSeconds','sourceDurationSeconds'))
+            assert all(type(v) is int for v in (start,end,total)) and 0 <= start < end <= total <= 86400, 'Invalid Bilibili clip bounds or full-part duration'
+            proof = clip.get('evidence') or {}
+            assert isinstance(proof.get('note'), str) and proof['note'].strip() and isinstance(proof.get('urls'), list) and proof['urls'], 'Bilibili clip boundary evidence missing'
+            key += f'@{start}-{end}'
         assert len(key) <= 80, 'Stage source key exceeds save contract'
         return key
     assert platform == 'youtube', 'Unsupported formal stage platform'

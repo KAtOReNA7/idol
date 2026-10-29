@@ -8,12 +8,22 @@ const b={platform:'bilibili',sourceClass:'reupload',completeness:'full',videoId:
 const key='bilibili:BV1bo4y1x7LV:cid:123456789:p:2';
 b.scoreBinding={videoId:b.videoId,sourceKey:key,initializedAt:'2026-10-29T10:00:00Z',initialScore:null};
 test('all 497 legacy keys and current bindings remain valid without metadata migration',()=>{
- const all=require('../data/stage-videos.json');assert.equal(Object.keys(all).length,497);
+ const all=require('./helpers/password-formal-baseline.cjs').beforePassword('stageVideos',require('../data/stage-videos.json'));assert.equal(Object.keys(all).length,497);
  for(const s of Object.values(all)){assert.equal(source.stageSourceKey(s),s.clip?`${s.videoId}@${s.clip.startSeconds}-${s.clip.endSeconds}`:s.videoId);assert.ok(source.stageSourceMatchesUrl(s));if(s.scoreBinding)assert.ok(source.stageHasValidBinding(s));}
 });
 test('BV CID and page jointly identify a source, with safe exact external link and no unverified embed',()=>{
  assert.equal(source.stageSourceKey(b),key);assert.equal(source.stageWatchUrl(b),b.url+'&cid=123456789');assert.equal(source.stageEmbedUrl(b),null);assert.ok(source.stageHasValidBinding(b));
  for(const x of [{bilibili:{cid:'123456790',page:2}},{bilibili:{cid:'123456789',page:3},url:b.url.replace('p=2','p=3')},{scoreBinding:{...b.scoreBinding,sourceKey:undefined}}])assert.equal(source.stageHasValidBinding({...b,...x}),false);
+});
+
+test('Bili interval identity survives anonymous projection, distinguishes bounds and discloses manual external playback',()=>{
+ const clip={startSeconds:1085,endSeconds:1273,sourceDurationSeconds:1469,evidence:{note:'Reviewed synthetic bounds',urls:['https://example.org/program']}};
+ const s={...b,clip,likesScope:'whole_video'},clipKey=key+'@1085-1273';s.scoreBinding={...b.scoreBinding,sourceKey:clipKey};
+ assert.equal(source.stageSourceKey(s),clipKey);assert.ok(source.stageHasValidBinding(s));assert.equal(source.stageWatchUrl(s),b.url+'&cid=123456789');assert.equal(source.stageEmbedUrl(s),null);
+ const projected=projectPublicCatalog({works:[{stage:s}],members:[],ratings:[]}).works[0].stage;
+ assert.equal(source.stageSourceKey(projected),clipKey);assert.ok(source.stageHasValidBinding(projected));
+ for(const change of [{clip:{...clip,startSeconds:1086}},{clip:{...clip,endSeconds:1272}},{scoreBinding:b.scoreBinding}])assert.equal(source.stageHasValidBinding({...s,...change}),false);
+ const ui=fs.readFileSync(path.join(__dirname,'../app/page.tsx'),'utf8');assert.match(ui,/B站仅提供原分P外链，请手动定位到上述起点/);
 });
 test('incomplete identities, injected URLs, mismatched query and unsupported clips fail closed',()=>{
  for(const change of [{bilibili:undefined},{bilibili:{cid:'0',page:2}},{bilibili:{cid:'123456789',page:2,extra:true}},{clip:{startSeconds:0,endSeconds:20,sourceDurationSeconds:20}},{url:b.url+'&p=2'},{url:b.url+'&cid=999'},{url:b.url+'&redirect=https://example.org'},{url:b.url.replace('www.bilibili.com','www.bilibili.com.evil.example')},{url:b.url.replace('https:','http:')},{url:b.url+'#p=1'},{scorePolicy:'view_only'},{completeness:'excerpt'}])assert.equal(source.stageSourceKey({...b,...change}),null,JSON.stringify(change));
@@ -47,3 +57,8 @@ test('native Bili save requires exact source key; failures never write, exact sa
  const f=JSON.parse(h.sql.prepare('SELECT fields_json FROM idol_native_records').get().fields_json);assert.equal(f.fld641ausT,8);assert.equal(f.fld38CJY2U,0);assert.equal(f.fld4yOdHT5,'private synthetic note');assert.equal(f.fld3QKrpLN,'已观看');assert.equal(h.sql.prepare('SELECT count(*) n FROM idol_saves').get().n,1);
 });`;
 const mod=new Module(nativeFile,module);mod.filename=nativeFile;mod.paths=module.paths;mod._compile(prefix+body,nativeFile);
+const bounded={...b,clip:{startSeconds:1085,endSeconds:1273,sourceDurationSeconds:1469,evidence:{note:'Synthetic confirmed program interval',urls:['https://example.org/program']}},likesScope:'whole_video',scoreBinding:{...b.scoreBinding,sourceKey:key+'@1085-1273'}};
+const boundedBody=body.replace(JSON.stringify(b),JSON.stringify(bounded))
+ .replace('native Bili save requires exact source key','native Bili interval save rejects whole-part and changed-range keys')
+ .replace('for(const stageSourceKey of [undefined,bili.videoId,','for(const stageSourceKey of [undefined,bili.videoId,'+JSON.stringify(key)+','+JSON.stringify(key+'@1086-1273')+',');
+const boundedMod=new Module(nativeFile,module);boundedMod.filename=nativeFile;boundedMod.paths=module.paths;boundedMod._compile(prefix+boundedBody,nativeFile);

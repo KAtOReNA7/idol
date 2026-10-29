@@ -11,8 +11,8 @@ const files = ['data/stage-videos.json', 'data/stages/inventory.json', 'data/sta
 const bv = 'BVa1b2c3d4e5';
 const checkedAt = '2026-10-28T00:00:00Z';
 const proof = { note: 'Synthetic evidence of the full matching music-program performance.', urls: ['https://example.org/program'] };
-const key = source => `bilibili:${source.videoId}:cid:${source.bilibili.cid}:p:${source.bilibili.page}`;
-const candidate = source => ({ platform: source.platform, videoId: source.videoId, bilibili: structuredClone(source.bilibili), title: source.title, url: source.url, likesDisplay: '未知', kind: source.kind });
+const key = source => `bilibili:${source.videoId}:cid:${source.bilibili.cid}:p:${source.bilibili.page}`+(source.clip?`@${source.clip.startSeconds}-${source.clip.endSeconds}`:'');
+const candidate = source => ({ platform: source.platform, videoId: source.videoId, bilibili: structuredClone(source.bilibili), title: source.title, url: source.url, likesDisplay: '未知', kind: source.kind,...(source.clip?{clip:structuredClone(source.clip)}:{}) });
 
 function bili(overrides = {}) {
   const source = {
@@ -61,7 +61,7 @@ function rejects(edit, message) {
 test('the existing YouTube catalog and legacy source bindings remain valid', () => {
   const result = run();
   assert.equal(result.status, 0, result.stderr);
-  assert.equal(JSON.parse(result.stdout).sources, 497);
+  assert.equal(JSON.parse(result.stdout).sources, 499);
 });
 
 test('official, reupload and third-party Bilibili performances accept unknown likes and exact multipart bindings', () => {
@@ -115,8 +115,16 @@ test('Bilibili URL, CID and page ambiguity is rejected before it can identify a 
     s => { s.url = `https://www.bilibili.com.evil.example/video/${bv}?p=2`; },
     s => { s.url = `https://user@www.bilibili.com/video/${bv}?p=2`; },
     s => { s.url = `http://www.bilibili.com/video/${bv}?p=2`; },
-    s => { s.clip = { startSeconds: 1, endSeconds: 10, sourceDurationSeconds: 120, evidence: proof }; },
   ]) rejects(mutate, /invalid exact Bilibili CID\/page identity/);
+});
+
+test('Bili program clips require exact range keys, real full-part bounds and matched candidate scope',()=>{
+ const result=run((v,s,inventory)=>{
+  const c={startSeconds:1085,endSeconds:1273,sourceDurationSeconds:1469,evidence:proof};
+  add(v,s,inventory,'synthetic-clip',bili({clip:c,likesScope:'whole_video'}));
+ });
+ assert.equal(result.status,0,result.stderr);
+ rejects(s=>{s.clip={startSeconds:1,endSeconds:10,sourceDurationSeconds:120,evidence:proof};},/clip score binding lacks exact source key/);
 });
 
 test('Bilibili score bindings and candidates must retain the complete CID/page identity', () => {

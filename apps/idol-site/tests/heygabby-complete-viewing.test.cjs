@@ -78,8 +78,9 @@ test('strict formal then viewing preimages preserve the original 496 sources, ev
     assert.equal(sha(beforeHeyGabbyFormalBytes(file, fs.readFileSync(path.join(app, file)))), proof.afterSha256, file);
   }
   for (const [key, restore] of [['stageVideos', beforeHeyGabbyFormalStages], ['stageStatuses', beforeHeyGabbyFormalStatuses], ['poster', beforeHeyGabbyFormalPosters]]) {
-    const proof = formal[key], file = path.resolve(app, '../..', proof.path), current = JSON.parse(fs.readFileSync(file, 'utf8'));
-    assert.equal(sha(fs.readFileSync(file)), proof.afterFileSha256);
+    const proof = formal[key], file = path.resolve(app, '../..', proof.path), raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const current=['stageVideos','stageStatuses'].includes(key)?require('./helpers/password-formal-baseline.cjs').beforePassword(key,raw):raw;
+    assert.equal(sha(JSON.stringify(current,null,2)+'\n'), proof.afterFileSha256);
     const old = restore(current);
     assert.equal(sha(JSON.stringify(old, null, 2) + '\n'), proof.beforeFileSha256);
     if (key === 'stageVideos') {

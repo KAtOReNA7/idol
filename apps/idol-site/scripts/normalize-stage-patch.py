@@ -38,7 +38,7 @@ for filename in sys.argv[1:]:
    ev={'basis':'；'.join(findings),'sourceVersion':item.get('originalVersion'),'sourceMVTitle':item.get('originalMV',{}).get('officialTitle'),'candidateTitle':s['title']}
   pick['languageVersionEvidence']=ev
   if pick.get('clip'):
-   pick['label']='官方整场内单曲片段'
+   pick['label']=('转载 · ' if s['sourceClass']=='reupload' else '第三方上传 · ' if s['sourceClass']=='third_party' else '官方 · ')+'整片内单曲区间'
    assert pick.get('likesScope')=='whole_video',f'Concert clip likes must be explicitly whole_video {rid}'
    total=pick.get('fullVideoDurationSeconds');assert isinstance(total,int) and not isinstance(total,bool) and 0<pick['clip']['endSeconds']<=total<=86400,f'Clip needs verified full-video duration {rid}'
    pick['clip']['sourceDurationSeconds']=total

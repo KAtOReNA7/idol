@@ -56,7 +56,7 @@ test('all generic portraits retain full existing originals and consistent bounde
 
 // These two works gained scoped release references, each tested independently.
 // Preserve their generic archive and test every remaining active fallback.
-for(const row of source.works.filter(r=>!['rec28ldfRTrPi9','recvxyH5pzFAPL'].includes(r.workId)))test(`read-only generic reference is exact-tuple scoped without participation claims: ${row.workId}`,()=>{
+for(const row of source.works.filter(r=>!['rec28ldfRTrPi9','recvxyH5pzFAPL','recvxIZy3525BF'].includes(r.workId)))test(`read-only generic reference is exact-tuple scoped without participation claims: ${row.workId}`,()=>{
  const work=workFor(row),group=publicGroupRecognitionForWork(work);
  assert.equal(group.groupId,row.groupId);assert.equal(publicCreditForWork(work),null);assert.deepEqual(publicWorkRecognition(work),[]);
  for(const mismatch of [{id:'wrong-work'},{groupIds:['wrong-group']},{url:'https://www.youtube.com/watch?v=other012345'},{placeholder:{reason:'placeholder'}}])assert.equal(publicGroupRecognitionForWork({...work,...mismatch}),null);
@@ -86,5 +86,5 @@ test('generic presentation does not depend on an MV appearance decision or alter
  assert.doesNotMatch(code+component,/mvMemberAbsence|memberScoringPolicy|ratingIds|setRating|saveRating/);
  const madein=source.groups.find(g=>g.groupName==='MADEIN');assert.match(madein.collectionNote,/569×854/);
  const wooah=source.groups.find(g=>g.groupName==='WOOAH');assert.match(wooah.collectionNote,/同套校服造型/);assert.equal(wooah.collectionConsistency,'documented_same_video_look');
- const hitgs=source.groups.find(g=>g.groupName==='HITGS');assert.match(hitgs.collectionNote,/未独立证实全部照片为同次拍摄/);
+ const hitgs=source.groups.find(g=>g.groupName==='HITGS');assert.match(hitgs.collectionNote,/同篇采访逐名刊载/);assert.equal(hitgs.collectionConsistency,'documented_named_press_collection');assert.match(hitgs.collectionNote,/具体拍摄日期未确认/);
 });

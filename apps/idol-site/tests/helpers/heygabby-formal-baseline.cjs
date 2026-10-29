@@ -1,6 +1,8 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs'), path = require('node:path'), {createHash} = require('node:crypto');
 const receipt = require('../../../../docs/codex/evidence/20261029-heygabby-complete/formal-adoption.json');
+const {beforeV202Supplements,beforeV202SupplementsBytes}=require('./v202-followup-evidence.cjs');
+const {beforePassword,beforePasswordBytes}=require('./password-formal-baseline.cjs');
 const app = path.resolve(__dirname, '../..');
 const sha = value => createHash('sha256').update(value).digest('hex');
 const bytes = value => Buffer.from(JSON.stringify(value, null, 2) + '\n');
@@ -12,6 +14,8 @@ const baselines = {
 };
 
 function restore(kind, current) {
+  if(['stageVideos','stageStatuses'].includes(kind))current=beforePassword(kind,current);
+  if(kind==='supplementsUpdate')current=beforeV202Supplements(current);
   const proof = receipt[kind], id = receipt.workId;
   assert.equal(id, 'recvxyOz5Xo5fW'); assert.equal(receipt.sourceId, 'XSpYaEdpKxY');
   assert.equal(proof.beforeFileSha256, baselines[kind]);
@@ -36,8 +40,10 @@ function restore(kind, current) {
 }
 
 function beforeHeyGabbyFormalBytes(relative, currentBytes) {
+  currentBytes=beforePasswordBytes(relative,currentBytes);
   const kind = Object.keys(baselines).find(key => receipt[key].path === 'apps/idol-site/' + relative);
   if (!kind) return Buffer.from(currentBytes);
+  if(kind==='supplementsUpdate')currentBytes=beforeV202SupplementsBytes(currentBytes);
   const proof = receipt[kind], text = currentBytes.toString('utf8');
   assert.equal(sha(text), proof.afterFileSha256, kind === 'supplementsUpdate'
     ? 'complete current supplements bytes' : 'complete current formal ' + kind + ' bytes');

@@ -10,6 +10,7 @@ const {PublicWorkCredits,MemberPublicCredits}=require('./helpers/shared-journal-
 const source=require('../data/public-group-recognition.json');
 const credits=require('../data/public-work-credits.json'),recognition=require('../data/public-work-recognition.json');
 const baseline=require('../../../docs/codex/evidence/20261029-group-followup/application-baseline.json');
+const {beforeV202Generic}=require('./helpers/v202-followup-evidence.cjs');
 const group=source.groups.find(g=>g.groupName==='MADEIN');
 const mids=['rec28ldbniBgam','rec28ldbniBghr','rec28ldbniBgCI','rec28ldbniBgJR'];
 const work={id:'rec28ldfRTrPi9',groupIds:['rec28ldfRTiCzI'],url:'https://www.youtube.com/watch?v=aer_X9NmhTc',song:'PUNG!',ratingIds:[],score:0,stageScore:0,note:'synthetic private note',watched:true};
@@ -19,12 +20,12 @@ const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 test('new release-cover reference preserves v201 files, generic archive, original media and all source bindings',()=>{
  for(const [collection,digest] of [[credits,baseline.originalCreditFileSha256],[recognition,baseline.originalRecognitionFileSha256]])
   assert.equal(hash(JSON.stringify({...collection,records:collection.records.slice(0,102)},null,2)+'\n'),digest);
- for(const [name,digest] of Object.entries(baseline.protectedFiles))assert.equal(hash(fs.readFileSync(path.join(__dirname,'../data',name))),digest,name);
- assert.equal(credits.records.length,104);assert.equal(recognition.records.length,104);
- assert.equal(recognition.records.reduce((n,r)=>n+r.portraits.length,0),537);
+ for(const [name,digest] of Object.entries(baseline.protectedFiles))assert.equal(hash(name==='public-group-recognition.json'?JSON.stringify(beforeV202Generic(source),null,2)+'\n':fs.readFileSync(path.join(__dirname,'../data',name))),digest,name);
+ assert.equal(credits.records.length,105);assert.equal(recognition.records.length,105);
+ assert.equal(recognition.records.reduce((n,r)=>n+r.portraits.length,0),541);
  const active=source.works.filter(w=>publicGroupRecognitionForWork({id:w.workId,groupIds:[w.groupId],url:`https://www.youtube.com/watch?v=${w.videoId}`}));
- assert.equal(source.works.length,24);assert.equal(active.length,22);
- assert.equal(active.reduce((n,w)=>n+source.groups.find(g=>g.groupId===w.groupId).portraits.length,0),107);
+ assert.equal(source.works.length,24);assert.equal(active.length,21);
+ assert.equal(active.reduce((n,w)=>n+source.groups.find(g=>g.groupId===w.groupId).portraits.length,0),102);
  for(const p of publicWorkRecognition(work)){
   const original=group.portraits.find(q=>q.memberId===p.memberId);
   for(const key of ['src','sha256','width','height','sourceCrop','photoSetId','sourceUrl'])assert.deepEqual(p[key],original[key]);

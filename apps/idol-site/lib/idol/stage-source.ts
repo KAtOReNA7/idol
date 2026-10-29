@@ -1,5 +1,9 @@
 import type {StageAlternative,StageVideo} from './types';
 
+function validClip(c:NonNullable<StageVideo['clip']>){
+ return Number.isSafeInteger(c.startSeconds)&&Number.isSafeInteger(c.endSeconds)&&c.startSeconds>=0&&c.endSeconds>c.startSeconds&&Number.isSafeInteger(c.sourceDurationSeconds)&&c.sourceDurationSeconds>0&&c.sourceDurationSeconds<=86400&&c.endSeconds<=c.sourceDurationSeconds&&!!c.evidence&&typeof c.evidence.note==='string'&&Array.isArray(c.evidence.urls);
+}
+
 // CID identifies the media within a BV collection; page alone can be reordered.
 // Keep legacy YouTube keys unchanged; never infer Bilibili CID from a URL.
 export function validBilibiliSource(source:{videoId:string;url:string;bilibili?:{cid:string;page:number}}):boolean{
@@ -13,8 +17,8 @@ export function stageSourceKey(stage:StageVideo|null|undefined):string|null{
  if(!stage||'scorePolicy' in stage&&stage.scorePolicy==='view_only')return null;
  if(stage.sourceClass!==undefined&&!['official','reupload','third_party'].includes(stage.sourceClass)||stage.completeness!==undefined&&stage.completeness!=='full')return null;
  if(stage.platform==='bilibili'){
-  if(stage.clip||!validBilibiliSource(stage))return null;
-  return `bilibili:${stage.videoId}:cid:${stage.bilibili!.cid}:p:${stage.bilibili!.page}`;
+  if(!validBilibiliSource(stage)||stage.clip&&!validClip(stage.clip))return null;
+  return `bilibili:${stage.videoId}:cid:${stage.bilibili!.cid}:p:${stage.bilibili!.page}`+(stage.clip?`@${stage.clip.startSeconds}-${stage.clip.endSeconds}`:'');
  }
  if(stage.bilibili!==undefined||stage.platform!==undefined&&stage.platform!=='youtube'||!/^[A-Za-z0-9_-]{11}$/.test(stage.videoId))return null;
  if(!stage.clip)return stage.videoId;

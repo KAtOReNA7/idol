@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-29 15:38:24 UTC",
+  "branch": "codex/group-evidence-followup-20261029",
+  "implementationCommit": "744f9a63edfec4027bd3e30eaa06c931fc61b93c",
+  "parent": "502e8d7efb45426303be26a33814652ffe86300b",
+  "tree": "8cf692f71194699b69c25a67f8b4901acc4c8924",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha": "c3549aa9c2cf64a70846d93567daffa030aef188"
+    },
+    {
+      "path": "apps/idol-site/tests/historical-roster.test.cjs",
+      "sha": "c26777c1fc21841ecccf4925c4142782f4452ff2"
+    },
+    {
+      "path": "docs/codex/NEXT-COMPUTER-HANDOFF.md",
+      "sha": "780fcb63e7bcfb96d1b66899eff6c07bcc4eda69"
+    },
+    {
+      "path": "docs/codex/RESUME-PROMPT-20261029.txt",
+      "sha": "ef32a0292485574d67b81e3e107fda656576e311"
+    },
+    {
+      "path": "docs/codex/RESUME.md",
+      "sha": "1202239131e69348a66dcd4f305c6c7e43fa59bd"
+    },
+    {
+      "path": "docs/codex/STATUS.md",
+      "sha": "8ce1a189abdcc74b83f77c7bdf00c779775e22a3"
+    },
+    {
+      "path": "docs/codex/evidence/20261029-manual-feedback/profile-tests.log",
+      "sha": "0ce2239169d7b7bb364764388c17355d2673e5c6"
+    },
+    {
+      "path": "docs/codex/evidence/20261029-manual-feedback/review.json",
+      "sha": "f40e5084e63f92b6e68111eebeff8a72ed24de0e"
+    },
+    {
+      "path": "docs/codex/member-page-layout-followup-20261029.md",
+      "sha": "2018c02ba621976ceab11b398121ee0fa908b807"
+    }
+  ],
+  "remoteCommitAndRefReadback": true,
+  "localRawCommitShaVerified": true,
+  "worktreeAfterImplementation": "clean",
+  "githubMethod": "Git objects API, exact blobs/tree, expected previous HEAD, force=false",
+  "production": {
+    "version": 202,
+    "status": "active",
+    "accessMode": "public",
+    "revision": 2,
+    "owners": 1,
+    "external": 0,
+    "groups": 0,
+    "newVersions": 0,
+    "deployments": 0
+  },
+  "privateReads": 0,
+  "privateWrites": 0,
+  "runtimeSourceDataAndImageChanges": 0,
+  "tests": {
+    "count": 10,
+    "passed": 10,
+    "scope": "historical profile repair / current roster SSR; obsolete assertions corrected, no application rendering changed"
+  },
+  "layoutDecision": "awaiting user choice; prepared proposal only",
+  "receiptNote": "A separate receipt commit follows implementation; continue from latest PR47 HEAD."
+}

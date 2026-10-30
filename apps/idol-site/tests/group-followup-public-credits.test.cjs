@@ -8,7 +8,8 @@ const {publicGroupRecognitionForWork}=load('lib/idol/public-group-recognition.ts
 const {memberWorks}=load('lib/idol/member-works.ts');
 const {PublicWorkCredits,MemberPublicCredits}=require('./helpers/shared-journal-dependency-loader.cjs').sharedJournalDependency('@/components/public-work-credits');
 const source=require('../data/public-group-recognition.json');
-const credits=require('../data/public-work-credits.json'),recognition=require('../data/public-work-recognition.json');
+const {beforeSprinkle}=require('./helpers/sprinkle-public-baseline.cjs');
+const credits=beforeSprinkle('public-work-credits.json',require('../data/public-work-credits.json')),recognition=beforeSprinkle('public-work-recognition.json',require('../data/public-work-recognition.json'));
 const baseline=require('../../../docs/codex/evidence/20261029-group-followup/application-baseline.json');
 const {beforeV202Generic}=require('./helpers/v202-followup-evidence.cjs');
 const group=source.groups.find(g=>g.groupName==='MADEIN');
@@ -24,8 +25,9 @@ test('new release-cover reference preserves v201 files, generic archive, origina
  assert.equal(credits.records.length,106);assert.equal(recognition.records.length,106);
  assert.equal(recognition.records.reduce((n,r)=>n+r.portraits.length,0),546);
  const active=source.works.filter(w=>publicGroupRecognitionForWork({id:w.workId,groupIds:[w.groupId],url:`https://www.youtube.com/watch?v=${w.videoId}`}));
- assert.equal(source.works.length,24);assert.equal(active.length,20);
- assert.equal(active.reduce((n,w)=>n+source.groups.find(g=>g.groupId===w.groupId).portraits.length,0),97);
+ assert.equal(source.works.length,24);assert.equal(active.length,19);
+ assert.equal(active.reduce((n,w)=>n+source.groups.find(g=>g.groupId===w.groupId).portraits.length,0),91);
+ assert.equal(active.some(w=>w.workId==='recvxyOz5XsgVc'),false,'exact human-confirmed public credit supersedes this generic reference');
  for(const p of publicWorkRecognition(work)){
   const original=group.portraits.find(q=>q.memberId===p.memberId);
   for(const key of ['src','sha256','width','height','sourceCrop','photoSetId','sourceUrl'])assert.deepEqual(p[key],original[key]);

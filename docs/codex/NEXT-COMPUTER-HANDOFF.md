@@ -6,7 +6,7 @@
 
 当前队列为 `docs/codex/evidence/20261030-sprinkle-human/remaining-stage-ledger.json`，人物逐项为同目录 `remaining-person-facts.json`：104新增舞台＋11旧替换＋23人物＋7未知统计＋7实际日期＋1销量差额＝153分类项。只关闭本MV真人出镜事实；录音角色未证，不能把本次反馈继承到其他版本。原人工CSV和历史队列不覆盖。
 
-本地仍501舞台，正式站仍v203／500舞台。本轮没有新正式绑定、Sites版本、部署、图片文件或私人写入；不复用已过期owner导出。继续从PR47最新远端接续，不以推送为停工点，后续不自动部署。实现、保护与最终验证见 `docs/codex/evidence/20261030-sprinkle-human/` 和 `docs/codex/worklogs/20261030-sprinkle-human.md`。下文154项／等待Sprinkle看片等为历史状态，不能覆盖本节。
+本地仍501舞台，正式站仍v203／500舞台。本轮没有新正式绑定、Sites版本、部署、图片文件或私人写入；不复用已过期owner导出。继续从PR47最新远端接续，不以推送为停工点，后续不自动部署。实现、保护与最终验证见 `docs/codex/evidence/20261030-sprinkle-human/` 和 `docs/codex/worklogs/20261030-sprinkle-human.md`。当前另已询问fromis_9《Touchdown》精确MV peoZYyEvY-k的五人真人出镜范围，尚未收到回复；问题及待证边界见本批research-followup.json，不重复创建同一询问。下文154项／等待Sprinkle看片等为历史状态，不能覆盖本节。
 
 
 ## 本地续作：501舞台／154项待证（2026-10-30，未部署）

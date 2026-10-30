@@ -15,3 +15,5 @@ public-work-credits与public-work-recognition各追加1行，原106行及顶层�
 新增原始来源核查结果：SM官网确认FOCUS Remixes发行／混音制作，但不列本版成员，原版八人幕后不能继承；ITZY官网M-ON公告只是MV轮播，电视朝日原始2021-11-12介绍明确唱WANNABE日版，不能作为LOCO日版候选。两项继续保留，未用韩版回归合集或线上showcase补数。完整来源与范围在research-followup.json。已向用户询问fromis_9《Touchdown》精确MV的五人真人出镜范围，等待实际回复，不凭当前名册补齐。
 
 新增历史成员投影检查的首次通用加载器不能解析cloudflare:workers；改为仓库既有external-runtime测试隔离方式，未改运行时代码或放宽断言，随后125项全部通过。生成的tsconfig缓存在编译与构建结束后恢复为精确HEAD原字节。
+
+GitHub实现8517e5c12b32e58e5e9066cea1d0d8b43c21fd45已普通推送；API独立读回PR47该head且draft/open/unmerged，最终标题与描述已更新。正式站另读回仍v203／public／revision2／1owner／0外部／0组；GitHub投递与未部署边界分别保存在github-delivery.json及production-unchanged.json。当前工作可继续的阻点是Touchdown真人出镜的实际看片反馈，未由推送代替事实完成。

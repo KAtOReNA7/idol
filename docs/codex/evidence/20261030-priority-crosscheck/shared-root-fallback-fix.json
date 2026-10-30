@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-30",
+  "issue": "Same original video reused by several different-version targets was rejected against sibling targets even with a valid direct sourceWorkId.",
+  "fix": "Allow sibling references only through the same explicit non-fallback root, exact source key, group, target and actual song identities and equal original performer scope. Existing identity/audio-equivalence/direct-reference branches are retained.",
+  "files": [
+    "apps/idol-site/scripts/merge-stage-batch.py",
+    "apps/idol-site/tests/helpers/stage-fallback-fixture.cjs",
+    "apps/idol-site/tests/same-song-stage-fallback.test.cjs"
+  ],
+  "tests": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0,
+    "newUniqueTests": 2,
+    "exitCode": 0,
+    "log": "E:\\project\\idol-local-backups\\20261030-shared-root-fallback-tests-final.txt",
+    "sha256": "7873f9c6fb25b95dfe56bc8b7f52ca2534b5c93edb9cb3661641212253590071"
+  },
+  "cases": [
+    "Same batch both orders",
+    "Sequential imports",
+    "Original stage object and score 9 preserved",
+    "Different roots rejected",
+    "Fallback chains rejected",
+    "Wrong target/actual song, group or scope rejected",
+    "All original videos/status/inventory/owner-export bytes unchanged on failure"
+  ],
+  "realAdoptions": 0,
+  "privateWrites": 0,
+  "deployments": 0
+}

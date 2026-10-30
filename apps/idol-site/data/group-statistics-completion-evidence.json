@@ -14,8 +14,8 @@
     "salesLowerBoundsAdded": 15,
     "salesFallbackZero": 4,
     "winsObserved": 27,
-    "winsConfirmedZero": 21,
-    "winsFallbackZero": 3,
+    "winsConfirmedZero": 24,
+    "winsFallbackZero": 0,
     "unresolvedSourceDifferences": [
       "triples.sales"
     ],
@@ -468,16 +468,16 @@
       ],
       "omittedPlatforms": [],
       "sales": {
-        "observedValue": 2113229,
-        "displayValue": 2113229,
+        "observedValue": 2118416,
+        "displayValue": 2118416,
         "status": "observed",
         "unit": "张",
         "title": "已公开累计",
-        "scope": "tripleS及该来源归入tripleS的子团韩国Circle公开月榜36行，加2024年Performante Cosmo与2025年ASSEMBLE25 Cosmo同年同版年榜替换修正，以及13条不重叠官方周榜补充；截至2026-06的已核来源覆盖下界，不是全球完整累计。",
+        "scope": "tripleS及该来源归入tripleS的子团韩国Circle公开累计下界；保留36月行、2项年榜替换及13周记录，再以两项发行累计替换其已计发行贡献。截至2026-06，不是全球完整累计。",
         "asOf": "2026-06",
-        "checkedAt": "2026-10-29",
-        "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=03&yearTime=3",
-        "sourceTitle": "Circle Album Chart · 13条官方周榜与既有月／年榜复算",
+        "checkedAt": "2026-10-30",
+        "sourceUrl": "https://www.sina.cn/news/detail/5269601275347240.html",
+        "sourceTitle": "Circle Album · 发行累计与月／年／周榜复算",
         "sources": [
           {
             "url": "https://soridata.com/sales/TripleS.html",
@@ -702,6 +702,38 @@
             "title": "Circle Album Chart · 2026-W02 · msnz ＜Beyond Beauty＞",
             "kind": "official-weekly-chart",
             "checkedAt": "2026-10-29T14:03:12.029104+00:00"
+          },
+          {
+            "url": "https://koreansalestwt.blogspot.com/2023/03/triples-sales-summary.html",
+            "title": "koreanSales · Circle发行累计资料",
+            "sourceDate": null,
+            "checkedAt": "2026-10-30",
+            "kind": "cross-verified-release-cumulative",
+            "sha256": "3866884c71ef8ea50c618c5f69a18a57b04ca8d8c042e21e6ee45da77f53d03b"
+          },
+          {
+            "url": "https://chukkae.com/artists/triples",
+            "title": "chukkae · Circle发行累计资料",
+            "sourceDate": null,
+            "checkedAt": "2026-10-30",
+            "kind": "cross-verified-release-cumulative",
+            "sha256": "f135247b4217297cd2f57bdda68881cf78eb6d5ed9ec019dc15e4308080144f1"
+          },
+          {
+            "url": "https://theqoo.net/square/3614887774?category=512000849",
+            "title": "theqoo20250216 · Circle发行累计资料",
+            "sourceDate": "2025-02-16",
+            "checkedAt": "2026-10-30",
+            "kind": "cross-verified-release-cumulative",
+            "sha256": "e5fc2989c4a1d5090ea82d7fe1de8715e23c9aef643b9393b4bccda7274838c1"
+          },
+          {
+            "url": "https://www.sina.cn/news/detail/5269601275347240.html",
+            "title": "sina20260223 · Circle发行累计资料",
+            "sourceDate": "2026-02-23",
+            "checkedAt": "2026-10-30",
+            "kind": "cross-verified-release-cumulative",
+            "sha256": "91042b139faf4e5ff6261cc1df517f4aa3b09169ce79806696c3f79116ef590c"
           }
         ],
         "notes": [
@@ -716,7 +748,8 @@
           "2026-10-28补查4个同版本未覆盖期间的官方周榜，新增5,847张，来源覆盖下界2,098,086；与旧汇总2,458,789尚差360,703，未彻底解决。保留36原月行与2项年榜替换，不重复加总。",
           "2026-10-28追加核对：EVOLution标准版2023-W51为1,535；ASSEMBLE Cosmo 2025-W05/W06为3,699与2,289；ASSEMBLE25标准版2025-W26为2,545。四项共10,068，与此前月/年/周贡献不重叠；已核下界2,108,154，旧汇总差额350,635继续开放。上方历史数值保留，非新增当前差额。",
           "2026-10-29新增同版本未覆盖周：EVOLution标准版2024-W03为840，Performante标准版2024-W46为1,126，Beyond Beauty标准版2026-W01为713；共2,679。标准版与Cosmo按原站albumId区分，跨年周不与同版月行重叠。已核下界2,110,833，旧汇总差额347,956仍未解释；截至2026-06与下界口径不变。上方均为历史核对记录。",
-          "2026-10-29追加同版本未覆盖周：Performante标准版2024-W48为1,162，Beyond Beauty标准版2026-W02为1,234，共2,396；与同版月行、既有周及Cosmo年覆盖不重复。已核下界2,113,229，旧汇总差额345,560仍未解释，统计截止仍2026-06；上方数字为历史核对记录。"
+          "2026-10-29追加同版本未覆盖周：Performante标准版2024-W48为1,162，Beyond Beauty标准版2026-W02为1,234，共2,396；与同版月行、既有周及Cosmo年覆盖不重复。已核下界2,113,229，旧汇总差额345,560仍未解释，统计截止仍2026-06；上方数字为历史核对记录。",
+          "2026-10-30按发行整体替换：Performante337,203替换原已计332,874（+4,329），ASSEMBLE54,857替换53,999（+858）；净+5,187，下界2,118,416，旧汇总差340,373未解释。原月/年/周行完整保留作历史证据，发行累计不与已覆盖贡献重复相加。ACCESS候选不纳入。"
         ],
         "evidence": {
           "kind": "public-cumulative-lower-bound",
@@ -969,7 +1002,7 @@
               "album": "Acid Angel from Asia"
             }
           ],
-          "recomputedSum": 2113229,
+          "recomputedSum": 2118416,
           "monthlyRecomputedSum": 2087073,
           "annualReplacements": [
             {
@@ -1121,16 +1154,17 @@
             }
           ],
           "sourceDifferenceReview": {
-            "checkedAt": "2026-10-29",
+            "checkedAt": "2026-10-30",
             "status": "partially-resolved",
             "monthlySum": 2087073,
             "annualNetAdjustment": 5166,
-            "reconciledSum": 2113229,
+            "reconciledSum": 2118416,
             "aggregateTotal": 2458789,
-            "remainingDifference": 345560,
-            "aggregateAccess": "previously stored observation only; not fetched in this audit",
-            "reason": "Two annual replacements and thirteen non-overlapping official Album week rows are verified; aggregate difference345560 remains unresolved. No Total_CNT, Retail, Hanteo or Japan contribution.",
-            "weeklyContribution": 20990
+            "remainingDifference": 340373,
+            "aggregateAccess": "Unverified legacy observation from a single Soridata database family; not independently rebuilt.",
+            "reason": "Two dated release cumulative cohorts replace their exact earlier month/annual/week contributions, net+5187. Legacy aggregate difference340373 remains unresolved. No Hanteo/Retail/Japan mixing.",
+            "weeklyContribution": 20990,
+            "releaseCumulativeReplacementNet": 5187
           },
           "officialAnnualReadback20261028": {
             "checkedAt": "2026-10-28",
@@ -1593,10 +1627,243 @@
               "overlap": false,
               "separateVersionExclusion": "Cosmo editions and cumulative Total_CNT excluded; existing annual replacements cover different editions."
             }
+          ],
+          "releaseCumulativeReplacements": [
+            {
+              "release": "Visionary Vision <Performante>",
+              "newCumulativeLowerBound": 337203,
+              "crossPublisherSourceIds": [
+                "koreanSales",
+                "chukkae",
+                "theqoo20250216",
+                "sina20260223"
+              ],
+              "cumulativeKnownBy": "2026-02-23",
+              "withinApplicationCutoff": "2026-06",
+              "coversMonthRows": [
+                {
+                  "index": 20,
+                  "expectedBefore": {
+                    "year": 2024,
+                    "month": 10,
+                    "sales": 286809,
+                    "album": "Visionary Vision (Cosmo)"
+                  }
+                },
+                {
+                  "index": 21,
+                  "expectedBefore": {
+                    "year": 2024,
+                    "month": 10,
+                    "sales": 41362,
+                    "album": "Visionary Vision"
+                  }
+                }
+              ],
+              "coversExistingWeeklyRows": [
+                {
+                  "index": 9,
+                  "expectedBefore": {
+                    "year": 2024,
+                    "week": 46,
+                    "dateRange": "2024.11.10~2024.11.16 (46)",
+                    "album": "Visionary Vision ＜Performante＞",
+                    "artist": "tripleS (트리플에스)",
+                    "albumId": "78104",
+                    "sales": 1126,
+                    "metricField": "Album_CNT",
+                    "rank": 57,
+                    "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=46&yearTime=3",
+                    "checkedAt": "2026-10-29T08:12:52.783507+00:00",
+                    "responseSha256": "29472a28c7b9e04a860ab6535d8fcfad49e9312a8dc9f57fa5dee440934df424",
+                    "pageSha256": "5df06a1f21ac22dfcef82c1557d9331f0149ef5ba0d4a889c44d7b6dd597f87a"
+                  }
+                },
+                {
+                  "index": 11,
+                  "expectedBefore": {
+                    "year": 2024,
+                    "week": 48,
+                    "dateRange": "2024.11.24~2024.11.30 (48)",
+                    "album": "Visionary Vision ＜Performante＞",
+                    "artist": "tripleS (트리플에스)",
+                    "albumId": "78104",
+                    "sales": 1162,
+                    "metricField": "Album_CNT",
+                    "rank": 64,
+                    "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=48&yearTime=3",
+                    "checkedAt": "2026-10-29T14:03:04.293961+00:00",
+                    "responseSha256": "95eef1525b977a21921ef5dfb75ba8deb5ac2c04e3d96dbbf45598feb6a0b8b8",
+                    "pageSha256": "0268d1c736c83de82212f76a4090c749a527f234b2569d8d2f8c5ea21e363ad1"
+                  }
+                }
+              ],
+              "coversAnnualReplacements": [
+                {
+                  "index": 0,
+                  "expectedBefore": {
+                    "year": 2024,
+                    "album": "Visionary Vision <Performante> (Cosmo)",
+                    "annual": 289224,
+                    "rank": 81,
+                    "primary": "https://circlechart.kr/page_chart/album.circle?hitYear=2024&nationGbn=T&targetTime=2024&termGbn=year&yearTime=3",
+                    "readable": "https://www.ptt.cc/bbs/KoreanPop/M.1736512580.A.BEF.html",
+                    "replacedMonthlyRows": [
+                      {
+                        "rowIndex": 20,
+                        "year": 2024,
+                        "month": 10,
+                        "sales": 286809,
+                        "album": "Visionary Vision (Cosmo)"
+                      }
+                    ],
+                    "monthlySum": 286809,
+                    "delta": 2415,
+                    "titleMappings": [
+                      {
+                        "rowIndex": 20,
+                        "expectedBefore": {
+                          "year": 2024,
+                          "month": 10,
+                          "sales": 286809,
+                          "album": "Visionary Vision (Cosmo)"
+                        },
+                        "resolvedAlbum": "Visionary Vision <Performante> (Cosmo)",
+                        "sourceId": "performante-month-2024-10",
+                        "sourceUrl": "https://www.ptt.cc/bbs/KoreanPop/M.1730996662.A.A38.html",
+                        "exactSourceRow": "8 (NEW) tripleS - Visionary Vision ＜Performante＞ (Cosmo) 286,809 / 286,809",
+                        "matchBasis": "same artist, chart year/month, exact sales number, full album title and Cosmo version"
+                      }
+                    ],
+                    "sourceAccess": {
+                      "primary": "search-index-only; direct annual-chart open returned shell",
+                      "readable": "full-page-read; dated third-party Circle chart reproduction/report",
+                      "monthly": "full-page-read; dated PTT reproductions of the exact month charts"
+                    },
+                    "annualSourceId": "performante-annual-2024",
+                    "method": "replace same-year same-version covered monthly rows with annual total; never add annual total to those rows"
+                  }
+                }
+              ],
+              "beforeContribution": {
+                "monthly": 328171,
+                "annualNetAdjustment": 2415,
+                "weekly": 2288,
+                "total": 332874
+              },
+              "netDelta": 4329,
+              "method": "Replace the complete previously contributing release cohort with corroborated all-version Korean Circle release cumulative; do not add the entire cumulative value on top of prior month/year/week contributions. Preserve historical rows as evidence.",
+              "notClaimed": [
+                "Global lifetime total",
+                "Artist-wide2458789 reconciliation",
+                "New official chart body read this task"
+              ]
+            },
+            {
+              "release": "ASSEMBLE",
+              "newCumulativeLowerBound": 54857,
+              "crossPublisherSourceIds": [
+                "koreanSales",
+                "chukkae",
+                "theqoo20250216"
+              ],
+              "cumulativeKnownBy": "2025-02-15",
+              "withinApplicationCutoff": "2026-06",
+              "coversMonthRows": [
+                {
+                  "index": 33,
+                  "expectedBefore": {
+                    "year": 2023,
+                    "month": 4,
+                    "sales": 5203,
+                    "album": "ASSEMBLE"
+                  }
+                },
+                {
+                  "index": 34,
+                  "expectedBefore": {
+                    "year": 2023,
+                    "month": 2,
+                    "sales": 40221,
+                    "album": "ASSEMBLE"
+                  }
+                }
+              ],
+              "coversExistingWeeklyRows": [
+                {
+                  "index": 2,
+                  "expectedBefore": {
+                    "year": 2023,
+                    "week": 10,
+                    "dateRange": "2023.03.05~2023.03.11 (10)",
+                    "album": "ASSEMBLE",
+                    "artist": "tripleS (트리플에스)",
+                    "albumId": "71789",
+                    "sales": 2587,
+                    "metricField": "Album_CNT",
+                    "rank": 52,
+                    "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=10&yearTime=3",
+                    "checkedAt": "2026-10-28T13:27:33.035051+00:00",
+                    "responseSha256": "d99684156019dc331cfcb3faa17173018f973721756bdcc221559bbc09401aff",
+                    "pageSha256": "31d5f663375362d37397a3b1722ade3b07d2f96c424e8074d12158b8dd41b796"
+                  }
+                },
+                {
+                  "index": 5,
+                  "expectedBefore": {
+                    "year": 2025,
+                    "week": 5,
+                    "dateRange": "2025.01.26~2025.02.01 (05)",
+                    "album": "＜ASSEMBLE＞ (Cosmo)",
+                    "artist": "tripleS (트리플에스)",
+                    "albumId": "78957",
+                    "sales": 3699,
+                    "metricField": "Album_CNT",
+                    "rank": 6,
+                    "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2025&targetTime=05&yearTime=3",
+                    "checkedAt": "2026-10-28T15:35:12.842853+00:00",
+                    "responseSha256": "b0d2c274d345dcdeab5aad2455ba4e241049342815129b64d97c9449f474bcda",
+                    "pageSha256": "e5b9dc9f6ef98ec94b8badc557c4acaf1f9699dea57a1369b79d944dcc8637f0"
+                  }
+                },
+                {
+                  "index": 6,
+                  "expectedBefore": {
+                    "year": 2025,
+                    "week": 6,
+                    "dateRange": "2025.02.02~2025.02.08 (06)",
+                    "album": "＜ASSEMBLE＞ (Cosmo)",
+                    "artist": "tripleS (트리플에스)",
+                    "albumId": "78957",
+                    "sales": 2289,
+                    "metricField": "Album_CNT",
+                    "rank": 43,
+                    "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2025&targetTime=06&yearTime=3",
+                    "checkedAt": "2026-10-28T15:35:17.226851+00:00",
+                    "responseSha256": "6c699dfc263f173d79035b4d393f3761c24887773fcb899ba9552dc375a770de",
+                    "pageSha256": "1ea7130d8eeda56dc23da812d85dcbac036f08ddcc1a93c74d337bc7118d03de"
+                  }
+                }
+              ],
+              "coversAnnualReplacements": [],
+              "beforeContribution": {
+                "monthly": 45424,
+                "annualNetAdjustment": 0,
+                "weekly": 8575,
+                "total": 53999
+              },
+              "netDelta": 858,
+              "method": "Replace the complete previously contributing release cohort with corroborated all-version Korean Circle release cumulative; do not add the entire cumulative value on top of prior month/year/week contributions. Preserve historical rows as evidence.",
+              "notClaimed": [
+                "Global lifetime total",
+                "Artist-wide2458789 reconciliation",
+                "New official chart body read this task"
+              ]
+            }
           ]
         },
         "lowerBound": true,
-        "rawDisplay": "2,113,229+"
+        "rawDisplay": "2,118,416+"
       },
       "wins": {
         "observedValue": 6,
@@ -2155,22 +2422,163 @@
         }
       },
       "wins": {
-        "observedValue": null,
+        "observedValue": 0,
         "displayValue": 0,
-        "status": "unavailable",
+        "status": "observed",
         "unit": "wins",
         "title": "打歌一位累计",
-        "scope": "韩国音乐节目一位；未取得足够可信的当前累计，按用户要求显示0。",
-        "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.889410+00:00",
-        "sourceUrl": null,
-        "sourceTitle": null,
-        "sources": [],
-        "notes": [
-          "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
-          "已检索团体名、Music Show Wins及Soridata等公开记录；未将搜索无结果当作确认零。"
+        "scope": "韩国传统六个音乐节目一位，逐期获奖表覆盖2022—2026并截至2026-10-29。",
+        "asOf": "2026-10-29",
+        "checkedAt": "2026-10-30",
+        "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Inkigayo_Chart_winners_(2026)",
+        "sourceTitle": "传统六节目 · 逐期获奖记录核对",
+        "sources": [
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Inkigayo_Chart_winners_(2026)",
+            "title": "Inkigayo · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "d8a4f9252f5042ec1cd6f91aeedfd0cd6573c13da77f0b7b52d4b57480c8896e"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_M_Countdown_Chart_winners_(2026)",
+            "title": "M Countdown · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "f5d111e2e290ca51a45a5960eaeecc3ff2091a24597ce8b0c434daeb397934c6"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Music_Bank_Chart_winners_(2026)",
+            "title": "Music Bank · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "5fe99d7df46cfb0111e4ff6cef9b77f516734206ec85dec9497c1cf7dce26a55"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Show_Champion_Chart_winners_(2026)",
+            "title": "Show Champion · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "dd39ea9b0e09c8dc50aec725d59a89f623d899a5655076e1da5120daeb4f4cd6"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Show!_Music_Core_Chart_winners_(2026)",
+            "title": "Show! Music Core · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "537446c780b831ac0e5a2e364f56b7ac256bfa5fbc1ee7d2e542df44991d3cab"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_The_Show_Chart_winners_(2026)",
+            "title": "The Show · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "98defcfa9958b436e9049b68d7852ca023fc6ac25b63492a4555d42933c7660f"
+          },
+          {
+            "url": "https://www.reddit.com/r/kpop/comments/18uds7a/",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2023-12-30",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "Music Core2023-12-23 explicitly No Broadcast, No Winner; fills missing annual-table last-week calendar entry."
+          },
+          {
+            "url": "https://www.reddit.com/r/kpop/comments/18zxp84/",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2024-01-06",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "Music Core2023-12-30 explicitly No Broadcast, No Winner; fills second missing annual-table week."
+          },
+          {
+            "url": "https://www.mirrormedia.mg/external/tvbs_2805589",
+            "title": "TVBS mirrored byMirrorMedia",
+            "sourceDate": "2025-03-12",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "GENBLUE on2025-03-11 THE SHOW finished second;3210votes were pre-vote category first, not overall music-show trophy."
+          },
+          {
+            "url": "https://www.kpopdb.net/en/artist/696/song.php?a=752&s=2840",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": null,
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "ACT LIKE THAT single totalwins0 and secondplace3351points2025-03-11; corroborates that specific promotion only."
+          },
+          {
+            "url": "https://board.twicehub.com/News/46",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2023-11-09",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "Explicitly VCHA prerelease Y.O.Universe had earned no music-show awards as of the article."
+          },
+          {
+            "url": "https://www.soompi.com/article/1881045wpp/watch-nct-wish-takes-1st-win-for-i-spy-on-music-bank-performances-by-ive-a2o-lite-and-more",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2026-10-23",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "NCT WISH I SPY Music Bank8352points matches annual table latest row."
+          }
         ],
-        "evidence": {}
+        "notes": [
+          "统计范围为传统六节目获奖记录，按节目和日期去重；取消或无奖周不计奖杯。"
+        ],
+        "evidence": {
+          "kind": "bounded-six-program-winner-audit",
+          "coverageStart": "2022-01-01",
+          "coverageEnd": "2026-10-29",
+          "programs": [
+            "Inkigayo",
+            "M Countdown",
+            "Music Bank",
+            "Show Champion",
+            "Show! Music Core",
+            "The Show"
+          ],
+          "annualTables": 30,
+          "weeklyRowsIncludingCancellations": 1488,
+          "aliasesChecked": [
+            "GENBLUE",
+            "GEN BLUE",
+            "젠블루",
+            "幻藍小熊",
+            "幻蓝小熊"
+          ],
+          "winnerMatches": 0,
+          "calendarExceptions": [
+            {
+              "program": "Show! Music Core",
+              "dates": [
+                "2023-12-23",
+                "2023-12-30"
+              ],
+              "annualChartEnds": "2023-12-16",
+              "separateReview": "r/kpop contemporary weekly summaries explicitly record No Broadcast and No Winner for both dates.",
+              "sources": [
+                "https://www.reddit.com/r/kpop/comments/18uds7a/",
+                "https://www.reddit.com/r/kpop/comments/18zxp84/"
+              ]
+            },
+            {
+              "program": "The Show",
+              "period": "2026-01-01 through2026-06-01",
+              "reason": "Source intro states new season restart2026-06-02 after hiatus sinceNovember2025; first2026 award June2."
+            }
+          ],
+          "excludedBrands": [],
+          "sourceFamily": "Wikipedia annual winner tables, with broadcaster/news per-episode references; not counted as30 independent sources.",
+          "evidenceRef": "docs/codex/evidence/20261030-priority-crosscheck/wins-coverage-manifest.json"
+        }
       }
     },
     "rescene": {
@@ -4425,22 +4833,160 @@
         "evidence": {}
       },
       "wins": {
-        "observedValue": null,
+        "observedValue": 0,
         "displayValue": 0,
-        "status": "unavailable",
+        "status": "observed",
         "unit": "wins",
         "title": "打歌一位累计",
-        "scope": "韩国音乐节目一位；未取得足够可信的当前累计，按用户要求显示0。",
-        "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.889410+00:00",
-        "sourceUrl": null,
-        "sourceTitle": null,
-        "sources": [],
-        "notes": [
-          "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
-          "已检索团体名、Music Show Wins及Soridata等公开记录；未将搜索无结果当作确认零。"
+        "scope": "韩国传统六个音乐节目一位，逐期获奖表覆盖2022—2026并截至2026-10-29。",
+        "asOf": "2026-10-29",
+        "checkedAt": "2026-10-30",
+        "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Inkigayo_Chart_winners_(2026)",
+        "sourceTitle": "传统六节目 · 逐期获奖记录核对",
+        "sources": [
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Inkigayo_Chart_winners_(2026)",
+            "title": "Inkigayo · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "d8a4f9252f5042ec1cd6f91aeedfd0cd6573c13da77f0b7b52d4b57480c8896e"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_M_Countdown_Chart_winners_(2026)",
+            "title": "M Countdown · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "f5d111e2e290ca51a45a5960eaeecc3ff2091a24597ce8b0c434daeb397934c6"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Music_Bank_Chart_winners_(2026)",
+            "title": "Music Bank · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "5fe99d7df46cfb0111e4ff6cef9b77f516734206ec85dec9497c1cf7dce26a55"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Show_Champion_Chart_winners_(2026)",
+            "title": "Show Champion · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "dd39ea9b0e09c8dc50aec725d59a89f623d899a5655076e1da5120daeb4f4cd6"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Show!_Music_Core_Chart_winners_(2026)",
+            "title": "Show! Music Core · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "537446c780b831ac0e5a2e364f56b7ac256bfa5fbc1ee7d2e542df44991d3cab"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_The_Show_Chart_winners_(2026)",
+            "title": "The Show · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "98defcfa9958b436e9049b68d7852ca023fc6ac25b63492a4555d42933c7660f"
+          },
+          {
+            "url": "https://www.reddit.com/r/kpop/comments/18uds7a/",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2023-12-30",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "Music Core2023-12-23 explicitly No Broadcast, No Winner; fills missing annual-table last-week calendar entry."
+          },
+          {
+            "url": "https://www.reddit.com/r/kpop/comments/18zxp84/",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2024-01-06",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "Music Core2023-12-30 explicitly No Broadcast, No Winner; fills second missing annual-table week."
+          },
+          {
+            "url": "https://www.mirrormedia.mg/external/tvbs_2805589",
+            "title": "TVBS mirrored byMirrorMedia",
+            "sourceDate": "2025-03-12",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "GENBLUE on2025-03-11 THE SHOW finished second;3210votes were pre-vote category first, not overall music-show trophy."
+          },
+          {
+            "url": "https://www.kpopdb.net/en/artist/696/song.php?a=752&s=2840",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": null,
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "ACT LIKE THAT single totalwins0 and secondplace3351points2025-03-11; corroborates that specific promotion only."
+          },
+          {
+            "url": "https://board.twicehub.com/News/46",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2023-11-09",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "Explicitly VCHA prerelease Y.O.Universe had earned no music-show awards as of the article."
+          },
+          {
+            "url": "https://www.soompi.com/article/1881045wpp/watch-nct-wish-takes-1st-win-for-i-spy-on-music-bank-performances-by-ive-a2o-lite-and-more",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2026-10-23",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "NCT WISH I SPY Music Bank8352points matches annual table latest row."
+          }
         ],
-        "evidence": {}
+        "notes": [
+          "统计范围为传统六节目获奖记录，按节目和日期去重；取消或无奖周不计奖杯。"
+        ],
+        "evidence": {
+          "kind": "bounded-six-program-winner-audit",
+          "coverageStart": "2022-01-01",
+          "coverageEnd": "2026-10-29",
+          "programs": [
+            "Inkigayo",
+            "M Countdown",
+            "Music Bank",
+            "Show Champion",
+            "Show! Music Core",
+            "The Show"
+          ],
+          "annualTables": 30,
+          "weeklyRowsIncludingCancellations": 1488,
+          "aliasesChecked": [
+            "TRACER",
+            "트레이서"
+          ],
+          "winnerMatches": 0,
+          "calendarExceptions": [
+            {
+              "program": "Show! Music Core",
+              "dates": [
+                "2023-12-23",
+                "2023-12-30"
+              ],
+              "annualChartEnds": "2023-12-16",
+              "separateReview": "r/kpop contemporary weekly summaries explicitly record No Broadcast and No Winner for both dates.",
+              "sources": [
+                "https://www.reddit.com/r/kpop/comments/18uds7a/",
+                "https://www.reddit.com/r/kpop/comments/18zxp84/"
+              ]
+            },
+            {
+              "program": "The Show",
+              "period": "2026-01-01 through2026-06-01",
+              "reason": "Source intro states new season restart2026-06-02 after hiatus sinceNovember2025; first2026 award June2."
+            }
+          ],
+          "excludedBrands": [],
+          "sourceFamily": "Wikipedia annual winner tables, with broadcaster/news per-episode references; not counted as30 independent sources.",
+          "evidenceRef": "docs/codex/evidence/20261030-priority-crosscheck/wins-coverage-manifest.json"
+        }
       }
     },
     "witchx": {
@@ -5274,22 +5820,163 @@
         "evidence": {}
       },
       "wins": {
-        "observedValue": null,
+        "observedValue": 0,
         "displayValue": 0,
-        "status": "unavailable",
+        "status": "observed",
         "unit": "wins",
         "title": "打歌一位累计",
-        "scope": "韩国音乐节目一位；未取得足够可信的当前累计，按用户要求显示0。",
-        "asOf": null,
-        "checkedAt": "2026-10-25T16:25:50.889410+00:00",
-        "sourceUrl": null,
-        "sourceTitle": null,
-        "sources": [],
-        "notes": [
-          "按2026-10-25用户设置显示0；observedValue保持null，0不是已证实的真实统计值。",
-          "已检索团体名、Music Show Wins及Soridata等公开记录；未将搜索无结果当作确认零。"
+        "scope": "韩国传统六个音乐节目一位，逐期获奖表覆盖2022—2026并截至2026-10-29。只统计VCHA品牌，不合入GIRLSET。",
+        "asOf": "2026-10-29",
+        "checkedAt": "2026-10-30",
+        "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Inkigayo_Chart_winners_(2026)",
+        "sourceTitle": "传统六节目 · 逐期获奖记录核对",
+        "sources": [
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Inkigayo_Chart_winners_(2026)",
+            "title": "Inkigayo · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "d8a4f9252f5042ec1cd6f91aeedfd0cd6573c13da77f0b7b52d4b57480c8896e"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_M_Countdown_Chart_winners_(2026)",
+            "title": "M Countdown · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "f5d111e2e290ca51a45a5960eaeecc3ff2091a24597ce8b0c434daeb397934c6"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Music_Bank_Chart_winners_(2026)",
+            "title": "Music Bank · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "5fe99d7df46cfb0111e4ff6cef9b77f516734206ec85dec9497c1cf7dce26a55"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Show_Champion_Chart_winners_(2026)",
+            "title": "Show Champion · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "dd39ea9b0e09c8dc50aec725d59a89f623d899a5655076e1da5120daeb4f4cd6"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_Show!_Music_Core_Chart_winners_(2026)",
+            "title": "Show! Music Core · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "537446c780b831ac0e5a2e364f56b7ac256bfa5fbc1ee7d2e542df44991d3cab"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/List_of_The_Show_Chart_winners_(2026)",
+            "title": "The Show · 2026获奖表",
+            "sourceDate": "2026",
+            "checkedAt": "2026-10-30",
+            "kind": "winner-chart-archive",
+            "sha256": "98defcfa9958b436e9049b68d7852ca023fc6ac25b63492a4555d42933c7660f"
+          },
+          {
+            "url": "https://www.reddit.com/r/kpop/comments/18uds7a/",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2023-12-30",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "Music Core2023-12-23 explicitly No Broadcast, No Winner; fills missing annual-table last-week calendar entry."
+          },
+          {
+            "url": "https://www.reddit.com/r/kpop/comments/18zxp84/",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2024-01-06",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "Music Core2023-12-30 explicitly No Broadcast, No Winner; fills second missing annual-table week."
+          },
+          {
+            "url": "https://www.mirrormedia.mg/external/tvbs_2805589",
+            "title": "TVBS mirrored byMirrorMedia",
+            "sourceDate": "2025-03-12",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "GENBLUE on2025-03-11 THE SHOW finished second;3210votes were pre-vote category first, not overall music-show trophy."
+          },
+          {
+            "url": "https://www.kpopdb.net/en/artist/696/song.php?a=752&s=2840",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": null,
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "ACT LIKE THAT single totalwins0 and secondplace3351points2025-03-11; corroborates that specific promotion only."
+          },
+          {
+            "url": "https://board.twicehub.com/News/46",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2023-11-09",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "Explicitly VCHA prerelease Y.O.Universe had earned no music-show awards as of the article."
+          },
+          {
+            "url": "https://www.soompi.com/article/1881045wpp/watch-nct-wish-takes-1st-win-for-i-spy-on-music-bank-performances-by-ive-a2o-lite-and-more",
+            "title": "逐期获奖交叉记录",
+            "sourceDate": "2026-10-23",
+            "checkedAt": "2026-10-30",
+            "kind": "crosscheck",
+            "scope": "NCT WISH I SPY Music Bank8352points matches annual table latest row."
+          }
         ],
-        "evidence": {}
+        "notes": [
+          "统计范围为传统六节目获奖记录，按节目和日期去重；取消或无奖周不计奖杯。"
+        ],
+        "evidence": {
+          "kind": "bounded-six-program-winner-audit",
+          "coverageStart": "2022-01-01",
+          "coverageEnd": "2026-10-29",
+          "programs": [
+            "Inkigayo",
+            "M Countdown",
+            "Music Bank",
+            "Show Champion",
+            "Show! Music Core",
+            "The Show"
+          ],
+          "annualTables": 30,
+          "weeklyRowsIncludingCancellations": 1488,
+          "aliasesChecked": [
+            "VCHA",
+            "비춰",
+            "비차"
+          ],
+          "winnerMatches": 0,
+          "calendarExceptions": [
+            {
+              "program": "Show! Music Core",
+              "dates": [
+                "2023-12-23",
+                "2023-12-30"
+              ],
+              "annualChartEnds": "2023-12-16",
+              "separateReview": "r/kpop contemporary weekly summaries explicitly record No Broadcast and No Winner for both dates.",
+              "sources": [
+                "https://www.reddit.com/r/kpop/comments/18uds7a/",
+                "https://www.reddit.com/r/kpop/comments/18zxp84/"
+              ]
+            },
+            {
+              "program": "The Show",
+              "period": "2026-01-01 through2026-06-01",
+              "reason": "Source intro states new season restart2026-06-02 after hiatus sinceNovember2025; first2026 award June2."
+            }
+          ],
+          "excludedBrands": [
+            "GIRLSET"
+          ],
+          "sourceFamily": "Wikipedia annual winner tables, with broadcaster/news per-episode references; not counted as30 independent sources.",
+          "evidenceRef": "docs/codex/evidence/20261030-priority-crosscheck/wins-coverage-manifest.json"
+        }
       }
     },
     "hitgs": {

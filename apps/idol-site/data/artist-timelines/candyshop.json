@@ -213,13 +213,16 @@
       "id": "e-candyshop-yuina-hiatus-announcement",
       "groupId": "rec28ldfRTiDlb",
       "eventType": "hiatus",
-      "title": "公告候选：YUINA暂时停止团体活动",
-      "summary": "转载的Brave署名原声明图说明YUINA不参加之后预定行程；Korea JoongAng Daily具名回顾报道将暂停团体活动日期表述为2024年5月9日。",
-      "scopeNote": "只保留公开活动安排，未存原因。2024年5月9日为具名报道所指暂停日；原官方刊载位置及独立日期仍未证，本条实际日期与待核状态不提升。这不是退团公告，不从官网移除推退出。",
-      "eventDate": null,
+      "title": "YUINA暂停团体活动",
+      "summary": "YUINA自2024年5月9日起暂停团体活动。",
+      "scopeNote": "暂停活动不等于退团，不变更原成员身份或关系。",
+      "eventDate": {
+        "value": "2024-05-09",
+        "precision": "day"
+      },
       "announcementDate": null,
       "plannedDate": null,
-      "status": "announced",
+      "status": "confirmed",
       "importance": "major",
       "memberIds": [
         "recvxAPQCFyiww"
@@ -250,20 +253,43 @@
           "checkedAt": "2026-10-28",
           "scopeNote": "已读具名原创回顾报道正文；报道将暂停日表述为2024-05-09，只作为媒体所述日期，不提升实际日期或解除待核，不采原因或推定退出。",
           "evidenceRef": "docs/codex/evidence/20261028-continuous/statistics-research-c.json"
+        },
+        {
+          "id": "priority-crosscheck-newsis",
+          "url": "https://www.newsis.com/view/NISX20240509_0002728204",
+          "publisher": "Newsis / 추승현",
+          "title": "YUINA暂停团体活动 · 日期依据",
+          "sourcePublishedAt": {
+            "value": "2024-05-09",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-30",
+          "scopeNote": "当日原采引述已暂停，后续不参加安排。",
+          "evidenceRef": "docs/codex/evidence/20261030-priority-crosscheck/date-adoption.json"
+        },
+        {
+          "id": "priority-crosscheck-kjd",
+          "url": "https://www.koreajoongangdaily.com/entertainment/candy-shop-introduces-new-member-julia-comeback-scheduled-for-june/11846351",
+          "publisher": "Korea JoongAng Daily / KIM MIN-YOUNG",
+          "title": "YUINA暂停团体活动 · 日期依据",
+          "sourcePublishedAt": {
+            "value": "2024-05-14",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-30",
+          "scopeNote": "具名回顾明确暂停发生于5月9日。",
+          "evidenceRef": "docs/codex/evidence/20261030-priority-crosscheck/date-adoption.json"
         }
       ],
-      "reviewStatus": "hold",
-      "holdReasons": [
-        "已实际读到原声明图的转载，但缺原官方刊载位置与日期；媒体日期仅作线索，不提升ready。"
-      ]
+      "reviewStatus": "ready",
+      "holdReasons": []
     }
   ],
   "gaps": [
-    "YUINA原声明图转载已读但原官方刊载位置/日期未核，保留hiatus hold；不当退团。",
     "JULIA独立加入日未知；原采访5月与6月12日口径冲突保留。",
     "TIP TOE仅第一方日期目录而hold；首专未把未直接核准曲目强行绑定Good Girl，没有占位记录。",
     "成员退出、明确解散与经纪转移原文未建立；官网四人/移除网页不补事件。",
     "三主要发行均已建立；未发现可独立核准的后续新团体载体，不用无新资料证明正式解散。",
-    "YUINA原官方刊载与独立日期仍旧hold，JULIA实际加入日仍未知；本片不重做成员资料。"
+    "JULIA实际加入日仍未知；本批不变更成员关系。"
   ]
 }

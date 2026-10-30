@@ -1,5 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{createHash}=require('node:crypto');
-const data=require('../data/group-statistics-completion-evidence.json');
+const {beforePriorityStatistics,beforePriorityGuard,beforeApprovedMemberLayoutGuard}=require('./helpers/priority-statistics-baseline.cjs');
+const data=beforePriorityStatistics(require('../data/group-statistics-completion-evidence.json'));
 const {beforeNextFollowupStatistics,receipt}=require('./helpers/next-followup-statistics.cjs');
 const proof=require('../../../docs/codex/evidence/20261029-next-followup/triples-independent-readback.json');
 const sum=(a,k)=>a.reduce((n,r)=>n+r[k],0),sha=x=>createHash('sha256').update(x).digest('hex');
@@ -24,8 +25,8 @@ test('two disjoint Album_CNT weeks extend only the verified lower bound and pres
  }
 });
 test('the runtime guard pins the exact new statistics bytes and every other protected entry is unchanged',()=>{
- const guard=require('../scripts/udtt-private-build-assets-manifest.json'),r=guard.runtimeGuards['data/group-statistics-completion-evidence.json'];
- const file=fs.readFileSync(path.join(__dirname,'../data/group-statistics-completion-evidence.json'));assert.deepEqual(r,{bytes:file.length,sha256:sha(file)});assert.deepEqual(r,receipt.guardChange.after);
+ const guard=beforeApprovedMemberLayoutGuard(beforePriorityGuard(require('../scripts/udtt-private-build-assets-manifest.json'))),r=guard.runtimeGuards['data/group-statistics-completion-evidence.json'];
+ const file=Buffer.from(JSON.stringify(data,null,2)+'\n');assert.deepEqual(r,{bytes:file.length,sha256:sha(file)});assert.deepEqual(r,receipt.guardChange.after);
  const prior=JSON.parse(require('node:child_process').execFileSync('git',['show','ec9efbc590673b8bbb98e6c98db303303a3b8aa0:apps/idol-site/scripts/udtt-private-build-assets-manifest.json'],{cwd:path.join(__dirname,'..'),encoding:'utf8'}));
  const restored=structuredClone(guard);restored.runtimeGuards['data/group-statistics-completion-evidence.json']=receipt.guardChange.expectedBefore;assert.deepEqual(restored,prior);
 });

@@ -21,9 +21,10 @@ for(const slug of ['ifeye','genblue','rocketpunch'])test(`${slug}: fixed promoti
  }
  assert.equal(JSON.stringify(doc),before,'rendering must never mutate data');
 });
-test('all seven unresolved holds retain exact baseline objects and remain hidden',()=>{
+test('the seven historical holds retain exact baseline objects before the five explicitly reviewed priority promotions',()=>{
  const ledger=require('../HANDOFF/batch-f/integration-ledger.json');const {digest}=require('./helpers/timeline-correction-chain.cjs');
  const held=[];let ready=0,total=0;
- for(const g of registry){const d=JSON.parse(fs.readFileSync(path.join(root,'data/artist-timelines',g.slug+'.json')));total+=d.events.length;ready+=d.events.filter(e=>e.reviewStatus==='ready').length;for(const e of d.events.filter(e=>e.reviewStatus==='hold')){held.push(e.id);assert.equal(digest(e),ledger.events.find(r=>r.eventId===e.id).adoptedEventSha256);}}
+ const {beforePriorityAndContinuousTimelineBytes}=require('./helpers/priority-date-baseline.cjs');
+ for(const g of registry){const d=JSON.parse(beforePriorityAndContinuousTimelineBytes(g.slug,fs.readFileSync(path.join(root,'data/artist-timelines',g.slug+'.json'))));total+=d.events.length;ready+=d.events.filter(e=>e.reviewStatus==='ready').length;for(const e of d.events.filter(e=>e.reviewStatus==='hold')){held.push(e.id);assert.equal(digest(e),ledger.events.find(r=>r.eventId===e.id).adoptedEventSha256);}}
  assert.equal(total,623);assert.equal(ready,616);assert.equal(held.length,7);assert.equal(new Set(held).size,7);
 });

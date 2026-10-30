@@ -1,5 +1,19 @@
 import type {StageAlternative,StageVideo} from './types';
 
+/** Only explicit, scoped evidence can expose a partial/other-version new source. */
+export function validSameSongFallback(stage:Pick<StageVideo,'sameSongFallback'|'completeness'>,requireEvidence=false):boolean{
+ const f=stage.sameSongFallback;
+ if('versionMatch' in stage&&(stage.versionMatch===true||stage.versionMatch==='exact'))return false;
+ if(!f||typeof f!=='object'||f.sameSong!==true||!/^rec[A-Za-z0-9]+$/.test(f.targetWorkId)||!/^rec[A-Za-z0-9]+$/.test(f.groupId))return false;
+ if(f.sourceWorkId!==undefined&&(!/^rec[A-Za-z0-9]+$/.test(f.sourceWorkId)||f.sourceWorkId===f.targetWorkId))return false;
+ if(!['full','excerpt'].includes(f.completeness)||f.completeness!==stage.completeness||!['exact','different'].includes(f.version)||f.completeness==='full'&&f.version==='exact')return false;
+ if(!['full_group','subunit','solo'].includes(f.performerScope)||f.originalPerformerScope!==f.performerScope)return false;
+ if(![f.targetSong,f.performedSong,f.reason].every(v=>typeof v==='string'&&v.trim()))return false;
+ if(!Array.isArray(f.differences)||f.differences.length<1||f.differences.length>8||!f.differences.every(v=>typeof v==='string'&&v.trim()&&v.length<=300))return false;
+ if(!f.evidence||typeof f.evidence.note!=='string'||!Array.isArray(f.evidence.urls)||requireEvidence&&(!f.evidence.note.trim()||!f.evidence.urls.length))return false;
+ return f.evidence.urls.every(raw=>{try{const u=new URL(raw);return u.protocol==='https:'&&!!u.hostname&&!u.username&&!u.password;}catch{return false;}});
+}
+
 function validClip(c:NonNullable<StageVideo['clip']>){
  return Number.isSafeInteger(c.startSeconds)&&Number.isSafeInteger(c.endSeconds)&&c.startSeconds>=0&&c.endSeconds>c.startSeconds&&Number.isSafeInteger(c.sourceDurationSeconds)&&c.sourceDurationSeconds>0&&c.sourceDurationSeconds<=86400&&c.endSeconds<=c.sourceDurationSeconds&&!!c.evidence&&typeof c.evidence.note==='string'&&Array.isArray(c.evidence.urls);
 }
@@ -23,7 +37,7 @@ export function validXSource(source:{videoId:string;url:string;xMedia?:{videoInd
 }
 export function stageSourceKey(stage:StageVideo|null|undefined):string|null{
  if(!stage||'scorePolicy' in stage&&stage.scorePolicy==='view_only')return null;
- if(stage.sourceClass!==undefined&&!['official','reupload','third_party'].includes(stage.sourceClass)||stage.completeness!==undefined&&stage.completeness!=='full')return null;
+ if(stage.sourceClass!==undefined&&!['official','reupload','third_party'].includes(stage.sourceClass)||stage.sameSongFallback!==undefined&&!validSameSongFallback(stage)||stage.completeness!==undefined&&stage.completeness!=='full'&&!validSameSongFallback(stage))return null;
  if(stage.platform==='x')return validXSource(stage)?`x:${stage.videoId}:video:${stage.xMedia!.videoIndex}`:null;
  if(stage.platform==='bilibili'){
   if(stage.xMedia!==undefined||!validBilibiliSource(stage)||stage.clip&&!validClip(stage.clip))return null;

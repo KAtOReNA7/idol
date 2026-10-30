@@ -4,17 +4,50 @@
   "scope": "User-approved public reporting layer. Canonical facts remain hold; record dates are never effective dates.",
   "records": [
     {
-      "eventId": "e-atheart-aurora-hiatus-observed", "slug": "atheart", "groupId": "rec28ldfRTiEaV", "memberIds": ["recvxAPQCFJ093"],
-      "kind": "report", "recordDate": "2026-03-13", "dateLabel": "采访报道日期", "eventDate": null,
-      "title": "报道记录：Aurora此前未参与出道活动",
-      "summary": "团体原始访谈的背景说明提到，Aurora当时未参与出道专辑活动。这里只记录报道所述的历史情况，不代表当前活动状态。",
-      "boundary": "生效日期未确认；首次暂停的起始日、结束日均未由这篇访谈确定。",
-      "sources": [{"url": "https://m.nocutnews.co.kr/news/amp/6484186", "label": "CBS NoCut News · 原始访谈", "publishedDate": "2026-03-13"}],
+      "eventId": "e-atheart-aurora-hiatus-observed",
+      "slug": "atheart",
+      "groupId": "rec28ldfRTiEaV",
+      "memberIds": [
+        "recvxAPQCFJ093"
+      ],
+      "kind": "report",
+      "recordDate": "2025-07",
+      "dateLabel": "暂停活动（具体日未详）",
+      "eventDate": {
+        "value": "2025-07",
+        "precision": "month"
+      },
+      "title": "Aurora首次暂停活动",
+      "summary": "Aurora从2025年7月初起暂停活动，未参与出道专辑活动。",
+      "boundary": "起始月份为2025年7月，具体日未详；与后续回归及第二次暂停分开，不表示当前仍暂停。",
+      "sources": [
+        {
+          "url": "https://m.nocutnews.co.kr/news/amp/6484186",
+          "label": "CBS NoCut News · 原始访谈",
+          "publishedDate": "2026-03-13"
+        },
+        {
+          "url": "https://www.nme.com/news/music/atheart-make-their-debut-with-plot-twist-ep-launch-3884707",
+          "label": "NME / Surej Singh",
+          "publishedDate": "2025-08-14"
+        },
+        {
+          "url": "https://news.nate.com/view/20250711n04083",
+          "label": "JoyNews24 / 정지원（Nate承载）",
+          "publishedDate": "2025-07-11"
+        }
+      ],
       "legacyNativeIds": []
     },
     {
-      "eventId": "e-atheart-aurora-second-hiatus-announcement", "slug": "atheart", "groupId": "rec28ldfRTiEaV", "memberIds": [],
-      "kind": "report", "recordDate": "2026-08-18", "dateLabel": "官方公告日期", "eventDate": null,
+      "eventId": "e-atheart-aurora-second-hiatus-announcement",
+      "slug": "atheart",
+      "groupId": "rec28ldfRTiEaV",
+      "memberIds": [],
+      "kind": "report",
+      "recordDate": "2026-08-18",
+      "dateLabel": "官方公告日期",
+      "eventDate": null,
       "title": "公告记录：Aurora暂停团体活动",
       "summary": "AtHeart日本官方网站公告，Aurora因健康原因将暂时暂停团体活动，恢复活动时间将在确定后另行通知。这里记录公告内容，不推定实际暂停起始日。",
       "boundary": "生效日期未确认；公告发布日期不等于已独立确认的实际暂停起始日。",
@@ -33,15 +66,23 @@
       "legacyNativeIds": []
     },
     {
-      "eventId": "e-bewave-six-member-phase-end-announcement", "slug": "bewave", "groupId": "rec28ldfRTiDh1", "memberIds": [],
-      "kind": "report", "recordDate": "2025-09-04", "dateLabel": "官方公告日期", "eventDate": null,
-      "title": "公告记录：BEWAVE六人活动阶段调整计划",
-      "summary": "BEWAVE官方平台发布的GOLDDUST声明表示，计划于10月31日结束六人活动阶段，其后重整阵容。该公告证明当时公布的计划，实际执行仍未证实。",
+      "eventId": "e-bewave-six-member-phase-end-announcement",
+      "slug": "bewave",
+      "groupId": "rec28ldfRTiDh1",
+      "memberIds": [],
+      "kind": "report",
+      "recordDate": "2025-10-31",
+      "dateLabel": "六人阶段结束",
+      "eventDate": {
+        "value": "2025-10-31",
+        "precision": "day"
+      },
+      "title": "结束六人活动阶段并重整阵容",
+      "summary": "BEWAVE于2025年10月31日结束六人活动阶段，之后按三人阵容继续活动。",
       "notes": [
-        "本轮已独立读取BEWAVE官方b.stage原帖正文及2025-09-04页面日期，正文署名GOLDDUST ENTERTAINMENT；此前已读韩英声明原图与媒体报道均保留。",
-        "10月31日仍是当时计划；没有将其认定为实际离队、解散或新团成立日期，也不新增成员关联。"
+        "既有公司计划与后续明确完成的成员档案交叉；不是解散、换公司或自动改写成员关系。"
       ],
-      "boundary": "生效日期未确认；不据此认定实际离队、解散或新团成立，也不新增成员关联。",
+      "boundary": "既有公司计划与后续明确完成的成员档案交叉；不是解散、换公司或自动改写成员关系。",
       "sources": [
         {
           "url": "https://bewave.bstage.in/community/board/66a9fce8576cf7398f3f5828/post/68b95530fb5767200f7ec20d",
@@ -62,28 +103,101 @@
           "url": "https://pbs.twimg.com/media/Gz_PoLRbkAATt_c.jpg",
           "label": "GOLDDUST · 韩文声明原图",
           "publishedDate": "2025-09-04"
+        },
+        {
+          "url": "https://kprofiles.com/bewave-members-profile/",
+          "label": "KProfiles · BEWAVE成员档案",
+          "publishedDate": null
         }
       ],
       "legacyNativeIds": []
     },
     {
-      "eventId": "e-candyshop-yuina-hiatus-announcement", "slug": "candyshop", "groupId": "rec28ldfRTiDlb", "memberIds": ["recvxAPQCFyiww"],
-      "kind": "report", "recordDate": "2024-05-09", "dateLabel": "媒体报道日期", "eventDate": null,
-      "title": "报道记录：YUINA暂停团体活动",
-      "summary": "媒体刊载公司声明，说明YUINA不参加之后预定行程。Korea JoongAng Daily随后具名回顾，将暂停团体活动日期表述为2024年5月9日；官方原帖位置及独立发表证据仍待核对。",
-      "notes": ["具名回顾报道所指暂停日为2024-05-09；此处只补报道依据，canonical实际日期仍为null，原事实不提升、不解除待核，不作为退团或成员关系变更证据。"],
-      "boundary": "生效日期未确认；这不是退团公告，不从官网名册变化推定退出。",
-      "sources": [{"url": "https://www.starnewskorea.com/music/2024/05/09/2024050908033147420", "label": "Star News · 公司声明报道", "publishedDate": "2024-05-09"}, {"url": "https://www.koreajoongangdaily.com/entertainment/candy-shop-introduces-new-member-julia-comeback-scheduled-for-june/11846351", "label": "Korea JoongAng Daily · KIM MIN-YOUNG回顾报道", "publishedDate": "2024-05-14"}],
-      "legacyNativeIds": ["e-candyshop-yuina-hiatus-report"]
+      "eventId": "e-candyshop-yuina-hiatus-announcement",
+      "slug": "candyshop",
+      "groupId": "rec28ldfRTiDlb",
+      "memberIds": [
+        "recvxAPQCFyiww"
+      ],
+      "kind": "report",
+      "recordDate": "2024-05-09",
+      "dateLabel": "活动暂停",
+      "eventDate": {
+        "value": "2024-05-09",
+        "precision": "day"
+      },
+      "title": "YUINA暂停团体活动",
+      "summary": "YUINA自2024年5月9日起暂停团体活动。",
+      "notes": [
+        "暂停活动不等于退团，不变更原成员身份或关系。"
+      ],
+      "boundary": "暂停活动不等于退团，不变更原成员身份或关系。",
+      "sources": [
+        {
+          "url": "https://www.starnewskorea.com/music/2024/05/09/2024050908033147420",
+          "label": "Star News · 公司声明报道",
+          "publishedDate": "2024-05-09"
+        },
+        {
+          "url": "https://www.koreajoongangdaily.com/entertainment/candy-shop-introduces-new-member-julia-comeback-scheduled-for-june/11846351",
+          "label": "Korea JoongAng Daily · KIM MIN-YOUNG回顾报道",
+          "publishedDate": "2024-05-14"
+        },
+        {
+          "url": "https://www.newsis.com/view/NISX20240509_0002728204",
+          "label": "Newsis / 추승현",
+          "publishedDate": "2024-05-09"
+        }
+      ],
+      "legacyNativeIds": [
+        "e-candyshop-yuina-hiatus-report"
+      ]
     },
     {
-      "eventId": "e-geenius-spoiler-book-instrumental", "slug": "geenius", "groupId": "rec28ldfRTiDxx", "memberIds": [],
-      "kind": "catalog", "recordDate": "2026-01-15", "dateLabel": "零售目录标示日期", "eventDate": null,
-      "title": "目录记录：《Spoiler Book》QR器乐载体",
-      "summary": "YES24目录及已读HOMe官方手册原图说明《Spoiler Book》为QR器乐载体；目录明确不含CD。2026年1月15日仍只是零售目录标示日期，官方手册未给实际发行日。",
-      "notes": ["官方手册原图已目视读取；官方原帖及2025-12-22时间由公开归档定位，未独立读取X原帖正文。手册证明器乐QR用途，不能将目录日期或原帖日期提升为实际发行日。"],
-      "boundary": "生效日期未确认；不把本条写成完整人声专辑《Love Don’t Change》正式发行。",
-      "sources": [{"url": "https://www.yes24.com/product/goods/170657075", "label": "YES24 · QR器乐产品目录", "publishedDate": null}, {"url": "https://pbs.twimg.com/media/G8gk5DKbYAA8bOX.jpg", "label": "HOMe · Spoiler Book官方手册原图1", "publishedDate": "2025-12-22"}, {"url": "https://pbs.twimg.com/media/G8gk50UakAQNIxZ.jpg", "label": "HOMe · Spoiler Book官方手册原图2", "publishedDate": "2025-12-22"}],
+      "eventId": "e-geenius-spoiler-book-instrumental",
+      "slug": "geenius",
+      "groupId": "rec28ldfRTiDxx",
+      "memberIds": [],
+      "kind": "catalog",
+      "recordDate": "2026-01-15",
+      "dateLabel": "器乐QR发行",
+      "eventDate": {
+        "value": "2026-01-15",
+        "precision": "day"
+      },
+      "title": "《Spoiler Book》器乐QR载体发行",
+      "summary": "Geenius首张器乐版本《Spoiler Book》QR载体于2026年1月15日发行。",
+      "notes": [
+        "仅器乐QR版本；不合并完整人声、LDC或其他发行载体，不改变作品ID。"
+      ],
+      "boundary": "仅器乐QR版本；不合并完整人声、LDC或其他发行载体，不改变作品ID。",
+      "sources": [
+        {
+          "url": "https://www.yes24.com/product/goods/170657075",
+          "label": "YES24 · QR器乐产品目录",
+          "publishedDate": null
+        },
+        {
+          "url": "https://pbs.twimg.com/media/G8gk5DKbYAA8bOX.jpg",
+          "label": "HOMe · Spoiler Book官方手册原图1",
+          "publishedDate": "2025-12-22"
+        },
+        {
+          "url": "https://pbs.twimg.com/media/G8gk50UakAQNIxZ.jpg",
+          "label": "HOMe · Spoiler Book官方手册原图2",
+          "publishedDate": "2025-12-22"
+        },
+        {
+          "url": "https://kpopmon.com/releases/geenius-spoiler-book/",
+          "label": "KPOPMONSTER",
+          "publishedDate": null
+        },
+        {
+          "url": "https://www.kpopalbums.com/products/geenius-spoiler-book-1st-instrumental-album-qr-version",
+          "label": "Kpopalbums",
+          "publishedDate": null
+        }
+      ],
       "legacyNativeIds": []
     },
     {
@@ -118,12 +232,32 @@
       "legacyNativeIds": []
     },
     {
-      "eventId": "e-udtt-sena-predebut-departure-candidate", "slug": "udtt", "groupId": "rec28ldfRTiDPs", "memberIds": [],
-      "kind": "repost", "recordDate": null, "dateLabel": "原始发布日期未核实", "eventDate": null,
-      "title": "转载线索记录：Sena出道前离开",
-      "summary": "社区资料转述Sena在正式出道前离开。这里只保留转载线索，不作为公司或本人声明已核实的证明；旧主办方原稿链接本次已无法读取。",
-      "boundary": "生效日期未确认；不把原稿发表日或团体出道日当作离开日期，不创建或猜测成员ID。",
-      "sources": [{"url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/", "label": "KProfiles社区讨论 · 仅转载线索", "publishedDate": null}],
+      "eventId": "e-udtt-sena-predebut-departure-candidate",
+      "slug": "udtt",
+      "groupId": "rec28ldfRTiDPs",
+      "memberIds": [],
+      "kind": "repost",
+      "recordDate": "2025-03-26",
+      "dateLabel": "出道前退出",
+      "eventDate": {
+        "value": "2025-03-26",
+        "precision": "day"
+      },
+      "title": "Sena在正式出道前离开",
+      "summary": "Sena于2025年3月26日在正式出道前离开。",
+      "boundary": "仅预出道退出事件；保留空成员ID，不创建、合并或猜测身份，不推定Jessica加入日。",
+      "sources": [
+        {
+          "url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+          "label": "KProfiles社区讨论 · 仅转载线索",
+          "publishedDate": null
+        },
+        {
+          "url": "https://thekrazemag.com/latest-updates/2025/5/27/udtts-debut-really-really-deserves-more-love",
+          "label": "The Kraze / Jacob Aron Leung",
+          "publishedDate": "2025-05-27"
+        }
+      ],
       "legacyNativeIds": []
     }
   ]

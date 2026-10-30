@@ -16,6 +16,7 @@ const photo:Shape={...fields('table recordId index kind sourceKind'),
 const stage:Shape={...fields('sourceClass platform completeness likesScope videoId url title channel kind publishedDate checkedAt verificationNote reusesOriginalVideo comparisonLimited comparisonLimitation candidateCount'),
  selection,bilibili:fields('cid page'),xMedia:fields('videoIndex'),
  memberVersionFallback:{...fields('sameSong sameLanguage fullGroup sameArrangementExceptGuest differenceType groupId guestDifference'),evidence},
+ sameSongFallback:{...fields('sameSong targetWorkId sourceWorkId groupId targetSong performedSong completeness version performerScope originalPerformerScope'),differences:ids,evidence},
  clip:{...fields('startSeconds endSeconds sourceDurationSeconds'),evidence},
  audioEquivalence:{...fields('originalBoundWorkId sameAudio')},
  scoreBinding:fields('videoId sourceKey initializedAt initialScore'),likes,
@@ -57,6 +58,7 @@ export function projectPublicCatalog(catalog:CatalogView):CatalogView{
   if(work.stageResearch)work.stageResearch.reason='';
   if(work.stage){work.stage.typeNote='';work.stage.sourceUrl='';work.stage.selectionNote='';
    if(work.stage.clip)work.stage.clip.evidence={note:'',urls:[]};
+   if(work.stage.sameSongFallback){work.stage.sameSongFallback.evidence={note:'',urls:[]};work.stage.sameSongFallback.reason='原目标版本的完整演出尚未取得。';}
    if(work.stage.audioEquivalence){work.stage.audioEquivalence.basis='';work.stage.audioEquivalence.evidenceUrls=[];}
   }
   for(const alt of work.stageSupplement?.alternatives??[]){alt.sourceEvidence={note:'',urls:[]};alt.sameSongEvidence={note:'',urls:[]};if(alt.performerEvidence)alt.performerEvidence={note:'',urls:[]};if(alt.eventEvidence)alt.eventEvidence={note:'',urls:[]};if(alt.version)alt.version.evidence={note:'',urls:[]};}

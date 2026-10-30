@@ -4,7 +4,7 @@ Rated, saved or uncertain bindings are retained. Documented replacements require
 a fresh empty score, complete journal and exact published source preimage.
 """
 import json,sys,datetime,pathlib,re,hashlib
-from stage_selection_policy import checked_selection, comparison_candidates, replacement_preference, checked_member_fallback, version_eligible, checked_comparison
+from stage_selection_policy import checked_selection, comparison_candidates, replacement_preference, checked_member_fallback, checked_same_song_fallback, version_eligible, checked_comparison
 from stage_source_identity import SOURCE_CLASSES, source_key, checked_identity, checked_likes, comparison_group
 root=pathlib.Path(__file__).resolve().parent.parent
 now=datetime.datetime.now(datetime.timezone.utc)
@@ -14,6 +14,28 @@ def public(v):
  if isinstance(v,dict):return {k:public(x) for k,x in v.items() if k!='evidenceFile'}
  if isinstance(v,list):return [public(x) for x in v]
  return v
+def shares_same_song_source_root(rid,source,other_id,other,inventory,sources):
+ # Sibling version targets may share a performance only through the same
+ # explicit, non-fallback original work. Never follow a fallback reference.
+ try:
+  current=checked_same_song_fallback(source);existing=checked_same_song_fallback(other)
+ except (AssertionError,TypeError,ValueError):
+  return False
+ if not current or not existing:return False
+ original_id=current.get('sourceWorkId')
+ if not original_id or original_id!=existing.get('sourceWorkId') or original_id in (rid,other_id):return False
+ original=sources.get(original_id);original_work=inventory.get(original_id)
+ if not original or not original_work or original.get('sameSongFallback') is not None:return False
+ key=source_key(source)
+ if not key or source_key(other)!=key or source_key(original)!=key:return False
+ if not(original_work['groupIds']==inventory[rid]['groupIds']==inventory[other_id]['groupIds']):return False
+ song=lambda value:str(value or '').strip().casefold()
+ for work_id,fallback in ((rid,current),(other_id,existing)):
+  if fallback['targetWorkId']!=work_id or fallback['groupId'] not in inventory[work_id]['groupIds']:return False
+  if song(fallback['targetSong'])!=song(inventory[work_id].get('song')) or song(fallback['performedSong'])!=song(original_work.get('song')):return False
+ if current['performerScope']!=existing['performerScope']:return False
+ if any(original.get(field) not in (None,current['performerScope']) for field in ('performerScope','originalPerformerScope')):return False
+ return True
 batch=load(sys.argv[1]);fresh=load(sys.argv[2]);assert batch['formatVersion']=='idol.stage-evidence.v1'
 assert (fresh.get('source'),fresh.get('formatVersion')) in {
  ('feishu','idol.live-backup.v1'),('native','idol.native-data-export.v1')
@@ -49,7 +71,18 @@ for item in batch['items']:
   if state not in ['pending','missing_song_identity']:assert item.get('searchEvidence'),f'Researched status needs public search evidence {rid}'
   status['works'][rid]={'status':state,'reason':item['reason'],'checkedAt':observation};changed.append(rid);continue
  s=item.get('selected');assert s and s['videoId']==item.get('selectedVideoId'),f'Selection absent {rid}'
- assert s.get('sourceClass') in SOURCE_CLASSES and s.get('platform') in ('youtube','bilibili','x') and s.get('completeness')=='full' and s.get('scorePolicy')!='view_only',f'Formal source must have an explicit platform, upload provenance and full performance, never view-only {rid}'
+ assert s.get('sourceClass') in SOURCE_CLASSES and s.get('platform') in ('youtube','bilibili','x') and s.get('scorePolicy')!='view_only',f'Formal source must have an explicit platform and upload provenance, never view-only {rid}'
+ same_song=checked_same_song_fallback(s)
+ if same_song:
+  assert previous is None,f'Same-song fallback is allowed only for an empty new stage slot {rid}'
+  assert same_song['targetWorkId']==rid and same_song['groupId'] in inv[rid]['groupIds'],f'Same-song fallback work/group mismatch {rid}'
+  assert same_song['targetSong'].strip().casefold()==str(inv[rid].get('song','')).strip().casefold(),f'Same-song fallback target song identity mismatch {rid}'
+  assert '同曲后备' in s.get('label','') and all(d in s.get('verificationNote','') for d in same_song['differences']),f'Same-song fallback needs visible differences {rid}'
+  if same_song.get('sourceWorkId') is not None:
+   other_id=same_song['sourceWorkId'];other=videos.get(other_id)
+   assert other_id in inv and other and inv[other_id]['groupIds']==inv[rid]['groupIds'] and source_key(other)==source_key(s),f'Fallback source work must identify an exact already-bound same-group video {rid}'
+   assert other.get('sameSongFallback') is None,f'Fallback source work must not itself be a same-song fallback {rid}'
+   assert str(inv[other_id].get('song','')).strip().casefold()==same_song['performedSong'].strip().casefold(),f'Fallback performed song differs from referenced source work {rid}'
  selected_key=checked_identity(s)
  if s['platform'] in ('bilibili','x'):assert item.get('selectedSourceKey')==selected_key,f'Bilibili selection needs the complete source key {rid}'
  if 'selectedSourceKey' in item:assert item['selectedSourceKey']==selected_key,f'Selected source key differs from full identity {rid}'
@@ -66,6 +99,7 @@ for item in batch['items']:
  assert version_eligible(picked) and version_eligible(s) and s.get('languageVersionEvidence'),f'Exact version or documented member fallback evidence missing {rid}'
  fallback=checked_member_fallback(s)
  assert picked.get('memberVersionFallback')==fallback,f'Selected member fallback evidence differs from candidate {rid}'
+ assert picked.get('sameSongFallback')==same_song,f'Selected same-song fallback evidence differs from candidate {rid}'
  if fallback:
   assert fallback['groupId'] in inv[rid]['groupIds'],f'Member fallback group differs from target {rid}'
   assert '成员版' in s.get('label','') and '客串' in s.get('verificationNote',''),f'Member fallback must visibly disclose its scope {rid}'
@@ -85,7 +119,7 @@ for item in batch['items']:
  assert 'fld641ausT' in {f.get('field_id') for f in fresh['tables']['works'].get('fields',[])} or fresh['source']=='feishu','Native work schema must include the stage score field'
  if fallback and (not empty or not journal or any(r.get('recordId')==rid for r in journal.get('records',[]))):
   held.append({'recordId':rid,'reason':'Member-version fallback held: existing score or save history, or journal not confirmed.'});continue
- if not previous and (s['platform'] in ('bilibili','x') or s['sourceClass']!='official'):
+ if not previous and (s['platform'] in ('bilibili','x') or s['sourceClass']!='official' or same_song):
   assert rid not in fresh.get('siteMetadata',{}).get('stageVideos',{}),f'Published source preimage differs from absent local source {rid}'
   if not empty or not journal or any(r.get('recordId')==rid for r in journal.get('records',[])):
    held.append({'recordId':rid,'reason':'New platform/upload source held: existing score or save history, or complete journal not confirmed.'});continue
@@ -121,9 +155,9 @@ for item in batch['items']:
  language_evidence=s.get('languageVersionEvidence')
  if isinstance(language_evidence,dict):language_evidence='；'.join(str(language_evidence.get(k)) for k in ['basis','sourceVersion','sourceMVTitle','candidateTitle'] if language_evidence.get(k))
  note=' · '.join(str(v) for v in [s.get('label'),s.get('arrangement'),language_evidence,'依据公开标题、频道和说明核验，未逐句核对音轨；不据此判定真唱。'] if v)
- ranknote='已核整场内对应片段' if clip else '已核同曲同版本同优先级候选中点赞最高' if comparison=='comparable_likes' else '依据人工选择理由与来源证据采用；点赞不可完整比较' if comparison=='manual_evidence' else '本次唯一已核同优先级合格候选'
+ ranknote='同曲后备；完整性与版本差异见说明' if same_song else '已核整场内对应片段' if clip else '已核同曲同版本同优先级候选中点赞最高' if comparison=='comparable_likes' else '依据人工选择理由与来源证据采用；点赞不可完整比较' if comparison=='manual_evidence' else '本次唯一已核同优先级合格候选'
  if clip:candidates=[picked]
- videos[rid]={'sourceClass':s['sourceClass'],'platform':s['platform'],'completeness':'full','videoId':s['videoId'],'url':s['url'],'title':s['title'],'channel':s['channel'],'kind':s.get('label') or s.get('type'),'publishedDate':(s.get('publishedAt') or '')[:10],'typeNote':note,'sourceUrl':s['sourceUrl'],'scoreBinding':bind,'likes':selected_likes,'checkedAt':source_at,'selectionNote':ranknote,'comparisonNote':item['reason'],'reusesOriginalVideo':reuse,'comparisonLimited':bool(item.get('comparisonLimited')) or comparison!='comparable_likes','comparisonLimitation':item.get('comparisonLimitation') or '', 'previousSources':history,'candidateCount':len(candidates),'candidates':[{'title':c['title'],'url':c['url'],'likesDisplay':f"{checked_likes(c)['value']:,}" if checked_likes(c)['precision']=='exact' else checked_likes(c)['display'],'kind':c.get('label') or c.get('kind') or '合格候选（见标题）',**({'platform':'bilibili','videoId':c['videoId'],'bilibili':c['bilibili']} if c['platform']=='bilibili' else {'platform':'x','videoId':c['videoId'],'xMedia':c['xMedia']} if c['platform']=='x' else {})} for c in candidates]}
+ videos[rid]={'sourceClass':s['sourceClass'],'platform':s['platform'],'completeness':s['completeness'],'videoId':s['videoId'],'url':s['url'],'title':s['title'],'channel':s['channel'],'kind':s.get('label') or s.get('type'),'publishedDate':(s.get('publishedAt') or '')[:10],'typeNote':note,'sourceUrl':s['sourceUrl'],'scoreBinding':bind,'likes':selected_likes,'checkedAt':source_at,'selectionNote':ranknote,'comparisonNote':item['reason'],'reusesOriginalVideo':reuse,'comparisonLimited':bool(item.get('comparisonLimited')) or comparison!='comparable_likes','comparisonLimitation':item.get('comparisonLimitation') or '', 'previousSources':history,'candidateCount':len(candidates),'candidates':[{'title':c['title'],'url':c['url'],'likesDisplay':f"{checked_likes(c)['value']:,}" if checked_likes(c)['precision']=='exact' else checked_likes(c)['display'],'kind':c.get('label') or c.get('kind') or '合格候选（见标题）',**({'platform':'bilibili','videoId':c['videoId'],'bilibili':c['bilibili']} if c['platform']=='bilibili' else {'platform':'x','videoId':c['videoId'],'xMedia':c['xMedia']} if c['platform']=='x' else {})} for c in candidates]}
  if s['platform']=='bilibili':videos[rid].update(bilibili=s['bilibili'],likesScope=s.get('likesScope','whole_video'))
  if s['platform']=='x':videos[rid].update(xMedia=s['xMedia'],likesScope='whole_post')
  if s.get('sourceEvidence'):videos[rid]['sourceEvidence']=s['sourceEvidence']
@@ -131,6 +165,7 @@ for item in batch['items']:
   videos[rid]['candidates'][0]['clip']=clip
  videos[rid]['selection']=selection
  if fallback:videos[rid]['memberVersionFallback']=fallback
+ if same_song:videos[rid]['sameSongFallback']=same_song
  if s.get('verificationNote'):
   assert isinstance(s['verificationNote'],str) and s['verificationNote'].strip()
   videos[rid]['verificationNote']=s['verificationNote']
@@ -145,7 +180,7 @@ for item in batch['items']:
  for other_id,other in videos.items():
   if other_id==rid or source_key(other)!=selected_key:continue
   other_identity=(inv[other_id]['groupIds'],str(inv[other_id].get('song','')).strip().casefold())
-  assert target_identity==other_identity or audio_equivalence and audio_equivalence['originalBoundWorkId']==other_id,f'Exact source reused for a different group/song without corroborated audio equivalence {rid}'
+  assert target_identity==other_identity or audio_equivalence and audio_equivalence['originalBoundWorkId']==other_id or same_song and same_song.get('sourceWorkId')==other_id or shares_same_song_source_root(rid,s,other_id,other,inv,videos),f'Exact source reused for a different group/song without corroborated audio equivalence or same-song fallback reference {rid}'
  status['works'][rid]={'status':'verified','reason':item['reason'],'checkedAt':observation}
  if not previous:added.append(rid)
 status['updatedAt']=now.isoformat()

@@ -2,6 +2,7 @@
 from urllib.parse import urlsplit
 import hashlib
 import json
+import re
 from stage_source_identity import SOURCE_CLASSES, checked_identity, checked_likes, comparison_group, source_key
 
 REJECTED = {'l9GLV8Kd-MU', 'saY9KS7mKvI', 'BnmwjH-suLg'}
@@ -34,12 +35,41 @@ def checked_member_fallback(source):
         assert parsed.scheme == 'https' and parsed.hostname and not parsed.username and not parsed.password, 'Invalid member fallback evidence URL'
     return fallback
 
+def checked_same_song_fallback(source):
+    """Explicit new-slot exception; never claims the original full version."""
+    fallback = source.get('sameSongFallback')
+    if fallback is None:
+        return None
+    assert isinstance(fallback, dict) and source.get('versionMatch') not in (True, 'exact'), 'Same-song fallback must not claim an exact original version'
+    assert fallback.get('sameSong') is True, 'Fallback requires established same-song identity'
+    for field in ('targetWorkId', 'groupId', 'targetSong', 'performedSong', 'reason'):
+        assert isinstance(fallback.get(field), str) and fallback[field].strip(), 'Same-song fallback target and actual song evidence missing'
+    assert all(re.fullmatch(r'rec[A-Za-z0-9]+', fallback[field]) for field in ('targetWorkId', 'groupId')), 'Fallback stable work/group identity invalid'
+    if fallback.get('sourceWorkId') is not None:
+        assert isinstance(fallback['sourceWorkId'], str) and re.fullmatch(r'rec[A-Za-z0-9]+', fallback['sourceWorkId']) and fallback['sourceWorkId'] != fallback['targetWorkId'], 'Fallback source work identity invalid'
+    assert fallback.get('completeness') in ('full', 'excerpt') and fallback['completeness'] == source.get('completeness'), 'Fallback completeness must match the actual source'
+    assert fallback.get('version') in ('exact', 'different'), 'Fallback actual version must be known'
+    assert fallback['completeness'] == 'excerpt' or fallback['version'] == 'different', 'Full corresponding version is not a fallback'
+    scopes = ('full_group', 'subunit', 'solo')
+    assert fallback.get('performerScope') in scopes and fallback.get('originalPerformerScope') == fallback['performerScope'], 'Same-song fallback does not relax the original performer scope'
+    assert source.get('performerScope', fallback['performerScope']) == fallback['performerScope'] and source.get('originalPerformerScope', fallback['originalPerformerScope']) == fallback['originalPerformerScope'], 'Fallback performer scope differs from source evidence'
+    differences = fallback.get('differences')
+    assert isinstance(differences, list) and 1 <= len(differences) <= 8 and all(isinstance(v, str) and v.strip() and len(v) <= 300 for v in differences), 'Visible fallback differences required'
+    proof = fallback.get('evidence') or {}
+    assert isinstance(proof, dict) and isinstance(proof.get('note'), str) and proof['note'].strip() and isinstance(proof.get('urls'), list) and proof['urls'], 'Same-song/actual-version evidence required'
+    for url in proof['urls']:
+        assert isinstance(url, str), 'Invalid fallback evidence URL'
+        parsed = urlsplit(url)
+        assert parsed.scheme == 'https' and parsed.hostname and not parsed.username and not parsed.password, 'Invalid fallback evidence URL'
+    return fallback
+
 def version_eligible(source):
     try:
         fallback = checked_member_fallback(source)
+        same_song = checked_same_song_fallback(source)
     except (AssertionError, TypeError, ValueError):
         return False
-    return bool(fallback) or source.get('versionMatch') is True or source.get('versionMatch') == 'exact'
+    return bool(fallback or same_song) or source.get('versionMatch') is True or source.get('versionMatch') == 'exact'
 
 def checked_selection(source):
     assert source.get('videoId') not in REJECTED, 'User-rejected exact source'
@@ -68,7 +98,8 @@ def checked_selection(source):
         for url in proof['urls']:
             parsed = urlsplit(url)
             assert parsed.scheme == 'https' and parsed.hostname and not parsed.username and not parsed.password, 'Invalid camera evidence URL'
-    assert source.get('sourceClass') in SOURCE_CLASSES and source.get('completeness') == 'full', 'Documented source class and full performance required'
+    same_song = checked_same_song_fallback(source)
+    assert source.get('sourceClass') in SOURCE_CLASSES and (source.get('completeness') == 'full' or same_song), 'Documented source class and full performance or explicit same-song fallback required'
     checked_identity(source)
     if source['sourceClass'] != 'official':
         proof = source.get('sourceEvidence') or {}
@@ -83,7 +114,7 @@ def selection_rank(source):
     fixed_practice = selection['occasion'] == 'practice_room' and selection.get('camera', {}).get('mode') == 'fixed'
     # Corresponding original versions precede guest-scope fallbacks, even when
     # the fallback is a higher-like program or practice upload.
-    return (1 if checked_member_fallback(source) else 0, PRIORITY[selection['occasion']], 0 if fixed_practice else 1)
+    return (2 if checked_same_song_fallback(source) else 1 if checked_member_fallback(source) else 0, PRIORITY[selection['occasion']], 0 if fixed_practice else 1)
 
 def comparison_candidates(candidates, best_only=True):
     """Return only qualified, version-matched sources at the best policy priority.
@@ -159,6 +190,7 @@ def replacement_preference(previous, selected, review=None, decision=None):
     canonical object. Missing legacy selection is never evidence of exclusion.
     Owner-score, save-journal and clip guards are enforced separately by merger.
     """
+    assert checked_same_song_fallback(selected) is None, 'Same-song fallback is for new slots only, not source replacement'
     new_rank = selection_rank(selected)
     # A cross-platform or unknown-like replacement is never automatic, even
     # when its policy tier would otherwise win. Owner guards remain separate.

@@ -6,7 +6,7 @@
 
 当前队列为 `docs/codex/evidence/20261030-sprinkle-human/remaining-stage-ledger.json`，人物逐项为同目录 `remaining-person-facts.json`：104新增舞台＋11旧替换＋23人物＋7未知统计＋7实际日期＋1销量差额＝153分类项。只关闭本MV真人出镜事实；录音角色未证，不能把本次反馈继承到其他版本。原人工CSV和历史队列不覆盖。
 
-本地仍501舞台，正式站仍v203／500舞台。本轮没有新正式绑定、Sites版本、部署、图片文件或私人写入；不复用已过期owner导出。继续从PR47最新远端接续，不以推送为停工点，后续不自动部署。实现、保护与最终验证见 `docs/codex/evidence/20261030-sprinkle-human/` 和 `docs/codex/worklogs/20261030-sprinkle-human.md`。当前另已询问fromis_9《Touchdown》精确MV peoZYyEvY-k的五人真人出镜范围，尚未收到回复；问题及待证边界见本批research-followup.json，不重复创建同一询问。下文154项／等待Sprinkle看片等为历史状态，不能覆盖本节。
+本地仍501舞台，正式站仍v203／500舞台。本轮没有新正式绑定、Sites版本、部署、图片文件或私人写入；不复用已过期owner导出。继续从PR47最新远端接续，不以推送为停工点，后续不自动部署。实现、保护与最终验证见 `docs/codex/evidence/20261030-sprinkle-human/` 和 `docs/codex/worklogs/20261030-sprinkle-human.md`。用户已反馈Touchdown精确MV可能没有成员，并询问这种MV形式；本条已核为The Winning Try电视剧OST MV，但没有足够依据认定全片无成员。撤回预设五人都应出镜的问法，不重复同一看片问题，不改评分权限或关闭人物事实；继续查原片形式或独立逐名录音资料。最新复核见docs/codex/evidence/20261030-touchdown-form/review.json。已在实际页面增加默认折叠OST说明及独立SBS4:24制作花絮入口；不当MV出镜或完整舞台证据。下文154项／等待Sprinkle看片等为历史状态，不能覆盖本节。
 
 
 ## 本地续作：501舞台／154项待证（2026-10-30，未部署）

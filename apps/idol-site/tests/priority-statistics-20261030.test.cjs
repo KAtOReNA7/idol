@@ -1,5 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{createHash}=require('node:crypto');
-const current=require('../data/group-statistics-completion-evidence.json');
+const {beforeAccessStatistics,beforeAccessGuard,receipt:accessReceipt}=require('./helpers/access-period-statistics-baseline.cjs');
+const current=beforeAccessStatistics(require('../data/group-statistics-completion-evidence.json'));
 const {beforePriorityStatistics,beforePriorityGuard,receipt}=require('./helpers/priority-statistics-baseline.cjs');
 const base=path.join(__dirname,'../../../docs/codex/evidence/20261030-priority-crosscheck');
 const manifest=require(base+'/wins-coverage-manifest.json');
@@ -12,7 +13,7 @@ test('only the four reviewed statistics and exact summary change; a changed old 
  for(const c of receipt.changes){const [g,k]=c.change.split('.');assert.deepEqual(restored.groups[g][k],c.after);restored.groups[g][k]=structuredClone(c.before);}
  restored.summary=structuredClone(receipt.beforeSummary);assert.deepEqual(restored,before);
  const tampered=structuredClone(current);tampered.groups.ive.sales.observedValue++;
- assert.throws(()=>beforePriorityStatistics(tampered),/complete priority statistics after-file/);
+ assert.throws(()=>beforePriorityStatistics(tampered),/complete (?:ACCESS|priority) statistics after-file/);
  for(const g of ['spia','tracer','vcha','witchx']){assert.deepEqual(current.groups[g].sales,before.groups[g].sales);assert.equal(current.groups[g].sales.observedValue,null);}
  const unknown=Object.values(current.groups).flatMap(g=>[...g.social,g.sales,g.wins]).filter(r=>r.observedValue===null);assert.equal(unknown.length,4);
 });
@@ -46,12 +47,12 @@ test('two release cumulative cohorts replace their full old contributions exactl
 test('public information renders real observed zero normally, without a new secondary-source badge or editable/private fields',()=>{
  const api=load('lib/idol/group-information.mjs');
  for(const slug of ['genblue','tracer','vcha']){const html=api.renderGroupInformation(slug);assert.match(html,/data-stat-status="observed"/);assert.match(html,/0<em>次/);assert.match(html,/2026-10-29/);assert.doesNotMatch(html,/营销号|二手来源|非官方统计|<input|<form/);}
- assert.equal(api.groupInformationModel('triples').sales.observedValue,2118416);
+ assert.equal(api.groupInformationModel('triples').sales.observedValue,2118570);assert.equal(api.groupInformationModel('triples').sales.observedValue,accessReceipt.lowerBound);
 });
 
-test('current exact runtime pins match both changed data files and the complete pre-priority manifest remains recoverable',()=>{
- const guard=require('../scripts/udtt-private-build-assets-manifest.json'),before=beforePriorityGuard(guard),proof=require(base+'/guard-adoption.json');
+test('the exact historical priority runtime pins and complete pre-priority manifest remain recoverable after ACCESS',()=>{
+ const guard=beforeAccessGuard(require('../scripts/udtt-private-build-assets-manifest.json')),before=beforePriorityGuard(guard),proof=require(base+'/guard-adoption.json');
  assert.deepEqual(proof.changes.map(c=>c.path).sort(),['data/group-statistics-completion-evidence.json','data/timeline-reported-records.json']);
- for(const c of proof.changes){const bytes=fs.readFileSync(path.join(__dirname,'..',c.path));assert.deepEqual(guard.runtimeGuards[c.path],{bytes:bytes.length,sha256:hash(bytes)});assert.deepEqual(before.runtimeGuards[c.path],c.before);}
+ for(const c of proof.changes){const bytes=c.path==='data/group-statistics-completion-evidence.json'?Buffer.from(JSON.stringify(current,null,2)+'\n'):fs.readFileSync(path.join(__dirname,'..',c.path));assert.deepEqual(guard.runtimeGuards[c.path],{bytes:bytes.length,sha256:hash(bytes)});assert.deepEqual(before.runtimeGuards[c.path],c.before);}
  const a=structuredClone(guard),b=structuredClone(before);for(const c of proof.changes){delete a.runtimeGuards[c.path];delete b.runtimeGuards[c.path];}assert.deepEqual(a,b);
 });

@@ -2,8 +2,12 @@
 
 ## 2026-10-30本地采用补充（未部署）
 
-26同曲后备新增＋Supernova原方案严格换绑，当前527／正式v203的500。STYLE／MINIVE／XG按用户批准标明“具体录音版本未核”，不伪设exact／different；Voltage为日语169秒节选。三份真实owner完整导出五轮161/475/38/753/81秒保护，旧THE FIRST TAKE完整留历史，其余500旧对象保持，私人写入0。XG已完成，不重复问或采用。剩119项在codex/evidence/20261030-same-song-adoption；原图/ID/关系/私人字段/owner鉴权保持，不自动部署。以下旧状态为历史。
+ACCESS新净增154已核，tripleS下界2118570／差340219，仍非完整累计；最新118项队列见codex/evidence/20261030-access-period-lower-bound，26舞台采用与527本地／v203正式未部署保持。
 
+26同曲后备新增＋Supernova原方案严格换绑，当前527／正式v203的500。STYLE／MINIVE／XG按用户批准标明“具体录音版本未核”，不伪设exact／different；Voltage为日语169秒节选。三份真实owner完整导出五轮161/475/38/753/81秒保护，旧THE FIRST TAKE完整留历史，其余500旧对象保持，私人写入0。XG已完成，不重复问或采用。剩118项在codex/evidence/20261030-same-song-adoption；原图/ID/关系/私人字段/owner鉴权保持，不自动部署。以下旧状态为历史。
+
+
+用户已接受可信Circle口径下界2118570+，旧2458789只作历史，不再强行配平；数学差保留但不计当前任务。
 
 ## 最新用户决定：跨来源核验与同曲后备（2026-10-30）
 

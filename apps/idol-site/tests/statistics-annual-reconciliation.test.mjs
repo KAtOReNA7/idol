@@ -189,9 +189,10 @@ test('the public group model renders the reconciled integer and retains the unre
   assert.equal(latest.expectedBefore.observedValue,2110833);
   assert.equal(latest.expectedBefore.evidence.sourceDifferenceReview.remainingDifference,347956);
   const current=read('../../docs/codex/evidence/20261030-priority-crosscheck/statistics-adoption.json').changes.find(c=>c.change==='triples.sales');
-  assert.deepEqual(current.before,latest.after);assert.equal(model.sales.observedValue,2118416);assert.equal(model.sales.observedValue,current.after.observedValue);
-  assert.match(html, /<strong>2,118,416<em>张<\/em><\/strong>/);
-  assert.match(html, /340,373/);
+  const access=read('../../docs/codex/evidence/20261030-access-period-lower-bound/adoption.json');
+  assert.deepEqual(current.before,latest.after);assert.deepEqual(access.change.before,current.after);assert.equal(model.sales.observedValue,2118570);assert.equal(model.sales.observedValue,access.change.after.observedValue);
+  assert.match(html, /<strong>2,118,570<em>张<\/em><\/strong>/);
+  assert.match(html, /340,219/);
   assert.match(html, /来源差异继续开放/);
   assert.match(html, /不是全球完整累计/);
   assert.doesNotMatch(html, /<strong>2,087,073<em>/);

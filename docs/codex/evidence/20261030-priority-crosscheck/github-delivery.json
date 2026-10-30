@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-30T07:21:20.850Z",
+  "repository": "https://github.com/KAtOReNA7/idol",
+  "pullRequest": "https://github.com/KAtOReNA7/idol/pull/47",
+  "branch": "codex/group-evidence-followup-20261029",
+  "baselineCommit": "a2c6008d602b44191c9e650a95620d192f0c6619",
+  "implementationCommit": "be9b93aeb864ec0a72897d1e69185360cabe86b3",
+  "normalPush": true,
+  "remoteReadback": {
+    "method": "git ls-remote plus GitHub normalized PR snapshot",
+    "headSha": "be9b93aeb864ec0a72897d1e69185360cabe86b3",
+    "state": "open",
+    "draft": true,
+    "merged": false
+  },
+  "actualResults": {
+    "boundedWinsZeros": 3,
+    "effectiveDates": 5,
+    "tripleSLowerBound": 2118416,
+    "tripleSNetAdded": 5187,
+    "tripleSUnexplainedDifference": 340373,
+    "classificationsRemaining": 145,
+    "localStageSources": 501,
+    "publishedStageSources": 500,
+    "preparedSameSongFallbacks": 19,
+    "formalNewBindings": 0,
+    "privateWrites": 0
+  },
+  "validation": "validation.json",
+  "preservation": "preservation.json",
+  "productionEvidence": "production-readonly.json",
+  "productionStorageEvidence": "storage-readonly.json",
+  "newSitesVersions": 0,
+  "deployments": 0,
+  "publishedVersion": 203,
+  "continuation": {
+    "status": "requires_fresh_owner_export_for_prepared_batch",
+    "basis": "Existing AGENTS/handoff rule: genuine complete owner export within 15 minutes, empty target score excluding 0, complete journal with no target, exact published source preimage.",
+    "existingExportNotReused": true
+  },
+  "note": "This delivery receipt is a subsequent documentation-only commit. Its own final commit ID is verified after push in the chat; source implementation commit above is immutable."
+}

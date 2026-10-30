@@ -14,16 +14,18 @@ const photo:Shape={...fields('table recordId index kind sourceKind'),
  displayFocus:{...fields('sourceWidth sourceHeight qualityTier maxEffectiveWidth preserveOriginal'),sourceCrop:fields('x y width height')},
  approvedLookIdentity:fields('memberId workId videoId sameLook'),nativeIdentity:fields('memberId workId videoId')};
 const stage:Shape={...fields('sourceClass platform completeness likesScope videoId url title channel kind publishedDate checkedAt verificationNote reusesOriginalVideo comparisonLimited comparisonLimitation candidateCount'),
- selection,
+ selection,bilibili:fields('cid page'),xMedia:fields('videoIndex'),
  memberVersionFallback:{...fields('sameSong sameLanguage fullGroup sameArrangementExceptGuest differenceType groupId guestDifference'),evidence},
+ sameSongFallback:{...fields('sameSong targetWorkId sourceWorkId groupId targetSong performedSong completeness version performerScope originalPerformerScope'),differences:ids,evidence},
  clip:{...fields('startSeconds endSeconds sourceDurationSeconds'),evidence},
  audioEquivalence:{...fields('originalBoundWorkId sameAudio')},
  scoreBinding:fields('videoId sourceKey initializedAt initialScore'),likes,
- higherCandidate:{...fields('videoId url title checkedAt'),likes},candidates:[fields('title url likesDisplay kind')]};
+ higherCandidate:{...fields('videoId url title checkedAt'),likes},candidates:[{...fields('title url likesDisplay kind platform videoId'),bilibili:fields('cid page'),xMedia:fields('videoIndex')}]};
 const version:Shape={match:true,differences:ids,evidence};
 const supplement:Shape={
- alternatives:[{...fields('id platform sourceId sourceClass performerScope originalPerformerScope completeness durationSeconds durationScope eventDate url title channel performanceType kind checkedAt scorePolicy'),selection,performerNames:ids,originalPerformerNames:ids,performerEvidence:evidence,eventEvidence:evidence,sourceEvidence:evidence,sameSongEvidence:evidence,version}],
- watchLeads:[{...fields('sourceType id platform sourceId sourceClass performerScope completeness url title channel kind checkedAt scorePolicy reason leadTimeSeconds'),selection,sourceEvidence:evidence,sameSongEvidence:evidence,leadTimeEvidence:evidence}],
+ alternatives:[{...fields('id platform sourceId sourceClass performerScope originalPerformerScope completeness durationSeconds durationScope eventDate url title channel performanceType kind checkedAt scorePolicy'),selection,bilibili:fields('cid page'),performerNames:ids,originalPerformerNames:ids,performerEvidence:evidence,eventEvidence:evidence,sourceEvidence:evidence,sameSongEvidence:evidence,version}],
+ watchLeads:[{...fields('sourceType id platform sourceId sourceClass performerScope completeness url title channel kind checkedAt scorePolicy reason leadTimeSeconds'),selection,bilibili:fields('cid page'),sourceEvidence:evidence,sameSongEvidence:evidence,leadTimeEvidence:evidence}],
+ researchNote:{summary:true,sources:[fields('label url')]},
  };
 const shape:Shape={
  scope:fields('type groupId'),cache:fields('source refreshRecommended'),...fields('mode capturedAt loadedAt'),
@@ -56,6 +58,7 @@ export function projectPublicCatalog(catalog:CatalogView):CatalogView{
   if(work.stageResearch)work.stageResearch.reason='';
   if(work.stage){work.stage.typeNote='';work.stage.sourceUrl='';work.stage.selectionNote='';
    if(work.stage.clip)work.stage.clip.evidence={note:'',urls:[]};
+   if(work.stage.sameSongFallback){work.stage.sameSongFallback.evidence={note:'',urls:[]};work.stage.sameSongFallback.reason='原目标版本的完整演出尚未取得。';}
    if(work.stage.audioEquivalence){work.stage.audioEquivalence.basis='';work.stage.audioEquivalence.evidenceUrls=[];}
   }
   for(const alt of work.stageSupplement?.alternatives??[]){alt.sourceEvidence={note:'',urls:[]};alt.sameSongEvidence={note:'',urls:[]};if(alt.performerEvidence)alt.performerEvidence={note:'',urls:[]};if(alt.eventEvidence)alt.eventEvidence={note:'',urls:[]};if(alt.version)alt.version.evidence={note:'',urls:[]};}

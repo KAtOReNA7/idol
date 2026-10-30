@@ -194,16 +194,16 @@
       "sha256": "927108cb2d5cc54c613655aa05746334f4632cfe3a6a80148d3736b788b631ca"
     },
     "lib/idol/udtt-native/presentation.mjs": {
-      "bytes": 16414,
-      "sha256": "5f05bab95cc98e500d7577cbf652290dc2f8cba443cf764caa76f2bcf4ed412e"
+      "bytes": 16584,
+      "sha256": "b1cccda40a041ad5bbda6bec1e9776e042eadeb296a27236c1329b795771d101"
     },
     "lib/idol/timeline/reported-records.mjs": {
       "bytes": 1059,
       "sha256": "90b05d1fbc366db49cfc4e41b0634f1eadfec401cfa9d59498830c18d8821c12"
     },
     "data/timeline-reported-records.json": {
-      "bytes": 8217,
-      "sha256": "309d0ab6b726119eb87787afec9267d19409329c7e1d6f63a790428020729f5c"
+      "bytes": 10237,
+      "sha256": "2d2ed7c0780653b0c51c947932d97b25519f8aba7a06669dfccb1a2ec39a4de4"
     },
     "lib/idol/udtt-native/information-identity.mjs": {
       "bytes": 1277,
@@ -226,8 +226,8 @@
       "sha256": "e1f889ec4a5d4e40465603695055cb8eb09922e598a695482987b692a83dd09b"
     },
     "data/group-statistics-completion-evidence.json": {
-      "bytes": 449825,
-      "sha256": "d9cbdd9d3f58d5da5b4c6535824a5dfcdd0cdc08761081d8436e1e55111b6a97"
+      "bytes": 502806,
+      "sha256": "cea7f00cb684f8da1ef3c607b3f4df52109fd9bd2667a02e287bf6103a50c1fa"
     }
   },
   "builtContractCarriers": {
@@ -389,6 +389,22 @@
         "reviewed": {
           "bytes": 449825,
           "sha256": "d9cbdd9d3f58d5da5b4c6535824a5dfcdd0cdc08761081d8436e1e55111b6a97"
+        }
+      }
+    ]
+  },
+  "sourceGuardReviewMemberLayout20261030": {
+    "scope": "User-approved member module order only. Move the existing member native-control marker before public participation, keep interview date semantics and sources. No transport, owner/auth, data, original, exclusion or carrier relaxation.",
+    "changes": [
+      {
+        "path": "lib/idol/udtt-native/presentation.mjs",
+        "previous": {
+          "bytes": 16414,
+          "sha256": "5f05bab95cc98e500d7577cbf652290dc2f8cba443cf764caa76f2bcf4ed412e"
+        },
+        "reviewed": {
+          "bytes": 16584,
+          "sha256": "b1cccda40a041ad5bbda6bec1e9776e042eadeb296a27236c1329b795771d101"
         }
       }
     ]

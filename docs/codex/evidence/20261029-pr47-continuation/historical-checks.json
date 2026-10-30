@@ -1,0 +1,19 @@
+{
+  "baselineCommit": "b209073909b2f43254d836ffe139eba056582f09",
+  "method": "Re-evaluate the two exact failing preservation assertions using git-show objects from immutable baseline, without modifying current checkout.",
+  "bothFailuresPredateContinuation": true,
+  "failures": [
+    {
+      "test": "continuous-stage-viewing historical source hash",
+      "target": "data/stage-videos.json",
+      "actual": "14712a1d903d74df774791e76f4d5a29ed1ae4d249e261612101b51a5c7a2051",
+      "expected": "fc2251beab2ea55caa729451068d0c0e21576ea191f8ce87d9111872de62656c"
+    },
+    {
+      "test": "stage-viewing-category-resolution historical research hash",
+      "target": "recvxyOz5Xo5fW",
+      "actual": "5f55564fa85811eb4e148255dda041e110c4938e8813a737f86cdee2b4063e64",
+      "expected": "e32a0e3295c1d149812c4a25fe623e8be579b0c59fad525151b4448a526e475f"
+    }
+  ]
+}

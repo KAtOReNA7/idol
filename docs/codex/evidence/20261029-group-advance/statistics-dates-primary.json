@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T08:30:13.125799+00:00",
+  "baselineCommit": "c80a60e3",
+  "scope": "Read-only primary-source research; application integrations belong to parent and are separately verified.",
+  "method": "先核现有PR47续作证据与post-v200月/年/周贡献，沿新定位原始平台获取正文；搜索仅发现路径，不凭无结果填0或关闭事实。",
+  "summary": {
+    "requiredItemsReviewed": 8,
+    "salesItemsWithNewAdoptableEvidence": 1,
+    "newEligibleSalesRows": 3,
+    "newEligibleSalesIncrement": 2679,
+    "effectiveDateItemsReviewed": 7,
+    "timelineItemsWithNewPrimaryCarriers": 2,
+    "effectiveDatesConfirmed": 0,
+    "factItemsFullyClosed": 0,
+    "applicationWritesByThisAgent": 0,
+    "privateDataReadsOrWrites": 0,
+    "deployments": 0
+  },
+  "items": [
+    {
+      "group": "tripleS",
+      "kind": "sales_difference",
+      "stableId": "rec28ldfRTiCtw",
+      "question": "继续核实韩国Circle覆盖下界与2458789旧汇总的差额，排除重叠月/年/周和不同版本。",
+      "newRoute": "从曲目/专辑参考链定位此前未覆盖的2024周榜与2026第1周，再直接读Circle官方页面和页面原生POST数据。",
+      "checks": [
+        {
+          "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=03&yearTime=3",
+          "method": "official page GET + native POST /data/api/chart/album",
+          "result": "seq_aoa=74459; Album_CNT=840; 2024.01.14~2024.01.20 (03); exact version and all46 prior raw contribution records reviewed"
+        },
+        {
+          "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=46&yearTime=3",
+          "method": "official page GET + native POST /data/api/chart/album",
+          "result": "seq_aoa=78104; Album_CNT=1126; 2024.11.10~2024.11.16 (46); exact version and all46 prior raw contribution records reviewed"
+        },
+        {
+          "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=01&yearTime=3",
+          "method": "official page GET + native POST /data/api/chart/album",
+          "result": "seq_aoa=81284; Album_CNT=713; 2025.12.28~2026.01.03 (01); exact version and all46 prior raw contribution records reviewed"
+        }
+      ],
+      "newEvidence": {
+        "eligibleWeeklyRows": 3,
+        "increment": 2679,
+        "beforeLowerBound": 2108154,
+        "proposedLowerBound": 2110833,
+        "beforeDifference": 350635,
+        "proposedDifference": 347956,
+        "cutoff": "2026-06",
+        "fullyReconciled": false,
+        "primaryProposal": "statistics-dates-triples-proposal.json",
+        "sameVersionProof": "statistics-dates-circle-beyond-identity.json",
+        "adjacentNonAdoptions": "statistics-dates-circle-adjacent.json"
+      },
+      "proposedAction": "供主代理独立读回后追加3条官方周榜贡献；保留36原月行、2年替换和8既有周行，不改旧汇总来源，不直接使用Total_CNT，不混Retail/Hanteo/Japan。",
+      "remainingReason": "仍有347956差额未解释；只是已核覆盖下界，不是完整累计。2024W01/W02/W45各100行无tripleS，不证明0；2026W14与既有三月Cosmo重叠，整条不计；2026半年与六月同额不重复计。旧2124086不是本轮发现。",
+      "needsUserHelp": false,
+      "factClosed": false
+    },
+    {
+      "group": "AtHeart",
+      "kind": "effective_date",
+      "stableId": "e-atheart-aurora-hiatus-observed",
+      "question": "Aurora首次暂停实际起始日。",
+      "newRoute": "新增日本官网新闻归档及开站日期边界；另读2025首发报道的完整辛迪加版本，不从早七月概述推日期。",
+      "checks": [
+        {
+          "url": "https://atheart.jp/contents/menu/132619?page=5",
+          "method": "official archive web read",
+          "result": "末页只到2025-12-09；不覆盖2025-07首次暂停。"
+        },
+        {
+          "url": "https://atheart.jp/contents/325772",
+          "method": "official site announcement web read",
+          "result": "官方日本站2025-12-09开站；不是首次暂停证据。"
+        },
+        {
+          "url": "https://www.wtyefm.com/2025/08/14/atheart-make-their-debut-with-plot-twist-ep-launch/",
+          "method": "full published syndicated article",
+          "result": "仅早七月及以六人出道的概述，没有独立实际起始日。"
+        }
+      ],
+      "newEvidence": null,
+      "proposedAction": "保留现有报道记录及eventDate=null。",
+      "eventDate": null,
+      "remainingReason": "新找到的官网不覆盖首次暂停时期；旧X原文访问受限，未绕过。发布日期、早七月概述、少一名参加都不能替代实际起始日。",
+      "needsUserHelp": false,
+      "requiresNewExternalEvidence": true,
+      "factClosed": false
+    },
+    {
+      "group": "AtHeart",
+      "kind": "effective_date",
+      "stableId": "e-atheart-aurora-second-hiatus-announcement",
+      "question": "Aurora第二次暂停原公告及实际起始日。",
+      "newRoute": "从可读日本官方网站NEWS归档定位具名官方公告。",
+      "checks": [
+        {
+          "url": "https://atheart.jp/contents/424319",
+          "method": "official page body and publication stamp; independent public HTTP GET",
+          "result": "2026/08/18 21:00；具名アウロラ，健康原因当面暂停团体活动；复归确定后另告。"
+        }
+      ],
+      "newEvidence": {
+        "sourceEvidence": "statistics-dates-atheart-primary.json",
+        "primaryPublicationDate": "2026-08-18",
+        "publisher": "AtHeart JAPAN OFFICIAL SITE",
+        "subject": "Aurora / アウロラ",
+        "bodyScope": "官方宣布アウロラ因健康原因当面暂停团体活动，优先健康和稳定、支持充分恢复；活动复归确定后另行通知。",
+        "pageSha256": "cc76e6cbda4d0d63d13cd7860dfda151a684e3ea1baccd1818afe09f1924aeab"
+      },
+      "proposedAction": "可加入第一方原文来源，并撤去“公司公告正文尚未取得”的过时说明；公告日保持2026-08-18，eventDate仍null。",
+      "eventDate": null,
+      "remainingReason": "官方正文未给单独生效日或复归日；不由网页发布时间推定。",
+      "needsUserHelp": false,
+      "requiresNewExternalEvidence": true,
+      "factClosed": false
+    },
+    {
+      "group": "BEWAVE",
+      "kind": "effective_date",
+      "stableId": "e-bewave-six-member-phase-end-announcement",
+      "question": "6人体制结束计划是否已在指定日实际执行。",
+      "newRoute": "新增b.stage官方Notice及后续官方作品帖，读取公开SSR里的官方管理者公告。",
+      "checks": [
+        {
+          "url": "https://bewave.bstage.in/community/board/66a9fce8576cf7398f3f5828/post/68b95530fb5767200f7ec20d",
+          "method": "public official post HTML __NEXT_DATA__ (MONITOR author); no sign-in",
+          "result": "createdAt/updatedAt2025-09-04T09:00:32.483Z。10月31日结束六人体制是未来计划；具名三人保留、三人新团。"
+        },
+        {
+          "url": "https://bewave.bstage.in/community/board/66a9fce8576cf7398f3f5828",
+          "method": "official Notice SSR list; only official metadata retained",
+          "result": "返回首末同页，最新是上述2025-09-04公告；没有后续执行确认不等于计划已执行。"
+        },
+        {
+          "url": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/69379595966daa703d02afac",
+          "method": "official follow-up post HTML",
+          "result": "2025-12-09只公告JIUN与YUNSEUL二人冬季单曲，不确认全团重组执行日。"
+        }
+      ],
+      "newEvidence": {
+        "sourceEvidence": "statistics-dates-bewave-primary.json",
+        "primaryPublicationDate": "2025-09-04",
+        "publisher": "BEWAVE Official Platform / GOLDDUST ENTERTAINMENT",
+        "bodyScope": "GOLDDUST表示经艺人讨论决定10月31日结束六人体制；지언、윤슬、레나将以BEWAVE三人活动，제나、아인、고운将以新团与粉丝见面。",
+        "pageSha256": "1471400eac1bd5cfc0828b44b8b671e442a8b89d135be91c29a654263e93a621"
+      },
+      "proposedAction": "可加入可直接读回的官方公告网页/精确发布时间，保留原图。文案继续区分10月31日计划与实际生效待核。",
+      "eventDate": null,
+      "remainingReason": "后续二人作品不能证明三人新体制的起始日，更不能推定另三人的退团/合约日。",
+      "needsUserHelp": false,
+      "requiresNewExternalEvidence": true,
+      "factClosed": false
+    },
+    {
+      "group": "CandyShop",
+      "kind": "effective_date",
+      "stableId": "e-candyshop-yuina-hiatus-announcement",
+      "question": "YUINA实际暂停起始日及最初官方公告。",
+      "newRoute": "追查早期外链的真正官方Daum官咖及公司站；排除失效旧官网和新闻同稿。",
+      "checks": [
+        {
+          "url": "https://brave-candyshop.com",
+          "method": "web open",
+          "result": "重定向到expireddomains.com域名出售页；不再当官方来源。"
+        },
+        {
+          "url": "https://cafe.daum.net/Candy.Shop",
+          "method": "official cafe target discovered from official social references; web open",
+          "result": "本次不可公开读取，未登录、未绕过；没有取得具体2024-05-09原公告。"
+        },
+        {
+          "url": "https://bravesound.com",
+          "method": "company-site web open",
+          "result": "502；没有取得公告正文。"
+        },
+        {
+          "url": "https://www.osen.co.kr/article/G1112332319",
+          "method": "search/full indexed agency-statement reproduction",
+          "result": "仍是2024-05-09同一公司声明的媒体转载，只说今后日程不参加。"
+        }
+      ],
+      "newEvidence": null,
+      "proposedAction": "保留已用报道/声明转载及eventDate=null；不把旧域名列为有效官方链接。",
+      "eventDate": null,
+      "remainingReason": "原始官咖具体帖子仍缺；转载没有单列生效日期，后来官网删除档案或个人标签不等于正式退团日。",
+      "needsUserHelp": false,
+      "requiresNewExternalEvidence": true,
+      "factClosed": false
+    },
+    {
+      "group": "Geenius",
+      "kind": "effective_date",
+      "stableId": "e-geenius-spoiler-book-instrumental",
+      "question": "Spoiler Book QR版实际发行日，而非目录/预售或进口到货日。",
+      "newRoute": "从新定位真正HOMe官网的NOTICE与艺人页查发行公告，顺带用同条码核不同零售日期的范围。",
+      "checks": [
+        {
+          "url": "https://www.geeniushome.com/notice",
+          "method": "official website web read",
+          "result": "只返回NOTICE页壳，无可读Spoiler Book公告；不据此说没有公告。"
+        },
+        {
+          "url": "https://www.geeniushome.com/geenius",
+          "method": "official artist page web read",
+          "result": "只读到2024 Voyage发行入口及官方社交链接，没有2026实际发行日。"
+        },
+        {
+          "url": "https://choicemusicla.com/products/geenius-1st-inst-album-spoiler-book-qr-ver",
+          "method": "retailer public catalog body",
+          "result": "同QR产品写预计韩国2026-01-16，注明可变/到店后才寄；不是执行证据。"
+        },
+        {
+          "url": "https://www.cdjapan.co.jp/product/NEOIMP-24187",
+          "method": "retailer public catalog body",
+          "result": "条码8800331307821；日本进口商品日2026-01-24，不能覆盖韩国目录2026-01-15。"
+        },
+        {
+          "url": "https://musicbrainz.org/release/908bff1b-0825-4961-8b32-459bb11f1608",
+          "method": "secondary release database read",
+          "result": "列1/15但格式CD与实际QR有偏差；不升级成原始公告。"
+        }
+      ],
+      "newEvidence": null,
+      "proposedAction": "保留YES24目录日记录与eventDate=null。现有官方manual图片是旧证据，不重复算本轮新增。",
+      "eventDate": null,
+      "remainingReason": "新官网未取得日期正文；不同国家/预计/实际出货口径不能混用。需要官方当天发行或可证明已执行的原始记录。",
+      "needsUserHelp": false,
+      "requiresNewExternalEvidence": true,
+      "factClosed": false
+    },
+    {
+      "group": "UDTT",
+      "kind": "effective_date",
+      "stableId": "e-udtt-jessica-provisional-join-candidate",
+      "question": "Jessica实际加入日期及交换生概念与合约/临时身份界限。",
+      "newRoute": "找到采访作者个人作品站保存的韩英双语完整采访，核是否存在被转载省略的采访日或入团日。",
+      "checks": [
+        {
+          "url": "https://www.iamraeiam.com/post/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview",
+          "method": "interviewer portfolio full article read",
+          "result": "2025-05-09发布；注明采访时Jessica刚加入；Jessica具名自我介绍与团内表述，正文没有采访执行日或加入日。与既有HelloKpop是同篇，非独立新事件。"
+        },
+        {
+          "url": "https://adv.tokyo-np.co.jp/prtimes/article75656/",
+          "method": "known organiser press-release location web read",
+          "result": "当前正文仅“記事が見つかりません”；不将旧URL推断为有新日期。"
+        }
+      ],
+      "newEvidence": null,
+      "proposedAction": "保留现有2025-04-30采访报道记录与eventDate=null；作者副本可备查，不能重复计作新独立证据。",
+      "eventDate": null,
+      "remainingReason": "just joined没有具体日；练习15天不能反推入团/签约日期，“中国交换生”叙事不证明临时合同。",
+      "needsUserHelp": false,
+      "requiresNewExternalEvidence": true,
+      "factClosed": false
+    },
+    {
+      "group": "UDTT",
+      "kind": "effective_date",
+      "stableId": "e-udtt-sena-predebut-departure-candidate",
+      "question": "Sena离开原公告发布日期和实际生效日。",
+      "newRoute": "定向追溯Wiki引用的@udtt_official原帖与韩文公司说法；排除既有粉丝转载误标官方。",
+      "checks": [
+        {
+          "url": "https://udangtangtang-sonyeondan-kpop.fandom.com/wiki/Jung_Sena",
+          "method": "indexed reference inspection; direct page remains access-limited",
+          "result": "索引声称引用2025-03-26官方X，但本次仍未取得原帖ID/原文；不从索引补日期。"
+        },
+        {
+          "url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+          "method": "known forum full public thread comparison",
+          "result": "#6实际嵌入udtt_global粉丝账号，不是udtt_official；6/26发帖、3/26是转载声称日，不能当官方发布时间。"
+        },
+        {
+          "url": "https://www.koreaboo.com/?p=1847963",
+          "method": "secondary article new route triage",
+          "result": "检索正文把离开日写为2026-03-24，与2025出道叙事冲突；不采用其日期。"
+        }
+      ],
+      "newEvidence": null,
+      "proposedAction": "保留社区线索及recordDate/eventDate原null，不把既有粉丝X包装成官方。",
+      "eventDate": null,
+      "remainingReason": "缺原公告正文和可核原始时间戳；搜索无匹配不证明公告不存在。",
+      "needsUserHelp": false,
+      "requiresNewExternalEvidence": true,
+      "factClosed": false
+    }
+  ],
+  "optionalUnknownStatistics": {
+    "status": "not_reopened_without_new_primary_lead",
+    "items": [
+      "SPIA.sales",
+      "VCHA.sales",
+      "WITCHX.sales",
+      "TRACER.sales",
+      "VCHA.wins",
+      "TRACER.wins",
+      "GENBLUE.wins"
+    ],
+    "reason": "此前排查数字发行/品牌更名及930行获奖档案不足以证0；本轮优先完成已出现可采用新证据的销量与日期原站路径。没有为可选7项重复跑同类无新线索搜索，也不声称已新核7项。"
+  },
+  "safetyAndScope": [
+    "No reset, clean, stash apply, force push, app edit, private export, member-relation edit, or deployment by this agent.",
+    "Dates remain facts awaiting evidence; no source-publication date is substituted for actual effective date.",
+    "Only public official post fields retained for b.stage; no user comments or profiles copied into evidence.",
+    "Source hashes attest this read; public web pages can change.",
+    "No captcha/access-control bypass; known blocked X/Soridata paths are not used as workaround data."
+  ],
+  "artifacts": [
+    "statistics-dates-atheart-primary.json",
+    "statistics-dates-bewave-primary.json",
+    "statistics-dates-circle-adjacent.json",
+    "statistics-dates-circle-annual.json",
+    "statistics-dates-circle-beyond-identity.json",
+    "statistics-dates-circle-half.json",
+    "statistics-dates-circle-targeted.json",
+    "statistics-dates-primary.json",
+    "statistics-dates-triples-proposal.json"
+  ],
+  "applied": false
+}

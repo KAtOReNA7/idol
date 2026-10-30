@@ -1,0 +1,123 @@
+{
+  "checkedAt": "2026-10-30T04:02:04.695197+00:00",
+  "workId": "recvxyHuKM2Gwu",
+  "adopted": true,
+  "privateWrites": 0,
+  "deployments": 0,
+  "owner": {
+    "capturedAt": "2026-10-30T04:01:14.485Z",
+    "ageSeconds": 49.454135,
+    "bytes": 19015015,
+    "sha256": "9dd25f9c678bcc6ece0b7c00384ffec86763a7e76ebc5eb78f0d956938d7d664",
+    "completeJournalRows": 206,
+    "targetJournalRows": 0,
+    "emptyStageScore": true,
+    "all500SourcesMatch": true,
+    "storedOutsideRepository": true
+  },
+  "stageVideos": {
+    "path": "apps/idol-site/data/stage-videos.json",
+    "beforeFileSha256": "50d5be54bd6453e3affcb7d9ae0d0849f080c49324f4795e963accdb884da400",
+    "afterFileSha256": "d4e3cc9ad2c99361e0ebd5976e31088ff7b24a7e4f9d35c4161dbe5695db3337",
+    "afterRow": {
+      "sourceClass": "reupload",
+      "platform": "bilibili",
+      "completeness": "full",
+      "videoId": "BV19D4y1r7c6",
+      "url": "https://www.bilibili.com/video/BV19D4y1r7c6/?p=1&cid=867429881",
+      "title": "IVE ELEVEN -Japanese ver.- · MUSIC STATION 2022-10-14 · P1",
+      "channel": "レモンの興味物（B站非官方转载）",
+      "kind": "电视音乐节目 · 日语原版 · 六人（人工确认／转载P1）",
+      "publishedDate": "2022-10-21",
+      "typeNote": "电视音乐节目 · 日语原版 · 六人（人工确认／转载P1） · Sony公告明确日语版，P1题名Japanese ver.，用户确认精确默认链接的完整日语版及六人参与；不由节目所在国家推语种。 · 依据公开标题、频道和说明核验，未逐句核对音轨；不据此判定真唱。",
+      "sourceUrl": "https://www.bilibili.com/video/BV19D4y1r7c6/?p=1&cid=867429881",
+      "scoreBinding": {
+        "videoId": "BV19D4y1r7c6",
+        "sourceKey": "bilibili:BV19D4y1r7c6:cid:867429881:p:1",
+        "initializedAt": "2026-10-30T04:01:14.485Z",
+        "initialScore": null
+      },
+      "likes": {
+        "value": null,
+        "display": "未知（整BV点赞不作分P排名）",
+        "precision": "unknown"
+      },
+      "checkedAt": "2026-10-30T03:59:59.447507+00:00",
+      "selectionNote": "本次唯一已核同优先级合格候选",
+      "comparisonNote": "采用人工确认的同曲日语版电视节目P1；完整绑定BV/CID/P，不把整BV点赞当单曲排名。",
+      "reusesOriginalVideo": false,
+      "comparisonLimited": true,
+      "comparisonLimitation": "仅一个完整版本候选，未知可比分P点赞；不是最高赞结论。",
+      "previousSources": [],
+      "candidateCount": 1,
+      "candidates": [
+        {
+          "title": "IVE ELEVEN -Japanese ver.- · MUSIC STATION 2022-10-14 · P1",
+          "url": "https://www.bilibili.com/video/BV19D4y1r7c6/?p=1&cid=867429881",
+          "likesDisplay": "未知（整BV点赞不作分P排名）",
+          "kind": "电视音乐节目 · 日语原版 · 六人（人工确认／转载P1）",
+          "platform": "bilibili",
+          "videoId": "BV19D4y1r7c6",
+          "bilibili": {
+            "cid": "867429881",
+            "page": 1
+          }
+        }
+      ],
+      "bilibili": {
+        "cid": "867429881",
+        "page": 1
+      },
+      "likesScope": "whole_video",
+      "sourceEvidence": {
+        "note": "B站公开API成功核对BV、P1/CID867429881，另P2/P3是不同演出，不纳入绑定；用户对默认P1链接确认完整日语版、六人均参与。原页412不作播放通过；代理没有独立全片播放。",
+        "urls": [
+          "https://api.bilibili.com/x/web-interface/view?bvid=BV19D4y1r7c6",
+          "https://www.bilibili.com/video/BV19D4y1r7c6/?p=1&cid=867429881"
+        ]
+      },
+      "selection": {
+        "occasion": "music_program",
+        "evidence": {
+          "note": "Sony官方2022-10-07预告明确10月14日MUSIC STATION演唱日语版，API P1题名及日期对应该节目。",
+          "urls": [
+            "https://www.sonymusic.co.jp/artist/IVE/info/545880",
+            "https://api.bilibili.com/x/web-interface/view?bvid=BV19D4y1r7c6",
+            "https://www.bilibili.com/video/BV19D4y1r7c6/?p=1&cid=867429881"
+          ]
+        }
+      },
+      "verificationNote": "人工看片确认完整日语原版、六名成员参与。精确绑定P1（整P5:07，含节目导入；不是净曲长），只外链观看，不裁切；其他两P不纳入。代理未独立全片播放或逐句核音。"
+    }
+  },
+  "stageStatuses": {
+    "path": "apps/idol-site/data/stages/status.json",
+    "beforeFileSha256": "52af55bb357d5ac54ccee7087d2e78715f8ee5c0948ec90c908d7bee6a99e086",
+    "afterFileSha256": "b395013c5165add522514b7217b01d090fb9bd0c6fb708aee5b791f8fb37f7c3",
+    "beforeRow": {
+      "status": "version_mismatch",
+      "reason": "检索结果未确证目标语种/版本的完整原艺人舞台；没有复用其他版本。",
+      "checkedAt": "2026-10-11T12:21:06.918553+00:00"
+    },
+    "afterRow": {
+      "status": "verified",
+      "reason": "采用人工确认的同曲日语版电视节目P1；完整绑定BV/CID/P，不把整BV点赞当单曲排名。",
+      "checkedAt": "2026-10-30T03:59:59.447507+00:00"
+    },
+    "beforeUpdatedAt": "2026-10-29T14:33:18.137371+00:00",
+    "afterUpdatedAt": "2026-10-30T04:02:04.077289+00:00"
+  },
+  "mergeResult": {
+    "retiredUnpublishedUnverifiedSources": [],
+    "newSources": 1,
+    "sourceIds": [
+      "recvxyHuKM2Gwu"
+    ],
+    "replacedUnscoredSources": [],
+    "updatedSameVideoMetadata": [],
+    "updatedOtherStates": 0,
+    "retainedExistingSources": [],
+    "freshPreimageAt": "2026-10-30T04:01:14.485Z",
+    "batch": "ive-eleven-formal-candidate-20261030.json"
+  }
+}

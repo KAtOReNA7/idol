@@ -1,0 +1,1426 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T03:18:43.715780+00:00",
+  "baseline": "cef1765801ce62739c44308292a680b16e681597",
+  "scope": "15分团现行人工清单逐项核查与有界新来源研究。此文件只记公开研究；不含应用采用、私有数据读写或部署。",
+  "groups": [
+    "IVE",
+    "IZ*ONE",
+    "izna",
+    "KATSEYE",
+    "Kep1er",
+    "KiiiKiii",
+    "KISS OF LIFE",
+    "LE SSERAFIM",
+    "LOONA",
+    "MADEIN",
+    "MEOVV",
+    "NewJeans",
+    "NMIXX",
+    "ODD YOUTH",
+    "PURPLE KISS"
+  ],
+  "counts": {
+    "groups": 15,
+    "items": 43,
+    "byKind": {
+      "新增舞台缺口": 30,
+      "旧来源待替换": 6,
+      "person": 6,
+      "photo_quality": 1
+    },
+    "byEvidenceStatus": {
+      "new_exact_video_lead": 2,
+      "no_adoptable_new_evidence": 33,
+      "new_exclusion": 4,
+      "new_official_performance_candidate": 1,
+      "new_version_separation_evidence": 1,
+      "adoptable_limited_release_reference": 1,
+      "new_unverified_named_credit_lead": 1
+    },
+    "needsUserHelp": 11
+  },
+  "notes": [
+    "分类条目存在作品重叠，不能当独立缺歌数。",
+    "每项均核旧问题；无新线索的同类路线不重复穷举，local_review与live检索在checks里明确区分。",
+    "web检索结果可返回当前以外的历史/未来相关页面，只以精确曲目版本和确实读到的正文作判断。",
+    "YouTube直读节流、NHK robots、部分官网403/页面不可读均停止对应路线，未绕过或转日常Chrome。",
+    "原片完整播放、音轨逐句比对、逐人视觉认定均未冒称完成；候选不等于通过舞台绑定。",
+    "needsUserHelp只表示该项可明确由用户音轨/画面/原图证据帮助；false不等于已解决，也不妨碍后续新官方资料继续。",
+    "有限MADEIN发行封套证据和HeyGabby官方制作候选单独落盘，供parent独立审核；Dork上游不明仅研究。"
+  ],
+  "items": [
+    {
+      "group": "IVE",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyHuKM2Gwu",
+      "question": "ELEVEN日版查询得到THE FIRST TAKE新闻，但显著命中是After LIKE；未证ELEVEN日语表演，更不能把日本节目所在地等同日语音轨。",
+      "song": "ELEVEN -Japanese ver.-",
+      "version": "日文版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=XfEZzUtdINI",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://ive-official.jp/mob/news/newsShw.php?aff=ROBO004&cd=OF10334&ima=0350&site=DIVE",
+          "method": "live_full_body_open",
+          "result": "已读艺人官方公告正文，确认2026-01-31 23:00–23:30 NHK Venue101节目衍生特番IVE LIVE SPECIAL；不是仅凭演唱会转播判作打歌。"
+        },
+        {
+          "url": "https://www.ptt.cc/bbs/IVE_STARSHIP/M.1769881639.A.7D0.html",
+          "method": "live_full_body_open",
+          "result": "当日社区节目帖转引NHK MUSIC；本曲精确YouTube线索 amD9RShwICU。只属二级原链发现，不证明当前官方频道/完整性。"
+        },
+        {
+          "url": "https://yutura.net/channel/66534/video/amD9RShwICU/",
+          "method": "live_open_unavailable",
+          "result": "目标独立元数据页不可访问；未重试。"
+        },
+        {
+          "url": "https://yutura.net/channel/66534/video/jWk18E2sa0U/",
+          "method": "live_full_body_open",
+          "result": "同节目LOVE DIVE条目仅00:55，正文说NHK ONE限2026-02-07 23:30前回看；该时长不能移植到本曲，但提示短剪辑风险，不能把官方单曲链接一律当完整版。"
+        },
+        {
+          "url": "https://www.nhk.jp/",
+          "method": "live_targeted_search_blocked",
+          "result": "精确节目名+NHK三域定向查询，工具报告nhk.jp robots.txt非重试限制；未绕过。"
+        }
+      ],
+      "newEvidence": {
+        "status": "new_exact_video_lead",
+        "summary": "新节目时间及精确原链 https://www.youtube.com/watch?v=amD9RShwICU 已定位；未取得目标单曲可读官方元数据、当前可播全曲或完整范围。"
+      },
+      "proposedAction": "保留为待核观看线索，禁止当合格或versionMatch=true；来源恢复或提供官方全曲后核。",
+      "remainingReason": "节目确有播出和二级转引新原链；目标当前来源身份/时长/音轨/全曲未验，NHK官方网页路线受限。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。"
+    },
+    {
+      "group": "IVE",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyHuKM5r64",
+      "question": "原TBS线索实为排行榜页面；已取得跨年CDTV一手节目单，但本轮未取得常规打歌/官方完整练习/独立制作表演的可播放全曲源。",
+      "song": "Be Alright",
+      "version": "日文原版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=gC7cURZsiH8",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://ive-official.jp/mob/news/newsShw.php?aff=ROBO004&cd=OF10334&ima=0350&site=DIVE",
+          "method": "live_full_body_open",
+          "result": "已读艺人官方公告正文，确认2026-01-31 23:00–23:30 NHK Venue101节目衍生特番IVE LIVE SPECIAL；不是仅凭演唱会转播判作打歌。"
+        },
+        {
+          "url": "https://www.ptt.cc/bbs/IVE_STARSHIP/M.1769881639.A.7D0.html",
+          "method": "live_full_body_open",
+          "result": "当日社区节目帖转引NHK MUSIC；本曲精确YouTube线索 jeKY4LqXxxI。只属二级原链发现，不证明当前官方频道/完整性。"
+        },
+        {
+          "url": "https://yutura.net/channel/66534/video/jeKY4LqXxxI/",
+          "method": "live_open_unavailable",
+          "result": "目标独立元数据页不可访问；未重试。"
+        },
+        {
+          "url": "https://yutura.net/channel/66534/video/jWk18E2sa0U/",
+          "method": "live_full_body_open",
+          "result": "同节目LOVE DIVE条目仅00:55，正文说NHK ONE限2026-02-07 23:30前回看；该时长不能移植到本曲，但提示短剪辑风险，不能把官方单曲链接一律当完整版。"
+        },
+        {
+          "url": "https://www.nhk.jp/",
+          "method": "live_targeted_search_blocked",
+          "result": "精确节目名+NHK三域定向查询，工具报告nhk.jp robots.txt非重试限制；未绕过。"
+        }
+      ],
+      "newEvidence": {
+        "status": "new_exact_video_lead",
+        "summary": "新节目时间及精确原链 https://www.youtube.com/watch?v=jeKY4LqXxxI 已定位；未取得目标单曲可读官方元数据、当前可播全曲或完整范围。"
+      },
+      "proposedAction": "保留为待核观看线索，禁止当合格或versionMatch=true；来源恢复或提供官方全曲后核。",
+      "remainingReason": "节目确有播出和二级转引新原链；目标当前来源身份/时长/音轨/全曲未验，NHK官方网页路线受限。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供可正常观看的版权方原始节目／练习链接；节目名称和播出日期也有助定位。"
+    },
+    {
+      "group": "IVE",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyHuKMNnpu",
+      "question": "SUMMER FESTA本轮未出现可核同曲官方节目/完整练习，旧活动资料不自动符合新政策。",
+      "song": "SUMMER FESTA",
+      "version": "PEPSI品牌合作",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=9adnWMIVHQ0",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": null,
+          "method": "live_targeted_search_no_new_source",
+          "result": "本轮定向查询IVE SUMMER FESTA I WANT Performance official，返回品牌原MV及既有PEPSI活动线索，没有新的合格独立原片；不继续重复同类无新线索检索。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "SUMMER FESTA本轮未出现可核同曲官方节目/完整练习，旧活动资料不自动符合新政策。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。"
+    },
+    {
+      "group": "IVE",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyHuKMh5bM",
+      "question": "I WANT查询显著误命中STAYC I WANT IT；没有由这些检索结果证明的IVE I WANT常规节目原片。",
+      "song": "I WANT",
+      "version": "PEPSI品牌合作",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=okVTSehE414",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": null,
+          "method": "live_targeted_search_no_new_source",
+          "result": "本轮定向查询IVE SUMMER FESTA I WANT Performance official，返回品牌原MV及既有PEPSI活动线索，没有新的合格独立原片；不继续重复同类无新线索检索。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "I WANT查询显著误命中STAYC I WANT IT；没有由这些检索结果证明的IVE I WANT常规节目原片。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。"
+    },
+    {
+      "group": "IVE",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyHuKMwrIt",
+      "question": "目标rNGPgQB4Be8是74秒MINIVE动画版本；真人BANG BANG完整Performance uVpGElT--E8虽经用户认可，仍不能填充这个独立动画版本。",
+      "song": "BANG BANG (MINIVE VER.)",
+      "version": "MINIVE动画版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=rNGPgQB4Be8",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": null,
+          "method": "live_targeted_search_no_new_source",
+          "result": "本轮MINIVE BANG BANG animation credits精确制作来源查询未产生新的具名动画/配音来源；不借真人BANG BANG资料或一般MINIVE映射结案。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有新精确版本/配音/实际出镜证据。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "目标rNGPgQB4Be8是74秒MINIVE动画版本；真人BANG BANG完整Performance uVpGElT--E8虽经用户认可，仍不能填充这个独立动画版本。",
+      "needsUserHelp": true,
+      "possibleUserContribution": "此记录为74秒MINIVE动画版本；已认可真人完整版不能直接跨记录绑定，需核本条对应范围。"
+    },
+    {
+      "group": "IVE",
+      "kind": "旧来源待替换",
+      "stableId": "recvxyHuKMEruy",
+      "question": "新发行报道及IVE官方MV仍指fyk6vjwI3wc，未取得可对齐原154秒版本的独立表演；DavidGuetta歌词视频198秒不是舞台。",
+      "song": "Supernova Love",
+      "version": "David Guetta联名",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=fyk6vjwI3wc",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json",
+          "method": "local_prior_version_evidence_review",
+          "result": "既有原MV154秒与David Guetta198秒歌词视频不同，仍没有新增独立表演指针；没有重跑同类已穷尽检索。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "新发行报道及IVE官方MV仍指fyk6vjwI3wc，未取得可对齐原154秒版本的独立表演；DavidGuetta歌词视频198秒不是舞台。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "对比约154秒原MV剪辑和候选实际范围；需要匹配本条的独立完整表演，198秒歌词视频不是舞台。"
+    },
+    {
+      "group": "IVE",
+      "kind": "旧来源待替换",
+      "stableId": "recvxyHuKMCtUB",
+      "question": "IVE/Sony官方新闻重新确认CRUSH为ALIVE日本原曲；MV中的四场景舞蹈是原视频，不是独立后备。with MUSIC串烧与Venue101仍缺当前完整原片。",
+      "song": "CRUSH",
+      "version": "日文原版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=D-geLVTaBAo",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://kpopdiscover.com/ja/groups/ive/videos/",
+          "method": "live_web_search_result",
+          "result": "本轮元数据索引仍把CRUSH/WAVE列MV；同页其他练习属于其他曲。它是第三方目录，不能据目录缺项断言没有表演。"
+        },
+        {
+          "url": null,
+          "method": "live_targeted_search_no_new_source",
+          "result": "本轮定向查询IVE CRUSH WAVE Dance Practice Japan，没有取得清单既有Venue101/with MUSIC/Music Station之外的新官方完整原片。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "IVE/Sony官方新闻重新确认CRUSH为ALIVE日本原曲；MV中的四场景舞蹈是原视频，不是独立后备。with MUSIC串烧与Venue101仍缺当前完整原片。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "优先找2024-10-26 Venue101完整CRUSH或09-14 with MUSIC完整本曲；串烧需核实际范围。"
+    },
+    {
+      "group": "IVE",
+      "kind": "旧来源待替换",
+      "stableId": "recvxyHuKM2wRG",
+      "question": "新增TV Asahi原始文章post-218906确认2023-05-26Music Station WAVE且说明日本原创曲；文章没有完整表演视频，也不能仅以六人团介绍证明REI实际出演。",
+      "song": "WAVE",
+      "version": "日文原版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=qD1kP_nJU3o",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://kpopdiscover.com/ja/groups/ive/videos/",
+          "method": "live_web_search_result",
+          "result": "本轮元数据索引仍把CRUSH/WAVE列MV；同页其他练习属于其他曲。它是第三方目录，不能据目录缺项断言没有表演。"
+        },
+        {
+          "url": null,
+          "method": "live_targeted_search_no_new_source",
+          "result": "本轮定向查询IVE CRUSH WAVE Dance Practice Japan，没有取得清单既有Venue101/with MUSIC/Music Station之外的新官方完整原片。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "新增TV Asahi原始文章post-218906确认2023-05-26Music Station WAVE且说明日本原创曲；文章没有完整表演视频，也不能仅以六人团介绍证明REI实际出演。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "优先找2023-05-26 Music Station或05-27 Venue101完整WAVE，并确认REI是否出演；较早CDTV不能默认六人。"
+    },
+    {
+      "group": "IZ*ONE",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyH5pzEDfw",
+      "question": "新报道证实2019-06-01 NHK ShibuyaNote曾表演Buenos Aires；检索镜像1hCTF-tw2rA非官方。报道存在不等于当前完整版权方视频可用。",
+      "song": "Buenos Aires",
+      "version": "日文原版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=M46FRJsB0Qw",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.musicvoice.jp/news/121117/",
+          "method": "live_web_search_result",
+          "result": "节目报道仍确认2019-06-01 24:05 NHK ShibuyaNote首演；新搜索没有版权方全曲原片，不能把报道复核当新舞台。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "新报道证实2019-06-01 NHK ShibuyaNote曾表演Buenos Aires；检索镜像1hCTF-tw2rA非官方。报道存在不等于当前完整版权方视频可用。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供2019-06-01 NHK ShibuyaNote本曲可用版权方全曲片源，或其他合规日语完整表演。"
+    },
+    {
+      "group": "IZ*ONE",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyH5pzi1oo",
+      "question": "本轮D-D-DANCE返回MV/音源资料；旧Universe活动及UNI-KON38秒片段不能转为合格全曲打歌。",
+      "song": "D-D-DANCE",
+      "version": "完整MV／GENIE官方重传",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=1C77QDNoAgo",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.wowkeren.com/seleb/iz_one",
+          "method": "live_web_search_result",
+          "result": "当前目录将D-D-DANCE列MV，与Panorama/Sequence练习分列；搜索还出现Universe Fan Party与Avatar影像，均不构成目标完整真人官方后备。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "本轮D-D-DANCE返回MV/音源资料；旧Universe活动及UNI-KON38秒片段不能转为合格全曲打歌。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。"
+    },
+    {
+      "group": "izna",
+      "kind": "新增舞台缺口",
+      "stableId": "rec28ldfRTrNO2",
+      "question": "izna日本官网MOVIE明确Love All为Lyric Video；邻接的Special Performance属于SASS & Racecar，不能串行误读为Love All表演。",
+      "song": "Love All",
+      "version": "Lyric Video",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=xu0fU46Cd7M",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://izna-official.jp/s/n198/diary/movie/list?ima=0000&link=ROBO004",
+          "method": "live_web_search_result",
+          "result": "本轮官方检索条目仍将Love All Lyric、SASS & Racecar Special Performance、Racecar practice、BEEP Japan Edition MV及未标Japan的BEEP Fix分别列出；不能跨条目继承曲目、语言或人名。"
+        },
+        {
+          "url": "https://simkl.com/tv/2670963/izna-behind-the-scenes/season-2026/episode-2/",
+          "method": "live_web_search_result",
+          "result": "新增索引指向Love All Recording幕后，但非完整独立舞台；不把录音花絮自动作为舞台。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "izna日本官网MOVIE明确Love All为Lyric Video；邻接的Special Performance属于SASS & Racecar，不能串行误读为Love All表演。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。"
+    },
+    {
+      "group": "izna",
+      "kind": "新增舞台缺口",
+      "stableId": "rec28ldfRTrNsK",
+      "question": "OTOTOY日本发行报道确认Japan Edition与韩版同时发行且歌词语言有差异；官方Qfez0Db9Iqc Costume491秒仍需实际单曲边界和场合。SUMMER SONIC日本首演属于活动，不采用。",
+      "song": "BEEP (Japan Edition)",
+      "version": "日本发行版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=LiZAgfmoQwc",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://izna-official.jp/s/n198/diary/movie/list?ima=0000&link=ROBO004",
+          "method": "live_web_search_result",
+          "result": "本轮官方检索条目仍将Love All Lyric、SASS & Racecar Special Performance、Racecar practice、BEEP Japan Edition MV及未标Japan的BEEP Fix分别列出；不能跨条目继承曲目、语言或人名。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "OTOTOY日本发行报道确认Japan Edition与韩版同时发行且歌词语言有差异；官方Qfez0Db9Iqc Costume491秒仍需实际单曲边界和场合。SUMMER SONIC日本首演属于活动，不采用。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "给出完整视频或单曲起止时间；确认包含整首，而非串烧节选、短版或原MV另一上传。"
+    },
+    {
+      "group": "KATSEYE",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxIZnIaGCNq",
+      "question": "KATSEYE官方Videos目录的Performance/Practice为Gabriela/Gnarly，Gameboy有MV和音频变速/混音。官方Weverse28479还明确Gabriela表演缺Manon，不能借邻接条目假定本曲或全员。",
+      "song": "Gameboy",
+      "version": "原版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=-bC4iak3kxg",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://weverse.io/katseye/notice/28479?hl=ko",
+          "method": "live_web_search_result",
+          "result": "当前官方检索仍明确缺Manon的是Gabriela Performance，Gameboy是Lara带伤参与MV；不能把两曲/类型互换。"
+        },
+        {
+          "url": "https://www.universal-music.co.jp/katseye/news/2026-09-24/",
+          "method": "live_web_search_result",
+          "result": "发行方新公告仍把Gnarly编舞版与Gameboy MV分列，未给Gameboy独立练习/表演新链。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "KATSEYE官方Videos目录的Performance/Practice为Gabriela/Gnarly，Gameboy有MV和音频变速/混音。官方Weverse28479还明确Gabriela表演缺Manon，不能借邻接条目假定本曲或全员。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。"
+    },
+    {
+      "group": "KATSEYE",
+      "kind": "旧来源待替换",
+      "stableId": "recvxIZd9vfxUk",
+      "question": "新clean查询没有给xrm7PP1mbtI练习室与原Gnarly显式/clean音轨等同证据。旧147秒官方练习可保留候选，但须听辨，不能仅凭同题名采用。",
+      "song": "Gnarly",
+      "version": "原版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=R2-yomhYAj4",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=GSDYymRX6cQ",
+          "method": "live_search_exact_video_metadata",
+          "result": "新检索明确Clean Edit mirrored practice为kpop_mirroreal上传；版权声明不证明官方，不能用民间换音剪辑推断xrm7PP1mbtI音轨。"
+        }
+      ],
+      "newEvidence": {
+        "status": "new_exclusion",
+        "summary": "本轮排除了一条看似明确clean的民间镜像；原官方练习的实际explicit/clean比较仍未做。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "新clean查询没有给xrm7PP1mbtI练习室与原Gnarly显式/clean音轨等同证据。旧147秒官方练习可保留候选，但须听辨，不能仅凭同题名采用。",
+      "needsUserHelp": true,
+      "possibleUserContribution": "听辨官方练习室xrm7PP1mbtI与原Gnarly的explicit／clean差异，给具体歌词及时间点。"
+    },
+    {
+      "group": "Kep1er",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5Xvsk1",
+      "question": "Sugar Rush命中两个官方MV条目及Challenge报道；短挑战/MV不是已核完整练习或常规节目。",
+      "song": "Sugar Rush",
+      "version": "UNIVERSE合作MV",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=w8N3nZ7reZk",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=DGF_txutqJY",
+          "method": "live_search_exact_video_metadata",
+          "result": "检索虽题为Sugar Rush Dance Practice，但上传者是Male Official，非已证Kep1er/发行权利方；不因标题Official采用。"
+        },
+        {
+          "url": "https://korearoute.com/artists/kep1er/videos",
+          "method": "live_web_search_result",
+          "result": "目录有Sugar Rush Official MV，练习目录的BUBBLE GUM等属其他曲；不继承相邻类型。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "Sugar Rush命中两个官方MV条目及Challenge报道；短挑战/MV不是已核完整练习或常规节目。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。"
+    },
+    {
+      "group": "KiiiKiii",
+      "kind": "新增舞台缺口",
+      "stableId": "rec28ldfRTrAfx",
+      "question": "新检索的M Countdown首秀报道明确实际表演I DO ME，DEBUT SONG只是VCR蛋糕情境引用。不能把搜索共现当同曲节目。",
+      "song": "DEBUT SONG",
+      "version": "原作品未另标版本",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=UAdxlj4Cgjw",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://biz.chosun.com/en/en-entertainment/2025/02/28/YSDLQY7G7RF4ZBXSHFVEYZPIXI/?outputType=amp",
+          "method": "live_web_search_full_article",
+          "result": "首秀报道全文仍是I DO ME表演，DEBUT SONG只作为VCR蛋糕引用；不得误配。"
+        },
+        {
+          "url": "https://tiiikiii.com/hub/",
+          "method": "live_web_search_result",
+          "result": "本轮当前视频索引将两目标列Music Videos；丰富Stages栏目为其他曲/活动，不能由合集名推出目标完整段落。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "新检索的M Countdown首秀报道明确实际表演I DO ME，DEBUT SONG只是VCR蛋糕情境引用。不能把搜索共现当同曲节目。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。"
+    },
+    {
+      "group": "KiiiKiii",
+      "kind": "旧来源待替换",
+      "stableId": "rec28ldfRTrINH",
+      "question": "新Performance检索仍无完整Strawberry Cheesegame独立第一方影像；旧MIC DRIVE只有53秒章节及MBC年末串烧不足，不能因后备类型放宽忽略节选。",
+      "song": "딸기게임 (Strawberry Cheesegame)",
+      "version": "Lyric Video",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=OncJ5v1keww",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://sports.khan.co.kr/article/202508300728003",
+          "method": "live_web_search_result",
+          "result": "报道为Strawberry Cheesegame lyric video发布，不是新的独立全曲表演。"
+        },
+        {
+          "url": "https://tiiikiii.com/hub/",
+          "method": "live_web_search_result",
+          "result": "本轮当前视频索引将两目标列Music Videos；丰富Stages栏目为其他曲/活动，不能由合集名推出目标完整段落。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "新Performance检索仍无完整Strawberry Cheesegame独立第一方影像；旧MIC DRIVE只有53秒章节及MBC年末串烧不足，不能因后备类型放宽忽略节选。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供同曲同版完整打歌、官方练习或独立官方表演来源；旧来源与评分先保留。"
+    },
+    {
+      "group": "KISS OF LIFE",
+      "kind": "新增舞台缺口",
+      "stableId": "rec28ldfRTrMwG",
+      "question": "新来源均指Painting Special Video（原MV）或KISS ROAD演唱会首播记录；未取得独立官方完整表演。",
+      "song": "Painting",
+      "version": "原作品未另标版本",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=xWHWl0vG-38",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://kpopanswers.com/all-kiss-of-life-music-videos-every-official-mv/?noamp=mobile",
+          "method": "live_web_search_result",
+          "result": "本轮仍为Painting原Special Video，未取得独立全曲来源；泛演唱会信息不放宽。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "新来源均指Painting Special Video（原MV）或KISS ROAD演唱会首播记录；未取得独立官方完整表演。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。"
+    },
+    {
+      "group": "LE SSERAFIM",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5X7Tw7",
+      "question": "TBS 2023-01-30归档与NHK两条艺人公告补强节目事实；2月20日日版全长有报道支持，但本轮仍未取得可公开审查原片。",
+      "song": "FEARLESS (Japanese Ver.)",
+      "version": "日文版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=DiGnWwgLAfE",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://kstyle.com/article.ksn?articleNo=2210321",
+          "method": "live_web_search_result",
+          "result": "本轮报道另确认2023-01-26 ZIP!录影棚日版全尺演出事实；没有当前版权方全片，报道不等于可播来源。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "TBS 2023-01-30归档与NHK两条艺人公告补强节目事实；2月20日日版全长有报道支持，但本轮仍未取得可公开审查原片。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供可正常观看的版权方原始节目／练习链接；节目名称和播出日期也有助定位。"
+    },
+    {
+      "group": "LE SSERAFIM",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5XKzE5",
+      "question": "日版UNFORGIVEN额外含Ado，发行方和曲目目录明确该合作范围；普通韩版Nile Rodgers练习及非官方日语转载不能完成匹配。",
+      "song": "UNFORGIVEN (Japanese Ver.)",
+      "version": "日文版／feat. Nile Rodgers, Ado",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=vMddOrUGwDw",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://starworldtrend.com/kpop/cdtv2022-lesserafim/",
+          "method": "live_web_search_result",
+          "result": "本轮节目聚合记2023-09-04 CDTV UNFORGIVEN feat Nile Rodgers Japanese ver.；其后推荐MV不构成可采用全片，也不能据节目单判断Ado声部。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "日版UNFORGIVEN额外含Ado，发行方和曲目目录明确该合作范围；普通韩版Nile Rodgers练习及非官方日语转载不能完成匹配。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供这版实际参与的成员／合作方及完整表演链接；可用已授权的官方成员版后备，但需注明差异。"
+    },
+    {
+      "group": "LE SSERAFIM",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5XQMJt",
+      "question": "CDTV 2024-12-09日版演出获官网及TBS归档确认，报道支持全曲；新闻称performance video的12月11日片与官方Official MV语境对应，不能凭此新增舞台。",
+      "song": "CRAZY (Japanese Ver.)",
+      "version": "日文版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=tsS69gld8Ls",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.le-sserafim.jp/news/lhdvbs",
+          "method": "live_web_search_result",
+          "result": "本轮官方检索公告确认2024-12-09 CDTV CRAZY日版+Star Signs；全文节目事实已在旧证据，不重复写为新采用。"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Htvo5tA3zO8",
+          "method": "live_search_exact_video_metadata",
+          "result": "带CDTV+CRAZY日版题名的结果上传者Focus Info Voice，说明为报道，非版权方完整演出。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "CDTV 2024-12-09日版演出获官网及TBS归档确认，报道支持全曲；新闻称performance video的12月11日片与官方Official MV语境对应，不能凭此新增舞台。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供可正常观看的版权方原始节目／练习链接；节目名称和播出日期也有助定位。"
+    },
+    {
+      "group": "LE SSERAFIM",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5XnOv7",
+      "question": "HYBE官方rtKP2TsP1W4为177秒CRAZY PERFORMANCE FILM，无English标记，发布2024-09-02且早于英文MV；英文MV与Performance幕后合并标题不证明此片英文。",
+      "song": "CRAZY (English Ver.)",
+      "version": "英文版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=iI5hnXYo5as",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=VrGQCKUGBGY",
+          "method": "live_search_exact_video_metadata",
+          "result": "官方检索标题将CRAZY English MV与PERFORMANCE FILM拍摄花絮并称，依然未明确rtKP2TsP1W4的实际歌词语言；该幕后本身不是全曲舞台。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "幕后合并标题仍不能将未标英文的PERFORMANCE FILM定为英文。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "HYBE官方rtKP2TsP1W4为177秒CRAZY PERFORMANCE FILM，无English标记，发布2024-09-02且早于英文MV；英文MV与Performance幕后合并标题不证明此片英文。",
+      "needsUserHelp": true,
+      "possibleUserContribution": "比较官方PERFORMANCE FILM rtKP2TsP1W4与英文版MV的实际语言和歌词；标题未标英文。"
+    },
+    {
+      "group": "LOONA",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5XueI9",
+      "question": "LUMINOUS本轮有发行商目录，但既有INV0y_Cig7M官方身份仍未证；频道名LOONA与Posted by HyunJin说明不能替代原发布核验。",
+      "song": "LUMINOUS",
+      "version": "日文原版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=lLug6h74acE",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.reddit.com/r/LOONA/comments/1ih7mu5",
+          "method": "live_web_search_discussion_excerpt",
+          "result": "2025-02-04讨论称Hyunjin分享练习并讨论Haseul缺席，但没有核到本人原始发布及授权范围；不能仅据粉丝评论证明官方。"
+        },
+        {
+          "url": "https://www.reddit.com/r/LOONA/comments/13vm1s9",
+          "method": "live_web_search_discussion_excerpt",
+          "result": "2023讨论转译称Hyunjin想公开Luminous练习且须成员同意；这不能验证2025候选的发布身份，也不能拿旧意愿当授权。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "LUMINOUS本轮有发行商目录，但既有INV0y_Cig7M官方身份仍未证；频道名LOONA与Posted by HyunJin说明不能替代原发布核验。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供可正常观看的版权方原始节目／练习链接；节目名称和播出日期也有助定位。"
+    },
+    {
+      "group": "MADEIN",
+      "kind": "新增舞台缺口",
+      "stableId": "rec28ldfRTrCDJ",
+      "question": "新检索的DOPAMINE Performance MV即原作品PYEOubLoXDo；MADEIN视频目录区分DADARIDA另有CHOREO，未找到DOPAMINE独立官方完整后备。不重复用原MV制造舞台。",
+      "song": "DOPAMINE",
+      "version": "Performance ver.",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=PYEOubLoXDo",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://kpop.fandom.com/wiki/Rise_%28MADEIN%29",
+          "method": "live_web_search_result",
+          "result": "本轮条目只把DOPAMINE列Performance MV，而DADARIDA有另行Choreo/Relay；不拿原MV或已导DADARIDA补DOPAMINE。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "新检索的DOPAMINE Performance MV即原作品PYEOubLoXDo；MADEIN视频目录区分DADARIDA另有CHOREO，未找到DOPAMINE独立官方完整后备。不重复用原MV制造舞台。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。"
+    },
+    {
+      "group": "MEOVV",
+      "kind": "新增舞台缺口",
+      "stableId": "rec28ldfRTrJne",
+      "question": "官方Special Video仍为原LIT RIGHT NOW作品；新采访谈及创作和练习生时期，不证明独立完整表演。KCON与巡演仍排除。",
+      "song": "LIT RIGHT NOW",
+      "version": "原作品未另标版本",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=peFN4squVuQ",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.ptt.cc/bbs/KoreanPop/M.1756480447.A.C24.html",
+          "method": "live_web_search_result",
+          "result": "本轮明确同帖的LIT RIGHT NOW=peFN4squVuQ原Special Video，练习6lUV_py21_Q是Abracadabra(KCON LA2025 ver.)；排除相邻错曲。"
+        },
+        {
+          "url": "https://kpopdiscover.com/en/groups/meovv/videos/",
+          "method": "live_web_search_result",
+          "result": "当前索引仍将LIT RIGHT NOW列Special Video+Audio；不以缺项断言无表演。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "官方Special Video仍为原LIT RIGHT NOW作品；新采访谈及创作和练习生时期，不证明独立完整表演。KCON与巡演仍排除。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。"
+    },
+    {
+      "group": "NewJeans",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5XQZhy",
+      "question": "Be Who You Are检索定位Jon Batiste/JID/NewJeans/Camilo合作发行智能链接；没有同合作范围合格完整表演。",
+      "song": "Be Who You Are (Real Magic)",
+      "version": "Coke Studio多艺人合作MV",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=XEsrFIQOWZg",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.umgb.com/2024/07/12/coke-studio/",
+          "method": "live_web_search_full_article",
+          "result": "品牌合作发行方UMG正文将Be Who You Are明确为五方global collab，未给该曲独立完整表演；同页KarolG live不是本曲。"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=lgUW_LnWYBI",
+          "method": "live_search_exact_video_metadata",
+          "result": "新的Coke Studio官方2026-03-04条目标题明标[:15s]，属于广告节选，不能当完整表演。"
+        }
+      ],
+      "newEvidence": {
+        "status": "new_exclusion",
+        "summary": "新增官方2026短剪辑明确15秒，排除以新发布日期或performance用词补全舞台。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "Be Who You Are检索定位Jon Batiste/JID/NewJeans/Camilo合作发行智能链接；没有同合作范围合格完整表演。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供这版实际参与的成员／合作方及完整表演链接；可用已授权的官方成员版后备，但需注明差异。"
+    },
+    {
+      "group": "NewJeans",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5Xr917",
+      "question": "Beautiful Restriction本轮只有官方LIVE目录/社区询问等线索，无已核同曲全曲节目/练习来源；社区提问不是不存在的证明。",
+      "song": "Beautiful Restriction",
+      "version": "OST Special MV",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=jgD_U2t6qXQ",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": null,
+          "method": "live_targeted_search_no_new_source",
+          "result": "本轮精确Beautiful Restriction live KBS查询只返回早期社区猜测Immortal Songs将演哪曲，未形成新原始完整演出。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "Beautiful Restriction本轮只有官方LIVE目录/社区询问等线索，无已核同曲全曲节目/练习来源；社区提问不是不存在的证明。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。"
+    },
+    {
+      "group": "NewJeans",
+      "kind": "旧来源待替换",
+      "stableId": "recvxyOz5Xr6ek",
+      "question": "新报道确认两支Cool With You练习，但每支不含完整Get Up；原sideB为连续两曲。MMA611秒练习仍未证不改编连续完整双曲章节。",
+      "song": "Cool With You / Get Up",
+      "version": "side B",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=nJDMAjwxthM",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json",
+          "method": "local_prior_version_evidence_review",
+          "result": "已核单独Cool With You练习不覆盖side B完整Get Up；MMA改编串烧仍缺实际音轨/边界。无新双曲原片线索，不重复旧查询。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "仍需精确连续双曲范围，单曲练习完成情况不变。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "新报道确认两支Cool With You练习，但每支不含完整Get Up；原sideB为连续两曲。MMA611秒练习仍未证不改编连续完整双曲章节。",
+      "needsUserHelp": true,
+      "possibleUserContribution": "提供连续包含完整Cool With You＋Get Up、未改编的官方节目／练习；单独一首或后期拼接不能匹配side B。"
+    },
+    {
+      "group": "NMIXX",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5X6G1q",
+      "question": "Caution查询返回NMIXX/Anderson .Paak发行、MV与社媒线索，未取得双方目标合作范围完整的合格表演。",
+      "song": "Caution",
+      "version": "合作OST版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=eJd4ii5avNw",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://kpopanswers.com/all-nmixx-music-videos-every-official-mv/",
+          "method": "live_full_body_open",
+          "result": "本轮当前档案只指Caution合作MV，未给独立制作表演/合格成员版。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "Caution查询返回NMIXX/Anderson .Paak发行、MV与社媒线索，未取得双方目标合作范围完整的合格表演。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供这版实际参与的成员／合作方及完整表演链接；可用已授权的官方成员版后备，但需注明差异。"
+    },
+    {
+      "group": "NMIXX",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5XRfn5",
+      "question": "FEIFEI本轮返回官方MV及音源，旧活动/转载尚无合格替代；不能把MV本身重用为舞台评分来源。",
+      "song": "蜚蜚 (FEIFEI)",
+      "version": "中文翻唱版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=zrYC3LEpc6w",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.stheadline.com/zh-hans/film-drama/3621135/NMIXX%E9%9A%BE%E5%BF%98%E6%B8%AF%E5%BC%8F%E7%BE%8E%E9%A3%9F-%E6%9C%9B%E5%86%8D%E6%8C%91%E6%88%98%E5%B9%BF%E4%B8%9C%E6%AD%8C%E4%B8%A8%E7%8B%AC%E5%AE%B6",
+          "method": "live_web_search_full_article",
+          "result": "新2026-09-30本人采访谈曾学粤语唱蜚蜚，属演唱经历，不提供独立完整节目；不重复原MV。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "FEIFEI本轮返回官方MV及音源，旧活动/转载尚无合格替代；不能把MV本身重用为舞台评分来源。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。"
+    },
+    {
+      "group": "NMIXX",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5Xo5fW",
+      "question": "Hey Gabby本轮主要是Gabby’s Dollhouse OST MV资料；特制MV或民间舞蹈不自动等于官方完整练习。",
+      "song": "Hey Gabby!",
+      "version": "韩文OST原版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=xBrrdxtyWHw",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "docs/codex/evidence/20261029-group-followup/groups-ive-purple-heygabby-candidate.json",
+          "method": "see_independent_live_source_candidate_artifact",
+          "result": "新XSpYaEdpKxY，VLENDING verified检索元数据+发行平台Bugs独立Dance Video120秒+Newsis发行人报道；非旧MV或Extra Cut。"
+        }
+      ],
+      "newEvidence": {
+        "status": "new_official_performance_candidate",
+        "summary": "精确官方制作Performance候选已找出，达到继续审查条件；未直接完整播放/逐句听核/owner检查。"
+      },
+      "proposedAction": "parent继续候选审查；符合放宽后官方制作表演条件并通过owner门槛才绑定；此前不计已补舞台。",
+      "remainingReason": "当前可播放性、全片范围/音轨及新鲜owner安全门未核；两分钟时长不是全程验收。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。"
+    },
+    {
+      "group": "NMIXX",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5Xqy0Q",
+      "question": "Pabllo官方MEXE Dance Video kN9MY-QjJMQ 146秒，正文署名Pabllo及6位具名舞者，未据此证明NMIXX实际表演；标题同时列NMIXX是歌曲署名，不能推出成员出镜。",
+      "song": "MEXE",
+      "version": "多语合作版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=0zgJgsbcAN8",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.soompi.com/article/1819753wpp/nmixx-and-pabllo-vittar-drop-1st-teaser-for-new-collab-tic-tic",
+          "method": "live_web_search_result",
+          "result": "新2026报道为São Paulo Carnival和后续TIC TIC/TAC，不是目标MEXE合规独立表演；不能扩事件/错曲或据共同录音推舞者身份。"
+        }
+      ],
+      "newEvidence": {
+        "status": "new_exclusion",
+        "summary": "新共同演出报道属于狂欢节及另一歌曲；既有kN9MY-QjJMQ的具名舞者范围问题不变。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "Pabllo官方MEXE Dance Video kN9MY-QjJMQ 146秒，正文署名Pabllo及6位具名舞者，未据此证明NMIXX实际表演；标题同时列NMIXX是歌曲署名，不能推出成员出镜。",
+      "needsUserHelp": true,
+      "possibleUserContribution": "确认kN9MY-QjJMQ里是否有NMIXX成员实际表演，给姓名＋时间点或幕后署名；歌曲挂名不等于成员出镜。"
+    },
+    {
+      "group": "NMIXX",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyOz5XsgVc",
+      "question": "Sprinkle Party本轮返回OST MV新闻和音源目录；MBC Party O’Clock是不同歌曲，不能误配。",
+      "song": "Sprinkle Party",
+      "version": "韩文OST原版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=0T8d3pRjmi4",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/20465227",
+          "method": "live_full_body_open",
+          "result": "本轮平台正文明确独立Dance Video属于Hey Gabby；Sprinkle Party仍列2022-05-05原MV。不能跨两曲补舞台。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "Sprinkle Party本轮返回OST MV新闻和音源目录；MBC Party O’Clock是不同歌曲，不能误配。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供同曲完整打歌、官方练习室或独立官方表演视频链接；演唱会、活动及原MV本身不能补这个舞台槽。"
+    },
+    {
+      "group": "ODD YOUTH",
+      "kind": "新增舞台缺口",
+      "stableId": "rec28ldfRTrGY0",
+      "question": "TOP MEDIA原始Multimedia页明确2025-01-15发布Best Friendz English Ver Performance Video。该证据支持排除把英语候选无标识绑定原Brand MV；原Brand音轨与候选的差异仍待听辨。",
+      "song": "Best Friendz",
+      "version": "Brand MV版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=JV_2SI-raz0",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://itopgroup.com/bbs/board.php?bo_table=ODDYOUTH_multimedia&wr_id=5",
+          "method": "live_full_body_open",
+          "result": "官方正文独立标题Best Friendz (English Ver.) PERFORMANCE VIDEO，与wr_id=2 Brand MV分开；仍不从标题推原Brand实听音轨。"
+        },
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=85928172",
+          "method": "live_full_body_open",
+          "result": "发行介绍102–105明确新发布既有品牌曲的English版本，并同时发布新网球概念Performance。新证据进一步证明是另次版本发布，而非简单改标题。"
+        }
+      ],
+      "newEvidence": {
+        "status": "new_version_separation_evidence",
+        "summary": "新增发行平台正文支持原品牌曲与2025英语新发布分开，继续拒绝跨语种静默绑定。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "TOP MEDIA原始Multimedia页明确2025-01-15发布Best Friendz English Ver Performance Video。该证据支持排除把英语候选无标识绑定原Brand MV；原Brand音轨与候选的差异仍待听辨。",
+      "needsUserHelp": true,
+      "possibleUserContribution": "听辨Brand MV与官方English Ver. Performance是否相同音轨，指出语言／歌词差异和时间点。"
+    },
+    {
+      "group": "PURPLE KISS",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyH5pz4ojC",
+      "question": "PURPLE KISS官方OFFICIAL_VIDEO分类明确Breath MV、DOREMI Performance和巡演Spoiler为不同条目；Breath没有由本次搜索取得独立后备。",
+      "song": "Breath",
+      "version": "韩文原版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=5oIIzNGeXco",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.purplekiss.co.kr/tag/PS_NOTE",
+          "method": "live_web_search_result",
+          "result": "本轮官方索引分列DOREMI English Recording Behind/MV Behind与韩文录音幕后；泛成员标签也用于其他作品，不是本作逐名凭据。"
+        },
+        {
+          "url": null,
+          "method": "live_targeted_search_no_new_source",
+          "result": "本轮韩文숨/Breath live精确查询未产生新完整节目或独立制作原片；不重新使用原MV、邻接DOREMI或巡演。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有取得足以改变该项结论的新证据；保留原问题，不把搜索结果缺失当不存在证明。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "PURPLE KISS官方OFFICIAL_VIDEO分类明确Breath MV、DOREMI Performance和巡演Spoiler为不同条目；Breath没有由本次搜索取得独立后备。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "如果记得唱过这首，请给节目名＋日期或完整视频链接；我继续核对来源和版本。"
+    },
+    {
+      "group": "PURPLE KISS",
+      "kind": "新增舞台缺口",
+      "stableId": "recvxyH5pzFAPL",
+      "question": "PURPLE KISS官网明确English MV与English Recording Behind，另有未标English的DOREMI MV Performance；不能用后者标题推定英文。未重试已受限的原MV。",
+      "song": "DOREMI",
+      "version": "英文版",
+      "originalVideoUrl": "https://www.youtube.com/watch?v=os4driLeAiU",
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/stage-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.purplekiss.co.kr/tag/PS_NOTE",
+          "method": "live_web_search_result",
+          "result": "本轮官方索引分列DOREMI English Recording Behind/MV Behind与韩文录音幕后；泛成员标签也用于其他作品，不是本作逐名凭据。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "未标English的DOREMI Performance依然不能匹配英文MV；英文幕后不是完整独立表演。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "PURPLE KISS官网明确English MV与English Recording Behind，另有未标English的DOREMI MV Performance；不能用后者标题推定英文。未重试已受限的原MV。",
+      "needsUserHelp": true,
+      "possibleUserContribution": "提供同语种／同混音的完整表演，或指出现有候选与原版具体歌词、编配差异及时间点。"
+    },
+    {
+      "group": "izna",
+      "kind": "person",
+      "stableId": "rec28ldfRTrNsK",
+      "question": "日本版只署团名，缺该次录音的逐名参与依据；其他演出或一般成员名单不能代替。",
+      "song": "BEEP (Japan Edition)",
+      "version": null,
+      "originalVideoUrl": null,
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/other-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.shazam.com/song/1816101983/beep-japan-edition",
+          "method": "live_full_body_open",
+          "result": "全文表演者只有izna团名；VVN背景声、IDO键盘、Dominsuk贝斯、KUSH鼓、TEDDY钢琴及日文作词者均非逐名成员演唱凭据。"
+        },
+        {
+          "url": "https://www.cdjapan.co.jp/product/NEOIMP-23173",
+          "method": "live_web_search_result",
+          "result": "BEEP商品检索仅六种概念卡/十二种随机卡数量，不据数量推出这次Japan Edition逐人录音。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "新查Shazam没有成员级演唱署名，商品数量不能解开Japan Edition人员问题。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "日本版只署团名，缺该次录音的逐名参与依据；其他演出或一般成员名单不能代替。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供日本版录音幕后、采访或封套中明确成员姓名的链接/截图；请注明是Japan Edition。"
+    },
+    {
+      "group": "izna",
+      "kind": "person",
+      "stableId": "rec28ldfRTrNBu",
+      "question": "官方目录确认这支合并Special Performance，但未逐人署名；两首单独视频的名单不能拼接当成此版名单。",
+      "song": "SASS & Racecar",
+      "version": "Performance Video",
+      "originalVideoUrl": null,
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/other-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://izna-official.jp/s/n198/diary/movie/list?ima=0000&link=ROBO004",
+          "method": "live_web_search_result",
+          "result": "本轮官方检索条目仍将Love All Lyric、SASS & Racecar Special Performance、Racecar practice、BEEP Japan Edition MV及未标Japan的BEEP Fix分别列出；不能跨条目继承曲目、语言或人名。"
+        },
+        {
+          "url": "https://biasarchive.net/ja/izna/",
+          "method": "live_web_search_result",
+          "result": "精确合并表演幕后查询返回泛用近期香港巡演/其他幕后索引，未提供该xZ5Ej-tLEjM的实际逐人字幕。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "仍缺精确合并视频具名人物证据，单独SASS/Racecar与近期巡演名单不能拼接。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "官方目录确认这支合并Special Performance，但未逐人署名；两首单独视频的名单不能拼接当成此版名单。",
+      "needsUserHelp": true,
+      "possibleUserContribution": "观看这一支精确视频，提供能确认的成员姓名＋对应时间点，或该支拍摄幕后/具名图文；作为出镜证据线索继续复核。"
+    },
+    {
+      "group": "MADEIN",
+      "kind": "person",
+      "stableId": "rec28ldfRTrPi9",
+      "question": "商品封面/卡片版本数与旧团体简介人数不一致，不能据此确定PUNG!实际参与阵容。",
+      "song": "PUNG!",
+      "version": null,
+      "originalVideoUrl": null,
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/other-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "docs/codex/evidence/20261029-group-followup/groups-ive-purple-madein-candidate.json",
+          "method": "see_independent_live_source_candidate_artifact",
+          "result": "CDJapan两种载体的完整正文逐名列MASHIRO/MiU/SERINA/NAGOMI个人封套；同发行收录普通PUNG!；TVDaily原始报道明确四人体制首作。"
+        }
+      ],
+      "newEvidence": {
+        "status": "adoptable_limited_release_reference",
+        "summary": "具名发行封套的原缺口有新可采有限证据；parent已独立复核并拟以四人发行封套scope接入。"
+      },
+      "proposedAction": "由parent接入有限发行封套参考，标明未核MV出镜/逐人录音；不创建私人关系，不把整项待证删掉。",
+      "remainingReason": "精确PUNG!逐人录音/该MV实际出镜仍未核；新封套证据只解决有限发行参与参考，不关闭所有人物事实。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供PUNG!的成员姓名＋视频时间点，或这一发行的具名封套、拍摄说明；不要只提供当前团体名单。"
+    },
+    {
+      "group": "MADEIN",
+      "kind": "photo_quality",
+      "stableId": "MADEIN:photo_quality",
+      "question": "现用官方同页6张原件为569×854，已如实显示原尺寸，尚无更高清的同套替代。",
+      "song": null,
+      "version": null,
+      "originalVideoUrl": null,
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/other-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.starnewskorea.com/en/music/2026/02/04/2026020414030594820",
+          "method": "live_web_search_result",
+          "result": "新Girl Meets Boy概念宣传是四人体制新拍摄，无法当旧同页六张同套高清替代；未下载替换、猜脸或放大。"
+        }
+      ],
+      "newEvidence": {
+        "status": "new_exclusion",
+        "summary": "新四人发行素材不能自动替换既有六人同套参考；旧569x854尺寸限制保持。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "现用官方同页6张原件为569×854，已如实显示原尺寸，尚无更高清的同套替代。",
+      "needsUserHelp": true,
+      "possibleUserContribution": "提供完整同套、逐张能对应姓名的高清图集链接；官方或民间均可。无需放大旧图。"
+    },
+    {
+      "group": "PURPLE KISS",
+      "kind": "person",
+      "stableId": "recvxyH5pzFAPL",
+      "question": "已定位英文录音幕后，但没有取得可读的逐人姓名证据；韩文版资料不能直接移用。",
+      "song": "DOREMI",
+      "version": "英文版",
+      "originalVideoUrl": null,
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/other-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://www.purplekiss.co.kr/tag/PS_NOTE",
+          "method": "live_web_search_result",
+          "result": "本轮官方索引分列DOREMI English Recording Behind/MV Behind与韩文录音幕后；泛成员标签也用于其他作品，不是本作逐名凭据。"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=TGbfk7AEIzk",
+          "method": "live_exact_metadata_then_direct_open_throttled",
+          "result": "官方检索明确English recording behind及KOR/ENG字幕，但泛六人hashtags不证明每位录音；直接打开遇Online fetch throttled，停止该路线，未用镜像/脚本绕过。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "精确英文幕后可定位，但本轮未取得可读逐人字幕；需实际字幕/姓名时间点或原版封套。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "已定位英文录音幕后，但没有取得可读的逐人姓名证据；韩文版资料不能直接移用。",
+      "needsUserHelp": true,
+      "possibleUserContribution": "可优先查看官方英文录音幕后TGbfk7AEIzk，给出明确字幕姓名/说话成员与时间点，或同版具名概念照链接。"
+    },
+    {
+      "group": "IVE",
+      "kind": "person",
+      "stableId": "recvxyHuKMwrIt",
+      "question": "已知六个MINIVE角色与成员的对应，但这不能直接证明该视频有无真人或逐成员录音参与。",
+      "song": "BANG BANG (MINIVE VER.)",
+      "version": "MINIVE动画版",
+      "originalVideoUrl": null,
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/other-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": null,
+          "method": "live_targeted_search_no_new_source",
+          "result": "本轮MINIVE BANG BANG animation credits精确制作来源查询未产生新的具名动画/配音来源；不借真人BANG BANG资料或一般MINIVE映射结案。"
+        }
+      ],
+      "newEvidence": {
+        "status": "no_adoptable_new_evidence",
+        "summary": "没有新精确版本/配音/实际出镜证据。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "已知六个MINIVE角色与成员的对应，但这不能直接证明该视频有无真人或逐成员录音参与。",
+      "needsUserHelp": true,
+      "possibleUserContribution": "人工看完整支MINIVE版，说明是否出现真实成员及时间点；可补动画/配音制作说明。角色对应和真人出镜分开记录。"
+    },
+    {
+      "group": "NMIXX",
+      "kind": "person",
+      "stableId": "recvxyOz5XsgVc",
+      "question": "原资料称七人NMIXX但没有逐名录音名单；不能拿现在六人名单或另一首Hey Gabby资料替代。",
+      "song": "Sprinkle Party",
+      "version": "韩文OST原版",
+      "originalVideoUrl": null,
+      "checks": [
+        {
+          "url": "docs/codex/evidence/20261029-human-help/other-checklist.json",
+          "method": "local_current_checklist_and_prior_research_review",
+          "result": "逐项核对现行问题、已排除路径和已完成批次；本记录不重复导入。"
+        },
+        {
+          "url": "https://readdork.com/track/nmixx-sprinkle-party",
+          "method": "live_full_body_open",
+          "result": "本轮全文独立Credits区365–398列七位Vocals（BAE/HAEWON/JINI/JIWOO/KYUJIN/LILY/SULLYOON），但credits上游未说明；上方歌词明确来自LRCLIB。Dork自动数据存在角色混淆风险，parent确认仅留研究不采用。"
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/20465227",
+          "method": "live_full_body_open",
+          "result": "正式发行平台只给团名/七人描述以及外部制作credits，不能替Dork七名补官方证据。"
+        }
+      ],
+      "newEvidence": {
+        "status": "new_unverified_named_credit_lead",
+        "summary": "新Dork七人Vocals表是二级未明来源线索，不能称官方署名；维持Sprinkle Party逐名录音待证。"
+      },
+      "proposedAction": "保留未解决项和原ID/关系；有新精确来源后继续核对。",
+      "remainingReason": "未取得原始逐名录音署名、OST封套或准确录音幕后；与Hey Gabby不同曲。",
+      "needsUserHelp": false,
+      "possibleUserContribution": "提供Sprinkle Party当时的七人逐名录音幕后、OST封套或成员采访；明确与Hey Gabby区分。"
+    }
+  ]
+}

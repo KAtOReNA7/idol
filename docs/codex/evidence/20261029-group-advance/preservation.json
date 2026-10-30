@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T08:59:08.591258+00:00",
+  "baselineCommit": "c80a60e3b328300300d24aa85f2b3c296778649e",
+  "branch": "codex/group-evidence-followup-20261029",
+  "applicationChanges": [
+    "apps/idol-site/data/group-statistics-completion-evidence.json",
+    "apps/idol-site/data/stages/supplements.json",
+    "apps/idol-site/data/timeline-reported-records.json",
+    "apps/idol-site/scripts/udtt-private-build-assets-manifest.json"
+  ],
+  "allOtherTrackedApplicationFilesUnchanged": true,
+  "canonicalTimelineFilesUnchanged": 51,
+  "protectedFiles": {
+    "apps/idol-site/data/snapshot.json": {
+      "sha256": "dedbfb37f19a55d9cc1916ddb0a0ae21e537843343956731fe4089ade6606547",
+      "unchanged": true
+    },
+    "apps/idol-site/data/stages/inventory.json": {
+      "sha256": "ecf62833e56fdab160ca382c3de3816d405e7b127bffef01a322a31ec05d74a7",
+      "unchanged": true
+    },
+    "apps/idol-site/data/stages/status.json": {
+      "sha256": "70a4dbdfd0ae7adc928441b472e74c02498c8b5bf4c65bd11fef4d6f134aa4fa",
+      "unchanged": true
+    },
+    "docs/codex/human-help-by-group-20261029.csv": {
+      "sha256": "793bf14476f93c9d3cf66ed621e27b322454482188aabb7e3c4105e70c91a09d",
+      "unchanged": true
+    },
+    "docs/codex/human-help-by-group-20261029.md": {
+      "sha256": "dd691c05ed807b5ca33ff0e5b35fb0cdcf6d3456cd51d0d34d2c50a0e46f1e21",
+      "unchanged": true
+    },
+    "docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json": {
+      "sha256": "6192d1f36a8f9e35d61c155e785ad6163c7eaa2bdd46d7bb05e9e11bd3694e73",
+      "unchanged": true
+    },
+    "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json": {
+      "sha256": "fd65eead13378a462e787ab27d5a8c15d44736a8071b21d8ba818704ce08a772",
+      "unchanged": true
+    }
+  },
+  "requiredAncestors": {
+    "dada774ba79aba8e9863a88822e71644669ce7cb": true,
+    "cef1765801ce62739c44308292a680b16e681597": true,
+    "21b12a6f0d49f355ee639ae87bb2b294ba58513f": true
+  },
+  "counts": {
+    "frozenGroups": 45,
+    "frozenClassifiedItems": 161,
+    "fullFactClosures": 0,
+    "formalStages": 496,
+    "formalStageChanges": 0,
+    "privateReads": 0,
+    "privateWrites": 0,
+    "deployment": 0
+  },
+  "limits": [
+    "Private-state equality was not freshly read back; this pass did not read or write private data.",
+    "Counts 45/161 and 496 are preserved current catalog/frozen-queue baselines; not independent re-research of all items."
+  ]
+}

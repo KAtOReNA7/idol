@@ -1,12 +1,13 @@
 import type {ReactNode} from 'react';
 import {reportedTimelineRecords} from '@/lib/idol/timeline/reported-records.mjs';
 
-/** Reuses native timeline classes; report dates never enter the event-date model. */
+/** Reuses native classes. Resolved facts appear once on the shared canonical axis. */
 export function TimelineReportedRecords({slug,groupId,variant='shared',renderMember}:{slug:string;groupId:string;variant?:'shared'|'bewave'|'candyshop'|'geenius';renderMember?:(id:string)=>ReactNode}){
- const records=reportedTimelineRecords(slug,groupId);
+ const records=reportedTimelineRecords(slug,groupId).filter(row=>variant!=='shared'||row.eventDate===null);
  if(!records.length)return null;
+ const label=records.every(row=>row.eventDate!==null)?'相关动态':'报道与目录记录';
  const styles={shared:['at-list','at-event','at-when'],bewave:['single-timeline','event-copy','event-date'],candyshop:['cs-timeline','cs-event-copy','cs-event-date'],geenius:['idol-geenius-timeline','idol-geenius-event-copy','idol-geenius-event-date']}[variant];
- return <section data-reported-timeline={slug} aria-label="报道与目录记录"><h2>报道与目录记录</h2><ol className={styles[0]}>{records.map(row=>{
+ return <section data-reported-timeline={slug} aria-label={label}><h2>{label}</h2><ol className={styles[0]}>{records.map(row=>{
   const date=<div className={styles[2]}>{row.recordDate?<time dateTime={row.recordDate}>{row.recordDate}</time>:<span>记录日期未确认</span>}<span> · {row.dateLabel}</span></div>;
   return <li key={row.eventId} id={row.eventId} data-timeline-event-id={row.eventId} data-reported-record={row.eventId} className={variant==='bewave'?'event':undefined}>
    {variant==='shared'?<span className="at-node at-node--ordinary" aria-hidden="true"><span className="at-node-dot"/></span>:date}

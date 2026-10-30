@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T09:42:37.321190+00:00",
+  "baselineCommit": "e5f49e0b9d4239648bb1f64675e8adfcaaa11a5a",
+  "verdict": "PASS",
+  "findings": [],
+  "scope": "Independent local application-diff, public adoption-chain and actual component SSR audit. No browser, build, live owner export, remote deployment check or full audiovisual playback performed.",
+  "target": {
+    "workId": "recvxyOz5Xo5fW",
+    "videoId": "XSpYaEdpKxY",
+    "title": "[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.",
+    "channel": "VLENDING 블렌딩"
+  },
+  "applicationFiles": {
+    "apps/idol-site/data/stage-videos.json": {
+      "beforeSha256": "b8e276f3772c64c74095d5a363ce2b1d186a421854408677a91a478b2edd2bac",
+      "afterSha256": "b84a7261ed7b139526ca75e070779f84946ef6968bc2eeb4bb09e314f6d79b56",
+      "beforeCount": 496,
+      "afterCount": 497,
+      "onlyAddedWorkId": "recvxyOz5Xo5fW",
+      "oldRowsUnchanged": 496,
+      "oldScoreBindingsAndHistoryUnchanged": true
+    },
+    "apps/idol-site/data/stages/status.json": {
+      "beforeSha256": "70a4dbdfd0ae7adc928441b472e74c02498c8b5bf4c65bd11fef4d6f134aa4fa",
+      "afterSha256": "e0ab7d6b66d3b3c67b564157d7f1c18927e822b9cf3d810abd5936f30f84fdaa",
+      "beforeCount": 614,
+      "afterCount": 614,
+      "onlyChangedWorkId": "recvxyOz5Xo5fW",
+      "otherRowsUnchanged": 613,
+      "changedTopKeys": [
+        "updatedAt"
+      ]
+    },
+    "apps/idol-site/data/stages/supplements.json": {
+      "beforeSha256": "6085ec68c7a4223a45fd9f571375a773f01e5c77876cb0f0821cf17ac34614c2",
+      "afterSha256": "ab27380dd81a0d19880f107f3713452d6b675688ca839363dc59a9a66e4927e2",
+      "beforeCount": 137,
+      "afterCount": 137,
+      "onlyChangedWorkId": "recvxyOz5Xo5fW",
+      "otherRowsUnchanged": 136,
+      "changedTopKeys": []
+    },
+    "apps/idol-site/data/stage-selection-posters-20261027.json": {
+      "beforeSha256": "6759153aec18d27f128a654aa75fe75fc5b8ee6f9f5c7c5b7f349377ea860138",
+      "afterSha256": "8297560a9229cc9e4995d18546e58517411cc7b74b48ee2425706c645fb420e9",
+      "beforeCount": 27,
+      "afterCount": 28,
+      "oldEntriesUnchanged": 27,
+      "newVideoId": "XSpYaEdpKxY"
+    },
+    "apps/idol-site/data/ui/alternative-notes.json": {
+      "beforeSha256": "9d3878feb57124271036fc60dc179250a4410ee4c6510a965df73b7a77b2ffbd",
+      "afterSha256": "347a17e2185e91c175a7d0891f9274321e126d723f36f8bd263a818e48c0a4ee",
+      "onlyAddedWorkId": "recvxyOz5Xo5fW",
+      "oldNotesUnchanged": true,
+      "preventsLiveVocalMislabel": true
+    }
+  },
+  "newApplicationFiles": [
+    "apps/idol-site/data/stages/evidence/heygabby-complete-formal-20261029.json",
+    "apps/idol-site/public/artist/stage-selection-20261027/XSpYaEdpKxY-maxresdefault.jpg"
+  ],
+  "sourceBinding": {
+    "key": "XSpYaEdpKxY",
+    "initialScore": null,
+    "initializedAtMatchesFreshOwnerReceipt": true,
+    "noClipStartEndOrDurationFields": true,
+    "noOldScoreOrHistoryTransferred": true
+  },
+  "formalAdoptionChain": {
+    "viewingBeforeMatchesBaseline": true,
+    "viewingAfterMatchesFormalBefore": true,
+    "formalAfterMatchesCurrent": true,
+    "viewingAfterRowMatchesFormalBeforeRow": true,
+    "formalAfterRowMatchesCurrent": true,
+    "stageVideosBeforeMatchesBaseline": true,
+    "stageVideosAfterMatchesCurrent": true,
+    "stageStatusesBeforeMatchesBaseline": true,
+    "stageStatusesAfterMatchesCurrent": true,
+    "posterBeforeMatchesBaseline": true,
+    "posterAfterMatchesCurrent": true
+  },
+  "historicalReceiptNote": "viewing-adoption.json is the earlier view-only step. formal-adoption.json is the final local binding decision; its supplement preimage is the viewing step output, not the baseline. Both receipt objects and file hashes connect.",
+  "publicMetadata": {
+    "exactLikes": 38873,
+    "officialLengthSeconds": 120,
+    "precision": "exact",
+    "basis": "Matches stored one-request official YouTube metadata receipt; no new network fetch in this audit. Human confirmation establishes seven-member participation, completeness and Korean original; duration alone does not."
+  },
+  "poster": {
+    "path": "apps/idol-site/public/artist/stage-selection-20261027/XSpYaEdpKxY-maxresdefault.jpg",
+    "sha256": "3eac19e90779c972f003a8ae8a159382cead34c7deafe68bf8de7b38b9d3d6ad",
+    "bytes": 100393,
+    "size": [
+      1280,
+      720
+    ],
+    "matchesDownloadAndManifestReceipts": true,
+    "old27EntriesPreserved": true,
+    "newVisualInspectionByThisAudit": false,
+    "boundary": "Original-byte/no-reencode status is from download receipt; bytes, size and manifest were independently read back. Parent visually inspected the new image."
+  },
+  "actualComponentSsr": {
+    "method": "Actual unchanged StageSupplements from app/page.tsx compiled in memory with TypeScript and rendered using react-dom/server against current public data. Not browser acceptance.",
+    "alternativeValid": true,
+    "searchReviewValid": true,
+    "sourceBindingValid": true,
+    "sourceKey": "XSpYaEdpKxY",
+    "formalStageDuplicateHtmlLength": 0,
+    "formalStageDuplicateSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "withoutFormalStageAlternativeVisible": true,
+    "withoutFormalStageSafeExternalLink": true,
+    "withoutFormalStageNoPlayerOrScoreControls": true,
+    "withoutFormalStageOfficialProducedAndNoLiveVocalClaim": true,
+    "withoutFormalStageHtmlLength": 647,
+    "withoutFormalStageSha256": "7fff87cdc875e286af8ad731e903c99c2fce320aa4638b131369e9ab5c7b7f9f"
+  },
+  "ownerBoundary": {
+    "basis": "Public formal-adoption summary and unchanged merge-stage-batch.py safeguards; private export deliberately not opened.",
+    "captureToAdoptionSeconds": 401.531344,
+    "targetEmptyAndNoSaveRowsReceipt": true,
+    "all496PublishedSourcesMatchReceipt": true,
+    "fullJournalRowsReceipt": 206,
+    "privateExportOutsideRepositoryReceipt": true
+  },
+  "protection": {
+    "allOtherTrackedApplicationFilesUnchanged": true,
+    "old496SourceObjectsAndScoreBindingsUnchanged": true,
+    "other613StatusesUnchanged": true,
+    "other136SupplementsUnchanged": true,
+    "stableExistingIdsRelationsAndAuthCodeUnchanged": true,
+    "allExistingTrackedOriginalImagesUnchanged": true,
+    "onlyNewApplicationImageIsExactTargetPoster": true,
+    "privateValueWritesByAudit": 0,
+    "rawPrivateExportReadByAudit": false,
+    "publicJsonScanCount": 8,
+    "credentialKeyFindings": [],
+    "tokenPatternFindings": [],
+    "deploymentActionsByAudit": 0,
+    "deploymentByFormalReceipt": 0,
+    "liveDeploymentIndependentlyRechecked": false
+  },
+  "limitations": [
+    "This independently verifies the current local application delta, not online deployment.",
+    "Owner empty-score, complete-journal and published-original assertions rely on the fresh public receipt; no private owner values were read or republished.",
+    "No independent full-video playback or per-line audio comparison. Formal source labels retain the human-confirmation boundary and do not imply live vocals.",
+    "No application/tests/handoff edits and no test suite or production build run by this audit."
+  ]
+}

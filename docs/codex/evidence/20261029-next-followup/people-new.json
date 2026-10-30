@@ -1,0 +1,179 @@
+{
+  "checkedDate": "2026-10-29",
+  "baseline": "ec9efbc590673b8bbb98e6c98db303303a3b8aa0",
+  "scope": "Bounded new public-source review of five exact works. No app, private data, Git mutation or deployment changes by this researcher.",
+  "summary": {
+    "worksReviewed": 5,
+    "directNamedRecordingOrFilmingAdoptions": 0,
+    "limitedReleaseConceptPhotoReferenceCandidates": 1,
+    "completeFactItemsClosed": 0,
+    "privateWrites": 0
+  },
+  "sourcePolicy": "Named release-concept-photo subjects may support documented_project_lineup only. They never prove recording or exact MV cast. Existing originals can be reused without portraying them as the new campaign photographs.",
+  "records": [
+    {
+      "group": "WOOAH",
+      "workId": "recvxyH5pzQxpW",
+      "videoId": "8DwTAa5hPsA",
+      "groupId": "recvxyEBDZs5Ic",
+      "song": "SUMMER",
+      "version": "Korean original MV",
+      "status": "limited_release_reference_candidate",
+      "recommendedKind": "documented_project_lineup",
+      "recommendedLabel": "本发行概念照人物参考",
+      "recommendedMemberIds": [
+        "recvxyICzHGJek",
+        "recvxyICzHzhWr",
+        "recvxyICzHu6mX",
+        "recvxyICzH84mF",
+        "recvxyICzHi2X6"
+      ],
+      "names": ["NANA", "WOOYEON", "SORA", "LUCY", "MINSEO"],
+      "sources": [
+        {
+          "url": "https://kprofiles.com/wooah-members-profile/",
+          "class": "fan_profile_with_named_release_photo_captions",
+          "method": "live web body open/find",
+          "locators": "Member headings and immediately following images: Nana lines300-302, Wooyeon327-329, Sora351-353, Lucy375-377, Minseo400-402 in this readback. Each image's accessible caption explicitly identifies that member and Wish With W : Vol.3 Concept Photo.",
+          "finding": "Five individually named concept-photo subjects of the exact Wish With W : Vol.3 campaign, beyond a generic roster. The page's other profile/company/biographical claims were not adopted.",
+          "limit": "This is a fan archive, not an independently retrieved official post; it supports named campaign-photo subjects only. Its dynamically updated group profile does not establish recording or MV cast."
+        },
+        {
+          "url": "https://namu.moe/w/Wish%20With%20W%20%3A%20Vol.3",
+          "class": "fan_wiki_mirror",
+          "method": "live full body open; follow exact WOOAH MV link",
+          "locators": "Concept teaser/individual images section lines167-184 names Nana, Wooyeon, Sora, Lucy and Minseo with two image links each. Tracklist lines188-204 identifies SUMMER in this release. MV section lines254-262 links WOOAH and Genie Music uploads.",
+          "finding": "Independent named campaign image table agrees with the five KProfiles captions; release tracklist and linked WOOAH MV identify the exact target work.",
+          "exactTargetLinkFollowed": "https://youtu.be/8DwTAa5hPsA",
+          "targetReadback": "The followed link resolved to https://www.youtube.com/watch?v=8DwTAa5hPsA&feature=youtu.be and was titled WOOAH - SUMMER MV; body contained only YouTube shell, not playback or credits.",
+          "limit": "The mirror contains an inconsistent 2024 overview year alongside explicit 2026-07-13 release tables; do not use that overview date or its fan line distribution as canonical evidence."
+        },
+        {
+          "url": "https://music.bugs.co.kr/album/4151414?wl_ref=M_contents_01_04",
+          "class": "licensed_release_catalog",
+          "method": "live full body open",
+          "locators": "Album information lines78-92; title track list117; introduction127-136.",
+          "finding": "Wish With W : Vol.3 by WOOAH, released 2026-07-13, includes SUMMER and HIGHLIGHT; agency shown as H MUSIC ENTERTAINMENT and IRON ENM. This independently resolves the album/year context but names only the group and outside production staff.",
+          "limit": "No individual member vocals/cast listed. Do not use generic current artist roster to infer them."
+        },
+        {
+          "url": "https://kprofiles.com/forums/threads/official-%E2%9C%A8-woo-ah-%E2%9C%A8-thread.18974/page-5",
+          "class": "dated_fan_repost",
+          "method": "live full body open",
+          "locators": "July6 2026 post87 announces SUMMER/Vol.3; July8 post89 shows five images under Individual Concept Photo #1.",
+          "finding": "Contemporaneous concept-photo campaign context corroborates the release campaign. The five images lack per-person text here, so identities come from the named archives instead.",
+          "limit": "Do not turn this forum's 'Official thread' title into official publisher status."
+        }
+      ],
+      "proposedNote": "民间资料页逐名标注Wish With W : Vol.3概念照人物为Nana、Wooyeon、Sora、Lucy、Minseo；Bugs发行目录确认本发行包含SUMMER。这里只列发行宣传照人物，不代表本曲逐人录音或本MV出镜已核实；认人图可复用既有已审原件，不冒称是本发行新概念照。",
+      "existingOriginalReuse": "All five current WOOAH approved school-uniform portrait paths/member IDs are available in public-group-recognition.json. No new image download or replacement is needed for a limited public reference.",
+      "factFullyClosed": false,
+      "nextRequiredFact": "Exact SUMMER recording credits or named/verified exact-MV participation remain open.",
+      "access": [
+        {"url": "https://www.wooahjapan.jp/discography/1", "result": "Web fetch timeout; no repeated request."},
+        {"url": "https://kprofiles.com/wooah-members-profile/", "result": "One independent ordinary HTTP read for image attributes returned403 after the web body read; stopped that HTTP route. No HTML or photo bytes saved from it."}
+      ]
+    },
+    {
+      "group": "WOOAH",
+      "workId": "recvxyH5pzrrSO",
+      "videoId": "ZtiThQN5ETc",
+      "song": "WXW (Wish With W)",
+      "status": "keep_open_no_new_individual_credit",
+      "sources": [
+        {
+          "url": "https://music.bugs.co.kr/album/4147372?wl_ref=S_tr_01_04",
+          "method": "live full body open via track's album link",
+          "finding": "Album description says WOOAH members participated in lyrics, but the formal credit is the collective WOOAH name; no individual names or individual role allocations were supplied.",
+          "locators": "Album introduction lines122-148."
+        },
+        {
+          "url": "https://music.bugs.co.kr/track/6464766?wl_ref=list_tr_08_ab",
+          "method": "live full body open",
+          "finding": "Performer and lyricist both use collective WOOAH; other authors named separately. No individual member credit."
+        },
+        {
+          "url": "https://sinaya88.tistory.com/1393",
+          "method": "search-discovered secondary lead only",
+          "finding": "A lyric-analysis blog describes all-member lyric participation, but no precise individual original credit was established. Not adopted over the collective publisher credit."
+        }
+      ],
+      "rejectedCrossWorkInference": "The Asian Hana 2026-10-16 named interview discusses VOODOO DOLL and a future fan concert, not this target song's recording/cast.",
+      "factFullyClosed": false
+    },
+    {
+      "group": "NMIXX",
+      "workId": "recvxyOz5XsgVc",
+      "videoId": "0T8d3pRjmi4",
+      "song": "Sprinkle Party",
+      "status": "keep_open_lyric_assignment_upstream_identified",
+      "sources": [
+        {
+          "url": "https://readdork.com/lyrics/nmixx-sprinkle-party",
+          "method": "live full body open/find",
+          "locators": "Section labels at lines148,158,178,192,268,277; upstream attribution at line287.",
+          "finding": "The seven-member names appear in lyric section assignments. The page explicitly attributes the lyrics to LRCLIB, rather than offering first-party member recording credits. Named technical contributors are writers/editors/mastering staff, not an independent seven-member vocal list.",
+          "limit": "Do not treat lyric-part assignment as official recording credit or a verified complete cast. This identifies the lyric-section upstream only, not the provenance of any separate Dork track-credit database. No lyrics copied into this report."
+        },
+        {
+          "url": "https://kpopanswers.com/all-nmixx-music-videos-every-official-mv/",
+          "method": "live full body open",
+          "finding": "The exact song's MV is catalogued separately from Hey Gabby; the article does not give the needed named recording evidence. Generic/current six-member text cannot substitute for the original seven-person recording scope."
+        }
+      ],
+      "factFullyClosed": false
+    },
+    {
+      "group": "fromis_9",
+      "workId": "recvxyOz5XFVzt",
+      "videoId": "peoZYyEvY-k",
+      "song": "Touchdown",
+      "status": "keep_open_collective_ost_announcement_only",
+      "sources": [
+        {
+          "url": "https://www.mk.co.kr/en/musics/11382289",
+          "method": "live full body open; historical local source match checked",
+          "finding": "July31 2025 announcement describes fromis_9 singing the OST and an August1 release, but has no individual singer credits. This is already a known collective source, not a new named adoption."
+        },
+        {
+          "url": "https://www5.osen.co.kr/article/G1112625333",
+          "method": "new search-discovered original announcement lead",
+          "finding": "Search result describes the same collective OST announcement and release date, with no visible individual contribution names. No adoption from the snippet."
+        }
+      ],
+      "factFullyClosed": false
+    },
+    {
+      "group": "HITGS",
+      "workId": "recvxIZy35rUeY",
+      "videoId": "L9VNIOcfSOU",
+      "song": "Little By Little",
+      "status": "keep_open_false_positive_recording_interview_excluded",
+      "sources": [
+        {
+          "url": "https://www.thebiaswrecker.com/blog/what-is-hitgs-secret-to-having-charizzma",
+          "method": "live full body open",
+          "finding": "Named recording answers concern CHARIZZMA. The phrase 'little by little' in a member's generic recording-process answer is ordinary prose, not a reference to the later target song. It cannot supply Little By Little recording members."
+        },
+        {
+          "url": "https://heroesbaseball.co.kr/mobile/story/nexenNews/view.do?num=22647",
+          "method": "search source check",
+          "finding": "Club release ties the group's current campaign to Little By Little and names Hyerin/Seohee as ceremonial pitch/bat subjects, but those baseball roles are not recording or exact-MV participation credits."
+        }
+      ],
+      "factFullyClosed": false
+    }
+  ],
+  "sharedNegativeRoute": {
+    "url": "https://asian-hana2023.com/diary/category/1180061",
+    "publication": "2026-10-16 WOOAH interview",
+    "method": "live body open/find",
+    "finding": "Named interview describes VOODOO DOLL and upcoming WXW:WICKED fan concerts; it does not document recording of WXW or SUMMER. No cross-song credit transfer."
+  },
+  "doNotRepeat": [
+    "Already adopted HITGS Gulliver four-member self-reports.",
+    "ifeye behind-the-scenes role question already answered as no located credit by user.",
+    "Guessing identities from faces or reusing general lineup/another song's recording list.",
+    "Repeated HTTP requests after the KProfiles403 or WOOAH Japan timeout."
+  ]
+}

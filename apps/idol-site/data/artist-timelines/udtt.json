@@ -169,13 +169,16 @@
       "id": "e-udtt-sena-predebut-departure-candidate",
       "groupId": "rec28ldfRTiDPs",
       "eventType": "member_departure",
-      "title": "Sena出道前退出线索：待公司原公告",
-      "summary": "主办方原稿回顾Sena在正式出道前离开。",
-      "scopeNote": "仅预出道阶段线索；未知日期，不从4月29日出道倒推出3月26日，不创建/猜测成员ID。",
-      "eventDate": null,
+      "title": "Sena在正式出道前离开",
+      "summary": "Sena于2025年3月26日在正式出道前离开。",
+      "scopeNote": "仅预出道退出事件；保留空成员ID，不创建、合并或猜测身份，不推定Jessica加入日。",
+      "eventDate": {
+        "value": "2025-03-26",
+        "precision": "day"
+      },
       "announcementDate": null,
       "plannedDate": null,
-      "status": "uncertain",
+      "status": "confirmed",
       "importance": "major",
       "memberIds": [],
       "workIds": [],
@@ -194,12 +197,33 @@
           "checkedAt": "2026-10-16",
           "scopeNote": "官方原文正文；仅保存核验所需摘录与结构化事实。",
           "evidenceRef": "evidence/E/task06/sources/es-3606ab7cb98e1988.json"
+        },
+        {
+          "id": "priority-crosscheck-kraze",
+          "url": "https://thekrazemag.com/latest-updates/2025/5/27/udtts-debut-really-really-deserves-more-love",
+          "publisher": "The Kraze / Jacob Aron Leung",
+          "title": "Sena在正式出道前离开 · 日期依据",
+          "sourcePublishedAt": {
+            "value": "2025-05-27",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-30",
+          "scopeNote": "原创回顾明确Sena于3月26日退出，并链到同日原条。",
+          "evidenceRef": "docs/codex/evidence/20261030-priority-crosscheck/date-adoption.json"
+        },
+        {
+          "id": "priority-crosscheck-sena_archive",
+          "url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+          "publisher": "KProfiles · UDTT历史讨论记录",
+          "title": "Sena在正式出道前离开 · 日期依据",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-30",
+          "scopeNote": "历史帖记同日并保留2025-03-26原条1904823894105555307；不算另一官方声明。",
+          "evidenceRef": "docs/codex/evidence/20261030-priority-crosscheck/date-adoption.json"
         }
       ],
-      "reviewStatus": "hold",
-      "holdReasons": [
-        "未取得公司或本人原始退出声明；主办方历史简介仅旁证。"
-      ]
+      "reviewStatus": "ready",
+      "holdReasons": []
     },
     {
       "id": "e-udtt-kwave-ambassador",
@@ -284,13 +308,12 @@
     }
   ],
   "gaps": [
-    "Sena出道前离开、Jessica临时加入只建立主办方旁证，日期/公司声明待核；Jessica不合并Lu Yuting。",
+    "Jessica临时加入的实际生效日仍待核，不与陆雨婷身份合并。",
     "School Rush、RETRY音乐实际发行与正式出道仍待直接公司/本人原文；不把目录日/MV拍摄日混同。",
     "VIPER2026-06-27存在平台与媒体线索，未取得公司实际发行正文；不使用待补作品占位ID。",
     "SW Entertainment、tt music等法律/标签关系及变更日未知，不能由制作署名认作换公司。",
     "正式解散、其余成员退出原文未建立。",
     "RETRY与VIPER无现有真实作品ID，workIds=[]；REALLY REALLY用已存真实ID。",
-    "Jessica加入、Sena退出基线hold原样保留，不由现在目录的우정姓名推断与Jessica或Lu Yuting相同。",
     "VIPER实体阶段实际日期未核，不据零售搜索摘要或已过日历补成已发；未发现需独立核验的日本发行。"
   ]
 }

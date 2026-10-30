@@ -1,0 +1,24 @@
+const fs=require('node:fs'),cp=require('node:child_process'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const base='b209073909b2f43254d836ffe139eba056582f09';
+const read=p=>JSON.parse(cp.execFileSync('git',['show',`${base}:${p}`],{encoding:'utf8',maxBuffer:32*1024*1024}));
+const sort=v=>Array.isArray(v)?v.map(sort):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sort(v[k])])):v;
+const hash=s=>crypto.createHash('sha256').update(s).digest('hex');
+const stages=read('apps/idol-site/data/stage-videos.json');
+const replacement=read('docs/codex/evidence/20261028-continuous/stage-replacement-adoption.json');
+for(const item of replacement.items)stages[item.recordId]=item.before;
+const viewing=read('docs/codex/evidence/20261028-continuous/stage-viewing-adoption.json');
+const first={test:'continuous-stage-viewing historical source hash',target:'data/stage-videos.json',actual:hash(JSON.stringify(stages,null,2)+'\n'),expected:viewing.protectedFiles['data/stage-videos.json']};
+const supplements=read('apps/idol-site/data/stages/supplements.json');
+const old=read('docs/codex/evidence/20261027-category-resolution/stages/viewing-supplements-adoption.json');
+const id='recvxyOz5Xo5fW',row=supplements.works[id],reference=old.preservation.oldRows[id];
+row.alternatives=row.alternatives.slice(0,reference.alternativeCount).map(a=>{const copy={...a};delete copy.selection;return copy;});
+const corrections=read('docs/codex/evidence/20261028-continuation/editorial-corrections.json');
+for(const c of corrections.corrections.filter(c=>c.workId===id)){const i=row.alternatives.findIndex(a=>a.sourceId===c.sourceId);if(i>=0){assert.deepEqual(row.alternatives[i],c.after);row.alternatives[i]=c.before;}}
+if(reference.hadWatchLeads)row.watchLeads=row.watchLeads.slice(0,reference.watchLeadCount).map(a=>{const copy={...a};delete copy.selection;return copy;});else delete row.watchLeads;
+const second={test:'stage-viewing-category-resolution historical research hash',target:id,actual:hash(JSON.stringify(sort(row))),expected:reference.hash};
+assert.equal(first.actual,'14712a1d903d74df774791e76f4d5a29ed1ae4d249e261612101b51a5c7a2051');
+assert.equal(second.actual,'5f55564fa85811eb4e148255dda041e110c4938e8813a737f86cdee2b4063e64');
+for(const item of [first,second])assert.notEqual(item.actual,item.expected);
+const result={baselineCommit:base,method:'Re-evaluate the two exact failing preservation assertions using git-show objects from immutable baseline, without modifying current checkout.',bothFailuresPredateContinuation:true,failures:[first,second]};
+fs.writeFileSync('docs/codex/evidence/20261029-pr47-continuation/historical-checks.json',JSON.stringify(result,null,2)+'\n');
+console.log('Both remaining failures reproduce with identical actual/expected hashes on immutable PR47 baseline.');

@@ -1,27 +1,26 @@
-请接续 GitHub 项目 https://github.com/KAtOReNA7/idol 。
+请接续 https://github.com/KAtOReNA7/idol 的最新PR47。
 
-本次新电脑接续已保存到 codex/human-help-handoff-sync-20261029。除下列三个既有远端分支外，也显式 fetch 此任务分支并核对最新 PR；若其成果尚未合入新基线，比较后普通 merge，保留人工填写保护与最新交接。分支已删除时先查 PR 合并记录和 main 完整性。
+最新覆盖：2026-10-30正式站已v203／succeeded，当前全部成果及个人页统一已上线。换机使用 docs/codex/RESUME-PROMPT-20261030.txt（docs内相应codex路径），完整发布报告 docs/codex/v203-release-20261030.md。旧v202／未发布描述为历史；后续新开发不自动部署。
 
-用户已换电脑且不知道新增人工答案位置；上次核查 GitHub dada774 的 161 行模板三个人工栏全部为空。不要假定存在未收到的答案；本机新增填写应先保护，再核查。生成器遇到人工填写或异常 CSV 结构时会在任何产物写入前停止，不要清空答案以通过重建，也不要自动将日后人工答案上传公开仓库。最新本机保护与验证见 docs/codex/worklogs/20261029-human-help-handoff-sync.md。
 
-先检查并保护本地未提交和未跟踪文件，保留可恢复备份，不自动恢复旧stash，不使用reset、clean或强推。尚未克隆则先克隆。显式fetch origin/main、codex/statistics-relations-followup-20261027和codex/stage-person-followup-v199-20261028，核对PR44/PR45最新状态；已删除的分支按PR合并记录核实，不使用陈旧本地ref替代。
+最新覆盖说明（2026-10-30）：个人页统一已批准并完成，先读docs/codex/member-layout-implementation-20261030.md及evidence/20261029-member-layout/validation.json、browser-validation.json、github-delivery.json。51团独立成员详情和共享手帐均已物理重排，保留团体视觉和全部原图／数据／权限；不再等待用户选范围。230项通过、4可选DOM测试跳过，类型／构建／UDTT guard及代表浏览器检查通过；不是338成员全部目视或生产owner保存验收。正式仍v202，后续不自动部署。旧18团实施中和等待范围段落仅历史；不要重跑阶段迁移脚本覆盖最终修正。500本地／497线上及155分类项保持。
 
-工作树干净后，从最新origin/main创建新的codex/任务分支。若main尚未包含最新PR45成果，普通merge最新origin/codex/stage-person-followup-v199-20261028（已含PR44）；若都已合并，使用包含全部成果的最新main。不能只接PR44或旧main，必须同时保留v201实现和2026-10-29人工补充清单。
 
-依次阅读：
-1. docs/codex/NEXT-COMPUTER-HANDOFF.md
-2. AGENTS.md
-3. docs/codex/STATUS.md
-4. docs/codex/RESUME.md
-5. docs/codex/human-help-by-group-20261029.md（可填写CSV同名）
-6. docs/codex/generic-reference-statistics-followup-20261029.md
-7. docs/codex/stage-selection-policy-20261028.md 与 identity-photo-selection-policy-20261027.md
-8. docs/codex/evidence/20261028-post-v200/remaining-stage-ledger.json 和 remaining-person-statistics.json
+最新补充：先读docs/codex/member-page-layout-followup-20261029.md和evidence/20261029-manual-feedback/review.json。用户暂无STAYC LIT／MEOW、IVE Be Alright新片源，不重复问、不推定不存在；新其他方向采用0，500本地／497线上保持。旧JINNI／KIM GARAM缺页和BADVILLAIN七人入口已核为既有修复，不重复整改；旧LOONA／EVERGLOW名册测试已修正，10专项通过，仅测试／文档变化。个人页统一范围正在等待用户选择，尚未实施；不把旧v7的338上下文统计冒称当前全量验收。后续仍不自动部署。
 
-正式工程是apps/idol-site/。正式站 https://idol-lens-private.wuke40758.chatgpt.site/ 已发布v201、496舞台；当前接续提交仅维护人工清单工具和交接，不重复部署v201。清单覆盖45团待办、6团无当前项：109新增舞台缺口、11旧源替换、24作品人物参与证据、7未知统计、7事实生效日期、tripleS销量差350635，另有HITGS同套证据及MADEIN原图分辨率限制。各维度重叠，不相加当缺歌总数。现有关系认人图缺口0、旧低清0；24待证作品已有119通用参考槽，不能当成已证参与或评分关系。
+先检查并保护本地未提交与未跟踪文件，未克隆则克隆。禁止reset、clean、强推、覆盖本地修改或自动恢复旧stash。
+显式fetch origin/main及codex/group-evidence-followup-20261029，核PR44—47；最新接续基线为PR47，不从旧main或PR44/45接续。另核codex/statistics-relations-followup-20261027、codex/stage-person-followup-v199-20261028、codex/human-help-handoff-sync-20261029，确保PR46／dada774及PR47全部成果都在。普通Git网络失败时记录失败，可用GitHub Git对象API普通快进，树SHA／父提交／预期远端HEAD和读回必须核实；不要伪称fetch成功。
 
-用户将对熟悉团体提供人工补充，优先核查其新链接、成员姓名和时间点、节目日期、统计来源与原公告；其次继续有新证据的队列，不重复无新线索的搜索。舞台按打歌→官方练习室（同条件固定机位优先）→完整官方制作表演选取，同曲同语种/编配/完整范围；允许明确标注的合作曲成员版后备，只放宽客串范围，不允许全团替代个人/二人分队或短片。Right Now固定版、DADARIDA、IYKYK、SPAGHETTI成员版及所有已导批次不要重做。用户已接受无法补齐者保留待新证据。
+先读docs/codex/NEXT-COMPUTER-HANDOFF.md、AGENTS.md、docs/design-requirements.md、docs/collaboration-playbook.md、docs/codex/STATUS.md、docs/codex/RESUME.md，再读docs/codex/next-evidence-followup-20261029.md及evidence/20261029-next-followup/validation.json、github-delivery.json、remaining-stage-ledger.json。
 
-保持51团已确认设计、Apple Music主站、完整原图、稳定ID和关系、个人评分/备注/观看记录、访问权限与owner保存鉴权。未知统计显示0不代表真实零，报道日期不冒充实际生效日，逐人出镜/录音/创作证据分开记录。个人页统一排版仍待另行决定。任何舞台换绑先取得真实新鲜owner数据、完整保存日志与线上旧绑定核对；旧备份已过期，不改capturedAt，不上传私人备份。优先Codex内置页，不沿用已结束的一次Chrome授权。
+正式工程apps/idol-site/。正式站https://idol-lens-private.wuke40758.chatgpt.site/仍v202／497舞台；PR47本地／远端新成果为500舞台、29专项舞台封面、106资料作品546槽。最新实际GitHub交付看github-delivery回执和远端HEAD，不能把未提交状态称为已推送。后续暂不自动保存Sites版本或部署。
 
-先简短核对最新远端和线上状态，再继续实际工作。新代码、证据与交接同步GitHub；GitHub提交和正式站部署分别验证记录，不把推送当上线。不要为这次文档同步再次发布正式站。
+Password BV1bhU8BWEso/CID34265369310/P1，STAYC日版Teddy Bear BV1bo4y1x7LV/CID1115512650/P1@1085-1273，以及QWER SHOW DOWN x:2090845225845747983:video:1均已用各自新鲜owner导出保护采用，不重问、不重导。QWER用户确认全曲日语原版、四人、帖子只有一支视频。X仅外链，Bili区间仅手动定位／停止，不冒称自动裁切；source key必须含精确媒体范围。
+
+当前105新增舞台／11旧替换、24完整人物事实、7未知统计、7实际日期、tripleS345560差额，原161分类项剩155，不等于独立缺歌数。tripleS已核下界2113229、13周、截至2026-06；原行不重加。WOOAH SUMMER五名仅具名发行照参考；HITGS Gulliver四人有限资料不推全员cast。通用归档24、实际回退20作品97槽。Password原封面已补；STAYC整期封面是AKB48已拒绝，QWER也未取得专属海报，不借错图。
+
+按团继续有新证据的缺口。YouTube／B站／X、转载及民间来源均可，核同曲、语种／编配、完整首尾和参与范围。电视音乐节目优先，练习室其次且同条件固定机位优先，再考虑制作表演；演唱会／活动／节选／个人focus不能替代全团范围。成员版后备只放宽客串差异。跨平台／整帖／整BV赞不可当单视频排名。新评分来源须当时15分钟内真实完整owner备份，空分不含0、完整日志无目标、线上原对象核对；私人原始导出只留本机。
+
+保护51团设计、Apple Music主站、全部原图、稳定ID／关系、个人评分／备注／观看、访问和owner鉴权。原CSV和冻结事实不改；个人页统一排版待用户决定。A–Y/Z和其他已导批次禁止重复。LOONA模糊视频、ifeye无署名、BEEP无法确认精确首尾的反馈保持，不重复问同一问题。
+
+160专项／21文件、类型、正式构建、UDTT guard与carrier、7原件构建字节通过；没有新全站浏览器目视／全片音轨／真实保存验收。先简短核对远端和线上，再实际开发；GitHub与部署分别留证，不以推送或小批次为停工点，直到确实需要新人工证据。

@@ -1,5 +1,8 @@
+import {validBilibiliSource} from './stage-source';
 import metadata from '@/data/stages/supplements.json';
 import type {StageAlternative,StageEvidence,StageSearchReview,StageSelection,StageSupplement,StageWatchLead} from './types';
+import {safePublicStageUrl,validStageResearchNote} from './stage-public-research';
+export {safePublicStageUrl} from './stage-public-research';
 export const stageSupplementMetadata=metadata;
 const kinds=new Set(['press_concert_recording','official_group_fancam','broadcast_stage','concert_stage','studio_performance','produced_dance_performance','showcase_stage','practice_room']);
 const platforms=new Set(['youtube','bilibili','naver','weverse','official_site','x']);
@@ -9,10 +12,6 @@ const rejectedVideoIds=new Set(['l9GLV8Kd-MU','saY9KS7mKvI','BnmwjH-suLg']);
 const practiceTitle=/\bpractice\b|练习室/i;
 // Links only: never proxy arbitrary URLs, load external HTML, embed an unvetted player,
 // or turn a supplement ID into a score-bearing video binding.
-export function safePublicStageUrl(value:unknown):value is string {
- if(typeof value!=='string'||value.length>2000)return false;
- try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&u.hostname.includes('.')&&!/^(?:localhost|127\.|10\.|192\.168\.|169\.254\.|172\.(?:1[6-9]|2\d|3[01])\.)/.test(u.hostname)&&!u.hostname.startsWith('[')&&!/^\d+(?:\.\d+){3}$/.test(u.hostname)&&!u.hostname.endsWith('.localhost')&&!u.hostname.endsWith('.local')&&!u.hostname.endsWith('.internal');}catch{return false;}
-}
 function evidence(v:StageEvidence|undefined){return !!v&&typeof v.note==='string'&&!!v.note.trim()&&Array.isArray(v.urls)&&v.urls.length>0&&v.urls.every(safePublicStageUrl);}
 function date(v:unknown){return typeof v==='string'&&/(?:Z|\+00:00)$/.test(v)&&Number.isFinite(Date.parse(v))&&Date.parse(v)<=Date.now()+60000;}
 function validSelection(v:StageSelection|undefined){return v===undefined||!!v&&typeof v==='object'&&!Array.isArray(v)&&occasions.has(v.occasion)&&evidence(v.evidence)&&(v.camera===undefined||!!v.camera&&['fixed','moving','mixed'].includes(v.camera.mode)&&evidence(v.camera.evidence));}
@@ -21,8 +20,8 @@ function validSelection(v:StageSelection|undefined){return v===undefined||!!v&&t
 export function validStageAlternative(a:StageAlternative):boolean{
  if(!a||typeof a!=='object'||Array.isArray(a)||/relay dance|official music video|official m\/v|official mv|单人直拍|个人直拍/i.test(`${a.title} ${a.kind}`)||a.scorePolicy!=='view_only'||'scoreBinding' in a||!platforms.has(a.platform)||!kinds.has(a.performanceType)||!validSelection(a.selection))return false;
  if(![a.id,a.sourceId,a.title,a.channel,a.kind].every(v=>typeof v==='string'&&!!v.trim())||!safePublicStageUrl(a.url)||!date(a.checkedAt))return false;
- if(!['official','audience_original','press_original'].includes(a.sourceClass)||!['full_group','subunit','solo'].includes(a.performerScope)||!['full','excerpt'].includes(a.completeness))return false;
- if(a.performanceType==='practice_room'&&(a.sourceClass!=='official'||a.completeness!=='full'||a.selection?.occasion!=='practice_room'))return false;
+ if(!['official','audience_original','press_original','reupload','third_party'].includes(a.sourceClass)||!['full_group','subunit','solo'].includes(a.performerScope)||!['full','excerpt'].includes(a.completeness))return false;
+ if(a.performanceType==='practice_room'&&(!['official','reupload','third_party'].includes(a.sourceClass)||a.completeness!=='full'||a.selection?.occasion!=='practice_room'))return false;
  if(a.selection?.occasion==='practice_room'&&a.performanceType!=='practice_room')return false;
  if(['music_program','produced_performance','studio_live','special_program'].includes(a.selection?.occasion??'')&&['concert_stage','showcase_stage','press_concert_recording'].includes(a.performanceType))return false;
  if(practiceTitle.test(`${a.title} ${a.kind}`)&&a.performanceType!=='practice_room')return false;
@@ -42,13 +41,14 @@ export function validStageAlternative(a:StageAlternative):boolean{
  if(a.platform==='x')return a.sourceClass==='audience_original'&&host==='x.com'&&a.url==='https://x.com'+u.pathname&&!u.search&&!u.hash&&/^[1-9]\d{0,19}$/.test(a.sourceId)&&new RegExp('^/[A-Za-z0-9_]{1,15}/status/'+a.sourceId+'$').test(u.pathname);
  if(a.platform==='naver')return host==='tv.naver.com'&&/^[1-9]\d{0,19}$/.test(a.sourceId)&&a.url==='https://tv.naver.com/v/'+a.sourceId;
  if(a.platform==='youtube')return ['youtube.com','www.youtube.com','m.youtube.com','youtu.be'].includes(host)&&/^[A-Za-z0-9_-]{11}$/.test(a.sourceId)&&(host==='youtu.be'?u.pathname.slice(1):u.searchParams.get('v'))===a.sourceId;
- return a.platform==='official_site'||(a.platform==='bilibili'&&['www.bilibili.com','bilibili.com'].includes(host))||(a.platform==='weverse'&&host==='weverse.io');
+ return a.platform==='official_site'||(a.platform==='bilibili'&&validBilibiliSource({videoId:a.sourceId,url:a.url,bilibili:a.bilibili}))||(a.platform==='weverse'&&host==='weverse.io');
 }
 export function validStageWatchLead(a:StageWatchLead):boolean{
- if(!a||typeof a!=='object'||Array.isArray(a)||a.sourceClass!=='official'||a.completeness!=='unconfirmed'||a.scorePolicy!=='view_only'||!platforms.has(a.platform)||!['full_group','subunit','solo','unconfirmed'].includes(a.performerScope)||!validSelection(a.selection))return false;
+ if(!a||typeof a!=='object'||Array.isArray(a)||!['official','reupload','third_party'].includes(a.sourceClass)||a.completeness!=='unconfirmed'||a.scorePolicy!=='view_only'||!platforms.has(a.platform)||!['full_group','subunit','solo','unconfirmed'].includes(a.performerScope)||!validSelection(a.selection))return false;
  if(a.selection?.occasion==='practice_room'||['music_program','produced_performance','studio_live','special_program'].includes(a.selection?.occasion??'')&&['official_concert_full_event','official_showcase_full_event'].includes(a.sourceType))return false;
- const keys=new Set(['id','platform','sourceId','sourceClass','performerScope','completeness','selection','url','title','channel','sourceType','kind','checkedAt','scorePolicy','sourceEvidence','sameSongEvidence','reason','leadTimeSeconds','leadTimeEvidence']);
- if(Object.keys(a).some(k=>!keys.has(k))||!['official_livestream_song_lead','official_multi_song_live_clip','official_showcase_full_event','official_concert_full_event','official_compilation','official_television_program'].includes(a.sourceType))return false;
+ if(a.sourceClass!=='official'&&a.sourceType!=='unconfirmed_program')return false;
+ const keys=new Set(['id','platform','sourceId','sourceClass','performerScope','completeness','selection','url','title','channel','sourceType','kind','checkedAt','scorePolicy','sourceEvidence','sameSongEvidence','reason','leadTimeSeconds','leadTimeEvidence','bilibili']);
+ if(Object.keys(a).some(k=>!keys.has(k))||!['official_livestream_song_lead','official_multi_song_live_clip','official_showcase_full_event','official_concert_full_event','official_compilation','official_television_program','unconfirmed_program'].includes(a.sourceType))return false;
  if(![a.id,a.sourceId,a.title,a.channel,a.kind,a.reason].every(v=>typeof v==='string'&&!!v.trim())||!safePublicStageUrl(a.url)||!date(a.checkedAt)||!evidence(a.sourceEvidence)||!evidence(a.sameSongEvidence))return false;
  if(practiceTitle.test(`${a.title} ${a.kind}`)||/relay dance|official music video|official m\/v|official mv|单人直拍|个人直拍/i.test(`${a.title} ${a.kind}`))return false;
  if(a.leadTimeSeconds!==undefined&&(!Number.isSafeInteger(a.leadTimeSeconds)||a.leadTimeSeconds<0||a.leadTimeSeconds>86400||!evidence(a.leadTimeEvidence)))return false;
@@ -59,9 +59,10 @@ export function validStageWatchLead(a:StageWatchLead):boolean{
  if(u.searchParams.has('t')&&(a.leadTimeSeconds===undefined||u.searchParams.get('t')!==String(a.leadTimeSeconds)))return false;
  if(a.platform==='youtube'&&(u.hash||[...u.searchParams.keys()].some(k=>!['v','t'].includes(k))))return false;
  if(a.platform==='youtube')return ['youtube.com','www.youtube.com','m.youtube.com','youtu.be'].includes(host)&&/^[A-Za-z0-9_-]{11}$/.test(a.sourceId)&&(host==='youtu.be'?u.pathname.slice(1):u.searchParams.get('v'))===a.sourceId;
- return a.platform==='official_site'||(a.platform==='bilibili'&&['www.bilibili.com','bilibili.com'].includes(host))||(a.platform==='naver'&&host==='tv.naver.com')||(a.platform==='weverse'&&host==='weverse.io');
+ return a.platform==='official_site'||(a.platform==='bilibili'&&validBilibiliSource({videoId:a.sourceId,url:a.url,bilibili:a.bilibili}))||(a.platform==='naver'&&host==='tv.naver.com')||(a.platform==='weverse'&&host==='weverse.io');
 }
 export function validStageSearchReview(r:StageSearchReview):boolean{
+ if(r?.publicNote!==undefined&&(r.outcome!=='verification_limited'||r.reviewComplete||!validStageResearchNote(r.publicNote)))return false;
  return !!r&&(r.reviewComplete===undefined||(r.reviewComplete===true&&typeof r.reopenRequirement==='string'&&!!r.reopenRequirement.trim()))&&(r.reopenRequirement===undefined||(r.reviewComplete===true&&typeof r.reopenRequirement==='string'&&!!r.reopenRequirement.trim()))&&typeof r.accessLimited==='boolean'&&date(r.checkedAt)&&['not_found_in_scope','verification_limited','alternate_version_found'].includes(r.outcome)&&typeof r.summary==='string'&&!!r.summary.trim()&&Array.isArray(r.scope)&&r.scope.length>0&&r.scope.every(x=>x.label&&safePublicStageUrl(x.url))&&Array.isArray(r.excluded)&&r.excluded.every(x=>x.title&&x.reason&&safePublicStageUrl(x.url))&&Array.isArray(r.limitations)&&r.limitations.every(x=>typeof x==='string'&&!!x.trim())&&!(r.outcome==='not_found_in_scope'&&r.accessLimited);
 }
 function alternativeVisible(a:StageAlternative){
@@ -79,5 +80,6 @@ export function stageSupplementForWork(recordId:string):StageSupplement|null{
  const alternatives=Array.isArray(row.alternatives)?row.alternatives.filter(validStageAlternative).filter(alternativeVisible).sort((a,b)=>selectionPriority(a)-selectionPriority(b)):[];
  const watchLeads=Array.isArray(row.watchLeads)?row.watchLeads.filter(validStageWatchLead).filter(watchLeadVisible).sort((a,b)=>selectionPriority(a)-selectionPriority(b)):[];
  const searchReview=row.searchReview&&validStageSearchReview(row.searchReview)?row.searchReview:undefined;
- return alternatives.length||watchLeads.length||searchReview?{alternatives,...(watchLeads.length?{watchLeads}:{}),...(searchReview?{searchReview}:{})}:null;
+ const researchNote=searchReview?.publicNote;
+ return alternatives.length||watchLeads.length||searchReview?{alternatives,...(watchLeads.length?{watchLeads}:{}),...(searchReview?{searchReview}:{}),...(researchNote?{researchNote:{summary:researchNote.summary,sources:researchNote.sources.map(source=>({label:source.label,url:source.url}))}}:{})}:null;
 }

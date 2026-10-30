@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-29",
+  "baselineCommit": "ec9efbc590673b8bbb98e6c98db303303a3b8aa0",
+  "scope": "Bounded public research of four remaining unknown physical-sales fields. No application, Git, private API or publication changes by this researcher.",
+  "priorEvidenceRead": [
+    "docs/codex/evidence/20261029-human-help/other-checklist.json",
+    "docs/codex/evidence/20261028-post-v200/statistics/research.json",
+    "docs/codex/evidence/20261029-group-advance/unknown-statistics-new-routes.json",
+    "docs/codex/evidence/20261029-group-advance/statistics-dates-primary.json"
+  ],
+  "newRoute": "Investigate explicit CD/physical/signed retail-product locators, not repeat old Circle months, GENBLUE award archives or Soridata download/captcha paths. Follow actual public retailer vendor form and product hyperlink when a plausible item is found.",
+  "searchQueries": [
+    "SPIA Deeeep physical album CD sales 스피아 음반 판매량",
+    "위치스 Run Baby Run 음반 초동 WTCHX album sales",
+    "TRACER 365 Gleammedia album physical 트레이서 365 음반",
+    "VCHA Girls of the Year CD physical album sales Only One",
+    "\"수피아\" \"앨범\" \"CD\"",
+    "\"트레이서\" \"365\" \"CD\"",
+    "\"W!TCHX\" \"physical\" OR \"CD\" OR \"판매량\"",
+    "\"VCHA\" \"Girls of the Year\" \"CD\" -lyrics -review -interview",
+    "\"SPIA\" \"Deeeep\" \"signed\"",
+    "\"TRACER\" \"365\" \"signed\"",
+    "\"WITCHX\" \"signed\" album",
+    "\"VCHA\" \"Only One\" \"physical release\""
+  ],
+  "summary": {
+    "unknownFieldsExamined": 4,
+    "newRetailProductLocated": 1,
+    "newVersionFormatConflictLocated": 1,
+    "qualifiedNumericProposals": 0,
+    "unknownFieldsClosed": 0,
+    "confirmedZeroClaims": 0,
+    "applicationWrites": 0,
+    "privateReadsOrWrites": 0,
+    "deployments": 0
+  },
+  "items": [
+    {
+      "key": "witchx.sales",
+      "status": "new_retail_product_but_no_qualified_audio_carrier_or_sales_count",
+      "newSource": {
+        "url": "https://www.ktowns.ca/products/witchx-run-baby-run-ready-set-run-photobook-version-3-versions-random-1ea-pob-photocard-1ea-included-preorder-only",
+        "sourceType": "public retailer product catalogue, not artist/distributor official statement",
+        "product": "WiTCHX RUN BABY RUN : READY, SET, RUN — three-version photobook product",
+        "shortQuote": "PhotobookPhotocardUnit PhotocardFolded PosterSticker",
+        "readEvidence": "Product page body and live HTTP JSON-LD agree on a photobook/card/poster/sticker package; no CD, audio download/code, platform-album registration, barcode or unit-sales total was present in the captured product fields.",
+        "observedPrice": {"value": "39.99", "currency": "CAD", "meaning": "listed unit price, never sales units"},
+        "availability": "OutOfStock",
+        "availabilityBoundary": "An out-of-stock flag does not identify any units sold and cannot establish a nonzero lower bound. Three versions and one product likewise are not sales counts.",
+        "originalPublicationDate": null,
+        "readDate": "2026-10-29"
+      },
+      "discovery": {
+        "categoryUrl": "https://www.ktowns.ca/collections/v-z",
+        "observedFormField": {"name": "filter.p.vendor", "value": "WiTCHX"},
+        "filteredCategoryUrl": "https://www.ktowns.ca/collections/v-z?filter.p.vendor=WiTCHX",
+        "publicProductLinkFollowed": true,
+        "locators": ["statistics-ktowns-filter.json", "statistics-ktowns-products.json", "statistics-ktowns-product-readback.json"]
+      },
+      "numericProposal": null,
+      "recommendation": "Keep observedValue null and display fallback 0. This new retail item may be documented as merchandise/photobook evidence, not physical-album sales. A real audio-carrier SKU plus a dated chart/retailer sales count is still needed.",
+      "completePhysicalDiscographyClaim": false
+    },
+    {
+      "key": "vcha.sales",
+      "status": "new_format_conflict_rejected_no_sales_count",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/Girls_of_the_Year",
+          "sourceType": "community encyclopedia, read body",
+          "finding": "Its infobox lists CD but its own release-history section lists downloads and streaming. No CD SKU, barcode, manufacturer catalogue or sales figure is supplied by the captured sections.",
+          "capturedRevision": "82817915",
+          "pageLastRevisionShown": "2024-05-28",
+          "decision": "Do not promote this internally inconsistent format claim into physical-release or sales evidence."
+        },
+        {
+          "url": "https://kpopconcerts.com/k-pop-news/vcha-announces-upcoming-debut-single-girls-of-the-year/",
+          "sourceType": "2024-01-04 media article tagged Press Release",
+          "shortQuote": "released to all streaming and digital platforms",
+          "finding": "Announces Girls of the Year plus XO Call Me for 2024-01-26 on streaming/digital services. This is a dated format-specific statement for that release, not proof of zero VCHA physical units for its entire history.",
+          "numericCount": null,
+          "brandScope": "VCHA, not GIRLSET"
+        },
+        {
+          "url": "https://www.reddit.com/r/vcha/comments/1b7rcpc/",
+          "sourceType": "2024-03-06 fan speculation found by search",
+          "finding": "Discussion speculates about a future physical mini album. A prediction or hope is not a release announcement, completed sale or historical tally.",
+          "decision": "Excluded from factual sales evidence."
+        }
+      ],
+      "numericProposal": null,
+      "recommendation": "Retain null/display 0. Do not infer all-period zero from a digital release and do not backfill GIRLSET Tweak/CHAT product figures into VCHA."
+    },
+    {
+      "key": "spia.sales",
+      "status": "no_new_qualified_sku_or_count",
+      "finding": "Targeted physical/CD/signed retail searches returned the already-known Deeeep digital catalogues, unrelated Korean homonyms and general merchandise noise; no new exact SPIA album SKU, audio-carrier evidence or dated sales count was located.",
+      "knownCatalogueNotReopened": [
+        "https://www.genie.co.kr/detail/albumInfo?axnm=85265735",
+        "https://music.bugs.co.kr/album/4102374"
+      ],
+      "numericProposal": null,
+      "recommendation": "Retain null/display 0. Need a publisher or seller audio-carrier product with exact artist identity and a dated count; the two known digital singles do not prove entire-history zero.",
+      "absenceClaim": false
+    },
+    {
+      "key": "tracer.sales",
+      "status": "no_new_qualified_sku_or_count",
+      "identity": "GleamMedia four-member girl group, 365 released 2024-11-05, licensed to Genie",
+      "finding": "Explicit 365/CD/signed searches still predominantly returned television OST, chemical tracer, trademark and hardware false positives. New 365 Apple Music and Bugs result identities are consistent with the known GleamMedia digital single but contain no physical SKU or sales count.",
+      "searchIdentitySources": [
+        "https://music.apple.com/us/album/365-single/1777757195",
+        "https://music.bugs.co.kr/album/20682344?wl_ref=list_tr_11"
+      ],
+      "priorCircleResultsNotRepeated": true,
+      "numericProposal": null,
+      "recommendation": "Retain null/display 0. Do not use same-name drama OST or digital-download quantities as girl-group physical units; await an exact artist SKU and dated count.",
+      "absenceClaim": false
+    }
+  ],
+  "accessAndLimits": [
+    "No request to Soridata downloads/captcha routes, owner APIs, private exports, login or transaction endpoints.",
+    "K-Towns filtered URL used actual field name/value read from its public form, not a guessed product slug; exact product URL came from the filtered page hyperlink.",
+    "Web filtered-category open was inaccessible via connector. An ordinary unauthenticated public HTTP read succeeded without cookie/user-agent/proxy or access-control changes.",
+    "First ordinary category HTTP read succeeded but console GBK rendering failed; one second read captured UTF-8 locators. This was an output-encoding repair, not a retry after access denial.",
+    "Product web body was an older cached rendering; a normal live HTTP 200 JSON-LD read independently confirmed the same product composition. Unrelated customer reviews were not stored.",
+    "Research search results do not establish nonexistence or complete chart coverage. Bounded query completion does not mean these factual gaps are closed."
+  ]
+}

@@ -13,7 +13,9 @@ const {asIds,asText,F}=product;
 const catalog={mode:'snapshot',groups:registry.map(g=>({id:g.groupId,name:g.name})),members:raw.members.records.map(({recordId,fields:v})=>({id:recordId,name:asText(v[F.members.name]),stageName:asText(v[F.members.stageName]),cnName:asText(v[F.members.cnName]),groupIds:asIds(v[F.members.groups]),formerGroupIds:asIds(v[F.members.formerGroups]),favorite:null,role:'',status:'',birthDate:'',country:'',note:'',profile:'',photo:null})),works:raw.works.records.map(({recordId,fields:v})=>({id:recordId,song:asText(v[F.works.song]),name:asText(v[F.works.name]),groupIds:asIds(v[F.works.groups]),score:null,stageScore:null,watched:'',note:'',releaseDate:'',url:'',videoType:'',version:'',stage:null,stageSupplement:null})),ratings:raw.ratings.records.map(({recordId,fields:v})=>({id:recordId,memberIds:asIds(v[F.ratings.members]),workIds:asIds(v[F.ratings.works]),score:null,stylingScore:null,note:'',memory:'',photo:null})),counts:{}};
 const before=JSON.stringify(catalog);
 const categoryCorrections=require('../evidence/category-resolution-20261027/timeline-corrections.json');
+const continuousEvidence=require('../../../docs/codex/evidence/20261028-continuous/evidence-upgrade-proposal-c.json');
 const reportRecords=require('../data/timeline-reported-records.json').records;
+const {beforePriorityTimelineBytes,receipt:priorityDates}=require('./helpers/priority-date-baseline.cjs');
 // Reviewed native pages have their own event/edition identities. Freeze their
 // complete source documents rather than infer acceptance from current output.
 const nativeContracts={
@@ -31,15 +33,25 @@ const nativeContracts={
  spia:['spia-native-design','b82bd3dc6756ae450695640554d07b0eaa3f57ec842d160126b5037d4e9c2915','sp-timeline'],
 };
 const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+function beforeContinuousSourceUpgrade(slug,bytes){
+ bytes=beforePriorityTimelineBytes(slug,bytes);
+ const change=continuousEvidence.timelines.find(row=>row.slug===slug);
+ if(!change)return bytes;
+ assert.equal(sha(bytes),change.proposedAfterFileSha256,'complete reviewed source upgrade '+slug);
+ const historical=Buffer.from(change.expectedBeforeText,'utf8');
+ assert.equal(sha(historical),change.expectedBeforeFileSha256,'exact source-upgrade preimage '+slug);
+ return historical;
+}
 const ordered=events=>[...events].sort((a,b)=>(a.date??'9999').localeCompare(b.date??'9999'));
-function reportAssertions(dom,group,held,{shown=true}={}){
- const expected=shown?reportRecords.filter(r=>r.slug===group.slug):[];
+function reportAssertions(dom,group,held,{shown=true,native=false}={}){
+ const expected=shown?reportRecords.filter(r=>r.slug===group.slug&&(native||r.eventDate===null)):[];
  const nodes=find(dom,n=>Object.hasOwn(n.attrs,'data-reported-record'));
  assert.deepEqual(nodes.map(n=>n.attrs['data-reported-record']).sort(),expected.map(r=>r.eventId).sort(),'report overlays are an exact, separate set');
  for(const row of expected){
   const node=nodes.find(n=>n.attrs['data-reported-record']===row.eventId);
-  assert.ok(reported(node));assert.equal(held.find(e=>e.id===row.eventId)?.eventDate,null,'a report never promotes its canonical hold');
-  assert.equal(row.eventDate,null);assert.ok(text(node).includes(row.boundary));assert.match(text(node),/生效日期未确认/);
+  assert.ok(reported(node));assert.ok(text(node).includes(row.boundary));
+  if(row.eventDate===null){assert.equal(held.find(e=>e.id===row.eventId)?.eventDate,null,'unresolved reporting never promotes a canonical hold');assert.match(text(node),/生效日期未确认/);}
+  else{const change=priorityDates.changes.find(c=>c.eventId===row.eventId);assert.ok(change,'only reviewed resolved records');assert.deepEqual(row.eventDate,change.after.eventDate);assert.equal(held.some(e=>e.id===row.eventId),false);}
   if(row.recordDate)assert.ok(text(node).includes(row.recordDate));else assert.match(text(node),/记录日期未确认/);
   const sources=find(node,n=>n.tag==='a'&&n.attrs.href?.startsWith('https://'));
   assert.deepEqual(sources.map(n=>n.attrs.href),row.sources.map(s=>s.url));
@@ -96,14 +108,14 @@ function nativeAssertions(dom,group,contract,data,home,held,{genblueFiltered=fal
   if(['izna','ifeye'].includes(group.slug))for(const id of event.workIds??[])for(const w of data.works.filter(w=>w.id===id))assert.ok(destinations.some(u=>u.searchParams.get('media')===w.key),'all exact video variants remain reachable');
   for(const link of links.filter(n=>n.attrs.href.startsWith('https://'))){assert.ok([event.sourceUrl].includes(link.attrs.href),'source belongs to this event');assert.match(link.attrs.rel,/noopener/);}
  }
- reportAssertions(dom,group,held,{shown:!(home&&['bewave','candyshop'].includes(group.slug))});headingAssertion(dom);
+ reportAssertions(dom,group,held,{shown:!(home&&['bewave','candyshop'].includes(group.slug)),native:true});headingAssertion(dom);
 }
 for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold isolation and actual production renderer contract`,async()=>{
  const file=group.slug+'.json',bytes=fs.readFileSync(path.join(root,'data/artist-timelines',file));
  if(group.slug==='triples'){
   const correction=require('../HANDOFF/timeline-corrections/triples-assemble24.json');
   const {validateCorrectionChain,hash}=require('./helpers/timeline-correction-chain.cjs');
-  const events=new Map(registry.flatMap(g=>JSON.parse(fs.readFileSync(path.join(root,`data/artist-timelines/${g.slug}.json`))).events.map(e=>[e.id,e])));
+  const events=new Map(registry.flatMap(g=>JSON.parse(beforeContinuousSourceUpgrade(g.slug,fs.readFileSync(path.join(root,`data/artist-timelines/${g.slug}.json`)))).events.map(e=>[e.id,e])));
   // This ledger predates the two independently verified official-source corrections.
   // Their exact before/after bytes and identities are checked below and in public-data-completion.
   for(const item of Object.values(require('../../../docs/codex/evidence/20261025-data-completion/timeline-evidence.json')))events.set(item.eventId,item.before);
@@ -128,7 +140,7 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
   const d=categoryCorrections.documents.find(d=>d.slug===group.slug);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),d.afterDocumentSha256);
   const historical=JSON.parse(bytes);historical.events=historical.events.map(e=>categoryCorrections.corrections.find(c=>c.eventId===e.id)?.before??e);historical.gaps=d.beforeGaps;
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(historical,null,2)+'\n').digest('hex'),hashes[file]);assert.equal(d.beforeDocumentSha256,hashes[file]);
- }else assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),hashes[file]);
+ }else assert.equal(sha(beforeContinuousSourceUpgrade(group.slug,bytes)),hashes[file]);
  const input=JSON.parse(bytes),loaded=await product.loadArtistTimeline(group.slug);
  assert.deepEqual(loaded.input,input);assert.deepEqual(Object.keys(loaded),['input'],'retired display/background files are not loaded');
  const scoped=product.projectArtistCatalog(catalog,group.groupId);
@@ -139,7 +151,7 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
  const ready=input.events.filter(e=>e.reviewStatus==='ready'),held=input.events.filter(e=>e.reviewStatus==='hold');
  const baselineGroup=accepted.groups[group.slug],riseId='e-madein-rise-release-carrier-hold';
  const promoted=group.slug==='madein'?riseId:group.slug==='idle'?'e-idle-cube-renewal':group.slug==='newjeans'?'e-newjeans-attention-mv':null;
- const promotedIds=[...(promoted?[promoted]:[]),...categoryCorrections.corrections.filter(c=>c.slug===group.slug).map(c=>c.eventId)];
+ const promotedIds=[...(promoted?[promoted]:[]),...categoryCorrections.corrections.filter(c=>c.slug===group.slug).map(c=>c.eventId),...priorityDates.changes.filter(c=>c.slug===group.slug).map(c=>c.eventId)];
  const acceptedGroup={...baselineGroup,ready:[...baselineGroup.ready,...promotedIds].sort(),hold:baselineGroup.hold.filter(id=>!promotedIds.includes(id))};
  assert.equal(input.groupId,acceptedGroup.groupId);
  assert.deepEqual(ready.map(e=>e.id).sort(),acceptedGroup.ready,'canonical ready IDs must equal the independently recorded accepted set');
@@ -175,10 +187,10 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
     const nativeRoute=product.udttRoute(route);assert.ok(nativeRoute);
     dom=tree(product.renderUdtt({route:nativeRoute,helpers:product.udttHelpers,catalog:scoped,canEdit:false}));
     const axes=find(dom,n=>hasClass(n,'ud-timeline')&&!reported(n));assert.equal(axes.length,1);
-    const nodes=axes[0].children.filter(n=>typeof n!=='string');assert.equal(nodes.length,ready.length);
-    if(!home){assert.deepEqual(nodes.map(eventId),['e-udtt-retry-prerelease-candidate','e-udtt-school-rush-debut-candidate','e-udtt-kwave-ambassador','e-udtt-viper-digital-release']);assert.deepEqual(nodes.map(eventId).sort(),expected.toSorted(),'native announcement-date order preserves exactly the ready IDs');for(const n of nodes)for(const a of find(n,x=>x.tag==='a'&&x.attrs.href.startsWith('#/'))){assert.ok(product.udttTarget(a.attrs.href),'native release target is an exact allowed UDTT entity');const trail=JSON.parse(new URL(a.attrs.href.slice(1),'https://test.invalid').searchParams.get('udttTrail'));assert.equal(trail.at(-1).event,eventId(n),'release return retains the originating stable event');}}
+    const nodes=axes[0].children.filter(n=>typeof n!=='string'),resolvedReports=reportRecords.filter(r=>r.slug==='udtt'&&r.eventDate!==null);assert.equal(nodes.length+resolvedReports.length,ready.length);
+    if(!home){assert.deepEqual(nodes.map(eventId),['e-udtt-retry-prerelease-candidate','e-udtt-school-rush-debut-candidate','e-udtt-kwave-ambassador','e-udtt-viper-digital-release']);assert.deepEqual(nodes.map(eventId).sort(),expected.filter(id=>!resolvedReports.some(r=>r.eventId===id)).toSorted(),'native announcement-date order preserves its frozen IDs; promoted report is checked separately');for(const n of nodes)for(const a of find(n,x=>x.tag==='a'&&x.attrs.href.startsWith('#/'))){assert.ok(product.udttTarget(a.attrs.href),'native release target is an exact allowed UDTT entity');const trail=JSON.parse(new URL(a.attrs.href.slice(1),'https://test.invalid').searchParams.get('udttTrail'));assert.equal(trail.at(-1).event,eventId(n),'release return retains the originating stable event');}}
     else for(const event of product.udttArtist.timeline)assert.ok(text(axes[0]).includes(event.title??event.summary),'overview contains every native timeline summary');
-    reportAssertions(dom,group,held,{shown:!home});headingAssertion(dom);continue;
+    reportAssertions(dom,group,held,{shown:!home,native:true});if(!home)assert.deepEqual([...nodes.map(eventId),...resolvedReports.map(r=>r.eventId)].sort(),ready.map(e=>e.id).sort(),'native frozen axis and reviewed resolved overlay cover each ready event once');headingAssertion(dom);continue;
    }
    const display=group.slug==='izna'?product.prepareIznaDisplayData(scoped):product.prepareIfeyeDisplayData(scoped);
    assert.deepEqual(display.events,nativeData.events,'catalog projection cannot rewrite accepted events');
@@ -207,12 +219,12 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
  }
  assert.equal(JSON.stringify(catalog),before);
 });
-test('all 51 canonical groups retain 616 accepted events, seven isolated holds and immutable public fixture',()=>{
+test('all 51 canonical groups retain 621 accepted events, two isolated holds and immutable public fixture',()=>{
  const documents=registry.map(g=>JSON.parse(fs.readFileSync(path.join(root,'data/artist-timelines',g.slug+'.json'))));
  const events=documents.flatMap(d=>d.events);
- assert.equal(registry.length,51);assert.equal(events.filter(e=>e.reviewStatus==='ready').length,616);assert.equal(events.filter(e=>e.reviewStatus==='hold').length,7);
+ assert.equal(registry.length,51);assert.equal(events.filter(e=>e.reviewStatus==='ready').length,621);assert.equal(events.filter(e=>e.reviewStatus==='hold').length,2);
  assert.deepEqual(Object.keys(accepted.groups).sort(),registry.map(g=>g.slug).sort());
- assert.deepEqual(reportRecords.map(r=>r.eventId).sort(),events.filter(e=>e.reviewStatus==='hold').map(e=>e.id).sort());
+ assert.deepEqual(reportRecords.filter(r=>r.eventDate===null).map(r=>r.eventId).sort(),events.filter(e=>e.reviewStatus==='hold').map(e=>e.id).sort());
  assert.equal(JSON.stringify(catalog),before);
 });
 test.after(()=>fs.rmSync(dir,{recursive:true,force:true}));

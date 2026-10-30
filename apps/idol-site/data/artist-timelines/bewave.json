@@ -127,10 +127,13 @@
       "id": "e-bewave-six-member-phase-end-announcement",
       "groupId": "rec28ldfRTiDh1",
       "eventType": "member_departure",
-      "title": "公告线索：结束六人活动阶段并重整阵容",
-      "summary": "已读GOLDDUST署名韩英声明原图：计划于2025年10月31日结束六人活动阶段，其后以三人继续，另三人准备新团。",
-      "scopeNote": "原声明图已目视读取；公开归档定位BEWAVE_official原帖及2025-09-04发布时间，未独立读取X原帖正文。声明是未来计划，未证计划实际执行；不改稳定成员ID、实际日期或待核状态，新团不创ID。",
-      "eventDate": null,
+      "title": "结束六人活动阶段并重整阵容",
+      "summary": "BEWAVE于2025年10月31日结束六人活动阶段，之后按三人阵容继续活动。",
+      "scopeNote": "既有公司计划与后续明确完成的成员档案交叉；不是解散、换公司或自动改写成员关系。",
+      "eventDate": {
+        "value": "2025-10-31",
+        "precision": "day"
+      },
       "announcementDate": {
         "value": "2025-09-04",
         "precision": "day"
@@ -139,7 +142,7 @@
         "value": "2025-10-31",
         "precision": "day"
       },
-      "status": "announced",
+      "status": "confirmed",
       "importance": "major",
       "memberIds": [],
       "workIds": [],
@@ -184,13 +187,20 @@
           "checkedAt": "2026-10-28",
           "scopeNote": "官方媒体原图已下载并目视读取；原帖https://x.com/BEWAVE_official/status/1963527459069923774及日期由公开归档定位，未独立读取X页面正文。仅证明当时公布的计划，不证明10月31日实际完成。",
           "evidenceRef": "docs/codex/evidence/20261028-continuous/bewave-original-images-receipt-c.json"
+        },
+        {
+          "id": "priority-crosscheck-bewave_profile",
+          "url": "https://kprofiles.com/bewave-members-profile/",
+          "publisher": "KProfiles · BEWAVE成员档案",
+          "title": "结束六人活动阶段并重整阵容 · 日期依据",
+          "sourcePublishedAt": null,
+          "checkedAt": "2026-10-30",
+          "scopeNote": "后续档案分别写三人已于2025-10-31结束活动，现团列三人，与既有公司计划交叉。",
+          "evidenceRef": "docs/codex/evidence/20261030-priority-crosscheck/date-adoption.json"
         }
       ],
-      "reviewStatus": "hold",
-      "holdReasons": [
-        "已读取官方署名原声明图，原帖及发表日期由公开归档定位；原图仅公布未来计划，不足以核定实际生效。",
-        "无独立原文证明计划实际生效；不填实际退团日，不把重整当解散或换公司。"
-      ]
+      "reviewStatus": "ready",
+      "holdReasons": []
     }
   ],
   "gaps": [

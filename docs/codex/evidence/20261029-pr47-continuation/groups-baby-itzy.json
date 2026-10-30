@@ -1,0 +1,934 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29",
+  "baselineCommit": "b209073909b2f43254d836ffe139eba056582f09",
+  "scope": "9团39分类项，非独立缺歌数；包含旧组文件漏列但CSV已有的Geenius日期。",
+  "counts": {
+    "effective_date": 1,
+    "person": 5,
+    "photo_quality": 1,
+    "stage_new": 31,
+    "stage_replacement": 1
+  },
+  "adoptableApplicationFacts": 0,
+  "applicationWrites": 0,
+  "formalStageBindings": 0,
+  "deployments": 0,
+  "methodNotes": [
+    "读取当前AGENTS/设计约束/协作手册/交接/20261028舞台政策、原CSV及旧组研究；保留版本与证据限度。",
+    "检索与页面正文、官方与二手、具名照片与歌曲参与分别标注；未全片播放/逐句音轨核对，视频时长不作完整性证明。",
+    "没有新鲜owner空分、完整日志和线上旧源；本轮即使有候选也不写正式sources，不转移私人历史。",
+    "YouTube两次页面读取节流后停止；X阻断不绕过；MusicKorea地域阻断不重试。",
+    "HITGS 15张未采用新原件已移/存本地独立备份，不入公开仓库；manifest保留公共URL、像素和SHA，无本地私人路径。",
+    "同发行宣传系列不等于同套服装/同次拍摄；保留原图，不为产生增量而替换。",
+    "ILLIT完整原曲与短版导航已完成；本轮不重做、不再询问范围，不导已有Music Bank舞台。",
+    "搜索无结果/目录缺席不作不存在结论；本轮证据仍不足，不无限重复同一查询。"
+  ],
+  "sources": {
+    "baby_jp_movie": {
+      "url": "https://yg-babymonster-official.jp/movie/page/2/",
+      "access": "official page body read",
+      "finding": "SUPA DUPA LUV明确列M/V；相邻PERFORMANCE VIDEO是PSYCHO，FIRST TAKE是WE GO UP/SHEESH，不能跨歌映射。分页目录缺席不证明不存在。"
+    },
+    "fromis_osen": {
+      "url": "https://www5.osen.co.kr/article/G1112625333",
+      "access": "original news body read",
+      "finding": "2025-07-31报道8月1日18点发布Touchdown；只署团体演唱，没有逐人名字或舞台片源。"
+    },
+    "fromis_archive": {
+      "url": "https://www.fromispedia.com/mvs",
+      "access": "search indexed archive",
+      "finding": "Touchdown MV归档没有新增可核对逐人录音/拍摄证据；同站其他宣传成员名不迁入本作。"
+    },
+    "geenius_games": {
+      "url": "https://thekrazemag.com/latest-updates/2026/5/26/how-geenius-markets-their-first-full-album-through-games",
+      "access": "search indexed original article",
+      "finding": "说明I.L.Y五个单人互动视角和游戏玩法，仍属已知MV范围；无独立单人同段落表演。"
+    },
+    "geenius_catalog": {
+      "url": "https://www.musickorea.com/Mobile/Product/Detail/view/pid/216995/cid/1281",
+      "access": "search indexed catalog; direct body country blocked, stopped",
+      "finding": "索引标2026-01-15及器乐预公开、I.L.Y (inst) Made by Yeyoung等；仍是商店目录，不能确认公司实际发行日或把器乐署名移入互动人声片段。"
+    },
+    "geenius_preorder": {
+      "url": "https://koreapopstore.com/article/notice/1/875/",
+      "access": "search indexed dated preorder notice",
+      "finding": "2025-12-24预售通知列2026-01-15；在发生前的预期日期，不是当日实际发行确认。"
+    },
+    "geenius_import": {
+      "url": "https://www.cdjapan.co.jp/product/NEOIMP-24187",
+      "access": "search indexed importer product",
+      "finding": "进口QR器乐商品及曲目；进口发售/到货日不替代韩国实际发行日。"
+    },
+    "h2h_bugs_remix": {
+      "url": "https://music.bugs.co.kr/album/4134072?wl_ref=list_ab_01_ar",
+      "access": "licensed distributor page body and credit section read",
+      "finding": "精确DJ Seinfeld Remix条目署DJ Seinfeld编曲、乐器、编程与混音，团体艺人层未列成员逐人录音/取样；MV分类不证明舞台。"
+    },
+    "h2h_style_archive": {
+      "url": "https://hearts2hearts.fandom.com/wiki/Style",
+      "access": "search indexed fan compilation",
+      "finding": "把Teenieping MV与普通STYLE打歌/练习并列，但未给合作版音轨与节目版一致的证据，不能据此直接配舞台。"
+    },
+    "h2h_schedule": {
+      "url": "https://blip.kr/en/artists/Hearts2Hearts/schedule?unitId=142",
+      "access": "third-party live page body read",
+      "finding": "先前搜索索引出现Moonride MV BH2ND；本次正文未显示对应条目，不能当已核官方视频，更不能当表演。"
+    },
+    "hitgs_genie_v3": {
+      "url": "https://www.genie.co.kr/detail/albumInfo?axnm=88073853",
+      "access": "licensed distributor page body and credits read",
+      "finding": "Gulliver!仅给团体艺人及外部制作署名；VV具名作词/独唱限定另曲Ctrl C (Chinese ver.)，不能迁移给Gulliver!。"
+    },
+    "hitgs_v2": {
+      "url": "https://kpopofficial.com/album/hitgs-things-we-dream-vol-2/",
+      "access": "search indexed release summary",
+      "finding": "Little By Little制作名单为外部作者；没有可采用成员逐人录音或出镜署名。"
+    },
+    "hitgs_archive": {
+      "url": "https://biasarchive.net/en/hitgs/",
+      "access": "search indexed fan archive",
+      "finding": "Little By Little、Gulliver相关新增条目为演唱会/粉丝活动/直拍；未确认合格普通节目或同版完整专门表演。"
+    },
+    "hitgs_fanchant": {
+      "url": "https://dollpann.com/hitgs-in-osaka-osaka-fan-concert-behind-%ED%9E%9B%EC%A7%80%EC%8A%A4/?counter=12&page=5",
+      "access": "search indexed archive only",
+      "finding": "Little By Little/Cherry Blossom相关应援法条目是fanchant线索，不等于完整表演；未开视频/逐句比对。"
+    },
+    "hitgs_photo_i": {
+      "url": "https://kprofiles.com/forums/threads/official-hitgs-thread.50098/page-3",
+      "access": "public HTML named posts extracted; 10 original files downloaded and all visually inspected",
+      "finding": "五个具名帖子各两图，系列Things we love : I；跨造型且IYOO第一张/VV第二张遮脸。相同发布系列不证明同套或同次拍摄。详见候选manifest。"
+    },
+    "hitgs_photo_h": {
+      "url": "https://andasian.com/hitgs-showcase-their-youth-in-debut-ep-things-we-love-h/",
+      "access": "public HTML named captions read; 5 files downloaded and visually inspected",
+      "finding": "具名五图仅453×680/680×453；有遮眼、侧脸、远景，不优于现有1000×1000清晰原图。"
+    },
+    "hitgs_photo_charizzma": {
+      "url": "https://kprofiles.com/forums/threads/official-hitgs-thread.50098/page-2",
+      "access": "public HTML post-877454 inspected",
+      "finding": "CHARIZZMA五图组未见逐图姓名映射；不凭面孔识别填人，也不下载后冒称具名统一组。"
+    },
+    "idle_jp_live": {
+      "url": "https://gidle.cubeent.jp/news/newstax/live/",
+      "access": "official Japan news body read",
+      "finding": "2025-04-09 Revenge SCREENX来源是巡演电影；2024东京演唱会列Revenge/LATATA/Oh my god，类型为巡演且未证日语录音版。"
+    },
+    "ifeye_music": {
+      "url": "https://artist.mnetplus.world/main/stg/ifeye/tag/music",
+      "access": "old official index rechecked through new search",
+      "finding": "检索仍定位loverfory MV与其他曲目，没有新的具名本作参与或合格表演。"
+    },
+    "ifeye_secondary": {
+      "url": "https://oseyokorea.com/kpop/460",
+      "access": "search indexed secondary page",
+      "finding": "RAHEE Official相关二手描述且自述原始元数据待核，不能升级为RAHEE本作导演或全员录音确认。"
+    },
+    "illit_sunday": {
+      "url": "https://datazoo.jp/w/ILLIT/71806745",
+      "access": "search indexed broadcast archive",
+      "finding": "搜索Sunday Morning/CDTV得到1月13日新闻介绍MV餐厅场景，非该曲完整打歌。"
+    },
+    "itzy_voltage_news": {
+      "url": "https://news.livedoor.com/article/detail/21980877/",
+      "access": "Kstyle syndicated original article body in search",
+      "finding": "证实2022-04-09 Venue101披露Voltage，新增明确节目线索；报道不提供可核完整片源，不能据此设versionMatch=true。"
+    },
+    "itzy_voltage_lineup": {
+      "url": "https://tower.jp/article/news/2022/04/05/tg007",
+      "access": "original industry news containing official programme announcement",
+      "finding": "节目曲目公告明确ITZY/Voltage；只证明预定节目与歌曲，不证明公开视频完整。"
+    },
+    "itzy_voltage_archive": {
+      "url": "https://digitalcreators.jp/channel/UCJsfO4nKS3_c24zLbF8rT0A/popular-videos/",
+      "access": "search indexed channel archive",
+      "finding": "Special Performance Movie YouTube ver约2:50、发行活动版约2:47、Special Dance Clip约2:41；不能替代3:41原歌曲完整版本，且时长不等于完整播放。"
+    },
+    "itzy_notshy": {
+      "url": "https://news.nate.com/view/20210131n07874",
+      "access": "search indexed syndicated original report",
+      "finding": "MTV Fresh Out的Not Shy+WANNABE节目被明示重新编曲；不能当原英语单曲精确完整舞台。"
+    },
+    "itzy_bly": {
+      "url": "https://iplaykpop.com/albums/21413",
+      "access": "search indexed release archive",
+      "finding": "Boys Like You归档是MV；邻接CHESHIRE dance practice属于另一歌，不能迁移。"
+    },
+    "itzy_superpowers": {
+      "url": "https://www.reddit.com/r/ITZY/comments/173abyq",
+      "access": "search indexed fan post only",
+      "finding": "Interview & Making为采访/录制幕后，非完整独立舞台；无新采用事实。"
+    },
+    "itzy_likemagic": {
+      "url": "https://music.bugs.co.kr/artist/80327433/mvs?wl_ref=S_ar_01_04",
+      "access": "search indexed licensed video directory",
+      "finding": "新检仍定位合作MV，未取得全合作阵容/获准成员版完整表演。"
+    }
+  },
+  "items": [
+    {
+      "group": "BABYMONSTER",
+      "kind": "stage_new",
+      "stableId": "rec28ldfRTrAUD",
+      "song": "Love In My Heart",
+      "version": "原作品未另标版本",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "YG原始新闻6435只证实2024年11月曾计划三曲打歌，不证明Love In My Heart已有完整节目片源；6582为巡演，6698表演视频对应BILLIONAIRE。保留目标缺口。",
+      "newSearchScope": "BABYMONSTER官方日站目录及本曲表演",
+      "newSourceRefs": [
+        "baby_jp_movie"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "缺原曲全团完整普通打歌/练习/官方专门表演。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "BABYMONSTER",
+      "kind": "stage_new",
+      "stableId": "rec28ldfRTrKWv",
+      "song": "SUPA DUPA LUV",
+      "version": "原作品未另标版本",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "YG7068的dance practice关键词对应TREASURE Everything，7327/7326是本曲MV发布，年末舞台计划也非已取得普通打歌片源。",
+      "newSearchScope": "SUPA DUPA LUV官方目录精确类型",
+      "newSourceRefs": [
+        "baby_jp_movie"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "MV、CHIQUITA单人节选及其他歌Performance不能替代。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "BABYMONSTER",
+      "kind": "stage_new",
+      "stableId": "rec28ldfRTrLow",
+      "song": "Ghost",
+      "version": "Promotion Video版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "YG7581/7582/7580记录Ghost在京瓷巨蛋巡演；6808的FIRST TAKE对应DRIP，Ghost只是同文OST消息，不能误配。",
+      "newSearchScope": "Ghost Promotion Video完整对应表演",
+      "newSourceRefs": [
+        "baby_jp_movie"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "目录没有对应完整来源；短Promotion范围不能默换全团全歌。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "fromis_9",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5XFVzt",
+      "song": "Touchdown",
+      "version": "OST MV",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "查询附了치얼업词但结果实际指向SBS The Winning Try的2025 Touch Down OST；没有合格原片证据，错误剧名可能降低检索召回。",
+      "newSearchScope": "Touchdown录音具名、OST发布原报道和演唱表演",
+      "newSourceRefs": [
+        "fromis_osen",
+        "fromis_archive"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "发行团名不展开成员；缺逐人录音/出镜具名原证及合格完整表演。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "Geenius",
+      "kind": "stage_new",
+      "stableId": "recvxIZRQAko79",
+      "song": "I.L.Y",
+      "version": "互动MV／Zoe ver.／约66秒",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "同曲检索仍无Zoe单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+      "newSearchScope": "Geenius I.L.Y interactive Zoe Sion Mika Yeyoung Andamiro performance",
+      "newSourceRefs": [
+        "geenius_games"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "仍缺该单人约66秒互动范围独立表演；全团/其他视角不可替代。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "Geenius",
+      "kind": "stage_new",
+      "stableId": "recvxIZRWKBgDC",
+      "song": "I.L.Y",
+      "version": "互动MV／Sion ver.／约66秒",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "同曲检索仍无Sion单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+      "newSearchScope": "Geenius I.L.Y interactive Zoe Sion Mika Yeyoung Andamiro performance",
+      "newSourceRefs": [
+        "geenius_games"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "仍缺该单人约66秒互动范围独立表演；全团/其他视角不可替代。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "Geenius",
+      "kind": "stage_new",
+      "stableId": "recvxIZRWKKCeh",
+      "song": "I.L.Y",
+      "version": "互动MV／Yeyoung ver.／约66秒",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "同曲检索仍无Yeyoung单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+      "newSearchScope": "Geenius I.L.Y interactive Zoe Sion Mika Yeyoung Andamiro performance",
+      "newSourceRefs": [
+        "geenius_games"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "仍缺该单人约66秒互动范围独立表演；全团/其他视角不可替代。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "Geenius",
+      "kind": "stage_new",
+      "stableId": "recvxIZXUpORHf",
+      "song": "I.L.Y",
+      "version": "互动MV／Andamiro ver.／约66秒",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "同曲检索仍无Andamiro单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+      "newSearchScope": "Geenius I.L.Y interactive Zoe Sion Mika Yeyoung Andamiro performance",
+      "newSourceRefs": [
+        "geenius_games"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "仍缺该单人约66秒互动范围独立表演；全团/其他视角不可替代。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "Geenius",
+      "kind": "stage_new",
+      "stableId": "recvxIZY0lVCCr",
+      "song": "I.L.Y",
+      "version": "互动MV／Mika ver.／约66秒",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "同曲检索仍无Mika单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+      "newSearchScope": "Geenius I.L.Y interactive Zoe Sion Mika Yeyoung Andamiro performance",
+      "newSourceRefs": [
+        "geenius_games"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "仍缺该单人约66秒互动范围独立表演；全团/其他视角不可替代。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "Hearts2Hearts",
+      "kind": "stage_new",
+      "stableId": "rec28ldfRTrI8S",
+      "song": "STYLE",
+      "version": "Teenieping 合作版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "SM Brand Marketing案例196与KBS报道确认Teenieping合作范围，但未证与普通STYLE舞台音轨完全相同。保留版本核对，不能单凭合作名或相近时长采用。",
+      "newSearchScope": "Hearts2Hearts STYLE Teenieping Music Bank",
+      "newSourceRefs": [
+        "h2h_style_archive"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "缺合作版与节目/练习音轨精确一致的核对；普通STYLE存在不自动解决。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "Hearts2Hearts",
+      "kind": "stage_new",
+      "stableId": "rec28ldfRTrIC0",
+      "song": "Moonride",
+      "version": "原作品未另标版本",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "新增Moonride检索结果为Kia原MV/流媒体及另一首ICONIC HEART的节目信息，没有取得目标完整独立表演。",
+      "newSearchScope": "Moonride官方表演/新幕后目录",
+      "newSourceRefs": [
+        "h2h_schedule"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "未取得可核官方完整表演；索引幕后不能作舞台或逐人证据。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "Hearts2Hearts",
+      "kind": "stage_new",
+      "stableId": "rec28ldfRTrIkV",
+      "song": "FOCUS",
+      "version": "DJ Seinfeld Remix",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "授权发行目录把FOCUS DJ Seinfeld Remix作为独立混音，Qobuz/Spotify资料有约2:32条目；普通FOCUS节目或练习不可覆盖指定混音。",
+      "newSearchScope": "DJ Seinfeld Remix精确发行署名与表演",
+      "newSourceRefs": [
+        "h2h_bugs_remix"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "混音外部制作署名已读；成员人声取样/录音范围和混音完整表演仍未证。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "HITGS",
+      "kind": "stage_new",
+      "stableId": "recvxIZy3525BF",
+      "song": "Gulliver!",
+      "version": "原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "新精确检索Gulliver!仍为原MV，Performance Video关键词来自同页其他艺人或SOURPATCH；没有目标独立完整官方后备。",
+      "newSearchScope": "Gulliver!具名发行页、幕后与完整舞台",
+      "newSourceRefs": [
+        "hitgs_genie_v3",
+        "hitgs_archive"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "VV另曲独唱不迁移；未有本作逐人成员证据或合格表演。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "HITGS",
+      "kind": "stage_new",
+      "stableId": "recvxIZy35Xwr7",
+      "song": "Cherry Blossom",
+      "version": "原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "新检索Cherry Blossom Performance得到专辑发行页和IYOO Taste表演邻接项；不是本曲完整表演，不扩大成员或歌曲范围。",
+      "newSearchScope": "Cherry Blossom practice/performance/응원법",
+      "newSourceRefs": [
+        "hitgs_fanchant"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "应援法及活动线索不等同完整舞台。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "HITGS",
+      "kind": "stage_new",
+      "stableId": "recvxIZy35rUeY",
+      "song": "Little By Little",
+      "version": "原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "新检索Little By Little Performance的匹配词来自其他歌/艺术家；此前棒球场表演属活动，不采用。",
+      "newSearchScope": "Little By Little逐人发行/制作署名与完整表演",
+      "newSourceRefs": [
+        "hitgs_v2",
+        "hitgs_archive",
+        "hitgs_fanchant"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "未有可靠逐人录音/出镜范围；活动和应援法不替代舞台。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "i-dle",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5X0JJ9",
+      "song": "Revenge",
+      "version": "韩文原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "Revenge本轮命中官方MV及MV新闻，未出现新的合格练习/常规节目；旧特殊活动不自动准入。",
+      "newSearchScope": "Revenge官方完整专门表演",
+      "newSourceRefs": [
+        "idle_jp_live"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "新明示来源属于巡演电影/演唱会，政策不采用。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "i-dle",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5X1VFs",
+      "song": "I Want That",
+      "version": "英文原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "I Want That命中HEAT发行页、官方MV及Jingle Ball相关线索；未有已核常规节目/练习来源。",
+      "newSearchScope": "I Want That English practice official performance",
+      "newSourceRefs": [
+        "idle_jp_live"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "新检未取得普通节目/练习/专门表演，Jingle Ball活动不能填。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "i-dle",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5X3Fd8",
+      "song": "Oh my god",
+      "version": "日文版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "本轮找到Oh my god官方练习/Weverse链接，但未证目标日本语音轨；旧日本语Relay Dance属于接力形态。",
+      "newSearchScope": "Oh my god Japanese官方完整表演",
+      "newSourceRefs": [
+        "idle_jp_live"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "东京巡演曲名不证明日语版本且场合不合格。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "i-dle",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5XGYPC",
+      "song": "Last Dance",
+      "version": "UNIVERSE合作／GENIE完整重传",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "Last Dance精确表演查询主要返回艺人视频目录，尚未定位合格官方完整练习或常规节目。",
+      "newSearchScope": "Last Dance UNIVERSE GENIE full performance",
+      "newSourceRefs": [
+        "idle_jp_live"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "没有新可用原曲完整合格表演；官方巡演目录不是本曲证明。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "i-dle",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5Xa1EK",
+      "song": "LATATA",
+      "version": "日文版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "LATATA日本出道官网/发行商目录可定位，但没有精确日版合格完整表演；旧GUIDE是应援指导，韩语练习不相同。",
+      "newSearchScope": "LATATA Japanese官方完整表演",
+      "newSourceRefs": [
+        "idle_jp_live"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "东京巡演曲名未标语言且为演唱会，不采用。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ifeye",
+      "kind": "stage_new",
+      "stableId": "recvxIZFpVLU0R",
+      "song": "loverfory",
+      "version": "原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "新精确检索得到ifeye原loverfory MV、幕后及Mainz/Coex活动，没有取得独立完整官方表演；不把索引中其他歌表演视为目标。",
+      "newSearchScope": "loverfory RAHEE 라희 감독 credits official performance",
+      "newSourceRefs": [
+        "ifeye_music",
+        "ifeye_secondary"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "RAHEE二手关联不能当导演确认，团名不能推出全员；缺原始具名资料/完整表演。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ILLIT",
+      "kind": "stage_new",
+      "stableId": "rec28ldfRTrK1S",
+      "song": "little monster",
+      "version": "原作品未另标版本",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "Weverse Magazine1789讨论PRESS START巡演舞台与little monster造型，不能转作官方练习室证据。",
+      "newSearchScope": "little monster official practice performance",
+      "newSourceRefs": [],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "新检仍落到已知PRESS START巡演；未取得普通节目/练习/专门表演。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ILLIT",
+      "kind": "stage_new",
+      "stableId": "rec28ldfRTrKm3",
+      "song": "Sunday Morning",
+      "version": "原作品未另标版本",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "ILLIT日本官网c2ac32af70b6明确8RvWZDUYg-g为应援法；新检索的表演描述是原MV中餐厅表演情境，不是独立后备。",
+      "newSearchScope": "Sunday Morning CDTV Mezamashi live",
+      "newSourceRefs": [
+        "illit_sunday"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "新闻MV介绍不等于完整节目表演。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ILLIT",
+      "kind": "stage_new",
+      "stableId": "rec28ldfRTrKqc",
+      "song": "NOT ME",
+      "version": "原作品未另标版本",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "Weverse Magazine1789明确NOT ME在PRESS START巡演首次演出；镜像所谓practice不能消除此场合证据。",
+      "newSearchScope": "NOT ME official practice performance",
+      "newSourceRefs": [],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "新检仍是既查巡演/粉丝直拍，未发现独立合格来源。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ILLIT",
+      "kind": "stage_new",
+      "stableId": "rec28ldfRTrLFz",
+      "song": "See U Tonight (feat. YUNAH & MINJU of ILLIT)",
+      "version": "YUNAH／MINJU合作版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "公开授权发行明确Kylie Cantrall与YUNAH/MINJU二人合作；新找到CKrNx6NN-NM和emaDhlvz8BY均Provided to YouTube音频，不是同合作范围表演影像。",
+      "newSearchScope": "See U Tonight YUNAH MINJU performance",
+      "newSourceRefs": [],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "未取得两人本作完整表演；全团演出或MV客串讨论不能代替。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ILLIT",
+      "kind": "stage_replacement",
+      "stableId": "rec28ldfRTrKy2",
+      "song": "It's Me",
+      "version": "Performance ver.",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "旧研究提出的范围选择已由用户回答；旧舞台替换事实仍待证。PR47完整歌曲rec28ldfRTrKtW与约60秒短版rec28ldfRTrKy2已有双向导航，旧needsUserHelp请求不延续。",
+      "newSearchScope": "按PR47已完成决定核对，未重搜或重导",
+      "newSourceRefs": [],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "短版旧来源替换仍未证；完整歌曲导航已完成，不再询问、不转移评分。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false,
+      "completedWorkNotRepeated": {
+        "fullWorkId": "rec28ldfRTrKtW",
+        "fullMvVideoId": "bMhDJ0S0OBA",
+        "existingMusicBankVideoId": "00IPFnp2Tdg",
+        "shortWorkId": "rec28ldfRTrKy2",
+        "shortVideoId": "el7A_SI7sxs",
+        "action": "no duplicate import, no rating/history transfer"
+      }
+    },
+    {
+      "group": "ITZY",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5X7zV3",
+      "song": "LOCO (Japanese Ver.)",
+      "version": "日文版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "LOCO日版命中日本官方MV/音源与日本出道目录，尚未核到精确日版完整打歌/练习。",
+      "newSearchScope": "LOCO Japanese Music Station Sukkiri full",
+      "newSourceRefs": [],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "旧节目出演公告未给精确完整演出片源；无新可用补充。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ITZY",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5X9qGD",
+      "song": "Like Magic",
+      "version": "跨团合作版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "Like Magic检索未取得原多艺人合作范围完整的合格表演；不能将单团挑战/广告制作内容当全合作舞台。",
+      "newSearchScope": "Like Magic合作/成员版完整表演",
+      "newSourceRefs": [
+        "itzy_likemagic"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "仍缺完整同曲同语种、参与范围符合授权的节目或专门表演。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ITZY",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5XkyEY",
+      "song": "Voltage",
+      "version": "日文原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "ITZY Japan官方Voltage Special Dance Clip 5uQuUCW-9aI只有160秒；原发行约221秒，不能作为完整同曲采用。官方身份/高点赞不消除61秒范围差。",
+      "newSearchScope": "Voltage Venue101 Kstyle原报道与Special Performance Movie",
+      "newSourceRefs": [
+        "itzy_voltage_news",
+        "itzy_voltage_lineup",
+        "itzy_voltage_archive"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "新增节目发生线索，但未取得完整原歌片源；约2:41/2:47/2:50条目不能填3:41原版。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ITZY",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5XlqWP",
+      "song": "Boys Like You",
+      "version": "英文原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "Boys Like You本轮命中JYP官方发行及MV新闻，没有新的合格完整练习/常规节目，旧活动与转载仍不准入。",
+      "newSearchScope": "Boys Like You English official dance practice",
+      "newSourceRefs": [
+        "itzy_bly"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "新目录无本曲合格表演，不能借CHESHIRE练习。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ITZY",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5XmFwB",
+      "song": "SUPERPOWERS",
+      "version": "韩文OST原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "SUPERPOWERS精确查询未取得足以确认同曲常规节目/完整官方练习的原始来源。",
+      "newSearchScope": "SUPERPOWERS OST live recording making",
+      "newSourceRefs": [
+        "itzy_superpowers"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "录音/采访幕后不构成完整独立舞台。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ITZY",
+      "kind": "stage_new",
+      "stableId": "recvxyOz5XmMQe",
+      "song": "Not Shy (English Ver.)",
+      "version": "英文版（ZEPETO动画MV）",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "本轮IOKMx1jeCjY未标英文，MTV资料写改编版，不能直接匹配Not Shy English；用户否决BnmwjH-suLg仍不可推荐。",
+      "newSearchScope": "Not Shy English MTV原报道/原版表演",
+      "newSourceRefs": [
+        "itzy_notshy"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "MTV重新编曲串烧范围不同；未取得原英语曲完整合格舞台。",
+      "freshOwnerPreconditionsAvailable": false,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "Hearts2Hearts",
+      "kind": "person",
+      "stableId": "rec28ldfRTrIkV",
+      "song": "FOCUS",
+      "version": "DJ Seinfeld Remix",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "本混音仅有团体署名，未核到具体成员人声或采样名单；原版八人名单不能直接套用。",
+      "newSearchScope": "DJ Seinfeld Remix精确发行署名与表演",
+      "newSourceRefs": [
+        "h2h_bugs_remix"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "混音外部制作署名已读；成员人声取样/录音范围和混音完整表演仍未证。",
+      "freshOwnerPreconditionsAvailable": null,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "fromis_9",
+      "kind": "person",
+      "stableId": "recvxyOz5XFVzt",
+      "song": "Touchdown",
+      "version": "OST MV",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "目前只找到团体OST资料，缺这次录音的逐成员证据，不能直接采用粉丝分词名单。",
+      "newSearchScope": "Touchdown录音具名、OST发布原报道和演唱表演",
+      "newSourceRefs": [
+        "fromis_osen",
+        "fromis_archive"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "发行团名不展开成员；缺逐人录音/出镜具名原证及合格完整表演。",
+      "freshOwnerPreconditionsAvailable": null,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "HITGS",
+      "kind": "person",
+      "stableId": "recvxIZy35rUeY",
+      "song": "Little By Little",
+      "version": "原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "只核到团体及外部制作人员，缺本曲逐成员录音/拍摄证据；VV另一首中文歌的作词不能移用。",
+      "newSearchScope": "Little By Little逐人发行/制作署名与完整表演",
+      "newSourceRefs": [
+        "hitgs_v2",
+        "hitgs_archive",
+        "hitgs_fanchant"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "未有可靠逐人录音/出镜范围；活动和应援法不替代舞台。",
+      "freshOwnerPreconditionsAvailable": null,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "HITGS",
+      "kind": "person",
+      "stableId": "recvxIZy3525BF",
+      "song": "Gulliver!",
+      "version": "原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "该曲只署团体和外部创作/和声，缺逐成员证据；Ctrl C的个人角色不能套用。",
+      "newSearchScope": "Gulliver!具名发行页、幕后与完整舞台",
+      "newSourceRefs": [
+        "hitgs_genie_v3",
+        "hitgs_archive"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "VV另曲独唱不迁移；未有本作逐人成员证据或合格表演。",
+      "freshOwnerPreconditionsAvailable": null,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "HITGS",
+      "kind": "photo_quality",
+      "stableId": "HITGS:photo_quality",
+      "song": null,
+      "version": null,
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "现有5张具名1000×1000图能认人，但尚未独立证实全部同一次拍摄/同套；影响上述2作品的10个通用参考槽。",
+      "newSearchScope": "当前五图逐张复核＋三条新的照片来源",
+      "newSourceRefs": [
+        "hitgs_photo_i",
+        "hitgs_photo_h",
+        "hitgs_photo_charizzma"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "现有图清晰；新图未满足统一同套且有遮挡/低清，保留现有原图与拍摄未证说明。",
+      "freshOwnerPreconditionsAvailable": null,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "ifeye",
+      "kind": "person",
+      "stableId": "recvxIZFpVLU0R",
+      "song": "loverfory",
+      "version": "原版",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../20261029-group-followup/groups-baby-itzy.json",
+      "oldResultRetained": "二手资料称RAHEE任导演，但原始发布说明未能读到；尚不能确认具体职责或全员参与。",
+      "newSearchScope": "loverfory RAHEE 라희 감독 credits official performance",
+      "newSourceRefs": [
+        "ifeye_music",
+        "ifeye_secondary"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_existing_and_unresolved",
+      "remaining": "RAHEE二手关联不能当导演确认，团名不能推出全员；缺原始具名资料/完整表演。",
+      "freshOwnerPreconditionsAvailable": null,
+      "needsUserHelpNow": false
+    },
+    {
+      "group": "Geenius",
+      "kind": "timeline",
+      "stableId": "e-geenius-spoiler-book-instrumental",
+      "song": "《Spoiler Book》器乐预公开载体候选",
+      "version": "QR instrumental pre-release",
+      "oldEvidenceChecked": true,
+      "oldResearchRef": "../../human-help-by-group-20261029.csv",
+      "oldResultRetained": "旧本组JSON未收此项；当前CSV和日期队列已标商店2026-01-15但公司实际发行未证。",
+      "newSearchScope": "Geenius Spoiler Book 2026.01.15 official／预售公告／进口商品",
+      "newSourceRefs": [
+        "geenius_catalog",
+        "geenius_preorder",
+        "geenius_import"
+      ],
+      "adoptableApplicationDelta": false,
+      "currentDecision": "retain_reported_record_and_effective_date_hold",
+      "remaining": "新找到的商店/预售/进口材料仍未提供公司当日实际发行公告；不将器乐QR载体当完整人声专辑。",
+      "needsUserHelpNow": false
+    }
+  ],
+  "candidateDelta": {
+    "runtimeChanges": [],
+    "photoAssessment": "hitgs-photo-candidate/assessment.json",
+    "reasons": [
+      "HITGS当前五张均清晰；两个新具名组未达到统一、清晰认人的改进标准。",
+      "Voltage增加Venue101发生线索，但未解决精确完整公开片源。",
+      "授权发行署名未提供五项人物逐人事实，保持通用认人标签。"
+    ]
+  }
+}

@@ -1,0 +1,579 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T05:46:55.445617+00:00",
+  "reviewer": "independent delegated UI QA / groups_baby_itzy",
+  "status": "passed",
+  "baseline": "cef1765801ce62739c44308292a680b16e681597",
+  "scope": "ILLIT existing short/full work-version navigation and NMIXX Hey Gabby pending stage research note; desktop1440/mobile390 real local rendered UI, public identity fixture only.",
+  "environment": {
+    "url": "http://127.0.0.1:5189/",
+    "devServerSession": 16070,
+    "browserPlugin": "not available",
+    "runner": "bundled Playwright1.62.1, existing Chromium1228 executable",
+    "browserVersion": "149.0.7827.55",
+    "fixtureSource": "docs/codex/evidence/20261028-post-v200/people/generic-reference/public-ui-inventory.json",
+    "additionalPublicIdentities": [
+      "apps/idol-site/data/versions/verified-display.json",
+      "apps/idol-site/data/public-work-metadata-completion.json"
+    ],
+    "fixturePipeline": [
+      "Create NativeTables using public identity fields and empty/null personal fields",
+      "actual projectCatalog(tables,live)",
+      "actual withVerifiedVersionDisplay(catalog,tables) with exact reviewed raw identities",
+      "actual projectBrowserCatalog",
+      "actual projectPublicCatalog",
+      "route only API catalog GET to generated public catalog"
+    ],
+    "backendIsolation": "Network-only feishu/live modules stubbed so database, native owner rows and liveTables cannot be read. Browser API routes other than catalog denied; all non-GET/HEAD aborted.",
+    "dependenciesInstalled": 0,
+    "privateExportsRead": 0
+  },
+  "summary": {
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "illitShortToFullAndReturn": "passed at both widths",
+    "illitLabels": [
+      "约 60 秒短版表演",
+      "完整歌曲版"
+    ],
+    "stageSourcesPreserved": {
+      "rec28ldfRTrKy2": "a2AvaSdqN28",
+      "rec28ldfRTrKtW": "00IPFnp2Tdg"
+    },
+    "nmixxDefaultCollapsedAndOpenClose": "passed at both widths",
+    "nmixxThreeSourceLinks": "exact URLs and Playwright trial click actionability passed at both widths",
+    "nmixxConfirmedStage": false,
+    "nmixxPublicProjection": "only researchNote.summary/sources; raw searchReview omitted",
+    "horizontalOverflow": 0,
+    "browserConsoleWarningsAndErrors": 0,
+    "pageErrors": 0,
+    "failedRequests": 0,
+    "nonReadRequests": 0,
+    "privateWrites": 0,
+    "businessFilesEditedByReviewer": 0,
+    "deployments": 0
+  },
+  "resolvedFinding": {
+    "method": "Independent source inspection before NMIXX browser testing",
+    "finding": "The original component rendered only alternatives/watchLeads and returned null for searchReview-only data; public-catalog also omitted searchReview. Merely changing research data would leave the candidate invisible.",
+    "resolutionBy": "groups_ive_purple implementation delegated by root",
+    "retest": "The derived minimal public researchNote survived the actual public projection and rendered as a collapsible explanation with3source links at both widths; raw research was still omitted."
+  },
+  "stageProtection": {
+    "path": "apps/idol-site/data/stage-videos.json",
+    "byteEqualToBaseline": true,
+    "sha256": "b8e276f3772c64c74095d5a363ce2b1d186a421854408677a91a478b2edd2bac",
+    "stageCount": 496,
+    "newStageBindings": 0
+  },
+  "runs": [
+    {
+      "schemaVersion": 1,
+      "checkedAt": "2026-10-29T05:41:28.568Z",
+      "kind": "illit",
+      "status": "passed",
+      "environment": {
+        "url": "http://127.0.0.1:5189/",
+        "browserPlugin": "absent",
+        "fixture": "Public identity inventory plus exact reviewed public work identities -> synthetic NativeTables -> actual projectCatalog(live), withVerifiedVersionDisplay, projectBrowserCatalog, projectPublicCatalog. No native database/owner state read. All private fields null/empty.",
+        "privateDbUsed": false,
+        "browserVersion": "149.0.7827.55"
+      },
+      "projection": {
+        "mode": "live",
+        "targets": [
+          {
+            "id": "rec28ldfRTrKy2",
+            "versionDisplay": {
+              "tags": [
+                "约 60 秒短版表演"
+              ],
+              "links": [
+                {
+                  "workId": "rec28ldfRTrKtW",
+                  "title": "It's Me",
+                  "labels": [
+                    "完整歌曲版"
+                  ],
+                  "categories": [
+                    "其他版本"
+                  ]
+                }
+              ]
+            },
+            "stageVideoId": "a2AvaSdqN28",
+            "searchReviewPresent": false,
+            "researchNote": null
+          },
+          {
+            "id": "rec28ldfRTrKtW",
+            "versionDisplay": {
+              "tags": [
+                "完整歌曲版"
+              ],
+              "links": [
+                {
+                  "workId": "rec28ldfRTrKy2",
+                  "title": "It's Me",
+                  "labels": [
+                    "约 60 秒短版表演"
+                  ],
+                  "categories": [
+                    "其他版本"
+                  ]
+                }
+              ]
+            },
+            "stageVideoId": "00IPFnp2Tdg",
+            "searchReviewPresent": false,
+            "researchNote": null
+          },
+          {
+            "id": "recvxyOz5Xo5fW",
+            "stageVideoId": null,
+            "searchReviewPresent": false,
+            "researchNote": null
+          }
+        ],
+        "rawIdentityFieldIds": [
+          "fld7a3lnBc",
+          "fld6ahf75U",
+          "fldhBWXBZE",
+          "fld1vZ4MUc",
+          "fld3owwWZX",
+          "fldyhFRnND",
+          "fld6nT26GF",
+          "fld566aFV0",
+          "fld6Ab27Zx",
+          "fld2UfUVYO",
+          "fld2wy1cqw"
+        ],
+        "sourceModules": [
+          "E:/project/idol/apps/idol-site/lib/idol/fields.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/catalog.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/reviewed-work-metadata.ts",
+          "E:/project/idol/apps/idol-site/data/public-video-date-evidence.json",
+          "E:/project/idol/apps/idol-site/data/public-work-metadata-completion.json",
+          "E:/project/idol/apps/idol-site/lib/idol/values.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/placeholders.ts",
+          "E:/project/idol/apps/idol-site/data/stages/group-placeholders.json",
+          "E:/project/idol/apps/idol-site/lib/idol/supplements.ts",
+          "E:/project/idol/apps/idol-site/data/stages/supplements.json",
+          "E:/project/idol/apps/idol-site/lib/idol/stage.ts",
+          "E:/project/idol/apps/idol-site/data/stage-videos.json",
+          "E:/project/idol/apps/idol-site/data/stages/status.json",
+          "E:/project/idol/apps/idol-site/lib/idol/stage-source.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/mv-look-policy.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/photo-source-proof.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/photo-append-candidates.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/mv-look-successor-policy.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/photo-display-focus.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/member-works.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/verified-version-display.ts",
+          "E:/project/idol/apps/idol-site/data/versions/verified-display.json",
+          "E:/project/idol/apps/idol-site/lib/idol/browser-catalog.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/public-catalog.ts"
+        ]
+      },
+      "results": [
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "status": "passed",
+          "shortToFull": true,
+          "fullToShort": true,
+          "shortTag": "约 60 秒短版表演",
+          "fullTag": "完整歌曲版",
+          "shortOverflow": {
+            "width": 1440,
+            "document": 1440,
+            "body": 1440
+          },
+          "fullOverflow": {
+            "width": 1440,
+            "document": 1440,
+            "body": 1440
+          },
+          "stages": [
+            {
+              "workId": "rec28ldfRTrKy2",
+              "href": "https://www.youtube.com/watch?v=a2AvaSdqN28",
+              "overflow": {
+                "width": 1440,
+                "document": 1440,
+                "body": 1440
+              }
+            },
+            {
+              "workId": "rec28ldfRTrKtW",
+              "href": "https://www.youtube.com/watch?v=00IPFnp2Tdg&hl=en",
+              "overflow": {
+                "width": 1440,
+                "document": 1440,
+                "body": 1440
+              }
+            }
+          ]
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "status": "passed",
+          "shortToFull": true,
+          "fullToShort": true,
+          "shortTag": "约 60 秒短版表演",
+          "fullTag": "完整歌曲版",
+          "shortOverflow": {
+            "width": 390,
+            "document": 390,
+            "body": 390
+          },
+          "fullOverflow": {
+            "width": 390,
+            "document": 390,
+            "body": 390
+          },
+          "stages": [
+            {
+              "workId": "rec28ldfRTrKy2",
+              "href": "https://www.youtube.com/watch?v=a2AvaSdqN28",
+              "overflow": {
+                "width": 390,
+                "document": 390,
+                "body": 390
+              }
+            },
+            {
+              "workId": "rec28ldfRTrKtW",
+              "href": "https://www.youtube.com/watch?v=00IPFnp2Tdg&hl=en",
+              "overflow": {
+                "width": 390,
+                "document": 390,
+                "body": 390
+              }
+            }
+          ]
+        }
+      ],
+      "console": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "blockedWrites": [],
+      "screenshots": [
+        "E:/project/idol-local-backups/20261029-group-qa/illit-1440-short.png",
+        "E:/project/idol-local-backups/20261029-group-qa/illit-1440-full.png",
+        "E:/project/idol-local-backups/20261029-group-qa/illit-390-short.png",
+        "E:/project/idol-local-backups/20261029-group-qa/illit-390-full.png"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "checkedAt": "2026-10-29T05:44:27.656Z",
+      "kind": "heygabby",
+      "status": "passed",
+      "environment": {
+        "url": "http://127.0.0.1:5189/",
+        "browserPlugin": "absent",
+        "fixture": "Public identity inventory plus exact reviewed public work identities -> synthetic NativeTables -> actual projectCatalog(live), withVerifiedVersionDisplay, projectBrowserCatalog, projectPublicCatalog. No native database/owner state read. All private fields null/empty.",
+        "privateDbUsed": false,
+        "browserVersion": "149.0.7827.55"
+      },
+      "projection": {
+        "mode": "live",
+        "targets": [
+          {
+            "id": "rec28ldfRTrKy2",
+            "versionDisplay": {
+              "tags": [
+                "约 60 秒短版表演"
+              ],
+              "links": [
+                {
+                  "workId": "rec28ldfRTrKtW",
+                  "title": "It's Me",
+                  "labels": [
+                    "完整歌曲版"
+                  ],
+                  "categories": [
+                    "其他版本"
+                  ]
+                }
+              ]
+            },
+            "stageVideoId": "a2AvaSdqN28",
+            "searchReviewPresent": false,
+            "researchNote": null
+          },
+          {
+            "id": "rec28ldfRTrKtW",
+            "versionDisplay": {
+              "tags": [
+                "完整歌曲版"
+              ],
+              "links": [
+                {
+                  "workId": "rec28ldfRTrKy2",
+                  "title": "It's Me",
+                  "labels": [
+                    "约 60 秒短版表演"
+                  ],
+                  "categories": [
+                    "其他版本"
+                  ]
+                }
+              ]
+            },
+            "stageVideoId": "00IPFnp2Tdg",
+            "searchReviewPresent": false,
+            "researchNote": null
+          },
+          {
+            "id": "recvxyOz5Xo5fW",
+            "stageVideoId": null,
+            "searchReviewPresent": false,
+            "researchNote": {
+              "summary": "已找到 NMIXX《Hey Gabby!》的官方 Performance 视频线索。Bugs 将 Dance Video 与原 MV 分开列出，Newsis 也有对应发行报道。视频首尾是否完整、语言和音轨是否与原曲一致仍待核验，目前尚未采用为本条舞台。",
+              "sources": [
+                {
+                  "label": "官方 Performance 视频（待核）",
+                  "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY"
+                },
+                {
+                  "label": "Bugs：Dance Video 目录",
+                  "url": "https://music.bugs.co.kr/album/20465227"
+                },
+                {
+                  "label": "Newsis：Performance 发行报道",
+                  "url": "https://www.newsis.com/view/NISX20220518_0001876354"
+                }
+              ]
+            }
+          }
+        ],
+        "rawIdentityFieldIds": [
+          "fld7a3lnBc",
+          "fld6ahf75U",
+          "fldhBWXBZE",
+          "fld1vZ4MUc",
+          "fld3owwWZX",
+          "fldyhFRnND",
+          "fld6nT26GF",
+          "fld566aFV0",
+          "fld6Ab27Zx",
+          "fld2UfUVYO",
+          "fld2wy1cqw"
+        ],
+        "sourceModules": [
+          "E:/project/idol/apps/idol-site/lib/idol/fields.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/catalog.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/reviewed-work-metadata.ts",
+          "E:/project/idol/apps/idol-site/data/public-video-date-evidence.json",
+          "E:/project/idol/apps/idol-site/data/public-work-metadata-completion.json",
+          "E:/project/idol/apps/idol-site/lib/idol/values.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/placeholders.ts",
+          "E:/project/idol/apps/idol-site/data/stages/group-placeholders.json",
+          "E:/project/idol/apps/idol-site/lib/idol/supplements.ts",
+          "E:/project/idol/apps/idol-site/data/stages/supplements.json",
+          "E:/project/idol/apps/idol-site/lib/idol/stage-public-research.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/stage.ts",
+          "E:/project/idol/apps/idol-site/data/stage-videos.json",
+          "E:/project/idol/apps/idol-site/data/stages/status.json",
+          "E:/project/idol/apps/idol-site/lib/idol/stage-source.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/mv-look-policy.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/photo-source-proof.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/photo-append-candidates.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/mv-look-successor-policy.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/photo-display-focus.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/member-works.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/verified-version-display.ts",
+          "E:/project/idol/apps/idol-site/data/versions/verified-display.json",
+          "E:/project/idol/apps/idol-site/lib/idol/browser-catalog.ts",
+          "E:/project/idol/apps/idol-site/lib/idol/public-catalog.ts"
+        ]
+      },
+      "results": [
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "status": "passed",
+          "noConfirmedStage": true,
+          "readOnly": true,
+          "defaultCollapsed": true,
+          "openAndClosePassed": true,
+          "scopeText": "待核说明与来源\n\n已找到 NMIXX《Hey Gabby!》的官方 Performance 视频线索。Bugs 将 Dance Video 与原 MV 分开列出，Newsis 也有对应发行报道。视频首尾是否完整、语言和音轨是否与原曲一致仍待核验，目前尚未采用为本条舞台。\n\n官方 Performance 视频（待核）\nBugs：Dance Video 目录\nNewsis：Performance 发行报道\n\n仍待核验，不用于本条舞台评分。",
+          "links": [
+            {
+              "text": "官方 Performance 视频（待核）",
+              "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY"
+            },
+            {
+              "text": "Bugs：Dance Video 目录",
+              "url": "https://music.bugs.co.kr/album/20465227"
+            },
+            {
+              "text": "Newsis：Performance 发行报道",
+              "url": "https://www.newsis.com/view/NISX20220518_0001876354"
+            }
+          ],
+          "sourceLinkActionability": "Playwright trial clicks passed for all3links; external pages not opened",
+          "overflow": {
+            "width": 1440,
+            "document": 1440,
+            "body": 1440
+          }
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "status": "passed",
+          "noConfirmedStage": true,
+          "readOnly": true,
+          "defaultCollapsed": true,
+          "openAndClosePassed": true,
+          "scopeText": "待核说明与来源\n\n已找到 NMIXX《Hey Gabby!》的官方 Performance 视频线索。Bugs 将 Dance Video 与原 MV 分开列出，Newsis 也有对应发行报道。视频首尾是否完整、语言和音轨是否与原曲一致仍待核验，目前尚未采用为本条舞台。\n\n官方 Performance 视频（待核）\nBugs：Dance Video 目录\nNewsis：Performance 发行报道\n\n仍待核验，不用于本条舞台评分。",
+          "links": [
+            {
+              "text": "官方 Performance 视频（待核）",
+              "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY"
+            },
+            {
+              "text": "Bugs：Dance Video 目录",
+              "url": "https://music.bugs.co.kr/album/20465227"
+            },
+            {
+              "text": "Newsis：Performance 发行报道",
+              "url": "https://www.newsis.com/view/NISX20220518_0001876354"
+            }
+          ],
+          "sourceLinkActionability": "Playwright trial clicks passed for all3links; external pages not opened",
+          "overflow": {
+            "width": 390,
+            "document": 390,
+            "body": 390
+          }
+        }
+      ],
+      "console": [],
+      "pageErrors": [],
+      "requestFailures": [],
+      "blockedWrites": [],
+      "screenshots": [
+        "E:/project/idol-local-backups/20261029-group-qa/heygabby-1440-research.png",
+        "E:/project/idol-local-backups/20261029-group-qa/heygabby-1440-research-block.png",
+        "E:/project/idol-local-backups/20261029-group-qa/heygabby-390-research.png",
+        "E:/project/idol-local-backups/20261029-group-qa/heygabby-390-research-block.png"
+      ]
+    }
+  ],
+  "sourceFingerprintsAtEvidenceAssembly": [
+    {
+      "path": "apps/idol-site/app/page.tsx",
+      "sha256": "df6444375ae5fd471c9ced1ab22d2c72d9a088c300eae20a3a1d5dcc20d481a5"
+    },
+    {
+      "path": "apps/idol-site/lib/idol/verified-version-display.ts",
+      "sha256": "df39e23c13ca152bcbdbbd7e957aac32ab870285235a0d3b205731ff93c3f7c7"
+    },
+    {
+      "path": "apps/idol-site/data/versions/verified-display.json",
+      "sha256": "e63b96d768167287097dbf5862fbbcece5aec64883b56d0081c8ebb48deca014"
+    },
+    {
+      "path": "apps/idol-site/lib/idol/supplements.ts",
+      "sha256": "539591415bcd66348e67c15c0cf3410c238ee3f657e411b0240f7b0d3f946e1a"
+    },
+    {
+      "path": "apps/idol-site/lib/idol/public-catalog.ts",
+      "sha256": "076aecdd35b7bb0424c501710bde8aa554345024bb01d74d1a2727c12aebb1b6"
+    },
+    {
+      "path": "apps/idol-site/data/stages/supplements.json",
+      "sha256": "4586ed3f10dc97fd0388303ea2241200c48a3ff0a31f4cc5a7402bd482f6c229"
+    },
+    {
+      "path": "apps/idol-site/data/stage-videos.json",
+      "sha256": "b8e276f3772c64c74095d5a363ce2b1d186a421854408677a91a478b2edd2bac"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/illit-1440-short.png",
+      "bytes": 290455,
+      "sha256": "7362ad5ec24e595268bd14a27c32b938cddaac1ed847fc8426c761bcc1f990d8"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/illit-1440-full.png",
+      "bytes": 441509,
+      "sha256": "4793b8495880445c89d2e6446426a97b0d1986224aef1509506d6eff02ad94f2"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/illit-390-short.png",
+      "bytes": 60352,
+      "sha256": "07ce2c8d3984eb31981d7425e39355dc26bf59aa8de6848183b4a113bcc60692"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/illit-390-full.png",
+      "bytes": 60237,
+      "sha256": "d4505fcfcaa64d068d0a86c53ccce918b18bf4ec921f34adb59c6cdd8ae5c384"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/heygabby-1440-research.png",
+      "bytes": 101979,
+      "sha256": "47ce6b19b57b4ec35e02fd9a8038c693ea4d19a2a9209576287583a3bc7ea93a"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/heygabby-1440-research-block.png",
+      "bytes": 33802,
+      "sha256": "5dd85caa36233c7602b937ed47735c8a03c7a46b4ddf1123f561c3a280f769af"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/heygabby-390-research.png",
+      "bytes": 59938,
+      "sha256": "9646757230084c21244cf4cd9f4db8ca017fb2710985c0c39fe00ca3515aab56"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/heygabby-390-research-block.png",
+      "bytes": 32237,
+      "sha256": "29f28692dcaa286bdc675d57c379d604752f5446f65541aeee9aea7194d1bdce"
+    }
+  ],
+  "visualInspection": {
+    "method": "view_image opened saved screenshots",
+    "filesInspected": [
+      "E:/project/idol-local-backups/20261029-group-qa/illit-1440-short.png",
+      "E:/project/idol-local-backups/20261029-group-qa/illit-1440-full.png",
+      "E:/project/idol-local-backups/20261029-group-qa/illit-390-short.png",
+      "E:/project/idol-local-backups/20261029-group-qa/illit-390-full.png",
+      "E:/project/idol-local-backups/20261029-group-qa/heygabby-1440-research.png",
+      "E:/project/idol-local-backups/20261029-group-qa/heygabby-1440-research-block.png",
+      "E:/project/idol-local-backups/20261029-group-qa/heygabby-390-research.png",
+      "E:/project/idol-local-backups/20261029-group-qa/heygabby-390-research-block.png"
+    ],
+    "result": "版本标签与双向入口在两宽度清晰，未见横向溢出。HeyGabby说明明确候选仍待核验，三条来源可辨，舞台仍显示暂无可评分视频。"
+  },
+  "limitations": [
+    "Uses generated public identity-only fixture and actual projection functions, not a read of production native database or owner values; native storage concurrency/auth fences were not exercised.",
+    "No existing scores, notes, watch records or private relationships were read, saved, reset, or rebound.",
+    "External source link destinations and actionability checked, but external source pages/video playback were not opened by this UI run.",
+    "This UI run verifies display and navigation, not factual completeness of videos or per-person appearance.",
+    "MADEIN was not retested; its separate evidence remains ui-madein.json.",
+    "Screenshots and scripts remain outside repository; this evidence carries paths and hashes.",
+    "Developer server remains available for root review; root coordinates final build and cleanup."
+  ]
+}

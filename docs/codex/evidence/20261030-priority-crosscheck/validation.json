@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-30T07:02:25.529958+00:00",
+  "baselineCommit": "a2c6008d602b44191c9e650a95620d192f0c6619",
+  "targetedTests": {
+    "files": 14,
+    "total": 175,
+    "passed": 175,
+    "failed": 0,
+    "skipped": 0
+  },
+  "typeCheck": "passed",
+  "formalBuild": "passed",
+  "stageValidation": {
+    "valid": true,
+    "selectedSources": 501
+  },
+  "exactUdttAudit": {
+    "passed": true,
+    "restrictedBuildFilesToPruneBeforeAnyFuturePackaging": 9,
+    "prunedNow": false,
+    "reason": "No packaging or deployment in this batch."
+  },
+  "logs": {
+    "targetedTests": {
+      "path": "E:\\project\\idol-local-backups\\20261030-priority-final-tests.txt",
+      "sha256": "2b1ff367b90dccc757ce3901115e1b1e62f308221bed7b9a37f981c3539444c6",
+      "exitCode": 0
+    },
+    "typeCheck": {
+      "path": "E:\\project\\idol-local-backups\\20261030-priority-tsc.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    "formalBuild": {
+      "path": "E:\\project\\idol-local-backups\\20261030-priority-build.txt",
+      "sha256": "abefd92633542d106488503493ab55f2b218af87694d9e8833f321bfe8142328",
+      "exitCode": 0
+    },
+    "stageValidation": {
+      "path": "E:\\project\\idol-local-backups\\20261030-priority-stage-validation.txt",
+      "sha256": "070790848252f2b0cda6ee0194a9674ea237b735618fa1bbcbab7bb720a8517c",
+      "exitCode": 0
+    },
+    "exactAssetAudit": {
+      "path": "E:\\project\\idol-local-backups\\20261030-priority-asset-audit.txt",
+      "sha256": "cefb141fd498c26e46f70169e89db8bdfd7235c96c23b306e15f62c34bf5c1ed",
+      "exitCode": 0
+    }
+  },
+  "scopeLimits": [
+    "No new whole-site browser inspection",
+    "No independent full-video/audio playback",
+    "No real private save",
+    "Nine fallback candidates normalized only, not formally adopted"
+  ],
+  "privateWrites": 0,
+  "newSitesVersions": 0,
+  "deployments": 0,
+  "uniqueTargetedTests": 177,
+  "sharedRootRegression": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0,
+    "newUniqueTests": 2,
+    "exitCode": 0,
+    "log": "E:\\project\\idol-local-backups\\20261030-shared-root-fallback-tests-final.txt",
+    "sha256": "7873f9c6fb25b95dfe56bc8b7f52ca2534b5c93edb9cb3661641212253590071"
+  },
+  "verificationSequence": "175-test 14-file aggregate passed; then Python-merger-only shared-root correction added two tests and reran its entire 10-test file. No runtime/build input changed after the successful build.",
+  "whitespaceCheck": {
+    "command": "git -c core.whitespace=cr-at-eol diff --cached --check",
+    "status": "passed",
+    "reason": "Windows CRLF in new evidence captures is preserved byte-exact; no source/asset hash normalization."
+  }
+}

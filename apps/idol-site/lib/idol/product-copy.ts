@@ -16,11 +16,11 @@ export function requestMessage(code:unknown){
  };
  return typeof code==='string'&&messages[code]?messages[code]:'暂时未能完成操作。请稍后重试，未保存的输入仍保留。';
 }
-export function performanceLabel(a:StageAlternative){return a.sourceClass==='audience_original'?'观众现场录像（非官方）':a.sourceClass==='press_original'||a.performanceType==='press_concert_recording'?'媒体现场录像':a.performanceType==='practice_room'?'官方练习室':a.performanceType==='studio_performance'?'录音棚现场':a.performanceType==='produced_dance_performance'?'表演视频':a.performanceType==='broadcast_stage'?'音乐节目舞台':a.performanceType==='showcase_stage'?'展示舞台':'现场表演';}
+export function performanceLabel(a:StageAlternative){return a.sourceClass==='audience_original'?'观众现场录像（非官方）':a.sourceClass==='press_original'||a.performanceType==='press_concert_recording'?'媒体现场录像':a.performanceType==='practice_room'?(a.sourceClass==='official'?'官方练习室':a.sourceClass==='reupload'?'练习室（转载）':'练习室（第三方上传）'):a.performanceType==='studio_performance'?'录音棚现场':a.performanceType==='produced_dance_performance'?'表演视频':a.performanceType==='broadcast_stage'?'音乐节目舞台':a.performanceType==='showcase_stage'?'展示舞台':'现场表演';}
 export function selectionNote(a:StageAlternative|StageWatchLead){return !a.selection||a.selection.occasion==='unconfirmed'?'演出场合尚待确认。':a.selection.occasion==='practice_room'?'练习室不代表现场人声。':a.selection.occasion==='music_program'?'':a.selection.occasion==='studio_live'?'录音棚或电台表演。':a.selection.occasion==='produced_performance'?'制作表演视频。':'特别节目表演。';}
 export function performerLabel(scope:StageAlternative['performerScope']|StageWatchLead['performerScope']){return scope==='full_group'?'全团':scope==='subunit'?'小分队':scope==='solo'?'个人表演':'演出阵容未确认';}
 export function mvVersionWarning(value:string){return /版本待确认|版本未确认/.test(value)?'这条 MV 的版本尚未确认。原有评分已保留。':'';}
 // Missing metadata is not an explicit review flag; keep genuine pending flags.
 export function castWarning(value:string){const status=value?.trim();return status&&/待|未确认|未核/.test(status)?'出演待确认':'';}
 
-export function alternativeViewingNote(work:Work,a:StageAlternative){const specific=(notes as Record<string,Record<string,string>>)[work.id]?.[a.id];return specific??(a.version.match==='different'?'与 MV 的语言、编配或演出阵容不同。':a.version.match==='unconfirmed'?'具体版本可能与 MV 不同。':'同曲现场表演。');}
+export function alternativeViewingNote(work:Work,a:StageAlternative){const specific=(notes as Record<string,Record<string,string>>)[work.id]?.[a.id];return specific??(a.version.match==='different'?'与 MV 的语言、编配或演出阵容不同。':a.version.match==='unconfirmed'?'具体版本可能与 MV 不同。':a.performanceType==='practice_room'?'同曲练习室表演。':a.performanceType==='produced_dance_performance'?'同曲制作表演。':'同曲现场表演。');}

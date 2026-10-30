@@ -1,10 +1,11 @@
 {
   "formatVersion": "idol.stage-supplements.v1",
-  "updatedAt": "2026-10-28T08:56:58.994505+00:00",
+  "updatedAt": "2026-10-29T06:54:33.650624+00:00",
   "reviewedInputFiles": [
     "alternatives-reviewed.json",
     "watch-leads-reviewed.json",
-    "20261028-continuous/stage-replacements-normalized.json"
+    "20261028-continuous/stage-replacements-normalized.json",
+    "docs/codex/evidence/20261029-pr47-continuation/izna-watch-lead-adoption.json"
   ],
   "works": {
     "rec28ldfRTrI8S": {
@@ -1353,7 +1354,48 @@
             }
           }
         }
-      ]
+      ],
+      "searchReview": {
+        "scope": [
+          {
+            "label": "东京电视台：2023-05-01 日语版节目回顾",
+            "url": "https://www.tv-tokyo.co.jp/melodix_premium/backnumber/202305.html"
+          },
+          {
+            "label": "NanteJapan：同期节目报道与转载链接",
+            "url": "https://nantejapan.com/akb48-fantastics-and-more-perform-on-premium-melodix-for-may-1/"
+          },
+          {
+            "label": "B站：日语原版节目转载（已核精确分P／18:05–21:13区间）",
+            "url": "https://www.bilibili.com/video/BV1bo4y1x7LV/?p=1&cid=1115512650"
+          }
+        ],
+        "excluded": [],
+        "limitations": [
+          "人工看片与公开分享代码确认；代理未独立完整播放或逐句比对。B站外链不自动裁切或跳转，18:05–21:13以外内容不属于评分范围。"
+        ],
+        "checkedAt": "2026-10-29T06:55:29.503148+00:00",
+        "outcome": "verification_limited",
+        "accessLimited": true,
+        "summary": "东京电视台Premium MelodiX!节目档案与同期NanteJapan转载链接相符。已采用B站BV1bo4y1x7LV／CID1115512650／第1P中18:05–21:13完整日语原版区间，内容与第1P总长24:29由用户确认，精确媒体身份来自公开分享代码。代理未独立完整播放；B站仅外链，需手动定位并在21:13停止，评分仅对应该区间。",
+        "publicNote": {
+          "summary": "东京电视台Premium MelodiX!节目档案与同期NanteJapan转载链接相符。已采用B站BV1bo4y1x7LV／CID1115512650／第1P中18:05–21:13完整日语原版区间，内容与第1P总长24:29由用户确认，精确媒体身份来自公开分享代码。代理未独立完整播放；B站仅外链，需手动定位并在21:13停止，评分仅对应该区间。",
+          "sources": [
+            {
+              "label": "东京电视台：2023-05-01 日语版节目回顾",
+              "url": "https://www.tv-tokyo.co.jp/melodix_premium/backnumber/202305.html"
+            },
+            {
+              "label": "NanteJapan：同期节目报道与转载链接",
+              "url": "https://nantejapan.com/akb48-fantastics-and-more-perform-on-premium-melodix-for-may-1/"
+            },
+            {
+              "label": "B站：日语原版节目转载（已核精确分P／18:05–21:13区间）",
+              "url": "https://www.bilibili.com/video/BV1bo4y1x7LV/?p=1&cid=1115512650"
+            }
+          ]
+        }
+      }
     },
     "recvxyOz5Xa1EK": {
       "alternatives": [
@@ -1553,6 +1595,56 @@
                 "https://www.youtube.com/watch?v=ctfS0Rcq-gs"
               ]
             }
+          }
+        }
+      ],
+      "watchLeads": [
+        {
+          "id": "youtube-Qfez0Db9Iqc-lead",
+          "platform": "youtube",
+          "sourceId": "Qfez0Db9Iqc",
+          "sourceClass": "official",
+          "performerScope": "unconfirmed",
+          "completeness": "unconfirmed",
+          "scorePolicy": "view_only",
+          "url": "https://www.youtube.com/watch?v=Qfez0Db9Iqc&t=211",
+          "title": "izna — BEEP (Japan Edition) Costume Performance",
+          "channel": "izna",
+          "sourceType": "official_compilation",
+          "kind": "日语版 Costume 表演线索（约03:31起，时间待复核）",
+          "checkedAt": "2026-10-29T07:32:10.050127+00:00",
+          "sourceEvidence": {
+            "note": "Kstyle说明这是izna官方YouTube发布的Costume特别编舞，并在正文嵌入此精确视频；本次未取得全片播放核验。",
+            "urls": [
+              "https://kstyle.com/article.ksn?articleNo=2263560",
+              "https://www.youtube.com/watch?v=Qfez0Db9Iqc"
+            ]
+          },
+          "sameSongEvidence": {
+            "note": "报道明确为BEEP第二轨Japan Edition、首次日语音源的特别编舞；并非同曲韩语版。完整表演起止和逐句音轨仍未核实。",
+            "urls": [
+              "https://kstyle.com/article.ksn?articleNo=2263560",
+              "https://music.bugs.co.kr/album/20730989?wl_ref=list_ab_01_ar"
+            ]
+          },
+          "reason": "人工看片线索认为视频包含完整日语版，可从约03:31附近查看；约03:31–07:30是待复核的观看窗口，并非歌曲净时长。全片音轨、准确首尾与成员范围仍待独立核验，不用于本条舞台评分。",
+          "selection": {
+            "occasion": "produced_performance",
+            "evidence": {
+              "note": "Kstyle将本片明确描述为官方Costume特别编舞；不是Summer Sonic演出。报道不代替全片验证。",
+              "urls": [
+                "https://kstyle.com/article.ksn?articleNo=2263560"
+              ]
+            }
+          },
+          "leadTimeSeconds": 211,
+          "leadTimeEvidence": {
+            "note": "人工观看提供约03:31起的定位，结束位置约07:30仅作查找窗口，不是已验证的单曲章节。Bugs日版曲目目录为02:44，Genie为02:45；239秒窗口不能当歌曲净时长。官方视频读取限流，尚未独立确认准确起止。",
+            "urls": [
+              "https://www.youtube.com/watch?v=Qfez0Db9Iqc",
+              "https://music.bugs.co.kr/track/33559010",
+              "https://www.genie.co.kr/detail/songInfo?xgnm=110221418"
+            ]
           }
         }
       ]
@@ -4468,10 +4560,10 @@
         }
       ],
       "searchReview": {
-        "checkedAt": "2026-10-11T15:57:53.580623+00:00",
-        "accessLimited": true,
+        "checkedAt": "2026-10-29T14:32:44.369Z",
+        "accessLimited": false,
         "outcome": "verification_limited",
-        "summary": "TV Tokyo官方2026-10-09超超音波节目单将SHOWDOWN列为SONIC LIVE；TVer具体25分钟节目已定位。播放器未加载，尚未核本曲日语及完整首尾；这是技术性未完成，未见地区或登录拒绝，不能虚写访问受限。",
+        "summary": "日本电视台バズリズム02官方节目档案列出QWER SHOW DOWN；同期TheQoo帖子链接精确X转载。用户已确认全曲完整、日语原版、四人参与、帖子仅一支视频；现已采用X帖子2090845225845747983的视频1。代理X页403，未独立全片播放；旧TV Tokyo／TVer入口仍仅历史线索，不混同为这次采用的节目。",
         "scope": [
           {
             "url": "https://www.youtube.com/results?search_query=QWER%20SHOW%20DOWN%20live%20stage&hl=en",
@@ -4492,6 +4584,18 @@
           {
             "url": "https://tver.jp/episodes/epjef0drma",
             "label": "对应官方25分钟节目，已读页面但播放器未加载；不能据此声称地区拒绝。"
+          },
+          {
+            "url": "https://www.ntv.co.jp/buzzrhythm/oa/20260821.html",
+            "label": "NTV バズリズム02：SHOW DOWN studio live"
+          },
+          {
+            "url": "https://theqoo.net/japan/4321466057?listStyle=viewer",
+            "label": "同期讨论直接链接所选X帖子"
+          },
+          {
+            "url": "https://x.com/ming_baragi/status/2090845225845747983/video/1",
+            "label": "X转载：全曲、日语原版及四人参与已由用户确认；视频1"
           }
         ],
         "excluded": [
@@ -4502,10 +4606,8 @@
           }
         ],
         "limitations": [
-          "以上时间是已采集公开证据的整理时间，不表示全部页面在此时重新检查。",
-          "TV Tokyo逐节目原目录、TVer精确节目页、目标原MV及韩语舞台版本差异。",
-          "普通页面可读，但播放器黑屏/缓冲或主片未加载；未看到明确访问拒绝，不能据此认定地区、登录或源站禁止。",
-          "后续核验方向：在既有正常浏览器队列核TVer epjef0drma的SHOWDOWN段落与日文原版；25分钟是节目总长，不能代替单曲时长。"
+          "内容范围与唯一视频序号由用户看片确认；官方节目档案和同期转载链接提供场合旁证。",
+          "代理未独立全片播放或逐句核音，不据此判断真唱；X原页读取403与旧TVer播放器未加载分别记录。"
         ]
       }
     },
@@ -5163,7 +5265,40 @@
             }
           }
         }
-      ]
+      ],
+      "searchReview": {
+        "scope": [
+          {
+            "label": "TBS：PLAYLIST 2025-11-25 节目回顾",
+            "url": "https://www.tbs.co.jp/playlist-tbs/archive/20251125/"
+          },
+          {
+            "label": "B站：Password @PLAYLIST转载（人工已确认内容及精确分P）",
+            "url": "https://www.bilibili.com/video/BV1bhU8BWEso/?p=1&cid=34265369310"
+          }
+        ],
+        "excluded": [],
+        "limitations": [
+          "内容范围来自用户看片，精确分P来自公开分享代码；未作代理独立全片／逐句核对。采用前已核新鲜owner空分、完整日志及线上原绑定，不转移旧评分。"
+        ],
+        "checkedAt": "2026-10-29T06:55:29.503120+00:00",
+        "outcome": "verification_limited",
+        "accessLimited": true,
+        "summary": "TBS节目回顾确认tripleS ∞!《Password》参加PLAYLIST。已采用非官方转载BV1bhU8BWEso／CID34265369310／第1P；完整首尾、原日／英混合版本和8人分队全员由用户看片确认，精确分P来自用户公开分享代码。代理未独立全片播放或逐句音轨比对，不据此判定真唱。",
+        "publicNote": {
+          "summary": "TBS节目回顾确认tripleS ∞!《Password》参加PLAYLIST。已采用非官方转载BV1bhU8BWEso／CID34265369310／第1P；完整首尾、原日／英混合版本和8人分队全员由用户看片确认，精确分P来自用户公开分享代码。代理未独立全片播放或逐句音轨比对，不据此判定真唱。",
+          "sources": [
+            {
+              "label": "TBS：PLAYLIST 2025-11-25 节目回顾",
+              "url": "https://www.tbs.co.jp/playlist-tbs/archive/20251125/"
+            },
+            {
+              "label": "B站：Password @PLAYLIST转载（人工已确认内容及精确分P）",
+              "url": "https://www.bilibili.com/video/BV1bhU8BWEso/?p=1&cid=34265369310"
+            }
+          ]
+        }
+      }
     },
     "rec28ldfRTrCrz": {
       "alternatives": [
@@ -8602,24 +8737,98 @@
       }
     },
     "recvxyOz5Xo5fW": {
-      "alternatives": [],
+      "alternatives": [
+        {
+          "id": "youtube-XSpYaEdpKxY",
+          "platform": "youtube",
+          "sourceId": "XSpYaEdpKxY",
+          "sourceClass": "official",
+          "performerScope": "full_group",
+          "completeness": "full",
+          "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+          "title": "[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.",
+          "channel": "VLENDING 블렌딩",
+          "performanceType": "produced_dance_performance",
+          "selection": {
+            "occasion": "produced_performance",
+            "evidence": {
+              "note": "发行目录将Dance Video与原MV、Teaser分列，发行商报道确认独立Performance视频；属于官方专门制作表演，不是练习室或现场人声证明。",
+              "urls": [
+                "https://music.bugs.co.kr/mv/608040",
+                "https://www.newsis.com/view/NISX20220518_0001876354"
+              ]
+            }
+          },
+          "kind": "官方制作表演 · 韩语原版 · 七人完整演出（人工确认）",
+          "checkedAt": "2026-10-29T09:20:32.072631Z",
+          "scorePolicy": "view_only",
+          "sourceEvidence": {
+            "note": "沿用已记录的VLENDING官方发布标题和频道元数据，Bugs独立Dance Video编号608040及Newsis发行商报道相互支持。未声称本轮重新直接读取或播放YouTube。",
+            "urls": [
+              "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+              "https://music.bugs.co.kr/mv/608040",
+              "https://www.newsis.com/view/NISX20220518_0001876354"
+            ]
+          },
+          "sameSongEvidence": {
+            "note": "Genie将韩文Hey Gabby音源与Dance Video列在同一歌曲页；2026-10-29人工核看已确认精确视频为完整演出及韩语原版。目录120秒与音源119秒仅作一致性支持，不单独证明完整性。",
+            "urls": [
+              "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+              "https://www.genie.co.kr/detail/songInfo?xgnm=96664763"
+            ]
+          },
+          "performerEvidence": {
+            "note": "2026-10-29人工核看确认此精确视频中七名成员均参与；只记视频参与范围，不新增成员ID、私人关系或个人评分，未独立逐帧复核。",
+            "urls": [
+              "https://www.youtube.com/watch?v=XSpYaEdpKxY"
+            ]
+          },
+          "version": {
+            "match": "exact",
+            "differences": [],
+            "evidence": {
+              "note": "完整性、韩语原版及七人参与基于对XSpYaEdpKxY的人工确认；这是只读候选的版本判断，不表示独立全片播放、逐句音轨比对或现场人声已核实。正式绑定仍须新鲜owner原值和完整保存日志。",
+              "urls": [
+                "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+                "https://www.genie.co.kr/detail/songInfo?xgnm=96664763"
+              ]
+            }
+          }
+        }
+      ],
       "searchReview": {
-        "checkedAt": "2026-10-11T16:58:16.365610+00:00",
-        "accessLimited": false,
-        "outcome": "not_found_in_scope",
-        "summary": "DreamWorks/Gabby官方说明明确本视频为MV制作且属韩语K-POP翻唱合作；同系列Performance Ver.仍标MV，没有独立整曲舞台确证。官方曲长1:59，不能仅因短于两分钟误判，但现有内容仍为MV。",
+        "checkedAt": "2026-10-29T09:34:42.757553+00:00",
+        "accessLimited": true,
+        "outcome": "verification_limited",
+        "summary": "2026-10-29人工看片已确认精确Performance XSpYaEdpKxY七人参与、完整演出及韩语原版。官方原页元数据与独立发行目录吻合；本轮新鲜完整owner导出核实目标空分、206条日志无目标记录、线上无旧舞台绑定后，已在本地正式采用。候选保留作公开证据，由页面按相同视频ID自动隐藏重复入口；尚未部署。",
         "scope": [
           {
             "url": "https://www.youtube.com/watch?v=xBrrdxtyWHw",
-            "label": "原作品身份参照：Hey Gabby!；原目录标记官方MV，不能仅因官方来源便当作独立舞台。"
+            "label": "原作品身份参照：Hey Gabby!原MV；本轮不以原MV替代独立制作表演。"
           },
           {
             "url": "https://www.youtube.com/watch?v=z7lv-qLQI3M",
-            "label": "DreamWorks/Gabby官方发布合作MV，不能由Performance Ver.字样改判为独立现场。"
+            "label": "DreamWorks/Gabby原合作MV及制作说明；保留为原作品参照。"
           },
           {
             "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
-            "label": "明确MV Performance Ver.及官方发行商声明。"
+            "label": "[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.；VLENDING 블렌딩，检索元数据标2022-05-09。保留原始标题，仅作待核官方制作表演候选，不改称练习室或现场人声。"
+          },
+          {
+            "url": "https://music.bugs.co.kr/album/20465227",
+            "label": "Bugs发行目录另列2022-05-09 안녕 개비! (Sung by NMIXX) (Dance Video) 02:00，与2022-05-02 MV 02:01分开。目录时长支持版本区分，不证明全程已播放或首尾完整。"
+          },
+          {
+            "url": "https://www.newsis.com/view/NISX20220518_0001876354",
+            "label": "2022-05-18 Newsis报道引用VLENDING，分别提到Hey Gabby MV及Performance video，支持发行来源与独立表演类型；不代替实际视频核验。"
+          },
+          {
+            "url": "https://music.bugs.co.kr/mv/608040",
+            "label": "Bugs独立Dance Video页面：2022-05-09，编号608040；目录分类不代替完整播放。"
+          },
+          {
+            "url": "https://www.genie.co.kr/detail/songInfo?xgnm=96664763",
+            "label": "Genie韩语歌曲目录：音源01:59、Dance Video02:00、原MV02:01、预告00:22分别列出；时长接近不能代替首尾与音轨核验。"
           }
         ],
         "excluded": [
@@ -8627,11 +8836,6 @@
             "url": "https://www.youtube.com/watch?v=xBrrdxtyWHw",
             "title": "已核排除候选 xBrrdxtyWHw",
             "reason": "原作品官方MV，不是本轮要补的独立舞台。"
-          },
-          {
-            "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
-            "title": "已核排除候选 XSpYaEdpKxY",
-            "reason": "官方MV Performance Ver.，按本轮口径无独立舞台确证，保留作品相关视频而非stage。不是因时长排除。"
           },
           {
             "url": "https://www.youtube.com/watch?v=z7lv-qLQI3M",
@@ -8645,11 +8849,10 @@
           }
         ],
         "limitations": [
-          "以上时间为已采集公开证据的整理时间，不表示全部来源在此时重新访问。",
-          "已查范围：DreamWorks/Gabby原始合作说明、官方MV/Performance Ver.及发行曲长。"
-        ],
-        "reviewComplete": true,
-        "reopenRequirement": "独立舞台出现后按原曲约1:59核完整性，不能因短于两分钟机械排除，也不能用MV升格。"
+          "七人参与、完整首尾及韩语原版已获人工看片确认，不再重复询问；本轮没有独立全片播放或逐句音轨比对。",
+          "官方制作表演不代表现场人声，也不改称打歌节目或练习室；没有片段裁切或新增成员关系。",
+          "正式新增采用基于2026-10-29T09:26:18.230Z完整owner导出；个人数据未写入，当前只是本地／GitHub增量，正式站v201未部署。后续发布前再次核对受保护状态。"
+        ]
       }
     },
     "recvxyOz5Xqy0Q": {
@@ -12603,6 +12806,10 @@
     {
       "file": "remaining58-search-review-patch-v4.json",
       "sha256": "e2ce24e9a40aa267f1532dcfb34d8f252fa565fbf45fc043750502e8ee255db8"
+    },
+    {
+      "file": "docs/codex/evidence/20261029-pr47-continuation/izna-watch-lead-adoption.json",
+      "sha256": "24970aaa0ed12ed9275dc5775ab1f543545bd57f32830ad2c5518f41d0668049"
     }
   ]
 }

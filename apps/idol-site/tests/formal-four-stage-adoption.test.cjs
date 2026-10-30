@@ -1,15 +1,20 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ts=require('typescript'),crypto=require('node:crypto'),{DatabaseSync}=require('node:sqlite');
 const root=path.resolve(__dirname,'..'),read=file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8'));
-const evidence=read('../../docs/codex/evidence/20261027-category-resolution/stages/formal-four-adoption.json'),videos=read('data/stage-videos.json'),statuses=read('data/stages/status.json');
+const {beforePostV200Stages,beforePostV200StageStatuses}=require('./helpers/post-v200-stages.cjs');
+const evidence=read('../../docs/codex/evidence/20261027-category-resolution/stages/formal-four-adoption.json'),videos=beforePostV200Stages(read('data/stage-videos.json')),statuses=beforePostV200StageStatuses(read('data/stages/status.json'));
 const practice=read('../../docs/codex/evidence/20261028-stage-fill/adoption.json'),ownerBaseline=read('../../docs/codex/evidence/20261028-stage-fill/owner-baseline.json');
 const replacements=read('../../docs/codex/evidence/20261028-continuous/stage-replacement-adoption.json');
+const restoreHeyGabbyReviewBaseline=require('./helpers/heygabby-review-baseline.cjs');
 const sort=v=>Array.isArray(v)?v.map(sort):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sort(v[k])])):v;
 const sha=v=>crypto.createHash('sha256').update(typeof v==='string'||Buffer.isBuffer(v)?v:JSON.stringify(sort(v))).digest('hex');
 function harness(){
+ // This historical cohort exercises production helpers/save code with exactly
+ // restored source metadata; the later complete after objects are checked above.
+ const readHistoricalJson=file=>file===path.join(root,'data/stage-videos.json')?structuredClone(videos):file===path.join(root,'data/stages/status.json')?structuredClone(statuses):JSON.parse(fs.readFileSync(file,'utf8'));
  const sql=new DatabaseSync(':memory:');for(const file of fs.readdirSync(path.join(root,'drizzle')).filter(f=>f.endsWith('.sql')))sql.exec(fs.readFileSync(path.join(root,'drizzle',file),'utf8'));
  const db={prepare(query){let args=[];return{bind(...values){args=values;return this},async first(){return sql.prepare(query).get(...args)??null},async all(){return{results:sql.prepare(query).all(...args)}},async run(){return{meta:sql.prepare(query).run(...args),results:[]}}}},async batch(statements){sql.exec('BEGIN');try{const results=[];for(const statement of statements)results.push(await statement.run());sql.exec('COMMIT');return results}catch(error){sql.exec('ROLLBACK');throw error}}};
  const modules=new Map(),stubs={'cloudflare:workers':{env:{DB:db}},'server-only':{}};
- function load(file){file=path.resolve(root,file);if(modules.has(file))return modules.get(file);const output={};modules.set(file,output);const code=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true,jsx:ts.JsxEmit.ReactJSX}}).outputText;const requireLocal=name=>{if(name in stubs)return stubs[name];if(name.startsWith('.')||name.startsWith('@/')){let target=name.startsWith('@/')?path.join(root,name.slice(2)):path.resolve(path.dirname(file),name);if(target.endsWith('.json'))return JSON.parse(fs.readFileSync(target,'utf8'));if(!path.extname(target))target+='.ts';return load(target)}return require(name)};vm.runInNewContext('(function(require,exports){'+code+'})',{crypto:globalThis.crypto,TextEncoder,TextDecoder,URL,Response,Request,Uint8Array,DataView,Blob,Date,Map,Set,AbortSignal,CompressionStream,DecompressionStream,btoa,atob,fetch(){throw Error('Network forbidden in synthetic save test')}})(requireLocal,output);return output;}
+ function load(file){file=path.resolve(root,file);if(modules.has(file))return modules.get(file);const output={};modules.set(file,output);const code=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true,jsx:ts.JsxEmit.ReactJSX}}).outputText;const requireLocal=name=>{if(name in stubs)return stubs[name];if(name.startsWith('.')||name.startsWith('@/')){let target=name.startsWith('@/')?path.join(root,name.slice(2)):path.resolve(path.dirname(file),name);if(target.endsWith('.json'))return readHistoricalJson(target);if(!path.extname(target))target+='.ts';return load(target)}return require(name)};vm.runInNewContext('(function(require,exports){'+code+'})',{crypto:globalThis.crypto,TextEncoder,TextDecoder,URL,Response,Request,Uint8Array,DataView,Blob,Date,Map,Set,AbortSignal,CompressionStream,DecompressionStream,btoa,atob,fetch(){throw Error('Network forbidden in synthetic save test')}})(requireLocal,output);return output;}
  const native=load('lib/idol/native-save.ts'),{F}=load('lib/idol/fields.ts');let requestUser='synthetic-owner';
  stubs['@/lib/idol/save']={saveRecord:native.saveNativeRecord};
  const {AppError}=load('lib/idol/feishu.ts');
@@ -33,7 +38,7 @@ test('four earlier adoptions and eleven practices preserve all prior source obje
  for(const[id,hash]of Object.entries(evidence.preservation.stageRows))assert.equal(sha(historicalVideos[id]),hash,id);
  const ids=new Set([...evidence.items,...practice.items].map(i=>i.recordId));assert.equal(ids.size,15);
  for(const[id,hash]of Object.entries(evidence.preservation.statusRows))if(!ids.has(id))assert.equal(sha(historicalStatuses[id]),hash,id);
- const current=read('data/stages/supplements.json'),delta=read('../../docs/codex/evidence/20261028-continuation/editorial-corrections.json');
+ const current=restoreHeyGabbyReviewBaseline(read('data/stages/supplements.json')),delta=read('../../docs/codex/evidence/20261028-continuation/editorial-corrections.json');
  const viewing=read('../../docs/codex/evidence/20261028-continuous/stage-viewing-adoption.json');
  assert.equal(viewing.adopted.length,8);
  for(const[id,hash]of Object.entries(viewing.oldRows))assert.equal(sha(current.works[id]),hash,id);
@@ -73,7 +78,7 @@ test('only a duplicate of the selected whole-video stage is hidden from other vi
  const source=fs.readFileSync(path.join(root,'app/page.tsx'),'utf8'),tree=ts.createSourceFile('page.tsx',source,ts.ScriptTarget.ES2022,true,ts.ScriptKind.TSX),fn=tree.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='StageSupplements');
  const output={},jsx=(type,props)=>({type,props:props??{}}),runtime={jsx,jsxs:jsx,Fragment:'fragment'};
  const code=ts.transpileModule(fn.getText(tree)+'\nexport {StageSupplements};',{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
- vm.runInNewContext('(function(require,exports){'+code+'})',{performanceLabel:()=>'',performerLabel:()=>'',alternativeViewingNote:()=>'',selectionNote:()=>'',platformLabel:{youtube:'YouTube'},ArrowUpRight:'arrow',formatStageTime:String})(()=>runtime,output);
+ vm.runInNewContext('(function(require,exports){'+code+'})',{stageMatchesAlternative:require('./helpers/public-artist-loader.cjs')('lib/idol/stage-source.ts').stageMatchesAlternative,performanceLabel:()=>'',performerLabel:()=>'',alternativeViewingNote:()=>'',selectionNote:()=>'',platformLabel:{youtube:'YouTube'},ArrowUpRight:'arrow',formatStageTime:String})(()=>runtime,output);
  function links(node){if(!node||typeof node!=='object')return[];return[...(node.type==='a'?[node.props.href]:[]),...[node.props?.children].flat(Infinity).flatMap(links)]}
  const supplements=read('data/stages/supplements.json');
  for(const item of evidence.items){const original=supplements.works[item.recordId],work={stage:videos[item.recordId],stageSupplement:original},before=JSON.stringify(original);assert.ok(!links(output.StageSupplements({work})).includes(item.url));assert.ok(links(output.StageSupplements({work:{...work,stage:{...work.stage,clip:{}}}})).includes(item.url));assert.equal(JSON.stringify(original),before);}

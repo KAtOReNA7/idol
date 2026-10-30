@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-29",
+  "scope": "Three exact remaining-stage works researched under the new repost/platform permission. No application, tests, frozen queue, private data or deployment changes by this researcher.",
+  "policyApplied": {
+    "repostsAllowed": true,
+    "officialUploadBacklinkRequired": false,
+    "fullSameVersionAndParticipantScopeStillRequired": true,
+    "concertFestivalExcerptExclusionsRetained": true,
+    "titleOrDurationAloneProvesCompleteness": false
+  },
+  "queueReadback": {
+    "path": "docs/codex/evidence/20261029-heygabby-complete/remaining-stage-ledger.json",
+    "confirmedNewGapWorkIds": ["recvxyOz5XueI9", "recvxyH5pzoMAf", "rec28ldfRTrKqc"],
+    "historicalOriginWording": "Official-origin-only rejection in historical records is superseded for this research; historical files were not rewritten."
+  },
+  "summary": {
+    "worksResearched": 3,
+    "qualifiedFormalCandidates": 0,
+    "qualifiedCompleteViewingAlternatives": 0,
+    "newPreciseProgramRepostLocators": 2,
+    "possiblePublicResearchNoteImprovement": "STAYC Japanese Teddy Bear program repost links"
+  },
+  "access": {
+    "bilibiliMainlandOrApiRequestsThisPass": 0,
+    "reason": "Earlier research-japan pass returned HTTP 412; affected paths were not retried.",
+    "youtube": {
+      "url": "https://www.youtube.com/watch?v=INV0y_Cig7M",
+      "method": "One web connector open",
+      "result": "Online fetch throttled; stopped."
+    },
+    "fandom": {
+      "url": "https://loonatheworld.fandom.com/wiki/Filmography/Choreography",
+      "result": "HTTP 402 Payment Required; stopped."
+    },
+    "privateFrommAccess": false,
+    "credentialsRead": false,
+    "fullVideoPlayback": false,
+    "mediaDownloaded": false,
+    "bypassAttempts": 0
+  },
+  "works": [
+    {
+      "group": "LOONA",
+      "workId": "recvxyOz5XueI9",
+      "song": "LUMINOUS",
+      "version": "Japanese original",
+      "priorEvidence": "docs/codex/evidence/20261029-heygabby-complete/access-route-followup.json",
+      "policyReclassification": "Nonofficial uploader and missing original backlink no longer by themselves disqualify this candidate.",
+      "candidate": {
+        "platform": "youtube",
+        "sourceId": "INV0y_Cig7M",
+        "url": "https://www.youtube.com/watch?v=INV0y_Cig7M",
+        "title": "LUMINOUS Dance Practice",
+        "uploader": "LOONA",
+        "channelId": "UCCfsjT3cRoP5L2uufkpGkgw",
+        "sourceClass": "repost",
+        "durationSeconds": 237,
+        "metadataBasis": "Earlier same-day normal HTTP 200 receipt, not a successful fresh read in this pass.",
+        "priorReceiptPlayability": "OK",
+        "occasion": "practice_claim_not_independently_video_verified",
+        "completeness": "unconfirmed",
+        "languageVersion": "unconfirmed_for_exact_video",
+        "performerScope": "unconfirmed"
+      },
+      "newEvidence": [
+        {
+          "url": "https://www.reddit.com/r/LOONA/comments/1ih7mu5/loona_luminous_not_today_orig_bts_energetic_wanna/",
+          "method": "Public page body read",
+          "finding": "The 2025-02-04 discussion of a Luminous practice share includes a ten-person observation and a reply claiming HaSeul is absent.",
+          "boundary": "This is a community observation, not an adopted factual absence list. Exact equivalence to INV0y_Cig7M is unproved. Comments about Energetic or Partition cannot transfer to Luminous; no face-based identification was performed."
+        },
+        {
+          "url": "https://x.com/ot12schedule/status/1886594974906470665",
+          "method": "Public source link from the Reddit body",
+          "finding": "Web connector returned no text. No further request or private-original access."
+        }
+      ],
+      "decision": "retain_repost_candidate_pending_full_version_and_participants",
+      "adoptable": false,
+      "missing": [
+        "Complete beginning and ending of this exact file",
+        "Actual Japanese original audio/version",
+        "Actual participant range matching the target work",
+        "Independent allowed-practice occasion confirmation"
+      ]
+    },
+    {
+      "group": "STAYC",
+      "workId": "recvxyH5pzoMAf",
+      "song": "Teddy Bear",
+      "version": "Japanese version",
+      "priorEvidence": "apps/idol-site/data/stages/supplements.json:recvxyH5pzoMAf",
+      "programEvidence": {
+        "url": "https://www.tv-tokyo.co.jp/melodix_premium/backnumber/202305.html",
+        "method": "Live official page body read",
+        "finding": "The 2023/5/1 O.A section lists STAYC and Teddy Bear -Japanese ver.-. This establishes program song/version, not every repost file."
+      },
+      "preciseRepostLocatorEvidence": {
+        "url": "https://nantejapan.com/akb48-fantastics-and-more-perform-on-premium-melodix-for-may-1/",
+        "method": "Web body read plus one ordinary HTTP 200 HTML request to inspect the public Watch here hyperlink",
+        "bodySha256": "c48f3ea34a928ea1febd502669c8e5b478c2deff7cad8806acdb88e8e690a3d0",
+        "finding": "The body lists STAYC Teddy Bear -Japanese ver.- and the matching four guests. Watch here points exactly to https://www.bilibili.com/video/BV1bo4y1x7LV/.",
+        "boundary": "The article does not identify the target part, CID, complete song boundaries or participant range."
+      },
+      "candidates": [
+        {
+          "platform": "bilibili",
+          "bvid": "BV1JA411z7Rh",
+          "url": "https://www.bilibili.com/video/BV1JA411z7Rh/",
+          "page": null,
+          "cid": null,
+          "title": null,
+          "durationSeconds": null,
+          "basis": "Input compilation lead; exact-BV search did not resolve its target content. No retry of blocked mainland paths.",
+          "decision": "retain_unverified_input_lead"
+        },
+        {
+          "platform": "bilibili",
+          "bvid": "BV1bo4y1x7LV",
+          "url": "https://www.bilibili.com/video/BV1bo4y1x7LV/",
+          "sourceClass": "repost",
+          "page": null,
+          "cid": null,
+          "title": null,
+          "durationSeconds": null,
+          "basis": "Exact public hyperlink from the NanteJapan program article.",
+          "occasion": "music_program_context_supported",
+          "completeness": "unconfirmed",
+          "languageVersion": "Japanese program listing supported; exact file unverified",
+          "performerScope": "unconfirmed",
+          "decision": "new_program_repost_lead_not_complete_alternative"
+        },
+        {
+          "platform": "bilibili_international",
+          "contentId": "4786993177041408",
+          "url": "https://www.bilibili.tv/en/video/4786993177041408",
+          "bvid": null,
+          "page": null,
+          "cid": null,
+          "title": "STAYC - Teddy Bear | 스테이씨 - 테디베어 [Premier MelodiX 230501]",
+          "uploader": "Skpb K-Music Live",
+          "publishedDate": "2023-05-02",
+          "sourceClass": "repost",
+          "durationSeconds": 191,
+          "durationBasis": "3:11 in the public uploader directory whose exact link was followed; listing duration, not inspected runtime.",
+          "listingUrl": "https://www.bilibili.tv/en/space/1458656209",
+          "publicPageReadable": true,
+          "observedLabel": "Premium",
+          "playbackAttempted": false,
+          "occasion": "music_program_title_matches_official_program",
+          "completeness": "unconfirmed",
+          "languageVersion": "Japanese program listing supported; actual audio unverified",
+          "performerScope": "unconfirmed",
+          "decision": "new_exact_single_upload_lead_not_complete_alternative",
+          "boundary": "No assumption that this international ID maps to either mainland BV or any CID/page."
+        }
+      ],
+      "adoptable": false,
+      "suggestedResearchNote": "东京电视台 2023 年 5 月 1 日节目回顾已确认《Teddy Bear》日语版，并已定位相关节目转载入口；具体分 P、完整首尾及实际音轨仍待核验，尚未采用为本条舞台。",
+      "missing": ["Exact target page and CID", "Exact file beginning/end and unchanged Japanese audio", "Actual participant range"],
+      "proposalBoundary": "Only a public research-note improvement is suggested. No application edit or full viewing alternative is proposed."
+    },
+    {
+      "group": "ILLIT",
+      "workId": "rec28ldfRTrKqc",
+      "song": "NOT ME",
+      "version": "Target original; no alternate arrangement accepted",
+      "priorEvidence": "docs/codex/evidence/20261029-heygabby-complete/remaining-stage-ledger.json",
+      "oldCandidateDecisions": [
+        {"sourceId": "X-S8tw66k5g", "decision": "Still excluded: existing researched description identifies a mirrored Dori PRESS START concert panorama despite its practice title."},
+        {"sourceId": "sQ3zqlBsuqs", "decision": "Existing concert supplement remains excluded; not re-imported."}
+      ],
+      "newCandidate": {
+        "platform": "bilibili",
+        "bvid": "BV1bP7L6qE7T",
+        "url": "https://www.bilibili.com/video/BV1bP7L6qE7T/",
+        "indexedTitle": "〖自用正在学第一弹〗2-5代KPOP团舞蹈练习室及直拍[已镜面]（含solo、cover、已解散团、小分队）",
+        "indexedPartTitle": "ILLIT-NOT ME",
+        "indexedPartDuration": "03:03",
+        "sourceClass": "repost_mirrored_compilation",
+        "metadataBasis": "Search index only; blocked mainland page/API paths were not retried.",
+        "page": null,
+        "cid": null,
+        "durationSeconds": null,
+        "occasion": "unconfirmed",
+        "completeness": "unconfirmed",
+        "languageVersion": "unconfirmed",
+        "performerScope": "unconfirmed",
+        "decision": "hold_ambiguous_mixed_practice_fancam_compilation",
+        "boundary": "The mixed compilation title cannot classify this particular part as practice or prove complete performance."
+      },
+      "bodyEvidence": {
+        "url": "https://magazine.weverse.io/article/view/1789?artist=ILLIT&lang=en",
+        "method": "Live first-party page body read",
+        "finding": "NOT ME is explicitly described as the closing performance of PRESS START and its first live performance, followed by the concert ending.",
+        "boundary": "Supports existing concert classifications, not a claim that every later upload is a concert or that no practice exists."
+      },
+      "adoptable": false,
+      "missing": ["A precisely identified allowed performance file", "Target page/CID if using the compilation", "Complete same-version audio and actual participant range"],
+      "absenceClaim": false
+    }
+  ],
+  "nextAction": "Keep all three formal gaps open. STAYC has concrete new repost locators and an optional research-note improvement. No repeated request for user playback is made.",
+  "writeMethodNote": "A long shell-based write was rejected before execution with blocked by policy and no specific reason. This minimal public summary was saved with a narrowly scoped direct file patch.",
+  "filesWritten": ["docs/codex/evidence/20261029-multiplatform/research-other.json"]
+}

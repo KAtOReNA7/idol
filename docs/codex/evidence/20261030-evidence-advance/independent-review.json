@@ -188,5 +188,85 @@
     "applicationWrites": 0,
     "productionPrivateReadsOrWrites": 0,
     "deployments": 0
+  },
+  "productionCreditReview": {
+    "checkedAt": "2026-10-30T04:24:45.632764+00:00",
+    "status": "passed_no_actionable_findings",
+    "scope": "One append-only exact-MV production-credit row for NMIXX Sprinkle Party; no app edits by reviewer. Earlier review sections are preserved as historical states.",
+    "findings": [],
+    "sourceReadback": {
+      "url": "https://www.youtube.com/watch?v=0T8d3pRjmi4",
+      "access": "Web connector fetch failed without a specific denial. A normal unauthenticated urllib watch-page GET succeeded; no authentication, proxy, header change or alternate endpoint was used. Parsed ytInitialPlayerResponse.videoDetails and retained only matching credit lines plus the full-description hash, not lyrics.",
+      "videoId": "0T8d3pRjmi4",
+      "publisher": "VLENDING 블렌딩",
+      "channelId": "UCxOZuUWuWhnsJqnlTcLlSYg",
+      "title": "[MV] NMIXX - 스프링클 파티 (Sprinkle Party) [개비의 매직하우스 OST x NMIXX]",
+      "descriptionSha256": "4388579fccfcdfe7c56cdc4ccf20eb43a4c74f1cd2827a8fcde6a0a58f52f8aa",
+      "descriptionHashMatchesAdoptionReceipt": true,
+      "roleMapping": [
+        {
+          "sourceRole": "MV Produced by",
+          "publishedRole": "MV制作",
+          "names": [
+            "안민수"
+          ],
+          "organization": "STUDIO T.A.M"
+        },
+        {
+          "sourceRole": "Co-Producer",
+          "publishedRole": "联合制作",
+          "names": [
+            "김은지"
+          ]
+        },
+        {
+          "sourceRole": "Dance Producer",
+          "publishedRole": "舞蹈制作",
+          "names": [
+            "당경임",
+            "김수민",
+            "김소연"
+          ],
+          "organization": "PREPIX DANCE STUDIO"
+        }
+      ]
+    },
+    "validation": {
+      "testCommand": "node --test tests/public-production-credits.test.cjs tests/evidence-advance-20261030.test.cjs",
+      "testsPassed": 11,
+      "testsFailed": 0,
+      "testDurationMs": 11438.9496,
+      "inlineChecks": [
+        "Tuple matches the retained catalog workId recvxyOz5XsgVc, groupId recvxyEBDZOpTf and exact videoId0T8d3pRjmi4.",
+        "Wrong work, group, Hey Gabby MV or placeholder returns null; source function leaves synthetic score/note/relationship values unchanged.",
+        "All four preexisting production rows are deeply identical; removing only the added row and restoring checkedAt reproduces the complete HEAD object and original file SHA.",
+        "All three Korean names/organizations and role translations match source lines; no director, memberIds, member vocal list or full MV cast is introduced.",
+        "Actual PublicProductionCredits SSR shows the three roles and safe source link, with no images, inputs, forms, player, member selector or private synthetic text.",
+        "Retained snapshot, public-work-credit data, save routes, anonymous projection and prior renderer match earlier protected hashes.",
+        "Source count501, public-credit works106, member slots546 and remaining classifications154 unchanged."
+      ]
+    },
+    "reviewedFileSha256": {
+      "apps/idol-site/data/public-production-credits.json": "367144350fb4bf0d6e49a07004e4bafb184e7eab1be528153b5f83f0ea378374",
+      "apps/idol-site/lib/idol/public-production-credits.ts": "4fac40c257d1d69b15d7abde0404c98e34c03bb3419fcac969853f62a89661b6",
+      "apps/idol-site/components/public-work-credits.tsx": "504bf87418e1c6bf9305b30ec9ab849d29c42b4fa76ff969da5a72f843af5fe3",
+      "docs/codex/evidence/20261030-evidence-advance/sprinkle-production-adoption.json": "3b5656a4582f82f8d36514c533734b0f2b201a75850a7945e598de5c6ca0530e"
+    },
+    "conclusion": "Exact official-MV crew credits are supported at their stated production scope and preserve existing data. This does not settle the separate seven-member live-action appearance question; no cover-image or Hey Gabby roster inference was made.",
+    "memberParticipationResolved": false,
+    "oldProductionRowsPreserved": 4,
+    "productionRowsAfter": 5,
+    "publicCreditWorks": 106,
+    "publicCreditSlots": 546,
+    "localStageSources": 501,
+    "remainingClassifications": 154,
+    "limits": [
+      "Reviewer verified original public metadata text, code and local tests; did not perform full playback, production owner reads or saves.",
+      "The pending user viewing answer remains pending; crew names do not establish vocals, member participation or a complete MV cast.",
+      "No deployment or new image adoption was performed."
+    ],
+    "applicationWrites": 0,
+    "productionPrivateReadsOrWrites": 0,
+    "deployments": 0
   }
 }

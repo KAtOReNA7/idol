@@ -23,3 +23,9 @@ IVE用户确认已记录于ive-eleven-human-confirmation.json；普通B站view�
 阶段研究：6项舞台主路线＋4项新团路线、8项完整人物事实、新查8个Circle原始周期及7未知统计另见各research JSON；同源已完成SORA VOODOO被识别且未重导。IVE之后有限新API路径412立即停止，其余原始片源/署名仍不足；没有靠标题、时长、当期成员名单或原MV替代完整舞台与逐人事实。当前可核的新源已实际采用，后续需要新的完整片源或原始逐名资料。
 
 候选JSON及其随app采用证据保留准备时的pending字段；它是不可变输入历史，不表示当前仍未采用。实际完成状态以ive-eleven-adoption.json及当前stage-videos为准。
+
+## 推送后继续：Sprinkle Party 制作署名
+
+未以1fb9ba8e推送为停工点。继续读取0T8d3pRjmi4精确VLENDING原页，140秒MV说明明确MV制作안민수/STUDIO T.A.M、联合制作김은지、三名舞蹈制作/PREPIX。public-production-credits原4行逐对象/全文SHA保持，追加第5行3角色；没有将MV Produced by改称导演或自动推成员阵容。没有新图片、私人关系、参与名单或缺口关闭。完整证据及前后文件指纹在sprinkle-production-adoption.json。
+
+已向用户询问本精确MV是否当时七人全部真人出镜（区别于已完成Hey Gabby），截至此记录尚未回复；不能由单人封面或相同OST两首曲目继承。此次继续后最终118项/12文件全部通过；早先扩大统计检查的既存guard历史比较失败仍单独保留，不冒称修复或全仓通过。完整用户反馈到达后再据实际观察推进人物事实。

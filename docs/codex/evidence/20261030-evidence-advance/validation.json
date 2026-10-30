@@ -3,18 +3,19 @@
   "baseline": "553448da11498035aa19e01b7466ce6f50c9bd37",
   "finalSingleRun": {
     "total": 118,
-    "pass": 117,
-    "fail": 1,
+    "pass": 118,
+    "fail": 0,
     "skipped": 0,
     "fileCount": 12,
-    "newFocusedTests": 9
+    "newFocusedTests": 10
   },
   "knownBaselineFailure": {
     "test": "next-followup-statistics.test.cjs:27",
     "reason": "Historical comparison predates user-approved member layout runtime guard changes; current unchanged guard cannot equal its old ec9efbc5 preimage.",
     "reproducedFromUnmodifiedBaselineTestAndDependencies": true,
     "guardFileChangedThisTurn": false,
-    "notReportedAsPassed": true
+    "notReportedAsPassed": true,
+    "runScope": "Earlier broader statistical test run, not the final 118 passing checks."
   },
   "typecheck": "passed",
   "build": "passed_after_IVE_adoption",
@@ -32,12 +33,12 @@
   ],
   "logs": {
     "tests": {
-      "sha256": "65bdd6e22b459195c0372b6e2575663d446c810b1b2b193c7d9c824d841b3a61",
-      "bytes": 29014
+      "sha256": "eeed6a6ef36fa99a47186578e7119afee6fcc3bea105e4aef78246d3b1e70274",
+      "bytes": 16833
     },
     "build": {
-      "sha256": "012212a47e0b03aa276ad2d9374cbe9515056ea85508fbedf0c4ccdc011cb6e4",
-      "bytes": 8944
+      "sha256": "6d22fa215bba30838e63bd6844097b6ee7a1e05dab30556aaa7f889b749eaccb",
+      "bytes": 8941
     },
     "typecheck": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -51,5 +52,19 @@
       "sha256": "41d858ed597ad1e9941c134917a0336f827412a09d46d553c9e15410d63f4fe4",
       "bytes": 2800
     }
-  }
+  },
+  "earlierBroaderRun": {
+    "total": 118,
+    "pass": 117,
+    "fail": 1,
+    "skipped": 0,
+    "fileCount": 12,
+    "newFocusedTests": 9,
+    "log": {
+      "sha256": "65bdd6e22b459195c0372b6e2575663d446c810b1b2b193c7d9c824d841b3a61",
+      "bytes": 29014
+    }
+  },
+  "newCrewCredits": "sprinkle-production-adoption.json",
+  "productionCastConfirmation": "waiting_for_user_on_exact_Sprinkle_Party_MV"
 }

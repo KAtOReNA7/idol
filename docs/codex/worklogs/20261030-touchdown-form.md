@@ -13,3 +13,5 @@
 尝试一次内置隐藏标签打开SBS制作视频，约21秒导航超时，立即停止这条浏览器路线，没有重复重连、代理改动或使用旧Chrome授权；不声称完成播放。独立审查另跑5文件40项全通过（与本轮34项有重叠，不相加），确认旧3说明全文SHA、7个受保护JSON、未将模糊反馈采用为事实，以及实际文案边界。
 
 最终34项／5文件、TypeScript及正式构建通过；独立40项检查有重叠，不合并计数。旧3条只读说明和所有列明受保护文件SHA保持。此前既存统计历史断言未在本轮重跑，不冒称已修复。TypeScript生成缓存在编译与构建完成后恢复为精确HEAD原件。当前正式站再次只读为v203／public／revision2／1owner／0外部／0组，新的Sites版本／部署仍0。
+
+实现c299e50d094919a9bcf2072a355f929ffd44905e已普通推送，GitHub API读回相同head及PR47 draft/open/unmerged，PR描述已按最终Touchdown边界补充。GitHub交付与正式站保持v203分别留证于github-delivery.json和production-unchanged.json；后续回执文档提交不代表新部署，接续应fetch最新远端HEAD。

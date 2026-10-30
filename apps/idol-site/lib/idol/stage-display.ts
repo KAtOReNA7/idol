@@ -4,7 +4,7 @@ import type {StageResearchStatus,Work} from './types';
 export const stageStatusLabels:Record<StageResearchStatus,string>={pending:'暂无舞台',verified:'有舞台',likes_unverified:'暂无舞台',not_found:'暂无舞台',version_mismatch:'暂无舞台',blocked:'暂无舞台',missing_song_identity:'暂无作品'};
 export function stageKindLabel(kind:string){
  const label=baseStageKindLabel(kind);
- return label+(/成员版/.test(kind)?' · 成员版':'')+(/同曲后备/.test(kind)?' · 同曲后备':'')+(/节选/.test(kind)?' · 节选':'')+(/不同版本/.test(kind)?' · 不同版本':'');
+ return label+(/成员版/.test(kind)?' · 成员版':'')+(/同曲后备/.test(kind)?' · 同曲后备':'')+(/节选/.test(kind)?' · 节选':'')+(/不同版本/.test(kind)?' · 不同版本':'')+(/版本未核/.test(kind)?' · 版本未核':'');
 }
 function baseStageKindLabel(kind:string){
  if(/\bpractice\b|练习室/i.test(kind))return /band|vocal|合奏|演唱|声乐/i.test(kind)?'合奏／演唱练习':/dance|choreography|舞蹈/i.test(kind)?'舞蹈练习室':'练习室';

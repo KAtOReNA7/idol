@@ -17,10 +17,10 @@ test('explicit partial and different-version same-song fallbacks normalize hones
  }
 });
 
-test('complete corresponding versions outrank any fallback, while unknown song, scope, version or differences are refused',()=>{
+test('complete corresponding versions outrank any fallback, while missing song, scope, version-state or uncertainty disclosures are refused',()=>{
  const exact=base({videoId:'exactsource',url:'https://www.youtube.com/watch?v=exactsource',type:'produced_dance_performance',selection:{occasion:'produced_performance',evidence}}),f=fallback();
  assert.equal(normalize(exact,[exact,f]).status,0);assert.notEqual(normalize(f,[exact,f]).status,0);
- for(const patch of [{sameSong:false},{version:'unconfirmed'},{completeness:'full',version:'exact'},{differences:[]},{targetWorkId:'unknown'},{groupId:''},{performerScope:'solo'},{evidence:{note:'',urls:[]}},{evidence:{note:'x',urls:['http://example.org/proof']}}])assert.notEqual(normalize({...f,sameSongFallback:{...f.sameSongFallback,...patch}}).status,0,JSON.stringify(patch));
+ for(const patch of [{sameSong:false},{version:'invalid'},{version:'unconfirmed',differences:['No recording-version uncertainty disclosure']},{completeness:'full',version:'exact'},{differences:[]},{targetWorkId:'unknown'},{groupId:''},{performerScope:'solo'},{evidence:{note:'',urls:[]}},{evidence:{note:'x',urls:['http://example.org/proof']}}])assert.notEqual(normalize({...f,sameSongFallback:{...f.sameSongFallback,...patch}}).status,0,JSON.stringify(patch));
  for(const patch of [{versionMatch:true},{versionMatch:'exact'},{sameSongFallback:undefined},{selection:{occasion:'concert',evidence}},{sourceClass:'audience_original'}])assert.notEqual(normalize({...f,...patch}).status,0);
  for(const patch of [{targetWorkId:'recOtherWork'},{groupId:'recOtherGroup'},{targetSong:'Different song'}]){
   const tampered=normalized(f);Object.assign(tampered.items[0].selected.sameSongFallback,patch);

@@ -2,6 +2,8 @@ const assert=require('node:assert/strict'),{createHash}=require('node:crypto');
 const receipt=require('../../../../docs/codex/evidence/20261030-evidence-advance/ive-eleven-adoption.json');
 const hash=v=>createHash('sha256').update(JSON.stringify(v,null,2)+'\n').digest('hex');
 function beforeIveEleven(kind,current){
+ const recent=require('./same-song-adoption-baseline.cjs');
+ if(recent.hasSameSongAdoption(kind,current))current=recent.beforeSameSongAdoption(kind,current);
  const proof=receipt[kind],id=receipt.workId,out=structuredClone(current),h=hash(out);
  if(h===proof.beforeFileSha256)return out;
  const containsAdoption=kind==='stageVideos'?Object.hasOwn(out,id):JSON.stringify(out.works?.[id])===JSON.stringify(proof.afterRow);

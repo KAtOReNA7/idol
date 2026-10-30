@@ -32,7 +32,7 @@ for filename in sys.argv[1:]:
   pick.update(likes=lk['value'],likesDisplay=lk['display'],likesPrecision=lk['precision'],sourceUrl=s.get('sourceUrl') or s['url'],publishedAt=s.get('publishedAt') or s.get('publicationDate') or '',label=label)
   if same_song:
    assert same_song['targetWorkId']==rid,f'Same-song fallback targets another work {rid}'
-   pick['verificationNote']='同曲后备：'+'；'.join(same_song['differences'])+'。原目标版本的完整演出尚未取得，评分仅对应当前视频。'
+   pick['verificationNote']='同曲后备：'+'；'.join(same_song['differences'])+('。评分仅对应当前视频。' if same_song['version']=='unconfirmed' else '。原目标版本的完整演出尚未取得，评分仅对应当前视频。')
   if s['platform']=='bilibili':pick['likesScope']=s.get('likesScope','whole_video')
   if s['platform']=='x':pick['likesScope']='whole_post'
   assert pick['label'],f'Review performance type label {rid}: {s.get("kind") or s.get("type")}'
@@ -50,7 +50,7 @@ for filename in sys.argv[1:]:
    proof=pick['clip']['evidence'];pick['clip']['evidence']={'note':proof.get('note') or proof.get('basis'),'urls':proof['urls']}
   if same_song:
    if same_song['completeness']=='excerpt':pick['label']=pick['label'].replace('完整','')
-   pick['label']='同曲后备 · '+('节选 · ' if same_song['completeness']=='excerpt' else '')+('不同版本 · ' if same_song['version']=='different' else '')+pick['label']
+   pick['label']='同曲后备 · '+('节选 · ' if same_song['completeness']=='excerpt' else '')+('不同版本 · ' if same_song['version']=='different' else '版本未核 · ' if same_song['version']=='unconfirmed' else '')+pick['label']
   candidates=[normalize_candidate(c) for c in (item.get('candidates') or [s])]
   selected_key=checked_identity(s)
   matching=[c for c in candidates if c.get('videoId')==s['videoId'] and c.get('platform')==s['platform'] and checked_identity(c)==selected_key];assert len(matching)==1,f'Selected candidate evidence absent or duplicate {rid}'

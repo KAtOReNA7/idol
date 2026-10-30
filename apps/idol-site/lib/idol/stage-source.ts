@@ -6,10 +6,11 @@ export function validSameSongFallback(stage:Pick<StageVideo,'sameSongFallback'|'
  if('versionMatch' in stage&&(stage.versionMatch===true||stage.versionMatch==='exact'))return false;
  if(!f||typeof f!=='object'||f.sameSong!==true||!/^rec[A-Za-z0-9]+$/.test(f.targetWorkId)||!/^rec[A-Za-z0-9]+$/.test(f.groupId))return false;
  if(f.sourceWorkId!==undefined&&(!/^rec[A-Za-z0-9]+$/.test(f.sourceWorkId)||f.sourceWorkId===f.targetWorkId))return false;
- if(!['full','excerpt'].includes(f.completeness)||f.completeness!==stage.completeness||!['exact','different'].includes(f.version)||f.completeness==='full'&&f.version==='exact')return false;
+ if(!['full','excerpt'].includes(f.completeness)||f.completeness!==stage.completeness||!['exact','different','unconfirmed'].includes(f.version)||f.completeness==='full'&&f.version==='exact')return false;
  if(!['full_group','subunit','solo'].includes(f.performerScope)||f.originalPerformerScope!==f.performerScope)return false;
  if(![f.targetSong,f.performedSong,f.reason].every(v=>typeof v==='string'&&v.trim()))return false;
  if(!Array.isArray(f.differences)||f.differences.length<1||f.differences.length>8||!f.differences.every(v=>typeof v==='string'&&v.trim()&&v.length<=300))return false;
+ if(f.version==='unconfirmed'&&!f.differences.some(v=>v.includes('具体录音版本未核')))return false;
  if(!f.evidence||typeof f.evidence.note!=='string'||!Array.isArray(f.evidence.urls)||requireEvidence&&(!f.evidence.note.trim()||!f.evidence.urls.length))return false;
  return f.evidence.urls.every(raw=>{try{const u=new URL(raw);return u.protocol==='https:'&&!!u.hostname&&!u.username&&!u.password;}catch{return false;}});
 }

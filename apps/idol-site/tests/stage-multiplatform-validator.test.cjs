@@ -63,7 +63,8 @@ test('the current catalog including X and all legacy source bindings validates',
   assert.equal(result.status, 0, result.stderr);
   const videos=JSON.parse(fs.readFileSync(path.join(root,'data/stage-videos.json'),'utf8'));
   assert.equal(Object.keys(require('./helpers/ive-eleven-formal-baseline.cjs').beforeIveEleven('stageVideos',videos)).length,500);
-  assert.equal(JSON.parse(result.stdout).sources, 501);
+  const recent=require('./helpers/same-song-adoption-baseline.cjs');
+  assert.equal(JSON.parse(result.stdout).sources, 501+recent.targetIds.length);
 });
 
 test('official, reupload and third-party Bilibili performances accept unknown likes and exact multipart bindings', () => {

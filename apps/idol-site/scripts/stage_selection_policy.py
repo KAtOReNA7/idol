@@ -12,6 +12,10 @@ EXCLUDED_TYPES = {
     'concert', 'concert_stage', 'press_concert_recording', 'official_concert_full_event',
     'tour', 'tour_stage', 'festival', 'festival_stage', 'showcase', 'showcase_stage',
     'official_showcase_full_event', 'fan_event', 'other_event',
+    # Recording-session live clips are not choreographed produced performances.
+    # Keep their real classification in exact historical reviews; never relabel
+    # a studio session as an event merely to authorize a replacement.
+    'studio_live', 'studio_live_session',
 }
 
 def checked_member_fallback(source):
@@ -48,13 +52,15 @@ def checked_same_song_fallback(source):
     if fallback.get('sourceWorkId') is not None:
         assert isinstance(fallback['sourceWorkId'], str) and re.fullmatch(r'rec[A-Za-z0-9]+', fallback['sourceWorkId']) and fallback['sourceWorkId'] != fallback['targetWorkId'], 'Fallback source work identity invalid'
     assert fallback.get('completeness') in ('full', 'excerpt') and fallback['completeness'] == source.get('completeness'), 'Fallback completeness must match the actual source'
-    assert fallback.get('version') in ('exact', 'different'), 'Fallback actual version must be known'
-    assert fallback['completeness'] == 'excerpt' or fallback['version'] == 'different', 'Full corresponding version is not a fallback'
+    assert fallback.get('version') in ('exact', 'different', 'unconfirmed'), 'Fallback version state must be explicit'
+    assert fallback['completeness'] == 'excerpt' or fallback['version'] != 'exact', 'Full corresponding version is not a fallback'
     scopes = ('full_group', 'subunit', 'solo')
     assert fallback.get('performerScope') in scopes and fallback.get('originalPerformerScope') == fallback['performerScope'], 'Same-song fallback does not relax the original performer scope'
     assert source.get('performerScope', fallback['performerScope']) == fallback['performerScope'] and source.get('originalPerformerScope', fallback['originalPerformerScope']) == fallback['originalPerformerScope'], 'Fallback performer scope differs from source evidence'
     differences = fallback.get('differences')
     assert isinstance(differences, list) and 1 <= len(differences) <= 8 and all(isinstance(v, str) and v.strip() and len(v) <= 300 for v in differences), 'Visible fallback differences required'
+    if fallback['version'] == 'unconfirmed':
+        assert any('具体录音版本未核' in value for value in differences), 'Unconfirmed recording version must be visibly disclosed'
     proof = fallback.get('evidence') or {}
     assert isinstance(proof, dict) and isinstance(proof.get('note'), str) and proof['note'].strip() and isinstance(proof.get('urls'), list) and proof['urls'], 'Same-song/actual-version evidence required'
     for url in proof['urls']:

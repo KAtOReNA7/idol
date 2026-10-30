@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-10-30T04:14:39.618305+00:00",
+  "baseline": "553448da11498035aa19e01b7466ce6f50c9bd37",
+  "finalSingleRun": {
+    "total": 118,
+    "pass": 117,
+    "fail": 1,
+    "skipped": 0,
+    "fileCount": 12,
+    "newFocusedTests": 9
+  },
+  "knownBaselineFailure": {
+    "test": "next-followup-statistics.test.cjs:27",
+    "reason": "Historical comparison predates user-approved member layout runtime guard changes; current unchanged guard cannot equal its old ec9efbc5 preimage.",
+    "reproducedFromUnmodifiedBaselineTestAndDependencies": true,
+    "guardFileChangedThisTurn": false,
+    "notReportedAsPassed": true
+  },
+  "typecheck": "passed",
+  "build": "passed_after_IVE_adoption",
+  "exactUdttRuntimeAndBuiltAssetAudit": "passed",
+  "independentFinalReview": "independent-review.json#/finalAdoptionReview",
+  "localSources": 501,
+  "publishedSources": 500,
+  "remainingClassifications": 154,
+  "privateWrites": 0,
+  "deployments": 0,
+  "limitations": [
+    "No new visual browser acceptance or full agent video/audio review.",
+    "IVE completeness/language/six-person scope is human-verified.",
+    "P1 whole length is 307 seconds including introduction, not a verified clean song duration."
+  ],
+  "logs": {
+    "tests": {
+      "sha256": "65bdd6e22b459195c0372b6e2575663d446c810b1b2b193c7d9c824d841b3a61",
+      "bytes": 29014
+    },
+    "build": {
+      "sha256": "012212a47e0b03aa276ad2d9374cbe9515056ea85508fbedf0c4ccdc011cb6e4",
+      "bytes": 8944
+    },
+    "typecheck": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "udttGuard": {
+      "sha256": "cefb141fd498c26e46f70169e89db8bdfd7235c96c23b306e15f62c34bf5c1ed",
+      "bytes": 1542
+    },
+    "baselineFailure": {
+      "sha256": "41d858ed597ad1e9941c134917a0336f827412a09d46d553c9e15410d63f4fe4",
+      "bytes": 2800
+    }
+  }
+}

@@ -76,8 +76,8 @@ test('exact human-review preimages preserve every other supplement byte and reje
  assert.equal(hash(historical),'0ea798e6e9bfe21de5ebeb583d15b9a83e0002b621682ffbcef0fc1bd6ae2512');
  const snapshot=structuredClone(currentSource);assert.deepEqual(beforeHeyGabbyHuman(currentSource),JSON.parse(historical));assert.deepEqual(currentSource,snapshot);
  const wrongScope=structuredClone(currentSource);wrongScope.works[id].searchReview.outcome='not_found_in_scope';
- assert.throws(()=>beforeHeyGabbyHuman(wrongScope),/complete current Hey Gabby formal supplementsUpdate row/);
+ assert.throws(()=>beforeHeyGabbyHuman(wrongScope),/complete current Hey Gabby formal supplementsUpdate row|complete reviewed current-policy supplements \(post-QWER\)/);
  const unrelated=structuredClone(currentSource);unrelated.works.rec28ldfRTrNsK.watchLeads[0].leadTimeSeconds++;
- assert.throws(()=>beforeHeyGabbyHuman(unrelated),/all other supplements and metadata preserved/);
- assert.throws(()=>beforeHeyGabbyHumanBytes(bytes+' '),/complete current supplements bytes/);
+ assert.throws(()=>beforeHeyGabbyHuman(unrelated),/all other supplements and metadata preserved|complete reviewed current-policy supplements \(post-QWER\)/);
+ assert.throws(()=>beforeHeyGabbyHumanBytes(bytes+' '),/complete current supplements bytes|complete reviewed current-policy supplements \(post-QWER\)/);
 });

@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-30",
+  "baselineCommit": "553448da11498035aa19e01b7466ce6f50c9bd37",
+  "scope": "Bounded read-only research of eight works in the 24 unresolved complete-person-facts queue. Search discovery is distinguished from an opened original body. No application, private relationship, image, stage, date or frozen checklist mutation.",
+  "readBeforeResearch": [
+    "docs/codex/NEXT-COMPUTER-HANDOFF.md",
+    "docs/codex/RESUME-PROMPT-20261030.txt",
+    "docs/design-requirements.md",
+    "docs/collaboration-playbook.md",
+    "docs/codex/evidence/20261029-group-advance/person-primary.json",
+    "docs/codex/evidence/20261029-next-followup/people-new.json",
+    "docs/codex/evidence/20261029-group-followup/groups-baby-itzy.json",
+    "docs/codex/evidence/20261029-pr47-continuation/groups-baby-itzy.json",
+    "apps/idol-site/data/public-work-credits.json",
+    "apps/idol-site/data/stages/inventory.json"
+  ],
+  "summary": {
+    "selectedQueueWorks": 8,
+    "adoptableNewPersonIncrementsInSelectedQueue": 0,
+    "completePersonFactsClosed": 0,
+    "applicationWrites": 0,
+    "newImages": 0,
+    "newDateClaims": 0,
+    "limitations": [
+      "This is not an exhaustive recheck of all 24 works or all 155 categories.",
+      "BABYMONSTER and ILLIT were not selected because the current 24-work queue does not include them; no completed batch was reimported.",
+      "Original broadcast/label pages frequently identify only the group. A named album edition, group roster, video length or fan line distribution does not establish each member's recording or exact MV appearance.",
+      "YouTube fetch throttling and a fan-club timeout were recorded without bypass, repeated fetching or invented viewing claims.",
+      "Some attempted searches rediscovered old routes; those are explicitly not counted as new evidence."
+    ]
+  },
+  "works": [
+    {
+      "workId": "rec28ldfRTrPi9",
+      "group": "MADEIN",
+      "song": "PUNG!",
+      "videoId": "aer_X9NmhTc",
+      "oldEvidenceReviewed": "Current documented_project_lineup already names MASHIRO, MiU, SERINA and NAGOMI from the CDJapan Girl Meets Boy individual editions. JJ originals and their scope are already applied; no recording/cast inference is allowed.",
+      "newRoutes": [
+        {
+          "route": "Original broadcaster radio playlist rather than another retailer/roster",
+          "url": "https://miniweb.imbc.com/Music/View?page=1&progCode=FM4U000001335&seqID=1138",
+          "bodyRead": true,
+          "publisherDate": "2026-02-19",
+          "bodyFinding": "MBC lists MADEIN as guests and PUNG! as song 5, between Super Obvious and MADEIN S BLUE. It does not name the PUNG! singers individually or say whether this playlist item is a live performance.",
+          "adopt": false
+        },
+        {
+          "route": "Original MBC Show Champion interview description",
+          "url": "https://clip.imbc.com/m/ClipPlay/M12_CA202603040035",
+          "bodyRead": true,
+          "publisherDate": "2026-03-04",
+          "bodyFinding": "The description names SERINA as introducing the album. The episode list separately links the PUNG! stage. An album introduction is not her recording/MV credit, and the page does not supply a four-person song credit.",
+          "adopt": false
+        },
+        {
+          "route": "Official artist archive, public index only",
+          "url": "https://artist.mnetplus.world/main/stg/madein/tag/archive",
+          "bodyRead": true,
+          "bodyFinding": "The archive lists PUNG! Music Show Behind The Scenes, MV Reaction and membership/Plus Chat exclusive behind-cut posts. The accessible index gives no individual PUNG! roles. Restricted posts were not accessed.",
+          "adopt": false
+        },
+        {
+          "route": "Broadcaster individual-cam discovery, primary body unavailable",
+          "discoveryUrl": "https://www.reddit.com/r/MADEIN_U/comments/1rqrfkr/260311_madein_pung_show_champion/",
+          "discoveredPrimaryUrls": [
+            "https://www.youtube.com/watch?v=H53hBA1tyeY",
+            "https://www.youtube.com/watch?v=fhCUgK3ZwgI",
+            "https://www.youtube.com/watch?v=cARWl3EiYAw",
+            "https://www.youtube.com/watch?v=zp0RhK_7mow"
+          ],
+          "bodyRead": false,
+          "bodyFinding": "Discovery links label four individual cams, but all four primary watch opens returned fetch throttled. No primary title/channel/body or viewing is claimed. Additional exact iMBC individual-cam searches returned no result.",
+          "adopt": false
+        }
+      ],
+      "status": "unresolved_preserve_existing_reference",
+      "stillMissing": "Primary individually attributed recording/cast facts or verifiable exact-song individual performance publication; the complete recording/MV list remains unproven."
+    },
+    {
+      "workId": "recvxIZFpVLU0R",
+      "group": "ifeye",
+      "song": "loverfory",
+      "videoId": "ecQSl-6NSTA",
+      "oldEvidenceReviewed": "Official Plus Chat MV description says RAHEE Official without stating director, recording or cast roles. The user already checked the behind-the-scenes source and found no required credit. This was not asked again.",
+      "newRoutes": [
+        {
+          "route": "Original interview/production statement explicitly using director or self-production language",
+          "queries": [
+            "ifeye loverfory 라희 감독 인터뷰",
+            "\"ifeye\" \"loverfory\" \"라희\" \"직접\"",
+            "\"ifeye\" \"loverfory\" \"director\" RAHEE -site:wikipedia.org -site:oseyokorea.com"
+          ],
+          "bodyRead": false,
+          "bodyFinding": "No new original body with an explicit role was located. Results led back to the previously known RAHEE Official wording, wiki mirrors or the behind-the-scenes route already addressed by the user. No search snippet is promoted to evidence.",
+          "adopt": false
+        }
+      ],
+      "status": "unresolved_no_new_primary_body",
+      "stillMissing": "An explicit original statement connecting RAHEE to a defined role on this exact MV, or individually attributed recording/cast information."
+    },
+    {
+      "workId": "recvxIZy35rUeY",
+      "group": "HITGS",
+      "song": "Little By Little",
+      "videoId": "L9VNIOcfSOU",
+      "oldEvidenceReviewed": "Bugs/Qobuz credit the group and outside creators; VV's Chinese lyric credit belongs to I'm In Love Chinese Ver., not this song. Old CHARIZZMA interviews and fan lyric divisions are not target-song evidence.",
+      "newRoutes": [
+        {
+          "route": "Song-specific Japanese/Korean first-person recording interview search",
+          "queries": [
+            "HITGS Little By Little インタビュー レコーディング",
+            "\"HITGS\" \"Little By Little\" \"VV\" interview",
+            "\"HITGS\" \"Little By Little\" interview 2026",
+            "\"HITGS\" \"Little By Little\" \"녹음\""
+          ],
+          "bodyRead": false,
+          "bodyFinding": "No new exact-song first-person role was found. Discovery returned fan-event cams, generic phrase matches and catalog credits already covered. None is adopted.",
+          "adopt": false
+        },
+        {
+          "route": "Adjacent original interview sections checked for an overlooked song-specific account",
+          "urls": [
+            "https://kanstarpress.com/?p=204530&page=5",
+            "https://kanstarpress.com/?p=204530&page=6",
+            "https://kanstarpress.com/?p=204530&page=8",
+            "https://kanstarpress.com/?p=204530&page=9"
+          ],
+          "bodyRead": true,
+          "bodyFinding": "These sections concern pre-debut history, Gulliver!, member traits and fan-con messages. They do not establish Little By Little recording or MV roles. This is an adjacent-section check, not new adoption of the already-used Gulliver! interview.",
+          "adopt": false
+        }
+      ],
+      "status": "unresolved",
+      "stillMissing": "Individually attributed Little By Little recording or exact-video appearances; no transfer from another track or fan-con roster."
+    },
+    {
+      "workId": "recvxIZy3525BF",
+      "group": "HITGS",
+      "song": "Gulliver!",
+      "videoId": "IM-N8trjDzk",
+      "oldEvidenceReviewed": "Current reported_participation already contains Seohee, Seojin, Hyerin and Iyoo recording self-reports from KanStarpress page 7, plus the two named filming subjects on page 8. Existing four-member increment is complete and must not be repeated.",
+      "newRoutes": [
+        {
+          "route": "VV-specific original account and adjacent interview check",
+          "queries": [
+            "\"HITGS\" \"Gulliver\" \"ビビ\"",
+            "\"HITGS\" \"Gulliver\" \"비비\" 인터뷰"
+          ],
+          "urls": [
+            "https://kanstarpress.com/?p=204530&page=5",
+            "https://kanstarpress.com/?p=204530&page=8",
+            "https://kanstarpress.com/?p=204530&page=9"
+          ],
+          "bodyRead": true,
+          "bodyFinding": "VV talks about prior modeling, general choreography practice/support from Seojin, and greeting Japanese fans. None is an explicit Gulliver! recording or MV appearance claim. Page 8's Iyoo description remains the already-applied Seohee/Seojin filming evidence.",
+          "adopt": false
+        }
+      ],
+      "status": "existing_done_for_four_unresolved_for_complete_fact",
+      "stillMissing": "A defined VV role for the exact recording/MV and any remaining complete-cast evidence; her Ctrl C Chinese Ver. solo/lyric credit cannot be transferred."
+    },
+    {
+      "workId": "recvxyH5pzrrSO",
+      "group": "WOOAH",
+      "song": "WXW (Wish With W)",
+      "videoId": "ZtiThQN5ETc",
+      "oldEvidenceReviewed": "Bugs/Melon lyric credits identify WOOAH collectively. Individual wiki/line-distribution claims do not establish individual lyric/recording roles. KOMCA automation restriction remains respected; no automated search there.",
+      "newRoutes": [
+        {
+          "route": "Original Japanese interview body, distinguish concert title from the song",
+          "urls": [
+            "https://kanstarpress.com/?p=207329",
+            "https://kanstarpress.com/?p=207329&page=5",
+            "https://kanstarpress.com/?p=207329&page=6",
+            "https://kanstarpress.com/?p=207329&page=7",
+            "https://kanstarpress.com/?p=207329&page=8"
+          ],
+          "bodyRead": true,
+          "publisherDate": "2026-10-26",
+          "bodyFinding": "The title's WXW: WICKED is the concert name. The precise recording self-report belongs to SORA on VOODOO DOLL, not WXW. Current runtime already contains the same SORA source and role, checked 2026-10-28; it is existing_done and not a new increment.",
+          "adopt": false
+        }
+      ],
+      "status": "unresolved_wrong_work_and_existing_done_excluded",
+      "stillMissing": "A named original account assigning WXW lyrics, recording or exact MV roles to specific members."
+    },
+    {
+      "workId": "recvxyOz5XFVzt",
+      "group": "fromis_9",
+      "song": "Touchdown",
+      "videoId": "peoZYyEvY-k",
+      "oldEvidenceReviewed": "Collective OST release reporting is known. NezMayo's external guitarist portfolio is already recorded and explicitly not adopted into a new external-artist member model. No roster-to-recording inference.",
+      "newRoutes": [
+        {
+          "route": "Read the previously discovered original OSEN body, not its search excerpt",
+          "url": "https://www5.osen.co.kr/article/G1112625333",
+          "bodyRead": true,
+          "publisherDate": "2025-07-31",
+          "bodyFinding": "OSEN identifies the exact SBS TRY OST Part.2 Touchdown and August 1 release. Its vocal description attributes the recording collectively to fromis_9. The article names drama actors, not individual fromis_9 performers.",
+          "adopt": false
+        }
+      ],
+      "status": "unresolved_original_body_still_collective",
+      "stillMissing": "Individually named recording/vocal roles or another exact-song first-person account."
+    },
+    {
+      "workId": "recvxyOz5XsgVc",
+      "group": "NMIXX",
+      "song": "Sprinkle Party",
+      "videoId": "0T8d3pRjmi4",
+      "oldEvidenceReviewed": "Hey Gabby seven-person evidence cannot transfer. Genie/Bugs/Qobuz and the production portfolio give group/external production credits; Dork/LRCLIB line labels are not original member credits.",
+      "newRoutes": [
+        {
+          "route": "JYP's original video catalog body",
+          "url": "https://nmixx.jype.com/video",
+          "bodyRead": true,
+          "bodyFinding": "JYP lists Sprinkle Party separately from Hey Gabby, with MV publication date 2022-05-05 and group-level Sung by NMIXX title. It supplies no named performer list for this track. The present-day profile cannot identify the 2022 recording lineup by inference.",
+          "adopt": false
+        }
+      ],
+      "queryOverlapNotNewEvidence": "VLENDING/Universal-focused searches rediscovered earlier catalog material; they are not counted as a new successful route.",
+      "status": "unresolved_original_catalog_has_no_individual_roles",
+      "stillMissing": "Exact-song individually attributed recording or MV appearance evidence, preserving historical JINNI scope without inferring seven people."
+    },
+    {
+      "workId": "rec28ldfRTrNsK",
+      "group": "izna",
+      "song": "BEEP (Japan Edition)",
+      "videoId": "LiZAgfmoQwc",
+      "oldEvidenceReviewed": "No current public-work-credit entry for this exact version. Existing BEEP viewing-position evidence and the user's inability to confirm exact bounds are separate from member recording facts and were not reopened.",
+      "newRoutes": [
+        {
+          "route": "Original MAI solo interview",
+          "url": "https://mennoblesse.com/article/feel-infinite-%EC%9D%B4%EC%A6%88%EB%82%98izna-%EB%A7%88%EC%9D%B4-%ED%99%94%EB%B3%B4-%EC%9D%B8%ED%84%B0%EB%B7%B0/",
+          "bodyRead": true,
+          "publisherDate": "2025-07-01",
+          "bodyFinding": "Question 4 explicitly asks about the Japanese BEEP and MAI describes pride in reaching more fans. Question 5 discusses working with THEBLACKLABEL generally. Neither paragraph explicitly gives MAI's Japanese recording part, translation role or exact-video appearance.",
+          "adopt": false
+        },
+        {
+          "route": "Original comeback Q&A carried by Daum",
+          "url": "https://v.daum.net/v/8oV8MaEQhp",
+          "bodyRead": true,
+          "publisherDate": "2025-06-09",
+          "bodyFinding": "Question 3 specifically discusses the Japanese track with KOKO and MAI, but their answers concern opportunity and anticipation. Later JUNG EUN singing and SARANG/SAEBI filming accounts say BEEP generally; the wording does not explicitly establish the Japanese recording/MV version. No Korean-to-Japanese role transfer is made.",
+          "adopt": false
+        }
+      ],
+      "status": "unresolved_version_scope_not_precise_enough",
+      "stillMissing": "A named Japanese-version recording/translation/MV account rather than general comeback promotion or Korean BEEP production anecdotes."
+    }
+  ],
+  "additionalPeerReview": {
+    "requestedBy": "parent",
+    "workId": "rec28ldfRTrNcl",
+    "videoId": "aNBiA1NKdOg",
+    "work": "SAY MY NAME — ShaLala (Japanese version)",
+    "sourceUrl": "https://landoer.jp/saymyname_1/",
+    "publisherDate": "2025-05-21",
+    "bodyRead": true,
+    "assessment": "Original named interview supports a narrow five-person role note: SEUNGJOO Japanese recording; DOHEE harmony aligned with KANNY rap; KANNY rap attributed by DOHEE; HITOMI and MEI Japanese lyric translation and pronunciation guidance. It does not justify a complete seven-member recording/MV cast inferred from the interview roster. Separate MV self-reports exist for MEI/HITOMI, and SOHA names a scene with KANNY, but those need explicit role wording rather than a merged cast assertion.",
+    "parentDisposition": "Parent verified existing private seven-person relations and will consider only a collapsed topic note with the five narrow roles, no new public credit/member IDs/images and no claimed closure of the 155-item queue.",
+    "applicationWrittenByThisTask": false
+  },
+  "stopReason": "Bounded new first-party/original-body routes for the selected works did not provide an adoptable new individual role. Preserve unresolved facts and existing increments; do not repeat restricted videos or identical failed searches to manufacture a delta."
+}

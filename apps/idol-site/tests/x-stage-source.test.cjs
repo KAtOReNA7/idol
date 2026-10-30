@@ -29,7 +29,7 @@ const mod=new Module(nativeFile,module);mod.filename=nativeFile;mod.paths=module
 
 test('the adopted QWER video uses fresh real protection, preserves every prior source and discloses user-confirmed scope',()=>{
  const {beforeQwer,receipt}=require('./helpers/qwer-formal-baseline.cjs');
- const actual=require('../data/stage-videos.json'),stage=load('lib/idol/stage.ts').stageForWork(receipt.workId);
+ const actual=require('./helpers/ive-eleven-formal-baseline.cjs').beforeIveEleven('stageVideos',require('../data/stage-videos.json')),stage=load('lib/idol/stage.ts').stageForWork(receipt.workId);
  assert.equal(Object.keys(actual).length,500);assert.equal(Object.keys(beforeQwer('stageVideos',actual)).length,499);
  assert.deepEqual(stage,receipt.stageVideos.afterRow);assert.equal(source.stageSourceKey(stage),key);assert.ok(source.stageHasValidBinding(stage));
  assert.equal(stage.platform,'x');assert.equal(stage.sourceClass,'reupload');assert.equal(stage.selection.occasion,'music_program');assert.equal(stage.likesScope,'whole_post');assert.equal(stage.likes.precision,'unknown');

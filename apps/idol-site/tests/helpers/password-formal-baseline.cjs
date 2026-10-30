@@ -5,6 +5,9 @@ const stayc=require('../../../../docs/codex/evidence/20261029-pr47-v202-followup
 const bytes=v=>JSON.stringify(v,null,2)+'\n';
 const hash=v=>createHash('sha256').update(v).digest('hex');
 function beforePassword(kind,current){
+ // Nested historical callers may supply this exact already-restored collection.
+ // Accept only the complete reviewed preimage SHA, never a partial row match.
+ if(hash(bytes(current))===receipt[kind].beforeFileSha256)return structuredClone(current);
  current=beforeStayc(kind,current);
  const proof=receipt[kind],out=structuredClone(current),id=receipt.workId;
  if(kind==='stageVideos'){

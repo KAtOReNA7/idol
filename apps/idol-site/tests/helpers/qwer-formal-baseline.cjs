@@ -2,6 +2,7 @@ const assert=require('node:assert/strict'),{createHash}=require('node:crypto');
 const receipt=require('../../../../docs/codex/evidence/20261029-next-followup/qwer-formal-adoption.json');
 const hash=x=>createHash('sha256').update(JSON.stringify(x,null,2)+'\n').digest('hex');
 function beforeQwer(kind,current){
+ current=require('./ive-eleven-formal-baseline.cjs').beforeIveEleven(kind,current);
  const out=structuredClone(current),id=receipt.workId,proof=receipt[kind];
  if(kind==='stageVideos'){
   if(!out[id])return out;

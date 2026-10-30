@@ -93,9 +93,9 @@ test('strict formal then viewing preimages preserve the original 496 sources, ev
   assert.equal(adoption.stageBindingsChanged, 0); assert.equal(adoption.memberRelationsChanged, 0);
   assert.equal(adoption.frozenQueueChanged, false); assert.equal(adoption.appSourceOrAuthChanged, false);
   const wrongTarget = structuredClone(data); wrongTarget.works[id].alternatives[0].version.match = 'unconfirmed';
-  assert.throws(() => beforeHeyGabbyViewing(wrongTarget), /complete current Hey Gabby formal supplementsUpdate row/);
+  assert.throws(() => beforeHeyGabbyViewing(wrongTarget), /complete current Hey Gabby formal supplementsUpdate row|complete reviewed current-policy supplements \(post-QWER\)/);
   const otherWork = structuredClone(data); otherWork.works.rec28ldfRTrNsK.watchLeads[0].leadTimeSeconds++;
-  assert.throws(() => beforeHeyGabbyViewing(otherWork), /all other supplements and metadata preserved/);
+  assert.throws(() => beforeHeyGabbyViewing(otherWork), /all other supplements and metadata preserved|complete reviewed current-policy supplements \(post-QWER\)/);
 });
 
 test('actual anonymous stage media SSR shows one formal player, its scope note and no duplicate or stale candidate card', () => {

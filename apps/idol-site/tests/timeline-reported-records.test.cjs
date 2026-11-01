@@ -2,14 +2,17 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const load=require('./helpers/public-artist-loader.cjs'),React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
 const root=path.resolve(__dirname,'..'),data=require('../data/timeline-reported-records.json');
 const laterEvidence=require('../../../docs/codex/evidence/20261028-continuous/evidence-upgrade-proposal-c.json');
+const {beforePriorityTimelineBytes,beforePriorityReportedRecords}=require('./helpers/priority-date-baseline.cjs');
+const historicalReports=beforePriorityReportedRecords(data);
 const {reportedTimelineRecords,supersededNativeReportIds,withReportedTimelineIdentity}=load('lib/idol/timeline/reported-records.mjs');
 const {actionIdentity,validateIdentity}=load('lib/idol/design-review/sol15-runtime/shared/identity.js');
 const {TimelineReportedRecords}=load('components/timeline-reported-records.tsx');
 const {artist,render}=load('lib/idol/udtt-native/presentation.mjs');
 const hashes={atheart:'82dab6b7057818a60acb933f57617877eced2a664b0a64206f9a38a5c3bac853',bewave:'cfed63175dbcf2be685f67c94f5511235e8e1000eff880942e1ecd8d2eab7565',candyshop:'480ebf439d9de4824b9d3d2c54c2a6a54e67024c7622c70acd71ac38202b4af2',geenius:'6827b5a3cbaa18a718854729a86b571b085f1d3251f139e3c21950571b242421',udtt:'f2fc3be3ed849ce23e8dfea4da27607e1f20b4699efc027cd1a23b7efcd311e3'};
 test('seven reporting overlays preserve historical canonical bytes through reviewed evidence preimages, exact IDs and member sets',()=>{
+ const data=historicalReports;
  const holds=[];for(const [slug,sha] of Object.entries(hashes)){
-  const bytes=fs.readFileSync(path.join(root,'data/artist-timelines',slug+'.json'));
+  const bytes=beforePriorityTimelineBytes(slug,fs.readFileSync(path.join(root,'data/artist-timelines',slug+'.json')));
   const change=laterEvidence.timelines.find(row=>row.slug===slug);
   const historicalBytes=change?Buffer.from(change.expectedBeforeText,'utf8'):bytes;
   assert.equal(crypto.createHash('sha256').update(historicalBytes).digest('hex'),sha);
@@ -22,6 +25,7 @@ test('seven reporting overlays preserve historical canonical bytes through revie
  assert.doesNotMatch(JSON.stringify(data),/"(?:score|note|watched|favorite|ratingIds|reviewStatus)"/);
 });
 test('report, retail and repost dates are distinct and no inferred Sena date appears',()=>{
+ const data=historicalReports;
  const kinds=data.records.reduce((a,r)=>(a[r.kind]=(a[r.kind]||0)+1,a),{});assert.deepEqual(kinds,{report:5,catalog:1,repost:1});
  const catalog=data.records.find(r=>r.kind==='catalog');assert.equal(catalog.recordDate,'2026-01-15');assert.equal(catalog.sources[0].publishedDate,null);assert.match(catalog.summary,/QR/);
  const repost=data.records.find(r=>r.kind==='repost');assert.equal(repost.recordDate,null);assert.equal(repost.sources[0].publishedDate,null);assert.doesNotMatch(JSON.stringify(repost),/2025-03-26|临时加入/);
@@ -30,8 +34,9 @@ test('report, retail and repost dates are distinct and no inferred Sena date app
 test('native variants render all records, boundaries and safe sources, retaining CandyShop alias/member navigation',()=>{
  for(const [slug,variant] of [['atheart','shared'],['bewave','bewave'],['candyshop','candyshop'],['geenius','geenius']]){
   const row=data.records.find(r=>r.slug===slug),html=renderToStaticMarkup(React.createElement(TimelineReportedRecords,{slug,groupId:row.groupId,variant,renderMember:id=>React.createElement('a',{href:'/member/'+id},id)}));
-  assert.equal((html.match(/data-reported-record=/g)||[]).length,data.records.filter(r=>r.slug===slug).length);
-  for(const r of reportedTimelineRecords(slug,row.groupId)){assert.ok(html.includes(r.eventId));assert.ok(html.includes(r.boundary));assert.ok(html.includes(r.sources[0].url.replaceAll('&','&amp;')));}
+  const visible=reportedTimelineRecords(slug,row.groupId).filter(r=>variant!=='shared'||r.eventDate===null);
+  assert.equal((html.match(/data-reported-record=/g)||[]).length,visible.length);
+  for(const r of visible){assert.ok(html.includes(r.eventId));assert.ok(html.includes(r.boundary));assert.ok(html.includes(r.sources[0].url.replaceAll('&','&amp;')));}
   assert.match(html,/target="_blank" rel="noopener noreferrer"/);assert.doesNotMatch(html,/canonical|reviewStatus|hold/);
   if(slug==='candyshop'){assert.ok(html.includes('id="e-candyshop-yuina-hiatus-report"'));assert.ok(html.includes('/member/recvxAPQCFyiww'));}
  }

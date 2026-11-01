@@ -10,7 +10,7 @@ import {hash} from './hash';
 import {invalidateCatalog} from './catalog';
 import {invalidateDurableCatalog} from './durable-catalog';
 import {stageForWork,stageScoreIsBound} from './stage';
-import {stageSourceKey as sourceKeyFor} from './stage-source';
+import {stageSourceKey as sourceKeyFor,stageRequiresSourceKey} from './stage-source';
 type SaveRow={id:string;user_id:string;table_key:TableKey;record_id:string;request_hash:string;status:string;before_json:string;patch_json:string;result_json:string|null};
 export async function saveRecord(userId:string,input:any){
  const control=await ownControl(userId);if(control?.mode==='native')return saveNativeRecord(userId,input);if(control?.mode==='frozen')throw new AppError('STORAGE_CHANGING','资料正在整理，暂时无法保存；输入已保留，请稍后重试。',409);
@@ -29,7 +29,7 @@ export async function saveRecord(userId:string,input:any){
   throw new AppError('SAVE_UNRESOLVED','上次保存结果尚未确认，此条已暂停写入。请让助手核对保存记录后恢复，勿重复提交。',409);
  }
  let sourceAudit:Record<string,unknown>|undefined;
- if(table==='works'&&values&&Object.hasOwn(values,'stageScore')){const selected=stageForWork(recordId);const key=sourceKeyFor(selected);if(!stageScoreIsBound(selected)||stageVideoId!==selected?.videoId||(selected?.clip?stageSourceKey!==key:stageSourceKey!==undefined&&stageSourceKey!==key))throw new AppError('STAGE_SOURCE_CHANGED','舞台来源或片段范围尚未绑定或已更新，本次没有写入。草稿已保留，请核对当前视频范围后决定是否重新读取。',409);sourceAudit={videoId:selected!.videoId,sourceKey:key,...(selected!.clip?{startSeconds:selected!.clip.startSeconds,endSeconds:selected!.clip.endSeconds}:{})};}
+ if(table==='works'&&values&&Object.hasOwn(values,'stageScore')){const selected=stageForWork(recordId);const key=sourceKeyFor(selected);if(!stageScoreIsBound(selected)||stageVideoId!==selected?.videoId||(stageRequiresSourceKey(selected)?stageSourceKey!==key:stageSourceKey!==undefined&&stageSourceKey!==key))throw new AppError('STAGE_SOURCE_CHANGED','舞台来源或片段范围尚未绑定或已更新，本次没有写入。草稿已保留，请核对当前视频范围后决定是否重新读取。',409);sourceAudit={videoId:selected!.videoId,sourceKey:key,...(selected!.platform==='bilibili'?{platform:'bilibili',bilibili:selected!.bilibili}:{}),...(selected!.clip?{startSeconds:selected!.clip.startSeconds,endSeconds:selected!.clip.endSeconds}:{})};}
  const fields=await schema(table,true);const patch=validatePatch(table,values,fields);const before=await getRecord(table,recordId);
  if(table==='ratings')await assertMemberScoreAllowed(values,asIds(byId(before,fields)[F.ratings.works]),async id=>({id,url:asUrl(byId(await getRecord('works',id),await schema('works'))[F.works.url])}));
  if(await hash(before.fields)!==revision)throw new AppError('EDIT_CONFLICT','这条记录已在别处更新。本次未覆盖，请重新读取后再保存。',409);

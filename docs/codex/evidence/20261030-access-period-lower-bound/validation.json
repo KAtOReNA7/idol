@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-30T10:19:57.843165+00:00",
+  "tests": {
+    "files": 4,
+    "total": 20,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0
+  },
+  "typeCheck": "passed",
+  "formalBuild": "passed",
+  "exactUdttAudit": {
+    "passed": true,
+    "prunePlanFiles": 9,
+    "packagedOrDeployed": false
+  },
+  "logs": {
+    "targetedTests": {
+      "path": "E:\\project\\idol-local-backups\\20261030-access-period-statistics-targeted-final.txt",
+      "sha256": "67f92df3f6b5d511b2e9c1b4a434b970c7f50306d209640e24240da499092f6a",
+      "bytes": 2595,
+      "exitCode": 0
+    },
+    "typeCheck": {
+      "path": "E:\\project\\idol-local-backups\\20261030-access-tsc.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "exitCode": 0
+    },
+    "formalBuild": {
+      "path": "E:\\project\\idol-local-backups\\20261030-access-build.txt",
+      "sha256": "dd42e312c3b6a8ec98908820919225c378ec92c380393f3052dc725f182bd7bb",
+      "bytes": 8578,
+      "exitCode": 0
+    },
+    "exactAssets": {
+      "path": "E:\\project\\idol-local-backups\\20261030-access-assets.txt",
+      "sha256": "cefb141fd498c26e46f70169e89db8bdfd7235c96c23b306e15f62c34bf5c1ed",
+      "bytes": 1542,
+      "exitCode": 0
+    }
+  },
+  "stageSourcesUnchanged": 527,
+  "stageSourceAndStatusSha256": {
+    "data/stage-videos.json": "6845059fe20b71935ade96738fe02be3a825e4616082455a4e0fbf057ccfb154",
+    "data/stages/status.json": "6943c7903f927c86fa629ed5d43495789bc8f3bec0704da0db29e5e8ed5a7dc3"
+  },
+  "old36Month13Week2Annual2CumulativeRowsPreserved": true,
+  "newPeriodLowerBoundMaxReplacement": 154,
+  "lowerBound": 2118570,
+  "legacyDifferenceStillNotNumericallyReconciled": 340219,
+  "legacyTargetNoLongerBlocking": "source-basis-acceptance.json",
+  "currentRemainingTasks": 118,
+  "privateWrites": 0,
+  "newSitesVersions": 0,
+  "deployments": 0,
+  "notPerformed": [
+    "Whole-site live browser visual inspection",
+    "Independent complete videos or lyric listening",
+    "Real private save"
+  ]
+}

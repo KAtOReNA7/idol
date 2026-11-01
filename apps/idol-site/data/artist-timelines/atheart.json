@@ -291,10 +291,13 @@
       "id": "e-atheart-aurora-hiatus-observed",
       "groupId": "rec28ldfRTiEaV",
       "eventType": "hiatus",
-      "title": "Aurora曾暂停活动（起始日未详）",
-      "summary": "2026年3月原始团体访谈说明Aurora当时仍在休息，未参加出道专辑活动。",
-      "scopeNote": "仅截至2026-03-13原始采访所述时点的历史活动范围；未给暂停开始/结束日，不声称截至研究日仍暂停。 其后另有2026年6月公司合流公告与8月第二次暂停线索，分开保存。",
-      "eventDate": null,
+      "title": "Aurora首次暂停活动",
+      "summary": "Aurora从2025年7月初起暂停活动，未参与出道专辑活动。",
+      "scopeNote": "起始月份为2025年7月，具体日未详；与后续回归及第二次暂停分开，不表示当前仍暂停。",
+      "eventDate": {
+        "value": "2025-07",
+        "precision": "month"
+      },
       "announcementDate": null,
       "plannedDate": null,
       "status": "confirmed",
@@ -320,12 +323,36 @@
           "checkedAt": "2026-10-16",
           "scopeNote": "仅歌曲原始访谈，Aurora状态仅为该时点的背景陈述；不采任何医学细节。",
           "evidenceRef": "evidence/E/task05/sources/atheart-original-interview.json"
+        },
+        {
+          "id": "priority-crosscheck-nme",
+          "url": "https://www.nme.com/news/music/atheart-make-their-debut-with-plot-twist-ep-launch-3884707",
+          "publisher": "NME / Surej Singh",
+          "title": "Aurora首次暂停活动 · 日期依据",
+          "sourcePublishedAt": {
+            "value": "2025-08-14",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-30",
+          "scopeNote": "暂停自2025年7月初开始，仅采用月份。",
+          "evidenceRef": "docs/codex/evidence/20261030-priority-crosscheck/date-adoption.json"
+        },
+        {
+          "id": "priority-crosscheck-joynews",
+          "url": "https://news.nate.com/view/20250711n04083",
+          "publisher": "JoyNews24 / 정지원（Nate承载）",
+          "title": "Aurora首次暂停活动 · 日期依据",
+          "sourcePublishedAt": {
+            "value": "2025-07-11",
+            "precision": "day"
+          },
+          "checkedAt": "2026-10-30",
+          "scopeNote": "7月11日报道确认出道活动排除Aurora，与7月暂停背景一致。",
+          "evidenceRef": "docs/codex/evidence/20261030-priority-crosscheck/date-adoption.json"
         }
       ],
-      "reviewStatus": "hold",
-      "holdReasons": [
-        "访谈中为记者背景陈述；尚缺公司原始暂停/恢复公告和起始日。"
-      ]
+      "reviewStatus": "ready",
+      "holdReasons": []
     },
     {
       "id": "e-atheart-aurora-resume-announcement",

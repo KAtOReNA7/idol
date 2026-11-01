@@ -94,3 +94,30 @@ test('App uses guarded journey.navigate with the original queue, source label, a
 });
 
 test('version navigation explicitly focuses its source button before journey navigation',()=>{assert.match(source,/onClick=\{event=>\{event\.currentTarget\.focus\(\{preventScroll:true\}\);onVersion\(link\.workId\);\}\}/)});
+
+test('ILLIT exact scoped links render in both directions while navigation leaves each existing player and score source intact',async()=>{
+ const load=require('./helpers/public-artist-loader.cjs'),{F}=load('lib/idol/fields.ts');
+ const {withVerifiedVersionDisplay}=load('lib/idol/verified-version-display.ts');
+ const full='rec28ldfRTrKtW',short='rec28ldfRTrKy2';
+ const identities=require('../data/versions/verified-display.json').identities.filter(w=>[full,short].includes(w.workId));
+ const stages=require('../data/stage-videos.json');
+ const fields={name:F.works.name,song:F.works.song,url:F.works.url,videoType:F.works.videoType,version:F.works.version,releaseDate:F.works.releaseDate,officialTitle:F.works.officialTitle,channel:F.works.channel,channelUrl:'fld6Ab27Zx',performerUnit:'fld2UfUVYO',groupIds:F.works.groups};
+ const tables={works:{fields:Object.values(fields).map(field_id=>({field_id})),records:identities.map(w=>({recordId:w.workId,fields:Object.fromEntries(Object.entries(fields).map(([key,id])=>[id,w[key]]))}))}};
+ const catalog=withVerifiedVersionDisplay({mode:'live',works:identities.map(w=>({...w,id:w.workId,stage:stages[w.workId]}))},tables);
+ for(const [id,target,tag,label] of [[short,full,'约 60 秒短版表演','完整歌曲版'],[full,short,'完整歌曲版','约 60 秒短版表演']]){
+  const h=harness(),chosen=catalog.works.find(w=>w.id===id),navigated=[];
+  h.wp.work={...h.wp.work,...chosen,score:0,stageScore:0};
+  h.wp.data={...h.wp.data,works:catalog.works,ratings:h.wp.data.ratings.map(r=>({...r,workIds:[id]}))};
+  h.wp.onVersion=workId=>navigated.push(workId);await h.settle();
+  assert.ok(h.txt(h.find(h.tree(),n=>n.props.className==='tags')).includes(tag));
+  const items=versionButtons(h);assert.equal(items.length,1);assert.ok(h.txt(items[0]).includes(label));
+  const before=JSON.stringify(h.wp.work),requests=h.requests.length;
+  items[0].props.onClick({currentTarget:{focus(){}}});await h.settle();
+  assert.deepEqual(navigated,[target]);assert.equal(h.requests.length,requests);assert.equal(JSON.stringify(h.wp.work),before);
+  assert.equal(h.requests.filter(r=>r.url==='/api/save').length,0);
+  h.find(h.tree(),n=>n.props.id==='stage-tab').props.onClick();await h.settle();
+  const player=h.find(h.tree(),n=>n.props.workId===id&&n.props.view==='stage');
+  assert.equal(player.props.videoId,stages[id].videoId);assert.equal(player.props.url,stages[id].url);
+  assert.equal(navigation(h),undefined);assert.equal(JSON.stringify(h.wp.work),before);
+ }
+});

@@ -1,7 +1,8 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {validateCorrectionChain,digest}=require('./helpers/timeline-correction-chain.cjs');
-const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p));
+const {beforePriorityRead}=require('./helpers/priority-date-baseline.cjs');
+const root=path.resolve(__dirname,'..'),read=beforePriorityRead(p=>fs.readFileSync(path.join(root,p)));
 const registry=require('../data/artist-timeline-registry.json');
 const baseline={corrections:[require('../HANDOFF/timeline-corrections/triples-assemble24.json'),require('../evidence/approved-visual-repairs/badvillain-overstep-correction.json'),require('../evidence/approved-visual-repairs/madein-rise-correction.json')],ledger:require('../HANDOFF/batch-f/integration-ledger.json'),snapshot:require('../data/snapshot.json'),events:new Map(registry.flatMap(g=>JSON.parse(read(`data/artist-timelines/${g.slug}.json`)).events.map(e=>[e.id,e])))};
 // The October 25 corrections have their own immutable before/after validation in public-data-completion.

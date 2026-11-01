@@ -1,0 +1,2177 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-29",
+  "researcher": "groups-qwer-young",
+  "baselineCommit": "b209073909b2f43254d836ffe139eba056582f09",
+  "scope": "15团45分类项：34新增舞台、2旧替换、2人物、3销量未知、1一位未知、2生效日期、1销量差额。分类维度会重叠，不是45首缺歌。",
+  "counts": {
+    "groups": 15,
+    "items": 45,
+    "byKind": {
+      "stage-new": 34,
+      "unknown-sales": 3,
+      "sales-difference": 1,
+      "effective-date": 2,
+      "unknown-wins": 1,
+      "person": 2,
+      "stage-replacement": 2
+    },
+    "oldGroupReviewItemsRead": 38,
+    "newFirstPartyProgramRecords": 2,
+    "publicNoteCandidates": 2,
+    "acceptedStageSources": 0,
+    "acceptedPersonFacts": 0,
+    "acceptedNumericValues": 0,
+    "effectiveDatesClosed": 0,
+    "fullyClosedItems": 0,
+    "openItemsRetained": 45
+  },
+  "method": "先读旧逐团与冻结队列，新增路线限定官方节目档案、发行方逐曲制作名单、公司公告与版本/地域可比统计；网页正文与搜索索引分开记录。无新触发的条目只复读已有证据，不冒称逐条穷尽新网页或完整视频播放。",
+  "policies": [
+    "音乐节目优先，其次同版本完整官方练习，最后官方专门制作表演；活动和巡演不充数。",
+    "成员版仅放宽客串范围；二人/个人曲不扩为全团，短版不代完整原曲。",
+    "团体集合署名不推出每个人录音或MV出镜；通用认人参考与事实名单分开。",
+    "0分不为空；任何后续来源变更需新鲜owner评分、完整日志、线上旧对象核对。",
+    "现有CSV人工栏、冻结队列、应用源、私人值、51团设计和原图均未由本研究修改。"
+  ],
+  "limits": [
+    "没有全片播放、音轨逐句比较或新鲜owner导出；两个新节目档案仅能证明节目曲目。",
+    "搜索结果不证明来源不存在；本轮没有打开会员付费内容或绕过受限页面。",
+    "不重试旧SUMMER YouTube throttling、X403/空文、SideB循环、过期CDTV、已封禁Soridata。",
+    "tripleS 2,124,086及其分项冲突已在旧应用previousEvidence，不是本轮新增销量；2,458,789是另一旧Soridata汇总。",
+    "本文件为研究交付；publicNote由主代理统一审查应用，不表示已上线。"
+  ],
+  "sourceLedger": {
+    "tbsPassword": {
+      "url": "https://www.tbs.co.jp/playlist-tbs/archive/20251125/",
+      "access": "body_read",
+      "kind": "official_broadcaster",
+      "newToCheckedEvidence": true,
+      "finding": "官方回顾列2025-11-25 tripleS ∞!的演出曲Password；没有完整单曲视频链接。",
+      "allows": "program_and_song_identity_only"
+    },
+    "tvTokyoTeddy": {
+      "url": "https://www.tv-tokyo.co.jp/melodix_premium/backnumber/202305.html",
+      "access": "body_read",
+      "kind": "official_broadcaster",
+      "newToCheckedEvidence": true,
+      "finding": "2023/5/1 O.A段明确STAYC曲目Teddy Bear -Japanese ver.-；页面没有完整单曲片源。",
+      "allows": "program_and_japanese_version_identity_only"
+    },
+    "sonyDream": {
+      "url": "https://www.sonymusic.co.jp/artist/tripleS/info/586003",
+      "access": "body_read",
+      "kind": "official_label",
+      "newToCheckedEvidence": true,
+      "finding": "2026-08-18公告明确8/21超超音波为tripleS moon采访，介绍Dream Dress及Objekt活动。采访不是本曲完整舞台；TVer一周限期不重试。",
+      "allows": "exclude_interview_as_stage"
+    },
+    "wooSummer": {
+      "url": "https://music.bugs.co.kr/album/4151414?wl_ref=M_contents_01_04",
+      "access": "body_read",
+      "kind": "licensed_music_catalog",
+      "newToCheckedEvidence": "not_claimed",
+      "finding": "Wish With W Vol.3 2026-07-13目录将SUMMER列2:24、MV2:25及预告0:22。制作名单包括外部作者/chorus SLAY，但没有WOOAH成员逐名录音或本作出镜名册。",
+      "allows": "collective_credit_and_work_identity_only"
+    },
+    "wooWxw": {
+      "url": "https://music.bugs.co.kr/album/4147372?wl_ref=list_ab_03",
+      "access": "body_read",
+      "kind": "licensed_music_catalog",
+      "newToCheckedEvidence": false,
+      "finding": "Wish With W Vol.2称成员参与创作，但以WOOAH集合署名；没有能分配到具体成员的录音/出镜名册。",
+      "allows": "collective_credit_only"
+    },
+    "wooWxwTrack": {
+      "url": "https://music.bugs.co.kr/track/6464766?wl_ref=list_tr_08",
+      "access": "body_read",
+      "kind": "licensed_music_catalog",
+      "newToCheckedEvidence": "not_claimed",
+      "finding": "WXW歌手和部分作词为WOOAH集合名；不能从团名推全体五人逐曲参与。",
+      "allows": "collective_credit_only"
+    },
+    "wooShining": {
+      "url": "https://www.genie.co.kr/detail/albumInfo?axnm=85412340",
+      "access": "body_read",
+      "kind": "licensed_music_catalog",
+      "newToCheckedEvidence": "not_claimed",
+      "finding": "正文实际是2024-07-16 Shining On You/TalkTalkKorea项目；推荐列表出现SUMMER不表示SUMMER正文或完整独立舞台。",
+      "allows": "work_disambiguation_only"
+    },
+    "wooWeverse": {
+      "url": "https://weverse.io/wooah/media",
+      "access": "body_read_limited_catalog",
+      "kind": "official_artist_media",
+      "newToCheckedEvidence": false,
+      "finding": "可读目录只暴露部分近期条目；没有SUMMER或WXW完整具名参与证据。",
+      "allows": "none"
+    },
+    "udttInterview": {
+      "url": "https://www.iamraeiam.com/post/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview",
+      "access": "body_read",
+      "kind": "first_person_interview",
+      "newToCheckedEvidence": false,
+      "finding": "访谈正文注明采访时Jessica刚加入且回答有限；未给采访日期、公司公告或加入生效日。旧20261028-continuous证据已收录，不能称新事实。",
+      "allows": "interview_presence_only"
+    },
+    "girlsetProduct": {
+      "url": "https://hello82.com/collections/shop-all/products/girlset-tweak-kendall",
+      "access": "body_open_and_search_metadata",
+      "kind": "official_licensed_retail_product",
+      "newToCheckedEvidence": "not_claimed",
+      "finding": "Tweak Kendall实体CD商品、美国销售/Billboard口径；售罄和单人限购都不等于售出量，不归入VCHA品牌期韩国累计。",
+      "allows": "product_existence_not_count"
+    },
+    "koreanSales": {
+      "url": "https://koreansalestwt.blogspot.com/2023/03/triples-sales-summary.html",
+      "access": "body_read",
+      "kind": "secondary_compilation",
+      "newToCheckedEvidence": false,
+      "finding": "2,124,086表头及分项不一致已经存在应用previousEvidence；本轮重读不是新差异。旧2,458,789来自另一Soridata艺人汇总。保留Circle下界2,108,154和350,635待解释差额。",
+      "allows": "no_numeric_adoption"
+    },
+    "witchxBugs": {
+      "url": "https://music.bugs.co.kr/album/20681889?wl_ref=list_ab_03",
+      "access": "body_read",
+      "kind": "licensed_music_catalog",
+      "newToCheckedEvidence": "not_claimed",
+      "finding": "BLALA目录确认W!TCHX、2024-11-06、Quarter Music/Artform和数字音源；未提供实体SKU、销售数量或全期口径。",
+      "allows": "identity_not_sales"
+    },
+    "youngJapan": {
+      "url": "https://youngposseofficial.jp/contents",
+      "access": "body_read",
+      "kind": "official_artist_site",
+      "newToCheckedEvidence": false,
+      "finding": "公开目录仍将Pilot2、I know (정선혜, 한지은)列在MV栏；MOVIE为巡演后留言等，未取得独立完整单曲表演。未进入会员内容。",
+      "allows": "original_video_and_duo_identity"
+    },
+    "youngBugs": {
+      "url": "https://music.bugs.co.kr/album/4151415?wl_ref=M_contents_01_04",
+      "access": "body_read",
+      "kind": "licensed_music_catalog",
+      "newToCheckedEvidence": "not_claimed",
+      "finding": "young tape逐曲目录将I know限定정선혜/한지은、kawa限定도은/지아나；MV/录音制作名单不能推出独立表演来源。",
+      "allows": "work_scope_only"
+    }
+  },
+  "publicNoteDelta": "docs/codex/evidence/20261029-pr47-continuation/groups-qwer-young-public-note-delta.json",
+  "items": [
+    {
+      "index": 1,
+      "group": "QWER",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrF2E",
+      "song": "FAKE IDOL (가짜 아이돌)",
+      "version": "原作品未另标版本",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/0",
+        "reviewed": true,
+        "remainingReason": "补强既有两曲LIVE CLIP PkEl_Z9B2y4的官方Weverse3-188265753发布证据；它已在旧只读线索中，不能算新发现或重复导入。准确FAKE IDOL章节边界及真实录制场合未证。拒绝ID l9GLV8Kd-MU保持；缩略图TLS EOF及watch读取失败分别留证。",
+        "checks": [
+          {
+            "url": "https://weverse.io/qwer/media/3-188265753",
+            "method": "web.open official media page; exact title research",
+            "result": "官方仍标两曲 LIVE CLIP；可读页没有精确 FAKE IDOL 章节及拍摄场合，不能凭总标题将其设为独立合格舞台。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "旧双曲LIVE CLIP章节/场合缺口优先核；没有新章节线索，不重复泛搜。",
+        "status": "prior_evidence_read_no_new_trigger",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "补强既有两曲LIVE CLIP PkEl_Z9B2y4的官方Weverse3-188265753发布证据；它已在旧只读线索中，不能算新发现或重复导入。准确FAKE IDOL章节边界及真实录制场合未证。拒绝ID l9GLV8Kd-MU保持；缩略图TLS EOF及watch读取失败分别留证。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 2,
+      "group": "QWER",
+      "kind": "stage-new",
+      "stableId": "recvxIZLpET3tB",
+      "song": "Our Voyage",
+      "version": "原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/1",
+        "reviewed": true,
+        "remainingReason": "QWER Weverse Band Practice条目对应CEREMONY，Our Voyage仍为原MV及巡演/节庆；没有取得本曲合规独立表演。",
+        "checks": [
+          {
+            "url": "https://k-sarangbang.com/zh/kpop/groups/qwer/",
+            "method": "web.search new catalog lead; secondary only",
+            "result": "曲目目录命中 Our Voyage MV；Band Practice 邻项不是本曲。本次未取得同曲完整第一方练习／制作表演。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "核官方Band Practice邻项的具体歌曲，保留CEREMONY与Our Voyage区别。",
+        "status": "prior_evidence_read_no_new_trigger",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "QWER Weverse Band Practice条目对应CEREMONY，Our Voyage仍为原MV及巡演/节庆；没有取得本曲合规独立表演。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 3,
+      "group": "QWER",
+      "kind": "stage-new",
+      "stableId": "recvxIZRWKy9zg",
+      "song": "SHOW DOWN",
+      "version": "原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/2",
+        "reviewed": true,
+        "remainingReason": "NTV原始20260821节目页明确把QWER SHOW DOWN列入Studio Live，补强了真实节目类型与确切日期；页面仅给主嘉宾访谈TVer链接，未给目标完整视频。旧NTmQzjUchPU为转载，完整范围仍未证。",
+        "checks": [
+          {
+            "url": "https://www.ntv.co.jp/buzzrhythm/oa/20260821.html",
+            "method": "web.search and web.open official broadcaster",
+            "result": "NTV 该期 Studio Live 列 QWER SHOW DOWN；正文确认演出场合，但没有可验证的完整官方单曲视频或章节。这是既有场合证据复核，不是新采用。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "沿NTV Studio Live日期查第一方节目单曲片源；命中旧节目页和转载，无新完整原片。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "NTV原始20260821节目页明确把QWER SHOW DOWN列入Studio Live，补强了真实节目类型与确切日期；页面仅给主嘉宾访谈TVer链接，未给目标完整视频。旧NTmQzjUchPU为转载，完整范围仍未证。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 4,
+      "group": "Rocket Punch",
+      "kind": "stage-new",
+      "stableId": "recvxyH5pzA9lj",
+      "song": "ドキドキLOVE",
+      "version": "日文原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/3",
+        "reviewed": true,
+        "remainingReason": "新增具体节目路线：Lemino let me Know K-POP! S1E4、2023-05-18，GGuide重播表与Kstyle2220632均明确三首日本原曲中包含ドキドキLOVE。aw2hcpeRd08只是预告，未取得完整第一方单曲或合法可用节目章节。",
+        "checks": [
+          {
+            "url": "https://bangumi.org/tv_events/AmHAEJgt4AE",
+            "method": "web.search broadcaster-program listing",
+            "result": "BSよしもと再播条目列 Rocket Punch 三曲，含ドキドキLOVE，时长一小时节目；没有完整曲目章节或可直接采用的视频。"
+          },
+          {
+            "url": "https://thetv.jp/news/detail/1138918/p2/",
+            "method": "web.search original program report",
+            "result": "节目报道确认ドキドキLOVE在球类游戏前表演，未取得第一方完整回放。旧 Lemino 预告仍不能作全曲。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "沿Lemino let me Know K-POP! S1E4查单曲章节；新检索仍回到旧Kstyle节目说明和预告。",
+        "status": "targeted_search_repeats_prior_lead",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "新增具体节目路线：Lemino let me Know K-POP! S1E4、2023-05-18，GGuide重播表与Kstyle2220632均明确三首日本原曲中包含ドキドキLOVE。aw2hcpeRd08只是预告，未取得完整第一方单曲或合法可用节目章节。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 5,
+      "group": "SAY MY NAME",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrNcl",
+      "song": "ShaLala (Japanese version)",
+      "version": "日文版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/4",
+        "reviewed": true,
+        "remainingReason": "INCODE日本公告3287确认4月11日日语版独立发行；Hitomi/Mei电视片段不是整团完整同版；普通韩语练习不迁移。",
+        "checks": [
+          {
+            "url": "https://www.dle.jp/jp/news/k-/3519.html",
+            "method": "web.search and web.open rights-holder announcement",
+            "result": "动画制作方确认日语 ShaLala 为ぽちゃーズ主题曲并关联既有 MV；HITOMI／MEI 声优及动画片尾信息不证明全团同曲完整表演。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "按日文版与官方practice精确检索；目录把韩语练习与日语MV相邻展示，未取得日语同范围表演。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "INCODE日本公告3287确认4月11日日语版独立发行；Hitomi/Mei电视片段不是整团完整同版；普通韩语练习不迁移。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 6,
+      "group": "SPIA",
+      "kind": "statistics_sales",
+      "stableId": "spia.sales",
+      "song": "销量待证",
+      "version": "",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json",
+        "recordKey": "spia.sales",
+        "reviewed": true,
+        "record": {
+          "key": "spia.sales",
+          "group": "spia",
+          "name": "SPIA",
+          "field": "groups.spia.sales.observedValue",
+          "primaryCategory": "insufficient_evidence",
+          "categoryLabel": "证据不足",
+          "status": "open",
+          "observedValue": null,
+          "displayValue": 0,
+          "renderBehavior": "fallback-zero-not-confirmed-zero",
+          "accountExists": null,
+          "accountUrl": null,
+          "subjectName": null,
+          "reason": "Deeeep数字发行已由正版音乐目录确认；未取得实体发行或全期销量数量，数字发行不证明全团实体累计0。",
+          "priorEvidenceCheckedAt": "2026-10-27",
+          "freshlyResearchedThisAudit": true,
+          "nextAction": "寻找发行方实体目录/精确版本数值；无证据不能将不存在实体或销售0当事实。",
+          "acceptance": "数字单曲页不能推出全团实体0；数量必须对应已确认发行与统计期间。",
+          "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+          "previousNonSoridataLead": null,
+          "tuple": [
+            "spia",
+            "sales"
+          ],
+          "groupId": "rec28ldfRTiDJU",
+          "currentDataStatus": "unavailable",
+          "queueStatus": "unresolved_no_qualified_count",
+          "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+          "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+          "latestTargetedResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/research.json",
+            "jsonPointer": "/items/2",
+            "key": "spia.sales",
+            "category": "unknown_sales",
+            "status": "unresolved_no_qualified_count",
+            "finding": "Deeeep数字发行已由正版音乐目录确认；未取得实体发行或全期销量数量，数字发行不证明全团实体累计0。",
+            "sources": [
+              {
+                "url": "https://www.genie.co.kr/detail/albumInfo?axnm=85265735",
+                "access": "search_index_read",
+                "kind": "licensed_music_catalog",
+                "finding": "正版发行目录，无实体累计数量。"
+              },
+              {
+                "url": "https://music.bugs.co.kr/album/4102374?wl_ref=list_ab_03_ar",
+                "access": "search_index_read",
+                "kind": "licensed_music_catalog",
+                "finding": "Deeeep目录，无销量数量。"
+              },
+              {
+                "url": "https://music.bugs.co.kr/artist/20208411",
+                "access": "search_index_read",
+                "kind": "licensed_artist_catalog",
+                "finding": "艺人消歧。"
+              }
+            ],
+            "nextAction": "寻找发行方实体目录/精确版本数值；无证据不能将不存在实体或销售0当事实。"
+          },
+          "previousQueueRecord": {
+            "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-person-statistics.json",
+            "jsonPointer": "/unknownMetrics/2"
+          },
+          "previousReason": "数字发行页面不能证明全团实体销量为0。",
+          "followupResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/followup-research.json",
+            "jsonPointer": "/items/1",
+            "finding": "数字发行已核，实体累计/公开数量仍无；不能从数字目录断言从未售实体。"
+          },
+          "nextRouteResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/remaining-sales-next-research.json",
+            "jsonPointer": "/items/0",
+            "finding": "Daddy’s Little Girl的发行商正版目录明确标为Digital Single Album；能确定发行格式说明，不能据此断言SPIA完整历史实体销量为0。",
+            "adopted": false
+          }
+        }
+      },
+      "currentResearch": {
+        "route": "检索实体SKU/发行商/销量，返回已知数字发行及无数量的非官方综述；没有可采用数量，数字目录不推0。",
+        "status": "targeted_search_no_qualified_numeric_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "Deeeep数字发行已由正版音乐目录确认；未取得实体发行或全期销量数量，数字发行不证明全团实体累计0。",
+      "ownerGate": "not_applicable",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 7,
+      "group": "STAYC",
+      "kind": "stage-new",
+      "stableId": "recvxyH5pzVn2k",
+      "song": "LIT",
+      "version": "日文原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/5",
+        "reviewed": true,
+        "remainingReason": "LIT查询出现日本MV、访谈和发行介绍；仅有这些标题不能建立完整节目/练习来源。",
+        "checks": [
+          {
+            "url": "https://www.highup-ent.com/en/stayc-brings-positive-energy-on-stage-with-open-concert-from-bubble-to-teddy-bear-hoping-fans-will-enjoy-together/",
+            "method": "web.search official label report",
+            "result": "报道的 Open Concert 曲目为 Bubble／Teddy Bear，LIT 只是另述发行；不能把相邻标题解释成 LIT 日文节目舞台。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查日本音乐节目LIT；CDTV榜单位置与发行新闻不能证明演出。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "LIT查询出现日本MV、访谈和发行介绍；仅有这些标题不能建立完整节目/练习来源。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 8,
+      "group": "STAYC",
+      "kind": "stage-new",
+      "stableId": "recvxyH5pzbluu",
+      "song": "MWUAH",
+      "version": "日文原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/6",
+        "reviewed": true,
+        "remainingReason": "本轮MWUAH练习查询未取得新的合格来源；旧3LGQGtnxEEg已证是STAY ALIVE Showcase舞台彩排，不因Rehearsal题名改为练习室。",
+        "checks": [
+          {
+            "url": "https://www.youtube.com/watch?v=3LGQGtnxEEg",
+            "method": "web.search official channel indexed description; not full playback",
+            "result": "STAYC Japan 官方说明明确来源于 2026-02-10 KT Zepp Yokohama STAY ALIVE Showcase LIVE 彩排；不能改称练习室或专门棚拍表演。旧候选不重复导入。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "核MWUAH rehearsal实际场合；仍为已知STAY ALIVE showcase，未找到独立练习室原片。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "本轮MWUAH练习查询未取得新的合格来源；旧3LGQGtnxEEg已证是STAY ALIVE Showcase舞台彩排，不因Rehearsal题名改为练习室。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 9,
+      "group": "STAYC",
+      "kind": "stage-new",
+      "stableId": "recvxyH5pzdckl",
+      "song": "MEOW",
+      "version": "日文原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/7",
+        "reviewed": true,
+        "remainingReason": "MEOW查询返回发行商目录、发行纪念活动和setlist；活动/曲目存在不等于已取得常规节目原片。",
+        "checks": [
+          {
+            "url": "https://www.universal-music.co.jp/stayc/news/2024-08-05/",
+            "method": "web.search and web.open official label",
+            "result": "MEOW 的新曲表演来源是日本各地发行纪念活动；属于活动，且未附完整正式表演视频。不是常规电视打歌。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查日本MEOW节目/Performance；仍为发行活动和原MV，无新合规单曲原片。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "MEOW查询返回发行商目录、发行纪念活动和setlist；活动/曲目存在不等于已取得常规节目原片。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 10,
+      "group": "STAYC",
+      "kind": "stage-new",
+      "stableId": "recvxyH5pzoMAf",
+      "song": "Teddy Bear",
+      "version": "日文版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/8",
+        "reviewed": true,
+        "remainingReason": "目标是Teddy Bear日本版；本轮只出现日本综艺舞蹈报道/泛节目资料，未取得已核同语种全曲原片。",
+        "checks": [
+          {
+            "url": "https://www.highup-ent.com/en/stayc-lights-up-the-atmosphere-at-japan-chiba-lotte-marines-home-game-with-a-special-teddy-bear-performance/",
+            "method": "web.search official label",
+            "result": "官方报道指 2023-07-17 千叶球场特别表演，属体育活动，不作为普通打歌；正文也不能证明目标日文完整音轨。"
+          },
+          {
+            "url": "https://thetv.jp/news/detail/1133327/",
+            "method": "web.search original TV report",
+            "result": "TV Asahi 视频频道报道为 Seeun／Sieun 舞蹈教学等综艺环节，不证明全团日文全曲。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "转查TV Tokyo官方回顾后确认日语版节目曲目，再追官方完整片源。",
+        "status": "new_first_party_program_record_only",
+        "sourceIds": [
+          "tvTokyoTeddy"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [
+        {
+          "type": "official_program_record",
+          "sourceId": "tvTokyoTeddy",
+          "adoptionScope": "publicNote candidate only; no playable lead or stage binding",
+          "deltaFile": "docs/codex/evidence/20261029-pr47-continuation/groups-qwer-young-public-note-delta.json"
+        }
+      ],
+      "proposedAction": "publicNote-only candidate; retain fact gap open",
+      "remainingMissing": "目标是Teddy Bear日本版；本轮只出现日本综艺舞蹈报道/泛节目资料，未取得已核同语种全曲原片。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 11,
+      "group": "tripleS",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrO2v",
+      "song": "Cherry Gene",
+      "version": "Acid Eyes／Cherry Gene混音",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/9",
+        "reviewed": true,
+        "remainingReason": "新定位tripleS官方SIGNAL cRJdPN6X0IY及Gj-CYY2R0Vk，题名分别为表演讨论/舞蹈课；不能视为原分队完整同混音表演。Cherry Talk Special Performance是另一首歌。",
+        "checks": [
+          {
+            "url": "https://www.bilibili.com/video/BV1vS411F71x/",
+            "method": "web.search secondary index only",
+            "result": "合集区分 Cherry Gene Visualizer、Cherry Talk Special Clip 与 Invincible Special Performance；名称相邻不构成本混音的完整 Acid Eyes 舞台。未用转载闭项。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "既有dance lesson/discussion与Cherry Talk均不等于Cherry Gene完整混音；无新原片触发，避免重复已排除搜索。",
+        "status": "prior_evidence_read_no_new_trigger",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "新定位tripleS官方SIGNAL cRJdPN6X0IY及Gj-CYY2R0Vk，题名分别为表演讨论/舞蹈课；不能视为原分队完整同混音表演。Cherry Talk Special Performance是另一首歌。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 12,
+      "group": "tripleS",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrOTb",
+      "song": "Baby Flower (Japanese Ver.)",
+      "version": "日文版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/10",
+        "reviewed": true,
+        "remainingReason": "Apple Music6772121264等证实Baby Flower Japanese独立发行；粉丝档案中Music Bank260612仍不能证明是日语音轨，韩版练习不替代。",
+        "checks": [
+          {
+            "url": "https://kprofiles.com/forums/threads/triples-official-thread-full-group.44558/page-9",
+            "method": "web.search secondary index as lead",
+            "result": "索引将 Japanese MV 与后续 Suit Dance／Store Link Live 分开列出；两条后备表演未标 Japanese，不能以日本版发行日期邻近来继承语种。"
+          },
+          {
+            "url": "https://kpopdiscover.com/ja/groups/triples/videos/mv/",
+            "method": "web.search secondary catalog only",
+            "result": "日本作品过滤仍列 Japanese MV；无本轮新取得的同语种独立舞台第一方证据。普通韩文舞台不移用于此行。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "核日语发行身份与Music Bank候选范围；旧候选语言未证，无新音轨证据，不把韩语版替代。",
+        "status": "prior_evidence_read_no_new_trigger",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "Apple Music6772121264等证实Baby Flower Japanese独立发行；粉丝档案中Music Bank260612仍不能证明是日语音轨，韩版练习不替代。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 13,
+      "group": "tripleS",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrOXn",
+      "song": "Dream Dress",
+      "version": "moon分队／日本原曲",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/11",
+        "reviewed": true,
+        "remainingReason": "已纠正官网路线，Sony584980和triples-wav官方专题证实moon日本原曲；专题的Special Movie为会员内容未进入。未取得公开完整表演，Objekt活动不采用。",
+        "checks": [
+          {
+            "url": "https://www.thefirsttimes.jp/news/0000891019/",
+            "method": "web.search label-affiliated release reporting",
+            "result": "日本 LOVE&POP 分队发行报道及 Objekt 活动不证明 Dream Dress 的完整官方练习／独立制作表演；旧 member-only Special Movie 未读取。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查Sony日本电视公告，确认新命中超超音波实为采访，不是Dream Dress单曲表演。",
+        "status": "new_exclusion_evidence_only",
+        "sourceIds": [
+          "sonyDream"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "已纠正官网路线，Sony584980和triples-wav官方专题证实moon日本原曲；专题的Special Movie为会员内容未进入。未取得公开完整表演，Objekt活动不采用。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 14,
+      "group": "tripleS",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrOnV",
+      "song": "Password",
+      "version": "∞!分队／日本原曲",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/12",
+        "reviewed": true,
+        "remainingReason": "使用正确triples-wav官网检索，结果为Password MV Shooting图库及粉丝见面会；没有原官方练习页支持镜像LHnxtmJkytQ的出处。",
+        "checks": [
+          {
+            "url": "https://asiapoisk.com/music/tripleS/videos",
+            "method": "web.search secondary catalog lead",
+            "result": "目录中的 Password 属 MV；Dance Practice 对应 Tokimetique／Untitled 等其他歌。未取得 Password 原始官方练习来源，旧转载不升级。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "转查TBS官方节目档案后确认Password演出记录，再追第一方完整视频。",
+        "status": "new_first_party_program_record_only",
+        "sourceIds": [
+          "tbsPassword"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [
+        {
+          "type": "official_program_record",
+          "sourceId": "tbsPassword",
+          "adoptionScope": "publicNote candidate only; no playable lead or stage binding",
+          "deltaFile": "docs/codex/evidence/20261029-pr47-continuation/groups-qwer-young-public-note-delta.json"
+        }
+      ],
+      "proposedAction": "publicNote-only candidate; retain fact gap open",
+      "remainingMissing": "使用正确triples-wav官网检索，结果为Password MV Shooting图库及粉丝见面会；没有原官方练习页支持镜像LHnxtmJkytQ的出处。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 15,
+      "group": "tripleS",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrP1t",
+      "song": "DNA",
+      "version": "sun分队／日本原曲",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/13",
+        "reviewed": true,
+        "remainingReason": "正确triples-wav官网有sun DNA发行专题及Unit Photo；没有证实镜像CnS1nUqfNZc原官方练习出处。Objekt活动不作为普通舞台。",
+        "checks": [
+          {
+            "url": "https://triplesfans.com/members/yooyeon?lang=ja",
+            "method": "web.search secondary catalog lead",
+            "result": "目录明确区分 DNA special visual clip 与 Bubble Gum Girl official performance；不能用后一曲或原 visual clip 充当 DNA 新舞台。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "保留sun版/Objekt活动与旧mirror来源边界；没有新第一方片源，避免把活动或转载认证为新舞台。",
+        "status": "prior_evidence_read_no_new_trigger",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "正确triples-wav官网有sun DNA发行专题及Unit Photo；没有证实镜像CnS1nUqfNZc原官方练习出处。Objekt活动不作为普通舞台。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 16,
+      "group": "tripleS",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrP5H",
+      "song": "Welcome to Heaven",
+      "version": "neptune分队／日本原曲",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/14",
+        "reviewed": true,
+        "remainingReason": "Sony586674明确neptune日本原曲发布及Objekt活动；Special Visual Clip即原视频，Andless Performance属于另一首歌/演唱会，不能补本曲。",
+        "checks": [
+          {
+            "url": "https://triples-wav.jp/s/sss/page/rl_lovepop_pt3_neptune?ima=3738",
+            "method": "web.search official special page",
+            "result": "Neptune 官方专题可读部分为发行／visual clip；Special Movie／Gallery 标 WAV ONLY。未读取会员内容，也未据此推断完整舞台存在。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "保留neptune原Special Visual Clip和Andless别曲区别；没有新单曲节目/练习来源触发。",
+        "status": "prior_evidence_read_no_new_trigger",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "Sony586674明确neptune日本原曲发布及Objekt活动；Special Visual Clip即原视频，Andless Performance属于另一首歌/演唱会，不能补本曲。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 17,
+      "group": "tripleS",
+      "kind": "sales_reconciliation",
+      "stableId": "tripleS:sales_reconciliation",
+      "song": "销量差额核对",
+      "version": "",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json",
+        "jsonPointer": "/independentSalesDifference",
+        "reviewed": true,
+        "record": {
+          "group": "triples",
+          "lowerBound": 2108154,
+          "remainingDifference": 350635,
+          "previousLowerBound": 2098086,
+          "previousDifference": 360703,
+          "nonOverlappingAdditionalContribution": 10068,
+          "allWeeklyContribution": 15915,
+          "adoptionEvidence": "docs/codex/evidence/20261028-post-v200/statistics/triples-followup-adoption.json",
+          "completeReconciliation": false,
+          "previousReview": {
+            "group": "triples",
+            "lowerBound": 2098086,
+            "remainingDifference": 360703,
+            "previousLowerBound": 2092239,
+            "previousDifference": 366550,
+            "nonOverlappingAdditionalContribution": 5847,
+            "adoptionEvidence": "docs/codex/evidence/20261028-post-v200/statistics/triples-adoption.json",
+            "completeReconciliation": false
+          },
+          "additionalMonthResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/triples-month-gap-review.json",
+            "monthsChecked": 6,
+            "newContribution": 0,
+            "absenceProvesZero": false
+          }
+        }
+      },
+      "currentResearch": {
+        "route": "重读Korean Sales并对照应用previousEvidence及既有Circle年度/周/月复算；确认表头冲突为旧证据，不混合新旧统计口径。",
+        "status": "prior_source_reopened_no_numeric_change",
+        "sourceIds": [
+          "koreanSales"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "与旧2,458,789同截止、同版本、同榜单口径的可复算源行；现有下界2,108,154及未解释350,635保持。",
+      "ownerGate": "not_applicable",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 18,
+      "group": "UDTT",
+      "kind": "timeline",
+      "stableId": "e-udtt-jessica-provisional-join-candidate",
+      "song": "Jessica临时加入线索：待公司原公告",
+      "version": "",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json",
+        "jsonPointer": "/effectiveDateHolds/5",
+        "reviewed": true,
+        "record": {
+          "tuple": [
+            "udtt",
+            "e-udtt-jessica-provisional-join-candidate"
+          ],
+          "eventId": "e-udtt-jessica-provisional-join-candidate",
+          "slug": "udtt",
+          "groupId": "rec28ldfRTiDPs",
+          "title": "Jessica临时加入线索：待公司原公告",
+          "eventType": "member_join",
+          "canonicalReviewStatus": "hold",
+          "canonicalStatus": "uncertain",
+          "actualEventDate": null,
+          "holdReasons": [
+            "非艺人或公司的人事原公告；加入生效日与永久/临时关系待核。"
+          ],
+          "canonicalSourceFile": "apps/idol-site/data/artist-timelines/udtt.json",
+          "canonicalSources": [
+            {
+              "id": "es-3606ab7cb98e1988",
+              "url": "https://adv.tokyo-np.co.jp/prtimes/article75656/",
+              "publisher": "在日本大韓民国民団大阪府本部（发行者原稿，东京新闻承载）",
+              "title": "KWAVE dance contest official organiser press release",
+              "sourcePublishedAt": {
+                "value": "2025-10-08",
+                "precision": "day"
+              },
+              "checkedAt": "2026-10-16",
+              "scopeNote": "官方原文正文；仅保存核验所需摘录与结构化事实。",
+              "evidenceRef": "evidence/E/task06/sources/es-3606ab7cb98e1988.json"
+            }
+          ],
+          "reportedRecordPresent": true,
+          "reportedKind": "report",
+          "reportedRecordDate": "2025-04-30",
+          "reportedDateLabel": "本人采访发表日期",
+          "reportedBoundary": "生效日期未确认；具体加入日期与加入性质尚未核实。保留原有独立成员记录，不合并身份或个人历史。",
+          "reportedSources": [
+            {
+              "url": "https://www.hellokpop.com/interview/udtt-talks-debut-dreams-and-the-making-of-school-rush-in-exclusive-interview/",
+              "label": "Hellokpop · 本人采访（2025-05-08）",
+              "publishedDate": "2025-05-08"
+            },
+            {
+              "url": "https://sports.donga.com/ent/article/all/20250509/131571164/1",
+              "label": "Sports Donga · 参与报道（2025-05-09）",
+              "publishedDate": "2025-05-09"
+            },
+            {
+              "url": "https://17caratkpop.substack.com/p/feel-the-school-rush-with-udtt",
+              "label": "17 Carat K-Pop · 本人采访（2025-04-30）",
+              "publishedDate": "2025-04-30"
+            }
+          ],
+          "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+          "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+          "remainingEvidence": "本轮找到2025-04-30本人采访，比既有5/8采访早。Jessica自称陆雨婷/우정，说明以学校世界观中国留学生角色参与专辑且与成员相处时间不长。可补最晚4/30参与的采访来源，不能定实际入团日或永久/临时合同身份。 可为现有报道条目增加采访来源及“最晚4/30公开参与”说明，保留eventId、memberIds、canonical状态及原5/8、5/9来源；不推定MV全员/私人关系。",
+          "previousQueueRecord": {
+            "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-person-statistics.json",
+            "jsonPointer": "/effectiveDateHolds/5"
+          },
+          "latestResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/research.json",
+            "jsonPointer": "/items/15",
+            "key": "e-udtt-jessica-provisional-join-candidate",
+            "category": "effective_date",
+            "status": "earlier_interview_source_proposed_not_effective_date",
+            "finding": "本轮找到2025-04-30本人采访，比既有5/8采访早。Jessica自称陆雨婷/우정，说明以学校世界观中国留学生角色参与专辑且与成员相处时间不长。可补最晚4/30参与的采访来源，不能定实际入团日或永久/临时合同身份。",
+            "sources": [
+              {
+                "url": "https://17caratkpop.substack.com/p/feel-the-school-rush-with-udtt",
+                "access": "body_read",
+                "kind": "first_person_interview",
+                "finding": "2025-04-30，Jessica本人回答；留学生是世界观角色。"
+              },
+              {
+                "url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+                "access": "body_read",
+                "kind": "community_forum",
+                "finding": "4/29新成员说法转nugupromoter，非公司正式加入生效声明。"
+              }
+            ],
+            "nextAction": "可为现有报道条目增加采访来源及“最晚4/30公开参与”说明，保留eventId、memberIds、canonical状态及原5/8、5/9来源；不推定MV全员/私人关系。",
+            "proposal": "udtt-jessica-source-proposal.json"
+          },
+          "previousReportedRecordDate": "2025-05-08",
+          "reportedEvidenceAdoption": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/udtt-source-adoption.json",
+            "jsonPointer": "/after"
+          },
+          "canonicalEffectiveDateChanged": false
+        }
+      },
+      "currentResearch": {
+        "route": "查公司原公告与第一人称采访；重读的iamraeiam采访已在旧证据，仍无生效日。",
+        "status": "prior_source_reopened_no_new_fact",
+        "sourceIds": [
+          "udttInterview"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "公司原始公告全文、公告发布日期与实际生效日，以及临时/正式状态；报道日不改为生效日。",
+      "ownerGate": "not_applicable",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 19,
+      "group": "UDTT",
+      "kind": "timeline",
+      "stableId": "e-udtt-sena-predebut-departure-candidate",
+      "song": "Sena出道前退出线索：待公司原公告",
+      "version": "",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json",
+        "jsonPointer": "/effectiveDateHolds/6",
+        "reviewed": true,
+        "record": {
+          "tuple": [
+            "udtt",
+            "e-udtt-sena-predebut-departure-candidate"
+          ],
+          "eventId": "e-udtt-sena-predebut-departure-candidate",
+          "slug": "udtt",
+          "groupId": "rec28ldfRTiDPs",
+          "title": "Sena出道前退出线索：待公司原公告",
+          "eventType": "member_departure",
+          "canonicalReviewStatus": "hold",
+          "canonicalStatus": "uncertain",
+          "actualEventDate": null,
+          "holdReasons": [
+            "未取得公司或本人原始退出声明；主办方历史简介仅旁证。"
+          ],
+          "canonicalSourceFile": "apps/idol-site/data/artist-timelines/udtt.json",
+          "canonicalSources": [
+            {
+              "id": "es-3606ab7cb98e1988",
+              "url": "https://adv.tokyo-np.co.jp/prtimes/article75656/",
+              "publisher": "在日本大韓民国民団大阪府本部（发行者原稿，东京新闻承载）",
+              "title": "KWAVE dance contest official organiser press release",
+              "sourcePublishedAt": {
+                "value": "2025-10-08",
+                "precision": "day"
+              },
+              "checkedAt": "2026-10-16",
+              "scopeNote": "官方原文正文；仅保存核验所需摘录与结构化事实。",
+              "evidenceRef": "evidence/E/task06/sources/es-3606ab7cb98e1988.json"
+            }
+          ],
+          "reportedRecordPresent": true,
+          "reportedKind": "repost",
+          "reportedRecordDate": null,
+          "reportedDateLabel": "原始发布日期未核实",
+          "reportedBoundary": "生效日期未确认；不把原稿发表日或团体出道日当作离开日期，不创建或猜测成员ID。",
+          "reportedSources": [
+            {
+              "url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+              "label": "KProfiles社区讨论 · 仅转载线索",
+              "publishedDate": null
+            }
+          ],
+          "reportedSourceFile": "apps/idol-site/data/timeline-reported-records.json",
+          "sourceLedger": "docs/codex/evidence/20261028-current-audit/stages-timeline.json",
+          "remainingEvidence": "KProfiles论坛原链接是粉丝udtt_global/1904823894105555307，不是公司；Fandom索引称@udtt_official2025-03-26，但直接402无法抽取真正原帖ID。未找到本人/公司原声明，不采用社区3/26为canonical退出日。 寻找公司/成员原声明或可核完整转载；图片转载若无来源时间仍保留unknown，不拿他人作品贴文ID代用。",
+          "previousQueueRecord": {
+            "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-person-statistics.json",
+            "jsonPointer": "/effectiveDateHolds/6"
+          },
+          "latestResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/research.json",
+            "jsonPointer": "/items/16",
+            "key": "e-udtt-sena-predebut-departure-candidate",
+            "category": "effective_date",
+            "status": "unresolved_official_source",
+            "finding": "KProfiles论坛原链接是粉丝udtt_global/1904823894105555307，不是公司；Fandom索引称@udtt_official2025-03-26，但直接402无法抽取真正原帖ID。未找到本人/公司原声明，不采用社区3/26为canonical退出日。",
+            "sources": [
+              {
+                "url": "https://www.kprofiles.com/forums/threads/udtt-official-thread.46629/",
+                "access": "body_read",
+                "kind": "community_forum",
+                "finding": "Sena条目转粉丝账号，不误标官方。"
+              },
+              {
+                "url": "https://x.com/udtt_global/status/1904823894105555307",
+                "access": "url_from_read_forum_not_directly_opened",
+                "kind": "fan_account",
+                "finding": "非官方，不能关闭hold。"
+              },
+              {
+                "url": "https://udangtangtang-sonyeondan-kpop.fandom.com/wiki/Jung_Sena",
+                "access": "search_index_read; direct_402",
+                "kind": "community_wiki",
+                "finding": "索引提供官方账号日期但未能定位具体ID。"
+              },
+              {
+                "url": "https://kpop.fandom.com/wiki/Retry",
+                "access": "search_index_read; direct_402",
+                "kind": "community_wiki",
+                "finding": "相同引用线索，未直接读原帖。"
+              }
+            ],
+            "nextAction": "寻找公司/成员原声明或可核完整转载；图片转载若无来源时间仍保留unknown，不拿他人作品贴文ID代用。"
+          }
+        }
+      },
+      "currentResearch": {
+        "route": "查Sena3/26原始公司声明；新检索仍是旧粉丝转载/Fandom引用，原公告日期和正文未取得。",
+        "status": "targeted_search_repeats_prior_lead",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "公司原始公告全文、公告发布日期与实际生效日，以及临时/正式状态；报道日不改为生效日。",
+      "ownerGate": "not_applicable",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 20,
+      "group": "UNIS",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrQ8F",
+      "song": "Milky Way",
+      "version": "原作品未另标版本",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/15",
+        "reviewed": true,
+        "remainingReason": "官方Weverse Highlight把Milky Way列为MV，Performance Video Behind及节目幕后相邻条目属于Sky Land, Star Land，不能混配。",
+        "checks": [
+          {
+            "url": "https://weverse.io/unis/highlight",
+            "method": "web.search official current media directory",
+            "result": "当前目录将 Milky Way Official M/V 与 하늘땅 별땅 Performance Video 幕后分别列出；后者不是 Milky Way，不能挪用。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "检索Milky Way官方performance，结果仍混入Sky Land Star Land幕后/别曲表演和原MV。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "官方Weverse Highlight把Milky Way列为MV，Performance Video Behind及节目幕后相邻条目属于Sky Land, Star Land，不能混配。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 21,
+      "group": "VCHA / GIRLSET",
+      "kind": "statistics_sales",
+      "stableId": "vcha.sales",
+      "song": "销量待证",
+      "version": "",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json",
+        "recordKey": "vcha.sales",
+        "reviewed": true,
+        "record": {
+          "key": "vcha.sales",
+          "group": "vcha",
+          "name": "VCHA",
+          "field": "groups.vcha.sales.observedValue",
+          "primaryCategory": "scope_mismatch",
+          "categoryLabel": "数据口径不匹配/冲突",
+          "status": "open",
+          "observedValue": null,
+          "displayValue": 0,
+          "renderBehavior": "fallback-zero-not-confirmed-zero",
+          "accountExists": null,
+          "accountUrl": null,
+          "subjectName": null,
+          "reason": "继续限定VCHA品牌期；检索未见可核实体累计，不能把GIRLSET后续商品/数字播放/出货放入VCHA，也不能因数字发行推0。",
+          "priorEvidenceCheckedAt": "2026-10-27",
+          "freshlyResearchedThisAudit": true,
+          "nextAction": "需要明确VCHA时期的发行方实体数量或榜单；GIRLSET另列，不迁移品牌期数字。",
+          "acceptance": "排除NiziU及GIRLSET品牌混用；数量、发行方、统计日期及品牌范围均可核。",
+          "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+          "previousNonSoridataLead": "https://kpopping.com/profiles/group/GIRLSET",
+          "tuple": [
+            "vcha",
+            "sales"
+          ],
+          "groupId": "rec28ldfRTiE0h",
+          "currentDataStatus": "unavailable",
+          "queueStatus": "unresolved_brand_scope",
+          "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+          "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+          "latestTargetedResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/research.json",
+            "jsonPointer": "/items/6",
+            "key": "vcha.sales",
+            "category": "unknown_sales",
+            "status": "unresolved_brand_scope",
+            "finding": "继续限定VCHA品牌期；检索未见可核实体累计，不能把GIRLSET后续商品/数字播放/出货放入VCHA，也不能因数字发行推0。",
+            "sources": [],
+            "nextAction": "需要明确VCHA时期的发行方实体数量或榜单；GIRLSET另列，不迁移品牌期数字。"
+          },
+          "previousQueueRecord": {
+            "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-person-statistics.json",
+            "jsonPointer": "/unknownMetrics/6"
+          },
+          "previousReason": "不得将GIRLSET后续发行销量转归VCHA历史品牌；无可用累计。",
+          "followupResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/followup-research.json",
+            "jsonPointer": "/items/5",
+            "finding": "官方店当前空集合不能证明历史0；打印CD封面和数字目录不等于官方实体发行/销量。"
+          },
+          "nextRouteResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/remaining-sales-next-research.json",
+            "jsonPointer": "/items/2",
+            "finding": "GIRLSET官方商店确有Tweak与CHAT实体产品。Tweak为7种CD和3种7寸vinyl；CHAT为6种CD。该发现否定把旧VCHA数字目录缺实体当作后续品牌也无实体的推理，但没有可采用售出量。",
+            "adopted": false
+          }
+        }
+      },
+      "currentResearch": {
+        "route": "查VCHA与GIRLSET实体版区分；hello82的Tweak商品只支持后续品牌美国实体存在，无售出量。",
+        "status": "new_merchant_scope_review_no_qualified_count",
+        "sourceIds": [
+          "girlsetProduct"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "继续限定VCHA品牌期；检索未见可核实体累计，不能把GIRLSET后续商品/数字播放/出货放入VCHA，也不能因数字发行推0。",
+      "ownerGate": "not_applicable",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 22,
+      "group": "VCHA / GIRLSET",
+      "kind": "statistics_wins",
+      "stableId": "vcha.wins",
+      "song": "一位总数待证",
+      "version": "",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json",
+        "recordKey": "vcha.wins",
+        "reviewed": true,
+        "record": {
+          "key": "vcha.wins",
+          "group": "vcha",
+          "name": "VCHA",
+          "field": "groups.vcha.wins.observedValue",
+          "primaryCategory": "scope_mismatch",
+          "categoryLabel": "数据口径不匹配/冲突",
+          "status": "open",
+          "observedValue": null,
+          "displayValue": 0,
+          "renderBehavior": "fallback-zero-not-confirmed-zero",
+          "accountExists": null,
+          "accountUrl": null,
+          "subjectName": null,
+          "reason": "Twicehub 2023-11-09仅说明当时VCHA尚无音乐节目一位，不覆盖2024至品牌更名的完整时期；不将该早期快照当现在全期0。",
+          "priorEvidenceCheckedAt": "2026-10-27",
+          "freshlyResearchedThisAudit": true,
+          "nextAction": "补全VCHA品牌期作品及官方获奖表；GIRLSET2026节目不反填VCHA一位。",
+          "acceptance": "品牌/日期/节目覆盖明确；FirstWinTBA不作真实0，正数逐获奖记录核对。",
+          "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+          "previousNonSoridataLead": "https://kpopping.com/profiles/group/VCHA",
+          "tuple": [
+            "vcha",
+            "wins"
+          ],
+          "groupId": "rec28ldfRTiE0h",
+          "currentDataStatus": "unavailable",
+          "queueStatus": "unresolved_period_scope",
+          "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+          "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+          "previousQueueRecord": {
+            "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-person-statistics.json",
+            "jsonPointer": "/unknownMetrics/7"
+          },
+          "previousReason": "旧讨论没有全时期音乐节目累计证据，继续未知。",
+          "latestTargetedResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/research.json",
+            "jsonPointer": "/items/7",
+            "key": "vcha.wins",
+            "category": "unknown_wins",
+            "status": "unresolved_period_scope",
+            "finding": "Twicehub 2023-11-09仅说明当时VCHA尚无音乐节目一位，不覆盖2024至品牌更名的完整时期；不将该早期快照当现在全期0。",
+            "sources": [
+              {
+                "url": "https://board.twicehub.com/News/46",
+                "access": "body_read",
+                "kind": "secondary_forum_report",
+                "finding": "2023-11-09初次获奖比较，时间范围过早。"
+              }
+            ],
+            "nextAction": "补全VCHA品牌期作品及官方获奖表；GIRLSET2026节目不反填VCHA一位。"
+          },
+          "followupResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/followup-research.json",
+            "jsonPointer": "/items/6",
+            "finding": "没有覆盖2024至品牌更名的明确总数/零次记录；不重读早期快照冒称新证据。"
+          },
+          "archiveFollowup": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/win-archive-followup.json",
+            "source": "https://kpopwins.info/wins",
+            "rowsRead": 930,
+            "range": [
+              "2023-01-06",
+              "2026-10-25"
+            ],
+            "shows": 6,
+            "matchingAliases": 0,
+            "adoptedNumericMetric": false,
+            "limit": "Fan-maintained archive; per-episode/cancellation completeness and later dates unverified. Absence does not establish actual zero."
+          }
+        }
+      },
+      "currentResearch": {
+        "route": "复核旧930行民间归档覆盖边界，再查VCHA/GIRLSET正式获奖记录；后续Billboard数字榜不是韩国节目一位。",
+        "status": "targeted_search_no_qualified_period_total",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "Twicehub 2023-11-09仅说明当时VCHA尚无音乐节目一位，不覆盖2024至品牌更名的完整时期；不将该早期快照当现在全期0。",
+      "ownerGate": "not_applicable",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 23,
+      "group": "VVUP",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrFGi",
+      "song": "4 Life",
+      "version": "Special Video完整版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/16",
+        "reviewed": true,
+        "remainingReason": "Weverse3-189987080明确Full ver，4-189811246是Special Video #2；Full ver仍是原作品本身，不是独立新表演，分段视频也不补完整舞台。",
+        "checks": [
+          {
+            "url": "https://weverse.io/vvup/media/3-189987080?hl=ko",
+            "method": "web.search and web.open official media",
+            "result": "读回 4 Life Special Video (Full ver.) 原作品页面；它没有证明另一个独立舞台，不能将原视频再计为新增。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "核VVUP公开目录的4 Life Full ver/录音幕后与Ain't Nobody练习室归属；没有独立本曲舞台。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "Weverse3-189987080明确Full ver，4-189811246是Special Video #2；Full ver仍是原作品本身，不是独立新表演，分段视频也不补完整舞台。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 24,
+      "group": "W!TCHX",
+      "kind": "statistics_sales",
+      "stableId": "witchx.sales",
+      "song": "销量待证",
+      "version": "",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261028-post-v200/remaining-person-statistics.json",
+        "recordKey": "witchx.sales",
+        "reviewed": true,
+        "record": {
+          "key": "witchx.sales",
+          "group": "witchx",
+          "name": "W!TCHX",
+          "field": "groups.witchx.sales.observedValue",
+          "primaryCategory": "insufficient_evidence",
+          "categoryLabel": "证据不足",
+          "status": "open",
+          "observedValue": null,
+          "displayValue": 0,
+          "renderBehavior": "fallback-zero-not-confirmed-zero",
+          "accountExists": null,
+          "accountUrl": null,
+          "subjectName": null,
+          "reason": "WTCHX/W!TCHX同团的正版数字目录和Run Baby Run检索未提供实体数量；自然搜索命中数据库0+只能作来源覆盖下界，不是真实全期0。",
+          "priorEvidenceCheckedAt": "2026-10-27",
+          "freshlyResearchedThisAudit": true,
+          "nextAction": "查发行方实体物料/可核销售声明；不再次访问Soridata下载或验证码路线。",
+          "acceptance": "商品页仅证明实体发行；需要可核数量/日期/版本，数据库0+不证明真实0。",
+          "priorEvidenceFile": "docs/codex/evidence/20261027-category-resolution/statistics/review.json",
+          "previousNonSoridataLead": "https://www.kpopalbums.com/products/witchx-run-baby-run-ready-set-run-photobook-random-version",
+          "tuple": [
+            "witchx",
+            "sales"
+          ],
+          "groupId": "rec28ldfRTiDFM",
+          "currentDataStatus": "unavailable",
+          "queueStatus": "unresolved_no_qualified_count",
+          "sourceLedger": "docs/codex/evidence/20261028-current-audit/statistics.json",
+          "currentDataFile": "apps/idol-site/data/group-statistics-completion-evidence.json",
+          "latestTargetedResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/research.json",
+            "jsonPointer": "/items/9",
+            "key": "witchx.sales",
+            "category": "unknown_sales",
+            "status": "unresolved_no_qualified_count",
+            "finding": "WTCHX/W!TCHX同团的正版数字目录和Run Baby Run检索未提供实体数量；自然搜索命中数据库0+只能作来源覆盖下界，不是真实全期0。",
+            "sources": [
+              {
+                "url": "https://www.qobuz.com/us-en/interpreter/wtchx/25006328",
+                "access": "search_index_read",
+                "kind": "licensed_music_catalog",
+                "finding": "正版数字发行目录；不提供实体销量。"
+              },
+              {
+                "url": "https://sports.donga.com/ent/article/all/20251121/132813921/2",
+                "access": "search_index_read",
+                "kind": "news_interview",
+                "finding": "采访线索，无可采用销量数。"
+              }
+            ],
+            "nextAction": "查发行方实体物料/可核销售声明；不再次访问Soridata下载或验证码路线。"
+          },
+          "previousQueueRecord": {
+            "evidenceFile": "docs/codex/evidence/20261028-v200/remaining-person-statistics.json",
+            "jsonPointer": "/unknownMetrics/9"
+          },
+          "previousReason": "Physical Sales 0+为数据库下限，不能认定真实0。",
+          "followupResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/followup-research.json",
+            "jsonPointer": "/items/8",
+            "finding": "找到发行方与实体活动线索，仍无可核实体销量；数字目录或售罄字样不推出0或任意数。"
+          },
+          "nextRouteResearch": {
+            "evidenceFile": "docs/codex/evidence/20261028-post-v200/statistics/remaining-sales-next-research.json",
+            "jsonPointer": "/items/3",
+            "finding": "官方经纪公司页列BLALA、Beautiful、RUN BABY RUN三支single album但不说明可售实体SKU或数量；韩国公共知识元数据补得Quarter Music发行/Artform制作链路，仍不证明实体销量。",
+            "adopted": false
+          }
+        }
+      },
+      "currentResearch": {
+        "route": "查BLALA/Beautiful Story/Run Baby Run实体与数量，打开正版BLALA目录，仍无销售量。",
+        "status": "body_scope_review_no_qualified_numeric_source",
+        "sourceIds": [
+          "witchxBugs"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "WTCHX/W!TCHX同团的正版数字目录和Run Baby Run检索未提供实体数量；自然搜索命中数据库0+只能作来源覆盖下界，不是真实全期0。",
+      "ownerGate": "not_applicable",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 25,
+      "group": "Weeekly",
+      "kind": "stage-new",
+      "stableId": "recvxyH5pzJov0",
+      "song": "Top Secret",
+      "version": "韩文原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/17",
+        "reviewed": true,
+        "remainingReason": "本轮Top Secret韩英精确查询主要返回其他艺人同名内容、团体资料和演唱会线索；库存中没有已核可用的同曲常规打歌或完整官方练习。",
+        "checks": [
+          {
+            "url": "https://www.dojeonmedia.com/post/omg-i-had-the-best-time-at-the-weeekly-concert-2024-weeekly-grand-america-concert-review-amaz",
+            "method": "web.search original concert report",
+            "result": "本轮 Top Secret LIVE 新路线仍命中美国巡演曲单；演唱会不作为本队列常规打歌／练习后备。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "检索Top Secret电视节目原片；没有新可用来源，保留旧演唱会排除。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "本轮Top Secret韩英精确查询主要返回其他艺人同名内容、团体资料和演唱会线索；库存中没有已核可用的同曲常规打歌或完整官方练习。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 26,
+      "group": "Weeekly",
+      "kind": "stage-new",
+      "stableId": "recvxyH5pzoIOD",
+      "song": "Happy Christmas",
+      "version": "韩文原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/18",
+        "reviewed": true,
+        "remainingReason": "YAOKI Special Video xpH69uV9Ge0获官方认领，但与既有1theK原发行视频同日同长243秒；资料及开头0–48秒抽样镜头一致，作为原MV另一上传保留，不能制造独立舞台。未作整片字节/音轨同一性证明。",
+        "checks": [
+          {
+            "url": "https://world.kbs.co.kr/service/program_playlist_view.htm?bbs=wh_hyerim_playlist&lang=e&no=49404&procode=wh_hyerim",
+            "method": "web.search official broadcaster playlist",
+            "result": "2025-12-24 节目中 Happy Christmas 是普通播歌项目；LIVE 标识属于 NVee／Kate Kim，不能挪到 Weeekly。"
+          },
+          {
+            "url": "https://weverse.io/weeekly/live/3-119903139?hl=ko",
+            "method": "web.search official live-directory context",
+            "result": "邻接导航出现 Happy Christmas 直播名称，但本页是 2023-05-25 另一场；导航不能证明目标完整专门表演。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "核旧YAOKI/1theK同日同长和48秒抽样同片证据；没有新版本线索，不重复下载原MV。",
+        "status": "prior_evidence_read_no_new_trigger",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "YAOKI Special Video xpH69uV9Ge0获官方认领，但与既有1theK原发行视频同日同长243秒；资料及开头0–48秒抽样镜头一致，作为原MV另一上传保留，不能制造独立舞台。未作整片字节/音轨同一性证明。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 27,
+      "group": "Weeekly",
+      "kind": "stage-new",
+      "stableId": "recvxyH5pzoaOZ",
+      "song": "Love",
+      "version": "韩文原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/19",
+        "reviewed": true,
+        "remainingReason": "Love查询出现KBS广播歌单和Jihan/Park So Eun OST发行报道；广播播放不等于现场表演，不能推全团演出。",
+        "checks": [
+          {
+            "url": "https://idolworld.co.kr/bbs/board.php?bo_table=e_story&wr_id=138530",
+            "method": "web.search secondary post tracing exact original ID",
+            "result": "正文指向 Love 原 MV VACXoKdmofo 与复古宣传图文，未提供独立全团同曲舞台。KBS 关键词命中别人的歌／成员二人其他曲不采用。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "保留Jihan/Park So Eun二人OST范围与radio playlist非表演界限；无新二人完整舞台原片。",
+        "status": "prior_evidence_read_no_new_trigger",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "Love查询出现KBS广播歌单和Jihan/Park So Eun OST发行报道；广播播放不等于现场表演，不能推全团演出。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 28,
+      "group": "WOOAH",
+      "kind": "stage-new",
+      "stableId": "recvxIYG1FSCws",
+      "song": "VOODOO DOLL",
+      "version": "原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/20",
+        "reviewed": true,
+        "remainingReason": "新检索多源具体指向WXW:WICKED粉丝演唱会，未取得独立官方普通节目/练习/专门表演；活动不采用。",
+        "checks": [
+          {
+            "url": "https://popga.co.kr/en/popup/10148",
+            "method": "web.search concert organizer-derived listing",
+            "result": "VOODOO DOLL 本轮命中为 2026-10-03 WICKED fan concert 首演信息；官方或组织方活动身份不使其变为普通打歌。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "沿WXW:WICKED节目目录核场合，仍为已知fan concert，不能充作常规打歌或制作表演。",
+        "status": "targeted_search_repeats_prior_lead",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "新检索多源具体指向WXW:WICKED粉丝演唱会，未取得独立官方普通节目/练习/专门表演；活动不采用。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 29,
+      "group": "WOOAH",
+      "kind": "stage-new",
+      "stableId": "recvxyH5pzQxpW",
+      "song": "SUMMER",
+      "version": "韩文原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/21",
+        "reviewed": true,
+        "remainingReason": "已找到准确作品官方幕后标题，但逐名字幕／时间点不可读，不能把团体成员名单投射为具体录音或拍摄名单；幕后也不是完整新舞台。",
+        "checks": [
+          {
+            "url": "https://www.youtube.com/watch?v=1cZvvuw29s8",
+            "method": "web.search official artist channel metadata; direct web.open throttled",
+            "result": "新增线索：官方艺人频道 2026-07-23 发布 SUMMER MV BEHIND THE SCENES。搜索可读标题／日期，未给逐名字幕；直接页 Online fetch throttled 后停止该路线，未播放／识脸／提取字幕。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查Bugs逐曲生产名单及Weverse公开目录；没有逐名参与或独立完整舞台。",
+        "status": "new_body_scope_review_no_qualified_fact",
+        "sourceIds": [
+          "wooSummer",
+          "wooWeverse"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "已找到准确作品官方幕后标题，但逐名字幕／时间点不可读，不能把团体成员名单投射为具体录音或拍摄名单；幕后也不是完整新舞台。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 30,
+      "group": "WOOAH",
+      "kind": "stage-new",
+      "stableId": "recvxyH5pzZfyK",
+      "song": "Shining On You",
+      "version": "宣传合作",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/22",
+        "reviewed": true,
+        "remainingReason": "发现Shining on you Side B视频与原M/V、文化院项目介绍；Side B名称本身不能证明是音乐节目或完整练习。",
+        "checks": [
+          {
+            "url": "https://www.youtube.com/watch?v=2GNJuBVCz5E",
+            "method": "web.search Koreanet official indexed description",
+            "result": "Koreanet 发布 Shining on you (Side B) with WOOAH；描述为回馈粉丝的 Side B，未称 Performance。不能仅凭制作方身份视作独立表演。"
+          },
+          {
+            "url": "https://hk.korean-culture.org/hk/932/board/676/read/131130",
+            "method": "web.search official culture center body; web.open redirect loop",
+            "result": "文化院索引正文明确标 MV Version (Side B)，支持保留原 MV 版本属性；直接页重定向循环未继续绕行。不作为合格舞台。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "读Genie正文消歧至Shining On You；文化项目发行资料未给独立完整舞台。旧文化院循环页面不重试。",
+        "status": "body_scope_review_no_qualified_fact",
+        "sourceIds": [
+          "wooShining"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "发现Shining on you Side B视频与原M/V、文化院项目介绍；Side B名称本身不能证明是音乐节目或完整练习。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 31,
+      "group": "WOOAH",
+      "kind": "stage-new",
+      "stableId": "recvxyH5pzrrSO",
+      "song": "WXW (Wish With W)",
+      "version": "韩文原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/23",
+        "reviewed": true,
+        "remainingReason": "WXW查询主要是Bugs发行目录、项目报道与音源，尚未取得可采用的节目/练习原片。",
+        "checks": [
+          {
+            "url": "https://music.bugs.co.kr/track/6464766?wl_ref=list_tr_08",
+            "method": "web.search licensed song credits",
+            "result": "Bugs 将演唱和作词成员统一写 WOOAH，其他作者具名；没有把团名展开成五个个人。百科／博客声称全员作词未取得对应逐名登记原件。"
+          },
+          {
+            "url": "https://ww1.twstalker.com/WOOAH_HM",
+            "method": "web.search official-account repost mirror, secondary only",
+            "result": "当前可见内容为 WXW 发行签售／fan concert 宣传，不是可直接采用的同曲完整节目或独立制作表演；不据此认定曲目参与者。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查Bugs WXW曲目与专辑制作名单；集合署名未拆出五人逐曲参与，也无独立完整舞台。",
+        "status": "body_scope_review_no_qualified_fact",
+        "sourceIds": [
+          "wooWxw",
+          "wooWxwTrack"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "WXW查询主要是Bugs发行目录、项目报道与音源，尚未取得可采用的节目/练习原片。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 32,
+      "group": "WOOAH",
+      "kind": "person",
+      "stableId": "recvxyH5pzrrSO",
+      "song": "WXW (Wish With W)",
+      "version": "韩文原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/36",
+        "reviewed": true,
+        "remainingReason": "现资料将演唱/创作合称WOOAH，缺本曲逐成员署名；后续活动名单不能证明这首歌的具体角色。",
+        "checks": [
+          {
+            "url": "https://music.bugs.co.kr/track/6464766?wl_ref=list_tr_08",
+            "method": "web.search licensed song credits",
+            "result": "Bugs 将演唱和作词成员统一写 WOOAH，其他作者具名；没有把团名展开成五个个人。百科／博客声称全员作词未取得对应逐名登记原件。"
+          },
+          {
+            "url": "https://ww1.twstalker.com/WOOAH_HM",
+            "method": "web.search official-account repost mirror, secondary only",
+            "result": "当前可见内容为 WXW 发行签售／fan concert 宣传，不是可直接采用的同曲完整节目或独立制作表演；不据此认定曲目参与者。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查Bugs WXW曲目与专辑制作名单；集合署名未拆出五人逐曲参与，也无独立完整舞台。",
+        "status": "body_scope_review_no_qualified_fact",
+        "sourceIds": [
+          "wooWxw",
+          "wooWxwTrack"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "现资料将演唱/创作合称WOOAH，缺本曲逐成员署名；后续活动名单不能证明这首歌的具体角色。",
+      "ownerGate": "not_applicable",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 33,
+      "group": "WOOAH",
+      "kind": "person",
+      "stableId": "recvxyH5pzQxpW",
+      "song": "SUMMER",
+      "version": "韩文原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/37",
+        "reviewed": true,
+        "remainingReason": "已找到准确作品官方幕后标题，但逐名字幕／时间点不可读，不能把团体成员名单投射为具体录音或拍摄名单；幕后也不是完整新舞台。",
+        "checks": [
+          {
+            "url": "https://www.youtube.com/watch?v=1cZvvuw29s8",
+            "method": "web.search official artist channel metadata; direct web.open throttled",
+            "result": "新增线索：官方艺人频道 2026-07-23 发布 SUMMER MV BEHIND THE SCENES。搜索可读标题／日期，未给逐名字幕；直接页 Online fetch throttled 后停止该路线，未播放／识脸／提取字幕。"
+          },
+          {
+            "url": "https://workingww.twstalker.com/WOOAH_HM/status/2075142926812774453",
+            "method": "web.open secondary mirror; original URL attempted separately",
+            "result": "镜像留有 SUMMER／Wish With W Vol.3 的 NANA 具名 concept photo 文案。仅是待追原宣传来源，不推定录音或 MV 出镜。"
+          },
+          {
+            "url": "https://x.com/WOOAH_HM/status/2075142926812774453",
+            "method": "web.open original account status",
+            "result": "原始 X 返回 403，停止该源路线；另一个 #1 原帖 2074780543791562849 返回 0 行。未将镜像当原件已核。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查Bugs逐曲生产名单及Weverse公开目录；没有逐名参与或独立完整舞台。",
+        "status": "new_body_scope_review_no_qualified_fact",
+        "sourceIds": [
+          "wooSummer",
+          "wooWeverse"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "已找到准确作品官方幕后标题，但逐名字幕／时间点不可读，不能把团体成员名单投射为具体录音或拍摄名单；幕后也不是完整新舞台。",
+      "ownerGate": "not_applicable",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 34,
+      "group": "XG",
+      "kind": "stage-new",
+      "stableId": "recvxDMFHN97Px",
+      "song": "4 SEASONS",
+      "version": "原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/24",
+        "reviewed": true,
+        "remainingReason": "XGALX1130383确认4 SEASONS主唱分队歌曲，1130530为幕后；Music Station SuperLive排期并未把本曲指派到节目，巡演不采用。",
+        "checks": [
+          {
+            "url": "https://xgalx.com/xg/news/detail.php?id=1130431",
+            "method": "web.search official label",
+            "result": "官方 4 SEASONS 发布页仍为 Official Music Video；该原 MV 不可重复作为新舞台。声乐分队范围不扩成全团。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查First Take/官方制作表演，所得Voice表演属于GALA，4 SEASONS仍为三人原MV和tour。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "XGALX1130383确认4 SEASONS主唱分队歌曲，1130530为幕后；Music Station SuperLive排期并未把本曲指派到节目，巡演不采用。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 35,
+      "group": "XG",
+      "kind": "stage-new",
+      "stableId": "recvxDMFHNJME3",
+      "song": "IN THE RAIN",
+      "version": "原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/25",
+        "reviewed": true,
+        "remainingReason": "官方站没有检索到IN THE RAIN Choreography/Rehearsal原页；旧镜像及巡演全景不转成官方后备，保持原出处待证。",
+        "checks": [
+          {
+            "url": "https://xgalx.com/en/xg/news/detail.php?id=1124078",
+            "method": "web.search and web.open official label",
+            "result": "发行方把 IN THE RAIN 原曲、x XDM 与 Instrumental 分列，并说明 XDM 改编。新检索仍未获原编配完整独立表演，不能把 XDM 或广告混音移入。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查official/First Take/performance，官方结果仍为巡演live album；旧编舞转载原出处未证。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "官方站没有检索到IN THE RAIN Choreography/Rehearsal原页；旧镜像及巡演全景不转成官方后备，保持原出处待证。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 36,
+      "group": "XG",
+      "kind": "stage-new",
+      "stableId": "recvxDMFHNyyeA",
+      "song": "O.R.B (Obviously Reads Bro)",
+      "version": "原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/26",
+        "reviewed": true,
+        "remainingReason": "精确O.R.B官方站Choreography查询为空；原MV、THE CORE巡演和FUJI ROCK不作为合规替代。空结果不证明表演不存在。",
+        "checks": [
+          {
+            "url": "https://xgalx.com/en/xg/news/detail.php?id=1130382",
+            "method": "web.search official label tracklist",
+            "result": "原唱片曲单可确认 O.R.B 身份，但不证明舞台。独立摄影师相关线索将 O.R.B 标 MV、NO GOOD 标 Performance，不能把后一曲误用。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查官方Performance Video，结果属于NO GOOD或音乐节改编；O.R.B原MV不能替代。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "精确O.R.B官方站Choreography查询为空；原MV、THE CORE巡演和FUJI ROCK不作为合规替代。空结果不证明表演不存在。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 37,
+      "group": "XG",
+      "kind": "stage-new",
+      "stableId": "recvxDMFHNzJyr",
+      "song": "ROCK THE BOAT",
+      "version": "原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/27",
+        "reviewed": true,
+        "remainingReason": "官方SBS已有合规节目，但原特殊歌词版本和候选实际歌词仍未完成比对；新允许表演后备不解决版本冲突。",
+        "checks": [
+          {
+            "url": "https://programs.sbs.co.kr/enter/gayo/clip/54768/OC477948996",
+            "method": "web.search official broadcaster indexed page",
+            "result": "确认 SBS Inkigayo 2026-02-01 本放曲 ROCK THE BOAT；搜索正文提示购买内容。未购买或绕过；目标与节目 clean／explicit 逐句仍未核，不把版本匹配设 true。"
+          },
+          {
+            "url": "https://m.sbs.co.kr/search/allSearchList.do?query=XG",
+            "method": "web.search official broadcaster directory",
+            "result": "目录新增可追踪 FullCam（2026-02-04）和本放（2026-02-01），属于同一次节目；尚无本轮完整播放／逐句版本验证，不能重复计数或直接采用。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "保留SBS Inkigayo已知节目路线，但clean/explicit语句编配差异未核；本轮没有实际音轨新证据。",
+        "status": "prior_evidence_read_no_new_trigger",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "官方SBS已有合规节目，但原特殊歌词版本和候选实际歌词仍未完成比对；新允许表演后备不解决版本冲突。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 38,
+      "group": "XG",
+      "kind": "stage-replacement",
+      "stableId": "recvxDMFHNojjN",
+      "song": "IS THIS LOVE",
+      "version": "原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/28",
+        "reviewed": true,
+        "remainingReason": "XGALX索引的XTRA #70为宣传幕后，没有完整单曲边界；旧CDTV9U3MPAYIZ0g已到期/受限，本轮不重试或绕过。",
+        "checks": [
+          {
+            "url": "https://xgalx.com/en/xg/news/detail.php?id=1127079",
+            "method": "web.search official label live-album announcement",
+            "result": "厂牌明确这是 The first HOWL 东京巨蛋巡演现场专辑，含 IS THIS LOVE／IN THE RAIN 等；不是普通打歌替代。旧过期 CDTV 两链接没有重试。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查官方IS THIS LOVE独立表演，结果仍为tour/商品页和音乐节钢琴改编；过期CDTV与受限视频不重试。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "XGALX索引的XTRA #70为宣传幕后，没有完整单曲边界；旧CDTV9U3MPAYIZ0g已到期/受限，本轮不重试或绕过。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 39,
+      "group": "XG",
+      "kind": "stage-replacement",
+      "stableId": "recvxDMFHNSckK",
+      "song": "MILLION PLACES",
+      "version": "原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/29",
+        "reviewed": true,
+        "remainingReason": "XGALX索引仍是MILLION PLACES巡演影像与宣传幕后；到期CDTVa8WdF6QdfFc不重试，MusicStation原档完整片源仍未取得。",
+        "checks": [
+          {
+            "url": "https://xgalx.com/xg/discography/",
+            "method": "web.search official current discography",
+            "result": "MILLION PLACES 及其巡演 live 音源被分别列出。未取得新的可用 Music Station 全曲，不将同曲巡演音源替换旧活动绑定。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "沿Music Station2025-05-16节目线索查原片，仍是旧排期报道；过期CDTV不重试。",
+        "status": "targeted_search_repeats_prior_lead",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "XGALX索引仍是MILLION PLACES巡演影像与宣传幕后；到期CDTVa8WdF6QdfFc不重试，MusicStation原档完整片源仍未取得。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 40,
+      "group": "YOUNG POSSE",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrFYu",
+      "song": "YOUNG POSSE UP (feat. Verbal Jint, NSW yoon, Token)",
+      "version": "含Verbal Jint／NSW yoon／Token合作版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/30",
+        "reviewed": true,
+        "remainingReason": "新检索仍为合作MV、节庆记录与原POSSE UP!的同名误配。既有tx9GAZpxo0w只有152秒、原合作MV201秒；新后备类型授权不消除合作段落/完整范围缺口。",
+        "checks": [
+          {
+            "url": "https://youngposse.fandom.com/wiki/YOUNG_POSSE_UP_%28song%29",
+            "method": "web.search secondary performance index as lead",
+            "result": "新查曲目索引把 2023-12-09 Christmasland 与 2024-04-08 DinDin Music High 分开；前者活动排除，后者旧片长／客串完整性未解决。不推定成员版删段自动合格。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "保留152秒候选对201秒原曲的完整性差异；成员版只放宽客串不容许截短，未出现新完整原片。",
+        "status": "prior_evidence_read_no_new_trigger",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "新检索仍为合作MV、节庆记录与原POSSE UP!的同名误配。既有tx9GAZpxo0w只有152秒、原合作MV201秒；新后备类型授权不消除合作段落/完整范围缺口。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 41,
+      "group": "YOUNG POSSE",
+      "kind": "stage-new",
+      "stableId": "rec28ldfRTrGj0",
+      "song": "나의 이름은 (ROTY)",
+      "version": "原作品未另标版本",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/31",
+        "reviewed": true,
+        "remainingReason": "新检索找到本人采访推荐的是Scars performance video，并非ROTY；ROTY的演唱会/活动记录不采用。",
+        "checks": [
+          {
+            "url": "https://kpopconcerts.com/exclusives/interview-young-posse-talk-head-in-the-clouds-new-york-dream-collabs-and-staying-true-to-themselves/",
+            "method": "web.search original interview/report",
+            "result": "ROTY 关联的是 Head in the Clouds 节庆节目；另一采访推荐的是 Scars performance，均不能证明 ROTY 合格棚拍／练习。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "新检索目录命中Sunhye SMTM12 solo与球场/音乐节；仅检索线索，solo不能替代全团原曲。",
+        "status": "targeted_search_no_new_qualified_source",
+        "sourceIds": [],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "新检索找到本人采访推荐的是Scars performance video，并非ROTY；ROTY的演唱会/活动记录不采用。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 42,
+      "group": "YOUNG POSSE",
+      "kind": "stage-new",
+      "stableId": "recvxIZRWKntfT",
+      "song": "I know",
+      "version": "原版／SUNHYE与JIEUN二人",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/32",
+        "reviewed": true,
+        "remainingReason": "YOUNG POSSE日本官网MV索引列出I know，Genie/Qobuz明确SUNHYE与JIEUN二人；未取得两人同曲完整节目/后备表演。",
+        "checks": [
+          {
+            "url": "https://music.bugs.co.kr/track/6489554?wl_ref=list_tr_08_ab",
+            "method": "web.search licensed per-track credits",
+            "result": "明确 I know 的 SUNHYE／JIEUN 曲名及作词作曲；仍只是发行身份与二人范围，未获得完整同曲二人表演。"
+          },
+          {
+            "url": "https://youngposseofficial.jp/contents",
+            "method": "web.search and web.open official Japan index",
+            "result": "官方近期目录把 Pilot2（2026-07-26）和 I know（2026-07-18）列在 MV，不是独立舞台；MOVIE 栏为东京公演后感言。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "打开日本官方公开目录及Bugs逐曲名单，确认二人MV范围，未取得独立二人完整表演。",
+        "status": "body_scope_review_no_qualified_stage",
+        "sourceIds": [
+          "youngJapan",
+          "youngBugs"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "YOUNG POSSE日本官网MV索引列出I know，Genie/Qobuz明确SUNHYE与JIEUN二人；未取得两人同曲完整节目/后备表演。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 43,
+      "group": "YOUNG POSSE",
+      "kind": "stage-new",
+      "stableId": "recvxIZY0lR25A",
+      "song": "Pilot2",
+      "version": "原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/33",
+        "reviewed": true,
+        "remainingReason": "官方日本站列出2026-07-26 Pilot2 MV；其他检索为反应视频/授权音频/活动，未取得同曲独立官方表演。",
+        "checks": [
+          {
+            "url": "https://youngposseofficial.jp/contents",
+            "method": "web.search and web.open official Japan index",
+            "result": "官方近期目录把 Pilot2（2026-07-26）和 I know（2026-07-18）列在 MV，不是独立舞台；MOVIE 栏为东京公演后感言。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "打开日本官方公开目录及Bugs曲目页，Pilot2仍列原MV/录音；无独立完整表演。",
+        "status": "body_scope_review_no_qualified_stage",
+        "sourceIds": [
+          "youngJapan",
+          "youngBugs"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "官方日本站列出2026-07-26 Pilot2 MV；其他检索为反应视频/授权音频/活动，未取得同曲独立官方表演。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 44,
+      "group": "YOUNG POSSE",
+      "kind": "stage-new",
+      "stableId": "recvxIZY0lX8bP",
+      "song": "kawa",
+      "version": "原版／DOEUN与JIANA二人",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/34",
+        "reviewed": true,
+        "remainingReason": "新检索kawa仍为DOEUN/JIANA原MV及mixtape发行信息，没有可靠完整二人表演影像；不以全团演出代替。",
+        "checks": [
+          {
+            "url": "https://v.daum.net/v/20260901135107785",
+            "method": "web.search interview carried by Daum",
+            "result": "Jiana／Doeun 本人谈 kawa 旋律、情绪与 MV，能补强创作范围，但未给二人完整独立表演。不得以全团其它歌替代。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查kawa后打开Bugs逐曲名单，维持Doeun/Jiana二人范围；访谈谈创作和MV，不是表演视频。",
+        "status": "body_scope_review_no_qualified_stage",
+        "sourceIds": [
+          "youngBugs"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "新检索kawa仍为DOEUN/JIANA原MV及mixtape发行信息，没有可靠完整二人表演影像；不以全团演出代替。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    },
+    {
+      "index": 45,
+      "group": "YOUNG POSSE",
+      "kind": "stage-new",
+      "stableId": "recvxJ03dOg1Gc",
+      "song": "미스터 2026",
+      "version": "原版",
+      "priorEvidence": {
+        "file": "docs/codex/evidence/20261029-group-followup/groups-qwer-young.json",
+        "jsonPointer": "/items/35",
+        "reviewed": true,
+        "remainingReason": "新检索显示Mr2026为东京演唱会开场，Live Nation路线也是巡演；没有取得普通节目或完整官方后备。",
+        "checks": [
+          {
+            "url": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02945446645514192",
+            "method": "web.search original release reporting",
+            "result": "发布报道将 Mr2026 与其他 mixtape 单曲分列；没有同曲官方完整打歌。新搜索命中的 2026 tour／演出邀约文也非可采用视频。"
+          }
+        ]
+      },
+      "currentResearch": {
+        "route": "查미스터2026官方表演，制作名单/原MV与东京演唱会不满足新舞台条件。",
+        "status": "body_scope_review_no_qualified_stage",
+        "sourceIds": [
+          "youngBugs"
+        ],
+        "noSearchAbsenceInference": true
+      },
+      "newEvidence": [],
+      "proposedAction": "retain-open",
+      "remainingMissing": "新检索显示Mr2026为东京演唱会开场，Live Nation路线也是巡演；没有取得普通节目或完整官方后备。",
+      "ownerGate": "not_attempted; no fresh owner empty-score/complete log/live old-source comparison, no binding change",
+      "needsUserHelp": false,
+      "helpReason": "本轮没有向用户立即索要材料；证据不足保留，不将覆盖或未命中当事实关闭。"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-29T10:45:14.584818+00:00",
+  "baseline": "0a27db8feffb79233c8dc2d0f7bd0b46559b2220",
+  "finalSingleRun": {
+    "tests": 148,
+    "pass": 148,
+    "fail": 0,
+    "skipped": 0,
+    "fileCount": 19
+  },
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "stageSources": 497,
+  "newStageAdoptionsThisPolicyBatch": 0,
+  "currentStageGaps": 108,
+  "legacyReplacements": 11,
+  "existing497SourcesUnchanged": true,
+  "evidenceOnlyResearchItems": 6,
+  "independentDiffReview": "Passed after fixing third-party lead labels and historical test dependency.",
+  "knownPreexistingTestFailure": "core.test.cjs:148 requires every historical review limitation to contain 整理时间; three unchanged HEAD records do not. Independently reproduced from HEAD, not introduced in this batch.",
+  "limitations": [
+    "No independent full playback of six new research candidates.",
+    "No real owner save and no private data write.",
+    "Bilibili support currently uses exact part external links, no embedded player or clips.",
+    "No fresh visual browser layout or full all-group review."
+  ],
+  "logs": {
+    "tests": {
+      "sha256": "ca3658eeb07d0c9f76ee06016aa2e88b65f90e19493fc2f7654dbe7dee9f901a",
+      "bytes": 19515
+    },
+    "typecheck": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "build": {
+      "sha256": "3490d6a62a535fffcb6ba9c2caf5b7e5974e42611da5d0821d027ec097304031",
+      "bytes": 8280
+    }
+  },
+  "finalCanonicalSourceBuild": "passed after exact Git-blob alignment; original asset hashes retained"
+}

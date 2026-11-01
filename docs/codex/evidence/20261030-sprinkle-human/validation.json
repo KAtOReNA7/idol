@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-30T04:56:31Z",
+  "finalTargetedRun": {
+    "files": 11,
+    "tests": 125,
+    "passed": 125,
+    "failed": 0,
+    "skipped": 0,
+    "newFocusedTests": 6
+  },
+  "typecheck": "passed",
+  "formalBuild": "passed",
+  "logs": {
+    "tests": {
+      "sha256": "d7af28baabce628c35bf2a0ec143a80aaed56dfd6fe85eb073055509104294e6",
+      "bytes": 13627
+    },
+    "typecheck": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "build": {
+      "sha256": "28e600f217faa8c8dbd28552b44f5a25f0396a4536374ec293d43ce7b5275510",
+      "bytes": 8283
+    }
+  },
+  "independentReview": {
+    "scope": "Complete old106 SHA, seven stable IDs, all seven original images, exact source scope, saved zero/private relation deduplication, 104 queue pointers/11 replacements/23 person rows and153 total.",
+    "targetedTests": 34,
+    "overlapsRootRun": true,
+    "result": "passed",
+    "resolvedFinding": "Inherited IVE receipt path now uses complete repository-relative path."
+  },
+  "harnessCorrection": "Initial added artist projection check used a generic loader that could not resolve cloudflare:workers. Replaced only its test loader with the existing repository external-runtime/stub pattern, then all125 passed. No product runtime or assertions relaxed.",
+  "knownPriorBaselineFailure": {
+    "evidence": "docs/codex/evidence/20261030-evidence-advance/validation.json#/knownBaselineFailure",
+    "status": "Previously reproduced from unmodified baseline; not rerun or reported repaired by this batch."
+  },
+  "localSources": 501,
+  "publishedSources": 500,
+  "publicReferenceWorks": 107,
+  "publicRecognitionSlots": 553,
+  "remainingClassifications": 153,
+  "privateWrites": 0,
+  "newPrivateRelations": 0,
+  "newImageFiles": 0,
+  "newFormalStageBindings": 0,
+  "newSavedSiteVersions": 0,
+  "deployments": 0,
+  "limits": [
+    "No new browser visual acceptance, independent full video/audio viewing or actual owner save.",
+    "Sprinkle Party complete seven-person real appearance is user-confirmed, not official individually named or recording credits.",
+    "O.O recognition references retain old original bytes and existing view framing; no Sprinkle Party styling inference."
+  ]
+}

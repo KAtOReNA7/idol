@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-30",
+  "priority": [
+    "7 unknown metrics",
+    "7 effective dates",
+    "tripleS sales reconciliation"
+  ],
+  "evidencePolicy": {
+    "officialOnly": false,
+    "crossVerifiedMediaAndSyndicatedReportsAllowed": true,
+    "pageRequiresSpecialSourceClassBadge": false,
+    "retainInternalSourceProvenance": true,
+    "duplicateSyndicationNotIndependent": true,
+    "doNotInventNumbersOrDatePrecision": true
+  },
+  "newStagePolicy": {
+    "originalSameVersionCompletePreferred": true,
+    "sameSongExcerptFallbackAllowed": true,
+    "sameSongDifferentVersionFallbackAllowed": true,
+    "visibleDifferenceDisclosureRequired": true,
+    "exactVersionMustNotBeFalselyAsserted": true,
+    "notAuthorizedByThisChange": [
+      "different song",
+      "unproven song identity",
+      "automatic private relation creation",
+      "transfer of saved scores"
+    ],
+    "occasionPriorityUnchanged": true
+  },
+  "legacyReplacementPolicy": "Keep existing scoped replacement policy, exact old source/score/log guards; no relaxation by new-stage fallback authorization.",
+  "privateRecordProtection": "Fresh complete owner export before formal source adoption/replacement; no reuse of expired export, no treating zero as empty.",
+  "publication": "No automatic deployment; GitHub and Sites evidence separate."
+}

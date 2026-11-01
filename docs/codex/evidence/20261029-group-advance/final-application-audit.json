@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T08:57:53.731243+00:00",
+  "baselineCommit": "c80a60e3b328300300d24aa85f2b3c296778649e",
+  "status": "pass",
+  "findings": [],
+  "scope": {
+    "applicationFiles": [
+      "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "apps/idol-site/data/stages/supplements.json",
+      "apps/idol-site/data/timeline-reported-records.json",
+      "apps/idol-site/scripts/udtt-private-build-assets-manifest.json"
+    ],
+    "testsExcluded": true,
+    "runtimeSourceEdits": 0,
+    "newApplicationFiles": 0
+  },
+  "statistics": {
+    "onlyTripleSSalesChanged": true,
+    "groups": 51,
+    "originalMonthlyRowsPreserved": 36,
+    "originalAnnualReplacementsPreserved": 2,
+    "originalWeeklyRowsPreserved": 8,
+    "newWeeklyRows": [
+      {
+        "albumId": "74459",
+        "period": "2024.01.14~2024.01.20 (03)",
+        "sales": 840,
+        "sameVersionMonths": [
+          "2023-10"
+        ],
+        "overlap": false,
+        "metric": "Album_CNT",
+        "nativeReadbackMatches": true
+      },
+      {
+        "albumId": "78104",
+        "period": "2024.11.10~2024.11.16 (46)",
+        "sales": 1126,
+        "sameVersionMonths": [
+          "2024-10"
+        ],
+        "overlap": false,
+        "metric": "Album_CNT",
+        "nativeReadbackMatches": true
+      },
+      {
+        "albumId": "81284",
+        "period": "2025.12.28~2026.01.03 (01)",
+        "sales": 713,
+        "sameVersionMonths": [
+          "2025-11"
+        ],
+        "overlap": false,
+        "metric": "Album_CNT",
+        "nativeReadbackMatches": true
+      }
+    ],
+    "newContribution": 2679,
+    "formula": "2087073 + 5166 + 18594 = 2110833",
+    "lowerBound": 2110833,
+    "rawDisplay": "2,110,833+",
+    "asOfUnchanged": "2026-06",
+    "aggregateReference": 2458789,
+    "remainingDifference": 347956,
+    "closureStatus": "partially-resolved",
+    "excludedMetrics": [
+      "Total_CNT",
+      "Retail",
+      "Hanteo",
+      "Japan"
+    ],
+    "newSameVersionPeriodsNonOverlapping": true
+  },
+  "timeline": {
+    "updatedRecords": [
+      {
+        "eventId": "e-atheart-aurora-second-hiatus-announcement",
+        "publicationDate": "2026-08-18",
+        "eventDate": null,
+        "memberIdsUnchanged": true,
+        "sourceMatchesPrimaryEvidence": true
+      },
+      {
+        "eventId": "e-bewave-six-member-phase-end-announcement",
+        "publicationDate": "2025-09-04",
+        "eventDate": null,
+        "memberIdsUnchanged": true,
+        "sourceMatchesPrimaryEvidence": true
+      }
+    ],
+    "otherRowsUnchanged": 5,
+    "metadataUnchanged": true,
+    "allCanonicalFilesByteIdentical": true,
+    "canonicalFileCount": 51,
+    "fullEffectiveDateClosures": 0
+  },
+  "heyGabby": {
+    "workId": "recvxyOz5Xo5fW",
+    "candidateVideoId": "XSpYaEdpKxY",
+    "onlySearchReviewChanged": true,
+    "humanConfirmationScope": "seven members participate",
+    "fullPlaybackOrAudioVerificationClaimed": false,
+    "alternatives": 0,
+    "watchLeads": 0,
+    "newPrivateRelations": 0,
+    "newScoreBindings": 0,
+    "ownerSafetyRequirementsRetained": true,
+    "otherSupplementRecordsUnchanged": 136
+  },
+  "manifest": {
+    "changedEntries": [
+      "data/group-statistics-completion-evidence.json",
+      "data/timeline-reported-records.json"
+    ],
+    "onlyBytesAndSha256Changed": true,
+    "currentBytesAndHashesMatch": true,
+    "allOtherManifestContentUnchanged": true
+  },
+  "adoptionEvidence": [
+    {
+      "file": "statistics-adoption.json",
+      "currentFileHashMatches": true,
+      "baselineHashMatches": true
+    },
+    {
+      "file": "timeline-adoption.json",
+      "currentFileHashMatches": true,
+      "baselineHashMatches": true
+    },
+    {
+      "file": "heygabby-human-adoption.json",
+      "currentFileHashMatches": true,
+      "baselineHashMatches": true
+    }
+  ],
+  "preservation": {
+    "formalStageSourceFileByteIdentical": true,
+    "groupCatalog51ByteIdentical": true,
+    "originalImageFilesChanged": 0,
+    "authorizationCodeChanged": 0,
+    "privateIdsOrRelationshipCodeChanged": 0,
+    "basis": "Exact non-test application diff is limited to the four audited JSON files, and there are no untracked application files outside tests. This is repository protection, not a live owner-data re-export."
+  },
+  "priorSsr": {
+    "file": "docs/codex/evidence/20261029-group-advance/ui-readback.json",
+    "status": "pass",
+    "timelineSnapshotSha256": "0480b00a3fa71b7307dff00c1438a0f7367d25d20115faafb85ad02bbf7a9973",
+    "currentTimelineSha256": "0480b00a3fa71b7307dff00c1438a0f7367d25d20115faafb85ad02bbf7a9973",
+    "byteHashDifference": false,
+    "explanation": "Timeline JSON formatting was subsequently changed to preserve original formatting for the other five records. Current semantic data equals the reviewed adoption records plus unchanged baseline records. Earlier SSR remains a dated render receipt; this audit does not claim its old byte hash is current."
+  },
+  "applicationSha256": {
+    "apps/idol-site/data/group-statistics-completion-evidence.json": "51372099b264bbf2af2bf55ac6c934a7aa3da20fda4344872a2740f984eb4979",
+    "apps/idol-site/data/stages/supplements.json": "6085ec68c7a4223a45fd9f571375a773f01e5c77876cb0f0821cf17ac34614c2",
+    "apps/idol-site/data/timeline-reported-records.json": "0480b00a3fa71b7307dff00c1438a0f7367d25d20115faafb85ad02bbf7a9973",
+    "apps/idol-site/scripts/udtt-private-build-assets-manifest.json": "35c1af990bcf94f80d546028381c1e1fcf586c72e82401de11d737e26c238b1f"
+  },
+  "actions": {
+    "applicationEdits": 0,
+    "testsRun": 0,
+    "ssrReruns": 0,
+    "browserRuns": 0,
+    "builds": 0,
+    "privateDataReads": 0,
+    "deployments": 0
+  },
+  "limitations": [
+    "Public source evidence and exact source-row selections were read locally; no fresh network requests in this diff audit.",
+    "Another agent owns test completion; this audit did not inspect tests being edited."
+  ]
+}

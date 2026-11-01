@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T08:51:37.598797+00:00",
+  "status": "bounded_new_routes_completed",
+  "baselinePath": "apps/idol-site/data/group-statistics-completion-evidence.json",
+  "baselineSha256": "51372099b264bbf2af2bf55ac6c934a7aa3da20fda4344872a2740f984eb4979",
+  "unknownFieldInventory": [
+    {
+      "key": "genblue.wins",
+      "name": "GENBLUE",
+      "groupId": "rec28ldfRTiCKv",
+      "field": "wins",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable",
+      "title": "打歌一位累计",
+      "scope": "韩国音乐节目一位；未取得足够可信的当前累计，按用户要求显示0。"
+    },
+    {
+      "key": "tracer.sales",
+      "name": "TRACER",
+      "groupId": "rec28ldfRTiDBG",
+      "field": "sales",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable",
+      "title": "韩国发行累计销量",
+      "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。"
+    },
+    {
+      "key": "tracer.wins",
+      "name": "TRACER",
+      "groupId": "rec28ldfRTiDBG",
+      "field": "wins",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable",
+      "title": "打歌一位累计",
+      "scope": "韩国音乐节目一位；未取得足够可信的当前累计，按用户要求显示0。"
+    },
+    {
+      "key": "witchx.sales",
+      "name": "W!TCHX",
+      "groupId": "rec28ldfRTiDFM",
+      "field": "sales",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable",
+      "title": "韩国发行累计销量",
+      "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。"
+    },
+    {
+      "key": "spia.sales",
+      "name": "SPIA",
+      "groupId": "rec28ldfRTiDJU",
+      "field": "sales",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable",
+      "title": "韩国发行累计销量",
+      "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。"
+    },
+    {
+      "key": "vcha.sales",
+      "name": "VCHA",
+      "groupId": "rec28ldfRTiE0h",
+      "field": "sales",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable",
+      "title": "韩国发行累计销量",
+      "scope": "累计唱片销量；未取得可核实的本团完整累计或公开累计下限，按用户要求显示0。"
+    },
+    {
+      "key": "vcha.wins",
+      "name": "VCHA",
+      "groupId": "rec28ldfRTiE0h",
+      "field": "wins",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable",
+      "title": "打歌一位累计",
+      "scope": "韩国音乐节目一位；未取得足够可信的当前累计，按用户要求显示0。"
+    }
+  ],
+  "selectionReason": "在7项中选择2项有与既有检索不同的一手路线：GENBLUE原始颁奖档案、TRACER发行期Retail原生API。其余5项不复跑旧搜索/品牌混合路线。",
+  "priorEvidenceRead": [
+    "docs/codex/evidence/20261028-post-v200/statistics/research.json",
+    "docs/codex/evidence/20261028-post-v200/statistics/followup-research.json",
+    "docs/codex/evidence/20261028-post-v200/statistics/remaining-sales-next-research.json",
+    "docs/codex/evidence/20261028-continuous/circle-uncovered-months-c.json",
+    "docs/codex/evidence/20261029-pr47-continuation/groups-root.json",
+    "docs/codex/evidence/20261029-pr47-continuation/groups-qwer-young.json"
+  ],
+  "summary": {
+    "unknownFieldsConfirmed": 7,
+    "selectedNewRoutes": 2,
+    "officialRetailQueriesCompleted": 4,
+    "officialRetailRowsRead": 200,
+    "newEligibleNumericProposals": 0,
+    "unknownFieldsClosed": 0,
+    "confirmedZeroClaims": 0,
+    "applicationWrites": 0,
+    "privateReadsOrWrites": 0,
+    "deployments": 0
+  },
+  "items": [
+    {
+      "key": "genblue.wins",
+      "group": "GENBLUE",
+      "stableId": "rec28ldfRTiCKv",
+      "field": "wins",
+      "priorRoutesReviewed": [
+        "post-v200 research.json: ACT LIKE THAT单曲0、3/11候补/3351来自KpopDB与媒体，非全团累计",
+        "followup-research.json及win-archive-followup.json: 930行民间归档不覆盖完整全时期",
+        "PR47 groups-root.json: first win关键词仅其他团获奖或GENBLUE出场名单"
+      ],
+      "newRoute": "直接沿SBS官方371期节目档案的当期16段视频目录，定位THE SHOW CHOICE颁奖片段；不再搜索泛泛first win或复跑民间归档。",
+      "checks": [
+        {
+          "url": "https://programs.sbs.co.kr/programTemplate/amp/vod/theshow/22000558611",
+          "method": "web full programme archive body read",
+          "sourceType": "original broadcaster",
+          "result": "原站第371期，2025-03-11；明确GENBLUE表演SLOW DOWN与ACT LIKE THAT。参演列表不是获奖列表。"
+        },
+        {
+          "url": "https://programs.sbs.co.kr/programTemplate/amp/clip/pc/22000556578",
+          "method": "web full official clip page body and same-episode16-clip list",
+          "sourceType": "original broadcaster",
+          "result": "同一期目录具名Hearts2Hearts - THE SHOW CHOICE! [THE SHOW250311]，时长01:41；GENBLUE两首另列为表演。原颁奖条目链接22000556576。",
+          "shortQuote": "Hearts2Hearts - THE SHOW CHOICE! [THE SHOW 250311]",
+          "awardClipUrl": "https://m.programs.sbs.co.kr/fune/theshow/clip/58356/22000556576"
+        },
+        {
+          "url": "https://m.programs.sbs.co.kr/fune/theshow/clip/58356/22000556576",
+          "method": "follow official award link",
+          "sourceType": "original broadcaster",
+          "result": "直接页面仅返回导航壳，未完整播放颁奖视频；得奖具名依据是前一官方完整同集目录。AMP直接奖项URL不可读，不绕过、未购买/登录。"
+        }
+      ],
+      "newEvidence": {
+        "programme": "THE SHOW",
+        "episode": 371,
+        "broadcastDate": "2025-03-11",
+        "namedAwardRecipient": "Hearts2Hearts",
+        "genblueScope": "两个正式表演条目；该期颁奖条目指向其他艺人",
+        "doesNotVerify": "未独立复算3351分/第二名；不构成GENBLUE所有歌曲或全期六节目0奖证明"
+      },
+      "numericProposal": null,
+      "proposedAction": "只在研究证据保留原始电视台当期颁奖来源。GENBLUE总一位observedValue保持null，显示0仍是用户后备设置。",
+      "remainingReason": "1个节目1期的明确其他获奖者，不足以审计2024出道至2026-10-29全部作品/六节目累计；没有发现新增GENBLUE获奖原证。",
+      "boundedStop": "完成该已知候补期官方档案与颁奖入口核对；不以旧单期结论扩展全期。",
+      "needsUserHelp": false,
+      "unknownClosed": false
+    },
+    {
+      "key": "tracer.sales",
+      "group": "TRACER",
+      "stableId": "rec28ldfRTiDBG",
+      "field": "sales",
+      "priorRoutesReviewed": [
+        "Genie发行特辑与Bugs身份目录：2024-11-05的365，四人GleamMedia/Genie团，排除同名剧集与TREASURE",
+        "remaining-sales-next-research.json：官方GleamMedia艺人页/news无SKU或销量",
+        "旧Circle Album月榜2024-11已读100行且目标selectedRows空，保留旧结果而没有重跑该月榜"
+      ],
+      "newRoute": "按确切发行日改查尚未记录的Circle Retail原始查询：2024-11月、2024-11-03及11-10两周、2024-11-05当日。每次先读官方对应页面验证retail_list原生接口，然后POST相同公开参数。",
+      "identityCheck": {
+        "url": "https://music.bugs.co.kr/album/20682344?wl_ref=list_tr_11",
+        "method": "fresh full official licensed catalog body read",
+        "album": "365",
+        "artist": "트레이서",
+        "released": "2024-11-05",
+        "distributor": "Genie Music",
+        "label": "GleamMedia Group",
+        "tracks": 2,
+        "purpose": "限定榜单对象和时间窗；不是数量证据，未保存歌词"
+      },
+      "retainedNotRefetchedAlbumObservation": {
+        "file": "docs/codex/evidence/20261028-continuous/circle-uncovered-months-c.json",
+        "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=month&hitYear=2024&targetTime=11&yearTime=3",
+        "checkedAt": "2026-10-28T08:30:55.148342+00:00",
+        "responseSha256": "2747aa568ade67929352021e146d6ffc6e8906edba2589eb47b186edc1923d61",
+        "rowCount": 100,
+        "selectedRows": [],
+        "isNewEvidence": false
+      },
+      "checks": [
+        {
+          "checkedAt": "2026-10-29T08:48:45.521104+00:00",
+          "url": "https://circlechart.kr/page_chart/retail.circle?termGbn=month&yyyymmdd=202411",
+          "endpoint": "https://circlechart.kr/data/api/chart/retail_list",
+          "parameters": {
+            "termGbn": "month",
+            "yyyymmdd": "202411"
+          },
+          "httpStatus": 200,
+          "pageSha256": "f024c27cb12a95604540f5ccd0901fb3f2f9df2efcc29dff002aecf55c0a9d4a",
+          "responseSha256": "990307ada617ba41e0f65b5b7e3dbc8e42950cf98ac0bced6c2f3da7eb4451ff",
+          "responseBytes": 55378,
+          "resultStatus": "OK",
+          "rowCount": 50,
+          "matchingTerms": [
+            "tracer",
+            "트레이서",
+            "365"
+          ],
+          "noMatchDoesNotMeanZero": true,
+          "selectedRows": [],
+          "matchedIdentityRowCount": 0,
+          "excludedNumericSubstringCandidates": [
+            {
+              "artist": "태연 (TAEYEON)",
+              "album": "Letter To Myself - The 6th Mini Album",
+              "reason": "365仅出现在数值字段，团体/专辑身份不匹配，排除"
+            }
+          ],
+          "identityAcceptanceRule": "Require artist TRACER/트레이서 or exact album365, then independently match GleamMedia/Genie2024-11-05 identity. Numeric fields containing365 are not song/artist matches.",
+          "chartScope": "Circle Retail top50 only; distinct from Album chart and not complete group cumulative."
+        },
+        {
+          "checkedAt": "2026-10-29T08:48:51.708516+00:00",
+          "url": "https://circlechart.kr/page_chart/retail.circle?termGbn=week&yyyymmdd=20241103",
+          "endpoint": "https://circlechart.kr/data/api/chart/retail_list",
+          "parameters": {
+            "termGbn": "week",
+            "yyyymmdd": "20241103"
+          },
+          "httpStatus": 200,
+          "pageSha256": "3132088be266be909a7cec61eac099de1ba25ab3327989eb3c8e2c0e12506278",
+          "responseSha256": "4a275a4e2b94295ba05d65fc4e64b7428ab05dc3975d2ace3122f611007d3010",
+          "responseBytes": 29121,
+          "resultStatus": "OK",
+          "rowCount": 50,
+          "matchingTerms": [
+            "tracer",
+            "트레이서",
+            "365"
+          ],
+          "noMatchDoesNotMeanZero": true,
+          "selectedRows": [],
+          "matchedIdentityRowCount": 0,
+          "excludedNumericSubstringCandidates": [
+            {
+              "artist": "BABYMONSTER",
+              "album": "DRIP",
+              "reason": "365仅出现在数值字段，团体/专辑身份不匹配，排除"
+            }
+          ],
+          "identityAcceptanceRule": "Require artist TRACER/트레이서 or exact album365, then independently match GleamMedia/Genie2024-11-05 identity. Numeric fields containing365 are not song/artist matches.",
+          "chartScope": "Circle Retail top50 only; distinct from Album chart and not complete group cumulative."
+        },
+        {
+          "checkedAt": "2026-10-29T08:48:55.761202+00:00",
+          "url": "https://circlechart.kr/page_chart/retail.circle?termGbn=week&yyyymmdd=20241110",
+          "endpoint": "https://circlechart.kr/data/api/chart/retail_list",
+          "parameters": {
+            "termGbn": "week",
+            "yyyymmdd": "20241110"
+          },
+          "httpStatus": 200,
+          "pageSha256": "cead742450c1fdc71d4e587681f3f4b7981fe8ad287580a618c8b2e3c65c1c59",
+          "responseSha256": "553d4607bac69d207b867b99ecc6a81b0ae6e7e4f3ac4a58a3c4bc2f34c18be0",
+          "responseBytes": 29117,
+          "resultStatus": "OK",
+          "rowCount": 50,
+          "matchingTerms": [
+            "tracer",
+            "트레이서",
+            "365"
+          ],
+          "noMatchDoesNotMeanZero": true,
+          "selectedRows": [],
+          "matchedIdentityRowCount": 0,
+          "excludedNumericSubstringCandidates": [
+            {
+              "artist": "Kep1er (케플러)",
+              "album": "The 6th Mini Album 〈TIPI-TAP〉",
+              "reason": "365仅出现在数值字段，团体/专辑身份不匹配，排除"
+            }
+          ],
+          "identityAcceptanceRule": "Require artist TRACER/트레이서 or exact album365, then independently match GleamMedia/Genie2024-11-05 identity. Numeric fields containing365 are not song/artist matches.",
+          "chartScope": "Circle Retail top50 only; distinct from Album chart and not complete group cumulative."
+        },
+        {
+          "checkedAt": "2026-10-29T08:48:59.803332+00:00",
+          "url": "https://circlechart.kr/page_chart/retail.circle?termGbn=day&yyyymmdd=20241105",
+          "endpoint": "https://circlechart.kr/data/api/chart/retail_list",
+          "parameters": {
+            "termGbn": "day",
+            "yyyymmdd": "20241105"
+          },
+          "httpStatus": 200,
+          "pageSha256": "44b065ede044563d33206f790fea307ebe4b968511ca99594fcc0f2851b3e556",
+          "responseSha256": "3e2d4aa86b3fa88ebcbba4c943c36ee9f850f4abc32d1633d423d6e14279e5d4",
+          "responseBytes": 45926,
+          "resultStatus": "OK",
+          "rowCount": 50,
+          "matchingTerms": [
+            "tracer",
+            "트레이서",
+            "365"
+          ],
+          "noMatchDoesNotMeanZero": true,
+          "selectedRows": [],
+          "matchedIdentityRowCount": 0,
+          "excludedNumericSubstringCandidates": [],
+          "identityAcceptanceRule": "Require artist TRACER/트레이서 or exact album365, then independently match GleamMedia/Genie2024-11-05 identity. Numeric fields containing365 are not song/artist matches.",
+          "chartScope": "Circle Retail top50 only; distinct from Album chart and not complete group cumulative."
+        }
+      ],
+      "newEvidence": {
+        "apiResponses": 4,
+        "successfulResponses": 4,
+        "returnedRowsAcrossQueries": 200,
+        "exactIdentityMatches": 0,
+        "newSalesQuantity": null,
+        "top50ScopeOnly": true,
+        "periodsOverlap": "月/周/日交叠；即使命中也不能未经版本和区间复算直接求和。"
+      },
+      "numericProposal": null,
+      "proposedAction": "销量仍null；研究记录具体4个成功API查询及覆盖范围，不写真实0或未发行实体。",
+      "remainingReason": "各榜只返回50名，榜外销量/商业实体SKU仍未知；没有匹配对象、条码与可采用销量行。四期无目标不是全期无销量证明。",
+      "boundedStop": "完成发行期1月/2周/1日的有限新数据路线；无确切实体新线索时不再盲扫其余日期。",
+      "needsUserHelp": false,
+      "unknownClosed": false
+    }
+  ],
+  "notSelectedThisPass": [
+    {
+      "key": "tracer.wins",
+      "reason": "本轮未发现较现有厂牌/发行目录/商店/节目归档更具体的不同一手路线，不重跑无新线索的同类搜索。"
+    },
+    {
+      "key": "witchx.sales",
+      "reason": "本轮未发现较现有厂牌/发行目录/商店/节目归档更具体的不同一手路线，不重跑无新线索的同类搜索。"
+    },
+    {
+      "key": "spia.sales",
+      "reason": "本轮未发现较现有厂牌/发行目录/商店/节目归档更具体的不同一手路线，不重跑无新线索的同类搜索。"
+    },
+    {
+      "key": "vcha.sales",
+      "reason": "本轮未发现较现有厂牌/发行目录/商店/节目归档更具体的不同一手路线，不重跑无新线索的同类搜索。"
+    },
+    {
+      "key": "vcha.wins",
+      "reason": "本轮未发现较现有厂牌/发行目录/商店/节目归档更具体的不同一手路线，不重跑无新线索的同类搜索。"
+    }
+  ],
+  "limits": [
+    "No full-period zero assertion. displayed0 remains fallback, observedValue remainsnull.",
+    "No Soridata/captcha/blocked-route bypass; no user browser, login, private export, writes, tests, app changes, handoff edits, or deployment.",
+    "SBS event metadata read; no claim of full video playback or scoreframe visual validation.",
+    "Circle Retail is not Circle Album; the4queryperiods overlap and are not additive."
+  ],
+  "applied": false
+}

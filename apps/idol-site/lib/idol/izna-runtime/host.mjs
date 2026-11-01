@@ -118,7 +118,7 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
       rating.dataset.iznaNativeFocus='open-rating';
       if(!ratingAllowed){const reason=doc.createElement('p');reason.id=root.getAttribute('data-astra-instance')+'--rating-pending';reason.textContent='此版本的评分关联尚未核验。';rating.setAttribute('aria-describedby',reason.id);section.append(reason);}
     }
-    if(section.childNodes.length)root.querySelector('main')?.append(section);
+    if(section.childNodes.length)(request.action==='open-member'?root.querySelector('[data-member-native-slot]'):root.querySelector('main'))?.append(section);
   };
   function onNavigate(detail) {
     if(dead)return;

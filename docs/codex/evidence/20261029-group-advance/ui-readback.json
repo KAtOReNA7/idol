@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T08:35:28.998Z",
+  "baselineCommit": "c80a60e3b328300300d24aa85f2b3c296778649e",
+  "status": "pass",
+  "method": "Actual group-information.mjs and TimelineReportedRecords.tsx loaded with current JSON through in-memory esbuild module transforms; real React renderToStaticMarkup for the two timeline variants. No fixture data or app-wide build.",
+  "browserAcceptance": false,
+  "statistics": {
+    "slug": "triples",
+    "observedValue": 2110833,
+    "rawDisplay": "2,110,833+",
+    "renderedMainValue": "2,110,833张",
+    "plusSignInMainMetric": false,
+    "displayQualification": "Existing metric template does not print +; lower-bound and not-global-complete language renders in source details.",
+    "lowerBound": true,
+    "asOf": "2026-06",
+    "weeklyAdditions": 11,
+    "newContribution": 2679,
+    "unexplainedDifference": 347956,
+    "visibleLowerBoundAndCutoff": true,
+    "visibleRemainingDifference": true,
+    "newVisibleSources": [
+      {
+        "title": "Circle Album Chart · 2024-W03 · EVOLution < ⟡ >",
+        "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=03&yearTime=3"
+      },
+      {
+        "title": "Circle Album Chart · 2024-W46 · Visionary Vision ＜Performante＞",
+        "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=46&yearTime=3"
+      },
+      {
+        "title": "Circle Album Chart · 2026-W01 · msnz ＜Beyond Beauty＞",
+        "url": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=01&yearTime=3"
+      }
+    ],
+    "safeVisibleSourceLinks": 31,
+    "htmlSha256": "2c3b2c0c43925510135994908b1fc7c668bf13f4bac5394ca57c13eb9ea4b8f6",
+    "onlyTripleSSalesChanged": true,
+    "noMemberOrScoreForms": true
+  },
+  "timelines": [
+    {
+      "slug": "atheart",
+      "variant": "shared",
+      "renderedRecords": 2,
+      "changedEventId": "e-atheart-aurora-second-hiatus-announcement",
+      "announcementDate": "2026-08-18",
+      "dateLabel": "官方公告日期",
+      "effectiveDate": null,
+      "boundary": "生效日期未确认；公告发布日期不等于已独立确认的实际暂停起始日。",
+      "officialSource": {
+        "url": "https://atheart.jp/contents/424319",
+        "label": "AtHeart JAPAN OFFICIAL SITE · 活动公告",
+        "publishedDate": "2026-08-18"
+      },
+      "safeVisibleSourceLinks": 3,
+      "canonicalSha256": "82dab6b7057818a60acb933f57617877eced2a664b0a64206f9a38a5c3bac853",
+      "canonicalBytesUnchanged": true,
+      "eventAndGroupIdsUnchanged": true,
+      "memberIdsUnchanged": true,
+      "htmlSha256": "1ab2411aa173a20a82b3bea570831a70f91eac1b46f871e096b4d115ed00080b",
+      "noMemberOrScoreForms": true
+    },
+    {
+      "slug": "bewave",
+      "variant": "bewave",
+      "renderedRecords": 1,
+      "changedEventId": "e-bewave-six-member-phase-end-announcement",
+      "announcementDate": "2025-09-04",
+      "dateLabel": "官方公告日期",
+      "effectiveDate": null,
+      "boundary": "生效日期未确认；不据此认定实际离队、解散或新团成立，也不新增成员关联。",
+      "officialSource": {
+        "url": "https://bewave.bstage.in/community/board/66a9fce8576cf7398f3f5828/post/68b95530fb5767200f7ec20d",
+        "label": "BEWAVE 官方 b.stage · GOLDDUST声明",
+        "publishedDate": "2025-09-04"
+      },
+      "safeVisibleSourceLinks": 4,
+      "canonicalSha256": "3ea86955021317aadf87bb6c8d569d9852b365a16500d323b2cf8c090b2b916d",
+      "canonicalBytesUnchanged": true,
+      "eventAndGroupIdsUnchanged": true,
+      "memberIdsUnchanged": true,
+      "htmlSha256": "1b56b2ba4eefd6a182313409da5dcf4a6557a4f6322b2fdb020e6b571e370fed",
+      "noMemberOrScoreForms": true
+    }
+  ],
+  "otherFiveTimelineRowsUnchanged": true,
+  "adoptionFileHashesMatchCurrentData": true,
+  "nonMutatingRender": true,
+  "applicationHashes": {
+    "apps/idol-site/data/group-statistics-completion-evidence.json": "51372099b264bbf2af2bf55ac6c934a7aa3da20fda4344872a2740f984eb4979",
+    "apps/idol-site/data/timeline-reported-records.json": "0480b00a3fa71b7307dff00c1438a0f7367d25d20115faafb85ad02bbf7a9973"
+  },
+  "harnessHistory": [
+    {
+      "result": "corrected-harness-expectation",
+      "detail": "First assertion expected lowercase datetime; actual React output uses dateTime. Read back actual time tags and reran with HTML-case-insensitive attribute check. No application change."
+    }
+  ],
+  "limits": [
+    "Server-rendered HTML readback only: no browser layout, screenshot, hydration or navigation acceptance.",
+    "Source hrefs and safe target/rel attributes were checked in rendered output; external websites were not reopened during this UI check.",
+    "No private data, owner identity, score history or live deployment was accessed."
+  ],
+  "actions": {
+    "applicationEdits": 0,
+    "testsModified": 0,
+    "fullBuilds": 0,
+    "servicesStarted": 0,
+    "privateWrites": 0,
+    "deployments": 0
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-10-29",
+  "decision": "do_not_replace",
+  "applicationDelta": [],
+  "runtimeFile": "apps/idol-site/data/public-group-recognition.json",
+  "runtimeGroupId": "rec28ldfRTiE4q",
+  "affectedFieldsIfFutureReplacement": [
+    "groups[HITGS].portraits[].src",
+    "groups[HITGS].portraits[].sourceImageUrl",
+    "groups[HITGS].portraits[].sourceUrl",
+    "groups[HITGS].portraits[].width/height/sha256",
+    "groups[HITGS].portraits[].sourceCrop/objectPosition",
+    "groups[HITGS].collectionConsistency/collectionNote",
+    "groups[HITGS].portraits[].photoSetId/photoSetTitle"
+  ],
+  "lookupScope": "lib/idol/public-group-recognition.ts only for exact workId/videoId/groupId without public credits; two generic works, 10 slots",
+  "workIds": [
+    "recvxIZy35rUeY",
+    "recvxIZy3525BF"
+  ],
+  "currentOriginalsAssessment": {
+    "files": 5,
+    "dimensions": "1000x1000 each",
+    "inspection": "五张均已逐张查看，脸清晰无遮挡，粉色格纹校服风格一致；部分背景不同，未证实际同次拍摄。",
+    "sourcePage": "https://kprofiles.com/project-h-2025-members-profile/",
+    "sourceCrop": "existing x125/y0/750x1000; display only; original files remain unchanged",
+    "keepCurrentCollectionNote": true,
+    "sha256Check": "5/5 retained original bytes equal current runtime manifest; group JSON equal before snapshot"
+  },
+  "candidateSets": [
+    {
+      "manifest": "candidate-manifest.json",
+      "files": 10,
+      "set": "Things we love : I",
+      "decision": "reject_as_replacement",
+      "reason": "具名同系列，但不同造型；IYOO第一张遮眼、VV第二张遮脸。任意挑5张会跨造型混搭，不能关闭同套/同拍摄待证。"
+    },
+    {
+      "manifest": "andasian-manifest.json",
+      "files": 5,
+      "set": "Things We Love : H / &ASIAN",
+      "decision": "reject_as_replacement",
+      "reason": "具名原文件仅453x680/680x453；Hyerin遮眼、Iyoo侧脸，Seojin/Seohee远景；不优于原有清晰校服组。"
+    },
+    {
+      "source": "https://kprofiles.com/forums/threads/official-hitgs-thread.50098/page-2",
+      "postId": "post-877454",
+      "set": "CHARIZZMA",
+      "filesDownloaded": 0,
+      "decision": "unqualified_mapping",
+      "reason": "5图帖子缺逐图姓名映射，不通过猜脸建立绑定。"
+    }
+  ],
+  "candidateOriginalRetention": "15 downloaded originals retained outside repository; hashes recorded in public manifests; no originals deleted or transformed",
+  "proposedApplicationPaths": [],
+  "nonClaims": [
+    "不是本作录音/出镜证据",
+    "不是全员同次拍摄通过",
+    "未生成/修复/放大/裁剪原件",
+    "未改成员页独立hitgs-member-portraits.json",
+    "未新增私人关系/评分/观看记录"
+  ]
+}

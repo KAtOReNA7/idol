@@ -54,7 +54,9 @@ export function withVerifiedVersionDisplay(catalog:Catalog,tables:NativeTables):
    const destination=currentWorks.get(target)!;
    const category=edge.relationType==='part_of_visual_sequence'?'系列影像':('sameSong' in edge&&edge.sameSong===true)?'其他版本':'混音关联';
    const item=links.get(target)??{workId:target,title:destination.song||destination.name,labels:[],categories:[]};
-   const label=labels[forward?0:1];if(!item.labels.includes(label))item.labels.push(label);if(!item.categories.includes(category))item.categories.push(category);links.set(target,item);
+   // A reviewed edge may name its exact version scopes; both identity fences above still apply.
+   const displayLabels='displayLabels' in edge?edge.displayLabels:undefined;
+   const label=displayLabels?.[forward?0:1]??labels[forward?0:1];if(!item.labels.includes(label))item.labels.push(label);if(!item.categories.includes(category))item.categories.push(category);links.set(target,item);
   }
   const tags=[...(tagRows.get(work.id)??[])];
   return tags.length||links.size?{...work,versionDisplay:{tags,links:[...links.values()]}}:work;

@@ -3,10 +3,12 @@ import {inspectSource,createArchive,stepArchive,archiveStatus,retryArchivePhotos
 import {backupManifest,readBackupFile} from './archive-backup';
 import {AppError} from './feishu';
 import {continueArchive} from './archive-continuation';
+import {stageOwnerPreflight} from './stage-owner-preflight';
 const id={type:'string',pattern:'^[a-f0-9-]{36}$'};
 const schema=(properties:Record<string,unknown>,required:string[]=[])=>({type:'object',properties,required,additionalProperties:false});
 const hint=(readOnlyHint:boolean)=>({readOnlyHint,destructiveHint:false,idempotentHint:true,openWorldHint:false});
 export const siteTools=[
+ {name:'idol_stage_owner_preflight',description:'Read live owner-only stage score emptiness, complete-journal target matches and exact published sources for 1–5 reviewed works. No ratings, notes, bindings or access changes. Returns a SHA-256 checked base64 envelope for the local guarded importer; keep it outside Git. Call immediately before importing the prepared batch; on size rejection retry fewer works, never substitute a public or stale snapshot.',inputSchema:schema({workIds:{type:'array',items:{type:'string',pattern:'^rec[A-Za-z0-9]+$'},minItems:1,maxItems:5,uniqueItems:true}},['workIds']),annotations:hint(true)},
  {name:'idol_cutover_prepare',description:'Prepare one final native shadow only after the same migration run has a complete independently downloaded and restored backup. Owner-only; preserves original Feishu and all ratings. Does not pause saves or activate.',inputSchema:schema({id,sourceRunId:id,report:{type:'object'}},['id','sourceRunId','report']),annotations:hint(false)},
  {name:'idol_cutover_prepare_step',description:'Prepare one bounded migration write: import the existing shadow, then read one bounded fixed-table schema or record page and persist its private checkpoint. Two complete independent stable rounds are required. No source switch, Feishu change, save pause, or rating action.',inputSchema:schema({id},['id']),annotations:hint(false)},
  {name:'idol_cutover_status',description:'Read the exact owner-only cutover state before resuming any uncertain request.',inputSchema:schema({id},['id']),annotations:hint(true)},
@@ -51,5 +53,6 @@ export async function callSiteTool(userId:string,name:string,args:unknown){const
  if(name==='idol_archive_retry_photos')return retryArchivePhotos(userId,a.id);
  if(name==='idol_backup_manifest')return backupManifest(userId,a.id);
  if(name==='idol_backup_read_file')return readBackupFile(userId,a.id,a.file,a.offset??0);
+ if(name==='idol_stage_owner_preflight')return stageOwnerPreflight(userId,a.workIds);
  throw new AppError('UNKNOWN_TOOL','工具不存在。',404);
 }

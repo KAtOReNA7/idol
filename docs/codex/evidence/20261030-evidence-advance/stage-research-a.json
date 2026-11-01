@@ -1,0 +1,502 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-30",
+  "baselineCommit": "553448da11498035aa19e01b7466ce6f50c9bd37",
+  "scope": "Six remaining stage works; bounded public research only. No app, image, source binding, private data or deployment changes.",
+  "queue": "docs/codex/evidence/20261029-next-followup/remaining-stage-ledger.json",
+  "policy": {
+    "repostsAllowed": true,
+    "officialBacklinkRequired": false,
+    "priority": ["regular_music_program", "dance_practice_fixed_camera_preferred_when_other_conditions_equal", "specifically_produced_performance"],
+    "required": ["exact_song", "language_and_arrangement", "complete_song_scope", "actual_participant_scope", "precise_video_identity"],
+    "excluded": ["concert_or_festival_or_other_event_as_formal_replacement", "excerpt_as_full_song", "altered_audio_as_original_version", "single_member_focus_as_full_group"],
+    "formalAdoption": "Requires parent-handled fresh authenticated owner export, empty target score, complete save journal and published source preimage; none accessed by this researcher.",
+    "titleOrDurationAloneProvesCompleteness": false,
+    "fullPlaybackOrAudioIndependentlyVerified": false,
+    "requestPreviouslyUnavailableUserLinksAgain": false
+  },
+  "summary": {
+    "worksReviewed": 6,
+    "qualifiedNewFormalVideos": 0,
+    "proposedPublicNoteUpdates": 2,
+    "stageGapsClosed": 0,
+    "imagesDownloadedOrChanged": 0,
+    "privateReads": 0,
+    "privateWrites": 0,
+    "deploymentActions": 0,
+    "absenceClaim": false
+  },
+  "proposedPublicNotes": [
+    {
+      "workId": "recvxyHuKM2Gwu",
+      "artist": "IVE",
+      "song": "ELEVEN -Japanese ver.-",
+      "target": "existing work searchReview.publicNote, collapsed by default; no new watchLead or alternative",
+      "text": "Sony 官方于 2022-10-07 公告列明，IVE 将在 10 月 14 日《MUSIC STATION》披露《ELEVEN -Japanese ver.-》；同期播后报道也记录了这次日语版表演。现有转载仍未核实完整首尾、音轨及成员全程范围，尚未选定可评分片源。",
+      "sourceUrls": [
+        "https://www.sonymusic.co.jp/artist/IVE/info/545880",
+        "https://s.rbbtoday.com/article/2022/10/14/202911.html?pickup_list_click7=true"
+      ],
+      "boundary": "Sony is a newly read independent official source for an already known program fact: the existing Korean-language alternative already cites the IVE site announcement. Sony text is a pre-broadcast announcement; the broadcast occurrence is supported separately by RBB's post-broadcast report. Neither verifies the BV candidate or six-person full-song scope.",
+      "noSourceBinding": true
+    },
+    {
+      "workId": "recvxyOz5XkyEY",
+      "artist": "ITZY",
+      "song": "Voltage",
+      "target": "existing work searchReview.publicNote, collapsed by default; keep both existing short alternatives",
+      "text": "ITZY 日本官网记录了 2022-04-09《Venue101》出演；Kstyle 的播后报道明确写到，该次节目表演了日本原创曲《Voltage》。目前仍未取得并核实完整单曲片源，既有官方短版不替代完整原曲，也不用于评分绑定。",
+      "sourceUrls": [
+        "https://www.itzyjapan.com/news/detail/93",
+        "https://kstyle.com/article.ksn?articleNo=2190597"
+      ],
+      "boundary": "The official schedule establishes the program/date only, not the song. Kstyle independently supplies the performed song and Japanese-original scope. Its member-by-member discussion concerns the talk segment and cannot establish each member throughout the performance. No exact new video was obtained.",
+      "noSourceBinding": true
+    }
+  ],
+  "records": [
+    {
+      "workId": "recvxyHuKM2Gwu",
+      "artist": "IVE",
+      "song": "ELEVEN -Japanese ver.-",
+      "priorEvidenceRead": [
+        "docs/codex/evidence/20261029-group-followup/groups-ive-purple.json",
+        "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "apps/idol-site/data/stages/supplements.json#/works/recvxyHuKM2Gwu"
+      ],
+      "priorConclusion": "Remaining exact Japanese version gap. Existing view-only alternative is Korean, and already references an IVE official Japanese program announcement; do not upgrade it or claim the program fact was wholly new.",
+      "newRoute": "Release-label announcement and a contemporaneous post-broadcast report, then exact 221014 repost discovery rather than inferring language from Japanese location.",
+      "directBodySources": [
+        {
+          "url": "https://www.sonymusic.co.jp/artist/IVE/info/545880",
+          "publisher": "Sony Music Japan",
+          "publicationDate": "2022-10-07",
+          "readResult": "Readable body, lines 9-24",
+          "finding": "Official announcement explicitly names ELEVEN -Japanese ver.- for 2022-10-14 21:00 MUSIC STATION. It is advance notice, not a full-video verification."
+        },
+        {
+          "url": "https://s.rbbtoday.com/article/2022/10/14/202911.html?pickup_list_click7=true",
+          "publisher": "RBB TODAY",
+          "publicationDate": "2022-10-14",
+          "readResult": "Readable body, lines 56-77",
+          "finding": "Post-broadcast report says IVE performed the Japanese version on that episode. Its six-member group introduction and unrelated The Fact Music Awards photo do not verify the scope or poster of a particular repost."
+        },
+        {
+          "url": "https://www.bilibili.tv/video/4796784718910996",
+          "readResult": "Readable public page, lines 8-19; player not reviewed",
+          "finding": "Title explicitly identifies a Real Mic Mute / mute-scene audio edit. Rejected for original-audio matching, independently of uploader officialness. Premium label is displayed."
+        }
+      ],
+      "candidates": [
+        {
+          "url": "https://www.bilibili.com/video/BV19D4y1r7c6/",
+          "bvid": "BV19D4y1r7c6",
+          "cid": null,
+          "page": null,
+          "discoveryTitle": "IVE ELEVEN-221014",
+          "readScope": "Search-index discovery only. One direct open returned HTTP 412; stopped this path without retry or bypass.",
+          "qualified": false
+        }
+      ],
+      "confirmed": ["Precise Japanese version is named in an official program announcement", "Separate contemporaneous report describes its broadcast performance"],
+      "unconfirmed": ["BV identity beyond BV number", "Exact audio and arrangement of the repost", "Full beginning and end", "Actual participants throughout", "Current playable full video"],
+      "decision": "Propose one narrow collapsed program note only; retain stage gap."
+    },
+    {
+      "workId": "recvxyOz5XkyEY",
+      "artist": "ITZY",
+      "song": "Voltage",
+      "priorEvidenceRead": [
+        "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "apps/idol-site/data/stages/supplements.json#/works/recvxyOz5XkyEY"
+      ],
+      "priorConclusion": "Existing mH4CIO_YArc and 1_sylBku10M are short view-only alternatives. Prior official 5uQuUCW-9aI metadata is 160 seconds versus original release about 221 seconds. No short candidate is upgraded.",
+      "newRoute": "NHK Venue101 episode-specific archive and post-broadcast reporting, rather than rerecommending the Special Dance Clip.",
+      "directBodySources": [
+        {
+          "url": "https://www.itzyjapan.com/schedule/list/9?sort=desc",
+          "publisher": "ITZY Japan / Warner Music Japan",
+          "readResult": "Readable public schedule, line 27; followed its specific detail link",
+          "finding": "Official schedule lists 2022-04-09 Venue101 appearance."
+        },
+        {
+          "url": "https://www.itzyjapan.com/news/detail/93",
+          "publisher": "ITZY Japan / Warner Music Japan",
+          "readResult": "Readable body, lines 16-26",
+          "finding": "Official entry names NHK Venue101 and 4/9 23:00-23:30. It does not name Voltage."
+        },
+        {
+          "url": "https://kstyle.com/article.ksn?articleNo=2190597",
+          "publisher": "Kstyle",
+          "publicationDate": "2022-04-10",
+          "readResult": "Readable body, lines 97-108",
+          "finding": "Post-broadcast report identifies the April 9 first episode and the Japanese-original Voltage performance after the talk segment. The five individual names in the talk description do not independently establish whole-song participation."
+        },
+        {
+          "url": "https://k-entame.jp/archives/77432",
+          "publisher": "K-entame",
+          "readResult": "Readable body, lines 114-124",
+          "finding": "Discovery bridge to Venue101 and an embedded NHK announcement; secondary embedded text only."
+        }
+      ],
+      "restrictedRoutes": [
+        {"url": "https://twitter.com/nhk_venue101/status/1511704006485282822?ref_src=twsrc%5Etfw", "result": "HTTP 403; no retry or identity/region change"},
+        {"url": "https://tower.jp/article/news/2022/04/05/tg007", "result": "HTTP 403; no retry or alternate-host bypass"}
+      ],
+      "confirmed": ["Official Venue101 appearance date", "Post-broadcast report identifies Voltage as the performed Japanese-original song"],
+      "unconfirmed": ["Precise full-video object", "Uncut original arrangement", "Full-song actual participant scope", "Independent playback/audio verification"],
+      "decision": "Propose one narrow collapsed program note only; retain stage gap and existing short alternatives."
+    },
+    {
+      "workId": "recvxyHuKMh5bM",
+      "artist": "IVE",
+      "song": "I WANT",
+      "priorEvidenceRead": [
+        "docs/codex/evidence/20261029-group-followup/groups-ive-purple.json",
+        "apps/idol-site/data/stages/supplements.json#/works/recvxyHuKMh5bM"
+      ],
+      "priorConclusion": "Existing Naver/TVDaily Pepsi Festa alternative is an event recording; official replay region restriction and chapters remain historical evidence, not a formal regular-program source.",
+      "newRoute": "Korean Pepsi/Starship performance announcement route to distinguish purpose-shot performance from MV and chorus challenge.",
+      "directBodySources": [
+        {
+          "url": "https://www.tenasia.co.kr/article/2023071460364",
+          "publisher": "TenAsia",
+          "publicationDate": "2023-07-14",
+          "readResult": "Readable body, lines 35-42",
+          "finding": "The reported official July 13 upload is explicitly a YouTube Shorts dance challenge performed to the chorus, ending in greetings. The performance wording does not identify a full-song performance video."
+        }
+      ],
+      "confirmed": ["This specific newly examined promotional-performance report concerns a chorus challenge"],
+      "unconfirmed": ["Any newly qualifying complete program, practice or dedicated performance"],
+      "decision": "No app proposal. Reject the challenge as full-song evidence; keep existing event reference and unresolved formal-stage gap."
+    },
+    {
+      "workId": "recvxyOz5X6G1q",
+      "artist": "NMIXX",
+      "song": "Caution",
+      "priorEvidenceRead": [
+        "docs/codex/evidence/20261028-post-v200/stages-a/member-version-candidates.json",
+        "docs/codex/evidence/20261029-group-followup/groups-ive-purple.json"
+      ],
+      "priorConclusion": "The earlier behind-the-scenes tZO08cGQxM4 does not prove a standalone complete performance or its participant scope.",
+      "newRoute": "Current first-party NMIXX Japan MOVIE catalog and exact outbound video link, plus bounded live/performance discovery.",
+      "directBodySources": [
+        {
+          "url": "https://nmixxjapan.com/s/222o/?ima=1513",
+          "publisher": "NMIXX Japan / JYP / Warner Music Japan",
+          "readResult": "Readable body, lines 30-35",
+          "finding": "Current public MOVIE section links NMIXX, Anderson .Paak - Caution. The separate member profile section is not performance-participation evidence."
+        },
+        {
+          "url": "https://nmixxjapan.com/s/222o/diary/movie_os/list?ima=1734",
+          "publisher": "NMIXX Japan / JYP / Warner Music Japan",
+          "readResult": "Readable body, lines 8-19; page 1 of 3 only",
+          "finding": "The Caution entry points to eJd4ii5avNw. This inspected catalog page does not label it an independent practice/performance. The rest of the catalog was not exhaustively audited."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=eJd4ii5avNw&feature=youtu.be",
+          "readResult": "Followed the official link; only generic YouTube shell returned",
+          "finding": "No usable full description, duration, player verification or audio review obtained. No retry or bypass."
+        }
+      ],
+      "confirmed": ["Current first-party catalog links exact video eJd4ii5avNw"],
+      "unconfirmed": ["A separate eligible complete stage", "Actual collaboration/member performance scope", "Full original audio in an eligible video"],
+      "decision": "No app proposal or candidate upgrade. Preserve gap; catalog link alone does not establish an eligible stage."
+    },
+    {
+      "workId": "recvxyOz5XsgVc",
+      "artist": "NMIXX",
+      "song": "Sprinkle Party",
+      "priorEvidenceRead": [
+        "docs/codex/evidence/20261029-group-followup/groups-ive-purple.json",
+        "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json"
+      ],
+      "priorConclusion": "Existing Bugs/Genie evidence distinguishes Hey Gabby Dance Video from Sprinkle Party MV. Already adopted Hey Gabby must not be reused for this song.",
+      "newRoute": "Exact Korean title plus performance terminology to test whether reported performance releases were assigned to this song.",
+      "directBodySources": [
+        {
+          "url": "https://www.newsis.com/view/NISX20220518_0001876354",
+          "publisher": "Newsis",
+          "publicationDate": "2022-05-18",
+          "readResult": "Readable body, lines 75-80",
+          "finding": "Article explicitly assigns the performance video to Hey Gabby and the May 5 music video to Sprinkle Party. It does not announce a separate Sprinkle Party performance. This corroborates the previous conclusion rather than adding a newly usable video."
+        }
+      ],
+      "confirmed": ["The newly followed performance-search result refers to the already adopted different song"],
+      "unconfirmed": ["Separate full Sprinkle Party eligible performance", "Precise eligible video identity and participant scope"],
+      "decision": "No new adoptable evidence; keep gap, without claiming that no performance exists."
+    },
+    {
+      "workId": "recvxyHuKMZLFT",
+      "artist": "aespa",
+      "song": "KISS N TELL",
+      "priorEvidenceRead": [
+        "docs/codex/evidence/20261029-multiplatform/research-japan.json",
+        "docs/codex/evidence/20261028-post-v200/stages-b/official-program-followup.json"
+      ],
+      "priorConclusion": "Artist/NTV archive already establishes the 2026-09-11 broadcast-day Studio Live. Existing BiliTV title does not establish full audio, participant scope or mainland BV/CID/P. Nonofficial upload is no longer a categorical exclusion.",
+      "newRoute": "Previously unvisited Weibo exact repost and a broadcast-log page; do not duplicate existing NTV public note.",
+      "directBodySources": [
+        {
+          "url": "https://datazoo.jp/n/KISS%2BN%2BTELL-aespa/25382745",
+          "publisher": "TV de Tazo / Wire Action",
+          "readResult": "Readable body, lines 29-34",
+          "finding": "Secondary TV log marks 2026-09-12 01:03-01:06 as the Studio Live item. These minute-rounded broadcast labels are neither exact source boundaries nor net song duration. They do not justify clipping or prove completeness."
+        }
+      ],
+      "candidates": [
+        {
+          "url": "https://weibo.com/2/detail/5342155482333369",
+          "readScope": "Search index claims BUZZ RHYTHM 02 KISS N TELL complete stage and 02:44; direct open was inaccessible via the connected tool.",
+          "qualified": false,
+          "reason": "No readable actual post/video metadata or full playback; indexed complete-stage wording is unverified. Do not retry through login, alternate identity or proxy."
+        }
+      ],
+      "confirmed": ["A directly read secondary broadcast log narrows the reported program item to a minute-rounded 01:03-01:06 window"],
+      "unconfirmed": ["Exact playable video identity and per-video scope", "Original Japanese audio and arrangement", "Complete beginning/end", "Four-member whole-song participation"],
+      "decision": "No duplicate public note and no clip/candidate upgrade. Keep gap and old program evidence."
+    }
+  ],
+  "accessBoundaries": {
+    "mainlandBilibili": "One newly discovered page returned HTTP 412. No further mainland page/API requests after that denial in this pass.",
+    "twitterAndTower": "HTTP 403 stopped those exact routes; no alternate host, cookie, user-agent or identity workaround.",
+    "weibo": "Direct exact post could not be opened; search text retained only as discovery, not confirmed video evidence.",
+    "youtube": "The one followed Caution link returned a generic shell, not usable playback evidence.",
+    "otherFailure": {"url": "https://4sashi.com/page/477/", "result": "Not accessible via the connected tool; no downloads or retry"},
+    "originalImages": "No image download, replacement, crop or fabricated poster. RBB's illustrative awards photo explicitly belongs to a different event and is not proposed."
+  },
+  "completion": "Bounded six-work pass finished. Two narrow program-note suggestions are reviewable; no exact new source meets all adoption conditions. Unresolved items remain, without repeating the user's unavailable-link or BEEP-boundary questions.",
+  "newAccessFollowup": {
+    "checkedDate": "2026-10-30",
+    "priorFileSha256": "1cc659b7d1cd52d1d1b55d556f27bba99433b02d60145352501affe726156ffe",
+    "reason": "Parent reported a successful normal public Bilibili view request for ELEVEN and authorized at most three bounded additional routes. Earlier completed research remains an as-of historical record, not the final application state.",
+    "parentReportedStateNotIndependentlyReverifiedHere": {
+      "workId": "recvxyHuKM2Gwu",
+      "bvid": "BV19D4y1r7c6",
+      "page": 1,
+      "cid": "867429881",
+      "wholePageDurationSeconds": 307,
+      "formalAdoptionHandledByParent": true,
+      "localSourceCount": 501,
+      "deployed": false,
+      "boundary": "Parent handled human confirmation and fresh owner safeguards. This follow-up does not reproduce raw human replies, private export contents or claim independent review of that adoption. Do not reuse original unresolved wording as current ELEVEN application status."
+    },
+    "routes": [
+      {
+        "route": 1,
+        "workId": "recvxyHuKMZLFT",
+        "kind": "one_normal_public_search_type_get",
+        "checkedAt": "2026-10-30T04:03:22.449476+00:00",
+        "requestUrl": "https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword=aespa+KISS+N+TELL+260912&page=1",
+        "httpStatus": 412,
+        "bodyBytes": 3400,
+        "bodySha256": "e7badcc8c88ee24673ace7d93d15543ef41a0f6db1f93d17a2b1fe8ef6d8ee01",
+        "jsonParsed": false,
+        "result": "No search data returned. Stopped this API search route; no retries, cookies, authentication, user-agent changes or proxy/identity workarounds."
+      },
+      {
+        "route": 2,
+        "workId": "recvxyHuKMZLFT",
+        "kind": "one_independent_connected_public_index_search",
+        "queries": [
+          "\"aespa\" \"KISS N TELL\" \"260912\" site:bilibili.com/video",
+          "\"aespa\" \"KISS N TELL\" \"BV\" \"舞台\""
+        ],
+        "indexResultUrl": "https://search.bilibili.com/all?keyword=%23Aespa%23",
+        "readScope": "Connector search-result body only; no successful direct Bilibili search-page read or video metadata acquisition claimed.",
+        "observedDiscoveryOnly": [
+          {"title": "〖4K60帧〗aespa - KISS N TELL(260912)", "uploaderLabel": "XIANVXIA", "indexedDuration": "03:04"},
+          {"title": "〖4K舞台〗aespa KISS N TELL 260912", "uploaderLabel": "BBSW0412", "indexedDuration": "02:51"},
+          {"title": "新舞台美疯了! aespa 260912 KISS N TELL 高清全场", "uploaderLabel": "Okkkkk0k", "indexedDuration": "05:30"}
+        ],
+        "result": "Same three discovery leads as prior research; no exact BV, CID or page exposed. Durations are indexed labels, not verified song length, completeness or audio evidence. No candidate promoted."
+      },
+      {
+        "route": 3,
+        "workId": "rec28ldfRTrKqc",
+        "artist": "ILLIT",
+        "song": "NOT ME",
+        "kind": "one_normal_public_view_get_for_previously_indexed_exact_bv",
+        "priorEvidence": "docs/codex/evidence/20261029-multiplatform/research-other.json",
+        "checkedAt": "2026-10-30T04:04:24.544047+00:00",
+        "requestUrl": "https://api.bilibili.com/x/web-interface/view?bvid=BV1bP7L6qE7T",
+        "httpStatus": 412,
+        "bodyBytes": 3400,
+        "bodySha256": "e7badcc8c88ee24673ace7d93d15543ef41a0f6db1f93d17a2b1fe8ef6d8ee01",
+        "jsonParsed": false,
+        "result": "No video/page data returned. Stopped the detail route. The collection's prior practice/fancam umbrella title still does not prove NOT ME is a practice rather than concert material; exact P/CID and complete participant/audio scope remain unconfirmed."
+      }
+    ],
+    "outcome": {
+      "routesAttempted": 3,
+      "newExactVideoIdentitiesObtained": 0,
+      "newUserViewingCandidates": 0,
+      "qualifiedFormalSources": 0,
+      "appChangesByThisResearcher": 0,
+      "privateReads": 0,
+      "privateWrites": 0,
+      "imageChanges": 0,
+      "deploymentActions": 0,
+      "action": "Stop this bounded follow-up. No additional viewing request or duplicate question is warranted from these unchanged discovery leads."
+    }
+  },
+  "finalNewGroupPass": {
+    "checkedDate": "2026-10-30",
+    "priorFileSha256": "c596eb9c87827103f0f5c2a222982428aebce2d842bdd66dc13c4bd40471aa09",
+    "scope": "Four different still-open works, two exact queries per work and the strongest available original-page follow-through. No Bilibili API requests or app changes in this pass.",
+    "queue": "docs/codex/evidence/20261030-evidence-advance/remaining-stage-ledger.json",
+    "queueSha256AtRead": "1c96c95210c4431b76c872b83b80df1ba037aad624e429718345d61ed345614e",
+    "priorResearchRead": [
+      "docs/codex/evidence/20261029-group-followup/groups-baby-itzy.json",
+      "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json"
+    ],
+    "commonDirectSources": [
+      {
+        "url": "https://yg-life.com/archives/category/bm?lang=en",
+        "publisher": "YG LIFE",
+        "readResult": "Directly readable first-party category page, including target links followed below",
+        "finding": "The current page distinguishes other songs' dedicated performance uploads from SUPA DUPA LUV and Love In My Heart M/V entries. Its inspected page is not an exhaustive proof that other target performances do not exist."
+      },
+      {
+        "url": "https://kpopdiscover.com/en/groups/babymonster/videos/",
+        "publisher": "KPOP DISCOVER, third-party index",
+        "readResult": "Directly readable body; target song sections and outgoing links inspected",
+        "finding": "Ghost is indexed as Promotion Video and Lyric Video; SUPA DUPA LUV as MV plus a separate Leemujin listing; Love In My Heart as MV. Directory labels and counts are discovery aids, not verified completeness, participant scope or absence evidence."
+      }
+    ],
+    "records": [
+      {
+        "workId": "rec28ldfRTrLow",
+        "artist": "BABYMONSTER",
+        "song": "Ghost",
+        "currentQueueCategory": "场合或素材类型不符",
+        "targetVersion": "Ghost OST Promotion Video original work; sRLbqYkoaLc",
+        "priorConclusion": "Known Kyocera Dome versions are tour material; the prior THE FIRST TAKE news relates to DRIP, not Ghost. Fan choreography does not establish BABYMONSTER performance.",
+        "queries": [
+          "BABYMONSTER \"Ghost\" \"dance practice\" -concert -cover",
+          "BABYMONSTER \"Ghost\" \"performance\" site:ygfamily.com"
+        ],
+        "newRoute": "Current video-format directory and its specific lyric-video link, checking whether a separate practice/performance was actually identified.",
+        "sourceObservations": [
+          {
+            "url": "https://kpopdiscover.com/en/groups/babymonster/videos/",
+            "readScope": "Direct body, target section around lines 159-167",
+            "finding": "Third-party catalog exposes only Promotion Video and Lyric Video in the inspected Ghost section. These classifications do not establish or exclude other performances."
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=lW9pPs2WOAM",
+            "readScope": "Exact outgoing lyric-video link was followed once; fetch failed",
+            "finding": "New exact identity is a lyric-video discovery lead, not an eligible stage. No usable source description, playback, language or participant evidence was obtained; no retry."
+          }
+        ],
+        "newQualifiedViewingSource": null,
+        "unconfirmed": ["Full eligible original-version performance", "Actual group participation", "Complete beginning/end and audio"],
+        "decision": "Retain gap. Do not propose the lyric video, tour material or another song's THE FIRST TAKE as a stage."
+      },
+      {
+        "workId": "rec28ldfRTrKWv",
+        "artist": "BABYMONSTER",
+        "song": "SUPA DUPA LUV",
+        "currentQueueCategory": "参与者范围不符或未证",
+        "targetVersion": "Original group work represented by SbdOIdg2McI; no separately requested remix or solo version",
+        "priorConclusion": "Existing Leemujin lead is individual/short scope; MV, audio, making and tour uploads do not supply the required full-group eligible performance. A group work is not converted into a solo under the member-version fallback.",
+        "queries": [
+          "BABYMONSTER \"SUPA DUPA LUV\" \"performance\" -concert -cover",
+          "BABYMONSTER \"SUPA DUPA LUV\" \"무대\" \"2026\""
+        ],
+        "newRoute": "Current YG original video archive with the song's exact entry, separated from adjacent PSYCHO/WE GO UP performance entries.",
+        "sourceObservations": [
+          {
+            "url": "https://yg-life.com/archives/195938?lang=en",
+            "publisher": "YG LIFE",
+            "publicationDate": "2025-12-19",
+            "readScope": "Direct original body, lines 22-28",
+            "finding": "Song-specific official entry is explicitly M/V with an embedded YouTube player. It is not a separate performance/practice announcement."
+          },
+          {
+            "url": "https://kpopdiscover.com/en/groups/babymonster/videos/",
+            "readScope": "Direct third-party body, song and program sections",
+            "finding": "The Leemujin listing reappears with the original MV. It is the already known lead, not new evidence of full-group participation."
+          }
+        ],
+        "newQualifiedViewingSource": null,
+        "unconfirmed": ["Full original-version group performance in an eligible format", "Performer scope beyond the old individual lead"],
+        "decision": "Retain gap; no new public note, watch lead or formal-source proposal."
+      },
+      {
+        "workId": "rec28ldfRTrAUD",
+        "artist": "BABYMONSTER",
+        "song": "Love In My Heart",
+        "currentQueueCategory": "场合或素材类型不符",
+        "targetVersion": "Original group work represented by 1kXLsrun51s",
+        "priorConclusion": "Earlier YG news announced planned promotions, not an acquired full program video. Known tour recordings and Topic live audio do not qualify as a regular program/practice/produced performance; BILLIONAIRE performance is a different song.",
+        "queries": [
+          "BABYMONSTER \"Love In My Heart\" \"Special\" performance -concert -cover",
+          "BABYMONSTER \"Love In My Heart\" \"무대\" \"방송\""
+        ],
+        "newRoute": "Current YG song-specific archive and performance-format catalog, checking the actual linked object rather than planned-promotion wording.",
+        "sourceObservations": [
+          {
+            "url": "https://yg-life.com/archives/191853?lang=en",
+            "publisher": "YG LIFE",
+            "publicationDate": "2024-12-16",
+            "readScope": "Direct original body, lines 22-28",
+            "finding": "The specific original entry is the M/V with an embedded YouTube player. Other performance entries on the category page belong to different songs."
+          },
+          {
+            "url": "https://kpopdiscover.com/en/groups/babymonster/videos/",
+            "readScope": "Direct third-party body, Love In My Heart section around lines 197-205",
+            "finding": "Inspected song section links the MV. No exact eligible performance identity was supplied by this route; a limited catalog is not nonexistence proof."
+          }
+        ],
+        "newQualifiedViewingSource": null,
+        "unconfirmed": ["Precise independent eligible full-video object", "Original audio/arrangement and full participant scope"],
+        "decision": "Retain gap; no repeat import of the original MV, tour or Topic live audio."
+      },
+      {
+        "workId": "rec28ldfRTrK1S",
+        "artist": "ILLIT",
+        "song": "little monster",
+        "currentQueueCategory": "场合或素材类型不符",
+        "targetVersion": "Original bomb Brand Film / little monster MV work, xRU1XXHIpIc",
+        "priorConclusion": "Known PRESS START performance and Brand Film making material do not establish a separate eligible practice or regular program. Weverse Magazine 1789 concerns the concert.",
+        "queries": [
+          "ILLIT \"little monster\" \"dance practice\" -cover -concert",
+          "ILLIT \"little monster\" \"퍼포먼스\" \"영상\""
+        ],
+        "newRoute": "Current song-by-song video directory and its exact outward link; distinguish neighboring oops!/jellyous dance/performance entries from this work.",
+        "sourceObservations": [
+          {
+            "url": "https://kpopdiscover.com/en/groups/illit/videos/",
+            "publisher": "KPOP DISCOVER, third-party index",
+            "readScope": "Direct readable body, little monster section around lines 155-163",
+            "finding": "The inspected little monster section links only its MV; the adjacent practice/performance labels belong to other songs. This limited catalog does not prove no other performance exists."
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=xRU1XXHIpIc",
+            "readScope": "Followed exact outward link once; generic YouTube shell only",
+            "finding": "Link resolves to the already known Brand Film identity. No new complete practice/performance, readable description or independent playback evidence obtained; no retry."
+          }
+        ],
+        "newQualifiedViewingSource": null,
+        "unconfirmed": ["Separate eligible original-version complete performance", "Actual participant scope throughout the song", "Full audio and beginning/end"],
+        "decision": "Retain gap. No concert-to-practice reclassification, original-MV duplication or user viewing request."
+      }
+    ],
+    "outcome": {
+      "stillOpenWorkIdsChecked": 4,
+      "queriesPerWork": 2,
+      "newQualifiedViewingSources": 0,
+      "formalStageGapsClosed": 0,
+      "newPublicNoteSuggestions": 0,
+      "appChanges": 0,
+      "privateReads": 0,
+      "privateWrites": 0,
+      "imageChanges": 0,
+      "bilibiliApiRequests": 0,
+      "deploymentActions": 0,
+      "absenceClaim": false,
+      "conclusion": "All four bounded routes finished without new qualifying stage evidence. Keep the current queue and stop this group pass."
+    }
+  }
+}

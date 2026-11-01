@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T08:47:07.170366Z",
+  "baselineCommit": "c80a60e3b328300300d24aa85f2b3c296778649e",
+  "change": "reviewed global-data dependency hashes only",
+  "path": "apps/idol-site/scripts/udtt-private-build-assets-manifest.json",
+  "beforeFileSha256": "d1903dec3a45abee87d9dddc4836e129af290ca067bf66fa17a6f89d2eae4215",
+  "afterFileSha256": "35c1af990bcf94f80d546028381c1e1fcf586c72e82401de11d737e26c238b1f",
+  "changes": [
+    {
+      "path": "data/timeline-reported-records.json",
+      "before": {
+        "bytes": 8217,
+        "sha256": "309d0ab6b726119eb87787afec9267d19409329c7e1d6f63a790428020729f5c"
+      },
+      "after": {
+        "bytes": 9053,
+        "sha256": "0480b00a3fa71b7307dff00c1438a0f7367d25d20115faafb85ad02bbf7a9973"
+      }
+    },
+    {
+      "path": "data/group-statistics-completion-evidence.json",
+      "before": {
+        "bytes": 449825,
+        "sha256": "d9cbdd9d3f58d5da5b4c6535824a5dfcdd0cdc08761081d8436e1e55111b6a97"
+      },
+      "after": {
+        "bytes": 456099,
+        "sha256": "51372099b264bbf2af2bf55ac6c934a7aa3da20fda4344872a2740f984eb4979"
+      }
+    }
+  ],
+  "otherManifestFieldsUnchanged": true,
+  "udttRecordsAndRuntimeUnchanged": true,
+  "evidence": "ui-readback.json"
+}

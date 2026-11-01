@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T08:26:28.201Z",
+  "baseline": "c80a60e3b328300300d24aa85f2b3c296778649e",
+  "workId": "recvxyOz5Xo5fW",
+  "group": "NMIXX",
+  "song": "Hey Gabby!",
+  "originalVideoId": "xBrrdxtyWHw",
+  "candidateVideoId": "XSpYaEdpKxY",
+  "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-ive-purple-heygabby-candidate.json",
+  "priorState": "PR47 restored an official Performance research candidate, with Bugs album-directory and Newsis evidence. No formal source or score binding.",
+  "newFindings": {
+    "bugsVideoId": "608040",
+    "bugsVideoUrl": "https://music.bugs.co.kr/mv/608040",
+    "genieTrackId": "96664763",
+    "genieVideoId": null,
+    "genieVideoIdStatus": "Not exposed in the normally readable album/song text; not guessed.",
+    "danceDirectoryDurationSeconds": 120,
+    "correspondingKoreanTrackDurationSeconds": 119,
+    "exactAllMembersScopeConfirmed": false,
+    "independentFullPlaybackVerified": false,
+    "independentAudioMatchVerified": false
+  },
+  "sources": [
+    {
+      "url": "https://music.bugs.co.kr/mv/608040",
+      "method": "Normal web-extracted body read.",
+      "fields": {
+        "title": "안녕 개비! (Sung by NMIXX) (Dance Video)",
+        "artist": "NMIXX",
+        "registeredAt": "2022-05-09",
+        "category": "정규",
+        "ageRating": "전체 관람가"
+      },
+      "finding": "独立 Dance Video 对象，区别于原 MV 与预告。",
+      "limitation": "정규 是常规视频类别，전체 관람가 是全年龄评级；两者都不是完整播放验收或全团出镜证明。"
+    },
+    {
+      "url": "https://music.bugs.co.kr/album/20465227",
+      "method": "Normal web-extracted album body read.",
+      "fields": {
+        "danceVideo": "02:00 / 2022-05-09",
+        "originalMV": "02:01 / 2022-05-02",
+        "teaser": "00:21 / 2022-05-01"
+      },
+      "finding": "同专辑将 Dance Video、原 MV、Teaser 分列；不借其他 MV 或 Extra Cut 替代此候选。"
+    },
+    {
+      "url": "https://www.genie.co.kr/detail/songInfo?xgnm=96664763",
+      "method": "Normal web-extracted exact-song body read.",
+      "fields": {
+        "track": "안녕 개비! (Sung by NMIXX)",
+        "trackDuration": "01:59",
+        "danceVideo": "02:00",
+        "originalMV": "02:01",
+        "teaser": "00:22"
+      },
+      "finding": "精确韩文曲目正文含韩文歌词，同曲视频区列独立 Dance Video。120 秒视频与119秒音源没有明显节选时长冲突。",
+      "limitation": "这是目录层面的同曲/语种/时长支持，没有独立比对视频音轨与首尾。预告在两个平台的21/22秒差异不混入主候选时长。"
+    },
+    {
+      "url": "https://www.genie.co.kr/detail/albumInfo?axnm=82662844",
+      "method": "Normal web-extracted album body read.",
+      "finding": "目录标2022-05-02发行、VLENDING制作发行、Universal合作；介绍明确七人团体时期。",
+      "limitation": "七人介绍属于该发行的团体背景，未明言608040/XSpYaEdpKxY中七人全程一起表演。"
+    },
+    {
+      "url": "https://sports.khan.co.kr/article/202205020828003",
+      "method": "Read original publisher article body dated 2022-05-02.",
+      "finding": "引用发行商的发布计划，明确 Hey Gabby 编舞视频将于5月9日18时在VLENDING YouTube发布，区别于5月2日原MV及5月5日另一曲MV。",
+      "limitation": "没有七人一起表演的明确描述，也不代替首尾/音轨核验。"
+    },
+    {
+      "url": "https://www.newsis.com/view/NISX20220518_0001876354",
+      "method": "Read original publisher article body dated 2022-05-18.",
+      "finding": "正文引用VLENDING，确认官方频道已发布 Hey Gabby Performance video。",
+      "limitation": "只写团体参与和独立视频发行，没有七名成员一起表演的声明；配图是团体资料图，不当精确Dance Video证据。"
+    },
+    {
+      "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=11926",
+      "method": "Read contemporaneous distributor feature body.",
+      "finding": "原MV幕后图说具名Sullyoon、Haewon、Lily、Kyujin、Jiwoo、Jinni；歌曲介绍提及Bae、Jiwoo、Haewon的演唱片段。",
+      "limitation": "这些姓名各有原MV拍摄/部分声音描述范围，不能合并推定Performance视频的完整七人画面或全部录音署名。没有下载或采用其照片。"
+    }
+  ],
+  "coverObservation": {
+    "sourceContext": "Bugs album 20465227 lists this exact thumbnail beside the Dance Video 02:00 item.",
+    "url": "https://image.bugsm.co.kr/mvhd/images/224/6080/608040.jpg?version=20220625011658",
+    "method": "One normal public GET, then view original returned image without resize or modification; temporary file outside repository.",
+    "httpStatus": 200,
+    "bytes": 15916,
+    "dimensions": [
+      224,
+      126
+    ],
+    "sha256": "815e0843132b3fe8275fee1b8ef7a07a414a2bf936ee0f3a3f17e2607f913613",
+    "observedVisiblePeople": 3,
+    "identityInference": false,
+    "conclusion": "封面可见3名真人，只支持有人物表演画面，不能证明七人全组范围；未猜姓名。"
+  },
+  "exactYouTubeLinkScope": "沿用已存精确Performance链接发现证据；本轮没有访问YouTube、没有证明当前可播放、没有获取YouTube视频字节。Bugs/Genie目录没有提供可读的YouTube ID直接绑定。",
+  "accessLimits": [
+    "已读公开web正文；额外普通HTTP原始HTML请求中Bugs专辑及MV页均403，未重试、改header或代理。",
+    "Genie两次不同页面的普通HTTP GET返回200但只有397字节，未得到可提取视频ID的HTML；未尝试私有接口或身份会话。",
+    "只观察了Bugs公开原始缩略图，没有通过下载视频或镜像绕过YouTube限制。"
+  ],
+  "decision": {
+    "status": "metadata-strengthened-unconfirmed-view-only",
+    "recommendation": "可补充为有独立发行目录和时长对照支持的观看线索；保持范围未确认，不能仅依这些元数据升级为已证完整/同音轨/七人全组候选。",
+    "canPromoteToVerifiedFullPerformance": false,
+    "fullFactClosure": false,
+    "noFormalBinding": true,
+    "suggestedPublicText": "VLENDING 官方 Performance 线索。Bugs 独立 Dance Video 与 Genie 同曲目录均标约2分钟，对应韩文音源1分59秒；目录时长与正式单曲范围相容。尚未独立核实首尾、实际音轨及七人表演范围，仅供观看，不参与舞台评分。",
+    "requiredBeforeFormalBinding": "先补足精确完整版本与实际参与范围，再由主流程核新鲜真实owner目标原值、完整保存日志和线上原来源；不得用Sites bearer或伪造身份header替代owner授权。"
+  },
+  "actions": {
+    "applicationEdits": 0,
+    "privateDataReads": 0,
+    "privateWrites": 0,
+    "sourceOrScoreBindings": 0,
+    "candidateImagesAddedToRepository": 0,
+    "deployment": false
+  }
+}

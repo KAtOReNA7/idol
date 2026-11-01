@@ -1,4 +1,5 @@
 'use client';
+import {MemberPublicCredits} from '@/components/public-work-credits';
 import {ArtistInformation} from '@/components/artist-information';
 
 import {useEffect, useMemo, useState, useSyncExternalStore, type ReactNode} from 'react';
@@ -164,17 +165,21 @@ export default function UnisDesignReview({content, basePath = UNIS_PATH}: {conte
     const items = state.data ? memberWorks(state.data, person.id) : [];
     return <>
       <button type="button" className="uf-back uf-native-host" onClick={goMembers}><UnisNativeSurface slot="profile-back"/>← 返回成员</button>
-      <section className="uf-person">
+      <section className="uf-person" data-member-layout="ordered-v1" data-member-id={person.id} data-member-module="identity">
         <button type="button" className="uf-square uf-portrait-button" disabled={!image} aria-label={`放大${name(person)}的照片`} aria-haspopup="dialog" onClick={() => image && setLightbox({src: image.image, label: `${name(person)} · ${person.stageName}`})}>
           <Picture src={image?.image} identityKey={`member:${person.id}`} alt={`${name(person)} · ${person.stageName} 资料照`} priority/>
         </button>
-        <div className="uf-person-copy"><h1 className="member-display-name">{name(person)}</h1><h2>{person.id === 'recvxAPQCFgu8Z' ? <UnisNativeText role="nana" label="NANA"/> : person.stageName.toUpperCase()}</h2><p>UNIS</p>
+        <div className="uf-person-copy" data-member-module="basic"><h1 className="member-display-name">{name(person)}</h1><h2>{person.id === 'recvxAPQCFgu8Z' ? <UnisNativeText role="nana" label="NANA"/> : person.stageName.toUpperCase()}</h2><p>UNIS</p>
           <div className="uf-person-actions"><a className="uf-button uf-pale" href={artistMemberUrl(person.id, returnTo)}>个人档案与记录 ↗</a>
             {image && <button type="button" className="uf-button uf-pale uf-native-host" aria-haspopup="dialog" onClick={() => setLightbox({src: image.image, label: `${name(person)} · ${person.stageName}`})}><UnisNativeSurface slot="profile-zoom"/>放大照片</button>}</div>
-          <details className="uf-person-facts"><summary>更多成员资料</summary><MemberPhysicalFacts member={person}/><MemberCareerFacts member={person}/>{image?.sourceUrl && <External href={image.sourceUrl}>照片来源 ↗</External>}</details>
+          <section className="uf-person-facts"><h3 className="member-profile-heading">成员资料</h3><MemberPhysicalFacts member={person}/><MemberCareerFacts member={person} part="intro"/></section>
         </div>
       </section>
-      {items.length > 0 && <section className="uf-person-records"><h2>个人作品记录</h2>{items.map(item => <a key={item.work.id} data-member-work-trigger={item.work.id} href={artistWorkUrl(item.work, false, returnTo)}><strong>{item.work.song || item.work.name}</strong><span>表现 {artistWorkScoreLabel(item.performance)} · 造型 {artistWorkScoreLabel(item.styling)}</span></a>)}</section>}
+      {items.length > 0 && <section className="uf-person-records" data-member-module="works"><h2>个人作品记录</h2>{items.map(item => <a key={item.work.id} data-member-work-trigger={item.work.id} href={artistWorkUrl(item.work, false, returnTo)}><strong>{item.work.song || item.work.name}</strong><span>表现 {artistWorkScoreLabel(item.performance)} · 造型 {artistWorkScoreLabel(item.styling)}</span></a>)}</section>}
+      {state.data && <MemberPublicCredits memberId={person.id} data={state.data} renderLink={(work,label)=><a href={artistWorkUrl(work,false,returnTo)}>{label}</a>}/>}
+      <MemberCareerFacts member={person} part="history"/>
+      {image?.sourceUrl && <section className="member-profile-sources" data-member-module="sources"><External href={image.sourceUrl}>照片来源 ↗</External></section>}
+      <MemberCareerFacts member={person} part="sources"/>
       <section className="uf-related"><UnisNativeSurface slot="rule" className="uf-native-rule uf-rule-top"/><h2>浏览 UNIS 作品</h2>{works.slice(0, 3).map((work, index) => <WorkRow index={index} key={work.id} work={work} returnTo={returnTo}/>)}<button type="button" className="uf-button uf-primary uf-bottom uf-native-host" onClick={goLibrary}><UnisNativeSurface slot="profile-library"/>进入发行与影像</button></section>
     </>;
   }

@@ -1,0 +1,538 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-30T03:39:48.536640+00:00",
+  "baselineCommit": "553448da",
+  "baselinePath": "apps/idol-site/data/group-statistics-completion-evidence.json",
+  "baselineFileSha256": "2eff348d4e87d9a34cae580464887e5ced32f24003d34844afab125268faca06",
+  "baseline": {
+    "observedValue": 2113229,
+    "asOf": "2026-06",
+    "monthRows": 36,
+    "annualReplacements": 2,
+    "weeklyAdditions": 13,
+    "retainedReferenceAggregate": 2458789,
+    "unexplainedDifference": 345560,
+    "existingWeeklyIdentityTuples": [
+      [
+        2022,
+        50,
+        "70531",
+        1364
+      ],
+      [
+        2022,
+        51,
+        "70531",
+        871
+      ],
+      [
+        2023,
+        10,
+        "71789",
+        2587
+      ],
+      [
+        2023,
+        46,
+        "73936",
+        1025
+      ],
+      [
+        2023,
+        51,
+        "74459",
+        1535
+      ],
+      [
+        2025,
+        5,
+        "78957",
+        3699
+      ],
+      [
+        2025,
+        6,
+        "78957",
+        2289
+      ],
+      [
+        2025,
+        26,
+        "79675",
+        2545
+      ],
+      [
+        2024,
+        3,
+        "74459",
+        840
+      ],
+      [
+        2024,
+        46,
+        "78104",
+        1126
+      ],
+      [
+        2026,
+        1,
+        "81284",
+        713
+      ],
+      [
+        2024,
+        48,
+        "78104",
+        1162
+      ],
+      [
+        2026,
+        2,
+        "81284",
+        1234
+      ]
+    ]
+  },
+  "unknownFieldInventory": [
+    {
+      "key": "genblue.wins",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable"
+    },
+    {
+      "key": "tracer.sales",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable"
+    },
+    {
+      "key": "tracer.wins",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable"
+    },
+    {
+      "key": "witchx.sales",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable"
+    },
+    {
+      "key": "spia.sales",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable"
+    },
+    {
+      "key": "vcha.sales",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable"
+    },
+    {
+      "key": "vcha.wins",
+      "observedValue": null,
+      "displayValue": 0,
+      "status": "unavailable"
+    }
+  ],
+  "method": "Eight unqueried adjacent Circle Album weeks; only same-edition disjoint Album_CNT may contribute. No Total_CNT, Retail, Hanteo, Japan or future cutoff contributions.",
+  "circleReadbacks": [
+    {
+      "year": 2023,
+      "week": 48,
+      "priorQueryFiles": [],
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=48&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2023",
+        "targetTime": "48",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=48&yearTime=3"
+      },
+      "checkedAt": "2026-10-30T03:39:48.538462+00:00",
+      "status": "read",
+      "httpStatus": 200,
+      "pageSha256": "21c60104eba3d8639ab3db25603f5d3018210594bcf54708164a5f6b16eaaa69",
+      "responseSha256": "97ace9dbc92f94f242cc8991b928e6c4fddf5e7d0f3589cc1e7882fc642e6fbb",
+      "rowCount": 100,
+      "periodLabels": [
+        "2023.11.26~2023.12.02 (48)",
+        "2023.11.26~2023.12.02 (48)"
+      ],
+      "selectedRows": []
+    },
+    {
+      "year": 2023,
+      "week": 52,
+      "priorQueryFiles": [],
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=52&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2023",
+        "targetTime": "52",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2023&targetTime=52&yearTime=3"
+      },
+      "checkedAt": "2026-10-30T03:39:52.293061+00:00",
+      "status": "read",
+      "httpStatus": 200,
+      "pageSha256": "1ddc65b0a9bf184bfc97250365a8659d70dcc1129be6239f196ea38fc3ab4798",
+      "responseSha256": "24f0ce3e1f71147141257e09604cc0eb53c49bacf2751383e4b3b0396a9976c1",
+      "rowCount": 100,
+      "periodLabels": [
+        "2023.12.24~2023.12.30 (52)",
+        "2023.12.24~2023.12.30 (52)"
+      ],
+      "selectedRows": []
+    },
+    {
+      "year": 2024,
+      "week": 4,
+      "priorQueryFiles": [],
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=04&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2024",
+        "targetTime": "04",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=04&yearTime=3"
+      },
+      "checkedAt": "2026-10-30T03:39:56.023005+00:00",
+      "status": "read",
+      "httpStatus": 200,
+      "pageSha256": "60955376681eeabf0089b6fa26d5796d66060f3dfe0925ba58a9529842496e52",
+      "responseSha256": "4caa0cc52908472be07d224ce3f8f9127bd12db7b96bd250e0d060a531c9153f",
+      "rowCount": 100,
+      "periodLabels": [
+        "2024.01.21~2024.01.27 (04)",
+        "2024.01.21~2024.01.27 (04)"
+      ],
+      "selectedRows": []
+    },
+    {
+      "year": 2024,
+      "week": 49,
+      "priorQueryFiles": [],
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=49&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2024",
+        "targetTime": "49",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=49&yearTime=3"
+      },
+      "checkedAt": "2026-10-30T03:39:59.732841+00:00",
+      "status": "read",
+      "httpStatus": 200,
+      "pageSha256": "7e177f5cd80244ba3700fa1080d992087672317e5bac185da78cf21913bf115a",
+      "responseSha256": "9edece93ffe105698f6018c8b6e31d3072646dc837a54bb64f980cfa8fe7ffa2",
+      "rowCount": 100,
+      "periodLabels": [
+        "2024.12.01~2024.12.07 (49)",
+        "2024.12.01~2024.12.07 (49)"
+      ],
+      "selectedRows": []
+    },
+    {
+      "year": 2024,
+      "week": 50,
+      "priorQueryFiles": [],
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=50&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2024",
+        "targetTime": "50",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=50&yearTime=3"
+      },
+      "checkedAt": "2026-10-30T03:40:03.465919+00:00",
+      "status": "read",
+      "httpStatus": 200,
+      "pageSha256": "7e1ec24aef05aff56b4474115d64ff805f2e0a09a9ec3c2165c7f259028915b6",
+      "responseSha256": "b4ed68f74a76b8e974a9d3d847409bdec1e06408c6d0d72cbb2eb5d3c8ccf203",
+      "rowCount": 100,
+      "periodLabels": [
+        "2024.12.08~2024.12.14 (50)",
+        "2024.12.08~2024.12.14 (50)"
+      ],
+      "selectedRows": []
+    },
+    {
+      "year": 2025,
+      "week": 7,
+      "priorQueryFiles": [],
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2025&targetTime=07&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2025",
+        "targetTime": "07",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2025&targetTime=07&yearTime=3"
+      },
+      "checkedAt": "2026-10-30T03:40:07.105515+00:00",
+      "status": "read",
+      "httpStatus": 200,
+      "pageSha256": "05d5d01c38b515588475540a1f68edd0995213f18bc8b5aabe1a4519ffa6e701",
+      "responseSha256": "4fc27abd978b037ff0d3be2aeee081a58bfd032f91008a642123bb6a3bb8914b",
+      "rowCount": 100,
+      "periodLabels": [
+        "2025.02.09~2025.02.15 (07)",
+        "2025.02.09~2025.02.15 (07)"
+      ],
+      "selectedRows": [
+        {
+          "ALBUM_NAME": "Acid Angel from Asia ＜ ACCESS ＞ (Cosmo) ",
+          "ARTIST_NAME": "tripleS (트리플에스)",
+          "Album_CNT": "1047",
+          "Album_Hit_ratio": "",
+          "Certify_Grade": "N",
+          "CntYN": "Y",
+          "FILE_NAME": "/uploadDir/aoaAlbumImg/thumb/20250131_485E545DC72EB193F6F649B500DEF1FC.jpg",
+          "PRE_SERVICE_RANKING": "20",
+          "RankChange": "75",
+          "RankStatus": "down",
+          "SERVICE_RANKING": "95",
+          "TotHitRatio": "",
+          "Total_CNT": "7171",
+          "de_nm": "Kakao Entertainment",
+          "seq_aoa": "78987"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "week": 27,
+      "priorQueryFiles": [],
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2025&targetTime=27&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2025",
+        "targetTime": "27",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2025&targetTime=27&yearTime=3"
+      },
+      "checkedAt": "2026-10-30T03:40:10.803236+00:00",
+      "status": "read",
+      "httpStatus": 200,
+      "pageSha256": "96f46ca20f7042b7ea49c389e79f727156faa3503cd99bd56d9e1d384c3777d7",
+      "responseSha256": "209fd825b5fbc66e59e1d72c02f980d06c01037dd58b1336843e96e71faa3508",
+      "rowCount": 100,
+      "periodLabels": [
+        "2025.06.29~2025.07.05 (27)",
+        "2025.06.29~2025.07.05 (27)"
+      ],
+      "selectedRows": []
+    },
+    {
+      "year": 2026,
+      "week": 5,
+      "priorQueryFiles": [],
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=05&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2026",
+        "targetTime": "05",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=05&yearTime=3"
+      },
+      "checkedAt": "2026-10-30T03:40:14.450573+00:00",
+      "status": "read",
+      "httpStatus": 200,
+      "pageSha256": "7c84500f1e1e1ce78f6ee85998c2a08bec74c196e96ba75f270d82e718e06ca4",
+      "responseSha256": "05e9417cc97c5c8d9ba0be39d273febd33685d9794a86b67230adad07d5801c2",
+      "rowCount": 100,
+      "periodLabels": [
+        "2026.01.25~2026.01.31 (05)",
+        "2026.01.25~2026.01.31 (05)"
+      ],
+      "selectedRows": []
+    }
+  ],
+  "proposals": [],
+  "applicationWrites": 0,
+  "privateReadsOrWrites": 0,
+  "deployments": 0,
+  "reviewCompletedAt": "2026-10-30T03:42:49.425910+00:00",
+  "status": "bounded_new_routes_completed_no_numeric_adoption",
+  "priorEvidenceRead": [
+    "docs/codex/RESUME-PROMPT-20261030.txt",
+    "docs/codex/evidence/20261029-next-followup/statistics-new.json",
+    "docs/codex/evidence/20261029-next-followup/triples-reconciliation-new.json",
+    "docs/codex/evidence/20261029-group-advance/unknown-statistics-new-routes.json",
+    "docs/codex/evidence/20261029-group-advance/statistics-dates-circle-half.json",
+    "docs/codex/evidence/20261028-post-v200/statistics/remaining-sales-next-research.json",
+    "docs/codex/evidence/20261028-post-v200/statistics/check-win-archive.py"
+  ],
+  "excludedCoveredRows": [
+    {
+      "year": 2025,
+      "week": 7,
+      "dateRange": "2025.02.09~2025.02.15 (07)",
+      "albumId": "78987",
+      "album": "Acid Angel from Asia ＜ ACCESS ＞ (Cosmo) ",
+      "artist": "tripleS (트리플에스)",
+      "metricField": "Album_CNT",
+      "sales": 1047,
+      "rank": 95,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2025&targetTime=07&yearTime=3",
+      "existingMonthRowIndex": 15,
+      "existingMonthRow": {
+        "year": 2025,
+        "month": 2,
+        "sales": 6883,
+        "album": "Acid Angel from Asia < ACCESS > (Cosmo)"
+      },
+      "proposedContribution": 0,
+      "reason": "Exact ACCESS Cosmo edition; the complete week is within the already-counted February 2025 month. Total_CNT=7171 is separately excluded and is not a new period contribution."
+    }
+  ],
+  "unknownStatisticsResearch": {
+    "method": "15 bounded index queries. Broad exact-identity queries were followed by broadcaster/chart-provider/label-specific queries; no claimed complete discography or complete programme archive.",
+    "queries": [
+      "GENBLUE first win music show 2025 2026 일위 젠블루 첫 1위",
+      "TRACER 트레이서 365 음악방송 1위",
+      "VCHA music show win first win 2024 2025",
+      "\"SPIA\" \"sales\" album 2025 2026",
+      "\"TRACER\" \"365\" \"sales\" album",
+      "\"W!TCHX\" \"RUN BABY RUN\" \"sales\"",
+      "\"VCHA\" \"Girls of the Year\" \"physical sales\"",
+      "site.sbs.co.kr \"젠블루\" \"1위\"",
+      "site.kbs.co.kr \"비춰\" \"1위\"",
+      "site.mnetplus.world \"VCHA\" \"Girls of the Year\"",
+      "site.hanteonews.com \"위치스\" OR \"수피아\" OR \"트레이서\"",
+      "site.jype.com \"VCHA\" \"판매량\"",
+      "site.hanteonews.com \"SPIA\"",
+      "site.quartermusic.co.kr \"위치스\"",
+      "\"트레이서\" \"365\" \"초동\""
+    ],
+    "sourceReadBoundary": "New external leads below were reviewed as returned search-index excerpts, not full-page reads. They are rejection/context evidence only, not adopted numerical statistics.",
+    "items": [
+      {
+        "key": "genblue.wins",
+        "numericProposal": null,
+        "status": "unresolved",
+        "finding": "The index again surfaced THE SHOW nominee reporting rather than a win, plus a separate Taiwan-number-one headline. Neither is a dated Korean music-show victory or a complete zero-wins audit. No new original victory record was located.",
+        "leads": [
+          {
+            "url": "https://news.owlting.com/articles/961609",
+            "kind": "press-report search excerpt",
+            "reasonNotAdopted": "Reports a 2025-03-11 THE SHOW nomination; the already-reviewed nominee route was not reopened."
+          },
+          {
+            "url": "https://www.sportsseoul.com/news/read/1462878",
+            "kind": "named-news search excerpt",
+            "reasonNotAdopted": "Taiwan number-one headline alongside a Music Bank arrival report is not a Korean music-show first-place result."
+          }
+        ],
+        "nextEvidenceNeeded": "A dated original broadcaster win or a genuinely complete authoritative period tally; unrelated Taiwanese awards and nominations remain excluded."
+      },
+      {
+        "key": "tracer.wins",
+        "numericProposal": null,
+        "status": "unresolved",
+        "finding": "Exact TRACER/트레이서/365 query produced homonym noise and no new original programme victory or complete cumulative tally. Earlier six-show archive absence is not promoted to zero.",
+        "nextEvidenceNeeded": "Original Korean broadcast result naming the GleamMedia girl group, or a complete authoritative cumulative record."
+      },
+      {
+        "key": "vcha.wins",
+        "numericProposal": null,
+        "status": "unresolved",
+        "finding": "The available lead is a fan report of M Countdown pre-voting, not an official win. Broadcaster-specific index queries did not reveal an adoptable result. VCHA and later GIRLSET periods remain distinct.",
+        "leads": [
+          {
+            "url": "https://www.reddit.com/r/vcha/comments/1ankcvc",
+            "kind": "fan-discussion search excerpt",
+            "reasonNotAdopted": "Pre-voting eligibility/nomination does not establish a win; no participant comments or personal information were retained."
+          }
+        ],
+        "nextEvidenceNeeded": "Original dated victory or a complete authoritative VCHA-period cumulative tally; absence of search results is not zero."
+      },
+      {
+        "key": "spia.sales",
+        "numericProposal": null,
+        "status": "unresolved",
+        "finding": "A newly indexed profile presents sales columns but only dashes for the known digital singles and duplicates Daddy's Little Girl under differing apostrophes. It supplies no chart period or units. Chart-provider-specific query yielded no adoptable original count.",
+        "leads": [
+          {
+            "url": "https://aimcontents.com/en/namu/spia/",
+            "kind": "secondary-profile search excerpt",
+            "reasonNotAdopted": "Missing counts and duplicate release labels are not physical-sales evidence; a verified-database label alone is not validation."
+          }
+        ],
+        "nextEvidenceNeeded": "Exact physical audio-carrier identity plus a dated sales/shipments count with stated scope. Existing digital-release evidence does not prove all-history zero."
+      },
+      {
+        "key": "tracer.sales",
+        "numericProposal": null,
+        "status": "unresolved",
+        "finding": "Exact 365 title plus TRACER/트레이서 and sales/first-week terms yielded no new attributable physical count. Prior GleamMedia identity and four native Retail queries were not rerun.",
+        "nextEvidenceNeeded": "Exact GleamMedia TRACER physical SKU and a dated provider count; television OST, hardware and other artist homonyms remain excluded."
+      },
+      {
+        "key": "witchx.sales",
+        "numericProposal": null,
+        "status": "unresolved",
+        "finding": "Exact RUN BABY RUN and chart-provider/distributor-specific searches located no new audio-carrier sales count. The previous K-Towns photobook product is not promoted to an album sale or a lower bound.",
+        "nextEvidenceNeeded": "Quarter Music/Artform exact audio-carrier SKU or an original chart row with a dated count. Photobook versions, prices, stock states and digital barcodes are not units sold."
+      },
+      {
+        "key": "vcha.sales",
+        "numericProposal": null,
+        "status": "unresolved",
+        "finding": "New search results included an unsourced fandom discography claiming 200000 physical sales and analyst tables with dashes for VCHA digital singles. Neither supplies an adoptable VCHA Korean physical-sales tally; later GIRLSET retail products remain out of this unresolved VCHA-period scope.",
+        "leads": [
+          {
+            "url": "https://shapes.inc/fandom/girlset/discography",
+            "kind": "unsourced fandom search excerpt",
+            "reasonNotAdopted": "No identifiable chart row, date, SKU or primary citation for the claimed quantity; excerpt also duplicates a member and introduces uncorroborated releases. The 200000 figure is rejected, not a proposal."
+          },
+          {
+            "url": "https://file.alphasquare.co.kr/media/pdfs/company-report/49434_240320_JYP_4Q23_Earnings_Review.pdf",
+            "kind": "analyst-report mirror search excerpt",
+            "reasonNotAdopted": "Lists 2024-01-26 and 2024-03-15 as digital singles with dashes in Hanteo/Circle sales columns. Missing or nonapplicable table cells are not a factual all-period zero."
+          }
+        ],
+        "nextEvidenceNeeded": "Original VCHA-period physical SKU and dated count with Korean-release/territory scope; no GIRLSET backfill, digital-unit conversion or inferred zero."
+      }
+    ]
+  },
+  "summary": {
+    "unknownFieldsExamined": 7,
+    "unknownFieldsClosed": 0,
+    "newCirclePeriodsRead": 8,
+    "officialRowsRead": 800,
+    "newExactTripleSRowsLocated": 1,
+    "rowsExcludedAsAlreadyCoveredByMonth": 1,
+    "newNumericProposals": 0,
+    "confirmedZeroClaims": 0,
+    "tripleSLowerBoundUnchanged": 2113229,
+    "tripleSUnexplainedDifferenceUnchanged": 345560,
+    "existingWeeklyAdditionCountUnchanged": 13,
+    "asOfUnchanged": "2026-06"
+  },
+  "limits": [
+    "Eight newly queried weekly top100 pages are a bounded follow-up, not all-period coverage. No selected row is not proof of zero sales.",
+    "The only selected row is wholly inside an existing same-edition month and contributes zero. No month, year, weekly addition or cutoff was changed.",
+    "The retained reference aggregate2458789 was not freshly verified; its unexplained difference remains open. Soridata download/captcha or formerly denied routes were not retried.",
+    "Fifteen index queries and reviewed excerpts do not constitute a complete original-source audit. Unverified numbers, missing cells, nominees and unrelated first-place wording are not factual metrics.",
+    "All seven fields retain observedValue=null and displayValue=0. No true-zero claim, application edit, private record access, Git commit or deployment was performed."
+  ]
+}

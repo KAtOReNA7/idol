@@ -22,7 +22,7 @@ function normalize(batch){return temporary(tmp=>{const input=path.join(tmp,'revi
 function normalized(batch){const r=normalize(batch);assert.equal(r.status,0,r.stderr);return JSON.parse(r.stdout);}
 function merge(batch,{previous,score=null,native=false,formatOverride,omitSchema=false,journalRows=[],publishedOverride,capturedAt=now,externalJournal=false}={}){return temporary(tmp=>{
  fs.mkdirSync(path.join(tmp,'scripts'),{recursive:true});fs.mkdirSync(path.join(tmp,'data/stages'),{recursive:true});
- for(const f of ['merge-stage-batch.py','stage_selection_policy.py'])fs.copyFileSync(path.join(root,'scripts',f),path.join(tmp,'scripts',f));
+ for(const f of ['merge-stage-batch.py','stage_selection_policy.py','stage_source_identity.py'])fs.copyFileSync(path.join(root,'scripts',f),path.join(tmp,'scripts',f));
  const write=(f,obj)=>fs.writeFileSync(path.join(tmp,f),JSON.stringify(obj));
  write('data/stages/inventory.json',{works:[{recordId:workId,groupIds:['fixture-group'],mv:{videoId:'originalMV1',officialTitle:'Original Official MV'}}]});
  write('data/stages/status.json',{inventoryCount:1,works:{[workId]:{status:previous?'verified':'pending',reason:'Fixture',checkedAt:now}}});

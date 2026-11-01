@@ -2,9 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {build} from 'esbuild';
-import {beforeFollowupStatistics} from './helpers/post-v200-statistics.cjs';
+import {beforeFollowupStatistics, beforeGroupAdvanceStatistics} from './helpers/post-v200-statistics.cjs';
 
 const data=JSON.parse(fs.readFileSync('data/group-statistics-completion-evidence.json','utf8'));
+const historicalData=beforeGroupAdvanceStatistics(data);
 const read=name=>JSON.parse(fs.readFileSync('../../docs/codex/evidence/20261028-post-v200/statistics/'+name,'utf8'));
 
 test('only three evidenced sales records and summary counts change; unknowns stay unknown',()=>{
@@ -18,7 +19,7 @@ test('only three evidenced sales records and summary counts change; unknowns sta
 });
 
 test('eight tripleS weeks use exact period counts and cannot add overlapping source variants',()=>{
- const s=data.groups.triples.sales,e=s.evidence,old=beforeFollowupStatistics(data).groups.triples.sales.evidence;
+ const s=historicalData.groups.triples.sales,e=s.evidence,old=beforeFollowupStatistics(data).groups.triples.sales.evidence;
  assert.deepEqual(e.monthRows,old.monthRows);assert.deepEqual(e.annualReplacements,old.annualReplacements);
  assert.deepEqual(e.weeklyAdditions.slice(0,4),old.weeklyAdditions);
  const observations=read('triples-followup-observations.json'),newRows=e.weeklyAdditions.slice(4);

@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T14:06:54.222388+00:00",
+  "status": "eligible_for_parent_independent_review_not_applied",
+  "baselineCommit": "ec9efbc590673b8bbb98e6c98db303303a3b8aa0",
+  "applicationPath": "apps/idol-site/data/group-statistics-completion-evidence.json",
+  "applicationSha256": "51372099b264bbf2af2bf55ac6c934a7aa3da20fda4344872a2740f984eb4979",
+  "baselineSalesObjectSha256": "e8922c0d90eb50be691ca6962788e4580b0a5709520cda964463a7e2c559a3e4",
+  "metric": "Circle Album Chart period Album_CNT; no Total_CNT, Retail, Hanteo or Oricon/Japan",
+  "baseline": {
+    "observedValue": 2110833,
+    "monthRows": 36,
+    "monthlySum": 2087073,
+    "annualReplacements": 2,
+    "annualNet": 5166,
+    "weeklyAdditionRows": 11,
+    "weeklySum": 18594,
+    "savedAggregate": 2458789,
+    "remainingDifference": 347956,
+    "asOf": "2026-06"
+  },
+  "candidates": [
+    {
+      "year": 2024,
+      "week": 48,
+      "dateRange": "2024.11.24~2024.11.30 (48)",
+      "interval": {
+        "start": "2024-11-24",
+        "end": "2024-11-30"
+      },
+      "albumId": "78104",
+      "album": "Visionary Vision ＜Performante＞",
+      "artist": "tripleS (트리플에스)",
+      "sales": 1162,
+      "metricField": "Album_CNT",
+      "rank": 64,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=48&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2024",
+        "targetTime": "48",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=48&yearTime=3"
+      },
+      "checkedAt": "2026-10-29T14:03:04.293961+00:00",
+      "responseSha256": "95eef1525b977a21921ef5dfb75ba8deb5ac2c04e3d96dbbf45598feb6a0b8b8",
+      "pageSha256": "0268d1c736c83de82212f76a4090c749a527f234b2569d8d2f8c5ea21e363ad1",
+      "sameVersionIdentity": {
+        "currentExactAlbumIdAndTitleMatch": {
+          "year": 2024,
+          "week": 46,
+          "dateRange": "2024.11.10~2024.11.16 (46)",
+          "album": "Visionary Vision ＜Performante＞",
+          "artist": "tripleS (트리플에스)",
+          "albumId": "78104",
+          "sales": 1126,
+          "metricField": "Album_CNT",
+          "rank": 57,
+          "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=46&yearTime=3",
+          "checkedAt": "2026-10-29T08:12:52.783507+00:00",
+          "responseSha256": "29472a28c7b9e04a860ab6535d8fcfad49e9312a8dc9f57fa5dee440934df424",
+          "pageSha256": "5df06a1f21ac22dfcef82c1557d9331f0149ef5ba0d4a889c44d7b6dd597f87a"
+        },
+        "sourceMonthRowIndex": 21,
+        "sourceMonthRow": {
+          "year": 2024,
+          "month": 10,
+          "sales": 41362,
+          "album": "Visionary Vision"
+        },
+        "separateCosmoVersionExcluded": true
+      },
+      "overlapReview": {
+        "all36MonthRowsRead": true,
+        "all11ExistingWeeksRead": true,
+        "bothAnnualReplacementsRead": true,
+        "sameVersionCoveredMonthOutsideNewWeek": true,
+        "sameVersionExistingWeekOutsideNewWeek": true,
+        "annualReplacementIsDifferentEdition": true,
+        "cutoffUnchanged": "2026-06",
+        "withinExistingCutoff": true,
+        "noTotalCntContribution": true
+      },
+      "proposedContribution": 1162
+    },
+    {
+      "year": 2026,
+      "week": 2,
+      "dateRange": "2026.01.04~2026.01.10 (02)",
+      "interval": {
+        "start": "2026-01-04",
+        "end": "2026-01-10"
+      },
+      "albumId": "81284",
+      "album": "msnz ＜Beyond Beauty＞",
+      "artist": "tripleS (트리플에스)",
+      "sales": 1234,
+      "metricField": "Album_CNT",
+      "rank": 85,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=02&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2026",
+        "targetTime": "02",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=02&yearTime=3"
+      },
+      "checkedAt": "2026-10-29T14:03:12.029104+00:00",
+      "responseSha256": "3991d211729cb1660a2cb25bf43a72f288320cc73e39c402ea2739bb9822e153",
+      "pageSha256": "2a261e83d049513f2457e7f31d6939129a6507dd3183066217da0e8eff8cb4b1",
+      "sameVersionIdentity": {
+        "currentExactAlbumIdAndTitleMatch": {
+          "year": 2026,
+          "week": 1,
+          "dateRange": "2025.12.28~2026.01.03 (01)",
+          "album": "msnz ＜Beyond Beauty＞",
+          "artist": "tripleS (트리플에스)",
+          "albumId": "81284",
+          "sales": 713,
+          "metricField": "Album_CNT",
+          "rank": 60,
+          "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=01&yearTime=3",
+          "checkedAt": "2026-10-29T08:20:16.281954+00:00",
+          "responseSha256": "4ba00397cbadad69115da2fcb63a06daa4c704d17a65391e13d049b13b978a3a",
+          "pageSha256": "98b20dddd4f4c3e5ee2101ae65bf3fc603d957c5a0f9d646e448b73b5625f6a6"
+        },
+        "sourceMonthRowIndex": 8,
+        "sourceMonthRow": {
+          "year": 2025,
+          "month": 11,
+          "sales": 28728,
+          "album": "msnz"
+        },
+        "separateCosmoVersionExcluded": true
+      },
+      "overlapReview": {
+        "all36MonthRowsRead": true,
+        "all11ExistingWeeksRead": true,
+        "bothAnnualReplacementsRead": true,
+        "sameVersionCoveredMonthOutsideNewWeek": true,
+        "sameVersionExistingWeekOutsideNewWeek": true,
+        "annualReplacementIsDifferentEdition": true,
+        "cutoffUnchanged": "2026-06",
+        "withinExistingCutoff": true,
+        "noTotalCntContribution": true
+      },
+      "proposedContribution": 1234
+    }
+  ],
+  "excludedCoveredRows": [
+    {
+      "year": 2024,
+      "week": 48,
+      "albumId": "78113",
+      "album": "Visionary Vision ＜Performante＞ (Cosmo)",
+      "sales": 1635,
+      "contribution": 0,
+      "reason": "Already covered by the adopted 2024 Performante Cosmo annual total289224; adding its week would double count.",
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=48&yearTime=3"
+    },
+    {
+      "year": 2026,
+      "week": 2,
+      "albumId": "81285",
+      "album": "msnz ＜Beyond Beauty＞ (Cosmo)",
+      "sales": 1537,
+      "contribution": 0,
+      "reason": "Already covered by the original 2026-01 Beyond Beauty Cosmo month row6660; adding its week would double count.",
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=02&yearTime=3"
+    }
+  ],
+  "observationsFile": "docs/codex/evidence/20261029-next-followup/triples-new-period-readback.json",
+  "searchAndPriorQueryReview": {
+    "exactAggregateQueries": [
+      "\"tripleS\" \"2,458,789\"",
+      "\"tripleS\" \"2458789\""
+    ],
+    "aggregateQueryOutcome": "No new directly attributable original row breakdown surfaced in this bounded index search; no claim the total never existed.",
+    "aggregateProvenance": "Current retained source is Soridata TripleS artist page, sourceDate2026-06, checked2026-10-25; original aggregate2458789 lacks an independently recoverable full constituent breakdown in the reviewed retained records. No failed Soridata route reopened.",
+    "priorKnownAnnualReadbacks": "2022 and2023 annual requests in statistics-dates-circle-annual.json returned100 rows with no selected tripleS; those old requests were not repeated.",
+    "skippedPeriod": {
+      "year": 2023,
+      "week": 45,
+      "priorQueryFiles": [
+        "docs/codex/evidence/20261028-post-v200/statistics/triples-nonoverlap-weeks.json"
+      ],
+      "status": "skipped_prior_query"
+    },
+    "newNoTargetPeriod": {
+      "year": 2024,
+      "week": 47,
+      "rowsRead": 100,
+      "contribution": 0,
+      "meaning": "No selected row in this top100 read is not proof of actual zero."
+    },
+    "existing11WeekTuplePreserved": [
+      [
+        2022,
+        50,
+        "70531",
+        1364
+      ],
+      [
+        2022,
+        51,
+        "70531",
+        871
+      ],
+      [
+        2023,
+        10,
+        "71789",
+        2587
+      ],
+      [
+        2023,
+        46,
+        "73936",
+        1025
+      ],
+      [
+        2023,
+        51,
+        "74459",
+        1535
+      ],
+      [
+        2025,
+        5,
+        "78957",
+        3699
+      ],
+      [
+        2025,
+        6,
+        "78957",
+        2289
+      ],
+      [
+        2025,
+        26,
+        "79675",
+        2545
+      ],
+      [
+        2024,
+        3,
+        "74459",
+        840
+      ],
+      [
+        2024,
+        46,
+        "78104",
+        1126
+      ],
+      [
+        2026,
+        1,
+        "81284",
+        713
+      ]
+    ]
+  },
+  "proposal": {
+    "newWeeklyRows": 2,
+    "newWeeklyContribution": 2396,
+    "weeklyRowsAfterAdoption": 13,
+    "newLowerBound": 2113229,
+    "remainingDifference": 345560,
+    "formula": "2087073 + 5166 + 18594 + 2396 = 2113229",
+    "lowerBoundOnly": true,
+    "originalAggregateFullyExplained": false,
+    "asOfUnchanged": "2026-06",
+    "oldMonthAndAnnualAndWeekRowsPreserved": true
+  },
+  "limits": [
+    "This closes no full reconciliation fact: the347956 reference gap would shrink by2396, leaving345560 unexplained.",
+    "Only two disjoint standard-edition period counts are proposed; contemporaneous Cosmo rows and Total_CNT are excluded.",
+    "Source body periods and native API values are freshly read; this is not a private export or personal record operation.",
+    "An official source may later revise historical counts/returns; current readback date and full-response hashes are retained."
+  ],
+  "applicationWrites": 0,
+  "privateReadsOrWrites": 0,
+  "deployments": 0
+}

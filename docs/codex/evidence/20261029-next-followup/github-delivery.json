@@ -1,0 +1,460 @@
+{
+  "checkedAt": "2026-10-29 15:17:43 UTC",
+  "branch": "codex/group-evidence-followup-20261029",
+  "pullRequest": "https://github.com/KAtOReNA7/idol/pull/47",
+  "implementationCommit": "cad33543aa75c33a62c00e35664c6eb759ca993a",
+  "parent": "ec9efbc590673b8bbb98e6c98db303303a3b8aa0",
+  "tree": "ad4e2b7fd1a9fc39522a10bb08deee0f518f77e6",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha": "7f928234954aa064d8591efc697c7f3c72ed26a0",
+      "bytes": 150925
+    },
+    {
+      "path": "apps/idol-site/app/page.tsx",
+      "sha": "953caf2122387b4e49d92720367bb5054cac919c",
+      "bytes": 77126
+    },
+    {
+      "path": "apps/idol-site/components/work-video-player.tsx",
+      "sha": "939ec91cf7bc74027d8930cba1ecd10f29b8f936",
+      "bytes": 2647
+    },
+    {
+      "path": "apps/idol-site/data/group-statistics-completion-evidence.json",
+      "sha": "78e4d4fe2acc64005355837217842f063bbc4dd9",
+      "bytes": 460218
+    },
+    {
+      "path": "apps/idol-site/data/public-work-credits.json",
+      "sha": "5a21e986406875ac50d6a16ff9bab19cb4c1bb4d",
+      "bytes": 116002
+    },
+    {
+      "path": "apps/idol-site/data/public-work-recognition.json",
+      "sha": "7704812ebbb3f6525a771543b5d3a94d1ecd13eb",
+      "bytes": 568617
+    },
+    {
+      "path": "apps/idol-site/data/stage-bilibili-posters-20261029.json",
+      "sha": "58570edd5b3b0c8d6469e34ebcb2fccd7512b982",
+      "bytes": 997
+    },
+    {
+      "path": "apps/idol-site/data/stage-videos.json",
+      "sha": "d140e8e3a63830a2f9553bcc6650a24711d8a8ae",
+      "bytes": 1199175
+    },
+    {
+      "path": "apps/idol-site/data/stages/evidence/qwer-showdown-x-formal-20261029.json",
+      "sha": "1275eb67d41924a2f6cc285da74e474673aeb308",
+      "bytes": 5404
+    },
+    {
+      "path": "apps/idol-site/data/stages/status.json",
+      "sha": "9c00abe1a88440132f4095d24b351cc083ed4982",
+      "bytes": 188300
+    },
+    {
+      "path": "apps/idol-site/data/stages/supplements.json",
+      "sha": "484f7a82f05f1aaf5602e8caf0cb3622ce59e881",
+      "bytes": 695266
+    },
+    {
+      "path": "apps/idol-site/lib/idol/approved-video-poster.ts",
+      "sha": "2181832befc467ab44e9f257d2f81993100eba9e",
+      "bytes": 6919
+    },
+    {
+      "path": "apps/idol-site/lib/idol/native-save.ts",
+      "sha": "377f3a0be347949645bc057625e730460d1bb676",
+      "bytes": 5982
+    },
+    {
+      "path": "apps/idol-site/lib/idol/public-catalog.ts",
+      "sha": "6e9136f4530817ce02376655f209d8ce095c8445",
+      "bytes": 6049
+    },
+    {
+      "path": "apps/idol-site/lib/idol/stage-source.ts",
+      "sha": "a951acd03f7fad916770fe3cb7f9ceb367a96c9c",
+      "bytes": 6390
+    },
+    {
+      "path": "apps/idol-site/lib/idol/types.ts",
+      "sha": "c035753404fd605e4fa5f47730f7aaf567233539",
+      "bytes": 7750
+    },
+    {
+      "path": "apps/idol-site/public/artist/stage-bilibili-20261029/BV1bhU8BWEso-cid-34265369310-p1.jpg",
+      "sha": "9e6d96b7024bb1fab1fc5a152435e4fb96ef1f4b",
+      "bytes": 41986
+    },
+    {
+      "path": "apps/idol-site/scripts/merge-stage-batch.py",
+      "sha": "8236eca4c8240985f067521d2435026d23c36aa7",
+      "bytes": 16765
+    },
+    {
+      "path": "apps/idol-site/scripts/normalize-stage-patch.py",
+      "sha": "c2e49206ffc181451e37fadc797292437290af26",
+      "bytes": 6778
+    },
+    {
+      "path": "apps/idol-site/scripts/stage_selection_policy.py",
+      "sha": "f32d2535e9b31414e6d65c1d508e53064c0282cc",
+      "bytes": 12991
+    },
+    {
+      "path": "apps/idol-site/scripts/stage_source_identity.py",
+      "sha": "8215a5a57fe0da8fb66ee754a703fb30ee076cca",
+      "bytes": 5928
+    },
+    {
+      "path": "apps/idol-site/scripts/udtt-private-build-assets-manifest.json",
+      "sha": "10af2292f84ece3f23e68e12cc382d45f3280f26",
+      "bytes": 15990
+    },
+    {
+      "path": "apps/idol-site/scripts/validate-stages.mjs",
+      "sha": "4e720c7db0cad96a7837c96d3b7017ffc3ad5717",
+      "bytes": 13682
+    },
+    {
+      "path": "apps/idol-site/tests/bili-poster-followup.test.cjs",
+      "sha": "cea2070481fe49b0d1c7f89cfebbb989b3aafc38",
+      "bytes": 3834
+    },
+    {
+      "path": "apps/idol-site/tests/group-advance-evidence.test.cjs",
+      "sha": "21395913255a2b0e7ffcc29879b306af71f54e13",
+      "bytes": 14748
+    },
+    {
+      "path": "apps/idol-site/tests/group-followup-public-credits.test.cjs",
+      "sha": "2ae8c0edc8b6c5398834c86a4cee5bb40e37847a",
+      "bytes": 5083
+    },
+    {
+      "path": "apps/idol-site/tests/helpers/group-advance-evidence.cjs",
+      "sha": "ff6ae2a5b01c48d4030471be7f16c22b14ce2104",
+      "bytes": 2761
+    },
+    {
+      "path": "apps/idol-site/tests/helpers/next-followup-statistics.cjs",
+      "sha": "ef728fc36a883861449658b25b84db93308556e9",
+      "bytes": 870
+    },
+    {
+      "path": "apps/idol-site/tests/helpers/password-formal-baseline.cjs",
+      "sha": "7cfc2845fd4fcc37ce895e00d4637927ccbe97a0",
+      "bytes": 2473
+    },
+    {
+      "path": "apps/idol-site/tests/helpers/qwer-formal-baseline.cjs",
+      "sha": "e7ec1d14c728326033658ba562a75d40efff4c45",
+      "bytes": 1473
+    },
+    {
+      "path": "apps/idol-site/tests/helpers/summer-reference-baseline.cjs",
+      "sha": "27f5c41ab7567a28fd5bc83dcce7f9d27f87a5ba",
+      "bytes": 768
+    },
+    {
+      "path": "apps/idol-site/tests/helpers/v202-followup-evidence.cjs",
+      "sha": "8b28652aa6c307734434904c0c433126682bfc14",
+      "bytes": 4551
+    },
+    {
+      "path": "apps/idol-site/tests/next-followup-statistics.test.cjs",
+      "sha": "4be341daef01163a14d697fa9d6f1935c18fec81",
+      "bytes": 3735
+    },
+    {
+      "path": "apps/idol-site/tests/password-madein-followup.test.cjs",
+      "sha": "f734d0b40bd60ca5aa68045f020044aad93b9c48",
+      "bytes": 6527
+    },
+    {
+      "path": "apps/idol-site/tests/public-group-recognition.test.cjs",
+      "sha": "e25eeee6cc6a807ab42133fc622392c98b288800",
+      "bytes": 7698
+    },
+    {
+      "path": "apps/idol-site/tests/stage-multiplatform-import.test.cjs",
+      "sha": "a998c6625bc230bb646a13c3781e3891c6e60687",
+      "bytes": 21456
+    },
+    {
+      "path": "apps/idol-site/tests/stage-multiplatform-validator.test.cjs",
+      "sha": "821acb46470acb7933e9913019149974ab62abe7",
+      "bytes": 12065
+    },
+    {
+      "path": "apps/idol-site/tests/statistics-annual-reconciliation.test.mjs",
+      "sha": "cda4f805b61655a2da88f6404ec6550bb7071464",
+      "bytes": 12416
+    },
+    {
+      "path": "apps/idol-site/tests/summer-release-reference.test.cjs",
+      "sha": "ad673b2483b4f6560ab821c39557d1250117c364",
+      "bytes": 4407
+    },
+    {
+      "path": "apps/idol-site/tests/v202-followup-evidence.test.cjs",
+      "sha": "93358662bef9257edd5245291cc83ca881b9d952",
+      "bytes": 6346
+    },
+    {
+      "path": "apps/idol-site/tests/x-stage-source.test.cjs",
+      "sha": "a7198059791ce15eeeb7b6fb34cbe4f8fa5295f2",
+      "bytes": 6800
+    },
+    {
+      "path": "docs/codex/NEXT-COMPUTER-HANDOFF.md",
+      "sha": "2e77d5ef8326dcd6dd5d045fc7e9435c356d7f40",
+      "bytes": 31958
+    },
+    {
+      "path": "docs/codex/RESUME-PROMPT-20261029.txt",
+      "sha": "a99a9ecf51f7cde5c7ebabeeaf0581a16c1827ea",
+      "bytes": 3541
+    },
+    {
+      "path": "docs/codex/RESUME.md",
+      "sha": "2d140debe51ba93bb6f77e2009d02195206a1ac8",
+      "bytes": 114249
+    },
+    {
+      "path": "docs/codex/STATUS.md",
+      "sha": "82cee01668743248a013375e8a28f4c759887324",
+      "bytes": 143354
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/adopt-password-poster.py",
+      "sha": "dbdac7e899656f21bf620d3984810e6470c0ee01",
+      "bytes": 3827
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/adopt-qwer.py",
+      "sha": "1c2dc4b22b45c1b573a18c9e3c582d8c6d55e194",
+      "bytes": 4069
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/adopt-summer-reference.py",
+      "sha": "3b6c86255f2cd7c7ef6a7a572b6f7174a33949d1",
+      "bytes": 3881
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/adopt-triples-weeks.py",
+      "sha": "57674e28fc80d675c43db2b4d4b835fe62e4549b",
+      "bytes": 6400
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/align-triples-source-label.py",
+      "sha": "f3169830fc10c7fe8ab21ae687511e36d1be2eaa",
+      "bytes": 1211
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/apply-x-source-support.py",
+      "sha": "a989334f1d2f5852f77cf37226f7358f70b595b3",
+      "bytes": 4562
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/build-after-adoption.log",
+      "sha": "b053981dc52ffa7157733b8cbc3aea05db6d60f4",
+      "bytes": 4784
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/build-triples-proposal.py",
+      "sha": "beb482263d812e997641680f393a7e46ae2e1e02",
+      "bytes": 7011
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/final-targeted-recheck.log",
+      "sha": "0a22dd1effe40513f6e24935d20c7eb5c0a78083",
+      "bytes": 17763
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/final-targeted-tests.log",
+      "sha": "bfbe88691cf17832e79d4541d0ac4df11463eeb4",
+      "bytes": 21353
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/finalize-evidence.py",
+      "sha": "69baadc1d51087cb9dd04ed8aa03570ecaa32f53",
+      "bytes": 4857
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/finalize-qwer-note.py",
+      "sha": "57b57b1b5cb1280ccd3136e9746311c70efe2ecf",
+      "bytes": 2323
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/password-poster-adoption.json",
+      "sha": "f7666c444916c7d82a156bc3c1ce341e375cc286",
+      "bytes": 3154
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/people-new.json",
+      "sha": "333db93d5fcbb8fdfa8ce7d44d339fdcfc0479f7",
+      "bytes": 11430
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/prepare-qwer.py",
+      "sha": "e0137b9f921f8270404e2f2cd3af399bde75e397",
+      "bytes": 3886
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/qwer-cohort-tests.log",
+      "sha": "1dcaf9e7f18ba6a371cdaa3f8c269603554769b6",
+      "bytes": 6594
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/qwer-formal-adoption.json",
+      "sha": "b17eb43bd02f00e4aa165663ee8b8604ecd3e760",
+      "bytes": 11006
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/qwer-showdown-x-formal-20261029.json",
+      "sha": "1275eb67d41924a2f6cc285da74e474673aeb308",
+      "bytes": 5404
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/qwer-source-readback.json",
+      "sha": "672b60168eeaa0da8ba1c636418ca8bb4b358335",
+      "bytes": 1609
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/qwer-user-confirmation.json",
+      "sha": "cf17240a869ebdc5302caa5103bf780fe87f871f",
+      "bytes": 1096
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/read-ktowns-product.py",
+      "sha": "8461f1ec475c2f64362390dcfe717ec44e67eaf2",
+      "bytes": 1403
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/read-ktowns-public.py",
+      "sha": "6b38dcad4fee9aa4c76b0bcf4f3aa22119952e4b",
+      "bytes": 908
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/remaining-stage-ledger.json",
+      "sha": "e0ab725e514aeeac8d42e05f5c5c8e8617b65d12",
+      "bytes": 122335
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/research-triples-bounded.py",
+      "sha": "fcaf78f41d2276193f38732cfdc87cf92bfc5987",
+      "bytes": 3459
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/stage-validation-before-qwer.json",
+      "sha": "d3f64e9a68e6507cd1a1ac87a64f0f5b930c5c0b",
+      "bytes": 244
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/stage-validation.json",
+      "sha": "3465381441f8f7af2254c9440d4a10f5d8f45e53",
+      "bytes": 244
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/statistics-ktowns-filter.json",
+      "sha": "c1672d9cb64416d4bc302afbd8509815849aa42c",
+      "bytes": 4947
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/statistics-ktowns-product-readback.json",
+      "sha": "b097d68d1f9bb072c276aa2b770bdf299c2a7be2",
+      "bytes": 1413
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/statistics-ktowns-products.json",
+      "sha": "971cca8cf94ab3e90eb892ec9f4488222e7ccd42",
+      "bytes": 897
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/statistics-new.json",
+      "sha": "49e1a997a6cec04a88a189d2d7e18333015ad533",
+      "bytes": 8556
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/summer-reference-adoption.json",
+      "sha": "a7095ae0050004f387f95f165fc863cefe9ba9c0",
+      "bytes": 12463
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/triples-adoption.json",
+      "sha": "b638e5ddd9e92bb5fd425c914cf48955bca14eb0",
+      "bytes": 89543
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/triples-independent-readback.json",
+      "sha": "ddcf6f8d8e3d4b7bb6bc2172d62df2bf781f2abb",
+      "bytes": 1868
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/triples-new-period-readback.json",
+      "sha": "4aff7e992d01cd68d06cee2b75d5e28c4ec60ecc",
+      "bytes": 5424
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/triples-reconciliation-new.json",
+      "sha": "8f7eaa4d70cc1c278d18897205508c9a5afa17d0",
+      "bytes": 10097
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/typescript-after-adoption.log",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/udtt-audit-final.json",
+      "sha": "a116d7eb2ff4fabf96cde426e276dacc010307dd",
+      "bytes": 1502
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/udtt-audit.json",
+      "sha": "a116d7eb2ff4fabf96cde426e276dacc010307dd",
+      "bytes": 1502
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/update-handoff.py",
+      "sha": "29ff00ccc2b609e081d1c8500e7035c35202e11b",
+      "bytes": 7229
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/validation.json",
+      "sha": "528f958a7e513af0c0229fde7cf63bf989397488",
+      "bytes": 5361
+    },
+    {
+      "path": "docs/codex/evidence/20261029-next-followup/x-support-text-edits.json",
+      "sha": "5285362072b43cd13bd5163e82ef4029c5454d5b",
+      "bytes": 1747
+    },
+    {
+      "path": "docs/codex/next-evidence-followup-20261029.md",
+      "sha": "6d9806e897b7861b3c064a7b29ab44c673f51255",
+      "bytes": 4954
+    }
+  ],
+  "method": "GitHub Git objects API; all 87 blob SHAs and complete tree match local index; update_ref force=false with expected old HEAD; REST ref, commit parent/tree and PR head read back.",
+  "remoteBranchShaVerified": "cad33543aa75c33a62c00e35664c6eb759ca993a",
+  "remotePRHeadVerified": "cad33543aa75c33a62c00e35664c6eb759ca993a",
+  "rawCommitShaVerifiedBeforeLocalImport": true,
+  "localHeadFastForwarded": true,
+  "worktreeAfterImplementation": "clean",
+  "shellFetch": "Earlier explicit fetch failed due unavailable proxy; API readback is not described as shell fetch success.",
+  "backup": "D:/porject/idol-local-backups/next-followup-20261029-223042 (57 changed/untracked files, SHA-256 checked; not committed)",
+  "privateExportsUploaded": 0,
+  "privateWrites": 0,
+  "resetCleanForcePush": false,
+  "newSitesVersions": 0,
+  "deployments": 0,
+  "validation": "validation.json; 160 targeted tests / 21 files, TypeScript and build passed; post-commit immutable guard test also passed",
+  "receiptCommitNote": "This receipt is committed separately after the implementation; inspect the latest branch HEAD rather than stopping at implementationCommit."
+}

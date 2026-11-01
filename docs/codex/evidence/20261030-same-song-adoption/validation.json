@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-30T09:50:33.527241+00:00",
+  "baseTargetedRound": {
+    "files": 11,
+    "tests": 112,
+    "passed": 112,
+    "failed": 0,
+    "stateAtRound": 524
+  },
+  "independentNewTests": {
+    "studioLive": {
+      "tests": 4,
+      "passed": 4
+    },
+    "versionUnconfirmed": {
+      "tests": 5,
+      "passed": 5
+    }
+  },
+  "currentDataAffectedRegression": {
+    "state": 527,
+    "files": 5,
+    "tests": 54,
+    "passed": 54,
+    "failed": 0,
+    "skipped": 0,
+    "sha256": "f9c6485b0092b3726070d48be473f5b9307a598498111e3dd3373f9a4fd963c4",
+    "log": "E:\\project\\idol-local-backups\\20261030-same-song-adoption-527-necessary-final.txt",
+    "notAddedToOld112": "These are necessary reruns of affected tests; repeated passes are not new unique tests."
+  },
+  "typeCheck": {
+    "passed": true,
+    "state": 527,
+    "log": "E:\\project\\idol-local-backups\\20261030-final527-tsc.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "formalBuild": {
+    "passed": true,
+    "localStageSources": 527,
+    "newVersionUnconfirmedRuntimeIncluded": true
+  },
+  "stageValidator": {
+    "valid": true,
+    "sources": 527
+  },
+  "exactUdttAssetAudit": {
+    "passed": true,
+    "prunePlanFiles": 9,
+    "packagedOrDeployed": false
+  },
+  "logs": {
+    "base112": {
+      "path": "E:\\project\\idol-local-backups\\20261030-same-song-adoption-targeted-final.txt",
+      "sha256": "5dffad21b301c37dfe6eec19471aea9df9e0c3ff3683c78e5519d87bf83cf3fd",
+      "bytes": 12963,
+      "exitCode": 0
+    },
+    "studio4": {
+      "path": "E:\\project\\idol-local-backups\\20261030-studio-live-replacement-tests-final.txt",
+      "sha256": "71b6107594e361727c4f02d5f3f56fe0c5efca4babd3c4f60fa679e89358b414",
+      "bytes": 605,
+      "exitCode": 0
+    },
+    "unconfirmed5": {
+      "path": "E:\\project\\idol-local-backups\\20261030-version-unconfirmed-tests-final.txt",
+      "sha256": "19aec19f8034486438719fb6aa5630a748c6ea18f6278bdeebccee4d95f8c16d",
+      "bytes": 720,
+      "exitCode": 0
+    },
+    "typeCheck": {
+      "path": "E:\\project\\idol-local-backups\\20261030-version-unconfirmed-tsc.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "exitCode": 0
+    },
+    "formalBuild": {
+      "path": "E:\\project\\idol-local-backups\\20261030-version-unconfirmed-build.txt",
+      "sha256": "e83c03b16f7b2f3b638f77176ece8d2ce4de880f14de65ea6523bb44ba41b6ab",
+      "bytes": 8605,
+      "exitCode": 0
+    },
+    "stages": {
+      "path": "E:\\project\\idol-local-backups\\20261030-version-unconfirmed-stage-validator.txt",
+      "sha256": "441f70a5df30a61cfecb70e15cd041aacf8357cf1162fffcfa0c62d57d01cd9f",
+      "bytes": 258,
+      "exitCode": 0
+    },
+    "exactAssets": {
+      "path": "E:\\project\\idol-local-backups\\20261030-version-unconfirmed-assets.txt",
+      "sha256": "cefb141fd498c26e46f70169e89db8bdfd7235c96c23b306e15f62c34bf5c1ed",
+      "bytes": 1542,
+      "exitCode": 0
+    },
+    "necessary527": {
+      "path": "E:\\project\\idol-local-backups\\20261030-same-song-adoption-527-necessary-final.txt",
+      "sha256": "f9c6485b0092b3726070d48be473f5b9307a598498111e3dd3373f9a4fd963c4",
+      "exitCode": 0
+    },
+    "formalBuild527": {
+      "path": "E:\\project\\idol-local-backups\\20261030-final527-build.txt",
+      "sha256": "f38a3e9409ccee2eec1856bf5729c1643b1729a8f765d314987f7cb86515768f",
+      "bytes": 8606,
+      "exitCode": 0
+    },
+    "stageValidator527": {
+      "path": "E:\\project\\idol-local-backups\\20261030-final527-stages.txt",
+      "sha256": "6a4db9f58cea09189edbafc44bcdc06f430ee6760ed30f8fc96cb56797712aa3",
+      "bytes": 258,
+      "exitCode": 0
+    },
+    "exactAssets527": {
+      "path": "E:\\project\\idol-local-backups\\20261030-final527-assets.txt",
+      "sha256": "cefb141fd498c26e46f70169e89db8bdfd7235c96c23b306e15f62c34bf5c1ed",
+      "bytes": 1542,
+      "exitCode": 0
+    }
+  },
+  "privateWrites": 0,
+  "newSitesVersions": 0,
+  "deployments": 0,
+  "notPerformed": [
+    "Independent full-video or lyric replay",
+    "Whole-site production browser visual check",
+    "Real private save"
+  ],
+  "whitespaceCheck": "git -c core.whitespace=cr-at-eol diff --check preserves captured CRLF bytes",
+  "pendingValidation": false
+}

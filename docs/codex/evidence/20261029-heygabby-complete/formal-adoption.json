@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T09:32:59.761344+00:00",
+  "baselineCommit": "e5f49e0b9d4239648bb1f64675e8adfcaaa11a5a",
+  "workId": "recvxyOz5Xo5fW",
+  "sourceId": "XSpYaEdpKxY",
+  "mergeResult": {
+    "retiredUnpublishedUnverifiedSources": [],
+    "newSources": 1,
+    "sourceIds": [
+      "recvxyOz5Xo5fW"
+    ],
+    "replacedUnscoredSources": [],
+    "updatedSameVideoMetadata": [],
+    "updatedOtherStates": 0,
+    "retainedExistingSources": [],
+    "freshPreimageAt": "2026-10-29T09:26:18.230Z",
+    "batch": "heygabby-complete-formal-20261029.json"
+  },
+  "ownerPreimage": {
+    "format": "idol.native-data-export.v1",
+    "capturedAt": "2026-10-29T09:26:18.230Z",
+    "sha256": "7c8c3c240da5727301ce4e9d7ab9c472ea16e54160b2ecc5779e6e8aa3b1d171",
+    "byteLength": 18985482,
+    "journalRows": 206,
+    "targetSaveRows": 0,
+    "targetStageScoreEmpty": true,
+    "publishedTargetSourceAbsent": true,
+    "all496PublishedSourcesMatchLocal": true,
+    "privateStoredOutsideRepository": true
+  },
+  "stageVideos": {
+    "path": "apps/idol-site/data/stage-videos.json",
+    "beforeFileSha256": "b8e276f3772c64c74095d5a363ce2b1d186a421854408677a91a478b2edd2bac",
+    "afterFileSha256": "b84a7261ed7b139526ca75e070779f84946ef6968bc2eeb4bb09e314f6d79b56",
+    "beforeRow": null,
+    "afterRow": {
+      "sourceClass": "official",
+      "platform": "youtube",
+      "completeness": "full",
+      "videoId": "XSpYaEdpKxY",
+      "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+      "title": "[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.",
+      "channel": "VLENDING 블렌딩",
+      "kind": "官方制作表演 · 韩语原版 · 七人完整演出（人工确认）",
+      "publishedDate": "2022-05-09",
+      "typeNote": "官方制作表演 · 韩语原版 · 七人完整演出（人工确认） · 2026-10-29用户对精确视频确认七名成员参与、完整首尾及韩语原版音轨；Bugs/Genie独立目录和YouTube原页120秒元数据支持同曲身份。 · 依据公开标题、频道和说明核验，未逐句核对音轨；不据此判定真唱。",
+      "sourceUrl": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+      "scoreBinding": {
+        "videoId": "XSpYaEdpKxY",
+        "sourceKey": "XSpYaEdpKxY",
+        "initializedAt": "2026-10-29T09:26:18.230Z",
+        "initialScore": null
+      },
+      "likes": {
+        "value": 38873,
+        "display": "38,873",
+        "precision": "exact"
+      },
+      "checkedAt": "2026-10-29T09:30:15.334492+00:00",
+      "selectionNote": "本次唯一已核同优先级合格候选",
+      "comparisonNote": "该精确VLENDING官方Performance已有独立Dance Video目录；人工确认七名成员完整演出、韩语原版。本轮未找到合格同版本打歌或练习室，按现行政策采用官方制作表演后备；唯一已核同优先级候选，不宣称全网最高点赞。",
+      "reusesOriginalVideo": false,
+      "comparisonLimited": true,
+      "comparisonLimitation": "当前已核范围只有一个合格的同版本官方制作表演；未作全网最高点赞声明。",
+      "previousSources": [],
+      "candidateCount": 1,
+      "candidates": [
+        {
+          "title": "[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.",
+          "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+          "likesDisplay": "38,873",
+          "kind": "官方制作表演 · 韩语原版 · 七人完整演出（人工确认）"
+        }
+      ],
+      "selection": {
+        "occasion": "produced_performance",
+        "evidence": {
+          "note": "发行目录将Dance Video与原MV、Teaser分列，发行商报道确认独立Performance视频；属于官方专门制作表演，不是练习室或现场人声证明。",
+          "urls": [
+            "https://music.bugs.co.kr/mv/608040",
+            "https://www.newsis.com/view/NISX20220518_0001876354"
+          ]
+        }
+      },
+      "verificationNote": "人工看片已确认七名成员参与、完整演出及韩语原版；本轮未独立全片播放或逐句音轨比对。属于官方专门制作表演，不代表现场人声；按新鲜owner空分、完整保存日志和线上无旧绑定核对后采用。"
+    },
+    "beforeCount": 496,
+    "afterCount": 497
+  },
+  "stageStatuses": {
+    "path": "apps/idol-site/data/stages/status.json",
+    "beforeFileSha256": "70a4dbdfd0ae7adc928441b472e74c02498c8b5bf4c65bd11fef4d6f134aa4fa",
+    "afterFileSha256": "e0ab7d6b66d3b3c67b564157d7f1c18927e822b9cf3d810abd5936f30f84fdaa",
+    "beforeUpdatedAt": "2026-10-28T14:33:25.455709+00:00",
+    "afterUpdatedAt": "2026-10-29T09:32:59.203704+00:00",
+    "beforeRow": {
+      "status": "not_found",
+      "reason": "同曲检索主要是MV及Performance Ver. MV，未将MV或舞蹈练习替代独立舞台。",
+      "checkedAt": "2026-10-11T12:21:06.918553+00:00"
+    },
+    "afterRow": {
+      "status": "verified",
+      "reason": "该精确VLENDING官方Performance已有独立Dance Video目录；人工确认七名成员完整演出、韩语原版。本轮未找到合格同版本打歌或练习室，按现行政策采用官方制作表演后备；唯一已核同优先级候选，不宣称全网最高点赞。",
+      "checkedAt": "2026-10-29T09:30:15.334492+00:00"
+    }
+  },
+  "privateWrites": 0,
+  "existingStageBindingsChanged": 0,
+  "newLocalBindings": 1,
+  "deployment": 0,
+  "supplementsUpdate": {
+    "path": "apps/idol-site/data/stages/supplements.json",
+    "beforeFileSha256": "b6b1d18c415a1a97cf0a14d54e11e34ce86daa7d64a86da4cec57390ff89bdc7",
+    "afterFileSha256": "ab27380dd81a0d19880f107f3713452d6b675688ca839363dc59a9a66e4927e2",
+    "beforeRow": {
+      "alternatives": [
+        {
+          "id": "youtube-XSpYaEdpKxY",
+          "platform": "youtube",
+          "sourceId": "XSpYaEdpKxY",
+          "sourceClass": "official",
+          "performerScope": "full_group",
+          "completeness": "full",
+          "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+          "title": "[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.",
+          "channel": "VLENDING 블렌딩",
+          "performanceType": "produced_dance_performance",
+          "selection": {
+            "occasion": "produced_performance",
+            "evidence": {
+              "note": "发行目录将Dance Video与原MV、Teaser分列，发行商报道确认独立Performance视频；属于官方专门制作表演，不是练习室或现场人声证明。",
+              "urls": [
+                "https://music.bugs.co.kr/mv/608040",
+                "https://www.newsis.com/view/NISX20220518_0001876354"
+              ]
+            }
+          },
+          "kind": "官方制作表演 · 韩语原版 · 七人完整演出（人工确认）",
+          "checkedAt": "2026-10-29T09:20:32.072631Z",
+          "scorePolicy": "view_only",
+          "sourceEvidence": {
+            "note": "沿用已记录的VLENDING官方发布标题和频道元数据，Bugs独立Dance Video编号608040及Newsis发行商报道相互支持。未声称本轮重新直接读取或播放YouTube。",
+            "urls": [
+              "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+              "https://music.bugs.co.kr/mv/608040",
+              "https://www.newsis.com/view/NISX20220518_0001876354"
+            ]
+          },
+          "sameSongEvidence": {
+            "note": "Genie将韩文Hey Gabby音源与Dance Video列在同一歌曲页；2026-10-29人工核看已确认精确视频为完整演出及韩语原版。目录120秒与音源119秒仅作一致性支持，不单独证明完整性。",
+            "urls": [
+              "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+              "https://www.genie.co.kr/detail/songInfo?xgnm=96664763"
+            ]
+          },
+          "performerEvidence": {
+            "note": "2026-10-29人工核看确认此精确视频中七名成员均参与；只记视频参与范围，不新增成员ID、私人关系或个人评分，未独立逐帧复核。",
+            "urls": [
+              "https://www.youtube.com/watch?v=XSpYaEdpKxY"
+            ]
+          },
+          "version": {
+            "match": "exact",
+            "differences": [],
+            "evidence": {
+              "note": "完整性、韩语原版及七人参与基于对XSpYaEdpKxY的人工确认；这是只读候选的版本判断，不表示独立全片播放、逐句音轨比对或现场人声已核实。正式绑定仍须新鲜owner原值和完整保存日志。",
+              "urls": [
+                "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+                "https://www.genie.co.kr/detail/songInfo?xgnm=96664763"
+              ]
+            }
+          }
+        }
+      ],
+      "searchReview": {
+        "checkedAt": "2026-10-29T09:20:32.072631Z",
+        "accessLimited": true,
+        "outcome": "verification_limited",
+        "summary": "2026-10-29人工看片先确认七名成员均参与，随后确认精确Performance XSpYaEdpKxY从歌曲开头到结尾完整演出且使用韩语原版音轨。结合VLENDING原发元数据、Bugs独立Dance Video与Genie目录，已作为完整同版本的官方制作表演加入只读观看选择；正式绑定仍待新鲜owner目标原值及完整保存日志核对。",
+        "scope": [
+          {
+            "url": "https://www.youtube.com/watch?v=xBrrdxtyWHw",
+            "label": "原作品身份参照：Hey Gabby!原MV；本轮不以原MV替代独立制作表演。"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=z7lv-qLQI3M",
+            "label": "DreamWorks/Gabby原合作MV及制作说明；保留为原作品参照。"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+            "label": "[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.；VLENDING 블렌딩，检索元数据标2022-05-09。保留原始标题，仅作待核官方制作表演候选，不改称练习室或现场人声。"
+          },
+          {
+            "url": "https://music.bugs.co.kr/album/20465227",
+            "label": "Bugs发行目录另列2022-05-09 안녕 개비! (Sung by NMIXX) (Dance Video) 02:00，与2022-05-02 MV 02:01分开。目录时长支持版本区分，不证明全程已播放或首尾完整。"
+          },
+          {
+            "url": "https://www.newsis.com/view/NISX20220518_0001876354",
+            "label": "2022-05-18 Newsis报道引用VLENDING，分别提到Hey Gabby MV及Performance video，支持发行来源与独立表演类型；不代替实际视频核验。"
+          },
+          {
+            "url": "https://music.bugs.co.kr/mv/608040",
+            "label": "Bugs独立Dance Video页面：2022-05-09，编号608040；目录分类不代替完整播放。"
+          },
+          {
+            "url": "https://www.genie.co.kr/detail/songInfo?xgnm=96664763",
+            "label": "Genie韩语歌曲目录：音源01:59、Dance Video02:00、原MV02:01、预告00:22分别列出；时长接近不能代替首尾与音轨核验。"
+          }
+        ],
+        "excluded": [
+          {
+            "url": "https://www.youtube.com/watch?v=xBrrdxtyWHw",
+            "title": "已核排除候选 xBrrdxtyWHw",
+            "reason": "原作品官方MV，不是本轮要补的独立舞台。"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=z7lv-qLQI3M",
+            "title": "已核排除候选 z7lv-qLQI3M",
+            "reason": "DreamWorks官方MV，说明列MV Produced与Recorded credits。"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=tI8ouCef3ho",
+            "title": "已核排除候选 tI8ouCef3ho",
+            "reason": "镜像加工重传，不是独立表演。"
+          }
+        ],
+        "limitations": [
+          "七人参与、完整首尾及韩语原版已获人工看片确认，不再重复询问；本轮没有独立全片播放或逐句音轨比对。",
+          "官方制作表演不代表现场人声，也不改称打歌节目或练习室；不新增durationSeconds、片段首尾裁切或成员ID。",
+          "目前仅为view_only观看选择。正式绑定前须新鲜owner目标空分、完整保存日志及线上来源核对，0分不为空。正常只读导出接口本轮返回AUTH_REQUIRED，尚未获得完整owner备份。"
+        ]
+      }
+    },
+    "afterRow": {
+      "alternatives": [
+        {
+          "id": "youtube-XSpYaEdpKxY",
+          "platform": "youtube",
+          "sourceId": "XSpYaEdpKxY",
+          "sourceClass": "official",
+          "performerScope": "full_group",
+          "completeness": "full",
+          "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+          "title": "[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.",
+          "channel": "VLENDING 블렌딩",
+          "performanceType": "produced_dance_performance",
+          "selection": {
+            "occasion": "produced_performance",
+            "evidence": {
+              "note": "发行目录将Dance Video与原MV、Teaser分列，发行商报道确认独立Performance视频；属于官方专门制作表演，不是练习室或现场人声证明。",
+              "urls": [
+                "https://music.bugs.co.kr/mv/608040",
+                "https://www.newsis.com/view/NISX20220518_0001876354"
+              ]
+            }
+          },
+          "kind": "官方制作表演 · 韩语原版 · 七人完整演出（人工确认）",
+          "checkedAt": "2026-10-29T09:20:32.072631Z",
+          "scorePolicy": "view_only",
+          "sourceEvidence": {
+            "note": "沿用已记录的VLENDING官方发布标题和频道元数据，Bugs独立Dance Video编号608040及Newsis发行商报道相互支持。未声称本轮重新直接读取或播放YouTube。",
+            "urls": [
+              "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+              "https://music.bugs.co.kr/mv/608040",
+              "https://www.newsis.com/view/NISX20220518_0001876354"
+            ]
+          },
+          "sameSongEvidence": {
+            "note": "Genie将韩文Hey Gabby音源与Dance Video列在同一歌曲页；2026-10-29人工核看已确认精确视频为完整演出及韩语原版。目录120秒与音源119秒仅作一致性支持，不单独证明完整性。",
+            "urls": [
+              "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+              "https://www.genie.co.kr/detail/songInfo?xgnm=96664763"
+            ]
+          },
+          "performerEvidence": {
+            "note": "2026-10-29人工核看确认此精确视频中七名成员均参与；只记视频参与范围，不新增成员ID、私人关系或个人评分，未独立逐帧复核。",
+            "urls": [
+              "https://www.youtube.com/watch?v=XSpYaEdpKxY"
+            ]
+          },
+          "version": {
+            "match": "exact",
+            "differences": [],
+            "evidence": {
+              "note": "完整性、韩语原版及七人参与基于对XSpYaEdpKxY的人工确认；这是只读候选的版本判断，不表示独立全片播放、逐句音轨比对或现场人声已核实。正式绑定仍须新鲜owner原值和完整保存日志。",
+              "urls": [
+                "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+                "https://www.genie.co.kr/detail/songInfo?xgnm=96664763"
+              ]
+            }
+          }
+        }
+      ],
+      "searchReview": {
+        "checkedAt": "2026-10-29T09:34:42.757553+00:00",
+        "accessLimited": true,
+        "outcome": "verification_limited",
+        "summary": "2026-10-29人工看片已确认精确Performance XSpYaEdpKxY七人参与、完整演出及韩语原版。官方原页元数据与独立发行目录吻合；本轮新鲜完整owner导出核实目标空分、206条日志无目标记录、线上无旧舞台绑定后，已在本地正式采用。候选保留作公开证据，由页面按相同视频ID自动隐藏重复入口；尚未部署。",
+        "scope": [
+          {
+            "url": "https://www.youtube.com/watch?v=xBrrdxtyWHw",
+            "label": "原作品身份参照：Hey Gabby!原MV；本轮不以原MV替代独立制作表演。"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=z7lv-qLQI3M",
+            "label": "DreamWorks/Gabby原合作MV及制作说明；保留为原作品参照。"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+            "label": "[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.；VLENDING 블렌딩，检索元数据标2022-05-09。保留原始标题，仅作待核官方制作表演候选，不改称练习室或现场人声。"
+          },
+          {
+            "url": "https://music.bugs.co.kr/album/20465227",
+            "label": "Bugs发行目录另列2022-05-09 안녕 개비! (Sung by NMIXX) (Dance Video) 02:00，与2022-05-02 MV 02:01分开。目录时长支持版本区分，不证明全程已播放或首尾完整。"
+          },
+          {
+            "url": "https://www.newsis.com/view/NISX20220518_0001876354",
+            "label": "2022-05-18 Newsis报道引用VLENDING，分别提到Hey Gabby MV及Performance video，支持发行来源与独立表演类型；不代替实际视频核验。"
+          },
+          {
+            "url": "https://music.bugs.co.kr/mv/608040",
+            "label": "Bugs独立Dance Video页面：2022-05-09，编号608040；目录分类不代替完整播放。"
+          },
+          {
+            "url": "https://www.genie.co.kr/detail/songInfo?xgnm=96664763",
+            "label": "Genie韩语歌曲目录：音源01:59、Dance Video02:00、原MV02:01、预告00:22分别列出；时长接近不能代替首尾与音轨核验。"
+          }
+        ],
+        "excluded": [
+          {
+            "url": "https://www.youtube.com/watch?v=xBrrdxtyWHw",
+            "title": "已核排除候选 xBrrdxtyWHw",
+            "reason": "原作品官方MV，不是本轮要补的独立舞台。"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=z7lv-qLQI3M",
+            "title": "已核排除候选 z7lv-qLQI3M",
+            "reason": "DreamWorks官方MV，说明列MV Produced与Recorded credits。"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=tI8ouCef3ho",
+            "title": "已核排除候选 tI8ouCef3ho",
+            "reason": "镜像加工重传，不是独立表演。"
+          }
+        ],
+        "limitations": [
+          "七人参与、完整首尾及韩语原版已获人工看片确认，不再重复询问；本轮没有独立全片播放或逐句音轨比对。",
+          "官方制作表演不代表现场人声，也不改称打歌节目或练习室；没有片段裁切或新增成员关系。",
+          "正式新增采用基于2026-10-29T09:26:18.230Z完整owner导出；个人数据未写入，当前只是本地／GitHub增量，正式站v201未部署。后续发布前再次核对受保护状态。"
+        ]
+      }
+    },
+    "beforeWorkText": "{\n      \"alternatives\": [\n        {\n          \"id\": \"youtube-XSpYaEdpKxY\",\n          \"platform\": \"youtube\",\n          \"sourceId\": \"XSpYaEdpKxY\",\n          \"sourceClass\": \"official\",\n          \"performerScope\": \"full_group\",\n          \"completeness\": \"full\",\n          \"url\": \"https://www.youtube.com/watch?v=XSpYaEdpKxY\",\n          \"title\": \"[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.\",\n          \"channel\": \"VLENDING 블렌딩\",\n          \"performanceType\": \"produced_dance_performance\",\n          \"selection\": {\n            \"occasion\": \"produced_performance\",\n            \"evidence\": {\n              \"note\": \"发行目录将Dance Video与原MV、Teaser分列，发行商报道确认独立Performance视频；属于官方专门制作表演，不是练习室或现场人声证明。\",\n              \"urls\": [\n                \"https://music.bugs.co.kr/mv/608040\",\n                \"https://www.newsis.com/view/NISX20220518_0001876354\"\n              ]\n            }\n          },\n          \"kind\": \"官方制作表演 · 韩语原版 · 七人完整演出（人工确认）\",\n          \"checkedAt\": \"2026-10-29T09:20:32.072631Z\",\n          \"scorePolicy\": \"view_only\",\n          \"sourceEvidence\": {\n            \"note\": \"沿用已记录的VLENDING官方发布标题和频道元数据，Bugs独立Dance Video编号608040及Newsis发行商报道相互支持。未声称本轮重新直接读取或播放YouTube。\",\n            \"urls\": [\n              \"https://www.youtube.com/watch?v=XSpYaEdpKxY\",\n              \"https://music.bugs.co.kr/mv/608040\",\n              \"https://www.newsis.com/view/NISX20220518_0001876354\"\n            ]\n          },\n          \"sameSongEvidence\": {\n            \"note\": \"Genie将韩文Hey Gabby音源与Dance Video列在同一歌曲页；2026-10-29人工核看已确认精确视频为完整演出及韩语原版。目录120秒与音源119秒仅作一致性支持，不单独证明完整性。\",\n            \"urls\": [\n              \"https://www.youtube.com/watch?v=XSpYaEdpKxY\",\n              \"https://www.genie.co.kr/detail/songInfo?xgnm=96664763\"\n            ]\n          },\n          \"performerEvidence\": {\n            \"note\": \"2026-10-29人工核看确认此精确视频中七名成员均参与；只记视频参与范围，不新增成员ID、私人关系或个人评分，未独立逐帧复核。\",\n            \"urls\": [\n              \"https://www.youtube.com/watch?v=XSpYaEdpKxY\"\n            ]\n          },\n          \"version\": {\n            \"match\": \"exact\",\n            \"differences\": [],\n            \"evidence\": {\n              \"note\": \"完整性、韩语原版及七人参与基于对XSpYaEdpKxY的人工确认；这是只读候选的版本判断，不表示独立全片播放、逐句音轨比对或现场人声已核实。正式绑定仍须新鲜owner原值和完整保存日志。\",\n              \"urls\": [\n                \"https://www.youtube.com/watch?v=XSpYaEdpKxY\",\n                \"https://www.genie.co.kr/detail/songInfo?xgnm=96664763\"\n              ]\n            }\n          }\n        }\n      ],\n      \"searchReview\": {\n        \"checkedAt\": \"2026-10-29T09:20:32.072631Z\",\n        \"accessLimited\": true,\n        \"outcome\": \"verification_limited\",\n        \"summary\": \"2026-10-29人工看片先确认七名成员均参与，随后确认精确Performance XSpYaEdpKxY从歌曲开头到结尾完整演出且使用韩语原版音轨。结合VLENDING原发元数据、Bugs独立Dance Video与Genie目录，已作为完整同版本的官方制作表演加入只读观看选择；正式绑定仍待新鲜owner目标原值及完整保存日志核对。\",\n        \"scope\": [\n          {\n            \"url\": \"https://www.youtube.com/watch?v=xBrrdxtyWHw\",\n            \"label\": \"原作品身份参照：Hey Gabby!原MV；本轮不以原MV替代独立制作表演。\"\n          },\n          {\n            \"url\": \"https://www.youtube.com/watch?v=z7lv-qLQI3M\",\n            \"label\": \"DreamWorks/Gabby原合作MV及制作说明；保留为原作品参照。\"\n          },\n          {\n            \"url\": \"https://www.youtube.com/watch?v=XSpYaEdpKxY\",\n            \"label\": \"[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.；VLENDING 블렌딩，检索元数据标2022-05-09。保留原始标题，仅作待核官方制作表演候选，不改称练习室或现场人声。\"\n          },\n          {\n            \"url\": \"https://music.bugs.co.kr/album/20465227\",\n            \"label\": \"Bugs发行目录另列2022-05-09 안녕 개비! (Sung by NMIXX) (Dance Video) 02:00，与2022-05-02 MV 02:01分开。目录时长支持版本区分，不证明全程已播放或首尾完整。\"\n          },\n          {\n            \"url\": \"https://www.newsis.com/view/NISX20220518_0001876354\",\n            \"label\": \"2022-05-18 Newsis报道引用VLENDING，分别提到Hey Gabby MV及Performance video，支持发行来源与独立表演类型；不代替实际视频核验。\"\n          },\n          {\n            \"url\": \"https://music.bugs.co.kr/mv/608040\",\n            \"label\": \"Bugs独立Dance Video页面：2022-05-09，编号608040；目录分类不代替完整播放。\"\n          },\n          {\n            \"url\": \"https://www.genie.co.kr/detail/songInfo?xgnm=96664763\",\n            \"label\": \"Genie韩语歌曲目录：音源01:59、Dance Video02:00、原MV02:01、预告00:22分别列出；时长接近不能代替首尾与音轨核验。\"\n          }\n        ],\n        \"excluded\": [\n          {\n            \"url\": \"https://www.youtube.com/watch?v=xBrrdxtyWHw\",\n            \"title\": \"已核排除候选 xBrrdxtyWHw\",\n            \"reason\": \"原作品官方MV，不是本轮要补的独立舞台。\"\n          },\n          {\n            \"url\": \"https://www.youtube.com/watch?v=z7lv-qLQI3M\",\n            \"title\": \"已核排除候选 z7lv-qLQI3M\",\n            \"reason\": \"DreamWorks官方MV，说明列MV Produced与Recorded credits。\"\n          },\n          {\n            \"url\": \"https://www.youtube.com/watch?v=tI8ouCef3ho\",\n            \"title\": \"已核排除候选 tI8ouCef3ho\",\n            \"reason\": \"镜像加工重传，不是独立表演。\"\n          }\n        ],\n        \"limitations\": [\n          \"七人参与、完整首尾及韩语原版已获人工看片确认，不再重复询问；本轮没有独立全片播放或逐句音轨比对。\",\n          \"官方制作表演不代表现场人声，也不改称打歌节目或练习室；不新增durationSeconds、片段首尾裁切或成员ID。\",\n          \"目前仅为view_only观看选择。正式绑定前须新鲜owner目标空分、完整保存日志及线上来源核对，0分不为空。正常只读导出接口本轮返回AUTH_REQUIRED，尚未获得完整owner备份。\"\n        ]\n      }\n    }",
+    "afterWorkText": "{\n      \"alternatives\": [\n        {\n          \"id\": \"youtube-XSpYaEdpKxY\",\n          \"platform\": \"youtube\",\n          \"sourceId\": \"XSpYaEdpKxY\",\n          \"sourceClass\": \"official\",\n          \"performerScope\": \"full_group\",\n          \"completeness\": \"full\",\n          \"url\": \"https://www.youtube.com/watch?v=XSpYaEdpKxY\",\n          \"title\": \"[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.\",\n          \"channel\": \"VLENDING 블렌딩\",\n          \"performanceType\": \"produced_dance_performance\",\n          \"selection\": {\n            \"occasion\": \"produced_performance\",\n            \"evidence\": {\n              \"note\": \"发行目录将Dance Video与原MV、Teaser分列，发行商报道确认独立Performance视频；属于官方专门制作表演，不是练习室或现场人声证明。\",\n              \"urls\": [\n                \"https://music.bugs.co.kr/mv/608040\",\n                \"https://www.newsis.com/view/NISX20220518_0001876354\"\n              ]\n            }\n          },\n          \"kind\": \"官方制作表演 · 韩语原版 · 七人完整演出（人工确认）\",\n          \"checkedAt\": \"2026-10-29T09:20:32.072631Z\",\n          \"scorePolicy\": \"view_only\",\n          \"sourceEvidence\": {\n            \"note\": \"沿用已记录的VLENDING官方发布标题和频道元数据，Bugs独立Dance Video编号608040及Newsis发行商报道相互支持。未声称本轮重新直接读取或播放YouTube。\",\n            \"urls\": [\n              \"https://www.youtube.com/watch?v=XSpYaEdpKxY\",\n              \"https://music.bugs.co.kr/mv/608040\",\n              \"https://www.newsis.com/view/NISX20220518_0001876354\"\n            ]\n          },\n          \"sameSongEvidence\": {\n            \"note\": \"Genie将韩文Hey Gabby音源与Dance Video列在同一歌曲页；2026-10-29人工核看已确认精确视频为完整演出及韩语原版。目录120秒与音源119秒仅作一致性支持，不单独证明完整性。\",\n            \"urls\": [\n              \"https://www.youtube.com/watch?v=XSpYaEdpKxY\",\n              \"https://www.genie.co.kr/detail/songInfo?xgnm=96664763\"\n            ]\n          },\n          \"performerEvidence\": {\n            \"note\": \"2026-10-29人工核看确认此精确视频中七名成员均参与；只记视频参与范围，不新增成员ID、私人关系或个人评分，未独立逐帧复核。\",\n            \"urls\": [\n              \"https://www.youtube.com/watch?v=XSpYaEdpKxY\"\n            ]\n          },\n          \"version\": {\n            \"match\": \"exact\",\n            \"differences\": [],\n            \"evidence\": {\n              \"note\": \"完整性、韩语原版及七人参与基于对XSpYaEdpKxY的人工确认；这是只读候选的版本判断，不表示独立全片播放、逐句音轨比对或现场人声已核实。正式绑定仍须新鲜owner原值和完整保存日志。\",\n              \"urls\": [\n                \"https://www.youtube.com/watch?v=XSpYaEdpKxY\",\n                \"https://www.genie.co.kr/detail/songInfo?xgnm=96664763\"\n              ]\n            }\n          }\n        }\n      ],\n      \"searchReview\": {\n        \"checkedAt\": \"2026-10-29T09:34:42.757553+00:00\",\n        \"accessLimited\": true,\n        \"outcome\": \"verification_limited\",\n        \"summary\": \"2026-10-29人工看片已确认精确Performance XSpYaEdpKxY七人参与、完整演出及韩语原版。官方原页元数据与独立发行目录吻合；本轮新鲜完整owner导出核实目标空分、206条日志无目标记录、线上无旧舞台绑定后，已在本地正式采用。候选保留作公开证据，由页面按相同视频ID自动隐藏重复入口；尚未部署。\",\n        \"scope\": [\n          {\n            \"url\": \"https://www.youtube.com/watch?v=xBrrdxtyWHw\",\n            \"label\": \"原作品身份参照：Hey Gabby!原MV；本轮不以原MV替代独立制作表演。\"\n          },\n          {\n            \"url\": \"https://www.youtube.com/watch?v=z7lv-qLQI3M\",\n            \"label\": \"DreamWorks/Gabby原合作MV及制作说明；保留为原作品参照。\"\n          },\n          {\n            \"url\": \"https://www.youtube.com/watch?v=XSpYaEdpKxY\",\n            \"label\": \"[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.；VLENDING 블렌딩，检索元数据标2022-05-09。保留原始标题，仅作待核官方制作表演候选，不改称练习室或现场人声。\"\n          },\n          {\n            \"url\": \"https://music.bugs.co.kr/album/20465227\",\n            \"label\": \"Bugs发行目录另列2022-05-09 안녕 개비! (Sung by NMIXX) (Dance Video) 02:00，与2022-05-02 MV 02:01分开。目录时长支持版本区分，不证明全程已播放或首尾完整。\"\n          },\n          {\n            \"url\": \"https://www.newsis.com/view/NISX20220518_0001876354\",\n            \"label\": \"2022-05-18 Newsis报道引用VLENDING，分别提到Hey Gabby MV及Performance video，支持发行来源与独立表演类型；不代替实际视频核验。\"\n          },\n          {\n            \"url\": \"https://music.bugs.co.kr/mv/608040\",\n            \"label\": \"Bugs独立Dance Video页面：2022-05-09，编号608040；目录分类不代替完整播放。\"\n          },\n          {\n            \"url\": \"https://www.genie.co.kr/detail/songInfo?xgnm=96664763\",\n            \"label\": \"Genie韩语歌曲目录：音源01:59、Dance Video02:00、原MV02:01、预告00:22分别列出；时长接近不能代替首尾与音轨核验。\"\n          }\n        ],\n        \"excluded\": [\n          {\n            \"url\": \"https://www.youtube.com/watch?v=xBrrdxtyWHw\",\n            \"title\": \"已核排除候选 xBrrdxtyWHw\",\n            \"reason\": \"原作品官方MV，不是本轮要补的独立舞台。\"\n          },\n          {\n            \"url\": \"https://www.youtube.com/watch?v=z7lv-qLQI3M\",\n            \"title\": \"已核排除候选 z7lv-qLQI3M\",\n            \"reason\": \"DreamWorks官方MV，说明列MV Produced与Recorded credits。\"\n          },\n          {\n            \"url\": \"https://www.youtube.com/watch?v=tI8ouCef3ho\",\n            \"title\": \"已核排除候选 tI8ouCef3ho\",\n            \"reason\": \"镜像加工重传，不是独立表演。\"\n          }\n        ],\n        \"limitations\": [\n          \"七人参与、完整首尾及韩语原版已获人工看片确认，不再重复询问；本轮没有独立全片播放或逐句音轨比对。\",\n          \"官方制作表演不代表现场人声，也不改称打歌节目或练习室；没有片段裁切或新增成员关系。\",\n          \"正式新增采用基于2026-10-29T09:26:18.230Z完整owner导出；个人数据未写入，当前只是本地／GitHub增量，正式站v201未部署。后续发布前再次核对受保护状态。\"\n        ]\n      }\n    }"
+  },
+  "poster": {
+    "path": "apps/idol-site/data/stage-selection-posters-20261027.json",
+    "beforeFileSha256": "6759153aec18d27f128a654aa75fe75fc5b8ee6f9f5c7c5b7f349377ea860138",
+    "afterFileSha256": "8297560a9229cc9e4995d18546e58517411cc7b74b48ee2425706c645fb420e9",
+    "addedEntry": {
+      "workId": "recvxyOz5Xo5fW",
+      "videoId": "XSpYaEdpKxY",
+      "view": "stage",
+      "src": "/artist/stage-selection-20261027/XSpYaEdpKxY-maxresdefault.jpg",
+      "label": "官方韩语版制作表演封面",
+      "intrinsicSize": {
+        "width": 1280,
+        "height": 720
+      },
+      "sourceUrl": "https://i.ytimg.com/vi/XSpYaEdpKxY/maxresdefault.jpg",
+      "sourcePageUrl": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+      "sha256": "3eac19e90779c972f003a8ae8a159382cead34c7deafe68bf8de7b38b9d3d6ad",
+      "byteLength": 100393,
+      "originalBytesPreserved": true
+    },
+    "beforeEntries": 27,
+    "afterEntries": 28,
+    "visualReview": "official VLENDING thumbnail visually checked; poster is not used to infer full-video participation",
+    "reencoded": false
+  }
+}

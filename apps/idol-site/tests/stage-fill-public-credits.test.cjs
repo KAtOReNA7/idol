@@ -7,6 +7,9 @@ const React=require('react');
 const {renderToStaticMarkup}=require('react-dom/server');
 const load=require('./helpers/public-artist-loader.cjs');
 const {publicCreditForWork,publicCreditsForMember}=load('lib/idol/public-work-credits.ts');
+test('malformed private relation lists withhold the public-only projection without mutation',()=>{
+ for(const ratings of [null,[null],[{}],[{memberIds:null,workIds:[]}]]){const data={works:[],ratings},before=JSON.stringify(data);assert.deepEqual(publicCreditsForMember(data,'recTest'),[]);assert.equal(JSON.stringify(data),before);}
+});
 const {publicWorkRecognition}=load('lib/idol/public-work-recognition.ts');
 const {mvMemberAbsence}=load('lib/idol/mv-member-appearance.ts');
 const {memberWorks,memberWorkSummary}=load('lib/idol/member-works.ts');

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-30",
+  "scope": "Four new precise searches plus reading newly located bodies for two remaining actual-date holds. No application, source binding, identity, private data or deployment change.",
+  "searchQueryCount": 4,
+  "queries": [
+    "\"AtHeart\" \"Aurora\" \"August\" \"2026\" \"hiatus\"",
+    "\"앳하트\" \"아우로라\" \"8월\" \"중단\"",
+    "\"우당탕탕소녀단\" \"제시카\" \"합류\"",
+    "\"UDTT\" \"Woojung\" \"joined\" \"April\""
+  ],
+  "sources": [
+    {
+      "id": "aurora-post-announcement-release-report",
+      "url": "https://www.koreaherald.com/article/10848525",
+      "publisher": "The Korea Herald / Kim Jae-heun",
+      "title": "AtHeart revisits Roo'Ra's 30-year-old summer hit '3!4!'",
+      "sourcePublishedDate": "2026-08-21",
+      "bodyRead": true,
+      "finding": "The release/showcase report contains member interview comments about the remake. Its body gives no Aurora second-hiatus start date or start month, and does not directly state when her absence took effect.",
+      "notAdoptedBecause": "A group photo, the members quoted, or the publication date cannot establish the actual start of a hiatus."
+    },
+    {
+      "id": "jessica-public-reveal-not-join-date",
+      "url": "https://kprofiles.com/udtt-members-profile/",
+      "publisher": "KProfiles",
+      "title": "UDTT Members Profile",
+      "sourcePublishedDate": null,
+      "bodyRead": true,
+      "finding": "The Lu Yuting subsection explicitly calls April 29, 2025 a public reveal as a new member. It does not state that joining took effect that day, or that she had joined since a specified month.",
+      "shortRelevantQuote": "She was revealed as a new member on April 29, 2025.",
+      "notAdoptedBecause": "Revealed is not an actual joining-date statement. This page is not used to merge any stable member identities or to infer a temporary/permanent contract."
+    },
+    {
+      "id": "aurora-citation-routing-only",
+      "url": "https://en.wikipedia.org/wiki/AtHeart",
+      "publisher": "Wikipedia",
+      "bodyRead": true,
+      "finding": "The August 18 hiatus sentence is backed by the already-known Soompi announcement report. The page helped locate the separate Korea Herald release report, but does not supply an independent actual-date source.",
+      "sourceIndependence": "Do not count the Wikipedia sentence, announcement aggregators or repeated Soompi text as additional independent confirmation."
+    }
+  ],
+  "failedOrNonEvidentialRoutes": [
+    {
+      "url": "https://en.wikipedia.org/wiki/UDTT",
+      "result": "404; no body or usable fact."
+    },
+    {
+      "url": "https://www.soompi.com/article/1863734wpp/athearts-aurora-to-go-on-hiatus-due-to-health-just-2-months-after-return",
+      "result": "Existing announcement story resurfaced in search results; not treated as new evidence or re-read as a new source."
+    }
+  ],
+  "outcomes": [
+    {
+      "eventId": "e-atheart-aurora-second-hiatus-announcement",
+      "status": "hold",
+      "adoptableEventDate": null,
+      "missing": "A direct statement that the second hiatus actually started on a date, or had already started since an explicitly identified month. The existing August 18 announcement date remains separate.",
+      "nextEvidenceRoute": "A retrospective media report, attributable agency statement or dated first-person statement explicitly anchoring the actual start; an official-only publication is not required."
+    },
+    {
+      "eventId": "e-udtt-jessica-provisional-join-candidate",
+      "status": "hold",
+      "adoptableEventDate": null,
+      "missing": "A direct retrospective joining-date or joined-since-month statement. Public reveal, debut, performance appearance, interview publication and recording participation do not establish the joining date or contract status.",
+      "nextEvidenceRoute": "A dated member/agency statement or independently attributable report that explicitly says when the joining took effect; preserve empty canonical memberIds and the unresolved contract scope."
+    }
+  ],
+  "humanHelpAssessment": "No need to interrupt the user for a guess or a repeated announcement link. If the user already possesses a contemporaneous agency/member post or recording explicitly stating an effective date/month, it could resolve the gap; otherwise retain both holds and continue other evidence routes.",
+  "coverageLimit": "A bounded four-query pass, not an exhaustive search of every language, platform or archive. No actual dates were promoted.",
+  "factsResolved": 0,
+  "applicationChanges": 0,
+  "privateWrites": 0,
+  "deployments": 0
+}

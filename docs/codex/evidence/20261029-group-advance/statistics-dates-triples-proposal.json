@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T08:24:49.578617+00:00",
+  "status": "eligible_for_parent_independent_review_not_applied",
+  "baselineCommit": "c80a60e3",
+  "applicationPath": "apps/idol-site/data/group-statistics-completion-evidence.json",
+  "applicationSha256": "d9cbdd9d3f58d5da5b4c6535824a5dfcdd0cdc08761081d8436e1e55111b6a97",
+  "baselineSalesObjectSha256": "2af0a04f65d1526cbb6478733da2c4c06d5e55ca440a6f7f65b66be355a152c1",
+  "metric": "Circle Album Chart Album_CNT",
+  "excludedMetrics": [
+    "Total_CNT",
+    "Retail",
+    "Hanteo",
+    "Japan",
+    "secondary totals"
+  ],
+  "existingAsOf": "2026-06",
+  "baseline": {
+    "monthRows": 36,
+    "annualReplacementRecords": 2,
+    "weeklyAdditionRows": 8,
+    "contributionRecordsBeforeSuppressingReplacedMonths": 46,
+    "monthlySum": 2087073,
+    "annualNet": 5166,
+    "weeklySum": 15915,
+    "observedValue": 2108154,
+    "savedAggregate": 2458789,
+    "remainingDifference": 350635
+  },
+  "candidates": [
+    {
+      "year": 2024,
+      "week": 3,
+      "dateRange": "2024.01.14~2024.01.20 (03)",
+      "albumId": "74459",
+      "album": "EVOLution < ⟡ >",
+      "artist": "tripleS (트리플에스)",
+      "sales": 840,
+      "metricField": "Album_CNT",
+      "rank": 96,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=03&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2024",
+        "targetTime": "03",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=03&yearTime=3"
+      },
+      "checkedAt": "2026-10-29T08:12:48.129315+00:00",
+      "responseSha256": "d1f3986c9b437c634e5cae23b4426cf5c32a2349f1cdf3f5b1ca47b68adbcfcf",
+      "pageSha256": "13870576b1146adfc246e73e6ea8ea2101680bd73d33ac0024cd10d76693ad39",
+      "sameVersionIdentity": {
+        "currentSourceAlbumIdMatch": "74459",
+        "identityEvidence": "Existing weeklyAddition EVOLution 2023-W51 uses albumId74459 and same exact title",
+        "sameVersionMonthRows": [
+          {
+            "rowIndex": 30,
+            "row": {
+              "year": 2023,
+              "month": 10,
+              "sales": 25728,
+              "album": "EVOLution <⟡>"
+            }
+          }
+        ],
+        "separateVersionsExcluded": [
+          "EVOLution Cosmo row18 year2025; current standard week2023-W51 remains"
+        ]
+      },
+      "overlapReview": {
+        "all36MonthRowsRead": true,
+        "sameVersionMonthInterval": "2023-10",
+        "newWeekOutsideSameVersionMonth": true,
+        "annualReplacements": [
+          {
+            "year": 2024,
+            "album": "Visionary Vision <Performante> (Cosmo)",
+            "overlap": false,
+            "reason": "different edition/title"
+          },
+          {
+            "year": 2025,
+            "album": "<ASSEMBLE25> (Cosmo)",
+            "overlap": false,
+            "reason": "different edition/title"
+          }
+        ],
+        "existingSameVersionWeeks": [
+          {
+            "year": 2023,
+            "week": 51,
+            "dateRange": "2023.12.17~2023.12.23 (51)",
+            "overlap": false
+          }
+        ],
+        "otherExistingWeekRows": "different albumId and/or disjoint year/period; all8 read",
+        "withinExistingCutoff": true,
+        "noTotalCntAdopted": true
+      },
+      "proposedContribution": 840
+    },
+    {
+      "year": 2024,
+      "week": 46,
+      "dateRange": "2024.11.10~2024.11.16 (46)",
+      "albumId": "78104",
+      "album": "Visionary Vision ＜Performante＞",
+      "artist": "tripleS (트리플에스)",
+      "sales": 1126,
+      "metricField": "Album_CNT",
+      "rank": 57,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=46&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2024",
+        "targetTime": "46",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2024&targetTime=46&yearTime=3"
+      },
+      "checkedAt": "2026-10-29T08:12:52.783507+00:00",
+      "responseSha256": "29472a28c7b9e04a860ab6535d8fcfad49e9312a8dc9f57fa5dee440934df424",
+      "pageSha256": "5df06a1f21ac22dfcef82c1557d9331f0149ef5ba0d4a889c44d7b6dd597f87a",
+      "sameVersionIdentity": {
+        "currentSourceAlbumIdMatch": null,
+        "identityEvidence": "Prior official month corroboration 2024-10 in triples-followup-observations.json uses albumId78104, title without Cosmo, Album_CNT41362 matching current row21",
+        "sameVersionMonthRows": [
+          {
+            "rowIndex": 21,
+            "row": {
+              "year": 2024,
+              "month": 10,
+              "sales": 41362,
+              "album": "Visionary Vision"
+            }
+          }
+        ],
+        "separateVersionsExcluded": [
+          "Performante Cosmo row20 and annual replacement2024 albumId78113 are different edition"
+        ]
+      },
+      "overlapReview": {
+        "all36MonthRowsRead": true,
+        "sameVersionMonthInterval": "2024-10",
+        "newWeekOutsideSameVersionMonth": true,
+        "annualReplacements": [
+          {
+            "year": 2024,
+            "album": "Visionary Vision <Performante> (Cosmo)",
+            "overlap": false,
+            "reason": "different edition/title"
+          },
+          {
+            "year": 2025,
+            "album": "<ASSEMBLE25> (Cosmo)",
+            "overlap": false,
+            "reason": "different edition/title"
+          }
+        ],
+        "existingSameVersionWeeks": [],
+        "otherExistingWeekRows": "different albumId and/or disjoint year/period; all8 read",
+        "withinExistingCutoff": true,
+        "noTotalCntAdopted": true
+      },
+      "proposedContribution": 1126
+    },
+    {
+      "year": 2026,
+      "week": 1,
+      "dateRange": "2025.12.28~2026.01.03 (01)",
+      "albumId": "81284",
+      "album": "msnz ＜Beyond Beauty＞",
+      "artist": "tripleS (트리플에스)",
+      "sales": 713,
+      "metricField": "Album_CNT",
+      "rank": 60,
+      "sourceUrl": "https://circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=01&yearTime=3",
+      "endpoint": "https://circlechart.kr/data/api/chart/album",
+      "parameters": {
+        "nationGbn": "T",
+        "termGbn": "week",
+        "hitYear": "2026",
+        "targetTime": "01",
+        "yearTime": "3",
+        "curUrl": "circlechart.kr/page_chart/album.circle?nationGbn=T&termGbn=week&hitYear=2026&targetTime=01&yearTime=3"
+      },
+      "checkedAt": "2026-10-29T08:20:16.281954+00:00",
+      "responseSha256": "4ba00397cbadad69115da2fcb63a06daa4c704d17a65391e13d049b13b978a3a",
+      "pageSha256": "98b20dddd4f4c3e5ee2101ae65bf3fc603d957c5a0f9d646e448b73b5625f6a6",
+      "sameVersionIdentity": {
+        "currentSourceAlbumIdMatch": "81284",
+        "identityEvidence": "Fresh 2025-11 official month in statistics-dates-circle-beyond-identity.json: exact title, albumId81284, Album_CNT28728 matches current month row8",
+        "sameVersionMonthRows": [
+          {
+            "rowIndex": 8,
+            "row": {
+              "year": 2025,
+              "month": 11,
+              "sales": 28728,
+              "album": "msnz"
+            }
+          }
+        ],
+        "separateVersionsExcluded": [
+          "Cosmo albumId81285 rows3/4/5/6/7 is a distinct edition"
+        ]
+      },
+      "overlapReview": {
+        "all36MonthRowsRead": true,
+        "sameVersionMonthInterval": "2025-11",
+        "newWeekOutsideSameVersionMonth": true,
+        "yearCrossingHandled": "Week starts2025-12-28 and ends2026-01-03; no standard-edition December2025 or January2026 month row exists; no standard-edition annual replacement or prior weekly row. Cosmo months are distinct.",
+        "annualReplacements": [
+          {
+            "year": 2024,
+            "album": "Visionary Vision <Performante> (Cosmo)",
+            "overlap": false,
+            "reason": "different edition/title"
+          },
+          {
+            "year": 2025,
+            "album": "<ASSEMBLE25> (Cosmo)",
+            "overlap": false,
+            "reason": "different edition/title"
+          }
+        ],
+        "existingSameVersionWeeks": [],
+        "otherExistingWeekRows": "all8 reviewed, no albumId81284; both new2024 candidate rows differ",
+        "withinExistingCutoff": true,
+        "noTotalCntAdopted": true
+      },
+      "proposedContribution": 713
+    }
+  ],
+  "arithmetic": {
+    "newContribution": 2679,
+    "newLowerBound": 2110833,
+    "remainingDifference": 347956,
+    "newWeeklySum": 18594,
+    "formula": "2087073 + 5166 + 15915 + 2679 = 2110833",
+    "fullyReconciled": false
+  },
+  "nonAdoptedObservations": [
+    {
+      "source": "2026-06 official month",
+      "reason": "all3 Album_CNT values exactly match existing rows0/1/2; 518253 secondary total not adopted; Total_CNT differs and excluded"
+    },
+    {
+      "source": "2026-W14 Beyond Beauty Cosmo Album_CNT4299",
+      "reason": "week2026-03-29 through04-04 overlaps existing March2026 Cosmo row3; no day allocation, exclude whole week"
+    },
+    {
+      "source": "2026 First Half LOVE&POP Cosmo431030",
+      "reason": "same value already counted in June; not added"
+    },
+    {
+      "source": "2022/2023 annual returned top100",
+      "reason": "no tripleS rows; not zero, no contribution"
+    },
+    {
+      "source": "2024W01/W02/W45 official weekly top100",
+      "reason": "No tripleS returned in any of three100-row responses; not zero; no additional contribution. Total_CNT not adopted."
+    }
+  ],
+  "preserve": [
+    "36 raw month rows and suppression relationships",
+    "2 annual replacement objects",
+    "8 existing weekly additions",
+    "original aggregate2458789 and unresolved difference history",
+    "all other groups and private data"
+  ],
+  "applied": false
+}

@@ -1,0 +1,542 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T04:15:10.345867+00:00",
+  "reviewer": "independent delegated QA / groups_baby_itzy",
+  "status": "passed",
+  "baseline": "cef1765801ce62739c44308292a680b16e681597",
+  "scope": "Local rendered QA of MADEIN PUNG! limited release-cover references, with public identity-only fixture; not production or owner/private-state verification.",
+  "work": {
+    "id": "rec28ldfRTrPi9",
+    "groupId": "rec28ldfRTiCzI",
+    "videoId": "aer_X9NmhTc",
+    "song": "PUNG!"
+  },
+  "sourceScopeReview": {
+    "method": "Independent web.open full body read; search snippets not treated as adoption evidence.",
+    "checks": [
+      {
+        "url": "https://www.cdjapan.co.jp/product/NEOIMP-24272",
+        "bodyRead": true,
+        "result": "CD商品正文逐名列四个人版，同页普通PUNG!为第2曲；另列Acca/Inst，因此有限发行封套人物参考有支持。进口商品日期不推定韩国首发。"
+      },
+      {
+        "url": "https://www.cdjapan.co.jp/product/NEOIMP-24273",
+        "bodyRead": true,
+        "result": "KiT商品正文独立逐名列相同四个人版，同页PUNG!曲目一致。"
+      },
+      {
+        "url": "https://www.tvdaily.co.kr/read.php3?aid=17710555321778164010",
+        "bodyRead": true,
+        "result": "2026-02-14原评论将Super Obvious和PUNG!列为该发行双主打，并述四人阵容；未逐名，因此不单独用作姓名证据。"
+      }
+    ],
+    "acceptedScope": "Girl Meets Boy发行个人封套具名参考。",
+    "notEstablished": [
+      "逐人PUNG!录音参与",
+      "aer_X9NmhTc逐人实际出镜",
+      "当前成员身份",
+      "更高清同套原图"
+    ],
+    "scopeLabelAndDisclosuresPassed": true
+  },
+  "protection": {
+    "objectComparisons": [
+      {
+        "path": "apps/idol-site/data/public-work-credits.json",
+        "baselineRecords": 102,
+        "currentRecords": 103,
+        "baselineSlots": 527,
+        "currentSlots": 531,
+        "oldObjectsEqual": 102,
+        "changedOldObjects": [],
+        "onlyAddedWorkId": "rec28ldfRTrPi9",
+        "currentSha256": "ece31a01f54a8906b85d3a62924125f9b6d3d1304d0102fdee794af6139518df"
+      },
+      {
+        "path": "apps/idol-site/data/public-work-recognition.json",
+        "baselineRecords": 102,
+        "currentRecords": 103,
+        "baselineSlots": 527,
+        "currentSlots": 531,
+        "oldObjectsEqual": 102,
+        "changedOldObjects": [],
+        "onlyAddedWorkId": "rec28ldfRTrPi9",
+        "currentSha256": "6f143a8d7f1649f78f0f5dc8e631cc1489de312e91e2f6637917bf2d9897448d"
+      }
+    ],
+    "originalImages": [
+      {
+        "memberId": "rec28ldbniBgam",
+        "name": "MASHIRO",
+        "path": "apps/idol-site/public/artist/madein/batch-b-20261016/mashiro-original.jpg",
+        "bytes": 140042,
+        "sha256": "3681f888598ed64fe4443a98eb21facdf7432fd5a5439ae696701b194c6d5b36",
+        "width": 569,
+        "height": 854,
+        "byteEqualToBaseline": true,
+        "publicInventoryIdentityMatch": true,
+        "workAssociation": "recognition_reference",
+        "participationStatus": "unverified_for_work"
+      },
+      {
+        "memberId": "rec28ldbniBghr",
+        "name": "MiU",
+        "path": "apps/idol-site/public/artist/madein/batch-b-20261016/miu-original.jpg",
+        "bytes": 173999,
+        "sha256": "f6f40deb0609a3aec6da4b31b5ba1f39c213e389f85938a04dd87a85c178beb1",
+        "width": 569,
+        "height": 854,
+        "byteEqualToBaseline": true,
+        "publicInventoryIdentityMatch": true,
+        "workAssociation": "recognition_reference",
+        "participationStatus": "unverified_for_work"
+      },
+      {
+        "memberId": "rec28ldbniBgCI",
+        "name": "SERINA",
+        "path": "apps/idol-site/public/artist/madein/batch-b-20261016/serina-original.jpg",
+        "bytes": 141859,
+        "sha256": "f84b5ae8b0fe812ec6e5e3a7594ccf550011d336c846810b61c532d79255e6ef",
+        "width": 569,
+        "height": 854,
+        "byteEqualToBaseline": true,
+        "publicInventoryIdentityMatch": true,
+        "workAssociation": "recognition_reference",
+        "participationStatus": "unverified_for_work"
+      },
+      {
+        "memberId": "rec28ldbniBgJR",
+        "name": "NAGOMI",
+        "path": "apps/idol-site/public/artist/madein/batch-b-20261016/nagomi-original.jpg",
+        "bytes": 136259,
+        "sha256": "563532cf105d35685651956daecf3c0b102d5a810dc1b27c4c75db65b30b90bd",
+        "width": 569,
+        "height": 854,
+        "byteEqualToBaseline": true,
+        "publicInventoryIdentityMatch": true,
+        "workAssociation": "recognition_reference",
+        "participationStatus": "unverified_for_work"
+      }
+    ],
+    "stableIdsUnchanged": true,
+    "applicationEditsByReviewer": 0,
+    "privateStateReads": 0,
+    "privateWrites": 0,
+    "deployments": 0
+  },
+  "renderedQa": {
+    "schemaVersion": 1,
+    "checkedAt": "2026-10-29T03:24:59.419Z",
+    "environment": {
+      "url": "http://127.0.0.1:5189/",
+      "browser": "Chromium via bundled Playwright 1.62.1",
+      "browserPlugin": "absent",
+      "fallbackReason": "Browser plugin not available",
+      "fixture": "Public identity inventory only; synthetic empty ratings/null personal scores/empty notes and watch state; no owner export or production catalog.",
+      "fixtureInventory": "docs/codex/evidence/20261028-post-v200/people/generic-reference/public-ui-inventory.json",
+      "browserVersion": "149.0.7827.55",
+      "executablePath": "C:/Users/20240513/AppData/Local/ms-playwright/chromium-1228/chrome-win64/chrome.exe"
+    },
+    "flow": "PUNG! work -> public named release-cover references -> open originals -> member link -> same stable member ID and public-work backlink",
+    "results": [
+      {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "status": "passed",
+        "httpStatus": 200,
+        "title": "stage. · 私人女团手帐",
+        "finalUrl": "http://127.0.0.1:5189/?view=works&work=rec28ldfRTrPi9&returnTo=%2Fartists%2Fmadein%3Fsection%3Dmembers%26member%3Drec28ldbniBgJR",
+        "fourReferences": true,
+        "scopeDisclosure": true,
+        "noMemberScoreUi": true,
+        "noFrameworkOverlay": true,
+        "loadedImages": [
+          {
+            "src": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/mashiro-original.jpg",
+            "naturalWidth": 569,
+            "naturalHeight": 854,
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/miu-original.jpg",
+            "naturalWidth": 569,
+            "naturalHeight": 854,
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/serina-original.jpg",
+            "naturalWidth": 569,
+            "naturalHeight": 854,
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/nagomi-original.jpg",
+            "naturalWidth": 569,
+            "naturalHeight": 854,
+            "loaded": true
+          }
+        ],
+        "overflow": {
+          "width": 1440,
+          "document": 1440,
+          "body": 1440
+        },
+        "originals": [
+          {
+            "memberId": "rec28ldbniBgam",
+            "name": "MASHIRO",
+            "src": "/artist/madein/batch-b-20261016/mashiro-original.jpg",
+            "currentSrc": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/mashiro-original.jpg",
+            "width": 569,
+            "height": 854,
+            "displayWidth": 559.671875,
+            "displayHeight": 840,
+            "sha256": "3681f888598ed64fe4443a98eb21facdf7432fd5a5439ae696701b194c6d5b36",
+            "byteLength": 140042
+          },
+          {
+            "memberId": "rec28ldbniBghr",
+            "name": "MiU",
+            "src": "/artist/madein/batch-b-20261016/miu-original.jpg",
+            "currentSrc": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/miu-original.jpg",
+            "width": 569,
+            "height": 854,
+            "displayWidth": 559.671875,
+            "displayHeight": 840,
+            "sha256": "f6f40deb0609a3aec6da4b31b5ba1f39c213e389f85938a04dd87a85c178beb1",
+            "byteLength": 173999
+          },
+          {
+            "memberId": "rec28ldbniBgCI",
+            "name": "SERINA",
+            "src": "/artist/madein/batch-b-20261016/serina-original.jpg",
+            "currentSrc": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/serina-original.jpg",
+            "width": 569,
+            "height": 854,
+            "displayWidth": 559.671875,
+            "displayHeight": 840,
+            "sha256": "f84b5ae8b0fe812ec6e5e3a7594ccf550011d336c846810b61c532d79255e6ef",
+            "byteLength": 141859
+          },
+          {
+            "memberId": "rec28ldbniBgJR",
+            "name": "NAGOMI",
+            "src": "/artist/madein/batch-b-20261016/nagomi-original.jpg",
+            "currentSrc": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/nagomi-original.jpg",
+            "width": 569,
+            "height": 854,
+            "displayWidth": 559.671875,
+            "displayHeight": 840,
+            "sha256": "563532cf105d35685651956daecf3c0b102d5a810dc1b27c4c75db65b30b90bd",
+            "byteLength": 136259
+          }
+        ],
+        "memberLinks": [
+          {
+            "memberId": "rec28ldbniBgam",
+            "url": "http://127.0.0.1:5189/artists/madein?section=members&member=rec28ldbniBgam",
+            "heading": [
+              "MASHIRO"
+            ],
+            "overflow": {
+              "width": 1440,
+              "document": 1440,
+              "body": 1440
+            },
+            "noPublicReferenceEditor": true
+          },
+          {
+            "memberId": "rec28ldbniBghr",
+            "url": "http://127.0.0.1:5189/artists/madein?section=members&member=rec28ldbniBghr",
+            "heading": [
+              "MiU"
+            ],
+            "overflow": {
+              "width": 1440,
+              "document": 1440,
+              "body": 1440
+            },
+            "noPublicReferenceEditor": true
+          },
+          {
+            "memberId": "rec28ldbniBgCI",
+            "url": "http://127.0.0.1:5189/artists/madein?section=members&member=rec28ldbniBgCI",
+            "heading": [
+              "SERINA"
+            ],
+            "overflow": {
+              "width": 1440,
+              "document": 1440,
+              "body": 1440
+            },
+            "noPublicReferenceEditor": true
+          },
+          {
+            "memberId": "rec28ldbniBgJR",
+            "url": "http://127.0.0.1:5189/artists/madein?section=members&member=rec28ldbniBgJR",
+            "heading": [
+              "NAGOMI"
+            ],
+            "overflow": {
+              "width": 1440,
+              "document": 1440,
+              "body": 1440
+            },
+            "noPublicReferenceEditor": true
+          }
+        ]
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "status": "passed",
+        "httpStatus": 200,
+        "title": "stage. · 私人女团手帐",
+        "finalUrl": "http://127.0.0.1:5189/?view=works&work=rec28ldfRTrPi9&returnTo=%2Fartists%2Fmadein%3Fsection%3Dmembers%26member%3Drec28ldbniBgJR",
+        "fourReferences": true,
+        "scopeDisclosure": true,
+        "noMemberScoreUi": true,
+        "noFrameworkOverlay": true,
+        "loadedImages": [
+          {
+            "src": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/mashiro-original.jpg",
+            "naturalWidth": 569,
+            "naturalHeight": 854,
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/miu-original.jpg",
+            "naturalWidth": 569,
+            "naturalHeight": 854,
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/serina-original.jpg",
+            "naturalWidth": 569,
+            "naturalHeight": 854,
+            "loaded": true
+          },
+          {
+            "src": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/nagomi-original.jpg",
+            "naturalWidth": 569,
+            "naturalHeight": 854,
+            "loaded": true
+          }
+        ],
+        "overflow": {
+          "width": 390,
+          "document": 390,
+          "body": 390
+        },
+        "originals": [
+          {
+            "memberId": "rec28ldbniBgam",
+            "name": "MASHIRO",
+            "src": "/artist/madein/batch-b-20261016/mashiro-original.jpg",
+            "currentSrc": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/mashiro-original.jpg",
+            "width": 569,
+            "height": 854,
+            "displayWidth": 365.984375,
+            "displayHeight": 549.3125,
+            "sha256": "3681f888598ed64fe4443a98eb21facdf7432fd5a5439ae696701b194c6d5b36",
+            "byteLength": 140042
+          },
+          {
+            "memberId": "rec28ldbniBghr",
+            "name": "MiU",
+            "src": "/artist/madein/batch-b-20261016/miu-original.jpg",
+            "currentSrc": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/miu-original.jpg",
+            "width": 569,
+            "height": 854,
+            "displayWidth": 365.984375,
+            "displayHeight": 549.3125,
+            "sha256": "f6f40deb0609a3aec6da4b31b5ba1f39c213e389f85938a04dd87a85c178beb1",
+            "byteLength": 173999
+          },
+          {
+            "memberId": "rec28ldbniBgCI",
+            "name": "SERINA",
+            "src": "/artist/madein/batch-b-20261016/serina-original.jpg",
+            "currentSrc": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/serina-original.jpg",
+            "width": 569,
+            "height": 854,
+            "displayWidth": 365.984375,
+            "displayHeight": 549.3125,
+            "sha256": "f84b5ae8b0fe812ec6e5e3a7594ccf550011d336c846810b61c532d79255e6ef",
+            "byteLength": 141859
+          },
+          {
+            "memberId": "rec28ldbniBgJR",
+            "name": "NAGOMI",
+            "src": "/artist/madein/batch-b-20261016/nagomi-original.jpg",
+            "currentSrc": "http://127.0.0.1:5189/artist/madein/batch-b-20261016/nagomi-original.jpg",
+            "width": 569,
+            "height": 854,
+            "displayWidth": 365.984375,
+            "displayHeight": 549.3125,
+            "sha256": "563532cf105d35685651956daecf3c0b102d5a810dc1b27c4c75db65b30b90bd",
+            "byteLength": 136259
+          }
+        ],
+        "memberLinks": [
+          {
+            "memberId": "rec28ldbniBgam",
+            "url": "http://127.0.0.1:5189/artists/madein?section=members&member=rec28ldbniBgam",
+            "heading": [
+              "MASHIRO"
+            ],
+            "overflow": {
+              "width": 390,
+              "document": 390,
+              "body": 390
+            },
+            "noPublicReferenceEditor": true
+          },
+          {
+            "memberId": "rec28ldbniBghr",
+            "url": "http://127.0.0.1:5189/artists/madein?section=members&member=rec28ldbniBghr",
+            "heading": [
+              "MiU"
+            ],
+            "overflow": {
+              "width": 390,
+              "document": 390,
+              "body": 390
+            },
+            "noPublicReferenceEditor": true
+          },
+          {
+            "memberId": "rec28ldbniBgCI",
+            "url": "http://127.0.0.1:5189/artists/madein?section=members&member=rec28ldbniBgCI",
+            "heading": [
+              "SERINA"
+            ],
+            "overflow": {
+              "width": 390,
+              "document": 390,
+              "body": 390
+            },
+            "noPublicReferenceEditor": true
+          },
+          {
+            "memberId": "rec28ldbniBgJR",
+            "url": "http://127.0.0.1:5189/artists/madein?section=members&member=rec28ldbniBgJR",
+            "heading": [
+              "NAGOMI"
+            ],
+            "overflow": {
+              "width": 390,
+              "document": 390,
+              "body": 390
+            },
+            "noPublicReferenceEditor": true
+          }
+        ]
+      }
+    ],
+    "console": [],
+    "pageErrors": [],
+    "requestFailures": [],
+    "blockedWrites": [],
+    "screenshots": [
+      "E:/project/idol-local-backups/20261029-group-qa/madein-1440-initial.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-1440-references.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-1440-reference-block.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-1440-original.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-1440-member-reference.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-390-initial.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-390-references.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-390-reference-block.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-390-original.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-390-member-reference.png"
+    ],
+    "status": "passed"
+  },
+  "screenshotManifest": [
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/madein-1440-initial.png",
+      "bytes": 412531,
+      "sha256": "9645fff35d0a0a5696b85662d11c2441620c79b99536769bef53804ea82cf353"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/madein-1440-references.png",
+      "bytes": 280485,
+      "sha256": "5aa95edfcba17e25d5d7d99ddb14c52bd8011bb3d09552cdb6792c1dc6ac55dc"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/madein-1440-reference-block.png",
+      "bytes": 243028,
+      "sha256": "77e99b137f87ee74edc2ce6a9813a1a117b280e33dc636bbee8996ddfc73d073"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/madein-1440-original.png",
+      "bytes": 581552,
+      "sha256": "013ae439d8bbe6ffce8a5b83582085fca749e3991713051811a347ba231f7322"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/madein-1440-member-reference.png",
+      "bytes": 47265,
+      "sha256": "a196161dfb1e6e56bb34e9e3aad5b61be540a90607c1885dc9b4e6bc37f24493"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/madein-390-initial.png",
+      "bytes": 115933,
+      "sha256": "85bdd6b5c6e829442fb9f00a5dd52632eae3782ec78a9aed9a8bf3214e6c6f0b"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/madein-390-references.png",
+      "bytes": 230940,
+      "sha256": "b713df2f121d94c50246b8012c03459e28cea9f1086e08eeaba1c2dd57565c8c"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/madein-390-reference-block.png",
+      "bytes": 243009,
+      "sha256": "0c36bf63862bf5d340a33e961438f96c10688aae4ab8ba63555935fedc0ce375"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/madein-390-original.png",
+      "bytes": 284652,
+      "sha256": "0964be12c70a86a71d0afaa81799f316dd14ba02f8ec15b4da5554cee6322668"
+    },
+    {
+      "path": "E:/project/idol-local-backups/20261029-group-qa/madein-390-member-reference.png",
+      "bytes": 35526,
+      "sha256": "23b74c5317da9472c9d56b00b435c76978210af7473e4b0bec7fa70448e989fa"
+    }
+  ],
+  "visualInspection": {
+    "method": "Opened and visually inspected saved desktop/mobile screenshots with view_image.",
+    "result": "四个署名参考顺序及姓名清晰；桌面四列、手机两列；原图弹窗保持完整比例和关闭入口；未见新增覆盖、裁断、横溢出或错误页。",
+    "inspectedFiles": [
+      "E:/project/idol-local-backups/20261029-group-qa/madein-1440-initial.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-1440-references.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-390-references.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-390-original.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-1440-reference-block.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-390-reference-block.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-1440-member-reference.png",
+      "E:/project/idol-local-backups/20261029-group-qa/madein-390-member-reference.png"
+    ]
+  },
+  "testHarnessHistory": [
+    "Initial launch failed because Playwright default browser revision1234 was absent; used already installed Chromium1228 executable, no dependencies installed.",
+    "Initial assertion matched two intentional PUNG! H1 headings and hit strict selector error; harness changed to first matching H1, no application fix.",
+    "First complete UI run passed; final run additionally checked member-page overflow and saved complete reference-block/member screenshots."
+  ],
+  "environmentNotes": [
+    "Browser plugin not available; used bundled Playwright per fallback skill.",
+    "Dev-server output included qwer public-asset import warning outside the MADEIN edit; tested browser console had zero warnings/errors.",
+    "Server uses isolated port5189 and remains running for root reviewer; exec session16070."
+  ],
+  "limitations": [
+    "Fixture identities are real public inventory records, but all personal state is synthetic empty/null. This does not verify production or owner personal values.",
+    "No video playback, frame-by-frame participation check, production deployment, save, or owner export performed.",
+    "No claim to validate all51group layouts. This QA targets MADEIN increment and its4member navigation at2widths.",
+    "Existing MV-score readout remains in the surrounding work page; no scoring/editor UI is introduced in the public references and no member-scoring relation is fabricated.",
+    "Screenshots and harness remain outside repository; the committed JSON records paths, dimensions, outcomes and hashes."
+  ]
+}

@@ -1,0 +1,17 @@
+const fs=require('node:fs'),path=require('node:path'),{createRequire}=require('node:module'),{createHash}=require('node:crypto');
+const app=path.resolve(__dirname,'../../../../apps/idol-site'),ts=createRequire(path.join(app,'package.json'))('typescript'),file=path.join(app,'components/seven-redesign/artist.tsx');
+const before=fs.readFileSync(file,'utf8'),sf=ts.createSourceFile(file,before,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX),nodes=[];
+const walk=n=>{if(ts.isFunctionDeclaration(n)&&n.name?.text==='memberPage')nodes.push(n);ts.forEachChild(n,walk);};walk(sf);
+if(nodes.length!==1)throw Error('Unique Seven member renderer required');
+const fn=nodes[0],start=fn.getStart(sf),original=fn.getText(sf);if(original.includes('ordered-v1'))throw Error('Already migrated');
+let updated=original;const replace=(a,b)=>{if(updated.split(a).length!==2)throw Error('Unique reviewed preimage required: '+a);updated=updated.replace(a,b);};
+replace('className="sr-member-detail sr-section"','className="sr-member-detail sr-section" data-member-layout="ordered-v1" data-member-id={m.id}');
+replace('className="sr-profile-layout"','className="sr-profile-layout" data-member-module="identity"');
+replace('className="sr-biography"','className="sr-biography" data-member-module="basic"');
+replace('className="sr-member-works"','className="sr-member-works" data-member-module="works"');
+replace('<MemberCareerFacts member={m}/>','<MemberCareerFacts member={m} part="intro"/>');
+const nav=[];const scan=n=>{if(ts.isJsxElement(n)&&n.openingElement.attributes.properties.some(p=>p.name?.getText()==='className'&&p.initializer?.text==='sr-member-next'))nav.push(n);ts.forEachChild(n,scan);};scan(fn);
+if(nav.length!==1)throw Error('Original adjacency navigation required');const navigation=nav[0].getText(sf);replace(navigation,'');
+const close='</article>;}';replace(close,'<MemberCareerFacts member={m} part="history"/><MemberCareerFacts member={m} part="sources"/>'+navigation+close);
+const after=before.slice(0,start)+updated+before.slice(fn.end),parsed=ts.createSourceFile(file,after,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);if(parsed.parseDiagnostics.length)throw Error('Invalid generated Seven JSX');
+fs.writeFileSync(file,after);const sha=s=>createHash('sha256').update(s).digest('hex');fs.writeFileSync(path.join(__dirname,'seven-movement.json'),JSON.stringify({file:'components/seven-redesign/artist.tsx',groups:['madein','qwer','purplekiss','ive','triples','rescene','illit'],beforeSha256:sha(before),afterSha256:sha(after),originalPhotosCardsAndButtonsPreserved:true,dataChanges:0},null,2)+'\n');

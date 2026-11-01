@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-29T05:48:13.853Z",
+  "baselineCommit": "cef1765801ce62739c44308292a680b16e681597",
+  "reviewer": "independent final diff audit",
+  "status": "passed_with_preexisting_test_failures",
+  "scope": [
+    "ILLIT existing full-song and short-performance labels, reciprocal navigation and immutable identities",
+    "Hey Gabby exact review-only historical reconstruction",
+    "Hey Gabby explicit public note derivation, anonymous field whitelist, text escaping and link validation",
+    "Baseline reproduction of seven unrelated existing assertions"
+  ],
+  "findings": [],
+  "reviewedFileSha256": {
+    "apps/idol-site/data/versions/verified-display.json": "e63b96d768167287097dbf5862fbbcece5aec64883b56d0081c8ebb48deca014",
+    "apps/idol-site/lib/idol/verified-version-display.ts": "df39e23c13ca152bcbdbbd7e957aac32ab870285235a0d3b205731ff93c3f7c7",
+    "apps/idol-site/tests/illit-full-version.test.cjs": "028dd2bc5bfd4cc2c83008ec148bb9e409fa78ecd3218c4fccafb79929743fdf",
+    "apps/idol-site/tests/verified-version-display.test.cjs": "d32a3c794ad4eff42f1524a51b2076067f8bff867d53114683a4f7fc92b0db10",
+    "apps/idol-site/tests/version-display-ui.test.cjs": "22e5ebe2cfe56f41a1a9fb1a1b761185cd8ccc3dbea0d5f5d1f46c0bef85cf5b",
+    "apps/idol-site/tests/helpers/heygabby-review-baseline.cjs": "8aec59ed45677ac85645f71aac3f54fd90d4b150ebc287aa92ee076c688bde39",
+    "apps/idol-site/tests/continuous-stage-viewing.test.mjs": "1b786a372f01f92d83e90b9aa7475ad4d338f79bc31c67e1bdd768c2f8c158c3",
+    "apps/idol-site/tests/formal-four-stage-adoption.test.cjs": "779499fba4374ff0437c71a4474d92e544184b90d25d65bdcc59be2ca005f088",
+    "apps/idol-site/data/stages/supplements.json": "4586ed3f10dc97fd0388303ea2241200c48a3ff0a31f4cc5a7402bd482f6c229",
+    "apps/idol-site/app/page.tsx": "df6444375ae5fd471c9ced1ab22d2c72d9a088c300eae20a3a1d5dcc20d481a5",
+    "apps/idol-site/lib/idol/stage-public-research.ts": "835a2c8930503e24e9bd36e2d0a467a30dff090349f87e197db779aa4618d998",
+    "apps/idol-site/lib/idol/supplements.ts": "539591415bcd66348e67c15c0cf3410c238ee3f657e411b0240f7b0d3f946e1a",
+    "apps/idol-site/lib/idol/public-catalog.ts": "076aecdd35b7bb0424c501710bde8aa554345024bb01d74d1a2727c12aebb1b6",
+    "apps/idol-site/lib/idol/types.ts": "1bf424b3a9c2916739a8dee30b6cb482d3a5d4b78706aa05b8ba578a18d78d43",
+    "apps/idol-site/tests/stage-research-note.test.cjs": "fe021680e5cfcd561bee6105343adc9447094fa7a0fa61c765772712514ec761",
+    "apps/idol-site/tests/heygabby-research-followup.test.cjs": "115c2f2fa59a0175c2355d017451459286c6f7abf46c53428e7e21456eae976a",
+    "apps/idol-site/tests/watch-leads.test.cjs": "a8e44bf4544fa73fea4fb5f631c09e524e1beef2173c506d230233ef3b15879f",
+    "apps/idol-site/tests/helpers/shared-journal-dependency-loader.cjs": "27603e0fd3962053f50f300e5161f45a05b292c27d681223ffa6191fd8d0dc36"
+  },
+  "checks": {
+    "focusedTests": {
+      "command": "node --test --test-reporter=spec tests/stage-research-note.test.cjs tests/heygabby-research-followup.test.cjs tests/watch-leads.test.cjs tests/stage-selection-policy.test.mjs tests/version-display-ui.test.cjs tests/illit-full-version.test.cjs tests/verified-version-display.test.cjs",
+      "cwd": "apps/idol-site",
+      "tests": 46,
+      "passed": 46,
+      "failed": 0
+    },
+    "illit": {
+      "existingIdentities": 71,
+      "existingRelations": 37,
+      "newTags": 2,
+      "labelOverridesOnExistingEdges": 1,
+      "receiptBeforeMatchesBaseline": true,
+      "privateFieldsAndSeparateStageSourcesPreservedInSyntheticTests": true
+    },
+    "historicalHelper": {
+      "restoredCloneEqualsCompleteBaselineSupplements": true,
+      "inputUnchanged": true,
+      "targetDriftProbesRejected": 4,
+      "nonTargetDriftNotErased": true,
+      "priorExpectedHashesUnmodified": true
+    },
+    "publicNote": {
+      "explicitNoteWorkId": "recvxyOz5Xo5fW",
+      "explicitNoteCount": 1,
+      "publicSources": 3,
+      "otherRowsUnchanged": 136,
+      "extraUnsafeUrlProbesRejected": 14,
+      "nestedSecretCanariesRemoved": true,
+      "onlySummaryAndLabelUrlSourceFieldsProjected": true,
+      "reactTextEscapingVerified": true,
+      "rawReviewExcludedLimitationsNotProjected": true,
+      "formalStageStillAbsent": true,
+      "thinClientValidatorDoesNotImportResearchMetadata": true
+    },
+    "protectedFilesByteEqualBaseline": [
+      "apps/idol-site/data/stage-videos.json",
+      "apps/idol-site/data/stages/inventory.json",
+      "apps/idol-site/data/stages/status.json",
+      "apps/idol-site/data/snapshot.json",
+      "apps/idol-site/data/mv-member-appearance.json",
+      "apps/idol-site/data/mv-public-media.json"
+    ]
+  },
+  "preexistingFailureGroups": [
+    {
+      "suite": "tests/continuous-stage-viewing.test.mjs",
+      "baselineTests": 3,
+      "baselinePassed": 2,
+      "baselineFailed": 1,
+      "method": "Original baseline ESM test via stdin; exact supplements read returns baseline bytes.",
+      "failures": [
+        {
+          "assertion": "stage-videos historical cohort hash",
+          "actual": "14712a1d903d74df774791e76f4d5a29ed1ae4d249e261612101b51a5c7a2051",
+          "expected": "fc2251beab2ea55caa729451068d0c0e21576ea191f8ce87d9111872de62656c"
+        }
+      ]
+    },
+    {
+      "suite": "tests/formal-four-stage-adoption.test.cjs",
+      "baselineTests": 6,
+      "baselinePassed": 3,
+      "baselineFailed": 3,
+      "method": "Original baseline CommonJS test in virtual module; exact supplements read returns baseline bytes.",
+      "failures": [
+        {
+          "assertion": "historical stage count",
+          "actual": 496,
+          "expected": 493
+        },
+        {
+          "assertion": "Right Now historical source hash",
+          "actual": "3b352dc16a9095c04e0dce38e08210a6c6c4a354df9e0b53496b384f238d112e",
+          "expected": "335b5142cef87107469065b8c9581030f870373f2cc75700cdcb3a9807f35d9d"
+        },
+        {
+          "assertion": "isolated historical save status",
+          "actual": 409,
+          "expected": 200
+        }
+      ]
+    },
+    {
+      "suite": "tests/artist-navigation.test.cjs",
+      "baselineTests": 14,
+      "baselinePassed": 12,
+      "baselineFailed": 2,
+      "method": "Original baseline CommonJS test in virtual module; exact app/page.tsx read returns baseline bytes.",
+      "failures": [
+        {
+          "assertion": "old bmExperience class source regular expression"
+        },
+        {
+          "assertion": "old section hidden source regular expression"
+        }
+      ]
+    },
+    {
+      "suite": "tests/three-group-public-bridge.test.cjs",
+      "baselineTests": 28,
+      "baselinePassed": 27,
+      "baselineFailed": 1,
+      "method": "Original baseline CommonJS test; identity and navigation JSON independently byte-equal baseline.",
+      "failures": [
+        {
+          "assertion": "public-artist-navigation-keys.json size below 24000 bytes",
+          "actualBytes": 45655,
+          "thresholdExclusive": 24000
+        }
+      ]
+    }
+  ],
+  "externalDetailedLogSha256": {
+    "continuous-baseline.txt": "02f66a567a50108041766769d3410e1714571193bcf8cb2ad35a0d8c257cd63a",
+    "formal-baseline.txt": "7829164e72c63b5494280d2ce89615775d5b85fb4ba489b960a46691c1224196",
+    "artist-navigation.test.cjs.baseline.txt": "daa1470fe86cceb9b86d862d3bf78f8f093c65cd38321883bb32979cdf5a4926",
+    "three-group-public-bridge.test.cjs.baseline.txt": "1427318bf7640bae49590381b7a4b402920d4eb3a83be8d40b67b29458c4fcf8"
+  },
+  "limits": [
+    "No live owner data read, private save, deployment or commit performed by this reviewer.",
+    "Component rendering and synthetic tests were verified; live browser checks are reported separately by the UI reviewer.",
+    "No new web research, full video playback, full repository test run or production build performed by this reviewer.",
+    "MADEIN source claims and group research are covered by the other reviewers, outside this focused audit."
+  ]
+}

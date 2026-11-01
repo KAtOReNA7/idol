@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-30",
+  "scope": "Support only; no real stage adoption, deployment, private write or commit by subagent.",
+  "sameSongFallback": {
+    "sameSong": true,
+    "targetWorkId": "recTargetWork",
+    "groupId": "recTargetGroup",
+    "targetSong": "Target inventory song/version name",
+    "performedSong": "Actual performed song/version name",
+    "reason": "Bounded reviewed search did not find the full corresponding version.",
+    "completeness": "excerpt",
+    "version": "different",
+    "performerScope": "full_group",
+    "originalPerformerScope": "full_group",
+    "differences": [
+      "Actual shorter duration/scope",
+      "Actual language or arrangement difference"
+    ],
+    "evidence": {
+      "note": "Evidence establishing the same song, group participation and actual source scope.",
+      "urls": [
+        "https://example.org/source"
+      ]
+    }
+  },
+  "rules": [
+    "Normalization keeps versionMatch false and generates visible same-song/excerpt/alternate-version labels.",
+    "Complete corresponding originals rank before existing guest-scope member fallback, then same-song fallback.",
+    "Merger accepts same-song fallback only for locally empty and published-empty slots with owner empty score and complete journal, using the original freshness checks.",
+    "Existing sources cannot be replaced by a same-song fallback. Later exact/full replacement still uses unchanged score/log/preimage/occasion safeguards.",
+    "Original performer scope must remain matched; concerts/events remain excluded.",
+    "Bilibili exact BV/CID/page and existing source keys are unchanged.",
+    "Optional sourceWorkId permits reuse only of an exact already-bound same-group source, with performedSong matching that source work; no saved score is copied.",
+    "Anonymous projection exposes declared differences but strips raw evidence and research reason."
+  ],
+  "validation": {
+    "files": 4,
+    "tests": 50,
+    "passed": 50,
+    "failed": 0,
+    "skipped": 0,
+    "newFocusedTests": 8,
+    "logSha256": "0518ede853ac49ffed430a4edd21aa4a6988ca6b7e53846fd0d4cdc0951dd222",
+    "logBytes": 5832,
+    "fullBuild": "not run by subagent; root will run once"
+  },
+  "preservation": {
+    "existingSourceCount": 501,
+    "stageVideosSha256": "d4e3cc9ad2c99361e0ebd5976e31088ff7b24a7e4f9d35c4161dbe5695db3337",
+    "byteEqualToHead": true,
+    "realSourceAdoptions": 0,
+    "privateWrites": 0,
+    "deployments": 0
+  },
+  "rootFinalValidation": "validation.json",
+  "currentPreparedCandidates": {
+    "groups": 8,
+    "total": 19,
+    "formalAdoptions": 0,
+    "summary": "same-song-fallback-ready-summary.json",
+    "guard": "requires genuine fresh owner empty score, complete journal and exact published preimage"
+  }
+}

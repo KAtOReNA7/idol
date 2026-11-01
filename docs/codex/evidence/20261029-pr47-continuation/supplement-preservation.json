@@ -1,0 +1,965 @@
+{
+  "baselineCommit": "b209073909b2f43254d836ffe139eba056582f09",
+  "scope": "Exact pre/post images for three research-only rows; no formal stage or score binding changed.",
+  "beforeMetadata": {
+    "formatVersion": "idol.stage-supplements.v1",
+    "updatedAt": "2026-10-28T08:56:58.994505+00:00",
+    "reviewedInputFiles": [
+      "alternatives-reviewed.json",
+      "watch-leads-reviewed.json",
+      "20261028-continuous/stage-replacements-normalized.json"
+    ],
+    "researchManifestSha256s": [
+      "e59a926ac51ca7b26b3dd0273a21726c1dd97ed4701ab283c87f5930f8651855",
+      "ebddd68e8e991ee5b3cfca2709c3253c706734c3eaeaff2ed2260e35267f27fa",
+      "5aba4bee86ae546f869caa8c1e61541be8af789e55ff2e8c50bd21a80f064ac6",
+      "3447ee3a1e43ab100f68b0091b9f14730b949c68d2a3cebc8e4ceabb05f4ca40",
+      "a4794daf79c225a9e41ff3d1042b732f2f71b21e0726ceca9912595acd70fc0e",
+      "f4e3e73fc61f28f500561de644e095d67f7c67869dea02a9397b9ba0897722d8",
+      "d2a20df52c9435ae67a901530b34a139ee6d8683a7e568f3c80adea675962c9e",
+      "e2ce24e9a40aa267f1532dcfb34d8f252fa565fbf45fc043750502e8ee255db8"
+    ],
+    "reviewedInputHashes": [
+      {
+        "file": "browser-verified-014-odd-young-nine.json",
+        "sha256": "9f2fc54f410da517f8970c05423a2fc9e2e4c36e555f90a738d55920192e9cc3"
+      },
+      {
+        "file": "browser-http-verified-015-four-twoalternatives.json",
+        "sha256": "1042223e3ea30d85b915d5457f508184a553abc47148a5566c4801911b094672"
+      },
+      {
+        "file": "browser-verified-016-newjeans-pair.json",
+        "sha256": "13efb089e5c1dac2b24bcbcd0b606c0ede312bd1ca548086b390ae5e3f5a2e28"
+      },
+      {
+        "file": "lsfm-unforgiven-viewonly-002.json",
+        "sha256": "e1ecd6a2f9f7037424aaeace022704fb83719a1149d01f23af24cce50138ab46"
+      },
+      {
+        "file": "alternatives-voltage-official-excerpt-002.json",
+        "sha256": "dc6a9bb610271a1ba7649e38e49b290640b6dff51609b462bc02f82dc91e806e"
+      },
+      {
+        "file": "watch-leads-001-qwer-vvup-v2.json",
+        "sha256": "1e5af11e4d489a37a4306f4da3ba3342df209a7012b0136dea9abfbfc15e9269"
+      },
+      {
+        "file": "alternatives-017-xg-original-two.json",
+        "sha256": "dae5f996381cc30bb45d7676cc30400c5c283e931f2912a32e02c55b4499f6c3"
+      },
+      {
+        "file": "alternatives-018-xg-rock-sbs.json",
+        "sha256": "1fc81ba0779f3cbe40e74347f702201a85a3a934887d70c3237da7f8b7fc056e"
+      },
+      {
+        "file": "alternatives-019-xg-howling-sbs.json",
+        "sha256": "9d21e013b69cde7d183f7a6b6949a65c8e115a5ef63eef01e8c23b0d1f9456e5"
+      },
+      {
+        "file": "alternatives-topsecret-001-v3.json",
+        "sha256": "91bc6dece2c51ef6d2b53afb36394037f326dc7816ea37da49f3587f63f1bfba"
+      },
+      {
+        "file": "alternatives-painting-001-v3.json",
+        "sha256": "19c7db481d9f3cef9411de3366e1433bc41355ff944648ec14b0d8b7385ab00f"
+      },
+      {
+        "file": "alternatives-boys-official-excerpt-005.json",
+        "sha256": "833530f746a6e2748d4256745621f90c67f7f421f6aae043b5840a49635604b0"
+      },
+      {
+        "file": "alternatives-love-original-002.json",
+        "sha256": "e1dfeb38541a85aa5a22c0ecbc4336b02d17b99606419687dce196e69e93c216"
+      },
+      {
+        "file": "alternatives-dadarida-001.json",
+        "sha256": "a40f1d91f437655802d5ad88fe793850712218318584374386d90b94fa5e38e1"
+      },
+      {
+        "file": "alternatives-dopamine-001-v3.json",
+        "sha256": "539a3e59d9683661f42eedfc211be3e2611105460c25c79eea6cd5651372005f"
+      },
+      {
+        "file": "alternatives-020-xg-orb.json",
+        "sha256": "821d0ae5156a4e43bd5dfad04020dd98cf5e9a6ea660bdcd41f2424237472298"
+      },
+      {
+        "file": "alternatives-021-young-roty-short.json",
+        "sha256": "8dcd13e04b38db793e262d943c9385cfee9a6b28a5f9eb4e17b354248efb4504"
+      },
+      {
+        "file": "alternatives-022-xg-four-seasons.json",
+        "sha256": "76bd4e259c22c566fdb209833ccfa012a26e11ca3c73ac50d0fce6316a951a89"
+      },
+      {
+        "file": "browser-verified-023-ktn-mango-two-v2.json",
+        "sha256": "5dc4842012791acc4993b63d33c01eb67b8fe3e79d8c0a35304643df83e5156f"
+      },
+      {
+        "file": "alternatives-audience-qwer-idle-001.json",
+        "sha256": "2af375d493f5ccf72fbe23779fabe1af99806986a67a324c45f9329777787949"
+      },
+      {
+        "file": "watch-leads-002-qwer-showdown-tver.json",
+        "sha256": "4557cd627808ccd2f80a55964ac091e5e554f9000b48aeeef955ff2e2c39b5c4"
+      },
+      {
+        "file": "alternatives-024-sibasan-four.json",
+        "sha256": "2ca33ae539581eb8740fc21cbc889fd808ce07ef42ffd3e2f38b883a0bbdccc9"
+      },
+      {
+        "file": "alternatives-audience-wooah-summer-001.json",
+        "sha256": "214d33da2a3632cf5c191a41593d32c99cc1817140716809764ee21c6722d08b"
+      },
+      {
+        "file": "alternatives-025-aespa-regret-bimong.json",
+        "sha256": "16939cdcb5032d75c79b158e940573e19c4047520ac168e9ee404409d4412b92"
+      },
+      {
+        "file": "alternatives-026-triples-dreamdress-x-v2.json",
+        "sha256": "8a4131a927000ddb81f1b48b6a6c62ef1c3f0a5e17a466f9c7bd201a1cc5a8b9"
+      },
+      {
+        "file": "alternatives-027-meovv-lit-right-now.json",
+        "sha256": "7903ebbaf9f8f2f805021952893d1fa5db438456fc19146ed29fc28df523c86f"
+      },
+      {
+        "file": "alternatives-triples-password-untitled-001.json",
+        "sha256": "6499c2f9a95839e714dd58478b9ee6a10cb780c7f13b64aa782be25d83b5ce0a"
+      },
+      {
+        "file": "alternatives-028-xg-million-places.json",
+        "sha256": "b4a6340a4c56852e2e1682333e13bb8e567071da590923130b1c8a5fdfa233d1"
+      },
+      {
+        "file": "alternatives-029-stayc-mwuah-korean.json",
+        "sha256": "d0445000e08a105936540e5be62efbc68607524a71a38138b4cdb661357e06d7"
+      },
+      {
+        "file": "alternatives-030-qwer-fake-idol.json",
+        "sha256": "1a61d1fdf63ffa3d8ecd01d741719e12aff22c6a4d1b92e79f4bb03c63fd3ea6"
+      },
+      {
+        "file": "alternatives-031-katseye-gameboy.json",
+        "sha256": "cc24d05f5d3664f92a4932068149aa930b7b32d16ffd30f9307bac0e4a4c3ff8"
+      },
+      {
+        "file": "alternatives-032-ifeye-loverboy.json",
+        "sha256": "e8705654ffec8254bbc973d9286fbf4ee0dcb4a95626acfa7652bb6ba008a609"
+      },
+      {
+        "file": "watch-leads-003-geenius-five.json",
+        "sha256": "6fd5d640350b486142545eb5fbb5cb409ac1c8b5d860d73f6d58ae057725e9a8"
+      },
+      {
+        "file": "alternatives-028-xg-million-places.json",
+        "sha256": "b4a6340a4c56852e2e1682333e13bb8e567071da590923130b1c8a5fdfa233d1"
+      },
+      {
+        "file": "alternatives-029-stayc-mwuah-korean.json",
+        "sha256": "d0445000e08a105936540e5be62efbc68607524a71a38138b4cdb661357e06d7"
+      },
+      {
+        "file": "alternatives-030-qwer-fake-idol.json",
+        "sha256": "1a61d1fdf63ffa3d8ecd01d741719e12aff22c6a4d1b92e79f4bb03c63fd3ea6"
+      },
+      {
+        "file": "alternatives-031-katseye-gameboy.json",
+        "sha256": "cc24d05f5d3664f92a4932068149aa930b7b32d16ffd30f9307bac0e4a4c3ff8"
+      },
+      {
+        "file": "alternatives-032-ifeye-loverboy.json",
+        "sha256": "e8705654ffec8254bbc973d9286fbf4ee0dcb4a95626acfa7652bb6ba008a609"
+      },
+      {
+        "file": "watch-leads-003-geenius-five.json",
+        "sha256": "6fd5d640350b486142545eb5fbb5cb409ac1c8b5d860d73f6d58ae057725e9a8"
+      },
+      {
+        "file": "patch-014-mexe-chapter-evidence-correction.json",
+        "sha256": "f4e3e73fc61f28f500561de644e095d67f7c67869dea02a9397b9ba0897722d8"
+      },
+      {
+        "file": "alternatives-033-ive-wave-connect.json",
+        "sha256": "40cf0513da651e6c4a31b3e914fec93977bdbf3a226847cb0d40ed20b60aeaec"
+      },
+      {
+        "file": "alternatives-034-ive-iwant-naver-v2.json",
+        "sha256": "239632ad13b24ea397b6e4d124464d32316394acd20fc5796fe48dc9cedc6127"
+      },
+      {
+        "file": "alternatives-035-illit-two-originals.json",
+        "sha256": "3b431f79f2170da8a5eb23d2212d983580dbe5549ced775438886effc621c0a1"
+      },
+      {
+        "file": "alternatives-036-qwer-showdown-korean.json",
+        "sha256": "c530461ed43a374eb562d12447e157df74d2fe51192dd6e648d16fcc86157dd6"
+      },
+      {
+        "file": "remaining58-search-review-patch-v4.json",
+        "sha256": "e2ce24e9a40aa267f1532dcfb34d8f252fa565fbf45fc043750502e8ee255db8"
+      }
+    ]
+  },
+  "afterMetadata": {
+    "formatVersion": "idol.stage-supplements.v1",
+    "updatedAt": "2026-10-29T06:54:33.650624+00:00",
+    "reviewedInputFiles": [
+      "alternatives-reviewed.json",
+      "watch-leads-reviewed.json",
+      "20261028-continuous/stage-replacements-normalized.json",
+      "docs/codex/evidence/20261029-pr47-continuation/izna-watch-lead-adoption.json"
+    ],
+    "researchManifestSha256s": [
+      "e59a926ac51ca7b26b3dd0273a21726c1dd97ed4701ab283c87f5930f8651855",
+      "ebddd68e8e991ee5b3cfca2709c3253c706734c3eaeaff2ed2260e35267f27fa",
+      "5aba4bee86ae546f869caa8c1e61541be8af789e55ff2e8c50bd21a80f064ac6",
+      "3447ee3a1e43ab100f68b0091b9f14730b949c68d2a3cebc8e4ceabb05f4ca40",
+      "a4794daf79c225a9e41ff3d1042b732f2f71b21e0726ceca9912595acd70fc0e",
+      "f4e3e73fc61f28f500561de644e095d67f7c67869dea02a9397b9ba0897722d8",
+      "d2a20df52c9435ae67a901530b34a139ee6d8683a7e568f3c80adea675962c9e",
+      "e2ce24e9a40aa267f1532dcfb34d8f252fa565fbf45fc043750502e8ee255db8"
+    ],
+    "reviewedInputHashes": [
+      {
+        "file": "browser-verified-014-odd-young-nine.json",
+        "sha256": "9f2fc54f410da517f8970c05423a2fc9e2e4c36e555f90a738d55920192e9cc3"
+      },
+      {
+        "file": "browser-http-verified-015-four-twoalternatives.json",
+        "sha256": "1042223e3ea30d85b915d5457f508184a553abc47148a5566c4801911b094672"
+      },
+      {
+        "file": "browser-verified-016-newjeans-pair.json",
+        "sha256": "13efb089e5c1dac2b24bcbcd0b606c0ede312bd1ca548086b390ae5e3f5a2e28"
+      },
+      {
+        "file": "lsfm-unforgiven-viewonly-002.json",
+        "sha256": "e1ecd6a2f9f7037424aaeace022704fb83719a1149d01f23af24cce50138ab46"
+      },
+      {
+        "file": "alternatives-voltage-official-excerpt-002.json",
+        "sha256": "dc6a9bb610271a1ba7649e38e49b290640b6dff51609b462bc02f82dc91e806e"
+      },
+      {
+        "file": "watch-leads-001-qwer-vvup-v2.json",
+        "sha256": "1e5af11e4d489a37a4306f4da3ba3342df209a7012b0136dea9abfbfc15e9269"
+      },
+      {
+        "file": "alternatives-017-xg-original-two.json",
+        "sha256": "dae5f996381cc30bb45d7676cc30400c5c283e931f2912a32e02c55b4499f6c3"
+      },
+      {
+        "file": "alternatives-018-xg-rock-sbs.json",
+        "sha256": "1fc81ba0779f3cbe40e74347f702201a85a3a934887d70c3237da7f8b7fc056e"
+      },
+      {
+        "file": "alternatives-019-xg-howling-sbs.json",
+        "sha256": "9d21e013b69cde7d183f7a6b6949a65c8e115a5ef63eef01e8c23b0d1f9456e5"
+      },
+      {
+        "file": "alternatives-topsecret-001-v3.json",
+        "sha256": "91bc6dece2c51ef6d2b53afb36394037f326dc7816ea37da49f3587f63f1bfba"
+      },
+      {
+        "file": "alternatives-painting-001-v3.json",
+        "sha256": "19c7db481d9f3cef9411de3366e1433bc41355ff944648ec14b0d8b7385ab00f"
+      },
+      {
+        "file": "alternatives-boys-official-excerpt-005.json",
+        "sha256": "833530f746a6e2748d4256745621f90c67f7f421f6aae043b5840a49635604b0"
+      },
+      {
+        "file": "alternatives-love-original-002.json",
+        "sha256": "e1dfeb38541a85aa5a22c0ecbc4336b02d17b99606419687dce196e69e93c216"
+      },
+      {
+        "file": "alternatives-dadarida-001.json",
+        "sha256": "a40f1d91f437655802d5ad88fe793850712218318584374386d90b94fa5e38e1"
+      },
+      {
+        "file": "alternatives-dopamine-001-v3.json",
+        "sha256": "539a3e59d9683661f42eedfc211be3e2611105460c25c79eea6cd5651372005f"
+      },
+      {
+        "file": "alternatives-020-xg-orb.json",
+        "sha256": "821d0ae5156a4e43bd5dfad04020dd98cf5e9a6ea660bdcd41f2424237472298"
+      },
+      {
+        "file": "alternatives-021-young-roty-short.json",
+        "sha256": "8dcd13e04b38db793e262d943c9385cfee9a6b28a5f9eb4e17b354248efb4504"
+      },
+      {
+        "file": "alternatives-022-xg-four-seasons.json",
+        "sha256": "76bd4e259c22c566fdb209833ccfa012a26e11ca3c73ac50d0fce6316a951a89"
+      },
+      {
+        "file": "browser-verified-023-ktn-mango-two-v2.json",
+        "sha256": "5dc4842012791acc4993b63d33c01eb67b8fe3e79d8c0a35304643df83e5156f"
+      },
+      {
+        "file": "alternatives-audience-qwer-idle-001.json",
+        "sha256": "2af375d493f5ccf72fbe23779fabe1af99806986a67a324c45f9329777787949"
+      },
+      {
+        "file": "watch-leads-002-qwer-showdown-tver.json",
+        "sha256": "4557cd627808ccd2f80a55964ac091e5e554f9000b48aeeef955ff2e2c39b5c4"
+      },
+      {
+        "file": "alternatives-024-sibasan-four.json",
+        "sha256": "2ca33ae539581eb8740fc21cbc889fd808ce07ef42ffd3e2f38b883a0bbdccc9"
+      },
+      {
+        "file": "alternatives-audience-wooah-summer-001.json",
+        "sha256": "214d33da2a3632cf5c191a41593d32c99cc1817140716809764ee21c6722d08b"
+      },
+      {
+        "file": "alternatives-025-aespa-regret-bimong.json",
+        "sha256": "16939cdcb5032d75c79b158e940573e19c4047520ac168e9ee404409d4412b92"
+      },
+      {
+        "file": "alternatives-026-triples-dreamdress-x-v2.json",
+        "sha256": "8a4131a927000ddb81f1b48b6a6c62ef1c3f0a5e17a466f9c7bd201a1cc5a8b9"
+      },
+      {
+        "file": "alternatives-027-meovv-lit-right-now.json",
+        "sha256": "7903ebbaf9f8f2f805021952893d1fa5db438456fc19146ed29fc28df523c86f"
+      },
+      {
+        "file": "alternatives-triples-password-untitled-001.json",
+        "sha256": "6499c2f9a95839e714dd58478b9ee6a10cb780c7f13b64aa782be25d83b5ce0a"
+      },
+      {
+        "file": "alternatives-028-xg-million-places.json",
+        "sha256": "b4a6340a4c56852e2e1682333e13bb8e567071da590923130b1c8a5fdfa233d1"
+      },
+      {
+        "file": "alternatives-029-stayc-mwuah-korean.json",
+        "sha256": "d0445000e08a105936540e5be62efbc68607524a71a38138b4cdb661357e06d7"
+      },
+      {
+        "file": "alternatives-030-qwer-fake-idol.json",
+        "sha256": "1a61d1fdf63ffa3d8ecd01d741719e12aff22c6a4d1b92e79f4bb03c63fd3ea6"
+      },
+      {
+        "file": "alternatives-031-katseye-gameboy.json",
+        "sha256": "cc24d05f5d3664f92a4932068149aa930b7b32d16ffd30f9307bac0e4a4c3ff8"
+      },
+      {
+        "file": "alternatives-032-ifeye-loverboy.json",
+        "sha256": "e8705654ffec8254bbc973d9286fbf4ee0dcb4a95626acfa7652bb6ba008a609"
+      },
+      {
+        "file": "watch-leads-003-geenius-five.json",
+        "sha256": "6fd5d640350b486142545eb5fbb5cb409ac1c8b5d860d73f6d58ae057725e9a8"
+      },
+      {
+        "file": "alternatives-028-xg-million-places.json",
+        "sha256": "b4a6340a4c56852e2e1682333e13bb8e567071da590923130b1c8a5fdfa233d1"
+      },
+      {
+        "file": "alternatives-029-stayc-mwuah-korean.json",
+        "sha256": "d0445000e08a105936540e5be62efbc68607524a71a38138b4cdb661357e06d7"
+      },
+      {
+        "file": "alternatives-030-qwer-fake-idol.json",
+        "sha256": "1a61d1fdf63ffa3d8ecd01d741719e12aff22c6a4d1b92e79f4bb03c63fd3ea6"
+      },
+      {
+        "file": "alternatives-031-katseye-gameboy.json",
+        "sha256": "cc24d05f5d3664f92a4932068149aa930b7b32d16ffd30f9307bac0e4a4c3ff8"
+      },
+      {
+        "file": "alternatives-032-ifeye-loverboy.json",
+        "sha256": "e8705654ffec8254bbc973d9286fbf4ee0dcb4a95626acfa7652bb6ba008a609"
+      },
+      {
+        "file": "watch-leads-003-geenius-five.json",
+        "sha256": "6fd5d640350b486142545eb5fbb5cb409ac1c8b5d860d73f6d58ae057725e9a8"
+      },
+      {
+        "file": "patch-014-mexe-chapter-evidence-correction.json",
+        "sha256": "f4e3e73fc61f28f500561de644e095d67f7c67869dea02a9397b9ba0897722d8"
+      },
+      {
+        "file": "alternatives-033-ive-wave-connect.json",
+        "sha256": "40cf0513da651e6c4a31b3e914fec93977bdbf3a226847cb0d40ed20b60aeaec"
+      },
+      {
+        "file": "alternatives-034-ive-iwant-naver-v2.json",
+        "sha256": "239632ad13b24ea397b6e4d124464d32316394acd20fc5796fe48dc9cedc6127"
+      },
+      {
+        "file": "alternatives-035-illit-two-originals.json",
+        "sha256": "3b431f79f2170da8a5eb23d2212d983580dbe5549ced775438886effc621c0a1"
+      },
+      {
+        "file": "alternatives-036-qwer-showdown-korean.json",
+        "sha256": "c530461ed43a374eb562d12447e157df74d2fe51192dd6e648d16fcc86157dd6"
+      },
+      {
+        "file": "remaining58-search-review-patch-v4.json",
+        "sha256": "e2ce24e9a40aa267f1532dcfb34d8f252fa565fbf45fc043750502e8ee255db8"
+      },
+      {
+        "file": "docs/codex/evidence/20261029-pr47-continuation/izna-watch-lead-adoption.json",
+        "sha256": "24970aaa0ed12ed9275dc5775ab1f543545bd57f32830ad2c5518f41d0668049"
+      }
+    ]
+  },
+  "changes": [
+    {
+      "workId": "rec28ldfRTrNsK",
+      "before": {
+        "alternatives": [
+          {
+            "id": "youtube-ctfS0Rcq-gs",
+            "platform": "youtube",
+            "sourceId": "ctfS0Rcq-gs",
+            "sourceClass": "official",
+            "performerScope": "full_group",
+            "completeness": "full",
+            "url": "https://www.youtube.com/watch?v=ctfS0Rcq-gs",
+            "title": "[MOVE TO PERFORMANCE] izna(이즈나) - BEEP (4K)",
+            "channel": "M2",
+            "performanceType": "produced_dance_performance",
+            "kind": "同曲韩文原版舞台（非指定译版）",
+            "checkedAt": "2026-10-11T12:11:42.273694+00:00",
+            "scorePolicy": "view_only",
+            "sourceEvidence": {
+              "note": "M2为艺人、电视台或节目官方发行频道；独立完整表演页面及其出处保存在所列证据文件。",
+              "urls": [
+                "https://www.youtube.com/watch?v=ctfS0Rcq-gs"
+              ]
+            },
+            "sameSongEvidence": {
+              "note": "发行方曲目说明明确BEEP与Japan Edition并列，后者是首次日语录音并有日文作词署名。",
+              "urls": [
+                "https://music.bugs.co.kr/album/20730989?wl_ref=list_ab_01_ar"
+              ]
+            },
+            "version": {
+              "match": "different",
+              "differences": [
+                "同曲韩文原版舞台（非指定译版）"
+              ],
+              "evidence": {
+                "note": "发行方曲目说明明确BEEP与Japan Edition并列，后者是首次日语录音并有日文作词署名。",
+                "urls": [
+                  "https://music.bugs.co.kr/album/20730989?wl_ref=list_ab_01_ar"
+                ]
+              }
+            },
+            "originalPerformerScope": "full_group",
+            "performerNames": [
+              "izna"
+            ],
+            "originalPerformerNames": [
+              "izna"
+            ],
+            "performerEvidence": {
+              "note": "M2公开官方表演页面以“[MOVE TO PERFORMANCE] izna(이즈나) - BEEP (4K)”署名izna，单曲/团体表演而非成员focus；身份判断来自公开题名、频道及描述，不由旧recordId推定。",
+              "urls": [
+                "https://www.youtube.com/watch?v=ctfS0Rcq-gs"
+              ]
+            },
+            "durationSeconds": 185,
+            "selection": {
+              "occasion": "unconfirmed",
+              "evidence": {
+                "note": "现有证据已标别版/截短/阵容差异；即使形式合格也不能当目标原版已匹配。 本次仅整理既有来源的场合分类，不代表全片或音轨已核验。",
+                "urls": [
+                  "https://www.youtube.com/watch?v=ctfS0Rcq-gs"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "alternatives": [
+          {
+            "id": "youtube-ctfS0Rcq-gs",
+            "platform": "youtube",
+            "sourceId": "ctfS0Rcq-gs",
+            "sourceClass": "official",
+            "performerScope": "full_group",
+            "completeness": "full",
+            "url": "https://www.youtube.com/watch?v=ctfS0Rcq-gs",
+            "title": "[MOVE TO PERFORMANCE] izna(이즈나) - BEEP (4K)",
+            "channel": "M2",
+            "performanceType": "produced_dance_performance",
+            "kind": "同曲韩文原版舞台（非指定译版）",
+            "checkedAt": "2026-10-11T12:11:42.273694+00:00",
+            "scorePolicy": "view_only",
+            "sourceEvidence": {
+              "note": "M2为艺人、电视台或节目官方发行频道；独立完整表演页面及其出处保存在所列证据文件。",
+              "urls": [
+                "https://www.youtube.com/watch?v=ctfS0Rcq-gs"
+              ]
+            },
+            "sameSongEvidence": {
+              "note": "发行方曲目说明明确BEEP与Japan Edition并列，后者是首次日语录音并有日文作词署名。",
+              "urls": [
+                "https://music.bugs.co.kr/album/20730989?wl_ref=list_ab_01_ar"
+              ]
+            },
+            "version": {
+              "match": "different",
+              "differences": [
+                "同曲韩文原版舞台（非指定译版）"
+              ],
+              "evidence": {
+                "note": "发行方曲目说明明确BEEP与Japan Edition并列，后者是首次日语录音并有日文作词署名。",
+                "urls": [
+                  "https://music.bugs.co.kr/album/20730989?wl_ref=list_ab_01_ar"
+                ]
+              }
+            },
+            "originalPerformerScope": "full_group",
+            "performerNames": [
+              "izna"
+            ],
+            "originalPerformerNames": [
+              "izna"
+            ],
+            "performerEvidence": {
+              "note": "M2公开官方表演页面以“[MOVE TO PERFORMANCE] izna(이즈나) - BEEP (4K)”署名izna，单曲/团体表演而非成员focus；身份判断来自公开题名、频道及描述，不由旧recordId推定。",
+              "urls": [
+                "https://www.youtube.com/watch?v=ctfS0Rcq-gs"
+              ]
+            },
+            "durationSeconds": 185,
+            "selection": {
+              "occasion": "unconfirmed",
+              "evidence": {
+                "note": "现有证据已标别版/截短/阵容差异；即使形式合格也不能当目标原版已匹配。 本次仅整理既有来源的场合分类，不代表全片或音轨已核验。",
+                "urls": [
+                  "https://www.youtube.com/watch?v=ctfS0Rcq-gs"
+                ]
+              }
+            }
+          }
+        ],
+        "watchLeads": [
+          {
+            "id": "youtube-Qfez0Db9Iqc-lead",
+            "platform": "youtube",
+            "sourceId": "Qfez0Db9Iqc",
+            "sourceClass": "official",
+            "performerScope": "unconfirmed",
+            "completeness": "unconfirmed",
+            "scorePolicy": "view_only",
+            "url": "https://www.youtube.com/watch?v=Qfez0Db9Iqc",
+            "title": "izna — BEEP (Japan Edition) Costume Performance",
+            "channel": "izna",
+            "sourceType": "official_compilation",
+            "kind": "日语版 Costume 表演线索（完整起止待核）",
+            "checkedAt": "2026-10-29T06:54:33.650624+00:00",
+            "sourceEvidence": {
+              "note": "Kstyle说明这是izna官方YouTube发布的Costume特别编舞，并在正文嵌入此精确视频；本次未取得全片播放核验。",
+              "urls": [
+                "https://kstyle.com/article.ksn?articleNo=2263560",
+                "https://www.youtube.com/watch?v=Qfez0Db9Iqc"
+              ]
+            },
+            "sameSongEvidence": {
+              "note": "报道明确为BEEP第二轨Japan Edition、首次日语音源的特别编舞；并非同曲韩语版。完整表演起止和逐句音轨仍未核实。",
+              "urls": [
+                "https://kstyle.com/article.ksn?articleNo=2263560",
+                "https://music.bugs.co.kr/album/20730989?wl_ref=list_ab_01_ar"
+              ]
+            },
+            "reason": "视频包含造型任务过程；完整单曲起止、全片音轨和当前可播放性尚未核实。仅供观看研究，不是已匹配的评分舞台。",
+            "selection": {
+              "occasion": "produced_performance",
+              "evidence": {
+                "note": "Kstyle将本片明确描述为官方Costume特别编舞；不是Summer Sonic演出。报道不代替全片验证。",
+                "urls": [
+                  "https://kstyle.com/article.ksn?articleNo=2263560"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "workId": "rec28ldfRTrOnV",
+      "before": {
+        "alternatives": [
+          {
+            "id": "youtube-qrl0w3bIYHo",
+            "platform": "youtube",
+            "sourceId": "qrl0w3bIYHo",
+            "sourceClass": "audience_original",
+            "performerScope": "subunit",
+            "completeness": "full",
+            "url": "https://www.youtube.com/watch?v=qrl0w3bIYHo",
+            "title": "tripleS ∞! (트리플에스) Password 豊洲PIT 2025.11.2 K-POP FANCAM",
+            "channel": "peaceshiteno",
+            "performanceType": "concert_stage",
+            "kind": "观众现场录像（非官方，作者归属交叉推定，未见本人原拍声明）；原八人小分队，全曲长度推定，尚未完整播放核验。 主办公告禁拍，未见拍摄例外或授权。",
+            "checkedAt": "2026-10-11T15:37:33.113Z",
+            "scorePolicy": "view_only",
+            "sourceEvidence": {
+              "note": "当前浏览器可读页精确绑定视频ID、@peaceshiteno和channelId UCoveg6T3elIkN0x0BdFniAA，展开说明直接链接http://ameblo.jp/peaceshiteno/，并提供本次活动、地点与日期。不是仅凭频道名或FANCAM字样推定。；2021-03-28的现场日记明确作者亲自参加，配成组现场照片，并直接链接当日BOSO娘/SOGAっ娘三条YouTube现场视频（首条eIuhWB2aVGg）。结合当前两条视频说明对同一博客的直接反链及精确频道ID，支持同一长期现场记录者的归属交叉推定；尚未见本人明确声明这两条由其独自拍摄，历史链接本身不证明本次摄像方式。",
+              "urls": [
+                "https://www.youtube.com/watch?v=qrl0w3bIYHo",
+                "https://ameblo.jp/peaceshiteno/entry-12667678371.html"
+              ]
+            },
+            "sameSongEvidence": {
+              "note": "当前音乐信用为Password / tripleS / tripleS hatch! <Password>；标题、说明明确2025-11-02丰洲PIT的∞!演出。；署名现场报道明确该八人小分队在本次见面会首次线下演出Password，并说明英文/日文混合歌词；为具体歌曲和活动对应提供独立支持。；Sony Music Labels Inc.发行的Password授权曲目目录时长2:55，与本视频独立YouTube索引2:55一致；仅支持全曲长度推定，不证明连续无剪辑。",
+              "urls": [
+                "https://www.youtube.com/watch?v=qrl0w3bIYHo",
+                "https://kstyle.com/article.ksn?articleNo=2270533",
+                "https://www.beatport.com/track/password/21602490"
+              ]
+            },
+            "version": {
+              "match": "exact",
+              "differences": [],
+              "evidence": {
+                "note": "当前音乐信用为Password / tripleS / tripleS hatch! <Password>；标题、说明明确2025-11-02丰洲PIT的∞!演出。；署名现场报道明确该八人小分队在本次见面会首次线下演出Password，并说明英文/日文混合歌词；为具体歌曲和活动对应提供独立支持。；Sony Music Labels Inc.发行的Password授权曲目目录时长2:55，与本视频独立YouTube索引2:55一致；仅支持全曲长度推定，不证明连续无剪辑。",
+                "urls": [
+                  "https://www.youtube.com/watch?v=qrl0w3bIYHo",
+                  "https://kstyle.com/article.ksn?articleNo=2270533",
+                  "https://www.beatport.com/track/password/21602490"
+                ]
+              }
+            },
+            "originalPerformerScope": "subunit",
+            "performerNames": [
+              "JiWoo",
+              "ChaeYeon",
+              "YooYeon",
+              "SooMin",
+              "Kotone",
+              "Mayu",
+              "ShiOn",
+              "ChaeWon"
+            ],
+            "originalPerformerNames": [
+              "JiWoo",
+              "ChaeYeon",
+              "YooYeon",
+              "SooMin",
+              "Kotone",
+              "Mayu",
+              "ShiOn",
+              "ChaeWon"
+            ],
+            "eventDate": "2025-11-02",
+            "performerEvidence": {
+              "note": "本条作者说明逐一列出S3 JiWoo、S4 ChaeYeon、S5 YooYeon、S6 SooMin、S11 Kotone、S16 Mayu、S20 ShiOn、S21 ChaeWon，明确8名。；现场报道列出同八位成员，称8人舞蹈队形，并记录Password表演，支持原小分队范围。；Sony对日本原作小分队∞!的官方定义列出同八位成员；不标为tripleS 24人全团。",
+              "urls": [
+                "https://www.youtube.com/watch?v=qrl0w3bIYHo",
+                "https://kstyle.com/article.ksn?articleNo=2270533",
+                "https://www.sonymusic.co.jp/artist/tripleS/info/567191"
+              ]
+            },
+            "eventEvidence": {
+              "note": "Sony官方公告明确2025-11-02丰洲PIT的SSSch∞!见面会，分两部举行。录像未注明场次，不把报道的第一部强行绑定为录像所属场次。；2025-11-04署名现场报道确认活动实际举行，八人小分队演出Password。",
+              "urls": [
+                "https://www.sonymusic.co.jp/artist/tripleS/info/577101",
+                "https://kstyle.com/article.ksn?articleNo=2270533"
+              ]
+            },
+            "durationSeconds": 175,
+            "selection": {
+              "occasion": "other_event",
+              "evidence": {
+                "note": "既有类型/标题显示演唱会、音乐节、粉丝/发布活动；不列普通打歌/练习室优先候选。 本次仅整理既有来源的场合分类，不代表全片或音轨已核验。",
+                "urls": [
+                  "https://www.youtube.com/watch?v=qrl0w3bIYHo"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "alternatives": [
+          {
+            "id": "youtube-qrl0w3bIYHo",
+            "platform": "youtube",
+            "sourceId": "qrl0w3bIYHo",
+            "sourceClass": "audience_original",
+            "performerScope": "subunit",
+            "completeness": "full",
+            "url": "https://www.youtube.com/watch?v=qrl0w3bIYHo",
+            "title": "tripleS ∞! (트리플에스) Password 豊洲PIT 2025.11.2 K-POP FANCAM",
+            "channel": "peaceshiteno",
+            "performanceType": "concert_stage",
+            "kind": "观众现场录像（非官方，作者归属交叉推定，未见本人原拍声明）；原八人小分队，全曲长度推定，尚未完整播放核验。 主办公告禁拍，未见拍摄例外或授权。",
+            "checkedAt": "2026-10-11T15:37:33.113Z",
+            "scorePolicy": "view_only",
+            "sourceEvidence": {
+              "note": "当前浏览器可读页精确绑定视频ID、@peaceshiteno和channelId UCoveg6T3elIkN0x0BdFniAA，展开说明直接链接http://ameblo.jp/peaceshiteno/，并提供本次活动、地点与日期。不是仅凭频道名或FANCAM字样推定。；2021-03-28的现场日记明确作者亲自参加，配成组现场照片，并直接链接当日BOSO娘/SOGAっ娘三条YouTube现场视频（首条eIuhWB2aVGg）。结合当前两条视频说明对同一博客的直接反链及精确频道ID，支持同一长期现场记录者的归属交叉推定；尚未见本人明确声明这两条由其独自拍摄，历史链接本身不证明本次摄像方式。",
+              "urls": [
+                "https://www.youtube.com/watch?v=qrl0w3bIYHo",
+                "https://ameblo.jp/peaceshiteno/entry-12667678371.html"
+              ]
+            },
+            "sameSongEvidence": {
+              "note": "当前音乐信用为Password / tripleS / tripleS hatch! <Password>；标题、说明明确2025-11-02丰洲PIT的∞!演出。；署名现场报道明确该八人小分队在本次见面会首次线下演出Password，并说明英文/日文混合歌词；为具体歌曲和活动对应提供独立支持。；Sony Music Labels Inc.发行的Password授权曲目目录时长2:55，与本视频独立YouTube索引2:55一致；仅支持全曲长度推定，不证明连续无剪辑。",
+              "urls": [
+                "https://www.youtube.com/watch?v=qrl0w3bIYHo",
+                "https://kstyle.com/article.ksn?articleNo=2270533",
+                "https://www.beatport.com/track/password/21602490"
+              ]
+            },
+            "version": {
+              "match": "exact",
+              "differences": [],
+              "evidence": {
+                "note": "当前音乐信用为Password / tripleS / tripleS hatch! <Password>；标题、说明明确2025-11-02丰洲PIT的∞!演出。；署名现场报道明确该八人小分队在本次见面会首次线下演出Password，并说明英文/日文混合歌词；为具体歌曲和活动对应提供独立支持。；Sony Music Labels Inc.发行的Password授权曲目目录时长2:55，与本视频独立YouTube索引2:55一致；仅支持全曲长度推定，不证明连续无剪辑。",
+                "urls": [
+                  "https://www.youtube.com/watch?v=qrl0w3bIYHo",
+                  "https://kstyle.com/article.ksn?articleNo=2270533",
+                  "https://www.beatport.com/track/password/21602490"
+                ]
+              }
+            },
+            "originalPerformerScope": "subunit",
+            "performerNames": [
+              "JiWoo",
+              "ChaeYeon",
+              "YooYeon",
+              "SooMin",
+              "Kotone",
+              "Mayu",
+              "ShiOn",
+              "ChaeWon"
+            ],
+            "originalPerformerNames": [
+              "JiWoo",
+              "ChaeYeon",
+              "YooYeon",
+              "SooMin",
+              "Kotone",
+              "Mayu",
+              "ShiOn",
+              "ChaeWon"
+            ],
+            "eventDate": "2025-11-02",
+            "performerEvidence": {
+              "note": "本条作者说明逐一列出S3 JiWoo、S4 ChaeYeon、S5 YooYeon、S6 SooMin、S11 Kotone、S16 Mayu、S20 ShiOn、S21 ChaeWon，明确8名。；现场报道列出同八位成员，称8人舞蹈队形，并记录Password表演，支持原小分队范围。；Sony对日本原作小分队∞!的官方定义列出同八位成员；不标为tripleS 24人全团。",
+              "urls": [
+                "https://www.youtube.com/watch?v=qrl0w3bIYHo",
+                "https://kstyle.com/article.ksn?articleNo=2270533",
+                "https://www.sonymusic.co.jp/artist/tripleS/info/567191"
+              ]
+            },
+            "eventEvidence": {
+              "note": "Sony官方公告明确2025-11-02丰洲PIT的SSSch∞!见面会，分两部举行。录像未注明场次，不把报道的第一部强行绑定为录像所属场次。；2025-11-04署名现场报道确认活动实际举行，八人小分队演出Password。",
+              "urls": [
+                "https://www.sonymusic.co.jp/artist/tripleS/info/577101",
+                "https://kstyle.com/article.ksn?articleNo=2270533"
+              ]
+            },
+            "durationSeconds": 175,
+            "selection": {
+              "occasion": "other_event",
+              "evidence": {
+                "note": "既有类型/标题显示演唱会、音乐节、粉丝/发布活动；不列普通打歌/练习室优先候选。 本次仅整理既有来源的场合分类，不代表全片或音轨已核验。",
+                "urls": [
+                  "https://www.youtube.com/watch?v=qrl0w3bIYHo"
+                ]
+              }
+            }
+          }
+        ],
+        "searchReview": {
+          "scope": [
+            {
+              "label": "TBS：PLAYLIST 2025-11-25 节目回顾",
+              "url": "https://www.tbs.co.jp/playlist-tbs/archive/20251125/"
+            }
+          ],
+          "excluded": [],
+          "limitations": [
+            "本次仅核实官方节目回顾中的曲目，未取得完整官方视频或完成音轨核对；不据节目资料建立评分绑定。"
+          ],
+          "checkedAt": "2026-10-29T06:55:29.503120+00:00",
+          "outcome": "verification_limited",
+          "accessLimited": true,
+          "summary": "TBS《PLAYLIST》2025 年 11 月 25 日的官方回顾列出 tripleS ∞! 演出《Password》。这确认了节目与曲目的对应关系；尚未取得可核验的完整官方单曲视频，完整性与实际音轨仍待确认，目前未采用为本条舞台。",
+          "publicNote": {
+            "summary": "TBS《PLAYLIST》2025 年 11 月 25 日的官方回顾列出 tripleS ∞! 演出《Password》。这确认了节目与曲目的对应关系；尚未取得可核验的完整官方单曲视频，完整性与实际音轨仍待确认，目前未采用为本条舞台。",
+            "sources": [
+              {
+                "label": "TBS：PLAYLIST 2025-11-25 节目回顾",
+                "url": "https://www.tbs.co.jp/playlist-tbs/archive/20251125/"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "workId": "recvxyH5pzoMAf",
+      "before": {
+        "alternatives": [
+          {
+            "id": "youtube-6fkcQGNr-g0",
+            "platform": "youtube",
+            "sourceId": "6fkcQGNr-g0",
+            "sourceClass": "official",
+            "performerScope": "full_group",
+            "completeness": "full",
+            "url": "https://www.youtube.com/watch?v=6fkcQGNr-g0",
+            "title": "[BE ORIGINAL] STAYC(스테이씨) 'Teddy Bear' (4K)",
+            "channel": "STUDIO CHOOM [스튜디오 춤]",
+            "performanceType": "produced_dance_performance",
+            "kind": "同曲韩文原版舞台（非指定译版）",
+            "checkedAt": "2026-10-11T12:09:28.206738+00:00",
+            "scorePolicy": "view_only",
+            "sourceEvidence": {
+              "note": "STUDIO CHOOM [스튜디오 춤]为艺人、电视台或节目官方发行频道；独立完整表演页面及其出处保存在所列证据文件。",
+              "urls": [
+                "https://www.youtube.com/watch?v=6fkcQGNr-g0"
+              ]
+            },
+            "sameSongEvidence": {
+              "note": "唱片公司明确日本第2单曲的日文Teddy Bear与日文Stereotype曲目。",
+              "urls": [
+                "https://www.universal-music.co.jp/stayc/news/2023-02-22/"
+              ]
+            },
+            "version": {
+              "match": "different",
+              "differences": [
+                "同曲韩文原版舞台（非指定译版）",
+                "原条目版本：日文版"
+              ],
+              "evidence": {
+                "note": "唱片公司明确日本第2单曲的日文Teddy Bear与日文Stereotype曲目。",
+                "urls": [
+                  "https://www.universal-music.co.jp/stayc/news/2023-02-22/"
+                ]
+              }
+            },
+            "originalPerformerScope": "full_group",
+            "performerNames": [
+              "STAYC"
+            ],
+            "originalPerformerNames": [
+              "STAYC"
+            ],
+            "performerEvidence": {
+              "note": "STUDIO CHOOM [스튜디오 춤]公开官方表演页面以“[BE ORIGINAL] STAYC(스테이씨) 'Teddy Bear' (4K)”署名STAYC，单曲/团体表演而非成员focus；身份判断来自公开题名、频道及描述，不由旧recordId推定。",
+              "urls": [
+                "https://www.youtube.com/watch?v=6fkcQGNr-g0"
+              ]
+            },
+            "durationSeconds": 217,
+            "selection": {
+              "occasion": "unconfirmed",
+              "evidence": {
+                "note": "现有证据已标别版/截短/阵容差异；即使形式合格也不能当目标原版已匹配。 本次仅整理既有来源的场合分类，不代表全片或音轨已核验。",
+                "urls": [
+                  "https://www.youtube.com/watch?v=6fkcQGNr-g0"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "alternatives": [
+          {
+            "id": "youtube-6fkcQGNr-g0",
+            "platform": "youtube",
+            "sourceId": "6fkcQGNr-g0",
+            "sourceClass": "official",
+            "performerScope": "full_group",
+            "completeness": "full",
+            "url": "https://www.youtube.com/watch?v=6fkcQGNr-g0",
+            "title": "[BE ORIGINAL] STAYC(스테이씨) 'Teddy Bear' (4K)",
+            "channel": "STUDIO CHOOM [스튜디오 춤]",
+            "performanceType": "produced_dance_performance",
+            "kind": "同曲韩文原版舞台（非指定译版）",
+            "checkedAt": "2026-10-11T12:09:28.206738+00:00",
+            "scorePolicy": "view_only",
+            "sourceEvidence": {
+              "note": "STUDIO CHOOM [스튜디오 춤]为艺人、电视台或节目官方发行频道；独立完整表演页面及其出处保存在所列证据文件。",
+              "urls": [
+                "https://www.youtube.com/watch?v=6fkcQGNr-g0"
+              ]
+            },
+            "sameSongEvidence": {
+              "note": "唱片公司明确日本第2单曲的日文Teddy Bear与日文Stereotype曲目。",
+              "urls": [
+                "https://www.universal-music.co.jp/stayc/news/2023-02-22/"
+              ]
+            },
+            "version": {
+              "match": "different",
+              "differences": [
+                "同曲韩文原版舞台（非指定译版）",
+                "原条目版本：日文版"
+              ],
+              "evidence": {
+                "note": "唱片公司明确日本第2单曲的日文Teddy Bear与日文Stereotype曲目。",
+                "urls": [
+                  "https://www.universal-music.co.jp/stayc/news/2023-02-22/"
+                ]
+              }
+            },
+            "originalPerformerScope": "full_group",
+            "performerNames": [
+              "STAYC"
+            ],
+            "originalPerformerNames": [
+              "STAYC"
+            ],
+            "performerEvidence": {
+              "note": "STUDIO CHOOM [스튜디오 춤]公开官方表演页面以“[BE ORIGINAL] STAYC(스테이씨) 'Teddy Bear' (4K)”署名STAYC，单曲/团体表演而非成员focus；身份判断来自公开题名、频道及描述，不由旧recordId推定。",
+              "urls": [
+                "https://www.youtube.com/watch?v=6fkcQGNr-g0"
+              ]
+            },
+            "durationSeconds": 217,
+            "selection": {
+              "occasion": "unconfirmed",
+              "evidence": {
+                "note": "现有证据已标别版/截短/阵容差异；即使形式合格也不能当目标原版已匹配。 本次仅整理既有来源的场合分类，不代表全片或音轨已核验。",
+                "urls": [
+                  "https://www.youtube.com/watch?v=6fkcQGNr-g0"
+                ]
+              }
+            }
+          }
+        ],
+        "searchReview": {
+          "scope": [
+            {
+              "label": "东京电视台：2023-05-01 日语版节目回顾",
+              "url": "https://www.tv-tokyo.co.jp/melodix_premium/backnumber/202305.html"
+            }
+          ],
+          "excluded": [],
+          "limitations": [
+            "本次仅核实官方节目回顾中的曲目，未取得完整官方视频或完成音轨核对；不据节目资料建立评分绑定。"
+          ],
+          "checkedAt": "2026-10-29T06:55:29.503148+00:00",
+          "outcome": "verification_limited",
+          "accessLimited": true,
+          "summary": "东京电视台《Premium MelodiX!》2023 年 5 月 1 日的官方回顾明确列出 STAYC《Teddy Bear -Japanese ver.-》。节目曲目已对应到日语版；尚未取得可核验的完整官方单曲视频，完整性与实际音轨仍待确认，目前未采用为本条舞台。",
+          "publicNote": {
+            "summary": "东京电视台《Premium MelodiX!》2023 年 5 月 1 日的官方回顾明确列出 STAYC《Teddy Bear -Japanese ver.-》。节目曲目已对应到日语版；尚未取得可核验的完整官方单曲视频，完整性与实际音轨仍待确认，目前未采用为本条舞台。",
+            "sources": [
+              {
+                "label": "东京电视台：2023-05-01 日语版节目回顾",
+                "url": "https://www.tv-tokyo.co.jp/melodix_premium/backnumber/202305.html"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

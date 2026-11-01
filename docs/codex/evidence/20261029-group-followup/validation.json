@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-10-29T05:49:46.888513+00:00",
+  "result": "core_checks_pass_with_separately_reproduced_legacy_failures",
+  "nodeTests": {
+    "core": {
+      "total": 91,
+      "passed": 91,
+      "failed": 0
+    },
+    "expandedHistorical": {
+      "total": 51,
+      "passed": 44,
+      "baselineFailures": 7
+    },
+    "distinctTotal": 142,
+    "distinctPassed": 135,
+    "distinctFailed": 7,
+    "allFailuresReproducedAtBaseline": "cef1765801ce62739c44308292a680b16e681597",
+    "baselineFailureEvidence": "independent-audit.json",
+    "scope": "Root two recorded regression sets; delegated overlapping 46-test audit is reported separately, not added."
+  },
+  "typecheck": {
+    "command": "node node_modules/typescript/bin/tsc --noEmit",
+    "exitCode": 0
+  },
+  "productionBuild": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "notes": [
+      "Existing proxy, large-chunk/plugin performance and static route classification warnings retained; no deployment."
+    ]
+  },
+  "humanInputGuard": {
+    "tests": 6,
+    "scenarios": 18,
+    "result": "PASS"
+  },
+  "coverage": "coverage-validation.json",
+  "preservation": "preservation-validation.json",
+  "browserEvidence": [
+    "ui-madein.json",
+    "ui-version-review.json"
+  ],
+  "independentReview": "independent-audit.json",
+  "productionDeployment": false,
+  "realPrivateSaveTest": false,
+  "fullVideoOrAudioComparison": false,
+  "logs": {
+    "final-targeted-tests.log": {
+      "path": "E:\\project\\idol-local-backups\\20261029-group-qa\\final-targeted-tests.log",
+      "bytes": 155649,
+      "sha256": "0634af6940f5b66916a342c0d3d94e469ed3e4ed7ad9dc30d7d1578dbb8fed55"
+    },
+    "final-typecheck.log": {
+      "path": "E:\\project\\idol-local-backups\\20261029-group-qa\\final-typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "final-build.log": {
+      "path": "E:\\project\\idol-local-backups\\20261029-group-qa\\final-build.log",
+      "bytes": 8607,
+      "sha256": "a1391fd4f5a63d9a4b501352394a9042f6b3e21d52309915508136d22f67c9f4"
+    }
+  }
+}

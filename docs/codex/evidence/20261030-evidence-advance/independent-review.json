@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-30T03:50:12.912Z",
+  "reviewer": "independent child agent",
+  "status": "passed_no_actionable_findings",
+  "baselineCommit": "553448da11498035aa19e01b7466ce6f50c9bd37",
+  "scope": [
+    "data/stages/research-followups-20261030.json",
+    "lib/idol/stage-research-followups.ts",
+    "lib/idol/catalog.ts"
+  ],
+  "reviewedFileSha256": {
+    "data/stages/research-followups-20261030.json": "cd6ba0bef0bfba34e68701613c5cdcb6fab3e3e2cc59b37d8d079bcc29a9519a",
+    "lib/idol/stage-research-followups.ts": "f9e1802a6da8b162b0910d1f6575e34b83cb388674deaa4992e87d7db157bc78",
+    "lib/idol/catalog.ts": "7eca865c0f28a28b27d5e0e4377330b0d08b4b3ac22f53add73f302dff5d287e"
+  },
+  "findings": [],
+  "sourceReadback": [
+    {
+      "url": "https://www.sonymusic.co.jp/artist/IVE/info/545880",
+      "result": "Official 2022-10-07 announcement explicitly names ELEVEN -Japanese ver.- for the 2022-10-14 MUSIC STATION broadcast; note retains announcement level and does not infer verified full footage."
+    },
+    {
+      "url": "https://www.itzyjapan.com/news/detail/93",
+      "result": "Official schedule confirms Venue101 on 2022-04-09 23:00-23:30, without naming a song."
+    },
+    {
+      "url": "https://kstyle.com/article.ksn?articleNo=2190597",
+      "result": "2022-04-10 report explicitly names Voltage in that broadcast; note separately attributes song evidence to Kstyle, not the official schedule."
+    },
+    {
+      "url": "https://www.ntv.co.jp/buzzrhythm/oa/20250425.html",
+      "result": "Original programme archive lists SAY MY NAME ShaLala(Japanese version) as a studio live; no completeness or full-cast inference."
+    },
+    {
+      "url": "https://landoer.jp/saymyname_1/",
+      "result": "Named first-person interview supports HITOMI/MEI Japanese translation and pronunciation guidance, SEUNGJOO recording statement, and DOHEE harmony with KANNY rap. Current note uses only those narrow roles and explicitly rejects a full MV cast inference."
+    }
+  ],
+  "targetedTests": [
+    {
+      "command": "node --test tests/stage-research-note.test.cjs tests/watch-leads.test.cjs",
+      "passed": 17,
+      "failed": 0
+    },
+    {
+      "command": "node --test --test-name-pattern='snapshot counts|source gaps|owner|stale|zero' tests/core.test.cjs",
+      "passed": 5,
+      "failed": 0
+    }
+  ],
+  "independentInlineChecks": {
+    "passed": 21,
+    "failed": 0,
+    "checks": [
+      "recvxyHuKM2Gwu: exact identity and no formal adoption",
+      "recvxyHuKM2Gwu: caller and every other work field remain unchanged",
+      "recvxyHuKM2Gwu: wrong work, group, MV, placeholder and adopted stage fail closed",
+      "recvxyHuKM2Gwu: preexisting public note and source links retained",
+      "recvxyHuKM2Gwu: anonymous shape preserves reviewed note but strips unknown nested fields",
+      "recvxyHuKM2Gwu: actual component renders new note collapsed and no editable controls",
+      "recvxyOz5XkyEY: exact identity and no formal adoption",
+      "recvxyOz5XkyEY: caller and every other work field remain unchanged",
+      "recvxyOz5XkyEY: wrong work, group, MV, placeholder and adopted stage fail closed",
+      "recvxyOz5XkyEY: preexisting public note and source links retained",
+      "recvxyOz5XkyEY: anonymous shape preserves reviewed note but strips unknown nested fields",
+      "recvxyOz5XkyEY: actual component renders new note collapsed and no editable controls",
+      "rec28ldfRTrNcl: exact identity and no formal adoption",
+      "rec28ldfRTrNcl: caller and every other work field remain unchanged",
+      "rec28ldfRTrNcl: wrong work, group, MV, placeholder and adopted stage fail closed",
+      "rec28ldfRTrNcl: preexisting public note and source links retained",
+      "rec28ldfRTrNcl: anonymous shape preserves reviewed note but strips unknown nested fields",
+      "rec28ldfRTrNcl: actual component renders new note collapsed and no editable controls",
+      "protected data, save routes, projection and existing component are byte-identical to HEAD",
+      "500 stage objects / 106 public-credit works / 546 slots unchanged",
+      "SAY MY NAME retains exactly seven existing relationship rows"
+    ]
+  },
+  "protectedFileSha256": {
+    "data/stage-videos.json": "50d5be54bd6453e3affcb7d9ae0d0849f080c49324f4795e963accdb884da400",
+    "data/stages/supplements.json": "6bad0202d98eb02a178a2c91f3b43f9e9adeee02748080d70431e7d545a2bd70",
+    "data/public-work-credits.json": "5c5e56c9c17c1c1f9e9e24c48f03c855017f17c9446dbac9bdf5b5de80fb1282",
+    "data/public-production-credits.json": "f6285100755c2fd9525e56a99c21b27fe520d51e10e1813b6f301899063e48cc",
+    "data/snapshot.json": "dedbfb37f19a55d9cc1916ddb0a0ae21e537843343956731fe4089ade6606547",
+    "lib/idol/save.ts": "497adc25957399615f0fe9fdcb5b2ef052097220e044e5ac8526ac8e73756887",
+    "lib/idol/native-save.ts": "6952167d3f95970ffe6371af32993edd01c65227276d9b25b4f08656e1a7fef9",
+    "lib/idol/public-catalog.ts": "dcc045643fff7ffb83ab4379ff33f81770337f1551fe701ac948fbfbc951dd1e",
+    "app/page.tsx": "f23146fdf01c5e2f1f08c71fef879e78deebb2f5971c23672d15af77dcbcef3d",
+    "data/stages/status.json": "52af55bb357d5ac54ccee7087d2e78715f8ee5c0948ec90c908d7bee6a99e086"
+  },
+  "conclusion": "Only the three exact work/group/MV identities receive a validated public researchNote. Existing notes and alternative sources remain; a formal stage or identity mismatch hides the new annotation. Source catalog, credits, private relationship IDs, edit fields, save authorization, imagery and player remain untouched. No category is closed.",
+  "limits": [
+    "Checked public source text, repository code and local synthetic/retained snapshot tests; did not play complete videos, open production owner data or perform a production save.",
+    "No browser layout verification, typecheck, full build or production deployment performed by this reviewer; parent owns final integration checks."
+  ],
+  "applicationWrites": 0,
+  "deployments": 0,
+  "productionPrivateReadsOrWrites": 0,
+  "offlineRetainedSnapshotReadForTests": true,
+  "finalAdoptionReview": {
+    "checkedAt": "2026-10-30T04:10:56.559211+00:00",
+    "status": "passed_after_two_review_fixes",
+    "scope": "IVE ELEVEN P1 local adoption and exact historical restoration chain. The original review above remains the dated pre-adoption result, not the current source count.",
+    "findings": [],
+    "resolvedFindings": [
+      {
+        "kind": "historical_test_error_expectation",
+        "path": "apps/idol-site/tests/heygabby-research-followup.test.cjs",
+        "originalLine": 79,
+        "issue": "A correctly rejected tampered input failed because its assertion accepted only a later Hey Gabby error, while the complete post-QWER SHA guard rejected it earlier.",
+        "fix": "Parent retained old error patterns and added only the exact earlier complete post-QWER guard text. Full hashes and assert.throws remained. All30 targeted tests now pass."
+      },
+      {
+        "kind": "incorrect_prior_queue_pointer",
+        "path": "docs/codex/evidence/20261030-evidence-advance/remaining-stage-ledger.json",
+        "affectedRecordsBeforeFix": 79,
+        "issue": "Copied previousRecordIndex values referred to an older ledger even though previousQueue now named the105-record next-followup ledger;104 workId set was correct, but79 detail pointers resolved incorrectly.",
+        "fix": "Parent recomputed indexes against the named105-record prior ledger. Reviewer independently resolved all104 work IDs, artists, songs and categories and compared all11 legacy replacement objects; zero incorrect pointers remain."
+      }
+    ],
+    "testResults": [
+      {
+        "command": "node --test tests/evidence-advance-20261030.test.cjs tests/heygabby-complete-viewing.test.cjs tests/heygabby-research-followup.test.cjs tests/v202-followup-evidence.test.cjs tests/stage-multiplatform.test.cjs",
+        "passed": 30,
+        "failed": 0,
+        "durationMs": 10553.8346
+      },
+      {
+        "command": "node scripts/validate-stages.mjs",
+        "inventory": 614,
+        "sources": 501,
+        "valid": true
+      }
+    ],
+    "independentChecks": {
+      "passed": 11,
+      "failedAfterFix": 0,
+      "checks": [
+        "Full pre/post source and status hashes match receipt; restoring IVE yields exact HEAD500-source collection and every old object unchanged.",
+        "Full Bili BV/CID/page key, null initial score, reupload label and music_program scope; changing P1 to P2 or omitting exact binding key fails.",
+        "approvedStagePoster returns null for IVE P1; rejected programme title-card first frame is not adopted.",
+        "IVE pending research note is hidden by formal stage; ITZY and SAY MY NAME notes remain.",
+        "Mutated IVE title/CID, unrelated source or extra source fails complete post-IVE collection SHA.",
+        "Mutated target status, disguised old target status or updatedAt cannot bypass downstream full-collection SHA.",
+        "Removing new IVE row plus mutating another source still fails downstream historical guards.",
+        "Repeated Password restoration returns only the exact full old preimage; tampered source/status preimages still throw.",
+        "Owner receipt and adoption script retain49.454135-second freshness,206 full journal rows,no target save,empty stage score and all500-original-source equality; reviewer did not reopen private export.",
+        "Repaired104-record overlay resolves every previous index to the same work/artist/song/category;11 replacement objects untouched,154 total.",
+        "Supplements, credits, retained snapshot, save routes, public projection and existing renderer still match prior review byte hashes."
+      ]
+    },
+    "reviewedFileSha256": {
+      "apps/idol-site/data/stage-videos.json": "d4e3cc9ad2c99361e0ebd5976e31088ff7b24a7e4f9d35c4161dbe5695db3337",
+      "apps/idol-site/data/stages/status.json": "b395013c5165add522514b7217b01d090fb9bd0c6fb708aee5b791f8fb37f7c3",
+      "apps/idol-site/lib/idol/stage-research-followups.ts": "f9e1802a6da8b162b0910d1f6575e34b83cb388674deaa4992e87d7db157bc78",
+      "apps/idol-site/tests/helpers/password-formal-baseline.cjs": "4e5750061329fb8e1317da0ef2edca992fc31a03ff2637c7fc77588542b88633",
+      "apps/idol-site/tests/helpers/qwer-formal-baseline.cjs": "19d857c7d9ce640d7e99c4e872eb6804e7605dbcc39c5256ec3a4f2019acf7fd",
+      "apps/idol-site/tests/helpers/ive-eleven-formal-baseline.cjs": "34b4ad411431f357e095db86a26fa1025d598d2cdcee3ce43999654bdfe1b1d6",
+      "apps/idol-site/tests/heygabby-complete-viewing.test.cjs": "4936d8abcb14d23f6ac7e86e594ede0cb0d795ec9af45b3a92504a3b7908b0a9",
+      "apps/idol-site/tests/heygabby-research-followup.test.cjs": "edeb9d048c3140e5c3c5b9bda24698eecf8af072757bc096bde4a291d7f2141b",
+      "apps/idol-site/tests/evidence-advance-20261030.test.cjs": "d72261744b9614426928254e6433efda4b3ca75f84e40907303699c3a820a602",
+      "docs/codex/evidence/20261030-evidence-advance/ive-eleven-adoption.json": "3d892bc597c6588c49ad5474ae839750955dcdabbb82a9023ede603ccaacdbad",
+      "docs/codex/evidence/20261030-evidence-advance/ive-eleven-human-confirmation.json": "e24bdb85df37876d3ea3a85da9e5d70a28bcd7ae5b5692da4c9154b67e24e80f",
+      "docs/codex/evidence/20261030-evidence-advance/ive-eleven-media-readback.json": "fe41a32b075834b716984ca9f976eb066e93c947fbde539ffdb490c6c9007974",
+      "docs/codex/evidence/20261030-evidence-advance/ive-eleven-poster-rejection.json": "e1eb9a28d8dea2e30ffce961ed5f460e2105dae01a7daf6f46925c9bcbd9ce8e",
+      "docs/codex/evidence/20261030-evidence-advance/remaining-stage-ledger.json": "8e68068a8d80b75c2055050838cd4826b52d4de8683d4abba48aa56788475b33"
+    },
+    "currentState": {
+      "sourceKey": "bilibili:BV19D4y1r7c6:cid:867429881:p:1",
+      "old500SourcesUnchanged": true,
+      "localStageSources": 501,
+      "publishedStageSourcesRecorded": 500,
+      "publicCreditWorks": 106,
+      "publicCreditSlots": 546,
+      "remainingClassifications": 154,
+      "userConfirmedFullJapaneseSixPersonScope": true,
+      "agentFullPlayback": false,
+      "partDurationSeconds": 307,
+      "noClip": true,
+      "newImageAdopted": false
+    },
+    "limits": [
+      "Human playback confirmation and owner checks are reviewed through public/sanitized evidence receipts and guarded code. This reviewer did not independently perform production export, private readback, full playback or owner save.",
+      "P1 duration307seconds includes programme introduction; it is not net song duration. Other two parts and the rejected ranking-card first frame are excluded.",
+      "No deployment was performed by the reviewer. Production remains recorded as v203/500; local501 is not a publication claim.",
+      "Existing pre-adoption review fields above are intentionally retained; finalAdoptionReview records the subsequent authorized single-source change and resolved review findings."
+    ],
+    "applicationWrites": 0,
+    "productionPrivateReadsOrWrites": 0,
+    "deployments": 0
+  },
+  "productionCreditReview": {
+    "checkedAt": "2026-10-30T04:24:45.632764+00:00",
+    "status": "passed_no_actionable_findings",
+    "scope": "One append-only exact-MV production-credit row for NMIXX Sprinkle Party; no app edits by reviewer. Earlier review sections are preserved as historical states.",
+    "findings": [],
+    "sourceReadback": {
+      "url": "https://www.youtube.com/watch?v=0T8d3pRjmi4",
+      "access": "Web connector fetch failed without a specific denial. A normal unauthenticated urllib watch-page GET succeeded; no authentication, proxy, header change or alternate endpoint was used. Parsed ytInitialPlayerResponse.videoDetails and retained only matching credit lines plus the full-description hash, not lyrics.",
+      "videoId": "0T8d3pRjmi4",
+      "publisher": "VLENDING 블렌딩",
+      "channelId": "UCxOZuUWuWhnsJqnlTcLlSYg",
+      "title": "[MV] NMIXX - 스프링클 파티 (Sprinkle Party) [개비의 매직하우스 OST x NMIXX]",
+      "descriptionSha256": "4388579fccfcdfe7c56cdc4ccf20eb43a4c74f1cd2827a8fcde6a0a58f52f8aa",
+      "descriptionHashMatchesAdoptionReceipt": true,
+      "roleMapping": [
+        {
+          "sourceRole": "MV Produced by",
+          "publishedRole": "MV制作",
+          "names": [
+            "안민수"
+          ],
+          "organization": "STUDIO T.A.M"
+        },
+        {
+          "sourceRole": "Co-Producer",
+          "publishedRole": "联合制作",
+          "names": [
+            "김은지"
+          ]
+        },
+        {
+          "sourceRole": "Dance Producer",
+          "publishedRole": "舞蹈制作",
+          "names": [
+            "당경임",
+            "김수민",
+            "김소연"
+          ],
+          "organization": "PREPIX DANCE STUDIO"
+        }
+      ]
+    },
+    "validation": {
+      "testCommand": "node --test tests/public-production-credits.test.cjs tests/evidence-advance-20261030.test.cjs",
+      "testsPassed": 11,
+      "testsFailed": 0,
+      "testDurationMs": 11438.9496,
+      "inlineChecks": [
+        "Tuple matches the retained catalog workId recvxyOz5XsgVc, groupId recvxyEBDZOpTf and exact videoId0T8d3pRjmi4.",
+        "Wrong work, group, Hey Gabby MV or placeholder returns null; source function leaves synthetic score/note/relationship values unchanged.",
+        "All four preexisting production rows are deeply identical; removing only the added row and restoring checkedAt reproduces the complete HEAD object and original file SHA.",
+        "All three Korean names/organizations and role translations match source lines; no director, memberIds, member vocal list or full MV cast is introduced.",
+        "Actual PublicProductionCredits SSR shows the three roles and safe source link, with no images, inputs, forms, player, member selector or private synthetic text.",
+        "Retained snapshot, public-work-credit data, save routes, anonymous projection and prior renderer match earlier protected hashes.",
+        "Source count501, public-credit works106, member slots546 and remaining classifications154 unchanged."
+      ]
+    },
+    "reviewedFileSha256": {
+      "apps/idol-site/data/public-production-credits.json": "367144350fb4bf0d6e49a07004e4bafb184e7eab1be528153b5f83f0ea378374",
+      "apps/idol-site/lib/idol/public-production-credits.ts": "4fac40c257d1d69b15d7abde0404c98e34c03bb3419fcac969853f62a89661b6",
+      "apps/idol-site/components/public-work-credits.tsx": "504bf87418e1c6bf9305b30ec9ab849d29c42b4fa76ff969da5a72f843af5fe3",
+      "docs/codex/evidence/20261030-evidence-advance/sprinkle-production-adoption.json": "3b5656a4582f82f8d36514c533734b0f2b201a75850a7945e598de5c6ca0530e"
+    },
+    "conclusion": "Exact official-MV crew credits are supported at their stated production scope and preserve existing data. This does not settle the separate seven-member live-action appearance question; no cover-image or Hey Gabby roster inference was made.",
+    "memberParticipationResolved": false,
+    "oldProductionRowsPreserved": 4,
+    "productionRowsAfter": 5,
+    "publicCreditWorks": 106,
+    "publicCreditSlots": 546,
+    "localStageSources": 501,
+    "remainingClassifications": 154,
+    "limits": [
+      "Reviewer verified original public metadata text, code and local tests; did not perform full playback, production owner reads or saves.",
+      "The pending user viewing answer remains pending; crew names do not establish vocals, member participation or a complete MV cast.",
+      "No deployment or new image adoption was performed."
+    ],
+    "applicationWrites": 0,
+    "productionPrivateReadsOrWrites": 0,
+    "deployments": 0
+  }
+}

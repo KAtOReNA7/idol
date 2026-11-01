@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-30",
+  "targetedRun": {
+    "files": 5,
+    "tests": 34,
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "newGuardChecks": 1
+  },
+  "typecheck": "passed",
+  "formalBuild": "passed",
+  "logs": {
+    "tests": {
+      "sha256": "4208d8ff0e4ac7fdc8fb7d7e00e1f6b566fd29f106fb2e351c25e747cf6d1274",
+      "bytes": 4349
+    },
+    "typecheck": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "build": {
+      "sha256": "472f0239253213f7a79ddb076e1533824ba8fb28948d966b707ccee4a805fa1d",
+      "bytes": 8606
+    }
+  },
+  "independentReview": {
+    "result": "passed",
+    "tests": 40,
+    "files": 5,
+    "overlapsRootRun": true,
+    "oldThreeRecordPreimageHash": "preserved",
+    "protectedJsonFiles": 7,
+    "findings": []
+  },
+  "previousValidation": "docs/codex/evidence/20261030-sprinkle-human/validation.json",
+  "knownPreviousStatisticalBaselineFailure": "Retained in previous evidence-advance validation; not rerun, not reported fixed.",
+  "activeResearchNotes": 3,
+  "preparedResearchNotes": 4,
+  "publicParticipantRowsAdded": 0,
+  "memberAbsenceRulesAdded": 0,
+  "formalStageBindingsAdded": 0,
+  "privateWrites": 0,
+  "newSiteVersions": 0,
+  "deployments": 0,
+  "localSources": 501,
+  "publishedSources": 500,
+  "remainingClassifications": 153,
+  "limitations": [
+    "Only exact distributor title and description verified; no full main-MV absence confirmation.",
+    "One hidden IAB navigation to SBS making timed out. No independent full video/audio playback or browser acceptance.",
+    "User tentative feedback did not change scoring policy or become a confirmed absence."
+  ]
+}

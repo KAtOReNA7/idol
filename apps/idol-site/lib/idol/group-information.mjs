@@ -19,11 +19,13 @@ export function groupInformationModel(slug,group){
   if(!previous||(account.observedAt??'')>(previous.observedAt??''))byPlatform.set(account.platform,account);
  }
  const accounts=Object.keys(platforms).flatMap(platform=>byPlatform.has(platform)?[byPlatform.get(platform)]:[]);
+ const storedSales=completed?.sales??row.sales;
+ const sales=slug==='triples'&&storedSales?{...storedSales,notes:['采用可复算的Circle Album公开累计下界，统计截止2026-06；不是全球完整累计。旧汇总与历次差额保留在来源档案中，按用户决定不再追查。']}:storedSales;
  return {name:artwork.find(g=>g.slug===slug)?.name??slug,accounts:accounts.map(a=>{
   const observed=typeof a.observedValue==='number'&&Number.isFinite(a.observedValue)&&a.observedValue>=0&&a.observedAt;
   const legacy=a.observedAt?followersInWan(a.countLabel):null;
   return {...a,value:observed?followersInWan(String(a.observedValue)):legacy??'0人',fallbackZero:!observed&&!legacy};
- }).filter(a=>a.platform!=='x'||(followerCount(a.value)??0)>0),sales:completed?.sales??row.sales,wins:completed?.wins??row.wins};
+ }).filter(a=>a.platform!=='x'||(followerCount(a.value)??0)>0),sales,wins:completed?.wins??row.wins};
 }
 export function renderGroupInformation(slug,group){
  const model=groupInformationModel(slug,group);

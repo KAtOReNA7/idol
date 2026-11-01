@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T03:13:53.981102+00:00",
+  "baseline": "cef1765801ce62739c44308292a680b16e681597",
+  "group": "NMIXX",
+  "kind": "新增舞台缺口",
+  "stableId": "recvxyOz5Xo5fW",
+  "song": "Hey Gabby!",
+  "originalVideoId": "xBrrdxtyWHw",
+  "candidateVideoId": "XSpYaEdpKxY",
+  "candidateUrl": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+  "disposition": "candidate_official_produced_performance_requires_parent_review",
+  "sourceType": "官方制作的MV Performance Ver./Dance Video；不叫练习室或现场人声",
+  "checks": [
+    {
+      "url": "https://www.youtube.com/watch?v=XSpYaEdpKxY",
+      "method": "web search indexed exact official video metadata; no direct retry after earlier YouTube throttle",
+      "result": "检索返回完整标题[MV] NMIXX - 안녕 개비! (Hey Gabby!) Performance Ver.，VLENDING 블렌딩 (Verified)，发布2022-05-09；说明自述VLENDING官方MV/OST发行频道。"
+    },
+    {
+      "url": "https://music.bugs.co.kr/album/20465227",
+      "method": "live full-body open/find",
+      "result": "正文162–168独立列2022.05.09 안녕 개비! (Sung by NMIXX) (Dance Video) 02:00；180–186另外列2022.05.02同歌MV 02:01。发行方OGQ/VLENDING；作品韩文。说明对应两个不同视频类型。"
+    },
+    {
+      "url": "https://www.newsis.com/view/NISX20220518_0001876354",
+      "method": "live full-body open; publisher release report",
+      "result": "2022-05-18报道引用音乐制作发行商VLENDING，称官方YouTube已发布Hey Gabby MV/teaser、Sprinkle Party MV以及Hey Gabby Performance video，佐证发行人和独立Performance类型。"
+    },
+    {
+      "url": "https://kpopanswers.com/all-nmixx-music-videos-every-official-mv/",
+      "method": "live full-body open + inspect public HTML link; secondary discovery only",
+      "result": "正文33–39把原HeyGabby MV、Performance与Extra Cut分列；Performance的href为XSpYaEdpKxY。不借其文字证明全片/音轨。"
+    }
+  ],
+  "previousReason": "20261028-stage-fill只检出Gabby原MV、VLENDING Extra Cut和民间镜像；后续队列仍写特制MV不能当练习。当前已放宽官方独立制作表演为第三级后备。",
+  "newEvidence": "新精确Performance原链、发行渠道verified检索元数据、Bugs同版120秒Dance Video记录、原始媒体发行方报道组合支持继续审核。并非重新推荐旧原MV或Extra Cut。",
+  "unverified": [
+    "未直接打开/播放YouTube（先前官方PURPLE KISS页节流后停止该路线）",
+    "未独立全片视觉核查或逐句音轨比对",
+    "Bugs标02:00不能单独证明末尾完整/当前YouTube可播；不要把duration当播放验收",
+    "没有读owner个人数据；采用前仍须parent完成新鲜空分/完整日志/原对象保护检查"
+  ],
+  "proposedAction": "parent独立核对是否符合放宽后的官方完整制作表演，并完成来源/版本/完整性及owner守卫后才采用；不能默认为versionMatch=true。",
+  "needsUserHelp": false,
+  "needsUserHelpReason": "先由parent继续官方元数据及安全门核对，当前未向用户提问。"
+}

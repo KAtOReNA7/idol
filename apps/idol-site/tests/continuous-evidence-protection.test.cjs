@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {createHash} = require('node:crypto');
 const {beforeUserXObservations} = require('./helpers/user-x-observations.cjs');
+const {beforeGroupAdvanceTimelineRecords} = require('./helpers/group-advance-evidence.cjs');
 
 const app = path.resolve(__dirname, '..');
 const repo = path.resolve(app, '../..');
@@ -62,7 +63,12 @@ test('reported records add only scoped sources and prose, leaving all effective 
   const change = proposal.reported;
   assert.equal(hash(change.expectedBefore), '5400ed1cfefbd9c94d464b7e3facbea3cc8939ea5824eaac470eefe14c37e301');
   assert.equal(hash(change.expectedBefore), change.expectedBeforeSha256Canonical);
-  const current = read(path.join(repo, change.sourceFile));
+  const current = beforeGroupAdvanceTimelineRecords(read(path.join(repo, change.sourceFile)));
+  const laterUdtt = read(path.join(repo, 'docs/codex/evidence/20261028-post-v200/statistics/udtt-source-adoption.json'));
+  const udttIndex = current.records.findIndex(row => row.eventId === laterUdtt.after.eventId);
+  assert.ok(udttIndex >= 0);
+  assert.deepEqual(current.records[udttIndex], laterUdtt.after);
+  current.records[udttIndex] = structuredClone(laterUdtt.expectedBefore);
   assert.equal(hash(current), change.proposedAfterSha256Canonical);
   assert.deepEqual(omit(current, ['records']), omit(change.expectedBefore, ['records']));
   assert.equal(current.records.length, 7);
@@ -142,7 +148,7 @@ test('official annual verification uses matching native Album periods and quanti
 });
 
 test('official statement and manual links retain the exact viewed image bytes and reading limits', () => {
-  const reported = read(path.join(app, 'data/timeline-reported-records.json'));
+  const reported = beforeGroupAdvanceTimelineRecords(read(path.join(app, 'data/timeline-reported-records.json')));
   for (const [slug, file] of [['bewave', 'bewave-original-images-receipt-c.json'], ['geenius', 'geenius-manual-original-images-receipt-c.json']]) {
     const row = reported.records.find(item => item.slug === slug);
     const receipts = read(path.join(evidenceRoot, file));

@@ -1,0 +1,996 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T07:06:46.404468+00:00",
+  "baselineCommit": "b209073909b2f43254d836ffe139eba056582f09",
+  "scope": "Six remaining groups; bounded source/route checks or explicit prior-evidence carry-forward, not exhaustive fresh research for every item.",
+  "items": [
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMBHQA",
+      "song": "Get Goin'",
+      "version": "Fraggle Rock联名",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://www.toughpigs.com/transcript-fraggle-talk-26/",
+          "method": "live web.open full interview text",
+          "result": "原制作采访说明首尔屋顶拍摄与制作人员，但未逐名列成员录音角色。"
+        },
+        {
+          "url": "https://kpopnewswire.com/aespa-drops-new-track-get-goin-for-apple-tv-original-series-fraggle-rock/",
+          "method": "live web.open full article text",
+          "result": "明确四人出现在预告；预告范围不能扩成目标完整版逐人参与。"
+        },
+        {
+          "url": "https://www.henson.com/fraggle-rock/",
+          "method": "live web.open full page text",
+          "result": "官方节目页无可用于本曲逐人的具体角色资料。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded production/cast interview route",
+          "queries": [
+            "aespa Get Goin Karina Giselle Winter Ningning credits Fraggle Rock full music video",
+            "Get Goin Karina Ningning"
+          ],
+          "finding": "未取得新增Apple/Henson完整版逐名制作或录音名单；歌词分词、旧预告与团名不能替代。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "旧预告证据限度保持；完整目标参与与合规舞台未证。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMCSdB",
+      "song": "Armageddon (Flava D Remix)",
+      "version": "Flava D混音版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=85609744",
+          "method": "live public page relevant body read",
+          "finding": "发行目录区分精确混音与Other World视频，Background Vocals仅具名到aespa团体，不能逐名填成员；Qobuz补充查看亦无逐名声部。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "混音采样逐人成员与目标视频出镜未证；发行或MV目录不提供合规完整舞台。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMDFye",
+      "song": "Welcome To MY World (Feat. nævis)",
+      "version": "韩文原版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://www.youtube.com/watch?v=0TeYnotdeoE",
+          "method": "prior evidence reviewed; no new full playback",
+          "result": "承接已核K-909官方全景；本轮没有新的可读客串声部证据，不把nævis范围改为已核。"
+        }
+      ],
+      "newChecks": [],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "此前候选的客串、场合或完整来源限制未出现新解决证据，本次仅复核旧研究与当前应用，不重复旧批次。",
+      "coverage": "prior_evidence_and_current_scope_only"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMLz7L",
+      "song": "LEMONADE (2Spade Remix)",
+      "version": "2Spade混音版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded producer/exact remix search",
+          "queries": [
+            "aespa LEMONADE 2Spade credits",
+            "aespa LEMONADE Zedd Remix vocal"
+          ],
+          "url": "https://edm.com/music-releases/aespa-lemonade-zedd-remix/",
+          "finding": "搜索只给团体声乐描述与制作人；未取得精确版本逐名采样声部。搜索结果不作新事实。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "Zedd/Marlon/2Spade版本不相互代替；未证每位成员及同版完整表演。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMXVDa",
+      "song": "Regret of the Times (2024 aespa Remake Ver.)",
+      "version": "STATION重制版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://www.youtube.com/watch?v=F4Ag77XSVYI",
+          "method": "live web search index; not full-page or video verification",
+          "result": "SM提供的自动音源说明列制作/作词角色，并非完整独立表演。"
+        },
+        {
+          "url": "https://www.setlist.fm/stats/aespa-13f431f9.html?year=2024",
+          "method": "live web search index; not full-page or video verification",
+          "result": "新查询指向巡演或校园舞台；仍在当前类型排除范围。"
+        }
+      ],
+      "newChecks": [],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "此前候选的客串、场合或完整来源限制未出现新解决证据，本次仅复核旧研究与当前应用，不重复旧批次。",
+      "coverage": "prior_evidence_and_current_scope_only"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMZLFT",
+      "song": "KISS N TELL",
+      "version": "日文原版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://datazoo.jp/n/KISS%2BN%2BTELL-aespa/25382745",
+          "method": "live web search index; not full-page or video verification",
+          "result": "新节目日志把歌曲缩至2026-09-12 01:03–01:06时段；仍未取得完整官方单曲片源。"
+        },
+        {
+          "url": "https://aespa-official.jp/news/kissntell-release/",
+          "method": "live web search index; not full-page or video verification",
+          "result": "艺人官方发行说明能证日文发行，不能证明节目音轨/完整范围。"
+        }
+      ],
+      "newChecks": [],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "此前候选的客串、场合或完整来源限制未出现新解决证据，本次仅复核旧研究与当前应用，不重复旧批次。",
+      "coverage": "prior_evidence_and_current_scope_only"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMiDs4",
+      "song": "Girls (BRLLNT Remix)",
+      "version": "BRLLNT混音版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded producer-specific credits search",
+          "queries": [
+            "aespa Habstrakt Remix vocals credits",
+            "aespa BRLLNT Remix Karina"
+          ],
+          "finding": "新搜索仍是原曲署名或可编辑聚合；未取得精确混音制作人逐名声部，未采用IMDb或分词。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "不把原曲全员、可编辑演员表或团体发行信用扩成精确混音逐名参与。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMisqR",
+      "song": "Next Level (Habstrakt Remix)",
+      "version": "Habstrakt混音版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded producer-specific credits search",
+          "queries": [
+            "aespa Habstrakt Remix vocals credits",
+            "aespa BRLLNT Remix Karina"
+          ],
+          "finding": "新搜索仍是原曲署名或可编辑聚合；未取得精确混音制作人逐名声部，未采用IMDb或分词。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "不把原曲全员、可编辑演员表或团体发行信用扩成精确混音逐名参与。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMlAhN",
+      "song": "Rich Man (Yellow Claw Remix)",
+      "version": "Yellow Claw混音版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded exact remix search",
+          "query": "aespa Rich Man Yellow Claw vocals credits",
+          "finding": "精确发行条目只到团体和混音者；不是逐名参与或独立舞台证据。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "Yellow Claw精确版本逐名声部与合规舞台待证。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMlGJW",
+      "song": "Supernova (Grimes Remix)",
+      "version": "Grimes混音版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=85609744",
+          "method": "live public page relevant body read",
+          "finding": "发行目录区分精确混音与Other World视频，Background Vocals仅具名到aespa团体，不能逐名填成员；Qobuz补充查看亦无逐名声部。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "混音采样逐人成员与目标视频出镜未证；发行或MV目录不提供合规完整舞台。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMlNfX",
+      "song": "LEMONADE (Marlon Hoffstadt Remix)",
+      "version": "Marlon Hoffstadt混音版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded producer/exact remix search",
+          "queries": [
+            "aespa LEMONADE 2Spade credits",
+            "aespa LEMONADE Zedd Remix vocal"
+          ],
+          "url": "https://edm.com/music-releases/aespa-lemonade-zedd-remix/",
+          "finding": "搜索只给团体声乐描述与制作人；未取得精确版本逐名采样声部。搜索结果不作新事实。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "Zedd/Marlon/2Spade版本不相互代替；未证每位成员及同版完整表演。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMwjsI",
+      "song": "Supernova (Grimes Remix) (The Other World Ver.)",
+      "version": "Grimes混音The Other World版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=85609744",
+          "method": "live public page relevant body read",
+          "finding": "发行目录区分精确混音与Other World视频，Background Vocals仅具名到aespa团体，不能逐名填成员；Qobuz补充查看亦无逐名声部。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "混音采样逐人成员与目标视频出镜未证；发行或MV目录不提供合规完整舞台。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMxwnW",
+      "song": "LEMONADE (Zedd Remix)",
+      "version": "Zedd混音版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded producer/exact remix search",
+          "queries": [
+            "aespa LEMONADE 2Spade credits",
+            "aespa LEMONADE Zedd Remix vocal"
+          ],
+          "url": "https://edm.com/music-releases/aespa-lemonade-zedd-remix/",
+          "finding": "搜索只给团体声乐描述与制作人；未取得精确版本逐名采样声部。搜索结果不作新事实。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "Zedd/Marlon/2Spade版本不相互代替；未证每位成员及同版完整表演。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_new",
+      "stableId": "recvxyHuKMyy5i",
+      "song": "Spicy (Nitepunk Remix)",
+      "version": "Nitepunk混音版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/album/4091238",
+          "method": "live web search index; not full-page or video verification",
+          "result": "发行说明泛称成员人声采样，没有逐名指定此混音保留的成员。"
+        },
+        {
+          "url": "https://nitepunk.world/",
+          "method": "live web.open full page text",
+          "result": "本混音制作人Nitepunk官方网站可读内容仅有音乐/巡演入口，无逐成员采样名单。"
+        },
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://music.bugs.co.kr/album/4091238?wl_ref=S_tr_01_04",
+          "method": "live public page relevant body read",
+          "finding": "发行制作说明明确自由采样成员声部，但Background Vocals仍只列aespa合称，不能从团名和原曲分词推定四人混音参与。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "需精确Nitepunk版本逐名声部或制作资料；没有新合规完整表演。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_replacement",
+      "stableId": "recvxyHuKMDKAR",
+      "song": "Switchblade (Feat. Ty Dolla $ign)",
+      "version": "Ty Dolla $ign联名",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "最新发行目录将Switchblade列MV；新表演查询仍指Lollapalooza/巡演，不能替换合规舞台。"
+        }
+      ],
+      "newChecks": [],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "此前候选的客串、场合或完整来源限制未出现新解决证据，本次仅复核旧研究与当前应用，不重复旧批次。",
+      "coverage": "prior_evidence_and_current_scope_only"
+    },
+    {
+      "group": "aespa",
+      "kind": "stage_replacement",
+      "stableId": "recvxyHuKMKGBh",
+      "song": "Live My Life",
+      "version": "完整MV版",
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://en.wikipedia.org/wiki/List_of_Aespa_live_performances",
+          "method": "live web search index; not full-page or video verification",
+          "result": "近期线索列校园/音乐节；仅发现路线，不作为官方完整表演或替换授权。"
+        }
+      ],
+      "newChecks": [],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "此前候选的客串、场合或完整来源限制未出现新解决证据，本次仅复核旧研究与当前应用，不重复旧批次。",
+      "coverage": "prior_evidence_and_current_scope_only"
+    },
+    {
+      "group": "aespa",
+      "kind": "person",
+      "stableId": "recvxyHuKMisqR",
+      "song": "Next Level (Habstrakt Remix)",
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded producer-specific credits search",
+          "queries": [
+            "aespa Habstrakt Remix vocals credits",
+            "aespa BRLLNT Remix Karina"
+          ],
+          "finding": "新搜索仍是原曲署名或可编辑聚合；未取得精确混音制作人逐名声部，未采用IMDb或分词。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "不把原曲全员、可编辑演员表或团体发行信用扩成精确混音逐名参与。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "person",
+      "stableId": "recvxyHuKMiDs4",
+      "song": "Girls (BRLLNT Remix)",
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded producer-specific credits search",
+          "queries": [
+            "aespa Habstrakt Remix vocals credits",
+            "aespa BRLLNT Remix Karina"
+          ],
+          "finding": "新搜索仍是原曲署名或可编辑聚合；未取得精确混音制作人逐名声部，未采用IMDb或分词。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "不把原曲全员、可编辑演员表或团体发行信用扩成精确混音逐名参与。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "person",
+      "stableId": "recvxyHuKMyy5i",
+      "song": "Spicy (Nitepunk Remix)",
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/album/4091238",
+          "method": "live web search index; not full-page or video verification",
+          "result": "发行说明泛称成员人声采样，没有逐名指定此混音保留的成员。"
+        },
+        {
+          "url": "https://nitepunk.world/",
+          "method": "live web.open full page text",
+          "result": "本混音制作人Nitepunk官方网站可读内容仅有音乐/巡演入口，无逐成员采样名单。"
+        },
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://music.bugs.co.kr/album/4091238?wl_ref=S_tr_01_04",
+          "method": "live public page relevant body read",
+          "finding": "发行制作说明明确自由采样成员声部，但Background Vocals仍只列aespa合称，不能从团名和原曲分词推定四人混音参与。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "需精确Nitepunk版本逐名声部或制作资料；没有新合规完整表演。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "person",
+      "stableId": "recvxyHuKMBHQA",
+      "song": "Get Goin'",
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://www.toughpigs.com/transcript-fraggle-talk-26/",
+          "method": "live web.open full interview text",
+          "result": "原制作采访说明首尔屋顶拍摄与制作人员，但未逐名列成员录音角色。"
+        },
+        {
+          "url": "https://kpopnewswire.com/aespa-drops-new-track-get-goin-for-apple-tv-original-series-fraggle-rock/",
+          "method": "live web.open full article text",
+          "result": "明确四人出现在预告；预告范围不能扩成目标完整版逐人参与。"
+        },
+        {
+          "url": "https://www.henson.com/fraggle-rock/",
+          "method": "live web.open full page text",
+          "result": "官方节目页无可用于本曲逐人的具体角色资料。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded production/cast interview route",
+          "queries": [
+            "aespa Get Goin Karina Giselle Winter Ningning credits Fraggle Rock full music video",
+            "Get Goin Karina Ningning"
+          ],
+          "finding": "未取得新增Apple/Henson完整版逐名制作或录音名单；歌词分词、旧预告与团名不能替代。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "旧预告证据限度保持；完整目标参与与合规舞台未证。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "person",
+      "stableId": "recvxyHuKMlGJW",
+      "song": "Supernova (Grimes Remix)",
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        },
+        {
+          "url": "https://readdork.com/lyrics/aespa-supernova-grimes-remix",
+          "method": "live web.open full page text; rejected as unsupported attribution",
+          "result": "新发现的歌词/credits聚合未给权威上游，甚至将成员标成songwriter；不用分词标签反推混音采样成员。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=85609744",
+          "method": "live public page relevant body read",
+          "finding": "发行目录区分精确混音与Other World视频，Background Vocals仅具名到aespa团体，不能逐名填成员；Qobuz补充查看亦无逐名声部。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "混音采样逐人成员与目标视频出镜未证；发行或MV目录不提供合规完整舞台。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "person",
+      "stableId": "recvxyHuKMCSdB",
+      "song": "Armageddon (Flava D Remix)",
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=85609744",
+          "method": "live public page relevant body read",
+          "finding": "发行目录区分精确混音与Other World视频，Background Vocals仅具名到aespa团体，不能逐名填成员；Qobuz补充查看亦无逐名声部。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "混音采样逐人成员与目标视频出镜未证；发行或MV目录不提供合规完整舞台。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "person",
+      "stableId": "recvxyHuKMwjsI",
+      "song": "Supernova (Grimes Remix) (The Other World Ver.)",
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        },
+        {
+          "url": "https://readdork.com/lyrics/aespa-supernova-grimes-remix",
+          "method": "live web.open full page text; rejected as unsupported attribution",
+          "result": "新发现的歌词/credits聚合未给权威上游，甚至将成员标成songwriter；不用分词标签反推混音采样成员。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://www.genie.co.kr/detail/albumInfo?axnm=85609744",
+          "method": "live public page relevant body read",
+          "finding": "发行目录区分精确混音与Other World视频，Background Vocals仅具名到aespa团体，不能逐名填成员；Qobuz补充查看亦无逐名声部。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "混音采样逐人成员与目标视频出镜未证；发行或MV目录不提供合规完整舞台。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "person",
+      "stableId": "recvxyHuKMlAhN",
+      "song": "Rich Man (Yellow Claw Remix)",
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded exact remix search",
+          "query": "aespa Rich Man Yellow Claw vocals credits",
+          "finding": "精确发行条目只到团体和混音者；不是逐名参与或独立舞台证据。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "Yellow Claw精确版本逐名声部与合规舞台待证。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "person",
+      "stableId": "recvxyHuKMxwnW",
+      "song": "LEMONADE (Zedd Remix)",
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded producer/exact remix search",
+          "queries": [
+            "aespa LEMONADE 2Spade credits",
+            "aespa LEMONADE Zedd Remix vocal"
+          ],
+          "url": "https://edm.com/music-releases/aespa-lemonade-zedd-remix/",
+          "finding": "搜索只给团体声乐描述与制作人；未取得精确版本逐名采样声部。搜索结果不作新事实。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "Zedd/Marlon/2Spade版本不相互代替；未证每位成员及同版完整表演。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "person",
+      "stableId": "recvxyHuKMlNfX",
+      "song": "LEMONADE (Marlon Hoffstadt Remix)",
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded producer/exact remix search",
+          "queries": [
+            "aespa LEMONADE 2Spade credits",
+            "aespa LEMONADE Zedd Remix vocal"
+          ],
+          "url": "https://edm.com/music-releases/aespa-lemonade-zedd-remix/",
+          "finding": "搜索只给团体声乐描述与制作人；未取得精确版本逐名采样声部。搜索结果不作新事实。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "Zedd/Marlon/2Spade版本不相互代替；未证每位成员及同版完整表演。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "aespa",
+      "kind": "person",
+      "stableId": "recvxyHuKMLz7L",
+      "song": "LEMONADE (2Spade Remix)",
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.bugs.co.kr/artist/80347326/mvs?wl_ref=S_ar_05_01",
+          "method": "live web.open full page text",
+          "result": "正版艺人目录区分原曲Performance与混音MV；这是目录范围检查，未逐片播放，也不是所有混音的逐人署名。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded producer/exact remix search",
+          "queries": [
+            "aespa LEMONADE 2Spade credits",
+            "aespa LEMONADE Zedd Remix vocal"
+          ],
+          "url": "https://edm.com/music-releases/aespa-lemonade-zedd-remix/",
+          "finding": "搜索只给团体声乐描述与制作人；未取得精确版本逐名采样声部。搜索结果不作新事实。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "Zedd/Marlon/2Spade版本不相互代替；未证每位成员及同版完整表演。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "GENBLUE",
+      "kind": "statistics_wins",
+      "stableId": "genblue.wins",
+      "song": null,
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://www.reddit.com/r/kpop/comments/1j8ncov",
+          "method": "live web search index; not full-page or video verification",
+          "result": "获奖查询仍只落到2025-03-11候选而非获胜；搜索结果和记忆不足以核全时期0。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded first-win and broadcaster report route",
+          "query": "GENBLUE first win music show 2026",
+          "finding": "结果给其他艺人首次一位、GENBLUE出演名单；出演不是获奖，不能由无结果认定全时期0。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "全时期一位总数与截止范围未证，继续null/现有显示规则。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "TRACER",
+      "kind": "statistics_sales",
+      "stableId": "tracer.sales",
+      "song": null,
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.apple.com/us/album/365-single/1777757195",
+          "method": "live web search index; not full-page or video verification",
+          "result": "365正版数字目录可作同名消歧，不能证明实体售量或音乐节目一位数。"
+        },
+        {
+          "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=14789",
+          "method": "new search corroborates previously adopted jacket feature",
+          "result": "具名封套人物已在前批采用，不重复；无实体数量。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://music.apple.com/us/album/365-single/1777757195",
+          "method": "live public page relevant body read",
+          "finding": "确认2024-11-05两轨365发行版权为Gleammedia/Genie，身份无歧义；数字发行页没有实体条码、销量或全时期一位总数。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "数字发行存在不证明实体销售为0；无明确期间销量/全时期获奖统计，继续未知。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "TRACER",
+      "kind": "statistics_wins",
+      "stableId": "tracer.wins",
+      "song": null,
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://music.apple.com/us/album/365-single/1777757195",
+          "method": "live web search index; not full-page or video verification",
+          "result": "365正版数字目录可作同名消歧，不能证明实体售量或音乐节目一位数。"
+        },
+        {
+          "url": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=14789",
+          "method": "new search corroborates previously adopted jacket feature",
+          "result": "具名封套人物已在前批采用，不重复；无实体数量。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://music.apple.com/us/album/365-single/1777757195",
+          "method": "live public page relevant body read",
+          "finding": "确认2024-11-05两轨365发行版权为Gleammedia/Genie，身份无歧义；数字发行页没有实体条码、销量或全时期一位总数。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "数字发行存在不证明实体销售为0；无明确期间销量/全时期获奖统计，继续未知。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "AtHeart",
+      "kind": "timeline",
+      "stableId": "e-atheart-aurora-hiatus-observed",
+      "song": null,
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://atheartkpop.fandom.com/wiki/Aurora",
+          "method": "live web search index; not full-page or video verification",
+          "result": "新线索指2026-06-15 Say It预告含回归；尚无原发布具名正文，不反推首次暂停起点或第二次生效日。"
+        },
+        {
+          "url": "https://kprofiles.com/atheart-members-profile/",
+          "method": "live web search index; not full-page or video verification",
+          "result": "同样把预告日期当回归线索，缺独立公司生效说明。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://www.soompi.com/article/1863734wpp/athearts-aurora-to-go-on-hiatus-due-to-health-just-2-months-after-return",
+          "method": "live public page relevant body read",
+          "finding": "公司声明转录说明暂停，并未另列独立生效日；报道说明June恢复，不推算具体起止。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "需公司明确实际起止时间的原公告；报道日期和预告发布日期均不代替。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "AtHeart",
+      "kind": "timeline",
+      "stableId": "e-atheart-aurora-second-hiatus-announcement",
+      "song": null,
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://atheartkpop.fandom.com/wiki/Aurora",
+          "method": "live web search index; not full-page or video verification",
+          "result": "新线索指2026-06-15 Say It预告含回归；尚无原发布具名正文，不反推首次暂停起点或第二次生效日。"
+        },
+        {
+          "url": "https://kprofiles.com/atheart-members-profile/",
+          "method": "live web search index; not full-page or video verification",
+          "result": "同样把预告日期当回归线索，缺独立公司生效说明。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://www.soompi.com/article/1863734wpp/athearts-aurora-to-go-on-hiatus-due-to-health-just-2-months-after-return",
+          "method": "live public page relevant body read",
+          "finding": "公司声明转录说明暂停，并未另列独立生效日；报道说明June恢复，不推算具体起止。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "需公司明确实际起止时间的原公告；报道日期和预告发布日期均不代替。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "BEWAVE",
+      "kind": "timeline",
+      "stableId": "e-bewave-six-member-phase-end-announcement",
+      "song": null,
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://kprofiles.com/bewave-members-profile/",
+          "method": "live web search index; not full-page or video verification",
+          "result": "本轮可见仍转述9月4日宣布未来10月31日结束六人活动；没有计划已执行的独立原证。"
+        }
+      ],
+      "newChecks": [
+        {
+          "url": "https://kprofiles.com/bewave-members-profile/",
+          "method": "live public page relevant body read",
+          "finding": "资料页现明确三名成员10月31日结束活动，但未给独立执行原公告；仍不能将资料站更新当原始生效日证明。"
+        },
+        {
+          "url": "https://kprofiles.com/my-teenage-girl-where-are-they-now-grade-3-edition/",
+          "method": "live public page relevant body read",
+          "finding": "检索片段的2026-04-16解散属于mimiirose段落，全文消歧后排除，不能关联BEWAVE。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "2025-10-31计划与实际执行仍待独立原证；无阵容或canonical日期改动。",
+      "coverage": "new_source_or_route"
+    },
+    {
+      "group": "CandyShop",
+      "kind": "timeline",
+      "stableId": "e-candyshop-yuina-hiatus-announcement",
+      "song": null,
+      "version": null,
+      "priorEvidence": "docs/codex/evidence/20261029-group-followup/groups-root.json",
+      "priorChecks": [
+        {
+          "url": "https://www.xportsnews.com/article/1856885",
+          "method": "live indexed full article text",
+          "result": "原记者全文转载公司暂停声明，但文中没有另一个明确生效日；不能把后续缺席/猜测写成退团。"
+        },
+        {
+          "url": "https://celebconfirmed.com/news/candy-shops-yuina-pauses-activities-due-to-health-new-member-to-join-12555",
+          "method": "live indexed full article text",
+          "result": "独立记者引述同一声明；未来行程暂停不是额外生效日期。"
+        }
+      ],
+      "newChecks": [
+        {
+          "method": "bounded Korean official-fancafe route",
+          "query": "캔디샵 유이나 활동 중단 공식 팬카페",
+          "finding": "新检索仍为2024-05-09转录和资料页；未取得可读官方原帖及独立生效日。"
+        }
+      ],
+      "decision": "retain_unresolved",
+      "fullFactClosed": false,
+      "remaining": "原公告位置与暂停生效日保持待证，不改为退团。",
+      "coverage": "new_source_or_route"
+    }
+  ],
+  "fullFactClosures": 0,
+  "applicationDeltas": 0
+}

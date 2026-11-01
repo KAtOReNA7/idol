@@ -8,7 +8,9 @@ from stage_selection_policy import checked_selection,comparison_candidates,repla
 e=root.parent.parent/'docs/codex/evidence/20261101-closeout'
 item=json.loads((e/'gnarly-prepared-20261101.json').read_text(encoding='utf8'))['items'][0]
 confirmation=json.loads((e/'gnarly-human-confirmation.json').read_text(encoding='utf8'))
-before=(root/'data/stage-videos.json').read_bytes();videos=json.loads(before);previous=videos[item['recordId']]
+before=(root/'data/stage-videos.json').read_bytes();videos=json.loads(before)
+receipt=json.loads((root.parent.parent/'docs/codex/evidence/20261101-gnarly-adoption/adoption.json').read_bytes())
+assert videos[item['recordId']]==receipt['newSource'];previous=receipt['previousSource']
 assert previous['videoId']=='Rz47IBr1GXM' and confirmation['adopted'] is False
 assert confirmation['userAnswer']=='完整六人，音轨版本一致'
 selected=item['selected'];assert selected['videoId']=='xrm7PP1mbtI'

@@ -4,7 +4,8 @@ const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
 const load=require('./helpers/public-artist-loader.cjs');
 const {beforeSameSongAdoption,coreTargetIds,targetIds,replacementIds,receipt,hash}=require('./helpers/same-song-adoption-baseline.cjs');
 const source=load('lib/idol/stage-source.ts'),{projectPublicCatalog}=load('lib/idol/public-catalog.ts'),{StageSameSongFallback}=load('components/stage-same-song-fallback.tsx');
-const root=path.resolve(__dirname,'..'),repo=path.resolve(root,'../..'),videos=require('../data/stage-videos.json'),statuses=require('../data/stages/status.json');
+const {beforeGnarly}=require('./helpers/gnarly-adoption-baseline.cjs');
+const root=path.resolve(__dirname,'..'),repo=path.resolve(root,'../..'),videos=beforeGnarly('stageVideos',require('../data/stage-videos.json')),statuses=beforeGnarly('stageStatuses',require('../data/stages/status.json'));
 const inventory=require('../data/stages/inventory.json').works,byId=new Map(inventory.map(w=>[w.recordId,w]));
 const oldVideos=receipt.before['data/stage-videos.json'].object,oldStatuses=receipt.before['data/stages/status.json'].object;
 const unknownVersionIds=['rec28ldfRTrI8S','recvxyHuKMwrIt','recvxDMFHNzJyr'];
@@ -18,7 +19,7 @@ test('actual adoption restores the complete 501-source and research preimages an
  assert.equal(receipt.adopted,true);assert.equal(receipt.totalNewSources,targetIds.length);assert.equal(receipt.currentLocalSources,501+targetIds.length);assert.deepEqual(replacementIds,['recvxyHuKM4BvC']);assert.equal(receipt.totalReplacements,1);
  assert.ok([...coreTargetIds,...expectedExtraIds].every(id=>targetIds.includes(id)));assert.equal(Object.keys(videos).length,receipt.currentLocalSources);assert.equal(Object.keys(oldVideos).length,501);
  for(const [kind,relative,current] of [['stageVideos','data/stage-videos.json',videos],['stageStatuses','data/stages/status.json',statuses]]){
-  assert.equal(sha(fs.readFileSync(path.join(root,relative))),receipt.after[relative].sha256);
+  assert.equal(sha(Buffer.from(JSON.stringify(current,null,2)+'\n')),receipt.after[relative].sha256);
   const before=beforeSameSongAdoption(kind,current);assert.deepEqual(before,receipt.before[relative].object);assert.deepEqual(beforeSameSongAdoption(kind,before),before);
   const changed=structuredClone(current);if(kind==='stageVideos')changed[Object.keys(oldVideos)[0]].title+=' unreviewed';else changed.works[Object.keys(oldVideos)[0]].reason+=' unreviewed';
   assert.throws(()=>beforeSameSongAdoption(kind,changed),/complete post-same-song/);

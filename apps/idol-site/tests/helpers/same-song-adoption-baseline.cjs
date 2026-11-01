@@ -16,6 +16,8 @@ function hasSameSongAdoption(kind,current){
 }
 function beforeSameSongAdoption(kind,current){
  assert.ok(paths[kind],'known stage adoption document kind');
+ const gnarly=require('./gnarly-adoption-baseline.cjs');
+ if(hash(current)===gnarly.receipt.after[paths[kind]].sha256)current=gnarly.beforeGnarly(kind,current);
  const path=paths[kind],before=receipt.before[path],after=receipt.after[path],out=structuredClone(current);
  assert.equal(before.sha256,pinned[kind].before);assert.match(after.sha256,/^[a-f0-9]{64}$/);
  assert.equal(hash(before.object),pinned[kind].before,'complete reviewed pre-same-song receipt');assert.equal(bytes(before.object).length,before.bytes);

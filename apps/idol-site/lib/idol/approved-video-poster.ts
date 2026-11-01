@@ -14,6 +14,7 @@ import newjeansPosters from '../../data/newjeans-video-posters.json';
 import vvupPosters from '../../data/vvup-video-posters.json';
 import stageSelectionPosters from '../../data/stage-selection-posters-20261027.json';
 import biliPosters from '../../data/stage-bilibili-posters-20261029.json';
+import gnarlyPosters from '../../data/stage-gnarly-poster-20261101.json';
 import type {StageVideo} from './types';
 import {stageSourceKey} from './stage-source';
 import {publicMvCover,publicCoverZoom} from './mv-public-media';
@@ -43,7 +44,7 @@ const retainedVideoPosters=[
 // Stage support is bounded to explicitly reviewed tuples; the caller also rejects clips.
 export function approvedVideoPoster(workId:string,videoId:string|null,view:'mv'|'stage'):VideoPoster|null{
  if(!videoId)return null;
- const stageSelection=view==='stage'?stageSelectionPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view):null;
+ const stageSelection=view==='stage'?[...stageSelectionPosters.entries,...gnarlyPosters.entries].find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view):null;
  if(stageSelection)return {src:stageSelection.src,label:stageSelection.label,intrinsicSize:stageSelection.intrinsicSize,fit:'contain'};
  const refreshed=view==='mv'?publicMvCover(workId,videoId):null;
  if(refreshed)return {src:refreshed.src,label:refreshed.label,fit:'cover',zoom:publicCoverZoom(refreshed.src)};

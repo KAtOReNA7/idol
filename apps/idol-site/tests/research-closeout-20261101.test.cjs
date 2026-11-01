@@ -20,7 +20,11 @@ test('only exact appended promotional rows changed; originals, private fields, s
   const bad=structuredClone(now);bad.records[0].note+='tamper';assert.throws(()=>beforeCloseoutPublic(name,bad),/complete reviewed closeout/);
  }
  const hash=b=>createHash('sha256').update(b).digest('hex');
- for(const [name,sha] of Object.entries(receipt.protectedFiles))assert.equal(hash(fs.readFileSync(path.join(__dirname,'..',name))),sha,name);
+ for(const [name,sha] of Object.entries(receipt.protectedFiles)){
+  let bytes=fs.readFileSync(path.join(__dirname,'..',name));
+  if(name==='data/stage-videos.json')bytes=Buffer.from(JSON.stringify(require('./helpers/gnarly-adoption-baseline.cjs').beforeGnarly('stageVideos',JSON.parse(bytes)),null,2)+'\n');
+  assert.equal(hash(bytes),sha,name);
+ }
  for(const p of receipt.addedRecognition.portraits)assert.equal(hash(fs.readFileSync(path.join(__dirname,'../public',p.src))),p.sha256);
  beforeCloseoutGuard(require('../scripts/udtt-private-build-assets-manifest.json'));
 });

@@ -1,0 +1,166 @@
+{
+  "date": "2026-11-01",
+  "scope": "Read-only engineering and four adopted-stage poster feasibility audit. No private backup read, source adoption, app edit, deployment or live save.",
+  "baseline": "e6f57955670e4f83ef548dd5d88efa833b161065",
+  "definitions": {
+    "continue_independent": "There is a concrete code/metadata/media route to attempt now without repeating user confirmation. It is not a promise that a third-party asset must exist.",
+    "park_until_new_evidence": "Keep truthful fallback and wait for newly available evidence; do not repeat the same failed route.",
+    "retire_requirement": "Stop treating the requirement as mandatory completion. Preserve source, score and all historical facts."
+  },
+  "engineering": [
+    {
+      "item": "owner_preflight_code",
+      "decision": "continue_independent",
+      "status": "implemented_local_validated",
+      "canSolveIndependently": true,
+      "canAbandon": false,
+      "finding": "Owner-only MCP route and native owner gate unchanged. One D1 batch reads target scores and the complete owner journal; response exposes emptiness and target log headers, not score values or notes. Zero stays nonempty. Envelope checks detect truncation, not authentication.",
+      "remaining": "After a separately authorized release, verify actual connected-plugin discovery, owner successful call, nonowner denial and exact response decode. Current v203 does not expose the new tool.",
+      "evidence": [
+        "apps/idol-site/lib/idol/stage-owner-preflight.ts",
+        "apps/idol-site/app/mcp/route.ts",
+        "apps/idol-site/lib/idol/http.ts",
+        "apps/idol-site/scripts/merge-stage-batch.py"
+      ]
+    },
+    {
+      "item": "real_owner_end_to_end",
+      "decision": "continue_independent",
+      "status": "environment_and_release_gated",
+      "canSolveIndependently": "Technical work can be performed once authorized deployment and working owner connection exist; live success cannot be guaranteed today.",
+      "canAbandon": false,
+      "finding": "Root audit observed IAB tab selection timeout; a past browser failure is not proof that the interface cannot work. Not deploying is current user scope, not an engineering incapability.",
+      "remaining": "Try the actual existing authorized connector after release. Retain old bindings on any failure; no repeated per-song export demands. A single consolidated owner read remains a fallback, not a routine user step."
+    },
+    {
+      "item": "final_release_score_preservation",
+      "decision": "continue_independent",
+      "status": "release_gate_pending",
+      "canSolveIndependently": "Implementation and package validation yes; live owner state depends on authenticated channel.",
+      "canAbandon": false,
+      "finding": "Local adoption receipts establish state at adoption only. Later release should still check current scores/journal/source preservation for changed bindings, plus access and owner checks. Do not treat old receipt freshness as current.",
+      "remaining": "Perform one consolidated release-time protection check; do not invent source equality or extend export dates."
+    },
+    {
+      "item": "production_write_test",
+      "decision": "park_until_new_evidence",
+      "status": "not_executed",
+      "canSolveIndependently": "Local transaction, concurrency and owner-save regressions are testable now; arbitrary production saves are not appropriate evidence.",
+      "canAbandon": "Can retire a blanket requirement to rewrite a real personal score merely to test a read-only change; cannot drop owner safety or falsely mark actual save verified.",
+      "finding": "The new endpoint is read-only; read-only live success/denial and no-write verification are sufficient for that endpoint. Existing save behavior must remain protected by regression checks and separately scoped production verification when save code changes."
+    },
+    {
+      "item": "current_auth_or_importer_defect",
+      "decision": "no_reproducible_defect_found",
+      "finding": "Reviewed preflight, registry, MCP gate, importer and native-storage coverage. 28 targeted tests passed. This is bounded functional review, not an exhaustive security proof.",
+      "canAbandon": false
+    },
+    {
+      "item": "all_video_full_playback_as_release_requirement",
+      "decision": "retire_requirement",
+      "finding": "Full replay of every external video is not necessary to ship a data/readonly-tool update and is dependent on third-party access. Preserve exact user-confirmed scope and published limitations; continue targeted validation only when new evidence changes song/version/performer scope.",
+      "mustRetain": "Accurate source identity, known adopted scope, honest not-played labels and failure fallbacks."
+    }
+  ],
+  "posters": [
+    {
+      "workId": "recvxyH5pzoMAf",
+      "group": "STAYC",
+      "song": "Teddy Bear (Japanese)",
+      "sourceKey": "bilibili:BV1bo4y1x7LV:cid:1115512650:p:1@1085-1273",
+      "decision": "continue_independent",
+      "confidence": "medium",
+      "currentGap": "No exact interval poster. Whole-program OG image previously identified as another group.",
+      "newEvidence": "Ordinary public HTML now returns correct BV/CID/P1 and playable metadata structure after standard gzip decoding. Source is 1920x1080; current page duration1470 versus historical user1469, both above interval1273. No clip/binding changes required.",
+      "nextAction": "Attempt one exact source frame strictly within1085-1273, preserve original frame/time/source evidence; never use whole-episode image. If normal source access fails, leave title+watch action and park poster research.",
+      "canAbandonRequirement": true,
+      "abandonMeaning": "The demand for a decorative poster may be retired; watch link, interval identity and score remain.",
+      "humanNeededNow": false
+    },
+    {
+      "workId": "recvxIZRWKy9zg",
+      "group": "QWER",
+      "song": "SHOW DOWN",
+      "sourceKey": "x:2090845225845747983:video:1",
+      "decision": "continue_independent",
+      "confidence": "medium_high",
+      "currentGap": "No X poster mapping and no suitable sharp image adopted.",
+      "newEvidence": "Exact /video/1 public page now returns source-specific OG thumbnail and media URLs. Downloaded original1920x1080 WEBP is correct Nippon TV red-lit band stage and has no black/white margins, but is conspicuously out of focus.",
+      "candidate": "qwer-og.webp",
+      "candidateDisposition": "Do not call this a sharp or high-quality poster; use it only as a source lead.",
+      "nextAction": "Try a clear original frame from this exact single video, then add sourceKey-specific X poster support; approvedStagePoster currently returns null for all X, so finding the image alone will not render it.",
+      "canAbandonRequirement": true,
+      "abandonMeaning": "If no clear frame is available after bounded retrieval, keep existing no-image watch card. Do not borrow another stage image or generate faces.",
+      "humanNeededNow": false
+    },
+    {
+      "workId": "recvxyHuKMCtUB",
+      "group": "IVE",
+      "song": "CRUSH",
+      "sourceKey": "bilibili:BV1JctKeyEgw:cid:25864110751:p:2",
+      "decision": "continue_independent",
+      "confidence": "high",
+      "currentGap": "No adopted exact P2 poster.",
+      "newEvidence": "Current Bili pages[] maps CID25864110751/P2/210seconds to an independent first_frame URL. Retrieved1280x720 original JPEG and visually inspected: clear stage close-up, no black/white border, only original broadcast captions/logo.",
+      "candidate": "crush-p2-first-frame.jpg",
+      "candidateDisposition": "Suitable precise-video first-frame poster candidate; not an official promotional poster, not yet adopted.",
+      "nextAction": "Add exact full sourceKey mapping, retain original file and provenance, test no cross-P or old-festival fallback. No new score binding or backup is needed for this display-only asset.",
+      "canAbandonRequirement": true,
+      "abandonMeaning": "Optional in principle, but an actual usable original candidate has now been found so completion is inexpensive.",
+      "humanNeededNow": false
+    },
+    {
+      "workId": "recvxyHuKM2Gwu",
+      "group": "IVE",
+      "song": "ELEVEN -Japanese ver.-",
+      "sourceKey": "bilibili:BV19D4y1r7c6:cid:867429881:p:1",
+      "decision": "continue_independent",
+      "confidence": "medium",
+      "currentGap": "Exact P1 first frame is a program ranking card, rejected as the stage poster; whole-BV contains other later stages.",
+      "newEvidence": "Ordinary public HTML now verifies exact P1 CID867429881,307seconds,1440x1080 and three distinct parts.",
+      "nextAction": "Attempt a clear frame during the already-confirmed P1 performance, retain timestamp and source identity. Do not use P2/P3 or whole-BV cover without exact linkage.",
+      "canAbandonRequirement": true,
+      "abandonMeaning": "Keep truthful no-image viewing card if a usable frame cannot be obtained after one bounded media attempt.",
+      "humanNeededNow": false
+    }
+  ],
+  "policyAssessment": {
+    "sameVideoFrame": "An unchanged frame of the exact adopted source is a defensible poster source. The no-image state is already implemented. Existing recognition-photo preference for concept photos is not a blanket prohibition on exact-video poster frames; this is a poster, not an identity proof.",
+    "mustPreserve": [
+      "Original asset bytes and source URL",
+      "Exact platform/video/CID/page/media-index/interval identity",
+      "Existing score bindings and personal history",
+      "No counterfeit source claims or interpolation/AI face reconstruction",
+      "No image from a different song/program interval"
+    ],
+    "optionalTarget": "100% dedicated stage poster coverage can be removed as a release blocker without losing viewing or scoring functionality.",
+    "noCurrentSourceChange": true
+  },
+  "validation": {
+    "date": "2026-11-01",
+    "tests": 28,
+    "passed": 28,
+    "files": [
+      "tests/stage-owner-preflight.test.cjs",
+      "tests/mcp-protocol.test.cjs",
+      "tests/native-storage.test.cjs"
+    ],
+    "privateFilesRead": false,
+    "liveOwnerCall": false,
+    "liveSave": false,
+    "deployment": false,
+    "mediaDownloaded": "Only two public candidate still images (98196 and61315bytes), no full videos."
+  },
+  "evidenceFiles": [
+    "poster-access-probes.json",
+    "poster-candidates.json",
+    "qwer-og.webp",
+    "crush-p2-first-frame.jpg"
+  ],
+  "recommendedPriority": [
+    "Finish CRUSH poster using the now-verified exact original",
+    "Try QWER sharp-frame route and sourceKey-based X mapping",
+    "Try STAYC/IVE exact-source frame extraction once, otherwise stop treating posters as mandatory",
+    "Keep owner protection and authorized release verification mandatory; do not reopen all completed research or request repeated confirmations"
+  ]
+}

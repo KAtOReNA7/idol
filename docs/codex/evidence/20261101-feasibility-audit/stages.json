@@ -1,0 +1,1754 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "scope": "Audit only: all current 78 new stage gaps plus 9 legacy replacements. This is feasibility triage, not 87 fresh online searches or adoptions.",
+  "ledger": "docs/codex/evidence/20261101-crush-adoption/remaining-stage-ledger.json",
+  "ledgerSha256": "03c4cf30bcdbc5749337f3439cd43c7f1c24e21a9f769c0e72a2901a3392aada",
+  "policyApplied": [
+    "New empty stage slots may use explicitly labeled same-song excerpts/different versions; do not apply this relaxation to legacy source replacements.",
+    "Ordinary TV music show first, fixed-camera practice preferred next, produced official performance fallback. Concert/festival/event exclusion remains.",
+    "Unofficial publicly available reuploads allowed after exact version/media identity/performer-scope verification; unknown likes do not block a manual evidence choice.",
+    "Preserve scores, source history, IDs and access; guarded live owner preflight still required before adoption."
+  ],
+  "definitions": {
+    "continue_independent": "A concrete bounded source/policy route exists that the agent can pursue without first requiring new user judgment; this does NOT guarantee adoption or full closure.",
+    "park_until_new_evidence": "Current research has no new concrete qualifying evidence. Stop repetitive active search, retain the item for evidence-triggered reopening; do not assert absence.",
+    "retire_requirement": "Recommend retiring an unnecessary mandatory completion requirement, not deleting the work, changing its score or silently changing eligibility."
+  },
+  "counts": {
+    "park_until_new_evidence": 70,
+    "continue_independent": 10,
+    "retire_requirement": 7
+  },
+  "countsByQueue": {
+    "new_stage": {
+      "park_until_new_evidence": 64,
+      "continue_independent": 9,
+      "retire_requirement": 5
+    },
+    "legacy_replacement": {
+      "retire_requirement": 2,
+      "park_until_new_evidence": 6,
+      "continue_independent": 1
+    }
+  },
+  "limitedFreshWebReview": {
+    "queries": 13,
+    "topics": [
+      "IVE WAVE 230526 / XG CDTV archives",
+      "IZ*ONE Buenos Aires NHK archive",
+      "MEXE Official Dance metadata",
+      "VVUP4Life / Weeekly Happy Christmas official publication",
+      "ODD YOUTH English Performance / FEARLESS KBS220603 / aespa K909"
+    ],
+    "notes": [
+      "No full video playback or exact audio verification performed in this audit.",
+      "Bilibili WAVE search matched a playlist entry on a LOVE DIVE page; avoid binding the search-result BV.",
+      "FEARLESS220603 KBS Kpop and KBS WORLD exact video IDs newly located; performers still to verify.",
+      "XG expired official uploads are not evidence of permanent absence; do not bypass private videos."
+    ]
+  },
+  "ledgerConcerns": [
+    "Some historical nextAction text still forbids nonofficial mirrors or requires full matching language despite the later new-slot fallback policy. Apply current rules, retain historical evidence unchanged.",
+    "Geenius five interactive member branches and ILLIT short performance-MV inflate a must-fill-stage notion; recommend explicitly optional slots.",
+    "110 classifications are not 110 unique songs; do not erase original rows to make counts fall."
+  ],
+  "records": [
+    {
+      "workId": "rec28ldfRTrAUD",
+      "queue": "new_stage",
+      "group": "BABYMONSTER",
+      "song": "Love In My Heart",
+      "originalTitle": "BABYMONSTER - 'Love In My Heart' M/V",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/0"
+      },
+      "priorFinding": "YG原始新闻6435只证实2024年11月曾计划三曲打歌，不证明Love In My Heart已有完整节目片源；6582为巡演，6698表演视频对应BILLIONAIRE。保留目标缺口。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "YG原始新闻6435只证实2024年11月曾计划三曲打歌，不证明Love In My Heart已有完整节目片源；6582为巡演，6698表演视频对应BILLIONAIRE。保留目标缺口。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrAfx",
+      "queue": "new_stage",
+      "group": "KiiiKiii",
+      "song": "DEBUT SONG",
+      "originalTitle": "KiiiKiii 키키 'DEBUT SONG' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/1"
+      },
+      "priorFinding": "新检索的M Countdown首秀报道明确实际表演I DO ME，DEBUT SONG只是VCR蛋糕情境引用。不能把搜索共现当同曲节目。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新检索的M Countdown首秀报道明确实际表演I DO ME，DEBUT SONG只是VCR蛋糕情境引用。不能把搜索共现当同曲节目。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrCDJ",
+      "queue": "new_stage",
+      "group": "MADEIN",
+      "song": "DOPAMINE",
+      "originalTitle": "MADEIN - \"DOPAMINE\" PERFORMANCE MV",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/2"
+      },
+      "priorFinding": "新检索的DOPAMINE Performance MV即原作品PYEOubLoXDo；MADEIN视频目录区分DADARIDA另有CHOREO，未找到DOPAMINE独立官方完整后备。不重复用原MV制造舞台。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新检索的DOPAMINE Performance MV即原作品PYEOubLoXDo；MADEIN视频目录区分DADARIDA另有CHOREO，未找到DOPAMINE独立官方完整后备。不重复用原MV制造舞台。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrF2E",
+      "queue": "new_stage",
+      "group": "QWER",
+      "song": "FAKE IDOL (가짜 아이돌)",
+      "originalTitle": "QWER '가짜 아이돌' Official MV",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/4"
+      },
+      "priorFinding": "补强既有两曲LIVE CLIP PkEl_Z9B2y4的官方Weverse3-188265753发布证据；它已在旧只读线索中，不能算新发现或重复导入。准确FAKE IDOL章节边界及真实录制场合未证。拒绝ID l9GLV8Kd-MU保持；缩略图TLS EOF及watch读取失败分别留证。",
+      "adoptedOrChanged": false,
+      "action": "continue_independent",
+      "reason": "已有确切官方双曲LIVE CLIP和Weverse认领，不是继续泛搜。可有限检查该视频的实际录制形式及单曲边界；不保证符合场合政策。",
+      "nextEvidence": "在可用公开播放器确认FAKE IDOL对应片段和录制类型；无边界或仍属活动则保留只读入口，不把整片作为单曲。",
+      "concreteSourceUrls": [
+        "https://www.youtube.com/watch?v=PkEl_Z9B2y4",
+        "https://weverse.io/qwer/media/3-188265753"
+      ],
+      "guaranteedClosure": false,
+      "researchBudget": "One bounded review of the exact named sources; if still unverifiable, park without repeating generic searches."
+    },
+    {
+      "workId": "rec28ldfRTrFGi",
+      "queue": "new_stage",
+      "group": "VVUP",
+      "song": "4 Life",
+      "originalTitle": "VVUP (비비업) ‘4 Life’ Special Video (Full ver.)",
+      "category": "单曲完整范围未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/5"
+      },
+      "priorFinding": "Weverse3-189987080明确Full ver，4-189811246是Special Video #2；Full ver仍是原作品本身，不是独立新表演，分段视频也不补完整舞台。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Weverse3-189987080明确Full ver，4-189811246是Special Video #2；Full ver仍是原作品本身，不是独立新表演，分段视频也不补完整舞台。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrFYu",
+      "queue": "new_stage",
+      "group": "YOUNG POSSE",
+      "song": "YOUNG POSSE UP (feat. Verbal Jint, NSW yoon, Token)",
+      "originalTitle": "YOUNG POSSE (영파씨) - ‘YOUNG POSSE UP(feat. Verbal Jint, NSW yoon, Token)’ Official MV",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/6"
+      },
+      "priorFinding": "新检索仍为合作MV、节庆记录与原POSSE UP!的同名误配。既有tx9GAZpxo0w只有152秒、原合作MV201秒；新后备类型授权不消除合作段落/完整范围缺口。",
+      "adoptedOrChanged": false,
+      "action": "continue_independent",
+      "reason": "已定位艺人自有bStage认领的tx9GAZpxo0w Choreography；旧152秒对201秒的完整性门槛已被新增同曲节选后备部分放宽，但同曲身份及本团实际参与仍须核。",
+      "nextEvidence": "只核现有精确片源是否确为合作曲节选而非早期POSSE UP!；确认本团参与，准确标注客串/删段差异，拒绝凭时长猜。",
+      "concreteSourceUrls": [
+        "https://www.youtube.com/watch?v=tx9GAZpxo0w",
+        "https://youngposse.bstage.in/contents/65cdc6196a758c09850c726c"
+      ],
+      "guaranteedClosure": false,
+      "researchBudget": "One bounded review of the exact named sources; if still unverifiable, park without repeating generic searches."
+    },
+    {
+      "workId": "rec28ldfRTrGY0",
+      "queue": "new_stage",
+      "group": "ODD YOUTH",
+      "song": "Best Friendz",
+      "originalTitle": "ODD YOUTH (오드유스) 'Best Friendz' Brand MV",
+      "category": "语种或编配版本未匹配",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/7"
+      },
+      "priorFinding": "TOP MEDIA原始Multimedia页明确2025-01-15发布Best Friendz English Ver Performance Video。该证据支持排除把英语候选无标识绑定原Brand MV；原Brand音轨与候选的差异仍待听辨。",
+      "adoptedOrChanged": false,
+      "action": "continue_independent",
+      "reason": "旧门槛只强调英语版不同；用户现允许新增同曲不同版本后备。TOP MEDIA原页仍明确列出该精确English PERFORMANCE VIDEO，值得一次按新政策核验。",
+      "nextEvidence": "核官网关联精确视频、同团实际参与和完整/节选范围，明示英语表演与目标Brand MV差异；不伪称音轨相同。",
+      "concreteSourceUrls": [
+        "https://itopgroup.com/bbs/board.php?bo_table=ODDYOUTH_multimedia"
+      ],
+      "guaranteedClosure": false,
+      "researchBudget": "One bounded review of the exact named sources; if still unverifiable, park without repeating generic searches."
+    },
+    {
+      "workId": "rec28ldfRTrGj0",
+      "queue": "new_stage",
+      "group": "YOUNG POSSE",
+      "song": "나의 이름은 (ROTY)",
+      "originalTitle": "'나의 이름은 (ROTY)' MV",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/8"
+      },
+      "priorFinding": "新检索找到本人采访推荐的是Scars performance video，并非ROTY；ROTY的演唱会/活动记录不采用。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新检索找到本人采访推荐的是Scars performance video，并非ROTY；ROTY的演唱会/活动记录不采用。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrIC0",
+      "queue": "new_stage",
+      "group": "Hearts2Hearts",
+      "song": "Moonride",
+      "originalTitle": "Hearts2Hearts 하츠투하츠 'Moonride' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/10"
+      },
+      "priorFinding": "新增Moonride检索结果为Kia原MV/流媒体及另一首ICONIC HEART的节目信息，没有取得目标完整独立表演。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新增Moonride检索结果为Kia原MV/流媒体及另一首ICONIC HEART的节目信息，没有取得目标完整独立表演。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrJne",
+      "queue": "new_stage",
+      "group": "MEOVV",
+      "song": "LIT RIGHT NOW",
+      "originalTitle": "[SPECIAL VIDEO] MEOVV(미야오) - ‘LIT RIGHT NOW’",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/12"
+      },
+      "priorFinding": "官方Special Video仍为原LIT RIGHT NOW作品；新采访谈及创作和练习生时期，不证明独立完整表演。KCON与巡演仍排除。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "官方Special Video仍为原LIT RIGHT NOW作品；新采访谈及创作和练习生时期，不证明独立完整表演。KCON与巡演仍排除。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrK1S",
+      "queue": "new_stage",
+      "group": "ILLIT",
+      "song": "little monster",
+      "originalTitle": "ILLIT (아일릿) 'bomb' Brand Film (little monster MV)",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/13"
+      },
+      "priorFinding": "Weverse Magazine1789讨论PRESS START巡演舞台与little monster造型，不能转作官方练习室证据。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Weverse Magazine1789讨论PRESS START巡演舞台与little monster造型，不能转作官方练习室证据。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrKWv",
+      "queue": "new_stage",
+      "group": "BABYMONSTER",
+      "song": "SUPA DUPA LUV",
+      "originalTitle": "BABYMONSTER - 'SUPA DUPA LUV' M/V",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/14"
+      },
+      "priorFinding": "YG7068的dance practice关键词对应TREASURE Everything，7327/7326是本曲MV发布，年末舞台计划也非已取得普通打歌片源。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "YG7068的dance practice关键词对应TREASURE Everything，7327/7326是本曲MV发布，年末舞台计划也非已取得普通打歌片源。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrKm3",
+      "queue": "new_stage",
+      "group": "ILLIT",
+      "song": "Sunday Morning",
+      "originalTitle": "ILLIT (아일릿) 'Sunday Morning' Official MV",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/15"
+      },
+      "priorFinding": "ILLIT日本官网c2ac32af70b6明确8RvWZDUYg-g为应援法；新检索的表演描述是原MV中餐厅表演情境，不是独立后备。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "ILLIT日本官网c2ac32af70b6明确8RvWZDUYg-g为应援法；新检索的表演描述是原MV中餐厅表演情境，不是独立后备。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrKqc",
+      "queue": "new_stage",
+      "group": "ILLIT",
+      "song": "NOT ME",
+      "originalTitle": "ILLIT (아일릿) 'NOT ME' Official MV",
+      "category": "原始发布或可访问性未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/16"
+      },
+      "priorFinding": "Weverse Magazine1789明确NOT ME在PRESS START巡演首次演出；镜像所谓practice不能消除此场合证据。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Weverse Magazine1789明确NOT ME在PRESS START巡演首次演出；镜像所谓practice不能消除此场合证据。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrLFz",
+      "queue": "new_stage",
+      "group": "ILLIT",
+      "song": "See U Tonight (feat. YUNAH & MINJU of ILLIT)",
+      "originalTitle": "Kylie Cantrall - See U Tonight [feat. YUNAH & MINJU of ILLIT] (Official Music Video)",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/17"
+      },
+      "priorFinding": "公开授权发行明确Kylie Cantrall与YUNAH/MINJU二人合作；新找到CKrNx6NN-NM和emaDhlvz8BY均Provided to YouTube音频，不是同合作范围表演影像。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "公开授权发行明确Kylie Cantrall与YUNAH/MINJU二人合作；新找到CKrNx6NN-NM和emaDhlvz8BY均Provided to YouTube音频，不是同合作范围表演影像。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrLow",
+      "queue": "new_stage",
+      "group": "BABYMONSTER",
+      "song": "Ghost",
+      "originalTitle": "BABYMONSTER - 'Ghost' Promotion Video",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/18"
+      },
+      "priorFinding": "YG7581/7582/7580记录Ghost在京瓷巨蛋巡演；6808的FIRST TAKE对应DRIP，Ghost只是同文OST消息，不能误配。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "YG7581/7582/7580记录Ghost在京瓷巨蛋巡演；6808的FIRST TAKE对应DRIP，Ghost只是同文OST消息，不能误配。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrMwG",
+      "queue": "new_stage",
+      "group": "KISS OF LIFE",
+      "song": "Painting",
+      "originalTitle": "KISS OF LIFE (키스오브라이프) 'Painting' Special Video",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/19"
+      },
+      "priorFinding": "新来源均指Painting Special Video（原MV）或KISS ROAD演唱会首播记录；未取得独立官方完整表演。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新来源均指Painting Special Video（原MV）或KISS ROAD演唱会首播记录；未取得独立官方完整表演。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrNO2",
+      "queue": "new_stage",
+      "group": "izna",
+      "song": "Love All",
+      "originalTitle": "izna Digital Single 『Love All』 Lyric Video",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/20"
+      },
+      "priorFinding": "izna日本官网MOVIE明确Love All为Lyric Video；邻接的Special Performance属于SASS & Racecar，不能串行误读为Love All表演。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "izna日本官网MOVIE明确Love All为Lyric Video；邻接的Special Performance属于SASS & Racecar，不能串行误读为Love All表演。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrO2v",
+      "queue": "new_stage",
+      "group": "tripleS",
+      "song": "Cherry Gene",
+      "originalTitle": "트리플에스(tripleS Acid Eyes) ‘Cherry Gene’ Visualizer",
+      "category": "单曲完整范围未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/23"
+      },
+      "priorFinding": "新定位tripleS官方SIGNAL cRJdPN6X0IY及Gj-CYY2R0Vk，题名分别为表演讨论/舞蹈课；不能视为原分队完整同混音表演。Cherry Talk Special Performance是另一首歌。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新定位tripleS官方SIGNAL cRJdPN6X0IY及Gj-CYY2R0Vk，题名分别为表演讨论/舞蹈课；不能视为原分队完整同混音表演。Cherry Talk Special Performance是另一首歌。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrOXn",
+      "queue": "new_stage",
+      "group": "tripleS",
+      "song": "Dream Dress",
+      "originalTitle": "tripleS(트리플에스) moon ‘Dream Dress’ Special Visual Clip",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/25"
+      },
+      "priorFinding": "已纠正官网路线，Sony584980和triples-wav官方专题证实moon日本原曲；专题的Special Movie为会员内容未进入。未取得公开完整表演，Objekt活动不采用。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "已纠正官网路线，Sony584980和triples-wav官方专题证实moon日本原曲；专题的Special Movie为会员内容未进入。未取得公开完整表演，Objekt活动不采用。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrP1t",
+      "queue": "new_stage",
+      "group": "tripleS",
+      "song": "DNA",
+      "originalTitle": "tripleS(트리플에스) sun ‘DNA’ Special Visual Clip",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/27"
+      },
+      "priorFinding": "正确triples-wav官网有sun DNA发行专题及Unit Photo；没有证实镜像CnS1nUqfNZc原官方练习出处。Objekt活动不作为普通舞台。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "正确triples-wav官网有sun DNA发行专题及Unit Photo；没有证实镜像CnS1nUqfNZc原官方练习出处。Objekt活动不作为普通舞台。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrP5H",
+      "queue": "new_stage",
+      "group": "tripleS",
+      "song": "Welcome to Heaven",
+      "originalTitle": "tripleS(트리플에스) neptune ‘Welcome to Heaven’ Special Visual Clip",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/28"
+      },
+      "priorFinding": "Sony586674明确neptune日本原曲发布及Objekt活动；Special Visual Clip即原视频，Andless Performance属于另一首歌/演唱会，不能补本曲。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Sony586674明确neptune日本原曲发布及Objekt活动；Special Visual Clip即原视频，Andless Performance属于另一首歌/演唱会，不能补本曲。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrQ8F",
+      "queue": "new_stage",
+      "group": "UNIS",
+      "song": "Milky Way",
+      "originalTitle": "UNIS(유니스) 'Milky Way' Official M/V",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/29"
+      },
+      "priorFinding": "官方Weverse Highlight把Milky Way列为MV，Performance Video Behind及节目幕后相邻条目属于Sky Land, Star Land，不能混配。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "官方Weverse Highlight把Milky Way列为MV，Performance Video Behind及节目幕后相邻条目属于Sky Land, Star Land，不能混配。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxIZLpET3tB",
+      "queue": "new_stage",
+      "group": "QWER",
+      "song": "Our Voyage",
+      "originalTitle": "QWER 'Our Voyage' MV",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/30"
+      },
+      "priorFinding": "QWER Weverse Band Practice条目对应CEREMONY，Our Voyage仍为原MV及巡演/节庆；没有取得本曲合规独立表演。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "QWER Weverse Band Practice条目对应CEREMONY，Our Voyage仍为原MV及巡演/节庆；没有取得本曲合规独立表演。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxIZRWKntfT",
+      "queue": "new_stage",
+      "group": "YOUNG POSSE",
+      "song": "I know",
+      "originalTitle": "영파씨 (YOUNG POSSE) 'I know (정선혜, 한지은)' MV",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/31"
+      },
+      "priorFinding": "YOUNG POSSE日本官网MV索引列出I know，Genie/Qobuz明确SUNHYE与JIEUN二人；未取得两人同曲完整节目/后备表演。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "YOUNG POSSE日本官网MV索引列出I know，Genie/Qobuz明确SUNHYE与JIEUN二人；未取得两人同曲完整节目/后备表演。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxIZY0lR25A",
+      "queue": "new_stage",
+      "group": "YOUNG POSSE",
+      "song": "Pilot2",
+      "originalTitle": "영파씨 (YOUNG POSSE) 'Pilot2' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/33"
+      },
+      "priorFinding": "官方日本站列出2026-07-26 Pilot2 MV；其他检索为反应视频/授权音频/活动，未取得同曲独立官方表演。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "官方日本站列出2026-07-26 Pilot2 MV；其他检索为反应视频/授权音频/活动，未取得同曲独立官方表演。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxIZY0lX8bP",
+      "queue": "new_stage",
+      "group": "YOUNG POSSE",
+      "song": "kawa",
+      "originalTitle": "영파씨 (YOUNG POSSE) 'kawa (도은, 지아나)' MV",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/34"
+      },
+      "priorFinding": "新检索kawa仍为DOEUN/JIANA原MV及mixtape发行信息，没有可靠完整二人表演影像；不以全团演出代替。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新检索kawa仍为DOEUN/JIANA原MV及mixtape发行信息，没有可靠完整二人表演影像；不以全团演出代替。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxJ03dOg1Gc",
+      "queue": "new_stage",
+      "group": "YOUNG POSSE",
+      "song": "미스터 2026",
+      "originalTitle": "영파씨 (YOUNG POSSE) '미스터 2026' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/35"
+      },
+      "priorFinding": "新检索显示Mr2026为东京演唱会开场，Live Nation路线也是巡演；没有取得普通节目或完整官方后备。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新检索显示Mr2026为东京演唱会开场，Live Nation路线也是巡演；没有取得普通节目或完整官方后备。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxDMFHN97Px",
+      "queue": "new_stage",
+      "group": "XG",
+      "song": "4 SEASONS",
+      "originalTitle": "XG - 4 SEASONS (Official Music Video)",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/36"
+      },
+      "priorFinding": "XGALX1130383确认4 SEASONS主唱分队歌曲，1130530为幕后；Music Station SuperLive排期并未把本曲指派到节目，巡演不采用。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "XGALX1130383确认4 SEASONS主唱分队歌曲，1130530为幕后；Music Station SuperLive排期并未把本曲指派到节目，巡演不采用。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxDMFHNJME3",
+      "queue": "new_stage",
+      "group": "XG",
+      "song": "IN THE RAIN",
+      "originalTitle": "XG - IN THE RAIN (Official Music Video)",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/38"
+      },
+      "priorFinding": "官方站没有检索到IN THE RAIN Choreography/Rehearsal原页；旧镜像及巡演全景不转成官方后备，保持原出处待证。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "官方站没有检索到IN THE RAIN Choreography/Rehearsal原页；旧镜像及巡演全景不转成官方后备，保持原出处待证。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxDMFHNyyeA",
+      "queue": "new_stage",
+      "group": "XG",
+      "song": "O.R.B (Obviously Reads Bro)",
+      "originalTitle": "XG - O.R.B (Obviously Reads Bro) Official Music Video",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/39"
+      },
+      "priorFinding": "精确O.R.B官方站Choreography查询为空；原MV、THE CORE巡演和FUJI ROCK不作为合规替代。空结果不证明表演不存在。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "精确O.R.B官方站Choreography查询为空；原MV、THE CORE巡演和FUJI ROCK不作为合规替代。空结果不证明表演不存在。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxIYG1FSCws",
+      "queue": "new_stage",
+      "group": "WOOAH",
+      "song": "VOODOO DOLL",
+      "originalTitle": "WOOAH(우아) - ‘VOODOO DOLL’ MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/41"
+      },
+      "priorFinding": "新检索多源具体指向WXW:WICKED粉丝演唱会，未取得独立官方普通节目/练习/专门表演；活动不采用。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新检索多源具体指向WXW:WICKED粉丝演唱会，未取得独立官方普通节目/练习/专门表演；活动不采用。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxIZFpVLU0R",
+      "queue": "new_stage",
+      "group": "ifeye",
+      "song": "loverfory",
+      "originalTitle": "ifeye (이프아이) 'loverfory' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/42"
+      },
+      "priorFinding": "新精确检索得到ifeye原loverfory MV、幕后及Mainz/Coex活动，没有取得独立完整官方表演；不把索引中其他歌表演视为目标。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新精确检索得到ifeye原loverfory MV、幕后及Mainz/Coex活动，没有取得独立完整官方表演；不把索引中其他歌表演视为目标。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxIZRQAko79",
+      "queue": "new_stage",
+      "group": "Geenius",
+      "song": "I.L.Y",
+      "originalTitle": "Geenius(지니어스) 'I.L.Y' Interactive MV (Zoe ver.)",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/43"
+      },
+      "priorFinding": "同曲检索仍无Zoe单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+      "adoptedOrChanged": false,
+      "action": "retire_requirement",
+      "reason": "目标是成员单人约66秒互动MV版本；全团I.L.Y舞台不等于该个人互动范围。为五个分支分别强求独立同范围舞台，不是必要功能。",
+      "nextEvidence": "建议不再把该互动分支的舞台空槽当必须补齐缺陷，保留原片、成员版标签、稳定ID与原评分；不绑定全团舞台替代。",
+      "recommendationOnly": true,
+      "deleteWorkOrRating": false
+    },
+    {
+      "workId": "recvxIZRWKBgDC",
+      "queue": "new_stage",
+      "group": "Geenius",
+      "song": "I.L.Y",
+      "originalTitle": "Geenius(지니어스) 'I.L.Y' Interactive MV (Sion ver.)",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/44"
+      },
+      "priorFinding": "同曲检索仍无Sion单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+      "adoptedOrChanged": false,
+      "action": "retire_requirement",
+      "reason": "目标是成员单人约66秒互动MV版本；全团I.L.Y舞台不等于该个人互动范围。为五个分支分别强求独立同范围舞台，不是必要功能。",
+      "nextEvidence": "建议不再把该互动分支的舞台空槽当必须补齐缺陷，保留原片、成员版标签、稳定ID与原评分；不绑定全团舞台替代。",
+      "recommendationOnly": true,
+      "deleteWorkOrRating": false
+    },
+    {
+      "workId": "recvxIZRWKKCeh",
+      "queue": "new_stage",
+      "group": "Geenius",
+      "song": "I.L.Y",
+      "originalTitle": "Geenius(지니어스) 'I.L.Y' Interactive MV (Yeyoung ver.)",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/45"
+      },
+      "priorFinding": "同曲检索仍无Yeyoung单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+      "adoptedOrChanged": false,
+      "action": "retire_requirement",
+      "reason": "目标是成员单人约66秒互动MV版本；全团I.L.Y舞台不等于该个人互动范围。为五个分支分别强求独立同范围舞台，不是必要功能。",
+      "nextEvidence": "建议不再把该互动分支的舞台空槽当必须补齐缺陷，保留原片、成员版标签、稳定ID与原评分；不绑定全团舞台替代。",
+      "recommendationOnly": true,
+      "deleteWorkOrRating": false
+    },
+    {
+      "workId": "recvxIZXUpORHf",
+      "queue": "new_stage",
+      "group": "Geenius",
+      "song": "I.L.Y",
+      "originalTitle": "Geenius(지니어스) 'I.L.Y' Interactive MV (Andamiro ver.)",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/46"
+      },
+      "priorFinding": "同曲检索仍无Andamiro单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+      "adoptedOrChanged": false,
+      "action": "retire_requirement",
+      "reason": "目标是成员单人约66秒互动MV版本；全团I.L.Y舞台不等于该个人互动范围。为五个分支分别强求独立同范围舞台，不是必要功能。",
+      "nextEvidence": "建议不再把该互动分支的舞台空槽当必须补齐缺陷，保留原片、成员版标签、稳定ID与原评分；不绑定全团舞台替代。",
+      "recommendationOnly": true,
+      "deleteWorkOrRating": false
+    },
+    {
+      "workId": "recvxIZY0lVCCr",
+      "queue": "new_stage",
+      "group": "Geenius",
+      "song": "I.L.Y",
+      "originalTitle": "Geenius(지니어스) 'I.L.Y' Interactive MV (Mika ver.)",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/47"
+      },
+      "priorFinding": "同曲检索仍无Mika单人66秒互动范围对应的完整官方表演；全团I.L.Y和其他成员版本不可代替。",
+      "adoptedOrChanged": false,
+      "action": "retire_requirement",
+      "reason": "目标是成员单人约66秒互动MV版本；全团I.L.Y舞台不等于该个人互动范围。为五个分支分别强求独立同范围舞台，不是必要功能。",
+      "nextEvidence": "建议不再把该互动分支的舞台空槽当必须补齐缺陷，保留原片、成员版标签、稳定ID与原评分；不绑定全团舞台替代。",
+      "recommendationOnly": true,
+      "deleteWorkOrRating": false
+    },
+    {
+      "workId": "recvxIZnIaGCNq",
+      "queue": "new_stage",
+      "group": "KATSEYE",
+      "song": "Gameboy",
+      "originalTitle": "KATSEYE (캣츠아이) \"Gameboy” Official MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/48"
+      },
+      "priorFinding": "KATSEYE官方Videos目录的Performance/Practice为Gabriela/Gnarly，Gameboy有MV和音频变速/混音。官方Weverse28479还明确Gabriela表演缺Manon，不能借邻接条目假定本曲或全员。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "KATSEYE官方Videos目录的Performance/Practice为Gabriela/Gnarly，Gameboy有MV和音频变速/混音。官方Weverse28479还明确Gabriela表演缺Manon，不能借邻接条目假定本曲或全员。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxIZy3525BF",
+      "queue": "new_stage",
+      "group": "HITGS",
+      "song": "Gulliver!",
+      "originalTitle": "HITGS(힛지스) 'Gulliver!' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/49"
+      },
+      "priorFinding": "新精确检索Gulliver!仍为原MV，Performance Video关键词来自同页其他艺人或SOURPATCH；没有目标独立完整官方后备。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新精确检索Gulliver!仍为原MV，Performance Video关键词来自同页其他艺人或SOURPATCH；没有目标独立完整官方后备。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxIZy35Xwr7",
+      "queue": "new_stage",
+      "group": "HITGS",
+      "song": "Cherry Blossom",
+      "originalTitle": "HITGS(힛지스) 'Cherry Blossom' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/50"
+      },
+      "priorFinding": "新检索Cherry Blossom Performance得到专辑发行页和IYOO Taste表演邻接项；不是本曲完整表演，不扩大成员或歌曲范围。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新检索Cherry Blossom Performance得到专辑发行页和IYOO Taste表演邻接项；不是本曲完整表演，不扩大成员或歌曲范围。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxIZy35rUeY",
+      "queue": "new_stage",
+      "group": "HITGS",
+      "song": "Little By Little",
+      "originalTitle": "HITGS(힛지스) 'Little By Little' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/51"
+      },
+      "priorFinding": "新检索Little By Little Performance的匹配词来自其他歌/艺术家；此前棒球场表演属活动，不采用。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新检索Little By Little Performance的匹配词来自其他歌/艺术家；此前棒球场表演属活动，不采用。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyH5pz4ojC",
+      "queue": "new_stage",
+      "group": "PURPLE KISS",
+      "song": "Breath",
+      "originalTitle": "퍼플키스(PURPLE KISS) 'Breath' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/52"
+      },
+      "priorFinding": "PURPLE KISS官方OFFICIAL_VIDEO分类明确Breath MV、DOREMI Performance和巡演Spoiler为不同条目；Breath没有由本次搜索取得独立后备。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "PURPLE KISS官方OFFICIAL_VIDEO分类明确Breath MV、DOREMI Performance和巡演Spoiler为不同条目；Breath没有由本次搜索取得独立后备。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyH5pzA9lj",
+      "queue": "new_stage",
+      "group": "Rocket Punch",
+      "song": "ドキドキLOVE",
+      "originalTitle": "［M/V］Rocket Punch Japan 1st Full Album \"ドキドキLOVE\"",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/53"
+      },
+      "priorFinding": "新增具体节目路线：Lemino let me Know K-POP! S1E4、2023-05-18，GGuide重播表与Kstyle2220632均明确三首日本原曲中包含ドキドキLOVE。aw2hcpeRd08只是预告，未取得完整第一方单曲或合法可用节目章节。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新增具体节目路线：Lemino let me Know K-POP! S1E4、2023-05-18，GGuide重播表与Kstyle2220632均明确三首日本原曲中包含ドキドキLOVE。aw2hcpeRd08只是预告，未取得完整第一方单曲或合法可用节目章节。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyH5pzEDfw",
+      "queue": "new_stage",
+      "group": "IZ*ONE",
+      "song": "Buenos Aires",
+      "originalTitle": "IZ*ONE (아이즈원) - 'Buenos Aires' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/54"
+      },
+      "priorFinding": "新报道证实2019-06-01 NHK ShibuyaNote曾表演Buenos Aires；检索镜像1hCTF-tw2rA非官方。报道存在不等于当前完整版权方视频可用。",
+      "adoptedOrChanged": false,
+      "action": "continue_independent",
+      "reason": "有明确2019-06-02 NHK Shibuya Note节目和转载档案索引，旧官方限定已取消。可一次沿具体节目/现存镜像定位精确公开来源，不保证可播放及完整。",
+      "nextEvidence": "核2019-06-02或2019-06-21节目对应转载的精确媒体身份、实际范围及参与；如只有失效索引则转新证据触发，不反复泛搜。",
+      "concreteSourceUrls": [
+        "https://neotokyo2099.com/2019/06/03/izone-news-enozi-cam-ep-29-shibuya-note-izone-meets-little-glee-monster-radio-vlive-and-more/",
+        "https://www.nicozon.net/tag/IZ%EF%BC%8AONE/v/a/30"
+      ],
+      "guaranteedClosure": false,
+      "researchBudget": "One bounded review of the exact named sources; if still unverifiable, park without repeating generic searches."
+    },
+    {
+      "workId": "recvxyH5pzJov0",
+      "queue": "new_stage",
+      "group": "Weeekly",
+      "song": "Top Secret",
+      "originalTitle": "[MV] Weeekly(위클리) - 몰래몰래 (Filmed By Weeekly)",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/0"
+      },
+      "priorFinding": "本轮Top Secret韩英精确查询主要返回其他艺人同名内容、团体资料和演唱会线索；库存中没有已核可用的同曲常规打歌或完整官方练习。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "本轮Top Secret韩英精确查询主要返回其他艺人同名内容、团体资料和演唱会线索；库存中没有已核可用的同曲常规打歌或完整官方练习。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyH5pzQxpW",
+      "queue": "new_stage",
+      "group": "WOOAH",
+      "song": "SUMMER",
+      "originalTitle": "WOOAH - 'SUMMER' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/1"
+      },
+      "priorFinding": "SUMMER查询返回发行/MV报道、WOOAH目录与fan concert信息；尚无同曲合格原始表演上传。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "SUMMER查询返回发行/MV报道、WOOAH目录与fan concert信息；尚无同曲合格原始表演上传。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyH5pzVn2k",
+      "queue": "new_stage",
+      "group": "STAYC",
+      "song": "LIT",
+      "originalTitle": "STAYC(ステイシー) 'LIT' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/2"
+      },
+      "priorFinding": "LIT查询出现日本MV、访谈和发行介绍；仅有这些标题不能建立完整节目/练习来源。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "LIT查询出现日本MV、访谈和发行介绍；仅有这些标题不能建立完整节目/练习来源。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyH5pzZfyK",
+      "queue": "new_stage",
+      "group": "WOOAH",
+      "song": "Shining On You",
+      "originalTitle": "WOOAH (우아) - Shining on you Official M/V",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/3"
+      },
+      "priorFinding": "发现Shining on you Side B视频与原M/V、文化院项目介绍；Side B名称本身不能证明是音乐节目或完整练习。",
+      "adoptedOrChanged": false,
+      "action": "continue_independent",
+      "reason": "已有独立Side B精确视频2GNJuBVCz5E；旧分类未完成实际形态核验，且官方制作表演后备已允许。一次视觉/制作说明核验可给明确结果。",
+      "nextEvidence": "只核Side B是否艺人专门表演而非原MV重传/旅游宣传剪辑，并记录实际范围；不凭Side B名称采用。",
+      "concreteSourceUrls": [
+        "https://www.youtube.com/watch?v=2GNJuBVCz5E"
+      ],
+      "guaranteedClosure": false,
+      "researchBudget": "One bounded review of the exact named sources; if still unverifiable, park without repeating generic searches."
+    },
+    {
+      "workId": "recvxyH5pzbluu",
+      "queue": "new_stage",
+      "group": "STAYC",
+      "song": "MWUAH",
+      "originalTitle": "STAYC（ステイシー）'MWUAH' MV",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/4"
+      },
+      "priorFinding": "本轮MWUAH练习查询未取得新的合格来源；旧3LGQGtnxEEg已证是STAY ALIVE Showcase舞台彩排，不因Rehearsal题名改为练习室。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "本轮MWUAH练习查询未取得新的合格来源；旧3LGQGtnxEEg已证是STAY ALIVE Showcase舞台彩排，不因Rehearsal题名改为练习室。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyH5pzdckl",
+      "queue": "new_stage",
+      "group": "STAYC",
+      "song": "MEOW",
+      "originalTitle": "STAYC（ステイシー）'MEOW' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/5"
+      },
+      "priorFinding": "MEOW查询返回发行商目录、发行纪念活动和setlist；活动/曲目存在不等于已取得常规节目原片。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "MEOW查询返回发行商目录、发行纪念活动和setlist；活动/曲目存在不等于已取得常规节目原片。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyH5pzi1oo",
+      "queue": "new_stage",
+      "group": "IZ*ONE",
+      "song": "D-D-DANCE",
+      "originalTitle": "IZ*ONE (아이즈원) - D-D-DANCE Official Music Video",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/6"
+      },
+      "priorFinding": "本轮D-D-DANCE返回MV/音源资料；旧Universe活动及UNI-KON38秒片段不能转为合格全曲打歌。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "本轮D-D-DANCE返回MV/音源资料；旧Universe活动及UNI-KON38秒片段不能转为合格全曲打歌。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyH5pzoIOD",
+      "queue": "new_stage",
+      "group": "Weeekly",
+      "song": "Happy Christmas",
+      "originalTitle": "[MV] Weeekly(위클리) _ Happy Christmas",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/7"
+      },
+      "priorFinding": "YAOKI_official的243秒Happy Christmas Special Video已核元数据，Weeekly Weverse亦认领；官方性和时长已有依据，实际表演类型仍未证，不能直接称打歌/练习或反向断言没有舞台。",
+      "adoptedOrChanged": false,
+      "action": "continue_independent",
+      "reason": "Weverse仍可索引认领243秒YAOKI Special Video，已有具体片源xpH69uV9Ge0；旧仅因棚内制作而排除的理由已失效，实际形态可有限复核。",
+      "nextEvidence": "核是完整专门表演还是原MV同片重传；若为后者不增加重复舞台。如果可读仍不能判断，不循环索要人工看片。",
+      "concreteSourceUrls": [
+        "https://weverse.io/weeekly/media/0-109831625",
+        "https://www.youtube.com/watch?v=xpH69uV9Ge0"
+      ],
+      "guaranteedClosure": false,
+      "researchBudget": "One bounded review of the exact named sources; if still unverifiable, park without repeating generic searches."
+    },
+    {
+      "workId": "recvxyH5pzoaOZ",
+      "queue": "new_stage",
+      "group": "Weeekly",
+      "song": "Love",
+      "originalTitle": "[MV] Weeekly(위클리) _ Love(Weeekly X Kim Eana Project) (위클리 X 김이나 프로젝트)",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/9"
+      },
+      "priorFinding": "Love查询出现KBS广播歌单和Jihan/Park So Eun OST发行报道；广播播放不等于现场表演，不能推全团演出。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Love查询出现KBS广播歌单和Jihan/Park So Eun OST发行报道；广播播放不等于现场表演，不能推全团演出。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyH5pzrrSO",
+      "queue": "new_stage",
+      "group": "WOOAH",
+      "song": "WXW (Wish With W)",
+      "originalTitle": "WOOAH(우아) - ‘WXW(Wish With W)’ MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/10"
+      },
+      "priorFinding": "WXW查询主要是Bugs发行目录、项目报道与音源，尚未取得可采用的节目/练习原片。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "WXW查询主要是Bugs发行目录、项目报道与音源，尚未取得可采用的节目/练习原片。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyHuKM5r64",
+      "queue": "new_stage",
+      "group": "IVE",
+      "song": "Be Alright",
+      "originalTitle": "IVE 아이브 'Be Alright' MV",
+      "category": "原始发布或可访问性未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/12"
+      },
+      "priorFinding": "找到TBS CDTV歌曲档案Be Alright及节目报道线索；源库存尚无可审查的完整原上传。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "找到TBS CDTV歌曲档案Be Alright及节目报道线索；源库存尚无可审查的完整原上传。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyHuKMBHQA",
+      "queue": "new_stage",
+      "group": "aespa",
+      "song": "Get Goin'",
+      "originalTitle": "aespa X Fraggle Rock 'Get Goin'' MV (Apple TV+)",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/13"
+      },
+      "priorFinding": "Get Goin查询主要指Fraggle Rock OST发布与音源信息，未取得艺人本人同曲完整打歌/练习来源。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Get Goin查询主要指Fraggle Rock OST发布与音源信息，未取得艺人本人同曲完整打歌/练习来源。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyHuKMDFye",
+      "queue": "new_stage",
+      "group": "aespa",
+      "song": "Welcome To MY World (Feat. nævis)",
+      "originalTitle": "aespa 에스파 'Welcome To MY World (Feat. nævis)' MV",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/15"
+      },
+      "priorFinding": "Golden Disc官方K-909全景0TeYnotdeoE，236秒，节目及上传身份已有依据；尚未核nævis原客演声部是否完整对应目标feat版本。",
+      "adoptedOrChanged": false,
+      "action": "continue_independent",
+      "reason": "现有Golden Disc/JTBC K-909精确全景0TeYnotdeoE，旧主要卡nævis客串对应；用户允许成员版及新增同曲版本差异后备，值得按当前规则重审。",
+      "nextEvidence": "核该节目视频的本团实际参与、完整/节选和同曲身份；如客串声部不明则按实际证据标注，不能把未知写成已证成员版。",
+      "concreteSourceUrls": [
+        "https://www.youtube.com/watch?v=0TeYnotdeoE"
+      ],
+      "guaranteedClosure": false,
+      "researchBudget": "One bounded review of the exact named sources; if still unverifiable, park without repeating generic searches."
+    },
+    {
+      "workId": "recvxyHuKMNnpu",
+      "queue": "new_stage",
+      "group": "IVE",
+      "song": "SUMMER FESTA",
+      "originalTitle": "IVE 아이브 'SUMMER FESTA' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/17"
+      },
+      "priorFinding": "SUMMER FESTA本轮未出现可核同曲官方节目/完整练习，旧活动资料不自动符合新政策。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "SUMMER FESTA本轮未出现可核同曲官方节目/完整练习，旧活动资料不自动符合新政策。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyHuKMXVDa",
+      "queue": "new_stage",
+      "group": "aespa",
+      "song": "Regret of the Times (2024 aespa Remake Ver.)",
+      "originalTitle": "[STATION] aespa 에스파 'Regret of the Times (2024 aespa Remake Ver.)' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/18"
+      },
+      "priorFinding": "Regret of the Times重制版查询只出现发行报道；未核到2024 aespa Remake实际完整表演。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Regret of the Times重制版查询只出现发行报道；未核到2024 aespa Remake实际完整表演。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyHuKMZLFT",
+      "queue": "new_stage",
+      "group": "aespa",
+      "song": "KISS N TELL",
+      "originalTitle": "aespa エスパ 'KISS N TELL' MV",
+      "category": "原始发布或可访问性未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/19"
+      },
+      "priorFinding": "新增Bazurhythm02的KISS N TELL播出目录线索；旧905秒Dance Practice Behind The Scenes仍是幕后，不能当完整单曲练习。",
+      "adoptedOrChanged": false,
+      "action": "continue_independent",
+      "reason": "已有2026-09-12 Bazurhythm02明确节目线索；旧稿只允许完整一手片源，现转载可用。一次定向公开节目归档/镜像核验仍有有限可执行价值。",
+      "nextEvidence": "限定该期该曲，核当前可用非官方转载的精确身份、实际成员及范围；没有具体片源就停止重复检索。",
+      "concreteSourceUrls": [],
+      "guaranteedClosure": false,
+      "researchBudget": "One bounded review of the exact named sources; if still unverifiable, park without repeating generic searches."
+    },
+    {
+      "workId": "recvxyHuKMh5bM",
+      "queue": "new_stage",
+      "group": "IVE",
+      "song": "I WANT",
+      "originalTitle": "IVE 아이브 'I WANT' MV",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/20"
+      },
+      "priorFinding": "I WANT查询显著误命中STAYC I WANT IT；没有由这些检索结果证明的IVE I WANT常规节目原片。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "I WANT查询显著误命中STAYC I WANT IT；没有由这些检索结果证明的IVE I WANT常规节目原片。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5X0JJ9",
+      "queue": "new_stage",
+      "group": "i-dle",
+      "song": "Revenge",
+      "originalTitle": "(여자)아이들((G)I-DLE) - 'Revenge' Official Music Video",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/30"
+      },
+      "priorFinding": "Revenge本轮命中官方MV及MV新闻，未出现新的合格练习/常规节目；旧特殊活动不自动准入。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Revenge本轮命中官方MV及MV新闻，未出现新的合格练习/常规节目；旧特殊活动不自动准入。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5X1VFs",
+      "queue": "new_stage",
+      "group": "i-dle",
+      "song": "I Want That",
+      "originalTitle": "(여자)아이들((G)I-DLE) - 'I Want That' Official Music Video",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/31"
+      },
+      "priorFinding": "I Want That命中HEAT发行页、官方MV及Jingle Ball相关线索；未有已核常规节目/练习来源。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "I Want That命中HEAT发行页、官方MV及Jingle Ball相关线索；未有已核常规节目/练习来源。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5X6G1q",
+      "queue": "new_stage",
+      "group": "NMIXX",
+      "song": "Caution",
+      "originalTitle": "NMIXX, Anderson .Paak - Caution",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/33"
+      },
+      "priorFinding": "Caution查询返回NMIXX/Anderson .Paak发行、MV与社媒线索，未取得双方目标合作范围完整的合格表演。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Caution查询返回NMIXX/Anderson .Paak发行、MV与社媒线索，未取得双方目标合作范围完整的合格表演。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5X7Tw7",
+      "queue": "new_stage",
+      "group": "LE SSERAFIM",
+      "song": "FEARLESS (Japanese Ver.)",
+      "originalTitle": "LE SSERAFIM (르세라핌) 'FEARLESS -Japanese ver.-' OFFICIAL M/V",
+      "category": "原始发布或可访问性未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/34"
+      },
+      "priorFinding": "新增2023日本出道期CDTV及NHK全尺寸FEARLESS日版报道线索；源库存未取得可核完整官方视频。旧2022 CDTV韩版仍不能填日版。",
+      "adoptedOrChanged": false,
+      "action": "continue_independent",
+      "reason": "此前只尝试既有六人韩版复用，因目标日版五人而拒绝是正确保护；本次新搜到KBS 220603精确节目候选，可独立核五人时期韩版后备。",
+      "nextEvidence": "核vXX-_Yf1L1g或We_gyR-AmSA实际五名成员与节目范围，符合时明示韩语后备；不继承既有六人来源评分。",
+      "concreteSourceUrls": [
+        "https://www.youtube.com/watch?v=vXX-_Yf1L1g",
+        "https://www.youtube.com/watch?v=We_gyR-AmSA"
+      ],
+      "guaranteedClosure": false,
+      "researchBudget": "One bounded review of the exact named sources; if still unverifiable, park without repeating generic searches."
+    },
+    {
+      "workId": "recvxyOz5X9qGD",
+      "queue": "new_stage",
+      "group": "ITZY",
+      "song": "Like Magic",
+      "originalTitle": "J.Y. Park, Stray Kids, ITZY, NMIXX - \"Like Magic\" M/V",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/36"
+      },
+      "priorFinding": "Like Magic检索未取得原多艺人合作范围完整的合格表演；不能将单团挑战/广告制作内容当全合作舞台。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Like Magic检索未取得原多艺人合作范围完整的合格表演；不能将单团挑战/广告制作内容当全合作舞台。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5XFVzt",
+      "queue": "new_stage",
+      "group": "fromis_9",
+      "song": "Touchdown",
+      "originalTitle": "[MV] fromis_9(프로미스나인) _ Touchdown (The Winning Try : Original Television Soundtrack)",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/37"
+      },
+      "priorFinding": "查询附了치얼업词但结果实际指向SBS The Winning Try的2025 Touch Down OST；没有合格原片证据，错误剧名可能降低检索召回。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "查询附了치얼업词但结果实际指向SBS The Winning Try的2025 Touch Down OST；没有合格原片证据，错误剧名可能降低检索召回。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5XGYPC",
+      "queue": "new_stage",
+      "group": "i-dle",
+      "song": "Last Dance",
+      "originalTitle": "(여자)아이들 ((G)I-DLE) 'Last Dance (Prod. GroovyRoom)' Official Music Video",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/38"
+      },
+      "priorFinding": "Last Dance精确表演查询主要返回艺人视频目录，尚未定位合格官方完整练习或常规节目。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Last Dance精确表演查询主要返回艺人视频目录，尚未定位合格官方完整练习或常规节目。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5XQZhy",
+      "queue": "new_stage",
+      "group": "NewJeans",
+      "song": "Be Who You Are (Real Magic)",
+      "originalTitle": "Be Who You Are (Music Video) | Coke Studio | Jon Batiste, J.I.D, NewJeans, Cat Burns, Camilo",
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/42"
+      },
+      "priorFinding": "Be Who You Are检索定位Jon Batiste/JID/NewJeans/Camilo合作发行智能链接；没有同合作范围合格完整表演。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Be Who You Are检索定位Jon Batiste/JID/NewJeans/Camilo合作发行智能链接；没有同合作范围合格完整表演。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5XRfn5",
+      "queue": "new_stage",
+      "group": "NMIXX",
+      "song": "蜚蜚 (FEIFEI)",
+      "originalTitle": "NMIXX \"蜚蜚 (FEIFEI)\" M/V",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/43"
+      },
+      "priorFinding": "FEIFEI本轮返回官方MV及音源，旧活动/转载尚无合格替代；不能把MV本身重用为舞台评分来源。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "FEIFEI本轮返回官方MV及音源，旧活动/转载尚无合格替代；不能把MV本身重用为舞台评分来源。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5XlqWP",
+      "queue": "new_stage",
+      "group": "ITZY",
+      "song": "Boys Like You",
+      "originalTitle": "ITZY \"Boys Like You\" M/V ‪@ITZY‬",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/46"
+      },
+      "priorFinding": "Boys Like You本轮命中JYP官方发行及MV新闻，没有新的合格完整练习/常规节目，旧活动与转载仍不准入。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Boys Like You本轮命中JYP官方发行及MV新闻，没有新的合格完整练习/常规节目，旧活动与转载仍不准入。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5XmFwB",
+      "queue": "new_stage",
+      "group": "ITZY",
+      "song": "SUPERPOWERS",
+      "originalTitle": "[M/V] ITZY - SUPERPOWERS :: Strong Girl Nam-soon OST Part.1",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/47"
+      },
+      "priorFinding": "SUPERPOWERS精确查询未取得足以确认同曲常规节目/完整官方练习的原始来源。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "SUPERPOWERS精确查询未取得足以确认同曲常规节目/完整官方练习的原始来源。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5Xqy0Q",
+      "queue": "new_stage",
+      "group": "NMIXX",
+      "song": "MEXE",
+      "originalTitle": null,
+      "category": "参与者范围不符或未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/51"
+      },
+      "priorFinding": "Pabllo官方MEXE Dance Video kN9MY-QjJMQ 146秒，正文署名Pabllo及6位具名舞者，未据此证明NMIXX实际表演；标题同时列NMIXX是歌曲署名，不能推出成员出镜。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Pabllo官方MEXE Dance Video kN9MY-QjJMQ 146秒，正文署名Pabllo及6位具名舞者，未据此证明NMIXX实际表演；标题同时列NMIXX是歌曲署名，不能推出成员出镜。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5Xr917",
+      "queue": "new_stage",
+      "group": "NewJeans",
+      "song": "Beautiful Restriction",
+      "originalTitle": "NewJeans - Beautiful Restriction (아름다운 구속) | A Time Called You Special MV | Netflix",
+      "category": "未找到合格来源",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/52"
+      },
+      "priorFinding": "Beautiful Restriction本轮只有官方LIVE目录/社区询问等线索，无已核同曲全曲节目/练习来源；社区提问不是不存在的证明。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Beautiful Restriction本轮只有官方LIVE目录/社区询问等线索，无已核同曲全曲节目/练习来源；社区提问不是不存在的证明。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5XsgVc",
+      "queue": "new_stage",
+      "group": "NMIXX",
+      "song": "Sprinkle Party",
+      "originalTitle": "[MV] NMIXX - 스프링클 파티 (Sprinkle Party) [개비의 매직하우스 OST x NMIXX]",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/53"
+      },
+      "priorFinding": "Sprinkle Party本轮返回OST MV新闻和音源目录；MBC Party O’Clock是不同歌曲，不能误配。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Sprinkle Party本轮返回OST MV新闻和音源目录；MBC Party O’Clock是不同歌曲，不能误配。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5XueI9",
+      "queue": "new_stage",
+      "group": "LOONA",
+      "song": "LUMINOUS",
+      "originalTitle": "［MV］LOONA (今月の少女) \"LUMINOUS \"",
+      "category": "原始发布或可访问性未证",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/54"
+      },
+      "priorFinding": "LUMINOUS本轮有发行商目录，但既有INV0y_Cig7M官方身份仍未证；频道名LOONA与Posted by HyunJin说明不能替代原发布核验。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "LUMINOUS本轮有发行商目录，但既有INV0y_Cig7M官方身份仍未证；频道名LOONA与Posted by HyunJin说明不能替代原发布核验。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false,
+      "policyCaveat": "历史来源措辞不是当前准入规则；非官方转载或未知点赞本身不构成排除理由。当前仍需实际媒体身份/场合/参与证据。"
+    },
+    {
+      "workId": "recvxyOz5Xvsk1",
+      "queue": "new_stage",
+      "group": "Kep1er",
+      "song": "Sugar Rush",
+      "originalTitle": "Kep1er (케플러) - 'Sugar Rush’ Official Music Video",
+      "category": "场合或素材类型不符",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-b/research-ledger.json",
+        "pointer": "/records/55"
+      },
+      "priorFinding": "Sugar Rush命中两个官方MV条目及Challenge报道；短挑战/MV不是已核完整练习或常规节目。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Sugar Rush命中两个官方MV条目及Challenge报道；短挑战/MV不是已核完整练习或常规节目。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "rec28ldfRTrKy2",
+      "queue": "legacy_replacement",
+      "group": "ILLIT",
+      "song": "It's Me",
+      "originalTitle": "ILLIT (아일릿) 'It's Me' Official MV (Performance ver.)",
+      "category": "source_scope_unconfirmed",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/56"
+      },
+      "priorFinding": "Weverse官方Performance查询没有解决原el7A_SI7sxs60秒与完整发行/打歌148秒范围差。原作品稳定ID不改，不把完整后备当同范围。",
+      "adoptedOrChanged": false,
+      "action": "retire_requirement",
+      "reason": "目标是60秒Performance MV条目，完整歌曲条目和已采用的Music Bank舞台已独立存在；继续要求为这个短版再找严格同范围独立舞台，收益很低。",
+      "nextEvidence": "建议停止该短版必须另配舞台的验收要求，保留短版MV/原ID/评分/既有完整作品导航；若未来出现精确对应可重开。",
+      "recommendationOnly": true,
+      "deleteWorkOrRating": false
+    },
+    {
+      "workId": "rec28ldfRTrINH",
+      "queue": "legacy_replacement",
+      "group": "KiiiKiii",
+      "song": "딸기게임 (Strawberry Cheesegame)",
+      "originalTitle": "KiiiKiii 키키 '딸기게임 (Strawberry Cheesegame)' Official Lyric Video",
+      "category": "only_medley_or_event",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/57"
+      },
+      "priorFinding": "新Performance检索仍无完整Strawberry Cheesegame独立第一方影像；旧MIC DRIVE只有53秒章节及MBC年末串烧不足，不能因后备类型放宽忽略节选。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新Performance检索仍无完整Strawberry Cheesegame独立第一方影像；旧MIC DRIVE只有53秒章节及MBC年末串烧不足，不能因后备类型放宽忽略节选。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyHuKMDKAR",
+      "queue": "legacy_replacement",
+      "group": "aespa",
+      "song": "Switchblade (Feat. Ty Dolla $ign)",
+      "originalTitle": "aespa 에스파 'Switchblade (Feat. Ty Dolla $ign)' MV",
+      "category": "collaboration_and_source_unconfirmed",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/58"
+      },
+      "priorFinding": "Bugs/Melon官方授权目录把Switchblade MV与WDA Performance分列；搜索共现不构成Switchblade独立表演。原合作Ty Dolla $ign范围保护继续。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "Bugs/Melon官方授权目录把Switchblade MV与WDA Performance分列；搜索共现不构成Switchblade独立表演。原合作Ty Dolla $ign范围保护继续。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyHuKMEruy",
+      "queue": "legacy_replacement",
+      "group": "IVE",
+      "song": "Supernova Love",
+      "originalTitle": "IVE, David Guetta - Supernova Love Official Music Video",
+      "category": "version_and_source_unconfirmed",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/59"
+      },
+      "priorFinding": "新发行报道及IVE官方MV仍指fyk6vjwI3wc，未取得可对齐原154秒版本的独立表演；DavidGuetta歌词视频198秒不是舞台。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新发行报道及IVE官方MV仍指fyk6vjwI3wc，未取得可对齐原154秒版本的独立表演；DavidGuetta歌词视频198秒不是舞台。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxDMFHNojjN",
+      "queue": "legacy_replacement",
+      "group": "XG",
+      "song": "IS THIS LOVE",
+      "originalTitle": "XG - IS THIS LOVE (Official Music Video)",
+      "category": "official_archive_expired",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/61"
+      },
+      "priorFinding": "XGALX索引的XTRA #70为宣传幕后，没有完整单曲边界；旧CDTV9U3MPAYIZ0g已到期/受限，本轮不重试或绕过。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "XGALX索引的XTRA #70为宣传幕后，没有完整单曲边界；旧CDTV9U3MPAYIZ0g已到期/受限，本轮不重试或绕过。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyOz5Xr6ek",
+      "queue": "legacy_replacement",
+      "group": "NewJeans",
+      "song": "Cool With You / Get Up",
+      "originalTitle": "NewJeans (뉴진스) 'Cool With You' & 'Get Up' Official MV (side B)",
+      "category": "combined_target_unconfirmed",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/62"
+      },
+      "priorFinding": "新报道确认两支Cool With You练习，但每支不含完整Get Up；原sideB为连续两曲。MMA611秒练习仍未证不改编连续完整双曲章节。",
+      "adoptedOrChanged": false,
+      "action": "retire_requirement",
+      "reason": "目标是连续Cool With You＋Get Up双曲MV，而已知练习分属单曲。强求连续、同编配、同双曲范围的另一个视频属于结构性额外要求，不应阻碍主站完工。",
+      "nextEvidence": "建议退役必须匹配双曲连播舞台的要求；保留原MV/旧来源历史，可用单曲观看导航但不拼视频或迁移评分。",
+      "recommendationOnly": true,
+      "deleteWorkOrRating": false
+    },
+    {
+      "workId": "recvxyHuKMKGBh",
+      "queue": "legacy_replacement",
+      "group": "aespa",
+      "song": "Live My Life",
+      "originalTitle": "aespa 에스파 'Live My Life' MV",
+      "category": "only_behind_mv_or_event",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/63"
+      },
+      "priorFinding": "新检索官方授权视频目录确认Live My Life仅原MV，邻接Performance属于Armageddon等其他曲。Universe120秒仍短于整曲，tour behind926秒未有完整章节。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "新检索官方授权视频目录确认Live My Life仅原MV，邻接Performance属于Armageddon等其他曲。Universe120秒仍短于整曲，tour behind926秒未有完整章节。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    },
+    {
+      "workId": "recvxyHuKM2wRG",
+      "queue": "legacy_replacement",
+      "group": "IVE",
+      "song": "WAVE",
+      "originalTitle": "IVE 아이브 'WAVE' MV",
+      "category": "broadcast_exists_current_clip_unverified",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/65"
+      },
+      "priorFinding": "新增TV Asahi原始文章post-218906确认2023-05-26Music Station WAVE且说明日本原创曲；文章没有完整表演视频，也不能仅以六人团介绍证明REI实际出演。",
+      "adoptedOrChanged": false,
+      "action": "continue_independent",
+      "reason": "电视台原稿确认2023-05-26 WAVE节目；本次B站索引出现同日约3分钟条目，但落地页是另一视频的播放列表。可沿具体列表定位，不可直接绑定错误落地BV。",
+      "nextEvidence": "从节目日期和3分钟列表条目找到真正WAVE的BV/CID/P，核六人和完整日语版；保留旧评分保护。搜索结果BV1Gm4y1L7Xb是LOVE DIVE直拍，不能当候选本体。",
+      "concreteSourceUrls": [
+        "https://post.tv-asahi.co.jp/post-218906/",
+        "https://www.bilibili.com/video/BV1Gm4y1L7Xb/"
+      ],
+      "guaranteedClosure": false,
+      "researchBudget": "One bounded review of the exact named sources; if still unverifiable, park without repeating generic searches."
+    },
+    {
+      "workId": "recvxDMFHNSckK",
+      "queue": "legacy_replacement",
+      "group": "XG",
+      "song": "MILLION PLACES",
+      "originalTitle": "XG - MILLION PLACES (Official Music Video)",
+      "category": "official_archive_expired",
+      "sourceReview": {
+        "path": "docs/codex/evidence/20261028-post-v200/stages-a/research-ledger.json",
+        "pointer": "/records/66"
+      },
+      "priorFinding": "XGALX索引仍是MILLION PLACES巡演影像与宣传幕后；到期CDTVa8WdF6QdfFc不重试，MusicStation原档完整片源仍未取得。",
+      "adoptedOrChanged": false,
+      "action": "park_until_new_evidence",
+      "reason": "XGALX索引仍是MILLION PLACES巡演影像与宣传幕后；到期CDTVa8WdF6QdfFc不重试，MusicStation原档完整片源仍未取得。 当前没有尚未消耗的明确合格片源；继续重复相同检索不保证推进。不是判定该演出不存在。",
+      "nextEvidence": "收到新的具体节目/练习/合规制作表演公开片源，或足以核实当前版本/参与范围的新证据时再开；保留作品与既有评分。",
+      "recommendStopActiveRepeatedSearch": true,
+      "permanentAbsenceClaim": false
+    }
+  ],
+  "mutations": {
+    "formalSources": 0,
+    "privateWrites": 0,
+    "deployments": 0,
+    "filesWritten": [
+      "docs/codex/evidence/20261101-feasibility-audit/stages.json"
+    ]
+  }
+}

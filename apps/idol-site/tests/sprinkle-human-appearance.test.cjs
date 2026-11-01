@@ -8,7 +8,8 @@ const {memberWorks}=load('lib/idol/member-works.ts');
 const {PublicWorkCredits,MemberPublicCredits}=require('./helpers/shared-journal-dependency-loader.cjs').sharedJournalDependency('@/components/public-work-credits');
 const receipt=require('../../../docs/codex/evidence/20261030-sprinkle-human/sprinkle-public-adoption.json');
 const {beforeSprinkle}=require('./helpers/sprinkle-public-baseline.cjs');
-const credits=require('../data/public-work-credits.json'),recognition=require('../data/public-work-recognition.json');
+const {beforeCloseoutPublic}=require('./helpers/closeout-baseline.cjs');
+const credits=beforeCloseoutPublic('public-work-credits.json',require('../data/public-work-credits.json')),recognition=beforeCloseoutPublic('public-work-recognition.json',require('../data/public-work-recognition.json'));
 const snapshot=require('../data/snapshot.json');
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const mids=['recvxyICzHsxMe','recvxyICzHcw9e','recvxyICzH9IoY','recvxyICzHKyEb','recvxyICzHbCfX','recvxyICzHwrX4','recvxyICzHyM9P'];
@@ -24,7 +25,11 @@ test('complete public collection preimages and every protected private/source/or
   assert.throws(()=>beforeSprinkle(name,changed),/complete reviewed post-Sprinkle/);
  }
  assert.equal(recognition.records.reduce((n,r)=>n+r.portraits.length,0),553);
- for(const [name,sha] of Object.entries(receipt.protectedFiles))assert.equal(hash(fs.readFileSync(path.join(__dirname,'..',name))),sha,name);
+ for(const [name,sha] of Object.entries(receipt.protectedFiles)){
+  let bytes=fs.readFileSync(path.join(__dirname,'..',name));
+  if(name==='data/stage-videos.json'||name==='data/stages/status.json')bytes=Buffer.from(JSON.stringify(require('./helpers/same-song-adoption-baseline.cjs').beforeSameSongAdoption(name==='data/stage-videos.json'?'stageVideos':'stageStatuses',JSON.parse(bytes)),null,2)+'\n');
+  assert.equal(hash(bytes),sha,name);
+ }
  assert.equal(receipt.newPrivateRelations,0);assert.equal(receipt.newImageFiles,0);assert.equal(receipt.newFormalStages,0);
 });
 

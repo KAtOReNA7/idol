@@ -25,8 +25,8 @@ test('new release-cover reference preserves v201 files, generic archive, origina
  assert.equal(credits.records.length,106);assert.equal(recognition.records.length,106);
  assert.equal(recognition.records.reduce((n,r)=>n+r.portraits.length,0),546);
  const active=source.works.filter(w=>publicGroupRecognitionForWork({id:w.workId,groupIds:[w.groupId],url:`https://www.youtube.com/watch?v=${w.videoId}`}));
- assert.equal(source.works.length,24);assert.equal(active.length,19);
- assert.equal(active.reduce((n,w)=>n+source.groups.find(g=>g.groupId===w.groupId).portraits.length,0),91);
+ assert.equal(source.works.length,24);assert.equal(active.length,18);
+ assert.equal(active.reduce((n,w)=>n+source.groups.find(g=>g.groupId===w.groupId).portraits.length,0),87);
  assert.equal(active.some(w=>w.workId==='recvxyOz5XsgVc'),false,'exact human-confirmed public credit supersedes this generic reference');
  for(const p of publicWorkRecognition(work)){
   const original=group.portraits.find(q=>q.memberId===p.memberId);

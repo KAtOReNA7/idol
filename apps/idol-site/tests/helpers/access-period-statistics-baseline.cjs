@@ -13,6 +13,7 @@ function beforeAccessStatistics(current){
  assert.equal(sha(out),pins.statistics.before,'complete ACCESS statistics preimage');return out;
 }
 function beforeAccessGuard(current){
+ if(sha(current)!==pins.guard.before)current=require('./closeout-baseline.cjs').beforeCloseoutGuard(current);
  assert.equal(guard.beforeFileSha256,pins.guard.before);assert.equal(guard.afterFileSha256,pins.guard.after);
  assert.equal(sha(guard.before),pins.guard.before,'complete ACCESS guard receipt preimage');assert.equal(sha(guard.after),pins.guard.after,'complete ACCESS guard receipt after-file');
  const out=structuredClone(current);if(sha(out)===pins.guard.before){assert.deepEqual(out,guard.before);return out;}

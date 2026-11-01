@@ -2,7 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{createHash}=require('node:crypto');
 const load=require('./helpers/public-artist-loader.cjs');
 const {beforeAccessStatistics,beforeAccessGuard,receipt,guard:guardReceipt,sha}=require('./helpers/access-period-statistics-baseline.cjs');
-const current=require('../data/group-statistics-completion-evidence.json'),manifest=require('../scripts/udtt-private-build-assets-manifest.json');
+const current=require('../data/group-statistics-completion-evidence.json'),manifest=require('./helpers/closeout-baseline.cjs').beforeCloseoutGuard(require('../scripts/udtt-private-build-assets-manifest.json'));
 const research=require('../../../docs/codex/evidence/20261030-access-period-lower-bound/research.json');
 const root=path.resolve(__dirname,'..'),sales=current.groups.triples.sales,e=sales.evidence,period=e.releasePeriodLowerBoundReplacements[0];
 const bytesSha=bytes=>createHash('sha256').update(bytes).digest('hex'),sum=(rows,key)=>rows.reduce((n,row)=>n+row[key],0);
@@ -11,7 +11,7 @@ test('ACCESS restores complete statistics and manifest preimages, rejects unrela
  const before=beforeAccessStatistics(current);assert.equal(sha(before),receipt.beforeFileSha256);assert.deepEqual(before.groups.triples.sales,receipt.change.before);assert.deepEqual(beforeAccessStatistics(before),before);
  const oldManifest=beforeAccessGuard(manifest);assert.equal(sha(oldManifest),guardReceipt.beforeFileSha256);assert.deepEqual(beforeAccessGuard(oldManifest),oldManifest);
  for(const edit of [d=>d.groups.ive.sales.observedValue++,d=>d.groups.triples.sales.evidence.releasePeriodLowerBoundReplacements[0].netDelta++]){const changed=structuredClone(current);edit(changed);assert.throws(()=>beforeAccessStatistics(changed),/complete ACCESS statistics after-file/);}
- const changed=structuredClone(manifest);changed.runtimeGuards['data/timeline-reported-records.json'].sha256='0'.repeat(64);assert.throws(()=>beforeAccessGuard(changed),/complete ACCESS guard after-file/);
+ const changed=structuredClone(manifest);changed.runtimeGuards['data/timeline-reported-records.json'].sha256='0'.repeat(64);assert.throws(()=>beforeAccessGuard(changed),/complete (?:ACCESS guard after-file|closeout guard)/);
  assert.equal(sha(require('./helpers/priority-statistics-baseline.cjs').beforePriorityStatistics(current)),require('../../../docs/codex/evidence/20261030-priority-crosscheck/statistics-adoption.json').beforeFileSha256);
 });
 
@@ -51,5 +51,5 @@ test('original36 months,13 weeks,two annual and two cumulative replacements, cut
 test('the single current runtime pin and public card expose2118570 with340219 still unresolved and preserve personal input',()=>{
  const bytes=fs.readFileSync(path.join(root,'data/group-statistics-completion-evidence.json'));assert.equal(bytesSha(bytes),receipt.afterFileSha256);assert.deepEqual(manifest.runtimeGuards['data/group-statistics-completion-evidence.json'],{bytes:bytes.length,sha256:bytesSha(bytes)});assert.deepEqual(guardReceipt.changedPins,['data/group-statistics-completion-evidence.json']);
  const now=structuredClone(manifest),prior=structuredClone(guardReceipt.before);delete now.runtimeGuards['data/group-statistics-completion-evidence.json'];delete prior.runtimeGuards['data/group-statistics-completion-evidence.json'];assert.deepEqual(now,prior);
- const api=load('lib/idol/group-information.mjs'),input={note:'PRIVATE_ACCESS_CANARY',watched:true,average:9},before=structuredClone(input),model=api.groupInformationModel('triples',input),html=api.renderGroupInformation('triples',input);assert.equal(model.sales.observedValue,2118570);assert.equal(model.sales.observedValue,receipt.lowerBound);assert.equal(model.sales.lowerBound,true);assert.match(html,/<strong>2,118,570<em>张<\/em><\/strong>/);assert.match(html,/340,219/);assert.match(html,/来源差异继续开放/);assert.match(html,/不是全球完整累计/);assert.doesNotMatch(html,/PRIVATE_ACCESS_CANARY|<input|<form/);assert.deepEqual(input,before);
+ const api=load('lib/idol/group-information.mjs'),input={note:'PRIVATE_ACCESS_CANARY',watched:true,average:9},before=structuredClone(input),model=api.groupInformationModel('triples',input),html=api.renderGroupInformation('triples',input);assert.equal(model.sales.observedValue,2118570);assert.equal(model.sales.observedValue,receipt.lowerBound);assert.equal(model.sales.lowerBound,true);assert.match(html,/<strong>2,118,570<em>张<\/em><\/strong>/);assert.match(html,/按用户决定不再追查/);assert.doesNotMatch(html,/来源差异继续开放/);assert.match(html,/不是全球完整累计/);assert.doesNotMatch(html,/PRIVATE_ACCESS_CANARY|<input|<form/);assert.deepEqual(input,before);
 });

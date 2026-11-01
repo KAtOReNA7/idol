@@ -3,7 +3,7 @@ Usage: python3 scripts/merge-stage-batch.py EVIDENCE_JSON FRESH_PRIVATE_EXPORT_J
 Rated, saved or uncertain bindings are retained. Documented replacements require
 a fresh empty score, complete journal and exact published source preimage.
 """
-import json,sys,datetime,pathlib,re,hashlib
+import json,sys,datetime,pathlib,re,hashlib,base64
 from stage_selection_policy import checked_selection, comparison_candidates, replacement_preference, checked_member_fallback, checked_same_song_fallback, version_eligible, checked_comparison
 from stage_source_identity import SOURCE_CLASSES, source_key, checked_identity, checked_likes, comparison_group
 root=pathlib.Path(__file__).resolve().parent.parent
@@ -37,6 +37,26 @@ def shares_same_song_source_root(rid,source,other_id,other,inventory,sources):
  if any(original.get(field) not in (None,current['performerScope']) for field in ('performerScope','originalPerformerScope')):return False
  return True
 batch=load(sys.argv[1]);fresh=load(sys.argv[2]);assert batch['formatVersion']=='idol.stage-evidence.v1'
+if fresh.get('formatVersion')=='idol.stage-preflight-envelope.v1':
+ # Transport checksum detects truncated/altered tool output, not a signature.
+ # Only use the actual authenticated owner tool response, never a constructed one.
+ raw=base64.b64decode(fresh['payloadBase64'],validate=True)
+ assert len(raw)==fresh['byteLength'] and len(raw)<=16000 and hashlib.sha256(raw).hexdigest()==fresh['sha256'],'Incomplete or altered owner preflight envelope'
+ check=json.loads(raw)
+ assert check.get('formatVersion')=='idol.stage-owner-preflight.v1' and check.get('source')=='native' and check.get('complete') is True,'Incomplete owner preflight'
+ ids=check.get('workIds');assert isinstance(ids,list) and 1<=len(ids)<=5 and all(isinstance(i,str) and re.fullmatch(r'rec[A-Za-z0-9]+',i) for i in ids) and len(set(ids))==len(ids),'Invalid preflight target scope'
+ assert set(ids)=={i['recordId'] for i in batch['items']},'Preflight must cover exactly this prepared batch'
+ rows=check.get('works');assert isinstance(rows,list) and len(rows)==len(ids) and {r.get('recordId') for r in rows}==set(ids) and all(type(r.get('scoreEmpty')) is bool for r in rows),'Incomplete preflight score checks'
+ journal_check=check.get('journalCheck',{});matches=journal_check.get('matches')
+ assert journal_check.get('complete') is True and type(journal_check.get('totalRows')) is int and journal_check['totalRows']>=0 and isinstance(matches,list) and len(matches)<=journal_check['totalRows'],'Incomplete journal scan'
+ assert all(isinstance(r,dict) and r.get('record_id') in ids and isinstance(r.get('table_key'),str) and r['table_key'] and isinstance(r.get('status'),str) and r['status'] for r in matches),'Invalid scoped journal matches'
+ sources=check.get('stageVideos');assert isinstance(sources,dict) and set(sources)==set(ids) and all(s is None or isinstance(s,dict) for s in sources.values()),'Incomplete published source checks'
+ assert len(sys.argv)==3,'Do not override an authenticated preflight journal'
+ # Explicit scoped adapter. Nonempty (including 0) is never interpreted as empty;
+ # all journal statuses/tables for each target remain blocking, as with full export.
+ fresh={'source':'native','formatVersion':'idol.native-data-export.v1','capturedAt':check['capturedAt'],
+  'tables':{'works':{'fields':[{'field_id':'fld641ausT'}],'records':[{'recordId':r['recordId'],'fields':{'fld641ausT':None if r['scoreEmpty'] else '__NONEMPTY_OWNER_SCORE__'}} for r in rows]}},
+  'journal':matches,'siteMetadata':{'stageVideos':{i:s for i,s in sources.items() if s is not None}}}
 assert (fresh.get('source'),fresh.get('formatVersion')) in {
  ('feishu','idol.live-backup.v1'),('native','idol.native-data-export.v1')
 },'Use an authenticated original export; never relabel a snapshot or public projection'

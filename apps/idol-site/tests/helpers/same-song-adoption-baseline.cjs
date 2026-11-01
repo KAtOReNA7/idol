@@ -15,6 +15,8 @@ function hasSameSongAdoption(kind,current){
  return targetIds.some(id=>kind==='stageVideos'?Object.hasOwn(current,id):current.works?.[id]?.status==='verified');
 }
 function beforeSameSongAdoption(kind,current){
+ const crush=require('./crush-adoption-baseline.cjs');
+ if(hash(current)===crush.receipt.after[paths[kind]].sha256)current=crush.beforeCrush(kind,current);
  assert.ok(paths[kind],'known stage adoption document kind');
  const gnarly=require('./gnarly-adoption-baseline.cjs');
  if(hash(current)===gnarly.receipt.after[paths[kind]].sha256)current=gnarly.beforeGnarly(kind,current);

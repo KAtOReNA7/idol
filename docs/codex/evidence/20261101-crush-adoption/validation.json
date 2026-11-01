@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-01",
+  "uniqueTests": 69,
+  "passed": 69,
+  "failed": 0,
+  "method": "Final 12-file combined run; 69 tests passed, no skips",
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "stageValidator": {
+    "sources": 527,
+    "inventory": 614,
+    "valid": true
+  },
+  "udttExactAssetAudit": "passed",
+  "newLivePreflightTested": false,
+  "fullBilibiliPlaybackTested": false,
+  "ownerSaveTested": false,
+  "deployment": false,
+  "testCommand": [
+    "node",
+    "--test",
+    "tests/stage-owner-preflight.test.cjs",
+    "tests/crush-prepared-20261101.test.cjs",
+    "tests/crush-adoption-20261101.test.cjs",
+    "tests/gnarly-adoption-20261101.test.cjs",
+    "tests/gnarly-prepared-20261101.test.cjs",
+    "tests/research-closeout-20261101.test.cjs",
+    "tests/same-song-stage-adoption-20261030.test.cjs",
+    "tests/same-song-stage-fallback.test.cjs",
+    "tests/mcp-protocol.test.cjs",
+    "tests/native-storage.test.cjs",
+    "tests/x-stage-source.test.cjs",
+    "tests/stage-selection-policy.test.mjs"
+  ],
+  "sourceSha256": {
+    "lib/idol/stage-owner-preflight.ts": "c8b88fd7e3fb168235ce21566e197dcbea00e807ff535552468ed9d9c8c9dac8",
+    "lib/idol/site-tools.ts": "38ba036ec52526fbeb48cba8d45104613f91e3209145ea0ddba80d0cd85ec1e7",
+    "scripts/merge-stage-batch.py": "901353086474ebdf097e37503d1421252493fd3536af72cbc9b1b4d52f2aceea"
+  }
+}

@@ -1,12 +1,20 @@
 # 跨电脑接续：正式v203，PR47最新分支
 
+## 最新：CRUSH已采用，评分核对改为批量实时工具（2026-11-01，未部署）
+
+CRUSH已用真实owner导出80.55秒内采用with MUSIC独立P2：BV1JctKeyEgw／CID25864110751／P2，替换旧音乐节crGAr4NQRa4。完整日语六人及独立P2已确认，不再要本次备份或看片。用户后来给P1 CID25859329666仅留证，不使用P1区间、不再问P1总长。其余526来源、旧binding历史、私人记录保持，私人写入0；新P2无专属封面，不误绑旧图。
+
+用户明确要求停止逐步索要导出。新增owner只读MCP工具idol_stage_owner_preflight及严格导入支持：先集中准备并测试，再一次核对1–5目标，立即整批导入；0分、保存日志、旧前像及300／900秒保护不放宽。只返回目标评分空值状态、日志匹配与线上来源，不导出全部私人字段。SHA封装防截断，不是签名，只能用真实鉴权响应。正式v203尚无新工具，本轮不部署；后续获准发布并实测后才称在线自动化可用。发布前也先集中批次再核对，不能边开发边让用户反复下载。详见docs/codex/STAGE-OWNER-PREFLIGHT.md。
+
+当前527本地舞台／30专项封面／108资料作品557槽，正式v203／500不变。剩110分类＝78新增＋9旧替换＋23完整人物。统计日期收口、tripleS差额退休、旧批次保持。69项唯一定向、类型、构建、527来源与UDTT精确素材审计通过；未做新线上工具调用／真实保存／B站全片独立播放。队列与回执docs/codex/evidence/20261101-crush-adoption/；报告docs/codex/crush-and-owner-preflight-20261101.md。GitHub交付另记，不等于部署。以下CRUSH待备份／111分类等是历史前态。
+
 ## 最新采用：Gnarly已替换，剩111分类（2026-11-01，未部署）
 
 用户提供新owner导出后77.87秒完成严格采用：Gnarly由Lollapalooza旧Rz47IBr1GXM换为官方练习室xrm7PP1mbtI。完整六人／同音轨已人工确认，不再问看片或备份。614作品、206条done日志无目标、空分不含0、全部500线上前像与已审来源一致；其余526本地对象不变，旧来源和binding完整留previousSources，私人写入0。备份只留本机，不入GitHub。
 
 另补新视频1280×720官方原封面，原字节／原旧封面保持；仅精确workId＋videoId＋stage匹配。当前527本地舞台、30专项封面、108公开作品557槽；正式仍v203／500，不部署。剩111分类＝78新增＋10旧替换＋23完整人物。统计／日期已按用户要求收口，tripleS差额退休；这些决定保持，不重复旧批次。
 
-最新队列和保护回执docs/codex/evidence/20261101-gnarly-adoption/，报告gnarly-adoption-20261101.md。同日closeout目录的prepared/待备份/112项是冻结前态，不覆盖本节。IVE CRUSH的with MUSIC转载BV1JctKeyEgw读取412，已请求用户确认完整日语六人及区间或分P；尚未采用，不预减数。XG odsWuDnvyK8核实为GPAP1025第三方解说，非官方CDTV原片，已排除。后续新换绑仍需当时新鲜owner保护，不能重用本次时间。GitHub与正式发布分别留证。
+最新队列和保护回执docs/codex/evidence/20261101-gnarly-adoption/，报告gnarly-adoption-20261101.md。同日closeout目录的prepared/待备份/112项是冻结前态，不覆盖本节。IVE CRUSH已获完整日语六人及同场独立P2确认，精确身份BV1JctKeyEgw／CID25864110751／P2；候选与两项保护测试通过，待300秒内新owner导出，尚未采用，111不预减数。P1的3:31–6:54仅留证，不作绑定。见20261101-crush-preparation，勿再问看片。XG odsWuDnvyK8核实为GPAP1025第三方解说，非官方CDTV原片，已排除。后续新换绑仍需当时新鲜owner保护，不能重用本次时间。GitHub与正式发布分别留证。
 
 ## 最新收口：统计／日期任务归零，Gnarly待评分保护（2026-11-01，未部署）
 

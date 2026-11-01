@@ -10,7 +10,7 @@ function temporary(fn){const temp=fs.mkdtempSync(path.join(os.tmpdir(),'idol-sam
 function normalize(selected,candidates=[selected],recordId=workId){
  return temporary(temp=>{const input=path.join(temp,'reviewed.json');fs.writeFileSync(input,JSON.stringify({checkedAt:now,items:[{recordId,status:'verified',selected,candidates,reason:'Synthetic reviewed candidate set',checkedAt:now}]}));return cp.spawnSync('python',['scripts/normalize-stage-patch.py',input],{cwd:root,env,encoding:'utf8'});});
 }
-function merge(batch,{previous,score=null,journal=[],capturedAt=now,published,omitSchema=false,sourceWork,additionalWorks=[],additionalVideos={},scores={}}={}){
+function merge(batch,{previous,score=null,journal=[],capturedAt=now,published,omitSchema=false,sourceWork,additionalWorks=[],additionalVideos={},scores={},transformExport=x=>x}={}){
  return temporary(temp=>{
   fs.mkdirSync(path.join(temp,'scripts'),{recursive:true});fs.mkdirSync(path.join(temp,'data/stages'),{recursive:true});
   for(const f of ['merge-stage-batch.py','stage_selection_policy.py','stage_source_identity.py'])fs.copyFileSync(path.join(root,'scripts',f),path.join(temp,'scripts',f));
@@ -22,7 +22,7 @@ function merge(batch,{previous,score=null,journal=[],capturedAt=now,published,om
   if(new Set(inventory.map(w=>w.recordId)).size!==inventory.length)throw new Error('Duplicate synthetic inventory work');
   write('data/stages/inventory.json',{works:inventory});write('data/stages/status.json',{inventoryCount:inventory.length,works:Object.fromEntries(inventory.map(w=>[w.recordId,{status:videos[w.recordId]?'verified':'pending',reason:'Synthetic',checkedAt:now}]))});write('data/stage-videos.json',videos);
   const before=fs.readFileSync(path.join(temp,'data/stage-videos.json'));write('batch.json',batch);
-  write('fresh.json',{source:'native',formatVersion:'idol.native-data-export.v1',capturedAt,tables:{works:{fields:omitSchema?[]:[{field_id:'fld641ausT'}],records:inventory.map(w=>({recordId:w.recordId,fields:{fld641ausT:Object.hasOwn(scores,w.recordId)?scores[w.recordId]:w.recordId===workId?score:null}}))}},journal,siteMetadata:{stageVideos:published??videos}});
+  write('fresh.json',transformExport({source:'native',formatVersion:'idol.native-data-export.v1',capturedAt,tables:{works:{fields:omitSchema?[]:[{field_id:'fld641ausT'}],records:inventory.map(w=>({recordId:w.recordId,fields:{fld641ausT:Object.hasOwn(scores,w.recordId)?scores[w.recordId]:w.recordId===workId?score:null}}))}},journal,siteMetadata:{stageVideos:published??videos}}));
   const protectedFiles=['data/stage-videos.json','data/stages/status.json','data/stages/inventory.json','fresh.json'];
   const readProtected=()=>Object.fromEntries(protectedFiles.map(f=>[f,fs.readFileSync(path.join(temp,f))]));const beforeFiles=readProtected();
   const result=cp.spawnSync('python',[path.join(temp,'scripts/merge-stage-batch.py'),path.join(temp,'batch.json'),path.join(temp,'fresh.json')],{cwd:temp,env,encoding:'utf8'});

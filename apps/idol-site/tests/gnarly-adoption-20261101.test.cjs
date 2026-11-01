@@ -1,7 +1,8 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{createHash}=require('node:crypto');
 const {beforeGnarly,receipt,hash}=require('./helpers/gnarly-adoption-baseline.cjs');
 const load=require('./helpers/public-artist-loader.cjs'),root=path.resolve(__dirname,'..');
-const stages=require('../data/stage-videos.json'),statuses=require('../data/stages/status.json');
+const {beforeCrush}=require('./helpers/crush-adoption-baseline.cjs');
+const stages=beforeCrush('stageVideos',require('../data/stage-videos.json')),statuses=beforeCrush('stageStatuses',require('../data/stages/status.json'));
 const source=load('lib/idol/stage-source.ts'),rid=receipt.workId;
 
 test('Gnarly replacement restores complete prior 527-source collections and rejects any unrelated edit',()=>{

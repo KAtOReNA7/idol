@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-01",
+  "userRequest": "Stop repeated step-by-step manual backup requests; improve efficiency.",
+  "implementedTool": "idol_stage_owner_preflight",
+  "authentication": "Existing MCP requireUser plus native owner control; unchanged owner allowlist",
+  "access": "No new public route or permission change",
+  "readOnly": true,
+  "scope": "1-5 exact work IDs; score emptiness, complete-journal target matches and published bindings",
+  "replacementMaxAgeSeconds": 300,
+  "newSourceMaxAgeSeconds": 900,
+  "responseLimitBytes": 16000,
+  "checksum": "SHA256 over original payload bytes, integrity only, not authentication",
+  "privateWrites": 0,
+  "nativeMigrationOrFreeze": false,
+  "localVerified": true,
+  "productionAvailable": false,
+  "productionVersion": 203,
+  "nextAction": "Batch preparation first. After separately authorized deployment, verify live owner and denial responses before using tool for real imports. Never repeat CRUSH/Gnarly export request."
+}

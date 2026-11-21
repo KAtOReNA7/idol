@@ -4,12 +4,12 @@ import {requestedArtist,projectArtistCatalog} from '@/lib/idol/artist-catalog';
 import {findDetailWork,projectWorkCatalog} from '@/lib/idol/work-catalog';
 import {preferredDetailWork} from '@/lib/idol/work-catalog-request';
 import {projectBrowserCatalog,requestedBrowserCatalog,withoutStageCandidates} from '@/lib/idol/browser-catalog';
-import {ownControl,assertSourceUnchanged} from '@/lib/idol/native-storage';
-import {readNativeCatalog} from '@/lib/idol/native-reader';
+import {assertSourceUnchanged} from '@/lib/idol/native-storage';
+import {withNativeCatalog} from '@/lib/idol/native-reader';
 import {personalMvRatingsForOwner} from '@/lib/idol/personal-mv-ratings';
 import {getReadableCatalog} from '@/lib/idol/durable-catalog';
 import {json,failure} from '@/lib/idol/http';
-import type {CatalogView} from '@/lib/idol/types';
+import type {Catalog,CatalogView,PersonalMvRatings,Work} from '@/lib/idol/types';
 export const dynamic='force-dynamic';
 
 function displayResponse(request:Request, catalog:CatalogView) {
@@ -34,13 +34,20 @@ export async function GET(request:Request) {
   const params = new URL(request.url).searchParams;
   const artist = requestedArtist(params), browserView = requestedBrowserCatalog(params);
   const requestedWork=browserView&&!artist?preferredDetailWork(request.headers.get('Prefer')):null;
-  const before = await ownControl(user.userId);
   const force = ['1','background'].includes(params.get('refresh') ?? '');
-  const native = await readNativeCatalog(user.userId, force);
-  const result = native ?? await getReadableCatalog(user.userId, force);
-  const work=findDetailWork(result,requestedWork);
-  const personal = native && browserView ? await personalMvRatingsForOwner(user.userId,before,result,work?.id) : undefined;
-  await assertSourceUnchanged(user.userId, before);
+  const native = await withNativeCatalog(user.userId, force, async (result,control) => {
+   const work = findDetailWork(result,requestedWork);
+   const personal = browserView ? await personalMvRatingsForOwner(user.userId,control,result,work?.id) : undefined;
+   return {result,work,personal};
+  });
+  let selection: {result:Catalog; work:Work|null; personal?:PersonalMvRatings};
+  if (native.native) selection=native.value;
+  else {
+   const result = await getReadableCatalog(user.userId, force);
+   await assertSourceUnchanged(user.userId, native.state);
+   selection={result,work:findDetailWork(result,requestedWork)};
+  }
+  const {result,work,personal}=selection;
   const scoped = artist ? projectArtistCatalog(result, artist, personal?.entries) : work ? projectWorkCatalog(result,work,personal?.entries) : result;
   if (!browserView) return json(scoped);
   const view=projectBrowserCatalog(scoped);

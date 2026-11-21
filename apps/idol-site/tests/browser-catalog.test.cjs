@@ -30,7 +30,7 @@ test('artist scoping/order and null/zero semantics remain exactly as input',()=>
 test('reduction is only after owner/source fencing and artist selection, never in writes or backup',async()=>{
  const h=routeHarness();
  await h.read('?artist=ive&shape=display-v1');
- assert.deepEqual(h.model.projectedAfter,[['auth','control:owner','native:false','fence','artist:ive']]);
+ assert.deepEqual(h.model.projectedAfter,[['auth','native:owner:false','native-fence','artist:ive']]);
  h.model.drift=true;
  const rejected=await h.read('?shape=display-v1',{Prefer:'omit-stage-candidates'});
  assert.equal(rejected.status,409);
@@ -51,8 +51,15 @@ function routeHarness(){
   '@/lib/idol/work-catalog':workExports,'@/lib/idol/work-catalog-request':workRequest,
   '@/lib/idol/browser-catalog':{projectBrowserCatalog:data=>{model.projectedAfter.push([...model.calls]);return projectBrowserCatalog(data);},requestedBrowserCatalog,withoutStageCandidates},
   '@/lib/idol/artist-catalog':{requestedArtist:p=>p.get('artist'),projectArtistCatalog:(d,artist)=>{model.calls.push('artist:'+artist);return {...d,scope:{type:'artist',groupId:artist}};}},
-  '@/lib/idol/native-storage':{ownControl:async u=>{model.calls.push('control:'+u);return {epoch:6};},assertSourceUnchanged:async()=>{model.calls.push('fence');if(model.drift)throw new AppError('STORAGE_CHANGING','changed',409);}},
-  '@/lib/idol/native-reader':{readNativeCatalog:async(u,force)=>{model.calls.push('native:'+force);return model.native?model.data:null;}},
+  '@/lib/idol/native-storage':{assertSourceUnchanged:async(u,state)=>{assert.equal(u,'owner');assert.equal(state.epoch,6);model.calls.push('fallback-fence');if(model.drift)throw new AppError('STORAGE_CHANGING','changed',409);}},
+  '@/lib/idol/native-reader':{withNativeCatalog:async(u,force,read)=>{
+   model.calls.push('native:'+u+':'+force);
+   if(!model.native)return {native:false,state:{epoch:6}};
+   const value=await read(model.data,{mode:'native',epoch:6});
+   model.calls.push('native-fence');
+   if(model.drift)throw new AppError('STORAGE_CHANGING','changed',409);
+   return {native:true,value};
+  }},
   '@/lib/idol/durable-catalog':{getReadableCatalog:async(u,force)=>{model.calls.push('fallback:'+force);return model.data;}},
   '@/lib/idol/http':{requireUser:async()=>{model.calls.push('auth');if(model.deny)throw new AppError('OWNER_ONLY','owner',403);return {userId:'owner'};},json:d=>new Response(JSON.stringify(d),{headers:{'Cache-Control':'private, no-store'}}),failure:e=>new Response(JSON.stringify({error:e.code}),{status:e.status??500})},
  };
@@ -141,7 +148,7 @@ test('only opted-in library and artist views omit comparison rows and preserve e
  }
 });
 test('old tab requests still receive full evidence, new and old response photo outcomes agree',async()=>{const h=routeHarness(),old=await h.read(''),slim=await h.read('?shape=display-v1');assert.equal(old.headers.get('Cache-Control'),'private, no-store');const a=await old.json(),b=await slim.json();assert.equal(a.ratings[0].recognition,h.model.data.ratings[0].recognition);assert.equal(a.ratings[0].source,h.model.data.ratings[0].source);assert.equal('personalPhotoEligible' in a.ratings[0],false);assert.equal('recognition' in b.ratings[0],false);assert.equal(b.ratings[0].personalPhotoEligible,true);assert.deepEqual(plain(personalMvPhoto(a.ratings[0],'m','w')),plain(personalMvPhoto(b.ratings[0],'m','w')));});
-test('artist and refresh combinations keep their original scopes, force flags and source fences',async()=>{for(const shape of ['', '&shape=display-v1'])for(const refresh of ['1','background']){const h=routeHarness(),r=await h.read('?artist=ive&refresh='+refresh+shape),d=await r.json();assert.equal(d.scope.groupId,'ive');assert.deepEqual(h.model.calls,['auth','control:owner','native:true','fence','artist:ive']);assert.equal('recognition' in d.ratings[0],!shape);assert.equal(d.ratings[0].score,0);}const h=routeHarness();h.model.native=false;await h.read('?shape=display-v1&refresh=background');assert.deepEqual(h.model.calls,['auth','control:owner','native:true','fallback:true','fence']);});
+test('artist and refresh combinations keep their original scopes, force flags and source fences',async()=>{for(const shape of ['', '&shape=display-v1'])for(const refresh of ['1','background']){const h=routeHarness(),r=await h.read('?artist=ive&refresh='+refresh+shape),d=await r.json();assert.equal(d.scope.groupId,'ive');assert.deepEqual(h.model.calls,['auth','native:owner:true','native-fence','artist:ive']);assert.equal('recognition' in d.ratings[0],!shape);assert.equal(d.ratings[0].score,0);}const h=routeHarness();h.model.native=false;await h.read('?shape=display-v1&refresh=background');assert.deepEqual(h.model.calls,['auth','native:owner:true','fallback:true','fallback-fence']);h.model.drift=true;assert.equal((await h.read('?shape=display-v1')).status,409);});
 test('visitors use only the public reader; invalid shape and changed owner source never expose owner data',async()=>{const guest=routeHarness();guest.model.deny=true;const publicResponse=await guest.read('?artist=ive&shape=display-v1');assert.equal(publicResponse.status,200);assert.deepEqual(await publicResponse.json(),{public:true,ratings:[]});assert.deepEqual(guest.model.calls,['auth','public-query','public:ive']);for(const kind of ['shape','source']){const h=routeHarness();h.model.drift=kind==='source';const r=await h.read('?shape='+(kind==='shape'?'unknown':'display-v1'));assert.equal(r.status,kind==='shape'?400:409);assert.equal('ratings' in await r.json(),false);if(kind==='shape')assert.deepEqual(h.model.calls,['auth']);}const invalidGuest=routeHarness();invalidGuest.model.deny=true;const denied=await invalidGuest.read('?shape=unknown');assert.equal(denied.status,400);assert.equal('ratings' in await denied.json(),false);assert.deepEqual(invalidGuest.model.calls,['auth','public-query']);});
 test('every current catalog consumer explicitly opts in; old servers can still return the full shape', () => {
  const pages = ['app/page.tsx', 'app/manage/page.tsx'];

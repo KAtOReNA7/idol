@@ -28,7 +28,7 @@ function harness({configured=false,allowFallback=false}={}){
   'cloudflare:workers':{env:{}},
   './feishu':{configured:()=>configured,AppError},
   './live':{liveTables:async()=>{state.liveReads++;if(state.failLive)throw Error('Synthetic live read failure');return state.tables;}},
-  './native-storage':{nativeDb:()=>db,nativeTables:async()=>{state.nativeReads++;return state.tables;}},
+  './native-storage':{nativeDb:()=>db,sourceStamp:control=>JSON.stringify(control),nativeTables:async()=>{state.nativeReads++;return state.tables;}},
   './native-format':{},
   './verified-version-display':{withVerifiedVersionDisplay:value=>value},
   './group-milestones':{withGroupMilestones:value=>value},

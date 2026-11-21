@@ -21,6 +21,7 @@ before(async () => {
   const ownerEmail = fs.readFileSync(path.join(root, 'lib/idol/http.ts'), 'utf8').match(/toLowerCase\(\)!=='([^']+)'/)[1];
   const bundle = await build({
     stdin: {resolveDir: root, contents: `
+      import {env,withEnv} from 'cloudflare:workers';
       import {readNativeDetail} from './lib/idol/native-reader';
       import {saveNativeRecord} from './lib/idol/native-save';
       import {GET as readCatalog} from './app/api/catalog/route';
@@ -28,7 +29,14 @@ before(async () => {
       export default {async fetch(request) {
         const url = new URL(request.url);
         try {
-          if (url.pathname === '/api/catalog' && request.method === 'GET') return readCatalog(request);
+          if (url.pathname === '/api/catalog' && request.method === 'GET') {
+            if (!request.headers.has('X-Test-Queries')) return readCatalog(request);
+            const db=env.DB, statements=[];
+            const tracked={prepare(sql){statements.push(sql);return db.prepare(sql);}};
+            const result=await withEnv({DB:tracked},()=>readCatalog(request));
+            result.headers.set('X-Test-Queries',JSON.stringify(statements));
+            return result;
+          }
           if (url.pathname === '/api/records' && request.method === 'GET') {
             return Response.json(await readNativeDetail('test-owner', url.searchParams.get('table'), url.searchParams.get('id')));
           }
@@ -90,6 +98,30 @@ const read = (table, id) => runtime.dispatchFetch('http://localhost/api/records?
 const post = body => runtime.dispatchFetch('http://localhost/api/save', {method: 'POST', body});
 const catalogFor = id => runtime.dispatchFetch('http://localhost/api/catalog?shape=display-v1&refresh=1', {
   headers:{Prefer:'omit-stage-candidates, work-detail='+id},
+});
+
+test('owner detail GET reads fresh private scores between two generation checks, with one extra check to publish a cold catalog',async()=>{
+  const workId='recCatalogDetail',videoId='abcdefghijk',memberId='recMember';
+  await seed('works',workId,{[F.works.groups]:['recGroup'],[F.works.song]:'Synthetic MV',[F.works.url]:'https://youtu.be/'+videoId});
+  await db.prepare('INSERT INTO idol_personal_mv_ratings (id,owner_id,snapshot_id,work_id,video_id,member_id,score,styling_score,revision) VALUES (?,?,?,?,?,?,0,NULL,1)')
+    .bind('test-private-score','test-owner',snapshot,workId,videoId,memberId).run();
+  async function checkQueries(tables,score,revision){
+    const response=await runtime.dispatchFetch('http://localhost/api/catalog?shape=display-v1',{
+      headers:{Prefer:'omit-stage-candidates, work-detail='+workId,'X-Test-Queries':'1'},
+    });
+    assert.equal(response.status,200);
+    const queries=JSON.parse(response.headers.get('X-Test-Queries'));
+    assert.deepEqual(queries.map(sql=>sql.match(/FROM (idol_[a-z_]+)/i)[1]),tables);
+    for(const sql of queries.filter(sql=>sql.includes('FROM idol_storage_control')))assert.match(sql,/JOIN idol_catalog_state/);
+    assert.match(queries.find(sql=>sql.includes('FROM idol_personal_mv_ratings')),/owner_id=\? AND snapshot_id=\? AND work_id=\?/);
+    const value=await response.json();
+    assert.deepEqual(value.scope,{type:'work',workId});
+    assert.deepEqual(value.personalMvRatings.entries,[{workId,videoId,memberId,score,stylingScore:null,revision}]);
+  }
+  const control='idol_storage_control',personal='idol_personal_mv_ratings';
+  await checkQueries([control,'idol_native_snapshots','idol_native_fields','idol_native_records',control,personal,control],0,1);
+  await db.prepare('UPDATE idol_personal_mv_ratings SET score=8,revision=2 WHERE id=?').bind('test-private-score').run();
+  await checkQueries([control,personal,control],8,2);
 });
 
 for (const [title, id] of records) {

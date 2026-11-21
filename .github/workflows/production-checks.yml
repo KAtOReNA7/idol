@@ -45,4 +45,5 @@ jobs:
           python-version: '3.11'
       - run: npm run install:ci
       - run: npm run build
+      - run: python -m pip install -r scripts/archive/requirements.txt
       - run: npm test

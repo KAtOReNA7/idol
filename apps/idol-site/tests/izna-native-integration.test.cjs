@@ -46,10 +46,42 @@ test('candidate source stays byte-exact outside the approved opening, public inf
  const addedCss=css.slice(oldCss.length).replace(/\/\*[\s\S]*?\*\//g,'').trim();assert.ok(addedCss);
  for(const rule of addedCss.split('}').filter(rule=>rule.trim()))for(const selector of rule.split('{')[0].split(','))assert.match(selector.trim(),/^\[data-astra-group="izna"\](?:\[data-astra-max-width~="767"\])? \.home-/);
 });
-test('7 members and 15 exact video slots bind to the current catalog without changing records',()=>{
- const before=JSON.stringify(actual);assert.equal(api.validIznaCatalog(actual),true);assert.equal(api.iznaNativeBindings(actual).length,22);
+test('7 members and all 15 izna video slots preserve exact identity when two works share the BEEP stage',()=>{
+ const before=JSON.stringify(actual);
+ const originalId='rec28ldfRTrNoB', japaneseId='rec28ldfRTrNsK', videoId='ctfS0Rcq-gs';
+ const original=design.works.find(v=>v.id===originalId&&v.type==='STAGE');
+ const shared=actual.works.find(w=>w.id===japaneseId).stage;
+ assert.equal(original.videoId,videoId);
+ assert.equal(shared.videoId,videoId);
+ assert.equal(shared.sameSongFallback.sourceWorkId,originalId);
+ assert.equal(shared.sameSongFallback.targetWorkId,japaneseId);
+ assert.equal(api.validIznaCatalog(actual),true);
+ assert.equal(design.members.length,7);
+ assert.equal(design.works.length,15);
+ assert.equal(api.iznaNativeBindings(actual).length,21);
  for(const m of design.members){assert.ok(api.boundIznaMember(actual,m.id));const ret='#/person/'+m.id;const href=api.nativeHref(design,{action:'open-member',groupId:design.group.id,memberId:m.id,returnTo:ret},services(actual));const u=new URL(href,'https://test.invalid');assert.equal(u.searchParams.get('member'),m.id);assert.equal(u.searchParams.get('returnTo'),api.artistUrl(design,ret));}
- for(const v of design.works){assert.ok(api.boundIznaWork(actual,v));const href=api.nativeHref(design,request(v),services(actual));assert.ok(href);const u=new URL(href,'https://test.invalid');assert.equal(u.searchParams.get('work'),v.id);assert.equal(u.searchParams.get('video'),v.type==='STAGE'?'stage':null);assert.equal(u.searchParams.get('returnTo'),api.artistUrl(design,videoHash(v)));}
+ for(const v of design.works){
+  const href=api.nativeHref(design,request(v),services(actual));
+  if(v===original){
+   assert.equal(api.boundIznaWork(actual,v),null);
+   assert.equal(href,null);
+   continue;
+  }
+  assert.equal(api.boundIznaWork(actual,v)?.id,v.id);
+  assert.ok(href);
+  const u=new URL(href,'https://test.invalid');
+  assert.equal(u.searchParams.get('work'),v.id);
+  assert.equal(u.searchParams.get('video'),v.type==='STAGE'?'stage':null);
+  assert.equal(u.searchParams.get('returnTo'),api.artistUrl(design,videoHash(v)));
+ }
+ const unique=clone();
+ unique.works.find(w=>w.id===japaneseId).stage=null;
+ assert.equal(api.iznaNativeBindings(unique).length,22);
+ assert.equal(api.boundIznaWork(unique,original)?.id,originalId);
+ const restored=new URL(api.nativeHref(design,request(original),services(unique)),'https://test.invalid');
+ assert.equal(restored.searchParams.get('work'),originalId);
+ assert.equal(restored.searchParams.get('video'),'stage');
+ assert.equal(restored.searchParams.get('returnTo'),api.artistUrl(design,videoHash(original)));
  assert.equal(JSON.stringify(actual),before);
 });
 test('all finite public pages round trip and retain search, exact member/video/release and event identity',()=>{

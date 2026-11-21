@@ -44,27 +44,3 @@ test('every official candidate portrait credit is projected while provenance rem
 test('physical facts retain historical date and source without exposing evidence scope',()=>{
  const record={recordId:'recPublicFact',stageName:'Example',verified:true,measurements:{heightCm:{value:170,sourceUrl:'https://example.com/profile',sourceTitle:'官方资料',sourceKind:'official',publishedAt:'2020-01-01',checkedAt:'2026-10-16',scope:'核验限制：不作为当前测量证明'}}};const html=renderToStaticMarkup(React.createElement(bundle.MemberPhysicalFacts,{member:{id:'recPublicFact',stageName:'Example',birthDate:'2000-01-01'},record}));assert.match(html,/170 cm/);assert.match(html,/2020-01-01/);assert.match(html,/https:\/\/example.com\/profile/);assert.doesNotMatch(html,audit);assert.match(record.measurements.heightCm.scope,/核验限制/);
 });
-
-test('actual personal-note JSX preserves audit-like words verbatim in notes and memories',()=>{
- const ts=require('typescript'),vm=require('node:vm');
- const sentinel='我的原话：未知、待核、核验、来源不足，喜欢这段表现。';
- const found=new Set();
- for(const filename of ['app/page.tsx','components/group-detail.tsx']){
-  const source=fs.readFileSync(filename,'utf8'),ast=ts.createSourceFile(filename,source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
-  function visit(node){
-   if(ts.isJsxElement(node)&&node.openingElement.tagName.getText(ast)==='p'){
-    const cls=node.openingElement.attributes.properties.find(a=>ts.isJsxAttribute(a)&&a.name.getText(ast)==='className');
-    if(cls&&['"my-note"','"memory"','"cast-note"'].includes(cls.initializer?.getText(ast))){
-     const expression=node.getText(ast),key=['work.note','m.note','g.note','r.note','r.memory'].find(x=>expression.includes('{'+x+'}'));
-     assert.ok(key,'Personal text must remain directly bound, never sanitized: '+expression);found.add(key);
-     const js=ts.transpileModule('exports.render=()=>('+expression+');',{compilerOptions:{jsx:ts.JsxEmit.React,target:ts.ScriptTarget.ES2022}}).outputText;
-     const exports={},record={note:sentinel,memory:sentinel};vm.runInNewContext(js,{React,exports,work:record,m:record,g:record,r:record});
-     assert.ok(renderToStaticMarkup(exports.render()).includes(sentinel));
-    }
-   }
-   ts.forEachChild(node,visit);
-  }
-  visit(ast);
- }
- assert.deepEqual([...found].sort(),['g.note','m.note','r.memory','r.note','work.note'].sort());
-});

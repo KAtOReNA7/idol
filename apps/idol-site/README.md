@@ -2,8 +2,8 @@
 
 在本目录使用 Node 24、npm 和 Python 3。运行 `npm run install:ci` 安装锁定版本。
 
-- `npm run verify` 运行类型检查、当前来源保护回归、公开数据检查、生产构建及素材预检。
-- `npm test` 运行全量 Node 归档与现行回归，并单独执行偏好统计套件。输出保留每次失败和跳过。
+- `npm run verify` 运行类型检查、来源保护、成员详情顺序、原生页跳转、备注与评分草稿回归，再检查公开数据、生产构建和素材。
+- 全量测试和离线归档恢复会实际解码图片。先在 Python 3.11 或更高版本的虚拟环境运行 `python -m pip install -r scripts/archive/requirements.txt`，再运行 `npm test`。该命令运行全量 Node 回归及独立偏好统计套件，输出每次失败和跳过。
 - 构建后运行 `npm run preview:synthetic`，在本机独立临时 D1 中生成 51 团与 614 作品的预览。按 Ctrl+C 停止。
 
 安装 Playwright 和 Chromium 后，可以在另一个终端运行下列浏览器验收。使用工作区外已有的安装时，`PLAYWRIGHT_MODULE` 指向 Playwright 模块，`CHROMIUM_PATH` 指向浏览器可执行文件。

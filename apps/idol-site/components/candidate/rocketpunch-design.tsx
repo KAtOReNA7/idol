@@ -6,6 +6,7 @@ import {useEffect,useState,useSyncExternalStore,type ReactNode} from 'react';
 import {ArtistTimelineHost,ArtistTimelineHostProvider,useArtistTimelineHostOptions} from '../artist-timeline-host';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from '../reliable-image';
 import {PhotoLightbox} from '../photo-lightbox';
+import {OriginalPhotoLink} from '../original-photo-link';
 import {useArtistScroll} from '../use-artist-scroll';
 import {artistMemberUrl,artistWorkUrl,artistWorkRows} from '../../lib/idol/artist-preview';
 import {artistMvWorkId} from '../../lib/idol/artist-mv-link';
@@ -25,7 +26,7 @@ function Picture({item,alt,priority=false}:{item:{image:string;width:number;heig
 function Heading({number,en,children}:{number?:string;en:string;children:ReactNode}){return <div className="rp-heading"><p>{number&&<span>{number} / </span>}{en}</p><h2>{children}</h2></div>;}
 function OfficialHero({onOriginal,useHomePreviews}:{onOriginal:()=>void;useHomePreviews:boolean}){
  const photo = (useHomePreviews && data.hero.preview) || data.hero;
- return <section className="rp-hero"><div className="rp-hero-copy"><h1>ROCKET<br/>PUNCH</h1><p className="rp-hero-date">2023 · BOOM</p><p className="rp-hero-intro">历年六人成员档案</p><Link to={href('records',{release:'rocketpunch-bugs-4090900'})}>BOOM 发行详情</Link><button type="button" className="rp-link" onClick={onOriginal}>查看团照原图 <Arrow external/></button></div><div className="rp-hero-photo"><Picture item={photo} alt="Rocket Punch · 2023 BOOM 官方六人概念照" priority/><p>2023 BOOM 官方概念照 · 历史时期</p></div></section>;}
+ return <section className="rp-hero"><div className="rp-hero-copy"><h1>ROCKET<br/>PUNCH</h1><p className="rp-hero-date">2023 · BOOM</p><p className="rp-hero-intro">历年六人成员档案</p><Link to={href('records',{release:'rocketpunch-bugs-4090900'})}>BOOM 发行详情</Link><OriginalPhotoLink className="rp-link" href={data.hero.image} onOpen={onOriginal}>查看团照原图 <Arrow external/></OriginalPhotoLink></div><div className="rp-hero-photo"><Picture item={photo} alt="Rocket Punch · 2023 BOOM 官方六人概念照" priority/><p>2023 BOOM 官方概念照 · 历史时期</p></div></section>;}
 function Search({query,label}:{query:string;label:string}){function change(q:string){const u=new URL(location.href);q?u.searchParams.set('q',q):u.searchParams.delete('q');history.replaceState(history.state,'',u.pathname+u.search);window.dispatchEvent(new Event('artist-location-change'));}return <label className="rp-search"><span>{label}</span><input value={query} type="search" maxLength={200} placeholder="输入中文名、名称或关键词" onChange={e=>change(e.target.value)}/>{query&&<button onClick={()=>change('')} type="button">清除</button>}</label>;}
 function personPreview(person:Person) {
  return person.id==='recvxyICzHfdEb' ? {image:'/artist/rocketpunch/portraits/suyun.webp',width:660,height:880} : person;

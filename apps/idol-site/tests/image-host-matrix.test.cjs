@@ -43,6 +43,11 @@ for (const [index, artist] of registry.entries()) {
   const photos=slots ? slots.map(slot=>require(`../data/${artist.slug}-public.json`)[slot]) : [{image:heroSources[artist.slug]}];
   assert.equal(photos[0].image,heroSources[artist.slug]);
   const rendered=images(html);
+  if (slots) {
+   const original=require(`../data/${artist.slug}-public.json`).hero.image;
+   const links=[...html.matchAll(/<a\b[^>]*>/g)].map(match=>attrs(match[0]));
+   assert.ok(links.some(link=>link.href===original&&link['aria-haspopup']==='dialog'),'group original is reachable on the first click before hydration');
+  }
   const preloads=[...html.matchAll(/<link\b[^>]*>/g)].map(match=>attrs(match[0])).filter(link=>link.as==='image');
   for (const photo of photos) {
    const expected=photo.preview ?? photo;

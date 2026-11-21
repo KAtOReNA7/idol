@@ -48,6 +48,26 @@ test('disabled retry state and default provider do not advertise background or b
  const empty=renderToStaticMarkup(React.createElement(component.ImageRecoveryProvider,null,React.createElement(component.ImageRecoveryControls)));
  assert.equal(empty,'');
 });
+test('original photo links navigate before hydration and enhance a plain activation with focus and a dialog',()=>{
+ const calls=[];
+ const link=component.OriginalPhotoLink({href:'/artist/example/original.jpg',children:'查看原图',onOpen(){calls.push('open');}});
+ assert.match(renderToStaticMarkup(link),/<a[^>]*href="\/artist\/example\/original\.jpg"[^>]*aria-haspopup="dialog"[^>]*>查看原图<\/a>/);
+ const target={focus(options){assert.deepEqual(options,{preventScroll:true});calls.push('focus');},click(){calls.push('click');}};
+ const event={button:0,currentTarget:target,preventDefault(){calls.push('prevent');}};
+ link.props.onClick(event);
+ assert.deepEqual(calls,['prevent','focus','open']);
+ calls.length=0;
+ for(const native of [{defaultPrevented:true},{button:1},{altKey:true},{ctrlKey:true},{metaKey:true},{shiftKey:true}]) {
+  link.props.onClick({...event,...native});
+ }
+ for(const key of [{key:'Enter'},{key:'Tab'},{key:'Escape'},{key:' ',shiftKey:true},{key:' ',defaultPrevented:true}]) {
+  link.props.onKeyDown({...event,...key});
+ }
+ assert.deepEqual(calls,[]);
+ link.props.onKeyDown({...event,key:' '});
+ link.props.onKeyDown({...event,key:' ',repeat:true});
+ assert.deepEqual(calls,['prevent','click','prevent']);
+});
 test('dot App adapters preserve photo identity, snapshot placeholders and exact YouTube choice without owning save state',()=>{
  const photo={table:'ratings',recordId:'recFixtureRating',fieldId:'fixtureField',index:3};
  const live=renderToStaticMarkup(React.createElement(component.CatalogPhotoImage,{photo,label:'合成个人图',fit:'contain'}));

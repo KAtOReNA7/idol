@@ -1,130 +1,159 @@
 @font-face {
-  font-family: 'IVE Playfair';
-  src: url('/fonts/PlayfairDisplay-Variable.woff2') format('woff2');
-  font-weight: 400 900;
+  font-family: 'Dive Display';
+  src: url('/fonts/InstrumentSerif-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Dive Display';
+  src: url('/fonts/InstrumentSerif-Italic.woff2') format('woff2');
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Dive Sans';
+  src: url('/fonts/DMSans-Variable.woff2') format('woff2');
+  font-weight: 100 1000;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Dive Han';
+  src: url('/fonts/unis/NotoSansSC-Regular.woff2') format('woff2');
   font-display: swap;
 }
 
 .sr-site.sr-ive {
-  --sr-bg: #f6f7f9;
-  --sr-ink: #101c32;
-  --sr-muted: #485970;
-  --sr-line: #bac4d0;
-  --sr-accent: #315783;
-  --sr-panel: #e8edf3;
-  --ive-navy: #101d38;
-  --ive-silver: #dfe5ed;
-  --ive-serif: 'IVE Playfair', Georgia, serif;
+  --sr-bg: #142742;
+  --sr-ink: #f1f1ec;
+  --sr-muted: #bdcbde;
+  --sr-line: #536985;
+  --sr-accent: #b4d8ff;
+  --sr-panel: #203956;
+  --ive-night: #0d1930;
+  --ive-silver: #e1e7ef;
+  --ive-text: 'Dive Sans', 'Dive Han', 'Microsoft YaHei', sans-serif;
+  --ive-display: 'Dive Display', 'Dive Han', Georgia, serif;
+  --ive-gutter: max(5%, calc((100% - 1240px) / 2));
+  font-family: var(--ive-text);
+  color-scheme: dark;
 }
 .sr-ive .sr-header {
-  min-height: 84px;
-  padding: 15px 5%;
-  background: var(--ive-navy);
-  color: var(--ive-silver);
-  border-bottom: 1px solid #586781;
+  min-height: 64px;
+  padding: 8px var(--ive-gutter);
+  background: var(--ive-night);
+  border-color: var(--sr-line);
 }
-.sr-ive .sr-brand {
-  font: 500 42px/.95 var(--ive-serif);
-  letter-spacing: -.09em;
-}
-.sr-ive :is(.sr-header, .ive-dive-hero) :focus-visible { outline-color: #c7dbfc; }
+.sr-ive .sr-brand { display: grid; place-items: center; min-width: 44px; min-height: 44px; }
+.sr-ive .sr-brand img { width: auto; height: 45px; }
+.sr-ive .sr-nav { gap: clamp(16px, 3vw, 44px); }
+.sr-ive .sr-nav button { letter-spacing: .06em; }
+.sr-ive .sr-nav small { color: var(--sr-muted); }
 .sr-ive .ive-dive-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-  grid-template-rows: 1fr auto auto 1fr;
-  column-gap: 7%;
-  align-items: center;
-  padding: 46px max(7.7%, calc((100vw - 1240px) / 2)) 55px;
-  color: var(--ive-silver);
-  background: var(--ive-navy);
+  grid-template-columns: minmax(0, 2.25fr) minmax(0, 1fr);
+  grid-template-areas: 'title campaign' 'archive campaign' 'controls campaign';
+  align-items: start;
+  gap: 14px clamp(20px, 3vw, 44px);
+  padding: clamp(20px, 2vw, 32px) var(--ive-gutter) 22px;
+  background: linear-gradient(128deg, #101d35 10%, #203d61 72%, #14243f);
+  border-bottom: 1px solid var(--sr-line);
 }
-.ive-dive-title { grid-column: 1; grid-row: 1 / 3; align-self: end; }
-.ive-dive-title p, .ive-dive-sleeve time {
-  font-size: clamp(10px, 1vw, 14px);
-  letter-spacing: .15em;
+.ive-dive-title { grid-area: title; }
+.ive-dive-title p, .ive-dive-sleeve time, .ive-dive-hero figcaption {
+  font-size: clamp(10px, .9vw, 13px);
+  color: var(--sr-muted);
+  letter-spacing: .09em;
 }
-.ive-dive-title p { color: #b8c6d8; }
-.ive-dive-title p span { padding: 0 .7em; color: #a9b7cd; }
+.ive-dive-title p span { padding-inline: .4em; }
 .sr-ive .ive-dive-title h1 {
-  margin: .18em 0 .24em -.045em;
-  font: 400 clamp(90px, 10.1vw, 157px)/.96 var(--ive-serif);
-  letter-spacing: -.065em;
+  margin: .03em 0 0;
+  font: 400 clamp(66px, 7.4vw, 110px)/.91 var(--ive-display);
+  letter-spacing: -.035em;
 }
-.ive-dive-title h1 em { display: block; margin-left: .25em; font-family: Georgia, serif; font-weight: 400; }
+.ive-dive-title h1 em { font-weight: 400; }
+.ive-dive-campaign { grid-area: campaign; align-self: center; }
+.sr-ive .ive-dive-campaign .sr-hero-photo {
+  aspect-ratio: 2/3;
+  padding: 4px !important;
+  background: var(--ive-silver);
+}
+.ive-dive-archive { grid-area: archive; }
+.sr-ive .ive-dive-archive button { display: block; padding: 0; width: 100%; aspect-ratio: 860/460; }
+.ive-dive-archive img, .ive-dive-campaign img { width: 100%; height: 100%; object-fit: contain; }
+.ive-dive-hero figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 5px; }
+.ive-dive-hero figcaption a { text-decoration: underline; text-underline-offset: 3px; }
+.ive-dive-campaign figcaption { justify-content: flex-end; }
 .sr-ive .ive-dive-sleeve {
-  grid-column: 1;
-  grid-row: 3;
+  grid-area: controls;
   display: inline-flex;
   justify-self: start;
   align-items: center;
-  gap: 16px;
-  text-align: left;
+  gap: 10px;
   padding: 0;
+  text-align: left;
 }
-.sr-ive .ive-dive-sleeve img { width: 64px; height: 64px; border: 1px solid #929eb0; }
-.ive-dive-sleeve strong { display: block; margin-top: 3px; font-size: 13px; letter-spacing: .08em; }
-.ive-dive-sleeve:hover strong { text-decoration: underline; }
-.sr-ive .ive-dive-hero .sr-hero-photo {
-  grid-column: 2;
-  grid-row: 1 / 5;
-  justify-self: center;
-  width: min(100%, 418px);
-  padding: 8px !important;
-  background: var(--ive-silver);
-  aspect-ratio: 2 / 3;
-}
-.ive-dive-hero .sr-hero-photo img { width: 100%; height: 100%; object-fit: contain; }
-.ive-dive-actions { grid-column: 1; grid-row: 4; align-self: start; margin-top: 29px; display: flex; align-items: center; gap: 18px; }
-.ive-dive-actions :is(a, button) { display: inline-flex; min-height: 48px; align-items: center; padding: 10px 16px; font-size: 14px; }
-.ive-dive-actions > :first-child { background: var(--ive-silver); color: var(--ive-navy); }
-.ive-dive-actions > :last-child { border-bottom: 1px solid #75849b; }
-.ive-dive-actions > :hover { text-decoration: underline; text-underline-offset: 4px; }
-.sr-ive .sr-hero-credit { color: var(--sr-muted); }
-.sr-ive .sr-heading h2, .sr-ive .sr-biography h1, .sr-ive .sr-person-name h3 {
-  font-family: var(--ive-serif);
-  font-weight: 500;
-  letter-spacing: -.045em;
-}
-.sr-ive .sr-portraits { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 4%; }
-.sr-ive .sr-portrait img, .sr-ive .sr-profile-image img { object-fit: cover; aspect-ratio: 3/4; }
-.sr-ive .sr-person-name { margin-top: 12px; }
-.sr-ive .sr-person-name h3 { font-size: clamp(23px, 2.5vw, 36px); }
-.sr-ive .sr-releases .sr-cover { border: 1px solid var(--sr-line); }
-.sr-ive .sr-row-links button { min-height: 44px; }
-.sr-ive .ive-dive-archive {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 6%;
+.sr-ive .ive-dive-sleeve img { width: 48px; height: 48px; }
+.ive-dive-sleeve strong { display: block; font-size: 12px; letter-spacing: .05em; }
+.ive-dive-actions { grid-area: controls; justify-self: end; display: flex; gap: 12px; align-self: center; }
+.sr-ive .ive-dive-actions :is(a, button) {
+  display: inline-flex;
   align-items: center;
-  padding-block: 32px;
-  border-block: 1px solid var(--sr-line);
+  min-height: 44px;
+  padding: 8px 13px;
+  font-size: 13px;
 }
-.ive-dive-archive button { padding: 0; }
-.ive-dive-archive img { height: auto; }
-.ive-dive-archive h2 { margin: 14px 0 8px; font-size: clamp(22px, 3vw, 38px); }
-.ive-dive-archive p { color: var(--sr-muted); }
-.ive-dive-archive p:first-child { font-size: 11px; letter-spacing: .08em; }
-.ive-dive-archive a { display: inline-block; padding-block: 12px; text-decoration: underline; }
-
+.ive-dive-actions > :first-child { color: var(--ive-night); background: var(--ive-silver); }
+.sr-ive .ive-dive-actions > :last-child { border-bottom: 1px solid var(--sr-line); }
+.ive-dive-actions > :hover, .ive-dive-sleeve:hover strong { text-decoration: underline; }
+.sr-ive .sr-section, .sr-ive :is(.group-information, .artist-home-timeline) {
+  width: min(1240px, 90%);
+  padding: clamp(22px, 2.8vw, 42px) 0;
+}
+.sr-ive .sr-heading { margin-bottom: 18px; padding-bottom: 10px; }
+.sr-ive :is(.sr-heading h2, .sr-biography h1, .sr-release-layout h1, .sr-person-name h3) {
+  font-family: var(--ive-display);
+  font-weight: 400;
+  letter-spacing: -.025em;
+}
+.sr-ive .sr-heading h2 { font-size: clamp(38px, 4.3vw, 63px); line-height: 1; }
+.sr-ive .sr-heading span { color: var(--sr-muted); }
+.sr-ive .sr-portraits { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px clamp(14px, 2vw, 28px); }
+.sr-ive .sr-portrait img, .sr-ive .sr-profile-image img { object-fit: cover; aspect-ratio: 3/4; }
+.sr-ive .sr-person-name { display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 10px; margin-top: 8px; }
+.sr-ive .sr-person-name h3 { font-size: clamp(26px, 2.7vw, 40px); }
+.sr-ive .sr-person-name p { margin: 0; }
+.sr-ive .sr-person > small { margin-top: 2px; }
+.sr-ive .sr-tools { margin: 12px 0 20px; }
+.sr-ive .sr-tools :is(input, select) { background-color: var(--ive-night); }
+.sr-ive .sr-back { margin-bottom: 18px; }
+.sr-ive .sr-biography { padding-top: 10px; }
+.sr-ive .sr-member-works { margin-top: 36px; }
+.sr-ive .sr-row-links { margin-top: 5px; }
+.sr-ive .sr-row-links button { min-height: 44px; }
+.sr-ive .sr-footer { background: var(--ive-night); }
+.sr-ive :is(.group-information, .artist-home-timeline) :is(small, strong, a, em, span, summary, p) { font-family: var(--ive-text); }
+@media (min-width: 721px) and (max-width: 890px) {
+  .sr-ive .ive-dive-actions { gap: 4px; }
+  .sr-ive .ive-dive-actions :is(a, button) { padding-inline: 7px; }
+}
 @media (max-width: 720px) {
-  .sr-ive .sr-header { min-height: 66px; padding: 10px 6%; }
-  .sr-ive .sr-brand { font-size: 34px; }
-  .sr-ive .sr-nav.is-open { background: var(--ive-navy); color: var(--ive-silver); }
+  .sr-ive .sr-header { min-height: 56px; padding-block: 5px; }
+  .sr-ive .sr-brand img { height: 38px; }
+  .sr-ive .sr-nav.is-open { background: var(--ive-night); }
   .sr-ive .ive-dive-hero {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 13px;
-    padding: 26px 6% 31px;
+    grid-template-columns: minmax(0, 1fr) minmax(80px, 26%);
+    grid-template-areas: 'title campaign' 'sleeve campaign' 'archive archive' 'controls controls';
+    gap: 10px 12px;
+    padding-block: 16px;
   }
-  .ive-dive-title { align-self: stretch; }
-  .sr-ive .ive-dive-title h1 { font-size: clamp(49px, 15.8vw, 86px); margin: .12em 0 .1em; }
-  .ive-dive-title h1 em { display: inline; margin: 0; }
-  .sr-ive .ive-dive-sleeve img { width: 46px; height: 46px; }
-  .sr-ive .ive-dive-hero .sr-hero-photo { align-self: center; width: min(80%, 330px); margin: 8px 0 2px; padding: 6px !important; }
-  .ive-dive-actions { align-self: stretch; gap: 12px; margin-top: 3px; }
-  .ive-dive-actions :is(a, button) { font-size: 13px; }
-  .sr-ive .sr-portraits { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 29px 16px; }
-  .sr-ive .sr-person-name h3 { font-size: 21px; }
-  .sr-ive .ive-dive-archive { grid-template-columns: 1fr; gap: 18px; }
+  .sr-ive .ive-dive-title { align-self: end; }
+  .sr-ive .ive-dive-title h1 { font-size: clamp(44px, 12.8vw, 83px); }
+  .sr-ive .ive-dive-sleeve { grid-area: sleeve; align-self: start; }
+  .sr-ive .ive-dive-sleeve img { width: 38px; height: 38px; }
+  .sr-ive .ive-dive-campaign { max-width: 135px; justify-self: end; }
+  .sr-ive .ive-dive-campaign .sr-hero-photo { padding: 2px !important; }
+  .ive-dive-actions { justify-self: stretch; justify-content: space-between; }
+  .sr-ive .sr-portraits { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; }
+  .sr-ive .sr-heading { margin-bottom: 13px; }
+  .sr-ive .sr-person-name { gap: 2px 6px; }
+  .sr-ive .sr-person-name h3 { font-size: clamp(21px, 6.3vw, 31px); }
 }

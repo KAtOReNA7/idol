@@ -293,7 +293,7 @@ body:has(.genblue-bluecut){background:#f3f5f7}
 .gb-section>h2{font-size:48px}
 .gb-roster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .genblue-bluecut .gb-member-card{display:grid;gap:12px;align-content:start}
-.gb-member-card>img{aspect-ratio:900/506;max-width:900px}
+.gb-member-card>img{aspect-ratio:3/4;max-width:900px}
 .gb-member-names{display:grid;grid-template-columns:58fr 42fr;gap:16px;border-bottom:3px solid var(--gb-blue);padding-bottom:12px;align-items:start}
 .gb-member-names h3{font-size:30px}
 .gb-member-names span{font:900 26px/.96 GenblueDisplay,sans-serif;letter-spacing:-.03em;color:var(--gb-blue)}
@@ -393,3 +393,5 @@ body:has(.genblue-bluecut){background:#f3f5f7}
 @media(prefers-reduced-motion:reduce){.genblue-bluecut *{scroll-behavior:auto!important}}
 
 .gb-timeline,.gb-timeline li{min-width:0;grid-template-columns:minmax(0,1fr)}.gb-timeline .gb-button{width:min(320px,100%);box-sizing:border-box}
+
+.genblue-bluecut .gb-brand img {width:min(100%,112px);height:auto;}

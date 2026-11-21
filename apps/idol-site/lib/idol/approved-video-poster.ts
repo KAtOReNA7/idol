@@ -1,3 +1,4 @@
+import crushPosters from '../../data/stage-crush-poster-20261121.json';
 import posters from '../../data/saymyname-video-posters.json';
 import nightPosters from '../../data/night-mv-video-posters.json';
 import day19Posters from '../../data/day19-mv-video-posters.json';
@@ -17,7 +18,7 @@ import biliPosters from '../../data/stage-bilibili-posters-20261029.json';
 import gnarlyPosters from '../../data/stage-gnarly-poster-20261101.json';
 import type {StageVideo} from './types';
 import {stageSourceKey} from './stage-source';
-import {publicMvCover,publicCoverZoom} from './mv-public-media';
+import {publicMvCover,publicCoverZoom} from './mv-public-covers';
 
 export type VideoPoster = {
  src:string;
@@ -72,7 +73,7 @@ export function approvedVideoPoster(workId:string,videoId:string|null,view:'mv'|
 export function approvedStagePoster(workId:string,stage:StageVideo):VideoPoster|null{
  const key=stageSourceKey(stage);if(!key)return null;
  // New multipart/interval posters must prove the complete source identity.
- const exact=biliPosters.entries.find(p=>stage.platform==='bilibili'&&p.workId===workId&&p.videoId===stage.videoId&&p.view==='stage'&&p.sourceKey===key);
+ const exact=[...biliPosters.entries,...crushPosters.entries].find(p=>stage.platform==='bilibili'&&p.workId===workId&&p.videoId===stage.videoId&&p.view==='stage'&&p.sourceKey===key);
  if(exact)return {src:exact.src,label:exact.label,intrinsicSize:exact.intrinsicSize,fit:'contain'};
  if(stage.platform==='x')return null;
  if(stage.clip)return null;

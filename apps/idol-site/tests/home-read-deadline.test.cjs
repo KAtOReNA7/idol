@@ -1,5 +1,5 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),test=require('node:test'),ts=require('typescript'),crypto=require('node:crypto');
-const source=fs.readFileSync('app/page.tsx','utf8');
+const source=require('./helpers/catalog-view-source.cjs')();
 const prefix=source.slice(source.indexOf('export default function App(){'),source.indexOf(' function currentLabel(){')).replace('export default function App(){','function App(){');
 const response=source.split('\n').find(s=>s.startsWith('async function readResponse('));
 const compile=s=>ts.transpileModule(s,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText;
@@ -13,7 +13,7 @@ function harness(){
  const timer={setTimeout:(f,ms)=>{const id=++next;timers.set(id,{f,due:now+ms,ms});return id;},clearTimeout:id=>timers.delete(id)};
  const helper={};vm.runInNewContext(compile(fs.readFileSync('lib/idol/catalog-read-deadline.ts','utf8')),{exports:helper,AbortController,DOMException,...timer});
  const exports={};
- vm.runInNewContext(code,{exports,catalogReadWithDeadline:helper.catalogReadWithDeadline,AbortController,useState:v=>{const i=cursor++;states[i]=v;return [v,n=>{states[i]=n;if(unmounted)writesAfterUnmount++;}];},useRef:v=>({current:v}),useCallback:f=>f,useEffect:f=>effects.push(f),useCatalogGroupViews:()=>({phase:'idle',value:null}),useBrowseJourney:()=>({route:{},filters:{}}),requestMessage:e=>String(e),...timer,fetch:(url,options)=>{const d=deferred();requests.push({...d,url,options});if(url==='/api/status')d.resolve({ok:true,headers:{get:()=> 'application/json'},json:async()=>({source:'feishu'})});return d.promise;}});
+ vm.runInNewContext(code,{exports,useCanEdit:()=>true,catalogReadWithDeadline:helper.catalogReadWithDeadline,AbortController,useState:v=>{const i=cursor++;states[i]=v;return [v,n=>{states[i]=n;if(unmounted)writesAfterUnmount++;}];},useRef:v=>({current:v}),useCallback:f=>f,useEffect:f=>effects.push(f),useCatalogGroupViews:()=>({phase:'idle',value:null}),useBrowseJourney:()=>({route:{},filters:{}}),requestMessage:e=>String(e),...timer,fetch:(url,options)=>{const d=deferred();requests.push({...d,url,options});if(url==='/api/status')d.resolve({ok:true,headers:{get:()=> 'application/json'},json:async()=>({source:'feishu'})});return d.promise;}});
  const api=exports.App();let cleanups=effects.map(f=>f());
  return {states,requests,timers,...api,unmount(){unmounted=true;for(const f of cleanups)f?.();},replay(){for(const f of cleanups)f?.();cleanups=effects.map(f=>f());},writes:()=>writesAfterUnmount,
  catalog:()=>requests.filter(r=>r.url.startsWith('/api/catalog')),

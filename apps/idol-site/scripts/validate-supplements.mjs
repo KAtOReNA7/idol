@@ -1,7 +1,24 @@
 // Validate only editorial metadata. No credentials, network or production writes.
 import fs from 'node:fs';import path from 'node:path';import vm from 'node:vm';import ts from 'typescript';
 const root=process.cwd(),input=JSON.parse(fs.readFileSync(process.argv[2]??path.join(root,'data/stages/supplements.json'),'utf8'));const inventory=JSON.parse(fs.readFileSync(path.join(root,'data/stages/inventory.json'),'utf8'));const known=new Set(inventory.works.map(w=>w.recordId));
-const source=fs.readFileSync(path.join(root,'lib/idol/supplements.ts'),'utf8');const code=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText;const exports={};vm.runInNewContext(`(function(require,exports){${code}\n})`,{URL,Date,Set})(n=>{if(n==='@/data/stages/supplements.json')return input;throw Error('Unexpected dependency '+n)},exports);
+const allowedModules = new Map([
+  ['./stage-source', 'stage-source.ts'],
+  ['./stage-public-research', 'stage-public-research.ts'],
+]);
+function loadEditorialModule(filename) {
+  const source = fs.readFileSync(path.join(root, 'lib/idol', filename), 'utf8');
+  const code = ts.transpileModule(source, {compilerOptions: {
+    module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true,
+  }}).outputText;
+  const exports = {};
+  vm.runInNewContext(`(function(require,exports){${code}\n})`, {URL, Date, Set})(name => {
+    if (name === '@/data/stages/supplements.json') return input;
+    if (allowedModules.has(name)) return loadEditorialModule(allowedModules.get(name));
+    throw Error('Unexpected dependency ' + name);
+  }, exports);
+  return exports;
+}
+const exports = loadEditorialModule('supplements.ts');
 if(input.formatVersion!=='idol.stage-supplements.v1')throw Error('Unsupported supplement metadata');
 let alternatives=0,reviews=0,official=0,audience=0,press=0,excerpts=0,watchLeads=0,runtimeAlternatives=0,runtimeWatchLeads=0;const seen=new Set();
 for(const [id,row] of Object.entries(input.works)){

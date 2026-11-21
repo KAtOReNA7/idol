@@ -1,6 +1,12 @@
-# vinext-starter
+# Idol Lens 正式工程
 
-A clean full-stack starter running on [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and Drizzle support.
+在本目录使用 Node 24、npm 和 Python 3。运行 `npm run install:ci` 安装锁定版本。
+
+- `npm run verify` 运行类型检查、当前来源保护回归、公开数据检查、生产构建及素材预检。
+- `npm test` 运行全量 Node 归档与现行回归，并单独执行偏好统计套件。输出保留每次失败和跳过。
+- 构建后运行 `npm run preview:synthetic`，在本机独立临时 D1 中生成 51 团与 614 作品的预览。按 Ctrl+C 停止。
+
+详细范围见[开发路线图](../../docs/codex/PROJECT-AUDIT-AND-ROADMAP-20261121.md)。
 
 ## Prerequisites
 

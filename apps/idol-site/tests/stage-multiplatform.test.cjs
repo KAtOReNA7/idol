@@ -23,7 +23,7 @@ test('Bili interval identity survives anonymous projection, distinguishes bounds
  const projected=projectPublicCatalog({works:[{stage:s}],members:[],ratings:[]}).works[0].stage;
  assert.equal(source.stageSourceKey(projected),clipKey);assert.ok(source.stageHasValidBinding(projected));
  for(const change of [{clip:{...clip,startSeconds:1086}},{clip:{...clip,endSeconds:1272}},{scoreBinding:b.scoreBinding}])assert.equal(source.stageHasValidBinding({...s,...change}),false);
- const ui=fs.readFileSync(path.join(__dirname,'../app/page.tsx'),'utf8');assert.match(ui,/B站仅提供原分P外链，请手动定位到上述起点/);
+ const ui=require('./helpers/catalog-view-source.cjs')();assert.match(ui,/B站仅提供原分P外链，请手动定位到上述起点/);
 });
 test('incomplete identities, injected URLs, mismatched query and unsupported clips fail closed',()=>{
  for(const change of [{bilibili:undefined},{bilibili:{cid:'0',page:2}},{bilibili:{cid:'123456789',page:2,extra:true}},{clip:{startSeconds:0,endSeconds:20,sourceDurationSeconds:20}},{url:b.url+'&p=2'},{url:b.url+'&cid=999'},{url:b.url+'&redirect=https://example.org'},{url:b.url.replace('www.bilibili.com','www.bilibili.com.evil.example')},{url:b.url.replace('https:','http:')},{url:b.url+'#p=1'},{scorePolicy:'view_only'},{completeness:'excerpt'}])assert.equal(source.stageSourceKey({...b,...change}),null,JSON.stringify(change));

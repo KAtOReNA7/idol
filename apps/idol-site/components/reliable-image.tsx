@@ -3,7 +3,7 @@
 import {cloneElement, createContext, isValidElement, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ImgHTMLAttributes, type ReactElement, type ReactNode} from 'react';
 import {activateImageSession, cachedImageResult, canRetryImage, commitImageResult, createImagePresentation, deactivateImageSession, imageAttemptSource, imageInputKey, IMAGE_RETRY_COOLDOWN_MS, isImageRetryActivationKey, isImageSessionCurrent, retryImagePresentation, type ImageStatus} from '../lib/idol/image-presentation';
 import './reliable-image.css';
-import {publicCoverZoom} from '../lib/idol/mv-public-media';
+import {publicCoverZoom} from '../lib/idol/mv-public-covers';
 
 export interface ReliableImageState {
   status: ImageStatus;

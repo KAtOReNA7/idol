@@ -369,5 +369,16 @@
     "original": "@/data/madein-editorial-evidence.json",
     "replacement": "tests/fixtures/timeline-host/content-aliases/madein-editorial-evidence.ts",
     "limitation": "Empty public identity evidence; synthetic catalog remains uncurated. No private input."
+  },
+  {
+    "original": "../../data/mv-public-media.json",
+    "importer": "lib/idol/mv-public-media.ts",
+    "replacement": "tests/fixtures/timeline-host/content-aliases/mv-public-media.ts",
+    "unverified": "Synthetic cover and portrait lookup. Real artwork stays outside this fixture."
+  },
+  {
+    "original": "@/data/public-work-credits.json",
+    "replacement": "tests/fixtures/timeline-host/content-aliases/public-work-credits.ts",
+    "unverified": "Explicit empty editorial credits for synthetic members and works."
   }
 ]

@@ -23,11 +23,13 @@ export function projectMemberCareers(data){
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const pick=(value,keys)=>Object.fromEntries(keys.filter(key=>Object.hasOwn(value,key)).map(key=>[key,value[key]]));
 const projectionSources={
+ 'mv-public-covers.json':'mv-public-media.json',
  'member-careers/source-ids.json':'../research/member-careers/data/source-index.json',
  'member-careers/trusted-hashes.json':'../research/member-careers/data/adoption-ledger.json',
  'member-careers/accepted-claims.json':'../research/member-careers/data/canonical.json',
 };
 export const projections={
+ 'mv-public-covers.json':data=>data.covers,
  'member-careers/source-ids.json':data=>data.sources.map(s=>s.sourceId),
  'member-careers/trusted-hashes.json':data=>Object.fromEntries(data.records.map(c=>[c.id,c.adoptedClaimHash])),
  'member-careers/accepted-claims.json':data=>data.memberClaims.filter(c=>c.kind==='member_patch'&&['accepted','accepted_with_revision'].includes(c.decision)),
@@ -41,12 +43,12 @@ export const projections={
  }),
  'idle-design-public.json':data=>({...data,assets:Object.fromEntries(Object.entries(data.assets).map(([key,asset])=>[key,pick(asset,['src','width','height','alt'])]))}),
 };
-export function generate({check=false}={}){
+export function generate({check=false,outputRoot=path.join(root,'data/runtime')}={}){
  const stale=[];
  for(const [name,project] of Object.entries(projections)){
   const source=JSON.parse(readFileSync(path.join(root,'data',projectionSources[name]??name),'utf8'));
   const output=JSON.stringify(project(source),null,2)+'\n';
-  const destination=path.join(root,'data/runtime',name);
+  const destination=path.join(outputRoot,name);
   if(check){let current;try{current=readFileSync(destination,'utf8');}catch{}if(current!==output)stale.push(name);}
   else{mkdirSync(path.dirname(destination),{recursive:true});writeFileSync(destination,output);}
  }

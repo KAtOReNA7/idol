@@ -13,7 +13,7 @@ function normalize(selected,candidates=[selected],recordId=workId){
 function merge(batch,{previous,score=null,journal=[],capturedAt=now,published,omitSchema=false,sourceWork,additionalWorks=[],additionalVideos={},scores={},transformExport=x=>x}={}){
  return temporary(temp=>{
   fs.mkdirSync(path.join(temp,'scripts'),{recursive:true});fs.mkdirSync(path.join(temp,'data/stages'),{recursive:true});
-  for(const f of ['merge-stage-batch.py','stage_selection_policy.py','stage_source_identity.py'])fs.copyFileSync(path.join(root,'scripts',f),path.join(temp,'scripts',f));
+  for(const f of ['merge-stage-batch.py','stage_selection_policy.py','stage_source_identity.py','stage_batch_files.py'])fs.copyFileSync(path.join(root,'scripts',f),path.join(temp,'scripts',f));
   const write=(name,obj)=>fs.writeFileSync(path.join(temp,name),JSON.stringify(obj,null,2)+'\n');
   const videos={...additionalVideos,...(previous?{[workId]:previous}:{})};if(sourceWork)videos[sourceWork.recordId]=sourceWork.stage;
   const inventory=[{recordId:workId,groupIds:[groupId],song:'Synthetic Song (Japanese Ver.)',mv:{videoId:'originalMV1',officialTitle:'Original Official MV'}}];

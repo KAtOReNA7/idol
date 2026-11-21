@@ -4,8 +4,8 @@ const {find,all}=require('./helpers/read-recovery-harness.cjs');
 const {imageDependency}=require('./helpers/image-dependency-loader.cjs');
 const photo={table:'members',recordId:'recFixtureMember',index:0};
 test('real App four image entry points are wired and recovery controls remain outside card interactions',()=>{
- const text=fs.readFileSync('app/page.tsx','utf8'),ast=ts.createSourceFile('page.tsx',text,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
- for(const [name,adapter]of [['PhotoView','CatalogPhotoImage'],['WorkCard','WorkCoverImage'],['MemberWorkCard','CatalogPhotoImage'],['MemberDetail','ConceptPhotoImage']]){const fn=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text===name);assert.ok(fn);assert.match(fn.getText(ast),new RegExp('<'+adapter));assert.doesNotMatch(fn.getText(ast),/<img\b/);}
+ const text=require('./helpers/catalog-view-source.cjs')(),ast=ts.createSourceFile('page.tsx',text,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+ for(const [name,adapter]of [['PhotoView','CatalogPhotoImage'],['WorkCard','WorkCoverImage'],['MemberWorkCard','MvIdentityPhoto'],['MemberDetail','MusicPortrait'],['MusicPortrait','ConceptPhotoImage']]){const fn=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text===name);assert.ok(fn);assert.match(fn.getText(ast),new RegExp('<'+adapter));assert.doesNotMatch(fn.getText(ast),/<img\b/);}
  let provider=0,controls=0;function walk(n){if(ts.isJsxOpeningElement(n)||ts.isJsxSelfClosingElement(n)){const name=n.tagName.getText(ast);if(name==='ImageRecoveryProvider')provider++;if(name==='ImageRecoveryControls'){controls++;for(let p=n.parent;p;p=p.parent)if(ts.isJsxElement(p))assert.ok(!['a','button'].includes(p.openingElement.tagName.getText(ast)));}}ts.forEachChild(n,walk);}walk(ast);assert.equal(provider,1);assert.equal(controls,1);
 });
 test('nested member card receives an external recovery button without nesting or parent activation',()=>{

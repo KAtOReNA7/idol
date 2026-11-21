@@ -99,7 +99,7 @@ test('strict formal then viewing preimages preserve the original 496 sources, ev
 });
 
 test('actual anonymous stage media SSR shows one formal player, its scope note and no duplicate or stale candidate card', () => {
-  const source = fs.readFileSync(path.join(app, 'app/page.tsx'), 'utf8');
+  const source = require('./helpers/catalog-view-source.cjs')();
   const start = source.indexOf('function StageSupplements('), end = source.indexOf('function PageTitle(', start);
   const code = ts.transpileModule('export ' + source.slice(start, end), {compilerOptions: {
     module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.React,

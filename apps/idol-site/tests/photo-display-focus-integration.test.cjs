@@ -7,7 +7,7 @@ function tables(c,photos=[raw(c)]){return {groups:{records:[]},members:{records:
 const old={file_token:'old-reference'},project=(c,photos)=>projectCatalog(tables(c,photos),'live','now');
 let views;
 test.before(()=>{
- const source=fs.readFileSync('app/page.tsx','utf8'),ast=ts.createSourceFile('page.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX),fn=name=>ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text===name).getText(ast),card=fn('MemberWorkCard');
+ const source=require('./helpers/catalog-view-source.cjs')(),ast=ts.createSourceFile('page.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX),fn=name=>ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text===name).getText(ast),card=fn('MemberWorkCard');
  // Only the initial open state changes; the production event/URL expression and
  // actual lightbox JSX remain intact. Portal placement is a deterministic port.
  const opened=card.replace('function MemberWorkCard','function OpenMemberWorkCard').replace('useState(false)','useState(true)');

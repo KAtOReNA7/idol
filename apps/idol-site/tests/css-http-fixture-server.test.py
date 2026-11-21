@@ -51,8 +51,11 @@ class FixtureHandlerTests(unittest.TestCase):
             raise RuntimeError("Build the local fixture first: node tests/css-http-fixture-build.mjs")
         cls.manifest = json.loads(manifest_path.read_text())
         cls.themes = {Path(theme["href"]).name: FIXTURE_ROOT / theme["href"].lstrip("/") for theme in cls.manifest["themes"]}
-        if len(cls.themes) != 37:
-            raise RuntimeError("Expected 37 exact production theme files in the generated fixture")
+        import re
+        files = ['lib/idol/work-experience-styles.ts', 'lib/idol/candidate/experience-styles.ts']
+        expected = {slug for file in files for slug in re.findall(r'([a-z0-9]+)-experience\.css\?url', (HERE.parent / file).read_text())}
+        if not expected or len(cls.themes) != len(expected) or set(cls.manifest['expectedThemes']) != expected:
+            raise RuntimeError("Expected the complete source theme inventory in the generated fixture")
         cls.basename = next(iter(cls.themes))
 
     def setUp(self):
@@ -119,10 +122,11 @@ class FixtureHandlerTests(unittest.TestCase):
         self.assertEqual(log["requests"][-1]["path"], "/fixture-log.json")
         self.assertIsNone(log["requests"][-1]["status"], "The log request is still pending in its own snapshot")
 
-    def test_all_40_css_and_15_fonts_serve_exact_local_bytes(self):
+    def test_every_inventoried_stylesheet_and_font_serves_exact_bytes(self):
         css_paths = self.manifest["baseCss"] + [theme["href"] for theme in self.manifest["themes"]]
-        self.assertEqual(len(css_paths), 40)
-        self.assertEqual(len(self.manifest["fontPaths"]), 15)
+        self.assertEqual(len(set(css_paths)), len(self.themes) + len(self.manifest["baseCss"]))
+        expected_fonts = {"/" + file.relative_to(HERE.parent / "public").as_posix() for file in (HERE.parent / "public/fonts").rglob("*") if file.suffix.lower() in {".woff", ".woff2", ".ttf", ".otf"}}
+        self.assertSetEqual(set(self.manifest["fontPaths"]), expected_fonts)
         for href in css_paths + self.manifest["fontPaths"]:
             with self.subTest(href=href):
                 status, headers, body = self.request(href)

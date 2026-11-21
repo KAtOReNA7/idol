@@ -20,5 +20,5 @@ test('approved public artwork covers all nine production videos with unchanged o
  for(const record of snapshot.tables.works.records){const f=record.fields,w={id:record.recordId,url:f.fldhBWXBZE?.[0]?.url,groupIds:(f.fld2wy1cqw??[]).map(x=>x.recordId)};const m=h.media(w);if(!m)continue;count++;for(const kind of ['poster','releaseCover']){const bytes=fs.readFileSync(path.join(__dirname,'../public',m[kind]));assert.ok(bytes.length>2000);}}
  assert.equal(count,9);
  const assets=JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures/editorial-detail-assets.json')));for(const asset of assets){const bytes=fs.readFileSync(path.join(__dirname,'../public',asset.path));assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),asset.sha256,asset.path);assert.ok(asset.width>0&&asset.height>0);}
- const source=fs.readFileSync(path.join(__dirname,'../app/page.tsx'),'utf8');assert.ok(source.includes('data.works??[]'));assert.ok(source.includes("data.ratings.filter(r=>r.workIds.includes(work.id))"));
+ const source=require('./helpers/catalog-view-source.cjs')();assert.ok(source.includes('data.works??[]'));assert.ok(source.includes("data.ratings.filter(r=>r.workIds.includes(work.id))"));
 });

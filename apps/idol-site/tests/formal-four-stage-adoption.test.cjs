@@ -75,7 +75,7 @@ test('four exact official poster originals preserve SHA and are only returned fo
  h.sql.close();
 });
 test('only a duplicate of the selected whole-video stage is hidden from other viewing choices; archived research and clips remain available',()=>{
- const source=fs.readFileSync(path.join(root,'app/page.tsx'),'utf8'),tree=ts.createSourceFile('page.tsx',source,ts.ScriptTarget.ES2022,true,ts.ScriptKind.TSX),fn=tree.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='StageSupplements');
+ const source=require('./helpers/catalog-view-source.cjs')(),tree=ts.createSourceFile('page.tsx',source,ts.ScriptTarget.ES2022,true,ts.ScriptKind.TSX),fn=tree.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='StageSupplements');
  const output={},jsx=(type,props)=>({type,props:props??{}}),runtime={jsx,jsxs:jsx,Fragment:'fragment'};
  const code=ts.transpileModule(fn.getText(tree)+'\nexport {StageSupplements};',{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
  vm.runInNewContext('(function(require,exports){'+code+'})',{stageMatchesAlternative:require('./helpers/public-artist-loader.cjs')('lib/idol/stage-source.ts').stageMatchesAlternative,performanceLabel:()=>'',performerLabel:()=>'',alternativeViewingNote:()=>'',selectionNote:()=>'',platformLabel:{youtube:'YouTube'},ArrowUpRight:'arrow',formatStageTime:String})(()=>runtime,output);

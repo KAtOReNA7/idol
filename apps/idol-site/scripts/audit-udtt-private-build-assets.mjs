@@ -3,7 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
-import {resolveAuditedCarriers} from './audit-built-carriers.mjs';
+import {resolveAuditedCarriers,verifiedContractCarriers,workerEntry} from './audit-built-carriers.mjs';
+const currentCarrierPins=JSON.parse(fs.readFileSync(new URL('./vinext14-contract-carriers.json',import.meta.url),'utf8'));
 const manifestPath=fileURLToPath(new URL('./udtt-private-build-assets-manifest.json',import.meta.url));
 const hash=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const ext=/\.(?:[cm]?js|jsx|[cm]?ts|tsx|json|css|html|svg|txt|map)$/;
@@ -45,8 +46,10 @@ export function auditUdttPrivateBuildAssets(root,manifest=JSON.parse(fs.readFile
  const publicPaths=files(path.join(root,'public')).map(p=>'/'+path.relative(path.join(root,'public'),p).split(path.sep).join('/'));
  // These files retain their original full-content hashes. Only build-graph
  // filenames are discovered; no contract/code/asset metadata is normalized.
- const builtContractCarriers=resolveAuditedCarriers(root,manifest.builtContractCarriers,'lifecycle');
- const index=path.join(root,'dist/server/index.js');if(!fs.existsSync(index))throw new Error('Build dist first');
+ const index=workerEntry(root);
+ const builtContractCarriers=index===path.join(root,'dist/server/index.js')
+  ?resolveAuditedCarriers(root,manifest.builtContractCarriers,'lifecycle')
+  :verifiedContractCarriers(root,currentCarrierPins);
  for(const p of files(path.join(root,'dist')).filter(p=>ext.test(p))){let text=normalize(fs.readFileSync(p,'utf8').replaceAll('\\/','/'));
   if(p===index){const re=/new Set\(`([^`]*?\/artist\/[^`]*?)`\.split\(`,`\)\)/g,m=[...text.matchAll(re)];if(m.length!==1||!same(m[0][1].split(','),publicPaths))throw new Error('UDTT unknown public routing inventory');text=text.replace(re,'new Set()');}
   if(text.replace(/\/design-review\/sol15\/assets\/[a-f0-9]{64}\.(?:jpg|webp|png)/g,'').includes('/design-review/sol15/assets/'))throw new Error(`UDTT dynamic built static consumer: ${p}`);

@@ -11,7 +11,7 @@ const {stageMatches}=load('lib/idol/stage-display.ts');
 const {formatStageTime}=load('lib/idol/stage-source.ts');
 const productCopy=load('lib/idol/product-copy.ts');
 const metadata=beforeHeyGabbyViewing(require('../data/stages/supplements.json')),id='recvxyOz5Xo5fW';
-const source=fs.readFileSync(path.join(__dirname,'../app/page.tsx'),'utf8');
+const source=require('./helpers/catalog-view-source.cjs')();
 const start=source.indexOf('function StageSupplements('),end=source.indexOf('function PageTitle(',start);
 const code=ts.transpileModule('export '+source.slice(start,end),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.React}}).outputText;
 const component={};vm.runInNewContext(`(function(exports){${code}})`,{React,ArrowUpRight:()=>null,platformLabel:{youtube:'YouTube'},validStageResearchNote,...productCopy,formatStageTime})(component);

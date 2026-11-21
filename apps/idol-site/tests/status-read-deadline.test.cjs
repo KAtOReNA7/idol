@@ -1,13 +1,13 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),ts=require('typescript');
 const tick=()=>new Promise(r=>setImmediate(r));
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b});return {promise,resolve,reject}};
-const source=fs.readFileSync('app/page.tsx','utf8'),effect=source.split('\n').find(s=>s.includes("fetch('/api/status'")),response=source.split('\n').find(s=>s.startsWith('async function readResponse('));
+const source=require('./helpers/catalog-view-source.cjs')(),effect=source.split('\n').find(s=>s.includes("fetch('/api/status'")),response=source.split('\n').find(s=>s.startsWith('async function readResponse('));
 const compile=s=>ts.transpileModule(s,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
 function harness(){
  let value=false,writes=0,cleanup,now=0,next=0;const requests=[],timers=new Map(),exports={};
  const globals={AbortController,DOMException,setTimeout:(f,ms)=>{timers.set(++next,{f,ms,due:now+ms});return next},clearTimeout:id=>timers.delete(id)};
  vm.runInNewContext(compile(fs.readFileSync('lib/idol/catalog-read-deadline.ts','utf8')),{exports,...globals});
- vm.runInNewContext(compile(response+'\n'+effect),{...globals,catalogReadWithDeadline:exports.catalogReadWithDeadline,useEffect:f=>{cleanup=f()},setCanManage:v=>{value=v;writes++},fetch:(url,options)=>{const d=deferred();requests.push({...d,url,options});return d.promise;}});
+ vm.runInNewContext(compile(response+'\n'+effect),{canEdit:true,...globals,catalogReadWithDeadline:exports.catalogReadWithDeadline,useEffect:f=>{cleanup=f()},setCanManage:v=>{value=v;writes++},fetch:(url,options)=>{const d=deferred();requests.push({...d,url,options});return d.promise;}});
  return {requests,timers,value:()=>value,writes:()=>writes,unmount:()=>cleanup(),reply(data){requests[0].resolve({ok:true,headers:{get:()=> 'application/json'},json:async()=>data})},async advance(ms){now+=ms;for(const [id,t] of timers)if(t.due<=now){timers.delete(id);t.f()}await tick()}};
 }
 test('pending status keeps the management entry hidden; native success restores existing visibility',async()=>{

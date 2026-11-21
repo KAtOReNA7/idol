@@ -14,4 +14,4 @@ for(const [groupId,heading]of [[ids.SAYMYNAME_GROUP_ID,'saymyname-work-heading']
   h.find(h.render(),n=>n.props.id==='mv-tab').props.onClick();assert.match(text(),/2024-10-16/);assert.equal(h.requests.length,0);
  });
 }
-test('all repeated group headings consistently select the active source date',()=>{const s=fs.readFileSync('app/page.tsx','utf8');assert.doesNotMatch(s,/\[work.releaseDate,view==='stage'\?'舞台'/);assert.equal((s.match(/\[view==='stage'\?stage\?\.publishedDate:work.releaseDate,view==='stage'\?'舞台'/g)||[]).length,12);});
+test('all repeated group headings consistently select the active source date',()=>{const s=require('./helpers/catalog-view-source.cjs')();assert.doesNotMatch(s,/\[work.releaseDate,view==='stage'\?'舞台'/);assert.equal((s.match(/\[view==='stage'\?stage\?\.publishedDate:work.releaseDate,view==='stage'\?'舞台'/g)||[]).length,12);});

@@ -82,12 +82,18 @@ test('career projections preserve unsorted duplicate source IDs, last hash wins,
 });
 test('career projection check rejects stale bytes without silently regenerating and build retains mandatory check',async()=>{
  const {generate}=await import('../scripts/build-artist-runtime-data.mjs');
- for(const name of Object.keys(careerSources)){
-  const file='data/runtime/member-careers/'+name,original=fs.readFileSync(file);
-  try{fs.writeFileSync(file,'[]\n');assert.throws(()=>generate({check:true}),/Stale runtime data/);assert.equal(fs.readFileSync(file,'utf8'),'[]\n');}
-  finally{fs.writeFileSync(file,original);}
- }
- generate({check:true});
+ const directory=fs.mkdtempSync(path.join(require('node:os').tmpdir(),'idol-runtime-check-'));
+ try{
+  generate({outputRoot:directory});
+  for(const name of Object.keys(careerSources)){
+   const file=path.join(directory,'member-careers',name),original=fs.readFileSync(file);
+   fs.writeFileSync(file,'[]\n');
+   assert.throws(()=>generate({check:true,outputRoot:directory}),/Stale runtime data/);
+   assert.equal(fs.readFileSync(file,'utf8'),'[]\n');
+   fs.writeFileSync(file,original);
+  }
+  generate({check:true,outputRoot:directory});
+ }finally{fs.rmSync(directory,{recursive:true,force:true});}
  assert.match(JSON.parse(fs.readFileSync('package.json')).scripts.build,/^node scripts\/build-artist-runtime-data\.mjs --check && /);
 });
 test('full career evidence is absent from application imports and guard projections stay outside client graphs',()=>{

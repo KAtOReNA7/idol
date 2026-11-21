@@ -17,15 +17,16 @@ function assertPublicNavigationContent(row,content){
 function assertPublicArtistNavigation(value,file){
  const exact=(object,keys)=>object&&typeof object==='object'&&!Array.isArray(object)&&JSON.stringify(Object.keys(object).sort())===JSON.stringify([...keys].sort());
  const strings=(list,pattern)=>Array.isArray(list)&&list.every(item=>typeof item==='string'&&pattern.test(item))&&new Set(list).size===list.length;
+ const undatedEvents={"vcha":["e-vcha-girlset-rebrand"],"atheart":["e-atheart-aurora-hiatus-observed"]};
  const key=/^[a-z0-9][A-Za-z0-9:_-]{0,199}$/;
  const record=/^rec[A-Za-z0-9]+$/;
  const fail=()=>{throw new Error('Non-key public navigation payload: '+file);};
- if(value.schemaVersion!==1||!exact(value.groups,['triples','rescene','purplekiss']))fail();
+ if(value.schemaVersion!==1||!exact(value.groups,["triples","rescene","purplekiss","youngposse","genblue","wooah","izna","ifeye","bewave","candyshop","oddyouth","adya","geenius","tracer","witchx","spia","vcha","hitgs","atheart"]))fail();
  for(const [slug,group]of Object.entries(value.groups)){
   if(!exact(group,['groupId','path','memberIds','releases','media','units','years','events'])||!record.test(group.groupId)||group.path!=='/artists/'+slug)fail();
   if(!strings(group.memberIds,record)||!strings(group.releases,key)||!strings(group.units,key)||!strings(group.years,/^20[0-9]{2}$/))fail();
   if(!Array.isArray(group.media)||!group.media.every(item=>exact(item,['key','kind'])&&typeof item.key==='string'&&key.test(item.key)&&['mv','stage'].includes(item.kind))||new Set(group.media.map(item=>item.kind+':'+item.key)).size!==group.media.length)fail();
-  if(!Array.isArray(group.events)||!group.events.every(item=>exact(item,['id','year'])&&typeof item.id==='string'&&key.test(item.id)&&group.years.includes(item.year))||new Set(group.events.map(item=>item.id)).size!==group.events.length)fail();
+  if(!Array.isArray(group.events)||!group.events.every(item=>exact(item,['id','year'])&&typeof item.id==='string'&&key.test(item.id)&&(group.years.includes(item.year)||(item.year===''&&undatedEvents[slug]?.includes(item.id))))||new Set(group.events.map(item=>item.id)).size!==group.events.length)fail();
  }
 }
 const sourceRoot=path.resolve(__dirname,'../../..');
@@ -41,7 +42,7 @@ function explicitTestAliases(observed=[]) {
    observed.push({original:args.path,replacement:target});
    return {path:target};
   });
-  build.onResolve({filter:/^\.\.\/\.\.\/data\/triples\//},args=>{
+  build.onResolve({filter:/^\.\.\/\.\.\/data\//},args=>{
    const row=manifest.find(row=>row.importer&&row.original===args.path&&path.resolve(sourceRoot,row.importer)===path.resolve(args.importer));
    if(!row)return;
    const target=path.resolve(sourceRoot,row.replacement);

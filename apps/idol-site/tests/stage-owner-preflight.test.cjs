@@ -3,16 +3,16 @@ const root=path.resolve(__dirname,'..');
 function harness({afterBatch}={}){
  const sql=new DatabaseSync(':memory:');sql.exec(`CREATE TABLE idol_storage_control(id,owner_id,mode,epoch,active_snapshot);INSERT INTO idol_storage_control VALUES('main','owner','native',6,'snapshot');
  CREATE TABLE idol_native_fields(snapshot_id,table_key,fields_json);INSERT INTO idol_native_fields VALUES('snapshot','works','[{"field_id":"fld641ausT"}]');
- CREATE TABLE idol_native_records(snapshot_id,table_key,record_id,fields_json);
+ CREATE TABLE idol_native_records(key TEXT PRIMARY KEY,snapshot_id,table_key,record_id,fields_json);
  CREATE TABLE idol_saves(user_id,record_id,table_key,status,created_at,id,payload);`);
- const insert=sql.prepare('INSERT INTO idol_native_records VALUES(?,?,?,?)');for(const [id,value] of [['recEmpty',null],['recZero',0],['recRated',9],['recBlank',' ']])insert.run('snapshot','works',id,JSON.stringify({fld641ausT:value,privateNote:'NEVER_EXPORT_ME'}));
+ const insert=sql.prepare('INSERT INTO idol_native_records VALUES(?,?,?,?,?)');for(const [id,value] of [['recEmpty',null],['recZero',0],['recRated',9],['recBlank',' ']])insert.run('snapshot:works:'+id,'snapshot','works',id,JSON.stringify({fld641ausT:value,privateNote:'NEVER_EXPORT_ME'}));
  sql.prepare('INSERT INTO idol_saves VALUES(?,?,?,?,?,?,?)').run('owner','recZero','works','unknown',0,'save1','SECRET_PAYLOAD');
  sql.prepare('INSERT INTO idol_saves VALUES(?,?,?,?,?,?,?)').run('owner','recOther','works','done',1,'save2','UNRELATED_PRIVATE');
  const queries=[],sources={recEmpty:{videoId:'source12345'},recZero:{videoId:'zeroVideo12'}};
  const db={prepare(q){queries.push(q);let args=[];return{bind(...a){args=a;return this},async first(){return sql.prepare(q).get(...args)??null},async run(){return{success:true,results:sql.prepare(q).all(...args)}}}},async batch(items){sql.exec('BEGIN');try{const result=[];for(const item of items)result.push(await item.run());sql.exec('COMMIT');afterBatch?.(sql,result);return result;}catch(e){if(sql.isTransaction)sql.exec('ROLLBACK');throw e;}}};
  class AppError extends Error{constructor(code,message,status){super(message);this.code=code;this.status=status;}}
  const mods=new Map();function load(file){if(mods.has(file))return mods.get(file);const e={};mods.set(file,e);const code=ts.transpileModule(fs.readFileSync(path.join(root,'lib/idol',file+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
- vm.runInNewContext(`(function(require,exports){${code}})`,{crypto,TextEncoder,btoa,Uint8Array,Date})(n=>n==='cloudflare:workers'?{env:{DB:db}}:n==='./feishu'?{AppError}:n==='./native-format'?{}:n==='./stage'?{stageSourceMetadata:sources}:load(n.slice(2)),e);return e;}
+ vm.runInNewContext(`(function(require,exports){${code}})`,{crypto,TextEncoder,btoa,Uint8Array,Date})(n=>n==='cloudflare:workers'?{env:{DB:db}}:n==='./feishu'?{AppError}:n==='./native-format'?{nativeKey:(snapshot,table,id)=>[snapshot,table,id].join(':')}:n==='./stage'?{stageSourceMetadata:sources}:load(n.slice(2)),e);return e;}
  return{sql,queries,sources,call:load('stage-owner-preflight').stageOwnerPreflight};
 }
 const decode=e=>{const b=Buffer.from(e.payloadBase64,'base64');assert.equal(b.length,e.byteLength);assert.equal(createHash('sha256').update(b).digest('hex'),e.sha256);return JSON.parse(b);};
@@ -67,4 +67,33 @@ test('expired, incomplete, corrupted and wrong-source preflights cannot change a
  const mutations=[p=>{p.complete=false},p=>{p.workIds=['recWrong']},p=>{p.works=[]},p=>{p.works[0].scoreEmpty='true'},p=>{p.journalCheck.complete=false},p=>{delete p.stageVideos[workId]},p=>{p.stageVideos[workId]={videoId:'WRONG'}},p=>{p.capturedAt=new Date(Date.now()-301000).toISOString()}];
  for(const edit of mutations){const r=merge(batch(),{previous,transformExport:f=>envelope(f,edit)});assert.notEqual(r.status,0);assert.deepEqual(r.beforeFiles,r.afterFiles);}
  const corrupt=merge(batch(),{previous,transformExport:f=>envelope(f,()=>{},e=>{e.sha256='0'.repeat(64)})});assert.notEqual(corrupt.status,0);assert.deepEqual(corrupt.beforeFiles,corrupt.afterFiles);
+});
+
+test('official single-song additions require an empty score, clean journal and absent published source',()=>{
+ const selected=base();
+ const b=batch();
+ b.items=[{recordId:workId,status:'verified',selected,selectedVideoId:selected.videoId,
+  selectedSourceKey:selected.videoId,candidates:[selected],reason:'Synthetic official full performance',checkedAt:selected.checkedAt}];
+ for(const transformExport of [value=>value,envelope]){
+  for(const options of [{score:0},{score:8},{journal:[{record_id:workId,table_key:'works',status:'pending'}]}]){
+   const r=merge(b,{...options,transformExport});
+   assert.equal(r.status,0,r.stderr);
+   assert.deepEqual(r.videos,{});
+   assert.equal(JSON.parse(r.stdout).retainedExistingSources.length,1);
+  }
+  const present=merge(b,{published:{[workId]:previous},transformExport});
+  assert.notEqual(present.status,0);
+  assert.deepEqual(present.beforeFiles,present.afterFiles);
+ }
+ const repeated=merge(b,{transformExport:f=>({...f,tables:{works:{...f.tables.works,records:[...f.tables.works.records,...f.tables.works.records]}}})});
+ assert.notEqual(repeated.status,0);
+ assert.deepEqual(repeated.beforeFiles,repeated.afterFiles);
+});
+test('an inconclusive research update preserves an already adopted local source awaiting publication',()=>{
+ const b=batch();
+ Object.assign(b.items[0],{status:'pending',selected:null,reason:'Awaiting more public evidence'});
+ const result=merge(b,{previous,published:{}});
+ assert.equal(result.status,0,result.stderr);
+ assert.deepEqual(result.videos[workId],previous);
+ assert.deepEqual(JSON.parse(result.stdout).retiredUnpublishedUnverifiedSources,[]);
 });

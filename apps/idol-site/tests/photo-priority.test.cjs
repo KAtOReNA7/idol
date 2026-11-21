@@ -21,14 +21,20 @@ test('failure fallback and existing photo retry preserve the requested loading p
   assert.equal(img.props.src,`/api/media?table=${table}&record=recSyntheticPhoto&index=0${table==='ratings'?'&retry=1':''}`);assert.equal(h.requests.length,0);
  }
 });
-test('only the first home hero PhotoView receives priority; every other call keeps the default',()=>{
- const source=fs.readFileSync('app/page.tsx','utf8'),ast=ts.createSourceFile('page.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX),calls=[];
- function visit(n){if((ts.isJsxSelfClosingElement(n)||ts.isJsxOpeningElement(n))&&n.tagName.getText(ast)==='PhotoView')calls.push(n);ts.forEachChild(n,visit);}visit(ast);
- assert.ok(calls.length>=5);
- const prioritized=calls.filter(n=>n.attributes.properties.some(a=>a.name?.getText(ast)==='priority'));assert.equal(prioritized.length,1);
- const attr=prioritized[0].attributes.properties.find(a=>a.name?.getText(ast)==='priority');assert.equal(attr.initializer.expression.getText(ast),'i===0');
- let parent=prioritized[0];while(parent&&!ts.isCallExpression(parent))parent=parent.parent;
- assert.ok(parent);assert.equal(parent.expression.getText(ast),'heroMembers.map');
+test('the featured editorial images request priority while the group cards use default scheduling',()=>{
+ const source=fs.readFileSync('components/music-home.tsx','utf8');
+ const ast=ts.createSourceFile('music-home.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+ const calls=[];
+ function visit(node){
+  if(ts.isJsxSelfClosingElement(node)&&node.tagName.getText(ast)==='ReliableImage')calls.push(node);
+  ts.forEachChild(node,visit);
+ }
+ visit(ast);
+ const flags=calls.map(node=>node.attributes.properties.some(prop=>prop.name?.getText(ast)==='priority'));
+ assert.deepEqual(flags,[false,true]);
+ let featured=calls[1].parent;
+ while(featured&&!ts.isCallExpression(featured))featured=featured.parent;
+ assert.equal(featured?.expression.getText(ast),'featured.map');
  const images=[0,1].map(i=>{const r=photoHarness().r;r.render({photo:{table:'members',recordId:'recHero'+i,index:0},label:'合成照片',priority:i===0});return find(r.tree,n=>n.type==='img');});
  assert.deepEqual(images.map(n=>[n.props.loading,n.props.fetchPriority]),[['eager','high'],['lazy','auto']]);
 });

@@ -455,5 +455,16 @@
     "importer": "lib/idol/approved-video-poster.ts",
     "replacement": "tests/fixtures/image-reliability/content-aliases/saymyname-video-posters.ts",
     "limitation": "Reuse the explicit empty poster allowlist shape; actual exact-video matching stays real. Production artwork and records are tested separately and never imported into this synthetic image fixture."
+  },
+  {
+    "original": "../../data/mv-public-media.json",
+    "importer": "lib/idol/mv-public-media.ts",
+    "replacement": "tests/fixtures/image-reliability/content-aliases/mv-public-media.ts",
+    "limitation": "Synthetic cover and portrait lookup. Real artwork stays outside this fixture."
+  },
+  {
+    "original": "@/data/public-work-credits.json",
+    "replacement": "tests/fixtures/image-reliability/content-aliases/public-work-credits.ts",
+    "limitation": "Explicit empty editorial credits for synthetic members and works."
   }
 ]

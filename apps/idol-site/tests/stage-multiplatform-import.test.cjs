@@ -54,7 +54,7 @@ function identity(source) {
 function merge(batch, options = {}) {
   return temporary(directory => {
     for (const name of ['scripts', 'data/stages']) fs.mkdirSync(path.join(directory, name), {recursive: true});
-    for (const name of ['merge-stage-batch.py', 'stage_selection_policy.py', 'stage_source_identity.py']) fs.copyFileSync(path.join(root, 'scripts', name), path.join(directory, 'scripts', name));
+    for (const name of ['merge-stage-batch.py', 'stage_selection_policy.py', 'stage_source_identity.py','stage_batch_files.py']) fs.copyFileSync(path.join(root, 'scripts', name), path.join(directory, 'scripts', name));
     const write = (name, value) => fs.writeFileSync(path.join(directory, name), JSON.stringify(value, null, 2) + '\n');
     const videos = options.catalog ? structuredClone(options.catalog) : options.previous ? {[id]: options.previous} : {};
     const inventory = options.inventory ? structuredClone(options.inventory) : [];

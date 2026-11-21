@@ -126,3 +126,8 @@ body:has(.music-experience){background:#fff}
  .music-experience .member-detail{grid-template-columns:1fr;gap:24px;padding-top:0}.music-experience .member-detail>.photo,.music-experience .music-portrait-original{max-width:260px;width:100%;margin:0 auto}.music-experience .member-detail h1{font-size:29px}.music-experience .member-works-grid{grid-template-columns:1fr}.music-experience .detail-return{padding:12px;margin-top:20px}.music-experience footer{margin-top:35px;gap:12px}.music-experience footer .footer-brand{font-size:25px}.music-experience .pi-header h2{font-size:30px}.music-experience .pi-panel{padding:16px}
 }
 @media(prefers-reduced-motion:reduce){.music-experience *{transition:none!important;scroll-behavior:auto!important}}
+.music-navigation-dialog{position:fixed;inset:0;width:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:white;color:#1d1d1f}
+.music-navigation-dialog::backdrop{background:rgba(20,18,24,.3)}
+.music-navigation-dialog .music-sidebar.is-open{position:static;display:flex;width:100%;height:100%;padding:20px;overflow:auto;background:white}
+.music-drawer-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.music-menu-close{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:22px;background:white}

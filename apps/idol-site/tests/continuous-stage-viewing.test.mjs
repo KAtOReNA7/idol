@@ -59,8 +59,8 @@ test('prior supplements and non-target sources stay unchanged; eight adopted sou
 });
 
 test('the existing player uses the selected source and hides duplicate viewing links',()=>{
- const page=fs.readFileSync('app/page.tsx','utf8');
- const section=page.slice(page.indexOf('function StageSupplements('),page.indexOf('function PageTitle('));
+ const page=fs.readFileSync('components/catalog/work-detail.tsx','utf8');
+ const section=page.slice(page.indexOf('function StageSupplements('),page.indexOf('function CaptionHelp('));
  assert.match(section,/仅供观看，不用于本条舞台评分/);
  assert.match(section,/href=\{a.url\}/);assert.doesNotMatch(section,/RecordEditor|stageVideoId=|iframe|setStage/);
  assert.match(section,/stageMatchesAlternative\(work.stage!,a\)/,'a subsequently adopted exact source is hidden from duplicate alternatives');

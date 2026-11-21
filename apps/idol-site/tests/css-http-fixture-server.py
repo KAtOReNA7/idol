@@ -141,8 +141,9 @@ def make_server(directory, port):
         if not css_path.is_relative_to(directory) or not css_path.is_file():
             raise ValueError(f"Invalid or absent fixture stylesheet: {theme['href']}")
         themes[css_path.name] = css_path
-    if len(themes) != 37:
-        raise ValueError(f"Expected 37 distinct theme files, found {len(themes)}")
+    slugs = sorted(row['slug'] for row in manifest['themes'])
+    if not slugs or len(themes) != len(slugs) or len(set(slugs)) != len(slugs) or slugs != manifest['expectedThemes']:
+        raise ValueError(f"Expected the distinct inventoried theme files, found {len(themes)}")
     state = FixtureState()
     handler = partial(FixtureHandler, directory=directory, state=state, themes=themes)
     server = ThreadingHTTPServer(("127.0.0.1", port), handler)

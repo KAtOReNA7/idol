@@ -1,5 +1,6 @@
 import {AppError} from './feishu';
 import {nativeDb,ownControl,sourceStamp,assertSourceUnchanged,type StorageControl} from './native-storage';
+import {nativeKey} from './native-format';
 import {stageSourceMetadata} from './stage';
 
 // Owner-only, live, read-only. A single D1 batch observes scores and the complete
@@ -13,7 +14,7 @@ export async function stageOwnerPreflight(userId:string,workIds:unknown){
  const result=await db.batch([
   db.prepare("SELECT * FROM idol_storage_control WHERE id='main' AND owner_id=?").bind(userId),
   db.prepare("SELECT fields_json FROM idol_native_fields WHERE snapshot_id=? AND table_key='works'").bind(snapshot),
-  db.prepare(`SELECT record_id,fields_json FROM idol_native_records WHERE snapshot_id=? AND table_key='works' AND record_id IN (${ids.map(()=>'?').join(',')})`).bind(snapshot,...ids),
+  db.prepare(`SELECT record_id,fields_json FROM idol_native_records WHERE snapshot_id=? AND table_key='works' AND key IN (${ids.map(()=>'?').join(',')})`).bind(snapshot,...ids.map(id=>nativeKey(snapshot,'works',id))),
   db.prepare('SELECT record_id,table_key,status FROM idol_saves WHERE user_id=? ORDER BY created_at,id').bind(userId),
  ]);
  if(result.some(r=>!r.success))throw new AppError('PREFLIGHT_INCOMPLETE','舞台核对读取不完整，请重试。',503);

@@ -1,8 +1,6 @@
 # Idol：正式开发与跨电脑交接
 
-正式工程是 [`apps/idol-site/`](apps/idol-site/)，当前接续基线是远端最新 `main`。先检查并保护本地修改，显式 fetch，再从 `origin/main` 创建新的 `codex/` 任务分支。根目录 Next sandbox 与 `handoffs/` 中冻结候选只保留历史，不用于覆盖正式站。
-
-正式站 [Idol Lens](https://idol-lens-private.wuke40758.chatgpt.site/) 已上线 **v190**。线上2121认人图绑定/707缺图；N/O候选已推送，仓库2124绑定/704缺图、628封面，A–O已导入。N的Sites文件上传超时尚无恢复证据，N/O累计3条尚未上线；43旧低清和18未知统计仍开放。51团已确认视觉、原图、稳定ID、个人数据和owner保存鉴权保持。GitHub合并不等于重新部署。
+正式工程位于 [apps/idol-site](apps/idol-site/README.md)。本轮优化从审查提交 `170d9957` 接续，父基线为 PR 47。正式 v203 有 500 个舞台，本地有 527 个。进入工程前先核对当前分支和工作树。运行入口、合成数据及验收顺序见[全项目路线图](docs/codex/PROJECT-AUDIT-AND-ROADMAP-20261121.md)。
 
 ## 接续与整理记录
 

@@ -14,11 +14,11 @@ b=gzip.compress(json.dumps(d,ensure_ascii=False).encode());(p/'data.json.gz').wr
 m={'formatVersion':'idol.full-backup.v1','id':'synthetic-archive','complete':True,'data':{'path':'data.json.gz','byteLength':len(b),'sha256':hashlib.sha256(b).hexdigest()},'photos':[],'references':[]}
 m['manifestHash']=hashlib.sha256(json.dumps(m,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest();(p/'manifest.json').write_text(json.dumps(m,ensure_ascii=False))
 `;
-  cp.execFileSync('python3',['-c',fixture,dir]);
-  const report=JSON.parse(cp.execFileSync('python3',[script,dir],{encoding:'utf8'}));
+  cp.execFileSync(process.platform==='win32'?'python':'python3',['-c',fixture,dir]);
+  const report=JSON.parse(cp.execFileSync(process.platform==='win32'?'python':'python3',[script,dir],{encoding:'utf8'}));
   assert.equal(report.completeBackup,true);assert.equal(report.restoredRecords,3);assert.equal(report.protectedValues,3);assert.equal(report.journalRows,1);assert.equal(report.fieldMismatches,0);
-  const restored=JSON.parse(cp.execFileSync('python3',['-c',"import sqlite3,json,sys; c=sqlite3.connect(sys.argv[1]); print(json.dumps(c.execute('SELECT record_id,fields_json,source_order FROM records ORDER BY source_order').fetchall()))",path.join(dir,'restore-verification.sqlite')],{encoding:'utf8'}));
+  const restored=JSON.parse(cp.execFileSync(process.platform==='win32'?'python':'python3',['-c',"import sqlite3,json,sys; c=sqlite3.connect(sys.argv[1]); print(json.dumps(c.execute('SELECT record_id,fields_json,source_order FROM records ORDER BY source_order').fetchall()))",path.join(dir,'restore-verification.sqlite')],{encoding:'utf8'}));
   assert.deepEqual(restored.map(r=>r[0]),['recz','reca','recm']);assert.deepEqual(restored.map(r=>r[2]),[0,1,2]);assert.equal(JSON.parse(restored[0][1]).fld38CJY2U,0);assert.equal(JSON.parse(restored[1][1]).fld38CJY2U,null);
-  const again=cp.spawnSync('python3',[script,dir],{encoding:'utf8'});assert.notEqual(again.status,0);assert.match(again.stderr,/fresh backup directory/);
+  const again=cp.spawnSync(process.platform==='win32'?'python':'python3',[script,dir],{encoding:'utf8'});assert.notEqual(again.status,0);assert.match(again.stderr,/fresh backup directory/);
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });

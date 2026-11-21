@@ -12,9 +12,9 @@ function harness({respectAbort=true}={}){
  const setTimeout=(f,delay)=>{const id=++nextTimer;timers.set(id,{f,due:now+delay});return id},clearTimeout=id=>timers.delete(id);
  const win={addEventListener(k,f){if(!listeners.has(k))listeners.set(k,new Set());listeners.get(k).add(f)},removeEventListener(k,f){listeners.get(k)?.delete(f)},confirm:()=>true};
  const fetch=(url,options={})=>new Promise((resolve,reject)=>{const q={url,options,resolve,reject};requests.push(q);if(respectAbort&&options.signal){const abort=()=>reject(options.signal.reason??new DOMException('Aborted','AbortError'));if(options.signal.aborted)abort();else options.signal.addEventListener('abort',abort,{once:true});}});
- const e={},source=fs.readFileSync(root+'/app/page.tsx','utf8')+'\nexport {Editor,PhotoView};';
+ const e={},source=require('./catalog-view-source.cjs')()+'\nexport {Editor,PhotoView};';
  const code=ts.transpileModule(source,{compilerOptions:{jsx:ts.JsxEmit.ReactJSX,module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
- const req=n=>n==='react'?React:n==='react/jsx-runtime'?runtime:n==='lucide-react'?new Proxy({},{get:(_,k)=>k}):n==='@/lib/idol/product-copy'?{requestMessage:c=>'Request failed: '+c}:{};
+ const req=n=>n==='react'?React:n==='@/components/public-access'?{useCanEdit:()=>true}:n==='react/jsx-runtime'?runtime:n==='lucide-react'?new Proxy({},{get:(_,k)=>k}):n==='@/lib/idol/product-copy'?{requestMessage:c=>'Request failed: '+c}:{};
  vm.runInNewContext('(function(require,exports){'+code+'})',{console,window:win,fetch,crypto,URL,URLSearchParams,Date,AbortController,AbortSignal,DOMException,setTimeout,clearTimeout})(req,e);
  return {exports:e,requests,timers,listeners,window:win,async advance(ms){now+=ms;for(const [id,t] of timers)if(t.due<=now){timers.delete(id);t.f();}await tick();},reply(index,values={score:1,stylingScore:null,memory:'',note:''}){requests[index].resolve({ok:true,headers:{get:()=>"application/json"},json:async()=>({values,revision:'synthetic',watchedOptions:['未观看']})});}};
 }

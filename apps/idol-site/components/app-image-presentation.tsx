@@ -1,5 +1,5 @@
 'use client';
-import {publicVideoCover} from '@/lib/idol/mv-public-media';
+import {publicVideoCover} from '@/lib/idol/mv-public-covers';
 
 import type {ComponentProps, CSSProperties, ReactNode} from 'react';
 import type {Photo, Work} from '../lib/idol/types';

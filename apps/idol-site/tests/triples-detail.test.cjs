@@ -33,5 +33,5 @@ test('tripleS header and release navigation use the guarded artist route callbac
  const h=harness();let target;h.wp.onArtistNavigate=url=>target=url;h.wp.work={...h.wp.work,...original};let t=h.renderWork();
  h.find(t,n=>n.props['aria-label']==='tripleS 首页').props.onClick();assert.equal(target,'/artists/triples');
  h.find(h.find(t,n=>n.props.className==='triples-associated-release'),n=>n.type==='button').props.onClick();assert.equal(target,'/artists/triples?section=works&release=assemble24');
- const source=fs.readFileSync(path.join(__dirname,'../app/page.tsx'),'utf8');assert.match(source,/onArtistNavigate=\{journey.leaveTo\}/);
+ const source=require('./helpers/catalog-view-source.cjs')();assert.match(source,/onArtistNavigate=\{journey.leaveTo\}/);
 });

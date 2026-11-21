@@ -7,7 +7,7 @@ test('i-dle mobile missing cast photo hides only the adjacent redundant label',(
  const label=rule(file,prefix+'+.image-label');assert.equal(label.parent.name,'media');assert.equal(label.parent.params,'(max-width:760px)');assert.equal(values(label).display,'none');
  assert.equal(values(rule(file,prefix)).padding,'8px');assert.equal(values(rule(file,prefix+'>svg')).display,'none');
  // The existing missing/error message remains; loaded img/a and its sibling label do not match.
- const source=fs.readFileSync('app/page.tsx','utf8');assert.ok(source.includes('<div className="photo-empty">'));assert.ok(source.includes('<span className="image-label">{kind}</span>'));
+ const source=require('./helpers/catalog-view-source.cjs')();assert.ok(source.includes('<div className="photo-empty">'));assert.ok(source.includes('<span className="image-label">{kind}</span>'));
  assert.ok(source.includes("'图片暂时无法加载'"));assert.ok(source.includes("'暂无 MV 截图'"));
  const hidden=[];postcss.parse(fs.readFileSync(file,'utf8')).walkRules(r=>{if(r.nodes.some(d=>d.prop==='display'&&d.value==='none')&&r.selector.includes('image-label'))hidden.push(r.selector)});assert.deepEqual(hidden,[prefix+'+.image-label']);
 });

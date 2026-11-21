@@ -191,7 +191,7 @@ test('runtime and canonical helper are pure, acyclic and leave established edito
   assert.doesNotMatch(source,/fetch\s*\(|localStorage|sessionStorage|window\.|document\.|\/api\/save|\/api\/records|\.POST\s*\(/);
   const route=fs.readFileSync('lib/idol/public-artist-route-keys.ts','utf8');
   assert.doesNotMatch(route,/from ['"].*(?:artist-navigation|public-artist-bridge|design-public-catalog|types)['"]/);
-  const editor=fs.readFileSync('app/page.tsx','utf8'),driver=fs.readFileSync('components/use-browse-journey.ts','utf8');
+  const editor=require('./helpers/catalog-view-source.cjs')(),driver=fs.readFileSync('components/use-browse-journey.ts','utf8');
   for(const token of ['onDirtyChange','onNavigationBlockedChange','operationId:crypto.randomUUID()','revision:detail.revision','values:changed'])assert.ok(editor.includes(token));
   assert.match(driver,/mayLeave\(\)/);assert.match(driver,/data-dirty/);assert.match(driver,/data-navigation-blocked/);
   assert.equal(bridge.publicArtistHref('__proto__'),null);assert.equal(bridge.translatePublicPrototypeRoute('__proto__','#/home'),null);

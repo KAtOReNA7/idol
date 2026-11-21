@@ -1,5 +1,6 @@
 // Production build accounting, not a transfer-size or LCP measurement.
 import fs from 'node:fs';
+import {clientReferenceKey,layoutStyles} from './client-manifest.mjs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 const directory=path.resolve(process.argv[2]??'dist/client');
@@ -15,11 +16,10 @@ function measure(keys){
  const css=[...new Set(closure.flatMap(key=>manifest[key].css??[]))].map(file=>{const bytes=fs.readFileSync(path.join(directory,file));return {file,bytes:bytes.length,gzipBytes:zlib.gzipSync(bytes).length};});
  return {cssBytes:css.reduce((n,c)=>n+c.bytes,0),cssGzipBytes:css.reduce((n,c)=>n+c.gzipBytes,0),cssFiles:css.length,css,jsBytes:chunks.reduce((n,c)=>n+c.bytes,0),gzipBytes:chunks.reduce((n,c)=>n+c.gzipBytes,0),jsFiles:chunks.length,chunks};
 }
-const page=measure(['app/page.tsx']);
-const initial=measure(['virtual:vinext-app-browser-entry','app/page.tsx']);
-const serverManifestPath=path.join(directory,'../server/__vite_rsc_assets_manifest.js');
-const serverManifest=fs.existsSync(serverManifestPath)?JSON.parse(fs.readFileSync(serverManifestPath,'utf8').replace(/^export default /,'')):null;
-const layoutCss=(serverManifest?.serverResources?.['app/layout.tsx']?.css??[]).map(file=>{const bytes=fs.readFileSync(path.join(directory,file.replace(/^\//,'')));return {file,bytes:bytes.length,gzipBytes:zlib.gzipSync(bytes).length};});
+const home=clientReferenceKey(directory,manifest,'app/page.tsx');
+const page=measure([home]);
+const initial=measure(['virtual:vinext-app-browser-entry',home]);
+const layoutCss=layoutStyles(directory).filter(file=>!initial.css.some(css=>'/'+css.file===file)).map(file=>{const bytes=fs.readFileSync(path.join(directory,file.replace(/^\//,'')));return {file,bytes:bytes.length,gzipBytes:zlib.gzipSync(bytes).length};});
 const total={jsAndCssBytes:initial.jsBytes+initial.cssBytes+layoutCss.reduce((n,c)=>n+c.bytes,0),gzipBytes:initial.gzipBytes+initial.cssGzipBytes+layoutCss.reduce((n,c)=>n+c.gzipBytes,0),jsFiles:initial.jsFiles,cssFiles:initial.cssFiles+layoutCss.length,layoutCss};
 const lazyKeys=Object.keys(manifest).filter(key=>key==='components/catalog-group-views.ts');
 const groupViews=lazyKeys.length?measure(lazyKeys):null;

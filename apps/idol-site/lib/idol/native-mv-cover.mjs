@@ -1,5 +1,5 @@
-import media from '../../data/mv-public-media.json';
-const covers=new Map(media.covers.map(row=>[row.videoId,row]));
+import coverRecords from '../../data/runtime/mv-public-covers.json';
+const covers=new Map(coverRecords.map(row=>[row.videoId,row]));
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function nativeMvImage(row){const cover=covers.get(row.videoId);return cover?{publicVideoId:cover.videoId,sourceUrl:'https://www.youtube.com/watch?v='+cover.videoId}:row.image;}
 export function nativeMvCoverHtml(asset,alt,className='',eager=false){

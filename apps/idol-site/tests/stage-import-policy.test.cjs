@@ -22,7 +22,7 @@ function normalize(batch){return temporary(tmp=>{const input=path.join(tmp,'revi
 function normalized(batch){const r=normalize(batch);assert.equal(r.status,0,r.stderr);return JSON.parse(r.stdout);}
 function merge(batch,{previous,score=null,native=false,formatOverride,omitSchema=false,journalRows=[],publishedOverride,capturedAt=now,externalJournal=false}={}){return temporary(tmp=>{
  fs.mkdirSync(path.join(tmp,'scripts'),{recursive:true});fs.mkdirSync(path.join(tmp,'data/stages'),{recursive:true});
- for(const f of ['merge-stage-batch.py','stage_selection_policy.py','stage_source_identity.py'])fs.copyFileSync(path.join(root,'scripts',f),path.join(tmp,'scripts',f));
+ for(const f of ['merge-stage-batch.py','stage_selection_policy.py','stage_source_identity.py','stage_batch_files.py'])fs.copyFileSync(path.join(root,'scripts',f),path.join(tmp,'scripts',f));
  const write=(f,obj)=>fs.writeFileSync(path.join(tmp,f),JSON.stringify(obj));
  write('data/stages/inventory.json',{works:[{recordId:workId,groupIds:['fixture-group'],mv:{videoId:'originalMV1',officialTitle:'Original Official MV'}}]});
  write('data/stages/status.json',{inventoryCount:1,works:{[workId]:{status:previous?'verified':'pending',reason:'Fixture',checkedAt:now}}});
@@ -90,7 +90,7 @@ test('real normalization and merge exclude event likes and preserve the complete
  const batch=normalized(input);
  assert.equal(batch.items[0].selectedVideoId,selected.videoId);assert.equal(batch.items[0].comparisonLimited,true);
  assert.deepEqual(batch.items[0].candidates,[selected,event,rejected,wrongVersion]);
- const r=merge(batch);assert.equal(r.status,0,r.stderr);
+ const r=merge(batch,{externalJournal:true});assert.equal(r.status,0,r.stderr);
  const source=r.videos[workId];assert.equal(source.videoId,selected.videoId);assert.equal(source.candidateCount,1);
  assert.equal(source.scoreBinding.sourceKey,selected.videoId);assert.equal(source.scoreBinding.initialScore,null);
  assert.deepEqual(r.artifact.items[0].candidates,batch.items[0].candidates);
@@ -98,7 +98,7 @@ test('real normalization and merge exclude event likes and preserve the complete
 test('program priority wins before likes, and likes compare only within that priority',()=>{
  const program=candidate('program1234','music_program',10),practice=candidate('practice123','practice_room',1000),programLower=candidate('program5678','music_program',5);
  const batch=normalized(reviewed(program,[program,practice,programLower]));
- const r=merge(batch);assert.equal(r.status,0,r.stderr);assert.equal(r.videos[workId].candidateCount,2);
+ const r=merge(batch,{externalJournal:true});assert.equal(r.status,0,r.stderr);assert.equal(r.videos[workId].candidateCount,2);
  assert.deepEqual(r.videos[workId].candidates.map(c=>c.url),[program.url,programLower.url]);
  const worsePriority=normalize(reviewed(practice,[program,practice]));assert.notEqual(worsePriority.status,0);assert.match(worsePriority.stderr,/highest-priority/);
  const lowerLikes=normalize(reviewed(programLower,[program,programLower]));assert.notEqual(lowerLikes.status,0);assert.match(lowerLikes.stderr,/not maximum/);
@@ -122,7 +122,7 @@ test('policy-qualified replacement never moves an existing owner score to anothe
  const r=merge(normalized(reviewed(selected)),{previous,score:5});assert.equal(r.status,0,r.stderr);
  assert.equal(r.videos[workId].videoId,previous.videoId);assert.deepEqual(r.videos[workId].scoreBinding,previous.scoreBinding);
  assert.equal(JSON.parse(r.stdout).retainedExistingSources.length,1);
- const unbound=merge(normalized(reviewed(selected)),{score:5});assert.equal(unbound.status,0,unbound.stderr);assert.equal(unbound.videos[workId].scoreBinding,null);
+ const unbound=merge(normalized(reviewed(selected)),{score:5});assert.equal(unbound.status,0,unbound.stderr);assert.equal(unbound.videos[workId],undefined);
 });
 
 test('native owner exports preserve source provenance, zero scores and documentary limits',()=>{
@@ -131,7 +131,7 @@ test('native owner exports preserve source provenance, zero scores and documenta
  const empty=merge(batch,{native:true});assert.equal(empty.status,0,empty.stderr);
  assert.equal(empty.videos[workId].scoreBinding.sourceKey,'abcdefghijk');
  assert.equal(empty.videos[workId].verificationNote,note);
- const zero=merge(batch,{native:true,score:0});assert.equal(zero.status,0,zero.stderr);assert.equal(zero.videos[workId].scoreBinding,null);
+ const zero=merge(batch,{native:true,score:0});assert.equal(zero.status,0,zero.stderr);assert.equal(zero.videos[workId],undefined);
  for(const options of [{native:true,formatOverride:'idol.live-backup.v1'},{native:true,omitSchema:true}]){
   const result=merge(batch,options);assert.notEqual(result.status,0);assert.equal(result.after,result.before);assert.equal(result.artifact,null);
  }

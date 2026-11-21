@@ -67,7 +67,7 @@ test('every relation button disables for either work or member save uncertainty 
 });
 
 // Run the actual App statements to verify the parent wiring, not a test copy of it.
-const source=fs.readFileSync(path.join(root,'app/page.tsx'),'utf8'),ast=ts.createSourceFile('page.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+const source=require('./helpers/catalog-view-source.cjs')(),ast=ts.createSourceFile('page.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
 const app=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='App');
 function appStatement(name){const node=app.body.statements.find(n=>ts.isFunctionDeclaration(n)?n.name?.text===name:ts.isVariableStatement(n)&&n.declarationList.declarations.some(d=>d.name.getText(ast)===name));assert.ok(node,'production App statement '+name);return node.getText(ast);}
 const routing={};vm.runInNewContext('(function(exports){'+ts.transpileModule(`export function routeVersion({chosenWork,data,journey,currentLabel,nextInSequence}){${['activeSequence','nextWork','openVersion'].map(appStatement).join('\n')}return {activeSequence,nextWork,openVersion};}`,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText+'})')(routing);

@@ -90,7 +90,7 @@ function harness() {
     download: (part = 1) => api.backupDownload('owner', part, ID, HASH)};
 }
 function unzip(bytes) {
-  return JSON.parse(cp.execFileSync('python3', ['-c',
+  return JSON.parse(cp.execFileSync(process.platform==='win32'?'python':'python3', ['-c',
     "import sys,base64,zipfile,io,json;z=zipfile.ZipFile(io.BytesIO(base64.b64decode(sys.stdin.read())));assert z.testzip() is None;print(json.dumps({n:base64.b64encode(z.read(n)).decode() for n in z.namelist()}))",
   ], {input: bytes.toString('base64'), encoding: 'utf8'}));
 }

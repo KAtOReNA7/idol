@@ -19,6 +19,31 @@ function regular(root,relative){
  if(!fs.statSync(current).isFile())throw new Error(`Compiled carrier is not a regular file: ${relative}`);
  return current;
 }
+// Vinext 1.4 exports the Worker through a single, hashed entry. Exempt only
+// the actual entry from ordinary routing-inventory checks.
+export function workerEntry(root) {
+ const index=regular(root,'dist/server/index.js');
+ const match=fs.readFileSync(index,'utf8').trim().match(/^export\{[\w$]+ as default\}from"\.\/(_next\/static\/worker-entry-[A-Za-z0-9_-]{8}\.js)";$/);
+ return match?regular(root,'dist/server/'+match[1]):index;
+}
+
+export function verifiedContractCarriers(root,pins) {
+ const expected=['dist/client/_next/static/chunks','dist/server/ssr/_next/static'];
+ const entries=Object.entries(pins??{});
+ if(entries.length!==2||!same(entries.map(([file])=>path.posix.dirname(file)).sort(),expected))
+  throw Error('Expected one exact lifecycle carrier per output scope');
+ const manifest=JSON.parse(fs.readFileSync(regular(root,'dist/client/.vite/manifest.json'),'utf8'));
+ const matches=Object.values(manifest).filter(row=>row.name==='lifecycle');
+ if(matches.length!==1||!pins['dist/client/'+matches[0].file])throw Error('Published lifecycle entry differs from its pinned client module');
+ for(const [relative,pin] of entries){
+  const basename=path.posix.basename(relative);
+  const allowed=relative.startsWith('dist/client/')?/^[A-Za-z0-9_-]{8}\.js$/:/^lifecycle-[A-Za-z0-9_-]{8}\.js$/;
+  if(!allowed.test(basename)||!integrity(pin))throw Error('Invalid lifecycle carrier pin');
+  const bytes=fs.readFileSync(regular(root,relative));
+  if(bytes.length!==pin.bytes||sha(bytes)!==pin.sha256)throw Error('Compiled carrier integrity mismatch: '+relative);
+ }
+ return pins;
+}
 export function normalizeCarrierImports(text,expectedImports){
  if(!Array.isArray(expectedImports)||!expectedImports.length||expectedImports.some(s=>typeof s!=='string'))throw new Error('Compiled carrier import inventory missing');
  const imports=[];let offset=0,result='';

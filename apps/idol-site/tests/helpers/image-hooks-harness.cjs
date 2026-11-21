@@ -1,8 +1,15 @@
 /* Deterministic hook/ref/event ports executing the real PhotoView, image adapters
  * and recovery provider. This is not a browser or React DOM result. */
-const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ts=require('typescript'),esbuild=require('esbuild');
+const path=require('node:path'),vm=require('node:vm'),esbuild=require('esbuild');
 const root=path.resolve(__dirname,'../..');let compiled;
-function source(){if(compiled)return compiled;const text=fs.readFileSync(path.join(root,'app/page.tsx'),'utf8'),ast=ts.createSourceFile('page.tsx',text,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX),photo=ast.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='PhotoView').getText(ast);return compiled=esbuild.buildSync({stdin:{contents:`import {useState,useEffect,useCallback,useMemo,useRef} from 'react';import {CatalogPhotoImage} from './components/app-image-presentation';import {MvPhotoReference} from './components/mv-photo-reference';import {mvPhotoLabel,mvReferencePhoto} from './lib/idol/mv-photo-presentation';import {ImageRecoveryProvider,ImageRecoveryControls} from './components/reliable-image';const ImageIcon=()=>null;${photo}\nexport {PhotoView,ImageRecoveryProvider,ImageRecoveryControls};`,resolveDir:root,loader:'tsx'},bundle:true,write:false,platform:'node',format:'cjs',jsx:'automatic',external:['react','react/*','react-dom','react-dom/*','lucide-react'],loader:{'.css':'empty'},logLevel:'silent'}).outputFiles[0].text;}
+function source() {
+ if (!compiled) compiled=esbuild.buildSync({
+  stdin:{contents:"export {PhotoView} from './components/catalog/presentation'; export {ImageRecoveryProvider,ImageRecoveryControls} from './components/reliable-image';",resolveDir:root,loader:'tsx'},
+  bundle:true,write:false,platform:'node',format:'cjs',jsx:'automatic',
+  external:['react','react/*','react-dom','react-dom/*','lucide-react'],loader:{'.css':'empty'},logLevel:'silent',
+ }).outputFiles[0].text;
+ return compiled;
+}
 const equal=(a,b)=>a&&b&&a.length===b.length&&a.every((x,i)=>Object.is(x,b[i]));
 function photoHarness({nested=false}={}){
  let current,contexts=new Map(),dirty=false,now=1000,uid=0,nextTimer=0,layout=[],effects=[],micro=[],tree,props;

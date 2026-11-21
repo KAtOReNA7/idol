@@ -50,13 +50,29 @@ export function publicQuery(request:Request,allowed:readonly string[],required:r
  for(const key of required)if(!q.get(key))throw new AppError('INVALID_PUBLIC_REQUEST','读取参数无效。',400);
  return q;
 }
+type PublicScope=Awaited<ReturnType<typeof publicScope>>;
+let photoIndex:{key:string; entries:Set<string>}|undefined;
+function photoKey(table:string,record:string,index:number){return JSON.stringify([table,record,index]);}
+async function publicPhotoIndex(before:PublicScope){
+ const key=JSON.stringify([before.control.owner_id,sourceStamp(before.control),before.generation]);
+ if(photoIndex?.key===key)return photoIndex.entries;
+ const catalog=await readPublicCatalog();
+ const entries=new Set<string>();
+ function add(photo:Photo|null|undefined){if(photo)entries.add(photoKey(photo.table,photo.recordId,photo.index));}
+ for(const member of catalog.members)add(member.photo);
+ for(const rating of catalog.ratings){add(rating.photo);add(rating.referencePhoto);}
+ // A change between the caller's initial scope and the projection invalidates the index.
+ await assertPublicScope(before);
+ photoIndex={key,entries};
+ return entries;
+}
 export async function readPublicMedia(request:Request){
  const q=publicQuery(request,['table','record','index'],['table','record']);
  const table=q.get('table'),id=q.get('record')!,rawIndex=q.get('index')??'0';
  if((table!=='members'&&table!=='ratings')||!/^rec[A-Za-z0-9]+$/.test(id)||!/^\d+$/.test(rawIndex)||Number(rawIndex)>20)throw new AppError('INVALID_MEDIA','图片请求无效。',400);
- const index=Number(rawIndex),before=await publicScope(),catalog=await readPublicCatalog();
- const photos:Photo[]=[...catalog.members.flatMap(row=>row.photo?[row.photo]:[]),...catalog.ratings.flatMap(row=>[row.photo,row.referencePhoto].filter((p):p is Photo=>!!p))];
- if(!photos.some(photo=>photo.table===table&&photo.recordId===id&&photo.index===index))throw new AppError('MISSING_MEDIA','暂无这张公开照片。',404);
+ const index=Number(rawIndex),before=await publicScope();
+ const allowed=await publicPhotoIndex(before);
+ if(!allowed.has(photoKey(table,id,index)))throw new AppError('MISSING_MEDIA','暂无这张公开照片。',404);
  const row=await nativeRow(before.control.active_snapshot!,table,id),fields=JSON.parse(row.fields_json),attachments=fields[table==='members'?F.members.photo:F.ratings.photo],token=Array.isArray(attachments)?attachments[index]?.file_token:null;
  if(typeof token!=='string')throw new AppError('MISSING_MEDIA','暂无这张公开照片。',404);
  const media=await nativeDb().prepare("SELECT object_key,sha256,content_type,byte_length FROM idol_native_media WHERE snapshot_id = ? AND file_token = ? AND status = 'complete'").bind(before.control.active_snapshot,token).first<{object_key:string;sha256:string;content_type:string;byte_length:number}>();

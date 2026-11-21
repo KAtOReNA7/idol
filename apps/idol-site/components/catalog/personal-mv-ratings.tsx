@@ -27,6 +27,11 @@ function ScoreForm({scope,workId,videoId,member,entry,onDirty,onBlocked,onSaved}
  if(newer&&!dirty&&!saving&&!retry)load(newer);
  useEffect(()=>{onDirty(key,dirty);return()=>onDirty(key,false);},[key,dirty,onDirty]);
  useEffect(()=>{onBlocked(key,saving||retry);return()=>onBlocked(key,false);},[key,saving,retry,onBlocked]);
+ useEffect(()=>{
+  if(!dirty&&!saving&&!retry)return;
+  const protect=(event:BeforeUnloadEvent)=>event.preventDefault();
+  window.addEventListener('beforeunload',protect);return()=>window.removeEventListener('beforeunload',protect);
+ },[dirty,saving,retry]);
  const valid=Object.values(draft).every(value=>value===null||Number.isFinite(value)&&value>=0&&value<=10);
  async function save(){
   if(inFlight.current||(!dirty&&!retry)||!valid||newer&&!retry)return;

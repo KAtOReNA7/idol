@@ -20,7 +20,7 @@ test('title is safely escaped in cover content',()=>{const html=render({videoId:
 // Synthetic React state transitions. These prove event separation, not browser/CDN recovery.
 function sessionHarness(props={}){
  const values=[];let cursor=0,opens=0;
- const mockReact={...React,useState(initial){const i=cursor++;if(!(i in values))values[i]=initial;return [values[i],next=>{values[i]=typeof next==='function'?next(values[i]):next;}];}};
+ const mockReact={...React,useRef(initial){const i=cursor++;return values[i]??(values[i]={current:initial});},useState(initial){const i=cursor++;if(!(i in values))values[i]=initial;return [values[i],next=>{values[i]=typeof next==='function'?next(values[i]):next;}];}};
  const e={},js=ts.transpileModule(fs.readFileSync('components/work-video-player.tsx','utf8')+'\nexport {VideoSession};',{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
  vm.runInNewContext('(function(exports,require){'+js+'})',{window:{open(){opens++;}}})(e,name=>name==='react'?mockReact:require(name));
  return {render(){cursor=0;return e.VideoSession({...source,...props});},opens:()=>opens};
@@ -33,22 +33,22 @@ test('cover failure offers one explicit retry of the unchanged image without pla
   assert.equal(node(initial,'button','video-cover-retry'),undefined);
   node(initial,'img').props.onError();const failed=h.render();
   assert.ok(node(failed,'div','video-cover-fallback'));assert.equal(node(failed,'img'),undefined);
-  node(failed,'button','video-cover-retry').props.onClick();const retried=h.render();
+  node(failed,'button','video-cover-retry').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});const retried=h.render();
   assert.equal(node(retried,'img').props.src,src);assert.equal(node(retried,'iframe'),undefined);assert.equal(h.opens(),0);
   assert.equal(node(retried,'button','video-cover-retry'),undefined);
   // A second failure is terminal for the cover in this session, never an automatic loop.
   node(retried,'img').props.onError();const failedAgain=h.render();
   assert.ok(node(failedAgain,'div','video-cover-fallback'));assert.equal(node(failedAgain,'button','video-cover-retry'),undefined);
   assert.match(renderToStaticMarkup(failedAgain),/封面仍未加载，可直接播放视频/);
-  node(failedAgain,'button','video-play').props.onClick();assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
+  node(failedAgain,'button','video-play').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
  }
 });
 test('retry state keeps rendering the cover and external-only videos never offer a cover retry',()=>{
- const h=sessionHarness();node(h.render(),'img').props.onError();node(h.render(),'button','video-cover-retry').props.onClick();
+ const h=sessionHarness();node(h.render(),'img').props.onError();node(h.render(),'button','video-cover-retry').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});
  assert.ok(node(h.render(),'img'));assert.ok(node(h.render(),'img'));assert.equal(node(h.render(),'iframe'),undefined);
  const external=sessionHarness({videoId:null,embedUrl:null,url:'https://example.invalid/video'}),tree=external.render();
  assert.equal(node(tree,'button','video-cover-retry'),undefined);assert.equal(external.opens(),0);
- node(tree,'button','video-play').props.onClick();assert.equal(external.opens(),1);
+ node(tree,'button','video-play').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});assert.equal(external.opens(),1);
 });
 test('retry scope follows existing media-session identity, not title or scoring state',()=>{
  const key=p=>WorkVideoPlayer({...source,...p}).key;
@@ -61,14 +61,20 @@ test('native retry button is keyboard-activatable without custom key interceptio
  assert.equal(retry.type,'button');assert.equal(retry.props.type,'button');assert.equal(retry.props.children,'重试封面');
  assert.equal(retry.props.disabled,undefined);assert.equal(retry.props.tabIndex,undefined);assert.equal(retry.props.onKeyDown,undefined);
  // Native Enter/Space activation dispatches click; exercise its shared handler.
- retry.props.onClick();assert.ok(node(h.render(),'img'));assert.equal(node(h.render(),'iframe'),undefined);
+ const active={ownerDocument:{}};
+ active.ownerDocument.activeElement=active;
+ let focused=false;
+ node(h.render(),'button','video-play').props.ref.current={focus(){focused=true;}};
+ retry.props.onClick({currentTarget:active});
+ assert.equal(focused,true);
+ assert.ok(node(h.render(),'img'));assert.equal(node(h.render(),'iframe'),undefined);
 });
 test('simulated React key remount resets retry state while a same-key render does not',()=>{
  let mountedKey,h;
  const renderSession=props=>{const key=WorkVideoPlayer({...source,...props}).key;if(key!==mountedKey){mountedKey=key;h=sessionHarness(props);}return h.render();};
  for(const props of [{},{view:'stage'},{workId:'another'},{embedUrl:source.embedUrl+'&start=20&end=40'}]){
   node(renderSession(props),'img').props.onError();
-  node(renderSession(props),'button','video-cover-retry').props.onClick();
+  node(renderSession(props),'button','video-cover-retry').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});
   node(renderSession(props),'img').props.onError();
   assert.equal(node(renderSession(props),'button','video-cover-retry'),undefined);
   assert.equal(node(renderSession({...props,title:'标题变化'}),'button','video-cover-retry'),undefined);
@@ -83,7 +89,7 @@ test('explicit contain posters occupy the player box without intrinsic grid over
  assert.equal(img.props.style.objectFit,'contain');
  assert.equal(node(sessionHarness().render(),'img').props.style,undefined);
  assert.equal(node(h.render(),'iframe'),undefined);
- node(h.render(),'button','video-play').props.onClick();assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
+ node(h.render(),'button','video-play').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
 });
 
 test('small verified posters remain centered at their native size and retain retry/play behavior',()=>{
@@ -91,8 +97,8 @@ test('small verified posters remain centered at their native size and retain ret
  const initial=node(h.render(),'img');
  assert.equal(initial.props.style.maxWidth,490);assert.equal(initial.props.style.maxHeight,266);assert.equal(initial.props.style.margin,'auto');
  assert.equal(initial.props.style.width,'100%');assert.equal(initial.props.style.height,'100%');assert.equal(initial.props.style.objectFit,'contain');
- node(h.render(),'img').props.onError();node(h.render(),'button','video-cover-retry').props.onClick();
+ node(h.render(),'img').props.onError();node(h.render(),'button','video-cover-retry').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});
  assert.equal(node(h.render(),'img').props.src,initial.props.src);assert.deepEqual(node(h.render(),'img').props.style,initial.props.style);
  assert.equal(node(h.render(),'iframe'),undefined);assert.equal(h.opens(),0);
- node(h.render(),'button','video-play').props.onClick();assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
+ node(h.render(),'button','video-play').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
 });

@@ -1,18 +1,12 @@
-# Idol：正式开发与跨电脑交接
+# Idol Lens
 
-正式工程位于 `apps/idol-site/`。当前优化分支为 `codex/project-optimization-20261121`，继承 PR 47。正式 v203 有 500 个舞台，本地有 527 个来源及 31 张专项封面。进入工程前先核对当前分支和工作树。运行方式、实测结果和后续顺序见[工程说明](apps/idol-site/README.md)、[优化报告](docs/codex/worklogs/20261121-project-optimization.md)及[路线图](docs/codex/PROJECT-AUDIT-AND-ROADMAP-20261121.md)。
+正式工程位于 `apps/idol-site/`。GitHub 的 `main` 保存用户验收版本，`codex/project-optimization-20261121` 承接后续开发。正式站为 v203。[当前状态](docs/codex/STATUS.md) · [运行与测试](apps/idol-site/README.md) · [开发路线图](docs/codex/PROJECT-AUDIT-AND-ROADMAP-20261121.md)
 
-## 接续与整理记录
+## 开发与交接
 
-- [跨电脑快速接续](docs/codex/NEXT-COMPUTER-HANDOFF.md)
-- [当前状态](docs/codex/STATUS.md) · [下一步](docs/codex/RESUME.md) · [首次执行](docs/codex/CODEX-FIRST-RUN.md)
-- [主线整理报告](docs/codex/mainline-consolidation-20261026.md) · [全部分支SHA与处理方式](docs/codex/mainline-branch-inventory-20261026.json)
-- [O批完整报告](docs/codex/identity-gap-o-report-20261027.md) · [704缺图的逐条清单](docs/codex/reports/20261027-gap-o/ledger.html)
-- [多电脑协作](docs/codex/AGENTS-MULTI-MACHINE.md) · [协作入口](AGENTS.md)
-
-旧逐团PR和分支已完成内容统一进入主线；独立旧沙盒照片共识与Sol交接分支保留待评估。已合分支使用 `archive/20261026/<原分支名>` tag保留原HEAD，可按清单恢复。历史的待验收/未合main/旧版本描述不覆盖当前状态。
-
-仓库保持原有可见性。既有公开源码授权不扩展到未来任意数据导出或凭证；公开读不等于开放写。
+- [从新电脑接续](docs/codex/NEXT-COMPUTER-HANDOFF.md) · [协作约定](AGENTS.md)
+- [本轮开发记录](docs/codex/worklogs/20261121-repository-and-routes.md) · [代码分支与恢复标签](docs/codex/evidence/20261121-repository-and-routes/github-consolidation.json)
+- [内容研究的逐项决定](docs/codex/evidence/20261121-repository-and-routes/content-disposition.json) · [原始审查](docs/codex/FEASIBILITY-REVIEW-20261101.md)
 
 ## 历史文件的范围
 

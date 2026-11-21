@@ -15,59 +15,122 @@ function noNestedInteractive(html){
   if(!voids.has(tag)&&!match[0].endsWith('/>'))stack.push(tag);
  }
 }
-async function render(artist,route){const stream=await renderToReadableStream(React.createElement(bundle.ArtistTimelineHostProvider,{value:{catalog:bundle.imageCatalog,serverRoute:route,loading:false}},React.createElement(bundle.routes[artist.slug],{searchParams:Promise.resolve(Object.fromEntries(new URL(route,'https://image-fixture.example').searchParams))})));await stream.allReady;return new Response(stream).text();}
+async function render(artist,route,mode){const stream=await renderToReadableStream(React.createElement(bundle.ArtistTimelineHostProvider,{value:{catalog:{...bundle.imageCatalog,mode},serverRoute:route,loading:false}},React.createElement(bundle.routes[artist.slug],{searchParams:Promise.resolve(Object.fromEntries(new URL(route,'https://image-fixture.example').searchParams))})));await stream.allReady;return new Response(stream).text();}
 test.before(async()=>{const output=path.join(directory,'entry.cjs');proof=await build({outfile:output});bundle=require(output);freeze(bundle.imageCatalog);});
 test.after(()=>fs.rmSync(directory,{recursive:true,force:true}));
-for(const [index,artist]of registry.entries()){
- test(`real ${artist.slug} overview: original source/alt/priority, two members, zero score and safe parent interaction`,async()=>{
-  const html=await render(artist,artist.path);const imgs=images(html);
-  const hero=imgs.find(image=>image.src===`/image-fixture/hero.png?host=${artist.slug}`);
-  assert.ok(hero,'real hero remains in SSR, not deferred to effect/blob');
-  assert.equal(hero.loading,'eager');assert.equal(hero.fetchPriority,'high');assert.equal(hero.decoding,'async');assert.ok(hero.alt);
-  const portraits=imgs.filter(image=>image.src?.startsWith('/image-fixture/portrait-')||image.src?.startsWith('/api/media?table=members&'));
-  if(['loona','madein'].includes(artist.slug)){
-   assert.equal(portraits.length,0,'historical name index intentionally defers portraits to their real member detail');
-   for(const suffix of ['A','B']){const detail=await render(artist,`${artist.path}?section=members&member=${bundle.fixtureMemberId(index,suffix)}`);assert.ok(images(detail).some(image=>image.src===`/image-fixture/portrait-${suffix.toLowerCase()}.png?host=${artist.slug}`),'both exact portraits remain reachable in member details');}
-  }else assert.ok(portraits.length>=2,'both synthetic members retain their own portraits');
-  for(const image of portraits){assert.equal(image.loading,'lazy');assert.notEqual(image.fetchPriority,'high');assert.equal(image.decoding,'async');}
-  if(index<37)for(const image of portraits)assert.match(image.style||'',/object-fit:contain/,'verified candidate portrait remains complete rather than cropped');
-  const thumbs=imgs.filter(image=>image.src?.startsWith('https://i.ytimg.com/vi/'));
-  for(const image of thumbs){assert.match(image.src,/^https:\/\/i\.ytimg\.com\/vi\/FixtUrE000[12]\/hqdefault\.jpg$/);assert.equal(image.loading,'lazy');}
-  assert.match(html,/FIXTURE_A/);assert.match(html,/FIXTURE_B/);assert.match(html,/0\.0/,'image branch must preserve real numeric zero');
-  assert.ok(imgs.every(image=>image.src&&image.alt));noNestedInteractive(html);
+const {artistCatalog, renderArtist, nativeSlugs} = require('./fixtures/current-artist-pages.cjs');
+const heroSources = require('./fixtures/approved-artist-heroes.json');
+const externalPlayable = /(?:youtube\.com|youtu\.be|bilibili\.com|x\.com)/;
+const privateModes = new Set(['ive','loona','aespa','kissoflife','stayc','nmixx','itzy','lesserafim','triples','madein','illit','qwer','purplekiss','rescene']);
+
+for (const [index, artist] of registry.entries()) {
+ if (nativeSlugs.has(artist.slug)) {
+  test(`real ${artist.slug} starts its native renderer and reports progress before hydration`,async()=>{
+   const html=await renderArtist(artist);
+   assert.ok(html.includes(`data-${artist.slug}-native-host="true"`));
+   assert.match(html,/role="status"/);
+   assert.ok(!images(html).some(img=>img.src?.startsWith('/api/media')));
+  });
+  continue;
+ }
+
+ const catalog = artistCatalog(artist);
+ const members = catalog.members.filter(member=>member.groupIds.includes(artist.groupId)||member.formerGroupIds?.includes(artist.groupId));
+ test(`real ${artist.slug} overview serves its approved hero and usable member entry`,async()=>{
+  const html=await renderArtist(artist,{},catalog);
+  const hero=images(html).find(img=>img.src===heroSources[artist.slug]);
+  assert.ok(hero?.alt?.trim(), 'approved source and accessible label');
+  assert.equal(hero.loading,'eager');
+  assert.equal(hero.fetchPriority,'high');
+  assert.equal(hero.decoding,'async');
+  assert.ok(members.length>=2);
+  assert.match(html,/section=members|成员|PROFILE|MEMBERS/i);
+  assert.ok(fs.existsSync(path.resolve(__dirname,'../public','.'+hero.src)));
+  noNestedInteractive(html);
  });
- test(`real ${artist.slug} works: both actual thumbnail sources and zero scores survive`,async()=>{
-  const html=await render(artist,`${artist.path}?section=works`);const thumbs=images(html).filter(image=>image.src?.startsWith('https://i.ytimg.com/vi/'));
-  if(['triples','loona','madein'].includes(artist.slug)){
-   assert.equal(thumbs.length,0,'text-only work entries must not fetch unavailable thumbnails');
-   for(const suffix of ['A','B'])assert.ok(html.includes('work='+bundle.fixtureWorkId(index,suffix)),'both original works remain reachable');
-   assert.equal((html.match(/data-work-id=/g)||[]).length,2);
-  }else{
-  assert.ok(thumbs.some(image=>image.src==='https://i.ytimg.com/vi/FixtUrE0001/hqdefault.jpg'));
-  assert.ok(thumbs.some(image=>image.src==='https://i.ytimg.com/vi/FixtUrE0002/hqdefault.jpg'));
+ test(`real ${artist.slug} works have valid group and video targets`,async()=>{
+  const html=await renderArtist(artist,{section:'works'},catalog);
+  const hrefs=[...html.matchAll(/<a\b[^>]*>/g)].map(m=>attrs(m[0]).href).filter(Boolean);
+  const targets=hrefs.map(href=>new URL(href,'https://host.example'));
+  const workIds=new Set(catalog.works.filter(w=>w.groupIds.includes(artist.groupId)).map(w=>w.id));
+  const open=targets.filter(u=>u.pathname==='/'&&u.searchParams.has('work'));
+  for(const url of open)assert.ok(workIds.has(url.searchParams.get('work')), 'cross-group work link');
+  const ownMedia=targets.filter(u=>u.pathname===artist.path&&u.searchParams.has('media'));
+  if (['vcha','hitgs','atheart'].includes(artist.slug)) {
+   const videos=require(`../data/${artist.slug}-review-editorial.json`).videos;
+   const cards=[...html.matchAll(/<button\b[^>]*data-artist-media=[^>]*>/g)].map(m=>attrs(m[0]));
+   assert.ok(cards.length>0);
+   for (const card of cards) assert.ok(videos.some(v=>v.key===card['data-artist-media']&&v.videoId===card['data-video-id']));
+  } else {
+   assert.ok(open.length||ownMedia.length||targets.some(u=>externalPlayable.test(u.hostname)), 'reachable work or video');
   }
-  for(const image of thumbs){assert.equal(image.loading,'lazy');assert.equal(image.decoding,'async');assert.notEqual(image.fetchPriority,'high');}
-  assert.match(html,/0\.0/);noNestedInteractive(html);
+  noNestedInteractive(html);
  });
- for(const suffix of ['A','B'])test(`real ${artist.slug} member ${suffix}: own MV identity/source and zero dimensions preserved`,async()=>{
-  const memberId=bundle.fixtureMemberId(index,suffix);const workId=bundle.fixtureWorkId(index,suffix);
-  const html=await render(artist,`${artist.path}?section=members&member=${memberId}`);const imgs=images(html);
-  assert.match(html,new RegExp(`FIXTURE_${suffix}`));
-  assert.ok(imgs.some(image=>image.src===`/api/media?table=ratings&record=recFixtureImageRating${index}${suffix}&index=0`),'member-specific MV photo must preserve table/record/index');
-  assert.ok(html.includes(workId),'correct member work target retained');
-  assert.match(html,/0\.0/);noNestedInteractive(html);
+ for (const [n,suffix] of ['A','B'].entries()) test(`real ${artist.slug} member ${suffix} preserves portrait, work identity and read mode`,async()=>{
+  const member=members[n];
+  const html=await renderArtist(artist,{section:'members',member:member.id},catalog);
+  assert.ok(html.includes(`data-member-id="${member.id}"`));
+  assert.ok(!html.includes(`data-member-id="${members[1-n].id}"`));
+  const identity=html.slice(html.indexOf('data-member-module="identity"'));
+  const portrait=images(identity).find(image=>image.alt?.trim());
+  assert.ok(portrait?.alt?.trim(),'member portrait must be labelled');
+  if (portrait.src.startsWith('/api/media?')) {
+   const attachment=member.photo;
+   assert.equal(attachment?.table,'members');
+   assert.equal(attachment.recordId,member.id);
+   assert.equal(portrait.src,`/api/media?table=members&record=${member.id}&index=${attachment.index}`);
+  } else {
+   assert.match(portrait.src,/^\/(?:artist|design-review)\//);
+   assert.ok(fs.existsSync(path.resolve(__dirname,'../public','.'+portrait.src)));
+  }
+  const other=await renderArtist(artist,{section:'members',member:members[1-n].id},catalog);
+  const otherPortrait=images(other.slice(other.indexOf('data-member-module="identity"'))).find(image=>image.alt?.trim());
+  assert.notEqual(portrait.src,otherPortrait.src,'two distinct members need distinct portraits');
+  noNestedInteractive(html);
+  if(privateModes.has(artist.slug)){
+   const id=bundle.fixtureMemberId(index,suffix),work=bundle.fixtureWorkId(index,suffix);
+   const route=`${artist.path}?section=members&member=${id}`;
+   const src=`/api/media?table=ratings&record=recFixtureImageRating${index}${suffix}&index=0`;
+   const live=await render(artist,route,'live'), snapshot=await render(artist,route,'snapshot');
+   assert.ok(images(live).some(img=>img.src===src),'eligible live photo must retain exact attachment identity');
+   assert.ok(!images(snapshot).some(img=>img.src===src),'snapshot must not use the live photo URL');
+   const photo=images(live).find(img=>img.src===src);
+   assert.ok(photo.alt?.trim());
+   assert.equal(photo.decoding,'async');
+   assert.equal(photo.loading,'lazy');
+   for (const detail of [live,snapshot]){
+    assert.ok(detail.includes(work));
+    assert.match(detail,/0\.0/);
+    assert.ok(!detail.includes(`record=recFixtureImageRating${index}${n?'A':'B'}`));
+   }
+  }
  });
 }
+test('shared photo controls keep explicit priorities, aspect, video identities and two numeric zero scores',async()=>{
+ const artist=registry.find(row=>row.slug==='aespa');
+ const overview=await render(artist,artist.path,'live');
+ const portraits=images(overview).filter(img=>img.src?.startsWith('/image-fixture/portrait-'));
+ assert.equal(portraits.length,2);
+ for(const img of portraits){
+  assert.ok(img.alt);assert.equal(img.loading,'lazy');assert.equal(img.decoding,'async');assert.notEqual(img.fetchPriority,'high');
+ }
+ const listing=await render(artist,artist.path+'?section=works','live');
+ const thumbs=images(listing).filter(img=>img.src?.startsWith('https://i.ytimg.com/vi/'));
+ assert.deepEqual(new Set(thumbs.map(img=>img.src)),new Set(['FixtUrE0001','FixtUrE0002'].map(id=>`https://i.ytimg.com/vi/${id}/hqdefault.jpg`)));
+ for(const thumb of thumbs){assert.equal(thumb.loading,'lazy');assert.equal(thumb.decoding,'async');}
+ assert.ok((listing.match(/0\.0/g)||[]).length>=2);
+ noNestedInteractive(overview);noNestedInteractive(listing);
+});
 test('actual 51 route closure has no data/API substitution outside the declared test-only input ports',()=>{
  assert.equal(Object.keys(bundle.routes).length,51);const inputs=proof.inputs.join('\n');
  for(const row of registry)assert.ok(inputs.includes(`app/artists/${row.slug}/page.tsx`));
  assert.ok(inputs.includes('components/reliable-image.tsx'));assert.ok(inputs.includes('lib/idol/image-presentation.ts'));
  assert.ok(inputs.includes('components/use-artist-scroll.ts'));assert.doesNotMatch(inputs,/data\/snapshot|app\/api\//);
- for(const alias of proof.aliases)assert.ok(alias.replacement.includes('/tests/'));
+ for(const alias of proof.aliases)assert.ok(!path.relative(__dirname,alias.replacement).startsWith('..'));
 });
 
-test('career integration keeps the actual component and formatter with explicit synthetic metadata only',()=>{assert.ok(proof.inputs.includes('components/member-career-facts.tsx'));assert.ok(proof.inputs.includes('lib/idol/member-career-runtime.ts'));assert.ok(proof.inputs.includes('lib/idol/member-career-core.ts'));assert.ok(!proof.inputs.some(input=>input.startsWith('data/')));assert.ok(proof.aliases.some(a=>a.original==='@/data/runtime/member-careers/periods.json'&&a.replacement.endsWith('/content-aliases/career-runtime-periods.ts')));});
+test('career integration keeps the actual component and formatter with explicit synthetic metadata only',()=>{assert.ok(proof.inputs.includes('components/member-career-facts.tsx'));assert.ok(proof.inputs.includes('lib/idol/member-career-runtime.ts'));assert.ok(proof.inputs.includes('lib/idol/member-career-core.ts'));assert.ok(!proof.inputs.some(input=>input.startsWith('data/')));assert.ok(proof.aliases.some(a=>a.original==='@/data/runtime/member-careers/periods.json'&&a.replacement.split(path.sep).join('/').endsWith('/content-aliases/career-runtime-periods.ts')));});
 
 test('runtime/editorial migration retains actual redesigned image components',()=>{
- for(const input of ['components/candidate/idle-design.tsx','components/candidate/billlie-design.tsx','components/candidate/triples-design.tsx','components/candidate/newjeans-design.tsx','components/candidate/badvillain-design.tsx','components/hearts2hearts-artist.tsx','components/ive-artist.tsx','lib/idol/artist-navigation.ts','lib/idol/triples-design-catalog.ts'])assert.ok(proof.inputs.includes(input),input);
+ for(const input of ['components/candidate/idle-design.tsx','components/candidate/billlie-design.tsx','components/seven-redesign/artist.tsx','components/candidate/newjeans-design.tsx','components/candidate/badvillain-design.tsx','components/hearts2hearts-artist.tsx','components/izna/editorial.tsx','lib/idol/artist-navigation.ts','lib/idol/triples-design-catalog.ts'])assert.ok(proof.inputs.includes(input),input);
 });

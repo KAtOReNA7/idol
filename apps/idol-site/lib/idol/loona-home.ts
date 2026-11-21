@@ -15,9 +15,10 @@ function exactWork(works: readonly Work[], id: string | undefined, song: string)
   return matches.length === 1 && matches[0].song === song ? matches[0] : undefined;
 }
 export function loonaHomeReleases(works: readonly Work[]) {
-  return releaseSlots.map(slot => {
-    const event = timeline.events.find(item => item.id === slot.eventId)!;
-    return {...slot, date: event.eventDate!.value, work: exactWork(works, event.workIds[0], slot.song), releaseKey: event.releaseKey};
+  return releaseSlots.flatMap(slot => {
+    const event = timeline.events.find(item => item.id === slot.eventId);
+    if (!event?.eventDate) return [];
+    return [{...slot, date: event.eventDate.value, work: exactWork(works, event.workIds[0], slot.song), releaseKey: event.releaseKey}];
   });
 }
 const videoSlots = [
@@ -46,4 +47,5 @@ export const loonaHomeUnits = [
   {key: 'oec', title: 'ODD EYE CIRCLE', width: 360, height: 37, members: ['recvxyICzHrAo6', 'recvxyICzHQpJU', 'recvxyICzH78Q7']},
   {key: 'yyxy', title: 'LOONA yyxy', width: 200, height: 33, members: ['recvxyICzHYN3y', 'recvxyICzHTm4b', 'recvxyICzHbSOh', 'recvxyICzHRB0v']},
 ];
-export const loonaHomeHistory = ['e-loona-monthly-member-reveal-project', 'e-loona-complete-group-debut', 'e-loona-xx-kr-repackage'].map(id => timeline.events.find(event => event.id === id)!);
+export const loonaHomeHistory = ['e-loona-monthly-member-reveal-project', 'e-loona-complete-group-debut', 'e-loona-xx-kr-repackage']
+  .flatMap(id => timeline.events.filter(event => event.id === id && event.eventDate));

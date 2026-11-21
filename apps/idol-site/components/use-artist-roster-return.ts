@@ -12,16 +12,21 @@ export function useArtistRosterReturn(ready:boolean,routeKey:string){
   if(!ready)return;
   const before=previous.current?route(previous.current):null,current=route(routeKey);
   previous.current=routeKey;
-  if(!current||current.member||current.section!=='members')return;
+  if(!current||current.member)return;
   const path=location.pathname+location.search;
-  if(before?.path===current.path&&before.roster===current.roster&&before.member&&memberKey.test(before.member)){
+  const origin=history.state?.artistRosterFocus;
+  const exact=origin?.path===path&&memberKey.test(origin.key)&&['portrait','profile'].includes(origin.action);
+  if(current.section!=='members'&&!exact)return;
+  if(!exact&&before?.path===current.path&&before.roster===current.roster&&before.member&&memberKey.test(before.member)){
    history.replaceState({...history.state,artistRosterFocus:{path,key:before.member}},'',location.href);
   }
   const saved=history.state?.artistRosterFocus;
   if(saved?.path!==path||typeof saved.key!=='string'||!memberKey.test(saved.key))return;
   const frame=requestAnimationFrame(()=>{
    if(document.querySelector('[role="dialog"][aria-modal="true"]'))return;
-   const target=[...document.querySelectorAll<HTMLElement>('[data-artist-member-trigger]')].find(node=>node.dataset.artistMemberTrigger===saved.key);
+   const matches=[...document.querySelectorAll<HTMLElement>('[data-artist-member-trigger]')]
+    .filter(node=>node.dataset.artistMemberTrigger===saved.key&&node.getClientRects().length);
+   const target=matches.find(node=>node.dataset.artistRosterAction===saved.action)??matches[0];
    if(!target||target.matches(':disabled'))return;
    target.focus({preventScroll:true});
    // Browser Back restores its exact saved scroll; explicit "all members" needs

@@ -1,5 +1,5 @@
 'use client';
-import {useCallback,useEffect,useId,useMemo,useRef,useState,type ComponentProps} from 'react';
+import {useCallback,useEffect,useLayoutEffect,useId,useMemo,useRef,useState,type ComponentProps} from 'react';
 import {createPortal} from 'react-dom';
 import {X} from 'lucide-react';
 import {ReliableImage} from './reliable-image';
@@ -26,9 +26,11 @@ export function PhotoLightbox({src,label,onClose}:{src:string;label:string;onClo
   const previous=retryButton.current;retryButton.current=element;
   if(!element&&previous&&previous.ownerDocument.activeElement===previous&&dialog.current?.isConnected)close.current?.focus({preventScroll:true});
  },[]);
- const closeLatest=useRef(onClose);closeLatest.current=onClose;
+ const closeLatest=useRef(onClose);
+ useLayoutEffect(()=>{closeLatest.current=onClose;},[onClose]);
  // A→B→A receives distinct notification ownership even if src and label repeat.
- const request=useMemo(()=>({}),[src,label]),currentRequest=useRef(request);currentRequest.current=request;
+ const request=useMemo(()=>({}),[src,label]),currentRequest=useRef(request);
+ useLayoutEffect(()=>{currentRequest.current=request;},[request]);
  const [imageState,setImageState]=useState<{request:object;state:LightboxImageState}|null>(null);
  const reportState=useCallback((state:LightboxImageState)=>{if(currentRequest.current===request)setImageState({request,state});},[request]);
  const state=imageState?.request===request?imageState.state:null;

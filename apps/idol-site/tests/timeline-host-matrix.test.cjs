@@ -20,19 +20,45 @@ test.before(async()=>{
  deepFreeze(bundle.syntheticTimelines);
 });
 test.after(()=>fs.rmSync(temp,{recursive:true,force:true}));
-for(const artist of registry){
- for(const selectedSection of ['overview','updates']){
- test(`actual ${artist.path} ${selectedSection} SSR renders migrated navigation and shared empty host`,()=>{
-  const Page=bundle.routes[artist.slug];
-  assert.equal(typeof Page,'function');
-  const input={schemaVersion:1,groupId:artist.groupId,slug:artist.slug,events:[],gaps:[]};
-  const html=renderToStaticMarkup(React.createElement(bundle.ArtistTimelineHostProvider,{value:{catalog:bundle.publicCatalog,input,loading:false,styleReady:true,serverRoute:artist.path+(selectedSection==='updates'?'?section=updates':'')}},React.createElement(Page)));
-  assert.match(html,/大事时间轴/);
-  assert.match(html,/事件正在整理/,'real selected section must render the shared host after the injected read-only catalog is ready');
-  assert.doesNotMatch(html,/at-background|来源与背景资料/,'audit background is not public timeline UI');
-  assert.doesNotMatch(html,/>资料与动态<|>官方动态<|>官方发行<|>发行来信</);
-  assert.doesNotMatch(html,/正在打开|NEVER_RENDER_HELD_ASSERTION|时间轴暂时无法显示/);
- });
+const {renderArtist, artistCatalog, nativeSlugs} = require('./fixtures/current-artist-pages.cjs');
+const customTimelines = new Set(['adya','bewave','candyshop','geenius','genblue','oddyouth','spia','tracer','witchx','wooah','youngposse']);
+const customHome = new Set([...customTimelines,'loona','unis']);
+
+for (const artist of registry) {
+ for (const section of ['overview','updates']) {
+  test(`actual ${artist.path} ${section} exposes its published timeline entry`, async () => {
+   const document = require(`../data/artist-timelines/${artist.slug}.json`);
+   assert.equal(document.groupId, artist.groupId);
+   const html = await renderArtist(artist, section === 'updates' ? {section} : {}, artistCatalog(artist), {
+    groups: registry, input: document, timelineLoading: false, styleReady: true,
+   });
+   if (nativeSlugs.has(artist.slug)) {
+    assert.ok(html.includes(`data-${artist.slug}-native-host="true"`));
+    assert.match(html, /role="status"/);
+    assert.doesNotMatch(html, /data-timeline-host=/);
+    return;
+   }
+   assert.doesNotMatch(html, /时间轴暂时无法显示|时间轴资料与当前团体不匹配|NEVER_RENDER_HELD_ASSERTION/);
+   assert.doesNotMatch(html, /at-background|来源与背景资料/);
+   for (const match of html.matchAll(/data-timeline-host="([^"]+)"/g)) assert.equal(match[1], artist.groupId);
+   const ownHost = html.includes(`data-timeline-host="${artist.groupId}"`);
+   if (section === 'overview' && customHome.has(artist.slug) && !ownHost) {
+    assert.match(html, /section=updates|时间轴/);
+    return;
+   }
+   if (section === 'updates' && customTimelines.has(artist.slug)) {
+    assert.match(html, /<ol\b[^>]*>[\s\S]*?<li\b/, 'editorial timeline must contain actual entries');
+   } else {
+    assert.ok(ownHost, 'expected a timeline belonging to this group');
+    // Reported announcements can share the subject ID with a held effective date.
+    // Only canonical event articles assert the event on the chronological axis.
+    const visible = [...html.matchAll(/<article\b[^>]*data-timeline-event-id="([^"]+)"/g)].map(match => match[1]);
+    const reviewed = new Set(document.events.filter(event => event.reviewStatus === 'ready').map(event => event.id));
+    if (reviewed.size) assert.ok(visible.some(id => reviewed.has(id)), 'missing reviewed events');
+    for (const event of document.events.filter(row => row.reviewStatus === 'hold')) assert.ok(!visible.includes(event.id));
+    if (!reviewed.size) assert.match(html, /事件正在整理/);
+   }
+  });
  }
 }
 test('51 SSR host matrix uses actual routes/components/hooks and only enumerated fixture substitutions',()=>{
@@ -40,8 +66,8 @@ test('51 SSR host matrix uses actual routes/components/hooks and only enumerated
  assert.equal(Object.keys(bundle.routes).length,51);
  const inputs=proof.inputs.join('\n');
  for(const artist of registry)assert.ok(inputs.includes(`app/artists/${artist.slug}/page.tsx`),artist.slug);
- for(const source of ['components/artist-timeline.tsx','components/artist-timeline-host.tsx','components/candidate-artist-experience.tsx','components/use-artist-scroll.ts','components/use-member-work-focus.ts','components/use-artist-roster-return.ts'])assert.ok(inputs.includes(source),source);
- for(const item of proof.aliases)assert.ok(item.replacement.includes('/tests/fixtures/timeline-host/'));
+ for(const source of ['components/artist-timeline.tsx','components/artist-timeline-host.tsx','components/seven-redesign/artist.tsx','components/use-artist-scroll.ts','components/use-member-work-focus.ts','components/use-artist-roster-return.ts'])assert.ok(inputs.includes(source),source);
+ for(const item of proof.aliases)assert.ok(path.relative(path.join(__dirname,'fixtures/timeline-host'), item.replacement).split(path.sep)[0] !== '..');
  assert.ok(proof.aliases.some(item=>item.original==='./journey'));
  assert.ok(proof.aliases.some(item=>item.original==='@/lib/idol/member-display-name'));
  assert.doesNotMatch(inputs,/data\/snapshot|app\/api\/|components\/use-browse-journey/);
@@ -110,4 +136,7 @@ test('initial catalog failure takes precedence over missing-data loading and pre
  assert.match(html,/role="alert"/);
 });
 
-test('career integration keeps the actual component and formatter with explicit synthetic metadata only',()=>{assert.ok(proof.inputs.includes('components/member-career-facts.tsx'));assert.ok(proof.inputs.includes('lib/idol/member-career-display.ts'));assert.ok(!proof.inputs.includes('data/member-careers/periods.json'));assert.ok(proof.aliases.some(a=>a.original==='@/data/member-careers/periods.json'&&a.replacement.endsWith('/content-aliases/career-periods.ts')));});
+test('career facts compile against the synthetic runtime projection', () => {
+ for (const input of ['components/member-career-facts.tsx','lib/idol/member-career-runtime.ts','lib/idol/member-career-core.ts','editorial-fixture:runtime/member-careers/periods.json']) assert.ok(proof.inputs.includes(input), input);
+ assert.ok(!proof.inputs.includes('data/runtime/member-careers/periods.json'));
+});

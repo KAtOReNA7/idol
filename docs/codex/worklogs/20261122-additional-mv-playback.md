@@ -1,0 +1,14 @@
+# 另外四支 MV 的站内短测与同版来源
+
+正式站的默认入口逐一点击，使用 Codex 自带浏览器、静音，取得两个递增时间点才计起播。v215 前后《ATTITUDE》和《ETA》的 RUTUBE 播放器均显示「视频暂不可用」。《Per》和《Attention》的 YouTube 播放器显示连接意外终止，未取得解码画面。v216 的《ATTITUDE》再次短测时，播放器停在 0.125123 秒并处于暂停状态。已显示的 1920 × 1080 尺寸不足以证明起播。[四支作品首次短测](../evidence/20261122-v215/additional-playback.json)
+
+同一设备用 v216 正式入口复验《BILLIONAIRE》，静音进度从 0.573114 秒推进到 1.900174 秒，解码 1920 × 884。《Magnetic》从 0.089630 秒推进到 1.371580 秒，解码 3840 × 2160。两首均只点了一次，未取得实际码率。[v216 正式复验](../evidence/20261122-v216/priority-media.json) · [v213 两首首次实播](../evidence/20261122-v213/formal-playback.json)
+
+| 作品 | 原版辨认与替代条件 |
+|---|---|
+| IVE《ATTITUDE》 | 导演 Yunah Sheep（NEWYEAR*）公开了完整 MV。与 IVEofficial 发布的 206 秒原版逐项对照，打印机、圆镜中的脸、手持球、阶梯教室、燃烧的肖像及扶梯大厅等六处镜头在时间轴上对应。导演播放器实测总长 205.622 秒。v217 正式详情只挂一个播放器，静音 0.721352→1.688651 秒，实际解码 3840 × 2160；码率未取得。[正式站发布回执](20261122-v217-release.md) [导演播放器](https://vimeo.com/1054517686) · [官方发行页](https://ive-official.jp/mob/news/newsShw.php?cd=OF10242&site=DIVE) |
+| NewJeans《ETA》 | 保留 ADOR 首发版。Apple Music 发行页的公开预览、Apple 广告节选、Dolphiners 的导演剪辑各有不同的可用范围或画面。待可嵌的首发全长公开。[正式发行目录](https://music.apple.com/us/music-video/eta/1698562914) |
+| ADYA《Per》 | 本站收录 5:09 的 Official S#3 MV，区别于 19 秒预告及其他剪辑。Genie 有发行专题；Bugs 的对应播放服务只允许同站嵌入。Starting House 的同名官方上传也在内置浏览器报连接中断，缺乏同画面与实播双重证据。[Bugs 完整版与预告](https://music.bugs.co.kr/album/20563938) · [Genie 发行专题](https://genie.co.kr/magazine/subMain?ctid=1&mgz_seq=13145) · [经纪公司上传](https://www.youtube.com/watch?v=-ZAHtSjqFvs) |
+| NewJeans《Attention》 | 原 MV 长 4:22，表演版 2:57。Weverse 仍指向 HYBE 的同一原视频。西班牙制作服务商 NEVADA 列出委托方、导演与制作，但其 Vimeo 公共嵌入未开放，独立个人上传缺少可核实的发布身份。[Weverse 原版](https://weverse.io/newjeansofficial/media/2-107782613) · [发行目录](https://music.bugs.co.kr/artist/20164333/mvs?group=REGULAR&wl_ref=S_ar_14_02) · [制作方说明](https://www.nevada-service.com/legal/) |
+
+YouTube 隐私增强播放器的浏览器实测受到此设备已有域访问策略限制。该候选未接入，也未计为可播。三支尚缺稳定来源的作品继续保留原视频身份、原评分以及重试功能。

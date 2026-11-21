@@ -1,0 +1,837 @@
+{
+  "releaseTarget": "v210",
+  "lastMeasuredAtUtc": "2026-11-21T17:42:08.026675+00:00",
+  "previousReview": "../20261122-work-player-continuation/verified.json",
+  "priorMappings": 119,
+  "newMappings": 7,
+  "combinedMappings": 126,
+  "originalCatalogVideos": 605,
+  "frozenQueue": 155,
+  "firstPassHD": 118,
+  "retested": 37,
+  "additionalHD": 7,
+  "retainedBelowHD": 1,
+  "temporaryUnavailableBothTests": 29,
+  "originalCandidatesWithoutHDRemaining": 30,
+  "playbackTest": "Codex in-app browser, a single muted station player at a time. Dimensions and advancing time read from the decoded video track. The seven retry receipts each match the source comparison duration within two seconds.",
+  "editionReview": "Each pair of upload and original titles identifies the same artist and release. Three separately distributed source preview images match the upload at distinct times. The pinned public upload-description scan found no conflicting alternate-edition marker for these seven. The audio tracks were not compared sample by sample.",
+  "evidenceHashes": {
+    "priorManifestSHA256": "766fba70c0aaa2d72f204d876353562d9b97846f1c9ecbad6c501983fb42b5a9",
+    "newManifestSHA256": "77992c2690aa13115756ccfc0b19da47cc83c5709a6f2abb65b9663bc4625ea1",
+    "timelineProofSetSHA256": "8b28088b2adfb521a7e560861031c2957e3b8d0a8c89850d217b80ec6b0b144c",
+    "firstPassReceiptsSHA256": "bde3546a1b1d23faab664110a6c6a0dba1d4921a4cc99a70488cdb61d9615fff",
+    "retryReceiptsSHA256": "f5d796f3a40590aab14d9953b2f742fa5aaee78aa3d011096502bd1a56eb9a58",
+    "retryAttemptsSHA256": "a7b9650e64278aa1bb3c92ef6179d1f6f1cc5484b83380d3e39e8a9a013d18f4",
+    "publicUploadDescriptionsSHA256": "076bc88d0da2719502bcf926f9d0460a2ad99ef30772cc8931da040a5f40b4b1"
+  },
+  "verifiedThisReview": [
+    {
+      "workId": "rec28ldfRTrMIP",
+      "group": "KISS OF LIFE",
+      "song": "Who is she",
+      "originalVideoId": "ygYPwsjyCzQ",
+      "mirrorVideoId": "ff6346dfdac44581549060b3cc55dcfe",
+      "uploader": "УБОЙНЫЕ КЛИПЫ 90-Х, А ТАКЖЕ  80-Х И 2000.... 👋",
+      "titleEqual": false,
+      "linksToOriginal": false,
+      "originalListing": {
+        "url": "https://www.youtube.com/results?search_query=ygYPwsjyCzQ",
+        "videoId": "ygYPwsjyCzQ",
+        "title": "KISS OF LIFE (키스오브라이프) 'Who is she' Official Music Video",
+        "displayDuration": "2:42",
+        "seconds": 162,
+        "publisher": "KISS OF LIFE"
+      },
+      "mirrorTitle": "KISS OF LIFE - Who is she - 1080HD",
+      "mirrorPublication": "2026-10-04T22:44:08",
+      "mirrorDurationRounded": 161,
+      "hasHighQuality": false,
+      "mirrorDurationSeconds": 161.379,
+      "highestListedResolution": [
+        1920,
+        1080
+      ],
+      "timelineSeconds": 161.292,
+      "frameComparisons": [
+        {
+          "originalPreviewIndex": 1,
+          "originalImage": "https://i.ytimg.com/vi/ygYPwsjyCzQ/hq1.jpg",
+          "originalImageSha256": "736a7948ef7256b95dc89cbafda2dc7ad84e681efb1f401b9c46aeb81423657e",
+          "mirrorSeconds": 38.492,
+          "corr": 0.9963,
+          "meanChannelError": 2.64,
+          "decodedSampleSha256": "e5b6ba19d944fde79877e6d986bb1c2ecd8e553c89cf82a7939d6244e9b2c17c"
+        },
+        {
+          "originalPreviewIndex": 2,
+          "originalImage": "https://i.ytimg.com/vi/ygYPwsjyCzQ/hq2.jpg",
+          "originalImageSha256": "0645fe0005a540553a5c2e63d8d7936a89f50668b2ced71c3c27bd23982f321c",
+          "mirrorSeconds": 103.242,
+          "corr": 0.9985,
+          "meanChannelError": 2.67,
+          "decodedSampleSha256": "f67812d1611478587f6e20c3090628536ae6ae8c195a48404febf042f4703a5d"
+        },
+        {
+          "originalPreviewIndex": 3,
+          "originalImage": "https://i.ytimg.com/vi/ygYPwsjyCzQ/hq3.jpg",
+          "originalImageSha256": "93fe36053613a502beb19f5c64f44abfface03183dfbd446958c8e450f76726a",
+          "mirrorSeconds": 139.033,
+          "corr": 0.9943,
+          "meanChannelError": 3.02,
+          "decodedSampleSha256": "0304bfe3bf6af69b7d351c875529318db7a79ad1be58c77b63be7b3a7f375291"
+        }
+      ],
+      "decodedComparisonRendition": [
+        256,
+        144
+      ],
+      "comparedTimelineFrames": 484,
+      "samplesPerSecond": 3,
+      "refined": true,
+      "qualified": true,
+      "embedUrl": "https://rutube.ru/play/embed/ff6346dfdac44581549060b3cc55dcfe?autostartmute=true&q=1080",
+      "mirrorPage": "https://rutube.ru/video/ff6346dfdac44581549060b3cc55dcfe/",
+      "originalPage": "https://www.youtube.com/watch?v=ygYPwsjyCzQ",
+      "originalCatalogueCredit": {
+        "channel": "KISS OF LIFE",
+        "source": "Public catalogue, exact work and original video ID."
+      },
+      "priorObservation": "The v209 single-player observation returned a temporary playback error.",
+      "mutedInAppPlayback": {
+        "mirror": "ff6346dfdac44581549060b3cc55dcfe",
+        "seconds": [
+          0.125,
+          1.529261
+        ],
+        "duration": 161.292,
+        "width": 1920,
+        "height": 1080,
+        "muted": true
+      }
+    },
+    {
+      "workId": "rec28ldfRTrMRu",
+      "group": "KISS OF LIFE",
+      "song": "SWEAT",
+      "originalVideoId": "eTvUZymLyGY",
+      "mirrorVideoId": "21e3958f00bcb677c280ce5928630b3a",
+      "uploader": "KatyK-POP",
+      "titleEqual": true,
+      "linksToOriginal": false,
+      "originalListing": {
+        "url": "https://www.youtube.com/results?search_query=eTvUZymLyGY",
+        "videoId": "eTvUZymLyGY",
+        "title": "KISS OF LIFE (키스오브라이프) 'SWEAT' Official Music Video",
+        "displayDuration": "3:00",
+        "seconds": 180,
+        "publisher": ""
+      },
+      "mirrorTitle": "KISS OF LIFE (키스오브라이프) 'SWEAT' Official Music Video",
+      "mirrorPublication": "2026-08-05T18:43:25",
+      "mirrorDurationRounded": 180,
+      "hasHighQuality": false,
+      "mirrorDurationSeconds": 179.63,
+      "highestListedResolution": [
+        1920,
+        1080
+      ],
+      "timelineSeconds": 179.553,
+      "frameComparisons": [
+        {
+          "originalPreviewIndex": 1,
+          "originalImage": "https://i.ytimg.com/vi/eTvUZymLyGY/hq1.jpg",
+          "originalImageSha256": "33f697460f7fc38289239d00f403b19361d4d3270384f9faabfc3a8f63248eae",
+          "mirrorSeconds": 16.575,
+          "corr": 0.9948,
+          "meanChannelError": 4.24,
+          "decodedSampleSha256": "7cb892f8e3a8a2c70bb64d451ed671c94d55fe21bf0a88d2d41fb8a18b5ffd9c"
+        },
+        {
+          "originalPreviewIndex": 2,
+          "originalImage": "https://i.ytimg.com/vi/eTvUZymLyGY/hq2.jpg",
+          "originalImageSha256": "44206e019443d8c50ccacd1a849a0255659e0d5015f11f3e9a711634d6b0361d",
+          "mirrorSeconds": 77.0,
+          "corr": 0.9942,
+          "meanChannelError": 4.68,
+          "decodedSampleSha256": "b63d67ad2f60fadd2d8f2745b5953052bb4e7fc2598e50abbe1cbbefc2444b95"
+        },
+        {
+          "originalPreviewIndex": 3,
+          "originalImage": "https://i.ytimg.com/vi/eTvUZymLyGY/hq3.jpg",
+          "originalImageSha256": "f0223951d0944d85e8531ada36984df8665b7657cd2beb81c68544772ecab08c",
+          "mirrorSeconds": 160.333,
+          "corr": 0.9941,
+          "meanChannelError": 4.88,
+          "decodedSampleSha256": "2a39777f5e0de8417758f11f885b22a92102ea0f9081c869366c48741199ee11"
+        }
+      ],
+      "decodedComparisonRendition": [
+        256,
+        144
+      ],
+      "comparedTimelineFrames": 539,
+      "samplesPerSecond": 3,
+      "refined": true,
+      "qualified": true,
+      "embedUrl": "https://rutube.ru/play/embed/21e3958f00bcb677c280ce5928630b3a?autostartmute=true&q=1080",
+      "mirrorPage": "https://rutube.ru/video/21e3958f00bcb677c280ce5928630b3a/",
+      "originalPage": "https://www.youtube.com/watch?v=eTvUZymLyGY",
+      "originalCatalogueCredit": {
+        "channel": "KISS OF LIFE",
+        "source": "Public catalogue, exact work and original video ID."
+      },
+      "priorObservation": "The v209 single-player observation returned a temporary playback error.",
+      "mutedInAppPlayback": {
+        "mirror": "21e3958f00bcb677c280ce5928630b3a",
+        "seconds": [
+          0.125123,
+          1.332815
+        ],
+        "duration": 179.5529999999999,
+        "width": 1920,
+        "height": 1080,
+        "muted": true
+      }
+    },
+    {
+      "workId": "rec28ldfRTrNSv",
+      "group": "izna",
+      "song": "METRONOME",
+      "originalVideoId": "NQRGAh7ukh8",
+      "mirrorVideoId": "550fd369b381e28ffec3ffb79d2fa8fd",
+      "uploader": "Asian Media Bazaar",
+      "titleEqual": true,
+      "linksToOriginal": false,
+      "originalListing": {
+        "url": "https://www.youtube.com/results?search_query=NQRGAh7ukh8",
+        "videoId": "NQRGAh7ukh8",
+        "title": "izna 'METRONOME' MV",
+        "displayDuration": "3:30",
+        "seconds": 210,
+        "publisher": "izna (이즈나)"
+      },
+      "mirrorTitle": "izna - Metronome (MV)",
+      "mirrorPublication": "2026-06-10T14:15:08",
+      "mirrorDurationRounded": 209,
+      "hasHighQuality": false,
+      "mirrorDurationSeconds": 209.444,
+      "highestListedResolution": [
+        1920,
+        1080
+      ],
+      "timelineSeconds": 209.375,
+      "frameComparisons": [
+        {
+          "originalPreviewIndex": 1,
+          "originalImage": "https://i.ytimg.com/vi/NQRGAh7ukh8/hq1.jpg",
+          "originalImageSha256": "1f619814ce78e198bf12cabf6268cfa6f3c0320733d8ca82174652e74d905043",
+          "mirrorSeconds": 5.333,
+          "corr": 0.9902,
+          "meanChannelError": 4.91,
+          "decodedSampleSha256": "29d29e0e0658d2ffc9538b281465aac86553a8920ac30507d599ed809b37c47f"
+        },
+        {
+          "originalPreviewIndex": 2,
+          "originalImage": "https://i.ytimg.com/vi/NQRGAh7ukh8/hq2.jpg",
+          "originalImageSha256": "5471cc98760442b123ff45ffecef80cb42da3c3b4aeb95789533f9e0b4e4461b",
+          "mirrorSeconds": 73.242,
+          "corr": 0.9926,
+          "meanChannelError": 4.21,
+          "decodedSampleSha256": "e7a087ecbcf4577963ea01b4b90745b32ae863d24718eb375af3c0adbe9c190a"
+        },
+        {
+          "originalPreviewIndex": 3,
+          "originalImage": "https://i.ytimg.com/vi/NQRGAh7ukh8/hq3.jpg",
+          "originalImageSha256": "7a1fdf5e8766f0b3bba97b8494e07a428325afd3883c5ad057c249df0a35489a",
+          "mirrorSeconds": 181.408,
+          "corr": 0.9973,
+          "meanChannelError": 1.96,
+          "decodedSampleSha256": "42b63201fd51b60809a3963db48557cb2d27d4a1cf5814e52a411d398f204de7"
+        }
+      ],
+      "decodedComparisonRendition": [
+        256,
+        144
+      ],
+      "comparedTimelineFrames": 628,
+      "samplesPerSecond": 3,
+      "refined": true,
+      "qualified": true,
+      "embedUrl": "https://rutube.ru/play/embed/550fd369b381e28ffec3ffb79d2fa8fd?autostartmute=true&q=1080",
+      "mirrorPage": "https://rutube.ru/video/550fd369b381e28ffec3ffb79d2fa8fd/",
+      "originalPage": "https://www.youtube.com/watch?v=NQRGAh7ukh8",
+      "originalCatalogueCredit": {
+        "channel": "izna (이즈나)",
+        "source": "Public catalogue, exact work and original video ID."
+      },
+      "priorObservation": "The v209 single-player observation returned a temporary playback error.",
+      "mutedInAppPlayback": {
+        "mirror": "550fd369b381e28ffec3ffb79d2fa8fd",
+        "seconds": [
+          0.182401,
+          1.728117
+        ],
+        "duration": 209.375,
+        "width": 1920,
+        "height": 1080,
+        "muted": true
+      }
+    },
+    {
+      "workId": "rec28ldfRTrNYh",
+      "group": "izna",
+      "song": "DUMB HOT!",
+      "originalVideoId": "_kxr2D8-tq8",
+      "mirrorVideoId": "d10a4882299d692a1b93bd7af23e07bc",
+      "uploader": "NEW K-POP MV",
+      "titleEqual": false,
+      "linksToOriginal": false,
+      "originalListing": {
+        "url": "https://www.youtube.com/results?search_query=_kxr2D8-tq8",
+        "videoId": "_kxr2D8-tq8",
+        "title": "izna 'DUMB HOT!' MV",
+        "displayDuration": "2:23",
+        "seconds": 143,
+        "publisher": "izna (이즈나)"
+      },
+      "mirrorTitle": "izna - DUMB HOT!",
+      "mirrorPublication": "2026-09-02T13:45:49",
+      "mirrorDurationRounded": 143,
+      "hasHighQuality": false,
+      "mirrorDurationSeconds": 142.71,
+      "highestListedResolution": [
+        1920,
+        1080
+      ],
+      "timelineSeconds": 142.642,
+      "frameComparisons": [
+        {
+          "originalPreviewIndex": 1,
+          "originalImage": "https://i.ytimg.com/vi/_kxr2D8-tq8/hq1.jpg",
+          "originalImageSha256": "2856756e461e7f7a699da8ff6bc28915e92bec6d0057154ae43b1bae737aad4b",
+          "mirrorSeconds": 3.333,
+          "corr": 0.9979,
+          "meanChannelError": 2.84,
+          "decodedSampleSha256": "4461691a4ccea7a2f0a9e69984a48392af411c17fb719b1fabe1e6710210da1c"
+        },
+        {
+          "originalPreviewIndex": 2,
+          "originalImage": "https://i.ytimg.com/vi/_kxr2D8-tq8/hq2.jpg",
+          "originalImageSha256": "20bb9f7bb8626aa7e6894a6865ec170cee1a3e55780c96e9dd876ed07da9e57f",
+          "mirrorSeconds": 68.617,
+          "corr": 0.9983,
+          "meanChannelError": 2.15,
+          "decodedSampleSha256": "d189e6b0f336e6c4b11108b068e65b661e5a43ddceb0fa805549e7c058b7067a"
+        },
+        {
+          "originalPreviewIndex": 3,
+          "originalImage": "https://i.ytimg.com/vi/_kxr2D8-tq8/hq3.jpg",
+          "originalImageSha256": "cf6e8f7c928ec0e0c13474db6178c5955cab00ec4c5e04248d69599fab923c4c",
+          "mirrorSeconds": 132.333,
+          "corr": 0.9995,
+          "meanChannelError": 1.64,
+          "decodedSampleSha256": "6be61d3ed113df3375fd4c3745992235d0fe790fb365fd3d34a6853c0f9a3ea8"
+        }
+      ],
+      "decodedComparisonRendition": [
+        256,
+        144
+      ],
+      "comparedTimelineFrames": 428,
+      "samplesPerSecond": 3,
+      "refined": true,
+      "qualified": true,
+      "embedUrl": "https://rutube.ru/play/embed/d10a4882299d692a1b93bd7af23e07bc?autostartmute=true&q=1080",
+      "mirrorPage": "https://rutube.ru/video/d10a4882299d692a1b93bd7af23e07bc/",
+      "originalPage": "https://www.youtube.com/watch?v=_kxr2D8-tq8",
+      "originalCatalogueCredit": {
+        "channel": "izna (이즈나)",
+        "source": "Public catalogue, exact work and original video ID."
+      },
+      "priorObservation": "The v209 single-player observation returned a temporary playback error.",
+      "mutedInAppPlayback": {
+        "mirror": "d10a4882299d692a1b93bd7af23e07bc",
+        "seconds": [
+          0.200678,
+          1.759329
+        ],
+        "duration": 142.642,
+        "width": 1920,
+        "height": 1080,
+        "muted": true
+      }
+    },
+    {
+      "workId": "rec28ldfRTrQ4z",
+      "group": "UNIS",
+      "song": "もしもし♡ (MoshiMoshi♡)",
+      "originalVideoId": "DrU5bxPcH0s",
+      "mirrorVideoId": "6aac724d2dfcaa26f464483b37e2d310",
+      "uploader": "channel51279571",
+      "titleEqual": true,
+      "linksToOriginal": false,
+      "originalListing": {
+        "url": "https://www.youtube.com/results?search_query=DrU5bxPcH0s",
+        "videoId": "DrU5bxPcH0s",
+        "title": "UNIS(유니스) ‘もしもし♡ (MoshiMoshi♡)’ Official M/V",
+        "displayDuration": "3:15",
+        "seconds": 195,
+        "publisher": "UNIS"
+      },
+      "mirrorTitle": "UNIS(유니스) ‘もしもし♡ (MoshiMoshi♡)’ Official M_V",
+      "mirrorPublication": "2025-09-20T17:51:12",
+      "mirrorDurationRounded": 194,
+      "hasHighQuality": false,
+      "mirrorDurationSeconds": 194.259,
+      "highestListedResolution": [
+        1920,
+        1080
+      ],
+      "timelineSeconds": 194.193,
+      "frameComparisons": [
+        {
+          "originalPreviewIndex": 1,
+          "originalImage": "https://i.ytimg.com/vi/DrU5bxPcH0s/hq1.jpg",
+          "originalImageSha256": "7e8b2f45746e3db8198cdb603472a0361658fcdd67d8ce928a9149e7fa9a5f14",
+          "mirrorSeconds": 61.333,
+          "corr": 0.9983,
+          "meanChannelError": 3.0,
+          "decodedSampleSha256": "dfd657917f55d97dc19a48e62678c2a55876c0b69e2927f2641117f4c75038d7"
+        },
+        {
+          "originalPreviewIndex": 2,
+          "originalImage": "https://i.ytimg.com/vi/DrU5bxPcH0s/hq2.jpg",
+          "originalImageSha256": "b3c0c834a5aa14a1c3f54a857128f556e82599540636686d5a0796625c7629d3",
+          "mirrorSeconds": 97.033,
+          "corr": 0.9978,
+          "meanChannelError": 1.87,
+          "decodedSampleSha256": "ac02aa21e501af1fbce5e401211bd5541c0b59c25739df155f441d3c2ad99685"
+        },
+        {
+          "originalPreviewIndex": 3,
+          "originalImage": "https://i.ytimg.com/vi/DrU5bxPcH0s/hq3.jpg",
+          "originalImageSha256": "c3327504519b224f99bf24cf7b529178fb707a1de0c6b537b48d2065a443a6f1",
+          "mirrorSeconds": 181.617,
+          "corr": 0.9992,
+          "meanChannelError": 1.88,
+          "decodedSampleSha256": "57e9f5320cec6e59d3463347e7c2cfdd3abe4f26dfa2c657c25523738fe655ac"
+        }
+      ],
+      "decodedComparisonRendition": [
+        256,
+        144
+      ],
+      "comparedTimelineFrames": 583,
+      "samplesPerSecond": 3,
+      "refined": true,
+      "qualified": true,
+      "embedUrl": "https://rutube.ru/play/embed/6aac724d2dfcaa26f464483b37e2d310?autostartmute=true&q=1080",
+      "mirrorPage": "https://rutube.ru/video/6aac724d2dfcaa26f464483b37e2d310/",
+      "originalPage": "https://www.youtube.com/watch?v=DrU5bxPcH0s",
+      "originalCatalogueCredit": {
+        "channel": "UNIS",
+        "source": "Public catalogue, exact work and original video ID."
+      },
+      "priorObservation": "The v209 single-player observation returned a temporary playback error.",
+      "mutedInAppPlayback": {
+        "mirror": "6aac724d2dfcaa26f464483b37e2d310",
+        "seconds": [
+          0.125123,
+          1.587794
+        ],
+        "duration": 194.1929999999999,
+        "width": 1920,
+        "height": 1080,
+        "muted": true
+      }
+    },
+    {
+      "workId": "rec28ldfRTrzPI",
+      "group": "ILLIT",
+      "song": "Magnetic",
+      "originalVideoId": "Vk5-c_v4gMU",
+      "mirrorVideoId": "ab6cc61af61589ddd9a4404d602f74b5",
+      "uploader": "riku",
+      "titleEqual": true,
+      "linksToOriginal": false,
+      "originalListing": {
+        "url": "https://www.youtube.com/results?search_query=Vk5-c_v4gMU",
+        "videoId": "Vk5-c_v4gMU",
+        "title": "ILLIT (아일릿) ‘Magnetic’ Official MV",
+        "displayDuration": "3:09",
+        "seconds": 189,
+        "publisher": "HYBE LABELS"
+      },
+      "mirrorTitle": "ILLIT (아일릿) ‘Magnetic’ Official MV",
+      "mirrorPublication": "2024-08-08T19:49:12",
+      "mirrorDurationRounded": 188,
+      "hasHighQuality": false,
+      "mirrorDurationSeconds": 188.189,
+      "highestListedResolution": [
+        1920,
+        1080
+      ],
+      "timelineSeconds": 188.187,
+      "frameComparisons": [
+        {
+          "originalPreviewIndex": 1,
+          "originalImage": "https://i.ytimg.com/vi/Vk5-c_v4gMU/hq1.jpg",
+          "originalImageSha256": "9d0209bb30083e2da23a5c894949817cb3e7c53e2716c0992066bacfcbf5ec14",
+          "mirrorSeconds": 53.575,
+          "corr": 0.9861,
+          "meanChannelError": 4.34,
+          "decodedSampleSha256": "9b24e2f6f0e0677f92f5b49ecd53407650e23a8723fccf247290e50f28b99825"
+        },
+        {
+          "originalPreviewIndex": 2,
+          "originalImage": "https://i.ytimg.com/vi/Vk5-c_v4gMU/hq2.jpg",
+          "originalImageSha256": "c41a95e00bc8e1cb24ba7082f3a9fbaa0ef71803c241dd0c6fe90b7354d9232e",
+          "mirrorSeconds": 91.667,
+          "corr": 0.9952,
+          "meanChannelError": 2.81,
+          "decodedSampleSha256": "6681ad6d89dbc57ee520ba22fc17d836347fcd990479f55c6e673e4afbecab3b"
+        },
+        {
+          "originalPreviewIndex": 3,
+          "originalImage": "https://i.ytimg.com/vi/Vk5-c_v4gMU/hq3.jpg",
+          "originalImageSha256": "b47f0bcbe2269a6a8880a3cc234f28d59cee8cb6b064f6bd38c46fc3eb0bed3e",
+          "mirrorSeconds": 156.667,
+          "corr": 0.9963,
+          "meanChannelError": 2.68,
+          "decodedSampleSha256": "dfc7564876670b9178f8f22659ed2e699bef454ace41a31f40365b4c2ed21d0b"
+        }
+      ],
+      "decodedComparisonRendition": [
+        256,
+        144
+      ],
+      "comparedTimelineFrames": 565,
+      "samplesPerSecond": 3,
+      "refined": true,
+      "qualified": true,
+      "embedUrl": "https://rutube.ru/play/embed/ab6cc61af61589ddd9a4404d602f74b5?autostartmute=true&q=1080",
+      "mirrorPage": "https://rutube.ru/video/ab6cc61af61589ddd9a4404d602f74b5/",
+      "originalPage": "https://www.youtube.com/watch?v=Vk5-c_v4gMU",
+      "originalCatalogueCredit": {
+        "channel": "HYBE LABELS",
+        "source": "Public catalogue, exact work and original video ID."
+      },
+      "priorObservation": "The v209 single-player observation returned a temporary playback error.",
+      "mutedInAppPlayback": {
+        "mirror": "ab6cc61af61589ddd9a4404d602f74b5",
+        "seconds": [
+          0.083423,
+          1.403987
+        ],
+        "duration": 188.1869999999999,
+        "width": 1920,
+        "height": 1080,
+        "muted": true
+      }
+    },
+    {
+      "workId": "recvxDMFHN6iOl",
+      "group": "XG",
+      "song": "HYPNOTIZE",
+      "originalVideoId": "cUfDOS2SINM",
+      "mirrorVideoId": "593b9ae8f95531fd8f7b623456476c24",
+      "uploader": "KatyK-POP",
+      "titleEqual": false,
+      "linksToOriginal": false,
+      "originalListing": {
+        "url": "https://www.youtube.com/results?search_query=cUfDOS2SINM",
+        "videoId": "cUfDOS2SINM",
+        "title": "XG - HYPNOTIZE (Official Music Video)",
+        "displayDuration": "3:10",
+        "seconds": 190,
+        "publisher": "XG"
+      },
+      "mirrorTitle": "XG 'HYPNOTIZE' OFFICIAL MV",
+      "mirrorPublication": "2026-07-18T14:16:30",
+      "mirrorDurationRounded": 190,
+      "hasHighQuality": false,
+      "mirrorDurationSeconds": 189.754,
+      "highestListedResolution": [
+        1920,
+        1080
+      ],
+      "timelineSeconds": 189.688,
+      "frameComparisons": [
+        {
+          "originalPreviewIndex": 1,
+          "originalImage": "https://i.ytimg.com/vi/cUfDOS2SINM/hq1.jpg",
+          "originalImageSha256": "2adbc0d59d25804660658ce682eb663e553109c583315804a0f3d7d81cfd2306",
+          "mirrorSeconds": 11.333,
+          "corr": 0.9862,
+          "meanChannelError": 4.47,
+          "decodedSampleSha256": "34818e9407ae6227459787bfc984691e2fdfb4a2754c055ba5a5645382fa827b"
+        },
+        {
+          "originalPreviewIndex": 2,
+          "originalImage": "https://i.ytimg.com/vi/cUfDOS2SINM/hq2.jpg",
+          "originalImageSha256": "7dd95f6fcc06dcfb6f640792bb8331996bf5d14ed4467bf78e4482e2bf9e860b",
+          "mirrorSeconds": 121.95,
+          "corr": 0.9973,
+          "meanChannelError": 3.69,
+          "decodedSampleSha256": "b4385abee8ea5d6ba29f1cef1eb1d0bfb8ff17a8a60550c03ee62808a954b354"
+        },
+        {
+          "originalPreviewIndex": 3,
+          "originalImage": "https://i.ytimg.com/vi/cUfDOS2SINM/hq3.jpg",
+          "originalImageSha256": "4578bb940e3bfa3ac94e4ba005c1ab0e1dc8722a372b1da370b33878a1dc361b",
+          "mirrorSeconds": 134.575,
+          "corr": 0.9983,
+          "meanChannelError": 4.23,
+          "decodedSampleSha256": "23ce3ff8402bcb40b1395964f439bd18f2dd8809860e9961da63f88b2c93fef5"
+        }
+      ],
+      "decodedComparisonRendition": [
+        256,
+        144
+      ],
+      "comparedTimelineFrames": 569,
+      "samplesPerSecond": 3,
+      "refined": true,
+      "qualified": true,
+      "embedUrl": "https://rutube.ru/play/embed/593b9ae8f95531fd8f7b623456476c24?autostartmute=true&q=1080",
+      "mirrorPage": "https://rutube.ru/video/593b9ae8f95531fd8f7b623456476c24/",
+      "originalPage": "https://www.youtube.com/watch?v=cUfDOS2SINM",
+      "originalCatalogueCredit": {
+        "channel": "XG",
+        "source": "Public catalogue, exact work and original video ID."
+      },
+      "priorObservation": "The v209 single-player observation returned a temporary playback error.",
+      "mutedInAppPlayback": {
+        "mirror": "593b9ae8f95531fd8f7b623456476c24",
+        "seconds": [
+          0.125123,
+          1.724429
+        ],
+        "duration": 189.6879999999999,
+        "width": 1920,
+        "height": 1080,
+        "muted": true
+      }
+    }
+  ],
+  "stillAwaitingHD": [
+    {
+      "workId": "rec28ldfRTrBgQ",
+      "song": "Nobody Knows",
+      "originalVideoId": "unLuba-TQiE",
+      "reviewedUploadId": "1c93291e195d095e83bdd80a335d21ae",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "rec28ldfRTrJ3E",
+      "song": "TOXIC",
+      "originalVideoId": "8F61FXiYpP0",
+      "reviewedUploadId": "e3c8b0cbb66e238b8df4e4b2387241f7",
+      "reason": "previouslyDecodedBelowHD",
+      "previousDecodedSize": [
+        1280,
+        640
+      ],
+      "previousMutedSeconds": [
+        0.222102,
+        29.736804
+      ]
+    },
+    {
+      "workId": "recvxDMFHNl2u3",
+      "song": "MASCARA",
+      "originalVideoId": "aVatpxBTfZs",
+      "reviewedUploadId": "399bfe7465cd017061847f9f308267c6",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxDMFHNyyeA",
+      "song": "O.R.B (Obviously Reads Bro)",
+      "originalVideoId": "9iK95Ez-Xto",
+      "reviewedUploadId": "060d7c3a5f57ead781e2aef6525ab002",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyH5pzcuRl",
+      "song": "Holiday Party",
+      "originalVideoId": "DZEOt4pQXXk",
+      "reviewedUploadId": "8ef3e1cfc1fcc29e3315ddc3bdff344d",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyH5pzgBlW",
+      "song": "POM POM POM",
+      "originalVideoId": "liuotbjjsHw",
+      "reviewedUploadId": "4c683de276c487dd1904aa8b17d1e3c4",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyH5pzp4EC",
+      "song": "BYOB (bring your own best friend)",
+      "originalVideoId": "wO14vi8V26E",
+      "reviewedUploadId": "aa5c12f200cae4436398949ee71badb3",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyH5pzpqlf",
+      "song": "Sweet Juice",
+      "originalVideoId": "WFqGKa6p1V8",
+      "reviewedUploadId": "f61386e8301c64dca62fe1d97c88f790",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyHrxVovnG",
+      "song": "Black Mamba",
+      "originalVideoId": "ZeerrnuLi5E",
+      "reviewedUploadId": "66c37ed04d004bbbffb34334a860c237",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyHuKM1Jq3",
+      "song": "All Night (Feat. Saweetie)",
+      "originalVideoId": "xU8mQMLx0tk",
+      "reviewedUploadId": "28e71fa5034b72a53a37329dd1f8e54c",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyHuKM4G9D",
+      "song": "Girls",
+      "originalVideoId": "dYRITmpFbJ4",
+      "reviewedUploadId": "b1944416bb208036944e50ade220a720",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyHuKM5r64",
+      "song": "Be Alright",
+      "originalVideoId": "gC7cURZsiH8",
+      "reviewedUploadId": "1249cb1666e0dece74feb12c8f09a7e4",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyHuKM6uxb",
+      "song": "XOXZ",
+      "originalVideoId": "B1ShLiq3EVc",
+      "reviewedUploadId": "fba7b0a756d7e92c04399bc64175364c",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyHuKM9jTG",
+      "song": "LUCID DREAM",
+      "originalVideoId": "trlOTS4nKO4",
+      "reviewedUploadId": "414094fd392cb12b087353cc1ccb9605",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyHuKMCtUB",
+      "song": "CRUSH",
+      "originalVideoId": "D-geLVTaBAo",
+      "reviewedUploadId": "397116d10dfa6e701f48742884205164",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5X8Xwo",
+      "song": "Motto",
+      "originalVideoId": "1jKnI_ib8c8",
+      "reviewedUploadId": "620c7f7e4292718d17f1ffcba7705424",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5X9qGD",
+      "song": "Like Magic",
+      "originalVideoId": "t6bBDAlpQZs",
+      "reviewedUploadId": "c1df3e489625563fd6c3eb58c1be99f5",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XAxxU",
+      "song": "How Sweet",
+      "originalVideoId": "Q3K0TOvTOno",
+      "reviewedUploadId": "dbd1707bb86fe9679a8eafac1e4bdfe3",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XB1hD",
+      "song": "New Jeans",
+      "originalVideoId": "kcelgrGY1h8",
+      "reviewedUploadId": "1648c587f6aeb2376431c7254e33d2d8",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XDSH1",
+      "song": "DIFFERENT",
+      "originalVideoId": "HFZUAXhdnHk",
+      "reviewedUploadId": "187f1551c6a2eb43b9d3606ca74ffa56",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XEqgh",
+      "song": "DALLA DALLA",
+      "originalVideoId": "pNfTK39k55U",
+      "reviewedUploadId": "fa0b191d09ba48c2bbb9a62ec8586285",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XHEju",
+      "song": "Right Now",
+      "originalVideoId": "m6pTbEz4w3o",
+      "reviewedUploadId": "9e1192ca6e29aea5c16aae374ee4ad67",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XJH3G",
+      "song": "Made My Night",
+      "originalVideoId": "Y1Lah0BM0KQ",
+      "reviewedUploadId": "5e2cfc70dd9e84bf4108bd5d09060181",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XJljg",
+      "song": "In the morning",
+      "originalVideoId": "_ysomCGaZLw",
+      "reviewedUploadId": "10c42cd5de4aeeaef5015ecab6a2cbe4",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XJllt",
+      "song": "Up!",
+      "originalVideoId": "hr-325mclek",
+      "reviewedUploadId": "e16c3726617761f2b12cacaef2410111",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XMA6l",
+      "song": "WA DA DA",
+      "originalVideoId": "n0j5NPptyM0",
+      "reviewedUploadId": "c1dcfe3c39bab9fd8a4a57a835aba1f7",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XR8ZW",
+      "song": "Klaxon",
+      "originalVideoId": "rTKqSmX9XhQ",
+      "reviewedUploadId": "9b7a9ad5d3fd085cbe98c0a0967bcce9",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XU3Vo",
+      "song": "Cheshire",
+      "originalVideoId": "zugAhfd2r0g",
+      "reviewedUploadId": "7b5b20bf152fab7f47333d76a22cea16",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XfdOm",
+      "song": "Heavy Serenade",
+      "originalVideoId": "6Ycn9qZK09I",
+      "reviewedUploadId": "3ff48954fe9ca8bf81979bf2b88441a3",
+      "reason": "temporarilyUnavailableBothAttempts"
+    },
+    {
+      "workId": "recvxyOz5XyMnx",
+      "song": "SWIPE",
+      "originalVideoId": "9oyodEkzn94",
+      "reviewedUploadId": "309cf12906bb1465131a0f39e961849d",
+      "reason": "temporarilyUnavailableBothAttempts"
+    }
+  ]
+}

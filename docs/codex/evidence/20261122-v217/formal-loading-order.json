@@ -1,0 +1,94 @@
+{
+  "browser": "Codex in-app browser",
+  "method": "One separate full navigation trace per group and version. Times relative to the document request. The first script in the verified detail chunk group is compared with the completed catalog fetch. This sample describes the scheduling order; the repeatable button timing is in formal-detail-latency.json.",
+  "traces": {
+    "v215": {
+      "ive": {
+        "id": "recvxyHuKMaCIP",
+        "requestStartElapsedMs": 0,
+        "catalog": {
+          "kind": "Fetch",
+          "path": "/api/catalog",
+          "requestMs": 919,
+          "firstByteMs": 2717,
+          "finishMs": 2715,
+          "bytes": 4020
+        },
+        "firstDetailScript": {
+          "kind": "Script",
+          "path": "/_next/static/chunks/n7RUz-nr.js",
+          "requestMs": 2722,
+          "firstByteMs": 2967,
+          "finishMs": 2960,
+          "bytes": 375
+        },
+        "detailStartMinusCatalogEndMs": 7
+      },
+      "adya": {
+        "id": "rec28ldfRTrH9V",
+        "requestStartElapsedMs": 0,
+        "catalog": {
+          "kind": "Fetch",
+          "path": "/api/catalog",
+          "requestMs": 1013,
+          "firstByteMs": 2597,
+          "finishMs": 2595,
+          "bytes": 3403
+        },
+        "firstDetailScript": {
+          "kind": "Script",
+          "path": "/_next/static/chunks/n7RUz-nr.js",
+          "requestMs": 2601,
+          "firstByteMs": 2831,
+          "finishMs": 2829,
+          "bytes": 312
+        },
+        "detailStartMinusCatalogEndMs": 6
+      }
+    },
+    "v217": {
+      "ive": {
+        "id": "recvxyHuKMaCIP",
+        "requestStartElapsedMs": 0,
+        "catalog": {
+          "kind": "Fetch",
+          "path": "/api/catalog",
+          "requestMs": 1128,
+          "firstByteMs": 1747,
+          "finishMs": 1746,
+          "bytes": 4029
+        },
+        "firstDetailScript": {
+          "kind": "Script",
+          "path": "/_next/static/chunks/TlSyyjes.js",
+          "requestMs": 1125,
+          "firstByteMs": 1401,
+          "finishMs": 1400,
+          "bytes": 312
+        },
+        "detailStartMinusCatalogEndMs": -621
+      },
+      "adya": {
+        "id": "rec28ldfRTrH9V",
+        "requestStartElapsedMs": 0,
+        "catalog": {
+          "kind": "Fetch",
+          "path": "/api/catalog",
+          "requestMs": 874,
+          "firstByteMs": 1479,
+          "finishMs": 1478,
+          "bytes": 3382
+        },
+        "firstDetailScript": {
+          "kind": "Script",
+          "path": "/_next/static/chunks/TlSyyjes.js",
+          "requestMs": 872,
+          "firstByteMs": 1102,
+          "finishMs": 1101,
+          "bytes": 334
+        },
+        "detailStartMinusCatalogEndMs": -606
+      }
+    }
+  }
+}

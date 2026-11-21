@@ -2,11 +2,13 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v216，51 团、605 支有视频的作品、9 个目录占位、527 个舞台。599 支 MV 支持照片下评分。八支 MV 的 63 张成员卡换成发行期素材，三团首页采用较小的展示图。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v216/publication.json) |
+| 正式站 | v217，51 团、605 支有视频的作品、9 个目录占位、527 个舞台。599 支 MV 支持照片下评分。IVE《ATTITUDE》已在本站实播至 3840 × 2160，三个团的首页团照可在入口出现时直接打开原图。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v217/publication.json) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `7f385c64`，发布标签 `site/v216`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `9eb60cb0`，发布标签 `site/v217`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v217 的《ATTITUDE》在导演提供的站内播放器上实际解码 3840 × 2160，静音播放读数前进，码率未测得。Cherry Bullet、Rocket Punch、Weeekly 的团照初次点击均能打开原图，页面就绪后也均能在弹窗查看并回焦。三团各三轮的作品详情等待中位数从 1,826 → 1,800 ms（IVE）、1,721 → 1,740 ms（ADYA）、2,032 → 1,833 ms（Cherry Bullet）。[播放、原图与访问时间](worklogs/20261122-v217-release.md)
 
 v216 调整了 IZ*ONE、NMIXX、ITZY、Weeekly 和 KISS OF LIFE 八支作品的 63 个成员位置。已标明跨期的卡位从 194 减至 146 个。Cherry Bullet、Rocket Punch 与 Weeekly 的四张首页展示图合计从 11,238,516 字节降至 1,216,442 字节，减少 89.18%。正式页面每团各两次，在相同显示宽度下，团照解码时间中位数分别缩短 1,255.5、1,295 和 734 ms。[成员原图与出处](worklogs/20261122-eight-mv-release-portraits.md) · [首页正式数据](worklogs/20261122-v216-release.md)
 
@@ -37,6 +39,8 @@ Hearts2Hearts 待看 10 张和全部 13 张作品封面均在 v208 正式站解�
 - 10 首歌的节目资料已上线，共 28 个不同的来源链接。两张日语版舞台封面已检查分 P 和时间。另有 81 项等待新证据，19 项沿用取消必填的决定。[节目核验](worklogs/20261121-broadcast-research.md) · [处置清单](evidence/20261121-repository-and-routes/content-disposition.json)
 
 ## 工程与下一步
+
+v217 的 Windows 和 WSL 均通过 `npm run verify`，各完成 4,115 项全量用例。Windows 通过 3,938 项、失败 138 项、跳过 39 项，WSL 通过 3,942 项、失败 134 项、跳过 39 项。两边相对 v216 均无新增失败。[v217 双平台结果](evidence/20261122-v217/tests.json)
 
 v216 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4,114 项，Windows 通过 3,937 项、失败 138 项、跳过 39 项，WSL 通过 3,941 项、失败 134 项、跳过 39 项。新增八项均通过，余下失败和 v215 逐项相同。[v216 双平台结果](evidence/20261122-v216/tests.json)
 

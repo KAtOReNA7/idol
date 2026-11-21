@@ -1,0 +1,178 @@
+{
+  "versions": {
+    "before": 216,
+    "after": 217
+  },
+  "browser": "Codex in-app browser",
+  "initialHtml": {
+    "before": {
+      "version": 216,
+      "site": "https://idol-lens-private.wuke40758.chatgpt.site",
+      "measuredAt": "2026-11-21T21:23:30.237517+00:00",
+      "rows": [
+        {
+          "slug": "cherrybullet",
+          "serverHeroMarkupPresent": true,
+          "controlType": "button",
+          "label": "查看原图",
+          "href": null,
+          "expectedOriginal": "/artist/cherrybullet/official/group-fashion-house.jpg"
+        },
+        {
+          "slug": "rocketpunch",
+          "serverHeroMarkupPresent": true,
+          "controlType": "button",
+          "label": "查看团照原图",
+          "href": null,
+          "expectedOriginal": "/artist/rocketpunch/official-boom/boom-1-group-original.jpg"
+        },
+        {
+          "slug": "weeekly",
+          "serverHeroMarkupPresent": true,
+          "controlType": "button",
+          "label": "查看原图",
+          "href": null,
+          "expectedOriginal": "/artist/weeekly/official/group-1.jpg"
+        }
+      ]
+    },
+    "after": {
+      "version": 217,
+      "site": "https://idol-lens-private.wuke40758.chatgpt.site",
+      "measuredAt": "2026-11-21T21:30:44.360196+00:00",
+      "rows": [
+        {
+          "slug": "cherrybullet",
+          "serverHeroMarkupPresent": true,
+          "controlType": "a",
+          "label": "查看原图",
+          "href": "/artist/cherrybullet/official/group-fashion-house.jpg",
+          "expectedOriginal": "/artist/cherrybullet/official/group-fashion-house.jpg"
+        },
+        {
+          "slug": "rocketpunch",
+          "serverHeroMarkupPresent": true,
+          "controlType": "a",
+          "label": "查看团照原图",
+          "href": "/artist/rocketpunch/official-boom/boom-1-group-original.jpg",
+          "expectedOriginal": "/artist/rocketpunch/official-boom/boom-1-group-original.jpg"
+        },
+        {
+          "slug": "weeekly",
+          "serverHeroMarkupPresent": true,
+          "controlType": "a",
+          "label": "查看原图",
+          "href": "/artist/weeekly/official/group-1.jpg",
+          "expectedOriginal": "/artist/weeekly/official/group-1.jpg"
+        }
+      ]
+    }
+  },
+  "firstClick": [
+    {
+      "slug": "cherrybullet",
+      "src": "/artist/cherrybullet/official/group-fashion-house.jpg",
+      "label": {
+        "bodyWidth": 1265,
+        "tag": "A",
+        "text": "查看原图"
+      },
+      "mode": "image",
+      "delay": 91,
+      "actual": {
+        "h": 1800,
+        "src": "https://idol-lens-private.wuke40758.chatgpt.site/artist/cherrybullet/official/group-fashion-house.jpg",
+        "w": 2700
+      },
+      "matched": true,
+      "focus": false
+    },
+    {
+      "slug": "rocketpunch",
+      "src": "/artist/rocketpunch/official-boom/boom-1-group-original.jpg",
+      "label": {
+        "bodyWidth": 1265,
+        "tag": "A",
+        "text": "查看团照原图"
+      },
+      "mode": "image",
+      "delay": 57,
+      "actual": {
+        "h": 1403,
+        "src": "https://idol-lens-private.wuke40758.chatgpt.site/artist/rocketpunch/official-boom/boom-1-group-original.jpg",
+        "w": 1984
+      },
+      "matched": true,
+      "focus": false
+    },
+    {
+      "slug": "weeekly",
+      "src": "/artist/weeekly/official/group-1.jpg",
+      "label": {
+        "bodyWidth": 1265,
+        "tag": "A",
+        "text": "查看原图"
+      },
+      "mode": "image",
+      "delay": 61,
+      "actual": {
+        "h": 2000,
+        "src": "https://idol-lens-private.wuke40758.chatgpt.site/artist/weeekly/official/group-1.jpg",
+        "w": 2800
+      },
+      "matched": true,
+      "focus": false
+    }
+  ],
+  "afterPageReady": [
+    {
+      "slug": "cherrybullet",
+      "src": "/artist/cherrybullet/official/group-fashion-house.jpg",
+      "width": 2700,
+      "returned": true
+    },
+    {
+      "slug": "rocketpunch",
+      "src": "/artist/rocketpunch/official-boom/boom-1-group-original.jpg",
+      "width": 1984,
+      "returned": true
+    },
+    {
+      "slug": "weeekly",
+      "src": "/artist/weeekly/official/group-1.jpg",
+      "width": 2800,
+      "returned": true
+    }
+  ],
+  "nativePages": [
+    {
+      "slug": "izna",
+      "focused": {
+        "deep": true,
+        "deepName": null,
+        "deepTag": "BUTTON",
+        "sameRoot": true
+      },
+      "img": {
+        "h": 2100,
+        "src": "https://idol-lens-private.wuke40758.chatgpt.site/artist/izna/batch-b-20261016/group-original.png",
+        "w": 1500
+      }
+    },
+    {
+      "slug": "ifeye",
+      "focused": {
+        "deep": true,
+        "deepName": "放大ifeye 团体概念照片",
+        "deepTag": "BUTTON",
+        "sameRoot": true
+      },
+      "img": {
+        "h": 833,
+        "src": "https://idol-lens-private.wuke40758.chatgpt.site/artist/ifeye/batch-b-20261016/group-display.jpg",
+        "w": 1600
+      }
+    }
+  ],
+  "udtt": "Initial read failed once. A retry restored the actual four-member group photo and the Lu Yuting member entry."
+}

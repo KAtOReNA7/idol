@@ -2,11 +2,12 @@
 import {useCanEdit} from '@/components/public-access';
 import {SequencePreview} from '@/components/library-browser';
 import type {WatchSequence} from '@/lib/idol/journey';
-import {PublicWorkCredits, PublicProductionCredits} from '@/components/public-work-credits';
+import {PublicWorkCredits, PublicProductionCredits, publicScoreMembers} from '@/components/public-work-credits';
 import {memberDisplayName} from '@/lib/idol/member-display-name';
+import {publicCollaboratorIds} from '@/lib/idol/public-work-credits';
 import {useState, useCallback, useRef} from 'react';
 import {ArrowUpRight, ArrowLeft, Check, ChevronRight, Music2, Disc3} from 'lucide-react';
-import type {CatalogView as Catalog, Work} from '@/lib/idol/types';
+import type {CatalogView as Catalog, Member, Work} from '@/lib/idol/types';
 import {videoId} from '@/lib/idol/values';
 import {approvedVideoPoster, approvedStagePoster, stagePreviewFallback} from '@/lib/idol/approved-video-poster';
 import {MvPhotoReference} from '@/components/mv-photo-reference';
@@ -24,7 +25,8 @@ import {performanceLabel, performerLabel, mvVersionWarning, castWarning, alterna
 import {StageSameSongFallback} from '@/components/stage-same-song-fallback';
 import {names, score, GroupLinks} from './presentation';
 import {Editor} from './record-editor';
-import {PersonalMvRatingsPanel} from './personal-mv-ratings';
+import {MusicMemberPhoto} from './member-portrait';
+import {PersonalMvRatingsPanel,PersonalMvScore,NativeScoreButton,NativeScorePortal,type NativeScoreLocation} from './personal-mv-ratings';
 
 // Public design-media lookup. Research keys never become record IDs or cast lists.
 // Sources: approved tripleS handoff works-research.json, matched to the existing catalog.
@@ -235,22 +237,41 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  const absence=mvMemberAbsence(work);
  const mvVideo=videoId(work.url);
  const personal=canEdit&&data.mode==='live'&&!absence&&mvVideo?data.personalMvRatings:undefined;
- const openPersonal=useRef<((id:string)=>void)|null>(null);
- const roster=personal?data.members.filter(m=>work.groupIds.some(id=>m.groupIds.includes(id)||m.formerGroupIds?.includes(id))):[];
+ const [nativeLocations,setNativeLocations]=useState<Record<string,NativeScoreLocation>>({});
+ const collaborators=personal?publicCollaboratorIds(work):[];
+ const roster=personal?data.members.filter(m=>collaborators.includes(m.id)||work.groupIds.some(id=>m.groupIds.includes(id)||m.formerGroupIds?.includes(id))):[];
  const people=absence?[]:data.ratings.filter(r=>r.workIds.includes(work.id));const memberDrafts=dirtyKeys.filter(k=>k.startsWith('ratings:'));const hasMemberDraft=memberDrafts.length>0;
  const existingMembers=new Set(people.flatMap(row=>row.memberIds));
- const hasPersonal=personal&&(personal.entries.some(row=>row.workId===work.id&&row.videoId===mvVideo)||personal.writable&&roster.some(m=>!existingMembers.has(m.id)));
- function rateMember(id:string){
-  if(!canEdit||data.mode!=='live'||absence)return;
-  const matches=people.filter(row=>row.memberIds.includes(id));
-  if(matches.length===1&&matches[0].memberIds.length===1&&matches[0].workIds.length===1){
-   return ()=>{const rating=matches[0].id;jumpToCast(rating);memberCards.current[rating]?.querySelector<HTMLButtonElement>('.editor-open')?.click();};
-  }
-  if(!matches.length&&personal?.writable&&roster.some(m=>m.id===id))return ()=>openPersonal.current?.(id);
+ const represented=canEdit&&data.mode==='live'&&mvVideo&&!absence?publicScoreMembers(work,data):new Set<string>();
+ const otherMembers=roster.filter(m=>!existingMembers.has(m.id)&&!represented.has(m.id));
+ const hasPersonal=personal&&otherMembers.some(m=>personal.writable||personal.entries.some(r=>r.workId===work.id&&r.videoId===mvVideo&&r.memberId===m.id));
+ const personalProps=personal&&mvVideo?{ratings:personal,workId:work.id,videoId:mvVideo,onDirty:markDirty,onBlocked:markNavigationBlocked,onSaved}:null;
+ function nativeScore(id:string,member:Member,placement:string){
+  const location=nativeLocations[id];
+  return <NativeScoreButton memberId={member.id} name={memberDisplayName(member)} recordId={id} placement={placement} active={location?.placement===placement}
+   onOpen={slot=>{
+    const host=location?.host??document.createElement('div');
+    if(host.parentElement!==slot)slot.appendChild(host);
+    if(!location||location.placement!==placement)setNativeLocations(previous=>({...previous,[id]:{host,placement}}));
+    host.querySelector('input')?.focus({preventScroll:true});
+   }}/>;
+ }
+ function scoreForPhoto(member:Member){
+  if(!canEdit||data.mode!=='live'||absence||!mvVideo)return null;
+  const matches=people.filter(row=>row.memberIds.includes(member.id));
+  if(matches.length===1&&matches[0].memberIds.length===1&&matches[0].workIds.length===1)return nativeScore(matches[0].id,member,'credit');
+  if(matches.length||!personalProps||!roster.some(m=>m.id===member.id))return null;
+  if(!personalProps.ratings.writable&&!personalProps.ratings.entries.some(row=>row.workId===work.id&&row.videoId===mvVideo&&row.memberId===member.id))return null;
+  return <PersonalMvScore key={[work.id,mvVideo,personalProps.ratings.scope,member.id].join(':')} {...personalProps} member={member}/>;
  }
  const switchView=(next:'mv'|'stage')=>{setSelection({workId:work.id,initialView,view:next});onViewChange?.(next);};
- function jumpToCast(id:string){const card=memberCards.current[id];if(!card)return;card.focus({preventScroll:true});card.scrollIntoView({block:'center',behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
- function jumpToMemberDraft(){const id=memberDrafts[0]?.slice('ratings:'.length);if(!id)return;if(view==='stage')switchView('mv');window.requestAnimationFrame(()=>{const card=memberCards.current[id]??document.getElementById(id);const button=card?.querySelector<HTMLButtonElement>('.editor-actions button:not(:disabled)');(button??card)?.scrollIntoView({block:'center',behavior:'smooth'});button?.focus({preventScroll:true});});}
+ function jumpToCast(id:string){
+  const card=memberCards.current[id];
+  if(!card)return;
+  card.focus({preventScroll:true});
+  card.scrollIntoView({block:'center',behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+ }
+ function jumpToMemberDraft(){const id=memberDrafts[0]?.slice('ratings:'.length);if(!id)return;if(view==='stage')switchView('mv');window.requestAnimationFrame(()=>{const card=nativeLocations[id]?.host??memberCards.current[id]??document.getElementById(id);const button=card?.querySelector<HTMLButtonElement>('.editor-actions button:not(:disabled)');(button??card)?.scrollIntoView({block:'center',behavior:'smooth'});button?.focus({preventScroll:true});});}
  return <div className={'detail '+(view==='stage'?'stage-view':'')}><button className="back text-button" onClick={onBack}><ArrowLeft size={16}/>{backLabel}</button>
  <header className="music-work-title"><GroupLinks data={data} ids={work.groupIds} onGroup={onGroup}/><h1>{work.song||work.name}</h1><p>{[work.videoType,work.version,work.releaseDate].filter(Boolean).join(' · ')}</p></header>
  {sequence&&<SequencePreview sequence={sequence} currentId={work.id} catalog={data} onNext={onNext} nextDisabled={navigationBlockedKeys.length>0}/>}
@@ -275,8 +296,8 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
     details.scrollIntoView({block:'center'});
    }}>查看资料与来源</button>}
   <button className="button" onClick={()=>switchView('mv')}>返回 MV</button>
- </>}</div></div>:<WorkVideoPlayer posterSrc={approvedPoster?.src??(loonaButterfly&&view==='mv'?'/artist/loona/approved-home/butterfly.jpg':triplesMedia&&activePlatform==='youtube'?(view==='mv'?triplesMedia.poster:triplesMedia.stagePoster):undefined)} posterLabel={approvedPoster?.label} posterIsReference={approvedPoster?.workReference} posterFit={approvedPoster?.fit??(approvedPoster?'contain':undefined)} posterSize={approvedPoster?.intrinsicSize} posterZoom={approvedPoster?.zoom} workId={work.id} view={view} platform={activePlatform} sourceKey={view==='stage'&&stage?stageSourceKey(stage):null} url={activeUrl} videoId={vid} embedUrl={playback?.embedUrl??(view==='stage'&&stage?stageEmbedUrl(stage):vid?youtubeEmbedUrl(vid):null)} title={title}/>}
- <div className="video-caption"><span>{title}</span>{playback?<span>{playback.credit}</span>:activePlatform==='bilibili'?<span>B站</span>:activeUrl&&<a href={activeUrl} target="_blank" rel="noopener noreferrer">{activePlatformLabel} 原视频<ArrowUpRight size={13}/></a>}</div>{activeUrl&&!playback&&activePlatform!=='bilibili'&&<p className="video-fallback">{activePlatform==='x'?'在 X 打开所选视频观看。':'播放不了？可在 YouTube 打开原视频。'}</p>}
+ </>}</div></div>:<WorkVideoPlayer playbackCredit={playback?.credit} fallbackPlayer={playback?.fallbackPlayer} posterSrc={approvedPoster?.src??(loonaButterfly&&view==='mv'?'/artist/loona/approved-home/butterfly.jpg':triplesMedia&&activePlatform==='youtube'?(view==='mv'?triplesMedia.poster:triplesMedia.stagePoster):undefined)} posterLabel={approvedPoster?.label} posterIsReference={approvedPoster?.workReference} posterFit={approvedPoster?.fit??(approvedPoster?'contain':undefined)} posterSize={approvedPoster?.intrinsicSize} posterZoom={approvedPoster?.zoom} workId={work.id} view={view} platform={activePlatform} sourceKey={view==='stage'&&stage?stageSourceKey(stage):null} url={activeUrl} videoId={vid} embedUrl={playback?.embedUrl??(view==='stage'&&stage?stageEmbedUrl(stage):vid?youtubeEmbedUrl(vid):null)} title={title}/>}
+ <div className="video-caption"><span>{title}</span>{playback?null:activePlatform==='bilibili'?<span>B站</span>:activeUrl&&<a href={activeUrl} target="_blank" rel="noopener noreferrer">{activePlatformLabel} 原视频<ArrowUpRight size={13}/></a>}</div>{activeUrl&&!playback&&activePlatform!=='bilibili'&&<p className="video-fallback">{activePlatform==='x'?'在 X 打开所选视频观看。':'播放不了？可在 YouTube 打开原视频。'}</p>}
  {loonaButterfly&&<div className="loona-associated-release"><img src="/artist/loona/approved-home/butterfly-album.jpg" width="96" height="96" alt="关联发行《X X》封面"/><div><strong>关联发行《X X》</strong><span>发行封面</span></div></div>}
  {view==='mv'&&people.length>0&&<nav className="mv-member-shortcuts" aria-label="本支成员"><span>成员评分</span><div>{people.map(r=>{const m=data.members.find(m=>r.memberIds.includes(m.id)),label=m?memberDisplayName(m):r.name;return <button type="button" key={r.id} aria-controls={'mv-cast-'+r.id} onClick={()=>jumpToCast(r.id)}>{label}</button>;})}</div><small>选择成员，查看照片与评分</small></nav>}
  {!playback&&vid&&activePlatform==='youtube'&&<CaptionHelp/>}
@@ -295,9 +316,12 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  </aside></div>
  {triples&&<section className="triples-detail-connections">{view==='mv'&&triplesMedia?.releaseCover&&<div className="triples-associated-release"><h2>来自这张发行</h2><button type="button" onClick={()=>onArtistNavigate?.('/artists/triples?section=works&release='+encodeURIComponent(triplesMedia.releaseKey))}><img src={triplesMedia.releaseCover} width="136" height="136" alt={triplesMedia.releaseTitle+' · 发行封面'}/><span>{triplesMedia.releaseTitle}<small>发行封面</small></span><ChevronRight size={18}/></button></div>}<div className="triples-other-video"><h2>{view==='stage'?'回到音乐影像':'到舞台上再听一次'}</h2>{view==='mv'&&triplesMedia?.stagePoster&&<img src={triplesMedia.stagePoster} width="880" height="495" alt="Girls Never Die · M COUNTDOWN EP.843 舞台封面"/>}{view==='mv'&&stage&&<p>{stage.title}</p>}<button type="button" className="button" onClick={()=>{switchView(view==='stage'?'mv':'stage');document.getElementById('work-video-panel')?.scrollIntoView({block:'start'});}}>{view==='stage'?'查看 MV':'进入舞台'}<ChevronRight size={16}/></button></div></section>}
  {view==='mv'&&absence&&<section className="mv-no-members" aria-label="无成员出镜"><h2>本MV无成员真人出镜</h2><p>{absence.reason}</p><a href={absence.sources[0]} target="_blank" rel="noopener noreferrer">查看作品资料 ↗</a></section>}
- {view==='mv'&&<PublicWorkCredits work={work} data={data} onMember={onMember} rateMember={rateMember}/>}
+ {(view==='mv'||personalProps||Object.keys(nativeLocations).length>0)&&<div hidden={view==='stage'}><PublicWorkCredits work={work} data={data} onMember={onMember} renderScore={scoreForPhoto}/></div>}
  {view==='mv'&&<PublicProductionCredits work={work}/>}
- {!absence&&<section hidden={view==='stage'||(people.length===0&&!hasPersonal)} className="section cast-section"><div className="section-heading"><div><h2>成员与评分</h2></div></div>{personal&&mvVideo&&<PersonalMvRatingsPanel key={[work.id,mvVideo,personal.scope].join(':')} ratings={personal} workId={work.id} videoId={mvVideo} roster={roster} existingMembers={existingMembers} openRef={openPersonal} onDirty={markDirty} onBlocked={markNavigationBlocked} onSaved={onSaved}/>}<div className="cast-grid">{people.map(r=>{const m=data.members.find(m=>r.memberIds.includes(m.id));return <article id={"mv-cast-"+r.id} tabIndex={-1} aria-label={(m?memberDisplayName(m):r.name)+" · 本支 MV 成员卡片"} data-browse-anchor={"cast-"+r.id} className="cast-card" key={r.id} ref={node=>{memberCards.current[r.id]=node;}}><div className="mv-photo-stack"><MvIdentityPhoto work={work} selectEdition={mvRecognitionEdition} memberId={m?.id??''} label={m?memberDisplayName(m):r.name} photo={m?personalMvPhoto(r,m.id,work.id):null} live={data.mode==='live'}/><MvPhotoReference photo={r.photo} referencePhoto={r.referencePhoto} label={m?memberDisplayName(m):r.name} live={data.mode==='live'}/></div><div className="cast-copy"><button className="member-name" disabled={!m} onClick={()=>m&&onMember(m.id)}><strong><span className="member-display-name">{m?memberDisplayName(m):r.name}</span></strong><ArrowUpRight size={15}/></button>{castWarning(r.verification)&&<small className="cast-verification">{castWarning(r.verification)}</small>}<div className="cast-scores"><span>表现 <b>{score(r.score)}</b></span><span>造型 <b>{score(r.stylingScore)}</b></span></div>{r.memory&&<p className="memory">{r.memory}</p>}{r.note&&<p className="cast-note">{r.note}</p>}<Editor loona={loona} triples={triples} table="ratings" id={r.id} mode={data.mode} publicCatalog={data} onSaved={onSaved} onDirtyChange={markDirty} onNavigationBlockedChange={markNavigationBlocked} compact/></div></article>})}</div></section>}
+ {!absence&&<section hidden={view==='stage'||(people.length===0&&!hasPersonal)} className="section cast-section"><div className="section-heading"><div><h2>成员与评分</h2></div></div>{personalProps&&hasPersonal&&<PersonalMvRatingsPanel key={[work.id,mvVideo,personalProps.ratings.scope].join(':')} {...personalProps} roster={otherMembers}/>}<div className="cast-grid">{people.map(r=>{const m=data.members.find(m=>r.memberIds.includes(m.id));return <article data-native-score-record={r.id} data-photo-member={m?.id} id={"mv-cast-"+r.id} tabIndex={-1} aria-label={(m?memberDisplayName(m):r.name)+" · 本支 MV 成员卡片"} data-browse-anchor={"cast-"+r.id} className="cast-card" key={r.id} ref={node=>{memberCards.current[r.id]=node;}}><div className="mv-photo-stack"><MvIdentityPhoto work={work} selectEdition={mvRecognitionEdition} memberId={m?.id??''} label={m?memberDisplayName(m):r.name} fallback={canEdit&&m&&data.mode==='live'?<div className="mv-member-portrait-reference"><MusicMemberPhoto member={m} live/><small>成员资料照</small></div>:undefined} photo={m?personalMvPhoto(r,m.id,work.id):null} live={data.mode==='live'}/><MvPhotoReference photo={r.photo} referencePhoto={r.referencePhoto} label={m?memberDisplayName(m):r.name} live={data.mode==='live'}/></div><div className="cast-copy"><button className="member-name" disabled={!m} onClick={()=>m&&onMember(m.id)}><strong><span className="member-display-name">{m?memberDisplayName(m):r.name}</span></strong><ArrowUpRight size={15}/></button>{castWarning(r.verification)&&<small className="cast-verification">{castWarning(r.verification)}</small>}<div className="cast-scores"><span>表现 <b>{score(r.score)}</b></span><span>造型 <b>{score(r.stylingScore)}</b></span></div>{canEdit&&data.mode==='live'&&mvVideo&&m&&represented.has(m.id)&&r.memberIds.length===1&&r.workIds.length===1?nativeScore(r.id,m,'cast'):<Editor loona={loona} triples={triples} table="ratings" id={r.id} mode={data.mode} publicCatalog={data} onSaved={onSaved} onDirtyChange={markDirty} onNavigationBlockedChange={markNavigationBlocked} compact/>}{r.memory&&<p className="memory">{r.memory}</p>}{r.note&&<p className="cast-note">{r.note}</p>}</div></article>})}</div></section>}
+ {canEdit&&data.mode==='live'&&mvVideo&&!absence&&people.map(r=>nativeLocations[r.id]&&<NativeScorePortal key={r.id} location={nativeLocations[r.id]}>
+  <Editor loona={loona} triples={triples} table="ratings" id={r.id} mode={data.mode} publicCatalog={data} onSaved={onSaved} onDirtyChange={markDirty} onNavigationBlockedChange={markNavigationBlocked} compact initiallyOpen/>
+ </NativeScorePortal>)}
  {sequenceLabel&&<section className="watch-next" aria-label="继续观看"><div><span className="eyebrow">KEEP WATCHING</span><h2>{nextWork?'接着看下一首':'这组暂时没有下一首 MV'}</h2>{nextWork?<p>{names(data,nextWork.groupIds)} · {nextWork.song||nextWork.name}</p>:<p>回到列表，换一支想看的作品。</p>}</div>{nextWork?<button className="button primary" disabled={navigationBlockedKeys.length>0} onClick={onNext}>下一首 MV<ChevronRight size={17}/></button>:<button className="button" onClick={onBack}>{backLabel}<ArrowLeft size={16}/></button>}</section>}
  <div className="detail-return"><span className="watch-save-context">{sequenceLabel&&<strong>{sequenceLabel} · 第 {sequencePosition} / {sequenceTotal} 首</strong>}<span>{navigationBlockedKeys.length?'请先等待或核对本次保存结果，再继续下一首':dirtyKeys.length?`有 ${dirtyKeys.length} 条未保存修改，切换不会自动保存`:'切换视频不会清空未保存的输入'}</span></span><div>{canEdit&&<button className="button primary" disabled={!workSaveEnabled} onClick={()=>workSaveButton.current?.click()}>{retryWorkSave?'核对上次保存':'保存作品修改'}<Check size={15}/></button>}{hasMemberDraft&&<button className={"text-button member-draft-link "+(!workSaveEnabled?"primary":"")} onClick={jumpToMemberDraft}>去保存成员评分（{memberDrafts.length}）<ArrowUpRight size={15}/></button>}<button className="button detail-back" onClick={onBack}>{backLabel}<ArrowLeft size={16}/></button>{nextWork&&<button className="button next-work-button" title={"下一首 MV · "+(nextWork.song||nextWork.name)} aria-label={"下一首 MV · "+(nextWork.song||nextWork.name)} disabled={navigationBlockedKeys.length>0} onClick={onNext}><span>下一首 MV<small>{nextWork.song||nextWork.name}</small></span><ChevronRight size={17}/></button>}</div></div></div>;
 }

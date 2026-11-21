@@ -1,6 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
 const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
 const {harness}=require('./helpers/personal-mv-ratings.cjs');
+const {parse}=require('next/dist/compiled/node-html-parser');
 const path=require('node:path'),os=require('node:os'),child=require('node:child_process'),{DatabaseSync}=require('node:sqlite');
 const tableSchema=name=>({field_id:name,field_name:name,type:1});
 const fixtureOwner=()=>({userId:'owner',email:fs.readFileSync('lib/idol/http.ts','utf8').match(/toLowerCase\(\)!=='([^']+)'/)[1]});
@@ -185,7 +186,7 @@ test('the production archive and manifest restore legacy records, private zero a
  }
 });
 
-test('all 51 groups render source-bound MV scoring, private choices and public credits; BILLIONAIRE has seven independent owner shortcuts',t=>{
+test('all 51 groups give eligible members scoring controls on their own photo cards, including seven BILLIONAIRE release portraits',t=>{
  const {api}=harness(),snapshot=require('../data/snapshot.json');
  const source=api.projectCatalog(snapshot.tables,'live',snapshot.capturedAt);
  // Keep only the approved IDs, member links and public media for these renders.
@@ -200,6 +201,8 @@ test('all 51 groups render source-bound MV scoring, private choices and public c
  const groups=new Set(),placeholderGroups=new Set(),counts=blank();
  const groupCounts=new Map(owner.groups.map(group=>[group.id,{id:group.id,name:group.name,...blank()}]));
  const stageLeaks=[];
+ const photoAudit={eligibleWorks:0,visibleCards:0,chosenRosterCards:0,uniqueWorkMembers:0,externalReadOnlyCredits:0,missingControl:0,missingImage:0};
+ const missing=[];
  for(const [index,work] of owner.works.entries()){
   const add=key=>{counts[key]++;for(const id of new Set(work.groupIds))groupCounts.get(id)[key]++;};
   if(work.placeholder){add('placeholders');work.groupIds.forEach(id=>placeholderGroups.add(id));assert.equal(api.videoId(work.url),null);continue;}
@@ -207,10 +210,38 @@ test('all 51 groups render source-bound MV scoring, private choices and public c
   const absent=!!api.mvMemberAbsence(work),hasVideo=!!api.videoId(work.url);
   const previous=owner.ratings.filter(r=>r.workIds.includes(work.id));
   const existing=new Set(previous.flatMap(row=>row.memberIds));
-  const eligible=owner.members.filter(m=>work.groupIds.some(id=>m.groupIds.includes(id)||m.formerGroupIds?.includes(id))&&!existing.has(m.id));
+  const exactGuest=require('../data/public-work-credits.json').records.find(c=>c.workId===work.id&&c.videoId===api.videoId(work.url)&&work.groupIds.includes(c.groupId)&&c.kind==='named_artist_credit');
+  const eligible=owner.members.filter(m=>(exactGuest?.memberIds.includes(m.id)||work.groupIds.some(id=>m.groupIds.includes(id)||m.formerGroupIds?.includes(id)))&&!existing.has(m.id));
   const canChoose=!absent&&hasVideo&&eligible.length>0;
   const privatePage=render(work,owner,true),publicPage=render(guest.works[index],guest,false);
-  assert.equal(privatePage.includes('添加成员评分'),canChoose,work.id);
+  if(!absent&&hasVideo){
+   photoAudit.eligibleWorks++;
+   const pictures=parse(privatePage),picker=pictures.querySelector('.personal-mv-picker select');
+   const choices=picker?picker.querySelectorAll('option[value]').map(el=>el.getAttribute('value')).filter(Boolean):[];
+   const eligibleIds=new Set([...eligible.map(m=>m.id),...existing]);
+   const initialCards=pictures.querySelectorAll('[data-photo-member]').filter(card=>{
+    if(eligibleIds.has(card.getAttribute('data-photo-member')))return true;
+    // A public collaborator may be outside this work's owner-write roster.
+    assert.equal(card.querySelector('.credit-score-action,.editor-open'),null);
+    photoAudit.externalReadOnlyCredits++;
+    return false;
+   });
+   const memberIds=new Set(initialCards.map(card=>card.getAttribute('data-photo-member')));
+   assert.deepEqual(new Set(choices),new Set(eligible.filter(m=>!memberIds.has(m.id)).map(m=>m.id)),work.id);
+   assert.deepEqual(new Set([...choices,...memberIds]),new Set([...eligible.map(m=>m.id),...existing]),work.id);
+   // A saved synthetic zero renders the same roster-photo card used after a selection.
+   const entries=choices.map(memberId=>({workId:work.id,videoId:api.videoId(work.url),memberId,score:0,stylingScore:null,revision:1}));
+   const allCards=entries.length?parse(render(work,{...owner,personalMvRatings:{...owner.personalMvRatings,entries}},true)):pictures;
+   const extraCards=allCards.querySelectorAll('[data-roster-score-member]');
+   assert.equal(extraCards.length,choices.length);
+   for(const card of [...initialCards,...extraCards]){
+    const memberId=card.getAttribute('data-photo-member')??card.getAttribute('data-roster-score-member');
+    if(!card.querySelector('.credit-score-action,.editor-open')){photoAudit.missingControl++;missing.push([work.id,memberId,'action']);}
+    if(!card.querySelector('img[src]')){photoAudit.missingImage++;missing.push([work.id,memberId,'portrait']);}
+   }
+   for(const card of extraCards)assert.match(card.text,/成员资料照.*表现 0/);
+   photoAudit.visibleCards+=initialCards.length;photoAudit.chosenRosterCards+=extraCards.length;photoAudit.uniqueWorkMembers+=new Set([...choices,...memberIds]).size;
+  }
   assert.equal(/添加成员评分|class="credit-score-action"/.test(publicPage),false,work.id);
   assert.equal(/公开原发行阵容|人工看片确认的MV出镜成员|这里不提供成员评分|既有具名照片|个人评分记录待补|exclusive_performance_video|ost_promotion_video/.test(privatePage+publicPage),false,work.id);
   if(absent){add('absent');assert.equal(privatePage.includes('class="credit-score-action"'),false,work.id);}
@@ -224,6 +255,12 @@ test('all 51 groups render source-bound MV scoring, private choices and public c
   if(work.id==='rec28ldfRTrLku'){
    assert.equal(previous.length,0);assert.equal(eligible.length,7);
    assert.equal((privatePage.match(/class="credit-score-action"/g)||[]).length,7);
+   assert.equal(privatePage.includes('添加成员评分'),false);
+   for(const card of parse(privatePage).querySelectorAll('[data-photo-member]')){
+    const action=card.querySelector('[data-score-kind="personal"]');
+    assert.equal(action.getAttribute('data-score-member'),card.getAttribute('data-photo-member'));
+    assert.ok(card.querySelector('img[src]')&&action.querySelector('button[aria-expanded="false"]'));
+   }
    assert.equal((publicPage.match(/class="mv-identity-frame"/g)||[]).length,7);
    assert.ok(privatePage.includes('《DRIP》发行阵容')&&publicPage.includes('《DRIP》发行阵容'));
    assert.equal(privatePage.includes('MV 出镜成员'),false);
@@ -235,8 +272,9 @@ test('all 51 groups render source-bound MV scoring, private choices and public c
   const report={snapshotCapturedAt:snapshot.capturedAt,groupCount:groupCounts.size,catalogWorks:owner.works.length,
    scope:'Local React server render with public identities, synthetic owner scope, and cleared personal values. Multi-group works count once globally and once per listed group.',
    mvDetailRenders:2*counts.works,stageDetailRenders:counts.stagePages,publicCreditRecords:require('../data/public-work-credits.json').records.length,
-   existingRelationshipCount:owner.ratings.length,workCounts:counts,groups:[...groupCounts.values()]};
+   existingRelationshipCount:owner.ratings.length,workCounts:counts,photoAudit,groups:[...groupCounts.values()]};
   fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n');
  }
- t.diagnostic('Rendering counts '+JSON.stringify(counts));
+ t.diagnostic('Rendering counts '+JSON.stringify({counts,photoAudit,missing:missing.slice(0,20)}));
+ assert.equal(photoAudit.eligibleWorks,599);assert.equal(photoAudit.missingControl,0);assert.equal(photoAudit.missingImage,0);
 });

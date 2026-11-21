@@ -12,11 +12,20 @@
 .public-recognition-grid .mv-identity-photo figcaption{font-size:12px;line-height:1.5}
 .public-work-credits .credit-score-action{align-self:start;padding:6px 12px;border:1px solid currentColor;border-radius:6px;text-decoration:none;font-size:14px;line-height:1.5}
 .personal-mv-ratings{display:grid;gap:16px;margin-block:16px}
-.personal-mv-picker,.personal-mv-saved li{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.personal-mv-picker{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
 .personal-mv-picker label,.personal-score-form legend{font-weight:700}
 .personal-mv-picker select{font:inherit;color:inherit;background:transparent;padding:8px;max-width:100%;border:1px solid currentColor;border-radius:6px}
 .personal-mv-picker option{color:CanvasText;background:Canvas}
 .personal-mv-picker small{flex-basis:100%}
-.personal-mv-saved{padding:0;list-style:none;display:grid;gap:8px}
 .personal-score-form{min-inline-size:0;max-width:38rem}
 @media(max-width:480px){.public-work-credits .public-recognition-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}}
+
+.mv-inline-score{min-width:0;text-align:start}
+.mv-inline-score .credit-score-action{font:inherit;font-size:.875rem;line-height:1.5;color:inherit;background:transparent;border:1px solid currentColor;border-radius:6px;padding:6px 12px;cursor:pointer}
+.mv-inline-score .editor{min-width:0;margin:.55rem 0 0;padding:.65rem}
+.mv-inline-score .editor-fields{grid-template-columns:minmax(0,1fr)}
+.mv-inline-score input,.mv-inline-score textarea,.mv-inline-score button{max-width:100%;box-sizing:border-box}
+.mv-inline-score .editor-actions{flex-wrap:wrap}
+.mv-inline-score .editor-actions button{white-space:normal}
+.mv-inline-summary{margin:.4rem 0;font-size:.85rem}
+.personal-roster-card .photo{max-width:100%}

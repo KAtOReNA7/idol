@@ -164,3 +164,21 @@ test('small verified posters remain centered at their native size and retain ret
  assert.equal(node(h.render(),'iframe'),undefined);assert.equal(h.opens(),0);
  node(h.render(),'button','video-play').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
 });
+
+test('BILLIONAIRE can retry its verified full edit in a single muted in-page player',()=>{
+ const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
+ const id='rec28ldfRTrLku',vid='Gz_yRl6703c';
+ const {embedUrl,credit,fallbackPlayer}=workPlayback(id,vid,'mv',null);
+ const target=new URL(fallbackPlayer.embedUrl);
+ assert.equal(target.origin,'https://player.bilibili.com');
+ assert.deepEqual(Object.fromEntries(target.searchParams),{bvid:'BV1TGNWeDEdv',cid:'28248899991',p:'1',autoplay:'1',muted:'1',danmaku:'0'});
+ const h=sessionHarness({workId:id,videoId:vid,embedUrl,playbackCredit:credit,fallbackPlayer});
+ node(h.render(),'button','video-play').props.onClick();
+ for(const [index,expected] of [embedUrl,fallbackPlayer.embedUrl,embedUrl].entries()){
+  const tree=h.render(),frames=nodes(tree).filter(x=>x.type==='iframe');
+  assert.equal(frames.length,1);assert.equal(frames[0].props.src,expected);
+  assert.equal(node(tree,'small','video-source-credit').props.children,index===1?fallbackPlayer.credit:credit);
+  node(tree,'button','video-reload').props.onClick();
+ }
+ assert.equal(h.opens(),0);
+});

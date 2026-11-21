@@ -1,5 +1,6 @@
 import type {MemberAnalysis, MemberRow, MetricStats, PreparedCatalog} from './contract';
 import {validScore} from './score';
+import {publicCollaboratorIds} from '../public-work-credits';
 import {videoId} from '../values';
 
 interface MetricAccumulator {sampleCount: number; sum: number; invalidCount: number;}
@@ -60,7 +61,7 @@ export function summarizeMembers(prepared: PreparedCatalog): MemberAnalysis {
     const pair = entry.memberId + ':' + entry.workId;
     const member = prepared.memberById.get(entry.memberId), work = prepared.workById.get(entry.workId);
     if (!member || !work || nativePairs.has(pair) || videoId(work.url) !== entry.videoId) continue;
-    if (!work.groupIds.some(id => member.groupIds.includes(id) || member.formerGroupIds?.includes(id))) continue;
+    if (!work.groupIds.some(id => member.groupIds.includes(id) || member.formerGroupIds?.includes(id)) && !publicCollaboratorIds(work).includes(member.id)) continue;
     nativePairs.add(pair);
     add(entry.memberId, entry.workId, entry.score, entry.stylingScore);
   }

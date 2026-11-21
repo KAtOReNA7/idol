@@ -1,5 +1,5 @@
 'use client';
-import {useState,type CSSProperties} from 'react';
+import {useState,type CSSProperties,type ReactNode} from 'react';
 import type {Photo,Work} from '@/lib/idol/types';
 import {publicMvPortrait,type MvPublicPortrait} from '@/lib/idol/mv-public-media';
 import {reviewedNativeRecognition} from '@/lib/idol/reviewed-native-recognition';
@@ -13,9 +13,10 @@ function croppedStyle(width:number,height:number,crop:{x:number;y:number;width:n
  return {position:'absolute',maxWidth:'none',width:`${width*scale*100}%`,height:`${height*scale/(4/3)*100}%`,left:`${((1-crop.width*scale)/2-crop.x*scale)*100}%`,top:`${(((4/3)-crop.height*scale)/2-crop.y*scale)/(4/3)*100}%`,objectFit:'fill'};
 }
 /** Reviewed portraits use exact catalog bindings; a reference need not be an MV still. */
-export function MvIdentityPhoto({work,memberId,label,photo,live=false,selectEdition}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;selectEdition?:(original:MvPublicPortrait)=>RecognitionEditionPhoto|null}){
+export function MvIdentityPhoto({work,memberId,label,photo,live=false,selectEdition,fallback}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;selectEdition?:(original:MvPublicPortrait)=>RecognitionEditionPhoto|null;fallback?:ReactNode}){
  const selected=publicMvPortrait(work,memberId);
  const reference=selected?null:reviewedNativeRecognition(work,memberId,photo);
+ if(!selected&&!reference&&!(photo&&live)&&fallback)return <>{fallback}</>;
  return <IdentityPhotoFrame work={work} memberId={memberId} label={label} photo={photo} live={live} publicImage={selected??reference} edition={selected&&selectEdition?.(selected)} retainNative={Boolean(reference)}/>;
 }
 

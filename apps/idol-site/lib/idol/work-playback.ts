@@ -12,6 +12,10 @@ export function workPlayback(workId:string,videoId:string|null,view:'mv'|'stage'
  if(view==='stage'&&(!stage?.reusesOriginalVideo||stageSourceKey(stage)!==videoId||!stageSourceMatchesUrl(stage)))return null;
  return {
   embedUrl:`https://rutube.ru/play/embed/${player.rutube}?autostartmute=true&q=1080`,
-  credit:`RUTUBE · ${player.uploader} 转载`
+  credit:`RUTUBE · ${player.uploader} 转载`,
+  fallbackPlayer:workId==='rec28ldfRTrLku'&&videoId==='Gz_yRl6703c'?{
+   embedUrl:'https://player.bilibili.com/player.html?bvid=BV1TGNWeDEdv&cid=28248899991&p=1&autoplay=1&muted=1&danmaku=0',
+   credit:'B站 · pcyxjy 转载'
+  }:undefined
  };
 }

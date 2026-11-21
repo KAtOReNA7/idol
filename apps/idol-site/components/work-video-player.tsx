@@ -12,6 +12,8 @@ type PlayerProps = {
  videoId:string|null;
  embedUrl:string|null;
  title:string;
+ playbackCredit?:string;
+ fallbackPlayer?:{embedUrl:string;credit:string};
  posterSrc?:string;
  posterLabel?:string;
  posterIsReference?:boolean;
@@ -23,11 +25,11 @@ type PlayerProps = {
 export function WorkVideoPlayer(props:PlayerProps){
  // Reset only the media session. The surrounding scoring editors stay mounted.
  // Include the full source URL and embed range, even when the video ID is reused.
- const sessionKey=JSON.stringify([props.workId,props.view,props.url,props.videoId,props.embedUrl,props.posterSrc,props.platform,props.sourceKey]);
+ const sessionKey=JSON.stringify([props.workId,props.view,props.url,props.videoId,props.embedUrl,props.posterSrc,props.platform,props.sourceKey,props.fallbackPlayer?.embedUrl]);
  return <VideoSession key={sessionKey} {...props}/>;
 }
 
-function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',sourceKey,posterSrc,posterLabel,posterIsReference,posterFit,posterSize,posterZoom=1}:PlayerProps){
+function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',sourceKey,playbackCredit,fallbackPlayer,posterSrc,posterLabel,posterIsReference,posterFit,posterSize,posterZoom=1}:PlayerProps){
  const rangedStage=view==='stage'&&((sourceKey&&sourceKey!==videoId)||/[?&#](?:t|start|end|time_continue)=/.test(url+' '+(embedUrl??'')));
  const wholeVideo=platform==='youtube'&&videoId&&!rangedStage;
  const coverSrc=posterSrc||(wholeVideo?`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`:undefined);
@@ -35,10 +37,13 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
  const frameRef=useRef<HTMLIFrameElement>(null);
  const focusOnStart=useRef(false);
  const [attempt,setAttempt]=useState(0);
+ const selected=attempt>0&&attempt%2===0?fallbackPlayer:undefined;
+ const currentEmbed=selected?.embedUrl??embedUrl;
+ const credit=selected?.credit??playbackCredit;
  const [coverFailed,setCoverFailed]=useState(false);
  const [coverRetried,setCoverRetried]=useState(false);
  useEffect(()=>{
-  if(!attempt||!embedUrl?.startsWith('https://rutube.ru/play/embed/'))return;
+  if(!attempt||!currentEmbed?.startsWith('https://rutube.ru/play/embed/'))return;
   const frame=frameRef.current;
   function onReady(event:MessageEvent){
    if(!frame?.contentWindow||event.origin!=='https://rutube.ru'||event.source!==frame.contentWindow)return;
@@ -52,19 +57,20 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
   }
   window.addEventListener('message',onReady);
   return ()=>window.removeEventListener('message',onReady);
- },[attempt,embedUrl]);
+ },[attempt,currentEmbed]);
  // Cross-origin players may render an error page without an iframe error event.
  // A manual reload keeps the exact source and never relies on the player's load event.
- if(attempt>0&&embedUrl)return <>
+ if(attempt>0&&currentEmbed)return <>
   <div className="video-stage">
-   <iframe key={attempt} src={embedUrl} title={title} referrerPolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen
+   <iframe key={attempt} src={currentEmbed} title={title} referrerPolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen
     ref={frame=>{frameRef.current=frame;if(frame&&focusOnStart.current){focusOnStart.current=false;frame.focus({preventScroll:true});}}}/>
   </div>
+  {credit&&<small className="video-source-credit">{credit}</small>}
   <button type="button" className="video-reload" onClick={()=>setAttempt(n=>n+1)}>
-   <RotateCcw aria-hidden="true" size={16}/>重新加载视频
+   <RotateCcw aria-hidden="true" size={16}/>{fallbackPlayer?(selected?'重试高清播放':'播放不畅？切换站内备用线路'):'重新加载视频'}
   </button>
  </>;
- return <div className="video-stage">
+ return <><div className="video-stage">
   {coverSrc&&!coverFailed?<img src={coverSrc} alt={posterLabel?title+' · '+posterLabel:title+' 视频封面'} style={posterFit?{position:'absolute',inset:0,width:'100%',height:'100%',maxWidth:posterSize?.width??'100%',maxHeight:posterSize?.height??'100%',margin:posterSize?'auto':undefined,objectFit:posterFit,transform:posterZoom>1?`scale(${posterZoom})`:undefined,transformOrigin:'50% 50%'}:undefined} referrerPolicy="no-referrer" onError={()=>setCoverFailed(true)}/>:<div className="video-cover-fallback"><span>{title}</span><small>{!coverSrc?(embedUrl?'可直接播放视频':'在原站观看此视频'):coverRetried?(embedUrl?'封面仍未加载，可直接播放视频':'封面仍未加载，可在原站观看'):'封面暂时打不开'}</small></div>}
   {coverSrc&&!coverFailed&&posterIsReference&&<small className="work-preview-label">{posterLabel}</small>}
   {coverSrc&&coverFailed&&!coverRetried&&<button type="button" className="video-cover-retry" onClick={event=>{if(event.currentTarget===event.currentTarget.ownerDocument.activeElement)playControl.current?.focus({preventScroll:true});setCoverRetried(true);setCoverFailed(false);}}>重试封面</button>}
@@ -74,5 +80,5 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
    focusOnStart.current=!!play&&play===play.ownerDocument?.activeElement;
    setAttempt(1);
   }}><Play fill="currentColor" size={25}/><span>{!embedUrl&&platform==='bilibili'?'在 B站观看':!embedUrl&&platform==='x'?'在 X 观看':view==='stage'?'播放舞台视频':'播放视频'}</span></button>
- </div>;
+ </div>{credit&&<small className="video-source-credit">{credit}</small>}</>;
 }

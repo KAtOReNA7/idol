@@ -32,9 +32,9 @@ function LoonaScoreInput({value,onChange,disabled,label}:{value:number|null;onCh
  </div>;
 }
 
-export function Editor({publicCatalog,table,id,mode,onSaved,compact=false,loona=false,triples=false,madein=false,editorial=false,workView,stageVideoId,sourceKey,onDirtyChange,onNavigationBlockedChange,saveButtonRef,onSaveAvailabilityChange}:{publicCatalog?:Catalog;table:'works'|'members'|'ratings'|'groups';id:string;mode:Catalog['mode'];onSaved:()=>void;compact?:boolean;loona?:boolean;triples?:boolean;madein?:boolean;editorial?:boolean;workView?:'mv'|'stage';stageVideoId?:string|null;sourceKey?:string|null;onDirtyChange?:(key:string,dirty:boolean)=>void;onNavigationBlockedChange?:(key:string,blocked:boolean)=>void;saveButtonRef?:RefObject<HTMLButtonElement|null>;onSaveAvailabilityChange?:(enabled:boolean,retry:boolean)=>void}){
+export function Editor({publicCatalog,table,id,mode,onSaved,compact=false,initiallyOpen=false,loona=false,triples=false,madein=false,editorial=false,workView,stageVideoId,sourceKey,onDirtyChange,onNavigationBlockedChange,saveButtonRef,onSaveAvailabilityChange}:{publicCatalog?:Catalog;table:'works'|'members'|'ratings'|'groups';id:string;mode:Catalog['mode'];onSaved:()=>void;compact?:boolean;initiallyOpen?:boolean;loona?:boolean;triples?:boolean;madein?:boolean;editorial?:boolean;workView?:'mv'|'stage';stageVideoId?:string|null;sourceKey?:string|null;onDirtyChange?:(key:string,dirty:boolean)=>void;onNavigationBlockedChange?:(key:string,blocked:boolean)=>void;saveButtonRef?:RefObject<HTMLButtonElement|null>;onSaveAvailabilityChange?:(enabled:boolean,retry:boolean)=>void}){
  const canEdit=useCanEdit();
- const [open,setOpen]=useState(table==='works');
+ const [open,setOpen]=useState(initiallyOpen||table==='works');
  const [detail,setDetail]=useState<EditorDetail|null>(null);
  const [draft,setDraft]=useState<EditorValues>({});
  const [state,setState]=useState<'idle'|'loading'|'saving'|'saved'|'error'>('idle');

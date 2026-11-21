@@ -76,6 +76,7 @@ function relativeInsideRoot(filename) {
   return relative;
 }
 function outputFile(filename) {
+  if (filename.endsWith('.json')) return path.join(outputRoot, relativeInsideRoot(filename) + '.js');
   return path.join(outputRoot, relativeInsideRoot(filename).replace(/\.(?:tsx?|mts|cts)$/i, '.js'));
 }
 function rewriteSpecifier(specifier, importer) {
@@ -89,7 +90,7 @@ function rewriteSpecifier(specifier, importer) {
   if (resolved.isExternalLibraryImport || /\.d\.(?:ts|mts|cts)$/i.test(resolved.resolvedFileName)) {
     return specifier;
   }
-  if (!/\.(?:tsx?|mts|cts)$/i.test(resolved.resolvedFileName)) {
+  if (!/\.(?:tsx?|mts|cts|json)$/i.test(resolved.resolvedFileName)) {
     throw new Error('Unsupported local runtime dependency: ' + resolved.resolvedFileName);
   }
   let relative = path.relative(path.dirname(outputFile(importer)), outputFile(resolved.resolvedFileName));
@@ -139,6 +140,12 @@ try {
     !source.isDeclarationFile && !program.isSourceFileFromExternalLibrary(source)
   ));
   for (const source of implementations) {
+    if (source.fileName.endsWith('.json')) {
+      const file = outputFile(source.fileName);
+      await fs.mkdir(path.dirname(file), {recursive:true});
+      await fs.writeFile(file, 'export default ' + JSON.stringify(JSON.parse(source.text)) + ';\n', 'utf8');
+      continue;
+    }
     if (!/\.(?:tsx?|mts|cts)$/i.test(source.fileName)) {
       throw new Error('Unexpected implementation input: ' + source.fileName);
     }

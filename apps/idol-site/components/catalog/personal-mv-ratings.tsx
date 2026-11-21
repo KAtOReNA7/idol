@@ -1,5 +1,7 @@
 'use client';
-import {useEffect,useImperativeHandle,useRef,useState,type RefObject} from 'react';
+import {useEffect,useRef,useState,type ReactNode} from 'react';
+import {createPortal} from 'react-dom';
+import {MusicMemberPhoto} from './member-portrait';
 import type {Member,PersonalMvRating,PersonalMvRatings} from '@/lib/idol/types';
 import {memberDisplayName} from '@/lib/idol/member-display-name';
 
@@ -78,34 +80,63 @@ function ScoreForm({scope,workId,videoId,member,entry,onDirty,onBlocked,onSaved}
  </fieldset>;
 }
 
-export function PersonalMvRatingsPanel({ratings,workId,videoId,roster,existingMembers,openRef,onDirty,onBlocked,onSaved}:{
- ratings:PersonalMvRatings;workId:string;videoId:string;roster:Member[];existingMembers:Set<string>;
- openRef:RefObject<((id:string)=>void)|null>;onDirty:Change;onBlocked:Change;onSaved:()=>void;
+type ScoreProps={ratings:PersonalMvRatings;workId:string;videoId:string;onDirty:Change;onBlocked:Change;onSaved:()=>void};
+
+export function PersonalMvScore({member,startOpen=false,...props}:ScoreProps&{member:Member;startOpen?:boolean}){
+ const {ratings,workId,videoId}=props;
+ const entry=ratings.entries.find(row=>row.workId===workId&&row.videoId===videoId&&row.memberId===member.id);
+ const [chosen,setChosen]=useState(false);
+ const opened=startOpen||chosen;
+ const root=useRef<HTMLDivElement>(null);
+ if(!ratings.writable&&!entry)return null;
+ const name=memberDisplayName(member);
+ return <div ref={root} className="mv-inline-score" data-score-member={member.id} data-score-kind="personal">
+  {entry&&<p className="mv-inline-summary">表现 {label(entry.score)} · 造型 {label(entry.stylingScore)}</p>}
+  {ratings.writable&&<button type="button" className="credit-score-action" aria-expanded={opened} aria-label={'给'+name+'评分'} onClick={()=>{
+   setChosen(true);
+   window.requestAnimationFrame(()=>root.current?.querySelector('input')?.focus({preventScroll:true}));
+  }}>个人评分</button>}
+  {ratings.writable&&opened&&<ScoreForm {...props} scope={ratings.scope} member={member} entry={entry}/>}
+ </div>;
+}
+
+export type NativeScoreLocation={host:HTMLDivElement;placement:string};
+export function NativeScoreButton({memberId,name,recordId,placement,active,onOpen}:{
+ memberId:string;name:string;recordId:string;placement:string;active:boolean;onOpen:(node:HTMLDivElement)=>void;
 }){
+ const slot=useRef<HTMLDivElement>(null);
+ return <div className="mv-inline-score" data-score-member={memberId} data-score-kind="native" data-score-record={recordId}>
+  <button type="button" className="credit-score-action" aria-label={'给'+name+'评分'} aria-expanded={active}
+   onClick={()=>{if(slot.current)onOpen(slot.current);}}>个人评分</button>
+  <div ref={slot} data-score-placement={placement}/>
+ </div>;
+}
+
+// Keep one mounted editor for a native record when its owner moves between the two photo cards.
+export function NativeScorePortal({location,children}:{location:NativeScoreLocation;children:ReactNode}){
+ return createPortal(children,location.host);
+}
+
+export function PersonalMvRatingsPanel({roster,...props}:ScoreProps&{roster:Member[]}){
+ const {ratings,workId,videoId}=props;
  const entries=ratings.entries.filter(row=>row.workId===workId&&row.videoId===videoId);
- const choices=roster.filter(member=>!existingMembers.has(member.id));
  const [opened,setOpened]=useState<string[]>([]);
- const selectId='personal-mv-choose-'+workId;
- function open(id:string){
-  if(!ratings.writable||!choices.some(member=>member.id===id))return;
-  setOpened(previous=>previous.includes(id)?previous:[...previous,id]);
-  window.requestAnimationFrame(()=>document.getElementById(fieldId(workId,id))?.querySelector('input')?.focus());
- }
- useImperativeHandle(openRef,()=>open);
- if(!entries.length&&(!ratings.writable||!choices.length))return null;
+ const saved=new Set(entries.map(row=>row.memberId));
+ const cards=[...opened.flatMap(id=>roster.filter(m=>m.id===id)),...roster.filter(m=>saved.has(m.id)&&!opened.includes(m.id))];
+ if(!roster.length||(!ratings.writable&&!cards.length))return null;
+ const picker='personal-mv-choose-'+workId;
  return <div className="personal-mv-ratings">
-  {entries.length>0&&<ul className="personal-mv-saved">{entries.map(row=>{
-   const member=roster.find(m=>m.id===row.memberId);
-   if(!member)return null;
-   return <li key={member.id}><strong>{memberDisplayName(member)}</strong><span>表现 {label(row.score)} · 造型 {label(row.stylingScore)}</span>
-    {ratings.writable&&!existingMembers.has(member.id)&&<button type="button" className="text-button" onClick={()=>open(member.id)} aria-label={'修改'+memberDisplayName(member)+'的个人评分'}>修改</button>}</li>;
-  })}</ul>}
-  {ratings.writable&&choices.length>0&&<div className="personal-mv-picker"><label htmlFor={selectId}>添加成员评分</label>
-   <select id={selectId} value="" onChange={event=>open(event.target.value)}><option value="">选择成员</option>{choices.map(member=><option key={member.id} value={member.id}>{memberDisplayName(member)}</option>)}</select>
-   <small>选择想记录的成员，分数仅自己可见。</small></div>}
-  {ratings.writable&&opened.map(id=>{
-   const member=choices.find(m=>m.id===id);
-   return member&&<ScoreForm key={id} scope={ratings.scope} member={member} workId={workId} videoId={videoId} entry={entries.find(row=>row.memberId===id)} onDirty={onDirty} onBlocked={onBlocked} onSaved={onSaved}/>;
-  })}
+  {ratings.writable&&<div className="personal-mv-picker"><label htmlFor={picker}>添加成员评分</label>
+   <select id={picker} value="" onChange={event=>{
+    const id=event.target.value;
+    setOpened(previous=>[id,...previous.filter(memberId=>memberId!==id)]);
+   }}><option value="">选择成员</option>{roster.map(m=><option key={m.id} value={m.id}>{memberDisplayName(m)}</option>)}</select>
+   <small>按团体名册选择，资料照供认人参考。</small>
+  </div>}
+  <div className="cast-grid">{cards.map(member=><article className="cast-card personal-roster-card" key={member.id} data-roster-score-member={member.id}>
+   <MusicMemberPhoto member={member} live/><div className="cast-copy"><strong>{memberDisplayName(member)}</strong><small>成员资料照</small>
+    <PersonalMvScore {...props} member={member} startOpen={opened.includes(member.id)}/>
+   </div>
+  </article>)}</div>
  </div>;
 }

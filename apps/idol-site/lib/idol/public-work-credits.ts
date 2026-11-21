@@ -7,9 +7,14 @@ for(const row of source.records){
  const records=creditsByWork.get(row.workId);
  if(records)records.push(row);else creditsByWork.set(row.workId,[row]);
 }
-export function publicCreditForWork(work:Work){
+type CreditWork = Pick<Work,'id'|'groupIds'|'url'|'placeholder'>;
+export function publicCreditForWork(work:CreditWork){
  if(work.placeholder)return null;
  return creditsByWork.get(work.id)?.find(row=>work.groupIds.includes(row.groupId)&&videoId(work.url)===row.videoId)??null;
+}
+export function publicCollaboratorIds(work:CreditWork):string[]{
+ const credit=publicCreditForWork(work);
+ return credit?.kind==='named_artist_credit'?credit.memberIds:[];
 }
 export function creditHeading(credit:typeof source.records[number]){
  if(credit.workId==='rec28ldfRTrLku'&&credit.videoId==='Gz_yRl6703c')return '《DRIP》发行阵容';

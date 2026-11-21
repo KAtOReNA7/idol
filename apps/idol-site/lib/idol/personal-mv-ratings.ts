@@ -3,6 +3,7 @@ import {F} from './fields';
 import {hash} from './hash';
 import {mvMemberAbsence} from './mv-member-appearance';
 import {nativeDb,nativeRow,ownControl,type StorageControl} from './native-storage';
+import {publicCollaboratorIds} from './public-work-credits';
 import {reviewedMvUrl} from './reviewed-work-metadata';
 import {asIds,asText,asUrl,videoId} from './values';
 import type {CatalogView,PersonalMvRating,PersonalMvRatings} from './types';
@@ -27,7 +28,7 @@ export async function personalMvRatingsForOwner(userId:string,control:StorageCon
  const entries=results.filter(row=>{
   const work=works.get(row.workId),member=members.get(row.memberId);
   return work&&member&&!work.placeholder&&!mvMemberAbsence(work)&&videoId(work.url)===row.videoId
-   &&work.groupIds.some(group=>member.groupIds.includes(group)||member.formerGroupIds?.includes(group));
+   &&(work.groupIds.some(group=>member.groupIds.includes(group)||member.formerGroupIds?.includes(group))||publicCollaboratorIds(work).includes(member.id));
  });
  return {scope:await scopeFor(control),writable:control.mode==='native',entries};
 }
@@ -75,7 +76,9 @@ export async function savePersonalMvRating(userId:string,value:unknown):Promise<
  if(videoId(url)!==expectedVideo)throw new AppError('MV_SOURCE_CHANGED','作品视频已更换，请重新打开后评分。',409);
  if(mvMemberAbsence({id:workId,url}))throw new AppError('MV_HAS_NO_MEMBERS','此视频没有成员真人出镜。',409);
  const memberGroups=[...asIds(memberFields[F.members.groups]),...asIds(memberFields[F.members.formerGroups])];
- if(!groups.some(group=>memberGroups.includes(group)))throw new AppError('INVALID_MEMBER','请选择本团成员。',400);
+ if(!groups.some(group=>memberGroups.includes(group))&&!publicCollaboratorIds({id:workId,groupIds:groups,url}).includes(memberId)){
+  throw new AppError('INVALID_MEMBER','请选择本团成员或本版本署名的合作成员。',400);
+ }
  const id=await hash([userId,snapshot,workId,expectedVideo,memberId]);
  const existing=await db.prepare('SELECT score,styling_score AS stylingScore,revision FROM idol_personal_mv_ratings WHERE id=?').bind(id).first<Pick<PersonalMvRating,'score'|'stylingScore'|'revision'>>();
  if((existing?.revision??0)!==revision){

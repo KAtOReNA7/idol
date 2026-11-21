@@ -13,5 +13,13 @@
     "components/candidate/billlie-figma-design.css",
     "tests/billlie-responsive-width.test.cjs"
   ],
-  "scope": "Billlie homepage layout. The featured MV now occupies a full first row, with the original album cover and description below."
+  "scope": "Billlie homepage layout. The featured MV now occupies a full first row, with the original album cover and description below.",
+  "productionChecks": {
+    "allHomepageOrder": "formal-home-order.json",
+    "matchingHomepagesOnThisVersion": 51,
+    "billlieDetail": "formal-billlie-order.json",
+    "verifiedCorrectedHomepage": "billlie",
+    "contentWidths": [1265, 375],
+    "loginAndQualitySelection": "bilibili-quality.json"
+  }
 }

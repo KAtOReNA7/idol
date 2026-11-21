@@ -28,7 +28,7 @@ Hearts2Hearts 待看 10 张和全部 13 张作品封面均在 v208 正式站解�
 
 ## 工程与下一步
 
-v204 时，本地 Windows、WSL Linux 和 GitHub Windows、Ubuntu 均通过验证。该轮修复 18 项旧测试，UDTT 公开原图在正式站两宽解码，关闭后焦点返回原按钮。当前完整套件状态见 v210 双平台回执。[v204 记录](evidence/20261121-release-periods/tests.json) · [v210 记录](evidence/20261122-v210/tests.json)
+v212 在本地 Windows 与 WSL Linux 均通过 `npm run verify`。完整 Node 套件各有 4,085 个用例，Windows 通过 3,880 项、失败 166 项、跳过 39 项；Linux 通过 3,884 项、失败 162 项、跳过 39 项。与 v211 逐名对照，两端均新增一条通过的 Billlie 回归，既有失败条目相同。[v212 双平台结果](evidence/20261122-v212/tests.json) · [v211 对照](evidence/20261122-v211/tests.json)
 
 下一步依次验证连接器实际提供的新 owner 批量读取工具、处理剩余旧用例，以及在新增具名资料出现时升级跨期照片与节目绑定。私人存储已读回同一活动快照、epoch 6 和 206 条完成日志。[核对接口及适用范围](STAGE-OWNER-PREFLIGHT.md) · [发布前的审查与后续开发](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
 

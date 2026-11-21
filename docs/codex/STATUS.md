@@ -2,11 +2,15 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v220。七团的首页 MV 在发行之前，IVE 首个 MV 链接中位 642 ms。《BILLIONAIRE》本次在本站恢复 1920 × 884 实播，《Magnetic》《ATTITUDE》均为 4K。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [正式验收](worklogs/20261122-v220-release.md) |
+| 正式站 | v222。十团成员目录的 26 次返回均恢复原卡位置与焦点。IVE《LOVE DIVE》点卡到播放按钮的中位数缩短 938 ms。《Magnetic》《ATTITUDE》站内 4K，《BILLIONAIRE》本版复验拒播。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [正式验收](worklogs/20261122-v222-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `83d6f005`，发布标签 `site/v220`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，v222 正式应用提交 `c1d4ab7e`。[发布回执](evidence/20261122-v222/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v222 的实测中，十团成员资料使用页内返回后，原卡位置正确的次数从 1/13 提升到 13/13。浏览器后退两版均为 13/13。两种方式返回原卡的焦点合计从 0/26 提升到 26/26。快速从 IVE 打开 IZ*ONE 手机目录时，第一次点 WONYOUNG 仍出现过停在原页，已排入 v223。[返回前后读数](evidence/20261122-v222/formal-member-return.json) · [手机首次点击](evidence/20261122-v222/formal-izone-first-click.json)
+
+v222 的登录态详情在隔离 D1 上每次少两条查询。正式站三个同条件样本中，IVE 快 938 ms、ADYA 快 18 ms、Cherry Bullet 慢 487 ms。《BILLIONAIRE》两次进页和一次重新载入均无视频，《Magnetic》《ATTITUDE》各取得两个推进的 4K 读数，码率未测得。四场 B 站独占舞台仍为 0/4。[访问、播放与待处理事项](worklogs/20261122-v222-release.md)
 
 v220 已将上批发现的七团首屏顺序修正。14/14 个画面的屏幕位置和真实 Tab 顺序均先 MV 后发行，28/28 次点击并返回正确。IVE 从进入首页到可点《LOVE DIVE》从 1,918 降至 642 ms，单看点卡后的等待则增加 416 ms。该团两张原 Figma 画板已对齐。31 个团内影像详情的实际站内和外部入口均已核实。《BILLIONAIRE》的同一上游曾在 v219 拒播，本版复测恢复；四场独占舞台仍为 0/4。[正式数据与 Figma](worklogs/20261122-v220-release.md)
 
@@ -46,12 +50,14 @@ Hearts2Hearts 待看 10 张和全部 13 张作品封面均在 v208 正式站解�
 
 ## 工程与下一步
 
+v222 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 每端各 4,129 项，Windows 通过 3,952、失败 138，WSL 通过 3,956、失败 134，两端各跳过 39 项。相对 v220 净增 8 项，既有失败逐项相同。[v222 双平台结果](evidence/20261122-v222/tests.json)
+
 v218 的 Windows 和 WSL 均通过 `npm run verify`，各完成 4,115 项全量用例。Windows 通过 3,938 项、失败 138 项、跳过 39 项，WSL 通过 3,942 项、失败 134 项、跳过 39 项。两边与 v217 同名套件、文件和用例的结果相同，连续两版均无新增失败。[v218 双平台结果](evidence/20261122-v218/tests.json) · [v217 双平台结果](evidence/20261122-v217/tests.json)
 
 v216 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4,114 项，Windows 通过 3,937 项、失败 138 项、跳过 39 项，WSL 通过 3,941 项、失败 134 项、跳过 39 项。新增八项均通过，余下失败和 v215 逐项相同。[v216 双平台结果](evidence/20261122-v216/tests.json)
 
 v215 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4,106 项，Windows 通过 3,929 项、失败 138 项、跳过 39 项，WSL 通过 3,933 项、失败 134 项、跳过 39 项。相对 v214，两边均通过新加的六项回归，另外消除一条服务端首次渲染失败。余下失败均在上个版本出现。v213 已更新四团的作品评分、草稿、返回与隔离 D1 验收，消除 27 条旧失败。[v215 双平台结果](evidence/20261122-v215/tests.json) · [v214 双平台结果](evidence/20261122-v214/tests.json) · [四团详情验收](worklogs/20261122-current-detail-regression.md)
 
-后续继续核四个独占舞台的同场站内高清来源与剩余 146 个已标注跨期的认人位置，其中 124 个已找到当次发行的图集，22 个还缺合适的具名单人出处。直达作品重点跟进 IVE 和 ADYA 播放按钮的等待。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑的顺序。个人目录批量读取在连接器提供对应工具时验证。[认人位置明细](evidence/20261122-member-release-portraits/remaining-194.csv) · [两档宽度的排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
+后续优先处理《BILLIONAIRE》拒播、IZ*ONE 手机首次点成员和 Cherry Bullet 点作品后的等待。四场独占舞台继续寻找同场站内高清来源。剩余 146 个已标注跨期的认人位置中，124 个已找到当次发行的图集，22 个还缺合适的具名单人出处。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑的顺序。个人目录批量读取在连接器提供对应工具时验证。[认人位置明细](evidence/20261122-member-release-portraits/remaining-194.csv) · [两档宽度的排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
 
 前轮工程优化、发布与原始审查分别保存在各自的工作记录中。[上一正式版 v203](v203-release-20261030.md) · [项目审查](worklogs/20261121-project-audit.md) · [历史协作与验收](https://github.com/KAtOReNA7/idol/blob/0e77838a88f9ff9b14fb67f803156534c7c651e1/docs/codex/STATUS.md)

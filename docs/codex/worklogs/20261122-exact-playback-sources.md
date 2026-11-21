@@ -28,3 +28,7 @@ v218 的同版 RUTUBE 投稿曾静音解码 1920 × 884，进度由 0.151370 秒
 ### v220 的恢复实测
 
 本次在同一正式入口点一次《BILLIONAIRE》，上游恢复出画，静音解码 1920 × 884，从 0.269469 推进至 0.474152 秒后离开。两条 Spotify 区域发行均为 157.179 秒音轨，公开元数据不含视频，QQ 音乐没有查到这个剪辑对第三方站点开放的播放地址。沿用现有 RUTUBE 线路和原评分绑定。当前一次通过与 v219 的偶发拒播分别留档。[v220 正式读数](../evidence/20261122-v220/formal-mv-playback.json) · [Spotify 发行一](https://open.spotify.com/embed/track/0QICKhP44TRnb4EurQ3tN9) · [Spotify 发行二](https://open.spotify.com/embed/track/2eEBg0fpGBwXOGyN6k1m44)
+
+### v222 的正式重测
+
+在《BILLIONAIRE》正式页首次点播放，上游返回 `BLNCTMT_PRMCDN_RB_WEB`。重新进入作品再点播放、点一次「重新加载视频」，两次都显示视频暂时不可用。三个尝试均未取得解码画面。YG PLUS 在 Genie 发行的《DRIP》列出四支 MV，《BILLIONAIRE》曲目页提供的是 2:37 的音轨。同期《Magnetic》《ATTITUDE》的站内播放器均实测推进到 3840 × 2160。飞书修订 94 未新增该版影片。[正式读数](../evidence/20261122-v222/formal-mv-playback.json) · [Genie 专辑目录](https://www.genie.co.kr/detail/albumInfo?axnm=85729404) · [Genie 曲目页](https://www.genie.co.kr/detail/songInfo?xgnm=108218792)

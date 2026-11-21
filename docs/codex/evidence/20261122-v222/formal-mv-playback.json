@@ -1,0 +1,105 @@
+{
+  "site": "https://idol-lens-private.wuke40758.chatgpt.site",
+  "version": 222,
+  "firstBillionaireVisit": {
+    "work": "rec28ldfRTrLku",
+    "player": "RUTUBE",
+    "mutedParameter": "true",
+    "frames": 1,
+    "error": "BLNCTMT_PRMCDN_RB_WEB",
+    "samples": []
+  },
+  "method": "Native play button, muted. On a new visit to BILLIONAIRE also clicked its normal reload button once. Vimeo entries contain the successful instrumented playback after a discarded probe with a stale debugger session. No pair of positive byte counters available to estimate media bitrate.",
+  "rows": [
+    {
+      "id": "rec28ldfRTrLku",
+      "label": "播放视频（RUTUBE）",
+      "origin": "https://rutube.ru",
+      "mute": "true",
+      "count": 1,
+      "attempts": [
+        {
+          "action": "play",
+          "frames": 1,
+          "samples": [],
+          "providerError": "Данное видео временно недоступно BLNCTMT_PRMCDN_RB_WEB",
+          "probe": ""
+        },
+        {
+          "action": "reload",
+          "frames": 1,
+          "samples": [],
+          "providerError": "Данное видео временно недоступно",
+          "probe": ""
+        }
+      ]
+    },
+    {
+      "id": "rec28ldfRTrzPI",
+      "label": "播放视频（Vimeo）",
+      "origin": "https://player.vimeo.com",
+      "mute": "1",
+      "count": 1,
+      "attempts": [
+        {
+          "action": "play",
+          "frames": 1,
+          "samples": [
+            {
+              "bytes": null,
+              "h": 2160,
+              "muted": true,
+              "paused": false,
+              "time": 3.114515,
+              "w": 3840
+            },
+            {
+              "bytes": 4778993,
+              "h": 2160,
+              "muted": true,
+              "paused": false,
+              "time": 3.323359,
+              "w": 3840
+            }
+          ],
+          "providerError": "",
+          "probe": "media element"
+        }
+      ]
+    },
+    {
+      "id": "recvxyHuKMFzlZ",
+      "label": "播放视频（Vimeo）",
+      "origin": "https://player.vimeo.com",
+      "mute": "1",
+      "count": 1,
+      "attempts": [
+        {
+          "action": "play",
+          "frames": 1,
+          "samples": [
+            {
+              "bytes": null,
+              "h": 2160,
+              "muted": true,
+              "paused": false,
+              "time": 2.836781,
+              "w": 3840
+            },
+            {
+              "bytes": 6717340,
+              "h": 2160,
+              "muted": true,
+              "paused": false,
+              "time": 3.044357,
+              "w": 3840
+            }
+          ],
+          "providerError": "",
+          "probe": "media element"
+        }
+      ]
+    }
+  ],
+  "kbps": null
+}

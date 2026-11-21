@@ -1,0 +1,20 @@
+{
+  "platform": "Miniflare Worker with isolated D1",
+  "baseline": "83d6f005",
+  "release": "c1d4ab7e",
+  "resource": "/api/catalog?shape=display-v1",
+  "description": "Authenticated owner, same single work and snapshot. Read individual private rows on each request, including score 0 and a subsequently changed score. Counts include the private-rating query; /api/status is a separate request.",
+  "before": {
+    "cold": 9,
+    "warm": 5
+  },
+  "after": {
+    "cold": 7,
+    "warm": 3
+  },
+  "tests": [
+    "apps/idol-site/tests/work-detail-d1.test.cjs",
+    "apps/idol-site/tests/native-catalog-cache.test.cjs",
+    "apps/idol-site/tests/verified-version-display.test.cjs"
+  ]
+}

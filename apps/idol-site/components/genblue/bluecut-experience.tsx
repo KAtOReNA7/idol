@@ -72,8 +72,15 @@ export function useGenblueLinkReturnFocus(url:string){
   },[]);
 }
 
+function OriginalMemberCard({portrait,name}:{portrait:string;name:string}) {
+ const [open,setOpen]=useState(false);
+ return <>
+   <button className="gb-button gb-quiet" onClick={()=>setOpen(true)}>查看完整资料卡 ↗</button>
+   {open&&<PhotoLightbox src={portrait.replace(/-display\.jpg$/,'-original.jpg')} label={name+' · 公司完整资料卡'} onClose={()=>setOpen(false)}/>}
+ </>;
+}
+
 export default function GenblueBluecutExperience(){
-  const [cardOriginal,setCardOriginal]=useState<{src:string;label:string}|null>(null);
   const host=useArtistTimelineHostOptions();
   const url=useSyncExternalStore(subscribe,()=>location.pathname+location.search+location.hash,()=>host.serverRoute??GENBLUE_PATH);
   const route=useMemo(()=>readGenblueRoute(url),[url]);
@@ -142,7 +149,7 @@ export default function GenblueBluecutExperience(){
 </>;}
   function MemberDetail(){const m=archive.members.find(m=>m.id===route.member);if(!m)return <div className="gb-empty">这个成员不在本团档案中。</div>;const record=genblueMemberRecordHref(state.data,m.id,returnTo),works=genblueMemberMedia(state.data,m.id);return <>
     <BackLink fallback={genblueHref({section:'members',search:route.search})} label="返回成员"/><Heading index="03" title={m.cnName} subtitle={m.stageName.toUpperCase()}/>
-    <section className="gb-member-detail" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><Picture priority src={`/artist/genblue/portraits/${m.stageName.toLowerCase()}.webp`} alt={`${m.cnName} / ${m.stageName} 公司档案人像`} identity={'genblue-member:'+m.id}/><div className="gb-member-bio" data-member-module="basic">{m.role&&<h2>{m.role}</h2>}<p>{m.profile}</p>{m.country&&<p className="gb-fact">国籍　{m.country}</p>}{m.birthDate&&<p className="gb-fact">出生日期　{m.birthDate}</p>}<button className="gb-button gb-quiet" onClick={()=>setCardOriginal({src:m.portrait.replace(/-display\.jpg$/,'-original.jpg'),label:m.stageName+' · 公司完整资料卡'})}>查看完整资料卡 ↗</button>{record&&<a className="gb-text-link" href={record} onClick={e=>{if(genblueMemberRecordHref(state.data,m.id,genblueHref(readGenblueRoute(location.pathname+location.search)))!==record||genblueHref(readGenblueRoute(location.pathname+location.search))!==returnTo||!canLeave())e.preventDefault();else rememberScroll();}}>个人档案与记录 ↗</a>}</div></section>
+    <section className="gb-member-detail" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><Picture priority src={`/artist/genblue/portraits/${m.stageName.toLowerCase()}.webp`} alt={`${m.cnName} / ${m.stageName} 公司档案人像`} identity={'genblue-member:'+m.id}/><div className="gb-member-bio" data-member-module="basic">{m.role&&<h2>{m.role}</h2>}<p>{m.profile}</p>{m.country&&<p className="gb-fact">国籍　{m.country}</p>}{m.birthDate&&<p className="gb-fact">出生日期　{m.birthDate}</p>}<OriginalMemberCard portrait={m.portrait} name={m.stageName}/>{record&&<a className="gb-text-link" href={record} onClick={e=>{if(genblueMemberRecordHref(state.data,m.id,genblueHref(readGenblueRoute(location.pathname+location.search)))!==record||genblueHref(readGenblueRoute(location.pathname+location.search))!==returnTo||!canLeave())e.preventDefault();else rememberScroll();}}>个人档案与记录 ↗</a>}</div></section>
     {works.length>0&&<section className="gb-section"><h2>参与的 MV</h2><div className="gb-video-list" data-member-module="works">{works.map(({media,record})=><div key={media.key}><VideoRow media={media}/>{record?<p className="gb-muted">表现 {genblueScoreLabel(record.performance)} · 造型 {genblueScoreLabel(record.styling)}</p>:<p className="gb-muted">成员参与信息来自 MV 报道，尚无个人评分记录。</p>}</div>)}</div></section>}
     <section className="gb-section"><h2>继续认识成员</h2><Link className="gb-button gb-quiet" href={genblueHref({section:'members'})}>全部成员 ↗</Link></section>
 
@@ -160,7 +167,7 @@ export default function GenblueBluecutExperience(){
   return <ImageRecoveryProvider><div className="genblue-bluecut" data-genblue-native="bluecut"><a className="gb-skip" href="#genblue-main" onClick={event=>{event.preventDefault();const main=document.getElementById('genblue-main');main?.focus({preventScroll:true});main?.scrollIntoView({block:'start',behavior:'instant'});}}>跳到内容</a><aside className="gb-navigation"><Link className="gb-brand" href={GENBLUE_PATH}><img src="/artist/genblue/portraits/company-wordmark.png" alt="GENBLUE" width={112} height={17}/></Link><nav aria-label="GENBLUE 导航">{nav.map(([key,label])=><a key={key} href={genblueHref({section:key})} aria-current={route.section===key?'page':undefined} onClick={e=>localLink(e,genblueHref({section:key}))}>{label}</a>)}</nav></aside><main className="gb-main" id="genblue-main" tabIndex={-1}>
     {!route.valid?<div className="gb-empty"><h1>这个链接暂不可用</h1><Link className="gb-button" href={GENBLUE_PATH}>返回 GENBLUE 首页</Link></div>:route.member?<MemberDetail/>:route.release?<ReleaseDetail/>:route.media?<MediaDetail/>:route.section==='members'?<><Heading index="02" title="成员"/><label className="gb-search-label" htmlFor="gb-member-search">中文名或艺名</label><input id="gb-member-search" className="gb-member-search" placeholder="寻找成员" value={route.search} onChange={e=>navigate(genblueHref({search:e.target.value},route),true,false)}/><Roster/></>:route.section==='works'?Library():route.section==='updates'?<><Heading index="08" title="时间轴"/><Timeline/></>:<Home/>}
     {state.error&&<aside className="gb-read-error" role="status"><p>{state.error} 公开档案仍可浏览；评分入口需先核对原生记录。</p><button className="gb-button gb-quiet" onClick={()=>host.onRetry?host.onRetry():setAttempt(v=>v+1)}>重新读取资料库</button></aside>}
-    <footer className="gb-footer"><Link href={GENBLUE_PATH}>GENBLUE</Link><p>成员 / 作品 / 时间轴</p><div className="gb-site-links"><a href="/?view=groups" onClick={e=>{if(!canLeave())e.preventDefault();}}>返回团体索引 ↗</a><a href={archive.sourceUrl} target="_blank" rel="noopener noreferrer">团体资料来源 ↗</a><span>公开可读，只有本人可编辑</span></div></footer><ImageRecoveryControls/></main>{cardOriginal&&<PhotoLightbox {...cardOriginal} onClose={()=>setCardOriginal(null)}/>}</div></ImageRecoveryProvider>;
+    <footer className="gb-footer"><Link href={GENBLUE_PATH}>GENBLUE</Link><p>成员 / 作品 / 时间轴</p><div className="gb-site-links"><a href="/?view=groups" onClick={e=>{if(!canLeave())e.preventDefault();}}>返回团体索引 ↗</a><a href={archive.sourceUrl} target="_blank" rel="noopener noreferrer">团体资料来源 ↗</a><span>公开可读，只有本人可编辑</span></div></footer><ImageRecoveryControls/></main></div></ImageRecoveryProvider>;
 }
 
 function displayMediaEvidence(media:GenblueMedia){const cover=publicVideoCover(media.videoId);return cover?{sourceUrl:media.url,image:{src:cover.src,alt:media.title+' · 对应视频封面',caption:'对应视频封面'}}:genblueMediaEvidence(media);}

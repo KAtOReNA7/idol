@@ -23,7 +23,18 @@ function component(url,catalog){const out={};const code=ts.transpileModule(sourc
 function render(url,catalog=fixture()){return component(url,catalog).html;}
 test('23 exact asset bindings retain verified original and actual displayed bytes',()=>{assert.equal(manifest.assets.length,23);for(const row of manifest.assets){for(const kind of ['original','display','figmaDisplay']){const a=row[kind],b=fs.readFileSync(a.path);assert.ok(b.length);assert.equal(crypto.createHash('sha256').update(b).digest('hex'),a.sha256);assert.ok(a.width>0&&a.height>0);}const a=data.assets.find(a=>a.key===row.key);assert.equal(a.displayPath,row.display.path);}});
 test('projection retains Danielle history without changing four current members or source records',()=>{const catalog=fixture(),before=JSON.stringify(catalog);const projected=projectArtistCatalog(catalog,data.groupId);assert.equal(projected.members.length,5);assert.equal(projected.members.filter(m=>m.groupIds.includes(data.groupId)).length,4);assert.ok(projected.members.find(m=>m.id==='recvxyICzHLSfX').formerGroupIds.includes(data.groupId));assert.equal(JSON.stringify(catalog),before);});
-test('home has all current Chinese names and photos, with separately labelled history',()=>{const html=render('/artists/newjeans');for(const m of data.members){assert.ok(html.includes(m.cn));assert.ok(html.includes('data-member-id="'+m.id+'"'));assert.ok(html.includes(data.assets.find(a=>a.key===m.imageKey).figmaDisplayPath.replace('public','')));}assert.ok(html.includes('历史成员'));assert.ok(html.includes('查看丹妮尔'));assert.ok(!source.includes('CandidateArtistExperience'));assert.ok(!html.includes('TO KEEP'));});
+test('home has all current Chinese names and photos, with separately labelled history',()=>{
+ const html=render('/artists/newjeans');
+ for(const member of data.members){
+  const card=html.split('data-member-id="'+member.id+'"')[1]?.split('</article>')[0];
+  assert.ok(card?.includes(member.cn),member.stageName);
+  assert.ok(card.includes('/artist/newjeans/how-sweet/'+member.stageName.toLowerCase()+'.webp'),member.stageName);
+ }
+ assert.ok(html.includes('历史成员'));
+ assert.ok(html.includes('查看丹妮尔'));
+ assert.ok(!source.includes('CandidateArtistExperience'));
+ assert.ok(!html.includes('TO KEEP'));
+});
 test('all five exact-ID profiles work including direct history links without roster query',()=>{for(const m of data.members){const html=render('/artists/newjeans?section=members&member='+m.id);assert.ok(html.includes(m.cn));assert.ok(html.includes(m.stageName));assert.ok(html.includes('个人资料与记录'));}assert.ok(render('/artists/newjeans?section=members&member=recvxyICzHLSfX').includes('历史成员 · 曾属 NewJeans'));});
 test('public images never manufacture live membership relations',()=>{const catalog=fixture();catalog.members=catalog.members.filter(m=>m.id!=='recvxyICzHhlFz');assert.ok(!render('/artists/newjeans',catalog).includes('data-member-id="recvxyICzHhlFz"'));});
 test('seven releases are read-only separate IDs and the full production timeline stays in place',()=>{const html=render('/artists/newjeans?section=works');for(const r of data.releases){assert.ok(html.includes('data-release-id="'+r.id+'"'));assert.ok(html.includes('release='+r.id));}assert.ok(render('/artists/newjeans?section=updates').includes('data-full-timeline'));assert.ok(!Object.hasOwn(data,'timeline'));assert.doesNotMatch(source,/method:\s*['"](?:POST|PATCH|PUT)|localStorage|sessionStorage/);});

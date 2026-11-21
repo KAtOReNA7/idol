@@ -9,4 +9,3 @@ i-dle 与 Billlie 保有原首屏发行封面，在封面前有可直接打开�
 对照正式站 48 团的公开团体目录，按同团和完全相同的视频 ID 查找本站作品。13 个首页版本此前在目录加载前将封面或打开按钮指向 YouTube，另有 29 个版本原先先打开专属目录中的影像详情。42 个版本现可直接打开统一播放器，并保留返回团页的路径。重新用正式公开目录分别模拟资料尚未到达、已读取时的实际渲染，42 个版本的两次读数均指向预期作品。另有 10 个特殊版本没有同团同视频匹配，保持原版详情入口。其中 ADYA、BEWAVE、Candy Shop、SPIA 各一支，AtHeart 两支，W!TCHX 四支。[逐视频 ID、作品 ID 与实际链接](../evidence/20261122-v211/react-featured-mv-targets.json)
 
 本次专项 `node --test tests/artist-media-order.test.cjs` 51 项通过。SAY MY NAME 原首页顺序断言已更新并单独通过。`tsc --noEmit --incremental false` 通过，`git diff --check` 通过。逐团节点与链接读数来自 React 服务端渲染。主会话另行记录内置浏览器的实际点击、宽度、发布状态与全量测试。ifeye、izna 和 UDTT 的原生 Shadow DOM 实现在同轮原生专项核验。
-

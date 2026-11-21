@@ -4,9 +4,9 @@
 .lb-filter-fields>.lb-stage-options{order:1;width:100%;margin-top:0}
 @media(max-width:760px){
  .lb-filter-fields{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
- .lb-filter-fields>.lb-stage-options{order:0;display:grid;grid-template-columns:repeat(2,max-content);gap:8px;justify-content:start}
+ .lb-filter-fields>.lb-stage-options{order:0;display:grid;grid-template-columns:repeat(2,minmax(0,120px));gap:8px;justify-content:start}
  .lb-filter-fields>.lb-stage-options button{min-height:44px}
- .lb-secondary-toggle{display:inline-flex;align-items:center;justify-content:center;justify-self:start;min-height:44px;min-width:120px}
+ .lb-secondary-toggle{display:inline-flex;align-items:center;justify-content:center;justify-self:start;min-height:44px;min-width:130px}
  .lb-secondary-fields{display:none}
  .lb-secondary-fields.is-expanded{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 8px}
  .lb-secondary-fields>label:last-child{grid-column:1/-1}

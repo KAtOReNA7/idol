@@ -11,7 +11,7 @@ if (output) fs.mkdirSync(output, {recursive:true});
 const browser = await chromium.launch({headless:true, executablePath:process.env.CHROMIUM_PATH});
 const results = [];
 try {
- for (const width of [390,1440]) {
+ for (const width of [320,390,1440]) {
   const page = await browser.newPage({viewport:{width,height:900}});
   await page.route('**/*', route => new URL(route.request().url()).origin === base.origin ? route.continue() : route.abort());
   const errors = [];
@@ -34,13 +34,27 @@ try {
   await page.locator('main button.back').first().click();
   await page.waitForFunction(id => document.activeElement?.getAttribute('data-browse-anchor') === id,id);
   const more = page.getByRole('button',{name:'更多筛选'});
-  if (width === 390) {
+  let touchTargets;
+  if (width <= 390) {
    assert.ok(layout.titleBottom < layout.bottomNavTop);
    assert.equal(await page.locator('select[data-library-focus=sort]').isVisible(), false);
+   const chips = await page.locator('.lb-stage-options button').evaluateAll(buttons=>buttons.map(button=>{
+    const {left,right,top,bottom,width,height}=button.getBoundingClientRect();
+    return {left,right,top,bottom,width,height};
+   }));
+   const toggle = await more.boundingBox();
+   assert.equal(chips.length,4);
+   for (const chip of chips) {
+    assert.ok(chip.width>=44 && chip.height>=44);
+    assert.ok(toggle.y>=chip.bottom, 'The filter toggle must sit below the stage buttons.');
+   }
+   assert.ok(chips[1].left>=chips[0].right && chips[3].top>=chips[1].bottom);
+   assert.ok(toggle.width>=44 && toggle.height>=44);
+   touchTargets={count:chips.length+1,minimumHeight:Math.min(toggle.height,...chips.map(chip=>chip.height)),overlap:false};
    await more.click();
   }
   await page.locator('select[data-library-focus=sort]').selectOption('release-desc');
-  if (width === 390) {
+  if (width <= 390) {
    await page.getByRole('button',{name:'收起筛选'}).click();
    assert.equal(await page.locator('select[data-library-focus=sort]').isVisible(),false);
   }
@@ -52,7 +66,7 @@ try {
   await conditions.getByRole('button',{name:'重置全部条件'}).click();
   assert.equal(await page.getByRole('button',{name:/^全部（/}).getAttribute('aria-pressed'),'true');
   let keyboard = null;
-  if (width === 390) {
+  if (width <= 390) {
    const trigger = page.getByRole('button',{name:'打开导航'});
    await trigger.click();
    const dialog = page.getByRole('dialog',{name:'网站导航'});
@@ -63,7 +77,7 @@ try {
     inside &&= await dialog.evaluate(node=>node.contains(document.activeElement));
    }
    assert.equal(inside,true);
-   if (output) await page.screenshot({path:path.join(output,'navigation-390.png')});
+   if (output) await page.screenshot({path:path.join(output,`navigation-${width}.png`)});
    await page.keyboard.press('Escape');
    await dialog.waitFor({state:'hidden'});
    await page.waitForFunction(()=>document.querySelector('.music-menu')?.getAttribute('aria-expanded')==='false' && document.activeElement===document.querySelector('.music-menu'));
@@ -72,7 +86,7 @@ try {
    keyboard={containedSteps:34,escapeClosed:true,triggerRestored:true};
   }
   assert.deepEqual(errors,[]);
-  results.push({width,...layout,detailFocusRestored:true,filterAndReset:true,keyboard,errors});
+  results.push({width,...layout,detailFocusRestored:true,filterAndReset:true,touchTargets,keyboard,errors});
   await page.close();
  }
  if (output) fs.writeFileSync(path.join(output,'library-check.json'),JSON.stringify(results,null,2));

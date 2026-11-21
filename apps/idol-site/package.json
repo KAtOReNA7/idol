@@ -66,5 +66,9 @@
     "vite": "8.3.8",
     "wrangler": "4.164.0"
   },
-  "type": "module"
+  "type": "module",
+  "overrides": {
+    "satori": {"fflate": "0.7.5"},
+    "@esbuild-kit/core-utils": {"esbuild": "0.25.12"}
+  }
 }

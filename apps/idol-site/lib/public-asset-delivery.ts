@@ -1,10 +1,20 @@
 import manifest from '../data/production-asset-delivery.json';
+import portraits from '../data/recognition-asset-delivery.json';
 
 type Fetcher=(url:string,init:RequestInit&{cf?:{cacheEverything:boolean;cacheTtlByStatus:Record<string,number>}})=>Promise<Response>;
 const encoded=(value:string)=>value.split('/').map(encodeURIComponent).join('/');
-const remote=new Map(manifest.assets.filter(row=>row.delivery==='remote').map(row=>[encoded(row.path),row]));
 const safeBase=/^https:\/\/raw\.githubusercontent\.com\/KAtOReNA7\/idol\/[a-f0-9]{40}\/apps\/idol-site\/public$/;
-if(!safeBase.test(manifest.baseUrl))throw Error('Invalid immutable original source');
+type RemoteAsset = {url: string; ref: string; bytes: number; sha256: string; mime: string};
+const remote = new Map<string, RemoteAsset>();
+for (const source of [manifest, portraits]) {
+ if (!safeBase.test(source.baseUrl)) throw Error('Invalid immutable original source');
+ for (const asset of source.assets) {
+  if (asset.delivery !== 'remote') continue;
+  const path = encoded(asset.path);
+  if (remote.has(path)) throw Error('Duplicate immutable original: ' + path);
+  remote.set(path, {url: source.baseUrl + path, ref: source.publicRef, bytes: asset.bytes, sha256: asset.sha256, mime: asset.mime});
+ }
+}
 function rasterHeader(bytes:Uint8Array,mime:string){
  if(mime==='image/jpeg')return bytes[0]===255&&bytes[1]===216&&bytes[2]===255;
  if(mime==='image/png')return [137,80,78,71,13,10,26,10].every((n,i)=>bytes[i]===n);
@@ -22,7 +32,7 @@ export async function publishedPublicAsset(request:Request,fetcher:Fetcher=fetch
  const headerTimeout=setTimeout(()=>controller.abort(),30000);
  try{
   // Never forward identity, cookies, query strings, origin or application headers.
-  upstream=await fetcher(manifest.baseUrl+encoded(asset.path),{method:request.method,redirect:'manual',headers:{'Accept':asset.mime,'Accept-Encoding':'identity'},cf:{cacheEverything:true,cacheTtlByStatus:{'200':31536000,'400-599':0}},signal:controller.signal});
+  upstream=await fetcher(asset.url,{method:request.method,redirect:'manual',headers:{'Accept':asset.mime,'Accept-Encoding':'identity'},cf:{cacheEverything:true,cacheTtlByStatus:{'200':31536000,'400-599':0}},signal:controller.signal});
  }catch{return new Response('Original temporarily unavailable',{status:502,headers:{'Cache-Control':'no-store'}});}
  finally{clearTimeout(headerTimeout);}
  // Once headers arrive, keep streaming for slow clients and large originals.
@@ -44,7 +54,7 @@ export async function publishedPublicAsset(request:Request,fetcher:Fetcher=fetch
   if(!rasterHeader(prefix,asset.mime)){await reader.cancel();return new Response('Original temporarily unavailable',{status:502,headers:{'Cache-Control':'no-store'}});}
   body=new ReadableStream<Uint8Array<ArrayBuffer>>({start(controller){controller.enqueue(prefix);},async pull(controller){try{const part=await reader.read();if(part.done)controller.close();else controller.enqueue(part.value);}catch(error){controller.error(error);}},cancel(reason){return reader.cancel(reason);}});
  }
- const headers=new Headers({'Content-Type':asset.mime,'Content-Length':String(asset.bytes),'Cache-Control':'public, max-age=3600','X-Content-Type-Options':'nosniff','X-Idol-Original-Ref':manifest.publicRef,'X-Idol-Expected-Sha256':asset.sha256});
+ const headers=new Headers({'Content-Type':asset.mime,'Content-Length':String(asset.bytes),'Cache-Control':'public, max-age=3600','X-Content-Type-Options':'nosniff','X-Idol-Original-Ref':asset.ref,'X-Idol-Expected-Sha256':asset.sha256});
  // Stream the publisher bytes; large originals do not accumulate in Worker memory.
  return new Response(request.method==='HEAD'?null:body,{status:200,headers});
 }

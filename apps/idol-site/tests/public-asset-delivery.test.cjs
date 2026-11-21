@@ -4,6 +4,26 @@ const result=esbuild.buildSync({entryPoints:[path.join(root,'lib/public-asset-de
 const m=new Module(__filename,module);m._compile(result.outputFiles[0].text,__filename);const {publishedPublicAsset}=m.exports;
 const asset=manifest.assets.find(r=>r.delivery==='remote'),url='https://formal.example'+asset.path;
 const request=(pathname,method='GET')=>new Request(pathname.startsWith('https:')?pathname:'https://formal.example'+pathname,{method});
+test('reviewed recognition photos use their own immutable source and IVE display images stay local', async () => {
+ const series = require('../data/recognition-asset-delivery.json');
+ const previous = new Set(manifest.assets.map(row => row.path));
+ const restricted = new Set(require('../scripts/udtt-private-build-assets-manifest.json').files.map(row => row.sha256));
+ for (const row of series.assets) {
+  assert(!previous.has(row.path) && !restricted.has(row.sha256), row.path);
+  previous.add(row.path);
+  if (row.delivery === 'local') {
+   assert.equal(await publishedPublicAsset(request(row.path), () => assert.fail(row.path)), null);
+   continue;
+  }
+  const response = await publishedPublicAsset(request(row.path, 'HEAD'), async target => {
+   assert.equal(target, series.baseUrl + encodeURI(row.path));
+   return new Response(null, {headers: {'Content-Type': row.mime, 'Content-Length': String(row.bytes)}});
+  });
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get('X-Idol-Original-Ref'), series.publicRef);
+  assert.equal(response.headers.get('X-Idol-Expected-Sha256'), row.sha256);
+ }
+});
 test('only fixed public originals are proxied; APIs, private paths, local originals and mutations retain app handling',async()=>{
  const forbidden=async()=>{throw Error('Unexpected external fetch')};
  for(const p of ['/api/save','/api/media?table=members','/api/editorial-assets','/signin-with-chatgpt','/unknown.jpg','/artist/udtt/batch-b-20261016/group.display.jpg',...require('../scripts/udtt-private-build-assets-manifest.json').files.map(r=>r.path),manifest.assets.find(r=>r.delivery==='local').path])assert.equal(await publishedPublicAsset(request(p),forbidden),null);

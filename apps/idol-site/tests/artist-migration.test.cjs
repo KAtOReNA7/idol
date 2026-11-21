@@ -6,9 +6,10 @@ const {createHash} = require('node:crypto');
 const {registry, nativeSlugs, artistCatalog, loadArtistTimeline, prepareTimelinePresentation} = require('./fixtures/current-artist-pages.cjs');
 const heroes = require('./fixtures/approved-artist-heroes.json');
 const delivery = require('../data/production-asset-delivery.json');
+const recognition = require('../data/recognition-asset-delivery.json');
 const restricted = require('../scripts/udtt-private-build-assets-manifest.json');
 const root = path.resolve(__dirname, '..');
-const byPath = new Map(delivery.assets.map(asset => [asset.path, asset]));
+const byPath = new Map([...delivery.assets, ...recognition.assets].map(asset => [asset.path, asset]));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 
 for (const {slug, groupId} of registry) {
@@ -32,7 +33,7 @@ for (const {slug, groupId} of registry) {
     const bytes = fs.readFileSync(path.join(root, 'public', asset.path));
     assert.equal(bytes.length, asset.bytes);
     assert.equal(hash(bytes), asset.sha256);
-    assert.ok(!delivery.assets.some(row => row.sha256 === asset.sha256 || row.path === asset.path));
+    assert.ok(![...byPath.values()].some(row => row.sha256 === asset.sha256 || row.path === asset.path));
    }
    return;
   }

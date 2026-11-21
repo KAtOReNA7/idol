@@ -13,6 +13,12 @@ export function requestedBrowserCatalog(params:URLSearchParams):boolean{
 // cache, source rows, evidence or complete export. Evaluate the exact same
 // personal-photo rule before dropping text that the interface does not display.
 export function projectBrowserCatalog(catalog:Catalog):CatalogView{
+ // HI-HAT confirmed all six members moved on November 2. Only replace the
+ // superseded snapshot value; newer owner edits and raw exports keep their values.
+ const oldIfeye=catalog.groups.find(group=>group.id==='rec28ldfRTiCGa'&&group.company==='Hi-Hat Entertainment');
+ const groups=oldIfeye?catalog.groups.map(group=>group===oldIfeye
+  ?{...group,company:'초록뱀뮤직',officialUrl:group.officialUrl||'https://artist.mnetplus.world/main/stg/ifeye'}
+  :group):catalog.groups;
  const ratings:RatingView[]=catalog.ratings.map(row=>{
   // Never trust a pre-existing transport flag as source evidence.
   const {personalPhotoEligible:unusedDecision,...sourceRow}=row as RatingView;
@@ -28,5 +34,5 @@ export function projectBrowserCatalog(catalog:Catalog):CatalogView{
   }
   return {...view,personalPhotoEligible};
  });
- return {...catalog,ratings};
+ return {...catalog,groups,ratings};
 }

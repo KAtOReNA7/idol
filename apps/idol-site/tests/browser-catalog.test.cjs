@@ -3,6 +3,17 @@ class AppError extends Error{constructor(code,message,status){super(message);Obj
 const modules=new Map();function load(file){file=path.resolve(file);if(modules.has(file))return modules.get(file);const out={};modules.set(file,out);const js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL,URLSearchParams})((n)=>n==='./feishu'?{AppError}:load(path.resolve(path.dirname(file),n)+'.ts'),out);return out;}
 const {projectBrowserCatalog,requestedBrowserCatalog}=load('lib/idol/browser-catalog.ts'),{personalMvPhoto,memberWorks,memberWorkSummary}=load('lib/idol/member-works.ts');
 const plain=x=>JSON.parse(JSON.stringify(x));
+test('ifeye presents its announced agency while preserving the source and newer edits',()=>{
+ const catalog=sample([]);
+ const former={id:'rec28ldfRTiCGa',name:'ifeye',company:'Hi-Hat Entertainment',officialUrl:''};
+ catalog.groups=[former];
+ const [updated]=projectBrowserCatalog(catalog).groups;
+ assert.equal(updated.company,'초록뱀뮤직');
+ assert.equal(updated.officialUrl,'https://artist.mnetplus.world/main/stg/ifeye');
+ assert.equal(former.company,'Hi-Hat Entertainment');
+ catalog.groups=[{...former,company:'Newer agency',officialUrl:'https://example.org/artist'}];
+ assert.strictEqual(projectBrowserCatalog(catalog).groups,catalog.groups);
+});
 const row=(id='r',extra={})=>({id,name:'member / song',memberIds:['m'],workIds:['w'],score:0,stylingScore:null,memory:'A memory',note:'A note',verification:'原有状态',source:'https://example.org/credit',recognition:'本MV截图 · 媒体逐人具名',photo:{table:'ratings',recordId:id,index:0,fieldId:'photo',kind:'本 MV 认人图'},...extra});
 const sample=(rows=[row()])=>({mode:'live',capturedAt:'source time',loadedAt:'load time',warning:null,cache:{source:'live',refreshRecommended:false},groups:[{id:'g'}],members:[{id:'m',note:'my note',favorite:0}],works:[{id:'w',score:0,stageScore:null,note:'song note',watched:'已观看',stage:{videoId:'abcdefghijk',scoreBinding:{videoId:'abcdefghijk',initialScore:null,initializedAt:'2026-10-11T00:00:00Z'}}}],ratings:rows,counts:{groups:1,members:1,works:1,ratings:rows.length,ratedWorks:1,scoreSum:0}});
 test('browser response omits only unused rating evidence, preserving every user value and link',()=>{const d=sample(),before=JSON.stringify(d),v=projectBrowserCatalog(d);assert.equal(JSON.stringify(d),before);assert.notStrictEqual(v,d);assert.notStrictEqual(v.ratings,d.ratings);assert.notStrictEqual(v.ratings[0],d.ratings[0]);for(const k of ['groups','members','works','counts','cache'])assert.strictEqual(v[k],d[k]);assert.equal(v.capturedAt,d.capturedAt);assert.equal(v.loadedAt,d.loadedAt);const {source,recognition,...expected}=d.ratings[0];assert.deepEqual(plain(v.ratings[0]),{...expected,personalPhotoEligible:true});assert.ok(!('source' in v.ratings[0]));assert.ok(!('recognition' in v.ratings[0]));assert.equal(d.ratings[0].recognition,recognition);});

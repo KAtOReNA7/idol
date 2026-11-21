@@ -5,8 +5,8 @@ import type {WatchSequence} from '@/lib/idol/journey';
 import {PublicWorkCredits, PublicProductionCredits} from '@/components/public-work-credits';
 import {publicCreditForWork} from '@/lib/idol/public-work-credits';
 import {memberDisplayName} from '@/lib/idol/member-display-name';
-import {useEffect, useState, useCallback, useRef} from 'react';
-import {ArrowUpRight, ArrowLeft, Check, ChevronRight, Music2, Users, Disc3, X} from 'lucide-react';
+import {useState, useCallback, useRef} from 'react';
+import {ArrowUpRight, ArrowLeft, Check, ChevronRight, Music2, Users, Disc3} from 'lucide-react';
 import type {CatalogView as Catalog, Work} from '@/lib/idol/types';
 import {videoId} from '@/lib/idol/values';
 import {approvedVideoPoster, approvedStagePoster} from '@/lib/idol/approved-video-poster';
@@ -210,14 +210,21 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  const triplesMedia=triplesDetailMedia(work);
  const loona=work.groupIds.includes('recvxyEBDZJAXm');
  const loonaButterfly=loona&&work.id==='recvxyOz5X7G95'&&work.song==='Butterfly';
- const [view,setView]=useState<'mv'|'stage'>(initialView);const [dirtyKeys,setDirtyKeys]=useState<string[]>([]);const [navigationBlockedKeys,setNavigationBlockedKeys]=useState<string[]>([]);const [workSaveEnabled,setWorkSaveEnabled]=useState(false);
+ const [selection,setSelection]=useState({workId:work.id,initialView,view:initialView});
+ const view=selection.workId===work.id&&selection.initialView===initialView?selection.view:initialView;
+ const [dirtyKeys,setDirtyKeys]=useState<string[]>([]);const [navigationBlockedKeys,setNavigationBlockedKeys]=useState<string[]>([]);const [workSaveEnabled,setWorkSaveEnabled]=useState(false);
  const [retryWorkSave,setRetryWorkSave]=useState(false);
  const onWorkSaveState=useCallback((enabled:boolean,retry:boolean)=>{setWorkSaveEnabled(enabled);setRetryWorkSave(retry);},[]);
  const workSaveButton=useRef<HTMLButtonElement>(null);const memberCards=useRef<Record<string,HTMLElement|null>>({});
  const markNavigationBlocked=useCallback((key:string,blocked:boolean)=>setNavigationBlockedKeys(old=>blocked?(old.includes(key)?old:[...old,key]):old.includes(key)?old.filter(k=>k!==key):old),[]);
  const markDirty=useCallback((key:string,dirty:boolean)=>setDirtyKeys(old=>dirty?(old.includes(key)?old:[...old,key]):old.includes(key)?old.filter(k=>k!==key):old),[]);
- useEffect(()=>{setView(initialView);setDirtyKeys([]);setNavigationBlockedKeys([]);setWorkSaveEnabled(false);},[work.id]);
- useEffect(()=>{setView(initialView);},[initialView]);
+ // Browser Back can change the video tab of an already mounted work.
+ if(selection.workId!==work.id || selection.initialView!==initialView){
+  setSelection({workId:work.id,initialView,view:initialView});
+  if(selection.workId!==work.id){
+   setDirtyKeys([]);setNavigationBlockedKeys([]);setWorkSaveEnabled(false);setRetryWorkSave(false);
+  }
+ }
  const versionTags=[...new Set(work.versionDisplay?.tags??[])].filter(tag=>![work.videoType||'视频',work.version,work.releaseDate,work.name,work.song,work.officialTitle,work.channel].includes(tag));
  const versionLinks=work.versionDisplay?.links??[];
  const versionGroups=[...new Set(versionLinks.map(link=>link.categories.join(' / ')))];
@@ -226,7 +233,7 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  const approvedPoster=view==='stage'?(stage?approvedStagePoster(work.id,stage)??(activePlatform==='youtube'&&!stage.clip?katseyeVideoPoster(work.id,vid,view):null):null):approvedVideoPoster(work.id,vid,view)??katseyeVideoPoster(work.id,vid,view);
  const absence=mvMemberAbsence(work);
  const people=absence?[]:data.ratings.filter(r=>r.workIds.includes(work.id));const memberDrafts=dirtyKeys.filter(k=>k.startsWith('ratings:'));const hasMemberDraft=memberDrafts.length>0;
- const switchView=(next:'mv'|'stage')=>{setView(next);onViewChange?.(next);};
+ const switchView=(next:'mv'|'stage')=>{setSelection({workId:work.id,initialView,view:next});onViewChange?.(next);};
  function jumpToCast(id:string){const card=memberCards.current[id];if(!card)return;card.focus({preventScroll:true});card.scrollIntoView({block:'center',behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
  function jumpToMemberDraft(){const id=memberDrafts[0]?.slice('ratings:'.length);if(!id)return;if(view==='stage')switchView('mv');window.requestAnimationFrame(()=>{const card=memberCards.current[id];const button=card?.querySelector<HTMLButtonElement>('.editor-actions button:not(:disabled)');(button??card)?.scrollIntoView({block:'center',behavior:'smooth'});button?.focus({preventScroll:true});});}
  return <div className={'detail '+(view==='stage'?'stage-view':'')}><button className="back text-button" onClick={onBack}><ArrowLeft size={16}/>{backLabel}</button>
@@ -241,7 +248,19 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
   event.preventDefault();tabs[next].focus();
  }}><button role="tab" id="mv-tab" tabIndex={view==='mv'?0:-1} aria-selected={view==='mv'} aria-controls="work-video-panel" onClick={()=>switchView('mv')}>MV</button><button role="tab" id="stage-tab" tabIndex={view==='stage'?0:-1} aria-selected={view==='stage'} aria-controls="work-video-panel" onClick={()=>switchView('stage')}>舞台</button></div><span>{view==='stage'?'舞台整体评分':absence?'MV 整体评分':'MV 与本曲成员评分'}</span></div>
  <div className="work-detail-top" id="work-video-panel" role="tabpanel" aria-labelledby={view==='stage'?'stage-tab':'mv-tab'}><div>
- <div className={'video-stage '+(!activeUrl?'video-missing':'')}>{!activeUrl?<div className="stage-empty"><Disc3 size={44}/><h2>{view==='stage'?stageStatusLabel(work):'暂无视频'}</h2><p>{view==='stage'?stageStatusDescription(work):'暂时没有可播放的视频。'}</p>{view==='stage'&&<>{!!(work.stageSupplement?.alternatives.length||work.stageSupplement?.watchLeads?.length)&&<button className="button primary" onClick={()=>document.getElementById('other-performances')?.scrollIntoView({behavior:'smooth',block:'start'})}>看看其他表演</button>}<button className="button" onClick={()=>switchView('mv')}>返回 MV</button></>}</div>:<WorkVideoPlayer posterSrc={approvedPoster?.src??(loonaButterfly&&view==='mv'?'/artist/loona/approved-home/butterfly.jpg':triplesMedia&&activePlatform==='youtube'?(view==='mv'?triplesMedia.poster:triplesMedia.stagePoster):undefined)} posterLabel={approvedPoster?.label} posterFit={approvedPoster?.fit??(approvedPoster?'contain':undefined)} posterSize={approvedPoster?.intrinsicSize} posterZoom={approvedPoster?.zoom} workId={work.id} view={view} platform={activePlatform} sourceKey={stage?stageSourceKey(stage):null} url={activeUrl} videoId={vid} embedUrl={view==='stage'&&stage?stageEmbedUrl(stage):vid?youtubeEmbedUrl(vid):null} title={title}/>}</div>
+ <div className={'video-stage '+(!activeUrl?'video-missing':'')}>{!activeUrl?<div className="stage-empty"><Disc3 size={44}/><h2>{view==='stage'?stageStatusLabel(work):'暂无视频'}</h2><p>{view==='stage'?stageStatusDescription(work):'暂时没有可播放的视频。'}</p>
+ {view==='stage'&&<>
+  {(work.stageSupplement?.alternatives.length||work.stageSupplement?.watchLeads?.length)
+   ?<button className="button primary" onClick={()=>document.getElementById('other-performances')?.scrollIntoView({behavior:'smooth',block:'start'})}>看看其他表演</button>
+   :work.stageSupplement?.researchNote&&validStageResearchNote(work.stageSupplement.researchNote)&&<button type="button" className="button primary" aria-controls="other-performances" onClick={event=>{
+    const details=event.currentTarget.closest('.detail')?.querySelector<HTMLDetailsElement>('.stage-research-note');
+    if(!details)return;
+    details.open=true;
+    details.querySelector('summary')?.focus({preventScroll:true});
+    details.scrollIntoView({block:'center'});
+   }}>查看资料与来源</button>}
+  <button className="button" onClick={()=>switchView('mv')}>返回 MV</button>
+ </>}</div>:<WorkVideoPlayer posterSrc={approvedPoster?.src??(loonaButterfly&&view==='mv'?'/artist/loona/approved-home/butterfly.jpg':triplesMedia&&activePlatform==='youtube'?(view==='mv'?triplesMedia.poster:triplesMedia.stagePoster):undefined)} posterLabel={approvedPoster?.label} posterFit={approvedPoster?.fit??(approvedPoster?'contain':undefined)} posterSize={approvedPoster?.intrinsicSize} posterZoom={approvedPoster?.zoom} workId={work.id} view={view} platform={activePlatform} sourceKey={view==='stage'&&stage?stageSourceKey(stage):null} url={activeUrl} videoId={vid} embedUrl={view==='stage'&&stage?stageEmbedUrl(stage):vid?youtubeEmbedUrl(vid):null} title={title}/>}</div>
  <div className="video-caption"><span>{title}</span>{activeUrl&&<a href={activeUrl} target="_blank" rel="noopener noreferrer">{activePlatformLabel} 原视频<ArrowUpRight size={13}/></a>}</div>{activeUrl&&<p className="video-fallback">{activePlatform==='bilibili'?'在 B站打开所选分P观看。':activePlatform==='x'?'在 X 打开所选视频观看。':'播放不了？可在 YouTube 打开原视频。'}</p>}
  {loonaButterfly&&<div className="loona-associated-release"><img src="/artist/loona/approved-home/butterfly-album.jpg" width="96" height="96" alt="关联发行《X X》封面"/><div><strong>关联发行《X X》</strong><span>发行封面</span></div></div>}
  {view==='mv'&&people.length>0&&<nav className="mv-member-shortcuts" aria-label="本支成员"><span>本支成员</span><div>{people.map(r=>{const m=data.members.find(m=>r.memberIds.includes(m.id)),label=m?memberDisplayName(m):r.name;return <button type="button" key={r.id} aria-controls={'mv-cast-'+r.id} onClick={()=>jumpToCast(r.id)}>{label}</button>;})}</div><small>点名字，定位认人图与个人评分</small></nav>}

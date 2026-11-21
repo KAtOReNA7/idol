@@ -5,6 +5,35 @@ const {createHash} = require('node:crypto');
 const {registry, renderArtist} = require('./fixtures/current-artist-pages.cjs');
 
 const pathFor = slug => registry.find(row => row.slug === slug);
+
+test('five member directories open on the roster while the overview retains group information', async () => {
+  for(const slug of ['stayc','itzy','nmixx','aespa','lesserafim']){
+    const group=pathFor(slug), directory=await renderArtist(group,{section:'members'});
+    assert.match(directory, /data-artist-member-trigger=/, slug);
+    assert.doesNotMatch(directory, /class="(?:sc|nx|iz|lf)-hero"/, slug);
+    assert.match(directory, /<h1>[^<]+<\/h1>/, slug);
+    const overview=await renderArtist(group);
+    assert.match(overview, /data-home-module="information"/, slug);
+    assert.match(overview, /class="(?:sc|nx|iz|lf)-hero"/, slug);
+  }
+});
+
+test('IVE release pages retain distinct casts of photographs, exact videos and return links', async () => {
+  for(const [release,folder,videos] of [
+    ['ive-release-love-dive','love-dive',['recvxyHuKMaCIP']],
+    ['ive-release-ive-mine','ive-mine',['recvxyHuKMfJi3','recvxyHuKMScGV','recvxyHuKMEnUT']],
+  ]){
+    const html=await renderArtist(pathFor('ive'),{section:'works',release});
+    assert.ok(html.includes('data-period="'+release+'"'));
+    assert.equal((html.match(/class="ive-period-portrait"/g)||[]).length,6);
+    for(const member of ['yujin','gaeul','rei','wonyoung','liz','leeseo'])
+      assert.ok(html.includes('/artist/ive/'+folder+'/'+member+'.webp'),member);
+    const links=[...html.matchAll(/href="([^"]+)"/g)].map(x=>new URL(x[1].replaceAll('&amp;','&'),'https://test.invalid'));
+    const mvLinks=links.filter(link=>link.searchParams.has('work')&&!link.searchParams.has('video'));
+    assert.deepEqual(mvLinks.map(link=>link.searchParams.get('work')).sort(),[...videos].sort());
+    assert.ok(mvLinks.every(link=>link.searchParams.get('returnTo')==='/artists/ive?section=works&release='+release));
+  }
+});
 const marks = {
   ive: '/artist/ive/love-dive/official-mark.png',
   illit: '/artist/illit/redesign-20261025/official-mark.svg',

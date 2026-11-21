@@ -1,4 +1,4 @@
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 
 const names=['hearts2hearts-figma-assets.json','billlie-figma-catalog.json','idle-design-public.json'];
 const read=name=>JSON.parse(fs.readFileSync('data/'+name));
@@ -16,33 +16,45 @@ test('runtime projections retain exact image/video identities and remove unused 
  const idle=read('runtime/'+names[2]),original=read(names[2]);for(const key of ['members','releases','media','nativeMediaIds'])assert.deepEqual(idle[key],original[key]);
  for(const [key,asset]of Object.entries(idle.assets)){assert.deepEqual(Object.keys(asset),['src','width','height','alt']);for(const field of Object.keys(asset))assert.equal(asset[field],original.assets[key][field]);}
 });
-function harness(file,suffix,original){
- const wrappedFs={...fs,readFileSync(file,...args){const value=String(file);return fs.readFileSync(original?value.replace(/data\/runtime\//g,'data/'):file,...args);}};
- const localRequire=name=>name==='node:fs'||name==='fs'?wrappedFs:require(name.startsWith('./')?path.resolve('tests',name):name);
- const context={require:localRequire,URL,URLSearchParams,AbortController,DOMException,setTimeout,clearTimeout};
- const code=fs.readFileSync(file,'utf8').split(/\ntest\(/)[0];
- vm.runInNewContext(code+'\n'+suffix,context);return context;
+const {registry,renderArtist,artistCatalog,bundlePages}=require('./fixtures/current-artist-pages.cjs');
+let originalPages;
+async function compareRoutes(slug,routes){
+ const group=registry.find(g=>g.slug===slug);
+ const catalog=artistCatalog(group);
+ originalPages??=bundlePages(Object.fromEntries(names.map(name=>['@/data/runtime/'+name,path.resolve('data',name)])));
+ for(const route of routes){
+  const query=Object.fromEntries(new URLSearchParams(route));
+  const actual=await renderArtist(group,query,catalog);
+  const expected=await renderArtist(group,query,catalog,{},originalPages);
+  assert.equal(actual,expected,slug+route);
+ }
 }
-test('H2H and i-dle render identical HTML with full evidence or runtime projection',()=>{
- for(const [file,slug]of [['tests/hearts2hearts-figma.test.cjs','hearts2hearts'],['tests/idle-verified-design.test.cjs','idle']]){
-  const before=harness(file,'globalThis.renderPage=render;',true),after=harness(file,'globalThis.renderPage=render;',false);
+test('H2H and i-dle render identical HTML with full evidence or runtime projection',async()=>{
+ for(const slug of ['hearts2hearts','idle']){
   const data=read(slug==='idle'?names[2]:names[0]);
   const routes=['','?section=members','?section=works','?section=records','?section=updates',...data.members.map(m=>'?section=members&member='+m.id)];
   if(slug==='idle')routes.push(...data.releases.map(r=>'?section=records&release='+r.id),'?section=works&media=idle-stage-kbs-music-bank-20220318-tomboy');
   else routes.push('?section=records&release=iconic-heart','?section=records&release=moonride');
-  for(const route of routes)assert.equal(after.renderPage('/artists/'+slug+route),before.renderPage('/artists/'+slug+route),slug+route);
+  await compareRoutes(slug,routes);
  }
 });
-test('Billlie renders identical HTML and video decisions with full evidence or runtime projection',()=>{
- const before=harness('tests/billlie-figma-design.test.cjs','globalThis.renderPage=render;globalThis.scene=scene;',true),after=harness('tests/billlie-figma-design.test.cjs','globalThis.renderPage=render;globalThis.scene=scene;',false);
- const {c,data}=before.scene();const design=read(names[1]);
+test('Billlie renders identical HTML and video decisions with full evidence or runtime projection',async()=>{
+ const design=read(names[1]);
  const routes=['','?section=members','?section=works','?section=works&format=mv','?section=works&format=stage','?section=updates',...design.members.map(m=>'?section=members&member='+m.id),...design.releases.map(r=>'?section=works&release='+encodeURIComponent(r.id))];
- for(const route of routes)assert.equal(after.renderPage(c,data,'/artists/billlie'+route),before.renderPage(c,data,'/artists/billlie'+route),route);
+ await compareRoutes('billlie',routes);
 });
-test('primary detail images receive high-priority scheduling without layout changes',()=>{
- const idle=fs.readFileSync('components/candidate/idle-design.tsx','utf8'),h=fs.readFileSync('components/hearts2hearts-artist.tsx','utf8');
- assert.ok(idle.includes("fetchPriority={priority?'high':'auto'}"));
- assert.ok(h.includes('alt={`${selectedRelease.title} 发行封面`} priority/>'));
+test('primary detail images receive high-priority scheduling without layout changes',async()=>{
+ const idle=read(names[2]),release=idle.releases[0];
+ const covers=[
+  ['idle',release.id,idle.assets[release.imageKey].src],
+  ['hearts2hearts','iconic-heart',read(names[0]).releaseImages['iconic-heart']],
+ ];
+ for(const [slug,id,src] of covers){
+  const html=await renderArtist(registry.find(g=>g.slug===slug),{section:'records',release:id});
+  const image=html.match(/<img\b[^>]*>/g)?.find(tag=>tag.includes('src="'+src+'"'));
+  assert.ok(image,slug+' release cover');
+  assert.match(image,/fetchpriority="high"/i);
+ }
 });
 
 const careerSources={

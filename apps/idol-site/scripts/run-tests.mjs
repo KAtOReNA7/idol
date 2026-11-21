@@ -19,7 +19,7 @@ const current = [
   'artist-roster-return', 'artist-brand-portraits', 'three-group-public-bridge', 'home-read-deadline',
   'artist-migration', 'public-artist-copy', 'image-group-index', 'unused-unis-font-build-assets',
   'member-layout-order', 'group-index', 'ifeye-native-integration', 'izna-native-integration',
-  'editor-flow', 'private-note-render', 'native-save-order', 'native-loading-recovery',
+  'editor-flow', 'ive-badvillain-detail', 'meovv-detail', 'private-note-render', 'native-save-order', 'native-loading-recovery',
 ].map(name => `tests/${name}.test.cjs`).concat(
   ['stage-selection-policy', 'prune-unused-display-assets', 'unused-ifeye-original-build-assets', 'youngposse-retention-audit']
     .map(name => `tests/${name}.test.mjs`),

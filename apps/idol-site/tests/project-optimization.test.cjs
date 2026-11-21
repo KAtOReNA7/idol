@@ -8,23 +8,29 @@ const {DatabaseSync}=require('node:sqlite');
 const ts=require('typescript');
 const load=require('./helpers/public-artist-loader.cjs');
 
-test('published program notes appear only for the five reviewed work, group and MV combinations',()=>{
+test('published program notes appear only for the reviewed works, MVs, groups and active source',()=>{
  const {applyStageResearchFollowups}=load('lib/idol/stage-research-followups.ts');
  const {validStageResearchNote}=load('lib/idol/stage-public-research.ts');
  const {records}=require('../data/stages/research-followups-20261121.json');
  const inventory=require('../data/stages/inventory.json').works;
  const stages=require('../data/stage-videos.json');
- assert.equal(new Set(records.map(row=>row.workId)).size,5);
+ assert.equal(new Set(records.map(row=>row.workId)).size,10);
+ const {stageSourceKey}=load('lib/idol/stage-source.ts');
  for(const row of records){
   const target=inventory.find(work=>work.recordId===row.workId);
   assert.ok(target.groupIds.includes(row.groupId));
   assert.equal(target.mv.videoId,row.videoId);
-  assert.equal(stages[row.workId],undefined);
+  const stage=stages[row.workId]??null;
+  assert.equal(stageSourceKey(stage),row.currentStageSourceKey??null);
   assert.ok(validStageResearchNote(row.note));
-  const work={id:row.workId,groupIds:target.groupIds,url:target.mv.url,stage:null,stageScore:0,score:0};
+  const work={id:row.workId,groupIds:target.groupIds,url:target.mv.url,stage,stageScore:0,score:0};
   const visible=applyStageResearchFollowups(work);
   assert.deepEqual(visible,{...work,stageSupplement:{alternatives:[],researchNote:row.note}});
   assert.equal(applyStageResearchFollowups(visible),visible);
+  if(row.currentStageSourceKey){
+   const unbound={...work,stage:null};
+   assert.equal(applyStageResearchFollowups(unbound),unbound);
+  }
   for(const patch of [{id:'other'},{groupIds:[]},{url:''},{stage:{videoId:row.videoId}}]){
    const different={...work,...patch};
    assert.equal(applyStageResearchFollowups(different),different);

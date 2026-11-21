@@ -1,5 +1,6 @@
 import crushPosters from '../../data/stage-crush-poster-20261121.json';
 import qwerPosters from '../../data/stage-qwer-poster-20261121.json';
+import broadcastPosters from '../../data/stage-broadcast-posters-20261121.json';
 import posters from '../../data/saymyname-video-posters.json';
 import nightPosters from '../../data/night-mv-video-posters.json';
 import day19Posters from '../../data/day19-mv-video-posters.json';
@@ -70,7 +71,7 @@ export function approvedVideoPoster(workId:string,videoId:string|null,view:'mv'|
  return posters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view)??retainedVideoPosters.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view)??nightPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view)??day19Posters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view)??nextDay19Posters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view)??unisKep1erPosters.entries.find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view)??null;
 }
 
-const exactStagePosters=[...biliPosters.entries,...crushPosters.entries,...qwerPosters.entries];
+const exactStagePosters=[...biliPosters.entries,...crushPosters.entries,...qwerPosters.entries,...broadcastPosters.entries];
 // A post or multipart upload may contain multiple media and cover identities.
 export function approvedStagePoster(workId:string,stage:StageVideo):VideoPoster|null{
  const key=stageSourceKey(stage);if(!key)return null;

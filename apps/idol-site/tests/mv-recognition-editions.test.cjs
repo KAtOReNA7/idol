@@ -53,3 +53,19 @@ test('MV cards show the reviewed series and retain the old work image only for t
     assert(!wrong.includes('查看原作品图'));
   }
 });
+
+test('the same portrait is captioned for each release and historical members retain their own provenance', () => {
+  const portraits = editions['idle-i-feel'];
+  const release = portraits.works.find(work => work.label.includes('本次发行'));
+  const reference = portraits.works.find(work => work.label.includes('跨期'));
+  const memberId = release.memberIds.find(id => reference.memberIds.includes(id));
+  const photoFor = work => mvRecognitionEdition({...work, memberId});
+  assert.equal(photoFor(release).original, photoFor(reference).original);
+  assert.equal(photoFor(release).label, release.label);
+  assert.equal(photoFor(reference).label, reference.label);
+  const debut = editions['wooah-archive'].works.find(work => work.memberIds.includes('recvxyICzHxcEJ'));
+  const historical = mvRecognitionEdition({...debut, memberId: 'recvxyICzHxcEJ'});
+  assert.match(historical.label, /EXCLAMATION/);
+  assert.match(historical.sourceUrl, /kstationtv/);
+  assert.equal(mvRecognitionEdition({...debut, videoId: 'other-video', memberId: 'recvxyICzHxcEJ'}), null);
+});

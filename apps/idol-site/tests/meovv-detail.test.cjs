@@ -1,29 +1,56 @@
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-function harness(){
- const prefix=fs.readFileSync(path.join(__dirname,'editor-flow.test.cjs'),'utf8').split('(async()=>{')[0].replace('export {Editor,WorkDetail};','export {Editor,WorkDetail,LoonaScoreInput,meovvDetailMedia};').replace('{console,window:win,fetch:fakeFetch','{console,document:{getElementById:()=>null},window:win,fetch:fakeFetch');
- const h=vm.runInNewContext('(function(require,__dirname){'+prefix+`\n return {settle,wp,find,walk,txt,requests,member:()=>mt,editor:()=>et,tree:()=>wt,renderWork:()=>w.render(wp),media:exportsObj.meovvDetailMedia,fail(){saveFailure={error:'EDIT_CONFLICT'};},recover(){saveFailure=null;}};\n})`,{console,crypto:globalThis.crypto,URL,URLSearchParams,Date,AbortController,setTimeout,clearTimeout,setImmediate,structuredClone})(require,__dirname);
- h.wp.work={...h.wp.work,id:'rec28ldfRTrB45',groupIds:['rec28ldfRTiC6k'],url:'https://www.youtube.com/watch?v=jpLHg-AsQV0',song:'MEOW',name:'MEOW',stage:JSON.parse(fs.readFileSync('data/stage-videos.json')).rec28ldfRTrB45};h.wp.data.ratings[0].workIds=[h.wp.work.id];return h;
-}
-test('MEOW design applies only to exact production work, group, MV URL; NPOP checks exact stage identity',()=>{const h=harness(),w=h.wp.work;assert.equal(h.media(w).npop,true);assert.equal(h.media({...w,id:'research-only'}),null);assert.equal(h.media({...w,url:w.url+'x'}),null);assert.equal(h.media({...w,groupIds:[]}),null);assert.equal(h.media({...w,stage:{...w.stage,videoId:'another'}}).npop,false);assert.equal(h.media({...w,stage:{...w.stage,clip:{startSeconds:1}}}).npop,false);for(const asset of [h.media(w).poster,h.media(w).logo])assert.ok(fs.statSync('public'+asset).size);});
-test('source corrected; empty cast blocks omitted while real cast and private notes retained',()=>{const h=harness();let tree=h.renderWork();assert.match(h.txt(tree),/THEBLACKLABEL · YouTube/);assert.equal(h.walk(tree).filter(({node})=>node.props.table==='ratings').length,1);assert.match(h.txt(tree),/本支 MV 成员/);h.wp.data.ratings=[];tree=h.renderWork();assert.doesNotMatch(h.txt(tree),/本支 MV 成员|暂无成员名单|参演待补/);});
-test('live score editor survives rating hide/show and MV/stage switching; zero/null and failed draft preserved',async()=>{const h=harness();await h.settle();const node=()=>h.walk(h.tree()).find(({node})=>node.props.table==='works'),input=()=>h.find(h.editor(),n=>typeof n.type==='function'&&n.type.name==='LoonaScoreInput');const first=node();assert.equal(first.node.props.editorial,true);input().props.onChange(0);await h.settle();h.find(h.tree(),n=>n.type==='button'&&h.txt(n)==='评分').props.onClick();await h.settle();assert.equal(input().props.value,0);h.find(h.tree(),n=>n.type==='button'&&h.txt(n)==='关闭').props.onClick();await h.settle();assert.equal(input().props.value,0);h.find(h.tree(),n=>n.props.id==='stage-tab').props.onClick();await h.settle();assert.equal(input().props.disabled,false);input().props.onChange(9.1);await h.settle();h.find(h.tree(),n=>n.props.id==='mv-tab').props.onClick();await h.settle();assert.equal(node().path,first.path);assert.equal(node().node.key,first.node.key);assert.equal(input().props.value,0);assert.equal(h.requests.filter(x=>x.url==='/api/save').length,0);h.fail();await h.find(h.editor(),n=>n.props.ref).props.onClick();await h.settle();assert.equal(input().props.value,0);assert.equal(h.editor().props['data-dirty'],'true');h.recover();input().props.onChange(null);await h.settle();await h.find(h.editor(),n=>n.props.ref).props.onClick();await h.settle();const payload=JSON.parse(h.requests.filter(x=>x.url==='/api/save').at(-1).body);assert.equal(payload.recordId,'rec28ldfRTrB45');assert.equal(payload.values.score,null);assert.equal(payload.values.stageScore,9.1);assert.equal(payload.stageVideoId,'118STdpg-fY');assert.equal(payload.stageSourceKey,'118STdpg-fY');});
-test('changing stage binding retains old draft and blocks wrong-source save',async()=>{const h=harness();await h.settle();h.find(h.tree(),n=>n.props.id==='stage-tab').props.onClick();await h.settle();const input=()=>h.find(h.editor(),n=>typeof n.type==='function'&&n.type.name==='LoonaScoreInput');input().props.onChange(8.7);await h.settle();h.wp.work={...h.wp.work,stage:{...h.wp.work.stage,videoId:'different01',title:'Different verified stage',url:'https://www.youtube.com/watch?v=different01',scoreBinding:{videoId:'different01'}}};await h.settle();assert.equal(input().props.value,8.7);assert.equal(h.find(h.editor(),n=>n.props.ref).props.disabled,true);assert.match(h.txt(h.editor()),/你的输入仍对应上一支视频/);assert.doesNotMatch(h.txt(h.tree()),/NPOP LIMITED EDITION - SIDE A/);});
-test('brand navigation calls guarded parent; score source is real binding rather than design identifier',()=>{const h=harness();let target;h.wp.onArtistNavigate=u=>target=u;h.find(h.renderWork(),n=>n.props['aria-label']==='MEOVV 首页').props.onClick();assert.equal(target,'/artists/meovv');const source=require('./helpers/catalog-view-source.cjs')(),css=fs.readFileSync('app/meovv-experience.css','utf8');assert.match(source,/stageVideoId=\{stageBound\?stage\?\.videoId:null\}/);assert.match(source,/step="0.1"/);assert.match(source,/pendingRetry/);assert.match(css,/\.meovv-work-detail \[hidden\]\{display:none!important\}/);assert.match(css,/@media\(max-width:350px\)/);assert.match(source,/meovvMedia\.npop\?meovvMedia\.stagePoster:undefined/);});
-test('MV, logo and supplied NPOP image-layer export match the audited manifest bytes',()=>{const crypto=require('node:crypto'),h=harness(),media=h.media(h.wp.work),manifest=JSON.parse(fs.readFileSync('data/meovv-figma-asset-manifest.json'));for(const runtime of [media.poster,media.logo,media.stagePoster]){const row=manifest.find(x=>x.runtime===runtime);assert.ok(row,runtime);assert.equal(crypto.createHash('sha256').update(fs.readFileSync('public'+runtime)).digest('hex'),row.sha256);assert.doesNotMatch(row.source,/screenshot|context/);}});
-
-test('hidden member drafts stay discoverable and return to their mounted editor without autosave',async()=>{
- const h=harness();await h.settle();
- const memberNode=()=>h.walk(h.tree()).find(({node})=>node.props.table==='ratings');const original=memberNode();
- h.find(h.member(),n=>n.type==='button').props.onClick();await h.settle();
- const input=()=>h.find(h.member(),n=>typeof n.type==='function'&&n.type.name==='LoonaScoreInput');input().props.onChange(9.5);await h.settle();
- const visible=n=>Array.isArray(n)?n.flatMap(visible):!n||typeof n!=='object'||n.props.hidden?[]:[n,...visible(n.props.children)];
- const shortcut=()=>visible(h.tree()).find(n=>n.type==='button'&&h.txt(n).includes('去保存成员评分'));
- h.find(h.tree(),n=>n.props.id==='stage-tab').props.onClick();await h.settle();
- assert.equal(h.member().props['data-dirty'],'true');assert.ok(visible(h.tree()).some(n=>n.props.role==='status'&&h.txt(n).includes('有 1 条未保存修改')));assert.ok(shortcut());
- visible(h.tree()).find(n=>n.type==='button'&&h.txt(n)==='评分').props.onClick();await h.settle();assert.ok(shortcut());assert.ok(visible(h.tree()).some(n=>n.props.role==='status'&&h.txt(n).includes('有 1 条未保存修改')));
- let focused=0;const details={open:false};h.find(h.tree(),n=>n.props.id==='mv-cast-recRating').props.ref({closest:()=>details,querySelector:()=>({scrollIntoView(){},focus(){focused++;}})});
- shortcut().props.onClick();await h.settle();
- assert.equal(h.tree().props['data-video-view'],'mv');assert.equal(focused,1);assert.equal(input().props.value,9.5);assert.equal(h.member().props['data-dirty'],'true');
- assert.equal(h.find(h.tree(),n=>n.props.className==='mvd-cast').props.hidden,false);assert.equal(h.find(h.tree(),n=>n.props.className==='mvd-rating').props.hidden,true);
- assert.equal(memberNode().path,original.path);assert.equal(memberNode().node.key,original.node.key);assert.equal(h.requests.filter(x=>x.url==='/api/save').length,0);
+const test=require('node:test'),assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path');
+const {currentDetail,turn,input,change,posts,assertDetailLinks,assertWorkDrafts}=require('./helpers/current-work-detail.cjs');
+const {approvedVideoPoster,approvedStagePoster}=require('./helpers/public-artist-loader.cjs')('lib/idol/approved-video-poster.ts');
+const id='rec28ldfRTrB45', harness=()=>currentDetail(id);
+test('a stalled save releases the editor and retries the exact same zero-score operation',async()=>{
+  let expireSave=false;
+  const h=currentDetail(id,(fn,ms)=>setTimeout(fn,expireSave&&ms===30000?1:ms));
+  await h.settle(); change(input(h,'MV 分数'),'0'); await h.settle();
+  h.setSaveTransport(({signal})=>new Promise((resolve,reject)=>{
+    signal.addEventListener('abort',()=>reject(new Error('transport aborted')),{once:true});
+  }));
+  expireSave=true;await h.footer().props.onClick();await h.settle();
+  assert.match(h.txt(h.editor()),/保存回执超时/);assert.equal(input(h,'MV 分数').props.value,0);
+  h.setSaveTransport(null);await h.footer().props.onClick();await h.settle();
+  const attempts=posts(h);assert.equal(attempts.length,2);assert.equal(attempts[0].body,attempts[1].body);
+  assert.equal(h.editor().props['data-dirty'],undefined);
+});
+test('MEOW poster and player match the live work, MV and NPOP stage identities',async()=>{
+  const h=harness(); await h.settle(); assert.equal(h.player().props.videoId,'jpLHg-AsQV0');
+  assert.equal(h.player().props.posterSrc,approvedVideoPoster(id,'jpLHg-AsQV0','mv').src);
+  assert.equal(approvedVideoPoster('wrong-work','jpLHg-AsQV0','mv'),null);
+  await turn(h,'stage'); assert.equal(h.player().props.videoId,'118STdpg-fY');
+  assert.equal(h.player().props.posterSrc,approvedStagePoster(id,h.wp.work.stage)?.src);
+  assert.equal(approvedStagePoster(id,{...h.wp.work.stage,clip:{startSeconds:1,endSeconds:5}}),null);
+});
+test('unconfirmed receipt retains the zero draft and the retry reuses its operation',async()=>{
+  const h=harness(); await h.settle(); change(input(h,'MV 分数'),'0'); await h.settle();
+  h.receipt({operationId:'foreign-receipt'}); await h.footer().props.onClick(); await h.settle();
+  assert.equal(input(h,'MV 分数').props.value,0); assert.match(h.txt(h.footer()),/核对上次保存/);
+  h.receipt(null); await h.footer().props.onClick(); await h.settle();
+  const attempts=posts(h); assert.equal(attempts.length,2);assert.equal(attempts[0].body,attempts[1].body);
+  assert.equal(h.editor().props['data-dirty'],undefined);
+});
+test('MEOW keeps 0, decimal stage scores and clearing distinct through failed drafts',()=>assertWorkDrafts(id));
+test('changing the stage retains the draft and blocks a save against the new binding',()=>
+  require('./helpers/assert-rebound-stage-draft.cjs')(harness));
+test('MEOVV group navigation and returning use the guarded parent',()=>assertDetailLinks(id));
+test('all original MEOVV supplied images retain the approved bytes',()=>{
+  for(const row of require('../data/meovv-figma-asset-manifest.json')){
+    const bytes=fs.readFileSync(path.join(__dirname,'../public',row.runtime));
+    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),row.sha256,row.runtime);
+  }
+});
+test('the hidden member draft returns to its original editor and focus without saving',async()=>{
+  const h=harness(); await h.settle(); h.find(h.member(),n=>n.type==='button').props.onClick(); await h.settle();
+  const field=()=>h.find(h.member(),n=>n.props['aria-label']==='表现分');
+  change(field(),'9.5'); await h.settle();
+  const memberMount=()=>h.walk(h.tree()).find(({node})=>node.props.table==='ratings');
+  const origin=memberMount();
+  await turn(h,'stage'); assert.equal(h.find(h.tree(),n=>n.props.className==='section cast-section').props.hidden,true);
+  let focus=0; h.find(h.tree(),n=>n.props.id==='mv-cast-recRating').props.ref({querySelector:()=>({scrollIntoView(){},focus(){focus++;}})});
+  h.find(h.tree(),n=>n.type==='button'&&h.txt(n).includes('去保存成员评分')).props.onClick(); await h.settle();
+  assert.equal(focus,1);assert.equal(field().props.value,9.5);assert.equal(memberMount().path,origin.path);
+  assert.equal(memberMount().node.key,origin.node.key);assert.equal(posts(h).length,0);
+  assert.equal(h.find(h.tree(),n=>n.props.className==='section cast-section').props.hidden,false);
 });

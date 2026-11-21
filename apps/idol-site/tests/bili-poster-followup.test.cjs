@@ -25,8 +25,47 @@ test('the observed Password thumbnail retains its actual decoded dimensions and 
 test('a poster cannot follow another part, range, work or platform despite a shared BV',()=>{
  assert.equal(approvedVideoPoster(id,stage.videoId,'stage'),null);
  for(const change of [{videoId:'BV1bo4y1x7LV'},{bilibili:{cid:'34265369311',page:1}},{bilibili:{cid:'34265369310',page:2},url:stage.url.replace('p=1','p=2')},{clip:{startSeconds:0,endSeconds:20,sourceDurationSeconds:174,evidence:{note:'synthetic scope',urls:['https://example.org']}}},{platform:'youtube',bilibili:undefined}])assert.equal(approvedStagePoster(id,{...stage,...change}),null);
- assert.equal(approvedStagePoster('wrong',stage),null);assert.equal(approvedStagePoster('recvxyH5pzoMAf',stageForWork('recvxyH5pzoMAf')),null);
+ assert.equal(approvedStagePoster('wrong',stage),null);
+ assert.notEqual(approvedStagePoster('recvxyH5pzoMAf',stageForWork('recvxyH5pzoMAf'))?.src,entry.src);
  assert.equal(receipt.staycPosterReview.decision,'rejected_wrong_song_scope');
+});
+test('the two Japanese broadcast stills require their recorded work, part and exact clip',()=>{
+ const {entries}=require('../data/stage-broadcast-posters-20261121.json');
+ assert.deepEqual(entries.map(p=>p.workId).sort(),['recvxyH5pzoMAf','recvxyHuKM2Gwu']);
+ for(const still of entries){
+  const source=stageForWork(still.workId);
+  assert.equal(stageSourceKey(source),still.sourceKey);
+  const original=fs.readFileSync(path.join(__dirname,'../public',still.src));
+  assert.equal(original.length,still.byteLength);
+  assert.equal(hash(original),still.sha256);
+  const poster=approvedStagePoster(still.workId,source);
+  assert.deepEqual(poster,{src:still.src,label:still.label,intrinsicSize:still.intrinsicSize,fit:'contain'});
+  const html=renderToStaticMarkup(React.createElement(WorkVideoPlayer,{
+   workId:still.workId,view:'stage',platform:source.platform,sourceKey:stageSourceKey(source),
+   url:stageWatchUrl(source),videoId:source.videoId,embedUrl:null,title:source.title,
+   posterSrc:poster.src,posterLabel:poster.label,posterFit:poster.fit,posterSize:poster.intrinsicSize,
+  }));
+  assert.ok(html.includes(still.src));
+  assert.equal(stageWatchUrl(source),still.sourcePageUrl);
+  assert.match(html,/在 B站观看/);
+  assert.doesNotMatch(html,/<iframe|ytimg/);
+  assert.equal(approvedVideoPoster(still.workId,source.videoId,'stage'),null);
+  assert.equal(approvedStagePoster('wrong',source),null);
+  for(const part of [{cid:source.bilibili.cid,page:2},{cid:'999',page:1}]){
+   const other={...source,bilibili:part,url:`https://www.bilibili.com/video/${source.videoId}/?p=${part.page}&cid=${part.cid}`};
+   assert.ok(stageSourceKey(other));
+   assert.equal(approvedStagePoster(still.workId,other),null);
+  }
+  if(source.clip){
+   assert.ok(source.clip.startSeconds<=still.frameSeconds&&still.frameSeconds<source.clip.endSeconds);
+   assert.equal(approvedStagePoster(still.workId,{...source,clip:undefined}),null);
+   assert.equal(approvedStagePoster(still.workId,{...source,clip:{...source.clip,startSeconds:1086}}),null);
+  }else{
+   const interval={...source,clip:{startSeconds:138,endSeconds:147,sourceDurationSeconds:306,evidence:{note:'Synthetic scope',urls:[source.url]}}};
+   assert.ok(stageSourceKey(interval));
+   assert.equal(approvedStagePoster(still.workId,interval),null);
+  }
+ }
 });
 test('actual Bili player SSR shows the local poster without a YouTube thumbnail or automatic third-party embed',()=>{
  const p=approvedStagePoster(id,stage),html=renderToStaticMarkup(React.createElement(WorkVideoPlayer,{workId:id,view:'stage',platform:stage.platform,sourceKey:stageSourceKey(stage),url:stageWatchUrl(stage),videoId:stage.videoId,embedUrl:null,title:stage.title,posterSrc:p.src,posterLabel:p.label,posterFit:p.fit,posterSize:p.intrinsicSize}));

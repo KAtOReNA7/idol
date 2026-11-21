@@ -104,13 +104,15 @@ export function Editor({publicCatalog,table,id,mode,onSaved,compact=false,loona=
   saving.current=true;
   setState('saving');
   setMessage('');
+  const controller=new AbortController();
+  const timeout=setTimeout(()=>controller.abort(),30000);
   try{
    if(!pendingSave.current){
     const values=Object.fromEntries(Object.entries(draft).filter(([key,value])=>value!==detail.values[key]));
     pendingSave.current={table,recordId:id,revision:detail.revision,operationId:crypto.randomUUID(),values,
      ...(table==='works'&&Object.hasOwn(values,'stageScore')?{stageVideoId:stageDraftVideoId,stageSourceKey:stageDraftSourceKey}:{})};
    }
-   const response=await fetch('/api/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(pendingSave.current)});
+   const response=await fetch('/api/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(pendingSave.current),signal:controller.signal});
    const result=await readResponse(response);
    if(!response.ok){
     const code=result&&typeof result==='object'&&'error' in result?result.error:null;
@@ -140,8 +142,9 @@ export function Editor({publicCatalog,table,id,mode,onSaved,compact=false,loona=
   }catch(error){
    setPendingRetry(!!pendingSave.current);
    setState('error');
-   setMessage(error instanceof Error?error.message:'连接暂时中断，请核对上次保存。');
+   setMessage(controller.signal.aborted?'保存回执超时，请核对上次保存。':error instanceof Error?error.message:'连接暂时中断，请核对上次保存。');
   }finally{
+   clearTimeout(timeout);
    saving.current=false;
   }
  }

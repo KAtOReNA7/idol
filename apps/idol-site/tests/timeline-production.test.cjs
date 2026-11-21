@@ -17,6 +17,12 @@ const continuousEvidence=require('../../../docs/codex/evidence/20261028-continuo
 const reportRecords=require('../data/timeline-reported-records.json').records;
 const {beforePriorityTimelineBytes,receipt:priorityDates}=require('./helpers/priority-date-baseline.cjs');
 const {agencyEventIds,beforeAgencyTimelineBytes,beforeAgencyEditorialBytes}=require('./helpers/ifeye-agency-baseline.cjs');
+const closedDates=require('../../../docs/codex/evidence/20261101-closeout/closure.json').dates;
+const octoberReports=JSON.parse(priorityDates.reportDocument.expectedBeforeText).records;
+const closedBoundary={
+ 'e-atheart-aurora-second-hiatus-announcement':'实际生效日期：0（未查得）；按2026-08-18官方公告日期记录。',
+ 'e-udtt-jessica-provisional-join-candidate':'实际加入日期：0（未查得）；按2025-04-30本人采访发表日期记录，保留原有身份与个人历史。',
+};
 // Reviewed native pages have their own event/edition identities. Freeze their
 // complete source documents rather than infer acceptance from current output.
 const nativeContracts={
@@ -50,9 +56,24 @@ function reportAssertions(dom,group,held,{shown=true,native=false}={}){
  assert.deepEqual(nodes.map(n=>n.attrs['data-reported-record']).sort(),expected.map(r=>r.eventId).sort(),'report overlays are an exact, separate set');
  for(const row of expected){
   const node=nodes.find(n=>n.attrs['data-reported-record']===row.eventId);
-  assert.ok(reported(node));assert.ok(text(node).includes(row.boundary));
-  if(row.eventDate===null){assert.equal(held.find(e=>e.id===row.eventId)?.eventDate,null,'unresolved reporting never promotes a canonical hold');assert.match(text(node),/生效日期未确认/);}
-  else{const change=priorityDates.changes.find(c=>c.eventId===row.eventId);assert.ok(change,'only reviewed resolved records');assert.deepEqual(row.eventDate,change.after.eventDate);assert.equal(held.some(e=>e.id===row.eventId),false);}
+  assert.ok(reported(node));
+  if(row.eventDate===null){
+   const closure=closedDates.find(r=>r.eventId===row.eventId&&r.slug===group.slug);
+   assert.ok(closure,'only the two independently recorded display fallbacks');
+   assert.deepEqual(row,octoberReports.find(r=>r.eventId===row.eventId),'unaltered historical report and sources');
+   assert.equal(held.find(e=>e.id===row.eventId)?.eventDate,null);
+   assert.equal(closure.eventDate,null);assert.equal(closure.displayValue,0);
+   assert.equal(closure.taskStatus,'closed-user-fallback');
+   assert.equal(row.recordDate,closure.recordDate);
+   assert.ok(row.sources.some(s=>s.url===closure.sourceUrl&&s.publishedDate===closure.recordDate));
+   assert.ok(text(node).includes(closedBoundary[row.eventId]),row.eventId);
+   const times=find(node,n=>n.tag==='time');assert.equal(times.length,1);
+   if(native&&group.slug==='udtt')assert.equal(text(times[0]),row.recordDate+' / '+row.dateLabel);
+   else assert.equal(times[0].attrs.datetime,row.recordDate);
+  }else{
+   assert.ok(text(node).includes(row.boundary));
+   const change=priorityDates.changes.find(c=>c.eventId===row.eventId);assert.ok(change,'only reviewed resolved records');assert.deepEqual(row.eventDate,change.after.eventDate);assert.equal(held.some(e=>e.id===row.eventId),false);
+  }
   if(row.recordDate)assert.ok(text(node).includes(row.recordDate));else assert.match(text(node),/记录日期未确认/);
   const sources=find(node,n=>n.tag==='a'&&n.attrs.href?.startsWith('https://'));
   assert.deepEqual(sources.map(n=>n.attrs.href),row.sources.map(s=>s.url));

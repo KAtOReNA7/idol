@@ -50,7 +50,7 @@ test('disabled retry state and default provider do not advertise background or b
 });
 test('original photo links navigate before hydration and enhance a plain activation with focus and a dialog',()=>{
  const calls=[];
- const link=component.OriginalPhotoLink({href:'/artist/example/original.jpg',children:'查看原图',onOpen(){calls.push('open');}});
+ const link=component.OriginalPhotoLink({href:'/artist/example/original.jpg',children:'查看原图',onOpen(src){assert.equal(src,'/artist/example/original.jpg');calls.push('open');}});
  assert.match(renderToStaticMarkup(link),/<a[^>]*href="\/artist\/example\/original\.jpg"[^>]*aria-haspopup="dialog"[^>]*>查看原图<\/a>/);
  const target={focus(options){assert.deepEqual(options,{preventScroll:true});calls.push('focus');},click(){calls.push('click');}};
  const event={button:0,currentTarget:target,preventDefault(){calls.push('prevent');}};

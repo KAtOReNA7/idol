@@ -20,6 +20,7 @@ test.before(async()=>{const output=path.join(directory,'entry.cjs');proof=await 
 test.after(()=>fs.rmSync(directory,{recursive:true,force:true}));
 const {artistCatalog, renderArtist, nativeSlugs} = require('./fixtures/current-artist-pages.cjs');
 const heroSources = require('./fixtures/approved-artist-heroes.json');
+const groupOriginals = require('./fixtures/home-group-originals.json');
 const homePreviewSlots = {cherrybullet:['hero'], rocketpunch:['hero'], weeekly:['banner','hero']};
 const externalPlayable = /(?:youtube\.com|youtu\.be|bilibili\.com|x\.com)/;
 const privateModes = new Set(['ive','loona','aespa','kissoflife','stayc','nmixx','itzy','lesserafim','triples','madein','illit','qwer','purplekiss','rescene']);
@@ -43,10 +44,12 @@ for (const [index, artist] of registry.entries()) {
   const photos=slots ? slots.map(slot=>require(`../data/${artist.slug}-public.json`)[slot]) : [{image:heroSources[artist.slug]}];
   assert.equal(photos[0].image,heroSources[artist.slug]);
   const rendered=images(html);
-  if (slots) {
-   const original=require(`../data/${artist.slug}-public.json`).hero.image;
-   const links=[...html.matchAll(/<a\b[^>]*>/g)].map(match=>attrs(match[0]));
-   assert.ok(links.some(link=>link.href===original&&link['aria-haspopup']==='dialog'),'group original is reachable on the first click before hydration');
+  if (groupOriginals[artist.slug]) {
+   const expected=groupOriginals[artist.slug];
+   const actual=[...html.matchAll(/<a\b[^>]*>/g)].map(match=>attrs(match[0]))
+    .filter(link=>link['aria-haspopup']==='dialog'&&expected.includes(link.href)).map(link=>link.href);
+   assert.deepEqual(actual.sort(),[...expected].sort(),'each home group photo control links to its original before hydration');
+   for (const href of expected) assert.ok(fs.existsSync(path.resolve(__dirname,'../public','.'+href)),href);
   }
   const preloads=[...html.matchAll(/<link\b[^>]*>/g)].map(match=>attrs(match[0])).filter(link=>link.as==='image');
   for (const photo of photos) {

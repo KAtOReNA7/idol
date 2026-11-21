@@ -7,6 +7,7 @@ import {ArtistInformation,ArtistHomeTimeline} from '@/components/artist-informat
 import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore} from 'react';
 import {ArtistTimelineHost,useArtistTimelineHostOptions} from '@/components/artist-timeline-host';
 import {PhotoLightbox} from '@/components/photo-lightbox';
+import {OriginalPhotoLink} from '@/components/original-photo-link';
 import {ReliableImage,ImageRecoveryControls,ImageRecoveryProvider} from '@/components/reliable-image';
 import {MemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPhysicalFacts} from '@/components/member-physical-facts';
@@ -117,7 +118,7 @@ export default function SevenArtist({slug}:{slug:SevenSlug}){
   if(period)return <IvePeriod period={period} release={r} works={works} members={members} enlarge={enlarge} openMember={id=>openRosterMember(id,'profile')}/>;
   const linked=works.filter(w=>r.workIds?.includes(w.id));return <article className="sr-release-detail sr-section"><button className="sr-back" onClick={()=>go('works')}>← 返回发行目录</button><div className="sr-release-layout"><button className="sr-cover" disabled={!r.image} onClick={()=>enlarge(r.image,r.title)}>{r.image?<Picture src={r.image} alt={r.title+'封面'} priority/>:<span className="sr-text-cover">{r.title}</span>}</button><div><small>{config.name} / {r.type||'RELEASE'}</small><h1>{r.title}</h1><p>{r.date}</p><External href={r.sourceUrl}>官方发行资料</External>{r.sales&&<p className="sr-note">已公开实体销量 {r.sales.copies?.toLocaleString()??'待补'} · 截至 {r.sales.asOf}<br/>{r.sales.coverageLabel??(r.sales.cumulativeComplete===true?'完整累计':'统计覆盖不完整，不代表完整累计')}</p>}{!!r.tracks?.length&&<><h2>TRACKLIST</h2><ol className="sr-tracklist">{r.tracks.map((t,i)=><li key={i}>{t}</li>)}</ol></>}</div></div><div className="sr-work-grid">{linked.map(w=>workCard(w))}{config.films.filter(f=>f.releaseId===r.id).map(filmCard)}</div></article>;}
  function filmPage(f:Film){return <article className="sr-section sr-film-detail"><button className="sr-back" onClick={()=>go('works')}>← 返回影像目录</button><small>{f.kind.toUpperCase()} · {f.date}</small><h1>{f.title}</h1><button className="sr-film-art" onClick={()=>enlarge(f.image,f.title)}><Picture src={f.image} alt={f.title} priority/></button><External href={f.sourceUrl}>观看官方影像</External>{f.releaseId&&config.releases.some(r=>r.id===f.releaseId)&&<button className="sr-cta" onClick={()=>go('works',{release:f.releaseId!})}>相关发行 →</button>}</article>;}
- function hero(){const src=art.hero??config.hero,image=<button className="sr-hero-photo" onClick={()=>enlarge(src,config.heroCaption)} aria-label={'放大'+config.name+'团体照'}><Picture src={src} alt={config.heroCaption} priority/></button>;const actions=<div className="sr-hero-actions"><button onClick={()=>go('works')}>探索作品 ↗</button><button onClick={()=>go('members')}>成员档案 ↗</button></div>;
+ function hero(){const src=art.hero??config.hero,image=<OriginalPhotoLink className="sr-hero-photo" href={original(src)} onOpen={src=>setLightbox({src,label:config.heroCaption})} aria-label={'放大'+config.name+'团体照'}><Picture src={src} alt={config.heroCaption} priority/></OriginalPhotoLink>;const actions=<div className="sr-hero-actions"><button onClick={()=>go('works')}>探索作品 ↗</button><button onClick={()=>go('members')}>成员档案 ↗</button></div>;
   if(slug==='madein')return <section className="sr-hero sr-madein-hero">{image}<div className="sr-hero-bottom"><div><h1>Super Obvious</h1>{actions}</div><span>MADEIN<br/>MUSIC & MEMBERS</span></div></section>;
   if(slug==='qwer')return <section className="sr-hero sr-qwer-hero">{image}<div className="sr-band-strip"><h1>QWER</h1><p>CHODAN / MAGENTA / HINA / SIYEON</p>{actions}</div></section>;
   if(slug==='purplekiss')return <section className="sr-hero sr-purple-hero"><div className="sr-purple-title"><span>THE 2ND MINI ALBUM</span><h1>HIDE <i>&</i> SEEK</h1><p>PURPLE KISS / ZOMBIE</p></div><div className="sr-purple-scene">{image}<div className="sr-purple-poster"><Picture src="/artist/purplekiss/redesign-20261025/hide-seek-cover-art.jpg" alt="HIDE & SEEK 官方紫色滴落字标与荧光绿唇形宣传海报"/></div></div><div className="sr-purple-bottom"><p>2021.09.08 · 七人时期</p>{actions}</div></section>;
@@ -140,7 +141,7 @@ export default function SevenArtist({slug}:{slug:SevenSlug}){
  }
  function iveArchive(){
   return <figure className="ive-dive-archive" aria-label="2022 年官网档案">
-   <button onClick={()=>enlarge(starshipProfile.original,starshipProfile.caption)} aria-label="放大 2022 年官网团照"><Picture src={starshipProfile.image} alt={starshipProfile.caption} priority/></button>
+   <OriginalPhotoLink className="ive-archive-photo" href={starshipProfile.original} onOpen={src=>setLightbox({src,label:starshipProfile.caption})} aria-label="放大 2022 年官网团照"><Picture src={starshipProfile.image} alt={starshipProfile.caption} priority/></OriginalPhotoLink>
    <figcaption><span>STARSHIP · 2022.04.14</span><External href={starshipProfile.sourceUrl}>当年官网</External></figcaption>
   </figure>;
  }

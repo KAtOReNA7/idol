@@ -1,0 +1,2940 @@
+{
+  "site": "https://idol-lens-private.wuke40758.chatgpt.site",
+  "version": 218,
+  "browser": "Codex in-app browser",
+  "method": {
+    "sampling": "One warm Codex in-app browser session on production v218. One visit per artist at 1265 CSS px, plus one Billlie visit at 375 CSS px.",
+    "firstControl": "Each artist uses the video selector from its home entry in apps/idol-site/tests/fixtures/mixed-media-routes.cjs. lastMissingMs and firstSeenMs bracket the first observed actionable control in that selection. firstSeenMs is its observation upper bound. The fixture can select a hero link, an MV card or a song link inside a release feature. Other links outside the selection are outside the timing scope. Click, image decode and video start are separate observations.",
+    "catalog": "catalogAtCard and catalogAfter are cumulative Resource Timing samples for catalog requests completed by the observation time. A request in flight is absent until it completes. These are not whole-page network totals.",
+    "secondObservation": "Approximately 350 ms after firstSeenMs, with the actual observation time in atSampleMs.",
+    "timingUnits": "Milliseconds relative to the page performance time origin. For each completed request, time to first byte = response minus request (responseStart minus requestStart).",
+    "byteFields": "transfer, encoded and decoded are transferSize, encodedBodySize and decodedBodySize in bytes.",
+    "keyboard": "focus records actual Tab steps classified by the selected home video and album controls. The first mv and first album step per visit describe that pair. Other focus targets are not classified in these rows. The recorded name identifies a control and can differ from its accessible name.",
+    "scopeReview": {
+      "basis": "Separate v218 structural review of all 51 home routes using the checked-in catalog and the actual React or native renderer. DOM precedence and work or release identity were checked locally. The timing and Tab steps in rows belong solely to the original browser selections.",
+      "earlierMvLinkToSameWork": [
+        "ive",
+        "izone",
+        "babymonster",
+        "xg",
+        "aespa"
+      ],
+      "earlierMvLinkToDifferentWork": [
+        "unis",
+        "kissoflife",
+        "stayc",
+        "nmixx",
+        "kiiikiii",
+        "itzy",
+        "lesserafim",
+        "saymyname"
+      ],
+      "earlierReleaseCoverButton": [
+        "ive"
+      ],
+      "earlierReleaseDetailTextLinks": [
+        "geenius",
+        "spia",
+        "everglow",
+        "rocketpunch",
+        "cherrybullet",
+        "weeekly"
+      ],
+      "earlierStage": "izna presents the METRONOME dance-performance card before the selected DUMB HOT! MV card.",
+      "report": "../../worklogs/20261122-formal-home-access.md",
+      "formalFollowUp": {
+        "v218HeroLinks": "formal-home-hero-entries.json",
+        "v219ReleasesBeforeMv": "../20261122-v219/formal-early-releases.json",
+        "v212MixedSectionOrdering": "../20261122-v213/formal-media-order.json"
+      }
+    }
+  },
+  "rows": [
+    {
+      "slug": "ive",
+      "path": "/artists/ive",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1874,
+      "lastMissingMs": 1832,
+      "documentProbes": 63,
+      "first": {
+        "href": "/?view=works&work=recvxyHuKMaCIP&returnTo=%2Fartists%2Five",
+        "name": "↗",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 181614,
+          "encoded": 29287,
+          "end": 1854,
+          "request": 1234,
+          "response": 1852,
+          "start": 1232,
+          "transfer": 29587
+        }
+      ],
+      "atSampleMs": 2231,
+      "catalogAfter": [
+        {
+          "decoded": 181614,
+          "encoded": 29287,
+          "end": 1854,
+          "request": 1234,
+          "response": 1852,
+          "start": 1232,
+          "transfer": 29587
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "查看LUCID DREAM发行详情",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 26,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyHuKMaCIP&returnTo=%2Fartists%2Five",
+            "name": "↗",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 41,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "查看LUCID DREAM发行详情",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "adya",
+      "path": "/artists/adya",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 634,
+      "lastMissingMs": 554,
+      "documentProbes": 11,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrH9V&returnTo=%2Fartists%2Fadya",
+        "name": "查看详情",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 995,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/adya?section=works&release=adya",
+        "name": "01 出道单曲 · 2023.05.09 ADYA 查看发行",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 21,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrH9V&returnTo=%2Fartists%2Fadya",
+            "name": "查看详情",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 29,
+          "kind": "album",
+          "control": {
+            "href": "/artists/adya?section=works&release=adya",
+            "name": "01 出道单曲 · 2023.05.09 ADYA 查看发行",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "cherrybullet",
+      "path": "/artists/cherrybullet",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 513,
+      "lastMissingMs": 465,
+      "documentProbes": 9,
+      "first": {
+        "href": "/?view=works&work=recvxyH5pza4kq&returnTo=%2Fartists%2Fcherrybullet",
+        "name": "P.O.W! (Play On the World) MV 视频缩略图",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 871,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/cherrybullet?section=records&release=cherrybullet-bugs-4084323",
+        "name": "Cherry Dash 2023.03.07 · 迷你专辑",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 23,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyH5pza4kq&returnTo=%2Fartists%2Fcherrybullet",
+            "name": "P.O.W! (Play On the World) MV 视频缩略图",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 28,
+          "kind": "album",
+          "control": {
+            "href": "/artists/cherrybullet?section=records&release=cherrybullet-bugs-4084323",
+            "name": "Cherry Dash 2023.03.07 · 迷你专辑",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "atheart",
+      "path": "/artists/atheart",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 535,
+      "lastMissingMs": 497,
+      "documentProbes": 10,
+      "first": {
+        "href": null,
+        "name": "↗ OFFICIAL MV / 音乐影像 3!4! 视频公开日期未收录",
+        "tag": "button"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 893,
+      "catalogAfter": [],
+      "album": {
+        "href": null,
+        "name": "2026-08-19 / 1 曲 3!4!",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 25,
+          "kind": "mv",
+          "control": {
+            "href": null,
+            "name": "↗ OFFICIAL MV / 音乐影像 3!4! 视频公开日期未收录",
+            "tag": "button"
+          }
+        },
+        {
+          "step": 28,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "2026-08-19 / 1 曲 3!4!",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "witchx",
+      "path": "/artists/witchx",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 536,
+      "lastMissingMs": 467,
+      "documentProbes": 9,
+      "first": {
+        "href": "/artists/witchx?section=works&media=blala-lyric&format=mv",
+        "name": "BLALA · Official Lyric Video · 视频预览",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 893,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/witchx?section=works&release=witchx-blala",
+        "name": "BLALA 正式发行封面",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 17,
+          "kind": "mv",
+          "control": {
+            "href": "/artists/witchx?section=works&media=blala-lyric&format=mv",
+            "name": "BLALA · Official Lyric Video · 视频预览",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 29,
+          "kind": "album",
+          "control": {
+            "href": "/artists/witchx?section=works&release=witchx-blala",
+            "name": "BLALA 正式发行封面",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "ifeye",
+      "path": "/artists/ifeye",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1027,
+      "lastMissingMs": 989,
+      "documentProbes": 30,
+      "first": {
+        "href": "/artists/ifeye?section=works&format=mv&media=rec28ldfRTrCQ2-mv-I_msu2-4UAU",
+        "name": "NERDY官方MV · 2025.04.08",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 1384,
+      "catalogAfter": [
+        {
+          "decoded": 21761,
+          "encoded": 5762,
+          "end": 1271,
+          "request": 709,
+          "response": 1270,
+          "start": 705,
+          "transfer": 6062
+        }
+      ],
+      "album": {
+        "href": "/artists/ifeye?section=works&release=ifeye%3Aas-if",
+        "name": "As if 封面01As if2026.04.15 · EP↗",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 33,
+          "kind": "mv",
+          "control": {
+            "href": "/artists/ifeye?section=works&format=mv&media=rec28ldfRTrCQ2-mv-I_msu2-4UAU",
+            "name": "NERDY 官方MV · 2025.04.08",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 35,
+          "kind": "mv",
+          "control": {
+            "href": "/artists/ifeye?section=works&format=mv&media=rec28ldfRTrPSV-mv-tGMy0z1akLs",
+            "name": "r u ok? 官方MV · 2025.07.16",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 37,
+          "kind": "album",
+          "control": {
+            "href": "/artists/ifeye?section=works&release=ifeye%3Aas-if",
+            "name": "01 As if 2026.04.15 · EP ↗",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "izna",
+      "path": "/artists/izna",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1028,
+      "lastMissingMs": 1002,
+      "documentProbes": 30,
+      "first": {
+        "href": "/artists/izna?section=works&format=mv&media=rec28ldfRTrNYh-mv-_kxr2D8-tq8",
+        "name": "官方MV2026.09.02DUMB HOT!▶",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 1388,
+      "catalogAfter": [
+        {
+          "decoded": 44947,
+          "encoded": 9735,
+          "end": 1338,
+          "request": 766,
+          "response": 1337,
+          "start": 763,
+          "transfer": 10035
+        }
+      ],
+      "album": {
+        "href": "/artists/izna?section=works&release=izna-handle-with-care",
+        "name": "HANDLE WITH CARE 封面最新发行HANDLE WITH CAREEP · 日本/日语2026.09.02↗",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 36,
+          "kind": "mv",
+          "control": {
+            "href": "/artists/izna?section=works&format=mv&media=rec28ldfRTrNYh-mv-_kxr2D8-tq8",
+            "name": "官方MV 2026.09.02 DUMB HOT! ▶",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 38,
+          "kind": "album",
+          "control": {
+            "href": "/artists/izna?section=works&release=izna-handle-with-care",
+            "name": "最新发行 HANDLE WITH CARE EP · 日本/日语 2026.09.02 ↗",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "udtt",
+      "path": "/artists/udtt",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 6550,
+      "lastMissingMs": 6497,
+      "documentProbes": 243,
+      "first": {
+        "href": "#/udtt/work/rec28ldfRTrPxZ?udttTrail=%5B%7B%22page%22%3A%22home%22%2C%22key%22%3Anull%7D%5D",
+        "name": "REALLY REALLY 官方 MV · 原 MV 打开独立影像详情 →",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 8875,
+          "encoded": 3016,
+          "end": 1445,
+          "request": 808,
+          "response": 1445,
+          "start": 805,
+          "transfer": 3316
+        }
+      ],
+      "atSampleMs": 6908,
+      "catalogAfter": [
+        {
+          "decoded": 8875,
+          "encoded": 3016,
+          "end": 1445,
+          "request": 808,
+          "response": 1445,
+          "start": 805,
+          "transfer": 3316
+        }
+      ],
+      "album": {
+        "href": "#/udtt/work/catalog%3Audtt%3Aschool-rush?udttTrail=%5B%7B%22page%22%3A%22home%22%2C%22key%22%3Anull%7D%5D",
+        "name": "School Rush 发行封面",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 17,
+          "kind": "mv",
+          "control": {
+            "href": "#/udtt/work/rec28ldfRTrPxZ?udttTrail=%5B%7B%22page%22%3A%22home%22%2C%22key%22%3Anull%7D%5D",
+            "name": "REALLY REALLY 官方 MV · 原 MV 打开独立影像详情 →",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 25,
+          "kind": "album",
+          "control": {
+            "href": "#/udtt/work/catalog%3Audtt%3Aschool-rush?udttTrail=%5B%7B%22page%22%3A%22home%22%2C%22key%22%3Anull%7D%5D",
+            "name": "School Rush 发行封面",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "billlie",
+      "path": "/artists/billlie",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1515,
+      "lastMissingMs": 1469,
+      "documentProbes": 49,
+      "first": {
+        "href": "/?view=works&work=recvxyH5pzBi6D&returnTo=%2Fartists%2Fbilllie",
+        "name": "看 MV · RING X RING",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 75236,
+          "encoded": 10602,
+          "end": 1479,
+          "request": 899,
+          "response": 1476,
+          "start": 897,
+          "transfer": 10902
+        }
+      ],
+      "atSampleMs": 1873,
+      "catalogAfter": [
+        {
+          "decoded": 75236,
+          "encoded": 10602,
+          "end": 1479,
+          "request": 899,
+          "response": 1476,
+          "start": 897,
+          "transfer": 10902
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "the collective soul and unconscious: chapter two",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 6,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyH5pzBi6D&returnTo=%2Fartists%2Fbilllie",
+            "name": "看 MV · RING X RING",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 8,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "the collective soul and unconscious: chapter two",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "meovv",
+      "path": "/artists/meovv",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1884,
+      "lastMissingMs": 1849,
+      "documentProbes": 62,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrB45&returnTo=%2Fartists%2Fmeovv",
+        "name": "MEOW",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 36611,
+          "encoded": 5924,
+          "end": 1865,
+          "request": 1149,
+          "response": 1864,
+          "start": 1147,
+          "transfer": 6224
+        }
+      ],
+      "atSampleMs": 2242,
+      "catalogAfter": [
+        {
+          "decoded": 36611,
+          "encoded": 5924,
+          "end": 1865,
+          "request": 1149,
+          "response": 1864,
+          "start": 1147,
+          "transfer": 6224
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "放大 MEOW 发行封面",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 19,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrB45&returnTo=%2Fartists%2Fmeovv",
+            "name": "MEOW",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 25,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "放大 MEOW 发行封面",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "triples",
+      "path": "/artists/triples",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1621,
+      "lastMissingMs": 1574,
+      "documentProbes": 46,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrP5H&returnTo=%2Fartists%2Ftriples",
+        "name": "↗",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 149919,
+          "encoded": 21516,
+          "end": 1577,
+          "request": 987,
+          "response": 1576,
+          "start": 985,
+          "transfer": 21816
+        }
+      ],
+      "atSampleMs": 1978,
+      "catalogAfter": [
+        {
+          "decoded": 149919,
+          "encoded": 21516,
+          "end": 1577,
+          "request": 987,
+          "response": 1576,
+          "start": 985,
+          "transfer": 21816
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "查看<LOVE&POP> pt.1发行详情",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 41,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrP5H&returnTo=%2Fartists%2Ftriples",
+            "name": "↗",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 51,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "查看<LOVE&POP> pt.1发行详情",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "madein",
+      "path": "/artists/madein",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1387,
+      "lastMissingMs": 1340,
+      "documentProbes": 43,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrPen&returnTo=%2Fartists%2Fmadein",
+        "name": "↗",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 80909,
+          "encoded": 13306,
+          "end": 1361,
+          "request": 785,
+          "response": 1356,
+          "start": 783,
+          "transfer": 13606
+        }
+      ],
+      "atSampleMs": 1744,
+      "catalogAfter": [
+        {
+          "decoded": 80909,
+          "encoded": 13306,
+          "end": 1361,
+          "request": 785,
+          "response": 1356,
+          "start": 783,
+          "transfer": 13606
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "查看상승 / RISE发行详情",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 20,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrPen&returnTo=%2Fartists%2Fmadein",
+            "name": "↗",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 33,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "查看상승 / RISE发行详情",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "genblue",
+      "path": "/artists/genblue",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 519,
+      "lastMissingMs": 488,
+      "documentProbes": 10,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrCU6&returnTo=%2Fartists%2Fgenblue",
+        "name": "COCOCO 官方MV 对应视频封面",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 884,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/genblue?section=works&release=genblue-cococo-korea",
+        "name": "COCOCO 发行封面",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 30,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrCU6&returnTo=%2Fartists%2Fgenblue",
+            "name": "COCOCO 官方MV 对应视频封面",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 32,
+          "kind": "album",
+          "control": {
+            "href": "/artists/genblue?section=works&release=genblue-cococo-korea",
+            "name": "COCOCO 发行封面",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "rescene",
+      "path": "/artists/rescene",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1493,
+      "lastMissingMs": 1454,
+      "documentProbes": 49,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrQA1&returnTo=%2Fartists%2Frescene",
+        "name": "↗",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 43622,
+          "encoded": 6586,
+          "end": 1461,
+          "request": 897,
+          "response": 1458,
+          "start": 895,
+          "transfer": 6886
+        }
+      ],
+      "atSampleMs": 1849,
+      "catalogAfter": [
+        {
+          "decoded": 43622,
+          "encoded": 6586,
+          "end": 1461,
+          "request": 897,
+          "response": 1458,
+          "start": 895,
+          "transfer": 6886
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "查看Re:Scene发行详情",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 22,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrQA1&returnTo=%2Fartists%2Frescene",
+            "name": "↗",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 35,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "查看Re:Scene发行详情",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "unis",
+      "path": "/artists/unis",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1570,
+      "lastMissingMs": 1539,
+      "documentProbes": 50,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrDsl&returnTo=%2Fartists%2Funis",
+        "name": "SUPERWOMAN 观看 MV ↗",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 36398,
+          "encoded": 7341,
+          "end": 1538,
+          "request": 976,
+          "response": 1538,
+          "start": 975,
+          "transfer": 7641
+        }
+      ],
+      "atSampleMs": 1933,
+      "catalogAfter": [
+        {
+          "decoded": 36398,
+          "encoded": 7341,
+          "end": 1538,
+          "request": 976,
+          "response": 1538,
+          "start": 975,
+          "transfer": 7641
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "查看发行 ↗",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 20,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrDsl&returnTo=%2Fartists%2Funis",
+            "name": "SUPERWOMAN 观看 MV ↗",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 23,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "查看发行 ↗",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "badvillain",
+      "path": "/artists/badvillain",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 539,
+      "lastMissingMs": 493,
+      "documentProbes": 10,
+      "first": {
+        "href": "/artists/badvillain?section=works&media=badvillain-mv-thriller",
+        "name": "THRILLER",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 899,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/badvillain?section=records&release=badvillain-thriller",
+        "name": "THRILLER",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 34,
+          "kind": "mv",
+          "control": {
+            "href": "/artists/badvillain?section=works&media=badvillain-mv-thriller",
+            "name": "THRILLER",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 38,
+          "kind": "album",
+          "control": {
+            "href": "/artists/badvillain?section=records&release=badvillain-thriller",
+            "name": "THRILLER",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "qwer",
+      "path": "/artists/qwer",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 2632,
+      "lastMissingMs": 2585,
+      "documentProbes": 94,
+      "first": {
+        "href": "/?view=works&work=recvxIZLpET3tB&returnTo=%2Fartists%2Fqwer",
+        "name": "↗",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 33842,
+          "encoded": 9001,
+          "end": 2605,
+          "request": 766,
+          "response": 2604,
+          "start": 764,
+          "transfer": 9301
+        }
+      ],
+      "atSampleMs": 2992,
+      "catalogAfter": [
+        {
+          "decoded": 33842,
+          "encoded": 9001,
+          "end": 2605,
+          "request": 766,
+          "response": 2604,
+          "start": 764,
+          "transfer": 9301
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "查看SHOW DOWN发行详情",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 21,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxIZLpET3tB&returnTo=%2Fartists%2Fqwer",
+            "name": "↗",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 29,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "查看SHOW DOWN发行详情",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "vvup",
+      "path": "/artists/vvup",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1508,
+      "lastMissingMs": 1472,
+      "documentProbes": 48,
+      "first": {
+        "href": "/?view=works&work=recvxIZLpEopO1&returnTo=%2Fartists%2Fvvup",
+        "name": "官方MV 打开影像 Super Model",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 33220,
+          "encoded": 7203,
+          "end": 1486,
+          "request": 905,
+          "response": 1485,
+          "start": 903,
+          "transfer": 7503
+        }
+      ],
+      "atSampleMs": 1867,
+      "catalogAfter": [
+        {
+          "decoded": 33220,
+          "encoded": 7203,
+          "end": 1486,
+          "request": 905,
+          "response": 1485,
+          "start": 903,
+          "transfer": 7503
+        }
+      ],
+      "album": {
+        "href": "/artists/vvup?section=records&release=vvon",
+        "name": "VVON 2025-11-20 · 首张迷你专辑",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 20,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxIZLpEopO1&returnTo=%2Fartists%2Fvvup",
+            "name": "官方MV 打开影像 Super Model",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 27,
+          "kind": "album",
+          "control": {
+            "href": "/artists/vvup?section=records&release=vvon",
+            "name": "VVON 2025-11-20 · 首张迷你专辑",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "youngposse",
+      "path": "/artists/youngposse",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 626,
+      "lastMissingMs": 576,
+      "documentProbes": 14,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrFPR&returnTo=%2Fartists%2Fyoungposse",
+        "name": "MACARONI CHEESE · 对应视频封面",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 984,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/youngposse?section=works&release=youngposse-go-ahead",
+        "name": "GO해 / GO AHEAD 2026-10-07",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 18,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrFPR&returnTo=%2Fartists%2Fyoungposse",
+            "name": "MACARONI CHEESE · 对应视频封面",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 27,
+          "kind": "album",
+          "control": {
+            "href": "/artists/youngposse?section=works&release=youngposse-go-ahead",
+            "name": "GO해 / GO AHEAD 2026-10-07",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "bewave",
+      "path": "/artists/bewave",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 690,
+      "lastMissingMs": 637,
+      "documentProbes": 16,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrGEy&returnTo=%2Fartists%2Fbewave",
+        "name": "SING ! · 视频封面",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 1047,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/bewave?section=works&release=bewave",
+        "name": "BE;WAVE 2024-04",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 21,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrGEy&returnTo=%2Fartists%2Fbewave",
+            "name": "SING ! · 视频封面",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 30,
+          "kind": "album",
+          "control": {
+            "href": "/artists/bewave?section=works&release=bewave",
+            "name": "BE;WAVE 2024-04",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "candyshop",
+      "path": "/artists/candyshop",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 538,
+      "lastMissingMs": 495,
+      "documentProbes": 10,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrGMp&returnTo=%2Fartists%2Fcandyshop",
+        "name": "Good Girl 官方 MV",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 895,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/candyshop?section=works&release=tip-toe",
+        "name": "TIP TOE 数字单曲 · 2025-03-18",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 21,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrGMp&returnTo=%2Fartists%2Fcandyshop",
+            "name": "Good Girl 官方 MV",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 33,
+          "kind": "album",
+          "control": {
+            "href": "/artists/candyshop?section=works&release=tip-toe",
+            "name": "TIP TOE 数字单曲 · 2025-03-18",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "oddyouth",
+      "path": "/artists/oddyouth",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 536,
+      "lastMissingMs": 503,
+      "documentProbes": 9,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrGY0&returnTo=%2Fartists%2Foddyouth",
+        "name": "查看详情",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 894,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/oddyouth?section=works&release=cant-go-back",
+        "name": "can't go back 2026.08.19 第三张单曲 查看发行",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 19,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrGY0&returnTo=%2Fartists%2Foddyouth",
+            "name": "查看详情",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 25,
+          "kind": "album",
+          "control": {
+            "href": "/artists/oddyouth?section=works&release=cant-go-back",
+            "name": "can't go back 2026.08.19 第三张单曲 查看发行",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "geenius",
+      "path": "/artists/geenius",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 513,
+      "lastMissingMs": 459,
+      "documentProbes": 9,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrPmh&returnTo=%2Fartists%2Fgeenius",
+        "name": "查看详情",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 870,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/geenius?section=works&release=voyage",
+        "name": "首支单曲 · 2024.01.05 Voyage 查看发行",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 23,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrPmh&returnTo=%2Fartists%2Fgeenius",
+            "name": "查看详情",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 37,
+          "kind": "album",
+          "control": {
+            "href": "/artists/geenius?section=works&release=voyage",
+            "name": "首支单曲 · 2024.01.05 Voyage 查看发行",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "tracer",
+      "path": "/artists/tracer",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 510,
+      "lastMissingMs": 472,
+      "documentProbes": 9,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrPq2&returnTo=%2Fartists%2Ftracer",
+        "name": "365 · Official Performance Video · Part.1 · 视频预览",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 868,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/tracer?section=works&release=365",
+        "name": "365 正式发行封面",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 16,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrPq2&returnTo=%2Fartists%2Ftracer",
+            "name": "365 · Official Performance Video · Part.1 · 视频预览",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 20,
+          "kind": "album",
+          "control": {
+            "href": "/artists/tracer?section=works&release=365",
+            "name": "365 正式发行封面",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "spia",
+      "path": "/artists/spia",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 593,
+      "lastMissingMs": 554,
+      "documentProbes": 12,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrPua&returnTo=%2Fartists%2Fspia",
+        "name": "Daddy's Little Girl · Music Video · 视频预览",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 954,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/spia?section=works&release=deeeep",
+        "name": "Deeeep 正式发行封面",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 18,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrPua&returnTo=%2Fartists%2Fspia",
+            "name": "Daddy's Little Girl · Music Video · 视频预览",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 26,
+          "kind": "album",
+          "control": {
+            "href": "/artists/spia?section=works&release=deeeep",
+            "name": "Deeeep 正式发行封面",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "vcha",
+      "path": "/artists/vcha",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 592,
+      "lastMissingMs": 555,
+      "documentProbes": 10,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrPGP&returnTo=%2Fartists%2Fvcha",
+        "name": "↗ VCHA / MV Girls of the Year 视频公开日期未收录",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 949,
+      "catalogAfter": [],
+      "album": {
+        "href": null,
+        "name": "2024-03-15 / 2 曲 Only One ↗",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 25,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrPGP&returnTo=%2Fartists%2Fvcha",
+            "name": "↗ VCHA / MV Girls of the Year 视频公开日期未收录",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 28,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "2024-03-15 / 2 曲 Only One ↗",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "hitgs",
+      "path": "/artists/hitgs",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 607,
+      "lastMissingMs": 573,
+      "documentProbes": 11,
+      "first": {
+        "href": "/?view=works&work=recvxIZy35rUeY&returnTo=%2Fartists%2Fhitgs",
+        "name": "↗ HITGS / MV Little By Little 2026-06-26",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 965,
+      "catalogAfter": [],
+      "album": {
+        "href": null,
+        "name": "2026-08-27 / 3 曲 Things We Dream : Vol.3 ↗",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 24,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxIZy35rUeY&returnTo=%2Fartists%2Fhitgs",
+            "name": "↗ HITGS / MV Little By Little 2026-06-26",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 27,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "2026-08-27 / 3 曲 Things We Dream : Vol.3 ↗",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "idle",
+      "path": "/artists/idle",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 521,
+      "lastMissingMs": 491,
+      "documentProbes": 10,
+      "first": {
+        "href": "/?view=works&work=recvxyOz5XuYef&returnTo=%2Fartists%2Fidle",
+        "name": "看 MV · TOMBOY",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 878,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/idle?section=records&release=idle-release-cube-2929",
+        "name": "i-dle · We made 发行封面",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 6,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyOz5XuYef&returnTo=%2Fartists%2Fidle",
+            "name": "看 MV · TOMBOY",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 7,
+          "kind": "album",
+          "control": {
+            "href": "/artists/idle?section=records&release=idle-release-cube-2929",
+            "name": "i-dle · We made 发行封面",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "izone",
+      "path": "/artists/izone",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 833,
+      "lastMissingMs": 794,
+      "documentProbes": 11,
+      "first": {
+        "href": "/?view=works&work=recvxyH5pzBdad&returnTo=%2Fartists%2Fizone",
+        "name": "Panorama MV 视频缩略图",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 1190,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/izone?section=records&release=izone-bugs-20365582",
+        "name": "03 / 迷你专辑 One-reeler / Act IV 2020.12.07 IZ*ONE 发行详情 →",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 27,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyH5pzBdad&returnTo=%2Fartists%2Fizone",
+            "name": "Panorama MV 视频缩略图",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 32,
+          "kind": "album",
+          "control": {
+            "href": "/artists/izone?section=records&release=izone-bugs-20365582",
+            "name": "03 / 迷你专辑 One-reeler / Act IV 2020.12.07 IZ*ONE 发行详情 →",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "fromis9",
+      "path": "/artists/fromis9",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 803,
+      "lastMissingMs": 757,
+      "documentProbes": 9,
+      "first": {
+        "href": "/?view=works&work=recvxyOz5XaZIt&returnTo=%2Fartists%2Ffromis9",
+        "name": "Vitamin ME MV 视频缩略图",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 1160,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/fromis9?section=records&release=fromis9-bugs-20827312",
+        "name": "01 / 录音室专辑 Glow ME 2026.07.21 fromis_9 发行详情 →",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 19,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyOz5XaZIt&returnTo=%2Fartists%2Ffromis9",
+            "name": "Vitamin ME MV 视频缩略图",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 24,
+          "kind": "album",
+          "control": {
+            "href": "/artists/fromis9?section=records&release=fromis9-bugs-20827312",
+            "name": "01 / 录音室专辑 Glow ME 2026.07.21 fromis_9 发行详情 →",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "loona",
+      "path": "/artists/loona",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1520,
+      "lastMissingMs": 1486,
+      "documentProbes": 50,
+      "first": {
+        "href": "/?view=works&work=recvxyOz5X7G95&returnTo=%2Fartists%2Floona",
+        "name": "Butterfly 音乐视频预览",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 92628,
+          "encoded": 11016,
+          "end": 1497,
+          "request": 882,
+          "response": 1497,
+          "start": 881,
+          "transfer": 11316
+        }
+      ],
+      "atSampleMs": 1878,
+      "catalogAfter": [
+        {
+          "decoded": 92628,
+          "encoded": 11016,
+          "end": 1497,
+          "request": 882,
+          "response": 1497,
+          "start": 881,
+          "transfer": 11316
+        }
+      ],
+      "album": {
+        "href": "/?view=works&work=recvxyOz5X7G95&returnTo=%2Fartists%2Floona",
+        "name": "[X X] 关联曲目 · Butterfly 2019-02-19 专辑发行 查看作品与记录 →",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 23,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyOz5X7G95&returnTo=%2Fartists%2Floona",
+            "name": "Butterfly 音乐视频预览",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 31,
+          "kind": "album",
+          "control": {
+            "href": "/?view=works&work=recvxyOz5X7G95&returnTo=%2Fartists%2Floona",
+            "name": "[X X] 关联曲目 · Butterfly 2019-02-19 专辑发行 查看作品与记录 →",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "everglow",
+      "path": "/artists/everglow",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 513,
+      "lastMissingMs": 479,
+      "documentProbes": 10,
+      "first": {
+        "href": "/?view=works&work=recvxyH5pznMiW&returnTo=%2Fartists%2Feverglow",
+        "name": "CODE MV 视频缩略图",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 870,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/everglow?section=records&release=everglow-bugs-4141746",
+        "name": "01 / 迷你专辑 CODE 2026.03.03 EVERGLOW(에버글로우) 发行详情 →",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 19,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyH5pznMiW&returnTo=%2Fartists%2Feverglow",
+            "name": "CODE MV 视频缩略图",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 24,
+          "kind": "album",
+          "control": {
+            "href": "/artists/everglow?section=records&release=everglow-bugs-4141746",
+            "name": "01 / 迷你专辑 CODE 2026.03.03 EVERGLOW(에버글로우) 发行详情 →",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "rocketpunch",
+      "path": "/artists/rocketpunch",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 530,
+      "lastMissingMs": 487,
+      "documentProbes": 10,
+      "first": {
+        "href": "/?view=works&work=recvxyH5pzPAfy&returnTo=%2Fartists%2Frocketpunch",
+        "name": "BOOM MV 视频缩略图",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 886,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/rocketpunch?section=records&release=rocketpunch-bugs-4090900",
+        "name": "03 / 单曲 / 音源 BOOM 2023.09.06 Rocket Punch 发行详情 →",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 21,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyH5pzPAfy&returnTo=%2Fartists%2Frocketpunch",
+            "name": "BOOM MV 视频缩略图",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 26,
+          "kind": "album",
+          "control": {
+            "href": "/artists/rocketpunch?section=records&release=rocketpunch-bugs-4090900",
+            "name": "03 / 单曲 / 音源 BOOM 2023.09.06 Rocket Punch 发行详情 →",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "weeekly",
+      "path": "/artists/weeekly",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 631,
+      "lastMissingMs": 594,
+      "documentProbes": 14,
+      "first": {
+        "href": "/?view=works&work=recvxyH5pzCrq5&returnTo=%2Fartists%2Fweeekly",
+        "name": "LIGHTS ON MV 视频缩略图",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 988,
+      "catalogAfter": [],
+      "album": {
+        "href": "/artists/weeekly?section=records&release=weeekly-bugs-4104137",
+        "name": "Bliss 2024.07.09 · 迷你专辑",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 22,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyH5pzCrq5&returnTo=%2Fartists%2Fweeekly",
+            "name": "LIGHTS ON MV 视频缩略图",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 27,
+          "kind": "album",
+          "control": {
+            "href": "/artists/weeekly?section=records&release=weeekly-bugs-4104137",
+            "name": "Bliss 2024.07.09 · 迷你专辑",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "wooah",
+      "path": "/artists/wooah",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 597,
+      "lastMissingMs": 547,
+      "documentProbes": 8,
+      "first": {
+        "href": "/?view=works&work=recvxyH5pzlG0W&returnTo=%2Fartists%2Fwooah",
+        "name": "woo!ah! 韩文原版",
+        "tag": "a"
+      },
+      "catalogAtCard": [],
+      "atSampleMs": 995,
+      "catalogAfter": [],
+      "album": {
+        "href": null,
+        "name": "查看UNFRAMED 正式发行封面原图",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 24,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyH5pzlG0W&returnTo=%2Fartists%2Fwooah",
+            "name": "woo!ah! 韩文原版",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 28,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyH5pzlG0W&returnTo=%2Fartists%2Fwooah",
+            "name": "woo!ah! 韩文原版",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 34,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "查看UNFRAMED 正式发行封面原图",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "purplekiss",
+      "path": "/artists/purplekiss",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1521,
+      "lastMissingMs": 1460,
+      "documentProbes": 43,
+      "first": {
+        "href": "/?view=works&work=recvxyH5pzrCkl&returnTo=%2Fartists%2Fpurplekiss",
+        "name": "↗",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 72478,
+          "encoded": 10991,
+          "end": 1470,
+          "request": 916,
+          "response": 1469,
+          "start": 913,
+          "transfer": 11291
+        }
+      ],
+      "atSampleMs": 1880,
+      "catalogAfter": [
+        {
+          "decoded": 72478,
+          "encoded": 10991,
+          "end": 1470,
+          "request": 916,
+          "response": 1469,
+          "start": 913,
+          "transfer": 11291
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "查看A Violet to Remember发行详情",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 24,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyH5pzrCkl&returnTo=%2Fartists%2Fpurplekiss",
+            "name": "↗",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 36,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "查看A Violet to Remember发行详情",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "kep1er",
+      "path": "/artists/kep1er",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1648,
+      "lastMissingMs": 1596,
+      "documentProbes": 47,
+      "first": {
+        "href": "/?view=works&work=recvxyOz5X4iT6&returnTo=%2Fartists%2Fkep1er",
+        "name": "MV",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 128813,
+          "encoded": 17377,
+          "end": 1597,
+          "request": 1020,
+          "response": 1596,
+          "start": 1019,
+          "transfer": 17677
+        }
+      ],
+      "atSampleMs": 2005,
+      "catalogAfter": [
+        {
+          "decoded": 128813,
+          "encoded": 17377,
+          "end": 1597,
+          "request": 1020,
+          "response": 1596,
+          "start": 1019,
+          "transfer": 17677
+        }
+      ],
+      "album": {
+        "href": "https://kep1er.jp/discography/crackcode/",
+        "name": "CRACK CODE 发行封面",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 16,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyOz5X4iT6&returnTo=%2Fartists%2Fkep1er",
+            "name": "MV",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 24,
+          "kind": "album",
+          "control": {
+            "href": "https://kep1er.jp/discography/crackcode/",
+            "name": "CRACK CODE 发行封面",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "newjeans",
+      "path": "/artists/newjeans",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 2933,
+      "lastMissingMs": 2891,
+      "documentProbes": 97,
+      "first": {
+        "href": "/?view=works&work=recvxyOz5X4MBp&returnTo=%2Fartists%2Fnewjeans",
+        "name": "观看与评分",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 107535,
+          "encoded": 15296,
+          "end": 2892,
+          "request": 951,
+          "response": 2891,
+          "start": 948,
+          "transfer": 15596
+        }
+      ],
+      "atSampleMs": 3291,
+      "catalogAfter": [
+        {
+          "decoded": 107535,
+          "encoded": 15296,
+          "end": 2892,
+          "request": 951,
+          "response": 2891,
+          "start": 948,
+          "transfer": 15596
+        }
+      ],
+      "album": {
+        "href": "/artists/newjeans?section=works&release=newjeans-release-supernatural",
+        "name": "查看发行",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 22,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyOz5X4MBp&returnTo=%2Fartists%2Fnewjeans",
+            "name": "观看与评分",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 24,
+          "kind": "album",
+          "control": {
+            "href": "/artists/newjeans?section=works&release=newjeans-release-supernatural",
+            "name": "查看发行",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "babymonster",
+      "path": "/artists/babymonster",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1766,
+      "lastMissingMs": 1703,
+      "documentProbes": 53,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrAPA&returnTo=%2Fartists%2Fbabymonster",
+        "name": "DRIP 视频封面",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 92981,
+          "encoded": 14925,
+          "end": 1707,
+          "request": 1064,
+          "response": 1703,
+          "start": 1062,
+          "transfer": 15225
+        }
+      ],
+      "atSampleMs": 2124,
+      "catalogAfter": [
+        {
+          "decoded": 92981,
+          "encoded": 14925,
+          "end": 1707,
+          "request": 1064,
+          "response": 1703,
+          "start": 1062,
+          "transfer": 15225
+        }
+      ],
+      "album": {
+        "href": "https://www.ygfamily.com/en/artists/babymonster/discography",
+        "name": "3rd MINI ALBUM 춤 (CHOOM) 2026-05-04 官方发行详情",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 30,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrAPA&returnTo=%2Fartists%2Fbabymonster",
+            "name": "DRIP 视频封面",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 45,
+          "kind": "album",
+          "control": {
+            "href": "https://www.ygfamily.com/en/artists/babymonster/discography",
+            "name": "3rd MINI ALBUM 춤 (CHOOM) 2026-05-04 官方发行详情",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "illit",
+      "path": "/artists/illit",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 2745,
+      "lastMissingMs": 2707,
+      "documentProbes": 97,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrzPI&returnTo=%2Fartists%2Fillit",
+        "name": "↗",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 115471,
+          "encoded": 18182,
+          "end": 2711,
+          "request": 888,
+          "response": 2709,
+          "start": 887,
+          "transfer": 18482
+        }
+      ],
+      "atSampleMs": 3102,
+      "catalogAfter": [
+        {
+          "decoded": 115471,
+          "encoded": 18182,
+          "end": 2711,
+          "request": 888,
+          "response": 2709,
+          "start": 887,
+          "transfer": 18482
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "查看SUPER REAL ME发行详情",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 22,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrzPI&returnTo=%2Fartists%2Fillit",
+            "name": "↗",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 35,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "查看SUPER REAL ME发行详情",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "xg",
+      "path": "/artists/xg",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1851,
+      "lastMissingMs": 1811,
+      "documentProbes": 56,
+      "first": {
+        "href": "/?view=works&work=recvxDMFHNx0Zj&returnTo=%2Fartists%2Fxg",
+        "name": "官方MV · 2024-05-21 WOKE UP 原版",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 150556,
+          "encoded": 20283,
+          "end": 1813,
+          "request": 1179,
+          "response": 1811,
+          "start": 1178,
+          "transfer": 20583
+        }
+      ],
+      "atSampleMs": 2210,
+      "catalogAfter": [
+        {
+          "decoded": 150556,
+          "encoded": 20283,
+          "end": 1813,
+          "request": 1179,
+          "response": 1811,
+          "start": 1178,
+          "transfer": 20583
+        }
+      ],
+      "album": {
+        "href": "https://xgalx.com/en/xg/discography/",
+        "name": "1st FULL ALBUM THE CORE - 核 2026-01-23",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 31,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxDMFHNx0Zj&returnTo=%2Fartists%2Fxg",
+            "name": "官方MV · 2024-05-21 WOKE UP 原版",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 43,
+          "kind": "album",
+          "control": {
+            "href": "https://xgalx.com/en/xg/discography/",
+            "name": "1st FULL ALBUM THE CORE - 核 2026-01-23",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "aespa",
+      "path": "/artists/aespa",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1621,
+      "lastMissingMs": 1566,
+      "documentProbes": 49,
+      "first": {
+        "href": "/?view=works&work=recvxyHuKMKPod&returnTo=%2Fartists%2Faespa",
+        "name": "官方MV · 2024-05-27 Armageddon 韩文原版",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 162937,
+          "encoded": 19773,
+          "end": 1579,
+          "request": 1003,
+          "response": 1576,
+          "start": 1001,
+          "transfer": 20073
+        }
+      ],
+      "atSampleMs": 1979,
+      "catalogAfter": [
+        {
+          "decoded": 162937,
+          "encoded": 19773,
+          "end": 1579,
+          "request": 1003,
+          "response": 1576,
+          "start": 1001,
+          "transfer": 20073
+        }
+      ],
+      "album": {
+        "href": "https://aespa-official.jp/discography/next-level/",
+        "name": "Digital Single Next Level 2021-05-17",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 28,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyHuKMKPod&returnTo=%2Fartists%2Faespa",
+            "name": "官方MV · 2024-05-27 Armageddon 韩文原版",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 37,
+          "kind": "album",
+          "control": {
+            "href": "https://aespa-official.jp/discography/next-level/",
+            "name": "Digital Single Next Level 2021-05-17",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "kissoflife",
+      "path": "/artists/kissoflife",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1930,
+      "lastMissingMs": 1887,
+      "documentProbes": 56,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrMRu&returnTo=%2Fartists%2Fkissoflife",
+        "name": "进入 MV",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 80715,
+          "encoded": 10401,
+          "end": 1890,
+          "request": 1322,
+          "response": 1887,
+          "start": 1321,
+          "transfer": 10701
+        }
+      ],
+      "atSampleMs": 2288,
+      "catalogAfter": [
+        {
+          "decoded": 80715,
+          "encoded": 10401,
+          "end": 1890,
+          "request": 1322,
+          "response": 1887,
+          "start": 1321,
+          "transfer": 10701
+        }
+      ],
+      "album": {
+        "href": "https://kissoflife.jp/#discography",
+        "name": "SWEAT 2026-08-04 · 韩国单曲专辑",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 25,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrMRu&returnTo=%2Fartists%2Fkissoflife",
+            "name": "进入 MV",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 26,
+          "kind": "album",
+          "control": {
+            "href": "https://kissoflife.jp/#discography",
+            "name": "SWEAT 2026-08-04 · 韩国单曲专辑",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "stayc",
+      "path": "/artists/stayc",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1945,
+      "lastMissingMs": 1912,
+      "documentProbes": 67,
+      "first": {
+        "href": "/?view=works&work=recvxyH5pzY7VM&returnTo=%2Fartists%2Fstayc",
+        "name": "进入 MV",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 102194,
+          "encoded": 16344,
+          "end": 1924,
+          "request": 1314,
+          "response": 1921,
+          "start": 1312,
+          "transfer": 16644
+        }
+      ],
+      "atSampleMs": 2302,
+      "catalogAfter": [
+        {
+          "decoded": 102194,
+          "encoded": 16344,
+          "end": 1924,
+          "request": 1314,
+          "response": 1921,
+          "start": 1312,
+          "transfer": 16644
+        }
+      ],
+      "album": {
+        "href": "https://www.highup-ent.com/en/stayc/2love-2/",
+        "name": "2:LOVE 2026-06-16 · 韩国单曲专辑",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 27,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyH5pzY7VM&returnTo=%2Fartists%2Fstayc",
+            "name": "进入 MV",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 28,
+          "kind": "album",
+          "control": {
+            "href": "https://www.highup-ent.com/en/stayc/2love-2/",
+            "name": "2:LOVE 2026-06-16 · 韩国单曲专辑",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "nmixx",
+      "path": "/artists/nmixx",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 2882,
+      "lastMissingMs": 2846,
+      "documentProbes": 80,
+      "first": {
+        "href": "/?view=works&work=recvxyOz5X6G1q&returnTo=%2Fartists%2Fnmixx",
+        "name": "Caution 2026-05-29 · 合作OST版",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 98282,
+          "encoded": 15372,
+          "end": 2857,
+          "request": 2285,
+          "response": 2855,
+          "start": 2283,
+          "transfer": 15672
+        }
+      ],
+      "atSampleMs": 3239,
+      "catalogAfter": [
+        {
+          "decoded": 98282,
+          "encoded": 15372,
+          "end": 2857,
+          "request": 2285,
+          "response": 2855,
+          "start": 2283,
+          "transfer": 15672
+        }
+      ],
+      "album": {
+        "href": "https://nmixx.jype.com/discography/dru5zt6g",
+        "name": "Heavy Serenade 2026-05-11 · 官方发行",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 27,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyOz5X6G1q&returnTo=%2Fartists%2Fnmixx",
+            "name": "Caution 2026-05-29 · 合作OST版",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 35,
+          "kind": "album",
+          "control": {
+            "href": "https://nmixx.jype.com/discography/dru5zt6g",
+            "name": "Heavy Serenade 2026-05-11 · 官方发行",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "hearts2hearts",
+      "path": "/artists/hearts2hearts",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1985,
+      "lastMissingMs": 1930,
+      "documentProbes": 56,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrzDX&returnTo=%2Fartists%2Fhearts2hearts",
+        "name": "观看官方 MV",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 66677,
+          "encoded": 10331,
+          "end": 1948,
+          "request": 1372,
+          "response": 1946,
+          "start": 1371,
+          "transfer": 10631
+        }
+      ],
+      "atSampleMs": 2343,
+      "catalogAfter": [
+        {
+          "decoded": 66677,
+          "encoded": 10331,
+          "end": 1948,
+          "request": 1372,
+          "response": 1946,
+          "start": 1371,
+          "transfer": 10631
+        }
+      ],
+      "album": {
+        "href": "/artists/hearts2hearts?section=records&release=moonride",
+        "name": "Moonride 发行封面",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 22,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrzDX&returnTo=%2Fartists%2Fhearts2hearts",
+            "name": "观看官方 MV",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 24,
+          "kind": "album",
+          "control": {
+            "href": "/artists/hearts2hearts?section=records&release=moonride",
+            "name": "Moonride 发行封面",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "kiiikiii",
+      "path": "/artists/kiiikiii",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1938,
+      "lastMissingMs": 1907,
+      "documentProbes": 58,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrIZT&returnTo=%2Fartists%2Fkiiikiii",
+        "name": "对应视频封面 Pop Off Pop Off 2026-08-10 · 官方MV",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 41389,
+          "encoded": 7354,
+          "end": 1908,
+          "request": 1333,
+          "response": 1907,
+          "start": 1331,
+          "transfer": 7654
+        }
+      ],
+      "atSampleMs": 2294,
+      "catalogAfter": [
+        {
+          "decoded": 41389,
+          "encoded": 7354,
+          "end": 1908,
+          "request": 1333,
+          "response": 1907,
+          "start": 1331,
+          "transfer": 7654
+        }
+      ],
+      "album": {
+        "href": "/artists/kiiikiii?section=records&release=whykiiikiii",
+        "name": "WhyKiiiKiii 2026-08-10",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 26,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrIZT&returnTo=%2Fartists%2Fkiiikiii",
+            "name": "对应视频封面 Pop Off Pop Off 2026-08-10 · 官方MV",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 36,
+          "kind": "album",
+          "control": {
+            "href": "/artists/kiiikiii?section=records&release=whykiiikiii",
+            "name": "WhyKiiiKiii 2026-08-10",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "itzy",
+      "path": "/artists/itzy",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 2804,
+      "lastMissingMs": 2755,
+      "documentProbes": 99,
+      "first": {
+        "href": "/?view=works&work=recvxyOz5X8Xwo&returnTo=%2Fartists%2Fitzy",
+        "name": "Motto 2026-05-18 · 韩文原版",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 139560,
+          "encoded": 18328,
+          "end": 2777,
+          "request": 894,
+          "response": 2761,
+          "start": 892,
+          "transfer": 18628
+        }
+      ],
+      "atSampleMs": 3161,
+      "catalogAfter": [
+        {
+          "decoded": 139560,
+          "encoded": 18328,
+          "end": 2777,
+          "request": 894,
+          "response": 2761,
+          "start": 892,
+          "transfer": 18628
+        }
+      ],
+      "album": {
+        "href": "https://itzy.jype.com/discography/heecdbgx",
+        "name": "Motto 2026-05-18 · 迷你专辑",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 27,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyOz5X8Xwo&returnTo=%2Fartists%2Fitzy",
+            "name": "Motto 2026-05-18 · 韩文原版",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 36,
+          "kind": "album",
+          "control": {
+            "href": "https://itzy.jype.com/discography/heecdbgx",
+            "name": "Motto 2026-05-18 · 迷你专辑",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "lesserafim",
+      "path": "/artists/lesserafim",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 1664,
+      "lastMissingMs": 1618,
+      "documentProbes": 54,
+      "first": {
+        "href": "/?view=works&work=recvxyOz5XY2p6&returnTo=%2Fartists%2Flesserafim",
+        "name": "进入 MV",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 160027,
+          "encoded": 24378,
+          "end": 1635,
+          "request": 1058,
+          "response": 1632,
+          "start": 1057,
+          "transfer": 24678
+        }
+      ],
+      "atSampleMs": 2022,
+      "catalogAfter": [
+        {
+          "decoded": 160027,
+          "encoded": 24378,
+          "end": 1635,
+          "request": 1058,
+          "response": 1632,
+          "start": 1057,
+          "transfer": 24678
+        }
+      ],
+      "album": {
+        "href": "https://www.sourcemusic.com/artist/discography/LE%20SSERAFIM/15",
+        "name": "HOT 发行日期暂缺 · 5th Mini Album",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 26,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyOz5XY2p6&returnTo=%2Fartists%2Flesserafim",
+            "name": "进入 MV",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 28,
+          "kind": "album",
+          "control": {
+            "href": "https://www.sourcemusic.com/artist/discography/LE%20SSERAFIM/15",
+            "name": "HOT 发行日期暂缺 · 5th Mini Album",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "saymyname",
+      "path": "/artists/saymyname",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 3115,
+      "lastMissingMs": 3069,
+      "documentProbes": 109,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrNky&returnTo=%2Fartists%2Fsaymyname",
+        "name": "观看 UFO (ATTENT!ON)",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 80171,
+          "encoded": 16115,
+          "end": 3080,
+          "request": 1009,
+          "response": 3078,
+          "start": 1007,
+          "transfer": 16415
+        }
+      ],
+      "atSampleMs": 3475,
+      "catalogAfter": [
+        {
+          "decoded": 80171,
+          "encoded": 16115,
+          "end": 3080,
+          "request": 1009,
+          "response": 3078,
+          "start": 1007,
+          "transfer": 16415
+        }
+      ],
+      "album": {
+        "href": "/artists/saymyname?section=records&release=our-vibe",
+        "name": "&Our Vibe 官方发行封面",
+        "tag": "a"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 24,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrNky&returnTo=%2Fartists%2Fsaymyname",
+            "name": "观看 UFO (ATTENT!ON)",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 49,
+          "kind": "album",
+          "control": {
+            "href": "/artists/saymyname?section=records&release=our-vibe",
+            "name": "&Our Vibe 官方发行封面",
+            "tag": "a"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "katseye",
+      "path": "/artists/katseye",
+      "width": 1265,
+      "visibility": "visible",
+      "firstSeenMs": 2484,
+      "lastMissingMs": 2446,
+      "documentProbes": 76,
+      "first": {
+        "href": "/?view=works&work=rec28ldfRTrPC7&returnTo=%2Fartists%2Fkatseye",
+        "name": "Debut 2024-06-28 · 官方MV",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 43546,
+          "encoded": 9169,
+          "end": 2452,
+          "request": 1894,
+          "response": 2450,
+          "start": 1892,
+          "transfer": 9469
+        }
+      ],
+      "atSampleMs": 2841,
+      "catalogAfter": [
+        {
+          "decoded": 43546,
+          "encoded": 9169,
+          "end": 2452,
+          "request": 1894,
+          "response": 2450,
+          "start": 1892,
+          "transfer": 9469
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "WILD - EP 发行封面",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 21,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=rec28ldfRTrPC7&returnTo=%2Fartists%2Fkatseye",
+            "name": "Debut 2024-06-28 · 官方MV",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 29,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "WILD - EP 发行封面",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    },
+    {
+      "slug": "billlie",
+      "path": "/artists/billlie",
+      "width": 375,
+      "visibility": "visible",
+      "firstSeenMs": 1570,
+      "lastMissingMs": 1523,
+      "documentProbes": 50,
+      "first": {
+        "href": "/?view=works&work=recvxyH5pzBi6D&returnTo=%2Fartists%2Fbilllie",
+        "name": "看 MV · RING X RING",
+        "tag": "a"
+      },
+      "catalogAtCard": [
+        {
+          "decoded": 75236,
+          "encoded": 10639,
+          "end": 1540,
+          "request": 977,
+          "response": 1538,
+          "start": 975,
+          "transfer": 10939
+        }
+      ],
+      "atSampleMs": 1928,
+      "catalogAfter": [
+        {
+          "decoded": 75236,
+          "encoded": 10639,
+          "end": 1540,
+          "request": 977,
+          "response": 1538,
+          "start": 975,
+          "transfer": 10939
+        }
+      ],
+      "album": {
+        "href": null,
+        "name": "the collective soul and unconscious: chapter two",
+        "tag": "button"
+      },
+      "domOrder": true,
+      "focus": [
+        {
+          "step": 6,
+          "kind": "mv",
+          "control": {
+            "href": "/?view=works&work=recvxyH5pzBi6D&returnTo=%2Fartists%2Fbilllie",
+            "name": "看 MV · RING X RING",
+            "tag": "a"
+          }
+        },
+        {
+          "step": 8,
+          "kind": "album",
+          "control": {
+            "href": null,
+            "name": "the collective soul and unconscious: chapter two",
+            "tag": "button"
+          }
+        }
+      ],
+      "keyOrder": true
+    }
+  ]
+}

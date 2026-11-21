@@ -2,11 +2,13 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v218，51 团、605 支有视频的作品、9 个目录占位、527 个舞台。599 支 MV 支持照片下评分。IVE《ATTITUDE》已在本站实播至 3840 × 2160。28 团的 30 个已有首页团照入口首次点击均能打开对应原图。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v218/publication.json) |
+| 正式站 | v219。AtHeart 两支首页 MV 可在出现时打开详情，UNIS 三张 MV 可点整行。最近一次实播中《Magnetic》和《ATTITUDE》均为 4K，《BILLIONAIRE》的 RUTUBE 源返回暂时不可用。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [验收与回执](worklogs/20261122-v219-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `0468a97e`，发布标签 `site/v218`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `7d7329bf`，发布标签 `site/v219`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v219 完成 51 个桌面首页与 Billlie 手机页的栏目键盘实测。额外核对首屏后，确认七团的发行入口早于 MV，已记录两档正文宽度的实际位置。729 个需从名册选取的评分位置已用隔离保存及读回验收。[逐团访问](worklogs/20261122-formal-home-access.md) · [正式修复与观看现状](worklogs/20261122-v219-release.md)
 
 v218 在 v217 的三团基础上追加 25 团、27 个首页团照入口。两版的 51 团正式首页均返回 200。最初返回的网页在 20 团提供 21 个原图链接，另 8 团等待目录读入后提供 9 个。首次能点时逐一实测，共 30/30 打开正确原图。页面就绪后，30 个弹窗均已核对关闭时回到各自入口。[51 团正式 HTML](evidence/20261122-v218/formal-home-links.json) · [30 个入口实点](worklogs/20261122-v218-release.md)
 

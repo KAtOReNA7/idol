@@ -1,0 +1,311 @@
+{
+  "date": "2026-11-21",
+  "acceptedBase": "0e77838a88f9ff9b14fb67f803156534c7c651e1",
+  "testedApplication": "eebbca8c1413af98dda4cc02b7e44df4b3dee563",
+  "environments": {
+    "windows": "Windows · Node 24.16.0 · npm 11.13.0 · Python 3.11.4",
+    "linux": "WSL Ubuntu 原生 Linux 文件系统 · Node 24.16.0 · npm 11.13.0 · Python 3.14.4",
+    "pillow": "两端全量比较使用 Pillow 13.0.0。"
+  },
+  "verify": {
+    "command": "npm run verify",
+    "exitCodeOnBothPlatforms": 0,
+    "checksPerPlatform": {
+      "currentNode": 1179,
+      "additionalPythonOptimizedModeNode": 19,
+      "transactionPythonNormal": 4,
+      "transactionPythonOptimized": 4,
+      "builtNode": 6,
+      "builtCssHttpPython": 7
+    },
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "stageValidator": 527,
+    "assetDeliveryDryRun": {
+      "remoteCopies": 5418,
+      "manifestLocalAssets": 578,
+      "restrictedCopies": 10,
+      "restrictedAliases": 1
+    },
+    "exactPosterHashesForSourceAndBuiltCopies": {
+      "stage-selection-posters-20261027": 28,
+      "stage-bilibili-posters-20261029": 1,
+      "stage-gnarly-poster-20261101": 1,
+      "stage-crush-poster-20261121": 1,
+      "stage-qwer-poster-20261121": 1
+    },
+    "separateRetentionSuite": {
+      "files": 4,
+      "passed": 104
+    },
+    "separateResearchCli": {
+      "normal": 9,
+      "optimized": 9
+    }
+  },
+  "fullSuite": {
+    "command": "npm test",
+    "exitCodeOnBothPlatforms": 1,
+    "comparison": "每个系统按测试文件及原名称对照已验收版本。汇总 Node 主套与隔离运行的 artist-runtime-data。偏好统计 31/31 与 Python 4/4、优化模式 4/4 另列。",
+    "platforms": {
+      "windows": {
+        "before": {
+          "tests": 3971,
+          "pass": 3209,
+          "fail": 723,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        "after": {
+          "tests": 3956,
+          "pass": 3718,
+          "fail": 199,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        "newFailureNames": [],
+        "previousFailureNamesAbsent": 524,
+        "filesWithRemainingFailures": 102,
+        "failureCountReductionPercent": 72.48
+      },
+      "linux": {
+        "before": {
+          "tests": 3976,
+          "pass": 3219,
+          "fail": 718,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        "after": {
+          "tests": 3956,
+          "pass": 3722,
+          "fail": 195,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        "newFailureNames": [],
+        "previousFailureNamesAbsent": 523,
+        "filesWithRemainingFailures": 100,
+        "failureCountReductionPercent": 72.84
+      }
+    },
+    "historicalCheckpoint": {
+      "earliestApplicationImport": "f24075fc98893793e82adbc92cadc9e58257728f",
+      "imageReadmeBaselineObjectAbsent": "adb7501342baf9c4d28707db3072a99b21cb122c",
+      "tests": 123,
+      "passed": 76,
+      "failed": 47,
+      "preserved": [
+        "tests/image-migration.checkpoint.cjs",
+        "tests/timeline-migration.checkpoint.cjs"
+      ],
+      "currentReplacement": "tests/artist-migration.test.cjs",
+      "scope": "原 18 模板的两套迁移断言已归档。当前以 51 团的路由、原图及时间轴回归衡量。消失的失败名称包含退役断言。"
+    },
+    "remainingExamples": [
+      "hearts2hearts-detail、billlie-detail 等测试通过旧的源码注入取得团体专用 DetailMedia，部分调用报非函数。",
+      "部分测试仍对旧源码结构、设计文案或冻结数据作精确断言。逐个与现行页面及历史回执核对。"
+    ],
+    "fileTableColumns": [
+      "testFile",
+      "windowsBefore",
+      "windowsAfter",
+      "linuxBefore",
+      "linuxAfter"
+    ],
+    "fileTable": [
+      ["hearts2hearts-detail.test.cjs", 10, 10, 10, 10],
+      ["billlie-detail.test.cjs", 8, 8, 8, 8],
+      ["ive-badvillain-detail.test.cjs", 7, 7, 7, 7],
+      ["meovv-detail.test.cjs", 7, 7, 7, 7],
+      ["idle-detail.test.cjs", 6, 6, 6, 6],
+      ["combined-artists.test.cjs", 5, 5, 5, 5],
+      ["newjeans-detail.test.cjs", 5, 5, 5, 5],
+      ["candidate-chapter-navigation.test.cjs", 4, 4, 4, 4],
+      ["idle-verified-design.test.cjs", 4, 4, 4, 4],
+      ["kiiikiii-artist.test.cjs", 4, 4, 4, 4],
+      ["madein-detail.test.cjs", 4, 4, 4, 4],
+      ["observed-hero-layout.test.cjs", 4, 4, 4, 4],
+      ["continuous-evidence-protection.test.cjs", 3, 3, 3, 3],
+      ["expanded-artist.test.cjs", 3, 3, 3, 3],
+      ["ive-mv-recognition.test.cjs", 3, 3, 3, 3],
+      ["kiof-artist.test.cjs", 3, 3, 3, 3],
+      ["loona-detail.test.cjs", 3, 3, 3, 3],
+      ["mv-poster-storage.test.cjs", 3, 3, 3, 3],
+      ["saymyname-artist.test.cjs", 3, 3, 3, 3],
+      ["stage-replacement-adoption.test.cjs", 3, 3, 3, 3],
+      ["triples-detail.test.cjs", 3, 3, 3, 3],
+      ["work-heading-date.test.cjs", 3, 3, 3, 3],
+      ["approved-release-repairs.test.cjs", 2, 2, 2, 2],
+      ["artist-navigation.test.cjs", 2, 2, 2, 2],
+      ["artist-runtime-data.test.cjs", 2, 2, 2, 2],
+      ["babymonster-mv-look.test.cjs", 2, 2, 2, 2],
+      ["candidate-density.test.cjs", 2, 2, 2, 2],
+      ["candidate-font-woff2.test.cjs", 2, 2, 2, 2],
+      ["candidate-missing-look.test.cjs", 2, 2, 2, 2],
+      ["candidate-style-loading.test.cjs", 2, 2, 2, 2],
+      ["duplicate-loona-build-assets.test.mjs", 2, 2, 1, 1],
+      ["editorial-fonts-woff2.test.cjs", 2, 2, 2, 2],
+      ["hearts2hearts-artist.test.cjs", 2, 2, 2, 2],
+      ["itzy-artist.test.cjs", 2, 2, 2, 2],
+      ["ive-artist.test.cjs", 2, 2, 2, 2],
+      ["kiof-sweat-stage.test.cjs", 2, 2, 2, 2],
+      ["lesserafim-artist.test.cjs", 2, 2, 2, 2],
+      ["read-route-diagnostics.test.cjs", 2, 2, 2, 2],
+      ["spia-review-routing.test.mjs", 2, 2, 2, 2],
+      ["stayc-artist.test.cjs", 2, 2, 2, 2],
+      ["three-group-hero-assets.test.cjs", 2, 2, 2, 2],
+      ["timeline-production.test.cjs", 2, 2, 2, 2],
+      ["triples-fixture-boundaries.test.cjs", 2, 2, 0, 0],
+      ["adya-review-routing.test.mjs", 1, 1, 1, 1],
+      ["approved-visual-repairs.test.cjs", 1, 1, 1, 1],
+      ["artist-history-focus.test.cjs", 1, 1, 1, 1],
+      ["batch-c-adoption.test.cjs", 1, 1, 1, 1],
+      ["bewave-review-routing.test.mjs", 1, 1, 1, 1],
+      ["candidate-empty-photo-layout.test.cjs", 1, 1, 1, 1],
+      ["candidate-mv-look.test.cjs", 1, 1, 1, 1],
+      ["candyshop-review-routing.test.mjs", 1, 1, 1, 1],
+      ["catalog-module-ssr.test.cjs", 1, 1, 1, 1],
+      ["combined-integration.test.cjs", 1, 1, 1, 1],
+      ["core.test.cjs", 1, 1, 1, 1],
+      ["font-woff2.test.cjs", 1, 1, 1, 1],
+      ["geenius-review-routing.test.mjs", 1, 1, 1, 1],
+      ["genblue-native-integration.test.cjs", 1, 1, 1, 1],
+      ["genblue-review-routing.test.mjs", 1, 1, 1, 1],
+      ["group-advance-evidence.test.cjs", 1, 1, 1, 1],
+      ["group-design-promotion.test.cjs", 1, 1, 1, 1],
+      ["group-information.test.mjs", 1, 1, 1, 1],
+      ["hearts2hearts-figma.test.cjs", 1, 1, 1, 1],
+      ["hearts2hearts-review-routing.test.mjs", 1, 1, 1, 1],
+      ["historical-affiliation.test.cjs", 1, 1, 1, 1],
+      ["home-image-preload.test.cjs", 1, 1, 1, 1],
+      ["ifeye-review-routing.test.mjs", 1, 1, 1, 1],
+      ["illit-artist.test.cjs", 1, 1, 1, 1],
+      ["illit-full-version.test.cjs", 1, 1, 1, 1],
+      ["integrated-media-viewer.test.mjs", 1, 1, 1, 1],
+      ["izna-review-routing.test.mjs", 1, 1, 1, 1],
+      ["katseye-artist.test.cjs", 1, 1, 1, 1],
+      ["kiiikiii-review-routing.test.mjs", 1, 1, 1, 1],
+      ["manage-ssr.test.cjs", 1, 1, 1, 1],
+      ["member-display-name.test.cjs", 1, 1, 1, 1],
+      ["member-source-removal.test.cjs", 1, 1, 1, 1],
+      ["meovv-madein-release-gaps.test.cjs", 1, 1, 1, 1],
+      ["mv-poster-batch2-registry.test.cjs", 1, 1, 1, 1],
+      ["nmixx-artist.test.cjs", 1, 1, 1, 1],
+      ["oddyouth-review-routing.test.mjs", 1, 1, 1, 1],
+      ["photo-display-focus-integration.test.cjs", 1, 1, 1, 1],
+      ["photo-historical-r2-registry.test.cjs", 1, 1, 1, 1],
+      ["photo-historical-r3-registry.test.cjs", 1, 1, 1, 1],
+      ["photo-nightmiyeon1-registry.test.cjs", 1, 1, 1, 1],
+      ["photo-status-reads.test.cjs", 1, 1, 0, 0],
+      ["post-v200-adoptions.test.cjs", 1, 1, 1, 1],
+      ["pr47-continuation-evidence.test.cjs", 1, 1, 1, 1],
+      ["remaining-groups-completion.test.mjs", 1, 1, 1, 1],
+      ["saymyname-review-routing.test.mjs", 1, 1, 1, 1],
+      ["spia-content.test.mjs", 1, 1, 1, 1],
+      ["statistics-annual-reconciliation.test.mjs", 1, 1, 1, 1],
+      ["statistics-period-followup.test.mjs", 1, 1, 1, 1],
+      ["summer-release-reference.test.cjs", 1, 1, 1, 1],
+      ["timeline-batch-f-adoption.test.cjs", 1, 1, 1, 1],
+      ["timeline-return.test.cjs", 1, 1, 1, 1],
+      ["tracer-content.test.mjs", 1, 1, 1, 1],
+      ["tracer-review-routing.test.mjs", 1, 1, 1, 1],
+      ["v202-followup-evidence.test.cjs", 1, 1, 1, 1],
+      ["vcha-container-host.test.mjs", 1, 1, 1, 1],
+      ["vvup-review-routing.test.mjs", 1, 1, 1, 1],
+      ["witchx-review-routing.test.mjs", 1, 1, 1, 1],
+      ["wooah-review-routing.test.mjs", 1, 1, 1, 1],
+      ["youngposse-review-routing.test.mjs", 1, 1, 1, 1],
+      ["image-host-matrix.test.cjs", 179, 0, 177, 0],
+      ["timeline-host-matrix.test.cjs", 104, 0, 104, 0],
+      ["image-migration.test.cjs", 68, 0, 68, 0],
+      ["public-artist-copy.test.cjs", 55, 0, 55, 0],
+      ["timeline-migration.test.cjs", 43, 0, 43, 0],
+      ["prune-unused-display-assets.test.mjs", 36, 0, 36, 0],
+      ["unused-unis-font-build-assets.test.cjs", 19, 0, 19, 0],
+      ["image-group-index.test.cjs", 7, 0, 7, 0],
+      ["source-normalizer.test.cjs", 7, 0, 3, 0],
+      ["unused-ifeye-original-build-assets.test.mjs", 3, 0, 3, 0],
+      ["home-read-deadline.test.cjs", 1, 0, 1, 0],
+      ["three-group-public-bridge.test.cjs", 1, 0, 1, 0],
+      ["youngposse-retention-audit.test.mjs", 1, 0, 6, 0]
+    ]
+  },
+  "eslint": {
+    "command": "npm run lint",
+    "tuple": [
+      "errors",
+      "warnings"
+    ],
+    "before": [
+      321,
+      1031
+    ],
+    "after": [
+      312,
+      292
+    ],
+    "recordEditorBefore": [
+      6,
+      3
+    ],
+    "recordEditorAfter": [
+      0,
+      0
+    ],
+    "largestWarningDeltas": [
+      {
+        "file": "HANDOFF/library-browser/browser-build/assets/index-Dlpw55vs.js",
+        "before": [
+          0,
+          734
+        ],
+        "after": [
+          0,
+          0
+        ]
+      },
+      {
+        "file": "components/catalog/record-editor.tsx",
+        "before": [
+          6,
+          3
+        ],
+        "after": [
+          0,
+          0
+        ]
+      },
+      {
+        "file": "app/api/catalog/route.ts",
+        "before": [
+          0,
+          1
+        ],
+        "after": [
+          0,
+          0
+        ]
+      },
+      {
+        "file": "tests/member-layout-order.test.cjs",
+        "before": [
+          0,
+          1
+        ],
+        "after": [
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "release": {
+    "productionVersion": 203,
+    "stageSources": 500,
+    "sitesVersionsCreated": 0,
+    "deployments": 0,
+    "privateReads": 0,
+    "privateWrites": 0
+  }
+}

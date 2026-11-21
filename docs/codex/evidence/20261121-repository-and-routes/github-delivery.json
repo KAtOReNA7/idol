@@ -1,0 +1,82 @@
+{
+  "readAtUtc": "2026-11-21T09:07:05+00:00",
+  "repository": "KAtOReNA7/idol",
+  "defaultBranch": "main",
+  "developmentBranch": "codex/project-optimization-20261121",
+  "checkedApplication": "eebbca8c1413af98dda4cc02b7e44df4b3dee563",
+  "remoteHeadsWhenApplicationWasVerified": {
+    "codex/project-optimization-20261121": "eebbca8c1413af98dda4cc02b7e44df4b3dee563",
+    "main": "0e77838a88f9ff9b14fb67f803156534c7c651e1"
+  },
+  "laterDocumentation": "验收与远端读回记录随后以独立文档提交推送到同一开发分支。",
+  "localMainFastForward": {
+    "from": "c15995737b58c67a25edff2da5ebbdc7b1cd2c93",
+    "to": "0e77838a88f9ff9b14fb67f803156534c7c651e1",
+    "commits": 131
+  },
+  "remoteArchiveTags": 54,
+  "uniqueHistoryTips": {
+    "refs/tags/archive/20261121/codex/member-photo-consensus": "ceae191a24d934a4e2ff783adbc70649c99b51ee",
+    "refs/tags/archive/20261121/handoff/sol-safe-source-20261016": "d571f9c55f17da88120c68af26881947f0409b7a"
+  },
+  "openPullRequestsAfterConsolidation": 0,
+  "firstHostedRun": {
+    "headSha": "ae0a2c2ed9f799060cc73528c629b626ccdb57a8",
+    "url": "https://github.com/KAtOReNA7/idol/actions/runs/44886882153",
+    "conclusion": "failure",
+    "jobs": {
+      "full-suite": "failure",
+      "verify (windows-latest)": "failure",
+      "verify (ubuntu-latest)": "success"
+    }
+  },
+  "regressionAndFix": "Windows 托管运行器的等价目录路径触发输出白名单误拒。入库前先归一化事务根目录，另用等价路径、原输出集合及无关输出拒绝作合成回归。普通及优化解释器均通过。",
+  "finalHostedRun": {
+    "headSha": "eebbca8c1413af98dda4cc02b7e44df4b3dee563",
+    "url": "https://github.com/KAtOReNA7/idol/actions/runs/44887382872",
+    "conclusion": "failure",
+    "jobs": {
+      "full-suite": "failure",
+      "verify (ubuntu-latest)": "success",
+      "verify (windows-latest)": "success"
+    }
+  },
+  "fullSuiteHostedLinux": {
+    "hosted": {
+      "tests": 3956,
+      "pass": 3722,
+      "fail": 195,
+      "cancelled": 0,
+      "skipped": 39
+    },
+    "local": {
+      "tests": 3956,
+      "pass": 3722,
+      "fail": 195,
+      "cancelled": 0,
+      "skipped": 39
+    },
+    "onlyHosted": [],
+    "onlyLocal": []
+  },
+  "sitesReadOnly": {
+    "status": "succeeded",
+    "versionIdMatch": true,
+    "source": "cd1446371b0f0f3d0bd5f91700e85072e87cb1e9",
+    "latest": {
+      "latest": 203,
+      "projectStatus": "active",
+      "url": "https://idol-lens-private.wuke40758.chatgpt.site",
+      "access": "public",
+      "revision": 2,
+      "owners": 1,
+      "external": 0,
+      "groups": 0
+    }
+  },
+  "productionInventorySource": "docs/codex/evidence/20261030-v203/release-publication.json",
+  "sitesVersionsCreated": 0,
+  "deployments": 0,
+  "privateRecordReads": 0,
+  "privateRecordWrites": 0
+}

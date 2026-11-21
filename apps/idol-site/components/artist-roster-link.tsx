@@ -1,7 +1,7 @@
 'use client';
 
 import type {ComponentProps, MouseEvent} from 'react';
-import {newArtistHistoryState} from '../lib/idol/timeline/history-state';
+import {newArtistHistoryState, tryArtistHistoryChange} from '../lib/idol/timeline/history-state';
 
 type RosterAction = 'portrait' | 'profile';
 type MemberLinkProps = Pick<ComponentProps<'a'>, 'children' | 'className' | 'aria-label'> & {
@@ -18,8 +18,11 @@ function localLink(event: MouseEvent<HTMLAnchorElement>) {
  return to.origin === location.origin && to.pathname === location.pathname && !to.hash ? to : null;
 }
 
-function navigate(to: URL, state: Record<string, unknown>) {
- history.pushState(state, '', to.pathname + to.search);
+function navigate(event: MouseEvent<HTMLAnchorElement>, to: URL, state: Record<string, unknown>) {
+ const applied = tryArtistHistoryChange(() => history.pushState(state, '', to.pathname + to.search));
+ // Some browsers silently ignore pushState. Leave the anchor active in that case.
+ if (!applied || location.href !== to.href) return;
+ event.preventDefault();
  window.dispatchEvent(new Event('artist-location-change'));
  window.scrollTo({top: 0, behavior: 'instant'});
 }
@@ -28,15 +31,18 @@ export function ArtistRosterMemberLink({memberId, action = 'profile', ...props}:
  function open(event: MouseEvent<HTMLAnchorElement>) {
   const to = localLink(event);
   if (!to || to.searchParams.get('member') !== memberId || to.searchParams.get('section') !== 'members') return;
-  event.preventDefault();
   const path = location.pathname + location.search;
-  history.replaceState({
+  const y = window.scrollY;
+  const saved = tryArtistHistoryChange(() => history.replaceState({
    ...history.state,
    artistRosterFocus: {path, key: memberId, action},
-   artistScroll: {path, y: window.scrollY},
-  }, '', location.href);
+   artistScroll: {path, y},
+  }, '', location.href));
+  if (!saved) return;
+  const {artistRosterFocus: focus, artistScroll: scroll} = history.state ?? {};
+  if (focus?.path !== path || focus.key !== memberId || focus.action !== action || scroll?.path !== path || scroll.y !== y) return;
   const detail = to.pathname + to.search;
-  navigate(to, {...newArtistHistoryState(history.state), artistRosterOrigin: {path, detail, action}});
+  navigate(event, to, {...newArtistHistoryState(history.state), artistRosterOrigin: {path, detail, action}});
  }
  return <a {...props} data-artist-member-trigger={memberId} data-artist-roster-action={action} onClick={open}/>;
 }
@@ -46,17 +52,16 @@ export function returnToArtistRoster(event: MouseEvent<HTMLAnchorElement>) {
  const current = new URL(location.href);
  const key = current.searchParams.get('member');
  if (!to || !key || to.searchParams.get('section') !== 'members' || to.searchParams.has('member')) return;
- event.preventDefault();
  const origin = history.state?.artistRosterOrigin;
  if (origin?.detail === current.pathname + current.search && typeof origin.path === 'string' && origin.path.startsWith(current.pathname + '?')) {
   const source = new URL(origin.path, location.origin);
   if (source.searchParams.get('section') === 'members' && !source.searchParams.has('member')) {
-   history.back();
+   if (tryArtistHistoryChange(() => history.back())) event.preventDefault();
    return;
   }
  }
  // A directly opened profile still has a real directory and a named card.
  const path = to.pathname + to.search;
  const action = origin?.action === 'portrait' ? 'portrait' : 'profile';
- navigate(to, {...newArtistHistoryState(history.state), artistRosterFocus: {path, key, action}});
+ navigate(event, to, {...newArtistHistoryState(history.state), artistRosterFocus: {path, key, action}});
 }

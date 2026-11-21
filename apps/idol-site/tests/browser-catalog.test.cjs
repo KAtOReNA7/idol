@@ -3,6 +3,10 @@ class AppError extends Error{constructor(code,message,status){super(message);Obj
 const modules=new Map();function load(file){file=path.resolve(file);if(modules.has(file))return modules.get(file);const out={};modules.set(file,out);const js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL,URLSearchParams})((n)=>n==='./feishu'?{AppError}:load(path.resolve(path.dirname(file),n)+'.ts'),out);return out;}
 const {projectBrowserCatalog,requestedBrowserCatalog,withoutStageCandidates}=load('lib/idol/browser-catalog.ts'),{personalMvPhoto,memberWorks,memberWorkSummary}=load('lib/idol/member-works.ts');
 const plain=x=>JSON.parse(JSON.stringify(x));
+const workRequest=load('lib/idol/work-catalog-request.ts');
+const workExports={};
+const workCode=ts.transpileModule(fs.readFileSync('lib/idol/work-catalog.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+vm.runInNewContext('(function(require,exports){'+workCode+'})')(name=>require('./helpers/timeline-dependency-loader.cjs').timelineDependency(name),workExports);
 test('ifeye presents its announced agency while preserving the source and newer edits',()=>{
  const catalog=sample([]);
  const former={id:'rec28ldfRTiCGa',name:'ifeye',company:'Hi-Hat Entertainment',officialUrl:''};
@@ -43,7 +47,8 @@ function routeHarness(){
  const stubs={
   '@/lib/idol/personal-mv-ratings':{personalMvRatingsForOwner:async()=>model.personal},
   '@/lib/idol/public-access':{ownerForRequest:async()=>{model.calls.push('auth');return model.deny?null:{userId:'owner'};}},
-  '@/lib/idol/public-reader':{publicQuery:request=>{model.calls.push('public-query');return new URL(request.url).searchParams;},readPublicCatalog:async artist=>{model.calls.push('public:'+artist);return model.publicData;}},
+  '@/lib/idol/public-reader':{publicQuery:request=>{model.calls.push('public-query');return new URL(request.url).searchParams;},readPublicCatalog:async(artist,workId)=>{model.calls.push('public:'+artist);const work=workExports.findDetailWork(model.publicData,workId);return work?workExports.projectWorkCatalog(model.publicData,work):model.publicData;}},
+  '@/lib/idol/work-catalog':workExports,'@/lib/idol/work-catalog-request':workRequest,
   '@/lib/idol/browser-catalog':{projectBrowserCatalog:data=>{model.projectedAfter.push([...model.calls]);return projectBrowserCatalog(data);},requestedBrowserCatalog,withoutStageCandidates},
   '@/lib/idol/artist-catalog':{requestedArtist:p=>p.get('artist'),projectArtistCatalog:(d,artist)=>{model.calls.push('artist:'+artist);return {...d,scope:{type:'artist',groupId:artist}};}},
   '@/lib/idol/native-storage':{ownControl:async u=>{model.calls.push('control:'+u);return {epoch:6};},assertSourceUnchanged:async()=>{model.calls.push('fence');if(model.drift)throw new AppError('STORAGE_CHANGING','changed',409);}},
@@ -54,6 +59,63 @@ function routeHarness(){
  const out={},js=ts.transpileModule(fs.readFileSync('app/api/catalog/route.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL})(n=>{const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(n);if(timelineModule!==undefined)return timelineModule;assert.ok(n in stubs,n);return stubs[n];},out);
  return {model,read:(p,headers)=>out.GET(new Request('https://example.org/api/catalog'+p,{headers}))};
 }
+test('work detail keeps direct versions, original group members, collaborators and the exact owner score scope',async()=>{
+ const workId='recFocus',versionId='recVersion',otherId='recOther';
+ const group='recHome',away='recAway';
+ for(const guest of [false,true]){
+  const h=routeHarness(),catalog=sample();
+  const focus={...catalog.works[0],id:workId,groupIds:[group],url:'https://youtu.be/abcdefghijk',
+   versionDisplay:{tags:[],links:[{workId:versionId,title:'Version',labels:[],categories:['版本']}] }};
+  catalog.works=[focus,{...focus,id:versionId,groupIds:[away],versionDisplay:undefined},{...focus,id:otherId,versionDisplay:undefined}];
+  catalog.groups=[{id:group},{id:away}];
+  catalog.members=[{id:'recMember',groupIds:[group]},{id:'recFormer',groupIds:[],formerGroupIds:[group]},
+   {id:'recGuest',groupIds:[away]},{id:'recUnrelated',groupIds:[away]}];
+  catalog.ratings=[row('recRelevant',{workIds:[workId],memberIds:['recGuest']}),row('recUnrelated',{workIds:[otherId],memberIds:['recMember']})];
+  Object.assign(catalog.counts,{groups:2,members:4,works:3,ratings:2});
+  const personal={scope:'synthetic',writable:true,entries:[{workId,memberId:'recFormer',videoId:'abcdefghijk',score:0,stylingScore:null,revision:1},
+   {workId:otherId,memberId:'recMember',videoId:'abcdefghijk',score:8,stylingScore:null,revision:1}]};
+  h.model.deny=guest;h.model.data=h.model.publicData=catalog;h.model.personal=personal;
+  const response=await h.read('?shape=display-v1',workRequest.workCatalogHeaders(workId));
+  assert.equal(response.status,200);
+  assert.equal(response.headers.get('Preference-Applied'),'omit-stage-candidates, work-detail='+workId);
+  const value=await response.json();
+  assert.deepEqual(value.scope,{type:'work',workId});
+  assert.deepEqual(value.works.map(w=>w.id),[workId,versionId]);
+  assert.deepEqual(value.works[0].versionDisplay,focus.versionDisplay);
+  assert.deepEqual(value.members.map(m=>m.id),['recMember','recFormer','recGuest']);
+  assert.deepEqual(value.ratings.map(r=>r.id),['recRelevant']);
+  assert.equal(value.ratings[0].score,0);
+  assert.deepEqual(value.groups,catalog.groups);
+  assert.equal(value.counts.works,2);assert.equal(value.counts.ratings,1);
+  if(guest)assert.equal(value.personalMvRatings,undefined);
+  else assert.deepEqual(value.personalMvRatings,{...personal,entries:[personal.entries[0]]});
+  const missing=await h.read('?shape=display-v1',workRequest.workCatalogHeaders('recMissing'));
+  assert.equal(missing.headers.get('Preference-Applied'),'omit-stage-candidates');
+  const full=await (await h.read('?shape=display-v1',workRequest.workCatalogHeaders(null))).json();
+  assert.equal(full.scope,undefined);assert.equal(full.works.length,3);assert.equal(full.counts.works,3);
+  assert.deepEqual(await missing.json(),full);
+  assert.equal(workExports.findDetailWork({...catalog,works:[focus,focus]},workId),null);
+  const artist=await (await h.read('?shape=display-v1&artist=ive',workRequest.workCatalogHeaders(workId))).json();
+  assert.notEqual(artist.scope?.type,'work');
+  if(!guest)assert.equal((await (await h.read('',workRequest.workCatalogHeaders(workId))).json()).scope,undefined);
+ }
+ for(const bad of ['work-detail=bad','work-detail=recA, work-detail=recB','work-detail=recA?other','work-detail='+('a'.repeat(90))]){
+  assert.equal(workRequest.preferredDetailWork(bad),null);
+ }
+ const longest='rec'+'a'.repeat(80);
+ assert.equal(workRequest.preferredDetailWork(workRequest.workCatalogHeaders(longest).Prefer),longest);
+ assert.equal(workRequest.workCatalogHeaders(longest+'a').Prefer,'omit-stage-candidates');
+ const unavailable=routeHarness();unavailable.model.deny=true;
+ unavailable.model.publicData={...sample(),works:[],counts:{works:0}};
+ const publicOnly=await unavailable.read('?shape=display-v1',workRequest.workCatalogHeaders(workId));
+ assert.deepEqual(await publicOnly.json(),unavailable.model.publicData);
+ assert.deepEqual(unavailable.model.calls,['auth','public-query','public:null']);
+ const limited={scope:{type:'work',workId}};
+ assert.equal(workRequest.catalogCoversRoute(limited,workId),true);
+ assert.equal(workRequest.catalogCoversRoute(limited,versionId),false);
+ assert.equal(workRequest.catalogCoversRoute(limited,null),false);
+ assert.equal(workRequest.catalogCoversRoute({},null),true);
+});
 test('only opted-in library and artist views omit comparison rows and preserve every other value',async()=>{
  for(const guest of [true,false]){
   const h=routeHarness(),catalog=sample();

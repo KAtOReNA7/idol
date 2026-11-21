@@ -24,8 +24,9 @@ export default function UdttNativeDesign(){
       const response=await fetch('/api/catalog?artist=udtt&shape=display-v1',{headers:artistCatalogHeaders,cache:'no-store',signal});
       if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('资料库暂时无法读取，请稍后重试。');
       const catalog=await response.json() as CatalogView;
-      if(!catalogBelongs(catalog))throw new Error('资料所属团体未能核验，暂不开放记录入口。');
-      if(!signal.aborted)setPublicWorks(catalog.works.filter(work=>!work.placeholder&&work.groupIds.includes(catalog.scope!.groupId)).map(work=>({id:work.id,title:work.song||work.name})));
+      const groupId=catalog.scope?.type==='artist'?catalog.scope.groupId:null;
+      if(!groupId||!catalogBelongs(catalog))throw new Error('资料所属团体未能核验，暂不开放记录入口。');
+      if(!signal.aborted)setPublicWorks(catalog.works.filter(work=>!work.placeholder&&work.groupIds.includes(groupId)).map(work=>({id:work.id,title:work.song||work.name})));
       failureMessage='UDTT 图片暂时无法加载。';
       const responseViewer=await fetch(canEdit?'/api/manage/editorial-assets/viewer':'/api/editorial-assets/viewer',{cache:'no-store',credentials:'same-origin',signal});
       if(!responseViewer.ok||!responseViewer.headers.get('content-type')?.includes('application/json'))throw new Error('图片暂不可用；未使用其他图片替代。');

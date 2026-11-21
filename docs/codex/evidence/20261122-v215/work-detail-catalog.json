@@ -1,0 +1,650 @@
+{
+  "date": "2026-11-22",
+  "dataset": "Uncompressed public display projection of the checked-in 614-work snapshot. Anonymous fixture clears personal ratings, notes and watch state. All HTTP requests target the isolated loopback QA API. Work-detail-vs-full comparisons use the same full input and endpoint.",
+  "scope": "Independent direct detail navigations. Opening a detail from an already loaded library can reuse the existing catalog. No live-site network timing or owner data in these measurements.",
+  "checks": [
+    "Exact original work and linked work objects",
+    "Rating relation identity, order, values and referenced members",
+    "Group roster, historical members, public collaboration credit, and related group objects",
+    "Source timestamps, mode and warning",
+    "Response preferences and absence of owner-only score entries"
+  ],
+  "comparison": {
+    "entryCount": 614,
+    "fullBytesPerDirectNavigation": 1955086,
+    "medianScopedBytes": 6877.5,
+    "minScopedBytes": 3258,
+    "maxScopedBytes": 23519,
+    "scopedBytesAcrossDirectNavigations": 4514566,
+    "fullBytesAcrossDirectNavigations": 1200422804,
+    "reductionPercentAcrossDirectNavigations": 99.6239
+  },
+  "worksWithPlayback": 605,
+  "placeholders": 9,
+  "groupsCovered": 51,
+  "examples": {
+    "ive": {
+      "id": "recvxyHuKMaCIP",
+      "bytes": 7969,
+      "members": 6,
+      "ratings": 6,
+      "hasPlaceholder": false
+    },
+    "adya": {
+      "id": "rec28ldfRTrH9V",
+      "bytes": 5923,
+      "members": 5,
+      "ratings": 5,
+      "hasPlaceholder": false
+    },
+    "cherrybullet": {
+      "id": "recvxyH5pza4kq",
+      "bytes": 8480,
+      "members": 10,
+      "ratings": 7,
+      "hasPlaceholder": false
+    }
+  },
+  "groups": [
+    {
+      "slug": "meovv",
+      "entryCount": 10,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5839.0,
+      "minScopedBytes": 3933,
+      "maxScopedBytes": 6195,
+      "scopedBytesAcrossDirectNavigations": 54719,
+      "fullBytesAcrossDirectNavigations": 19550860,
+      "reductionPercentAcrossDirectNavigations": 99.7201
+    },
+    {
+      "slug": "izna",
+      "entryCount": 9,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 7067,
+      "minScopedBytes": 4854,
+      "maxScopedBytes": 8259,
+      "scopedBytesAcrossDirectNavigations": 62057,
+      "fullBytesAcrossDirectNavigations": 17595774,
+      "reductionPercentAcrossDirectNavigations": 99.6473
+    },
+    {
+      "slug": "triples",
+      "entryCount": 25,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 16458,
+      "minScopedBytes": 14135,
+      "maxScopedBytes": 23519,
+      "scopedBytesAcrossDirectNavigations": 417257,
+      "fullBytesAcrossDirectNavigations": 48877150,
+      "reductionPercentAcrossDirectNavigations": 99.1463
+    },
+    {
+      "slug": "madein",
+      "entryCount": 8,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 6860.0,
+      "minScopedBytes": 5501,
+      "maxScopedBytes": 8513,
+      "scopedBytesAcrossDirectNavigations": 56520,
+      "fullBytesAcrossDirectNavigations": 15640688,
+      "reductionPercentAcrossDirectNavigations": 99.6386
+    },
+    {
+      "slug": "ifeye",
+      "entryCount": 4,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5677.0,
+      "minScopedBytes": 4181,
+      "maxScopedBytes": 6413,
+      "scopedBytesAcrossDirectNavigations": 21948,
+      "fullBytesAcrossDirectNavigations": 7820344,
+      "reductionPercentAcrossDirectNavigations": 99.7193
+    },
+    {
+      "slug": "genblue",
+      "entryCount": 4,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 6531.0,
+      "minScopedBytes": 5053,
+      "maxScopedBytes": 7045,
+      "scopedBytesAcrossDirectNavigations": 25160,
+      "fullBytesAcrossDirectNavigations": 7820344,
+      "reductionPercentAcrossDirectNavigations": 99.6783
+    },
+    {
+      "slug": "rescene",
+      "entryCount": 10,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 6128.0,
+      "minScopedBytes": 6090,
+      "maxScopedBytes": 6256,
+      "scopedBytesAcrossDirectNavigations": 61423,
+      "fullBytesAcrossDirectNavigations": 19550860,
+      "reductionPercentAcrossDirectNavigations": 99.6858
+    },
+    {
+      "slug": "unis",
+      "entryCount": 6,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 7327.0,
+      "minScopedBytes": 5940,
+      "maxScopedBytes": 8963,
+      "scopedBytesAcrossDirectNavigations": 44351,
+      "fullBytesAcrossDirectNavigations": 11730516,
+      "reductionPercentAcrossDirectNavigations": 99.6219
+    },
+    {
+      "slug": "badvillain",
+      "entryCount": 6,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 7483.5,
+      "minScopedBytes": 5434,
+      "maxScopedBytes": 7884,
+      "scopedBytesAcrossDirectNavigations": 41629,
+      "fullBytesAcrossDirectNavigations": 11730516,
+      "reductionPercentAcrossDirectNavigations": 99.6451
+    },
+    {
+      "slug": "qwer",
+      "entryCount": 7,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5097,
+      "minScopedBytes": 3360,
+      "maxScopedBytes": 7514,
+      "scopedBytesAcrossDirectNavigations": 36642,
+      "fullBytesAcrossDirectNavigations": 13685602,
+      "reductionPercentAcrossDirectNavigations": 99.7323
+    },
+    {
+      "slug": "vvup",
+      "entryCount": 7,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5510,
+      "minScopedBytes": 3827,
+      "maxScopedBytes": 5981,
+      "scopedBytesAcrossDirectNavigations": 36179,
+      "fullBytesAcrossDirectNavigations": 13685602,
+      "reductionPercentAcrossDirectNavigations": 99.7356
+    },
+    {
+      "slug": "youngposse",
+      "entryCount": 14,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 4919.5,
+      "minScopedBytes": 3853,
+      "maxScopedBytes": 8037,
+      "scopedBytesAcrossDirectNavigations": 74871,
+      "fullBytesAcrossDirectNavigations": 27371204,
+      "reductionPercentAcrossDirectNavigations": 99.7265
+    },
+    {
+      "slug": "bewave",
+      "entryCount": 2,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5276.5,
+      "minScopedBytes": 4903,
+      "maxScopedBytes": 5650,
+      "scopedBytesAcrossDirectNavigations": 10553,
+      "fullBytesAcrossDirectNavigations": 3910172,
+      "reductionPercentAcrossDirectNavigations": 99.7301
+    },
+    {
+      "slug": "candyshop",
+      "entryCount": 3,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5698,
+      "minScopedBytes": 5442,
+      "maxScopedBytes": 5729,
+      "scopedBytesAcrossDirectNavigations": 16869,
+      "fullBytesAcrossDirectNavigations": 5865258,
+      "reductionPercentAcrossDirectNavigations": 99.7124
+    },
+    {
+      "slug": "oddyouth",
+      "entryCount": 3,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5869,
+      "minScopedBytes": 5860,
+      "maxScopedBytes": 7488,
+      "scopedBytesAcrossDirectNavigations": 19217,
+      "fullBytesAcrossDirectNavigations": 5865258,
+      "reductionPercentAcrossDirectNavigations": 99.6724
+    },
+    {
+      "slug": "adya",
+      "entryCount": 3,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5650,
+      "minScopedBytes": 4272,
+      "maxScopedBytes": 5923,
+      "scopedBytesAcrossDirectNavigations": 15845,
+      "fullBytesAcrossDirectNavigations": 5865258,
+      "reductionPercentAcrossDirectNavigations": 99.7298
+    },
+    {
+      "slug": "geenius",
+      "entryCount": 7,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 4819,
+      "minScopedBytes": 3554,
+      "maxScopedBytes": 5549,
+      "scopedBytesAcrossDirectNavigations": 33234,
+      "fullBytesAcrossDirectNavigations": 13685602,
+      "reductionPercentAcrossDirectNavigations": 99.7572
+    },
+    {
+      "slug": "tracer",
+      "entryCount": 2,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 3660.0,
+      "minScopedBytes": 3258,
+      "maxScopedBytes": 4062,
+      "scopedBytesAcrossDirectNavigations": 7320,
+      "fullBytesAcrossDirectNavigations": 3910172,
+      "reductionPercentAcrossDirectNavigations": 99.8128
+    },
+    {
+      "slug": "witchx",
+      "entryCount": 1,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 3569,
+      "minScopedBytes": 3569,
+      "maxScopedBytes": 3569,
+      "scopedBytesAcrossDirectNavigations": 3569,
+      "fullBytesAcrossDirectNavigations": 1955086,
+      "reductionPercentAcrossDirectNavigations": 99.8175
+    },
+    {
+      "slug": "spia",
+      "entryCount": 2,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 4575.5,
+      "minScopedBytes": 3580,
+      "maxScopedBytes": 5571,
+      "scopedBytesAcrossDirectNavigations": 9151,
+      "fullBytesAcrossDirectNavigations": 3910172,
+      "reductionPercentAcrossDirectNavigations": 99.766
+    },
+    {
+      "slug": "udtt",
+      "entryCount": 2,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 4482.0,
+      "minScopedBytes": 3589,
+      "maxScopedBytes": 5375,
+      "scopedBytesAcrossDirectNavigations": 8964,
+      "fullBytesAcrossDirectNavigations": 3910172,
+      "reductionPercentAcrossDirectNavigations": 99.7708
+    },
+    {
+      "slug": "vcha",
+      "entryCount": 5,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5016,
+      "minScopedBytes": 4277,
+      "maxScopedBytes": 7127,
+      "scopedBytesAcrossDirectNavigations": 26472,
+      "fullBytesAcrossDirectNavigations": 9775430,
+      "reductionPercentAcrossDirectNavigations": 99.7292
+    },
+    {
+      "slug": "hitgs",
+      "entryCount": 9,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 4502,
+      "minScopedBytes": 3739,
+      "maxScopedBytes": 5737,
+      "scopedBytesAcrossDirectNavigations": 38780,
+      "fullBytesAcrossDirectNavigations": 17595774,
+      "reductionPercentAcrossDirectNavigations": 99.7796
+    },
+    {
+      "slug": "atheart",
+      "entryCount": 3,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5650,
+      "minScopedBytes": 4869,
+      "maxScopedBytes": 7716,
+      "scopedBytesAcrossDirectNavigations": 18235,
+      "fullBytesAcrossDirectNavigations": 5865258,
+      "reductionPercentAcrossDirectNavigations": 99.6891
+    },
+    {
+      "slug": "idle",
+      "entryCount": 28,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 6900.5,
+      "minScopedBytes": 5795,
+      "maxScopedBytes": 9323,
+      "scopedBytesAcrossDirectNavigations": 195416,
+      "fullBytesAcrossDirectNavigations": 54742408,
+      "reductionPercentAcrossDirectNavigations": 99.643
+    },
+    {
+      "slug": "izone",
+      "entryCount": 10,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 14109.0,
+      "minScopedBytes": 9105,
+      "maxScopedBytes": 14488,
+      "scopedBytesAcrossDirectNavigations": 136602,
+      "fullBytesAcrossDirectNavigations": 19550860,
+      "reductionPercentAcrossDirectNavigations": 99.3013
+    },
+    {
+      "slug": "fromis9",
+      "entryCount": 16,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 9703.0,
+      "minScopedBytes": 6377,
+      "maxScopedBytes": 9931,
+      "scopedBytesAcrossDirectNavigations": 146642,
+      "fullBytesAcrossDirectNavigations": 31281376,
+      "reductionPercentAcrossDirectNavigations": 99.5312
+    },
+    {
+      "slug": "loona",
+      "entryCount": 10,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 12255.0,
+      "minScopedBytes": 7411,
+      "maxScopedBytes": 12667,
+      "scopedBytesAcrossDirectNavigations": 117717,
+      "fullBytesAcrossDirectNavigations": 19550860,
+      "reductionPercentAcrossDirectNavigations": 99.3979
+    },
+    {
+      "slug": "everglow",
+      "entryCount": 10,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 6990.0,
+      "minScopedBytes": 5933,
+      "maxScopedBytes": 7296,
+      "scopedBytesAcrossDirectNavigations": 69276,
+      "fullBytesAcrossDirectNavigations": 19550860,
+      "reductionPercentAcrossDirectNavigations": 99.6457
+    },
+    {
+      "slug": "rocketpunch",
+      "entryCount": 11,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 7233,
+      "minScopedBytes": 4460,
+      "maxScopedBytes": 7517,
+      "scopedBytesAcrossDirectNavigations": 74936,
+      "fullBytesAcrossDirectNavigations": 21505946,
+      "reductionPercentAcrossDirectNavigations": 99.6516
+    },
+    {
+      "slug": "cherrybullet",
+      "entryCount": 7,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 8998,
+      "minScopedBytes": 8480,
+      "maxScopedBytes": 10025,
+      "scopedBytesAcrossDirectNavigations": 64262,
+      "fullBytesAcrossDirectNavigations": 13685602,
+      "reductionPercentAcrossDirectNavigations": 99.5304
+    },
+    {
+      "slug": "weeekly",
+      "entryCount": 14,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 7710.5,
+      "minScopedBytes": 4698,
+      "maxScopedBytes": 8139,
+      "scopedBytesAcrossDirectNavigations": 99951,
+      "fullBytesAcrossDirectNavigations": 27371204,
+      "reductionPercentAcrossDirectNavigations": 99.6348
+    },
+    {
+      "slug": "wooah",
+      "entryCount": 14,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 6803.0,
+      "minScopedBytes": 4282,
+      "maxScopedBytes": 7118,
+      "scopedBytesAcrossDirectNavigations": 87768,
+      "fullBytesAcrossDirectNavigations": 27371204,
+      "reductionPercentAcrossDirectNavigations": 99.6793
+    },
+    {
+      "slug": "purplekiss",
+      "entryCount": 13,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 7710,
+      "minScopedBytes": 4733,
+      "maxScopedBytes": 8019,
+      "scopedBytesAcrossDirectNavigations": 96940,
+      "fullBytesAcrossDirectNavigations": 25416118,
+      "reductionPercentAcrossDirectNavigations": 99.6186
+    },
+    {
+      "slug": "billlie",
+      "entryCount": 13,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 8135,
+      "minScopedBytes": 5676,
+      "maxScopedBytes": 8610,
+      "scopedBytesAcrossDirectNavigations": 100958,
+      "fullBytesAcrossDirectNavigations": 25416118,
+      "reductionPercentAcrossDirectNavigations": 99.6028
+    },
+    {
+      "slug": "kep1er",
+      "entryCount": 16,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 10245.0,
+      "minScopedBytes": 8755,
+      "maxScopedBytes": 11379,
+      "scopedBytesAcrossDirectNavigations": 159833,
+      "fullBytesAcrossDirectNavigations": 31281376,
+      "reductionPercentAcrossDirectNavigations": 99.489
+    },
+    {
+      "slug": "newjeans",
+      "entryCount": 25,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 6622,
+      "minScopedBytes": 4285,
+      "maxScopedBytes": 7697,
+      "scopedBytesAcrossDirectNavigations": 155915,
+      "fullBytesAcrossDirectNavigations": 48877150,
+      "reductionPercentAcrossDirectNavigations": 99.681
+    },
+    {
+      "slug": "babymonster",
+      "entryCount": 19,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 7749,
+      "minScopedBytes": 5111,
+      "maxScopedBytes": 8261,
+      "scopedBytesAcrossDirectNavigations": 139205,
+      "fullBytesAcrossDirectNavigations": 37146634,
+      "reductionPercentAcrossDirectNavigations": 99.6253
+    },
+    {
+      "slug": "illit",
+      "entryCount": 21,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 6121,
+      "minScopedBytes": 4097,
+      "maxScopedBytes": 15533,
+      "scopedBytesAcrossDirectNavigations": 130623,
+      "fullBytesAcrossDirectNavigations": 41056806,
+      "reductionPercentAcrossDirectNavigations": 99.6818
+    },
+    {
+      "slug": "xg",
+      "entryCount": 23,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 8279,
+      "minScopedBytes": 5121,
+      "maxScopedBytes": 10140,
+      "scopedBytesAcrossDirectNavigations": 179466,
+      "fullBytesAcrossDirectNavigations": 44966978,
+      "reductionPercentAcrossDirectNavigations": 99.6009
+    },
+    {
+      "slug": "aespa",
+      "entryCount": 36,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5760.0,
+      "minScopedBytes": 3729,
+      "maxScopedBytes": 9515,
+      "scopedBytesAcrossDirectNavigations": 211291,
+      "fullBytesAcrossDirectNavigations": 70383096,
+      "reductionPercentAcrossDirectNavigations": 99.6998
+    },
+    {
+      "slug": "ive",
+      "entryCount": 25,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 7870,
+      "minScopedBytes": 7235,
+      "maxScopedBytes": 9595,
+      "scopedBytesAcrossDirectNavigations": 196452,
+      "fullBytesAcrossDirectNavigations": 48877150,
+      "reductionPercentAcrossDirectNavigations": 99.5981
+    },
+    {
+      "slug": "kissoflife",
+      "entryCount": 25,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5438,
+      "minScopedBytes": 3659,
+      "maxScopedBytes": 6452,
+      "scopedBytesAcrossDirectNavigations": 129398,
+      "fullBytesAcrossDirectNavigations": 48877150,
+      "reductionPercentAcrossDirectNavigations": 99.7353
+    },
+    {
+      "slug": "stayc",
+      "entryCount": 17,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 7162,
+      "minScopedBytes": 4363,
+      "maxScopedBytes": 9088,
+      "scopedBytesAcrossDirectNavigations": 117221,
+      "fullBytesAcrossDirectNavigations": 33236462,
+      "reductionPercentAcrossDirectNavigations": 99.6473
+    },
+    {
+      "slug": "nmixx",
+      "entryCount": 20,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 7706.0,
+      "minScopedBytes": 4884,
+      "maxScopedBytes": 9366,
+      "scopedBytesAcrossDirectNavigations": 144896,
+      "fullBytesAcrossDirectNavigations": 39101720,
+      "reductionPercentAcrossDirectNavigations": 99.6294
+    },
+    {
+      "slug": "hearts2hearts",
+      "entryCount": 13,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 8119,
+      "minScopedBytes": 5401,
+      "maxScopedBytes": 8860,
+      "scopedBytesAcrossDirectNavigations": 102657,
+      "fullBytesAcrossDirectNavigations": 25416118,
+      "reductionPercentAcrossDirectNavigations": 99.5961
+    },
+    {
+      "slug": "kiiikiii",
+      "entryCount": 9,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 6116,
+      "minScopedBytes": 4754,
+      "maxScopedBytes": 6567,
+      "scopedBytesAcrossDirectNavigations": 52260,
+      "fullBytesAcrossDirectNavigations": 17595774,
+      "reductionPercentAcrossDirectNavigations": 99.703
+    },
+    {
+      "slug": "itzy",
+      "entryCount": 32,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 6409.5,
+      "minScopedBytes": 4126,
+      "maxScopedBytes": 8171,
+      "scopedBytesAcrossDirectNavigations": 205037,
+      "fullBytesAcrossDirectNavigations": 62562752,
+      "reductionPercentAcrossDirectNavigations": 99.6723
+    },
+    {
+      "slug": "lesserafim",
+      "entryCount": 20,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 7788.0,
+      "minScopedBytes": 6937,
+      "maxScopedBytes": 10007,
+      "scopedBytesAcrossDirectNavigations": 159720,
+      "fullBytesAcrossDirectNavigations": 39101720,
+      "reductionPercentAcrossDirectNavigations": 99.5915
+    },
+    {
+      "slug": "saymyname",
+      "entryCount": 6,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 8607.0,
+      "minScopedBytes": 6769,
+      "maxScopedBytes": 10296,
+      "scopedBytesAcrossDirectNavigations": 51511,
+      "fullBytesAcrossDirectNavigations": 11730516,
+      "reductionPercentAcrossDirectNavigations": 99.5609
+    },
+    {
+      "slug": "katseye",
+      "entryCount": 9,
+      "fullBytesPerDirectNavigation": 1955086,
+      "medianScopedBytes": 5243,
+      "minScopedBytes": 4454,
+      "maxScopedBytes": 7177,
+      "scopedBytesAcrossDirectNavigations": 47648,
+      "fullBytesAcrossDirectNavigations": 17595774,
+      "reductionPercentAcrossDirectNavigations": 99.7292
+    }
+  ],
+  "versionCoverage": "The repository snapshot lacks native schema metadata required to activate verified version links. A separate native-shaped fixture retains all 72 directed targets across the 36 reviewed pairs (71 reviewed identities).",
+  "inAppBrowserLocal": {
+    "status": "not measured",
+    "reason": "The local v215 preview origin did not receive in-app browser approval. No alternative browser or proxy used."
+  },
+  "production": "Requires separate comparison on the formal site.",
+  "invalidOrGone": {
+    "inputKinds": [
+      "valid but missing",
+      "malformed",
+      "over 80 characters after rec",
+      "duplicate preference"
+    ],
+    "httpStatus": 200,
+    "scope": "full",
+    "Preference-Applied": "omit-stage-candidates",
+    "works": 614,
+    "countWorks": 614
+  },
+  "ownerScoreIndexPlan": "SEARCH idol_personal_mv_ratings USING INDEX idol_personal_mv_rating_identity (owner_id=? AND snapshot_id=? AND work_id=?)",
+  "isolatedD1RecentSave": {
+    "tested": [
+      "The Chase",
+      "RING X RING",
+      "TOMBOY",
+      "Attention"
+    ],
+    "workScore": 0,
+    "stageScore": 9.1,
+    "memberScore": 0,
+    "readback": "Actual catalog GET with owner, current snapshot, forced refresh and work scope after the synthetic save response is lost and retried."
+  },
+  "twoTabFixture": {
+    "firstConfirmedScore": 0,
+    "conflictingOldDraft": "HTTP semantics 409",
+    "afterConfirmedClear": null,
+    "otherWorkScore": 7,
+    "journalEntries": 3
+  }
+}

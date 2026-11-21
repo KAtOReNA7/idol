@@ -101,6 +101,7 @@ test('public photo authorization reuses its index and invalidates on every stora
    nativeDb:()=>({prepare:q=>({bind:()=>({first:async()=>q.includes('generation')?{generation}:{object_key:'sample',sha256:hash,content_type:'image/png',byte_length:bytes.length}})})})},
   './native-reader':{readNativeCatalog:async()=>{reads++;return {groups:[],members:visible?[{id:'recPhoto',photo}]:[],ratings:[]};}},
   './artist-catalog':{projectArtistCatalog:value=>value},'./browser-catalog':{projectBrowserCatalog:value=>value},
+  './work-catalog':{findDetailWork:(_catalog,id)=>{assert.equal(id,null);return null;},projectWorkCatalog:()=>assert.fail('media authorization needs the complete public catalog')},
   './public-catalog':{projectPublicCatalog:value=>value}
  };
  const source=fs.readFileSync('lib/idol/public-reader.ts','utf8');

@@ -8,6 +8,23 @@ const moduleUnderTest=compile('lib/idol/verified-version-display.ts',{'@/data/ve
 const fieldMap={name:F.works.name,song:F.works.song,url:F.works.url,videoType:F.works.videoType,version:F.works.version,releaseDate:F.works.releaseDate,officialTitle:F.works.officialTitle,channel:F.works.channel,channelUrl:'fld6Ab27Zx',performerUnit:'fld2UfUVYO',groupIds:F.works.groups};
 function fixture(){const tables={works:{fields:Object.values(fieldMap).map(field_id=>({field_id})),records:reviewed.identities.map(w=>({recordId:w.workId,fields:Object.fromEntries(Object.entries(fieldMap).map(([key,id])=>[id,key==='groupIds'?w.groupIds.map(recordId=>({recordId})):w[key]]))}))}};const catalog={mode:'live',works:reviewed.identities.map(w=>({id:w.workId,name:w.name,song:w.song,url:w.url,groupIds:w.groupIds,version:w.version,score:null,stageScore:null,note:'',watched:'',ratingIds:[],stage:null,placeholder:null})),ratings:[],groups:[],members:[]};return {tables,catalog};}
 const project=f=>moduleUnderTest.withVerifiedVersionDisplay(f.catalog,f.tables);
+test('every approved directed version link opens with the same work and labels from a scoped detail',()=>{
+ const {projectWorkCatalog}=compile('lib/idol/work-catalog.ts',{'./public-work-credits':require('./helpers/timeline-dependency-loader.cjs').timelineDependency('./public-work-credits')});
+ const catalog=project(fixture());
+ let checked=0;
+ for(const work of catalog.works){
+  const scoped=projectWorkCatalog(catalog,work);
+  assert.strictEqual(scoped.works.find(w=>w.id===work.id),work);
+  for(const link of work.versionDisplay?.links??[]){
+   const next=scoped.works.find(w=>w.id===link.workId);
+   assert.ok(next&&!next.placeholder);
+   assert.deepEqual(next,projectWorkCatalog(catalog,next).works.find(w=>w.id===next.id));
+   assert.deepEqual(next,catalog.works.find(w=>w.id===next.id));
+   checked++;
+  }
+ }
+ assert.equal(checked,72);
+});
 test('minimal reviewed package: 7 tags, 37 edges / 36 pairs, 71 public identities only',()=>{assert.equal(reviewed.tags.length,7);assert.equal(reviewed.relations.length,37);assert.equal(reviewed.identities.length,71);assert.equal(new Set(reviewed.relations.map(e=>[e.fromWorkId,e.toWorkId].sort().join(':'))).size,36);const f=fixture(),before=JSON.stringify(f),out=project(f);assert.equal(JSON.stringify(f),before);assert.equal(out.works.filter(w=>w.versionDisplay?.tags.length).length,7);assert.equal(out.works.filter(w=>w.versionDisplay?.links.length).length,68);assert.equal(out.works.filter(w=>w.versionDisplay).length,71);assert.doesNotMatch(JSON.stringify(reviewed),/summaryZh|beforePublicHash|holdReason|scoreBinding|toResourceId|candidateId|creditedArtistNames/)});
 test('all 12 public identity fields drift independently and fail closed',()=>{const base=reviewed.identities[0];for(const key of moduleUnderTest.versionIdentityFields){const changed={...base,[key]:key==='groupIds'?[]:'changed'};assert.equal(moduleUnderTest.versionIdentityMatches(changed,base),false,key)}const target='rec28ldfRTrDnx';for(const [key,id]of Object.entries(fieldMap)){const f=fixture(),row=f.tables.works.records.find(w=>w.recordId===target);row.fields[id]=key==='groupIds'?[]:'changed';assert.equal(project(f).works.find(w=>w.id===target).versionDisplay,undefined,key)}});
 test('no schema, omitted raw cell, snapshot, duplicate row, placeholder hide increment',()=>{for(const mutation of [f=>f.tables.works.fields=[],f=>delete f.tables.works.records.find(w=>w.recordId==='rec28ldfRTrDnx').fields[F.works.version],f=>f.catalog.mode='snapshot',f=>f.tables.works.records.push(f.tables.works.records[0]),f=>f.catalog.works.find(w=>w.id==='rec28ldfRTrDnx').placeholder={reason:'placeholder'}]){const f=fixture();mutation(f);assert.equal(project(f).works.find(w=>w.id==='rec28ldfRTrDnx').versionDisplay,undefined)}});

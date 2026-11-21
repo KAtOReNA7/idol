@@ -5,22 +5,78 @@ const response=source.split('\n').find(s=>s.startsWith('async function readRespo
 const compile=s=>ts.transpileModule(s,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText;
 // Execute the actual App loading prefix, not a copied implementation. Rendering,
 // browser reconciliation, and Editor are intentionally outside this synthetic harness.
-const code=compile(response+'\n'+prefix+'return {load};}\nexports.App=App;');
+const code=compile(response+'\n'+prefix+'return {load,data};}\nexports.App=App;');
+const workRequest=require('./helpers/shared-journal-dependency-loader.cjs').sharedJournalDependency('@/lib/idol/work-catalog-request');
 const tick=()=>new Promise(r=>setImmediate(r));
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return {promise,resolve,reject};};
-function harness(){
- const states=[],requests=[],effects=[],timers=new Map();let cursor=0,unmounted=false,writesAfterUnmount=0,now=0,next=0;
+function harness(initial={}){
+ const states=[],requests=[],effects=[],refs=[],callbacks=[],timers=new Map();
+ const view={routeReady:true,work:null,sequence:undefined,canEdit:true,...initial};
+ let cursor=0,refIndex=0,callbackIndex=0,effectIndex=0,pending=[],unmounted=false,writesAfterUnmount=0,now=0,next=0,api;
+ const equal=(a,b)=>a&&b&&a.length===b.length&&a.every((value,i)=>Object.is(value,b[i]));
  const timer={setTimeout:(f,ms)=>{const id=++next;timers.set(id,{f,due:now+ms,ms});return id;},clearTimeout:id=>timers.delete(id)};
  const helper={};vm.runInNewContext(compile(fs.readFileSync('lib/idol/catalog-read-deadline.ts','utf8')),{exports:helper,AbortController,DOMException,...timer});
  const exports={};
- vm.runInNewContext(code,{exports,useCanEdit:()=>true,catalogReadWithDeadline:helper.catalogReadWithDeadline,AbortController,useState:v=>{const i=cursor++;states[i]=v;return [v,n=>{states[i]=n;if(unmounted)writesAfterUnmount++;}];},useRef:v=>({current:v}),useCallback:f=>f,useEffect:f=>effects.push(f),useCatalogGroupViews:()=>({phase:'idle',value:null}),useBrowseJourney:()=>({route:{},filters:{}}),requestMessage:e=>String(e),...timer,fetch:(url,options)=>{const d=deferred();requests.push({...d,url,options});if(url==='/api/status')d.resolve({ok:true,headers:{get:()=> 'application/json'},json:async()=>({source:'feishu'})});return d.promise;}});
- const api=exports.App();let cleanups=effects.map(f=>f());
- return {states,requests,timers,...api,unmount(){unmounted=true;for(const f of cleanups)f?.();},replay(){for(const f of cleanups)f?.();cleanups=effects.map(f=>f());},writes:()=>writesAfterUnmount,
+ vm.runInNewContext(code,{exports,...workRequest,useCanEdit:()=>view.canEdit,catalogReadWithDeadline:helper.catalogReadWithDeadline,AbortController,
+  useState:v=>{const i=cursor++;if(!(i in states))states[i]=v;return [states[i],n=>{states[i]=n;if(unmounted)writesAfterUnmount++;}];},
+  useRef:v=>{const i=refIndex++;return refs[i]??(refs[i]={current:v});},
+  useCallback:(fn,deps)=>{const i=callbackIndex++;if(!equal(callbacks[i]?.deps,deps))callbacks[i]={fn,deps};return callbacks[i].fn;},
+  useEffect:(fn,deps)=>{const i=effectIndex++;if(!equal(effects[i]?.deps,deps)){const prior=effects[i];effects[i]={fn,deps};pending.push(()=>{prior?.cleanup?.();effects[i].cleanup=fn();});}},
+  useCatalogGroupViews:()=>({phase:'idle',value:null}),useBrowseJourney:()=>({routeReady:view.routeReady,route:{work:view.work},filters:{},sequence:view.sequence}),requestMessage:e=>String(e),...timer,
+  fetch:(url,options)=>{const d=deferred();requests.push({...d,url,options});if(url==='/api/status')d.resolve({ok:true,headers:{get:()=> 'application/json'},json:async()=>({source:'feishu'})});return d.promise;}
+ });
+ function render(patch={}){Object.assign(view,patch);cursor=refIndex=callbackIndex=effectIndex=0;pending=[];api=exports.App();for(const run of pending)run();return api;}
+ render();
+ return {states,requests,timers,render,load:(...args)=>api.load(...args),unmount(){unmounted=true;for(const e of effects)e.cleanup?.();},replay(){for(const e of effects)e.cleanup?.();for(const e of effects)e.cleanup=e.fn();},writes:()=>writesAfterUnmount,
  catalog:()=>requests.filter(r=>r.url.startsWith('/api/catalog')),
  async advance(ms){now+=ms;for(const [id,t] of timers)if(t.due<=now){timers.delete(id);t.f();}await tick();},
  reply(r,d){r.resolve({ok:true,headers:{get:()=> 'application/json'},json:async()=>d});}};
 }
 const cached=()=>({mode:'live',groups:[],members:[],works:[{id:'work',score:0,note:'保留备注',watched:'已观看'}],ratings:[],cache:{refreshRecommended:true}});
+
+test('initial route hydration, related version navigation and full library keep the right data',async()=>{
+ const h=harness({routeReady:false});await tick();assert.equal(h.catalog().length,0);
+ h.render({routeReady:true,work:'recOne'});await tick();
+ const focus={...cached(),scope:{type:'work',workId:'recOne'},cache:{}};
+ const full={...cached(),cache:{}};
+ assert.equal(h.catalog()[0].options.headers.Prefer,'omit-stage-candidates, work-detail=recOne');
+ h.reply(h.catalog()[0],focus);await tick();assert.equal(h.render().data,focus);
+ const saved=h.load(true);await tick();
+ assert.ok(h.catalog()[1].url.endsWith('refresh=1'));
+ assert.equal(h.catalog()[1].options.headers.Prefer,'omit-stage-candidates, work-detail=recOne');
+ h.reply(h.catalog()[1],focus);await saved;
+ assert.equal(h.render({work:'recVersion'}).data,null);await tick();
+ const version=h.catalog()[2];assert.equal(version.options.headers.Prefer,'omit-stage-candidates, work-detail=recVersion');
+ assert.equal(h.render({work:'recOne'}).data,focus);
+ assert.ok(version.options.signal.aborted);
+ h.reply(version,{...focus,scope:{type:'work',workId:'recVersion'}});await tick();assert.equal(h.render().data,focus);
+ assert.equal(h.render({work:null}).data,null);await tick();
+ assert.equal(h.catalog()[3].options.headers.Prefer,'omit-stage-candidates');
+ h.reply(h.catalog()[3],full);await tick();assert.equal(h.render().data,full);
+ assert.equal(h.render({work:'recVersion'}).data,full);await tick();assert.equal(h.catalog().length,4);
+ h.unmount();
+});
+test('restored watch queues and full responses from legacy servers keep every library link available',async()=>{
+ for(const sequence of [{ids:['recOne','recNext']},undefined]){
+  const h=harness({work:'recOne',sequence});await tick();
+  assert.equal(h.catalog()[0].options.headers.Prefer,sequence?'omit-stage-candidates':'omit-stage-candidates, work-detail=recOne');
+  const full={...cached(),cache:{}};h.reply(h.catalog()[0],full);await tick();
+  assert.equal(h.render({work:'recNext'}).data,full);
+  h.render({work:null,sequence:undefined});await tick();
+  assert.equal(h.catalog().length,1);h.unmount();
+ }
+});
+test('a deleted target can return the full library and mismatched scoped replies stay out of the detail',async()=>{
+ const h=harness({work:'recDeleted'});await tick();
+ h.reply(h.catalog()[0],{...cached(),scope:{type:'work',workId:'recOther'},cache:{}});
+ await tick();assert.equal(h.render().data,null);assert.match(h.states[1],/重新载入/);
+ const retry=h.load();await tick();
+ const library={...cached(),counts:{works:1},cache:{}};
+ h.reply(h.catalog()[1],library);await retry;
+ assert.equal(h.render().data,library);
+ assert.equal(h.render({work:null}).data.counts.works,1);
+ await tick();assert.equal(h.catalog().length,2);h.unmount();
+});
 
 for(const phase of ['fetch','json'])test('initial '+phase+' timeout releases loading and allows recovery',async()=>{
  const h=harness();await tick();const r=h.catalog()[0];let body;

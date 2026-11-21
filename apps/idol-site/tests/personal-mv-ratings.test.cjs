@@ -11,6 +11,9 @@ const bad=(code,status)=>e=>e.code===code&&(!status||e.status===status);
 test('owner explicitly saves zero for a historical member, reads it privately, exports it, and can clear it',async()=>{
  const h=harness(),{api,sql}=h,input=await h.request();
  const first=await api.savePersonalMvRating('owner',input);
+ const control=await api.ownControl('owner');
+ assert.deepEqual(await api.personalMvRatingsForOwner('owner',control,h.catalog,h.work.id),await h.read());
+ assert.deepEqual((await api.personalMvRatingsForOwner('owner',control,h.catalog,'recOther')).entries,[]);
  assert.equal(first.verified,true);assert.equal(first.revision,1);assert.equal(first.score,0);
  assert.deepEqual(await api.savePersonalMvRating('owner',input),first);
  assert.equal(count(sql,'idol_saves'),1);assert.equal(count(sql,'idol_personal_mv_ratings'),1);
@@ -62,6 +65,24 @@ test('concurrent saves, stale revisions, lost receipts and mid-transaction failu
  const done=await api.savePersonalMvRating('owner',next);assert.equal(done.revision,2);
  const retries=await Promise.all([api.savePersonalMvRating('owner',next),api.savePersonalMvRating('owner',next)]);
  assert.deepEqual(retries,[done,done]);assert.equal(count(sql,'idol_saves'),2);assert.equal(count(sql,'idol_personal_mv_ratings'),1);
+});
+test('two detail tabs can refresh, keep zero, and clear only the confirmed work revision',async()=>{
+ const h=harness(),control=await h.api.ownControl('owner');
+ const secondWork={...h.work,id:'recNeighbor'};
+ h.seed('works',secondWork.id,{fldhBWXBZE:secondWork.url,fld2wy1cqw:secondWork.groupIds});
+ const catalog={...h.catalog,works:[h.work,secondWork]};
+ const read=id=>h.api.personalMvRatingsForOwner('owner',control,catalog,id);
+ const first=await h.request(),oldDraft=await h.request({score:9});
+ await h.api.savePersonalMvRating('owner',first);
+ await h.api.savePersonalMvRating('owner',await h.request({workId:secondWork.id,score:7}));
+ await assert.rejects(h.api.savePersonalMvRating('owner',oldDraft),bad('EDIT_CONFLICT',409));
+ const refreshed=await read(h.work.id);
+ assert.equal(refreshed.entries.length,1);assert.equal(refreshed.entries[0].score,0);
+ await h.api.savePersonalMvRating('owner',await h.request({revision:refreshed.entries[0].revision,score:null}));
+ assert.equal((await read(h.work.id)).entries[0].score,null);
+ assert.equal((await read(secondWork.id)).entries[0].score,7);
+ assert.equal((await read(null)).entries.length,2);
+ assert.equal(count(h.sql,'idol_saves'),3);h.sql.close();
 });
 test('a new native relation, source revision or owner epoch between read and write wins atomically',async()=>{
  for(const race of ['snapshot','work','member','relation']){

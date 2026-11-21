@@ -28,7 +28,7 @@ const supplement:Shape={
  viewingNote:true,researchNote:{summary:true,sources:[fields('label url')]},
  };
 const shape:Shape={
- scope:fields('type groupId'),cache:fields('source refreshRecommended'),...fields('mode capturedAt loadedAt'),
+ scope:fields('type groupId workId'),cache:fields('source refreshRecommended'),...fields('mode capturedAt loadedAt'),
  groups:[{...fields('id name generation company country note debut average ratedCount currentName status officialUrl channelUrl'),memberIds:ids,workIds:ids,social,milestones:[fields('id kind title valueLabel scope date sourceTitle sourceUrl')]}],
  members:[{...fields('id name cnName stageName favorite note profile status country role officialUrl birthDate'),groupIds:ids,formerGroupIds:ids,photo,social}],
  works:[{...fields('id name song url score stageScore note watched videoType version releaseDate officialTitle channel'),groupIds:ids,ratingIds:ids,stage,stageResearch:fields('status checkedAt'),stageSupplement:supplement,

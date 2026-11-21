@@ -17,12 +17,14 @@ const validScore=(value:unknown)=>value===null||typeof value==='number'&&Number.
 const scopeFor=(control:StorageControl)=>hash(['personal-mv',control.owner_id,control.active_snapshot,control.epoch]);
 function conflict(){return new AppError('EDIT_CONFLICT','评分或成员资料已更新，请重新载入后核对。',409);}
 
-export async function personalMvRatingsForOwner(userId:string,control:StorageControl|null,catalog:CatalogView):Promise<PersonalMvRatings|undefined>{
+export async function personalMvRatingsForOwner(userId:string,control:StorageControl|null,catalog:CatalogView,workId:string|null=null):Promise<PersonalMvRatings|undefined>{
  if(!control?.active_snapshot||control.owner_id!==userId||!['frozen','native'].includes(control.mode))return;
  const db=nativeDb();
+ const filter=workId?' AND work_id=?':'';
+ const bindings=workId?[userId,control.active_snapshot,workId]:[userId,control.active_snapshot];
  const {results}=await db.prepare(`SELECT work_id AS workId,video_id AS videoId,member_id AS memberId,
    score,styling_score AS stylingScore,revision FROM idol_personal_mv_ratings
-   WHERE owner_id=? AND snapshot_id=? ORDER BY work_id,member_id`).bind(userId,control.active_snapshot).all<PersonalMvRating>();
+   WHERE owner_id=? AND snapshot_id=?${filter} ORDER BY work_id,member_id`).bind(...bindings).all<PersonalMvRating>();
  const works=new Map(catalog.works.map(work=>[work.id,work]));
  const members=new Map(catalog.members.map(member=>[member.id,member]));
  const entries=results.filter(row=>{

@@ -6,7 +6,7 @@ test('real App SSR keeps the nonempty private loading shell without starting any
  vm.runInNewContext('(function(require,module,exports){'+result.outputFiles[0].text+'})',{console,URL,URLSearchParams,AbortController,setTimeout,clearTimeout,fetch:()=>{reads++;throw Error('SSR must not read catalog or modules');}})(require,module,module.exports);
  for(let i=0;i<2;i++){
   const html=renderToString(React.createElement(module.exports.default));
-  assert.match(html,/正在打开你的私人放映室/);assert.match(html,/<main>/);assert.match(html,/主导航/);assert.match(html,/团体索引/);
+  assert.match(html,/正在加载音乐资料/);assert.match(html,/<main>/);assert.match(html,/主导航/);assert.match(html,/<span>团体<\/span>/);
   assert.doesNotMatch(html,/data-module-status|group-index-card|MV 分数/);
  }
  assert.equal(reads,0);

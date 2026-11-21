@@ -12,7 +12,7 @@ import {useMemberWorkFocus} from './use-member-work-focus';
 import {newHomeRotation,type HomeRotation} from '@/lib/idol/home-rotation';
 
 // Only navigation preferences live in this tab's history. Scores, notes and record data never do.
-export function useBrowseJourney(dataReady:boolean,stylesheetForRoute:(route:Route)=>string|undefined=()=>undefined,contentReadyForRoute:(route:Route)=>boolean=()=>true){
+export function useBrowseJourney(dataReady:boolean,stylesheetForRoute:(route:Route)=>string|undefined=()=>undefined,contentReadyForRoute:(route:Route,sequence?:WatchSequence)=>boolean=()=>true){
  const [entry,setEntry]=useState<BrowseEntry>(()=>newEntry('/'));
  const styles=useExperienceStyles(stylesheetForRoute(entry.route));
  const styleReady=styles.phase==='ready'||styles.phase==='not-required';
@@ -20,7 +20,7 @@ export function useBrowseJourney(dataReady:boolean,stylesheetForRoute:(route:Rou
  const [restoreSequence,setRestoreSequence]=useState(0);
  const libraryList=entry.route.nav==='works'&&!entry.route.work&&!entry.route.member&&!entry.route.groupId;
  const libraryMountKey=entry.position+':'+restoreSequence;
- const ready=dataReady&&styleReady&&contentReadyForRoute(entry.route)&&(!libraryList||libraryMounted===libraryMountKey);
+ const ready=dataReady&&styleReady&&contentReadyForRoute(entry.route,entry.sequence)&&(!libraryList||libraryMounted===libraryMountKey);
  const liveReady=useRef(ready);liveReady.current=ready;
  useMemberWorkFocus(ready,routeUrl(entry.route),false);
  const current=useRef(entry),restoring=useRef(true),skipPop=useRef(false),backApproved=useRef(false);
@@ -95,5 +95,5 @@ export function useBrowseJourney(dataReady:boolean,stylesheetForRoute:(route:Rou
   write(updated);setEntry(updated);setLibraryMounted(libraryMountKey);
  }
  const updateHome=useCallback((home:HomeRotation)=>{const updated={...current.current,home};write(updated);setEntry(updated);},[]);
- return {insights:readInsightsViewState(entry.insights),updateInsights,libraryRestoreTarget:libraryList&&restoring.current?{anchorId:entry.anchor?.id,offset:entry.anchor?.offset,page:entry.lists.works.page,legacyLimit:entry.lists.works.limit,focusId:entry.libraryFocus,requestKey:libraryMountKey}:undefined,libraryRestoreMounted,setLibraryPage,displayReady:ready,styleReady,stylePhase:styles.phase,retryStyles:styles.retry,reloadPage,leaveTo,home:entry.home,updateHome,route:entry.route,sequence:entry.sequence,continueWork,filters:entry.lists[entry.route.nav]??defaultFilters(),groupFilters:entry.route.groupId?entry.groupLists?.[entry.route.groupId]??{...defaultFilters(),group:entry.route.groupId}:defaultFilters(),updateGroupFilters,backLabel:entry.from?.label,navigate,back,updateFilters,setVideo};
+ return {routeReady:restoreSequence>0,insights:readInsightsViewState(entry.insights),updateInsights,libraryRestoreTarget:libraryList&&restoring.current?{anchorId:entry.anchor?.id,offset:entry.anchor?.offset,page:entry.lists.works.page,legacyLimit:entry.lists.works.limit,focusId:entry.libraryFocus,requestKey:libraryMountKey}:undefined,libraryRestoreMounted,setLibraryPage,displayReady:ready,styleReady,stylePhase:styles.phase,retryStyles:styles.retry,reloadPage,leaveTo,home:entry.home,updateHome,route:entry.route,sequence:entry.sequence,continueWork,filters:entry.lists[entry.route.nav]??defaultFilters(),groupFilters:entry.route.groupId?entry.groupLists?.[entry.route.groupId]??{...defaultFilters(),group:entry.route.groupId}:defaultFilters(),updateGroupFilters,backLabel:entry.from?.label,navigate,back,updateFilters,setVideo};
 }

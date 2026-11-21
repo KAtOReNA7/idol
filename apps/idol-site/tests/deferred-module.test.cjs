@@ -47,6 +47,6 @@ test('App has one group-module boundary, visible explicit reload and unchanged e
  const app=fs.readFileSync('app/page.tsx','utf8'),hook=fs.readFileSync('components/use-catalog-group-views.ts','utf8');
  assert.doesNotMatch(app,/import \{Group(?:Index|Detail)\} from/);assert.match(hook,/createDeferredModule\(\(\)=>import\('\.\/catalog-group-views'\)\)/);
  assert.match(app,/groupViews\.phase==='idle'\)groupViews.load\(\)/);assert.match(app,/data-module-status/);assert.match(app,/onClick=\{journey.reloadPage\}>重新加载页面/);
- assert.match(app,/r=>!needsCatalogGroupViews\(r,data\)\|\|groupViews.phase==='ready'/);assert.match(app,/inert=\{!!data&&!journey.styleReady\}/);
+ assert.match(app,/catalogCoversRoute\(available,sequence\?null:validDetailWork\(r.work\)\)&&\(!needsCatalogGroupViews\(r,available\)\|\|groupViews.phase==='ready'\)/);assert.match(app,/inert=\{!!data&&!journey.styleReady\}/);
  assert.doesNotMatch(source,/localStorage|sessionStorage|fetch\(|sendBeacon/);
 });

@@ -18,6 +18,8 @@ const built = buildSync({stdin:{contents:[
   "export {projectCatalog} from './lib/idol/catalog'",
   "export {projectBrowserCatalog,withoutStageCandidates} from './lib/idol/browser-catalog'",
   "export {projectArtistCatalog} from './lib/idol/artist-catalog'",
+  "export {findDetailWork,projectWorkCatalog} from './lib/idol/work-catalog'",
+  "export {preferredDetailWork} from './lib/idol/work-catalog-request'",
   "export {projectPublicCatalog} from './lib/idol/public-catalog'",
 ].join('\n'),resolveDir:root}, platform:'node',format:'cjs',bundle:true,write:false,
   external:['cloudflare:workers','server-only'],logLevel:'silent'});
@@ -53,10 +55,10 @@ function speedTargets(){
     home:mediaOrder.get(g.slug)?.homeVideo||nativeHomeVideo[g.slug],
     works:mediaOrder.get(g.slug)?.worksVideo,sampleWork:sampleWorks[g.slug]}));
 }
-function catalog(slug, omitCandidates) {
-  const key = (omitCandidates ? 'display:' : 'full:') + slug;
+function catalog(slug, omitCandidates, work) {
+  const key = (omitCandidates ? 'display:' : 'full:') + (slug || work?.id || '');
   if (!payloads.has(key)) {
-    const scoped = slug ? api.projectArtistCatalog(data,registry.find(g=>g.slug===slug).groupId) : data;
+    const scoped = slug ? api.projectArtistCatalog(data,registry.find(g=>g.slug===slug).groupId) : work ? api.projectWorkCatalog(data, work) : data;
     const view = api.projectPublicCatalog(api.projectBrowserCatalog(scoped));
     payloads.set(key, JSON.stringify(omitCandidates ? api.withoutStageCandidates(view) : view));
   }
@@ -102,10 +104,12 @@ const server = http.createServer(async (req,res)=>{
       const slug=url.searchParams.get('artist')||'';
       if(slug&&!registry.some(g=>g.slug===slug)) {res.writeHead(404).end();return;}
       const omitCandidates = url.searchParams.get('shape')==='display-v1' && req.headers.prefer?.split(',').some(item=>item.trim()==='omit-stage-candidates');
+      const work = !slug && url.searchParams.get('shape')==='display-v1' ? api.findDetailWork(data,api.preferredDetailWork(req.headers.prefer)) : null;
       res.setHeader('Vary','Prefer');
       res.setHeader('Cache-Control','private, no-store');
-      if(omitCandidates)res.setHeader('Preference-Applied','omit-stage-candidates');
-      return send('application/json; charset=utf-8',catalog(slug,omitCandidates));
+      const applied = [omitCandidates && 'omit-stage-candidates', work && 'work-detail='+work.id].filter(Boolean);
+      if(applied.length)res.setHeader('Preference-Applied',applied.join(', '));
+      return send('application/json; charset=utf-8',catalog(slug,omitCandidates,work));
     }
     const proxy=http.request({hostname:'127.0.0.1',port:workerPort,path:url.pathname+url.search,method:'GET',headers:{accept:req.headers.accept||'*/*'}},upstream=>{
       res.statusCode=upstream.statusCode;

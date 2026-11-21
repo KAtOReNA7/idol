@@ -2,11 +2,13 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v219。AtHeart 两支首页 MV 可在出现时打开详情，UNIS 三张 MV 可点整行。最近一次实播中《Magnetic》和《ATTITUDE》均为 4K，《BILLIONAIRE》的 RUTUBE 源返回暂时不可用。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [验收与回执](worklogs/20261122-v219-release.md) |
+| 正式站 | v220。七团的首页 MV 在发行之前，IVE 首个 MV 链接中位 642 ms。《BILLIONAIRE》本次在本站恢复 1920 × 884 实播，《Magnetic》《ATTITUDE》均为 4K。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [正式验收](worklogs/20261122-v220-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `7d7329bf`，发布标签 `site/v219`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `83d6f005`，发布标签 `site/v220`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v220 已将上批发现的七团首屏顺序修正。14/14 个画面的屏幕位置和真实 Tab 顺序均先 MV 后发行，28/28 次点击并返回正确。IVE 从进入首页到可点《LOVE DIVE》从 1,918 降至 642 ms，单看点卡后的等待则增加 416 ms。该团两张原 Figma 画板已对齐。31 个团内影像详情的实际站内和外部入口均已核实。《BILLIONAIRE》的同一上游曾在 v219 拒播，本版复测恢复；四场独占舞台仍为 0/4。[正式数据与 Figma](worklogs/20261122-v220-release.md)
 
 v219 完成 51 个桌面首页与 Billlie 手机页的栏目键盘实测。额外核对首屏后，确认七团的发行入口早于 MV，已记录两档正文宽度的实际位置。729 个需从名册选取的评分位置已用隔离保存及读回验收。[逐团访问](worklogs/20261122-formal-home-access.md) · [正式修复与观看现状](worklogs/20261122-v219-release.md)
 

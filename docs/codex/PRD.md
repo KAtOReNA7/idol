@@ -19,7 +19,7 @@
 
 ## 正式站验收进展
 
-最新 v219 的《BILLIONAIRE》在本站收到上游暂时不可用；其 1920 × 884 为此前实际通过的场次。《Magnetic》和《ATTITUDE》本次仍为 4K。另已定位七团栏目之前的发行入口，在桌面和手机均早于 MV，按 IVE 优先修复。[逐项回执](worklogs/20261122-v219-release.md)
+正式 v220 已优先复验《BILLIONAIRE》。同一站内来源在 v219 报暂时不可用，本版静音恢复至 1920 × 884；《Magnetic》《ATTITUDE》本版均为 4K。七团主视觉入口在桌面和手机都先 MV 后发行，14 个画面的显示、Tab、准确详情和返回均通过。四场 B 站独占舞台、另外三支尚无稳定同剪辑的 MV 仍待片源。[逐项回执与性能对照](worklogs/20261122-v220-release.md)
 
 《BILLIONAIRE》《Magnetic》和 IVE《ATTITUDE》已在正式站取得连续进度与高清解码，四场 B 站独占舞台仍待同场站内高清来源。100 个团体首页及目录入口已核对手机和桌面的 MV / 专辑顺序。八支 MV 新选的 63 张成员卡也在两个宽度实点了本人照片、评分及原图。目录字节和点击耗时分别报告。逐次结果见[当前状态](STATUS.md)、[正式实播](worklogs/20261122-additional-mv-playback.md)、[照片与首图](worklogs/20261122-v216-release.md)和[三团点击的前后对照](worklogs/20261122-v215-release.md)。
 

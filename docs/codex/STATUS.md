@@ -2,13 +2,17 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v208，2026 年 11 月 22 日发布。51 团、605 支有视频的作品、9 个目录占位、527 个舞台；19 支 MV 已配置核验通过的同版站内来源。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v208/publication.json) |
+| 正式站 | v210，51 团、605 支有视频的作品、9 个目录占位、527 个舞台。599 支 MV 已支持在成员照片下原位评分。126 支作品配置了同版站内备选片源。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v210/publication.json) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v208 应用提交 `1d2236f8`，GitHub 发布标签 `site/v208`。后续按成员照片卡内编辑和片源实播两个方向推进。[逐团预览](worklogs/20261122-work-previews.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，应用提交 `5ac54f36`，发布标签 `site/v210`。[逐团评分验收](evidence/20261122-v209/formal-group-opened-scores.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
 
-Hearts2Hearts 的待看 MV 在正式站有 10 张卡，完整目录有 13 张，已全部解码。527 个绑定舞台均使用本站预览图。《BILLIONAIRE》七名发行成员均有本人评分入口。v208 使用独立评分区，照片下就地编辑是后续修订项。Windows 和 WSL 的 `npm run verify` 均通过；完整套件的既有失败从 173／169 减至 170／166。[公开测试回执](evidence/20261122-v208/tests.json) · [作品来源](worklogs/20261121-hd-work-players.md) · [成员评分](worklogs/20261122-personal-mv-ratings.md)
+在 605 支 MV 上核查了 4,195 个作品与成员组合。599 支可为成员评分，6 支已确认无真人成员出镜。v209 正式站每个有 MV 的团各测一支，共 306 张照片全部解码。逐一点开后，两个分数输入框和保存按钮均在同一张照片下。《BILLIONAIRE》七位成员另做桌面和手机实测，原有作品评分经刷新读回。飞书两条已标记解决。[评分工作记录](worklogs/20261122-inline-mv-scores.md) · [正式逐团实点](evidence/20261122-v209/formal-group-opened-scores.json)
+
+v210 的唯一应用文件差异是七条新增片源。高清同版来源从 v208 的 19 支增至 126 支。实播核验记录实际解码尺寸与进度；第三方供应商可随时出现地区、网络或分发错误。《BILLIONAIRE》提供可在同一个播放器切换的 B 站备用线路。[新增七支回执](worklogs/20261122-work-player-retries-v210.md) · [正式样本](evidence/20261122-v210/publication.json) · [双平台测试](evidence/20261122-v210/tests.json)
+
+Hearts2Hearts 待看 10 张和全部 13 张作品封面均在 v208 正式站解码。527 个绑定舞台使用本站预览图。[作品预览](worklogs/20261122-work-previews.md)
 
 ## 线上内容
 
@@ -20,7 +24,7 @@ Hearts2Hearts 的待看 MV 在正式站有 10 张卡，完整目录有 13 张，
 
 ## 工程与下一步
 
-本地 Windows、WSL Linux 和 GitHub 的 Windows、Ubuntu 均通过 `npm run verify`。完整测试在 Windows 余 179 项失败，Linux 余 175 项，较上一检查点各减少 18 项，新增失败均为 0。托管 Ubuntu 与本地 Linux 逐项相同。UDTT 的真实公开原图已在正式站两宽解码，SHA-256 相符，关闭后焦点返回原按钮。[测试清单](evidence/20261121-release-periods/tests.json) · [正式测量](evidence/20261121-release-periods/formal-metrics.json)
+v204 时，本地 Windows、WSL Linux 和 GitHub Windows、Ubuntu 均通过验证。该轮修复 18 项旧测试，UDTT 公开原图在正式站两宽解码，关闭后焦点返回原按钮。当前完整套件状态见 v210 双平台回执。[v204 记录](evidence/20261121-release-periods/tests.json) · [v210 记录](evidence/20261122-v210/tests.json)
 
 下一步依次验证连接器实际提供的新 owner 批量读取工具、处理剩余旧用例，以及在新增具名资料出现时升级跨期照片与节目绑定。私人存储已读回同一活动快照、epoch 6 和 206 条完成日志。[核对接口及适用范围](STAGE-OWNER-PREFLIGHT.md) · [发布前的审查与后续开发](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
 

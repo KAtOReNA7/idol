@@ -5,7 +5,6 @@ import {rocketpunchMemberContext, latestRocketpunchOfficialUrl} from '@/lib/idol
 import {MemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPhysicalFacts} from '@/components/member-physical-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
-import {publicCreditsForMember} from '@/lib/idol/public-work-credits';
 import {memberDisplayName} from '@/lib/idol/member-display-name';
 import {ArrowUpRight, ArrowLeft} from 'lucide-react';
 import type {CatalogView as Catalog, Member} from '@/lib/idol/types';
@@ -49,7 +48,7 @@ export function MemberDetail({member:m,data,onBack,onWork,onGroup,onSaved,backLa
   <section className="section" data-member-module="works">
    <div className="section-heading"><h2>她的作品 <small>{works.length}</small></h2><span className="subtle">个人评分</span></div>
    <div className="member-works-grid">{works.map(item=><MemberWorkCard key={item.work.id} item={item} member={m} data={data} onOpen={()=>onWork(item.work.id)}/>)}</div>
-   {works.length===0&&<p className="subtle">{publicCreditsForMember(data,m.id).length?'个人评分记录待补，公开作品资料见下方。':'还没有收录她的 MV。'}</p>}
+   {works.length===0&&<p className="subtle">还没有个人作品评分。</p>}
   </section>
   <MemberPublicCredits memberId={m.id} data={data} onWork={onWork}/>
   <MemberCareerFacts member={careerMember} part="history"/>

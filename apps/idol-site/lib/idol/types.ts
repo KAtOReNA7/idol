@@ -18,7 +18,7 @@ export type StageAlternative={id:string;platform:'youtube'|'bilibili'|'naver'|'w
 export type StageResearchNote={summary:string;sources:{label:string;url:string}[]};
 export type StageSearchReview={publicNote?:StageResearchNote;reviewComplete?:true;reopenRequirement?:string;checkedAt:string;accessLimited:boolean;outcome:'not_found_in_scope'|'verification_limited'|'alternate_version_found';summary:string;scope:{label:string;url:string}[];excluded:{title:string;url:string;reason:string}[];limitations:string[]};
 export type StageWatchLead={sourceType:'official_livestream_song_lead'|'official_multi_song_live_clip'|'official_showcase_full_event'|'official_concert_full_event'|'official_compilation'|'official_television_program'|'unconfirmed_program';id:string;platform:StageAlternative['platform'];sourceId:string;bilibili?:{cid:string;page:number};sourceClass:'official'|'reupload'|'third_party';performerScope:'full_group'|'subunit'|'solo'|'unconfirmed';completeness:'unconfirmed';selection?:StageSelection;url:string;title:string;channel:string;kind:string;checkedAt:string;scorePolicy:'view_only';sourceEvidence:StageEvidence;sameSongEvidence:StageEvidence;reason:string;leadTimeSeconds?:number;leadTimeEvidence?:StageEvidence};
-export type StageSupplement={alternatives:StageAlternative[];watchLeads?:StageWatchLead[];searchReview?:StageSearchReview;researchNote?:StageResearchNote};
+export type StageSupplement={viewingNote?:string;alternatives:StageAlternative[];watchLeads?:StageWatchLead[];searchReview?:StageSearchReview;researchNote?:StageResearchNote};
 export type GroupPlaceholder={reason:string;originalRow:number;verifiedAt:string};
 export type VersionDisplay={tags:string[];links:{workId:string;title:string;labels:string[];categories:string[]}[]};
 export type Work={versionDisplay?:VersionDisplay;placeholder?:GroupPlaceholder|null;stageSupplement?:StageSupplement|null;stage:StageVideo|null;stageResearch:StageResearch;id:string;name:string;song:string;groupIds:string[];url:string;score:number|null;stageScore:number|null;note:string;watched:string;videoType:string;version:string;releaseDate:string;verification:string;officialTitle:string;channel:string;ratingIds:string[];source:string};
@@ -28,5 +28,7 @@ export type Catalog={scope?:{type:'artist';groupId:string};cache?:{source:'persi
 // carries the server's existing personal-photo decision instead of long evidence
 // text. Complete Rating/Catalog remain the server and backup contracts.
 export type RatingView=Omit<Rating,'source'|'recognition'>&{source?:string;recognition?:string;personalPhotoEligible?:boolean};
-export type CatalogView=Omit<Catalog,'ratings'>&{ratings:RatingView[]};
+export type PersonalMvRating={workId:string;videoId:string;memberId:string;score:number|null;stylingScore:number|null;revision:number};
+export type PersonalMvRatings={scope:string;writable:boolean;entries:PersonalMvRating[]};
+export type CatalogView=Omit<Catalog,'ratings'>&{ratings:RatingView[];personalMvRatings?:PersonalMvRatings};
 export type Detail={table:string;recordId:string;revision:string;values:Record<string,unknown>;mode:'live';};

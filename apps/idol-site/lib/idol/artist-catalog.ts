@@ -1,6 +1,6 @@
 import {memberBelongsInArchive,supportsHistoricalRoster,relatedHistoricalMember} from './member-affiliation';
 import {candidateArtistCatalog} from './candidate/registry';
-import type {Catalog} from './types';
+import type {Catalog,PersonalMvRating} from './types';
 import {publicCreditForWork} from './public-work-credits';
 import {AppError} from './feishu';
 import {BABYMONSTER_GROUP_ID,ILLIT_GROUP_ID,XG_GROUP_ID,AESPA_GROUP_ID,IVE_GROUP_ID,KIOF_GROUP_ID,STAYC_GROUP_ID,NMIXX_GROUP_ID,HEARTS2HEARTS_GROUP_ID,KIIIKIII_GROUP_ID,ITZY_GROUP_ID,LESSERAFIM_GROUP_ID,SAYMYNAME_GROUP_ID,KATSEYE_GROUP_ID} from './artist-navigation';
@@ -14,7 +14,7 @@ export function requestedArtist(params:URLSearchParams):string|null{
  if(!id)throw new AppError('INVALID_ARTIST','这个团体页面暂时无法打开。',400);
  return id;
 }
-export function projectArtistCatalog(data:Catalog,groupId:string):Catalog{
+export function projectArtistCatalog(data:Catalog,groupId:string,personal:PersonalMvRating[]=[]):Catalog{
  if(!data.groups.some(g=>g.id===groupId))throw new AppError('NOT_FOUND','暂未找到这个团体。',404);
  const rosterIds=new Set(data.members.filter(m=>supportsHistoricalRoster(groupId)?relatedHistoricalMember(m,groupId):memberBelongsInArchive(m,groupId)).map(m=>m.id));
  const groupWorkIds=new Set(data.works.filter(w=>w.groupIds.includes(groupId)).map(w=>w.id));
@@ -22,7 +22,8 @@ export function projectArtistCatalog(data:Catalog,groupId:string):Catalog{
  // group works. Never cut a member's personal averages to this group's works.
  const ratings=data.ratings.filter(r=>r.memberIds.some(id=>rosterIds.has(id))||r.workIds.some(id=>groupWorkIds.has(id)));
  const creditedWorkIds=data.works.filter(w=>publicCreditForWork(w)?.memberIds.some(id=>rosterIds.has(id))).map(w=>w.id);
- const workIds=new Set([...groupWorkIds,...ratings.flatMap(r=>r.workIds),...creditedWorkIds]);
+ const selected=personal.filter(row=>rosterIds.has(row.memberId)||groupWorkIds.has(row.workId));
+ const workIds=new Set([...groupWorkIds,...ratings.flatMap(r=>r.workIds),...creditedWorkIds,...selected.map(row=>row.workId)]);
  const works=data.works.filter(w=>workIds.has(w.id)).map(work=>{
   if(!work.versionDisplay)return work;
   const links=work.versionDisplay.links.filter(link=>workIds.has(link.workId));
@@ -30,7 +31,7 @@ export function projectArtistCatalog(data:Catalog,groupId:string):Catalog{
   const next={...work};delete next.versionDisplay;
   return work.versionDisplay.tags.length||links.length?{...next,versionDisplay:{tags:work.versionDisplay.tags,links}}:next;
  });
- const memberIds=new Set([...rosterIds,...ratings.flatMap(r=>r.memberIds),...works.flatMap(w=>publicCreditForWork(w)?.memberIds??[])]);
+ const memberIds=new Set([...rosterIds,...ratings.flatMap(r=>r.memberIds),...works.flatMap(w=>publicCreditForWork(w)?.memberIds??[]),...selected.map(row=>row.memberId)]);
  const members=data.members.filter(m=>memberIds.has(m.id));
  const groupIds=new Set([groupId,...members.flatMap(m=>m.groupIds),...works.flatMap(w=>w.groupIds)]);
  const groups=data.groups.filter(g=>groupIds.has(g.id));

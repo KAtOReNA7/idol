@@ -18,9 +18,10 @@ import vvupPosters from '../../data/vvup-video-posters.json';
 import stageSelectionPosters from '../../data/stage-selection-posters-20261027.json';
 import biliPosters from '../../data/stage-bilibili-posters-20261029.json';
 import gnarlyPosters from '../../data/stage-gnarly-poster-20261101.json';
-import type {StageVideo} from './types';
-import {stageSourceKey} from './stage-source';
-import {publicMvCover,publicCoverZoom} from './mv-public-covers';
+import type {StageVideo,Work} from './types';
+import {stageSourceKey,stageSourceMatchesUrl} from './stage-source';
+import {cachedVideoPreview,publicMvCover,publicCoverZoom,wholePreviewVideoId} from './mv-public-covers';
+import {videoId} from './values';
 
 export type VideoPoster = {
  src:string;
@@ -28,6 +29,7 @@ export type VideoPoster = {
  intrinsicSize?:{width:number;height:number};
  fit?:'cover'|'contain';
  zoom?:number;
+ workReference?:boolean;
 };
 
 // SAY MY NAME entries are publisher illustrations. These retained assets
@@ -74,7 +76,7 @@ export function approvedVideoPoster(workId:string,videoId:string|null,view:'mv'|
 const exactStagePosters=[...biliPosters.entries,...crushPosters.entries,...qwerPosters.entries,...broadcastPosters.entries];
 // A post or multipart upload may contain multiple media and cover identities.
 export function approvedStagePoster(workId:string,stage:StageVideo):VideoPoster|null{
- const key=stageSourceKey(stage);if(!key)return null;
+ const key=stageSourceKey(stage);if(!key||!stageSourceMatchesUrl(stage))return null;
  // New multipart/interval posters must prove the complete source identity.
  const exact=exactStagePosters.find(p=>p.workId===workId&&p.videoId===stage.videoId&&p.view==='stage'&&p.sourceKey===key);
  if(exact)return {src:exact.src,label:exact.label,intrinsicSize:exact.intrinsicSize,fit:'contain'};
@@ -83,4 +85,20 @@ export function approvedStagePoster(workId:string,stage:StageVideo):VideoPoster|
  if(stage.platform!=='bilibili')return approvedVideoPoster(workId,stage.videoId,'stage');
  const entry=(stageSelectionPosters.entries as {workId:string;videoId:string;view:string;sourceKey?:string;src:string;label:string;intrinsicSize?:{width:number;height:number}}[]).find(p=>p.workId===workId&&p.view==='stage'&&p.videoId===stage.videoId&&p.sourceKey===key);
  return entry?{src:entry.src,label:entry.label,intrinsicSize:entry.intrinsicSize,fit:'contain'}:null;
+}
+
+export function workReferencePoster(work:Pick<Work,'id'|'url'>):VideoPoster|null{
+ const mv=publicMvCover(work.id,videoId(work.url));
+ return mv?{src:mv.src,label:'关联作品 MV 封面',fit:'contain',workReference:true}:null;
+}
+
+/** After exact editorial art, an uncut upload can use its own publisher thumbnail.
+ * A bounded performance without dedicated art can only use a labelled work reference. */
+export function stagePreviewFallback(work:Pick<Work,'id'|'url'>,stage:StageVideo,allowRemote=false):VideoPoster|null{
+ if(!stageSourceKey(stage)||!stageSourceMatchesUrl(stage))return null;
+ if(!stage.clip&&(stage.platform??'youtube')==='youtube'&&wholePreviewVideoId(stage.url)===stage.videoId){
+  const src=cachedVideoPreview(stage.videoId)??(allowRemote?`https://i.ytimg.com/vi/${stage.videoId}/hqdefault.jpg`:null);
+  return src?{src,label:'对应舞台视频封面',fit:'contain'}:null;
+ }
+ return workReferencePoster(work);
 }

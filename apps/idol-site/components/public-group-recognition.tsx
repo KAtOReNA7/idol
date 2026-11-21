@@ -5,7 +5,7 @@ import {memberDisplayName} from '@/lib/idol/member-display-name';
 import {PublicCreditRecognitionPhoto} from './mv-identity-photo';
 import './public-work-credits.css';
 
-export function PublicGroupRecognition({work,data,onMember}:{work:Work;data:CatalogView;onMember:(id:string)=>void}){
+export function PublicGroupRecognition({work,data,onMember,rateMember}:{work:Work;data:CatalogView;onMember:(id:string)=>void;rateMember?:(id:string)=>(()=>void)|undefined}){
  const reference=publicGroupRecognitionForWork(work);
  if(!reference)return null;
  const portraits=reference.portraits.flatMap(portrait=>{
@@ -13,13 +13,12 @@ export function PublicGroupRecognition({work,data,onMember}:{work:Work;data:Cata
   return member?[{member,portrait}]:[];
  });
  if(!portraits.length)return null;
- return <section className="public-work-credits public-group-recognition" aria-label="团体通用认人参考" data-group-recognition-work={work.id} data-participation-status="unverified_for_work">
-  <h2>团体通用认人参考</h2>
-  <p><strong>未核实本作参与。</strong>以下是{reference.groupName}的通用认人照片，不是本作品的出镜、演唱或创作名单，也不代表本作同期妆造。这里不提供成员评分。</p>
-  <p>{reference.collectionNote}</p>
-  <ul className="public-recognition-grid">{portraits.map(({member,portrait})=><li key={member.id}>
+ return <section className="public-work-credits public-group-recognition" aria-label="团体成员资料照" data-group-recognition-work={work.id} data-participation-status="unverified_for_work">
+  <h2>{reference.groupName} 成员资料照</h2>
+  <ul className="public-recognition-grid">{portraits.map(({member,portrait})=>{const rate=rateMember?.(member.id);return <li key={member.id}>
    <PublicCreditRecognitionPhoto work={work} memberId={member.id} label={memberDisplayName(member)} reference={portrait}/>
    <button type="button" onClick={()=>onMember(member.id)}>{memberDisplayName(member)} ↗</button>
-  </li>)}</ul>
+   {rate&&<button type="button" className="credit-score-action" aria-label={'给'+memberDisplayName(member)+'评分'} onClick={rate}>个人评分</button>}
+  </li>;})}</ul>
  </section>;
 }

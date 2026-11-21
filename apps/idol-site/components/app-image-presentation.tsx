@@ -5,7 +5,7 @@ import type {ComponentProps, CSSProperties, ReactNode} from 'react';
 import type {Photo, Work} from '../lib/idol/types';
 import {videoId} from '../lib/idol/values';
 import {katseyeVideoArt} from '../lib/idol/katseye-editorial';
-import {approvedVideoPoster,type VideoPoster} from '../lib/idol/approved-video-poster';
+import {approvedStagePoster,approvedVideoPoster,stagePreviewFallback,workReferencePoster,type VideoPoster} from '../lib/idol/approved-video-poster';
 import {ReliableImage} from './reliable-image';
 
 type ImageStateListener = ComponentProps<typeof ReliableImage>['onStateChange'];
@@ -40,6 +40,21 @@ export function WorkCoverImage({work,label,fallback,onStateChange}:{
   return <ReliableImage src={poster?.src??(id?(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null)}
     identityKey={`work:${work.id}:video-cover`} alt={poster?`${work.song||work.name} · ${poster.label}`:label??`${work.song||work.name} 官方视频封面`} style={poster?{objectFit:poster.fit??'contain',maxWidth:poster.intrinsicSize?.width,maxHeight:poster.intrinsicSize?.height}:undefined}
     loading="lazy" referrerPolicy="no-referrer" fallback={fallback} onStateChange={onStateChange}/>;
+}
+
+/** Card art follows the same exact source and work-reference rules as the player. */
+export function ArtistWorkPreview({work,stage=false}:{work:Work;stage?:boolean}) {
+ const title=work.song||work.name;
+ if(!stage)return work.url?<span className="artist-work-preview"><WorkCoverImage work={work}/></span>:null;
+ const source=work.stage;
+ const photo=source
+  ?(!source.clip&&(source.platform??'youtube')==='youtube'&&videoId(source.url)===source.videoId?katseyeVideoPoster(work.id,source.videoId,'stage'):null)??approvedStagePoster(work.id,source)??stagePreviewFallback(work,source,true)
+  :work.stageSupplement?.alternatives.length?workReferencePoster(work):null;
+ if(!photo)return <span>{title} · 舞台预览暂缺</span>;
+ return <span className="artist-work-preview">
+  <ReliableImage src={photo.src} alt={`${title} · ${photo.label}`} identityKey={`stage:${work.id}:${photo.src}`} loading="lazy"/>
+  {photo.workReference&&<small className="work-preview-label">{photo.label}</small>}
+ </span>;
 }
 
 export function ConceptPhotoImage({src,memberId,label}:{src:string|null|undefined;memberId:string;label:string}) {

@@ -145,7 +145,31 @@ test('runtime rejects explicitly view-only, nonofficial and excerpt metadata eve
 
 test('viewing options take precedence while research stays backstage and scores stay unchanged',()=>{const {stageStatusLabel,stageStatusDescription,stageMatches}=load('lib/idol/stage-display.ts');const w={stage:null,stageResearch:{status:'blocked',reason:'internal audit text'},stageSupplement:{alternatives:[],searchReview:{summary:'research details'}},stageScore:7,note:'synthetic protected note'};const before=JSON.stringify(w);assert.equal(stageStatusLabel(w),'暂无舞台');assert.doesNotMatch(stageStatusDescription(w),/research|audit/);const alt={...w,stageSupplement:{...w.stageSupplement,alternatives:[{}]}};assert.equal(stageStatusLabel(alt),'其他现场');assert.equal(stageMatches(alt,'alternative'),true);assert.equal(stageMatches(alt,'ready'),false);const formal={...alt,stage:{kind:'音乐节目舞台'}};assert.equal(stageStatusLabel(formal),'有舞台');assert.equal(stageStatusDescription(formal),'音乐节目舞台');assert.equal(JSON.stringify(w),before);});
 
-test('bounded review presentation contains public conclusions rather than internal coordination',()=>{const data=JSON.parse(fs.readFileSync(path.join(root,'data/stages/supplements.json'),'utf8'));const reviews=Object.values(data.works).filter(w=>w.searchReview).map(w=>w.searchReview);assert.ok(reviews.length>=68);const text=JSON.stringify(reviews);assert.doesNotMatch(text,/父级|本审核|worker|browser|CacheMiss|InternalError|web工具|\/workspace\/|evidenceFile|stage-catalog/i);for(const r of reviews){assert.match(r.limitations.join(' '),/整理时间/);assert.ok(r.scope.length>0);assert.ok(r.excluded.every(e=>e.url.startsWith('https://')));assert.ok(!(r.accessLimited&&r.outcome==='not_found_in_scope'));}});
+test('bounded reviews retain dated limitations and only approved source notes reach the public display',()=>{
+ const raw=JSON.parse(fs.readFileSync(path.join(root,'data/stages/supplements.json'),'utf8'));
+ const reviewed=Object.entries(raw.works).filter(([,entry])=>entry.searchReview);
+ assert.ok(reviewed.length>=68);
+ const works=reviewed.map(([id,{searchReview:review}])=>{
+  assert.ok(validStageSearchReview(review),id);
+  assert.ok(Number.isFinite(Date.parse(review.checkedAt)),id);
+  assert.ok(review.limitations.length&&review.limitations.every(limit=>limit.trim()),id);
+  assert.ok(review.scope.length>0&&review.excluded.every(entry=>entry.url.startsWith('https://')),id);
+  assert.ok(!(review.accessLimited&&review.outcome==='not_found_in_scope'),id);
+  return {id,videoType:'',stageSupplement:{alternatives:[],searchReview:review,researchNote:review.publicNote}};
+ });
+ const catalog={works,groups:[],members:[],ratings:[]};
+ const display=load('lib/idol/browser-catalog.ts').projectBrowserCatalog(catalog);
+ const visible=load('lib/idol/public-catalog.ts').projectPublicCatalog(display);
+ for(const [i,work] of visible.works.entries()){
+  const supplement=work.stageSupplement,original=works[i].stageSupplement;
+  assert.equal(supplement.searchReview,undefined,work.id);
+  if(original.researchNote){
+   assert.equal(supplement.researchNote.summary,'节目与发行资料');
+   assert.deepEqual(Array.from(supplement.researchNote.sources,s=>[s.label,s.url]),original.researchNote.sources.map(s=>[s.label,s.url]));
+  }else assert.equal(supplement.researchNote,undefined,work.id);
+ }
+ assert.doesNotMatch(JSON.stringify(visible.works),/父级|本审核|代理未独立|worker|browser|CacheMiss|InternalError|web工具|\/workspace\/|evidenceFile|stage-catalog/i);
+});
 
 test('durable cache fence failure before dispatch sends no mutation and releases only its own lock',async()=>{reset();const original=env.DB.prepare;env.DB.prepare=q=>{const stmt=original(q);if(q.startsWith('UPDATE idol_catalog_state'))stmt.run=async()=>{throw Error('Synthetic cache fence failure')};return stmt};try{const i=await input();await assert.rejects(()=>saveRecord('owner',i),e=>e.code==='PREFLIGHT_FAILED');assert.equal(sent,0);const row=await env.DB.prepare('SELECT status FROM idol_saves WHERE id = ?').bind(i.operationId).first();assert.equal(row.status,'preflight_failed');assert.equal(await env.DB.prepare('SELECT * FROM idol_record_locks WHERE key = ?').bind('works:'+i.recordId).first(),null);}finally{env.DB.prepare=original;}});
 test('cache invalidation failure after upstream acknowledgement retries readback only, never repeats mutation',async()=>{reset();const original=env.DB.prepare;let fences=0;env.DB.prepare=q=>{const stmt=original(q);if(q.startsWith('UPDATE idol_catalog_state')){const run=stmt.run.bind(stmt);stmt.run=async()=>{fences++;if(fences===2)throw Error('Synthetic post-write cache fence failure');return run()}}return stmt};const i=await input();try{await assert.rejects(()=>saveRecord('owner',i),/post-write cache fence/);assert.equal(sent,1);const row=await env.DB.prepare('SELECT status FROM idol_saves WHERE id = ?').bind(i.operationId).first();assert.equal(row.status,'acknowledged');env.DB.prepare=original;const result=await saveRecord('owner',i);assert.equal(result.verified,true);assert.equal(sent,1);const done=await env.DB.prepare('SELECT status FROM idol_saves WHERE id = ?').bind(i.operationId).first();assert.equal(done.status,'done');}finally{env.DB.prepare=original;}});

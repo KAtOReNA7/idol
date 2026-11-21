@@ -2,7 +2,7 @@
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {artistWorkUrl} from '@/lib/idol/artist-preview';
-import {publicVideoCover} from '@/lib/idol/mv-public-media';
+import {publicVideoCover,cachedVideoPreview} from '@/lib/idol/mv-public-covers';
 import {PhotoLightbox} from '@/components/photo-lightbox';
 import {ArtistInformation} from '@/components/artist-information';
 
@@ -170,4 +170,9 @@ export default function GenblueBluecutExperience(){
     <footer className="gb-footer"><Link href={GENBLUE_PATH}>GENBLUE</Link><p>成员 / 作品 / 时间轴</p><div className="gb-site-links"><a href="/?view=groups" onClick={e=>{if(!canLeave())e.preventDefault();}}>返回团体索引 ↗</a><a href={archive.sourceUrl} target="_blank" rel="noopener noreferrer">团体资料来源 ↗</a><span>公开可读，只有本人可编辑</span></div></footer><ImageRecoveryControls/></main></div></ImageRecoveryProvider>;
 }
 
-function displayMediaEvidence(media:GenblueMedia){const cover=publicVideoCover(media.videoId);return cover?{sourceUrl:media.url,image:{src:cover.src,alt:media.title+' · 对应视频封面',caption:'对应视频封面'}}:genblueMediaEvidence(media);}
+function displayMediaEvidence(media:GenblueMedia){
+ const editorial=genblueMediaEvidence(media);
+ const src=publicVideoCover(media.videoId)?.src??editorial?.image.src??(media.sourceKey===media.videoId?cachedVideoPreview(media.videoId):null);
+ if(!src||src===editorial?.image.src)return editorial;
+ return {sourceUrl:media.url,image:{src,alt:media.title+' · 对应视频封面',caption:'对应视频封面'}};
+}

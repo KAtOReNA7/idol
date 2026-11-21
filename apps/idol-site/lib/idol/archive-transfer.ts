@@ -2,7 +2,7 @@ import {archiveOtherObjectBytes} from './archive-quarantine';
 import {env} from 'cloudflare:workers';
 import {AppError,mediaBytes,type TableKey} from './feishu';
 import {liveTables,schema} from './live';
-import {nativeDb,ownControl,nativeTables} from './native-storage';
+import {nativeDb,ownControl,nativeExportSnapshot} from './native-storage';
 import {archiveSummary,validateArchive,collectMedia,uniqueMedia,nativeKey,mediaKey,bytesHash,type ArchiveData} from './native-format';
 import {nativeRevision} from './native-save';
 import {stageSourceMetadata,stageResearchMetadata} from './stage';
@@ -28,11 +28,14 @@ export async function createArchive(userId:string,operationId:string){
  db.prepare("INSERT OR IGNORE INTO idol_archive_runs (id,owner_id,status,snapshot_id,backup_key,cursor,created_at,updated_at) SELECT ?,?,'capturing',?,?,0,?,? WHERE EXISTS (SELECT 1 FROM idol_native_snapshots WHERE id = ? AND owner_id = ?)").bind(operationId,userId,operationId,key,now,now,operationId,userId),
  ]);existing=await db.prepare('SELECT * FROM idol_archive_runs WHERE id = ? AND owner_id = ?').bind(operationId,userId).first<ArchiveRun>();if(!existing)throw new AppError('PILOT_ALREADY_STARTED','已有本次试迁，请继续原批次，未创建重复备份。',409);}
  let object=await bucket().get(key);
- if(!object){const source=control?.mode==='native'?'native':'feishu';if(source==='feishu')for(const table of ['groups','members','works','ratings'] as TableKey[])await schema(table,true);
- const tables=source==='native'?await nativeTables(control!.active_snapshot!):await liveTables();
- const journal=(await db.prepare('SELECT * FROM idol_saves WHERE user_id = ? ORDER BY created_at,id').bind(userId).all<Record<string,unknown>>()).results;
+ if(!object){const native=control?.active_snapshot?await nativeExportSnapshot(userId):null;
+ if(control?.active_snapshot&&!native)throw new AppError('STORAGE_CHANGING','资料来源已变化，请重新打开备份。',409);
+ const source=native?'native':'feishu';if(source==='feishu')for(const table of ['groups','members','works','ratings'] as TableKey[])await schema(table,true);
+ const tables=native?.tables??await liveTables();
+ const journal=native?.journal??(await db.prepare('SELECT * FROM idol_saves WHERE user_id = ? ORDER BY created_at,id').bind(userId).all<Record<string,unknown>>()).results;
  const locks=(await db.prepare('SELECT * FROM idol_record_locks ORDER BY key').all<Record<string,unknown>>()).results;
- const data:ArchiveData={formatVersion:'idol.native-archive.v1',capturedAt:new Date().toISOString(),source,tables,journal,locks,siteMetadata:{stageVideos:stageSourceMetadata,stageResearch:stageResearchMetadata,groupPlaceholders:groupPlaceholderMetadata,stageSupplements:stageSupplementMetadata}};validateArchive(data);
+ const personal=native?.personalMvRatings;
+ const data:ArchiveData={formatVersion:personal?.length?'idol.native-archive.v2':'idol.native-archive.v1',...(personal?.length?{personalMvRatings:personal}:{}),capturedAt:new Date().toISOString(),source,tables,journal,locks,siteMetadata:{stageVideos:stageSourceMetadata,stageResearch:stageResearchMetadata,groupPlaceholders:groupPlaceholderMetadata,stageSupplements:stageSupplementMetadata}};validateArchive(data);
  const raw=new TextEncoder().encode(JSON.stringify(data));if(raw.length>24000000)throw new AppError('ARCHIVE_TOO_LARGE','资料超出本次试迁范围。',409);const compressed=new Uint8Array(await new Response(new Blob([raw]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer());if(compressed.length>PILOT.maxDataBytes)throw new AppError('PILOT_DATA_LIMIT','本次备份超过已批准的资料容量，已停止。',409);
  // Create-only makes a same-operation retry unable to replace the first snapshot.
  const written=await bucket().put(key,compressed,{onlyIf:{etagDoesNotMatch:'*'},httpMetadata:{contentType:'application/gzip'},sha256:await bytesHash(compressed)});object=await bucket().get(key);if(!object)throw new AppError('ARCHIVE_READBACK_FAILED','备份回读未完成，请稍后重试。');if(written){const readback=new Uint8Array(await object.arrayBuffer());if(await bytesHash(readback)!==await bytesHash(compressed))throw new AppError('ARCHIVE_READBACK_FAILED','备份回读校验未通过。');object=await bucket().get(key);if(!object)throw new AppError('ARCHIVE_READBACK_FAILED','备份回读未完成。');}}

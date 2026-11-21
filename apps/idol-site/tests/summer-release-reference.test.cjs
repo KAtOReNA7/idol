@@ -25,7 +25,7 @@ test('all five recognition photos reuse prior same-set original bytes while both
 test('the actual public-reference component shows five read-only people and preserves existing zero scores and private fields',()=>{
  const data={works:[work],ratings:[],members:group.portraits.map(p=>({id:p.memberId,stageName:p.name,groupIds:[group.groupId],formerGroupIds:[]}))},before=structuredClone(data);
  const html=renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data,onMember(){}}));
- assert.equal((html.match(/class="mv-identity-frame/g)||[]).length,5);assert.match(html,/本发行概念照人物参考/);assert.doesNotMatch(html,/<input|<form|cast-scores|synthetic private note/);
+ assert.equal((html.match(/class="mv-identity-frame/g)||[]).length,5);assert.match(html,/发行概念照人物参考/);assert.doesNotMatch(html,/<input|<form|cast-scores|synthetic private note/);
  for(const member of data.members){assert.deepEqual(memberWorks(data,member.id),[]);assert.equal(publicCreditsForMember(data,member.id).length,1);const saved={...data,ratings:[{id:'saved-zero',workIds:[work.id],memberIds:[member.id],score:0,stylingScore:9,memory:'private synthetic'}]},snapshot=structuredClone(saved);assert.deepEqual(publicCreditsForMember(saved,member.id),[]);assert.equal(memberWorks(saved,member.id)[0].performance,0);renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data:saved,onMember(){}}));assert.deepEqual(saved,snapshot);}
  assert.deepEqual(data,before);
 });

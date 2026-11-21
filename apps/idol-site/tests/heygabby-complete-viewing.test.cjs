@@ -130,7 +130,8 @@ test('actual anonymous stage media SSR shows one formal player, its scope note a
   collect(detail); assert.equal(regions.size, 3, 'real WorkDetail media and source regions');
   const regionCode = ts.transpileModule(`export function StageMedia({work}) {
     const view='stage',activePlatform='youtube',activePlatformLabel='YouTube',stage=work.stage,stageBound=stageHasValidBinding(stage),activeUrl=stageWatchUrl(stage),
-      vid=videoId(activeUrl),playback=workPlayback(work.id,vid,view,stage),title=stage.title,approvedPoster=approvedVideoPoster(work.id,vid,view),loonaButterfly=false,triplesMedia=null;
+      vid=videoId(activeUrl),playback=workPlayback(work.id,vid,view,stage),title=stage.title,approvedPoster=approvedVideoPoster(work.id,vid,view),loonaButterfly=false,triplesMedia=null,
+      stageNote=stageViewingNote(work.id,stageSourceKey(stage));
     return <>${[...regions.values()].join('\n')}<StageSupplements work={work}/></>;
   }`, {compilerOptions: {module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.React}}).outputText;
   const component = {};
@@ -145,8 +146,9 @@ test('actual anonymous stage media SSR shows one formal player, its scope note a
   const snapshot = structuredClone(catalog), publicWork = projectPublicCatalog(catalog).works[0];
   const html = renderToStaticMarkup(React.createElement(component.StageMedia, {work: publicWork}));
   assert.equal((html.match(/class="video-play"/g) || []).length, 1);
-  assert.match(html, /播放舞台视频/); assert.match(html, /人工看片已确认七名成员参与、完整演出及韩语原版/);
-  assert.match(html, /未独立全片播放或逐句音轨比对/); assert.match(html, /官方专门制作表演，不代表现场人声/);
+  assert.match(html, /播放舞台视频/); assert.match(html, /七人完整演出，韩语原版/);
+  assert.match(stageForWork(id).verificationNote, /未独立全片播放或逐句音轨比对/);
+  assert.doesNotMatch(html, /人工看片|逐句音轨比对|完整保存日志/);
   assert.match(html, /class="stage-version-note"/);
   assert.ok(html.includes(`src="${formal.poster.addedEntry.src}"`));
   assert.ok(html.includes(`href="https://www.youtube.com/watch?v=${video}" target="_blank" rel="noopener noreferrer"`));

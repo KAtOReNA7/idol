@@ -25,7 +25,7 @@ const version:Shape={match:true,differences:ids,evidence};
 const supplement:Shape={
  alternatives:[{...fields('id platform sourceId sourceClass performerScope originalPerformerScope completeness durationSeconds durationScope eventDate url title channel performanceType kind checkedAt scorePolicy'),selection,bilibili:fields('cid page'),performerNames:ids,originalPerformerNames:ids,performerEvidence:evidence,eventEvidence:evidence,sourceEvidence:evidence,sameSongEvidence:evidence,version}],
  watchLeads:[{...fields('sourceType id platform sourceId sourceClass performerScope completeness url title channel kind checkedAt scorePolicy reason leadTimeSeconds'),selection,bilibili:fields('cid page'),sourceEvidence:evidence,sameSongEvidence:evidence,leadTimeEvidence:evidence}],
- researchNote:{summary:true,sources:[fields('label url')]},
+ viewingNote:true,researchNote:{summary:true,sources:[fields('label url')]},
  };
 const shape:Shape={
  scope:fields('type groupId'),cache:fields('source refreshRecommended'),...fields('mode capturedAt loadedAt'),

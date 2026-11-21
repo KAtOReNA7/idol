@@ -11,17 +11,26 @@ export function publicCreditForWork(work:Work){
  if(work.placeholder)return null;
  return creditsByWork.get(work.id)?.find(row=>work.groupIds.includes(row.groupId)&&videoId(work.url)===row.videoId)??null;
 }
-export function publicCreditsForMember(data:Pick<CatalogView,'works'|'ratings'>,memberId:string){
+export function creditHeading(credit:typeof source.records[number]){
+ if(credit.workId==='rec28ldfRTrLku'&&credit.videoId==='Gz_yRl6703c')return '《DRIP》发行阵容';
+ if(credit.kind==='human_verified_mv_appearance')return 'MV 出镜成员';
+ if(credit.kind==='named_promotional_appearance')return '宣传短片出镜成员';
+ if(credit.kind==='reported_participation')return '成员访谈 · 录音与拍摄';
+ return credit.label.replace(/^已核实|^公开|^具名/,'').replace(/^本(?=发行|日文|韩文|作品|Performance)/,'')
+  .replace(/具名/g,'').replace(/参与参考/g,'参与成员').replace(/（部分名单）|（部分）/g,'（部分）');
+}
+export function publicCreditsForMember(data:Pick<CatalogView,'works'|'ratings'|'personalMvRatings'>,memberId:string){
  // A malformed relation list cannot prove that a public entry has no private
  // counterpart. Keep the editorial page readable and withhold this projection.
  if(!Array.isArray(data.works)||!Array.isArray(data.ratings)||!data.ratings.every(r=>r&&Array.isArray(r.memberIds)&&Array.isArray(r.workIds)))return [];
  const personalWorks=new Set(data.ratings.filter(r=>r.memberIds.includes(memberId)).flatMap(r=>r.workIds));
+ const privateVideos=new Map(data.personalMvRatings?.entries.filter(row=>row.memberId===memberId).map(row=>[row.workId,row.videoId]));
  return data.works.flatMap(work=>{
   const credit=publicCreditForWork(work);
   if(!credit?.memberIds.includes(memberId))return [];
   // Existing personal relations stay in their original section and retain their
   // exact IDs. Never create a duplicate or turn evidence into an editable row.
-  if(personalWorks.has(work.id))return [];
+  if(personalWorks.has(work.id)||privateVideos.get(work.id)===credit.videoId)return [];
   return [{work,credit}];
  });
 }

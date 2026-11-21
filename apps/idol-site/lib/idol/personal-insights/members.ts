@@ -1,5 +1,6 @@
 import type {MemberAnalysis, MemberRow, MetricStats, PreparedCatalog} from './contract';
 import {validScore} from './score';
+import {videoId} from '../values';
 
 interface MetricAccumulator {sampleCount: number; sum: number; invalidCount: number;}
 interface MemberAccumulator {
@@ -17,7 +18,7 @@ function summarizeMetric(m: MetricAccumulator): MetricStats {
   return {sampleCount: m.sampleCount, mean: m.sampleCount > 0 ? m.sum / m.sampleCount : null,
     invalidCount: m.invalidCount};
 }
-/** Count individual Rating records only after unambiguous, reciprocal linkage. */
+/** Native relationships require reciprocal links. Independent owner entries bind their exact MV and member. */
 export function summarizeMembers(prepared: PreparedCatalog): MemberAnalysis {
   const excluded: MemberAnalysis['excluded'] =
     {ambiguousRelations: 0, missingRelations: 0, unlinkedRatings: 0, emptyScores: 0, invalidScores: 0};
@@ -25,8 +26,27 @@ export function summarizeMembers(prepared: PreparedCatalog): MemberAnalysis {
   for (const [workId, work] of prepared.workById)
     linkedRatingIdsByWork.set(workId, new Set(work.ratingIds));
   const accumulators = new Map<string, MemberAccumulator>();
+  const personal = prepared.personalMvRatings ?? [];
+  const nativePairs = new Set<string>();
+  function add(memberId: string, workId: string, score: unknown, stylingScore: unknown, ratingId?: string) {
+    let a = accumulators.get(memberId);
+    if (!a) {
+      a = {performance: createMetric(), styling: createMetric(), ratingIds: new Set(), workIds: new Set()};
+      accumulators.set(memberId, a);
+    }
+    const performance = accumulate(a.performance, score);
+    const styling = accumulate(a.styling, stylingScore);
+    if (performance === null && styling === null) {
+      if (score == null && stylingScore == null) excluded.emptyScores += 1;
+      else excluded.invalidScores += 1;
+      return;
+    }
+    if (ratingId) a.ratingIds.add(ratingId);
+    a.workIds.add(workId);
+  }
   for (const rating of prepared.ratings) {
     const memberIds = [...new Set(rating.memberIds)], workIds = [...new Set(rating.workIds)];
+    if (personal.length) for (const memberId of memberIds) for (const workId of workIds) nativePairs.add(memberId + ':' + workId);
     if (memberIds.length > 1 || workIds.length > 1) {excluded.ambiguousRelations += 1; continue;}
     if (memberIds.length !== 1 || workIds.length !== 1) {excluded.missingRelations += 1; continue;}
     const memberId = memberIds[0], workId = workIds[0];
@@ -34,21 +54,15 @@ export function summarizeMembers(prepared: PreparedCatalog): MemberAnalysis {
       excluded.missingRelations += 1; continue;
     }
     if (!linkedRatingIdsByWork.get(workId)?.has(rating.id)) {excluded.unlinkedRatings += 1; continue;}
-    let a = accumulators.get(memberId);
-    if (!a) {
-      a = {performance: createMetric(), styling: createMetric(), ratingIds: new Set(), workIds: new Set()};
-      accumulators.set(memberId, a);
-    }
-    const performance = accumulate(a.performance, rating.score);
-    const styling = accumulate(a.styling, rating.stylingScore);
-    if (performance === null && styling === null) {
-      const missingPerformance = rating.score === null || rating.score === undefined;
-      const missingStyling = rating.stylingScore === null || rating.stylingScore === undefined;
-      if (missingPerformance && missingStyling) excluded.emptyScores += 1;
-      else excluded.invalidScores += 1;
-      continue;
-    }
-    a.ratingIds.add(rating.id); a.workIds.add(workId);
+    add(memberId, workId, rating.score, rating.stylingScore, rating.id);
+  }
+  for (const entry of personal) {
+    const pair = entry.memberId + ':' + entry.workId;
+    const member = prepared.memberById.get(entry.memberId), work = prepared.workById.get(entry.workId);
+    if (!member || !work || nativePairs.has(pair) || videoId(work.url) !== entry.videoId) continue;
+    if (!work.groupIds.some(id => member.groupIds.includes(id) || member.formerGroupIds?.includes(id))) continue;
+    nativePairs.add(pair);
+    add(entry.memberId, entry.workId, entry.score, entry.stylingScore);
   }
   const rows: MemberRow[] = [];
   for (const member of prepared.members) {

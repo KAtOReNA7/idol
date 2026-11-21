@@ -3,11 +3,13 @@ import {hash,stable} from './hash';
 import type {Field} from './live';
 export type NativeTables=Record<TableKey,{fields:Field[];records:{recordId:string;fields:Record<string,unknown>}[]}>;
 export type MediaReference={table:TableKey;recordId:string;fieldId:string;index:number;fileToken:string;name:string;declaredSize:number|null};
-export type ArchiveData={formatVersion:'idol.native-archive.v1';capturedAt:string;source:'feishu'|'native';tables:NativeTables;journal:Record<string,unknown>[];locks:Record<string,unknown>[];siteMetadata:Record<string,unknown>};
+export type ArchiveData={formatVersion:'idol.native-archive.v1'|'idol.native-archive.v2';personalMvRatings?:Record<string,unknown>[];capturedAt:string;source:'feishu'|'native';tables:NativeTables;journal:Record<string,unknown>[];locks:Record<string,unknown>[];siteMetadata:Record<string,unknown>};
 const keys=Object.keys(TABLES) as TableKey[];
 export function validateArchive(value:unknown):asserts value is ArchiveData{
- const x=value as ArchiveData;if(!x||x.formatVersion!=='idol.native-archive.v1'||!Number.isFinite(Date.parse(x.capturedAt))||!['feishu','native'].includes(x.source)||!Array.isArray(x.journal)||!Array.isArray(x.locks)||!x.siteMetadata)throw new AppError('INVALID_ARCHIVE','备份文件格式不完整。',400);
+ const x=value as ArchiveData;if(!x||!['idol.native-archive.v1','idol.native-archive.v2'].includes(x.formatVersion)||!Number.isFinite(Date.parse(x.capturedAt))||!['feishu','native'].includes(x.source)||!Array.isArray(x.journal)||!Array.isArray(x.locks)||!x.siteMetadata)throw new AppError('INVALID_ARCHIVE','备份文件格式不完整。',400);
  if(Object.keys(x.tables??{}).sort().join(',')!==keys.slice().sort().join(','))throw new AppError('INVALID_ARCHIVE','备份必须包含完整四类资料。',400);
+ const includesPersonal=Array.isArray(x.personalMvRatings)&&x.personalMvRatings.length>0;
+ if((x.formatVersion==='idol.native-archive.v2')!==includesPersonal||includesPersonal&&x.source!=='native'||x.journal.some(row=>row?.table_key==='personal_mv_ratings')!==includesPersonal)throw new AppError('INVALID_ARCHIVE','备份中的私人 MV 评分和保存日志未能对应。',400);
  const seenGlobal=new Set<string>();
  for(const table of keys){const t=x.tables[table];if(!Array.isArray(t?.fields)||!Array.isArray(t?.records)||t.records.length>20000)throw new AppError('INVALID_ARCHIVE','资料表不完整。',400);const ids=new Set<string>(),names=new Set<string>();for(const f of t.fields){if(!/^fld[A-Za-z0-9]+$/.test(f.field_id)||!f.field_name||ids.has(f.field_id)||names.has(f.field_name))throw new AppError('INVALID_ARCHIVE','字段身份重复或无效。',400);ids.add(f.field_id);names.add(f.field_name);}for(const r of t.records){if(!/^rec[A-Za-z0-9]+$/.test(r.recordId)||seenGlobal.has(r.recordId)||!r.fields||Array.isArray(r.fields)||Object.keys(r.fields).some(id=>!ids.has(id)))throw new AppError('INVALID_ARCHIVE','记录身份或字段映射无效。',400);seenGlobal.add(r.recordId);if(new TextEncoder().encode(JSON.stringify(r.fields)).length>1500000)throw new AppError('ARCHIVE_ROW_TOO_LARGE','一条资料超出安全导入大小。',400);}}
  const journals=new Set<string>();for(const row of x.journal){if(typeof row.id!=='string'||journals.has(row.id))throw new AppError('INVALID_ARCHIVE','保存记录身份重复。',400);journals.add(row.id);}

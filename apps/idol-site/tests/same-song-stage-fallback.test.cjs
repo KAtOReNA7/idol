@@ -46,7 +46,7 @@ test('a later exact full performance can replace an unscored fallback only throu
 
 test('Bilibili fallback retains exact BV CID page and an excerpt without proof still fails closed',()=>{
  const b='BV1234567890',c=fallback({platform:'bilibili',videoId:b,bilibili:{cid:'9876543210',page:2},url:`https://www.bilibili.com/video/${b}/?p=2&cid=9876543210`,likesScope:'whole_video'}),r=imported(c),s=r.videos[workId];
- assert.equal(source.stageSourceKey(s),`bilibili:${b}:cid:9876543210:p:2`);assert.equal(s.scoreBinding.sourceKey,source.stageSourceKey(s));assert.equal(source.stageEmbedUrl(s),null);
+ assert.equal(source.stageSourceKey(s),`bilibili:${b}:cid:9876543210:p:2`);assert.equal(s.scoreBinding.sourceKey,source.stageSourceKey(s));assert.equal(new URL(source.stageEmbedUrl(s)).searchParams.get('cid'),'9876543210');
  for(const patch of [{bilibili:undefined},{bilibili:{cid:'9876543210',page:1}},{bilibili:{page:2}}])assert.notEqual(normalize({...c,...patch}).status,0);
  assert.equal(source.stageSourceKey({...s,sameSongFallback:undefined}),null);
 });

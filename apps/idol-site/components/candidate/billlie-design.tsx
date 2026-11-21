@@ -1,4 +1,5 @@
 'use client';
+import {ArtistWorkPreview} from '@/components/app-image-presentation';
 import {ArtistInformation} from '@/components/artist-information';
 import {useEffect,useMemo,useState,useSyncExternalStore,type ReactNode} from 'react';
 import {ArrowUpRight} from 'lucide-react';
@@ -33,7 +34,7 @@ function External({href,children}:{href:string;children:ReactNode}){const safe=s
 function Title({en,children}:{en:string;children:ReactNode}){return <div className="bf-title"><h2>{en}</h2><p>{children}</p></div>;}
 // A still is valid only for the exact work AND video, never for an alternate cut.
 export function billlieVideoArt(work:Work,stage=false){const entry=design.works.find(row=>row.id===work.id),video=stage?entry?.stage:entry?.mv;if(!video)return null;const url=stage?work.stage?.url:work.url;if(!url)return null;try{const parsed=new URL(url);const id=parsed.hostname==='youtu.be'?parsed.pathname.slice(1):parsed.searchParams.get('v');if(id!==video.id||stage&&(work.stage?.videoId!==video.id||work.stage?.clip))return null;return video.src;}catch{return null;}}
-function WorkCard({work,stage=false,returnTo}:{work:Work;stage?:boolean;returnTo:string}){const src=billlieVideoArt(work,stage),stageScore=billlieStageScore(work);return <article className="bf-work" data-work-id={work.id} data-video-kind={stage?'stage':'mv'}><a href={artistWorkUrl(work,stage,returnTo)}>{src&&<div className="bf-video-image"><Picture src={src} alt={`${work.song||work.name} ${stage?'舞台':'MV'}`}/></div>}<h3>{stage?work.stage?.title||work.song:work.song||work.name}</h3><p>{stage?'舞台':work.videoType||'MV'} · {(stage?work.stage?.publishedDate:work.releaseDate)?.slice(0,10)}</p><p>{stage?'舞台':'作品'}评分 {stage&&!stageScore.valid?'评分绑定待核，旧评分不展示':artistWorkScoreLabel(stage?stageScore.score:work.score)} <ArrowUpRight size={14}/></p></a></article>;}
+function WorkCard({work,stage=false,returnTo}:{work:Work;stage?:boolean;returnTo:string}){const src=billlieVideoArt(work,stage),stageScore=billlieStageScore(work);return <article className="bf-work" data-work-id={work.id} data-video-kind={stage?'stage':'mv'}><a href={artistWorkUrl(work,stage,returnTo)}>{(src||stage||work.url)&&<div className="bf-video-image">{src?<Picture src={src} alt={`${work.song||work.name} ${stage?'舞台':'MV'}`}/>:<ArtistWorkPreview work={work} stage={stage}/>}</div>}<h3>{stage?work.stage?.title||work.song:work.song||work.name}</h3><p>{stage?'舞台':work.videoType||'MV'} · {(stage?work.stage?.publishedDate:work.releaseDate)?.slice(0,10)}</p><p>{stage?'舞台':'作品'}评分 {stage&&!stageScore.valid?'评分绑定待核，旧评分不展示':artistWorkScoreLabel(stage?stageScore.score:work.score)} <ArrowUpRight size={14}/></p></a></article>;}
 export default function BilllieDesign({content}:{content:CandidateContent}){
  const options=useArtistTimelineHostOptions();
  const [fetched,setFetched]=useState<{data:CatalogView|null;error:string;loading:boolean}>({data:null,error:'',loading:true});

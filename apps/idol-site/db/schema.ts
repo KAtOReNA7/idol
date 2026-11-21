@@ -1,8 +1,20 @@
-import { sqliteTable, text, integer, uniqueIndex } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text, integer, real, uniqueIndex } from 'drizzle-orm/sqlite-core';
 export const saves = sqliteTable('idol_saves', {
   id: text('id').primaryKey(), userId: text('user_id').notNull(), tableKey: text('table_key').notNull(), recordId: text('record_id').notNull(), requestHash: text('request_hash').notNull(), status: text('status').notNull(), beforeJson: text('before_json').notNull(), patchJson: text('patch_json').notNull(), resultJson: text('result_json'), createdAt: integer('created_at').notNull(), updatedAt: integer('updated_at').notNull(),
 });
 export const locks = sqliteTable('idol_record_locks', { key: text('key').primaryKey(), saveId: text('save_id').notNull(), createdAt: integer('created_at').notNull() });
+
+export const personalMvRatings = sqliteTable('idol_personal_mv_ratings', {
+  id: text('id').primaryKey(),
+  ownerId: text('owner_id').notNull(),
+  snapshotId: text('snapshot_id').notNull(),
+  workId: text('work_id').notNull(),
+  videoId: text('video_id').notNull(),
+  memberId: text('member_id').notNull(),
+  score: real('score'),
+  stylingScore: real('styling_score'),
+  revision: integer('revision').notNull(),
+}, table => [uniqueIndex('idol_personal_mv_rating_identity').on(table.ownerId,table.snapshotId,table.workId,table.videoId,table.memberId)]);
 
 export const catalogState = sqliteTable('idol_catalog_state', {
  userId:text('user_id').primaryKey(), generation:integer('generation').notNull().default(0), snapshotId:text('snapshot_id'), checksum:text('checksum'), partCount:integer('part_count'), capturedAt:text('captured_at'),

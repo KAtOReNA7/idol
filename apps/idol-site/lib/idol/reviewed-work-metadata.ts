@@ -5,8 +5,13 @@ import {videoId} from './values';
 
 // Owner chose the original score's exact MV on 2026-10-25. This repairs only
 // the known empty display metadata; raw source rows and personal values stay intact.
+export function reviewedMvUrl(work:Pick<Work,'id'|'groupIds'|'song'|'url'>):string{
+ if(work.id==='rec28ldfRTrEng'&&work.groupIds.length===1&&work.groupIds[0]==='rec28ldfRTiD0h'&&work.song==='HURRICANE'&&!work.url.trim())return 'https://www.youtube.com/watch?v=00tUzCOPI6g';
+ return work.url;
+}
 export function applyReviewedWorkMetadata<T extends Work>(work:T):T{
- if(work.id==='rec28ldfRTrEng'&&work.groupIds.length===1&&work.groupIds[0]==='rec28ldfRTiD0h'&&work.song==='HURRICANE'&&!work.url.trim())return {...work,url:'https://www.youtube.com/watch?v=00tUzCOPI6g',videoType:'MV',version:'Music Video',officialTitle:"BADVILLAIN - 'HURRICANE' MV",channel:'BPM Entertainment',releaseDate:work.releaseDate||'2024-07-10'};
+ const url=reviewedMvUrl(work);
+ if(url!==work.url)return {...work,url,videoType:'MV',version:'Music Video',officialTitle:"BADVILLAIN - 'HURRICANE' MV",channel:'BPM Entertainment',releaseDate:work.releaseDate||'2024-07-10'};
  if(work.placeholder)return work;
  const metadata=completion.records.find(row=>row.workId===work.id&&work.groupIds.includes(row.groupId)&&videoId(work.url)===row.videoId);
  if(metadata){

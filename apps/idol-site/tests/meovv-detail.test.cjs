@@ -20,7 +20,8 @@ test('MEOW poster and player match the live work, MV and NPOP stage identities',
   assert.equal(h.player().props.posterSrc,approvedVideoPoster(id,'jpLHg-AsQV0','mv').src);
   assert.equal(approvedVideoPoster('wrong-work','jpLHg-AsQV0','mv'),null);
   await turn(h,'stage'); assert.equal(h.player().props.videoId,'118STdpg-fY');
-  assert.equal(h.player().props.posterSrc,approvedStagePoster(id,h.wp.work.stage)?.src);
+  assert.equal(h.player().props.posterSrc,'/artist/stage-video-previews/118STdpg-fY.webp');
+  assert.equal(h.player().props.posterLabel,'对应舞台视频封面');
   assert.equal(approvedStagePoster(id,{...h.wp.work.stage,clip:{startSeconds:1,endSeconds:5}}),null);
 });
 test('unconfirmed receipt retains the zero draft and the retry reuses its operation',async()=>{

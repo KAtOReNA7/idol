@@ -60,10 +60,12 @@ def merge(files):
    'tables':{'works':{'fields':[{'field_id':'fld641ausT'}],'records':[{'recordId':r['recordId'],'fields':{'fld641ausT':None if r['scoreEmpty'] else '__NONEMPTY_OWNER_SCORE__'}} for r in rows]}},
    'journal':matches,'siteMetadata':{'stageVideos':{i:s for i,s in sources.items() if s is not None}}}
  require_stage((fresh.get('source'),fresh.get('formatVersion')) in {
-  ('feishu','idol.live-backup.v1'),('native','idol.native-data-export.v1')
+  ('feishu','idol.live-backup.v1'),('native','idol.native-data-export.v1'),('native','idol.native-data-export.v2')
  }, 'Use an authenticated original export; never relabel a snapshot or public projection')
  if fresh['source']=='native':
   require_stage(isinstance(fresh.get('journal'),list) and isinstance(fresh.get('siteMetadata',{}).get('stageVideos'),dict), 'Native export must include its save journal and published stage metadata')
+  if fresh['formatVersion']=='idol.native-data-export.v2':
+   require_stage(isinstance(fresh.get('personalMvRatings'),list) and bool(fresh['personalMvRatings']), 'Native v2 export must include its separate personal MV ratings')
  require_stage(-60<=(now-dt(fresh['capturedAt'])).total_seconds()<900, 'Refresh authenticated score preimage before binding sources')
  work_rows=fresh['tables']['works']['records']
  freshworks={w['recordId']:w for w in work_rows}

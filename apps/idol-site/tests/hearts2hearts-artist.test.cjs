@@ -5,6 +5,22 @@ function setup(url,data=fixture()){
  const cache={},mockReact={...React,useEffect:()=>{},useMemo:f=>f(),useSyncExternalStore:()=>url};let calls=0;mockReact.useState=i=>[++calls===1?data:calls===3?false:i,()=>{}];
  function load(file){if(cache[file])return cache[file];const out={};cache[file]=out;const js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL,URLSearchParams,Date})(name=>{const imageModule=require('./helpers/image-dependency-loader.cjs').imageDependency(name);if(imageModule!==undefined)return imageModule;const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(name);if(timelineModule!==undefined)return timelineModule;if(name==='@/components/member-physical-facts')return require('./helpers/member-physical-loader.cjs');if(name==='@/components/member-career-facts')return require('./helpers/member-career-loader.cjs');if(name==='react')return mockReact;if(name==='./use-artist-scroll')return {useArtistScroll:()=>()=>{}};if(name==='./photo-lightbox')return {PhotoLightbox:()=>null};if(name==='@/data/runtime/hearts2hearts-figma-assets.json')return {default:JSON.parse(fs.readFileSync('data/runtime/hearts2hearts-figma-assets.json'))};if(name.startsWith('@/'))return load(name.slice(2)+'.ts');if(name.startsWith('./'))return load(require('node:path').join(require('node:path').dirname(file),name)+'.ts');return require(name);},out);return out;}return {load,render:()=>renderToStaticMarkup(React.createElement(load('components/hearts2hearts-artist.tsx').default,{content}))};
 }
+test('the pending MV directory renders distinct clickable previews for FOCUS and STYLE versions',()=>{
+ const versions=require('../data/stages/inventory.json').works.filter(row=>row.groupIds.includes(group)&&['FOCUS','STYLE'].includes(row.song));
+ assert.equal(versions.length,4);
+ const data=fixture(),seed=data.works[0];
+ data.works=versions.map(row=>({...seed,id:row.recordId,name:row.name,song:row.song,version:row.version||'',videoType:row.mv.videoType,url:row.mv.url,score:null,watched:''}));
+ data.ratings=[];
+ const html=setup('/artists/hearts2hearts?section=works&format=mv&queue=tonight',data).render();
+ const cards=[...html.matchAll(/<article class="h2h-work" data-work-id="([^"]+)">([\s\S]*?)<\/article>/g)];
+ assert.equal(cards.length,versions.length);
+ for(const [,id,body] of cards){
+  const version=versions.find(row=>row.recordId===id);
+  const imageLink=body.match(/<a class="h2h-work-image"[^>]*>([\s\S]*?)<\/a>/)[0];
+  assert.ok(imageLink.includes('work='+id));
+  assert.ok(imageLink.includes('/artist/mv-identity-20261025/covers/'+version.mv.videoId+'.jpg'));
+ }
+});
 test('Hearts2Hearts existing stable group and return context are bounded',()=>{const {load}=setup('/artists/hearts2hearts'),n=load('lib/idol/artist-navigation.ts');assert.equal(n.HEARTS2HEARTS_GROUP_ID,'rec28ldfRTiBAq');assert.equal(n.groupArtistUrl(group),'/artists/hearts2hearts');assert.equal(n.artistReturnLabel('/artists/hearts2hearts?section=works'),'Hearts2Hearts');assert.equal(n.safeArtistReturn('/artists/hearts2hearts?section=works&format=stage'),'/artists/hearts2hearts?section=works&format=stage');assert.equal(n.safeArtistReturn('/artists/hearts2hearts?format=other'),null);assert.equal(n.safeArtistReturn('https://evil.test/artists/hearts2hearts'),null);});
 test('Hearts2Hearts search queue and format roundtrip',()=>{const {load}=setup('/artists/hearts2hearts'),p=load('lib/idol/artist-preview.ts'),r=p.artistRoute('/artists/hearts2hearts?section=works&queue=tonight&q=Sticky&format=stage');assert.equal(p.artistRouteUrl(r,'/artists/hearts2hearts'),'/artists/hearts2hearts?section=works&queue=tonight&q=Sticky&format=stage');assert.match(p.artistWorkUrl({id:'recX'},true,p.artistRouteUrl(r,'/artists/hearts2hearts')),/format%3Dstage/);});
 test('Hearts2Hearts work cards show actual MV scores including zero and null',()=>{const s=setup('/artists/hearts2hearts?section=works').render();assert.match(s,/recWho/);assert.match(s,/recSweat/);assert.match(s,/recSticky/);assert.match(s,/未评分/);assert.match(s,/8\.0 \/ 10/);assert.match(s,/0\.0 \/ 10/);assert.doesNotMatch(s,/实时粉丝|核验流程|sourceKey/);});

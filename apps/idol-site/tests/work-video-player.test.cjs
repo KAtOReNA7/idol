@@ -13,6 +13,32 @@ const source={workId:'recDemoWork',view:'mv',url:'https://www.youtube.com/watch?
 const render=props=>renderToStaticMarkup(React.createElement(WorkVideoPlayer,{...source,...props}));
 test('MV renders a cover and explicit play control without an iframe',()=>{const html=render();assert.doesNotMatch(html,/<iframe/);assert.match(html,/合成作品 视频封面/);assert.match(html,/播放视频/);assert.doesNotMatch(html,/youtube\.com\/embed\//);});
 test('stage clip is also dormant until user activation',()=>{const html=render({view:'stage',embedUrl:source.embedUrl+'&start=20&end=40'});assert.doesNotMatch(html,/<iframe|start=20/);assert.match(html,/播放舞台视频/);});
+test('a bounded stage never inherits the full-event thumbnail and its work reference stays visible',()=>{
+ const clip={view:'stage',url:source.url+'&t=20',sourceKey:source.videoId+'@20-40',embedUrl:source.embedUrl+'&start=20&end=40'};
+ assert.doesNotMatch(render(clip),/<img|在原站观看/);
+ const reference=render({...clip,posterSrc:'/artist/fixture/mv.jpg',posterLabel:'关联作品 MV 封面',posterIsReference:true});
+ assert.match(reference,/class="work-preview-label">关联作品 MV 封面</);
+ assert.doesNotMatch(reference,/i\.ytimg\.com|<iframe/);
+});
+test('matching public previews survive a video change, a range and multipart stage selection',()=>{
+ const {approvedStagePoster,stagePreviewFallback,publicVideoPreview}=require('./helpers/image-dependency-loader.cjs').imageDependency('@/lib/idol/approved-video-poster');
+ const stages=require('../data/stage-videos.json'),inventory=require('../data/stages/inventory.json').works;
+ const work=id=>({id,url:inventory.find(row=>row.recordId===id).mv.url});
+ const meow=work('rec28ldfRTrB45'),source=stages[meow.id];
+ const tile=stagePreviewFallback(meow,source);
+ assert.equal(tile.src,'/artist/stage-video-previews/118STdpg-fY.webp');
+ assert.equal(stagePreviewFallback(meow,{...source,url:'https://youtu.be/XXXXXXXXXXX'}),null);
+ assert.equal(publicVideoPreview(source.url+'&t=21',''), '');
+ for(const id of ['recvxyHuKMEruy','recvxyOz5Xr6ek']){
+  const current=work(id),clip=stages[id],reference=stagePreviewFallback(current,clip);
+  assert.equal(reference.workReference,true);
+  assert.ok(reference.src.includes(new URL(current.url).searchParams.get('v')));
+  assert.equal(stagePreviewFallback({...current,id:'wrong'},clip),null);
+ }
+ const id='recvxyH5pzoMAf',bounded=stages[id];
+ assert.ok(approvedStagePoster(id,bounded).src);
+ assert.equal(approvedStagePoster(id,{...bounded,bilibili:{...bounded.bilibili,cid:'999'}}),null);
+});
 test('unsupported external source keeps an explicit control and text cover',()=>{const html=render({videoId:null,embedUrl:null,url:'https://example.invalid/video'});assert.doesNotMatch(html,/<iframe|<img/);assert.match(html,/video-cover-fallback/);assert.match(html,/合成作品/);assert.match(html,/播放视频/);});
 test('title is safely escaped in cover content',()=>{const html=render({videoId:null,title:'<合成 & 标题>'});assert.match(html,/&lt;合成 &amp; 标题&gt;/);assert.doesNotMatch(html,/<合成/);});
 

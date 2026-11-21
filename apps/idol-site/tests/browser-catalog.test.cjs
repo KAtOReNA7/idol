@@ -41,6 +41,7 @@ test('response shape is explicit, versioned and rejects unknown or ambiguous req
 function routeHarness(){
  const model={data:sample(),publicData:{public:true,ratings:[]},projectedAfter:[],calls:[],native:true,deny:false,drift:false};
  const stubs={
+  '@/lib/idol/personal-mv-ratings':{personalMvRatingsForOwner:async()=>model.personal},
   '@/lib/idol/public-access':{ownerForRequest:async()=>{model.calls.push('auth');return model.deny?null:{userId:'owner'};}},
   '@/lib/idol/public-reader':{publicQuery:request=>{model.calls.push('public-query');return new URL(request.url).searchParams;},readPublicCatalog:async artist=>{model.calls.push('public:'+artist);return model.publicData;}},
   '@/lib/idol/browser-catalog':{projectBrowserCatalog:data=>{model.projectedAfter.push([...model.calls]);return projectBrowserCatalog(data);},requestedBrowserCatalog},

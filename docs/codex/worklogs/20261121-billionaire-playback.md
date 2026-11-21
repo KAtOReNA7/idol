@@ -13,3 +13,5 @@ v206 正式站中，B 站播放器从 00:23 走到 00:49。随后在 Codex 自�
 ## 单一站内播放器
 
 RUTUBE 的公开投稿标明本作完整题名，上传人为 MARI DOBREV。平台提供公开嵌入地址。在 Codex 自带浏览器使用其官方静音参数，实播从 0.22 秒走到 25.62 秒，解码 1920 × 884，片长约 163.5 秒，未要求登录。该作品采用一个站内播放器，署名标明转载。切换到同一作品的另一视频或舞台片段时，匹配须重新成立。[公开投稿](https://rutube.ru/video/9d692403740a2ae5e84dbd5a8ec167d0/) · [平台嵌入及清晰度参数](https://rutube.ru/info/embed/)
+
+v207 在原域名发布后，于 1280 × 720 的 Codex 自带浏览器从正式作品页点播，媒体框数量为 1。播放器全程静音，实际解码 1920 × 884，已播区间从 0 连续覆盖至片尾 163.496834 秒。没有站外跳转和登录提示。Windows、Linux 均通过 `npm run verify`，各修复了上版新增的一项隔离渲染失败。[正式作品页](https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrLku) · [部署、解码和测试回执](../evidence/20261121-billionaire-playback/v207.json)

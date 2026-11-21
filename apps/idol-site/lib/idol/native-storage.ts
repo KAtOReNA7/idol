@@ -30,9 +30,10 @@ export async function nativeExportSnapshot(userId:string){
   db.prepare('SELECT table_key,record_id,fields_json FROM idol_native_records WHERE snapshot_id=? ORDER BY table_key,source_order,record_id').bind(snapshot),
   db.prepare('SELECT * FROM idol_saves WHERE user_id=? ORDER BY created_at,id').bind(userId),
   db.prepare("SELECT file_token,sha256,byte_length,content_type FROM idol_native_media WHERE snapshot_id=? AND status='complete' ORDER BY file_token").bind(snapshot),
+  db.prepare('SELECT id,snapshot_id,work_id,video_id,member_id,score,styling_score,revision FROM idol_personal_mv_ratings WHERE owner_id=? ORDER BY snapshot_id,work_id,video_id,member_id').bind(userId),
  ]);
  const at=results[0].results[0] as StorageControl|undefined;if(!at||sourceStamp(at)!==sourceStamp(before))throw new AppError('STORAGE_CHANGING','资料刚刚更新，请重新下载。',409);
  const schemas=results[1].results as {table_key:TableKey;fields_json:string}[],rows=results[2].results as {table_key:TableKey;record_id:string;fields_json:string}[],tables={} as NativeTables;
  for(const table of ['groups','members','works','ratings'] as TableKey[]){const schema=schemas.find(x=>x.table_key===table);if(!schema)throw new AppError('NATIVE_SCHEMA_MISSING','资料格式暂时不可用。',503);tables[table]={fields:JSON.parse(schema.fields_json),records:rows.filter(x=>x.table_key===table).map(x=>({recordId:x.record_id,fields:JSON.parse(x.fields_json)}))};}
- return {tables,journal:results[3].results,photos:results[4].results};
+ return {tables,journal:results[3].results as Record<string,unknown>[],photos:results[4].results,personalMvRatings:results[5].results as Record<string,unknown>[]};
 }

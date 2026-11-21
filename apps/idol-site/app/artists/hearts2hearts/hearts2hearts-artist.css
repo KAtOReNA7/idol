@@ -30,3 +30,10 @@
 .h2h-release-card p{font-size:15px;margin-top:8px}
 .h2h-release-card>span{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:14px;font-weight:700;color:#3056de}
 @media(max-width:700px){.h2h-release-grid{grid-template-columns:1fr;gap:40px}.h2h-release-card{max-width:500px}.h2h-browse-tools{gap:4px}.h2h-release-card h2{font-size:32px}}
+.h2h-work-image{display:block;margin-bottom:16px}
+@media(min-width:1100px){
+ .h2h-work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);column-gap:20px;align-content:start}
+ .h2h-work-image{grid-column:1;grid-row:1/6;margin:0;align-self:start}
+ .h2h-work>:is(.h2h-eyebrow,h3,p,time,.h2h-score){grid-column:2}
+ .h2h-work-actions{grid-column:1/-1}
+}

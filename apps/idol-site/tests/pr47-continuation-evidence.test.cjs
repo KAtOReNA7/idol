@@ -42,7 +42,7 @@ test('DOREMI release subjects remain separate from recorded roles, exact-video c
  assert.deepEqual(credit.memberIds,group.portraits.map(p=>p.memberId));assert.equal(publicGroupRecognitionForWork(work),null);
  const rendered=renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data,onMember(){}}));
  assert.equal((rendered.match(/class="mv-identity-frame/g)||[]).length,6);
- assert.match(rendered,/本发行概念照人物参考/);assert.doesNotMatch(rendered,/synthetic private note|<input|<form|cast-scores/);
+ assert.match(rendered,/发行概念照人物参考/);assert.doesNotMatch(rendered,/synthetic private note|<input|<form|cast-scores/);
  for(const image of publicWorkRecognition(work)){
   const prior=group.portraits.find(p=>p.memberId===image.memberId);
   for(const key of ['src','sha256','width','height','sourceCrop','photoSetId','sourceUrl'])assert.deepEqual(image[key],prior[key]);

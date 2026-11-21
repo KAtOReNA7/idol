@@ -63,7 +63,7 @@ for(const row of source.works.filter(r=>!['rec28ldfRTrPi9','recvxyH5pzFAPL','rec
  for(const mismatch of [{id:'wrong-work'},{groupIds:['wrong-group']},{url:'https://www.youtube.com/watch?v=other012345'},{placeholder:{reason:'placeholder'}}])assert.equal(publicGroupRecognitionForWork({...work,...mismatch}),null);
  const data=dataFor(work,group),before=structuredClone(data);
  const html=renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data,onMember(){}}));
- assert.match(html,/团体通用认人参考/);assert.match(html,/未核实本作参与/);assert.match(html,/不是本作品的出镜、演唱或创作名单/);assert.match(html,/这里不提供成员评分/);
+ assert.ok(html.includes(group.groupName+' 成员资料照'));assert.doesNotMatch(html,/本作出演|演唱名单|个人评分|人工看片|这里不提供/);
  assert.match(html,/data-participation-status="unverified_for_work"/);
  assert.equal((html.match(/class="mv-identity-frame/g)||[]).length,group.portraits.length);
  assert.doesNotMatch(html,/<input|<form|cast-scores|synthetic private note|data-credit-work=/);
@@ -78,7 +78,7 @@ for(const row of source.works.filter(r=>!['rec28ldfRTrPi9','recvxyH5pzFAPL','rec
  const wrong={...data,members:data.members.map(m=>({...m,groupIds:['wrong-group']}))};
  assert.equal(renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data:wrong,onMember(){}})), '');
  const former={...data,members:data.members.map(m=>({...m,groupIds:[],formerGroupIds:[row.groupId]}))};
- assert.match(renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data:former,onMember(){}})),/团体通用认人参考/);
+ assert.match(renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data:former,onMember(){}})),/成员资料照/);
 });
 
 test('generic presentation does not depend on an MV appearance decision or alter its policy',()=>{

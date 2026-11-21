@@ -53,6 +53,7 @@ export function prepareCatalog(catalog: InsightsCatalog): PreparedCatalog {
     groups: Object.freeze(Array.from(groupScan.byId.values())),
     members: Object.freeze(Array.from(memberScan.byId.values())),
     ratings: Object.freeze(Array.from(ratingScan.byId.values())),
+    personalMvRatings: Object.freeze(Array.isArray(catalog?.personalMvRatings?.entries) ? catalog.personalMvRatings.entries.slice() : []),
     workById, groupById: groupScan.byId, memberById: memberScan.byId, diagnostics,
   });
 }

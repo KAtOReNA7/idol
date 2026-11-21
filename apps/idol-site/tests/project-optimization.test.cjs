@@ -25,7 +25,7 @@ test('published program notes appear only for the reviewed works, MVs, groups an
   assert.ok(validStageResearchNote(row.note));
   const work={id:row.workId,groupIds:target.groupIds,url:target.mv.url,stage,stageScore:0,score:0};
   const visible=applyStageResearchFollowups(work);
-  assert.deepEqual(visible,{...work,stageSupplement:{alternatives:[],researchNote:row.note}});
+  assert.deepEqual(visible,{...work,stageSupplement:{alternatives:[],researchNote:row.note,viewingNote:row.note.summary}});
   assert.equal(applyStageResearchFollowups(visible),visible);
   if(row.currentStageSourceKey){
    const unbound={...work,stage:null};

@@ -25,14 +25,14 @@ test('owner check and source fence precede response projection; refresh and full
  const source=fs.readFileSync('app/api/catalog/route.ts','utf8').replace(/\s+/g,'');
  const ordered=['awaitownerForRequest()','requestedArtist(params)','awaitownControl(user.userId)',
   'awaitreadNativeCatalog(user.userId,force)','awaitgetReadableCatalog(user.userId,force)',
-  'awaitassertSourceUnchanged(user.userId,before)','artist?projectArtistCatalog(result,artist):result'];
+  'awaitassertSourceUnchanged(user.userId,before)','artist?projectArtistCatalog(result,artist,personal?.entries):result'];
  let previous=-1;
  for(const call of ordered){
   const position=source.indexOf(call);
   assert.ok(position>previous,call);
   previous=position;
  }
- assert.ok(source.includes(':json(scoped)'));
+ assert.ok(source.includes('if(!browserView)returnjson(scoped)'));
  assert.doesNotMatch(fs.readFileSync('lib/idol/artist-catalog.ts','utf8'),/INSERT |UPDATE |DELETE |localStorage|sessionStorage|fetch\(/);
  assert.match(fs.readFileSync('app/page.tsx','utf8'),/\/api\/catalog/);
  assert.match(fs.readFileSync('components/artist-sample.tsx','utf8'),/readArtistCatalog\('babymonster', controller\.signal\)/);

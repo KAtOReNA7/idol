@@ -42,7 +42,7 @@ test('PUNG release-cover scope names only four documented editions, with no exac
  assert.match(credit.note,/不等同本曲逐人录音或本MV出镜确认/);assert.match(credit.note,/569×854/);
  assert.equal(publicGroupRecognitionForWork(work),null);
  const html=renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data,onMember(){}}));
- assert.match(html,/公开本发行封套参与参考/);assert.match(html,/不代表已核实其在本视频出镜/);
+ assert.match(html,/发行封套参与成员/);assert.doesNotMatch(html,/MV 出镜成员/);
  assert.equal((html.match(/class="mv-identity-frame/g)||[]).length,4);
  assert.doesNotMatch(html,/<input|<form|cast-scores|synthetic private note|GAEUN|SUHYE|YESEO/);
  for(const m of data.members){

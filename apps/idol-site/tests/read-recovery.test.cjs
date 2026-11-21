@@ -6,6 +6,36 @@ const retry=r=>find(r.tree,n=>n.type==='button'&&text(n)==='重新载入');
 const spin=r=>find(r.tree,n=>n.type==='LoaderCircle'&&n.props.className==='spin');
 const field=(r,label)=>find(r.tree,n=>n.props['aria-label']===label);
 function readCallback(r){return r.hooks.find(h=>typeof h?.value==='function'&&String(h.value).includes('/api/records?')).value;}
+test('record reads and writes recover from network errors with the same zero draft and save operation',async()=>{
+ const h=harness(),r=await open(h);
+ h.requests[0].reject(new TypeError('Failed to fetch'));await tick();r.render();
+ assert.match(text(r.tree),/未能连接手帐.*重新载入/);assert.doesNotMatch(text(r.tree),/Failed to fetch/);
+ retry(r).props.onClick();h.reply(1);await tick();r.render();
+ field(r,'表现分').props.onChange({target:{value:'0'}});r.render();
+ const action=()=>find(r.tree,n=>n.type==='button'&&n.props.ref!==undefined)||find(r.tree,n=>n.type==='button'&&/保存此条记录|核对上次保存/.test(text(n)));
+ const first=action().props.onClick();h.requests[2].reject(new TypeError('Failed to fetch'));await first;r.render();
+ assert.match(text(r.tree),/恢复网络后核对上次保存/);assert.equal(field(r,'表现分').props.value,0);
+ const next=action().props.onClick();assert.equal(h.requests[3].options.body,h.requests[2].options.body);
+ h.requests[3].resolve(Response.json({error:'EDIT_CONFLICT'},{status:409}));await next;r.render();
+ assert.match(text(r.tree),/EDIT_CONFLICT/);assert.equal(field(r,'表现分').props.value,0);assert.equal(field(r,'表现分').props.disabled,false);
+ r.unmount();
+});
+test('personal score fields retain inputs, check the same operation after disconnect and timeout, and display the server conflict',async()=>{
+ const h=harness({personal:true}),r=new Runner(h.exports.ScoreForm);
+ r.render({scope:'scope',workId:'recW',videoId:'abcdefghijk',member:{id:'recM',name:'Test'},onDirty(){},onBlocked(){},onSaved(){}});
+ field(r,'Test的表现分').props.onChange({target:{value:'0'}});r.render();
+ field(r,'Test的造型分').props.onChange({target:{value:'8.5'}});r.render();
+ const click=()=>find(r.tree,n=>n.type==='button').props.onClick();
+ click();h.requests[0].reject(new TypeError('Failed to fetch'));await tick();r.render();
+ assert.match(text(r.tree),/恢复网络后核对上次保存/);assert.doesNotMatch(text(r.tree),/Failed to fetch/);
+ assert.equal(field(r,'Test的表现分').props.value,'0');assert.equal(field(r,'Test的造型分').props.value,'8.5');
+ click();assert.equal(h.requests[1].options.body,h.requests[0].options.body);
+ await h.advance(30000);r.render();assert.match(text(r.tree),/保存回执超时/);
+ click();assert.equal(h.requests[2].options.body,h.requests[0].options.body);
+ h.requests[2].resolve(Response.json({error:'EDIT_CONFLICT',message:'评分或成员资料已更新，请重新载入后核对。'},{status:409}));
+ await tick();r.render();assert.match(text(r.tree),/评分或成员资料已更新/);
+ assert.equal(field(r,'Test的表现分').props.disabled,false);assert.equal(field(r,'Test的造型分').props.value,'8.5');r.unmount();
+});
 test('closing a newly mounted work editor cancels its queued first read',async()=>{
  const h=harness(),r=new Runner(h.exports.Editor);
  r.render({...props,table:'works'});

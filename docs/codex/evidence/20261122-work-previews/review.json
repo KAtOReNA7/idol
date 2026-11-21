@@ -1,0 +1,121 @@
+{
+  "baselineCommit": "150f5c0b428b4f3db7165eec5618e225c30a50be",
+  "measuredOn": "2026-11-22",
+  "machine": "Windows / Node / React DOM server rendering, production route modules and native renderer output; no browser viewport in these measurements",
+  "input": "Public stage inventory, checked public metadata and public design assets; synthetic viewing state and empty ratings. The snapshot import is stubbed before file loading. No owner data is used.",
+  "groupDirectories": {
+    "groups": 51,
+    "states": 154,
+    "scopes": {
+      "all": {
+        "beforeCards": 812,
+        "beforeWithImage": 741,
+        "beforeFirstPartyImagePath": 740,
+        "afterCards": 812,
+        "afterWithImage": 812,
+        "afterFirstPartyImagePath": 812
+      },
+      "mv": {
+        "beforeCards": 656,
+        "beforeWithImage": 622,
+        "beforeFirstPartyImagePath": 622,
+        "afterCards": 656,
+        "afterWithImage": 656,
+        "afterFirstPartyImagePath": 656
+      },
+      "stage": {
+        "beforeCards": 583,
+        "beforeWithImage": 511,
+        "beforeFirstPartyImagePath": 423,
+        "afterCards": 583,
+        "afterWithImage": 583,
+        "afterFirstPartyImagePath": 583
+      },
+      "tonight": {
+        "beforeCards": 10,
+        "beforeWithImage": 0,
+        "beforeFirstPartyImagePath": 0,
+        "afterCards": 10,
+        "afterWithImage": 10,
+        "afterFirstPartyImagePath": 10
+      }
+    },
+    "counting": "Video card instances in each real directory, excluding release, member, navigation and footer nodes. Cards can repeat across sections and filters. ifeye normally opens its release index and has no video cards on that initial tab. Some editorial sections stay visible across filters."
+  },
+  "libraryAndDetail": {
+    "records": 614,
+    "sharedLibraryCardsBeforeAfter": [
+      605,
+      605
+    ],
+    "mvPlayerPostersBeforeAfter": [
+      605,
+      605
+    ],
+    "existingPlaceholdersWithoutVideo": 9,
+    "selectedStages": 527,
+    "stagePostersWithFirstPartyPathBeforeAfter": [
+      51,
+      527
+    ],
+    "dedicatedPreserved": 51,
+    "byStageImageSource": {
+      "upload-thumbnail": 474,
+      "existing-work-and-stage-art": 51,
+      "labelled-work-reference": 2
+    },
+    "platforms": {
+      "youtube": 522,
+      "bilibili": 4,
+      "x": 1
+    },
+    "labelledClipWorkIds": [
+      "recvxyHuKMEruy",
+      "recvxyOz5Xr6ek"
+    ]
+  },
+  "publicAssets": {
+    "downloadedCandidates": 476,
+    "shipped": 431,
+    "excludedCandidatesAlreadyCovered": 45,
+    "shippedBytes": 11071674,
+    "downloadVariants": {
+      "maxresdefault.jpg": 424,
+      "hqdefault.jpg": 7
+    },
+    "processing": "Pillow RGB, up to 640 by 360 without upscaling, Lanczos, WebP quality 76. HQ images only lose symmetric encoded black borders after a darkness check. Crop coordinates use left, top, right, bottom. Image and source hashes are SHA-256.",
+    "distinctReferencedPathsChecked": 1395,
+    "rasterDecodedAndSvgParsed": {
+      "JPEG": 928,
+      "WEBP": 435,
+      "SVG": 29,
+      "PNG": 3
+    },
+    "missingOrCorrupt": 0,
+    "verifiedBuiltWebPFiles": 431,
+    "verifiedBuiltWebPBytes": 11071674,
+    "builtDigestsMatchingPublicManifest": 431
+  },
+  "verification": {
+    "testMatrix": {
+      "windowsTests": 317,
+      "passed": 317
+    },
+    "focusedFeatureAndHistoricalSuites": {
+      "windowsTests": 95,
+      "passed": 74,
+      "existingFailures": 21,
+      "newFailuresAgainstV207": 0
+    },
+    "typecheck": "passed",
+    "mediaScope": "File decoding and real renderer output; browser and deployment checks are recorded separately.",
+    "hearts2heartsActualRouteRemixCollaboration": {
+      "windowsTests": 1,
+      "passed": 1
+    },
+    "publicSupplementCreditsAndVersionDisplayCompatibility": {
+      "windowsTests": 68,
+      "passed": 68
+    }
+  }
+}

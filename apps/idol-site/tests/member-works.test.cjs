@@ -1,5 +1,5 @@
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),ts=require('typescript');
-const api={};vm.runInNewContext('(function(exports){'+ts.transpileModule(fs.readFileSync('lib/idol/member-works.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText+'})') (api);
+const test=require('node:test'),assert=require('node:assert/strict');
+const api=require('./helpers/public-artist-loader.cjs')('lib/idol/member-works.ts');
 const {memberWorks,memberWorkSummary,personalMvPhoto}=api;
 const work=id=>({id,song:id,score:10,stageScore:10});
 const row=(id,w,score=null,stylingScore=null,extra={})=>({id,memberIds:['m'],workIds:[w],score,stylingScore,photo:null,recognition:'',...extra});

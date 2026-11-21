@@ -14,6 +14,7 @@ type PlayerProps = {
  title:string;
  posterSrc?:string;
  posterLabel?:string;
+ posterIsReference?:boolean;
  posterFit?:'contain'|'cover';
  posterZoom?:number;
  posterSize?:{width:number;height:number};
@@ -26,8 +27,10 @@ export function WorkVideoPlayer(props:PlayerProps){
  return <VideoSession key={sessionKey} {...props}/>;
 }
 
-function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',posterSrc,posterLabel,posterFit,posterSize,posterZoom=1}:PlayerProps){
- const coverSrc=posterSrc||(platform==='youtube'&&videoId?`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`:undefined);
+function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',sourceKey,posterSrc,posterLabel,posterIsReference,posterFit,posterSize,posterZoom=1}:PlayerProps){
+ const rangedStage=view==='stage'&&((sourceKey&&sourceKey!==videoId)||/[?&#](?:t|start|end|time_continue)=/.test(url+' '+(embedUrl??'')));
+ const wholeVideo=platform==='youtube'&&videoId&&!rangedStage;
+ const coverSrc=posterSrc||(wholeVideo?`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`:undefined);
  const playControl=useRef<HTMLButtonElement>(null);
  const frameRef=useRef<HTMLIFrameElement>(null);
  const focusOnStart=useRef(false);
@@ -62,13 +65,14 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',poster
   </button>
  </>;
  return <div className="video-stage">
-  {coverSrc&&!coverFailed?<img src={coverSrc} alt={posterLabel?title+' · '+posterLabel:title+' 视频封面'} style={posterFit?{position:'absolute',inset:0,width:'100%',height:'100%',maxWidth:posterSize?.width??'100%',maxHeight:posterSize?.height??'100%',margin:posterSize?'auto':undefined,objectFit:posterFit,transform:posterZoom>1?`scale(${posterZoom})`:undefined,transformOrigin:'50% 50%'}:undefined} referrerPolicy="no-referrer" onError={()=>setCoverFailed(true)}/>:<div className="video-cover-fallback"><span>{title}</span><small>{!coverSrc?'在原站观看此视频':coverRetried?(embedUrl?'封面仍未加载，可直接播放视频':'封面仍未加载，可在原站观看'):'封面暂时打不开'}</small></div>}
+  {coverSrc&&!coverFailed?<img src={coverSrc} alt={posterLabel?title+' · '+posterLabel:title+' 视频封面'} style={posterFit?{position:'absolute',inset:0,width:'100%',height:'100%',maxWidth:posterSize?.width??'100%',maxHeight:posterSize?.height??'100%',margin:posterSize?'auto':undefined,objectFit:posterFit,transform:posterZoom>1?`scale(${posterZoom})`:undefined,transformOrigin:'50% 50%'}:undefined} referrerPolicy="no-referrer" onError={()=>setCoverFailed(true)}/>:<div className="video-cover-fallback"><span>{title}</span><small>{!coverSrc?(embedUrl?'可直接播放视频':'在原站观看此视频'):coverRetried?(embedUrl?'封面仍未加载，可直接播放视频':'封面仍未加载，可在原站观看'):'封面暂时打不开'}</small></div>}
+  {coverSrc&&!coverFailed&&posterIsReference&&<small className="work-preview-label">{posterLabel}</small>}
   {coverSrc&&coverFailed&&!coverRetried&&<button type="button" className="video-cover-retry" onClick={event=>{if(event.currentTarget===event.currentTarget.ownerDocument.activeElement)playControl.current?.focus({preventScroll:true});setCoverRetried(true);setCoverFailed(false);}}>重试封面</button>}
   <button ref={playControl} type="button" className="video-play" onClick={()=>{
    if(!embedUrl){window.open(url,'_blank','noopener,noreferrer');return;}
    const play=playControl.current;
    focusOnStart.current=!!play&&play===play.ownerDocument?.activeElement;
    setAttempt(1);
-  }}><Play fill="currentColor" size={25}/><span>{platform==='bilibili'?'在 B站观看':platform==='x'?'在 X 观看':view==='stage'?'播放舞台视频':'播放视频'}</span></button>
+  }}><Play fill="currentColor" size={25}/><span>{!embedUrl&&platform==='bilibili'?'在 B站观看':!embedUrl&&platform==='x'?'在 X 观看':view==='stage'?'播放舞台视频':'播放视频'}</span></button>
  </div>;
 }

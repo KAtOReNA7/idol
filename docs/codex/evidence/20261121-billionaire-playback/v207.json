@@ -1,0 +1,106 @@
+{
+  "version": 207,
+  "application": "150f5c0b428b4f3db7165eec5618e225c30a50be",
+  "sitesSource": "1497fedf268547c77d47147b27877b082a30b656",
+  "savedVersion": "appgprj_6acb4fa532b88191ae2588c24b724b17~appgver_2d37b295fd8c8191bf726029932b1830",
+  "deployment": "appgdep_6b01ba70c8888191a81bd83fcc2e50e0",
+  "deployedAt": "2026-11-21T15:36:39.140996+00:00",
+  "status": "succeeded",
+  "url": "https://idol-lens-private.wuke40758.chatgpt.site",
+  "publicPlayback": {
+    "work": "rec28ldfRTrLku",
+    "canonicalVideo": "Gz_yRl6703c",
+    "provider": "RUTUBE",
+    "uploader": "MARI DOBREV",
+    "edition": "EXCLUSIVE PERFORMANCE VIDEO",
+    "browser": "Codex in-app",
+    "viewport": [
+      1280,
+      720
+    ],
+    "mediaIframes": 1,
+    "actualVideoWidth": 1920,
+    "actualVideoHeight": 884,
+    "durationSeconds": 163.496834,
+    "muted": true,
+    "playedRangesSeconds": [
+      [
+        0,
+        163.496834
+      ]
+    ],
+    "readingsSeconds": [
+      91.089863,
+      144.940508
+    ],
+    "sawLoginGate": false,
+    "externalNavigation": false
+  },
+  "privateProductionWrites": 0,
+  "sourceFramesCompared": {
+    "previous": [
+      640,
+      294
+    ],
+    "current": [
+      1920,
+      884
+    ]
+  },
+  "comparisonToV206": {
+    "windows": {
+      "verifyExit": 0,
+      "fullFailuresBefore": 174,
+      "fullFailuresAfter": 173,
+      "newFailures": 0
+    },
+    "linux": {
+      "verifyExit": 0,
+      "fullFailuresBefore": 170,
+      "fullFailuresAfter": 169,
+      "newFailures": 0
+    },
+    "resolvedTest": "actual anonymous stage media SSR shows one formal player, its scope note and no duplicate or stale candidate card"
+  },
+  "package": {
+    "archiveSha256": "04904962ba9c50354088b76caf6c82f325c99ff7344cb2bb6f1e2db914ad14ef",
+    "gzipBytes": 37235609,
+    "payloadBytes": 61292511,
+    "fullTarBytes": 62788608,
+    "tarOverheadBytes": 1496097,
+    "entries": 1983,
+    "regularFiles": 1811,
+    "serviceCapBytes": 268435456,
+    "minimumHeadroomBytes": 2097152,
+    "marginBytes": 205646848,
+    "manifests": {
+      "production": {
+        "commit": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+        "local": 578,
+        "remote": 5418
+      },
+      "recognition": {
+        "commit": "c953afa5a3829737dc6bfacd62439a524fe03df9",
+        "local": 8,
+        "remote": 309
+      },
+      "mv-release": {
+        "commit": "59e5d54969f46f43f7004c79667b524f549342b4",
+        "local": 0,
+        "remote": 268
+      }
+    },
+    "bindings": {
+      "d1": "DB",
+      "r2": "BUCKET",
+      "project_id": "appgprj_6acb4fa532b88191ae2588c24b724b17",
+      "capabilities": [
+        "mcp"
+      ]
+    },
+    "migrations": 23,
+    "allArchiveBytesMatchBuildAndExactPublishedMigrations": true,
+    "restrictedExcluded": 10,
+    "remotePathsAtPinnedGitBlobs": 5995
+  }
+}

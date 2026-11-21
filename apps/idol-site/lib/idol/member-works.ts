@@ -1,4 +1,5 @@
 import type {CatalogView as Catalog,Photo,RatingView as Rating,Work} from './types';
+import {videoId} from './values';
 
 export type MemberWork={work:Work;performance:number|null;styling:number|null;photo:Photo|null;referencePhoto?:Photo|null};
 const validScore=(value:unknown):value is number=>typeof value==='number'&&Number.isFinite(value)&&value>=0&&value<=10;
@@ -28,10 +29,11 @@ export function personalMvPhoto(r:Rating,memberId:string,workId:string):Photo|nu
  const completedEditorial=evidence.includes('【2026-10-11 本MV截图补全】已上传 ')&&evidence.includes('的 Klaxon 正片裁图，Vogue Singapore 原文 gallery ')&&evidence.includes('原文嵌入精确 MV rTKqSmX9XhQ')&&evidence.includes('以上为最新补全状态，原文字核验记录保留。');
  return /MV\s*截图|本\s*MV\s*(?:具名)?(?:截图|个人|认人图)/i.test(declaredKind)||namedPanel||namedChapter||namedGif||completedEditorial?p:null;
 }
-export function memberWorks(data:Pick<Catalog,'ratings'|'works'>,memberId:string):MemberWork[]{
+export function memberWorks(data:Pick<Catalog,'ratings'|'works'|'personalMvRatings'>,memberId:string):MemberWork[]{
  const related=data.ratings.filter(r=>r.memberIds.includes(memberId));
+ const personal=data.personalMvRatings?.entries.filter(row=>row.memberId===memberId)??[];
  const workIds=new Set(related.flatMap(r=>r.workIds));
- const works=[...new Map(data.works.filter(w=>workIds.has(w.id)&&!w.placeholder).map(w=>[w.id,w])).values()];
+ const works=[...new Map(data.works.filter(w=>!w.placeholder&&(workIds.has(w.id)||personal.some(row=>row.workId===w.id&&row.videoId===videoId(w.url)))).map(w=>[w.id,w])).values()];
  return works.map(work=>{
   const rows=related.filter(r=>r.memberIds.length===1&&r.workIds.length===1&&r.workIds[0]===work.id);
   // Keep the existing photo selection policy; score conflicts use every row.
@@ -39,7 +41,8 @@ export function memberWorks(data:Pick<Catalog,'ratings'|'works'>,memberId:string
   const photos=photoRows.map(r=>personalMvPhoto(r,memberId,work.id)).filter((p):p is Photo=>p!==null);
   const selected=photos.length===1?photos[0]:null;
   const reference=selected?.sourceKind==='mv_look_photo'?photoRows.find(r=>r.photo===selected)?.referencePhoto:null;
-  return {work,...(reference?{referencePhoto:reference}:{}),performance:oneScore(rows.map(r=>r.score)),styling:oneScore(rows.map(r=>r.stylingScore)),photo:photos.length===1?photos[0]:null};
+  const own=workIds.has(work.id)?undefined:personal.find(row=>row.workId===work.id&&row.videoId===videoId(work.url));
+  return {work,...(reference?{referencePhoto:reference}:{}),performance:own?own.score:oneScore(rows.map(r=>r.score)),styling:own?own.stylingScore:oneScore(rows.map(r=>r.stylingScore)),photo:photos.length===1?photos[0]:null};
  });
 }
 export function memberWorkSummary(items:MemberWork[]){

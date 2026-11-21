@@ -9,6 +9,17 @@ export function requestedBrowserCatalog(params:URLSearchParams):boolean{
  return true;
 }
 
+const videoLabels:Record<string,string>={
+ exclusive_performance_video:'特别表演视频',ost_promotion_video:'原声带宣传片',special_film:'特别短片',
+ member_collaboration_mv:'成员合作 MV',ost_mv:'原声带 MV','performance video':'表演视频',
+ 'performance video (Part.1)':'表演视频（上篇）','Brand MV':'品牌 MV','Special Video (Full ver.)':'特别影像（完整版）',
+ 'MV (Our Summer Memories version)':'MV（Our Summer Memories 版）',
+ 'publisher-produced performance video (MAPSQUARE Music)':'MAPSQUARE Music 制作表演视频','live clip (MEN CONCERT)':'MEN CONCERT 现场片段',
+};
+function videoLabel(value:string){
+ return Object.hasOwn(videoLabels,value)?videoLabels[value]:/^[a-z]+(?:_[a-z]+)+$/.test(value)?'音乐影像':value;
+}
+
 // Only the authenticated response is reduced. Never mutate the shared native
 // cache, source rows, evidence or complete export. Evaluate the exact same
 // personal-photo rule before dropping text that the interface does not display.
@@ -19,6 +30,19 @@ export function projectBrowserCatalog(catalog:Catalog):CatalogView{
  const groups=oldIfeye?catalog.groups.map(group=>group===oldIfeye
   ?{...group,company:'초록뱀뮤직',officialUrl:group.officialUrl||'https://artist.mnetplus.world/main/stg/ifeye'}
   :group):catalog.groups;
+ let worksChanged=false;
+ const works=catalog.works.map(work=>{
+  const videoType=videoLabel(work.videoType);
+  const supplement=work.stageSupplement,originalNote=supplement?.researchNote;
+  const summary=supplement?.viewingNote||'节目与发行资料';
+  const changeNote=originalNote&&summary!==originalNote.summary;
+  const tags=work.versionDisplay?.tags.map(videoLabel);
+  const changeTags=tags?.some((tag,index)=>tag!==work.versionDisplay?.tags[index]);
+  if(videoType===work.videoType&&!changeNote&&!changeTags)return work;
+  worksChanged=true;
+  return {...work,videoType,...(changeNote?{stageSupplement:{...supplement,researchNote:{...originalNote,summary}}}:{}),
+   ...(changeTags&&work.versionDisplay?{versionDisplay:{...work.versionDisplay,tags:[...new Set(tags)]}}:{})};
+ });
  const ratings:RatingView[]=catalog.ratings.map(row=>{
   // Never trust a pre-existing transport flag as source evidence.
   const {personalPhotoEligible:unusedDecision,...sourceRow}=row as RatingView;
@@ -34,5 +58,5 @@ export function projectBrowserCatalog(catalog:Catalog):CatalogView{
   }
   return {...view,personalPhotoEligible};
  });
- return {...catalog,groups,ratings};
+ return {...catalog,groups,works:worksChanged?works:catalog.works,ratings};
 }

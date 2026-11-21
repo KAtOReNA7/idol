@@ -17,7 +17,7 @@ const hash=x=>createHash('sha256').update(x).digest('hex');
 
 test('STAYC binds the confirmed Japanese song interval without changing the full-part or Password identity',()=>{
  const all=require('../data/stage-videos.json'),s=stageForWork(stayc.workId),key='bilibili:BV1bo4y1x7LV:cid:1115512650:p:1@1085-1273';
- assert.equal(stageSourceKey(s),key);assert.ok(stageScoreIsBound(s));assert.equal(stageEmbedUrl(s),null);
+ assert.equal(stageSourceKey(s),key);assert.ok(stageScoreIsBound(s));assert.equal(new URL(stageEmbedUrl(s)).searchParams.get('t'),'1085');
  assert.equal(s.clip.sourceDurationSeconds,1469);assert.equal(s.clip.endSeconds-s.clip.startSeconds,188);
  assert.equal(s.platform,'bilibili');assert.equal(s.selection.occasion,'music_program');assert.equal(s.sourceClass,'reupload');
  assert.match(s.verificationNote,/需手动定位/);assert.match(s.verificationNote,/完整206条保存日志/);
@@ -30,7 +30,7 @@ test('Password real adoption keeps all 497 old objects and binds only the exact 
  const all=require('../data/stage-videos.json'),id=receipt.workId,s=stageForWork(id);
  assert.equal(Object.keys(require('./helpers/qwer-formal-baseline.cjs').beforeQwer('stageVideos',all)).length,499);assert.equal(Object.keys(beforePassword('stageVideos',all)).length,497);
  assert.deepEqual(s,receipt.stageVideos.afterRow);assert.equal(stageSourceKey(s),human.embedIdentity.sourceKey);assert.ok(stageScoreIsBound(s));
- assert.equal(stageWatchUrl(s),'https://www.bilibili.com/video/BV1bhU8BWEso/?p=1&cid=34265369310');assert.equal(stageEmbedUrl(s),null);
+ assert.equal(stageWatchUrl(s),'https://www.bilibili.com/video/BV1bhU8BWEso/?p=1&cid=34265369310');assert.equal(new URL(stageEmbedUrl(s)).searchParams.get('cid'),'34265369310');
  assert.equal(s.sourceClass,'reupload');assert.equal(s.selection.occasion,'music_program');assert.equal(s.likes.precision,'unknown');
  assert.match(s.verificationNote,/用户完整看片/);assert.match(s.verificationNote,/代理未独立全片播放/);assert.match(s.verificationNote,/完整206条保存日志/);
  for(const change of [{bilibili:{cid:'34265369311',page:1}},{bilibili:{cid:'34265369310',page:2},url:s.url.replace('p=1','p=2')},{scoreBinding:{...s.scoreBinding,sourceKey:s.videoId}},{scoreBinding:{...s.scoreBinding,initialScore:0}}])assert.equal(stageScoreIsBound({...s,...change}),false);
@@ -60,7 +60,7 @@ test('MADEIN four release subjects use clear press references without expanding 
  assert.ok(target);const work={id:target.workId,url:'https://www.youtube.com/watch?v='+target.videoId,groupIds:[g.groupId],ratingIds:[],score:0,stageScore:0,note:'private synthetic note'};
  const data={works:[work],ratings:[],members:g.portraits.map(p=>({id:p.memberId,stageName:p.name,groupIds:[g.groupId]}))},before=structuredClone(data);
  const html=renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data,onMember(){}}));
- assert.equal((html.match(/class="mv-identity-frame/g)||[]).length,4);assert.match(html,/不代表已核实其在本视频出镜/);assert.doesNotMatch(html,/SUHYE|YESEO/);
+ assert.equal((html.match(/class="mv-identity-frame/g)||[]).length,4);assert.match(html,/发行封套参与成员/);assert.doesNotMatch(html,/SUHYE|YESEO|MV 出镜成员/);
  assert.doesNotMatch(html,/<input|<form|cast-scores|private synthetic note/);assert.deepEqual(data,before);
  assert.equal(human.ifeye.adoption,'none; keep factual role unresolved');
 });

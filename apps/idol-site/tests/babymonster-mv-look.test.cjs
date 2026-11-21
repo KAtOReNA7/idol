@@ -1,12 +1,15 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),ts=require('typescript'),React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
 const images=require('./helpers/image-dependency-loader.cjs').imageDependency('@/components/mv-photo-reference');
-const model={};vm.runInNewContext('(function(exports){'+ts.transpileModule(fs.readFileSync('lib/idol/member-works.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText+'})')(model);
+const model=require('./helpers/public-artist-loader.cjs')('lib/idol/member-works.ts');
 function render(kind='mv_look_photo',referenceTable='ratings'){
  const m={id:'recM',name:'RUKA',stageName:'RUKA',groupIds:[],role:'',social:[]},photo={table:'ratings',recordId:'recR',fieldId:'photos',index:2,sourceKind:kind},data={mode:'live',works:[{id:'recW',song:'I LIKE IT',version:'MV'}],ratings:[{id:'recR',memberIds:[m.id],workIds:['recW'],score:0,stylingScore:8,personalPhotoEligible:true,photo,referencePhoto:{...photo,table:referenceTable,index:0,sourceKind:'mv_still',kind:'本 MV 截图'}}]};
- const before=JSON.stringify(data),source=fs.readFileSync('components/artist-sample.tsx','utf8'),member=source.split('\n').find(s=>s.startsWith(' function renderMember('));assert.ok(member);
+ const before=JSON.stringify(data),source=fs.readFileSync('components/artist-sample.tsx','utf8');
+ const tree=ts.createSourceFile('artist-sample.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+ let member;function visit(node){if(ts.isFunctionDeclaration(node)&&node.name?.text==='renderMember')member=node.getText(tree);else ts.forEachChild(node,visit);}
+ visit(tree);assert.ok(member);
  const exports={},code=ts.transpileModule(member+'\nexports.render=renderMember;',{compilerOptions:{jsx:ts.JsxEmit.ReactJSX,module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
  const Picture=({src,alt})=>React.createElement(images.ReliableImage,{src,alt});
- vm.runInNewContext(code,{exports,require,data,...model,...images,Picture,memberVisual:()=>null,memberDisplayName:()=> '河井瑠花 · RUKA',imageUrl:images.privatePhotoSource,n:v=>v===null?'待评':v.toFixed(1),navigate:()=>{},setLightbox:()=>{},MemberPhysicalFacts:()=>null,MemberCareerFacts:()=>null,SectionHeading:()=>null,LinkTo:'a',ArrowLeft:()=>null,ArrowUpRight:()=>null,artistMemberUrl:id=>'/?view=members&member='+id,returnTo:'/artists/babymonster?section=members&member=recM',workUrl:w=>'/?view=works&work='+w.id});
+ vm.runInNewContext(code,{exports,require,data,...model,...images,Picture,memberVisual:()=>null,memberDisplayName:()=> '河井瑠花 · RUKA',imageUrl:images.privatePhotoSource,n:v=>v===null?'待评':v.toFixed(1),navigate:()=>{},setLightbox:()=>{},MemberPublicCredits:()=>null,MemberPhysicalFacts:()=>null,MemberCareerFacts:()=>null,SectionHeading:()=>null,LinkTo:'a',ArrowLeft:()=>null,ArrowUpRight:()=>null,artistMemberUrl:id=>'/?view=members&member='+id,returnTo:'/artists/babymonster?section=members&member=recM',workUrl:w=>'/?view=works&work='+w.id});
  const html=renderToStaticMarkup(React.createElement(()=>exports.render(m)));assert.equal(JSON.stringify(data),before);return html;
 }
 test('published BABYMONSTER page uses the hooked member gallery',()=>{assert.match(fs.readFileSync('app/artists/babymonster/page.tsx','utf8'),/ArtistSample basePath="\/artists\/babymonster"/);});

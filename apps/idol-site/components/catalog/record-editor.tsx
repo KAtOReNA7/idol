@@ -56,7 +56,8 @@ export function Editor({publicCatalog,table,id,mode,onSaved,compact=false,loona=
   setState('loading');
   setMessage('');
   try{
-   const response=await fetch(`/api/records?table=${table}&id=${id}`,{cache:'no-store',signal:controller.signal});
+   const response=await fetch(`/api/records?table=${table}&id=${id}`,{cache:'no-store',signal:controller.signal})
+    .catch(()=>{throw new Error('未能连接手帐，请检查网络后重新载入。当前输入已保留。');});
    const record=await readResponse(response);
    if(readAbort.current!==controller)return;
    if(controller.signal.aborted)throw new Error('读取用时较长，请重试。输入会保留。');
@@ -112,7 +113,8 @@ export function Editor({publicCatalog,table,id,mode,onSaved,compact=false,loona=
     pendingSave.current={table,recordId:id,revision:detail.revision,operationId:crypto.randomUUID(),values,
      ...(table==='works'&&Object.hasOwn(values,'stageScore')?{stageVideoId:stageDraftVideoId,stageSourceKey:stageDraftSourceKey}:{})};
    }
-   const response=await fetch('/api/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(pendingSave.current),signal:controller.signal});
+   const response=await fetch('/api/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(pendingSave.current),signal:controller.signal})
+    .catch(()=>{throw new Error('未能连接手帐。当前输入已保留，请恢复网络后核对上次保存。');});
    const result=await readResponse(response);
    if(!response.ok){
     const code=result&&typeof result==='object'&&'error' in result?result.error:null;

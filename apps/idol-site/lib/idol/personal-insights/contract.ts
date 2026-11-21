@@ -1,4 +1,4 @@
-import type {CatalogView, Work, Group, Member, RatingView} from '../types';
+import type {CatalogView, Work, Group, Member, PersonalMvRating, RatingView} from '../types';
 
 export type ScoreDomain = 'mv' | 'stage';
 export type GroupSort = 'mean' | 'samples' | 'high';
@@ -39,6 +39,7 @@ export type PreparedCatalog = {
   groups: readonly Readonly<Group>[];
   members: readonly Readonly<Member>[];
   ratings: readonly Readonly<RatingView>[];
+  personalMvRatings?: readonly Readonly<PersonalMvRating>[];
   workById: ReadonlyMap<string, Readonly<Work>>;
   groupById: ReadonlyMap<string, Readonly<Group>>;
   memberById: ReadonlyMap<string, Readonly<Member>>;

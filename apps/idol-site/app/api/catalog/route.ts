@@ -4,6 +4,7 @@ import {requestedArtist,projectArtistCatalog} from '@/lib/idol/artist-catalog';
 import {projectBrowserCatalog,requestedBrowserCatalog} from '@/lib/idol/browser-catalog';
 import {ownControl,assertSourceUnchanged} from '@/lib/idol/native-storage';
 import {readNativeCatalog} from '@/lib/idol/native-reader';
+import {personalMvRatingsForOwner} from '@/lib/idol/personal-mv-ratings';
 import {getReadableCatalog} from '@/lib/idol/durable-catalog';
 import {json,failure} from '@/lib/idol/http';
 import type {CatalogView} from '@/lib/idol/types';
@@ -42,9 +43,16 @@ export async function GET(request:Request) {
   const force = ['1','background'].includes(params.get('refresh') ?? '');
   const native = await readNativeCatalog(user.userId, force);
   const result = native ?? await getReadableCatalog(user.userId, force);
+  const personal = native && browserView ? await personalMvRatingsForOwner(user.userId,before,result) : undefined;
   await assertSourceUnchanged(user.userId, before);
-  const scoped = artist ? projectArtistCatalog(result, artist) : result;
-  return browserView ? displayResponse(request, projectBrowserCatalog(scoped)) : json(scoped);
+  const scoped = artist ? projectArtistCatalog(result, artist, personal?.entries) : result;
+  if (!browserView) return json(scoped);
+  const view=projectBrowserCatalog(scoped);
+  if (personal) {
+   const works=new Set(scoped.works.map(work=>work.id)),members=new Set(scoped.members.map(member=>member.id));
+   view.personalMvRatings=artist?{...personal,entries:personal.entries.filter(row=>works.has(row.workId)&&members.has(row.memberId))}:personal;
+  }
+  return displayResponse(request, view);
  } catch (error) {
   return failure(error);
  }

@@ -23,22 +23,22 @@ test('Hey Gabby review-only content reaches anonymous projection and renders a c
  assert.equal(work.stageSupplement.searchReview,undefined);
  assert.deepEqual(Object.keys(work.stageSupplement.researchNote).sort(),['sources','summary']);
  assert.equal(work.stageSupplement.researchNote.sources.length,3);
- const html=render(work);assert.match(html,/<details class="caption-help stage-research-note"><summary>待核说明与来源<\/summary>/);
+ const html=render(work);assert.match(html,/<details class="caption-help stage-research-note"><summary>节目与发行资料<\/summary>/);
  assert.doesNotMatch(html,/<details[^>]*\bopen\b/);
  for(const url of ['https://www.youtube.com/watch?v=XSpYaEdpKxY','https://music.bugs.co.kr/mv/608040','https://www.newsis.com/view/NISX20220518_0001876354'])assert.ok(html.includes(`href="${url}" target="_blank" rel="noopener noreferrer"`));
- assert.match(html,/仍待核验，不用于本条舞台评分/);
+ assert.doesNotMatch(html,/仍待核验|人工看片/);
  assert.doesNotMatch(html,/<input|<form|<iframe|<button|保存作品修改|owner|保存日志|versionMatch|completeness|verification_limited|Music Bank/);
  assert.equal(stageForWork(id),null);assert.equal(stageMatches(work,'ready'),false);assert.equal(work.stageScore,0);assert.equal(work.score,0);
  assert.deepEqual(work.stageSupplement.alternatives,[]);assert.equal(work.stageSupplement.watchLeads,undefined);
  assert.deepEqual(catalog,before);
 });
 
-test('anonymous Hey Gabby disclosure shows the human participation finding without creating stage or member scores',()=>{
+test('historical Hey Gabby notes preserve the underlying findings and show source links without creating scores',()=>{
  const catalog=fixture(),snapshot=structuredClone(catalog),publicWork=projectPublicCatalog(catalog).works[0];
  const html=render(publicWork);
- assert.match(html,/人工看片已确认.*7名成员均参与/);
- assert.match(html,/视频首尾是否完整、语言和音轨是否与原曲一致仍待核验/);
- assert.match(html,/目前尚未采用为本条舞台/);
+ assert.match(catalog.works[0].stageSupplement.researchNote.summary,/人工看片已确认.*7名成员均参与/);
+ assert.match(catalog.works[0].stageSupplement.researchNote.summary,/视频首尾是否完整、语言和音轨是否与原曲一致仍待核验/);
+ assert.doesNotMatch(html,/人工看片|采用为本条舞台/);
  assert.ok(html.includes('https://www.youtube.com/watch?v=XSpYaEdpKxY'));
  assert.ok(html.includes('https://music.bugs.co.kr/mv/608040'));
  assert.doesNotMatch(html,/<iframe|<input|<button|cast-scores|版本已确认|完整播放已确认/);
@@ -73,7 +73,7 @@ test('research disclosure fails closed on unsafe links or malformed fields and e
  }
  for(const invalid of [null,[],{...note,summary:{}},{...note,sources:[]},{...note,sources:[null]},{...note,sources:[{label:{},url:'https://example.com/'}]},{...note,owner:'private'},{...note,sources:[{label:'Source',url:'https://example.com/',token:'private'}]}])assert.equal(validStageResearchNote(invalid),false);
  const malicious={summary:'<script>alert(1)</script>',sources:[{label:'<img src=x onerror=alert(1)>',url:'https://example.com/'}]};
- const html=render({stage:null,stageSupplement:{alternatives:[],researchNote:malicious}});
+ const html=render({stage:null,stageSupplement:{alternatives:[],researchNote:malicious,viewingNote:'<script>alert(1)</script>'}});
  assert.match(html,/&lt;script&gt;/);assert.match(html,/&lt;img/);assert.doesNotMatch(html,/<script|<img/);
  const malformed=fixture();malformed.works[0].stageSupplement.researchNote.summary={token:'SECRET'};
  assert.equal(render(projectPublicCatalog(malformed).works[0]),'');

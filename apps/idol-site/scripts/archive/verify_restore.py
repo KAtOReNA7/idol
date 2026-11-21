@@ -4,7 +4,7 @@ Run: python3 scripts/archive/verify_restore.py /absolute/backup-directory
 Never extracts arbitrary paths or contacts Feishu. Does not modify the live Site.
 """
 import gzip,hashlib,json,pathlib,re,sqlite3,sys,time
-from PIL import Image, ImageSequence
+from restore_personal_mv_ratings import restore_ratings
 root=pathlib.Path(sys.argv[1]).resolve()
 manifest=json.loads((root/'manifest.json').read_text())
 assert manifest['formatVersion']=='idol.full-backup.v1'
@@ -23,7 +23,7 @@ def digest(path):
         for b in iter(lambda:f.read(1024*1024),b''):h.update(b)
     return h.hexdigest()
 meta=manifest['data'];p=safe_path(meta['path']);assert p.stat().st_size==meta['byteLength'];assert digest(p)==meta['sha256'];data=json.loads(gzip.decompress(p.read_bytes()))
-assert data['formatVersion']=='idol.native-archive.v1';assert set(data['tables'])=={'groups','members','works','ratings'}
+assert data['formatVersion'] in ('idol.native-archive.v1','idol.native-archive.v2');assert set(data['tables'])=={'groups','members','works','ratings'}
 # Reuse only a prior successful complete decode whose exact report SHA is supplied
 # by the operator from that independently verified run. Current bytes are always
 # hashed again. Single-frame proof is conservative: other cases decode anew.
@@ -51,6 +51,7 @@ for photo in manifest['photos']:
     if photo['sha256'] not in decoded and reuse.get(photo['sha256'])==photo['byteLength']:
         decoded[photo['sha256']]={'frames':1};reused.add(photo['sha256'])
     if photo['sha256'] not in decoded:
+        from PIL import Image, ImageSequence
         freshly_decoded.add(photo['sha256'])
         with Image.open(path) as img: img.verify()
         with Image.open(path) as img:
@@ -80,6 +81,7 @@ for table,part in data['tables'].items():
                 for idx,a in enumerate(record['fields'].get(fid) or []):
                     assert (pilot and not manifest.get('complete')) or a['file_token'] in assets
                     refs.append((table,rid,fid,idx,a['file_token']))
+personal_count=restore_ratings(con,data)
 for row in data['journal']:con.execute('INSERT INTO saves VALUES (?,?)',(row['id'],json.dumps(row,ensure_ascii=False)))
 for token,photo in assets.items():con.execute('INSERT INTO assets VALUES (?,?)',(token,json.dumps(photo,ensure_ascii=False)))
 for k,v in data['siteMetadata'].items():con.execute('INSERT INTO metadata VALUES (?,?)',(k,json.dumps(v,ensure_ascii=False)))
@@ -98,6 +100,7 @@ for k,v in data['siteMetadata'].items():assert json.loads(con.execute('SELECT va
 assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok';con.close()
 report={'formatVersion':'idol.pilot-restore-report.v1' if pilot else 'idol.restore-report.v1','completeBackup':manifest.get('complete') is True and {x[4] for x in refs}==set(assets),'missingPhotoTokens':len({x[4] for x in refs}-set(assets)),'archiveId':manifest['id'],'manifestHash':manifest['manifestHash'],'dataSha256':meta['sha256'],'restoredRecords':len(record_ids),'fieldValues':field_count,'protectedValues':protected_count,'journalRows':len(data['journal']),'photoTokens':len(assets),'decodedUniqueImages':len(decoded),'decodedFrames':sum(x['frames'] for x in decoded.values()),'photoReferences':len(refs),'photoBytes':image_bytes,'fieldMismatches':0,'photoFailures':0,'sqliteIntegrity':'ok','sourceNetworkUsed':False,'verifiedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime())}
 evidence={'formatVersion':'idol.image-restore-evidence.v1','manifestHash':manifest['manifestHash'],'priorReportSha256':reuse_report_sha,'priorManifestHash':reuse_manifest_hash,'currentPhotoBytesHashed':True,'reusedDecodedUniqueImages':len(reused),'freshlyDecodedUniqueImages':len(freshly_decoded),'evidenceBySha256':{sha:{'frames':value['frames'],'method':'prior-complete-decode-and-current-sha256' if sha in reused else 'current-decode-and-sha256'} for sha,value in decoded.items()}}
+if personal_count:report['personalMvRatings']=personal_count
 (root/'image-restore-evidence.json').write_text(json.dumps(evidence,indent=2)+'\n')
 (root/'restore-report.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))

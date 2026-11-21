@@ -2,6 +2,7 @@ import {publicGroupNames} from './public-group-names';
 import type {CatalogView as Catalog,Work,Group} from './types';
 import type {BrowseFilters,WatchSequence,WorkSort} from './journey';
 import {inQueue} from './queues';
+import {videoId} from './values';
 import {stageMatches} from './stage-display';
 import {indexNameFields,matchesNameFields,nameSearchQuery,type NameSearchQuery} from './name-search';
 // Split on whitespace so song, version and group can be combined in any order.
@@ -29,10 +30,14 @@ export function matchesWorkScope(work:Work,filters:BrowseFilters,groups:Group[])
 export function makeWatchSequence(works:Work[],label:string,filters:BrowseFilters,memberId?:string):WatchSequence{
  return {ids:[...new Set(works.filter(w=>!w.placeholder&&!!w.url).map(w=>w.id))],label,filters:{...filters},...(memberId?{memberId}:{})};
 }
+export function includesMemberWork(data:Catalog,memberId:string,work:Work){
+ return data.ratings.some(row=>row.workIds.includes(work.id)&&row.memberIds.includes(memberId))||
+  !!data.personalMvRatings?.entries.some(row=>row.workId===work.id&&row.memberId===memberId&&row.videoId===videoId(work.url));
+}
 export function nextInSequence(sequence:WatchSequence,currentId:string,data:Catalog){
  const index=sequence.ids.indexOf(currentId);if(index<0)return null;
  for(const id of sequence.ids.slice(index+1)){const work=data.works.find(w=>w.id===id);if(!work||!work.url||!matchesWorkScope(work,sequence.filters,data.groups)||!stageMatches(work,sequence.filters.stageFilter))continue;
-  if(sequence.memberId&&!data.ratings.some(r=>r.workIds.includes(id)&&r.memberIds.includes(sequence.memberId!)))continue;
+  if(sequence.memberId&&!includesMemberWork(data,sequence.memberId,work))continue;
   return work;
  }
  return null;

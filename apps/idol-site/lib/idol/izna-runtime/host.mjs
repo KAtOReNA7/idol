@@ -40,6 +40,7 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
   const runtime=createAstraRuntime(win),module=createIznaModule(runtime);
   const path=reviewPath(slug),baseUrl=new URL(path+'/',win.location.origin).href;
   let handle=null,dead=false,mountedUrl=null,mountedRoute=null,replaying=false,settleStyles=null,deferredNativeFocus=null;
+  let memberDirectory=null;
   let scrollFrame=null,restoreObserver=null,restoreTimer=null,restoreEpoch=0;
   const frames=new Set(),off=[];
   const currentUrl=()=>win.location.pathname+win.location.search+win.location.hash;
@@ -123,11 +124,14 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
   function onNavigate(detail) {
     if(dead)return;
     if(!validRoute(data,detail.route))throw new Error('Unsupported review route');
+    const previousRoute=mountedRoute;
     mountedRoute=detail.route;
     if(!replaying) {
       const target=artistUrl(data,detail.route);
-      if(currentUrl()!==target)win.history.pushState({...reviewState(win.history.state,target,0,null),iznaRendererRoute:detail.route},'',target);
-      mountedUrl=target;pending();restore(null);
+      const backToMember=previousRoute?.startsWith('#/person/')&&memberDirectory?.url===target?memberDirectory:null;
+      if(currentUrl()!==target)win.history.pushState({...reviewState(win.history.state,target,backToMember?.y??0,backToMember?.focus??null),iznaRendererRoute:detail.route},'',target);
+      mountedUrl=target;pending();restore(backToMember);
+      if(!detail.route.startsWith('#/person/'))memberDirectory=null;
     }else pending();
   }
   const owner={destroy,inspect:()=>runtime.inspect()};owners.set(host,owner);
@@ -180,6 +184,9 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
   })();
   function navigate(hash) {
     if(dead||!validRoute(data,hash)||currentUrl()!==mountedUrl)return false;
+    if(mountedRoute?.split('?')[0]==='#/members'&&hash.startsWith('#/person/')){
+      memberDirectory={url:mountedUrl,y:win.scrollY,focus:{kind:'href',value:artistUrl(data,hash)}};
+    }
     remember();handle?.navigate(hash);return true;
   }
   const changed=()=>{

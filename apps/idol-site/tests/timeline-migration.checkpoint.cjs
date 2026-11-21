@@ -8,7 +8,7 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const assert = require('node:assert/strict');
 const ts = require('typescript');
-const root = path.resolve(__dirname, '..');
+const root = path.resolve(process.env.IDOL_CHECKPOINT_ROOT || path.join(__dirname, '..'));
 const legacy = new Set(['artist-sample', 'illit-artist', 'expanded-artist', 'ive-artist', 'kiof-artist', 'stayc-artist', 'nmixx-artist', 'hearts2hearts-artist', 'kiiikiii-artist', 'itzy-artist', 'lesserafim-artist', 'saymyname-artist', 'katseye-artist']);
 
 function parse(projectRoot, relative) {

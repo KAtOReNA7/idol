@@ -1,8 +1,8 @@
 'use strict';
 const fs=require('node:fs');const path=require('node:path');const assert=require('node:assert/strict');const ts=require('typescript');
 const {implementations}=require('./fixtures/image-reliability/performance-extract.cjs');
-const root=path.resolve(__dirname,'..');
-const registry=require('../HANDOFF/artist-registry51.json');
+const root=path.resolve(process.env.IDOL_CHECKPOINT_ROOT||path.join(__dirname,'..'));
+const registry=require(path.join(root,'HANDOFF/artist-registry51.json'));
 function walk(node,visit){if(!node)return;visit(node);ts.forEachChild(node,child=>walk(child,visit));}
 function parse(file,source){return ts.createSourceFile(file,source??fs.readFileSync(path.join(root,file),'utf8'),ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);}
 function jsx(node){return ts.isJsxOpeningElement(node)||ts.isJsxSelfClosingElement(node);}

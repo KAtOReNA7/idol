@@ -15,6 +15,8 @@ const source = [
   "export {projectCatalog} from './lib/idol/catalog';",
   "export {projectArtistCatalog} from './lib/idol/artist-catalog';",
   "export {projectBrowserCatalog} from './lib/idol/browser-catalog';",
+  "export {loadArtistTimeline} from './lib/idol/timeline/production';",
+  "export {prepareTimelinePresentation} from './lib/idol/timeline/presentation';",
 ].join('\n');
 const bundle = esbuild.buildSync({
   stdin: {contents:source, resolveDir:process.cwd(), loader:'tsx'},
@@ -49,4 +51,4 @@ async function renderArtist(group, query = {}, data = artistCatalog(group), opti
   return new Response(stream).text();
 }
 
-module.exports = {registry, nativeSlugs, artistCatalog, renderArtist};
+module.exports = {registry, nativeSlugs, artistCatalog, renderArtist, loadArtistTimeline:api.loadArtistTimeline, prepareTimelinePresentation:api.prepareTimelinePresentation};

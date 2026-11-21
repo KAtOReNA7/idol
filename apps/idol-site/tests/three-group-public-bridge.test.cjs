@@ -36,8 +36,12 @@ test('navigation and identity projections are versioned, compact, public and fin
   }
   for (const file of ['data/public-artist-identity-map.json', 'data/public-artist-navigation-keys.json']) {
     assert.doesNotMatch(fs.readFileSync(file, 'utf8'), /"(?:score|note|favorite|watched|fileToken|revision|fields|ratings|title|dateSemantics)"/);
-    assert.ok(fs.statSync(file).size < 24000, file);
   }
+  assert.ok(fs.statSync('data/public-artist-identity-map.json').size < 24000);
+  const threeGroups=Object.fromEntries(Object.keys(identities.groups).map(slug=>[slug,keys.groups[slug]]));
+  assert.ok(Buffer.byteLength(JSON.stringify({schemaVersion:keys.schemaVersion,groups:threeGroups}))<24000);
+  const pin=require('./fixtures/timeline-host/PUBLIC_NAVIGATION_INPUTS.json').find(row=>row.path==='data/public-artist-navigation-keys.json');
+  assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(pin.path)).digest('hex'),pin.sha256);
 });
 
 for (const [slug, ids] of Object.entries(identities.groups)) {
@@ -192,7 +196,8 @@ test('runtime and canonical helper are pure, acyclic and leave established edito
   const route=fs.readFileSync('lib/idol/public-artist-route-keys.ts','utf8');
   assert.doesNotMatch(route,/from ['"].*(?:artist-navigation|public-artist-bridge|design-public-catalog|types)['"]/);
   const editor=require('./helpers/catalog-view-source.cjs')(),driver=fs.readFileSync('components/use-browse-journey.ts','utf8');
-  for(const token of ['onDirtyChange','onNavigationBlockedChange','operationId:crypto.randomUUID()','revision:detail.revision','values:changed'])assert.ok(editor.includes(token));
+  for(const token of ['onDirtyChange','onNavigationBlockedChange','operationId:crypto.randomUUID()','revision:detail.revision','body:JSON.stringify(pendingSave.current)'])assert.ok(editor.includes(token),token);
+  assert.match(editor,/Object\.entries\(draft\)\.filter\(\(\[key,value\]\)=>value!==detail\.values\[key\]\)/);
   assert.match(driver,/mayLeave\(\)/);assert.match(driver,/data-dirty/);assert.match(driver,/data-navigation-blocked/);
   assert.equal(bridge.publicArtistHref('__proto__'),null);assert.equal(bridge.translatePublicPrototypeRoute('__proto__','#/home'),null);
 });

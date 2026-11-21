@@ -57,8 +57,8 @@ export default function App(){
   let updating=force;
   try{
    const read=(url:string)=>catalogReadWithDeadline(async signal=>{
-    const r=await fetch(url,{cache:'no-store',signal});const d:any=await readResponse(r);
-    if(!r.ok)throw new Error(requestMessage(d.error));return d as Catalog;
+    const r=await fetch(url,{cache:'no-store',signal,headers:{Prefer:'omit-stage-candidates'}});const d=await readResponse(r);
+    if(!r.ok)throw new Error(requestMessage(d&&typeof d==='object'&&'error' in d?d.error:null));return d as Catalog;
    },controller.signal);
    const d=await read('/api/catalog?shape=display-v1'+(force&&canEdit?'&refresh=1':''));
    if(sequence!==loadSequence.current)return;

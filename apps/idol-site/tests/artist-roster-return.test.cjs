@@ -1,14 +1,27 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),ts=require('typescript');
 function harness(){
  const layouts=[],frames=new Map();let seq=0,dialog=false,focused=null,scrolled=null;const ref={current:null};
- const target={dataset:{artistMemberTrigger:'recMember'},disabled:false,matches(){return this.disabled},focus(options){focused=options},scrollIntoView(options){scrolled=options}};
+ const target={dataset:{artistMemberTrigger:'recMember'},disabled:false,getClientRects(){return [{}]},matches(){return this.disabled},focus(options){focused=options},scrollIntoView(options){scrolled=options}};
+ const nodes=[target];
  const history={state:{untouched:true},replaceState(s){this.state=s}},location={pathname:'/artists/itzy',search:'?section=members&member=recMember',href:'https://site.test/artists/itzy?section=members&member=recMember'};
- const document={querySelector(){return dialog?{}:null},querySelectorAll(){return [target]}};
+ const document={querySelector(){return dialog?{}:null},querySelectorAll(){return nodes}};
  const React={useRef:()=>ref,useLayoutEffect:f=>layouts.push(f)},out={};const code=ts.transpileModule(fs.readFileSync('components/use-artist-roster-return.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
  vm.runInNewContext('(function(require,exports){'+code+'})',{URL,history,location,document,requestAnimationFrame:f=>{frames.set(++seq,f);return seq},cancelAnimationFrame:id=>frames.delete(id)})(n=>{const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(n);if(timelineModule!==undefined)return timelineModule;assert.equal(n,'react');return React},out);
  const render=(query,ready=true)=>{location.search=query;location.href='https://site.test'+location.pathname+query;out.useArtistRosterReturn(ready,location.href);return layouts.shift()()};
- return {history,location,target,render,flush(){for(const f of frames.values())f();frames.clear()},get focused(){return focused},get scrolled(){return scrolled},setDialog(v){dialog=v}};
+ return {history,location,target,nodes,render,flush(){for(const f of frames.values())f();frames.clear()},get focused(){return focused},get scrolled(){return scrolled},setDialog(v){dialog=v}};
 }
+test('returning from a text link picks the same visible action for the same member',()=>{
+ const h=harness();
+ const profile={...h.target,dataset:{artistMemberTrigger:'recMember',artistRosterAction:'profile'}};
+ h.target.dataset.artistRosterAction='portrait';
+ let restored=0;
+ profile.focus=()=>{restored++;};
+ h.nodes.push({...profile,getClientRects:()=>[],focus(){assert.fail('hidden link received focus');}},profile);
+ h.render('?section=members&member=recMember');
+ h.history.state.artistRosterFocus={path:'/artists/itzy?section=members',key:'recMember',action:'profile'};
+ h.render('?section=members');h.flush();
+ assert.equal(restored,1);assert.equal(h.focused,null);
+});
 test('explicit member detail to roster focuses exact member and brings card into view',()=>{const h=harness();h.render('?section=members&member=recMember');h.render('?section=members');h.flush();assert.equal(h.history.state.untouched,true);assert.equal(h.history.state.artistRosterFocus.key,'recMember');assert.equal(h.focused.preventScroll,true);assert.equal(h.scrolled.block,'nearest')});
 test('browser return retains saved roster scroll while restoring focus',()=>{const h=harness();h.render('?section=members&member=recMember');h.history.state.artistScroll={path:'/artists/itzy?section=members',y:840};h.render('?section=members');h.flush();assert.equal(h.focused.preventScroll,true);assert.equal(h.scrolled,null);assert.equal(h.history.state.artistScroll.y,840)});
 test('member return ignores other sections, invalid IDs, other paths and loading',()=>{for(const scenario of ['section','invalid','path','loading']){const h=harness();h.render('?section=members&member='+(scenario==='invalid'?'bad':'recMember'));if(scenario==='path')h.location.pathname='/artists/ive';h.render(scenario==='section'?'?section=works':'?section=members',scenario!=='loading');h.flush();assert.equal(h.focused,null,scenario)}});

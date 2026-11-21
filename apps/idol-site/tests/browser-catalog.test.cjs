@@ -12,15 +12,27 @@ test('new decisions never bypass exact rating/member/work/attachment relations',
 test('false and malformed new flags are fail-closed, while old evidence remains supported',()=>{const r=row();for(const flag of [false,undefined,null,1,'true',{}])assert.equal(personalMvPhoto({...r,personalPhotoEligible:flag},'m','w'),null);assert.ok(personalMvPhoto(r,'m','w'));assert.equal(personalMvPhoto({...r,recognition:undefined},'m','w'),null);assert.equal(personalMvPhoto({...r,recognition:123},'m','w'),null);});
 test('projection recomputes evidence and cannot inherit an injected transport decision',()=>{const r=row('r',{recognition:'档案照',personalPhotoEligible:true});assert.equal(projectBrowserCatalog(sample([r])).ratings[0].personalPhotoEligible,false);});
 test('artist scoping/order and null/zero semantics remain exactly as input',()=>{const d={...sample([row('a'),row('b',{score:null,stylingScore:0})]),scope:{type:'artist',groupId:'g'}},v=projectBrowserCatalog(d);assert.strictEqual(v.scope,d.scope);assert.deepEqual(v.ratings.map(r=>r.id),['a','b']);assert.equal(v.ratings[0].score,0);assert.equal(v.ratings[0].stylingScore,null);assert.equal(v.ratings[1].score,null);assert.equal(v.ratings[1].stylingScore,0);});
-test('reduction is only after owner/source fencing and artist selection, never in writes or backup',()=>{const route=fs.readFileSync('app/api/catalog/route.ts','utf8');assert.ok(route.indexOf('await ownerForRequest()')<route.indexOf('return json(browserView?projectBrowserCatalog'));assert.ok(route.indexOf('await assertSourceUnchanged')<route.indexOf('return json(browserView?projectBrowserCatalog'));assert.match(route,/const scoped=artist\?projectArtistCatalog\(result,artist\):result;return json\(browserView\?projectBrowserCatalog\(scoped\):scoped\)/);assert.match(route,/readNativeCatalog\(user.userId,force\)/);assert.match(route,/getReadableCatalog\(user.userId,force\)/);for(const p of ['app/api/export/route.ts','lib/idol/native-save.ts','lib/idol/native-reader.ts','lib/idol/photo-maintenance.ts'])assert.doesNotMatch(fs.readFileSync(p,'utf8'),/projectBrowserCatalog/);assert.doesNotMatch(fs.readFileSync('lib/idol/browser-catalog.ts','utf8'),/fetch\(|INSERT |UPDATE |DELETE |localStorage|sessionStorage/);});
+test('reduction is only after owner/source fencing and artist selection, never in writes or backup',async()=>{
+ const h=routeHarness();
+ await h.read('?artist=ive&shape=display-v1');
+ assert.deepEqual(h.model.projectedAfter,[['auth','control:owner','native:false','fence','artist:ive']]);
+ h.model.drift=true;
+ const rejected=await h.read('?shape=display-v1',{Prefer:'omit-stage-candidates'});
+ assert.equal(rejected.status,409);
+ assert.equal(h.model.projectedAfter.length,1);
+ for(const p of ['app/api/export/route.ts','lib/idol/native-save.ts','lib/idol/native-reader.ts','lib/idol/photo-maintenance.ts']){
+  assert.doesNotMatch(fs.readFileSync(p,'utf8'),/projectBrowserCatalog|omit-stage-candidates/);
+ }
+ assert.doesNotMatch(fs.readFileSync('lib/idol/browser-catalog.ts','utf8'),/fetch\(|INSERT |UPDATE |DELETE |localStorage|sessionStorage/);
+});
 
 test('response shape is explicit, versioned and rejects unknown or ambiguous requests',()=>{assert.equal(requestedBrowserCatalog(new URLSearchParams()),false);assert.equal(requestedBrowserCatalog(new URLSearchParams('shape=display-v1')),true);for(const p of ['shape=','shape=v2','shape=full','shape=display-v1&shape=display-v1','shape=display-v1&shape=other'])assert.throws(()=>requestedBrowserCatalog(new URLSearchParams(p)),e=>e.status===400);});
 function routeHarness(){
- const model={data:sample(),calls:[],native:true,deny:false,drift:false};
+ const model={data:sample(),publicData:{public:true,ratings:[]},projectedAfter:[],calls:[],native:true,deny:false,drift:false};
  const stubs={
   '@/lib/idol/public-access':{ownerForRequest:async()=>{model.calls.push('auth');return model.deny?null:{userId:'owner'};}},
-  '@/lib/idol/public-reader':{publicQuery:request=>{model.calls.push('public-query');return new URL(request.url).searchParams;},readPublicCatalog:async artist=>{model.calls.push('public:'+artist);return {public:true,ratings:[]};}},
-  '@/lib/idol/browser-catalog':{projectBrowserCatalog,requestedBrowserCatalog},
+  '@/lib/idol/public-reader':{publicQuery:request=>{model.calls.push('public-query');return new URL(request.url).searchParams;},readPublicCatalog:async artist=>{model.calls.push('public:'+artist);return model.publicData;}},
+  '@/lib/idol/browser-catalog':{projectBrowserCatalog:data=>{model.projectedAfter.push([...model.calls]);return projectBrowserCatalog(data);},requestedBrowserCatalog},
   '@/lib/idol/artist-catalog':{requestedArtist:p=>p.get('artist'),projectArtistCatalog:(d,artist)=>{model.calls.push('artist:'+artist);return {...d,scope:{type:'artist',groupId:artist}};}},
   '@/lib/idol/native-storage':{ownControl:async u=>{model.calls.push('control:'+u);return {epoch:6};},assertSourceUnchanged:async()=>{model.calls.push('fence');if(model.drift)throw new AppError('STORAGE_CHANGING','changed',409);}},
   '@/lib/idol/native-reader':{readNativeCatalog:async(u,force)=>{model.calls.push('native:'+force);return model.native?model.data:null;}},
@@ -28,8 +40,30 @@ function routeHarness(){
   '@/lib/idol/http':{requireUser:async()=>{model.calls.push('auth');if(model.deny)throw new AppError('OWNER_ONLY','owner',403);return {userId:'owner'};},json:d=>new Response(JSON.stringify(d),{headers:{'Cache-Control':'private, no-store'}}),failure:e=>new Response(JSON.stringify({error:e.code}),{status:e.status??500})},
  };
  const out={},js=ts.transpileModule(fs.readFileSync('app/api/catalog/route.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL})(n=>{const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(n);if(timelineModule!==undefined)return timelineModule;assert.ok(n in stubs,n);return stubs[n];},out);
- return {model,read:p=>out.GET(new Request('https://example.org/api/catalog'+p))};
+ return {model,read:(p,headers)=>out.GET(new Request('https://example.org/api/catalog'+p,{headers}))};
 }
+test('only opted-in library views omit comparison rows and preserve every other value',async()=>{
+ for(const guest of [true,false]){
+  const h=routeHarness(),catalog=sample();
+  const stage=catalog.works[0].stage;
+  Object.assign(stage,{candidateCount:1,candidates:[{videoId:'candidate'}],higherCandidate:{url:'https://youtu.be/other'},previousSources:[{videoId:'old'}]});
+  catalog.works.push({id:'no-stage',stage:null,stageScore:0,watched:'已观看'});
+  h.model.deny=guest;
+  if(guest)h.model.publicData=catalog;else h.model.data=catalog;
+  const before=JSON.stringify(catalog);
+  const full=await (await h.read('?shape=display-v1')).json();
+  const response=await h.read('?shape=display-v1',{Prefer:'other, omit-stage-candidates'});
+  assert.equal(response.status,200);
+  assert.equal(response.headers.get('Preference-Applied'),'omit-stage-candidates');
+  assert.equal(response.headers.get('Vary'),'Prefer');
+  assert.equal(response.headers.get('Cache-Control'),'private, no-store');
+  assert.deepEqual(full.works[0].stage.candidates,stage.candidates);
+  delete full.works[0].stage.candidates;
+  assert.deepEqual(await response.json(),full);
+  assert.equal(JSON.stringify(catalog),before);
+  if(!guest)assert.deepEqual((await (await h.read('',{Prefer:'omit-stage-candidates'})).json()).works[0].stage.candidates,stage.candidates);
+ }
+});
 test('old tab requests still receive full evidence, new and old response photo outcomes agree',async()=>{const h=routeHarness(),old=await h.read(''),slim=await h.read('?shape=display-v1');assert.equal(old.headers.get('Cache-Control'),'private, no-store');const a=await old.json(),b=await slim.json();assert.equal(a.ratings[0].recognition,h.model.data.ratings[0].recognition);assert.equal(a.ratings[0].source,h.model.data.ratings[0].source);assert.equal('personalPhotoEligible' in a.ratings[0],false);assert.equal('recognition' in b.ratings[0],false);assert.equal(b.ratings[0].personalPhotoEligible,true);assert.deepEqual(plain(personalMvPhoto(a.ratings[0],'m','w')),plain(personalMvPhoto(b.ratings[0],'m','w')));});
 test('artist and refresh combinations keep their original scopes, force flags and source fences',async()=>{for(const shape of ['', '&shape=display-v1'])for(const refresh of ['1','background']){const h=routeHarness(),r=await h.read('?artist=ive&refresh='+refresh+shape),d=await r.json();assert.equal(d.scope.groupId,'ive');assert.deepEqual(h.model.calls,['auth','control:owner','native:true','fence','artist:ive']);assert.equal('recognition' in d.ratings[0],!shape);assert.equal(d.ratings[0].score,0);}const h=routeHarness();h.model.native=false;await h.read('?shape=display-v1&refresh=background');assert.deepEqual(h.model.calls,['auth','control:owner','native:true','fallback:true','fence']);});
 test('visitors use only the public reader; invalid shape and changed owner source never expose owner data',async()=>{const guest=routeHarness();guest.model.deny=true;const publicResponse=await guest.read('?artist=ive&shape=display-v1');assert.equal(publicResponse.status,200);assert.deepEqual(await publicResponse.json(),{public:true,ratings:[]});assert.deepEqual(guest.model.calls,['auth','public-query','public:ive']);for(const kind of ['shape','source']){const h=routeHarness();h.model.drift=kind==='source';const r=await h.read('?shape='+(kind==='shape'?'unknown':'display-v1'));assert.equal(r.status,kind==='shape'?400:409);assert.equal('ratings' in await r.json(),false);if(kind==='shape')assert.deepEqual(h.model.calls,['auth']);}const invalidGuest=routeHarness();invalidGuest.model.deny=true;const denied=await invalidGuest.read('?shape=unknown');assert.equal(denied.status,400);assert.equal('ratings' in await denied.json(),false);assert.deepEqual(invalidGuest.model.calls,['auth','public-query']);});

@@ -35,7 +35,7 @@ module.exports = function catalogViewSource() {
  });
  // Keep named slice boundaries used by pre-split SSR fixtures.
  const order = ['navs','score','readResponse','names','GroupLinks','PhotoView','WorkCard','triplesDetailMedia',
-  'LoonaScoreInput','Editor','App','PlaceholderDetail','platformLabel','StageSupplements','PageTitle','More',
+  'isEditorValues','LoonaScoreInput','Editor','App','PlaceholderDetail','platformLabel','StageSupplements','PageTitle','More',
   'CaptionHelp','WorkDetail','MemberWorkCard','musicMemberPortrait','MusicPortrait','MusicMemberPhoto','MemberDetail'];
  cached = [...header,...order.map(name=>declarations.get(name)).filter(Boolean)].join('\n');
  return cached;

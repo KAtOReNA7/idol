@@ -1,15 +1,15 @@
-import test from 'node:test';
+import test, {after} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
-import {auditUnusedDisplayAssets,wooahRetainedOriginalAuditTexts} from '../scripts/audit-unused-display-assets.mjs';
-import {resolveAuditedCarriers} from '../scripts/audit-built-carriers.mjs';
+import {wooahRetainedOriginalAuditTexts} from '../scripts/audit-unused-display-assets.mjs';
+import {installYoungposseFixture,loadRetentionFixtureAudits} from './fixtures/retention-audits.mjs';
+const {auditUnusedDisplayAssets}=await loadRetentionFixtureAudits(after);
 const projectRoot=fileURLToPath(new URL('..',import.meta.url));
 const production=JSON.parse(fs.readFileSync(new URL('../scripts/unused-display-assets-manifest.json',import.meta.url),'utf8'));
-const youngposse=JSON.parse(fs.readFileSync(new URL('../scripts/youngposse-original-retention-manifest.json',import.meta.url),'utf8'));
 const old='/artist/example/batch-b-20261016/';
 const replacement='/artist/example/batch-b-20261016-webp-v1/hero-display.webp';
 const integrity=s=>({bytes:Buffer.byteLength(s),sha256:createHash('sha256').update(s).digest('hex')});
@@ -39,9 +39,7 @@ function fixture(t) {
  write('dist/server/index.js',`const paths = new Set(\`${old}hero-display.jpg,${old}hero-original.jpg\`.split(\`,\`));`);
  // Exercise the real unconditional YOUNG POSSE prerequisite. A missing guard
  // must not make every negative fixture pass before reaching its target check.
- const carriers=resolveAuditedCarriers(projectRoot,youngposse.builtCarriers,'youngposse-design',youngposse.importNormalizedCarriers);
- for(const name of [...Object.keys(youngposse.runtimeGuards),...Object.keys(carriers)]) write(name,fs.readFileSync(path.join(projectRoot,name)));
- for(const image of youngposse.retainedImages) for(const base of ['public','dist/client']) write(base+image.path,fs.readFileSync(path.join(projectRoot,'public',image.path)));
+ installYoungposseFixture(write);
  const manifest={version:1,groups:{example:{'hero-display.jpg':integrity('old-display'),'hero-original.jpg':integrity('original-bytes')}},files:[{path:old+'hero-display.jpg',...integrity('old-display'),replacement,replacementIntegrity:integrity('current-webp')}]};
  return {root,write,manifest,audit:()=>auditUnusedDisplayAssets(root,manifest)};
 }

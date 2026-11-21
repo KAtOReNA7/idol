@@ -53,12 +53,17 @@ async function settle(){for(let i=0;i<3;i++){render();await tick();}render();}
  await retry.props.onClick();await settle();
  const verifyRetry=find(mt,n=>n.type==='button'&&txt(n)==='核对上次保存');
  assert.ok(verifyRetry,'an unrelated receipt cannot clear a zero-score draft');
+ for(const values of [{}, {...records.ratings,score:null}]){
+  receiptOverride={values};
+  await verifyRetry.props.onClick();await settle();
+  assert.ok(find(mt,n=>n.type==='button'&&txt(n)==='核对上次保存'));
+  assert.equal(find(mt,n=>n.type==='input'&&n.props['aria-label']==='表现分').props.value,0);
+ }
  receiptOverride=null;
  await verifyRetry.props.onClick();await settle();
  const attempts=requests.filter(r=>r.url==='/api/save').slice(submitted);
- assert.equal(attempts.length,3);
- assert.equal(attempts[1].body,attempts[2].body);
- assert.equal(attempts[0].body,attempts[1].body);
+ assert.equal(attempts.length,5);
+ assert.ok(attempts.every(attempt=>attempt.body===attempts[0].body));
  assert.equal(records.ratings.score,0);
  const navigation=fs.readFileSync(root+'/components/use-browse-journey.ts','utf8');assert.ok(navigation.includes("document.querySelector('[data-dirty=\"true\"]')"),'navigation still guards hidden drafts');
  console.log('PASS: current component hook-model flows preserve MV/stage/member drafts; editor path/key stable; no switch save or reload; hidden scores show save warning; footer saves only current work once; member draft stays dirty with unload/navigation protection.');

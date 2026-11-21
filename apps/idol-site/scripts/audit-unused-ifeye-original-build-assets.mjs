@@ -92,7 +92,7 @@ export function auditUnusedIfeyeOriginalBuildAssets(root,manifest=JSON.parse(fs.
   verify(path.join(root,'public',entry.replacement),entry.replacementIntegrity);
   verify(path.join(root,'dist/client',entry.replacement),entry.replacementIntegrity);
   const built=path.join(root,'dist/client',entry.path);
-  if(fs.existsSync(built)) {verify(built,entry);plan.push({file:path.relative(root,built),bytes:entry.bytes});}
+  if(fs.existsSync(built)) {verify(built,entry);plan.push({file:path.relative(root,built).split(path.sep).join('/'),bytes:entry.bytes});}
  }
  return plan;
 }

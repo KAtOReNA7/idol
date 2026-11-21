@@ -44,20 +44,21 @@ export function Editor({publicCatalog,table,id,mode,onSaved,compact=false,loona=
  const [stageDraftVideoId,setStageDraftVideoId]=useState<string|null>(stageVideoId??null);
  const [stageDraftSourceKey,setStageDraftSourceKey]=useState<string|null>(sourceKey??stageVideoId??null);
  const saving=useRef(false);
- const readSequence=useRef(0);const readAbort=useRef<AbortController|null>(null);
+ const readAbort=useRef<AbortController|null>(null);
  const load=useCallback(async()=>{
   if(!canEdit||mode!=='live')return;
-  const sequence=++readSequence.current;
   readAbort.current?.abort();
   const controller=new AbortController();
   readAbort.current=controller;
   const timeout=setTimeout(()=>controller.abort(),30000);
+  const stopTimer=()=>clearTimeout(timeout);
+  controller.signal.addEventListener('abort',stopTimer,{once:true});
   setState('loading');
   setMessage('');
   try{
    const response=await fetch(`/api/records?table=${table}&id=${id}`,{cache:'no-store',signal:controller.signal});
    const record=await readResponse(response);
-   if(sequence!==readSequence.current)return;
+   if(readAbort.current!==controller)return;
    if(controller.signal.aborted)throw new Error('读取用时较长，请重试。输入会保留。');
    if(!response.ok)throw new Error(requestMessage(record&&typeof record==='object'&&'error' in record?record.error:null));
    if(!record||typeof record!=='object'||!('values' in record)||!isEditorValues(record.values)||
@@ -74,18 +75,19 @@ export function Editor({publicCatalog,table,id,mode,onSaved,compact=false,loona=
    setState('idle');
    if(pending)setMessage('上次保存结果还未确认，请让助手处理后再继续。');
   }catch(error){
-   if(sequence!==readSequence.current)return;
+   if(readAbort.current!==controller)return;
    setState('error');
    setMessage(controller.signal.aborted?'读取用时较长，请重试。输入会保留。':error instanceof Error?error.message:'记录暂时未能读取。');
   }finally{
-   clearTimeout(timeout);
+   stopTimer();
+   controller.signal.removeEventListener('abort',stopTimer);
    if(readAbort.current===controller)readAbort.current=null;
   }
  },[table,id,mode,canEdit]);
  useEffect(()=>{
   let active=true;
   if(open)void Promise.resolve().then(()=>{if(active)void load();});
-  return()=>{active=false;readSequence.current++;readAbort.current?.abort();readAbort.current=null;};
+  return()=>{active=false;readAbort.current?.abort();readAbort.current=null;};
  },[open,load]);
  const dirty=!!detail&&JSON.stringify(draft)!==JSON.stringify(detail.values);
  useEffect(()=>{onDirtyChange?.(table+':'+id,dirty);return()=>onDirtyChange?.(table+':'+id,false);},[dirty,table,id,onDirtyChange]);
@@ -121,6 +123,11 @@ export function Editor({publicCatalog,table,id,mode,onSaved,compact=false,loona=
       !('values' in result)||!isEditorValues(result.values)||!('verified' in result)||result.verified!==true||
       !('operationId' in result)||result.operationId!==pendingSave.current.operationId||
       !('table' in result)||result.table!==table||!('recordId' in result)||result.recordId!==id){
+    throw new Error('保存结果尚未确认，请核对上次保存。');
+   }
+   const savedValues=result.values;
+   if(Object.keys(detail.values).some(key=>!Object.hasOwn(savedValues,key))||
+      Object.entries(pendingSave.current.values).some(([key,value])=>savedValues[key]!==value)){
     throw new Error('保存结果尚未确认，请核对上次保存。');
    }
    pendingSave.current=null;

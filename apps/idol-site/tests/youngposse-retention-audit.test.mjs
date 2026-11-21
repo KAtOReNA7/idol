@@ -3,19 +3,22 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {youngposseAuditTexts} from '../scripts/audit-youngposse-retained-originals.mjs';
-import {resolveAuditedCarriers} from '../scripts/audit-built-carriers.mjs';
-const root=path.resolve(new URL('..',import.meta.url).pathname);
+import {installYoungposseFixture} from './fixtures/retention-audits.mjs';
+const root=fileURLToPath(new URL('..',import.meta.url));
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'scripts/youngposse-original-retention-manifest.json'),'utf8'));
 function fixture(t){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'youngposse-retention-'));
  t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
  const put=(name,body)=>{const p=path.join(dir,name);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,body);};
- const carriers=resolveAuditedCarriers(root,manifest.builtCarriers,'youngposse-design',manifest.importNormalizedCarriers);
- for(const name of [...Object.keys(manifest.runtimeGuards),...Object.keys(carriers)])put(name,fs.readFileSync(path.join(root,name)));
- for(const image of manifest.retainedImages)for(const prefix of ['public','dist/client'])put(prefix+image.path,fs.readFileSync(path.join(root,'public',image.path)));
- return {dir,put,carriers,audit:()=>youngposseAuditTexts(dir,manifest)};
+ const fixtureManifest=installYoungposseFixture(put);
+ return {dir,put,carriers:fixtureManifest.builtCarriers,audit:()=>youngposseAuditTexts(dir,fixtureManifest)};
 }
+test('the production retention audit rejects the fixture compiled modules',t=>{
+ const f=fixture(t);
+ assert.throws(()=>youngposseAuditTexts(f.dir),/Compiled carrier integrity mismatch/);
+});
 test('all eighteen retained images survive; only the audited helper is adapted',t=>{
  const f=fixture(t),adapt=f.audit(),source=path.join(f.dir,manifest.component),text=fs.readFileSync(source,'utf8');
  assert.equal(adapt(source,text),text.replace(manifest.exactHelper,''));

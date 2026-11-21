@@ -15,11 +15,17 @@ async function fixture(t) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'unis-font-prune-'));
   t.after(() => fs.rmSync(dir, {recursive:true,force:true}));
   const udtt=JSON.parse(fs.readFileSync(path.join(root,'scripts/udtt-font-retention-manifest.json'),'utf8'));
-  const {resolveAuditedCarriers}=await import(pathToFileURL(path.join(root,'scripts/audit-built-carriers.mjs')));
-  const previousCarriers=Object.fromEntries(Object.entries(udtt.runtimeGuards).filter(([p])=>p.includes('/_next/')));
-  const carriers=resolveAuditedCarriers(root,previousCarriers,'udtt-native-design',udtt.importNormalizedCarriers);
+  const body='export const firstSubset="/fonts/udtt/NotoSansSC-01.woff2";export const family="UdttNotoSansSC";';
+  for(const name of Object.keys(udtt.runtimeGuards)) {
+    if(name.includes('/_next/')) {
+      put(dir,name,body);
+      udtt.runtimeGuards[name]={bytes:Buffer.byteLength(body),sha256:hash(path.join(dir,name))};
+    } else {
+      put(dir,name,fs.readFileSync(path.join(root,name.replace(/^dist\/client\//,'public/'))));
+    }
+  }
+  delete udtt.importNormalizedCarriers;
   put(dir,'scripts/udtt-font-retention-manifest.json',JSON.stringify(udtt));
-  for(const name of [...Object.keys(udtt.runtimeGuards).filter(p=>!p.includes('/_next/')),...Object.keys(carriers)])put(dir,name,fs.readFileSync(path.join(root,name)));
   const publicPaths = ['/'+udtt.sharedFontProvenance.path, ...udtt.retainedFonts.map(f=>f.path), '/fonts/udtt/fonts.css', '/artist/udtt/figma-native.css', ...entries.flatMap(e => [e.path,e.replacement]), '/fonts/InstrumentSerif-Italic.ttf','/fonts/unis/NotoSansCJK-LICENSE.txt'];
   for (const url of publicPaths) {
     const bytes = fs.readFileSync(path.join(root,'public',url));
@@ -67,6 +73,11 @@ test('already-pruned build copies are idempotent while public originals are stil
   assert.deepEqual(await audit(dir),[]);
   fs.unlinkSync(path.join(dir,'public',entries[0].path));
   await assert.rejects(audit(dir),/inventory|integrity/);
+});
+test('the reviewed release manifest rejects synthetic compiled font consumers',async t=>{
+  const dir=await fixture(t),file='scripts/udtt-font-retention-manifest.json';
+  fs.copyFileSync(path.join(root,file),path.join(dir,file));
+  await assert.rejects(audit(dir),/Compiled carrier integrity mismatch/);
 });
 for(const [name,relative] of [
   ['public original','public'+entries[0].path],['public derivative','public'+entries[0].replacement],

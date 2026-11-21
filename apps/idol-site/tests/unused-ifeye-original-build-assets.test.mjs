@@ -1,20 +1,24 @@
-import test from 'node:test';
+import test, {after} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {auditUnusedIfeyeOriginalBuildAssets,ifeyeUnusedOriginalPaths} from '../scripts/audit-unused-ifeye-original-build-assets.mjs';
-import {auditUnusedDisplayAssets} from '../scripts/audit-unused-display-assets.mjs';
+import {ifeyeUnusedOriginalPaths} from '../scripts/audit-unused-ifeye-original-build-assets.mjs';
+import {installYoungposseFixture, loadRetentionFixtureAudits} from './fixtures/retention-audits.mjs';
 import {fileURLToPath} from 'node:url';
 const production=JSON.parse(fs.readFileSync(new URL('../scripts/unused-ifeye-original-build-assets-manifest.json',import.meta.url),'utf8'));
 const integrity=s=>({bytes:Buffer.byteLength(s),sha256:createHash('sha256').update(s).digest('hex')});
+const rendererSource = name => '// reviewed fixture renderer for '+name;
+const rendererGuards = Object.fromEntries(Object.keys(production.runtimeGuards).map(name=>[name,integrity(rendererSource(name))]));
+const {auditUnusedIfeyeOriginalBuildAssets,auditUnusedDisplayAssets}=await loadRetentionFixtureAudits(after,{...production,runtimeGuards:rendererGuards});
 function fixture(t) {
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'ifeye-unused-originals-'));
  t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
  const write=(p,s)=>{const dest=path.join(root,p);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,s);};
  const manifest={version:1,runtimeGuards:{},files:production.files.map(e=>({...e,...integrity('original:'+e.path),replacementIntegrity:integrity('display:'+e.replacement)}))};
- const inventory=[];
+ const retained=installYoungposseFixture(write);
+ const inventory=retained.retainedImages.map(image=>image.path);
  for(const e of manifest.files) {
   for(const base of ['public','dist/client']) {
    write(base+e.path,'original:'+e.path);
@@ -81,7 +85,7 @@ for(const [name,change] of [
  ['runtime directory symlink',f=>{fs.mkdirSync(path.join(f.root,'lib/unrelated'));fs.symlinkSync(path.join(f.root,'lib/unrelated'),path.join(f.root,'lib/link'));}],
 ])test('fails before any deletion: '+name,t=>{const f=fixture(t);change(f);assert.throws(()=>apply(f));assert.ok(fs.existsSync(path.join(f.root,'dist/client',f.manifest.files[1].path)));});
 
-// Exercise the compatibility exception against actual hash-pinned production bytes.
+// Exercise both audit steps against the published image bytes and fixture renderers.
 test('the existing display auditor accepts only fully validated absent ifeye originals',t=>{
  const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'ifeye-display-compat-'));
@@ -89,7 +93,8 @@ test('the existing display auditor accepts only fully validated absent ifeye ori
  const write=(p,s)=>{const dst=path.join(root,p);fs.mkdirSync(path.dirname(dst),{recursive:true});fs.writeFileSync(dst,s);};
  const oldManifest=JSON.parse(fs.readFileSync(path.join(repo,'scripts/unused-display-assets-manifest.json'),'utf8'));
  const displayManifest={version:1,groups:{ifeye:oldManifest.groups.ifeye},files:oldManifest.files.filter(e=>e.path.startsWith('/artist/ifeye/'))};
- const inventory=[];
+ const retained=installYoungposseFixture(write);
+ const inventory=retained.retainedImages.map(image=>image.path);
  for(const name of Object.keys(displayManifest.groups.ifeye)) {
   const p='/artist/ifeye/batch-b-20261016/'+name;inventory.push(p);
   write('public'+p,fs.readFileSync(path.join(repo,'public',p)));
@@ -99,7 +104,7 @@ test('the existing display auditor accepts only fully validated absent ifeye ori
   inventory.push(e.replacement);
   for(const base of ['public','dist/client'])write(base+e.replacement,fs.readFileSync(path.join(repo,'public',e.replacement)));
  }
- for(const p of Object.keys(production.runtimeGuards))write(p,fs.readFileSync(path.join(repo,p)));
+ for(const p of Object.keys(production.runtimeGuards))write(p,rendererSource(p));
  write('data/ifeye.json',JSON.stringify(production.files.map(e=>e.replacement)));
  write('dist/server/index.js','const paths=new Set(`'+inventory.join(',')+'`.split(`,`));');
  const plan=auditUnusedDisplayAssets(root,displayManifest);assert.equal(plan.length,7);

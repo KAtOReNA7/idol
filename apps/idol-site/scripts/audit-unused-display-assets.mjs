@@ -113,7 +113,7 @@ export function auditUnusedDisplayAssets(root, manifest=JSON.parse(fs.readFileSy
   const p=path.join(root,'dist/client',entry.path);
   if(fs.existsSync(p)) {
    verify(p,entry);
-   plan.push({file:path.relative(root,p),bytes:entry.bytes});
+   plan.push({file:path.relative(root,p).split(path.sep).join('/'),bytes:entry.bytes});
   }
  }
  return plan;

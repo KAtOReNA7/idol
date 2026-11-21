@@ -71,7 +71,8 @@ export function auditUnusedUnisFontBuildAssets(root) {
     let remaining = text;
     // Only exact reviewed UDTT consumers may name this separate family/subset set.
     // Keep all UNIS paths, unknown NotoSansSC fragments and other consumers fail-closed.
-    if(auditedConsumers.has(path.relative(root,file))){
+    const relative = path.relative(root,file).split(path.sep).join('/');
+    if(auditedConsumers.has(relative)){
       remaining=remaining.replaceAll(udtt.family,'');
       for(const url of udttUrls)remaining=remaining.replaceAll(url,'');
     }
@@ -80,7 +81,7 @@ export function auditUnusedUnisFontBuildAssets(root) {
     // UNIS URL with .replace(), so JS/TS/JSON strings are not generally exempt.
     if(path.extname(file)==='.css')remaining=remaining.replace(/url\(\s*(["']?)(\/fonts\/udtt\/NotoSansSC-\d{2}\.woff2)\1\s*\)/g,(literal,_quote,url)=>udttUrls.includes(url)?'url()':literal);
     // This exact hash-pinned metadata file names reused fonts and their license.
-    if(provenancePaths.includes(path.relative(root,file))){
+    if(provenancePaths.includes(relative)){
       for(const url of udttUrls)remaining=remaining.replaceAll(url,'');
       remaining=remaining.replaceAll('OFL-NotoSansSC.txt','');
     }
@@ -104,7 +105,7 @@ export function auditUnusedUnisFontBuildAssets(root) {
     const file = path.join(root, 'dist/client', entry.path);
     if (fs.existsSync(file)) {
       verify(file, entry.bytes, entry.sha256);
-      plan.push({file:path.relative(root, file), bytes:entry.bytes});
+      plan.push({file:path.relative(root, file).split(path.sep).join('/'), bytes:entry.bytes});
     }
   }
   return plan;

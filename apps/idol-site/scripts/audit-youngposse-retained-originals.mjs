@@ -31,7 +31,7 @@ export function youngposseAuditTexts(root,manifest=JSON.parse(fs.readFileSync(ma
   if(text.split(helper).length!==2)throw new Error('YOUNG POSSE exact helper must occur once: '+p);
  }
  return (file,text)=>{
-  const relative=path.relative(root,file),helper=relative===component?sourceHelper:carriers.includes(relative)?compiledHelper:null;
+  const relative=path.relative(root,file).split(path.sep).join('/'),helper=relative===component?sourceHelper:carriers.includes(relative)?compiledHelper:null;
   if(!helper)return text;
   if(text.split(helper).length!==2)throw new Error('YOUNG POSSE exact helper changed: '+relative);
   return text.replace(helper,'');

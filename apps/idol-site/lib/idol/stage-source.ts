@@ -67,7 +67,7 @@ export function stageMatchesAlternative(stage:StageVideo,a:StageAlternative){
 }
 export function formatStageTime(seconds:number){return `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`;}
 // Caption preferences do not create missing translation tracks.
-export function youtubeEmbedUrl(videoId:string){if(!/^[A-Za-z0-9_-]{11}$/.test(videoId))return null;const url=new URL(`https://www.youtube-nocookie.com/embed/${videoId}`);url.searchParams.set('autoplay','1');url.searchParams.set('cc_load_policy','1');url.searchParams.set('cc_lang_pref','zh-Hans');url.searchParams.set('hl','zh-CN');return url.href;}
+export function youtubeEmbedUrl(videoId:string){if(!/^[A-Za-z0-9_-]{11}$/.test(videoId))return null;const url=new URL(`https://www.youtube.com/embed/${videoId}`);url.searchParams.set('autoplay','1');url.searchParams.set('playsinline','1');url.searchParams.set('mute','1');url.searchParams.set('cc_load_policy','1');url.searchParams.set('cc_lang_pref','zh-Hans');url.searchParams.set('hl','zh-CN');return url.href;}
 export function stageEmbedUrl(stage:StageVideo){
  if(!stageSourceKey(stage)||!stageSourceMatchesUrl(stage)||stage.platform==='bilibili'||stage.platform==='x')return null;
  const url=new URL(youtubeEmbedUrl(stage.videoId)!);if(stage.clip){url.searchParams.set('start',String(stage.clip.startSeconds));url.searchParams.set('end',String(stage.clip.endSeconds));}return url.href;
@@ -77,20 +77,4 @@ export function stageWatchUrl(stage:StageVideo){
  if(stage.platform==='x')return stage.url;
  if(stage.platform==='bilibili')return `https://www.bilibili.com/video/${stage.videoId}/?p=${stage.bilibili!.page}&cid=${stage.bilibili!.cid}`;
  const url=new URL(stage.url);if(stage.clip)url.searchParams.set('t',String(stage.clip.startSeconds));return url.href;
-}
-
-// This is another player for the same complete edit. Scoring keeps the original source key.
-const billionairePlayback = {
- bvid:'BV1TGNWeDEdv', cid:'28248899991', page:1, uploader:'pcyxjy'
-} as const;
-
-export function workPlaybackMirror(workId:string,videoId:string|null,view:'mv'|'stage',stage:StageVideo|null){
- if(workId!=='rec28ldfRTrLku'||videoId!=='Gz_yRl6703c')return null;
- if(view==='stage'&&(!stage?.reusesOriginalVideo||stageSourceKey(stage)!==videoId||!stageSourceMatchesUrl(stage)))return null;
- const {bvid,cid,page,uploader}=billionairePlayback;
- return {
-  uploader,
-  watchUrl:`https://www.bilibili.com/video/${bvid}/?p=${page}&cid=${cid}`,
-  embedUrl:`https://player.bilibili.com/player.html?bvid=${bvid}&cid=${cid}&page=${page}&autoplay=1&danmaku=0`
- };
 }

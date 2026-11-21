@@ -9,9 +9,9 @@ const exportsObject={};
 const code=ts.transpileModule(fs.readFileSync('components/work-video-player.tsx','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
 vm.runInNewContext('(function(exports,require){'+code+'})')(exportsObject,require);
 const {WorkVideoPlayer}=exportsObject;
-const source={workId:'recDemoWork',view:'mv',url:'https://www.youtube.com/watch?v=DemoVideo01',videoId:'DemoVideo01',embedUrl:'https://www.youtube-nocookie.com/embed/DemoVideo01?autoplay=1',title:'合成作品'};
+const source={workId:'recDemoWork',view:'mv',url:'https://www.youtube.com/watch?v=DemoVideo01',videoId:'DemoVideo01',embedUrl:'https://www.youtube.com/embed/DemoVideo01?autoplay=1',title:'合成作品'};
 const render=props=>renderToStaticMarkup(React.createElement(WorkVideoPlayer,{...source,...props}));
-test('MV renders a cover and explicit play control without an iframe',()=>{const html=render();assert.doesNotMatch(html,/<iframe/);assert.match(html,/合成作品 视频封面/);assert.match(html,/播放视频/);assert.doesNotMatch(html,/youtube-nocookie/);});
+test('MV renders a cover and explicit play control without an iframe',()=>{const html=render();assert.doesNotMatch(html,/<iframe/);assert.match(html,/合成作品 视频封面/);assert.match(html,/播放视频/);assert.doesNotMatch(html,/youtube\.com\/embed\//);});
 test('stage clip is also dormant until user activation',()=>{const html=render({view:'stage',embedUrl:source.embedUrl+'&start=20&end=40'});assert.doesNotMatch(html,/<iframe|start=20/);assert.match(html,/播放舞台视频/);});
 test('unsupported external source keeps an explicit control and text cover',()=>{const html=render({videoId:null,embedUrl:null,url:'https://example.invalid/video'});assert.doesNotMatch(html,/<iframe|<img/);assert.match(html,/video-cover-fallback/);assert.match(html,/合成作品/);assert.match(html,/播放视频/);});
 test('title is safely escaped in cover content',()=>{const html=render({videoId:null,title:'<合成 & 标题>'});assert.match(html,/&lt;合成 &amp; 标题&gt;/);assert.doesNotMatch(html,/<合成/);});
@@ -20,13 +20,33 @@ test('title is safely escaped in cover content',()=>{const html=render({videoId:
 // Synthetic React state transitions. These prove event separation, not browser/CDN recovery.
 function sessionHarness(props={}){
  const values=[];let cursor=0,opens=0;
- const mockReact={...React,useRef(initial){const i=cursor++;return values[i]??(values[i]={current:initial});},useState(initial){const i=cursor++;if(!(i in values))values[i]=initial;return [values[i],next=>{values[i]=typeof next==='function'?next(values[i]):next;}];}};
+ const mockReact={...React,useEffect(){},useRef(initial){const i=cursor++;return values[i]??(values[i]={current:initial});},useState(initial){const i=cursor++;if(!(i in values))values[i]=initial;return [values[i],next=>{values[i]=typeof next==='function'?next(values[i]):next;}];}};
  const e={},js=ts.transpileModule(fs.readFileSync('components/work-video-player.tsx','utf8')+'\nexport {VideoSession};',{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
  vm.runInNewContext('(function(exports,require){'+js+'})',{window:{open(){opens++;}}})(e,name=>name==='react'?mockReact:require(name));
  return {render(){cursor=0;return e.VideoSession({...source,...props});},opens:()=>opens};
 }
 function nodes(tree){if(!tree||typeof tree!=='object')return [];return [tree,...React.Children.toArray(tree.props?.children).flatMap(nodes)];}
 const node=(tree,type,className)=>nodes(tree).find(n=>n.type===type&&(!className||n.props.className===className));
+test('a single HD player matches the full MV and the identical stage without changing its score identity',()=>{
+ const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
+ const id='rec28ldfRTrLku',video='Gz_yRl6703c',stage=require('../data/stage-videos.json')[id];
+ const selected=workPlayback(id,video,'mv',null),embed=new URL(selected.embedUrl);
+ assert.equal(embed.origin,'https://rutube.ru');assert.equal(embed.searchParams.get('q'),'1080');
+ assert.equal(embed.searchParams.get('autostartmute'),'true');
+ assert.equal(workPlayback(id,video,'stage',stage).embedUrl,selected.embedUrl);
+ assert.equal(stage.scoreBinding.videoId,video);
+ for(const other of [null,{...stage,reusesOriginalVideo:false},{...stage,url:'https://example.org'},{...stage,clip:{startSeconds:0,endSeconds:20,sourceDurationSeconds:164}}]){
+  assert.equal(workPlayback(id,video,'stage',other),null);
+ }
+ assert.equal(workPlayback(id,'MN2RlOy8y8k','mv',null),null);
+ assert.equal(workPlayback('toString',video,'mv',null),null);
+ const player=sessionHarness({embedUrl:selected.embedUrl});
+ assert.equal(node(player.render(),'iframe'),undefined);
+ node(player.render(),'button','video-play').props.onClick();
+ assert.equal(nodes(player.render()).filter(n=>n.type==='iframe').length,1);
+ assert.equal(node(player.render(),'iframe').props.src,selected.embedUrl);
+ assert.equal(player.opens(),0);
+});
 test('cover failure offers one explicit retry of the unchanged image without playback',()=>{
  for(const view of ['mv','stage']){
   const h=sessionHarness({view}),initial=h.render(),src=node(initial,'img').props.src;
@@ -71,47 +91,6 @@ test('reloading an active MV or ranged stage remounts only its exact embed after
   assert.equal(next.props.title,initial.props.title);
   assert.equal(session.opens(),0);
  }
-});
-
-test('the BILLIONAIRE mirror is limited to the same full edit and leaves the stage binding intact',()=>{
- const {workPlaybackMirror,stageSourceKey}=require('./helpers/public-artist-loader.cjs')('lib/idol/stage-source.ts');
- const id='rec28ldfRTrLku',videoId='Gz_yRl6703c',stage=require('../data/stage-videos.json')[id];
- const mirror=workPlaybackMirror(id,videoId,'mv',null);
- assert.equal(new URL(mirror.embedUrl).searchParams.get('cid'),'28248899991');
- assert.equal(new URL(mirror.watchUrl).searchParams.get('p'),'1');
- assert.deepEqual(workPlaybackMirror(id,videoId,'stage',stage),mirror);
- assert.equal(stageSourceKey(stage),stage.scoreBinding.videoId);
- assert.equal(workPlaybackMirror('another',videoId,'mv',null),null);
- assert.equal(workPlaybackMirror(id,'MN2RlOy8y8k','mv',null),null);
- for(const changed of [null,{...stage,reusesOriginalVideo:false},{...stage,url:'https://example.org'},{...stage,clip:{startSeconds:0,endSeconds:20,sourceDurationSeconds:164}}]){
-  assert.equal(workPlaybackMirror(id,videoId,'stage',changed),null);
- }
-});
-
-test('a viewer can play the verified mirror first, switch either way, retry it, or open the exact part',()=>{
- const mirror={uploader:'Synthetic',watchUrl:'https://www.bilibili.com/video/BV1TGNWeDEdv/?p=1&cid=28248899991',embedUrl:'https://player.bilibili.com/player.html?bvid=BV1TGNWeDEdv&cid=28248899991&page=1'};
- const session=sessionHarness({mirror});
- const choose=(label)=>nodes(session.render()).find(n=>n.type==='button'&&n.props.children===label);
- const frame=()=>node(session.render(),'iframe');
- assert.equal(frame(),undefined);
- assert.equal(node(session.render(),'a').props.href,mirror.watchUrl);
- node(session.render(),'button','video-play').props.onClick();
- assert.equal(frame().props.src,mirror.embedUrl);
- choose('YouTube · 官方原片').props.onClick();
- assert.equal(frame().props.src,source.embedUrl);
- assert.equal(choose('YouTube · 官方原片').props['aria-pressed'],true);
- choose('B站 · 同版转载').props.onClick();
- assert.equal(frame().props.src,mirror.embedUrl);
- const key=frame().key;
- choose('B站 · 同版转载').props.onClick();
- assert.equal(frame().key,key);
- node(session.render(),'button','video-reload').props.onClick();
- assert.notEqual(frame().key,key);
- assert.equal(frame().props.src,mirror.embedUrl);
- assert.equal(session.opens(),0);
- const fresh=sessionHarness({mirror});
- nodes(fresh.render()).find(n=>n.type==='button'&&n.props.children==='YouTube · 官方原片').props.onClick();
- assert.equal(node(fresh.render(),'iframe').props.src,source.embedUrl);
 });
 test('native retry button is keyboard-activatable without custom key interception',()=>{
  const h=sessionHarness();node(h.render(),'img').props.onError();const retry=node(h.render(),'button','video-cover-retry');

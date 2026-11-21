@@ -11,6 +11,7 @@ function render(url,catalog={works:[],members:[],ratings:[]}){
  if(name.endsWith('artist-preview'))return {artistRoute:s=>{const p=new URL(s,'https://test').searchParams;return {section:p.get('section')||'overview',member:p.get('member')};},artistWorkUrl:(w,stage,ret)=>'/?work='+w.id+'&artistReturn='+encodeURIComponent(ret),artistWorkScoreLabel:v=>v===null?'未评分':v.toFixed(1)};
  if(name.endsWith('artist-timeline-host'))return {useArtistTimelineHostOptions:()=>({catalog}),ArtistTimelineHost:()=>React.createElement('div',{'data-full-timeline':'true'})};
  if(name.endsWith('reliable-image'))return {ReliableImage:({src,alt,style})=>React.createElement('img',{src,alt,style}),ImageRecoveryProvider:({children})=>children,ImageRecoveryControls:()=>null};
+ if(name.endsWith('original-photo-link'))return require('./helpers/public-artist-loader.cjs')('components/original-photo-link.tsx');
  if(name.endsWith('use-artist-scroll'))return {useArtistScroll:()=>()=>{}};
  if(name.endsWith('member-works'))return {memberWorks:()=>[]};
  return new Proxy({}, {get:()=>()=>null});

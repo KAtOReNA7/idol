@@ -1,4 +1,5 @@
 'use client';
+import {OriginalPhotoLink} from '@/components/original-photo-link';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {ArtistInformation,ArtistHomeTimeline} from '@/components/artist-information';
@@ -29,7 +30,7 @@ function CinemaHero({work,returnTo,onOriginal}:{work?:Work;returnTo:string;onOri
    <Picture item={data.hero} alt="IZ*ONE 十二人 · Panorama 时期官网聚光灯团照" priority/>
    <div className="iz-screen-title"><h1><img src={data.branding.title} width="1200" height="200" alt="One-reeler"/></h1><img className="iz-act" src={data.branding.act} width="1200" height="120" alt="Act IV"/></div>
   </div>
-  <div className="iz-screen-rail"><p><time dateTime="2020-12-07">2020.12.07</time><span>/</span>Panorama</p><div><Link to={matched?artistWorkUrl(work!,false,returnTo):film.url} external={!matched}>观看与评分</Link><button type="button" className="iz-link" onClick={onOriginal}>查看原图 <span aria-hidden="true">↗</span></button></div></div>
+  <div className="iz-screen-rail"><p><time dateTime="2020-12-07">2020.12.07</time><span>/</span>Panorama</p><div><Link to={matched?artistWorkUrl(work!,false,returnTo):film.url} external={!matched}>观看与评分</Link><OriginalPhotoLink className="iz-link" href={data.hero.image} onOpen={onOriginal}>查看原图 <span aria-hidden="true">↗</span></OriginalPhotoLink></div></div>
  </section>;
 }
 function Search({query,label}:{query:string;label:string}){function change(q:string){const u=new URL(location.href);q?u.searchParams.set('q',q):u.searchParams.delete('q');history.replaceState(history.state,'',u.pathname+u.search);window.dispatchEvent(new Event('artist-location-change'));}return <label className="iz-search"><span>{label}</span><input value={query} type="search" maxLength={200} placeholder="输入中文名、名称或关键词" onChange={e=>change(e.target.value)}/>{query&&<button onClick={()=>change('')} type="button">清除</button>}</label>;}

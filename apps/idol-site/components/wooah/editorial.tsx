@@ -1,4 +1,5 @@
 'use client';
+import {OriginalPhotoLink} from '@/components/original-photo-link';
 import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
@@ -47,10 +48,13 @@ function readOrigin(value:unknown):Origin|null{if(!value||typeof value!=='object
 const NavigationContext=createContext<(target:string,detail?:boolean,restored?:Origin,eventId?:string,focusKey?:string)=>void>(()=>{});
 const PhotoContext=createContext<(value:{src:string;label:string})=>void>(()=>{});
 function Link({to,children,className,detail=false,label,current,restore,focusKey}:{to:string;children:ReactNode;className?:string;detail?:boolean;label?:string;current?:boolean;restore?:Origin;focusKey?:string}){const navigate=useContext(NavigationContext);return <a href={to} className={className} aria-label={label} aria-current={current?'page':undefined} data-wooah-link-trigger={focusKey} onClick={(event:MouseEvent<HTMLAnchorElement>)=>{if(to.startsWith('/?'))return;if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();navigate(to,detail,restore,undefined,focusKey);}}>{children}</a>;}
-function Picture({asset,alt,credit,priority=false,portrait=false}:{asset:EditorialImage;alt:string;credit?:string;priority?:boolean;portrait?:boolean}){
+function Picture({asset,alt,credit,priority=false,portrait=false,homeGroup=false}:{asset:EditorialImage;alt:string;credit?:string;priority?:boolean;portrait?:boolean;homeGroup?:boolean}){
  const setLightbox=useContext(PhotoContext);
+ const openOriginal=()=>setLightbox({src:asset.runtime,label:alt});
+ const action={'aria-label':`查看${alt}原图`,className:'wa-image-open',children:'查看原图 ↗'};
+ const original=homeGroup?<OriginalPhotoLink {...action} href={asset.runtime} onOpen={openOriginal}/>:<button {...action} type="button" aria-haspopup="dialog" onClick={openOriginal}/>;
  const image=<ReliableImage src={asset.runtime} alt={alt} identityKey={asset.sha256} width={asset.width} height={asset.height} priority={priority} data-wa-image="true" style={{maxWidth:`min(100%, ${asset.width}px)`,height:'auto'}} errorFallback={<p>图片暂时无法加载，未使用其他照片替代。</p>}/>;
- return <figure className="wa-media" data-asset-sha256={asset.sha256} style={{'--wa-image-limit':`${asset.width}px`} as CSSProperties}><div className="wa-media-surface">{portrait?<div className="wa-portrait-frame">{image}</div>:image}<button className="wa-image-open" type="button" aria-haspopup="dialog" aria-label={`查看${alt}原图`} onClick={()=>setLightbox({src:asset.runtime,label:alt})}>查看原图 ↗</button></div>{credit&&<figcaption>{credit}</figcaption>}</figure>;
+ return <figure className="wa-media" data-asset-sha256={asset.sha256} style={{'--wa-image-limit':`${asset.width}px`} as CSSProperties}><div className="wa-media-surface">{portrait?<div className="wa-portrait-frame">{image}</div>:image}{original}</div>{credit&&<figcaption>{credit}</figcaption>}</figure>;
 }
 /** Public editorial facts are separate from the live private catalog. No mutation endpoint lives here. */
 export default function WooahEditorial(){
@@ -113,7 +117,7 @@ export default function WooahEditorial(){
  else if(route.section==='updates')body=<><Heading en="TIMELINE" title="时间轴" sub="大事沿一条时间线展开，从最早走向最新。"/><WooahTimeline onRelease={(releaseId,eventId)=>{const r=wooahTimelineRelease(eventId);if(r&&r.key===releaseId)navigate(releaseHref(r),true,undefined,eventId);}} onMedia={(mediaId,eventId)=>{const video=wooahTimelineMedia(eventId);if(video&&video.key===mediaId)navigate(videoHref(video),true,undefined,eventId);}}/></>;
  else body=<>
 <div className="wa-masthead"><p>WOOAH / 成员与作品</p><h1>WOOAH</h1></div>
-<section className="wa-group-hero" aria-label="WOOAH 团体介绍"><div className="wa-group-photo"><Picture asset={design.hero} alt="WOOAH 日本官方五人时期团体照片" priority credit="日本官方五人资料照片 · 拍摄日期未注明"/></div><div className="wa-group-copy"><p className="wa-eyebrow">MEET WOOAH</p><h2>认识 WOOAH</h2><p className="wa-group-roster">NANA · WOOYEON<br/>SORA · LUCY · MINSEO</p><p className="wa-section-note">日本官方资料列示的五人。历史成员资料另列。</p><Link to={directory('members')} className="wa-text-link">认识成员 ↗</Link><details className="wa-sources"><summary>官方资料来源</summary><External href={design.rosterSource}>WOOAH 日本官方成员资料</External></details></div></section>
+<section className="wa-group-hero" aria-label="WOOAH 团体介绍"><div className="wa-group-photo"><Picture asset={design.hero} alt="WOOAH 日本官方五人时期团体照片" homeGroup priority credit="日本官方五人资料照片 · 拍摄日期未注明"/></div><div className="wa-group-copy"><p className="wa-eyebrow">MEET WOOAH</p><h2>认识 WOOAH</h2><p className="wa-group-roster">NANA · WOOYEON<br/>SORA · LUCY · MINSEO</p><p className="wa-section-note">日本官方资料列示的五人。历史成员资料另列。</p><Link to={directory('members')} className="wa-text-link">认识成员 ↗</Link><details className="wa-sources"><summary>官方资料来源</summary><External href={design.rosterSource}>WOOAH 日本官方成员资料</External></details></div></section>
 <ArtistInformation slug="wooah" catalog={state.data}/>
 <section className="wa-members-feature"><SectionHeading en="FACES OF WOOAH">成员</SectionHeading><div className="wa-member-grid">{members.map(m=>Person({member:m}))}</div><Link to={directory('members')} className="wa-text-link">查看完整成员目录 ↗</Link></section>
 <section className="wa-related" data-home-module="mv"><SectionHeading en="MUSIC VIDEO">MV</SectionHeading><div className="wa-video-grid">{design.videos.filter(v=>v.kind==='mv').slice(0,3).map(v=><VideoRow key={v.key} video={v}/>)}</div></section>

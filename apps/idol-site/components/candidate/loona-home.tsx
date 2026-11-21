@@ -1,4 +1,5 @@
 'use client';
+import {OriginalPhotoLink} from '@/components/original-photo-link';
 import {ArtistInformation} from '@/components/artist-information';
 
 import type {ReactNode} from 'react';
@@ -29,9 +30,9 @@ export default function LoonaHome({catalog, roster, works, returnTo, portrait, n
       <h1><Picture src={loonaHomeAsset('logo-loona.png')} width={398} height={84} alt="LOONA" identityKey="home:logo" priority/></h1>
       <div><p>本月少女</p><span>音乐作品与十二位历史成员</span></div>
     </section>
-<button className="ln-home-hero" aria-label="放大 LOONA 十二人历史资料照" aria-haspopup="dialog" onClick={() => setLightbox({src: loonaHomeAsset('hero.jpg'), label: 'LOONA · 十二人历史资料照'})}>
+<OriginalPhotoLink className="ln-home-hero" aria-label="放大 LOONA 十二人历史资料照" href={loonaHomeAsset('hero.jpg')} onOpen={src => setLightbox({src, label: 'LOONA · 十二人历史资料照'})}>
       <Picture src={loonaHomeAsset('hero.jpg')} width={1576} height={1051} alt="LOONA 十二人历史团体资料照，白衣与花植" identityKey="home:hero" priority/>
-    </button>
+    </OriginalPhotoLink>
 <ArtistInformation slug="loona" catalog={catalog}/>
 <section className="ln-home-section ln-home-members" id="loona-people"><h2>成员<span className="ln-home-sr"> · 历史成员 · {roster.length} 人 · 历史十二人名册</span></h2><div className="ln-home-roster">
       {roster.map(m => <button key={m.id} className="ln-home-person" aria-label={memberDisplayName(m)} data-artist-member-trigger={m.id} data-loona-member-trigger={`loona:home:${m.id}`} onClick={() => homeMember(m, 'home')}>

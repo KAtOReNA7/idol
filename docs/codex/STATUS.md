@@ -2,15 +2,17 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v213，51 团、605 支有视频的作品、9 个目录占位、527 个舞台。599 支 MV 支持照片下评分。126 支作品各配置一个同版站内播放入口。《BILLIONAIRE》和《Magnetic》已在正式站短播。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v213/publication.json) |
+| 正式站 | v214，51 团、605 支有视频的作品、9 个目录占位、527 个舞台。599 支 MV 支持照片下评分。NewJeans《Attention》五张成员卡全部显示 2022 年首发期照片。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v214/publication.json) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `d30a4979`，发布标签 `site/v213`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `1e5bcd7c`，发布标签 `site/v214`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
 
+v214 将《Attention》原有的四张跨期成员图换为同一次发行的照片，DANIELLE 的同组原照也有了统一的 480 × 640 预览。五张首次展示的文件合计从 717,023 字节降至 150,462 字节。正式域名的五张小图和五张宽 2,000 px 的完整照片均已解码并核对。375 px 正文宽度下五张卡的原图、关闭后回焦和照片下评分均已实点。标明跨期的卡位从 198 减至 194 个。[五位成员的官方出处](worklogs/20261122-newjeans-attention-portraits.md) · [正式图片读数](evidence/20261122-v214/online-assets.json) · [正式手机逐卡操作](evidence/20261122-v214/formal-attention.json)
+
 v211 的逐团浏览覆盖 2,949 个页面与操作组合，其中 2,929 个在本机生产构建完成，20 个 UDTT 目标在正式站完成。首页目录读取从 IVE 三次、ADYA 两次降为各一次。48 团混合展示 MV 与发行的 91 个路由均已调整顺序，ifeye、izna 和 UDTT 的独立页面也已调整。51 团正式首页实测发现 Billlie 的专辑封面在桌面仍高于 MV，v212 将 MV 放在完整的首行。[逐团验收](worklogs/20261122-group-journeys.md) · [首页顺序与 Billlie 修正](worklogs/20261122-artist-media-order.md)
 
-v213 正式站上，《BILLIONAIRE》静音短播为 1920 × 884，《Magnetic》通过制作方播放器一次点击即达到 3840 × 2160，两个样本均取得递增的播放时间。B 站独占的四个日本电视舞台仍缺同场的站内高清来源，页面写明状态并保留精确原片出处。51 团目录少传 12.39% 解码字节，三团样本的首页可点击时间中位数有所增加。[最新正式实播](evidence/20261122-v213/formal-playback.json) · [三团测速](worklogs/20261122-artist-catalog-speed.md) · [旧线路实测](worklogs/20261122-v212-release.md)
+v213 起，126 支作品各保留一个同版站内播放入口。正式站上，《BILLIONAIRE》静音短播为 1920 × 884，《Magnetic》通过制作方播放器一次点击即达到 3840 × 2160，两个样本均取得递增的播放时间。B 站独占的四个日本电视舞台仍缺同场的站内高清来源，页面写明状态并保留精确原片出处。51 团目录少传 12.39% 解码字节，三团样本的首页可点击时间中位数有所增加。[最新正式实播](evidence/20261122-v213/formal-playback.json) · [三团测速](worklogs/20261122-artist-catalog-speed.md) · [旧线路实测](worklogs/20261122-v212-release.md)
 
 在 605 支 MV 上核查了 4,195 个作品与成员组合。599 支可为成员评分，6 支已确认无真人成员出镜。v209 正式站每个有 MV 的团各测一支，共 306 张照片全部解码。逐一点开后，两个分数输入框和保存按钮均在同一张照片下。《BILLIONAIRE》七位成员另做桌面和手机实测，原有作品评分经刷新读回。飞书两条已标记解决。[评分工作记录](worklogs/20261122-inline-mv-scores.md) · [正式逐团实点](evidence/20261122-v209/formal-group-opened-scores.json)
 
@@ -28,8 +30,8 @@ Hearts2Hearts 待看 10 张和全部 13 张作品封面均在 v208 正式站解�
 
 ## 工程与下一步
 
-v212 在本地 Windows 与 WSL Linux 均通过 `npm run verify`。完整 Node 套件各有 4,085 个用例，Windows 通过 3,880 项、失败 166 项、跳过 39 项；Linux 通过 3,884 项、失败 162 项、跳过 39 项。与 v211 逐名对照，两端均新增一条通过的 Billlie 回归，既有失败条目相同。[v212 双平台结果](evidence/20261122-v212/tests.json) · [v211 对照](evidence/20261122-v211/tests.json)
+v214 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4,100 项，Windows 通过 3,922 项、失败 139 项、跳过 39 项，WSL 通过 3,926 项、失败 135 项、跳过 39 项。两边均新增一条通过的《Attention》回归，余下失败与 v213 逐项相同。v213 已将四团的作品评分、草稿和返回改为现行界面与隔离 D1 验收，消除 27 条旧失败。[v214 双平台结果](evidence/20261122-v214/tests.json) · [四团详情验收](worklogs/20261122-current-detail-regression.md)
 
-下一批先处理两支 MV 和四个 B 站舞台的站内播放，并行测团页首次可操作耗时、补 50 团手机首页的实际排序。后续按代表时期升级有明确差异的团页和照片，优先修四组涉及评分、草稿和返回的旧详情测试。数据侧的 owner 批量读取在连接器提供对应工具时验证。[12 条产品要求](PRD.md) · [分批开发方案](PROJECT-AUDIT-AND-ROADMAP-20261121.md) · [批量核对协议](STAGE-OWNER-PREFLIGHT.md)
+后续先压缩直达 MV 详情时初次读取的全馆目录，复测作品、关联成员、评分和返回。继续核四个独占舞台的同场站内高清来源，以及剩余 194 张已标注跨期的认人照。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑的顺序。个人目录批量读取在连接器提供对应工具时验证。[访问耗时与目录大小](worklogs/20261122-artist-catalog-speed.md) · [两档宽度的排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
 
 前轮工程优化、发布与原始审查分别保存在各自的工作记录中。[上一正式版 v203](v203-release-20261030.md) · [项目审查](worklogs/20261121-project-audit.md) · [历史协作与验收](https://github.com/KAtOReNA7/idol/blob/0e77838a88f9ff9b14fb67f803156534c7c651e1/docs/codex/STATUS.md)

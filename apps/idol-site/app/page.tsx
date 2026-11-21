@@ -32,7 +32,8 @@ import {workExperienceStylesheet} from '@/lib/idol/work-experience-styles';
 import {requestMessage} from '@/lib/idol/product-copy';
 import {lazy, Suspense} from 'react';
 import {names, PhotoView, readResponse} from '@/components/catalog/presentation';
-const WorkDetail=lazy(()=>import('@/components/catalog/work-detail').then(m=>({default:m.WorkDetail})));
+const loadWorkDetailModule=()=>import('@/components/catalog/work-detail');
+const WorkDetail=lazy(()=>loadWorkDetailModule().then(m=>({default:m.WorkDetail})));
 const MemberDetail=lazy(()=>import('@/components/catalog/member-detail').then(m=>({default:m.MemberDetail})));
 const MusicMemberPhoto=lazy(()=>import('@/components/catalog/member-portrait').then(m=>({default:m.MusicMemberPhoto})));
 const Editor=lazy(()=>import('@/components/catalog/record-editor').then(m=>({default:m.Editor})));
@@ -103,6 +104,9 @@ export default function App(){
   if(previous?.canEdit===canEdit&&catalogCoversRoute(previous.catalog,targetWork)){
    setError('');setLoading(false);setRefreshing(false);return;
   }
+  // A direct work URL needs the detail UI and its catalog independently.
+  // Render can retry the import if the early request fails.
+  if(targetWork)void loadWorkDetailModule().catch(()=>{});
   let active=true;void Promise.resolve().then(()=>{if(active)void load();});
   return()=>{active=false;cancelLoad();};
  },[journey.routeReady,targetWork,canEdit,load,cancelLoad]);

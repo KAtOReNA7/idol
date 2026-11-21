@@ -1,0 +1,209 @@
+{
+  "date": "2026-11-21",
+  "builds": {
+    "before": "35ff13d38807c1ab7b8bfd7b846132903099aaf5",
+    "after": "972282eaf2e2dfa4c03233ac83863bef6be6142a",
+    "wranglerBefore": "4.92.0",
+    "wranglerAfter": "4.164.0"
+  },
+  "fixture": {
+    "records": {
+      "groups": 51,
+      "members": 51,
+      "works": 614,
+      "ratings": 0
+    },
+    "pngBytes": 69,
+    "pngSha256": "0ec750437a38affc11401358da9e63d78c1d7aa18a47da2ee6072aa7b566ecd2",
+    "target": "/api/media?table=members&record=recAuditSyntheticMember0&index=0",
+    "source": "scripts/synthetic-catalog.py plus a generated 1 x 1 RGB pixel in local R2 and the matching D1 attachment."
+  },
+  "method": {
+    "network": "HTTP on Windows loopback with one persistent client connection per Worker. Each uses its own D1, R2 and committed dependency lock.",
+    "timing": "HTTP request through receipt of the entire body. Status, SHA-256, length, content-type and no-store checked on every successful request.",
+    "warmupPairsExcluded": 3,
+    "pairsPerMode": 31,
+    "order": "Alternate the first build each round. Advance each local generation outside the timer. Read both builds once, then both again in the same order.",
+    "generationChange": "The first reading after a generation change includes invalidation of the native catalog and photo index.",
+    "effect": "Combined reader and dependency/runtime change. Production latency has not been measured."
+  },
+  "authorizationAfterRemoval": {
+    "before": [
+      200,
+      404,
+      200
+    ],
+    "after": [
+      200,
+      404,
+      200
+    ],
+    "sequence": "Read, remove the synthetic member attachment and advance generation, then restore and advance again."
+  },
+  "distribution": {
+    "firstAfterGenerationChange": {
+      "before": {
+        "medianMs": 105.9994,
+        "p25Ms": 94.9634,
+        "p75Ms": 110.6868
+      },
+      "after": {
+        "medianMs": 80.3754,
+        "p25Ms": 73.2966,
+        "p75Ms": 95.4125
+      },
+      "medianReductionPct": 24.2
+    },
+    "sameGeneration": {
+      "before": {
+        "medianMs": 39.2893,
+        "p25Ms": 38.6525,
+        "p75Ms": 40.8607
+      },
+      "after": {
+        "medianMs": 12.3472,
+        "p25Ms": 11.6158,
+        "p75Ms": 12.8639
+      },
+      "medianReductionPct": 68.6
+    }
+  },
+  "samplesMs": {
+    "firstAfterGenerationChange": {
+      "before": [
+        96.2189,
+        94.0019,
+        93.8033,
+        87.1705,
+        94.8435,
+        91.216,
+        95.0833,
+        96.4686,
+        105.9994,
+        89.9448,
+        97.9451,
+        163.3539,
+        100.0722,
+        100.1137,
+        91.2958,
+        100.9368,
+        91.0795,
+        113.7629,
+        116.6045,
+        110.3771,
+        109.3692,
+        112.5377,
+        110.9965,
+        113.1829,
+        112.2312,
+        109.1294,
+        110.255,
+        107.5284,
+        112.93,
+        110.2624,
+        109.696
+      ],
+      "after": [
+        73.4851,
+        72.8412,
+        76.6348,
+        69.888,
+        73.0526,
+        68.4791,
+        73.318,
+        75.0396,
+        131.3009,
+        73.2752,
+        81.4565,
+        80.3754,
+        78.827,
+        77.6028,
+        69.0428,
+        66.7208,
+        72.533,
+        78.7943,
+        99.285,
+        95.8081,
+        96.9805,
+        95.0168,
+        96.7078,
+        98.274,
+        94.0816,
+        92.7906,
+        96.5085,
+        93.1345,
+        99.9041,
+        91.9184,
+        93.1062
+      ]
+    },
+    "sameGeneration": {
+      "before": [
+        39.3259,
+        38.0254,
+        38.7403,
+        39.2281,
+        38.2494,
+        38.3884,
+        42.0183,
+        43.381,
+        41.2603,
+        39.4614,
+        39.8191,
+        46.6318,
+        37.3935,
+        37.5234,
+        36.2367,
+        45.3848,
+        36.5132,
+        42.9297,
+        40.0227,
+        41.1131,
+        38.8807,
+        40.0706,
+        39.2893,
+        38.6981,
+        40.6083,
+        38.6068,
+        38.7669,
+        38.9142,
+        39.6161,
+        42.4522,
+        38.8305
+      ],
+      "after": [
+        10.7144,
+        11.2612,
+        10.5477,
+        10.4389,
+        12.4623,
+        12.1734,
+        12.3472,
+        16.9367,
+        11.6435,
+        10.484,
+        12.0441,
+        14.7442,
+        12.4853,
+        11.5881,
+        11.1146,
+        13.3851,
+        11.4684,
+        13.1083,
+        13.001,
+        13.1157,
+        11.9953,
+        12.6016,
+        12.7269,
+        12.2456,
+        12.6239,
+        12.2878,
+        13.2665,
+        12.2939,
+        12.5932,
+        13.234,
+        12.4704
+      ]
+    }
+  }
+}

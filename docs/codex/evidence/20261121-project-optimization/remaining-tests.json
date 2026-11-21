@@ -1,0 +1,917 @@
+{
+  "date": "2026-11-21",
+  "baseline": "35ff13d38807c1ab7b8bfd7b846132903099aaf5",
+  "runtimeCommit": "972282eaf2e2dfa4c03233ac83863bef6be6142a",
+  "verificationCommit": "f5ec4fcfbdb417bd3a6df708dde6a1bb33f3cccf",
+  "scope": "Standalone Node suites. Personal insights and Python are separate. Counts use the source-file location and test name from each TAP failure.",
+  "totals": {
+    "windowsBefore": {
+      "pass": 2764,
+      "fail": 1153,
+      "cancelled": 0,
+      "skipped": 39,
+      "tests": 3956
+    },
+    "windowsAfter": {
+      "pass": 3209,
+      "fail": 723,
+      "cancelled": 0,
+      "skipped": 39,
+      "tests": 3971
+    },
+    "linuxBefore": {
+      "pass": 2821,
+      "fail": 1110,
+      "cancelled": 0,
+      "skipped": 39,
+      "tests": 3970
+    },
+    "linuxAfter": {
+      "pass": 3219,
+      "fail": 718,
+      "cancelled": 0,
+      "skipped": 39,
+      "tests": 3976
+    }
+  },
+  "filesWithFailures": {
+    "windowsBefore": 137,
+    "windowsAfter": 115,
+    "linuxBefore": 126,
+    "linuxAfter": 113
+  },
+  "difference": {
+    "windows": {
+      "previousFailureNamesAbsent": 430,
+      "newFailureNames": 0,
+      "netFailureReduction": 430,
+      "newCases": []
+    },
+    "linux": {
+      "previousFailureNamesAbsent": 392,
+      "newFailureNames": 0,
+      "netFailureReduction": 392,
+      "newCases": []
+    }
+  },
+  "triageExamples": [
+    {
+      "files": [
+        "image-host-matrix.test.cjs",
+        "timeline-host-matrix.test.cjs"
+      ],
+      "description": "Historical host fixtures assert hero SSR, member-specific image indices and shared timeline placement. Actual two-width entry checks do not cover every member/photo interaction."
+    },
+    {
+      "files": [
+        "image-migration.test.cjs",
+        "timeline-migration.test.cjs"
+      ],
+      "description": "Historical assertions expect 18 implementations and a dated split between candidate, independent and legacy routes. Preserve historical fixture evidence and cover current per-artist contracts."
+    },
+    {
+      "files": [
+        "public-artist-copy.test.cjs"
+      ],
+      "description": "Legacy group page copy expectations conflict with the approved group-specific text in at least part of this matrix."
+    },
+    {
+      "files": [
+        "prune-unused-display-assets.test.mjs",
+        "unused-unis-font-build-assets.test.cjs",
+        "youngposse-retention-audit.test.mjs"
+      ],
+      "description": "Historical dry-run fixtures require old compiled carrier module names. Current production asset preparation is verified separately. Review the old mark-and-prune rules before using them."
+    }
+  ],
+  "columns": [
+    "windowsBefore",
+    "windowsAfter",
+    "linuxBefore",
+    "linuxAfter"
+  ],
+  "byFile": {
+    "image-host-matrix.test.cjs": [
+      207,
+      179,
+      207,
+      177
+    ],
+    "timeline-host-matrix.test.cjs": [
+      111,
+      104,
+      111,
+      104
+    ],
+    "image-migration.test.cjs": [
+      68,
+      68,
+      68,
+      68
+    ],
+    "public-artist-copy.test.cjs": [
+      58,
+      55,
+      55,
+      55
+    ],
+    "timeline-migration.test.cjs": [
+      43,
+      43,
+      43,
+      43
+    ],
+    "prune-unused-display-assets.test.mjs": [
+      36,
+      36,
+      36,
+      36
+    ],
+    "unused-unis-font-build-assets.test.cjs": [
+      19,
+      19,
+      19,
+      19
+    ],
+    "hearts2hearts-detail.test.cjs": [
+      10,
+      10,
+      10,
+      10
+    ],
+    "billlie-detail.test.cjs": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "image-group-index.test.cjs": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "ive-badvillain-detail.test.cjs": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "meovv-detail.test.cjs": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "source-normalizer.test.cjs": [
+      8,
+      7,
+      3,
+      3
+    ],
+    "idle-detail.test.cjs": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "combined-artists.test.cjs": [
+      5,
+      5,
+      5,
+      5
+    ],
+    "newjeans-detail.test.cjs": [
+      5,
+      5,
+      5,
+      5
+    ],
+    "candidate-chapter-navigation.test.cjs": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "idle-verified-design.test.cjs": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "kiiikiii-artist.test.cjs": [
+      18,
+      4,
+      18,
+      4
+    ],
+    "madein-detail.test.cjs": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "observed-hero-layout.test.cjs": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "continuous-evidence-protection.test.cjs": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "expanded-artist.test.cjs": [
+      12,
+      3,
+      12,
+      3
+    ],
+    "ive-mv-recognition.test.cjs": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "kiof-artist.test.cjs": [
+      9,
+      3,
+      9,
+      3
+    ],
+    "loona-detail.test.cjs": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "mv-poster-storage.test.cjs": [
+      15,
+      3,
+      15,
+      3
+    ],
+    "saymyname-artist.test.cjs": [
+      11,
+      3,
+      11,
+      3
+    ],
+    "stage-replacement-adoption.test.cjs": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "triples-detail.test.cjs": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "unused-ifeye-original-build-assets.test.mjs": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "work-heading-date.test.cjs": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "approved-release-repairs.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "artist-navigation.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "artist-runtime-data.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "babymonster-mv-look.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "candidate-density.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "candidate-font-woff2.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "candidate-missing-look.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "candidate-style-loading.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "duplicate-loona-build-assets.test.mjs": [
+      2,
+      2,
+      1,
+      1
+    ],
+    "editorial-fonts-woff2.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "hearts2hearts-artist.test.cjs": [
+      10,
+      2,
+      10,
+      2
+    ],
+    "itzy-artist.test.cjs": [
+      11,
+      2,
+      11,
+      2
+    ],
+    "ive-artist.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "kiof-sweat-stage.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "lesserafim-artist.test.cjs": [
+      10,
+      2,
+      10,
+      2
+    ],
+    "read-route-diagnostics.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "spia-review-routing.test.mjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "stayc-artist.test.cjs": [
+      7,
+      2,
+      7,
+      2
+    ],
+    "three-group-hero-assets.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "timeline-production.test.cjs": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "triples-fixture-boundaries.test.cjs": [
+      2,
+      2,
+      0,
+      0
+    ],
+    "adya-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "approved-visual-repairs.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "artist-history-focus.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "batch-c-adoption.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "bewave-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "candidate-empty-photo-layout.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "candidate-mv-look.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "candyshop-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "catalog-module-ssr.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "combined-integration.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "core.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "font-woff2.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "geenius-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "genblue-native-integration.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "genblue-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "group-advance-evidence.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "group-design-promotion.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "group-information.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "hearts2hearts-figma.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "hearts2hearts-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "historical-affiliation.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "home-image-preload.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "home-read-deadline.test.cjs": [
+      12,
+      1,
+      12,
+      1
+    ],
+    "ifeye-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "illit-artist.test.cjs": [
+      4,
+      1,
+      4,
+      1
+    ],
+    "illit-full-version.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "integrated-media-viewer.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "izna-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "katseye-artist.test.cjs": [
+      15,
+      1,
+      15,
+      1
+    ],
+    "kiiikiii-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "manage-ssr.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "member-display-name.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "member-source-removal.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "meovv-madein-release-gaps.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "mv-poster-batch2-registry.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "nmixx-artist.test.cjs": [
+      9,
+      1,
+      9,
+      1
+    ],
+    "oddyouth-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "photo-display-focus-integration.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "photo-historical-r2-registry.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "photo-historical-r3-registry.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "photo-nightmiyeon1-registry.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "photo-status-reads.test.cjs": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "post-v200-adoptions.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "pr47-continuation-evidence.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "remaining-groups-completion.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "saymyname-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "spia-content.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "statistics-annual-reconciliation.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "statistics-period-followup.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "summer-release-reference.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "three-group-public-bridge.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "timeline-batch-f-adoption.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "timeline-return.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "tracer-content.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "tracer-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "v202-followup-evidence.test.cjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "vcha-container-host.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "vvup-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "witchx-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "wooah-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "youngposse-retention-audit.test.mjs": [
+      1,
+      1,
+      6,
+      6
+    ],
+    "youngposse-review-routing.test.mjs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "archive-transfer.test.cjs": [
+      20,
+      0,
+      0,
+      0
+    ],
+    "catalog-read-deadline.test.cjs": [
+      125,
+      0,
+      125,
+      0
+    ],
+    "cutover.test.cjs": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "expanded-read-deadline.test.cjs": [
+      26,
+      0,
+      26,
+      0
+    ],
+    "image-app-adapters.test.cjs": [
+      5,
+      0,
+      0,
+      0
+    ],
+    "image-app-integration.test.cjs": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "image-core-react.test.cjs": [
+      7,
+      0,
+      7,
+      0
+    ],
+    "izna-native-integration.test.cjs": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "mv-look-selection.test.cjs": [
+      7,
+      0,
+      7,
+      0
+    ],
+    "mv-look-successor-policy.test.cjs": [
+      9,
+      0,
+      9,
+      0
+    ],
+    "native-order-delta.test.cjs": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "photo-priority.test.cjs": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "photo-soldelta5-registry.test.cjs": [
+      5,
+      0,
+      5,
+      0
+    ],
+    "read-recovery.test.cjs": [
+      5,
+      0,
+      5,
+      0
+    ],
+    "relation-maintenance.test.cjs": [
+      33,
+      0,
+      33,
+      0
+    ],
+    "restore-reuse.test.cjs": [
+      5,
+      0,
+      0,
+      0
+    ],
+    "restore-script.test.cjs": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "status-read-deadline.test.cjs": [
+      9,
+      0,
+      9,
+      0
+    ],
+    "timeline-event-design.test.cjs": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "timeline-navigation.test.cjs": [
+      11,
+      0,
+      11,
+      0
+    ],
+    "timeline-react.test.cjs": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "zip.test.cjs": [
+      1,
+      0,
+      0,
+      0
+    ]
+  }
+}

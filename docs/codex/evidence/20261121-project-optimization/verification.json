@@ -1,0 +1,816 @@
+{
+  "checkedDate": "2026-11-21",
+  "repository": "KAtOReNA7/idol",
+  "visibility": "public",
+  "baseline": "35ff13d38807c1ab7b8bfd7b846132903099aaf5",
+  "runtimeCommit": "972282eaf2e2dfa4c03233ac83863bef6be6142a",
+  "verificationCommit": "f5ec4fcfbdb417bd3a6df708dde6a1bb33f3cccf",
+  "branch": "codex/project-optimization-20261121",
+  "upstreamPR": {
+    "number": 47,
+    "draft": true,
+    "open": true,
+    "merged": false,
+    "head": "35ff13d38807c1ab7b8bfd7b846132903099aaf5"
+  },
+  "originalInventory": {
+    "trackedFiles": 11266,
+    "pageFiles": 72,
+    "apiRouteFiles": 26,
+    "artistPageFiles": 51
+  },
+  "figma": {
+    "file": "zeLNExz4TbpWRW3uiahef7",
+    "section": "1305:1095",
+    "collapsed": "1305:1096",
+    "expanded": "1305:1115",
+    "navigationFocus": "1305:1158"
+  },
+  "production": {
+    "deployedVersion": 203,
+    "stageSources": 500,
+    "accessRevision": 2,
+    "deploymentsThisTask": 0,
+    "ownerExportsThisTask": 0,
+    "privateWritesThisTask": 0
+  },
+  "localData": {
+    "stageKeysAndBindings": 527,
+    "runtimeLanguages": [
+      "TypeScript",
+      "Python"
+    ],
+    "exactPosterSourcesAndBuildCopies": 31,
+    "publicCreditWorks": 108,
+    "publicCreditMemberSlots": 557,
+    "researchCategories": 110,
+    "uniqueResearchWorks": 103,
+    "sameGitContentSha256": {
+      "apps/idol-site/data/stage-videos.json": "7ade85d8a1bcee17246fabd35b302006d4bf6be27fd0b0db2b080e8f63b926f7",
+      "apps/idol-site/data/stages/status.json": "4124e9c55152f92cb2f49076bf40f0026e295079a97950a59f1dfd8cc061b632",
+      "apps/idol-site/data/stages/inventory.json": "ecf62833e56fdab160ca382c3de3816d405e7b127bffef01a322a31ec05d74a7",
+      "apps/idol-site/data/snapshot.json": "dedbfb37f19a55d9cc1916ddb0a0ae21e537843343956731fe4089ade6606547",
+      "apps/idol-site/data/public-work-credits.json": "ecf4fbef4863fd25fcae69840cad9c271969aba1aad6a60485a053f5b20a45b4",
+      "apps/idol-site/data/production-asset-delivery.json": "189c2ed6464c0a70076f7d268614615b3bf848abfd610a0c18c145f893e4fb47",
+      "apps/idol-site/HANDOFF/artist-registry51.json": "cefbfa98a08972a224332ab38266e5dd3a070d8013c9aece30b3dce84b30c10c",
+      "docs/codex/evidence/20261101-crush-adoption/remaining-stage-ledger.json": "03c4cf30bcdbc5749337f3439cd43c7f1c24e21a9f769c0e72a2901a3392aada",
+      "docs/codex/evidence/20261101-feasibility-audit/people.json": "f28f915d02a698566e214c9654449231d26dc9b344b8697bda51c960cf92c9c6"
+    }
+  },
+  "environments": {
+    "windows": "Windows, Node 24.16.0, npm 11.13.0, Python 3.11.4",
+    "linux": "Ubuntu under WSL, Linux filesystem checkout, Node 24.16.0, npm 11.13.0, Python 3.14.4",
+    "pillowForFinalSuite": "Both final suites used Pillow 13.0.0 from isolated wheels verified against PyPI SHA-256. Both Linux runs used this release. The original Windows run used its installed 10.0.0.",
+    "browser": "Chromium 149.0.7827.55, Chromium headless shell, new contexts, loopback Miniflare Worker",
+    "comparison": "Each product build uses its own committed dependency lock. Timings measure their combined effect."
+  },
+  "verify": {
+    "exitCodeByPlatform": {
+      "windows": 0,
+      "linux": 0
+    },
+    "perPlatform": {
+      "currentNodeCases": 468,
+      "ownerPreflightRepeatedInOptimizedPythonEnvironment": 10,
+      "pythonTransactionTestsPerMode": 3,
+      "pythonModes": [
+        "normal",
+        "-O"
+      ],
+      "builtNodeCases": 6,
+      "cssHttpPythonCases": 7,
+      "cssThemes": 50,
+      "fontFiles": 105,
+      "sourceRowsChecked": 527,
+      "remoteDeliveryRules": 5418,
+      "localManifestAssets": 578,
+      "restrictedBuildCopies": 10,
+      "restrictedAlias": 1,
+      "memberDetailOrderSSRArtists": 48
+    },
+    "typedAndBuiltOnBoth": true,
+    "privateTextFields": [
+      "work.note",
+      "m.note",
+      "g.note",
+      "r.note",
+      "r.memory"
+    ],
+    "iznaSharedStage": {
+      "videoId": "ctfS0Rcq-gs",
+      "nativeMembers": 7,
+      "nativeVideoSlots": 15,
+      "distinctVideoRatingLinks": 14,
+      "uniqueSourceFixtureRestoresAll15": true
+    },
+    "logSha256": {
+      "windows": "b245e399edb66ca313dc42f3e1a87dc565e799532c065eee5fab9bb1382ac84a",
+      "linux": "e2e4480766e8e6cb9f06dcdc39f9393622a7bfaf87a258417ce94a3e6c84bd34"
+    },
+    "linuxCleanDetachedCommit": "f5ec4fcfbdb417bd3a6df708dde6a1bb33f3cccf"
+  },
+  "npmAudit": {
+    "before": {
+      "production": {
+        "info": 0,
+        "low": 0,
+        "moderate": 2,
+        "high": 3,
+        "critical": 1,
+        "total": 6
+      },
+      "all": {
+        "info": 0,
+        "low": 1,
+        "moderate": 16,
+        "high": 14,
+        "critical": 2,
+        "total": 33
+      }
+    },
+    "after": {
+      "production": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "all": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      }
+    }
+  },
+  "lint": {
+    "baseline": {
+      "errors": 2944,
+      "warnings": 1000
+    },
+    "after": {
+      "errors": 321,
+      "warnings": 1031
+    },
+    "note": "Includes CommonJS test rule configuration and upgraded lint packages.",
+    "highestErrorCounts": {
+      "@typescript-eslint/no-explicit-any": 96,
+      "@next/next/no-html-link-for-pages": 55,
+      "react-hooks/set-state-in-effect": 48,
+      "@next/next/no-assign-module-variable": 47,
+      "react-hooks/refs": 33,
+      "react-hooks/static-components": 14,
+      "@typescript-eslint/no-require-imports": 13,
+      "@typescript-eslint/no-this-alias": 6
+    }
+  },
+  "fullNode": {
+    "windowsBefore": {
+      "pass": 2764,
+      "fail": 1153,
+      "cancelled": 0,
+      "skipped": 39,
+      "tests": 3956
+    },
+    "windowsAfter": {
+      "pass": 3209,
+      "fail": 723,
+      "cancelled": 0,
+      "skipped": 39,
+      "tests": 3971
+    },
+    "linuxBefore": {
+      "pass": 2821,
+      "fail": 1110,
+      "cancelled": 0,
+      "skipped": 39,
+      "tests": 3970
+    },
+    "linuxAfter": {
+      "pass": 3219,
+      "fail": 718,
+      "cancelled": 0,
+      "skipped": 39,
+      "tests": 3976
+    }
+  },
+  "sameOSComparison": {
+    "windows": {
+      "previousFailureNamesAbsent": 430,
+      "newFailureNames": 0,
+      "netFailureReduction": 430,
+      "newCases": []
+    },
+    "linux": {
+      "previousFailureNamesAbsent": 392,
+      "newFailureNames": 0,
+      "netFailureReduction": 392,
+      "newCases": []
+    }
+  },
+  "personalInsights": {
+    "windowsAfter": {
+      "pass": 31,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "tests": 31
+    },
+    "linuxBefore": {
+      "pass": 31,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "tests": 31
+    },
+    "linuxAfter": {
+      "pass": 31,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "tests": 31
+    },
+    "windowsBefore": {
+      "pass": 31,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "tests": 31
+    }
+  },
+  "defaultWindowsSkips": {
+    "(no reason supplied)": 2,
+    "Set UDTT_NATIVE_ORIGINAL to the independently verified original": 12,
+    "Set UDTT_DOM_MODULE to an existing LinkeDOM ESM entry": 19,
+    "Requires parsed DOM": 1,
+    "Set VCHA_DOM_MODULE to an existing LinkeDOM ESM entry": 5
+  },
+  "optionalDom": {
+    "version": "linkedom 0.18.12",
+    "before": {
+      "pass": 56,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0,
+      "tests": 58
+    },
+    "after": {
+      "pass": 56,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0,
+      "tests": 58
+    },
+    "sameFailures": [
+      "parsed public copy: timeline",
+      "original routes, styles, source viewers and UDTT host retain exact bytes"
+    ]
+  },
+  "clientStaticGraph": {
+    "before": {
+      "jsAndCssBytes": 3353399,
+      "gzipBytes": 579973,
+      "jsFiles": 48,
+      "cssFiles": 7
+    },
+    "after": {
+      "jsAndCssBytes": 1029893,
+      "gzipBytes": 272764,
+      "jsFiles": 29,
+      "cssFiles": 4
+    }
+  },
+  "browser": {
+    "libraryBefore": [
+      {
+        "width": 390,
+        "scrollY": 0,
+        "cardTop": 739,
+        "titleTop": 865,
+        "titleText": "Per",
+        "bottomNavTop": 839,
+        "height": 900
+      },
+      {
+        "width": 1440,
+        "scrollY": 0,
+        "cardTop": 436.1875,
+        "titleTop": 666.421875,
+        "titleText": "Per",
+        "bottomNavTop": null,
+        "height": 900
+      }
+    ],
+    "libraryAfter": [
+      {
+        "width": 320,
+        "cardTop": 586.5,
+        "titleTop": 692.8125,
+        "titleBottom": 711,
+        "bottomNavTop": 839,
+        "overflow": false,
+        "detailFocusRestored": true,
+        "filterAndReset": true,
+        "searchAndPagination": true,
+        "touchTargets": {
+          "count": 5,
+          "minimumHeight": 44,
+          "overlap": false
+        },
+        "keyboard": {
+          "containedSteps": 34,
+          "escapeClosed": true,
+          "triggerRestored": true
+        },
+        "errors": []
+      },
+      {
+        "width": 390,
+        "cardTop": 586.5,
+        "titleTop": 712.5,
+        "titleBottom": 730.6875,
+        "bottomNavTop": 839,
+        "overflow": false,
+        "detailFocusRestored": true,
+        "filterAndReset": true,
+        "searchAndPagination": true,
+        "touchTargets": {
+          "count": 5,
+          "minimumHeight": 44,
+          "overlap": false
+        },
+        "keyboard": {
+          "containedSteps": 34,
+          "escapeClosed": true,
+          "triggerRestored": true
+        },
+        "errors": []
+      },
+      {
+        "width": 1440,
+        "cardTop": 450.1875,
+        "titleTop": 680.421875,
+        "titleBottom": 701.421875,
+        "bottomNavTop": 0,
+        "overflow": false,
+        "detailFocusRestored": true,
+        "filterAndReset": true,
+        "searchAndPagination": true,
+        "keyboard": null,
+        "errors": []
+      }
+    ],
+    "artistCount": 51,
+    "widths": [
+      390,
+      1440
+    ],
+    "artistRuns": 102,
+    "groupSlugs": [
+      "adya",
+      "aespa",
+      "atheart",
+      "babymonster",
+      "badvillain",
+      "bewave",
+      "billlie",
+      "candyshop",
+      "cherrybullet",
+      "everglow",
+      "fromis9",
+      "geenius",
+      "genblue",
+      "hearts2hearts",
+      "hitgs",
+      "idle",
+      "ifeye",
+      "illit",
+      "itzy",
+      "ive",
+      "izna",
+      "izone",
+      "katseye",
+      "kep1er",
+      "kiiikiii",
+      "kissoflife",
+      "lesserafim",
+      "loona",
+      "madein",
+      "meovv",
+      "newjeans",
+      "nmixx",
+      "oddyouth",
+      "purplekiss",
+      "qwer",
+      "rescene",
+      "rocketpunch",
+      "saymyname",
+      "spia",
+      "stayc",
+      "tracer",
+      "triples",
+      "udtt",
+      "unis",
+      "vcha",
+      "vvup",
+      "weeekly",
+      "witchx",
+      "wooah",
+      "xg",
+      "youngposse"
+    ],
+    "layouts": {
+      "React layout": 96,
+      "shadow layout": 4,
+      "public works fallback": 2
+    },
+    "artistHorizontalOverflows": 0,
+    "uncaughtArtistPageErrors": 0,
+    "mainViewsChecked": [
+      "crush",
+      "home",
+      "ifeye",
+      "insights",
+      "izna",
+      "library",
+      "records",
+      "udtt"
+    ],
+    "udttFallback": {
+      "works": 2,
+      "libraryLink": true,
+      "retryAndOpenWorkAtBothWidths": true,
+      "authorizedNativePortraitSuccessVerified": false
+    },
+    "beforeAndAfter": {
+      "conditions": {
+        "samplesPerWidthAndBuild": 7,
+        "warmupPairsExcluded": 1,
+        "latencyMs": 25,
+        "downMbps": 20,
+        "upMbps": 10,
+        "browserCache": "fresh context per navigation",
+        "workerCache": "warm",
+        "externalRequests": "blocked",
+        "metric": "Milliseconds from navigation start until the first work title has text and non-zero layout height."
+      },
+      "contract": {
+        "before": {
+          "all": {
+            "bytes": 1080832,
+            "counts": {
+              "groups": 51,
+              "members": 51,
+              "works": 614,
+              "ratings": 0,
+              "ratedWorks": 0,
+              "scoreSum": 0
+            },
+            "stages": 527,
+            "rowsSha256": "1754c47e06e439d10ddfb0a4a498a5257696986d1be2cc07f9ebafecfc2ab284"
+          },
+          "ive": {
+            "bytes": 46055,
+            "counts": {
+              "groups": 1,
+              "members": 1,
+              "works": 25,
+              "ratings": 0,
+              "ratedWorks": 0,
+              "scoreSum": 0
+            },
+            "stages": 22,
+            "rowsSha256": "b1834e7f191494925255a7d45d86197655de6b77ded89e2ae13d3ceced4adca2"
+          }
+        },
+        "after": {
+          "all": {
+            "bytes": 1080832,
+            "counts": {
+              "groups": 51,
+              "members": 51,
+              "works": 614,
+              "ratings": 0,
+              "ratedWorks": 0,
+              "scoreSum": 0
+            },
+            "stages": 527,
+            "rowsSha256": "1754c47e06e439d10ddfb0a4a498a5257696986d1be2cc07f9ebafecfc2ab284"
+          },
+          "ive": {
+            "bytes": 46055,
+            "counts": {
+              "groups": 1,
+              "members": 1,
+              "works": 25,
+              "ratings": 0,
+              "ratedWorks": 0,
+              "scoreSum": 0
+            },
+            "stages": 22,
+            "rowsSha256": "b1834e7f191494925255a7d45d86197655de6b77ded89e2ae13d3ceced4adca2"
+          }
+        }
+      },
+      "measurements": [
+        {
+          "name": "before",
+          "width": 390,
+          "round": 0,
+          "ms": 595.5
+        },
+        {
+          "name": "after",
+          "width": 390,
+          "round": 0,
+          "ms": 487.3999999985099
+        },
+        {
+          "name": "after",
+          "width": 390,
+          "round": 1,
+          "ms": 455.19999999925494
+        },
+        {
+          "name": "before",
+          "width": 390,
+          "round": 1,
+          "ms": 611.5999999996275
+        },
+        {
+          "name": "before",
+          "width": 390,
+          "round": 2,
+          "ms": 608.6000000014901
+        },
+        {
+          "name": "after",
+          "width": 390,
+          "round": 2,
+          "ms": 456.80000000074506
+        },
+        {
+          "name": "after",
+          "width": 390,
+          "round": 3,
+          "ms": 445.80000000074506
+        },
+        {
+          "name": "before",
+          "width": 390,
+          "round": 3,
+          "ms": 610.8999999985099
+        },
+        {
+          "name": "before",
+          "width": 390,
+          "round": 4,
+          "ms": 615.0999999996275
+        },
+        {
+          "name": "after",
+          "width": 390,
+          "round": 4,
+          "ms": 453.09999999962747
+        },
+        {
+          "name": "after",
+          "width": 390,
+          "round": 5,
+          "ms": 458.09999999962747
+        },
+        {
+          "name": "before",
+          "width": 390,
+          "round": 5,
+          "ms": 616.1999999992549
+        },
+        {
+          "name": "before",
+          "width": 390,
+          "round": 6,
+          "ms": 625.7000000011176
+        },
+        {
+          "name": "after",
+          "width": 390,
+          "round": 6,
+          "ms": 462.7000000011176
+        },
+        {
+          "name": "before",
+          "width": 1440,
+          "round": 0,
+          "ms": 604.8000000007451
+        },
+        {
+          "name": "after",
+          "width": 1440,
+          "round": 0,
+          "ms": 458.7000000011176
+        },
+        {
+          "name": "after",
+          "width": 1440,
+          "round": 1,
+          "ms": 457.90000000037253
+        },
+        {
+          "name": "before",
+          "width": 1440,
+          "round": 1,
+          "ms": 597.6999999992549
+        },
+        {
+          "name": "before",
+          "width": 1440,
+          "round": 2,
+          "ms": 607.7000000011176
+        },
+        {
+          "name": "after",
+          "width": 1440,
+          "round": 2,
+          "ms": 466.19999999925494
+        },
+        {
+          "name": "after",
+          "width": 1440,
+          "round": 3,
+          "ms": 464
+        },
+        {
+          "name": "before",
+          "width": 1440,
+          "round": 3,
+          "ms": 600.9000000003725
+        },
+        {
+          "name": "before",
+          "width": 1440,
+          "round": 4,
+          "ms": 604.7999999988824
+        },
+        {
+          "name": "after",
+          "width": 1440,
+          "round": 4,
+          "ms": 456.59999999962747
+        },
+        {
+          "name": "after",
+          "width": 1440,
+          "round": 5,
+          "ms": 462.30000000074506
+        },
+        {
+          "name": "before",
+          "width": 1440,
+          "round": 5,
+          "ms": 609.8000000007451
+        },
+        {
+          "name": "before",
+          "width": 1440,
+          "round": 6,
+          "ms": 608.2999999988824
+        },
+        {
+          "name": "after",
+          "width": 1440,
+          "round": 6,
+          "ms": 492.30000000074506
+        }
+      ],
+      "median": {
+        "390": {
+          "before": 611.5999999996275,
+          "after": 456.80000000074506
+        },
+        "1440": {
+          "before": 604.8000000007451,
+          "after": 462.30000000074506
+        }
+      }
+    }
+  },
+  "service": {
+    "targetQuery": {
+      "database": "SQLite 3.42.0",
+      "records": 614,
+      "targets": 5,
+      "measuredPerQuery": 1000,
+      "warmupsPerQuery": 100,
+      "equalRows": true,
+      "scope": "In-memory bound target SELECT only, excluding D1 transport, journal read and projection.",
+      "results": {
+        "before": {
+          "plan": [
+            "SCAN idol_native_records"
+          ],
+          "medianMicros": 81.45
+        },
+        "after": {
+          "plan": [
+            "SEARCH idol_native_records USING INDEX sqlite_autoindex_idol_native_records_1 (key=?)"
+          ],
+          "medianMicros": 8.5
+        }
+      }
+    },
+    "media": {
+      "sample": "Same synthetic owner, snapshot, generation and authorized photo; real reader code with in-memory D1/R2 substitutes.",
+      "requestsBeforeChange": 20,
+      "before": {
+        "projectionReads": 20,
+        "readsOnFirstRequestAfterGenerationChange": 1
+      },
+      "after": {
+        "projectionReads": 1,
+        "readsOnFirstRequestAfterGenerationChange": 1
+      }
+    },
+    "localImageHttp": {
+      "file": "media-http.json",
+      "distribution": {
+        "firstAfterGenerationChange": {
+          "before": {
+            "medianMs": 105.9994,
+            "p25Ms": 94.9634,
+            "p75Ms": 110.6868
+          },
+          "after": {
+            "medianMs": 80.3754,
+            "p25Ms": 73.2966,
+            "p75Ms": 95.4125
+          },
+          "medianReductionPct": 24.2
+        },
+        "sameGeneration": {
+          "before": {
+            "medianMs": 39.2893,
+            "p25Ms": 38.6525,
+            "p75Ms": 40.8607
+          },
+          "after": {
+            "medianMs": 12.3472,
+            "p25Ms": 11.6158,
+            "p75Ms": 12.8639
+          },
+          "medianReductionPct": 68.6
+        }
+      },
+      "pairsPerMode": 31,
+      "responseBytes": 69,
+      "sha256": "cbb8a926469c4f5c9d62130379795e8ac162586000d5ec8cc8cf9338c3b50a4e"
+    }
+  },
+  "artifacts": {
+    "mobileScreenshots": {
+      "library-after-390.png": "72d57e84c5e44a123504b455a98e25786178b4bcfaefef23f9a26ff786a9e039",
+      "library-before-390.png": "849cda1165828d3d4eb1811986d75a23f4e70003a54174299872d942e9cde9e8"
+    },
+    "dependenciesSmoke": {
+      "fflate": "0.7.5",
+      "esbuild": "0.25.12",
+      "typedTransform": "pass",
+      "drizzleKitCheck": "pass",
+      "ogNodeSmoke": {
+        "width": 160,
+        "height": 80,
+        "bytes": 815,
+        "font": "Anton-Regular.ttf",
+        "condition": "The installed harfbuzzjs resource directory supplies hb.wasm. A standalone import at the project root fails in the upstream Node entry. No application route imports it directly."
+      }
+    }
+  },
+  "limits": [
+    "Real production LCP, CDN-wide reachability, real owner preflight/save and upload, and full playback were not measured.",
+    "The 102 group checks cover entry layouts, not every nested route or member.",
+    "Real UDTT portrait success requires independently verified source bytes.",
+    "The complete Node test suites and repository lint still report failures. Their current applicability needs case-level review."
+  ],
+  "fullSuiteLogSha256": {
+    "windowsBefore": [
+      "1efe3cc51a720db95677647de091e000656c17da445a6f5c8b10bbbe3e64af4d",
+      "2fd86031b02682086c02d06fe60fd3b62a768d13744594f844f8ece3912bc4f2"
+    ],
+    "windowsAfter": [
+      "e7c0cec88f43cfdc9839987e728743ab33c5c91df2bc72f95697f64c09a26412"
+    ],
+    "linuxBefore": [
+      "7ca42eb99c978ba87d53ed7a7b78f38cbba7879d095175b4050d3d0221d88a0f"
+    ],
+    "linuxAfter": [
+      "f58a413dad5fc6a22c37f2f8501e1ff2096d96ccb5e9af52dffcb477a52d3bb5"
+    ]
+  },
+  "unlabelledDefaultSkips": {
+    "mv-poster-batch2-registry.test.cjs": "Requires the original external reviewer artifact via MV_POSTER_APPROVAL_SOURCE.",
+    "triples-review-works.test.cjs": "Requires triples-visual.js from the previous external design overlay."
+  }
+}

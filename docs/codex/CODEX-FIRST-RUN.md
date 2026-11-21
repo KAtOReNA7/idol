@@ -2,7 +2,7 @@
 
 ## 2026-11-21 当前开发入口
 
-正式工程在 [apps/idol-site](../../apps/idol-site/README.md)。当前优化继承 PR 47 和 `170d9957` 审查提交。先核对远端与本地工作树，再按[路线图](PROJECT-AUDIT-AND-ROADMAP-20261121.md)验证与修改。线上 v203 和本地 527 条来源分别记录。
+正式工程在 `apps/idol-site/`。先核对远端 `codex/project-optimization-20261121` 和本地工作树，再按工程说明验证。线上 v203 和本地 527 条来源分别记录。当前成果和下一批顺序见[工程说明](../../apps/idol-site/README.md)、[实施报告](worklogs/20261121-project-optimization.md)及[路线图](PROJECT-AUDIT-AND-ROADMAP-20261121.md)。
 
 ## 历史主线整理（2026-10-26）
 

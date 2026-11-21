@@ -1,6 +1,6 @@
 # Idol：正式开发与跨电脑交接
 
-正式工程位于 [apps/idol-site](apps/idol-site/README.md)。本轮优化从审查提交 `170d9957` 接续，父基线为 PR 47。正式 v203 有 500 个舞台，本地有 527 个。进入工程前先核对当前分支和工作树。运行入口、合成数据及验收顺序见[全项目路线图](docs/codex/PROJECT-AUDIT-AND-ROADMAP-20261121.md)。
+正式工程位于 `apps/idol-site/`。当前优化分支为 `codex/project-optimization-20261121`，继承 PR 47。正式 v203 有 500 个舞台，本地有 527 个来源及 31 张专项封面。进入工程前先核对当前分支和工作树。运行方式、实测结果和后续顺序见[工程说明](apps/idol-site/README.md)、[优化报告](docs/codex/worklogs/20261121-project-optimization.md)及[路线图](docs/codex/PROJECT-AUDIT-AND-ROADMAP-20261121.md)。
 
 ## 接续与整理记录
 

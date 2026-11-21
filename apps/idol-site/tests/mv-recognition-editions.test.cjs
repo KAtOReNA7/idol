@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const React = require('react');
+const sharp = require('sharp');
 const {renderToStaticMarkup} = require('react-dom/server');
 const {MvIdentityPhoto, mvRecognitionEdition} = require('./helpers/image-dependency-loader.cjs').imageDependency('@/components/mv-identity-photo');
 const editions = require('../data/mv-recognition-editions.json');
@@ -68,4 +69,43 @@ test('the same portrait is captioned for each release and historical members ret
   assert.match(historical.label, /EXCLAMATION/);
   assert.match(historical.sourceUrl, /kstationtv/);
   assert.equal(mvRecognitionEdition({...debut, videoId: 'other-video', memberId: 'recvxyICzHxcEJ'}), null);
+});
+
+test('Attention shows each member’s 2022 debut portrait, with the credited full image and original work photo', async () => {
+  const workId = 'recvxyOz5X2J0A';
+  const videoId = 'js1CtxSY38I';
+  const work = {id: workId, url: 'https://www.youtube.com/watch?v=' + videoId};
+  const members = [
+    ['recvxyICzHGklh', 'MINJI', 2],
+    ['recvxyICzHhlFz', 'HANNI', 16],
+    ['recvxyICzHLSfX', 'DANIELLE', 12],
+    ['recvxyICzHpQud', 'HAERIN', 18],
+    ['recvxyICzHLR6M', 'HYEIN', 11],
+  ];
+  const previous = media.portraits.filter(row => row.workId === workId && row.videoId === videoId);
+  assert.deepEqual(new Set(previous.map(row => row.memberId)), new Set(members.map(([id]) => id)));
+  for (const [memberId, name, officialNumber] of members) {
+    const photo = mvRecognitionEdition({workId, videoId, memberId});
+    assert.ok(photo, name);
+    assert.equal(photo.preview, '/artist/recognition-editions/newjeans/new-jeans-2022-' + name.toLowerCase() + '.card.webp');
+    assert.equal(photo.label, 'New Jeans · 本次发行概念照');
+    const archived = new URL(photo.sourceUrl);
+    assert.equal(archived.host, 'web.archive.org');
+    assert.ok(archived.pathname.includes('/https://newjeans.kr/imgs/boost-a/'));
+    assert.ok(archived.pathname.endsWith('/0722_0_' + officialNumber + '.jpg'), name);
+    const preview = await sharp(path.join(__dirname, '../public', photo.preview)).metadata();
+    assert.deepEqual([preview.format, preview.width, preview.height], ['webp', 480, 640]);
+    const original = await sharp(path.join(__dirname, '../public', photo.original)).metadata();
+    assert.ok(original.width > preview.width && original.height > preview.height, name);
+
+    const html = renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId, label: name, selectEdition: mvRecognitionEdition}));
+    assert.ok(html.includes('src="' + photo.preview + '"') && html.includes('href="' + photo.sourceUrl + '"'), name);
+    assert.ok(html.includes('查看' + name + '的' + photo.label + '原图'), name);
+    const old = previous.find(row => row.memberId === memberId);
+    assert.equal(html.includes('查看原作品图'), old.src !== photo.original, name);
+    if (old.src !== photo.original) assert.ok(html.includes('href="' + old.sourceUrl + '"'), name);
+    assert.equal(mvRecognitionEdition({workId, videoId: 'CHp0Kaidr14', memberId}), null);
+    assert.equal(mvRecognitionEdition({workId: 'another-work', videoId, memberId}), null);
+  }
+  assert.equal(mvRecognitionEdition({workId, videoId, memberId: 'another-member'}), null);
 });

@@ -183,7 +183,26 @@
 .ive-period-title time { letter-spacing: .08em; font-size: .875rem; color: var(--sr-muted); }
 .sr-ive .ive-period h1 { margin: 4px 0 8px; font: 400 clamp(48px,8.4vw,110px)/.95 var(--ive-display); }
 .sr-ive .ive-mine-period h1 { font: 900 clamp(46px,7.5vw,100px)/.94 var(--ive-text); letter-spacing: -.06em; }
-.ive-mine-period .ive-period-opening { border-bottom: 3px solid #ed9caa; }
+/* The ink header and mint paper come from the earlier Baddie design. */
+.sr-site.sr-ive:has(.ive-mine-period) {
+  --sr-bg: #c4e1e3;
+  --sr-ink: #090e10;
+  --sr-muted: #344e52;
+  --sr-line: #718e91;
+  --sr-accent: #164f57;
+  --ive-night: #090e10;
+  color-scheme: light;
+}
+.sr-ive:has(.ive-mine-period) :is(.sr-header, .sr-footer) {
+  --sr-muted: #c4e1e3;
+  --sr-accent: #c4e1e3;
+  color: #f2f7f5;
+}
+.ive-mine-period .ive-period-opening { border-bottom: 3px solid var(--sr-ink); }
+.sr-ive .ive-mine-period :is(.ive-period-sleeve, .ive-period-opening figure button, .ive-period-portrait) { padding: 0; }
+.ive-mine-period .sr-tracklist { padding-inline-start: 0; font-size: 1rem; }
+.ive-mine-period .sr-tracklist li + li { border-top: 1px solid var(--sr-line); }
+.sr-ive .ive-mine-period .sr-tracklist a { text-decoration: underline; text-underline-offset: .2em; }
 .ive-period-title p { font-size: .875rem; margin: 0 0 14px; letter-spacing: .09em; }
 .ive-period-sleeve { width: clamp(75px,10vw,145px); }
 .ive-period button img { display: block; width: 100%; height: auto; }
@@ -196,6 +215,7 @@
 .ive-dive-hero figcaption { font-size: .8125rem; letter-spacing: .02em; }
 .sr-ive .ive-period h2 { margin: 0; font: 600 clamp(22px,3.6vw,38px)/1.2 var(--ive-text); }
 .ive-period :is(.ive-period-music,.ive-period-lineup,.ive-period-source) { padding-block: 22px; border-top: 1px solid var(--sr-line); }
+.ive-mine-period .ive-period-music { border-top: 0; }
 .ive-period .sr-tracklist { margin-top: 16px; }
 .ive-period .sr-tracklist li { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0 12px; min-height: 44px; }
 .ive-period .sr-tracklist li div { display: flex; flex-wrap: wrap; gap: 14px; }

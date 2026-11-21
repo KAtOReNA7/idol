@@ -2,12 +2,12 @@
 // Pure UI-state tests only; real browser focus/scroll/host guard QA is separate.
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const {loadTimeline} = require('./timeline-test-loader.cjs');
+const load = require('./helpers/public-artist-loader.cjs');
 const {
   isTimelineReturnIdentity, sameTimelineReturnIdentity, isTimelineReturnFilters, timelineReturnFilters,
   canUseTimelineReturn, createTimelineReturnState, readTimelineReturnState,
   withTimelineReturnState,
-} = loadTimeline('return-state');
+} = load('lib/idol/timeline/return-state.ts');
 
 const path = '/artists/meovv?section=updates&timelineType=members&timelineImportance=all&timelineOrder=earliest&roster=history';
 const identity = {eventId: 'synthetic-event:members-and-works', kind: 'member', targetId: 'recFixtureMemberA'};

@@ -1,7 +1,7 @@
 'use client';
 
 import {useRef,useState} from 'react';
-import {Play} from 'lucide-react';
+import {Play, RotateCcw} from 'lucide-react';
 
 type PlayerProps = {
  workId:string;
@@ -29,14 +29,29 @@ export function WorkVideoPlayer(props:PlayerProps){
 function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',posterSrc,posterLabel,posterFit,posterSize,posterZoom=1}:PlayerProps){
  const coverSrc=posterSrc||(platform==='youtube'&&videoId?`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`:undefined);
  const playControl=useRef<HTMLButtonElement>(null);
- const [playing,setPlaying]=useState(false);
+ const focusOnStart=useRef(false);
+ const [attempt,setAttempt]=useState(0);
  const [coverFailed,setCoverFailed]=useState(false);
  const [coverRetried,setCoverRetried]=useState(false);
- // Removing this iframe on a session change releases its browsing context and audio.
- if(playing&&embedUrl)return <iframe src={embedUrl} title={title} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen/>;
- return <>
+ // Cross-origin players may render an error page without an iframe error event.
+ // A manual reload keeps the exact source and never relies on the player's load event.
+ if(attempt>0&&embedUrl)return <>
+  <div className="video-stage">
+   <iframe key={attempt} src={embedUrl} title={title} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen
+    ref={frame=>{if(frame&&focusOnStart.current){focusOnStart.current=false;frame.focus({preventScroll:true});}}}/>
+  </div>
+  <button type="button" className="video-reload" onClick={()=>setAttempt(n=>n+1)}>
+   <RotateCcw aria-hidden="true" size={16}/>重新加载视频
+  </button>
+ </>;
+ return <div className="video-stage">
   {coverSrc&&!coverFailed?<img src={coverSrc} alt={posterLabel?title+' · '+posterLabel:title+' 视频封面'} style={posterFit?{position:'absolute',inset:0,width:'100%',height:'100%',maxWidth:posterSize?.width??'100%',maxHeight:posterSize?.height??'100%',margin:posterSize?'auto':undefined,objectFit:posterFit,transform:posterZoom>1?`scale(${posterZoom})`:undefined,transformOrigin:'50% 50%'}:undefined} referrerPolicy="no-referrer" onError={()=>setCoverFailed(true)}/>:<div className="video-cover-fallback"><span>{title}</span><small>{!coverSrc?'在原站观看此视频':coverRetried?(embedUrl?'封面仍未加载，可直接播放视频':'封面仍未加载，可在原站观看'):'封面暂时打不开'}</small></div>}
   {coverSrc&&coverFailed&&!coverRetried&&<button type="button" className="video-cover-retry" onClick={event=>{if(event.currentTarget===event.currentTarget.ownerDocument.activeElement)playControl.current?.focus({preventScroll:true});setCoverRetried(true);setCoverFailed(false);}}>重试封面</button>}
-  <button ref={playControl} type="button" className="video-play" onClick={()=>embedUrl?setPlaying(true):window.open(url,'_blank','noopener,noreferrer')}><Play fill="currentColor" size={25}/><span>{platform==='bilibili'?'在 B站观看':platform==='x'?'在 X 观看':view==='stage'?'播放舞台视频':'播放视频'}</span></button>
- </>;
+  <button ref={playControl} type="button" className="video-play" onClick={()=>{
+   if(!embedUrl){window.open(url,'_blank','noopener,noreferrer');return;}
+   const play=playControl.current;
+   focusOnStart.current=!!play&&play===play.ownerDocument?.activeElement;
+   setAttempt(1);
+  }}><Play fill="currentColor" size={25}/><span>{platform==='bilibili'?'在 B站观看':platform==='x'?'在 X 观看':view==='stage'?'播放舞台视频':'播放视频'}</span></button>
+ </div>;
 }

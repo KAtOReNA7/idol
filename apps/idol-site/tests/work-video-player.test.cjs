@@ -56,6 +56,22 @@ test('retry scope follows existing media-session identity, not title or scoring 
  assert.equal(key({title:'新标题'}),key({}));
  const fresh=sessionHarness();node(fresh.render(),'img').props.onError();assert.ok(node(fresh.render(),'button','video-cover-retry'));
 });
+test('reloading an active MV or ranged stage remounts only its exact embed after an explicit click',()=>{
+ for(const view of ['mv','stage']){
+  const embedUrl=source.embedUrl+(view==='stage'?'&start=20&end=40':'');
+  const session=sessionHarness({view,embedUrl});
+  assert.equal(node(session.render(),'button','video-reload'),undefined);
+  node(session.render(),'button','video-play').props.onClick();
+  const initial=node(session.render(),'iframe');
+  assert.equal(node(session.render(),'iframe').key,initial.key);
+  node(session.render(),'button','video-reload').props.onClick();
+  const next=node(session.render(),'iframe');
+  assert.notEqual(next.key,initial.key);
+  assert.equal(next.props.src,embedUrl);
+  assert.equal(next.props.title,initial.props.title);
+  assert.equal(session.opens(),0);
+ }
+});
 test('native retry button is keyboard-activatable without custom key interception',()=>{
  const h=sessionHarness();node(h.render(),'img').props.onError();const retry=node(h.render(),'button','video-cover-retry');
  assert.equal(retry.type,'button');assert.equal(retry.props.type,'button');assert.equal(retry.props.children,'重试封面');

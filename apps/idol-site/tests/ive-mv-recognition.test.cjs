@@ -1,31 +1,91 @@
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-const root=path.resolve(__dirname,'..'),testDir=__dirname,repoRequire=require;
-function harness(){
- const prefix=fs.readFileSync(path.join(testDir,'editor-flow.test.cjs'),'utf8').split('(async()=>{')[0].replace('{console,window:win,fetch:fakeFetch','{console,document:{getElementById:()=>null},window:win,fetch:fakeFetch');
- const h=vm.runInNewContext('(function(require,__dirname){'+prefix+'\nreturn {settle,wp,find,walk,txt,requests,editor:()=>et,tree:()=>wt,renderWork:()=>w.render(wp)};})',{console,crypto:globalThis.crypto,URL,URLSearchParams,Date,AbortController,setTimeout,clearTimeout,setImmediate,structuredClone})(repoRequire,testDir);
- h.wp.work={...h.wp.work,id:'recvxyHuKMaCIP',song:'LOVE DIVE',url:'https://www.youtube.com/watch?v=Y8JFxS1HlDo',groupIds:['recvxyEBDZT8Xj']};
- const r=h.wp.data.ratings[0];r.workIds=[h.wp.work.id];r.photo={table:'ratings',recordId:r.id,fieldId:'photos',sourceKind:'mv_look_photo',index:2};r.referencePhoto={...r.photo,index:0,sourceKind:'mv_still',kind:'本 MV 截图'};
- return h;
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const {currentDetail, turn, posts} = require('./helpers/current-work-detail.cjs');
+const load = require('./helpers/public-artist-loader.cjs');
+const {appendPhotoCandidates} = load('lib/idol/photo-append-candidates.ts');
+const loveDive = 'recvxyHuKMaCIP';
+const afterLike = 'recvxyHuKMC56f';
+
+function reviewedRows(workId) {
+  const h = currentDetail(workId);
+  const candidates = appendPhotoCandidates.filter(c => c.workId === workId && c.candidateVersion === 'mv-look.20261018.ive1');
+  const seed = h.wp.data.ratings[0];
+  h.wp.data.members = candidates.map(c => ({id:c.memberId, stageName:c.memberName.split(' · ')[1], groupIds:h.wp.work.groupIds}));
+  h.wp.data.ratings = candidates.map((c, i) => ({
+    ...seed, id:c.ratingId, memberIds:[c.memberId], workIds:[c.workId],
+    photo:{table:'ratings', recordId:c.ratingId, fieldId:'photos', sourceKind:'mv_look_photo', index:i+1,
+      approvedLookIdentity:{sameLook:true, memberId:c.memberId, workId:c.workId, videoId:c.videoId}},
+    referencePhoto:{table:'ratings', recordId:c.ratingId, fieldId:'photos', sourceKind:'mv_still', index:0},
+  }));
+  return {h, candidates};
 }
-test('actual LOVE DIVE detail receives exact approved primary/reference and no duplicate editor',async()=>{
- const h=harness();await h.settle();const section=h.find(h.tree(),n=>n.props.className==='editorial-mv-recognition');assert.ok(section);assert.equal(section.props.hidden,false);const photo=h.find(section,n=>n.type?.name==='PhotoView');assert.equal(photo.props.photo.index,2);assert.equal(photo.props.referencePhoto.index,0);assert.equal(photo.props.photo.recordId,'recRating');assert.equal(h.walk(section).filter(x=>x.node.type==='article').length,1);assert.equal(h.walk(section).filter(x=>x.node.props.table==='ratings').length,0);assert.equal(h.walk(h.tree()).filter(x=>x.node.props.table==='ratings').length,1);
- let id;h.wp.onMember=value=>id=value;h.find(h.renderWork(),n=>n.props.className==='member-name').props.onClick();assert.equal(id,'recMember');
- const editor=()=>h.walk(h.tree()).find(x=>x.node.props.table==='works');const before=editor().path;h.find(h.tree(),n=>n.props.id==='stage-tab').props.onClick();await h.settle();assert.equal(h.find(h.tree(),n=>n.props.className==='editorial-mv-recognition').props.hidden,true);assert.equal(editor().path,before);assert.equal(h.requests.filter(r=>r.url==='/api/save').length,0);
-});
-test('no invented cast, missing member, legacy photo, cross-work row or BADVILLAIN gallery',()=>{
- for(const mutate of [h=>h.wp.data.ratings[0].photo=null,h=>h.wp.data.ratings[0].photo.sourceKind='mv_still',h=>h.wp.data.ratings[0].memberIds=['unknown'],h=>h.wp.data.ratings[0].memberIds.push('other'),h=>h.wp.data.ratings[0].workIds.push('other'),h=>h.wp.data.ratings[0].photo.recordId='wrong',h=>h.wp.work.groupIds=['rec28ldfRTiD0h']]){const h=harness();mutate(h);assert.equal(h.find(h.renderWork(),n=>n.props.className==='editorial-mv-recognition'),undefined);}
+const cast = h => h.find(h.tree(), n => n.props.className === 'section cast-section');
+const card = (h, id) => h.find(cast(h), n => n.props.id === 'mv-cast-'+id);
+const primary = (h, node) => h.find(node, n => n.type?.name === 'MvIdentityPhoto');
+const reference = (h, node) => h.find(node, n => n.type?.name === 'MvPhotoReference');
+
+test('LOVE DIVE retains its member navigation, work editor and one rating editor per recognition card', async () => {
+  const {h,candidates} = reviewedRows(loveDive);
+  let opened;
+  h.wp.onMember = id => {opened=id;};
+  await h.settle();
+  const first = card(h,candidates[0].ratingId);
+  h.find(first, n => n.props.className === 'member-name').props.onClick();
+  assert.equal(opened,candidates[0].memberId);
+  const editors = Array.from(h.walk(cast(h))).filter(x => x.node.props.table === 'ratings');
+  assert.deepEqual(editors.map(x => x.node.props.id), candidates.map(c => c.ratingId));
+  const editor = () => h.walk(h.tree()).find(x => x.node.props.table === 'works');
+  const mount = editor();
+  await turn(h,'stage');
+  assert.equal(cast(h).props.hidden,true);
+  assert.equal(editor().path,mount.path);
+  assert.equal(editor().node.key,mount.node.key);
+  await turn(h,'mv');
+  assert.equal(cast(h).props.hidden,false);
+  assert.equal(posts(h).length,0);
 });
 
-test('LOVE DIVE five and After LIKE three approved images render only their actual linked members',()=>{
- for(const [workId,song,count]of [['recvxyHuKMaCIP','LOVE DIVE',5],['recvxyHuKMC56f','After LIKE',3]]){
-  const h=harness();h.wp.work={...h.wp.work,id:workId,song};const seed=h.wp.data.ratings[0];
-  h.wp.data.members=Array.from({length:count},(_,i)=>({id:'recMember'+i,stageName:'MEMBER '+i,cnName:'成员'+i,groupIds:[]}));
-  h.wp.data.ratings=h.wp.data.members.map((m,i)=>({...seed,id:'recRating'+i,memberIds:[m.id],workIds:[workId],photo:{...seed.photo,recordId:'recRating'+i,index:1+i},referencePhoto:{...seed.referencePhoto,recordId:'recRating'+i}}));
-  h.wp.data.ratings.push({...seed,id:'legacy',workIds:[workId],photo:{...seed.photo,recordId:'legacy',sourceKind:'mv_still'}});
-  const before=JSON.stringify(h.wp.data),section=h.find(h.renderWork(),n=>n.props.className==='editorial-mv-recognition');
-  const photos=h.walk(section).filter(x=>x.node.type?.name==='PhotoView');assert.equal(photos.length,count);
-  for(let i=0;i<count;i++){assert.equal(photos[i].node.props.photo.recordId,'recRating'+i);assert.equal(photos[i].node.props.photo.index,i+1);assert.equal(photos[i].node.props.referencePhoto.index,0);assert.match(photos[i].node.props.label,new RegExp('成员'+i+' · MEMBER '+i));}
-  assert.equal(JSON.stringify(h.wp.data),before);
- }
+test('missing or ambiguously bound photos cannot supply the personal recognition image', async () => {
+  const {h} = reviewedRows(loveDive);
+  const original = h.wp.data.ratings[0];
+  for (const change of [{photo:null}, {photo:{...original.photo, recordId:'wrong'}},
+    {memberIds:['unknown']}, {memberIds:[...original.memberIds,'other']}, {workIds:[loveDive,afterLike]},
+    {photo:{...original.photo, approvedLookIdentity:{...original.photo.approvedLookIdentity, workId:afterLike}}}]) {
+    h.wp.data.ratings[0] = {...original,...change};
+    await h.settle();
+    assert.equal(primary(h,card(h,original.id)).props.photo,null);
+  }
 });
-test('IZONE generic cast and existing photo reference stay on their original branch',()=>{const h=harness();h.wp.work={...h.wp.work,groupIds:['izone-fixture']};const tree=h.renderWork();assert.equal(h.find(tree,n=>n.props.className==='editorial-mv-recognition'),undefined);const section=h.find(tree,n=>n.props.className==='section cast-section');assert.ok(section);const photo=h.find(section,n=>n.type?.name==='PhotoView');assert.equal(photo.props.photo.index,2);assert.equal(photo.props.referencePhoto.index,0);});
+
+test('the five LOVE DIVE and three After LIKE original approvals retain their exact work, member and reference', async () => {
+  for (const [id, count] of [[loveDive,5],[afterLike,3]]) {
+    const {h,candidates} = reviewedRows(id);
+    assert.equal(candidates.length,count);
+    const before = JSON.stringify(h.wp.data);
+    await h.settle();
+    for (const [i,c] of candidates.entries()) {
+      const row = card(h,c.ratingId), photo = primary(h,row).props, original = reference(h,row).props;
+      assert.equal(photo.work.id,c.workId);
+      assert.equal(new URL(photo.work.url).searchParams.get('v'),c.videoId);
+      assert.equal(photo.memberId,c.memberId);
+      assert.equal(photo.photo.recordId,c.ratingId);
+      assert.equal(photo.photo.index,i+1);
+      assert.equal(original.referencePhoto.recordId,c.ratingId);
+      assert.equal(original.referencePhoto.index,0);
+    }
+    assert.equal(JSON.stringify(h.wp.data),before);
+  }
+});
+
+test('an IZ*ONE card uses its own work and retains its original reference image', async () => {
+  const h=currentDetail('recvxyH5pza6ks');
+  const rating=h.wp.data.ratings[0];
+  rating.photo={table:'ratings',recordId:rating.id,fieldId:'photos',index:2};
+  rating.personalPhotoEligible=true;
+  rating.referencePhoto={...rating.photo,index:0};
+  await h.settle();
+  const row=card(h,rating.id);
+  assert.equal(primary(h,row).props.work.id,h.wp.work.id);
+  assert.equal(primary(h,row).props.photo.index,2);
+  assert.equal(reference(h,row).props.referencePhoto.index,0);
+});

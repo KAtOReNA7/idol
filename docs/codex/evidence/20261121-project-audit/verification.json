@@ -1,0 +1,960 @@
+{
+  "checkedDate": "2026-11-21",
+  "baselineCommit": "35ff13d38807c1ab7b8bfd7b846132903099aaf5",
+  "defaultBranchHead": "852f7506a4f921fff4e4d24fe70e8d607c7d40f5",
+  "stackedDraftPullRequests": [
+    44,
+    45,
+    46,
+    47
+  ],
+  "release": {
+    "version": 203,
+    "deploymentStatus": "succeeded",
+    "accessMode": "public",
+    "accessRevision": 2,
+    "owners": 1,
+    "externalVisitors": 0,
+    "groups": 0,
+    "githubApplication": "b616c671b929b0dbe3ea9e44cd7f7679ef9e7c1c",
+    "sitesSource": "cd1446371b0f0f3d0bd5f91700e85072e87cb1e9",
+    "comparisonBasis": "Published implementation and saved release receipt. The live control plane was checked separately."
+  },
+  "inventory": {
+    "trackedFiles": 11266,
+    "trackedBlobBytes": 3781836225,
+    "rootAreas": {
+      "(root files)": {
+        "files": 10,
+        "bytes": 253884
+      },
+      "app": {
+        "files": 23,
+        "bytes": 274941
+      },
+      "apps": {
+        "files": 8834,
+        "bytes": 3435758845
+      },
+      "components": {
+        "files": 13,
+        "bytes": 137348
+      },
+      "data": {
+        "files": 8,
+        "bytes": 347219
+      },
+      "docs": {
+        "files": 2197,
+        "bytes": 318371998
+      },
+      "fixtures": {
+        "files": 1,
+        "bytes": 36954
+      },
+      "handoffs": {
+        "files": 151,
+        "bytes": 26559646
+      },
+      "lib": {
+        "files": 14,
+        "bytes": 42227
+      },
+      "public": {
+        "files": 1,
+        "bytes": 217
+      },
+      "scripts": {
+        "files": 2,
+        "bytes": 4493
+      },
+      "tests": {
+        "files": 12,
+        "bytes": 48453
+      }
+    },
+    "productionAreas": {
+      "(root files)": {
+        "files": 16,
+        "bytes": 1017894
+      },
+      ".openai": {
+        "files": 1,
+        "bytes": 130
+      },
+      "HANDOFF": {
+        "files": 31,
+        "bytes": 1281518
+      },
+      "app": {
+        "files": 220,
+        "bytes": 1529411
+      },
+      "build": {
+        "files": 5,
+        "bytes": 17494
+      },
+      "components": {
+        "files": 248,
+        "bytes": 2920013
+      },
+      "data": {
+        "files": 482,
+        "bytes": 46539795
+      },
+      "day19-logs": {
+        "files": 1,
+        "bytes": 314
+      },
+      "db": {
+        "files": 2,
+        "bytes": 6221
+      },
+      "docs": {
+        "files": 72,
+        "bytes": 960840
+      },
+      "drizzle": {
+        "files": 23,
+        "bytes": 186547
+      },
+      "evidence": {
+        "files": 112,
+        "bytes": 3689004
+      },
+      "examples": {
+        "files": 6,
+        "bytes": 14340
+      },
+      "handoff": {
+        "files": 20,
+        "bytes": 2683921
+      },
+      "hooks": {
+        "files": 1,
+        "bytes": 565
+      },
+      "lib": {
+        "files": 294,
+        "bytes": 2273849
+      },
+      "public": {
+        "files": 6038,
+        "bytes": 3243930779
+      },
+      "research": {
+        "files": 99,
+        "bytes": 102476843
+      },
+      "review": {
+        "files": 137,
+        "bytes": 390988
+      },
+      "scripts": {
+        "files": 99,
+        "bytes": 778298
+      },
+      "tests": {
+        "files": 925,
+        "bytes": 25042977
+      },
+      "vendor": {
+        "files": 2,
+        "bytes": 17104
+      }
+    },
+    "pageFiles": 72,
+    "apiRouteFiles": 26,
+    "mcpRouteFiles": 1,
+    "artistPageFiles": 51
+  },
+  "environment": {
+    "node": "v24.16.0",
+    "npm": "11.13.0",
+    "python": "3.11.4",
+    "platform": "Windows",
+    "browser": "149.0.7827.55",
+    "browserMode": "isolated headless Chromium; synthetic catalog intercept and a separate real loopback Worker with an audit-only synthetic D1"
+  },
+  "verification": {
+    "productionTypecheck": "pass",
+    "productionBuild": "pass",
+    "productionInstall": "lockfile npm ci, dev and optional included",
+    "stageValidator": {
+      "inventory": 614,
+      "validSources": 527
+    },
+    "supplementValidator": "fails before input validation: Unexpected dependency ./stage-source",
+    "sqlite": {
+      "migrationSqlFiles": 11,
+      "sqliteTables": 14,
+      "integrityCheck": "ok",
+      "targetLookup": "SCAN idol_native_records",
+      "journalLookup": "SCAN idol_saves and temporary sorting for ORDER BY",
+      "sameSchemaPrimaryKeyProbe": "SEARCH idol_native_records USING INDEX sqlite_autoindex_idol_native_records_1 (key=?)"
+    },
+    "rawReleaseAssetCheck": {
+      "status": "passed",
+      "mode": "dry-run",
+      "publicRef": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+      "remoteCopies": 5418,
+      "remoteBytes": 3222592791,
+      "restrictedCopies": 10,
+      "restrictedAliases": 1,
+      "localAssets": 578,
+      "localBytes": 16180169
+    },
+    "pinnedRemoteGitBlobsMatching": 5418,
+    "stagePosterFilesWithExactBytesAndDigest": 30,
+    "typescriptPythonStageKeys": {
+      "examined": 527,
+      "mismatches": 0,
+      "invalidBindings": 0
+    },
+    "rootSandbox": {
+      "verify": {
+        "tests": 100,
+        "pass": 100,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "build": "pass"
+    },
+    "personalInsights": {
+      "tests": 31,
+      "pass": 31,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "recentAdoptionSuite": {
+      "tests": 69,
+      "pass": 69,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "cssHttpFixtureBuild": "37 distinct sheets expected, 50 found; handler tests did not start",
+    "legacySearchBrowserRunner": "390 px timed out before first assertion; desktop did not run in this runner",
+    "gitObjectIntegrity": {
+      "command": "git fsck --full --no-dangling",
+      "exit": 0
+    },
+    "jsonSyntax": {
+      "trackedFormalDataDrizzleHosting": 490,
+      "parseErrors": 0
+    },
+    "localCacheIgnore": {
+      "trackedFiles": 0,
+      "existingCheckoutIgnoreSource": ".git/info/exclude",
+      "cleanCloneSyntheticJsonIgnored": false
+    },
+    "localObjectStore": {
+      "preexistingTemporaryPackMiB": 427.79,
+      "existingHistoryAltered": false
+    }
+  },
+  "nodeTests": {
+    "included": "All tracked *.test.cjs and *.test.mjs under apps/idol-site/tests, including subdirectories",
+    "files": 424,
+    "invocations": [
+      {
+        "files": 423,
+        "concurrency": 4,
+        "tests": 3947,
+        "pass": 2757,
+        "fail": 1151,
+        "cancelled": 0,
+        "skipped": 39
+      },
+      {
+        "files": 1,
+        "name": "artist-runtime-data.test.cjs",
+        "concurrency": 1,
+        "tests": 9,
+        "pass": 7,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    ],
+    "total": {
+      "tests": 3956,
+      "pass": 2764,
+      "fail": 1153,
+      "cancelled": 0,
+      "skipped": 39
+    },
+    "filesReportingFailures": 137,
+    "failuresByFile": {
+      "image-host-matrix.test.cjs": 207,
+      "catalog-read-deadline.test.cjs": 125,
+      "timeline-host-matrix.test.cjs": 111,
+      "image-migration.test.cjs": 68,
+      "public-artist-copy.test.cjs": 58,
+      "timeline-migration.test.cjs": 43,
+      "prune-unused-display-assets.test.mjs": 36,
+      "relation-maintenance.test.cjs": 33,
+      "expanded-read-deadline.test.cjs": 26,
+      "archive-transfer.test.cjs": 20,
+      "unused-unis-font-build-assets.test.cjs": 19,
+      "kiiikiii-artist.test.cjs": 18,
+      "katseye-artist.test.cjs": 15,
+      "mv-poster-storage.test.cjs": 15,
+      "expanded-artist.test.cjs": 12,
+      "home-read-deadline.test.cjs": 12,
+      "itzy-artist.test.cjs": 11,
+      "saymyname-artist.test.cjs": 11,
+      "timeline-navigation.test.cjs": 11,
+      "hearts2hearts-artist.test.cjs": 10,
+      "hearts2hearts-detail.test.cjs": 10,
+      "lesserafim-artist.test.cjs": 10,
+      "kiof-artist.test.cjs": 9,
+      "mv-look-successor-policy.test.cjs": 9,
+      "nmixx-artist.test.cjs": 9,
+      "status-read-deadline.test.cjs": 9,
+      "billlie-detail.test.cjs": 8,
+      "source-normalizer.test.cjs": 8,
+      "image-core-react.test.cjs": 7,
+      "image-group-index.test.cjs": 7,
+      "ive-badvillain-detail.test.cjs": 7,
+      "meovv-detail.test.cjs": 7,
+      "mv-look-selection.test.cjs": 7,
+      "stayc-artist.test.cjs": 7,
+      "idle-detail.test.cjs": 6,
+      "combined-artists.test.cjs": 5,
+      "image-app-adapters.test.cjs": 5,
+      "newjeans-detail.test.cjs": 5,
+      "photo-soldelta5-registry.test.cjs": 5,
+      "read-recovery.test.cjs": 5,
+      "restore-reuse.test.cjs": 5,
+      "candidate-chapter-navigation.test.cjs": 4,
+      "idle-verified-design.test.cjs": 4,
+      "illit-artist.test.cjs": 4,
+      "madein-detail.test.cjs": 4,
+      "observed-hero-layout.test.cjs": 4,
+      "continuous-evidence-protection.test.cjs": 3,
+      "ive-mv-recognition.test.cjs": 3,
+      "loona-detail.test.cjs": 3,
+      "stage-replacement-adoption.test.cjs": 3,
+      "triples-detail.test.cjs": 3,
+      "unused-ifeye-original-build-assets.test.mjs": 3,
+      "work-heading-date.test.cjs": 3,
+      "approved-release-repairs.test.cjs": 2,
+      "artist-navigation.test.cjs": 2,
+      "artist-runtime-data.test.cjs": 2,
+      "babymonster-mv-look.test.cjs": 2,
+      "candidate-density.test.cjs": 2,
+      "candidate-font-woff2.test.cjs": 2,
+      "candidate-missing-look.test.cjs": 2,
+      "candidate-style-loading.test.cjs": 2,
+      "duplicate-loona-build-assets.test.mjs": 2,
+      "editorial-fonts-woff2.test.cjs": 2,
+      "ive-artist.test.cjs": 2,
+      "kiof-sweat-stage.test.cjs": 2,
+      "read-route-diagnostics.test.cjs": 2,
+      "spia-review-routing.test.mjs": 2,
+      "three-group-hero-assets.test.cjs": 2,
+      "timeline-production.test.cjs": 2,
+      "triples-fixture-boundaries.test.cjs": 2,
+      "adya-review-routing.test.mjs": 1,
+      "approved-visual-repairs.test.cjs": 1,
+      "artist-history-focus.test.cjs": 1,
+      "batch-c-adoption.test.cjs": 1,
+      "bewave-review-routing.test.mjs": 1,
+      "candidate-empty-photo-layout.test.cjs": 1,
+      "candidate-mv-look.test.cjs": 1,
+      "candyshop-review-routing.test.mjs": 1,
+      "catalog-module-ssr.test.cjs": 1,
+      "combined-integration.test.cjs": 1,
+      "core.test.cjs": 1,
+      "cutover.test.cjs": 1,
+      "font-woff2.test.cjs": 1,
+      "geenius-review-routing.test.mjs": 1,
+      "genblue-native-integration.test.cjs": 1,
+      "genblue-review-routing.test.mjs": 1,
+      "group-advance-evidence.test.cjs": 1,
+      "group-design-promotion.test.cjs": 1,
+      "group-information.test.mjs": 1,
+      "hearts2hearts-figma.test.cjs": 1,
+      "hearts2hearts-review-routing.test.mjs": 1,
+      "historical-affiliation.test.cjs": 1,
+      "home-image-preload.test.cjs": 1,
+      "ifeye-review-routing.test.mjs": 1,
+      "illit-full-version.test.cjs": 1,
+      "image-app-integration.test.cjs": 1,
+      "integrated-media-viewer.test.mjs": 1,
+      "izna-native-integration.test.cjs": 1,
+      "izna-review-routing.test.mjs": 1,
+      "kiiikiii-review-routing.test.mjs": 1,
+      "manage-ssr.test.cjs": 1,
+      "member-display-name.test.cjs": 1,
+      "member-source-removal.test.cjs": 1,
+      "meovv-madein-release-gaps.test.cjs": 1,
+      "mv-poster-batch2-registry.test.cjs": 1,
+      "native-order-delta.test.cjs": 1,
+      "oddyouth-review-routing.test.mjs": 1,
+      "photo-display-focus-integration.test.cjs": 1,
+      "photo-historical-r2-registry.test.cjs": 1,
+      "photo-historical-r3-registry.test.cjs": 1,
+      "photo-nightmiyeon1-registry.test.cjs": 1,
+      "photo-priority.test.cjs": 1,
+      "photo-status-reads.test.cjs": 1,
+      "post-v200-adoptions.test.cjs": 1,
+      "pr47-continuation-evidence.test.cjs": 1,
+      "remaining-groups-completion.test.mjs": 1,
+      "restore-script.test.cjs": 1,
+      "saymyname-review-routing.test.mjs": 1,
+      "spia-content.test.mjs": 1,
+      "statistics-annual-reconciliation.test.mjs": 1,
+      "statistics-period-followup.test.mjs": 1,
+      "summer-release-reference.test.cjs": 1,
+      "three-group-public-bridge.test.cjs": 1,
+      "timeline-batch-f-adoption.test.cjs": 1,
+      "timeline-event-design.test.cjs": 1,
+      "timeline-react.test.cjs": 1,
+      "timeline-return.test.cjs": 1,
+      "tracer-content.test.mjs": 1,
+      "tracer-review-routing.test.mjs": 1,
+      "v202-followup-evidence.test.cjs": 1,
+      "vcha-container-host.test.mjs": 1,
+      "vvup-review-routing.test.mjs": 1,
+      "witchx-review-routing.test.mjs": 1,
+      "wooah-review-routing.test.mjs": 1,
+      "youngposse-retention-audit.test.mjs": 1,
+      "youngposse-review-routing.test.mjs": 1,
+      "zip.test.cjs": 1
+    }
+  },
+  "lint": {
+    "reportedFiles": 1491,
+    "filesWithErrors": 446,
+    "errors": 2944,
+    "warnings": 1000,
+    "errorsByArea": {
+      "tests": 2725,
+      "components": 102,
+      "app": 61,
+      "lib": 40,
+      "scripts": 13,
+      "examples": 2,
+      "review": 1
+    },
+    "mostFrequentErrorRules": {
+      "@typescript-eslint/no-require-imports": 2637,
+      "@typescript-eslint/no-explicit-any": 96,
+      "@next/next/no-html-link-for-pages": 54,
+      "react-hooks/set-state-in-effect": 48,
+      "@next/next/no-assign-module-variable": 47,
+      "react-hooks/refs": 33,
+      "react-hooks/static-components": 14,
+      "@typescript-eslint/no-this-alias": 6
+    }
+  },
+  "npmAudit": {
+    "scope": "Advisory matches against the lock on the audit date; package counts, without runtime reachability verification",
+    "all": {
+      "info": 0,
+      "low": 1,
+      "moderate": 16,
+      "high": 14,
+      "critical": 2,
+      "total": 33
+    },
+    "omitDev": {
+      "info": 0,
+      "low": 0,
+      "moderate": 2,
+      "high": 3,
+      "critical": 1,
+      "total": 6
+    },
+    "productionPackageSeverities": {
+      "baseline-browser-mapping": "moderate",
+      "fast-uri": "moderate",
+      "next": "critical",
+      "sharp": "high",
+      "source-map-js": "high",
+      "zod": "high"
+    },
+    "criticalFullLock": [
+      "next",
+      "react-server-dom-webpack"
+    ]
+  },
+  "browser": {
+    "widths": [
+      390,
+      1440
+    ],
+    "artistEntries": [
+      {
+        "slug": "adya",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "aespa",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "atheart",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "babymonster",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "badvillain",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "bewave",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "billlie",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "candyshop",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "cherrybullet",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "everglow",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "fromis9",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "geenius",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "genblue",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "hearts2hearts",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "hitgs",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "idle",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "ifeye",
+        "http200AtBothWidths": true,
+        "observed": "open-shadow-dom-content"
+      },
+      {
+        "slug": "illit",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "itzy",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "ive",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "izna",
+        "http200AtBothWidths": true,
+        "observed": "open-shadow-dom-content"
+      },
+      {
+        "slug": "izone",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "katseye",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "kep1er",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "kiiikiii",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "kissoflife",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "lesserafim",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "loona",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "madein",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "meovv",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "newjeans",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "nmixx",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "oddyouth",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "purplekiss",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "qwer",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "rescene",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "rocketpunch",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "saymyname",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "spia",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "stayc",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "tracer",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "triples",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "udtt",
+        "http200AtBothWidths": true,
+        "observed": "viewer-refusal-and-retry-control"
+      },
+      {
+        "slug": "unis",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "vcha",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "vvup",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "weeekly",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "witchx",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "wooah",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "xg",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      },
+      {
+        "slug": "youngposse",
+        "http200AtBothWidths": true,
+        "observed": "visible-headings"
+      }
+    ],
+    "routeChecks": 102,
+    "routePageErrors": 0,
+    "initialShellHorizontalOverflows": 0,
+    "homeLibraryWorkBack": [
+      {
+        "width": 390,
+        "complete": true,
+        "focusRestored": true,
+        "pageErrors": 0
+      },
+      {
+        "width": 1440,
+        "complete": true,
+        "focusRestored": true,
+        "pageErrors": 0
+      }
+    ],
+    "anonymousStatusHttp": 401,
+    "unseededPublicCatalogHttp": 502,
+    "menuKeyboard": {
+      "expandedAfterEscape": "true",
+      "keyboardReachedUnderlyingMain": true,
+      "focusTrail": [
+        "sidebar",
+        "sidebar",
+        "sidebar",
+        "sidebar",
+        "sidebar",
+        "sidebar",
+        "sidebar",
+        "sidebar",
+        "sidebar",
+        "nav",
+        "nav",
+        "nav",
+        "nav",
+        "main"
+      ]
+    },
+    "integratedRealWorker": {
+      "all": {
+        "status": 200,
+        "bytes": 1080832,
+        "counts": {
+          "groups": 51,
+          "members": 51,
+          "works": 614,
+          "ratings": 0,
+          "ratedWorks": 0,
+          "scoreSum": 0
+        },
+        "stages": 527,
+        "mode": "live",
+        "viewerEntries": null
+      },
+      "ive": {
+        "status": 200,
+        "bytes": 46055,
+        "counts": {
+          "groups": 1,
+          "members": 1,
+          "works": 25,
+          "ratings": 0,
+          "ratedWorks": 0,
+          "scoreSum": 0
+        },
+        "stages": 22,
+        "mode": "live",
+        "viewerEntries": null
+      },
+      "udtt-viewer": {
+        "status": 409
+      }
+    },
+    "integratedViewsAtBothWidths": [
+      "crush",
+      "home",
+      "ifeye",
+      "insights",
+      "izna",
+      "library",
+      "records",
+      "udtt"
+    ],
+    "ifeyeIznaAccessibilityTree": [
+      {
+        "slug": "ifeye",
+        "headings": 20,
+        "buttons": 1,
+        "links": 37,
+        "controlsInA11yTree": true
+      },
+      {
+        "slug": "izna",
+        "headings": 26,
+        "buttons": 1,
+        "links": 41,
+        "controlsInA11yTree": true
+      }
+    ],
+    "crushLinkInBothViewports": true,
+    "udtt": {
+      "emptyUnmigratedLocalStateViewer": 503,
+      "syntheticNativeTargetMismatchViewer": 409,
+      "observed": "retry control at both widths; full native success view unverified"
+    },
+    "libraryFirstViewport": [
+      {
+        "width": 390,
+        "scrollY": 0,
+        "cardTop": 739,
+        "titleTop": 865,
+        "titleText": "Per",
+        "bottomNavTop": 839,
+        "height": 900
+      },
+      {
+        "width": 1440,
+        "scrollY": 0,
+        "cardTop": 436.1875,
+        "titleTop": 666.421875,
+        "titleText": "Per",
+        "bottomNavTop": null,
+        "height": 900
+      }
+    ]
+  },
+  "clientBuild": {
+    "initial": {
+      "jsAndCssBytes": 3353399,
+      "gzipBytes": 579973,
+      "jsFiles": 48,
+      "cssFiles": 7
+    },
+    "largestRawStaticChunks": [
+      {
+        "key": "_mv-public-media-BUA7yW8D.js",
+        "bytes": 1152439,
+        "gzipBytes": 107460
+      },
+      {
+        "key": "_public-work-credits-pihHq4OU.js",
+        "bytes": 662464,
+        "gzipBytes": 91737
+      },
+      {
+        "key": "virtual:vinext-app-browser-entry",
+        "bytes": 267042,
+        "gzipBytes": 65581
+      },
+      {
+        "key": "app/page.tsx",
+        "bytes": 227785,
+        "gzipBytes": 57604
+      },
+      {
+        "key": "_framework-D_rUT4EX.js",
+        "bytes": 190152,
+        "gzipBytes": 59092
+      }
+    ],
+    "exclusions": [
+      "fonts",
+      "images",
+      "catalog API",
+      "dynamic imports",
+      "transport"
+    ]
+  },
+  "data": {
+    "publishedSources": 500,
+    "localSources": 527,
+    "unchangedExistingSources": 497,
+    "added": 27,
+    "removed": 0,
+    "replacedExistingWorkIds": [
+      "recvxyHuKM4BvC",
+      "recvxIZd9vfxUk",
+      "recvxyHuKMCtUB"
+    ],
+    "platforms": {
+      "youtube": 522,
+      "bilibili": 4,
+      "x": 1
+    },
+    "publicCredits": {
+      "works": 108,
+      "memberSlots": 557
+    },
+    "factLedger": {
+      "stages": 87,
+      "people": 23,
+      "uniqueWorks": 103,
+      "stageQueueDigestMatched": true,
+      "personQueueDigestMatched": true,
+      "recommendations": {
+        "park_until_new_evidence": 81,
+        "continue_independent": 10,
+        "retire_requirement": 19
+      }
+    }
+  },
+  "importerAssertions": {
+    "merge-stage-batch.py": 56,
+    "stage_source_identity.py": 29,
+    "stage_selection_policy.py": 58
+  },
+  "limits": [
+    "Test aggregates include historical harness failures and do not count independent product defects.",
+    "Local synthetic state contains public work inventory, synthetic members and zero ratings; production personal records were not queried.",
+    "Production browser rendering, real owner saves, live owner preflight, full video playback and remote-asset reachability were not tested."
+  ]
+}

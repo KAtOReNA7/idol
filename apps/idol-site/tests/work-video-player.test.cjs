@@ -169,13 +169,19 @@ test('each confirmed work selects one exact player and preserves stage score ide
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const {stageSourceKey,stageSourceMatchesUrl}=require('./helpers/public-artist-loader.cjs')('lib/idol/stage-source.ts');
  const mappings=require('../data/verified-work-players.json'),stages=require('../data/stage-videos.json');
+ const vimeoByWork={
+  rec28ldfRTrzPI:{video:'Vk5-c_v4gMU',player:'930729644',credit:'COLORGRAF · 调色制作'},
+  recvxyHuKMFzlZ:{video:'38xYeot-ciM',player:'1054517686',credit:'Yunah Sheep · 导演与剪辑'}
+ };
  for(const [id,mapping] of Object.entries(mappings)){
   const video=mapping.original, route=workPlayback(id,video,'mv',null);
   assert.equal(route.fallbackPlayers,undefined,id);
-  if(id==='rec28ldfRTrzPI'){
-   assert.equal(route.label,'Vimeo');
-   assert.equal(route.embedUrl,'https://player.vimeo.com/video/930729644?autoplay=1&muted=1&dnt=1&playsinline=1&quality=4k');
-   assert.match(route.credit,/COLORGRAF/);
+  const vimeo=vimeoByWork[id];
+  if(vimeo){
+   assert.equal(video,vimeo.video,id);
+   assert.equal(route.label,'Vimeo',id);
+   assert.equal(route.embedUrl,`https://player.vimeo.com/video/${vimeo.player}?autoplay=1&muted=1&dnt=1&playsinline=1&quality=4k`,id);
+   assert.equal(route.credit,`Vimeo · ${vimeo.credit}`,id);
   }else{
    assert.equal(route.label,'RUTUBE',id);
    assert.equal(route.embedUrl,`https://rutube.ru/play/embed/${mapping.rutube}?autostartmute=true&q=1080`,id);
@@ -191,7 +197,7 @@ test('each confirmed work selects one exact player and preserves stage score ide
 test('failed attempts can retry the same muted source without opening another player or tab',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const mappings=require('../data/verified-work-players.json');
- for(const id of ['rec28ldfRTrLku','rec28ldfRTrzPI']){
+ for(const id of ['rec28ldfRTrLku','rec28ldfRTrzPI','recvxyHuKMFzlZ']){
   const video=mappings[id].original, player=workPlayback(id,video,'mv',null);
   const h=sessionHarness({workId:id,videoId:video,embedUrl:player.embedUrl,playbackCredit:player.credit,playbackLabel:player.label});
   const cover=h.render();

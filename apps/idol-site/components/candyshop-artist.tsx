@@ -1,4 +1,5 @@
 'use client';
+import {OriginalPhotoLink} from './original-photo-link';
 import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {publicCustomArtistText} from '@/lib/idol/custom-artist-copy';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
@@ -91,7 +92,7 @@ export default function CandyshopArtist({content}:{content:CandidateContent}){
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','Through the years')}{timeline()}</>;
  else body=<>
-<section className="cs-opening"><div className="cs-hero-title"><h1>Candy Shop</h1><span>2024 —</span></div><div className="cs-hero-grid"><button className="cs-photo-button" aria-label="查看团体原图" onClick={()=>showPhoto(content.hero.image!,'Candy Shop · 官网团体资料照')}><Picture src={content.hero.image!} alt="Candy Shop 官网四人团体资料照" className="cs-group-photo" priority/></button><div className="cs-intro"><h2>从青春里，<br/>听见她们。</h2><p>{content.intro}</p><div className="cs-actions"><Link className="cs-button" to={sectionHref('members')}>认识成员 <Arrow/></Link><Link className="cs-button cs-outline" to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><div className="cs-hero-credit"><span>官网公开资料照 · 拍摄日期未注明</span><a href={content.hero.sourceUrl??undefined} target="_blank" rel="noopener noreferrer">官网资料 ↗</a></div></div></div></section>
+<section className="cs-opening"><div className="cs-hero-title"><h1>Candy Shop</h1><span>2024 —</span></div><div className="cs-hero-grid"><OriginalPhotoLink className="cs-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'Candy Shop · 官网团体资料照'})}><Picture src={content.hero.image!} alt="Candy Shop 官网四人团体资料照" className="cs-group-photo" priority/></OriginalPhotoLink><div className="cs-intro"><h2>从青春里，<br/>听见她们。</h2><p>{content.intro}</p><div className="cs-actions"><Link className="cs-button" to={sectionHref('members')}>认识成员 <Arrow/></Link><Link className="cs-button cs-outline" to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><div className="cs-hero-credit"><span>官网公开资料照 · 拍摄日期未注明</span><a href={content.hero.sourceUrl??undefined} target="_blank" rel="noopener noreferrer">官网资料 ↗</a></div></div></div></section>
 <ArtistInformation slug="candyshop" catalog={state.data}/>
 <section className="cs-home-members">{heading('成员','SORAM · SUI · SARANG · JULIA')}{roster()}<p className="cs-note">四张成员照片来自官网同一资料页。中文名为本站显示名。</p></section>
 <section className="cs-related" data-home-module="mv">{heading("MV","MUSIC VIDEO")}{design.works.filter(v=>v.type==='MV').map(videoRow)}</section>

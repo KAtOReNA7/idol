@@ -1,4 +1,5 @@
 'use client';
+import {OriginalPhotoLink} from './original-photo-link';
 import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
@@ -89,7 +90,7 @@ export default function OddyouthArtist({content}:{content:CandidateContent}){
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','OUR YEARS')}{timeline()}</>;
  else body=<>
-<section className="oy-opening"><div className="oy-opening-copy"><h1>ODD<br/>YOUTH</h1><h2>{content.headline}</h2><p>{content.intro}</p><div className="oy-actions"><Link className="oy-button oy-white" to={sectionHref('members')}>认识成员 <Arrow/></Link><Link className="oy-button oy-white" to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><span className="oy-opening-foot">TOP MEDIA · 2024 —</span></div><button className="oy-photo-button oy-group" aria-label="查看团体原图" onClick={()=>showPhoto(content.hero.image!,'ODD YOUTH · 官网团体资料照')}><Picture src={content.hero.image!} alt="ODD YOUTH 五人官网团体资料照" priority/></button></section>
+<section className="oy-opening"><div className="oy-opening-copy"><h1>ODD<br/>YOUTH</h1><h2>{content.headline}</h2><p>{content.intro}</p><div className="oy-actions"><Link className="oy-button oy-white" to={sectionHref('members')}>认识成员 <Arrow/></Link><Link className="oy-button oy-white" to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><span className="oy-opening-foot">TOP MEDIA · 2024 —</span></div><OriginalPhotoLink className="oy-photo-button oy-group" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'ODD YOUTH · 官网团体资料照'})}><Picture src={content.hero.image!} alt="ODD YOUTH 五人官网团体资料照" priority/></OriginalPhotoLink></section>
 <ArtistInformation slug="oddyouth" catalog={state.data}/>
 <section className="oy-home-members">{heading('成员','ALL FIVE TOGETHER')}{roster()}<p className="oy-roster-note">官网具名资料照 · 中文名为本站显示名。</p></section>
 <section className="oy-related" data-home-module="mv">{heading("MV","MUSIC VIDEO")}{videos(design.works.filter(v=>v.type==='MV').slice(0,3))}</section>

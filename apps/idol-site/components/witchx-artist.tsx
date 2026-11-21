@@ -1,4 +1,5 @@
 'use client';
+import {OriginalPhotoLink} from './original-photo-link';
 import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
@@ -86,7 +87,7 @@ export default function WitchxArtist({content}:{content:CandidateContent}){
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','TIMELINE')}{timeline()}<p className="wk-note">公司出道标注、音源发行和视频公开采用各自日期；活动预告不作为已经举办的证明。</p></>;
  else body=<>
-<figure className="wk-group"><button className="wk-photo-button" aria-label="查看团体原图" onClick={()=>showPhoto(content.hero.image!,'W!TCHX · Bugs 艺人资料合照')}><Picture src={content.hero.image!} alt="W!TCHX · Bugs 艺人资料合照" priority/></button><figcaption>Bugs 艺人资料合照 · 拍摄时期未注明 · 点击查看原图</figcaption></figure>
+<figure className="wk-group"><OriginalPhotoLink className="wk-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'W!TCHX · Bugs 艺人资料合照'})}><Picture src={content.hero.image!} alt="W!TCHX · Bugs 艺人资料合照" priority/></OriginalPhotoLink><figcaption>Bugs 艺人资料合照 · 拍摄时期未注明 · 点击查看原图</figcaption></figure>
 <header className="wk-page-title"><h1>W!TCHX</h1></header>
 <ArtistInformation slug="witchx" catalog={state.data}/>
 <section className="wk-home-members" aria-label="成员">{heading('成员','MEMBERS')}{roster()}<p className="wk-roster-note">公司官网列示的五位成员。完整具名档案卡保留原始构图；中文名为艺名转写。</p></section>

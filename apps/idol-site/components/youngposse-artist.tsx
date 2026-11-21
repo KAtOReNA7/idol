@@ -1,4 +1,5 @@
 'use client';
+import {OriginalPhotoLink} from './original-photo-link';
 import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
@@ -83,7 +84,7 @@ export default function YoungposseArtist({content}:{content:CandidateContent}){
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<><header className="page-heading"><h1>THE<br/>STORY</h1><p>时间轴</p></header>{timeline()}</>;
  else body=<>
-<section className="opening"><div className="hero-type"><h1><span className="young-word">YOUNG</span><span className="posse-word">POSSE</span></h1><p>音乐 / 成员 / 现场</p></div><div className="hero-photo"><button className="photo-open" aria-label="查看团体原图" onClick={()=>setLightbox({src:originalPhoto(content.hero.image!),label:'YOUNG POSSE · 官方团体资料照'})}><Picture src={content.hero.image!} alt="YOUNG POSSE 官方团体资料照" className="group" priority/></button><a className="image-source" href={content.hero.sourceUrl??undefined} target="_blank" rel="noopener noreferrer">官方资料与照片来源 ↗</a></div></section>
+<section className="opening"><div className="hero-type"><h1><span className="young-word">YOUNG</span><span className="posse-word">POSSE</span></h1><p>音乐 / 成员 / 现场</p></div><div className="hero-photo"><OriginalPhotoLink className="photo-open" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'YOUNG POSSE · 官方团体资料照'})}><Picture src={content.hero.image!} alt="YOUNG POSSE 官方团体资料照" className="group" priority/></OriginalPhotoLink><a className="image-source" href={content.hero.sourceUrl??undefined} target="_blank" rel="noopener noreferrer">官方资料与照片来源 ↗</a></div></section>
 <ArtistInformation slug="youngposse" catalog={state.data}/>
 <section className="member-section">{sectionHead('MEMBERS')}{roster()}</section>
 <section className="library-videos" data-home-module="mv">{sectionHead("MV") }<div className="videos-grid">{design.works.filter(v=>v.type==='MV').slice(0,3).map(videoRow)}</div></section>

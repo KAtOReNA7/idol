@@ -72,6 +72,47 @@ test('reloading an active MV or ranged stage remounts only its exact embed after
   assert.equal(session.opens(),0);
  }
 });
+
+test('the BILLIONAIRE mirror is limited to the same full edit and leaves the stage binding intact',()=>{
+ const {workPlaybackMirror,stageSourceKey}=require('./helpers/public-artist-loader.cjs')('lib/idol/stage-source.ts');
+ const id='rec28ldfRTrLku',videoId='Gz_yRl6703c',stage=require('../data/stage-videos.json')[id];
+ const mirror=workPlaybackMirror(id,videoId,'mv',null);
+ assert.equal(new URL(mirror.embedUrl).searchParams.get('cid'),'28248899991');
+ assert.equal(new URL(mirror.watchUrl).searchParams.get('p'),'1');
+ assert.deepEqual(workPlaybackMirror(id,videoId,'stage',stage),mirror);
+ assert.equal(stageSourceKey(stage),stage.scoreBinding.videoId);
+ assert.equal(workPlaybackMirror('another',videoId,'mv',null),null);
+ assert.equal(workPlaybackMirror(id,'MN2RlOy8y8k','mv',null),null);
+ for(const changed of [null,{...stage,reusesOriginalVideo:false},{...stage,url:'https://example.org'},{...stage,clip:{startSeconds:0,endSeconds:20,sourceDurationSeconds:164}}]){
+  assert.equal(workPlaybackMirror(id,videoId,'stage',changed),null);
+ }
+});
+
+test('a viewer can play the verified mirror first, switch either way, retry it, or open the exact part',()=>{
+ const mirror={uploader:'Synthetic',watchUrl:'https://www.bilibili.com/video/BV1TGNWeDEdv/?p=1&cid=28248899991',embedUrl:'https://player.bilibili.com/player.html?bvid=BV1TGNWeDEdv&cid=28248899991&page=1'};
+ const session=sessionHarness({mirror});
+ const choose=(label)=>nodes(session.render()).find(n=>n.type==='button'&&n.props.children===label);
+ const frame=()=>node(session.render(),'iframe');
+ assert.equal(frame(),undefined);
+ assert.equal(node(session.render(),'a').props.href,mirror.watchUrl);
+ node(session.render(),'button','video-play').props.onClick();
+ assert.equal(frame().props.src,mirror.embedUrl);
+ choose('YouTube · 官方原片').props.onClick();
+ assert.equal(frame().props.src,source.embedUrl);
+ assert.equal(choose('YouTube · 官方原片').props['aria-pressed'],true);
+ choose('B站 · 同版转载').props.onClick();
+ assert.equal(frame().props.src,mirror.embedUrl);
+ const key=frame().key;
+ choose('B站 · 同版转载').props.onClick();
+ assert.equal(frame().key,key);
+ node(session.render(),'button','video-reload').props.onClick();
+ assert.notEqual(frame().key,key);
+ assert.equal(frame().props.src,mirror.embedUrl);
+ assert.equal(session.opens(),0);
+ const fresh=sessionHarness({mirror});
+ nodes(fresh.render()).find(n=>n.type==='button'&&n.props.children==='YouTube · 官方原片').props.onClick();
+ assert.equal(node(fresh.render(),'iframe').props.src,source.embedUrl);
+});
 test('native retry button is keyboard-activatable without custom key interception',()=>{
  const h=sessionHarness();node(h.render(),'img').props.onError();const retry=node(h.render(),'button','video-cover-retry');
  assert.equal(retry.type,'button');assert.equal(retry.props.type,'button');assert.equal(retry.props.children,'重试封面');

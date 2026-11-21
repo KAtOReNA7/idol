@@ -3,6 +3,8 @@ const {DatabaseSync}=require('node:sqlite'),Module=require('node:module'),esbuil
 const source=[
  "export * from './lib/idol/personal-mv-ratings';","export {nativeExportSnapshot,ownControl} from './lib/idol/native-storage';",
  "export {projectPublicCatalog} from './lib/idol/public-catalog';","export {projectBrowserCatalog} from './lib/idol/browser-catalog';",
+ "export {projectWorkCatalog} from './lib/idol/work-catalog';","export {F} from './lib/idol/fields';",
+ "export {memberDisplayName} from './lib/idol/member-display-name';",
  "export {projectCatalog} from './lib/idol/catalog';","export {memberWorks,memberWorkSummary} from './lib/idol/member-works';",
  "export {videoId} from './lib/idol/values';","export {mvMemberAbsence} from './lib/idol/mv-member-appearance';",
  "export {PublicAccessProvider} from './components/public-access';","export {WorkDetail} from './components/catalog/work-detail';",

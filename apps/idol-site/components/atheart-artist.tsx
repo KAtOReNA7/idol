@@ -6,7 +6,7 @@ import {MemberPublicCredits} from '@/components/public-work-credits';
 import {publicVideoCover} from '@/lib/idol/mv-public-media';
 import {ArtistInformation,ArtistHomeTimeline} from '@/components/artist-information';
 import {Home,Users,Disc3,Play,CalendarDays} from 'lucide-react';
-import {useEffect,useRef,useState,useSyncExternalStore} from 'react';
+import {useEffect,useRef,useState,useSyncExternalStore,type MouseEvent} from 'react';
 import editorial from '../data/atheart-review-editorial.json';
 import {ArtistTimelineHost,useArtistTimelineHostOptions} from './artist-timeline-host';
 import {PhotoLightbox} from './photo-lightbox';
@@ -33,7 +33,12 @@ export default function AtheartArtist(){
  const returnTo=safeArtistReturn(path+(params.size?'?'+params:''))??path;
  const remember=useArtistScroll(!!data,href),searchRef=useRef<HTMLInputElement>(null);
  useEffect(()=>{if(injected.catalog!==undefined)return;const abort=new AbortController();setLoading(true);setError('');void catalogReadWithDeadline(async signal=>{const r=await fetch('/api/catalog?artist=atheart&shape=display-v1',{headers:artistCatalogHeaders,signal,cache:'no-store'});if(!r.ok||!r.headers.get('content-type')?.includes('application/json'))throw Error('资料库暂时无法读取。');const c=await r.json() as CatalogView;if(c.scope?.type!=='artist'||c.scope.groupId!==groupId||!Array.isArray(c.members)||!Array.isArray(c.works)||!Array.isArray(c.ratings)||c.groups.filter(g=>g.id===groupId).length!==1)throw Error('暂时无法读取本团记录。');return c;},abort.signal).then(c=>{if(!abort.signal.aborted)setFetched(c);}).catch(e=>{if(!abort.signal.aborted)setError(e.message);}).finally(()=>{if(!abort.signal.aborted)setLoading(false);});return()=>abort.abort();},[attempt,injected.catalog]);
- function navigate(patch:Record<string,string|null>,replace=false){remember();const next=new URLSearchParams(params);for(const [k,v] of Object.entries(patch)){if(v)next.set(k,v);else next.delete(k);}const destination=path+(next.size?'?'+next:'');if(!safeArtistReturn(destination))return;history[replace?'replaceState':'pushState'](newArtistHistoryState(history.state),'',destination);window.dispatchEvent(new Event('artist-location-change'));if(!replace)document.getElementById('ah-content')?.scrollIntoView({block:'start'});}
+ function sectionUrl(patch:Record<string,string|null>){
+  const next=new URLSearchParams(params);
+  for(const [key,value] of Object.entries(patch)){if(value)next.set(key,value);else next.delete(key);}
+  return path+(next.size?'?'+next:'');
+ }
+ function navigate(patch:Record<string,string|null>,replace=false){remember();const destination=sectionUrl(patch);if(!safeArtistReturn(destination))return;history[replace?'replaceState':'pushState'](newArtistHistoryState(history.state),'',destination);window.dispatchEvent(new Event('artist-location-change'));if(!replace)document.getElementById('ah-content')?.scrollIntoView({block:'start'});}
  const select=(value:string)=>navigate({section:value==='overview'?null:value,member:null,release:null,media:null,format:null,q:null});
  const member=editorial.members.find(m=>m.id===memberId),release=editorial.releases.find(r=>r.key===releaseKey),video=editorial.videos.find(v=>v.key===mediaKey&&v.type===format);
  const showImage=(src:string,label:string)=>setLightbox({src,label});
@@ -47,9 +52,20 @@ export default function AtheartArtist(){
  const memberCards=(rows:typeof editorial.members)=><div className="ah-roster">{rows.map(m=><button className="ah-person" key={m.id} onClick={()=>navigate({section:'members',member:m.id,release:null,media:null,format:null})}><span className="ah-portrait"><Picture src={m.image} label={m.cnName+' · '+m.stageName}/></span><span className="ah-person-name"><strong>{m.stageName}</strong><span>{m.cnName}</span><b aria-hidden="true">↗</b></span></button>)}</div>;
  const releaseCards=(rows:typeof editorial.releases)=><div className="ah-releases">{rows.map(r=><button key={r.key} className="ah-release" onClick={()=>navigate({section:'works',release:r.key,media:null,format:null})}><Picture src={r.image} label={r.title+' 发行封面'}/><span><small>{r.date} / {r.tracks} 曲</small><strong>{r.title}</strong><b aria-hidden="true">↗</b></span></button>)}</div>;
  const videoCards=(rows:Video[])=><div className="ah-videos">{rows.map(v=>{
-   const direct=section==='overview'&&!memberId&&!releaseKey&&!mediaKey&&v.type==='mv'?artistMvHref(data,groupId,'https://www.youtube.com/watch?v='+v.videoId,returnTo):null;
-   const Card=direct?'a':'button';
-   return <Card href={direct??undefined} className="ah-video" key={v.key} data-artist-media={v.key} data-video-id={v.videoId} onClick={direct?()=>remember():()=>navigate({section:'works',media:v.key,format:v.type,release:null})}><span className="ah-video-image"><Picture src={publicVideoCover(v.videoId)?.src??v.image} label={v.title+' · '+(v.type==='mv'?'音乐影像':'表演 / 现场')}/><span className="ah-play" aria-hidden="true">↗</span></span><span className="ah-video-caption"><small>{v.chapter.toUpperCase()} / {v.type==='mv'?'音乐影像':'表演 / 现场'}</small><strong>{v.title}</strong><span>{v.date||'视频公开日期未收录'}</span></span></Card>;
+   const homeMv=section==='overview'&&!memberId&&!releaseKey&&!mediaKey&&v.type==='mv';
+   const direct=homeMv?artistMvHref(data,groupId,'https://www.youtube.com/watch?v='+v.videoId,returnTo):null;
+   const patch={section:'works',media:v.key,format:v.type,release:null};
+   const target=direct??(homeMv?sectionUrl(patch):undefined);
+   const Card=target?'a':'button';
+   function openVideo(event:MouseEvent){
+    if(direct){remember();return;}
+    if(target){
+     if(event.defaultPrevented||event.button!==0||event.altKey||event.ctrlKey||event.metaKey||event.shiftKey)return;
+     event.preventDefault();
+    }
+    navigate(patch);
+   }
+   return <Card href={target} className="ah-video" key={v.key} data-artist-media={v.key} data-video-id={v.videoId} onClick={openVideo}><span className="ah-video-image"><Picture src={publicVideoCover(v.videoId)?.src??v.image} label={v.title+' · '+(v.type==='mv'?'音乐影像':'表演 / 现场')}/><span className="ah-play" aria-hidden="true">↗</span></span><span className="ah-video-caption"><small>{v.chapter.toUpperCase()} / {v.type==='mv'?'音乐影像':'表演 / 现场'}</small><strong>{v.title}</strong><span>{v.date||'视频公开日期未收录'}</span></span></Card>;
  })}</div>;
  const linkedMemberWorks=member&&data?data.works.filter(w=>data.ratings.some(r=>r.memberIds.length===1&&r.memberIds[0]===member.id&&r.workIds.length===1&&r.workIds[0]===w.id)):[];
  const releaseVideos=release?editorial.videos.filter(v=>v.releaseKey===release.key):[];

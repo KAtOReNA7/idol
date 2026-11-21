@@ -75,6 +75,13 @@ test('featured MV actions have the same verified destination before and after ca
           assert.equal(url.pathname, '/');
           assert.equal(url.origin, 'https://example.invalid');
           assert.equal(url.searchParams.get('returnTo'), group.path);
+        } else if (card.slug === 'atheart' || card.slug === 'witchx') {
+          assert.equal(action.tagName, 'A', group.slug + ' ' + card.card + ' can be opened before hydration');
+          assert.equal(url.origin, 'https://example.invalid');
+          assert.equal(url.pathname, group.path);
+          assert.equal(url.searchParams.get('section'), 'works');
+          assert.equal(url.searchParams.get('format'), 'mv');
+          assert.equal(url.searchParams.get('media'), card.card);
         }
       }
     }

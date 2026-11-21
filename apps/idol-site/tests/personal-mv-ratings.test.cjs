@@ -1,6 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
 const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
 const {harness}=require('./helpers/personal-mv-ratings.cjs');
+const {harness:scoreControls,Runner,find,all,text,tick}=require('./helpers/read-recovery-harness.cjs');
 const {parse}=require('next/dist/compiled/node-html-parser');
 const path=require('node:path'),os=require('node:os'),child=require('node:child_process'),{DatabaseSync}=require('node:sqlite');
 const tableSchema=name=>({field_id:name,field_name:name,type:1});
@@ -207,14 +208,64 @@ test('the production archive and manifest restore legacy records, private zero a
  }
 });
 
-test('all 51 groups give eligible members scoring controls on their own photo cards, including seven BILLIONAIRE release portraits',t=>{
- const {api}=harness(),snapshot=require('../data/snapshot.json');
+async function scoreRosterChoice(controls, storage, props, member) {
+ const panel = new Runner(controls.exports.PersonalMvRatingsPanel);
+ const picker = find(panel.render(props), node => node.type === 'select');
+ picker.props.onChange({target: {value: member.id}});
+ const cards = all(panel.render(), node => node.type === 'article');
+ assert.equal(cards.length, 1);
+ const [card] = cards;
+ assert.equal(card.props['data-roster-score-member'], member.id);
+ const portrait = find(card, node => node.props.live && node.props.member);
+ assert.equal(portrait.props.member.id, member.id);
+ const inline = find(card, node => node.type === controls.exports.PersonalMvScore);
+ const score = new Runner(inline.type);
+ const open = score.render(inline.props);
+ assert.equal(open.props['data-score-member'], member.id);
+ assert.equal(find(open, node => node.type === 'button').props['aria-expanded'], true);
+ const editor = find(open, node => node.type === controls.exports.ScoreForm);
+ const form = new Runner(editor.type);
+ const fields = all(form.render(editor.props), node => node.type === 'input');
+ const name = storage.api.memberDisplayName(member);
+ assert.deepEqual(fields.map(node => node.props['aria-label']), [name+'的表现分', name+'的造型分']);
+ fields[0].props.onChange({target: {value: '0'}});
+ fields[1].props.onChange({target: {value: '8.5'}});
+ const save = find(form.render(), node => node.type === 'button' && text(node) === '保存成员评分');
+ assert.equal(save.props.disabled, false);
+ save.props.onClick();
+ assert.equal(controls.requests.length, 1);
+ const request = controls.requests.shift();
+ assert.equal(request.url, '/api/personal-mv-ratings');
+ const body = JSON.parse(request.options.body);
+ assert.deepEqual([body.workId,body.videoId,body.memberId,body.score,body.stylingScore,body.revision],
+  [props.workId,props.videoId,member.id,0,8.5,0]);
+ const origin = 'https://site.test';
+ const response = await storage.api.POST(new Request(origin+request.url, {
+  ...request.options, headers: {...request.options.headers, origin},
+ }));
+ assert.equal(response.status, 200, props.workId+'/'+member.id);
+ request.resolve(response);
+ await tick();
+ assert.equal(text(find(form.render(), node => node.props.role === 'status')), '已保存');
+ form.unmount();
+}
+
+test('all 51 groups give eligible members scoring controls on their own photo cards, including seven BILLIONAIRE release portraits',async t=>{
+ const storage=harness(),{api}=storage,snapshot=require('../data/snapshot.json');
+ t.after(()=>storage.sql.close());
+ storage.model.user=fixtureOwner();
+ const controls=scoreControls({personal:true,memberDisplayName:api.memberDisplayName});
+ const control=await api.ownControl('owner'),personal=await storage.read();
  const source=api.projectCatalog(snapshot.tables,'live',snapshot.capturedAt);
  // Keep only the approved IDs, member links and public media for these renders.
  const stripped={...source,groups:source.groups.map(g=>({...g,note:''})),members:source.members.map(m=>({...m,favorite:null,note:''})),
   works:source.works.map(w=>({...w,score:null,stageScore:null,note:'',watched:''})),
   ratings:source.ratings.map(r=>({...r,score:null,stylingScore:null,note:'',memory:''}))};
- const owner={...api.projectBrowserCatalog(stripped),personalMvRatings:{scope:'a'.repeat(64),writable:true,entries:[]}};
+ const owner={...api.projectBrowserCatalog(stripped),personalMvRatings:personal};
+ const membersById=new Map(owner.members.map(member=>[member.id,member]));
+ for(const member of owner.members)storage.seed('members',member.id,{
+  [api.F.members.groups]:member.groupIds,[api.F.members.formerGroups]:member.formerGroupIds??[],
+ });
  const guest=api.projectPublicCatalog(owner);
  const noop=()=>{},render=(work,data,canEdit,initialView='mv')=>renderToStaticMarkup(React.createElement(api.PublicAccessProvider,{canEdit},
   React.createElement(api.WorkDetail,{work,data,onMember:noop,onGroup:noop,onSaved:noop,onBack:noop,onVersion:noop,initialView})));
@@ -223,7 +274,8 @@ test('all 51 groups give eligible members scoring controls on their own photo ca
  const groupCounts=new Map(owner.groups.map(group=>[group.id,{id:group.id,name:group.name,...blank()}]));
  const stageLeaks=[];
  const photoAudit={eligibleWorks:0,visibleCards:0,chosenRosterCards:0,uniqueWorkMembers:0,externalReadOnlyCredits:0,missingControl:0,missingImage:0};
- const missing=[];
+ const missing=[],pickerGroups=new Set();
+ let pickerWorks=0,rosterSelectionSaves=0,formerRosterOnly=0;
  for(const [index,work] of owner.works.entries()){
   const add=key=>{counts[key]++;for(const id of new Set(work.groupIds))groupCounts.get(id)[key]++;};
   if(work.placeholder){add('placeholders');work.groupIds.forEach(id=>placeholderGroups.add(id));assert.equal(api.videoId(work.url),null);continue;}
@@ -234,7 +286,8 @@ test('all 51 groups give eligible members scoring controls on their own photo ca
   const exactGuest=require('../data/public-work-credits.json').records.find(c=>c.workId===work.id&&c.videoId===api.videoId(work.url)&&work.groupIds.includes(c.groupId)&&c.kind==='named_artist_credit');
   const eligible=owner.members.filter(m=>(exactGuest?.memberIds.includes(m.id)||work.groupIds.some(id=>m.groupIds.includes(id)||m.formerGroupIds?.includes(id)))&&!existing.has(m.id));
   const canChoose=!absent&&hasVideo&&eligible.length>0;
-  const privatePage=render(work,owner,true),publicPage=render(guest.works[index],guest,false);
+  const scopedOwner={...api.projectBrowserCatalog(api.projectWorkCatalog(stripped,work)),personalMvRatings:personal};
+  const privatePage=render(work,scopedOwner,true),publicPage=render(guest.works[index],guest,false);
   if(!absent&&hasVideo){
    photoAudit.eligibleWorks++;
    const pictures=parse(privatePage),picker=pictures.querySelector('.personal-mv-picker select');
@@ -250,9 +303,22 @@ test('all 51 groups give eligible members scoring controls on their own photo ca
    const memberIds=new Set(initialCards.map(card=>card.getAttribute('data-photo-member')));
    assert.deepEqual(new Set(choices),new Set(eligible.filter(m=>!memberIds.has(m.id)).map(m=>m.id)),work.id);
    assert.deepEqual(new Set([...choices,...memberIds]),new Set([...eligible.map(m=>m.id),...existing]),work.id);
-   // A saved synthetic zero renders the same roster-photo card used after a selection.
-   const entries=choices.map(memberId=>({workId:work.id,videoId:api.videoId(work.url),memberId,score:0,stylingScore:null,revision:1}));
-   const allCards=entries.length?parse(render(work,{...owner,personalMvRatings:{...owner.personalMvRatings,entries}},true)):pictures;
+   let allCards=pictures;
+   if(choices.length){
+    pickerWorks++;
+    for(const id of work.groupIds)pickerGroups.add(id);
+    storage.seed('works',work.id,{[api.F.works.groups]:work.groupIds,[api.F.works.url]:work.url,[api.F.works.song]:work.song});
+    const roster=choices.map(id=>membersById.get(id));
+    const props={ratings:personal,workId:work.id,videoId:api.videoId(work.url),roster,onDirty:noop,onBlocked:noop,onSaved:noop};
+    for(const member of roster){
+     await scoreRosterChoice(controls,storage,props,member);
+     rosterSelectionSaves++;
+     if(!member.groupIds.some(id=>work.groupIds.includes(id))&&member.formerGroupIds?.some(id=>work.groupIds.includes(id)))formerRosterOnly++;
+    }
+    const reloaded=await api.personalMvRatingsForOwner('owner',control,scopedOwner,work.id);
+    assert.deepEqual(new Set(reloaded.entries.map(row=>row.memberId)),new Set(choices));
+    allCards=parse(render(work,{...scopedOwner,personalMvRatings:reloaded},true));
+   }
    const extraCards=allCards.querySelectorAll('[data-roster-score-member]');
    assert.equal(extraCards.length,choices.length);
    for(const card of [...initialCards,...extraCards]){
@@ -260,7 +326,14 @@ test('all 51 groups give eligible members scoring controls on their own photo ca
     if(!card.querySelector('.credit-score-action,.editor-open')){photoAudit.missingControl++;missing.push([work.id,memberId,'action']);}
     if(!card.querySelector('img[src]')){photoAudit.missingImage++;missing.push([work.id,memberId,'portrait']);}
    }
-   for(const card of extraCards)assert.match(card.text,/成员资料照.*表现 0/);
+   for(const card of extraCards){
+    const memberId=card.getAttribute('data-roster-score-member');
+    const elements=card.querySelectorAll('img[src],button.credit-score-action');
+    assert.deepEqual(elements.map(el=>el.tagName),['IMG','BUTTON']);
+    assert.equal(card.querySelector('[data-score-member]').getAttribute('data-score-member'),memberId);
+    assert.equal(elements[1].getAttribute('aria-label'),'给'+api.memberDisplayName(membersById.get(memberId))+'评分');
+    assert.match(card.text,/成员资料照.*表现 0 · 造型 8\.5/);
+   }
    photoAudit.visibleCards+=initialCards.length;photoAudit.chosenRosterCards+=extraCards.length;photoAudit.uniqueWorkMembers+=new Set([...choices,...memberIds]).size;
   }
   assert.equal(/添加成员评分|class="credit-score-action"/.test(publicPage),false,work.id);
@@ -288,14 +361,17 @@ test('all 51 groups give eligible members scoring controls on their own photo ca
   }
  }
  assert.deepEqual(stageLeaks,[]);assert.equal(groups.size,50);assert.equal(new Set([...groups,...placeholderGroups]).size,51);assert.equal(owner.works.length,614);
+ assert.equal(rosterSelectionSaves,photoAudit.chosenRosterCards);
+ assert.equal(count(storage.sql,'idol_personal_mv_ratings'),rosterSelectionSaves);
+ const rosterSelection={works:pickerWorks,groups:pickerGroups.size,savedAndReadBack:rosterSelectionSaves,formerGroupOnly:formerRosterOnly};
  if(process.env.IDOL_MV_COVERAGE_PATH){
   const output=path.resolve(process.env.IDOL_MV_COVERAGE_PATH);
   const report={snapshotCapturedAt:snapshot.capturedAt,groupCount:groupCounts.size,catalogWorks:owner.works.length,
    scope:'Local React server render with public identities, synthetic owner scope, and cleared personal values. Multi-group works count once globally and once per listed group.',
    mvDetailRenders:2*counts.works,stageDetailRenders:counts.stagePages,publicCreditRecords:require('../data/public-work-credits.json').records.length,
-   existingRelationshipCount:owner.ratings.length,workCounts:counts,photoAudit,groups:[...groupCounts.values()]};
+   existingRelationshipCount:owner.ratings.length,workCounts:counts,photoAudit,rosterSelection,groups:[...groupCounts.values()]};
   fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n');
  }
- t.diagnostic('Rendering counts '+JSON.stringify({counts,photoAudit,missing:missing.slice(0,20)}));
+ t.diagnostic('Rendering counts '+JSON.stringify({counts,photoAudit,rosterSelection,missing:missing.slice(0,20)}));
  assert.equal(photoAudit.eligibleWorks,599);assert.equal(photoAudit.missingControl,0);assert.equal(photoAudit.missingImage,0);
 });

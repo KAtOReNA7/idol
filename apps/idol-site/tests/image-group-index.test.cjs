@@ -8,6 +8,14 @@ for(const entry of registry)test(`${entry.slug}: public index keeps image, group
  assert.match(html,new RegExp(`data-browse-anchor="group-${group.id}"`));assert.match(html,/0\.0/);assert.equal((html.match(/<button\b/g)||[]).length,1);assert.doesNotMatch(html,/<a\b|src=""|blob:|retry=/);
  const images=html.match(/<img\b[^>]*>/g)||[];assert.ok(images.length>0);for(const image of images){assert.match(image,/src="[^"]+"/);assert.match(image,/alt="[^"]+"/);assert.match(image,/loading="lazy"/);assert.match(image,/decoding="async"/);assert.doesNotMatch(image,/fetchPriority="high"/);}
  assert.equal(JSON.stringify(data),before);
+ if(html.includes('data-redesign-index=')){
+  const renderWithScore=score=>renderToStaticMarkup(React.createElement(GroupIndexCard,{
+   group,data:{...data,works:[{...work,score}]},onOpen(){},renderPhoto(){},
+  }));
+  assert.match(html,/我的 MV 均分 0\.0/);
+  assert.doesNotMatch(renderWithScore(null),/我的 MV 均分/);
+  assert.match(renderWithScore(7.5),/我的 MV 均分 7\.5/);
+ }
 });
 test('both public index implementations use stable group/member identities and inherit only external recovery controls',()=>{
  const group=fs.readFileSync('components/group-detail.tsx','utf8'),candidate=fs.readFileSync('components/candidate-index-card.tsx','utf8');

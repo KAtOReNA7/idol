@@ -11,7 +11,7 @@ const current = [
   'gnarly-adoption-20261101', 'gnarly-prepared-20261101', 'research-closeout-20261101',
   'same-song-stage-adoption-20261030', 'same-song-stage-fallback', 'mcp-protocol',
   'native-storage', 'x-stage-source', 'project-optimization',
-  'stage-import-policy', 'stage-multiplatform-import', 'read-recovery',
+  'stage-import-policy', 'stage-multiplatform-import', 'source-normalizer', 'read-recovery',
   'journey', 'image-app-integration', 'photo-priority', 'sign-in-entry',
   'catalog-read-deadline', 'expanded-read-deadline', 'timeline-navigation',
   'mv-look-selection', 'mv-look-successor-policy', 'photo-soldelta5-registry', 'archive-transfer',
@@ -42,7 +42,7 @@ if (process.argv.includes('--built')) {
   }
 } else if (process.argv.includes('--current')) {
   run(['--test', '--test-concurrency=4', ...current]);
-  run(['--test', 'tests/stage-owner-preflight.test.cjs'], process.execPath, {...env, PYTHONOPTIMIZE: '1'});
+  run(['--test', 'tests/stage-owner-preflight.test.cjs', 'tests/source-normalizer.test.cjs'], process.execPath, {...env, PYTHONOPTIMIZE: '1'});
 } else {
   const files = readdirSync(path.join(root, 'tests'), {recursive: true})
     .map(name => 'tests/' + name.replaceAll('\\', '/'))

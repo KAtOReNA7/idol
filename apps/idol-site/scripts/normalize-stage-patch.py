@@ -5,6 +5,8 @@ Usage: python3 scripts/normalize-stage-patch.py REVIEWED.json [REVIEWED2.json ..
 import json,sys,copy,datetime,pathlib
 from stage_selection_policy import checked_selection, comparison_candidates, version_eligible, checked_comparison, checked_same_song_fallback
 from stage_source_identity import require_stage, SOURCE_CLASSES, checked_identity, checked_likes, comparison_group, source_key
+sys.stdout.reconfigure(encoding="utf-8")
+
 KINDS={'practice_room':'官方练习室','festival_stage':'官方音乐节舞台','staged_live_clip':'官方舞台化 Live Clip','radio_live_session':'官方电台现场表演','staged_performance':'官方舞台化表演','broadcast_stage':'官方节目完整舞台','official_stage':'官方舞台','concert_stage':'官方演唱会完整舞台','studio_performance':'官方录音棚完整表演','studio_live_session':'官方录音棚现场表演','staged_dance_performance':'官方舞台化表演','produced_dance_performance':'官方舞台化表演','official_performance_film':'官方特别表演','showcase_stage':'官方Showcase舞台','live_clip':'官方Live Clip','band_live':'官方乐队现场'}
 def likes(c):
  v=c.get('likes')
@@ -16,7 +18,7 @@ def normalize_candidate(c):
  n['url']=c.get('url') or c.get('sourceUrl');return n
 out=[];seen=set();origins=[];manifests=[];reviewed_hashes=[]
 for filename in sys.argv[1:]:
- d=json.loads(pathlib.Path(filename).read_text(encoding='utf-8'));origins.append(pathlib.Path(filename).name)
+ d=json.loads(pathlib.Path(filename).read_text(encoding='utf-8-sig'));origins.append(pathlib.Path(filename).name)
  if d.get('manifestSha256'):manifests.append(d['manifestSha256'])
  reviewed_hashes.extend(d.get('reviewedInputs',[]))
  for item in d['items']:

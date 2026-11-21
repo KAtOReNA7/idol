@@ -1,13 +1,16 @@
 import annotations from '@/data/stages/research-followups-20261030.json';
+import programs from '@/data/stages/research-followups-20261121.json';
 import {validStageResearchNote} from './stage-public-research';
 import {videoId} from './values';
 import type {Work,StageResearchNote} from './types';
+
+const records=[...annotations.records,...programs.records];
 
 // Editorial notes carry no stage identity, scoring policy or editable values.
 // Bind to the complete work identity; a later stage adoption retires stale notes.
 export function stageResearchFollowup(work:Pick<Work,'id'|'groupIds'|'url'|'stage'|'placeholder'>):StageResearchNote|null{
  if(work.placeholder||work.stage)return null;
- const matches=annotations.records.filter(r=>r.workId===work.id&&work.groupIds.includes(r.groupId)&&videoId(work.url)===r.videoId);
+ const matches=records.filter(r=>r.workId===work.id&&work.groupIds.includes(r.groupId)&&videoId(work.url)===r.videoId);
  return matches.length===1&&validStageResearchNote(matches[0].note)?matches[0].note:null;
 }
 export function applyStageResearchFollowups<T extends Pick<Work,'id'|'groupIds'|'url'|'stage'|'placeholder'|'stageSupplement'>>(work:T):T{

@@ -8,6 +8,30 @@ const {DatabaseSync}=require('node:sqlite');
 const ts=require('typescript');
 const load=require('./helpers/public-artist-loader.cjs');
 
+test('published program notes appear only for the four reviewed work, group and MV combinations',()=>{
+ const {applyStageResearchFollowups}=load('lib/idol/stage-research-followups.ts');
+ const {validStageResearchNote}=load('lib/idol/stage-public-research.ts');
+ const {records}=require('../data/stages/research-followups-20261121.json');
+ const inventory=require('../data/stages/inventory.json').works;
+ const stages=require('../data/stage-videos.json');
+ assert.equal(new Set(records.map(row=>row.workId)).size,4);
+ for(const row of records){
+  const target=inventory.find(work=>work.recordId===row.workId);
+  assert.ok(target.groupIds.includes(row.groupId));
+  assert.equal(target.mv.videoId,row.videoId);
+  assert.equal(stages[row.workId],undefined);
+  assert.ok(validStageResearchNote(row.note));
+  const work={id:row.workId,groupIds:target.groupIds,url:target.mv.url,stage:null,stageScore:0,score:0};
+  const visible=applyStageResearchFollowups(work);
+  assert.deepEqual(visible,{...work,stageSupplement:{alternatives:[],researchNote:row.note}});
+  assert.equal(applyStageResearchFollowups(visible),visible);
+  for(const patch of [{id:'other'},{groupIds:[]},{url:''},{stage:{videoId:row.videoId}}]){
+   const different={...work,...patch};
+   assert.equal(applyStageResearchFollowups(different),different);
+  }
+ }
+});
+
 test('CRUSH artwork belongs only to the reviewed P2 and retains its original bytes',()=>{
  const {approvedStagePoster}=load('lib/idol/approved-video-poster.ts');
  const [poster]=require('../data/stage-crush-poster-20261121.json').entries;
@@ -22,6 +46,21 @@ test('CRUSH artwork belongs only to the reviewed P2 and retains its original byt
   assert.notEqual(approvedStagePoster(poster.workId,variant)?.src,poster.src);
  }
  assert.equal(approvedStagePoster('recOther',stage),null);
+});
+
+test('QWER artwork retains the reviewed 14-second frame for only video one',()=>{
+ const {approvedStagePoster}=load('lib/idol/approved-video-poster.ts');
+ const [frame]=require('../data/stage-qwer-poster-20261121.json').entries;
+ const stage=require('../data/stage-videos.json')[frame.workId];
+ const image=fs.readFileSync(path.join('public',frame.src));
+ assert.equal(image.length,frame.byteLength);
+ assert.equal(createHash('sha256').update(image).digest('hex'),frame.sha256);
+ assert.equal(frame.sourceKey,stage.scoreBinding.sourceKey);
+ assert.equal(frame.frameSeconds,14);
+ assert.deepEqual(approvedStagePoster(frame.workId,stage),{
+  src:frame.src,label:frame.label,fit:'contain',intrinsicSize:{width:1920,height:1080},
+ });
+ assert.equal(approvedStagePoster(frame.workId,{...stage,xMedia:{videoIndex:2}}),null);
 });
 
 test('owner preflight targets use the migration primary key; journal remains complete',()=>{

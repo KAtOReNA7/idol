@@ -34,7 +34,13 @@ test('the adopted QWER video uses fresh real protection, preserves every prior s
  assert.deepEqual(stage,receipt.stageVideos.afterRow);assert.equal(source.stageSourceKey(stage),key);assert.ok(source.stageHasValidBinding(stage));
  assert.equal(stage.platform,'x');assert.equal(stage.sourceClass,'reupload');assert.equal(stage.selection.occasion,'music_program');assert.equal(stage.likesScope,'whole_post');assert.equal(stage.likes.precision,'unknown');
  assert.match(stage.verificationNote,/四人参与/);assert.match(stage.verificationNote,/只有一支视频/);assert.match(stage.verificationNote,/未独立全片播放/);assert.match(stage.verificationNote,/完整206条保存日志/);
- assert.equal(load('lib/idol/approved-video-poster.ts').approvedStagePoster(receipt.workId,stage),null);
+ const {approvedStagePoster,approvedVideoPoster}=load('lib/idol/approved-video-poster.ts');
+ const [frame]=require('../data/stage-qwer-poster-20261121.json').entries;
+ assert.equal(approvedStagePoster(receipt.workId,stage)?.src,frame.src);
+ assert.equal(approvedVideoPoster(receipt.workId,stage.videoId,'mv'),null);
+ assert.equal(approvedStagePoster('recOther',stage),null);
+ assert.equal(approvedStagePoster(receipt.workId,{...stage,url:stage.url.replace('/video/1','/video/2'),xMedia:{videoIndex:2}}),null);
+ assert.equal(approvedStagePoster(receipt.workId,{...stage,clip:{startSeconds:20,endSeconds:40}}),null);
  assert.ok(receipt.ownerPreimage.usedAgeSeconds<900);assert.equal(receipt.ownerPreimage.targetStageScoreEmpty,true);assert.equal(receipt.ownerPreimage.journalRows,206);assert.equal(receipt.privateWrites,0);assert.equal(receipt.deployments,0);
  const altered=structuredClone(actual);altered[Object.keys(altered)[0]].title+='unreviewed';assert.throws(()=>beforeQwer('stageVideos',altered));
  const supplemental=require('../data/stages/supplements.json');assert.deepEqual(supplemental.works[receipt.workId].searchReview,receipt.supplementChange.after);assert.match(supplemental.works[receipt.workId].searchReview.summary,/已采用X/);

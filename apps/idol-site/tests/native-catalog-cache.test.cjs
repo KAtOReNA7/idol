@@ -23,4 +23,13 @@ test('source mode, epoch and snapshot transitions never reuse old native values'
 test('missing generation and wrong owner fail closed before cache hit',async()=>{const {read,model:m}=setup();await read('owner');m.hasState=false;await assert.rejects(read('owner'),e=>e.code==='NATIVE_DATA_MISSING');m.hasState=true;await assert.rejects(read('stranger'),e=>e.code==='OWNER_ONLY');assert.equal(m.reads,1);});
 test('TTL is bounded and a new bundle starts with no prior projection',async()=>{const {read,model:m}=setup();await read('owner');m.now+=5*60*1000+1;await read('owner');assert.equal(m.reads,2);const other=setup();await other.read('owner');assert.equal(other.model.reads,1);});
 test('read drift beyond one recovery exits rather than looping or returning a partial catalog',async()=>{const {read,model:m}=setup(),first=deferred(),second=deferred();m.gates.push(first,second);const a=read('owner');await until(()=>m.reads===1);m.generation++;first.resolve();await until(()=>m.reads===2);m.generation++;second.resolve();await assert.rejects(a,e=>e.code==='CATALOG_SUPERSEDED'||e.code==='STORAGE_CHANGING');assert.equal(m.reads,2);});
-test('no shared browser cache, data writes, or private content are added to native cache diagnostics',()=>{const s=fs.readFileSync('lib/idol/native-reader.ts','utf8').split('export async function readNativeDetail')[0];assert.doesNotMatch(s,/localStorage|sessionStorage|INSERT |UPDATE |DELETE /);assert.match(s,/MAX_NATIVE_OWNERS=4/);assert.match(s,/event:'idol_native_catalog',result,elapsedMs/);const r=fs.readFileSync('app/api/catalog/route.ts','utf8');assert.match(r,/readNativeCatalog\(user.userId,force\)/);assert.match(r,/requireUser/);assert.match(fs.readFileSync('lib/idol/http.ts','utf8'),/no-store/);});
+test('no shared browser cache, data writes, or private content are added to native cache diagnostics',()=>{
+ const source=fs.readFileSync('lib/idol/native-reader.ts','utf8').split('export async function readNativeDetail')[0];
+ assert.doesNotMatch(source,/localStorage|sessionStorage|INSERT |UPDATE |DELETE /);
+ assert.match(source,/MAX_NATIVE_OWNERS=4/);
+ assert.match(source,/event:'idol_native_catalog',result,elapsedMs/);
+ const route=fs.readFileSync('app/api/catalog/route.ts','utf8');
+ assert.match(route,/await ownerForRequest\(\)/);
+ assert.match(route,/readNativeCatalog\(user\.userId,\s*force\)/);
+ assert.match(fs.readFileSync('lib/idol/http.ts','utf8'),/'Cache-Control':\s*'private, no-store'/);
+});

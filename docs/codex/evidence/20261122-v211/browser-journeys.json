@@ -1,0 +1,1533 @@
+{
+  "scope": "Codex 内置浏览器在本机 Worker 生产构建与正式站 v211 实测。本地数据来自仓库快照投影出的匿名目录。UDTT 团内 20 项在正式域测量。成员计数含现役和历史成员与团体的组合。",
+  "fixture": "apps/idol-site/tests/fixtures/artist-journey-routes.cjs",
+  "runner": "apps/idol-site/tests/browser/journeys.js",
+  "sourceInventory": "apps/idol-site/tests/browser/journey-server.cjs",
+  "deduplication": "按 slug、kind、id、url 四项去重。作品库内的 MV、舞台、搜索、占位或返回动作使用记录原有的空 URL，并以团、动作和目录 ID 区分。不同配置宽度下重复通过的同一组合只计一次。逐轮和布局表保留实际观测次数。",
+  "coverage": {
+    "groups": 51,
+    "expectedIdentities": 2949,
+    "expectedByKind": {
+      "artist-member": 338,
+      "event": 81,
+      "library": 51,
+      "media": 227,
+      "member": 338,
+      "mv": 605,
+      "placeholder": 9,
+      "release": 388,
+      "search": 50,
+      "section": 335,
+      "stage": 527
+    },
+    "uniqueLocalPassed": 2929,
+    "uniqueLocalPassedByKind": {
+      "artist-member": 333,
+      "event": 78,
+      "library": 51,
+      "media": 225,
+      "member": 338,
+      "mv": 605,
+      "placeholder": 9,
+      "release": 385,
+      "search": 50,
+      "section": 328,
+      "stage": 527
+    },
+    "final50Groups": 50,
+    "final50UniqueExpected": 2919,
+    "final50UniquePassed": 2919,
+    "membersDirectoryPairs": 338,
+    "artistMemberPairs": 338,
+    "specificArtistSectionsAndDetailRoutes": 1031,
+    "productionOnlyPassed": 20,
+    "productionOnlyPassedByKind": {
+      "artist-member": 5,
+      "event": 3,
+      "media": 2,
+      "release": 3,
+      "section": 7
+    },
+    "combinedUniquePassed": 2949,
+    "combinedUniquePassedByKind": {
+      "artist-member": 338,
+      "event": 81,
+      "library": 51,
+      "media": 227,
+      "member": 338,
+      "mv": 605,
+      "placeholder": 9,
+      "release": 388,
+      "search": 50,
+      "section": 335,
+      "stage": 527
+    },
+    "remainingUnverified": 0
+  },
+  "runs": {
+    "initial": {
+      "fileHashSha256": "ce4b015d55ffb8c3b5baa3b1f610962b56fc2fdf47c6dfaa4ea8f7409a753c73",
+      "records": 3265,
+      "successRecords": 3195,
+      "failureRecords": 70,
+      "uniqueSuccessfulExpectedIdentities": 2870,
+      "failureRecordsByKind": {
+        "event": 51,
+        "library": 7,
+        "media": 2,
+        "release": 3,
+        "section": 7
+      },
+      "successRecordsByKind": {
+        "artist-member": 320,
+        "event": 32,
+        "library": 52,
+        "media": 225,
+        "member": 338,
+        "mv": 772,
+        "placeholder": 9,
+        "release": 385,
+        "search": 56,
+        "section": 328,
+        "stage": 678
+      },
+      "failedReasons": {
+        "作品详情身份错误": 2,
+        "未定位到该页面内容": 12,
+        "返回列表丢失当前页": 4,
+        "页面打开超时": 52
+      },
+      "inputLog": "idol-v211-journey.log",
+      "dataFile": "idol-journeys-XvrHPA/rows.ndjson",
+      "configuredWidths": {
+        "390": {
+          "successfulRecords": 1194,
+          "uniqueExpectedIdentities": 1194
+        },
+        "1280": {
+          "successfulRecords": 2001,
+          "uniqueExpectedIdentities": 1856
+        }
+      },
+      "observedFailuresRetriedAndPassed": 53,
+      "earlierDistinctExpectedIdentitiesRecovered": 53
+    },
+    "headingRetest": {
+      "fileHashSha256": "4d0eafa1111e9ca08ce9f5693a5f62888ebf04d065424c80fd839d5ce8b542d4",
+      "records": 1029,
+      "successRecords": 1010,
+      "failureRecords": 19,
+      "uniqueSuccessfulExpectedIdentities": 1010,
+      "failureRecordsByKind": {
+        "event": 18,
+        "section": 1
+      },
+      "successRecordsByKind": {
+        "artist-member": 13,
+        "event": 60,
+        "media": 225,
+        "release": 385,
+        "section": 327
+      },
+      "failedReasons": {
+        "未定位到该页面内容": 19
+      },
+      "inputLog": "idol-v211-journey-final.log",
+      "dataFile": "idol-journeys-a480BL/rows.ndjson",
+      "configuredWidths": {
+        "390": {
+          "successfulRecords": 495,
+          "uniqueExpectedIdentities": 495
+        },
+        "1280": {
+          "successfulRecords": 515,
+          "uniqueExpectedIdentities": 515
+        }
+      },
+      "observedFailuresRetriedAndPassed": 19,
+      "earlierDistinctExpectedIdentitiesRecovered": 19
+    },
+    "final50": {
+      "fileHashSha256": "713921c8a1c250ebf9fc1c75ca66144d20dae13f9f3474aee162e080a5b8aebd",
+      "records": 3035,
+      "successRecords": 3035,
+      "failureRecords": 0,
+      "uniqueSuccessfulExpectedIdentities": 2919,
+      "failureRecordsByKind": {},
+      "successRecordsByKind": {
+        "artist-member": 346,
+        "event": 102,
+        "library": 50,
+        "media": 254,
+        "member": 333,
+        "mv": 604,
+        "placeholder": 8,
+        "release": 409,
+        "search": 49,
+        "section": 354,
+        "stage": 526
+      },
+      "failedReasons": {},
+      "inputLog": "idol-v211-native-retest.log",
+      "dataFile": "idol-journeys-p6Aoai/rows.ndjson",
+      "configuredWidths": {
+        "390": {
+          "successfulRecords": 1460,
+          "uniqueExpectedIdentities": 1397
+        },
+        "1280": {
+          "successfulRecords": 1575,
+          "uniqueExpectedIdentities": 1545
+        }
+      },
+      "observedFailuresRetriedAndPassed": 0,
+      "earlierDistinctExpectedIdentitiesRecovered": 0
+    }
+  },
+  "actionEvidence": {
+    "workLibrary": "通过实际团体筛选进入作品库，检查无结果搜索与清空恢复，逐条点击作品并核对详情标题与 work ID。切到舞台后确认来源已展开，再切回 MV，检测返回列表是否保留当前页。可分页时点击下一页，占位条目检查返回作品库。",
+    "artistPages": "可见的站内链接优先点击，其余直接打开指定 URL。团内成员和独立成员校验 member ID，其他实体匹配目录对应标题或事件行。页面有可见的原生详情控件时展开后收回。",
+    "final50NavigationAttempts": {
+      "deep-link": 1609,
+      "page-link": 189
+    },
+    "final50IdentityChecks": {
+      "event-id": 63,
+      "heading": 1056,
+      "member-id": 679
+    },
+    "final50DisclosuresOpenedAndClosed": 628,
+    "final50MvClickRows": 604,
+    "final50MvRowsReportingMountedIframes": 0,
+    "scopeLimit": "此轮未启动外部视频，也未修改、保存个人记录。实际播放、分辨率与登录菜单见同目录 playback-sources.json。"
+  },
+  "layout": {
+    "unit": "CSS px",
+    "measurement": "frame.style.width 为 390 或 1280；clientWidth 是 iframe 内文档实测可用宽度。详情首读若出现横向溢出则等待 220ms 复测。作品库交互没有 clientWidth 字段。各项和宽度按实际记录汇总，单项并非全部在两个宽度复测。",
+    "final50Observations": {
+      "390": {
+        "measurements": 900,
+        "documentClientWidth": {
+          "375": 897,
+          "390": 3
+        },
+        "initialOverflowPx": {
+          "0": 899,
+          "15": 1
+        },
+        "settledOverflowPx": {
+          "0": 900
+        }
+      },
+      "1280": {
+        "measurements": 898,
+        "documentClientWidth": {
+          "1265": 896,
+          "1280": 2
+        },
+        "initialOverflowPx": {
+          "0": 898
+        },
+        "settledOverflowPx": {
+          "0": 898
+        }
+      }
+    },
+    "settledPositiveOverflowRows": [],
+    "transientOverflowRows": [
+      {
+        "slug": "unis",
+        "kind": "release",
+        "id": "unis-uni-sparkle-japan",
+        "url": "/artists/unis?section=works&release=unis-uni-sparkle-japan",
+        "frameWidth": 390,
+        "documentClientWidth": 375,
+        "initialOverflowPx": 15,
+        "settledOverflowPx": 0
+      }
+    ],
+    "earlierRunsReportedOverflow": {
+      "initial": {
+        "rowsWithSettledMeasurement": 1628,
+        "settledPositiveCount": 0
+      },
+      "headingRetest": {
+        "rowsWithSettledMeasurement": 1010,
+        "settledPositiveCount": 3
+      }
+    }
+  },
+  "retries": {
+    "initialAndSecondPassFailures": "首轮 70 条失败包括库返回、详情或时间轴定位；第二轮 19 条未定位的事件与发行栏目随后重测。相同查询参数的时间轴锚点改用同页定位，ifeye 发行页在标题之外匹配当前选中标签，izna 原生事件通过宿主使用的 data-event-key 定位。",
+    "removedArtificialGenblueAnchors": [
+      {
+        "slug": "genblue",
+        "kind": "event",
+        "id": "e-genblue-swing-dance-single",
+        "url": "/artists/genblue?section=updates#e-genblue-swing-dance-single"
+      },
+      {
+        "slug": "genblue",
+        "kind": "event",
+        "id": "e-genblue-oh-chinese-single",
+        "url": "/artists/genblue?section=updates#e-genblue-oh-chinese-single"
+      }
+    ],
+    "removedAnchorReason": "GENBLUE 初始时间轴含这两条记录，但客户端路由不接收这些 fragment。产品时间轴依然展示它们；这两个测试地址不在最终目录。",
+    "final50FailureRows": 0,
+    "expectedIdentitiesStillWithoutSuccessfulLocalReceipt": 20,
+    "remainingFailedInitialUdttArtistRoutes": 15,
+    "remainingUntriedNativeUdttMembers": 5
+  },
+  "udtt": {
+    "verifiedLocalRowsByKind": {
+      "library": 1,
+      "member": 5,
+      "mv": 1,
+      "placeholder": 1,
+      "search": 1,
+      "stage": 1
+    },
+    "priorResult": "首轮通过 1 个 MV、1 个舞台、1 个占位、作品库返回、搜索恢复和 5 个独立成员页。7 个栏目、3 个发行、2 个媒体、3 个事件在本地首轮尚未定位；5 个团内成员尚无本地正式验收回执。",
+    "production": {
+      "site": "https://idol-lens-private.wuke40758.chatgpt.site",
+      "version": "v211",
+      "method": "Codex 内置浏览器打开相应团内路径，核对页面内容命中的标题或成员姓名。",
+      "checked": [
+        {
+          "slug": "udtt",
+          "kind": "artist-member",
+          "id": "recvxAPQCF1lfe",
+          "url": "/artists/udtt#/udtt/member/recvxAPQCF1lfe",
+          "matchedText": "权艺珍"
+        },
+        {
+          "slug": "udtt",
+          "kind": "artist-member",
+          "id": "recvxAPQCF66Sl",
+          "url": "/artists/udtt#/udtt/member/recvxAPQCF66Sl",
+          "matchedText": "陆雨婷"
+        },
+        {
+          "slug": "udtt",
+          "kind": "artist-member",
+          "id": "recvxAPQCFRlmM",
+          "url": "/artists/udtt#/udtt/member/recvxAPQCFRlmM",
+          "matchedText": "韩彩熙"
+        },
+        {
+          "slug": "udtt",
+          "kind": "artist-member",
+          "id": "recvxAPQCFnv3p",
+          "url": "/artists/udtt#/udtt/member/recvxAPQCFnv3p",
+          "matchedText": "具韩娜"
+        },
+        {
+          "slug": "udtt",
+          "kind": "artist-member",
+          "id": "recvxAPQCFt0cc",
+          "url": "/artists/udtt#/udtt/member/recvxAPQCFt0cc",
+          "matchedText": "新井理沙子"
+        },
+        {
+          "slug": "udtt",
+          "kind": "event",
+          "id": "e-udtt-retry-prerelease-candidate",
+          "url": "/artists/udtt?section=updates&event=e-udtt-retry-prerelease-candidate",
+          "matchedText": "RETRY"
+        },
+        {
+          "slug": "udtt",
+          "kind": "event",
+          "id": "e-udtt-school-rush-debut-candidate",
+          "url": "/artists/udtt?section=updates&event=e-udtt-school-rush-debut-candidate",
+          "matchedText": "School Rush"
+        },
+        {
+          "slug": "udtt",
+          "kind": "event",
+          "id": "e-udtt-viper-digital-release",
+          "url": "/artists/udtt?section=updates&event=e-udtt-viper-digital-release",
+          "matchedText": "VIPER"
+        },
+        {
+          "slug": "udtt",
+          "kind": "media",
+          "id": "rec28ldfRTrPxZ",
+          "url": "/artists/udtt#/udtt/work/rec28ldfRTrPxZ",
+          "matchedText": "REALLY REALLY"
+        },
+        {
+          "slug": "udtt",
+          "kind": "media",
+          "id": "stage:rec28ldfRTrPxZ:nZa0Th64v00",
+          "url": "/artists/udtt#/udtt/work/stage%3Arec28ldfRTrPxZ%3AnZa0Th64v00",
+          "matchedText": "REALLY REALLY"
+        },
+        {
+          "slug": "udtt",
+          "kind": "release",
+          "id": "catalog:udtt:retry",
+          "url": "/artists/udtt#/udtt/work/catalog%3Audtt%3Aretry",
+          "matchedText": "RETRY"
+        },
+        {
+          "slug": "udtt",
+          "kind": "release",
+          "id": "catalog:udtt:school-rush",
+          "url": "/artists/udtt#/udtt/work/catalog%3Audtt%3Aschool-rush",
+          "matchedText": "School Rush"
+        },
+        {
+          "slug": "udtt",
+          "kind": "release",
+          "id": "catalog:udtt:viper",
+          "url": "/artists/udtt#/udtt/work/catalog%3Audtt%3Aviper",
+          "matchedText": "VIPER"
+        },
+        {
+          "slug": "udtt",
+          "kind": "section",
+          "id": "/artists/udtt",
+          "url": "/artists/udtt",
+          "matchedText": "UDTT"
+        },
+        {
+          "slug": "udtt",
+          "kind": "section",
+          "id": "/artists/udtt?section=members",
+          "url": "/artists/udtt?section=members",
+          "matchedText": "成员"
+        },
+        {
+          "slug": "udtt",
+          "kind": "section",
+          "id": "/artists/udtt?section=records",
+          "url": "/artists/udtt?section=records",
+          "matchedText": "VIPER"
+        },
+        {
+          "slug": "udtt",
+          "kind": "section",
+          "id": "/artists/udtt?section=updates",
+          "url": "/artists/udtt?section=updates",
+          "matchedText": "时间线"
+        },
+        {
+          "slug": "udtt",
+          "kind": "section",
+          "id": "/artists/udtt?section=works",
+          "url": "/artists/udtt?section=works",
+          "matchedText": "发行与影像"
+        },
+        {
+          "slug": "udtt",
+          "kind": "section",
+          "id": "/artists/udtt?section=works&format=mv",
+          "url": "/artists/udtt?section=works&format=mv",
+          "matchedText": "发行与影像"
+        },
+        {
+          "slug": "udtt",
+          "kind": "section",
+          "id": "/artists/udtt?section=works&format=stage",
+          "url": "/artists/udtt?section=works&format=stage",
+          "matchedText": "发行与影像"
+        }
+      ]
+    }
+  },
+  "perGroup": [
+    {
+      "slug": "meovv",
+      "expected": 38,
+      "uniqueLocalPassed": 38,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "library": 1,
+        "member": 5,
+        "mv": 10,
+        "search": 1,
+        "section": 7,
+        "stage": 9
+      },
+      "final50UniquePassed": 38,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 38
+    },
+    {
+      "slug": "izna",
+      "expected": 73,
+      "uniqueLocalPassed": 73,
+      "uniquePassedByKind": {
+        "artist-member": 7,
+        "event": 10,
+        "library": 1,
+        "media": 15,
+        "member": 7,
+        "mv": 9,
+        "release": 8,
+        "search": 1,
+        "section": 7,
+        "stage": 8
+      },
+      "final50UniquePassed": 73,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 73
+    },
+    {
+      "slug": "triples",
+      "expected": 143,
+      "uniqueLocalPassed": 143,
+      "uniquePassedByKind": {
+        "artist-member": 24,
+        "library": 1,
+        "media": 18,
+        "member": 24,
+        "mv": 25,
+        "release": 22,
+        "search": 1,
+        "section": 7,
+        "stage": 21
+      },
+      "final50UniquePassed": 143,
+      "configuredWidthsWithSuccessfulRecords": [
+        1280
+      ],
+      "combinedUniquePassed": 143
+    },
+    {
+      "slug": "madein",
+      "expected": 42,
+      "uniqueLocalPassed": 42,
+      "uniquePassedByKind": {
+        "artist-member": 7,
+        "library": 1,
+        "member": 7,
+        "mv": 8,
+        "release": 4,
+        "search": 1,
+        "section": 7,
+        "stage": 7
+      },
+      "final50UniquePassed": 42,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 42
+    },
+    {
+      "slug": "ifeye",
+      "expected": 45,
+      "uniqueLocalPassed": 45,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "event": 7,
+        "library": 1,
+        "media": 7,
+        "member": 6,
+        "mv": 4,
+        "release": 3,
+        "search": 1,
+        "section": 7,
+        "stage": 3
+      },
+      "final50UniquePassed": 45,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 45
+    },
+    {
+      "slug": "genblue",
+      "expected": 49,
+      "uniqueLocalPassed": 49,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "event": 5,
+        "library": 1,
+        "media": 8,
+        "member": 6,
+        "mv": 4,
+        "release": 8,
+        "search": 1,
+        "section": 6,
+        "stage": 4
+      },
+      "final50UniquePassed": 49,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 49
+    },
+    {
+      "slug": "rescene",
+      "expected": 55,
+      "uniqueLocalPassed": 55,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "library": 1,
+        "media": 10,
+        "member": 5,
+        "mv": 10,
+        "release": 6,
+        "search": 1,
+        "section": 7,
+        "stage": 10
+      },
+      "final50UniquePassed": 55,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 55
+    },
+    {
+      "slug": "unis",
+      "expected": 45,
+      "uniqueLocalPassed": 45,
+      "uniquePassedByKind": {
+        "artist-member": 8,
+        "library": 1,
+        "member": 8,
+        "mv": 6,
+        "release": 10,
+        "search": 1,
+        "section": 6,
+        "stage": 5
+      },
+      "final50UniquePassed": 45,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 45
+    },
+    {
+      "slug": "badvillain",
+      "expected": 43,
+      "uniqueLocalPassed": 43,
+      "uniquePassedByKind": {
+        "artist-member": 7,
+        "library": 1,
+        "media": 6,
+        "member": 7,
+        "mv": 6,
+        "release": 5,
+        "search": 1,
+        "section": 4,
+        "stage": 6
+      },
+      "final50UniquePassed": 43,
+      "configuredWidthsWithSuccessfulRecords": [
+        1280
+      ],
+      "combinedUniquePassed": 43
+    },
+    {
+      "slug": "qwer",
+      "expected": 30,
+      "uniqueLocalPassed": 30,
+      "uniquePassedByKind": {
+        "artist-member": 4,
+        "library": 1,
+        "member": 4,
+        "mv": 7,
+        "release": 1,
+        "search": 1,
+        "section": 7,
+        "stage": 5
+      },
+      "final50UniquePassed": 30,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 30
+    },
+    {
+      "slug": "vvup",
+      "expected": 39,
+      "uniqueLocalPassed": 39,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "library": 1,
+        "member": 5,
+        "mv": 7,
+        "release": 7,
+        "search": 1,
+        "section": 7,
+        "stage": 6
+      },
+      "final50UniquePassed": 39,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 39
+    },
+    {
+      "slug": "youngposse",
+      "expected": 91,
+      "uniqueLocalPassed": 91,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "event": 14,
+        "library": 1,
+        "media": 22,
+        "member": 5,
+        "mv": 14,
+        "release": 15,
+        "search": 1,
+        "section": 6,
+        "stage": 8
+      },
+      "final50UniquePassed": 91,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 91
+    },
+    {
+      "slug": "bewave",
+      "expected": 38,
+      "uniqueLocalPassed": 38,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "event": 5,
+        "library": 1,
+        "media": 5,
+        "member": 6,
+        "mv": 2,
+        "release": 4,
+        "search": 1,
+        "section": 6,
+        "stage": 2
+      },
+      "final50UniquePassed": 38,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 38
+    },
+    {
+      "slug": "candyshop",
+      "expected": 41,
+      "uniqueLocalPassed": 41,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "event": 7,
+        "library": 1,
+        "media": 7,
+        "member": 5,
+        "mv": 3,
+        "release": 3,
+        "search": 1,
+        "section": 6,
+        "stage": 3
+      },
+      "final50UniquePassed": 41,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 41
+    },
+    {
+      "slug": "oddyouth",
+      "expected": 44,
+      "uniqueLocalPassed": 44,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "event": 5,
+        "library": 1,
+        "media": 11,
+        "member": 5,
+        "mv": 3,
+        "release": 5,
+        "search": 1,
+        "section": 6,
+        "stage": 2
+      },
+      "final50UniquePassed": 44,
+      "configuredWidthsWithSuccessfulRecords": [
+        1280
+      ],
+      "combinedUniquePassed": 44
+    },
+    {
+      "slug": "adya",
+      "expected": 40,
+      "uniqueLocalPassed": 40,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "event": 5,
+        "library": 1,
+        "media": 6,
+        "member": 5,
+        "mv": 3,
+        "release": 5,
+        "search": 1,
+        "section": 6,
+        "stage": 3
+      },
+      "final50UniquePassed": 40,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 40
+    },
+    {
+      "slug": "geenius",
+      "expected": 41,
+      "uniqueLocalPassed": 41,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "event": 5,
+        "library": 1,
+        "media": 7,
+        "member": 5,
+        "mv": 6,
+        "placeholder": 1,
+        "release": 3,
+        "search": 1,
+        "section": 6,
+        "stage": 1
+      },
+      "final50UniquePassed": 41,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 41
+    },
+    {
+      "slug": "tracer",
+      "expected": 25,
+      "uniqueLocalPassed": 25,
+      "uniquePassedByKind": {
+        "artist-member": 4,
+        "event": 3,
+        "library": 1,
+        "media": 2,
+        "member": 4,
+        "mv": 1,
+        "placeholder": 1,
+        "release": 1,
+        "search": 1,
+        "section": 6,
+        "stage": 1
+      },
+      "final50UniquePassed": 25,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 25
+    },
+    {
+      "slug": "witchx",
+      "expected": 33,
+      "uniqueLocalPassed": 33,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "event": 6,
+        "library": 1,
+        "media": 6,
+        "member": 5,
+        "placeholder": 1,
+        "release": 3,
+        "section": 6
+      },
+      "final50UniquePassed": 33,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 33
+    },
+    {
+      "slug": "spia",
+      "expected": 32,
+      "uniqueLocalPassed": 32,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "event": 5,
+        "library": 1,
+        "media": 4,
+        "member": 5,
+        "mv": 1,
+        "placeholder": 1,
+        "release": 2,
+        "search": 1,
+        "section": 6,
+        "stage": 1
+      },
+      "final50UniquePassed": 32,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 32
+    },
+    {
+      "slug": "udtt",
+      "expected": 30,
+      "uniqueLocalPassed": 10,
+      "uniquePassedByKind": {
+        "library": 1,
+        "member": 5,
+        "mv": 1,
+        "placeholder": 1,
+        "search": 1,
+        "stage": 1
+      },
+      "final50UniquePassed": 0,
+      "configuredWidthsWithSuccessfulRecords": [
+        1280
+      ],
+      "pendingProduction": 20,
+      "combinedUniquePassed": 30
+    },
+    {
+      "slug": "vcha",
+      "expected": 42,
+      "uniqueLocalPassed": 42,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "library": 1,
+        "media": 8,
+        "member": 6,
+        "mv": 4,
+        "placeholder": 1,
+        "release": 4,
+        "search": 1,
+        "section": 7,
+        "stage": 4
+      },
+      "final50UniquePassed": 42,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 42
+    },
+    {
+      "slug": "hitgs",
+      "expected": 53,
+      "uniqueLocalPassed": 53,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "library": 1,
+        "media": 13,
+        "member": 5,
+        "mv": 8,
+        "placeholder": 1,
+        "release": 7,
+        "search": 1,
+        "section": 7,
+        "stage": 5
+      },
+      "final50UniquePassed": 53,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 53
+    },
+    {
+      "slug": "atheart",
+      "expected": 63,
+      "uniqueLocalPassed": 63,
+      "uniquePassedByKind": {
+        "artist-member": 7,
+        "event": 1,
+        "library": 1,
+        "media": 25,
+        "member": 7,
+        "mv": 2,
+        "placeholder": 1,
+        "release": 9,
+        "search": 1,
+        "section": 7,
+        "stage": 2
+      },
+      "final50UniquePassed": 63,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 63
+    },
+    {
+      "slug": "idle",
+      "expected": 116,
+      "uniqueLocalPassed": 116,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "library": 1,
+        "media": 1,
+        "member": 6,
+        "mv": 28,
+        "release": 41,
+        "search": 1,
+        "section": 7,
+        "stage": 25
+      },
+      "final50UniquePassed": 116,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 116
+    },
+    {
+      "slug": "izone",
+      "expected": 69,
+      "uniqueLocalPassed": 69,
+      "uniquePassedByKind": {
+        "artist-member": 12,
+        "library": 1,
+        "member": 12,
+        "mv": 10,
+        "release": 18,
+        "search": 1,
+        "section": 7,
+        "stage": 8
+      },
+      "final50UniquePassed": 69,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 69
+    },
+    {
+      "slug": "fromis9",
+      "expected": 85,
+      "uniqueLocalPassed": 85,
+      "uniquePassedByKind": {
+        "artist-member": 9,
+        "library": 1,
+        "member": 9,
+        "mv": 16,
+        "release": 27,
+        "search": 1,
+        "section": 7,
+        "stage": 15
+      },
+      "final50UniquePassed": 85,
+      "configuredWidthsWithSuccessfulRecords": [
+        1280
+      ],
+      "combinedUniquePassed": 85
+    },
+    {
+      "slug": "loona",
+      "expected": 52,
+      "uniqueLocalPassed": 52,
+      "uniquePassedByKind": {
+        "artist-member": 12,
+        "library": 1,
+        "member": 12,
+        "mv": 10,
+        "search": 1,
+        "section": 7,
+        "stage": 9
+      },
+      "final50UniquePassed": 52,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 52
+    },
+    {
+      "slug": "everglow",
+      "expected": 57,
+      "uniqueLocalPassed": 57,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "library": 1,
+        "member": 6,
+        "mv": 10,
+        "release": 16,
+        "search": 1,
+        "section": 7,
+        "stage": 10
+      },
+      "final50UniquePassed": 57,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 57
+    },
+    {
+      "slug": "rocketpunch",
+      "expected": 57,
+      "uniqueLocalPassed": 57,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "library": 1,
+        "member": 6,
+        "mv": 11,
+        "release": 15,
+        "search": 1,
+        "section": 7,
+        "stage": 10
+      },
+      "final50UniquePassed": 57,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 57
+    },
+    {
+      "slug": "cherrybullet",
+      "expected": 52,
+      "uniqueLocalPassed": 52,
+      "uniquePassedByKind": {
+        "artist-member": 10,
+        "library": 1,
+        "member": 10,
+        "mv": 7,
+        "release": 9,
+        "search": 1,
+        "section": 7,
+        "stage": 7
+      },
+      "final50UniquePassed": 52,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 52
+    },
+    {
+      "slug": "weeekly",
+      "expected": 70,
+      "uniqueLocalPassed": 70,
+      "uniquePassedByKind": {
+        "artist-member": 7,
+        "library": 1,
+        "member": 7,
+        "mv": 14,
+        "release": 22,
+        "search": 1,
+        "section": 7,
+        "stage": 11
+      },
+      "final50UniquePassed": 70,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 70
+    },
+    {
+      "slug": "wooah",
+      "expected": 77,
+      "uniqueLocalPassed": 77,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "library": 1,
+        "media": 24,
+        "member": 6,
+        "mv": 14,
+        "release": 8,
+        "search": 1,
+        "section": 7,
+        "stage": 10
+      },
+      "final50UniquePassed": 77,
+      "configuredWidthsWithSuccessfulRecords": [
+        1280
+      ],
+      "combinedUniquePassed": 77
+    },
+    {
+      "slug": "purplekiss",
+      "expected": 74,
+      "uniqueLocalPassed": 74,
+      "uniquePassedByKind": {
+        "artist-member": 7,
+        "library": 1,
+        "media": 13,
+        "member": 7,
+        "mv": 13,
+        "release": 13,
+        "search": 1,
+        "section": 7,
+        "stage": 12
+      },
+      "final50UniquePassed": 74,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 74
+    },
+    {
+      "slug": "billlie",
+      "expected": 64,
+      "uniqueLocalPassed": 64,
+      "uniquePassedByKind": {
+        "artist-member": 7,
+        "library": 1,
+        "member": 7,
+        "mv": 13,
+        "release": 15,
+        "search": 1,
+        "section": 7,
+        "stage": 13
+      },
+      "final50UniquePassed": 64,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 64
+    },
+    {
+      "slug": "kep1er",
+      "expected": 57,
+      "uniqueLocalPassed": 57,
+      "uniquePassedByKind": {
+        "artist-member": 9,
+        "library": 1,
+        "member": 9,
+        "mv": 16,
+        "search": 1,
+        "section": 6,
+        "stage": 15
+      },
+      "final50UniquePassed": 57,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 57
+    },
+    {
+      "slug": "newjeans",
+      "expected": 74,
+      "uniqueLocalPassed": 74,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "library": 1,
+        "media": 1,
+        "member": 5,
+        "mv": 25,
+        "release": 7,
+        "search": 1,
+        "section": 6,
+        "stage": 23
+      },
+      "final50UniquePassed": 74,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 74
+    },
+    {
+      "slug": "babymonster",
+      "expected": 56,
+      "uniqueLocalPassed": 56,
+      "uniquePassedByKind": {
+        "artist-member": 7,
+        "library": 1,
+        "member": 7,
+        "mv": 19,
+        "search": 1,
+        "section": 5,
+        "stage": 16
+      },
+      "final50UniquePassed": 56,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 56
+    },
+    {
+      "slug": "illit",
+      "expected": 68,
+      "uniqueLocalPassed": 68,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "library": 1,
+        "member": 5,
+        "mv": 21,
+        "release": 11,
+        "search": 1,
+        "section": 7,
+        "stage": 17
+      },
+      "final50UniquePassed": 68,
+      "configuredWidthsWithSuccessfulRecords": [
+        1280
+      ],
+      "combinedUniquePassed": 68
+    },
+    {
+      "slug": "xg",
+      "expected": 64,
+      "uniqueLocalPassed": 64,
+      "uniquePassedByKind": {
+        "artist-member": 7,
+        "library": 1,
+        "member": 7,
+        "mv": 23,
+        "search": 1,
+        "section": 5,
+        "stage": 20
+      },
+      "final50UniquePassed": 64,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 64
+    },
+    {
+      "slug": "aespa",
+      "expected": 83,
+      "uniqueLocalPassed": 83,
+      "uniquePassedByKind": {
+        "artist-member": 4,
+        "library": 1,
+        "member": 4,
+        "mv": 36,
+        "search": 1,
+        "section": 5,
+        "stage": 32
+      },
+      "final50UniquePassed": 83,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 83
+    },
+    {
+      "slug": "ive",
+      "expected": 94,
+      "uniqueLocalPassed": 94,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "library": 1,
+        "media": 6,
+        "member": 6,
+        "mv": 25,
+        "release": 20,
+        "search": 1,
+        "section": 7,
+        "stage": 22
+      },
+      "final50UniquePassed": 94,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 94
+    },
+    {
+      "slug": "kissoflife",
+      "expected": 66,
+      "uniqueLocalPassed": 66,
+      "uniquePassedByKind": {
+        "artist-member": 4,
+        "library": 1,
+        "member": 4,
+        "mv": 25,
+        "search": 1,
+        "section": 7,
+        "stage": 24
+      },
+      "final50UniquePassed": 66,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 66
+    },
+    {
+      "slug": "stayc",
+      "expected": 52,
+      "uniqueLocalPassed": 52,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "library": 1,
+        "member": 6,
+        "mv": 17,
+        "search": 1,
+        "section": 7,
+        "stage": 14
+      },
+      "final50UniquePassed": 52,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 52
+    },
+    {
+      "slug": "nmixx",
+      "expected": 59,
+      "uniqueLocalPassed": 59,
+      "uniquePassedByKind": {
+        "artist-member": 7,
+        "library": 1,
+        "member": 7,
+        "mv": 20,
+        "search": 1,
+        "section": 7,
+        "stage": 16
+      },
+      "final50UniquePassed": 59,
+      "configuredWidthsWithSuccessfulRecords": [
+        1280
+      ],
+      "combinedUniquePassed": 59
+    },
+    {
+      "slug": "hearts2hearts",
+      "expected": 53,
+      "uniqueLocalPassed": 53,
+      "uniquePassedByKind": {
+        "artist-member": 8,
+        "library": 1,
+        "member": 8,
+        "mv": 13,
+        "release": 3,
+        "search": 1,
+        "section": 7,
+        "stage": 12
+      },
+      "final50UniquePassed": 53,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 53
+    },
+    {
+      "slug": "kiiikiii",
+      "expected": 42,
+      "uniqueLocalPassed": 42,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "library": 1,
+        "member": 5,
+        "mv": 9,
+        "release": 6,
+        "search": 1,
+        "section": 7,
+        "stage": 8
+      },
+      "final50UniquePassed": 42,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 42
+    },
+    {
+      "slug": "itzy",
+      "expected": 80,
+      "uniqueLocalPassed": 80,
+      "uniquePassedByKind": {
+        "artist-member": 5,
+        "library": 1,
+        "member": 5,
+        "mv": 32,
+        "search": 1,
+        "section": 7,
+        "stage": 29
+      },
+      "final50UniquePassed": 80,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 80
+    },
+    {
+      "slug": "lesserafim",
+      "expected": 60,
+      "uniqueLocalPassed": 60,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "library": 1,
+        "member": 6,
+        "mv": 20,
+        "search": 1,
+        "section": 7,
+        "stage": 19
+      },
+      "final50UniquePassed": 60,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 60
+    },
+    {
+      "slug": "saymyname",
+      "expected": 46,
+      "uniqueLocalPassed": 46,
+      "uniquePassedByKind": {
+        "artist-member": 8,
+        "library": 1,
+        "member": 8,
+        "mv": 6,
+        "release": 9,
+        "search": 1,
+        "section": 7,
+        "stage": 6
+      },
+      "final50UniquePassed": 46,
+      "configuredWidthsWithSuccessfulRecords": [
+        390,
+        1280
+      ],
+      "combinedUniquePassed": 46
+    },
+    {
+      "slug": "katseye",
+      "expected": 47,
+      "uniqueLocalPassed": 47,
+      "uniquePassedByKind": {
+        "artist-member": 6,
+        "library": 1,
+        "member": 6,
+        "mv": 8,
+        "placeholder": 1,
+        "release": 10,
+        "search": 1,
+        "section": 7,
+        "stage": 7
+      },
+      "final50UniquePassed": 47,
+      "configuredWidthsWithSuccessfulRecords": [
+        1280
+      ],
+      "combinedUniquePassed": 47
+    }
+  ]
+}

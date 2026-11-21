@@ -4,9 +4,9 @@
 
 ## 当前上线边界
 
-正式v203尚无`idol_stage_owner_preflight`。本地实现待后续获准发布；不为启用此功能自动部署，不冒称目前已经能在线自动取数。CRUSH与Gnarly已采用，不重复核对或导入。
+2026 年 11 月 21 日，包含 `idol_stage_owner_preflight` 实现的 v204 已发布。现有正式站启用了 MCP。实名连接的 `idol_storage_status` 已读通，匿名请求 MCP 列表与核对操作均返回 401。本次会话的连接器工具目录仍未提供新增的核对操作，真实 owner 批量读取尚待一次有该工具的已授权会话验证。CRUSH 与 Gnarly 已采用，沿用原绑定。[正式发布](evidence/20261121-release-periods/publication.json) · [线上工具验证范围](evidence/20261121-release-periods/preflight.json)
 
-## 新接口上线后的执行顺序
+## 连接器提供新工具后的执行顺序
 
 1. 完成候选研究、人工反馈整合、来源身份和版本核验、页面实现与测试。将待采用目标集中成一个既有`idol.stage-evidence.v1`批次；不得先取快照再做长时间开发。
 2. 在已连接的私人女团手帐插件中调用`idol_stage_owner_preflight({workIds:[...]})`，一次1–5个精确作品ID。它通过原owner鉴权读取实时状态；不需要用户打开Chrome或下载文件。

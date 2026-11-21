@@ -1,4 +1,9 @@
 {
+  "productionBrowserRetry": {
+    "initialPassed": 21,
+    "freshPageRetries": 63,
+    "finalFailed": 0
+  },
   "v203-live-pages-local-archived-bytes": {
     "routes": 4,
     "cards": 33,
@@ -13,6 +18,13 @@
     "lightboxes": 176,
     "actionableConsoleMessages": 0
   },
+  "production-network": {
+    "routes": 84,
+    "cards": 532,
+    "failed": 0,
+    "lightboxes": 0,
+    "actionableConsoleMessages": 0
+  },
   "responsivePortraits": {
     "groups": 21,
     "comparisons": 84,
@@ -25,5 +37,32 @@
     "horizontalOverflows": 0,
     "before": "same new data and original v203 card layout",
     "after": "release CSS"
+  },
+  "productionAssets": {
+    "origin": "https://idol-lens-private.wuke40758.chatgpt.site",
+    "timeUtc": "2026-11-21T13:46:04.648716+00:00",
+    "total": 570,
+    "kinds": {
+      "card": 294,
+      "history-idle": 1,
+      "history-kep1er": 1,
+      "history-loona": 1,
+      "history-xg": 1,
+      "original-head": 268,
+      "release-original-idle": 1,
+      "release-original-kep1er": 1,
+      "release-original-loona": 1,
+      "release-original-xg": 1
+    },
+    "failed": 0
+  },
+  "productionMobileLightboxes": {
+    "pages": 4,
+    "dialogs": 8,
+    "escapeFocusRestored": 8,
+    "viewport": {
+      "width": 390,
+      "height": 900
+    }
   }
 }

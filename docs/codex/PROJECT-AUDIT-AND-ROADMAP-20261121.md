@@ -1,8 +1,18 @@
 # Idol Lens 全项目复核与开发路线图
 
-2026-11-21 · 正式 v203 · 已验收的 GitHub 主线 `0e77838a` · 开发分支 `codex/project-optimization-20261121`
+2026-11-21 · 正式 v204 · GitHub 正式版标签 `site/v204` · 已验收主线 `0e77838a` · 开发分支 `codex/project-optimization-20261121`
 
 ## 当前进度
+
+v204 已在原域名发布。IVE 两个发行时期页、五团手机目录、18 份团体或发行标识、全部已识别的第三方 MV 默认截图替换，以及此前已验的 NewJeans、ADYA、W!TCHX 等改动已进入正式站。正式公共目录现有 614 首作品和 527 个舞台。手机作品库首个歌名上移 230 像素，三个独立浏览上下文的 JS/CSS 传输中位数下降 51.78%。十项节目定向核验及两张指定封面也已完成。[发布与前后对照](worklogs/20261121-release-periods.md) · [正式站](https://idol-lens-private.wuke40758.chatgpt.site)
+
+## v204 后的接续顺序
+
+1. 在连接器列出新增工具后，用真正的 owner 会话验证一次只读批量核对。正式站注册与实名存储读取已有记录，真实批次须依照时效和既有保存日志核验。[核对协议](STAGE-OWNER-PREFLIGHT.md)
+2. 按文件和失败用例继续核历史套件。Windows 现余 179 项，Linux 175 项。优先复现会影响观看、评分、成员导航的用例，其次处理独立旧设计包及冻结资料的年代断言。[两平台比较](evidence/20261121-release-periods/tests.json)
+3. 已审的 81 项收到新证据时重开，19 项沿用取消必填的决定。优先考虑能将跨期认人图升级成本作照片的具名官图，新增图片继续保留人物、作品与原出处。新舞台按既有 1–5 项批次执行。[素材逐项记录](evidence/20261121-mv-release-portraits/review.md) · [节目研究](worklogs/20261121-broadcast-research.md)
+
+## 上一开发检查点
 
 最新已测应用 `f81dbefa` 完成 IVE 同期官网标志及布局修订，依次处理 NewJeans、ADYA、W!TCHX，并修正 GENBLUE 和 Rocket Punch 的横幅肖像。22 张默认图的文件总量下降 80.94%。全站 51 团的首页、成员目录在手机与桌面共核 204 次，17 团做了局部调整。GENBLUE 的原图灯箱和两支作品的错存保护测试已修复。四个本地／托管平台验证通过，全套测试的既有失败在 Windows、Linux 各减少两项。[本轮画面与指标](worklogs/20261121-artist-brand.md) · [逐团背景、字体与标志](evidence/20261121-artist-brand/group-review.json)
 
@@ -12,7 +22,7 @@ GitHub 的 11 条分支已收为 2 条，主线保留验收版本，独有提交
 
 首页的目录响应现在按需省去 1,292 行候选详情。同一份最终合成目录的 gzip 从 145,300 降至 102,206 字节，下降 29.66%。从主线验收版本直接比较，净降 28.96%，含本轮新节目资料。上轮的首页静态 gzip 下降 53.0%、390 像素作品库第一首歌名上移 152.5 像素，均已在上轮计入。[本轮传输与浏览](evidence/20261121-repository-and-routes/browser-and-transfer.json) · [上轮实测](worklogs/20261121-project-optimization.md)
 
-## 后续开发顺序与工具
+## 发布前的开发顺序与工具（历史计划）
 
 IVE、NewJeans、ADYA、W!TCHX、GENBLUE 和 Rocket Punch 的本轮照片已交付。下面按优先级推进视觉工作，并接续工程回归。涉及团标或代表时期时，先定位当年官网、发行页和可辨认的公司原图，再在对应 Figma 文件及实际路由上验证。
 

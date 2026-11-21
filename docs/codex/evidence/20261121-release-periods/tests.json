@@ -1,0 +1,314 @@
+{
+  "implementation": "2283b25ae26d6d613f516092b58bf1bcb84ba00b",
+  "regressionVerification": "d182e15b93181f571cb13cc73adae9b0bfeaeb0b",
+  "previousVerification": "f81dbefaddb2612ce4317cda5d1fdc58541d0a1c",
+  "verify": {
+    "windows": 0,
+    "linux": 0,
+    "currentNodeTests": 1211,
+    "optimizedPythonPathNodeTests": 19,
+    "builtAssetNodeTests": 6,
+    "pythonBatchTestsPerMode": 4,
+    "builtPythonHttpTests": 7
+  },
+  "udttExactOriginalNodeTests": {
+    "passed": 15,
+    "failed": 0
+  },
+  "fullSuiteByPlatform": {
+    "win": {
+      "before": [
+        {
+          "tests": 3953,
+          "pass": 3719,
+          "fail": 195,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        {
+          "tests": 9,
+          "pass": 7,
+          "fail": 2,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        {
+          "tests": 31,
+          "pass": 31,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      ],
+      "after": [
+        {
+          "tests": 3960,
+          "pass": 3742,
+          "fail": 179,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        {
+          "tests": 9,
+          "pass": 9,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        {
+          "tests": 31,
+          "pass": 31,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      ],
+      "beforeFailures": 197,
+      "afterFailures": 179,
+      "added": [],
+      "fixed": [
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "ive requires exact persisted identity and URL; never guesses stage artwork",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "ive preserves decimal zero, failed drafts, hidden member editors and exact editor position across views",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "ive artist navigation remains guarded; branch never affects unrelated groups",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "badvillain requires exact persisted identity and URL; never guesses stage artwork",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "badvillain preserves decimal zero, failed drafts, hidden member editors and exact editor position across views",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "badvillain artist navigation remains guarded; branch never affects unrelated groups",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "approved public artwork covers all nine production videos with unchanged original bytes",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "MEOW design applies only to exact production work, group, MV URL; NPOP checks exact stage identity",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "source corrected; empty cast blocks omitted while real cast and private notes retained",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "live score editor survives rating hide/show and MV/stage switching; zero/null and failed draft preserved",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "changing stage binding retains old draft and blocks wrong-source save",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "brand navigation calls guarded parent; score source is real binding rather than design identifier",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "MV, logo and supplied NPOP image-layer export match the audited manifest bytes",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "hidden member drafts stay discoverable and return to their mounted editor without autosave",
+          "count": 1
+        },
+        {
+          "file": "timeline-production.test.cjs",
+          "test": "udtt: canonical hashes, ready/hold isolation and actual production renderer contract",
+          "count": 1
+        },
+        {
+          "file": "timeline-production.test.cjs",
+          "test": "atheart: canonical hashes, ready/hold isolation and actual production renderer contract",
+          "count": 1
+        },
+        {
+          "file": "artist-runtime-data.test.cjs",
+          "test": "H2H and i-dle render identical HTML with full evidence or runtime projection",
+          "count": 1
+        },
+        {
+          "file": "artist-runtime-data.test.cjs",
+          "test": "primary detail images receive high-priority scheduling without layout changes",
+          "count": 1
+        }
+      ]
+    },
+    "linux": {
+      "before": [
+        {
+          "tests": 3953,
+          "pass": 3723,
+          "fail": 191,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        {
+          "tests": 9,
+          "pass": 7,
+          "fail": 2,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        {
+          "tests": 31,
+          "pass": 31,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      ],
+      "after": [
+        {
+          "tests": 3960,
+          "pass": 3746,
+          "fail": 175,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        {
+          "tests": 9,
+          "pass": 9,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        {
+          "tests": 31,
+          "pass": 31,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      ],
+      "beforeFailures": 193,
+      "afterFailures": 175,
+      "added": [],
+      "fixed": [
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "ive requires exact persisted identity and URL; never guesses stage artwork",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "ive preserves decimal zero, failed drafts, hidden member editors and exact editor position across views",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "ive artist navigation remains guarded; branch never affects unrelated groups",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "badvillain requires exact persisted identity and URL; never guesses stage artwork",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "badvillain preserves decimal zero, failed drafts, hidden member editors and exact editor position across views",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "badvillain artist navigation remains guarded; branch never affects unrelated groups",
+          "count": 1
+        },
+        {
+          "file": "ive-badvillain-detail.test.cjs",
+          "test": "approved public artwork covers all nine production videos with unchanged original bytes",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "MEOW design applies only to exact production work, group, MV URL; NPOP checks exact stage identity",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "source corrected; empty cast blocks omitted while real cast and private notes retained",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "live score editor survives rating hide/show and MV/stage switching; zero/null and failed draft preserved",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "changing stage binding retains old draft and blocks wrong-source save",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "brand navigation calls guarded parent; score source is real binding rather than design identifier",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "MV, logo and supplied NPOP image-layer export match the audited manifest bytes",
+          "count": 1
+        },
+        {
+          "file": "meovv-detail.test.cjs",
+          "test": "hidden member drafts stay discoverable and return to their mounted editor without autosave",
+          "count": 1
+        },
+        {
+          "file": "timeline-production.test.cjs",
+          "test": "udtt: canonical hashes, ready/hold isolation and actual production renderer contract",
+          "count": 1
+        },
+        {
+          "file": "timeline-production.test.cjs",
+          "test": "atheart: canonical hashes, ready/hold isolation and actual production renderer contract",
+          "count": 1
+        },
+        {
+          "file": "artist-runtime-data.test.cjs",
+          "test": "H2H and i-dle render identical HTML with full evidence or runtime projection",
+          "count": 1
+        },
+        {
+          "file": "artist-runtime-data.test.cjs",
+          "test": "primary detail images receive high-priority scheduling without layout changes",
+          "count": 1
+        }
+      ]
+    }
+  },
+  "hostedRun": "https://github.com/KAtOReNA7/idol/actions/runs/44910309156",
+  "hostedVerify": {
+    "windows": "success",
+    "ubuntu": "success",
+    "ubuntuFullSuite": "failure",
+    "ubuntuFullSuiteFailures": 175,
+    "sameFailuresByFileNameAndOccurrenceAsLocalLinux": true
+  }
+}

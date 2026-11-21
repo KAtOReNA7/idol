@@ -1,6 +1,6 @@
 # Idol Lens
 
-正式工程位于 `apps/idol-site/`。GitHub 的 `main` 保存用户验收版本，`codex/project-optimization-20261121` 承接后续开发。正式站为 v203。[当前状态](docs/codex/STATUS.md) · [运行与测试](apps/idol-site/README.md) · [开发路线图](docs/codex/PROJECT-AUDIT-AND-ROADMAP-20261121.md)
+正式工程位于 `apps/idol-site/`。GitHub 的 `main` 保存用户验收版本，`codex/project-optimization-20261121` 承接后续开发。正式站为 v204，可通过标签 `site/v204` 定位发布代码。[当前状态](docs/codex/STATUS.md) · [运行与测试](apps/idol-site/README.md) · [开发路线图](docs/codex/PROJECT-AUDIT-AND-ROADMAP-20261121.md)
 
 ## 开发与交接
 

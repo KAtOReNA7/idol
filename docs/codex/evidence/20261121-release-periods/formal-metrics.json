@@ -1,0 +1,221 @@
+{
+  "environment": "Same anonymous production domain, Chromium 157, 390 × 900 CSS px, new browsing context per sample. Three cold-context visits per deployment. No request interception. Asset sizes use same-origin JS/CSS encodedBodySize observed when the first work title was ready. Network timings include changing live conditions. Gzip uses level 6 on the JSON body.",
+  "route": "/?view=works",
+  "median": {
+    "firstSongY": {
+      "before": 942.5,
+      "after": 712.5,
+      "changePercent": -24.4
+    },
+    "decodedBytes": {
+      "before": 2335518,
+      "after": 2123573,
+      "changePercent": -9.07
+    },
+    "deterministicGzipBytes": {
+      "before": 291612,
+      "after": 256684,
+      "changePercent": -11.98
+    },
+    "catalogWireBody": {
+      "before": 288428,
+      "after": 254388,
+      "changePercent": -11.8
+    },
+    "scriptAndStyleWireBody": {
+      "before": 568426,
+      "after": 274079,
+      "changePercent": -51.78
+    },
+    "catalogHttpMs": {
+      "before": 5559,
+      "after": 2439,
+      "changePercent": -56.13
+    },
+    "domReadyMs": {
+      "before": 2417,
+      "after": 733,
+      "changePercent": -69.67
+    }
+  },
+  "v203": [
+    {
+      "firstSongY": 942.5,
+      "viewWidth": 390,
+      "firstSongHeight": 18.1875,
+      "domReadyMs": 2485,
+      "catalogHttpMs": 7039,
+      "catalogWireBody": 293621,
+      "scriptAndStyleWireBody": 568118,
+      "decodedBytes": 2335518,
+      "deterministicGzipBytes": 291612,
+      "groups": 51,
+      "works": 614,
+      "stages": 500,
+      "prefer": null
+    },
+    {
+      "firstSongY": 942.5,
+      "viewWidth": 390,
+      "firstSongHeight": 18.1875,
+      "domReadyMs": 2417,
+      "catalogHttpMs": 5559,
+      "catalogWireBody": 288428,
+      "scriptAndStyleWireBody": 568426,
+      "decodedBytes": 2335518,
+      "deterministicGzipBytes": 291612,
+      "groups": 51,
+      "works": 614,
+      "stages": 500,
+      "prefer": null
+    },
+    {
+      "firstSongY": 942.5,
+      "viewWidth": 390,
+      "firstSongHeight": 18.1875,
+      "domReadyMs": 1821,
+      "catalogHttpMs": 5085,
+      "catalogWireBody": 287898,
+      "scriptAndStyleWireBody": 568436,
+      "decodedBytes": 2335518,
+      "deterministicGzipBytes": 291613,
+      "groups": 51,
+      "works": 614,
+      "stages": 500,
+      "prefer": null
+    }
+  ],
+  "v204": [
+    {
+      "firstSongY": 712.5,
+      "viewWidth": 390,
+      "firstSongHeight": 18.1875,
+      "domReadyMs": 952,
+      "catalogHttpMs": 4986,
+      "catalogWireBody": 254388,
+      "scriptAndStyleWireBody": 274189,
+      "readSource": "actual page response",
+      "decodedBytes": 2123573,
+      "deterministicGzipBytes": 256684,
+      "groups": 51,
+      "works": 614,
+      "stages": 527,
+      "prefer": "omit-stage-candidates"
+    },
+    {
+      "firstSongY": 712.5,
+      "viewWidth": 390,
+      "firstSongHeight": 18.1875,
+      "domReadyMs": 730,
+      "catalogHttpMs": 2439,
+      "catalogWireBody": 252966,
+      "scriptAndStyleWireBody": 274079,
+      "readSource": "actual page response",
+      "decodedBytes": 2123573,
+      "deterministicGzipBytes": 256685,
+      "groups": 51,
+      "works": 614,
+      "stages": 527,
+      "prefer": "omit-stage-candidates"
+    },
+    {
+      "firstSongY": 712.5,
+      "viewWidth": 390,
+      "firstSongHeight": 18.1875,
+      "domReadyMs": 733,
+      "catalogHttpMs": 1790,
+      "catalogWireBody": 254570,
+      "scriptAndStyleWireBody": 274041,
+      "readSource": "actual page response",
+      "decodedBytes": 2123573,
+      "deterministicGzipBytes": 256684,
+      "groups": 51,
+      "works": 614,
+      "stages": 527,
+      "prefer": "omit-stage-candidates"
+    }
+  ],
+  "permissionsAndNativeOriginal": [
+    {
+      "phase": "v203-native",
+      "samples": [],
+      "permissions": {
+        "/api/manage/editorial-assets/viewer": {
+          "status": 401
+        },
+        "/api/manage/editorial-assets": {
+          "status": 401
+        },
+        "/api/editorial-assets/viewer": {
+          "status": 200,
+          "entries": 10
+        }
+      },
+      "udtt": [
+        {
+          "width": 390,
+          "loaded": true,
+          "original": {
+            "width": 640,
+            "bytes": 22101,
+            "sha256": "b80720a772b8000518fad7d71e0b3c5867a8dbef7b4c2219dcaf2ec58dba8ca9"
+          },
+          "focusReturned": true,
+          "errors": []
+        },
+        {
+          "width": 1440,
+          "loaded": true,
+          "original": {
+            "width": 640,
+            "bytes": 22101,
+            "sha256": "b80720a772b8000518fad7d71e0b3c5867a8dbef7b4c2219dcaf2ec58dba8ca9"
+          },
+          "focusReturned": true,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "phase": "v204-native",
+      "samples": [],
+      "permissions": {
+        "/api/manage/editorial-assets/viewer": {
+          "status": 401
+        },
+        "/api/manage/editorial-assets": {
+          "status": 401
+        },
+        "/api/editorial-assets/viewer": {
+          "status": 200,
+          "entries": 10
+        }
+      },
+      "udtt": [
+        {
+          "width": 390,
+          "loaded": true,
+          "original": {
+            "width": 640,
+            "bytes": 22101,
+            "sha256": "b80720a772b8000518fad7d71e0b3c5867a8dbef7b4c2219dcaf2ec58dba8ca9"
+          },
+          "focusReturned": true,
+          "errors": []
+        },
+        {
+          "width": 1440,
+          "loaded": true,
+          "original": {
+            "width": 640,
+            "bytes": 22101,
+            "sha256": "b80720a772b8000518fad7d71e0b3c5867a8dbef7b4c2219dcaf2ec58dba8ca9"
+          },
+          "focusReturned": true,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "repeatNotes": "One first mixed post-deployment probe lost a body during navigation. One initial desktop UDTT read timed out during concurrent scans. An independent repeat on both widths decoded and hashed the original and restored keyboard focus."
+}

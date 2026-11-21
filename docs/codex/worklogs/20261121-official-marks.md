@@ -20,4 +20,8 @@
 
 历史日期断言继续验证十月的整文件 SHA 和 623 个历史事件。目前共有 625 个事件，其中 623 项可展示，2 项继续待证。按实际日期、公告日、历史摄影署名、六个稳定成员 ID 及无作品绑定分别检验本次两个新增事件。五个时间轴文件和一组日期收口回归共 113 项，全部通过。UDTT 和 AtHeart 的报道卡分别核对十月原文、现行的「0（未查得）」、确有出处的采访或公告日，以及仍为空的实际生效日期。另一批团页与原生路由检查 31 项，30 项通过，ifeye 历史审阅包依赖的 Rocket Punch 字体触发原有独立构建检查。[十月历史测试清单](../evidence/20261121-project-optimization/remaining-tests.json) · [日期收口记录](../evidence/20261101-closeout/closure.json)
 
-正式 v203 对本轮十八条新素材路径全部返回 404。[上线前逐文件回读](../evidence/20261121-official-marks/production-before.json)
+## 正式站
+
+正式 v203 对本轮十八条新素材路径全部返回 404。发布后从同一域名匿名 GET，十八个路径全部返回 200，每个文件的大小和 SHA-256 均与来源清单吻合。[上线前逐文件回读](../evidence/20261121-official-marks/production-before.json) · [发布后逐文件回读](../evidence/20261121-official-marks/production-assets.json)
+
+在正式站再次以 390 × 900 和 1440 × 900 两档完成 70 次浏览。68 个团页页头及两幅《4 Life》头像均解码并通过浏览器端指纹核验，34 次点击均返回同一个团的主页。ifeye 原生时间轴在两档均展示 11 月 1 日和 11 月 2 日两个实际日期。可见内容、脚本异常和横向尺寸均已检查。第一次并发检查时，Cherry Bullet 手机成员页导航超过 65 秒；单独读取返回 200，手机和桌面的浏览与跳转随后均通过。另复跑了截图时曾重新挂载的 ifeye 页头，以及晚于标志加载的 Billlie 成员目录标题。[正式站 70 次浏览、重试与跳转](../evidence/20261121-official-marks/production-browser.json) · [十八组正式站画面](../evidence/20261121-official-marks/production-mastheads.webp)

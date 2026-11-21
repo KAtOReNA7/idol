@@ -2,16 +2,22 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v203，500 个舞台，29 张专项封面，106 个公开资料作品／546 槽。[发布回执](evidence/20261030-v203/release-publication.json) |
-| GitHub 主线 | 已验收的 `0e77838a`。527 个舞台来源，31 张专项封面，108 个公开资料作品／557 槽。[版本与归档](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，已测应用 `f81dbefa`。17 团经视觉调整，IVE 恢复同期官网标志；NewJeans 等五团更新 22 张肖像。上一轮 23 团 121 支 MV 已更新 745 个认人位置。另有 527 个舞台来源、32 张专项封面、108 个公开资料作品／557 槽。[本轮实测与前后图](worklogs/20261121-artist-brand.md) · [工程路线图](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 正式站 | v204，2026 年 11 月 21 日发布。614 首作品、51 团、527 个舞台、34 张专项封面。发布代码可从 GitHub 标签 `site/v204` 找到。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261121-release-periods/publication.json) |
+| GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
+| 当前开发 | `codex/project-optimization-20261121`。线上应用 `2283b25a`，同一运行代码的测试与资料检查点 `d182e15b`。[本轮开发记录](worklogs/20261121-release-periods.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
-## 内容与发布
+## 线上内容
 
-- IVE 已把 2022 年 4 月日本官网白色图形标与韩国 STARSHIP 同期团照放上实页和 Figma，手机首页第一张成员照从第 952 像素提前到第 604 像素。NewJeans、ADYA、W!TCHX、GENBLUE、Rocket Punch 的 22 张默认目录图文件合计少 80.94%。51 团的背景、字体、页标按两宽逐屏留证；另有六份保留标志从官网取回，逐字节吻合。[本轮视觉实测](worklogs/20261121-artist-brand.md) · [一手设计资料与画板](evidence/20261121-artist-brand/sources.json)
-- 上一轮默认展示的第三方具名 MV 截图由 1,226 个位置降至 508 个，IVE 从 77 降至 0。下批先补 i-dle，随后 Kep1er、XG、LOONA。[逐团余量](evidence/20261121-love-dive/media-measurement.json)
+- 正式站 51 团的首页、成员目录在两档宽度共 204 次完成浏览，横向溢出为 0。[逐页正式回读](evidence/20261121-release-periods/all-group-routes.json)
+- IVE 使用 2022 年 4 月官网团标及《LOVE DIVE》时期方向。两个发行时期各有六张具名肖像、原图、出处和作品导航。手机正式首页第 640 像素出现第一张成员照。NewJeans、ADYA、W!TCHX、GENBLUE 和 Rocket Punch 已上线前轮审核的 22 张目录肖像。[IVE 实测](evidence/20261121-release-periods/rosters-and-eras.json) · [前轮逐团记录](worklogs/20261121-artist-brand.md)
+- STAYC、ITZY、NMIXX、aespa 与 LE SSERAFIM 在 390 × 900 手机上，第 260–279 像素即可看到成员图，姓名均在首屏。另有 17 团换为经当期官网、公司或官方频道核实的标志。VVUP 的 2024 官方头像用于《4 Life》详情。[成员入口](evidence/20261121-release-periods/rosters-and-eras.json) · [团标审查与实页](worklogs/20261121-official-marks.md)
+- 两轮合计 204 支 MV、1,274 个认人位置换图，原有 1,226 个第三方具名截图位置均已替换默认图。图注分别注明本作、同期或跨期，原作品图仍可打开。最新 84 支在正式站逐支核验。[逐图记录和前后对照](evidence/20261121-mv-release-portraits/review.md)
+- 10 首歌的节目资料已上线，共 28 个不同的来源链接。两张日语版舞台封面已检查分 P 和时间。另有 81 项等待新证据，19 项沿用取消必填的决定。[节目核验](worklogs/20261121-broadcast-research.md) · [处置清单](evidence/20261121-repository-and-routes/content-disposition.json)
 
-- 103 件作品对应 110 项待证事实。当前主动核验 10 项，等待新证据 81 项，取消必填 19 项。[逐项决定](evidence/20261121-repository-and-routes/content-disposition.json) · [原始审查](FEASIBILITY-REVIEW-20261101.md) · [定向研究](evidence/20261121-project-optimization/content-review.json)
-- 开发版已补 QWER《SHOW DOWN》同视频第 14 秒的 1080p 封面，另有五首歌增加节目或表演资料。余下两张为 STAYC 日版《Teddy Bear》的已审区间和 IVE 日版《ELEVEN》的 P1 舞台画面。正式 v203 尚无批量 owner 核对工具，下一次发布另行授权并验收。[逐作品核验](evidence/20261121-repository-and-routes/content-followup.json) · [工具与时效](STAGE-OWNER-PREFLIGHT.md)
-- 本地及 GitHub 托管的 Windows、Linux 均通过 `npm run verify`。全量 Node 测试在 Windows 有 197 项既有失败，Linux 有 193 项；两平台各修复 2 项、各新增 0 项，托管 Ubuntu 与本地 Linux 的失败逐项相同。51 团的首页与成员入口共 204 次浏览，另有 44 次成员原图及回焦实测。UDTT 公开降级态已验，受限原生成功态待核。[测试结果](evidence/20261121-artist-brand/tests.json) · [逐团检查](evidence/20261121-artist-brand/group-review.json) · [前轮 121 支 MV 浏览](evidence/20261121-love-dive/browser.json)
-- 上轮工程优化的前后测量及平台差异见[实测报告](worklogs/20261121-project-optimization.md)。更早的状态、各团验收和回退说明见[历史全文](https://github.com/KAtOReNA7/idol/blob/0e77838a88f9ff9b14fb67f803156534c7c651e1/docs/codex/STATUS.md)。
+## 工程与下一步
+
+本地 Windows、WSL Linux 和 GitHub 的 Windows、Ubuntu 均通过 `npm run verify`。完整测试在 Windows 余 179 项失败，Linux 余 175 项，较上一检查点各减少 18 项，新增失败均为 0。托管 Ubuntu 与本地 Linux 逐项相同。UDTT 的真实公开原图已在正式站两宽解码，SHA-256 相符，关闭后焦点返回原按钮。[测试清单](evidence/20261121-release-periods/tests.json) · [正式测量](evidence/20261121-release-periods/formal-metrics.json)
+
+下一步依次验证连接器实际提供的新 owner 批量读取工具、处理剩余旧用例，以及在新增具名资料出现时升级跨期照片与节目绑定。私人存储已读回同一活动快照、epoch 6 和 206 条完成日志。[核对接口及适用范围](STAGE-OWNER-PREFLIGHT.md) · [发布前的审查与后续开发](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
+
+前轮工程优化、发布与原始审查分别保存在各自的工作记录中。[上一正式版 v203](v203-release-20261030.md) · [项目审查](worklogs/20261121-project-audit.md) · [历史协作与验收](https://github.com/KAtOReNA7/idol/blob/0e77838a88f9ff9b14fb67f803156534c7c651e1/docs/codex/STATUS.md)

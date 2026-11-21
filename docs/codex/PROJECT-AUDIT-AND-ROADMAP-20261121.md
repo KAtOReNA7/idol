@@ -4,7 +4,9 @@
 
 ## 当前进度
 
-最新开发版 `5b031fab` 完成 IVE《LOVE DIVE》团页、发现页入口及 23 团的 MV 成员图。51 团的默认成员目录已逐团审查。390 与 1440 像素覆盖 102 个团页入口。另在隔离 D1 和浏览器中实开 121 支 MV，解码并匹配 745 张卡图。照片按作品、视频和成员绑定，另留原作品图、来源与原始身份。[本轮实测与前后画面](worklogs/20261121-love-dive.md) · [逐团记录](evidence/20261121-love-dive/roster-review.json)
+最新已测应用 `f81dbefa` 完成 IVE 同期官网标志及布局修订，依次处理 NewJeans、ADYA、W!TCHX，并修正 GENBLUE 和 Rocket Punch 的横幅肖像。22 张默认图的文件总量下降 80.94%。全站 51 团的首页、成员目录在手机与桌面共核 204 次，17 团做了局部调整。GENBLUE 的原图灯箱和两支作品的错存保护测试已修复。四个本地／托管平台验证通过，全套测试的既有失败在 Windows、Linux 各减少两项。[本轮画面与指标](worklogs/20261121-artist-brand.md) · [逐团背景、字体与标志](evidence/20261121-artist-brand/group-review.json)
+
+上一轮 `5b031fab` 完成 IVE《LOVE DIVE》团页、发现页入口及 23 团的 MV 成员图。隔离 D1 和浏览器实开了 121 支 MV，解码并匹配 745 张卡图。照片按作品、视频和成员绑定，另留原作品图、来源与原始身份。[前轮实测](worklogs/20261121-love-dive.md) · [逐团肖像记录](evidence/20261121-love-dive/roster-review.json)
 
 GitHub 的 11 条分支已收为 2 条，主线保留验收版本，独有提交的两条历史线可按标签恢复。前一轮已测应用为 `eebbca8c`，完成 51 团当前模板的图片与时间轴检查、实际团体索引的均分、成员返回焦点、保存回执保护、目录传输优化、五项只读说明及 QWER 专项封面。Windows 和 WSL 的现行回归与构建通过。完整主套失败从 723／718 降至 199／195，部分原断言保存在对应历史版本。正式 v203 的 500 个舞台和开发分支的 527 个来源分别留证。[前轮交付与实测](worklogs/20261121-repository-and-routes.md) · [GitHub 归档](evidence/20261121-repository-and-routes/github-consolidation.json)
 
@@ -12,17 +14,17 @@ GitHub 的 11 条分支已收为 2 条，主线保留验收版本，独有提交
 
 ## 后续开发顺序与工具
 
-按这次视觉复查，接下来先完成以下三批，随后接回下表的工程顺序。每团开工先定位代表发行当年的官网快照、发行页、具名宣传图。把可复核的源画面放进对应 Figma 页，再改代码并实测。
+IVE、NewJeans、ADYA、W!TCHX、GENBLUE 和 Rocket Punch 的本轮照片已交付。下面按优先级推进视觉工作，并接续工程回归。涉及团标或代表时期时，先定位当年官网、发行页和可辨认的公司原图，再在对应 Figma 文件及实际路由上验证。
 
 | 顺序 | 团体与具体改动 | 验收依据 |
 |---|---|---|
-| 1 | NewJeans。用代表发行的一整套五人照片修复 DANIELLE 杂志封面与其余四张的差异，保留 SPUR 完整封面 | 核官网或发行方具名图、五人身份和 Figma 两宽对照，验证默认成员卡及原图 |
-| 2 | ADYA 先处理三张横图，再处理 WITCHX 的五张公司档案卡。GENBLUE 的六张完整横卡接着核 | 逐张从原件选脸部取景，保留全幅资料卡。390 像素实看眼睛、姓名、原图按钮和点开后的清晰度 |
-| 3 | 按截图余量和具名材料补 MV。i-dle 余 64，Kep1er 和 XG 各 49，LOONA 余 47。先找对应作品或发行的照片，再核历任成员和小分队 | 每个作品保留旧画面和出处，复查作品、视频、成员三个 ID。按实际改动位置统计，并在浏览器逐卡核图。[余量与复算方法](evidence/20261121-love-dive/media-measurement.json) |
+| 1 | 按余量补 MV 具名照。先 i-dle 的 64 个位置，再 Kep1er、XG 各 49 个和 LOONA 的 47 个。核对代表发行、历任成员和小分队 | 保留旧画面和出处，核作品、视频、成员三个 ID；在浏览器逐卡验图。[余量与复算方法](evidence/20261121-love-dive/media-measurement.json) |
+| 2 | 优先改善 STAYC、ITZY、NMIXX、aespa、LE SSERAFIM 的手机成员入口。目前专属目录上方仍有完整团照和公司介绍，首张候选人像距页首 1,010 至 1,562 像素 | 在对应 Figma 设计对比直达成员区的入口，跟踪首次点击、首图距离、返回焦点、团体介绍和名册的可达性。用同一 390 × 900 和桌面视口复验。[逐页读数](evidence/20261121-artist-brand/group-review.json) |
+| 3 | 继续为 18 个沿用设计字标的团体定位当期官方图形资料，优先与明确发行风格有关的入口 | 官网导航图、公司标志影片、同期唱片分别标注来源；有可定位原件时记录指纹和成员页实图。保留共站 STAGE 导航。[本轮材料](evidence/20261121-artist-brand/sources.json) · [原图复取](evidence/20261121-artist-brand/retained-mark-checks.json) |
 
 | 顺序 | 开发内容 | 工具与验收 |
 |---|---|---|
-| 1 | 先核对 Hearts2Hearts、Billlie、IVE／BADVILLAIN、MEOVV 等旧详情测试。逐一确认对应的作品、图片、评分和返回行为，修复真实缺陷，再把仍有意义的断言接到现行组件 | 用 Git 定位适用版本，用 Node、React 服务端渲染、Playwright 和本地合成 D1 复现。每批比较两平台失败名称与通过数。历史文件及原素材指纹可独立复查 |
+| 1 | Hearts2Hearts、Billlie 的两条换源草稿测试已接回现行表单。接着核 IVE／BADVILLAIN、MEOVV 等旧详情用例，逐一确认作品、图片、评分和返回行为 | 用 Git 定位适用版本，用 Node、React 服务端渲染、Playwright 和本地合成 D1 复现。以 Windows 197、Linux 193 项既有失败逐项比较。[本轮两条修复](evidence/20261121-artist-brand/tests.json) |
 | 2 | 依次处理作品详情和团页中影响草稿、视频重试、原图及键盘焦点的 lint 项。需要修改交互时在原 Figma 文件对照对应状态 | ESLint、TypeScript、Figma、Chromium。覆盖加载中切换作品、回执不一致、0 分、返回原按钮和手持设备布局 |
 | 3 | 按逐文件清单核冻结数据、旧文案和平台差异，补 UDTT 可获授权环境下的原生成功路径 | 用 Git 历史前像、原图 SHA-256、Node/Python、Windows／Linux 构建和浏览器分开验证。记录仍无法核验的具体入口 |
 | 4 | 继续 10 项定向事实与两张封面。有新增片段或身份材料时核对精确来源。81 项收到新证据时重开，19 项已取消必填 | 用节目官网、原媒体页、ffprobe／FFmpeg 和精确分 P 或视频序号核对。绑定候选准备齐后一次核 1–5 项，沿用 owner 认证、0 分以及 300／900 秒保护 |

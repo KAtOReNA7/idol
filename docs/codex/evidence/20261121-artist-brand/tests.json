@@ -1,0 +1,197 @@
+{
+  "win": {
+    "exit": {
+      "full": 1,
+      "verify": 0
+    },
+    "verifyNodePhases": [
+      1192,
+      19,
+      6
+    ],
+    "baseline": [
+      {
+        "tests": 3950,
+        "pass": 3714,
+        "fail": 197,
+        "cancelled": 0,
+        "skipped": 39
+      },
+      {
+        "tests": 9,
+        "pass": 7,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      {
+        "tests": 31,
+        "pass": 31,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    ],
+    "current": [
+      {
+        "tests": 3953,
+        "pass": 3719,
+        "fail": 195,
+        "cancelled": 0,
+        "skipped": 39
+      },
+      {
+        "tests": 9,
+        "pass": 7,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      {
+        "tests": 31,
+        "pass": 31,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    ],
+    "addedFailures": [],
+    "resolvedFailures": [
+      {
+        "file": "billlie-detail.test.cjs",
+        "case": "changing stage binding retains old draft and blocks wrong-source save",
+        "count": 1
+      },
+      {
+        "file": "hearts2hearts-detail.test.cjs",
+        "case": "changing stage binding retains old draft and blocks wrong-source save",
+        "count": 1
+      }
+    ]
+  },
+  "linux": {
+    "exit": {
+      "verify": 0,
+      "full": 1
+    },
+    "verifyNodePhases": [
+      1192,
+      19,
+      6
+    ],
+    "baseline": [
+      {
+        "tests": 3950,
+        "pass": 3718,
+        "fail": 193,
+        "cancelled": 0,
+        "skipped": 39
+      },
+      {
+        "tests": 9,
+        "pass": 7,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      {
+        "tests": 31,
+        "pass": 31,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    ],
+    "current": [
+      {
+        "tests": 3953,
+        "pass": 3723,
+        "fail": 191,
+        "cancelled": 0,
+        "skipped": 39
+      },
+      {
+        "tests": 9,
+        "pass": 7,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      {
+        "tests": 31,
+        "pass": 31,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    ],
+    "addedFailures": [],
+    "resolvedFailures": [
+      {
+        "file": "billlie-detail.test.cjs",
+        "case": "changing stage binding retains old draft and blocks wrong-source save",
+        "count": 1
+      },
+      {
+        "file": "hearts2hearts-detail.test.cjs",
+        "case": "changing stage binding retains old draft and blocks wrong-source save",
+        "count": 1
+      }
+    ]
+  },
+  "hosted": {
+    "url": "https://github.com/KAtOReNA7/idol/actions/runs/44900302720",
+    "head": "f81dbefaddb2612ce4317cda5d1fdc58541d0a1c",
+    "jobs": {
+      "verify (windows-latest)": "success",
+      "full-suite": "failure",
+      "verify (ubuntu-latest)": "success"
+    },
+    "ubuntuFull": [
+      {
+        "tests": 3953,
+        "pass": 3723,
+        "fail": 191,
+        "cancelled": 0,
+        "skipped": 39
+      },
+      {
+        "tests": 9,
+        "pass": 7,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      {
+        "tests": 31,
+        "pass": 31,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    ],
+    "additionalVsLocalLinux": [],
+    "missingVsLocalLinux": []
+  },
+  "scope": {
+    "application": "f81dbefaddb2612ce4317cda5d1fdc58541d0a1c",
+    "baseline": "0e3ced1843aa63732fd3f3fa693341b19186dbd6",
+    "baselineApp": "5b031fab37e475f4a5923276c1c679ff5a630490",
+    "phases": [
+      "main Node suite",
+      "isolated artist-runtime suite",
+      "personal-insights suite"
+    ],
+    "matching": "same platform / test filename / case name / occurrence count",
+    "verify": "typecheck, current protection tests, stage and supplement validators, production bundle, prepared-asset checks, built Worker and Python checks",
+    "privateWrites": 0
+  },
+  "productionReadback": {
+    "latestVersion": 203,
+    "publishedVersion": 203,
+    "deployment": "succeeded",
+    "source": "cd1446371b0f0f3d0bd5f91700e85072e87cb1e9",
+    "scope": "Production control plane readback. All new visual and interaction results are for the local built Worker.",
+    "writes": 0
+  }
+}

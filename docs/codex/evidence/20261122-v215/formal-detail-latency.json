@@ -1,0 +1,327 @@
+{
+  "site": "https://idol-lens-private.wuke40758.chatgpt.site",
+  "browser": "Codex in-app browser",
+  "contentWidth": 1265,
+  "beforeVersion": 213,
+  "afterVersion": 215,
+  "baselineCompatibility": "The intervening v214 changed only the NewJeans Attention recognition data, its files and one test. Its changes do not affect these three works.",
+  "comparison": "Three trials per group and release with the same work IDs and detail URLs. Timing starts immediately before clicking the visible target work card on the group page and ends when the detail play button first becomes visible. Transport byte readings are from the browser.",
+  "summary": {
+    "ive": {
+      "workId": "recvxyHuKMaCIP",
+      "oldMedianMs": 2234,
+      "newMedianMs": 2392,
+      "differenceMs": 158,
+      "oldMedianCatalogTransportBytes": 400700,
+      "newMedianCatalogTransportBytes": 4014
+    },
+    "adya": {
+      "workId": "rec28ldfRTrH9V",
+      "oldMedianMs": 2321,
+      "newMedianMs": 2628,
+      "differenceMs": 307,
+      "oldMedianCatalogTransportBytes": 400170,
+      "newMedianCatalogTransportBytes": 3375
+    },
+    "cherrybullet": {
+      "workId": "recvxyH5pza4kq",
+      "oldMedianMs": 4084,
+      "newMedianMs": 3480,
+      "differenceMs": -604,
+      "oldMedianCatalogTransportBytes": 401338,
+      "newMedianCatalogTransportBytes": 4187
+    }
+  },
+  "before": [
+    {
+      "slug": "ive",
+      "id": "recvxyHuKMaCIP",
+      "trial": 1,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 2234,
+      "requests": [
+        {
+          "scope": "full",
+          "status": 200,
+          "transportBytes": 400657
+        }
+      ]
+    },
+    {
+      "slug": "adya",
+      "id": "rec28ldfRTrH9V",
+      "trial": 1,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 2001,
+      "requests": [
+        {
+          "scope": "full",
+          "status": 200,
+          "transportBytes": 400150
+        }
+      ]
+    },
+    {
+      "slug": "cherrybullet",
+      "id": "recvxyH5pza4kq",
+      "trial": 1,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 5216,
+      "requests": [
+        {
+          "scope": "full",
+          "status": 200,
+          "transportBytes": 401338
+        }
+      ]
+    },
+    {
+      "slug": "ive",
+      "id": "recvxyHuKMaCIP",
+      "trial": 2,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 2029,
+      "requests": [
+        {
+          "scope": "full",
+          "status": 200,
+          "transportBytes": 400700
+        }
+      ]
+    },
+    {
+      "slug": "adya",
+      "id": "rec28ldfRTrH9V",
+      "trial": 2,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 3720,
+      "requests": [
+        {
+          "scope": "full",
+          "status": 200,
+          "transportBytes": 411234
+        }
+      ]
+    },
+    {
+      "slug": "cherrybullet",
+      "id": "recvxyH5pza4kq",
+      "trial": 2,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 4084,
+      "requests": [
+        {
+          "scope": "full",
+          "status": 200,
+          "transportBytes": 399688
+        }
+      ]
+    },
+    {
+      "slug": "ive",
+      "id": "recvxyHuKMaCIP",
+      "trial": 3,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 3583,
+      "requests": [
+        {
+          "scope": "full",
+          "status": 200,
+          "transportBytes": 402921
+        }
+      ]
+    },
+    {
+      "slug": "adya",
+      "id": "rec28ldfRTrH9V",
+      "trial": 3,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 2321,
+      "requests": [
+        {
+          "scope": "full",
+          "status": 200,
+          "transportBytes": 400170
+        }
+      ]
+    },
+    {
+      "slug": "cherrybullet",
+      "id": "recvxyH5pza4kq",
+      "trial": 3,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 3840,
+      "requests": [
+        {
+          "scope": "full",
+          "status": 200,
+          "transportBytes": 409174
+        }
+      ]
+    }
+  ],
+  "after": [
+    {
+      "slug": "ive",
+      "id": "recvxyHuKMaCIP",
+      "trial": 1,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 2392,
+      "requests": [
+        {
+          "scope": "work",
+          "status": 200,
+          "transportBytes": 4000
+        }
+      ]
+    },
+    {
+      "slug": "adya",
+      "id": "rec28ldfRTrH9V",
+      "trial": 1,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 2702,
+      "requests": [
+        {
+          "scope": "work",
+          "status": 200,
+          "transportBytes": 3379
+        }
+      ]
+    },
+    {
+      "slug": "cherrybullet",
+      "id": "recvxyH5pza4kq",
+      "trial": 1,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 3712,
+      "requests": [
+        {
+          "scope": "work",
+          "status": 200,
+          "transportBytes": 4187
+        }
+      ]
+    },
+    {
+      "slug": "ive",
+      "id": "recvxyHuKMaCIP",
+      "trial": 2,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 4158,
+      "requests": [
+        {
+          "scope": "work",
+          "status": 200,
+          "transportBytes": 4020
+        }
+      ]
+    },
+    {
+      "slug": "adya",
+      "id": "rec28ldfRTrH9V",
+      "trial": 2,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 2628,
+      "requests": [
+        {
+          "scope": "work",
+          "status": 200,
+          "transportBytes": 3363
+        }
+      ]
+    },
+    {
+      "slug": "cherrybullet",
+      "id": "recvxyH5pza4kq",
+      "trial": 2,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 3480,
+      "requests": [
+        {
+          "scope": "work",
+          "status": 200,
+          "transportBytes": 4200
+        }
+      ]
+    },
+    {
+      "slug": "ive",
+      "id": "recvxyHuKMaCIP",
+      "trial": 3,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 2369,
+      "requests": [
+        {
+          "scope": "work",
+          "status": 200,
+          "transportBytes": 4014
+        }
+      ]
+    },
+    {
+      "slug": "adya",
+      "id": "rec28ldfRTrH9V",
+      "trial": 3,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 2445,
+      "requests": [
+        {
+          "scope": "work",
+          "status": 200,
+          "transportBytes": 3375
+        }
+      ]
+    },
+    {
+      "slug": "cherrybullet",
+      "id": "recvxyH5pza4kq",
+      "trial": 3,
+      "linkIdVerified": true,
+      "detailUrlVerified": true,
+      "width": 1265,
+      "toButtonMs": 2340,
+      "requests": [
+        {
+          "scope": "work",
+          "status": 200,
+          "transportBytes": 4169
+        }
+      ]
+    }
+  ]
+}

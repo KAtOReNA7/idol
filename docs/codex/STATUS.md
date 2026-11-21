@@ -2,11 +2,15 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v214，51 团、605 支有视频的作品、9 个目录占位、527 个舞台。599 支 MV 支持照片下评分。NewJeans《Attention》五张成员卡全部显示 2022 年首发期照片。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v214/publication.json) |
+| 正式站 | v215，51 团、605 支有视频的作品、9 个目录占位、527 个舞台。直达 MV 时按作品读取。599 支 MV 支持照片下评分。NewJeans《Attention》五张成员卡均采用 2022 年首发期照片。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v215/publication.json) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `1e5bcd7c`，发布标签 `site/v214`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `efc32f91`，发布标签 `site/v215`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v215 在正式站匿名直达 IVE、ADYA、Cherry Bullet 的三支样本时，目录分别从 2,125,457 个解码字节降至 12,005、7,272、11,574 字节，合计减少 99.52%。关联作品、成员身份和评分关系均已与全馆逐项核对。隔离快照的 614 个入口全部通过，合计减少 99.62%。[三团正式响应](evidence/20261122-v215/formal-anonymous-catalog.json) · [614 个入口与保存重试](worklogs/20261122-work-detail-catalog.md)
+
+正文宽 1,265 px 的正式站实测中，从点击团页作品卡到详情播放按钮可见，三轮中位数分别为 IVE 2,234 → 2,392 ms、ADYA 2,321 → 2,628 ms、Cherry Bullet 4,084 → 3,480 ms。前两团变慢，第三团缩短 604 ms。[两版逐轮记录](evidence/20261122-v215/formal-detail-latency.json)
 
 v214 将《Attention》原有的四张跨期成员图换为同一次发行的照片，DANIELLE 的同组原照也有了统一的 480 × 640 预览。五张首次展示的文件合计从 717,023 字节降至 150,462 字节。正式域名的五张小图和五张宽 2,000 px 的完整照片均已解码并核对。375 px 正文宽度下五张卡的原图、关闭后回焦和照片下评分均已实点。标明跨期的卡位从 198 减至 194 个。[五位成员的官方出处](worklogs/20261122-newjeans-attention-portraits.md) · [正式图片读数](evidence/20261122-v214/online-assets.json) · [正式手机逐卡操作](evidence/20261122-v214/formal-attention.json)
 
@@ -22,7 +26,7 @@ Hearts2Hearts 待看 10 张和全部 13 张作品封面均在 v208 正式站解�
 
 ## 线上内容
 
-- 正式站 51 团的首页、成员目录在两档宽度共 204 次完成浏览，横向溢出为 0。[逐页正式回读](evidence/20261121-release-periods/all-group-routes.json)
+- 正式站 51 团的首页、成员目录在两档宽度共 204 次完成浏览，横向溢出为 0。v213 另在实测正文宽 1,265 px 的 51 团首页检查首屏字体、背景和图片，抽查的 67 张大图全部解码。[逐页正式回读](evidence/20261121-release-periods/all-group-routes.json) · [逐团视觉复核](worklogs/20261122-formal-home-design.md)
 - IVE 使用 2022 年 4 月官网团标及《LOVE DIVE》时期方向。两个发行时期各有六张具名肖像、原图、出处和作品导航。手机正式首页第 640 像素出现第一张成员照。NewJeans、ADYA、W!TCHX、GENBLUE 和 Rocket Punch 已上线前轮审核的 22 张目录肖像。[IVE 实测](evidence/20261121-release-periods/rosters-and-eras.json) · [前轮逐团记录](worklogs/20261121-artist-brand.md)
 - STAYC、ITZY、NMIXX、aespa 与 LE SSERAFIM 在 390 × 900 手机上，第 260–279 像素即可看到成员图，姓名均在首屏。另有 17 团换为经当期官网、公司或官方频道核实的标志。VVUP 的 2024 官方头像用于《4 Life》详情。[成员入口](evidence/20261121-release-periods/rosters-and-eras.json) · [团标审查与实页](worklogs/20261121-official-marks.md)
 - 两轮合计 204 支 MV、1,274 个认人位置换图，原有 1,226 个第三方具名截图位置均已替换默认图。图注分别注明本作、同期或跨期，原作品图仍可打开。最新 84 支在正式站逐支核验。[逐图记录和前后对照](evidence/20261121-mv-release-portraits/review.md)
@@ -30,8 +34,8 @@ Hearts2Hearts 待看 10 张和全部 13 张作品封面均在 v208 正式站解�
 
 ## 工程与下一步
 
-v214 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4,100 项，Windows 通过 3,922 项、失败 139 项、跳过 39 项，WSL 通过 3,926 项、失败 135 项、跳过 39 项。两边均新增一条通过的《Attention》回归，余下失败与 v213 逐项相同。v213 已将四团的作品评分、草稿和返回改为现行界面与隔离 D1 验收，消除 27 条旧失败。[v214 双平台结果](evidence/20261122-v214/tests.json) · [四团详情验收](worklogs/20261122-current-detail-regression.md)
+v215 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4,106 项，Windows 通过 3,929 项、失败 138 项、跳过 39 项，WSL 通过 3,933 项、失败 134 项、跳过 39 项。相对 v214，两边均通过新加的六项回归，另外消除一条服务端首次渲染失败。余下失败均在上个版本出现。v213 已更新四团的作品评分、草稿、返回与隔离 D1 验收，消除 27 条旧失败。[v215 双平台结果](evidence/20261122-v215/tests.json) · [v214 双平台结果](evidence/20261122-v214/tests.json) · [四团详情验收](worklogs/20261122-current-detail-regression.md)
 
-后续先压缩直达 MV 详情时初次读取的全馆目录，复测作品、关联成员、评分和返回。继续核四个独占舞台的同场站内高清来源，以及剩余 194 张已标注跨期的认人照。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑的顺序。个人目录批量读取在连接器提供对应工具时验证。[访问耗时与目录大小](worklogs/20261122-artist-catalog-speed.md) · [两档宽度的排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
+后续继续核四个独占舞台的同场站内高清来源，以及剩余 194 张已标注跨期的认人照。部分首页的主图晚于目录出现，下一轮比较首图请求、解码和可见的时点。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑的顺序。个人目录批量读取在连接器提供对应工具时验证。[首屏图片与待讨论体验](worklogs/20261122-formal-home-design.md) · [两档宽度的排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
 
 前轮工程优化、发布与原始审查分别保存在各自的工作记录中。[上一正式版 v203](v203-release-20261030.md) · [项目审查](worklogs/20261121-project-audit.md) · [历史协作与验收](https://github.com/KAtOReNA7/idol/blob/0e77838a88f9ff9b14fb67f803156534c7c651e1/docs/codex/STATUS.md)

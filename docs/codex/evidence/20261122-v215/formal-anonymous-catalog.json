@@ -1,0 +1,64 @@
+{
+  "site": "https://idol-lens-private.wuke40758.chatgpt.site",
+  "mode": "Anonymous HTTPS GET, without site cookies, Authorization or private reads. Same endpoint and exact Prefer header used before and after. Bytes are measured after HTTP decoding and do not represent wire transfer or browser timing.",
+  "endpoint": "/api/catalog?shape=display-v1",
+  "versions": {
+    "before": 214,
+    "after": 215
+  },
+  "measuredAt": {
+    "before": "2026-11-21T20:45:12.767Z",
+    "after": "2026-11-21T20:50:34.773Z"
+  },
+  "full": {
+    "decodedBytes": 2125457,
+    "groups": 51,
+    "works": 614
+  },
+  "works": {
+    "ive": {
+      "workId": "recvxyHuKMaCIP",
+      "before": 2125457,
+      "after": 12005,
+      "reductionPercent": 99.4352,
+      "fullCatalogWorkCount": 614,
+      "retainedWorkCount": 1,
+      "rosterSize": 6,
+      "ratingRelations": 6,
+      "preferenceApplied": "omit-stage-candidates, work-detail=recvxyHuKMaCIP"
+    },
+    "adya": {
+      "workId": "rec28ldfRTrH9V",
+      "before": 2125457,
+      "after": 7272,
+      "reductionPercent": 99.6579,
+      "fullCatalogWorkCount": 614,
+      "retainedWorkCount": 1,
+      "rosterSize": 5,
+      "ratingRelations": 5,
+      "preferenceApplied": "omit-stage-candidates, work-detail=rec28ldfRTrH9V"
+    },
+    "cherrybullet": {
+      "workId": "recvxyH5pza4kq",
+      "before": 2125457,
+      "after": 11574,
+      "reductionPercent": 99.4555,
+      "fullCatalogWorkCount": 614,
+      "retainedWorkCount": 1,
+      "rosterSize": 10,
+      "ratingRelations": 7,
+      "preferenceApplied": "omit-stage-candidates, work-detail=recvxyH5pza4kq"
+    }
+  },
+  "acrossThree": {
+    "before": 6376371,
+    "after": 30851,
+    "reductionPercent": 99.5162
+  },
+  "fieldChecks": [
+    "Each returned work and version is deep-equal to the live full catalog with the expected IDs.",
+    "All rating rows linked to the requested work equal their full-catalog representation.",
+    "Retained members and groups equal their full-catalog records.",
+    "Anonymous full and partial catalogs omit owner-only personal MV ratings."
+  ]
+}

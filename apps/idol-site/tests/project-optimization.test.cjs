@@ -8,13 +8,13 @@ const {DatabaseSync}=require('node:sqlite');
 const ts=require('typescript');
 const load=require('./helpers/public-artist-loader.cjs');
 
-test('published program notes appear only for the four reviewed work, group and MV combinations',()=>{
+test('published program notes appear only for the five reviewed work, group and MV combinations',()=>{
  const {applyStageResearchFollowups}=load('lib/idol/stage-research-followups.ts');
  const {validStageResearchNote}=load('lib/idol/stage-public-research.ts');
  const {records}=require('../data/stages/research-followups-20261121.json');
  const inventory=require('../data/stages/inventory.json').works;
  const stages=require('../data/stage-videos.json');
- assert.equal(new Set(records.map(row=>row.workId)).size,4);
+ assert.equal(new Set(records.map(row=>row.workId)).size,5);
  for(const row of records){
   const target=inventory.find(work=>work.recordId===row.workId);
   assert.ok(target.groupIds.includes(row.groupId));

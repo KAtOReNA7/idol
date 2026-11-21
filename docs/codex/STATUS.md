@@ -2,17 +2,19 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v217，51 团、605 支有视频的作品、9 个目录占位、527 个舞台。599 支 MV 支持照片下评分。IVE《ATTITUDE》已在本站实播至 3840 × 2160，三个团的首页团照可在入口出现时直接打开原图。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v217/publication.json) |
+| 正式站 | v218，51 团、605 支有视频的作品、9 个目录占位、527 个舞台。599 支 MV 支持照片下评分。IVE《ATTITUDE》已在本站实播至 3840 × 2160。28 团的 30 个已有首页团照入口首次点击均能打开对应原图。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v218/publication.json) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `9eb60cb0`，发布标签 `site/v217`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，正式应用提交 `0468a97e`，发布标签 `site/v218`。[逐团交互验收](evidence/20261122-v211/browser-journeys.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v218 在 v217 的三团基础上追加 25 团、27 个首页团照入口。两版的 51 团正式首页均返回 200。最初返回的网页在 20 团提供 21 个原图链接，另 8 团等待目录读入后提供 9 个。首次能点时逐一实测，共 30/30 打开正确原图。页面就绪后，30 个弹窗均已核对关闭时回到各自入口。[51 团正式 HTML](evidence/20261122-v218/formal-home-links.json) · [30 个入口实点](worklogs/20261122-v218-release.md)
 
 v217 的《ATTITUDE》在导演提供的站内播放器上实际解码 3840 × 2160，静音播放读数前进，码率未测得。Cherry Bullet、Rocket Punch、Weeekly 的团照初次点击均能打开原图，页面就绪后也均能在弹窗查看并回焦。三团各三轮的作品详情等待中位数从 1,826 → 1,800 ms（IVE）、1,721 → 1,740 ms（ADYA）、2,032 → 1,833 ms（Cherry Bullet）。[播放、原图与访问时间](worklogs/20261122-v217-release.md)
 
 v216 调整了 IZ*ONE、NMIXX、ITZY、Weeekly 和 KISS OF LIFE 八支作品的 63 个成员位置。已标明跨期的卡位从 194 减至 146 个。Cherry Bullet、Rocket Punch 与 Weeekly 的四张首页展示图合计从 11,238,516 字节降至 1,216,442 字节，减少 89.18%。正式页面每团各两次，在相同显示宽度下，团照解码时间中位数分别缩短 1,255.5、1,295 和 734 ms。[成员原图与出处](worklogs/20261122-eight-mv-release-portraits.md) · [首页正式数据](worklogs/20261122-v216-release.md)
 
-63 张成员预览和 63 张完整原图在正式站均已解码。按每个展示文件计一次，八支作品的默认成员图从 23,251,746 字节降至 2,211,244 字节，减少 90.49%。375 px 和 1,265 px 正文下，每张照片下的本人评分、原图和关闭回焦均已实点。三团首页在团照刚出现时第一次点击均未响应，第二次可打开原图并回焦。[八首正式字节对照](evidence/20261122-v216/formal-image-comparison.json) · [双宽交互实测](worklogs/20261122-v216-release.md) · [团照首击实测](evidence/20261122-v216/formal-home-clicks.json)
+63 张成员预览和 63 张完整原图在正式站均已解码。按每个展示文件计一次，八支作品的默认成员图从 23,251,746 字节降至 2,211,244 字节，减少 90.49%。375 px 和 1,265 px 正文下，每张照片下的本人评分、原图和关闭回焦均已实点。v216 发现的三团首页原图第一次点击未响应，已在 v217 修复。[八首正式字节对照](evidence/20261122-v216/formal-image-comparison.json) · [双宽交互实测](worklogs/20261122-v216-release.md) · [三团首次操作](evidence/20261122-v217/formal-home-originals.json)
 
 v215 在正式站匿名直达 IVE、ADYA、Cherry Bullet 的三支样本时，目录分别从 2,125,457 个解码字节降至 12,005、7,272、11,574 字节，合计减少 99.52%。关联作品、成员身份和评分关系均已与全馆逐项核对。隔离快照的 614 个入口全部通过，合计减少 99.62%。[三团正式响应](evidence/20261122-v215/formal-anonymous-catalog.json) · [614 个入口与保存重试](worklogs/20261122-work-detail-catalog.md)
 
@@ -40,7 +42,7 @@ Hearts2Hearts 待看 10 张和全部 13 张作品封面均在 v208 正式站解�
 
 ## 工程与下一步
 
-v217 的 Windows 和 WSL 均通过 `npm run verify`，各完成 4,115 项全量用例。Windows 通过 3,938 项、失败 138 项、跳过 39 项，WSL 通过 3,942 项、失败 134 项、跳过 39 项。两边相对 v216 均无新增失败。[v217 双平台结果](evidence/20261122-v217/tests.json)
+v218 的 Windows 和 WSL 均通过 `npm run verify`，各完成 4,115 项全量用例。Windows 通过 3,938 项、失败 138 项、跳过 39 项，WSL 通过 3,942 项、失败 134 项、跳过 39 项。两边与 v217 同名套件、文件和用例的结果相同，连续两版均无新增失败。[v218 双平台结果](evidence/20261122-v218/tests.json) · [v217 双平台结果](evidence/20261122-v217/tests.json)
 
 v216 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4,114 项，Windows 通过 3,937 项、失败 138 项、跳过 39 项，WSL 通过 3,941 项、失败 134 项、跳过 39 项。新增八项均通过，余下失败和 v215 逐项相同。[v216 双平台结果](evidence/20261122-v216/tests.json)
 

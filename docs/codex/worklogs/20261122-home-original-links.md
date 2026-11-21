@@ -14,7 +14,7 @@
 
 ## 七团共用首页
 
-IVE、ILLIT、MADEIN、PURPLE KISS、QWER、RESCENE 和 tripleS 的首页共用团照组件。IVE 的《LOVE DIVE》学院概念照和 2022 年 STARSHIP 官网档案照各有一个独立入口。其余六团各有一个团照入口。八处均沿用此前弹窗的原件，现可由首屏 HTML 直接访问。逐条核对了图片文件、静态链接以及弹窗接收的地址，图片、组件及弹窗专项 221 项通过。
+IVE、ILLIT、MADEIN、PURPLE KISS、QWER、RESCENE 和 tripleS 的首页共用团照组件。IVE 的《LOVE DIVE》学院概念照和 2022 年 STARSHIP 官网档案照各有一个独立入口。其余六团各有一个团照入口。匿名首次访问这七团时，服务器先发导航与读取状态。目录加载后八个入口才随照片出现，首次点击均能打开对应原件。图片、组件及弹窗专项 221 项通过。[正式站两种加载情况](20261122-v218-release.md)
 
 ## 十一个独立团页
 
@@ -24,9 +24,9 @@ ADYA、AtHeart、BEWAVE、Candy Shop、Geenius、HITGS、ODD YOUTH、SPIA、TRAC
 
 ## 其余七个团页与全团核对
 
-BADVILLAIN、EVERGLOW、fromis_9、i-dle、IZ*ONE、LOONA 和 WOOAH 的七个首页团照入口均已绑定原件。LOONA 使用十二人历史团照。三张分队照片保留原有操作。WOOAH 单独处理首页团照，其他八个图片入口沿用既有行为。
+BADVILLAIN、EVERGLOW、fromis_9、i-dle、IZ*ONE、LOONA 和 WOOAH 的七个首页团照入口均已绑定原件。LOONA 使用十二人历史团照。三张分队照片保留原有操作。WOOAH 首页另有六个历年成员入口、三个封面入口，共九处沿用既有行为。
 
-在同一份项目快照的 51 个正式路由上，比对修改前后的首页 HTML 和本地原件，共找到 28 团、29 张全团原图、30 个入口。图片出现时已有有效原件链接的入口从 0 个增至 30 个。IVE 有两张图，AtHeart 的两个入口指向同一张图。逐入口地址见 `apps/idol-site/tests/fixtures/home-group-originals.json`。
+使用相同项目快照渲染 51 团的内容组件，并核对本地原件，共找到 28 团、29 张全团原图、30 个入口。图片出现时已有有效原件链接的入口从 0 个增至 30 个。正式站的初始网页在 20 团提供 21 个链接，另 8 团的 9 个入口随目录出现，正式浏览器逐项点击后均打开了目标图片。IVE 有两张图，AtHeart 的两个入口指向同一张图。[逐入口地址](../../../apps/idol-site/tests/fixtures/home-group-originals.json) · [正式站首击](../evidence/20261122-v218/formal-first-clicks.json)
 
 | 其余团页 | 核对结果 |
 | --- | --- |

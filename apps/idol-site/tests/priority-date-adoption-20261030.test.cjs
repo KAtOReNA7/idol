@@ -3,6 +3,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
 const load=require('./helpers/public-artist-loader.cjs');
 const {beforePriorityTimelineBytes,beforePriorityReportedRecords,receipt}=require('./helpers/priority-date-baseline.cjs');
+const {agencyEventIds}=require('./helpers/ifeye-agency-baseline.cjs');
 const built=require('esbuild').buildSync({stdin:{contents:"export {ArtistTimeline} from './components/artist-timeline';export {TimelineReportedRecords} from './components/timeline-reported-records';",resolveDir:process.cwd()},bundle:true,write:false,platform:'node',format:'cjs',jsx:'automatic',external:['react','react/*'],loader:{'.css':'empty'},logLevel:'silent'});
 const componentModule=new (require('node:module'))(__filename,module);componentModule.filename=__filename;componentModule.paths=module.paths;componentModule._compile(built.outputFiles[0].text,__filename);
 const {ArtistTimeline,TimelineReportedRecords}=componentModule.exports;
@@ -40,7 +41,10 @@ test('dates retain exact approved precision and every existing relationship iden
   for(const field of ['id','groupId','eventType','memberIds','workIds','releaseKey','relatedEventIds'])assert.deepEqual(current[field],c.before[field]);
   assert.ok(c.before.sources.every(s=>current.sources.some(n=>JSON.stringify(n)===JSON.stringify(s))),'original source objects retained');
  }
- const events=registry.flatMap(g=>doc(g.slug).events);assert.equal(events.length,623);assert.equal(events.filter(e=>e.reviewStatus==='ready').length,621);
+ const events=registry.flatMap(g=>doc(g.slug).events);
+ const october=events.filter(e=>!agencyEventIds.includes(e.id));
+ assert.equal(october.length,623);assert.equal(october.filter(e=>e.reviewStatus==='ready').length,621);
+ assert.equal(events.length,625);assert.equal(events.filter(e=>e.reviewStatus==='ready').length,623);
  assert.deepEqual(events.filter(e=>e.reviewStatus==='hold').map(e=>e.id).sort(),['e-atheart-aurora-second-hiatus-announcement','e-udtt-jessica-provisional-join-candidate']);
  for(const [slug,id] of [['atheart','e-atheart-aurora-second-hiatus-announcement'],['udtt','e-udtt-jessica-provisional-join-candidate']]){
   const current=doc(slug).events.find(e=>e.id===id),old=JSON.parse(beforePriorityTimelineBytes(slug,Buffer.from(JSON.stringify(doc(slug),null,2)+'\n'))).events.find(e=>e.id===id);

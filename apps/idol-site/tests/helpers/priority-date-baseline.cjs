@@ -1,5 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),crypto=require('node:crypto');
+const {beforeAgencyTimelineBytes}=require('./ifeye-agency-baseline.cjs');
 const receipt=require('../../../../docs/codex/evidence/20261030-priority-crosscheck/date-adoption.json');
 const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 const bytes=value=>Buffer.from(JSON.stringify(value,null,2)+'\n');
@@ -12,6 +13,7 @@ const pins={
  bewave:'3ea86955021317aadf87bb6c8d569d9852b365a16500d323b2cf8c090b2b916d',
 };
 function beforePriorityTimelineBytes(slug,current){
+ current=beforeAgencyTimelineBytes(slug,current);
  const document=receipt.documents.find(d=>d.slug===slug);if(!document)return current;
  assert.equal(document.beforeSha256,pins[slug],'reviewed priority date preimage pin');
  assert.equal(hash(current),document.afterSha256,'complete reviewed priority date document '+slug);

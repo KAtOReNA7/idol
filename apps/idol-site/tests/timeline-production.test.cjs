@@ -16,6 +16,7 @@ const categoryCorrections=require('../evidence/category-resolution-20261027/time
 const continuousEvidence=require('../../../docs/codex/evidence/20261028-continuous/evidence-upgrade-proposal-c.json');
 const reportRecords=require('../data/timeline-reported-records.json').records;
 const {beforePriorityTimelineBytes,receipt:priorityDates}=require('./helpers/priority-date-baseline.cjs');
+const {agencyEventIds,beforeAgencyTimelineBytes,beforeAgencyEditorialBytes}=require('./helpers/ifeye-agency-baseline.cjs');
 // Reviewed native pages have their own event/edition identities. Freeze their
 // complete source documents rather than infer acceptance from current output.
 const nativeContracts={
@@ -119,7 +120,8 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
   // This ledger predates the two independently verified official-source corrections.
   // Their exact before/after bytes and identities are checked below and in public-data-completion.
   for(const item of Object.values(require('../../../docs/codex/evidence/20261025-data-completion/timeline-evidence.json')))events.set(item.eventId,item.before);
-  validateCorrectionChain({corrections:[correction,require('../evidence/approved-visual-repairs/badvillain-overstep-correction.json'),require('../evidence/approved-visual-repairs/madein-rise-correction.json')],events,ledger:require('../HANDOFF/batch-f/integration-ledger.json'),readBytes:p=>fs.readFileSync(path.join(root,p)),snapshot:{tables:raw}});
+  const {beforePriorityRead}=require('./helpers/priority-date-baseline.cjs');
+  validateCorrectionChain({corrections:[correction,require('../evidence/approved-visual-repairs/badvillain-overstep-correction.json'),require('../evidence/approved-visual-repairs/madein-rise-correction.json')],events,ledger:require('../HANDOFF/batch-f/integration-ledger.json'),readBytes:beforePriorityRead(p=>fs.readFileSync(path.join(root,p))),snapshot:{tables:raw}});
   assert.equal(hash(bytes),correction.afterDocumentSha256);
   const historical=JSON.parse(bytes);historical.events=historical.events.map(e=>e.id===correction.eventId?correction.before:e);
   assert.equal(hash(JSON.stringify(historical,null,2)+'\n'),hashes[file],'restoring only the recorded before event must reproduce the unchanged historical file hash');
@@ -137,8 +139,9 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(historical,null,2)+'\n').digest('hex'),hashes[file]);
   assert.equal(correction.beforeDocumentSha256,hashes[file]);
  }else if(categoryCorrections.documents.some(d=>d.slug===group.slug)){
-  const d=categoryCorrections.documents.find(d=>d.slug===group.slug);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),d.afterDocumentSha256);
-  const historical=JSON.parse(bytes);historical.events=historical.events.map(e=>categoryCorrections.corrections.find(c=>c.eventId===e.id)?.before??e);historical.gaps=d.beforeGaps;
+  const d=categoryCorrections.documents.find(d=>d.slug===group.slug),october=beforeAgencyTimelineBytes(group.slug,bytes);
+  assert.equal(sha(october),d.afterDocumentSha256);
+  const historical=JSON.parse(october);historical.events=historical.events.map(e=>categoryCorrections.corrections.find(c=>c.eventId===e.id)?.before??e);historical.gaps=d.beforeGaps;
   assert.equal(crypto.createHash('sha256').update(JSON.stringify(historical,null,2)+'\n').digest('hex'),hashes[file]);assert.equal(d.beforeDocumentSha256,hashes[file]);
  }else assert.equal(sha(beforeContinuousSourceUpgrade(group.slug,bytes)),hashes[file]);
  const input=JSON.parse(bytes),loaded=await product.loadArtistTimeline(group.slug);
@@ -152,7 +155,8 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
  const baselineGroup=accepted.groups[group.slug],riseId='e-madein-rise-release-carrier-hold';
  const promoted=group.slug==='madein'?riseId:group.slug==='idle'?'e-idle-cube-renewal':group.slug==='newjeans'?'e-newjeans-attention-mv':null;
  const promotedIds=[...(promoted?[promoted]:[]),...categoryCorrections.corrections.filter(c=>c.slug===group.slug).map(c=>c.eventId),...priorityDates.changes.filter(c=>c.slug===group.slug).map(c=>c.eventId)];
- const acceptedGroup={...baselineGroup,ready:[...baselineGroup.ready,...promotedIds].sort(),hold:baselineGroup.hold.filter(id=>!promotedIds.includes(id))};
+ const additions=group.slug==='ifeye'?agencyEventIds:[];
+ const acceptedGroup={...baselineGroup,ready:[...baselineGroup.ready,...promotedIds,...additions].sort(),hold:baselineGroup.hold.filter(id=>!promotedIds.includes(id))};
  assert.equal(input.groupId,acceptedGroup.groupId);
  assert.deepEqual(ready.map(e=>e.id).sort(),acceptedGroup.ready,'canonical ready IDs must equal the independently recorded accepted set');
  assert.deepEqual(held.map(e=>e.id).sort(),acceptedGroup.hold,'held IDs must remain the exact accepted set');
@@ -167,7 +171,11 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
   if(group.slug==='lesserafim'){assert.equal(expected.length,25);assert.match(text(axis),/公布宫胁咲良、金采源签约SOURCE MUSIC/);assert.match(text(axis),/发行第四张迷你专辑《CRAZY》/);assert.doesNotMatch(text(axis),/《CRAZY》数字发行|金佳蓝/);assert.match(text(axis),/金佳览暂停活动/);assert.match(text(axis),/宣布金佳览离团并解约/);}
  }
  const contract=nativeContracts[group.slug];let nativeData;
- if(contract){const bytes=fs.readFileSync(path.join(root,'data',contract[0]+'.json'));assert.equal(sha(bytes),contract[1],'native event/edition identities and reviewed data are frozen');nativeData=JSON.parse(bytes);}
+ if(contract){
+  const bytes=fs.readFileSync(path.join(root,'data',contract[0]+'.json'));
+  assert.equal(sha(group.slug==='ifeye'?beforeAgencyEditorialBytes(bytes):bytes),contract[1],'exact historical native event and edition identities');
+  nativeData=JSON.parse(bytes);
+ }
  const actualQueries=['?section=updates','?section=overview'];
  // Shared hosts intentionally ignore retired filter parameters; GENBLUE has
  // its own still-supported filter contract. Effect hosts use bounded routes.
@@ -219,10 +227,13 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
  }
  assert.equal(JSON.stringify(catalog),before);
 });
-test('all 51 canonical groups retain 621 accepted events, two isolated holds and immutable public fixture',()=>{
+test('all 51 groups retain 621 October events, two newly confirmed events, two isolated holds and immutable public fixture',()=>{
  const documents=registry.map(g=>JSON.parse(fs.readFileSync(path.join(root,'data/artist-timelines',g.slug+'.json'))));
  const events=documents.flatMap(d=>d.events);
- assert.equal(registry.length,51);assert.equal(events.filter(e=>e.reviewStatus==='ready').length,621);assert.equal(events.filter(e=>e.reviewStatus==='hold').length,2);
+ const ready=events.filter(e=>e.reviewStatus==='ready');
+ assert.equal(registry.length,51);assert.equal(ready.filter(e=>!agencyEventIds.includes(e.id)).length,621);
+ assert.deepEqual(ready.filter(e=>agencyEventIds.includes(e.id)).map(e=>e.id),agencyEventIds);
+ assert.equal(ready.length,623);assert.equal(events.filter(e=>e.reviewStatus==='hold').length,2);
  assert.deepEqual(Object.keys(accepted.groups).sort(),registry.map(g=>g.slug).sort());
  assert.deepEqual(reportRecords.filter(r=>r.eventDate===null).map(r=>r.eventId).sort(),events.filter(e=>e.reviewStatus==='hold').map(e=>e.id).sort());
  assert.equal(JSON.stringify(catalog),before);

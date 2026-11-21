@@ -21,7 +21,7 @@ for(const slug of ['ifeye','genblue','rocketpunch'])test(`${slug}: fixed promoti
  }
  assert.equal(JSON.stringify(doc),before,'rendering must never mutate data');
 });
-test('the seven historical holds retain exact baseline objects before the five explicitly reviewed priority promotions',()=>{
+test('the October ledger retains seven historical holds before the five priority promotions and the later agency notice',()=>{
  const ledger=require('../HANDOFF/batch-f/integration-ledger.json');const {digest}=require('./helpers/timeline-correction-chain.cjs');
  const held=[];let ready=0,total=0;
  const {beforePriorityAndContinuousTimelineBytes}=require('./helpers/priority-date-baseline.cjs');

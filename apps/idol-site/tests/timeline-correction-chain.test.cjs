@@ -9,7 +9,7 @@ const baseline={corrections:[require('../HANDOFF/timeline-corrections/triples-as
 for(const c of Object.values(require('../../../docs/codex/evidence/20261025-data-completion/timeline-evidence.json')))baseline.events.set(c.eventId,c.before);
 function input(){return {...structuredClone(baseline),readBytes:read};}
 function rehash(a){const c=a.corrections[0];c.beforeSha256=digest(c.before);c.afterSha256=digest(c.after);c.diff=c.allowedFields.map(field=>({field,before:c.before[field],after:c.after[field]}));a.events.set(c.eventId,structuredClone(c.after));}
-test('eight sourced corrections chain exact historical before to exact current after; 623 unique events remain',()=>{
+test('the October correction chain recovers 623 unique historical events and eight reviewed corrections',()=>{
  const a=input(),historical=validateCorrectionChain(a),c=a.corrections[0];
  assert.equal(a.events.size,623);assert.equal(historical.size,623);
  assert.deepEqual(historical.get(c.eventId),c.before);assert.equal(c.before.eventDate,null);assert.deepEqual(c.before.workIds,[]);

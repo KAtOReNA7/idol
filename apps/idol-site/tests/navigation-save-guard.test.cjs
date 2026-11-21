@@ -26,11 +26,12 @@ async function editorScenario(table, scenario) {
   let source = fs.readFileSync(filename, 'utf8').split('(async()=>{')[0];
   source = replaceRequired(source, 'let saveFailure=null;', 'let saveFailure=null;let saveGate=null;let recordPending=null;');
   source = replaceRequired(source, "revision:'a'.repeat(64),watchedOptions:", "revision:'a'.repeat(64),pendingSave:recordPending===u.searchParams.get('table'),watchedOptions:");
-  source = replaceRequired(source, "if(url==='/api/save'){let p=JSON.parse(opts.body);", "if(url==='/api/save'){if(saveGate)await saveGate;let p=JSON.parse(opts.body);");
+  source = replaceRequired(source, "if(url==='/api/save'){", "if(url==='/api/save'){if(saveGate)await saveGate;");
   source += `
 (async () => {
   const table = ${JSON.stringify(table)};
   const scenario = ${JSON.stringify(scenario)};
+  let finishPending;
   if (scenario === 'serverPending') recordPending = table;
   await settle();
   if (table === 'ratings') {
@@ -44,6 +45,7 @@ async function editorScenario(table, scenario) {
     saveGate = new Promise(resolve => release = resolve);
     const saveButton = table === 'works' ? footer : find(mt, n => n.type === 'button' && txt(n).includes('保存此条记录'));
     const operation = saveButton.props.onClick();
+    finishPending = async () => { release(); await operation; };
     await settle();
     if (scenario === 'unknownResult') {
       saveFailure = {error: 'SAVE_UNCERTAIN'};
@@ -65,13 +67,14 @@ async function editorScenario(table, scenario) {
     mockedReads: requests.filter(r => r.url.startsWith('/api/records?')).length,
     mockedWrites: requests.filter(r => r.url === '/api/save').length
   };
+  if (scenario === 'saving') await finishPending();
   report(observation);
 })().catch(reject);
 `;
   return new Promise((resolve, reject) => {
     vm.runInNewContext(source, {
       require: createRequire(filename), __dirname: testDirectory,
-      console, URL, URLSearchParams, crypto, structuredClone, setImmediate, AbortController, setTimeout, clearTimeout,
+      console, URL, URLSearchParams, crypto, structuredClone, setImmediate, AbortController, DOMException, setTimeout, clearTimeout,
       process, report: resolve, reject
     });
   });

@@ -3,5 +3,5 @@ import content from '@/data/weeekly-artist.json';
 import './weeekly-artist.css';
 
 export default function WeeeklyArtistPage() {
-  return <WeeeklyDesign content={content} />;
+  return <WeeeklyDesign content={content} useHomePreviews />;
 }

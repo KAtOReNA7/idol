@@ -20,6 +20,7 @@ test.before(async()=>{const output=path.join(directory,'entry.cjs');proof=await 
 test.after(()=>fs.rmSync(directory,{recursive:true,force:true}));
 const {artistCatalog, renderArtist, nativeSlugs} = require('./fixtures/current-artist-pages.cjs');
 const heroSources = require('./fixtures/approved-artist-heroes.json');
+const homePreviewSlots = {cherrybullet:['hero'], rocketpunch:['hero'], weeekly:['banner','hero']};
 const externalPlayable = /(?:youtube\.com|youtu\.be|bilibili\.com|x\.com)/;
 const privateModes = new Set(['ive','loona','aespa','kissoflife','stayc','nmixx','itzy','lesserafim','triples','madein','illit','qwer','purplekiss','rescene']);
 
@@ -38,14 +39,32 @@ for (const [index, artist] of registry.entries()) {
  const members = catalog.members.filter(member=>member.groupIds.includes(artist.groupId)||member.formerGroupIds?.includes(artist.groupId));
  test(`real ${artist.slug} overview serves its approved hero and usable member entry`,async()=>{
   const html=await renderArtist(artist,{},catalog);
-  const hero=images(html).find(img=>img.src===heroSources[artist.slug]);
-  assert.ok(hero?.alt?.trim(), 'approved source and accessible label');
-  assert.equal(hero.loading,'eager');
-  assert.equal(hero.fetchPriority,'high');
-  assert.equal(hero.decoding,'async');
+  const slots=homePreviewSlots[artist.slug];
+  const photos=slots ? slots.map(slot=>require(`../data/${artist.slug}-public.json`)[slot]) : [{image:heroSources[artist.slug]}];
+  assert.equal(photos[0].image,heroSources[artist.slug]);
+  const rendered=images(html);
+  const preloads=[...html.matchAll(/<link\b[^>]*>/g)].map(match=>attrs(match[0])).filter(link=>link.as==='image');
+  for (const photo of photos) {
+   const expected=photo.preview ?? photo;
+   const hero=rendered.find(img=>img.src===expected.image);
+   assert.ok(hero?.alt?.trim(), 'approved source and accessible label');
+   assert.equal(hero.loading,'eager');
+   assert.equal(hero.fetchPriority,'high');
+   assert.equal(hero.decoding,'async');
+   assert.ok(fs.existsSync(path.resolve(__dirname,'../public','.'+hero.src)));
+   if (slots) {
+    assert.ok(photo.preview);
+    assert.match(hero.src,/\.webp$/);
+    const publicFile=url=>path.resolve(__dirname,'../public','.'+url);
+    assert.ok(fs.statSync(publicFile(hero.src)).size<fs.statSync(publicFile(photo.image)).size,'first view uses the lighter file');
+    assert.equal(Number(hero.width),expected.width);
+    assert.equal(Number(hero.height),expected.height);
+    assert.ok(!rendered.some(img=>img.src===photo.image),'original is loaded only on request');
+    assert.ok(!preloads.some(link=>link.href===photo.image),'first load must not preload the original');
+   }
+  }
   assert.ok(members.length>=2);
   assert.match(html,/section=members|成员|PROFILE|MEMBERS/i);
-  assert.ok(fs.existsSync(path.resolve(__dirname,'../public','.'+hero.src)));
   noNestedInteractive(html);
  });
  test(`real ${artist.slug} works have valid group and video targets`,async()=>{

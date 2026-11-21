@@ -3,5 +3,5 @@ import content from '@/data/cherrybullet-artist.json';
 import './cherrybullet-artist.css';
 
 export default function CherryBulletArtistPage() {
-  return <CherryBulletDesign content={content} />;
+  return <CherryBulletDesign content={content} useHomePreviews />;
 }

@@ -1,0 +1,3111 @@
+{
+  "baseline": "150f5c0b428b4f3db7165eec5618e225c30a50be",
+  "candidate": "1d2236f889719fe37b95b269978aeaf0ca1c4d5f",
+  "scope": "Local Windows and WSL Linux npm test and npm run verify in apps/idol-site.",
+  "provenance": {
+    "baseline": "The site/v207 release receipt pins the application hash, failure totals and verify exits. The archived Linux run also contains its commit marker.",
+    "win": "The full suite used the Windows working tree after the final two runtime file changes, as confirmed by the run owner. The verification command was independently rerun for the committed candidate.",
+    "linux": "The final WSL run is from a detached checkout corroborated by final-1d2236f8/linux-commit. Results from the earlier e89e1e21 run are excluded."
+  },
+  "caseIdentity": "A failed case uses suite, repository-relative source test file, and TAP title. Outcome census uses suite, title, and same-title occurrence. Python normal and optimized runs are reported separately.",
+  "platforms": {
+    "win": {
+      "before": {
+        "full": {
+          "log": {
+            "name": "full-win.tap",
+            "bytes": 2839214,
+            "sha256": "e3c07366bd89eb7f24724c70babb18b451ef5d9532555040a006ad4ad0e22066"
+          },
+          "nodeSuites": {
+            "main": {
+              "tests": 3975,
+              "pass": 3763,
+              "fail": 173,
+              "cancelled": 0,
+              "skipped": 39,
+              "todo": 0
+            },
+            "isolatedArtistRuntime": {
+              "tests": 9,
+              "pass": 9,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "personalInsights": {
+              "tests": 31,
+              "pass": 31,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            }
+          },
+          "nodeTotal": {
+            "tests": 4015,
+            "pass": 3803,
+            "fail": 173,
+            "skipped": 39,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "pythonPassedByMode": {
+            "default": 4,
+            "optimized": 4
+          },
+          "exitCode": 1
+        },
+        "verify": {
+          "log": {
+            "name": "verify-win.log",
+            "bytes": 230639,
+            "sha256": "895e0648953b3526f7407dd37f709ae7f927d671784b6657bc85ee2d818a988b"
+          },
+          "nodeSuites": {
+            "current": {
+              "tests": 1213,
+              "pass": 1213,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "optimizedPythonPreflight": {
+              "tests": 19,
+              "pass": 19,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "builtAssets": {
+              "tests": 6,
+              "pass": 6,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            }
+          },
+          "typecheck": "passed",
+          "productionBuild": "passed",
+          "pythonPasses": {
+            "batch": 4,
+            "optimizedBatch": 4,
+            "builtCssHttp": 7
+          },
+          "stageValidation": {
+            "inventory": 614,
+            "sources": 527,
+            "valid": true
+          },
+          "supplementValidation": {
+            "works": 137,
+            "alternatives": 88,
+            "reviews": 70,
+            "runtimeAlternatives": 50,
+            "scoreBindings": 0
+          },
+          "assetValidation": {
+            "status": "passed",
+            "mode": "dry-run",
+            "publicRef": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+            "recognitionRef": "c953afa5a3829737dc6bfacd62439a524fe03df9",
+            "releasePortraitRef": "59e5d54969f46f43f7004c79667b524f549342b4",
+            "remoteCopies": 5995,
+            "remoteBytes": 3958966888,
+            "restrictedCopies": 10,
+            "restrictedAliases": 1,
+            "localAssets": 586,
+            "localBytes": 16905055
+          },
+          "cssFixture": {
+            "themes": 50,
+            "fontFiles": 105,
+            "fontPaths": 68,
+            "bundleBytes": 1210962
+          },
+          "exitCode": 0
+        }
+      },
+      "after": {
+        "full": {
+          "log": {
+            "name": "full-win.tap",
+            "bytes": 2890899,
+            "sha256": "f6d495defef9f52e07c51e4f7f8c8c1e79a050cd03fd0a5afd07677ecd397499"
+          },
+          "nodeSuites": {
+            "main": {
+              "tests": 3989,
+              "pass": 3780,
+              "fail": 170,
+              "cancelled": 0,
+              "skipped": 39,
+              "todo": 0
+            },
+            "isolatedArtistRuntime": {
+              "tests": 9,
+              "pass": 9,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "personalInsights": {
+              "tests": 31,
+              "pass": 31,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            }
+          },
+          "nodeTotal": {
+            "tests": 4029,
+            "pass": 3820,
+            "fail": 170,
+            "skipped": 39,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "pythonPassedByMode": {
+            "default": 4,
+            "optimized": 4
+          },
+          "exitCode": 1
+        },
+        "verify": {
+          "log": {
+            "name": "verify-win-1d2236f8.log",
+            "bytes": 235333,
+            "sha256": "f78796fa18da8f923ec6b0a1190d18d83db2fa331e6f12514210f14a1d7671c7"
+          },
+          "nodeSuites": {
+            "current": {
+              "tests": 1226,
+              "pass": 1226,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "optimizedPythonPreflight": {
+              "tests": 19,
+              "pass": 19,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "builtAssets": {
+              "tests": 6,
+              "pass": 6,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            }
+          },
+          "typecheck": "passed",
+          "productionBuild": "passed",
+          "pythonPasses": {
+            "batch": 4,
+            "optimizedBatch": 4,
+            "builtCssHttp": 7
+          },
+          "stageValidation": {
+            "inventory": 614,
+            "sources": 527,
+            "valid": true
+          },
+          "supplementValidation": {
+            "works": 137,
+            "alternatives": 88,
+            "reviews": 70,
+            "runtimeAlternatives": 50,
+            "scoreBindings": 0
+          },
+          "assetValidation": {
+            "status": "passed",
+            "mode": "dry-run",
+            "publicRef": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+            "recognitionRef": "c953afa5a3829737dc6bfacd62439a524fe03df9",
+            "releasePortraitRef": "59e5d54969f46f43f7004c79667b524f549342b4",
+            "remoteCopies": 5995,
+            "remoteBytes": 3958966888,
+            "restrictedCopies": 10,
+            "restrictedAliases": 1,
+            "localAssets": 586,
+            "localBytes": 16905055
+          },
+          "cssFixture": {
+            "themes": 50,
+            "fontFiles": 105,
+            "fontPaths": 68,
+            "bundleBytes": 1210962
+          },
+          "exitCode": 0
+        }
+      },
+      "cases": {
+        "added": [
+          {
+            "suite": "main",
+            "test": "BV CID and page jointly identify a source, in the canonical link and the muted in-page player",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "Bili interval identity survives anonymous projection, distinguishes bounds and starts the muted official player at the selected interval",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "a bounded stage never inherits the full-event thumbnail and its work reference stays visible",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "a new native relation, source revision or owner epoch between read and write wins atomically",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "all 51 groups render source-bound MV scoring, private choices and public credits; BILLIONAIRE has seven independent owner shortcuts",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "bounded reviews retain dated limitations and only approved source notes reach the public display",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "concurrent saves, stale revisions, lost receipts and mid-transaction failure preserve a single binding and matching journal",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "historical Hey Gabby notes preserve the underlying findings and show source links without creating scores",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "matching public previews survive a video change, a range and multipart stage selection",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "owner explicitly saves zero for a historical member, reads it privately, exports it, and can clear it",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "personal score fields retain inputs, check the same operation after disconnect and timeout, and display the server conflict",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "real downloads recover native-v2 rows and durable receipts offline and keep frozen, replaced source and former snapshot scores distinct",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "record reads and writes recover from network errors with the same zero draft and save operation",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the additive migration preserves old rows and exact journals and personal MV writes never count as stage-target writes",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the pending MV directory renders distinct clickable previews for FOCUS and STYLE versions",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the production archive and manifest restore legacy records, private zero and every committed receipt together",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the write route rejects unauthenticated, other-account and cross-origin input before opening a score",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "work cards use the exact video preview when the design supplied no image and omit empty media",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "wrong owner, mismatched source, wrong group, forbidden appearances, invalid scores and native relations cannot be silently bound",
+            "occurrence": 1,
+            "result": "pass"
+          }
+        ],
+        "removed": [
+          {
+            "suite": "main",
+            "test": "BV CID and page jointly identify a source, with safe exact external link and no unverified embed",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "Bili interval identity survives anonymous projection, distinguishes bounds and discloses manual external playback",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "anonymous Hey Gabby disclosure shows the human participation finding without creating stage or member scores",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "bounded review presentation contains public conclusions rather than internal coordination",
+            "occurrence": 1,
+            "result": "fail"
+          },
+          {
+            "suite": "main",
+            "test": "missing work and stage images have no empty image box and never show a different video still",
+            "occurrence": 1,
+            "result": "pass"
+          }
+        ],
+        "transitions": [
+          {
+            "suite": "main",
+            "test": "BABYMONSTER approved primary uses native aspect, caption and secondary private reference with unchanged scores/links",
+            "occurrence": 1,
+            "before": "fail",
+            "after": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "BABYMONSTER legacy photos retain original frame and portraits cannot become MV references",
+            "occurrence": 1,
+            "before": "fail",
+            "after": "pass"
+          }
+        ],
+        "reframedCasesMatchedToSourceDiff": [
+          {
+            "file": "tests/core.test.cjs",
+            "beforeTitle": "bounded review presentation contains public conclusions rather than internal coordination",
+            "afterTitle": "bounded reviews retain dated limitations and only approved source notes reach the public display",
+            "beforeOutcome": "fail",
+            "afterOutcome": "pass"
+          },
+          {
+            "file": "tests/stage-multiplatform.test.cjs",
+            "beforeTitle": "BV CID and page jointly identify a source, with safe exact external link and no unverified embed",
+            "afterTitle": "BV CID and page jointly identify a source, in the canonical link and the muted in-page player",
+            "beforeOutcome": "pass",
+            "afterOutcome": "pass"
+          },
+          {
+            "file": "tests/stage-multiplatform.test.cjs",
+            "beforeTitle": "Bili interval identity survives anonymous projection, distinguishes bounds and discloses manual external playback",
+            "afterTitle": "Bili interval identity survives anonymous projection, distinguishes bounds and starts the muted official player at the selected interval",
+            "beforeOutcome": "pass",
+            "afterOutcome": "pass"
+          },
+          {
+            "file": "tests/stage-research-note.test.cjs",
+            "beforeTitle": "anonymous Hey Gabby disclosure shows the human participation finding without creating stage or member scores",
+            "afterTitle": "historical Hey Gabby notes preserve the underlying findings and show source links without creating scores",
+            "beforeOutcome": "pass",
+            "afterOutcome": "pass"
+          },
+          {
+            "file": "tests/meovv-figma-design.test.cjs",
+            "beforeTitle": "missing work and stage images have no empty image box and never show a different video still",
+            "afterTitle": "work cards use the exact video preview when the design supplied no image and omit empty media",
+            "beforeOutcome": "pass",
+            "afterOutcome": "pass"
+          }
+        ],
+        "genuinelyNewCases": [
+          {
+            "suite": "main",
+            "test": "a bounded stage never inherits the full-event thumbnail and its work reference stays visible",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "a new native relation, source revision or owner epoch between read and write wins atomically",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "all 51 groups render source-bound MV scoring, private choices and public credits; BILLIONAIRE has seven independent owner shortcuts",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "concurrent saves, stale revisions, lost receipts and mid-transaction failure preserve a single binding and matching journal",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "matching public previews survive a video change, a range and multipart stage selection",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "owner explicitly saves zero for a historical member, reads it privately, exports it, and can clear it",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "personal score fields retain inputs, check the same operation after disconnect and timeout, and display the server conflict",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "real downloads recover native-v2 rows and durable receipts offline and keep frozen, replaced source and former snapshot scores distinct",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "record reads and writes recover from network errors with the same zero draft and save operation",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the additive migration preserves old rows and exact journals and personal MV writes never count as stage-target writes",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the pending MV directory renders distinct clickable previews for FOCUS and STYLE versions",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the production archive and manifest restore legacy records, private zero and every committed receipt together",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the write route rejects unauthenticated, other-account and cross-origin input before opening a score",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "wrong owner, mismatched source, wrong group, forbidden appearances, invalid scores and native relations cannot be silently bound",
+            "occurrence": 1,
+            "result": "pass"
+          }
+        ],
+        "newCasesByFile": {
+          "tests/personal-mv-ratings.test.cjs": 9,
+          "tests/read-recovery.test.cjs": 2,
+          "tests/hearts2hearts-artist.test.cjs": 1,
+          "tests/work-video-player.test.cjs": 2
+        }
+      },
+      "failures": {
+        "retained": 170,
+        "new": [],
+        "cleared": [
+          {
+            "suite": "main",
+            "file": "tests/babymonster-mv-look.test.cjs",
+            "test": "BABYMONSTER approved primary uses native aspect, caption and secondary private reference with unchanged scores/links",
+            "after": "pass"
+          },
+          {
+            "suite": "main",
+            "file": "tests/babymonster-mv-look.test.cjs",
+            "test": "BABYMONSTER legacy photos retain original frame and portraits cannot become MV references",
+            "after": "pass"
+          },
+          {
+            "suite": "main",
+            "file": "tests/core.test.cjs",
+            "test": "bounded review presentation contains public conclusions rather than internal coordination",
+            "after": "absent"
+          }
+        ],
+        "remainingByFile": {
+          "tests/adya-review-routing.test.mjs": 1,
+          "tests/approved-release-repairs.test.cjs": 2,
+          "tests/approved-visual-repairs.test.cjs": 1,
+          "tests/artist-history-focus.test.cjs": 1,
+          "tests/artist-navigation.test.cjs": 2,
+          "tests/batch-c-adoption.test.cjs": 1,
+          "tests/bewave-review-routing.test.mjs": 1,
+          "tests/billlie-detail.test.cjs": 7,
+          "tests/candidate-chapter-navigation.test.cjs": 4,
+          "tests/candidate-density.test.cjs": 2,
+          "tests/candidate-empty-photo-layout.test.cjs": 1,
+          "tests/candidate-font-woff2.test.cjs": 2,
+          "tests/candidate-missing-look.test.cjs": 2,
+          "tests/candidate-mv-look.test.cjs": 1,
+          "tests/candidate-style-loading.test.cjs": 2,
+          "tests/candyshop-review-routing.test.mjs": 1,
+          "tests/catalog-module-ssr.test.cjs": 1,
+          "tests/combined-artists.test.cjs": 5,
+          "tests/combined-integration.test.cjs": 1,
+          "tests/continuous-evidence-protection.test.cjs": 3,
+          "tests/duplicate-loona-build-assets.test.mjs": 2,
+          "tests/editorial-fonts-woff2.test.cjs": 2,
+          "tests/expanded-artist.test.cjs": 3,
+          "tests/font-woff2.test.cjs": 1,
+          "tests/geenius-review-routing.test.mjs": 1,
+          "tests/genblue-native-integration.test.cjs": 1,
+          "tests/genblue-review-routing.test.mjs": 1,
+          "tests/group-advance-evidence.test.cjs": 1,
+          "tests/group-design-promotion.test.cjs": 1,
+          "tests/group-information.test.mjs": 1,
+          "tests/hearts2hearts-artist.test.cjs": 2,
+          "tests/hearts2hearts-detail.test.cjs": 9,
+          "tests/hearts2hearts-figma.test.cjs": 1,
+          "tests/hearts2hearts-review-routing.test.mjs": 1,
+          "tests/historical-affiliation.test.cjs": 1,
+          "tests/home-image-preload.test.cjs": 1,
+          "tests/idle-detail.test.cjs": 6,
+          "tests/idle-verified-design.test.cjs": 4,
+          "tests/ifeye-review-routing.test.mjs": 1,
+          "tests/illit-artist.test.cjs": 1,
+          "tests/illit-full-version.test.cjs": 1,
+          "tests/integrated-media-viewer.test.mjs": 1,
+          "tests/itzy-artist.test.cjs": 2,
+          "tests/ive-artist.test.cjs": 2,
+          "tests/izna-review-routing.test.mjs": 1,
+          "tests/katseye-artist.test.cjs": 1,
+          "tests/kiiikiii-artist.test.cjs": 4,
+          "tests/kiiikiii-review-routing.test.mjs": 1,
+          "tests/kiof-artist.test.cjs": 3,
+          "tests/kiof-sweat-stage.test.cjs": 2,
+          "tests/lesserafim-artist.test.cjs": 2,
+          "tests/loona-detail.test.cjs": 3,
+          "tests/madein-detail.test.cjs": 4,
+          "tests/manage-ssr.test.cjs": 1,
+          "tests/member-display-name.test.cjs": 1,
+          "tests/member-source-removal.test.cjs": 1,
+          "tests/meovv-madein-release-gaps.test.cjs": 1,
+          "tests/mv-poster-batch2-registry.test.cjs": 1,
+          "tests/mv-poster-storage.test.cjs": 3,
+          "tests/newjeans-detail.test.cjs": 5,
+          "tests/nmixx-artist.test.cjs": 1,
+          "tests/observed-hero-layout.test.cjs": 4,
+          "tests/oddyouth-review-routing.test.mjs": 1,
+          "tests/photo-display-focus-integration.test.cjs": 1,
+          "tests/photo-historical-r2-registry.test.cjs": 1,
+          "tests/photo-historical-r3-registry.test.cjs": 1,
+          "tests/photo-nightmiyeon1-registry.test.cjs": 1,
+          "tests/photo-status-reads.test.cjs": 1,
+          "tests/post-v200-adoptions.test.cjs": 1,
+          "tests/pr47-continuation-evidence.test.cjs": 1,
+          "tests/remaining-groups-completion.test.mjs": 1,
+          "tests/saymyname-artist.test.cjs": 3,
+          "tests/saymyname-review-routing.test.mjs": 1,
+          "tests/spia-content.test.mjs": 1,
+          "tests/spia-review-routing.test.mjs": 2,
+          "tests/stage-replacement-adoption.test.cjs": 3,
+          "tests/statistics-annual-reconciliation.test.mjs": 1,
+          "tests/statistics-period-followup.test.mjs": 1,
+          "tests/stayc-artist.test.cjs": 2,
+          "tests/summer-release-reference.test.cjs": 1,
+          "tests/three-group-hero-assets.test.cjs": 2,
+          "tests/timeline-batch-f-adoption.test.cjs": 1,
+          "tests/tracer-content.test.mjs": 1,
+          "tests/tracer-review-routing.test.mjs": 1,
+          "tests/triples-detail.test.cjs": 3,
+          "tests/triples-fixture-boundaries.test.cjs": 2,
+          "tests/v202-followup-evidence.test.cjs": 1,
+          "tests/vcha-container-host.test.mjs": 1,
+          "tests/vvup-review-routing.test.mjs": 1,
+          "tests/witchx-review-routing.test.mjs": 1,
+          "tests/wooah-review-routing.test.mjs": 1,
+          "tests/work-heading-date.test.cjs": 3,
+          "tests/youngposse-review-routing.test.mjs": 1
+        },
+        "retainedCases": [
+          {
+            "suite": "main",
+            "file": "tests/adya-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/approved-release-repairs.test.cjs",
+            "test": "itzy preserves existing identity and private-independent metadata"
+          },
+          {
+            "suite": "main",
+            "file": "tests/approved-release-repairs.test.cjs",
+            "test": "kiiikiii preserves existing identity and private-independent metadata"
+          },
+          {
+            "suite": "main",
+            "file": "tests/approved-visual-repairs.test.cjs",
+            "test": "MADEIN exact existing RISE carrier becomes visible once with digital release date and original work links"
+          },
+          {
+            "suite": "main",
+            "file": "tests/artist-history-focus.test.cjs",
+            "test": "all existing artist implementations and the new shared candidate use capture only for in-page navigation"
+          },
+          {
+            "suite": "main",
+            "file": "tests/artist-navigation.test.cjs",
+            "test": "cross-page navigation retains draft guard and captures browse position before leaving"
+          },
+          {
+            "suite": "main",
+            "file": "tests/artist-navigation.test.cjs",
+            "test": "seven member headers share one official concept set, never changing MV screenshot selection"
+          },
+          {
+            "suite": "main",
+            "file": "tests/batch-c-adoption.test.cjs",
+            "test": "Batch C uses exactly 33 reviewed pairs with original/display hashes and stable identities"
+          },
+          {
+            "suite": "main",
+            "file": "tests/bewave-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "RING X RING design applies only to exact production work, group, MV URL; Mnet checks exact stage identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "brand navigation calls guarded parent; score source is real binding rather than design identifier"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "detail media uses audited original bytes; snapshot identity matches design, six cast records do not infer seven"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "hidden member drafts stay discoverable and return to their mounted editor without autosave"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "live score editor survives rating hide/show and MV/stage switching; zero/null and failed draft preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "rating screen keeps real controls and no synthetic preset or inferred member identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "source corrected; empty cast blocks omitted while real cast and private notes retained"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-chapter-navigation.test.cjs",
+            "test": "all 37 design compositions have no unsupported literal local fragment navigation"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-chapter-navigation.test.cjs",
+            "test": "chapter labels describe their destinations and existing overview sections remain"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-chapter-navigation.test.cjs",
+            "test": "i-dle chapter route survives loading, refresh and section entry with correct content"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-chapter-navigation.test.cjs",
+            "test": "i-dle chapters use supported route destinations without async-only fragment targets"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-density.test.cjs",
+            "test": "historical IZ*ONE roster does not invent clickable members from twelve-person prose"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-density.test.cjs",
+            "test": "loona: 11 long Chinese names retain unique real component targets and final ordinal"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-empty-photo-layout.test.cjs",
+            "test": "MEOVV missing MV look overrides disabled opacity and tall ratio only for disabled buttons"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-font-woff2.test.cjs",
+            "test": "eight candidate styles prefer existing Space Grotesk WOFF2 with unchanged TTF fallback and descriptors"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-font-woff2.test.cjs",
+            "test": "six candidate styles prefer full editorial WOFF2 with unchanged TTF fallback and descriptors"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-missing-look.test.cjs",
+            "test": "badvillain: missing look stays disabled while a verified synthetic photo remains enabled"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-missing-look.test.cjs",
+            "test": "meovv: missing look stays disabled while a verified synthetic photo remains enabled"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-mv-look.test.cjs",
+            "test": "fromis9 actual member composition retains approved primary, individual reference and legacy gallery"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-style-loading.test.cjs",
+            "test": "legacy theme precedence remains ahead of candidate theme selection"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-style-loading.test.cjs",
+            "test": "legacy14 imports and two bespoke detail compatibility styles remain ordered"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candyshop-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/catalog-module-ssr.test.cjs",
+            "test": "real App SSR keeps the nonempty private loading shell without starting any group import or read"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-artists.test.cjs",
+            "test": "KATSEYE candidate keeps actual Figma palette, scoped selectors and theme precedence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-artists.test.cjs",
+            "test": "SAY MY NAME candidate uses scoped Figma tokens across member and viewing detail"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-artists.test.cjs",
+            "test": "new pair themes and headings respect all established artist priorities"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-artists.test.cjs",
+            "test": "new themes and headings preserve established collaboration precedence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-artists.test.cjs",
+            "test": "shared work themes keep one heading for STAYC/NMIXX collaborations in theme priority"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-integration.test.cjs",
+            "test": "combined App keeps Editor and private record search identical to accepted baseline"
+          },
+          {
+            "suite": "main",
+            "file": "tests/continuous-evidence-protection.test.cjs",
+            "test": "official statement and manual links retain the exact viewed image bytes and reading limits"
+          },
+          {
+            "suite": "main",
+            "file": "tests/continuous-evidence-protection.test.cjs",
+            "test": "reported records add only scoped sources and prose, leaving all effective dates and member links intact"
+          },
+          {
+            "suite": "main",
+            "file": "tests/continuous-evidence-protection.test.cjs",
+            "test": "source upgrades retain every canonical date, status, stable ID, relation and all seven holds"
+          },
+          {
+            "suite": "main",
+            "file": "tests/duplicate-loona-build-assets.test.mjs",
+            "test": "no remaining old-directory references in runtime source roots"
+          },
+          {
+            "suite": "main",
+            "file": "tests/duplicate-loona-build-assets.test.mjs",
+            "test": "read-only audit then build-only pruning preserves all originals and canonical build bytes; repeat is idempotent"
+          },
+          {
+            "suite": "main",
+            "file": "tests/editorial-fonts-woff2.test.cjs",
+            "test": "DMSans-Variable has WOFF2 priority and unchanged descriptors in both source styles"
+          },
+          {
+            "suite": "main",
+            "file": "tests/editorial-fonts-woff2.test.cjs",
+            "test": "PlayfairDisplay-Variable has WOFF2 priority and unchanged descriptors in both source styles"
+          },
+          {
+            "suite": "main",
+            "file": "tests/expanded-artist.test.cjs",
+            "test": "expanded routes whitelist remains fixed and original editor/source logic unchanged"
+          },
+          {
+            "suite": "main",
+            "file": "tests/expanded-artist.test.cjs",
+            "test": "expanded work heading respects the same cross-group theme priority as the page"
+          },
+          {
+            "suite": "main",
+            "file": "tests/expanded-artist.test.cjs",
+            "test": "themed member pages retain captured social counts and dates without calling them live"
+          },
+          {
+            "suite": "main",
+            "file": "tests/font-woff2.test.cjs",
+            "test": "all nine source styles prefer full WOFF2 and retain TTF fallback and swap"
+          },
+          {
+            "suite": "main",
+            "file": "tests/geenius-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/genblue-native-integration.test.cjs",
+            "test": "night market MV evidence adds bidirectional browsing without inventing personal ratings or stage images"
+          },
+          {
+            "suite": "main",
+            "file": "tests/genblue-review-routing.test.mjs",
+            "test": "the built review includes a physical GENBLUE entry with resolvable scripts and styles"
+          },
+          {
+            "suite": "main",
+            "file": "tests/group-advance-evidence.test.cjs",
+            "test": "tests/group-advance-evidence.test.cjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/group-design-promotion.test.cjs",
+            "test": "member biographies have one shared renderer and public release labels stay editorial"
+          },
+          {
+            "suite": "main",
+            "file": "tests/group-information.test.mjs",
+            "test": "EVERGLOW new Instagram count retains its historical date and account identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-artist.test.cjs",
+            "test": "Hearts2Hearts independent index hero and watch theme retain existing collaboration priority"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-artist.test.cjs",
+            "test": "Hearts2Hearts member summaries preserve zero, dimension sample counts and exact MV photo absence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "H2H tabs preserve browser shortcuts and use manual focus-only activation"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "The Chase design applies only to exact production work, group, MV URL; Performance Video checks exact stage identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "brand navigation calls guarded parent; score source is real binding rather than design identifier"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "checkpoint identity matches existing catalog; related versions retain distinct score records"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "hidden H2H member drafts remain discoverable from stage and rating screens"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "live score editor survives rating hide/show and MV/stage switching; zero/null and failed draft preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "rating entry is accessible and reveals the persistent real editor; no score preset"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "rating screen keeps real controls and no synthetic preset or inferred member identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "source corrected; empty cast blocks omitted while real cast and private notes retained"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-figma.test.cjs",
+            "test": "missing member work photo never becomes oversized fake artwork"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/historical-affiliation.test.cjs",
+            "test": "IZONE two-digit archive ordinals stay together in the 22px mobile column"
+          },
+          {
+            "suite": "main",
+            "file": "tests/home-image-preload.test.cjs",
+            "test": "triples: homepage server preload is hoisted once with exact image request attributes"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "TOMBOY binds exact existing group, work and URL; KBS imagery never represents another stage"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "brand and release navigation use guarded parent; scoped CSS supports all supplied widths"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "changed stage source retains draft and blocks stale-score save"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "existing record cast retained without manufacturing membership; empty cast omitted"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "hidden member drafts stay discoverable and return to their mounted editor without autosave"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "real editor survives scoring visibility and video changes; failed drafts, zero and null remain distinct"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-verified-design.test.cjs",
+            "test": "home uses five current portraits and exact warm studio photo"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-verified-design.test.cjs",
+            "test": "member photo destination preserves exact ID and verified-design return route without adding a gallery"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-verified-design.test.cjs",
+            "test": "production work destination requires exact ID URL and group"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-verified-design.test.cjs",
+            "test": "six member pages and all read-only releases preserve exact identities"
+          },
+          {
+            "suite": "main",
+            "file": "tests/ifeye-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/illit-artist.test.cjs",
+            "test": "ILLIT visuals stay scoped and full photographs remain contained across desktop/mobile"
+          },
+          {
+            "suite": "main",
+            "file": "tests/illit-full-version.test.cjs",
+            "test": "ILLIT version navigation metadata preserves separate private values, personal relations and both formal stage sources"
+          },
+          {
+            "suite": "main",
+            "file": "tests/integrated-media-viewer.test.mjs",
+            "test": "tests/integrated-media-viewer.test.mjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/itzy-artist.test.cjs",
+            "test": "ITZY member summaries preserve zero, dimension sample counts and exact MV photo absence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/itzy-artist.test.cjs",
+            "test": "ITZY social counts show each localized unit once without changing observations"
+          },
+          {
+            "suite": "main",
+            "file": "tests/ive-artist.test.cjs",
+            "test": "IVE implementation only uses existing authenticated reads and no business writes"
+          },
+          {
+            "suite": "main",
+            "file": "tests/ive-artist.test.cjs",
+            "test": "IVE scoped styles preserve full concept/MV imagery, mobile readable editor and all assets"
+          },
+          {
+            "suite": "main",
+            "file": "tests/izna-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/katseye-artist.test.cjs",
+            "test": "KATSEYE member dimensions remain distinct and missing MV photo never uses portrait"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiiikiii-artist.test.cjs",
+            "test": "KiiiKiii group-index hero is independent and the work title respects all older theme precedence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiiikiii-artist.test.cjs",
+            "test": "KiiiKiii member summaries preserve zero, dimension sample counts and exact MV photo absence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiiikiii-artist.test.cjs",
+            "test": "approved poster requires work, video and view tuple, never uses album art"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiiikiii-artist.test.cjs",
+            "test": "social unit presentation handles observed counts with units without changing source data"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiiikiii-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiof-artist.test.cjs",
+            "test": "KIOF member summaries preserve zero, dimension sample counts and exact MV photo absence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiof-artist.test.cjs",
+            "test": "KIOF only adds authenticated read projection and scoped visual wrappers"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiof-artist.test.cjs",
+            "test": "KIOF social measurements retain original rounded precision and old collection date"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiof-sweat-stage.test.cjs",
+            "test": "existing Korean view-only alternative, every other research state and original inventory remain unchanged"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiof-sweat-stage.test.cjs",
+            "test": "only the previously unbound Japanese SWEAT work receives a new source"
+          },
+          {
+            "suite": "main",
+            "file": "tests/lesserafim-artist.test.cjs",
+            "test": "LE SSERAFIM approved originals use native frames and qualified reference without changing private scores or links"
+          },
+          {
+            "suite": "main",
+            "file": "tests/lesserafim-artist.test.cjs",
+            "test": "LE SSERAFIM member dimensions remain distinct and missing MV photo never uses portrait"
+          },
+          {
+            "suite": "main",
+            "file": "tests/loona-detail.test.cjs",
+            "test": "LOONA failed save keeps typed zero and draft; score widget never writes by itself"
+          },
+          {
+            "suite": "main",
+            "file": "tests/loona-detail.test.cjs",
+            "test": "LOONA stage ticket uses actual metadata and retains MV/stage editor identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/loona-detail.test.cjs",
+            "test": "shared score precision preserves LOONA control and exact Butterfly image identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/madein-detail.test.cjs",
+            "test": "MADEIN imagery matches stable work ID and exact source, and rejects reused stage clips"
+          },
+          {
+            "suite": "main",
+            "file": "tests/madein-detail.test.cjs",
+            "test": "MADEIN navigation uses guarded artist callback and preserves non-MADEIN branch"
+          },
+          {
+            "suite": "main",
+            "file": "tests/madein-detail.test.cjs",
+            "test": "MADEIN rating switches preserve Editor position, decimal zero, clear-to-null and failed drafts"
+          },
+          {
+            "suite": "main",
+            "file": "tests/madein-detail.test.cjs",
+            "test": "SATURN stage artwork matches the production dated performance and fails closed on source drift"
+          },
+          {
+            "suite": "main",
+            "file": "tests/manage-ssr.test.cjs",
+            "test": "tests/manage-ssr.test.cjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/member-display-name.test.cjs",
+            "test": "all bespoke member headings use shared display resolver without changing stage lookup keys"
+          },
+          {
+            "suite": "main",
+            "file": "tests/member-source-removal.test.cjs",
+            "test": "original member links, personal notes and score editor remain available"
+          },
+          {
+            "suite": "main",
+            "file": "tests/meovv-madein-release-gaps.test.cjs",
+            "test": "MADEIN class structure stays unchanged and unknown dates do not crash"
+          },
+          {
+            "suite": "main",
+            "file": "tests/mv-poster-batch2-registry.test.cjs",
+            "test": "real registry passes backend admission and preserves the exact historical pilot storage key"
+          },
+          {
+            "suite": "main",
+            "file": "tests/mv-poster-storage.test.cjs",
+            "test": "exact upload, immutable replay, private read and recovery manifest"
+          },
+          {
+            "suite": "main",
+            "file": "tests/mv-poster-storage.test.cjs",
+            "test": "existing wrong bytes or metadata conflict without overwrite"
+          },
+          {
+            "suite": "main",
+            "file": "tests/mv-poster-storage.test.cjs",
+            "test": "source change before bytes return denied; concurrent personal edits preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/newjeans-detail.test.cjs",
+            "test": "Attention only adopts exact production ID, group and official URL"
+          },
+          {
+            "suite": "main",
+            "file": "tests/newjeans-detail.test.cjs",
+            "test": "all five static artwork slots use unchanged manifest bytes and exact aspect ratios"
+          },
+          {
+            "suite": "main",
+            "file": "tests/newjeans-detail.test.cjs",
+            "test": "hidden member drafts stay discoverable and return to their mounted editor without autosave"
+          },
+          {
+            "suite": "main",
+            "file": "tests/newjeans-detail.test.cjs",
+            "test": "navigation uses guarded callbacks and current-stage art cannot masquerade as SBS"
+          },
+          {
+            "suite": "main",
+            "file": "tests/newjeans-detail.test.cjs",
+            "test": "real Editor retains null, zero and decimal drafts across rating and video panels, never simulates a save"
+          },
+          {
+            "suite": "main",
+            "file": "tests/nmixx-artist.test.cjs",
+            "test": "NMIXX member summaries preserve zero, dimension sample counts and exact MV photo absence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/observed-hero-layout.test.cjs",
+            "test": "badvillain: absent legacy facts leave no empty shell; supplied source is preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/observed-hero-layout.test.cjs",
+            "test": "izone: absent legacy facts leave no empty shell; supplied source is preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/observed-hero-layout.test.cjs",
+            "test": "portrait stays complete and BADVILLAIN cannot split the final letter"
+          },
+          {
+            "suite": "main",
+            "file": "tests/observed-hero-layout.test.cjs",
+            "test": "rocketpunch: absent legacy facts leave no empty shell; supplied source is preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/oddyouth-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/photo-display-focus-integration.test.cjs",
+            "test": "tests/photo-display-focus-integration.test.cjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/photo-historical-r2-registry.test.cjs",
+            "test": "all 173 candidates remain hash-unique and all 158 published operation hashes remain immutable"
+          },
+          {
+            "suite": "main",
+            "file": "tests/photo-historical-r3-registry.test.cjs",
+            "test": "all 190 candidates remain hash-unique and all 173 published operation hashes remain immutable"
+          },
+          {
+            "suite": "main",
+            "file": "tests/photo-nightmiyeon1-registry.test.cjs",
+            "test": "all 191 candidates are hash-unique and all 190 prior operation hashes and registry text are unchanged"
+          },
+          {
+            "suite": "main",
+            "file": "tests/photo-status-reads.test.cjs",
+            "test": "complete real registry output matches uncached target reads with measured SQL reduction"
+          },
+          {
+            "suite": "main",
+            "file": "tests/post-v200-adoptions.test.cjs",
+            "test": "UDTT earlier interview adjusts only reporting evidence without inventing effective dates or identities"
+          },
+          {
+            "suite": "main",
+            "file": "tests/pr47-continuation-evidence.test.cjs",
+            "test": "continuation appends bounded evidence while preserving the prior 103 references and frozen sources"
+          },
+          {
+            "suite": "main",
+            "file": "tests/remaining-groups-completion.test.mjs",
+            "test": "17 additional NewJeans previews retain publisher bytes and exact work/video/view identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/saymyname-artist.test.cjs",
+            "test": "SAY MY NAME member summary uses true relationships and exact work photo only"
+          },
+          {
+            "suite": "main",
+            "file": "tests/saymyname-artist.test.cjs",
+            "test": "SAY MY NAME native-led homepage orders photography, releases, members, videos and history"
+          },
+          {
+            "suite": "main",
+            "file": "tests/saymyname-artist.test.cjs",
+            "test": "SAY compact rows show only the three approved MV publisher images and retain unknown play placeholders"
+          },
+          {
+            "suite": "main",
+            "file": "tests/saymyname-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/spia-content.test.mjs",
+            "test": "native score access requires existing record, group and exact video slot"
+          },
+          {
+            "suite": "main",
+            "file": "tests/spia-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/spia-review-routing.test.mjs",
+            "test": "optional public-original delivery pins five untouched portraits to a full immutable SHA"
+          },
+          {
+            "suite": "main",
+            "file": "tests/stage-replacement-adoption.test.cjs",
+            "test": "each complete old public source reconstructs from its archive without dropping fields or source history"
+          },
+          {
+            "suite": "main",
+            "file": "tests/stage-replacement-adoption.test.cjs",
+            "test": "exactly eight current-policy replacements retain the frozen source and status cohorts"
+          },
+          {
+            "suite": "main",
+            "file": "tests/stage-replacement-adoption.test.cjs",
+            "test": "replacement bindings use the exact new video and fresh initialization time while status keeps source observation time"
+          },
+          {
+            "suite": "main",
+            "file": "tests/statistics-annual-reconciliation.test.mjs",
+            "test": "the public group model renders the reconciled integer and retains the unresolved scope"
+          },
+          {
+            "suite": "main",
+            "file": "tests/statistics-period-followup.test.mjs",
+            "test": "only three evidenced sales records and summary counts change; unknowns stay unknown"
+          },
+          {
+            "suite": "main",
+            "file": "tests/stayc-artist.test.cjs",
+            "test": "STAYC 23 optimized assets retain exact previously verified hashes"
+          },
+          {
+            "suite": "main",
+            "file": "tests/stayc-artist.test.cjs",
+            "test": "STAYC member dimensions remain distinct and missing MV photo never uses portrait"
+          },
+          {
+            "suite": "main",
+            "file": "tests/summer-release-reference.test.cjs",
+            "test": "all five recognition photos reuse prior same-set original bytes while both complete 105-row preimages remain protected"
+          },
+          {
+            "suite": "main",
+            "file": "tests/three-group-hero-assets.test.cjs",
+            "test": "recoverable backup hashes and non-photo data stay unchanged"
+          },
+          {
+            "suite": "main",
+            "file": "tests/three-group-hero-assets.test.cjs",
+            "test": "three approved source-bound heroes retain exact original and display bytes"
+          },
+          {
+            "suite": "main",
+            "file": "tests/timeline-batch-f-adoption.test.cjs",
+            "test": "tests/timeline-batch-f-adoption.test.cjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/tracer-content.test.mjs",
+            "test": "native handoffs bind record, group and exact video; zero differs from no score"
+          },
+          {
+            "suite": "main",
+            "file": "tests/tracer-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/triples-detail.test.cjs",
+            "test": "tripleS header and release navigation use the guarded artist route callback"
+          },
+          {
+            "suite": "main",
+            "file": "tests/triples-detail.test.cjs",
+            "test": "tripleS scope opts into decimal editor and never adds a research lineup"
+          },
+          {
+            "suite": "main",
+            "file": "tests/triples-detail.test.cjs",
+            "test": "tripleS typed zero survives failed save, and MV/stage keep the same editor"
+          },
+          {
+            "suite": "main",
+            "file": "tests/triples-fixture-boundaries.test.cjs",
+            "test": "image fixture aliases exactly the three reviewed metadata ports, never arbitrary actual data"
+          },
+          {
+            "suite": "main",
+            "file": "tests/triples-fixture-boundaries.test.cjs",
+            "test": "timeline fixture aliases exactly the three reviewed metadata ports, never arbitrary actual data"
+          },
+          {
+            "suite": "main",
+            "file": "tests/v202-followup-evidence.test.cjs",
+            "test": "only the bounded append, HITGS context and two policy notes differ from the complete v202 data"
+          },
+          {
+            "suite": "main",
+            "file": "tests/vcha-container-host.test.mjs",
+            "test": "tests/vcha-container-host.test.mjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/vvup-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/witchx-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/wooah-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components, originals and nested fonts without modifying GENBLUE"
+          },
+          {
+            "suite": "main",
+            "file": "tests/work-heading-date.test.cjs",
+            "test": "all repeated group headings consistently select the active source date"
+          },
+          {
+            "suite": "main",
+            "file": "tests/work-heading-date.test.cjs",
+            "test": "expanded-work-heading displays the active video date and never borrows the MV date for an unknown stage"
+          },
+          {
+            "suite": "main",
+            "file": "tests/work-heading-date.test.cjs",
+            "test": "saymyname-work-heading displays the active video date and never borrows the MV date for an unknown stage"
+          },
+          {
+            "suite": "main",
+            "file": "tests/youngposse-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          }
+        ],
+        "remainingDiagnosticCategories": [
+          {
+            "code": "ERR_ASSERTION",
+            "operator": "==",
+            "failureType": "testCodeFailure",
+            "count": 18
+          },
+          {
+            "code": "ERR_ASSERTION",
+            "operator": "deepStrictEqual",
+            "failureType": "testCodeFailure",
+            "count": 11
+          },
+          {
+            "code": "ERR_ASSERTION",
+            "operator": "match",
+            "failureType": "testCodeFailure",
+            "count": 39
+          },
+          {
+            "code": "ERR_ASSERTION",
+            "operator": "strictEqual",
+            "failureType": "testCodeFailure",
+            "count": 39
+          },
+          {
+            "code": "ERR_TEST_FAILURE",
+            "operator": null,
+            "failureType": "testCodeFailure",
+            "count": 62
+          },
+          {
+            "code": "POSTER_VIDEO_TYPE_FIELD_TYPE_CHANGED",
+            "operator": null,
+            "failureType": "testCodeFailure",
+            "count": 1
+          }
+        ],
+        "retainedCasesWithChangedDiagnosticCategory": []
+      }
+    },
+    "linux": {
+      "before": {
+        "full": {
+          "log": {
+            "name": "full-linux.tap",
+            "bytes": 2860752,
+            "sha256": "3b96c0d9e5c8e7e466a723c7fbc209ae368be4ee7c458b72f526c0e157bcdeda"
+          },
+          "nodeSuites": {
+            "main": {
+              "tests": 3975,
+              "pass": 3767,
+              "fail": 169,
+              "cancelled": 0,
+              "skipped": 39,
+              "todo": 0
+            },
+            "isolatedArtistRuntime": {
+              "tests": 9,
+              "pass": 9,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "personalInsights": {
+              "tests": 31,
+              "pass": 31,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            }
+          },
+          "nodeTotal": {
+            "tests": 4015,
+            "pass": 3807,
+            "fail": 169,
+            "skipped": 39,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "pythonPassedByMode": {
+            "default": 4,
+            "optimized": 4
+          },
+          "exitCode": 1
+        },
+        "verify": {
+          "log": {
+            "name": "verify-linux.log",
+            "bytes": 231554,
+            "sha256": "7b7288e786ade338427d932eb0c27b78e365c92b0261d276d0f8d1ba0ca0b5f8"
+          },
+          "nodeSuites": {
+            "current": {
+              "tests": 1213,
+              "pass": 1213,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "optimizedPythonPreflight": {
+              "tests": 19,
+              "pass": 19,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "builtAssets": {
+              "tests": 6,
+              "pass": 6,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            }
+          },
+          "typecheck": "passed",
+          "productionBuild": "passed",
+          "pythonPasses": {
+            "batch": 4,
+            "optimizedBatch": 4,
+            "builtCssHttp": 7
+          },
+          "stageValidation": {
+            "inventory": 614,
+            "sources": 527,
+            "valid": true
+          },
+          "supplementValidation": {
+            "works": 137,
+            "alternatives": 88,
+            "reviews": 70,
+            "runtimeAlternatives": 50,
+            "scoreBindings": 0
+          },
+          "assetValidation": {
+            "status": "passed",
+            "mode": "dry-run",
+            "publicRef": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+            "recognitionRef": "c953afa5a3829737dc6bfacd62439a524fe03df9",
+            "releasePortraitRef": "59e5d54969f46f43f7004c79667b524f549342b4",
+            "remoteCopies": 5995,
+            "remoteBytes": 3958966888,
+            "restrictedCopies": 10,
+            "restrictedAliases": 1,
+            "localAssets": 586,
+            "localBytes": 16905055
+          },
+          "cssFixture": {
+            "themes": 50,
+            "fontFiles": 105,
+            "fontPaths": 68,
+            "bundleBytes": 1210962
+          },
+          "exitCode": 0
+        }
+      },
+      "after": {
+        "full": {
+          "log": {
+            "name": "final-1d2236f8/full-linux.tap",
+            "bytes": 2859835,
+            "sha256": "775383abf2e67fdb9fbcdfff5fa92d599dbb1dfbda129548c52e527290944389"
+          },
+          "nodeSuites": {
+            "main": {
+              "tests": 3989,
+              "pass": 3784,
+              "fail": 166,
+              "cancelled": 0,
+              "skipped": 39,
+              "todo": 0
+            },
+            "isolatedArtistRuntime": {
+              "tests": 9,
+              "pass": 9,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "personalInsights": {
+              "tests": 31,
+              "pass": 31,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            }
+          },
+          "nodeTotal": {
+            "tests": 4029,
+            "pass": 3824,
+            "fail": 166,
+            "skipped": 39,
+            "cancelled": 0,
+            "todo": 0
+          },
+          "pythonPassedByMode": {
+            "default": 4,
+            "optimized": 4
+          },
+          "exitCode": 1
+        },
+        "verify": {
+          "log": {
+            "name": "final-1d2236f8/verify-linux.log",
+            "bytes": 234129,
+            "sha256": "419874dfa2382b8f52b122697a13ad7a2b11f1b6d4419d82c8d150d5b5c2315a"
+          },
+          "nodeSuites": {
+            "current": {
+              "tests": 1226,
+              "pass": 1226,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "optimizedPythonPreflight": {
+              "tests": 19,
+              "pass": 19,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            },
+            "builtAssets": {
+              "tests": 6,
+              "pass": 6,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0,
+              "todo": 0
+            }
+          },
+          "typecheck": "passed",
+          "productionBuild": "passed",
+          "pythonPasses": {
+            "batch": 4,
+            "optimizedBatch": 4,
+            "builtCssHttp": 7
+          },
+          "stageValidation": {
+            "inventory": 614,
+            "sources": 527,
+            "valid": true
+          },
+          "supplementValidation": {
+            "works": 137,
+            "alternatives": 88,
+            "reviews": 70,
+            "runtimeAlternatives": 50,
+            "scoreBindings": 0
+          },
+          "assetValidation": {
+            "status": "passed",
+            "mode": "dry-run",
+            "publicRef": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+            "recognitionRef": "c953afa5a3829737dc6bfacd62439a524fe03df9",
+            "releasePortraitRef": "59e5d54969f46f43f7004c79667b524f549342b4",
+            "remoteCopies": 5995,
+            "remoteBytes": 3958966888,
+            "restrictedCopies": 10,
+            "restrictedAliases": 1,
+            "localAssets": 586,
+            "localBytes": 16905055
+          },
+          "cssFixture": {
+            "themes": 50,
+            "fontFiles": 105,
+            "fontPaths": 68,
+            "bundleBytes": 1210962
+          },
+          "exitCode": 0
+        }
+      },
+      "cases": {
+        "added": [
+          {
+            "suite": "main",
+            "test": "BV CID and page jointly identify a source, in the canonical link and the muted in-page player",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "Bili interval identity survives anonymous projection, distinguishes bounds and starts the muted official player at the selected interval",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "a bounded stage never inherits the full-event thumbnail and its work reference stays visible",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "a new native relation, source revision or owner epoch between read and write wins atomically",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "all 51 groups render source-bound MV scoring, private choices and public credits; BILLIONAIRE has seven independent owner shortcuts",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "bounded reviews retain dated limitations and only approved source notes reach the public display",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "concurrent saves, stale revisions, lost receipts and mid-transaction failure preserve a single binding and matching journal",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "historical Hey Gabby notes preserve the underlying findings and show source links without creating scores",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "matching public previews survive a video change, a range and multipart stage selection",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "owner explicitly saves zero for a historical member, reads it privately, exports it, and can clear it",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "personal score fields retain inputs, check the same operation after disconnect and timeout, and display the server conflict",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "real downloads recover native-v2 rows and durable receipts offline and keep frozen, replaced source and former snapshot scores distinct",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "record reads and writes recover from network errors with the same zero draft and save operation",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the additive migration preserves old rows and exact journals and personal MV writes never count as stage-target writes",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the pending MV directory renders distinct clickable previews for FOCUS and STYLE versions",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the production archive and manifest restore legacy records, private zero and every committed receipt together",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the write route rejects unauthenticated, other-account and cross-origin input before opening a score",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "work cards use the exact video preview when the design supplied no image and omit empty media",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "wrong owner, mismatched source, wrong group, forbidden appearances, invalid scores and native relations cannot be silently bound",
+            "occurrence": 1,
+            "result": "pass"
+          }
+        ],
+        "removed": [
+          {
+            "suite": "main",
+            "test": "BV CID and page jointly identify a source, with safe exact external link and no unverified embed",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "Bili interval identity survives anonymous projection, distinguishes bounds and discloses manual external playback",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "anonymous Hey Gabby disclosure shows the human participation finding without creating stage or member scores",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "bounded review presentation contains public conclusions rather than internal coordination",
+            "occurrence": 1,
+            "result": "fail"
+          },
+          {
+            "suite": "main",
+            "test": "missing work and stage images have no empty image box and never show a different video still",
+            "occurrence": 1,
+            "result": "pass"
+          }
+        ],
+        "transitions": [
+          {
+            "suite": "main",
+            "test": "BABYMONSTER approved primary uses native aspect, caption and secondary private reference with unchanged scores/links",
+            "occurrence": 1,
+            "before": "fail",
+            "after": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "BABYMONSTER legacy photos retain original frame and portraits cannot become MV references",
+            "occurrence": 1,
+            "before": "fail",
+            "after": "pass"
+          }
+        ],
+        "reframedCasesMatchedToSourceDiff": [
+          {
+            "file": "tests/core.test.cjs",
+            "beforeTitle": "bounded review presentation contains public conclusions rather than internal coordination",
+            "afterTitle": "bounded reviews retain dated limitations and only approved source notes reach the public display",
+            "beforeOutcome": "fail",
+            "afterOutcome": "pass"
+          },
+          {
+            "file": "tests/stage-multiplatform.test.cjs",
+            "beforeTitle": "BV CID and page jointly identify a source, with safe exact external link and no unverified embed",
+            "afterTitle": "BV CID and page jointly identify a source, in the canonical link and the muted in-page player",
+            "beforeOutcome": "pass",
+            "afterOutcome": "pass"
+          },
+          {
+            "file": "tests/stage-multiplatform.test.cjs",
+            "beforeTitle": "Bili interval identity survives anonymous projection, distinguishes bounds and discloses manual external playback",
+            "afterTitle": "Bili interval identity survives anonymous projection, distinguishes bounds and starts the muted official player at the selected interval",
+            "beforeOutcome": "pass",
+            "afterOutcome": "pass"
+          },
+          {
+            "file": "tests/stage-research-note.test.cjs",
+            "beforeTitle": "anonymous Hey Gabby disclosure shows the human participation finding without creating stage or member scores",
+            "afterTitle": "historical Hey Gabby notes preserve the underlying findings and show source links without creating scores",
+            "beforeOutcome": "pass",
+            "afterOutcome": "pass"
+          },
+          {
+            "file": "tests/meovv-figma-design.test.cjs",
+            "beforeTitle": "missing work and stage images have no empty image box and never show a different video still",
+            "afterTitle": "work cards use the exact video preview when the design supplied no image and omit empty media",
+            "beforeOutcome": "pass",
+            "afterOutcome": "pass"
+          }
+        ],
+        "genuinelyNewCases": [
+          {
+            "suite": "main",
+            "test": "a bounded stage never inherits the full-event thumbnail and its work reference stays visible",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "a new native relation, source revision or owner epoch between read and write wins atomically",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "all 51 groups render source-bound MV scoring, private choices and public credits; BILLIONAIRE has seven independent owner shortcuts",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "concurrent saves, stale revisions, lost receipts and mid-transaction failure preserve a single binding and matching journal",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "matching public previews survive a video change, a range and multipart stage selection",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "owner explicitly saves zero for a historical member, reads it privately, exports it, and can clear it",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "personal score fields retain inputs, check the same operation after disconnect and timeout, and display the server conflict",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "real downloads recover native-v2 rows and durable receipts offline and keep frozen, replaced source and former snapshot scores distinct",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "record reads and writes recover from network errors with the same zero draft and save operation",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the additive migration preserves old rows and exact journals and personal MV writes never count as stage-target writes",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the pending MV directory renders distinct clickable previews for FOCUS and STYLE versions",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the production archive and manifest restore legacy records, private zero and every committed receipt together",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "the write route rejects unauthenticated, other-account and cross-origin input before opening a score",
+            "occurrence": 1,
+            "result": "pass"
+          },
+          {
+            "suite": "main",
+            "test": "wrong owner, mismatched source, wrong group, forbidden appearances, invalid scores and native relations cannot be silently bound",
+            "occurrence": 1,
+            "result": "pass"
+          }
+        ],
+        "newCasesByFile": {
+          "tests/personal-mv-ratings.test.cjs": 9,
+          "tests/read-recovery.test.cjs": 2,
+          "tests/hearts2hearts-artist.test.cjs": 1,
+          "tests/work-video-player.test.cjs": 2
+        }
+      },
+      "failures": {
+        "retained": 166,
+        "new": [],
+        "cleared": [
+          {
+            "suite": "main",
+            "file": "tests/babymonster-mv-look.test.cjs",
+            "test": "BABYMONSTER approved primary uses native aspect, caption and secondary private reference with unchanged scores/links",
+            "after": "pass"
+          },
+          {
+            "suite": "main",
+            "file": "tests/babymonster-mv-look.test.cjs",
+            "test": "BABYMONSTER legacy photos retain original frame and portraits cannot become MV references",
+            "after": "pass"
+          },
+          {
+            "suite": "main",
+            "file": "tests/core.test.cjs",
+            "test": "bounded review presentation contains public conclusions rather than internal coordination",
+            "after": "absent"
+          }
+        ],
+        "remainingByFile": {
+          "tests/adya-review-routing.test.mjs": 1,
+          "tests/approved-release-repairs.test.cjs": 2,
+          "tests/approved-visual-repairs.test.cjs": 1,
+          "tests/artist-history-focus.test.cjs": 1,
+          "tests/artist-navigation.test.cjs": 2,
+          "tests/batch-c-adoption.test.cjs": 1,
+          "tests/bewave-review-routing.test.mjs": 1,
+          "tests/billlie-detail.test.cjs": 7,
+          "tests/candidate-chapter-navigation.test.cjs": 4,
+          "tests/candidate-density.test.cjs": 2,
+          "tests/candidate-empty-photo-layout.test.cjs": 1,
+          "tests/candidate-font-woff2.test.cjs": 2,
+          "tests/candidate-missing-look.test.cjs": 2,
+          "tests/candidate-mv-look.test.cjs": 1,
+          "tests/candidate-style-loading.test.cjs": 2,
+          "tests/candyshop-review-routing.test.mjs": 1,
+          "tests/catalog-module-ssr.test.cjs": 1,
+          "tests/combined-artists.test.cjs": 5,
+          "tests/combined-integration.test.cjs": 1,
+          "tests/continuous-evidence-protection.test.cjs": 3,
+          "tests/duplicate-loona-build-assets.test.mjs": 1,
+          "tests/editorial-fonts-woff2.test.cjs": 2,
+          "tests/expanded-artist.test.cjs": 3,
+          "tests/font-woff2.test.cjs": 1,
+          "tests/geenius-review-routing.test.mjs": 1,
+          "tests/genblue-native-integration.test.cjs": 1,
+          "tests/genblue-review-routing.test.mjs": 1,
+          "tests/group-advance-evidence.test.cjs": 1,
+          "tests/group-design-promotion.test.cjs": 1,
+          "tests/group-information.test.mjs": 1,
+          "tests/hearts2hearts-artist.test.cjs": 2,
+          "tests/hearts2hearts-detail.test.cjs": 9,
+          "tests/hearts2hearts-figma.test.cjs": 1,
+          "tests/hearts2hearts-review-routing.test.mjs": 1,
+          "tests/historical-affiliation.test.cjs": 1,
+          "tests/home-image-preload.test.cjs": 1,
+          "tests/idle-detail.test.cjs": 6,
+          "tests/idle-verified-design.test.cjs": 4,
+          "tests/ifeye-review-routing.test.mjs": 1,
+          "tests/illit-artist.test.cjs": 1,
+          "tests/illit-full-version.test.cjs": 1,
+          "tests/integrated-media-viewer.test.mjs": 1,
+          "tests/itzy-artist.test.cjs": 2,
+          "tests/ive-artist.test.cjs": 2,
+          "tests/izna-review-routing.test.mjs": 1,
+          "tests/katseye-artist.test.cjs": 1,
+          "tests/kiiikiii-artist.test.cjs": 4,
+          "tests/kiiikiii-review-routing.test.mjs": 1,
+          "tests/kiof-artist.test.cjs": 3,
+          "tests/kiof-sweat-stage.test.cjs": 2,
+          "tests/lesserafim-artist.test.cjs": 2,
+          "tests/loona-detail.test.cjs": 3,
+          "tests/madein-detail.test.cjs": 4,
+          "tests/manage-ssr.test.cjs": 1,
+          "tests/member-display-name.test.cjs": 1,
+          "tests/member-source-removal.test.cjs": 1,
+          "tests/meovv-madein-release-gaps.test.cjs": 1,
+          "tests/mv-poster-batch2-registry.test.cjs": 1,
+          "tests/mv-poster-storage.test.cjs": 3,
+          "tests/newjeans-detail.test.cjs": 5,
+          "tests/nmixx-artist.test.cjs": 1,
+          "tests/observed-hero-layout.test.cjs": 4,
+          "tests/oddyouth-review-routing.test.mjs": 1,
+          "tests/photo-display-focus-integration.test.cjs": 1,
+          "tests/photo-historical-r2-registry.test.cjs": 1,
+          "tests/photo-historical-r3-registry.test.cjs": 1,
+          "tests/photo-nightmiyeon1-registry.test.cjs": 1,
+          "tests/post-v200-adoptions.test.cjs": 1,
+          "tests/pr47-continuation-evidence.test.cjs": 1,
+          "tests/remaining-groups-completion.test.mjs": 1,
+          "tests/saymyname-artist.test.cjs": 3,
+          "tests/saymyname-review-routing.test.mjs": 1,
+          "tests/spia-content.test.mjs": 1,
+          "tests/spia-review-routing.test.mjs": 2,
+          "tests/stage-replacement-adoption.test.cjs": 3,
+          "tests/statistics-annual-reconciliation.test.mjs": 1,
+          "tests/statistics-period-followup.test.mjs": 1,
+          "tests/stayc-artist.test.cjs": 2,
+          "tests/summer-release-reference.test.cjs": 1,
+          "tests/three-group-hero-assets.test.cjs": 2,
+          "tests/timeline-batch-f-adoption.test.cjs": 1,
+          "tests/tracer-content.test.mjs": 1,
+          "tests/tracer-review-routing.test.mjs": 1,
+          "tests/triples-detail.test.cjs": 3,
+          "tests/v202-followup-evidence.test.cjs": 1,
+          "tests/vcha-container-host.test.mjs": 1,
+          "tests/vvup-review-routing.test.mjs": 1,
+          "tests/witchx-review-routing.test.mjs": 1,
+          "tests/wooah-review-routing.test.mjs": 1,
+          "tests/work-heading-date.test.cjs": 3,
+          "tests/youngposse-review-routing.test.mjs": 1
+        },
+        "retainedCases": [
+          {
+            "suite": "main",
+            "file": "tests/adya-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/approved-release-repairs.test.cjs",
+            "test": "itzy preserves existing identity and private-independent metadata"
+          },
+          {
+            "suite": "main",
+            "file": "tests/approved-release-repairs.test.cjs",
+            "test": "kiiikiii preserves existing identity and private-independent metadata"
+          },
+          {
+            "suite": "main",
+            "file": "tests/approved-visual-repairs.test.cjs",
+            "test": "MADEIN exact existing RISE carrier becomes visible once with digital release date and original work links"
+          },
+          {
+            "suite": "main",
+            "file": "tests/artist-history-focus.test.cjs",
+            "test": "all existing artist implementations and the new shared candidate use capture only for in-page navigation"
+          },
+          {
+            "suite": "main",
+            "file": "tests/artist-navigation.test.cjs",
+            "test": "cross-page navigation retains draft guard and captures browse position before leaving"
+          },
+          {
+            "suite": "main",
+            "file": "tests/artist-navigation.test.cjs",
+            "test": "seven member headers share one official concept set, never changing MV screenshot selection"
+          },
+          {
+            "suite": "main",
+            "file": "tests/batch-c-adoption.test.cjs",
+            "test": "Batch C uses exactly 33 reviewed pairs with original/display hashes and stable identities"
+          },
+          {
+            "suite": "main",
+            "file": "tests/bewave-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "RING X RING design applies only to exact production work, group, MV URL; Mnet checks exact stage identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "brand navigation calls guarded parent; score source is real binding rather than design identifier"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "detail media uses audited original bytes; snapshot identity matches design, six cast records do not infer seven"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "hidden member drafts stay discoverable and return to their mounted editor without autosave"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "live score editor survives rating hide/show and MV/stage switching; zero/null and failed draft preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "rating screen keeps real controls and no synthetic preset or inferred member identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/billlie-detail.test.cjs",
+            "test": "source corrected; empty cast blocks omitted while real cast and private notes retained"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-chapter-navigation.test.cjs",
+            "test": "all 37 design compositions have no unsupported literal local fragment navigation"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-chapter-navigation.test.cjs",
+            "test": "chapter labels describe their destinations and existing overview sections remain"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-chapter-navigation.test.cjs",
+            "test": "i-dle chapter route survives loading, refresh and section entry with correct content"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-chapter-navigation.test.cjs",
+            "test": "i-dle chapters use supported route destinations without async-only fragment targets"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-density.test.cjs",
+            "test": "historical IZ*ONE roster does not invent clickable members from twelve-person prose"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-density.test.cjs",
+            "test": "loona: 11 long Chinese names retain unique real component targets and final ordinal"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-empty-photo-layout.test.cjs",
+            "test": "MEOVV missing MV look overrides disabled opacity and tall ratio only for disabled buttons"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-font-woff2.test.cjs",
+            "test": "eight candidate styles prefer existing Space Grotesk WOFF2 with unchanged TTF fallback and descriptors"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-font-woff2.test.cjs",
+            "test": "six candidate styles prefer full editorial WOFF2 with unchanged TTF fallback and descriptors"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-missing-look.test.cjs",
+            "test": "badvillain: missing look stays disabled while a verified synthetic photo remains enabled"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-missing-look.test.cjs",
+            "test": "meovv: missing look stays disabled while a verified synthetic photo remains enabled"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-mv-look.test.cjs",
+            "test": "fromis9 actual member composition retains approved primary, individual reference and legacy gallery"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-style-loading.test.cjs",
+            "test": "legacy theme precedence remains ahead of candidate theme selection"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candidate-style-loading.test.cjs",
+            "test": "legacy14 imports and two bespoke detail compatibility styles remain ordered"
+          },
+          {
+            "suite": "main",
+            "file": "tests/candyshop-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/catalog-module-ssr.test.cjs",
+            "test": "real App SSR keeps the nonempty private loading shell without starting any group import or read"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-artists.test.cjs",
+            "test": "KATSEYE candidate keeps actual Figma palette, scoped selectors and theme precedence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-artists.test.cjs",
+            "test": "SAY MY NAME candidate uses scoped Figma tokens across member and viewing detail"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-artists.test.cjs",
+            "test": "new pair themes and headings respect all established artist priorities"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-artists.test.cjs",
+            "test": "new themes and headings preserve established collaboration precedence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-artists.test.cjs",
+            "test": "shared work themes keep one heading for STAYC/NMIXX collaborations in theme priority"
+          },
+          {
+            "suite": "main",
+            "file": "tests/combined-integration.test.cjs",
+            "test": "combined App keeps Editor and private record search identical to accepted baseline"
+          },
+          {
+            "suite": "main",
+            "file": "tests/continuous-evidence-protection.test.cjs",
+            "test": "official statement and manual links retain the exact viewed image bytes and reading limits"
+          },
+          {
+            "suite": "main",
+            "file": "tests/continuous-evidence-protection.test.cjs",
+            "test": "reported records add only scoped sources and prose, leaving all effective dates and member links intact"
+          },
+          {
+            "suite": "main",
+            "file": "tests/continuous-evidence-protection.test.cjs",
+            "test": "source upgrades retain every canonical date, status, stable ID, relation and all seven holds"
+          },
+          {
+            "suite": "main",
+            "file": "tests/duplicate-loona-build-assets.test.mjs",
+            "test": "no remaining old-directory references in runtime source roots"
+          },
+          {
+            "suite": "main",
+            "file": "tests/editorial-fonts-woff2.test.cjs",
+            "test": "DMSans-Variable has WOFF2 priority and unchanged descriptors in both source styles"
+          },
+          {
+            "suite": "main",
+            "file": "tests/editorial-fonts-woff2.test.cjs",
+            "test": "PlayfairDisplay-Variable has WOFF2 priority and unchanged descriptors in both source styles"
+          },
+          {
+            "suite": "main",
+            "file": "tests/expanded-artist.test.cjs",
+            "test": "expanded routes whitelist remains fixed and original editor/source logic unchanged"
+          },
+          {
+            "suite": "main",
+            "file": "tests/expanded-artist.test.cjs",
+            "test": "expanded work heading respects the same cross-group theme priority as the page"
+          },
+          {
+            "suite": "main",
+            "file": "tests/expanded-artist.test.cjs",
+            "test": "themed member pages retain captured social counts and dates without calling them live"
+          },
+          {
+            "suite": "main",
+            "file": "tests/font-woff2.test.cjs",
+            "test": "all nine source styles prefer full WOFF2 and retain TTF fallback and swap"
+          },
+          {
+            "suite": "main",
+            "file": "tests/geenius-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/genblue-native-integration.test.cjs",
+            "test": "night market MV evidence adds bidirectional browsing without inventing personal ratings or stage images"
+          },
+          {
+            "suite": "main",
+            "file": "tests/genblue-review-routing.test.mjs",
+            "test": "the built review includes a physical GENBLUE entry with resolvable scripts and styles"
+          },
+          {
+            "suite": "main",
+            "file": "tests/group-advance-evidence.test.cjs",
+            "test": "tests/group-advance-evidence.test.cjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/group-design-promotion.test.cjs",
+            "test": "member biographies have one shared renderer and public release labels stay editorial"
+          },
+          {
+            "suite": "main",
+            "file": "tests/group-information.test.mjs",
+            "test": "EVERGLOW new Instagram count retains its historical date and account identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-artist.test.cjs",
+            "test": "Hearts2Hearts independent index hero and watch theme retain existing collaboration priority"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-artist.test.cjs",
+            "test": "Hearts2Hearts member summaries preserve zero, dimension sample counts and exact MV photo absence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "H2H tabs preserve browser shortcuts and use manual focus-only activation"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "The Chase design applies only to exact production work, group, MV URL; Performance Video checks exact stage identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "brand navigation calls guarded parent; score source is real binding rather than design identifier"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "checkpoint identity matches existing catalog; related versions retain distinct score records"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "hidden H2H member drafts remain discoverable from stage and rating screens"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "live score editor survives rating hide/show and MV/stage switching; zero/null and failed draft preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "rating entry is accessible and reveals the persistent real editor; no score preset"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "rating screen keeps real controls and no synthetic preset or inferred member identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-detail.test.cjs",
+            "test": "source corrected; empty cast blocks omitted while real cast and private notes retained"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-figma.test.cjs",
+            "test": "missing member work photo never becomes oversized fake artwork"
+          },
+          {
+            "suite": "main",
+            "file": "tests/hearts2hearts-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/historical-affiliation.test.cjs",
+            "test": "IZONE two-digit archive ordinals stay together in the 22px mobile column"
+          },
+          {
+            "suite": "main",
+            "file": "tests/home-image-preload.test.cjs",
+            "test": "triples: homepage server preload is hoisted once with exact image request attributes"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "TOMBOY binds exact existing group, work and URL; KBS imagery never represents another stage"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "brand and release navigation use guarded parent; scoped CSS supports all supplied widths"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "changed stage source retains draft and blocks stale-score save"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "existing record cast retained without manufacturing membership; empty cast omitted"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "hidden member drafts stay discoverable and return to their mounted editor without autosave"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-detail.test.cjs",
+            "test": "real editor survives scoring visibility and video changes; failed drafts, zero and null remain distinct"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-verified-design.test.cjs",
+            "test": "home uses five current portraits and exact warm studio photo"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-verified-design.test.cjs",
+            "test": "member photo destination preserves exact ID and verified-design return route without adding a gallery"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-verified-design.test.cjs",
+            "test": "production work destination requires exact ID URL and group"
+          },
+          {
+            "suite": "main",
+            "file": "tests/idle-verified-design.test.cjs",
+            "test": "six member pages and all read-only releases preserve exact identities"
+          },
+          {
+            "suite": "main",
+            "file": "tests/ifeye-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/illit-artist.test.cjs",
+            "test": "ILLIT visuals stay scoped and full photographs remain contained across desktop/mobile"
+          },
+          {
+            "suite": "main",
+            "file": "tests/illit-full-version.test.cjs",
+            "test": "ILLIT version navigation metadata preserves separate private values, personal relations and both formal stage sources"
+          },
+          {
+            "suite": "main",
+            "file": "tests/integrated-media-viewer.test.mjs",
+            "test": "tests/integrated-media-viewer.test.mjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/itzy-artist.test.cjs",
+            "test": "ITZY member summaries preserve zero, dimension sample counts and exact MV photo absence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/itzy-artist.test.cjs",
+            "test": "ITZY social counts show each localized unit once without changing observations"
+          },
+          {
+            "suite": "main",
+            "file": "tests/ive-artist.test.cjs",
+            "test": "IVE implementation only uses existing authenticated reads and no business writes"
+          },
+          {
+            "suite": "main",
+            "file": "tests/ive-artist.test.cjs",
+            "test": "IVE scoped styles preserve full concept/MV imagery, mobile readable editor and all assets"
+          },
+          {
+            "suite": "main",
+            "file": "tests/izna-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/katseye-artist.test.cjs",
+            "test": "KATSEYE member dimensions remain distinct and missing MV photo never uses portrait"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiiikiii-artist.test.cjs",
+            "test": "KiiiKiii group-index hero is independent and the work title respects all older theme precedence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiiikiii-artist.test.cjs",
+            "test": "KiiiKiii member summaries preserve zero, dimension sample counts and exact MV photo absence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiiikiii-artist.test.cjs",
+            "test": "approved poster requires work, video and view tuple, never uses album art"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiiikiii-artist.test.cjs",
+            "test": "social unit presentation handles observed counts with units without changing source data"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiiikiii-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiof-artist.test.cjs",
+            "test": "KIOF member summaries preserve zero, dimension sample counts and exact MV photo absence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiof-artist.test.cjs",
+            "test": "KIOF only adds authenticated read projection and scoped visual wrappers"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiof-artist.test.cjs",
+            "test": "KIOF social measurements retain original rounded precision and old collection date"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiof-sweat-stage.test.cjs",
+            "test": "existing Korean view-only alternative, every other research state and original inventory remain unchanged"
+          },
+          {
+            "suite": "main",
+            "file": "tests/kiof-sweat-stage.test.cjs",
+            "test": "only the previously unbound Japanese SWEAT work receives a new source"
+          },
+          {
+            "suite": "main",
+            "file": "tests/lesserafim-artist.test.cjs",
+            "test": "LE SSERAFIM approved originals use native frames and qualified reference without changing private scores or links"
+          },
+          {
+            "suite": "main",
+            "file": "tests/lesserafim-artist.test.cjs",
+            "test": "LE SSERAFIM member dimensions remain distinct and missing MV photo never uses portrait"
+          },
+          {
+            "suite": "main",
+            "file": "tests/loona-detail.test.cjs",
+            "test": "LOONA failed save keeps typed zero and draft; score widget never writes by itself"
+          },
+          {
+            "suite": "main",
+            "file": "tests/loona-detail.test.cjs",
+            "test": "LOONA stage ticket uses actual metadata and retains MV/stage editor identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/loona-detail.test.cjs",
+            "test": "shared score precision preserves LOONA control and exact Butterfly image identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/madein-detail.test.cjs",
+            "test": "MADEIN imagery matches stable work ID and exact source, and rejects reused stage clips"
+          },
+          {
+            "suite": "main",
+            "file": "tests/madein-detail.test.cjs",
+            "test": "MADEIN navigation uses guarded artist callback and preserves non-MADEIN branch"
+          },
+          {
+            "suite": "main",
+            "file": "tests/madein-detail.test.cjs",
+            "test": "MADEIN rating switches preserve Editor position, decimal zero, clear-to-null and failed drafts"
+          },
+          {
+            "suite": "main",
+            "file": "tests/madein-detail.test.cjs",
+            "test": "SATURN stage artwork matches the production dated performance and fails closed on source drift"
+          },
+          {
+            "suite": "main",
+            "file": "tests/manage-ssr.test.cjs",
+            "test": "tests/manage-ssr.test.cjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/member-display-name.test.cjs",
+            "test": "all bespoke member headings use shared display resolver without changing stage lookup keys"
+          },
+          {
+            "suite": "main",
+            "file": "tests/member-source-removal.test.cjs",
+            "test": "original member links, personal notes and score editor remain available"
+          },
+          {
+            "suite": "main",
+            "file": "tests/meovv-madein-release-gaps.test.cjs",
+            "test": "MADEIN class structure stays unchanged and unknown dates do not crash"
+          },
+          {
+            "suite": "main",
+            "file": "tests/mv-poster-batch2-registry.test.cjs",
+            "test": "real registry passes backend admission and preserves the exact historical pilot storage key"
+          },
+          {
+            "suite": "main",
+            "file": "tests/mv-poster-storage.test.cjs",
+            "test": "exact upload, immutable replay, private read and recovery manifest"
+          },
+          {
+            "suite": "main",
+            "file": "tests/mv-poster-storage.test.cjs",
+            "test": "existing wrong bytes or metadata conflict without overwrite"
+          },
+          {
+            "suite": "main",
+            "file": "tests/mv-poster-storage.test.cjs",
+            "test": "source change before bytes return denied; concurrent personal edits preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/newjeans-detail.test.cjs",
+            "test": "Attention only adopts exact production ID, group and official URL"
+          },
+          {
+            "suite": "main",
+            "file": "tests/newjeans-detail.test.cjs",
+            "test": "all five static artwork slots use unchanged manifest bytes and exact aspect ratios"
+          },
+          {
+            "suite": "main",
+            "file": "tests/newjeans-detail.test.cjs",
+            "test": "hidden member drafts stay discoverable and return to their mounted editor without autosave"
+          },
+          {
+            "suite": "main",
+            "file": "tests/newjeans-detail.test.cjs",
+            "test": "navigation uses guarded callbacks and current-stage art cannot masquerade as SBS"
+          },
+          {
+            "suite": "main",
+            "file": "tests/newjeans-detail.test.cjs",
+            "test": "real Editor retains null, zero and decimal drafts across rating and video panels, never simulates a save"
+          },
+          {
+            "suite": "main",
+            "file": "tests/nmixx-artist.test.cjs",
+            "test": "NMIXX member summaries preserve zero, dimension sample counts and exact MV photo absence"
+          },
+          {
+            "suite": "main",
+            "file": "tests/observed-hero-layout.test.cjs",
+            "test": "badvillain: absent legacy facts leave no empty shell; supplied source is preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/observed-hero-layout.test.cjs",
+            "test": "izone: absent legacy facts leave no empty shell; supplied source is preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/observed-hero-layout.test.cjs",
+            "test": "portrait stays complete and BADVILLAIN cannot split the final letter"
+          },
+          {
+            "suite": "main",
+            "file": "tests/observed-hero-layout.test.cjs",
+            "test": "rocketpunch: absent legacy facts leave no empty shell; supplied source is preserved"
+          },
+          {
+            "suite": "main",
+            "file": "tests/oddyouth-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/photo-display-focus-integration.test.cjs",
+            "test": "tests/photo-display-focus-integration.test.cjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/photo-historical-r2-registry.test.cjs",
+            "test": "all 173 candidates remain hash-unique and all 158 published operation hashes remain immutable"
+          },
+          {
+            "suite": "main",
+            "file": "tests/photo-historical-r3-registry.test.cjs",
+            "test": "all 190 candidates remain hash-unique and all 173 published operation hashes remain immutable"
+          },
+          {
+            "suite": "main",
+            "file": "tests/photo-nightmiyeon1-registry.test.cjs",
+            "test": "all 191 candidates are hash-unique and all 190 prior operation hashes and registry text are unchanged"
+          },
+          {
+            "suite": "main",
+            "file": "tests/post-v200-adoptions.test.cjs",
+            "test": "UDTT earlier interview adjusts only reporting evidence without inventing effective dates or identities"
+          },
+          {
+            "suite": "main",
+            "file": "tests/pr47-continuation-evidence.test.cjs",
+            "test": "continuation appends bounded evidence while preserving the prior 103 references and frozen sources"
+          },
+          {
+            "suite": "main",
+            "file": "tests/remaining-groups-completion.test.mjs",
+            "test": "17 additional NewJeans previews retain publisher bytes and exact work/video/view identity"
+          },
+          {
+            "suite": "main",
+            "file": "tests/saymyname-artist.test.cjs",
+            "test": "SAY MY NAME member summary uses true relationships and exact work photo only"
+          },
+          {
+            "suite": "main",
+            "file": "tests/saymyname-artist.test.cjs",
+            "test": "SAY MY NAME native-led homepage orders photography, releases, members, videos and history"
+          },
+          {
+            "suite": "main",
+            "file": "tests/saymyname-artist.test.cjs",
+            "test": "SAY compact rows show only the three approved MV publisher images and retain unknown play placeholders"
+          },
+          {
+            "suite": "main",
+            "file": "tests/saymyname-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/spia-content.test.mjs",
+            "test": "native score access requires existing record, group and exact video slot"
+          },
+          {
+            "suite": "main",
+            "file": "tests/spia-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/spia-review-routing.test.mjs",
+            "test": "optional public-original delivery pins five untouched portraits to a full immutable SHA"
+          },
+          {
+            "suite": "main",
+            "file": "tests/stage-replacement-adoption.test.cjs",
+            "test": "each complete old public source reconstructs from its archive without dropping fields or source history"
+          },
+          {
+            "suite": "main",
+            "file": "tests/stage-replacement-adoption.test.cjs",
+            "test": "exactly eight current-policy replacements retain the frozen source and status cohorts"
+          },
+          {
+            "suite": "main",
+            "file": "tests/stage-replacement-adoption.test.cjs",
+            "test": "replacement bindings use the exact new video and fresh initialization time while status keeps source observation time"
+          },
+          {
+            "suite": "main",
+            "file": "tests/statistics-annual-reconciliation.test.mjs",
+            "test": "the public group model renders the reconciled integer and retains the unresolved scope"
+          },
+          {
+            "suite": "main",
+            "file": "tests/statistics-period-followup.test.mjs",
+            "test": "only three evidenced sales records and summary counts change; unknowns stay unknown"
+          },
+          {
+            "suite": "main",
+            "file": "tests/stayc-artist.test.cjs",
+            "test": "STAYC 23 optimized assets retain exact previously verified hashes"
+          },
+          {
+            "suite": "main",
+            "file": "tests/stayc-artist.test.cjs",
+            "test": "STAYC member dimensions remain distinct and missing MV photo never uses portrait"
+          },
+          {
+            "suite": "main",
+            "file": "tests/summer-release-reference.test.cjs",
+            "test": "all five recognition photos reuse prior same-set original bytes while both complete 105-row preimages remain protected"
+          },
+          {
+            "suite": "main",
+            "file": "tests/three-group-hero-assets.test.cjs",
+            "test": "recoverable backup hashes and non-photo data stay unchanged"
+          },
+          {
+            "suite": "main",
+            "file": "tests/three-group-hero-assets.test.cjs",
+            "test": "three approved source-bound heroes retain exact original and display bytes"
+          },
+          {
+            "suite": "main",
+            "file": "tests/timeline-batch-f-adoption.test.cjs",
+            "test": "tests/timeline-batch-f-adoption.test.cjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/tracer-content.test.mjs",
+            "test": "native handoffs bind record, group and exact video; zero differs from no score"
+          },
+          {
+            "suite": "main",
+            "file": "tests/tracer-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/triples-detail.test.cjs",
+            "test": "tripleS header and release navigation use the guarded artist route callback"
+          },
+          {
+            "suite": "main",
+            "file": "tests/triples-detail.test.cjs",
+            "test": "tripleS scope opts into decimal editor and never adds a research lineup"
+          },
+          {
+            "suite": "main",
+            "file": "tests/triples-detail.test.cjs",
+            "test": "tripleS typed zero survives failed save, and MV/stage keep the same editor"
+          },
+          {
+            "suite": "main",
+            "file": "tests/v202-followup-evidence.test.cjs",
+            "test": "only the bounded append, HITGS context and two policy notes differ from the complete v202 data"
+          },
+          {
+            "suite": "main",
+            "file": "tests/vcha-container-host.test.mjs",
+            "test": "tests/vcha-container-host.test.mjs"
+          },
+          {
+            "suite": "main",
+            "file": "tests/vvup-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/witchx-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          },
+          {
+            "suite": "main",
+            "file": "tests/wooah-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components, originals and nested fonts without modifying GENBLUE"
+          },
+          {
+            "suite": "main",
+            "file": "tests/work-heading-date.test.cjs",
+            "test": "all repeated group headings consistently select the active source date"
+          },
+          {
+            "suite": "main",
+            "file": "tests/work-heading-date.test.cjs",
+            "test": "expanded-work-heading displays the active video date and never borrows the MV date for an unknown stage"
+          },
+          {
+            "suite": "main",
+            "file": "tests/work-heading-date.test.cjs",
+            "test": "saymyname-work-heading displays the active video date and never borrows the MV date for an unknown stage"
+          },
+          {
+            "suite": "main",
+            "file": "tests/youngposse-review-routing.test.mjs",
+            "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+          }
+        ],
+        "remainingDiagnosticCategories": [
+          {
+            "code": "ERR_ASSERTION",
+            "operator": "==",
+            "failureType": "testCodeFailure",
+            "count": 15
+          },
+          {
+            "code": "ERR_ASSERTION",
+            "operator": "deepStrictEqual",
+            "failureType": "testCodeFailure",
+            "count": 12
+          },
+          {
+            "code": "ERR_ASSERTION",
+            "operator": "match",
+            "failureType": "testCodeFailure",
+            "count": 39
+          },
+          {
+            "code": "ERR_ASSERTION",
+            "operator": "strictEqual",
+            "failureType": "testCodeFailure",
+            "count": 37
+          },
+          {
+            "code": "ERR_TEST_FAILURE",
+            "operator": null,
+            "failureType": "testCodeFailure",
+            "count": 62
+          },
+          {
+            "code": "POSTER_VIDEO_TYPE_FIELD_TYPE_CHANGED",
+            "operator": null,
+            "failureType": "testCodeFailure",
+            "count": 1
+          }
+        ],
+        "retainedCasesWithChangedDiagnosticCategory": []
+      }
+    }
+  },
+  "platformComparison": {
+    "commonFailures": 166,
+    "windowsOnly": [
+      {
+        "suite": "main",
+        "file": "tests/duplicate-loona-build-assets.test.mjs",
+        "test": "read-only audit then build-only pruning preserves all originals and canonical build bytes; repeat is idempotent"
+      },
+      {
+        "suite": "main",
+        "file": "tests/photo-status-reads.test.cjs",
+        "test": "complete real registry output matches uncached target reads with measured SQL reduction"
+      },
+      {
+        "suite": "main",
+        "file": "tests/triples-fixture-boundaries.test.cjs",
+        "test": "image fixture aliases exactly the three reviewed metadata ports, never arbitrary actual data"
+      },
+      {
+        "suite": "main",
+        "file": "tests/triples-fixture-boundaries.test.cjs",
+        "test": "timeline fixture aliases exactly the three reviewed metadata ports, never arbitrary actual data"
+      }
+    ],
+    "linuxOnly": []
+  }
+}

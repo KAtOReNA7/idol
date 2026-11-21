@@ -2,9 +2,13 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v204，2026 年 11 月 21 日发布。614 首作品、51 团、527 个舞台、34 张专项封面。发布代码可从 GitHub 标签 `site/v204` 找到。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261121-release-periods/publication.json) |
+| 正式站 | v208，2026 年 11 月 22 日发布。51 团、605 支有视频的作品、9 个目录占位、527 个舞台；19 支 MV 已配置核验通过的同版站内来源。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [发布回执](evidence/20261122-v208/publication.json) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。线上应用 `2283b25a`，同一运行代码的测试与资料检查点 `d182e15b`。[本轮开发记录](worklogs/20261121-release-periods.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`。v208 应用提交 `1d2236f8`，GitHub 发布标签 `site/v208`。后续按成员照片卡内编辑和片源实播两个方向推进。[逐团预览](worklogs/20261122-work-previews.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+
+## 11 月 22 日更新
+
+Hearts2Hearts 的待看 MV 在正式站有 10 张卡，完整目录有 13 张，已全部解码。527 个绑定舞台均使用本站预览图。《BILLIONAIRE》七名发行成员均有本人评分入口。v208 使用独立评分区，照片下就地编辑是后续修订项。Windows 和 WSL 的 `npm run verify` 均通过；完整套件的既有失败从 173／169 减至 170／166。[公开测试回执](evidence/20261122-v208/tests.json) · [作品来源](worklogs/20261121-hd-work-players.md) · [成员评分](worklogs/20261122-personal-mv-ratings.md)
 
 ## 线上内容
 

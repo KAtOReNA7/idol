@@ -21,7 +21,6 @@ const anchorEvents = new Set(['youngposse','bewave','candyshop','oddyouth','adya
 // Reported events added to mounted timelines after the original routing
 // manifests were frozen. These are real HTML ids on the displayed event rows.
 const additionalAnchors = {
-  genblue: ['e-genblue-swing-dance-single','e-genblue-oh-chinese-single'],
   bewave: ['e-bewave-six-member-phase-end-announcement'],
   candyshop: ['e-candyshop-yuina-hiatus-announcement'],
   geenius: ['e-geenius-spoiler-book-instrumental'],
@@ -127,11 +126,15 @@ function withExpectedHeading(slug, entry) {
     : entry.id;
   const expectedHeading = headings[slug][entry.kind][key];
   if (!expectedHeading) throw new Error('Missing expected heading for ' + entry.url);
+  if (slug === 'ifeye' && entry.section === 'records') return {
+    ...entry, expectedHeading, targetSelector: '.work-tabs [aria-current="page"]', targetText: '发行',
+  };
   if (entry.kind !== 'event') return {...entry, expectedHeading};
   return {
     ...entry, expectedHeading, targetId: entry.id,
     ...(entry.target === 'anchor' && {fragment: '#' + encodeURIComponent(entry.id)}),
-    targetSelector: slug === 'udtt' ? '[data-event-id="' + entry.id + '"]' : '#' + entry.id,
+    targetSelector: slug === 'udtt' ? '[data-event-id="' + entry.id + '"]'
+      : nativeAstra.has(slug) ? '[data-event-key="' + entry.id + '"]' : '#' + entry.id,
   };
 }
 

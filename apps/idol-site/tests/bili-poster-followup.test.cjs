@@ -46,7 +46,9 @@ test('the two Japanese broadcast stills require their recorded work, part and ex
    posterSrc:poster.src,posterLabel:poster.label,posterFit:poster.fit,posterSize:poster.intrinsicSize,
   }));
   assert.ok(html.includes(still.src));
-  assert.equal(stageWatchUrl(source),still.sourcePageUrl);
+  const sourcePage=new URL(still.sourcePageUrl);
+  if(source.clip)sourcePage.searchParams.set('t',String(source.clip.startSeconds));
+  assert.equal(stageWatchUrl(source),sourcePage.href);
   assert.match(html,/在 B站观看/);
   assert.doesNotMatch(html,/<iframe|ytimg/);
   assert.equal(approvedVideoPoster(still.workId,source.videoId,'stage'),null);

@@ -1,0 +1,407 @@
+{
+  "baseApplication": "5ac54f3698fee64342da2b580c4a652e756215f8",
+  "testedOn": "2026-11-22",
+  "platform": "Windows, Node 24.16.0",
+  "scope": "Production components and the repository snapshot, using identical queries before and after. Strings include visible text, alt, aria-label, title and placeholder. Count each matching string once per query. Category totals may overlap. SSR route requests can show the same screen. Native hosts render loading text during SSR; their mounted content was compared separately. No human timing or visual measurements.",
+  "nativeMount": "ifeye and izna run their real client mount with local navigation adapters. UDTT calls its production route parser and renderer. All 3 use the scoped repository catalog; all member pages and at least one release, MV and stage detail per group were included.",
+  "checks": {
+    "statisticsAndPublicCopy": {
+      "tests": 122,
+      "passed": 122
+    },
+    "productionTimelineAndUDTTIdentity": {
+      "tests": 61,
+      "passed": 61
+    },
+    "threeLegacyArtistFiles": {
+      "tests": 61,
+      "passed": 54,
+      "failed": 7,
+      "changedUnknownValueCases": 3,
+      "changedUnknownValueCasesPassed": 3,
+      "remainingAreas": [
+        "MV/member portrait and score presentation",
+        "social count units",
+        "KiiiKiii index image/theme",
+        "approved poster selection"
+      ]
+    },
+    "typecheck": "passed",
+    "assets": {
+      "result": "passed, dry-run",
+      "remoteCopies": 5995,
+      "restrictedCopies": 10,
+      "restrictedAliases": 1,
+      "localAssets": 586
+    },
+    "historicalGuardManifestSha256": "23de9915639d22cf15ba0e107fb8602840b5a531b8e03de28c5218ad3b02c2f0",
+    "browser": "This subagent had no embedded-browser binding. Browser checks and publication are coordinated separately by the release owner."
+  },
+  "markers": {
+    "技术字段与接口": "asOf=null|checkedAt|Album_CNT|Total_CNT|原生接口读回|不改变作品ID|保留空成员ID",
+    "研究与内部决策": "按用户(?:要求|决定)|本轮未独立|未独立抓取|冲突继续开放|旧汇总|不据此改动既有成员记录|保留原有身份与个人历史|不宣称已读取完整官方榜|不宣称已核实|本项采用可核实|此处保留月份精度|统一冻结日|自动改写成员关系",
+    "档案施工与记录连接": "精确关联的原生作品记录|正在核对原生作品记录|已建立绑定|精确视频绑定|精确绑定|尚未接入评分手帐|事件正在整理|记录待整理|原件仍待补|具体影像关联待补充|出演成员：待核实|演唱语种待核",
+    "图片和姓名的处理术语": "资料库(?:显示名|译名)|具名媒体来源保留|精确视频(?:预览|封面)|原版场景已核|拍摄视频原生帧",
+    "统计卡的内部核验标签": "已核(?:零售销量|专辑销量|(?:单日|选定日|单周|两周)(?:专辑|零售|销量))"
+  },
+  "sameQueryRouteRequests": {
+    "before": {
+      "pathRequests": 481,
+      "routeErrors": 0,
+      "hitRoutes": 230,
+      "routeStringHits": 576,
+      "uniqueStrings": 102,
+      "groups": 48
+    },
+    "after": {
+      "pathRequests": 481,
+      "routeErrors": 0,
+      "hitRoutes": 0,
+      "routeStringHits": 0,
+      "uniqueStrings": 0,
+      "groups": 0
+    },
+    "categories": {
+      "技术字段与接口": [
+        103,
+        0
+      ],
+      "研究与内部决策": [
+        47,
+        0
+      ],
+      "档案施工与记录连接": [
+        158,
+        0
+      ],
+      "图片和姓名的处理术语": [
+        255,
+        0
+      ],
+      "统计卡的内部核验标签": [
+        18,
+        0
+      ]
+    },
+    "byGroup": {
+      "adya": {
+        "requests": 11,
+        "beforeRouteStringHits": 42,
+        "afterRouteStringHits": 0
+      },
+      "aespa": {
+        "requests": 8,
+        "beforeRouteStringHits": 11,
+        "afterRouteStringHits": 0
+      },
+      "atheart": {
+        "requests": 8,
+        "beforeRouteStringHits": 3,
+        "afterRouteStringHits": 0
+      },
+      "babymonster": {
+        "requests": 8,
+        "beforeRouteStringHits": 9,
+        "afterRouteStringHits": 0
+      },
+      "badvillain": {
+        "requests": 10,
+        "beforeRouteStringHits": 13,
+        "afterRouteStringHits": 0
+      },
+      "bewave": {
+        "requests": 11,
+        "beforeRouteStringHits": 34,
+        "afterRouteStringHits": 0
+      },
+      "billlie": {
+        "requests": 8,
+        "beforeRouteStringHits": 8,
+        "afterRouteStringHits": 0
+      },
+      "candyshop": {
+        "requests": 11,
+        "beforeRouteStringHits": 8,
+        "afterRouteStringHits": 0
+      },
+      "cherrybullet": {
+        "requests": 11,
+        "beforeRouteStringHits": 8,
+        "afterRouteStringHits": 0
+      },
+      "everglow": {
+        "requests": 11,
+        "beforeRouteStringHits": 9,
+        "afterRouteStringHits": 0
+      },
+      "fromis9": {
+        "requests": 12,
+        "beforeRouteStringHits": 13,
+        "afterRouteStringHits": 0
+      },
+      "geenius": {
+        "requests": 11,
+        "beforeRouteStringHits": 58,
+        "afterRouteStringHits": 0
+      },
+      "genblue": {
+        "requests": 12,
+        "beforeRouteStringHits": 3,
+        "afterRouteStringHits": 0
+      },
+      "hearts2hearts": {
+        "requests": 9,
+        "beforeRouteStringHits": 11,
+        "afterRouteStringHits": 0
+      },
+      "hitgs": {
+        "requests": 8,
+        "beforeRouteStringHits": 3,
+        "afterRouteStringHits": 0
+      },
+      "idle": {
+        "requests": 13,
+        "beforeRouteStringHits": 5,
+        "afterRouteStringHits": 0
+      },
+      "ifeye": {
+        "requests": 8,
+        "beforeRouteStringHits": 0,
+        "afterRouteStringHits": 0
+      },
+      "illit": {
+        "requests": 8,
+        "beforeRouteStringHits": 4,
+        "afterRouteStringHits": 0
+      },
+      "itzy": {
+        "requests": 8,
+        "beforeRouteStringHits": 8,
+        "afterRouteStringHits": 0
+      },
+      "ive": {
+        "requests": 9,
+        "beforeRouteStringHits": 7,
+        "afterRouteStringHits": 0
+      },
+      "izna": {
+        "requests": 8,
+        "beforeRouteStringHits": 0,
+        "afterRouteStringHits": 0
+      },
+      "izone": {
+        "requests": 11,
+        "beforeRouteStringHits": 5,
+        "afterRouteStringHits": 0
+      },
+      "katseye": {
+        "requests": 8,
+        "beforeRouteStringHits": 4,
+        "afterRouteStringHits": 0
+      },
+      "kep1er": {
+        "requests": 8,
+        "beforeRouteStringHits": 7,
+        "afterRouteStringHits": 0
+      },
+      "kiiikiii": {
+        "requests": 9,
+        "beforeRouteStringHits": 8,
+        "afterRouteStringHits": 0
+      },
+      "kissoflife": {
+        "requests": 8,
+        "beforeRouteStringHits": 7,
+        "afterRouteStringHits": 0
+      },
+      "lesserafim": {
+        "requests": 8,
+        "beforeRouteStringHits": 4,
+        "afterRouteStringHits": 0
+      },
+      "loona": {
+        "requests": 8,
+        "beforeRouteStringHits": 1,
+        "afterRouteStringHits": 0
+      },
+      "madein": {
+        "requests": 8,
+        "beforeRouteStringHits": 11,
+        "afterRouteStringHits": 0
+      },
+      "meovv": {
+        "requests": 8,
+        "beforeRouteStringHits": 4,
+        "afterRouteStringHits": 0
+      },
+      "newjeans": {
+        "requests": 10,
+        "beforeRouteStringHits": 4,
+        "afterRouteStringHits": 0
+      },
+      "nmixx": {
+        "requests": 8,
+        "beforeRouteStringHits": 8,
+        "afterRouteStringHits": 0
+      },
+      "oddyouth": {
+        "requests": 12,
+        "beforeRouteStringHits": 49,
+        "afterRouteStringHits": 0
+      },
+      "purplekiss": {
+        "requests": 8,
+        "beforeRouteStringHits": 7,
+        "afterRouteStringHits": 0
+      },
+      "qwer": {
+        "requests": 8,
+        "beforeRouteStringHits": 4,
+        "afterRouteStringHits": 0
+      },
+      "rescene": {
+        "requests": 8,
+        "beforeRouteStringHits": 10,
+        "afterRouteStringHits": 0
+      },
+      "rocketpunch": {
+        "requests": 12,
+        "beforeRouteStringHits": 4,
+        "afterRouteStringHits": 0
+      },
+      "saymyname": {
+        "requests": 9,
+        "beforeRouteStringHits": 11,
+        "afterRouteStringHits": 0
+      },
+      "spia": {
+        "requests": 11,
+        "beforeRouteStringHits": 38,
+        "afterRouteStringHits": 0
+      },
+      "stayc": {
+        "requests": 8,
+        "beforeRouteStringHits": 4,
+        "afterRouteStringHits": 0
+      },
+      "tracer": {
+        "requests": 11,
+        "beforeRouteStringHits": 19,
+        "afterRouteStringHits": 0
+      },
+      "triples": {
+        "requests": 8,
+        "beforeRouteStringHits": 13,
+        "afterRouteStringHits": 0
+      },
+      "udtt": {
+        "requests": 8,
+        "beforeRouteStringHits": 0,
+        "afterRouteStringHits": 0
+      },
+      "unis": {
+        "requests": 8,
+        "beforeRouteStringHits": 1,
+        "afterRouteStringHits": 0
+      },
+      "vcha": {
+        "requests": 8,
+        "beforeRouteStringHits": 5,
+        "afterRouteStringHits": 0
+      },
+      "vvup": {
+        "requests": 9,
+        "beforeRouteStringHits": 25,
+        "afterRouteStringHits": 0
+      },
+      "weeekly": {
+        "requests": 11,
+        "beforeRouteStringHits": 4,
+        "afterRouteStringHits": 0
+      },
+      "witchx": {
+        "requests": 11,
+        "beforeRouteStringHits": 47,
+        "afterRouteStringHits": 0
+      },
+      "wooah": {
+        "requests": 14,
+        "beforeRouteStringHits": 2,
+        "afterRouteStringHits": 0
+      },
+      "xg": {
+        "requests": 8,
+        "beforeRouteStringHits": 10,
+        "afterRouteStringHits": 0
+      },
+      "youngposse": {
+        "requests": 12,
+        "beforeRouteStringHits": 3,
+        "afterRouteStringHits": 0
+      }
+    }
+  },
+  "nativeClientViews": {
+    "before": {
+      "pathRequests": 41,
+      "routeErrors": 0,
+      "hitRoutes": 5,
+      "routeStringHits": 8,
+      "uniqueStrings": 7,
+      "groups": 2
+    },
+    "after": {
+      "pathRequests": 41,
+      "routeErrors": 0,
+      "hitRoutes": 0,
+      "routeStringHits": 0,
+      "uniqueStrings": 0,
+      "groups": 0
+    },
+    "categories": {
+      "技术字段与接口": [
+        3,
+        0
+      ],
+      "研究与内部决策": [
+        1,
+        0
+      ],
+      "档案施工与记录连接": [
+        2,
+        0
+      ],
+      "图片和姓名的处理术语": [
+        0,
+        0
+      ],
+      "统计卡的内部核验标签": [
+        2,
+        0
+      ]
+    },
+    "byGroup": {
+      "ifeye": {
+        "requests": 13,
+        "beforeRouteStringHits": 1,
+        "afterRouteStringHits": 0
+      },
+      "izna": {
+        "requests": 14,
+        "beforeRouteStringHits": 0,
+        "afterRouteStringHits": 0
+      },
+      "udtt": {
+        "requests": 14,
+        "beforeRouteStringHits": 7,
+        "afterRouteStringHits": 0
+      }
+    }
+  },
+  "withTimelineLoaded": {
+    "requested": 102,
+    "groups": 51,
+    "matched": 0,
+    "renderErrors": 0
+  }
+}

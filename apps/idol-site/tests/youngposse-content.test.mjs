@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
+import {retainedSourceBytes} from './fixtures/retention-audits.mjs';
 const read=p=>JSON.parse(fs.readFileSync(new URL('../'+p,import.meta.url)));
 const design=read('data/youngposse-native-design.json'),content=read('data/youngposse-artist.json'),editorial=read('data/youngposse-review-editorial.json');
 const compiled=await build({stdin:{contents:"export {youngposseOriginalPhoto} from './lib/idol/youngposse-photos';export {youngposseNativeBinding} from './lib/idol/candidate/youngposse-native';export {safeArtistReturn} from './lib/idol/artist-navigation';",resolveDir:process.cwd(),loader:'ts'},bundle:true,write:false,platform:'node',format:'cjs',logLevel:'silent'});
@@ -15,9 +16,9 @@ test('all 27 verified assets retain exact bytes; display photos resolve to real 
  for(const url of [content.hero.image,...Object.values(content.portraits).map(m=>m.image)]){assert.notEqual(original(url),url);assert.ok(assets.some(a=>a.url===original(url)&&a.variant==='original'));assert.match(original(url),/-original\.(jpg|png)$/);}
  assert.equal(original('/artist/vvup/batch-b-20261016-webp-v1/group-display.webp'),'/artist/vvup/batch-b-20261016-webp-v1/group-display.webp');
 });
-test('the older 18 image pins and two source guards remain byte-identical',()=>{
+test('the 18 live image bytes and both reconstructed historical sources match their retained release',()=>{
  const manifest=read('scripts/youngposse-original-retention-manifest.json');
- for(const [file,pin] of Object.entries(manifest.runtimeGuards)){const bytes=fs.readFileSync(new URL('../'+file,import.meta.url));assert.equal(bytes.length,pin.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),pin.sha256);}
+ for(const [file,pin] of Object.entries(manifest.runtimeGuards)){const bytes=retainedSourceBytes(file);assert.equal(bytes.length,pin.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),pin.sha256);}
  for(const pin of manifest.retainedImages){const bytes=fs.readFileSync(new URL('../public'+pin.path,import.meta.url));assert.equal(bytes.length,pin.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),pin.sha256);}
 });
 test('release uncertainty and subunit membership stay distinct from the whole official roster',()=>{

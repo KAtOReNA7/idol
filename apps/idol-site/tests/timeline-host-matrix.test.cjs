@@ -56,7 +56,7 @@ for (const artist of registry) {
     const reviewed = new Set(document.events.filter(event => event.reviewStatus === 'ready').map(event => event.id));
     if (reviewed.size) assert.ok(visible.some(id => reviewed.has(id)), 'missing reviewed events');
     for (const event of document.events.filter(row => row.reviewStatus === 'hold')) assert.ok(!visible.includes(event.id));
-    if (!reviewed.size) assert.match(html, /事件正在整理/);
+    if (!reviewed.size) assert.match(html, /暂无时间轴事件。/);
    }
   });
  }
@@ -101,7 +101,7 @@ test('real shared host separates load failure, reading, invalid and all-held sta
  const document=bundle.syntheticTimelines.recFixtureGroupA;
  const held={...document,events:document.events.filter(event=>event.reviewStatus==='hold')};
  const html=renderHost({input:held});
- assert.match(html,/事件正在整理/);assert.doesNotMatch(html,/NEVER_RENDER_HELD_ASSERTION/);
+ assert.match(html,/暂无时间轴事件。/);assert.doesNotMatch(html,/NEVER_RENDER_HELD_ASSERTION/);
 });
 
 test('host readiness markers obey explicit style and blocked gates without changing wire facts',()=>{

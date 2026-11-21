@@ -11,20 +11,34 @@ test('all 497 legacy keys and current bindings remain valid without metadata mig
  const all=require('./helpers/password-formal-baseline.cjs').beforePassword('stageVideos',require('../data/stage-videos.json'));assert.equal(Object.keys(all).length,497);
  for(const s of Object.values(all)){assert.equal(source.stageSourceKey(s),s.clip?`${s.videoId}@${s.clip.startSeconds}-${s.clip.endSeconds}`:s.videoId);assert.ok(source.stageSourceMatchesUrl(s));if(s.scoreBinding)assert.ok(source.stageHasValidBinding(s));}
 });
-test('BV CID and page jointly identify a source, in the canonical link and the muted in-page player',()=>{
- assert.equal(source.stageSourceKey(b),key);assert.equal(source.stageWatchUrl(b),b.url+'&cid=123456789');const embed=new URL(source.stageEmbedUrl(b));assert.equal(embed.origin,'https://player.bilibili.com');assert.equal(embed.pathname,'/player.html');assert.deepEqual(Object.fromEntries(embed.searchParams),{bvid:b.videoId,cid:b.bilibili.cid,p:'2',autoplay:'1',muted:'1',danmaku:'0'});assert.ok(source.stageHasValidBinding(b));
+test('BV CID and page jointly identify a source, in the canonical external link, with no unverified in-page quality',()=>{
+ assert.equal(source.stageSourceKey(b),key);assert.equal(source.stageWatchUrl(b),b.url+'&cid=123456789');assert.equal(source.stageEmbedUrl(b),null);assert.ok(source.stageHasValidBinding(b));
  for(const x of [{bilibili:{cid:'123456790',page:2}},{bilibili:{cid:'123456789',page:3},url:b.url.replace('p=2','p=3')},{scoreBinding:{...b.scoreBinding,sourceKey:undefined}}])assert.equal(source.stageHasValidBinding({...b,...x}),false);
 });
 
-test('Bili interval identity survives anonymous projection, distinguishes bounds and starts the muted official player at the selected interval',()=>{
+test('Bili interval identity survives anonymous projection, distinguishes bounds and links to the external player at the exact start',()=>{
  const clip={startSeconds:1085,endSeconds:1273,sourceDurationSeconds:1469,evidence:{note:'Reviewed synthetic bounds',urls:['https://example.org/program']}};
  const s={...b,clip,likesScope:'whole_video'},clipKey=key+'@1085-1273';s.scoreBinding={...b.scoreBinding,sourceKey:clipKey};
- assert.equal(source.stageSourceKey(s),clipKey);assert.ok(source.stageHasValidBinding(s));assert.equal(source.stageWatchUrl(s),b.url+'&cid=123456789');assert.equal(new URL(source.stageEmbedUrl(s)).searchParams.get('t'),'1085');
+ assert.equal(source.stageSourceKey(s),clipKey);assert.ok(source.stageHasValidBinding(s));assert.equal(source.stageWatchUrl(s),b.url+'&cid=123456789&t=1085');assert.equal(source.stageEmbedUrl(s),null);
  const projected=projectPublicCatalog({works:[{stage:s}],members:[],ratings:[]}).works[0].stage;
  assert.equal(source.stageSourceKey(projected),clipKey);assert.ok(source.stageHasValidBinding(projected));
  for(const change of [{clip:{...clip,startSeconds:1086}},{clip:{...clip,endSeconds:1272}},{scoreBinding:b.scoreBinding}])assert.equal(source.stageHasValidBinding({...s,...change}),false);
- const ui=require('./helpers/catalog-view-source.cjs')();assert.match(ui,/站内从片段起点播放，请在标注的终点暂停/);
+ const ui=require('./helpers/catalog-view-source.cjs')();assert.match(ui,/在 B 站原页选择最高画质，观看标注的区间/);
 });
+test('every catalogued Bilibili stage keeps its exact original page and provides no adaptive iframe',()=>{
+ const stages=Object.values(require('../data/stage-videos.json')).filter(s=>s.platform==='bilibili');
+ assert.ok(stages.length>0);
+ for(const s of stages){
+  const url=new URL(source.stageWatchUrl(s));
+  assert.equal(url.hostname,'www.bilibili.com');
+  assert.equal(url.pathname,'/video/'+s.videoId+'/');
+  assert.equal(url.searchParams.get('p'),String(s.bilibili.page));
+  assert.equal(url.searchParams.get('cid'),s.bilibili.cid);
+  assert.equal(url.searchParams.get('t'),s.clip?String(s.clip.startSeconds):null);
+  assert.equal(source.stageEmbedUrl(s),null);
+ }
+});
+
 test('incomplete identities, injected URLs, mismatched query and unsupported clips fail closed',()=>{
  for(const change of [{bilibili:undefined},{bilibili:{cid:'0',page:2}},{bilibili:{cid:'123456789',page:2,extra:true}},{clip:{startSeconds:0,endSeconds:20,sourceDurationSeconds:20}},{url:b.url+'&p=2'},{url:b.url+'&cid=999'},{url:b.url+'&redirect=https://example.org'},{url:b.url.replace('www.bilibili.com','www.bilibili.com.evil.example')},{url:b.url.replace('https:','http:')},{url:b.url+'#p=1'},{scorePolicy:'view_only'},{completeness:'excerpt'}])assert.equal(source.stageSourceKey({...b,...change}),null,JSON.stringify(change));
 });
@@ -40,7 +54,7 @@ test('public projection retains only bounded Bili identity, never source evidenc
 test('Bili player never requests a YouTube thumbnail, opens only on click and distinguishes multipart sessions',()=>{
  const file=path.join(__dirname,'../components/work-video-player.tsx'),ts=require('typescript'),vm=require('node:vm'),ex={};vm.runInNewContext('(function(exports,require){'+ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText+'})')(ex,require);const {WorkVideoPlayer}=ex;
  const props={workId:'recSYNTHETIC',view:'stage',platform:'bilibili',sourceKey:key,url:source.stageWatchUrl(b),videoId:b.videoId,embedUrl:null,title:'Synthetic Bili'};
- const html=renderToStaticMarkup(React.createElement(WorkVideoPlayer,props));assert.doesNotMatch(html,/<iframe|ytimg|youtube|<img/);assert.match(html,/在 B站观看/);assert.notEqual(WorkVideoPlayer(props).key,WorkVideoPlayer({...props,sourceKey:key+'changed'}).key);
+ const html=renderToStaticMarkup(React.createElement(WorkVideoPlayer,props));assert.doesNotMatch(html,/<iframe|ytimg|youtube|<img/);assert.match(html,/登录后选择最高画质/);assert.notEqual(WorkVideoPlayer(props).key,WorkVideoPlayer({...props,sourceKey:key+'changed'}).key);
 });
 // Exercise actual native save, SQL transaction, idempotency and audit against a synthetic source.
 const nativeFile=path.join(__dirname,'native-storage.test.cjs');

@@ -29,7 +29,21 @@ test('candidate source stays byte-exact outside the approved opening, public inf
   return source;
  }
  assert.equal(unchangedRuntime(read('runtime.mjs',true)),unchangedRuntime(read('runtime.mjs',false)));
+ // Apply the approved MV-first moves to the frozen candidate. All other bytes
+ // in both blocks, including album details, must still match the current renderer.
+ function approvedSectionOrder(source) {
+  function videoThenRelease(releaseStart, videoStart, nextSection) {
+   const release=source.indexOf(releaseStart),video=source.indexOf(videoStart,release+1),end=source.indexOf(nextSection,video+1);
+   assert.ok(release>=0 && release<video && video<end);
+   source=source.slice(0,release)+source.slice(video,end)+source.slice(release,video)+source.slice(end);
+  }
+  videoThenRelease('${feature?`<section class="chapter record-section">','${D.works.length?`<section class="chapter home-films">','${D.events.length?`<section');
+  videoThenRelease('${releases.length?`<section class="library-chapter">','${videos.length?`<section class="library-chapter library-films">','${!releases.length&&!videos.length?');
+  return source.replace('02 / RELEASES','03 / RELEASES').replace('03 / FILMS','02 / FILMS')
+   .replace("['release','发行'],['MV','影像']", "['MV','影像'],['release','发行']");
+ }
  function unchangedRenderer(source,current){
+  if(!current)source=approvedSectionOrder(source);
   if(current){const importLine="import {nativeMvImage,nativeMvCoverHtml} from '../native-mv-cover.mjs';\n";assert.ok(source.startsWith(importLine));source=source.replace(importLine,'');assert.ok(source.includes('image:displayAsset(nativeMvImage(row))'));source=source.replace('image:displayAsset(nativeMvImage(row))','image:displayAsset(row.image)');const coverLine='  const cover=nativeMvCoverHtml(asset,alt,kind,eager);if(cover)return cover;\n';assert.ok(source.includes(coverLine));source=source.replace(coverLine,'');}
   if(current){const review=JSON.parse(fs.readFileSync('../../docs/codex/evidence/20261029-member-layout/native-movement.json')).find(r=>r.file.endsWith('/izna.mjs'));const start=source.indexOf(' function person('),end=source.indexOf('\n function ',start+1);assert.equal(crypto.createHash('sha256').update(source.slice(start,end)).digest('hex'),review.reviewedPersonSha256);source=source.slice(0,start)+review.previousPersonFunction+source.slice(end);}
   if(current){assert.ok(source.startsWith("import {renderGroupInformation} from '../group-information.mjs';\n"));source=source.replace("import {renderGroupInformation} from '../group-information.mjs';\n",'');assert.ok(source.includes('return {group,accounts:raw.publicAccounts??[],'));source=source.replace('return {group,accounts:raw.publicAccounts??[],','return {group,');}

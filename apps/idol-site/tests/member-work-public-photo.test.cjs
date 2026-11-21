@@ -1,3 +1,4 @@
+const {expectedPortraitLabel}=require('./helpers/image-dependency-loader.cjs');
 const test=require('node:test'),assert=require('node:assert/strict'),path=require('node:path'),Module=require('node:module'),esbuild=require('esbuild');
 const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
 const {memberWorkPhoto,MemberWorkIdentityPhoto,MemberWorkPhotoButton,memberWorks}=require('./helpers/image-dependency-loader.cjs').imageDependency('@/lib/idol/member-work-photo');
@@ -11,7 +12,7 @@ test('every public identity is selected by exact work, video and member without 
  const before=JSON.stringify(privatePhoto);
  for(const p of runtime.portraits){
   const w={id:p.workId,url:'https://youtu.be/'+p.videoId};
-  for(const live of [true,false]){const selected=memberWorkPhoto(w,p.memberId,privatePhoto,live);assert.equal(selected.src,p.src);assert.equal(selected.label,p.label);assert.deepEqual(selected.publicImage.sourceCrop,p.sourceCrop);}
+  for(const live of [true,false]){const selected=memberWorkPhoto(w,p.memberId,privatePhoto,live);assert.equal(selected.src,p.src);assert.equal(selected.label,expectedPortraitLabel(p.label));assert.deepEqual(selected.publicImage.sourceCrop,p.sourceCrop);}
   for(const [otherWork,otherMember] of [[{...w,id:'wrong-work'},p.memberId],[{...w,url:'https://youtu.be/XXXXXXXXXXX'},p.memberId],[w,'wrong-member']])assert.equal(memberWorkPhoto(otherWork,otherMember,null,true),null);
  }
  assert.equal(JSON.stringify(privatePhoto),before);

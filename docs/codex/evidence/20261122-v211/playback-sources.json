@@ -1,7 +1,63 @@
 {
   "applicationBaseline": "5ac54f3698fee64342da2b580c4a652e756215f8",
   "auditedCanonicalVideos": 126,
-  "bilibiliFirst": [
+  "routeOrder": {
+    "all126": [
+      "RUTUBE exact edit",
+      "original YouTube"
+    ],
+    "inPageBilibili": 0,
+    "directBilibiliSourcePages": [
+      {
+        "workId": "recvxyHuKMCtUB",
+        "bvid": "BV1JctKeyEgw",
+        "cid": "25864110751",
+        "page": 2
+      },
+      {
+        "workId": "rec28ldfRTrOnV",
+        "bvid": "BV1bhU8BWEso",
+        "cid": "34265369310",
+        "page": 1
+      },
+      {
+        "workId": "recvxyH5pzoMAf",
+        "bvid": "BV1bo4y1x7LV",
+        "cid": "1115512650",
+        "page": 1,
+        "start": 1085,
+        "end": 1273
+      },
+      {
+        "workId": "recvxyHuKM2Gwu",
+        "bvid": "BV19D4y1r7c6",
+        "cid": "867429881",
+        "page": 1
+      }
+    ]
+  },
+  "highestQualityReview": {
+    "documentation": "https://player.bilibili.com/",
+    "sameOrigin": "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Same-origin_policy",
+    "crossSiteSession": "https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API",
+    "contract": "The official on-demand external player lists no public parameter or supported callback for locking the maximum quality, reading the decoded rendition or stopping adaptive fallback. The parent site cannot read the cross-origin video directly.",
+    "pausedMagneticMenu": {
+      "observedWith": "Codex in-app browser, playback paused",
+      "availableMenuEntries": [
+        "4K 大会员",
+        "1080P 高清（登录即享）",
+        "自动 360P"
+      ],
+      "highestQualityWithUserAccount": "not verified"
+    },
+    "stagePolicy": "Exact first-party source links preserve BV/CID/part and interval start. Users manage their Bilibili login and select the highest available option on the original page.",
+    "rutubeQuality": "q=1080 requests a rendition. The UI displays the source name only. Historical, source-specific decoded sizes and timestamps are in the linked evidence; current availability varies by session.",
+    "historicalPlayback": [
+      "../20261122-work-player-continuation/verified.json",
+      "../20261122-work-player-retries-v210/verified.json"
+    ]
+  },
+  "previousBilibiliObservations": [
     {
       "work": "rec28ldfRTrLku",
       "title": "BILLIONAIRE",
@@ -14,7 +70,10 @@
       "evidence": "../20261122-v210/publication.json",
       "observedOn": "v209 production work page, Bilibili selected as the alternate player",
       "muted": true,
-      "progressSeconds": [3.693063, 11.031821],
+      "progressSeconds": [
+        3.693063,
+        11.031821
+      ],
       "decodedWidth": 640,
       "decodedHeight": 294,
       "durationSeconds": 164
@@ -36,23 +95,154 @@
       "originalPage": "https://www.youtube.com/watch?v=Vk5-c_v4gMU",
       "observedOn": "Codex in-app browser, official Bilibili embedded player, before production deployment",
       "muted": true,
-      "progressSeconds": [5.448597, 24.566588],
+      "progressSeconds": [
+        5.448597,
+        24.566588
+      ],
       "decodedWidth": 640,
       "decodedHeight": 360,
       "durationSeconds": 189,
       "originalDurationSeconds": 189
     }
   ],
-  "routeOrder": {
-    "twoBilibiliWorks": ["Bilibili", "RUTUBE", "original YouTube"],
-    "other124": ["RUTUBE", "original YouTube"]
+  "additionalCandidateComparison": {
+    "comparison": "Three distributed YouTube hq previews per original, SHA-256 checked against the previous evidence. RGB correlation and average absolute channel error use 96x54 images extracted from the Bilibili public rendition after removing the original thumbnail padding. Candidate timestamps are rounded to 1/30 s. Audio was not compared sample by sample.",
+    "items": [
+      {
+        "workId": "rec28ldfRTrMIP",
+        "title": "Who is she",
+        "originalYouTubeId": "ygYPwsjyCzQ",
+        "originalListing": {
+          "url": "https://www.youtube.com/results?search_query=ygYPwsjyCzQ",
+          "videoId": "ygYPwsjyCzQ",
+          "title": "KISS OF LIFE (키스오브라이프) 'Who is she' Official Music Video",
+          "displayDuration": "2:42",
+          "seconds": 162,
+          "publisher": "KISS OF LIFE"
+        },
+        "originalEvidence": "../20261122-work-player-retries-v210/verified.json",
+        "bvid": "BV17YSZBSEnL",
+        "cid": "37279567488",
+        "page": 1,
+        "publicMetadata": "https://api.bilibili.com/x/web-interface/view?bvid=BV17YSZBSEnL",
+        "publisher": "kissoflife_s2",
+        "publisherMid": "1861067338",
+        "aid": "116356066313760",
+        "bilibiliTitle": "【KIOF】KISS OF LIFE — 'Who is she' 官方MV",
+        "listedDurationSeconds": 162,
+        "comparisonRenditionSeconds": 161.322,
+        "frameComparisons": [
+          {
+            "previewIndex": 1,
+            "originalPreview": "https://i.ytimg.com/vi/ygYPwsjyCzQ/hq1.jpg",
+            "originalSha256": "736a7948ef7256b95dc89cbafda2dc7ad84e681efb1f401b9c46aeb81423657e",
+            "candidateSeconds": 38.492,
+            "rgbCorrelation": 0.9891,
+            "meanChannelError": 3.97,
+            "sampleSha256": "d731b9664ac7c4d785d432b1e51c00bb95e9f4c95d99a04222764c12151a8dd2"
+          },
+          {
+            "previewIndex": 2,
+            "originalPreview": "https://i.ytimg.com/vi/ygYPwsjyCzQ/hq2.jpg",
+            "originalSha256": "0645fe0005a540553a5c2e63d8d7936a89f50668b2ced71c3c27bd23982f321c",
+            "candidateSeconds": 103.242,
+            "rgbCorrelation": 0.9976,
+            "meanChannelError": 3.53,
+            "sampleSha256": "655a209413e7fe4ed09dcc0153172f1f03f009915ae97c7b574ea6e34844bb11"
+          },
+          {
+            "previewIndex": 3,
+            "originalPreview": "https://i.ytimg.com/vi/ygYPwsjyCzQ/hq3.jpg",
+            "originalSha256": "93fe36053613a502beb19f5c64f44abfface03183dfbd446958c8e450f76726a",
+            "candidateSeconds": 139.033,
+            "rgbCorrelation": 0.9831,
+            "meanChannelError": 4.68,
+            "sampleSha256": "f78b7cfc056435220e422ed62cef2d2ced9eee24d1f8957fa110f880025c4a97"
+          }
+        ],
+        "mutedInAppPlayback": {
+          "observedOn": "Codex in-app browser before the highest-quality requirement, public Bilibili player",
+          "muted": true,
+          "progressSeconds": [
+            5.967467,
+            51.954808
+          ],
+          "decodedWidth": 640,
+          "decodedHeight": 360,
+          "durationSeconds": 162
+        }
+      },
+      {
+        "workId": "rec28ldfRTrACM",
+        "title": "SHEESH",
+        "originalYouTubeId": "2wA_b6YHjqQ",
+        "originalListing": {
+          "url": "https://www.youtube.com/results?search_query=BABYMONSTER%20-%20%27SHEESH%27%20M/V",
+          "videoId": "2wA_b6YHjqQ",
+          "title": "BABYMONSTER - ‘SHEESH’ M/V",
+          "displayDuration": "3:06",
+          "seconds": 186,
+          "publisher": "BABYMONSTER"
+        },
+        "originalEvidence": "../20261122-work-player-continuation/verified.json",
+        "bvid": "BV1Jx4y1m7m9",
+        "cid": "1488676044",
+        "page": 1,
+        "publicMetadata": "https://api.bilibili.com/x/web-interface/view?bvid=BV1Jx4y1m7m9",
+        "publisher": "BABYMONSTER_YG",
+        "publisherMid": "3493127232948989",
+        "aid": "1002343863",
+        "bilibiliTitle": "BABYMONSTER - ‘SHEESH’ MV",
+        "listedDurationSeconds": 186,
+        "comparisonRenditionSeconds": 185.258,
+        "frameComparisons": [
+          {
+            "previewIndex": 1,
+            "originalPreview": "https://i.ytimg.com/vi/2wA_b6YHjqQ/hq1.jpg",
+            "originalSha256": "5791f41bd2b5e4fe12a46eaf3d69b92e87b6b83c4b1079fa290e3771e2541e1f",
+            "candidateSeconds": 28.95,
+            "rgbCorrelation": 0.997,
+            "meanChannelError": 4.59,
+            "sampleSha256": "d5643da2a1b0a471eb6ef7f39d5ceb545d1e9787de87503d8791aabe9149b11f"
+          },
+          {
+            "previewIndex": 2,
+            "originalPreview": "https://i.ytimg.com/vi/2wA_b6YHjqQ/hq2.jpg",
+            "originalSha256": "0487a946671997d211c4028e6c21013ea1a3225749975fa6f5f5c6f6600ec2c0",
+            "candidateSeconds": 74.492,
+            "rgbCorrelation": 0.998,
+            "meanChannelError": 3.71,
+            "sampleSha256": "17b7775466364210f848b36b7ac10ff000d576756c15d1a282201f6a35a7ada5"
+          },
+          {
+            "previewIndex": 3,
+            "originalPreview": "https://i.ytimg.com/vi/2wA_b6YHjqQ/hq3.jpg",
+            "originalSha256": "0b8f61c0d1ab2f7b7b78b160abbe75e9490841b381dfa97999abb97dd9be6138",
+            "candidateSeconds": 158.158,
+            "rgbCorrelation": 0.9965,
+            "meanChannelError": 4.09,
+            "sampleSha256": "9dd7fe51dba0a6de8330109306babe07c84ce00ee9f71bccf14ddd3171181ff8"
+          }
+        ],
+        "mutedInAppPlayback": {
+          "observedOn": "Codex in-app browser before the highest-quality requirement, public Bilibili player",
+          "muted": true,
+          "progressSeconds": [
+            4.730399,
+            50.716336
+          ],
+          "decodedWidth": 640,
+          "decodedHeight": 360,
+          "durationSeconds": 186
+        }
+      }
+    ]
   },
   "localVerification": {
-    "typecheck": "pass",
-    "testFiles": ["work-video-player.test.cjs", "bili-poster-followup.test.cjs", "heygabby-complete-viewing.test.cjs", "stage-multiplatform.test.cjs", "x-stage-source.test.cjs"],
-    "passed": 39,
+    "command": "node --test --test-reporter=tap tests/work-video-player.test.cjs tests/stage-multiplatform.test.cjs tests/password-madein-followup.test.cjs tests/same-song-stage-fallback.test.cjs tests/bili-poster-followup.test.cjs tests/x-stage-source.test.cjs tests/heygabby-complete-viewing.test.cjs tests/izna-native-integration.test.cjs",
+    "passed": 65,
     "failed": 0,
-    "coverage": "All 126 public mappings and their stage identity checks. Simulated complete source cycles for all three route shapes and tests of ranged stage playback and scoped score bindings.",
-    "olderDraftSubset": {"passed": 6, "failed": 4, "previousKnownFailures": "../20261122-v208/tests.json"}
+    "typecheck": "pass",
+    "coverage": "All 126 exact mirror/original pairs; four previously tested MV candidates; all four Bilibili stage sources including the one bounded interval; izna source-byte and asset preservation, exact binding, route and focus tests."
   }
 }

@@ -1,0 +1,1970 @@
+{
+  "source": "React server rendering of the actual artist page with its approved repository catalog snapshot. Video variants and onstage rows may share a card selector. Match counts describe the selected nodes rather than the number of distinct videos.",
+  "routeCount": 144,
+  "views": {
+    "home": {
+      "mv-before-releases": 48,
+      "video-only": 0,
+      "release-only": 0
+    },
+    "works": {
+      "mv-before-releases": 26,
+      "video-only": 22,
+      "release-only": 0
+    },
+    "records": {
+      "mv-before-releases": 17,
+      "video-only": 7,
+      "release-only": 24
+    }
+  },
+  "artists": [
+    {
+      "slug": "meovv",
+      "path": "/artists/meovv",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".mf-work-featured",
+          "videoMatches": 3,
+          "releaseSelector": ".mf-release-image",
+          "releaseMatches": 8,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".mf-work",
+          "videoMatches": 19,
+          "releaseSelector": ".mf-release-image",
+          "releaseMatches": 8,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".mf-record-list a",
+          "videoMatches": 10,
+          "releaseSelector": ".mf-release-image",
+          "releaseMatches": 8,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "triples",
+      "path": "/artists/triples",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 3,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 25,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 22,
+          "pairedNavigation": [
+            [
+              "影像 ↓",
+              "发行 ↓"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "video-only",
+          "videoSelector": ".sr-work",
+          "videoMatches": 25,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "madein",
+      "path": "/artists/madein",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 3,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 8,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 4,
+          "pairedNavigation": [
+            [
+              "影像 ↓",
+              "发行 ↓"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "video-only",
+          "videoSelector": ".sr-work",
+          "videoMatches": 8,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "genblue",
+      "path": "/artists/genblue",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".gb-video-row",
+          "videoMatches": 2,
+          "releaseSelector": ".gb-release-focus a",
+          "releaseMatches": 9,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".gb-video-row",
+          "videoMatches": 8,
+          "releaseSelector": ".gb-release-row",
+          "releaseMatches": 8,
+          "pairedNavigation": [
+            [
+              "MV",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".gb-video-row",
+          "videoMatches": 8,
+          "releaseSelector": ".gb-release-row",
+          "releaseMatches": 8,
+          "pairedNavigation": [
+            [
+              "MV",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rescene",
+      "path": "/artists/rescene",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 3,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 10,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 6,
+          "pairedNavigation": [
+            [
+              "影像 ↓",
+              "发行 ↓"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "video-only",
+          "videoSelector": ".sr-work",
+          "videoMatches": 10,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "unis",
+      "path": "/artists/unis",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".uf-work-grid a",
+          "videoMatches": 3,
+          "releaseSelector": ".uf-featured-release",
+          "releaseMatches": 1,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".uf-work-row",
+          "videoMatches": 6,
+          "releaseSelector": ".uf-release-row",
+          "releaseMatches": 10,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".uf-work-row",
+          "videoMatches": 6,
+          "releaseSelector": ".uf-release-row",
+          "releaseMatches": 10,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "badvillain",
+      "path": "/artists/badvillain",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": "article.film",
+          "videoMatches": 2,
+          "releaseSelector": ".lead-record",
+          "releaseMatches": 2,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": "article.film",
+          "videoMatches": 6,
+          "releaseSelector": "article.record",
+          "releaseMatches": 4,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": "article.film",
+          "videoMatches": 6,
+          "releaseSelector": "article.record",
+          "releaseMatches": 4,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "qwer",
+      "path": "/artists/qwer",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 2,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 1,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 7,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 1,
+          "pairedNavigation": [
+            [
+              "影像 ↓",
+              "发行 ↓"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "video-only",
+          "videoSelector": ".sr-work",
+          "videoMatches": 7,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "vvup",
+      "path": "/artists/vvup",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".vu-video",
+          "videoMatches": 2,
+          "releaseSelector": ".vu-releases a",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".vu-video",
+          "videoMatches": 7,
+          "releaseSelector": ".vu-releases a",
+          "releaseMatches": 0,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".vu-video",
+          "videoMatches": 0,
+          "releaseSelector": ".vu-releases a",
+          "releaseMatches": 7,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "youngposse",
+      "path": "/artists/youngposse",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".video-row",
+          "videoMatches": 3,
+          "releaseSelector": "article.record",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".video-row",
+          "videoMatches": 22,
+          "releaseSelector": "article.record",
+          "releaseMatches": 15,
+          "pairedNavigation": [
+            [
+              "影像 14",
+              "发行 15"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".video-row",
+          "videoMatches": 22,
+          "releaseSelector": "article.record",
+          "releaseMatches": 15,
+          "pairedNavigation": [
+            [
+              "影像 14",
+              "发行 15"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bewave",
+      "path": "/artists/bewave",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".video-row",
+          "videoMatches": 3,
+          "releaseSelector": "article.record",
+          "releaseMatches": 4,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".video-row",
+          "videoMatches": 5,
+          "releaseSelector": "article.record",
+          "releaseMatches": 4,
+          "pairedNavigation": [
+            [
+              "影像 3",
+              "发行 4"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".video-row",
+          "videoMatches": 5,
+          "releaseSelector": "article.record",
+          "releaseMatches": 4,
+          "pairedNavigation": [
+            [
+              "影像 3",
+              "发行 4"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "candyshop",
+      "path": "/artists/candyshop",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".cs-video-row",
+          "videoMatches": 4,
+          "releaseSelector": ".cs-record",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".cs-video-row",
+          "videoMatches": 7,
+          "releaseSelector": ".cs-record",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像 4",
+              "发行 3"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".cs-video-row",
+          "videoMatches": 7,
+          "releaseSelector": ".cs-record",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像 4",
+              "发行 3"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "oddyouth",
+      "path": "/artists/oddyouth",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".oy-video",
+          "videoMatches": 3,
+          "releaseSelector": ".oy-release",
+          "releaseMatches": 5,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".oy-video",
+          "videoMatches": 11,
+          "releaseSelector": ".oy-release",
+          "releaseMatches": 5,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".oy-video",
+          "videoMatches": 11,
+          "releaseSelector": ".oy-release",
+          "releaseMatches": 5,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "adya",
+      "path": "/artists/adya",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".idol-adya-video",
+          "videoMatches": 4,
+          "releaseSelector": ".idol-adya-release",
+          "releaseMatches": 5,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".idol-adya-video",
+          "videoMatches": 6,
+          "releaseSelector": ".idol-adya-release",
+          "releaseMatches": 5,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".idol-adya-video",
+          "videoMatches": 6,
+          "releaseSelector": ".idol-adya-release",
+          "releaseMatches": 5,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "geenius",
+      "path": "/artists/geenius",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".idol-geenius-video",
+          "videoMatches": 7,
+          "releaseSelector": ".idol-geenius-release",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".idol-geenius-video",
+          "videoMatches": 7,
+          "releaseSelector": ".idol-geenius-release",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".idol-geenius-video",
+          "videoMatches": 7,
+          "releaseSelector": ".idol-geenius-release",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tracer",
+      "path": "/artists/tracer",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".tr-video",
+          "videoMatches": 2,
+          "releaseSelector": ".tr-release",
+          "releaseMatches": 1,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".tr-video",
+          "videoMatches": 2,
+          "releaseSelector": ".tr-release",
+          "releaseMatches": 1,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".tr-video",
+          "videoMatches": 2,
+          "releaseSelector": ".tr-release",
+          "releaseMatches": 1,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "witchx",
+      "path": "/artists/witchx",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".wk-video",
+          "videoMatches": 6,
+          "releaseSelector": ".wk-release",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".wk-video",
+          "videoMatches": 6,
+          "releaseSelector": ".wk-release",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".wk-video",
+          "videoMatches": 6,
+          "releaseSelector": ".wk-release",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spia",
+      "path": "/artists/spia",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sp-video",
+          "videoMatches": 4,
+          "releaseSelector": ".sp-release",
+          "releaseMatches": 2,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sp-video",
+          "videoMatches": 4,
+          "releaseSelector": ".sp-release",
+          "releaseMatches": 2,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sp-video",
+          "videoMatches": 4,
+          "releaseSelector": ".sp-release",
+          "releaseMatches": 2,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "vcha",
+      "path": "/artists/vcha",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".vc-video",
+          "videoMatches": 2,
+          "releaseSelector": "button.vc-release",
+          "releaseMatches": 4,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".vc-video",
+          "videoMatches": 8,
+          "releaseSelector": "button.vc-release",
+          "releaseMatches": 0,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".vc-video",
+          "videoMatches": 0,
+          "releaseSelector": "button.vc-release",
+          "releaseMatches": 4,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hitgs",
+      "path": "/artists/hitgs",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".hg-video",
+          "videoMatches": 2,
+          "releaseSelector": "button.hg-release",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".hg-video",
+          "videoMatches": 13,
+          "releaseSelector": "button.hg-release",
+          "releaseMatches": 0,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".hg-video",
+          "videoMatches": 0,
+          "releaseSelector": "button.hg-release",
+          "releaseMatches": 7,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "atheart",
+      "path": "/artists/atheart",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".ah-video",
+          "videoMatches": 2,
+          "releaseSelector": "button.ah-release",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像",
+              "音乐"
+            ]
+          ]
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".ah-video",
+          "videoMatches": 25,
+          "releaseSelector": "button.ah-release",
+          "releaseMatches": 0,
+          "pairedNavigation": [
+            [
+              "影像",
+              "音乐"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".ah-video",
+          "videoMatches": 0,
+          "releaseSelector": "button.ah-release",
+          "releaseMatches": 9,
+          "pairedNavigation": [
+            [
+              "影像",
+              "音乐"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "idle",
+      "path": "/artists/idle",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".idv-hero-mv",
+          "videoMatches": 1,
+          "releaseSelector": ".idv-latest-cover",
+          "releaseMatches": 1,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".idv-film",
+          "videoMatches": 36,
+          "releaseSelector": ".idv-release",
+          "releaseMatches": 41,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".idv-film",
+          "videoMatches": 0,
+          "releaseSelector": ".idv-release",
+          "releaseMatches": 41,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "izone",
+      "path": "/artists/izone",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": "article.iz-film",
+          "videoMatches": 2,
+          "releaseSelector": "article.iz-release",
+          "releaseMatches": 5,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": "article.iz-film",
+          "videoMatches": 17,
+          "releaseSelector": "article.iz-release",
+          "releaseMatches": 0,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": "article.iz-film",
+          "videoMatches": 0,
+          "releaseSelector": "article.iz-release",
+          "releaseMatches": 18,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fromis9",
+      "path": "/artists/fromis9",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": "article.f9-film",
+          "videoMatches": 2,
+          "releaseSelector": "article.f9-release",
+          "releaseMatches": 4,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": "article.f9-film",
+          "videoMatches": 31,
+          "releaseSelector": "article.f9-release",
+          "releaseMatches": 0,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": "article.f9-film",
+          "videoMatches": 0,
+          "releaseSelector": "article.f9-release",
+          "releaseMatches": 27,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "loona",
+      "path": "/artists/loona",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": "[data-home-video-id]",
+          "videoMatches": 4,
+          "releaseSelector": "[data-release-key]",
+          "releaseMatches": 4,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".ln-inner-work",
+          "videoMatches": 10,
+          "releaseSelector": ".ln-inner-release-grid article",
+          "releaseMatches": 4,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".ln-inner-work",
+          "videoMatches": 10,
+          "releaseSelector": ".ln-inner-release-grid article",
+          "releaseMatches": 4,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "everglow",
+      "path": "/artists/everglow",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": "article.eg-film",
+          "videoMatches": 2,
+          "releaseSelector": "article.eg-release",
+          "releaseMatches": 4,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": "article.eg-film",
+          "videoMatches": 19,
+          "releaseSelector": "article.eg-release",
+          "releaseMatches": 0,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": "article.eg-film",
+          "videoMatches": 0,
+          "releaseSelector": "article.eg-release",
+          "releaseMatches": 16,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rocketpunch",
+      "path": "/artists/rocketpunch",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": "article.rp-film",
+          "videoMatches": 2,
+          "releaseSelector": "article.rp-release",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": "article.rp-film",
+          "videoMatches": 20,
+          "releaseSelector": "article.rp-release",
+          "releaseMatches": 0,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": "article.rp-film",
+          "videoMatches": 0,
+          "releaseSelector": "article.rp-release",
+          "releaseMatches": 15,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cherrybullet",
+      "path": "/artists/cherrybullet",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": "article.cb-film",
+          "videoMatches": 2,
+          "releaseSelector": "article.cb-release",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": "article.cb-film",
+          "videoMatches": 14,
+          "releaseSelector": "article.cb-release",
+          "releaseMatches": 0,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": "article.cb-film",
+          "videoMatches": 0,
+          "releaseSelector": "article.cb-release",
+          "releaseMatches": 9,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "weeekly",
+      "path": "/artists/weeekly",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": "article.wk-film",
+          "videoMatches": 2,
+          "releaseSelector": "article.wk-release",
+          "releaseMatches": 3,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": "article.wk-film",
+          "videoMatches": 24,
+          "releaseSelector": "article.wk-release",
+          "releaseMatches": 0,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": "article.wk-film",
+          "videoMatches": 0,
+          "releaseSelector": "article.wk-release",
+          "releaseMatches": 22,
+          "pairedNavigation": [
+            [
+              "影像",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "wooah",
+      "path": "/artists/wooah",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".wa-video-mv",
+          "videoMatches": 3,
+          "releaseSelector": ".wa-release-home",
+          "releaseMatches": 1,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".wa-video-mv",
+          "videoMatches": 14,
+          "releaseSelector": ".wa-record",
+          "releaseMatches": 8,
+          "pairedNavigation": [
+            [
+              "MV",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".wa-video-mv",
+          "videoMatches": 0,
+          "releaseSelector": ".wa-record",
+          "releaseMatches": 8,
+          "pairedNavigation": [
+            [
+              "MV",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "purplekiss",
+      "path": "/artists/purplekiss",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 3,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 13,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 13,
+          "pairedNavigation": [
+            [
+              "影像 ↓",
+              "发行 ↓"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "video-only",
+          "videoSelector": ".sr-work",
+          "videoMatches": 13,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "billlie",
+      "path": "/artists/billlie",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".bf-hero-mv",
+          "videoMatches": 1,
+          "releaseSelector": ".bf-hero .bf-square",
+          "releaseMatches": 1,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".bf-work",
+          "videoMatches": 26,
+          "releaseSelector": "[data-design-release]",
+          "releaseMatches": 15,
+          "pairedNavigation": [
+            [
+              "MV",
+              "发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".bf-work",
+          "videoMatches": 26,
+          "releaseSelector": "[data-design-release]",
+          "releaseMatches": 15,
+          "pairedNavigation": [
+            [
+              "MV",
+              "发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kep1er",
+      "path": "/artists/kep1er",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".kf-work-row",
+          "videoMatches": 3,
+          "releaseSelector": ".kf-home-releases",
+          "releaseMatches": 1,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".kf-work-row",
+          "videoMatches": 16,
+          "releaseSelector": ".kf-release-card",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": ".kf-work-row",
+          "videoMatches": 16,
+          "releaseSelector": ".kf-release-card",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "newjeans",
+      "path": "/artists/newjeans",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".nj-media-grid article",
+          "videoMatches": 2,
+          "releaseSelector": ".nj-feature-release",
+          "releaseMatches": 1,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": "#newjeans-videos article",
+          "videoMatches": 25,
+          "releaseSelector": "#newjeans-releases article",
+          "releaseMatches": 7,
+          "pairedNavigation": [
+            [
+              "MV 与舞台",
+              "唱片发行"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "mv-before-releases",
+          "videoSelector": "#newjeans-videos article",
+          "videoMatches": 25,
+          "releaseSelector": "#newjeans-releases article",
+          "releaseMatches": 7,
+          "pairedNavigation": [
+            [
+              "MV 与舞台",
+              "唱片发行"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "babymonster",
+      "path": "/artists/babymonster",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".as-featured",
+          "videoMatches": 1,
+          "releaseSelector": ".as-releases a",
+          "releaseMatches": 4,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".as-work-row",
+          "videoMatches": 19,
+          "releaseSelector": ".as-releases a",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".as-work-row",
+          "videoMatches": 0,
+          "releaseSelector": ".as-releases a",
+          "releaseMatches": 4,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "illit",
+      "path": "/artists/illit",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 3,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 21,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 11,
+          "pairedNavigation": [
+            [
+              "影像 ↓",
+              "发行 ↓"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "video-only",
+          "videoSelector": ".sr-work",
+          "videoMatches": 21,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "xg",
+      "path": "/artists/xg",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".nx-work",
+          "videoMatches": 4,
+          "releaseSelector": ".nx-releases a",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".nx-work",
+          "videoMatches": 23,
+          "releaseSelector": ".nx-releases a",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".nx-work",
+          "videoMatches": 0,
+          "releaseSelector": ".nx-releases a",
+          "releaseMatches": 25,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "aespa",
+      "path": "/artists/aespa",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".nx-work",
+          "videoMatches": 3,
+          "releaseSelector": ".nx-releases a",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".nx-work",
+          "videoMatches": 36,
+          "releaseSelector": ".nx-releases a",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".nx-work",
+          "videoMatches": 0,
+          "releaseSelector": ".nx-releases a",
+          "releaseMatches": 20,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "ive",
+      "path": "/artists/ive",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 3,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sr-work",
+          "videoMatches": 26,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 20,
+          "pairedNavigation": [
+            [
+              "影像 ↓",
+              "发行 ↓"
+            ]
+          ]
+        },
+        {
+          "view": "records",
+          "mode": "video-only",
+          "videoSelector": ".sr-work",
+          "videoMatches": 25,
+          "releaseSelector": ".sr-release",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "kissoflife",
+      "path": "/artists/kissoflife",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".kf-release-song a",
+          "videoMatches": 3,
+          "releaseSelector": ".kf-album-cover",
+          "releaseMatches": 6,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".kf-work",
+          "videoMatches": 25,
+          "releaseSelector": ".kf-album-cover",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".kf-work",
+          "videoMatches": 0,
+          "releaseSelector": ".kf-album-cover",
+          "releaseMatches": 13,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "stayc",
+      "path": "/artists/stayc",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".sc-release-song a",
+          "videoMatches": 3,
+          "releaseSelector": ".sc-album-cover",
+          "releaseMatches": 6,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".sc-work",
+          "videoMatches": 17,
+          "releaseSelector": ".sc-album-cover",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".sc-work",
+          "videoMatches": 0,
+          "releaseSelector": ".sc-album-cover",
+          "releaseMatches": 13,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "nmixx",
+      "path": "/artists/nmixx",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".nx-work",
+          "videoMatches": 3,
+          "releaseSelector": ".nx-discography a",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".nx-work",
+          "videoMatches": 20,
+          "releaseSelector": ".nx-discography a",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".nx-work",
+          "videoMatches": 0,
+          "releaseSelector": ".nx-discography a",
+          "releaseMatches": 25,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "hearts2hearts",
+      "path": "/artists/hearts2hearts",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".h2h-watch a",
+          "videoMatches": 1,
+          "releaseSelector": ".h2h-music-cover",
+          "releaseMatches": 1,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".h2h-work",
+          "videoMatches": 13,
+          "releaseSelector": ".h2h-music-cover",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".h2h-work",
+          "videoMatches": 0,
+          "releaseSelector": ".h2h-release-card",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "kiiikiii",
+      "path": "/artists/kiiikiii",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".kk-work",
+          "videoMatches": 3,
+          "releaseSelector": ".kk-release-grid article",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".kk-work",
+          "videoMatches": 9,
+          "releaseSelector": ".kk-release-grid article",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".kk-work",
+          "videoMatches": 0,
+          "releaseSelector": ".kk-discography a",
+          "releaseMatches": 6,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "itzy",
+      "path": "/artists/itzy",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".iz-work",
+          "videoMatches": 3,
+          "releaseSelector": ".iz-discography a",
+          "releaseMatches": 3,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".iz-work",
+          "videoMatches": 32,
+          "releaseSelector": ".iz-discography a",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".iz-work",
+          "videoMatches": 0,
+          "releaseSelector": ".iz-discography a",
+          "releaseMatches": 35,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "lesserafim",
+      "path": "/artists/lesserafim",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".lf-release-song a",
+          "videoMatches": 5,
+          "releaseSelector": ".lf-album-cover",
+          "releaseMatches": 6,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".lf-work",
+          "videoMatches": 20,
+          "releaseSelector": ".lf-album-cover",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".lf-work",
+          "videoMatches": 0,
+          "releaseSelector": ".lf-album-cover",
+          "releaseMatches": 11,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "saymyname",
+      "path": "/artists/saymyname",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".smn-work",
+          "videoMatches": 6,
+          "releaseSelector": ".smn-lead-release",
+          "releaseMatches": 1,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".smn-work",
+          "videoMatches": 6,
+          "releaseSelector": ".smn-lead-release",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".smn-work",
+          "videoMatches": 0,
+          "releaseSelector": ".smn-discography a",
+          "releaseMatches": 9,
+          "pairedNavigation": []
+        }
+      ]
+    },
+    {
+      "slug": "katseye",
+      "path": "/artists/katseye",
+      "beforeHomeBody": "release shelf before video shelf",
+      "views": [
+        {
+          "view": "home",
+          "mode": "mv-before-releases",
+          "videoSelector": ".ke-work",
+          "videoMatches": 3,
+          "releaseSelector": ".ke-latest-art",
+          "releaseMatches": 1,
+          "pairedNavigation": []
+        },
+        {
+          "view": "works",
+          "mode": "video-only",
+          "videoSelector": ".ke-work",
+          "videoMatches": 15,
+          "releaseSelector": ".ke-latest-art",
+          "releaseMatches": 0,
+          "pairedNavigation": []
+        },
+        {
+          "view": "records",
+          "mode": "release-only",
+          "videoSelector": ".ke-work",
+          "videoMatches": 0,
+          "releaseSelector": ".ke-editorial-grid button",
+          "releaseMatches": 10,
+          "pairedNavigation": []
+        }
+      ]
+    }
+  ]
+}

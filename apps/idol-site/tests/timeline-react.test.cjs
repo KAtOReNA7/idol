@@ -18,7 +18,7 @@ test('held assertions and sources never enter the concise read-only display',()=
  const html=render({input});assert.doesNotMatch(html,/HIDDEN_TITLE|HIDDEN_SUMMARY|HIDDEN_SOURCE|条待核资料/);
 });
 test('real React distinguishes empty, invalid, loading and error states without audit UI',()=>{
- assert.match(render({input:{...baseline,events:[]}}),/事件正在整理/);assert.match(render({input:{}}),/时间轴暂时无法显示/);
+ assert.match(render({input:{...baseline,events:[]}}),/暂无时间轴事件。/);assert.match(render({input:{}}),/时间轴暂时无法显示/);
  assert.match(render({loading:true}),/正在读取时间轴/);assert.match(render({error:'SYNTHETIC_READ_FAILURE'}),/SYNTHETIC_READ_FAILURE/);
 });
 test('partial dates retain their actual precision and arbitrary event ids retain safe heading associations',()=>{

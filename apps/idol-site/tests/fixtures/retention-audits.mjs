@@ -14,10 +14,34 @@ const pin = {bytes: Buffer.byteLength(body), sha256: createHash('sha256').update
 const builtCarriers = Object.fromEntries(Object.keys(retained.builtCarriers).map(name => [name, pin]));
 const youngposseFixture = {...retained, builtCarriers, importNormalizedCarriers: {}};
 
-// Keep production hashes for every source and image. Only the two compiled
-// modules are deterministic examples of the historical bundler's output.
+// The original-photo manifest belongs to the release before the public-copy edit.
+// Reconstruct that exact component so unrelated source changes still fail its full hash.
+const originalCopy = [
+  ['暂无图片', '图片待补'],
+  ['此版本暂无可显示的评分', '评分绑定尚未有效，旧评分不展示'],
+  ['正在读取观看记录…', '正在读取原生记录…'],
+  ['暂时无法读取观看记录，仍可浏览作品。', '原生记录暂时不可用，公开作品仍可浏览。'],
+  ['此版本暂不提供评分。', '尚未核验此精确视频的原生记录绑定。'],
+  ['暂无视频预览图。', '此精确视频的预览图待补，发行封面不作为 MV 截图。'],
+  ['暂时找不到这个视频版本。', '没有找到此精确视频版本。'],
+];
+
+export function retainedSourceBytes(name) {
+  const expected = retained.runtimeGuards[name];
+  let bytes = fs.readFileSync(path.join(project, name));
+  if (name === retained.component && createHash('sha256').update(bytes).digest('hex') !== expected.sha256) {
+    let source = bytes.toString('utf8');
+    for (const [current, previous] of originalCopy) source = source.replaceAll(current, previous);
+    bytes = Buffer.from(source);
+  }
+  if (bytes.length !== expected.bytes || createHash('sha256').update(bytes).digest('hex') !== expected.sha256) {
+    throw Error('Historical YOUNG POSSE fixture source differs from its retained manifest: ' + name);
+  }
+  return bytes;
+}
+
 export function installYoungposseFixture(write) {
-  for (const name of Object.keys(retained.runtimeGuards)) write(name, fs.readFileSync(path.join(project, name)));
+  for (const name of Object.keys(retained.runtimeGuards)) write(name, retainedSourceBytes(name));
   for (const name of Object.keys(builtCarriers)) write(name, body);
   for (const image of retained.retainedImages) {
     const bytes = fs.readFileSync(path.join(project, 'public', image.path));

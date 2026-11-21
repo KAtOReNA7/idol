@@ -125,10 +125,12 @@ async function detail(g,r) {
     if(memberQuery) return identity()||false;
     const expectedTitle=r.expectedHeading||r.title;
     if(r.kind==='event'&&r.targetSelector) {
-      const target=elements(r.targetSelector).find(el=>el.getBoundingClientRect().height);
-      return target&&(!expectedTitle||text(target).includes(normal(expectedTitle)));
+      const anchor=elements(r.targetSelector)[0];
+      const target=anchor&&(text(anchor)?anchor:anchor.closest('article,li'));
+      return target?.getBoundingClientRect().height&&(!expectedTitle||text(target).includes(normal(expectedTitle)));
     }
     if(r.target==='anchor') return elements('[id], [data-event-id], [data-timeline-event-id]').find(el=>el.id===r.id||el.dataset.eventId===r.id||el.dataset.timelineEventId===r.id);
+    if(r.targetText&&!elements(r.targetSelector).some(el=>text(el).includes(normal(r.targetText))))return false;
     if(expectedTitle&&!heading.toLowerCase().includes(normal(expectedTitle).toLowerCase()))return false;
     return headings;
   };
@@ -136,17 +138,26 @@ async function detail(g,r) {
   const expandable=elements('details:not([open]) > summary').find(el=>el.getBoundingClientRect().height);
   if(expandable){expandable.click();if(!expandable.parentElement.open)throw Error('详情展开无效');expandable.click();}
   const viewport=doc().documentElement;
-  record(g,r.kind,r.id||r.url,true,{url:r.url,overflow:Math.max(0,viewport.scrollWidth-viewport.clientWidth),openedDisclosure:!!expandable,
+  const initialOverflow=Math.max(0,viewport.scrollWidth-viewport.clientWidth);
+  if(initialOverflow)await delay(220);
+  record(g,r.kind,r.id||r.url,true,{url:r.url,clientWidth:viewport.clientWidth,initialOverflow,overflow:Math.max(0,viewport.scrollWidth-viewport.clientWidth),openedDisclosure:!!expandable,
     identity:memberQuery?'member-id':r.target==='anchor'?'event-id':r.expectedHeading||r.title?'heading':'route-and-content',
     via:link?'page-link':'deep-link',heading:text(elements('h1').find(e=>e.getBoundingClientRect().height)).slice(0,100)});
 }
 document.querySelector('#run').onclick=async event=>{
   event.target.disabled=true;
   try {
+    if(params.has('inspect')){
+      const target=new URL(params.get('inspect'),location.origin);
+      if(target.origin!==location.origin||!target.pathname.startsWith('/artists/'))throw Error('请选择本地团页');
+      await open(target.pathname+target.search+target.hash);
+      status.value='单页检查';
+      return;
+    }
     const mode=params.get('mode')||'all';
     const inventoryMode=['library','member','artist-member'].includes(mode)?'library':mode;
     const all=await (await fetch('/__qa/inventory?mode='+encodeURIComponent(inventoryMode))).json();
-    const groups=all.filter((g,i)=>params.has('slug')?params.get('slug')===g.slug:i%Number(params.get('parts')||1)===Number(params.get('part')||0));
+    const groups=all.filter((g,i)=>g.slug!==params.get('exclude')&&(params.has('slug')?params.get('slug')===g.slug:i%Number(params.get('parts')||1)===Number(params.get('part')||0)));
     for(const g of groups) {
       status.value=g.name||g.slug;
       if(mode==='all'||mode==='library') {

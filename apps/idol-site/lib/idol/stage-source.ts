@@ -69,23 +69,19 @@ export function formatStageTime(seconds:number){return `${Math.floor(seconds/60)
 // Caption preferences do not create missing translation tracks.
 export function youtubeEmbedUrl(videoId:string){if(!/^[A-Za-z0-9_-]{11}$/.test(videoId))return null;const url=new URL(`https://www.youtube.com/embed/${videoId}`);url.searchParams.set('autoplay','1');url.searchParams.set('playsinline','1');url.searchParams.set('mute','1');url.searchParams.set('cc_load_policy','1');url.searchParams.set('cc_lang_pref','zh-Hans');url.searchParams.set('hl','zh-CN');return url.href;}
 export function stageEmbedUrl(stage:StageVideo){
- if(!stageSourceKey(stage)||!stageSourceMatchesUrl(stage)||stage.platform==='x')return null;
- if(stage.platform==='bilibili'&&stage.bilibili){
-  const url=new URL('https://player.bilibili.com/player.html');
-  url.searchParams.set('bvid',stage.videoId);
-  url.searchParams.set('cid',stage.bilibili.cid);
-  url.searchParams.set('p',String(stage.bilibili.page));
-  url.searchParams.set('autoplay','1');
-  url.searchParams.set('muted','1');
-  url.searchParams.set('danmaku','0');
-  if(stage.clip)url.searchParams.set('t',String(stage.clip.startSeconds));
-  return url.href;
- }
+ // The official Bilibili VOD iframe cannot lock or report its quality to this site.
+ if(!stageSourceKey(stage)||!stageSourceMatchesUrl(stage)||stage.platform==='x'||stage.platform==='bilibili')return null;
  const url=new URL(youtubeEmbedUrl(stage.videoId)!);if(stage.clip){url.searchParams.set('start',String(stage.clip.startSeconds));url.searchParams.set('end',String(stage.clip.endSeconds));}return url.href;
 }
 export function stageWatchUrl(stage:StageVideo){
  if(!stageSourceKey(stage)||!stageSourceMatchesUrl(stage))return '';
  if(stage.platform==='x')return stage.url;
- if(stage.platform==='bilibili')return `https://www.bilibili.com/video/${stage.videoId}/?p=${stage.bilibili!.page}&cid=${stage.bilibili!.cid}`;
+ if(stage.platform==='bilibili'){
+  const url=new URL('https://www.bilibili.com/video/'+stage.videoId+'/');
+  url.searchParams.set('p',String(stage.bilibili!.page));
+  url.searchParams.set('cid',stage.bilibili!.cid);
+  if(stage.clip)url.searchParams.set('t',String(stage.clip.startSeconds));
+  return url.href;
+ }
  const url=new URL(stage.url);if(stage.clip)url.searchParams.set('t',String(stage.clip.startSeconds));return url.href;
 }

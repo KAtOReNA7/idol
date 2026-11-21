@@ -82,6 +82,6 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
    const play=playControl.current;
    focusOnStart.current=!!play&&play===play.ownerDocument?.activeElement;
    setAttempt(1);
-  }}><Play fill="currentColor" size={25}/><span>{!embedUrl&&platform==='bilibili'?'在 B站观看':!embedUrl&&platform==='x'?'在 X 观看':view==='stage'?'播放舞台视频':'播放视频'}{playbackLabel&&`（${playbackLabel}）`}</span></button>
+  }}><Play fill="currentColor" size={25}/><span>{!embedUrl&&platform==='bilibili'?'在 B站观看（登录后选择最高画质）':!embedUrl&&platform==='x'?'在 X 观看':view==='stage'?'播放舞台视频':'播放视频'}{playbackLabel&&`（${playbackLabel}）`}</span></button>
  </div>{credit&&<small className="video-source-credit">{credit}</small>}</>;
 }

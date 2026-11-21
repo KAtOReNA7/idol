@@ -56,7 +56,7 @@ const node=(tree,type,className)=>nodes(tree).find(n=>n.type===type&&(!className
 test('a single HD player matches the full MV and the identical stage without changing its score identity',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const id='rec28ldfRTrLku',video='Gz_yRl6703c',stage=require('../data/stage-videos.json')[id];
- const selected=workPlayback(id,video,'mv',null),embed=new URL(selected.fallbackPlayers[0].embedUrl);
+ const selected=workPlayback(id,video,'mv',null),embed=new URL(selected.embedUrl);
  assert.equal(embed.origin,'https://rutube.ru');assert.equal(embed.searchParams.get('q'),'1080');
  assert.equal(embed.searchParams.get('autostartmute'),'true');
  assert.equal(workPlayback(id,video,'stage',stage).embedUrl,selected.embedUrl);
@@ -165,33 +165,21 @@ test('small verified posters remain centered at their native size and retain ret
  node(h.render(),'button','video-play').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
 });
 
-const knownBilibili={
- rec28ldfRTrLku:{bvid:'BV1TGNWeDEdv',cid:'28248899991',label:'B站',credit:'B站 · pcyxjy 转载'},
- rec28ldfRTrzPI:{bvid:'BV12r421t7nu',cid:'1480859605',label:'B站官方',credit:'B站 · ILLIT 官方账号'},
-};
-
 test('each confirmed work retains its exact mirror, original video and score binding',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const {stageSourceKey,stageSourceMatchesUrl,youtubeEmbedUrl}=require('./helpers/public-artist-loader.cjs')('lib/idol/stage-source.ts');
  const mappings=require('../data/verified-work-players.json'),stages=require('../data/stage-videos.json');
  for(const [id,mapping] of Object.entries(mappings)){
   const video=mapping.original, route=workPlayback(id,video,'mv',null);
-  const sources=[route,...route.fallbackPlayers], bilibili=knownBilibili[id];
-  const mirror=sources[bilibili?1:0],original=sources.at(-1);
-  assert.equal(sources.length,bilibili?3:2,id);
-  assert.equal(mirror.label,'RUTUBE 高清',id);
+  const [mirror,...fallbacks]=[route,...route.fallbackPlayers];
+  assert.equal(fallbacks.length,1,id);
+  const [original]=fallbacks;
+  assert.equal(mirror.label,'RUTUBE',id);
   assert.equal(mirror.embedUrl,`https://rutube.ru/play/embed/${mapping.rutube}?autostartmute=true&q=1080`,id);
   assert.equal(mirror.credit,`RUTUBE · ${mapping.uploader} 转载`,id);
   assert.equal(original.label,'YouTube 原版',id);
   assert.equal(original.embedUrl,youtubeEmbedUrl(video),id);
   assert.equal(new URL(original.embedUrl).searchParams.get('mute'),'1',id);
-  if(bilibili){
-   const url=new URL(route.embedUrl);
-   assert.equal(url.origin,'https://player.bilibili.com');
-   assert.deepEqual(Object.fromEntries(url.searchParams),{bvid:bilibili.bvid,cid:bilibili.cid,p:'1',autoplay:'1',muted:'1',danmaku:'0'});
-   assert.equal(route.label,bilibili.label);
-   assert.equal(route.credit,bilibili.credit);
-  }
   assert.equal(workPlayback(id,'invalid','mv',null),null);
   assert.equal(workPlayback('invalid',video,'mv',null),null);
   const stage=stages[id]??null, sameEdit=stage?.reusesOriginalVideo&&stageSourceKey(stage)===video&&stageSourceMatchesUrl(stage);
@@ -202,7 +190,7 @@ test('each confirmed work retains its exact mirror, original video and score bin
 test('one muted iframe follows the displayed switch destination and source credit through a full cycle',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const mappings=require('../data/verified-work-players.json');
- for(const id of [...Object.keys(knownBilibili),'rec28ldfRTrACM']){
+ for(const id of ['rec28ldfRTrLku','rec28ldfRTrzPI','rec28ldfRTrMIP','rec28ldfRTrACM']){
   const video=mappings[id].original, primary=workPlayback(id,video,'mv',null);
   const h=sessionHarness({workId:id,videoId:video,embedUrl:primary.embedUrl,playbackCredit:primary.credit,playbackLabel:primary.label,fallbackPlayers:primary.fallbackPlayers});
   const sources=[primary,...primary.fallbackPlayers], cover=h.render();

@@ -8,4 +8,9 @@ function imageDependency(name){
  const result=esbuild.buildSync({stdin:{contents:"export * from './components/reliable-image';export * from './components/app-image-presentation';export * from './components/mv-photo-reference';export * from './components/mv-identity-photo';export * from './components/member-work-identity-photo';export * from './lib/idol/member-work-photo';export * from './lib/idol/mv-member-appearance';export * from './lib/idol/member-works';export * from './lib/idol/mv-photo-presentation';export * from './lib/idol/approved-video-poster';export * from './lib/idol/mv-public-media';export * from './lib/idol/mv-recognition-edition';export * from './lib/idol/historical-member-visual';",resolveDir:root,loader:'tsx'},bundle:true,write:false,platform:'node',format:'cjs',jsx:'automatic',external:['react','react/*','react-dom','react-dom/*'],loader:{'.css':'empty'},logLevel:'silent'});
  const filename=path.join(root,'tests/helpers/.image-compiled.cjs'),mod=new Module(filename,module);mod.filename=filename;mod.paths=module.paths;mod._compile(result.outputFiles[0].text,filename);cached=mod.exports;return cached;
 }
-module.exports={imageDependency};
+const publishedLabels=new Map([
+ ['官方具名 MV 拍摄视频原生帧','官方 MV 拍摄花絮截图'],
+ ['具名成员MV章节；原版场景已核','原版 MV 的具名成员章节'],
+]);
+const expectedPortraitLabel=label=>publishedLabels.get(label)??label;
+module.exports={imageDependency,expectedPortraitLabel};

@@ -109,3 +109,38 @@ test('Attention shows each member’s 2022 debut portrait, with the credited ful
   }
   assert.equal(mvRecognitionEdition({workId, videoId, memberId: 'another-member'}), null);
 });
+
+const reviewedReleases = [
+  ['Buenos Aires', 'buenos-aires-2019', 'recvxyH5pzEDfw', 'M46FRJsB0Qw', 12],
+  ['La Vie en Rose', 'color-iz-2018', 'recvxyGO7qIB31', 'WZwr2a_lFWY', 12],
+  ['Suki to Iwasetai', 'suki-to-iwasetai-2019', 'recvxyH5pzydzY', 'dLymsYC7Kmo', 12],
+  ['Roller Coaster', 'roller-coaster-2023', 'recvxyOz5XxC5D', 'fqBAzCH4-9g', 6],
+  ['DALLA DALLA', 'itz-different-2019', 'recvxyOz5XEqgh', 'pNfTK39k55U', 5],
+  ['In the morning', 'guess-who-night-2021', 'recvxyOz5XJljg', '_ysomCGaZLw', 5],
+  ['Zig Zag', 'we-can-2020', 'recvxyH5pziABU', '1FqAoADnId4', 7],
+  ['Nobody Knows', 'born-to-be-xx-2023', 'rec28ldfRTrBgQ', 'unLuba-TQiE', 4],
+];
+
+for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
+  test(title + ' shows the full contemporary roster on its original MV and preserves the earlier work images', async () => {
+    const selected = editions[series];
+    const existing = media.portraits.filter(row => row.workId === workId && row.videoId === videoId);
+    assert.equal(existing.length, memberCount);
+    assert.deepEqual(new Set(selected.works[0].memberIds), new Set(existing.map(row => row.memberId)));
+    const work = {id: workId, url: 'https://www.youtube.com/watch?v=' + videoId};
+    for (const old of existing) {
+      const photo = mvRecognitionEdition(old);
+      assert.ok(photo, old.memberId);
+      const html = renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId: old.memberId, label: title, selectEdition: mvRecognitionEdition}));
+      assert.ok(html.includes('src="' + photo.preview + '"') && html.includes('href="' + photo.sourceUrl + '"'), old.memberId);
+      assert.match(photo.label, /本曲概念照|本次发行/);
+      assert.equal(html.includes('查看原作品图'), old.src !== photo.original, old.memberId);
+      const preview = await sharp(path.join(__dirname, '../public', photo.preview)).metadata();
+      const original = await sharp(path.join(__dirname, '../public', photo.original)).metadata();
+      assert.equal(preview.format, 'webp');
+      assert.equal(preview.width * 4, preview.height * 3);
+      assert.ok(original.width >= preview.width && original.height >= preview.height, old.memberId);
+      assert.equal(mvRecognitionEdition({...old, videoId: 'differentMV'}), null);
+    }
+  });
+}

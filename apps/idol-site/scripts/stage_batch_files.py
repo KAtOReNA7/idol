@@ -70,7 +70,7 @@ def stage_writer(root):
 
 class StageBatchFiles:
     def __init__(self, root, db):
-        self.root = root
+        self.root = root.resolve()
         self.db = db
         self.before = {}
         db.execute('PRAGMA synchronous=FULL')

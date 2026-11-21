@@ -39,6 +39,17 @@ class StageBatchTests(unittest.TestCase):
             (root / file).write_bytes(b'{"before":true}\n')
         return {file: transactions.read_bytes(root / file) for file in outputs}
 
+    def test_equivalent_root_resolves_the_same_approved_outputs(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.prepare(root)
+            equivalent_root = root / 'data' / '..'
+            apply(equivalent_root)
+            with transactions.stage_writer(root) as files:
+                self.assertTrue(files.completed('case.json', 'test-batch')['alreadyApplied'])
+                with self.assertRaisesRegex(ValueError, 'Unexpected stage output path'):
+                    files.path('data/other.json')
+
     def test_recover_after_each_replace_and_retry_without_changing_bytes(self):
         for position in range(1, 4):
             with self.subTest(position=position), TemporaryDirectory() as directory:

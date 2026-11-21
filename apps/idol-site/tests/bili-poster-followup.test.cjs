@@ -49,7 +49,7 @@ test('the two Japanese broadcast stills require their recorded work, part and ex
   const sourcePage=new URL(still.sourcePageUrl);
   if(source.clip)sourcePage.searchParams.set('t',String(source.clip.startSeconds));
   assert.equal(stageWatchUrl(source),sourcePage.href);
-  assert.match(html,/在 B站观看/);
+  assert.match(html,/此舞台暂无站内高清片源/);assert.doesNotMatch(html,/class="video-play"/);
   assert.doesNotMatch(html,/<iframe|ytimg/);
   assert.equal(approvedVideoPoster(still.workId,source.videoId,'stage'),null);
   assert.equal(approvedStagePoster('wrong',source),null);
@@ -71,5 +71,5 @@ test('the two Japanese broadcast stills require their recorded work, part and ex
 });
 test('actual Bili player SSR shows the local poster without a YouTube thumbnail or automatic third-party embed',()=>{
  const p=approvedStagePoster(id,stage),html=renderToStaticMarkup(React.createElement(WorkVideoPlayer,{workId:id,view:'stage',platform:stage.platform,sourceKey:stageSourceKey(stage),url:stageWatchUrl(stage),videoId:stage.videoId,embedUrl:null,title:stage.title,posterSrc:p.src,posterLabel:p.label,posterFit:p.fit,posterSize:p.intrinsicSize}));
- assert.ok(html.includes(entry.src));assert.match(html,/object-fit:contain/);assert.match(html,/max-width:1024px/);assert.match(html,/在 B站观看/);assert.doesNotMatch(html,/ytimg|youtube|<iframe/);
+ assert.ok(html.includes(entry.src));assert.match(html,/object-fit:contain/);assert.match(html,/max-width:1024px/);assert.match(html,/此舞台暂无站内高清片源/);assert.doesNotMatch(html,/class="video-play"/);assert.doesNotMatch(html,/ytimg|youtube|<iframe/);
 });

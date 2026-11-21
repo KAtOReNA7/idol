@@ -11,7 +11,7 @@ import {routeUrl} from '@/lib/idol/journey';
 import type {CandidateContent} from '@/lib/idol/candidate/types';
 import type {CatalogView, Work} from '@/lib/idol/types';
 import {artistMvWorkId} from '../../lib/idol/artist-mv-link';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import publicData from '@/data/runtime/idle-design-public.json';
 import './idle-verified-design.css';
 import {PhotoLightbox} from '../photo-lightbox';
@@ -60,7 +60,7 @@ export default function IdleDesign({content}:{content:CandidateContent}){
  const host=useArtistTimelineHostOptions();
  const [lightbox,setLightbox]=useState<{src:string;label:string}|null>(null),[attempt,setAttempt]=useState(0);
  const [fetched,setFetched]=useState<{catalog:CatalogView|null;loading:boolean;error:string}>({catalog:null,loading:true,error:''});
- useEffect(()=>{if(host.catalog!==undefined)return;const controller=new AbortController();catalogReadWithDeadline(async signal=>{const response=await fetch('/api/catalog?artist=idle&shape=display-v1',{cache:'no-store',signal});if(!response.ok)throw Error('暂时没有连上资料库。');const result=await response.json() as CatalogView;if(!Array.isArray(result.works)||!Array.isArray(result.members))throw Error('资料暂时没有加载完整。');return result;},controller.signal).then(catalog=>setFetched({catalog,loading:false,error:''})).catch(error=>{if(!controller.signal.aborted)setFetched({catalog:null,loading:false,error:error instanceof Error?error.message:'资料暂时无法加载。'});});return()=>controller.abort();},[host.catalog,attempt]);
+ useEffect(()=>{if(host.catalog!==undefined)return;const controller=new AbortController();catalogReadWithDeadline(async signal=>{const response=await fetch('/api/catalog?artist=idle&shape=display-v1',{headers:artistCatalogHeaders,cache:'no-store',signal});if(!response.ok)throw Error('暂时没有连上资料库。');const result=await response.json() as CatalogView;if(!Array.isArray(result.works)||!Array.isArray(result.members))throw Error('资料暂时没有加载完整。');return result;},controller.signal).then(catalog=>setFetched({catalog,loading:false,error:''})).catch(error=>{if(!controller.signal.aborted)setFetched({catalog:null,loading:false,error:error instanceof Error?error.message:'资料暂时无法加载。'});});return()=>controller.abort();},[host.catalog,attempt]);
  const catalog=host.catalog!==undefined?host.catalog:fetched.catalog;
  const location=useSyncExternalStore(subscribe,()=>window.location.href,()=>host.serverRoute??base);
  const params=new URL(location,'https://site.invalid').searchParams;

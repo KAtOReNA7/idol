@@ -18,4 +18,4 @@ function harness({respectAbort=true,personal=false}={}){
  vm.runInNewContext('(function(require,exports){'+code+'})',{console,window:win,fetch,crypto,URL,URLSearchParams,Date,AbortController,AbortSignal,DOMException,setTimeout,clearTimeout})(req,e);
  return {exports:e,requests,timers,listeners,window:win,async advance(ms){now+=ms;for(const [id,t] of timers)if(t.due<=now){timers.delete(id);t.f();}await tick();},reply(index,values={score:1,stylingScore:null,memory:'',note:''}){requests[index].resolve({ok:true,headers:{get:()=>"application/json"},json:async()=>({values,revision:'synthetic',watchedOptions:['未观看']})});}};
 }
-module.exports={harness,Runner,find,all,text,tick,assert};
+module.exports={harness,Runner,React,jsxRuntime:runtime,find,all,text,tick,assert};

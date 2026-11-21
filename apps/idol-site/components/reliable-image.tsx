@@ -84,7 +84,7 @@ export function ImageRecoveryControls({label = '图片恢复', style}: {label?: 
   };
   if (!entries.length) return null;
   return <section className="ri-recovery" aria-label={label} style={style}><details><summary ref={summary}>{label} · {entries.length} 张图片暂未加载</summary>
-    <p>每次只重试所选图片，不改变图片来源或当前记录。</p><ul>{entries.slice(0, limit).map(entry => <li key={entry.id}>
+    <ul>{entries.slice(0, limit).map(entry => <li key={entry.id}>
       <span>{entry.label || '图片'}</span><ImageRetryControl state={entry.state} label={`重试：${entry.label || '图片'}`} onRetryStarted={restoreFocus}/>
     </li>)}</ul>{entries.length > limit && <button type="button" className="ri-retry" onClick={() => setLimit(current => current + 12)}>显示更多失败图片</button>}
   </details></section>;

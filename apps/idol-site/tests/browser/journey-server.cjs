@@ -16,7 +16,7 @@ const origin = 'http://127.0.0.1:' + port;
 const output = fs.mkdtempSync(path.join(os.tmpdir(), 'idol-journeys-'));
 const built = buildSync({stdin:{contents:[
   "export {projectCatalog} from './lib/idol/catalog'",
-  "export {projectBrowserCatalog} from './lib/idol/browser-catalog'",
+  "export {projectBrowserCatalog,withoutStageCandidates} from './lib/idol/browser-catalog'",
   "export {projectArtistCatalog} from './lib/idol/artist-catalog'",
   "export {projectPublicCatalog} from './lib/idol/public-catalog'",
 ].join('\n'),resolveDir:root}, platform:'node',format:'cjs',bundle:true,write:false,
@@ -38,12 +38,29 @@ data.counts.scoreSum=0;
 const payloads = new Map();
 const rows = [];
 const progress = new Map();
-function catalog(slug) {
-  if (!payloads.has(slug)) {
+const mediaOrder = require('../fixtures/artist-media-order.cjs');
+const nativeHomeVideo = {
+  ifeye: '.video-section .work-card[data-work-key*="-mv-"]',
+  izna: '.home-films .film[data-video-key*="-mv-"]',
+  udtt: '[data-home-module="mv"] .ud-film-card',
+};
+const sampleWorks = {ive:'recvxyHuKMaCIP',adya:'rec28ldfRTrH9V',cherrybullet:'recvxyH5pza4kq'};
+function qaPage(title,runner) {
+  return '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>'+title+'</title><style>body{font:16px system-ui;margin:12px}iframe{display:block;border:0;margin-top:8px;height:820px}output{margin:1em}</style><h1>'+title+'</h1><button id="run" type="button">开始本批测试</button><output>等待开始</output><iframe title="按实际宽度浏览正式构建"></iframe><script type="module" src="/__qa/'+runner+'"></script></html>';
+}
+function speedTargets(){
+  return registry.map(g=>({slug:g.slug,path:g.path||'/artists/'+g.slug,
+    home:mediaOrder.get(g.slug)?.homeVideo||nativeHomeVideo[g.slug],
+    works:mediaOrder.get(g.slug)?.worksVideo,sampleWork:sampleWorks[g.slug]}));
+}
+function catalog(slug, omitCandidates) {
+  const key = (omitCandidates ? 'display:' : 'full:') + slug;
+  if (!payloads.has(key)) {
     const scoped = slug ? api.projectArtistCatalog(data,registry.find(g=>g.slug===slug).groupId) : data;
-    payloads.set(slug, JSON.stringify(api.projectPublicCatalog(api.projectBrowserCatalog(scoped))));
+    const view = api.projectPublicCatalog(api.projectBrowserCatalog(scoped));
+    payloads.set(key, JSON.stringify(omitCandidates ? api.withoutStageCandidates(view) : view));
   }
-  return payloads.get(slug);
+  return payloads.get(key);
 }
 function inventory(libraryOnly) {
   const helpers = libraryOnly ? null : require('../fixtures/artist-journey-routes.cjs');
@@ -71,12 +88,24 @@ const server = http.createServer(async (req,res)=>{
     if(req.method!=='GET') {res.writeHead(405).end();return;}
     if(url.pathname==='/__qa/') return send('text/html; charset=utf-8',fs.readFileSync(path.join(__dirname,'journeys.html')));
     if(url.pathname==='/__qa/runner.js') return send('text/javascript; charset=utf-8',fs.readFileSync(path.join(__dirname,'journeys.js')));
+    if(url.pathname==='/__qa/speed') return send('text/html; charset=utf-8',qaPage('团页访问测量','catalog-speed.js'));
+    if(url.pathname==='/__qa/interactions') return send('text/html; charset=utf-8',qaPage('团页操作与顺序','group-interaction.js'));
+    if(url.pathname==='/__qa/speed-targets') return send('application/json',JSON.stringify(speedTargets()));
+    if(url.pathname==='/__qa/mixed-media-routes') return send('application/json',JSON.stringify(require('../fixtures/mixed-media-routes.cjs')));
+    if(['/__qa/catalog-speed.js','/__qa/group-interaction.js'].includes(url.pathname)) {
+      res.setHeader('Cache-Control','no-store');
+      return send('text/javascript; charset=utf-8',fs.readFileSync(path.join(__dirname,path.basename(url.pathname))));
+    }
     if(url.pathname==='/__qa/inventory') return send('application/json',JSON.stringify(inventory(url.searchParams.get('mode')==='library')));
     if(url.pathname==='/__qa/progress') return send('application/json',JSON.stringify({rows:rows.length,failed:rows.filter(r=>!r.ok).length,latest:Object.fromEntries(progress)}));
     if(url.pathname==='/api/catalog') {
       const slug=url.searchParams.get('artist')||'';
       if(slug&&!registry.some(g=>g.slug===slug)) {res.writeHead(404).end();return;}
-      return send('application/json; charset=utf-8',catalog(slug));
+      const omitCandidates = url.searchParams.get('shape')==='display-v1' && req.headers.prefer?.split(',').some(item=>item.trim()==='omit-stage-candidates');
+      res.setHeader('Vary','Prefer');
+      res.setHeader('Cache-Control','private, no-store');
+      if(omitCandidates)res.setHeader('Preference-Applied','omit-stage-candidates');
+      return send('application/json; charset=utf-8',catalog(slug,omitCandidates));
     }
     const proxy=http.request({hostname:'127.0.0.1',port:workerPort,path:url.pathname+url.search,method:'GET',headers:{accept:req.headers.accept||'*/*'}},upstream=>{
       res.statusCode=upstream.statusCode;

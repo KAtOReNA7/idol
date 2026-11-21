@@ -51,10 +51,10 @@ test('same BV different CID or page cannot hide another supplement or borrow a p
 test('public projection retains only bounded Bili identity, never source evidence or private additions',()=>{
  const c={works:[{stage:{...b,sourceEvidence:{note:'private',urls:[]},bilibili:{...b.bilibili,secret:'hidden'}}}],members:[],ratings:[]};const actual=projectPublicCatalog(c).works[0].stage;assert.deepEqual(actual.bilibili,b.bilibili);assert.equal(actual.sourceEvidence,undefined);assert.equal(source.stageSourceKey(actual),key);
 });
-test('Bili player never requests a YouTube thumbnail, opens only on click and distinguishes multipart sessions',()=>{
+test('Bili player never requests a YouTube thumbnail, reports HD availability and distinguishes multipart sessions',()=>{
  const file=path.join(__dirname,'../components/work-video-player.tsx'),ts=require('typescript'),vm=require('node:vm'),ex={};vm.runInNewContext('(function(exports,require){'+ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText+'})')(ex,require);const {WorkVideoPlayer}=ex;
  const props={workId:'recSYNTHETIC',view:'stage',platform:'bilibili',sourceKey:key,url:source.stageWatchUrl(b),videoId:b.videoId,embedUrl:null,title:'Synthetic Bili'};
- const html=renderToStaticMarkup(React.createElement(WorkVideoPlayer,props));assert.doesNotMatch(html,/<iframe|ytimg|youtube|<img/);assert.match(html,/登录后选择最高画质/);assert.notEqual(WorkVideoPlayer(props).key,WorkVideoPlayer({...props,sourceKey:key+'changed'}).key);
+ const html=renderToStaticMarkup(React.createElement(WorkVideoPlayer,props));assert.doesNotMatch(html,/<iframe|ytimg|youtube|<img/);assert.match(html,/此舞台暂无站内高清片源/);assert.doesNotMatch(html,/class="video-play"/);assert.notEqual(WorkVideoPlayer(props).key,WorkVideoPlayer({...props,sourceKey:key+'changed'}).key);
 });
 // Exercise actual native save, SQL transaction, idempotency and audit against a synthetic source.
 const nativeFile=path.join(__dirname,'native-storage.test.cjs');

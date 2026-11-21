@@ -302,6 +302,7 @@ button.member-mv-look:focus-visible,
 /* One explicit cover retry per media session; independent of video playback. */
 .video-cover-retry{position:absolute;top:10px;right:10px;z-index:2;min-height:44px;padding:8px 12px;border:1px solid #d9d4df;border-radius:6px;background:#24202b;color:#fff;font-size:12px}
 .video-cover-retry:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.video-unavailable{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);max-width:95%;width:max-content;padding:7px 12px;border-radius:6px;background:#24202b;color:#fff;font-size:.875rem;line-height:1.5}
 .video-reload{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:4px;padding:4px 8px;font:inherit;font-size:.9rem;color:inherit;background:transparent;border:0;cursor:pointer;text-decoration:underline;text-underline-offset:.2em}
 .video-source-credit{display:block;margin-top:.5rem;font-size:.875rem;line-height:1.5;color:inherit}
 .video-reload:focus-visible{outline:2px solid currentColor;outline-offset:2px}

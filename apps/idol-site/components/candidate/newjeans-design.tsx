@@ -13,7 +13,7 @@ import {MemberPhysicalFacts} from '@/components/member-physical-facts';
 import {PhotoLightbox} from '@/components/photo-lightbox';
 import {useArtistScroll} from '@/components/use-artist-scroll';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkScoreLabel,artistWorkUrl,type ArtistSection} from '@/lib/idol/artist-preview';
 import {memberWorks,memberWorkSummary} from '@/lib/idol/member-works';
 import {memberAffiliationLabel,relatedHistoricalMember} from '@/lib/idol/member-affiliation';
@@ -68,7 +68,7 @@ export default function NewJeansDesign({content}:{content:CandidateContent}){
  const detail=useMemo(()=>newjeansPublicDetail(url),[url]);
  const route=useMemo(()=>artistRoute(url),[url]);const returnTo=newjeansReturnUrl(url);
  const remember=useArtistScroll(!!state.data,url);
- useEffect(()=>{if(host.catalog!==undefined)return;const controller=new AbortController();void catalogReadWithDeadline(async signal=>{const res=await fetch('/api/catalog?artist=newjeans&shape=display-v1',{cache:'no-store',signal});if(!res.ok)throw new Error('资料暂时无法读取。');const value=await res.json() as CatalogView;if(!Array.isArray(value.members)||!Array.isArray(value.works)||!Array.isArray(value.ratings))throw new Error('资料暂时没有加载完整。');return value;},controller.signal).then(value=>{if(!controller.signal.aborted)setFetched({data:value,loading:false,error:''});}).catch(error=>{if(!controller.signal.aborted)setFetched({data:null,loading:false,error:error instanceof Error?error.message:'资料暂时无法读取。'});});return()=>controller.abort();},[host.catalog]);
+ useEffect(()=>{if(host.catalog!==undefined)return;const controller=new AbortController();void catalogReadWithDeadline(async signal=>{const res=await fetch('/api/catalog?artist=newjeans&shape=display-v1',{headers:artistCatalogHeaders,cache:'no-store',signal});if(!res.ok)throw new Error('资料暂时无法读取。');const value=await res.json() as CatalogView;if(!Array.isArray(value.members)||!Array.isArray(value.works)||!Array.isArray(value.ratings))throw new Error('资料暂时没有加载完整。');return value;},controller.signal).then(value=>{if(!controller.signal.aborted)setFetched({data:value,loading:false,error:''});}).catch(error=>{if(!controller.signal.aborted)setFetched({data:null,loading:false,error:error instanceof Error?error.message:'资料暂时无法读取。'});});return()=>controller.abort();},[host.catalog]);
  function navigate(patch:Partial<ReturnType<typeof artistRoute>>,replace=false,exactUrl?:string){remember();window.history[replace?'replaceState':'pushState']({...newArtistHistoryState(window.history.state),njFrom:window.location.pathname+window.location.search},'',exactUrl&&safeArtistReturn(exactUrl)?exactUrl:artistRouteUrl({...route,...patch},PATH));window.dispatchEvent(new Event('artist-location-change'));if(!replace)document.getElementById('artist-content')?.scrollIntoView({block:'start'});}
  const collection=useMemo(()=>state.data?artistCollection(state.data,content.groupId):null,[state.data,content.groupId]);
  // Live relation fields decide membership. Public portraits never create or change a relation.

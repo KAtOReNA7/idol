@@ -165,21 +165,22 @@ test('small verified posters remain centered at their native size and retain ret
  node(h.render(),'button','video-play').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
 });
 
-test('each confirmed work retains its exact mirror, original video and score binding',()=>{
+test('each confirmed work selects one exact player and preserves stage score identity',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
- const {stageSourceKey,stageSourceMatchesUrl,youtubeEmbedUrl}=require('./helpers/public-artist-loader.cjs')('lib/idol/stage-source.ts');
+ const {stageSourceKey,stageSourceMatchesUrl}=require('./helpers/public-artist-loader.cjs')('lib/idol/stage-source.ts');
  const mappings=require('../data/verified-work-players.json'),stages=require('../data/stage-videos.json');
  for(const [id,mapping] of Object.entries(mappings)){
   const video=mapping.original, route=workPlayback(id,video,'mv',null);
-  const [mirror,...fallbacks]=[route,...route.fallbackPlayers];
-  assert.equal(fallbacks.length,1,id);
-  const [original]=fallbacks;
-  assert.equal(mirror.label,'RUTUBE',id);
-  assert.equal(mirror.embedUrl,`https://rutube.ru/play/embed/${mapping.rutube}?autostartmute=true&q=1080`,id);
-  assert.equal(mirror.credit,`RUTUBE · ${mapping.uploader} 转载`,id);
-  assert.equal(original.label,'YouTube 原版',id);
-  assert.equal(original.embedUrl,youtubeEmbedUrl(video),id);
-  assert.equal(new URL(original.embedUrl).searchParams.get('mute'),'1',id);
+  assert.equal(route.fallbackPlayers,undefined,id);
+  if(id==='rec28ldfRTrzPI'){
+   assert.equal(route.label,'Vimeo');
+   assert.equal(route.embedUrl,'https://player.vimeo.com/video/930729644?autoplay=1&muted=1&dnt=1&playsinline=1&quality=4k');
+   assert.match(route.credit,/COLORGRAF/);
+  }else{
+   assert.equal(route.label,'RUTUBE',id);
+   assert.equal(route.embedUrl,`https://rutube.ru/play/embed/${mapping.rutube}?autostartmute=true&q=1080`,id);
+   assert.equal(route.credit,`RUTUBE · ${mapping.uploader} 转载`,id);
+  }
   assert.equal(workPlayback(id,'invalid','mv',null),null);
   assert.equal(workPlayback('invalid',video,'mv',null),null);
   const stage=stages[id]??null, sameEdit=stage?.reusesOriginalVideo&&stageSourceKey(stage)===video&&stageSourceMatchesUrl(stage);
@@ -187,28 +188,27 @@ test('each confirmed work retains its exact mirror, original video and score bin
  }
 });
 
-test('one muted iframe follows the displayed switch destination and source credit through a full cycle',()=>{
+test('failed attempts can retry the same muted source without opening another player or tab',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const mappings=require('../data/verified-work-players.json');
- for(const id of ['rec28ldfRTrLku','rec28ldfRTrzPI','rec28ldfRTrMIP','rec28ldfRTrACM']){
-  const video=mappings[id].original, primary=workPlayback(id,video,'mv',null);
-  const h=sessionHarness({workId:id,videoId:video,embedUrl:primary.embedUrl,playbackCredit:primary.credit,playbackLabel:primary.label,fallbackPlayers:primary.fallbackPlayers});
-  const sources=[primary,...primary.fallbackPlayers], cover=h.render();
-  assert.ok(renderToStaticMarkup(cover).includes('播放视频（'+primary.label+'）'));
+ for(const id of ['rec28ldfRTrLku','rec28ldfRTrzPI']){
+  const video=mappings[id].original, player=workPlayback(id,video,'mv',null);
+  const h=sessionHarness({workId:id,videoId:video,embedUrl:player.embedUrl,playbackCredit:player.credit,playbackLabel:player.label});
+  const cover=h.render();
+  assert.ok(renderToStaticMarkup(cover).includes('播放视频（'+player.label+'）'));
   assert.equal(node(cover,'iframe'),undefined);
   node(cover,'button','video-play').props.onClick();
-  for(const [i,current] of [...sources,primary].entries()){
-   const tree=h.render(), frames=nodes(tree).filter(x=>x.type==='iframe');
-   assert.equal(frames.length,1);
-   assert.equal(frames[0].props.src,current.embedUrl);
-   assert.match(current.embedUrl,/[?&](?:muted?=1|autostartmute=true)(?:&|$)/);
-   assert.equal(node(tree,'small','video-source-credit').props.children,current.credit);
-   assert.equal(node(tree,'a'),undefined);
-   const control=node(tree,'button','video-reload');
-   assert.equal(control.props.type,'button');
-   assert.equal(control.props.children.at(-1),'切换到 '+sources[(i+1)%sources.length].label);
-   control.props.onClick();
-  }
+  const first=node(h.render(),'iframe');
+  first.props.onError();
+  const failure=h.render();
+  assert.equal(node(failure,'iframe'),undefined);
+  assert.equal(node(failure,'p').props.role,'status');
+  node(failure,'button','video-reload').props.onClick();
+  const restored=h.render(),frames=nodes(restored).filter(x=>x.type==='iframe');
+  assert.equal(frames.length,1);
+  assert.notEqual(frames[0].key,first.key);
+  assert.equal(frames[0].props.src,player.embedUrl);
+  assert.equal(node(restored,'small','video-source-credit').props.children,player.credit);
   assert.equal(h.opens(),0);
  }
 });

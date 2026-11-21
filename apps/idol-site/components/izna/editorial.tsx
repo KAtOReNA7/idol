@@ -1,7 +1,7 @@
 'use client';
 import {useEffect,useMemo,useRef,useState} from 'react';
 import {useArtistTimelineHostOptions} from '@/components/artist-timeline-host';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {safeArtistReturn} from '@/lib/idol/artist-navigation';
 import {routeUrl} from '@/lib/idol/journey';
 import {validIznaCatalog,iznaAssetResolver,iznaNativeBindings,prepareIznaDisplayData} from '@/lib/idol/izna-native';
@@ -22,7 +22,7 @@ export default function IznaEditorial({onNativeOpen,onPresentationMount}:{onNati
  useEffect(()=>{
   if(injected)return;const controller=new AbortController();setFetched({catalog:null,loading:true,error:''});
   void catalogReadWithDeadline(async signal=>{
-   const response=await fetch('/api/catalog?artist=izna&shape=display-v1',{signal,cache:'no-store',credentials:'same-origin'});
+   const response=await fetch('/api/catalog?artist=izna&shape=display-v1',{headers:artistCatalogHeaders,signal,cache:'no-store',credentials:'same-origin'});
    if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('暂时无法读取手帐记录。');
    const data:unknown=await response.json();if(!validIznaCatalog(data))throw new Error('暂时无法读取此版本的记录。');return data;
   },controller.signal).then(catalog=>{if(!controller.signal.aborted)setFetched({catalog,loading:false,error:''});}).catch(error=>{if(!controller.signal.aborted)setFetched({catalog:null,loading:false,error:error instanceof Error?error.message:'暂时无法读取手帐记录。'});});

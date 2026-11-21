@@ -14,7 +14,7 @@ import design from '@/data/bewave-native-design.json';
 import {artistCollection,artistRoute,artistMemberUrl,artistWorkUrl} from '@/lib/idol/artist-preview';
 import {safeArtistReturn} from '@/lib/idol/artist-navigation';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {bewaveNativeBinding} from '@/lib/idol/candidate/bewave-native';
 import {memberWorks} from '@/lib/idol/member-works';
 import {useArtistTimelineHostOptions} from '@/components/artist-timeline-host';
@@ -45,7 +45,7 @@ export default function BewaveArtist({content}:{content:CandidateContent}){
  const state=host.catalog!==undefined?{data:host.catalog,error:host.error??'',loading:host.loading??false}:fetched;
  const [lightbox,setLightbox]=useState<{src:string;label:string}|null>(null);
  const remember=useArtistScroll(true,url);
- useEffect(()=>{if(host.catalog!==undefined)return;const controller=new AbortController();setFetched({data:null,error:'',loading:true});void catalogReadWithDeadline(async signal=>{const response=await fetch('/api/catalog?artist=bewave&shape=display-v1',{cache:'no-store',signal});if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('记录暂时无法读取');const data=await response.json() as CatalogView;if(!data||!Array.isArray(data.groups)||!Array.isArray(data.members)||!Array.isArray(data.works)||!Array.isArray(data.ratings))throw new Error('记录尚未加载完整');return data;},controller.signal).then(data=>{if(!controller.signal.aborted)setFetched({data,error:'',loading:false});}).catch(error=>{if(!controller.signal.aborted)setFetched({data:null,error:error instanceof Error?error.message:'记录暂时无法读取',loading:false});});return()=>controller.abort();},[host.catalog,retry]);
+ useEffect(()=>{if(host.catalog!==undefined)return;const controller=new AbortController();setFetched({data:null,error:'',loading:true});void catalogReadWithDeadline(async signal=>{const response=await fetch('/api/catalog?artist=bewave&shape=display-v1',{headers:artistCatalogHeaders,cache:'no-store',signal});if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('记录暂时无法读取');const data=await response.json() as CatalogView;if(!data||!Array.isArray(data.groups)||!Array.isArray(data.members)||!Array.isArray(data.works)||!Array.isArray(data.ratings))throw new Error('记录尚未加载完整');return data;},controller.signal).then(data=>{if(!controller.signal.aborted)setFetched({data,error:'',loading:false});}).catch(error=>{if(!controller.signal.aborted)setFetched({data:null,error:error instanceof Error?error.message:'记录暂时无法读取',loading:false});});return()=>controller.abort();},[host.catalog,retry]);
  const collection=useMemo(()=>state.data?artistCollection(state.data,content.groupId):null,[state.data,content.groupId]);
  function href(patch:Record<string,string|null>){const p=new URLSearchParams(params);for(const [key,value]of Object.entries(patch)){if(value===null)p.delete(key);else p.set(key,value);}return path+(p.size?'?'+p:'');}
  const sectionHref=(section:string)=>path+(section==='overview'?'':'?section='+section);

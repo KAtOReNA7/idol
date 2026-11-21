@@ -10,7 +10,7 @@ test('a stalled save releases the editor and retries the exact same zero-score o
     signal.addEventListener('abort',()=>reject(new Error('transport aborted')),{once:true});
   }));
   expireSave=true;await h.footer().props.onClick();await h.settle();
-  assert.match(h.txt(h.editor()),/保存回执超时/);assert.equal(input(h,'MV 分数').props.value,0);
+  assert.match(h.txt(h.editor()),/未及时收到保存结果/);assert.equal(input(h,'MV 分数').props.value,0);
   h.setSaveTransport(null);await h.footer().props.onClick();await h.settle();
   const attempts=posts(h);assert.equal(attempts.length,2);assert.equal(attempts[0].body,attempts[1].body);
   assert.equal(h.editor().props['data-dirty'],undefined);

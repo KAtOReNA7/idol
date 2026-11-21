@@ -1,7 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),ts=require('typescript'),vm=require('node:vm');
 class AppError extends Error{constructor(code,message,status){super(message);Object.assign(this,{code,status});}}
 const modules=new Map();function load(file){file=path.resolve(file);if(modules.has(file))return modules.get(file);const out={};modules.set(file,out);const js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL,URLSearchParams})((n)=>n==='./feishu'?{AppError}:load(path.resolve(path.dirname(file),n)+'.ts'),out);return out;}
-const {projectBrowserCatalog,requestedBrowserCatalog}=load('lib/idol/browser-catalog.ts'),{personalMvPhoto,memberWorks,memberWorkSummary}=load('lib/idol/member-works.ts');
+const {projectBrowserCatalog,requestedBrowserCatalog,withoutStageCandidates}=load('lib/idol/browser-catalog.ts'),{personalMvPhoto,memberWorks,memberWorkSummary}=load('lib/idol/member-works.ts');
 const plain=x=>JSON.parse(JSON.stringify(x));
 test('ifeye presents its announced agency while preserving the source and newer edits',()=>{
  const catalog=sample([]);
@@ -44,7 +44,7 @@ function routeHarness(){
   '@/lib/idol/personal-mv-ratings':{personalMvRatingsForOwner:async()=>model.personal},
   '@/lib/idol/public-access':{ownerForRequest:async()=>{model.calls.push('auth');return model.deny?null:{userId:'owner'};}},
   '@/lib/idol/public-reader':{publicQuery:request=>{model.calls.push('public-query');return new URL(request.url).searchParams;},readPublicCatalog:async artist=>{model.calls.push('public:'+artist);return model.publicData;}},
-  '@/lib/idol/browser-catalog':{projectBrowserCatalog:data=>{model.projectedAfter.push([...model.calls]);return projectBrowserCatalog(data);},requestedBrowserCatalog},
+  '@/lib/idol/browser-catalog':{projectBrowserCatalog:data=>{model.projectedAfter.push([...model.calls]);return projectBrowserCatalog(data);},requestedBrowserCatalog,withoutStageCandidates},
   '@/lib/idol/artist-catalog':{requestedArtist:p=>p.get('artist'),projectArtistCatalog:(d,artist)=>{model.calls.push('artist:'+artist);return {...d,scope:{type:'artist',groupId:artist}};}},
   '@/lib/idol/native-storage':{ownControl:async u=>{model.calls.push('control:'+u);return {epoch:6};},assertSourceUnchanged:async()=>{model.calls.push('fence');if(model.drift)throw new AppError('STORAGE_CHANGING','changed',409);}},
   '@/lib/idol/native-reader':{readNativeCatalog:async(u,force)=>{model.calls.push('native:'+force);return model.native?model.data:null;}},
@@ -54,7 +54,7 @@ function routeHarness(){
  const out={},js=ts.transpileModule(fs.readFileSync('app/api/catalog/route.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL})(n=>{const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(n);if(timelineModule!==undefined)return timelineModule;assert.ok(n in stubs,n);return stubs[n];},out);
  return {model,read:(p,headers)=>out.GET(new Request('https://example.org/api/catalog'+p,{headers}))};
 }
-test('only opted-in library views omit comparison rows and preserve every other value',async()=>{
+test('only opted-in library and artist views omit comparison rows and preserve every other value',async()=>{
  for(const guest of [true,false]){
   const h=routeHarness(),catalog=sample();
   const stage=catalog.works[0].stage;
@@ -63,16 +63,18 @@ test('only opted-in library views omit comparison rows and preserve every other 
   h.model.deny=guest;
   if(guest)h.model.publicData=catalog;else h.model.data=catalog;
   const before=JSON.stringify(catalog);
-  const full=await (await h.read('?shape=display-v1')).json();
-  const response=await h.read('?shape=display-v1',{Prefer:'other, omit-stage-candidates'});
-  assert.equal(response.status,200);
-  assert.equal(response.headers.get('Preference-Applied'),'omit-stage-candidates');
-  assert.equal(response.headers.get('Vary'),'Prefer');
-  assert.equal(response.headers.get('Cache-Control'),'private, no-store');
-  assert.deepEqual(full.works[0].stage.candidates,stage.candidates);
-  delete full.works[0].stage.candidates;
-  assert.deepEqual(await response.json(),full);
-  assert.equal(JSON.stringify(catalog),before);
+  for(const query of ['?shape=display-v1','?artist=ive&shape=display-v1']){
+   const full=await (await h.read(query)).json();
+   const response=await h.read(query,{Prefer:'other, omit-stage-candidates'});
+   assert.equal(response.status,200);
+   assert.equal(response.headers.get('Preference-Applied'),'omit-stage-candidates');
+   assert.equal(response.headers.get('Vary'),'Prefer');
+   assert.equal(response.headers.get('Cache-Control'),'private, no-store');
+   assert.deepEqual(full.works[0].stage.candidates,stage.candidates);
+   delete full.works[0].stage.candidates;
+   assert.deepEqual(await response.json(),full);
+   assert.equal(JSON.stringify(catalog),before);
+  }
   if(!guest)assert.deepEqual((await (await h.read('',{Prefer:'omit-stage-candidates'})).json()).works[0].stage.candidates,stage.candidates);
  }
 });
@@ -94,7 +96,8 @@ test('every current catalog consumer explicitly opts in; old servers can still r
  }
  const reader = fs.readFileSync('lib/idol/catalog-read-deadline.ts', 'utf8');
  assert.match(reader, /new URLSearchParams\(\{artist, shape: 'display-v1'\}\)/);
- assert.match(reader, /fetch\('\/api\/catalog\?' \+ query, \{cache: 'no-store', signal: requestSignal\}\)/);
+ assert.match(reader, /fetch\('\/api\/catalog\?' \+ query, \{cache: 'no-store', signal: requestSignal, headers: artistCatalogHeaders\}\)/);
+ assert.match(reader, /artistCatalogHeaders = \{Prefer: 'omit-stage-candidates'\}/);
  const home = fs.readFileSync('app/page.tsx', 'utf8');
  assert.match(home, /shape=display-v1'\+\(force&&canEdit\?'&refresh=1':''\)/);
  assert.match(home, /shape=display-v1&refresh=background/);

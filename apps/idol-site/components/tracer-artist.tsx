@@ -10,7 +10,7 @@ import design from '@/data/tracer-native-design.json';
 import {artistCollection,artistRoute,artistMemberUrl,artistWorkUrl} from '@/lib/idol/artist-preview';
 import {safeArtistReturn} from '@/lib/idol/artist-navigation';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {tracerNativeBinding} from '@/lib/idol/candidate/tracer-native';
 import {useArtistTimelineHostOptions} from '@/components/artist-timeline-host';
 import {useArtistScroll} from '@/components/use-artist-scroll';
@@ -44,7 +44,7 @@ export default function TracerArtist({content}:{content:CandidateContent}){
  useEffect(()=>{
   if(host.catalog!==undefined)return;
   const controller=new AbortController();setFetched({data:null,error:'',loading:true});
-  void catalogReadWithDeadline(async signal=>{const response=await fetch('/api/catalog?artist=tracer&shape=display-v1',{cache:'no-store',signal});if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('记录暂时无法读取');const data=await response.json() as CatalogView;if(!data||!Array.isArray(data.groups)||!Array.isArray(data.members)||!Array.isArray(data.works)||!Array.isArray(data.ratings))throw new Error('记录尚未加载完整');return data;},controller.signal).then(data=>{if(!controller.signal.aborted)setFetched({data,error:'',loading:false});}).catch(error=>{if(!controller.signal.aborted)setFetched({data:null,error:error instanceof Error?error.message:'记录暂时无法读取',loading:false});});
+  void catalogReadWithDeadline(async signal=>{const response=await fetch('/api/catalog?artist=tracer&shape=display-v1',{headers:artistCatalogHeaders,cache:'no-store',signal});if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('记录暂时无法读取');const data=await response.json() as CatalogView;if(!data||!Array.isArray(data.groups)||!Array.isArray(data.members)||!Array.isArray(data.works)||!Array.isArray(data.ratings))throw new Error('记录尚未加载完整');return data;},controller.signal).then(data=>{if(!controller.signal.aborted)setFetched({data,error:'',loading:false});}).catch(error=>{if(!controller.signal.aborted)setFetched({data:null,error:error instanceof Error?error.message:'记录暂时无法读取',loading:false});});
   return()=>controller.abort();
  },[host.catalog,retry]);
  function href(patch:Record<string,string|null>){const p=new URLSearchParams(params);for(const[k,v]of Object.entries(patch)){if(v===null)p.delete(k);else p.set(k,v);}return path+(p.size?'?'+p:'');}

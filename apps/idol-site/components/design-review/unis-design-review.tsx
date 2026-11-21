@@ -13,7 +13,7 @@ import {useArtistScroll} from '@/components/use-artist-scroll';
 import {artistCollection, artistMemberUrl, artistWorkRows, artistWorkScoreLabel, artistWorkUrl} from '@/lib/idol/artist-preview';
 import {candidatePortrait} from '@/lib/idol/candidate/portrait';
 import type {CandidateContent} from '@/lib/idol/candidate/types';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {safeGroupLink} from '@/lib/idol/group-detail';
 import {memberChineseName, memberDisplayName} from '@/lib/idol/member-display-name';
 import {memberWorks} from '@/lib/idol/member-works';
@@ -102,7 +102,7 @@ export default function UnisDesignReview({content, basePath = UNIS_PATH}: {conte
     void (async () => {
       try {
         const data = await catalogReadWithDeadline(async signal => {
-          const response = await fetch('/api/catalog?artist=unis&shape=display-v1', {cache: 'no-store', signal});
+          const response = await fetch('/api/catalog?artist=unis&shape=display-v1', {headers:artistCatalogHeaders,cache: 'no-store', signal});
           if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) throw new Error('暂时没有连上你的资料库。');
           const result = await response.json() as CatalogView;
           if (!result || !Array.isArray(result.groups) || !Array.isArray(result.members) || !Array.isArray(result.works) || !Array.isArray(result.ratings)) throw new Error('资料暂时没有加载完整。');

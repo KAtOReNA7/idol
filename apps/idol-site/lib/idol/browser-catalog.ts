@@ -2,6 +2,16 @@ import type {Catalog,CatalogView,RatingView} from './types';
 import {personalMvPhoto} from './member-works';
 import {AppError} from './feishu';
 
+export function withoutStageCandidates(view: CatalogView): CatalogView {
+ const works = view.works.map(work => {
+  if (!work.stage?.candidates) return work;
+  const stage = {...work.stage};
+  delete stage.candidates;
+  return {...work, stage};
+ });
+ return {...view, works};
+}
+
 export function requestedBrowserCatalog(params:URLSearchParams):boolean{
  const shapes=params.getAll('shape');
  if(!shapes.length)return false;

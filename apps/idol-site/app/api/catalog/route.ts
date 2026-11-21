@@ -1,7 +1,7 @@
 import {readPublicCatalog,publicQuery} from '@/lib/idol/public-reader';
 import {ownerForRequest} from '@/lib/idol/public-access';
 import {requestedArtist,projectArtistCatalog} from '@/lib/idol/artist-catalog';
-import {projectBrowserCatalog,requestedBrowserCatalog} from '@/lib/idol/browser-catalog';
+import {projectBrowserCatalog,requestedBrowserCatalog,withoutStageCandidates} from '@/lib/idol/browser-catalog';
 import {ownControl,assertSourceUnchanged} from '@/lib/idol/native-storage';
 import {readNativeCatalog} from '@/lib/idol/native-reader';
 import {personalMvRatingsForOwner} from '@/lib/idol/personal-mv-ratings';
@@ -13,17 +13,7 @@ export const dynamic='force-dynamic';
 function displayResponse(request:Request, catalog:CatalogView) {
  const preference = 'omit-stage-candidates';
  const omitCandidates = request.headers.get('Prefer')?.split(',').some(value => value.trim() === preference);
- let view = catalog;
- if (omitCandidates) {
-  const works = catalog.works.map(work => {
-   if (!work.stage?.candidates) return work;
-   const stage = {...work.stage};
-   delete stage.candidates;
-   return {...work, stage};
-  });
-  view = {...catalog, works};
- }
- const response = json(view);
+ const response = json(omitCandidates ? withoutStageCandidates(catalog) : catalog);
  response.headers.append('Vary', 'Prefer');
  if (omitCandidates) response.headers.set('Preference-Applied', preference);
  return response;

@@ -10,7 +10,7 @@ import {PhotoLightbox} from '@/components/photo-lightbox';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from '@/components/reliable-image';
 import {useArtistScroll} from '@/components/use-artist-scroll';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {candidatePortrait} from '@/lib/idol/candidate/portrait';
 import {memberChineseName,memberDisplayName} from '@/lib/idol/member-display-name';
 import {memberAffiliationLabel,historicalRosterMembers} from '@/lib/idol/member-affiliation';
@@ -52,7 +52,7 @@ export default function Kep1erDesignReview({content,basePath='/design-review/kep
  const rememberScroll=useArtistScroll(!!state.data,url);
  const [lightbox,setLightbox]=useState<{src:string;label:string}|null>(null);
  const [menuOpen,setMenuOpen]=useState(false);
- useEffect(()=>{if(options.catalog!==undefined)return;const controller=new AbortController();void(async()=>{try{const data=await catalogReadWithDeadline(async signal=>{const response=await fetch('/api/catalog?artist=kep1er&shape=display-v1',{cache:'no-store',signal});if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('暂时没有连上你的资料库。');const result=await response.json() as CatalogView;if(!result||!Array.isArray(result.groups)||!Array.isArray(result.members)||!Array.isArray(result.works)||!Array.isArray(result.ratings))throw new Error('资料暂时没有加载完整。');return result;},controller.signal);if(!controller.signal.aborted)setFetched({data,error:'',loading:false});}catch(error){if(!controller.signal.aborted)setFetched({data:null,error:error instanceof Error?error.message:'资料暂时无法读取。',loading:false});}})();return()=>controller.abort();},[options.catalog]);
+ useEffect(()=>{if(options.catalog!==undefined)return;const controller=new AbortController();void(async()=>{try{const data=await catalogReadWithDeadline(async signal=>{const response=await fetch('/api/catalog?artist=kep1er&shape=display-v1',{headers:artistCatalogHeaders,cache:'no-store',signal});if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('暂时没有连上你的资料库。');const result=await response.json() as CatalogView;if(!result||!Array.isArray(result.groups)||!Array.isArray(result.members)||!Array.isArray(result.works)||!Array.isArray(result.ratings))throw new Error('资料暂时没有加载完整。');return result;},controller.signal);if(!controller.signal.aborted)setFetched({data,error:'',loading:false});}catch(error){if(!controller.signal.aborted)setFetched({data:null,error:error instanceof Error?error.message:'资料暂时无法读取。',loading:false});}})();return()=>controller.abort();},[options.catalog]);
  function navigate(patch:Partial<ReturnType<typeof artistRoute>>,replace=false){rememberScroll();setMenuOpen(false);window.history[replace?'replaceState':'pushState'](newArtistHistoryState(window.history.state),'',artistRouteUrl({...route,...patch},basePath));window.dispatchEvent(new Event('artist-location-change'));if(!replace)document.getElementById('artist-content')?.scrollIntoView({block:'start'});}
  const home=()=>navigate({section:'overview',member:null,search:'',queue:'all',format:'all',roster:undefined,timeline:null});
  const collection=useMemo(()=>state.data?artistCollection(state.data,content.groupId):null,[state.data,content.groupId]);

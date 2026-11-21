@@ -11,7 +11,7 @@ import {approvedVideoPoster} from '@/lib/idol/approved-video-poster';
 import {artistCollection,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistMemberUrl,type ArtistSection} from '@/lib/idol/artist-preview';
 import {memberChineseName,memberDisplayName} from '@/lib/idol/member-display-name';
 import {memberWorks} from '@/lib/idol/member-works';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
 import {videoId} from '@/lib/idol/values';
 import {ArtistTimelineHost,useArtistTimelineHostOptions} from './artist-timeline-host';
@@ -51,7 +51,7 @@ export default function VvupArtist({content}:{content:CandidateContent}){
   const controller=new AbortController();
   setFetched(previous=>({...previous,loading:true,error:''}));
   void catalogReadWithDeadline(async signal=>{
-   const response=await fetch('/api/catalog?artist=vvup&shape=display-v1',{cache:'no-store',signal});
+   const response=await fetch('/api/catalog?artist=vvup&shape=display-v1',{headers:artistCatalogHeaders,cache:'no-store',signal});
    if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('暂时没有连上资料库。');
    const data=await response.json() as CatalogView;
    if(!data||!['groups','members','works','ratings'].every(k=>Array.isArray(data[k as keyof CatalogView])))throw new Error('资料暂时没有加载完整。');

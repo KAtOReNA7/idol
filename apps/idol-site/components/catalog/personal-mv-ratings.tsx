@@ -64,7 +64,7 @@ function ScoreForm({scope,workId,videoId,member,entry,onDirty,onBlocked,onSaved}
    load({score:body.score,stylingScore:body.stylingScore,revision:body.revision+1});setMessage('已保存');onSaved();
   }catch(error){
    setRetry(!!pending.current);
-   setMessage(controller.signal.aborted?'保存回执超时，请核对上次保存。':error instanceof Error?error.message:'连接中断，请核对上次保存。');
+   setMessage(controller.signal.aborted?'未及时收到保存结果，请核对上次保存。':error instanceof Error?error.message:'连接中断，请核对上次保存。');
   }finally{clearTimeout(timer);inFlight.current=false;setSaving(false);}
  }
  return <fieldset id={id} className="editor personal-score-form" tabIndex={-1} data-dirty={dirty?'true':undefined} data-navigation-blocked={saving||retry?'true':undefined}>

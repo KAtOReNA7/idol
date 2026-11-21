@@ -20,6 +20,7 @@ function harness(){
 const catalog=()=>({groups:[],members:[],works:[],ratings:[]});
 test('default 30-second fetch deadline exits loading with retry message and can recover',async()=>{
  const h=harness();h.render();await tick();assert.equal(h.helper.CATALOG_READ_TIMEOUT_MS,30000);assert.equal([...h.timers.values()][0].ms,30000);
+ assert.equal(h.requests[0].options.headers.Prefer,'omit-stage-candidates');
  await h.advance(29999);assert.equal(h.loading(),true);await h.advance(1);assert.equal(h.loading(),false);assert.match(h.error(),/读取用时较长.*重新加载/);assert.equal(h.data(),null);assert.ok(h.requests[0].options.signal.aborted);assert.equal(h.timers.size,0);
  const retry=h.retry();await tick();const d=catalog();h.reply(1,d);await retry;assert.equal(h.data(),d);assert.equal(h.error(),'');assert.equal(h.loading(),false);assert.equal(h.timers.size,0);
  h.requests[0].reject(Error('late failure'));await tick();assert.equal(h.data(),d);assert.equal(h.error(),'');

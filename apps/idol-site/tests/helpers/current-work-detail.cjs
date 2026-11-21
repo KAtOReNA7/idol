@@ -11,8 +11,8 @@ function currentDetail(id, schedule=setTimeout) {
   const work = workInventory.find(row => row.recordId === id);
   assert.ok(work && stages[id], id);
   const api = `
-    return {settle,wp,find,walk,txt,requests,footer:()=>footer,editor:()=>et,member:()=>mt,tree:()=>wt,
-      setSaveTransport(transport){saveTransport=transport;},
+    return {settle,wp,find,walk,txt,requests,footer:()=>footer,editor:()=>et,member:()=>mt,tree:()=>wt,renderWork:()=>w.render(wp),
+      setReadTransport(transport){readTransport=transport;},setSaveTransport(transport){saveTransport=transport;},
       rejectSave(code){saveFailure=code?{error:code}:null;},receipt(value){receiptOverride=value;},
       player(){return find(wt,node=>node.props.workId===wp.work.id && 'embedUrl' in node.props);}};
   `;
@@ -21,7 +21,8 @@ function currentDetail(id, schedule=setTimeout) {
     {console,crypto:globalThis.crypto,URL,URLSearchParams,Date,AbortController,setTimeout:schedule,clearTimeout,setImmediate,structuredClone}
   )(fromTests,path.resolve(__dirname,'..'));
   harness.wp.work = {...harness.wp.work,id,groupIds:work.groupIds,name:work.name,song:work.song,
-    url:work.mv.url,version:work.version,channel:work.mv.channel,stage:stages[id]};
+    url:work.mv.url,version:work.version,channel:work.mv.channel,officialTitle:work.mv.officialTitle,
+    releaseDate:work.mv.releaseDate,videoType:work.mv.videoType,stage:stages[id]};
   harness.wp.data.groups = work.groupIds.map((groupId,i)=>({id:groupId,name:work.groups[i]}));
   harness.wp.data.ratings[0].workIds = [id];
   harness.wp.data.works=[harness.wp.work];
@@ -59,4 +60,33 @@ async function assertDetailLinks(id) {
   h.find(h.tree(),n=>n.props.className==='button detail-back').props.onClick(); assert.equal(target,'back');
   assert.equal(posts(h).length,0);
 }
-module.exports={currentDetail,turn,input,change,posts,assertWorkDrafts,assertDetailLinks};
+
+async function assertHiddenMemberDraft(id) {
+  const h = currentDetail(id);
+  await h.settle();
+  const mount = () => h.walk(h.tree()).find(({node}) => node.props.table === 'ratings');
+  const original = mount();
+  h.find(h.member(), n => n.type === 'button').props.onClick();
+  await h.settle();
+  const score = () => h.find(h.member(), n => n.props['aria-label'] === '表现分');
+  change(score(), '9.5');
+  await h.settle();
+  await turn(h, 'stage');
+  const cast = () => h.find(h.tree(), n => n.props.className === 'section cast-section');
+  assert.equal(cast().props.hidden, true);
+  assert.equal(h.member().props['data-dirty'], 'true');
+  assert.match(h.txt(h.tree()), /有 1 条未保存修改/);
+  let focused = 0;
+  const card = h.find(h.tree(), n => n.props.id === 'mv-cast-' + original.node.props.id);
+  card.props.ref({querySelector: () => ({scrollIntoView() {}, focus() { focused++; }})});
+  h.find(h.tree(), n => n.type === 'button' && h.txt(n).includes('去保存成员评分')).props.onClick();
+  await h.settle();
+  assert.equal(focused, 1);
+  assert.equal(cast().props.hidden, false);
+  assert.equal(h.find(h.tree(), n => n.props.id === 'mv-tab').props['aria-selected'], true);
+  assert.equal(score().props.value, 9.5);
+  assert.equal(mount().path, original.path);
+  assert.equal(mount().node.key, original.node.key);
+  assert.equal(posts(h).length, 0);
+}
+module.exports={currentDetail,turn,input,change,posts,assertWorkDrafts,assertDetailLinks,assertHiddenMemberDraft};

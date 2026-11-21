@@ -11,7 +11,7 @@ import {PhotoLightbox} from '@/components/photo-lightbox';
 import {ReliableImage, ImageRecoveryProvider, ImageRecoveryControls} from '@/components/reliable-image';
 import {useArtistScroll} from '@/components/use-artist-scroll';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {candidatePortrait} from '@/lib/idol/candidate/portrait';
 import {memberDisplayName, memberChineseName} from '@/lib/idol/member-display-name';
 import {historicalRosterMembers, memberAffiliationLabel} from '@/lib/idol/member-affiliation';
@@ -106,7 +106,7 @@ export default function LoonaDesign({content}: {content: CandidateContent}) {
     async function load() {
       try {
         const data = await catalogReadWithDeadline(async signal => {
-          const response = await fetch('/api/catalog?artist=loona&shape=display-v1', {cache: 'no-store', signal});
+          const response = await fetch('/api/catalog?artist=loona&shape=display-v1', {headers:artistCatalogHeaders,cache: 'no-store', signal});
           if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) throw new Error('暂时没有连上你的资料库。');
           const result = await response.json() as CatalogView;
           if (!result || !Array.isArray(result.groups) || !Array.isArray(result.members) || !Array.isArray(result.works) || !Array.isArray(result.ratings)) throw new Error('资料暂时没有加载完整。');

@@ -25,5 +25,5 @@ export const billlieExternalVideo = {
  title:'MOON SUA X SIYOON · SNAP (feat. sokodomo)',
  memberIds:['recvxyICzHhav7','recvxyICzHtQXk'],
  url:'https://www.youtube.com/watch?v=0Xw6kkgNbZ8',
- sourceLabel:'Billlie 官方艺人频道 · 具名MV',
+ sourceLabel:'Billlie 官方艺人频道',
 } as const;

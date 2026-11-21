@@ -15,7 +15,7 @@ import {readWooahLinkFocus,type WooahLinkFocus} from '@/lib/idol/wooah-return-fo
 import {wooahTimelineRelease,wooahTimelineMedia} from '@/lib/idol/wooah-timeline';
 import {useArtistScroll} from '@/components/use-artist-scroll';
 import {useCanEdit} from '@/components/public-access';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
 import {stageHasValidBinding} from '@/lib/idol/stage-source';
 import {safeGroupLink} from '@/lib/idol/group-detail';
@@ -70,7 +70,7 @@ export default function WooahEditorial(){
  useEffect(()=>setQuery(route.search),[route.search]);
  useEffect(()=>{setLightbox(null);},[url]);
  useEffect(()=>{if(injected)return;const controller=new AbortController();setFetched({data:null,loading:true,error:''});
-  void catalogReadWithDeadline(async signal=>{const response=await fetch('/api/catalog?artist=wooah&shape=display-v1',{signal,cache:'no-store',credentials:'same-origin'});if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('暂时无法读取你的记录。');const data:unknown=await response.json();if(!validWooahCatalog(data))throw new Error('暂时无法读取本团记录。');return data;},controller.signal)
+  void catalogReadWithDeadline(async signal=>{const response=await fetch('/api/catalog?artist=wooah&shape=display-v1',{headers:artistCatalogHeaders,signal,cache:'no-store',credentials:'same-origin'});if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('暂时无法读取你的记录。');const data:unknown=await response.json();if(!validWooahCatalog(data))throw new Error('暂时无法读取本团记录。');return data;},controller.signal)
    .then(data=>{if(!controller.signal.aborted)setFetched({data,loading:false,error:''});}).catch(error=>{if(!controller.signal.aborted)setFetched({data:null,loading:false,error:error instanceof Error?error.message:'资料暂时无法读取。'});});
   return()=>controller.abort();
  },[attempt,injected]);

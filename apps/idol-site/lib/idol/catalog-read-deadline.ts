@@ -2,6 +2,8 @@ import type {CatalogView} from './types';
 
 // Client-side, read-only catalog requests. Never wrap save or mutation requests.
 export const CATALOG_READ_TIMEOUT_MS=30000;
+// Artist views show the selected stage, while comparison candidates belong to the research data.
+export const artistCatalogHeaders = {Prefer: 'omit-stage-candidates'} as const;
 export async function catalogReadWithDeadline<T>(read:(signal:AbortSignal)=>Promise<T>,signal:AbortSignal,timeoutMs=CATALOG_READ_TIMEOUT_MS):Promise<T>{
  if(signal.aborted)throw new DOMException('Catalog read cancelled','AbortError');
  const controller=new AbortController();
@@ -25,7 +27,7 @@ export async function catalogReadWithDeadline<T>(read:(signal:AbortSignal)=>Prom
 export function readArtistCatalog(artist: string, signal: AbortSignal): Promise<CatalogView> {
  return catalogReadWithDeadline(async requestSignal => {
   const query = new URLSearchParams({artist, shape: 'display-v1'});
-  const response = await fetch('/api/catalog?' + query, {cache: 'no-store', signal: requestSignal});
+  const response = await fetch('/api/catalog?' + query, {cache: 'no-store', signal: requestSignal, headers: artistCatalogHeaders});
   if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) {
    throw new Error('暂时没有连上你的资料库，请重试。');
   }

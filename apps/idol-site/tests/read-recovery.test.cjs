@@ -30,7 +30,7 @@ test('personal score fields retain inputs, check the same operation after discon
  assert.match(text(r.tree),/恢复网络后核对上次保存/);assert.doesNotMatch(text(r.tree),/Failed to fetch/);
  assert.equal(field(r,'Test的表现分').props.value,'0');assert.equal(field(r,'Test的造型分').props.value,'8.5');
  click();assert.equal(h.requests[1].options.body,h.requests[0].options.body);
- await h.advance(30000);r.render();assert.match(text(r.tree),/保存回执超时/);
+ await h.advance(30000);r.render();assert.match(text(r.tree),/未及时收到保存结果/);
  click();assert.equal(h.requests[2].options.body,h.requests[0].options.body);
  h.requests[2].resolve(Response.json({error:'EDIT_CONFLICT',message:'评分或成员资料已更新，请重新载入后核对。'},{status:409}));
  await tick();r.render();assert.match(text(r.tree),/评分或成员资料已更新/);

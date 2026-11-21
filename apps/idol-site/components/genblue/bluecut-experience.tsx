@@ -9,7 +9,7 @@ import {ArtistInformation} from '@/components/artist-information';
 
 import {useEffect,useLayoutEffect,useMemo,useRef,useState,useSyncExternalStore,type MouseEvent,type ReactNode} from 'react';
 import archive from '@/data/genblue-bluecut.json';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import type {CatalogView} from '@/lib/idol/types';
 import {GENBLUE_PATH,genblueMediaEvidence,genblueMemberMedia,genblueMediaMembers,genblueDefaultRoute,genblueTimelineEntries,isGenblueCatalog,genblueReturnPath,readGenblueLinkFocus,genblueHref,genblueMemberHref,genblueMemberRecordHref,genblueMediaHref,genblueMediaMatches,genblueRecordHref,genblueReleaseHref,genblueScoreLabel,readGenblueRoute,resolveGenblueMedia,resolveGenblueMember,type GenblueMedia,type GenblueRelease} from '@/lib/idol/genblue-bluecut';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
@@ -96,7 +96,7 @@ export default function GenblueBluecutExperience(){
     const controller=new AbortController();
     setRead({data:null,loading:true,error:''});
     void catalogReadWithDeadline(async signal=>{
-      const response=await fetch('/api/catalog?artist=genblue&shape=display-v1',{cache:'no-store',signal});
+      const response=await fetch('/api/catalog?artist=genblue&shape=display-v1',{headers:artistCatalogHeaders,cache:'no-store',signal});
       if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('资料库暂时未能连接。');
       const data=await response.json() as CatalogView;
       if(!isGenblueCatalog(data))throw new Error('资料库尚未读取完整。');

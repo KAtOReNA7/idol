@@ -144,7 +144,7 @@ export function Editor({publicCatalog,table,id,mode,onSaved,compact=false,initia
   }catch(error){
    setPendingRetry(!!pendingSave.current);
    setState('error');
-   setMessage(controller.signal.aborted?'保存回执超时，请核对上次保存。':error instanceof Error?error.message:'连接暂时中断，请核对上次保存。');
+   setMessage(controller.signal.aborted?'未及时收到保存结果，请核对上次保存。':error instanceof Error?error.message:'连接暂时中断，请核对上次保存。');
   }finally{
    clearTimeout(timeout);
    saving.current=false;

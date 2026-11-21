@@ -10,7 +10,7 @@ function harness(slug='meovv'){
  let state={data:null,error:'',loading:true},writes=0,setup,cleanup,now=0,next=0;const requests=[],timers=new Map(),exports={};
  const globals={AbortController,DOMException,Error,setTimeout:(f,ms)=>{timers.set(++next,{f,ms,due:now+ms});return next},clearTimeout:id=>timers.delete(id)};
  vm.runInNewContext(compile(fs.readFileSync('lib/idol/catalog-read-deadline.ts','utf8')),{exports,...globals});
- vm.runInNewContext(compile(effect),{...globals,content:{slug},options:{},catalogReadWithDeadline:exports.catalogReadWithDeadline,useEffect:f=>{setup=f;cleanup=f()},setState:v=>{state=v;writes++},fetch:(url,options)=>{const d=deferred();requests.push({...d,url,options});return d.promise;}});
+ vm.runInNewContext(compile(effect),{...globals,content:{slug},options:{},catalogReadWithDeadline:exports.catalogReadWithDeadline,artistCatalogHeaders:exports.artistCatalogHeaders,useEffect:f=>{setup=f;cleanup=f()},setState:v=>{state=v;writes++},fetch:(url,options)=>{const d=deferred();requests.push({...d,url,options});return d.promise;}});
  return {requests,timers,state:()=>state,writes:()=>writes,unmount:()=>cleanup(),replay(){cleanup();cleanup=setup()},reply(index,data){requests[index].resolve({ok:true,headers:{get:()=> 'application/json'},json:async()=>data})},async advance(ms){now+=ms;for(const [id,t] of timers)if(t.due<=now){timers.delete(id);t.f()}await tick()}};
 }
 for(const phase of ['fetch','json'])test('independent LOONA '+phase+' hangs end after 30 seconds; late completion cannot replace error',async()=>{
@@ -25,7 +25,7 @@ test('independent LOONA reload recovery obtains intact catalog and clears deadli
  const old=harness();await tick();await old.advance(30000);old.unmount();
  assert.ok(source.includes('options.onRetry ? options.onRetry() : window.location.reload()'));
  const fresh=harness('idle');await tick();const data=catalog();fresh.reply(0,data);await tick();assert.equal(fresh.state().data,data);assert.equal(fresh.state().data.works[0].score,0);assert.equal(fresh.state().error,'');assert.equal(fresh.state().loading,false);assert.equal(fresh.timers.size,0);
- assert.equal(fresh.requests[0].url,'/api/catalog?artist=loona&shape=display-v1');assert.equal(fresh.requests[0].options.cache,'no-store');assert.equal(fresh.requests[0].options.method,undefined);assert.equal(fresh.requests[0].options.body,undefined);fresh.unmount();
+ assert.equal(fresh.requests[0].url,'/api/catalog?artist=loona&shape=display-v1');assert.equal(fresh.requests[0].options.headers.Prefer,'omit-stage-candidates');assert.equal(fresh.requests[0].options.cache,'no-store');assert.equal(fresh.requests[0].options.method,undefined);assert.equal(fresh.requests[0].options.body,undefined);fresh.unmount();
 });
 for(const phase of ['fetch','json'])test('independent LOONA unmount during '+phase+' consumes late rejection without writes',async()=>{
  const h=harness();await tick();let body;if(phase==='json'){body=deferred();h.requests[0].resolve({ok:true,headers:{get:()=> 'application/json'},json:()=>body.promise});await tick()}

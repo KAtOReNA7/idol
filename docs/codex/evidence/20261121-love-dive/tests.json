@@ -1,0 +1,204 @@
+{
+  "checkedCommit": "5b031fab37e475f4a5923276c1c679ff5a630490",
+  "baselineCommit": "597829462deaeda275ddced11d67cf0e70210c79",
+  "baselineFullSuiteApplicationCommit": "eebbca8c1413af98dda4cc02b7e44df4b3dee563",
+  "appTreeIdenticalAtBothBaselineRefs": true,
+  "localNodeVersion": "24.16.0",
+  "localVerify": {
+    "windows": {
+      "exit": 0,
+      "typecheck": "passed",
+      "currentNode": 1189,
+      "optimizedPythonCallerNode": 19,
+      "build": "passed",
+      "postBuildNode": 6,
+      "pythonTransactions": [
+        4,
+        4
+      ],
+      "pythonCssHttp": 7
+    },
+    "linux": {
+      "exit": 0,
+      "typecheck": "passed",
+      "currentNode": 1189,
+      "optimizedPythonCallerNode": 19,
+      "build": "passed",
+      "postBuildNode": 6,
+      "pythonTransactions": [
+        4,
+        4
+      ],
+      "pythonCssHttp": 7
+    }
+  },
+  "localFullSuite": {
+    "windows": {
+      "baseline": {
+        "main": {
+          "tests": 3947,
+          "pass": 3711,
+          "fail": 197,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        "isolatedArtistRuntime": {
+          "tests": 9,
+          "pass": 7,
+          "fail": 2,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "personalInsights": {
+          "tests": 31,
+          "pass": 31,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      "current": {
+        "main": {
+          "tests": 3950,
+          "pass": 3714,
+          "fail": 197,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        "isolatedArtistRuntime": {
+          "tests": 9,
+          "pass": 7,
+          "fail": 2,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "personalInsights": {
+          "tests": 31,
+          "pass": 31,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      "comparison": {
+        "addedFailures": [],
+        "removedFailures": []
+      },
+      "pythonTransactions": [
+        4,
+        4
+      ]
+    },
+    "linux": {
+      "baseline": {
+        "main": {
+          "tests": 3947,
+          "pass": 3715,
+          "fail": 193,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        "isolatedArtistRuntime": {
+          "tests": 9,
+          "pass": 7,
+          "fail": 2,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "personalInsights": {
+          "tests": 31,
+          "pass": 31,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      "current": {
+        "main": {
+          "tests": 3950,
+          "pass": 3718,
+          "fail": 193,
+          "cancelled": 0,
+          "skipped": 39
+        },
+        "isolatedArtistRuntime": {
+          "tests": 9,
+          "pass": 7,
+          "fail": 2,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "personalInsights": {
+          "tests": 31,
+          "pass": 31,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      "comparison": {
+        "addedFailures": [],
+        "removedFailures": []
+      },
+      "pythonTransactions": [
+        4,
+        4
+      ]
+    }
+  },
+  "github": {
+    "url": "https://github.com/KAtOReNA7/idol/actions/runs/44893979618",
+    "result": "failure",
+    "jobs": [
+      {
+        "name": "verify (windows-latest)",
+        "url": "https://github.com/KAtOReNA7/idol/actions/runs/44893979618/job/136815576351",
+        "conclusion": "success"
+      },
+      {
+        "name": "full-suite",
+        "url": "https://github.com/KAtOReNA7/idol/actions/runs/44893979618/job/136815576370",
+        "conclusion": "failure"
+      },
+      {
+        "name": "verify (ubuntu-latest)",
+        "url": "https://github.com/KAtOReNA7/idol/actions/runs/44893979618/job/136815576469",
+        "conclusion": "success"
+      }
+    ],
+    "ubuntuFull": {
+      "main": {
+        "tests": 3950,
+        "pass": 3718,
+        "fail": 193,
+        "cancelled": 0,
+        "skipped": 39
+      },
+      "isolatedArtistRuntime": {
+        "tests": 9,
+        "pass": 7,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "personalInsights": {
+        "tests": 31,
+        "pass": 31,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    "failureComparisonToLocalLinux": {
+      "addedFailures": [],
+      "removedFailures": []
+    }
+  },
+  "productionReadback": {
+    "savedVersion": 203,
+    "deployedVersionMatches": true,
+    "deploymentStatus": "succeeded",
+    "source": "cd1446371b0f0f3d0bd5f91700e85072e87cb1e9",
+    "writesThisRound": 0
+  }
+}

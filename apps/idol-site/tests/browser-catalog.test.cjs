@@ -33,4 +33,23 @@ function routeHarness(){
 test('old tab requests still receive full evidence, new and old response photo outcomes agree',async()=>{const h=routeHarness(),old=await h.read(''),slim=await h.read('?shape=display-v1');assert.equal(old.headers.get('Cache-Control'),'private, no-store');const a=await old.json(),b=await slim.json();assert.equal(a.ratings[0].recognition,h.model.data.ratings[0].recognition);assert.equal(a.ratings[0].source,h.model.data.ratings[0].source);assert.equal('personalPhotoEligible' in a.ratings[0],false);assert.equal('recognition' in b.ratings[0],false);assert.equal(b.ratings[0].personalPhotoEligible,true);assert.deepEqual(plain(personalMvPhoto(a.ratings[0],'m','w')),plain(personalMvPhoto(b.ratings[0],'m','w')));});
 test('artist and refresh combinations keep their original scopes, force flags and source fences',async()=>{for(const shape of ['', '&shape=display-v1'])for(const refresh of ['1','background']){const h=routeHarness(),r=await h.read('?artist=ive&refresh='+refresh+shape),d=await r.json();assert.equal(d.scope.groupId,'ive');assert.deepEqual(h.model.calls,['auth','control:owner','native:true','fence','artist:ive']);assert.equal('recognition' in d.ratings[0],!shape);assert.equal(d.ratings[0].score,0);}const h=routeHarness();h.model.native=false;await h.read('?shape=display-v1&refresh=background');assert.deepEqual(h.model.calls,['auth','control:owner','native:true','fallback:true','fence']);});
 test('visitors use only the public reader; invalid shape and changed owner source never expose owner data',async()=>{const guest=routeHarness();guest.model.deny=true;const publicResponse=await guest.read('?artist=ive&shape=display-v1');assert.equal(publicResponse.status,200);assert.deepEqual(await publicResponse.json(),{public:true,ratings:[]});assert.deepEqual(guest.model.calls,['auth','public-query','public:ive']);for(const kind of ['shape','source']){const h=routeHarness();h.model.drift=kind==='source';const r=await h.read('?shape='+(kind==='shape'?'unknown':'display-v1'));assert.equal(r.status,kind==='shape'?400:409);assert.equal('ratings' in await r.json(),false);if(kind==='shape')assert.deepEqual(h.model.calls,['auth']);}const invalidGuest=routeHarness();invalidGuest.model.deny=true;const denied=await invalidGuest.read('?shape=unknown');assert.equal(denied.status,400);assert.equal('ratings' in await denied.json(),false);assert.deepEqual(invalidGuest.model.calls,['auth','public-query']);});
-test('every current catalog consumer explicitly opts in; old servers can still return the full shape',()=>{for(const p of ['app/page.tsx','app/manage/page.tsx','components/artist-sample.tsx','components/illit-artist.tsx','components/expanded-artist.tsx','components/ive-artist.tsx']){const s=fs.readFileSync(p,'utf8');assert.match(s,/shape=display-v1/,p);assert.match(s,/CatalogView as Catalog/,p);}const s=fs.readFileSync('app/page.tsx','utf8');assert.match(s,/shape=display-v1'\+\(force&&canEdit\?'&refresh=1':''\)/);assert.match(s,/shape=display-v1&refresh=background/);});
+test('every current catalog consumer explicitly opts in; old servers can still return the full shape', () => {
+ const pages = ['app/page.tsx', 'app/manage/page.tsx'];
+ const artists = ['artist-sample', 'illit-artist', 'expanded-artist', 'ive-artist'];
+ for (const file of pages) {
+  const source = fs.readFileSync(file, 'utf8');
+  assert.match(source, /shape=display-v1/, file);
+  assert.match(source, /CatalogView as Catalog/, file);
+ }
+ for (const name of artists) {
+  const source = fs.readFileSync('components/' + name + '.tsx', 'utf8');
+  assert.match(source, /await readArtistCatalog\(/, name);
+  assert.match(source, /CatalogView as Catalog/, name);
+ }
+ const reader = fs.readFileSync('lib/idol/catalog-read-deadline.ts', 'utf8');
+ assert.match(reader, /new URLSearchParams\(\{artist, shape: 'display-v1'\}\)/);
+ assert.match(reader, /fetch\('\/api\/catalog\?' \+ query, \{cache: 'no-store', signal: requestSignal\}\)/);
+ const home = fs.readFileSync('app/page.tsx', 'utf8');
+ assert.match(home, /shape=display-v1'\+\(force&&canEdit\?'&refresh=1':''\)/);
+ assert.match(home, /shape=display-v1&refresh=background/);
+});

@@ -14,7 +14,7 @@ const current = [
   'stage-import-policy', 'stage-multiplatform-import', 'read-recovery',
   'journey', 'image-app-integration', 'photo-priority', 'sign-in-entry',
   'catalog-read-deadline', 'expanded-read-deadline', 'timeline-navigation',
-  'mv-look-selection', 'mv-look-successor-policy', 'photo-soldelta5-registry',
+  'mv-look-selection', 'mv-look-successor-policy', 'photo-soldelta5-registry', 'archive-transfer',
 ].map(name => `tests/${name}.test.cjs`).concat('tests/stage-selection-policy.test.mjs');
 const isolated = 'tests/artist-runtime-data.test.cjs';
 const python = process.platform === 'win32' ? 'python' : 'python3';

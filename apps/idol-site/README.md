@@ -10,6 +10,7 @@
 
 - `node scripts/check-library-browser.mjs http://127.0.0.1:8787` 验证三档宽度的筛选、搜索、翻页、键盘导航和详情返回。追加输出目录可保存截图和测量结果。
 - `node scripts/check-artist-previews.mjs http://127.0.0.1:8787` 验证 51 团在手机和桌面上的入口，包括两个 Shadow DOM 页面和 UDTT 的公开作品回退。追加 JSON 路径可保存逐页结果。
+- `node scripts/measure-library-previews.mjs http://127.0.0.1:8786 http://127.0.0.1:8787 comparison.json` 比较旧、新两个合成预览。它先核对全目录及 IVE 的公开输出，再以相同网络参数交错测量两档宽度，各取七次中位数。
 
 详细范围见[开发路线图](../../docs/codex/PROJECT-AUDIT-AND-ROADMAP-20261121.md)。
 

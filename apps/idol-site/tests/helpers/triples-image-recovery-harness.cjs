@@ -40,6 +40,9 @@ function harness({initial = '/design-review/triples-v2?section=works&format=mv'}
   };
   const window = {
     scrollY: 320, confirm: () => true, alert() {}, scrollTo() {},
+    performance: {now: () => now},
+    setTimeout(callback, ms = 0) {const id = ++nextTimer; timers.set(id, {callback, due: now + ms}); return id;},
+    clearTimeout(id) {timers.delete(id);},
     addEventListener(type, callback) {if (!listeners.has(type)) listeners.set(type, new Set()); listeners.get(type).add(callback);},
     removeEventListener(type, callback) {listeners.get(type)?.delete(callback);},
     dispatchEvent(event) {for (const callback of [...listeners.get(event.type) ?? []]) callback(event);},
@@ -96,8 +99,7 @@ function harness({initial = '/design-review/triples-v2?section=works&format=mv'}
     ResizeObserver: class ResizeObserver {observe() {} disconnect() {}},
     addEventListener: window.addEventListener.bind(window), removeEventListener: window.removeEventListener.bind(window),
     queueMicrotask: callback => microtasks.push(callback),
-    setTimeout: (callback, ms) => {const id = ++nextTimer; timers.set(id, {callback, due: now + ms}); return id;},
-    clearTimeout: id => timers.delete(id),
+    performance: window.performance, setTimeout: window.setTimeout, clearTimeout: window.clearTimeout,
     requestAnimationFrame: callback => {const id = ++nextTimer; frames.set(id, callback); return id;},
     cancelAnimationFrame: id => frames.delete(id),
     fetch: (...args) => {requests.push(args); throw Error('No API reads or writes are expected with catalog/timeline overrides');},

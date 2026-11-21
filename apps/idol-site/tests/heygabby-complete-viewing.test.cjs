@@ -113,11 +113,16 @@ test('actual anonymous stage media SSR shows one formal player, its scope note a
   const detail = tree.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === 'WorkDetail');
   const regions = new Map();
   function collect(node) {
+    if (ts.isJsxSelfClosingElement(node) && node.tagName.getText(tree) === 'WorkVideoPlayer') {
+      const choice = node.parent;
+      assert.ok(ts.isConditionalExpression(choice) && choice.whenFalse === node && ts.isJsxExpression(choice.parent));
+      regions.set('player', choice.parent.getText(tree));
+    }
     if (ts.isJsxElement(node)) {
       const attribute = node.openingElement.attributes.properties.find(p => ts.isJsxAttribute(p) && p.name.text === 'className');
       const value = attribute?.initializer?.getText(tree);
-      for (const name of ['video-stage', 'video-caption', 'stage-source']) {
-        if (value === '"' + name + '"' || (name === 'video-stage' && value?.startsWith("{'video-stage '"))) regions.set(name, node.getText(tree));
+      for (const name of ['video-caption', 'stage-source']) {
+        if (value === '"' + name + '"') regions.set(name, node.getText(tree));
       }
     }
     ts.forEachChild(node, collect);

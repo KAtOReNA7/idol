@@ -10,7 +10,7 @@
 
 v211 的逐团浏览覆盖 2,949 个页面与操作组合，其中 2,929 个在本机生产构建完成，20 个 UDTT 目标在正式站完成。首页目录读取从 IVE 三次、ADYA 两次降为各一次。48 团混合展示 MV 与发行的 91 个路由均已调整顺序，ifeye、izna 和 UDTT 的独立页面也已调整。51 团正式首页实测发现 Billlie 的专辑封面在桌面仍高于 MV，v212 将 MV 放在完整的首行。[逐团验收](worklogs/20261122-group-journeys.md) · [首页顺序与 Billlie 修正](worklogs/20261122-artist-media-order.md)
 
-v211 起移除会在站内直接起播低清的 B 站入口。四个 B 站独占舞台保留原站入口和评分关联；普通画质、登录权益及嵌入页是否能持续最高档分别检验。第三方服务失败时，单看播放器能加载无法确认作品可播。[B 站实测与来源](worklogs/20261122-bilibili-work-playback.md) · [待讨论的四项体验](20261122-USABILITY-DISCUSSION.md)
+v211 起移除会在站内直接起播低清的 B 站入口。四个独占舞台保留原站入口和评分关联。《Magnetic》在用户登录后选档仍打开 B 站原页，本站嵌入停在 0 秒、640 × 360。《BILLIONAIRE》最近一次正式抽查的两条站内线路都未起播。两首仍待解决。[正式站实测及原版来源](worklogs/20261122-v212-release.md) · [待讨论的四项体验](20261122-USABILITY-DISCUSSION.md)
 
 在 605 支 MV 上核查了 4,195 个作品与成员组合。599 支可为成员评分，6 支已确认无真人成员出镜。v209 正式站每个有 MV 的团各测一支，共 306 张照片全部解码。逐一点开后，两个分数输入框和保存按钮均在同一张照片下。《BILLIONAIRE》七位成员另做桌面和手机实测，原有作品评分经刷新读回。飞书两条已标记解决。[评分工作记录](worklogs/20261122-inline-mv-scores.md) · [正式逐团实点](evidence/20261122-v209/formal-group-opened-scores.json)
 
@@ -30,6 +30,6 @@ Hearts2Hearts 待看 10 张和全部 13 张作品封面均在 v208 正式站解�
 
 v212 在本地 Windows 与 WSL Linux 均通过 `npm run verify`。完整 Node 套件各有 4,085 个用例，Windows 通过 3,880 项、失败 166 项、跳过 39 项；Linux 通过 3,884 项、失败 162 项、跳过 39 项。与 v211 逐名对照，两端均新增一条通过的 Billlie 回归，既有失败条目相同。[v212 双平台结果](evidence/20261122-v212/tests.json) · [v211 对照](evidence/20261122-v211/tests.json)
 
-下一步依次验证连接器实际提供的新 owner 批量读取工具、处理剩余旧用例，以及在新增具名资料出现时升级跨期照片与节目绑定。私人存储已读回同一活动快照、epoch 6 和 206 条完成日志。[核对接口及适用范围](STAGE-OWNER-PREFLIGHT.md) · [发布前的审查与后续开发](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
+下一批先处理两支 MV 和四个 B 站舞台的站内播放，并行测团页首次可操作耗时、补 50 团手机首页的实际排序。后续按代表时期升级有明确差异的团页和照片，优先修四组涉及评分、草稿和返回的旧详情测试。数据侧的 owner 批量读取在连接器提供对应工具时验证。[12 条产品要求](PRD.md) · [分批开发方案](PROJECT-AUDIT-AND-ROADMAP-20261121.md) · [批量核对协议](STAGE-OWNER-PREFLIGHT.md)
 
 前轮工程优化、发布与原始审查分别保存在各自的工作记录中。[上一正式版 v203](v203-release-20261030.md) · [项目审查](worklogs/20261121-project-audit.md) · [历史协作与验收](https://github.com/KAtOReNA7/idol/blob/0e77838a88f9ff9b14fb67f803156534c7c651e1/docs/codex/STATUS.md)

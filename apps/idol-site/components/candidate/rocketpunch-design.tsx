@@ -9,7 +9,7 @@ import {PhotoLightbox} from '../photo-lightbox';
 import {OriginalPhotoLink} from '../original-photo-link';
 import {useArtistScroll} from '../use-artist-scroll';
 import {artistMemberUrl,artistWorkUrl,artistWorkRows} from '../../lib/idol/artist-preview';
-import {artistMvWorkId} from '../../lib/idol/artist-mv-link';
+import {artistMvHref,artistMvWorkId} from '../../lib/idol/artist-mv-link';
 import {artistCatalogHeaders, catalogReadWithDeadline} from '../../lib/idol/catalog-read-deadline';
 import {safeArtistReturn} from '../../lib/idol/artist-navigation';
 import type {CandidateContent} from '../../lib/idol/candidate/types';
@@ -24,9 +24,21 @@ function Arrow({external=false}:{external?:boolean}){return <svg aria-hidden="tr
 function Link({to,children,external=false}:{to:string;children:ReactNode;external?:boolean}){return <a className="rp-link" href={to} {...(external?{target:'_blank',rel:'noopener noreferrer'}:{})}>{children}<Arrow external={external}/></a>;}
 function Picture({item,alt,priority=false}:{item:{image:string;width:number;height:number};alt:string;priority?:boolean}){return <ReliableImage className="rp-image" src={item.image||undefined} width={item.width} height={item.height} alt={alt} identityKey={item.image} priority={priority}/>;}
 function Heading({number,en,children}:{number?:string;en:string;children:ReactNode}){return <div className="rp-heading"><p>{number&&<span>{number} / </span>}{en}</p><h2>{children}</h2></div>;}
-function OfficialHero({onOriginal,useHomePreviews}:{onOriginal:()=>void;useHomePreviews:boolean}){
- const photo = (useHomePreviews && data.hero.preview) || data.hero;
- return <section className="rp-hero"><div className="rp-hero-copy"><h1>ROCKET<br/>PUNCH</h1><p className="rp-hero-date">2023 · BOOM</p><p className="rp-hero-intro">历年六人成员档案</p><Link to={href('records',{release:'rocketpunch-bugs-4090900'})}>BOOM 发行详情</Link><OriginalPhotoLink className="rp-link" href={data.hero.image} onOpen={onOriginal}>查看团照原图 <Arrow external/></OriginalPhotoLink></div><div className="rp-hero-photo"><Picture item={photo} alt="Rocket Punch · 2023 BOOM 官方六人概念照" priority/><p>2023 BOOM 官方概念照 · 历史时期</p></div></section>;}
+function OfficialHero({onOriginal,catalog,returnTo,useHomePreviews}:{onOriginal:()=>void;catalog:CatalogView|null;returnTo:string;useHomePreviews:boolean}){
+ const releaseId='rocketpunch-bugs-4090900';
+ const photo=(useHomePreviews && data.hero.preview) || data.hero;
+ const mv=data.media.find(film=>film.releaseId===releaseId&&film.kind==='mv'&&film.videoId==='D7dzSapaIS4');
+ const watch=mv&&artistMvHref(catalog,groupId,mv.url,returnTo);
+ return <section className="rp-hero">
+  <div className="rp-hero-copy">
+   <h1>ROCKET<br/>PUNCH</h1><p className="rp-hero-date">2023 · BOOM</p><p className="rp-hero-intro">历年六人成员档案</p>
+   {mv&&<Link to={watch??mv.url} external={!watch}>{mv.title} 官方 MV</Link>}
+   <Link to={href('records',{release:releaseId})}>BOOM 发行详情</Link>
+   <OriginalPhotoLink className="rp-link" href={data.hero.image} onOpen={onOriginal}>查看团照原图 <Arrow external/></OriginalPhotoLink>
+  </div>
+  <div className="rp-hero-photo"><Picture item={photo} alt="Rocket Punch · 2023 BOOM 官方六人概念照" priority/><p>2023 BOOM 官方概念照 · 历史时期</p></div>
+ </section>;
+}
 function Search({query,label}:{query:string;label:string}){function change(q:string){const u=new URL(location.href);q?u.searchParams.set('q',q):u.searchParams.delete('q');history.replaceState(history.state,'',u.pathname+u.search);window.dispatchEvent(new Event('artist-location-change'));}return <label className="rp-search"><span>{label}</span><input value={query} type="search" maxLength={200} placeholder="输入中文名、名称或关键词" onChange={e=>change(e.target.value)}/>{query&&<button onClick={()=>change('')} type="button">清除</button>}</label>;}
 function personPreview(person:Person) {
  return person.id==='recvxyICzHfdEb' ? {image:'/artist/rocketpunch/portraits/suyun.webp',width:660,height:880} : person;
@@ -64,7 +76,7 @@ export default function RocketpunchDesign({content,useHomePreviews=false}:{conte
 <ScopedMemberCareerFacts data={catalog} memberId={person.id} groupId="recvxyEBDZB3pz" part="sources"/>
 
 </>:release?<><section className="rp-section"><div className="rp-page-top"><p className="rp-kicker">RECORD / {release.type}</p><Link to={href('records',query?{q:query}:{})}>返回发行目录</Link></div><div className="rp-release-detail"><div className="rp-print"><Picture item={release} alt={release.title+' 发行封面'} priority/>{original(release,release.title)}</div><div className="rp-identity"><h1>{release.title}</h1><p>{release.credit}</p><p>{release.type} · {release.dateLabel}<br/>{release.date.replaceAll('-','.')}</p>{release.note&&<p>{release.note}</p>}<Link to={release.sourceUrl} external>发行来源 · Bugs</Link></div></div></section><section className="rp-section"><Heading en="TRACKLIST">{release.scope==='compilation'?'本团收录曲目':'曲目'}</Heading><ol className="rp-tracks">{release.tracks.map((track,i)=><li key={i}><span>{String(i+1).padStart(2,'0')}</span>{track}</li>)}</ol>{data.media.some(f=>f.releaseId===release.id)&&<><Heading en="RELATED FILMS">相关影像</Heading>{filmList(data.media.filter(f=>f.releaseId===release.id))}</>}</section></>:section==='members'?<section className="rp-section"><Heading en="MEMBERS">成员档案</Heading><p className="rp-intro">历年六人档案。照片统一为 2023 BOOM 官方概念照，不代表当前共同活动阵容。</p><Search query={query} label="搜索成员"/>{memberList()}{!visibleMembers.length&&<p role="status">没有符合条件的成员。</p>}</section>:section==='records'?<section className="rp-section"><Heading en="DISCOGRAPHY">发行目录</Heading><p className="rp-intro">按音源版本收录发行与曲目；音源发行日与视频公开日分别保留。</p><Search query={query} label="搜索发行"/>{[['korea','韩国发行'],['japan','日本发行'],['collaboration','合作 / OST'],['compilation','节目合辑']].map(([scope,label])=>{const rows=data.releases.filter(r=>r.scope===scope&&match(r.title+' '+r.credit+' '+r.tracks.join(' ')));return rows.length?<section key={scope} className="rp-release-group"><h3>{label}</h3>{releases(rows)}</section>:null;})}{!data.releases.some(r=>match(r.title+' '+r.credit+' '+r.tracks.join(' ')))&&<p role="status">没有符合条件的发行。</p>}</section>:section==='works'?<section className="rp-section"><Heading en="FILMS & LIVE">影像与舞台</Heading><Search query={query} label="搜索影像"/><form className="rp-filters" onSubmit={e=>{e.preventDefault();const form=new FormData(e.currentTarget);history.pushState(null,'',href('works',{...(query?{q:query}:{}),...(form.get('queue')!=='all'?{queue:String(form.get('queue'))}:{}),...(form.get('format')!=='all'?{format:String(form.get('format'))}:{})}));window.dispatchEvent(new Event('artist-location-change'));}}><label>内容<select name="format" key={format} defaultValue={format}><option value="all">全部影像</option><option value="mv">MV</option><option value="stage">舞台</option></select></label><label>观看队列<select name="queue" key={queue} defaultValue={queue}><option value="all">全部作品</option><option value="tonight">待看</option><option value="rewatch">高分重温</option><option value="unrated">看过待评分</option></select></label><button className="rp-link" type="submit">筛选 →</button></form>{filmList(films)}{!films.length&&<p role="status">没有符合条件的影像。</p>}</section>:section==='updates'?<section className="rp-section rp-timeline"><Heading en="CHRONOLOGY">时间轴</Heading><ArtistTimelineHost groupId={content.groupId} catalog={catalog} loading={loading} error={error}/></section>:<>
-<OfficialHero useHomePreviews={useHomePreviews} onOriginal={()=>setLightbox({src:data.hero.image,label:'Rocket Punch · 2023 BOOM 官方团照原图'})}/>
+<OfficialHero catalog={catalog} returnTo={returnTo} useHomePreviews={useHomePreviews} onOriginal={()=>setLightbox({src:data.hero.image,label:'Rocket Punch · 2023 BOOM 官方团照原图'})}/>
 <ArtistInformation slug="rocketpunch" catalog={catalog}/>
 <section className="rp-section"><Heading number="01" en="MEMBERS">成员档案</Heading>{memberList(true)}<Link to={href('members')}>成员目录与搜索</Link></section>
 <section className="rp-section"><Heading number="02" en="ON SCREEN">影像选集</Heading>{filmList(data.media.filter(f=>f.kind==='mv'&&['BOOM','FLASH'].includes(f.title)))}<Link to={href('works')}>全部影像与舞台</Link></section>

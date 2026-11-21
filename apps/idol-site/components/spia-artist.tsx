@@ -23,6 +23,8 @@ import {spiaOriginalPhoto as originalPhoto} from '@/lib/idol/spia-photos';
 import './spia-artist.css';
 
 const path='/artists/spia';
+const debutMv=design.works.find(video=>video.key==='daddy-mv');
+const summerSingle=design.releases.find(release=>release.key==='deeeep');
 const nav=[['overview','首页','HOME'],['members','成员','MEMBERS'],['works','作品','MUSIC'],['updates','时间轴','TIMELINE']] as const;
 type Person=typeof design.members[number];
 type Release=typeof design.releases[number];
@@ -88,7 +90,10 @@ export default function SpiaArtist({content}:{content:CandidateContent}){
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','TIMELINE')}{timeline()}<p className="sp-note">分别记录出道、音源发行、节目播出与访谈刊载日期。当前活动状态仍待官方资料确认。</p></>;
  else body=<>
-<section className="sp-hero"><div className="sp-hero-copy"><h1>SPIA<span>수피아</span></h1><p>穿过树林，走向舞台。</p><p className="sp-hero-intro">从《Daddy’s Little Girl》的鲜明节拍，<br/>到《Deeeep》的明亮夏日。</p><Link className="sp-button" to={releaseHref(design.releases[0])}>聆听 Deeeep <Arrow/></Link></div><figure className="sp-hero-photo"><OriginalPhotoLink className="sp-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'SPIA · Deeeep 宣传照'})}><Picture src={content.hero.image!} alt="SPIA 五人 · Deeeep 官方宣传照" priority/></OriginalPhotoLink><figcaption>DEEEEP · 2024.06.05<br/>Campus Entertainment 提供 / KBS 刊载</figcaption></figure></section>
+<section className="sp-hero"><div className="sp-hero-copy"><h1>SPIA<span>수피아</span></h1><p>穿过树林，走向舞台。</p><p className="sp-hero-intro">从《Daddy’s Little Girl》的鲜明节拍，<br/>到《Deeeep》的明亮夏日。</p><div className="sp-hero-actions">
+ {debutMv&&<Link className="sp-button" to={videoHref(debutMv)}>观看 Daddy’s Little Girl 官方 MV <Arrow/></Link>}
+ {summerSingle&&<Link className="sp-source" to={releaseHref(summerSingle)}>Deeeep 单曲发行详情</Link>}
+</div></div><figure className="sp-hero-photo"><OriginalPhotoLink className="sp-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'SPIA · Deeeep 宣传照'})}><Picture src={content.hero.image!} alt="SPIA 五人 · Deeeep 官方宣传照" priority/></OriginalPhotoLink><figcaption>DEEEEP · 2024.06.05<br/>Campus Entertainment 提供 / KBS 刊载</figcaption></figure></section>
 <ArtistInformation slug="spia" catalog={state.data}/>
 <section className="sp-home-members" aria-label="成员">{heading('认识她们','MEMBERS')}{roster()}<p className="sp-roster-note">2024 年出道五人阵容。照片为 Kprofiles 的具名转载；中文名为艺名转写。</p></section>
 <section className="sp-section">{heading('从影像到舞台','FILMS')}{videos(design.works)}</section>

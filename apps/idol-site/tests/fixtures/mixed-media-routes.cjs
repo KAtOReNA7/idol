@@ -23,7 +23,9 @@ const routes = [];
 for (const group of registry) {
   const design = groups.get(group.slug);
   const views = native[group.slug] || {
-    home:[group.slug === 'vcha' ? '.vc-video[href*="view=works"]' : design.homeVideo,design.homeRelease],
+    home:design.hero
+      ? [design.hero.video+', '+design.homeVideo,design.hero.release+', '+design.homeRelease]
+      : [group.slug === 'vcha' ? '.vc-video[href*="view=works"]' : design.homeVideo,design.homeRelease],
     works:[design.worksVideo,design.worksRelease],
     records:[design.recordsVideo,design.recordsRelease],
   };

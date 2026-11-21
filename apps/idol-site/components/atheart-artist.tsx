@@ -23,7 +23,14 @@ const sections=[{key:'overview',label:'首页',Icon:Home},{key:'members',label:'
 const subscribe=(fn:()=>void)=>{window.addEventListener('popstate',fn);window.addEventListener('artist-location-change',fn);return()=>{window.removeEventListener('popstate',fn);window.removeEventListener('artist-location-change',fn);};};
 type Video=typeof editorial.videos[number];
 function Picture({src,label,priority=false}:{src:string;label:string;priority?:boolean}){return <ReliableImage src={src} alt={label} identityKey={src} priority={priority} referrerPolicy="no-referrer" missing={<span className="ah-empty-image">图片尚未收录</span>} errorFallback={<span className="ah-empty-image">图片暂时无法加载</span>}/>;}
-function Sources({urls}:{urls:(string|{url:string})[]}){return <details className="ah-source"><summary>资料与图片来源</summary>{urls.map((source,i)=>{const url=typeof source==='string'?source:source.url;return <a key={url} href={url} target="_blank" rel="noopener noreferrer">来源 {i+1} ↗</a>;})}</details>;}
+function Sources({urls}:{urls:(string|{url:string;label?:string})[]}){
+ if(!urls.length)return null;
+ return <details className="ah-source"><summary>资料与图片来源</summary>{urls.map((source,i)=>{
+  const url=typeof source==='string'?source:source.url;
+  const label=typeof source==='string'?undefined:source.label;
+  return <a key={url} href={url} target="_blank" rel="noopener noreferrer">{label??('来源 '+(i+1))} ↗</a>;
+ })}</details>;
+}
 export default function AtheartArtist(){
  const injected=useArtistTimelineHostOptions();
  const [fetched,setFetched]=useState<CatalogView|null>(null),[error,setError]=useState(''),[attempt,setAttempt]=useState(0),[loading,setLoading]=useState(true),[lightbox,setLightbox]=useState<{src:string;label:string}|null>(null);
@@ -42,7 +49,6 @@ export default function AtheartArtist(){
  const select=(value:string)=>navigate({section:value==='overview'?null:value,member:null,release:null,media:null,format:null,q:null});
  const member=editorial.members.find(m=>m.id===memberId),release=editorial.releases.find(r=>r.key===releaseKey),video=editorial.videos.find(v=>v.key===mediaKey&&v.type===format);
  const showImage=(src:string,label:string)=>setLightbox({src,label});
- const nativeVideo=(v:Video)=>data?.works.find(w=>w.id===v.workId&&(v.type==='stage'?w.stage?.videoId===v.videoId:w.url==='https://www.youtube.com/watch?v='+v.videoId));
  const match=(text:string)=>text.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase());
  const roster=editorial.members.filter(m=>match(m.stageName+' '+m.cnName));
  const releaseRows=editorial.releases.filter(r=>match(r.title)).sort((a,b)=>b.date.localeCompare(a.date));
@@ -70,6 +76,32 @@ export default function AtheartArtist(){
  const linkedMemberWorks=member&&data?data.works.filter(w=>data.ratings.some(r=>r.memberIds.length===1&&r.memberIds[0]===member.id&&r.workIds.length===1&&r.workIds[0]===w.id)):[];
  const releaseVideos=release?editorial.videos.filter(v=>v.releaseKey===release.key):[];
  const wait=injected.loading??(injected.catalog!==undefined?false:loading),failure=injected.error??error;
+ const retryCatalog=()=>injected.onRetry?injected.onRetry():setAttempt(value=>value+1);
+ function videoDetail(video:Video){
+  const source='https://www.youtube.com/watch?v='+video.videoId;
+  const work=video.workId?data?.works.find(work=>work.id===video.workId&&work.groupIds.includes(groupId)&&
+   (video.type==='stage'?work.stage?.videoId===video.videoId:work.url===source)):undefined;
+  const needsCatalog=Boolean(video.workId&&!data&&(wait||failure));
+  const credits=video.sources.filter(url=>url!==source).map(url=>({url,label:url.startsWith('https://atheart.jp/')?'AtHeart 日本官网':undefined}));
+  if(work||needsCatalog)credits.unshift({url:source,label:'YouTube 原片出处'});
+  return <section className="ah-section">
+   <button className="ah-back" onClick={()=>navigate({media:null})}>← 返回影像目录</button>
+   <div className="ah-video-title"><span>{video.chapter.toUpperCase()} / {video.type==='mv'?'音乐影像':'表演 / 现场'}</span><h1>{video.title}</h1></div>
+   <div className="ah-video-detail">
+    <div><OriginalPhotoLink className="ah-video-original" href={video.image} onOpen={src=>showImage(src,video.title+' · 发布者预览图')} aria-label={'查看'+video.title+'的预览原图'}>
+     <Picture src={publicVideoCover(video.videoId)?.src??video.image} label={video.title+' · '+video.chapter} priority/>
+     <p className="ah-caption">发布者预览图 · 查看原图 ↗</p>
+    </OriginalPhotoLink></div>
+    <div>
+     <p>{video.date?<time dateTime={video.date}>公开日期 {video.date}</time>:'公开日期未收录'}</p>
+     {work&&<a className="ah-button" href={artistWorkUrl(work,video.type==='stage',returnTo)} onClick={remember}>打开{video.type==='stage'?'舞台':' MV '}观看与评分</a>}
+     {needsCatalog&&(failure?<div role="alert"><p>站内观看与评分入口暂时无法加载。</p><button className="ah-button" onClick={retryCatalog}>重试</button></div>:<p role="status">正在加载站内观看与评分入口…</p>)}
+     {!work&&!needsCatalog&&<><p>此版本暂无站内播放或评分。</p><a className="ah-button" href={source} target="_blank" rel="noopener noreferrer">在 YouTube 观看原片 ↗</a></>}
+     <Sources urls={credits}/>
+    </div>
+   </div>
+  </section>;
+ }
  return <ImageRecoveryProvider><div className="atheart-artist"><a className="ah-skip" href="#ah-content">跳到内容</a><header className="ah-header"><div className="ah-brandbar"><button className="ah-brand" onClick={()=>select('overview')} aria-label="AtHeart 首页"><img src={editorial.logo} alt="AtHeart"/></button><a className="ah-home-link" href="/?view=groups">团体索引 ↗</a></div><nav aria-label="AtHeart 导航">{sections.map(({key,label,Icon})=><button key={key} aria-current={section===key?'page':undefined} onClick={()=>select(key)}><Icon size={20} strokeWidth={1.7}/><span>{label}</span></button>)}</nav></header>
  <main id="ah-content" tabIndex={-1}>
  {section==='overview'&&!memberId&&!releaseKey&&!mediaKey&&<>
@@ -89,13 +121,13 @@ export default function AtheartArtist(){
 <button className="ah-next" onClick={()=>navigate({member:editorial.members[(editorial.members.indexOf(member)+1)%7].id})}>下一位：{editorial.members[(editorial.members.indexOf(member)+1)%7].cnName} →</button>
 </section>:<section className="ah-empty"><h1>未找到这位成员</h1><button onClick={()=>select('members')}>返回成员目录</button></section>)}
  {releaseKey&&(release?<section className="ah-section"><button className="ah-back" onClick={()=>navigate({release:null,section:'records'})}>← 返回发行目录</button><div className="ah-release-detail"><button onClick={()=>showImage(release.image,release.title+' · 发行封面')} aria-label="查看发行封面原图"><Picture src={release.image} label={release.title+' 发行封面'} priority/></button><div><small>AtHeart / MUSIC</small><h1>{release.title}</h1><dl><div><dt>数字发行</dt><dd>{release.date}</dd></div><div><dt>收录</dt><dd>{release.tracks} 曲</dd></div></dl><button className="ah-button" onClick={()=>showImage(release.image,release.title+' · 发行封面')}>查看原图 ↗</button><a className="ah-button" href={release.sources[0]} target="_blank" rel="noopener noreferrer">官方发行详情 ↗</a><Sources urls={release.sources}/></div></div><div className="ah-tracklist"><h2>TRACK LIST<span>收录曲目</span></h2><ol>{release.trackList.map(track=><li key={track}>{track}</li>)}</ol>{release.note&&<p>{release.note}</p>}</div><div className="ah-heading"><h2>WATCH<span>相关影像</span></h2></div>{releaseVideos.length?videoCards(releaseVideos):<p>当前目录尚无这张发行的相关视频。</p>}</section>:<section className="ah-empty"><h1>未找到这张发行</h1><button onClick={()=>select('records')}>返回发行目录</button></section>)}
- {mediaKey&&(video?<section className="ah-section"><button className="ah-back" onClick={()=>navigate({media:null})}>← 返回影像目录</button><div className="ah-video-title"><span>{video.chapter.toUpperCase()} / {video.type==='mv'?'音乐影像':'表演 / 现场'}</span><h1>{video.title}</h1></div><div className="ah-video-detail"><div><button className="ah-video-original" onClick={()=>showImage(video.image,video.title+' · 发布者预览图')} aria-label="查看视频预览原图"><Picture src={publicVideoCover(video.videoId)?.src??video.image} label={video.title+' · '+video.type} priority/></button><p className="ah-caption">对应视频的发布者预览图，保留完整构图。</p></div><div><h2>{video.chapter}</h2><p>{nativeVideo(video)?'此版本已关联既有作品，可前往观看与手帐。':'此版本可浏览和播放；尚未关联个人手帐。'}</p><p>{video.date||'公开日期不详'}</p><a className="ah-button" href={'https://www.youtube.com/watch?v='+video.videoId} target="_blank" rel="noopener noreferrer">在 YouTube 播放 ↗</a>{nativeVideo(video)&&<a className="ah-button" href={artistWorkUrl(nativeVideo(video)!,video.type==='stage',returnTo)}>观看与手帐 ↗</a>}<Sources urls={video.sources}/></div></div></section>:<section className="ah-empty"><h1>未找到这个视频版本</h1><button onClick={()=>select('works')}>返回影像目录</button></section>)}
+ {mediaKey&&(video?videoDetail(video):<section className="ah-empty"><h1>未找到这个视频版本</h1><button onClick={()=>select('works')}>返回影像目录</button></section>)}
  {!memberId&&!releaseKey&&!mediaKey&&section!=='overview'&&<section className="ah-section">
  {section==='members'&&<><div className="ah-page-title"><h1>MEMBERS</h1><p>AtHeart 七位成员</p></div>{search('搜索成员')}{roster.length?memberCards(roster):empty}</>}
  {section==='records'&&<><div className="ah-page-title"><h1>MUSIC</h1><p>九项发行 · 包含语言版本、混音与成员合作</p></div>{search('搜索发行')}{releaseRows.length?releaseCards(releaseRows):empty}</>}
  {section==='works'&&<><div className="ah-page-title"><h1>WATCH</h1><p>每一个影像，都有自己的版本。</p></div>{search('搜索影像')}<div className="ah-filters" aria-label="影像类型">{[[null,'全部'],['mv','音乐影像'],['stage','表演 / 现场']].map(([value,label])=><button key={label} aria-pressed={(format||null)===value} onClick={()=>navigate({format:value})}>{label}</button>)}</div>{videoRows.length?videoCards(videoRows):empty}</>}
  {section==='updates'&&<><div className="ah-page-title"><h1>TIMELINE</h1><p>沿着日期，回看每个时刻。</p></div><ArtistTimelineHost groupId={groupId} catalog={data}/></>}
  </section>}
- {wait&&<p className="ah-data-status" role="status">正在读取已有手帐关联…</p>}{failure&&<div className="ah-data-status" role="alert">{failure} <button onClick={()=>injected.onRetry?injected.onRetry():setAttempt(a=>a+1)}>重新读取</button></div>}
+ {!mediaKey&&wait&&<p className="ah-data-status" role="status">正在读取已有手帐关联…</p>}{!mediaKey&&failure&&<div className="ah-data-status" role="alert">{failure} <button onClick={retryCatalog}>重新读取</button></div>}
  </main><footer className="ah-footer"><button className="ah-brand" onClick={()=>select('overview')}><img src={editorial.logo} alt="AtHeart"/></button><p>成员、音乐与值得回看的瞬间。<br/>STAGE · 私人观看与评分手帐</p><button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}>回到页首 ↑</button></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}</div><ImageRecoveryControls/></ImageRecoveryProvider>;
 }

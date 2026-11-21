@@ -52,7 +52,7 @@ function qaPage(title,runner) {
 }
 function speedTargets(){
   return registry.map(g=>({slug:g.slug,path:g.path||'/artists/'+g.slug,
-    home:mediaOrder.get(g.slug)?.homeVideo||nativeHomeVideo[g.slug],
+    home:mediaOrder.get(g.slug)?.hero?.video||mediaOrder.get(g.slug)?.homeVideo||nativeHomeVideo[g.slug],
     works:mediaOrder.get(g.slug)?.worksVideo,sampleWork:sampleWorks[g.slug]}));
 }
 function catalog(slug, omitCandidates, work) {

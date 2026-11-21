@@ -48,6 +48,53 @@ for (const group of reactGroups) {
 
 const cases = require('../../../docs/codex/evidence/20261122-v211/react-featured-mv-targets.json').cards;
 
+const heroWorks = [
+  ['ive', 'LOVE DIVE', 'recvxyHuKMaCIP', 'ive-release-love-dive'],
+  ['geenius', 'Voyage', 'rec28ldfRTrPmh', 'voyage'],
+  ['spia', 'Daddy’s Little Girl', 'rec28ldfRTrPua', 'deeeep'],
+  ['everglow', 'CODE', 'recvxyH5pznMiW', 'everglow-bugs-4141746'],
+  ['rocketpunch', 'BOOM', 'recvxyH5pzPAfy', 'rocketpunch-bugs-4090900'],
+  ['cherrybullet', 'P.O.W! (Play On the World)', 'recvxyH5pza4kq', 'cherrybullet-bugs-4084323'],
+  ['weeekly', 'LIGHTS ON', 'recvxyH5pzCrq5', 'weeekly-bugs-4104137'],
+];
+
+test('home hero links open the exact MV before the original release in reading and tab order', async () => {
+  for (const [slug, title, workId, releaseId] of heroWorks) {
+    const group = reactGroups.find(item=>item.slug===slug);
+    const hero = groups.get(slug).hero;
+    const query = {section:'overview'};
+    const pages = [await renderArtist(group,query,null,{loading:true}),await renderArtist(group,query)];
+    for (const html of pages) {
+      const document = parse(html);
+      const mv = document.querySelector(hero.video);
+      const release = document.querySelector(hero.release);
+      assert.ok(mv && release, slug+' must offer both destinations');
+      const firstWork = document.querySelector('main').querySelectorAll('a[href]').find(link=>{
+        const url = new URL(link.getAttribute('href'),'https://site.invalid');
+        return ['work','media','release'].some(key=>url.searchParams.has(key));
+      });
+      assert.equal(firstWork,mv,slug+' first individual work or release action');
+      const links = document.querySelectorAll('a[href],button');
+      assert.ok(links.indexOf(mv) >= 0 && links.indexOf(mv) < links.indexOf(release), slug+' hero order');
+      for (const link of [mv,release]) {
+        assert.equal(link.tagName,'A');
+        assert.equal(link.getAttribute('target'),undefined);
+        assert.equal(link.getAttribute('tabindex'),undefined);
+      }
+      assert.ok(mv.text.includes(title) && mv.text.includes('MV'), slug+' identifies its video');
+      assert.equal(mv.querySelector('img'),null, slug+' keeps the album art on the release');
+      const watch = new URL(mv.getAttribute('href'),'https://site.invalid');
+      assert.equal(watch.origin,'https://site.invalid');
+      assert.equal(watch.pathname,'/');
+      assert.equal(watch.searchParams.get('work'),workId);
+      assert.equal(watch.searchParams.get('returnTo'),group.path+'?section=overview');
+      const album = new URL(release.getAttribute('href'),'https://site.invalid');
+      assert.equal(album.pathname,group.path);
+      assert.equal(album.searchParams.get('release'),releaseId);
+    }
+  }
+});
+
 function primaryAction(document, card) {
   if (card.slug === 'idle') return document.querySelector('.idv-hero-mv');
   const selector = card.origin === 'external-before-catalog'
@@ -103,5 +150,28 @@ test('ambiguous or outdated public MV sources keep their original destination', 
     const document = parse(await renderArtist(group, {}, {...catalog, works}));
     const href = primaryAction(document, card).getAttribute('href');
     assert.equal(new URL(href).searchParams.get('v'), card.sourceVideoId);
+  }
+});
+
+test('IZ*ONE Panorama hero and film card share the verified work and source fallback', async () => {
+  const group = reactGroups.find(item => item.slug === 'izone');
+  const panorama = cases.find(card => card.slug === 'izone' && card.sourceVideoId === 'G8GaQdW2wHc');
+  const {artistCatalog} = require('./fixtures/current-artist-pages.cjs');
+  const catalog = artistCatalog(group);
+  const work = catalog.works.find(item => item.id === panorama.workId);
+  const source = require('../data/izone-public.json').media.find(film => film.id === panorama.card).url;
+  for (const [data, expected] of [
+    [null, panorama.initial],
+    [catalog, panorama.ready],
+    [{...catalog, works: catalog.works.filter(item => item.id !== work.id)}, source],
+    [{...catalog, works: [...catalog.works, {...work, id: 'recDuplicate'}]}, source],
+  ]) {
+    const document = parse(await renderArtist(group, {}, data, {loading: data === null}));
+    const hero = document.querySelector('.iz-screen-rail a');
+    const card = primaryAction(document, panorama);
+    for (const link of [hero, card]) {
+      assert.equal(link.getAttribute('href'), expected);
+      assert.equal(link.getAttribute('target'), expected === source ? '_blank' : undefined);
+    }
   }
 });

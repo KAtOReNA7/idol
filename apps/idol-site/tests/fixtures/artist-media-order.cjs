@@ -44,6 +44,19 @@ register('hearts2hearts', '.h2h-watch a', '.h2h-music-cover', '.h2h-work');
 register('kiiikiii', '.kk-work', '.kk-release-grid article');
 register('saymyname', '.smn-work', '.smn-lead-release');
 register('katseye', '.ke-work', '.ke-latest-art');
+
+// These home pages also offer individual works and releases before their main lists.
+for (const [slug, video, release] of [
+  ['ive', '.ive-dive-mv', '.ive-dive-sleeve'],
+  ['geenius', '.idol-geenius-introduction h2 a', '.idol-geenius-introduction > a[href*="release="]'],
+  ['spia', '.sp-hero-actions .sp-button', '.sp-hero-actions .sp-source'],
+  ['everglow', '.eg-hero-copy a[href*="work="]', '.eg-hero-copy a[href*="release="]'],
+  ['rocketpunch', '.rp-hero-copy a[href*="work="]', '.rp-hero-copy a[href*="release="]'],
+  ['cherrybullet', '.cb-hero-caption a[href*="work="]', '.cb-hero-caption a[href*="release="]'],
+  ['weeekly', '.wk-hero-caption a[href*="work="]', '.wk-hero-caption a[href*="release="]'],
+]) {
+  groups.get(slug).hero = {video, release};
+}
 // Several legacy records URLs reuse the works directory. MEOVV has its own list of linked MVs.
 const recordsMix = new Set(["meovv","genblue","unis","badvillain","youngposse","bewave","candyshop","oddyouth","adya","geenius","tracer","witchx","spia","loona","billlie","kep1er","newjeans"]);
 for (const [slug, scope] of groups) {

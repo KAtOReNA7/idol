@@ -3,13 +3,41 @@ const ts=require('typescript'),React=require('react'),{renderToStaticMarkup}=req
 const data=JSON.parse(fs.readFileSync('data/idle-design-public.json'));const src=fs.readFileSync('components/candidate/idle-design.tsx','utf8');
 const catalog={works:[{id:'recvxyOz5XuYef',url:'https://www.youtube.com/watch?v=Jh4QFaPmdss',groupIds:['recvxyEBDZqkpg'],song:'TOMBOY',name:'TOMBOY',score:null,stageScore:null,watched:'',stage:null,version:'',videoType:'MV',officialTitle:'TOMBOY'}],members:data.members,ratings:[]};
 function render(url,c=catalog){const out={};const code=ts.transpileModule(src,{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+code+'})',{URL,URLSearchParams})(name=>{
+ if(name.endsWith('artist-roster-link'))return require('./helpers/public-artist-loader.cjs')('components/artist-roster-link.tsx');
  if(name.endsWith('artist-mv-link'))return require('./helpers/public-artist-loader.cjs')('lib/idol/artist-mv-link.ts');
  if(name==='@/components/app-image-presentation')return require('./helpers/image-dependency-loader.cjs').imageDependency(name);
  if(name.endsWith('use-artist-scroll'))return {useArtistScroll:()=>()=>{}};if(name.endsWith('artist-navigation'))return {safeArtistReturn:v=>v};if(name.endsWith('idle-original-images.json'))return {default:JSON.parse(fs.readFileSync('data/idle-original-images.json'))};if(name.endsWith('reliable-image'))return {ImageRecoveryProvider:({children})=>children,ImageRecoveryControls:()=>null,ReliableImage:({identityKey,priority,errorFallback,...props})=>React.createElement('img',props)};if(name.endsWith('photo-lightbox'))return {PhotoLightbox:()=>null};if(name==='react')return {...React,useEffect:()=>{},useSyncExternalStore:()=>url};if(name==='react/jsx-runtime')return require('react/jsx-runtime');if(name.endsWith('idle-design-public.json'))return {default:JSON.parse(fs.readFileSync('data/runtime/idle-design-public.json'))};if(name.endsWith('artist-preview'))return {artistMemberUrl:(id,ret)=>'/?member='+id+'&returnTo='+encodeURIComponent(ret),artistWorkUrl:(w,stage,ret)=>'/?work='+w.id+(stage?'&video=stage':'')+'&returnTo='+encodeURIComponent(ret),artistWorkScoreLabel:v=>v===null?'未评分':v.toFixed(1),artistWorkRows:(works,queue,search)=>works.filter(w=>(queue==='unrated'?w.watched==='已观看'&&w.score===null:queue==='tonight'?w.score===null&&w.watched!=='已观看'&&!!w.url:queue==='rewatch'?w.score!==null&&w.score>=9:true)&&`${w.song} ${w.name} ${w.version} ${w.videoType} ${w.officialTitle}`.toLowerCase().includes(search.trim().toLowerCase()))};if(name.endsWith('/journey'))return {routeUrl:r=>'/?work='+r.work};if(name.endsWith('artist-timeline-host'))return {useArtistTimelineHostOptions:()=>({catalog:c}),ArtistTimelineHostProvider:({children})=>children,ArtistTimelineHost:()=>React.createElement('div',{'data-full-timeline':'true'})};if(name.endsWith('candidate-artist-experience'))return {CandidateArtistExperience:()=>React.createElement('div',{'data-existing-library':'true'})};return {};
  },out);return renderToStaticMarkup(React.createElement(out.default,{content:{groupId:'recvxyEBDZqkpg'}}));}
 test('all display assets are local, non-empty and dimensions declared',()=>{for(const a of Object.values(data.assets)){assert.ok(a.src.startsWith('/'));assert.ok(fs.statSync('public'+a.src).size>0);assert.ok(a.width>0&&a.height>0);}assert.equal(Object.keys(data.assets).length,56);});
 test('home uses five current portraits and exact warm studio photo',()=>{const html=render('/artists/idle');for(const m of data.members.filter(m=>m.profileListed))assert.ok(html.includes(data.assets[m.imageKey].src));assert.ok(!html.includes('徐穗珍'));assert.ok(html.includes(data.assets.hero.src));assert.ok(!html.includes('JAPAN OFFICIAL WEBSITE'));});
-test('historical membership remains separate with exact uncropped supplied portrait',()=>{const html=render('/artists/idle?section=members');assert.ok(html.includes('历史成员'));assert.ok(html.includes('徐穗珍'));assert.equal(data.members.filter(m=>m.profileListed).length,5);assert.equal(data.members.find(m=>m.stageName==='SOOJIN').existingRelation,'formerGroupIds');});
+test('historical membership remains separate with exact uncropped supplied portrait',async()=>{
+ const {parse}=require('next/dist/compiled/node-html-parser');
+ const {registry,renderArtist}=require('./fixtures/current-artist-pages.cjs');
+ const person=data.members.find(member=>member.stageName==='SOOJIN');
+ assert.equal(person.existingRelation,'formerGroupIds');
+ const directory=parse(render('/artists/idle?section=members'));
+ assert.equal(directory.querySelectorAll('.idv-directory .idv-person').length,5);
+ assert.ok(!directory.querySelector('.idv-directory').text.includes(person.cn));
+ assert.ok(directory.querySelector('.idv-history').text.includes('历史成员'));
+ const former=directory.querySelector('.idv-history-row');
+ assert.equal(former.querySelector('h2').text,person.cn);
+ const portrait=former.querySelector('a[data-artist-roster-action="portrait"]');
+ const detailRoute='/artists/idle?section=members&member='+person.id+'&roster=history';
+ assert.equal(portrait.getAttribute('href'),detailRoute);
+ const asset=data.assets[person.imageKey];
+ assert.equal(portrait.querySelector('img').getAttribute('src'),asset.src);
+ const group=registry.find(group=>group.slug==='idle');
+ const detail=parse(await renderArtist(group,{section:'members',member:person.id,roster:'history'}));
+ const photo=detail.querySelector('.idv-historical img');
+ assert.equal(photo.getAttribute('src'),asset.src);
+ assert.equal(photo.getAttribute('alt'),asset.alt);
+ assert.equal(photo.getAttribute('decoding'),'async');
+ const {info}=await require('sharp')('public'+asset.src).raw().toBuffer({resolveWithObject:true});
+ assert.deepEqual([info.width,info.height],[437,656]);
+ assert.deepEqual([Number(photo.getAttribute('width')),Number(photo.getAttribute('height'))],[info.width,info.height]);
+ assert.ok(detail.querySelector('a[href="https://sp.universal-music.co.jp/g-i-dle/latata/"]'));
+ assert.equal(detail.querySelector('.idv-historical button').text,'查看图片');
+});
 test('six member pages and all read-only releases preserve exact identities',()=>{for(const m of data.members){const html=render('/artists/idle?section=members&member='+m.id);assert.ok(html.includes(m.cn));assert.ok(html.includes(m.stageName));assert.ok(html.includes(data.assets[m.imageKey].src));}for(const r of data.releases){const html=render('/artists/idle?section=records&release='+r.id);assert.ok(html.includes(data.assets[r.imageKey].src));for(const t of r.tracks??[])assert.ok(html.includes(t.title.replaceAll('&','&amp;').replaceAll("'",'&#x27;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;')));}});
 test('KBS stage is its own read-only detail with no production rating link',()=>{const html=render('/artists/idle?section=works&media=idle-stage-kbs-music-bank-20220318-tomboy');assert.ok(html.includes('hWaTFNFnttU'));assert.ok(html.includes('TOMBOY · Music Bank'));assert.ok(html.includes('idle-release-cube-498'));assert.ok(!html.includes('作品评分'));assert.ok(!html.includes('ql-q-biGUlU'));});
 test('production work destination requires exact ID URL and group',()=>{assert.ok(render('/artists/idle').includes('/?work=recvxyOz5XuYef'));assert.ok(!render('/artists/idle',{...catalog,works:[{...catalog.works[0],url:'https://www.youtube.com/watch?v=wrong'}]}).includes('/?work=recvxyOz5XuYef'));});

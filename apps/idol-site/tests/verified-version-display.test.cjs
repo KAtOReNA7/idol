@@ -30,4 +30,38 @@ test('all 12 public identity fields drift independently and fail closed',()=>{co
 test('no schema, omitted raw cell, snapshot, duplicate row, placeholder hide increment',()=>{for(const mutation of [f=>f.tables.works.fields=[],f=>delete f.tables.works.records.find(w=>w.recordId==='rec28ldfRTrDnx').fields[F.works.version],f=>f.catalog.mode='snapshot',f=>f.tables.works.records.push(f.tables.works.records[0]),f=>f.catalog.works.find(w=>w.id==='rec28ldfRTrDnx').placeholder={reason:'placeholder'}]){const f=fixture();mutation(f);assert.equal(project(f).works.find(w=>w.id==='rec28ldfRTrDnx').versionDisplay,undefined)}});
 test('both endpoints must still match; multi-semantic links deduplicate, non-same-song stays distinct',()=>{let f=fixture(),out=project(f),work=out.works.find(w=>w.id==='recvxyOz5X4MBp');const link=work.versionDisplay.links.find(l=>l.workId==='recvxyOz5XVlTp');assert.equal(work.versionDisplay.links.length,1);assert.equal(link.labels.length,2);assert.ok(link.categories.includes('其他版本'));assert.ok(link.categories.includes('系列影像'));f.tables.works.records.find(w=>w.recordId===link.workId).fields[F.works.url]='https://www.youtube.com/watch?v=DIFFERENT00';out=project(f);assert.equal(out.works.find(w=>w.id==='recvxyOz5X4MBp').versionDisplay.links.length,0);for(const link of out.works.find(w=>w.id==='rec28ldfRTrO2v').versionDisplay.links){assert.deepEqual(Array.from(link.categories),['混音关联'])}});
 test('private edits irrelevant; display has no URL, playback source, binding or original identity fields',()=>{const f=fixture(),before=project(f);for(const w of f.catalog.works){w.score=8;w.stageScore=9;w.watched='test';w.note='private test';w.stage={videoId:'private-test',scoreBinding:{test:true}}}const out=project(f);assert.equal(JSON.stringify(out.works.map(w=>w.versionDisplay)),JSON.stringify(before.works.map(w=>w.versionDisplay)));for(const w of out.works){assert.equal(w.score,8);assert.equal(w.note,'private test');if(w.versionDisplay){assert.deepEqual(Object.keys(w.versionDisplay).sort(),['links','tags']);for(const link of w.versionDisplay.links)assert.deepEqual(Object.keys(link).sort(),['categories','labels','title','workId']);assert.doesNotMatch(JSON.stringify(w.versionDisplay),/https?:|score|stage|watched|private/);}}});
-test('runtime uses only native fresh-row fenced path; no new write or request endpoint',()=>{const native=fs.readFileSync('lib/idol/native-reader.ts','utf8');assert.match(native,/withVerifiedVersionDisplay\(projectCatalog\(tables,'live',new Date\(\).toISOString\(\)\),tables\)/);assert.ok(native.indexOf('withVerifiedVersionDisplay(projectCatalog')>native.indexOf('await nativeTables'));assert.ok(native.indexOf('const after=await catalogStamp',native.indexOf('await nativeTables'))>native.indexOf('withVerifiedVersionDisplay(projectCatalog'));assert.doesNotMatch(fs.readFileSync('lib/idol/verified-version-display.ts','utf8'),/fetch\(|INSERT |UPDATE |DELETE |scoreBinding|stageSupplement/);assert.doesNotMatch(fs.readFileSync('lib/idol/catalog.ts','utf8'),/withVerifiedVersionDisplay/)});
+test('only current native rows may publish verified version labels after a concurrent identity change',async()=>{
+ const target='rec28ldfRTrDnx',batches=[fixture(),fixture()];
+ batches[1].tables.works.records.find(row=>row.recordId===target).fields[F.works.url]='https://youtu.be/DIFFERENT00';
+ const hasLabel=catalog=>Boolean(catalog.works.find(work=>work.id===target).versionDisplay);
+ const control={owner_id:'owner',mode:'native',epoch:1,active_snapshot:'review'};
+ let generation=0;
+ const projections=[],received=[];
+ const db={prepare(sql){
+  if(sql.includes('FROM idol_storage_control'))return {first:async()=>({...control,catalog_generation:generation})};
+  assert.match(sql,/SELECT captured_at FROM idol_native_snapshots/);
+  return {bind:(snapshot,owner)=>{assert.equal(snapshot,control.active_snapshot);assert.equal(owner,control.owner_id);return {first:async()=>({captured_at:'2026-11-22'})};}};
+ }};
+ class AppError extends Error{constructor(code,message,status){super(message);Object.assign(this,{code,status});}}
+ const reader=compile('lib/idol/native-reader.ts',{
+  'cloudflare:workers':{env:{}},'./native-format':{},'./live':{},'./fields':{F},'./feishu':{AppError},
+  './native-storage':{nativeDb:()=>db,sourceStamp:state=>JSON.stringify([state.mode,state.epoch,state.active_snapshot]),
+   nativeTables:async snapshot=>{assert.equal(snapshot,control.active_snapshot);return batches[generation].tables;}},
+  './catalog':{projectCatalog:(tables,mode)=>{assert.strictEqual(tables,batches[generation].tables);assert.equal(mode,'live');return batches[generation].catalog;}},
+  './verified-version-display':moduleUnderTest,'./group-milestones':{withGroupMilestones:catalog=>catalog},
+  './social-facts':{withSocialFacts:async catalog=>{
+   projections.push(hasLabel(catalog));
+   generation=1; // The work changes after projection and before the native entry is published.
+   return catalog;
+  }},
+ });
+ const result=await reader.withNativeCatalog('owner',false,catalog=>{received.push(hasLabel(catalog));return catalog;});
+ assert.deepEqual(projections,[true,false]);
+ assert.deepEqual(received,[false]);
+ assert.equal(hasLabel(result.value),false);
+ control.mode='feishu';
+ assert.equal(await reader.readNativeCatalog('owner'),null);
+ assert.deepEqual(projections,[true,false]);
+ assert.doesNotMatch(fs.readFileSync('lib/idol/verified-version-display.ts','utf8'),/fetch\(|INSERT |UPDATE |DELETE |scoreBinding|stageSupplement/);
+ assert.doesNotMatch(fs.readFileSync('lib/idol/catalog.ts','utf8'),/withVerifiedVersionDisplay/);
+});

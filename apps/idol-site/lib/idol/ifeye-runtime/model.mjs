@@ -5,7 +5,7 @@ export const reviewPath=slug=>groups[slug]?.path??null;
 // Preserve the independently authored renderers' existing route contracts.
 export const filterField=data=>data.group.slug==='ifeye'?'type':'kind';
 export function routeCategory(data,params){
-  if(data.group.slug==='ifeye')return ({release:'release',mv:'MV',stage:'STAGE'})[params.get('type')||'release']??null;
+  if(data.group.slug==='ifeye')return ({release:'release',mv:'MV',stage:'STAGE'})[params.get('type')||(params.has('detail')?'release':'mv')]??null;
   const kind=params.get('kind')||'all';return ['all','release','MV','STAGE'].includes(kind)?kind:null;
 }
 
@@ -52,7 +52,7 @@ export function readReviewUrl(data,value) {
     else if(section==='members')page='members';
     else if(section==='updates'){page='timeline';if(event)out.set('event',event);}
     else if(section==='works'||section==='records'){
-      page='works';out.set('type',release||section==='records'?'release':format==='mv'?'mv':format==='stage'?'stage':'release');
+      page='works';out.set('type',release||section==='records'?'release':format==='stage'?'stage':'mv');
       if(release||media)out.set('detail',release||media);
     }else page='home';
     if(q&&!member)out.set('q',q);

@@ -1,16 +1,28 @@
 import source from '../../../data/timeline-reported-records.json';
 
-/** Separate public reporting projection; never promotes or mutates canonical facts. */
+// Canonical event dates stay null when only the publication date is known.
+const closedDates = {
+  "e-atheart-aurora-second-hiatus-announcement": "实际生效日期：0（未查得）。2026-08-18 为官方公告日期。",
+  "e-udtt-jessica-provisional-join-candidate": "实际加入日期：0（未查得）。2025-04-30 为本人采访发表日。"
+};
+const summaries = {
+  "e-atheart-aurora-second-hiatus-announcement": "AtHeart 日本官网公告称，Aurora 因健康原因将暂时停止团体活动，恢复时间将另行通知。",
+  "e-udtt-jessica-provisional-join-candidate": "2025 年 4 月 30 日，Jessica 在团体采访中介绍自己叫陆雨婷，活动名为 우정，在专辑的校园设定里饰演中国留学生。5 月 8 日的本人采访与 5 月 9 日的 Sports Donga 报道也记载了她参与活动。角色设定未说明合约期限。"
+};
+const boundaries = {
+  "e-atheart-aurora-hiatus-observed": "Aurora 于 2025 年 7 月初开始暂停活动，具体日期不详。",
+  "e-bewave-six-member-phase-end-announcement": "六人阵容的活动于当日结束，团体随后继续活动。",
+  "e-candyshop-yuina-hiatus-announcement": "YUINA 当时暂停团体活动，仍保留团体成员身份。",
+  "e-geenius-spoiler-book-instrumental": "此日期仅适用于器乐版 QR 发行，人声版和 LDC 版另计。",
+  "e-udtt-sena-predebut-departure-candidate": "Sena 在正式出道前离开，此日期只涉及她本人的活动。"
+};
+
+/** Public copy preserves the underlying dates, identities and sources. */
 export function reportedTimelineRecords(slug,groupId){
  return source.records.filter(row=>row.slug===slug&&row.groupId===groupId).map(row=>{
-  // 2026-11-01: user closed these research tasks with a display-zero fallback.
-  // Keep null canonical dates and the real report date; never parse 0 as a date.
-  const closedDates={
-   'e-atheart-aurora-second-hiatus-announcement':'实际生效日期：0（未查得）；按2026-08-18官方公告日期记录。',
-   'e-udtt-jessica-provisional-join-candidate':'实际加入日期：0（未查得）；按2025-04-30本人采访发表日期记录，保留原有身份与个人历史。',
-  };
-  return row.eventDate===null&&Object.hasOwn(closedDates,row.eventId)
-   ? {...row,boundary:closedDates[row.eventId],dateResolution:'closed-display-zero'}:row;
+  const closed=row.eventDate===null&&Object.hasOwn(closedDates,row.eventId);
+  const boundary=closed?closedDates[row.eventId]:boundaries[row.eventId]??row.boundary;
+  return {...row,summary:summaries[row.eventId]??row.summary,boundary,...(closed?{dateResolution:'closed-display-zero'}:{})};
  });
 }
 export function supersededNativeReportIds(slug,groupId){

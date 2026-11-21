@@ -87,7 +87,7 @@ test('all five X accounts are visible with established display rounding and user
     assert.ok(html.includes(`href="${url}"`));
     assert.ok(html.includes(`<strong>${display}</strong>`));
     assert.ok(html.includes('原始显示 ' + raw));
-    assert.match(html, /用户人工观察/);
+    assert.match(html, /用户记录/);
     assert.match(html, /2026-10-28/);
     assert.doesNotMatch(html, /private-canary/);
     assert.deepEqual(input, original);

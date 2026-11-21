@@ -20,8 +20,15 @@ const {agencyEventIds,beforeAgencyTimelineBytes,beforeAgencyEditorialBytes}=requ
 const closedDates=require('../../../docs/codex/evidence/20261101-closeout/closure.json').dates;
 const octoberReports=JSON.parse(priorityDates.reportDocument.expectedBeforeText).records;
 const closedBoundary={
- 'e-atheart-aurora-second-hiatus-announcement':'实际生效日期：0（未查得）；按2026-08-18官方公告日期记录。',
- 'e-udtt-jessica-provisional-join-candidate':'实际加入日期：0（未查得）；按2025-04-30本人采访发表日期记录，保留原有身份与个人历史。',
+  "e-atheart-aurora-second-hiatus-announcement": "实际生效日期：0（未查得）。2026-08-18 为官方公告日期。",
+  "e-udtt-jessica-provisional-join-candidate": "实际加入日期：0（未查得）。2025-04-30 为本人采访发表日。"
+};
+const publishedBoundary={
+  "e-atheart-aurora-hiatus-observed": "Aurora 于 2025 年 7 月初开始暂停活动，具体日期不详。",
+  "e-bewave-six-member-phase-end-announcement": "六人阵容的活动于当日结束，团体随后继续活动。",
+  "e-candyshop-yuina-hiatus-announcement": "YUINA 当时暂停团体活动，仍保留团体成员身份。",
+  "e-geenius-spoiler-book-instrumental": "此日期仅适用于器乐版 QR 发行，人声版和 LDC 版另计。",
+  "e-udtt-sena-predebut-departure-candidate": "Sena 在正式出道前离开，此日期只涉及她本人的活动。"
 };
 // Reviewed native pages have their own event/edition identities. Freeze their
 // complete source documents rather than infer acceptance from current output.
@@ -71,7 +78,7 @@ function reportAssertions(dom,group,held,{shown=true,native=false}={}){
    if(native&&group.slug==='udtt')assert.equal(text(times[0]),row.recordDate+' / '+row.dateLabel);
    else assert.equal(times[0].attrs.datetime,row.recordDate);
   }else{
-   assert.ok(text(node).includes(row.boundary));
+   assert.ok(text(node).includes(publishedBoundary[row.eventId]??row.boundary));
    const change=priorityDates.changes.find(c=>c.eventId===row.eventId);assert.ok(change,'only reviewed resolved records');assert.deepEqual(row.eventDate,change.after.eventDate);assert.equal(held.some(e=>e.id===row.eventId),false);
   }
   if(row.recordDate)assert.ok(text(node).includes(row.recordDate));else assert.match(text(node),/记录日期未确认/);

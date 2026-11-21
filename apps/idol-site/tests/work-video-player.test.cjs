@@ -56,7 +56,7 @@ const node=(tree,type,className)=>nodes(tree).find(n=>n.type===type&&(!className
 test('a single HD player matches the full MV and the identical stage without changing its score identity',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const id='rec28ldfRTrLku',video='Gz_yRl6703c',stage=require('../data/stage-videos.json')[id];
- const selected=workPlayback(id,video,'mv',null),embed=new URL(selected.embedUrl);
+ const selected=workPlayback(id,video,'mv',null),embed=new URL(selected.fallbackPlayers[0].embedUrl);
  assert.equal(embed.origin,'https://rutube.ru');assert.equal(embed.searchParams.get('q'),'1080');
  assert.equal(embed.searchParams.get('autostartmute'),'true');
  assert.equal(workPlayback(id,video,'stage',stage).embedUrl,selected.embedUrl);
@@ -165,20 +165,62 @@ test('small verified posters remain centered at their native size and retain ret
  node(h.render(),'button','video-play').props.onClick({currentTarget:{ownerDocument:{activeElement:null}}});assert.equal(node(h.render(),'iframe').props.src,source.embedUrl);
 });
 
-test('BILLIONAIRE can retry its verified full edit in a single muted in-page player',()=>{
+const knownBilibili={
+ rec28ldfRTrLku:{bvid:'BV1TGNWeDEdv',cid:'28248899991',label:'B站',credit:'B站 · pcyxjy 转载'},
+ rec28ldfRTrzPI:{bvid:'BV12r421t7nu',cid:'1480859605',label:'B站官方',credit:'B站 · ILLIT 官方账号'},
+};
+
+test('each confirmed work retains its exact mirror, original video and score binding',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
- const id='rec28ldfRTrLku',vid='Gz_yRl6703c';
- const {embedUrl,credit,fallbackPlayer}=workPlayback(id,vid,'mv',null);
- const target=new URL(fallbackPlayer.embedUrl);
- assert.equal(target.origin,'https://player.bilibili.com');
- assert.deepEqual(Object.fromEntries(target.searchParams),{bvid:'BV1TGNWeDEdv',cid:'28248899991',p:'1',autoplay:'1',muted:'1',danmaku:'0'});
- const h=sessionHarness({workId:id,videoId:vid,embedUrl,playbackCredit:credit,fallbackPlayer});
- node(h.render(),'button','video-play').props.onClick();
- for(const [index,expected] of [embedUrl,fallbackPlayer.embedUrl,embedUrl].entries()){
-  const tree=h.render(),frames=nodes(tree).filter(x=>x.type==='iframe');
-  assert.equal(frames.length,1);assert.equal(frames[0].props.src,expected);
-  assert.equal(node(tree,'small','video-source-credit').props.children,index===1?fallbackPlayer.credit:credit);
-  node(tree,'button','video-reload').props.onClick();
+ const {stageSourceKey,stageSourceMatchesUrl,youtubeEmbedUrl}=require('./helpers/public-artist-loader.cjs')('lib/idol/stage-source.ts');
+ const mappings=require('../data/verified-work-players.json'),stages=require('../data/stage-videos.json');
+ for(const [id,mapping] of Object.entries(mappings)){
+  const video=mapping.original, route=workPlayback(id,video,'mv',null);
+  const sources=[route,...route.fallbackPlayers], bilibili=knownBilibili[id];
+  const mirror=sources[bilibili?1:0],original=sources.at(-1);
+  assert.equal(sources.length,bilibili?3:2,id);
+  assert.equal(mirror.label,'RUTUBE 高清',id);
+  assert.equal(mirror.embedUrl,`https://rutube.ru/play/embed/${mapping.rutube}?autostartmute=true&q=1080`,id);
+  assert.equal(mirror.credit,`RUTUBE · ${mapping.uploader} 转载`,id);
+  assert.equal(original.label,'YouTube 原版',id);
+  assert.equal(original.embedUrl,youtubeEmbedUrl(video),id);
+  assert.equal(new URL(original.embedUrl).searchParams.get('mute'),'1',id);
+  if(bilibili){
+   const url=new URL(route.embedUrl);
+   assert.equal(url.origin,'https://player.bilibili.com');
+   assert.deepEqual(Object.fromEntries(url.searchParams),{bvid:bilibili.bvid,cid:bilibili.cid,p:'1',autoplay:'1',muted:'1',danmaku:'0'});
+   assert.equal(route.label,bilibili.label);
+   assert.equal(route.credit,bilibili.credit);
+  }
+  assert.equal(workPlayback(id,'invalid','mv',null),null);
+  assert.equal(workPlayback('invalid',video,'mv',null),null);
+  const stage=stages[id]??null, sameEdit=stage?.reusesOriginalVideo&&stageSourceKey(stage)===video&&stageSourceMatchesUrl(stage);
+  assert.deepEqual(workPlayback(id,video,'stage',stage),sameEdit?route:null,id);
  }
- assert.equal(h.opens(),0);
+});
+
+test('one muted iframe follows the displayed switch destination and source credit through a full cycle',()=>{
+ const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
+ const mappings=require('../data/verified-work-players.json');
+ for(const id of [...Object.keys(knownBilibili),'rec28ldfRTrACM']){
+  const video=mappings[id].original, primary=workPlayback(id,video,'mv',null);
+  const h=sessionHarness({workId:id,videoId:video,embedUrl:primary.embedUrl,playbackCredit:primary.credit,playbackLabel:primary.label,fallbackPlayers:primary.fallbackPlayers});
+  const sources=[primary,...primary.fallbackPlayers], cover=h.render();
+  assert.ok(renderToStaticMarkup(cover).includes('播放视频（'+primary.label+'）'));
+  assert.equal(node(cover,'iframe'),undefined);
+  node(cover,'button','video-play').props.onClick();
+  for(const [i,current] of [...sources,primary].entries()){
+   const tree=h.render(), frames=nodes(tree).filter(x=>x.type==='iframe');
+   assert.equal(frames.length,1);
+   assert.equal(frames[0].props.src,current.embedUrl);
+   assert.match(current.embedUrl,/[?&](?:muted?=1|autostartmute=true)(?:&|$)/);
+   assert.equal(node(tree,'small','video-source-credit').props.children,current.credit);
+   assert.equal(node(tree,'a'),undefined);
+   const control=node(tree,'button','video-reload');
+   assert.equal(control.props.type,'button');
+   assert.equal(control.props.children.at(-1),'切换到 '+sources[(i+1)%sources.length].label);
+   control.props.onClick();
+  }
+  assert.equal(h.opens(),0);
+ }
 });

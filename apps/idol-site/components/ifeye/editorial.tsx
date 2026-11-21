@@ -16,7 +16,7 @@ export default function IfeyeEditorial({onNativeOpen,onPresentationMount}:{onNat
  const injected=options.catalog!==undefined;
  const catalog=injected?(validIfeyeCatalog(options.catalog)?options.catalog:null):fetched.catalog;
  const loading=injected?(options.loading??false):fetched.loading;
- const error=injected?(options.error||(options.catalog!==null&&!validIfeyeCatalog(options.catalog)?'记录所属团体未能核验。':'')):fetched.error;
+ const error=injected?(options.error||(options.catalog!==null&&!validIfeyeCatalog(options.catalog)?'暂时无法读取本团记录。':'')):fetched.error;
  const display=useMemo(()=>prepareIfeyeDisplayData(catalog),[catalog]);
  const bindings=useMemo(()=>ifeyeNativeBindings(catalog),[catalog]);
  useEffect(()=>{
@@ -24,7 +24,7 @@ export default function IfeyeEditorial({onNativeOpen,onPresentationMount}:{onNat
   void catalogReadWithDeadline(async signal=>{
    const response=await fetch('/api/catalog?artist=ifeye&shape=display-v1',{signal,cache:'no-store',credentials:'same-origin'});
    if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('暂时无法读取手帐记录。');
-   const data:unknown=await response.json();if(!validIfeyeCatalog(data))throw new Error('记录所属团体或视频身份未能核验。');return data;
+   const data:unknown=await response.json();if(!validIfeyeCatalog(data))throw new Error('暂时无法读取此版本的记录。');return data;
   },controller.signal).then(catalog=>{if(!controller.signal.aborted)setFetched({catalog,loading:false,error:''});}).catch(error=>{if(!controller.signal.aborted)setFetched({catalog:null,loading:false,error:error instanceof Error?error.message:'暂时无法读取手帐记录。'});});
   return()=>controller.abort();
  },[injected,attempt]);

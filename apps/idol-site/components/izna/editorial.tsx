@@ -16,7 +16,7 @@ export default function IznaEditorial({onNativeOpen,onPresentationMount}:{onNati
  const injected=options.catalog!==undefined;
  const catalog=injected?(validIznaCatalog(options.catalog)?options.catalog:null):fetched.catalog;
  const loading=injected?(options.loading??false):fetched.loading;
- const error=injected?(options.error||(options.catalog!==null&&!validIznaCatalog(options.catalog)?'记录所属团体未能核验。':'')):fetched.error;
+ const error=injected?(options.error||(options.catalog!==null&&!validIznaCatalog(options.catalog)?'暂时无法读取本团记录。':'')):fetched.error;
  const display=useMemo(()=>prepareIznaDisplayData(catalog),[catalog]);
  const bindings=useMemo(()=>iznaNativeBindings(catalog),[catalog]);
  useEffect(()=>{
@@ -24,7 +24,7 @@ export default function IznaEditorial({onNativeOpen,onPresentationMount}:{onNati
   void catalogReadWithDeadline(async signal=>{
    const response=await fetch('/api/catalog?artist=izna&shape=display-v1',{signal,cache:'no-store',credentials:'same-origin'});
    if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('暂时无法读取手帐记录。');
-   const data:unknown=await response.json();if(!validIznaCatalog(data))throw new Error('记录所属团体或视频身份未能核验。');return data;
+   const data:unknown=await response.json();if(!validIznaCatalog(data))throw new Error('暂时无法读取此版本的记录。');return data;
   },controller.signal).then(catalog=>{if(!controller.signal.aborted)setFetched({catalog,loading:false,error:''});}).catch(error=>{if(!controller.signal.aborted)setFetched({catalog:null,loading:false,error:error instanceof Error?error.message:'暂时无法读取手帐记录。'});});
   return()=>controller.abort();
  },[injected,attempt]);

@@ -6,7 +6,7 @@ import {ReliableImage} from '@/components/reliable-image';
 import {memberDisplayName, memberChineseName} from '@/lib/idol/member-display-name';
 import {artistWorkUrl, type artistRoute} from '@/lib/idol/artist-preview';
 import {loonaHomeAsset, loonaHomeReleases, loonaHomeVideos, loonaHomePortrait, loonaHomeUnits, loonaHomeHistory} from '@/lib/idol/loona-home';
-import type {Member, Work} from '@/lib/idol/types';
+import type {CatalogView, Member, Work} from '@/lib/idol/types';
 import type {DisplayPortrait} from '@/lib/idol/candidate/portrait';
 
 const name = (member: Member) => memberChineseName(member) || memberDisplayName(member);
@@ -17,8 +17,8 @@ function Picture({src, alt, identityKey, priority = false, width, height}: {src?
   const ratio = `${width} / ${height}`;
   return <ReliableImage src={src} alt={alt} identityKey={identityKey} priority={priority} width={width} height={height} style={{objectFit: 'contain', aspectRatio: ratio, width: '100%', height: 'auto'}} fallbackStyle={{aspectRatio: ratio, width: '100%', minHeight: 0}} referrerPolicy="no-referrer" missing={<span className="ln-image-message">照片暂缺</span>} errorFallback={<span className="ln-image-message">图片暂时无法加载</span>}/>;
 }
-export default function LoonaHome({roster, works, returnTo, portrait, navigate, homeMember, setLightbox}: {
-  roster: Member[]; works: Work[]; returnTo: string;
+export default function LoonaHome({catalog, roster, works, returnTo, portrait, navigate, homeMember, setLightbox}: {
+  catalog: CatalogView | null; roster: Member[]; works: Work[]; returnTo: string;
   portrait: (member: Member) => DisplayPortrait | null | undefined;
   navigate: (patch: Partial<ReturnType<typeof artistRoute>>) => void;
   homeMember: (member: Member, location: string) => void;
@@ -32,11 +32,17 @@ export default function LoonaHome({roster, works, returnTo, portrait, navigate, 
 <button className="ln-home-hero" aria-label="放大 LOONA 十二人历史资料照" aria-haspopup="dialog" onClick={() => setLightbox({src: loonaHomeAsset('hero.jpg'), label: 'LOONA · 十二人历史资料照'})}>
       <Picture src={loonaHomeAsset('hero.jpg')} width={1576} height={1051} alt="LOONA 十二人历史团体资料照，白衣与花植" identityKey="home:hero" priority/>
     </button>
-<ArtistInformation slug="loona"/>
+<ArtistInformation slug="loona" catalog={catalog}/>
 <section className="ln-home-section ln-home-members" id="loona-people"><h2>成员<span className="ln-home-sr"> · 历史成员 · {roster.length} 人 · 历史十二人名册</span></h2><div className="ln-home-roster">
       {roster.map(m => <button key={m.id} className="ln-home-person" aria-label={memberDisplayName(m)} data-artist-member-trigger={m.id} data-loona-member-trigger={`loona:home:${m.id}`} onClick={() => homeMember(m, 'home')}>
         <div className="ln-home-portrait"><Picture src={loonaHomePortrait(m) ?? portrait(m)?.image} width={800} height={1200} alt={memberDisplayName(m)} identityKey={`home:member:${m.id}`}/></div><span className="ln-home-cn">{name(m)}</span><span className="ln-home-stage">{m.stageName}</span>
       </button>)}
+    </div></section>
+<section className="ln-home-section ln-home-music" id="loona-videos"><h2>音乐视频</h2><div className="ln-home-videos">
+      {homeVideos.map((entry, index) => <article className={index === 0 ? 'ln-home-video-main' : 'ln-home-video-small'} key={entry.id} data-home-video-id={entry.id}>
+        <Link className="ln-home-video-image" href={entry.work ? artistWorkUrl(entry.work, false, returnTo) : undefined} focusKey={`home-video:${entry.id}`}><Picture src={loonaHomeAsset(entry.file)} width={index === 0 ? 480 : 1200} height={index === 0 ? 360 : 675} alt={`${entry.song} 音乐视频预览`} identityKey={`video:${entry.id}`}/></Link>
+        <div className="ln-home-video-copy"><h3>{entry.song}</h3>{entry.work?.releaseDate && <time dateTime={entry.work.releaseDate}>{entry.work.releaseDate}</time>}<Link className={index === 0 ? 'ln-home-solid' : 'ln-home-video-link'} href={entry.work ? artistWorkUrl(entry.work, false, returnTo) : undefined} focusKey={`home-watch:${entry.id}`}>{entry.work ? '查看 MV 与记录 →' : '作品记录暂缺'}</Link></div>
+      </article>)}
     </div></section>
 <section className="ln-home-section" id="loona-releases"><h2>发行</h2><div className="ln-home-releases">
       {homeReleases.map(entry => <article key={entry.releaseKey} data-release-key={entry.releaseKey}>
@@ -44,12 +50,6 @@ export default function LoonaHome({roster, works, returnTo, portrait, navigate, 
           <div className="ln-home-cover"><Picture src={loonaHomeAsset(entry.file)} width={entry.file.endsWith('.png') ? 500 : 600} height={entry.file.endsWith('.png') ? 500 : 600} alt={`${entry.title} 发行封面`} identityKey={`release:${entry.releaseKey}`}/></div>
           <h3>{entry.title}</h3><p>关联曲目 · {entry.song}</p><time dateTime={entry.date}>{entry.date}</time><small>{entry.title === 'LUMINOUS' ? '日本实体单曲发行' : '专辑发行'}</small><span>{entry.work ? '查看作品与记录 →' : '作品记录暂缺'}</span>
         </Link>
-      </article>)}
-    </div></section>
-<section className="ln-home-section ln-home-music"><h2>音乐视频</h2><div className="ln-home-videos">
-      {homeVideos.map((entry, index) => <article className={index === 0 ? 'ln-home-video-main' : 'ln-home-video-small'} key={entry.id} data-home-video-id={entry.id}>
-        <Link className="ln-home-video-image" href={entry.work ? artistWorkUrl(entry.work, false, returnTo) : undefined} focusKey={`home-video:${entry.id}`}><Picture src={loonaHomeAsset(entry.file)} width={index === 0 ? 480 : 1200} height={index === 0 ? 360 : 675} alt={`${entry.song} 音乐视频预览`} identityKey={`video:${entry.id}`}/></Link>
-        <div className="ln-home-video-copy"><h3>{entry.song}</h3>{entry.work?.releaseDate && <time dateTime={entry.work.releaseDate}>{entry.work.releaseDate}</time>}<Link className={index === 0 ? 'ln-home-solid' : 'ln-home-video-link'} href={entry.work ? artistWorkUrl(entry.work, false, returnTo) : undefined} focusKey={`home-watch:${entry.id}`}>{entry.work ? '查看 MV 与记录 →' : '作品记录暂缺'}</Link></div>
       </article>)}
     </div></section>
 <section className="ln-home-section ln-home-history"><h2>一路走来</h2><div className="ln-home-history-grid">{loonaHomeHistory.map(event => <article key={event.id}><time dateTime={event.eventDate?.value}>{event.eventDate?.value.slice(0, 7).replace('-', '.')}</time><p>{event.id === 'e-loona-monthly-member-reveal-project' ? '逐月成员企划启动' : event.id === 'e-loona-complete-group-debut' ? '十二人完整体出道' : '[X X] · Butterfly'}</p></article>)}</div><button onClick={() => navigate({section: 'updates', member: null})}>浏览完整时间轴 →</button></section>

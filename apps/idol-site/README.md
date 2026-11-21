@@ -6,11 +6,11 @@
 - 全量测试和离线归档恢复会实际解码图片。先在 Python 3.11 或更高版本的虚拟环境运行 `python -m pip install -r scripts/archive/requirements.txt`，再运行 `npm test`。该命令运行全量 Node 回归及独立偏好统计套件，输出每次失败和跳过。
 - 构建后运行 `npm run preview:synthetic`，在本机独立临时 D1 中生成 51 团与 614 作品的预览。按 Ctrl+C 停止。
 
-安装 Playwright 和 Chromium 后，可以在另一个终端运行下列浏览器验收。使用工作区外已有的安装时，`PLAYWRIGHT_MODULE` 指向 Playwright 模块，`CHROMIUM_PATH` 指向浏览器可执行文件。
+逐团验收使用 Codex 自带浏览器。在一个终端运行 `npm start -- --port 8872`，在另一个终端运行 `node tests/browser/journey-server.cjs 8873 8872`。打开 <http://127.0.0.1:8873/__qa/>，点击「开始本批测试」。第二个终端会列出逐项结果所在的临时目录。
 
-- `node scripts/check-library-browser.mjs http://127.0.0.1:8787` 验证三档宽度的筛选、搜索、翻页、键盘导航和详情返回。追加输出目录可保存截图和测量结果。
-- `node scripts/check-artist-previews.mjs http://127.0.0.1:8787` 在手机和桌面检查 51 团入口、两个 Shadow DOM 页面和 UDTT 的公开作品回退。另以合成均分检查团体索引和发现页中每张卡片的空分、0 分与 7.5 分。追加 JSON 路径可保存逐页结果。
-- `node scripts/measure-library-previews.mjs http://127.0.0.1:8786 http://127.0.0.1:8787 comparison.json` 比较旧、新两个合成预览。它先核对全目录及 IVE 的公开输出，再以相同网络参数交错测量两档宽度，各取七次中位数。
+- 作品库按团筛选、搜索、清空、逐首打开 MV、切换有来源的舞台，并检查能否回到原列表位置。
+- 团页按实际地址遍历栏目、成员、发行、媒体和时间轴。可用 `slug=ive` 只测一个团，用 `width=390` 测手机宽度，用 `parts=4&part=0` 至 `part=3` 分批运行。
+- 本地脚本使用只读目录。线上图片权限、第三方视频的解码清晰度和播放进度在正式站单独静音验收。
 
 详细范围见[开发路线图](../../docs/codex/PROJECT-AUDIT-AND-ROADMAP-20261121.md)。
 

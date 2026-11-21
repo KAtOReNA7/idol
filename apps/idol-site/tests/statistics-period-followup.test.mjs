@@ -10,12 +10,12 @@ const read=name=>JSON.parse(fs.readFileSync('../../docs/codex/evidence/20261028-
 
 test('only three evidenced sales records and summary counts change; unknowns stay unknown',()=>{
  const old=beforeFollowupStatistics(data);
- const a=structuredClone(data),b=structuredClone(old);
+ const a=structuredClone(historicalData),b=structuredClone(old);
  for(const slug of ['triples','vvup','udtt']){delete a.groups[slug].sales;delete b.groups[slug].sales;}
  delete a.summary;delete b.summary;assert.deepEqual(a,b);
- assert.deepEqual(data.summary,{...old.summary,salesObserved:47,salesFallbackZero:4,salesLowerBoundsAdded:15});
- assert.equal(Object.values(data.groups).flatMap(g=>[...g.social,g.sales,g.wins]).filter(v=>v.observedValue===null).length,7);
- for(const slug of ['vvup','udtt']){assert.equal(data.groups[slug].sales.evidence.previousRecord.observedValue,null);assert.equal(data.groups[slug].sales.evidence.coverageComplete,false);}
+ assert.deepEqual(historicalData.summary,{...old.summary,salesObserved:47,salesFallbackZero:4,salesLowerBoundsAdded:15});
+ assert.equal(Object.values(historicalData.groups).flatMap(g=>[...g.social,g.sales,g.wins]).filter(v=>v.observedValue===null).length,7);
+ for(const slug of ['vvup','udtt']){assert.equal(historicalData.groups[slug].sales.evidence.previousRecord.observedValue,null);assert.equal(historicalData.groups[slug].sales.evidence.coverageComplete,false);}
 });
 
 test('eight tripleS weeks use exact period counts and cannot add overlapping source variants',()=>{
@@ -65,9 +65,9 @@ test('cards show the actual week or selected days, without claiming complete cum
  const bundle=await build({entryPoints:['lib/idol/group-information.mjs'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
  const {renderGroupInformation}=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
  const v=renderGroupInformation('vvup',{}),u=renderGroupInformation('udtt',{}),g=renderGroupInformation('geenius',{});
- assert.match(v,/>已核专辑销量</);assert.match(v,/>1,787<em>张/);assert.match(v,/统计周 2024-04-21—2024-04-27/);
+ assert.match(v,/>专辑销量</);assert.match(v,/>1,787<em>张/);assert.match(v,/统计周 2024-04-21—2024-04-27/);
  assert.doesNotMatch(v,/>唱片累计销量</);assert.doesNotMatch(v,/统计日 2024-04-27/);
- assert.match(u,/>已核零售销量</);assert.match(u,/>103<em>张/);assert.match(u,/统计日 2025-05-01、2026-07-10/);
- assert.match(u,/不是两个日期之间连续累计/);assert.doesNotMatch(u,/>唱片累计销量</);
+ assert.match(u,/>零售销量</);assert.match(u,/>103<em>张/);assert.match(u,/统计日 2025-05-01、2026-07-10/);
+ assert.match(u,/仅计这两个日期，各日之间的销量未计入/);assert.doesNotMatch(u,/>唱片累计销量</);
  assert.match(g,/统计日 2026-05-18/);assert.match(g,/>217<em>张/);
 });

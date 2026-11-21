@@ -1,0 +1,58 @@
+{
+  "applicationBaseline": "5ac54f3698fee64342da2b580c4a652e756215f8",
+  "auditedCanonicalVideos": 126,
+  "bilibiliFirst": [
+    {
+      "work": "rec28ldfRTrLku",
+      "title": "BILLIONAIRE",
+      "originalYouTubeId": "Gz_yRl6703c",
+      "bvid": "BV1TGNWeDEdv",
+      "cid": "28248899991",
+      "page": 1,
+      "publisher": "pcyxjy",
+      "credit": "reupload",
+      "evidence": "../20261122-v210/publication.json",
+      "observedOn": "v209 production work page, Bilibili selected as the alternate player",
+      "muted": true,
+      "progressSeconds": [3.693063, 11.031821],
+      "decodedWidth": 640,
+      "decodedHeight": 294,
+      "durationSeconds": 164
+    },
+    {
+      "work": "rec28ldfRTrzPI",
+      "title": "Magnetic",
+      "originalYouTubeId": "Vk5-c_v4gMU",
+      "bvid": "BV12r421t7nu",
+      "cid": "1480859605",
+      "page": 1,
+      "aid": "1402225638",
+      "publisher": "ILLIT",
+      "publisherMid": "3546608109095338",
+      "credit": "official",
+      "rightsHolder": "BELIFT LAB",
+      "publicMetadata": "https://api.bilibili.com/x/web-interface/view?bvid=BV12r421t7nu",
+      "sourcePage": "https://www.bilibili.com/video/BV12r421t7nu/?p=1&cid=1480859605",
+      "originalPage": "https://www.youtube.com/watch?v=Vk5-c_v4gMU",
+      "observedOn": "Codex in-app browser, official Bilibili embedded player, before production deployment",
+      "muted": true,
+      "progressSeconds": [5.448597, 24.566588],
+      "decodedWidth": 640,
+      "decodedHeight": 360,
+      "durationSeconds": 189,
+      "originalDurationSeconds": 189
+    }
+  ],
+  "routeOrder": {
+    "twoBilibiliWorks": ["Bilibili", "RUTUBE", "original YouTube"],
+    "other124": ["RUTUBE", "original YouTube"]
+  },
+  "localVerification": {
+    "typecheck": "pass",
+    "testFiles": ["work-video-player.test.cjs", "bili-poster-followup.test.cjs", "heygabby-complete-viewing.test.cjs", "stage-multiplatform.test.cjs", "x-stage-source.test.cjs"],
+    "passed": 39,
+    "failed": 0,
+    "coverage": "All 126 public mappings and their stage identity checks. Simulated complete source cycles for all three route shapes and tests of ranged stage playback and scoped score bindings.",
+    "olderDraftSubset": {"passed": 6, "failed": 4, "previousKnownFailures": "../20261122-v208/tests.json"}
+  }
+}

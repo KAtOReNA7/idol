@@ -178,7 +178,7 @@ test('the other 50 groups and tripleS non-sales fields match the pre-change git 
   assert.equal(hash(historicalData.summary), baseline.summary);
 });
 
-test('the public group model renders the reconciled integer and retains the unresolved scope', async () => {
+test('the public group card shows the adopted lower bound and the original discrepancy remains in its evidence', async () => {
   const bundle = await build({entryPoints: ['lib/idol/group-information.mjs'], bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent'});
   const {groupInformationModel, renderGroupInformation} = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
   const input = {note: 'private-canary', watched: true, average: 9};
@@ -192,9 +192,12 @@ test('the public group model renders the reconciled integer and retains the unre
   const access=read('../../docs/codex/evidence/20261030-access-period-lower-bound/adoption.json');
   assert.deepEqual(current.before,latest.after);assert.deepEqual(access.change.before,current.after);assert.equal(model.sales.observedValue,2118570);assert.equal(model.sales.observedValue,access.change.after.observedValue);
   assert.match(html, /<strong>2,118,570<em>张<\/em><\/strong>/);
-  assert.match(html, /340,219/);
-  assert.match(html, /来源差异继续开放/);
-  assert.match(html, /不是全球完整累计/);
+  assert.equal(model.sales.evidence.sourceDifferenceReview.remainingDifference,340219);
+  assert.equal(model.sales.evidence.sourceDifferenceReview.status,'partially-resolved');
+  assert.match(html, /韩国 Circle Album 销量下限/);
+  assert.match(html, /统计至 2026 年 6 月/);
+  assert.match(html, /未计全球其他市场/);
+  assert.doesNotMatch(html, /来源差异继续开放|340,219/);
   assert.doesNotMatch(html, /<strong>2,087,073<em>/);
   assert.doesNotMatch(html, /private-canary/);
   assert.deepEqual(input, before);

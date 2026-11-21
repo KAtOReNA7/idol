@@ -2,6 +2,7 @@
 
 import {useEffect,useRef,useState} from 'react';
 import {Play, RotateCcw} from 'lucide-react';
+import type {PlaybackSource} from '../lib/idol/work-playback';
 
 type PlayerProps = {
  workId:string;
@@ -13,7 +14,8 @@ type PlayerProps = {
  embedUrl:string|null;
  title:string;
  playbackCredit?:string;
- fallbackPlayer?:{embedUrl:string;credit:string};
+ playbackLabel?:string;
+ fallbackPlayers?:readonly PlaybackSource[];
  posterSrc?:string;
  posterLabel?:string;
  posterIsReference?:boolean;
@@ -25,11 +27,11 @@ type PlayerProps = {
 export function WorkVideoPlayer(props:PlayerProps){
  // Reset only the media session. The surrounding scoring editors stay mounted.
  // Include the full source URL and embed range, even when the video ID is reused.
- const sessionKey=JSON.stringify([props.workId,props.view,props.url,props.videoId,props.embedUrl,props.posterSrc,props.platform,props.sourceKey,props.fallbackPlayer?.embedUrl]);
+ const sessionKey=JSON.stringify([props.workId,props.view,props.url,props.videoId,props.embedUrl,props.posterSrc,props.platform,props.sourceKey,props.fallbackPlayers?.map(source=>source.embedUrl)]);
  return <VideoSession key={sessionKey} {...props}/>;
 }
 
-function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',sourceKey,playbackCredit,fallbackPlayer,posterSrc,posterLabel,posterIsReference,posterFit,posterSize,posterZoom=1}:PlayerProps){
+function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',sourceKey,playbackCredit,playbackLabel,fallbackPlayers=[],posterSrc,posterLabel,posterIsReference,posterFit,posterSize,posterZoom=1}:PlayerProps){
  const rangedStage=view==='stage'&&((sourceKey&&sourceKey!==videoId)||/[?&#](?:t|start|end|time_continue)=/.test(url+' '+(embedUrl??'')));
  const wholeVideo=platform==='youtube'&&videoId&&!rangedStage;
  const coverSrc=posterSrc||(wholeVideo?`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`:undefined);
@@ -37,9 +39,10 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
  const frameRef=useRef<HTMLIFrameElement>(null);
  const focusOnStart=useRef(false);
  const [attempt,setAttempt]=useState(0);
- const selected=attempt>0&&attempt%2===0?fallbackPlayer:undefined;
- const currentEmbed=selected?.embedUrl??embedUrl;
- const credit=selected?.credit??playbackCredit;
+ const sources=[{label:playbackLabel,credit:playbackCredit,embedUrl},...fallbackPlayers];
+ const currentIndex=attempt>0?(attempt-1)%sources.length:0;
+ const {embedUrl:currentEmbed,credit}=sources[currentIndex];
+ const nextLabel=sources.length>1?sources[(currentIndex+1)%sources.length].label:undefined;
  const [coverFailed,setCoverFailed]=useState(false);
  const [coverRetried,setCoverRetried]=useState(false);
  useEffect(()=>{
@@ -59,7 +62,7 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
   return ()=>window.removeEventListener('message',onReady);
  },[attempt,currentEmbed]);
  // Cross-origin players may render an error page without an iframe error event.
- // A manual reload keeps the exact source and never relies on the player's load event.
+ // An explicit click switches verified sources or retries the same embed.
  if(attempt>0&&currentEmbed)return <>
   <div className="video-stage">
    <iframe key={attempt} src={currentEmbed} title={title} referrerPolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen
@@ -67,7 +70,7 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
   </div>
   {credit&&<small className="video-source-credit">{credit}</small>}
   <button type="button" className="video-reload" onClick={()=>setAttempt(n=>n+1)}>
-   <RotateCcw aria-hidden="true" size={16}/>{fallbackPlayer?(selected?'重试高清播放':'播放不畅？切换站内备用线路'):'重新加载视频'}
+   <RotateCcw aria-hidden="true" size={16}/>{nextLabel?`切换到 ${nextLabel}`:'重新加载视频'}
   </button>
  </>;
  return <><div className="video-stage">
@@ -79,6 +82,6 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
    const play=playControl.current;
    focusOnStart.current=!!play&&play===play.ownerDocument?.activeElement;
    setAttempt(1);
-  }}><Play fill="currentColor" size={25}/><span>{!embedUrl&&platform==='bilibili'?'在 B站观看':!embedUrl&&platform==='x'?'在 X 观看':view==='stage'?'播放舞台视频':'播放视频'}</span></button>
+  }}><Play fill="currentColor" size={25}/><span>{!embedUrl&&platform==='bilibili'?'在 B站观看':!embedUrl&&platform==='x'?'在 X 观看':view==='stage'?'播放舞台视频':'播放视频'}{playbackLabel&&`（${playbackLabel}）`}</span></button>
  </div>{credit&&<small className="video-source-credit">{credit}</small>}</>;
 }

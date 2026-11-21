@@ -110,14 +110,14 @@ test('the historical nine-item audit retains its then-unapplied single-day Retai
 test('public models expose exact integer counts together with visible limited-period labels', async () => {
   const bundle = await build({entryPoints: ['lib/idol/group-information.mjs'], bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent'});
   const {groupInformationModel, renderGroupInformation} = await import('data:text/javascript;base64,' + Buffer.from(bundle.outputFiles[0].text).toString('base64'));
-  for (const [slug, value, display, label] of [['badvillain', 5367, '5,367', '已核两周销量下界'], ['bewave', 725, '725', '已核单周销量下界']]) {
+  for (const [slug, value, display, label] of [['badvillain', 5367, '5,367', '两周销量下限'], ['bewave', 725, '725', '单周销量下限']]) {
     const input = {note: 'private-canary', watched: true, average: 9};
     const before = structuredClone(input);
     assert.equal(groupInformationModel(slug, input).sales.observedValue, value);
     const html = renderGroupInformation(slug, input);
     assert.ok(html.includes(`<strong>${display}<em>张</em></strong>`));
     assert.ok(html.includes(`<small>${label}</small>`));
-    assert.match(html, /不是全团或全球完整累计/);
+    assert.match(html, /仅涵盖这[两一]周/);
     assert.doesNotMatch(html, /private-canary/);
     assert.deepEqual(input, before);
   }

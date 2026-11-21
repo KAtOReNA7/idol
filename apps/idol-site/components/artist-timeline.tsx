@@ -129,7 +129,7 @@ export function ArtistTimeline({input,context,catalog,title='大事时间轴',sh
     {error?<div className="at-state" role="alert"><p>{error}</p>{onRetry&&<button type="button" onClick={onRetry}>{retryLabel}</button>}</div>
       :loading||presentation?.state==='loading'?<p className="at-state" role="status">正在读取时间轴…</p>
       :!validation.ok?<div className="at-state" role="alert"><p>时间轴暂时无法显示。</p>{onRetry&&<button type="button" onClick={onRetry}>重新读取</button>}</div>
-      :events.length===0?<p className="at-state">事件正在整理，确认后会显示在这里。</p>
+      :events.length===0?<p className="at-state">暂无时间轴事件。</p>
       :<ol className="at-list">{events.map(event=><li key={event.id} data-timeline-event-type={event.eventType} data-timeline-visual={timelineVisual(event)}>
         <EventMarker visual={timelineVisual(event)}/>
         <article className="at-event" tabIndex={-1} data-timeline-event-id={event.id} aria-labelledby={eventHeadingId(instanceId,event.id)}>

@@ -98,7 +98,7 @@ export function IvePeriod({period,release,members,works,enlarge,openMember}:Prop
       })}</div>
     </section>
     <footer className="ive-period-source"><a href={release.sourceUrl} target="_blank" rel="noreferrer">官网发行资料 ↗</a>
-      {release.sales?.copies!=null&&<p>已核实实体销量 {release.sales.copies.toLocaleString()} · 截至 {release.sales.asOf}。{release.sales.coverageLabel}</p>}
+      {release.sales?.copies!=null&&<p>已公开实体销量 {release.sales.copies.toLocaleString()} · 截至 {release.sales.asOf}。{release.sales.coverageLabel}</p>}
       <a href="/artists/ive?section=works">全部发行与作品</a>
     </footer>
   </article>;

@@ -25,7 +25,7 @@ import {useArtistScroll} from './use-artist-scroll';
 
 type Hearts2HeartsContent=ExpandedArtistContent&{memberVisuals:Record<string,{image:string;label:string;date:string;identitySourceUrl?:string}>;releaseCoverage:{scope:string};featuredReleaseIds:string[];releaseVideoIds:Record<string,string[]>};
 const path='/artists/hearts2hearts';
-const sections:[ArtistSection,string][]=[['overview','首页'],['members','成员'],['records','作品'],['works','影像'],['updates','历程']];
+const sections:[ArtistSection,string][]=[['overview','首页'],['members','成员'],['works','影像'],['records','作品'],['updates','历程']];
 const queues=[['all','全部作品'],['tonight','待看'],['rewatch','高分重温'],['unrated','看过待评分']];
 const number=(v:number|null)=>v===null?'待评':v.toFixed(1);
 const media=(p:Photo)=>`/api/media?table=${p.table}&record=${p.recordId}&index=${p.index}`;
@@ -108,11 +108,11 @@ export default function Hearts2HeartsArtist({content}:{content:Hearts2HeartsCont
  <main id="artist-content">{route.section==='overview'&&!route.member&&<section className="h2h-hero"><div className="h2h-masthead"><img src="/artist/hearts2hearts/logo.svg" alt=""/><h1>Hearts2Hearts</h1><span className="h2h-heart" aria-hidden="true">♥</span><small>8 MEMBERS · SM ENTERTAINMENT</small><p>8 位成员 · 从 The Chase 开始</p></div><figure><Picture identityKey={'hero:'+content.groupId} src={figmaAssets.heroImage} alt="Hearts2Hearts 八位成员官方团体照" priority/></figure><div className="h2h-hero-caption"><small>{content.profile.debutDate} 出道</small><button className="h2h-button" onClick={()=>document.getElementById('h2h-members')?.scrollIntoView({behavior:'smooth'})}>认识八位成员 ↓</button></div></section>}
  {loading&&!data?<div className="h2h-empty" role="status">正在打开你的 Hearts2Hearts 收藏…</div>:error?<div className="h2h-empty" role="alert"><p>{error}</p><button className="h2h-button" onClick={retry}>重新加载</button></div>:!collection?<div className="h2h-empty">暂未找到团体资料。<A href="/?view=groups">返回团体索引</A></div>:route.member?(member?memberPage(member):<div className="h2h-empty">这个成员不在 Hearts2Hearts 档案中。<button onClick={()=>navigate({member:null,section:'members'})}>查看成员</button></div>):<>
  {route.section==='overview'&&<>
-<ArtistInformation slug="hearts2hearts"/>
+<ArtistInformation slug="hearts2hearts" catalog={data}/>
 <section id="h2h-members"><div className="h2h-band"><small className="h2h-eyebrow">EIGHT MEMBERS</small><h2>Hearts × 8</h2></div><div className="h2h-section">{roster()}<button className="h2h-button" onClick={()=>select('members')}>成员目录<ArrowUpRight size={14}/></button></div></section>
-<section className="h2h-section"><Heading label="RELEASES" title="Music ♥"/>{music()}</section>
 {representative&&<section><div className="h2h-band lime"><small className="h2h-eyebrow">WATCH</small><h2>{representative.song}</h2></div><div className="h2h-section h2h-watch"><h3>{representative.song}</h3><p>{representative.releaseDate?.slice(0,10)} · {representative.videoType}</p><A className="h2h-button" href={artistWorkUrl(representative,false,returnTo)}>观看官方 MV<ArrowUpRight size={14}/></A><button className="h2h-text-button" onClick={()=>select('works')}>MV / 舞台 →</button></div></section>}
-<ArtistHomeTimeline slug="hearts2hearts"/>
+<section className="h2h-section"><Heading label="RELEASES" title="Music ♥"/>{music()}</section>
+<ArtistHomeTimeline slug="hearts2hearts" catalog={data}/>
 <section className="h2h-section h2h-history-entry"><h2>从 2025 开始</h2><button className="h2h-button" onClick={()=>select('updates')}>完整历程<ArrowUpRight size={14}/></button></section>
 </>}
  {route.section==='members'&&<><div className="h2h-page-title"><small>HEARTS2HEARTS / MEMBERS</small><h1>Meet all eight</h1><p>八位成员</p></div><section className="h2h-section">{searchBox('搜索成员','搜索中文名或艺名')}<p className="h2h-result-count" role="status">{shownMembers.length} / {members.length} 位成员</p>{roster()}{!shownMembers.length&&<div className="h2h-empty"><p>没有找到这位成员。</p><button className="h2h-button" onClick={()=>navigate({search:''},true)}>查看八位成员</button></div>}</section></>}

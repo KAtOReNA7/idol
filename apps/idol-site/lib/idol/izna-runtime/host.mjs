@@ -112,12 +112,12 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
     button.textContent=request.action==='open-member'?'查看成员手帐 ↗':request.action==='open-release'?'查看发行记录 ↗':'查看作品手帐 ↗';
     button.dataset.iznaNativeFocus=request.action;
     button.disabled=!allowed;
-    if(!allowed){const reason=doc.createElement('p');reason.id=root.getAttribute('data-astra-instance')+'--native-pending';reason.textContent=request.action==='open-release'?'发行资料可浏览，目前没有对应的手帐记录。':'暂未核验到对应的手帐记录，可继续浏览本页资料。';button.setAttribute('aria-describedby',reason.id);section.append(reason);}
+    if(!allowed){const reason=doc.createElement('p');reason.id=root.getAttribute('data-astra-instance')+'--native-pending';reason.textContent=request.action==='open-release'?'发行资料可浏览，目前没有对应的手帐记录。':'暂无对应的手帐记录，仍可浏览本页资料。';button.setAttribute('aria-describedby',reason.id);section.append(reason);}
     if(request.action==='open-work'){
       const ratingRequest={...request,action:'open-rating'},ratingAllowed=canRequest(ratingRequest);
       const rating=doc.createElement('button');rating.type='button';rating.className='action';rating.dataset.astraNativeOpen='open-rating';rating.textContent='评分与观看记录 ↗';rating.disabled=!ratingAllowed;section.append(rating);
       rating.dataset.iznaNativeFocus='open-rating';
-      if(!ratingAllowed){const reason=doc.createElement('p');reason.id=root.getAttribute('data-astra-instance')+'--rating-pending';reason.textContent='此版本的评分关联尚未核验。';rating.setAttribute('aria-describedby',reason.id);section.append(reason);}
+      if(!ratingAllowed){const reason=doc.createElement('p');reason.id=root.getAttribute('data-astra-instance')+'--rating-pending';reason.textContent='此版本暂无可显示的评分。';rating.setAttribute('aria-describedby',reason.id);section.append(reason);}
     }
     if(section.childNodes.length)(request.action==='open-member'?root.querySelector('[data-member-native-slot]'):root.querySelector('main'))?.append(section);
   };

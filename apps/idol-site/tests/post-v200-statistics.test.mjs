@@ -44,8 +44,8 @@ test('rendered Retail card cannot claim total album sales; source details expose
  const bundle=await build({entryPoints:['lib/idol/group-information.mjs'],bundle:true,write:false,format:'esm',platform:'node',logLevel:'silent'});
  const {renderGroupInformation}=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
  const html=renderGroupInformation('geenius',{});
- assert.match(html,/>已核零售销量</);assert.match(html,/<strong>217<em>张<\/em><\/strong>/);
- assert.match(html,/已核单日零售下界/);assert.match(html,/统计日 2026-05-18/);
- assert.doesNotMatch(html,/<span>唱片累计销量<\/span>/);assert.match(html,/不是全团、全渠道或全球完整累计/);
+ assert.match(html,/>零售销量</);assert.match(html,/<strong>217<em>张<\/em><\/strong>/);
+ assert.match(html,/单日零售下限/);assert.match(html,/统计日 2026-05-18/);
+ assert.doesNotMatch(html,/<span>唱片累计销量<\/span>/);assert.match(html,/仅涵盖当天和该版本/);
  assert.match(html,/circlechart.kr\/page_chart\/retail.circle/);
 });

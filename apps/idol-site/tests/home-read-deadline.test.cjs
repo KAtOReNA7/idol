@@ -11,6 +11,7 @@ const tick=()=>new Promise(r=>setImmediate(r));
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return {promise,resolve,reject};};
 function harness(initial={}){
  const states=[],requests=[],effects=[],refs=[],callbacks=[],timers=new Map();
+ const detailModule=deferred(),detailModuleLoads=[];
  const view={routeReady:true,work:null,sequence:undefined,canEdit:true,...initial};
  let cursor=0,refIndex=0,callbackIndex=0,effectIndex=0,pending=[],unmounted=false,writesAfterUnmount=0,now=0,next=0,api;
  const equal=(a,b)=>a&&b&&a.length===b.length&&a.every((value,i)=>Object.is(value,b[i]));
@@ -18,6 +19,7 @@ function harness(initial={}){
  const helper={};vm.runInNewContext(compile(fs.readFileSync('lib/idol/catalog-read-deadline.ts','utf8')),{exports:helper,AbortController,DOMException,...timer});
  const exports={};
  vm.runInNewContext(code,{exports,...workRequest,useCanEdit:()=>view.canEdit,catalogReadWithDeadline:helper.catalogReadWithDeadline,AbortController,
+  loadWorkDetailModule:()=>{detailModuleLoads.push(view.work);return detailModule.promise;},
   useState:v=>{const i=cursor++;if(!(i in states))states[i]=v;return [states[i],n=>{states[i]=n;if(unmounted)writesAfterUnmount++;}];},
   useRef:v=>{const i=refIndex++;return refs[i]??(refs[i]={current:v});},
   useCallback:(fn,deps)=>{const i=callbackIndex++;if(!equal(callbacks[i]?.deps,deps))callbacks[i]={fn,deps};return callbacks[i].fn;},
@@ -27,7 +29,7 @@ function harness(initial={}){
  });
  function render(patch={}){Object.assign(view,patch);cursor=refIndex=callbackIndex=effectIndex=0;pending=[];api=exports.App();for(const run of pending)run();return api;}
  render();
- return {states,requests,timers,render,load:(...args)=>api.load(...args),unmount(){unmounted=true;for(const e of effects)e.cleanup?.();},replay(){for(const e of effects)e.cleanup?.();for(const e of effects)e.cleanup=e.fn();},writes:()=>writesAfterUnmount,
+ return {states,requests,timers,detailModule,detailModuleLoads,render,load:(...args)=>api.load(...args),unmount(){unmounted=true;for(const e of effects)e.cleanup?.();},replay(){for(const e of effects)e.cleanup?.();for(const e of effects)e.cleanup=e.fn();},writes:()=>writesAfterUnmount,
  catalog:()=>requests.filter(r=>r.url.startsWith('/api/catalog')),
  async advance(ms){now+=ms;for(const [id,t] of timers)if(t.due<=now){timers.delete(id);t.f();}await tick();},
  reply(r,d){r.resolve({ok:true,headers:{get:()=> 'application/json'},json:async()=>d});}};
@@ -35,8 +37,11 @@ function harness(initial={}){
 const cached=()=>({mode:'live',groups:[],members:[],works:[{id:'work',score:0,note:'保留备注',watched:'已观看'}],ratings:[],cache:{refreshRecommended:true}});
 
 test('initial route hydration, related version navigation and full library keep the right data',async()=>{
- const h=harness({routeReady:false});await tick();assert.equal(h.catalog().length,0);
+ const h=harness({routeReady:false});await tick();assert.equal(h.catalog().length,0);assert.deepEqual(h.detailModuleLoads,[]);
  h.render({routeReady:true,work:'recOne'});await tick();
+ assert.deepEqual(h.detailModuleLoads,['recOne']);
+ assert.equal(h.catalog().length,1);
+ h.detailModule.reject(Error('early module request failed'));
  const focus={...cached(),scope:{type:'work',workId:'recOne'},cache:{}};
  const full={...cached(),cache:{}};
  assert.equal(h.catalog()[0].options.headers.Prefer,'omit-stage-candidates, work-detail=recOne');
@@ -54,11 +59,13 @@ test('initial route hydration, related version navigation and full library keep 
  assert.equal(h.catalog()[3].options.headers.Prefer,'omit-stage-candidates');
  h.reply(h.catalog()[3],full);await tick();assert.equal(h.render().data,full);
  assert.equal(h.render({work:'recVersion'}).data,full);await tick();assert.equal(h.catalog().length,4);
+ assert.deepEqual(h.detailModuleLoads,['recOne','recVersion']);
  h.unmount();
 });
 test('restored watch queues and full responses from legacy servers keep every library link available',async()=>{
  for(const sequence of [{ids:['recOne','recNext']},undefined]){
   const h=harness({work:'recOne',sequence});await tick();
+  assert.deepEqual(h.detailModuleLoads,sequence?[]:['recOne']);
   assert.equal(h.catalog()[0].options.headers.Prefer,sequence?'omit-stage-candidates':'omit-stage-candidates, work-detail=recOne');
   const full={...cached(),cache:{}};h.reply(h.catalog()[0],full);await tick();
   assert.equal(h.render({work:'recNext'}).data,full);

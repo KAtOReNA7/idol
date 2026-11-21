@@ -7,7 +7,7 @@ import {MemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPhysicalFacts} from '@/components/member-physical-facts';
 import {memberDisplayName} from '@/lib/idol/member-display-name';
 import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {readArtistCatalog} from '@/lib/idol/catalog-read-deadline';
 import {ArrowLeft,ArrowUpRight,ChevronRight,ImageIcon,Play,Search} from 'lucide-react';
 import type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';
 import {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';
@@ -32,7 +32,6 @@ function Picture({src,alt,priority=false,identityKey}:{src?:string;alt:string;pr
 function Thumb({work}:{work:Work}){const id=videoId(work.url);return <div className="il-thumb"><ReliableImage src={id?(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null} identityKey={`work:${work.id}:thumbnail`} alt={`${work.song||work.name} 视频封面`} referrerPolicy="no-referrer" loading="lazy" fallback={<div className="il-text-cover"><Play size={22}/><strong>{work.song||work.name}</strong><small>MUSIC VIDEO</small></div>}/></div>;}
 function Heading({title,label,more,onMore}:{title:string;label:string;more?:string;onMore?:()=>void}){return <div className="il-section-heading"><div><small>{label}</small><h2>{title}</h2></div>{onMore&&<button onClick={onMore}>{more??'查看全部'}<ArrowUpRight size={15}/></button>}</div>;}
 function WorkCard({work,returnTo}:{work:Work;returnTo:string}){return <article className="il-work-card"><LinkTo href={artistWorkUrl(work,false,returnTo)}><Thumb work={work}/><div className="il-work-copy"><h3>{work.song||work.name}</h3><p>{[work.version||work.videoType,work.releaseDate].filter(Boolean).join(' · ')}</p><span className="il-work-score">我的 MV 分 <strong>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</strong></span></div></LinkTo><div className="il-work-actions"><LinkTo href={artistWorkUrl(work,false,returnTo)}><Play size={14}/>看 MV</LinkTo>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<LinkTo href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={13}/></LinkTo>}</div></article>;}
-async function readCatalog(signal:AbortSignal){return catalogReadWithDeadline(async requestSignal=>{const response=await fetch('/api/catalog?artist=illit&shape=display-v1',{cache:'no-store',signal:requestSignal});if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('暂时没有连上你的资料库，请重试。');const d=await response.json() as Catalog;if(!d||!Array.isArray(d.groups)||!Array.isArray(d.members)||!Array.isArray(d.works)||!Array.isArray(d.ratings))throw new Error('资料暂时没有加载完整，请重试。');return d;},signal);}
 
 export default function IllitArtist(){
  const timelineOptions=useArtistTimelineHostOptions();
@@ -49,7 +48,7 @@ export default function IllitArtist(){
   loadAbort.current?.abort();
   const controller=new AbortController();loadAbort.current=controller;
   setLoading(true);setError('');
-  try{const d=await readCatalog(controller.signal);if(sequence===loadSequence.current)setData(d);}
+  try{const d=await readArtistCatalog('illit', controller.signal);if(sequence===loadSequence.current)setData(d);}
   catch(e){if(sequence===loadSequence.current&&!controller.signal.aborted)setError((e as Error).message);}
   finally{if(sequence===loadSequence.current){setLoading(false);loadAbort.current=null;}}
  },[timelineOptions.catalog]);

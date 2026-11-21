@@ -10,7 +10,7 @@ import {MemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPhysicalFacts} from '@/components/member-physical-facts';
 import {memberDisplayName} from '@/lib/idol/member-display-name';
 import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {readArtistCatalog} from '@/lib/idol/catalog-read-deadline';
 import {ArrowLeft,ArrowUpRight,ChevronRight,ImageIcon,Play,Search} from 'lucide-react';
 import type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';
 import {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';
@@ -39,7 +39,6 @@ function SectionHeading({index,title,label,more,onMore}:{index:string;title:stri
 function VideoThumb({work,large=false}:{work:Work;large?:boolean}){const id=videoId(work.url);return <div className={'as-video-thumb'+(large?' large':'')}><ReliableImage src={id?(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null} identityKey={`work:${work.id}:thumbnail`} alt={`${work.song||work.name} 视频封面`} loading="lazy" referrerPolicy="no-referrer" fallback={<div className="as-text-cover" aria-label={`${work.song||work.name} 文字作品封面`}><Play size={large?26:15}/>{large&&<strong>{work.song||work.name}</strong>}<span>{large?'MUSIC VIDEO':'MV'}</span></div>}/></div>;}
 function WorkScore({work,mobile=false}:{work:Work;mobile?:boolean}){return <span className={'as-row-score'+(mobile?' as-row-score-mobile':' as-row-score-desktop')+(work.score===null?' unrated':'')}><small>我的 MV 分</small><strong>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</strong></span>;}
 function WorkRow({work,index,returnTo}:{work:Work;index:number;returnTo?:string}){return <article className="as-work-row"><span className="as-row-number">{String(index+1).padStart(2,'0')}</span><LinkTo className="as-row-main" href={artistWorkUrl(work,false,returnTo)}><VideoThumb work={work}/><span><strong>{work.song||work.name}</strong><small>{[work.version,workKind(work)].filter(Boolean).join(' · ')}{work.releaseDate?' · '+work.releaseDate:''}</small><WorkScore work={work} mobile/></span></LinkTo><WorkScore work={work}/><div className="as-row-actions"><LinkTo href={artistWorkUrl(work,false,returnTo)} aria-label={'观看'+(work.song||work.name)+' MV'}><Play size={13}/>MV</LinkTo>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<LinkTo href={artistWorkUrl(work,true,returnTo)}>{work.stage?'舞台':'其他现场'}<ArrowUpRight size={12}/></LinkTo>}</div></article>;}
-async function readArtistCatalog(signal:AbortSignal){return catalogReadWithDeadline(async requestSignal=>{const r=await fetch('/api/catalog?artist=babymonster&shape=display-v1',{cache:'no-store',signal:requestSignal});if(!r.ok||!r.headers.get('content-type')?.includes('application/json'))throw new Error('暂时没有连上你的资料库，请重试。');const d=await r.json() as Catalog;if(!d||!Array.isArray(d.groups)||!Array.isArray(d.works)||!Array.isArray(d.members)||!Array.isArray(d.ratings))throw new Error('资料暂时没有加载完整，请重试。');return d;},signal);}
 export default function ArtistSample({basePath='/preview/babymonster'}:{basePath?:string}){
  const timelineOptions=useArtistTimelineHostOptions();
  const [fetchedData,setData]=useState<Catalog|null>(null),[fetchedError,setError]=useState(''),[fetchedLoading,setLoading]=useState(true);
@@ -59,7 +58,7 @@ export default function ArtistSample({basePath='/preview/babymonster'}:{basePath
   loadAbort.current?.abort();
   const controller=new AbortController();loadAbort.current=controller;
   setLoading(true);setError('');
-  try{const d=await readArtistCatalog(controller.signal);if(sequence===loadSequence.current)setData(d);}
+  try{const d=await readArtistCatalog('babymonster', controller.signal);if(sequence===loadSequence.current)setData(d);}
   catch(e){if(sequence===loadSequence.current&&!controller.signal.aborted)setError((e as Error).message);}
   finally{if(sequence===loadSequence.current){setLoading(false);loadAbort.current=null;}}
  },[timelineOptions.catalog]);

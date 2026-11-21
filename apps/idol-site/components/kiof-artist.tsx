@@ -10,7 +10,7 @@ import {MemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPhysicalFacts} from '@/components/member-physical-facts';
 import {memberDisplayName} from '@/lib/idol/member-display-name';
 import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {readArtistCatalog} from '@/lib/idol/catalog-read-deadline';
 import {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';
 import type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';
 import {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';
@@ -34,15 +34,6 @@ function subscribe(fn:()=>void){window.addEventListener('popstate',fn);window.ad
 function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}
 function Picture({src,alt,priority=false,identityKey}:{src?:string|null;alt:string;priority?:boolean;identityKey?:string}){return <ReliableImage src={src} identityKey={identityKey} alt={alt} referrerPolicy="no-referrer" priority={priority} fallback={<div className="kf-photo-empty"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>}/>;}
 function Heading({label,title,onMore}:{label:string;title:string;onMore?:()=>void}){return <div className="kf-heading"><div><small>{label}</small><h2>{title}</h2></div>{onMore&&<button onClick={onMore}>查看全部<ArrowUpRight size={14}/></button>}</div>;}
-async function readCatalog(signal:AbortSignal){
- return catalogReadWithDeadline(async requestSignal=>{
- const r=await fetch('/api/catalog?artist=kissoflife&shape=display-v1',{cache:'no-store',signal:requestSignal});
- if(!r.ok||!r.headers.get('content-type')?.includes('application/json'))throw new Error('暂时没有连上你的资料库，请重试。');
- const d=await r.json() as Catalog;
- if(!d||!Array.isArray(d.groups)||!Array.isArray(d.members)||!Array.isArray(d.works)||!Array.isArray(d.ratings))throw new Error('资料暂时没有加载完整，请重试。');
- return d;
- },signal);
-}
 function WorkCard({work,returnTo}:{work:Work;returnTo:string}){
  const id=videoId(work.url);
  return <article className="kf-work"><A href={artistWorkUrl(work,false,returnTo)}><div className="kf-work-thumb"><ReliableImage src={id?(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null} identityKey={`work:${work.id}:thumbnail`} alt={`${work.song||work.name} 视频封面`} loading="lazy" referrerPolicy="no-referrer" fallback={<div className="kf-text-cover"><strong>{work.song||work.name}</strong><Play size={24}/></div>}/></div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className="kf-score">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className="kf-work-actions"><A className="kf-button" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className="kf-button" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;
@@ -60,7 +51,7 @@ export default function KiofArtist({content}:{content:KiofContent}){
   loadAbort.current?.abort();
   const controller=new AbortController();loadAbort.current=controller;
   setLoading(true);setError('');
-  try{const d=await readCatalog(controller.signal);if(sequence===loadSequence.current)setData(d);}
+  try{const d=await readArtistCatalog('kissoflife', controller.signal);if(sequence===loadSequence.current)setData(d);}
   catch(e){if(sequence===loadSequence.current&&!controller.signal.aborted)setError((e as Error).message);}
   finally{if(sequence===loadSequence.current){setLoading(false);loadAbort.current=null;}}
  },[timelineOptions.catalog]);

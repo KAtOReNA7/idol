@@ -10,7 +10,7 @@ import {MemberPhysicalFacts} from '@/components/member-physical-facts';
 import {ArtistTimelineHost,useArtistTimelineHostOptions} from './artist-timeline-host';
 import {memberChineseName,memberDisplayName} from '@/lib/idol/member-display-name';
 import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {readArtistCatalog} from '@/lib/idol/catalog-read-deadline';
 import {ArrowLeft,ArrowUpRight,ImageIcon,Search} from 'lucide-react';
 import type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';
 import {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,type ArtistSection} from '@/lib/idol/artist-preview';
@@ -33,15 +33,6 @@ function subscribe(fn:()=>void){window.addEventListener('popstate',fn);window.ad
 function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}
 function Picture({src,alt,priority=false,identityKey}:{src?:string|null;alt:string;priority?:boolean;identityKey?:string}){return <ReliableImage src={src} identityKey={identityKey??src??alt} alt={alt} priority={priority} referrerPolicy="no-referrer" missing={<div className="h2h-photo-empty"><ImageIcon size={22}/><span>{'图片暂未收录'}</span></div>} errorFallback={<div className="h2h-photo-empty"><ImageIcon size={22}/><span>图片暂未加载</span></div>}/>;}
 function Heading({label,title,onMore}:{label:string;title:string;onMore?:()=>void}){return <div className="h2h-heading"><div><small>{label}</small><h2>{title}</h2></div>{onMore&&<button onClick={onMore}>查看全部<ArrowUpRight size={14}/></button>}</div>;}
-async function readCatalog(signal:AbortSignal){
- return catalogReadWithDeadline(async requestSignal=>{
- const r=await fetch('/api/catalog?artist=hearts2hearts&shape=display-v1',{cache:'no-store',signal:requestSignal});
- if(!r.ok||!r.headers.get('content-type')?.includes('application/json'))throw new Error('暂时没有连上你的资料库，请重试。');
- const d=await r.json() as Catalog;
- if(!d||!Array.isArray(d.groups)||!Array.isArray(d.members)||!Array.isArray(d.works)||!Array.isArray(d.ratings))throw new Error('资料暂时没有加载完整，请重试。');
- return d;
- },signal);
-}
 function WorkCard({work,returnTo,index}:{work:Work;returnTo:string;index:number}){
  return <article className="h2h-work"><small className="h2h-eyebrow">{String(index+1).padStart(2,'0')}</small><h3>{work.song||work.name}</h3><p>{[work.version,work.videoType].filter(Boolean).join(' · ')}</p><time>{work.releaseDate?.slice(0,10)}</time><span className="h2h-score">我的 MV 分 · {artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</span><div className="h2h-work-actions"><A className="h2h-button secondary" href={artistWorkUrl(work,false,returnTo)}>视频与评分<ArrowUpRight size={14}/></A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className="h2h-button" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'舞台':'其他现场'}<ArrowUpRight size={14}/></A>}</div></article>;
 }
@@ -58,7 +49,7 @@ export default function Hearts2HeartsArtist({content}:{content:Hearts2HeartsCont
   loadAbort.current?.abort();
   const controller=new AbortController();loadAbort.current=controller;
   setLoading(true);setError('');
-  try{const d=await readCatalog(controller.signal);if(sequence===loadSequence.current)setData(d);}
+  try{const d=await readArtistCatalog('hearts2hearts', controller.signal);if(sequence===loadSequence.current)setData(d);}
   catch(e){if(sequence===loadSequence.current&&!controller.signal.aborted)setError((e as Error).message);}
   finally{if(sequence===loadSequence.current){setLoading(false);loadAbort.current=null;}}
  },[timelineHostOptions.catalog]);

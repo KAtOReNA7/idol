@@ -8,7 +8,7 @@ import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {MemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPhysicalFacts} from '@/components/member-physical-facts';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {readArtistCatalog} from '@/lib/idol/catalog-read-deadline';
 import {memberDisplayName} from '@/lib/idol/member-display-name';
 import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';
 import {ArrowLeft,ArrowUpRight,ChevronRight,ImageIcon,Play,Search} from 'lucide-react';
@@ -48,7 +48,6 @@ function Wave(){return <svg className="nx-wave" viewBox="0 0 700 80" aria-hidden
 function Heading({title,label,onMore}:{title:string;label:string;onMore?:()=>void}){return <div className="nx-heading"><div><small>{label}</small><h2>{title}</h2></div>{onMore&&<button onClick={onMore}>查看全部<ArrowUpRight size={15}/></button>}</div>;}
 function Thumb({work}:{work:Work}){const id=videoId(work.url);return <div className="nx-thumb"><ReliableImage src={id?(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null} identityKey={`work:${work.id}:thumbnail`} alt={`${work.song||work.name} 视频封面`} referrerPolicy="no-referrer" loading="lazy" fallback={<div className="nx-text-cover"><Wave/><strong>{work.song||work.name}</strong><Play size={22}/></div>}/></div>;}
 function WorkCard({work,returnTo}:{work:Work;returnTo:string}){return <article className="nx-work"><A href={artistWorkUrl(work,false,returnTo)}><Thumb work={work}/><div className="nx-work-copy"><small>{work.videoType||'MV'} · {work.releaseDate}</small><h3>{work.song||work.name}</h3><p>{work.version||work.videoType}</p><span>我的 MV 分 <strong>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</strong></span></div></A><div className="nx-work-actions"><A href={artistWorkUrl(work,false,returnTo)}><Play size={14}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={13}/></A>}</div></article>;}
-async function readCatalog(slug:'xg'|'aespa',signal:AbortSignal){return catalogReadWithDeadline(async requestSignal=>{const response=await fetch('/api/catalog?artist='+slug+'&shape=display-v1',{cache:'no-store',signal:requestSignal});if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('暂时没有连上你的资料库，请重试。');const d=await response.json() as Catalog;if(!d||!Array.isArray(d.groups)||!Array.isArray(d.members)||!Array.isArray(d.works)||!Array.isArray(d.ratings))throw new Error('资料暂时没有加载完整，请重试。');return d;},signal);}
 type ExpandedArtistProps={slug:'xg'|'aespa';content:ExpandedArtistContent};
 export default function ExpandedArtist(props:ExpandedArtistProps){return <ExpandedArtistSession key={props.slug} {...props}/>;}
 function ExpandedArtistSession({slug,content}:ExpandedArtistProps){
@@ -65,7 +64,7 @@ function ExpandedArtistSession({slug,content}:ExpandedArtistProps){
   loadAbort.current?.abort();
   const controller=new AbortController();loadAbort.current=controller;
   setLoading(true);setError('');
-  try{const d=await readCatalog(slug,controller.signal);if(sequence===loadSequence.current)setData(d);}
+  try{const d=await readArtistCatalog(slug,controller.signal);if(sequence===loadSequence.current)setData(d);}
   catch(e){if(sequence===loadSequence.current&&!controller.signal.aborted)setError((e as Error).message);}
   finally{if(sequence===loadSequence.current){setLoading(false);loadAbort.current=null;}}
  },[slug,timelineOptions.catalog]);

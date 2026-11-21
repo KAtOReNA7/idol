@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore} from 'react';
 import type {CatalogView as Catalog,Work} from '@/lib/idol/types';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {readArtistCatalog} from '@/lib/idol/catalog-read-deadline';
 import {artistCollection,artistWorkScoreLabel,artistWorkRows,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkUrl,type ArtistSection} from '@/lib/idol/artist-preview';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
 import {videoId} from '@/lib/idol/values';
@@ -35,7 +35,22 @@ export default function IveArtist({content}:{content:ExpandedArtistContent}){
  const releaseId=params.get('release'),release=issue.releases.find(r=>r.id===releaseId),publicFilm=issue.media.find(f=>f.id===params.get('media')); 
  const returnTo=release?`${path}?section=works&release=${encodeURIComponent(release.id)}`:artistRouteUrl(route,path);
  const rememberScroll=useArtistScroll(true,url),controller=useRef<AbortController|null>(null);
- const load=useCallback(async()=>{if(host.catalog!==undefined)return;controller.current?.abort();const abort=new AbortController();controller.current=abort;setBusy(true);setFetchError('');try{const result=await catalogReadWithDeadline(async signal=>{const response=await fetch('/api/catalog?artist=ive&shape=display-v1',{cache:'no-store',signal});if(!response.ok)throw new Error('资料库暂未连接，请重试。');const result=await response.json() as Catalog;if(!Array.isArray(result.works)||!Array.isArray(result.members)||!Array.isArray(result.groups))throw new Error('资料未加载完整。');return result;},abort.signal);if(!abort.signal.aborted)setFetched(result);}catch(e){if(!abort.signal.aborted)setFetchError((e as Error).message);}finally{if(!abort.signal.aborted)setBusy(false);}},[host.catalog]);
+ const load = useCallback(async () => {
+  if (host.catalog !== undefined) return;
+  controller.current?.abort();
+  const abort = new AbortController();
+  controller.current = abort;
+  setBusy(true);
+  setFetchError('');
+  try {
+   const result = await readArtistCatalog('ive', abort.signal);
+   if (!abort.signal.aborted) setFetched(result);
+  } catch (error) {
+   if (!abort.signal.aborted) setFetchError((error as Error).message);
+  } finally {
+   if (!abort.signal.aborted) setBusy(false);
+  }
+ }, [host.catalog]);
  useEffect(()=>{let active=true;void Promise.resolve().then(()=>{if(active)void load();});return()=>{active=false;controller.current?.abort();};},[load]);
  const collection=useMemo(()=>data?artistCollection(data,content.groupId):null,[data,content.groupId]);
  function navigate(next:string){rememberScroll();window.history.pushState(newArtistHistoryState(window.history.state),'',next);window.dispatchEvent(new Event('artist-location-change'));document.getElementById('artist-content')?.scrollIntoView({block:'start'});}

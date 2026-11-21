@@ -10,7 +10,7 @@ import {MemberPhysicalFacts} from '@/components/member-physical-facts';
 import {ArtistTimelineHost,useArtistTimelineHostOptions} from './artist-timeline-host';
 import {memberChineseName,memberDisplayName} from '@/lib/idol/member-display-name';
 import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {readArtistCatalog} from '@/lib/idol/catalog-read-deadline';
 import {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';
 import type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';
 import {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';
@@ -35,15 +35,6 @@ function subscribe(fn:()=>void){window.addEventListener('popstate',fn);window.ad
 function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}
 function Picture({src,alt,priority=false,identityKey,missingLabel='本 MV 个人造型图暂缺'}:{src?:string|null;alt:string;priority?:boolean;identityKey?:string;missingLabel?:string}){return <ReliableImage src={src} identityKey={identityKey??src??alt} alt={alt} priority={priority} referrerPolicy="no-referrer" missing={<div className="smn-photo-empty"><ImageIcon size={22}/><span>{missingLabel}</span></div>} errorFallback={<div className="smn-photo-empty"><ImageIcon size={22}/><span>图片暂未加载</span></div>}/>;}
 function Heading({label,title,onMore}:{label:string;title:string;onMore?:()=>void}){return <div className="smn-heading"><div><h2>{label}</h2><small>{title}</small></div>{onMore&&<button onClick={onMore}>查看全部<ArrowUpRight size={14}/></button>}</div>;}
-async function readCatalog(signal:AbortSignal){
- return catalogReadWithDeadline(async requestSignal=>{
- const r=await fetch('/api/catalog?artist=saymyname&shape=display-v1',{cache:'no-store',signal:requestSignal});
- if(!r.ok||!r.headers.get('content-type')?.includes('application/json'))throw new Error('暂时没有连上你的资料库，请重试。');
- const d=await r.json() as Catalog;
- if(!d||!Array.isArray(d.groups)||!Array.isArray(d.members)||!Array.isArray(d.works)||!Array.isArray(d.ratings))throw new Error('资料暂时没有加载完整，请重试。');
- return d;
- },signal);
-}
 function WorkCard({work,returnTo}:{work:Work;returnTo:string}){
  const poster=approvedVideoPoster(work.id,videoId(work.url),'mv');
  return <article className="smn-work"><A className={'smn-work-thumb'+(poster?' smn-work-thumb--verified':'')} href={artistWorkUrl(work,false,returnTo)} aria-label={'观看 '+(work.song||work.name)}>{poster?<Picture src={poster.src} alt={(work.song||work.name)+' · '+poster.label}/>:<Play size={24} aria-hidden="true"/>}</A><div className="smn-work-copy"><A href={artistWorkUrl(work,false,returnTo)}><h3>{work.song||work.name}</h3></A><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className="smn-score">我的{work.videoType==='官方MV'?' MV':'作品'}分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span><div className="smn-work-actions"><A className="smn-button" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className="smn-button secondary" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></div></article>;
@@ -61,7 +52,7 @@ export default function SaymynameArtist({content}:{content:SaymynameContent}){
   loadAbort.current?.abort();
   const controller=new AbortController();loadAbort.current=controller;
   setLoading(true);setError('');
-  try{const d=await readCatalog(controller.signal);if(sequence===loadSequence.current)setData(d);}
+  try{const d=await readArtistCatalog('saymyname', controller.signal);if(sequence===loadSequence.current)setData(d);}
   catch(e){if(sequence===loadSequence.current&&!controller.signal.aborted)setError((e as Error).message);}
   finally{if(sequence===loadSequence.current){setLoading(false);loadAbort.current=null;}}
  },[timelineHostOptions.catalog]);

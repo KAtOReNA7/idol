@@ -52,6 +52,7 @@ try {
    assert.ok(toggle.width>=44 && toggle.height>=44);
    touchTargets={count:chips.length+1,minimumHeight:Math.min(toggle.height,...chips.map(chip=>chip.height)),overlap:false};
    await more.click();
+   if (output) await page.screenshot({path:path.join(output,`filters-expanded-${width}.png`)});
   }
   await page.locator('select[data-library-focus=sort]').selectOption('release-desc');
   if (width <= 390) {
@@ -65,6 +66,21 @@ try {
   assert.equal(await page.getByRole('button',{name:/^有舞台/}).getAttribute('aria-pressed'),'true');
   await conditions.getByRole('button',{name:'重置全部条件'}).click();
   assert.equal(await page.getByRole('button',{name:/^全部（/}).getAttribute('aria-pressed'),'true');
+  const search = page.getByRole('textbox', {name: '公开名称搜索'});
+  await search.fill('CRUSH');
+  await page.waitForFunction(() => [...document.querySelectorAll('.work-card h3')].some(
+    title => title.textContent.toUpperCase().includes('CRUSH')));
+  await search.fill('no-matching-work-20261121');
+  await page.waitForFunction(() => document.querySelectorAll('.work-card').length === 0);
+  await search.fill('');
+  await page.waitForFunction(id => document.querySelector('.work-card')?.getAttribute('data-browse-anchor') === id, id);
+  await page.getByRole('button', {name: '下一页'}).click();
+  await page.waitForFunction(id => {
+   const first = document.querySelector('.work-card')?.getAttribute('data-browse-anchor');
+   return first && first !== id;
+  }, id);
+  await page.getByRole('button', {name: '上一页'}).click();
+  await page.waitForFunction(id => document.querySelector('.work-card')?.getAttribute('data-browse-anchor') === id, id);
   let keyboard = null;
   if (width <= 390) {
    const trigger = page.getByRole('button',{name:'打开导航'});
@@ -86,7 +102,7 @@ try {
    keyboard={containedSteps:34,escapeClosed:true,triggerRestored:true};
   }
   assert.deepEqual(errors,[]);
-  results.push({width,...layout,detailFocusRestored:true,filterAndReset:true,touchTargets,keyboard,errors});
+  results.push({width,...layout,detailFocusRestored:true,filterAndReset:true,searchAndPagination:true,touchTargets,keyboard,errors});
   await page.close();
  }
  if (output) fs.writeFileSync(path.join(output,'library-check.json'),JSON.stringify(results,null,2));

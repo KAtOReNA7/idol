@@ -10,8 +10,9 @@ function assertPublicNavigationContent(row,content){
  const value=JSON.parse(content);
  if(JSON.stringify(Object.keys(value).sort())!==JSON.stringify(Object.keys(row.shape).sort()))throw new Error('Unexpected public navigation fields: '+row.path);
  if(row.schema==='public-artist-navigation-v1'){assertPublicArtistNavigation(value,row.path);return;}
+ const routeKey = item => typeof item==='string' && /^[A-Za-z0-9][A-Za-z0-9_:-]{0,199}$/.test(item);
  for(const [key,field] of Object.entries(row.shape)){
-  if(!Array.isArray(value[key])||!value[key].every(item=>field==='string'?typeof item==='string':item&&Object.keys(item).length===1&&typeof item[field]==='string'))throw new Error('Non-key public navigation payload: '+row.path);
+  if(!Array.isArray(value[key])||!value[key].every(item=>field==='string'?routeKey(item):item&&Object.keys(item).length===1&&routeKey(item[field])))throw new Error('Non-key public navigation payload: '+row.path);
  }
 }
 function assertPublicArtistNavigation(value,file){

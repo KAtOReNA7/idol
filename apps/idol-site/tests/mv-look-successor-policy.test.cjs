@@ -1,6 +1,7 @@
 // Synthetic-only projection tests. No real candidate admission, storage or writes.
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ts=require('typescript');
 
+const {fixtureForImport} = require('./fixtures/editorial-shapes.cjs');
 function loader({approvals,reviews}={}){
  const cache=new Map();
  function load(file){
@@ -10,6 +11,8 @@ function loader({approvals,reviews}={}){
   vm.runInNewContext('(function(require,exports){'+js+'})',{URL,URLSearchParams})(name=>{
    const stubs={'./feishu':{configured:()=>false},'./live':{},'./placeholders':{groupPlaceholderFor:()=>null,wasAuditedGroupPlaceholder:()=>false},'./supplements':{stageSupplementForWork:()=>null},'./stage':{stageForWork:()=>null,stageResearchForWork:()=>({status:'pending'})}};
    if(name in stubs)return stubs[name];
+   const fixture = fixtureForImport(name, file);
+   if (fixture) return {__esModule:true, default:fixture.data};
    const result=load(path.resolve(path.dirname(file),name)+'.ts');
    if(name==='./mv-look-policy'&&approvals)return {...result,approvedMvLookPhoto:(raw,target)=>result.approvedMvLookPhoto(raw,target,approvals)};
    if(name==='./mv-look-successor-policy'&&reviews)return {...result,selectReviewedMvLookPhoto:(qualified,target)=>result.selectReviewedMvLookPhoto(qualified,target,reviews)};

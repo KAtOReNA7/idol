@@ -6,6 +6,11 @@
 - `npm test` 运行全量 Node 归档与现行回归，并单独执行偏好统计套件。输出保留每次失败和跳过。
 - 构建后运行 `npm run preview:synthetic`，在本机独立临时 D1 中生成 51 团与 614 作品的预览。按 Ctrl+C 停止。
 
+安装 Playwright 和 Chromium 后，可以在另一个终端运行下列浏览器验收。使用工作区外已有的安装时，`PLAYWRIGHT_MODULE` 指向 Playwright 模块，`CHROMIUM_PATH` 指向浏览器可执行文件。
+
+- `node scripts/check-library-browser.mjs http://127.0.0.1:8787` 验证三档宽度的筛选、搜索、翻页、键盘导航和详情返回。追加输出目录可保存截图和测量结果。
+- `node scripts/check-artist-previews.mjs http://127.0.0.1:8787` 验证 51 团在手机和桌面上的入口，包括两个 Shadow DOM 页面和 UDTT 的公开作品回退。追加 JSON 路径可保存逐页结果。
+
 详细范围见[开发路线图](../../docs/codex/PROJECT-AUDIT-AND-ROADMAP-20261121.md)。
 
 ## Prerequisites

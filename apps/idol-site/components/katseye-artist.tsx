@@ -15,7 +15,7 @@ import './katseye-review-enhancements.css';
 import {katseyeEditorialReleases,katseyeEditorialMembers,katseyeVideoArt} from '@/lib/idol/katseye-editorial';
 import {memberChineseName,memberDisplayName} from '@/lib/idol/member-display-name';
 import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';
-import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
+import {readArtistCatalog} from '@/lib/idol/catalog-read-deadline';
 import {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';
 import type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';
 import {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,type ArtistSection} from '@/lib/idol/artist-preview';
@@ -40,15 +40,6 @@ function subscribe(fn:()=>void){window.addEventListener('popstate',fn);window.ad
 function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}
 function Picture({src,alt,priority=false,identityKey}:{src?:string|null;alt:string;priority?:boolean;identityKey?:string}){return <ReliableImage src={src} identityKey={identityKey??src??alt} alt={alt} priority={priority} referrerPolicy="no-referrer" missing={<div className="ke-photo-empty"><ImageIcon size={22}/><span>{alt.includes('MV造型')?'本 MV 个人造型图暂缺':'图片暂未收录'}</span></div>} errorFallback={<div className="ke-photo-empty"><ImageIcon size={22}/><span>图片暂未加载</span></div>}/>;}
 function Heading({label,title,onMore}:{label:string;title:string;onMore?:()=>void}){return <div className="ke-heading"><div><small>{label}</small><h2>{title}</h2></div>{onMore&&<button onClick={onMore}>查看全部<ArrowUpRight size={14}/></button>}</div>;}
-async function readCatalog(signal:AbortSignal){
- return catalogReadWithDeadline(async requestSignal=>{
- const r=await fetch('/api/catalog?artist=katseye&shape=display-v1',{cache:'no-store',signal:requestSignal});
- if(!r.ok||!r.headers.get('content-type')?.includes('application/json'))throw new Error('暂时没有连上你的资料库，请重试。');
- const d=await r.json() as Catalog;
- if(!d||!Array.isArray(d.groups)||!Array.isArray(d.members)||!Array.isArray(d.works)||!Array.isArray(d.ratings))throw new Error('资料暂时没有加载完整，请重试。');
- return d;
- },signal);
-}
 function WorkCard({work,returnTo,stage=false}:{work:Work;returnTo:string;stage?:boolean}){
  const id=stage?work.stage?.videoId:videoId(work.url), art=katseyeVideoArt[work.id]?.[stage?'stage':'mv'];
  const src=id?(art?.id===id?art.image:(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`)):null;
@@ -66,7 +57,7 @@ export default function KatseyeArtist({content}:{content:KatseyeContent}){
   loadAbort.current?.abort();
   const controller=new AbortController();loadAbort.current=controller;
   setLoading(true);setError('');
-  try{const d=await readCatalog(controller.signal);if(sequence===loadSequence.current)setData(d);}
+  try{const d=await readArtistCatalog('katseye', controller.signal);if(sequence===loadSequence.current)setData(d);}
   catch(e){if(sequence===loadSequence.current&&!controller.signal.aborted)setError((e as Error).message);}
   finally{if(sequence===loadSequence.current){setLoading(false);loadAbort.current=null;}}
  },[timelineHostOptions.catalog]);

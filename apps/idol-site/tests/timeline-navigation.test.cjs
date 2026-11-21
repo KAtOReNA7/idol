@@ -15,8 +15,11 @@ const {sourceRoot, explicitTestAliases, assertExplicitTestInputs, publicNavigati
 const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'timeline-navigation-'));
 const defaults = {type: 'all', importance: 'major', order: 'recent'};
 // Explicit rollout, also covered by newjeans-independent.test.cjs legacy returns.
-const historyPaths = new Set(['/artists/loona', '/artists/everglow', '/artists/kep1er', '/artists/newjeans']);
-const noFormatPaths = new Set(['/artists/babymonster', '/artists/illit', '/artists/xg', '/artists/aespa']);
+const historyPaths = new Set([
+  'loona', 'everglow', 'kep1er', 'newjeans', 'nmixx', 'lesserafim', 'weeekly',
+  'cherrybullet', 'rocketpunch', 'fromis9', 'idle',
+].map(slug => '/artists/' + slug));
+const noFormatPaths = new Set(['/artists/babymonster', '/artists/xg', '/artists/aespa']);
 let api, proof;
 const local = value => new URL(value, 'https://test.invalid');
 const params = value => local(value).searchParams;
@@ -39,12 +42,13 @@ test('actual artist routing modules are bundled with only the finite unused jour
   for (const file of ['lib/idol/artist-preview.ts', 'lib/idol/artist-navigation.ts', 'lib/idol/timeline/route.ts']) assert.ok(proof.inputs.includes(file), file);
   assert.equal(proof.aliases.length, 1);
   assert.equal(proof.aliases[0].original, './journey');
-  assert.ok(proof.aliases[0].replacement.endsWith('/tests/fixtures/timeline-host/journey-route-adapter.ts'));
+  assert.equal(proof.aliases[0].replacement, path.join(sourceRoot, 'tests/fixtures/timeline-host/journey-route-adapter.ts'));
   assert.ok(!proof.inputs.some(file => /app\/api\/|data\/snapshot|use-browse-journey/.test(file)));
 });
 
-test('only seven reviewed public navigation inputs pass the strict provenance boundary', () => {
-  assert.deepEqual(publicNavigationInputs.map(row => row.path).sort(), [...['badvillain','billlie','hearts2hearts','idle','ive','triples'].map(slug => `data/${slug}-navigation-keys.json`), 'data/public-artist-navigation-keys.json'].sort());
+test('only explicitly reviewed public navigation inputs pass the strict provenance boundary', () => {
+  assert.deepEqual(publicNavigationInputs.map(row => row.path).sort(), [...['badvillain','billlie','hearts2hearts','idle','ive','triples',
+    'seven-redesign','katseye','izone','weeekly','cherrybullet','rocketpunch','everglow','fromis9'].map(slug => `data/${slug}-navigation-keys.json`), 'data/public-artist-navigation-keys.json'].sort());
   const meta = (file, importer) => ({inputs: {[file]: {}, ...importer ? {[importer]: {imports: [{path: file}]}} : {}}});
   for (const row of publicNavigationInputs) {
     assert.ok(proof.inputs.includes(row.path), row.path);
@@ -144,7 +148,7 @@ test('existing format and historical roster authorization stays path-specific', 
     const formatReturn = base + '?section=updates&format=stage&timelineType=release';
     assert.equal(api.safeArtistReturn(formatReturn) !== null, !noFormatPaths.has(base), base);
     const historyReturn = base + '?section=updates&roster=history&timelineType=members';
-    assert.equal(api.safeArtistReturn(historyReturn) !== null, historyPaths.has(base), base);
+    assert.equal(api.safeArtistReturn(historyReturn) !== null, historyPaths.has(base) || base === '/artists/vvup', base);
     if (!historyPaths.has(base)) assert.equal(api.artistRoute(historyReturn).roster, undefined);
   }
 });

@@ -29,3 +29,12 @@
 .mv-inline-score .editor-actions button{white-space:normal}
 .mv-inline-summary{margin:.4rem 0;font-size:.85rem}
 .personal-roster-card .photo{max-width:100%}
+
+/* Themed cast galleries can keep their columns; a score opens below its own portrait. */
+.detail .cast-grid > .cast-card:has(.mv-inline-score, .editor-open, .editor) {
+ display: block;
+}
+.detail .cast-grid > .cast-card > .cast-copy:has(.mv-inline-score, .editor-open, .editor) {
+ display: block;
+ min-width: 0;
+}

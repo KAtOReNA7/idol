@@ -67,8 +67,26 @@ export default function SpiaArtist({content}:{content:CandidateContent}){
  const title=(cn:string,en:string)=><header className="sp-title"><h1>{cn}</h1><p>{en}</p></header>;
  function search(kind:'members'|'works'){return <form className="sp-search" onSubmit={e=>{e.preventDefault();const q=String(new FormData(e.currentTarget).get('q')??'').trim().slice(0,200);remember();history.pushState(newArtistHistoryState(history.state),'',href({q:q||null}));window.dispatchEvent(new Event('artist-location-change'));}}><label htmlFor="sp-search">搜索{kind==='members'?'成员':'作品'}</label><div><input id="sp-search" key={route.search} name="q" defaultValue={route.search} maxLength={200} placeholder={kind==='members'?'中文名 / 艺名':'作品名称'}/><button type="submit">查找</button>{route.search&&<Link to={href({q:null})}>清除搜索</Link>}</div></form>;}
  function roster(people:Person[]=design.members){return <div className="sp-members">{people.map(m=><article key={m.id} className="sp-member"><Link to={personHref(m.id)} memberId={m.id}><Picture src={content.portraits[m.id].image} alt={`${m.cnName} ${m.stageName} · Deeeep 时期具名转载照片`} className="sp-portrait"/><h3>{m.cnName}</h3><p>{m.stageName.toUpperCase()}</p></Link></article>)}</div>;}
- function releases(rows:Release[]=design.releases){return <div className="sp-releases">{rows.map(r=><article className="sp-release" key={r.key}><Link className="sp-release-cover" to={releaseHref(r)}><Picture src={r.cover} alt={`${r.title} 正式发行封面`} className="sp-cover"/></Link><div><p className="sp-meta">{r.kind} · <time dateTime={r.date}>{r.date.replaceAll('-','.')}</time></p><Link to={releaseHref(r)}><h3>{r.title}</h3></Link><p>{r.description}</p><Link className="sp-text-link" to={releaseHref(r)}>查看发行与曲目 <Arrow/></Link></div></article>)}</div>;}
- function videos(rows:Video[]){return <div className="sp-videos">{rows.map(v=><article key={v.key} className="sp-video" data-video-key={v.key}><Link className="sp-video-image" to={videoHref(v)}><Picture src={publicVideoPreview(v.url,v.preview)} alt={`${v.title} · ${v.label} · 视频预览`}/><span><Arrow/></span></Link><Link to={videoHref(v)}><h3>{v.title}</h3><p>{v.label}</p></Link></article>)}</div>;}
+ function releases(rows:Release[]=design.releases){
+   return <div className="sp-releases">{rows.map(r=>
+     <article className="sp-release" key={r.key}>
+       <Link to={releaseHref(r)} className="sp-release-card">
+         <Picture src={r.cover} alt="" className="sp-cover"/>
+         <div><h3>{r.title}</h3><p className="sp-meta">{r.kind} · <time dateTime={r.date}>{r.date.replaceAll('-','.')}</time></p></div>
+       </Link>
+     </article>
+   )}</div>;
+ }
+ function videos(rows:Video[]){
+   return <div className="sp-videos">{rows.map(v=>
+     <article key={v.key} className="sp-video" data-video-key={v.key}>
+       <Link className="sp-video-card" to={videoHref(v)}>
+         <span className="sp-video-image"><Picture src={publicVideoPreview(v.url,v.preview)} alt=""/></span>
+         <h3>{v.title}</h3><p>{v.label}</p>
+       </Link>
+     </article>
+   )}</div>;
+ }
  function timeline(){return <ol data-artist-timeline="" className="sp-timeline">{design.events.map(e=>{const r=design.releases.find(r=>r.key===e.releaseKey),v=design.works.find(v=>v.key===e.mediaKey);return <li key={e.id} id={e.id}><div className="sp-event-date"><time dateTime={e.date}>{e.date.replaceAll('-','.')}</time><span>{e.dateLabel}</span></div><div className="sp-event-copy"><h3>{e.title}</h3><p>{publicCustomArtistText(e.summary)}</p><div className="sp-event-links">{v&&<Link to={videoHref(v)}>查看影像 <Arrow/></Link>}{r&&<Link to={releaseHref(r)}>查看发行 <Arrow/></Link>}<a href={e.sourceUrl} target="_blank" rel="noopener noreferrer">来源 ↗</a></div></div></li>;})}</ol>;}
  function retryRecords(){return state.error?<button className="sp-button" onClick={()=>host.onRetry?host.onRetry():setRetry(n=>n+1)}>重试记录</button>:null;}
  function filmAction(v:Video){
@@ -78,7 +96,7 @@ export default function SpiaArtist({content}:{content:CandidateContent}){
  function recordStatus(action:ReturnType<typeof filmAction>){
   return <div className="sp-record-handoff"><p className="sp-note">{action.status}</p>{retryRecords()}</div>;
  }
- function person(m:Person){const nativeMember=collection?.members.find(row=>row.id===m.id),next=design.members[(design.members.indexOf(m)+1)%design.members.length];return <><Link className="sp-back" to={href({member:null})}><Arrow back/> 返回成员</Link><section className="sp-person-detail" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><div><button className="sp-photo-button" aria-label={`放大${m.cnName}资料照`} onClick={()=>showPhoto(content.portraits[m.id].image,m.cnName+' · Deeeep 时期资料照')}><Picture src={content.portraits[m.id].image} alt={`${m.cnName} ${m.stageName} · Deeeep 时期具名转载照片`} className="sp-portrait" priority/></button><button className="sp-text-link" onClick={()=>showPhoto(content.portraits[m.id].image,m.cnName+' · 原图')}>查看原图 <Arrow/></button></div><div className="sp-person-copy" data-member-module="basic"><p className="sp-stage-name">{m.stageName.toUpperCase()}</p><h1>{m.cnName}</h1><p>{m.profile}</p><dl className="sp-person-facts"><div><dt>档案姓名</dt><dd>{m.nativeName}</dd></div><div><dt>档案范围</dt><dd>2024 年出道阵容</dd></div></dl><div className="sp-actions">{nativeMember&&<a className="sp-button" href={artistMemberUrl(m.id,safeArtistReturn(url)??path)} onClick={()=>remember()}>个人档案与记录 <Arrow/></a>}{!nativeMember&&<span className="sp-note">{state.loading?'正在读取个人档案…':'个人档案暂时无法读取。'}{retryRecords()}</span>}</div><p className="sp-note">中文名为本页转写。照片来自 Kprofiles 的具名转载，可查看来源原图。</p></div></section><section className="sp-section" data-member-module="public">{heading('相关公开影像','WATCH')}{videos(design.works.filter(v=>(v.memberIds as string[]).includes(m.id)))}</section>
+ function person(m:Person){const nativeMember=collection?.members.find(row=>row.id===m.id),next=design.members[(design.members.indexOf(m)+1)%design.members.length];return <><Link className="sp-back" to={href({member:null})}><Arrow back/> 返回成员</Link><section className="sp-person-detail" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><div><button className="sp-photo-button" aria-label={`放大${m.cnName}资料照`} onClick={()=>showPhoto(content.portraits[m.id].image,m.cnName+' · Deeeep 时期资料照')}><Picture src={content.portraits[m.id].image} alt={`${m.cnName} ${m.stageName} · Deeeep 时期具名转载照片`} className="sp-portrait" priority/></button><button className="sp-text-link" onClick={()=>showPhoto(content.portraits[m.id].image,m.cnName+' · 原图')}>查看原图 <Arrow/></button></div><div className="sp-person-copy" data-member-module="basic"><p className="sp-stage-name">{m.stageName.toUpperCase()}</p><h1>{m.cnName}</h1><dl className="sp-person-facts"><div><dt>档案姓名</dt><dd>{m.nativeName}</dd></div><div><dt>档案范围</dt><dd>2024 年出道阵容</dd></div></dl><div className="sp-actions">{nativeMember&&<a className="sp-button" href={artistMemberUrl(m.id,safeArtistReturn(url)??path)} onClick={()=>remember()}>个人档案与记录 <Arrow/></a>}{!nativeMember&&<span className="sp-note">{state.loading?'正在读取个人档案…':'个人档案暂时无法读取。'}{retryRecords()}</span>}</div><p className="sp-note">《Deeeep》时期 · Kprofiles 具名转载</p></div></section><section className="sp-section" data-member-module="public">{heading('相关公开影像','WATCH')}{videos(design.works.filter(v=>(v.memberIds as string[]).includes(m.id)))}</section>
 
 {state.data&&<MemberPublicCredits memberId={m.id} data={state.data} renderLink={(work,label)=><a href={artistWorkUrl(work,false,safeArtistReturn(url)??path)}>{label}</a>}/>}
 <ScopedMemberCareerFacts data={state.data} memberId={m.id} groupId="rec28ldfRTiDJU" part="history"/>
@@ -97,7 +115,7 @@ export default function SpiaArtist({content}:{content:CandidateContent}){
       <Picture src={publicVideoPreview(v.url,v.preview)} alt={`${v.title} · ${v.label} · 视频预览`} priority/><span>{action.label} <Arrow/></span>
     </ArtistFilmPrimary>
    <div className="sp-film-links"><ArtistFilmSource action={action} publisher={v.channel}/>
-     {r&&<Link to={releaseHref(r)}>所属发行：{r.title} <Arrow/></Link>}</div><p className="sp-note">{v.description}</p>{v.memberIds.length>0&&<section className="sp-section">{heading('该作品参与成员','MEMBERS')}<div className="sp-name-links">{v.memberIds.map(id=>{const m=design.members.find(m=>m.id===id)!;return <Link key={id} to={personHref(id)}>{m.cnName} / {m.stageName} <Arrow/></Link>;
+     {r&&<Link to={releaseHref(r)}>所属发行：{r.title} <Arrow/></Link>}</div>{v.memberIds.length>0&&<section className="sp-section">{heading('该作品参与成员','MEMBERS')}<div className="sp-name-links">{v.memberIds.map(id=>{const m=design.members.find(m=>m.id===id)!;return <Link key={id} to={personHref(id)}>{m.cnName} / {m.stageName} <Arrow/></Link>;
  })}</div></section>}</section></>;
  }
  function library() {
@@ -121,7 +139,9 @@ export default function SpiaArtist({content}:{content:CandidateContent}){
        {heading(route.format === 'stage' ? '舞台' : route.format === 'mv' ? 'MV' : '影像与舞台', 'WATCH')}
        {matchedVideos.length ? videos(matchedVideos) : <p className="sp-empty">没有符合条件的影像。</p>}
      </section>}
-     {showReleases && (matchedReleases.length ? releases(matchedReleases) : <p className="sp-empty">没有符合条件的发行。</p>)}
+     {showReleases && <section className="sp-section">{heading('发行','DISCOGRAPHY')}
+       {matchedReleases.length ? releases(matchedReleases) : <p className="sp-empty">没有符合条件的发行。</p>}
+     </section>}
    </>;
  }
  function missing(message:string,section:string){return <section className="sp-empty"><h1>{message}</h1><Link className="sp-button" to={sectionHref(section)}>返回目录</Link></section>;}
@@ -160,5 +180,5 @@ export default function SpiaArtist({content}:{content:CandidateContent}){
 <section className="sp-section">{heading('专辑','DISCOGRAPHY')}{releases()}</section>
 <section className="sp-section">{heading('时间轴','TIMELINE')}{timeline()}</section>
 </>;
- return <Navigation.Provider value={go}><ImageRecoveryProvider><div data-idol-spia-native><a className="sp-skip" href="#artist-content">跳到正文</a><header className="sp-masthead"><div className="sp-header-inner"><Link className="sp-wordmark" to={path}><img src="/artist/spia/identity/official-mark.png" alt="" width={28} height={31} style={{display:'inline-block',verticalAlign:'middle'}}/> SPIA<small>수피아</small></Link><nav aria-label="团体内容">{nav.map(([key,label,en])=><Link key={key} to={sectionHref(key)} className={(route.section==='records'?'works':route.section)===key?'is-current':''}><span>{label}</span><small>{en}</small></Link>)}</nav></div></header><main id="artist-content" tabIndex={-1}>{body}</main><footer className="sp-footer"><Link className="sp-wordmark" to={path}><img src="/artist/spia/identity/official-mark.png" alt="" width={28} height={31} style={{display:'inline-block',verticalAlign:'middle'}}/> SPIA<small>수피아</small></Link><div><a href="https://www.youtube.com/@spia_official" target="_blank" rel="noopener noreferrer">SPIA · 官方频道 ↗</a><a href="/?view=groups">团体索引 <Arrow/></a></div></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}<ImageRecoveryControls/></div></ImageRecoveryProvider></Navigation.Provider>;
+ return <Navigation.Provider value={go}><ImageRecoveryProvider><div data-idol-spia-native><a className="sp-skip" href="#artist-content">跳到正文</a><header className="sp-masthead"><div className="sp-header-inner"><Link className="sp-wordmark" to={path}><img src="/artist/spia/identity/official-mark.png" alt="" width={28} height={31} style={{display:'inline-block',verticalAlign:'middle'}}/> SPIA<small>수피아</small></Link><nav aria-label="团体内容">{nav.map(([key,label,en])=><Link key={key} to={sectionHref(key)} className={(route.section==='records'?'works':route.section)===key?'is-current':''}><span>{label}</span><small>{en}</small></Link>)}</nav></div></header><main id="artist-content" className={route.section === 'overview' ? undefined : 'sp-inner'} tabIndex={-1}>{body}</main><footer className="sp-footer"><Link className="sp-wordmark" to={path}><img src="/artist/spia/identity/official-mark.png" alt="" width={28} height={31} style={{display:'inline-block',verticalAlign:'middle'}}/> SPIA<small>수피아</small></Link><div><a href="https://www.youtube.com/@spia_official" target="_blank" rel="noopener noreferrer">SPIA · 官方频道 ↗</a><a href="/?view=groups">团体索引 <Arrow/></a></div></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}<ImageRecoveryControls/></div></ImageRecoveryProvider></Navigation.Provider>;
 }

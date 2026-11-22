@@ -2,11 +2,15 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v226。《BILLIONAIRE》等待起播时已有中文提示，首发版仍无解码画面。《Magnetic》《ATTITUDE》正式站 4K。NewJeans 首页和成员目录已补官网照片出处。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [本批回执](worklogs/20261122-v226-release.md) |
+| 正式站 | v227。十团发行筛选及作品入口已修正，EVERGLOW《SLAY》换用六人同次发行照，W!TCHX 已补成员图出处并修正页脚团标。《Magnetic》《ATTITUDE》静音实播 4K，《BILLIONAIRE》首发版尚无解码画面。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [v227 回执](worklogs/20261122-v227-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v226 正式应用提交 `04a0fe57`。[发布回执](evidence/20261122-v226/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，v227 正式应用提交 `e3de21d3`。[发布回执](evidence/20261122-v227/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v227 在手机与桌面逐一检查十团发行目录。两档宽度各保留 49 张唱片，混入的影像从 78 条降至 0 条，打开唱片后返回原发行筛选从 0/10 升至 10/10。八团样本的 MV 封面主操作均改为站内作品，桌面首轮 6/8 看见播放按钮并返回，Geenius《Voyage》和 TRACER《365》重走均通过。三支正式静音短播中有两支解码 3840 × 2160。《BILLIONAIRE》仍在等待，七人的照片下评分两宽共 14/14 可展开。四场指定 B 站舞台站内高清仍为 0/4。[正式操作、短播与同条件前后对照](worklogs/20261122-v227-release.md)
+
+ADYA 与 W!TCHX 的首页、名册、作品库已核对 18 幅 Figma 画板。EVERGLOW《SLAY》六人同期照片、旧作品图、回焦和评分均已在正式站双宽逐卡实点，首显图片字节减少 17.13%。跟踪的 194 个跨期位置中，现有 54 个已核原件，140 个待核。正式 v226 另验两团时间轴的 10 个详情目标，浏览器后退 10/10 恢复原位置但原控件均未回焦，页内返回 10/10 去到作品目录。已列入后续修复。[两团 Figma 与来源](worklogs/20261122-adya-witchx-figma.md) · [《SLAY》逐卡验收](evidence/20261122-v227/formal-slay.json) · [时间轴返回基线](evidence/20261122-v227/v226-timeline-adya-witchx.json)
 
 v226 实测《BILLIONAIRE》出现等待提示，七人照片下的评分入口两宽均通过。NewJeans 首页可见的照片出处从 0 处增至 2 处，三个宽度均保留 MV 在发行之前。四团同卡访问和返回两版均为 4/4，每团耗时有升有降。MADEIN 的详情回归从 1/5 到 5/5，Windows、WSL 全量测试分别仍有 131、127 项失败。[实测与前后读数](worklogs/20261122-v226-release.md)
 

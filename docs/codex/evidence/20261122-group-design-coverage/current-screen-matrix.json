@@ -26,7 +26,7 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 407,
+    "twoWidthBoardMatches": 408,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
@@ -34,7 +34,7 @@
       "works": 44,
       "release": 39,
       "mv": 51,
-      "stage": 44,
+      "stage": 45,
       "timeline": 42,
       "score": 43
     },
@@ -78,7 +78,6 @@
       ],
       "mv": [],
       "stage": [
-        "izna",
         "ifeye",
         "oddyouth",
         "vcha",
@@ -108,7 +107,7 @@
         "lesserafim"
       ]
     },
-    "groupsWithMissingOrPartial": 20
+    "groupsWithMissingOrPartial": 19
   },
   "sources": {
     "inventory": "docs/codex/evidence/20261122-group-design-coverage/group-screen-matrix.json",
@@ -163,7 +162,8 @@
     "bewave-previous-stage": "docs/codex/evidence/20261122-vvup-doo-doom-chit/bewave-historical-state.json",
     "bewave-sing": "docs/codex/worklogs/20261122-bewave-sing.md",
     "youngposse-macaroni": "docs/codex/evidence/20261122-youngposse-macaroni/design-and-sources.json",
-    "adya-rizz": "docs/codex/worklogs/20261122-adya-rizz.md"
+    "adya-rizz": "docs/codex/worklogs/20261122-adya-rizz.md",
+    "izna-kbs": "docs/codex/worklogs/20261122-izna-kbs-stage.md"
   },
   "groups": [
     {
@@ -264,8 +264,8 @@
           "812:20028"
         ],
         "stage": [
-          null,
-          null
+          "1564:1442",
+          "1564:1496"
         ],
         "timeline": [
           "812:20082",
@@ -280,13 +280,19 @@
         "home": "izna",
         "members": "izna",
         "profile": "izna",
-        "works": "izna"
+        "works": "izna",
+        "stage": "izna-kbs"
       },
       "implementation": [
         {
           "at": "本地",
           "scope": "首页、名录、MAI 与作品库",
           "evidence": "izna"
+        },
+        {
+          "at": "开发版 fdb04e51",
+          "scope": "《IZNA》2024-11-29 KBS Music Bank。375、1425 px 本机核实目录直接打开舞台、旧书签、整体评分与筛选返回。",
+          "evidence": "izna-kbs"
         },
         {
           "at": "v239",
@@ -301,7 +307,7 @@
       ],
       "additional": [],
       "earlierHomeReference": "https://wake-one.com/en/artists/izna/",
-      "qualification": "旧评分稿为 DEMO；局部本人筛选与展示沿用新名录。"
+      "qualification": "旧评分稿为 DEMO。人员筛选与展示沿用新名录。舞台两宽使用该场 KBS 原图，按钮位于左下。"
     },
     {
       "slug": "triples",

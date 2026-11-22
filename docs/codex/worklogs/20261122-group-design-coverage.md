@@ -4,7 +4,7 @@
 
 正式路由目录、具名 Figma 页面和逐团记录的名单一致，共 51 团，重复和遗漏均为 0。逐团索引按九类页面列出桌面、手机节点，给出素材来源文件、适用的专项实现和正式实测版本。原文件 53 页、3,676 个条目的清点保存在下方。初次清点定位 750 个位置、746 个不同节点，补录后的原索引有 751 个位置、747 个不同节点。[现行逐团索引](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [原索引](../evidence/20261122-group-design-coverage/group-screen-matrix.json)
 
-459 个「团体 × 页面类别」组合中，407 个已定位双宽候选画稿。VVUP 和 BEWAVE 校正后为 403 个，BEWAVE《SING !》补齐两项。YOUNG POSSE 与 ADYA 各补齐一项本人评分。另有 52 个至少一宽待定位，涉及 20 团。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
+459 个「团体 × 页面类别」组合中，408 个已定位双宽候选画稿，另有 51 个至少一宽待定位，涉及 19 团。BEWAVE《SING !》补齐两项，YOUNG POSSE 和 ADYA 各补齐一项本人评分，izna 补齐 KBS 节目舞台。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
 
 | 类别 | 双宽候选 | 至少一宽仍待定位的团 |
 | --- | ---: | --- |
@@ -14,7 +14,7 @@
 | 作品目录 | 44/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii |
 | 发行详情 | 39/51 | MEOVV、HITGS、LOONA、BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
 | MV 详情 | 51/51 | 无 |
-| 舞台详情 | 44/51 | izna、ifeye、ODD YOUTH、VCHA、HITGS、AtHeart、PURPLE KISS |
+| 舞台详情 | 45/51 | ifeye、ODD YOUTH、VCHA、HITGS、AtHeart、PURPLE KISS |
 | 时间轴 | 42/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
 | 评分或手帐状态 | 43/51 | GENBLUE、UDTT、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
 
@@ -35,7 +35,7 @@ SAY MY NAME《WaveWay》、KISS OF LIFE《STICKY》、aespa《Armageddon》、IL
 
 VVUP《Doo Doom Chit》、M COUNTDOWN EP.833 和 HYUNNY 已展开本人评分的六幅都已读回，四位首发人员的照片下评分在本机两宽通过。BEWAVE 的旧 video 稿写明 2024-10-18 另一首歌的 Dance Performance 与舞台评分，三宽均无图片，现归为旧舞台示意。四月《SING !》现有首发表演版、4 月 22 日官方 Live Clip 及杰娜本人评分两宽新稿，另有 320 px 的单列成员区。实际页面测了 375、1425 和 305 px。[VVUP 画稿及本机回执](20261122-vvup-doo-doom-chit.md) · [BEWAVE 新画稿及本机回执](20261122-bewave-sing.md) · [BEWAVE 旧画稿](../evidence/20261122-vvup-doo-doom-chit/bewave-historical-state.json)
 
-ifeye《r u ok?》的 STUDIO CHOOM 版本与 izna《IZNA》的 KBS Music Bank 241129 已有确切舞台绑定。四团第一轮按宽度及名称扫描；逐层核实 BEWAVE 后已在上表补正。旧作品示意另按来源和剪辑逐项替换。成员与发行可并行从 BABYMONSTER、XG、aespa、KISS OF LIFE、NMIXX、KiiiKiii 的缺幅接续。[四团旧画板回读](../evidence/20261122-group-design-coverage/three-work-states.json) · [真实入口](../evidence/20261122-group-design-coverage/actual-route-surfaces.json)
+izna《IZNA》的 KBS Music Bank 241129 已有两幅节目原图画稿，站内目录与旧书签在两宽均可打开准确舞台。ifeye《r u ok?》的 STUDIO CHOOM 版本已有确切绑定，舞台双宽稿待补。成员与发行可从 BABYMONSTER、XG、aespa、KISS OF LIFE、NMIXX、KiiiKiii 的缺幅接续。[izna 节目原图与同条件实测](20261122-izna-kbs-stage.md) · [四团旧画板回读](../evidence/20261122-group-design-coverage/three-work-states.json) · [真实入口](../evidence/20261122-group-design-coverage/actual-route-surfaces.json)
 
 ## 首次清点记录
 

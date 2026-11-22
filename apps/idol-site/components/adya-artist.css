@@ -24,3 +24,17 @@
   background: var(--adya-accent, #ff583d); padding: 7px 12px;
 }
 .idol-adya-wordmark img { width: clamp(74px, 9vw, 116px); height: auto; }
+
+.idol-adya-poster-title {margin-bottom:20px;padding-bottom:12px;border-bottom-width:2px}
+.idol-adya-poster-title h1 {font-size:clamp(44px,5.3vw,75px)}
+.idol-adya-poster-body {display:grid;grid-template-columns:minmax(0,3fr) minmax(200px,1fr);align-items:start;gap:30px}
+.idol-adya-poster-index {display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:10px 0 0;border-top:2px solid var(--idol-adya-red)}
+.idol-adya-poster-index>a {min-height:44px;justify-content:center;padding:0;border:0}
+.idol-adya-poster-index>a:first-child {font-weight:700;font-size:clamp(24px,2.5vw,36px)}
+.idol-adya-poster-index p {font-size:clamp(14px,1.2vw,16px)}
+@media(max-width:700px) {
+  .idol-adya-poster-body {grid-template-columns:1fr;gap:14px}
+  .idol-adya-poster-index {display:grid;grid-template-columns:1fr 1fr;gap:4px 14px}
+  .idol-adya-poster-index>a:first-child,.idol-adya-poster-index>p {grid-column:1/-1}
+  .idol-adya-poster-index>a {justify-content:flex-start}
+}

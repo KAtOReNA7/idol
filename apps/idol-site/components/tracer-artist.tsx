@@ -131,7 +131,7 @@ export default function TracerArtist({content}:{content:CandidateContent}){
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','TIMELINE')}{timeline()}<p className="tr-note">当前活动状态不详。</p></>;
  else body=<>
-<h1 className="tr-home-title">TRACER</h1><figure className="tr-group"><OriginalPhotoLink className="tr-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'TRACER · GLEAMMEDIA 官网团照'})}><Picture src={content.hero.image!} alt="TRACER · GLEAMMEDIA 官网团体照片" priority/></OriginalPhotoLink><figcaption>GLEAMMEDIA 官网资料照 · 点击查看原图</figcaption></figure>
+<figure className="tr-group"><OriginalPhotoLink className="tr-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'TRACER · GLEAMMEDIA 官网团照'})}><Picture src={content.hero.image!} alt="TRACER · GLEAMMEDIA 官网团体照片" priority/></OriginalPhotoLink><figcaption><a href={content.hero.sourceUrl??"https://www.gleammedia.co.kr/artist"} target="_blank" rel="noopener noreferrer">GLEAMMEDIA 官网资料照 ↗</a></figcaption></figure><h1 className="tr-home-title">TRACER</h1>
 <ArtistInformation slug="tracer" catalog={state.data}/>
 <section className="tr-home-members" aria-label="成员">{roster()}<p className="tr-roster-note">官网具名照片与 2024 年《365》四人名册。当前活动状态尚未确认。</p></section>
 <section className="tr-section">{heading('影像与舞台','VIDEO')}{videos(design.works)}</section>

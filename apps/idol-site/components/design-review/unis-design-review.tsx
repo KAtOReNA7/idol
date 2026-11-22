@@ -157,7 +157,7 @@ export default function UnisDesignReview({content, basePath = UNIS_PATH}: {conte
 
   function releaseRows(list: readonly UNISEditorialRelease[], homeList = false) {
     return <div className={homeList ? 'uf-home-release-list' : 'uf-release-list'}>{list.map((item, index) => <button type="button" key={item.releaseKey} className="uf-release-row uf-native-host" data-release-key={item.releaseKey} onClick={() => navigate({section: 'works', member: null}, item.releaseKey)}>
-      <UnisNativeSurface slot={`release-row-${index}`}/><ReleaseImage release={item}/><span className="uf-release-copy"><strong>{item.title}</strong><time dateTime={item.eventDate?.value}>{unisReleaseDate(item)}</time></span><span className="uf-release-arrow" aria-hidden="true">↗</span><UnisNativeSurface slot="rule" className="uf-native-rule uf-release-rule"/>
+      {!homeList&&<UnisNativeSurface slot={`release-row-${index}`}/>}<ReleaseImage release={item}/><span className="uf-release-copy"><strong>{item.title}</strong><time dateTime={item.eventDate?.value}>{unisReleaseDate(item)}</time></span><span className="uf-release-arrow" aria-hidden="true">↗</span><UnisNativeSurface slot="rule" className="uf-native-rule uf-release-rule"/>
     </button>)}</div>;
   }
 
@@ -217,17 +217,23 @@ export default function UnisDesignReview({content, basePath = UNIS_PATH}: {conte
   const title=work.song||work.name;
   return <a key={work.id} href={artistWorkUrl(work,false,returnTo)}>
    <div className="uf-film-preview"><Picture src={publicVideoPreview(work.url,'')} alt={title+' · MV 封面'}/></div>
-   <h3>{title}<span aria-hidden="true">↗</span></h3>
+   <h3>{title}</h3>
   </a>;
  })}
 </div></section>
-<section className="uf-home-releases uf-native-host"><UnisNativeSurface slot="home-panel"/>
- <header className="uf-release-header"><div className="uf-release-heading"><h2><UnisNativeText role="homeReleases" label="RELEASES"/></h2><p>发行</p></div>
-  <button type="button" className="uf-button uf-library-button" onClick={goLibrary}>浏览发行与影像 ↗</button>
- </header>
-              {featuredRelease && <div className="uf-featured-release"><ReleaseImage release={featuredRelease}/><div><h3>{featuredRelease.title}</h3><p><span className="uf-desktop-label">{unisReleaseDate(featuredRelease)} · </span>第二张迷你专辑</p><button type="button" className="uf-button uf-yellow uf-native-host" onClick={() => navigate({section: 'works', member: null}, featuredRelease.releaseKey)}><UnisNativeSurface slot="home-release"/><span className="uf-desktop-label">查看发行 ↗</span><span className="uf-mobile-label">查看发行</span></button></div></div>}
-              {releaseRows(releases.filter(item => item.releaseKey !== UNIS_FEATURED_RELEASE && !!item.cover).slice(0, 4), true)}
-            </section>
+<section className="uf-home-releases">
+  <header className="uf-release-header">
+    <h2>RELEASES</h2>
+    <button type="button" className="uf-library-button" onClick={goLibrary}>浏览发行与影像 ↗</button>
+  </header>
+  {featuredRelease && <div className="uf-featured-release">
+    <ReleaseImage release={featuredRelease}/>
+    <div><h3>{featuredRelease.title}</h3><p>第二张迷你专辑</p>
+      <button type="button" className="uf-button" onClick={() => navigate({section:'works',member:null},featuredRelease.releaseKey)}>查看发行 ↗</button>
+    </div>
+  </div>}
+  {releaseRows(releases.filter(item => item.releaseKey !== UNIS_FEATURED_RELEASE && !!item.cover).slice(0,4),true)}
+</section>
 <section className="uf-timeline-teaser uf-native-host"><UnisNativeSurface slot="home-teaser"/><time dateTime="2024-01-17">2024.01.17</time><h2>《Universe Ticket》最终八人成团</h2><button type="button" className="uf-button uf-native-host" onClick={() => navigate({section: 'updates', member: null})}><UnisNativeSurface slot="home-timeline"/>查看时间轴</button></section>
 </>}
           {route.section === 'members' && <section className="uf-members-page"><Title en="MEMBERS">成员</Title>{roster()}<button type="button" className="uf-button uf-primary uf-bottom uf-native-host" onClick={goLibrary}><UnisNativeSurface slot="members-library"/>浏览发行与影像</button></section>}

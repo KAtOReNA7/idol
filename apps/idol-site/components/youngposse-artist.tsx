@@ -66,9 +66,9 @@ export default function YoungposseArtist({content}:{content:CandidateContent}){
   return <article className="video-row" key={v.key} data-video-key={v.key}>
    <Link className="yp-video-link" to={videoHref(v)}>
     {cover&&<span className="yp-video-art"><Picture src={cover} alt={v.title+' · 对应视频封面'}/></span>}
-    <div className="video-copy"><h3>{v.title}</h3><div className="video-metadata">
+    <div className="video-copy"><div className="video-metadata">
      <p className="video-kind">{v.label}</p>{v.date&&<time dateTime={v.date}>{v.date}</time>}
-    </div></div>
+    </div><h3>{v.title}</h3></div>
    </Link>
   </article>;
  }

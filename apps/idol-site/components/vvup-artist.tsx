@@ -37,14 +37,15 @@ function VideoCard({work,returnTo}:{work:Work;returnTo:string}){
  const title=work.song||work.name;
  const poster=approvedVideoPoster(work.id,videoId(work.url),'mv');
  return <article className="vu-video">
-  <a className="vu-watch" href={artistWorkUrl(work,false,returnTo)}>
+  <div className="vu-card-actions"><a className="vu-watch" href={artistWorkUrl(work,false,returnTo)}>
    <div className={poster?'vu-video-preview':'vu-video-preview vu-video-no-cover'}>
     {poster&&<Photo src={poster.src} alt={title+' · '+(work.version||work.videoType||'MV')}/>}
-    <span className="vu-play"><Play aria-hidden="true" size={18}/>观看与评分</span>
    </div><h3>{title}</h3>
+   <span className="vu-play"><Play aria-hidden="true" size={16}/>观看与评分</span>
   </a>
-  <p>{[work.version||work.videoType,work.releaseDate].filter(Boolean).join(' · ')}</p>
-  <div className="vu-video-links">{!!(work.stage||work.stageSupplement?.alternatives.length)&&<a href={artistWorkUrl(work,true,returnTo)}>看舞台 <ArrowUpRight size={16}/></a>}<span>{score(work.score)}</span></div>
+   {!!(work.stage||work.stageSupplement?.alternatives.length)&&<a className="vu-stage-link" href={artistWorkUrl(work,true,returnTo)}>看舞台 <ArrowUpRight size={16}/></a>}
+  </div>
+  <div className="vu-video-links"><p>{[work.version||work.videoType,work.releaseDate].filter(Boolean).join(' · ')}</p><span>{score(work.score)}</span></div>
  </article>;
 }
 

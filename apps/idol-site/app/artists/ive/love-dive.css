@@ -247,9 +247,9 @@
 .sr-ive .ive-official-portrait figcaption a {display:inline-flex;align-items:center;min-height:36px;text-underline-offset:4px;text-decoration:underline}
 @media(max-width:740px){
  .sr-ive .ive-artist-opening {grid-template-columns:1fr;gap:12px;padding:12px 14px 8px}
- .ive-artist-name {display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
- .sr-ive .ive-artist-name>img {width:40px;max-height:58px}
- .sr-ive .ive-artist-name h1 {font-size:41px;margin:0}
+ .ive-artist-name {display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px}
+ .sr-ive .ive-artist-name>img {display:none}
+ .sr-ive .ive-artist-name h1 {font-size:55px;margin:0}
  .ive-artist-name p {font-size:11px}
  .ive-artist-name nav {margin:0;align-items:flex-end;gap:0}
  .sr-ive .ive-artist-name nav a,.sr-ive .ive-artist-name nav button {min-height:36px;font-size:12px}

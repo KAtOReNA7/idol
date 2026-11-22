@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v241。SPIA 与 Candy Shop 按发行及官网资料重做内页，UDTT 换用公司原标。两团目录默认照片在相同手机宽度下分别少传 93.4% 和 91.0%。[正式结果](worklogs/20261122-v241-release.md) |
+| 正式站 | v242。WOOAH、RESCENE、QWER 三支作品的 14 张成员照在相同手机宽度下合计少传 97.5%。桌面和手机均已实开原图和照片下评分。[正式结果](worklogs/20261122-v242-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v241 正式工程 `8c8d5104`。下一批处理 WOOAH《BLUSH》、RESCENE 与 QWER 的作品及舞台设计，并按逐团索引复核其他内页。[v241 发布](evidence/20261122-v241/publication.json) · [51 团 Figma 覆盖](worklogs/20261122-group-design-coverage.md) |
+| 当前开发 | `codex/project-optimization-20261121`。v242 正式工程 `bdc1e7d7`。v243 正在更新 VVUP 与 BEWAVE 的出道期作品、舞台和评分，并精简目录与页尾。[发布回执](evidence/20261122-v242/publication.json) · [51 团 Figma 覆盖](worklogs/20261122-group-design-coverage.md) |
 
 ## 11 月 22 日更新
 

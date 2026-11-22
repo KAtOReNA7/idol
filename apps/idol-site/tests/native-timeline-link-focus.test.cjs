@@ -117,6 +117,60 @@ test('a mouse-opened cover and a keyboard-opened text link return to their own c
   }
 });
 
+const detailBackCode = esbuild.transformSync(fs.readFileSync('components/native-timeline-detail-back.tsx', 'utf8'),
+  {loader:'tsx', format:'cjs', jsx:'automatic', target:'es2022'}).code;
+function detailBack(history, onNavigate, backHref) {
+  const mod = {exports:{}};
+  const load = name => name === 'react' ? {useSyncExternalStore:(_subscribe, read) => read()}
+    : name.endsWith('.css') ? {} : require(name);
+  vm.runInNewContext('(function(module,exports,require){'+detailBackCode+'})', {history})(mod,mod.exports,load);
+  return mod.exports.NativeTimelineDetailBack({subscribe(){}, onNavigate, backHref,
+    libraryHref:'/artists/adya?section=works', className:'idol-adya-back', label:'返回发行目录'});
+}
+
+test('the timeline detail button goes back to the clicked cover or text, with the full library alongside', () => {
+  for (const control of ['cover','text']) {
+    const h = browserHistory();
+    h.history.length = 2;
+    const origin = h.open(h[control], control === 'text' ? 0 : 1);
+    let backs = 0, destination;
+    h.history.back = () => { backs++; h.render(list, origin); h.flush(); };
+    const page = detailBack(h.history, (_event,href) => {destination = href;}, '/artists/adya?section=works&format=release');
+    assert.equal(page.type, 'nav');
+    const [button, library] = page.props.children;
+    assert.equal(button.type, 'button');
+    assert.equal(button.props.type, 'button');
+    assert.equal(button.props.children.at(-1).trim(), '返回时间轴事件');
+    assert.equal(library.type, 'a');
+    assert.equal(library.props.children, '进入作品库');
+    library.props.onClick({});
+    assert.equal(destination, '/artists/adya?section=works');
+    assert.equal(backs, 0);
+    button.props.onClick();
+    assert.equal(backs, 1);
+    assert.equal(h.document.activeElement, h[control]);
+    assert.equal(h.history.state.artistScroll.y, 325);
+  }
+});
+
+test('a direct, separately opened or catalogue detail keeps its filtered catalogue and has no event action', () => {
+  const h = browserHistory();
+  h.open(h.text);
+  const marked = h.history.state;
+  const {newArtistHistoryState} = require('./helpers/public-artist-loader.cjs')('lib/idol/timeline/history-state.ts');
+  const next = newArtistHistoryState(marked, release);
+  const backHref = '/artists/adya?section=works&q=Per&format=release';
+  for (const history of [{length:3,state:next}, {length:1,state:marked}, {length:1,state:null}]) {
+    let destination;
+    const link = detailBack(history, (_event,href) => {destination = href;}, backHref);
+    assert.equal(link.type, 'a');
+    assert.equal(link.props.href, backHref);
+    assert.equal(link.props.children.at(-1), '返回发行目录');
+    link.props.onClick({});
+    assert.equal(destination, backHref);
+  }
+});
+
 test('user input, another focused control and an open dialog retain control of focus', () => {
   for (const cause of ['pointerdown','keydown','touchstart','wheel','focusin','other-control','modal']) {
     const h = browserHistory();

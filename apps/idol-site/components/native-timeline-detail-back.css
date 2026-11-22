@@ -1,0 +1,20 @@
+.native-timeline-detail-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 24px;
+}
+.native-timeline-detail-nav > button {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+nav.native-timeline-detail-nav > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: .875em;
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}

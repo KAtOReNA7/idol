@@ -1,5 +1,6 @@
 'use client';
 import {ArtistLibraryFilters} from './artist-library-filters';
+import {NativeTimelineDetailBack} from './native-timeline-detail-back';
 import {publicCustomArtistText} from '@/lib/idol/custom-artist-copy';
 import {libraryResultLabel} from '@/lib/idol/artist-library-format';
 import {OriginalPhotoLink} from './original-photo-link';
@@ -59,6 +60,10 @@ export default function WitchxArtist({content}:{content:CandidateContent}){
  const releaseHref=(r:Release)=>href({section:'works',release:r.key,member:null,media:null,format:route.format==='release'?'release':null,q:route.section==='works'||route.section==='records'?route.search||null:null});
  const videoHref=(v:Video)=>(route.section==='overview'&&!route.member&&v.type==='MV'?artistMvHref(state.data,content.groupId,v.url,safeArtistReturn(url)??path):null)??href({section:'works',media:v.key,format:v.type.toLowerCase(),release:null,member:null,q:route.section==='works'?route.search||null:null});
  const backToLibrary=href({section:'works',release:null,media:null,member:null});
+ function detailBack(label:string){
+  return <NativeTimelineDetailBack subscribe={subscribe} onNavigate={go} backHref={backToLibrary} libraryHref={sectionHref('works')}
+    label={label} className="wk-back"><Arrow back/></NativeTimelineDetailBack>;
+ }
  function go(e:MouseEvent<HTMLAnchorElement>,target:string){if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;remember(e);if(target.startsWith('/?'))return;e.preventDefault();history.pushState(newArtistHistoryState(history.state,target),'',target);window.dispatchEvent(new Event('artist-location-change'));document.getElementById('artist-content')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
  const showPhoto=(src:string,label:string)=>setLightbox({src:originalPhoto(src),label});
  const heading=(cn:string,en:string)=><header className="wk-heading"><h2>{en}</h2><p>{cn}</p></header>;
@@ -77,10 +82,10 @@ export default function WitchxArtist({content}:{content:CandidateContent}){
 <ScopedMemberCareerFacts data={state.data} memberId={m.id} groupId="rec28ldfRTiDFM" part="sources"/>
 <div className="wk-next"><Link to={personHref(next.id)}>下一位：{next.cnName} <Arrow/></Link></div>
 </>;}
- function releaseDetail(r:Release){return <><Link className="wk-back" to={backToLibrary}><Arrow back/> 返回发行目录</Link><section className="wk-release-detail"><div><button className="wk-photo-button" aria-label={`放大${r.title}发行封面`} onClick={()=>showPhoto(r.cover,r.title+' · 正式封面')}><Picture src={r.cover} alt={`${r.title} 正式发行封面`} className="wk-cover" priority/></button><button className="wk-text-link" onClick={()=>showPhoto(r.cover,r.title+' · 正式封面')}>查看封面原图 <Arrow/></button></div><div className="wk-release-copy"><p className="wk-meta">{r.kind} · <time dateTime={r.date}>{r.date}</time></p><h1>{r.title}</h1><p>{r.description}</p><h2>曲目</h2><ol className="wk-tracks">{r.tracks.map(t=><li key={t}>{t}</li>)}</ol><a className="wk-source" href={r.sourceUrl} target="_blank" rel="noopener noreferrer">发行来源 ↗</a><div className="wk-name-links">{r.memberIds.map(id=>{const m=design.members.find(m=>m.id===id)!;return <Link key={id} to={personHref(id)}>{m.cnName} / {m.stageName}</Link>;})}</div></div></section><section className="wk-section">{heading('影像与舞台','WATCH')}{videos(design.works.filter(v=>v.releaseKey===r.key))}</section></>;}
+ function releaseDetail(r:Release){return <>{detailBack('返回发行目录')}<section className="wk-release-detail"><div><button className="wk-photo-button" aria-label={`放大${r.title}发行封面`} onClick={()=>showPhoto(r.cover,r.title+' · 正式封面')}><Picture src={r.cover} alt={`${r.title} 正式发行封面`} className="wk-cover" priority/></button><button className="wk-text-link" onClick={()=>showPhoto(r.cover,r.title+' · 正式封面')}>查看封面原图 <Arrow/></button></div><div className="wk-release-copy"><p className="wk-meta">{r.kind} · <time dateTime={r.date}>{r.date}</time></p><h1>{r.title}</h1><p>{r.description}</p><h2>曲目</h2><ol className="wk-tracks">{r.tracks.map(t=><li key={t}>{t}</li>)}</ol><a className="wk-source" href={r.sourceUrl} target="_blank" rel="noopener noreferrer">发行来源 ↗</a><div className="wk-name-links">{r.memberIds.map(id=>{const m=design.members.find(m=>m.id===id)!;return <Link key={id} to={personHref(id)}>{m.cnName} / {m.stageName}</Link>;})}</div></div></section><section className="wk-section">{heading('影像与舞台','WATCH')}{videos(design.works.filter(v=>v.releaseKey===r.key))}</section></>;}
  function videoDetail(v:Video){
   const r=design.releases.find(release=>release.key===v.releaseKey);
-  return <><Link className="wk-back" to={backToLibrary}><Arrow back/> 返回影像目录</Link>
+  return <>{detailBack('返回影像目录')}
    <section className="wk-film">
     <div className="wk-film-heading"><div><p className="wk-meta">{v.label}</p><h1>{v.title}</h1>{v.dateLabel&&<p className="wk-note">{v.dateLabel}</p>}</div><p className="wk-record-handoff wk-note">此版本暂无站内播放或评分。</p></div>
     <a className="wk-film-screen" href={v.url} target="_blank" rel="noopener noreferrer"><Picture src={publicVideoPreview(v.url,v.preview)} alt={`${v.title} · ${v.label} · 视频预览`} priority/><span>在 YouTube 观看原片 <Arrow/></span></a>

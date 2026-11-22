@@ -65,10 +65,11 @@ function samePosition(a,b,tolerance=24) {
 
 export async function checkNativeTimelineFocus(tab,{
   site='https://idol-lens-private.wuke40758.chatgpt.site',groups=groupSlugs,mode='first',
-  activations=['click','enter'],start=0,limit=Infinity,deadlineMs=55000,
+  activations=['click','enter'],returnMode='browser',start=0,limit=Infinity,deadlineMs=55000,
 }={}) {
   if(groups.some(slug=>!Object.hasOwn(nativeTimelineGroups,slug)) || !['first','targets','links'].includes(mode)
-    || activations.some(a=>!['click','enter'].includes(a)))throw Error('Unknown native timeline case');
+    || activations.some(a=>!['click','enter'].includes(a)) || !['page','browser'].includes(returnMode)
+    || (returnMode==='page' && groups.some(slug=>!['adya','witchx'].includes(slug))))throw Error('Unknown native timeline case');
   const origin=new URL(site).origin,pw=tab.playwright,end=Date.now()+deadlineMs,runs=[];
   const timeout=(ms=5000)=>({timeoutMs:Math.max(1,Math.min(ms,end-Date.now()))});
   async function bounded(work) {
@@ -134,7 +135,17 @@ export async function checkNativeTimelineFocus(tab,{
             attempt.heading=heading;
             attempt.opened=url===new URL(item.href,origin).href && titles.some(t=>normal(t)===normal(heading));
             if(!attempt.opened)throw Error('wrong-detail');
-            await bounded(()=>tab.back());
+            if(returnMode==='page') {
+              const nav=pw.getByRole('navigation',{name:'详情导航',exact:true});
+              const back=nav.getByRole('button',{name:'返回时间轴事件',exact:true});
+              const library=nav.getByRole('link',{name:'进入作品库',exact:true});
+              await back.waitFor({state:'visible',...timeout()});
+              const libraryHref=await bounded(()=>library.evaluate(a=>a.getAttribute('href')));
+              attempt.libraryHref=libraryHref;
+              if(libraryHref!=='/artists/'+slug+'?section=works')throw Error('wrong-library');
+              if(activation==='enter')await back.press('Enter',timeout());
+              else await back.click(timeout());
+            } else await bounded(()=>tab.back());
             await readyList(false);
             attempt.returned=true;
             const settle=Math.min(end,Date.now()+2200);
@@ -149,12 +160,12 @@ export async function checkNativeTimelineFocus(tab,{
           } catch(error) {
             const msg=String(error?.message||'');
             attempt.reason=/timeout|timed out|deadline/i.test(msg)?'timeout':
-              ['not-timeline','unmapped-detail','wrong-detail','source-not-actionable'].includes(msg)?msg:'interaction-failed';
+              ['not-timeline','unmapped-detail','wrong-detail','wrong-library','source-not-actionable'].includes(msg)?msg:'interaction-failed';
           }
         }
       }
     } catch(error) { group.reason=/timeout|timed out|deadline/i.test(String(error?.message))?'timeout':'timeline-unavailable'; }
   }
-  return {probeVersion:'native-timeline-focus-v2',site:origin,mode,activations,start,limit:Number.isFinite(limit)?limit:null,
+  return {probeVersion:'native-timeline-focus-v2',site:origin,mode,returnMode,activations,start,limit:Number.isFinite(limit)?limit:null,
     deadlineMs,deadlineReached:Date.now()>=end,requestedGroups:groups,groups:runs};
 }

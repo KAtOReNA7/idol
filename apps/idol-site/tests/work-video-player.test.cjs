@@ -66,7 +66,7 @@ function sessionHarness(props={}){
   const tree=e.VideoSession({...source,...props}),element=node(tree,'iframe');
   if(element?.key!==frameKey){
    frameRef?.(null);frameKey=element?.key;frameRef=element?.props.ref;
-   frame=element?{focus(){},contentWindow:{postMessage:(data,origin)=>messages.push({data,origin})}}:null;
+   frame=element?{focusCount:0,focus(){this.focusCount++;},contentWindow:{postMessage:(data,origin)=>messages.push({data,origin})}}:null;
    frameRef?.(frame);
   }
   if(effect){cleanup?.();cleanup=effect();effect=undefined;}
@@ -84,7 +84,7 @@ test('BILLIONAIRE uses one manually activated OK player for the original edit an
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const id='rec28ldfRTrLku',video='Gz_yRl6703c',stage=require('../data/stage-videos.json')[id];
  const selected=workPlayback(id,video,'mv',null);
- assert.deepEqual(selected,{label:'OK Video',embedUrl:'https://ok.ru/videoembed/9392431106679',credit:'OK Video · 😍НОВОЕ ❤️ ЛУЧШЕЕ⭐МУЗ КЛИПЫ⭐ 转载'});
+ assert.deepEqual(selected,{label:'OK Video',embedUrl:'https://ok.ru/videoembed/9392431106679?autoplay=1&silent=1',credit:'OK Video · 😍НОВОЕ ❤️ ЛУЧШЕЕ⭐МУЗ КЛИПЫ⭐ 转载'});
  assert.equal(workPlayback(id,video,'stage',stage).embedUrl,selected.embedUrl);
  assert.equal(stage.scoreBinding.videoId,video);
  for(const other of [null,{...stage,reusesOriginalVideo:false},{...stage,url:'https://example.org'},{...stage,clip:{startSeconds:0,endSeconds:20,sourceDurationSeconds:164}}]){
@@ -93,13 +93,24 @@ test('BILLIONAIRE uses one manually activated OK player for the original edit an
  assert.equal(workPlayback(id,'MN2RlOy8y8k','mv',null),null);
  assert.equal(workPlayback('toString',video,'mv',null),null);
  const player=sessionHarness({workId:id,videoId:video,embedUrl:selected.embedUrl,playbackCredit:selected.credit,playbackLabel:selected.label});
- const initial=player.render(),frames=nodes(initial).filter(n=>n.type==='iframe');
+ const initial=player.render(),play=node(initial,'button','video-play');
+ assert.equal(node(initial,'iframe'),undefined);
+ assert.equal(play.props.type,'button');
+ const focusedButton={ownerDocument:{}};
+ focusedButton.ownerDocument.activeElement=focusedButton;
+ play.props.ref.current=focusedButton;
+ play.props.onClick();
+ const active=player.render(),frames=nodes(active).filter(n=>n.type==='iframe');
  assert.equal(frames.length,1);assert.equal(frames[0].props.src,selected.embedUrl);
  assert.match(frames[0].props.allow,/^autoplay 'none';/);
  assert.equal(frames[0].props.allowFullScreen,true);
- assert.equal(node(initial,'button','video-play'),undefined);
- assert.match(renderToStaticMarkup(initial),/设置.*Качество（画质）.*Другое（其他）.*最高可用画质/);
- assert.doesNotMatch(renderToStaticMarkup(initial),/2160p/);
+ assert.equal(player.frame().focusCount,1);
+ assert.equal(node(active,'button','video-play'),undefined);
+ assert.match(renderToStaticMarkup(active),/默认静音.*设置.*Качество（画质）.*Другое（其他）.*最高可用画质/);
+ assert.doesNotMatch(renderToStaticMarkup(active),/2160p/);
+ player.message({event:'paused'},'https://ok.ru');
+ player.advance(30000);
+ assert.equal(node(player.render(),'iframe').key,frames[0].key);
  assert.equal(player.timers.size,0);assert.equal(player.messages.length,0);assert.equal(player.opens(),0);
 });
 test('cover failure offers one explicit retry of the unchanged image without playback',()=>{
@@ -215,7 +226,7 @@ test('each confirmed work selects one exact player and preserves stage score ide
   if(ok){
    assert.equal(video,ok.video,id);
    assert.equal(route.label,'OK Video',id);
-   assert.equal(route.embedUrl,`https://ok.ru/videoembed/${ok.player}`,id);
+   assert.equal(route.embedUrl,`https://ok.ru/videoembed/${ok.player}?autoplay=1&silent=1`,id);
    assert.equal(route.credit,`OK Video · ${ok.uploader} 转载`,id);
   }else if(vimeo){
    assert.equal(video,vimeo.video,id);
@@ -241,14 +252,9 @@ test('failed attempts retry the same selected source without opening another pla
   const video=mappings[id].original, player=workPlayback(id,video,'mv',null);
   const h=sessionHarness({workId:id,videoId:video,embedUrl:player.embedUrl,playbackCredit:player.credit,playbackLabel:player.label});
   const initial=h.render();
-  if(player.label==='OK Video'){
-   assert.equal(node(initial,'button','video-play'),undefined);
-   assert.ok(node(initial,'iframe'));
-  }else{
-   assert.ok(renderToStaticMarkup(initial).includes('播放视频（'+player.label+'）'));
-   assert.equal(node(initial,'iframe'),undefined);
-   node(initial,'button','video-play').props.onClick();
-  }
+  assert.ok(renderToStaticMarkup(initial).includes('播放视频（'+player.label+'）'));
+  assert.equal(node(initial,'iframe'),undefined);
+  node(initial,'button','video-play').props.onClick();
   const first=node(h.render(),'iframe');
   first.props.onError({currentTarget:h.frame()});
   const failure=h.render();

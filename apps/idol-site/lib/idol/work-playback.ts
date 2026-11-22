@@ -18,7 +18,7 @@ export function workPlayback(workId:string,videoId:string|null,view:'mv'|'stage'
  if(view==='stage'&&(!stage?.reusesOriginalVideo||stageSourceKey(stage)!==videoId||!stageSourceMatchesUrl(stage)))return null;
  if(player.okVideo)return {
   label:'OK Video',
-  embedUrl:`https://ok.ru/videoembed/${player.okVideo.id}`,
+  embedUrl:`https://ok.ru/videoembed/${player.okVideo.id}?autoplay=1&silent=1`,
   credit:`OK Video · ${player.okVideo.uploader} 转载`
  };
  if(player.vimeo)return {

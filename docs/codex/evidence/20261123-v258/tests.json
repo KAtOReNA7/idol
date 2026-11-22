@@ -1,0 +1,786 @@
+{
+  "applicationCommit": "94f9582f53fd5b0aa2fb746ded5bc01c82fdcae3",
+  "baselineApplicationCommit": "05d5f9d3e243e355f937688726a4371819d55d41",
+  "baselineValidationCommit": "05d5f9d3e243e355f937688726a4371819d55d41",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4415,"pass": 4298,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4423,"pass": 4306,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1461,"pass": 1461,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "BABYMONSTER release cards open the matching local DRIP origin",
+        "DRIP uses nine official tracks and links only the six corresponding videos",
+        "Sugar Rush binds all nine 2022 publisher photos and retains seventeen distinct historical photos",
+        "all artist information and an unknown group render the same first response and catalog states with production browser inputs",
+        "partial and nested legacy rows keep historic metrics, sources, observed zeros and unknown values",
+        "xg cold and ready directories keep every original MV and one primary movie link per card",
+        "xg cold errors still show public movies, and distinct owner-only scores and queues survive hydration",
+        "xg stage list groups exact recordings, links each original MV and keeps its own return control"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4415,"pass": 4298,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4423,"pass": 4306,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1461,"pass": 1461,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "BABYMONSTER release cards open the matching local DRIP origin",
+        "DRIP uses nine official tracks and links only the six corresponding videos",
+        "Sugar Rush binds all nine 2022 publisher photos and retains seventeen distinct historical photos",
+        "all artist information and an unknown group render the same first response and catalog states with production browser inputs",
+        "partial and nested legacy rows keep historic metrics, sources, observed zeros and unknown values",
+        "xg cold and ready directories keep every original MV and one primary movie link per card",
+        "xg cold errors still show public movies, and distinct owner-only scores and queues survive hydration",
+        "xg stage list groups exact recordings, links each original MV and keeps its own return control"
+      ],
+      "removedTests": []
+    }
+  },
+  "validationCommit": "69b72fedc2e9c0e7fa1e8c4585f6f16308809341",
+  "firstAttempt": {
+    "applicationCommit": "94f9582f53fd5b0aa2fb746ded5bc01c82fdcae3",
+    "testOnlyChanges": ["apps/idol-site/tests/fixtures/editorial-shapes.cjs","apps/idol-site/tests/timeline-navigation.test.cjs"],
+    "cause": "The standalone timeline navigation fixture rejected the new XG directory recording key input before its 11 tests started. The repair substitutes the already registered synthetic keys only for the exact XG import. Raw catalog input and unrelated importers still fail, and all original navigation shapes retain their checks.",
+    "platforms": {
+      "win": {
+        "verifyExit": 1,
+        "firstCurrentSuite": {"tests": 1461,"pass": 1450,"fail": 11,"skipped": 0},
+        "fullExit": 1,
+        "full": {"tests": 4423,"pass": 4295,"fail": 89,"skipped": 39,"cancelled": 0,"todo": 0},
+        "newFailureCount": 11
+      },
+      "linux": {
+        "verifyExit": 1,
+        "firstCurrentSuite": {"tests": 1461,"pass": 1450,"fail": 11,"skipped": 0},
+        "fullExit": 1,
+        "full": {"tests": 4423,"pass": 4295,"fail": 89,"skipped": 39,"cancelled": 0,"todo": 0},
+        "newFailureCount": 11
+      }
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "retainedFailureGroups": {
+    "basis": "The carried-forward group describes the first measured failing assertion or test dependency in the v255 baseline, as documented in v256 and v257. It covers only the same test file and title failing again in v258. Product impact needs separate verification.",
+    "platforms": ["Windows","WSL"],
+    "groups": {
+      "\u9875\u9762\u8f93\u51fa\u7684\u6587\u6848\u3001\u56fe\u7247\u6216\u5165\u53e3\u4e0e\u65ad\u8a00\u4e0d\u540c": {"count": 12,"nextCheck": "先在现行团页、名录和播放页确认用户能否找到同一入口，再决定调整功能或原断言。"},
+      "\u6d77\u62a5\u4fdd\u5b58\u6216\u8bfb\u53d6\u7684\u5b57\u6bb5\u3001\u54cd\u5e94\u5185\u5bb9\u548c\u72b6\u6001\u4e0d\u7b26": {"count": 4,"nextCheck": "在隔离存储重现一次海报上传与读回，再复核冲突码、字段契约和未修改其他值。"},
+      "\u72ec\u7acb\u8bc4\u5ba1\u9875\u6784\u5efa\u65f6\u821e\u53f0\u6216\u66ff\u4ee3\u6765\u6e90\u8eab\u4efd\u4e0d\u540c": {"count": 3,"nextCheck": "对照三份历史目录与各自最新来源的作品、视频、剪辑和绑定，保留原历史版本。"},
+      "\u6d4b\u8bd5\u52a0\u8f7d\u5668\u6216\u9694\u79bb\u6e32\u67d3\u7f3a\u5c11\u8f93\u5165\u6216\u4f9d\u8d56": {"count": 13,"nextCheck": "补回对应测试环境使用的组件、真实类型或模块解析，然后重新运行原始行为检查。"},
+      "\u6d4b\u8bd5\u8bfb\u53d6\u6307\u5b9a\u7684 Git \u5386\u53f2\u63d0\u4ea4\u6216\u8def\u5f84\u5931\u8d25": {"count": 3,"nextCheck": "按真实历史目录恢复读取。两个 KISS OF LIFE 测试缺少提交内路径，一个整合测试引用的对象不存在。"},
+      "\u6e90\u7801\u7ed3\u6784\u3001\u6837\u5f0f\u6216\u6e05\u5355\u6570\u91cf\u4e0e\u65ad\u8a00\u4e0d\u540c": {"count": 23,"nextCheck": "优先用真实渲染和导航验证保留行为。原版本的源码和样式检查可在相应提交运行。"},
+      "\u5386\u53f2\u6570\u91cf\u3001\u539f\u4ef6\u6216\u8d44\u6599\u5b57\u6bb5\u4e0e\u5f53\u524d\u8f93\u5165\u4e0d\u540c": {"count": 20,"nextCheck": "在原提交验证原基线，现行版本独立核对被变更的事实、图片、日期和来源。"}
+    },
+    "v257ToV258TapDiagnostics": {
+      "win": {
+        "retained": 78,
+        "sameFirstErrorHeadingCodeOperatorAndStackFrame": 75,
+        "sameAsideFromReviewBuildTemporaryDirectory": [
+          {
+            "file": "tests/hearts2hearts-review-routing.test.mjs",
+            "sameSubprocessError": "Review stage video identity mismatch: rec28ldfRTrI8S"
+          },
+          {
+            "file": "tests/saymyname-review-routing.test.mjs",
+            "sameSubprocessError": "Review stage video identity mismatch: rec28ldfRTrNcl"
+          },
+          {
+            "file": "tests/youngposse-review-routing.test.mjs",
+            "sameSubprocessError": "Review alternative identity mismatch: rec28ldfRTrGj0"
+          }
+        ],
+        "otherFirstDiagnosticChanges": []
+      },
+      "linux": {
+        "retained": 78,
+        "sameFirstErrorHeadingCodeOperatorAndStackFrame": 75,
+        "sameAsideFromReviewBuildTemporaryDirectory": [
+          {
+            "file": "tests/hearts2hearts-review-routing.test.mjs",
+            "sameSubprocessError": "Review stage video identity mismatch: rec28ldfRTrI8S"
+          },
+          {
+            "file": "tests/saymyname-review-routing.test.mjs",
+            "sameSubprocessError": "Review stage video identity mismatch: rec28ldfRTrNcl"
+          },
+          {
+            "file": "tests/youngposse-review-routing.test.mjs",
+            "sameSubprocessError": "Review alternative identity mismatch: rec28ldfRTrGj0"
+          }
+        ],
+        "otherFirstDiagnosticChanges": []
+      }
+    }
+  },
+  "compiledFeatureDelivery": {
+    "platforms": ["Windows","WSL"],
+    "compiledRoutes": [
+      "/",
+      "/artists/kep1er",
+      "/artists/babymonster",
+      "/artists/babymonster/releases/drip",
+      "/artists/kissoflife",
+      "/artists/xg"
+    ],
+    "method": "Read each production route table and client dependency graph, decode the copied image assets, compare their sizes and dimensions to the frozen source, and locate the exact public IDs and media bindings in the generated bundles. No browser traffic or decoding time is inferred.",
+    "sugarRush": {
+      "workId": "recvxyOz5Xvsk1",
+      "videoId": "w8N3nZ7reZk",
+      "orderedMembers": [
+        "recvxyICzHCOwh",
+        "recvxyICzHkiWq",
+        "recvxyICzHOon2",
+        "recvxyICzHvPnL",
+        "recvxyICzHvcNv",
+        "recvxyICzHHBnl",
+        "recvxyICzHSB1r",
+        "rec28ldbniBgam",
+        "rec28ldbniBgvC"
+      ],
+      "v257DefaultImageBytes": 696372,
+      "v258DefaultImageBytes": 224758,
+      "encodedReductionPercent": 67.72,
+      "fullOriginalBytes": 1566813,
+      "distinctRetainedFullImages": 17
+    },
+    "dripRelease": {
+      "path": "/artists/babymonster/releases/drip",
+      "orderedTracks": [
+        "CLIK CLAK",
+        "DRIP",
+        "Love, Maybe",
+        "Really Like You",
+        "BILLIONAIRE",
+        "Love In My Heart",
+        "Woke Up In Tokyo (RUKA & ASA)",
+        "FOREVER",
+        "BATTER UP (Remix)"
+      ],
+      "sixPublicTargets": {
+        "CLIK CLAK": "rec28ldfRTrALg",
+        "DRIP": "rec28ldfRTrAPA",
+        "Really Like You": "rec28ldfRTrAYJ",
+        "BILLIONAIRE": "rec28ldfRTrLku",
+        "Love In My Heart": "rec28ldfRTrAUD",
+        "FOREVER": "rec28ldfRTrAGW"
+      }
+    },
+    "xgDirectory": {
+      "publicRecords": 23,
+      "recordsWithStage": 20,
+      "workIds": [
+        "recvxDMFHNyyeA",
+        "recvxDMFHNzJyr",
+        "recvxDMFHN6iOl",
+        "recvxDMFHN97Px",
+        "recvxDMFHNyJoh",
+        "recvxDMFHNSckK",
+        "recvxDMFHNJME3",
+        "recvxDMFHNojjN",
+        "recvxDMFHNUJlD",
+        "recvxDMFHNHFyM",
+        "recvxDMFHNzaOb",
+        "recvxDMFHNx0Zj",
+        "recvxDMFHNSJcd",
+        "recvxDMFHNJWcy",
+        "recvxDMFHN1Y9G",
+        "recvxDMFHNonmf",
+        "recvxDMFHNLljT",
+        "recvxDMFHNk8MX",
+        "recvxDMFHN9v3k",
+        "recvxDMFHNWYIe",
+        "recvxDMFHNjwxB",
+        "recvxDMFHNl2u3",
+        "recvxDMwzBm3rz"
+      ],
+      "distinctPerformances": 19
+    },
+    "displayData": {
+      "Windows": {
+        "kissoflifeReachableDisplayModule": "/_next/static/chunks/flKrYxHN.js",
+        "displayModuleRawBytes": 124061,
+        "completeModelRawBytesOutsideKissoflifeGraph": 523000
+      },
+      "WSL": {
+        "kissoflifeReachableDisplayModule": "/_next/static/chunks/flKrYxHN.js",
+        "displayModuleRawBytes": 124061,
+        "completeModelRawBytesOutsideKissoflifeGraph": 523000
+      }
+    },
+    "assetsPerBuild": 45,
+    "assets": [
+      {
+        "path": "/artist/mv-release-portraits/cards/43bb8a0336c86676068668c6.webp",
+        "role": "recvxyICzHCOwh former default",
+        "format": "WEBP",
+        "bytes": 41010,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-chaehyun.card.webp",
+        "role": "recvxyICzHCOwh 2022 UNIVERSE preview",
+        "format": "WEBP",
+        "bytes": 25454,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-chaehyun.original.jpg",
+        "role": "recvxyICzHCOwh UNIVERSE full JPEG",
+        "format": "JPEG",
+        "bytes": 111486,
+        "pixels": [1500,1000]
+      },
+      {
+        "path": "/artist/mv-release-portraits/originals/43bb8a0336c86676068668c6.jpg",
+        "role": "recvxyICzHCOwh retained full photograph",
+        "format": "JPEG",
+        "bytes": 465577,
+        "pixels": [1638,2048]
+      },
+      {
+        "path": "/artist/mv-identity-batch-a-20261026/identities/w8N3nZ7reZk-recvxyICzHCOwh-9864b4baeb.jpg",
+        "role": "recvxyICzHCOwh retained full photograph",
+        "format": "JPEG",
+        "bytes": 294455,
+        "pixels": [1920,1080]
+      },
+      {
+        "path": "/artist/mv-release-portraits/cards/857ab31dbdcd3dcd08d5a31f.webp",
+        "role": "recvxyICzHkiWq former default",
+        "format": "WEBP",
+        "bytes": 31178,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-dayeon.card.webp",
+        "role": "recvxyICzHkiWq 2022 UNIVERSE preview",
+        "format": "WEBP",
+        "bytes": 29216,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-dayeon.original.jpg",
+        "role": "recvxyICzHkiWq UNIVERSE full JPEG",
+        "format": "JPEG",
+        "bytes": 254041,
+        "pixels": [1500,2250]
+      },
+      {
+        "path": "/artist/mv-release-portraits/originals/857ab31dbdcd3dcd08d5a31f.jpg",
+        "role": "recvxyICzHkiWq retained full photograph",
+        "format": "JPEG",
+        "bytes": 394025,
+        "pixels": [1638,2048]
+      },
+      {
+        "path": "/artist/mv-identity-batch-a-20261026/identities/w8N3nZ7reZk-recvxyICzHkiWq-4abbf65020.jpg",
+        "role": "recvxyICzHkiWq retained full photograph",
+        "format": "JPEG",
+        "bytes": 219652,
+        "pixels": [1920,1080]
+      },
+      {
+        "path": "/artist/mv-release-portraits/cards/ecd05f4584f489ac9818ea0e.webp",
+        "role": "recvxyICzHOon2 former default",
+        "format": "WEBP",
+        "bytes": 44804,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-hikaru.card.webp",
+        "role": "recvxyICzHOon2 2022 UNIVERSE preview",
+        "format": "WEBP",
+        "bytes": 26070,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-hikaru.original.jpg",
+        "role": "recvxyICzHOon2 UNIVERSE full JPEG",
+        "format": "JPEG",
+        "bytes": 120155,
+        "pixels": [1500,1000]
+      },
+      {
+        "path": "/artist/mv-release-portraits/originals/ecd05f4584f489ac9818ea0e.jpg",
+        "role": "recvxyICzHOon2 retained full photograph",
+        "format": "JPEG",
+        "bytes": 408833,
+        "pixels": [1638,2048]
+      },
+      {
+        "path": "/artist/mv-identity-batch-a-20261026/identities/w8N3nZ7reZk-recvxyICzHOon2-125591de89.jpg",
+        "role": "recvxyICzHOon2 retained full photograph",
+        "format": "JPEG",
+        "bytes": 201194,
+        "pixels": [1920,1080]
+      },
+      {
+        "path": "/artist/mv-release-portraits/cards/2522e9886a3fa370044fd806.webp",
+        "role": "recvxyICzHvPnL former default",
+        "format": "WEBP",
+        "bytes": 32704,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-huening-bahiyyih.card.webp",
+        "role": "recvxyICzHvPnL 2022 UNIVERSE preview",
+        "format": "WEBP",
+        "bytes": 23650,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-huening-bahiyyih.original.jpg",
+        "role": "recvxyICzHvPnL UNIVERSE full JPEG",
+        "format": "JPEG",
+        "bytes": 238726,
+        "pixels": [1500,2250]
+      },
+      {
+        "path": "/artist/mv-release-portraits/originals/2522e9886a3fa370044fd806.jpg",
+        "role": "recvxyICzHvPnL retained full photograph",
+        "format": "JPEG",
+        "bytes": 412725,
+        "pixels": [2048,1638]
+      },
+      {
+        "path": "/artist/mv-identity-batch-a-20261026/identities/w8N3nZ7reZk-recvxyICzHvPnL-c9ee20311c.jpg",
+        "role": "recvxyICzHvPnL retained full photograph",
+        "format": "JPEG",
+        "bytes": 261460,
+        "pixels": [1920,1080]
+      },
+      {
+        "path": "/artist/mv-release-portraits/cards/ce8fc693dcc8e6ec5843335e.webp",
+        "role": "recvxyICzHvcNv former default",
+        "format": "WEBP",
+        "bytes": 26224,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-xiaoting.card.webp",
+        "role": "recvxyICzHvcNv 2022 UNIVERSE preview",
+        "format": "WEBP",
+        "bytes": 33034,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-xiaoting.original.jpg",
+        "role": "recvxyICzHvcNv UNIVERSE full JPEG",
+        "format": "JPEG",
+        "bytes": 154424,
+        "pixels": [1500,1000]
+      },
+      {
+        "path": "/artist/mv-release-portraits/originals/ce8fc693dcc8e6ec5843335e.jpg",
+        "role": "recvxyICzHvcNv retained full photograph",
+        "format": "JPEG",
+        "bytes": 395437,
+        "pixels": [2048,1638]
+      },
+      {
+        "path": "/artist/mv-identity-batch-a-20261026/identities/w8N3nZ7reZk-recvxyICzHvcNv-19a171d87e.jpg",
+        "role": "recvxyICzHvcNv retained full photograph",
+        "format": "JPEG",
+        "bytes": 197723,
+        "pixels": [1920,1080]
+      },
+      {
+        "path": "/artist/mv-release-portraits/cards/597b17c29c3c683f74f9939f.webp",
+        "role": "recvxyICzHHBnl former default",
+        "format": "WEBP",
+        "bytes": 29446,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-youngeun.card.webp",
+        "role": "recvxyICzHHBnl 2022 UNIVERSE preview",
+        "format": "WEBP",
+        "bytes": 31660,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-youngeun.original.jpg",
+        "role": "recvxyICzHHBnl UNIVERSE full JPEG",
+        "format": "JPEG",
+        "bytes": 131279,
+        "pixels": [1500,1000]
+      },
+      {
+        "path": "/artist/mv-identity-batch-y-20261027/identities/kep1er-597b17c29c3c68.jpg",
+        "role": "recvxyICzHHBnl retained full photograph",
+        "format": "JPEG",
+        "bytes": 455351,
+        "pixels": [2048,1638]
+      },
+      {
+        "path": "/artist/mv-identity-batch-a-20261026/identities/w8N3nZ7reZk-recvxyICzHHBnl-aafeb64d36.jpg",
+        "role": "recvxyICzHHBnl retained full photograph",
+        "format": "JPEG",
+        "bytes": 225000,
+        "pixels": [1920,1080]
+      },
+      {
+        "path": "/artist/mv-release-portraits/cards/b7a9f8fca508c963c7b53fe2.webp",
+        "role": "recvxyICzHSB1r former default",
+        "format": "WEBP",
+        "bytes": 29052,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-yujin.card.webp",
+        "role": "recvxyICzHSB1r 2022 UNIVERSE preview",
+        "format": "WEBP",
+        "bytes": 21550,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-yujin.original.jpg",
+        "role": "recvxyICzHSB1r UNIVERSE full JPEG",
+        "format": "JPEG",
+        "bytes": 262699,
+        "pixels": [1500,2250]
+      },
+      {
+        "path": "/artist/mv-release-portraits/originals/b7a9f8fca508c963c7b53fe2.jpg",
+        "role": "recvxyICzHSB1r retained full photograph",
+        "format": "JPEG",
+        "bytes": 491423,
+        "pixels": [2048,1638]
+      },
+      {
+        "path": "/artist/mv-identity-batch-a-20261026/identities/w8N3nZ7reZk-recvxyICzHSB1r-a96c1d63b3.jpg",
+        "role": "recvxyICzHSB1r retained full photograph",
+        "format": "JPEG",
+        "bytes": 186660,
+        "pixels": [1920,1080]
+      },
+      {
+        "path": "/artist/mv-identity-batch-y-20261027/identities/kep1er-87301abb6c312e.jpg",
+        "role": "rec28ldbniBgam former default",
+        "format": "JPEG",
+        "bytes": 423606,
+        "pixels": [1638,2048]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-mashiro.card.webp",
+        "role": "rec28ldbniBgam 2022 UNIVERSE preview",
+        "format": "WEBP",
+        "bytes": 12080,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-mashiro.original.jpg",
+        "role": "rec28ldbniBgam UNIVERSE full JPEG",
+        "format": "JPEG",
+        "bytes": 187418,
+        "pixels": [1500,2250]
+      },
+      {
+        "path": "/artist/mv-release-portraits/cards/9d6bd48345f83858c9a8243b.webp",
+        "role": "rec28ldbniBgvC former default",
+        "format": "WEBP",
+        "bytes": 38348,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-yeseo.card.webp",
+        "role": "rec28ldbniBgvC 2022 UNIVERSE preview",
+        "format": "WEBP",
+        "bytes": 22044,
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/kep1er/sugar-rush-yeseo.original.jpg",
+        "role": "rec28ldbniBgvC UNIVERSE full JPEG",
+        "format": "JPEG",
+        "bytes": 106585,
+        "pixels": [1500,1000]
+      },
+      {
+        "path": "/artist/mv-release-portraits/originals/9d6bd48345f83858c9a8243b.jpg",
+        "role": "rec28ldbniBgvC retained full photograph",
+        "format": "JPEG",
+        "bytes": 472479,
+        "pixels": [2048,1638]
+      },
+      {
+        "path": "/artist/mv-identity-batch-a-20261026/identities/w8N3nZ7reZk-rec28ldbniBgvC-a0b0ffcf87.jpg",
+        "role": "rec28ldbniBgvC retained full photograph",
+        "format": "JPEG",
+        "bytes": 268142,
+        "pixels": [1920,1080]
+      },
+      {
+        "path": "/artist/babymonster/cover-drip.webp",
+        "role": "DRIP official square preview",
+        "format": "WEBP",
+        "bytes": 13320,
+        "pixels": [500,500]
+      },
+      {
+        "path": "/artist/babymonster/cover-drip.jpg",
+        "role": "DRIP official complete cover",
+        "format": "JPEG",
+        "bytes": 852238,
+        "pixels": [960,960]
+      }
+    ]
+  },
+  "integratedWslGroupEntries": {
+    "platform": "WSL",
+    "baseline": "05d5f9d3e243e355f937688726a4371819d55d41",
+    "candidate": "69b72fedc2e9c0e7fa1e8c4585f6f16308809341",
+    "method": "Same dedicated WSL checkout and dependency installation. For each frozen route page, find its direct client imports via vinext-client-reference-sources, then deduplicate the client manifest static JavaScript dependencies. Gzip each file individually at level 6. Excludes layout or indirect server components, dynamic imports, HTML, images, CSS, HTTP caches and elapsed time.",
+    "increased": ["ifeye","izna","udtt"],
+    "decreased": [
+      "adya",
+      "aespa",
+      "atheart",
+      "babymonster",
+      "badvillain",
+      "bewave",
+      "billlie",
+      "candyshop",
+      "cherrybullet",
+      "everglow",
+      "fromis9",
+      "geenius",
+      "genblue",
+      "hearts2hearts",
+      "hitgs",
+      "idle",
+      "illit",
+      "itzy",
+      "ive",
+      "izone",
+      "katseye",
+      "kep1er",
+      "kiiikiii",
+      "kissoflife",
+      "lesserafim",
+      "loona",
+      "madein",
+      "meovv",
+      "newjeans",
+      "nmixx",
+      "oddyouth",
+      "purplekiss",
+      "qwer",
+      "rescene",
+      "rocketpunch",
+      "saymyname",
+      "spia",
+      "stayc",
+      "tracer",
+      "triples",
+      "unis",
+      "vcha",
+      "vvup",
+      "weeekly",
+      "witchx",
+      "wooah",
+      "xg",
+      "youngposse"
+    ],
+    "changedDirectInputs": {},
+    "columns": ["slug","v257Files","v257BytesGzip6","v258Files","v258BytesGzip6","changeBytesGzip6"],
+    "rows": [
+      ["adya",42,598943,41,539319,-59624],
+      ["aespa",42,596519,44,543191,-53328],
+      ["atheart",42,597697,41,538068,-59629],
+      ["babymonster",45,605837,44,546357,-59480],
+      ["badvillain",38,595655,37,536023,-59632],
+      ["bewave",42,598717,41,539093,-59624],
+      ["billlie",38,594593,37,534963,-59630],
+      ["candyshop",40,598559,39,538937,-59622],
+      ["cherrybullet",37,595028,36,535396,-59632],
+      ["everglow",38,592222,37,532590,-59632],
+      ["fromis9",38,592129,37,532499,-59630],
+      ["geenius",41,598709,40,539082,-59627],
+      ["genblue",38,599787,37,540159,-59628],
+      ["hearts2hearts",41,595323,40,535693,-59630],
+      ["hitgs",39,596277,38,536647,-59630],
+      ["idle",37,592618,36,532988,-59630],
+      ["ifeye",16,160811,16,161269,458],
+      ["illit",47,608474,46,548847,-59627],
+      ["itzy",45,597342,44,537713,-59629],
+      ["ive",47,608474,46,548847,-59627],
+      ["izna",16,164104,16,164559,455],
+      ["izone",37,591743,36,532112,-59631],
+      ["katseye",42,596140,41,536511,-59629],
+      ["kep1er",40,631491,39,571857,-59634],
+      ["kiiikiii",44,599222,43,539596,-59626],
+      ["kissoflife",44,603107,43,543473,-59634],
+      ["lesserafim",45,595246,44,535616,-59630],
+      ["loona",44,606611,43,546981,-59630],
+      ["madein",47,608474,46,548847,-59627],
+      ["meovv",43,596790,42,537162,-59628],
+      ["newjeans",39,601392,38,541761,-59631],
+      ["nmixx",44,597284,43,537658,-59626],
+      ["oddyouth",41,598024,40,538400,-59624],
+      ["purplekiss",47,608474,46,548847,-59627],
+      ["qwer",47,608474,46,548847,-59627],
+      ["rescene",47,608474,46,548847,-59627],
+      ["rocketpunch",38,596939,37,537306,-59633],
+      ["saymyname",45,599629,44,540004,-59625],
+      ["spia",38,594314,37,534688,-59626],
+      ["stayc",44,597109,43,537483,-59626],
+      ["tracer",39,593973,38,534347,-59626],
+      ["triples",47,608474,46,548847,-59627],
+      ["udtt",13,261465,14,262103,638],
+      ["unis",40,617390,39,557761,-59629],
+      ["vcha",38,596111,37,536480,-59631],
+      ["vvup",44,598976,44,543290,-55686],
+      ["weeekly",37,596467,36,536836,-59631],
+      ["witchx",40,594453,39,534827,-59626],
+      ["wooah",38,606841,37,547210,-59631],
+      ["xg",42,596519,44,543191,-53328],
+      ["youngposse",40,599281,39,539657,-59624]
+    ]
+  },
+  "clientEntryStaticDependencies": {
+    "method": "For each platform, sum the unique JavaScript files in the Vite manifest static import graph for the same named client entry. Gzip each file individually at level 6. Dynamic imports, CSS, images, server HTML, request headers and browser timing are outside this measurement. Entries share dependencies and cannot be added together.",
+    "platforms": {
+      "Windows": {
+        "appBrowserRuntime": {
+          "v257": {"jsFiles": 4,"entryBytes": 112783,"rawBytes": 461654,"gzip6Bytes": 138489},
+          "v258": {"jsFiles": 4,"entryBytes": 112904,"rawBytes": 461775,"gzip6Bytes": 138498},
+          "gzip6ByteChange": 9
+        },
+        "ITZY": {
+          "v257": {"jsFiles": 45,"entryBytes": 26872,"rawBytes": 3644598,"gzip6Bytes": 597342},
+          "v258": {"jsFiles": 44,"entryBytes": 26872,"rawBytes": 3232007,"gzip6Bytes": 537713},
+          "gzip6ByteChange": -59629
+        },
+        "BABYMONSTER": {
+          "v257": {"jsFiles": 45,"entryBytes": 54647,"rawBytes": 3674724,"gzip6Bytes": 605836},
+          "v258": {"jsFiles": 44,"entryBytes": 55042,"rawBytes": 3262524,"gzip6Bytes": 546357},
+          "gzip6ByteChange": -59479
+        },
+        "KISS OF LIFE": {
+          "v257": {"jsFiles": 44,"entryBytes": 40523,"rawBytes": 3663246,"gzip6Bytes": 603107},
+          "v258": {"jsFiles": 43,"entryBytes": 40524,"rawBytes": 3250652,"gzip6Bytes": 543473},
+          "gzip6ByteChange": -59634
+        },
+        "fromis_9": {
+          "v257": {"jsFiles": 38,"entryBytes": 17450,"rawBytes": 3629226,"gzip6Bytes": 592129},
+          "v258": {"jsFiles": 37,"entryBytes": 17450,"rawBytes": 3216635,"gzip6Bytes": 532498},
+          "gzip6ByteChange": -59631
+        },
+        "LE SSERAFIM": {
+          "v257": {"jsFiles": 45,"entryBytes": 19823,"rawBytes": 3634211,"gzip6Bytes": 595245},
+          "v258": {"jsFiles": 44,"entryBytes": 19821,"rawBytes": 3221618,"gzip6Bytes": 535615},
+          "gzip6ByteChange": -59630
+        }
+      },
+      "WSL": {
+        "appBrowserRuntime": {
+          "v257": {"jsFiles": 4,"entryBytes": 112783,"rawBytes": 461654,"gzip6Bytes": 138489},
+          "v258": {"jsFiles": 4,"entryBytes": 112904,"rawBytes": 461775,"gzip6Bytes": 138497},
+          "gzip6ByteChange": 8
+        },
+        "ITZY": {
+          "v257": {"jsFiles": 45,"entryBytes": 26872,"rawBytes": 3644598,"gzip6Bytes": 597342},
+          "v258": {"jsFiles": 44,"entryBytes": 26872,"rawBytes": 3232007,"gzip6Bytes": 537713},
+          "gzip6ByteChange": -59629
+        },
+        "BABYMONSTER": {
+          "v257": {"jsFiles": 45,"entryBytes": 54647,"rawBytes": 3674724,"gzip6Bytes": 605837},
+          "v258": {"jsFiles": 44,"entryBytes": 55042,"rawBytes": 3262524,"gzip6Bytes": 546357},
+          "gzip6ByteChange": -59480
+        },
+        "KISS OF LIFE": {
+          "v257": {"jsFiles": 44,"entryBytes": 40523,"rawBytes": 3663246,"gzip6Bytes": 603107},
+          "v258": {"jsFiles": 43,"entryBytes": 40524,"rawBytes": 3250652,"gzip6Bytes": 543473},
+          "gzip6ByteChange": -59634
+        },
+        "fromis_9": {
+          "v257": {"jsFiles": 38,"entryBytes": 17450,"rawBytes": 3629226,"gzip6Bytes": 592129},
+          "v258": {"jsFiles": 37,"entryBytes": 17450,"rawBytes": 3216635,"gzip6Bytes": 532499},
+          "gzip6ByteChange": -59630
+        },
+        "LE SSERAFIM": {
+          "v257": {"jsFiles": 45,"entryBytes": 19823,"rawBytes": 3634211,"gzip6Bytes": 595246},
+          "v258": {"jsFiles": 44,"entryBytes": 19821,"rawBytes": 3221618,"gzip6Bytes": 535616},
+          "gzip6ByteChange": -59630
+        }
+      }
+    },
+    "kissoflifeNamedDataChunks": {
+      "v257": {
+        "Windows": {
+          "public-work-credits": [{"bytes": 1636625,"gzip6Bytes": 160346},{"bytes": 105109,"gzip6Bytes": 25460}],
+          "group-information": [{"bytes": 538655,"gzip6Bytes": 78116}]
+        },
+        "WSL": {
+          "public-work-credits": [{"bytes": 1636625,"gzip6Bytes": 160346},{"bytes": 105109,"gzip6Bytes": 25460}],
+          "group-information": [{"bytes": 538655,"gzip6Bytes": 78116}]
+        }
+      },
+      "v258": {
+        "Windows": {"public-work-credits": [{"bytes": 1636625,"gzip6Bytes": 160345},{"bytes": 105109,"gzip6Bytes": 25460}]},
+        "WSL": {"public-work-credits": [{"bytes": 1636625,"gzip6Bytes": 160345},{"bytes": 105109,"gzip6Bytes": 25460}]}
+      }
+    }
+  },
+  "input": "Windows and WSL each ran npm run verify and npm test on the original application freeze, then on the validation commit with two test-only changes. The final results and compiled feature checks refer to the latter."
+}

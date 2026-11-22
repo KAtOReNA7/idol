@@ -5,7 +5,7 @@
 ## 11 月 23 日接续目标
 
 1. v249 的成员原图首击、关闭回焦和写真出处正式验收通过。飞书第 8 项已回写，修订 1218。[正式结果](worklogs/20261123-v249-release.md)
-2. v250 已交付 VVUP 的直接分享入口和 BABYMONSTER 成员详情。v251 已交付 ITZY、LE SSERAFIM 的成员详情与 WOOAH《Catch the Stars》同期照，成员详情已有 51 团双宽代表稿。v252 上线 aespa《Armageddon》发行详情和 WOOAH《Danger》同期照。接续 XG《NEW DNA》及发行页回原曲目焦点。先核对应时期官网或发行图源，使用项目 Figma 定稿，再实施并在实际页面验证。相互独立的改动合并验收与发布。[v250](worklogs/20261123-v250-release.md) · [v251](worklogs/20261123-v251-release.md) · [v252](worklogs/20261123-v252-release.md)
+2. v250 已交付 VVUP 分享入口和 BABYMONSTER 成员详情。v251 已交付 ITZY、LE SSERAFIM 的成员详情和 WOOAH《Catch the Stars》同期照，成员详情已有 51 团双宽代表稿。v252 上线 aespa《Armageddon》发行详情和 WOOAH《Danger》同期照。v253 上线 XG《NEW DNA》，两团各从 MV 返回原曲目和原封面。接续能解决实际浏览问题的内页和同期照片，先核对应时期官网或发行图源，再用项目 Figma 完成双宽稿。下一批已查 LE SSERAFIM《EASY》、ITZY《KILL MY DOUBT》发行来源和 aespa《Forever》同期照。独立改动合并验收与发布。[v250](worklogs/20261123-v250-release.md) · [v251](worklogs/20261123-v251-release.md) · [v252](worklogs/20261123-v252-release.md) · [v253](worklogs/20261123-v253-release.md)
 3. 六个缺片源的指定版本保留在待办。只有找到新同版来源才逐首静音短测。《BILLIONAIRE》沿用已验收的播放结果。每批发布只对本批变化做浏览器实测，已确认的评分入口、MV 顺序和历史照片沿用已有验收记录。
 
 ## 本轮已交付与接续顺序

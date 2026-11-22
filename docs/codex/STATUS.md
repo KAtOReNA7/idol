@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v252。aespa《Armageddon》可在站内读完整十曲及打开三支原版 MV，返回目录可聚焦原封面。WOOAH《Danger》五张同期照的手机传输字节减少 9.15%。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v252-release.md) |
+| 正式站 | v253。XG《NEW DNA》可在本站看六首曲目与四条原版 MV 入口。XG 和 aespa 双宽从作品返回曲目 8/8 聚焦，返回发行目录 4/4 聚焦原封面。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v253-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v252 正式应用 `4f9fe822`。接续 XG《NEW DNA》及发行页从 MV 返回原曲目的焦点恢复。四场节目、《Per》首发完整版和《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v252/publication.json) · [XG 画稿](worklogs/20261123-xg-new-dna-design.md) |
+| 当前开发 | `codex/project-optimization-20261121`。v253 正式应用 `25427d03`。下一批准备 LE SSERAFIM《EASY》发行详情及 aespa《Forever》同期照，ITZY《KILL MY DOUBT》已核官方曲单。四场节目、《Per》首发完整版及《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v253/publication.json) |
 
 ## 11 月 22 日更新
 
@@ -90,6 +90,6 @@ v216 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4
 
 v215 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4,106 项，Windows 通过 3,929 项、失败 138 项、跳过 39 项，WSL 通过 3,933 项、失败 134 项、跳过 39 项。相对 v214，两边均通过新加的六项回归，另外消除一条服务端首次渲染失败。余下失败均在上个版本出现。v213 已更新四团的作品评分、草稿、返回与隔离 D1 验收，消除 27 条旧失败。[v215 双平台结果](evidence/20261122-v215/tests.json) · [v214 双平台结果](evidence/20261122-v214/tests.json) · [四团详情验收](worklogs/20261122-current-detail-regression.md)
 
-接续 W!TCHX《BLALA》官方歌词版、ADYA《Per》指定完整版和四场独占舞台的同版站内来源。《BILLIONAIRE》沿用正式 v236 的站内 2160p 实播记录。飞书第 9、18 项已标记解决，修订 1217 读回 27/29；第 8、17 项继续跟进。三个桌面短目录首次加载时的重排留待讨论。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑顺序。个人目录批量读取在连接器提供对应工具时验证。[歌词版正式结果](evidence/20261122-v240/formal-blala-playback.json) · [独占舞台来源](worklogs/20261122-exact-stage-rights.md) · [成员照片逐项清单](evidence/20261122-member-release-portraits/remaining-194.csv) · [双宽排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
+W!TCHX《BLALA》官方歌词版、ADYA《Per》指定完整版与四场指定节目在找到新同版来源后短测。《BILLIONAIRE》沿用正式 v236 的站内 2160p 实播记录。飞书第 8 项在 v249 正式验收后回写，修订 1218 共 28/29 项已解决，第 17 项歌词版待同版片源。三个桌面短目录首次加载时的重排留待讨论。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑顺序。个人目录批量读取在连接器提供对应工具时验证。[飞书回读](worklogs/20261123-v249-release.md) · [歌词版正式结果](evidence/20261122-v240/formal-blala-playback.json) · [独占舞台来源](worklogs/20261122-exact-stage-rights.md) · [成员照片逐项清单](evidence/20261122-member-release-portraits/remaining-194.csv) · [双宽排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
 
 前轮工程优化、发布与原始审查分别保存在各自的工作记录中。[上一正式版 v203](v203-release-20261030.md) · [项目审查](worklogs/20261121-project-audit.md) · [历史协作与验收](https://github.com/KAtOReNA7/idol/blob/0e77838a88f9ff9b14fb67f803156534c7c651e1/docs/codex/STATUS.md)

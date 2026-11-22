@@ -1,6 +1,18 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),ts=require('typescript'),vm=require('node:vm');
 class AppError extends Error{constructor(code,message,status){super(message);Object.assign(this,{code,status});}}
-const modules=new Map();function load(file){file=path.resolve(file);if(modules.has(file))return modules.get(file);const out={};modules.set(file,out);const js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL,URLSearchParams})((n)=>n==='./feishu'?{AppError}:load(path.resolve(path.dirname(file),n)+'.ts'),out);return out;}
+const modules=new Map();
+function load(file){
+ file=path.resolve(file);
+ if(modules.has(file))return modules.get(file);
+ const out={};modules.set(file,out);
+ const js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+ vm.runInNewContext('(function(require,exports){'+js+'})',{URL,URLSearchParams,Response,Error,TypeError,SyntaxError})(name=>{
+  if(name==='./feishu')return {AppError};
+  if(name==='@/app/chatgpt-auth')return {};
+  return load(path.resolve(path.dirname(file),name)+'.ts');
+ },out);
+ return out;
+}
 const {projectBrowserCatalog,requestedBrowserCatalog,withoutStageCandidates}=load('lib/idol/browser-catalog.ts'),{personalMvPhoto,memberWorks,memberWorkSummary}=load('lib/idol/member-works.ts');
 const plain=x=>JSON.parse(JSON.stringify(x));
 const workRequest=load('lib/idol/work-catalog-request.ts');
@@ -42,30 +54,158 @@ test('reduction is only after owner/source fencing and artist selection, never i
 });
 
 test('response shape is explicit, versioned and rejects unknown or ambiguous requests',()=>{assert.equal(requestedBrowserCatalog(new URLSearchParams()),false);assert.equal(requestedBrowserCatalog(new URLSearchParams('shape=display-v1')),true);for(const p of ['shape=','shape=v2','shape=full','shape=display-v1&shape=display-v1','shape=display-v1&shape=other'])assert.throws(()=>requestedBrowserCatalog(new URLSearchParams(p)),e=>e.status===400);});
-function routeHarness(){
- const model={data:sample(),publicData:{public:true,ratings:[]},projectedAfter:[],calls:[],native:true,deny:false,drift:false};
+function routeHarness(onCall){
+ const model={data:sample(),publicData:{public:true,ratings:[]},publicReads:[],projectedAfter:[],calls:[],native:true,deny:false,drift:false};
+ const record=label=>{model.calls.push(label);onCall?.(label);};
  const stubs={
+  '@/lib/idol/feishu':{AppError},
   '@/lib/idol/personal-mv-ratings':{personalMvRatingsForOwner:async()=>model.personal},
-  '@/lib/idol/public-access':{ownerForRequest:async()=>{model.calls.push('auth');return model.deny?null:{userId:'owner'};}},
-  '@/lib/idol/public-reader':{publicQuery:request=>{model.calls.push('public-query');return new URL(request.url).searchParams;},readPublicCatalog:async(artist,workId)=>{model.calls.push('public:'+artist);const work=workExports.findDetailWork(model.publicData,workId);return work?workExports.projectWorkCatalog(model.publicData,work):model.publicData;}},
+  '@/lib/idol/public-access':{ownerForRequest:async()=>{record('auth');return model.deny?null:{userId:'owner'};}},
+  '@/lib/idol/public-reader':{publicQuery:request=>{record('public-query');return new URL(request.url).searchParams;},readPublicCatalog:async(artist,workId)=>{model.publicReads.push({artist,workId});record('public:'+artist);const work=workExports.findDetailWork(model.publicData,workId);return work?workExports.projectWorkCatalog(model.publicData,work):model.publicData;}},
   '@/lib/idol/work-catalog':workExports,'@/lib/idol/work-catalog-request':workRequest,
   '@/lib/idol/browser-catalog':{projectBrowserCatalog:data=>{model.projectedAfter.push([...model.calls]);return projectBrowserCatalog(data);},requestedBrowserCatalog,withoutStageCandidates},
-  '@/lib/idol/artist-catalog':{requestedArtist:p=>p.get('artist'),projectArtistCatalog:(d,artist)=>{model.calls.push('artist:'+artist);return {...d,scope:{type:'artist',groupId:artist}};}},
-  '@/lib/idol/native-storage':{assertSourceUnchanged:async(u,state)=>{assert.equal(u,'owner');assert.equal(state.epoch,6);model.calls.push('fallback-fence');if(model.drift)throw new AppError('STORAGE_CHANGING','changed',409);}},
+  '@/lib/idol/artist-catalog':{requestedArtist:p=>p.get('artist'),projectArtistCatalog:(d,artist)=>{record('artist:'+artist);return {...d,scope:{type:'artist',groupId:artist}};}},
+  '@/lib/idol/native-storage':{assertSourceUnchanged:async(u,state)=>{assert.equal(u,'owner');assert.equal(state.epoch,6);record('fallback-fence');if(model.drift)throw new AppError('STORAGE_CHANGING','changed',409);}},
   '@/lib/idol/native-reader':{withNativeCatalog:async(u,force,read)=>{
-   model.calls.push('native:'+u+':'+force);
+   record('native:'+u+':'+force);
    if(!model.native)return {native:false,state:{epoch:6}};
    const value=await read(model.data,{mode:'native',epoch:6});
-   model.calls.push('native-fence');
+   record('native-fence');
    if(model.drift)throw new AppError('STORAGE_CHANGING','changed',409);
    return {native:true,value};
   }},
-  '@/lib/idol/durable-catalog':{getReadableCatalog:async(u,force)=>{model.calls.push('fallback:'+force);return model.data;}},
-  '@/lib/idol/http':{requireUser:async()=>{model.calls.push('auth');if(model.deny)throw new AppError('OWNER_ONLY','owner',403);return {userId:'owner'};},json:d=>new Response(JSON.stringify(d),{headers:{'Cache-Control':'private, no-store'}}),failure:e=>new Response(JSON.stringify({error:e.code}),{status:e.status??500})},
+  '@/lib/idol/durable-catalog':{getReadableCatalog:async(u,force)=>{record('fallback:'+force);return model.data;}},
+  '@/lib/idol/http':load('lib/idol/http.ts'),
  };
- const out={},js=ts.transpileModule(fs.readFileSync('app/api/catalog/route.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL})(n=>{const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(n);if(timelineModule!==undefined)return timelineModule;assert.ok(n in stubs,n);return stubs[n];},out);
- return {model,read:(p,headers)=>out.GET(new Request('https://example.org/api/catalog'+p,{headers}))};
+ const out={},js=ts.transpileModule(fs.readFileSync('app/api/catalog/route.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL,Error,TypeError,SyntaxError,DOMException,setTimeout,clearTimeout})(n=>{const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(n);if(timelineModule!==undefined)return timelineModule;assert.ok(n in stubs,n);return stubs[n];},out);
+ return {model,read:(p,headers,signal)=>out.GET(new Request('https://example.org/api/catalog'+p,{headers,signal}))};
 }
+
+const disconnected=()=>new Error('D1_ERROR: Network connection lost.');
+function failingRoute(step,...errors){
+ return routeHarness(label=>{
+  if(label===step&&errors.length)throw errors.shift();
+ });
+}
+
+test('ordinary artist, work and library GETs recover one interrupted read with the original scope and identity',async t=>{
+ const workId='recRetryWork';
+ const cases=[
+  {artist:'aespa',guest:false,error:disconnected()},
+  {artist:'illit',guest:true,error:Object.assign(new Error('temporary read failure'),{retryable:true})},
+  {detail:true,guest:false,error:new Error('D1_ERROR',{cause:new TypeError('Network connection lost.')})},
+  {detail:true,guest:true,error:disconnected()},
+  {guest:false,error:disconnected()},
+  {artist:'izna',guest:false,legacyShape:true,error:disconnected()},
+ ];
+ for(const {artist,detail,guest,legacyShape,error} of cases){
+  const name=(guest?'visitor':'owner')+' / '+(artist??(detail?'work':'library'))+(legacyShape?' / original shape':'');
+  await t.test(name,async()=>{
+   const params=new URLSearchParams();
+   if(artist)params.set('artist',artist);
+   if(!legacyShape)params.set('shape','display-v1');
+   const headers=detail?workRequest.workCatalogHeaders(workId):undefined;
+   const step=guest?'public:'+(artist??null):'native:owner:false';
+   const healthy=routeHarness(),recovered=failingRoute(step,error);
+   for(const {model} of [healthy,recovered]){
+    model.deny=guest;
+    model.data.works[0]={...model.data.works[0],id:workId,groupIds:['g']};
+    model.data.members[0].groupIds=['g'];
+    model.data.ratings[0].workIds=[workId];
+    model.personal={writable:true,entries:[{workId,memberId:'m',score:0,stylingScore:null}]};
+    model.publicData={groups:[{id:'g'}],members:[{id:'m',groupIds:['g']}],works:[{id:workId,groupIds:['g'],score:null}],ratings:[],counts:{}};
+   }
+   const query='?'+params;
+   const baseline=await healthy.read(query,headers),r=await recovered.read(query,headers);
+   assert.equal(baseline.status,200,query);
+   assert.equal(r.status,200,query);
+   const data=await r.json();
+   assert.deepEqual(data,await baseline.json(),query);
+   assert.equal(r.headers.get('Cache-Control'),'private, no-store');
+   assert.equal(r.headers.get('Preference-Applied'),baseline.headers.get('Preference-Applied'));
+   assert.doesNotMatch(baseline.headers.get('Server-Timing')??'',/catalog-retry/);
+   assert.ok((r.headers.get('Server-Timing')??'').split(',').some(metric=>metric.trim()==='catalog-retry'));
+   if(detail)assert.deepEqual(data.scope,{type:'work',workId});
+   if(guest){
+    assert.equal(data.personalMvRatings,undefined);
+    const scope={artist:artist??null,workId:detail?workId:null};
+    assert.deepEqual(recovered.model.publicReads,[scope,scope]);
+   }else if(!legacyShape){
+    assert.equal(data.personalMvRatings.entries[0].score,0);
+   }
+   const expected=[...healthy.model.calls];
+   assert.equal(expected.filter(label=>label===step).length,1,query);
+   expected.splice(expected.indexOf(step),0,step);
+   assert.deepEqual(recovered.model.calls,expected,query);
+  });
+ }
+});
+
+test('a second failed read returns its own error and exposes no partial catalog',async()=>{
+ for(const {guest,second,status,code} of [
+  {guest:false,second:disconnected(),status:502,code:'REQUEST_FAILED'},
+  {guest:true,second:new AppError('STORAGE_CHANGING','changed',409),status:409,code:'STORAGE_CHANGING'},
+ ]){
+  const step=guest?'public:stayc':'native:owner:false';
+  const h=failingRoute(step,disconnected(),second);
+  h.model.deny=guest;
+  const response=await h.read('?artist=stayc&shape=display-v1');
+  assert.equal(response.status,status);
+  assert.doesNotMatch(response.headers.get('Server-Timing')??'',/catalog-retry/);
+  const body=await response.json();
+  assert.equal(body.error,code);
+  assert.equal('ratings' in body,false);
+  assert.deepEqual(h.model.calls,guest?['auth','public-query',step,step]:['auth',step,step]);
+ }
+});
+
+test('business errors, overload, invalid data and opt-out signals return after one native read',async()=>{
+ const business=new AppError('UPSTREAM_UNAVAILABLE','Network connection lost.',502);
+ for(const error of [
+  business,
+  new AppError('OWNER_ONLY','owner',403),
+  new AppError('NATIVE_DATA_MISSING','missing',503),
+  new Error('D1_ERROR: no such table: synthetic'),
+  new TypeError('Cannot read properties of undefined'),
+  new SyntaxError('Invalid JSON'),
+  Object.assign(disconnected(),{retryable:false}),
+  Object.assign(disconnected(),{retryable:true,overloaded:true}),
+  Object.assign(new Error('D1_ERROR',{cause:Object.assign(disconnected(),{overloaded:true})}),{retryable:true}),
+  new Error('D1 DB is overloaded. Requests queued for too long.'),
+ ]){
+  const step='native:owner:false',h=failingRoute(step,error);
+  const response=await h.read('?artist=izna&shape=display-v1');
+  assert.equal(response.status,error instanceof AppError?error.status:502,error.message);
+  assert.equal((await response.json()).error,error instanceof AppError?error.code:'REQUEST_FAILED',error.message);
+  assert.deepEqual(h.model.calls,['auth',step],error.message);
+ }
+});
+
+test('auth, explicit refresh, the durable fallback and aborted navigation never repeat a failed operation',async()=>{
+ const url='?artist=babymonster&shape=display-v1';
+ for(const {step,query,legacy,expected} of [
+  {step:'auth',query:url,expected:['auth']},
+  {step:'native:owner:true',query:url+'&refresh=1',expected:['auth','native:owner:true']},
+  {step:'native:owner:true',query:url+'&refresh=background',expected:['auth','native:owner:true']},
+  {step:'fallback:false',query:url,legacy:true,expected:['auth','native:owner:false','fallback:false']},
+  {step:'fallback-fence',query:url,legacy:true,expected:['auth','native:owner:false','fallback:false','fallback-fence']},
+ ]){
+  const h=failingRoute(step,disconnected());
+  h.model.native=!legacy;
+  const response=await h.read(query);
+  assert.equal(response.status,502,step);
+  assert.doesNotMatch(response.headers.get('Server-Timing')??'',/catalog-retry/);
+  assert.deepEqual(h.model.calls,expected,step);
+ }
+ const controller=new AbortController(),step='native:owner:false';
+ const h=routeHarness(label=>{
+  if(label===step){controller.abort();throw disconnected();}
+ });
+ const response=await h.read(url,undefined,controller.signal);
+ assert.ok(!response.ok);
+ assert.deepEqual(h.model.calls,['auth',step]);
+});
+
 test('work detail keeps direct versions, original group members, collaborators and the exact owner score scope',async()=>{
  const workId='recFocus',versionId='recVersion',otherId='recOther';
  const group='recHome',away='recAway';

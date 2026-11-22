@@ -23,7 +23,7 @@ test('roster members personal calculations are equal before and after narrow res
 test('zero remains scored, null stays unscored, scoped counts cannot claim global coverage',()=>{const x=projectArtistCatalog(sample(),group);assert.equal(x.scope.type,'artist');assert.equal(x.scope.groupId,group);assert.equal(x.counts.works,3);assert.equal(x.counts.ratedWorks,2);assert.equal(x.counts.scoreSum,8);assert.equal(x.works[0].score,0);assert.equal(x.works[1].score,null);assert.throws(()=>projectArtistCatalog(sample(),'recMissing'),e=>e.status===404);});
 test('owner check and source fence precede response projection; refresh and full catalog untouched',()=>{
  const source=fs.readFileSync('app/api/catalog/route.ts','utf8').replace(/\s+/g,'');
- const ordered=['awaitownerForRequest()','requestedArtist(params)','awaitwithNativeCatalog(user.userId,force,',
+ const ordered=['awaitownerForRequest()','requestedArtist(params)','withNativeCatalog(user.userId,force,',
   'awaitpersonalMvRatingsForOwner(user.userId,control,result,work?.id)','awaitgetReadableCatalog(user.userId,force)',
   'awaitassertSourceUnchanged(user.userId,native.state)','artist?projectArtistCatalog(result,artist,personal?.entries):work?projectWorkCatalog(result,work,personal?.entries):result'];
  let previous=-1;

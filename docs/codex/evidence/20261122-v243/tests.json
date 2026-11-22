@@ -1,0 +1,153 @@
+{
+  "applicationCommit": "c303ec968a67f35531b6908c7c0d6d55a665578b",
+  "baselineApplicationCommit": "bdc1e7d7d25c03580594e8fd6ea92bdd0273307c",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4285,"pass": 4154,"fail": 92,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4288,"pass": 4156,"fail": 93,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1357,"pass": 1357,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 684,
+          "localBytes": 36132618
+        }
+      },
+      "retainedFailureCount": 91,
+      "newFailures": [
+        {
+          "suite": "main",
+          "file": "tests/heygabby-complete-viewing.test.cjs",
+          "test": "actual anonymous stage media SSR shows one formal player, its scope note and no duplicate or stale candidate card"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "each native member route receives only its own I DO ME release photograph and retains the original"
+        }
+      ],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/artist-navigation.test.cjs",
+          "test": "cross-page navigation retains draft guard and captures browse position before leaving"
+        }
+      ],
+      "addedTests": [
+        "Doo Doom Chit shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "SING ! matches six April release portraits to public credits and keeps the interviews behind each portrait",
+        "opening an owner score editor reads its row and field definitions in one database call"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4285,"pass": 4158,"fail": 88,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4288,"pass": 4160,"fail": 89,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1357,"pass": 1357,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 684,
+          "localBytes": 36132618
+        }
+      },
+      "retainedFailureCount": 87,
+      "newFailures": [
+        {
+          "suite": "main",
+          "file": "tests/heygabby-complete-viewing.test.cjs",
+          "test": "actual anonymous stage media SSR shows one formal player, its scope note and no duplicate or stale candidate card"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "each native member route receives only its own I DO ME release photograph and retains the original"
+        }
+      ],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/artist-navigation.test.cjs",
+          "test": "cross-page navigation retains draft guard and captures browse position before leaving"
+        }
+      ],
+      "addedTests": [
+        "Doo Doom Chit shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "SING ! matches six April release portraits to public credits and keeps the interviews behind each portrait",
+        "opening an owner score editor reads its row and field definitions in one database call"
+      ],
+      "removedTests": []
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each verified and ran the full test suite in a dedicated checkout of the frozen application.",
+  "targetedRerun": {
+    "testOnlyCommit": "726de16dd7b5bcf37ca5ffa3807224dbb103c911",
+    "sameApplicationCommit": "c303ec968a67f35531b6908c7c0d6d55a665578b",
+    "testFiles": [
+      "tests/heygabby-complete-viewing.test.cjs",
+      "tests/kiiikiii-artist.test.cjs"
+    ],
+    "input": "Each dedicated checkout used the original application and only the two corrected test files. Each full test file ran once.",
+    "coverage": "Hey Gabby used the full anonymous stage page, including one formal player, its poster, source link and version note. KiiiKiii used rendered button text and dialog semantics for each of the five member routes.",
+    "platforms": {
+      "win": {
+        "tests": 32,
+        "pass": 32,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0,
+        "exitCode": 0
+      },
+      "linux": {
+        "tests": 32,
+        "pass": 32,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0,
+        "exitCode": 0
+      }
+    }
+  }
+}

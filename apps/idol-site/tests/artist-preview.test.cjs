@@ -6,7 +6,42 @@ test('sample selects only the existing exact group, stable IDs and distinct real
 test('queue predicates preserve existing watched and zero-score semantics',()=>{const w={id:'recOne',song:'DRIP',name:'DRIP',version:'原版',videoType:'官方MV',officialTitle:'DRIP M/V',score:0,stageScore:null,watched:'已观看',url:'url'};assert.equal(artistWorkRows([w],'unrated','').length,0);assert.equal(artistWorkRows([{...w,score:null}],'unrated','DRIP').length,1);assert.equal(artistWorkRows([w],'rewatch','').length,0);});
 test('all player and editing destinations use the existing supported application routes',()=>{assert.equal(artistWorkUrl({id:'recABC'}),'/?view=works&work=recABC');assert.equal(artistWorkUrl({id:'recABC'},true),'/?view=works&work=recABC&video=stage');assert.equal(artistMemberUrl('recXYZ'),'/?view=members&member=recXYZ');});
 test('sample has no save path, uses authenticated catalog, and cannot alter source binding',()=>{const s=fs.readFileSync('components/artist-sample.tsx','utf8');assert.match(s,/readArtistCatalog\('babymonster', controller\.signal\)/);assert.doesNotMatch(s,/method\s*:\s*['"](?:POST|PUT|DELETE|PATCH)/);assert.doesNotMatch(s,/localStorage|sessionStorage|\/api\/save|\/api\/manage/);assert.match(s,/memberWorks\(data,m.id\)/);assert.match(s,/memberWorkSummary\(items\)/);assert.match(s,/collection\?\.members.find\(m=>m.id===route.member\)/);assert.match(s,/personal|暂无对应造型图/);});
-test('public artist facts have real source links and local image assets, never private catalog fields',()=>{const d=JSON.parse(fs.readFileSync('data/babymonster-artist.json','utf8'));for(const item of [d.hero,...d.updates,...d.releases]){assert.match(item.image,/^\/artist\/babymonster\/[a-zA-Z0-9._-]+$/);assert.ok(fs.existsSync('public'+item.image));}for(const u of d.updates){assert.match(u.date,/^2026-10-\d\d$/);assert.equal(new URL(u.url).hostname,'yg-life.com');}for(const w of d.wins){assert.ok(/^https:\/\//.test(w.sourceUrl));assert.ok(w.date&&w.song&&w.show);}const raw=JSON.stringify(d);assert.doesNotMatch(raw,/\brec[A-Za-z0-9]{8,}|file_token|stageScore|stylingScore|FEISHU_APP_SECRET/);});
+test('public artist facts have real source links and local image assets, never private catalog fields', () => {
+  const {directory, ...facts} = JSON.parse(fs.readFileSync('data/babymonster-artist.json', 'utf8'));
+  for (const item of [facts.hero, ...facts.updates, ...facts.releases]) {
+    assert.match(item.image, /^\/artist\/babymonster\/[a-zA-Z0-9._-]+$/);
+    assert.ok(fs.existsSync('public' + item.image));
+  }
+  for (const update of facts.updates) {
+    assert.match(update.date, /^2026-10-\d\d$/);
+    assert.equal(new URL(update.url).hostname, 'yg-life.com');
+  }
+  for (const win of facts.wins) {
+    assert.ok(/^https:\/\//.test(win.sourceUrl));
+    assert.ok(win.date && win.song && win.show);
+  }
+
+  const privateFields = /\brec[A-Za-z0-9]{8,}|file_token|stageScore|stylingScore|FEISHU_APP_SECRET/;
+  assert.doesNotMatch(JSON.stringify(facts), privateFields);
+  const {artistCatalog, registry} = require('./fixtures/current-artist-pages.cjs');
+  const group = registry.find(row => row.slug === 'babymonster');
+  const catalog = artistCatalog(group);
+  const directoryFields = {
+    members: ['stageName', 'cnName', 'status'],
+    works: ['name', 'song', 'version', 'videoType', 'officialTitle', 'releaseDate', 'videoId', 'stageAction'],
+  };
+  assert.deepEqual(Object.keys(directory).sort(), ['members', 'works']);
+  assert.equal(directory.members.length, 7);
+  assert.equal(directory.works.length, 19);
+  for (const [kind, fields] of Object.entries(directoryFields)) {
+    const visible = catalog[kind].filter(record => record.groupIds.includes(group.groupId));
+    assert.deepEqual(directory[kind].map(record => record.id).sort(), visible.map(record => record.id).sort());
+    for (const {id, ...publicFacts} of directory[kind]) {
+      assert.deepEqual(Object.keys(publicFacts).sort(), [...fields].sort(), id);
+      assert.doesNotMatch(JSON.stringify(publicFacts), privateFields);
+    }
+  }
+});
 test('styles are scoped to the standalone sample and preserve full mobile group image and individual photo containment',()=>{const s=fs.readFileSync('app/preview/babymonster/artist.css','utf8');assert.doesNotMatch(s,/(?:^|\})\s*(?:body|html|:root|\.header|\.work-card)\s*\{/);assert.match(s,/\.as-hero-image img\{object-fit:contain!important/);assert.match(s,/\.as-member-look>img[^}]+object-fit:contain/);assert.match(s,/\.as-tabs button[^}]+min-height:60px/);assert.match(s,/prefers-reduced-motion/);});
 test('sample local filters do not synthesize framework history navigation events',()=>{const s=fs.readFileSync('components/artist-sample.tsx','utf8');assert.match(s,/new Event\('artist-location-change'\)/);assert.doesNotMatch(s,/new PopStateEvent/);assert.match(s,/addEventListener\('popstate',callback\)/);});
 

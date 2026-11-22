@@ -1,0 +1,94 @@
+.kf-directory-site .kf-header { background: var(--kf-paper); min-height: 59px; }
+.kf-directory-site .kf-brand { color: var(--kf-ink); font-size: 28px; }
+.kf-directory-site .kf-footer { background: var(--kf-ink); color: var(--kf-cream); padding-block: 22px; }
+.kf-directory-site .kf-footer strong { color: inherit; font-size: 22px; }
+.kf-directory-mast { background: #000; color: white; }
+.kf-directory-mast > div { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1440px; min-height: 68px; margin: auto; padding-inline: var(--kf-pad); }
+.kf-directory-mark { display: inline-flex; align-items: center; min-height: 44px; }
+.kf-directory-mark img { display: block; width: 160px; height: auto; }
+.kf-directory-mast nav { display: flex; align-items: center; gap: 26px; }
+.kf-directory-mast nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 5px; font-size: 15px; }
+.kf-directory-mast nav a[aria-current] { font-weight: 700; text-decoration: underline var(--kf-sun) 2px; text-underline-offset: .5em; }
+.kf-directory-site .kf-content { padding-block: 28px 42px; }
+.kf-directory-panel.kf-directory-panel { margin: 0; }
+.kf-directory-panel > header { margin-bottom: 23px; }
+.kf-directory-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--kf-line); padding-bottom: 10px; }
+.kf-directory-title h1 { font: 700 clamp(32px,3.75vw,54px)/1.42 'Noto Sans SC',system-ui,sans-serif; }
+.kf-directory-title p { flex: none; color: var(--kf-cherry); font-size: 22px; font-weight: 700; }
+.kf-directory-credit { display: inline-flex; align-items: center; min-height: 32px; font: 500 13px/1.4 KiofMono,sans-serif; text-decoration: underline; text-underline-offset: .2em; }
+.kf-directory-roster { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 24px; }
+.kf-directory-roster > a { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.kf-directory-roster img { display: block; width: 100%; height: auto; aspect-ratio: 2/3; }
+.kf-directory-member-name { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.kf-directory-member-name strong { font: 700 26px/1.4 KiofDisplay,sans-serif; }
+.kf-directory-member-name small { color: var(--kf-cherry); font-size: 11px; }
+.kf-directory-roster .member-display-name { font-size: 16px; overflow-wrap: anywhere; }
+.kf-directory-filters { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin-bottom: 23px; }
+.kf-directory-search { display: flex; align-items: center; width: min(438px,100%); min-height: 44px; padding-inline: 12px 2px; border: 1px solid var(--kf-line); background: var(--kf-cream); }
+.kf-directory-search input[name=q] { flex: 1; min-width: 0; min-height: 44px; border: 0; background: transparent; color: inherit; font-size: 16px; }
+.kf-directory-search :is(button,a) { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding-inline: 6px; color: var(--kf-cherry); font-size: 13px; font-weight: 700; }
+.kf-directory-filter-links { display: flex; flex-wrap: wrap; gap: 7px; }
+.kf-directory-filter-links a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; padding-inline: 15px; border: 1px solid var(--kf-line); background: var(--kf-cream); font-size: 13px; }
+.kf-directory-filter-links a[aria-current] { background: var(--kf-cherry); border-color: var(--kf-cherry); color: var(--kf-cream); font-weight: 700; }
+.kf-directory-queues { flex-basis: 100%; }
+.kf-directory-panel .kf-work-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.kf-directory-panel .kf-work { min-width: 0; padding: 12px 12px 6px; background: var(--kf-cream); }
+.kf-directory-mv { display: flex; flex-direction: column; gap: 5px; color: inherit; }
+.kf-directory-poster { display: block; width: 100%; aspect-ratio: 16/9; }
+.kf-directory-poster img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.kf-directory-work-copy { min-width: 0; }
+.kf-directory-panel .kf-work h3 { margin: 0; color: var(--kf-cherry); font: 700 25px/1.42 KiofDisplay,sans-serif; overflow-wrap: anywhere; }
+.kf-directory-panel .kf-work p { margin: 2px 0 0; font-size: 12px; }
+.kf-directory-stage { display: inline-flex; align-items: center; min-height: 44px; color: var(--kf-cherry); font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
+.kf-directory-notice { margin-block: 12px; font-size: 14px; }
+.kf-directory-notice :is(a,button) { display: inline-flex; align-items: center; min-height: 44px; color: var(--kf-cherry); font-weight: 700; }
+.kf-directory-panel .artist-timeline .at-list { padding: 0; margin: 0; }
+.kf-directory-panel .artist-timeline .at-list > li { padding: 0; }
+.kf-directory-panel .artist-timeline .at-list > li:not(:last-child)::after { inset-inline-start: 189px; top: 14px; bottom: -4px; background: var(--kf-line); }
+.kf-directory-panel .artist-timeline .at-node { inset-inline-start: 185px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--kf-cherry); }
+.kf-directory-panel .artist-timeline .at-node > *, .kf-directory-panel .artist-timeline [data-timeline-visual="debut"] h3::after { display: none; }
+.kf-directory-panel .at-event { display: grid; grid-template-columns: 165px minmax(0,1fr); align-content: start; gap: 0 53px; min-height: 92px; margin: 0; padding: 0 0 22px; position: relative; border: 0; }
+.kf-directory-panel .artist-timeline .at-event .at-when { grid-area: 1/1; font: 700 14px/1.5 KiofMono,sans-serif; margin: 0; }
+.kf-directory-panel .at-event .at-event-kind { grid-area: 1/1; position: static; clip-path: none; width: auto; height: auto; overflow: visible; align-self: start; margin: 25px 0 0; color: var(--kf-cherry); font-size: 12px; }
+.kf-directory-panel .artist-timeline .at-list .at-event h3 { grid-area: 1/2; margin: 0; font: 700 22px/1.42 'Noto Sans SC',system-ui,sans-serif; }
+.kf-directory-panel .at-references { grid-column: 2; margin: 0; display: flex; flex-wrap: wrap; gap: 0 16px; }
+.kf-directory-panel .at-references :is(a,button) { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; padding: 0; color: var(--kf-cherry); font: 700 13px/1.4 KiofMono,sans-serif; text-decoration: underline; text-underline-offset: .2em; }
+@media (min-width:701px) and (max-width:1100px) {
+  .kf-directory-roster { gap: 16px; }
+  .kf-directory-panel .kf-work-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:700px) {
+  .kf-directory-site { --kf-pad: 18px; }
+  .kf-directory-site .kf-header { min-height: 44px; flex-wrap: nowrap; padding-block: 8px; }
+  .kf-directory-site .kf-brand { font-size: 20px; }
+  .kf-directory-site .kf-header nav { gap: 10px; font-size: 11px; }
+  .kf-directory-site .kf-header nav a:first-child { display: inline; }
+  .kf-directory-site .kf-footer { padding-block: 17px; }
+  .kf-directory-site .kf-footer a { margin-left: auto; }
+  .kf-directory-site .kf-footer strong { font-size: 18px; }
+  .kf-directory-mast > div { display: block; padding-top: 7px; }
+  .kf-directory-mark img { width: 135px; }
+  .kf-directory-mast nav { gap: 5px; justify-content: space-between; }
+  .kf-directory-mast nav a { font-size: 12px; }
+  .kf-directory-site .kf-content { padding-block: 17px 26px; }
+  .kf-directory-title p { font-size: 15px; }
+  .kf-directory-panel > header, .kf-directory-filters { margin-bottom: 17px; }
+  .kf-directory-credit { font-size: 11px; }
+  .kf-directory-roster { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+  .kf-directory-member-name strong { font-size: 20px; }
+  .kf-directory-roster .member-display-name { font-size: 13px; }
+  .kf-directory-filters { align-items: start; flex-direction: column; }
+  .kf-directory-search { width: 100%; }
+  .kf-directory-panel .kf-work-grid { grid-template-columns: minmax(0,1fr); gap: 8px; }
+  .kf-directory-panel .kf-work { padding: 8px 8px 2px; }
+  .kf-directory-mv { display: grid; grid-template-columns: 111px minmax(0,1fr); gap: 12px; align-items: center; }
+  .kf-directory-poster { height: 68px; }
+  .kf-directory-panel .kf-work h3 { font-size: 19px; }
+  .kf-directory-panel .at-event { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: flex-start; min-height: 85px; padding-left: 26px; gap: 4px 12px; }
+  .kf-directory-panel .artist-timeline .at-list > li:not(:last-child)::after { inset-inline-start: 6px; }
+  .kf-directory-panel .artist-timeline .at-node { inset-inline-start: 2px; }
+  .kf-directory-panel .at-event .at-event-kind { order: 1; margin: 0; }
+  .kf-directory-panel .artist-timeline .at-event .at-when { order: 0; font-size: 12px; }
+  .kf-directory-panel .artist-timeline .at-list .at-event h3 { order: 2; width: 100%; font-size: 17px; }
+  .kf-directory-panel .at-references { order: 3; width: 100%; }
+}

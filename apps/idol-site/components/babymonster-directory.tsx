@@ -9,6 +9,8 @@ import {publicVideoCover} from '@/lib/idol/mv-public-covers';
 import {videoId} from '@/lib/idol/values';
 import {ArtistTimeline} from './artist-timeline';
 import {ArtistDirectorySearch, followDirectoryLink} from './artist-directory-search';
+import {ArtistDirectoryRecordLinks} from './artist-directory-record-links';
+import {directoryRecordReturn,timelineLinkAnchor} from '@/lib/idol/directory-record-return';
 import {ArtistTimelineHost, useArtistTimelineHostOptions} from './artist-timeline-host';
 import {ReliableImage} from './reliable-image';
 import {useCanEdit} from '@/components/public-access';
@@ -138,14 +140,16 @@ function TimelineDirectory({route,data,initialTimeline,loading,error,retry}: Dir
   const count=rows?rows.filter(event=>event?.reviewStatus==='ready').length+' 条记录':undefined;
   const publicFirst=!!input&&(!data||host.timelineLoading)&&!host.timelineError;
   const returnTo=artistRouteUrl(route,BABYMONSTER_PATH);
-  const recordHref=(kind:'member'|'work',id:string)=>kind==='work'
-    ? artistWorkUrl({id},false,returnTo) : artistMemberUrl(id,returnTo);
+  const recordHref=(kind:'member'|'work',id:string,eventId:string)=>{
+    const target=directoryRecordReturn(returnTo,timelineLinkAnchor(eventId,kind,id));
+    return kind==='work'?artistWorkUrl({id},false,target):artistMemberUrl(id,target);
+  };
 
   return <DirectoryPanel section="updates" count={count} error={publicFirst?error:undefined} retry={retry}>
-    {publicFirst
+    <ArtistDirectoryRecordLinks route={returnTo} ready={!publicFirst}>{publicFirst
       ? <ArtistTimeline input={input} context={timelineContext} memberLabels={memberLabels} workLabels={workLabels}
           recordHref={host.blocked||host.restoreBlocked?undefined:recordHref} showTitle={false}/>
-      : <ArtistTimelineHost groupId={BABYMONSTER_GROUP_ID} catalog={data} loading={loading} error={error} onRetry={retry} recordHref={recordHref}/>}
+      : <ArtistTimelineHost groupId={BABYMONSTER_GROUP_ID} catalog={data} loading={loading} error={error} onRetry={retry} recordHref={recordHref}/>}</ArtistDirectoryRecordLinks>
   </DirectoryPanel>;
 }
 

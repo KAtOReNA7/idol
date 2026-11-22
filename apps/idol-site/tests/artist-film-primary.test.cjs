@@ -162,7 +162,7 @@ test('stage options keep other performances view-only and ignore a stale saved s
 
 test('KISS OF LIFE stage cards use one link and the matching thumbnail, date and score across the full stage filter',async()=>{
   const group=registry.find(g=>g.slug==='kissoflife'), catalog=artistCatalog(group);
-  const unfiltered=parse(await renderArtist(group,{section:'works',format:'stage'}));
+  const unfiltered=parse(await renderArtist(group,{section:'works',format:'stage'},catalog,{canEdit:true}));
   const cards=unfiltered.querySelectorAll('.kf-work-grid .kf-work');
   assert.equal(cards.length,catalog.works.filter(w=>w.stage||w.stageSupplement?.alternatives.length).length);
   for(const card of cards){
@@ -184,7 +184,7 @@ test('KISS OF LIFE stage cards use one link and the matching thumbnail, date and
   const render=async(format,overrides={})=>{
     const data={...catalog,works:[{...same,...overrides}]};
     const fields={section:'works',format,q:'Te Quiero'};
-    return parse(await renderArtist(group,fields,data)).querySelector('.kf-work');
+    return parse(await renderArtist(group,fields,data,{canEdit:true})).querySelector('.kf-work');
   };
   const stage=await render('stage',{score:8,stageScore:0});
   assert.match(stage.text,/与 MV 页为同一支表演视频/);

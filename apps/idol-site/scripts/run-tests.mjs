@@ -16,7 +16,7 @@ const current = [
   'catalog-read-deadline', 'expanded-read-deadline', 'timeline-navigation',
   'mv-look-selection', 'mv-look-successor-policy', 'photo-soldelta5-registry', 'archive-transfer',
   'image-host-matrix', 'timeline-host-matrix', 'work-video-player', 'browser-catalog',
-  'babymonster-share-directories', 'itzy-kill-my-doubt-release',
+  'babymonster-share-directories', 'kiof-share-directories', 'itzy-kill-my-doubt-release',
   'artist-roster-return', 'native-timeline-link-focus', 'artist-library-filters', 'artist-film-primary', 'artist-mv-card-targets', 'witchx-portrait-credit', 'artist-brand-portraits', 'three-group-public-bridge', 'home-read-deadline',
   'artist-migration', 'public-artist-copy', 'image-group-index', 'unused-unis-font-build-assets',
   'editorial-fonts-woff2', 'font-woff2', 'candidate-font-woff2',

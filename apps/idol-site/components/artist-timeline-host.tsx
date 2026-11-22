@@ -11,6 +11,7 @@ import {prepareTimelinePresentation} from '../lib/idol/timeline/presentation';
 import {CHRONOLOGICAL_TIMELINE_FILTERS} from '../lib/idol/timeline/model';
 import {ArtistTimeline, type ArtistTimelineProps} from './artist-timeline';
 import {useTimelineReturn} from './use-timeline-return';
+import {directoryRecordReturn,timelineLinkAnchor} from '@/lib/idol/directory-record-return';
 
 export interface TimelineNavigationRequest {
   eventId: string; kind: 'member'|'work'; targetId: string; groupId: string; returnTo: string; former: boolean;
@@ -85,7 +86,8 @@ export function ArtistTimelineHost({groupId,catalog,background,loading=false,err
     const identity=(kind==='member'?presentation.identity.members:presentation.identity.works).get(targetId);
     if(!identity?.usable||!identity.groupIds.includes(groupId))return;
     const former=kind==='member'&&!identity.currentGroupIds.includes(groupId)&&identity.formerGroupIds.includes(groupId);
-    options.navigate({eventId,kind,targetId,groupId,returnTo:routeKey,former},()=>rememberTarget({eventId,kind,targetId},undefined,true));
+    const returnTo=recordHref?directoryRecordReturn(routeKey,timelineLinkAnchor(eventId,kind,targetId)):routeKey;
+    options.navigate({eventId,kind,targetId,groupId,returnTo,former},()=>rememberTarget({eventId,kind,targetId},undefined,true));
   }
   return <div ref={rootRef} data-timeline-host={groupId} data-timeline-ready={ready?'true':'false'} data-timeline-style-ready={styles?'true':'false'}>
     <ArtistTimeline showTitle={showTitle} input={input} context={presentation.identity.context} catalog={data}

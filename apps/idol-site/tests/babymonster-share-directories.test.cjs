@@ -112,7 +112,9 @@ test('BABYMONSTER shared timeline preserves eleven chronological dates and all e
       assert.deepEqual(links.map(a=>a.getAttribute('data-timeline-target-id')),[...event.memberIds,...event.workIds]);
       for(const link of links){
         assert.equal(link.getAttribute('data-timeline-event-trigger'),event.id);
-        recordLink(link,link.getAttribute('data-timeline-target-kind'),link.getAttribute('data-timeline-target-id'),source);
+        const kind=link.getAttribute('data-timeline-target-kind'),id=link.getAttribute('data-timeline-target-id');
+        assert.equal(link.id,'event-'+event.id+'-'+kind+'-'+id);
+        recordLink(link,kind,id,source+'#'+link.id);
       }
     }
   }

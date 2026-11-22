@@ -1,6 +1,7 @@
 'use client';
 
 import {useId, useMemo, type ReactNode} from 'react';
+import {timelineLinkAnchor} from '@/lib/idol/directory-record-return';
 import type {TimelineDate, TimelineEvent, TimelineFilters, TimelineValidationContext} from '../lib/idol/timeline/types';
 import {selectChronologicalTimeline, timelineDisplayDate, timelineDateKind} from '../lib/idol/timeline/model';
 import {validateTimeline} from '../lib/idol/timeline/validate';
@@ -95,7 +96,10 @@ function EventLinks({event,context,onMember,onWork,memberLabels,workLabels,relea
     if (!target.usable) return <span key={key}>{target.label}</span>;
     const trigger={'data-timeline-event-trigger':event.id,'data-timeline-target-kind':target.kind,'data-timeline-target-id':target.id};
     const href=target.kind==='release'?null:recordHref?.(target.kind,target.id,event.id);
-    if (href) return <a key={key} {...trigger} href={href} data-member-work-trigger={'timeline:'+event.id+':'+target.kind+':'+target.id} onClick={e=>{
+    const anchor=target.kind==='release'?undefined:timelineLinkAnchor(event.id,target.kind,target.id);
+    const nativeId=anchor&&href?.endsWith(encodeURIComponent('#'+anchor))?anchor:undefined;
+    if (href) return <a key={key} {...trigger} href={href} id={nativeId} referrerPolicy={nativeId?'no-referrer':undefined}
+      data-member-work-trigger={'timeline:'+event.id+':'+target.kind+':'+target.id} onClick={e=>{
       if (!target.navigate || e.defaultPrevented || e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       e.preventDefault(); target.navigate(target.id,event.id);
     }}>{target.label}</a>;

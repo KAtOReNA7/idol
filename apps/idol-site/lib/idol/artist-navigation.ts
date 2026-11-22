@@ -1,4 +1,5 @@
 import {supportsReleaseFilter} from './artist-library-format';
+import {hasDirectoryRecordAnchor} from './directory-record-return';
 import sevenReleaseKeys from '../../data/seven-redesign-navigation-keys.json';
 import {publicArtistKeysForPath,validPublicArtistRoute} from './public-artist-route-keys';
 import katseyeRouteKeys from '../../data/katseye-navigation-keys.json';
@@ -80,6 +81,12 @@ const bases=[...candidateArtistPaths,SAYMYNAME_PATH,KATSEYE_PATH,ITZY_PATH,LESSE
 export function safeArtistReturn(value:string|null|undefined):string|null{
  if(!value||value.length>4096)return null;
  if(releaseReturnLabels.has(value))return value;
+ const fragment=value.indexOf('#');
+ if(fragment!==-1&&fragment<value.length-1){
+  if(!value.startsWith('/')||value.startsWith('//'))return null;
+  const base=safeArtistReturn(value.slice(0,fragment)),anchor=value.slice(fragment+1);
+  return base&&hasDirectoryRecordAnchor(base,anchor)?base+'#'+anchor:null;
+ }
  try{const u=new URL(value,'https://site.invalid');if(u.origin!=='https://site.invalid'||!bases.includes(u.pathname)||u.hash)return null;
  for(const key of u.searchParams.keys())if(!['section','member','queue','q','format','roster','reader','release','media','timelineType','timelineImportance','timelineOrder','unit','participant','sort','rosterView','year','event'].includes(key)||u.searchParams.getAll(key).length!==1)return null;
  if(supportsReleaseFilter(u.pathname)&&u.searchParams.get('format')==='release'&&value.includes('#'))return null;

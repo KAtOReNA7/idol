@@ -2,7 +2,7 @@ type Portrait = {preview: string; original: string; sourceUrl: string; label?: s
 export type RecognitionEditionPhoto = Portrait & {label: string};
 export type RecognitionEdition = {
   label: string;
-  portraits: Record<string, Portrait>;
+  portraits: Partial<Record<string, Portrait>>;
   works: {workId: string; videoId: string; memberIds: string[]; label?: string}[];
 };
 

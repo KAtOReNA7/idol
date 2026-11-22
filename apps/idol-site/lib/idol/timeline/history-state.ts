@@ -1,7 +1,9 @@
 /** A fresh entry never inherits another entry's return target or geometry. */
-export function newArtistHistoryState(value: unknown): Record<string, unknown> {
+export function newArtistHistoryState(value: unknown, destination?: string): Record<string, unknown> {
   const next = value && typeof value === 'object' && !Array.isArray(value) ? {...value} as Record<string, unknown> : {};
-  for (const key of ['timelineReturn', 'timelineOverviewFilters', 'artistScroll', 'artistRosterFocus', 'artistRosterOrigin', 'memberWorkFocus', 'artistTimelineLink']) delete next[key];
+  const source = next.artistTimelineLink as {href?:unknown; entry?:unknown} | undefined;
+  for (const key of ['timelineReturn', 'timelineOverviewFilters', 'artistScroll', 'artistRosterFocus', 'artistRosterOrigin', 'memberWorkFocus', 'artistTimelineLink', 'artistTimelineOrigin']) delete next[key];
+  if (destination && source?.href === destination && typeof source.entry === 'string') next.artistTimelineOrigin = source.entry;
   return next;
 }
 

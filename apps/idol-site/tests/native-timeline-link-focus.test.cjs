@@ -16,7 +16,7 @@ const modules = {
   scroll: code('components/use-artist-scroll.ts'),
 };
 
-function browserHistory() {
+function browserHistory(tabStorage = new Map()) {
   const tree = parse('<main id="artist-content"><ol data-artist-timeline><li id="first">'
     + '<a href="'+release+'">封面</a><a href="'+release+'">查看发行</a>'
     + '<a href="https://source.invalid">来源</a></li></ol><a href="'+release+'">目录卡</a></main>');
@@ -24,7 +24,7 @@ function browserHistory() {
   const row = tree.querySelector('li');
   const main = tree.querySelector('main');
   row.matches = selector => row.closest(selector) === row;
-  const frames = new Map(), listeners = new Map(), refs = [];
+  const frames = new Map(), listeners = new Map(), windowListeners = new Map(), refs = [];
   let seq = 0, nextRef = 0, navigationType = 'navigate', effects = [], cleanups = [];
   const body = {};
   const location = {pathname:'', search:'', href:''};
@@ -53,7 +53,13 @@ function browserHistory() {
     useRef(value) { const index = nextRef++; return refs[index] ??= {current:value}; },
   };
   const globals = {
-    history, location, window, document, URL, addEventListener() {}, removeEventListener() {},
+    history, location, window, document, URL, crypto:require('node:crypto').webcrypto,
+    sessionStorage:{getItem:key=>tabStorage.get(key) ?? null, setItem:(key,value)=>tabStorage.set(key,value), removeItem:key=>tabStorage.delete(key)},
+    addEventListener(name, callback) {
+      if (!windowListeners.has(name)) windowListeners.set(name,new Set());
+      windowListeners.get(name).add(callback);
+    },
+    removeEventListener(name, callback) { windowListeners.get(name)?.delete(callback); },
     requestAnimationFrame: fn => { frames.set(++seq, fn); return seq; }, cancelAnimationFrame: id => frames.delete(id),
     performance:{getEntriesByType: () => [{type:navigationType}]}, ResizeObserver:class {observe() {} disconnect() {}},
   };
@@ -84,7 +90,7 @@ function browserHistory() {
     const navigate = render(list, {kept:true});
     navigate({currentTarget:link, button:0, detail});
     const origin = history.state;
-    const next = load('../lib/idol/timeline/history-state').newArtistHistoryState(origin);
+    const next = load('../lib/idol/timeline/history-state').newArtistHistoryState(origin, release);
     render(release, next);
     assert.equal(history.state.artistTimelineLink, undefined);
     assert.equal(history.state.kept, true);
@@ -92,7 +98,10 @@ function browserHistory() {
     return origin;
   }
   function flush() { for (const [id, callback] of [...frames]) { if (frames.delete(id)) callback(); } }
+  const focus = load('./native-timeline-link-focus');
   return {history, document, body, main, cover, text, catalogue, publisher, render, open, flush,
+    connectSharedWork:focus.trackTimelineWorkDocument, recordLeaving:focus.recordLeavingTimelineDetail,
+    emitWindow:name => windowListeners.get(name)?.forEach(fn => fn({type:name})),
     emit: name => listeners.get(name)?.forEach(fn => fn()), setNavigationType: value => { navigationType = value; }};
 }
 
@@ -140,7 +149,63 @@ test('old history, an unrelated destination, a fresh reload and an obsolete link
   restored.setNavigationType('back_forward');
   restored.render(list,{artistTimelineLink:mark});
   restored.flush();
-  assert.equal(restored.document.activeElement, restored.text);
+  assert.equal(restored.document.activeElement, restored.body);
+});
+
+test('forward from an older copy of the same release cannot impersonate Back from the clicked entry', () => {
+  const h = browserHistory();
+  const originalDetail = {};
+  h.render(release, originalDetail);
+  const origin = h.open(h.text);
+  const clickedDetail = h.history.state;
+  assert.equal(clickedDetail.artistTimelineOrigin, origin.artistTimelineLink.entry);
+  h.render(list, origin);
+  h.flush();
+  assert.equal(h.document.activeElement, h.text);
+  h.render(release, originalDetail);
+  h.document.activeElement = h.body;
+  h.render(list, origin);
+  h.flush();
+  assert.equal(h.document.activeElement, h.body);
+  h.render(release, clickedDetail);
+  h.render(list, origin);
+  h.flush();
+  assert.equal(h.document.activeElement, h.text);
+});
+
+test('a new work document and a reloaded native detail identify their own history entry across Back', () => {
+  const sharedHref = '/?view=works&work=recExample&returnTo=%2Fartists%2Fadya';
+  for (const href of [release, sharedHref]) {
+    const storage = new Map(), source = browserHistory(storage);
+    source.text.setAttribute('href',href);
+    const open = source.render(list); open({currentTarget:source.text});
+    const origin = source.history.state;
+    const detail = browserHistory(storage);
+    detail.render(href, href === release ? {artistTimelineOrigin:origin.artistTimelineLink.entry} : {});
+    if (href === release) detail.recordLeaving();
+    else detail.connectSharedWork();
+    assert.equal(detail.history.state.artistTimelineOrigin, origin.artistTimelineLink.entry);
+    detail.emitWindow('pagehide');
+    const back = browserHistory(storage);
+    back.text.setAttribute('href',href);
+    back.setNavigationType('back_forward'); back.render(list,origin); back.flush();
+    assert.equal(back.document.activeElement,back.text);
+    const forward = browserHistory(storage);
+    forward.text.setAttribute('href',href);
+    forward.setNavigationType('back_forward'); forward.render(list,origin); forward.flush();
+    assert.equal(forward.document.activeElement,forward.body);
+  }
+});
+
+test('two independent tabs with identical URLs keep separate navigation and focus', () => {
+  const a = browserHistory(), b = browserHistory(), first = a.open(a.cover), second = b.open(b.text);
+  assert.notEqual(first.artistTimelineLink.entry, second.artistTimelineLink.entry);
+  a.render(list,first); a.flush();
+  assert.equal(a.document.activeElement, a.cover);
+  assert.equal(b.document.activeElement, b.body);
+  b.render(list,second); b.flush();
+  assert.equal(b.document.activeElement, b.text);
+  assert.equal(a.document.activeElement, a.cover);
 });
 
 test('leaving via another control clears stale event focus from that history entry only', () => {

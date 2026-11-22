@@ -22,6 +22,7 @@ import {inQueue as queueIncludes, queueLabels} from '@/lib/idol/queues';
 import {includesMemberWork, indexWorkNames, matchingWorks, makeWatchSequence, nextInSequence, sortWorks} from '@/lib/idol/watch-sequence';
 import {stageStatusLabel, stageMatches} from '@/lib/idol/stage-display';
 import {useBrowseJourney} from '@/components/use-browse-journey';
+import {trackTimelineWorkDocument} from '@/components/native-timeline-link-focus';
 import {defaultFilters, type Nav, type Route, type WorkSort} from '@/lib/idol/journey';
 import './music-experience.css';
 import './candidate-experience.css';
@@ -44,6 +45,9 @@ const navs:[Nav,string][]=[['home','发现'],['works','作品'],['members','成�
 function WorkCard({work,data,onOpen}:{work:Work;data:Catalog;onOpen:()=>void}){return <button data-browse-anchor={"work-"+work.id} className="work-card" onClick={onOpen}><div className="work-art"><WorkCoverImage work={work} label={work.song+' 官方视频封面'} fallback={<div className="cover-empty"><Disc3 size={48}/></div>}/><span className="play-circle"><Play size={18} fill="currentColor"/></span><span className="video-badge">{work.videoType||'视频'}{work.version?' · '+work.version:''}</span></div><div className="work-card-copy"><div><small>{names(data,work.groupIds)||'团体未收录'}</small><h3>{work.song||work.name}</h3></div><span className={'rating-number '+(work.score===null?'unrated':'')}>{work.score===null?'—':work.score.toFixed(1)}</span></div><div className="work-meta"><span>{work.releaseDate}</span><span>{work.watched||'未标记'}</span></div><div className={'stage-card-status '+(work.stage?'ready':'pending')}><strong>{stageStatusLabel(work)}</strong></div></button>}
 
 export default function App(){
+ useEffect(() => {
+  if (new URLSearchParams(window.location?.search).has('returnTo')) return trackTimelineWorkDocument();
+ }, []);
  const canEdit=useCanEdit();
  const [loaded,setData]=useState<Catalog|null>(null);
  const latestCatalog=useRef<{catalog:Catalog;canEdit:boolean}|null>(null),selectedWork=useRef<string|null>(null);

@@ -3,7 +3,7 @@ import {useCallback,useEffect,useLayoutEffect,useRef,type MouseEvent} from 'reac
 
 import {useMemberWorkFocus} from './use-member-work-focus';
 import {useArtistRosterReturn} from './use-artist-roster-return';
-import {nativeTimelineLinkFocus, restoreNativeTimelineLink} from './native-timeline-link-focus';
+import {nativeTimelineLinkFocus, openTimelineWorkDocument, recordLeavingTimelineDetail, restoreNativeTimelineLink, returnedFromTimelineWorkDocument} from './native-timeline-link-focus';
 import {tryArtistHistoryChange} from '../lib/idol/timeline/history-state';
 
 const currentPath = () => location.pathname + location.search;
@@ -13,19 +13,34 @@ const scrollWriteInterval = 500;
 export function useArtistScroll(ready:boolean,routeKey:string){
  useMemberWorkFocus(ready,routeKey);
  const restoring=useRef(true);
- const previousPath=useRef<string|null>(null);
+ const previousEntry=useRef<{path:string; origin:unknown}|null>(null);
  useLayoutEffect(() => {
   if (!ready) return;
   const path = currentPath();
-  const from = previousPath.current;
-  previousPath.current = path;
+  const from = previousEntry.current;
+  previousEntry.current = {path, origin:history.state?.artistTimelineOrigin};
   const saved = history.state?.artistTimelineLink;
-  if (!saved || saved.path !== path) return;
+  if (typeof saved?.entry !== 'string' || saved.path !== path || typeof saved.href !== 'string') return;
   if (from !== null) {
-   if (from !== saved.href) return;
-  } else if ((performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined)?.type !== 'back_forward') return;
+   if (from.path !== saved.href || from.origin !== saved.entry) return;
+  } else if ((performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined)?.type !== 'back_forward'
+      || !returnedFromTimelineWorkDocument(saved)) return;
   return restoreNativeTimelineLink(saved);
  }, [ready, routeKey]);
+ useEffect(() => {
+  if (!ready) return;
+  let cancel: (() => void) | undefined;
+  const resume = (event: PageTransitionEvent) => {
+   if (!event.persisted) return;
+   const saved = history.state?.artistTimelineLink;
+   if (saved?.path === currentPath() && typeof saved.entry === 'string' && typeof saved.href === 'string' && returnedFromTimelineWorkDocument(saved)) {
+    cancel = restoreNativeTimelineLink(saved);
+   }
+  };
+  const stopRecording = recordLeavingTimelineDetail();
+  addEventListener('pageshow', resume);
+  return () => { stopRecording(); removeEventListener('pageshow', resume); cancel?.(); };
+ }, [ready]);
  const remember = useCallback((departure = false, source?: Element) => {
   const path = currentPath();
   const state = history.state;
@@ -42,7 +57,8 @@ export function useArtistScroll(ready:boolean,routeKey:string){
   if (nativeLink) next.artistTimelineLink = nativeLink;
   else if (clearNativeLink) delete next.artistTimelineLink;
   if (clearWork) delete next.memberWorkFocus;
-  tryArtistHistoryChange(() => history.replaceState(next, '', location.href));
+  const applied = tryArtistHistoryChange(() => history.replaceState(next, '', location.href));
+  if (applied && nativeLink && history.state?.artistTimelineLink?.entry === nativeLink.entry) openTimelineWorkDocument(nativeLink);
  }, [ready]);
  useEffect(() => {
   if (!ready) return;

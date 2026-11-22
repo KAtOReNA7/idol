@@ -13,8 +13,8 @@ const boundaries = {
   "e-atheart-aurora-hiatus-observed": "Aurora 于 2025 年 7 月初开始暂停活动，具体日期不详。",
   "e-bewave-six-member-phase-end-announcement": "六人阵容的活动于当日结束，团体随后继续活动。",
   "e-candyshop-yuina-hiatus-announcement": "YUINA 当时暂停团体活动，仍保留团体成员身份。",
-  "e-geenius-spoiler-book-instrumental": "此日期仅适用于器乐版 QR 发行，人声版和 LDC 版另计。",
-  "e-udtt-sena-predebut-departure-candidate": "Sena 在正式出道前离开，此日期只涉及她本人的活动。"
+  "e-geenius-spoiler-book-instrumental": "《Spoiler Book》另有人声版与 LDC 版。",
+  "e-udtt-sena-predebut-departure-candidate": ""
 };
 
 /** Public copy preserves the underlying dates, identities and sources. */

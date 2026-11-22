@@ -27,8 +27,8 @@ const publishedBoundary={
   "e-atheart-aurora-hiatus-observed": "Aurora 于 2025 年 7 月初开始暂停活动，具体日期不详。",
   "e-bewave-six-member-phase-end-announcement": "六人阵容的活动于当日结束，团体随后继续活动。",
   "e-candyshop-yuina-hiatus-announcement": "YUINA 当时暂停团体活动，仍保留团体成员身份。",
-  "e-geenius-spoiler-book-instrumental": "此日期仅适用于器乐版 QR 发行，人声版和 LDC 版另计。",
-  "e-udtt-sena-predebut-departure-candidate": "Sena 在正式出道前离开，此日期只涉及她本人的活动。"
+  "e-geenius-spoiler-book-instrumental": "《Spoiler Book》另有人声版与 LDC 版。",
+  "e-udtt-sena-predebut-departure-candidate": ""
 };
 // Reviewed native pages have their own event/edition identities. Freeze their
 // complete source documents rather than infer acceptance from current output.
@@ -78,7 +78,9 @@ function reportAssertions(dom,group,held,{shown=true,native=false}={}){
    if(native&&group.slug==='udtt')assert.equal(text(times[0]),row.recordDate+' / '+row.dateLabel);
    else assert.equal(times[0].attrs.datetime,row.recordDate);
   }else{
-   assert.ok(text(node).includes(publishedBoundary[row.eventId]??row.boundary));
+   const boundary=publishedBoundary[row.eventId]??row.boundary;
+   if(boundary)assert.ok(text(node).includes(boundary));
+   else {assert.ok(text(node).includes(row.summary));assert.equal(find(node,n=>n.tag==='strong').length,0);}
    const change=priorityDates.changes.find(c=>c.eventId===row.eventId);assert.ok(change,'only reviewed resolved records');assert.deepEqual(row.eventDate,change.after.eventDate);assert.equal(held.some(e=>e.id===row.eventId),false);
   }
   if(row.recordDate)assert.ok(text(node).includes(row.recordDate));else assert.match(text(node),/记录日期未确认/);
@@ -106,6 +108,27 @@ function sharedAssertions(dom,group,ready,held,expected,{navigation=true,release
  reportAssertions(dom,group,held);
  return axis;
 }
+const editorialPhrases=[
+ '此条记录预告日期','音源发行另记','活动预告不作为','本页仅列 ADYA','下方仅列芮英',
+ '不外推其他成员','不作为全团活动','不据此认定退团','原报道明确回顾','所示日期为采访发表日',
+ '不把互动影像项目','人声版和 LDC 版另计','不将节目日期当作发行日期','曲目按正版平台实际列表记录',
+ '分别记录出道','视频日期与音源发行日期分别记录','从 2024 年的 RETRY 开始，按时间读下去',
+ '公告日不等于活动举办日','此日期只涉及她本人的活动','计划：公告：','大事沿一条时间线展开'
+];
+function assertTimelineReaderCopy(dom){
+ const values=[];
+ function visit(node){
+  if(typeof node==='string'){values.push(node);return;}
+  if(['script','style','template','noscript'].includes(node.tag)||Object.hasOwn(node.attrs,'hidden'))return;
+  for(const key of ['alt','aria-label','aria-description','aria-valuetext','aria-roledescription','placeholder','title']){
+   if(node.attrs[key])values.push(node.attrs[key]);
+  }
+  node.children.forEach(visit);
+ }
+ visit(dom);
+ const copy=values.join('\n');
+ for(const phrase of editorialPhrases)assert.ok(!copy.includes(phrase),phrase);
+}
 function headingAssertion(dom,expected=1){
  const headings=find(dom,n=>/^h[1-6]$/.test(n.tag)&&/^(?:大事时间轴|团体时间轴|时间轴|时间线|历程|HISTORY|TIMELINE|CHRONOLOGY \/ 时间轴|Timeline \/ 时间轴|从 2025 开始|OUR DAYS|Through the years|THE\s*STORY)$/i.test(text(n).trim()));
  assert.equal(headings.length,expected,'visible timeline heading(s) in the approved language/typography: '+JSON.stringify(find(dom,n=>/^h[1-6]$/.test(n.tag)).map(text)));
@@ -122,6 +145,13 @@ function nativeAssertions(dom,group,contract,data,home,held,{genblueFiltered=fal
   const node=nodes.find(n=>eventId(n)===event.id),links=find(node,n=>n.tag==='a');
   const title=data.publicContent?.events?.[event.id]?.title??event.title;
   assert.ok(text(node).includes(title),`native title ${event.id}`);
+  if(event.id==='witchx-anniversary-announcement'){
+   assert.equal(find(node,n=>n.tag==='time')[0].attrs.datetime,'2025-10-26');
+   assert.ok(text(node).includes('海报所列演出日'));
+   assert.ok(text(node).includes('一周年演唱会预告'));
+   assert.ok(text(node).includes('SHOWKING K-POP CENTER'));
+   assert.ok(links.some(a=>a.attrs.href===event.sourceUrl));
+  }
   for(const hold of held)assert.notEqual(event.id,hold.id,'held fact must only occur in reporting overlay');
   const destinations=links.filter(n=>!n.attrs.href.startsWith('https://')).map(n=>{
    if(['izna','ifeye'].includes(group.slug)){
@@ -222,6 +252,7 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
    if(group.slug==='udtt'){
     const nativeRoute=product.udttRoute(route);assert.ok(nativeRoute);
     dom=tree(product.renderUdtt({route:nativeRoute,helpers:product.udttHelpers,catalog:scoped,canEdit:false}));
+    assertTimelineReaderCopy(dom);
     const axes=find(dom,n=>hasClass(n,'ud-timeline')&&!reported(n));assert.equal(axes.length,1);
     const nodes=axes[0].children.filter(n=>typeof n!=='string'),resolvedReports=reportRecords.filter(r=>r.slug==='udtt'&&r.eventDate!==null);assert.equal(nodes.length+resolvedReports.length,ready.length);
     if(!home){assert.deepEqual(nodes.map(eventId),['e-udtt-retry-prerelease-candidate','e-udtt-school-rush-debut-candidate','e-udtt-kwave-ambassador','e-udtt-viper-digital-release']);assert.deepEqual(nodes.map(eventId).sort(),expected.filter(id=>!resolvedReports.some(r=>r.eventId===id)).toSorted(),'native announcement-date order preserves its frozen IDs; promoted report is checked separately');for(const n of nodes)for(const a of find(n,x=>x.tag==='a'&&x.attrs.href.startsWith('#/'))){assert.ok(product.udttTarget(a.attrs.href),'native release target is an exact allowed UDTT entity');const trail=JSON.parse(new URL(a.attrs.href.slice(1),'https://test.invalid').searchParams.get('udttTrail'));assert.equal(trail.at(-1).event,eventId(n),'release return retains the originating stable event');}}
@@ -232,6 +263,7 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
    assert.deepEqual(display.events,nativeData.events,'catalog projection cannot rewrite accepted events');
    dom=tree(mountAstra(product,group.slug,display,route));
   }
+  assertTimelineReaderCopy(dom);
   if(contract){nativeAssertions(dom,group,contract,nativeData,home,held,{genblueFiltered:group.slug==='genblue'&&query.includes('timelineType=')});continue;}
   if(home&&['unis','loona'].includes(group.slug)){
    // These approved home designs expose a bounded teaser and a full-axis

@@ -52,6 +52,8 @@ function DateLabel({date}: {date: TimelineDate | null}) {
 function eventTitle(event: TimelineEvent): string {
   // Exact reviewed presentation-only overrides; canonical titles remain intact.
   const copy:Record<string,{before:string;after:string}>={
+    'e-itzy-yeji-air-announcement':{before:'公告：YEJI首张solo专辑《AIR》',after:'YEJI 计划发行首张个人专辑《AIR》'},
+    'e-unis-everafter-membership-end-announcement':{before:'公告：EverAfter MEMBERSHIP服务结束安排',after:'EverAfter 会员服务计划结束'},
     'e-lesserafim-crazy':{before:'《CRAZY》数字发行',after:'《CRAZY》发行'},
     'e-lesserafim-garam-hiatus':{before:'金佳蓝暂停活动，团体暂以五人活动',after:'金佳览暂停活动，团体暂以五人活动'},
     'e-lesserafim-garam-contract-announcement':{before:'宣布金佳蓝离团并解约',after:'宣布金佳览离团并解约'},

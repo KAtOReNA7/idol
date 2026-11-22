@@ -11,15 +11,15 @@ function beforeCloseoutPublic(name,current){
  assert.equal(hash(old),c.beforeSha256,'complete closeout preimage');return old;
 }
 const currentCopyGuard={
-  "sha256": "23de9915639d22cf15ba0e107fb8602840b5a531b8e03de28c5218ad3b02c2f0",
+  "sha256": "e0ad44fb8c7c4e0b46b941c44e956cb5b88ce3a092db6fcf65325ae44b47e776",
   "pins": {
     "lib/idol/udtt-native/presentation.mjs": {
-      "bytes": 16450,
-      "sha256": "0b765e59743b2db1c2629e352664c770497cddd102e7799b5f08a28d967bd4c4"
+      "bytes": 16479,
+      "sha256": "cf63cb3f5fb627d42ab013f36667d676bc92c33b933e1c726e4b44854d17e415"
     },
     "lib/idol/timeline/reported-records.mjs": {
-      "bytes": 2828,
-      "sha256": "7e4d5e8c15d8083189df10fef622d192ed29e4091cdd350f370f4f291a764321"
+      "bytes": 2732,
+      "sha256": "9a515461a5906831dcd2cddaa8a070bd26238fd40bbf63928c7da3905321f0ff"
     },
     "lib/idol/group-information.mjs": {
       "bytes": 9342,

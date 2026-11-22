@@ -132,7 +132,7 @@ export default function SpiaArtist({content}:{content:CandidateContent}){
  else if(params.has('media'))body=selectedVideo?videoDetail(selectedVideo):missing('暂时找不到这个视频版本。','works');
  else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName,m.nativeName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="sp-result">{people.length} 份档案</p>{people.length?roster(people):<p className="sp-empty">没有符合条件的成员。</p>}<p className="sp-roster-note">2024 年出道五人阵容 · 同系列具名转载照片</p></>;}
  else if(route.section==='works'||route.section==='records')body=library();
- else if(route.section==='updates')body=<>{title('时间轴','TIMELINE')}{timeline()}<p className="sp-note">分别记录出道、音源发行、节目播出与访谈刊载日期。当前活动状态仍待官方资料确认。</p></>;
+ else if(route.section==='updates')body=<>{title('时间轴','TIMELINE')}{timeline()}<p className="sp-note">SPIA 目前的活动状态不详。</p></>;
  else body=<>
 <section className="sp-hero"><div className="sp-hero-copy"><h1>SPIA<span>수피아</span></h1><p>穿过树林，走向舞台。</p><p className="sp-hero-intro">从《Daddy’s Little Girl》的鲜明节拍，<br/>到《Deeeep》的明亮夏日。</p><div className="sp-hero-actions">
  {debutMv&&<Link className="sp-button" to={videoHref(debutMv)}>观看 Daddy’s Little Girl 官方 MV <Arrow/></Link>}

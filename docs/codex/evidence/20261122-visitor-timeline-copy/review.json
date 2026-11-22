@@ -1,0 +1,2302 @@
+{
+  "date": "2026-11-22",
+  "baselineApplication": "769c12d9d063dad5935153ef14d1ecc8da4ef795",
+  "scope": "51 artist overviews and corresponding timeline pages. Each variant uses the same repository snapshot, React components and three native client presenters. All text nodes and image/accessibility attributes submitted to manual review, including visible text marked aria-hidden. This is a render comparison, without viewport geometry or browser timing.",
+  "totals": {
+    "beforeText": 15911,
+    "afterText": 15907,
+    "accessibleAttributes": 2229,
+    "dateElements": 1272,
+    "anchors": 2405,
+    "sourceAnchors": 819,
+    "ids": 2396,
+    "timelineTargets": 119,
+    "removedText": 42,
+    "addedText": 38,
+    "changedGroups": 11,
+    "changedRoutes": 19,
+    "renderedGroups": 51,
+    "renderedRoutes": 102
+  },
+  "comparisonRules": [
+    "Exact order and values of all time elements, links, DOM identifiers, timeline targets and auxiliary attributes match for each page.",
+    "Changed text count is a multiset difference in React text nodes. Brackets can split a single heading across neighboring nodes.",
+    "Targeted phrase count counts each matching DOM text node once. It does not measure every editorial style issue."
+  ],
+  "targetPhraseCounts": {
+    "before": {
+      "instances": 34,
+      "routes": 19,
+      "groups": 11,
+      "perGroup": {
+        "adya": 2,
+        "bewave": 5,
+        "candyshop": 2,
+        "geenius": 6,
+        "itzy": 2,
+        "spia": 5,
+        "tracer": 2,
+        "udtt": 3,
+        "unis": 1,
+        "witchx": 5,
+        "wooah": 1
+      },
+      "perPhrase": {
+        "本页仅列 ADYA": 2,
+        "原报道明确回顾": 2,
+        "不外推其他成员": 2,
+        "不作为全团活动": 1,
+        "不据此认定退团": 1,
+        "所示日期为采访发表日": 1,
+        "下方仅列芮英": 2,
+        "不把互动影像项目": 2,
+        "人声版和 LDC 版另计": 2,
+        "计划：公告：": 3,
+        "不将节目日期当作发行日期": 2,
+        "曲目按正版平台实际列表记录": 2,
+        "分别记录出道": 1,
+        "视频日期与音源发行日期分别记录": 2,
+        "从 2024 年的 RETRY 开始，按时间读下去": 1,
+        "公告日不等于活动举办日": 1,
+        "此日期只涉及她本人的活动": 1,
+        "音源发行另记": 2,
+        "此条记录预告日期": 2,
+        "活动预告不作为": 1,
+        "大事沿一条时间线展开": 1
+      }
+    },
+    "after": {
+      "instances": 0,
+      "routes": 0,
+      "groups": 0,
+      "perGroup": {},
+      "perPhrase": {}
+    }
+  },
+  "sameInputRoutes": [
+    {
+      "slug": "adya",
+      "pages": [
+        {
+          "route": "/artists/adya?section=overview",
+          "render": "React route",
+          "beforeText": 145,
+          "afterText": 145,
+          "accessibleAttributes": 27,
+          "dateElements": 10,
+          "anchors": 57,
+          "sourceAnchors": 16,
+          "ids": 6,
+          "timelineTargets": 0,
+          "removedText": 1,
+          "addedText": 1
+        },
+        {
+          "route": "/artists/adya?section=updates",
+          "render": "React route",
+          "beforeText": 45,
+          "afterText": 45,
+          "accessibleAttributes": 8,
+          "dateElements": 5,
+          "anchors": 25,
+          "sourceAnchors": 7,
+          "ids": 6,
+          "timelineTargets": 0,
+          "removedText": 1,
+          "addedText": 1
+        }
+      ]
+    },
+    {
+      "slug": "aespa",
+      "pages": [
+        {
+          "route": "/artists/aespa?section=overview",
+          "render": "React route",
+          "beforeText": 396,
+          "afterText": 396,
+          "accessibleAttributes": 39,
+          "dateElements": 28,
+          "anchors": 42,
+          "sourceAnchors": 25,
+          "ids": 45,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/aespa?section=updates",
+          "render": "React route",
+          "beforeText": 191,
+          "afterText": 191,
+          "accessibleAttributes": 21,
+          "dateElements": 22,
+          "anchors": 7,
+          "sourceAnchors": 0,
+          "ids": 45,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "atheart",
+      "pages": [
+        {
+          "route": "/artists/atheart?section=overview",
+          "render": "React route",
+          "beforeText": 177,
+          "afterText": 177,
+          "accessibleAttributes": 27,
+          "dateElements": 10,
+          "anchors": 24,
+          "sourceAnchors": 10,
+          "ids": 20,
+          "timelineTargets": 1,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/atheart?section=updates",
+          "render": "React route",
+          "beforeText": 81,
+          "afterText": 81,
+          "accessibleAttributes": 10,
+          "dateElements": 10,
+          "anchors": 4,
+          "sourceAnchors": 2,
+          "ids": 20,
+          "timelineTargets": 1,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "babymonster",
+      "pages": [
+        {
+          "route": "/artists/babymonster?section=overview",
+          "render": "React route",
+          "beforeText": 342,
+          "afterText": 342,
+          "accessibleAttributes": 37,
+          "dateElements": 22,
+          "anchors": 45,
+          "sourceAnchors": 24,
+          "ids": 23,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/babymonster?section=updates",
+          "render": "React route",
+          "beforeText": 139,
+          "afterText": 139,
+          "accessibleAttributes": 16,
+          "dateElements": 11,
+          "anchors": 13,
+          "sourceAnchors": 4,
+          "ids": 23,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "badvillain",
+      "pages": [
+        {
+          "route": "/artists/badvillain?section=overview",
+          "render": "React route",
+          "beforeText": 126,
+          "afterText": 126,
+          "accessibleAttributes": 22,
+          "dateElements": 4,
+          "anchors": 51,
+          "sourceAnchors": 9,
+          "ids": 9,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/badvillain?section=updates",
+          "render": "React route",
+          "beforeText": 45,
+          "afterText": 45,
+          "accessibleAttributes": 6,
+          "dateElements": 4,
+          "anchors": 8,
+          "sourceAnchors": 0,
+          "ids": 9,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "bewave",
+      "pages": [
+        {
+          "route": "/artists/bewave?section=overview",
+          "render": "React route",
+          "beforeText": 115,
+          "afterText": 115,
+          "accessibleAttributes": 20,
+          "dateElements": 7,
+          "anchors": 51,
+          "sourceAnchors": 15,
+          "ids": 4,
+          "timelineTargets": 0,
+          "removedText": 3,
+          "addedText": 3
+        },
+        {
+          "route": "/artists/bewave?section=updates",
+          "render": "React route",
+          "beforeText": 59,
+          "afterText": 59,
+          "accessibleAttributes": 3,
+          "dateElements": 5,
+          "anchors": 26,
+          "sourceAnchors": 9,
+          "ids": 6,
+          "timelineTargets": 1,
+          "removedText": 4,
+          "addedText": 4
+        }
+      ]
+    },
+    {
+      "slug": "billlie",
+      "pages": [
+        {
+          "route": "/artists/billlie?section=overview",
+          "render": "React route",
+          "beforeText": 215,
+          "afterText": 215,
+          "accessibleAttributes": 36,
+          "dateElements": 14,
+          "anchors": 12,
+          "sourceAnchors": 8,
+          "ids": 35,
+          "timelineTargets": 39,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/billlie?section=updates",
+          "render": "React route",
+          "beforeText": 131,
+          "afterText": 131,
+          "accessibleAttributes": 19,
+          "dateElements": 14,
+          "anchors": 1,
+          "sourceAnchors": 0,
+          "ids": 35,
+          "timelineTargets": 39,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "candyshop",
+      "pages": [
+        {
+          "route": "/artists/candyshop?section=overview",
+          "render": "React route",
+          "beforeText": 113,
+          "afterText": 113,
+          "accessibleAttributes": 20,
+          "dateElements": 6,
+          "anchors": 50,
+          "sourceAnchors": 17,
+          "ids": 4,
+          "timelineTargets": 0,
+          "removedText": 1,
+          "addedText": 1
+        },
+        {
+          "route": "/artists/candyshop?section=updates",
+          "render": "React route",
+          "beforeText": 53,
+          "afterText": 53,
+          "accessibleAttributes": 4,
+          "dateElements": 6,
+          "anchors": 22,
+          "sourceAnchors": 9,
+          "ids": 8,
+          "timelineTargets": 1,
+          "removedText": 3,
+          "addedText": 3
+        }
+      ]
+    },
+    {
+      "slug": "cherrybullet",
+      "pages": [
+        {
+          "route": "/artists/cherrybullet?section=overview",
+          "render": "React route",
+          "beforeText": 148,
+          "afterText": 148,
+          "accessibleAttributes": 34,
+          "dateElements": 7,
+          "anchors": 40,
+          "sourceAnchors": 10,
+          "ids": 15,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/cherrybullet?section=updates",
+          "render": "React route",
+          "beforeText": 63,
+          "afterText": 63,
+          "accessibleAttributes": 11,
+          "dateElements": 7,
+          "anchors": 11,
+          "sourceAnchors": 2,
+          "ids": 15,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "everglow",
+      "pages": [
+        {
+          "route": "/artists/everglow?section=overview",
+          "render": "React route",
+          "beforeText": 208,
+          "afterText": 208,
+          "accessibleAttributes": 34,
+          "dateElements": 12,
+          "anchors": 37,
+          "sourceAnchors": 10,
+          "ids": 27,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/everglow?section=updates",
+          "render": "React route",
+          "beforeText": 105,
+          "afterText": 105,
+          "accessibleAttributes": 15,
+          "dateElements": 12,
+          "anchors": 10,
+          "sourceAnchors": 2,
+          "ids": 27,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "fromis9",
+      "pages": [
+        {
+          "route": "/artists/fromis9?section=overview",
+          "render": "React route",
+          "beforeText": 276,
+          "afterText": 276,
+          "accessibleAttributes": 42,
+          "dateElements": 17,
+          "anchors": 43,
+          "sourceAnchors": 17,
+          "ids": 39,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/fromis9?section=updates",
+          "render": "React route",
+          "beforeText": 156,
+          "afterText": 156,
+          "accessibleAttributes": 22,
+          "dateElements": 17,
+          "anchors": 10,
+          "sourceAnchors": 2,
+          "ids": 39,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "geenius",
+      "pages": [
+        {
+          "route": "/artists/geenius?section=overview",
+          "render": "React route",
+          "beforeText": 170,
+          "afterText": 170,
+          "accessibleAttributes": 28,
+          "dateElements": 8,
+          "anchors": 62,
+          "sourceAnchors": 24,
+          "ids": 6,
+          "timelineTargets": 1,
+          "removedText": 3,
+          "addedText": 3
+        },
+        {
+          "route": "/artists/geenius?section=updates",
+          "render": "React route",
+          "beforeText": 60,
+          "afterText": 60,
+          "accessibleAttributes": 6,
+          "dateElements": 5,
+          "anchors": 22,
+          "sourceAnchors": 11,
+          "ids": 6,
+          "timelineTargets": 1,
+          "removedText": 3,
+          "addedText": 3
+        }
+      ]
+    },
+    {
+      "slug": "genblue",
+      "pages": [
+        {
+          "route": "/artists/genblue?section=overview",
+          "render": "React route",
+          "beforeText": 111,
+          "afterText": 111,
+          "accessibleAttributes": 22,
+          "dateElements": 7,
+          "anchors": 48,
+          "sourceAnchors": 20,
+          "ids": 3,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/genblue?section=updates",
+          "render": "React route",
+          "beforeText": 53,
+          "afterText": 53,
+          "accessibleAttributes": 2,
+          "dateElements": 7,
+          "anchors": 19,
+          "sourceAnchors": 1,
+          "ids": 8,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "hearts2hearts",
+      "pages": [
+        {
+          "route": "/artists/hearts2hearts?section=overview",
+          "render": "React route",
+          "beforeText": 201,
+          "afterText": 201,
+          "accessibleAttributes": 25,
+          "dateElements": 10,
+          "anchors": 22,
+          "sourceAnchors": 13,
+          "ids": 25,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/hearts2hearts?section=updates",
+          "render": "React route",
+          "beforeText": 118,
+          "afterText": 118,
+          "accessibleAttributes": 10,
+          "dateElements": 10,
+          "anchors": 8,
+          "sourceAnchors": 5,
+          "ids": 24,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "hitgs",
+      "pages": [
+        {
+          "route": "/artists/hitgs?section=overview",
+          "render": "React route",
+          "beforeText": 159,
+          "afterText": 159,
+          "accessibleAttributes": 20,
+          "dateElements": 7,
+          "anchors": 20,
+          "sourceAnchors": 9,
+          "ids": 15,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/hitgs?section=updates",
+          "render": "React route",
+          "beforeText": 61,
+          "afterText": 61,
+          "accessibleAttributes": 5,
+          "dateElements": 7,
+          "anchors": 2,
+          "sourceAnchors": 0,
+          "ids": 15,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "idle",
+      "pages": [
+        {
+          "route": "/artists/idle?section=overview",
+          "render": "React route",
+          "beforeText": 315,
+          "afterText": 315,
+          "accessibleAttributes": 44,
+          "dateElements": 28,
+          "anchors": 42,
+          "sourceAnchors": 9,
+          "ids": 56,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/idle?section=updates",
+          "render": "React route",
+          "beforeText": 225,
+          "afterText": 225,
+          "accessibleAttributes": 28,
+          "dateElements": 28,
+          "anchors": 7,
+          "sourceAnchors": 1,
+          "ids": 56,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "ifeye",
+      "pages": [
+        {
+          "route": "/artists/ifeye?section=overview",
+          "render": "Mounted ifeye client",
+          "beforeText": 123,
+          "afterText": 123,
+          "accessibleAttributes": 21,
+          "dateElements": 2,
+          "anchors": 43,
+          "sourceAnchors": 10,
+          "ids": 6,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/ifeye?section=updates",
+          "render": "Mounted ifeye client",
+          "beforeText": 47,
+          "afterText": 47,
+          "accessibleAttributes": 4,
+          "dateElements": 7,
+          "anchors": 33,
+          "sourceAnchors": 1,
+          "ids": 10,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "illit",
+      "pages": [
+        {
+          "route": "/artists/illit?section=overview",
+          "render": "React route",
+          "beforeText": 237,
+          "afterText": 237,
+          "accessibleAttributes": 34,
+          "dateElements": 14,
+          "anchors": 28,
+          "sourceAnchors": 10,
+          "ids": 32,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/illit?section=updates",
+          "render": "React route",
+          "beforeText": 119,
+          "afterText": 119,
+          "accessibleAttributes": 10,
+          "dateElements": 14,
+          "anchors": 5,
+          "sourceAnchors": 1,
+          "ids": 32,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "itzy",
+      "pages": [
+        {
+          "route": "/artists/itzy?section=overview",
+          "render": "React route",
+          "beforeText": 312,
+          "afterText": 312,
+          "accessibleAttributes": 40,
+          "dateElements": 26,
+          "anchors": 30,
+          "sourceAnchors": 12,
+          "ids": 53,
+          "timelineTargets": 0,
+          "removedText": 1,
+          "addedText": 1
+        },
+        {
+          "route": "/artists/itzy?section=updates",
+          "render": "React route",
+          "beforeText": 189,
+          "afterText": 189,
+          "accessibleAttributes": 25,
+          "dateElements": 26,
+          "anchors": 7,
+          "sourceAnchors": 0,
+          "ids": 53,
+          "timelineTargets": 0,
+          "removedText": 1,
+          "addedText": 1
+        }
+      ]
+    },
+    {
+      "slug": "ive",
+      "pages": [
+        {
+          "route": "/artists/ive?section=overview",
+          "render": "React route",
+          "beforeText": 335,
+          "afterText": 335,
+          "accessibleAttributes": 58,
+          "dateElements": 32,
+          "anchors": 40,
+          "sourceAnchors": 17,
+          "ids": 60,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/ive?section=updates",
+          "render": "React route",
+          "beforeText": 208,
+          "afterText": 208,
+          "accessibleAttributes": 26,
+          "dateElements": 29,
+          "anchors": 5,
+          "sourceAnchors": 1,
+          "ids": 60,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "izna",
+      "pages": [
+        {
+          "route": "/artists/izna?section=overview",
+          "render": "Mounted izna client",
+          "beforeText": 156,
+          "afterText": 156,
+          "accessibleAttributes": 25,
+          "dateElements": 13,
+          "anchors": 45,
+          "sourceAnchors": 9,
+          "ids": 4,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/izna?section=updates",
+          "render": "Mounted izna client",
+          "beforeText": 56,
+          "afterText": 56,
+          "accessibleAttributes": 2,
+          "dateElements": 10,
+          "anchors": 32,
+          "sourceAnchors": 1,
+          "ids": 11,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "izone",
+      "pages": [
+        {
+          "route": "/artists/izone?section=overview",
+          "render": "React route",
+          "beforeText": 253,
+          "afterText": 253,
+          "accessibleAttributes": 51,
+          "dateElements": 12,
+          "anchors": 46,
+          "sourceAnchors": 11,
+          "ids": 25,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/izone?section=updates",
+          "render": "React route",
+          "beforeText": 102,
+          "afterText": 102,
+          "accessibleAttributes": 14,
+          "dateElements": 11,
+          "anchors": 11,
+          "sourceAnchors": 3,
+          "ids": 25,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "katseye",
+      "pages": [
+        {
+          "route": "/artists/katseye?section=overview",
+          "render": "React route",
+          "beforeText": 276,
+          "afterText": 276,
+          "accessibleAttributes": 25,
+          "dateElements": 12,
+          "anchors": 27,
+          "sourceAnchors": 11,
+          "ids": 29,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/katseye?section=updates",
+          "render": "React route",
+          "beforeText": 114,
+          "afterText": 114,
+          "accessibleAttributes": 12,
+          "dateElements": 12,
+          "anchors": 5,
+          "sourceAnchors": 3,
+          "ids": 29,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "kep1er",
+      "pages": [
+        {
+          "route": "/artists/kep1er?section=overview",
+          "render": "React route",
+          "beforeText": 235,
+          "afterText": 235,
+          "accessibleAttributes": 31,
+          "dateElements": 22,
+          "anchors": 19,
+          "sourceAnchors": 9,
+          "ids": 39,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/kep1er?section=updates",
+          "render": "React route",
+          "beforeText": 163,
+          "afterText": 163,
+          "accessibleAttributes": 20,
+          "dateElements": 18,
+          "anchors": 1,
+          "sourceAnchors": 0,
+          "ids": 39,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "kiiikiii",
+      "pages": [
+        {
+          "route": "/artists/kiiikiii?section=overview",
+          "render": "React route",
+          "beforeText": 197,
+          "afterText": 197,
+          "accessibleAttributes": 23,
+          "dateElements": 7,
+          "anchors": 29,
+          "sourceAnchors": 9,
+          "ids": 15,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/kiiikiii?section=updates",
+          "render": "React route",
+          "beforeText": 68,
+          "afterText": 68,
+          "accessibleAttributes": 8,
+          "dateElements": 7,
+          "anchors": 6,
+          "sourceAnchors": 0,
+          "ids": 15,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "kissoflife",
+      "pages": [
+        {
+          "route": "/artists/kissoflife?section=overview",
+          "render": "React route",
+          "beforeText": 299,
+          "afterText": 299,
+          "accessibleAttributes": 31,
+          "dateElements": 18,
+          "anchors": 30,
+          "sourceAnchors": 19,
+          "ids": 35,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/kissoflife?section=updates",
+          "render": "React route",
+          "beforeText": 181,
+          "afterText": 181,
+          "accessibleAttributes": 17,
+          "dateElements": 17,
+          "anchors": 12,
+          "sourceAnchors": 4,
+          "ids": 35,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "lesserafim",
+      "pages": [
+        {
+          "route": "/artists/lesserafim?section=overview",
+          "render": "React route",
+          "beforeText": 343,
+          "afterText": 343,
+          "accessibleAttributes": 38,
+          "dateElements": 25,
+          "anchors": 32,
+          "sourceAnchors": 19,
+          "ids": 51,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/lesserafim?section=updates",
+          "render": "React route",
+          "beforeText": 205,
+          "afterText": 205,
+          "accessibleAttributes": 23,
+          "dateElements": 25,
+          "anchors": 6,
+          "sourceAnchors": 0,
+          "ids": 51,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "loona",
+      "pages": [
+        {
+          "route": "/artists/loona?section=overview",
+          "render": "React route",
+          "beforeText": 132,
+          "afterText": 132,
+          "accessibleAttributes": 49,
+          "dateElements": 11,
+          "anchors": 22,
+          "sourceAnchors": 8,
+          "ids": 5,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/loona?section=updates",
+          "render": "React route",
+          "beforeText": 113,
+          "afterText": 113,
+          "accessibleAttributes": 14,
+          "dateElements": 14,
+          "anchors": 1,
+          "sourceAnchors": 0,
+          "ids": 29,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "madein",
+      "pages": [
+        {
+          "route": "/artists/madein?section=overview",
+          "render": "React route",
+          "beforeText": 191,
+          "afterText": 191,
+          "accessibleAttributes": 37,
+          "dateElements": 8,
+          "anchors": 28,
+          "sourceAnchors": 10,
+          "ids": 18,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/madein?section=updates",
+          "render": "React route",
+          "beforeText": 69,
+          "afterText": 69,
+          "accessibleAttributes": 9,
+          "dateElements": 8,
+          "anchors": 5,
+          "sourceAnchors": 1,
+          "ids": 18,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "meovv",
+      "pages": [
+        {
+          "route": "/artists/meovv?section=overview",
+          "render": "React route",
+          "beforeText": 141,
+          "afterText": 141,
+          "accessibleAttributes": 36,
+          "dateElements": 8,
+          "anchors": 21,
+          "sourceAnchors": 8,
+          "ids": 18,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/meovv?section=updates",
+          "render": "React route",
+          "beforeText": 73,
+          "afterText": 73,
+          "accessibleAttributes": 8,
+          "dateElements": 8,
+          "anchors": 2,
+          "sourceAnchors": 0,
+          "ids": 18,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "newjeans",
+      "pages": [
+        {
+          "route": "/artists/newjeans?section=overview",
+          "render": "React route",
+          "beforeText": 169,
+          "afterText": 169,
+          "accessibleAttributes": 25,
+          "dateElements": 13,
+          "anchors": 36,
+          "sourceAnchors": 16,
+          "ids": 24,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/newjeans?section=updates",
+          "render": "React route",
+          "beforeText": 90,
+          "afterText": 90,
+          "accessibleAttributes": 13,
+          "dateElements": 11,
+          "anchors": 3,
+          "sourceAnchors": 1,
+          "ids": 23,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "nmixx",
+      "pages": [
+        {
+          "route": "/artists/nmixx?section=overview",
+          "render": "React route",
+          "beforeText": 233,
+          "afterText": 233,
+          "accessibleAttributes": 30,
+          "dateElements": 13,
+          "anchors": 28,
+          "sourceAnchors": 12,
+          "ids": 27,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/nmixx?section=updates",
+          "render": "React route",
+          "beforeText": 118,
+          "afterText": 118,
+          "accessibleAttributes": 14,
+          "dateElements": 13,
+          "anchors": 6,
+          "sourceAnchors": 0,
+          "ids": 27,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "oddyouth",
+      "pages": [
+        {
+          "route": "/artists/oddyouth?section=overview",
+          "render": "React route",
+          "beforeText": 129,
+          "afterText": 129,
+          "accessibleAttributes": 26,
+          "dateElements": 10,
+          "anchors": 52,
+          "sourceAnchors": 14,
+          "ids": 6,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/oddyouth?section=updates",
+          "render": "React route",
+          "beforeText": 40,
+          "afterText": 40,
+          "accessibleAttributes": 8,
+          "dateElements": 5,
+          "anchors": 24,
+          "sourceAnchors": 6,
+          "ids": 6,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "purplekiss",
+      "pages": [
+        {
+          "route": "/artists/purplekiss?section=overview",
+          "render": "React route",
+          "beforeText": 266,
+          "afterText": 266,
+          "accessibleAttributes": 43,
+          "dateElements": 17,
+          "anchors": 27,
+          "sourceAnchors": 10,
+          "ids": 36,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/purplekiss?section=updates",
+          "render": "React route",
+          "beforeText": 143,
+          "afterText": 143,
+          "accessibleAttributes": 14,
+          "dateElements": 17,
+          "anchors": 5,
+          "sourceAnchors": 1,
+          "ids": 36,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "qwer",
+      "pages": [
+        {
+          "route": "/artists/qwer?section=overview",
+          "render": "React route",
+          "beforeText": 194,
+          "afterText": 194,
+          "accessibleAttributes": 28,
+          "dateElements": 11,
+          "anchors": 23,
+          "sourceAnchors": 10,
+          "ids": 28,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/qwer?section=updates",
+          "render": "React route",
+          "beforeText": 106,
+          "afterText": 106,
+          "accessibleAttributes": 11,
+          "dateElements": 11,
+          "anchors": 5,
+          "sourceAnchors": 1,
+          "ids": 28,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "rescene",
+      "pages": [
+        {
+          "route": "/artists/rescene?section=overview",
+          "render": "React route",
+          "beforeText": 226,
+          "afterText": 226,
+          "accessibleAttributes": 36,
+          "dateElements": 12,
+          "anchors": 28,
+          "sourceAnchors": 10,
+          "ids": 26,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/rescene?section=updates",
+          "render": "React route",
+          "beforeText": 112,
+          "afterText": 112,
+          "accessibleAttributes": 12,
+          "dateElements": 12,
+          "anchors": 5,
+          "sourceAnchors": 1,
+          "ids": 26,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "rocketpunch",
+      "pages": [
+        {
+          "route": "/artists/rocketpunch?section=overview",
+          "render": "React route",
+          "beforeText": 207,
+          "afterText": 207,
+          "accessibleAttributes": 37,
+          "dateElements": 11,
+          "anchors": 38,
+          "sourceAnchors": 10,
+          "ids": 27,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/rocketpunch?section=updates",
+          "render": "React route",
+          "beforeText": 103,
+          "afterText": 103,
+          "accessibleAttributes": 16,
+          "dateElements": 11,
+          "anchors": 10,
+          "sourceAnchors": 2,
+          "ids": 27,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "saymyname",
+      "pages": [
+        {
+          "route": "/artists/saymyname?section=overview",
+          "render": "React route",
+          "beforeText": 254,
+          "afterText": 254,
+          "accessibleAttributes": 38,
+          "dateElements": 9,
+          "anchors": 45,
+          "sourceAnchors": 13,
+          "ids": 17,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/saymyname?section=updates",
+          "render": "React route",
+          "beforeText": 72,
+          "afterText": 72,
+          "accessibleAttributes": 11,
+          "dateElements": 8,
+          "anchors": 4,
+          "sourceAnchors": 0,
+          "ids": 17,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "spia",
+      "pages": [
+        {
+          "route": "/artists/spia?section=overview",
+          "render": "React route",
+          "beforeText": 127,
+          "afterText": 127,
+          "accessibleAttributes": 18,
+          "dateElements": 7,
+          "anchors": 52,
+          "sourceAnchors": 14,
+          "ids": 6,
+          "timelineTargets": 0,
+          "removedText": 2,
+          "addedText": 2
+        },
+        {
+          "route": "/artists/spia?section=updates",
+          "render": "React route",
+          "beforeText": 51,
+          "afterText": 51,
+          "accessibleAttributes": 1,
+          "dateElements": 5,
+          "anchors": 22,
+          "sourceAnchors": 6,
+          "ids": 6,
+          "timelineTargets": 0,
+          "removedText": 3,
+          "addedText": 3
+        }
+      ]
+    },
+    {
+      "slug": "stayc",
+      "pages": [
+        {
+          "route": "/artists/stayc?section=overview",
+          "render": "React route",
+          "beforeText": 291,
+          "afterText": 291,
+          "accessibleAttributes": 34,
+          "dateElements": 21,
+          "anchors": 26,
+          "sourceAnchors": 15,
+          "ids": 43,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/stayc?section=updates",
+          "render": "React route",
+          "beforeText": 176,
+          "afterText": 176,
+          "accessibleAttributes": 18,
+          "dateElements": 21,
+          "anchors": 6,
+          "sourceAnchors": 0,
+          "ids": 43,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "tracer",
+      "pages": [
+        {
+          "route": "/artists/tracer?section=overview",
+          "render": "React route",
+          "beforeText": 103,
+          "afterText": 103,
+          "accessibleAttributes": 17,
+          "dateElements": 4,
+          "anchors": 50,
+          "sourceAnchors": 25,
+          "ids": 4,
+          "timelineTargets": 0,
+          "removedText": 1,
+          "addedText": 1
+        },
+        {
+          "route": "/artists/tracer?section=updates",
+          "render": "React route",
+          "beforeText": 37,
+          "afterText": 37,
+          "accessibleAttributes": 2,
+          "dateElements": 3,
+          "anchors": 17,
+          "sourceAnchors": 4,
+          "ids": 4,
+          "timelineTargets": 0,
+          "removedText": 1,
+          "addedText": 1
+        }
+      ]
+    },
+    {
+      "slug": "triples",
+      "pages": [
+        {
+          "route": "/artists/triples?section=overview",
+          "render": "React route",
+          "beforeText": 429,
+          "afterText": 429,
+          "accessibleAttributes": 85,
+          "dateElements": 24,
+          "anchors": 59,
+          "sourceAnchors": 44,
+          "ids": 50,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/triples?section=updates",
+          "render": "React route",
+          "beforeText": 208,
+          "afterText": 208,
+          "accessibleAttributes": 23,
+          "dateElements": 24,
+          "anchors": 5,
+          "sourceAnchors": 1,
+          "ids": 50,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "udtt",
+      "pages": [
+        {
+          "route": "/artists/udtt?section=overview",
+          "render": "UDTT client presentation",
+          "beforeText": 95,
+          "afterText": 95,
+          "accessibleAttributes": 16,
+          "dateElements": 4,
+          "anchors": 37,
+          "sourceAnchors": 9,
+          "ids": 2,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/udtt?section=updates",
+          "render": "UDTT client presentation",
+          "beforeText": 41,
+          "afterText": 39,
+          "accessibleAttributes": 4,
+          "dateElements": 6,
+          "anchors": 14,
+          "sourceAnchors": 6,
+          "ids": 7,
+          "timelineTargets": 2,
+          "removedText": 3,
+          "addedText": 1
+        }
+      ]
+    },
+    {
+      "slug": "unis",
+      "pages": [
+        {
+          "route": "/artists/unis?section=overview",
+          "render": "React route",
+          "beforeText": 92,
+          "afterText": 92,
+          "accessibleAttributes": 19,
+          "dateElements": 5,
+          "anchors": 14,
+          "sourceAnchors": 8,
+          "ids": 1,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/unis?section=updates",
+          "render": "React route",
+          "beforeText": 112,
+          "afterText": 112,
+          "accessibleAttributes": 11,
+          "dateElements": 13,
+          "anchors": 2,
+          "sourceAnchors": 0,
+          "ids": 27,
+          "timelineTargets": 0,
+          "removedText": 1,
+          "addedText": 1
+        }
+      ]
+    },
+    {
+      "slug": "vcha",
+      "pages": [
+        {
+          "route": "/artists/vcha?section=overview",
+          "render": "React route",
+          "beforeText": 197,
+          "afterText": 197,
+          "accessibleAttributes": 25,
+          "dateElements": 8,
+          "anchors": 30,
+          "sourceAnchors": 20,
+          "ids": 19,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/vcha?section=updates",
+          "render": "React route",
+          "beforeText": 76,
+          "afterText": 76,
+          "accessibleAttributes": 8,
+          "dateElements": 8,
+          "anchors": 2,
+          "sourceAnchors": 0,
+          "ids": 19,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "vvup",
+      "pages": [
+        {
+          "route": "/artists/vvup?section=overview",
+          "render": "React route",
+          "beforeText": 151,
+          "afterText": 151,
+          "accessibleAttributes": 23,
+          "dateElements": 6,
+          "anchors": 21,
+          "sourceAnchors": 9,
+          "ids": 19,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/vvup?section=updates",
+          "render": "React route",
+          "beforeText": 72,
+          "afterText": 72,
+          "accessibleAttributes": 10,
+          "dateElements": 6,
+          "anchors": 3,
+          "sourceAnchors": 0,
+          "ids": 19,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "weeekly",
+      "pages": [
+        {
+          "route": "/artists/weeekly?section=overview",
+          "render": "React route",
+          "beforeText": 174,
+          "afterText": 174,
+          "accessibleAttributes": 35,
+          "dateElements": 11,
+          "anchors": 39,
+          "sourceAnchors": 10,
+          "ids": 23,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/weeekly?section=updates",
+          "render": "React route",
+          "beforeText": 91,
+          "afterText": 91,
+          "accessibleAttributes": 13,
+          "dateElements": 11,
+          "anchors": 11,
+          "sourceAnchors": 2,
+          "ids": 23,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "witchx",
+      "pages": [
+        {
+          "route": "/artists/witchx?section=overview",
+          "render": "React route",
+          "beforeText": 131,
+          "afterText": 131,
+          "accessibleAttributes": 24,
+          "dateElements": 9,
+          "anchors": 55,
+          "sourceAnchors": 15,
+          "ids": 7,
+          "timelineTargets": 0,
+          "removedText": 4,
+          "addedText": 4
+        },
+        {
+          "route": "/artists/witchx?section=updates",
+          "render": "React route",
+          "beforeText": 51,
+          "afterText": 50,
+          "accessibleAttributes": 3,
+          "dateElements": 6,
+          "anchors": 20,
+          "sourceAnchors": 7,
+          "ids": 7,
+          "timelineTargets": 0,
+          "removedText": 5,
+          "addedText": 4
+        }
+      ]
+    },
+    {
+      "slug": "wooah",
+      "pages": [
+        {
+          "route": "/artists/wooah?section=overview",
+          "render": "React route",
+          "beforeText": 227,
+          "afterText": 227,
+          "accessibleAttributes": 43,
+          "dateElements": 16,
+          "anchors": 39,
+          "sourceAnchors": 11,
+          "ids": 29,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/wooah?section=updates",
+          "render": "React route",
+          "beforeText": 67,
+          "afterText": 66,
+          "accessibleAttributes": 5,
+          "dateElements": 12,
+          "anchors": 7,
+          "sourceAnchors": 0,
+          "ids": 25,
+          "timelineTargets": 33,
+          "removedText": 1,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "xg",
+      "pages": [
+        {
+          "route": "/artists/xg?section=overview",
+          "render": "React route",
+          "beforeText": 348,
+          "afterText": 348,
+          "accessibleAttributes": 36,
+          "dateElements": 31,
+          "anchors": 42,
+          "sourceAnchors": 22,
+          "ids": 37,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/xg?section=updates",
+          "render": "React route",
+          "beforeText": 198,
+          "afterText": 198,
+          "accessibleAttributes": 20,
+          "dateElements": 21,
+          "anchors": 13,
+          "sourceAnchors": 4,
+          "ids": 37,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    },
+    {
+      "slug": "youngposse",
+      "pages": [
+        {
+          "route": "/artists/youngposse?section=overview",
+          "render": "React route",
+          "beforeText": 90,
+          "afterText": 90,
+          "accessibleAttributes": 18,
+          "dateElements": 9,
+          "anchors": 41,
+          "sourceAnchors": 12,
+          "ids": 4,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        },
+        {
+          "route": "/artists/youngposse?section=updates",
+          "render": "React route",
+          "beforeText": 75,
+          "afterText": 75,
+          "accessibleAttributes": 2,
+          "dateElements": 14,
+          "anchors": 27,
+          "sourceAnchors": 0,
+          "ids": 15,
+          "timelineTargets": 0,
+          "removedText": 0,
+          "addedText": 0
+        }
+      ]
+    }
+  ],
+  "textChanges": [
+    {
+      "route": "/artists/adya?section=overview",
+      "removed": [
+        {
+          "text": "整张合集共 13 曲；本页仅列 ADYA 参与的第 2 轨，非一张新的团体专辑。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "原声带共 13 首歌。ADYA 演唱的《눈부신 날》（A Dazzling Day）是第 2 轨。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/adya?section=updates",
+      "removed": [
+        {
+          "text": "整张合集共 13 曲；本页仅列 ADYA 参与的第 2 轨，非一张新的团体专辑。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "原声带共 13 首歌。ADYA 演唱的《눈부신 날》（A Dazzling Day）是第 2 轨。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/bewave?section=overview",
+      "removed": [
+        {
+          "text": "2024年6月的原始采访回顾，BEWAVE于同年4月发表同名出道专辑。",
+          "times": 1
+        },
+        {
+          "text": "2025年9月原报道明确回顾去年10月已发行首张单曲。",
+          "times": 1
+        },
+        {
+          "text": "音乐平台发行目录。知言与允瑟具名参与；不外推其他成员。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "BEWAVE 在 6 月的采访中回顾了 4 月发行的出道专辑，主打曲为《SING !》。",
+          "times": 1
+        },
+        {
+          "text": "《Be your Wave》的主打曲为《너에게로 가는 길이 너무 어려워》。",
+          "times": 1
+        },
+        {
+          "text": "Bugs 将知言和允瑟列为这首圣诞单曲的演唱者。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/bewave?section=updates",
+      "removed": [
+        {
+          "text": "2024年6月的原始采访回顾，BEWAVE于同年4月发表同名出道专辑。",
+          "times": 1
+        },
+        {
+          "text": "2025年9月原报道明确回顾去年10月已发行首张单曲。",
+          "times": 1
+        },
+        {
+          "text": "音乐平台发行目录。知言与允瑟具名参与；不外推其他成员。",
+          "times": 1
+        },
+        {
+          "text": "音乐平台发行目录。知言个人作品；不作为全团活动或经纪关系变化的证明。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "BEWAVE 在 6 月的采访中回顾了 4 月发行的出道专辑，主打曲为《SING !》。",
+          "times": 1
+        },
+        {
+          "text": "《Be your Wave》的主打曲为《너에게로 가는 길이 너무 어려워》。",
+          "times": 1
+        },
+        {
+          "text": "Bugs 将知言和允瑟列为这首圣诞单曲的演唱者。",
+          "times": 1
+        },
+        {
+          "text": "CIELOGROOVE 推出知言（JIUN）的个人单曲。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/candyshop?section=overview",
+      "removed": [
+        {
+          "text": "2024 年出道成员。保留出道时期的照片与作品记录；2024 年 5 月的公告报道说明暂停团体活动，不据此认定退团。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "结菜是 2024 年的出道成员。公司于当年 5 月宣布她暂停团体活动。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/candyshop?section=updates",
+      "removed": [
+        {
+          "text": "JULIA 在采访中谈到入团经历与首次回归。所示日期为采访发表日，具体入团日期不详。",
+          "times": 1
+        },
+        {
+          "text": "官网周年条目",
+          "times": 1
+        },
+        {
+          "text": "日本官网发布两周年纪念条目。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "JULIA 在这次采访中谈到入团经历与首次回归。她的具体入团日期未公开。",
+          "times": 1
+        },
+        {
+          "text": "官网消息",
+          "times": 1
+        },
+        {
+          "text": "日本官网刊登了出道两周年纪念消息。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/geenius?section=overview",
+      "removed": [
+        {
+          "text": "电视剧原声总集共 46 曲。下方仅列芮英演唱的《백일몽》及其伴奏，位于第 1 碟第 6、12 轨；不是新的团体单曲。",
+          "times": 1
+        },
+        {
+          "text": "五个成员版本分别观看。日期由芮英、米卡版本的官方视频元数据确认；不把互动影像项目写成五张音源发行。",
+          "times": 1
+        },
+        {
+          "text": "此日期仅适用于器乐版 QR 发行，人声版和 LDC 版另计。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "这张电视剧原声带共 46 曲。第 1 碟第 6 轨是芮英演唱的《백일몽》，第 12 轨是伴奏版。",
+          "times": 1
+        },
+        {
+          "text": "《I.L.Y》有五个成员视角。芮英版与米卡版均于 1 月 5 日在官方频道公开。",
+          "times": 1
+        },
+        {
+          "text": "《Spoiler Book》另有人声版与 LDC 版。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/geenius?section=updates",
+      "removed": [
+        {
+          "text": "电视剧原声总集共 46 曲。下方仅列芮英演唱的《백일몽》及其伴奏，位于第 1 碟第 6、12 轨；不是新的团体单曲。",
+          "times": 1
+        },
+        {
+          "text": "五个成员版本分别观看。日期由芮英、米卡版本的官方视频元数据确认；不把互动影像项目写成五张音源发行。",
+          "times": 1
+        },
+        {
+          "text": "此日期仅适用于器乐版 QR 发行，人声版和 LDC 版另计。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "这张电视剧原声带共 46 曲。第 1 碟第 6 轨是芮英演唱的《백일몽》，第 12 轨是伴奏版。",
+          "times": 1
+        },
+        {
+          "text": "《I.L.Y》有五个成员视角。芮英版与米卡版均于 1 月 5 日在官方频道公开。",
+          "times": 1
+        },
+        {
+          "text": "《Spoiler Book》另有人声版与 LDC 版。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/itzy?section=overview",
+      "removed": [
+        {
+          "text": "计划：公告：YEJI首张solo专辑",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "YEJI 计划发行首张个人专辑",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/itzy?section=updates",
+      "removed": [
+        {
+          "text": "计划：公告：YEJI首张solo专辑",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "YEJI 计划发行首张个人专辑",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/spia?section=overview",
+      "removed": [
+        {
+          "text": "先于音源发行的 240604 舞台；不将节目日期当作发行日期。",
+          "times": 1
+        },
+        {
+          "text": "第二张数字单曲发行，曲目按正版平台实际列表记录。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "SPIA 在《THE SHOW》表演了《Deeeep》。单曲于次日发行。",
+          "times": 1
+        },
+        {
+          "text": "第二张数字单曲收录《Deeeep》及其伴奏版。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/spia?section=updates",
+      "removed": [
+        {
+          "text": "先于音源发行的 240604 舞台；不将节目日期当作发行日期。",
+          "times": 1
+        },
+        {
+          "text": "第二张数字单曲发行，曲目按正版平台实际列表记录。",
+          "times": 1
+        },
+        {
+          "text": "分别记录出道、音源发行、节目播出与访谈刊载日期。当前活动状态仍待官方资料确认。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "SPIA 在《THE SHOW》表演了《Deeeep》。单曲于次日发行。",
+          "times": 1
+        },
+        {
+          "text": "第二张数字单曲收录《Deeeep》及其伴奏版。",
+          "times": 1
+        },
+        {
+          "text": "SPIA 目前的活动状态不详。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/tracer?section=overview",
+      "removed": [
+        {
+          "text": "TRACER 官方频道公开表演影像。视频日期与音源发行日期分别记录。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "TRACER 官方频道发布了《365》的首段表演影像。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/tracer?section=updates",
+      "removed": [
+        {
+          "text": "TRACER 官方频道公开表演影像。视频日期与音源发行日期分别记录。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "TRACER 官方频道发布了《365》的首段表演影像。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/udtt?section=updates",
+      "removed": [
+        {
+          "text": "从 2024 年的 RETRY 开始，按时间读下去。",
+          "times": 1
+        },
+        {
+          "text": "活动主办方原稿明确宣布UDTT担任KWAVE舞蹈大赛活动大使。公告日不等于活动举办日。",
+          "times": 1
+        },
+        {
+          "text": "Sena 在正式出道前离开，此日期只涉及她本人的活动。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "KWAVE 舞蹈大赛主办方宣布，UDTT 将担任活动大使。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/unis?section=updates",
+      "removed": [
+        {
+          "text": "计划：公告：EverAfter MEMBERSHIP服务结束安排",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "EverAfter 会员服务计划结束",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/witchx?section=overview",
+      "removed": [
+        {
+          "text": "IN MEDIA A&D 官网标注的出道日；音源发行另记。",
+          "times": 1
+        },
+        {
+          "text": "海报预告日期",
+          "times": 1
+        },
+        {
+          "text": "TRICK or TREAT · 一周年演唱会",
+          "times": 1
+        },
+        {
+          "text": "公司官网保留的演唱会预告；此条记录预告日期。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "IN MEDIA A&D 官网将这一天列为 W!TCHX 的出道日。",
+          "times": 1
+        },
+        {
+          "text": "海报所列演出日",
+          "times": 1
+        },
+        {
+          "text": "TRICK or TREAT · 一周年演唱会预告",
+          "times": 1
+        },
+        {
+          "text": "海报预告演出将于韩国时间 16:00 在 SHOWKING K-POP CENTER 举行。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/witchx?section=updates",
+      "removed": [
+        {
+          "text": "IN MEDIA A&D 官网标注的出道日；音源发行另记。",
+          "times": 1
+        },
+        {
+          "text": "海报预告日期",
+          "times": 1
+        },
+        {
+          "text": "TRICK or TREAT · 一周年演唱会",
+          "times": 1
+        },
+        {
+          "text": "公司官网保留的演唱会预告；此条记录预告日期。",
+          "times": 1
+        },
+        {
+          "text": "公司出道标注、音源发行和视频公开采用各自日期；活动预告不作为已经举办的证明。",
+          "times": 1
+        }
+      ],
+      "added": [
+        {
+          "text": "IN MEDIA A&D 官网将这一天列为 W!TCHX 的出道日。",
+          "times": 1
+        },
+        {
+          "text": "海报所列演出日",
+          "times": 1
+        },
+        {
+          "text": "TRICK or TREAT · 一周年演唱会预告",
+          "times": 1
+        },
+        {
+          "text": "海报预告演出将于韩国时间 16:00 在 SHOWKING K-POP CENTER 举行。",
+          "times": 1
+        }
+      ]
+    },
+    {
+      "route": "/artists/wooah?section=updates",
+      "removed": [
+        {
+          "text": "大事沿一条时间线展开，从最早走向最新。",
+          "times": 1
+        }
+      ],
+      "added": []
+    }
+  ],
+  "sourcesForChangedFacts": {
+    "witchx": {
+      "page": "https://kpopmedia.co.kr/#artists",
+      "originalPoster": "https://kpopmedia.co.kr/images/witchx_beautiful.png",
+      "repositoryOriginal": "apps/idol-site/public/artist/witchx/review-20261024/anniversary-poster-original.webp",
+      "printedText": "1st ANNIVERSARY CONCERT / HALLOWEEN PARTY / TRICK or TREAT / 2025.10.26. SUN. 4PM (KST) / SHOWKING K-POP CENTER",
+      "dateMeaning": "Scheduled concert date printed on poster. Neither a publication date nor independent evidence of performance."
+    },
+    "adya": {
+      "source": "https://music.bugs.co.kr/album/4103870",
+      "record": "adya-release-ost-compilation",
+      "fact": "13-track soundtrack compilation; ADYA sings track 2."
+    },
+    "bewave": {
+      "interview": "https://www.edaily.co.kr/News/Read?mediaCodeNo=258&newsId=01492406638919424",
+      "singleAlbum": "https://isplus.com/article/view/isp202509040238",
+      "duet": "https://music.bugs.co.kr/album/4135345",
+      "solo": "https://music.bugs.co.kr/album/20834801",
+      "facts": "Previously accepted release descriptions and the named solo/duo release credits."
+    },
+    "candyshop": {
+      "interview": "https://www.kpopmonster.jp/?p=169924",
+      "anniversary": "https://candy-shop.jp/news/detail/8921",
+      "hiatus": "https://www.starnewskorea.com/music/2024/05/09/2024050908033147420"
+    },
+    "geenius": {
+      "soundtrack": "https://music.bugs.co.kr/album/20654296",
+      "video": "https://www.youtube.com/watch?v=NLa_eJYKcfQ",
+      "qrEditionSourceRecord": "apps/idol-site/data/timeline-reported-records.json / e-geenius-spoiler-book-instrumental"
+    },
+    "spia": {
+      "performance": "https://www.youtube.com/watch?v=qJ_YiTwk0Vg",
+      "release": "https://music.bugs.co.kr/album/4102374"
+    },
+    "tracer": {
+      "performanceVideo": "https://www.youtube.com/watch?v=924WxkHMdxU"
+    },
+    "udtt": {
+      "announcement": "https://adv.tokyo-np.co.jp/prtimes/article75656/",
+      "debutAndSena": "Separate existing March 26 departure and April 29 debut. Member IDs and April 30 interview/unknown entry date stay unchanged."
+    },
+    "itzy": {
+      "announcement": "https://itzy.jype.com/discography/7j490oq8"
+    },
+    "unis": {
+      "announcement": "https://weverse.io/unis/notice/39566"
+    }
+  },
+  "checks": {
+    "platform": "Windows / Node v24.16.0",
+    "activeScopedTests": {
+      "tests": 139,
+      "passed": 139,
+      "failed": 0,
+      "files": [
+        "timeline-production.test.cjs",
+        "timeline-react.test.cjs",
+        "timeline-reported-records.test.cjs",
+        "priority-date-adoption-20261030.test.cjs",
+        "research-closeout-20261101.test.cjs",
+        "udtt-information-identity.test.cjs",
+        "udtt-private-build-assets.test.mjs",
+        "public-artist-copy.test.cjs"
+      ]
+    },
+    "typecheck": "passed",
+    "historicalGroupContent": {
+      "files": [
+        "adya-content.test.mjs",
+        "bewave-content.test.mjs",
+        "candyshop-content.test.mjs",
+        "geenius-content.test.mjs",
+        "spia-content.test.mjs",
+        "tracer-content.test.mjs",
+        "witchx-content.test.mjs"
+      ],
+      "sameBaselineAndCandidate": {
+        "tests": 32,
+        "passed": 30,
+        "failed": 2
+      },
+      "retainedFailures": [
+        "spia-content.test.mjs / native score access requires existing record, group and exact video slot / FxDq3bqngzQ (old source-specific preview path vs. current canonical thumbnail, same video ID)",
+        "tracer-content.test.mjs / native handoffs bind record, group and exact video; zero differs from no score / 924WxkHMdxU (old source-specific preview path vs. current canonical thumbnail, same video ID)"
+      ]
+    }
+  }
+}

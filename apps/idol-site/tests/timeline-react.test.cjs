@@ -53,6 +53,8 @@ test('only book-title brackets receive the CJK font, preserving heading text, es
   ['JEWELRY》', 'confirmed', 'closing-only', 'JEWELRY》'],
   ['《CRAZY》数字发行', 'confirmed', 'e-lesserafim-crazy', '《CRAZY》发行'],
   ['《作品》发行', 'planned', 'planned-brackets', '计划：《作品》发行'],
+  ['公告：YEJI首张solo专辑《AIR》', 'planned', 'e-itzy-yeji-air-announcement', 'YEJI 计划发行首张个人专辑《AIR》'],
+  ['公告：EverAfter MEMBERSHIP服务结束安排', 'planned', 'e-unis-everafter-membership-end-announcement', 'EverAfter 会员服务计划结束'],
   ['《作品》演出', 'cancelled', 'cancelled-brackets', '已取消：《作品》演出'],
   ['《作品》演出', 'postponed', 'postponed-brackets', '已延期：《作品》演出'],
   ['无书名号 Latin & <text>「保留」', 'confirmed', 'plain', '无书名号 Latin & <text>「保留」'],

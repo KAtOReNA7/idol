@@ -18,7 +18,20 @@ test('group CSS stays scoped, full photos contained and mobile editors readable'
 test('expanded work heading respects the same cross-group theme priority as the page',()=>{const s=fs.readFileSync('app/page.tsx','utf8');assert.match(s,/!work\.groupIds\.includes\(BABYMONSTER_GROUP_ID\)&&!work\.groupIds\.includes\(ILLIT_GROUP_ID\)&&\(work\.groupIds\.includes\(XG_GROUP_ID\)\|\|work\.groupIds\.includes\(AESPA_GROUP_ID\)\)&&<div className="expanded-work-heading"/);});
 test('XG first-full-album pre-release tracks are singles rather than separate studio albums',()=>{const d=content('xg');for(const name of ['4 SEASONS','GALA']){const r=d.releases.find(r=>r.title===name);assert.equal(r.type,'PRE-RELEASE SINGLE');assert.equal(r.category,'pre_release_single');}assert.equal(d.releases.filter(r=>r.category==='studio_album').length,1);});
 
-test('themed member pages retain captured social counts and dates without calling them live',()=>{for(const slug of ['xg','aespa']){const s=render(slug,'/artists/'+slug+'?section=members&member=recM');assert.match(s,/Instagram/);assert.match(s,/10.2万/);assert.match(s,/更新于 2026-10-11/);assert.doesNotMatch(s,/实时粉丝/);}});
+test('themed member pages retain captured social counts and dates without calling them live',()=>{
+ const {parse}=require('next/dist/compiled/node-html-parser');
+ for(const slug of ['xg','aespa']){
+  let account;
+  const page=parse(render(slug,'/artists/'+slug+'?section=members&member=recM',data=>{account=data.members[0].social[0];}));
+  const link=page.querySelectorAll('[data-member-module="basic"] a[href]').find(node=>node.getAttribute('href')===account.url);
+  assert.match(link.text,/Instagram/);
+  assert.match(link.text,/10万 粉丝/);
+  assert.match(link.text,/更新于 2026-10-11/);
+  assert.doesNotMatch(link.text,/实时粉丝/);
+  assert.equal(account.countLabel,'10.2万');
+  assert.equal(account.observedAt,'2026-10-11T08:00:00Z');
+ }
+});
 
 test('expanded member labels and score links keep the original member/work identifiers',()=>{
  for(const slug of ['xg','aespa']){

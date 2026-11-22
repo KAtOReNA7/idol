@@ -1,5 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),crypto=require('node:crypto');
 const ts=require('typescript'),React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
+const {parse}=require('next/dist/compiled/node-html-parser');
+const {imageDependency}=require('./helpers/image-dependency-loader.cjs');
 const content=JSON.parse(fs.readFileSync('data/hearts2hearts-artist.json')),manifest=JSON.parse(fs.readFileSync('data/hearts2hearts-figma-assets.json'));
 const src=fs.readFileSync('components/hearts2hearts-artist.tsx','utf8'),css=fs.readFileSync('app/artists/hearts2hearts/hearts2hearts-artist.css','utf8');
 const members=manifest.members.map(m=>({...m,stageName:m.stageName,groupIds:[content.groupId],name:m.stageName,cnName:m.cn}));
@@ -15,7 +17,7 @@ function render(url,extra={}){
   if(name.endsWith('artist-timeline-host'))return {useArtistTimelineHostOptions:()=>({catalog}),ArtistTimelineHost:()=>React.createElement('div',{'data-production-timeline':'true'})};
   if(name.endsWith('reliable-image'))return {ReliableImage:({src,alt})=>React.createElement('img',{src,alt}),ImageRecoveryProvider:({children})=>children,ImageRecoveryControls:()=>null};
   if(name.endsWith('use-artist-scroll'))return {useArtistScroll:()=>()=>{}};
-  if(name.endsWith('member-works'))return {memberWorks:()=>[],memberWorkSummary:()=>({composite:null,ratedWorks:0,performanceMean:null,stylingMean:null})};
+  if(name.endsWith('member-works')||name.endsWith('member-work-identity-photo'))return imageDependency(name);
   if(name.endsWith('member-display-name'))return {memberDisplayName:m=>m.cnName||m.stageName};
   if(name.endsWith('group-detail'))return {safeGroupLink:s=>s};
   if(name.endsWith('values'))return {videoId:s=>new URL(s).searchParams.get('v')};
@@ -32,7 +34,22 @@ test('production timeline appears exactly once only on history page',()=>{const 
 test('work navigation retains actual IDs, stage selection and artist return, no synthetic thumbnail',()=>{const html=render('/artists/hearts2hearts?section=works');assert.ok(html.includes('work='+work.id));assert.ok(html.includes('video=stage'));assert.ok(html.includes('artistReturn='));assert.ok(html.includes('未评分'));assert.ok(!html.includes('6.8'));assert.ok(!html.includes('i.ytimg'));assert.ok(!html.includes('iconic-heart-regular.jpg'));assert.ok(!src.includes("method:'POST'"));});
 test('native typography and responsive geometry remain local and isolated',()=>{assert.ok(css.includes("font-family:Inter"));assert.ok(css.includes("font-family:'Fredoka One'"));assert.ok(css.includes('font-size:31px'));assert.ok(css.includes('font-size:26px'));assert.ok(css.includes('.hearts2hearts-artist>main'));for(const width of [320,390,1440,2048,2560])for(const zoom of [.8,1,1.25]){const viewport=width/zoom;const mobile=viewport<=700;const contentWidth=Math.min(1600,viewport)-(mobile?32:96);const cols=mobile?2:4;const gap=mobile?16:24;const card=(contentWidth-gap*(cols-1))/cols;assert.ok(card>0,`${width}px at ${zoom} zoom`);assert.ok(contentWidth<=viewport);}});
 test('mobile menu exposes expanded state and exact navigation target',()=>{const html=render('/artists/hearts2hearts');assert.ok(html.includes('aria-controls="h2h-navigation"'));assert.ok(html.includes('aria-expanded="false"'));assert.ok(css.includes('.h2h-header nav.is-open'));});
-test('missing member work photo never becomes oversized fake artwork',()=>{assert.ok(src.includes('{x.photo&&<button'));assert.ok(!src.includes('本 MV 个人造型图暂缺'));});
+test('missing member work photo never becomes oversized fake artwork',()=>{
+ const [member]=members;
+ const recording={...work,id:'recMissingWorkPhoto',url:'https://www.youtube.com/watch?v=abcdefghijk'};
+ const rating={id:'recFigmaRating',memberIds:[member.id],workIds:[recording.id],score:0,stylingScore:8,photo:null};
+ const url='/artists/hearts2hearts?section=members&member='+member.id;
+ const memberPage=()=>parse(render(url,{mode:'live',works:[recording],ratings:[rating]}));
+ const selector='[data-member-module="works"] [data-member-work-trigger="'+recording.id+'"]';
+ const page=memberPage(), row=page.querySelector(selector).closest('article');
+ assert.equal(page.querySelector('[data-member-module="identity"] img').getAttribute('src'),content.memberVisuals[member.stageName].image);
+ assert.equal(row.querySelector('img,svg image,figure,button'),null);
+ assert.match(row.text,/表现 0\.0 · 造型 8\.0/);
+ rating.personalPhotoEligible=true;
+ rating.photo={table:'ratings',recordId:rating.id,index:2,sourceKind:'mv_look_photo'};
+ const original=memberPage().querySelector(selector).closest('article').querySelector('button[aria-haspopup="dialog"] img');
+ assert.equal(original.getAttribute('src'),'/api/media?table=ratings&record=recFigmaRating&index=2');
+});
 
 test('member search accepts Chinese and case-insensitive stage names without renumbering or filtering home',()=>{
  for(const query of ['STELLA','stella','金多绚']){const html=render('/artists/hearts2hearts?section=members&q='+encodeURIComponent(query));assert.equal((html.match(/data-artist-member-trigger=/g)||[]).length,1);assert.match(html,/<small>04<\/small>/);assert.match(html,/1 \/ 8 位成员/);}

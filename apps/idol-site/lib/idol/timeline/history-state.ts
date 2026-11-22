@@ -17,3 +17,11 @@ export function tryArtistHistoryChange(change: () => void): boolean {
     throw error;
   }
 }
+
+/** A release detail can return to a cover that is mounted after the catalog arrives. */
+export function focusLinkedRelease(anchor: HTMLAnchorElement | null) {
+  if (!anchor || location.hash !== '#' + anchor.id) return;
+  anchor.focus({preventScroll:true});
+  anchor.scrollIntoView({block:'center', behavior:'instant'});
+  tryArtistHistoryChange(() => history.replaceState(history.state, '', location.pathname + location.search));
+}

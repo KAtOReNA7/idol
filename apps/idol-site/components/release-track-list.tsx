@@ -6,13 +6,18 @@ const earlyTrackFocus = `(() => {
   const registration = Symbol.for('stage.releaseTrackFocus');
   if (window[registration]) return;
   window[registration] = true;
+  function currentList(link) {
+    const list = link?.closest('ol[data-release-tracks]');
+    const route = list?.dataset.releaseTracks;
+    return route === location.pathname || route === location.pathname + location.search ? list : null;
+  }
   function remember(event) {
     if (event.defaultPrevented || event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     const link = event.target.closest?.('a[data-member-work-trigger][id]');
-    const list = link?.closest('ol[data-release-tracks]');
-    if (!list || list.dataset.releaseTracks !== location.pathname) return;
+    const list = currentList(link);
+    if (!list) return;
     const url = new URL(link.href);
-    const target = location.pathname + '#' + link.id;
+    const target = list.dataset.releaseTracks + '#' + link.id;
     if (url.origin !== location.origin || url.searchParams.get('returnTo') !== target || url.searchParams.get('work') !== link.dataset.memberWorkTrigger) return;
     try {
       history.replaceState(history.state, '', location.pathname + location.search + '#' + link.id);
@@ -21,8 +26,7 @@ const earlyTrackFocus = `(() => {
   }
   function restore() {
     const link = document.getElementById(location.hash.slice(1));
-    const list = link?.closest('ol[data-release-tracks]');
-    if (!list || list.dataset.releaseTracks !== location.pathname || !link.hasAttribute('data-member-work-trigger')) return;
+    if (!currentList(link) || !link.hasAttribute('data-member-work-trigger')) return;
     link.focus({preventScroll:true});
     link.scrollIntoView({block:'nearest',behavior:'instant'});
   }

@@ -7,7 +7,9 @@ import {historicalMemberVisual} from '@/lib/idol/historical-member-visual';
 import {MvIdentityPhoto} from '@/components/mv-identity-photo';
 import {ArtistInformation} from '@/components/artist-information';
 import {publicCustomArtistText,publicCustomArtistCaption} from '@/lib/idol/custom-artist-copy';
-import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
+import {focusLinkedRelease,newArtistHistoryState} from '@/lib/idol/timeline/history-state';
+import {EASY_FROM_OVERVIEW,LESSERAFIM_EASY_PATH} from '@/lib/idol/artist-navigation';
+import {easyCardId,easyPreviewSet,easyReleaseId,type EasyPreviews} from '@/lib/idol/lesserafim-easy';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {MemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPhysicalFacts} from '@/components/member-physical-facts';
@@ -30,8 +32,9 @@ import {mvPhotoLabel,MV_LOOK_PHOTO_LABEL} from '@/lib/idol/mv-photo-presentation
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from './reliable-image';
 import {useArtistScroll} from './use-artist-scroll';
 
-type LesserafimContent=Omit<ExpandedArtistContent,'memberVisuals'>&{
+type LesserafimContent=Omit<ExpandedArtistContent,'memberVisuals'|'releases'>&{
  memberVisuals:Record<string,ExpandedArtistContent['memberVisuals'][string]&{identitySourceUrl?:string}>;
+ releases:(ExpandedArtistContent['releases'][number]&EasyPreviews)[];
  releaseCoverage:{scope:string};
  featuredReleaseIds:string[];
  releaseVideoIds:Record<string,string[]>;
@@ -107,7 +110,23 @@ export default function LesserafimArtist({content}:{content:LesserafimContent}){
  function records(compact=false){
   const latest=content.releases.slice(0,3);
   const releases=compact?[...latest,...featured.filter(release=>!latest.includes(release))]:content.releases;
-  return <><p className="lf-scope">{publicCustomArtistText(content.releaseCoverage.scope)}</p><div className="lf-release-feature">{releases.map(r=><article key={r.id}><A href={external(r.sourceUrl)} target="_blank" rel="noopener noreferrer"><div className="lf-album-cover"><Picture identityKey={'release:'+r.id} src={r.image} alt={r.title+' 官方发行封面'}/></div><h3>{r.title}</h3><p>{r.date||'发行日期暂缺'} · {r.type}</p></A></article>)}</div><p className="lf-scope">销量与音乐节目一位数据尚不完整，暂不展示总计。</p></>;}
+  return <><p className="lf-scope">{publicCustomArtistText(content.releaseCoverage.scope)}</p>
+   <div className="lf-release-feature">{releases.map(release=>{
+    const isEasy=release.id===easyReleaseId;
+    const link=isEasy
+     ? {href:compact?EASY_FROM_OVERVIEW:LESSERAFIM_EASY_PATH, id:easyCardId, ref:focusLinkedRelease, 'data-member-work-trigger':'release:'+release.id}
+     : {href:external(release.sourceUrl), target:'_blank', rel:'noopener noreferrer'};
+    const alt=release.title+' 官方发行封面';
+    return <article key={release.id}><A {...link}>
+     <div className="lf-album-cover">{isEasy&&release.imagePreview
+      ? <ReliableImage src={release.imagePreview} srcSet={easyPreviewSet(release)}
+          sizes="auto, (max-width:650px) calc(45.55vw - 6px), (max-width:1600px) 30vw, 477px"
+          identityKey={'release:'+release.id} alt={alt} width={480} height={480} original/>
+      : <Picture identityKey={'release:'+release.id} src={release.image} alt={alt}/>}</div>
+     <h3>{release.title}</h3><p>{release.date||'发行日期暂缺'} · {release.type}</p>
+    </A></article>;
+   })}</div></>;
+ }
  function memberPage(m:Member){
   if(!data)return null;
   const items=memberWorks(data,m.id),s=memberWorkSummary(items);

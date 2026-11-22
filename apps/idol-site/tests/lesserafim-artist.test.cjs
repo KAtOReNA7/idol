@@ -13,7 +13,7 @@ test('LE SSERAFIM member dimensions remain distinct and missing MV photo never u
  assertMemberWorkCard(setup, fixture, 'lesserafim', '认人图待补');
 });
 test('LE SSERAFIM official five-person hero and named portrait evidence',()=>{assert.equal(crypto.createHash('sha256').update(fs.readFileSync('public'+content.hero.image)).digest('hex'),content.hero.sha256);assert.equal(Object.keys(content.memberVisuals).length,5);assert.match(content.hero.sourceUrl,/sourcemusic.com\/artist\/profile/);assert.match(content.hero.caption,/五人团体合照/);for(const [name,v] of Object.entries(content.memberVisuals)){assert.match(v.sourcePhotoUrl,/officialsite.cds-jp.online/);const original=JSON.parse(fs.readFileSync('../../docs/codex/lesserafim-original-transport-20261025.json')).assets.find(a=>a.url===v.sourcePhotoUrl);assert.equal(v.image,original.image);assert.equal(crypto.createHash('sha256').update(fs.readFileSync('public'+v.image)).digest('hex'),original.sha256);assert.match(v.identitySourceUrl,/le-sserafim.jp\/profile\//);}});
-test('LE SSERAFIM unknown achievements never become false zero; historical counts dated',()=>{const s=setup('/artists/lesserafim?section=records').render();assert.match(s,/销量与音乐节目一位数据尚不完整，暂不展示总计/);assert.doesNotMatch(s,/待完整核验/);assert.doesNotMatch(s,/0<em/);assert.equal(content.wins,null);for(const x of content.social)assert.match(x.observedAt,/^2026-10-09/);});
+test('LE SSERAFIM keeps its official directory scope and omits unknown sales or win totals',()=>{const s=setup('/artists/lesserafim?section=records').render();assert.match(s,/SOURCE MUSIC 韩国官网收录的 11 项发行/);assert.doesNotMatch(s,/待完整核验|暂不展示总计|销量与音乐节目一位数据尚不完整|0<em/);assert.equal(content.wins,null);for(const x of content.social)assert.match(x.observedAt,/^2026-10-09/);});
 test('LE SSERAFIM uses only authenticated read and preserves exact MV source model',()=>{const s=fs.readFileSync('components/lesserafim-artist.tsx','utf8');assert.match(s,/readArtistCatalog\('lesserafim', controller\.signal\)/);assert.doesNotMatch(s,/method:'POST'|api\/save|api\/manage|localStorage|sessionStorage/);assert.match(s,/memberWorks\(data,m.id\)/);});
 
 test('LE SSERAFIM queue counts follow the active stage filter and current search',()=>{const d=fixture();d.works[0].stage={videoId:'validstage1'};const s=setup('/artists/lesserafim?section=works&format=stage',d).render();assert.match(s,/全部作品<span>1<\/span>/);const empty=setup('/artists/lesserafim?section=works&format=stage&q=recWho',d).render();assert.match(empty,/全部作品<span>0<\/span>/);assert.match(empty,/没有符合条件/);});
@@ -85,5 +85,6 @@ test('the overview keeps the latest and previously featured official releases to
  assert.ok(firstAlbum>0);
  assert.ok(ordered.slice(firstAlbum).every(el=>el.classNames.includes('lf-album-cover')));
  const expected=content.releases.filter((r,i)=>i<3||content.featuredReleaseIds.includes(r.id));
- assert.deepEqual(ordered.slice(firstAlbum).map(el=>el.closest('a').getAttribute('href')),expected.map(r=>r.sourceUrl));
+ assert.deepEqual(ordered.slice(firstAlbum).map(el=>el.closest('a').getAttribute('href')),
+  expected.map(r=>r.id==='12'?'/artists/lesserafim/releases/easy?from=overview':r.sourceUrl));
 });

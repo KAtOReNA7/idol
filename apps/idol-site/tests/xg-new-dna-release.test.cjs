@@ -94,7 +94,7 @@ function firstHtml(album,anchor) {
   const location=new URL(list.getAttribute('data-release-tracks'),origin);
   const listeners=new Map();
   const events={addEventListener:(name,fn)=>listeners.set(name,fn)};
-  const trackList={dataset:{releaseTracks:location.pathname}};
+  const trackList={dataset:{releaseTracks:list.getAttribute('data-release-tracks')}};
   let focused=0,scrolled=0;
   const link={
     id:anchor.id, dataset:{memberWorkTrigger:anchor.getAttribute('data-member-work-trigger')},
@@ -110,13 +110,16 @@ function firstHtml(album,anchor) {
   return {location,link,history,emit:(key,event)=>listeners.get(key)(event),get focused(){return focused;},get scrolled(){return scrolled;}};
 }
 
-test('before React, native pointer and Enter activation both preserve the exact track across a return', () => {
-  for(const album of [release,otherAlbum]) for(const anchor of album.querySelectorAll('ol a')) for(const detail of [1,0]) {
+test('before React, native pointer and Enter activation preserve the exact track and original catalog entry', async () => {
+  const easyPage='app/artists/lesserafim/releases/easy/page.tsx';
+  const albums=[release,otherAlbum,await renderRelease.withQuery(easyPage,{}),await renderRelease.withQuery(easyPage,{from:'overview'})];
+  for(const album of albums) for(const anchor of album.querySelectorAll('ol a')) for(const detail of [1,0]) {
     const h=firstHtml(album,anchor);
     h.emit('DOMContentLoaded');
     assert.equal(h.focused,0);
     h.emit('click',{button:0,detail,target:h.link});
     assert.equal(h.location.hash,'#'+h.link.id);
+    assert.equal(h.location.pathname+h.location.search,album.querySelector('ol').getAttribute('data-release-tracks'));
     assert.equal(h.link.referrerPolicy,'same-origin');
     h.emit('pageshow',{persisted:true});
     assert.equal(h.focused,1);

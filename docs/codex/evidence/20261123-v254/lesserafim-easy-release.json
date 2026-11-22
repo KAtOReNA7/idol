@@ -1,0 +1,110 @@
+{
+  "scope": "LE SSERAFIM《EASY》发行资料、两个站内入口与同版 MV 往返",
+  "baselineVersion": 253,
+  "developmentVersion": 254,
+  "sources": [
+    {
+      "label": "SOURCE MUSIC 韩国官网",
+      "url": "https://www.sourcemusic.com/artist/discography/LE%20SSERAFIM/12",
+      "http": 200,
+      "supplies": ["唱片名称与类型", "官方封面", "五首曲序和时长", "主打曲 EASY"]
+    },
+    {
+      "label": "发行方 Weverse 公告",
+      "url": "https://weverse.io/lesserafim/notice/17350",
+      "supplies": ["2024-02-19 发行日期"]
+    },
+    {
+      "label": "环球音乐日本配信公告",
+      "url": "https://www.universal-music.co.jp/lesserafim/news/2024-02-19/",
+      "http": 200,
+      "supplies": ["同日五首配信信息"]
+    }
+  ],
+  "release": {
+    "group": "recvxyEBDZvpPh",
+    "id": "12",
+    "date": "2024-02-19",
+    "trackTotal": "13:34",
+    "tracks": [
+      {"title":"Good Bones","duration":"2:40"},
+      {"title":"EASY","duration":"2:45","lead":true,"work":"recvxyOz5Xfden","sourceVideo":"bNKXxwOQYB8","published":"2024-02-19","version":"韩文原版","oEmbedAuthor":"HYBE LABELS"},
+      {"title":"Swan Song","duration":"2:37"},
+      {"title":"Smart","duration":"2:46","work":"recvxyOz5X0dv0","sourceVideo":"KNexS61fjus","published":"2024-03-05","version":"韩文原版","oEmbedAuthor":"HYBE LABELS"},
+      {"title":"We got so much","duration":"2:46"}
+    ],
+    "originalCardHref": "https://www.sourcemusic.com/artist/discography/LE%20SSERAFIM/12",
+    "catalogs": [
+      {
+        "path": "/artists/lesserafim",
+        "cards": 6,
+        "otherOriginalDestinations": 5,
+        "detail": "/artists/lesserafim/releases/easy?from=overview",
+        "returnCard": "/artists/lesserafim#lesserafim-release-12"
+      },
+      {
+        "path": "/artists/lesserafim?section=records",
+        "cards": 11,
+        "otherOriginalDestinations": 10,
+        "detail": "/artists/lesserafim/releases/easy",
+        "returnCard": "/artists/lesserafim?section=records#lesserafim-release-12"
+      }
+    ],
+    "before": {"sameTabReleaseEntries":0,"cardsShowingExactDate":0,"inSiteTrackCount":0,"linkedOriginals":0},
+    "after": {"sameTabReleaseEntries":2,"cardsShowingExactDate":2,"inSiteTrackCount":5,"linkedOriginals":2},
+    "otherUndatedReleases": 10,
+    "publicDirectoryScope": "SOURCE MUSIC 韩国官网收录的 11 项发行。"
+  },
+  "figma": {
+    "file": "zeLNExz4TbpWRW3uiahef7",
+    "page": "1457:1130",
+    "boards": [
+      {"id":"1658:1771","size":[1440,749],"cover":[410,410],"officialLogo":[128,45],"trackRowWidth":830,"editableDescendants":62,"trackInstances":5,"horizontalOverflow":0},
+      {"id":"1658:1841","size":[375,1002],"cover":[339,339],"officialLogo":[106,37],"trackRowWidth":339,"editableDescendants":62,"trackInstances":5,"horizontalOverflow":0}
+    ],
+    "designContextAndScreenshotsRead": 2,
+    "color": {"page":"#0d1721","header":"#111f2b","text":"#edf3f5","muted":"#b6c6cf","links":"#d1bcff","lines":"#405463"},
+    "typography": ["Oswald SemiBold", "Noto Sans SC Regular", "Noto Sans SC Bold"]
+  },
+  "cover": {
+    "source": "https://sourcemusic.com/resources/discography/7c210f34-ee38-4cb4-af60-47485ceaf442.png",
+    "original": "/artist/lesserafim/photo-audit-20261025/7c210f34-ee38-4cb4-af60-47485ceaf442.png",
+    "sameBytesAsSource": true,
+    "originalPixels": [1024,1024],
+    "originalBytes": 1822313,
+    "opaqueOriginal": true,
+    "previews": [
+      {"path":"/artist/lesserafim/easy/cover-480.webp","pixels":[480,480],"bytes":33318,"reductionPercent":98.17},
+      {"path":"/artist/lesserafim/easy/cover-720.webp","pixels":[720,720],"bytes":81196,"reductionPercent":95.54}
+    ],
+    "method": "从同一 PNG 将整幅图按等比 Lanczos 缩小，WebP quality=86，method=6。百分比均为同图静态字节差。",
+    "fullSizeActions": ["点击封面", "查看原图"]
+  },
+  "fonts": {
+    "display": "/fonts/Oswald-Variable.ttf",
+    "textSources": ["/fonts/unis/NotoSansSC-Regular.woff","/fonts/unis/NotoSansSC-Bold.woff"],
+    "textLicense": "/fonts/unis/NotoSansCJK-LICENSE.txt",
+    "textSubsetCodepoints": 76,
+    "textPreviews": [
+      {"path":"/fonts/lesserafim/easy-regular.woff2","bytes":14436},
+      {"path":"/fonts/lesserafim/easy-bold.woff2","bytes":14772}
+    ]
+  },
+  "verification": {
+    "platform": "Windows",
+    "typecheck": "passed",
+    "runtimeDataCheck": "passed",
+    "targetedTests": {
+      "passed": 101,
+      "total": 101,
+      "files": [
+        "lesserafim-easy-release.test.cjs","lesserafim-artist.test.cjs","xg-new-dna-release.test.cjs","aespa-armageddon-release.test.cjs",
+        "journey.test.cjs","early-original-photo.test.cjs","artist-roster-return.test.cjs","font-woff2.test.cjs","editorial-fonts-woff2.test.cjs","artist-mv-card-targets.test.cjs"
+      ]
+    },
+    "activationSimulations": {"easy":8,"aespaAndXg":14,"actions":["鼠标产生的原生点击","按 Enter 产生的原生点击"],"event":"pageshow"},
+    "playbackStarts": 0,
+    "privateWrites": 0,
+    "formal": "开发回执。两档实际浏览宽度、当前所选预览和线上交互另见正式发布回执。"
+  }
+}

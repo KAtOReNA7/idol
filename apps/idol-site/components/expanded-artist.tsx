@@ -4,7 +4,7 @@ import {MemberWorkIdentityPhoto} from '@/components/member-work-identity-photo';
 import {publicVideoCover} from '@/lib/idol/mv-public-media';
 import {ArtistInformation} from '@/components/artist-information';
 import {publicCustomArtistText,publicCustomArtistCaption} from '@/lib/idol/custom-artist-copy';
-import {newArtistHistoryState,tryArtistHistoryChange} from '@/lib/idol/timeline/history-state';
+import {newArtistHistoryState,focusLinkedRelease} from '@/lib/idol/timeline/history-state';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {MemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPhysicalFacts} from '@/components/member-physical-facts';
@@ -49,12 +49,6 @@ function Heading({title,label,onMore,primary=false}:{title:string;label:string;o
 function Thumb({work}:{work:Work}){const id=videoId(work.url);return <div className="nx-thumb"><ReliableImage src={id?(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null} identityKey={`work:${work.id}:thumbnail`} alt={`${work.song||work.name} 视频封面`} referrerPolicy="no-referrer" loading="lazy" fallback={<div className="nx-text-cover"><Wave/><strong>{work.song||work.name}</strong><Play size={22}/></div>}/></div>;}
 function WorkCard({work,returnTo}:{work:Work;returnTo:string}){return <article className="nx-work"><A href={artistWorkUrl(work,false,returnTo)}><Thumb work={work}/><div className="nx-work-copy"><small>{work.videoType||'MV'} · {work.releaseDate}</small><h3>{work.song||work.name}</h3><p>{work.version||work.videoType}</p><span>我的 MV 分 <strong>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</strong></span></div></A><div className="nx-work-actions"><A href={artistWorkUrl(work,false,returnTo)}><Play size={14}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={13}/></A>}</div></article>;}
 type ExpandedArtistProps={slug:'xg'|'aespa';content:ExpandedArtistContent;releaseDetailPaths?:Record<string,string>};
-function focusLinkedRelease(anchor:HTMLAnchorElement|null){
- if(!anchor||location.hash!=='#'+anchor.id)return;
- anchor.focus({preventScroll:true});
- anchor.scrollIntoView({block:'center',behavior:'instant'});
- tryArtistHistoryChange(()=>history.replaceState(history.state,'',location.pathname+location.search));
-}
 export default function ExpandedArtist(props:ExpandedArtistProps){return <ExpandedArtistSession key={props.slug} {...props}/>;}
 function ExpandedArtistSession({slug,content,releaseDetailPaths}:ExpandedArtistProps){
  const xg=slug==='xg',name=content.profile.name,path='/artists/'+slug;

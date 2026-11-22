@@ -357,7 +357,10 @@ test('every current catalog consumer explicitly opts in; old servers can still r
  const artists = ['artist-sample', 'illit-artist', 'expanded-artist', 'ive-artist'];
  for (const file of pages) {
   const source = fs.readFileSync(file, 'utf8');
-  assert.match(source, /shape=display-v1/, file);
+  if(file==='app/page.tsx'){
+   assert.match(source,/read\(workCatalogUrl/,file);
+   assert.equal(workRequest.workCatalogUrl,'/api/catalog?shape=display-v1');
+  }else assert.match(source,/shape=display-v1/,file);
   assert.match(source, /CatalogView as Catalog/, file);
  }
  for (const name of artists) {
@@ -370,6 +373,6 @@ test('every current catalog consumer explicitly opts in; old servers can still r
  assert.match(reader, /fetch\('\/api\/catalog\?' \+ query, \{cache: 'no-store', signal: requestSignal, headers: artistCatalogHeaders\}\)/);
  assert.match(reader, /artistCatalogHeaders = \{Prefer: 'omit-stage-candidates'\}/);
  const home = fs.readFileSync('app/page.tsx', 'utf8');
- assert.match(home, /shape=display-v1'\+\(force&&canEdit\?'&refresh=1':''\)/);
- assert.match(home, /shape=display-v1&refresh=background/);
+ assert.match(home, /workCatalogUrl\+\(force&&canEdit\?'&refresh=1':''\)/);
+ assert.match(home, /workCatalogUrl\+'&refresh=background'/);
 });

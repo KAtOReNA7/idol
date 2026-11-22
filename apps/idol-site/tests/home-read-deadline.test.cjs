@@ -9,7 +9,7 @@ const code=compile(response+'\n'+prefix+'return {load,data};}\nexports.App=App;'
 const workRequest=require('./helpers/shared-journal-dependency-loader.cjs').sharedJournalDependency('@/lib/idol/work-catalog-request');
 const tick=()=>new Promise(r=>setImmediate(r));
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return {promise,resolve,reject};};
-function harness(initial={}){
+function harness(initial={},navigation){
  const states=[],requests=[],effects=[],refs=[],callbacks=[],timers=new Map();
  const detailModule=deferred(),detailModuleLoads=[];
  const view={routeReady:true,work:null,sequence:undefined,canEdit:true,...initial};
@@ -17,25 +17,144 @@ function harness(initial={}){
  const equal=(a,b)=>a&&b&&a.length===b.length&&a.every((value,i)=>Object.is(value,b[i]));
  const timer={setTimeout:(f,ms)=>{const id=++next;timers.set(id,{f,due:now+ms,ms});return id;},clearTimeout:id=>timers.delete(id)};
  const helper={};vm.runInNewContext(compile(fs.readFileSync('lib/idol/catalog-read-deadline.ts','utf8')),{exports:helper,AbortController,DOMException,...timer});
+ const fetchResource=(url,options)=>{const d=deferred();requests.push({...d,url,options});if(url==='/api/status')d.resolve({ok:true,headers:{get:()=> 'application/json'},json:async()=>({source:'feishu'})});return d.promise;};
+ const browserWindow=new EventTarget();
+ browserWindow.location=new URL(navigation?.url??'https://site.invalid/');
+ const script={dataset:{canEdit:view.canEdit?'1':'0'}};
+ let requestHelpers=workRequest;
+ if(navigation){
+  const document={currentScript:script,referrer:navigation.referrer??'https://site.invalid/artists/ive',
+   prerendering:navigation.prerendering,getElementById:id=>id===workRequest.openingCatalogElement?script:null};
+  const browser={URL,URLSearchParams,AbortController,window:browserWindow,document,location:browserWindow.location,
+   history:{state:navigation.state??null},performance:{getEntriesByType:()=>[{type:navigation.type??'navigate'}]},fetch:fetchResource,...timer};
+  requestHelpers={};
+  vm.runInNewContext(compile(fs.readFileSync('lib/idol/work-catalog-request.ts','utf8')),
+   {...browser,exports:requestHelpers,require:name=>{assert.equal(name,'./catalog-read-deadline');return helper;}});
+  vm.runInNewContext(requestHelpers.openingCatalogScript,browser);
+ }
  const exports={};
- vm.runInNewContext(code,{exports,...workRequest,useCanEdit:()=>view.canEdit,catalogReadWithDeadline:helper.catalogReadWithDeadline,AbortController,
-  URLSearchParams,window:{location:new URL('https://site.invalid/')},
+ vm.runInNewContext(code,{exports,...requestHelpers,useCanEdit:()=>view.canEdit,catalogReadWithDeadline:helper.catalogReadWithDeadline,AbortController,
+  URLSearchParams,window:browserWindow,trackTimelineWorkDocument:()=>{},
   loadWorkDetailModule:()=>{detailModuleLoads.push(view.work);return detailModule.promise;},
   useState:v=>{const i=cursor++;if(!(i in states))states[i]=v;return [states[i],n=>{states[i]=n;if(unmounted)writesAfterUnmount++;}];},
   useRef:v=>{const i=refIndex++;return refs[i]??(refs[i]={current:v});},
   useCallback:(fn,deps)=>{const i=callbackIndex++;if(!equal(callbacks[i]?.deps,deps))callbacks[i]={fn,deps};return callbacks[i].fn;},
   useEffect:(fn,deps)=>{const i=effectIndex++;if(!equal(effects[i]?.deps,deps)){const prior=effects[i];effects[i]={fn,deps};pending.push(()=>{prior?.cleanup?.();effects[i].cleanup=fn();});}},
   useCatalogGroupViews:()=>({phase:'idle',value:null}),useBrowseJourney:()=>({routeReady:view.routeReady,route:{work:view.work},filters:{},sequence:view.sequence}),requestMessage:e=>String(e),...timer,
-  fetch:(url,options)=>{const d=deferred();requests.push({...d,url,options});if(url==='/api/status')d.resolve({ok:true,headers:{get:()=> 'application/json'},json:async()=>({source:'feishu'})});return d.promise;}
+  fetch:fetchResource
  });
  function render(patch={}){Object.assign(view,patch);cursor=refIndex=callbackIndex=effectIndex=0;pending=[];api=exports.App();for(const run of pending)run();return api;}
  render();
- return {states,requests,timers,detailModule,detailModuleLoads,render,load:(...args)=>api.load(...args),unmount(){unmounted=true;for(const e of effects)e.cleanup?.();},replay(){for(const e of effects)e.cleanup?.();for(const e of effects)e.cleanup=e.fn();},writes:()=>writesAfterUnmount,
+ return {states,requests,timers,script,browserWindow,detailModule,detailModuleLoads,render,load:(...args)=>api.load(...args),unmount(){unmounted=true;for(const e of effects)e.cleanup?.();},replay(){for(const e of effects)e.cleanup?.();for(const e of effects)e.cleanup=e.fn();},writes:()=>writesAfterUnmount,
  catalog:()=>requests.filter(r=>r.url.startsWith('/api/catalog')),
  async advance(ms){now+=ms;for(const [id,t] of timers)if(t.due<=now){timers.delete(id);t.f();}await tick();},
- reply(r,d){r.resolve({ok:true,headers:{get:()=> 'application/json'},json:async()=>d});}};
+ reply(r,d,access){r.resolve({ok:true,headers:{get:name=>name===workRequest.catalogAccessHeader?access??null:'application/json'},json:async()=>d});}};
 }
 const cached=()=>({mode:'live',groups:[],members:[],works:[{id:'work',score:0,note:'保留备注',watched:'已观看'}],ratings:[],cache:{refreshRecommended:true}});
+
+const firstWorkUrl='https://site.invalid/?view=works&work=recOne&returnTo=%2Fartists%2Five';
+const firstWork=()=>({...cached(),scope:{type:'work',workId:'recOne'}});
+
+test('the first group-card navigation starts one scoped read before hydration for owners and visitors',async()=>{
+ for(const canEdit of [true,false]){
+  const h=harness({routeReady:false,canEdit},{url:firstWorkUrl});
+  assert.equal(h.catalog().length,1);
+  const first=h.catalog()[0];
+  assert.equal(first.url,workRequest.workCatalogUrl);
+  assert.equal(first.options.cache,'no-store');
+  assert.equal(first.options.headers.Prefer,workRequest.workCatalogHeaders('recOne').Prefer);
+  assert.equal(first.options.body,undefined);
+  h.render({routeReady:true,work:'recOne'});await tick();
+  assert.equal(h.catalog().length,1);
+  assert.equal(h.script.openingCatalog,undefined);
+  const detail=firstWork();
+  h.reply(first,detail,canEdit?'owner':'public');await tick();
+  assert.equal(h.render().data,detail);
+  assert.equal(h.catalog().length,canEdit?2:1);
+  if(canEdit){
+   const followup=h.catalog()[1];
+   assert.equal(followup.url,workRequest.workCatalogUrl+'&refresh=background');
+   assert.equal(followup.options.headers.Prefer,first.options.headers.Prefer);
+   const changed={...detail,cache:{}};
+   h.reply(followup,changed);await tick();assert.equal(h.render().data,changed);
+  }
+  h.unmount();assert.equal(h.timers.size,0);
+ }
+});
+
+test('a changed login or missing access tag cannot adopt the early body under a different layout',async()=>{
+ for(const [canEdit,serverAccess] of [[true,'public'],[false,'owner'],[true,null]]){
+  const h=harness({routeReady:false,canEdit},{url:firstWorkUrl});
+  const original=h.catalog()[0];let cancelled=0;
+  original.resolve({ok:true,headers:new Headers(serverAccess?{[workRequest.catalogAccessHeader]:serverAccess}:{}),
+   body:{cancel:async()=>{cancelled++;}},json:async()=>{throw Error('body must stay unread');}});
+  h.render({routeReady:true,work:'recOne'});await tick();
+  assert.equal(cancelled,1);assert.equal(h.catalog().length,1);
+  assert.equal(h.render().data,null);assert.match(h.states[1],/登录状态已变化/);
+  h.unmount();
+ }
+ const rejected=harness({routeReady:false},{url:firstWorkUrl});
+ rejected.catalog()[0].resolve(Response.json({error:'AUTH_REQUIRED'},{status:401}));
+ rejected.render({routeReady:true,work:'recOne'});await tick();
+ assert.equal(rejected.render().data,null);assert.equal(rejected.states[1],'AUTH_REQUIRED');
+ assert.equal(rejected.catalog().length,1);rejected.unmount();
+});
+
+test('a background refresh after sign-out removes the earlier owner data and requires a new page',async()=>{
+ const h=harness({routeReady:false},{url:firstWorkUrl});
+ h.render({routeReady:true,work:'recOne'});await tick();
+ const first=firstWork();
+ h.reply(h.catalog()[0],first,'owner');await tick();
+ assert.equal(h.render().data,first);
+ assert.ok(h.catalog()[1].url.endsWith('refresh=background'));
+ h.reply(h.catalog()[1],first,'public');await tick();
+ assert.equal(h.render().data,null);assert.match(h.states[1],/刷新页面/);
+ h.unmount();
+});
+
+test('only a fresh, same-group card navigation starts an early read',async()=>{
+ for(const nav of [
+  {referrer:''},{referrer:'https://other.invalid/artists/ive'},
+  {referrer:'https://site.invalid/artists/adya'},{type:'reload'},{type:'back_forward'},
+  {state:{idolBrowse:{sequence:{ids:['recOne','recNext']}}}},{prerendering:true},
+  {url:'https://site.invalid/artists/ive?view=works&work=recOne'},
+  {url:firstWorkUrl.replace('view=works','view=members')},{url:firstWorkUrl.replace('recOne','invalid')},
+  {url:firstWorkUrl+'&member=recM'},{url:firstWorkUrl+'&work=recTwo'},{url:firstWorkUrl+'&group=recGroup'},
+ ]){
+  const h=harness({routeReady:false},{url:firstWorkUrl,...nav});
+  await tick();assert.equal(h.catalog().length,0,JSON.stringify(nav));h.unmount();
+ }
+});
+
+test('the document discards an unclaimed read on timeout, leaving, work change and capability change',async()=>{
+ for(const action of ['timeout','pagehide','other-work','role-change']){
+  const h=harness({routeReady:false},{url:firstWorkUrl});
+  const first=h.catalog()[0];
+  if(action==='timeout')await h.advance(30000);
+  if(action==='pagehide')h.browserWindow.dispatchEvent(new Event('pagehide'));
+  if(action==='other-work'||action==='role-change'){
+   const work=action==='other-work'?'recTwo':'recOne';
+   h.render({routeReady:true,canEdit:action!=='role-change',work});await tick();
+   assert.equal(h.catalog().length,2);
+   assert.equal(h.catalog()[1].options.headers.Prefer,workRequest.workCatalogHeaders(work).Prefer);
+   h.reply(first,firstWork(),'owner');await tick();assert.equal(h.render().data,null);
+  }
+  assert.equal(h.script.openingCatalog,undefined);assert.ok(first.options.signal.aborted);
+  h.unmount();await tick();assert.equal(h.timers.size,0);
+ }
+});
+
+test('a claimed early read still aborts during a pending body and cannot replace the next work',async()=>{
+ const h=harness({routeReady:false},{url:firstWorkUrl}),body=deferred();
+ const first=h.catalog()[0];
+ first.resolve({ok:true,headers:new Headers({'Content-Type':'application/json',[workRequest.catalogAccessHeader]:'owner'}),json:()=>body.promise});
+ h.render({routeReady:true,work:'recOne'});await tick();
+ h.render({work:'recTwo'});await tick();
+ assert.ok(first.options.signal.aborted);
+ body.resolve(firstWork());await tick();assert.equal(h.render().data,null);
+ const next={...firstWork(),scope:{type:'work',workId:'recTwo'},cache:{}};
+ h.reply(h.catalog()[1],next);await tick();assert.equal(h.render().data,next);h.unmount();
+});
 
 test('initial route hydration, related version navigation and full library keep the right data',async()=>{
  const h=harness({routeReady:false});await tick();assert.equal(h.catalog().length,0);assert.deepEqual(h.detailModuleLoads,[]);

@@ -178,6 +178,7 @@ test('opaque owner read failures identify their native operation without retryin
   }
   const recovered=await runtime.dispatchFetch('http://localhost/api/catalog?shape=display-v1',{headers});
   assert.equal(recovered.status,200);
+  assert.equal(recovered.headers.get('X-Catalog-Access'),'owner');
   assert.deepEqual((await recovered.json()).scope,{type:'work',workId});
   const warm=await runtime.dispatchFetch('http://localhost/api/catalog?shape=display-v1',{headers:{...headers,'X-Test-Fault':'warm-final'}});
   assert.equal(warm.status,502);
@@ -189,6 +190,7 @@ test('opaque owner read failures identify their native operation without retryin
     headers:{...headers,'X-Test-Public':'1','X-Test-Queries':'1'},
   });
   assert.equal(publicRead.status,200);
+  assert.equal(publicRead.headers.get('X-Catalog-Access'),'public');
   const publicData=await publicRead.json();
   assert.deepEqual(publicData.scope,{type:'work',workId});
   assert.equal(Object.hasOwn(publicData,'personalMvRatings'),false);

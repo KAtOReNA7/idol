@@ -8,7 +8,7 @@ import {indexPersonalRecords, matchPersonalRecords, materializePersonalRecordMat
 import {memberDisplayName} from '@/lib/idol/member-display-name';
 import {indexMemberNames, matchingMembers} from '@/lib/idol/member-index';
 import {catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
-import {catalogCoversRoute,validDetailWork,workCatalogHeaders} from '@/lib/idol/work-catalog-request';
+import {catalogAccessChangedMessage,catalogAccessHeader,catalogCoversRoute,openingCatalogElement,openingCatalogScript,takeOpeningCatalog,validDetailWork,workCatalogHeaders,workCatalogUrl} from '@/lib/idol/work-catalog-request';
 import {useEffect, useMemo, useState, useCallback, useRef} from 'react';
 import {Search, Play, Heart, RefreshCw, Download, ChevronRight, Disc3, X, LoaderCircle} from 'lucide-react';
 import type {CatalogView as Catalog, Work} from '@/lib/idol/types';
@@ -77,15 +77,28 @@ export default function App(){
   let updating=force;
   try{
    const read=(url:string)=>catalogReadWithDeadline(async signal=>{
-    const r=await fetch(url,{cache:'no-store',signal,headers:workCatalogHeaders(workId)});const d=await readResponse(r);
-    if(!r.ok)throw new Error(requestMessage(d&&typeof d==='object'&&'error' in d?d.error:null));return d as Catalog;
+    const opening=!force&&url===workCatalogUrl?takeOpeningCatalog(workId,canEdit,signal):null;
+    try{
+     const r=await (opening?.response??fetch(url,{cache:'no-store',signal,headers:workCatalogHeaders(workId)}));
+     const access=r.headers.get(catalogAccessHeader);
+     const accessChanged=r.ok&&(opening||access==='owner'||access==='public')&&access!==(canEdit?'owner':'public');
+     if((accessChanged||r.status===401||r.status===403)&&sequence===loadSequence.current){
+      latestCatalog.current=null;setData(null);
+     }
+     if(accessChanged){
+      await r.body?.cancel();
+      throw new Error(catalogAccessChangedMessage);
+     }
+     const d=await readResponse(r);
+     if(!r.ok)throw new Error(requestMessage(d&&typeof d==='object'&&'error' in d?d.error:null));return d as Catalog;
+    }finally{opening?.release();}
    },controller.signal);
-   const d=await read('/api/catalog?shape=display-v1'+(force&&canEdit?'&refresh=1':''));
+   const d=await read(workCatalogUrl+(force&&canEdit?'&refresh=1':''));
    if(sequence!==loadSequence.current)return;
    accept(d);setLoading(false);
    if(canEdit&&!force&&d.cache?.refreshRecommended){
     updating=true;setRefreshing(true);
-    const updated=await read('/api/catalog?shape=display-v1&refresh=background');
+    const updated=await read(workCatalogUrl+'&refresh=background');
     if(sequence===loadSequence.current)accept(updated);
    }
   }catch(e){
@@ -152,10 +165,10 @@ export default function App(){
  function openQueue(q:string){journey.navigate({nav:'works',work:null,member:null,video:'mv'},currentLabel(),{...defaultFilters(),queue:q});}
  function filters(type:'works'|'members'|'groups'){return <div className={type==='works'?'filters library-filters':'filters'}><label className="search"><Search size={17}/><input data-library-focus={type==='works'?'search':undefined} maxLength={type==='works'?1000:undefined} value={search} onChange={e=>{setSearch(e.target.value);setLimit(24);}} placeholder={type==='works'?'搜索歌曲、团体或视频标题':type==='members'?'搜索姓名、艺名或团体':'搜索团体或公司'} aria-label="搜索"/>{search&&<button aria-label="清除搜索" onClick={e=>{setSearch('');if(type==='works')e.currentTarget.parentElement?.querySelector('input')?.focus();}}><X size={14}/></button>}</label>{type!=='groups'&&<select aria-label="按团体筛选" value={group} onChange={e=>{setGroup(e.target.value);setLimit(24);}}><option value="all">所有团体</option>{data?.groups.map(g=><option key={g.id} value={g.id}>{g.name}</option>)}</select>}<select aria-label="按代际筛选" value={generation} onChange={e=>{setGeneration(e.target.value);setLimit(24);}}><option value="all">所有代际</option>{generations.map(g=><option key={g}>{g}</option>)}</select>{type==='works'&&<select aria-label="按观看队列筛选" value={queue} onChange={e=>{setQueue(e.target.value);setLimit(24);}}><option value="all">全部作品</option><option value="high">高分团补看</option><option value="surprise">团内惊喜</option><option value="tonight">待看</option><option value="unrated">看过待评分</option><option value="rewatch">高分重温</option></select>}{type==='works'&&<select aria-label="按观看状态筛选" data-library-focus="watch" value={watch} onChange={e=>journey.updateFilters({watch:e.target.value,limit:24})}><option value="all">所有观看状态</option><option value="watched">已观看</option><option value="unwatched">未观看</option><option value="unmarked">未标记</option></select>}{type==='works'&&<select aria-label="作品排序" data-library-focus="sort" value={sort} onChange={e=>journey.updateFilters({sort:e.target.value as WorkSort,limit:24})}><option value="default">默认排序</option><option value="release-desc">发行新到旧</option><option value="release-asc">发行旧到新</option><option value="score-desc">MV 分高到低</option></select>}{(search||group!=='all'||generation!=='all'||queue!=='all'||stageFilter!=='all'||(type==='works'&&(watch!=='all'||sort!=='default')))&&<button className="filter-reset text-button" onClick={()=>journey.updateFilters(defaultFilters())}><X size={14}/>重置筛选</button>}</div>}
  const workTheme=workExperience(data,route);
- return <ImageRecoveryProvider><div className={workTheme?`work-experience ${workTheme.className}`:"music-experience"} data-work-theme={workTheme?.slug}><MusicNavigation active={route.nav} onNavigate={setNav} canEdit={canEdit} onSearch={query=>journey.navigate({nav:'works',work:null,member:null,groupId:null,video:'mv'},currentLabel(),{...defaultFilters(),search:query})}/><main>
+ return <ImageRecoveryProvider><script id={openingCatalogElement} data-can-edit={canEdit?'1':'0'} dangerouslySetInnerHTML={{__html:openingCatalogScript}}/><div className={workTheme?`work-experience ${workTheme.className}`:"music-experience"} data-work-theme={workTheme?.slug}><MusicNavigation active={route.nav} onNavigate={setNav} canEdit={canEdit} onSearch={query=>journey.navigate({nav:'works',work:null,member:null,groupId:null,video:'mv'},currentLabel(),{...defaultFilters(),search:query})}/><main>
  {data&&!journey.styleReady&&<div role="status" data-style-status><p>{journey.stylePhase==='error'?'页面样式加载失败，输入仍保留。':'正在加载页面样式…'}</p>{journey.stylePhase==='error'&&<button className="button" onClick={journey.retryStyles}>重试样式</button>}<button className="button" onClick={goBack}>返回</button></div>}
  <div data-browse-content inert={!!data&&!journey.styleReady} style={data&&!journey.styleReady?{visibility:'hidden'}:undefined}>
- {!data&&(loading||!error)?<div className="loading-screen"><span className="brand">stage.</span><LoaderCircle size={24} className="spin"/><p>正在加载音乐资料…</p></div>:error&&!data?<div className="empty large"><h2>暂时没能打开手帐</h2><p>{error}</p><button className="button primary" onClick={()=>load()}>重新载入</button><a href="/signin-with-chatgpt?return_to=/" target="_top">使用 ChatGPT 登录</a></div>:data&&<>
+ {!data&&(loading||!error)?<div className="loading-screen"><span className="brand">stage.</span><LoaderCircle size={24} className="spin"/><p>正在加载音乐资料…</p></div>:error&&!data?<div className="empty large"><h2>暂时没能打开手帐</h2><p>{error}</p>{error===catalogAccessChangedMessage?<button className="button primary" onClick={journey.reloadPage}>刷新页面</button>:<button className="button primary" onClick={()=>load()}>重新载入</button>}<a href="/signin-with-chatgpt?return_to=/" target="_top">使用 ChatGPT 登录</a></div>:data&&<>
  <div className="source-status"><span>{data.mode==='snapshot'?'浏览模式 · 个人记录未载入':refreshing?'正在更新内容，先看看已有收藏…':''}</span><button onClick={()=>load(true)} disabled={refreshing}><RefreshCw size={13} className={refreshing?'spin':''}/>{refreshing?'更新中':'更新内容'}</button></div>{error&&<div className="alert" role="alert">{error} 仍可浏览已有内容。</div>}
 
  <Suspense fallback={<p role="status">正在打开页面…</p>}>{chosenWork?.placeholder?<PlaceholderDetail work={chosenWork} data={data} onBack={goBack}/>:chosenWork?<WorkDetail key={chosenWork.id} work={chosenWork} sequence={activeSequence} nextWork={nextWork} sequenceLabel={activeSequence?.label} sequencePosition={activeSequence?activeSequence.ids.indexOf(chosenWork.id)+1:0} sequenceTotal={activeSequence?.ids.length??0} onVersion={openVersion} onArtistNavigate={journey.leaveTo} onNext={()=>nextWork&&journey.continueWork(nextWork.id)} initialView={route.video} onViewChange={journey.setVideo} backLabel={journey.backLabel?`返回 ${journey.backLabel}`:route.artistReturn?'返回 '+artistReturnLabel(route.artistReturn):'返回作品库'} data={data} onBack={goBack} onMember={openMember} onGroup={openGroup} onSaved={()=>load(true)}/>:chosenMember?<MemberDetail key={chosenMember.id} member={chosenMember} artistReturn={route.artistReturn} onGroup={openGroup} backLabel={journey.backLabel?`返回 ${journey.backLabel}`:route.artistReturn?'返回成员主页':'返回成员档案'} data={data} onBack={goBack} onWork={id=>openWork(id,libraryWorks.filter(w=>includesMemberWork(data,chosenMember.id,w)),`${memberDisplayName(chosenMember)}的作品`,defaultFilters(),chosenMember.id)} onSaved={()=>load(true)}/>:chosenGroup?GroupDetail?<GroupDetail key={chosenGroup.id} group={chosenGroup} data={data} filters={journey.groupFilters} onFilters={journey.updateGroupFilters} onBack={goBack} backLabel={journey.backLabel?`返回 ${journey.backLabel}`:'返回团体索引'} onMember={id=>openMember(id,{nav:'members',member:id,work:null})} renderPhoto={m=><PhotoView photo={m.photo} label={memberDisplayName(m)} live={data.mode==='live'}/>} renderWork={(w,list,q)=><WorkCard key={w.id} work={w} data={data} onOpen={()=>openWork(w.id,list,chosenGroup.name+' · '+(queueLabels[q]??'全部作品'),{...journey.groupFilters,queue:q,group:chosenGroup.id})}/>} onWork={(w,list,q)=>openWork(w.id,list,chosenGroup.name+' · '+(queueLabels[q]??'全部作品'),{...defaultFilters(),queue:q,group:chosenGroup.id})} noteEditor={<Editor table="groups" id={chosenGroup.id} mode={data.mode} publicCatalog={data} onSaved={()=>load(true)}/>}/>:groupViewsFallback():route.work||route.member||route.groupId?<div className="empty"><h2>暂时找不到这项内容</h2><p>请更新内容后再试。</p><button className="button" onClick={()=>navigate({work:null,member:null,groupId:null})}>返回手帐</button></div>:route.nav==='home'?<MusicHome data={data} onGroup={openGroup} onWork={(w,list)=>openWork(w.id,list,'从一支 MV 开始',defaultFilters())} onWorks={()=>setNav('works')} onGroups={()=>setNav('groups')} onQueue={openQueue}/>:route.nav==='records'?<section aria-label="搜我的记录">

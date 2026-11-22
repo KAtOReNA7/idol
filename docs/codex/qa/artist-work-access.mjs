@@ -79,7 +79,30 @@ function browserSample() {
       encoded: finite(resource.encodedBodySize), decoded: finite(resource.decodedBodySize),
       recovered: resource.serverTiming?.some(entry => entry.name === 'catalog-retry') ?? false}];
   });
-  return {origin: performance.timeOrigin, now: performance.now(), width: document.documentElement.clientWidth, entries};
+  const nav = performance.getEntriesByType('navigation')[0];
+  const navigation = nav ? Object.fromEntries([
+    'fetchStart', 'requestStart', 'responseStart', 'responseEnd', 'domInteractive',
+    'domContentLoadedEventEnd', 'loadEventEnd', 'transferSize', 'encodedBodySize', 'decodedBodySize',
+  ].map(field => [field, finite(nav[field])])) : null;
+  const detailCatalog = entries.find(resource => !resource.artist && resource.shape === 'display-v1');
+  let assetsBeforeCatalog = null;
+  if (detailCatalog && detailCatalog.start !== null) {
+    const resources = performance.getEntriesByType('resource').filter(resource => {
+      const url = new URL(resource.name);
+      return url.origin === location.origin && url.pathname.startsWith('/_next/static/')
+        && resource.startTime <= detailCatalog.start && resource.responseEnd <= detailCatalog.start;
+    });
+    const scripts = resources.filter(resource => new URL(resource.name).pathname.endsWith('.js'));
+    const styles = resources.filter(resource => new URL(resource.name).pathname.endsWith('.css'));
+    const measure = items => ({
+      count: items.length,
+      lastResponseEnd: items.length ? Math.max(...items.map(item => item.responseEnd)) : null,
+      transferBytes: items.reduce((sum, item) => sum + item.transferSize, 0),
+    });
+    assetsBeforeCatalog = {scripts: measure(scripts), styles: measure(styles)};
+  }
+  return {origin: performance.timeOrigin, now: performance.now(), width: document.documentElement.clientWidth,
+    route: location.pathname, work: new URL(location.href).searchParams.get('work'), entries, navigation, assetsBeforeCatalog};
 }
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -105,6 +128,9 @@ async function checkOne(tab, cdp, item, origin, timeoutMs) {
       catalog.set(data.origin + '/' + index, {documentTimeOrigin: data.origin, ...entry});
     });
     row.entries = [...catalog.values()];
+    if (data.route === '/' && data.work === item.work && data.navigation) {
+      row.detailDocument = {navigation: data.navigation, assetsBeforeCatalog: data.assetsBeforeCatalog};
+    }
   }
   const elapsed = () => Math.round(clock.now() - started);
   async function destination() {

@@ -34,7 +34,8 @@ test('owner check and source fence precede response projection; refresh and full
  }
  assert.ok(source.includes('if(!browserView)returnjson(scoped)'));
  assert.doesNotMatch(fs.readFileSync('lib/idol/artist-catalog.ts','utf8'),/INSERT |UPDATE |DELETE |localStorage|sessionStorage|fetch\(/);
- assert.match(fs.readFileSync('app/page.tsx','utf8'),/\/api\/catalog/);
+ assert.match(fs.readFileSync('app/page.tsx','utf8'),/read\(workCatalogUrl/);
+ assert.equal(require('./helpers/shared-journal-dependency-loader.cjs').sharedJournalDependency('@/lib/idol/work-catalog-request').workCatalogUrl,'/api/catalog?shape=display-v1');
  assert.match(fs.readFileSync('components/artist-sample.tsx','utf8'),/readArtistCatalog\('babymonster', controller\.signal\)/);
  assert.match(fs.readFileSync('components/illit-artist.tsx','utf8'),/readArtistCatalog\('illit', controller\.signal\)/);
 });

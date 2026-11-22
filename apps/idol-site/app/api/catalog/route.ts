@@ -2,7 +2,7 @@ import {readPublicCatalog,publicQuery} from '@/lib/idol/public-reader';
 import {ownerForRequest} from '@/lib/idol/public-access';
 import {requestedArtist,projectArtistCatalog} from '@/lib/idol/artist-catalog';
 import {findDetailWork,projectWorkCatalog} from '@/lib/idol/work-catalog';
-import {preferredDetailWork} from '@/lib/idol/work-catalog-request';
+import {catalogAccessHeader,preferredDetailWork} from '@/lib/idol/work-catalog-request';
 import {projectBrowserCatalog,requestedBrowserCatalog,withoutStageCandidates} from '@/lib/idol/browser-catalog';
 import {assertSourceUnchanged} from '@/lib/idol/native-storage';
 import {withNativeCatalog,type NativeCatalogTrace} from '@/lib/idol/native-reader';
@@ -13,10 +13,11 @@ import {json,failure} from '@/lib/idol/http';
 import type {Catalog,CatalogView,PersonalMvRatings,Work} from '@/lib/idol/types';
 export const dynamic='force-dynamic';
 
-function displayResponse(request:Request, catalog:CatalogView) {
+function displayResponse(request:Request, catalog:CatalogView, access:'owner'|'public') {
  const preference = 'omit-stage-candidates';
  const omitCandidates = request.headers.get('Prefer')?.split(',').some(value => value.trim() === preference);
  const response = json(omitCandidates ? withoutStageCandidates(catalog) : catalog);
+ response.headers.set(catalogAccessHeader,access);
  response.headers.append('Vary', 'Prefer');
  if (omitCandidates) response.headers.set('Preference-Applied', preference);
  if (catalog.scope?.type==='work') response.headers.append('Preference-Applied','work-detail='+catalog.scope.workId);
@@ -67,7 +68,7 @@ async function catalogResponse(request:Request,readCatalog:<T>(read:()=>Promise<
    trace.phase='public-read';
    const catalog=await readCatalog(()=>readPublicCatalog(artist,work));
    trace.phase='project';
-   return displayResponse(request,catalog);
+   return displayResponse(request,catalog,'public');
   }
   const params = new URL(request.url).searchParams;
   const artist = requestedArtist(params), browserView = requestedBrowserCatalog(params);
@@ -106,7 +107,7 @@ async function catalogResponse(request:Request,readCatalog:<T>(read:()=>Promise<
     view.personalMvRatings={...personal,entries:personal.entries.filter(row=>works.has(row.workId)&&members.has(row.memberId))};
    }else view.personalMvRatings=personal;
   }
-  return displayResponse(request, view);
+  return displayResponse(request, view,'owner');
 }
 
 export async function GET(request:Request) {

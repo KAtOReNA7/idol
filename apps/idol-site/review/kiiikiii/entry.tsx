@@ -2,6 +2,7 @@ import {createRoot} from 'react-dom/client';
 import App from '../../app/page';
 import KiiikiiiArtist from '../../components/kiiikiii-artist';
 import content from '../../data/kiiikiii-artist.json';
+import editions from '../../data/mv-recognition-editions.json';
 import timeline from '../../data/artist-timelines/kiiikiii.json';
 import {timelineRecordUrl} from '../../lib/idol/timeline/navigation';
 import {ArtistTimelineHostProvider,type TimelineNavigationRequest} from '../../components/artist-timeline-host';
@@ -30,6 +31,6 @@ function navigateTimeline(request:TimelineNavigationRequest,beforeLeave:()=>bool
 }
 createRoot(target).render(<PublicAccessProvider canEdit={false}>
   <ArtistTimelineHostProvider value={{catalog,input:timeline,navigate:navigateTimeline,loading:false,error:'',serverRoute:ARTIST_PATH}}>
-    {route===ARTIST_PATH?<KiiikiiiArtist content={content}/>:route===RECORDS_PATH?<App/>:<main><h1>此审阅页仅提供 KiiiKiii</h1><a href={ARTIST_PATH}>返回 KiiiKiii 首页</a></main>}
+    {route===ARTIST_PATH?<KiiikiiiArtist content={content} debutEdition={editions['kiiikiii-uncut-gem-2025']}/>:route===RECORDS_PATH?<App/>:<main><h1>此审阅页仅提供 KiiiKiii</h1><a href={ARTIST_PATH}>返回 KiiiKiii 首页</a></main>}
   </ArtistTimelineHostProvider>
 </PublicAccessProvider>);

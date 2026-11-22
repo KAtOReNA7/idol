@@ -1,3 +1,4 @@
 // Explicit test-only shape: releaseCoverageContent; no original data fetched.
-import {releaseCoverageContent} from "../synthetic-artist-content";
-export default releaseCoverageContent("rec28ldfRTiBUk","合成宿主 kiiikiii");
+import {kiiikiiiDebutCampaign,releaseCoverageContent} from "../synthetic-artist-content";
+const content=releaseCoverageContent("rec28ldfRTiBUk","合成宿主 kiiikiii");
+export default {...content,debutCampaign:kiiikiiiDebutCampaign(content.hero.image)};

@@ -48,4 +48,8 @@ export function featuredReleaseContent(groupId:string,name:string) {
 export function releaseCoverageContent(groupId:string,name:string) {
   return {...featuredReleaseContent(groupId,name),releaseCoverage:{scope:note}};
 }
+export function kiiikiiiDebutCampaign(group: string) {
+  return {page:source,staff:source,group,groupOriginal:group,logo:'/image-fixture/wordmark.png?host=kiiikiii',
+    jar:'/image-fixture/jar.png?host=kiiikiii',workId:'recSyntheticKiiiDebut',videoId:'syntheticMV'};
+}
 export function itzyContent(groupId:string,name:string) {return {...expandedContent(groupId,name),releaseCoverage:{scope:note}};}

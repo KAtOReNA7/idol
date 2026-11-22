@@ -107,3 +107,22 @@ test('the original I DO ME cut shows its exact STARSHIP preview in the work dire
  data.works[0].url='https://youtube.com/watch?v=otherVideo1';
  assert.ok(!setup('/artists/kiiikiii?section=works',data).render().includes(source));
 });
+
+test('each native member route receives only its own I DO ME release photograph and retains the original',async()=>{
+ const {registry,artistCatalog,renderArtist}=require('./fixtures/current-artist-pages.cjs');
+ const artist=registry.find(item=>item.slug==='kiiikiii');
+ const catalog=artistCatalog(artist);
+ const edition=require('../data/mv-recognition-editions.json')['kiiikiii-uncut-gem-2025'];
+ const binding=edition.works[0];
+ const work=catalog.works.find(item=>item.id===binding.workId);
+ assert.ok(work.url.includes(binding.videoId));
+ for(const memberId of binding.memberIds){
+  const rating={id:'recSyntheticDebutRating',memberIds:[memberId],workIds:[work.id],score:null,stylingScore:null,photo:null,recognition:'',note:'',memory:''};
+  const html=await renderArtist(artist,{section:'members',member:memberId},{...catalog,ratings:[rating]});
+  assert.ok(html.includes('src="'+edition.portraits[memberId].preview+'"'),memberId);
+  assert.match(html,/查看原作品图/);
+  for(const [other,photo] of Object.entries(edition.portraits)){
+   if(other!==memberId)assert.ok(!html.includes('src="'+photo.preview+'"'),other);
+  }
+ }
+});

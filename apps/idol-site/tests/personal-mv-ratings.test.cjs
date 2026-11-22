@@ -274,6 +274,7 @@ test('all 51 groups give eligible members scoring controls on their own photo ca
  const groupCounts=new Map(owner.groups.map(group=>[group.id,{id:group.id,name:group.name,...blank()}]));
  const stageLeaks=[];
  const photoAudit={eligibleWorks:0,visibleCards:0,chosenRosterCards:0,uniqueWorkMembers:0,externalReadOnlyCredits:0,missingControl:0,missingImage:0};
+ const sectionAudit={scoreSections:0,scoreSectionsWithCredits:0,scoreSectionsWithRosterAndCredits:0,guestReferenceOnly:0};
  const missing=[],pickerGroups=new Set();
  let pickerWorks=0,rosterSelectionSaves=0,formerRosterOnly=0;
  for(const [index,work] of owner.works.entries()){
@@ -288,9 +289,28 @@ test('all 51 groups give eligible members scoring controls on their own photo ca
   const canChoose=!absent&&hasVideo&&eligible.length>0;
   const scopedOwner={...api.projectBrowserCatalog(api.projectWorkCatalog(stripped,work)),personalMvRatings:personal};
   const privatePage=render(work,scopedOwner,true),publicPage=render(guest.works[index],guest,false);
+  assert.doesNotMatch(privatePage+publicPage,/mv-member-shortcuts|选择成员，查看照片与评分/,work.id);
+  const guestPage=parse(publicPage);
+  const guestReferences=guestPage.querySelectorAll('[data-credit-work],[data-group-recognition-work]');
+  for(const reference of guestReferences){
+   if(reference.closest('.cast-section'))continue;
+   assert.equal(reference.querySelector('h2')?.text,'成员资料',work.id);
+   assert.ok(reference.querySelector('.member-credit-scope')?.text,work.id);
+   assert.equal(reference.querySelector('.credit-score-action,.editor-open'),null,work.id);
+   sectionAudit.guestReferenceOnly++;
+  }
   if(!absent&&hasVideo){
    photoAudit.eligibleWorks++;
    const pictures=parse(privatePage),picker=pictures.querySelector('.personal-mv-picker select');
+   const sections=pictures.querySelectorAll('.cast-section:not([hidden])');
+   assert.equal(sections.length,1,work.id);
+   const headings=sections[0].querySelectorAll('h2').map(heading=>heading.text);
+   assert.deepEqual(headings,['成员与评分'],work.id);
+   sectionAudit.scoreSections++;
+   if(sections[0].querySelector('.member-credit-scope')){
+    sectionAudit.scoreSectionsWithCredits++;
+    if(picker)sectionAudit.scoreSectionsWithRosterAndCredits++;
+   }
    const choices=picker?picker.querySelectorAll('option[value]').map(el=>el.getAttribute('value')).filter(Boolean):[];
    const eligibleIds=new Set([...eligible.map(m=>m.id),...existing]);
    const initialCards=pictures.querySelectorAll('[data-photo-member]').filter(card=>{
@@ -369,9 +389,10 @@ test('all 51 groups give eligible members scoring controls on their own photo ca
   const report={snapshotCapturedAt:snapshot.capturedAt,groupCount:groupCounts.size,catalogWorks:owner.works.length,
    scope:'Local React server render with public identities, synthetic owner scope, and cleared personal values. Multi-group works count once globally and once per listed group.',
    mvDetailRenders:2*counts.works,stageDetailRenders:counts.stagePages,publicCreditRecords:require('../data/public-work-credits.json').records.length,
-   existingRelationshipCount:owner.ratings.length,workCounts:counts,photoAudit,rosterSelection,groups:[...groupCounts.values()]};
+   existingRelationshipCount:owner.ratings.length,workCounts:counts,photoAudit,sectionAudit,rosterSelection,groups:[...groupCounts.values()]};
   fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n');
  }
- t.diagnostic('Rendering counts '+JSON.stringify({counts,photoAudit,rosterSelection,missing:missing.slice(0,20)}));
+ t.diagnostic('Rendering counts '+JSON.stringify({counts,photoAudit,sectionAudit,rosterSelection,missing:missing.slice(0,20)}));
+ assert.equal(sectionAudit.scoreSections,photoAudit.eligibleWorks);assert.ok(sectionAudit.scoreSectionsWithRosterAndCredits>0);assert.ok(sectionAudit.guestReferenceOnly>0);
  assert.equal(photoAudit.eligibleWorks,599);assert.equal(photoAudit.missingControl,0);assert.equal(photoAudit.missingImage,0);
 });

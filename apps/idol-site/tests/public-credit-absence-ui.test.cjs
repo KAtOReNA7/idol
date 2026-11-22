@@ -25,7 +25,7 @@ test('exact animated Stranger displays read-only singer references while the act
  assert.equal(h.find(tree,n=>n.props.className==='mv-member-shortcuts'),undefined);
  assert.equal(h.requests.length,0);assert.equal(JSON.stringify({work:h.wp.work,data:h.wp.data}),before);
  const html=renderToStaticMarkup(React.createElement(PublicWorkCredits,{work:h.wp.work,data:h.wp.data,onMember(){}}));
- assert.match(html,/<h2>录音阵容<\/h2>/);assert.doesNotMatch(html,/credit-score-action|MV 出镜成员/);
+ assert.match(html,/<h2>成员资料<\/h2>/);assert.match(html,/<p class="member-credit-scope">录音阵容<\/p>/);assert.doesNotMatch(html,/credit-score-action|MV 出镜成员/);
  assert.equal((html.match(/class="mv-identity-frame/g)||[]).length,6);
  assert.doesNotMatch(html,/<input|<form|cast-scores|private sentinel|keep memory/);
 });

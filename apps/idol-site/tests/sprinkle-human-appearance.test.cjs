@@ -68,7 +68,7 @@ test('actual artist projection exposes historical JINNI public reference without
 
 test('real public SSR shows seven names and qualified reference photos; saved zero/private relations are never replaced or duplicated',()=>{
  const before=structuredClone(data),html=renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data,onMember(){}}));
- assert.match(html,/<h2>MV 出镜成员<\/h2>/);assert.doesNotMatch(html,/人工看片/);assert.match(html,/JINNI/);
+ assert.match(html,/<h2>成员资料<\/h2>/);assert.match(html,/<p class="member-credit-scope">MV 出镜成员<\/p>/);assert.doesNotMatch(html,/人工看片/);assert.match(html,/JINNI/);
  assert.equal((html.match(/class="mv-identity-frame/g)||[]).length,7);assert.doesNotMatch(html,/<input|<form|cast-scores|PRIVATE_SYNTHETIC/);
  for(const id of mids){
   assert.equal(publicCreditsForMember(data,id).length,1);assert.deepEqual(memberWorks(data,id),[]);

@@ -72,7 +72,7 @@ module.exports = function testArtistWorkDetail({id, title, groupId, artistPath, 
       assert.ok(h.find(card, n => n.props.memberId === row.memberIds[0] && n.props.work?.id === id));
       const score = h.find(card, n => n.props.table === 'ratings' || n.props.recordId === row.id);
       assert.equal(score.props.id ?? score.props.recordId, row.id);
-      assert.ok(h.find(tree, n => n.props['aria-controls'] === card.props.id));
+      assert.equal(h.find(tree, n => n.props['aria-controls'] === card.props.id), undefined);
     }
     h.wp.data.ratings = [unrelated];
     const empty = h.renderWork();

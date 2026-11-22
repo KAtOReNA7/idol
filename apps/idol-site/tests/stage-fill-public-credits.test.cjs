@@ -104,7 +104,7 @@ test('public references render read-only and never create private relations or c
   const data={works:[work],members,ratings:[]},before=structuredClone(data);
   const html=renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data,onMember(){}}));
   assert.equal((html.match(/class="mv-identity-frame/g)||[]).length,target.memberIds.length);
-  assert.match(html,/<h2>[^<]*(?:录音|发行)[^<]*<\/h2>/);assert.doesNotMatch(html,/MV 出镜成员/);
+  assert.match(html,/<h2>成员资料<\/h2>/);assert.match(html,/<p class="member-credit-scope">[^<]*(?:录音|发行)[^<]*<\/p>/);assert.doesNotMatch(html,/MV 出镜成员/);
   assert.doesNotMatch(html,/<input|<form|cast-scores|synthetic private note|synthetic watched/);
   for(const memberId of target.memberIds){
    assert.equal(publicCreditsForMember(data,memberId).length,1);

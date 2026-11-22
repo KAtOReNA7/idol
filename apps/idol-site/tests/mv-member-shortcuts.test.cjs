@@ -1,33 +1,55 @@
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-// Execute the actual WorkDetail and Editor components with the existing hook-model harness.
-function harness(){
- const prefix=fs.readFileSync(path.join(__dirname,'editor-flow.test.cjs'),'utf8').split('(async()=>{')[0];
- return vm.runInNewContext('(function(require,__dirname){'+prefix+`
- return {settle,wp,requests,win,listeners,find,walk,txt,tree:()=>wt,editor:()=>et,memberEditor:()=>mt,
-  renderWork:()=>w.render(wp),
-  draft(){find(et,n=>n.type==='input'&&n.props['aria-label']==='MV 分数').props.onChange({target:{value:'9'}});find(mt,n=>n.type==='button').props.onClick();},
-  memberDraft(){find(mt,n=>n.type==='input'&&n.props['aria-label']==='表现分').props.onChange({target:{value:'9.5'}});}
- };
-})`,{console,crypto:globalThis.crypto,URL,URLSearchParams,Date,AbortController,setTimeout,clearTimeout,setImmediate,structuredClone})(require,__dirname);
-}
-const shortcuts=(h,t=h.tree())=>h.find(t,n=>n.props.className==='mv-member-shortcuts');
-const buttons=(h,t)=>h.walk(t).map(x=>x.node).filter(n=>n.type==='button');
-test('MV cast shortcuts use only this work’s historical rating roster, Chinese display names, and exact card targets',async()=>{
- const h=harness();h.wp.data={...h.wp.data,members:[{id:'recMember',stageName:'MEMBER',cnName:'小美',groupIds:[],photo:null,status:'已退团'},{id:'recCurrent',stageName:'CURRENT',cnName:'现役成员',groupIds:[]}],ratings:[...h.wp.data.ratings,{score:null,stylingScore:null,id:'recUnknown',name:'待核对艺名',memberIds:[],workIds:[h.wp.work.id]},{id:'recOther',name:'其他作品成员',memberIds:['recCurrent'],workIds:['other-work']}]};
- const tree=h.renderWork(),nav=shortcuts(h,tree),items=buttons(h,nav);
- assert.equal(nav.type,'nav');assert.equal(nav.props['aria-label'],'本支成员');assert.deepEqual(Array.from(items,n=>h.txt(n)),['小美 · MEMBER','待核对艺名']);
- for(const b of items){assert.equal(b.props.type,'button');assert.equal(b.props.onKeyDown,undefined,'native Enter/Space activation remains available');const card=h.find(tree,n=>n.props.id===b.props['aria-controls']);assert.ok(card);assert.equal(card.props.tabIndex,-1);assert.match(card.props['aria-label'],/本支 MV 成员卡片/);}
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const {currentDetail, turn, input, change, posts} = require('./helpers/current-work-detail.cjs');
+
+const workId = 'rec28ldfRTrArg';
+const shortcuts = (h, tree) => h.find(tree, node => node.props.className === 'mv-member-shortcuts'
+  || node.props['aria-label'] === '本支成员');
+const cast = (h, tree) => h.find(tree, node => node.props.className === 'section cast-section');
+
+test('MVs show the historical cast and their records once without the roster of buttons below the player', () => {
+  const h = currentDetail(workId);
+  const roster = [
+    {id:'recMember', stageName:'MEMBER', cnName:'小美', groupIds:[], photo:null, status:'已退团'},
+    {id:'recOther', stageName:'OTHER', groupIds:[]},
+  ];
+  h.wp.data.members = roster;
+  h.wp.data.ratings.push({id:'unidentified', name:'待核对艺名', memberIds:[], workIds:[workId], score:null, stylingScore:null},
+    {id:'another-work', memberIds:['recOther'], workIds:['another'], score:null, stylingScore:null});
+  const tree = h.renderWork(), section = cast(h,tree);
+  assert.equal(shortcuts(h,tree), undefined);
+  assert.equal(section.props.hidden, false);
+  assert.equal(h.txt(h.find(section, node => node.type === 'h2')), '成员与评分');
+  const cards = h.walk(section).map(item => item.node).filter(node => node.type === 'article');
+  assert.deepEqual(Array.from(cards, node => node.props['data-native-score-record']), ['recRating','unidentified']);
+  assert.deepEqual(Array.from(cards, card => h.txt(h.find(card, node => node.props.className === 'member-name'))),
+    ['小美 · MEMBER','待核对艺名']);
+  for(const card of cards) {
+    assert.equal(h.find(card, node => node.props.table === 'ratings').props.id, card.props['data-native-score-record']);
+  }
+  assert.equal(posts(h).length, 0);
 });
-test('shortcut focuses and scrolls only its card without saving, playing, navigating, clearing drafts or changing editor identity',async()=>{
- const h=harness();let navigation=0;h.wp.onBack=h.wp.onMember=h.wp.onGroup=h.wp.onNext=h.wp.onViewChange=()=>navigation++;await h.settle();h.draft();await h.settle();h.memberDraft();await h.settle();
- const before=h.requests.length,editors=h.walk(h.tree()).filter(x=>x.node.props.table).map(x=>[x.path,x.node.key]),calls=[];
- const card=h.find(h.tree(),n=>n.props.className==='cast-card');card.props.ref({focus:o=>calls.push(['focus',o.preventScroll]),scrollIntoView:o=>calls.push(['scroll',o.block,o.behavior])});
- buttons(h,shortcuts(h))[0].props.onClick();await h.settle();assert.deepEqual(calls,[['focus',true],['scroll','center','smooth']]);assert.equal(h.requests.length,before);assert.equal(navigation,0);assert.equal(h.tree().props.className,'detail ');
- assert.equal(h.find(h.editor(),n=>n.props['aria-label']==='MV 分数').props.value,9);assert.equal(h.find(h.memberEditor(),n=>n.props['aria-label']==='表现分').props.value,9.5);assert.equal(h.memberEditor().props['data-dirty'],'true');assert.ok(h.listeners.get('beforeunload').size);assert.deepEqual(h.walk(h.tree()).filter(x=>x.node.props.table).map(x=>[x.path,x.node.key]),editors);assert.equal(h.requests.filter(r=>r.url==='/api/save').length,0);
- h.win.matchMedia=()=>({matches:true});buttons(h,shortcuts(h))[0].props.onClick();assert.deepEqual(calls.at(-1),['scroll','center','auto']);
- card.props.ref(null);const count=calls.length;buttons(h,shortcuts(h))[0].props.onClick();assert.equal(calls.length,count,'missing card is a safe no-op');
-});
-test('shortcuts disappear for stage and empty rosters; returning to MV preserves drafts',async()=>{
- const h=harness();await h.settle();h.draft();await h.settle();h.find(h.tree(),n=>n.props.id==='stage-tab').props.onClick();await h.settle();assert.equal(shortcuts(h),undefined);h.find(h.tree(),n=>n.props.id==='mv-tab').props.onClick();await h.settle();assert.ok(shortcuts(h));assert.equal(h.find(h.editor(),n=>n.props['aria-label']==='MV 分数').props.value,9);
- h.wp.data={...h.wp.data,ratings:[]};assert.equal(shortcuts(h,h.renderWork()),undefined);
+
+test('the member editor stays below its own portrait and keeps its draft across the stage tab', async () => {
+  const h = currentDetail(workId);
+  await h.settle();
+  const card = h.find(cast(h,h.tree()), node => node.props['data-native-score-record'] === 'recRating');
+  const parts = h.walk(card).map(item => item.node);
+  const photo = parts.findIndex(node => node.props.memberId === 'recMember' && node.props.work?.id === workId);
+  const form = parts.findIndex(node => node.props.table === 'ratings' && node.props.id === 'recRating');
+  assert.ok(photo >= 0 && form > photo);
+  h.find(h.member(), node => node.type === 'button').props.onClick();
+  await h.settle();
+  change(input(h,'表现分',h.member()),'0');
+  await h.settle();
+  await turn(h,'stage');
+  assert.equal(cast(h,h.tree()).props.hidden, true);
+  assert.equal(shortcuts(h,h.tree()), undefined);
+  await turn(h,'mv');
+  assert.equal(cast(h,h.tree()).props.hidden, false);
+  assert.equal(shortcuts(h,h.tree()), undefined);
+  assert.equal(input(h,'表现分',h.member()).props.value, 0);
+  assert.equal(posts(h).length, 0);
+  h.wp.data.ratings = [];
+  assert.equal(cast(h,h.renderWork()).props.hidden, true);
 });

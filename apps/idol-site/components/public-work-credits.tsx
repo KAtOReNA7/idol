@@ -24,15 +24,16 @@ export function publicScoreMembers(work:Work,data:CatalogView){
  return new Set(group?.portraits.filter(p=>data.members.some(m=>m.id===p.memberId&&(m.groupIds.includes(group.groupId)||m.formerGroupIds?.includes(group.groupId)))).map(p=>p.memberId));
 }
 
-export function PublicWorkCredits({work,data,onMember,renderScore}:{work:Work;data:CatalogView;onMember:(id:string)=>void;renderScore?:(member:Member)=>ReactNode}){
+export function PublicWorkCredits({work,data,onMember,renderScore,inScoringSection=false}:{work:Work;data:CatalogView;onMember:(id:string)=>void;renderScore?:(member:Member)=>ReactNode;inScoringSection?:boolean}){
  const credit=publicCreditForWork(work);
  const members=credit?.memberIds.flatMap(id=>data.members.filter(m=>m.id===id))??[];
  const portraits=publicWorkRecognition(work);
- if(!credit)return <PublicGroupRecognition work={work} data={data} onMember={onMember} renderScore={renderScore}/>;
+ if(!credit)return <PublicGroupRecognition work={work} data={data} onMember={onMember} renderScore={renderScore} inScoringSection={inScoringSection}/>;
  if(!members.length)return null;
  const title=creditHeading(credit);
  return <section className="public-work-credits" aria-label={title} data-credit-work={work.id}>
-  <h2>{title}</h2>
+  {!inScoringSection&&<h2>成员资料</h2>}
+  <p className="member-credit-scope">{title}</p>
   <ul className={portraits.length?'public-recognition-grid':undefined}>{members.map(m=>{const portrait=portraits.find(p=>p.memberId===m.id),score=renderScore?.(m);return <li key={m.id} data-photo-member={m.id}>
    {portrait?<PublicCreditRecognitionPhoto work={work} memberId={m.id} label={memberDisplayName(m)} reference={portrait}/>:score&&<><MusicMemberPhoto member={m} live/><small>成员资料照</small></>}
    <button type="button" onClick={()=>onMember(m.id)}>{memberDisplayName(m)} ↗</button>

@@ -6,7 +6,7 @@ import {memberDisplayName} from '@/lib/idol/member-display-name';
 import {PublicCreditRecognitionPhoto} from './mv-identity-photo';
 import './public-work-credits.css';
 
-export function PublicGroupRecognition({work,data,onMember,renderScore}:{work:Work;data:CatalogView;onMember:(id:string)=>void;renderScore?:(member:Member)=>ReactNode}){
+export function PublicGroupRecognition({work,data,onMember,renderScore,inScoringSection=false}:{work:Work;data:CatalogView;onMember:(id:string)=>void;renderScore?:(member:Member)=>ReactNode;inScoringSection?:boolean}){
  const reference=publicGroupRecognitionForWork(work);
  if(!reference)return null;
  const portraits=reference.portraits.flatMap(portrait=>{
@@ -15,7 +15,8 @@ export function PublicGroupRecognition({work,data,onMember,renderScore}:{work:Wo
  });
  if(!portraits.length)return null;
  return <section className="public-work-credits public-group-recognition" aria-label="团体成员资料照" data-group-recognition-work={work.id} data-participation-status="unverified_for_work">
-  <h2>{reference.groupName} 成员资料照</h2>
+  {!inScoringSection&&<h2>成员资料</h2>}
+  <p className="member-credit-scope">{reference.groupName} 成员资料照 · 本作出镜未确认</p>
   <ul className="public-recognition-grid">{portraits.map(({member,portrait})=>{return <li key={member.id} data-photo-member={member.id}>
    <PublicCreditRecognitionPhoto work={work} memberId={member.id} label={memberDisplayName(member)} reference={portrait}/>
    <button type="button" onClick={()=>onMember(member.id)}>{memberDisplayName(member)} ↗</button>

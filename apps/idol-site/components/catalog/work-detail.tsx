@@ -247,7 +247,9 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  const existingMembers=new Set(people.flatMap(row=>row.memberIds));
  const represented=canEdit&&data.mode==='live'&&mvVideo&&!absence?publicScoreMembers(work,data):new Set<string>();
  const otherMembers=roster.filter(m=>!existingMembers.has(m.id)&&!represented.has(m.id));
- const hasPersonal=personal&&otherMembers.some(m=>personal.writable||personal.entries.some(r=>r.workId===work.id&&r.videoId===mvVideo&&r.memberId===m.id));
+ const hasPersonalScore=(m:Member)=>Boolean(personal&&(personal.writable||personal.entries.some(r=>r.workId===work.id&&r.videoId===mvVideo&&r.memberId===m.id)));
+ const hasPersonal=otherMembers.some(hasPersonalScore);
+ const hasMemberScores=people.length>0||roster.some(hasPersonalScore);
  const personalProps=personal&&mvVideo?{ratings:personal,workId:work.id,videoId:mvVideo,onDirty:markDirty,onBlocked:markNavigationBlocked,onSaved}:null;
  function nativeScore(id:string,member:Member,placement:string){
   const location=nativeLocations[id];
@@ -264,16 +266,11 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
   const matches=people.filter(row=>row.memberIds.includes(member.id));
   if(matches.length===1&&matches[0].memberIds.length===1&&matches[0].workIds.length===1)return nativeScore(matches[0].id,member,'credit');
   if(matches.length||!personalProps||!roster.some(m=>m.id===member.id))return null;
-  if(!personalProps.ratings.writable&&!personalProps.ratings.entries.some(row=>row.workId===work.id&&row.videoId===mvVideo&&row.memberId===member.id))return null;
+  if(!hasPersonalScore(member))return null;
   return <PersonalMvScore key={[work.id,mvVideo,personalProps.ratings.scope,member.id].join(':')} {...personalProps} member={member}/>;
  }
+ const credits=<PublicWorkCredits work={work} data={data} onMember={onMember} renderScore={scoreForPhoto} inScoringSection={hasMemberScores}/>;
  const switchView=(next:'mv'|'stage')=>{setSelection({workId:work.id,initialView,view:next});onViewChange?.(next);};
- function jumpToCast(id:string){
-  const card=memberCards.current[id];
-  if(!card)return;
-  card.focus({preventScroll:true});
-  card.scrollIntoView({block:'center',behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
- }
  function jumpToMemberDraft(){const id=memberDrafts[0]?.slice('ratings:'.length);if(!id)return;if(view==='stage')switchView('mv');window.requestAnimationFrame(()=>{const card=nativeLocations[id]?.host??memberCards.current[id]??document.getElementById(id);const button=card?.querySelector<HTMLButtonElement>('.editor-actions button:not(:disabled)');(button??card)?.scrollIntoView({block:'center',behavior:'smooth'});button?.focus({preventScroll:true});});}
  return <div className={'detail '+(view==='stage'?'stage-view':'')}><button className="back text-button" onClick={onBack}><ArrowLeft size={16}/>{backLabel}</button>
  <header className="music-work-title"><GroupLinks data={data} ids={work.groupIds} onGroup={onGroup}/><h1>{work.song||work.name}</h1><p>{headingDetails.filter(Boolean).join(' · ')}</p></header>
@@ -302,7 +299,6 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  </>}</div></div>:<WorkVideoPlayer playbackLabel={playback?.label} playbackCredit={playback?.credit} posterSrc={approvedPoster?.src??(loonaButterfly&&view==='mv'?'/artist/loona/approved-home/butterfly.jpg':triplesMedia&&activePlatform==='youtube'?(view==='mv'?triplesMedia.poster:triplesMedia.stagePoster):undefined)} posterLabel={approvedPoster?.label} posterIsReference={approvedPoster?.workReference} posterFit={approvedPoster?.fit??(approvedPoster?'contain':undefined)} posterSize={approvedPoster?.intrinsicSize} posterZoom={approvedPoster?.zoom} workId={work.id} view={view} platform={activePlatform} sourceKey={view==='stage'&&stage?stageSourceKey(stage):null} url={activeUrl} videoId={vid} embedUrl={playback?.embedUrl??(view==='stage'&&stage?stageEmbedUrl(stage):vid?youtubeEmbedUrl(vid):null)} title={title}/>}
  <div className="video-caption"><span>{title}</span>{!playback&&activeUrl&&<a href={activeUrl} target="_blank" rel="noopener noreferrer">{activePlatformLabel} 原视频<ArrowUpRight size={13}/></a>}</div>
  {loonaButterfly&&<div className="loona-associated-release"><img src="/artist/loona/approved-home/butterfly-album.jpg" width="96" height="96" alt="关联发行《X X》封面"/><div><strong>关联发行《X X》</strong><span>发行封面</span></div></div>}
- {view==='mv'&&people.length>0&&<nav className="mv-member-shortcuts" aria-label="本支成员"><span>成员评分</span><div>{people.map(r=>{const m=data.members.find(m=>r.memberIds.includes(m.id)),label=m?memberDisplayName(m):r.name;return <button type="button" key={r.id} aria-controls={'mv-cast-'+r.id} onClick={()=>jumpToCast(r.id)}>{label}</button>;})}</div><small>选择成员，查看照片与评分</small></nav>}
  {!playback&&vid&&activePlatform==='youtube'&&<CaptionHelp/>}
  {view==='stage'&&stage&&<div className="stage-source">{stage.sameSongFallback&&<StageSameSongFallback stage={stage}/>}<p>{stage.channel} · {stageKindLabel(stage.kind)}{stage.sourceClass==='reupload'?' · 转载':stage.sourceClass==='third_party'?' · 第三方上传':''}</p>{stageNote&&<p className="stage-version-note">{stageNote}</p>}{stage.clip&&<p className="stage-reuse-note">整场中的单曲片段 · {formatStageTime(stage.clip.startSeconds)}–{formatStageTime(stage.clip.endSeconds)}<br/>{stage.platform==='bilibili'?'在 B 站原页选择最高画质，观看标注的区间。':'站内播放此片段；打开原视频会从起点开始，需自行在终点停止。'}</p>}{stage.reusesOriginalVideo&&<p className="stage-reuse-note">与 MV 页为同一支表演视频。</p>}{stage.higherCandidate&&<p className="stage-reuse-note">另有更高赞舞台可看，当前评分仍对应这支视频。<a href={stage.higherCandidate.url} target="_blank" rel="noopener noreferrer">观看另一版 ↗</a></p>}{!stageBound&&work.stageScore!==null&&<p className="stage-version-note">原有舞台分已保留，但对应的视频还未确认；暂不为这支视频改分。</p>}</div>}
 
@@ -319,9 +315,42 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  </aside></div>
  {triples&&<section className="triples-detail-connections">{view==='mv'&&triplesMedia?.releaseCover&&<div className="triples-associated-release"><h2>来自这张发行</h2><button type="button" onClick={()=>onArtistNavigate?.('/artists/triples?section=works&release='+encodeURIComponent(triplesMedia.releaseKey))}><img src={triplesMedia.releaseCover} width="136" height="136" alt={triplesMedia.releaseTitle+' · 发行封面'}/><span>{triplesMedia.releaseTitle}<small>发行封面</small></span><ChevronRight size={18}/></button></div>}<div className="triples-other-video"><h2>{view==='stage'?'回到音乐影像':'到舞台上再听一次'}</h2>{view==='mv'&&triplesMedia?.stagePoster&&<img src={triplesMedia.stagePoster} width="880" height="495" alt="Girls Never Die · M COUNTDOWN EP.843 舞台封面"/>}{view==='mv'&&stage&&<p>{stage.title}</p>}<button type="button" className="button" onClick={()=>{switchView(view==='stage'?'mv':'stage');document.getElementById('work-video-panel')?.scrollIntoView({block:'start'});}}>{view==='stage'?'查看 MV':'进入舞台'}<ChevronRight size={16}/></button></div></section>}
  {view==='mv'&&absence&&<section className="mv-no-members" aria-label="无成员出镜"><h2>本MV无成员真人出镜</h2><p>{absence.reason}</p><a href={absence.sources[0]} target="_blank" rel="noopener noreferrer">查看作品资料 ↗</a></section>}
- {(view==='mv'||personalProps||Object.keys(nativeLocations).length>0)&&<div hidden={view==='stage'}><PublicWorkCredits work={work} data={data} onMember={onMember} renderScore={scoreForPhoto}/></div>}
+ {!hasMemberScores&&view==='mv'&&credits}
+ {!absence&&<section hidden={view==='stage'||!hasMemberScores} className="section cast-section" aria-label="成员与评分">
+  {hasMemberScores&&<>
+   <div className="section-heading"><div><h2>成员与评分</h2></div></div>
+   {credits}
+  </>}
+  {personalProps&&hasPersonal&&<PersonalMvRatingsPanel key={[work.id,mvVideo,personalProps.ratings.scope].join(':')} {...personalProps} roster={otherMembers}/>}
+  <div className="cast-grid">{people.map(r=>{
+   const member=data.members.find(m=>r.memberIds.includes(m.id));
+   const label=member?memberDisplayName(member):r.name;
+   return <article key={r.id} className="cast-card" id={'mv-cast-'+r.id} tabIndex={-1} aria-label={label+' · 本支 MV 成员卡片'}
+    data-native-score-record={r.id} data-photo-member={member?.id} data-browse-anchor={'cast-'+r.id}
+    ref={node=>{memberCards.current[r.id]=node;}}>
+    <div className="mv-photo-stack">
+     <MvIdentityPhoto work={work} memberId={member?.id??''} label={label} selectEdition={mvRecognitionEdition} live={data.mode==='live'}
+      photo={member?personalMvPhoto(r,member.id,work.id):null}
+      fallback={canEdit&&member&&data.mode==='live'?<div className="mv-member-portrait-reference"><MusicMemberPhoto member={member} live/><small>成员资料照</small></div>:undefined}/>
+     <MvPhotoReference photo={r.photo} referencePhoto={r.referencePhoto} label={label} live={data.mode==='live'}/>
+    </div>
+    <div className="cast-copy">
+     <button className="member-name" disabled={!member} onClick={()=>member&&onMember(member.id)}>
+      <strong><span className="member-display-name">{label}</span></strong><ArrowUpRight size={15}/>
+     </button>
+     {castWarning(r.verification)&&<small className="cast-verification">{castWarning(r.verification)}</small>}
+     <div className="cast-scores"><span>表现 <b>{score(r.score)}</b></span><span>造型 <b>{score(r.stylingScore)}</b></span></div>
+     {canEdit&&data.mode==='live'&&mvVideo&&member&&represented.has(member.id)&&r.memberIds.length===1&&r.workIds.length===1
+      ?nativeScore(r.id,member,'cast')
+      :<Editor loona={loona} triples={triples} table="ratings" id={r.id} mode={data.mode} publicCatalog={data} onSaved={onSaved}
+        onDirtyChange={markDirty} onNavigationBlockedChange={markNavigationBlocked} compact/>}
+     {r.memory&&<p className="memory">{r.memory}</p>}
+     {r.note&&<p className="cast-note">{r.note}</p>}
+    </div>
+   </article>;
+  })}</div>
+ </section>}
  {view==='mv'&&<PublicProductionCredits work={work}/>}
- {!absence&&<section hidden={view==='stage'||(people.length===0&&!hasPersonal)} className="section cast-section"><div className="section-heading"><div><h2>成员与评分</h2></div></div>{personalProps&&hasPersonal&&<PersonalMvRatingsPanel key={[work.id,mvVideo,personalProps.ratings.scope].join(':')} {...personalProps} roster={otherMembers}/>}<div className="cast-grid">{people.map(r=>{const m=data.members.find(m=>r.memberIds.includes(m.id));return <article data-native-score-record={r.id} data-photo-member={m?.id} id={"mv-cast-"+r.id} tabIndex={-1} aria-label={(m?memberDisplayName(m):r.name)+" · 本支 MV 成员卡片"} data-browse-anchor={"cast-"+r.id} className="cast-card" key={r.id} ref={node=>{memberCards.current[r.id]=node;}}><div className="mv-photo-stack"><MvIdentityPhoto work={work} selectEdition={mvRecognitionEdition} memberId={m?.id??''} label={m?memberDisplayName(m):r.name} fallback={canEdit&&m&&data.mode==='live'?<div className="mv-member-portrait-reference"><MusicMemberPhoto member={m} live/><small>成员资料照</small></div>:undefined} photo={m?personalMvPhoto(r,m.id,work.id):null} live={data.mode==='live'}/><MvPhotoReference photo={r.photo} referencePhoto={r.referencePhoto} label={m?memberDisplayName(m):r.name} live={data.mode==='live'}/></div><div className="cast-copy"><button className="member-name" disabled={!m} onClick={()=>m&&onMember(m.id)}><strong><span className="member-display-name">{m?memberDisplayName(m):r.name}</span></strong><ArrowUpRight size={15}/></button>{castWarning(r.verification)&&<small className="cast-verification">{castWarning(r.verification)}</small>}<div className="cast-scores"><span>表现 <b>{score(r.score)}</b></span><span>造型 <b>{score(r.stylingScore)}</b></span></div>{canEdit&&data.mode==='live'&&mvVideo&&m&&represented.has(m.id)&&r.memberIds.length===1&&r.workIds.length===1?nativeScore(r.id,m,'cast'):<Editor loona={loona} triples={triples} table="ratings" id={r.id} mode={data.mode} publicCatalog={data} onSaved={onSaved} onDirtyChange={markDirty} onNavigationBlockedChange={markNavigationBlocked} compact/>}{r.memory&&<p className="memory">{r.memory}</p>}{r.note&&<p className="cast-note">{r.note}</p>}</div></article>})}</div></section>}
  {canEdit&&data.mode==='live'&&mvVideo&&!absence&&people.map(r=>nativeLocations[r.id]&&<NativeScorePortal key={r.id} location={nativeLocations[r.id]}>
   <Editor loona={loona} triples={triples} table="ratings" id={r.id} mode={data.mode} publicCatalog={data} onSaved={onSaved} onDirtyChange={markDirty} onNavigationBlockedChange={markNavigationBlocked} compact initiallyOpen/>
  </NativeScorePortal>)}

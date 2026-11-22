@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v257。ITZY、LE SSERAFIM 的 11 个具名分享首份显示本人，BABYMONSTER、KISS OF LIFE 保留接管前搜索词，《Glass Shoes》九张预览实测减少 95.72%。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v257-release.md) |
+| 正式站 | v258。《DRIP》站内发行详情和返回、XG 作品与舞台分享、Kep1er《Sugar Rush》九张同期照已上线。KISS OF LIFE 手机上实际 JS 下载减少 9.31%，《Sugar Rush》九图减少 67.72%。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v258-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。从 v257 接续 BABYMONSTER《DRIP》发行详情、Kep1er《Sugar Rush》同期照片，核 XG 与 aespa 的作品、舞台筛选及返回。四场节目、《Per》首发完整版及《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v257/publication.json) |
+| 当前开发 | `codex/project-optimization-20261121`。从 v258 接续 aespa 作品目录、原生搜索后的浏览器返回、XG 成员名录及 tripleS《Invincible》八人同期照片。四场节目、《Per》首发完整版及《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v258/publication.json) · [接续顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
 

@@ -26,13 +26,13 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 426,
+    "twoWidthBoardMatches": 429,
     "twoWidthBySurface": {
       "home": 51,
-      "members": 47,
+      "members": 48,
       "profile": 51,
-      "works": 46,
-      "release": 43,
+      "works": 47,
+      "release": 44,
       "mv": 51,
       "stage": 48,
       "timeline": 44,
@@ -41,14 +41,12 @@
     "missingOrPartialBySurface": {
       "home": [],
       "members": [
-        "xg",
         "aespa",
         "nmixx",
         "kiiikiii"
       ],
       "profile": [],
       "works": [
-        "xg",
         "aespa",
         "stayc",
         "nmixx",
@@ -58,7 +56,6 @@
         "meovv",
         "hitgs",
         "loona",
-        "babymonster",
         "kissoflife",
         "stayc",
         "nmixx",
@@ -88,7 +85,7 @@
         "lesserafim"
       ]
     },
-    "groupsWithMissingOrPartial": 16
+    "groupsWithMissingOrPartial": 15
   },
   "sources": {
     "inventory": "docs/codex/evidence/20261122-group-design-coverage/group-screen-matrix.json",
@@ -165,7 +162,12 @@
     "wooah-exclamation": "docs/codex/evidence/20261123-wooah-exclamation/design-and-sources.json",
     "v255-formal": "docs/codex/evidence/20261123-v255/formal-babymonster-itzy-wooah.json",
     "kissoflife-share-directories": "docs/codex/evidence/20261123-v256/kissoflife-share-directories.json",
-    "v256-formal": "docs/codex/evidence/20261123-v256/formal-v256.json"
+    "v256-formal": "docs/codex/evidence/20261123-v256/formal-v256.json",
+    "v258-formal": "docs/codex/evidence/20261123-v258/formal-v258.json",
+    "xg-work-directory": "docs/codex/evidence/20261123-v258/xg-work-directory.json",
+    "xg-member-directory-design": "docs/codex/evidence/20261123-v258/xg-member-directory-design.json",
+    "babymonster-drip": "docs/codex/worklogs/20261123-babymonster-drip-release.md",
+    "kep1er-sugar-rush": "docs/codex/evidence/20261123-kep1er-sugar-rush/design-and-sources.json"
   },
   "groups": [
     {
@@ -2766,6 +2768,11 @@
           "at": "v238",
           "scope": "首页 MV、发行封面及控件",
           "evidence": "v238"
+        },
+        {
+          "at": "正式 v258",
+          "scope": "《Sugar Rush》双宽九张同期照、十七处旧图和照片下评分",
+          "evidence": "v258-formal"
         }
       ],
       "additional": [
@@ -2779,6 +2786,16 @@
             "1441:1461",
             "1441:1502",
             "1441:1686"
+          ]
+        },
+        {
+          "scope": "Sugar Rush 原版九人和金采炫本人评分，桌面和手机",
+          "source": "kep1er-sugar-rush",
+          "nodes": [
+            "1711:2327",
+            "1711:2516",
+            "1711:2709",
+            "1711:2898"
           ]
         }
       ],
@@ -2874,8 +2891,8 @@
           "1678:1811"
         ],
         "release": [
-          null,
-          null
+          "1711:2165",
+          "1711:2185"
         ],
         "mv": [
           "110:611",
@@ -2899,7 +2916,8 @@
         "score": "shared",
         "members": "babymonster-share-directories",
         "works": "babymonster-share-directories",
-        "timeline": "babymonster-share-directories"
+        "timeline": "babymonster-share-directories",
+        "release": "babymonster-drip"
       },
       "implementation": [
         {
@@ -2916,6 +2934,11 @@
           "at": "正式 v255",
           "scope": "三个分享首份分别显示七人、十九个作品及十一条事件，作品、事件和成员实测恢复焦点",
           "evidence": "v255-formal"
+        },
+        {
+          "at": "正式 v258",
+          "scope": "《DRIP》两宽九曲、六个影像和封面、曲目的返回回焦",
+          "evidence": "v258-formal"
         }
       ],
       "additional": [
@@ -3009,16 +3032,16 @@
           "133:718"
         ],
         "members": [
-          null,
-          null
+          "1719:8302",
+          "1719:8323"
         ],
         "profile": [
           "133:719",
           "133:720"
         ],
         "works": [
-          null,
-          null
+          "1719:2212",
+          "1719:2425"
         ],
         "release": [
           "1646:2013",
@@ -3042,16 +3065,41 @@
         ]
       },
       "revised": {
-        "release": "xg-new-dna"
+        "release": "xg-new-dna",
+        "works": "xg-work-directory",
+        "members": "xg-member-directory-design"
       },
       "implementation": [
         {
           "at": "正式 v253",
           "scope": "《NEW DNA》X 版包装、六首曲目、四支原版 MV、双宽曲目与封面回焦",
           "evidence": "v253-album-journeys"
+        },
+        {
+          "at": "正式 v258",
+          "scope": "作品、舞台分享首份，NEW DANCE 同场、两个版本与原入口焦点",
+          "evidence": "v258-formal"
         }
       ],
-      "additional": [],
+      "additional": [
+        {
+          "scope": "NEW DANCE 的 KBS 同场及两条关联剪辑，桌面和手机",
+          "source": "xg-work-directory",
+          "nodes": [
+            "1719:2384",
+            "1719:2607"
+          ]
+        },
+        {
+          "scope": "七位成员的官方封面肖像与名录卡，Figma 双宽已核",
+          "source": "xg-member-directory-design",
+          "nodes": [
+            "1719:8302",
+            "1719:8323",
+            "1719:8352"
+          ]
+        }
+      ],
       "earlierHomeReference": "https://shop.xgalx.com/products/nfcc-00053",
       "qualification": "《WOKE UP》旧稿用曲名示意播放器。"
     },

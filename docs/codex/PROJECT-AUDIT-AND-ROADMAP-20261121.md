@@ -4,12 +4,12 @@
 
 ## 11 月 23 日接续目标
 
-从 v257 接续。成员原图首击与飞书第 8 项已在 v249 验收，VVUP 分享与 BABYMONSTER 成员详情在 v250 交付。v257 再交付 ITZY、LE SSERAFIM 十一个具名分享、两团搜索和《Glass Shoes》九张同期照。飞书 CLI 仍读到修订 1218，29 条反馈中 28 条已解决。[v249](worklogs/20261123-v249-release.md) · [v250](worklogs/20261123-v250-release.md) · [v257](worklogs/20261123-v257-release.md)
+从正式 v258 接续。成员原图首击与飞书第 8 项已在 v249 验收，VVUP 分享与 BABYMONSTER 成员详情在 v250 交付。v258 已上线《DRIP》发行详情、XG 作品与舞台首份目录、团体资料下载优化以及《Sugar Rush》九张同期照。飞书仍为 28/29 条已解决。[v249](worklogs/20261123-v249-release.md) · [v250](worklogs/20261123-v250-release.md) · [v258](worklogs/20261123-v258-release.md)
 
-1. 下一批优先接入 BABYMONSTER《DRIP》官方完整封面、九首曲目和对应六条站内影像。从首页或发行目录进入时返回原封面，曲目返回原行。《BILLIONAIRE》沿用已有站内版本与播放验收。[《DRIP》桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1711-2165) · [手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1711-2185)
-2. 交付 Kep1er《Sugar Rush》九张同期成员照。八张属于原台账，坂本舞白另有跨期修正。保留十七处历史图及原评分绑定。原台账已有 114/194 项核到原件，其余 64 项有发行图集待逐图确认，16 项待具名同期证据。[《Sugar Rush》手机稿](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1711-2516) · [台账](evidence/20261122-member-release-portraits/remaining-194.csv)
-3. XG、aespa 的六个栏目分享首开仍显示团首页和等待提示。先做两团作品目录，解决舞台筛选后仍点入 MV 的问题，再做 XG 名录。复用各团官方原图，先补项目 Figma 双宽；每批测试实际路径、焦点和同条件读数。团体资料的访问优化继续用 51 团同输入对照，并保留已有统计语义。[设计索引](worklogs/20261122-group-design-coverage.md)
-4. 六个指定待播版本在取得新同版来源后静音短测。已通过的首页、MV 顺序、评分绑定复用已有回执，检查本批受影响的路径。[已验播放](evidence/20261122-v236/formal-billionaire-2160p.json) · [当前状态](STATUS.md)
+1. 交付 aespa 的 MV、舞台及同场版本目录。把原生表单搜索与不同参数顺序的浏览器后退回焦一起修复，补齐 XG 的五张准确舞台封面。验证首份、搜索与清空、节目版本、个人筛选和两种返回方式。[aespa 桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1724-2494) · [手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1724-3037)
+2. 接入 tripleS《Invincible》八位成员的 2023 年《MUJUK》时期照片。沿用站内弹层打开团方完整原件，保留十六张旧图和原评分绑定。原台账已核 122/194，56 个位置待逐人确认图集，16 个待具名同期证据。[《Invincible》桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1723-8160) · [手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1723-8341) · [台账](evidence/20261122-member-release-portraits/remaining-194.csv)
+3. 按已核的 Figma 补 XG 七位成员名录与分享首份，再接续 aespa、NMIXX、KiiiKiii 等仍缺的内页。先核正式使用路径，再按同条件记录原图、焦点和下载读数。访问优化从实测仍预载的大型作品与认人数据接续。[XG 名录设计](evidence/20261123-v258/xg-member-directory-design.json) · [51 团设计索引](worklogs/20261122-group-design-coverage.md)
+4. 每批跑正式工程验证和全量测试，再发布并核站内真实操作，同步 GitHub 与证据。六个指定待播版本仅在取得新同版来源后静音短测。《BILLIONAIRE》沿用已验收的站内播放记录。[已验播放](evidence/20261122-v236/formal-billionaire-2160p.json) · [当前状态](STATUS.md)
 
 ## 本轮已交付与接续顺序
 

@@ -1,0 +1,302 @@
+{
+  "applicationUnderTest": "4bdb951132d299ef2090025e61d4bfe4121fcc45",
+  "productionApplication": "c9a99aa72e43436ffa3bc4b5e4728e495d2e5d55",
+  "command": "npm test",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "npmTestExitCode": 1,
+      "frozen": {
+        "nodeTotal": {
+          "tests": 4222,
+          "pass": 4052,
+          "fail": 131,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "pythonPassedByMode": {
+          "default": 4,
+          "optimized": 4
+        }
+      },
+      "integrated": {
+        "nodeTotal": {
+          "tests": 4224,
+          "pass": 4067,
+          "fail": 118,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "pythonPassedByMode": {
+          "default": 4,
+          "optimized": 4
+        }
+      },
+      "netPassChange": 15,
+      "retainedFailures": 118,
+      "clearedFailures": 13,
+      "newFailures": [],
+      "addedTests": 2,
+      "removedTests": 0
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "npmTestExitCode": 1,
+      "frozen": {
+        "nodeTotal": {
+          "tests": 4222,
+          "pass": 4056,
+          "fail": 127,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "pythonPassedByMode": {
+          "default": 4,
+          "optimized": 4
+        }
+      },
+      "integrated": {
+        "nodeTotal": {
+          "tests": 4224,
+          "pass": 4071,
+          "fail": 114,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "pythonPassedByMode": {
+          "default": 4,
+          "optimized": 4
+        }
+      },
+      "netPassChange": 15,
+      "retainedFailures": 114,
+      "clearedFailures": 13,
+      "newFailures": [],
+      "addedTests": 2,
+      "removedTests": 0
+    }
+  },
+  "productionBuild": {
+    "receipt": "tests.json",
+    "applicationChangesSinceProduction": "Only test files changed in apps/idol-site; both platforms retained the v235 production build."
+  },
+  "perTestChanges": [
+    {
+      "suite": "main",
+      "test": "Butterfly reads back the correct work and member after a lost D1 save response",
+      "occurrence": 1,
+      "file": "tests/work-detail-d1.test.cjs",
+      "win": [
+        "absent",
+        "pass"
+      ],
+      "linux": [
+        "absent",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "Girls Never Die reads back the correct work and member after a lost D1 save response",
+      "occurrence": 1,
+      "file": "tests/work-detail-d1.test.cjs",
+      "win": [
+        "absent",
+        "pass"
+      ],
+      "linux": [
+        "absent",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "Hearts2Hearts member summaries preserve zero, dimension sample counts and exact MV photo absence",
+      "occurrence": 1,
+      "file": "tests/hearts2hearts-artist.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "ITZY member summaries preserve zero, dimension sample counts and exact MV photo absence",
+      "occurrence": 1,
+      "file": "tests/itzy-artist.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "KATSEYE member dimensions remain distinct and missing MV photo never uses portrait",
+      "occurrence": 1,
+      "file": "tests/katseye-artist.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "KIOF member summaries preserve zero, dimension sample counts and exact MV photo absence",
+      "occurrence": 1,
+      "file": "tests/kiof-artist.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "KiiiKiii member summaries preserve zero, dimension sample counts and exact MV photo absence",
+      "occurrence": 1,
+      "file": "tests/kiiikiii-artist.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "LE SSERAFIM member dimensions remain distinct and missing MV photo never uses portrait",
+      "occurrence": 1,
+      "file": "tests/lesserafim-artist.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "LOONA failed save keeps typed zero and draft; score widget never writes by itself",
+      "occurrence": 1,
+      "file": "tests/loona-detail.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "NMIXX member summaries preserve zero, dimension sample counts and exact MV photo absence",
+      "occurrence": 1,
+      "file": "tests/nmixx-artist.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "SAY MY NAME member summary uses true relationships and exact work photo only",
+      "occurrence": 1,
+      "file": "tests/saymyname-artist.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "STAYC member dimensions remain distinct and missing MV photo never uses portrait",
+      "occurrence": 1,
+      "file": "tests/stayc-artist.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "missing member work photo never becomes oversized fake artwork",
+      "occurrence": 1,
+      "file": "tests/hearts2hearts-figma.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "themed member pages retain captured social counts and dates without calling them live",
+      "occurrence": 1,
+      "file": "tests/expanded-artist.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    },
+    {
+      "suite": "main",
+      "test": "tripleS typed zero survives failed save, and MV/stage keep the same editor",
+      "occurrence": 1,
+      "file": "tests/triples-detail.test.cjs",
+      "win": [
+        "fail",
+        "pass"
+      ],
+      "linux": [
+        "fail",
+        "pass"
+      ]
+    }
+  ],
+  "comparison": "Failure identity uses suite, repository-relative test file and test name; repeated test names retain their occurrence in the TAP suite. Per-test states are [frozen, integrated]."
+}

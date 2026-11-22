@@ -8,6 +8,8 @@ const {renderToStaticMarkup} = require('react-dom/server');
 const {MvIdentityPhoto, mvRecognitionEdition} = require('./helpers/image-dependency-loader.cjs').imageDependency('@/components/mv-identity-photo');
 const editions = require('../data/mv-recognition-editions.json');
 const media = require('../data/mv-public-media.json');
+const genieOriginal = (issue, file) =>
+  `https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/${issue}/Mgz_Sub_IMG_${file}.jpg/dims/resize/Q_80,0`;
 const publisherSeries = {
   'all-my-girls-2023': {
     label: 'ALL MY GIRLS · 本次发行概念照',
@@ -24,14 +26,25 @@ const publisherSeries = {
   'wish-2021': {
     label: 'WISH · 本次发行概念照',
     source: 'https://www.genie.co.kr/magazine/subMain?mgz_seq=10231',
-    original: file => 'https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/10231/'
-      + 'Mgz_Sub_IMG_' + file + '.jpg/dims/resize/Q_80,0',
+    original: file => genieOriginal(10231, file),
     files: {
       recvxyICzHGJek: '20210526110851',
       recvxyICzHzhWr: '20210526110905',
       recvxyICzHu6mX: '20210526110924',
       recvxyICzH84mF: '20210526110939',
       recvxyICzHi2X6: '20210526110954',
+    },
+  },
+  'qurious-2020': {
+    label: 'QURIOUS · 本次发行概念照',
+    source: 'https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=9397',
+    original: file => genieOriginal(9397, file),
+    files: {
+      recvxyICzHzhWr: '20201124103751',
+      recvxyICzHi2X6: '20201124103757',
+      recvxyICzH84mF: '20201124103804',
+      recvxyICzHu6mX: '20201124103811',
+      recvxyICzHGJek: '20201124103837',
     },
   },
 };
@@ -157,6 +170,8 @@ const reviewedReleases = [
   ['Nobody Knows', 'born-to-be-xx-2023', 'rec28ldfRTrBgQ', 'unLuba-TQiE', 4],
   ['SLAY', 'all-my-girls-2023', 'recvxyH5pzPiQ3', 'jI5p2ePoVcc', 6],
   ['Purple', 'wish-2021', 'recvxyH5pzTgrL', 'UE--H12gl2I', 5],
+  ['Bad Girl', 'qurious-2020', 'recvxyH5pzV8fK', 'xwDmGC2fTfU', 5],
+  ["I Don't Miss U", 'qurious-2020', 'recvxyH5pz4VGa', 'hPzz4cRxtco', 5],
 ];
 
 for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
@@ -164,13 +179,15 @@ for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
     const selected = editions[series];
     const existing = media.portraits.filter(row => row.workId === workId && row.videoId === videoId);
     assert.equal(existing.length, memberCount);
-    assert.deepEqual(new Set(selected.works[0].memberIds), new Set(existing.map(row => row.memberId)));
+    const recording = selected.works.find(binding => binding.workId === workId && binding.videoId === videoId);
+    assert.ok(recording, title);
+    assert.deepEqual(new Set(recording.memberIds), new Set(existing.map(row => row.memberId)));
     const work = {id: workId, url: 'https://www.youtube.com/watch?v=' + videoId};
     for (const old of existing) {
       const photo = mvRecognitionEdition(old);
       assert.ok(photo, old.memberId);
       const html = renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId: old.memberId, label: title, selectEdition: mvRecognitionEdition}));
-      assert.ok(html.includes('src="' + photo.preview + '"') && html.includes('href="' + photo.sourceUrl + '"'), old.memberId);
+      assert.ok(html.includes('src="' + photo.preview + '"') && html.includes('href="' + photo.sourceUrl.replaceAll('&', '&amp;') + '"'), old.memberId);
       assert.match(photo.label, /本曲概念照|本次发行/);
       assert.equal(html.includes('查看原作品图'), old.src !== photo.original, old.memberId);
       const preview = await sharp(path.join(__dirname, '../public', photo.preview)).metadata();

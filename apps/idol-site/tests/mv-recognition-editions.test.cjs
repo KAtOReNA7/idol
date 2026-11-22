@@ -207,7 +207,28 @@ test('Attention shows each member’s 2022 debut portrait, with the credited ful
   assert.equal(mvRecognitionEdition({workId, videoId, memberId: 'another-member'}), null);
 });
 
+test('COCOCO credits each member’s own official photo and keeps the following day’s performance separate', () => {
+  const members = [
+    ['recvxAPQCFaXuH', 'ayako', '1829085664148894033'],
+    ['recvxAPQCFvZsO', 'ayeon', '1829085797242622002'],
+    ['recvxAPQCFSVcE', 'lili', '1829085464877510785'],
+    ['recvxAPQCFWGjX', 'nico', '1829085372992700479'],
+    ['recvxAPQCFknfS', 'xxin', '1829085562839674942'],
+    ['recvxAPQCFlVPw', 'yuan', '1829085897939095954'],
+  ];
+  const workId = 'rec28ldfRTrCU6';
+  for (const [memberId, name, post] of members) {
+    const portrait = mvRecognitionEdition({workId, videoId: 'Ke5jk7Ngpqs', memberId});
+    const base = '/artist/recognition-editions/genblue/cococo-' + name;
+    assert.equal(portrait.preview, base + '.card.webp');
+    assert.equal(portrait.original, base + '.original.jpg');
+    assert.equal(portrait.sourceUrl, 'https://x.com/GENBLUE_ten/status/' + post);
+    assert.equal(mvRecognitionEdition({workId, videoId: 'b7G7_EePN9s', memberId}), null);
+  }
+});
+
 const reviewedReleases = [
+  ['COCOCO', 'genblue-cococo-202408', 'rec28ldfRTrCU6', 'Ke5jk7Ngpqs', 6],
   ['Doo Doom Chit', 'vvup-debut-introductions-202402', 'rec28ldfRTrFb6', 'dYWGeQ4HFD8', 4],
   ['BLUSH', 'wooah-blush-2024', 'recvxyH5pz0vNt', 'yh5W41ANcjo', 5],
   ['LOVE ATTACK', 'rescene-scenedrome-202408', 'rec28ldfRTrDat', '9XttLI0oH0I', 5],

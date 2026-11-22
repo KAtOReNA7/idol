@@ -15,3 +15,36 @@
 .candidate-genblue-experience .work-detail-top>*,.candidate-genblue-experience .member-detail>*{min-width:0}
 .candidate-genblue-experience .video-mode-tabs{flex-wrap:wrap}
 @media(max-width:390px){.candidate-genblue-experience .cast-grid{gap:10px}.candidate-genblue-experience .cast-card{padding:10px}.candidate-genblue-experience .cast-scores{flex-wrap:wrap;gap:8px}}
+
+body .work-experience[data-work-theme="genblue"] {
+  & .music-work-title h1 { font-family: var(--font-editorial); font-weight: 900; }
+  & .cast-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+    border-top: 0;
+  }
+  & .cast-card {
+    display: block;
+    min-width: 0;
+    padding: 0;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  & .mv-identity-frame { border-radius: 0; }
+  & .mv-photo-score :is(.editor-open, .credit-score-action) {
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid var(--rose);
+    border-radius: 0;
+    color: var(--rose);
+    background: #fff;
+  }
+  & .mv-photo-score .credit-score-action[aria-expanded="true"] { background: var(--rose); color: #fff; }
+  & :is(.mv-identity-photo figcaption, .mv-identity-history) { margin-inline: 10px; color: var(--muted); }
+  & .mv-identity-photo figcaption { opacity: 1; }
+  & .mv-identity-photo a { color: var(--rose); }
+  & .cast-copy { margin: 8px 10px 0; padding: 12px 0; border-top: 1px solid var(--line); }
+  @media (max-width: 1150px) { & .cast-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { & .cast-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; } }
+}

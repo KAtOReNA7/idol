@@ -25,3 +25,5 @@ export function createRecognitionSelector(editions: RecognitionEdition[]) {
     return portrait ? {...portrait, label: portrait.label ?? entry.label} : null;
   };
 }
+
+export type RecognitionSelector = ReturnType<typeof createRecognitionSelector>;

@@ -6,6 +6,7 @@ import {reviewedNativeRecognition} from '@/lib/idol/reviewed-native-recognition'
 import type {RecognitionEditionPhoto} from '@/lib/idol/mv-recognition-edition';
 import {ReliableImage} from './reliable-image';
 import {PhotoLightbox} from './photo-lightbox';
+import {useMemberRecognition} from './member-recognition-provider';
 import './mv-identity-photo.css';
 
 function croppedStyle(width:number,height:number,crop:{x:number;y:number;width:number;height:number}):CSSProperties{
@@ -14,10 +15,11 @@ function croppedStyle(width:number,height:number,crop:{x:number;y:number;width:n
 }
 /** Reviewed portraits use exact catalog bindings; a reference need not be an MV still. */
 export function MvIdentityPhoto({work,memberId,label,photo,live=false,selectEdition,fallback,children}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;selectEdition?:(original:MvPublicPortrait)=>RecognitionEditionPhoto|null;fallback?:ReactNode;children?:ReactNode}){
+ const groupEdition=useMemberRecognition();
  const selected=publicMvPortrait(work,memberId);
  const reference=selected?null:reviewedNativeRecognition(work,memberId,photo);
  if(!selected&&!reference&&!(photo&&live)&&fallback)return <div className="mv-member-portrait-reference">{fallback}{children&&<div className="mv-photo-score">{children}</div>}<small>成员资料照</small></div>;
- return <IdentityPhotoFrame work={work} memberId={memberId} label={label} photo={photo} live={live} publicImage={selected??reference} edition={selected&&selectEdition?.(selected)} retainNative={Boolean(reference)}>{children}</IdentityPhotoFrame>;
+ return <IdentityPhotoFrame work={work} memberId={memberId} label={label} photo={photo} live={live} publicImage={selected??reference} edition={selected&&(selectEdition?.(selected)??groupEdition?.(selected))} retainNative={Boolean(reference)}>{children}</IdentityPhotoFrame>;
 }
 
 /** A read-only public credit can show a named reference without inventing a rating. */

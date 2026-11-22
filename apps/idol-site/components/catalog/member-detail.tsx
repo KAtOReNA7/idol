@@ -10,6 +10,7 @@ import {ArrowUpRight, ArrowLeft} from 'lucide-react';
 import type {CatalogView as Catalog, Member} from '@/lib/idol/types';
 import {MvPhotoReference} from '@/components/mv-photo-reference';
 import {MvIdentityPhoto} from '@/components/mv-identity-photo';
+import {mvRecognitionEdition} from '@/lib/idol/mv-recognition-edition';
 import {SocialLinks} from '@/components/social-links';
 import {memberWorks, memberWorkSummary, type MemberWork} from '@/lib/idol/member-works';
 import {names, GroupLinks, PhotoView} from './presentation';
@@ -19,7 +20,7 @@ import {musicMemberPortrait, MusicPortrait, MusicMemberPhoto} from './member-por
 function MemberWorkCard({item,member,data,onOpen}:{item:MemberWork;member:Member;data:Catalog;onOpen:()=>void}){
  const number=(n:number|null)=>n===null?'待评':n.toFixed(1);
  return <article data-browse-anchor={'work-'+item.work.id} className="member-work-wrap member-work-card">
-  <MvIdentityPhoto work={item.work} memberId={member.id} label={memberDisplayName(member)} photo={item.photo} live={data.mode==='live'}/>
+  <MvIdentityPhoto work={item.work} memberId={member.id} label={memberDisplayName(member)} photo={item.photo} live={data.mode==='live'} selectEdition={mvRecognitionEdition}/>
   <MvPhotoReference photo={item.photo} referencePhoto={item.referencePhoto} label={memberDisplayName(member)+' · '+item.work.song} live={data.mode==='live'}/>
   <button data-member-work-trigger={item.work.id} className="member-work-card__body" onClick={onOpen}><small className="member-work-card__meta">{names(data,item.work.groupIds)} · {item.work.videoType||'MV'}{item.work.version?' · '+item.work.version:''}</small><h3 className="member-work-card__title">{item.work.song||item.work.name}</h3><span className="member-work-card__scores">{([['个人表现',item.performance],['个人造型',item.styling]] as const).map(([label,value])=><span className="member-work-card__score" key={label}><small className="member-work-card__score-label">{label}</small><strong className="member-work-card__score-value" data-unrated={value===null}>{number(value)}</strong></span>)}</span><span className="member-work-card__open">查看作品<ArrowUpRight size={16}/></span></button>
  </article>;

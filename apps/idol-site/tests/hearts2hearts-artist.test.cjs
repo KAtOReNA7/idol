@@ -39,7 +39,17 @@ test('Hearts2Hearts styles are scoped and preserve photos without cropping',()=>
 test('Hearts2Hearts queue counts follow the active format and search',()=>{const d=fixture();d.works[0].stage={videoId:'validstage1'};const s=setup('/artists/hearts2hearts?section=works&format=stage',d).render();assert.match(s,/全部作品<span>1<\/span>/);const empty=setup('/artists/hearts2hearts?section=works&format=stage&q=recWho',d).render();assert.match(empty,/全部作品<span>0<\/span>/);assert.match(empty,/没有符合条件/);});
 test('Hearts2Hearts member MV links expose the work key for return focus',()=>{const s=setup('/artists/hearts2hearts?section=members&member=recM').render();assert.match(s,/data-member-work-trigger="recSticky"/);assert.match(s,/returnTo=%2Fartists%2Fhearts2hearts%3Fsection%3Dmembers%26member%3DrecM/);});
 
-test('Hearts2Hearts independent index hero and watch theme retain existing collaboration priority',()=>{const group=fs.readFileSync('components/group-detail.tsx','utf8');assert.match(group,/hearts2hearts-index-card/);assert.match(group,/\/artist\/hearts2hearts\/figma-hero.jpg/);const page=fs.readFileSync('app/page.tsx','utf8');assert.match(page,/nmixxExperience\?'nmixx-experience':hearts2heartsExperience\?'hearts2hearts-experience'/);const heading=page.split('\n').find(l=>l.includes('className="hearts2hearts-work-heading"'));assert.match(heading,/STAYC_GROUP_ID,NMIXX_GROUP_ID\]/);});
+test('Hearts2Hearts independent index hero and watch theme retain existing collaboration priority',()=>{
+ const index=fs.readFileSync('components/group-detail.tsx','utf8');
+ assert.match(index,/hearts2hearts-index-card/);assert(index.includes('/artist/hearts2hearts/figma-hero.jpg'));
+ const {workExperience}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-experience.ts');
+ const nmixx='recvxyEBDZOpTf',work='public-test',data={works:[{id:work,groupIds:[group]}]};
+ assert.equal(workExperience(data,{work}).className,'hearts2hearts-experience');
+ assert.equal(workExperience(data,{work,artistReturn:'/artists/nmixx'}).slug,'hearts2hearts');
+ data.works[0].groupIds.push(nmixx);
+ assert.equal(workExperience(data,{work}).slug,'nmixx');
+ assert.equal(workExperience(data,{work,artistReturn:'/artists/hearts2hearts'}).slug,'hearts2hearts');
+});
 
 test('Hearts2Hearts reuses all eight existing original portraits by verified byte identity', () => {
  const evidence = JSON.parse(fs.readFileSync('data/hearts2hearts-artist-evidence.json'));

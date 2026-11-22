@@ -1,7 +1,10 @@
 const {expectedPortraitLabel}=require('./helpers/image-dependency-loader.cjs');
 const test=require('node:test'),assert=require('node:assert/strict'),path=require('node:path'),Module=require('node:module'),esbuild=require('esbuild');
 const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
-const {memberWorkPhoto,MemberWorkIdentityPhoto,MemberWorkPhotoButton,memberWorks}=require('./helpers/image-dependency-loader.cjs').imageDependency('@/lib/idol/member-work-photo');
+const {memberWorkPhoto,MemberWorkIdentityPhoto,MemberWorkPhotoButton,MemberRecognitionProvider,memberWorks,mvRecognitionEdition}=require('./helpers/image-dependency-loader.cjs').imageDependency('@/lib/idol/member-work-photo');
+const loadPublic=require('./helpers/public-artist-loader.cjs');
+const {artistRecognitionEditions}=loadPublic('lib/idol/artist-recognition-editions.ts');
+const {createRecognitionSelector}=loadPublic('lib/idol/recognition-edition-lookup.ts');
 const runtime=require('../data/mv-public-media.json');
 const portrait=runtime.portraits.find(p=>p.photoKind==='concept_photo'&&p.sourceCrop);
 const work={id:portrait.workId,url:'https://www.youtube.com/watch?v='+portrait.videoId};
@@ -37,12 +40,51 @@ test('reviewed crop viewport contains the untouched full native image and displa
 });
 test('both existing frame and text controls open full originals, never the crop or a fabricated private attachment',()=>{
  for(const Component of [MemberWorkIdentityPhoto,MemberWorkPhotoButton]){
-  let opened;const element=Component({work,memberId:portrait.memberId,label:'成员 · 作品',photo:privatePhoto,live:true,className:'existing',onOpen:value=>opened=value});
+  let opened,element;
+  function Probe(){element=Component({work,memberId:portrait.memberId,label:'成员 · 作品',photo:privatePhoto,live:true,className:'existing',onOpen:value=>opened=value});return null;}
+  renderToStaticMarkup(React.createElement(Probe));
   const button=Component===MemberWorkPhotoButton?element:element.props.children[0];button.props.onClick();
   assert.deepEqual(opened,{src:portrait.src,label:'成员 · 作品 · '+portrait.label});
   assert.equal(button.props['aria-haspopup'],'dialog');assert.equal(button.props.disabled,Component===MemberWorkPhotoButton?undefined:false);
  }
  const html=render(MemberWorkPhotoButton,{photo:privatePhoto});assert.ok(html.includes(portrait.label));assert.doesNotMatch(html,/<img|<svg|api\/media/);
+});
+test('every artist projection matches the full registry for current and former members, including their other groups',()=>{
+ const snapshot=require('../data/snapshot.json').tables.members.records,registry=require('../data/artist-timeline-registry.json');
+ const all=Object.values(require('../data/mv-recognition-editions.json')).flatMap(e=>e.works.flatMap(w=>w.memberIds.map(memberId=>({workId:w.workId,videoId:w.videoId,memberId}))));
+ const covered=new Set(),withEditions=new Set();
+ for(const group of registry){
+  const members=new Set(snapshot.filter(row=>[...(row.fields.fld6bhQOdO??[]),...(row.fields.fldf1alCIu??[])].some(relation=>relation.recordId===group.groupId)).map(row=>row.recordId));
+  const selected=artistRecognitionEditions(group.slug),select=createRecognitionSelector(selected);
+  for(const key of all){
+   const photo=select(key);
+   if(!members.has(key.memberId)){assert.equal(photo,null,group.slug+' '+key.memberId);continue;}
+   assert.deepEqual(photo,mvRecognitionEdition(key),group.slug+' '+key.workId+' '+key.memberId);
+   const work={id:key.workId,url:'https://youtu.be/'+key.videoId};
+   const result=memberWorkPhoto(work,key.memberId,privatePhoto,true,select);
+   assert.equal(result.src,photo.preview);assert.equal(result.original,photo.original);assert.equal(result.sourceUrl,photo.sourceUrl);assert.equal(result.label,photo.label);
+   assert.equal(select({...key,videoId:'zzzzzzzzzzz'}),null);
+   covered.add([key.workId,key.videoId,key.memberId].join(':'));withEditions.add(group.slug);
+  }
+ }
+ assert.equal(covered.size,all.length);assert(withEditions.has('madein')&&withEditions.has('saymyname'));assert.deepEqual(artistRecognitionEditions('unregistered'),[]);
+});
+test('member profile image and text-only button open the same full release image and keep the old work image accessible',()=>{
+ for(const [slug,workId,videoId,memberId] of [['stayc','recvxyH5pzZo3m','gMe1c4UegBY','recvxyICzHvtEe'],['hearts2hearts','rec28ldfRTrzDX','kxUA2wwYiME','rec28ldbniB70B']]){
+  const work={id:workId,url:'https://youtu.be/'+videoId},editions=artistRecognitionEditions(slug),release=mvRecognitionEdition({workId,videoId,memberId});
+  for(const Component of [MemberWorkIdentityPhoto,MemberWorkPhotoButton]){
+   let checked=false;
+   function Probe(){
+    const opened=[],element=Component({work,memberId,label:'成员 · 作品',photo:privatePhoto,live:true,className:'existing-frame mv-look-native',onOpen:value=>opened.push(value.src)});
+    const children=React.Children.toArray(element.props.children);const main=children.find(c=>c.type==='button'),history=children.find(c=>typeof c.type==='function'&&c.props.selected?.publicImage);
+    main.props.onClick();const original=history.type(history.props).props.children[0];original.props.onClick();
+    const old=memberWorkPhoto(work,memberId,null,false);assert.deepEqual(opened,[release.original,old.original]);checked=true;return element;
+   }
+   const html=renderToStaticMarkup(React.createElement(MemberRecognitionProvider,{editions},React.createElement(Probe)));
+   assert(checked);assert(html.includes(release.label));assert(html.includes(release.sourceUrl));assert(html.includes('原出处'));assert(html.includes('named-series'));assert(!html.includes('/api/media'));
+   if(Component===MemberWorkIdentityPhoto){assert(html.includes(release.preview));assert.doesNotMatch(html,/foreignObject|mv-look-native/);}
+  }
+ }
 });
 test('missing images preserve host fallback and score eligibility without manufacturing a photo',()=>{
  const unmatched={...work,id:'unmatched'};

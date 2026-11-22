@@ -2,6 +2,9 @@
 .mv-photo-reference{margin:8px 0;font-size:12px}
 .mv-photo-reference>button{min-height:44px;text-decoration:underline;text-underline-offset:3px;background:transparent;color:inherit}
 .mv-look-photo-caption{display:block;margin:8px 0;font-size:12px;color:inherit}
+.mv-look-photo-caption[data-release-portrait]>a{display:block;width:fit-content;text-decoration:underline;text-underline-offset:3px}
+.member-work-photo-history,.member-work-photo-actions{display:flex;align-items:center;flex-wrap:wrap;gap:0 12px;font-size:12px}
+.member-work-photo-history>button,.member-work-photo-history>a,.member-work-photo-actions>a{display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:transparent;color:inherit;text-decoration:underline;text-underline-offset:3px;font:inherit}
 
 /* Approved same-look originals have mixed orientations. Their actual pixels,
    not a fixed screenshot/portrait slot, determine the frame and caption flow.

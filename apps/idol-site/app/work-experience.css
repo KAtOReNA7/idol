@@ -34,3 +34,54 @@
 @media(max-width:1199px){.work-experience{padding-left:220px}.work-experience>main{padding-inline:28px}.work-experience .work-detail-top{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:760px){.work-experience{padding:0 0 calc(68px + env(safe-area-inset-bottom));font-size:13px}.work-experience>main{padding:14px 20px 28px}.work-experience .music-work-title h1{font-size:32px}.work-experience .detail{padding-top:0}.work-experience .cast-grid{grid-template-columns:minmax(0,1fr)}.work-experience .cast-card{min-width:0}.work-experience .cast-scores{flex-wrap:wrap}.work-experience .video-mode-tabs button{white-space:normal}.work-experience .editor-fields input,.work-experience .editor-fields textarea,.work-experience .editor-fields select{font-size:16px}}
 @media(prefers-reduced-motion:reduce){.work-experience *{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* Shared controls inherit the two artist pages' selected colors and letterforms. */
+.work-experience[data-work-theme="itzy"] {
+  --artist-accent: var(--blush);
+  --artist-action-ink: var(--ink);
+  --artist-heading-weight: 700;
+}
+.work-experience[data-work-theme="lesserafim"] {
+  --artist-accent: var(--rose);
+  --artist-action-ink: var(--paper);
+  --artist-heading-weight: 600;
+}
+body .work-experience:is([data-work-theme="itzy"],[data-work-theme="lesserafim"]) {
+  & :is(.music-work-title h1,.work-aside h1) {
+    font-family: var(--font-editorial);
+    font-weight: var(--artist-heading-weight);
+    font-style: normal;
+  }
+  & :is(.video-mode-tabs,.cast-card,.work-aside) {
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+  & .video-stage:not(.video-missing) { background: #101318; }
+  & :is(.video-play,.button.primary,.video-mode-tabs button[aria-selected="true"],.music-sidebar button[aria-current="page"],.music-bottom-nav button[aria-current="page"]) {
+    background: var(--artist-accent);
+    color: var(--artist-action-ink);
+    border-color: var(--artist-accent);
+  }
+  & .video-play {
+    flex-direction: row;
+    gap: 7px;
+    min-height: 44px;
+    padding: 8px 14px;
+    border-radius: 3px;
+  }
+  & .video-play svg { width: 20px; height: 20px; }
+  & :is(.credit-score-action,.editor-open) {
+    min-height: 44px;
+    border: 1px solid var(--muted);
+    border-radius: 3px;
+    padding: 8px 12px;
+    background: var(--white);
+    color: var(--ink);
+  }
+  & .mv-identity-photo figcaption {
+    color: var(--muted);
+    font: 400 12px/1.6 var(--font-body);
+    opacity: 1;
+  }
+  & .mv-identity-history { font-family: var(--font-body); }
+}

@@ -6457,16 +6457,16 @@
       "currentStyleCssPaths": [
         "app/artists/itzy/itzy-artist.css"
       ],
-      "paper": "#fffdf5",
-      "surface": "#fffdf5",
-      "ink": "#161616",
-      "muted": "#62625c",
-      "line": "#bcbcb2",
-      "accent": "#161616",
-      "soft": "#e5ff47",
+      "paper": "#e5efe8",
+      "surface": "#cce0d8",
+      "ink": "#153e3c",
+      "muted": "#405f5b",
+      "line": "#9bb5af",
+      "accent": "#153e3c",
+      "soft": "#f4e6a1",
       "fontBody": "\"Noto Sans SC\",system-ui,sans-serif",
       "fontHeading": "ItzyDisplay,sans-serif",
-      "fontHeadingStyle": "italic",
+      "fontHeadingStyle": "normal",
       "fontFaceCssPaths": [
         "app/artists/itzy/itzy-artist.css"
       ],
@@ -6488,8 +6488,8 @@
           "kind": "current_root_variable"
         },
         "surface": {
-          "source": "--iz-paper",
-          "kind": "current_root_variable"
+          "source": ".iz-tabs button",
+          "kind": "current_selector_color"
         },
         "ink": {
           "source": "--iz-ink",
@@ -6518,12 +6518,12 @@
           "line": 2,
           "selector": ".itzy-artist",
           "declarations": {
-            "--iz-paper": "#fffdf5",
-            "--iz-ink": "#161616",
-            "--iz-line": "#bcbcb2",
-            "--iz-muted": "#62625c",
-            "--iz-acid": "#e5ff47",
-            "--iz-pad": "clamp(20px,5vw,80px)",
+            "--iz-paper": "#e5efe8",
+            "--iz-ink": "#153e3c",
+            "--iz-line": "#9bb5af",
+            "--iz-muted": "#405f5b",
+            "--iz-acid": "#f4e6a1",
+            "--iz-pad": "clamp(16px,4.45vw,64px)",
             "background": "var(--iz-paper)",
             "color": "var(--iz-ink)",
             "min-height": "100vh",
@@ -6533,39 +6533,75 @@
       ],
       "oldJournalPaletteDifferences": [
         {
+          "token": "paper",
+          "before": "#fffdf5",
+          "after": "#e5efe8"
+        },
+        {
           "token": "surface",
-          "before": "#fff",
-          "after": "#fffdf5"
+          "before": "#fffdf5",
+          "after": "#cce0d8"
+        },
+        {
+          "token": "ink",
+          "before": "#161616",
+          "after": "#153e3c"
         },
         {
           "token": "muted",
-          "before": "#62625a",
-          "after": "#62625c"
+          "before": "#62625c",
+          "after": "#405f5b"
         },
         {
           "token": "line",
-          "before": "#c7c7bc",
-          "after": "#bcbcb2"
+          "before": "#bcbcb2",
+          "after": "#9bb5af"
+        },
+        {
+          "token": "accent",
+          "before": "#161616",
+          "after": "#153e3c"
         },
         {
           "token": "soft",
-          "before": "#f1f6cc",
-          "after": "#e5ff47"
+          "before": "#e5ff47",
+          "after": "#f4e6a1"
         }
       ],
       "corePaletteDifferences": [
         {
+          "token": "paper",
+          "before": "#fffdf5",
+          "after": "#e5efe8"
+        },
+        {
+          "token": "ink",
+          "before": "#161616",
+          "after": "#153e3c"
+        },
+        {
           "token": "line",
-          "before": "#c7c7bc",
-          "after": "#bcbcb2"
+          "before": "#bcbcb2",
+          "after": "#9bb5af"
+        },
+        {
+          "token": "accent",
+          "before": "#161616",
+          "after": "#153e3c"
         }
       ],
-      "fontCorrectionNeeded": true,
-      "sourceStatus": "requires_correction",
-      "headingReview": "Use current heading font shown here; existing journal declarations may override variables on descendants.",
-      "character": "奶白/黑/酸黄、Space Grotesk斜体",
+      "fontCorrectionNeeded": false,
+      "sourceStatus": "reviewed_official_artist_and_detail_design",
+      "headingReview": "Current group title font and upright heading on the shared MV and stage route.",
+      "character": "JYP 官方图库青绿布景、浅黄色按钮与 Space Grotesk 标题",
       "browserStatus": "pending",
-      "name": "ITZY"
+      "name": "ITZY",
+      "figmaDetailFrames": [
+        "1483:1345",
+        "1483:1486",
+        "1483:1604",
+        "1483:1716"
+      ]
     },
     {
       "slug": "lesserafim",
@@ -6579,13 +6615,13 @@
       "currentStyleCssPaths": [
         "app/artists/lesserafim/lesserafim-artist.css"
       ],
-      "paper": "#f4f1e9",
-      "surface": "#f4f1e9",
-      "ink": "#191918",
-      "muted": "#655f55",
-      "line": "#c3bfb5",
-      "accent": "#ff4b24",
-      "soft": "#f4f1e9",
+      "paper": "#0d1721",
+      "surface": "#1c2b3a",
+      "ink": "#edf3f5",
+      "muted": "#b6c6cf",
+      "line": "#405463",
+      "accent": "#d1bcff",
+      "soft": "#1c2b3a",
       "fontBody": "\"Noto Sans SC\",system-ui,sans-serif",
       "fontHeading": "LeDisplay,\"Arial Narrow\",sans-serif",
       "fontHeadingStyle": "normal",
@@ -6610,29 +6646,28 @@
           "kind": "current_root_variable"
         },
         "surface": {
-          "source": "--lf-paper",
-          "kind": "current_root_variable"
+          "source": ".lf-taste",
+          "kind": "current_selector_color"
         },
         "ink": {
           "source": "--lf-ink",
           "kind": "current_root_variable"
         },
         "muted": {
-          "source": "#655f55",
-          "kind": "current_palette_reuse",
-          "note": "No new color introduced; reuse an existing artist palette color for shared detail surfaces."
+          "source": ".lf-heading small",
+          "kind": "current_selector_color"
         },
         "line": {
           "source": "--lf-rule",
           "kind": "current_root_variable"
         },
         "accent": {
-          "source": "--lf-orange",
+          "source": "--lf-accent",
           "kind": "current_root_variable"
         },
         "soft": {
-          "source": "--lf-paper",
-          "kind": "current_root_variable"
+          "source": ".lf-taste",
+          "kind": "current_selector_color"
         }
       },
       "rootEvidence": [
@@ -6641,10 +6676,10 @@
           "line": 3,
           "selector": ".lesserafim-artist",
           "declarations": {
-            "--lf-paper": "#f4f1e9",
-            "--lf-ink": "#191918",
-            "--lf-orange": "#ff4b24",
-            "--lf-rule": "#c3bfb5",
+            "--lf-paper": "#0d1721",
+            "--lf-ink": "#edf3f5",
+            "--lf-accent": "#d1bcff",
+            "--lf-rule": "#405463",
             "background": "var(--lf-paper)",
             "color": "var(--lf-ink)",
             "font-family": "'Noto Sans SC',system-ui,sans-serif",
@@ -6655,68 +6690,74 @@
       "oldJournalPaletteDifferences": [
         {
           "token": "paper",
-          "before": "#f7f4eb",
-          "after": "#f4f1e9"
+          "before": "#f4f1e9",
+          "after": "#0d1721"
         },
         {
           "token": "surface",
-          "before": "#fff",
-          "after": "#f4f1e9"
+          "before": "#f4f1e9",
+          "after": "#1c2b3a"
         },
         {
           "token": "ink",
-          "before": "#171714",
-          "after": "#191918"
+          "before": "#191918",
+          "after": "#edf3f5"
         },
         {
           "token": "muted",
-          "before": "#62625a",
-          "after": "#655f55"
+          "before": "#655f55",
+          "after": "#b6c6cf"
         },
         {
           "token": "line",
-          "before": "#c7c7bc",
-          "after": "#c3bfb5"
+          "before": "#c3bfb5",
+          "after": "#405463"
         },
         {
           "token": "accent",
-          "before": "#171714",
-          "after": "#ff4b24"
+          "before": "#ff4b24",
+          "after": "#d1bcff"
         },
         {
           "token": "soft",
-          "before": "#ffe4d6",
-          "after": "#f4f1e9"
+          "before": "#f4f1e9",
+          "after": "#1c2b3a"
         }
       ],
       "corePaletteDifferences": [
         {
           "token": "paper",
-          "before": "#f7f4eb",
-          "after": "#f4f1e9"
+          "before": "#f4f1e9",
+          "after": "#0d1721"
         },
         {
           "token": "ink",
-          "before": "#171714",
-          "after": "#191918"
+          "before": "#191918",
+          "after": "#edf3f5"
         },
         {
           "token": "line",
-          "before": "#c7c7bc",
-          "after": "#c3bfb5"
+          "before": "#c3bfb5",
+          "after": "#405463"
         },
         {
           "token": "accent",
-          "before": "#171714",
-          "after": "#ff4b24"
+          "before": "#ff4b24",
+          "after": "#d1bcff"
         }
       ],
-      "fontCorrectionNeeded": true,
-      "sourceStatus": "requires_correction",
-      "headingReview": "Use current heading font shown here; existing journal declarations may override variables on descendants.",
-      "character": "奶纸/黑/橙、Oswald",
+      "fontCorrectionNeeded": false,
+      "sourceStatus": "reviewed_official_artist_and_detail_design",
+      "headingReview": "Current group title font and upright heading on the shared MV and stage route.",
+      "character": "SOURCE MUSIC 深蓝黑、淡紫操作色及 Oswald 标题",
       "browserStatus": "pending",
-      "name": "LE SSERAFIM"
+      "name": "LE SSERAFIM",
+      "figmaDetailFrames": [
+        "1483:2171",
+        "1483:2312",
+        "1483:2430",
+        "1483:2542"
+      ]
     },
     {
       "slug": "saymyname",

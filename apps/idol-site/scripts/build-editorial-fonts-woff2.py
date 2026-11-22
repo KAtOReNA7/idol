@@ -27,9 +27,14 @@ FONTS = {
 # Rajdhani's original glyph padding is part of its offsets. Keep these tables
 # untransformed so the decoded font contains the original offsets and outlines.
 ARTIST_FONTS = {
-    'adya/ArchivoNarrow': False,
-    'vvup/Archivo-Italic': False,
-    **{f'witchx/Rajdhani-{i}': True for i in range(4)},
+    'fonts/adya/ArchivoNarrow.ttf': False,
+    'fonts/vvup/Archivo-Italic.ttf': False,
+    **{f'fonts/witchx/Rajdhani-{i}.ttf': True for i in range(4)},
+    'fonts/InstrumentSerif-Regular.ttf': True,
+    'fonts/Syne.ttf': False,
+    'artist/illit/redesign-20261025/pixelify-sans-bold.ttf': True,
+    'artist/cherrybullet/fonts/NanumGothic.woff': True,
+    'artist/cherrybullet/fonts/NanumGothicBold.woff': True,
 }
 
 
@@ -37,15 +42,18 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true', help='verify committed bytes without writing')
     args = parser.parse_args()
-    for name in (*FONTS, *ARTIST_FONTS):
-        source = (ROOT / 'public/fonts' / (name + '.ttf')).read_bytes()
-        output = codec.convert(source, preserve_table_bytes=ARTIST_FONTS.get(name, False))
+    sources = {f'fonts/{name}.ttf': False for name in FONTS}
+    for relative_path, preserve_tables in (sources | ARTIST_FONTS).items():
+        path = ROOT / 'public' / relative_path
+        source = path.read_bytes()
+        name = path.stem
+        output = codec.convert(source, preserve_table_bytes=preserve_tables)
         glyphs = codec.verify(source, output)
         if name in FONTS:
             source_hash, output_hash = FONTS[name]
             assert hashlib.sha256(source).hexdigest() == source_hash, name + ': unexpected source'
             assert hashlib.sha256(output).hexdigest() == output_hash, name + ': toolchain mismatch'
-        target = ROOT / 'public/fonts' / (name + '.woff2')
+        target = path.with_suffix('.woff2')
         if args.check:
             assert target.read_bytes() == output, name + ': regenerate WOFF2'
         else:

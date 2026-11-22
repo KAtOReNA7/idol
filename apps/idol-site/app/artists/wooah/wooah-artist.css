@@ -1,4 +1,4 @@
-@font-face{font-family:WooahFrequency;src:url('/fonts/Syne.ttf') format('truetype');font-weight:400 800;font-display:swap}
+@font-face{font-family:WooahFrequency;src:url('/fonts/Syne.woff2') format('woff2'),url('/fonts/Syne.ttf') format('truetype');font-weight:400 800;font-display:swap}
 .candidate-wooah{--ca-bg:#e9f6f3;--ca-ink:#163e43;--ca-muted:#4b7377;--ca-line:#9ec4c2;--ca-accent:#006b78;--ca-panel:#c9e7e3;--ca-on-accent:#f1fffb}
 .candidate-wooah .wooah-station{display:grid;grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr);grid-template-areas:'heading heading' 'intro screen' 'controls screen' 'index index';gap:26px 42px}
 .candidate-wooah .wooah-station-heading{grid-area:heading;text-align:center;padding-bottom:28px}

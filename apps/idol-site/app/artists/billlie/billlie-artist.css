@@ -1,4 +1,4 @@
-@font-face{font-family:BilllieVolume;src:url('/fonts/InstrumentSerif-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:BilllieVolume;src:url('/fonts/InstrumentSerif-Regular.woff2') format('woff2'),url('/fonts/InstrumentSerif-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
 .candidate-billlie{--ca-bg:#eae9e2;--ca-ink:#263344;--ca-muted:#66717c;--ca-line:#aab0b7;--ca-accent:#354d75;--ca-panel:#d6d9db;--ca-on-accent:#fcfbf4}
 .candidate-billlie .billlie-open-file{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:'heading heading' 'window prologue' 'footnote footnote';gap:36px 60px}
 .candidate-billlie .billlie-file-heading{grid-area:heading;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ca-line);gap:30px}

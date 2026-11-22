@@ -20,6 +20,7 @@ function load(file) {
   }}).outputText;
   vm.runInNewContext('(function(require,exports){' + code + '\n})', {}, {filename: file})((name) => {
     if (name.endsWith('.css')) return {};
+    if (name.startsWith('@/') && name.endsWith('.json')) return load(name.slice(2));
     if (name === '@/components/artist-recognition') return {ArtistRecognition: ({children}) => children};
     if (name.startsWith('@/components/')) return {__esModule: true, default: () => React.createElement('div', {'data-design': 'unchanged'})};
     if (name.startsWith('@/') || name.startsWith('.')) {
@@ -36,7 +37,7 @@ function load(file) {
 const cases = [
   ['loona', '/artist/loona/approved-home/hero.jpg', 'no-referrer'],
   ['billlie', JSON.parse(fs.readFileSync('data/runtime/billlie-figma-catalog.json')).releases[0].src, null],
-  ['triples', JSON.parse(fs.readFileSync('data/triples-artist.json')).hero.image, 'no-referrer'],
+  ['triples', JSON.parse(fs.readFileSync('components/seven-redesign/art-direction.json')).triples.hero, 'no-referrer'],
 ];
 const excluded = [
   ...['members', 'works', 'updates', 'records', '', 'unknown'].map(section => ({section})),
@@ -81,11 +82,12 @@ for (const [slug, asset, referrerPolicy] of cases) {
 test('preload sources remain identical to existing homepage images', () => {
   const loona = fs.readFileSync('components/candidate/loona-home.tsx', 'utf8');
   const billlie = fs.readFileSync('components/candidate/billlie-design.tsx', 'utf8');
-  const triples = fs.readFileSync('components/candidate/triples-design.tsx', 'utf8');
+  const triples = fs.readFileSync('components/seven-redesign/artist.tsx', 'utf8');
   assert.match(loona, /<Picture src=\{loonaHomeAsset\('hero\.jpg'\)\}/);
   assert.match(loona, /referrerPolicy="no-referrer"/);
   assert.match(billlie, /const latest=design\.releases\[0\]/);
   assert.match(billlie, /<Picture src=\{latest\.src\}/);
-  assert.match(triples, /<Picture src=\{content\.hero\.image\}/);
+  assert.match(triples, /const src=art\.hero\?\?config\.hero/);
+  assert.match(triples, /<Picture src=\{src\} alt=\{config\.heroCaption\} priority/);
   assert.match(triples, /referrerPolicy="no-referrer"/);
 });

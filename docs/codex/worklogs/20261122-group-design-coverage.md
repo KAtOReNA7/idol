@@ -4,7 +4,7 @@
 
 正式路由目录、具名 Figma 页面和逐团记录的名单一致，共 51 团，重复和遗漏均为 0。逐团索引按九类页面列出桌面、手机节点，给出素材来源文件、适用的专项实现和正式实测版本。原文件 53 页、3,676 个条目的清点保存在下方。初次清点定位 750 个位置、746 个不同节点，补录后的原索引有 751 个位置、747 个不同节点。[现行逐团索引](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [原索引](../evidence/20261122-group-design-coverage/group-screen-matrix.json)
 
-459 个「团体 × 页面类别」组合中，408 个已定位双宽候选画稿，另有 51 个至少一宽待定位，涉及 19 团。BEWAVE《SING !》补齐两项，YOUNG POSSE 和 ADYA 各补齐一项本人评分，izna 补齐 KBS 节目舞台。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
+459 个「团体 × 页面类别」组合中，409 个已定位双宽候选画稿，另有 50 个至少一宽待定位，涉及 18 团。BEWAVE《SING !》补齐两项，YOUNG POSSE、ADYA 和 GENBLUE 各补齐一项本人评分，izna 补齐 KBS 节目舞台。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
 
 | 类别 | 双宽候选 | 至少一宽仍待定位的团 |
 | --- | ---: | --- |
@@ -16,7 +16,7 @@
 | MV 详情 | 51/51 | 无 |
 | 舞台详情 | 45/51 | ifeye、ODD YOUTH、VCHA、HITGS、AtHeart、PURPLE KISS |
 | 时间轴 | 42/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
-| 评分或手帐状态 | 43/51 | GENBLUE、UDTT、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
+| 评分或手帐状态 | 44/51 | UDTT、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
 
 已在项目 Figma 中逐幅读取六团的 MV、舞台手帐及 PURPLE KISS 的 MV 手帐，共 26 幅。可辨认《La Vie en Rose》《LIKE YOU BETTER》《CODE》《BOOM》《P.O.W!》《LIGHTS ON》的真实 MV 和节目舞台，以及《Breath》MV 的两档设计。这 13 对已有作品级设计出处；旧稿中的成员截图占位和外跳提示仍与现行产品有差异，现代成员评分组件另有双宽 Figma 与 599 支可评 MV 的结构验收。本轮另读回三团的 14 幅画稿。RESCENE《LOVE ATTACK》与 QWER《SHOW DOWN》各补 MV 和准确节目舞台两对。WOOAH《BLUSH》原 MV 两幅补齐实图，新增 Just Dance 舞台和 LUCY 本人评分展开两对。[三团逐帧记录](../evidence/20261122-group-design-coverage/three-work-states.json) · [七团图层与版本](../evidence/20261122-group-design-coverage/journal-version-readback.json) · [成员评分组件](20261122-stayc-debut-and-scores.md)
 
@@ -28,6 +28,8 @@
 | Candy Shop、SPIA、UDTT | 正式 v241 两宽实开 SPIA、Candy Shop 的成员原图、作品、发行和舞台，UDTT 页眉的公司原标及成员返回也已核对。[正式结果](20261122-v241-release.md) |
 
 飞书第 8 项涉及八个示例，也要求核查其余团。51 团首页已有来源和视觉初查，五种栏目入口有 255 次正式路由本地渲染，338 个成员详情有实际访问记录，603 页横查已清理那批公开页面编辑说明。后续仍需区分组件行为、团体识别、官方发行期复原和每张内页的成稿。WOOAH《BLUSH》原稿中的缺图标记已替换。[作品、舞台及成员评分稿](../evidence/20261122-group-design-coverage/three-work-states.json)
+
+GENBLUE《COCOCO》已用天空娱乐首发宣传中逐人具名的六张概念照完成 MV 和 AYEON 本人评分双宽稿。旧 MV 稿写有「预览暂缺」。六张新卡合计 333,380 B，较原章节图减少 95.01%，六人可分别打开新旧照片和本人评分。[作品来源与双宽回执](20261122-genblue-cococo.md)
 
 YOUNG POSSE《MACARONI CHEESE》和 Mnet 第 819 期原来各有两幅零图片外跳稿。新稿及本机双宽已能分别看到首发封面、节目封面和五人同次拍摄现场照，并在每位成员的照片下展开评分。[本曲来源、设计及实测](20261122-youngposse-macaroni-sources.md)
 
@@ -52,7 +54,7 @@ izna《IZNA》的 KBS Music Bank 241129 已有两幅节目原图画稿，站内�
 | tripleS | 24 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 已定位 | 嵌图 | — |
 | MADEIN | 7 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | — |
 | ifeye | 6 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 待定位 | 演示／文字 | 演示／文字 | — |
-| GENBLUE | 6 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 已定位 | 待定位 | 《COCOCO》两种版本 |
+| GENBLUE | 6 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 《COCOCO》六人双宽 | 嵌图 | 已定位 | AYEON 双宽 | 首发 MV 与次日 Performance |
 | RESCENE | 5 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 待定位 | 待定位 | 已定位 | 嵌图 | — |
 | UNIS | 8 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 已定位 | 嵌图 | 首页 MV 与发行封面 |
 | BADVILLAIN | 7 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | — |

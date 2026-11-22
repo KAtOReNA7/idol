@@ -26,7 +26,7 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 408,
+    "twoWidthBoardMatches": 409,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
@@ -36,7 +36,7 @@
       "mv": 51,
       "stage": 45,
       "timeline": 42,
-      "score": 43
+      "score": 44
     },
     "missingOrPartialBySurface": {
       "home": [],
@@ -97,7 +97,6 @@
         "lesserafim"
       ],
       "score": [
-        "genblue",
         "udtt",
         "xg",
         "aespa",
@@ -107,7 +106,7 @@
         "lesserafim"
       ]
     },
-    "groupsWithMissingOrPartial": 19
+    "groupsWithMissingOrPartial": 18
   },
   "sources": {
     "inventory": "docs/codex/evidence/20261122-group-design-coverage/group-screen-matrix.json",
@@ -164,7 +163,8 @@
     "youngposse-macaroni": "docs/codex/evidence/20261122-youngposse-macaroni/design-and-sources.json",
     "adya-rizz": "docs/codex/worklogs/20261122-adya-rizz.md",
     "izna-kbs": "docs/codex/worklogs/20261122-izna-kbs-stage.md",
-    "kiof-stage-directory": "docs/codex/worklogs/20261122-kiof-stage-catalog.md"
+    "kiof-stage-directory": "docs/codex/worklogs/20261122-kiof-stage-catalog.md",
+    "genblue-cococo": "docs/codex/evidence/20261122-genblue-cococo/design-and-sources.json"
   },
   "groups": [
     {
@@ -537,8 +537,8 @@
           "851:2479"
         ],
         "mv": [
-          "851:2529",
-          "851:2572"
+          "1579:1988",
+          "1579:2120"
         ],
         "stage": [
           "851:2615",
@@ -549,16 +549,24 @@
           "851:2773"
         ],
         "score": [
-          null,
-          null
+          "1579:2244",
+          "1579:2365"
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "genblue-cococo",
+        "score": "genblue-cococo"
+      },
       "implementation": [
         {
           "at": "v238",
           "scope": "首页或卡片两宽，范围按团别回执",
           "evidence": "v238"
+        },
+        {
+          "at": "开发版 95947a30",
+          "scope": "《COCOCO》首发 MV 六人具名官方概念照与照片下本人评分。正文 375、1425 px 逐人展开、新旧大图和舞台返回通过，隔离库读回 0 分。",
+          "evidence": "genblue-cococo"
         }
       ],
       "additional": [
@@ -569,9 +577,18 @@
             "1441:2653",
             "1441:2670"
           ]
+        },
+        {
+          "scope": "首发 MV 旧手帐含「预览暂缺」及外部文字入口",
+          "source": "genblue-cococo",
+          "nodes": [
+            "851:2529",
+            "851:2572"
+          ]
         }
       ],
-      "earlierHomeReference": "https://www.tenentcorp.com/pages/genblue"
+      "earlierHomeReference": "https://www.tenentcorp.com/pages/genblue",
+      "qualification": "旧舞台双宽稿沿用原节点。本轮在实际页面打开次日 Performance 核对封面和返回。新版四幅画稿分别覆盖首发 MV 与 AYEON 本人展开评分。"
     },
     {
       "slug": "rescene",

@@ -11,8 +11,8 @@ import {REVIEW_PATH,group,helpers,urlNow,readReviewUrl,catalogBelongs,resolveNat
 export {catalogBelongs} from './model.mjs';
 export async function prepareUdttNativePortrait({catalog,viewer,production,window:win,signal,publicMode=false}){
  if(!catalogBelongs(catalog)||resolveNative({kind:'member',key:'recvxAPQCF66Sl'},catalog,production)?.memberId!=='recvxAPQCF66Sl')throw new Error('原生照片成员身份未通过核验。');
- if(publicMode){validatePublicViewer(viewer);return preparePublicNativePortrait({catalog,scheduler:win,signal});}
- validatePrivateViewer(viewer);return prepareNativePortrait({catalog,scheduler:win,signal});
+ if(publicMode){validatePublicViewer(viewer);return preparePublicNativePortrait({catalog,scheduler:win,signal,waitForPrevious:true});}
+ validatePrivateViewer(viewer);return prepareNativePortrait({catalog,scheduler:win,signal,waitForPrevious:true});
 }
 const STYLE_URL='/artist/udtt/figma-native.css';
 const reset=`
@@ -74,7 +74,7 @@ export function createUdttNative({host,catalog,viewer,production,canEdit=false,n
     try{reloadVerifiedPage({mountedUrl,currentUrl:urlNow(win),isValidUrl:readReviewUrl,mayLeave,remember,reload:()=>win.location.reload()});}
     catch{onStatus('页面未能重新载入，请稍后重试。');}
   }});
-  const images=createPrivateImageQueue({references,parking,scheduler:win,onReport:report=>{recovery.update(report);onImages(report);}});
+  const images=createPrivateImageQueue({references,parking,scheduler:win,waitForPrevious:true,onReport:report=>{recovery.update(report);onImages(report);}});
   const helpers=createPrivateHelpers(references,(image,asset,callbacks)=>images.requestViewer(image,asset,callbacks));
   const link=document.createElement('link');link.rel='stylesheet';link.href=STYLE_URL;
   const lifetime=createScope({scheduler:win,id:'sol15-udtt-host'});

@@ -8,6 +8,27 @@ const {Runner, React, jsxRuntime, find, all, text, tick} = require('./helpers/re
 const load = require('./helpers/public-artist-loader.cjs');
 const source = fs.readFileSync(path.join(__dirname, '../components/candidate/udtt-native-design.tsx'), 'utf8');
 const compiled = transformSync(source, {loader:'tsx', format:'cjs', jsx:'automatic', target:'es2022'}).code;
+
+test('UDTT reports a visible image failure once and exposes the page reload button', async () => {
+  const {documentFor, rootFor} = await import('./media-viewer-upstream/runtime-dom-harness.mjs');
+  const {createImageRecovery} = await import('../lib/idol/udtt-native/image-recovery.mjs');
+  const document = documentFor(), root = rootFor(document), picture = document.createElement('img');
+  picture.setAttribute('data-private-asset-id','udtt-hero');
+  root.append(picture);
+  let reloaded = 0;
+  const recovery = createImageRecovery({document,root,onReload:()=>{reloaded++;}});
+  const status = recovery.element.querySelector('[role="status"]'), button = recovery.element.querySelector('button');
+  recovery.update({entries:[{assetId:'udtt-hero',status:'failed'}]});
+  assert.equal(recovery.element.hidden,false);
+  assert.equal(status.textContent,'部分图片加载失败。');
+  assert.equal(button.textContent,'重新载入本页');
+  button.dispatchEvent(new Event('click'));
+  assert.equal(reloaded,1);
+  recovery.update({entries:[{assetId:'udtt-hero',status:'loaded'}]});
+  assert.equal(recovery.element.hidden,true);
+  assert.equal(button.disabled,true);
+  recovery.destroy();
+});
 const fixture = require('./fixtures/udtt-review-catalog.json');
 const catalog = {...fixture, works:[
   {...fixture.works[0], song:'未公开作品', placeholder:true},

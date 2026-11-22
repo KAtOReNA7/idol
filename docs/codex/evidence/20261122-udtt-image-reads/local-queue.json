@@ -1,0 +1,115 @@
+[
+  {
+    "variant": "v245-owner-service",
+    "maxConcurrentOriginalReads": 2,
+    "passed": 2,
+    "total": 9,
+    "results": [
+      {
+        "asset": "udtt-hero",
+        "status": 200,
+        "bytes": 245638
+      },
+      {
+        "asset": "udtt-risako",
+        "status": 200,
+        "bytes": 282674
+      },
+      {
+        "asset": "udtt-han-chaehee",
+        "status": 503,
+        "bytes": 22,
+        "error": "ASSET_BUSY"
+      },
+      {
+        "asset": "udtt-gu-hanna",
+        "status": 503,
+        "bytes": 22,
+        "error": "ASSET_BUSY"
+      },
+      {
+        "asset": "udtt-really-really-mv",
+        "status": 503,
+        "bytes": 22,
+        "error": "ASSET_BUSY"
+      },
+      {
+        "asset": "udtt-retry-cover",
+        "status": 503,
+        "bytes": 22,
+        "error": "ASSET_BUSY"
+      },
+      {
+        "asset": "udtt-school-rush-cover",
+        "status": 503,
+        "bytes": 22,
+        "error": "ASSET_BUSY"
+      },
+      {
+        "asset": "udtt-viper-cover",
+        "status": 503,
+        "bytes": 22,
+        "error": "ASSET_BUSY"
+      },
+      {
+        "asset": "udtt-kwon-yejin",
+        "status": 503,
+        "bytes": 22,
+        "error": "ASSET_BUSY"
+      }
+    ]
+  },
+  {
+    "variant": "updated-owner-service",
+    "maxConcurrentOriginalReads": 2,
+    "passed": 9,
+    "total": 9,
+    "results": [
+      {
+        "asset": "udtt-hero",
+        "status": 200,
+        "bytes": 245638
+      },
+      {
+        "asset": "udtt-risako",
+        "status": 200,
+        "bytes": 282674
+      },
+      {
+        "asset": "udtt-han-chaehee",
+        "status": 200,
+        "bytes": 346270
+      },
+      {
+        "asset": "udtt-gu-hanna",
+        "status": 200,
+        "bytes": 324365
+      },
+      {
+        "asset": "udtt-really-really-mv",
+        "status": 200,
+        "bytes": 101380
+      },
+      {
+        "asset": "udtt-retry-cover",
+        "status": 200,
+        "bytes": 8884
+      },
+      {
+        "asset": "udtt-school-rush-cover",
+        "status": 200,
+        "bytes": 18732
+      },
+      {
+        "asset": "udtt-viper-cover",
+        "status": 200,
+        "bytes": 28424
+      },
+      {
+        "asset": "udtt-kwon-yejin",
+        "status": 200,
+        "bytes": 312851
+      }
+    ]
+  }
+]

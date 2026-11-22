@@ -27,7 +27,7 @@ export function createImageRecovery({document,root,onReload}) {
       const ids=new Set([...root.querySelectorAll('img[data-private-asset-id]')].map(img=>img.getAttribute('data-private-asset-id')));
       const show=imageRecoveryNeeded(report,ids);
       element.hidden=!show;button.disabled=!show;
-      message.textContent=show?'当前页面有图片未能加载，未使用其他图片替代。可手动重新载入本页。':'';
+      message.textContent=show?'部分图片加载失败。':'';
     },
     destroy(){if(dead)return;dead=true;button.removeEventListener('click',clicked);element.remove();}
   };

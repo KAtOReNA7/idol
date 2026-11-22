@@ -24,6 +24,23 @@ export const HERO_SHA256=contract.assets['groups/udtt/assets/group.jpg'].sha256;
 // A route unmount is not proof that its IMG request was cancelled. Keep a
 // document-lifetime lease so a later mount cannot overlap an unsettled request.
 const imageLeases=new WeakMap();
+function releaseImageLease(scheduler,owner,row){
+ const lease=imageLeases.get(scheduler);
+ if(lease?.owner!==owner||lease.row!==row)return;
+ imageLeases.delete(scheduler);
+ for(const finish of lease.waiters??[])finish();
+}
+function waitForImageLease(lease,scheduler,signal,timeoutMs){
+ return new Promise((resolve,reject)=>{
+  const waiters=lease.waiters??=new Set();
+  const cleanup=()=>{scheduler.clearTimeout(timer);waiters.delete(finish);signal?.removeEventListener('abort',cancel);};
+  const finish=()=>{cleanup();resolve();};
+  const cancel=()=>{cleanup();reject(new Error('前一张图片尚未完成读取。'));};
+  const timer=scheduler.setTimeout(cancel,timeoutMs);
+  waiters.add(finish);
+  if(signal?.aborted)cancel();else signal?.addEventListener('abort',cancel,{once:true});
+ });
+}
 // Single, independently verified native portrait. This is NOT a v3 manifest entry.
 const NATIVE=Object.freeze({memberId:'recvxAPQCF66Sl',groupId:'rec28ldfRTiDPs',fieldId:'fldTMEUgHF',url:'/api/media?table=members&record=recvxAPQCF66Sl&index=0',sha256:'b80720a772b8000518fad7d71e0b3c5867a8dbef7b4c2219dcaf2ec58dba8ca9',bytes:22101,width:640,height:800,source:'https://www.idntimes.com/korea/kpop/biodata-dan-profil-lineup-debut-time-turner-00-6x7yf-q7hcs8'});
 const nativeBindings=new WeakMap();
@@ -34,11 +51,14 @@ export function prepareNativePortrait(options){return prepareNativePortraitBytes
 /** Server-issued public binding replaces only the stripped private field ID.
  * Identity, exact native URL, size, MIME, SHA and decoded geometry remain fixed. */
 export function preparePublicNativePortrait(options){return prepareNativePortraitBytes({...options,publicBinding:true});}
-async function prepareNativePortraitBytes({catalog,scheduler=globalThis,signal,publicBinding=false}){
+async function prepareNativePortraitBytes({catalog,scheduler=globalThis,signal,publicBinding=false,waitForPrevious=false}){
  const members=catalog?.members?.filter(m=>m?.id===NATIVE.memberId),groups=catalog?.groups?.filter(g=>g?.id===NATIVE.groupId),member=members?.[0],photo=member?.photo;
  if(catalog?.scope?.type!=='artist'||catalog.scope.groupId!==NATIVE.groupId||groups?.length!==1||members?.length!==1||!member.groupIds?.includes(NATIVE.groupId)||photo?.table!=='members'||photo.recordId!==NATIVE.memberId||(publicBinding?photo.fieldId!==''||photo.publicBinding!=='member-primary-v1':photo.fieldId!==NATIVE.fieldId)||photo.index!==0)nativeFail();
  const old=originals.find(a=>a.src==='groups/udtt/assets/woojung.jpg');
- if(old?.sha256!=='cbf9129dfd0073537c892e6ae1ba32851141303f414065b415f7caecce289f5c'||old.bytes!==20090||old.width!==200||old.height!==200||signal?.aborted||imageLeases.has(scheduler))nativeFail();
+ if(old?.sha256!=='cbf9129dfd0073537c892e6ae1ba32851141303f414065b415f7caecce289f5c'||old.bytes!==20090||old.width!==200||old.height!==200||signal?.aborted)nativeFail();
+ const previous=imageLeases.get(scheduler);
+ if(previous&&waitForPrevious)await waitForImageLease(previous,scheduler,signal,20000);
+ if(signal?.aborted||imageLeases.has(scheduler))nativeFail();
  const owner={},controller=new AbortController();let expired=false;const abort=()=>controller.abort();signal?.addEventListener('abort',abort,{once:true});
  const timer=scheduler.setTimeout(()=>{expired=true;controller.abort();},20000);imageLeases.set(scheduler,{owner,row:null});
  try{
@@ -51,7 +71,7 @@ async function prepareNativePortraitBytes({catalog,scheduler=globalThis,signal,p
   if(sha!==NATIVE.sha256||controller.signal.aborted||signal?.aborted||expired)nativeFail();
   const url=scheduler.URL.createObjectURL(new Blob([bytes],{type:'image/jpeg'}));const state={url,scheduler,users:0,disposed:false,revoked:false};
   const binding=Object.freeze({destroy(){if(state.disposed)return;state.disposed=true;maybeRevoke(state);}});nativeBindings.set(binding,state);return binding;
- }finally{scheduler.clearTimeout(timer);signal?.removeEventListener('abort',abort);if(imageLeases.get(scheduler)?.owner===owner)imageLeases.delete(scheduler);}
+ }finally{scheduler.clearTimeout(timer);signal?.removeEventListener('abort',abort);releaseImageLease(scheduler,owner,null);}
 }
 export function withNativePortrait(references,binding){
  const state=nativeState(binding),oldPath='groups/udtt/assets/woojung.jpg',old=references.byPath.get(oldPath);
@@ -146,11 +166,12 @@ export function createPrivateHelpers(references,viewerTransport=null){
  * retry, or change src. Moving an IMG preserves pending requests across routes.
  * Timeout is not cancellation: it stops the queue and leaves the slot occupied.
  */
-export function createPrivateImageQueue({references,parking,scheduler=globalThis,onReport=()=>{},timeoutMs=20000}){
+export function createPrivateImageQueue({references,parking,scheduler=globalThis,onReport=()=>{},timeoutMs=20000,waitForPrevious=false}){
   const now=()=>scheduler.performance?.now?.()??Date.now();
   const startedAt=now(),records=new Map(references.entries.map(entry=>[entry.assetId,{entry,node:null,status:'not-triggered',seen:false,triggeredAt:null,loadAt:null,decodedAt:null,failedAt:null,error:null,timeout:false,lateOutcome:null}]));
   const owner={},viewerJobs=[];
-  const release=row=>{if(row.nativeActive){row.nativeActive=false;const state=nativeBindings.get(references.nativePortrait);state.users--;maybeRevoke(state);}const lease=imageLeases.get(scheduler);if(lease?.owner===owner&&lease.row===row)imageLeases.delete(scheduler);};
+  const release=row=>{if(row.nativeActive){row.nativeActive=false;const state=nativeBindings.get(references.nativePortrait);state.users--;maybeRevoke(state);}releaseImageLease(scheduler,owner,row);};
+  let previousWait=null;
   let active=null,stopped=false,stopReason=null,dead=false,paused=false,timer=null;
   const report=()=>{
     const entries=[...records.values()].map(row=>({assetId:row.entry.assetId,sha256:row.entry.sha256,byteLength:row.entry.byteLength,sourceKind:row.entry.sourceKind??'editorial-v3',status:row.status,seen:row.seen,triggeredAtMs:row.triggeredAt===null?null:row.triggeredAt-startedAt,loadAtMs:row.loadAt===null?null:row.loadAt-startedAt,decodedAtMs:row.decodedAt===null?null:row.decodedAt-startedAt,srcToLoadMs:row.loadAt===null?null:row.loadAt-row.triggeredAt,loadToDecodeMs:row.decodedAt===null||row.loadAt===null?null:row.decodedAt-row.loadAt,srcToDecodeMs:row.decodedAt===null?null:row.decodedAt-row.triggeredAt,error:row.error,timedOut:row.timeout,lateOutcome:row.lateOutcome}));
@@ -170,7 +191,17 @@ export function createPrivateImageQueue({references,parking,scheduler=globalThis
   };
   function start(row){
     if(active||stopped||dead||paused||row.status!=='not-triggered'||!row.node)return;
-    if(imageLeases.has(scheduler)){stop('previous-mount-image-unsettled: no new IMG request started');return;}
+    const previous=imageLeases.get(scheduler);
+    if(previous){
+      if(!waitForPrevious){stop('previous-mount-image-unsettled: no new IMG request started');return;}
+      if(!previousWait){
+        previousWait=new AbortController();
+        waitForImageLease(previous,scheduler,previousWait.signal,timeoutMs).then(()=>{
+          previousWait=null;pump();
+        },()=>{previousWait=null;if(!dead)stop('previous-mount-image-unsettled');});
+      }
+      return;
+    }
     const image=row.node;if(row.entry.sourceKind==='verified-native-media'){const state=nativeState(references.nativePortrait);if(row.entry.readUrl!==state.url)nativeFail();state.users++;row.nativeActive=true;}active=row;imageLeases.set(scheduler,{owner,row});row.status='loading';row.triggeredAt=now();mark(row);
     const onError=()=>settle(row,'img-error');
     const onLoad=()=>{
@@ -227,6 +258,6 @@ export function createPrivateImageQueue({references,parking,scheduler=globalThis
       }
       paused=false;emit();pump();
     },
-    destroy(){if(dead)return;dead=true;stopped=true;stopReason='destroyed';clearTimer();for(const row of records.values())if(row!==active)row.off?.();}
+    destroy(){if(dead)return;dead=true;stopped=true;stopReason='destroyed';previousWait?.abort();clearTimer();for(const row of records.values())if(row!==active)row.off?.();}
   };
 }

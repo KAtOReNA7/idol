@@ -94,8 +94,8 @@
       "bytes": 4402
     },
     "lib/idol/design-review/sol15-runtime/private-images.mjs": {
-      "bytes": 22888,
-      "sha256": "eb82f3f6ec3b3ff467431d21d709246237c44e7205192386b2a50f00ec2c4a92"
+      "bytes": 24197,
+      "sha256": "07daa5999f67dd4cc775eebb9b37df73ff1802d200b2e4174476b0e8ca493244"
     },
     "lib/idol/design-review/sol15-runtime/bridge.mjs": {
       "sha256": "342310775ec2728716d4f0963cdca182be31cab9d45d0ebe5069e23d2862efc5",
@@ -182,12 +182,12 @@
       "sha256": "d3aeabb883545770437dafd4c6abaade76e2321b57db3d64d2a5f3c18086ebbc"
     },
     "lib/idol/udtt-native/host.mjs": {
-      "bytes": 20870,
-      "sha256": "8792361dfd4da6284ad5aafe0191fd351b8196bc8313a19e5fbefe8f198b2689"
+      "bytes": 20933,
+      "sha256": "bcb9913b1d674a4de9e2ad0ee6c747493306b838e4070ec1179bc4962fe998a8"
     },
     "lib/idol/udtt-native/image-recovery.mjs": {
-      "bytes": 2272,
-      "sha256": "083fa59d32bda391a40d3f0f2b04f3b5089b863500d6ec4331d65cf737c4e493"
+      "bytes": 2203,
+      "sha256": "b436bd51bc1b12349f7897f2f14ceea1654ce06b778cadd3d198e0c31112a3da"
     },
     "lib/idol/udtt-native/model.mjs": {
       "bytes": 6561,
@@ -426,6 +426,45 @@
         "reviewed": {
           "bytes": 16685,
           "sha256": "649ce5a6321869943e20a3c6c940213ae7f3ebea5f912fba2b6a44167b9ba732"
+        }
+      }
+    ]
+  },
+  "imageReadQueueReview20261122": {
+    "scope": "On the artist page an overlapping mount awaits the actual prior image settlement. Image identity, byte validation, one active browser image and restricted distribution are preserved. The reload action retains its existing behavior.",
+    "evidence": "docs/codex/worklogs/20261122-udtt-image-reads.md",
+    "changes": [
+      {
+        "path": "lib/idol/design-review/sol15-runtime/private-images.mjs",
+        "previous": {
+          "bytes": 22888,
+          "sha256": "eb82f3f6ec3b3ff467431d21d709246237c44e7205192386b2a50f00ec2c4a92"
+        },
+        "reviewed": {
+          "bytes": 24197,
+          "sha256": "07daa5999f67dd4cc775eebb9b37df73ff1802d200b2e4174476b0e8ca493244"
+        }
+      },
+      {
+        "path": "lib/idol/udtt-native/host.mjs",
+        "previous": {
+          "bytes": 20870,
+          "sha256": "8792361dfd4da6284ad5aafe0191fd351b8196bc8313a19e5fbefe8f198b2689"
+        },
+        "reviewed": {
+          "bytes": 20933,
+          "sha256": "bcb9913b1d674a4de9e2ad0ee6c747493306b838e4070ec1179bc4962fe998a8"
+        }
+      },
+      {
+        "path": "lib/idol/udtt-native/image-recovery.mjs",
+        "previous": {
+          "bytes": 2272,
+          "sha256": "083fa59d32bda391a40d3f0f2b04f3b5089b863500d6ec4331d65cf737c4e493"
+        },
+        "reviewed": {
+          "bytes": 2203,
+          "sha256": "b436bd51bc1b12349f7897f2f14ceea1654ce06b778cadd3d198e0c31112a3da"
         }
       }
     ]

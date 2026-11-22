@@ -87,6 +87,33 @@ test('destroy does not cancel pending IMG: a same-document remount cannot overla
  pending.dispatchEvent(new Event('load'));assert.equal(next.assignments.length,0,'old completion must not restart a stopped new queue');second.destroy();
  const third=createPrivateImageQueue({references,parking:new Node(),scheduler});const root3=new Node(),later=image(references.entries[1]);root3.append(later);third.attach(root3);assert.equal(later.assignments.length,1,'lease clears only after the old real IMG completion');third.destroy();later.dispatchEvent(new Event('error'));
 });
+test('the artist page resumes its replacement queue after the previous real image settles',async()=>{
+ const references=validatePrivateViewer(fixture());
+ const scheduler={setTimeout,clearTimeout};
+ const create=entry=>{
+  const root=new Node(),image=new Node('img');
+  image.setAttribute('data-private-asset-id',entry.assetId);
+  image.setAttribute('data-private-sha256',entry.sha256);
+  root.append(image);
+  const queue=createPrivateImageQueue({references,parking:new Node(),scheduler,waitForPrevious:true});
+  queue.attach(root);
+  return {image,queue};
+ };
+ const first=create(references.entries[0]);
+ assert.equal(first.image.assignments.length,1);
+ first.queue.destroy();
+ const cancelled=create(references.entries[1]);
+ cancelled.queue.destroy();
+ const next=create(references.entries[2]);
+ assert.equal(next.queue.report().stopped,false);
+ assert.equal(next.image.assignments.length,0);
+ first.image.dispatchEvent(new Event('load'));
+ await Promise.resolve();
+ assert.equal(cancelled.image.assignments.length,0);
+ assert.deepEqual(next.image.assignments,[references.entries[2].readUrl]);
+ next.queue.destroy();
+ next.image.dispatchEvent(new Event('error'));
+});
 const {parseHTML}=process.env.UDTT_DOM_MODULE?await import(process.env.UDTT_DOM_MODULE):{};
 const {createUdttPrivateReview}=await import('../lib/idol/design-review/sol15-runtime/private-host.mjs');
 test('parsed DOM: private host reuses actual pending/loaded nodes through home, members, works and stage detail',{skip:!parseHTML&&'Set UDTT_DOM_MODULE to an existing LinkeDOM ESM entry'},async()=>{

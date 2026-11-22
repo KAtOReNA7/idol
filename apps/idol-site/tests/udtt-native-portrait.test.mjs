@@ -5,6 +5,24 @@ const id='recvxAPQCF66Sl',sha='b80720a772b8000518fad7d71e0b3c5867a8dbef7b4c2219d
 const catalog=()=>({scope:{type:'artist',groupId:'rec28ldfRTiDPs'},groups:[{id:'rec28ldfRTiDPs'}],members:[{id,groupIds:['rec28ldfRTiDPs'],photo:{table:'members',recordId:id,fieldId:'fldTMEUgHF',index:0}}]});
 function env(body=bytes,o={}){const timers=new Map(),calls=[],revoked=[],created=[];let seq=0;const scheduler={location:{origin:'https://same.test'},crypto:webcrypto,performance:{now:()=>0},setTimeout(fn){timers.set(++seq,fn);return seq;},clearTimeout(n){timers.delete(n);},URL:{createObjectURL(blob){created.push(blob);return 'blob:https://same.test/verified';},revokeObjectURL(x){revoked.push(x);}},async fetch(u,opts){calls.push({u,opts});const r=new Response(body,{status:o.status??200,headers:{'content-type':o.mime??'image/jpeg'}});Object.defineProperty(r,'url',{value:o.url??'https://same.test'+url});Object.defineProperty(r,'redirected',{value:!!o.redirected});return r;}};return {scheduler,timers,calls,revoked,created};}
 const prepare=e=>prepareNativePortrait({catalog:catalog(),scheduler:e.scheduler});
+test('artist remount waits for a pending native read and abandons cancelled waiters',async()=>{
+ const e=env();let requests=0,release;
+ e.scheduler.fetch=()=>{requests++;return new Promise((_,reject)=>{release=reject;});};
+ const previous=prepare(e);
+ const controller=new AbortController();
+ const read=signal=>prepareNativePortrait({catalog:catalog(),scheduler:e.scheduler,signal,waitForPrevious:true});
+ const cancelled=read(controller.signal),replacement=read();
+ controller.abort();
+ await assert.rejects(cancelled);
+ assert.equal(requests,1);
+ release(Error('previous read ended'));
+ await assert.rejects(previous);
+ await Promise.resolve();
+ assert.equal(requests,2);
+ release(Error('second read ended'));
+ await assert.rejects(replacement);
+ assert.equal(e.timers.size,0);
+});
 test('exact catalog identity rejects 9 foreign/malformed bindings before network',async()=>{for(const mutate of [c=>c.members.push(c.members[0]),c=>c.members[0].id='foreign',c=>c.scope.groupId='foreign',c=>c.members[0].groupIds=[],c=>c.members[0].photo.index=1,c=>c.members[0].photo.table='ratings',c=>c.members[0].photo.fieldId='wrong',c=>c.members[0].photo.recordId='foreign',c=>c.members[0].photo=null]){const e=env(),c=catalog();mutate(c);await assert.rejects(prepareNativePortrait({catalog:c,scheduler:e.scheduler}));assert.equal(e.calls.length,0);}});
 test('legacy validator unchanged and forged native proof rejected',()=>{const v=fixture();v.entries[0].readUrl=url;assert.throws(()=>validatePrivateViewer(v));assert.throws(()=>withNativePortrait(validatePrivateViewer(fixture()),{}));});
 test('exact GET and immutable v3; only member display switches640x800 and historical source',requiresOriginal,async()=>{const e=env(),before=JSON.stringify(artist),legacy=validatePrivateViewer(fixture()),binding=await prepare(e),refs=withNativePortrait(legacy,binding),h=createPrivateHelpers(refs);assert.deepEqual(e.calls.map(c=>c.u),[url]);assert.equal(e.calls[0].opts.redirect,'error');assert.equal(e.calls[0].opts.credentials,'same-origin');assert.equal(e.created.length,1);for(const row of refs.entries)if(row.assetId!=='udtt-woojung')assert.strictEqual(row,legacy.entries.find(x=>x.assetId===row.assetId));assert.equal(legacy.entries.find(x=>x.assetId==='udtt-woojung').width,200);const display=h.memberPresentation(artist.members.find(m=>m.id===id));assert.deepEqual([display.image.width,display.image.height,display.image.sha256],[640,800,sha]);const html=render({route:{slug:'udtt',page:'member',key:id,query:new URLSearchParams()},helpers:h});assert.match(html,/ud-historical-photo/);assert.doesNotMatch(html,/ud-catalog-photo/);assert.match(html,/非 v3 图片清单/);assert.equal(JSON.stringify(artist),before);const identity={slug:'udtt',groupId:'rec28ldfRTiDPs',entityType:'member',entityId:id,sourceUrl:display.image.sourceUrl};assert.equal(nativePortraitSourceAllowed(binding,identity),true);assert.equal(nativePortraitSourceAllowed(binding,{...identity,entityId:'foreign'}),false);assert.equal(nativePortraitSourceAllowed(binding,{...identity,sourceUrl:'https://evil.test'}),false);binding.destroy();binding.destroy();assert.equal(e.revoked.length,1);assert.throws(()=>withNativePortrait(legacy,binding));});

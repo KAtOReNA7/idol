@@ -145,11 +145,37 @@ export async function createEditorialAssetService(input: AssetServiceConfig) {
     finally {
         inFlight--;
     } }
+    const waitingReads = new Map<symbol, number>();
+    async function limitedRead<T>(request: Request, fn: () => Promise<T>): Promise<T> {
+        const expires = Date.now() + timeoutMs;
+        const ticket = Symbol();
+        try {
+            for (;;) {
+                const now = Date.now();
+                for (const [key, end] of waitingReads) if (end <= now) waitingReads.delete(key);
+                if (request.signal.aborted || now >= expires) fail('ASSET_BUSY', 503);
+                const first = waitingReads.keys().next().value;
+                if (inFlight < maxConcurrent && (first === undefined || first === ticket)) return limited(fn);
+                if (!waitingReads.has(ticket)) {
+                    if (waitingReads.size >= Math.max(maxConcurrent, registry.entries.length)) fail('ASSET_BUSY', 503);
+                    waitingReads.set(ticket, expires);
+                }
+                // Each Worker request waits on its own timer. No request awaits another request's I/O.
+                await new Promise<void>(resolve => setTimeout(resolve, Math.min(40, expires - now)));
+            }
+        } finally {
+            waitingReads.delete(ticket);
+        }
+    }
     async function scope(owner: string) { const c = await deadline(input.readControl(owner, registry.scope), timeoutMs); if (!c || c.ownerId !== owner || c.snapshotOwnerId !== owner)
         fail('OWNER_ONLY', 403); if (c.mode !== 'native' || c.snapshotId !== registry.scope.snapshotId || c.epoch !== registry.scope.epoch)
         fail('SCOPE_CHANGED', 409); }
-    async function auth() { const owner = await deadline(input.requireOwner(), timeoutMs); if (typeof owner !== 'string' || !owner)
-        fail('AUTH_REQUIRED', 401); await scope(owner); return owner; }
+    async function identifyOwner() {
+        const owner = await deadline(input.requireOwner(), timeoutMs);
+        if (typeof owner !== 'string' || !owner) fail('AUTH_REQUIRED', 401);
+        return owner;
+    }
+    async function auth() { const owner = await identifyOwner(); await scope(owner); return owner; }
     async function exactTarget(entry: AssetEntry) { const target = await deadline(input.resolveTarget(entry.target, registry.scope), timeoutMs); if (!target || canonical(target) !== canonical(entry.target))
         fail('TARGET_CHANGED', 409); }
     function enabled(operation: keyof AssetPolicy) { if (!policy[operation])
@@ -157,7 +183,7 @@ export async function createEditorialAssetService(input: AssetServiceConfig) {
     function selected(request: Request) { const q = parseQuery(request); if (q.manifestHash !== budget.manifestHash)
         fail('MANIFEST_CHANGED', 409); const entries = registry.entries.filter(e => e.assetId === q.assetId && e.version === q.version); if (entries.length !== 1)
         fail('ASSET_NOT_ADMITTED', 404); return entries[0]; }
-    async function resolve(request: Request, operation: keyof AssetPolicy) { const owner = await auth(); enabled(operation); const entry = selected(request); await exactTarget(entry); await scope(owner); return { owner, entry, key: await objectKey(owner, registry.scope, entry.original.sha256) }; }
+    async function resolve(request: Request, operation: keyof AssetPolicy, owner: string) { await scope(owner); enabled(operation); const entry = selected(request); await exactTarget(entry); await scope(owner); return { owner, entry, key: await objectKey(owner, registry.scope, entry.original.sha256) }; }
     async function inspect(entry: AssetEntry, key: string): Promise<{
         state: AssetState;
         bytes?: Uint8Array;
@@ -304,10 +330,11 @@ export async function createEditorialAssetService(input: AssetServiceConfig) {
         });
     }
     async function viewer(request: Request) {
-        return limited(async () => {
-            exactRequest(request, 'GET', '/api/manage/editorial-assets/viewer');
-            if ([...new URL(request.url).searchParams.keys()].length) fail('INVALID_ASSET_REQUEST', 400);
-            const owner = await auth(); enabled('read');
+        exactRequest(request, 'GET', '/api/manage/editorial-assets/viewer');
+        if ([...new URL(request.url).searchParams.keys()].length) fail('INVALID_ASSET_REQUEST', 400);
+        const owner = await identifyOwner();
+        return limitedRead(request, async () => {
+            await scope(owner); enabled('read');
             const latest = [...new Map(registry.entries.map(entry => [entry.assetId, entry])).values()];
             if (latest.length !== 11 || !exactEditorialPilotSlots(latest.map(entry => entry.assetId))) fail('ASSET_NOT_ADMITTED', 404);
             // Admission is rechecked before each later byte read too. No BUCKET or request body here.
@@ -320,13 +347,29 @@ export async function createEditorialAssetService(input: AssetServiceConfig) {
             })) };
         });
     }
-    async function read(request: Request) { return limited(async () => { exactRequest(request, 'GET', '/api/editorial-assets'); const { owner, entry, key } = await resolve(request, 'read'), object = await inspect(entry, key); await exactTarget(entry); await scope(owner); if (object.state !== 'verified')
-        fail('ASSET_' + object.state.toUpperCase(), object.state === 'missing' ? 404 : object.state === 'unknown' ? 503 : 409); return new Response(new Uint8Array(object.bytes!).buffer, { headers: { ...editorialPrivateHeaders, 'Content-Type': entry.original.mime, 'Content-Length': String(entry.original.byteLength) } }); }); }
-    async function status(request: Request) { return limited(async () => { exactRequest(request, 'GET', '/api/manage/editorial-assets'); const { owner, entry, key } = await resolve(request, 'read'), object = await inspect(entry, key); await exactTarget(entry); await scope(owner); return result(entry, object.state); }); }
+    async function read(request: Request, publicRead?: (request: Request) => Promise<Response>) {
+        exactRequest(request, 'GET', '/api/editorial-assets');
+        let owner: string;
+        try {
+            owner = await identifyOwner();
+        } catch (error) {
+            if (publicRead && error instanceof AssetError && (error.code === 'AUTH_REQUIRED' || error.code === 'OWNER_ONLY')) return publicRead(request);
+            throw error;
+        }
+        return limitedRead(request, async () => {
+            const {entry, key} = await resolve(request, 'read', owner);
+            const object = await inspect(entry, key);
+            await exactTarget(entry);
+            await scope(owner);
+            if (object.state !== 'verified') fail('ASSET_' + object.state.toUpperCase(), object.state === 'missing' ? 404 : object.state === 'unknown' ? 503 : 409);
+            return new Response(new Uint8Array(object.bytes!).buffer, {headers: {...editorialPrivateHeaders, 'Content-Type':entry.original.mime, 'Content-Length':String(entry.original.byteLength)}});
+        });
+    }
+    async function status(request: Request) { return limited(async () => { exactRequest(request, 'GET', '/api/manage/editorial-assets'); const { owner, entry, key } = await resolve(request, 'read', await identifyOwner()), object = await inspect(entry, key); await exactTarget(entry); await scope(owner); return result(entry, object.state); }); }
     async function upload(request: Request) {
         return limited(async () => {
             exactRequest(request, 'PUT', '/api/manage/editorial-assets');
-            const { owner, entry, key } = await resolve(request, 'write');
+            const { owner, entry, key } = await resolve(request, 'write', await identifyOwner());
             sameOrigin(request);
             if (request.headers.get('content-type') !== 'application/octet-stream')
                 fail('INVALID_CONTENT_TYPE', 400);

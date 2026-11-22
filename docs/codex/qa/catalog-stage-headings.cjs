@@ -65,13 +65,17 @@ function checkPage(api, work, data, mode, stage) {
   assert.equal(headings[0].querySelector('h1').text, work.song || work.name);
   assert.equal(page.querySelector(`#${mode}-tab`).getAttribute('aria-selected'), 'true');
   const caption = headings[0].querySelector('p').text;
+  const sing = !baseline && work.id === 'rec28ldfRTrGEy' && work.groupIds.includes('rec28ldfRTiDh1');
   const date = mode === 'stage' ? stage?.publishedDate : work.releaseDate;
   assert.deepEqual(caption.match(/\d{4}-\d{2}-\d{2}/g) ?? [], date ? [date] : [], 'date of the selected video');
   if (mode === 'mv') {
-    for (const value of [work.videoType, work.version].filter(Boolean)) assert.ok(caption.includes(value), value);
+    const kind = sing && work.url === 'https://www.youtube.com/watch?v=BbcxmtNaesk'
+      ? 'Performance Video · 表演版 MV' : work.videoType;
+    for (const value of [kind, work.version].filter(Boolean)) assert.ok(caption.includes(value), value);
   } else if (stage) {
     const stageTag = page.querySelectorAll('.work-aside .tags > span')[1].text;
     assert.ok(stageTag && caption.startsWith(stageTag), 'selected stage type agrees with the details');
+    if (sing && stage.videoId === 'j1a4xi__JgE') assert.equal(caption, 'Live Clip · 视频发布于 2024-04-22');
     if (stage.publishedDate) assert.ok(caption.includes('视频发布于 ' + stage.publishedDate));
     const fallback = stage.sameSongFallback;
     if (fallback) {
@@ -87,8 +91,8 @@ function checkPage(api, work, data, mode, stage) {
     assert.equal(caption, status);
     assert.equal(page.querySelector('.stage-empty h2').text, status);
   }
-  if (sampleCaptions.has(work.id)) {
-    if (mode === 'stage') assert.equal(caption, sampleCaptions.get(work.id));
+  if (sampleCaptions.has(work.id) || sing) {
+    if (mode === 'stage' && sampleCaptions.has(work.id)) assert.equal(caption, sampleCaptions.get(work.id));
     samples[work.id] ??= {song: work.song};
     samples[work.id][mode] = caption;
   }

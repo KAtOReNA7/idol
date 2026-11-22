@@ -20,6 +20,17 @@ export function followDirectoryLink(event: MouseEvent<HTMLAnchorElement>, naviga
 export function ArtistDirectorySearch({className, basePath, route, navigate}: Props) {
   const clearHref = artistRouteUrl({...route, search: ''}, basePath);
   const filters = new URL(clearHref, 'https://site.invalid').searchParams;
+
+  function preserveEarlyInput(field: HTMLInputElement | null) {
+    // Hydration preserves the live value. A later controlled render reapplies the URL query.
+    if (!field || field.value === field.defaultValue || field.defaultValue !== route.search) return;
+    const location = field.ownerDocument.location;
+    if (!location || location.pathname !== basePath) return;
+    if (artistRouteUrl(artistRoute(location.href), basePath) === artistRouteUrl(route, basePath)) {
+      navigate({search: field.value}, true);
+    }
+  }
+
   return <form className={className} action={basePath} method="get" role="search" aria-label="搜索本团作品"
     onSubmit={event => {
       event.preventDefault();
@@ -27,7 +38,7 @@ export function ArtistDirectorySearch({className, basePath, route, navigate}: Pr
       navigate({search: field.value}, true);
     }}>
     {Array.from(filters, ([name, value]) => <input key={name} type="hidden" name={name} value={value}/>)}
-    <input name="q" value={route.search} maxLength={200} enterKeyHint="search" aria-label="搜索本团作品"
+    <input ref={preserveEarlyInput} name="q" value={route.search} maxLength={200} enterKeyHint="search" aria-label="搜索本团作品"
       placeholder="搜索歌曲或版本" onChange={event => navigate({search: event.currentTarget.value}, true)}/>
     {route.search && <a href={clearHref} onClick={event => followDirectoryLink(event, () => {
       event.currentTarget.closest('form')?.querySelector<HTMLInputElement>('input[name="q"]')?.focus();

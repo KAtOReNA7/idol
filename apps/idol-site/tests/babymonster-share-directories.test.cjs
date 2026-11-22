@@ -194,6 +194,51 @@ test('an attached directory search filters while typing or submitting and return
   assert.equal(focused,1);
 });
 
+test('shared directory search adopts edits made before hydration and respects a later history entry', () => {
+  const {Children} = require('react');
+  const load = require('./helpers/public-artist-loader.cjs');
+  const {ArtistDirectorySearch} = load('components/artist-directory-search.tsx');
+  const {artistRoute, artistRouteUrl} = load('lib/idol/artist-preview.ts');
+
+  const cases = [
+    ['babymonster', 'DRIP', 'SHEESH', 'queue', 'rewatch', 'unrated'],
+    ['kissoflife', 'Sticky', 'Midas', 'format', 'stage', 'mv'],
+  ];
+  for (const [slug, saved, typed, filter, selected, other] of cases) {
+    const basePath = '/artists/' + slug;
+    const original = new URL(`${basePath}?q=${saved}&${filter}=${selected}&section=works`, 'https://site.example');
+    const route = artistRoute(original.href);
+    function mount(value, address = original) {
+      const doc = {location: new URL(address)}, calls = [];
+      const form = ArtistDirectorySearch({className:'directory-search', basePath, route, navigate(patch, replace) {
+        calls.push({patch, replace});
+        doc.location = new URL(artistRouteUrl({...route, ...patch}, basePath), doc.location);
+      }});
+      const field = Children.toArray(form.props.children).find(child => child.props.name === 'q');
+      const liveField = {value, defaultValue:saved, ownerDocument:doc};
+      field.props.ref(liveField);
+      return {field, liveField, doc, calls};
+    }
+
+    for (const edit of [typed, '']) {
+      const {field, liveField, doc, calls} = mount(edit);
+      assert.deepEqual(calls, [{patch:{search:edit}, replace:true}]);
+      assert.deepEqual(Object.fromEntries(doc.location.searchParams), {
+        section:'works', ...(edit ? {q:edit} : {}), [filter]:selected,
+      });
+      field.props.ref(liveField);
+      field.props.ref(null);
+      assert.equal(calls.length, 1, 'reattaching the same input preserves the adopted history entry');
+    }
+    assert.deepEqual(mount(saved).calls, [], 'untouched initial value');
+    const next = new URL(original);
+    next.searchParams.set(filter, other);
+    assert.deepEqual(mount(typed, next).calls, [], 'back or forward navigation with a different filter');
+    next.pathname='/artists/ive';
+    assert.deepEqual(mount(typed, next).calls, [], 'a different page owns its own address');
+  }
+});
+
 test('BABYMONSTER public fields and server event props exclude private records, unpublished events and research notes',async()=>{
   assert.deepEqual(Object.keys(content.directory).sort(),['members','works']);
   for(const member of content.directory.members) assert.deepEqual(Object.keys(member).sort(),['id','stageName','cnName','status'].sort());

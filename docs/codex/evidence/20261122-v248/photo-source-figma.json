@@ -1,0 +1,898 @@
+{
+  "version": "v248",
+  "checkedOn": "2026-11-22",
+  "issue": "飞书 #8 · 裁去重复图注并保留照片出处",
+  "figmaFile": "zeLNExz4TbpWRW3uiahef7",
+  "scope": "八团十处局部设计。正式服各团路由覆盖与浏览器结果由 v248 的发布记录分别统计。",
+  "summary": {
+    "groups": 8,
+    "scenes": 10,
+    "variants": 20,
+    "screensReadBack": 40,
+    "highFidelityDesignContextsWithScreenshots": 20,
+    "previewedImagePositions": 72,
+    "closedStatesWithoutSourceText": 20,
+    "expandedStatesWithPublisher": 20,
+    "verifiedPublisherPages": 10,
+    "originalImageEntryPoints": 32,
+    "visibleOriginalButtons": 24,
+    "clickableRosterCards": 40,
+    "memberProfilesInImplementationScope": 26,
+    "representativeMemberProfileDesigns": 5
+  },
+  "sourceCheckMethod": "直接 GET 发布页，记录最终网址、状态和 HTML 标题。",
+  "figmaCheckMethod": "从主组件与实例核对两种状态、开关点击目标、照片、原图预览或成员链接以及可见边界，逐一查看 1440 和 390 px 收起与展开的 PNG。每个场景另取手机收起和桌面展开的实现上下文与截图。",
+  "groups": [
+    {
+      "group": "rescene",
+      "sectionLink": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1603-1109",
+      "scenes": [
+        {
+          "route": "home",
+          "example": "首页团照",
+          "note": "THE MUZE 艺人页的五人宣传照，拍摄日期未注明。",
+          "approvedDesktopAndMobile": [
+            "1400:1208",
+            "1400:1213"
+          ],
+          "sourceImageNodes": [
+            "1400:1210"
+          ],
+          "variants": {
+            "set": "1603:1110",
+            "closed": "1603:1111",
+            "open": "1603:1116",
+            "bidirectional": true,
+            "triggerHeight": 44
+          },
+          "originalPhotoOverlay": "1605:1508",
+          "clickablePhotos": 4,
+          "independentOriginalButtons": 0,
+          "source": {
+            "visibleLabel": "照片出处",
+            "expandedText": "THE MUZE 官方团体宣传照。拍摄日期未注明。",
+            "linkLabel": "THE MUZE 艺人资料 ↗",
+            "url": "https://themuze.kr/rescene",
+            "finalUrl": "https://themuze.kr/rescene",
+            "status": 200,
+            "pageTitle": "RESCENE"
+          },
+          "screens": [
+            {
+              "node": "1603:1126",
+              "width": 1440,
+              "height": 853,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                427
+              ]
+            },
+            {
+              "node": "1603:1137",
+              "width": 390,
+              "height": 404,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                404
+              ],
+              "designContextWithScreenshot": true
+            },
+            {
+              "node": "1603:1148",
+              "width": 1440,
+              "height": 914,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                457
+              ],
+              "designContextWithScreenshot": true
+            },
+            {
+              "node": "1603:1162",
+              "width": 390,
+              "height": 465,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                465
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "oddyouth",
+      "sectionLink": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1604-10420",
+      "scenes": [
+        {
+          "route": "profile",
+          "example": "萨默的成员页",
+          "note": "TOP MEDIA 具名艺人照，拍摄日期未注明。",
+          "affectedMemberProfiles": 5,
+          "approvedDesktopAndMobile": [
+            "1022:1102",
+            "1022:1103"
+          ],
+          "sourceImageNodes": [
+            "1025:1758"
+          ],
+          "variants": {
+            "set": "1604:10421",
+            "closed": "1604:10422",
+            "open": "1604:10427",
+            "bidirectional": true,
+            "triggerHeight": 44
+          },
+          "originalPhotoOverlay": "1605:1560",
+          "clickablePhotos": 4,
+          "independentOriginalButtons": 4,
+          "source": {
+            "visibleLabel": "照片出处",
+            "expandedText": "TOP MEDIA 官网成员资料照，拍摄日期未注明。",
+            "linkLabel": "TOP MEDIA 成员资料 ↗",
+            "url": "https://www.itopgroup.com/bbs/page.php?hid=ODDYOUTH_profile",
+            "finalUrl": "https://www.itopgroup.com/bbs/page.php?hid=ODDYOUTH_profile",
+            "status": 200,
+            "pageTitle": "> TOP MEDIA"
+          },
+          "screens": [
+            {
+              "node": "1604:10437",
+              "width": 1440,
+              "height": 490,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                245
+              ],
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:10449",
+              "width": 390,
+              "height": 592,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                592
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:10461",
+              "width": 1440,
+              "height": 490,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                245
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:10476",
+              "width": 390,
+              "height": 653,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                653
+              ],
+              "originalButtonHeight": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "geenius",
+      "sectionLink": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1604-12251",
+      "scenes": [
+        {
+          "route": "profile",
+          "example": "芮英的成员页",
+          "note": "HOMe 艺人页的具名肖像，拍摄时期未注明。",
+          "affectedMemberProfiles": 5,
+          "approvedDesktopAndMobile": [
+            "1055:1443",
+            "1055:6322"
+          ],
+          "sourceImageNodes": [
+            "1065:1614"
+          ],
+          "variants": {
+            "set": "1604:12252",
+            "closed": "1604:12253",
+            "open": "1604:12258",
+            "bidirectional": true,
+            "triggerHeight": 44
+          },
+          "originalPhotoOverlay": "1605:3363",
+          "clickablePhotos": 4,
+          "independentOriginalButtons": 4,
+          "source": {
+            "visibleLabel": "照片出处",
+            "expandedText": "HOMe 官网艺人页刊登的芮英肖像，拍摄时期未注明。",
+            "linkLabel": "HOMe 艺人资料 ↗",
+            "url": "https://www.geeniushome.com/geenius",
+            "finalUrl": "https://www.geeniushome.com/geenius",
+            "status": 200,
+            "pageTitle": "GEENIUS, | 지니어스 Geenius"
+          },
+          "screens": [
+            {
+              "node": "1604:12268",
+              "width": 1440,
+              "height": 490,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                245
+              ],
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:12280",
+              "width": 390,
+              "height": 596,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                596
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:12292",
+              "width": 1440,
+              "height": 490,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                245
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:12307",
+              "width": 390,
+              "height": 657,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                657
+              ],
+              "originalButtonHeight": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "tracer",
+      "sectionLink": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1604-17984",
+      "scenes": [
+        {
+          "route": "profile",
+          "example": "希真的成员页",
+          "note": "GLEAMMEDIA 的历史肖像与介绍卡，首显保留「官网历史资料照」。",
+          "affectedMemberProfiles": 4,
+          "approvedDesktopAndMobile": [
+            "1080:23322",
+            "1081:5803"
+          ],
+          "sourceImageNodes": [
+            "1080:23463"
+          ],
+          "variants": {
+            "set": "1604:17985",
+            "closed": "1604:17986",
+            "open": "1604:17991",
+            "bidirectional": true,
+            "triggerHeight": 44
+          },
+          "originalPhotoOverlay": "1605:9068",
+          "clickablePhotos": 4,
+          "independentOriginalButtons": 4,
+          "source": {
+            "visibleLabel": "照片出处",
+            "expandedText": "GLEAMMEDIA 艺人页刊登的历史肖像与成员介绍卡。拍摄时期未注明。",
+            "linkLabel": "GLEAMMEDIA 艺人资料 ↗",
+            "url": "https://www.gleammedia.co.kr/artist",
+            "finalUrl": "https://www.gleammedia.co.kr/artist",
+            "status": 200,
+            "pageTitle": "ARTIST | GleamMediaGroup"
+          },
+          "screens": [
+            {
+              "node": "1604:18001",
+              "width": 1440,
+              "height": 490,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                245
+              ],
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:18013",
+              "width": 390,
+              "height": 596,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                596
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:18025",
+              "width": 1440,
+              "height": 490,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                245
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:18040",
+              "width": 390,
+              "height": 674,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                674
+              ],
+              "originalButtonHeight": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "hitgs",
+      "sectionLink": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1604-18248",
+      "scenes": [
+        {
+          "route": "profile",
+          "example": "书赈的成员页",
+          "note": "Kprofiles 具名转载的成员照。与成员资料所用的维基百科条目分开。",
+          "affectedMemberProfiles": 5,
+          "approvedDesktopAndMobile": [
+            "1148:1260",
+            "1151:1634"
+          ],
+          "sourceImageNodes": [
+            "1148:1306"
+          ],
+          "variants": {
+            "set": "1604:18249",
+            "closed": "1604:18250",
+            "open": "1604:18255",
+            "bidirectional": true,
+            "triggerHeight": 44
+          },
+          "originalPhotoOverlay": "1605:1328",
+          "clickablePhotos": 4,
+          "independentOriginalButtons": 4,
+          "source": {
+            "visibleLabel": "照片出处",
+            "expandedText": "Kprofiles 具名转载的 Seojin 肖像，拍摄日期未注明。",
+            "linkLabel": "Kprofiles 成员页 ↗",
+            "url": "https://kprofiles.com/project-h-2025-members-profile/",
+            "finalUrl": "https://kprofiles.com/project-h-2025-members-profile/",
+            "status": 200,
+            "pageTitle": "HITGS Members Profile (Updated!) - Kpop Profiles"
+          },
+          "screens": [
+            {
+              "node": "1604:18267",
+              "width": 1440,
+              "height": 490,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                245
+              ],
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:18279",
+              "width": 390,
+              "height": 595,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                595
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:18291",
+              "width": 1440,
+              "height": 490,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                245
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:18308",
+              "width": 390,
+              "height": 656,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                656
+              ],
+              "originalButtonHeight": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "atheart",
+      "sectionLink": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1604-18419",
+      "scenes": [
+        {
+          "route": "profile",
+          "example": "米奇的成员页",
+          "note": "日本官网具名肖像。成员的出生日期仍在基本资料中。",
+          "affectedMemberProfiles": 7,
+          "approvedDesktopAndMobile": [
+            "1169:1339",
+            "1169:3999"
+          ],
+          "sourceImageNodes": [
+            "1169:1431"
+          ],
+          "variants": {
+            "set": "1604:18420",
+            "closed": "1604:18421",
+            "open": "1604:18426",
+            "bidirectional": true,
+            "triggerHeight": 44
+          },
+          "originalPhotoOverlay": "1605:1465",
+          "clickablePhotos": 4,
+          "independentOriginalButtons": 4,
+          "source": {
+            "visibleLabel": "照片出处",
+            "expandedText": "AtHeart 日本官网成员资料中的 Michi 肖像。拍摄日期未注明。",
+            "linkLabel": "AtHeart 日本官网 ↗",
+            "url": "https://atheart.jp/contents/menu/176621",
+            "finalUrl": "https://atheart.jp/contents/menu/176621",
+            "status": 200,
+            "pageTitle": "AtHeart JAPAN OFFICIAL SITE"
+          },
+          "screens": [
+            {
+              "node": "1604:18436",
+              "width": 1440,
+              "height": 490,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                245
+              ],
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:18448",
+              "width": 390,
+              "height": 592,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                592
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:18460",
+              "width": 1440,
+              "height": 490,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                245
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:18475",
+              "width": 390,
+              "height": 670,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                670
+              ],
+              "originalButtonHeight": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "adya",
+      "sectionLink": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1604-1563",
+      "scenes": [
+        {
+          "route": "home",
+          "example": "首页团照",
+          "note": "CJ ENM Japan 在 PR TIMES 的 2024 年 12 月 23 日发稿。图中保留五人，发稿日期和拍摄日期分开。",
+          "approvedDesktopAndMobile": [
+            "1442:1553",
+            "1442:1561"
+          ],
+          "sourceImageNodes": [
+            "1442:1556"
+          ],
+          "variants": {
+            "set": "1604:1564",
+            "closed": "1604:1565",
+            "open": "1604:1570",
+            "bidirectional": true,
+            "triggerHeight": 44
+          },
+          "originalPhotoOverlay": "1605:9587",
+          "clickablePhotos": 4,
+          "independentOriginalButtons": 0,
+          "source": {
+            "visibleLabel": "照片出处",
+            "expandedText": "CJ ENM Japan 于 2024 年 12 月 23 日发布。拍摄日期未注明。",
+            "linkLabel": "CJ ENM Japan 发布原文 ↗",
+            "url": "https://prtimes.jp/main/html/rd/p/000001548.000003711.html",
+            "finalUrl": "https://prtimes.jp/main/html/rd/p/000001548.000003711.html",
+            "status": 200,
+            "pageTitle": "ADYA JAPAN OFFICIAL FANCLUB【ADAY JAPAN】日本公式ファンクラブ本日12月23日オープン！ | CJ ENM Japan 株式会社のプレスリリース"
+          },
+          "screens": [
+            {
+              "node": "1604:1580",
+              "width": 1440,
+              "height": 859,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                430
+              ]
+            },
+            {
+              "node": "1604:1591",
+              "width": 390,
+              "height": 408,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                408
+              ],
+              "designContextWithScreenshot": true
+            },
+            {
+              "node": "1604:1602",
+              "width": 1440,
+              "height": 937,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                469
+              ],
+              "designContextWithScreenshot": true
+            },
+            {
+              "node": "1604:1616",
+              "width": 390,
+              "height": 486,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                486
+              ]
+            }
+          ]
+        },
+        {
+          "route": "members",
+          "example": "成员名录",
+          "note": "Starting House 提供五张出道宣传照，CBS NoCut News 具名采访于 2023 年 5 月 9 日刊出，Daum 收录。",
+          "approvedDesktopAndMobile": [
+            "1039:1095",
+            "1039:4489"
+          ],
+          "sourceImageNodes": [
+            "1039:1212",
+            "1039:1238",
+            "1039:1264",
+            "1039:1290",
+            "1039:1316"
+          ],
+          "variants": {
+            "set": "1604:1630",
+            "closed": "1604:1631",
+            "open": "1604:1636",
+            "bidirectional": true,
+            "triggerHeight": 44
+          },
+          "linkedMemberCards": 20,
+          "source": {
+            "visibleLabel": "2023 年成员照片来源",
+            "expandedText": "Starting House 提供的五人出道宣传照，随 2023 年 5 月 9 日具名采访发布。",
+            "linkLabel": "查看具名采访 ↗",
+            "url": "https://v.daum.net/v/KURjomI9oP",
+            "finalUrl": "https://v.daum.net/v/KURjomI9oP",
+            "status": 200,
+            "pageTitle": "[EN:터뷰]에이디야가 에이디야를 소개합니다"
+          },
+          "screens": [
+            {
+              "node": "1604:1646",
+              "width": 1440,
+              "height": 552,
+              "state": "收起",
+              "photoCount": 5,
+              "screenshotSize": [
+                720,
+                276
+              ]
+            },
+            {
+              "node": "1604:1672",
+              "width": 390,
+              "height": 956,
+              "state": "收起",
+              "photoCount": 5,
+              "screenshotSize": [
+                294,
+                720
+              ],
+              "designContextWithScreenshot": true
+            },
+            {
+              "node": "1604:1699",
+              "width": 1440,
+              "height": 630,
+              "state": "展开",
+              "photoCount": 5,
+              "screenshotSize": [
+                720,
+                315
+              ],
+              "designContextWithScreenshot": true
+            },
+            {
+              "node": "1604:1728",
+              "width": 390,
+              "height": 1034,
+              "state": "展开",
+              "photoCount": 5,
+              "screenshotSize": [
+                272,
+                720
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "witchx",
+      "sectionLink": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1604-10208",
+      "scenes": [
+        {
+          "route": "home",
+          "example": "首页团照",
+          "note": "Bugs 的艺人资料合照，拍摄时期未注明。",
+          "approvedDesktopAndMobile": [
+            "1427:9556",
+            "1427:9732"
+          ],
+          "sourceImageNodes": [
+            "1427:9571"
+          ],
+          "variants": {
+            "set": "1604:10209",
+            "closed": "1604:10210",
+            "open": "1604:10215",
+            "bidirectional": true,
+            "triggerHeight": 44
+          },
+          "originalPhotoOverlay": "1605:18110",
+          "clickablePhotos": 4,
+          "independentOriginalButtons": 4,
+          "source": {
+            "visibleLabel": "照片出处",
+            "expandedText": "Bugs 艺人资料页的团体合照，拍摄时期未注明。",
+            "linkLabel": "Bugs 艺人资料 ↗",
+            "url": "https://music.bugs.co.kr/artist/20222498",
+            "finalUrl": "https://music.bugs.co.kr/artist/20222498",
+            "status": 200,
+            "pageTitle": "W!TCHX (위치스) - 벅스"
+          },
+          "screens": [
+            {
+              "node": "1604:10225",
+              "width": 1440,
+              "height": 826,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                413
+              ],
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:10236",
+              "width": 390,
+              "height": 578,
+              "state": "收起",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                578
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:10247",
+              "width": 1440,
+              "height": 887,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                720,
+                444
+              ],
+              "designContextWithScreenshot": true,
+              "originalButtonHeight": 44
+            },
+            {
+              "node": "1604:10261",
+              "width": 390,
+              "height": 639,
+              "state": "展开",
+              "photoCount": 1,
+              "screenshotSize": [
+                390,
+                639
+              ],
+              "originalButtonHeight": 44
+            }
+          ]
+        },
+        {
+          "route": "members",
+          "example": "成员名录与官网档案卡",
+          "note": "IN MEDIA A&D 的五张具名档案卡，名录通向成员页，可查看完整原卡。",
+          "approvedDesktopAndMobile": [
+            "1427:9645",
+            "1427:9825"
+          ],
+          "sourceImageNodes": [
+            "1330:10287",
+            "1330:10289",
+            "1330:10291",
+            "1330:10295",
+            "1330:10293"
+          ],
+          "variants": {
+            "set": "1604:10275",
+            "closed": "1604:10276",
+            "open": "1604:10281",
+            "bidirectional": true,
+            "triggerHeight": 44
+          },
+          "linkedMemberCards": 20,
+          "source": {
+            "visibleLabel": "成员照片来源",
+            "expandedText": "成员人像截自 IN MEDIA A&D 官网具名档案卡，可在成员页查看完整原卡。",
+            "linkLabel": "IN MEDIA A&D 艺人页 ↗",
+            "url": "https://kpopmedia.co.kr/#artists",
+            "finalUrl": "https://kpopmedia.co.kr/#artists",
+            "status": 200,
+            "pageTitle": "K-POP MEDIA WORLD IN MEDIA A&D | K-POP Media World"
+          },
+          "screens": [
+            {
+              "node": "1604:10291",
+              "width": 1440,
+              "height": 548,
+              "state": "收起",
+              "photoCount": 5,
+              "screenshotSize": [
+                720,
+                274
+              ]
+            },
+            {
+              "node": "1604:10317",
+              "width": 390,
+              "height": 2689,
+              "state": "收起",
+              "photoCount": 5,
+              "screenshotSize": [
+                160,
+                1100
+              ],
+              "designContextWithScreenshot": true
+            },
+            {
+              "node": "1604:10342",
+              "width": 1440,
+              "height": 626,
+              "state": "展开",
+              "photoCount": 5,
+              "screenshotSize": [
+                720,
+                313
+              ],
+              "designContextWithScreenshot": true
+            },
+            {
+              "node": "1604:10371",
+              "width": 390,
+              "height": 2767,
+              "state": "展开",
+              "photoCount": 5,
+              "screenshotSize": [
+                156,
+                1100
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

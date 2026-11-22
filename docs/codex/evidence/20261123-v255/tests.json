@@ -1,0 +1,457 @@
+{
+  "applicationCommit": "a377e1c35b95327a272f8f5da09f4b869be881b2",
+  "baselineApplicationCommit": "fbb29ab438216ed537e8d5ebc100548cc8e0863c",
+  "baselineValidationCommit": "0674a15922a5c86bf4cdef840f8f88ad0feba95e",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4374,"pass": 4257,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4386,"pass": 4269,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1429,"pass": 1429,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "BABYMONSTER cold and hydrated rosters retain all seven official names, dated portraits, profile IDs and RAMI’s hiatus",
+        "BABYMONSTER linked event click sends the original event and target to the host; a modified or pre-hydration click keeps the native destination",
+        "BABYMONSTER private filters require owner access and live data, preserve zero and hide private text from visitors",
+        "BABYMONSTER public fields and server event props exclude private records, unpublished events and research notes",
+        "BABYMONSTER retains public entries on a catalog failure, provides a retry for each failure, and keeps the home group photo on the overview",
+        "BABYMONSTER search links retain the exact text, selected work and stage, with a usable clear or reset state",
+        "BABYMONSTER shared timeline preserves eleven chronological dates and all eighteen member or work destinations before hydration",
+        "BABYMONSTER shared works list has nineteen exact posters and one MV destination per work plus sixteen separate stage links",
+        "the KILL MY DOUBT document has the published tracks, exact MV and return links, and complete original",
+        "the existing ITZY directory card opens the album locally and the other covers retain their destinations",
+        "woo!ah! retains its six debut members and each member’s own original MV still",
+        "woo!ah! shows the full contemporary roster on its original MV and preserves the earlier work images"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4374,"pass": 4257,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4386,"pass": 4269,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1429,"pass": 1429,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "BABYMONSTER cold and hydrated rosters retain all seven official names, dated portraits, profile IDs and RAMI’s hiatus",
+        "BABYMONSTER linked event click sends the original event and target to the host; a modified or pre-hydration click keeps the native destination",
+        "BABYMONSTER private filters require owner access and live data, preserve zero and hide private text from visitors",
+        "BABYMONSTER public fields and server event props exclude private records, unpublished events and research notes",
+        "BABYMONSTER retains public entries on a catalog failure, provides a retry for each failure, and keeps the home group photo on the overview",
+        "BABYMONSTER search links retain the exact text, selected work and stage, with a usable clear or reset state",
+        "BABYMONSTER shared timeline preserves eleven chronological dates and all eighteen member or work destinations before hydration",
+        "BABYMONSTER shared works list has nineteen exact posters and one MV destination per work plus sixteen separate stage links",
+        "the KILL MY DOUBT document has the published tracks, exact MV and return links, and complete original",
+        "the existing ITZY directory card opens the album locally and the other covers retain their destinations",
+        "woo!ah! retains its six debut members and each member’s own original MV still",
+        "woo!ah! shows the full contemporary roster on its original MV and preserves the earlier work images"
+      ],
+      "removedTests": []
+    }
+  },
+  "validationCommit": "f691958a330617eb89123c9522c5d926d55cdf3f",
+  "failureInventory": "full-suite-failures.csv",
+  "compiledFeatureDelivery": {
+    "checkedBuilds": ["Windows","WSL"],
+    "method": "Inspected the compiled route table and JS identities, decoded built images, checked the new WOFF file headers, and compared the measured format, dimensions and byte count of each built asset with the same file in the frozen application. WOOAH sizes were also checked against its named release record.",
+    "itzyAlbumRoute": "/artists/itzy/releases/kill-my-doubt",
+    "itzyOriginalMvs": {"BET ON ME": "recvxyOz5XJvBE","CAKE": "recvxyOz5X64xs","None of My Business": "recvxyOz5Xk9CH"},
+    "babymonsterEntry": {
+      "path": "/artists/babymonster",
+      "sections": ["members","works","updates"],
+      "projectedMembers": 7,
+      "projectedWorks": 19,
+      "readyEvents": 11
+    },
+    "wooahOriginalMvRoute": "/?view=works&work=recvxyH5pzlG0W&video=mv",
+    "wooahVideoId": "X2FB37r4Oyw",
+    "assetsPerBuild": 38,
+    "assets": [
+      {
+        "path": "/artist/recognition-editions/wooah/exclamation-lucy.original.jpg",
+        "name": "LUCY original",
+        "bytes": 4531671,
+        "format": "JPEG",
+        "pixels": [2300,3450]
+      },
+      {
+        "path": "/artist/recognition-editions/wooah/exclamation-lucy.card.webp",
+        "name": "LUCY preview",
+        "bytes": 22964,
+        "format": "WEBP",
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/wooah/exclamation-minseo.original.jpg",
+        "name": "MINSEO original",
+        "bytes": 4625558,
+        "format": "JPEG",
+        "pixels": [2200,3300]
+      },
+      {
+        "path": "/artist/recognition-editions/wooah/exclamation-minseo.card.webp",
+        "name": "MINSEO preview",
+        "bytes": 32386,
+        "format": "WEBP",
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/wooah/exclamation-nana.original.jpg",
+        "name": "NANA original",
+        "bytes": 2952842,
+        "format": "JPEG",
+        "pixels": [2127,3183]
+      },
+      {
+        "path": "/artist/recognition-editions/wooah/exclamation-nana.card.webp",
+        "name": "NANA preview",
+        "bytes": 23666,
+        "format": "WEBP",
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/mv-release-portraits/originals/d2cfda4a4678b66f897b1120.jpg",
+        "name": "SONGYEE original",
+        "bytes": 136189,
+        "format": "JPEG",
+        "pixels": [640,961]
+      },
+      {
+        "path": "/artist/mv-release-portraits/cards/d2cfda4a4678b66f897b1120.webp",
+        "name": "SONGYEE preview",
+        "bytes": 32580,
+        "format": "WEBP",
+        "pixels": [348,464]
+      },
+      {
+        "path": "/artist/recognition-editions/wooah/exclamation-sora.original.jpg",
+        "name": "SORA original",
+        "bytes": 4244284,
+        "format": "JPEG",
+        "pixels": [3500,2333]
+      },
+      {
+        "path": "/artist/recognition-editions/wooah/exclamation-sora.card.webp",
+        "name": "SORA preview",
+        "bytes": 21972,
+        "format": "WEBP",
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/recognition-editions/wooah/exclamation-wooyeon.original.jpg",
+        "name": "WOOYEON original",
+        "bytes": 4593268,
+        "format": "JPEG",
+        "pixels": [3500,2333]
+      },
+      {
+        "path": "/artist/recognition-editions/wooah/exclamation-wooyeon.card.webp",
+        "name": "WOOYEON preview",
+        "bytes": 22136,
+        "format": "WEBP",
+        "pixels": [480,640]
+      },
+      {
+        "path": "/artist/babymonster/ruka-babymons7er-202403.webp",
+        "name": "BABYMONSTER RUKA",
+        "bytes": 155964,
+        "format": "WEBP",
+        "pixels": [800,1200]
+      },
+      {
+        "path": "/artist/babymonster/pharita-babymons7er-202403.webp",
+        "name": "BABYMONSTER PHARITA",
+        "bytes": 145338,
+        "format": "WEBP",
+        "pixels": [800,1200]
+      },
+      {
+        "path": "/artist/babymonster/asa-babymons7er-202403.webp",
+        "name": "BABYMONSTER ASA",
+        "bytes": 109674,
+        "format": "WEBP",
+        "pixels": [800,1200]
+      },
+      {
+        "path": "/artist/babymonster/ahyeon-babymons7er-202403.webp",
+        "name": "BABYMONSTER AHYEON",
+        "bytes": 133948,
+        "format": "WEBP",
+        "pixels": [800,1200]
+      },
+      {
+        "path": "/artist/babymonster/rami-babymons7er-202403.webp",
+        "name": "BABYMONSTER RAMI",
+        "bytes": 207224,
+        "format": "WEBP",
+        "pixels": [800,1200]
+      },
+      {
+        "path": "/artist/babymonster/rora-babymons7er-202403.webp",
+        "name": "BABYMONSTER RORA",
+        "bytes": 145152,
+        "format": "WEBP",
+        "pixels": [800,1200]
+      },
+      {
+        "path": "/artist/babymonster/chiquita-babymons7er-202403.webp",
+        "name": "BABYMONSTER CHIQUITA",
+        "bytes": 119392,
+        "format": "WEBP",
+        "pixels": [800,1200]
+      },
+      {
+        "path": "/artist/itzy/cover-source-itzy-r4uyqzku.webp",
+        "name": "KILL MY DOUBT cover",
+        "bytes": 264334,
+        "format": "WEBP",
+        "pixels": [1200,1200]
+      },
+      {
+        "path": "/artist/babymonster/ahyeon-babymons7er-202403-360.webp",
+        "name": "v255 ahyeon-babymons7er-202403-360.webp",
+        "bytes": 26198,
+        "format": "WEBP",
+        "pixels": [360,540]
+      },
+      {
+        "path": "/artist/babymonster/ahyeon-babymons7er-202403-540.webp",
+        "name": "v255 ahyeon-babymons7er-202403-540.webp",
+        "bytes": 47856,
+        "format": "WEBP",
+        "pixels": [540,810]
+      },
+      {
+        "path": "/artist/babymonster/asa-babymons7er-202403-360.webp",
+        "name": "v255 asa-babymons7er-202403-360.webp",
+        "bytes": 24380,
+        "format": "WEBP",
+        "pixels": [360,540]
+      },
+      {
+        "path": "/artist/babymonster/asa-babymons7er-202403-540.webp",
+        "name": "v255 asa-babymons7er-202403-540.webp",
+        "bytes": 43066,
+        "format": "WEBP",
+        "pixels": [540,810]
+      },
+      {
+        "path": "/artist/babymonster/chiquita-babymons7er-202403-360.webp",
+        "name": "v255 chiquita-babymons7er-202403-360.webp",
+        "bytes": 24630,
+        "format": "WEBP",
+        "pixels": [360,540]
+      },
+      {
+        "path": "/artist/babymonster/chiquita-babymons7er-202403-540.webp",
+        "name": "v255 chiquita-babymons7er-202403-540.webp",
+        "bytes": 44220,
+        "format": "WEBP",
+        "pixels": [540,810]
+      },
+      {
+        "path": "/artist/babymonster/pharita-babymons7er-202403-360.webp",
+        "name": "v255 pharita-babymons7er-202403-360.webp",
+        "bytes": 24398,
+        "format": "WEBP",
+        "pixels": [360,540]
+      },
+      {
+        "path": "/artist/babymonster/pharita-babymons7er-202403-540.webp",
+        "name": "v255 pharita-babymons7er-202403-540.webp",
+        "bytes": 47750,
+        "format": "WEBP",
+        "pixels": [540,810]
+      },
+      {
+        "path": "/artist/babymonster/rami-babymons7er-202403-360.webp",
+        "name": "v255 rami-babymons7er-202403-360.webp",
+        "bytes": 34004,
+        "format": "WEBP",
+        "pixels": [360,540]
+      },
+      {
+        "path": "/artist/babymonster/rami-babymons7er-202403-540.webp",
+        "name": "v255 rami-babymons7er-202403-540.webp",
+        "bytes": 66548,
+        "format": "WEBP",
+        "pixels": [540,810]
+      },
+      {
+        "path": "/artist/babymonster/rora-babymons7er-202403-360.webp",
+        "name": "v255 rora-babymons7er-202403-360.webp",
+        "bytes": 26202,
+        "format": "WEBP",
+        "pixels": [360,540]
+      },
+      {
+        "path": "/artist/babymonster/rora-babymons7er-202403-540.webp",
+        "name": "v255 rora-babymons7er-202403-540.webp",
+        "bytes": 49682,
+        "format": "WEBP",
+        "pixels": [540,810]
+      },
+      {
+        "path": "/artist/babymonster/ruka-babymons7er-202403-360.webp",
+        "name": "v255 ruka-babymons7er-202403-360.webp",
+        "bytes": 29038,
+        "format": "WEBP",
+        "pixels": [360,540]
+      },
+      {
+        "path": "/artist/babymonster/ruka-babymons7er-202403-540.webp",
+        "name": "v255 ruka-babymons7er-202403-540.webp",
+        "bytes": 54514,
+        "format": "WEBP",
+        "pixels": [540,810]
+      },
+      {
+        "path": "/artist/itzy/kill-my-doubt/cover-480.webp",
+        "name": "v255 cover-480.webp",
+        "bytes": 38220,
+        "format": "WEBP",
+        "pixels": [480,480]
+      },
+      {
+        "path": "/artist/itzy/kill-my-doubt/cover-720.webp",
+        "name": "v255 cover-720.webp",
+        "bytes": 67024,
+        "format": "WEBP",
+        "pixels": [720,720]
+      },
+      {"path": "/fonts/itzy/kmd-bold.woff","name": "v255 kmd-bold.woff","bytes": 22196,"format": "WOFF"},
+      {"path": "/fonts/itzy/kmd-regular.woff","name": "v255 kmd-regular.woff","bytes": 21484,"format": "WOFF"}
+    ]
+  },
+  "beforeFreeze": {
+    "platform": "Windows",
+    "imageHostSelected": {"tests": 6,"pass": 6,"fail": 0,"skipped": 0},
+    "timelineHostSelected": {"tests": 7,"pass": 7,"fail": 0,"skipped": 0},
+    "navigationAndMemberCases": {"tests": 79,"pass": 78,"fail": 1,"skipped": 0},
+    "unchangedKnownFailure": "tests/artist-navigation.test.cjs: seven member headers share one official concept set, never changing MV screenshot selection",
+    "itzyAndFocusAfterAlbumEdits": {"tests": 30,"pass": 30,"fail": 0,"skipped": 0},
+    "twoHostBundlesAfterAlbumEdits": {"tests": 5,"pass": 5,"fail": 0,"skipped": 0},
+    "journeyHeadings": "The BABYMONSTER roster and works journeys now expect the new actual page titles."
+  },
+  "compiledReleaseRoutes": {
+    "paths": [
+      "/artists/aespa/releases/armageddon",
+      "/artists/xg/releases/new-dna",
+      "/artists/lesserafim/releases/easy",
+      "/artists/itzy/releases/kill-my-doubt",
+      "/artists/babymonster",
+      "/"
+    ],
+    "artifact": "dist/server/ssr/index.js",
+    "listedIn": ["Windows","WSL"]
+  },
+  "input": "Windows and WSL verified and built the same frozen application, then ran the full test suite. Two assertions that existed only in the full suite were corrected. Both platforms reran npm test on the test-only revision; the unchanged application and verification inputs use their original passing build and verification results.",
+  "verifyCommit": "a377e1c35b95327a272f8f5da09f4b869be881b2",
+  "publicDirectoryValueCheck": {
+    "platform": "Windows",
+    "frozenCheckout": "f691958a",
+    "members": 7,
+    "works": 19,
+    "publishedFieldsCompared": 199,
+    "mismatches": 0,
+    "method": "Compared every JSON field with its already-public catalog record. Video IDs come from the published MV URL and the stage label from the public stage or alternate record."
+  },
+  "firstFullAttempt": {
+    "applicationCommit": "a377e1c35b95327a272f8f5da09f4b869be881b2",
+    "testOnlyCommits": ["acb0ba39322a7ce225540bd5551140bfb4c6762a","f691958a330617eb89123c9522c5d926d55cdf3f"],
+    "firstFull": {
+      "win": {
+        "nodeTotal": {"tests": 4386,"pass": 4267,"fail": 80,"skipped": 39,"cancelled": 0,"todo": 0},
+        "retainedFailureCount": 78,
+        "newFailures": [
+          {
+            "suite": "main",
+            "file": "tests/artist-preview.test.cjs",
+            "test": "public artist facts have real source links and local image assets, never private catalog fields"
+          },
+          {
+            "suite": "main",
+            "file": "tests/timeline-production.test.cjs",
+            "test": "babymonster: canonical hashes, ready/hold isolation and actual production renderer contract"
+          }
+        ],
+        "clearedFailures": []
+      },
+      "linux": {
+        "nodeTotal": {"tests": 4386,"pass": 4267,"fail": 80,"skipped": 39,"cancelled": 0,"todo": 0},
+        "retainedFailureCount": 78,
+        "newFailures": [
+          {
+            "suite": "main",
+            "file": "tests/artist-preview.test.cjs",
+            "test": "public artist facts have real source links and local image assets, never private catalog fields"
+          },
+          {
+            "suite": "main",
+            "file": "tests/timeline-production.test.cjs",
+            "test": "babymonster: canonical hashes, ready/hold isolation and actual production renderer contract"
+          }
+        ],
+        "clearedFailures": []
+      }
+    }
+  },
+  "targetedAfterCorrection": {
+    "publicIdsAndDirectoryBoundary": {"tests": 21,"pass": 21,"fail": 0,"skipped": 0},
+    "wholeTimelineRenderer": {"tests": 52,"pass": 52,"fail": 0,"skipped": 0}
+  }
+}

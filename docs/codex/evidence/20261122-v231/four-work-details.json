@@ -1,0 +1,70 @@
+{
+  "application": "6aebae614f064866e05e7d1c9edf0950dd674a88",
+  "priorCloseout": "../20261122-v213/tests.json",
+  "command": "node --test --test-reporter=tap tests/hearts2hearts-detail.test.cjs tests/billlie-detail.test.cjs tests/idle-detail.test.cjs tests/newjeans-detail.test.cjs tests/work-detail-d1.test.cjs",
+  "scope": "Same-platform full TAP failure locations in v212 and v231, plus a fresh isolated v231 run of the five listed files. The D1 fixture uses synthetic private values. Other failures count only files named for these four groups.",
+  "platforms": {
+    "win": {
+      "v212DetailFailures": {
+        "billlie": 7,
+        "hearts2hearts": 9,
+        "idle": 6,
+        "newjeans": 5
+      },
+      "v212MissingMediaHelper": {
+        "billlie": 2,
+        "hearts2hearts": 1,
+        "idle": 1,
+        "newjeans": 2
+      },
+      "v231FullSuiteFailuresInFourDetailFiles": 0,
+      "v231FocusedPassesByGroup": {
+        "hearts2hearts": 9,
+        "billlie": 9,
+        "idle": 8,
+        "newjeans": 9
+      },
+      "d1LostReplyPasses": 4,
+      "d1ReadTestsPassed": 2,
+      "v231FocusedTotal": 41,
+      "v231FocusedSkipped": 0,
+      "otherFailuresInGroupNamedFilesPresentSinceV212": {
+        "hearts2hearts-artist.test.cjs": 2,
+        "hearts2hearts-figma.test.cjs": 1,
+        "hearts2hearts-review-routing.test.mjs": 1,
+        "idle-verified-design.test.cjs": 4
+      }
+    },
+    "linux": {
+      "v212DetailFailures": {
+        "billlie": 7,
+        "hearts2hearts": 9,
+        "idle": 6,
+        "newjeans": 5
+      },
+      "v212MissingMediaHelper": {
+        "billlie": 2,
+        "hearts2hearts": 1,
+        "idle": 1,
+        "newjeans": 2
+      },
+      "v231FullSuiteFailuresInFourDetailFiles": 0,
+      "v231FocusedPassesByGroup": {
+        "hearts2hearts": 9,
+        "billlie": 9,
+        "idle": 8,
+        "newjeans": 9
+      },
+      "d1LostReplyPasses": 4,
+      "d1ReadTestsPassed": 2,
+      "v231FocusedTotal": 41,
+      "v231FocusedSkipped": 0,
+      "otherFailuresInGroupNamedFilesPresentSinceV212": {
+        "hearts2hearts-artist.test.cjs": 2,
+        "hearts2hearts-figma.test.cjs": 1,
+        "hearts2hearts-review-routing.test.mjs": 1,
+        "idle-verified-design.test.cjs": 4
+      }
+    }
+  }
+}

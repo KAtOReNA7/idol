@@ -4,13 +4,13 @@
 
 ## 本轮已交付与接续顺序
 
-v230 已上线 WOOAH《Purple》的五张同次发行照片。v229 和 v230 已逐项验完九团 71 个自定义时间轴控件的浏览器后退。播放优先解决《BILLIONAIRE》首发版和四场指定舞台，团页继续清理与实际操作无关的文字。访问优化优先跟踪正式同卡等待较长的两团。[v230 图片与播放](worklogs/20261122-v230-release.md) · [v229 逐项回执](worklogs/20261122-v229-release.md)
+v231 已上线 11 团的时间轴文字调整。51 团首页与时间轴在两版各渲染 102 页，已确认的 34 处编辑表述全部移除。正式站手机和桌面各实开全部 19 个改动页，分别读到 38/38 处新句。v230 的 WOOAH《Purple》五张同次发行照片、九团共 71 个时间轴控件已取得正式实点结果。继续优先解决《BILLIONAIRE》首发版和四场指定舞台，并跟踪 IVE 与 ADYA 的点卡等待。[v231 验收](worklogs/20261122-v231-release.md) · [v230 图片与播放](worklogs/20261122-v230-release.md) · [v229 逐项回执](worklogs/20261122-v229-release.md)
 
 既有基线包括十团发行单筛、八团作品主入口、EVERGLOW《SLAY》发行照及 ADYA、W!TCHX 的官方素材与 Figma 设计。[v227 修改与实测](worklogs/20261122-v227-release.md) · [51 团代表卡](worklogs/20261122-v225-release.md)
 
 | 顺序 | 已在正式站验证 | 接下来按什么条件推进 |
 |---|---|---|
-| 1. 站内观看 | v230《BILLIONAIRE》2 月 7 日首发版在 10.5 秒内未起播。《Magnetic》本版、《ATTITUDE》上版在站内静音解码 4K。四场 B 站独占舞台在 v229 均缺合格站内来源。 | 优先找可嵌入的《BILLIONAIRE》完整首发剪辑。四场舞台核节目方、场次、分 P 和区间，在本站验证原片与账号可用的最高档。NewJeans《ETA》《Attention》和 ADYA《Per》按同一标准继续查找。在作品页读取两个递增的时间、解码尺寸与可测码率。[v230 两首](evidence/20261122-v230/formal-mv-playback.json) · [v229 三首](evidence/20261122-v229/formal-mv-playback.json) · [四场舞台](evidence/20261122-v229/formal-exclusive-stages.json) · [其他三支](worklogs/20261122-additional-mv-playback.md) |
+| 1. 站内观看 | v231《BILLIONAIRE》2 月 7 日首发版在 10.5 秒内未取得播放进度。《Magnetic》本版、《ATTITUDE》在 v229 静音解码 4K。四场 B 站独占舞台在本版仍缺合格站内来源。 | 优先找可嵌入的《BILLIONAIRE》完整首发剪辑。四场舞台核节目方、场次、分 P 和区间，在本站验证原片与账号可用的最高档。NewJeans《ETA》《Attention》和 ADYA《Per》按同一标准继续查找。在作品页读取两个递增的时间、解码尺寸与可测码率。[v231 两首](worklogs/20261122-v231-release.md#站内短播) · [v229 三首](evidence/20261122-v229/formal-mv-playback.json) · [v231 四场舞台](evidence/20261122-v231/formal-priority-controls.json) · [其他三支](worklogs/20261122-additional-mv-playback.md) |
 | 2. 作品目录和返回 | 九团共 71 个自定义时间轴控件已实点并通过浏览器后退，70 个在 v229，末项在 v230。IVE 的 22 个目标、NewJeans 的 18 个、MADEIN 的 8 个、QWER 的 11 个、tripleS 的 23 个也已逐项打开并返回。 | 继续补其余团共用时间轴的实际路径。ADYA、W!TCHX 当前页内返回会去发行或影像目录，是否优先回到来时事件留作产品讨论。逐团清掉正文、图注与辅助标签中妨碍使用的说明，保留作品、来源和评分信息。[九团与共用时间轴记录](worklogs/20261122-v229-release.md) · [末个实点](evidence/20261122-v230/spia-last-timeline-link.json) · [使用取舍](20261122-USABILITY-DISCUSSION.md) |
 | 3. 团页到作品的等待 | 同快照的目录计算中位数在 v229 减少 45.71%。正式三轮点卡到播放按钮的中位数，Cherry Bullet 减少 1265 毫秒，IVE 和 ADYA 分别增加 520、668 毫秒。v230 抽样出现四次站标 404 和四次目录请求取消。 | 用同卡、同宽度继续定位 IVE 和 ADYA 的等待，保留一次目录请求和现有鉴权。核对取消请求的上下文，后续出现 502 时读取已细分的失败步骤。修复浏览器请求的站标并复验。[三轮前后对照](worklogs/20261122-v229-release.md) · [正式日志](evidence/20261122-v230/formal-worker-observation.json) · [既有两次 502](evidence/20261122-v227/catalog-errors.json) |
 | 4. 团页设计与成员照片 | 51 团首屏和 100 个混合或单类入口已核，IVE、NewJeans、ADYA、W!TCHX 的代表期视觉已有出处。v230《Purple》五人、v227《SLAY》六人的同期海报、旧作品图与照片下评分均已在正式站两档宽度逐人实点。 | 194 个跨期位置已核 59 个，余 135 个中，113 个可据现成发行图集逐人核验，22 个需补具名同期依据。按作品、视频、成员绑定继续选图，保留原件、旧图与评分关系。[四团设计与官网原件](worklogs/20261122-adya-witchx-figma.md) · [逐人位置清单](evidence/20261122-member-release-portraits/remaining-194.csv) · [《Purple》实测](worklogs/20261122-v230-release.md) · [《SLAY》实测](evidence/20261122-v227/formal-slay.json) |
@@ -47,7 +47,7 @@ v218 已横查 51 个团体首页。28 团原有的 30 个团照放大入口，�
 
 ### 5. 清理会妨碍迭代的测试与数据问题
 
-v212 双平台 `verify` 均通过。完整 Node 套件各 4,085 项，Windows 166 项既有失败、WSL 162 项，各跳过 39 项。先处理 Hearts2Hearts、Billlie、i-dle、NewJeans 四组详情测试，两端各 27 项，其中 6 项报同一测试辅助方法 `h.media` 缺失。先接回现行组件，再在隔离 D1 实际复现草稿、保存失败、0 分、舞台切换和焦点返回。确属产品错误的修改实现，过时夹具按现行交互更新，保留原来要验证的行为。后续按共因处理剩余失败，按平台列出已修、剩余和新增失败。对涉及焦点、重试和数据加载的 lint 项随相关修改处理。[双平台基线](worklogs/20261122-v212-validation.md) · [保存编辑器](../../apps/idol-site/components/catalog/record-editor.tsx)
+v212 双平台 `verify` 均通过。完整 Node 套件各 4,085 项，Windows 166 项既有失败、WSL 162 项，各跳过 39 项。先处理 Hearts2Hearts、Billlie、i-dle、NewJeans 四组详情测试，两端各 27 项，其中 6 项报同一测试辅助方法 `h.media` 缺失。先接回现行组件，再在隔离 D1 实际复现草稿、保存失败、0 分、舞台切换和焦点返回。确属产品错误的修改实现，过时夹具按现行交互更新，保留原来要验证的行为。后续按共因处理剩余失败，按平台列出已修、剩余和新增失败。对涉及焦点、重试和数据加载的 lint 项随相关修改处理。[双平台基线](worklogs/20261122-v212-validation.md) · [保存编辑器](../../apps/idol-site/components/catalog/record-editor.tsx) 该批四团 27 条旧失败已在 v213 收口，v231 重新核对了四个详情文件及隔离 D1，两端均通过全部 41 项。后续跟进其他现存失败，其中 Hearts2Hearts 页面、Figma 和路由仍有 4 项，i-dle 设计仍有 4 项。[v231 按文件复验](evidence/20261122-v231/four-work-details.json)
 
 新的舞台批次依赖连接器提供现有的 owner 批量只读工具。工具可用时，先验真实授权的读取，再按已准备好的 1–5 个目标执行既有保护。已处置的 81 项资料等新证据，19 项沿用取消必填的决定。数据维护独立排期，保留私人记录与历史来源。[批量核对](STAGE-OWNER-PREFLIGHT.md) · [内容研究处置](evidence/20261121-repository-and-routes/content-disposition.json)
 

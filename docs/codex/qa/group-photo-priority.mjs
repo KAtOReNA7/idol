@@ -84,7 +84,7 @@ export async function checkGroupPhotoPriority(tab,{site=production,slugs=Object.
       step='从团照打开原图';
       if(slug==='wooah')await control.click({timeoutMs});
       else await control.press('Enter',{timeoutMs});
-      const dialog=tab.playwright.locator('.photo-lightbox[role="dialog"]');
+      const dialog=tab.playwright.getByRole('dialog');
       step='等待原图对话框';
       await dialog.waitFor({state:'visible',timeoutMs});
       step='读取原图实际尺寸';
@@ -94,7 +94,8 @@ export async function checkGroupPhotoPriority(tab,{site=production,slugs=Object.
       await dialog.getByRole('button',{name:'关闭大图'}).press('Escape',{timeoutMs});
       await dialog.waitFor({state:'hidden',timeoutMs});
       const restoredFocus=await control.evaluate(el=>el===el.ownerDocument.activeElement);
-      results.push({...row,restoredFocus,ok:row.ok&&preview.complete&&preview.size[0]>0&&original.complete&&original.size[0]>0&&original.source===expected&&restoredFocus});
+      const sameOriginal=!!expected&&!!original.source&&new URL(original.source,site).href===new URL(expected,site).href;
+      results.push({...row,openingOk:row.ok,sameOriginal,restoredFocus,ok:row.ok&&preview.complete&&preview.size[0]>0&&original.complete&&original.size[0]>0&&sameOriginal&&restoredFocus});
     }catch(error){
       const observed=await tab.playwright.evaluate(({hero,photo,original})=>{
         const img=document.querySelector(photo),link=document.querySelector(original),dialog=document.querySelector('[role="dialog"]');

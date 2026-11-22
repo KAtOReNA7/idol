@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v236。51 团统一索引公司与团体简介，628 张 MV 目录卡完成核对，605 张直达对应版本。按新增 Figma 要求重开四条后，飞书修订 1197 保留第 1–7 条已解决。[本批正式结果](worklogs/20261122-v236-release.md) |
+| 正式站 | v238。两档实测 IVE、UDTT、KiiiKiii、Kep1er 等团页及各自作品入口。飞书修订 1215 有 25/29 条已解决。AtHeart 和 W!TCHX 的新作品导入在写前返回 409。[本批正式结果](worklogs/20261122-v238-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v236 正式应用 `ffcc04d9`。其余人工审核项分批接续。[发布回执](evidence/20261122-v236/publication.json) |
+| 当前开发 | `codex/project-optimization-20261121`，v238 正式应用 `daa9aa7b`。izna、NMIXX、STAYC 及原生作品关联兼容修复另在后续批次。[发布回执](evidence/20261122-v238/publication.json) |
 
 ## 11 月 22 日更新
 

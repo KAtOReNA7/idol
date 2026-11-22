@@ -8,7 +8,7 @@ export async function checkKiiikiiiDebut(tab, origin) {
   const page = tab.playwright;
   const result = {};
   const waitVisible = locator => locator.waitFor({state: 'visible', timeoutMs: 15000});
-  const lightbox = page.locator('.photo-lightbox[role="dialog"]');
+  const lightbox = page.getByRole('dialog');
   const closeOriginal = () => lightbox.getByRole('button', {name: '关闭大图'}).press('Escape');
   let step = '打开团体首页';
   try {
@@ -40,7 +40,7 @@ export async function checkKiiikiiiDebut(tab, origin) {
   result.jar = await picture(page.locator('.kk-campaign-work > img'));
   await page.locator('.kk-campaign figure a').press('Enter');
   result.original = await picture(lightbox.locator('img'));
-  if (result.original.source !== groupImage) throw Error('The photo opened a different original');
+  if (new URL(result.original.source, origin).href !== new URL(groupImage, origin).href) throw Error('The photo opened a different original');
   await closeOriginal();
   result.restoredOriginalFocus = await page.locator('.kk-campaign figure a').evaluate(el => document.activeElement === el);
   step = '进入首位成员并返回团体概览';
@@ -70,7 +70,9 @@ export async function checkKiiikiiiDebut(tab, origin) {
     const hasScore = await score.count() > 0;
     if (hasScore) {
       await score.click();
-      result.cards.push({member, preview, original, scoreControls: await card.locator('input').count()});
+      await waitVisible(card.getByRole('spinbutton', {name: '表现分'}));
+      await waitVisible(card.getByRole('spinbutton', {name: '造型喜欢'}));
+      result.cards.push({member, preview, original, scoreControls: await card.getByRole('spinbutton').count()});
     } else {
       result.cards.push({member, preview, original, readonlyScores: await card.locator('.cast-scores > span').count()});
     }

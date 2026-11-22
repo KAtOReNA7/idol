@@ -2,9 +2,9 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const {assertMemberWorkCard} = require('./helpers/member-work-card-contract.cjs');
 const content=JSON.parse(fs.readFileSync('data/nmixx-artist.json')),group=content.groupId;
 function fixture(){const m={id:'recM',name:'LILY',stageName:'LILY',groupIds:[group],cnName:'',country:'',birthDate:'',status:'在团',role:'',social:[{platform:'instagram',url:'https://www.instagram.com/example/',countLabel:'10.2万',observedAt:'2026-10-11'}]};const work=(id,video,score)=>({id,name:id,song:id,groupIds:[group],score,stageScore:null,note:'',watched:'已观看',version:'原版',videoType:'官方MV',releaseDate:'2026-01-01',url:'https://youtube.com/watch?v='+video,stage:null,stageSupplement:null});return {groups:[{id:group,name:'NMIXX'}],members:[m],works:[work('recSticky','6Ycn9qZK09I',0),work('recWho','EmeW6li6bbo',null),work('recSweat','aFrQIJ5cbRc',8)],ratings:[{id:'recR',memberIds:[m.id],workIds:['recSticky'],score:0,stylingScore:8,photo:null,recognition:'',note:'',memory:''}]};}
-function setup(url,data=fixture()){
+function setup(url,data=fixture(),portraitEditions=[]){
  const cache={},mockReact={...React,useEffect:()=>{},useMemo:f=>f(),useSyncExternalStore:()=>url};let calls=0;mockReact.useState=i=>[++calls===1?data:calls===3?false:i,()=>{}];
- function load(file){if(cache[file])return cache[file];const out={};cache[file]=out;const js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL,URLSearchParams,Date})(name=>{const imageModule=require('./helpers/image-dependency-loader.cjs').imageDependency(name);if(imageModule!==undefined)return imageModule;const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(name);if(timelineModule!==undefined)return timelineModule;if(name==='@/components/member-physical-facts')return require('./helpers/member-physical-loader.cjs');if(name==='@/components/member-career-facts')return require('./helpers/member-career-loader.cjs');if(name==='react')return mockReact;if(name==='./use-artist-scroll')return {useArtistScroll:()=>()=>{}};if(name==='./photo-lightbox')return {PhotoLightbox:()=>null};if(name.startsWith('@/'))return load(name.slice(2)+'.ts');if(name.startsWith('./'))return load(require('node:path').join(require('node:path').dirname(file),name)+'.ts');return require(name);},out);return out;}return {load,render:()=>renderToStaticMarkup(React.createElement(load('components/nmixx-artist.tsx').default,{content}))};
+ function load(file){if(cache[file])return cache[file];const out={};cache[file]=out;const js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL,URLSearchParams,Date})(name=>{const imageModule=require('./helpers/image-dependency-loader.cjs').imageDependency(name);if(imageModule!==undefined)return imageModule;const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(name);if(timelineModule!==undefined)return timelineModule;if(name==='@/components/member-physical-facts')return require('./helpers/member-physical-loader.cjs');if(name==='@/components/member-career-facts')return require('./helpers/member-career-loader.cjs');if(name==='react')return mockReact;if(name==='./use-artist-scroll')return {useArtistScroll:()=>()=>{}};if(name==='./photo-lightbox')return {PhotoLightbox:()=>null};if(name.startsWith('@/'))return load(name.slice(2)+'.ts');if(name.startsWith('./'))return load(require('node:path').join(require('node:path').dirname(file),name)+'.ts');return require(name);},out);return out;}return {load,render:()=>renderToStaticMarkup(React.createElement(load('components/nmixx-artist.tsx').default,{content,portraitEditions}))};
 }
 test('NMIXX existing stable group and return context are bounded',()=>{const {load}=setup('/artists/nmixx'),n=load('lib/idol/artist-navigation.ts');assert.equal(n.NMIXX_GROUP_ID,'recvxyEBDZOpTf');assert.equal(n.groupArtistUrl(group),'/artists/nmixx');assert.equal(n.artistReturnLabel('/artists/nmixx?section=works'),'NMIXX');assert.equal(n.safeArtistReturn('/artists/nmixx?section=works&format=stage'),'/artists/nmixx?section=works&format=stage');assert.equal(n.safeArtistReturn('/artists/nmixx?format=other'),null);assert.equal(n.safeArtistReturn('https://evil.test/artists/nmixx'),null);});
 test('NMIXX search queue and format roundtrip',()=>{const {load}=setup('/artists/nmixx'),p=load('lib/idol/artist-preview.ts'),r=p.artistRoute('/artists/nmixx?section=works&queue=tonight&q=Sticky&format=stage');assert.equal(p.artistRouteUrl(r,'/artists/nmixx'),'/artists/nmixx?section=works&queue=tonight&q=Sticky&format=stage');assert.match(p.artistWorkUrl({id:'recX'},true,p.artistRouteUrl(r,'/artists/nmixx')),/format%3Dstage/);});
@@ -12,6 +12,32 @@ test('NMIXX featured release cards show actual MV scores including zero and null
 test('NMIXX collection cannot invent stage sources or mix member scores',()=>{const s=setup('/artists/nmixx?section=works').render();assert.match(s,/0\.0 \/ 10/);assert.match(s,/未评分/);assert.match(s,/returnTo=%2Fartists%2Fnmixx%3Fsection%3Dworks/);const stage=setup('/artists/nmixx?section=works&format=stage').render();assert.match(stage,/没有符合条件/);assert.doesNotMatch(stage,/class="nx-work"/);});
 test('NMIXX member summaries preserve zero, dimension sample counts and exact MV photo absence', () => {
  assertMemberWorkCard(setup, fixture, 'nmixx', '认人图待补');
+});
+
+test('each Roller Coaster relationship opens the official member portrait and shows the same named song photograph as its MV',()=>{
+ const {parse}=require('next/dist/compiled/node-html-parser');
+ const series=require('../data/mv-recognition-editions.json')['roller-coaster-2023'];
+ const {workId,videoId,memberIds}=series.works[0];
+ assert.equal(memberIds.length,6);
+ for(const memberId of memberIds){
+  const photo=series.portraits[memberId];
+  const name=content.profile.members.find(n=>photo.original.endsWith('-'+n.toLowerCase()+'.jpg'));
+  assert.ok(name,memberId);
+  const data=fixture(),member=data.members[0],work=data.works[0],rating=data.ratings[0];
+  Object.assign(member,{id:memberId,name,stageName:name});
+  Object.assign(work,{id:workId,song:'Roller Coaster',url:'https://www.youtube.com/watch?v='+videoId});
+  Object.assign(rating,{memberIds:[memberId],workIds:[workId]});
+  const url='/artists/nmixx?section=members&member='+memberId;
+  const page=parse(setup(url,data,[series]).render());
+  assert.equal(page.querySelector('.nx-member-hero [data-original-photo]').getAttribute('href'),content.memberVisuals[name].image);
+  assert.equal(page.querySelector('.nx-member-hero figcaption a').getAttribute('href'),content.profile.sourceUrl);
+  const card=page.querySelector('.nx-member-works article');
+  assert.equal(card.querySelector('.mv-identity-frame img').getAttribute('src'),photo.preview);
+  assert.equal(card.querySelector('figcaption a').getAttribute('href'),photo.sourceUrl);
+  assert.equal(card.querySelector('a[data-member-work-trigger]').getAttribute('data-member-work-trigger'),workId);
+  work.url='https://www.youtube.com/watch?v=abcdefghijk';
+  assert.ok(!setup(url,data,[series]).render().includes(photo.preview),name+' must keep the exact video binding');
+ }
 });
 
 test('NMIXX official six portraits preserve provenance and all local asset hashes',()=>{assert.equal(content.profile.members.length,6);assert.deepEqual(Object.keys(content.memberVisuals),content.profile.members);for(const v of [content.hero,...Object.values(content.memberVisuals),...content.releases]){assert.ok(fs.existsSync('public'+v.image));assert.equal(crypto.createHash('sha256').update(fs.readFileSync('public'+v.image)).digest('hex'),v.sha256??JSON.parse(fs.readFileSync('evidence/approved-release-repairs/manifest.json')).covers.find(m=>m.displayPath===v.image)?.displaySha256);}for(const v of Object.values(content.memberVisuals))assert.equal(v.identitySourceUrl,'https://nmixx.jype.com/profile');});

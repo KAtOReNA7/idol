@@ -6088,13 +6088,13 @@
       "currentStyleCssPaths": [
         "app/artists/nmixx/nmixx-artist.css"
       ],
-      "paper": "#eeedf5",
-      "surface": "#eeedf5",
-      "ink": "#202b45",
-      "muted": "#5f6680",
-      "line": "#c6c8d6",
-      "accent": "#52658a",
-      "soft": "#eeedf5",
+      "paper": "#f1ece2",
+      "surface": "#eee7db",
+      "ink": "#302b24",
+      "muted": "#625747",
+      "line": "#bcb19b",
+      "accent": "#302b24",
+      "soft": "#eee7db",
       "fontBody": "\"Noto Sans SC\",system-ui,sans-serif",
       "fontHeading": "NMixxDisplay,sans-serif",
       "fontHeadingStyle": "normal",
@@ -6119,28 +6119,28 @@
           "kind": "current_root_variable"
         },
         "surface": {
-          "source": "--nx-paper",
-          "kind": "current_root_variable"
+          "source": ".nx-profile-caption",
+          "kind": "current_selector_color"
         },
         "ink": {
           "source": "--nx-ink",
           "kind": "current_root_variable"
         },
         "muted": {
-          "source": "--nx-muted",
-          "kind": "current_root_variable"
+          "source": ".nx-member-hero",
+          "kind": "current_selector_color"
         },
         "line": {
           "source": "--nx-line",
           "kind": "current_root_variable"
         },
         "accent": {
-          "source": "--nx-accent",
+          "source": "--nx-ink",
           "kind": "current_root_variable"
         },
         "soft": {
-          "source": "--nx-paper",
-          "kind": "current_root_variable"
+          "source": ".nx-member-summary",
+          "kind": "current_selector_color"
         }
       },
       "rootEvidence": [
@@ -6160,27 +6160,93 @@
             "min-height": "100vh",
             "font": "14px/1.7 'Noto Sans SC',system-ui,sans-serif"
           }
+        },
+        {
+          "file": "app/artists/nmixx/nmixx-artist.css",
+          "line": 11,
+          "selector": ".nmixx-artist",
+          "declarations": {
+            "--nx-paper": "#f1ece2",
+            "--nx-ink": "#302b24",
+            "--nx-line": "#bcb19b"
+          }
         }
       ],
       "oldJournalPaletteDifferences": [
         {
+          "token": "paper",
+          "before": "#eeedf5",
+          "after": "#f1ece2"
+        },
+        {
           "token": "surface",
-          "before": "#f8f7fc",
-          "after": "#eeedf5"
+          "before": "#eeedf5",
+          "after": "#eee7db"
+        },
+        {
+          "token": "ink",
+          "before": "#202b45",
+          "after": "#302b24"
+        },
+        {
+          "token": "muted",
+          "before": "#5f6680",
+          "after": "#625747"
+        },
+        {
+          "token": "line",
+          "before": "#c6c8d6",
+          "after": "#bcb19b"
+        },
+        {
+          "token": "accent",
+          "before": "#52658a",
+          "after": "#302b24"
         },
         {
           "token": "soft",
-          "before": "#d9dbe7",
-          "after": "#eeedf5"
+          "before": "#eeedf5",
+          "after": "#eee7db"
         }
       ],
-      "corePaletteDifferences": [],
+      "corePaletteDifferences": [
+        {
+          "token": "paper",
+          "before": "#eeedf5",
+          "after": "#f1ece2"
+        },
+        {
+          "token": "ink",
+          "before": "#202b45",
+          "after": "#302b24"
+        },
+        {
+          "token": "line",
+          "before": "#c6c8d6",
+          "after": "#bcb19b"
+        },
+        {
+          "token": "accent",
+          "before": "#52658a",
+          "after": "#302b24"
+        }
+      ],
       "fontCorrectionNeeded": false,
-      "sourceStatus": "core_palette_matches",
-      "headingReview": "Use current heading font shown here; existing journal declarations may override variables on descendants.",
-      "character": "雾紫/钢蓝、凝缩标题",
-      "browserStatus": "pending",
-      "name": "NMIXX"
+      "sourceStatus": "reviewed_official_artist_and_detail_design",
+      "headingReview": "Upright heading, site navigation and member-edit controls use the current NMIXX public artwork design.",
+      "character": "JYP 官方照片与常设白字标，米色、深棕和直立 Space Grotesk 标题",
+      "browserStatus": "local 375px and 1425px full work page",
+      "name": "NMIXX",
+      "figmaDetailFrames": [
+        "1491:1195",
+        "1491:1336",
+        "1491:1535",
+        "1491:1653",
+        "1491:1766",
+        "1491:1960",
+        "1491:2054",
+        "1491:2093"
+      ]
     },
     {
       "slug": "hearts2hearts",

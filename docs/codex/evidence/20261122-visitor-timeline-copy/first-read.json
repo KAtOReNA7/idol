@@ -1,0 +1,75 @@
+{
+  "applicationVersion": "v230",
+  "applicationCommit": "769c12d9d063dad5935153ef14d1ecc8da4ef795",
+  "source": "Two anonymous Codex in-app browser captures of each public direct URL. The first read waited for the event shared by overview and full timeline. The second also waited for the actual full timeline heading. Separate navigations, no duration measurement.",
+  "interpretation": "Initial results match the home teaser. BEWAVE exposed precisely the first three entries and then all four. The W!TCHX and SPIA standalone notes, and Candy Shop interview/anniversary copy, appeared after waiting for the full view.",
+  "exclusions": "The earlier UDTT capture selected the wrong DOM scope and the first ITZY capture timed out. Neither is counted as evidence of the home-teaser symptom.",
+  "results": [
+    {
+      "path": "/artists/witchx?section=updates",
+      "viewportClientWidth": 1265,
+      "mainWidth": 1160,
+      "beforeFullSection": {
+        "visibleExpectedSentences": 4,
+        "expectedSentences": 5,
+        "missing": [
+          "公司出道标注、音源发行和视频公开采用各自日期；活动预告不作为已经举办的证明。"
+        ]
+      },
+      "withFullSectionHeading": {
+        "visibleExpectedSentences": 5,
+        "expectedSentences": 5
+      }
+    },
+    {
+      "path": "/artists/spia?section=updates",
+      "viewportClientWidth": 1265,
+      "mainWidth": 1169,
+      "beforeFullSection": {
+        "visibleExpectedSentences": 2,
+        "expectedSentences": 3,
+        "missing": [
+          "分别记录出道、音源发行、节目播出与访谈刊载日期。当前活动状态仍待官方资料确认。"
+        ]
+      },
+      "withFullSectionHeading": {
+        "visibleExpectedSentences": 3,
+        "expectedSentences": 3
+      }
+    },
+    {
+      "path": "/artists/bewave?section=updates",
+      "viewportClientWidth": 1265,
+      "mainWidth": 1265,
+      "beforeFullSection": {
+        "visibleExpectedSentences": 3,
+        "expectedSentences": 4,
+        "missing": [
+          "音乐平台发行目录。知言个人作品；不作为全团活动或经纪关系变化的证明。"
+        ]
+      },
+      "withFullSectionHeading": {
+        "visibleExpectedSentences": 4,
+        "expectedSentences": 4
+      }
+    },
+    {
+      "path": "/artists/candyshop?section=updates",
+      "viewportClientWidth": 1265,
+      "mainWidth": 1209,
+      "beforeFullSection": {
+        "visibleExpectedSentences": 0,
+        "expectedSentences": 3,
+        "missing": [
+          "JULIA 在采访中谈到入团经历与首次回归。所示日期为采访发表日，具体入团日期不详。",
+          "官网周年条目",
+          "日本官网发布两周年纪念条目。"
+        ]
+      },
+      "withFullSectionHeading": {
+        "visibleExpectedSentences": 3,
+        "expectedSentences": 3
+      }
+    }
+  ]
+}

@@ -34,18 +34,24 @@ test('the observed Password thumbnail retains its actual decoded dimensions and 
     '/artist/hearts2hearts/the-chase/',
     '/artist/udtt/identity/',
     '/artist/recognition-editions/qwer/ceremony-graduation-',
-    '/artist/recognition-editions/rescene/scenedrome-2024-',
-    '/artist/recognition-editions/wooah/blush-2024-',
     '/fonts/candyshop/',
     '/fonts/qwer/',
    ];
-   const debutCards=new Set([
-    ...['ain','gowoon','jiun','lena','yunseul','zena'].map(name=>'/artist/recognition-editions/bewave/be-wave-2024-'+name+'.card.webp'),
-    ...['hyunny','kim','paan','suyeon'].map(name=>'/artist/recognition-editions/vvup/intro-2024-'+name+'.card.webp'),
-   ]);
+   // The October receipt predates this directory. Only paths actually used by
+   // a registered edition can be removed when reconstructing that receipt.
+   const editions=[
+    ...Object.values(require('../data/mv-recognition-editions.json')),
+    ...require('../data/public-recognition-editions.json'),
+   ];
+   const portraitPaths=new Set();
+   for(const {preview,original} of editions.flatMap(edition=>Object.values(edition.portraits))){
+    portraitPaths.add(preview);
+    portraitPaths.add(original);
+   }
    manifest.assets=manifest.assets.filter(row=>{
     const artistWebfont=/^\/fonts\/(?:adya\/ArchivoNarrow|vvup\/Archivo-Italic|witchx\/Rajdhani-[0-3])\.woff2$/.test(row.path);
-    const addedAfterReceipt=artistWebfont||row.path==='/fonts/NunitoSans-Variable.woff2'||debutCards.has(row.path)||laterCollections.some(directory=>row.path.startsWith(directory));
+    const editionPhoto=row.path.startsWith('/artist/recognition-editions/')&&portraitPaths.has(row.path);
+    const addedAfterReceipt=artistWebfont||row.path==='/fonts/NunitoSans-Variable.woff2'||editionPhoto||laterCollections.some(directory=>row.path.startsWith(directory));
     if(!styles.has(row.path)&&!addedAfterReceipt)return true;
     const actual=fs.readFileSync(path.join(__dirname,'../public',row.path));
     assert.equal(row.delivery,'local',row.path);

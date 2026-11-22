@@ -28,12 +28,12 @@ import './witchx-artist.css';
 
 const path='/artists/witchx';
 const rosterPhotoCredit='成员人像截自 IN MEDIA A&D 官网档案卡，可在成员页查看完整原卡。';
-const nav=[['overview','首页','HOME'],['members','成员','MEMBERS'],['works','作品','MUSIC'],['updates','时间轴','TIMELINE']] as const;
+const nav=[['overview','首页'],['members','成员'],['works','作品'],['updates','时间轴']] as const;
 type Person=typeof design.members[number];
 type Release=typeof design.releases[number];
 type Video=typeof design.works[number];
 const Navigation=createContext<(event:MouseEvent<HTMLAnchorElement>,target:string)=>void>(()=>{});
-function Link({to,children,className,memberId}:{to:string;children:ReactNode;className?:string;memberId?:string}){const go=useContext(Navigation);return <a href={to} className={className} data-artist-member-trigger={memberId} onClick={e=>go(e,to)}>{children}</a>;}
+function Link({to,children,className,memberId,current}:{to:string;children:ReactNode;className?:string;memberId?:string;current?:boolean}){const go=useContext(Navigation);return <a href={to} className={className} data-artist-member-trigger={memberId} aria-current={current?'page':undefined} onClick={e=>go(e,to)}>{children}</a>;}
 function Arrow({back=false}:{back?:boolean}){return <svg aria-hidden="true" viewBox="0 0 24 24" className={'wk-arrow'+(back?' is-back':'')}><path d="M4 12h15m-6-6 6 6-6 6"/></svg>;}
 function Picture({src,alt,className='',priority=false}:{src:string;alt:string;className?:string;priority?:boolean}){return <ReliableImage src={src} identityKey={src} alt={alt} className={'wk-photo '+className} priority={priority} retryMode="external" missing={<p>暂无图片</p>} errorFallback={<p role="status">图片暂时无法加载，可重试。</p>}/>;}
 function subscribe(cb:()=>void){window.addEventListener('popstate',cb);window.addEventListener('artist-location-change',cb);return()=>{window.removeEventListener('popstate',cb);window.removeEventListener('artist-location-change',cb);};}
@@ -67,12 +67,12 @@ export default function WitchxArtist({content}:{content:CandidateContent}){
  }
  function go(e:MouseEvent<HTMLAnchorElement>,target:string){if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;remember(e);if(target.startsWith('/?'))return;e.preventDefault();history.pushState(newArtistHistoryState(history.state,target),'',target);window.dispatchEvent(new Event('artist-location-change'));document.getElementById('artist-content')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
  const showPhoto=(src:string,label:string)=>setLightbox({src:originalPhoto(src),label});
- const heading=(cn:string,en:string)=><header className="wk-heading"><h2>{en}</h2><p>{cn}</p></header>;
+ const heading=(cn:string,en:string)=><header className="wk-heading"><h2>{cn}</h2><p lang="en">{en}</p></header>;
  const title=(cn:string,en:string)=><header className="wk-title"><h1>{cn}</h1><p>{en}</p></header>;
  function search(kind:'members'|'works'){return <form className="wk-search" onSubmit={e=>{e.preventDefault();const q=String(new FormData(e.currentTarget).get('q')??'').trim().slice(0,200);remember();history.pushState(newArtistHistoryState(history.state),'',href({q:q||null}));window.dispatchEvent(new Event('artist-location-change'));}}><label htmlFor="wk-search">搜索{kind==='members'?'成员':'作品'}</label><div><input id="wk-search" key={route.search} name="q" defaultValue={route.search} maxLength={200} placeholder={kind==='members'?'中文名 / 艺名':'作品名称'}/><button type="submit">查找</button>{route.search&&<Link to={href({q:null})}>清除搜索</Link>}</div></form>;}
- function roster(people:Person[]=design.members){return <div className="wk-members">{people.map(m=><article key={m.id} className="wk-member"><Link to={personHref(m.id)} memberId={m.id}><Picture src={`/artist/witchx/portraits/${m.stageName.toLowerCase()}.webp`} alt={`${m.cnName} ${m.stageName} · 官网具名档案卡人像`} className="wk-portrait"/><h3>{m.cnName}</h3><p>{m.stageName.toUpperCase()}</p></Link></article>)}</div>;}
- function releases(rows:Release[]=design.releases){return <div className="wk-releases">{rows.map(r=><article className="wk-release" key={r.key}><Link className="wk-release-cover" to={releaseHref(r)}><Picture src={r.cover} alt={`${r.title} 正式发行封面`} className="wk-cover"/></Link><div><p className="wk-meta">{r.kind} · <time dateTime={r.date}>{r.date.replaceAll('-','.')}</time></p><Link to={releaseHref(r)}><h3>{r.title}</h3></Link><p>{r.description}</p><Link className="wk-text-link" to={releaseHref(r)}>查看发行与曲目 <Arrow/></Link></div></article>)}</div>;}
- function videos(rows:Video[]){return <div className="wk-videos">{rows.map(v=><article key={v.key} className="wk-video" data-video-key={v.key}><Link className="wk-video-image" to={videoHref(v)}><Picture src={publicVideoPreview(v.url,v.preview)} alt={`${v.title} · ${v.label} · 视频预览`}/><span><Arrow/></span></Link><Link to={videoHref(v)}><h3>{v.title}</h3><p>{v.label}</p></Link></article>)}</div>;}
+ function roster(people:Person[]=design.members){return <div className="wk-members">{people.map(m=><article key={m.id} className="wk-member"><Link to={personHref(m.id)} memberId={m.id}><Picture src={`/artist/witchx/portraits/${m.stageName.toLowerCase()}.webp`} alt={`${m.cnName} ${m.stageName} · 官网具名档案卡人像`} className="wk-portrait"/><h3 lang="en">{m.stageName.toUpperCase()}</h3><p>{m.cnName}</p></Link></article>)}</div>;}
+ function releases(rows:Release[]=design.releases){return <div className="wk-releases">{rows.map(r=><article className="wk-release" key={r.key}><Link className="wk-release-cover" to={releaseHref(r)}><Picture src={r.cover} alt={`${r.title} 正式发行封面`} className="wk-cover"/><h3>{r.title}</h3><p className="wk-meta">{r.kind} · <time dateTime={r.date}>{r.date.replaceAll('-','.')}</time></p></Link></article>)}</div>;}
+ function videos(rows:Video[]){return <div className="wk-videos">{rows.map(v=><article key={v.key} className="wk-video" data-video-key={v.key}><Link className="wk-video-link" to={videoHref(v)}><span className="wk-video-image"><Picture src={publicVideoPreview(v.url,v.preview)} alt={`${v.title} · ${v.label} · 视频预览`}/></span><h3>{v.title}</h3><p>{v.label}</p></Link></article>)}</div>;}
  function timeline(){return <ol data-artist-timeline="" className="wk-timeline">{design.events.map(e=>{const r=design.releases.find(r=>r.key===e.releaseKey),v=design.works.find(v=>v.key===e.mediaKey);return <li key={e.id} id={e.id}><div className="wk-event-date"><time dateTime={e.date}>{e.date.replaceAll('-','.')}</time><span>{publicCustomArtistText(e.dateLabel)}</span></div><div className="wk-event-copy"><h3>{publicCustomArtistText(e.title)}</h3><p>{publicCustomArtistText(e.summary)}</p><div className="wk-event-links">{v&&<Link to={videoHref(v)}>查看影像 <Arrow/></Link>}{r&&<Link to={releaseHref(r)}>查看发行 <Arrow/></Link>}<a href={e.sourceUrl} target="_blank" rel="noopener noreferrer">来源 ↗</a></div></div></li>;})}</ol>;}
  function retryRecords(){return state.error?<button className="wk-button" onClick={()=>host.onRetry?host.onRetry():setRetry(n=>n+1)}>重试记录</button>:null;}
  function person(m:Person){const nativeMember=collection?.members.find(row=>row.id===m.id),next=design.members[(design.members.indexOf(m)+1)%design.members.length];return <><Link className="wk-back" to={href({member:null})}><Arrow back/> 返回成员</Link><section className="wk-person-detail" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><div><button className="wk-photo-button" aria-label={`放大${m.cnName}资料照`} onClick={()=>showPhoto(content.portraits[m.id].image,m.cnName+' · 官网资料照')}><Picture src={`/artist/witchx/portraits/${m.stageName.toLowerCase()}.webp`} alt={`${m.cnName} ${m.stageName} · 官网具名档案卡人像`} className="wk-portrait" priority/></button><button className="wk-text-link" onClick={()=>showPhoto(content.portraits[m.id].image,m.cnName+' · 原图')}>查看原图 <Arrow/></button></div><div className="wk-person-copy" data-member-module="basic"><p className="wk-stage-name">{m.stageName.toUpperCase()}</p><h1>{m.cnName}</h1><p>{m.profile}</p><dl className="wk-person-facts"><div><dt>档案姓名</dt><dd>{m.nativeName}</dd></div><div><dt>生日</dt><dd><time dateTime={m.birthDate}>{m.birthDate.replaceAll('-','.')}</time></dd></div></dl><div className="wk-actions">{nativeMember&&<a className="wk-button" href={artistMemberUrl(m.id,safeArtistReturn(url)??path)} onClick={()=>remember()}>个人档案与记录 <Arrow/></a>}{!nativeMember&&<span className="wk-note">{state.loading?'正在读取个人档案…':'个人档案暂时无法读取。'}{retryRecords()}</span>}</div><p className="wk-note">中文名为本页转写，不作为官方中文姓名。完整档案卡来自公司官网，拍摄及测量时期未注明。</p></div></section><section className="wk-section" data-member-module="public">{heading('相关公开影像','WATCH')}{videos(design.works.filter(v=>(v.memberIds as string[]).includes(m.id)))}</section>
@@ -120,7 +120,10 @@ export default function WitchxArtist({content}:{content:CandidateContent}){
        {heading(route.format === 'stage' ? '舞台' : route.format === 'mv' ? 'MV' : '影像与舞台', 'WATCH')}
        {matchedVideos.length ? videos(matchedVideos) : <p className="wk-empty">没有符合条件的影像。</p>}
      </section>}
-     {showReleases && (matchedReleases.length ? releases(matchedReleases) : <p className="wk-empty">没有符合条件的发行。</p>)}
+     {showReleases && <section className="wk-section">
+       {heading('发行', 'RELEASES')}
+       {matchedReleases.length ? releases(matchedReleases) : <p className="wk-empty">没有符合条件的发行。</p>}
+     </section>}
    </>;
  }
  function missing(message:string,section:string){return <section className="wk-empty"><h1>{message}</h1><Link className="wk-button" to={sectionHref(section)}>返回目录</Link></section>;}
@@ -133,14 +136,35 @@ export default function WitchxArtist({content}:{content:CandidateContent}){
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','TIMELINE')}{timeline()}</>;
  else body=<>
-<figure className="wk-group"><OriginalPhotoLink className="wk-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'W!TCHX · Bugs 艺人资料合照'})}><Picture src={content.hero.image!} alt="W!TCHX · Bugs 艺人资料合照" priority/></OriginalPhotoLink><figcaption>Bugs 艺人资料合照 · 拍摄时期未注明 · 点击查看原图</figcaption></figure>
-<header className="wk-page-title"><h1>W!TCHX</h1></header>
-<ArtistInformation slug="witchx" catalog={state.data}/>
+<section className="wk-artist-hero" aria-labelledby="wk-artist-name">
+ <header className="wk-hero-copy">
+  <p className="wk-agency">IN MEDIA A&amp;D</p>
+  <h1 id="wk-artist-name"><span className="wk-semantic-name">W!TCHX</span><img src="/artist/witchx/portraits/company-wordmark.png" width="360" height="92" alt=""/></h1>
+  <ArtistIntroduction slug="witchx"/>
+  <nav className="wk-hero-actions" aria-label="团体档案入口"><Link className="wk-button" to={sectionHref('members')}>认识成员 <Arrow/></Link><Link to={sectionHref('works')}>作品与影像 <Arrow/></Link></nav>
+  <a className="wk-hero-source" href="https://kpopmedia.co.kr/#artists" target="_blank" rel="noopener noreferrer">官方艺人介绍 ↗</a>
+ </header>
+ <figure className="wk-group"><OriginalPhotoLink className="wk-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'W!TCHX · Bugs 艺人资料合照'})}><Picture src={content.hero.image!} alt="W!TCHX · Bugs 艺人资料合照" priority/></OriginalPhotoLink><figcaption>Bugs 艺人资料合照 · 拍摄时期未注明 · 查看原图</figcaption></figure>
+</section>
 <section className="wk-home-members" aria-label="成员">{heading('成员','MEMBERS')}{roster()}<details className="wk-roster-note group-roster-source"><summary>成员照片来源</summary><p>{rosterPhotoCredit}中文名为艺名转写。</p></details></section>
 <section className="wk-section">{heading('影像与舞台','VIDEO')}{videos(design.works)}</section>
-<section className="wk-section">{heading('发行','ALBUM')}{releases()}</section>
+<section className="wk-section">{heading('发行','RELEASES')}{releases()}</section>
 <section className="wk-section">{heading('时间轴','TIMELINE')}{timeline()}</section>
-<section className="wk-introduction"><Picture src={design.logo} alt="W!TCHX 官方标识" priority/><div><h2>W!TCHX</h2><p className="wk-debut">公司标注出道 · 2024.10.31</p><ArtistIntroduction slug="witchx"/><a href="https://kpopmedia.co.kr/#artists" target="_blank" rel="noopener noreferrer">IN MEDIA A&D · 官方艺人介绍 ↗</a></div></section>
+<ArtistInformation slug="witchx" catalog={state.data}/>
 </>;
- return <Navigation.Provider value={go}><ImageRecoveryProvider><div data-idol-witchx-native><a className="wk-skip" href="#artist-content">跳到正文</a><header className="wk-masthead"><div className="wk-header-inner"><Link className="wk-wordmark" to={path}><img src="/artist/witchx/portraits/company-wordmark.png" alt="W!TCHX" width={90} height={25}/><small>IN MEDIA A&amp;D</small></Link><nav aria-label="团体内容">{nav.map(([key,label,en])=><Link key={key} to={sectionHref(key)} className={(route.section==='records'?'works':route.section)===key?'is-current':''}><span>{en}</span><small>{label}</small></Link>)}</nav></div></header><main id="artist-content" tabIndex={-1}>{body}</main><footer className="wk-footer"><Link className="wk-wordmark" to={path}><img src="/artist/witchx/portraits/company-wordmark.png" alt="W!TCHX" width={90} height={25}/><small>IN MEDIA A&amp;D</small></Link><div><a href="https://kpopmedia.co.kr/#artists" target="_blank" rel="noopener noreferrer">IN MEDIA A&D · 官网 ↗</a><a href="/?view=groups">团体索引 <Arrow/></a></div></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}<ImageRecoveryControls/></div></ImageRecoveryProvider></Navigation.Provider>;
+ const currentSection=route.section==='records'?'works':route.section;
+ const logo=<img src="/artist/witchx/portraits/company-wordmark.png" alt="W!TCHX" width={90} height={23}/>;
+ return <Navigation.Provider value={go}><ImageRecoveryProvider><div data-idol-witchx-native>
+  <a className="wk-skip" href="#artist-content">跳到正文</a>
+  <header className="wk-masthead"><div className="wk-header-inner">
+   <Link className="wk-wordmark" to={path}>{logo}</Link>
+   <nav aria-label="团体内容">{nav.map(([key,label])=><Link key={key} to={sectionHref(key)} current={currentSection===key}>{label}</Link>)}</nav>
+  </div></header>
+  <main id="artist-content" tabIndex={-1}>{body}</main>
+  <footer className="wk-footer"><Link className="wk-wordmark" to={path}>{logo}</Link><div>
+   <a href="https://kpopmedia.co.kr/#artists" target="_blank" rel="noopener noreferrer">IN MEDIA A&D · 官网 ↗</a>
+   <a href="/?view=groups">团体索引 <Arrow/></a>
+  </div></footer>
+  {lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}<ImageRecoveryControls/>
+ </div></ImageRecoveryProvider></Navigation.Provider>;
 }

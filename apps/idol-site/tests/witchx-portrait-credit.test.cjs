@@ -29,5 +29,32 @@ test('both W!TCHX home links present the company wordmark in its light version',
     ));
   }
   const css = readFileSync('components/witchx-artist.css', 'utf8');
-  assert.match(css, /^\.wk-wordmark img\s*\{[^}]*filter:\s*invert\(1\)/m);
+  assert.match(css, /\.wk-wordmark img\s*\{[^}]*filter:\s*invert\(1\)/m);
+});
+
+test('W!TCHX unites its original wordmark, group photograph, introduction and both catalog paths', async () => {
+  const {parse}=require('next/dist/compiled/node-html-parser');
+  const document=parse(await renderArtist(group));
+  const hero=document.querySelector('.wk-artist-hero');
+  assert.equal(hero.querySelector('h1').text,'W!TCHX');
+  assert.equal(hero.querySelector('h1 img').getAttribute('src'),'/artist/witchx/portraits/company-wordmark.png');
+  assert.equal(hero.querySelector('figure img').getAttribute('src'),'/artist/witchx/dot-three-hero-20261016/group.display.webp');
+  assert.match(hero.querySelector('figure a').getAttribute('href'),/group\.original\.jpg$/);
+  assert.match(hero.querySelector('[data-home-introduction]').text,/2024 年 10 月 31 日/);
+  assert.equal(document.querySelectorAll('[data-home-introduction]').length,1);
+  assert.deepEqual(hero.querySelectorAll('nav a').map(a=>a.getAttribute('href')),
+    ['/artists/witchx?section=members','/artists/witchx?section=works']);
+  assert.equal(document.querySelectorAll('.wk-home-members .wk-member').length,5);
+  for(const query of [{},{section:'works'}]){
+    const page=parse(await renderArtist(group,query));
+    assert.equal(page.querySelector('.wk-masthead [aria-current="page"]').text,query.section?'作品':'首页');
+    assert.equal(page.querySelector('.wk-releases').parentNode.querySelector('h2').text,'发行');
+    const cards=page.querySelectorAll('.wk-video,.wk-release');
+    assert.equal(cards.length,9);
+    assert.deepEqual(cards.map(card=>card.getAttribute('class')),Array(6).fill('wk-video').concat(Array(3).fill('wk-release')));
+    for(const card of cards){
+      assert.equal(card.querySelectorAll('a').length,1);
+      assert.ok(card.querySelector('a img')&&card.querySelector('a h3'));
+    }
+  }
 });

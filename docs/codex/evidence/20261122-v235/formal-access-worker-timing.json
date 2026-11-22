@@ -1,0 +1,67 @@
+{
+  "source": "Recent successful Sites production Worker logs. The five work-detail GETs retained here were the unique /api/catalog?shape=display-v1 responses within 750 ms of the corresponding browser resource completion among the returned events. Native cache classification and elapsed time are matched by invocation request ID. Other timed samples have no matched Worker event in this capture.",
+  "browser": "formal-access-three-rounds.json",
+  "workerTiming": "wallTimeMs is total invocation duration; cpuTimeMs is CPU time. nativeElapsedMs starts at source/generation lookup and ends after the per-request selection and fence. These measurements cover overlapping work and must not be added.",
+  "rows": [
+    {
+      "group": "ADYA",
+      "round": 2,
+      "browserCompletedAtUtc": "2026-11-22T04:59:05.829Z",
+      "workerLoggedUtc": "2026-11-22T04:59:06.158Z",
+      "requestId": "bb44f15180d89209596e71f186e0ce74",
+      "status": 200,
+      "wallTimeMs": 209,
+      "cpuTimeMs": 6,
+      "nativeCache": "hit",
+      "nativeElapsedMs": 203
+    },
+    {
+      "group": "Cherry Bullet",
+      "round": 2,
+      "browserCompletedAtUtc": "2026-11-22T04:59:08.429Z",
+      "workerLoggedUtc": "2026-11-22T04:59:08.751Z",
+      "requestId": "654bbb074183b44d85babbb633bd3f72",
+      "status": 200,
+      "wallTimeMs": 235,
+      "cpuTimeMs": 21,
+      "nativeCache": "hit",
+      "nativeElapsedMs": 203
+    },
+    {
+      "group": "IVE",
+      "round": 3,
+      "browserCompletedAtUtc": "2026-11-22T04:59:16.519Z",
+      "workerLoggedUtc": "2026-11-22T04:59:16.860Z",
+      "requestId": "58e5cdf238c040705d73c1560fefa5d4",
+      "status": 200,
+      "wallTimeMs": 212,
+      "cpuTimeMs": 11,
+      "nativeCache": "hit",
+      "nativeElapsedMs": 199
+    },
+    {
+      "group": "ADYA",
+      "round": 3,
+      "browserCompletedAtUtc": "2026-11-22T04:59:21.583Z",
+      "workerLoggedUtc": "2026-11-22T04:59:21.700Z",
+      "requestId": "ace0c32cfb751989977340af01caf0ee",
+      "status": 200,
+      "wallTimeMs": 1304,
+      "cpuTimeMs": 359,
+      "nativeCache": "miss",
+      "nativeElapsedMs": 1045
+    },
+    {
+      "group": "Cherry Bullet",
+      "round": 3,
+      "browserCompletedAtUtc": "2026-11-22T04:59:24.137Z",
+      "workerLoggedUtc": "2026-11-22T04:59:24.498Z",
+      "requestId": "e9a38216074b8decb5af224e70eb112a",
+      "status": 200,
+      "wallTimeMs": 203,
+      "cpuTimeMs": 9,
+      "nativeCache": "hit",
+      "nativeElapsedMs": 190
+    }
+  ]
+}

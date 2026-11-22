@@ -6,6 +6,8 @@ ADYA、W!TCHX 的详情主按钮回原事件、次入口进本团作品库已上
 
 分享链接的首页闪现已在 ADYA、BEWAVE、SPIA、W!TCHX、Candy Shop、Geenius、ODD YOUTH、TRACER、YOUNG POSSE 九团解决。成员、舞台目录、时间轴共 27 个正式链接的首份网页均显示所选栏目。[前四团](worklogs/20261122-v245-release.md) · [后五团](worklogs/20261122-v246-release.md)
 
+VVUP 的三个分享地址从 v250 起也直接显示成员、舞台或时间轴。ITZY 和 LE SSERAFIM 的成员分享地址仍先显示作品收藏加载提示，再出现本人档案。后续可验证在首份网页直接使用已核的公开姓名与肖像，现有私人记录随目录加载。[VVUP 正式复验](worklogs/20261123-v250-release.md) · [ITZY 改前及当前详情](worklogs/20261123-itzy-member-profile.md)
+
 | 访客会遇到什么 | 建议讨论的范围与取舍 |
 | --- | --- |
 | **桌面上第一次打开短目录，返回时原卡挪了一点。** 在 1,280 px 视口，首次加载结束后滚动条消失，正文由 1,265 px 变为 1,280 px。AtHeart 的 Nahyun、HITGS 的 Iyoo、VCHA 的 Kaylee 分别向下移动 35、21、42 px，三张卡都在屏内并已获得焦点。等目录读入再进入资料，两种返回方式共 6 次均精确复位。 | 可保留当前短页的完整宽度，也可让这三个桌面目录始终预留滚动条空间，或让初始目录与读入后的卡片采用相同几何尺寸。前者保留了 15 px 可用宽度，后两种各需核对原有团页排版。讨论时可用首次进入、立即点人再返回的同一流程比较哪种更便于继续浏览。[v223 正式逐次读数](evidence/20261122-v223/formal-member-return.json) |

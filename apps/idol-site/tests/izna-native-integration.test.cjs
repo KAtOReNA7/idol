@@ -126,13 +126,21 @@ test('7 members and all 15 izna video slots preserve exact identity when two wor
  assert.equal(api.validIznaCatalog(actual),true);
  assert.equal(design.members.length,7);
  assert.equal(design.works.length,15);
- assert.equal(api.iznaNativeBindings(actual).length,21);
+ const bindings=api.iznaNativeBindings(actual);
+ assert.equal(bindings.length,22);
+ assert.equal(bindings.filter(b=>b.kind==='member'||b.scoreBindingVerified).length,21);
  for(const m of design.members){assert.ok(api.boundIznaMember(actual,m.id));const ret='#/person/'+m.id;const href=api.nativeHref(design,{action:'open-member',groupId:design.group.id,memberId:m.id,returnTo:ret},services(actual));const u=new URL(href,'https://test.invalid');assert.equal(u.searchParams.get('member'),m.id);assert.equal(u.searchParams.get('returnTo'),api.artistUrl(design,ret));}
  for(const v of design.works){
   const href=api.nativeHref(design,request(v),services(actual));
   if(v===original){
    assert.equal(api.boundIznaWork(actual,v),null);
    assert.equal(href,null);
+   const watch=new URL(api.nativeHref(design,{...request(v),action:'open-work'},services(actual)),'https://test.invalid');
+   assert.equal(watch.searchParams.get('work'),originalId);
+   assert.equal(watch.searchParams.get('video'),'stage');
+   const conflict=clone();
+   conflict.works.find(w=>w.id===japaneseId).stage.sameSongFallback.sourceWorkId='recUnknown';
+   assert.equal(api.nativeHref(design,{...request(v),action:'open-work'},services(conflict)),null);
    continue;
   }
   assert.equal(api.boundIznaWork(actual,v)?.id,v.id);

@@ -34,6 +34,11 @@
 .candidate-izna-experience .video-stage>img{object-fit:contain;opacity:1}
 .candidate-izna-experience .video-play{min-height:64px;min-width:92px;border:1px solid var(--rose);border-radius:0;background:#090e1de8;color:var(--rose);padding:16px 22px}
 .candidate-izna-experience .video-play:hover{background:var(--rose);color:var(--paper)}
+/* Keep the Music Bank poster's face and show mark visible before playback. */
+.work-experience[data-work-theme="izna"] .video-stage>img[src="/artist/stage-video-previews/rTj06CFlDTU.webp"]~.video-play{
+ left:clamp(12px,1.5vw,20px);bottom:clamp(12px,1.5vw,20px);top:auto;transform:none;
+ flex-direction:row;gap:8px;min-height:48px;padding:10px 14px;
+}
 .candidate-izna-experience :is(.video-caption,.video-fallback){font-size:12px;line-height:1.7}
 .candidate-izna-experience .video-caption{gap:12px;flex-wrap:wrap}
 .candidate-izna-experience .video-caption>span{min-width:0;overflow-wrap:anywhere}

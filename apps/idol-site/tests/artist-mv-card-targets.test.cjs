@@ -12,13 +12,13 @@ const origin = 'https://artist.test';
 const reviewedImports = require('../data/reviewed-editorial-work-imports.json');
 const url = href => new URL(href, origin);
 const linkOf = node => node.tagName==='A' ? node : node.querySelector('a');
-const assertPlayer = (href, work, from) => {
+const assertPlayer = (href, work, from, slot = 'MV') => {
   const target = url(href);
   assert.equal(target.origin, origin);
   assert.equal(target.pathname, '/');
   assert.equal(target.searchParams.get('view'), 'works');
   assert.equal(target.searchParams.get('work'), work);
-  assert.equal(target.searchParams.get('video'), null);
+  assert.equal(target.searchParams.get('video'), slot === 'STAGE' ? 'stage' : null);
   const back = url(target.searchParams.get('returnTo'));
   assert.equal(back.pathname, url(from).pathname);
   assert.deepEqual(Object.fromEntries(back.searchParams), Object.fromEntries(url(from).searchParams));
@@ -125,7 +125,7 @@ test('same-title sources, conflicting record IDs, duplicates and placeholders ca
 });
 
 for(const slug of ['ifeye','izna']){
-  test(slug+' original home, every MV, filtered directory and related cards link straight to their own player',()=>{
+  test(slug+' original home, filtered directories and related cards open every MV and exact stage player',()=>{
     const native=load('lib/idol/'+slug+'-native.ts');
     const model=load('lib/idol/'+slug+'-runtime/model.mjs');
     const {bindEditorialLinks,editorialRequest}=load('lib/idol/editorial-mv-links.mjs');
@@ -136,13 +136,16 @@ for(const slug of ['ifeye','izna']){
     const {design}=native;
     const field=slug==='izna'?'kind':'type',category=slug==='izna'?'MV':'mv';
     const mvDirectory='#/works?'+field+'='+category;
+    const stageDirectory='#/works?'+field+'='+(slug==='izna'?'STAGE':'stage');
     const mvs=design.works.filter(v=>v.type==='MV');
+    const stages=design.works.filter(v=>v.type==='STAGE');
     const sample=mvs.find(v=>v.title===(slug==='izna'?'IZNA':'NERDY'));
     const detailHash=v=>'#/works?'+field+'='+category+'&detail='+encodeURIComponent(v.key);
-    const routes=['#/home',mvDirectory,mvDirectory+'&q='+encodeURIComponent(sample.title),
+    const routes=['#/home',mvDirectory,stageDirectory,mvDirectory+'&q='+encodeURIComponent(sample.title),
+      stageDirectory+'&q='+encodeURIComponent(stages[0].title),
       ...design.releases.map(r=>'#/works?'+field+'=release&detail='+encodeURIComponent(r.key)),
       ...design.members.map(m=>'#/person/'+m.id),'#/timeline'];
-    const seen=new Set();let filteredSample=false;
+    const seen=new Set(),seenStages=new Set();let filteredSample=false;
     const nativeRequest=(hash,back)=>editorialRequest(design,hash,back,model.routeCategory);
     for(const route of routes){
       const html=mountAstra({...runtime,...renderer},slug,design,route);
@@ -157,20 +160,46 @@ for(const slug of ['ifeye','izna']){
         for(const [anchor,raw] of originals){
           const request=nativeRequest(raw,route);
           const href=anchor.getAttribute('href');
-          if(request?.slotType!=='MV'||state==='missing'){
+          if(!request?.slotType||state==='missing'||request.slotType==='STAGE'&&state!=='ready'){
             assert.equal(href,model.artistUrl(design,raw));
             continue;
           }
-          assertPlayer(href,request.workId,model.artistUrl(design,route));
+          assertPlayer(href,request.workId,model.artistUrl(design,route),request.slotType);
           assert.equal(anchor.dataset.editorialFocusHref,model.artistUrl(design,raw));
           if(route===mvDirectory)seen.add(request.workId);
+          if(route===stageDirectory)seenStages.add(request.videoId);
           if(route.includes('&q=')&&request.workId===sample.id)filteredSample=true;
         }
       }
     }
     assert.deepEqual(seen,new Set(mvs.map(v=>v.id)));
+    assert.deepEqual(seenStages,new Set(stages.map(v=>v.videoId)));
     assert.ok(filteredSample);
     assert.equal(new URL(model.artistUrl(design,detailHash(sample)),origin).pathname,group.path);
+  });
+
+  test(slug+' legacy stage bookmarks retain a single in-site watch action and the original video identity',()=>{
+    const {design}=load('lib/idol/'+slug+'-native.ts');
+    const {presentEditorialStageAction}=load('lib/idol/editorial-mv-links.mjs');
+    const runtime=load('lib/idol/izna-runtime/runtime.mjs');
+    const renderer=load('lib/idol/'+slug+'-runtime/'+slug+'.mjs');
+    const prefix=slug==='izna'?'#/works?kind=STAGE':'#/works?type=stage';
+    for(const stage of design.works.filter(v=>v.type==='STAGE')){
+      const html=mountAstra({...runtime,...renderer},slug,design,prefix+'&detail='+encodeURIComponent(stage.key));
+      const root=parse(html),actions=root.querySelector('.detail-actions'),button=actions.querySelector('[data-open-work]');
+      assert.equal(actions.querySelector('a[target="_blank"]').getAttribute('href'),stage.url);
+      button.dataset={};
+      presentEditorialStageAction(root,button,stage.url);
+      presentEditorialStageAction(root,button,stage.url);
+      assert.equal(actions.querySelector('a[target="_blank"]'),null);
+      assert.deepEqual(actions.querySelectorAll('button').map(b=>b.textContent),['站内观看舞台']);
+      assert.equal(button.getAttribute('data-open-work'),stage.key);
+      assert.equal(button.dataset.editorialStageOpen,'true');
+      if(stage.videoId==='rTj06CFlDTU'){
+        assert.match(root.textContent,/KBS Music Bank 舞台/);
+        assert.ok(root.querySelector('img[src="/artist/stage-video-previews/rTj06CFlDTU.webp"]'));
+      }
+    }
   });
 }
 

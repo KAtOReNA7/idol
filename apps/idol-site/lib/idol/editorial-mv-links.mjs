@@ -18,7 +18,7 @@ export function editorialRequest(data,hash,returnTo,routeCategory) {
     videoType:video.videoType??null,slotType:video.type,returnTo}:null;
 }
 
-/** Keep the public editorial route as the focus key when a verified MV can open the shared player. */
+/** Keep the public editorial route as the focus key when a video can open its exact player. */
 export function bindEditorialLinks({root, data, origin, artistUrl, nativeRequest, nativeHref, native}) {
   const routeKey=data.group.slug+'Route';
   for (const link of root.querySelectorAll('a[href^="#/"],a[data-'+data.group.slug+'-route]')) {
@@ -28,15 +28,29 @@ export function bindEditorialLinks({root, data, origin, artistUrl, nativeRequest
     link.dataset[routeKey] = route;
     const request = nativeRequest(route, origin);
     let destination = null;
-    if (request?.slotType === 'MV') {
-      destination = nativeHref(data, request, native)
-        ?? native?.pendingMvHref?.(request.workId, request.videoId, artistUrl(data, origin));
+    if (request?.slotType === 'MV' || request?.slotType === 'STAGE') {
+      destination = nativeHref(data, request, native);
+      if (!destination && request.slotType === 'MV') {
+        destination = native?.pendingMvHref?.(request.workId, request.videoId, artistUrl(data, origin));
+      }
     }
     if (destination) link.dataset.editorialFocusHref = local;
     else delete link.dataset.editorialFocusHref;
     const href=destination??local;
     if(link.getAttribute('href')!==href)link.setAttribute('href',href);
   }
+}
+
+/** Old stage bookmarks use the same verified player as the stage directory. */
+export function presentEditorialStageAction(root, button, sourceUrl) {
+  const actions = root.querySelector('.detail-actions');
+  const external = Array.from(actions?.querySelectorAll('a[target="_blank"]') ?? [])
+    .find(link => link.getAttribute('href') === sourceUrl);
+  external?.remove();
+  button.textContent = '站内观看舞台';
+  button.classList.remove('button-outline');
+  button.classList.add('primary');
+  button.dataset.editorialStageOpen = 'true';
 }
 
 export function updateEditorialAccounts(root,data,accounts) {

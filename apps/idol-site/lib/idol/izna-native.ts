@@ -1,6 +1,6 @@
 import design from '../../data/izna-editorial.json';
 import assets from '../../data/izna-assets.json';
-import {stageHasValidBinding,stageSourceKey} from './stage-source';
+import {stageHasValidBinding,stageSourceKey,validSameSongFallback} from './stage-source';
 import type {CatalogView,Member,Work} from './types';
 import type {AssetContext,AssetBinding,NativeBinding} from './izna-runtime/host.mjs';
 export {design};
@@ -35,19 +35,40 @@ export function boundIznaMember(catalog:CatalogView|null,id:string):Member|null{
  const rows=catalog.members.filter(m=>m.id===id),m=rows.length===1?rows[0]:null;
  return m&&[...m.groupIds,...(m.formerGroupIds??[])].includes(design.group.id)?m:null;
 }
-export function boundIznaWork(catalog:CatalogView|null,video:IznaVideo):Work|null{
+function resolvedIznaWork(catalog:CatalogView|null,video:IznaVideo,watchOnly:boolean):Work|null{
  if(!catalog||!validIznaCatalog(catalog)||!design.works.some(v=>v.key===video.key&&v.id===video.id&&v.videoId===video.videoId&&v.type===video.type&&v.videoType===video.videoType&&v.url===video.url))return null;
  const rows=catalog.works.filter(w=>w.id===video.id),w=rows.length===1?rows[0]:null;
  if(!w||w.placeholder||!w.groupIds.includes(design.group.id))return null;
- if(catalog.works.some(other=>other.id!==w.id&&(iznaYoutubeIdentity(other.url)===video.videoId||iznaYoutubeIdentity(other.stage?.url??'')===video.videoId)))return null;
+ for(const other of catalog.works){
+  if(other.id===w.id)continue;
+  if(iznaYoutubeIdentity(other.url)===video.videoId)return null;
+  const stage=other.stage;
+  if(!stage||iznaYoutubeIdentity(stage.url)!==video.videoId)continue;
+  const fallback=stage.sameSongFallback;
+  if(!watchOnly||video.type!=='STAGE'||!fallback||stage.clip||stageSourceKey(stage)!==video.videoId
+   ||fallback.sourceWorkId!==w.id||fallback.targetWorkId!==other.id||fallback.groupId!==design.group.id
+   ||!other.groupIds.includes(design.group.id)||!validSameSongFallback(stage))return null;
+ }
  if(video.type==='MV')return iznaYoutubeIdentity(w.url)===video.videoId&&w.videoType===video.videoType?w:null;
  const stage=w.stage;
  return stage&&stage.videoId===video.videoId&&iznaYoutubeIdentity(stage.url)===video.videoId&&stage.kind===video.videoType&&stageSourceKey(stage)===video.videoId&&!stage.clip?w:null;
 }
+export function boundIznaWork(catalog:CatalogView|null,video:IznaVideo):Work|null{
+ return resolvedIznaWork(catalog,video,false);
+}
 export function iznaNativeBindings(catalog:CatalogView|null):NativeBinding[]{
  const bindings:NativeBinding[]=[];
  for(const m of design.members)if(boundIznaMember(catalog,m.id))bindings.push({kind:'member',groupId:design.group.id,memberId:m.id,evidence:'catalog:unique-member-and-group'});
- for(const v of design.works){const w=boundIznaWork(catalog,v);if(w)bindings.push({kind:'video',groupId:design.group.id,workId:w.id,videoId:v.videoId,videoType:v.videoType,slotType:v.type as 'MV'|'STAGE',sourceKey:v.videoId,parentWorkIds:[w.id],clip:null,scoreBindingVerified:v.type==='MV'||stageHasValidBinding(w.stage),evidence:'catalog:unique-work-exact-video-slot'});}
+ for(const v of design.works){
+  const exact=boundIznaWork(catalog,v);
+  // An explicitly credited original can be watched when another edition borrows its stage.
+  // Its shared source cannot grant an editorial rating handoff.
+  const w=exact??(v.type==='STAGE'?resolvedIznaWork(catalog,v,true):null);
+  if(w)bindings.push({kind:'video',groupId:design.group.id,workId:w.id,videoId:v.videoId,videoType:v.videoType,
+   slotType:v.type as 'MV'|'STAGE',sourceKey:v.videoId,parentWorkIds:[w.id],clip:null,
+   scoreBindingVerified:!!exact&&(v.type==='MV'||stageHasValidBinding(w.stage)),
+   evidence:exact?'catalog:unique-work-exact-video-slot':'catalog:credited-original-stage'});
+ }
  return bindings;
 }
 /** A record relationship is not cast evidence: both the independently reviewed

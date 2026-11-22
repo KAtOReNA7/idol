@@ -1,4 +1,4 @@
-import {editorialRequest,bindEditorialLinks,restoreEditorialMvFocus,updateEditorialAccounts} from '../editorial-mv-links.mjs';
+import {editorialRequest,bindEditorialLinks,presentEditorialStageAction,restoreEditorialMvFocus,updateEditorialAccounts} from '../editorial-mv-links.mjs';
 import {createAstraRuntime} from '../izna-runtime/runtime.mjs';
 import {createIfeyeModule} from './ifeye.mjs';
 import {groups,reviewPath,validRoute,readReviewUrl,artistUrl,nativeHref,reviewState,savedPosition,publicPosition,routeCategory} from './model.mjs';
@@ -13,7 +13,9 @@ export function readIfeyeNavigationFocus(root){
 }
 export function restoreIfeyeNavigationFocus(root,key){
   if(key?.kind==='native'&&nativeActions.has(key.value)){
-    const button=[...root.querySelectorAll('[data-ifeye-native-focus]')].find(n=>n.dataset.ifeyeNativeFocus===key.value);
+    const controls=[...root.querySelectorAll('[data-ifeye-native-focus]')];
+    const button=controls.find(n=>n.dataset.ifeyeNativeFocus===key.value)
+      ?? (key.value==='open-rating' && controls.find(n=>n.dataset.editorialStageOpen==='true'));
     if(button&&!button.disabled&&!button.closest('[hidden],[inert],[aria-hidden="true"]')){button.focus({preventScroll:true});return true;}
     restoreFocus(root,null);return false;
   }
@@ -100,10 +102,14 @@ export function mountIfeyeEditorial({host,data,resolveAsset,native,onStatus=()=>
     let button=root.querySelector('[data-open-work],[data-open-release]');
     if(!button){button=doc.createElement('button');button.type='button';button.dataset.astraNativeOpen='true';button.className='action';section.append(button);}
     button.textContent=request.action==='open-member'?'查看成员手帐 ↗':request.action==='open-release'?'查看发行记录 ↗':'查看作品手帐 ↗';
+    if(request.slotType==='STAGE'){
+      const stage=data.works.find(row=>row.type==='STAGE' && row.id===request.workId && row.videoId===request.videoId);
+      presentEditorialStageAction(root,button,stage?.url);
+    }
     button.dataset.ifeyeNativeFocus=request.action;
     button.disabled=!allowed;button.removeAttribute('aria-describedby');
-    if(!allowed){const reason=doc.createElement('p');reason.id=root.getAttribute('data-astra-instance')+'--native-pending';reason.textContent=request.action==='open-release'?'发行资料可浏览，目前没有对应的手帐记录。':'暂无对应的手帐记录，仍可浏览本页资料。';button.setAttribute('aria-describedby',reason.id);section.append(reason);}
-    if(request.action==='open-work'){
+    if(!allowed){const reason=doc.createElement('p');reason.id=root.getAttribute('data-astra-instance')+'--native-pending';reason.textContent=request.slotType==='STAGE'?'本场暂时无法播放，可返回作品目录选择其他舞台。':request.action==='open-release'?'发行资料可浏览，目前没有对应的手帐记录。':'暂无对应的手帐记录，仍可浏览本页资料。';button.setAttribute('aria-describedby',reason.id);section.append(reason);}
+    if(request.action==='open-work' && request.slotType!=='STAGE'){
       const ratingRequest={...request,action:'open-rating'},ratingAllowed=canRequest(ratingRequest);
       const rating=doc.createElement('button');rating.type='button';rating.className='action';rating.dataset.astraNativeOpen='open-rating';rating.textContent='评分与观看记录 ↗';rating.disabled=!ratingAllowed;section.append(rating);
       rating.dataset.ifeyeNativeFocus='open-rating';

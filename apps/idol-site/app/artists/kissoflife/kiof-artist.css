@@ -7,3 +7,12 @@
 
 /* Let record columns shrink while the wins table keeps its own scroll area. */
 .kf-record-columns>section{min-width:0}
+
+.kf-stage-card > a { display: block; }
+.kf-stage-card > a:focus-visible { outline: 3px solid var(--kf-cherry); outline-offset: 4px; }
+.kf-stage-card .kf-work-thumb { position: relative; }
+.kf-stage-card .artist-work-preview { display: block; width: 100%; height: 100%; }
+.kf-stage-card .artist-work-preview img { width: 100%; height: 100%; object-fit: contain; }
+.kf-stage-card .work-preview-label { position: absolute; bottom: 5px; left: 5px; padding: 2px 5px; background: var(--kf-cream); color: var(--kf-ink); }
+.kf-stage-card p { font-size: 13px; margin-bottom: 8px; }
+.kf-stage-action { display: flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 10px; color: var(--kf-cherry); font-size: 14px; font-weight: 700; }

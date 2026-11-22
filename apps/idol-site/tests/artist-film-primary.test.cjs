@@ -3,6 +3,45 @@ const test = require('node:test');
 const {parse} = require('next/dist/compiled/node-html-parser');
 const {artistCatalog, registry, renderArtist} = require('./fixtures/current-artist-pages.cjs');
 
+test('KISS OF LIFE stage cards use one link and the matching thumbnail, date and score across the full stage filter',async()=>{
+  const group=registry.find(g=>g.slug==='kissoflife'), catalog=artistCatalog(group);
+  const unfiltered=parse(await renderArtist(group,{section:'works',format:'stage'}));
+  const cards=unfiltered.querySelectorAll('.kf-work-grid .kf-work');
+  assert.equal(cards.length,catalog.works.filter(w=>w.stage||w.stageSupplement?.alternatives.length).length);
+  for(const card of cards){
+    const links=card.querySelectorAll('a');
+    assert.equal(links.length,1);
+    const target=new URL(links[0].getAttribute('href'),'https://site.invalid');
+    assert.equal(target.searchParams.get('video'),'stage');
+    const work=catalog.works.find(w=>w.id===target.searchParams.get('work'));
+    assert.equal(links[0].getAttribute('data-member-work-trigger'),work.id);
+    assert.ok(work.stage);
+    assert.match(card.text,/我的整体舞台分/);
+    assert.ok(card.text.includes(work.stage.publishedDate));
+    assert.doesNotMatch(card.text,/我的 MV 分/);
+    const art=card.querySelector('.artist-work-preview img');
+    assert.ok(art);
+    if(!card.querySelector('.work-preview-label'))assert.ok(art.getAttribute('src').includes(work.stage.videoId));
+  }
+  const same=catalog.works.find(w=>w.id==='rec28ldfRTrMgm');
+  const render=async(format,overrides={})=>{
+    const data={...catalog,works:[{...same,...overrides}]};
+    const fields={section:'works',format,q:'Te Quiero'};
+    return parse(await renderArtist(group,fields,data)).querySelector('.kf-work');
+  };
+  const stage=await render('stage',{score:8,stageScore:0});
+  assert.match(stage.text,/与 MV 页为同一支表演视频/);
+  assert.match(stage.querySelector('.kf-score').text,/0\.0/);
+  const mv=await render('mv',{score:8,stageScore:0});
+  assert.equal(new URL(mv.querySelector('a').getAttribute('href'),'https://x.invalid').searchParams.get('video'),null);
+  assert.match(mv.querySelector('.kf-score').text,/8\.0/);
+  const other=await render('stage',{stage:null,stageScore:8,stageSupplement:{alternatives:[{id:'view-only'}]}});
+  assert.match(other.text,/其他现场 · 仅供观看/);
+  assert.equal(other.querySelector('.kf-score'),null);
+  const stale=await render('stage',{stage:{...same.stage,scoreBinding:null},stageScore:8});
+  assert.match(stale.querySelector('.kf-score').text,/未评分/);
+});
+
 test('ADYA RIZZ keeps its single official cut on the score selected in the catalog and in saved bookmarks', async () => {
   const group = registry.find(g => g.slug === 'adya'), catalog = artistCatalog(group);
   const work = catalog.works.find(w => w.id === 'rec28ldfRTrHhL');

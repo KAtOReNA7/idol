@@ -2,6 +2,9 @@
 import {MemberWorkIdentityPhoto} from '@/components/member-work-identity-photo';
 import {followerAccountLabel} from '@/lib/idol/follower-count.mjs';
 import {publicVideoCover} from '@/lib/idol/mv-public-media';
+import {ArtistWorkPreview} from '@/components/app-image-presentation';
+import {stageKindLabel} from '@/lib/idol/stage-display';
+import {stageHasValidBinding} from '@/lib/idol/stage-source';
 import {ArtistInformation} from '@/components/artist-information';
 import {publicCustomArtistText,publicCustomArtistCaption} from '@/lib/idol/custom-artist-copy';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
@@ -34,7 +37,21 @@ function subscribe(fn:()=>void){window.addEventListener('popstate',fn);window.ad
 function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}
 function Picture({src,alt,priority=false,identityKey}:{src?:string|null;alt:string;priority?:boolean;identityKey?:string}){return <ReliableImage src={src} identityKey={identityKey} alt={alt} referrerPolicy="no-referrer" priority={priority} fallback={<div className="kf-photo-empty"><ImageIcon size={22}/><span>{src?'图片暂未加载':'本 MV 个人造型图暂缺'}</span></div>}/>;}
 function Heading({label,title,onMore}:{label:string;title:string;onMore?:()=>void}){return <div className="kf-heading"><div><small>{label}</small><h2>{title}</h2></div>{onMore&&<button onClick={onMore}>查看全部<ArrowUpRight size={14}/></button>}</div>;}
-function WorkCard({work,returnTo}:{work:Work;returnTo:string}){
+function WorkCard({work,returnTo,stageView=false}:{work:Work;returnTo:string;stageView?:boolean}){
+ if(stageView){
+  const source=work.stage;
+  const score=stageHasValidBinding(source)?work.stageScore:null;
+  return <article className="kf-work kf-stage-card">
+   <A href={artistWorkUrl(work,true,returnTo)} data-member-work-trigger={work.id}>
+    <div className="kf-work-thumb"><ArtistWorkPreview work={work} stage/></div>
+    <h3>{work.song||work.name}</h3>
+    {source?<><p>{[stageKindLabel(source.kind),source.channel,source.publishedDate].filter(Boolean).join(' · ')}</p>
+     {source.reusesOriginalVideo&&<p>与 MV 页为同一支表演视频。</p>}
+     <span className="kf-score">我的整体舞台分 <b>{artistWorkScoreLabel(score)}{score===null?'':' / 10'}</b></span></>:<p>其他现场 · 仅供观看</p>}
+    <span className="kf-stage-action"><Play size={14}/>{source?'观看与舞台评分':'查看其他现场'}</span>
+   </A>
+  </article>;
+ }
  const id=videoId(work.url);
  return <article className="kf-work"><A href={artistWorkUrl(work,false,returnTo)}><div className="kf-work-thumb"><ReliableImage src={id?(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null} identityKey={`work:${work.id}:thumbnail`} alt={`${work.song||work.name} 视频封面`} loading="lazy" referrerPolicy="no-referrer" fallback={<div className="kf-text-cover"><strong>{work.song||work.name}</strong><Play size={24}/></div>}/></div><h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className="kf-score">我的 MV 分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className="kf-work-actions"><A className="kf-button" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className="kf-button" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;
 }
@@ -98,7 +115,7 @@ export default function KiofArtist({content}:{content:KiofContent}){
 </>}
  {route.section==='members'&&<section><Heading label="MEMBERS / 成员档案" title="KISS OF LIFE MEMBERS"/>{roster()}</section>}
  {route.section==='updates'&&<section><Heading label="TIMELINE" title="大事时间轴"/><ArtistTimelineHost groupId={content.groupId} catalog={data} loading={loading} error={error} onRetry={retry} background={news()}/></section>}
- {route.section==='works'&&<section><Heading label={`${collection.works.length} 支收录作品`} title="ON REPEAT"/><div className="kf-work-tools"><label><Search size={17}/><input aria-label="搜索本团作品" placeholder="搜索歌曲或版本" value={route.search} onChange={e=>navigate({search:e.target.value},true)}/></label><div className="kf-pills">{queues.map(([k,l])=><button key={k} aria-pressed={route.queue===k} onClick={()=>navigate({queue:k})}>{l}<span>{artistWorkRows(collection.works,k,route.search).length}</span></button>)}</div><div className="kf-pills" aria-label="播放内容">{([['all','全部'],['mv','MV'],['stage','可看舞台']] as const).map(([k,l])=><button key={k} aria-pressed={route.format===k} onClick={()=>navigate({format:k})}>{l}</button>)}</div></div><div className="kf-work-grid">{rows.map(w=><WorkCard key={w.id} work={w} returnTo={returnTo}/>)}</div>{!rows.length&&<div className="kf-empty"><p>没有符合条件的作品。</p><button className="kf-button" onClick={()=>navigate({queue:'all',search:'',format:'all'})}>查看全部作品</button></div>}</section>}
+ {route.section==='works'&&<section><Heading label={`${collection.works.length} 支收录作品`} title="ON REPEAT"/><div className="kf-work-tools"><label><Search size={17}/><input aria-label="搜索本团作品" placeholder="搜索歌曲或版本" value={route.search} onChange={e=>navigate({search:e.target.value},true)}/></label><div className="kf-pills">{queues.map(([k,l])=><button key={k} aria-pressed={route.queue===k} onClick={()=>navigate({queue:k})}>{l}<span>{artistWorkRows(collection.works,k,route.search).length}</span></button>)}</div><div className="kf-pills" aria-label="播放内容">{([['all','全部'],['mv','MV'],['stage','可看舞台']] as const).map(([k,l])=><button key={k} aria-pressed={route.format===k} onClick={()=>navigate({format:k})}>{l}</button>)}</div></div><div className="kf-work-grid">{rows.map(w=><WorkCard key={w.id} work={w} returnTo={returnTo} stageView={route.format==='stage'}/>)}</div>{!rows.length&&<div className="kf-empty"><p>没有符合条件的作品。</p><button className="kf-button" onClick={()=>navigate({queue:'all',search:'',format:'all'})}>查看全部作品</button></div>}</section>}
  {route.section==='records'&&<><section><Heading label="RECORDS / 发行与音乐节目" title="KEEP THE RECORD"/>{records()}</section><section><Heading label="DISCOGRAPHY / 官方发行目录" title="ALL THE SLEEVES"/><p className="kf-scope">{publicCustomArtistText(content.releaseCoverage.scope)}</p><div className="kf-discography">{content.releases.map(r=><A key={r.id} href={external(r.sourceUrl)} target="_blank" rel="noopener noreferrer"><div className="kf-album-cover"><Picture identityKey={`release:${r.id}:cover`} src={r.image} alt={r.title+' 官方发行封面'}/></div><h3>{r.title}</h3><p>{r.date} · {r.type}</p></A>)}</div></section></>}
  </>}</main><footer className="kf-footer"><strong>KISS OF LIFE</strong><A href="/?view=groups">返回团体索引<ArrowUpRight size={14}/></A><small>STAGE · 私人观看与评分手帐</small></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}</div><ImageRecoveryControls/></ImageRecoveryProvider>;
 }

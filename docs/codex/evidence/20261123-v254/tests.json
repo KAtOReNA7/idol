@@ -1,0 +1,231 @@
+{
+  "applicationCommit": "fbb29ab438216ed537e8d5ebc100548cc8e0863c",
+  "baselineApplicationCommit": "25427d0329bb9c5bffcddc755ca0ed31ebaebcc9",
+  "baselineValidationCommit": "25427d0329bb9c5bffcddc755ca0ed31ebaebcc9",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4368,"pass": 4251,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4374,"pass": 4257,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1417,"pass": 1417,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "Forever (약속) shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "Forever keeps the Black Mamba originals and credits the SM release portraits for the right members",
+        "LE SSERAFIM keeps its official directory scope and omits unknown sales or win totals",
+        "before React, native pointer and Enter activation preserve the exact track and original catalog entry",
+        "both existing catalog entries show the confirmed date and web preview, keeping their own return target",
+        "both origins bind only the Korean originals and all invalid origin, member, or other edition fragments are discarded",
+        "the first album HTML has the official logo, full five-track running order, lead, timings and release sources",
+        "the two original-photo controls open the full 1024px cover while both responsive candidates use the whole smaller image"
+      ],
+      "removedTests": [
+        "LE SSERAFIM unknown achievements never become false zero; historical counts dated",
+        "before React, native pointer and Enter activation both preserve the exact track across a return"
+      ]
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4368,"pass": 4251,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4374,"pass": 4257,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1417,"pass": 1417,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "Forever (약속) shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "Forever keeps the Black Mamba originals and credits the SM release portraits for the right members",
+        "LE SSERAFIM keeps its official directory scope and omits unknown sales or win totals",
+        "before React, native pointer and Enter activation preserve the exact track and original catalog entry",
+        "both existing catalog entries show the confirmed date and web preview, keeping their own return target",
+        "both origins bind only the Korean originals and all invalid origin, member, or other edition fragments are discarded",
+        "the first album HTML has the official logo, full five-track running order, lead, timings and release sources",
+        "the two original-photo controls open the full 1024px cover while both responsive candidates use the whole smaller image"
+      ],
+      "removedTests": [
+        "LE SSERAFIM unknown achievements never become false zero; historical counts dated",
+        "before React, native pointer and Enter activation both preserve the exact track across a return"
+      ]
+    }
+  },
+  "validationCommit": "0674a15922a5c86bf4cdef840f8f88ad0feba95e",
+  "failureInventory": "full-suite-failures.csv",
+  "compiledReleaseRoutes": {
+    "paths": ["/artists/aespa/releases/armageddon","/artists/xg/releases/new-dna","/artists/lesserafim/releases/easy"],
+    "artifact": "dist/server/ssr/index.js",
+    "listedIn": ["Windows","WSL"]
+  },
+  "input": "Windows and WSL each ran the full verification and tests in dedicated checkouts before and after the SSR fixture correction; every application source file was unchanged across the two commits.",
+  "firstAttempt": {
+    "applicationCommit": "fbb29ab438216ed537e8d5ebc100548cc8e0863c",
+    "testFixtureCommit": "0674a15922a5c86bf4cdef840f8f88ad0feba95e",
+    "reason": "Both selectors attempted to bundle the live artist components with the image fixture, which lacked the new focusLinkedRelease export. Only its ref signature was added to the SSR fixture. Other timeline test loaders import the real module.",
+    "targetedImageHostMatrixAfterFix": {"tests": 199,"passed": 199},
+    "platforms": {
+      "win": {
+        "verifyExitCode": 1,
+        "verifyNodeGroupsBeforeBuild": [{"tests": 1417,"pass": 1218,"fail": 199},{"tests": 19,"pass": 19,"fail": 0}],
+        "productionBuildReached": false,
+        "fullExitCode": 1,
+        "fullNodeTotal": {"tests": 4374,"pass": 4058,"fail": 277,"skipped": 39,"cancelled": 0,"todo": 0},
+        "retainedFailures": 78,
+        "addedFailureCountsByFile": {"tests/image-host-matrix.test.cjs": 199},
+        "clearedFailures": 0
+      },
+      "linux": {
+        "verifyExitCode": 1,
+        "verifyNodeGroupsBeforeBuild": [{"tests": 1417,"pass": 1218,"fail": 199},{"tests": 19,"pass": 19,"fail": 0}],
+        "productionBuildReached": false,
+        "fullExitCode": 1,
+        "fullNodeTotal": {"tests": 4374,"pass": 4058,"fail": 277,"skipped": 39,"cancelled": 0,"todo": 0},
+        "retainedFailures": 78,
+        "addedFailureCountsByFile": {"tests/image-host-matrix.test.cjs": 199},
+        "clearedFailures": 0
+      }
+    }
+  },
+  "compiledFeatureDelivery": {
+    "checkedBuilds": ["Windows","WSL"],
+    "method": "Read the built root and album route table, located the two album work IDs and the original MV/portrait binding in compiled code, decoded the images in dist/client, and checked both WOFF2 file headers and lengths.",
+    "easyAlbumRoute": "/artists/lesserafim/releases/easy",
+    "easyOriginalMvIds": {"EASY": "recvxyOz5Xfden","Smart": "recvxyOz5X0dv0"},
+    "foreverOriginalMvRoute": "/?view=works&work=recvxyHuKM4HSw&video=mv",
+    "foreverVideoId": "wog1R1d4zls",
+    "foreverEdition": "aespa-forever-202102",
+    "assetsPerBuild": 13,
+    "assets": [
+      {
+        "name": "EASY 480w",
+        "path": "/artist/lesserafim/easy/cover-480.webp",
+        "bytes": 33318,
+        "format": "WEBP",
+        "pixels": [480,480]
+      },
+      {
+        "name": "EASY 720w",
+        "path": "/artist/lesserafim/easy/cover-720.webp",
+        "bytes": 81196,
+        "format": "WEBP",
+        "pixels": [720,720]
+      },
+      {
+        "name": "EASY original",
+        "path": "/artist/lesserafim/photo-audit-20261025/7c210f34-ee38-4cb4-af60-47485ceaf442.png",
+        "bytes": 1822313,
+        "format": "PNG",
+        "pixels": [1024,1024]
+      },
+      {"name": "regular font","path": "/fonts/lesserafim/easy-regular.woff2","bytes": 14436,"format": "WOFF2"},
+      {"name": "bold font","path": "/fonts/lesserafim/easy-bold.woff2","bytes": 14772,"format": "WOFF2"},
+      {
+        "name": "GISELLE preview",
+        "path": "/artist/recognition-editions/aespa/forever-giselle.card.webp",
+        "bytes": 24132,
+        "format": "WEBP",
+        "pixels": [480,640]
+      },
+      {
+        "name": "GISELLE original",
+        "path": "/artist/recognition-editions/aespa/forever-giselle.original.jpg",
+        "bytes": 4786292,
+        "format": "JPEG",
+        "pixels": [2000,2997]
+      },
+      {
+        "name": "KARINA preview",
+        "path": "/artist/recognition-editions/aespa/forever-karina.card.webp",
+        "bytes": 15056,
+        "format": "WEBP",
+        "pixels": [480,640]
+      },
+      {
+        "name": "KARINA original",
+        "path": "/artist/recognition-editions/aespa/forever-karina.original.jpg",
+        "bytes": 3668820,
+        "format": "JPEG",
+        "pixels": [2000,2997]
+      },
+      {
+        "name": "NINGNING preview",
+        "path": "/artist/recognition-editions/aespa/forever-ningning.card.webp",
+        "bytes": 15516,
+        "format": "WEBP",
+        "pixels": [480,640]
+      },
+      {
+        "name": "NINGNING original",
+        "path": "/artist/recognition-editions/aespa/forever-ningning.original.jpg",
+        "bytes": 3736967,
+        "format": "JPEG",
+        "pixels": [2000,2997]
+      },
+      {
+        "name": "WINTER preview",
+        "path": "/artist/recognition-editions/aespa/forever-winter.card.webp",
+        "bytes": 11020,
+        "format": "WEBP",
+        "pixels": [480,640]
+      },
+      {
+        "name": "WINTER original",
+        "path": "/artist/recognition-editions/aespa/forever-winter.original.jpg",
+        "bytes": 3800554,
+        "format": "JPEG",
+        "pixels": [2000,2997]
+      }
+    ]
+  }
+}

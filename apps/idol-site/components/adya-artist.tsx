@@ -5,7 +5,8 @@ import {NativeTimelineDetailBack} from './native-timeline-detail-back';
 import {publicCustomArtistText} from '@/lib/idol/custom-artist-copy';
 import {libraryResultLabel} from '@/lib/idol/artist-library-format';
 import {OriginalPhotoLink} from './original-photo-link';
-import {artistMvHref} from '@/lib/idol/artist-mv-link';
+import {artistMvHref,artistMvWorkId} from '@/lib/idol/artist-mv-link';
+import {videoId} from '@/lib/idol/values';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {MemberWorkPhotoButton} from '@/components/member-work-identity-photo';
@@ -95,8 +96,14 @@ export default function AdyaArtist({content}:{content:CandidateContent}){
  function timeline(){return <ol data-artist-timeline="" className="idol-adya-timeline">{design.events.map(e=>{const r=design.releases.find(r=>r.key===e.releaseKey)!;return <li key={e.id} id={e.id}><div className="idol-adya-event-date"><time dateTime={e.date}>{e.date.replaceAll('-','.')}</time><span>{e.dateLabel}</span></div><Link className="idol-adya-event-cover" to={releaseHref(r)}><Picture src={r.cover} alt={`${r.title} 正式发行封面`}/></Link><div className="idol-adya-event-copy"><h3>{e.title}</h3><p>{publicCustomArtistText(e.summary)}</p><div className="idol-adya-event-links"><Link to={releaseHref(r)}>查看发行 <Arrow/></Link><a href={e.sourceUrl} target="_blank" rel="noopener noreferrer">来源 ↗</a></div></div></li>;})}</ol>;}
  function retryRecords(){return state.error?<button className="idol-adya-button" onClick={()=>host.onRetry?host.onRetry():setRetry(n=>n+1)}>重试记录</button>:null;}
  function filmAction(v:Video){
+  const back=safeArtistReturn(url);
   const binding=adyaNativeBinding(v,collection?.works??[]);
-  return artistFilmAction(binding,safeArtistReturn(url),v.url,Boolean(v.id),state);
+  const action=artistFilmAction(binding,back,v.url,Boolean(v.id),state);
+  if(!state.data&&back&&v.type==='STAGE'&&v.sharedStage&&videoId(v.url)===v.videoId){
+   const known=artistMvWorkId(null,content.groupId,v.url,v.id);
+   if(known)return {...action,href:artistWorkUrl({id:known},true,back),pending:false,label:'站内观看与评分',status:'舞台整体评分'};
+  }
+  return action;
  }
  function recordStatus(action:ReturnType<typeof filmAction>){
   return <div className="idol-adya-record-handoff"><p className="idol-adya-note">{action.status}</p>{retryRecords()}</div>;

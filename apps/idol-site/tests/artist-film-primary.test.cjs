@@ -71,15 +71,24 @@ test('ADYA RIZZ keeps its single official cut on the score selected in the catal
     assert.deepEqual(Object.fromEntries(new URL(target.searchParams.get('returnTo'), target).searchParams), fields);
   }
   const query = {section:'works',format:'stage',q:'RIZZ'};
-  const pending = parse(await renderArtist(group, query, null, {loading:true}));
-  const bookmark = pending.querySelector('[data-video-key="rizz-video"] a').getAttribute('href');
-  const accepted = safeArtistReturn(bookmark);
-  assert.ok(accepted);
-  assert.deepEqual(Object.fromEntries(new URL(accepted, 'https://site.invalid').searchParams),
-    Object.fromEntries(new URL(bookmark, 'https://site.invalid').searchParams));
-  const native = parse(await renderArtist(group, Object.fromEntries(new URL(bookmark, 'https://site.invalid').searchParams), null, {loading:true}));
-  assert.ok(native.querySelector('[data-film-primary="pending"]'));
-  assert.match(native.text, /舞台整体评分/);
+  for(const state of [{loading:true},{error:'网络中断'}]){
+    const cold=parse(await renderArtist(group,query,null,state));
+    const direct=new URL(cold.querySelector('[data-video-key="rizz-video"] a').getAttribute('href'),'https://site.invalid');
+    assert.equal(direct.pathname,'/');
+    assert.equal(direct.searchParams.get('work'),work.id);
+    assert.equal(direct.searchParams.get('video'),'stage');
+    assert.deepEqual(Object.fromEntries(new URL(direct.searchParams.get('returnTo'),direct).searchParams),query);
+    const native=parse(await renderArtist(group,{...query,media:'rizz-video'},null,state));
+    assert.ok(native.querySelector('[data-film-primary="onsite"]'));
+    assert.match(native.text,/舞台整体评分/);
+  }
+  const changed={...catalog,works:catalog.works.map(w=>w.id===work.id?{...w,stage:null}:w)};
+  const current=parse(await renderArtist(group,query,changed));
+  const fallback=new URL(current.querySelector('[data-video-key="rizz-video"] a').getAttribute('href'),'https://site.invalid');
+  assert.equal(fallback.pathname,group.path);
+  assert.equal(fallback.searchParams.get('media'),'rizz-video');
+  assert.equal(fallback.searchParams.get('format'),'stage');
+  assert.ok(safeArtistReturn(fallback.pathname+fallback.search));
   assert.equal(safeArtistReturn('/artists/adya?section=works&format=stage&media=dazzling-day-ost-video'), null);
 });
 

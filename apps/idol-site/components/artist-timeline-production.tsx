@@ -6,10 +6,18 @@ import {loadArtistTimeline} from '../lib/idol/timeline/production';
 import {timelineRecordUrl} from '../lib/idol/timeline/navigation';
 import {ArtistTimelineHostProvider,type TimelineNavigationRequest} from './artist-timeline-host';
 
+// These artist pages render their own timeline from their editorial data.
+const nativeTimelinePaths = new Set([
+  '/artists/adya', '/artists/bewave', '/artists/candyshop', '/artists/geenius',
+  '/artists/genblue', '/artists/ifeye', '/artists/izna', '/artists/oddyouth',
+  '/artists/spia', '/artists/tracer', '/artists/udtt', '/artists/witchx',
+  '/artists/youngposse',
+]);
+
 /** Production-only injection. Each page keeps its existing authenticated Catalog read. */
 export function ArtistTimelineProduction({children}:{children:ReactNode}) {
   const pathname=usePathname();
-  const group=registry.find(row=>row.path===pathname);
+  const group=nativeTimelinePaths.has(pathname) ? undefined : registry.find(row=>row.path===pathname);
   const [attempt,setAttempt]=useState(0);
   const [loaded,setLoaded]=useState<{slug:string;input:unknown;error:string;failure?:'deadline'|'import'}|null>(null);
   const [gates,setGates]=useState({blocked:false,restoreBlocked:false});
@@ -21,6 +29,7 @@ export function ArtistTimelineProduction({children}:{children:ReactNode}) {
     return()=>{active=false;clearTimeout(timer);};
   },[group?.slug,attempt]);
   useEffect(()=>{
+    if(!group)return;
     const update=()=>{
       const blocked=!!document.querySelector('[data-navigation-blocked="true"], [aria-modal="true"], dialog[open]');
       const restoreBlocked=blocked||!!document.querySelector('[data-dirty="true"]');
@@ -30,7 +39,7 @@ export function ArtistTimelineProduction({children}:{children:ReactNode}) {
     const observer=new MutationObserver(update);
     observer.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['data-dirty','data-navigation-blocked','aria-modal','open']});
     return()=>observer.disconnect();
-  },[pathname]);
+  },[group]);
   const navigate=useCallback((request:TimelineNavigationRequest,beforeLeave:()=>boolean)=>{
     const target=timelineRecordUrl(request);
     const current=location.pathname+location.search;

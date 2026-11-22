@@ -20,6 +20,20 @@ function harness(){
  return {group,location,gates,calls,timers,effects,render(){cursor=0;effects.length=0;return exports.ArtistTimelineProduction({children:null}).props.value;},setConfirm:value=>confirm=value,setLoad:fn=>load=fn};
 }
 function request(h,extra={}){return {eventId:'e-production-test',kind:'member',targetId:'recMember',groupId:h.group.groupId,returnTo:h.location.pathname+h.location.search,former:false,...extra};}
+test('only artists using the shared timeline request its data and start its deadline',()=>{
+ const native=new Set(['adya','bewave','candyshop','geenius','genblue','ifeye','izna','oddyouth','spia','tracer','udtt','witchx','youngposse']);
+ const h=harness(),imports=[];
+ h.setLoad(slug=>{imports.push(slug);return Promise.resolve({input:{events:[]}});});
+ for(const group of registry){
+  h.location.pathname=group.path;
+  const value=h.render();
+  const cleanup=h.effects[0]();
+  assert.equal(value.timelineLoading,!native.has(group.slug),group.slug);
+  assert.equal(h.timers.size,native.has(group.slug)?0:1,group.slug);
+  cleanup?.();
+ }
+ assert.deepEqual(imports,registry.filter(group=>!native.has(group.slug)).map(group=>group.slug));
+});
 test('production dirty cancel and approval reach the real guard before capture',()=>{
  const h=harness(),v=h.render();h.gates.dirty=true;h.setConfirm(false);let captures=0;
  v.navigate(request(h),()=>{captures++;return true;});assert.equal(captures,0);assert.deepEqual(h.calls,[['confirm']]);
@@ -66,6 +80,6 @@ test('deadline is not rejection and continues waiting on the same pending result
  resolve({input:{events:['settled']}});await Promise.resolve();v=h.render();assert.equal(v.input.events[0],'settled');assert.equal(v.timelineError,'');
 });
 test('route cleanup isolates both old rejection and resolution',async()=>{
- for(const reject of [false,true]){const h=harness();let resolve,fail;h.setLoad(()=>new Promise((a,b)=>{resolve=a;fail=b;}));h.render();const cleanup=h.effects[0]();cleanup();h.location.pathname=registry[1].path;h.render();
+ for(const reject of [false,true]){const h=harness();let resolve,fail;h.setLoad(()=>new Promise((a,b)=>{resolve=a;fail=b;}));h.render();const cleanup=h.effects[0]();cleanup();h.location.pathname=registry.find(row=>row.slug==='triples').path;h.render();
  if(reject)fail(Error('old route'));else resolve({input:{events:['old route']}});await Promise.resolve();const v=h.render();assert.equal(v.input,null);assert.equal(v.timelineError,'');assert.equal(v.timelineLoading,true);assert.deepEqual(h.calls,[]);}
 });

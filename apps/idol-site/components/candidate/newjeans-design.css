@@ -37,6 +37,9 @@
 .nj-roster-photos .nj-photo-credit { margin-bottom: 8px; }
 .nj-site .nj-photo-credit { color: var(--nj-muted); font-size: .9375rem; line-height: 1.5; }
 .nj-site .nj-photo-credit a { display: inline-block; padding-block: 3px; text-decoration: underline; text-underline-offset: .18em; }
+@media (max-width: 350px) {
+  .nj-roster-photos .nj-photo-credit { letter-spacing: -.02em; }
+}
 @media (min-width: 768px) {
   .nj-site .nj-roster { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .nj-site .nj-history { grid-template-columns: minmax(0, calc((100% - 48px)/4)) minmax(0, 1fr); }

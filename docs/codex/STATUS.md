@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v249。萨默的文字入口和肖像可在前端脚本到达前第一次操作打开原图，关闭后回焦。六团九次正式抽验均能展开出处、打开正确原图。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v249-release.md) |
+| 正式站 | v250。VVUP 三个分享地址首份网页直接显示目标，BABYMONSTER 七份成员档案前置姓名和照片出处。AHYEON 手机姓名由约 y702 提前到 y148。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v250-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v249 正式应用 `035a5df5`。v250 处理 VVUP 分享链接的首份网页和 BABYMONSTER 成员详情的手机版设计。四场节目、《Per》首发完整版和《BLALA》歌词版待新同版片源。[正式发布](evidence/20261122-v249/publication.json) · [逐团设计清单](worklogs/20261122-group-design-coverage.md) |
+| 当前开发 | `codex/project-optimization-20261121`。v250 正式应用 `fbf050ba`。接续 ITZY、LE SSERAFIM 成员页和 WOOAH《Catch the Stars》的具名同期照片。四场节目、《Per》首发完整版和《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v250/publication.json) · [逐团设计清单](worklogs/20261122-group-design-coverage.md) |
 
 ## 11 月 22 日更新
 

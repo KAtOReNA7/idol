@@ -12,7 +12,16 @@ function hasModifier(event: Pick<MouseEvent, 'altKey' | 'ctrlKey' | 'metaKey' | 
 }
 
 export function OriginalPhotoLink({href, onOpen, ...props}: OriginalPhotoLinkProps) {
-  return <a {...props} href={href} aria-haspopup="dialog"
+  return <a {...props} href={href} aria-haspopup="dialog" data-original-photo="" ref={link => {
+    if (!link) return;
+    const open = (request: Event) => {
+      request.preventDefault();
+      link.focus({preventScroll:true});
+      onOpen(href);
+    };
+    link.addEventListener('stage-original-photo-open', open);
+    return () => link.removeEventListener('stage-original-photo-open', open);
+  }}
     onClick={event => {
       if (event.defaultPrevented || event.button !== 0 || hasModifier(event)) return;
       event.preventDefault();

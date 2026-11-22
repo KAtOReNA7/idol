@@ -48,7 +48,7 @@ test('disabled retry state and default provider do not advertise background or b
  const empty=renderToStaticMarkup(React.createElement(component.ImageRecoveryProvider,null,React.createElement(component.ImageRecoveryControls)));
  assert.equal(empty,'');
 });
-test('original photo links navigate before hydration and enhance a plain activation with focus and a dialog',()=>{
+test('original photo links retain their file URL and enhance an unmodified activation with focus and a dialog',()=>{
  const calls=[];
  const link=component.OriginalPhotoLink({href:'/artist/example/original.jpg',children:'查看原图',onOpen(src){assert.equal(src,'/artist/example/original.jpg');calls.push('open');}});
  assert.match(renderToStaticMarkup(link),/<a[^>]*href="\/artist\/example\/original\.jpg"[^>]*aria-haspopup="dialog"[^>]*>查看原图<\/a>/);

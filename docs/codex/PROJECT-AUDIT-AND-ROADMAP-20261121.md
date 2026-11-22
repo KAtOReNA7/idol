@@ -4,6 +4,8 @@
 
 ## 本轮已交付与接续顺序
 
+v235 已在五支正式 MV 取得实际高清解码，四场精确舞台及 ADYA《Per》仍缺可实播的同版来源。51 团各一张手机代表卡全部打开并返回。接下来按单次冷目录的真实读表耗时提速，再按作品逐人核准发行照，补余下时间轴事件及历史回归。WOOAH 两支作品的 10 个卡位已改用《QURIOUS》同期具名海报。[本批数据、限制和验收](worklogs/20261122-v235-release.md)
+
 v234 三支 OK 作品均已单击静音起播，在原作品页实选到最高档。ADYA《Per》和四场精确舞台仍有片源阻断。团页首卡的详情请求已提前，51 团首轮有三条未走完、独立重试后均通过；继续定位日志中多次出现的目录读取 502，复用已核的《QURIOUS》具名发行海报。[本批结果及实际改善](worklogs/20261122-v234-release.md)
 
 v232 已在正式站验收《BILLIONAIRE》首发版的 2160p 档，仍须改善刚开页时的首次点击。v233 已上线 ADYA、W!TCHX 的原事件主按钮及作品库次入口，双宽 60/60 次通过。[返回验收](worklogs/20261122-v233-release.md)[v232 实播与范围](worklogs/20261122-v232-release.md)
@@ -14,10 +16,10 @@ v231 已上线 11 团的时间轴文字调整。51 团首页与时间轴在两�
 
 | 顺序 | 已在正式站验证 | 接下来按什么条件推进 |
 |---|---|---|
-| 1. 站内观看 | v231《BILLIONAIRE》2 月 7 日首发版在 10.5 秒内未取得播放进度。《Magnetic》本版、《ATTITUDE》在 v229 静音解码 4K。四场 B 站独占舞台在本版仍缺合格站内来源。 | v234 三支 OK 来源均可点击一次起播。四场舞台核节目方、场次、分 P 和区间，在本站验证原片与账号可用的最高档。ADYA《Per》按同一标准继续查找 5:09 S#3 完整版。在作品页读取两个递增的时间、解码尺寸与可测码率。[v231 两首](worklogs/20261122-v231-release.md#站内短播) · [v229 三首](evidence/20261122-v229/formal-mv-playback.json) · [v231 四场舞台](evidence/20261122-v231/formal-priority-controls.json) · [其他三支](worklogs/20261122-additional-mv-playback.md) |
-| 2. 作品目录和返回 | 九团共 71 个自定义时间轴控件已实点并通过浏览器后退，70 个在 v229，末项在 v230。IVE 的 22 个目标、NewJeans 的 18 个、MADEIN 的 8 个、QWER 的 11 个、tripleS 的 23 个也已逐项打开并返回。 | 继续补其余团共用时间轴的实际路径。两团主、次入口已正式验收。继续跟踪直接分享时间轴时出现首页摘要的问题。逐团清掉正文、图注与辅助标签中妨碍使用的说明，保留作品、来源和评分信息。[九团与共用时间轴记录](worklogs/20261122-v229-release.md) · [末个实点](evidence/20261122-v230/spia-last-timeline-link.json) · [使用取舍](20261122-USABILITY-DISCUSSION.md) |
-| 3. 团页到作品的等待 | 同快照的目录计算中位数在 v229 减少 45.71%。正式三轮点卡到播放按钮的中位数，Cherry Bullet 减少 1265 毫秒，IVE 和 ADYA 分别增加 520、668 毫秒。v230 抽样出现四次站标 404 和四次目录请求取消。 | 用同卡、同宽度继续定位 IVE 和 ADYA 的等待，保留一次目录请求和现有鉴权。核对取消请求的上下文，后续出现 502 时读取已细分的失败步骤。v234 已修复站标并正式验证 HTTP 200。[三轮前后对照](worklogs/20261122-v229-release.md) · [正式日志](evidence/20261122-v230/formal-worker-observation.json) · [既有两次 502](evidence/20261122-v227/catalog-errors.json) |
-| 4. 团页设计与成员照片 | 51 团首屏和 100 个混合或单类入口已核，IVE、NewJeans、ADYA、W!TCHX 的代表期视觉已有出处。v230《Purple》五人、v227《SLAY》六人的同期海报、旧作品图与照片下评分均已在正式站两档宽度逐人实点。 | 194 个跨期位置已核 59 个，余 135 个中，113 个可据现成发行图集逐人核验，22 个需补具名同期依据。按作品、视频、成员绑定继续选图，保留原件、旧图与评分关系。[四团设计与官网原件](worklogs/20261122-adya-witchx-figma.md) · [逐人位置清单](evidence/20261122-member-release-portraits/remaining-194.csv) · [《Purple》实测](worklogs/20261122-v230-release.md) · [《SLAY》实测](evidence/20261122-v227/formal-slay.json) |
+| 1. 站内观看 | 《BILLIONAIRE》《Attention》《ETA》站内分别手选到 2160p、2160p、1080p。《Magnetic》《ATTITUDE》均实播 3840 × 2160。 | 四场舞台按节目、日期、分 P 与区间继续比对。ADYA《Per》核 5:09 S#3 完整版。替换前均需在正式等效环境静音取得递增时间与解码尺寸，B 站还须达到账号与原片可用的最高档且留在本站。[五支实播](worklogs/20261122-v235-release.md) · [四场出处](worklogs/20261122-exact-stage-rights.md) |
+| 2. 作品目录和返回 | 九团共 71 个自定义时间轴控件已实点并通过浏览器后退，70 个在 v229，末项在 v230。IVE 的 22 个目标、NewJeans 的 18 个、MADEIN 的 8 个、QWER 的 11 个、tripleS 的 23 个也已逐项打开并返回。 | 八个采用共享时间轴的团体已核完 183/183 个事件目标，其中 v235 补齐 93 个。ADYA、W!TCHX 主、次入口也已正式验收。[八团实测](evidence/20261122-v235/formal-shared-timeline-paths.json)。继续跟踪直接分享时间轴时出现首页摘要的问题。逐团清掉正文、图注与辅助标签中妨碍使用的说明，保留作品、来源和评分信息。[九团与共用时间轴记录](worklogs/20261122-v229-release.md) · [末个实点](evidence/20261122-v230/spia-last-timeline-link.json) · [使用取舍](20261122-USABILITY-DISCUSSION.md) |
+| 3. 团页到作品的等待 | v235 手机首卡 51/51，IVE、ADYA、Cherry Bullet 各三轮全部抵达播放按钮，中位数分别为 1490、1406、1217 ms。 | ADYA 最慢一轮用时 3043 ms，其中 Worker 冷读占 1045 ms。优先核冷缓存下的读取和全目录投影，对照同卡暖缓存、鉴权和响应一致性。[三轮对照](evidence/20261122-v235/access-comparison.json) · [生产调用](evidence/20261122-v235/formal-access-worker-timing.json) |
+| 4. 团页设计与成员照片 | 51 团首屏和 100 个混合或单类入口已核，IVE、NewJeans、ADYA、W!TCHX 的代表期视觉已有出处。v230《Purple》五人、v227《SLAY》六人的同期海报、旧作品图与照片下评分均已在正式站两档宽度逐人实点。 | 194 个跨期位置已核 69 个。余下 125 个中，103 个有发行期图集，22 个需补具名同期依据。按作品、视频、成员绑定继续选图，保留原件、旧图与评分关系。[四团设计与官网原件](worklogs/20261122-adya-witchx-figma.md) · [逐人位置清单](evidence/20261122-member-release-portraits/remaining-194.csv) · [《Purple》实测](worklogs/20261122-v230-release.md) · [《SLAY》实测](evidence/20261122-v227/formal-slay.json) |
 
 v218 已横查 51 个团体首页。28 团原有的 30 个团照放大入口，在团照刚出现时逐一实点，30 次均能打开准确原件，页面就绪后的 30 次弹窗也均能按 Esc 回到原处。正式 v218 还复验了以上三首 MV 的短播。剩余观看问题集中在四场独占舞台和扩测的三支 MV。[最新发布与三首实播](worklogs/20261122-v218-release.md) · [待解决片源](worklogs/20261122-additional-mv-playback.md)
 

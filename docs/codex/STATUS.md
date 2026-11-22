@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v234。《BILLIONAIRE》《Attention》《ETA》均已站内单击起播并实选最高档。51 团代表卡首轮 48/51，余下 3 团独立重试成功。[实播、访问与验证](worklogs/20261122-v234-release.md) |
+| 正式站 | v235。《BILLIONAIRE》首发版单击起播，站内选 2160p 后实播 3840 × 1770。五支优先 MV 均已短播。51 团手机首卡 51/51 打开并返回。[播放、照片及性能实测](worklogs/20261122-v235-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v234 正式应用 `7b8ad937`。[发布回执](evidence/20261122-v234/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，v235 正式应用 `c9a99aa7`。[发布回执](evidence/20261122-v235/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
 

@@ -1,5 +1,5 @@
 import type {Photo, Work} from './types';
-import {publicMvPortrait} from './mv-public-media';
+import {publicMvPortrait,publicPortraitCard} from './mv-public-media';
 import {mvPhotoLabel, privatePhotoSource} from './mv-photo-presentation';
 import type {RecognitionSelector} from './recognition-edition-lookup';
 
@@ -8,8 +8,9 @@ export function memberWorkPhoto(work:Pick<Work,'id'|'url'>,memberId:string,photo
  const publicImage=publicMvPortrait(work,memberId);
  if(publicImage){
   const edition=selectEdition?.(publicImage);
-  return {src:edition?.preview??publicImage.src,original:edition?.original??publicImage.originalSrc??publicImage.src,
-   label:edition?.label??publicImage.label,sourceUrl:edition?.sourceUrl??publicImage.sourceUrl,publicImage,edition};
+  const card=publicPortraitCard(publicImage.src);
+  return {src:edition?.preview??card?.src??publicImage.src,original:edition?.original??publicImage.originalSrc??publicImage.src,
+   label:edition?.label??card?.label??publicImage.label,sourceUrl:edition?.sourceUrl??publicImage.sourceUrl,publicImage,edition};
  }
  if(photo&&live){
   const src=privatePhotoSource(photo);

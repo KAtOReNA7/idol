@@ -1,4 +1,4 @@
-const {expectedPortraitLabel}=require('./helpers/image-dependency-loader.cjs');
+const {expectedPublicPortrait}=require('./helpers/image-dependency-loader.cjs');
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto'),vm=require('node:vm'),path=require('node:path');
 const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
 const api=require('./helpers/image-dependency-loader.cjs').imageDependency('@/lib/idol/approved-video-poster');
@@ -12,7 +12,14 @@ test('every current work cover uses its precise video; another work, video or st
  for(const p of runtime.covers.filter(p=>p.workId)){const poster=approvedVideoPoster(p.workId,p.videoId,'mv');assert.equal(poster.src,p.src);assert.equal(poster.fit,'cover');assert.equal(poster.label,p.label);assert.equal(approvedVideoPoster('wrong-work',p.videoId,'mv'),null);assert.equal(approvedVideoPoster(p.workId,'wrong-video','mv'),null);assert.equal(approvedVideoPoster(p.workId,null,'mv'),null);assert.notEqual(approvedVideoPoster(p.workId,p.videoId,'stage')?.src,p.src);const html=renderToStaticMarkup(React.createElement(WorkCoverImage,{work:{id:p.workId,url:'https://www.youtube.com/watch?v='+p.videoId,name:'Fixture'}}));assert(html.includes(p.src));assert.match(html,/object-fit:cover/);assert.doesNotMatch(html,/<iframe|i\.ytimg/);}
 });
 test('MV identity pictures require exact work, member and video and never fabricate a missing picture',()=>{
- for(const p of runtime.portraits){const work={id:p.workId,url:'https://www.youtube.com/watch?v='+p.videoId};const html=renderToStaticMarkup(React.createElement(MvIdentityPhoto,{work,memberId:p.memberId,label:'Fixture'}));assert(html.includes(p.src));assert(html.includes(expectedPortraitLabel(p.label)));for(const props of [{work:{...work,id:'wrong'}},{work:{...work,url:'https://youtu.be/XXXXXXXXXXX'}},{memberId:'wrong'}]){const mismatch=renderToStaticMarkup(React.createElement(MvIdentityPhoto,{work,memberId:p.memberId,label:'Fixture',...props}));assert.match(mismatch,/认人图待补/);assert(!mismatch.includes(p.src));assert.match(mismatch,/<button[^>]* disabled/);assert.doesNotMatch(mismatch,/保留成员评分/);}}
+ for(const p of runtime.portraits){const work={id:p.workId,url:'https://www.youtube.com/watch?v='+p.videoId};
+  const expected=expectedPublicPortrait(p),html=renderToStaticMarkup(React.createElement(MvIdentityPhoto,{work,memberId:p.memberId,label:'Fixture'}));
+  assert(html.includes('src="'+expected.src+'"'));assert(html.includes(expected.label));
+  for(const props of [{work:{...work,id:'wrong'}},{work:{...work,url:'https://youtu.be/XXXXXXXXXXX'}},{memberId:'wrong'}]){
+   const mismatch=renderToStaticMarkup(React.createElement(MvIdentityPhoto,{work,memberId:p.memberId,label:'Fixture',...props}));
+   assert.match(mismatch,/认人图待补/);assert(!mismatch.includes(expected.src));assert.match(mismatch,/<button[^>]* disabled/);assert.doesNotMatch(mismatch,/保留成员评分/);
+  }
+ }
  assert.doesNotMatch(JSON.stringify(runtime),/api\/media|score|stylingScore|memory|note|file_token/);
 });
 test('verified historical stage maps are still selected by exact tuple',()=>{

@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'League Spartan';
+  src: url('/fonts/qwer/LeagueSpartan-Latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 /* Rebuilt 2026-10-25: qwer official reference journal. Stable player/editor markup only. */
 .candidate-experience.candidate-qwer-experience{--paper:#10100f;--white:#201c19;--ink:#f9f6ee;--muted:#c6b6a9;--line:#59473d;--rose:#ff805b;--blush:#201c19;--lilac:#201c19;background:#10100f;color:#f9f6ee;font-family:Arial,'Noto Sans SC',sans-serif;min-height:100vh}
 .candidate-experience.candidate-qwer-experience :is(h1,h2,h3){color:#f9f6ee;font-family:Arial,'Noto Sans SC',sans-serif;letter-spacing:-.04em}
@@ -41,3 +48,62 @@
 .candidate-experience.candidate-qwer-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid #ff805b;outline-offset:4px}
 @media(max-width:720px){.candidate-experience.candidate-qwer-experience .header{padding:20px 5%;flex-wrap:wrap;gap:16px}.candidate-experience.candidate-qwer-experience .header nav{max-width:100%;flex-wrap:wrap}.candidate-experience.candidate-qwer-experience main{padding:28px 5% 60px}.candidate-experience.candidate-qwer-experience :is(.work-detail-top,.madein-detail-hero,.member-detail){grid-template-columns:1fr;gap:25px}.candidate-experience.candidate-qwer-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.candidate-experience.candidate-qwer-experience .member-detail h1{font-size:44px}.candidate-experience.candidate-qwer-experience .section-heading h2{font-size:28px}.candidate-experience.candidate-qwer-experience .member-work-summary{padding:20px}.candidate-experience.candidate-qwer-experience .cast-copy{padding:18px 0}.candidate-experience.candidate-qwer-experience .member-name{font-size:18px}}
 
+
+/* QWER’s Japanese release site and its SHOW DOWN MV and TV detail boards. */
+body .work-experience[data-work-theme="qwer"] {
+  & .detail { max-width: 1280px; margin-inline: auto; }
+  & .music-work-title { margin: 12px 0 20px; padding: 0; border: 0; }
+  & .music-work-title .group-links { color: var(--rose); }
+  & .music-work-title h1 {
+    margin: 5px 0;
+    font: normal 500 clamp(46px, 5.42vw, 78px)/1 var(--font-editorial);
+    letter-spacing: -.015em;
+    overflow-wrap: anywhere;
+  }
+  & .music-work-title p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+  & .video-mode-row { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; }
+  & .video-mode-tabs { display: flex; gap: 8px; width: auto; padding: 0; border: 0; background: transparent; }
+  & .video-mode-tabs button {
+    min-width: 84px; min-height: 44px; padding: 8px 18px; border: 1px solid var(--line);
+    border-radius: 0; background: var(--paper); color: var(--ink);
+  }
+  & .video-mode-tabs button[aria-selected="true"], & .video-play {
+    border-color: var(--rose); background: var(--rose); color: var(--work-on-accent);
+  }
+  & .video-mode-row > span { color: var(--muted); font-size: 13px; }
+  & .work-detail-top {
+    display: grid; grid-template-columns: minmax(0, 7fr) minmax(244px, 3fr);
+    gap: clamp(20px, 2.25vw, 32px); align-items: start; margin: 20px 0 40px;
+  }
+  & .work-aside {
+    min-width: 0; padding: 18px 22px; border: 0; border-inline-start: 4px solid var(--rose);
+    background: var(--white); color: var(--ink);
+  }
+  & .work-aside > :is(.group-links, h1) { display: none; }
+  & .work-aside :is(.editor,.work-score) { max-width: 100%; }
+  & .work-aside :is(.editor,.work-score,.stage-overall-note) { background-color: transparent; }
+  & .video-caption { margin-block: 12px 0; }
+  & :is(.cast-grid,.public-recognition-grid) {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start; gap: clamp(14px, 1.7vw, 24px);
+  }
+  & .public-work-credits { padding-inline: 0; }
+  & .cast-card { min-width: 0; }
+  & .mv-inline-score .credit-score-action {
+    min-height: 44px; border: 1px solid var(--line); border-radius: 0;
+    background: var(--white); color: var(--ink);
+  }
+  & .mv-inline-score .credit-score-action[aria-expanded="true"] { border-color: var(--rose); }
+  & :is(.member-name,.public-recognition-grid > li > button:not([class])) {
+    font: normal 500 clamp(20px,1.9vw,26px)/1.2 var(--font-editorial);
+  }
+}
+@media (max-width: 760px) {
+  body .work-experience[data-work-theme="qwer"] {
+    & .work-detail-top { grid-template-columns: minmax(0,1fr); gap: 18px; margin: 12px 0 28px; }
+    & :is(.cast-grid,.public-recognition-grid) { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px 12px; }
+    & .work-aside { padding: 15px; }
+    & .video-mode-row { gap: 8px 12px; }
+    & .video-mode-row > span { display: inline; font-size: 12px; }
+  }
+}

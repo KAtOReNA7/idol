@@ -1,7 +1,7 @@
 'use client';
 import {useState,type CSSProperties,type ReactNode} from 'react';
 import type {Photo,Work} from '@/lib/idol/types';
-import {publicMvPortrait,type MvPublicPortrait} from '@/lib/idol/mv-public-media';
+import {publicMvPortrait,publicPortraitCard,type MvPublicPortrait} from '@/lib/idol/mv-public-media';
 import {reviewedNativeRecognition} from '@/lib/idol/reviewed-native-recognition';
 import type {RecognitionEditionPhoto} from '@/lib/idol/mv-recognition-edition';
 import {ReliableImage} from './reliable-image';
@@ -31,7 +31,8 @@ export function PublicCreditRecognitionPhoto({work,memberId,label,reference,chil
 
 function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,edition,retainNative=false,children}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;publicImage:MvPublicPortrait|null;edition?:RecognitionEditionPhoto|null;retainNative?:boolean;children?:ReactNode}){
  const src=edition?.original??publicImage?.originalSrc??publicImage?.src??(photo&&live?`/api/media?table=${photo.table}&record=${encodeURIComponent(photo.recordId)}&index=${photo.index}`:'');
- const thumbnail=edition?edition.preview:publicImage?.src??src;
+ const card=publicImage&&publicPortraitCard(publicImage.src);
+ const thumbnail=edition?.preview??card?.src??publicImage?.src??src;
  const key=[work.id,work.url,memberId,src].join(':');
  const [opened,setOpened]=useState<string|null>(null);
  const nativeSrc=retainNative&&photo&&live?`/api/media?table=${photo.table}&record=${encodeURIComponent(photo.recordId)}&index=${photo.index}`:null;
@@ -39,7 +40,7 @@ function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,ed
  const crop=edition?undefined:publicImage?publicImage.sourceCrop:focus?.sourceCrop;
  const width=publicImage?publicImage.width:focus?.sourceWidth,height=publicImage?publicImage.height:focus?.sourceHeight;
  const style=crop&&width&&height?croppedStyle(width,height,crop):{objectFit:'cover' as const,objectPosition:publicImage?.objectPosition??'50% 35%'};
- const caption=edition?.label??publicImage?.label??(photo?.sourceKind==='mv_look_photo'?'本MV同造型照片':'本MV认人图');
+ const caption=edition?.label??card?.label??publicImage?.label??(photo?.sourceKind==='mv_look_photo'?'本MV同造型照片':'本MV认人图');
  const previous=edition&&publicImage?.src!==edition.original?publicImage:null;
  return <figure className="mv-identity-photo" data-mv-identity={src?'available':'missing'} data-identity-source={edition?'named-series':publicImage?.photoKind}>
   <button className="mv-identity-frame" type="button" disabled={!src} onClick={()=>setOpened(key)} aria-label={src?`查看${label}的${caption}原图`:`${label}的认人图待补`} aria-haspopup={src?'dialog':undefined}>

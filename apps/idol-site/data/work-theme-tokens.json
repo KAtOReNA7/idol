@@ -1685,10 +1685,18 @@
       "accent": "#ff643d",
       "soft": "#1c1917",
       "fontBody": "Arial,\"Noto Sans SC\",sans-serif",
-      "fontHeading": "Arial,\"Noto Sans SC\",sans-serif",
-      "fontHeadingStyle": "italic",
-      "fontFaceCssPaths": [],
-      "fontFaces": [],
+      "fontHeading": "\"League Spartan\",\"Noto Sans SC\",\"Microsoft YaHei\",sans-serif",
+      "fontHeadingStyle": "normal",
+      "fontFaceCssPaths": [
+        "app/qwer-experience.css"
+      ],
+      "fontFaces": [
+        {
+          "file": "app/qwer-experience.css",
+          "line": 1,
+          "css": "@font-face {\n  font-family: 'League Spartan';\n  src: url('/fonts/qwer/LeagueSpartan-Latin.woff2') format('woff2');\n  font-weight: 100 900;\n  font-display: swap;\n}"
+        }
+      ],
       "tokenEvidence": {
         "paper": {
           "source": "--sr-bg",
@@ -1813,10 +1821,10 @@
         }
       ],
       "fontCorrectionNeeded": false,
-      "sourceStatus": "requires_correction",
-      "headingReview": "Use current heading font shown here; existing journal declarations may override variables on descendants.",
-      "character": "黑橙现场乐队；粗斜体标题",
-      "browserStatus": "pending"
+      "sourceStatus": "reviewed_official_artist_and_detail_design",
+      "headingReview": "The Japanese fanclub date and section type uses Spartan. The linked MV and TV designs use League Spartan Medium and the same hosted Latin font.",
+      "character": "Japanese fanclub typography, dark band photography and orange controls",
+      "browserStatus": "local 375px and 1425px full work page"
     },
     {
       "slug": "vvup",

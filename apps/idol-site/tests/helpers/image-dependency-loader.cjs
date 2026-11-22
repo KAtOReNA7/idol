@@ -13,4 +13,9 @@ const publishedLabels=new Map([
  ['具名成员MV章节；原版场景已核','原版 MV 的具名成员章节'],
 ]);
 const expectedPortraitLabel=label=>publishedLabels.get(label)??label;
-module.exports={imageDependency,expectedPortraitLabel};
+const graduationMembers={recvxAPQCFvKfO:'chodan',recvxAPQCFoCDX:'magenta',recvxAPQCFka3h:'hina',recvxAPQCFK2AL:'siyeon'};
+function expectedPublicPortrait(row){
+ if(row.photoSetId==='qwer-ceremony-r-20261027')return {src:'/artist/recognition-editions/qwer/ceremony-graduation-'+graduationMembers[row.memberId]+'.card.webp',label:'CEREMONY · Graduation 概念照 · 认人参考'};
+ return {src:row.src,label:expectedPortraitLabel(row.label)};
+}
+module.exports={imageDependency,expectedPublicPortrait};

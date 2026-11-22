@@ -18,9 +18,8 @@ export function PublicGroupRecognition({work,data,onMember,renderScore,inScoring
   {!inScoringSection&&<h2>成员资料</h2>}
   <p className="member-credit-scope">{reference.groupName} 成员资料照 · 本作出镜未确认</p>
   <ul className="public-recognition-grid">{portraits.map(({member,portrait})=>{return <li key={member.id} data-photo-member={member.id}>
-   <PublicCreditRecognitionPhoto work={work} memberId={member.id} label={memberDisplayName(member)} reference={portrait}/>
+   <PublicCreditRecognitionPhoto work={work} memberId={member.id} label={memberDisplayName(member)} reference={portrait}>{renderScore?.(member)}</PublicCreditRecognitionPhoto>
    <button type="button" onClick={()=>onMember(member.id)}>{memberDisplayName(member)} ↗</button>
-   {renderScore?.(member)}
   </li>;})}</ul>
  </section>;
 }

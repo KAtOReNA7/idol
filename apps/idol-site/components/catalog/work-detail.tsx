@@ -325,13 +325,18 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
   <div className="cast-grid">{people.map(r=>{
    const member=data.members.find(m=>r.memberIds.includes(m.id));
    const label=member?memberDisplayName(member):r.name;
+   const editable=canEdit&&data.mode==='live';
+   const scoreControl=editable&&mvVideo&&member&&represented.has(member.id)&&r.memberIds.length===1&&r.workIds.length===1
+    ?nativeScore(r.id,member,'cast')
+    :<Editor loona={loona} triples={triples} table="ratings" id={r.id} mode={data.mode} publicCatalog={data} onSaved={onSaved}
+      onDirtyChange={markDirty} onNavigationBlockedChange={markNavigationBlocked} scoreMemberName={label} compact/>;
    return <article key={r.id} className="cast-card" id={'mv-cast-'+r.id} tabIndex={-1} aria-label={label+' · 本支 MV 成员卡片'}
     data-native-score-record={r.id} data-photo-member={member?.id} data-browse-anchor={'cast-'+r.id}
     ref={node=>{memberCards.current[r.id]=node;}}>
     <div className="mv-photo-stack">
      <MvIdentityPhoto work={work} memberId={member?.id??''} label={label} selectEdition={mvRecognitionEdition} live={data.mode==='live'}
       photo={member?personalMvPhoto(r,member.id,work.id):null}
-      fallback={canEdit&&member&&data.mode==='live'?<div className="mv-member-portrait-reference"><MusicMemberPhoto member={member} live/><small>成员资料照</small></div>:undefined}/>
+      fallback={editable&&member?<MusicMemberPhoto member={member} live/>:undefined}>{editable&&scoreControl}</MvIdentityPhoto>
      <MvPhotoReference photo={r.photo} referencePhoto={r.referencePhoto} label={label} live={data.mode==='live'}/>
     </div>
     <div className="cast-copy">
@@ -340,10 +345,7 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
      </button>
      {castWarning(r.verification)&&<small className="cast-verification">{castWarning(r.verification)}</small>}
      <div className="cast-scores"><span>表现 <b>{score(r.score)}</b></span><span>造型 <b>{score(r.stylingScore)}</b></span></div>
-     {canEdit&&data.mode==='live'&&mvVideo&&member&&represented.has(member.id)&&r.memberIds.length===1&&r.workIds.length===1
-      ?nativeScore(r.id,member,'cast')
-      :<Editor loona={loona} triples={triples} table="ratings" id={r.id} mode={data.mode} publicCatalog={data} onSaved={onSaved}
-        onDirtyChange={markDirty} onNavigationBlockedChange={markNavigationBlocked} compact/>}
+     {!editable&&scoreControl}
      {r.memory&&<p className="memory">{r.memory}</p>}
      {r.note&&<p className="cast-note">{r.note}</p>}
     </div>

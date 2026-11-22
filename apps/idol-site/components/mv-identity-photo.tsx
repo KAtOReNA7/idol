@@ -13,21 +13,21 @@ function croppedStyle(width:number,height:number,crop:{x:number;y:number;width:n
  return {position:'absolute',maxWidth:'none',width:`${width*scale*100}%`,height:`${height*scale/(4/3)*100}%`,left:`${((1-crop.width*scale)/2-crop.x*scale)*100}%`,top:`${(((4/3)-crop.height*scale)/2-crop.y*scale)/(4/3)*100}%`,objectFit:'fill'};
 }
 /** Reviewed portraits use exact catalog bindings; a reference need not be an MV still. */
-export function MvIdentityPhoto({work,memberId,label,photo,live=false,selectEdition,fallback}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;selectEdition?:(original:MvPublicPortrait)=>RecognitionEditionPhoto|null;fallback?:ReactNode}){
+export function MvIdentityPhoto({work,memberId,label,photo,live=false,selectEdition,fallback,children}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;selectEdition?:(original:MvPublicPortrait)=>RecognitionEditionPhoto|null;fallback?:ReactNode;children?:ReactNode}){
  const selected=publicMvPortrait(work,memberId);
  const reference=selected?null:reviewedNativeRecognition(work,memberId,photo);
- if(!selected&&!reference&&!(photo&&live)&&fallback)return <>{fallback}</>;
- return <IdentityPhotoFrame work={work} memberId={memberId} label={label} photo={photo} live={live} publicImage={selected??reference} edition={selected&&selectEdition?.(selected)} retainNative={Boolean(reference)}/>;
+ if(!selected&&!reference&&!(photo&&live)&&fallback)return <div className="mv-member-portrait-reference">{fallback}{children&&<div className="mv-photo-score">{children}</div>}<small>成员资料照</small></div>;
+ return <IdentityPhotoFrame work={work} memberId={memberId} label={label} photo={photo} live={live} publicImage={selected??reference} edition={selected&&selectEdition?.(selected)} retainNative={Boolean(reference)}>{children}</IdentityPhotoFrame>;
 }
 
 /** A read-only public credit can show a named reference without inventing a rating. */
-export function PublicCreditRecognitionPhoto({work,memberId,label,reference}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;reference:Pick<MvPublicPortrait,'src'|'originalSrc'|'width'|'height'|'label'|'sourceUrl'|'objectPosition'|'sourceCrop'>}){
+export function PublicCreditRecognitionPhoto({work,memberId,label,reference,children}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;reference:Pick<MvPublicPortrait,'src'|'originalSrc'|'width'|'height'|'label'|'sourceUrl'|'objectPosition'|'sourceCrop'>;children?:ReactNode}){
  const caption=reference.label.replace(/ · 认人参考$/,'').replace(/^既有/,'')
   .replace('已审完整原图','成员资料照').replace('具名照片','成员资料照').replace('团体通用认人参考','团体资料照');
- return <IdentityPhotoFrame work={work} memberId={memberId} label={label} publicImage={{...reference,label:caption,workId:work.id,videoId:'',memberId}}/>;
+ return <IdentityPhotoFrame work={work} memberId={memberId} label={label} publicImage={{...reference,label:caption,workId:work.id,videoId:'',memberId}}>{children}</IdentityPhotoFrame>;
 }
 
-function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,edition,retainNative=false}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;publicImage:MvPublicPortrait|null;edition?:RecognitionEditionPhoto|null;retainNative?:boolean}){
+function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,edition,retainNative=false,children}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;publicImage:MvPublicPortrait|null;edition?:RecognitionEditionPhoto|null;retainNative?:boolean;children?:ReactNode}){
  const src=edition?.original??publicImage?.originalSrc??publicImage?.src??(photo&&live?`/api/media?table=${photo.table}&record=${encodeURIComponent(photo.recordId)}&index=${photo.index}`:'');
  const thumbnail=edition?edition.preview:publicImage?.src??src;
  const key=[work.id,work.url,memberId,src].join(':');
@@ -44,6 +44,7 @@ function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,ed
    <ReliableImage src={thumbnail||null} identityKey={key} alt={`${label} · ${caption}`} style={style} missing={<span className="mv-identity-missing">认人图待补</span>} fallback={<span className="mv-identity-missing">图片暂未加载</span>}/>
    {src&&<span className="mv-identity-expand">查看原图 ↗</span>}
   </button>
+  {children&&<div className="mv-photo-score">{children}</div>}
   {src&&<figcaption>{caption}{publicImage&&<a href={edition?.sourceUrl??publicImage.sourceUrl} target="_blank" rel="noopener noreferrer">来源 ↗</a>}</figcaption>}
   {previous&&<div className="mv-identity-history"><button className="mv-identity-previous" type="button" aria-haspopup="dialog" aria-label={`查看${label}的原作品图 · ${previous.label}`} onClick={()=>setOpened(key+':previous')}>查看原作品图</button><a href={previous.sourceUrl} target="_blank" rel="noopener noreferrer">原出处 ↗</a></div>}
   {nativeSrc&&<button className="mv-identity-native" type="button" onClick={()=>setOpened(key+':native')}>查看原有照片 ↗</button>}

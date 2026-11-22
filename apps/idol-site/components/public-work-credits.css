@@ -68,6 +68,9 @@ body .bm-experience .cast-section .section-heading h2 {
 }
 .bm-experience .public-recognition-grid .mv-identity-frame { border-radius: 0; }
 .mv-inline-summary{margin:.4rem 0;font-size:.85rem}
+.cast-section .mv-photo-score{display:block;width:100%;min-width:0;margin:8px 0 0}
+.cast-section .mv-photo-score :is(.credit-score-action,.editor-open){display:flex;align-items:center;justify-content:center;min-height:44px;width:100%;max-width:100%;margin:0;padding:8px 12px;box-sizing:border-box;border:1px solid var(--line,currentColor);border-radius:4px;background:var(--white,transparent);color:inherit;font-size:14px;line-height:1.5;text-decoration:none}
+.cast-section .mv-photo-score .editor{max-width:100%;min-width:0;text-align:start}
 .personal-roster-card .photo{max-width:100%}
 
 /* Themed cast galleries can keep their columns; a score opens below its own portrait. */

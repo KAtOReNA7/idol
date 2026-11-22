@@ -91,11 +91,11 @@ export function PersonalMvScore({member,startOpen=false,...props}:ScoreProps&{me
  if(!ratings.writable&&!entry)return null;
  const name=memberDisplayName(member);
  return <div ref={root} className="mv-inline-score" data-score-member={member.id} data-score-kind="personal">
-  {entry&&<p className="mv-inline-summary">表现 {label(entry.score)} · 造型 {label(entry.stylingScore)}</p>}
   {ratings.writable&&<button type="button" className="credit-score-action" aria-expanded={opened} aria-label={'给'+name+'评分'} onClick={()=>{
    setChosen(true);
    window.requestAnimationFrame(()=>root.current?.querySelector('input')?.focus({preventScroll:true}));
   }}>个人评分</button>}
+  {entry&&<p className="mv-inline-summary">表现 {label(entry.score)} · 造型 {label(entry.stylingScore)}</p>}
   {ratings.writable&&opened&&<ScoreForm {...props} scope={ratings.scope} member={member} entry={entry}/>}
  </div>;
 }
@@ -134,9 +134,9 @@ export function PersonalMvRatingsPanel({roster,...props}:ScoreProps&{roster:Memb
    <small>按团体名册选择，资料照供认人参考。</small>
   </div>}
   <div className="cast-grid">{cards.map(member=><article className="cast-card personal-roster-card" key={member.id} data-roster-score-member={member.id}>
-   <MusicMemberPhoto member={member} live/><div className="cast-copy"><strong>{memberDisplayName(member)}</strong><small>成员资料照</small>
-    <PersonalMvScore {...props} member={member} startOpen={opened.includes(member.id)}/>
-   </div>
+   <MusicMemberPhoto member={member} live/>
+   <div className="mv-photo-score"><PersonalMvScore {...props} member={member} startOpen={opened.includes(member.id)}/></div>
+   <div className="cast-copy"><strong>{memberDisplayName(member)}</strong><small>成员资料照</small></div>
   </article>)}</div>
  </div>;
 }

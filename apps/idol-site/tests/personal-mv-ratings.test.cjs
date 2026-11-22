@@ -391,7 +391,13 @@ test('all 51 groups give eligible members scoring controls on their own photo ca
    assert.equal(extraCards.length,choices.length);
    for(const card of [...initialCards,...extraCards]){
     const memberId=card.getAttribute('data-photo-member')??card.getAttribute('data-roster-score-member');
-    if(!card.querySelector('.credit-score-action,.editor-open')){photoAudit.missingControl++;missing.push([work.id,memberId,'action']);}
+    const action=card.querySelector('.credit-score-action,.editor-open');
+    if(!action){photoAudit.missingControl++;missing.push([work.id,memberId,'action']);}
+    else {
+     const slot=action.closest('.mv-photo-score');
+     assert.ok(slot?.previousElementSibling?.querySelector('img[src]'),work.id+' / '+memberId+' must put scoring directly below its own picture');
+     assert.equal(action.getAttribute('aria-label'),'给'+api.memberDisplayName(membersById.get(memberId))+'评分');
+    }
     if(!card.querySelector('img[src]')){photoAudit.missingImage++;missing.push([work.id,memberId,'portrait']);}
    }
    for(const card of extraCards){
@@ -400,7 +406,8 @@ test('all 51 groups give eligible members scoring controls on their own photo ca
     assert.deepEqual(elements.map(el=>el.tagName),['IMG','BUTTON']);
     assert.equal(card.querySelector('[data-score-member]').getAttribute('data-score-member'),memberId);
     assert.equal(elements[1].getAttribute('aria-label'),'给'+api.memberDisplayName(membersById.get(memberId))+'评分');
-    assert.match(card.text,/成员资料照.*表现 0 · 造型 8\.5/);
+    assert.match(card.text,/成员资料照/);
+    assert.match(card.text,/表现 0 · 造型 8\.5/);
    }
    photoAudit.visibleCards+=initialCards.length;photoAudit.chosenRosterCards+=extraCards.length;photoAudit.uniqueWorkMembers+=new Set([...choices,...memberIds]).size;
   }

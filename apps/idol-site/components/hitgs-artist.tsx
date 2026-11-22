@@ -9,6 +9,7 @@ import {ArtistInformation,ArtistHomeTimeline} from '@/components/artist-informat
 import {useEffect,useRef,useState,useSyncExternalStore} from 'react';
 import editorial from '../data/hitgs-review-editorial.json';
 import {ArtistTimelineHost,useArtistTimelineHostOptions} from './artist-timeline-host';
+import {PhotoSourceDisclosure} from './photo-source-disclosure';
 import {PhotoLightbox} from './photo-lightbox';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from './reliable-image';
 import {useArtistScroll} from './use-artist-scroll';
@@ -23,7 +24,17 @@ const sections=[['overview','首页'],['members','成员'],['works','影像'],['
 const subscribe=(fn:()=>void)=>{window.addEventListener('popstate',fn);window.addEventListener('artist-location-change',fn);return()=>{window.removeEventListener('popstate',fn);window.removeEventListener('artist-location-change',fn);};};
 type Video=typeof editorial.videos[number];
 function Picture({src,label,priority=false}:{src:string;label:string;priority?:boolean}){return <ReliableImage src={src} alt={label} identityKey={src} priority={priority} referrerPolicy="no-referrer" missing={<span className="hg-empty-image">图片尚未收录</span>} errorFallback={<span className="hg-empty-image">图片暂时无法加载</span>}/>;}
-function Sources({urls}:{urls:(string|{url:string})[]}){return <details className="hg-source"><summary>资料与图片来源</summary>{urls.map((source,i)=>{const url=typeof source==='string'?source:source.url;return <a key={url} href={url} target="_blank" rel="noopener noreferrer">来源 {i+1} ↗</a>;})}</details>;}
+function Sources({urls, title='资料与图片来源'}:{urls:(string|{url:string})[];title?:string}) {
+ if (!urls.length) return null;
+ return <details className="hg-source">
+   <summary>{title}</summary>
+   {urls.map((source,index) => {
+     const url = typeof source === 'string' ? source : source.url;
+     const label = url === 'https://zh.wikipedia.org/wiki/HITGS' ? '维基百科 · 成员资料' : '来源 '+(index+1);
+     return <a key={url} href={url} target="_blank" rel="noopener noreferrer">{label} ↗</a>;
+   })}
+ </details>;
+}
 export default function HitgsArtist(){
  const injected=useArtistTimelineHostOptions();
  const [fetched,setFetched]=useState<CatalogView|null>(null),[error,setError]=useState(''),[attempt,setAttempt]=useState(0),[loading,setLoading]=useState(true),[lightbox,setLightbox]=useState<{src:string;label:string}|null>(null);
@@ -41,6 +52,7 @@ export default function HitgsArtist(){
  function navigate(patch:Record<string,string|null>,replace=false){remember();const destination=sectionUrl(patch);if(!safeArtistReturn(destination))return;history[replace?'replaceState':'pushState'](newArtistHistoryState(history.state),'',destination);window.dispatchEvent(new Event('artist-location-change'));if(!replace)document.getElementById('hg-content')?.scrollIntoView({block:'start'});}
  const select=(value:string)=>navigate({section:value==='overview'?null:value,member:null,release:null,media:null,format:null,q:null});
  const member=editorial.members.find(m=>m.id===memberId),release=editorial.releases.find(r=>r.key===releaseKey),video=editorial.videos.find(v=>v.key===mediaKey&&v.type===format);
+ const memberSources = member?.sources.filter(url => url !== member.portraitSourceUrl) ?? [];
  const retryCatalog=()=>injected.onRetry?injected.onRetry():setAttempt(a=>a+1);
  const showImage=(src:string,label:string)=>setLightbox({src,label});
  const watchHref=(v:Video)=>v.type==='stage'
@@ -72,11 +84,16 @@ export default function HitgsArtist(){
 <section className="hg-section"><div className="hg-heading"><h2>THINGS WE PLAY<span>音乐发行</span></h2><button onClick={()=>select('records')}>全部七张发行 ↗</button></div>{releaseCards(editorial.releases.slice(0,3))}</section>
 <ArtistHomeTimeline slug="hitgs" catalog={data}/>
 </>}
- {memberId&&(member?<section className="hg-section"><a className="hg-back" href={sectionUrl({member:null,section:'members'})} onClick={returnToArtistRoster}>← 返回成员目录</a><div className="hg-member-detail" data-member-layout="ordered-v1" data-member-id={member.id} data-member-module="identity"><figure><button onClick={()=>showImage(member.image,member.cnName+' · '+member.portraitLabel)} aria-label={'查看'+member.cnName+'原图'}><Picture src={member.image} label={member.cnName+' '+member.stageName} priority/></button><figcaption>{member.portraitLabel}</figcaption></figure><div data-member-module="basic"><span className="hg-index">{String(editorial.members.indexOf(member)+1).padStart(2,'0')} / 05</span><h1>{member.stageName}<span>{member.cnName}</span></h1><p>{member.profile}</p><dl><div><dt>出生日期</dt><dd>{member.birthDate||'未收录'}</dd></div><div><dt>照片时期</dt><dd>具名转载 · 拍摄日期未注明</dd></div></dl><button className="hg-button" onClick={()=>showImage(member.image,member.cnName+' · '+member.portraitLabel)}>查看原图 ↗</button>{data?.members.some(m=>m.id===member.id)&&<a className="hg-button" href={artistMemberUrl(member.id,returnTo)}>个人档案与手帐 ↗</a>}</div></div><div className="hg-heading"><h2>IN THE FRAME<span>已有作品关联</span></h2></div>{linkedMemberWorks.length?<div className="hg-linked" data-member-module="works">{linkedMemberWorks.map(w=><a key={w.id} href={artistWorkUrl(w,false,returnTo)}><strong>{w.song||w.name}</strong><span>打开已有作品记录 ↗</span></a>)}</div>:<p>尚无可显示的已有作品关联。</p>}
+ {memberId&&(member?<section className="hg-section"><a className="hg-back" href={sectionUrl({member:null,section:'members'})} onClick={returnToArtistRoster}>← 返回成员目录</a><div className="hg-member-detail" data-member-layout="ordered-v1" data-member-id={member.id} data-member-module="identity"><figure><button onClick={()=>showImage(member.image,member.cnName+' · '+member.stageName+' 肖像')} aria-label={'查看'+member.cnName+'原图'}><Picture src={member.image} label={member.cnName+' '+member.stageName} priority/></button></figure><div data-member-module="basic"><span className="hg-index">{String(editorial.members.indexOf(member)+1).padStart(2,'0')} / 05</span><h1>{member.stageName}<span>{member.cnName}</span></h1><p>{member.profile}</p><dl><div><dt>出生日期</dt><dd>{member.birthDate||'未收录'}</dd></div></dl><button className="hg-button" onClick={()=>showImage(member.image,member.cnName+' · '+member.stageName+' 肖像')}>查看原图 ↗</button>{data?.members.some(m=>m.id===member.id)&&<a className="hg-button" href={artistMemberUrl(member.id,returnTo)}>个人档案与手帐 ↗</a>}
+      <PhotoSourceDisclosure>
+        <p>Kprofiles 具名转载的 {member.stageName} 肖像，拍摄日期未注明。</p>
+        <a href={member.portraitSourceUrl} target="_blank" rel="noopener noreferrer">Kprofiles 成员页 ↗</a>
+      </PhotoSourceDisclosure>
+    </div></div><div className="hg-heading"><h2>IN THE FRAME<span>已有作品关联</span></h2></div>{linkedMemberWorks.length?<div className="hg-linked" data-member-module="works">{linkedMemberWorks.map(w=><a key={w.id} href={artistWorkUrl(w,false,returnTo)}><strong>{w.song||w.name}</strong><span>打开已有作品记录 ↗</span></a>)}</div>:<p>尚无可显示的已有作品关联。</p>}
 
 {data&&<MemberPublicCredits memberId={member.id} data={data} renderLink={(work,label)=><a href={artistWorkUrl(work,false,returnTo)}>{label}</a>}/>}
 <ScopedMemberCareerFacts data={data} memberId={member.id} groupId="rec28ldfRTiE4q" part="history"/>
-<section className="member-profile-sources" data-member-module="sources"><Sources urls={member.sources}/></section>
+{memberSources.length>0&&<section className="member-profile-sources" data-member-module="sources"><Sources urls={memberSources} title="成员资料来源"/></section>}
 <ScopedMemberCareerFacts data={data} memberId={member.id} groupId="rec28ldfRTiE4q" part="sources"/>
 <button className="hg-next" onClick={()=>navigate({member:editorial.members[(editorial.members.indexOf(member)+1)%5].id})}>下一位：{editorial.members[(editorial.members.indexOf(member)+1)%5].cnName} →</button>
 </section>:<section className="hg-empty"><h1>未找到这位成员</h1><button onClick={()=>select('members')}>返回成员目录</button></section>)}

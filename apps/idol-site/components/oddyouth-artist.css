@@ -16,3 +16,10 @@
 @media(max-width:360px){[data-oy-native] main{padding:0 18px}.oy-masthead{padding:18px 18px 0}.oy-opening{margin:0 -18px}.oy-opening-copy{padding:28px 18px}.oy-opening-copy h2{font-size:20px}.oy-group{padding:0 18px}.oy-members{gap:24px 12px}.oy-person-label h3{font-size:20px}.oy-release>a{gap:14px}.oy-release h4{font-size:19px}.oy-heading>span:last-child{max-width:85px}.oy-title>span{font-size:19px}.oy-event-copy h3{font-size:18px}.oy-footer{padding:26px 18px}}
 @media(max-width:700px){.oy-related-list article{display:grid;grid-template-columns:95px minmax(0,1fr);gap:12px 16px}.oy-related-list article>a:last-of-type{grid-column:2}.oy-related-list h3{overflow-wrap:anywhere}.oy-related-list article>.oy-button{grid-column:1/-1}}
 @media(prefers-reduced-motion:no-preference){.oy-button,.oy-masthead nav a{transition:background .15s,color .15s}.oy-member .oy-photo{transition:opacity .2s}.oy-member a:hover .oy-photo{opacity:.9}}
+
+.oy-person-detail .photo-source-disclosure {
+  --photo-source-line: var(--oy-line);
+  max-width: 340px;
+  margin-top: 16px;
+}
+.oy-person-detail .photo-source-disclosure .photo-source-body p { color: var(--oy-muted); }

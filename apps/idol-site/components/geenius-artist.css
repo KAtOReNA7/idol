@@ -52,3 +52,10 @@
   .ge-home-body { grid-template-columns: minmax(0,1fr); gap: 18px; }
   .ge-home-copy > p { margin-block: 20px 14px; }
 }
+
+.idol-geenius-person-detail .photo-source-disclosure {
+  --photo-source-line: #444;
+  max-width: 340px;
+  margin-top: 16px;
+}
+.idol-geenius-person-detail .photo-source-disclosure .photo-source-body p { color: var(--idol-geenius-muted); }

@@ -18,3 +18,9 @@ YouTube 隐私增强播放器的浏览器实测受到此设备已有域访问策
 Kstyle 在 2023 年 5 月 9 日发行当天报道了这支 MV。报道内嵌的地址为 `www.youtube.com/embed/v08zVNXb4is`，与 STONE MUSIC 的《Official S#3 MV》及本站登记的视频 ID 一致。Bugs 目录将这版的 5 分 09 秒完整片与 19 秒预告分开列出。本次查证仍未找到可供本站使用的新完整片源，《Per》的站内播放问题尚未解决。[Kstyle 发行报道](https://kstyle.com/article.ksn?articleNo=2217175) · [STONE MUSIC 首发视频](https://www.youtube.com/watch?v=v08zVNXb4is) · [Bugs 发行目录](https://music.bugs.co.kr/album/20563938)
 
 下一次有发行方或制作方开放第三方嵌入时，核对原版标注和完整性。新候选片长不同的，先比对片头、中段与片尾，再在正式详情页静音短播，记录两次递增进度与实际解码宽高。[已核候选版本](../evidence/20261122-v234/newjeans-player-sources.json)
+
+### 追加核对的官方贴文与发行目录
+
+ADYA 在发行日发布的 X 帖链接到 Melon、Genie、Bugs 三个音源。另一个节目官方帖预告的是 5 月 18 日的《Per》乐队版。Apple 美国目录提供预览，并将其 MV 的完整时长列为 319.193 秒，Bugs 对 S#3 的记录为 309 秒。B 站国际的同名页面署名个人账号并标注 Premium。上述候选均未取得本站原剪辑的完整播放证据。[ADYA 发行公告](https://x.com/ADYA_official/status/1655866065849835521) · [节目方的乐队版预告](https://x.com/itsLIVEofficial/status/1659077515401371651) · [Apple 美国目录元数据](https://itunes.apple.com/lookup?id=1689025099&country=US) · [Bugs 版本目录](https://music.bugs.co.kr/album/20563938) · [B 站国际投稿](https://www.bilibili.tv/en/video/4787117761632768)
+
+W!TCHX 的经纪公司 Artform 将官网中的《BLALA》4K 影像标为 SIMPLY POP 舞台，Bugs 艺人目录将同名发行列作音轨。官网舞台、节目演出和官方歌词影像仍是三个需分清的入口。本站歌词版的正式片源待解决。[Artform 艺人页](https://www.art-form.net/Witches) · [Bugs 艺人目录](https://music.bugs.co.kr/artist/20222498) · [团体发布的歌词影像](https://www.youtube.com/watch?v=DYigxyW8Oiw)

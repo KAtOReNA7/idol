@@ -2,13 +2,13 @@
  * Codex 自带浏览器中传入专用的后台测试标签页。每项结束时退出作品，调用结束后可关闭该标签。
  * const {checkPriorityMvPlayback} = await import('file:///D:/porject/idol/docs/codex/qa/priority-mv-playback.mjs');
  * const result = await checkPriorityMvPlayback(tab);
- * options.ids 可选择下列作品的子集。timeoutMs 为点击后每项最多等待的毫秒数。
+ * options.ids 可指定实际待查作品。默认跳过已验收并停测的《BILLIONAIRE》。timeoutMs 为点击后每项最多等待的毫秒数。
  * 脚本回归：node --test docs/codex/qa/priority-mv-playback.test.mjs
  */
 import {checkOkVideo,onWork} from './ok-video-playback.mjs';
 const site = 'https://idol-lens-private.wuke40758.chatgpt.site';
 const works = [
-  {id:'rec28ldfRTrLku', title:'BILLIONAIRE', original:'Gz_yRl6703c', provider:'OK Video',
+  {id:'rec28ldfRTrLku', title:'BILLIONAIRE', original:'Gz_yRl6703c', provider:'OK Video', explicitOnly:true,
     origin:'https://ok.ru', path:'/videoembed/9392431106679'},
   {id:'rec28ldfRTrzPI', title:'Magnetic', original:'Vk5-c_v4gMU', provider:'Vimeo',
     origin:'https://player.vimeo.com', path:'/video/930729644', mute:'muted', value:'1'},
@@ -176,7 +176,7 @@ async function checkOne(tab,cdp,work,timeoutMs) {
   return row;
 }
 
-export async function checkPriorityMvPlayback(tab,{ids=works.map(work=>work.id),timeoutMs=10000}={}) {
+export async function checkPriorityMvPlayback(tab,{ids=works.filter(work=>!work.explicitOnly).map(work=>work.id),timeoutMs=10000}={}) {
   if(!Array.isArray(ids) || !ids.length || new Set(ids).size!==ids.length || !ids.every(id=>works.some(work=>work.id===id)))
     throw Error('请选择已核对作品中的一项或多项。');
   if(!Number.isFinite(timeoutMs) || timeoutMs<500 || timeoutMs>15000)throw Error('播放采样时限为 500 至 15000 毫秒。');

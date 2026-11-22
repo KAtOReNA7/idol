@@ -1,5 +1,5 @@
 /* Artist content must not use the ad- prefix: generic cosmetic filters hide it. */
-@font-face{font-family:AdyaDisplay;src:url('/fonts/adya/ArchivoNarrow.ttf') format('truetype');font-weight:400 700;font-display:swap}
+@font-face{font-family:AdyaDisplay;src:url('/fonts/adya/ArchivoNarrow.woff2') format('woff2'),url('/fonts/adya/ArchivoNarrow.ttf') format('truetype');font-weight:400 700;font-display:swap}
 @font-face{font-family:AdyaText;src:url('/fonts/unis/NotoSansSC-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:AdyaText;src:url('/fonts/unis/NotoSansSC-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 [data-idol-adya-native]{--idol-adya-bg:#111112;--idol-adya-ink:#f5f3ef;--idol-adya-muted:#b7b6b4;--idol-adya-line:#555557;--idol-adya-red:#f64e37;--idol-adya-panel:#242427;background:var(--idol-adya-bg);color:var(--idol-adya-ink);font:15px/1.65 AdyaText,sans-serif;min-height:100vh;padding:0 max(24px,calc((100vw - 1440px)/2));color-scheme:dark}

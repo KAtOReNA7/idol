@@ -33,7 +33,7 @@ def brotli(data, decompress=False, mode=2):
                           stdout=subprocess.PIPE, check=True).stdout
 
 
-def convert(source):
+def convert(source, preserve_table_bytes=False):
     codec.brotli = types.SimpleNamespace(
         MODE_FONT=2, MODE_TEXT=1,
         compress=lambda data, mode=2: brotli(data, mode=mode),
@@ -41,6 +41,8 @@ def convert(source):
     codec.haveBrotli = True
     font = TTFont(io.BytesIO(source), recalcTimestamp=False)
     font.flavor = 'woff2'
+    if preserve_table_bytes:
+        font.flavorData = codec.WOFF2FlavorData(transformedTables=set())
     output = io.BytesIO()
     font.save(output)
     return output.getvalue()

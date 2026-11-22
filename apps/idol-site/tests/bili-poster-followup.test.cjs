@@ -44,7 +44,8 @@ test('the observed Password thumbnail retains its actual decoded dimensions and 
     ...['hyunny','kim','paan','suyeon'].map(name=>'/artist/recognition-editions/vvup/intro-2024-'+name+'.card.webp'),
    ]);
    manifest.assets=manifest.assets.filter(row=>{
-    const addedAfterReceipt=row.path==='/fonts/NunitoSans-Variable.woff2'||debutCards.has(row.path)||laterCollections.some(directory=>row.path.startsWith(directory));
+    const artistWebfont=/^\/fonts\/(?:adya\/ArchivoNarrow|vvup\/Archivo-Italic|witchx\/Rajdhani-[0-3])\.woff2$/.test(row.path);
+    const addedAfterReceipt=artistWebfont||row.path==='/fonts/NunitoSans-Variable.woff2'||debutCards.has(row.path)||laterCollections.some(directory=>row.path.startsWith(directory));
     if(!styles.has(row.path)&&!addedAfterReceipt)return true;
     const actual=fs.readFileSync(path.join(__dirname,'../public',row.path));
     assert.equal(row.delivery,'local',row.path);

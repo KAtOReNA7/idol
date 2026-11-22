@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build/check full Playfair Display, DM Sans and Nunito Sans webfonts.
+"""Build/check the project's full editorial and artist webfonts.
 Toolchain: fontTools 4.61.1 and Node 24.19.0, as used by the shared converter.
 Run: python scripts/build-editorial-fonts-woff2.py [--check]
 Original TTF/OFL files and metadata remain unchanged. Playfair's RFN is retained
@@ -24,17 +24,27 @@ FONTS = {
                             '443c5b7d3731face4a49115327b46288bae5616b79630f31e2c098680194a93d'),
 }
 
+# Rajdhani's original glyph padding is part of its offsets. Keep these tables
+# untransformed so the decoded font contains the original offsets and outlines.
+ARTIST_FONTS = {
+    'adya/ArchivoNarrow': False,
+    'vvup/Archivo-Italic': False,
+    **{f'witchx/Rajdhani-{i}': True for i in range(4)},
+}
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true', help='verify committed bytes without writing')
     args = parser.parse_args()
-    for name, (source_hash, output_hash) in FONTS.items():
+    for name in (*FONTS, *ARTIST_FONTS):
         source = (ROOT / 'public/fonts' / (name + '.ttf')).read_bytes()
-        assert hashlib.sha256(source).hexdigest() == source_hash, name + ': unexpected source'
-        output = codec.convert(source)
+        output = codec.convert(source, preserve_table_bytes=ARTIST_FONTS.get(name, False))
         glyphs = codec.verify(source, output)
-        assert hashlib.sha256(output).hexdigest() == output_hash, name + ': toolchain mismatch'
+        if name in FONTS:
+            source_hash, output_hash = FONTS[name]
+            assert hashlib.sha256(source).hexdigest() == source_hash, name + ': unexpected source'
+            assert hashlib.sha256(output).hexdigest() == output_hash, name + ': toolchain mismatch'
         target = ROOT / 'public/fonts' / (name + '.woff2')
         if args.check:
             assert target.read_bytes() == output, name + ': regenerate WOFF2'

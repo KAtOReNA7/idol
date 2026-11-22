@@ -38,15 +38,22 @@ export const LESSERAFIM_GROUP_ID='recvxyEBDZvpPh';
 export const LESSERAFIM_PATH='/artists/lesserafim';
 export const LESSERAFIM_EASY_PATH=LESSERAFIM_PATH+'/releases/easy';
 export const EASY_FROM_OVERVIEW=LESSERAFIM_EASY_PATH+'?from=overview';
+export const ITZY_GROUP_ID='recvxyEBDZqxjD';
+export const ITZY_PATH='/artists/itzy';
+export const ITZY_KILL_MY_DOUBT_PATH=ITZY_PATH+'/releases/kill-my-doubt';
 export const armageddonOriginals={Supernova:'recvxyHuKM4BvC',Armageddon:'recvxyHuKMKPod','Live My Life':'recvxyHuKMKGBh'};
 export const newDnaOriginals={'GRL GVNG':'recvxDMFHN9v3k',TGIF:'recvxDMFHNk8MX','NEW DANCE':'recvxDMFHNLljT','PUPPET SHOW':'recvxDMFHNonmf'};
 export const easyOriginals={EASY:'recvxyOz5Xfden',Smart:'recvxyOz5X0dv0'};
+export const killMyDoubtOriginals={
+ 'BET ON ME':'recvxyOz5XJvBE', CAKE:'recvxyOz5X64xs', 'None of My Business':'recvxyOz5Xk9CH',
+};
 const releaseReturnLabels=new Map<string,string>();
 for(const [path,label,originals] of [
  [AESPA_ARMAGEDDON_PATH,'《Armageddon》',armageddonOriginals],
  [XG_NEW_DNA_PATH,'《NEW DNA》',newDnaOriginals],
  [LESSERAFIM_EASY_PATH,'《EASY》',easyOriginals],
  [EASY_FROM_OVERVIEW,'《EASY》',easyOriginals],
+ [ITZY_KILL_MY_DOUBT_PATH,'《KILL MY DOUBT》',killMyDoubtOriginals],
 ] as const){
  releaseReturnLabels.set(path,label);
  for(const id of Object.values(originals))releaseReturnLabels.set(releaseTrackReturn(path,id),label);
@@ -65,8 +72,6 @@ export const HEARTS2HEARTS_GROUP_ID='rec28ldfRTiBAq';
 export const HEARTS2HEARTS_PATH='/artists/hearts2hearts';
 export const KIIIKIII_GROUP_ID='rec28ldfRTiBUk';
 export const KIIIKIII_PATH='/artists/kiiikiii';
-export const ITZY_GROUP_ID='recvxyEBDZqxjD';
-export const ITZY_PATH='/artists/itzy';
 export const SAYMYNAME_GROUP_ID='rec28ldfRTiChs';
 export const SAYMYNAME_PATH='/artists/saymyname';
 export const KATSEYE_GROUP_ID='rec28ldfRTiDUd';

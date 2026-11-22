@@ -1,7 +1,8 @@
 const test = require('node:test'), assert = require('node:assert/strict');
-const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm'), ts = require('typescript');
+const fs = require('node:fs'), path = require('node:path');
 const {createHash} = require('node:crypto');
 const React = require('react'), {renderToStaticMarkup} = require('react-dom/server');
+const {parse} = require('next/dist/compiled/node-html-parser');
 const load = require('./helpers/public-artist-loader.cjs');
 const {beforeHeyGabbyViewing, beforeHeyGabbyViewingBytes, beforeHeyGabbyViewingNotes,
   heyGabbyViewingAdoption: adoption} = require('./helpers/heygabby-viewing-baseline.cjs');
@@ -9,13 +10,10 @@ const {beforeHeyGabbyFormalBytes, beforeHeyGabbyFormalStages, beforeHeyGabbyForm
   beforeHeyGabbyFormalPosters, heyGabbyFormalAdoption: formal} = require('./helpers/heygabby-formal-baseline.cjs');
 const {validStageAlternative, stageSupplementForWork} = load('lib/idol/supplements.ts');
 const {stageForWork} = load('lib/idol/stage.ts');
-const stageSource = load('lib/idol/stage-source.ts');
-const {stageSourceKey, stageHasValidBinding, formatStageTime} = stageSource;
+const {stageSourceKey, stageHasValidBinding} = load('lib/idol/stage-source.ts');
 const {stageMatches} = load('lib/idol/stage-display.ts');
 const {projectPublicCatalog} = load('lib/idol/public-catalog.ts');
-const {validStageResearchNote} = load('lib/idol/stage-public-research.ts');
 const {approvedVideoPoster} = load('lib/idol/approved-video-poster.ts');
-const copy = load('lib/idol/product-copy.ts');
 const data = require('../data/stages/supplements.json'), notes = require('../data/ui/alternative-notes.json');
 const app = path.resolve(__dirname, '..'), id = 'recvxyOz5Xo5fW', video = 'XSpYaEdpKxY';
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -99,52 +97,21 @@ test('strict formal then viewing preimages preserve the original 496 sources, ev
 });
 
 test('actual anonymous stage media SSR shows one formal player, its scope note and no duplicate or stale candidate card', () => {
-  const source = require('./helpers/catalog-view-source.cjs')();
-  const start = source.indexOf('function StageSupplements('), end = source.indexOf('function PageTitle(', start);
-  const code = ts.transpileModule('export ' + source.slice(start, end), {compilerOptions: {
-    module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.React,
-  }}).outputText;
-  const player = {};
-  const playerCode = ts.transpileModule(fs.readFileSync(path.join(app, 'components/work-video-player.tsx'), 'utf8'), {compilerOptions: {
-    module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX,
-  }}).outputText;
-  new Function('exports', 'require', playerCode)(player, require);
-  const tree = ts.createSourceFile('page.tsx', source, ts.ScriptTarget.ES2022, true, ts.ScriptKind.TSX);
-  const detail = tree.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === 'WorkDetail');
-  const regions = new Map();
-  function collect(node) {
-    if (ts.isJsxSelfClosingElement(node) && node.tagName.getText(tree) === 'WorkVideoPlayer') {
-      const choice = node.parent;
-      assert.ok(ts.isConditionalExpression(choice) && choice.whenFalse === node && ts.isJsxExpression(choice.parent));
-      regions.set('player', choice.parent.getText(tree));
-    }
-    if (ts.isJsxElement(node)) {
-      const attribute = node.openingElement.attributes.properties.find(p => ts.isJsxAttribute(p) && p.name.text === 'className');
-      const value = attribute?.initializer?.getText(tree);
-      for (const name of ['video-caption', 'stage-source']) {
-        if (value === '"' + name + '"') regions.set(name, node.getText(tree));
-      }
-    }
-    ts.forEachChild(node, collect);
-  }
-  collect(detail); assert.equal(regions.size, 3, 'real WorkDetail media and source regions');
-  const regionCode = ts.transpileModule(`export function StageMedia({work}) {
-    const view='stage',activePlatform='youtube',activePlatformLabel='YouTube',stage=work.stage,stageBound=stageHasValidBinding(stage),activeUrl=stageWatchUrl(stage),
-      vid=videoId(activeUrl),playback=workPlayback(work.id,vid,view,stage),title=stage.title,approvedPoster=approvedVideoPoster(work.id,vid,view),loonaButterfly=false,triplesMedia=null,
-      stageNote=stageViewingNote(work.id,stageSourceKey(stage));
-    return <>${[...regions.values()].join('\n')}<StageSupplements work={work}/></>;
-  }`, {compilerOptions: {module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.React}}).outputText;
-  const component = {};
-  vm.runInNewContext(`(function(exports){${code}})`, {React, ArrowUpRight: () => null,
-    platformLabel: {youtube: 'YouTube'}, ...stageSource, validStageResearchNote, formatStageTime, ...copy})(component);
-  vm.runInNewContext(`(function(exports){${regionCode}})`, {React, ArrowUpRight: () => null,
-    ...stageSource, ...load('lib/idol/work-playback.ts'), ...load('lib/idol/values.ts'), ...load('lib/idol/stage-display.ts'),
-    approvedVideoPoster, WorkVideoPlayer: player.WorkVideoPlayer, StageSupplements: component.StageSupplements})(component);
+  const {WorkDetail} = require('./helpers/triples-review-loader.cjs').load('components/catalog/work-detail.tsx');
+  const item = require('../data/stages/inventory.json').works.find(row => row.recordId === id);
   const catalog = {mode: 'live', groups: [], members: [], ratings: [], counts: {}, works: [{
-    id, stage: stageForWork(id), stageScore: null, score: 0, note: 'PRIVATE_SYNTHETIC_NOTE', stageSupplement: supplement,
+    id, name: item.name, song: item.song, groupIds: item.groupIds, url: item.mv.url,
+    stage: stageForWork(id), stageScore: null, score: 0, note: 'PRIVATE_SYNTHETIC_NOTE', stageSupplement: supplement,
   }]};
-  const snapshot = structuredClone(catalog), publicWork = projectPublicCatalog(catalog).works[0];
-  const html = renderToStaticMarkup(React.createElement(component.StageMedia, {work: publicWork}));
+  const snapshot = structuredClone(catalog), publicCatalog = projectPublicCatalog(catalog);
+  const publicWork = publicCatalog.works[0];
+  const noop = () => {};
+  const page = parse(renderToStaticMarkup(React.createElement(WorkDetail, {
+    work: publicWork, data: publicCatalog, initialView: 'stage', onBack: noop, onMember: noop, onVersion: noop, onSaved: noop,
+  })));
+  const media = page.querySelector('#work-video-panel > div');
+  assert.ok(media, 'anonymous stage media panel');
+  const html = media.toString();
   assert.equal((html.match(/class="video-play"/g) || []).length, 1);
   assert.match(html, /播放舞台视频/); assert.match(html, /七人完整演出，韩语原版/);
   assert.match(stageForWork(id).verificationNote, /未独立全片播放或逐句音轨比对/);
@@ -153,7 +120,7 @@ test('actual anonymous stage media SSR shows one formal player, its scope note a
   assert.ok(html.includes(`src="${formal.poster.addedEntry.src}"`));
   assert.ok(html.includes(`href="https://www.youtube.com/watch?v=${video}" target="_blank" rel="noopener noreferrer"`));
   assert.doesNotMatch(html, /其他观看选择|同曲现场表演|待核说明与来源|首尾是否完整|语言和音轨是否|<iframe|<input|<form|PRIVATE_SYNTHETIC_NOTE|AUTH_REQUIRED/);
-  assert.equal(renderToStaticMarkup(React.createElement(component.StageSupplements, {work: publicWork})), '');
+  assert.equal(page.querySelector('#other-performances'), null);
   assert.equal(publicWork.stage.videoId, video); assert.equal(stageMatches(publicWork, 'ready'), true);
   assert.equal(stageMatches(publicWork, 'alternative'), false);
   assert.equal(publicWork.stageScore, null); assert.equal(publicWork.score, 0);

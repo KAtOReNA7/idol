@@ -110,6 +110,7 @@ test('the original I DO ME cut shows its exact STARSHIP preview in the work dire
 
 test('each native member route receives only its own I DO ME release photograph and retains the original',async()=>{
  const {registry,artistCatalog,renderArtist}=require('./fixtures/current-artist-pages.cjs');
+ const {parse}=require('next/dist/compiled/node-html-parser');
  const artist=registry.find(item=>item.slug==='kiiikiii');
  const catalog=artistCatalog(artist);
  const edition=require('../data/mv-recognition-editions.json')['kiiikiii-uncut-gem-2025'];
@@ -120,7 +121,9 @@ test('each native member route receives only its own I DO ME release photograph 
   const rating={id:'recSyntheticDebutRating',memberIds:[memberId],workIds:[work.id],score:null,stylingScore:null,photo:null,recognition:'',note:'',memory:''};
   const html=await renderArtist(artist,{section:'members',member:memberId},{...catalog,ratings:[rating]});
   assert.ok(html.includes('src="'+edition.portraits[memberId].preview+'"'),memberId);
-  assert.match(html,/查看原作品图/);
+  const previous=parse(html).querySelector('button.mv-identity-previous');
+  assert.equal(previous?.text,'查看原作品图',memberId);
+  assert.equal(previous.getAttribute('aria-haspopup'),'dialog');
   for(const [other,photo] of Object.entries(edition.portraits)){
    if(other!==memberId)assert.ok(!html.includes('src="'+photo.preview+'"'),other);
   }

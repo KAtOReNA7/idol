@@ -42,7 +42,10 @@ test('former portraits follow the current artist contract; known EVERGLOW archiv
    for(const page of [direct,html]){
     assert.match(page,/历史成员档案/);assert.doesNotMatch(page,/这个成员不在本团档案中/);
     assert.ok(page.includes(portrait.cnName));assert.ok(page.includes(portrait.image));
-    assert.match(page,/照片来源/);assert.ok(page.includes(portrait.sourceUrl.replaceAll('&','&amp;')));
+    const credit=require('next/dist/compiled/node-html-parser').parse(page).querySelector('details.eg-portrait-credit');
+    assert.ok(credit);
+    assert.equal(credit.querySelector('summary').text,'照片出处');
+    assert.equal(credit.querySelector('a').getAttribute('href'),portrait.sourceUrl);
     assert.match(page,/返回成员目录/);assert.ok(page.includes('roster=history'));
    }
   }else{

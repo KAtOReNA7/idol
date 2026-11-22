@@ -3,6 +3,7 @@ const ts=require('typescript'),React=require('react'),{renderToStaticMarkup}=req
 const data=JSON.parse(fs.readFileSync('data/idle-design-public.json'));const src=fs.readFileSync('components/candidate/idle-design.tsx','utf8');
 const catalog={works:[{id:'recvxyOz5XuYef',url:'https://www.youtube.com/watch?v=Jh4QFaPmdss',groupIds:['recvxyEBDZqkpg'],song:'TOMBOY',name:'TOMBOY',score:null,stageScore:null,watched:'',stage:null,version:'',videoType:'MV',officialTitle:'TOMBOY'}],members:data.members,ratings:[]};
 function render(url,c=catalog){const out={};const code=ts.transpileModule(src,{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+code+'})',{URL,URLSearchParams})(name=>{
+ if(name.endsWith('/original-photo-link'))return require('./helpers/public-artist-loader.cjs')('components/original-photo-link.tsx');
  if(name.endsWith('artist-roster-link'))return require('./helpers/public-artist-loader.cjs')('components/artist-roster-link.tsx');
  if(name.endsWith('artist-mv-link'))return require('./helpers/public-artist-loader.cjs')('lib/idol/artist-mv-link.ts');
  if(name==='@/components/app-image-presentation')return require('./helpers/image-dependency-loader.cjs').imageDependency(name);
@@ -36,7 +37,10 @@ test('historical membership remains separate with exact uncropped supplied portr
  assert.deepEqual([info.width,info.height],[437,656]);
  assert.deepEqual([Number(photo.getAttribute('width')),Number(photo.getAttribute('height'))],[info.width,info.height]);
  assert.ok(detail.querySelector('a[href="https://sp.universal-music.co.jp/g-i-dle/latata/"]'));
- assert.equal(detail.querySelector('.idv-historical button').text,'查看图片');
+ const original=detail.querySelector('.idv-historical a[data-original-photo]');
+ assert.equal(original.text,'查看图片');
+ assert.equal(original.getAttribute('href'),asset.src);
+ assert.equal(original.getAttribute('aria-haspopup'),'dialog');
 });
 test('six member pages and all read-only releases preserve exact identities',()=>{for(const m of data.members){const html=render('/artists/idle?section=members&member='+m.id);assert.ok(html.includes(m.cn));assert.ok(html.includes(m.stageName));assert.ok(html.includes(data.assets[m.imageKey].src));}for(const r of data.releases){const html=render('/artists/idle?section=records&release='+r.id);assert.ok(html.includes(data.assets[r.imageKey].src));for(const t of r.tracks??[])assert.ok(html.includes(t.title.replaceAll('&','&amp;').replaceAll("'",'&#x27;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;')));}});
 test('KBS stage is its own read-only detail with no production rating link',()=>{const html=render('/artists/idle?section=works&media=idle-stage-kbs-music-bank-20220318-tomboy');assert.ok(html.includes('hWaTFNFnttU'));assert.ok(html.includes('TOMBOY · Music Bank'));assert.ok(html.includes('idle-release-cube-498'));assert.ok(!html.includes('作品评分'));assert.ok(!html.includes('ql-q-biGUlU'));});

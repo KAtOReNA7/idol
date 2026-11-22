@@ -12,6 +12,7 @@ function render(url,extra={}){
  vm.runInNewContext('(function(require,exports){'+code+'})',{URL,URLSearchParams})(name=>{
   if(name==='react')return {...React,useEffect:()=>{},useSyncExternalStore:()=>url};
   if(name==='react/jsx-runtime')return require(name);
+  if(name.endsWith('/original-photo-link'))return require('./helpers/public-artist-loader.cjs')('components/original-photo-link.tsx');
   if(name.endsWith('hearts2hearts-figma-assets.json'))return {default:JSON.parse(fs.readFileSync('data/runtime/hearts2hearts-figma-assets.json'))};
   if(name.endsWith('artist-preview'))return {artistRoute:s=>{const p=new URL(s,'https://test').searchParams;return {section:p.get('section')||'overview',member:p.get('member'),format:p.get('format')||'all',queue:p.get('queue')||'all',search:p.get('q')||''}},artistRouteUrl:r=>'/artists/hearts2hearts?section='+r.section+(r.member?'&member='+r.member:'')+(r.search?'&q='+encodeURIComponent(r.search):''),artistCollection:()=>({members:catalog.members,works:catalog.works}),artistWorkRows:w=>w,artistWorkUrl:(w,stage,ret)=>'/?work='+w.id+'&video='+(stage?'stage':'mv')+'&artistReturn='+encodeURIComponent(ret),artistMemberUrl:(id,ret)=>'/?member='+id+'&artistReturn='+encodeURIComponent(ret),artistWorkScoreLabel:v=>v===null?'未评分':v.toFixed(1)};
   if(name.endsWith('artist-timeline-host'))return {useArtistTimelineHostOptions:()=>({catalog}),ArtistTimelineHost:()=>React.createElement('div',{'data-production-timeline':'true'})};
@@ -62,5 +63,12 @@ test('release search has an explicit empty state and preserves its query through
  assert.match(render('/artists/hearts2hearts?section=records&q=nomatch'),/没有找到这张发行/);
 });
 test('member original-view button retains the named identity and original asset',()=>{
- const html=render('/artists/hearts2hearts?section=members&member='+members[0].id);assert.match(html,/aria-haspopup="dialog" aria-label="放大崔志宇 · JIWOO的官方照片"/);assert.match(html,/portraits\/jiwoo.jpg/);assert.match(html,/查看原图/);
+ const member=members[0],doc=parse(render('/artists/hearts2hearts?section=members&member='+member.id));
+ const link=doc.querySelector('a.h2h-member-photo[data-original-photo]'),image=content.memberVisuals[member.stageName].image;
+ assert.ok(link);
+ assert.equal(link.getAttribute('aria-haspopup'),'dialog');
+ assert.equal(link.getAttribute('aria-label'),'放大崔志宇 · JIWOO的官方照片');
+ assert.equal(link.getAttribute('href'),image);
+ assert.equal(link.querySelector('img').getAttribute('src'),image);
+ assert.match(link.text,/查看原图/);
 });

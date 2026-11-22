@@ -40,3 +40,9 @@ Lucid Colour 官网按《BILLIONAIRE》检索仅有《BABYMONSTER – BILLIONAIR
 ### 区域发行目录
 
 YG 中文与英文《DRIP》目录将《BILLIONAIRE》列为第五首，页面嵌入的是主打歌《DRIP》。日本 OTOTOY 的专辑播放器收录 2 分 37 秒的 FLAC 音轨，JOOX 泰国站也将其列为 2024 年 11 月发行的歌曲。这三处都没有提供可接入本站的 2 月 7 日首发演出版。此次公开检索也没有找到可核实为 YG 发布该完整影片的抖音、腾讯视频或网易云条目。[YG 发行目录](https://ygfamily.com/cn/artists/babymonster/discography/1615) · [OTOTOY](https://ototoy.jp/_/default/p/2409908) · [JOOX](https://www.joox.com/th/single/OfgSEEoo1kgrqxM%2B769m1A%3D%3D)
+
+### 首发版的官方社交渠道
+
+首发视频的发布说明列出了 BABYMONSTER 的官方 Facebook 和 Instagram 账号。本轮检索没有找到能核对 163.497 秒片长并提供独立嵌入的官方帖。Facebook 账号主页读取受限。NAVER TV、KakaoTV 及官方微博的公开检索也没有找到可验的同版视频 ID。YG 仍将 2 月 7 日的首发导演剪辑与 2 月 14 日的练舞版分开列出。[首发及官方账号](https://www.youtube.com/watch?v=Gz_yRl6703c) · [官方 Facebook](https://www.facebook.com/babymonster.ygofficial/) · [YG 首发说明](https://ygfamily.com/cn/news/report/6728)
+
+在 v225 同一作品页另做了一次静音诊断。9.2 秒内，RUTUBE 向本站发出了初始化和就绪事件，未取得出画或递增读数，本站仍只显示重新加载按钮。这个样本中未捕获具体拒播码。[播放器事件和屏幕控件](../evidence/20261122-v226/v225-player-status.json) · [本站短播](../evidence/20261122-v226/v225-priority-recheck.json) · [播放器官方事件定义](https://rutube.ru/info/embed/)

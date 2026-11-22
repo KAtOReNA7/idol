@@ -2,11 +2,13 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v225。51 团各走一张首页代表卡，含播放器的 49 条路径首轮走通 48 条，重进后 49 条均可达。《BILLIONAIRE》首发版仍拒播，两首对照 MV 正式站 4K。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [本批回执](worklogs/20261122-v225-release.md) |
+| 正式站 | v226。《BILLIONAIRE》等待起播时已有中文提示，首发版仍无解码画面。《Magnetic》《ATTITUDE》正式站 4K。NewJeans 首页和成员目录已补官网照片出处。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [本批回执](worklogs/20261122-v226-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v225 正式应用提交 `9a82573d`。[发布回执](evidence/20261122-v225/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，v226 正式应用提交 `04a0fe57`。[发布回执](evidence/20261122-v226/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v226 实测《BILLIONAIRE》出现等待提示，七人照片下的评分入口两宽均通过。NewJeans 首页可见的照片出处从 0 处增至 2 处，三个宽度均保留 MV 在发行之前。四团同卡访问和返回两版均为 4/4，每团耗时有升有降。MADEIN 的详情回归从 1/5 到 5/5，Windows、WSL 全量测试分别仍有 131、127 项失败。[实测与前后读数](worklogs/20261122-v226-release.md)
 
 v225 普通目录读取遇到可识别的瞬断时补读一次。隔离 D1 同五个入口首次均成功恢复。51 团正式首页代表卡中 49 条有站内播放按钮，首次抵达并返回从 42/49 到 48/49。Hearts2Hearts 首次仍显示读取失败，18 次定向复走均得到正常目录。正式采样未捕获补读标记，暂不能将首轮差值归因于该改动。[逐团实测与剩余 502](worklogs/20261122-v225-release.md)
 

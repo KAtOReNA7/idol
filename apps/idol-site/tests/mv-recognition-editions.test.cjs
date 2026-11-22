@@ -259,6 +259,7 @@ test('COCOCO credits each member’s own official photo and keeps the following 
 });
 
 const reviewedReleases = [
+  ['Catch the Stars', 'wooah-catch-the-stars-202201', 'recvxyH5pzzH06', 'g5B6zCSMrcc', 5],
   ['COCOCO', 'genblue-cococo-202408', 'rec28ldfRTrCU6', 'Ke5jk7Ngpqs', 6],
   ['Doo Doom Chit', 'vvup-debut-introductions-202402', 'rec28ldfRTrFb6', 'dYWGeQ4HFD8', 4],
   ['BLUSH', 'wooah-blush-2024', 'recvxyH5pz0vNt', 'yh5W41ANcjo', 5],
@@ -279,6 +280,27 @@ const reviewedReleases = [
   ["I Don't Miss U", 'qurious-2020', 'recvxyH5pz4VGa', 'hPzz4cRxtco', 5],
   ['I DO ME', 'kiiikiii-uncut-gem-2025', 'rec28ldfRTrAb0', 'hAEfi_SKTEU', 5],
 ];
+
+test('Catch the Stars uses the individual publisher posts and keeps the previous portrait for each of the five members', () => {
+  const posts = {
+    LUCY: '1476206624096194561', MINSEO: '1476206381862731777', NANA: '1476207378802495490',
+    SORA: '1476206875423170570', WOOYEON: '1476207127131611146',
+  };
+  const roster = require('../data/wooah-editorial.json').members;
+  const selection = editions['wooah-catch-the-stars-202201'];
+  assert.equal(Object.keys(selection.portraits).length, Object.keys(posts).length);
+  for (const [name, post] of Object.entries(posts)) {
+    const member = roster.find(person => person.name === name);
+    const photo = selection.portraits[member.id];
+    const earlier = editions['wooah-archive'].portraits[member.id];
+    const prefix = '/artist/recognition-editions/wooah/catch-the-stars-' + name.toLowerCase();
+    assert.equal(photo.preview, prefix + '.card.webp');
+    assert.equal(photo.original, prefix + '.original.jpg');
+    assert.equal(photo.sourceUrl, 'https://x.com/WOOAH_HM/status/' + post);
+    assert.equal(photo.previousEdition.original, earlier.original);
+    assert.equal(photo.previousEdition.sourceUrl, earlier.sourceUrl);
+  }
+});
 
 test('MACARONI CHEESE reuses its two shooting stills and keeps the earlier images accessible for the other three members', async () => {
   const work = {id: 'rec28ldfRTrFPR', url: 'https://www.youtube.com/watch?v=-6HWMkyTAaA'};

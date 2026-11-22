@@ -29,7 +29,18 @@ const currentCopyGuard={
 };
 function beforeCloseoutGuard(current){
  const groupIntroductionGuard='1900aba8bbc5f4cca39f9e496c4a17afb902a63d6e79f68bb01b7f53f8eaf350';
- if(hash(current)==='c6543ed1669a598062e3c83abf634183b7a0c6020c4dd7f2429a83ba86c1a001'){
+ const revisedIntroductionGuard='c6543ed1669a598062e3c83abf634183b7a0c6020c4dd7f2429a83ba86c1a001';
+ if(hash(current)==='51944d762c787e2bc9b4d145f362ccede93ff1610b1156944eef4def2f6b85b5'){
+  const restored=structuredClone(current);
+  const [change]=restored.publicBrandReview20261122.changes;
+  assert.equal(change.path,'lib/idol/udtt-native/presentation.mjs');
+  assert.deepEqual(restored.runtimeGuards[change.path],change.reviewed);
+  restored.runtimeGuards[change.path]=change.previous;
+  delete restored.publicBrandReview20261122;
+  assert.equal(hash(restored),revisedIntroductionGuard,'complete guard before the UDTT public masthead');
+  current=restored;
+ }
+ if(hash(current)===revisedIntroductionGuard){
   const restored=structuredClone(current), file='data/artist-home-introductions.json';
   assert.deepEqual(restored.runtimeGuards[file],{bytes:19941,sha256:'6acba8362d05dbb7652f820da7e99ed85bbd29faada9be31b93de47eb46f2d7f'});
   restored.runtimeGuards[file]={bytes:19916,sha256:'a9f94acb00183cbff67d3e91370969d7df82bf747ed1ec1d62d06ad2be7e4403'};

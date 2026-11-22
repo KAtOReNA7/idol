@@ -38,19 +38,35 @@ const shape:Shape={
 };
 // Explicit schema at EVERY level: future fields are private by default. Invalid
 // object-valued primitives fail closed, rather than recursively copying secrets.
-function project(value:unknown,schema:Shape):unknown{
- if(value===null)return null;
- if(schema===true)return typeof value==='string'||typeof value==='boolean'||typeof value==='number'&&Number.isFinite(value)?value:undefined;
- if(Array.isArray(schema))return Array.isArray(value)?value.map(v=>project(v,schema[0])).filter(v=>v!==undefined):undefined;
- if(!value||typeof value!=='object'||Array.isArray(value))return undefined;
- const out:Record<string,unknown>={};
- for(const [key,child] of Object.entries(schema))if(Object.hasOwn(value,key)){
-  const result=project((value as Record<string,unknown>)[key],child);if(result!==undefined)out[key]=result;
+type Projector = (value:unknown)=>unknown;
+function compileProjection(schema:Shape):Projector {
+ if(schema===true)return value=>{
+  const primitive=value===null||typeof value==='string'||typeof value==='boolean'||Number.isFinite(value);
+  return primitive?value:undefined;
+ };
+ if(Array.isArray(schema)){
+  const projectItem=compileProjection(schema[0]);
+  return value=>{
+   if(value===null)return null;
+   return Array.isArray(value)?value.map(projectItem).filter(item=>item!==undefined):undefined;
+  };
  }
- return out;
+ const allowed=Object.entries(schema).map(([key,child])=>[key,compileProjection(child)] as const);
+ return value=>{
+  if(value===null)return null;
+  if(typeof value!=='object'||Array.isArray(value))return undefined;
+  const out:Record<string,unknown>={};
+  for(const [key,projectField] of allowed){
+   if(!Object.hasOwn(value,key))continue;
+   const result=projectField((value as Record<string,unknown>)[key]);
+   if(result!==undefined)out[key]=result;
+  }
+  return out;
+ };
 }
+const projectCatalogFields=compileProjection(shape);
 export function projectPublicCatalog(catalog:CatalogView):CatalogView{
- const view=project(catalog,shape) as CatalogView;
+ const view=projectCatalogFields(catalog) as CatalogView;
  // Keep existing UI contract without passing diagnostics or source provenance.
  view.warning=null;
  for(const work of view.works){

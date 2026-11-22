@@ -17,3 +17,7 @@ IVE 手机按[390 原稿](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?n
 
 [手机观察](../evidence/20261122-figma-redesign/local-375.json) · [桌面观察](../evidence/20261122-figma-redesign/local-1425.json) · [另四团首屏](../evidence/20261122-figma-redesign/local-four-openings.json)
 
+VVUP 原 Figma 页的两个整页覆盖首页与其成员、发行、影像和时间轴模块。开发版另撤下未有独立设计的详情样式，重做六类页面的双端稿。填入官网四人具名照及四张发行原图，并在两个宽度从目录进入 Kim 和《VVON》、查看原图并返回、筛选舞台、读到九个时间轴事件。两端六种路径均无横向溢出。成员目录 [桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1125) / [手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1218)，成员详情 [桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1141) / [手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1234)，发行目录 [桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1151) / [手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1244)，发行详情 [桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1166) / [手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1259)，影像筛选 [桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1177) / [手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1270)，时间轴 [桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1194) / [手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1451-1287)。[浏览器实测](../evidence/20261122-figma-redesign/local-vvup-interiors.json)
+
+VVUP 相关旧审核包及本轮图片回归的 25 项测试中，24 项通过。另 1 项为 v236 已存在的独立审核包越过本团字体准入清单，在构建脚本阶段失败。正式工程的构建、全套单测、线上访问分别验收。
+

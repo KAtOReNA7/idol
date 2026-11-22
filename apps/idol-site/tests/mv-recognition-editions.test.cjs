@@ -353,6 +353,61 @@ test('woo!ah! retains its six debut members and each member’s own original MV 
   }
 });
 
+const sugarRushPublisherPhotos = [
+  ['recvxyICzHSB1r', 'yujin', '1571061540706476032/photo/1', 2250],
+  ['recvxyICzHvcNv', 'xiaoting', '1571061540706476032/photo/2', 1000],
+  ['rec28ldbniBgam', 'mashiro', '1571061540706476032/photo/3', 2250],
+  ['recvxyICzHCOwh', 'chaehyun', '1571061655546511362/photo/1', 1000],
+  ['recvxyICzHkiWq', 'dayeon', '1571061655546511362/photo/2', 2250],
+  ['recvxyICzHOon2', 'hikaru', '1571061655546511362/photo/3', 1000],
+  ['recvxyICzHvPnL', 'huening-bahiyyih', '1571061905074028548/photo/1', 2250],
+  ['recvxyICzHHBnl', 'youngeun', '1571061905074028548/photo/2', 1000],
+  ['rec28ldbniBgvC', 'yeseo', '1571061905074028548/photo/3', 1000],
+];
+
+test('Sugar Rush binds all nine 2022 publisher photos and retains seventeen distinct historical photos', async () => {
+  const workId = 'recvxyOz5Xvsk1';
+  const videoId = 'w8N3nZ7reZk';
+  const work = {id: workId, url: 'https://www.youtube.com/watch?v=' + videoId};
+  const edition = editions['kep1er-sugar-rush-universe-202209'];
+  const daydream = editions['kep1er-daydream'];
+  assert.equal(edition.label, 'Sugar Rush · 本次发行概念照');
+  assert.deepEqual(new Set(edition.works[0].memberIds), new Set(sugarRushPublisherPhotos.map(([id]) => id)));
+  assert.ok(daydream.works.every(item => item.workId !== workId));
+  const otherDaydreamWork = daydream.works.find(item => item.workId === 'recvxyOz5XkgLA');
+  assert.ok(otherDaydreamWork);
+  let historyCount = 0;
+  for (const [memberId, name, attachment, originalHeight] of sugarRushPublisherPhotos) {
+    const binding = {workId, videoId, memberId};
+    const photo = mvRecognitionEdition(binding);
+    const pathPrefix = '/artist/recognition-editions/kep1er/sugar-rush-' + name;
+    assert.deepEqual([photo.preview, photo.original], [pathPrefix + '.card.webp', pathPrefix + '.original.jpg']);
+    assert.equal(photo.sourceUrl, 'https://x.com/into__universe/status/' + attachment);
+    assert.equal(mvRecognitionEdition({...binding, videoId: otherDaydreamWork.videoId}), null);
+    const native = media.portraits.find(item => item.workId === workId && item.videoId === videoId && item.memberId === memberId);
+    const hasSeparateMvStill = name !== 'mashiro';
+    const earlier = hasSeparateMvStill ? daydream.portraits[memberId] : native;
+    assert.deepEqual(photo.previousEdition, {
+      label: '2022《TROUBLESHOOTER》Daydream 照',
+      original: earlier.original ?? earlier.src,
+      sourceUrl: earlier.sourceUrl,
+    });
+    const tree = parse(renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId, label: name, selectEdition: mvRecognitionEdition})));
+    assert.equal(tree.querySelector('.mv-identity-frame img').getAttribute('src'), photo.preview);
+    assert.equal(tree.querySelector('figcaption').firstChild.text, edition.label);
+    assert.equal(tree.querySelector('figcaption a').getAttribute('href'), photo.sourceUrl);
+    const history = tree.querySelectorAll('.mv-identity-history');
+    assert.deepEqual(history.map(node => node.querySelector('button').text), hasSeparateMvStill
+      ? ['查看2022《TROUBLESHOOTER》Daydream 照', '查看原作品图'] : ['查看2022《TROUBLESHOOTER》Daydream 照']);
+    assert.deepEqual(history.map(node => node.querySelector('a').getAttribute('href')), hasSeparateMvStill
+      ? [earlier.sourceUrl, native.sourceUrl] : [earlier.sourceUrl]);
+    historyCount += history.length;
+    const images = await Promise.all([photo.preview, photo.original].map(file => sharp(path.join(__dirname, '../public', file)).metadata()));
+    assert.deepEqual(images.map(({format, width, height}) => [format, width, height]), [['webp', 480, 640], ['jpeg', 1500, originalHeight]]);
+  }
+  assert.equal(historyCount, 17);
+});
+
 const glassShoesForestProfiles = {
   JIHEON: ['933720556385443840', '2025《White Memories》认人照'],
   GYURI: ['933721822356373504', '2021《Talk & Talk》认人照'],

@@ -9,6 +9,49 @@ const fixtureOwner=()=>({userId:'owner',email:fs.readFileSync('lib/idol/http.ts'
 const count=(sql,table)=>sql.prepare('SELECT count(*) AS n FROM '+table).get().n;
 const bad=(code,status)=>e=>e.code===code&&(!status||e.status===status);
 
+test('reviewed editorial detail gives each AtHeart release portrait its own score and distinguishes the BLALA lyric video', async t=>{
+ const h=harness(),{api}=h;
+ t.after(()=>h.sql.close());
+ const snapshot=require('../data/snapshot.json'), credits=require('../data/imported-work-credits-and-portraits.json');
+ const entries=require('../data/reviewed-editorial-work-imports.json');
+ const catalog=api.projectCatalog(snapshot.tables,'live',snapshot.capturedAt);
+ const personal=await h.read(), noop=()=>{};
+ for(const entry of entries){
+  const sample=catalog.works.find(work=>work.groupIds.includes(entry.groupId));
+  const work={...sample,id:entry.workId,song:entry.song,groupIds:[entry.groupId],placeholder:null,stage:null,
+   stageSupplement:null,score:null,stageScore:null,ratingIds:[],url:'https://www.youtube.com/watch?v='+entry.videoId,
+   officialTitle:entry.officialTitle,version:entry.version,videoType:entry.videoType};
+  const source=api.projectWorkCatalog({...catalog,works:[...catalog.works,work]},work);
+  const display={...api.projectBrowserCatalog(source),personalMvRatings:personal};
+  for(const canEdit of [true,false]){
+   const data=canEdit?display:api.projectPublicCatalog(display);
+   const page=parse(renderToStaticMarkup(React.createElement(api.PublicAccessProvider,{canEdit},
+    React.createElement(api.WorkDetail,{work:data.works[0],data,onMember:noop,onGroup:noop,onSaved:noop,onBack:noop,onVersion:noop}))));
+   assert.ok(page.querySelector('img[src="'+entry.poster+'"]'),entry.group+' correct version poster');
+   if(entry.group==='AtHeart'){
+    const portraits=credits.recognition[0].portraits;
+    const cards=page.querySelectorAll('[data-photo-member]');
+    assert.equal(cards.length,7);
+    for(const portrait of portraits){
+     const card=cards.find(node=>node.getAttribute('data-photo-member')===portrait.memberId);
+     assert.ok(card.querySelector('img[src="'+portrait.src+'"]'));
+     assert.ok(fs.existsSync(path.join('public',portrait.originalSrc)));
+     const elements=card.querySelectorAll('img[src],button.credit-score-action');
+     assert.deepEqual(elements.map(node=>node.tagName),canEdit?['IMG','BUTTON']:['IMG']);
+     if(canEdit)assert.equal(card.querySelector('[data-score-member]').getAttribute('data-score-member'),portrait.memberId);
+    }
+    assert.match(page.text,/《3!4!》发行阵容/);
+   }else{
+    assert.equal(page.querySelector('[data-credit-work]'),null);
+    if(canEdit){
+     const eligible=page.querySelectorAll('.personal-mv-picker option[value]').filter(el=>el.getAttribute('value'));
+     assert.equal(eligible.length,5);
+    }
+   }
+  }
+ }
+});
+
 test('owner explicitly saves zero for a historical member, reads it privately, exports it, and can clear it',async()=>{
  const h=harness(),{api,sql}=h,input=await h.request();
  const first=await api.savePersonalMvRating('owner',input);

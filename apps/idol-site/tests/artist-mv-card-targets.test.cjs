@@ -9,6 +9,7 @@ const {artistMvHref, artistMvWorkId} = load('lib/idol/artist-mv-link.ts');
 const {safeArtistReturn} = load('lib/idol/artist-navigation.ts');
 const {routeUrl} = load('lib/idol/journey.ts');
 const origin = 'https://artist.test';
+const reviewedImports = require('../data/reviewed-editorial-work-imports.json');
 const url = href => new URL(href, origin);
 const linkOf = node => node.tagName==='A' ? node : node.querySelector('a');
 const assertPlayer = (href, work, from) => {
@@ -22,6 +23,27 @@ const assertPlayer = (href, work, from) => {
   assert.equal(back.pathname, url(from).pathname);
   assert.deepEqual(Object.fromEntries(back.searchParams), Object.fromEntries(url(from).searchParams));
 };
+
+test('an old media bookmark opens the reviewed native detail and returns to its video catalog without looping',async()=>{
+  for(const entry of reviewedImports){
+    const group=registry.find(item=>item.groupId===entry.groupId);
+    const catalog=artistCatalog(group);
+    const film=editorialMvs(group.slug).find(item=>item.videoId===entry.videoId);
+    const query={section:'works',format:'mv',media:film.key};
+    const source='https://www.youtube.com/watch?v='+entry.videoId;
+    const work={...catalog.works[0],id:entry.workId,song:entry.song,url:source,groupIds:[entry.groupId],placeholder:null};
+    const old=parse(await renderArtist(group,query,catalog));
+    assert.equal(old.querySelector('p[role="status"] a'),null);
+    for(const works of [[...catalog.works,work],[...catalog.works,{...work,url:'https://youtu.be/I5-ZVMQVJsQ'}]]){
+      const current=parse(await renderArtist(group,query,{...catalog,works}));
+      const link=current.querySelector('p[role="status"] a');
+      if(works.at(-1).url===source){
+        assert.ok(link,film.key);
+        assertPlayer(link.getAttribute('href'),entry.workId,group.path+'?section=works&format=mv');
+      }else assert.equal(link,null);
+    }
+  }
+});
 
 function editorialMvs(slug) {
   if (['hitgs','vcha','atheart'].includes(slug))
@@ -50,9 +72,10 @@ for (const slug of ['adya','bewave','candyshop','geenius','oddyouth','spia','tra
         assert.ok(card, video.key);
         const link=linkOf(card);
         const matches=catalog.works.filter(w=>w.id===video.id&&w.url==='https://www.youtube.com/watch?v='+video.videoId);
-        if(matches.length===1){
+        const reviewed = !data && reviewedImports.find(row => row.groupId === group.groupId && row.videoId === video.videoId);
+        if(matches.length===1 || reviewed){
           assert.ok(link,video.key);
-          assertPlayer(link.getAttribute('href'),video.id,from);
+          assertPlayer(link.getAttribute('href'),reviewed ? reviewed.workId : video.id,from);
           assert.ok(!link.hasAttribute('target'));
         }else{
           assert.ok(!link||url(link.getAttribute('href')).pathname!== '/',video.key);

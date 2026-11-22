@@ -24,8 +24,11 @@ before(async () => {
     stdin: {resolveDir: root, contents: `
       import {env,withEnv} from 'cloudflare:workers';
       import {readNativeDetail} from './lib/idol/native-reader';
+      import {nativeExportSnapshot} from './lib/idol/native-storage';
       import {saveNativeRecord} from './lib/idol/native-save';
       import {GET as readCatalog} from './app/api/catalog/route';
+      import {GET as previewWorks, POST as importWorks} from './app/api/manage/works/reviewed/route';
+      import {POST as personalRating} from './app/api/personal-mv-ratings/route';
       import {AppError} from './lib/idol/feishu';
       const logError = console.error.bind(console);
       console.error = (...args) => {
@@ -38,6 +41,12 @@ before(async () => {
       export default {async fetch(request) {
         const url = new URL(request.url);
         try {
+          if (url.pathname === '/api/manage/works/reviewed') {
+            return withEnv({DB:env.DB, TEST_PUBLIC:request.headers.has('X-Test-Public')},
+              () => request.method === 'GET' ? previewWorks() : importWorks(request));
+          }
+          if (url.pathname === '/api/personal-mv-ratings') return personalRating(request);
+          if (url.pathname === '/test/native-export') return Response.json(await nativeExportSnapshot('test-owner'));
           if (url.pathname === '/test/leave-catalog') {
             // End this real workerd invocation while its native cold read still has request-owned I/O.
             let markStarted;
@@ -368,3 +377,101 @@ for (const [title, id] of records) {
     assert.equal((await (await read('ratings', ratingId)).json()).values.score, 0);
   });
 }
+
+test('reviewed editorial MVs import into their own empty records and retain scores after a retried save', async () => {
+  const entries = require('../data/reviewed-editorial-work-imports.json');
+  const atheart = entries.find(entry => entry.group === 'AtHeart');
+  const member = require('../data/atheart-review-editorial.json').members[0];
+  const schemaRow = await db.prepare("SELECT fields_json FROM idol_native_fields WHERE snapshot_id=? AND table_key='works'").bind(snapshot).first();
+  const fields = JSON.parse(schemaRow.fields_json);
+  for (const name of ['name','song','url','groups','videoType','version','releaseDate','officialTitle','channel','source']) {
+    fields.push({field_id: F.works[name], field_name: name, type: name === 'groups' ? 18 : name === 'url' ? 15 : 1});
+  }
+  await db.prepare("UPDATE idol_native_fields SET fields_json=? WHERE snapshot_id=? AND table_key='works'")
+    .bind(JSON.stringify(fields), snapshot).run();
+  for (const entry of entries) {
+    const nearby = 'recExisting' + entry.videoId;
+    await seed('groups', entry.groupId, {[F.groups.name]: entry.group, [F.groups.works]: [nearby], [F.groups.note]:'isolated original'});
+    await seed('works', nearby, {[F.works.groups]:[entry.groupId], [F.works.song]:entry.song, [F.works.score]:7,
+      [F.works.url]:'https://www.youtube.com/watch?v=' + (entry === atheart ? 'I5-ZVMQVJsQ' : '6dYelUvJA3A')});
+  }
+  await seed('members', member.id, {[F.members.name]: member.stageName, [F.members.groups]:[atheart.groupId]});
+
+  const origin = 'http://localhost';
+  const path = origin + '/api/manage/works/reviewed';
+  const operationId = crypto.randomUUID();
+  const apply = (id = operationId, headers = {}, originHeader = origin) => runtime.dispatchFetch(path, {
+    method:'POST', headers:{Origin:originHeader, 'Idempotency-Key':id, ...headers},
+  });
+  const status = await runtime.dispatchFetch(path);
+  const before = await status.json();
+  assert.equal(status.status, 200, JSON.stringify(before));
+  assert.ok(before.works.every(work => !work.present));
+  assert.equal((await apply(operationId, {'X-Test-Public':'1'})).status, 401);
+  assert.equal((await apply(operationId, {}, 'https://unrelated.invalid')).status, 403);
+  assert.equal((await apply('invalid')).status, 400);
+  const invalidHeaders = {Origin:origin, 'Idempotency-Key':operationId};
+  for (const [suffix, body] of [['?work=unreviewed', undefined], ['', '{}']]) {
+    assert.equal((await runtime.dispatchFetch(path+suffix,{method:'POST',headers:invalidHeaders,body})).status,400);
+  }
+
+  const conflictId = 'recOtherOwnerVersion';
+  await seed('works', conflictId, {[F.works.groups]:[atheart.groupId], [F.works.url]:'https://youtu.be/' + atheart.videoId});
+  const duplicate = await apply();
+  assert.equal(duplicate.status, 409, JSON.stringify(await duplicate.json()));
+  await db.prepare("DELETE FROM idol_native_records WHERE snapshot_id=? AND record_id=?").bind(snapshot, conflictId).run();
+
+  const created = await apply();
+  const result = await created.json();
+  assert.equal(created.status, 200, JSON.stringify(result));
+  assert.deepEqual(result.added, entries.map(entry => entry.workId));
+  assert.deepEqual(await (await apply()).json(), result);
+  assert.deepEqual((await (await apply(crypto.randomUUID())).json()).added, []);
+  const after = await (await runtime.dispatchFetch(path)).json();
+  assert.ok(after.works.every(work => work.present));
+
+  for (const entry of entries) {
+    const details = await (await read('works', entry.workId)).json();
+    assert.equal(details.values.score, null);
+    assert.equal(details.values.stageScore, null);
+    const current = await (await catalogFor(entry.workId)).json();
+    assert.equal(current.works[0].url, 'https://www.youtube.com/watch?v=' + entry.videoId);
+    assert.equal(current.works[0].placeholder, null);
+    assert.equal(current.works[0].releaseDate, entry.releaseDate ?? '');
+    const group = await db.prepare("SELECT fields_json FROM idol_native_records WHERE snapshot_id=? AND record_id=?")
+      .bind(snapshot, entry.groupId).first();
+    const raw = JSON.parse(group.fields_json);
+    assert.equal(raw[F.groups.note], 'isolated original');
+    assert.equal(raw[F.groups.works].length, 2);
+    assert.equal(raw[F.groups.works][1].recordId, entry.workId);
+
+    const body = JSON.stringify({table:'works', recordId:entry.workId, revision:details.revision,
+      operationId:crypto.randomUUID(), values:{score:0}});
+    const saved = await (await post(body)).json();
+    assert.equal(saved.values.score, 0);
+    assert.deepEqual(await (await post(body)).json(), saved);
+    assert.equal((await (await read('works', entry.workId)).json()).values.score, 0);
+    assert.equal((await (await read('works','recExisting'+entry.videoId)).json()).values.score, 7);
+  }
+
+  const view = await (await catalogFor(atheart.workId)).json();
+  const edit = {workId:atheart.workId, videoId:atheart.videoId, memberId:member.id, scope:view.personalMvRatings.scope,
+    operationId:crypto.randomUUID(), revision:0, score:0, stylingScore:8.5};
+  const save = body => runtime.dispatchFetch(origin + '/api/personal-mv-ratings', {
+    method:'POST', headers:{Origin:origin,'Content-Type':'application/json'}, body:JSON.stringify(body),
+  });
+  assert.equal((await save({...edit, videoId:'I5-ZVMQVJsQ'})).status, 409);
+  const rating = await save(edit);
+  assert.equal(rating.status, 200);
+  const receipt = await rating.json();
+  assert.deepEqual(await (await save(edit)).json(), receipt);
+  const reloaded = await (await catalogFor(atheart.workId)).json();
+  assert.deepEqual(reloaded.personalMvRatings.entries, [{workId:edit.workId, videoId:edit.videoId,
+    memberId:edit.memberId, revision:1, score:0, stylingScore:8.5}]);
+  const exported = await (await runtime.dispatchFetch(origin+'/test/native-export')).json();
+  assert.deepEqual(exported.tables.works.records.filter(row => result.added.includes(row.recordId))
+    .map(row => [row.recordId,row.fields[F.works.score]]).sort(), result.added.map(id=>[id,0]).sort());
+  assert.equal(exported.journal.filter(row=>row.id===operationId && row.status==='done').length,1);
+  assert.equal(exported.personalMvRatings.filter(row=>row.work_id===edit.workId && row.video_id===edit.videoId &&
+    row.member_id===edit.memberId && row.score===0 && row.styling_score===8.5).length,1);
+});

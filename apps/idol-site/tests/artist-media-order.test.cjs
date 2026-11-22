@@ -105,20 +105,29 @@ function primaryAction(document, card) {
   return item?.getAttribute('href') || item?.tagName === 'BUTTON' ? item : item?.querySelector('a');
 }
 
-test('featured MV actions have the same verified destination before and after catalog loading', async () => {
+test('featured MV actions match the exact version present in each catalog, including newly imported works', async () => {
+  const imports = require('../data/reviewed-editorial-work-imports.json');
+  const {artistCatalog} = require('./fixtures/current-artist-pages.cjs');
   for (const group of reactGroups) {
     const affected = cases.filter(card=>card.slug === group.slug);
     if (!affected.length) continue;
-    for (const document of [
-      parse(await renderArtist(group, {}, null, {loading:true})),
-      parse(await renderArtist(group)),
-    ]) {
+    const catalog = artistCatalog(group);
+    const entry = imports.find(item => item.groupId === group.groupId);
+    const states = [null, catalog];
+    if (entry) states.push({...catalog, works: [...catalog.works, {
+      id: entry.workId, groupIds: [group.groupId], song: entry.song, url: 'https://www.youtube.com/watch?v=' + entry.videoId,
+      placeholder: null, ratingIds: [], stage: null,
+    }]});
+    for (const data of states) {
+      const document = parse(await renderArtist(group, {}, data, {loading: !data}));
       for (const card of affected) {
         const action = primaryAction(document, card);
         assert.ok(action, group.slug + ' ' + card.sourceVideoId);
         const url = new URL(action.getAttribute('href') || '', 'https://example.invalid');
-        assert.equal(url.searchParams.get('work'), card.workId, group.slug + ' ' + card.sourceVideoId);
-        if (card.workId) {
+        const imported = entry?.videoId === card.sourceVideoId && (!data || data.works.some(work => work.id === entry.workId));
+        const expected = imported ? entry.workId : card.workId;
+        assert.equal(url.searchParams.get('work'), expected, group.slug + ' ' + card.sourceVideoId);
+        if (expected) {
           assert.equal(url.pathname, '/');
           assert.equal(url.origin, 'https://example.invalid');
           assert.equal(url.searchParams.get('returnTo'), group.path);

@@ -1,6 +1,11 @@
 import type {CatalogView} from './types';
 import {artistWorkUrl} from './artist-preview';
 import {videoId} from './values';
+import reviewedImports from '../../data/reviewed-editorial-work-imports.json';
+
+export function reviewedEditorialWorkId(groupId: string, id: string) {
+  return reviewedImports.find(work => work.groupId === groupId && work.videoId === id)?.workId;
+}
 
 // Checked public MV identities used while the live catalog is loading. A loaded catalog always wins.
 const verifiedPublicMv: Readonly<Record<string,string>> = {
@@ -128,14 +133,17 @@ const verifiedPublicMv: Readonly<Record<string,string>> = {
 export function artistMvWorkId(catalog: Pick<CatalogView,'works'> | null | undefined, groupId: string, source: string, expectedWork?: string | null) {
   const id = videoId(source);
   if (!id) return null;
+  // Older editorial files have an empty work ID for these subsequently imported exact versions.
+  const imported = reviewedEditorialWorkId(groupId, id);
+  const expected = expectedWork === '' && imported ? imported : expectedWork;
   if (!catalog) {
-    const known = verifiedPublicMv[groupId + ':' + id];
-    return known && (expectedWork === undefined || expectedWork === known) ? known : null;
+    const known = imported ?? verifiedPublicMv[groupId + ':' + id];
+    return known && (expected === undefined || expected === known) ? known : null;
   }
   const matches = catalog.works.filter(work => !work.placeholder && work.groupIds.includes(groupId) && videoId(work.url) === id);
   if (matches.length !== 1) return null;
   const workId = matches[0].id;
-  if (expectedWork !== undefined && workId !== expectedWork) return null;
+  if (expected !== undefined && workId !== expected) return null;
   return catalog.works.filter(work => work.id === workId).length === 1 ? workId : null;
 }
 

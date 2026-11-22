@@ -4,7 +4,8 @@ import {NativeTimelineDetailBack} from './native-timeline-detail-back';
 import {publicCustomArtistText} from '@/lib/idol/custom-artist-copy';
 import {libraryResultLabel} from '@/lib/idol/artist-library-format';
 import {OriginalPhotoLink} from './original-photo-link';
-import {artistMvHref} from '@/lib/idol/artist-mv-link';
+import {artistMvHref, reviewedEditorialWorkId} from '@/lib/idol/artist-mv-link';
+import {EditorialWorkHandoff} from './editorial-work-handoff';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {artistWorkUrl} from '@/lib/idol/artist-preview';
@@ -85,6 +86,10 @@ export default function WitchxArtist({content}:{content:CandidateContent}){
  function releaseDetail(r:Release){return <>{detailBack('返回发行目录')}<section className="wk-release-detail"><div><button className="wk-photo-button" aria-label={`放大${r.title}发行封面`} onClick={()=>showPhoto(r.cover,r.title+' · 正式封面')}><Picture src={r.cover} alt={`${r.title} 正式发行封面`} className="wk-cover" priority/></button><button className="wk-text-link" onClick={()=>showPhoto(r.cover,r.title+' · 正式封面')}>查看封面原图 <Arrow/></button></div><div className="wk-release-copy"><p className="wk-meta">{r.kind} · <time dateTime={r.date}>{r.date}</time></p><h1>{r.title}</h1><p>{r.description}</p><h2>曲目</h2><ol className="wk-tracks">{r.tracks.map(t=><li key={t}>{t}</li>)}</ol><a className="wk-source" href={r.sourceUrl} target="_blank" rel="noopener noreferrer">发行来源 ↗</a><div className="wk-name-links">{r.memberIds.map(id=>{const m=design.members.find(m=>m.id===id)!;return <Link key={id} to={personHref(id)}>{m.cnName} / {m.stageName}</Link>;})}</div></div></section><section className="wk-section">{heading('影像与舞台','WATCH')}{videos(design.works.filter(v=>v.releaseKey===r.key))}</section></>;}
  function videoDetail(v:Video){
   const r=design.releases.find(release=>release.key===v.releaseKey);
+  if (state.data && v.type === 'MV' && reviewedEditorialWorkId(content.groupId, v.videoId)) {
+    const target = artistMvHref(state.data, content.groupId, v.url, backToLibrary, v.id);
+    if (target) return <EditorialWorkHandoff href={target} title={v.title}/>;
+  }
   return <>{detailBack('返回影像目录')}
    <section className="wk-film">
     <div className="wk-film-heading"><div><p className="wk-meta">{v.label}</p><h1>{v.title}</h1>{v.dateLabel&&<p className="wk-note">{v.dateLabel}</p>}</div><p className="wk-record-handoff wk-note">此版本暂无站内播放或评分。</p></div>

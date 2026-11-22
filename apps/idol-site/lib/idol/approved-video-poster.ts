@@ -22,6 +22,7 @@ import type {StageVideo,Work} from './types';
 import {stageSourceKey,stageSourceMatchesUrl} from './stage-source';
 import {cachedVideoPreview,publicMvCover,publicCoverZoom,wholePreviewVideoId} from './mv-public-covers';
 import {videoId} from './values';
+import importedWorks from '../../data/reviewed-editorial-work-imports.json';
 
 export type VideoPoster = {
  src:string;
@@ -49,6 +50,8 @@ const retainedVideoPosters=[
 // Stage support is bounded to explicitly reviewed tuples; the caller also rejects clips.
 export function approvedVideoPoster(workId:string,videoId:string|null,view:'mv'|'stage'):VideoPoster|null{
  if(!videoId)return null;
+ const imported=view==='mv'&&importedWorks.find(row=>row.workId===workId&&row.videoId===videoId);
+ if(imported)return {src:imported.poster,label:imported.version==='Official Lyric Video'?'官方歌词影像封面':'官方 MV 视频封面',fit:'contain'};
  const stageSelection=view==='stage'?[...stageSelectionPosters.entries,...gnarlyPosters.entries].find(item=>item.workId===workId&&item.videoId===videoId&&item.view===view):null;
  if(stageSelection)return {src:stageSelection.src,label:stageSelection.label,intrinsicSize:stageSelection.intrinsicSize,fit:'contain'};
  const refreshed=view==='mv'?publicMvCover(workId,videoId):null;

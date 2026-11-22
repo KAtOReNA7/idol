@@ -1,9 +1,10 @@
 import source from '@/data/public-work-credits.json';
+import imported from '@/data/imported-work-credits-and-portraits.json';
 import type {CatalogView,Work} from './types';
 import {videoId} from './values';
 
 const creditsByWork=new Map<string,typeof source.records>();
-for(const row of source.records){
+for(const row of [...source.records, ...imported.credits]){
  const records=creditsByWork.get(row.workId);
  if(records)records.push(row);else creditsByWork.set(row.workId,[row]);
 }

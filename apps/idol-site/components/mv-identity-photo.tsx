@@ -21,15 +21,15 @@ export function MvIdentityPhoto({work,memberId,label,photo,live=false,selectEdit
 }
 
 /** A read-only public credit can show a named reference without inventing a rating. */
-export function PublicCreditRecognitionPhoto({work,memberId,label,reference}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;reference:Pick<MvPublicPortrait,'src'|'width'|'height'|'label'|'sourceUrl'|'objectPosition'|'sourceCrop'>}){
+export function PublicCreditRecognitionPhoto({work,memberId,label,reference}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;reference:Pick<MvPublicPortrait,'src'|'originalSrc'|'width'|'height'|'label'|'sourceUrl'|'objectPosition'|'sourceCrop'>}){
  const caption=reference.label.replace(/ · 认人参考$/,'').replace(/^既有/,'')
   .replace('已审完整原图','成员资料照').replace('具名照片','成员资料照').replace('团体通用认人参考','团体资料照');
  return <IdentityPhotoFrame work={work} memberId={memberId} label={label} publicImage={{...reference,label:caption,workId:work.id,videoId:'',memberId}}/>;
 }
 
 function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,edition,retainNative=false}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;publicImage:MvPublicPortrait|null;edition?:RecognitionEditionPhoto|null;retainNative?:boolean}){
- const src=edition?.original??publicImage?.src??(photo&&live?`/api/media?table=${photo.table}&record=${encodeURIComponent(photo.recordId)}&index=${photo.index}`:'');
- const thumbnail=edition?.preview??src;
+ const src=edition?.original??publicImage?.originalSrc??publicImage?.src??(photo&&live?`/api/media?table=${photo.table}&record=${encodeURIComponent(photo.recordId)}&index=${photo.index}`:'');
+ const thumbnail=edition?edition.preview:publicImage?.src??src;
  const key=[work.id,work.url,memberId,src].join(':');
  const [opened,setOpened]=useState<string|null>(null);
  const nativeSrc=retainNative&&photo&&live?`/api/media?table=${photo.table}&record=${encodeURIComponent(photo.recordId)}&index=${photo.index}`:null;

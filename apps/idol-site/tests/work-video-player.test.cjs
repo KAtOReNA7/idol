@@ -82,6 +82,7 @@ function sessionHarness(props={}){
  const values=[],listeners=new Set(),timers=new Map(),messages=[];
  let cursor=0,opens=0,now=0,nextTimer=0,dependencies,cleanup,effect,frame,frameKey,frameRef;
  const win={
+  location:{origin:'https://stage.example'},
   open(){opens++;},
   addEventListener(type,listener){if(type==='message')listeners.add(listener);},
   removeEventListener(type,listener){if(type==='message')listeners.delete(listener);},
@@ -114,6 +115,36 @@ function sessionHarness(props={}){
 }
 function nodes(tree){if(!tree||typeof tree!=='object')return [];return [tree,...React.Children.toArray(tree.props?.children).flatMap(nodes)];}
 const node=(tree,type,className)=>nodes(tree).find(n=>n.type===type&&(!className||n.props.className===className));
+test('the full AtHeart MV opens only its official cross-origin X post and can retry without changing the score binding',()=>{
+ const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
+ const workId='recNativeMvb6bSGu1YdRM',videoId='b6bSGu1YdRM';
+ const player=workPlayback(workId,videoId,'mv',null);
+ assert.equal(player.label,'官方 X');
+ assert.equal(player.credit,'AtHeart 官方 X · 站内实测 720p');
+ for(const [id,video,view] of [[workId,'I5-ZVMQVJsQ','mv'],[workId,'RXkM6j2k9bw','mv'],['other',videoId,'mv'],[workId,videoId,'stage']]){
+  assert.equal(workPlayback(id,video,view,null),null);
+ }
+ const h=sessionHarness({workId,videoId,embedUrl:player.embedUrl,playbackLabel:player.label,playbackCredit:player.credit});
+ const dormant=h.render();
+ assert.doesNotMatch(renderToStaticMarkup(dormant),/<iframe|<video|<script|platform\.twitter\.com|video\.twimg\.com/);
+ node(dormant,'button','video-play').props.onClick();
+ const active=h.render(),frames=nodes(active).filter(element=>element.type==='iframe');
+ assert.equal(frames.length,1);
+ const frame=frames[0],src=new URL(frame.props.src);
+ assert.equal(src.origin,'https://platform.twitter.com');assert.equal(src.pathname,'/embed/Tweet.html');
+ assert.deepEqual(Object.fromEntries(src.searchParams),{
+  dnt:'true',embedId:'twitter-widget-0',frame:'false',hideCard:'false',hideThread:'false',id:'2090000826525745188',
+  lang:'zh-cn',theme:'dark',width:'550px',origin:'https://stage.example',
+ });
+ assert.equal(frame.props.srcDoc,undefined);assert.equal(frame.props.allowFullScreen,true);
+ assert.equal(node(active,'button','video-play'),undefined);assert.equal(node(active,'script'),undefined);
+ frame.props.onError({currentTarget:h.frame()});
+ const failed=h.render();
+ assert.ok(node(failed,'p','video-cover-fallback'));assert.equal(node(failed,'iframe'),undefined);
+ node(failed,'button','video-reload').props.onClick();
+ const retry=node(h.render(),'iframe');
+ assert.equal(retry.props.src,frame.props.src);assert.notEqual(retry.key,frame.key);assert.equal(h.opens(),0);
+});
 test('BILLIONAIRE uses one manually activated OK player for the original edit and matching stage score',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const id='rec28ldfRTrLku',video='Gz_yRl6703c',stage=require('../data/stage-videos.json')[id];
@@ -267,6 +298,12 @@ test('each confirmed work selects one exact player and preserves stage score ide
    assert.equal(route.label,'Vimeo',id);
    assert.equal(route.embedUrl,`https://player.vimeo.com/video/${vimeo.player}?autoplay=1&muted=1&dnt=1&playsinline=1&quality=4k`,id);
    assert.equal(route.credit,`Vimeo · ${vimeo.credit}`,id);
+  }else if(mapping.officialPost){
+   const src=new URL(route.embedUrl);
+   assert.equal(route.label,'官方 X',id);
+   assert.equal(src.origin,'https://platform.twitter.com',id);
+   assert.equal(src.searchParams.get('id'),mapping.officialPost.id,id);
+   assert.equal(src.searchParams.get('dnt'),'true',id);
   }else{
    assert.equal(route.label,'RUTUBE',id);
    assert.equal(route.embedUrl,`https://rutube.ru/play/embed/${mapping.rutube}?autostartmute=true&q=1080`,id);

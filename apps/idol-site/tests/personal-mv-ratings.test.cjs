@@ -29,6 +29,11 @@ test('reviewed editorial detail gives each AtHeart release portrait its own scor
     React.createElement(api.WorkDetail,{work:data.works[0],data,onMember:noop,onGroup:noop,onSaved:noop,onBack:noop,onVersion:noop}))));
    assert.ok(page.querySelector('img[src="'+entry.poster+'"]'),entry.group+' correct version poster');
    if(entry.group==='AtHeart'){
+    const play=page.querySelectorAll('.video-play');
+    assert.equal(play.length,1);
+    assert.match(play[0].text,/播放视频（官方 X）/);
+    assert.equal(page.querySelector('.video-source-credit').text,'AtHeart 官方 X · 站内实测 720p');
+    assert.equal(page.querySelector('video,iframe,script[src*="widgets.js"]'),null);
     const portraits=credits.recognition[0].portraits;
     const cards=page.querySelectorAll('[data-photo-member]');
     assert.equal(cards.length,7);

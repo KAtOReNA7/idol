@@ -34,6 +34,7 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
  const wholeVideo=platform==='youtube'&&videoId&&!rangedStage;
  const externalBili=platform==='bilibili'&&!embedUrl;
  const okPlayer=embedUrl?.startsWith('https://ok.ru/videoembed/');
+ const officialPost=embedUrl?.startsWith('https://platform.twitter.com/embed/Tweet.html?');
  const coverSrc=posterSrc||(wholeVideo?`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`:undefined);
  const playControl=useRef<HTMLButtonElement>(null);
  const frameRef=useRef<HTMLIFrameElement>(null);
@@ -94,9 +95,9 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
  // Some providers render their own error document without firing an iframe error.
  // Retrying always reopens the exact selected edit and leaves the editors mounted.
  if(attempt>0&&embedUrl)return <>
-  <div className="video-stage">
+  <div className="video-stage" style={officialPost?{aspectRatio:'auto',width:'min(100%, 650px)',height:'clamp(520px, 118vw, 660px)',marginInline:'auto'}:undefined}>
    {failed?<p className="video-cover-fallback" role="status">视频暂时无法播放。请稍后重试。</p>:
-    <iframe key={attempt} src={embedUrl} title={title} referrerPolicy="strict-origin-when-cross-origin"
+    <iframe key={attempt} src={officialPost?embedUrl+'&origin='+encodeURIComponent(window.location.origin):embedUrl} title={title} referrerPolicy="strict-origin-when-cross-origin"
      allow={okPlayer?"autoplay 'none'; encrypted-media; picture-in-picture; fullscreen":"autoplay; encrypted-media; picture-in-picture; fullscreen"} allowFullScreen
      onError={event=>{if(event.currentTarget===frameRef.current)setFailedAttempt(attempt);}}
      ref={frame=>{frameRef.current=frame;if(frame&&focusOnStart.current){focusOnStart.current=false;frame.focus({preventScroll:true});}}}/>}

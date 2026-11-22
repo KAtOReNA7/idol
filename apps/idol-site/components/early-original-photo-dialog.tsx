@@ -17,9 +17,11 @@ const earlyPhotoScript = `(() => {
       if (trigger?.isConnected) trigger.focus({preventScroll:true});
       trigger = undefined;
     });
-    image.addEventListener('error', () => { if (dialog.open) error.hidden = false; });
+    image.addEventListener('error', () => {
+      if (dialog.open) { image.hidden = true; error.hidden = false; }
+    });
     error.querySelector('button').addEventListener('click', () => {
-      if (trigger) { error.hidden = true; image.src = trigger.href; close.focus(); }
+      if (trigger) { error.hidden = true; image.hidden = false; image.src = trigger.href; close.focus(); }
     });
     return link => {
       trigger = link;
@@ -27,6 +29,7 @@ const earlyPhotoScript = `(() => {
       const label = link.querySelector('img')?.alt || link.getAttribute('aria-label') || '团体原图';
       image.alt = label;
       error.hidden = true;
+      image.hidden = false;
       image.src = link.href;
       dialog.classList.add('photo-lightbox');
       dialog.showModal();
@@ -57,10 +60,14 @@ const earlyPhotoScript = `(() => {
 export function EarlyOriginalPhotoDialog() {
   return <>
     <dialog id="artist-original-before-hydration" aria-labelledby="artist-early-photo-caption" suppressHydrationWarning>
-      <button className="photo-lightbox-close" type="button" data-close aria-label="关闭大图">关闭</button>
+      <button className="photo-lightbox-close" type="button" data-close aria-label="关闭大图">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>关闭
+      </button>
       <figure>
         <img alt="" decoding="async" suppressHydrationWarning/>
-        <p role="status" className="photo-lightbox-error" hidden suppressHydrationWarning>图片暂时打不开。 <button type="button">重试图片</button></p>
+        <p role="status" className="photo-lightbox-error" hidden suppressHydrationWarning><span>图片暂时打不开。</span><button className="photo-lightbox-retry" type="button">重试图片</button></p>
         <figcaption id="artist-early-photo-caption">团体原图</figcaption>
       </figure>
     </dialog>

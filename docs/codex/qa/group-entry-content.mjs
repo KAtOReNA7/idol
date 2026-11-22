@@ -137,3 +137,64 @@ export async function checkReportedOpenings(tab,{site=formal,slugs=Object.keys(r
   }
   return output;
 }
+
+/** Use the built-in browser at the caller's chosen width. Never read or write private score values. */
+export async function checkSharedPresentation(tab,{site=formal,timeoutMs=20000,expectWritable}={}){
+  const cards=[];
+  for(const [path,list] of [['/?view=groups','.music-group-grid'],['/','.music-group-rail']]){
+    await tab.goto(new URL(path,site).href);
+    await tab.playwright.locator(list+' .music-group-card').first().waitFor({state:'visible',timeoutMs});
+    cards.push(await tab.playwright.evaluate(list=>{
+      const items=[...document.querySelectorAll(list+' .music-group-card')];
+      const visible=items.filter(item=>item.getBoundingClientRect().width>0);
+      const widths=visible.map(item=>Number.parseFloat(getComputedStyle(item.querySelector('p')).fontSize));
+      const present=visible.every(item=>item.querySelectorAll('p').length===1&&item.querySelector('p').textContent.trim());
+      return {list,width:document.documentElement.clientWidth,items:items.length,visible:visible.length,
+        minCompanyFont:Math.min(...widths),pass:visible.length>0&&present&&widths.every(size=>size>=13)};
+    },list));
+  }
+  await tab.goto(new URL('/artists/illit',site).href);
+  await tab.playwright.locator('[data-home-introduction="illit"]').waitFor({state:'visible',timeoutMs});
+  const introduction=await tab.playwright.evaluate(()=>{
+    const p=document.querySelector('[data-home-introduction="illit"]'),label=p.querySelector('.group-intro-label');
+    const font=Number.parseFloat(getComputedStyle(p).fontSize), gap=Number.parseFloat(getComputedStyle(label).marginBottom);
+    return {width:document.documentElement.clientWidth,font,gap,count:document.querySelectorAll('[data-home-introduction]').length,
+      pass:font>=16&&font<=18&&gap===8&&p.textContent.includes('SUPER REAL ME')};
+  });
+  await tab.goto(new URL('/?view=works&work=rec28ldfRTrLku',site).href);
+  const gallery='[data-credit-work="rec28ldfRTrLku"]';
+  await tab.playwright.locator(gallery+' li').first().waitFor({state:'visible',timeoutMs});
+  if(expectWritable===true){
+    await tab.playwright.locator(gallery+' .credit-score-action').first().waitFor({state:'visible',timeoutMs});
+  }
+  const scores=await tab.playwright.evaluate(selector=>{
+    const gallery=document.querySelector(selector),cards=[...gallery.querySelectorAll('li')];
+    const entries=cards.map(card=>{
+      const image=card.querySelector('.mv-identity-frame')?.getBoundingClientRect();
+      const action=card.querySelector('.credit-score-action')?.getBoundingClientRect();
+      return {height:action?Math.round(action.height):null,below:!!image&&!!action&&action.top>=image.bottom};
+    });
+    const scoringRegion=gallery.closest('.cast-section[aria-label="成员与评分"]:not([hidden])');
+    const title=scoringRegion?.querySelector('.section-heading h2');
+    return {width:document.documentElement.clientWidth,scope:gallery.querySelector('.member-credit-scope').textContent,
+      heading:title?.textContent??null,font:title?Number.parseFloat(getComputedStyle(title).fontSize):null,
+      creditHeading:gallery.querySelector(':scope > h2')?.textContent??null,
+      entries,writable:entries.some(e=>e.height!==null)};
+  },gallery);
+  if(scores.writable){
+    await tab.playwright.locator(gallery+' .credit-score-action').first().click({timeoutMs});
+    await tab.playwright.locator(gallery+' li input[type="number"]').first().waitFor({state:'visible',timeoutMs});
+    scores.form=await tab.playwright.evaluate(selector=>{
+      const card=document.querySelector(selector+' li:has(input[type="number"])');
+      const form=card.querySelector('fieldset,.editor');
+      return {fields:card.querySelectorAll('input[type="number"]').length,
+        below:form.getBoundingClientRect().top>=card.querySelector('.mv-identity-frame').getBoundingClientRect().bottom};
+    },gallery);
+  }
+  const titleFits=scores.writable?scores.heading==='成员与评分':
+    (scores.heading==='成员与评分'||(scores.heading===null&&scores.creditHeading==='成员资料'));
+  const accessFits=expectWritable===undefined||expectWritable===scores.writable;
+  scores.pass=scores.entries.length===7&&accessFits&&titleFits&&scores.scope==='《DRIP》发行阵容'&&(!scores.writable||
+    (scores.entries.every(entry=>entry.height>=44&&entry.below)&&scores.form.fields===2&&scores.form.below));
+  return {cards,introduction,scores};
+}

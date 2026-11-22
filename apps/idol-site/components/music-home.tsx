@@ -10,10 +10,13 @@ const artwork=catalogArtwork.map(row=>row.slug==='ive'?{...row,...iveArchive}:ro
 export const musicArtwork=new Map(artwork.map(row=>[row.groupId,row]));
 export function MusicGroupCard({group,onOpen}:{group:Group;onOpen:()=>void}) {
  const art=musicArtwork.get(group.id);
- return <button className="music-group-card" data-browse-anchor={'group-'+group.id} onClick={onOpen}>
-  <div className="music-group-photo"><ReliableImage src={art?.image} alt={art?.caption??group.name} style={{objectPosition:art?.objectPosition??'50% 50%'}} fallback={<span>{group.name}</span>}/></div>
+ const company=groupIndexCompany(group)||'公司未收录';
+ return <button type="button" className="music-group-card" data-browse-anchor={'group-'+group.id} onClick={onOpen}>
+  <div className="music-group-photo">
+   <ReliableImage src={art?.image} alt={art?.caption??group.name} style={{objectPosition:art?.objectPosition??'50% 50%'}} fallback={<span>{group.name}</span>}/>
+  </div>
   <h3>{group.name}</h3>
-  <p>{groupIndexCompany(group)||'公司未收录'}</p>
+  <p>{company}</p>
  </button>;
 }
 // Explicit editorial selections, matched against both the group and song. These

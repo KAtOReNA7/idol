@@ -267,8 +267,37 @@ button.member-mv-look:focus-visible,
 .photo-lightbox figcaption { max-width: 70ch; overflow-wrap: anywhere; flex-shrink: 0; }
 .photo-lightbox-close { top: max(16px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right)); }
 .photo-lightbox-error { padding: 24px; color: white; }
-dialog#artist-original-before-hydration[open] { margin: 0; border: 0; width: 100%; height: 100%; max-width: none; max-height: none; color: #fff; }
+dialog#artist-original-before-hydration[open] {
+  margin: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  background: #18151c;
+  color: #fff;
+}
 html:has(#artist-original-before-hydration[open]) { overflow: hidden; }
+#artist-original-before-hydration .photo-lightbox-error:not([hidden]) {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+#artist-original-before-hydration img[hidden],
+#artist-original-before-hydration .photo-lightbox-error[hidden] { display: none; }
+#artist-original-before-hydration .photo-lightbox-close,
+#artist-original-before-hydration .photo-lightbox-retry {
+  min-height: 44px;
+  border-radius: 8px;
+  color: #18151c;
+  background: #fff;
+  font-size: 14px;
+}
+#artist-original-before-hydration .photo-lightbox-close { min-width: 88px; justify-content: center; }
+#artist-original-before-hydration .photo-lightbox-retry { min-width: 104px; padding: 8px 16px; }
+#artist-original-before-hydration figcaption { font-size: 13px; }
 @media (max-width: 640px) {
   .member-works-grid { gap: 18px; }
   .member-work-card { padding: 12px; }

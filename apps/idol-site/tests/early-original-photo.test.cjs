@@ -52,8 +52,10 @@ test('an unhydrated artist photo opens inside the page, retries and returns focu
     assert.match(html, /<figcaption[^>]+>团体原图<\/figcaption>/);
     img.fire('error');
     assert.equal(error.hidden,false);
+    assert.equal(img.hidden,true);
     controls.retry.fire('click');
     assert.equal(error.hidden,true);
+    assert.equal(img.hidden,false);
     close.fire('click');
     assert.equal(focus,link);
     assert.ok(!dialog.open);

@@ -1,17 +1,32 @@
 .public-work-credits{margin:2rem auto;padding:clamp(16px,3vw,32px);max-width:1280px;border-top:1px solid currentColor;color:inherit;overflow-wrap:anywhere}
 .public-work-credits h2{font:inherit;font-size:clamp(20px,3vw,28px);font-weight:700;margin:0 0 16px}
 .public-work-credits p{max-width:72ch;line-height:1.7;margin:12px 0}
-.cast-section > .public-work-credits{margin:0 0 1.5rem;padding:0;max-width:none;border:0}
-.public-work-credits .member-credit-scope{font-size:.9rem;margin:0 0 .75rem}
+.cast-section > .public-work-credits {
+  margin: 0 0 24px;
+  padding: 0;
+  max-width: none;
+  border: 0;
+}
+.public-work-credits .member-credit-scope {
+  margin: 0 0 12px;
+  color: var(--muted,inherit);
+  font-size: 14px;
+}
 .public-work-credits ul{display:flex;flex-wrap:wrap;gap:12px 20px;padding:0;margin:20px 0;list-style:none}
 .public-work-credits li{display:flex;flex-direction:column;gap:8px;min-width:0}
 .public-work-credits button,.public-work-credits a{font:inherit;color:inherit;text-align:left;text-decoration:underline;text-underline-offset:4px;background:none;border:0;padding:8px 0;cursor:pointer}
 .public-work-credits li span{font-size:12px;line-height:1.5}
 .public-work-credits :focus-visible{outline:2px solid currentColor;outline-offset:4px}
-.public-work-credits .public-recognition-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr));gap:24px 16px;align-items:start}
+.public-work-credits .public-recognition-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(152px,100%),1fr));gap:24px 16px;align-items:start}
 .public-recognition-grid .mv-identity-photo{margin:0;width:100%}
 .public-work-credits .public-recognition-grid .mv-identity-frame{display:block;padding:0;text-decoration:none;text-align:center;width:100%}
 .public-recognition-grid .mv-identity-photo figcaption{font-size:12px;line-height:1.5}
+.public-recognition-grid > li > button:not([class]) {
+  min-height: 44px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
 .public-work-credits .credit-score-action{align-self:start;padding:6px 12px;border:1px solid currentColor;border-radius:6px;text-decoration:none;font-size:14px;line-height:1.5}
 .personal-mv-ratings{display:grid;gap:16px;margin-block:16px}
 .personal-mv-picker{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
@@ -23,12 +38,35 @@
 @media(max-width:480px){.public-work-credits .public-recognition-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}}
 
 .mv-inline-score{min-width:0;text-align:start}
-.mv-inline-score .credit-score-action{font:inherit;font-size:.875rem;line-height:1.5;color:inherit;background:transparent;border:1px solid currentColor;border-radius:6px;padding:6px 12px;cursor:pointer}
+.mv-inline-score .credit-score-action {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+  min-width: min(88px,100%);
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--muted,currentColor);
+  border-radius: 6px;
+  cursor: pointer;
+}
 .mv-inline-score .editor{min-width:0;margin:.55rem 0 0;padding:.65rem}
 .mv-inline-score .editor-fields{grid-template-columns:minmax(0,1fr)}
 .mv-inline-score input,.mv-inline-score textarea,.mv-inline-score button{max-width:100%;box-sizing:border-box}
 .mv-inline-score .editor-actions{flex-wrap:wrap}
 .mv-inline-score .editor-actions button{white-space:normal}
+.mv-inline-score .editor-actions .button{min-height:44px}
+.mv-inline-score .personal-score-form input[type="number"]{min-height:38px}
+.mv-inline-score .personal-score-form .editor-actions .primary{width:100%}
+body .bm-experience .cast-section .section-heading h2 {
+  color: var(--ink);
+  font: 700 clamp(20px,2vw,28px)/1.45 var(--font-body);
+}
+.bm-experience .public-recognition-grid .mv-identity-frame { border-radius: 0; }
 .mv-inline-summary{margin:.4rem 0;font-size:.85rem}
 .personal-roster-card .photo{max-width:100%}
 

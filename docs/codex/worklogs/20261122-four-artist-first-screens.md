@@ -13,4 +13,6 @@ NewJeans 的旧首页先显示四人照和日本官网字标，两个文件合�
 
 Windows 定向检查中，八份回归文件共 153 项通过，覆盖首屏、作品身份、照片、图片投递和受限原件。另测四团的素材、目录、选版及评分回读 36/36，四团首页与作品库排序及主推 MV 身份 5/5。几组检查有重叠。首页鼠标首击和键盘 Enter 冷启动曾令 NewJeans 和 Rocket Punch 离开团页。本机 Codex 内置浏览器复验两团两种操作共 4/4，均打开正确原图，Esc 关闭后返回原页和原控件。[冷启动四次实测](../evidence/20261122-four-artist-first-screens/local-cold-originals.json) · [本机浏览器检查脚本](../qa/group-entry-content.mjs)
 
-本记录对应本地实现。正式站的发布、实际浏览宽度和线上操作结果由当批发布回执记录。
+四团定稿在本机 Codex 浏览器逐页复验。实际正文宽 375 和 1425 px 共 8/8，照片、标志和适用的封面都已解码并位于正文内。手机上 Candy Shop、Geenius、SPIA、NewJeans 四张主照分别显示为 343 × 229、343 × 429、335 × 223、343 × 229 px。桌面依次为 779 × 520、620 × 776、660 × 440、800 × 534 px。Geenius《Voyage》和 NewJeans《Attention》两宽都指向对应作品。[四团本地双宽实测](../evidence/20261122-four-artist-first-screens/local-first-screens.json)
+
+本记录对应本地实现。正式站的发布和线上操作结果由当批发布回执记录。

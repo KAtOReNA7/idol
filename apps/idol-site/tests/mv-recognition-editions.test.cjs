@@ -353,6 +353,51 @@ test('woo!ah! retains its six debut members and each member’s own original MV 
   }
 });
 
+const glassShoesForestProfiles = {
+  JIHEON: ['933720556385443840', '2025《White Memories》认人照'],
+  GYURI: ['933721822356373504', '2021《Talk & Talk》认人照'],
+  CHAEYOUNG: ['933715527641567233', '2025《White Memories》认人照'],
+  NAGYUNG: ['933716782308720642', '2019《FUN FACTORY》概念照'],
+  SAEROM: ['933714268729384962', '2021《Talk & Talk》认人照'],
+  SEOYEON: ['933719301005000704', '2021《Talk & Talk》认人照'],
+  JIWON: ['933718041459810304', '2019《FUN FACTORY》概念照'],
+  JISUN: ['933711748556664835', '2021《Talk & Talk》认人照'],
+  HAYOUNG: ['933713008609566727', '2025《White Memories》认人照'],
+};
+
+test('Glass Shoes uses the nine named 2017 Forest profiles and keeps each dated earlier photo on its original recording', async () => {
+  const workId = 'recvxyOz5XpBWP';
+  const videoId = 'n2TtQYuFfWw';
+  const fromis = require('../data/fromis9-public.json');
+  const ids = Object.fromEntries(fromis.members.map(member => [member.stageName.split(' ').at(-1), member.id]));
+  const work = {id: workId, url: 'https://www.youtube.com/watch?v=' + videoId};
+  const campaign = editions['fromis-glass-shoes-forest-201711'];
+  assert.equal(campaign.label, '2017 预出道 · 官方成员照');
+  assert.deepEqual(new Set(campaign.works[0].memberIds), new Set(Object.keys(glassShoesForestProfiles).map(name => ids[name])));
+  for (const [name, [post, priorLabel]] of Object.entries(glassShoesForestProfiles)) {
+    const memberId = ids[name];
+    const key = {workId, videoId, memberId};
+    const selected = mvRecognitionEdition(key);
+    const base = '/artist/recognition-editions/fromis9/glass-shoes-' + name.toLowerCase();
+    assert.deepEqual([selected.preview, selected.original], [base + '.card.webp', base + '.original.jpg']);
+    assert.equal(selected.sourceUrl, 'https://x.com/realfromis_9/status/' + post);
+    const native = media.portraits.find(row => row.workId === workId && row.videoId === videoId && row.memberId === memberId);
+    const hasSingleHistory = !['JIWON', 'NAGYUNG'].includes(name);
+    const prior = hasSingleHistory ? native : editions['fromis-fun'].portraits[memberId];
+    assert.deepEqual(selected.previousEdition, {label: priorLabel, original: prior.original ?? prior.src, sourceUrl: prior.sourceUrl});
+    const tree = parse(renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId, label: name, selectEdition: mvRecognitionEdition})));
+    assert.equal(tree.querySelector('.mv-identity-frame img').getAttribute('src'), selected.preview);
+    assert.equal(tree.querySelector('figcaption').firstChild.text, campaign.label);
+    assert.equal(tree.querySelector('figcaption a').getAttribute('href'), selected.sourceUrl);
+    const history = tree.querySelectorAll('.mv-identity-history');
+    assert.deepEqual(history.map(item => item.querySelector('button').text), hasSingleHistory ? ['查看' + priorLabel] : ['查看' + priorLabel, '查看原作品图']);
+    assert.deepEqual(history.map(item => item.querySelector('a').getAttribute('href')), hasSingleHistory ? [prior.sourceUrl] : [prior.sourceUrl, native.sourceUrl]);
+    const images = await Promise.all([selected.preview, selected.original].map(file => sharp(path.join(__dirname, '../public', file)).metadata()));
+    assert.deepEqual(images.map(({format, width, height}) => [format, width, height]), [['webp', 480, 640], ['jpeg', 1500, 2250]]);
+    assert.equal(mvRecognitionEdition({...key, videoId: 'KPFhzAtjbUo'}), null);
+  }
+});
+
 const fromis2018Campaigns = [
   {series: 'fromis-from9-201810', prefix: 'love-bomb', posts: {
     JIHEON: '1047095373452328961', GYURI: '1047094444208484353', CHAEYOUNG: '1047095084515123200',

@@ -1,0 +1,133 @@
+{
+  "applicationCommit": "b2cd0bdfc2e1248703d4cf3f010630cefb7869b5",
+  "baselineApplicationCommit": "c303ec968a67f35531b6908c7c0d6d55a665578b",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4288,"pass": 4156,"fail": 93,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4292,"pass": 4166,"fail": 87,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1359,"pass": 1359,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 692,
+          "localBytes": 36904756
+        }
+      },
+      "retainedFailureCount": 87,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/duplicate-loona-build-assets.test.mjs",
+          "test": "read-only audit then build-only pruning preserves all originals and canonical build bytes; repeat is idempotent"
+        },
+        {
+          "suite": "main",
+          "file": "tests/heygabby-complete-viewing.test.cjs",
+          "test": "actual anonymous stage media SSR shows one formal player, its scope note and no duplicate or stale candidate card"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "each native member route receives only its own I DO ME release photograph and retains the original"
+        },
+        {
+          "suite": "main",
+          "file": "tests/photo-status-reads.test.cjs",
+          "test": "complete real registry output matches uncached target reads with measured SQL reduction"
+        },
+        {
+          "suite": "main",
+          "file": "tests/triples-fixture-boundaries.test.cjs",
+          "test": "image fixture aliases exactly the three reviewed metadata ports, never arbitrary actual data"
+        },
+        {
+          "suite": "main",
+          "file": "tests/triples-fixture-boundaries.test.cjs",
+          "test": "timeline fixture aliases exactly the three reviewed metadata ports, never arbitrary actual data"
+        }
+      ],
+      "addedTests": [
+        "ADYA RIZZ keeps its single official cut on the score selected in the catalog and in saved bookmarks",
+        "MACARONI CHEESE reuses its two shooting stills and keeps the earlier images accessible for the other three members",
+        "RIZZ loads the five named portrait cards and opens their full photographs under the original work and member IDs",
+        "three artist home photos and catalog links are usable before the catalog arrives"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4288,"pass": 4160,"fail": 89,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4292,"pass": 4166,"fail": 87,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1359,"pass": 1359,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 692,
+          "localBytes": 36904756
+        }
+      },
+      "retainedFailureCount": 87,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/heygabby-complete-viewing.test.cjs",
+          "test": "actual anonymous stage media SSR shows one formal player, its scope note and no duplicate or stale candidate card"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "each native member route receives only its own I DO ME release photograph and retains the original"
+        }
+      ],
+      "addedTests": [
+        "ADYA RIZZ keeps its single official cut on the score selected in the catalog and in saved bookmarks",
+        "MACARONI CHEESE reuses its two shooting stills and keeps the earlier images accessible for the other three members",
+        "RIZZ loads the five named portrait cards and opens their full photographs under the original work and member IDs",
+        "three artist home photos and catalog links are usable before the catalog arrives"
+      ],
+      "removedTests": []
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each verified and ran the full test suite in a dedicated checkout of the frozen application."
+}

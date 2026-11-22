@@ -28,7 +28,15 @@ const currentCopyGuard={
   }
 };
 function beforeCloseoutGuard(current){
- if(hash(current)==='1900aba8bbc5f4cca39f9e496c4a17afb902a63d6e79f68bb01b7f53f8eaf350'){
+ const groupIntroductionGuard='1900aba8bbc5f4cca39f9e496c4a17afb902a63d6e79f68bb01b7f53f8eaf350';
+ if(hash(current)==='c6543ed1669a598062e3c83abf634183b7a0c6020c4dd7f2429a83ba86c1a001'){
+  const restored=structuredClone(current), file='data/artist-home-introductions.json';
+  assert.deepEqual(restored.runtimeGuards[file],{bytes:19941,sha256:'6acba8362d05dbb7652f820da7e99ed85bbd29faada9be31b93de47eb46f2d7f'});
+  restored.runtimeGuards[file]={bytes:19916,sha256:'a9f94acb00183cbff67d3e91370969d7df82bf747ed1ec1d62d06ad2be7e4403'};
+  assert.equal(hash(restored),groupIntroductionGuard,'complete guard before revised artist introductions');
+  current=restored;
+ }
+ if(hash(current)===groupIntroductionGuard){
   const restored=structuredClone(current);
   const priorPins={...guard.after.runtimeGuards,...currentCopyGuard.pins};
   for(const file of ['lib/idol/udtt-native/host.mjs','lib/idol/udtt-native/model.mjs','lib/idol/udtt-native/presentation.mjs','lib/idol/udtt-native/information-identity.mjs','lib/idol/group-information.mjs']){

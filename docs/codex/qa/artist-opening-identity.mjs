@@ -14,9 +14,9 @@ function readOpening(slug) {
   const footer=scope.querySelector('footer');
   const identity=root=>root?[...root.querySelectorAll('img,svg')].slice(0,4).map(node=>({name:node.getAttribute('alt')||node.getAttribute('aria-label')||'',path:node.getAttribute('src')||node.tagName})):[];
   return {slug,width,height,overflow:document.documentElement.scrollWidth-width,
-    heading:heading?.textContent.trim().slice(0,92),headingFont:heading?getComputedStyle(heading).fontFamily:null,
+    heading:(heading?.textContent.trim()||heading?.getAttribute('aria-label')||heading?.querySelector('img')?.alt||'').slice(0,92),headingFont:heading?getComputedStyle(heading).fontFamily:null,
     headerImages:identity(navigation),footerImages:identity(footer),
-    topImage:photograph?{path:photograph.getAttribute('src'),alt:photograph.alt,natural:[photograph.naturalWidth,photograph.naturalHeight],visibleArea:Math.round(area(photograph))}:null,
+    topImage:photograph?{path:photograph.currentSrc||photograph.getAttribute('src'),alt:photograph.alt,natural:[photograph.naturalWidth,photograph.naturalHeight],visibleArea:Math.round(area(photograph))}:null,
     introduction:!!scope.querySelector('[data-home-introduction]')||!!document.querySelector('[data-home-introduction]')};
 }
 
@@ -29,7 +29,13 @@ export async function inspectArtistOpenings(tab,{origin,slugs=groups.map(group=>
     try {
       await tab.goto(new URL(group.path,origin).href);
       await tab.playwright.locator('[data-home-introduction="'+slug+'"]').first().waitFor({state:'visible',timeoutMs});
-      rows.push(await tab.playwright.evaluate(readOpening,slug));
+      const deadline=Date.now()+timeoutMs;
+      let row=await tab.playwright.evaluate(readOpening,slug);
+      while(row.topImage&&!row.topImage.natural[0]&&Date.now()<deadline){
+        await new Promise(resolve=>setTimeout(resolve,125));
+        row=await tab.playwright.evaluate(readOpening,slug);
+      }
+      rows.push(row);
     }catch(error){rows.push({slug,error:String(error.message??error).slice(0,240)});}
   }
   return rows;

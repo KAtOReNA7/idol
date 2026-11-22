@@ -45,6 +45,13 @@ export function useBrowseJourney(dataReady:boolean,stylesheetForRoute:(route:Rou
  useLayoutEffect(()=>{
   restoring.current=true;if(!ready)return;let active=true,frame=0;
   const requested=current.current;let focused=false,recordsFallback=false;
+  // A fresh work detail has no saved card or scroll position to follow.
+  // Reapplying zero while its artwork loads can move a button under the pointer.
+  if(requested.route.work&&requested.scrollY===0&&!requested.anchor&&!history.state?.memberWorkFocus){
+   window.scrollTo({top:0,behavior:'instant'});
+   restoring.current=false;
+   return;
+  }
   const apply=()=>{
    if(!active||!liveReady.current||current.current.position!==requested.position)return;
    const anchor=requested.anchor&&[...document.querySelectorAll<HTMLElement>('[data-browse-anchor]')].find(node=>node.dataset.browseAnchor===requested.anchor!.id);

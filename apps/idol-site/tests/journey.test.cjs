@@ -61,6 +61,13 @@ test('restoration survives async short-page clamp and stops when user takes over
 
 test('in-page alternative shortcut scrolls without creating an untracked history entry',()=>{const s=fs.readFileSync(root+'/components/catalog/work-detail.tsx','utf8');assert.ok(s.includes("document.getElementById('other-performances')?.scrollIntoView"));assert.ok(!s.includes('href=\"#other-performances\"'));});
 
+test('opening a fresh work leaves the play control in place during late artwork layout',()=>{
+ const h=harness('https://test.site/?view=works&work=recWork');
+ h.window.scrollY=200;
+ h.resize(5000);
+ assert.equal(h.window.scrollY,200);
+});
+
 test('next work retains original list return, sequence, reload and browser history',()=>{
  const h=harness();h.api.updateFilters({queue:'tonight',search:'song',limit:48});h.scroll(1800);
  const sequence={ids:['recA','recB','recC'],label:'待看',filters:{...pure.defaultFilters(),queue:'tonight'}};

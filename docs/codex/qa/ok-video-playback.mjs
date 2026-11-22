@@ -88,7 +88,9 @@ export async function checkOkVideo(tab, work, site, timeoutMs) {
     row.framesBefore=await player.count();
     if (row.framesBefore!==0 || heading!==work.title || !onWork(await tab.url(),page))
       throw Error('Unexpected player before the user action');
-    await activate.click({timeoutMs:5000});
+    row.activation=work.activation==='keyboard'?'Enter':'click';
+    if(row.activation==='Enter')await activate.press('Enter',{timeoutMs:5000});
+    else await activate.click({timeoutMs:5000});
     await player.waitFor({state:'visible',timeoutMs:15000});
     const details = await player.evaluate(el => ({src:el.src,allow:el.allow,
       heading:el.closest('.detail')?.querySelector('.music-work-title h1')?.textContent.trim()}));

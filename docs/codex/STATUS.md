@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v235。《BILLIONAIRE》首发版单击起播，站内选 2160p 后实播 3840 × 1770。五支优先 MV 均已短播。51 团手机首卡 51/51 打开并返回。[播放、照片及性能实测](worklogs/20261122-v235-release.md) |
+| 正式站 | v236。51 团统一索引公司与团体简介，628 张 MV 目录卡完成核对，605 张直达对应版本。飞书 9 条新结项。[本批正式结果](worklogs/20261122-v236-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v235 正式应用 `c9a99aa7`。[发布回执](evidence/20261122-v235/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，v236 正式应用 `ffcc04d9`。其余人工审核项分批接续。[发布回执](evidence/20261122-v236/publication.json) |
 
 ## 11 月 22 日更新
 

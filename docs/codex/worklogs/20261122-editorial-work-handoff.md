@@ -9,4 +9,4 @@
 
 四幅画板均已在 Figma 渲染核对。作品名沿用各团标题字体，手机按钮至少 44 px 高。Windows 在两个实际团页渲染了历史链接，分别核对原生作品 ID 和筛选返回地址。组件回归覆盖自动跳转成功及浏览器抛出 SecurityError 时保留原链接，两条通过。另三份测试合计 30/30 通过，包含两团的浏览、打包和成员评分回归。[入口回归](../../../apps/idol-site/tests/editorial-work-handoff.test.cjs)
 
-此次子任务的浏览器入口只列出 Chrome。已将可在 Codex 内置浏览器读取尺寸的手机及桌面本地页面交给发布主控，实际像素及正式站结果由发布批次记录。
+Codex 内置浏览器用实际团页组件渲染了四种布局。AtHeart 手机的纵向滚动条曾把左侧留白压到 8.33 px，改按正文宽度计算后为 16 px。AtHeart 正文实际宽 375 和 1425 px，W!TCHX 为 390 和 1440 px。两团手机标题均为 22 px，桌面 28 px，四个入口均为 44 px 高，返回地址均保留真实团体和 MV 搜索。正式站结果随发布批次登记。[内置浏览器尺寸及链接](../evidence/20261122-editorial-work-handoff/local-fallbacks.json)

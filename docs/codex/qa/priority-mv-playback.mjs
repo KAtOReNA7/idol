@@ -4,10 +4,11 @@
  * const result = await checkPriorityMvPlayback(tab);
  * options.ids 可选择下列作品的子集。timeoutMs 为点击后每项最多等待的毫秒数。
  */
+import {checkOkVideo} from './ok-video-playback.mjs';
 const site = 'https://idol-lens-private.wuke40758.chatgpt.site';
 const works = [
-  {id:'rec28ldfRTrLku', title:'BILLIONAIRE', original:'Gz_yRl6703c', provider:'RUTUBE',
-    origin:'https://rutube.ru', path:'/play/embed/9d692403740a2ae5e84dbd5a8ec167d0', mute:'autostartmute', value:'true'},
+  {id:'rec28ldfRTrLku', title:'BILLIONAIRE', original:'Gz_yRl6703c', provider:'OK Video',
+    origin:'https://ok.ru', path:'/videoembed/9392431106679'},
   {id:'rec28ldfRTrzPI', title:'Magnetic', original:'Vk5-c_v4gMU', provider:'Vimeo',
     origin:'https://player.vimeo.com', path:'/video/930729644', mute:'muted', value:'1'},
   {id:'recvxyHuKMFzlZ', title:'ATTITUDE', original:'38xYeot-ciM', provider:'Vimeo',
@@ -165,16 +166,23 @@ export async function checkPriorityMvPlayback(tab,{ids=works.map(work=>work.id),
     throw Error('请选择三支已核对作品中的一项或多项。');
   if(!Number.isFinite(timeoutMs) || timeoutMs<500 || timeoutMs>15000)throw Error('播放采样时限为 500 至 15000 毫秒。');
   const {createRequire}=await import('node:module');
-  const load=createRequire(import.meta.url)('../../../apps/idol-site/tests/helpers/public-artist-loader.cjs');
+  const require=createRequire(import.meta.url);
+  const loaderPath=require.resolve('../../../apps/idol-site/tests/helpers/public-artist-loader.cjs');
+  // A persistent browser QA session may span multiple deployments.
+  delete require.cache[loaderPath];
+  const load=require(loaderPath);
   const {workPlayback}=load('lib/idol/work-playback.ts'), rows=[];
   const plan=ids.map(id=>works.find(work=>work.id===id));
   for(const work of plan){
     const config=workPlayback(work.id,work.original,'mv',null);
-    if(config?.label!==work.provider || !approvedUrl(config.embedUrl,work,true))throw Error(work.title+' 的播放器地址或静音配置已变更。');
+    if(config?.label!==work.provider || !approvedUrl(config.embedUrl,work,work.provider!=='OK Video'))throw Error(work.title+' 的播放器地址或静音配置已变更。');
   }
   let cdp;
   try {cdp=await tab.capabilities.get('cdp');} catch { /* The approved frame can also be observed through Playwright. */ }
-  for(const work of plan)rows.push(await checkOne(tab,cdp,work,timeoutMs));
+  for(const work of plan) {
+    if(work.provider==='OK Video')rows.push(await checkOkVideo(tab,work,site,timeoutMs));
+    else rows.push(await checkOne(tab,cdp,work,timeoutMs));
+  }
   return {site,method:'站内静音短播。两次有效媒体时间前进即退出。码率只取播放器明确显示的实际视频码率，未测得记 null。',rows};
 }
 

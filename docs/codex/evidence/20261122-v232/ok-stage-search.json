@@ -1,0 +1,173 @@
+{
+  "checkedAt": "2026-11-22",
+  "search": {
+    "site": "https://ok.ru/video/search",
+    "method": "公开站内视频搜索。按目标团、歌、节目、播出日期及日语写法查看返回列表。未遍历整个平台。",
+    "queries": {
+      "CRUSH": {
+        "queryCounts": {
+          "IVE CRUSH": 17,
+          "IVE 240914": 0,
+          "IVE with MUSIC 2024": 19,
+          "with MUSIC 240914": 0,
+          "IVE with MUSIC": 17,
+          "IVE with MUSIC CRUSH 240914": 0,
+          "with MUSIC 2024年9月14日": 0,
+          "IVE 日本テレビ CRUSH": 0
+        },
+        "distinctVideoPages": 53
+      },
+      "Password": {
+        "queryCounts": {
+          "tripleS Password": 4,
+          "tripleS 251125": 0,
+          "tripleS 251126": 0,
+          "tripleS TBS PLAYLIST": 0,
+          "tripleS 2511 PLAYLIST": 0,
+          "トリプルエス PLAYLIST": 0,
+          "PLAYLIST 2025年11月25日": 0
+        },
+        "distinctVideoPages": 4
+      },
+      "Teddy Bear": {
+        "queryCounts": {
+          "STAYC Teddy Bear Japanese": 11,
+          "STAYC 230501": 0,
+          "STAYC Melodix": 0,
+          "Premium Melodix 20230501": 8,
+          "STAYC プレミアMelodiX": 0,
+          "STAYC プレミア": 0,
+          "プレミアMelodiX 2023年5月1日": 0,
+          "STAYC メロディックス": 0
+        },
+        "distinctVideoPages": 19
+      },
+      "ELEVEN": {
+        "queryCounts": {
+          "IVE ELEVEN Japanese": 9,
+          "IVE 221014": 1,
+          "IVE Music Station 2022.10.14": 20,
+          "Music Station 221014": 0,
+          "IVE ミュージックステーション": 1,
+          "221014 IVE": 1,
+          "IVE ELEVEN 221014": 0,
+          "221014 ミュージックステーション": 1,
+          "IVE Music Station ELEVEN": 10,
+          "Mステ 20221014": 0,
+          "ミュージックステーション 2022年10月14日": 0
+        },
+        "distinctVideoPages": 37
+      }
+    },
+    "distinctVideoPagesAllSearches": 111
+  },
+  "otherStages": {
+    "CRUSH": {
+      "required": "IVE，2024-09-14 with MUSIC，BV1JctKeyEgw P2，210 秒。",
+      "examples": [
+        "https://ok.ru/video/8208520317581",
+        "https://ok.ru/video/16683897719444",
+        "https://ok.ru/video/13642807839238"
+      ],
+      "finding": "上述同名视频都是 232 秒。其中一条明确标注 music video。没有一条带本场节目和日期的可确认记录。"
+    },
+    "Password": {
+      "required": "tripleS ∞!，2025-11-25 夜间的 TBS PLAYLIST。",
+      "examples": [
+        "https://ok.ru/video/10244926212623",
+        "https://ok.ru/video/9797768317530"
+      ],
+      "finding": "第一条列 198 秒，标题和公开说明缺本场电视表演标识。另一条标为观后反应，日期与节目名查询没有返回目标视频。"
+    },
+    "Teddy Bear": {
+      "required": "STAYC，2023-05-01 プレミアMelodiX!，BV1bo4y1x7LV P1 的 1085–1273 秒。",
+      "examples": [
+        "https://ok.ru/video/4966835096181",
+        "https://ok.ru/video/7045389355622"
+      ],
+      "finding": "歌名结果包含官方 MV 的转载及 MMA 的另一场表演。对应播出日与组合的节目名结果没有出现可核实的该场独立视频。"
+    }
+  },
+  "ELEVEN": {
+    "workId": "recvxyHuKM2Gwu",
+    "originalSourceKey": "bilibili:BV19D4y1r7c6:cid:867429881:p:1",
+    "original": "https://www.bilibili.com/video/BV19D4y1r7c6/?p=1&cid=867429881",
+    "officialProgramme": "https://post.tv-asahi.co.jp/post-198780/",
+    "officialAppearance": "https://www.sonymusic.co.jp/artist/IVE/info/545880",
+    "originalMetadata": "../20261030-evidence-advance/ive-eleven-media-readback.json",
+    "originalStill138Seconds": "../20261121-broadcast-research/eleven-japan-p1-138s.jpg",
+    "candidate": {
+      "page": "https://ok.ru/video/3720700168767",
+      "embed": "https://ok.ru/videoembed/3720700168767",
+      "title": "221014 IVE ミュージックステーション",
+      "listedSeconds": 299,
+      "publishedRaster": [
+        1920,
+        1080
+      ],
+      "sourceClass": "频道转载",
+      "officialEmbedGuide": "https://apiok.ru/en/ext/video",
+      "previewIntervalSeconds": 2,
+      "previewTiles": 150,
+      "previewRaster": [
+        80,
+        44
+      ]
+    },
+    "originalListedSeconds": 307,
+    "priorOriginalDecodedSeconds": 306,
+    "originalFirstFrame": "https://i0.hdslb.com/bfs/storyff/n221021a217e5x2d7h4ew12ytlhsggm3_firsti.jpg",
+    "comparison": "复用了此前对 B 站 P1 保留的 16 个不同时间的静帧，并与 OK 原生播放器的公开拖动预览比对。OK 预览每 2 秒一张，秒数为缩略图标尺位置。",
+    "examples": [
+      {
+        "bilibili": 75,
+        "ok": 68,
+        "scene": "直井怜的粉色人物介绍卡",
+        "centerRgbCorrelation": 0.9875
+      },
+      {
+        "bilibili": 115,
+        "ok": 108,
+        "scene": "介绍段中插入的同一 MV 镜头",
+        "centerRgbCorrelation": 0.7275
+      },
+      {
+        "bilibili": 138,
+        "ok": 130,
+        "scene": "粉金舞台前的六人坐姿队形"
+      },
+      {
+        "bilibili": 166,
+        "ok": 158,
+        "scene": "蓝光舞台高位广角"
+      },
+      {
+        "bilibili": 203,
+        "ok": 196,
+        "scene": "蓝色荧幕前一人举手、队员低位的全景"
+      },
+      {
+        "bilibili": 222,
+        "ok": 214,
+        "scene": "倾斜机位与斜向背景灯带"
+      },
+      {
+        "bilibili": 252,
+        "ok": 244,
+        "scene": "紫色阶梯前方的近景队形"
+      },
+      {
+        "bilibili": 265,
+        "ok": 258,
+        "scene": "双髻成员的后脑近景"
+      }
+    ],
+    "limits": [
+      "B 站首帧有 JC・JK 流行语字幕卡，OK 第 0 秒已经进入成员画面。",
+      "OK 第 298 秒预览为六人终场定格。B 站已留存的最后一个独立取样为 265 秒。",
+      "所查原 P1 公开缩略图接口返回 HTTP 412。两个来源的完整首尾和逐秒对齐仍未独立核实。",
+      "发布资料支持本场日语曲目，图片未核验音轨。OK 提供的 1920 × 1080 是播放器公布的源尺寸。"
+    ],
+    "disposition": "可核同场电视表演及多个一致镜头。节目导入的剪辑已有差异，本次没有将此转载列为整 P 相同剪辑或改动原舞台与评分绑定。"
+  }
+}

@@ -2,11 +2,13 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v231。11 团首页或时间轴已更新日期、轨号、演出与公告说明，上一版 WOOAH《Purple》的五人同期照片与评分入口已通过双宽实测。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [v231 回执](worklogs/20261122-v231-release.md) · [v230 图片与短播](worklogs/20261122-v230-release.md) |
+| 正式站 | v232。《BILLIONAIRE》2 月 7 日首发版站内实播 3840 × 1770。[正式作品](https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrLku) · [实播与首击限制](worklogs/20261122-v232-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v231 正式应用提交 `6aebae61`。[发布回执](evidence/20261122-v231/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，v232 正式应用 `d65ad5ec`。[发布回执](evidence/20261122-v232/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v232 在正式作品页核实首发版可手选 2160p。七人双宽 14/14 个照片下评分入口可展开，四场独占舞台尚无合格站内入口。[实测与回归](worklogs/20261122-v232-release.md)
 
 v231 在 11 团 19 个实际页面上收口时间轴日期、作品参与者和公告文案。正式 v230 桌面读到 42/42 处旧句。v231 桌面 1265 × 720、手机 375 × 844 均实开 19/19 页，各读到 38/38 处新句，旧句为零。正式站《Magnetic》静音解码 4K，《BILLIONAIRE》首发重走后仍无递增进度，七人两档的照片下评分共 14/14 可展开，四场独占舞台仍缺站内高清来源。Windows 与 WSL 各通过现行回归 1311/1311，完整套件保留 131、127 项既有失败。另核四团原 27 条详情失败已清零，现行详情及隔离 D1 两端各 41/41。[上线、逐页、播放与回归](worklogs/20261122-v231-release.md)
 

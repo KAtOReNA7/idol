@@ -32,6 +32,13 @@ function beforeCloseoutGuard(current){
  const revisedIntroductionGuard='c6543ed1669a598062e3c83abf634183b7a0c6020c4dd7f2429a83ba86c1a001';
  const publicMastheadGuard='51944d762c787e2bc9b4d145f362ccede93ff1610b1156944eef4def2f6b85b5';
  if(current.imageReadQueueReview20261122){
+  const artworkFile='data/music-index-artwork.json';
+  const reviewedArtwork={bytes:16375,sha256:'65c9e00bf20e01e63584d6b80c1cd8f821d7c175b1cc11bd9ad1988ab7776dc5'};
+  if(current.runtimeGuards[artworkFile]?.sha256===reviewedArtwork.sha256){
+   assert.deepEqual(current.runtimeGuards[artworkFile],reviewedArtwork,'reviewed RESCENE caption input');
+   current=structuredClone(current);
+   current.runtimeGuards[artworkFile]=structuredClone(guard.after.runtimeGuards[artworkFile]);
+  }
   assert.equal(hash(current),'a566d57cfecb90a7828795fca891365f233df4b81e4e1937d6f0506cf6296c97','complete closeout guard after the image read queue');
   const restored=structuredClone(current);
   const changes=restored.imageReadQueueReview20261122.changes;

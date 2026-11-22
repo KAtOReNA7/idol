@@ -3,10 +3,10 @@ import {withGroupMilestones} from './group-milestones';
 import {withSocialFacts} from './social-facts';
 import {env} from 'cloudflare:workers';
 import {AppError,type TableKey} from './feishu';
-import {activeNative,nativeDb,nativeRow,nativeSchema,nativeTables,sourceStamp,type StorageControl,type NativeTableStep} from './native-storage';
+import {activeNative,nativeDb,nativeRow,nativeTables,sourceStamp,type StorageControl,type NativeTableStep} from './native-storage';
 import type {Catalog} from './types';
-import {namedFields} from './native-format';
-import {editableValues} from './live';
+import {namedFields,nativeKey} from './native-format';
+import {editableValues,type Field} from './live';
 import {projectCatalog} from './catalog';
 import {F} from './fields';
 // Private per-isolate read-through cache. All writes retain their existing D1
@@ -104,5 +104,23 @@ export async function readNativeCatalog(userId:string,force=false,request?:Reque
  const read=await withNativeCatalog(userId,force,catalog=>catalog,undefined,request);
  return read.native?read.value:null;
 }
-export async function readNativeDetail(userId:string,table:TableKey,id:string){const state=await activeNative(userId);if(!state)return null;const fields=await nativeSchema(state.active_snapshot!,table),row=await nativeRow(state.active_snapshot!,table,id),record={record_id:id,fields:namedFields(JSON.parse(row.fields_json),fields)};return {table,recordId:id,mode:'live',pendingSave:null,revision:row.revision,values:editableValues(table,record,fields),watchedOptions:table==='works'?(fields.find(f=>f.field_id===F.works.watched)?.property?.options??[]).map(o=>o.name):[]};}
+export async function readNativeDetail(userId:string,table:TableKey,id:string){
+ const state=await activeNative(userId);
+ if(!state)return null;
+ const snapshot=state.active_snapshot!;
+ const row=await nativeDb().prepare(`
+   SELECT f.fields_json AS schema_json,r.fields_json AS record_json,r.revision
+   FROM idol_native_fields f LEFT JOIN idol_native_records r ON r.key=?
+   WHERE f.key=?
+ `).bind(nativeKey(snapshot,table,id),snapshot+':'+table)
+   .first<{schema_json:string;record_json:string|null;revision:string|null}>();
+ if(!row)throw new AppError('NATIVE_SCHEMA_MISSING','资料格式暂时不可用。',503);
+ const fields:Field[]=JSON.parse(row.schema_json);
+ if(!/^rec[A-Za-z0-9]+$/.test(id))throw new AppError('INVALID_RECORD','记录无效。',400);
+ if(row.record_json===null||row.revision===null)throw new AppError('RECORD_NOT_FOUND','这条资料不存在。',404);
+ const record={record_id:id,fields:namedFields(JSON.parse(row.record_json),fields)};
+ const options=table==='works'?fields.find(field=>field.field_id===F.works.watched)?.property?.options:[];
+ return {table,recordId:id,mode:'live',pendingSave:null,revision:row.revision,
+   values:editableValues(table,record,fields),watchedOptions:(options??[]).map(option=>option.name)};
+}
 export async function readNativeMedia(userId:string,table:TableKey,id:string,index:number){const state=await activeNative(userId);if(!state)return null;if(table!=='members'&&table!=='ratings')throw new AppError('INVALID_MEDIA','图片类型无效。',400);const row=await nativeRow(state.active_snapshot!,table,id),raw=JSON.parse(row.fields_json),attachments=raw[table==='members'?F.members.photo:F.ratings.photo],token=Array.isArray(attachments)?attachments[index]?.file_token:null;if(typeof token!=='string')throw new AppError('MISSING_MEDIA','暂无这张照片。',404);const photo=await nativeDb().prepare("SELECT object_key,content_type,byte_length FROM idol_native_media WHERE snapshot_id = ? AND file_token = ? AND status = 'complete'").bind(state.active_snapshot,token).first<{object_key:string;content_type:string;byte_length:number}>();if(!photo||!env.BUCKET)throw new AppError('MISSING_MEDIA','照片暂时无法读取。',404);const object=await env.BUCKET.get(photo.object_key);if(!object||object.size!==photo.byte_length)throw new AppError('MEDIA_UNAVAILABLE','照片暂时无法读取。',503);return new Response(object.body,{headers:{'Content-Type':photo.content_type,'Content-Length':String(photo.byte_length),'Cache-Control':'private, max-age=300','X-Content-Type-Options':'nosniff'}});}

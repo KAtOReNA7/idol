@@ -23,7 +23,7 @@ before(async () => {
   const bundle = await build({
     stdin: {resolveDir: root, contents: `
       import {env,withEnv} from 'cloudflare:workers';
-      import {readNativeDetail} from './lib/idol/native-reader';
+      import {GET as readRecord} from './app/api/records/route';
       import {nativeExportSnapshot} from './lib/idol/native-storage';
       import {saveNativeRecord} from './lib/idol/native-save';
       import {GET as readCatalog} from './app/api/catalog/route';
@@ -97,7 +97,12 @@ before(async () => {
             return result;
           }
           if (url.pathname === '/api/records' && request.method === 'GET') {
-            return Response.json(await readNativeDetail('test-owner', url.searchParams.get('table'), url.searchParams.get('id')));
+            let queries = 0;
+            const db = env.DB;
+            const tracked = {prepare(sql) { queries++; return db.prepare(sql); }};
+            const result = await withEnv({DB: tracked}, () => readRecord(request));
+            result.headers.set('X-Test-Queries', String(queries));
+            return result;
           }
           if (url.pathname === '/api/save' && request.method === 'POST') {
             return Response.json(await saveNativeRecord('test-owner', await request.json()));
@@ -155,6 +160,21 @@ async function seed(table, id, values) {
 
 const read = (table, id) => runtime.dispatchFetch('http://localhost/api/records?table=' + table + '&id=' + id);
 const post = body => runtime.dispatchFetch('http://localhost/api/save', {method: 'POST', body});
+test('opening an owner score editor reads its row and field definitions in one database call', async () => {
+  await seed('works', 'recEditorRead', {[F.works.score]: 0});
+  const result = await read('works', 'recEditorRead');
+  assert.equal(result.status, 200);
+  const record = await result.json();
+  assert.equal(record.values.score, 0);
+  assert.deepEqual(record.watchedOptions, ['未观看']);
+  assert.ok(record.revision);
+  assert.equal(result.headers.get('X-Test-Queries'), '4');
+  for (const [id, status, error] of [['recAbsent', 404, 'RECORD_NOT_FOUND'], ['bad', 400, 'INVALID_RECORD']]) {
+    const failure = await read('works', id);
+    assert.equal(failure.status, status);
+    assert.equal((await failure.json()).error, error);
+  }
+});
 const catalogFor = id => runtime.dispatchFetch('http://localhost/api/catalog?shape=display-v1&refresh=1', {
   headers:{Prefer:'omit-stage-candidates, work-detail='+id},
 });

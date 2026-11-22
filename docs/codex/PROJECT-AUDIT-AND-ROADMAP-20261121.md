@@ -4,9 +4,12 @@
 
 ## 11 月 23 日接续目标
 
-1. v249 的成员原图首击、关闭回焦和写真出处正式验收通过。飞书第 8 项已回写，修订 1218。[正式结果](worklogs/20261123-v249-release.md)
-2. v250 已交付 VVUP 分享入口和 BABYMONSTER 成员详情。v251–254 更新多团成员详情、同期照片及 aespa、XG 和 LE SSERAFIM 发行详情。v255 已交付 BABYMONSTER 三个分享入口、ITZY《KILL MY DOUBT》和 WOOAH 出道图。下一批是完善 BABYMONSTER 的首击搜索、fromis_9 三次发行同期图及 KISS OF LIFE 三个分享栏目。十张 LE SSERAFIM 唱片的发行日期已定位对应正式事件，待同批核入。[v250](worklogs/20261123-v250-release.md) · [v254](worklogs/20261123-v254-release.md) · [v255](worklogs/20261123-v255-release.md)
-3. 六个缺片源的指定版本保留在待办。只有找到新同版来源才逐首静音短测。《BILLIONAIRE》沿用已验收的播放结果。每批发布只对本批变化做浏览器实测，已确认的评分入口、MV 顺序和历史照片沿用已有验收记录。
+正式站从 v256 接续。成员原图首击和飞书第 8 项已在 v249 验收，VVUP 分享入口和 BABYMONSTER 成员详情已在 v250 交付。飞书 CLI 以用户身份回读仍为修订 1218，29 条反馈中 28 条已解决。[v249](worklogs/20261123-v249-release.md) · [v250](worklogs/20261123-v250-release.md) · [v256](worklogs/20261123-v256-release.md)
+
+1. v256 已上线并复验 BABYMONSTER 首次清空与提交搜索、KISS OF LIFE 三个分享栏目和原事件返回、fromis_9 三支 MV 的 26 张同期成员照，以及 LE SSERAFIM 的 11 张带日期唱片。接续搜索在前端接管期间的输入保留。[v256 实测](evidence/20261123-v256/formal-v256.json)
+2. 先交付从 2017 年团体具名官宣选出的 fromis_9《Glass Shoes》九张成员照，保留旧照入口和评分绑定。逐图复核已有发行图集的 64 个候选位置，缺具名同期材料的 18 个位置继续留证。成员照先在项目 Figma 双宽确认，再在实页核对原图、照片下评分和读取字节。[同期照片台账](evidence/20261122-member-release-portraits/remaining-194.csv)
+3. 在剩余双宽候选中先核实际影响找人、找作品和返回的入口。ITZY、LE SSERAFIM 的 11 个成员分享地址已逐人复现首份缺本人。沿用对应 Figma 布局，让首份网页直接显示本人姓名、肖像、出处和可用的返回入口；再按已登记的内页样本补项目 Figma、代码和正式站验证。每批报告具体页面及前后数据。[使用观察](20261122-USABILITY-DISCUSSION.md) · [设计索引](worklogs/20261122-group-design-coverage.md)
+4. 《BILLIONAIRE》沿用已验收的播放结果。六个待播指定版本有新同版来源后才静音短测。已通过的 51 团首页、MV 顺序和评分绑定复用现有回执，检查本批受影响的路径。[播放回执](evidence/20261122-v236/formal-billionaire-2160p.json) · [当前状态](STATUS.md)
 
 ## 本轮已交付与接续顺序
 

@@ -6,7 +6,7 @@ ADYA、W!TCHX 的详情主按钮回原事件、次入口进本团作品库已上
 
 分享链接的首页闪现已在 ADYA、BEWAVE、SPIA、W!TCHX、Candy Shop、Geenius、ODD YOUTH、TRACER、YOUNG POSSE 九团解决。成员、舞台目录、时间轴共 27 个正式链接的首份网页均显示所选栏目。[前四团](worklogs/20261122-v245-release.md) · [后五团](worklogs/20261122-v246-release.md)
 
-VVUP 的三个分享地址从 v250 起也直接显示成员、舞台或时间轴。ITZY 和 LE SSERAFIM 的成员分享地址仍先显示作品收藏加载提示，再出现本人档案。后续可验证在首份网页直接使用已核的公开姓名与肖像，现有私人记录随目录加载。[VVUP 正式复验](worklogs/20261123-v250-release.md) · [ITZY 改前及当前详情](worklogs/20261123-itzy-member-profile.md)
+VVUP 的三个分享地址从 v250 起也直接显示成员、舞台或时间轴。ITZY 五人和 LE SSERAFIM 六人的成员分享地址已逐人核实。11 个地址均先显示作品收藏加载提示，再出现本人档案。后续可验证在首份网页直接使用已核的公开姓名与肖像，现有私人记录随目录加载。[VVUP 正式复验](worklogs/20261123-v250-release.md) · [ITZY 改前及当前详情](worklogs/20261123-itzy-member-profile.md)
 
 | 访客会遇到什么 | 建议讨论的范围与取舍 |
 | --- | --- |
@@ -25,5 +25,5 @@ VVUP 的三个分享地址从 v250 起也直接显示成员、舞台或时间轴
 
 ## 11 月 23 日正式复验补充
 
-- BABYMONSTER 带搜索词的分享地址直接看到结果。首次立即点「清空」可能发生在前端接管前。开发版已利用原生链接清空并支持提交搜索，待下一批正式复验。[正式发现](worklogs/20261123-v255-release.md)
+- BABYMONSTER 的首次清空和提交搜索已在 v256 正式复验。首开到前端接管之间出现过一次输入回到原地址搜索词。已列入下一批，重点核输入能否保留，以及正常即时过滤、清空和作品返回是否仍可用。[正式观察](evidence/20261123-v256/formal-v256.json)
 - WOOAH《woo!ah!》的 WOOYEON 已有清晰官方近景。想看旧 MV 相框截图时，入口写「查看原作品图」，点开前难分辨素材类型。可以维持通用标签，也可以在确实是该剪辑的截图时用「查看 MV 截图」。同时能打开旧参考照的卡片会更容易分辨两个入口。[正式作品](https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=recvxyH5pzlG0W&video=mv)

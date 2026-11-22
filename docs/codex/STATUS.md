@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v255。BABYMONSTER 三个分享入口首份直接显示 7 人、19 作和 11 个事件。ITZY《KILL MY DOUBT》六首与三条原版 MV 已上线。WOOAH《woo!ah!》六卡预览减少 66.30%。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v255-release.md) |
+| 正式站 | v256。KISS OF LIFE 三个分享首份直接显示 4 人、25 支作品和 17 条事件。fromis_9 三支 MV 的 26 张默认成员预览减少 74.32%。BABYMONSTER 首次清空与原生搜索已验收，LE SSERAFIM 发行日期从 1/11 到 11/11。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v256-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v255 正式应用 `a377e1c3`。接续 BABYMONSTER 冷开搜索首击、fromis_9 三次发行同期照和 KISS OF LIFE 分享布局。四场节目、《Per》首发完整版及《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v255/publication.json) |
+| 当前开发 | `codex/project-optimization-20261121`。从 v256 接续《Glass Shoes》九张同期照、ITZY 与 LE SSERAFIM 的 11 个成员分享首屏及搜索接管期间的输入保留。四场节目、《Per》首发完整版及《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v256/publication.json) |
 
 ## 11 月 22 日更新
 

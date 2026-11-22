@@ -26,16 +26,16 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 423,
+    "twoWidthBoardMatches": 426,
     "twoWidthBySurface": {
       "home": 51,
-      "members": 46,
+      "members": 47,
       "profile": 51,
-      "works": 45,
+      "works": 46,
       "release": 43,
       "mv": 51,
       "stage": 48,
-      "timeline": 43,
+      "timeline": 44,
       "score": 45
     },
     "missingOrPartialBySurface": {
@@ -43,7 +43,6 @@
       "members": [
         "xg",
         "aespa",
-        "kissoflife",
         "nmixx",
         "kiiikiii"
       ],
@@ -51,7 +50,6 @@
       "works": [
         "xg",
         "aespa",
-        "kissoflife",
         "stayc",
         "nmixx",
         "kiiikiii"
@@ -75,7 +73,6 @@
       "timeline": [
         "xg",
         "aespa",
-        "kissoflife",
         "stayc",
         "nmixx",
         "kiiikiii",
@@ -166,7 +163,9 @@
     "itzy-kill-my-doubt": "docs/codex/worklogs/20261123-itzy-kill-my-doubt-design.md",
     "babymonster-share-directories": "docs/codex/evidence/20261123-v255/babymonster-share-directories.json",
     "wooah-exclamation": "docs/codex/evidence/20261123-wooah-exclamation/design-and-sources.json",
-    "v255-formal": "docs/codex/evidence/20261123-v255/formal-babymonster-itzy-wooah.json"
+    "v255-formal": "docs/codex/evidence/20261123-v255/formal-babymonster-itzy-wooah.json",
+    "kissoflife-share-directories": "docs/codex/evidence/20261123-v256/kissoflife-share-directories.json",
+    "v256-formal": "docs/codex/evidence/20261123-v256/formal-v256.json"
   },
   "groups": [
     {
@@ -3196,16 +3195,16 @@
           "180:1200"
         ],
         "members": [
-          null,
-          null
+          "1693:2144",
+          "1693:2212"
         ],
         "profile": [
           "180:1302",
           "180:1337"
         ],
         "works": [
-          null,
-          null
+          "1694:2184",
+          "1694:2420"
         ],
         "release": [
           null,
@@ -3220,20 +3219,29 @@
           "180:1483"
         ],
         "timeline": [
-          null,
-          null
+          "1695:2507",
+          "1695:2817"
         ],
         "score": [
           null,
           null
         ]
       },
-      "revised": {},
+      "revised": {
+        "members": "kissoflife-share-directories",
+        "works": "kissoflife-share-directories",
+        "timeline": "kissoflife-share-directories"
+      },
       "implementation": [
         {
           "at": "开发版 2d0f459d",
           "scope": "24 张可看舞台卡使用准确封面、来源日期、舞台整体分和单一入口。Te Quiero 与 Sticky 在三个宽度实点。",
           "evidence": "kiof-stage-directory"
+        },
+        {
+          "at": "正式 v256",
+          "scope": "成员、作品与时间轴分享首份分别显示四人、二十五支作品、十七条事件。两宽实点事件与相应舞台返回。",
+          "evidence": "v256-formal"
         }
       ],
       "additional": [
@@ -4296,6 +4304,36 @@
     "1674:2174": {
       "page": "921:1104",
       "name": "WOOAH / woo!ah! / 390",
+      "type": "FRAME"
+    },
+    "1693:2144": {
+      "page": "178:1095",
+      "name": "KISS OF LIFE / 分享直达 / 成员名录 / 1440",
+      "type": "FRAME"
+    },
+    "1693:2212": {
+      "page": "178:1095",
+      "name": "KISS OF LIFE / 分享直达 / 成员名录 / 390",
+      "type": "FRAME"
+    },
+    "1694:2184": {
+      "page": "178:1095",
+      "name": "KISS OF LIFE / 分享直达 / 作品与舞台 / 1440",
+      "type": "FRAME"
+    },
+    "1694:2420": {
+      "page": "178:1095",
+      "name": "KISS OF LIFE / 分享直达 / 作品与舞台 / 390",
+      "type": "FRAME"
+    },
+    "1695:2507": {
+      "page": "178:1095",
+      "name": "KISS OF LIFE / 分享直达 / 大事时间轴 / 1440",
+      "type": "FRAME"
+    },
+    "1695:2817": {
+      "page": "178:1095",
+      "name": "KISS OF LIFE / 分享直达 / 大事时间轴 / 390",
       "type": "FRAME"
     }
   }

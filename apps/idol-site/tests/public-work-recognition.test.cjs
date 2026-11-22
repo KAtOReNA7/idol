@@ -1,6 +1,31 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const {publicWorkRecognition:read}=require('./helpers/public-artist-loader.cjs')('lib/idol/public-work-recognition.ts');
 const source=require('../data/public-work-recognition.json'),credits=require('../data/public-work-credits.json');
+test('RIZZ loads the five named portrait cards and opens their full photographs under the original work and member IDs',()=>{
+ const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
+ const {parse}=require('next/dist/compiled/node-html-parser');
+ const {PublicWorkCredits}=require('./helpers/shared-journal-dependency-loader.cjs').sharedJournalDependency('@/components/public-work-credits');
+ const {publicRecognitionEdition}=require('./helpers/public-artist-loader.cjs')('lib/idol/public-work-recognition.ts');
+ const row=source.records.find(item=>item.workId==='rec28ldfRTrHhL');
+ const work={id:row.workId,url:'https://www.youtube.com/watch?v='+row.videoId,groupIds:[row.groupId],ratingIds:[]};
+ const members=row.portraits.map(p=>({id:p.memberId,stageName:p.memberId,groupIds:[row.groupId]}));
+ const doc=parse(renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data:{members,works:[work],ratings:[]},onMember(){},
+  renderScore:m=>React.createElement('button',{'data-test-score':m.id},'个人评分')})));
+ const cards=doc.querySelectorAll('.public-recognition-grid > li');
+ assert.equal(cards.length,5);
+ for(const [i,person] of row.portraits.entries()){
+  const card=cards[i], target={workId:work.id,videoId:row.videoId,memberId:person.memberId}, edition=publicRecognitionEdition(target);
+  assert.equal(card.getAttribute('data-photo-member'),person.memberId);
+  assert.equal(edition.original,person.src);
+  assert.match(edition.preview,/^\/artist\/recognition-editions\/adya\/.+\.card\.webp$/);
+  assert.equal(card.querySelector('.mv-identity-frame img').getAttribute('src'),edition.preview);
+  assert.equal(card.querySelector('.mv-identity-frame + .mv-photo-score button').getAttribute('data-test-score'),person.memberId);
+  assert.match(card.querySelector('figcaption').text,/拍摄时期未注明/);
+  assert.equal(card.querySelector('figcaption a').getAttribute('href'),edition.sourceUrl);
+  assert.equal(card.querySelector('.mv-identity-previous'),null);
+  assert.equal(publicRecognitionEdition({...target,videoId:'wrong-video'}),null);
+ }
+});
 test('recognition references are limited to credited members and the exact current work, group and video',()=>{
  for(const row of source.records){
   const work={id:row.workId,groupIds:[row.groupId],url:`https://www.youtube.com/watch?v=${row.videoId}`,score:0,note:'personal',ratingIds:[]};

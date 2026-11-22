@@ -3,6 +3,47 @@ const test = require('node:test');
 const {parse} = require('next/dist/compiled/node-html-parser');
 const {artistCatalog, registry, renderArtist} = require('./fixtures/current-artist-pages.cjs');
 
+test('ADYA RIZZ keeps its single official cut on the score selected in the catalog and in saved bookmarks', async () => {
+  const group = registry.find(g => g.slug === 'adya'), catalog = artistCatalog(group);
+  const work = catalog.works.find(w => w.id === 'rec28ldfRTrHhL');
+  const {safeArtistReturn} = require('./helpers/public-artist-loader.cjs')('lib/idol/artist-navigation.ts');
+  assert.equal(work.stage.videoId, new URL(work.url).searchParams.get('v'));
+  assert.equal(work.stage.reusesOriginalVideo, true);
+  for (const format of ['all','mv','stage']) {
+    const query = {section:'works', ...(format === 'all' ? {} : {format}), q:'RIZZ'};
+    const doc = parse(await renderArtist(group, query));
+    const cards = doc.querySelectorAll('[data-video-key="rizz-video"]');
+    assert.equal(cards.length, 1);
+    const links = cards[0].querySelectorAll('a');
+    assert.equal(links.length, 1);
+    const target = new URL(links[0].getAttribute('href'), 'https://site.invalid');
+    assert.equal(target.pathname, '/');
+    assert.equal(target.searchParams.get('work'), work.id);
+    assert.equal(target.searchParams.get('video'), format === 'stage' ? 'stage' : null);
+    assert.deepEqual(Object.fromEntries(new URL(target.searchParams.get('returnTo'), target).searchParams), query);
+    if (format === 'stage') assert.match(links[0].text, /舞台整体评分/);
+  }
+  for (const format of ['mv','stage']) {
+    const fields = {section:'works',format,media:'rizz-video',q:'RIZZ'};
+    const page = parse(await renderArtist(group, fields));
+    const primary = page.querySelector('[data-film-primary="onsite"]');
+    const target = new URL(primary.getAttribute('href'), 'https://site.invalid');
+    assert.equal(target.searchParams.get('video'), format === 'stage' ? 'stage' : null);
+    assert.deepEqual(Object.fromEntries(new URL(target.searchParams.get('returnTo'), target).searchParams), fields);
+  }
+  const query = {section:'works',format:'stage',q:'RIZZ'};
+  const pending = parse(await renderArtist(group, query, null, {loading:true}));
+  const bookmark = pending.querySelector('[data-video-key="rizz-video"] a').getAttribute('href');
+  const accepted = safeArtistReturn(bookmark);
+  assert.ok(accepted);
+  assert.deepEqual(Object.fromEntries(new URL(accepted, 'https://site.invalid').searchParams),
+    Object.fromEntries(new URL(bookmark, 'https://site.invalid').searchParams));
+  const native = parse(await renderArtist(group, Object.fromEntries(new URL(bookmark, 'https://site.invalid').searchParams), null, {loading:true}));
+  assert.ok(native.querySelector('[data-film-primary="pending"]'));
+  assert.match(native.text, /舞台整体评分/);
+  assert.equal(safeArtistReturn('/artists/adya?section=works&format=stage&media=dazzling-day-ost-video'), null);
+});
+
 for (const slug of ['adya','geenius','oddyouth','tracer','spia','candyshop','bewave','youngposse','genblue']) {
   const group = registry.find(row => row.slug === slug);
   const catalog = artistCatalog(group);

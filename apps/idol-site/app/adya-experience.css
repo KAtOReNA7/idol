@@ -9,3 +9,53 @@
 .candidate-adya-experience :is(.work-aside,.cast-copy,.member-work-card,.stage-source,.detail-return){min-width:0}
 .candidate-adya-experience :is(.work-aside h1,.member-work-card h3,.stage-source a){overflow-wrap:anywhere}
 @media(max-width:420px){.candidate-adya-experience .work-aside h1{font-size:clamp(27px,8.5vw,34px)}.candidate-adya-experience .detail-return{flex-wrap:wrap;gap:10px}.candidate-adya-experience .video-mode-tabs{display:flex;flex-wrap:wrap}.candidate-adya-experience .video-mode-tabs button{flex:1 1 auto;white-space:nowrap}}
+
+body .work-experience[data-work-theme="adya"] {
+ --paper: #111112;
+ --white: #242427;
+ --ink: #f5f3ef;
+ --muted: #c7c5c2;
+ --line: #59595e;
+ --rose: #ff6550;
+ & .music-work-title { border-top: 5px solid var(--rose); padding-top: clamp(10px, 2vw, 22px); }
+ & .music-work-title .group-links > :only-child {
+  display: inline-flex; align-items: center; justify-content: flex-end; width: 136px; min-height: 44px;
+  padding: 4px 6px; border: 0; border-radius: 0;
+  background: #f64e37 url('/artist/adya/portraits/official-wordmark.png') 9px center / 100px auto no-repeat;
+  color: #111112; font-size: 0;
+ }
+ & :is(.music-work-title h1, .work-aside h1) { font-family: AdyaDisplay, var(--font-body); font-weight: 700; line-height: 1.08; overflow-wrap: anywhere; }
+ & .music-work-title h1 { font-size: clamp(40px, 6vw, 76px); }
+ & :is(.work-detail-top, .stage-view .work-detail-top) {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(14px, 2vw, 28px); align-items: start;
+ }
+ & .work-detail-top > * { min-width: 0; }
+ & :is(.video-stage, .video-mode-tabs, .work-aside, .stage-source, .editor, .editor-open, .button, .video-play) { border-radius: 0; }
+ & :is(.work-aside, .stage-view .work-aside) { padding: clamp(14px, 1.8vw, 24px); border-left: 4px solid var(--rose); background: var(--white); }
+ & :is(.video-mode-tabs button, .editor-open, .video-play) { min-height: 44px; padding: 8px 14px; }
+ & :is(.video-play, .button.primary, .video-mode-tabs button[aria-selected="true"]) { background: var(--rose); color: var(--paper); }
+ & .video-play { flex-direction: row; gap: 8px; }
+ & .video-play svg { width: 20px; height: 20px; }
+ & .public-work-credits .public-recognition-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 22px); }
+ & .public-recognition-grid > li { min-width: 0; padding: clamp(8px, 1vw, 12px); border-top: 3px solid var(--rose); background: var(--white); }
+ & .public-recognition-grid .mv-identity-frame { border-radius: 0; }
+ & .public-recognition-grid .mv-photo-score .credit-score-action { width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 0; color: var(--ink); }
+ & .public-recognition-grid .mv-identity-photo figcaption { font: 400 12px/1.5 var(--font-body); color: var(--muted); opacity: 1; }
+ & .public-recognition-grid .personal-score-form { width: 100%; max-width: 100%; min-width: 0; margin: 8px 0 0; padding: 8px; box-sizing: border-box; }
+ & .personal-score-form .editor-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+ & .personal-score-form :is(label, .score-input, input) { min-width: 0; max-width: 100%; }
+ & .personal-score-form .editor-actions .button { width: 100%; min-height: 44px; padding-inline: 5px; text-align: center; text-decoration: none; }
+ & :focus-visible { outline: 3px solid var(--rose); outline-offset: 3px; }
+}
+@media (min-width: 1200px) {
+ body .work-experience[data-work-theme="adya"] :is(.work-detail-top, .stage-view .work-detail-top) { grid-template-columns: minmax(0, 1.8fr) minmax(250px, 1fr); }
+}
+@media (max-width: 760px) {
+ body .work-experience[data-work-theme="adya"] .public-work-credits .public-recognition-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 10px; }
+}
+@media (max-width: 359px) {
+ body .work-experience[data-work-theme="adya"] .public-work-credits .public-recognition-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (forced-colors: active) {
+ body .work-experience[data-work-theme="adya"] .music-work-title .group-links > :only-child { width: auto; background: none; color: LinkText; font-size: 1rem; }
+}

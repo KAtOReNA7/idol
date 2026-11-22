@@ -32,6 +32,8 @@ test('the observed Password thumbnail retains its actual decoded dimensions and 
     '/artist/itzy/identity/', '/artist/kiiikiii/uncut-gem/', '/artist/lesserafim/identity/', '/artist/newjeans/debut/', '/artist/nmixx/identity/', '/artist/spia/deeeep/', '/artist/stayc/identity/',
     '/artist/stayc/star-to-a-young-culture/',
     '/artist/hearts2hearts/the-chase/',
+    '/artist/udtt/identity/',
+    '/fonts/candyshop/',
    ];
    manifest.assets=manifest.assets.filter(row=>{
     const addedAfterReceipt=row.path==='/fonts/NunitoSans-Variable.woff2'||laterCollections.some(directory=>row.path.startsWith(directory));

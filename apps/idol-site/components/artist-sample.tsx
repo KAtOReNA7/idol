@@ -19,6 +19,8 @@ import {memberWorks,memberWorkSummary} from '@/lib/idol/member-works';
 import {safeGroupLink} from '@/lib/idol/group-detail';
 import {videoId} from '@/lib/idol/values';
 import {PhotoLightbox} from './photo-lightbox';
+import {OriginalPhotoLink} from './original-photo-link';
+import {PhotoSourceDisclosure} from './photo-source-disclosure';
 import {MvPhotoReference} from './mv-photo-reference';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from './reliable-image';
 import {useArtistScroll} from './use-artist-scroll';
@@ -88,7 +90,39 @@ export default function ArtistSample({basePath='/preview/babymonster'}:{basePath
  <p className="as-sales-scope">普通版与 Nemo 的公开年度数据汇总，不代表完整生涯销量。首周另列，不加入累计。</p>
  <div className="as-sales-releases">{releases.map(r=><article key={r.title}><div><h4>{r.title}</h4><time>{r.date} 发行</time></div><div><strong>{r.circle.copies.toLocaleString('zh-CN')} <span>张</span></strong><small>Circle 已公开累计</small></div><p>{publicCustomArtistText(r.circle.coverageLabel)}</p><footer><LinkTo href={external(r.circle.sourceUrl)} target="_blank" rel="noopener noreferrer">Circle 来源<ArrowUpRight size={11}/></LinkTo><span>Hanteo 首周 {r.hanteoFirstWeek?<LinkTo href={external(r.hanteoFirstWeek.sourceUrl)} target="_blank" rel="noopener noreferrer">{r.hanteoFirstWeek.copies.toLocaleString('zh-CN')} 张</LinkTo>:'暂无数据'}</span></footer></article>)}</div>
  </section></div></div>;};
- function renderMember(m:Member){if(!data)return null;const items=memberWorks(data,m.id),summary=memberWorkSummary(items),visual=memberVisual(m);return <div className="as-member-page"><button className="as-back" onClick={()=>navigate({member:null,section:'members'})}><ArrowLeft size={15}/>BABYMONSTER · 全部成员</button><section className="as-member-hero" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><div className="as-member-portrait"><Picture identityKey={`member:${m.id}:portrait`} src={visual?.image??(m.photo?imageUrl(m.photo):undefined)} alt={m.stageName+' · '+(visual?.label??'成员档案照')} fit="contain" priority/><small>{visual?visual.label+' · '+visual.date:'成员档案照'}</small></div><div className="as-member-copy" data-member-module="basic"><span className="as-kicker">BABYMONSTER / MEMBER</span><h1><span className="member-display-name">{memberDisplayName(m)}</span></h1><MemberPhysicalFacts member={m}/><MemberCareerFacts member={m} part="intro"/><p>{[m.stageName,m.country,m.birthDate,m.status].filter(Boolean).join(' · ')}</p><p className="as-member-intro">{m.role||'从每一支作品，认识她的舞台和造型。'}</p><LinkTo className="as-button primary" href={artistMemberUrl(m.id,returnTo)}>打开个人档案与记录<ArrowUpRight size={14}/></LinkTo><div className="as-social-inline">{(m.social??[]).map(s=><LinkTo key={s.platform} href={external(s.url)} target="_blank" rel="noopener noreferrer"><span>{s.platform==='instagram'?'Instagram':s.platform==='youtube'?'YouTube':s.platform==='x'?'X':'TikTok'}<ArrowUpRight size={12}/></span>{s.countLabel&&<strong>{followerAccountLabel(s)}</strong>}<small>{s.observedAt?'更新于 '+s.observedAt.slice(0,10):'粉丝数暂未收录'}</small></LinkTo>)}</div></div></section>
+ function renderMember(m:Member){
+  if(!data)return null;
+  const items=memberWorks(data,m.id),summary=memberWorkSummary(items),visual=memberVisual(m);
+  const name=memberDisplayName(m);
+  const portrait=<Picture identityKey={`member:${m.id}:portrait`} src={visual?.image??(m.photo?imageUrl(m.photo):undefined)} alt={m.stageName+' · '+(visual?.label??'成员档案照')} fit="contain" priority/>;
+  const openPortrait=(src:string)=>setLightbox({src,label:name+' · '+(visual?.label??'成员档案照')});
+  return <div className="as-member-page">
+   <button className="as-back" onClick={()=>navigate({member:null,section:'members'})}><ArrowLeft size={15}/>BABYMONSTER · 全部成员</button>
+   <section className="as-member-hero" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity">
+    <header className="as-member-heading">
+     <h1><span className="member-display-name">{name}</span></h1>
+     {visual&&<p>{visual.date.slice(0,7).replace('-','.')} · {visual.label}</p>}
+    </header>
+    <div className="as-member-photo-block">
+     <div className="as-member-portrait">
+      {visual?<OriginalPhotoLink className="as-member-photo-open" href={visual.image} aria-label={'放大'+name+'概念照'} onOpen={openPortrait}>{portrait}</OriginalPhotoLink>:portrait}
+     </div>
+     {visual&&<>
+      <OriginalPhotoLink className="as-member-photo-action" href={visual.image} aria-label={'查看'+name+'原图'} onOpen={openPortrait}>查看原图 <ArrowUpRight size={14}/></OriginalPhotoLink>
+      <PhotoSourceDisclosure className="as-member-photo-credit">
+       <p>YG Entertainment 发布于 <time dateTime={visual.date}>{visual.date}</time>。</p>
+       <LinkTo href={external(visual.sourceUrl)} target="_blank" rel="noopener noreferrer">YG LIFE 概念照原文 <ArrowUpRight size={14}/></LinkTo>
+      </PhotoSourceDisclosure>
+     </>}
+    </div>
+    <div className="as-member-copy" data-member-module="basic">
+     <MemberPhysicalFacts member={m}/><MemberCareerFacts member={m} part="intro"/>
+     <p>{[m.country,m.birthDate,m.status].filter(Boolean).join(' · ')}</p>
+     {m.role&&<p className="as-member-intro">{m.role}</p>}
+     <LinkTo className="as-button primary" href={artistMemberUrl(m.id,returnTo)}>打开个人档案与记录<ArrowUpRight size={14}/></LinkTo>
+     <div className="as-social-inline">{(m.social??[]).map(s=><LinkTo key={s.platform} href={external(s.url)} target="_blank" rel="noopener noreferrer"><span>{s.platform==='instagram'?'Instagram':s.platform==='youtube'?'YouTube':s.platform==='x'?'X':'TikTok'}<ArrowUpRight size={12}/></span>{s.countLabel&&<strong>{followerAccountLabel(s)}</strong>}<small>{s.observedAt?'更新于 '+s.observedAt.slice(0,10):'粉丝数暂未收录'}</small></LinkTo>)}</div>
+    </div>
+   </section>
 <div className="as-member-scores" data-member-module="scores"><div><small>作品综合分</small><strong>{n(summary.composite)}</strong><span>{summary.ratedWorks} 支已评作品</span></div><div><small>表现均分</small><strong>{n(summary.performanceMean)}</strong><span>{summary.performanceCount} 支已评</span></div><div><small>造型均分</small><strong>{n(summary.stylingMean)}</strong><span>{summary.stylingCount} 支已评</span></div></div>
 {summary.composite===null&&<p className="as-muted">表现和造型都有评分后，显示作品综合分。</p>}
 <SectionHeading index="01" title="HER VERSIONS" label="认人参考与作品评分"/><div className="as-member-works" data-member-module="works">{items.map(x=><article key={x.work.id}><MemberWorkIdentityPhoto work={x.work} memberId={m.id} label={memberDisplayName(m)+' · '+x.work.song} photo={x.photo} live={data.mode==='live'} className={'as-member-look member-mv-look'+(x.photo?.sourceKind==='mv_look_photo'?' mv-look-native':'')} onOpen={setLightbox} showMissing/><MvPhotoReference photo={x.photo} referencePhoto={x.referencePhoto} label={memberDisplayName(m)+' · '+x.work.song} live={data.mode==='live'}/><LinkTo data-member-work-trigger={x.work.id} href={workUrl(x.work)}><h3>{x.work.song||x.work.name}<ArrowUpRight size={15}/></h3><p>{x.work.version||workKind(x.work)}</p><div><span>表现 <strong>{n(x.performance)}</strong></span><span>造型 <strong>{n(x.styling)}</strong></span></div></LinkTo></article>)}</div>

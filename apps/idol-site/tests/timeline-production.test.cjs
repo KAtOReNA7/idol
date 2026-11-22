@@ -108,7 +108,7 @@ function reportAssertions(dom,group,held,{shown=true,native=false}={}){
   for(const a of sources){assert.equal(a.attrs.target,'_blank');assert.match(a.attrs.rel,/noopener/);}
  }
 }
-function sharedAssertions(dom,group,ready,held,expected,{navigation=true,releaseTargets={},recordReturnTo=group.path+'?section=updates'}={}){
+function sharedAssertions(dom,group,ready,held,expected,{navigation=true,releaseTargets={},recordReturnTo=group.path+'?section=updates',anchoredLinkCount=0}={}){
  const axes=find(dom,n=>n.tag==='section'&&hasClass(n,'artist-timeline'));
  assert.equal(axes.length,1,'one actual timeline axis');const axis=axes[0];
  const events=find(axis,n=>Object.hasOwn(n.attrs,'data-timeline-event-id')&&!reported(n));
@@ -117,6 +117,7 @@ function sharedAssertions(dom,group,ready,held,expected,{navigation=true,release
  assert.equal(find(axis,n=>hasClass(n,'at-list')&&!reported(n)).length,ready.length?1:0);
  assert.doesNotMatch(text(axis),/来源与核验|范围说明|支持范围|重要事件|条待核资料|成员档案|作品档案|evidence\/E|B\/C\/D|E01|E02|沿用D原文|继承字段/);
  assert.equal(find(axis,n=>['at-filters','at-background','at-sources','at-related','at-gaps','at-badges'].some(c=>hasClass(n,c))).length,0);
+ const returnAnchors=new Set();
  if(navigation)for(const event of ready){
   const node=events.find(n=>eventId(n)===event.id);assert.ok(node);
   const controls=find(node,n=>(n.tag==='button'||n.tag==='a')&&Object.hasOwn(n.attrs,'data-timeline-target-id'));
@@ -127,18 +128,28 @@ function sharedAssertions(dom,group,ready,held,expected,{navigation=true,release
    assert.ok(text(control).trim());
    assert.ok(!Object.hasOwn(control.attrs,'disabled'));
    assert.notEqual(control.attrs['aria-disabled'],'true');
+   if(anchoredLinkCount)assert.equal(control.tag,'a','every directory reference has a native destination before hydration');
    if(control.tag==='a'){
     const kind=control.attrs['data-timeline-target-kind'],id=control.attrs['data-timeline-target-id'];
     assert.ok(kind==='member'||kind==='work');
     const destination=new URL(control.attrs.href,'https://test.invalid');
     assert.equal(destination.origin,'https://test.invalid');
     assert.equal(destination.pathname,'/');
+    let returnTo=recordReturnTo;
+    if(anchoredLinkCount){
+     const anchor=`event-${event.id}-${kind}-${id}`;
+     assert.equal(control.attrs.id,anchor,'the return fragment selects this exact event and target');
+     assert.ok(!returnAnchors.has(anchor),'two references cannot share a return anchor');
+     returnAnchors.add(anchor);
+     returnTo+='#'+anchor;
+    }
     assert.deepEqual(Object.fromEntries(destination.searchParams),{
-     view:kind==='member'?'members':'works',[kind]:id,returnTo:recordReturnTo,
+     view:kind==='member'?'members':'works',[kind]:id,returnTo,
     });
    }
   }
  }
+ assert.equal(returnAnchors.size,anchoredLinkCount);
  reportAssertions(dom,group,held);
  return axis;
 }
@@ -315,7 +326,8 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
    for(const event of major){const release=product.wooahTimelineRelease(event.id),media=product.wooahTimelineMedia(event.id);const node=find(axis,n=>eventId(n)===event.id)[0];const buttons=find(node,n=>n.tag==='button');const target=release??media;assert.equal(buttons.length,target?1:0);if(target){assert.equal(buttons[0].attrs['data-timeline-target-id'],target.key);assert.equal(buttons[0].attrs['data-timeline-target-kind'],release?'release':'media');assert.equal(buttons[0].attrs['data-timeline-event-trigger'],event.id);}}
   }else{
    const recordReturnTo=group.path+(home?'':'?section=updates')+(query.includes('timelineType=release')?'&timelineType=release':'');
-   sharedAssertions(dom,group,ready,held,expected,{releaseTargets:group.slug==='billlie'?product.billlieEventReleases:{},recordReturnTo});
+   const anchoredLinkCount=home?0:({kissoflife:19,babymonster:18}[group.slug]??0);
+   sharedAssertions(dom,group,ready,held,expected,{releaseTargets:group.slug==='billlie'?product.billlieEventReleases:{},recordReturnTo,anchoredLinkCount});
   }
   // These home pages also retain a separate approved navigation door.
   const doorClass={katseye:'ke-timeline-entry',hearts2hearts:'h2h-history-entry'}[group.slug];

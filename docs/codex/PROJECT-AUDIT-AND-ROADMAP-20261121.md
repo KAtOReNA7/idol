@@ -4,6 +4,8 @@
 
 ## 本轮已交付与接续顺序
 
+v244 两团十张成员照、三团首页和《RIZZ》舞台整体评分已上线。下批先清理已选舞台筛选却进入 MV 评分的卡片，再交付 izna 的 11 月 29 日 KBS 舞台直达，以及 ADYA 目录仍在加载时的首次点击。访客目录提速按全目录、51 个团与 614 个作品的现有快照逐字段对照。[v244 正式站](worklogs/20261122-v244-release.md) · [izna 的 Figma 与 KBS 原件](worklogs/20261122-izna-kbs-stage.md)
+
 v243 的两团作品成员照、三团首页字体、目录和本人评分表单已上线。下一批将 YOUNG POSSE 首发拍摄照统一到五人，修正 ADYA《RIZZ》舞台筛选的评分对象，并让 QWER、PURPLE KISS 和 ILLIT 的访客在目录尚未返回时即可看团照和进入作品或成员栏目。[v243 正式验收](worklogs/20261122-v243-release.md) · [YOUNG POSSE 发行专访与图源](worklogs/20261122-youngposse-macaroni-sources.md)
 
 v242 已交付 WOOAH、RESCENE、QWER 三组作品照片与舞台设计，修正 13 团时间轴的额外请求及 tripleS 首页团照的起载顺序。v243 优先按实际出镜阵容处理 VVUP、BEWAVE 的出道期作品，并精简三个目录及页尾。之后按逐团清单补仍缺作品或评分设计的内页。已能观看的《BILLIONAIRE》沿用既有实播结果。[正式结果](worklogs/20261122-v242-release.md) · [按类别列出的设计缺口](worklogs/20261122-group-design-coverage.md)

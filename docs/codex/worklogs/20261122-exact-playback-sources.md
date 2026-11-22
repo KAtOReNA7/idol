@@ -36,3 +36,7 @@ v218 的同版 RUTUBE 投稿曾静音解码 1920 × 884，进度由 0.151370 秒
 ### Lucid Colour 作品版本核对
 
 Lucid Colour 官网按《BILLIONAIRE》检索仅有《BABYMONSTER – BILLIONAIRE PERFORMANCE VIDEO》一项。作品发布于 2025 年 2 月 14 日，页面引用 Vimeo `1056681107`。官网封面上七位成员身穿黑衣，站在白色摄影棚内，与 YG 当日发布的舞蹈版说明一致。YG 的 2 月 7 日首发公告记载了黑、白、红造型和挥裙动作。[调色方作品页](https://lucid-colour.com/vimeo-video/2025%eb%85%84-02%ec%9b%94-babymonster-billionaire-performance-video/) · [官网发布日期](https://lucid-colour.com/wp-json/wp/v2/vimeo-video/42702) · [官网封面](https://lucid-colour.com/wp-content/uploads/2025/05/vimeo-video2025-02-babymonster-billionaire-performance-video-vimeo-thumbnail.jpg) · [YG 2 月 14 日舞蹈版](https://www.ygfamily.com/en/news/report/6731) · [YG 2 月 7 日首发版](https://www.ygfamily.com/en/news/report/6726)
+
+### 区域发行目录
+
+YG 中文与英文《DRIP》目录将《BILLIONAIRE》列为第五首，页面嵌入的是主打歌《DRIP》。日本 OTOTOY 的专辑播放器收录 2 分 37 秒的 FLAC 音轨，JOOX 泰国站也将其列为 2024 年 11 月发行的歌曲。这三处都没有提供可接入本站的 2 月 7 日首发演出版。此次公开检索也没有找到可核实为 YG 发布该完整影片的抖音、腾讯视频或网易云条目。[YG 发行目录](https://ygfamily.com/cn/artists/babymonster/discography/1615) · [OTOTOY](https://ototoy.jp/_/default/p/2409908) · [JOOX](https://www.joox.com/th/single/OfgSEEoo1kgrqxM%2B769m1A%3D%3D)

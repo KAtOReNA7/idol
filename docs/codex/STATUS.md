@@ -2,11 +2,13 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v224。舞台页首现在显示当前视频的类型与发布日期，五支作品双宽正式实测 20/20。《Magnetic》《ATTITUDE》站内 4K，《BILLIONAIRE》首发版仍拒播。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [正式验收](worklogs/20261122-v224-release.md) |
+| 正式站 | v225。51 团各走一张首页代表卡，含播放器的 49 条路径首轮走通 48 条，重进后 49 条均可达。《BILLIONAIRE》首发版仍拒播，两首对照 MV 正式站 4K。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [本批回执](worklogs/20261122-v225-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v224 正式应用提交 `05e8060b`。[发布回执](evidence/20261122-v224/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，v225 正式应用提交 `9a82573d`。[发布回执](evidence/20261122-v225/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v225 普通目录读取遇到可识别的瞬断时补读一次。隔离 D1 同五个入口首次均成功恢复。51 团正式首页代表卡中 49 条有站内播放按钮，首次抵达并返回从 42/49 到 48/49。Hearts2Hearts 首次仍显示读取失败，18 次定向复走均得到正常目录。正式采样未捕获补读标记，暂不能将首轮差值归因于该改动。[逐团实测与剩余 502](worklogs/20261122-v225-release.md)
 
 v224 修正 605 项作品切换舞台后的页首，公开目录同条件渲染从 0/605 到 605/605，MV 保持 605/605。正式站另验 5 项作品的 30 次页面状态。三团 12 次点卡测速中，Cherry Bullet 的 4 次为 1405–1630 ms，先前较慢的两次没有稳定复现。四场电视舞台仍无站内高清入口。[正式验收与待解决项](worklogs/20261122-v224-release.md)
 

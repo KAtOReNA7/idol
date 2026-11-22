@@ -4,13 +4,13 @@
 
 ## 本轮已交付与接续顺序
 
-正式 v224 已上线。舞台页首随当前视频显示版本与日期，50 个有作品团的 605 项舞台状态已核对。下一批观看优先级仍是《BILLIONAIRE》2 月 7 日首发演出版与四场指定电视舞台。AtHeart、HITGS、VCHA 的桌面短目录首次加载重排保留为体验讨论。[v224 正式验收](worklogs/20261122-v224-release.md) · [三团短目录](20261122-USABILITY-DISCUSSION.md)
+正式 v225 已上线。51 个团页的代表作品均已点过，49 条有站内播放按钮的路径在重进后全部可达。Hearts2Hearts 的首页第一次出现目录连接失败。继续优先查《BILLIONAIRE》首发版本及四场指定电视舞台的高清来源，并定位剩余 502 的真实失败环节。[v225 正式验收](worklogs/20261122-v225-release.md) · [v224 舞台标题](worklogs/20261122-v224-release.md)
 
 | 顺序 | 已在正式站验证 | 接下来按什么条件推进 |
 |---|---|---|
-| 1. 站内观看 | v224《BILLIONAIRE》上游仍拒播，Lucid Colour 的公开条目已核实为后发舞蹈版。《Magnetic》《ATTITUDE》静音解码 3,840 × 2,160。四场 B 站独占舞台 v224 正式复验，站内高清 0/4。 | 优先找《BILLIONAIRE》首发演出版可在本站播放的完整同剪辑。四场舞台按原场次、分 P、区间核节目方同场高清。NewJeans《ETA》《Attention》和 ADYA《Per》继续按既有记录查同剪辑。正式站以实际进度、解码尺寸和可读码率验收。[三支实播](evidence/20261122-v224/formal-mv-playback.json) · [四场正式页](evidence/20261122-v224/formal-exclusive-stages.json) · [其他三支](worklogs/20261122-additional-mv-playback.md) |
+| 1. 站内观看 | v225《BILLIONAIRE》上游仍拒播，Lucid Colour 的公开条目已核实为后发舞蹈版。《Magnetic》《ATTITUDE》静音解码 3,840 × 2,160。四场 B 站独占舞台 v225 正式复验，站内高清 0/4。 | 优先找《BILLIONAIRE》首发演出版可在本站播放的完整同剪辑。四场舞台按原场次、分 P、区间核节目方同场高清。NewJeans《ETA》《Attention》和 ADYA《Per》继续按既有记录查同剪辑。正式站以实际进度、解码尺寸和可读码率验收。[三支实播](evidence/20261122-v225/formal-mv-playback.json) · [四场正式页](evidence/20261122-v225/formal-exclusive-stages.json) · [其他三支](worklogs/20261122-additional-mv-playback.md) |
 | 2. 成员目录 | v223 首点 WONYOUNG 为 3/3。十团 40/40 返回并恢复焦点。三个短目录使用桌面资料页返回时，首次加载后的滚动条变化让原卡下移 21–42 px。等资料读入再测同三团，两种返回合计 6/6 坐标完全相同。 | 是否为三个桌面短目录预留稳定宽度，或让初始卡片按最终尺寸排版，留待体验讨论。修改时沿用十团首次打开、两种宽度和两种返回的同一实测流程。[十团逐卡返回](evidence/20261122-v223/formal-member-return.json) · [首次点击](evidence/20261122-v223/formal-izone-first-click.json) · [设计取舍](20261122-USABILITY-DISCUSSION.md) |
-| 3. 团页到作品的等待 | v220 至 v222，登录态三轮点卡到播放按钮的中位数分别为 IVE 快 938 ms、ADYA 快 18 ms、Cherry Bullet 慢 487 ms。隔离 D1 的同一作品，首次目录查询从 9 次降为 7 次，缓存命中从 5 次降为 3 次。 | v223 同条件另做 12 次，Cherry Bullet 的四次为 1405–1630 ms。三团的目录和身份请求起点相差 0–1 ms，暂时沿用现有加载策略。若后续再现长等待，按文档、客户端启动和接口首字节读数定位。[12 次分段读数](evidence/20261122-v224/v223-work-wait.json) · [正式逐次读数](evidence/20261122-v222/formal-work-wait.json) · [隔离数据库](evidence/20261122-v222/owner-catalog-queries.json) |
+| 3. 团页到作品的等待 | v224 和 v225 正式站已从 51 个团页各点一张代表卡。49 条通往播放器的路径首轮从 42/49 到 48/49，2 张其他剪辑的卡只有原片出处。隔离的 5 个首次断线入口从 0/5 恢复到 5/5。 | 优先定位 Hearts2Hearts 首次读取失败及其余正式 502，只对能辨明的可恢复读取调整。保留成功请求的单次读取、原有鉴权和评分绑定。下轮采失败请求的公开错误类别与对应调用，不收集成功请求的私人正文。[本批访问对照](worklogs/20261122-v225-release.md) · [三团历史分段](evidence/20261122-v224/v223-work-wait.json) |
 | 4. 团页设计与成员照片 | 正式站 51 团首屏视觉检查及 100 个入口两档宽度的分类顺序检查已完成。IVE 使用 2022 年官网标志和《LOVE DIVE》时期学院造型。NewJeans《Attention》五位成员的出道同期照已逐人点开。 | 另八支 MV 的 63 个卡位已在正式站手机和桌面逐一核对原图、照片下评分和回焦。原有 194 个跨期位置中已更换 48 个，余 146 个按具名单人来源逐项接续。仅有团图、未能逐人对应的卡位继续保留时期说明。[八支作品实测](worklogs/20261122-v216-release.md) · [51 团首屏](worklogs/20261122-formal-home-design.md) · [双尺寸模块顺序](worklogs/20261122-group-interaction-followup.md) · [五人同期照片](worklogs/20261122-v214-release.md) |
 
 v218 已横查 51 个团体首页。28 团原有的 30 个团照放大入口，在团照刚出现时逐一实点，30 次均能打开准确原件，页面就绪后的 30 次弹窗也均能按 Esc 回到原处。正式 v218 还复验了以上三首 MV 的短播。剩余观看问题集中在四场独占舞台和扩测的三支 MV。[最新发布与三首实播](worklogs/20261122-v218-release.md) · [待解决片源](worklogs/20261122-additional-mv-playback.md)

@@ -1,0 +1,296 @@
+{
+  "applicationCommit": "9a82573d3325d2a28f3b494589ebd4e2d29e3e1b",
+  "baselineApplicationCommit": "05e8060bee4faf769c1f04bddbc1e6840cd4c016",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {
+        "tests": 4136,
+        "pass": 3962,
+        "fail": 135,
+        "skipped": 39,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "full": {
+        "log": {
+          "name": "full-win.tap",
+          "bytes": 2034910
+        },
+        "nodeSuites": {
+          "main": {
+            "tests": 4106,
+            "pass": 3932,
+            "fail": 135,
+            "cancelled": 0,
+            "skipped": 39,
+            "todo": 0
+          },
+          "isolatedArtistRuntime": {
+            "tests": 9,
+            "pass": 9,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "personalInsights": {
+            "tests": 31,
+            "pass": 31,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "nodeTotal": {
+          "tests": 4146,
+          "pass": 3972,
+          "fail": 135,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "pythonPassedByMode": {
+          "default": 4,
+          "optimized": 4
+        },
+        "exitCode": 1
+      },
+      "retainedFailureCount": 135,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "a second failed read returns its own error and exposes no partial catalog",
+        "auth, explicit refresh, the durable fallback and aborted navigation never repeat a failed operation",
+        "business errors, overload, invalid data and opt-out signals return after one native read",
+        "ordinary artist, work and library GETs recover one interrupted read with the original scope and identity",
+        "owner / aespa",
+        "owner / izna / original shape",
+        "owner / library",
+        "owner / work",
+        "visitor / illit",
+        "visitor / work"
+      ],
+      "removedTests": [],
+      "verify": {
+        "log": {
+          "name": "verify-win.log",
+          "bytes": 232009
+        },
+        "nodeSuites": {
+          "current": {
+            "tests": 1252,
+            "pass": 1252,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "optimizedPythonPreflight": {
+            "tests": 19,
+            "pass": 19,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "builtAssets": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "typecheck": "passed",
+        "productionBuild": "passed",
+        "pythonPasses": {
+          "batch": 4,
+          "optimizedBatch": 4,
+          "builtCssHttp": 7
+        },
+        "stageValidation": {
+          "inventory": 614,
+          "sources": 527,
+          "valid": true
+        },
+        "supplementValidation": {
+          "works": 137,
+          "alternatives": 88,
+          "reviews": 70,
+          "runtimeAlternatives": 50,
+          "scoreBindings": 0
+        },
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "publicRef": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+          "recognitionRef": "c953afa5a3829737dc6bfacd62439a524fe03df9",
+          "releasePortraitRef": "59e5d54969f46f43f7004c79667b524f549342b4",
+          "remoteCopies": 5995,
+          "remoteBytes": 3958966888,
+          "restrictedCopies": 10,
+          "restrictedAliases": 1,
+          "localAssets": 586,
+          "localBytes": 16905055
+        },
+        "cssFixture": {
+          "themes": 50,
+          "fontFiles": 105,
+          "fontPaths": 68,
+          "bundleBytes": 1210962
+        },
+        "exitCode": 0
+      }
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {
+        "tests": 4136,
+        "pass": 3966,
+        "fail": 131,
+        "skipped": 39,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "full": {
+        "log": {
+          "name": "full-linux.tap",
+          "bytes": 2055274
+        },
+        "nodeSuites": {
+          "main": {
+            "tests": 4106,
+            "pass": 3936,
+            "fail": 131,
+            "cancelled": 0,
+            "skipped": 39,
+            "todo": 0
+          },
+          "isolatedArtistRuntime": {
+            "tests": 9,
+            "pass": 9,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "personalInsights": {
+            "tests": 31,
+            "pass": 31,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "nodeTotal": {
+          "tests": 4146,
+          "pass": 3976,
+          "fail": 131,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "pythonPassedByMode": {
+          "default": 4,
+          "optimized": 4
+        },
+        "exitCode": 1
+      },
+      "retainedFailureCount": 131,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "a second failed read returns its own error and exposes no partial catalog",
+        "auth, explicit refresh, the durable fallback and aborted navigation never repeat a failed operation",
+        "business errors, overload, invalid data and opt-out signals return after one native read",
+        "ordinary artist, work and library GETs recover one interrupted read with the original scope and identity",
+        "owner / aespa",
+        "owner / izna / original shape",
+        "owner / library",
+        "owner / work",
+        "visitor / illit",
+        "visitor / work"
+      ],
+      "removedTests": [],
+      "verify": {
+        "log": {
+          "name": "verify-linux.log",
+          "bytes": 234275
+        },
+        "nodeSuites": {
+          "current": {
+            "tests": 1252,
+            "pass": 1252,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "optimizedPythonPreflight": {
+            "tests": 19,
+            "pass": 19,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "builtAssets": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "typecheck": "passed",
+        "productionBuild": "passed",
+        "pythonPasses": {
+          "batch": 4,
+          "optimizedBatch": 4,
+          "builtCssHttp": 7
+        },
+        "stageValidation": {
+          "inventory": 614,
+          "sources": 527,
+          "valid": true
+        },
+        "supplementValidation": {
+          "works": 137,
+          "alternatives": 88,
+          "reviews": 70,
+          "runtimeAlternatives": 50,
+          "scoreBindings": 0
+        },
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "publicRef": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+          "recognitionRef": "c953afa5a3829737dc6bfacd62439a524fe03df9",
+          "releasePortraitRef": "59e5d54969f46f43f7004c79667b524f549342b4",
+          "remoteCopies": 5995,
+          "remoteBytes": 3958966888,
+          "restrictedCopies": 10,
+          "restrictedAliases": 1,
+          "localAssets": 586,
+          "localBytes": 16905055
+        },
+        "cssFixture": {
+          "themes": 50,
+          "fontFiles": 105,
+          "fontPaths": 68,
+          "bundleBytes": 1210962
+        },
+        "exitCode": 0
+      }
+    }
+  }
+}

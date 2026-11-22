@@ -162,3 +162,8 @@
 @media (max-width: 600px) {
  [data-bw-native] .video-card { align-items: flex-start; flex-direction: column; gap: 10px; }
 }
+
+[data-bw-native] .bw-member-era { color:var(--muted); font-size:14px; }
+[data-bw-native] .bw-photo-original { display:inline-flex; align-items:center; min-height:44px; font-weight:600; }
+[data-bw-native] .personal-photo .photo-source-disclosure { --photo-source-line:var(--line); }
+[data-bw-native] .personal-photo .photo-source-body p { color:var(--muted); }

@@ -50,7 +50,7 @@ export default function WeeeklyDesign({content,useHomePreviews=false}:{content:C
  const location=useSyncExternalStore(subscribe,()=>window.location.href,()=>host.serverRoute??base),params=new URL(location,'https://site.invalid').searchParams,section=params.get('section')??'overview',query=(params.get('q')??'').slice(0,200),returnTo=safeArtistReturn(base+new URL(location,'https://site.invalid').search)??base;
  const person=data.members.find(p=>p.id===params.get('member')),release=data.releases.find(r=>r.id===params.get('release')),active=person?'members':release?'records':section;
  const [lightbox,setLightbox]=useState<{src:string;label:string}|null>(null),remember=useArtistScroll(!!catalog||section==='members',location);
- const original=(item:{image:string},label:string)=><button className="wk-link" type="button" onClick={()=>setLightbox({src:item.image,label:label+' · 原图'})}>查看原图 <Arrow external/></button>;
+ const original=(item:{image:string},label:string)=><OriginalPhotoLink className="wk-link" href={item.image} aria-label={'查看'+label+'原图'} onOpen={src=>setLightbox({src,label:label+' · 原图'})}>查看原图 <Arrow external/></OriginalPhotoLink>;
  const match=(s:string)=>s.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),findWork=(id:string)=>catalog?.works.find(w=>w.id===id&&w.groupIds.includes(groupId));
  const related=person?catalog?.works.filter(w=>w.groupIds.includes(groupId)&&catalog.ratings.some(r=>r.memberIds.length===1&&r.memberIds[0]===person.id&&r.workIds.length===1&&r.workIds[0]===w.id))??[]:[];
  const queue=['tonight','rewatch','unrated'].includes(params.get('queue')??'')?params.get('queue')!:'all',format=['mv','stage'].includes(params.get('format')??'')?params.get('format')!:'all';

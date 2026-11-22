@@ -52,7 +52,7 @@ function Picture({asset,alt,credit,priority=false,portrait=false,homeGroup=false
  const setLightbox=useContext(PhotoContext);
  const openOriginal=()=>setLightbox({src:asset.runtime,label:alt});
  const action={'aria-label':`查看${alt}原图`,className:'wa-image-open',children:'查看原图 ↗'};
- const original=homeGroup?<OriginalPhotoLink {...action} href={asset.runtime} onOpen={openOriginal}/>:<button {...action} type="button" aria-haspopup="dialog" onClick={openOriginal}/>;
+ const original=<OriginalPhotoLink {...action} href={asset.runtime} onOpen={openOriginal}/>;
  const image=<ReliableImage src={homeGroup?design.groupPreview:asset.runtime} alt={alt} identityKey={asset.sha256} width={asset.width} height={asset.height} priority={priority} data-wa-image="true" style={{maxWidth:`min(100%, ${asset.width}px)`,height:'auto'}} errorFallback={<p>图片暂时无法加载，未使用其他照片替代。</p>}/>;
  return <figure className="wa-media" data-asset-sha256={asset.sha256} style={{'--wa-image-limit':`${asset.width}px`} as CSSProperties}><div className="wa-media-surface">{portrait?<div className="wa-portrait-frame">{image}</div>:image}{original}</div>{credit&&<figcaption>{credit}</figcaption>}</figure>;
 }

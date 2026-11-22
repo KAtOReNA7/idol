@@ -64,3 +64,32 @@ for (const [slug, publisher] of memberPhotoSources) {
     }
   });
 }
+
+test('BEWAVE keeps its six historical members identifiable and the original interview photos available on first activation', async () => {
+  const group = registry.find(row => row.slug === 'bewave');
+  const catalog = artistCatalog(group);
+  const {members} = require('../data/bewave-native-design.json');
+  const {portraits} = require('../data/bewave-artist.json');
+  const {bewaveOriginalPhoto} = require('./helpers/public-artist-loader.cjs')('lib/idol/bewave-photos.ts');
+  for (const member of members) {
+    const page = parse(await renderArtist(group, {section:'members', member:member.id}, catalog));
+    const portrait = portraits[member.id];
+    const identity = page.querySelector('[data-member-module="identity"]');
+    const source = identity.querySelector('details');
+    assert.equal(page.querySelector('h1').text, member.cnName);
+    assert.match(page.querySelector('header.identity').text, /2024 年六人阵容/);
+    assert.equal(identity.getAttribute('data-member-id'), member.id);
+    assert.equal(identity.querySelector('img').getAttribute('src'), portrait.image);
+    const originals = identity.querySelectorAll('a[data-original-photo]');
+    assert.equal(originals.length, 2);
+    assert.ok(originals.every(link => link.getAttribute('href') === bewaveOriginalPhoto(portrait.image)));
+    assert.equal(source.querySelector('summary').text, '照片出处');
+    assert.equal(source.hasAttribute('open'), false);
+    assert.match(source.text, /Edaily.*2024 年 6 月 7 日/);
+    assert.equal(source.querySelector('a').getAttribute('href'), portrait.sourceUrl);
+    assert.ok(identity.querySelector('[data-member-module="basic"]').text.includes(member.nationality));
+    source.remove();
+    assert.doesNotMatch(identity.text, /采访|具名/);
+    assert.doesNotMatch(page.text, /更多参与资料持续补充/);
+  }
+});

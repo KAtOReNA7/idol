@@ -6,6 +6,7 @@ const earlyPhotoScript = `(() => {
   Object.defineProperty(window, registration, {value:true});
   function view(dialog) {
     const image = dialog.querySelector('img');
+    const caption = dialog.querySelector('figcaption');
     const error = dialog.querySelector('[role="status"]');
     const close = dialog.querySelector('[data-close]');
     let trigger;
@@ -26,8 +27,9 @@ const earlyPhotoScript = `(() => {
     return link => {
       trigger = link;
       trigger.focus({preventScroll:true});
-      const label = link.querySelector('img')?.alt || link.getAttribute('aria-label') || '团体原图';
+      const label = link.querySelector('img')?.alt || link.getAttribute('aria-label') || '原图';
       image.alt = label;
+      caption.textContent = label;
       error.hidden = true;
       image.hidden = false;
       image.src = link.href;
@@ -68,7 +70,7 @@ export function EarlyOriginalPhotoDialog() {
       <figure>
         <img alt="" decoding="async" suppressHydrationWarning/>
         <p role="status" className="photo-lightbox-error" hidden suppressHydrationWarning><span>图片暂时打不开。</span><button className="photo-lightbox-retry" type="button">重试图片</button></p>
-        <figcaption id="artist-early-photo-caption">团体原图</figcaption>
+        <figcaption id="artist-early-photo-caption" suppressHydrationWarning>原图</figcaption>
       </figure>
     </dialog>
     <script dangerouslySetInnerHTML={{__html: earlyPhotoScript}}/>

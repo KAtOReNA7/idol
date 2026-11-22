@@ -2,6 +2,7 @@
 import {artistFilmAction,ArtistFilmPrimary,ArtistFilmSource} from './artist-film-action';
 import {ArtistLibraryFilters} from './artist-library-filters';
 import {libraryCounts, libraryResultLabel} from '@/lib/idol/artist-library-format';
+import {PhotoSourceDisclosure} from './photo-source-disclosure';
 import {OriginalPhotoLink} from './original-photo-link';
 import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {publicCustomArtistText} from '@/lib/idol/custom-artist-copy';
@@ -84,11 +85,31 @@ export default function BewaveArtist({content,initialSearch=''}:{content:Candida
  const selectedMember=design.members.find(m=>m.id===route.member);
  const selectedRelease=design.releases.find(r=>r.key===params.get('release'));
  const selectedVideo=films.find(v=>v.key===params.get('media')&&v.type.toLowerCase()===route.format);
- function person(m:Person){const related=design.releases.filter(r=>(r.memberIds as string[]).includes(m.id));const nativeMember=collection?.members.find(row=>row.id===m.id);const items=state.data&&nativeMember?memberWorks(state.data,m.id):[];const next=design.members[(design.members.indexOf(m)+1)%design.members.length];return <><Link className="back" to={href({member:null})}>← 返回成员</Link><header className="identity"><h1>{m.cnName}</h1></header><div className="personal-spread" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><div className="personal-photo"><span className="member-index">{String(design.members.indexOf(m)+1).padStart(2,'0')}</span><button className="photo-open" aria-label={`放大${m.cnName}资料照`} onClick={()=>setLightbox({src:originalPhoto(content.portraits[m.id].image),label:m.cnName+' · 采访资料照'})}><Picture src={content.portraits[m.id].image} alt={`${m.cnName} 采访资料照`} className="portrait" priority/></button></div><div className="bio" data-member-module="basic"><h2>{m.stageName.toUpperCase()}</h2><p className="profile-summary">{m.profile}</p><dl>{m.role&&<div><dt>定位</dt><dd>{m.role}</dd></div>}{m.birthDate&&<div><dt>生日</dt><dd>{m.birthDate}</dd></div>}<div><dt>国籍</dt><dd>{m.nationality}</dd></div></dl></div></div>{items.length>0&&<section className="member-related" data-member-module="works">{sectionHead('认人参考与作品评分')}<p className="availability">已收录的成员作品；更多参与资料持续补充。</p><div className="videos-list">{items.map(item=><article className="video-row" key={item.work.id}><div className="video-copy"><a data-member-work-trigger={item.work.id} href={artistWorkUrl(item.work,false,safeArtistReturn(url)??path)}><h3>{item.work.song||item.work.name} ↗</h3></a><p>表现 {score(item.performance)} · 造型 {score(item.styling)}</p></div><MemberWorkPhotoButton work={item.work} memberId={m.id} label={m.cnName+' · '+item.work.song} photo={item.photo} live={state.data?.mode==='live'} className="button" onOpen={setLightbox}/></article>)}</div></section>}
+ function person(m:Person){const related=design.releases.filter(r=>(r.memberIds as string[]).includes(m.id));const nativeMember=collection?.members.find(row=>row.id===m.id);const items=state.data&&nativeMember?memberWorks(state.data,m.id):[];const next=design.members[(design.members.indexOf(m)+1)%design.members.length];const portrait=content.portraits[m.id], original=originalPhoto(portrait.image);
+ const openPortrait=(src:string)=>setLightbox({src,label:m.cnName+' · 采访资料照'});
+ return <><Link className="back" to={href({member:null})}>← 返回成员</Link>
+  <header className="identity"><h1>{m.cnName}</h1>{m.roster==='historical'&&<p className="bw-member-era">2024 年六人阵容</p>}</header>
+  <div className="personal-spread" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity">
+    <div className="personal-photo">
+      <OriginalPhotoLink className="photo-open" aria-label={'放大'+m.cnName+'资料照'} href={original} onOpen={openPortrait}>
+        <Picture src={portrait.image} alt={m.cnName+' 采访资料照'} className="portrait" priority/>
+      </OriginalPhotoLink>
+      <OriginalPhotoLink className="bw-photo-original" href={original} aria-label={'查看'+m.cnName+'原图'} onOpen={openPortrait}>查看原图 ↗</OriginalPhotoLink>
+      <PhotoSourceDisclosure>
+        <p>Edaily 于 2024 年 6 月 7 日刊登的具名采访照。</p>
+        <a href={portrait.sourceUrl} target="_blank" rel="noopener noreferrer">Edaily 采访原文 ↗</a>
+      </PhotoSourceDisclosure>
+    </div>
+    <div className="bio" data-member-module="basic">
+      <h2>{m.stageName.toUpperCase()}</h2>
+      {m.profile&&<p className="profile-summary">{m.profile}</p>}
+      <dl>{m.role&&<div><dt>定位</dt><dd>{m.role}</dd></div>}{m.birthDate&&<div><dt>生日</dt><dd>{m.birthDate}</dd></div>}<div><dt>国籍</dt><dd>{m.nationality}</dd></div></dl>
+    </div>
+  </div>{items.length>0&&<section className="member-related" data-member-module="works">{sectionHead('认人参考与作品评分')}<div className="videos-list">{items.map(item=><article className="video-row" key={item.work.id}><div className="video-copy"><a data-member-work-trigger={item.work.id} href={artistWorkUrl(item.work,false,safeArtistReturn(url)??path)}><h3>{item.work.song||item.work.name} ↗</h3></a><p>表现 {score(item.performance)} · 造型 {score(item.styling)}</p></div><MemberWorkPhotoButton work={item.work} memberId={m.id} label={m.cnName+' · '+item.work.song} photo={item.photo} live={state.data?.mode==='live'} className="button" onOpen={setLightbox}/></article>)}</div></section>}
 {related.length>0&&<section className="member-related">{sectionHead('参与发行')}<div className="records-grid">{related.map(releaseCard)}</div></section>}
 {state.data&&<MemberPublicCredits memberId={m.id} data={state.data} renderLink={(work,label)=><a href={artistWorkUrl(work,false,safeArtistReturn(url)??path)}>{label}</a>}/>}
 <ScopedMemberCareerFacts data={state.data} memberId={m.id} groupId="rec28ldfRTiDh1" part="history"/>
-<section className="member-profile-sources" data-member-module="sources"><a className="image-source" href={content.portraits[m.id].sourceUrl??undefined} target="_blank" rel="noopener noreferrer">Edaily 采访与照片来源 ↗</a>{nativeMember&&<a className="image-source" href={artistMemberUrl(m.id,safeArtistReturn(url)??path)} onClick={()=>remember()}>个人档案与记录 ↗</a>}</section>
+{nativeMember&&<section className="member-profile-sources" data-member-module="sources"><a className="image-source" href={artistMemberUrl(m.id,safeArtistReturn(url)??path)} onClick={()=>remember()}>个人档案与记录 ↗</a></section>}
 <ScopedMemberCareerFacts data={state.data} memberId={m.id} groupId="rec28ldfRTiDh1" part="sources"/>
 <div className="person-next"><Link to={personHref(next.id)}>下一位：{next.cnName} ↗</Link></div>
 </>;}

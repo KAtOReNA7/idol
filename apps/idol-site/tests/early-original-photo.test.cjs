@@ -49,7 +49,7 @@ test('an unhydrated artist photo opens inside the page, retries and returns focu
     assert.equal(focus,close);
     assert.equal(img.src,link.href);
     assert.equal(img.alt,'五人团照');
-    assert.match(html, /<figcaption[^>]+>团体原图<\/figcaption>/);
+    assert.equal(controls.figcaption.textContent,'五人团照');
     img.fire('error');
     assert.equal(error.hidden,false);
     assert.equal(img.hidden,true);
@@ -60,6 +60,16 @@ test('an unhydrated artist photo opens inside the page, retries and returns focu
     assert.equal(focus,link);
     assert.ok(!dialog.open);
   }
+  const memberLink = {
+    ...link, href:'/artist/bewave/member.original.jpg', querySelector:() => null,
+    getAttribute:name => name === 'aria-label' ? '查看允瑟原图' : null,
+  };
+  click('click',{target:{closest:() => memberLink}});
+  assert.equal(img.src, memberLink.href);
+  assert.equal(img.alt, '查看允瑟原图');
+  assert.equal(controls.figcaption.textContent, '查看允瑟原图');
+  close.fire('click');
+  assert.equal(focus, memberLink);
   assert.equal(click('click',{target:{closest:() => null}}).defaultPrevented,undefined);
 
   // Hydration attaches the existing artist's own lightbox to the same link.

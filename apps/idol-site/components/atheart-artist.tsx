@@ -119,7 +119,7 @@ export default function AtheartArtist(){
     <OriginalPhotoLink href={member.image} aria-label={'查看'+member.cnName+'原图'} onOpen={src=>showImage(src,member.cnName+' · '+member.stageName+' 肖像')}>
       <Picture src={member.displayImage} label={member.cnName+' '+member.stageName} priority/>
     </OriginalPhotoLink>
-  </figure><div data-member-module="basic"><span className="ah-index">{String(editorial.members.indexOf(member)+1).padStart(2,'0')} / 07</span><h1>{member.stageName}<span>{member.cnName}</span></h1>{member.profile&&<p>{member.profile}</p>}<dl><div><dt>出生日期</dt><dd>{member.birthDate||'未收录'}</dd></div></dl><button className="ah-button" onClick={()=>showImage(member.image,member.cnName+' · '+member.stageName+' 肖像')}>查看原图 ↗</button>{data?.members.some(m=>m.id===member.id)&&<a className="ah-button" href={artistMemberUrl(member.id,returnTo)}>个人档案与手帐 ↗</a>}
+  </figure><div data-member-module="basic"><span className="ah-index">{String(editorial.members.indexOf(member)+1).padStart(2,'0')} / 07</span><h1>{member.stageName}<span>{member.cnName}</span></h1>{member.profile&&<p>{member.profile}</p>}<dl><div><dt>出生日期</dt><dd>{member.birthDate||'未收录'}</dd></div></dl><OriginalPhotoLink className="ah-button" href={member.image} aria-label={'查看'+member.cnName+'原图'} onOpen={src=>showImage(src,member.cnName+' · '+member.stageName+' 肖像')}>查看原图 ↗</OriginalPhotoLink>{data?.members.some(m=>m.id===member.id)&&<a className="ah-button" href={artistMemberUrl(member.id,returnTo)}>个人档案与手帐 ↗</a>}
       <PhotoSourceDisclosure>
         <p>AtHeart 日本官网成员资料中的 {member.stageName} 肖像。拍摄日期未注明。</p>
         <a href={member.portraitSourceUrl} target="_blank" rel="noopener noreferrer">AtHeart 日本官网 ↗</a>

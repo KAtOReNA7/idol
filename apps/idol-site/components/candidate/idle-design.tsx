@@ -69,7 +69,7 @@ export default function IdleDesign({content}:{content:CandidateContent}){
  const section=params.get('section')??'overview',query=params.get('q')??'';
  const remember=useArtistScroll(!!catalog||section==='members',location);
  const match=(text:string)=>text.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase());
- const imageAction=(id:string)=>{const a=assets[id],original=(originalImages as Record<string,string>)[id];return a&&<button className="idv-button" type="button" onClick={()=>setLightbox({src:original||a.src,label:a.alt+(original?' · 原图':' · 已收录图片')})}>{original?'查看原图':'查看图片'}</button>;};
+ const imageAction=(id:string)=>{const a=assets[id],original=(originalImages as Record<string,string>)[id];return a&&<OriginalPhotoLink className="idv-button" href={original||a.src} aria-label={'查看'+a.alt} onOpen={src=>setLightbox({src,label:a.alt+(original?' · 原图':' · 已收录图片')})}>{original?'查看原图':'查看图片'}</OriginalPhotoLink>;};
  const stage=publicData.media.find(m=>m.id==='idle-stage-kbs-music-bank-20220318-tomboy'&&m.id===params.get('media'));
  const stageRelease=stage?publicData.releases.find(r=>r.id===stage.releaseId):undefined;
  const person=publicData.members.find(m=>m.id===params.get('member'));

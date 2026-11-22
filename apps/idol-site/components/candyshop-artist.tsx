@@ -123,7 +123,7 @@ export default function CandyshopArtist({content,initialSearch=''}:{content:Cand
      <h1><span lang="en">{m.stageName.toUpperCase()}</span>{m.cnName}</h1>
      <dl>{m.birthDate&&<div><dt>生日</dt><dd>{m.birthDate}</dd></div>}{m.role&&<div><dt>定位</dt><dd>{m.role}</dd></div>}<div><dt>国籍</dt><dd>{m.country}</dd></div></dl>
      <p>{publicCustomArtistText(m.profile)}</p>
-     <div className="cs-actions"><button className="cs-button" onClick={()=>showPhoto(portrait.image,photoLabel)}>查看原图</button>
+     <div className="cs-actions"><OriginalPhotoLink className="cs-button" href={originalPhoto(portrait.image)} aria-label={'查看'+m.cnName+'原图'} onOpen={src=>setLightbox({src,label:photoLabel})}>查看原图</OriginalPhotoLink>
       {nativeMember&&<a className="cs-source" href={artistMemberUrl(m.id,safeArtistReturn(url)??path)} onClick={()=>remember()}>个人档案与记录 <Arrow/></a>}
      </div>
     </div>

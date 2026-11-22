@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto'),vm=require('node:vm'),esbuild=require('esbuild');
-const source=esbuild.buildSync({stdin:{contents:`export * from './lib/idol/izna-native'; export * from './lib/idol/izna-runtime/model.mjs';export {readIznaNavigationFocus,restoreIznaNavigationFocus} from './lib/idol/izna-runtime/host.mjs'; export {safeArtistReturn} from './lib/idol/artist-navigation';export {routeUrl} from './lib/idol/journey';export {projectCatalog} from './lib/idol/catalog';export {projectArtistCatalog} from './lib/idol/artist-catalog';`,resolveDir:process.cwd()},bundle:true,write:false,platform:'node',format:'cjs',external:['cloudflare:workers','server-only'],logLevel:'silent'}).outputFiles[0].text;
+const source=esbuild.buildSync({stdin:{contents:`export * from './lib/idol/izna-native'; export {createIznaModule} from './lib/idol/izna-runtime/izna.mjs'; export {createAstraRuntime} from './lib/idol/izna-runtime/runtime.mjs'; export * from './lib/idol/izna-runtime/model.mjs';export {readIznaNavigationFocus,restoreIznaNavigationFocus} from './lib/idol/izna-runtime/host.mjs'; export {safeArtistReturn} from './lib/idol/artist-navigation';export {routeUrl} from './lib/idol/journey';export {projectCatalog} from './lib/idol/catalog';export {projectArtistCatalog} from './lib/idol/artist-catalog';`,resolveDir:process.cwd()},bundle:true,write:false,platform:'node',format:'cjs',external:['cloudflare:workers','server-only'],logLevel:'silent'}).outputFiles[0].text;
 const mod={exports:{}};vm.runInThisContext('(function(require,module,exports){'+source+'\n})')(name=>name==='cloudflare:workers'?{env:{}}:name==='server-only'?{}:require(name),mod,mod.exports);
 const api=mod.exports,design=api.design,snapshot=require('../data/snapshot.json');
 const actual=api.projectArtistCatalog(api.projectCatalog(snapshot.tables,'snapshot',snapshot.capturedAt),design.group.id),clone=()=>structuredClone(actual);
@@ -16,7 +16,7 @@ test('all 20 original assets retain exact bytes and strict group/size/digest res
  }
  assert.equal(assets.filter(a=>a.url.includes('/native-v3/')).length,12);
 });
-test('candidate source stays byte-exact outside the approved opening, public information, and original-asset metadata',()=>{
+test('candidate source stays byte-exact outside the approved home, roster, profile and asset changes',()=>{
  const base='../../handoffs/codex-20261022/astra-izna-ifeye-v3/source';
  const read=(file,current)=>fs.readFileSync(current?'lib/idol/izna-runtime/'+file:base+'/lib/idol/design-review/astra-izna-ifeye-runtime/'+file,'utf8');
  assert.equal(read('focus.mjs',true),read('focus.mjs',false));
@@ -55,7 +55,13 @@ test('candidate source stays byte-exact outside the approved opening, public inf
    }
   }
   if(current){const importLine="import {nativeMvImage,nativeMvCoverHtml} from '../native-mv-cover.mjs';\n";assert.ok(source.startsWith(importLine));source=source.replace(importLine,'');assert.ok(source.includes('image:displayAsset(nativeMvImage(row))'));source=source.replace('image:displayAsset(nativeMvImage(row))','image:displayAsset(row.image)');const coverLine='  const cover=nativeMvCoverHtml(asset,alt,kind,eager);if(cover)return cover;\n';assert.ok(source.includes(coverLine));source=source.replace(coverLine,'');}
-  if(current){const review=JSON.parse(fs.readFileSync('../../docs/codex/evidence/20261029-member-layout/native-movement.json')).find(r=>r.file.endsWith('/izna.mjs'));const start=source.indexOf(' function person('),end=source.indexOf('\n function ',start+1);assert.equal(crypto.createHash('sha256').update(source.slice(start,end)).digest('hex'),review.reviewedPersonSha256);source=source.slice(0,start)+review.previousPersonFunction+source.slice(end);}
+  // These three Figma-designed renderers are exercised with the full catalog below.
+  for(const name of ['member','members','person']){
+   const start=source.indexOf(' function '+name+'('),end=source.indexOf('\n function ',start+1);
+   assert.ok(start>=0 && end>start,name);
+   source=source.slice(0,start)+' APPROVED_'+name+source.slice(end);
+  }
+  source=source.replaceAll('map(m=>member(m,D.members.indexOf(m)))','map(member)');
   if(current){assert.ok(source.startsWith("import {renderGroupInformation} from '../group-information.mjs';\n"));source=source.replace("import {renderGroupInformation} from '../group-information.mjs';\n",'');assert.ok(source.includes('return {group,accounts:raw.publicAccounts??[],'));source=source.replace('return {group,accounts:raw.publicAccounts??[],','return {group,');}
   if(current){const helper=source.indexOf(' // The separate text control'),end=source.indexOf(' function home(){',helper);assert.ok(helper>0&&end>helper);source=source.slice(0,helper)+source.slice(end);}
   const hero=source.indexOf(current?'<section class="home-hero"':'<section class="night-hero"'),chapter=source.indexOf('<section class="chapter home-members">',hero);assert.ok(hero>0&&chapter>hero);
@@ -68,13 +74,46 @@ test('candidate source stays byte-exact outside the approved opening, public inf
  const oldCss=fs.readFileSync(base+'/public/design-review/astra/izna.css','utf8'),css=fs.readFileSync('public/artist/izna/native-v3/izna.css','utf8');
  assert.equal(css.slice(0,oldCss.length),oldCss);
  const addedCss=css.slice(oldCss.length).replace(/\/\*[\s\S]*?\*\//g,'').trim();assert.ok(addedCss);
- const otherApprovedSelectors=new Set(['','.izna-wordmark','.brand .izna-wordmark','.footer-name .izna-wordmark','.chapter-index','.chapter','.group-index-link']);
+ const otherApprovedSelectors=new Set(['.members-page','.personal','.members-page .page-heading','.members-page .page-heading h1','.personal .identity-heading h1','.members-page .search','.members-page .search input','.members-page .search button','.members-page .portrait-roll','.portrait-caption','.portrait-caption h3','.portrait-caption p','.portrait-caption>span','.members-page .historical-roster','.members-page .historical-roster .chapter-head','.personal .identity-spread','.personal .identity-heading','.personal .identity-heading p','.personal .identity-portrait','.illustrated-films','.illustrated-films .film>a','.illustrated-films .film-image','.illustrated-films h3','.illustrated-films .film-meta','.illustrated-films .film-meta>span','.illustrated-films .film-play','.personal .record-grid','','.izna-wordmark','.brand .izna-wordmark','.footer-name .izna-wordmark','.chapter-index','.chapter','.group-index-link']);
  for(const rule of addedCss.split('}').filter(rule=>rule.trim()))for(const selector of rule.split('{')[0].split(',')){
-  const match=selector.trim().match(/^\[data-astra-group="izna"\](?:\[data-astra-max-width~="767"\])?(.*)$/);
+  const match=selector.trim().match(/^\[data-astra-group="izna"\](?:\[data-astra-max-width~="(?:767|599)"\])?(.*)$/);
   assert.ok(match,selector);const inside=match[1].trim();
   assert.ok(inside.startsWith('.home-')||otherApprovedSelectors.has(inside),selector);
  }
 });
+test('Figma roster and profiles preserve search, portraits, exact credits and module order for all seven people',()=>{
+ const {mountAstra}=require('./helpers/timeline-production-renderers.cjs');
+ const {parse}=require('next/dist/compiled/node-html-parser');
+ const data=api.prepareIznaDisplayData(actual);
+ const render=hash=>parse(mountAstra(api,'izna',data,hash));
+ const roster=render('#/members');
+ assert.equal(roster.querySelectorAll('.portrait-entry').length,7);
+ assert.equal(roster.querySelectorAll('.historical-roster .portrait-entry').length,1);
+ assert.equal(roster.querySelectorAll('.portrait-top,.page-count').length,0);
+ for(const member of data.members){
+  const name=member.cnName||member.stageName;
+  const found=render('#/members?q='+encodeURIComponent(member.stageName.toLowerCase()));
+  assert.deepEqual(found.querySelectorAll('.portrait-entry h3').map(n=>n.text),[name]);
+  assert.ok(found.querySelector('.search a'));
+  assert.ok(found.querySelector('.portrait-entry a').getAttribute('href').includes(member.id));
+  const p=render('#/person/'+member.id),main=p.querySelector('main');
+  assert.equal(main.getAttribute('data-member-id'),member.id);
+  assert.equal(main.querySelector('h1').text,name);
+  assert.equal(main.querySelector('.identity-spread').childNodes.find(n=>n.nodeType===1).getAttribute('class'),'identity-portrait');
+  assert.deepEqual(main.querySelectorAll('.film').map(n=>n.getAttribute('data-video-key')).sort(),
+   data.works.filter(w=>w.memberIds?.includes(member.id)).map(w=>w.key).sort());
+  for(const [selector,key] of [['[data-member-release-roster]','memberIds'],['[data-member-release-promotion]','promotionalMemberIds']]){
+   assert.deepEqual(main.querySelectorAll(selector+' .record h3').map(n=>n.text),data.releases.filter(r=>r[key]?.includes(member.id)).map(r=>r.title));
+  }
+  const order=main.querySelectorAll('[data-member-module]').map(n=>n.getAttribute('data-member-module'));
+  const rank=['identity','basic','records','public','career','sources'];
+  assert.deepEqual(order,[...order].sort((a,b)=>rank.indexOf(a)-rank.indexOf(b)));
+  const chapters=main.querySelectorAll('.chapter h2').map(t=>t.text);
+  if(chapters.includes('参与影像')&&chapters.includes('发行成员'))assert.ok(chapters.indexOf('参与影像')<chapters.indexOf('发行成员'));
+ }
+ assert.equal(render('#/members?q=nomatch').querySelectorAll('.portrait-entry').length,0);
+});
+
 test('7 members and all 15 izna video slots preserve exact identity when two works share the BEEP stage',()=>{
  const before=JSON.stringify(actual);
  const originalId='rec28ldfRTrNoB', japaneseId='rec28ldfRTrNsK', videoId='ctfS0Rcq-gs';

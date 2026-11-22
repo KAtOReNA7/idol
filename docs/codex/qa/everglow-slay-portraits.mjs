@@ -171,7 +171,10 @@ export async function checkReleasePortraits(tab, evidence, {site=formalSite, tim
       row.previewMatches = matches(row.preview,member.preview,member.previewDimensions,site);
       row.originalMatches = matches(row.original,member.original ?? member.sourceImage,member.originalDimensions ?? member.fullDimensions,site);
       if (checkPrevious) {
-        row.previous = await openAndReturn(tab,card.locator('.mv-identity-previous'),index%2?'Escape':'button',timeoutMs);
+        const originalWorkButton = member.previousEdition
+          ? card.getByText('查看原作品图', {exact:true})
+          : card.locator('.mv-identity-previous');
+        row.previous = await openAndReturn(tab,originalWorkButton,index%2?'Escape':'button',timeoutMs);
         const previous = member.retainedWorkPhoto ?? member.originalWorkImage;
         let size = member.retainedWorkDimensions ?? member.originalWorkDimensions;
         if (!size) {
@@ -180,6 +183,12 @@ export async function checkReleasePortraits(tab, evidence, {site=formalSite, tim
           if (record) size = [record.width,record.height];
         }
         row.previousMatches = matches(row.previous,previous,size,site);
+        if (member.previousEdition) {
+          const earlier = member.previousEdition;
+          const earlierButton = card.getByText('查看'+earlier.label, {exact:true});
+          row.previousEdition = await openAndReturn(tab,earlierButton,index%2?'button':'Escape',timeoutMs);
+          row.previousEditionMatches = matches(row.previousEdition,earlier.original,earlier.dimensions,site);
+        }
       }
       row.score = await card.evaluate(el => {
         const photo = el.querySelector('.mv-identity-frame').getBoundingClientRect();
@@ -204,6 +213,7 @@ export async function checkReleasePortraits(tab, evidence, {site=formalSite, tim
       }
       row.passed = row.previewMatches && row.originalMatches && row.original.returned
         && (!checkPrevious || (row.previousMatches && row.previous.returned))
+        && (!checkPrevious || !member.previousEdition || (row.previousEditionMatches && row.previousEdition.returned))
         && (!checkScores || (row.score.below && row.score.memberMatches && row.score.fields.performance && row.score.fields.styling && row.score.fields.save));
     } catch (error) {
       row.passed = false;

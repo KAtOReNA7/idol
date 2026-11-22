@@ -52,3 +52,9 @@ YG 中文与英文《DRIP》目录将《BILLIONAIRE》列为第五首，页面�
 RUTUBE 用 `autostartmute=true` 设置自动起播时静音，用 `autoplay=true` 覆盖视频的默认自动播放设置。`q=1080` 请求初始画质，播放器可优先采用用户已保存的档位。访客点击本站的播放按钮后，页面会在播放器就绪时发送播放指令。[RUTUBE 官方嵌入说明](https://rutube.ru/info/embed/)
 
 Codex 内置浏览器在本机页面上使用与 v228 相同的播放器组件和首发版片源，每次点一次播放，各观察 10 秒。第一轮使用现有地址，第二轮只增加 `autoplay=true`。两次均收到初始化、就绪、当前画质和可选画质四类消息，播放器报告的当前档位高度都是 880。两次均未读到递增的播放时间、实际解码宽高、独立视频码率或具体报错。加上参数后仍未能验证起播，因此此次沿用现有配置。《BILLIONAIRE》在 v228 正式站的上次短播也未通过。[本机两次对照结果](../evidence/20261122-v228/billionaire-autoplay-comparison.json) · [v228 正式站短播](../evidence/20261122-v228/formal-mv-playback.json)
+
+### 等待提示与首发版片源
+
+RUTUBE 把首次起播、播放状态、当前画质和播放位置分别上报。`player:currentTime` 的 `data.time` 是数字秒数。旧组件收到单个起播事件、播放状态或正数位置就会撤掉等待提示。隔离测试在八秒提示出现前后分别重放相同消息。只有起播通知、只有播放状态、只有一个正数、位置重复、位置倒退五种情况下，旧组件共十次撤掉提示，新组件十次均保留。收到两次递增的正数位置后，提示正常消失，之后用户暂停也不会再次显示。显式错误仍显示原片重试。本轮验证了提示行为，尚未取得《BILLIONAIRE》首发版恢复解码的证据。[RUTUBE 事件说明](https://rutube.ru/info/embed/) · [相同组件的 16 组对照](../evidence/20261122-v229/isolated-rutube-start-progress.json)
+
+另查到 Dailymotion 同名视频，公开资料列上传者 TRENDLABEL、片长 162 秒、2025 年 2 月 26 日发布。嵌入资料提供的封面是七人黑装、白色摄影棚，带 TREND LABEL 水印，造型与 YG 说明的 2 月 14 日舞蹈版相符。未核到 2 月 7 日首发剪辑及发行方或制作方发布身份。Amazon Music 同名条目归在 2024 年发行的《DRIP》音轨中。这两项都未接入本站。[Dailymotion 发布页](https://www.dailymotion.com/video/x9f8p3w) · [公开嵌入与封面](https://www.dailymotion.com/services/oembed?url=https%3A%2F%2Fwww.dailymotion.com%2Fvideo%2Fx9f8p3w&format=json) · [YG 舞蹈版说明](https://www.ygfamily.com/en/news/report/6731) · [Amazon Music 曲目](https://music.amazon.co.uk/tracks/B0DL5DW8RZ)

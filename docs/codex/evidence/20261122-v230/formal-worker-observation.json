@@ -1,0 +1,28 @@
+{
+  "checkedAtUtc": "2026-11-22T03:14:31Z",
+  "source": "Sites production Worker error-only query",
+  "lookbackMinutes": 90,
+  "limit": 100,
+  "returnedEvents": 8,
+  "eventsDuringV229": 0,
+  "eventsSinceV230": 8,
+  "groups": [
+    {
+      "path": "/api/catalog",
+      "outcome": "canceled",
+      "status": null,
+      "count": 4,
+      "firstUtc": "2026-11-22T03:11:04.505Z",
+      "lastUtc": "2026-11-22T03:11:18.763Z"
+    },
+    {
+      "path": "/favicon.ico",
+      "outcome": "ok",
+      "status": 404,
+      "count": 4,
+      "firstUtc": "2026-11-22T03:11:03.923Z",
+      "lastUtc": "2026-11-22T03:11:18.095Z"
+    }
+  ],
+  "catalogResponses502": 0
+}

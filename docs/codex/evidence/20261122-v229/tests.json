@@ -1,0 +1,332 @@
+{
+  "applicationCommit": "30106385ea34763f032483477e7c5fae6d658e72",
+  "baselineApplicationCommit": "dab8d049ddf0caa7aa11b46d84ebb98d323bc7e1",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {
+        "tests": 4199,
+        "pass": 4029,
+        "fail": 131,
+        "skipped": 39,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "full": {
+        "log": {
+          "name": "full-win.tap",
+          "bytes": 2049987
+        },
+        "nodeSuites": {
+          "main": {
+            "tests": 4169,
+            "pass": 3999,
+            "fail": 131,
+            "cancelled": 0,
+            "skipped": 39,
+            "todo": 0
+          },
+          "isolatedArtistRuntime": {
+            "tests": 9,
+            "pass": 9,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "personalInsights": {
+            "tests": 31,
+            "pass": 31,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "nodeTotal": {
+          "tests": 4209,
+          "pass": 4039,
+          "fail": 131,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "pythonPassedByMode": {
+          "default": 4,
+          "optimized": 4
+        },
+        "exitCode": 1
+      },
+      "retainedFailureCount": 131,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "a mouse-opened cover and a keyboard-opened text link return to their own control",
+        "a new work document and a reloaded native detail identify their own history entry across Back",
+        "forward from an older copy of the same release cannot impersonate Back from the clicked entry",
+        "leaving via another control clears stale event focus from that history entry only",
+        "native timelines expose the event and exact detail link in all nine real routes",
+        "old history, an unrelated destination, a fresh reload and an obsolete link stay unfocused",
+        "player start, selected quality and stalled or reset positions keep the waiting notice available",
+        "two advancing trusted media times dismiss the notice and later user pauses do not bring it back",
+        "two independent tabs with identical URLs keep separate navigation and focus",
+        "user input, another focused control and an open dialog retain control of focus",
+        "work rating links retain row order, repeated record IDs and separate arrays for repeated works"
+      ],
+      "removedTests": [
+        "an early or late trusted start dismisses the notice and pausing after playback never reopens it"
+      ],
+      "verify": {
+        "log": {
+          "name": "verify-win.log",
+          "bytes": 238217
+        },
+        "nodeSuites": {
+          "current": {
+            "tests": 1310,
+            "pass": 1310,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "optimizedPythonPreflight": {
+            "tests": 19,
+            "pass": 19,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "builtAssets": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "typecheck": "passed",
+        "productionBuild": "passed",
+        "pythonPasses": {
+          "batch": 4,
+          "optimizedBatch": 4,
+          "builtCssHttp": 7
+        },
+        "stageValidation": {
+          "inventory": 614,
+          "sources": 527,
+          "valid": true
+        },
+        "supplementValidation": {
+          "works": 137,
+          "alternatives": 88,
+          "reviews": 70,
+          "runtimeAlternatives": 50,
+          "scoreBindings": 0
+        },
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "publicRef": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+          "recognitionRef": "c953afa5a3829737dc6bfacd62439a524fe03df9",
+          "releasePortraitRef": "59e5d54969f46f43f7004c79667b524f549342b4",
+          "remoteCopies": 5995,
+          "remoteBytes": 3958966888,
+          "restrictedCopies": 10,
+          "restrictedAliases": 1,
+          "localAssets": 586,
+          "localBytes": 16905055
+        },
+        "cssFixture": {
+          "themes": 50,
+          "fontFiles": 105,
+          "fontPaths": 68,
+          "bundleBytes": 1210962
+        },
+        "exitCode": 0
+      }
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {
+        "tests": 4199,
+        "pass": 4033,
+        "fail": 127,
+        "skipped": 39,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "full": {
+        "log": {
+          "name": "full-linux.tap",
+          "bytes": 2070301
+        },
+        "nodeSuites": {
+          "main": {
+            "tests": 4169,
+            "pass": 4003,
+            "fail": 127,
+            "cancelled": 0,
+            "skipped": 39,
+            "todo": 0
+          },
+          "isolatedArtistRuntime": {
+            "tests": 9,
+            "pass": 9,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "personalInsights": {
+            "tests": 31,
+            "pass": 31,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "nodeTotal": {
+          "tests": 4209,
+          "pass": 4043,
+          "fail": 127,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "pythonPassedByMode": {
+          "default": 4,
+          "optimized": 4
+        },
+        "exitCode": 1
+      },
+      "retainedFailureCount": 127,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "a mouse-opened cover and a keyboard-opened text link return to their own control",
+        "a new work document and a reloaded native detail identify their own history entry across Back",
+        "forward from an older copy of the same release cannot impersonate Back from the clicked entry",
+        "leaving via another control clears stale event focus from that history entry only",
+        "native timelines expose the event and exact detail link in all nine real routes",
+        "old history, an unrelated destination, a fresh reload and an obsolete link stay unfocused",
+        "player start, selected quality and stalled or reset positions keep the waiting notice available",
+        "two advancing trusted media times dismiss the notice and later user pauses do not bring it back",
+        "two independent tabs with identical URLs keep separate navigation and focus",
+        "user input, another focused control and an open dialog retain control of focus",
+        "work rating links retain row order, repeated record IDs and separate arrays for repeated works"
+      ],
+      "removedTests": [
+        "an early or late trusted start dismisses the notice and pausing after playback never reopens it"
+      ],
+      "verify": {
+        "log": {
+          "name": "verify-linux.log",
+          "bytes": 240630
+        },
+        "nodeSuites": {
+          "current": {
+            "tests": 1310,
+            "pass": 1310,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "optimizedPythonPreflight": {
+            "tests": 19,
+            "pass": 19,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "builtAssets": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "typecheck": "passed",
+        "productionBuild": "passed",
+        "pythonPasses": {
+          "batch": 4,
+          "optimizedBatch": 4,
+          "builtCssHttp": 7
+        },
+        "stageValidation": {
+          "inventory": 614,
+          "sources": 527,
+          "valid": true
+        },
+        "supplementValidation": {
+          "works": 137,
+          "alternatives": 88,
+          "reviews": 70,
+          "runtimeAlternatives": 50,
+          "scoreBindings": 0
+        },
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "publicRef": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+          "recognitionRef": "c953afa5a3829737dc6bfacd62439a524fe03df9",
+          "releasePortraitRef": "59e5d54969f46f43f7004c79667b524f549342b4",
+          "remoteCopies": 5995,
+          "remoteBytes": 3958966888,
+          "restrictedCopies": 10,
+          "restrictedAliases": 1,
+          "localAssets": 586,
+          "localBytes": 16905055
+        },
+        "cssFixture": {
+          "themes": 50,
+          "fontFiles": 105,
+          "fontPaths": 68,
+          "bundleBytes": 1210962
+        },
+        "exitCode": 0
+      }
+    }
+  },
+  "initialRun": {
+    "testedCommit": "475d32f9a688e7ed4b4a4e9e1239887d75675bb4",
+    "issue": "The catalog read test fixture lacked URLSearchParams and window.location. The fixture now supplies both.",
+    "win": {
+      "verifyExitCode": 1,
+      "full": {
+        "tests": 4209,
+        "pass": 4025,
+        "fail": 145,
+        "skipped": 39,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "newFailures": 14,
+      "failingFixture": "tests/home-read-deadline.test.cjs"
+    },
+    "linux": {
+      "verifyExitCode": 1,
+      "full": {
+        "tests": 4209,
+        "pass": 4029,
+        "fail": 141,
+        "skipped": 39,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "newFailures": 14,
+      "failingFixture": "tests/home-read-deadline.test.cjs"
+    }
+  }
+}

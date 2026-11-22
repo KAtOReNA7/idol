@@ -2,11 +2,15 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v228。十团发行筛选、作品海报站内入口与《SLAY》同期照片已上线。目录故障可细分到读取步骤。《BILLIONAIRE》首发版仍未出画，《Magnetic》《ATTITUDE》静音解码 4K。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [本批回执](worklogs/20261122-v228-release.md) |
+| 正式站 | v230。WOOAH《Purple》五张《WISH》发行照已上线，九团时间轴全部 71 个控件已逐项完成浏览器后退验收。本版《Magnetic》静音解码 4K，《BILLIONAIRE》首发版仍未出画。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [本批回执](worklogs/20261122-v230-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v228 正式应用提交 `dab8d049`。[发布回执](evidence/20261122-v228/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，v230 正式应用提交 `769c12d9`。[发布回执](evidence/20261122-v230/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v230 将《Purple》的五张跨期资料照替换为同次发行的具名海报。首显图片从 144,454 降至 142,394 字节，减少 1.43%。正式站两档宽度下五人原图、旧作品图、关闭回焦和照片下双评分均通过。已追踪的跨期位置余 135 个。正式短播中，《Magnetic》取得两个递增 4K 读数，《BILLIONAIRE》10.5 秒内仍无解码进度，均未取得独立码率。两端完整测试各 4210 项，Windows 131、WSL 127 项既有失败。[图片、播放与双端验收](worklogs/20261122-v230-release.md)
+
+v229 在九团的 11 个控件上逐一用鼠标和键盘进入详情后返回，恢复原入口焦点由 0/22 到 22/22。九团全部 71 个链接中，v229 已完成 70 个，SPIA 最后一项在 v230 补验。目录计算在同份快照的中位数减少 45.71%。正式三轮点卡中位数分别为 Cherry Bullet 少等 1265 毫秒、IVE 多等 520 毫秒、ADYA 多等 668 毫秒。v229 的《BILLIONAIRE》已保存 MV 分在刷新后保持一致，七位成员的两档评分入口共 14/14 可展开。四场 B 站独占舞台当版仍缺站内高清来源。[时间轴、访问、评分与四场舞台](worklogs/20261122-v229-release.md)
 
 v228 在隔离故障对照中从 0/8 提到 8/8 可区分具体读取步骤。正式抽测中三团代表卡以及前次较慢的两条作品库路径均抵达播放器按钮并返回。IVE 时间轴 22 个关联目标均已逐个实点。完整测试两端各 4,199 项，均无新增失败。[正式数据与范围](worklogs/20261122-v228-release.md)
 

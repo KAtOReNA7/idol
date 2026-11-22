@@ -17,4 +17,4 @@
 
 按作品、视频和成员三个 ID 对照，前后同有 1,290 个选图绑定，其中只有本曲的五个成员位置换图。原台账的 194 个跨期位置已有 59 个核过本人原件和裁切，实际仍采用跨期照片的 135 个位置与台账逐项一致。WOOAH 由 29 个降为 24 个。其余待核位置中，全项目有 113 个可从同次发行图集接续，22 个仍待补具名同期依据。[194 项台账](../evidence/20261122-member-release-portraits/remaining-194.csv)
 
-Windows 定向运行选图、私人评分与 WOOAH 原生页面测试，共 32 项通过。正式站的双宽复验在照片批发布后记录，需逐人打开新旧原图、返回原入口并核对本人照片下的评分。[选图专项](../../../apps/idol-site/tests/mv-recognition-editions.test.cjs) · [正式站复测脚本](../qa/everglow-slay-portraits.mjs)
+Windows 定向运行选图、私人评分与 WOOAH 原生页面测试，共 32 项通过。v230 正式站在 375 px 和 1265 px 正文逐人实点新旧原图，20 次关闭均回到各自入口，10 张卡均能在本人照片下展开双项评分。手机的正式图片响应与上表逐张一致。[选图专项](../../../apps/idol-site/tests/mv-recognition-editions.test.cjs) · [正式双宽验收](20261122-v230-release.md) · [复测脚本](../qa/everglow-slay-portraits.mjs)

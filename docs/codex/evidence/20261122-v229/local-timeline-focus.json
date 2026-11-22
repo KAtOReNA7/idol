@@ -1,0 +1,777 @@
+{
+  "probeVersion": "timeline-ready-v2",
+  "site": "http://127.0.0.1:8879",
+  "requestedGroups": [
+    "adya",
+    "witchx"
+  ],
+  "startAction": 0,
+  "maxActions": null,
+  "modes": [
+    "browser"
+  ],
+  "samplesOnly": false,
+  "deadlineMs": 42000,
+  "deadlineReached": false,
+  "groups": [
+    {
+      "slug": "adya",
+      "events": [
+        {
+          "actions": [
+            {
+              "controlIndex": 1,
+              "format": null,
+              "key": "adya",
+              "kind": "release",
+              "label": "查看发行",
+              "path": "/artists/adya",
+              "section": "works"
+            }
+          ],
+          "id": "adya-release-adya",
+          "index": 0,
+          "sources": 1,
+          "title": "ADYA",
+          "unrecognized": 0
+        },
+        {
+          "actions": [
+            {
+              "controlIndex": 1,
+              "format": null,
+              "key": "whats-up",
+              "kind": "release",
+              "label": "查看发行",
+              "path": "/artists/adya",
+              "section": "works"
+            }
+          ],
+          "id": "adya-release-whats-up",
+          "index": 1,
+          "sources": 1,
+          "title": "왜 불러 (What’s Up?)",
+          "unrecognized": 0
+        },
+        {
+          "actions": [
+            {
+              "controlIndex": 1,
+              "format": null,
+              "key": "ost-pt2",
+              "kind": "release",
+              "label": "查看发行",
+              "path": "/artists/adya",
+              "section": "works"
+            }
+          ],
+          "id": "adya-release-ost-pt2",
+          "index": 2,
+          "sources": 1,
+          "title": "The Chairman is Level 9 OST Part.2",
+          "unrecognized": 0
+        },
+        {
+          "actions": [
+            {
+              "controlIndex": 1,
+              "format": null,
+              "key": "ost-compilation",
+              "kind": "release",
+              "label": "查看发行",
+              "path": "/artists/adya",
+              "section": "works"
+            }
+          ],
+          "id": "adya-release-ost-compilation",
+          "index": 3,
+          "sources": 1,
+          "title": "The Chairman is Level 9 OST",
+          "unrecognized": 0
+        },
+        {
+          "actions": [
+            {
+              "controlIndex": 1,
+              "format": null,
+              "key": "rizz",
+              "kind": "release",
+              "label": "查看发行",
+              "path": "/artists/adya",
+              "section": "works"
+            }
+          ],
+          "id": "adya-release-rizz",
+          "index": 4,
+          "sources": 1,
+          "title": "RIZZ",
+          "unrecognized": 0
+        }
+      ],
+      "totalActions": 5,
+      "attempts": [
+        {
+          "actionIndex": 0,
+          "event": "adya-release-adya",
+          "kind": "release",
+          "key": "adya",
+          "mode": "browser",
+          "before": {
+            "event": "adya-release-adya",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 396,
+            "visible": true,
+            "width": 375,
+            "y": 0,
+            "settled": true
+          },
+          "expectedHeading": "ADYA",
+          "detail": {
+            "back": "返回发行目录",
+            "backCount": 1,
+            "backHref": "/artists/adya?section=works",
+            "format": null,
+            "heading": "ADYA",
+            "headingCount": 1,
+            "media": null,
+            "member": null,
+            "origin": "http://127.0.0.1:8879",
+            "path": "/artists/adya",
+            "release": "adya",
+            "section": "works",
+            "work": null,
+            "headingMatches": true
+          },
+          "opened": true,
+          "returnPath": "/artists/adya",
+          "returnSection": "updates",
+          "returned": true,
+          "after": {
+            "event": "adya-release-adya",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 396,
+            "visible": true,
+            "width": 375,
+            "y": 0
+          },
+          "samePosition": true
+        },
+        {
+          "actionIndex": 1,
+          "event": "adya-release-whats-up",
+          "kind": "release",
+          "key": "whats-up",
+          "mode": "browser",
+          "before": {
+            "event": "adya-release-whats-up",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 411,
+            "visible": true,
+            "width": 375,
+            "y": 162,
+            "settled": true
+          },
+          "expectedHeading": "왜 불러 (What’s Up?)",
+          "detail": {
+            "back": "返回发行目录",
+            "backCount": 1,
+            "backHref": "/artists/adya?section=works",
+            "format": null,
+            "heading": "왜 불러 (What’s Up?)",
+            "headingCount": 1,
+            "media": null,
+            "member": null,
+            "origin": "http://127.0.0.1:8879",
+            "path": "/artists/adya",
+            "release": "whats-up",
+            "section": "works",
+            "work": null,
+            "headingMatches": true
+          },
+          "opened": true,
+          "returnPath": "/artists/adya",
+          "returnSection": "updates",
+          "returned": true,
+          "after": {
+            "event": "adya-release-whats-up",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 411,
+            "visible": true,
+            "width": 375,
+            "y": 162
+          },
+          "samePosition": true
+        },
+        {
+          "actionIndex": 2,
+          "event": "adya-release-ost-pt2",
+          "kind": "release",
+          "key": "ost-pt2",
+          "mode": "browser",
+          "before": {
+            "event": "adya-release-ost-pt2",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 411,
+            "visible": true,
+            "width": 375,
+            "y": 388,
+            "settled": true
+          },
+          "expectedHeading": "The Chairman is Level 9 OST Part.2",
+          "detail": {
+            "back": "返回发行目录",
+            "backCount": 1,
+            "backHref": "/artists/adya?section=works",
+            "format": null,
+            "heading": "The Chairman is Level 9 OST Part.2",
+            "headingCount": 1,
+            "media": null,
+            "member": null,
+            "origin": "http://127.0.0.1:8879",
+            "path": "/artists/adya",
+            "release": "ost-pt2",
+            "section": "works",
+            "work": null,
+            "headingMatches": true
+          },
+          "opened": true,
+          "returnPath": "/artists/adya",
+          "returnSection": "updates",
+          "returned": true,
+          "after": {
+            "event": "adya-release-ost-pt2",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 411,
+            "visible": true,
+            "width": 375,
+            "y": 388
+          },
+          "samePosition": true
+        },
+        {
+          "actionIndex": 3,
+          "event": "adya-release-ost-compilation",
+          "kind": "release",
+          "key": "ost-compilation",
+          "mode": "browser",
+          "before": {
+            "event": "adya-release-ost-compilation",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 416,
+            "visible": true,
+            "width": 375,
+            "y": 608,
+            "settled": true
+          },
+          "expectedHeading": "The Chairman is Level 9 OST",
+          "detail": {
+            "back": "返回发行目录",
+            "backCount": 1,
+            "backHref": "/artists/adya?section=works",
+            "format": null,
+            "heading": "The Chairman is Level 9 OST",
+            "headingCount": 1,
+            "media": null,
+            "member": null,
+            "origin": "http://127.0.0.1:8879",
+            "path": "/artists/adya",
+            "release": "ost-compilation",
+            "section": "works",
+            "work": null,
+            "headingMatches": true
+          },
+          "opened": true,
+          "returnPath": "/artists/adya",
+          "returnSection": "updates",
+          "returned": true,
+          "after": {
+            "event": "adya-release-ost-compilation",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 416,
+            "visible": true,
+            "width": 375,
+            "y": 608
+          },
+          "samePosition": true
+        },
+        {
+          "actionIndex": 4,
+          "event": "adya-release-rizz",
+          "kind": "release",
+          "key": "rizz",
+          "mode": "browser",
+          "before": {
+            "event": "adya-release-rizz",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 594,
+            "visible": true,
+            "width": 375,
+            "y": 608,
+            "settled": true
+          },
+          "expectedHeading": "RIZZ",
+          "detail": {
+            "back": "返回发行目录",
+            "backCount": 1,
+            "backHref": "/artists/adya?section=works",
+            "format": null,
+            "heading": "RIZZ",
+            "headingCount": 1,
+            "media": null,
+            "member": null,
+            "origin": "http://127.0.0.1:8879",
+            "path": "/artists/adya",
+            "release": "rizz",
+            "section": "works",
+            "work": null,
+            "headingMatches": true
+          },
+          "opened": true,
+          "returnPath": "/artists/adya",
+          "returnSection": "updates",
+          "returned": true,
+          "after": {
+            "event": "adya-release-rizz",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 594,
+            "visible": true,
+            "width": 375,
+            "y": 608
+          },
+          "samePosition": true
+        }
+      ],
+      "height": 844,
+      "viewportWidth": 390,
+      "width": 375,
+      "staticEvents": [],
+      "sourceOnlyEvents": []
+    },
+    {
+      "slug": "witchx",
+      "events": [
+        {
+          "actions": [],
+          "id": "witchx-company-debut",
+          "index": 0,
+          "sources": 1,
+          "title": "W!TCHX 出道",
+          "unrecognized": 0
+        },
+        {
+          "actions": [
+            {
+              "controlIndex": 0,
+              "format": null,
+              "key": "witchx-blala",
+              "kind": "release",
+              "label": "查看发行",
+              "path": "/artists/witchx",
+              "section": "works"
+            }
+          ],
+          "id": "witchx-release-blala",
+          "index": 1,
+          "sources": 1,
+          "title": "BLALA",
+          "unrecognized": 0
+        },
+        {
+          "actions": [
+            {
+              "controlIndex": 0,
+              "format": null,
+              "key": "witchx-beautiful",
+              "kind": "release",
+              "label": "查看发行",
+              "path": "/artists/witchx",
+              "section": "works"
+            }
+          ],
+          "id": "witchx-release-beautiful",
+          "index": 2,
+          "sources": 1,
+          "title": "Beautiful Story (Highlight)",
+          "unrecognized": 0
+        },
+        {
+          "actions": [
+            {
+              "controlIndex": 0,
+              "format": null,
+              "key": "witchx-run-baby-run",
+              "kind": "release",
+              "label": "查看发行",
+              "path": "/artists/witchx",
+              "section": "works"
+            }
+          ],
+          "id": "witchx-release-run-baby-run",
+          "index": 3,
+          "sources": 1,
+          "title": "Run Baby Run",
+          "unrecognized": 0
+        },
+        {
+          "actions": [
+            {
+              "controlIndex": 0,
+              "format": "stage",
+              "key": "run-show-champion",
+              "kind": "media",
+              "label": "查看影像",
+              "path": "/artists/witchx",
+              "section": "works"
+            },
+            {
+              "controlIndex": 1,
+              "format": null,
+              "key": "witchx-run-baby-run",
+              "kind": "release",
+              "label": "查看发行",
+              "path": "/artists/witchx",
+              "section": "works"
+            }
+          ],
+          "id": "witchx-show-champion-569",
+          "index": 4,
+          "sources": 1,
+          "title": "Run Baby Run · Show Champion",
+          "unrecognized": 0
+        },
+        {
+          "actions": [],
+          "id": "witchx-anniversary-announcement",
+          "index": 5,
+          "sources": 1,
+          "title": "TRICK or TREAT · 一周年演唱会",
+          "unrecognized": 0
+        }
+      ],
+      "totalActions": 5,
+      "attempts": [
+        {
+          "actionIndex": 0,
+          "event": "witchx-release-blala",
+          "kind": "release",
+          "key": "witchx-blala",
+          "mode": "browser",
+          "before": {
+            "event": "witchx-release-blala",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 412,
+            "visible": true,
+            "width": 375,
+            "y": 168,
+            "settled": true
+          },
+          "expectedHeading": "BLALA",
+          "detail": {
+            "back": "返回发行目录",
+            "backCount": 1,
+            "backHref": "/artists/witchx?section=works",
+            "format": null,
+            "heading": "BLALA",
+            "headingCount": 1,
+            "media": null,
+            "member": null,
+            "origin": "http://127.0.0.1:8879",
+            "path": "/artists/witchx",
+            "release": "witchx-blala",
+            "section": "works",
+            "work": null,
+            "headingMatches": true
+          },
+          "opened": true,
+          "returnPath": "/artists/witchx",
+          "returnSection": "updates",
+          "returned": true,
+          "after": {
+            "event": "witchx-release-blala",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 412,
+            "visible": true,
+            "width": 375,
+            "y": 168
+          },
+          "samePosition": true
+        },
+        {
+          "actionIndex": 1,
+          "event": "witchx-release-beautiful",
+          "kind": "release",
+          "key": "witchx-beautiful",
+          "mode": "browser",
+          "before": {
+            "event": "witchx-release-beautiful",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 412,
+            "visible": true,
+            "width": 375,
+            "y": 358,
+            "settled": true
+          },
+          "expectedHeading": "Beautiful Story (Highlight)",
+          "detail": {
+            "back": "返回发行目录",
+            "backCount": 1,
+            "backHref": "/artists/witchx?section=works",
+            "format": null,
+            "heading": "Beautiful Story (Highlight)",
+            "headingCount": 1,
+            "media": null,
+            "member": null,
+            "origin": "http://127.0.0.1:8879",
+            "path": "/artists/witchx",
+            "release": "witchx-beautiful",
+            "section": "works",
+            "work": null,
+            "headingMatches": true
+          },
+          "opened": true,
+          "returnPath": "/artists/witchx",
+          "returnSection": "updates",
+          "returned": true,
+          "after": {
+            "event": "witchx-release-beautiful",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 412,
+            "visible": true,
+            "width": 375,
+            "y": 358
+          },
+          "samePosition": true
+        },
+        {
+          "actionIndex": 2,
+          "event": "witchx-release-run-baby-run",
+          "kind": "release",
+          "key": "witchx-run-baby-run",
+          "mode": "browser",
+          "before": {
+            "event": "witchx-release-run-baby-run",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 412,
+            "visible": true,
+            "width": 375,
+            "y": 548,
+            "settled": true
+          },
+          "expectedHeading": "Run Baby Run",
+          "detail": {
+            "back": "返回发行目录",
+            "backCount": 1,
+            "backHref": "/artists/witchx?section=works",
+            "format": null,
+            "heading": "Run Baby Run",
+            "headingCount": 1,
+            "media": null,
+            "member": null,
+            "origin": "http://127.0.0.1:8879",
+            "path": "/artists/witchx",
+            "release": "witchx-run-baby-run",
+            "section": "works",
+            "work": null,
+            "headingMatches": true
+          },
+          "opened": true,
+          "returnPath": "/artists/witchx",
+          "returnSection": "updates",
+          "returned": true,
+          "after": {
+            "event": "witchx-release-run-baby-run",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 412,
+            "visible": true,
+            "width": 375,
+            "y": 548
+          },
+          "samePosition": true
+        },
+        {
+          "actionIndex": 3,
+          "event": "witchx-show-champion-569",
+          "kind": "media",
+          "key": "run-show-champion",
+          "mode": "browser",
+          "before": {
+            "event": "witchx-show-champion-569",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 412,
+            "visible": true,
+            "width": 375,
+            "y": 738,
+            "settled": true
+          },
+          "expectedHeading": "Run Baby Run",
+          "detail": {
+            "back": "返回影像目录",
+            "backCount": 1,
+            "backHref": "/artists/witchx?section=works&format=stage",
+            "format": "stage",
+            "heading": "Run Baby Run",
+            "headingCount": 1,
+            "media": "run-show-champion",
+            "member": null,
+            "origin": "http://127.0.0.1:8879",
+            "path": "/artists/witchx",
+            "release": null,
+            "section": "works",
+            "work": null,
+            "headingMatches": true
+          },
+          "opened": true,
+          "returnPath": "/artists/witchx",
+          "returnSection": "updates",
+          "returned": true,
+          "after": {
+            "event": "witchx-show-champion-569",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 412,
+            "visible": true,
+            "width": 375,
+            "y": 738
+          },
+          "samePosition": true
+        },
+        {
+          "actionIndex": 4,
+          "event": "witchx-show-champion-569",
+          "kind": "release",
+          "key": "witchx-run-baby-run",
+          "mode": "browser",
+          "before": {
+            "event": "witchx-show-champion-569",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 412,
+            "visible": true,
+            "width": 375,
+            "y": 738,
+            "settled": true
+          },
+          "expectedHeading": "Run Baby Run",
+          "detail": {
+            "back": "返回发行目录",
+            "backCount": 1,
+            "backHref": "/artists/witchx?section=works",
+            "format": null,
+            "heading": "Run Baby Run",
+            "headingCount": 1,
+            "media": null,
+            "member": null,
+            "origin": "http://127.0.0.1:8879",
+            "path": "/artists/witchx",
+            "release": "witchx-run-baby-run",
+            "section": "works",
+            "work": null,
+            "headingMatches": true
+          },
+          "opened": true,
+          "returnPath": "/artists/witchx",
+          "returnSection": "updates",
+          "returned": true,
+          "after": {
+            "event": "witchx-show-champion-569",
+            "eventFocused": true,
+            "eventTargeted": false,
+            "eventVisible": true,
+            "focused": true,
+            "pointOnControl": true,
+            "top": 412,
+            "visible": true,
+            "width": 375,
+            "y": 738
+          },
+          "samePosition": true
+        }
+      ],
+      "height": 844,
+      "viewportWidth": 390,
+      "width": 375,
+      "staticEvents": [
+        "witchx-company-debut",
+        "witchx-anniversary-announcement"
+      ],
+      "sourceOnlyEvents": [
+        "witchx-company-debut",
+        "witchx-anniversary-announcement"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "component": "apps/idol-site/components/work-video-player.tsx",
+  "acceptedProductionApplication": "dab8d049ddf0caa7aa11b46d84ebb98d323bc7e1",
+  "scope": "Isolated component with synthetic trusted messages and timers, without video or public network playback.",
+  "protocol": "https://rutube.ru/info/embed/",
+  "scenarioTimes": [
+    "before the 8000 ms timer",
+    "after the 8000 ms timer has shown the notice"
+  ],
+  "focusedTest": "node --test tests/work-video-player.test.cjs",
+  "focusedPassCount": 22,
+  "rows": [
+    {
+      "scenario": "v228 observed init/ready/quality/qualityList",
+      "afterNoticeDeadline": false,
+      "waitVisibleBefore": true,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "v228 observed init/ready/quality/qualityList",
+      "afterNoticeDeadline": true,
+      "waitVisibleBefore": true,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "playStart alone",
+      "afterNoticeDeadline": false,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "playStart alone",
+      "afterNoticeDeadline": true,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "playing state alone",
+      "afterNoticeDeadline": false,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "playing state alone",
+      "afterNoticeDeadline": true,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "one positive time",
+      "afterNoticeDeadline": false,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "one positive time",
+      "afterNoticeDeadline": true,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "duplicate time",
+      "afterNoticeDeadline": false,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "duplicate time",
+      "afterNoticeDeadline": true,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "rewound without later progress",
+      "afterNoticeDeadline": false,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "rewound without later progress",
+      "afterNoticeDeadline": true,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": true,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "two positive advancing times",
+      "afterNoticeDeadline": false,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": false,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "two positive advancing times",
+      "afterNoticeDeadline": true,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": false,
+      "errorVisible": false,
+      "samePlayer": true,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "explicit provider error",
+      "afterNoticeDeadline": false,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": false,
+      "errorVisible": true,
+      "samePlayer": false,
+      "parentPlayRequests": 1
+    },
+    {
+      "scenario": "explicit provider error",
+      "afterNoticeDeadline": true,
+      "waitVisibleBefore": false,
+      "waitVisibleAfter": false,
+      "errorVisible": true,
+      "samePlayer": false,
+      "parentPlayRequests": 1
+    }
+  ]
+}

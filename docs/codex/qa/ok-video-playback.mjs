@@ -99,7 +99,8 @@ export async function checkOkVideo(tab, work, site, timeoutMs) {
       const result = await cdp.send('Runtime.evaluate',{expression,returnByValue:true},{target:{targetId:target.targetId},timeoutMs:1500});
       return result.result?.value;
     }
-    if (!await run(installProbe, 163.49)) throw Error('Could not silence test frame');
+    const {duration=163.49,width=3840,height=1770,quality="2160p"}=work;
+    if (!await run(installProbe, duration)) throw Error('Could not silence test frame');
     const frame = tab.playwright.frameLocator(selector);
     const click = {timeoutMs:5000};
     async function measure(width, activate) {
@@ -122,9 +123,12 @@ export async function checkOkVideo(tab, work, site, timeoutMs) {
         coverVisible:await cover.isVisible(),resumeVisible:await resume.isVisible()};
       const retry=row.firstAttempt.resumeVisible?resume:row.firstAttempt.coverVisible?cover:null;
       if (retry) row.defaultSamples=await measure(1,() => retry.click(click));
-      if (row.defaultSamples.length !== 2) {row.status='no-confirmed-progress';return row;}
+      if (row.defaultSamples.length !== 2) {
+        row.lastMedia=await run(() => window.idolTemporaryPlaybackProbe.media());
+        row.status='no-confirmed-progress';return row;
+      }
     }
-    if (row.defaultSamples.every(s => s.w === 3840 && s.h === 1770)) {
+    if (row.defaultSamples.every(s => s.w === width && s.h === height)) {
       row.qualityChoice='current setting';
       row.samples=row.defaultSamples;
     } else {
@@ -132,9 +136,9 @@ export async function checkOkVideo(tab, work, site, timeoutMs) {
       await frame.getByRole('menuitem',{name:/^(Качество:|Quality:|画质|清晰度)/i}).click(click);
       const other=frame.getByRole('menuitem',{name:/^(Другое|Other|Advanced|其他|高级)$/i});
       if (await other.isVisible()) await other.click(click);
-      const highest=frame.getByRole('menuitem',{name:'2160p',exact:true});
-      row.qualityChoice='2160p';
-      row.samples=await measure(3840,async () => {
+      const highest=frame.getByRole('menuitem',{name:quality,exact:true});
+      row.qualityChoice=quality;
+      row.samples=await measure(width,async () => {
         await highest.click(click);
         if (await resume.isVisible()) await resume.click(click);
       });

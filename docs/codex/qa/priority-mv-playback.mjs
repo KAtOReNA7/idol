@@ -11,6 +11,10 @@ const works = [
     origin:'https://ok.ru', path:'/videoembed/9392431106679'},
   {id:'rec28ldfRTrzPI', title:'Magnetic', original:'Vk5-c_v4gMU', provider:'Vimeo',
     origin:'https://player.vimeo.com', path:'/video/930729644', mute:'muted', value:'1'},
+  {id:'recvxyOz5X2J0A', title:'Attention', original:'js1CtxSY38I', provider:'OK Video',
+    origin:'https://ok.ru', path:'/videoembed/10326677850722',duration:262.25,width:3840,height:2160,quality:'2160p'},
+  {id:'recvxyOz5XSxiH', title:'ETA', original:'jOTfBlKSQYY', provider:'OK Video',
+    origin:'https://ok.ru', path:'/videoembed/5970279860834',duration:218,width:1920,height:1080,quality:'1080p'},
   {id:'recvxyHuKMFzlZ', title:'ATTITUDE', original:'38xYeot-ciM', provider:'Vimeo',
     origin:'https://player.vimeo.com', path:'/video/1054517686', mute:'muted', value:'1'},
 ];
@@ -163,7 +167,7 @@ async function checkOne(tab,cdp,work,timeoutMs) {
 
 export async function checkPriorityMvPlayback(tab,{ids=works.map(work=>work.id),timeoutMs=10000}={}) {
   if(!Array.isArray(ids) || !ids.length || new Set(ids).size!==ids.length || !ids.every(id=>works.some(work=>work.id===id)))
-    throw Error('请选择三支已核对作品中的一项或多项。');
+    throw Error('请选择已核对作品中的一项或多项。');
   if(!Number.isFinite(timeoutMs) || timeoutMs<500 || timeoutMs>15000)throw Error('播放采样时限为 500 至 15000 毫秒。');
   const {createRequire}=await import('node:module');
   const require=createRequire(import.meta.url);

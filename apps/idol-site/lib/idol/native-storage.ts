@@ -11,12 +11,27 @@ export async function nativeSchema(snapshotId:string,table:TableKey):Promise<Fie
 export type NativeRow={key:string;snapshot_id:string;table_key:TableKey;record_id:string;fields_json:string;revision:string;version:number;updated_at:number;source_order:number};
 export async function nativeRow(snapshotId:string,table:TableKey,id:string){if(!/^rec[A-Za-z0-9]+$/.test(id))throw new AppError('INVALID_RECORD','记录无效。',400);const row=await nativeDb().prepare('SELECT * FROM idol_native_records WHERE key = ?').bind(nativeKey(snapshotId,table,id)).first<NativeRow>();if(!row)throw new AppError('RECORD_NOT_FOUND','这条资料不存在。',404);return row;}
 export async function nativeRecord(snapshotId:string,table:TableKey,id:string):Promise<FeishuRecord>{const [row,fields]=await Promise.all([nativeRow(snapshotId,table,id),nativeSchema(snapshotId,table)]);return {record_id:id,fields:namedFields(JSON.parse(row.fields_json),fields)};}
-export async function nativeTables(snapshotId:string):Promise<NativeTables>{
- const result={} as NativeTables;const [schemas,rows]=await Promise.all([
- nativeDb().prepare('SELECT table_key,fields_json FROM idol_native_fields WHERE snapshot_id = ?').bind(snapshotId).all<{table_key:TableKey;fields_json:string}>(),
- nativeDb().prepare('SELECT table_key,record_id,fields_json FROM idol_native_records WHERE snapshot_id = ? ORDER BY table_key,source_order,record_id').bind(snapshotId).all<{table_key:TableKey;record_id:string;fields_json:string}>(),
+export type NativeTableStep='table-schema'|'table-rows'|'table-decode';
+export async function nativeTables(snapshotId:string,onFailure?:(step:NativeTableStep)=>void):Promise<NativeTables>{
+ let queryFailed=false;
+ async function query<T>(step:NativeTableStep,run:()=>Promise<T>){
+  try{return await run();}
+  catch(error){if(!queryFailed){queryFailed=true;onFailure?.(step);}throw error;}
+ }
+ const [schemas,rows]=await Promise.all([
+  query('table-schema',()=>nativeDb().prepare('SELECT table_key,fields_json FROM idol_native_fields WHERE snapshot_id = ?').bind(snapshotId).all<{table_key:TableKey;fields_json:string}>()),
+  query('table-rows',()=>nativeDb().prepare('SELECT table_key,record_id,fields_json FROM idol_native_records WHERE snapshot_id = ? ORDER BY table_key,source_order,record_id').bind(snapshotId).all<{table_key:TableKey;record_id:string;fields_json:string}>()),
  ]);
- for(const table of ['groups','members','works','ratings'] as TableKey[]){const fields=schemas.results.find(r=>r.table_key===table);if(!fields)throw new AppError('NATIVE_SCHEMA_MISSING','资料格式暂时不可用。',503);result[table]={fields:JSON.parse(fields.fields_json),records:rows.results.filter(r=>r.table_key===table).map(r=>({recordId:r.record_id,fields:JSON.parse(r.fields_json)}))};}return result;
+ try{
+  const result={} as NativeTables;
+  for(const table of ['groups','members','works','ratings'] as TableKey[]){
+   const fields=schemas.results.find(row=>row.table_key===table);
+   if(!fields)throw new AppError('NATIVE_SCHEMA_MISSING','资料格式暂时不可用。',503);
+   result[table]={fields:JSON.parse(fields.fields_json),records:rows.results.filter(row=>row.table_key===table)
+    .map(row=>({recordId:row.record_id,fields:JSON.parse(row.fields_json)}))};
+  }
+  return result;
+ }catch(error){onFailure?.('table-decode');throw error;}
 }
 
 export function sourceStamp(control:StorageControl|null){return JSON.stringify({mode:control?.mode??'feishu',epoch:control?.epoch??0,activeSnapshot:control?.active_snapshot??null});}

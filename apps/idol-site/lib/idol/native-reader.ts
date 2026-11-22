@@ -3,7 +3,7 @@ import {withGroupMilestones} from './group-milestones';
 import {withSocialFacts} from './social-facts';
 import {env} from 'cloudflare:workers';
 import {AppError,type TableKey} from './feishu';
-import {activeNative,nativeDb,nativeRow,nativeSchema,nativeTables,sourceStamp,type StorageControl} from './native-storage';
+import {activeNative,nativeDb,nativeRow,nativeSchema,nativeTables,sourceStamp,type StorageControl,type NativeTableStep} from './native-storage';
 import type {Catalog} from './types';
 import {namedFields} from './native-format';
 import {editableValues} from './live';
@@ -15,8 +15,10 @@ import {F} from './fields';
 const NATIVE_CATALOG_TTL=5*60*1000,MAX_NATIVE_OWNERS=4;
 type NativeSource={native:true;state:StorageControl;key:string};
 type LegacySource={native:false;state:StorageControl|null};
-type NativeCatalogEntry={key:string;created:number;value?:Catalog;pending?:Promise<Catalog>};
 type CatalogReadKind='hit'|'miss'|'joined';
+type ColdReadStep='snapshot'|'tables'|NativeTableStep|'catalog-project'|'social-facts'|'cache-generation';
+type NativeCatalogEntry={key:string;created:number;step:ColdReadStep;value?:Catalog;pending?:Promise<Catalog>};
+export type NativeCatalogTrace={step?:'source-generation'|ColdReadStep|'response-generation';cache?:CatalogReadKind};
 const nativeCatalogEntries=new Map<string,NativeCatalogEntry>();
 
 async function catalogSource(userId:string):Promise<NativeSource|LegacySource>{
@@ -33,15 +35,20 @@ function selectCatalogEntry(userId:string,before:NativeSource,force:boolean):{en
  if(!force&&prior?.key===before.key&&Date.now()-prior.created<NATIVE_CATALOG_TTL){
   return {entry:prior,result:prior.value?'hit':'joined'};
  }
- const entry:NativeCatalogEntry={key:before.key,created:Date.now()};
+ const entry:NativeCatalogEntry={key:before.key,created:Date.now(),step:'snapshot'};
  nativeCatalogEntries.delete(userId);
  nativeCatalogEntries.set(userId,entry);
  while(nativeCatalogEntries.size>MAX_NATIVE_OWNERS)nativeCatalogEntries.delete(nativeCatalogEntries.keys().next().value!);
  entry.pending=(async()=>{
   const snapshot=await nativeDb().prepare('SELECT captured_at FROM idol_native_snapshots WHERE id = ? AND owner_id = ?').bind(before.state.active_snapshot,userId).first<{captured_at:string}>();
   if(!snapshot)throw new AppError('NATIVE_DATA_MISSING','资料暂时无法读取，请稍后重试。',503);
-  const tables=await nativeTables(before.state.active_snapshot!);
-  const value:Catalog={...await withSocialFacts(withGroupMilestones(withVerifiedVersionDisplay(projectCatalog(tables,'live',new Date().toISOString()),tables)),tables),cache:{source:'live',refreshRecommended:false}};
+  entry.step='tables';
+  const tables=await nativeTables(before.state.active_snapshot!,step=>{entry.step=step;});
+  entry.step='catalog-project';
+  const catalog=withGroupMilestones(withVerifiedVersionDisplay(projectCatalog(tables,'live',new Date().toISOString()),tables));
+  entry.step='social-facts';
+  const value:Catalog={...await withSocialFacts(catalog,tables),cache:{source:'live',refreshRecommended:false}};
+  entry.step='cache-generation';
   const after=await catalogSource(userId);
   if(!after.native||after.key!==before.key)throw new AppError('CATALOG_SUPERSEDED','资料刚刚更新，请重新读取。',409);
   if(nativeCatalogEntries.get(userId)===entry){entry.value=value;entry.pending=undefined;}
@@ -50,21 +57,26 @@ function selectCatalogEntry(userId:string,before:NativeSource,force:boolean):{en
  return {entry,result:'miss'};
 }
 
-export async function withNativeCatalog<T>(userId:string,force:boolean,read:(catalog:Catalog,control:StorageControl)=>T|Promise<T>):Promise<{native:true;value:T}|{native:false;state:StorageControl|null}>{
+export async function withNativeCatalog<T>(userId:string,force:boolean,read:(catalog:Catalog,control:StorageControl)=>T|Promise<T>,trace?:NativeCatalogTrace):Promise<{native:true;value:T}|{native:false;state:StorageControl|null}>{
+ if(trace){trace.step='source-generation';delete trace.cache;}
  const started=Date.now(),initial=await catalogSource(userId);
  if(!initial.native){nativeCatalogEntries.delete(userId);return initial;}
  let before=initial;
  for(let attempt=0;attempt<2;attempt++){
   const {entry,result}=selectCatalogEntry(userId,before,force&&attempt===0);
+  if(trace)trace.cache=result;
   let catalog:Catalog|null=null;
   try{
    catalog=entry.value??await entry.pending!;
   }catch(error){
+   // Joiners observe the operation that failed in the shared cold read.
+   if(trace)trace.step=entry.step;
    if(nativeCatalogEntries.get(userId)===entry)nativeCatalogEntries.delete(userId);
    if(!(error instanceof AppError&&error.code==='CATALOG_SUPERSEDED'&&attempt===0))throw error;
   }
   // This read belongs to the request. The shared entry never contains private rating rows or its response.
   const selection=catalog?{value:await read(catalog,before.state)}:null;
+  if(trace)trace.step='response-generation';
   const after=await catalogSource(userId);
   if(!after.native||sourceStamp(after.state)!==sourceStamp(initial.state))break;
   if(selection&&after.key===before.key&&nativeCatalogEntries.get(userId)===entry){

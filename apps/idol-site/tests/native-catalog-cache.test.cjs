@@ -6,9 +6,9 @@ function setup(){
  class AppError extends Error{constructor(code,message,status=503){super(message);this.code=code;this.status=status;}}
  const activeNative=async user=>{if(user!==model.owner)throw new AppError('OWNER_ONLY','owner',403);if(model.mode==='feishu')return null;return {owner_id:user,mode:model.mode,epoch:model.epoch,active_snapshot:model.snapshot};};
  const db={prepare(sql){const statement={bind(){return statement;},async first(){if(sql.includes('catalog_generation'))return {owner_id:model.owner,mode:model.mode,epoch:model.epoch,active_snapshot:model.snapshot,catalog_generation:model.hasState?model.generation:null};if(sql.includes('SELECT captured_at'))return {captured_at:'2026-10-14T00:00:00Z'};throw Error(sql);}};return statement;}};
- const nativeTables=async()=>{const value=model.value,gate=model.gates.shift();model.reads++;model.calls.push(value);if(gate)await gate.promise;if(model.fail)throw Error('projection read failed');return {value};};
+ const nativeTables=async(snapshot,onFailure)=>{const value=model.value,gate=model.gates.shift();model.reads++;model.calls.push(value);if(gate)await gate.promise;if(model.fail){onFailure?.('table-rows');throw Error('projection read failed');}return {value};};
  const sourceStamp=control=>JSON.stringify([control.mode,control.epoch,control.active_snapshot]);
- const stubs={'./verified-version-display':{withVerifiedVersionDisplay:x=>x},'cloudflare:workers':{env:{}},'./feishu':{AppError},'./native-storage':{activeNative,nativeDb:()=>db,nativeTables,sourceStamp},'./native-format':{},'./live':{},'./fields':{F:{}},'./group-milestones':{withGroupMilestones:x=>x},'./social-facts':{withSocialFacts:async x=>x},'./catalog':{projectCatalog:tables=>{model.projects++;return {marker:tables.value,capturedAt:'capture-'+tables.value,loadedAt:'load-'+tables.value,groups:[],members:[],works:[],ratings:[]};}}};
+ const stubs={'./verified-version-display':{withVerifiedVersionDisplay:x=>x},'cloudflare:workers':{env:{}},'./feishu':{AppError},'./native-storage':{activeNative,nativeDb:()=>db,nativeTables,sourceStamp},'./native-format':{},'./live':{},'./fields':{F:{}},'./group-milestones':{withGroupMilestones:x=>x},'./social-facts':{withSocialFacts:async x=>{if(model.socialError)throw model.socialError;return x;}},'./catalog':{projectCatalog:tables=>{model.projects++;if(model.projectError)throw model.projectError;return {marker:tables.value,capturedAt:'capture-'+tables.value,loadedAt:'load-'+tables.value,groups:[],members:[],works:[],ratings:[]};}}};
  class Clock extends Date{static now(){return model.now;}}
  const out={},code=ts.transpileModule(fs.readFileSync('lib/idol/native-reader.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
  vm.runInNewContext('(function(require,exports){'+code+'})',{Date:Clock,Response,Map,JSON,console:{info:x=>model.logs.push(JSON.parse(x))}})(n=>{const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(n);if(timelineModule!==undefined)return timelineModule;assert.ok(n in stubs,n);return stubs[n];},out);
@@ -64,6 +64,35 @@ test('a failed private read preserves the shared projection and repeated private
  await assert.rejects(readWith('owner',false,()=>{attempts++;model.generation++;return 0;}),e=>e.code==='STORAGE_CHANGING');
  assert.equal(attempts,2);
  assert.equal(model.projects,2);
+});
+test('joined readers keep separate request traces and observe the same failed cold operation',async()=>{
+ const {readWith,model}=setup(),gate=deferred(),first={},second={};
+ model.gates.push(gate);
+ model.fail=true;
+ const requests=Promise.allSettled([
+  readWith('owner',false,catalog=>catalog,first),
+  readWith('owner',false,catalog=>catalog,second),
+ ]);
+ await until(()=>first.cache==='miss'&&second.cache==='joined');
+ gate.resolve();
+ const results=await requests;
+ assert.equal(model.reads,1);
+ assert.equal(results[0].status,'rejected');
+ assert.equal(results[1].reason,results[0].reason);
+ assert.deepEqual(first,{step:'table-rows',cache:'miss'});
+ assert.deepEqual(second,{step:'table-rows',cache:'joined'});
+ model.fail=false;
+ const recovery={};
+ assert.equal((await readWith('owner',false,catalog=>catalog.marker,recovery)).value,1);
+ assert.deepEqual(recovery,{step:'response-generation',cache:'miss'});
+});
+test('catalog projection and social enrichment preserve their original errors and precise cold step',async()=>{
+ for(const [property,step] of [['projectError','catalog-project'],['socialError','social-facts']]){
+  const {readWith,model}=setup(),trace={},injected=Error('opaque fixture');
+  model[property]=injected;
+  await assert.rejects(readWith('owner',false,catalog=>catalog,trace),error=>error===injected);
+  assert.deepEqual(trace,{step,cache:'miss'});
+ }
 });
 test('no shared browser cache, data writes, or private content are added to native cache diagnostics',()=>{
  const source=fs.readFileSync('lib/idol/native-reader.ts','utf8').split('export async function readNativeDetail')[0];

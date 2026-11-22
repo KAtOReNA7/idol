@@ -26,15 +26,42 @@ before(async () => {
       import {saveNativeRecord} from './lib/idol/native-save';
       import {GET as readCatalog} from './app/api/catalog/route';
       import {AppError} from './lib/idol/feishu';
+      const logError = console.error.bind(console);
+      console.error = (...args) => {
+        if (env.TEST_CATALOG_TRACE && args.length===1 && typeof args[0]==='string') {
+          const event=JSON.parse(args[0]);
+          if(event.event==='idol_catalog_read_failed'){env.TEST_CATALOG_TRACE.push(event);return;}
+        }
+        logError(...args);
+      };
       export default {async fetch(request) {
         const url = new URL(request.url);
         try {
           if (url.pathname === '/api/catalog' && request.method === 'GET') {
-            if (!request.headers.has('X-Test-Queries')) return readCatalog(request);
+            const fault=request.headers.get('X-Test-Fault');
+            if (!fault && !request.headers.has('X-Test-Queries')) return readCatalog(request);
             const db=env.DB, statements=[];
-            const tracked={prepare(sql){statements.push(sql);return db.prepare(sql);}};
-            const result=await withEnv({DB:tracked},()=>readCatalog(request));
+            const events=[];
+            let checks=0, failures=0;
+            const tracked={prepare(sql){
+              statements.push(sql);
+              const point=sql.includes('AS catalog_generation') ? ['source-generation','cache-generation','response-generation'][checks++]
+                : sql.includes('FROM idol_native_snapshots') ? 'snapshot'
+                : sql.includes('FROM idol_native_fields') ? 'table-schema'
+                : sql.includes('FROM idol_native_records') ? 'table-rows'
+                : sql.includes('FROM idol_personal_mv_ratings') ? 'personal-ratings'
+                : sql.includes('FROM idol_storage_control') ? 'public-control' : null;
+              const warmFence=fault==='warm-final'&&point==='cache-generation';
+              if(fault==='table-decode'&&point==='table-schema'){
+                failures++;
+                return db.prepare(sql.replace('table_key,fields_json',"table_key,'{' AS fields_json"));
+              }
+              if(fault && (point===fault||warmFence)){failures++;throw Error('synthetic opaque failure; private-marker');}
+              return db.prepare(sql);
+            }};
+            const result=await withEnv({DB:tracked,TEST_CATALOG_TRACE:events,TEST_PUBLIC:request.headers.has('X-Test-Public')},()=>readCatalog(request));
             result.headers.set('X-Test-Queries',JSON.stringify(statements));
+            if(fault){result.headers.set('X-Test-Events',JSON.stringify(events));result.headers.set('X-Test-Failures',String(failures));}
             return result;
           }
           if (url.pathname === '/api/records' && request.method === 'GET') {
@@ -55,7 +82,7 @@ before(async () => {
     plugins: [{name: 'isolated-catalog-reader', setup(build) {
       build.onResolve({filter: /^(server-only|@\/app\/chatgpt-auth)$/}, args => ({path: args.path, namespace: 'local-test'}));
       build.onLoad({filter: /.*/, namespace: 'local-test'}, args => ({contents: args.path === 'server-only' ? '' :
-        'export const getChatGPTUser=async()=>('+JSON.stringify({userId:'test-owner',email:ownerEmail})+');'}));
+        'import {env} from "cloudflare:workers"; export const getChatGPTUser=async()=>env.TEST_PUBLIC?null:('+JSON.stringify({userId:'test-owner',email:ownerEmail})+');'}));
     }}],
   });
   runtime = new Miniflare(convertV4MiniflareOptions({
@@ -122,6 +149,52 @@ test('owner detail GET reads fresh private scores between two generation checks,
   await checkQueries([control,'idol_native_snapshots','idol_native_fields','idol_native_records',control,personal,control],0,1);
   await db.prepare('UPDATE idol_personal_mv_ratings SET score=8,revision=2 WHERE id=?').bind('test-private-score').run();
   await checkQueries([control,personal,control],8,2);
+});
+
+test('opaque owner read failures identify their native operation without retrying or exposing data',async()=>{
+  const workId='recOpaqueProbe';
+  await seed('works',workId,{[F.works.groups]:['recGroup'],[F.works.song]:'Synthetic probe',[F.works.url]:'https://youtu.be/abcdefghijk'});
+  const headers={Prefer:'omit-stage-candidates, work-detail='+workId};
+  for(const [point,step] of [
+    ['source-generation','source-generation'],['snapshot','snapshot'],['table-schema','table-schema'],
+    ['table-rows','table-rows'],['table-decode','table-decode'],['cache-generation','cache-generation'],['response-generation','response-generation'],
+    ['personal-ratings',null],['public-control',null],
+  ]){
+    await db.prepare("UPDATE idol_catalog_state SET generation=generation+1 WHERE user_id='test-owner'").run();
+    const response=await runtime.dispatchFetch('http://localhost/api/catalog?shape=display-v1',{
+      headers:{...headers,'X-Test-Fault':point,...(point==='public-control'&&{'X-Test-Public':'1'})},
+    });
+    assert.equal(response.status,502,point);
+    assert.equal(response.headers.get('X-Test-Failures'),'1',point);
+    assert.equal(response.headers.get('Server-Timing'),null,point);
+    const body=await response.json();
+    assert.equal(body.error,'REQUEST_FAILED');
+    assert.doesNotMatch(JSON.stringify(body),/private-marker|test-owner|recOpaqueProbe/);
+    const phase=point==='public-control'?'public-read':point==='personal-ratings'?'member-ratings':'native-read';
+    const event={event:'idol_catalog_read_failed',phase,kind:point==='table-decode'?'data':'unknown',status:502,retried:false,cancelled:false};
+    if(step)event.nativeStep=step;
+    if(step&&point!=='source-generation')event.nativeCache='miss';
+    assert.deepEqual(JSON.parse(response.headers.get('X-Test-Events')),[event],point);
+  }
+  const recovered=await runtime.dispatchFetch('http://localhost/api/catalog?shape=display-v1',{headers});
+  assert.equal(recovered.status,200);
+  assert.deepEqual((await recovered.json()).scope,{type:'work',workId});
+  const warm=await runtime.dispatchFetch('http://localhost/api/catalog?shape=display-v1',{headers:{...headers,'X-Test-Fault':'warm-final'}});
+  assert.equal(warm.status,502);
+  assert.equal(warm.headers.get('X-Test-Failures'),'1');
+  assert.deepEqual(JSON.parse(warm.headers.get('X-Test-Events')),[
+    {event:'idol_catalog_read_failed',phase:'native-read',kind:'unknown',nativeStep:'response-generation',nativeCache:'hit',status:502,retried:false,cancelled:false},
+  ]);
+  const publicRead=await runtime.dispatchFetch('http://localhost/api/catalog?shape=display-v1',{
+    headers:{...headers,'X-Test-Public':'1','X-Test-Queries':'1'},
+  });
+  assert.equal(publicRead.status,200);
+  const publicData=await publicRead.json();
+  assert.deepEqual(publicData.scope,{type:'work',workId});
+  assert.equal(Object.hasOwn(publicData,'personalMvRatings'),false);
+  const publicSql=JSON.parse(publicRead.headers.get('X-Test-Queries'));
+  assert.equal(publicSql.some(sql=>sql.includes('idol_personal_mv_ratings')),false);
+  assert.equal(publicSql.filter(sql=>sql.includes('SELECT generation FROM idol_catalog_state')).length,2);
 });
 
 for (const [title, id] of records) {

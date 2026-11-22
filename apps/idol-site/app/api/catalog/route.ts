@@ -5,7 +5,7 @@ import {findDetailWork,projectWorkCatalog} from '@/lib/idol/work-catalog';
 import {preferredDetailWork} from '@/lib/idol/work-catalog-request';
 import {projectBrowserCatalog,requestedBrowserCatalog,withoutStageCandidates} from '@/lib/idol/browser-catalog';
 import {assertSourceUnchanged} from '@/lib/idol/native-storage';
-import {withNativeCatalog} from '@/lib/idol/native-reader';
+import {withNativeCatalog,type NativeCatalogTrace} from '@/lib/idol/native-reader';
 import {personalMvRatingsForOwner} from '@/lib/idol/personal-mv-ratings';
 import {getReadableCatalog} from '@/lib/idol/durable-catalog';
 import {AppError} from '@/lib/idol/feishu';
@@ -55,7 +55,7 @@ function readFailureKind(error:unknown) {
  return transient?'transient-read':fallback;
 }
 
-type CatalogTrace = {phase:'identity'|'request'|'public-read'|'native-read'|'member-ratings'|'source-fence'|'legacy-read'|'project'};
+type CatalogTrace = {phase:'identity'|'request'|'public-read'|'native-read'|'member-ratings'|'source-fence'|'legacy-read'|'project';native:NativeCatalogTrace};
 async function catalogResponse(request:Request,readCatalog:<T>(read:()=>Promise<T>,ordinary?:boolean)=>Promise<T>,trace:CatalogTrace) {
   const user = await ownerForRequest();
   trace.phase='request';
@@ -83,7 +83,7 @@ async function catalogResponse(request:Request,readCatalog:<T>(read:()=>Promise<
     // The native reader can revalidate the generation and repeat its own guarded read.
     trace.phase='native-read';
     return {result,work,personal};
-   });
+   },trace.native);
   },!params.has('refresh'));
   let selection: {result:Catalog; work:Work|null; personal?:PersonalMvRatings};
   if (native.native) selection=native.value;
@@ -111,7 +111,7 @@ async function catalogResponse(request:Request,readCatalog:<T>(read:()=>Promise<
 
 export async function GET(request:Request) {
  let retried=false;
- const trace:CatalogTrace={phase:'identity'};
+ const trace:CatalogTrace={phase:'identity',native:{}};
  async function readCatalog<T>(read:()=>Promise<T>, ordinary=true) {
   request.signal.throwIfAborted();
   try {
@@ -136,8 +136,9 @@ export async function GET(request:Request) {
   if(response.status>=500) {
    // Workers Logs attaches the invocation request ID. Keep request headers, error text and data out of this event.
    try {
+    const native = trace.phase === 'native-read' ? trace.native : undefined;
     console.error(JSON.stringify({event:'idol_catalog_read_failed',phase:trace.phase,kind:readFailureKind(error),
-     status:response.status,retried,cancelled:request.signal.aborted}));
+     nativeStep:native?.step,nativeCache:native?.cache,status:response.status,retried,cancelled:request.signal.aborted}));
    } catch { /* Diagnostics must not replace the original response. */ }
   }
  }

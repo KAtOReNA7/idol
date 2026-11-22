@@ -41,7 +41,32 @@ test('Hearts2Hearts member MV links expose the work key for return focus',()=>{c
 
 test('Hearts2Hearts independent index hero and watch theme retain existing collaboration priority',()=>{const group=fs.readFileSync('components/group-detail.tsx','utf8');assert.match(group,/hearts2hearts-index-card/);assert.match(group,/\/artist\/hearts2hearts\/figma-hero.jpg/);const page=fs.readFileSync('app/page.tsx','utf8');assert.match(page,/nmixxExperience\?'nmixx-experience':hearts2heartsExperience\?'hearts2hearts-experience'/);const heading=page.split('\n').find(l=>l.includes('className="hearts2hearts-work-heading"'));assert.match(heading,/STAYC_GROUP_ID,NMIXX_GROUP_ID\]/);});
 
-test('Hearts2Hearts reuses all eight existing original portraits by verified byte identity',()=>{const evidence=JSON.parse(fs.readFileSync('data/hearts2hearts-artist-evidence.json'));for(const [name,v] of Object.entries(content.memberVisuals)){assert.equal(v.storageReuse.sameOriginalBytes,true);assert.equal(v.sha256,v.originalSha256);assert.equal(v.sha256,v.storageReuse.verifiedStoredSha256);assert.equal(v.previousMediaRoute,'/api/media?table=members&record='+evidence.stableIds.memberIds[name]+'&index=0');assert.deepEqual(v.dimensions,[1000,1000]);assert.equal(crypto.createHash('sha256').update(fs.readFileSync('public'+v.image)).digest('hex'),v.originalSha256);}assert.deepEqual(fs.readdirSync('public/artist/hearts2hearts').sort(),['figma-hero.jpg','hero.webp','iconic-heart-regular.jpg','iconic-heart.webp','lemon-tang.webp','logo.svg','moonride.webp','portraits'].sort());});
+test('Hearts2Hearts reuses all eight existing original portraits by verified byte identity', () => {
+ const evidence = JSON.parse(fs.readFileSync('data/hearts2hearts-artist-evidence.json'));
+ const portraitNames = [];
+ for (const [name, portrait] of Object.entries(content.memberVisuals)) {
+  assert.equal(portrait.storageReuse.sameOriginalBytes, true);
+  assert.equal(portrait.sha256, portrait.originalSha256);
+  assert.equal(portrait.sha256, portrait.storageReuse.verifiedStoredSha256);
+  assert.equal(portrait.previousMediaRoute, '/api/media?table=members&record=' + evidence.stableIds.memberIds[name] + '&index=0');
+  assert.deepEqual(portrait.dimensions, [1000, 1000]);
+  const bytes = fs.readFileSync('public' + portrait.image);
+  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), portrait.originalSha256);
+  portraitNames.push(portrait.image.split('/').pop());
+ }
+ const groupPath = '/artist/hearts2hearts/';
+ assert.equal(portraitNames.length, 8);
+ assert.deepEqual(fs.readdirSync('public' + groupPath + 'portraits').sort(), portraitNames.sort());
+ const expected = new Set(['figma-hero.jpg', 'hero.webp', 'iconic-heart-regular.jpg', 'iconic-heart.webp',
+  'lemon-tang.webp', 'logo.svg', 'moonride.webp', 'portraits']);
+ const editions = require('../data/mv-recognition-editions.json');
+ for (const edition of Object.values(editions)) {
+  for (const { preview } of Object.values(edition.portraits)) {
+   if (preview.startsWith(groupPath)) expected.add(preview.slice(groupPath.length).split('/')[0]);
+  }
+ }
+ assert.deepEqual(fs.readdirSync('public' + groupPath).sort(), [...expected].sort());
+});
 
 test('Hearts2Hearts MV format includes collaboration and remix MVs but excludes lyric and performance videos',()=>{const d=fixture();d.works[1].videoType='歌词视频';d.works[2].videoType='官方表演视频';for(const type of ['特别合作MV','混音版MV'])d.works.push({...d.works[2],id:'rec'+d.works.length,videoType:type});const mv=setup('/artists/hearts2hearts?section=works&format=mv',d).render();assert.match(mv,/全部作品<span>3<\/span>/);assert.equal((mv.match(/class="h2h-work"/g)||[]).length,3);const all=setup('/artists/hearts2hearts?section=works',d).render();assert.equal((all.match(/class="h2h-work"/g)||[]).length,5);for(const w of d.works)w.url='';const empty=setup('/artists/hearts2hearts?section=works&format=mv',d).render();assert.match(empty,/全部作品<span>0<\/span>/);});
 

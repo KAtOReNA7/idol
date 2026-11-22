@@ -4,7 +4,7 @@
 
 正式路由目录、具名 Figma 页面和逐团记录的名单一致，共 51 团，重复和遗漏均为 0。逐团索引按九类页面列出桌面、手机节点，给出素材来源文件、适用的专项实现和正式实测版本。原文件 53 页、3,676 个条目的清点保存在下方。初次清点定位 750 个位置、746 个不同节点，补录后的原索引有 751 个位置、747 个不同节点。[现行逐团索引](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [原索引](../evidence/20261122-group-design-coverage/group-screen-matrix.json)
 
-459 个「团体 × 页面类别」组合中，406 个已定位双宽候选画稿。VVUP 和 BEWAVE 校正后为 403 个，BEWAVE《SING !》补齐两项。YOUNG POSSE 本次补齐一项本人评分。另有 53 个至少一宽待定位，涉及 21 团。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
+459 个「团体 × 页面类别」组合中，407 个已定位双宽候选画稿。VVUP 和 BEWAVE 校正后为 403 个，BEWAVE《SING !》补齐两项。YOUNG POSSE 与 ADYA 各补齐一项本人评分。另有 52 个至少一宽待定位，涉及 20 团。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
 
 | 类别 | 双宽候选 | 至少一宽仍待定位的团 |
 | --- | ---: | --- |
@@ -16,7 +16,7 @@
 | MV 详情 | 51/51 | 无 |
 | 舞台详情 | 44/51 | izna、ifeye、ODD YOUTH、VCHA、HITGS、AtHeart、PURPLE KISS |
 | 时间轴 | 42/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
-| 评分或手帐状态 | 42/51 | GENBLUE、ADYA、UDTT、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
+| 评分或手帐状态 | 43/51 | GENBLUE、UDTT、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
 
 已在项目 Figma 中逐幅读取六团的 MV、舞台手帐及 PURPLE KISS 的 MV 手帐，共 26 幅。可辨认《La Vie en Rose》《LIKE YOU BETTER》《CODE》《BOOM》《P.O.W!》《LIGHTS ON》的真实 MV 和节目舞台，以及《Breath》MV 的两档设计。这 13 对已有作品级设计出处；旧稿中的成员截图占位和外跳提示仍与现行产品有差异，现代成员评分组件另有双宽 Figma 与 599 支可评 MV 的结构验收。本轮另读回三团的 14 幅画稿。RESCENE《LOVE ATTACK》与 QWER《SHOW DOWN》各补 MV 和准确节目舞台两对。WOOAH《BLUSH》原 MV 两幅补齐实图，新增 Just Dance 舞台和 LUCY 本人评分展开两对。[三团逐帧记录](../evidence/20261122-group-design-coverage/three-work-states.json) · [七团图层与版本](../evidence/20261122-group-design-coverage/journal-version-readback.json) · [成员评分组件](20261122-stayc-debut-and-scores.md)
 

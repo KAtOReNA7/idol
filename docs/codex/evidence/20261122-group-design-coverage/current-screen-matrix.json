@@ -26,7 +26,7 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 406,
+    "twoWidthBoardMatches": 407,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
@@ -36,7 +36,7 @@
       "mv": 51,
       "stage": 44,
       "timeline": 42,
-      "score": 42
+      "score": 43
     },
     "missingOrPartialBySurface": {
       "home": [],
@@ -99,7 +99,6 @@
       ],
       "score": [
         "genblue",
-        "adya",
         "udtt",
         "xg",
         "aespa",
@@ -109,7 +108,7 @@
         "lesserafim"
       ]
     },
-    "groupsWithMissingOrPartial": 21
+    "groupsWithMissingOrPartial": 20
   },
   "sources": {
     "inventory": "docs/codex/evidence/20261122-group-design-coverage/group-screen-matrix.json",
@@ -163,7 +162,8 @@
     "vvup-debut-work": "docs/codex/evidence/20261122-vvup-doo-doom-chit/design-and-sources.json",
     "bewave-previous-stage": "docs/codex/evidence/20261122-vvup-doo-doom-chit/bewave-historical-state.json",
     "bewave-sing": "docs/codex/worklogs/20261122-bewave-sing.md",
-    "youngposse-macaroni": "docs/codex/evidence/20261122-youngposse-macaroni/design-and-sources.json"
+    "youngposse-macaroni": "docs/codex/evidence/20261122-youngposse-macaroni/design-and-sources.json",
+    "adya-rizz": "docs/codex/worklogs/20261122-adya-rizz.md"
   },
   "groups": [
     {
@@ -1290,16 +1290,23 @@
           "1041:1697"
         ],
         "score": [
-          null,
-          null
+          "1561:1282",
+          "1561:1354"
         ]
       },
-      "revised": {},
+      "revised": {
+        "score": "adya-rizz"
+      },
       "implementation": [
         {
           "at": "v238",
           "scope": "首页或卡片两宽，范围按团别回执",
           "evidence": "v238"
+        },
+        {
+          "at": "开发版 d067fc28",
+          "scope": "舞台目录直接进入整体舞台分；同一表演视频的 MV 页分别保留五人图下评分。375、1425、305px 实测。",
+          "evidence": "adya-rizz"
         }
       ],
       "additional": [
@@ -1309,6 +1316,17 @@
           "nodes": [
             "1442:1553",
             "1442:1561"
+          ]
+        },
+        {
+          "scope": "《RIZZ》同一官方影像的 MV 与舞台整体评分，两宽与 320px 本人表单。《Per》的旧两种作品详情按各自时期留存。",
+          "source": "adya-rizz",
+          "nodes": [
+            "1561:1109",
+            "1561:1171",
+            "1561:1234",
+            "1561:1258",
+            "1561:1427"
           ]
         }
       ],

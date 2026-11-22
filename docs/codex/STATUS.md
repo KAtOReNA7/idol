@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v240。四类成员评分入口移到本人照片正下方。Hearts2Hearts《The Chase》八张首显图均已正式解码。NewJeans 和 SAY MY NAME 首次字体请求各减少 362,376 字节。[本批正式结果](worklogs/20261122-v240-release.md) |
+| 正式站 | v241。SPIA 与 Candy Shop 按发行及官网资料重做内页，UDTT 换用公司原标。两团目录默认照片在相同手机宽度下分别少传 93.4% 和 91.0%。[正式结果](worklogs/20261122-v241-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v240 正式应用 `ee8695d7`。SPIA 已完成内页设计及本地复验，Candy Shop 和 STAYC 成员页继续合批。AtHeart《3!4!》已在正式作品页静音起播，实际解码 1280 × 720。[v240 发布](evidence/20261122-v240/publication.json) · [SPIA 内页](worklogs/20261122-spia-inner.md) · [AtHeart 正式短播](evidence/20261122-v240/formal-atheart-trusted-click.json) |
+| 当前开发 | `codex/project-optimization-20261121`。v241 正式工程 `8c8d5104`。下一批处理 WOOAH《BLUSH》、RESCENE 与 QWER 的作品及舞台设计，并按逐团索引复核其他内页。[v241 发布](evidence/20261122-v241/publication.json) · [51 团 Figma 覆盖](worklogs/20261122-group-design-coverage.md) |
 
 ## 11 月 22 日更新
 
@@ -90,6 +90,6 @@ v216 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4
 
 v215 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4,106 项，Windows 通过 3,929 项、失败 138 项、跳过 39 项，WSL 通过 3,933 项、失败 134 项、跳过 39 项。相对 v214，两边均通过新加的六项回归，另外消除一条服务端首次渲染失败。余下失败均在上个版本出现。v213 已更新四团的作品评分、草稿、返回与隔离 D1 验收，消除 27 条旧失败。[v215 双平台结果](evidence/20261122-v215/tests.json) · [v214 双平台结果](evidence/20261122-v214/tests.json) · [四团详情验收](worklogs/20261122-current-detail-regression.md)
 
-接续 W!TCHX《BLALA》官方歌词版、ADYA《Per》指定完整版和四场独占舞台的同版站内来源。《BILLIONAIRE》沿用正式 v236 的站内 2160p 实播记录。飞书第 9 项已标记解决，第 17 项仍在跟进，修订 1216 读回 26 条已解决。三个桌面短目录首次加载时的重排留待讨论。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑顺序。个人目录批量读取在连接器提供对应工具时验证。[歌词版正式结果](evidence/20261122-v240/formal-blala-playback.json) · [独占舞台来源](worklogs/20261122-exact-stage-rights.md) · [成员照片逐项清单](evidence/20261122-member-release-portraits/remaining-194.csv) · [双宽排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
+接续 W!TCHX《BLALA》官方歌词版、ADYA《Per》指定完整版和四场独占舞台的同版站内来源。《BILLIONAIRE》沿用正式 v236 的站内 2160p 实播记录。飞书第 9、18 项已标记解决，修订 1217 读回 27/29；第 8、17 项继续跟进。三个桌面短目录首次加载时的重排留待讨论。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑顺序。个人目录批量读取在连接器提供对应工具时验证。[歌词版正式结果](evidence/20261122-v240/formal-blala-playback.json) · [独占舞台来源](worklogs/20261122-exact-stage-rights.md) · [成员照片逐项清单](evidence/20261122-member-release-portraits/remaining-194.csv) · [双宽排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
 
 前轮工程优化、发布与原始审查分别保存在各自的工作记录中。[上一正式版 v203](v203-release-20261030.md) · [项目审查](worklogs/20261121-project-audit.md) · [历史协作与验收](https://github.com/KAtOReNA7/idol/blob/0e77838a88f9ff9b14fb67f803156534c7c651e1/docs/codex/STATUS.md)

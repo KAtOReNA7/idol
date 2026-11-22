@@ -2,7 +2,55 @@
 // The tab's viewport belongs to the caller. Only public event controls and detail return actions are clicked.
 import {createRequire} from 'node:module';
 const require = createRequire(import.meta.url);
+const originalGroups = ['adya','witchx','ive'];
+// Each case pins the event AND the linked entity. All IDs are public navigation references.
+// Former-member cases are members attributed to this group only through the published historical affiliation.
+const sharedCases = {
+  newjeans: {shell:'.nj-timeline-shell', heading:'时间轴', samples:[
+    ['work','e-newjeans-attention-mv','recvxyOz5X2J0A'],
+  ]},
+  madein: {shell:'.sr-history', heading:'HISTORY', samples:[
+    ['work','e-madein-rise-release-carrier-hold','rec28ldfRTrCvB'],
+    ['member','e-madein-gaeun-hiatus-announced','rec28ldbniBgYn'],
+  ]},
+  qwer: {shell:'.sr-history', heading:'HISTORY', samples:[
+    ['work','e-qwer-formal-korean-debut','rec28ldfRTrEQV'],
+    ['member','e-qwer-initial-recruitment','recvxAPQCFvKfO'],
+  ]},
+  triples: {shell:'.sr-history', heading:'HISTORY', samples:[
+    ['work','e-triples-aaa-dimension-debut','rec28ldfRTrBOX'],
+  ]},
+  fromis9: {main:'main.f9-main', shell:'> section.f9-section.f9-timeline', heading:'时间轴',
+    headingSelector:'main.f9-main > section.f9-section.f9-timeline > .f9-heading > h2', samples:[
+    ['work','e-fromis9-glass-shoes-kr-prerelease','recvxyOz5XpBWP'],
+    ['former-member','e-fromis9-pledis-transfer','recvxyICzHLSpi'],
+    ['member','e-fromis9-pledis-transfer','recvxyICzHxbOq'],
+  ]},
+  kep1er: {shell:'.kf-timeline', heading:'大事时间轴', samples:[
+    ['member','e-kep1er-girls-planet-formation','recvxyICzHSB1r'],
+    ['former-member','e-kep1er-girls-planet-formation','rec28ldbniBgam'],
+    ['work','e-kep1er-first-impact-debut','recvxyOz5XMA6l'],
+  ]},
+  lesserafim: {shell:'.lf-official-section', heading:'大事时间轴', samples:[
+    ['member','e-lesserafim-source-new-group-announcement','recvxyICzHDMgU'],
+    ['former-member','e-lesserafim-six-member-lineup-announcement','recvxyICzHeqSw'],
+    ['work','e-lesserafim-formal-debut','recvxyOz5XwAaP'],
+  ]},
+  billlie: {shell:'.bf-section', heading:'Timeline', samples:[
+    ['release','e-billlie-formal-korean-debut','billlie-billage-chapter-one'],
+    ['work','e-billlie-billage-chapter-two-release','recvxyH5pzcGeh'],
+    ['member','e-billlie-haruna-hiatus-announcement','recvxyICzH2hbG'],
+  ]},
+};
+export const sharedTimelineGroups = Object.keys(sharedCases);
+const registry = require('../../../apps/idol-site/data/artist-timeline-registry.json');
+const sharedHosts = Object.fromEntries(sharedTimelineGroups.map(slug => {
+  const group=registry.find(row => row.slug === slug);
+  const {main='main',shell}=sharedCases[slug];
+  return [slug, main+' '+shell+' [data-timeline-host="'+group.groupId+'"][data-timeline-ready="true"][data-timeline-style-ready="true"] [data-timeline-event-id]'];
+}));
 const timelines = {
+  ...sharedHosts,
   adya: 'main#artist-content > .idol-adya-title + .idol-adya-timeline > li[id]',
   witchx: 'main#artist-content > .wk-title + .wk-timeline > li[id]',
   ive: 'main .sr-history [data-timeline-ready="true"][data-timeline-style-ready="true"] [data-timeline-event-id]',
@@ -18,6 +66,10 @@ function destination(slug, action) {
   if (action.kind === 'work') return {heading:'.detail:not(.stage-view) .music-work-title h1', back:'.detail:not(.stage-view) > button.back', title:action.label};
   if (action.kind === 'member') return {heading:'[data-member-layout][data-member-id="'+action.key+'"] h1',
     back:action.path==='/'?'.detail[data-member-layout] > button.back':'main .sr-member-detail .sr-back', title:action.label};
+  if (slug === 'billlie' && action.kind === 'release') {
+    const title=require('../../../apps/idol-site/data/runtime/billlie-figma-catalog.json').releases.find(row=>row.id===action.key)?.title;
+    return {heading:'main .bf-release-detail h1',back:'main .bf-release-detail button.bf-button',title:title??null};
+  }
   const data = publicReleases[slug];
   if (data) {
     const prefix = slug === 'adya' ? 'idol-adya' : 'wk';
@@ -91,8 +143,8 @@ function safeFailure(error) {
 }
 
 export async function checkTimelineEventActions(tab, {
-  site = 'https://idol-lens-private.wuke40758.chatgpt.site', groups = Object.keys(timelines),
-  startAction = 0, maxActions = Infinity, deadlineMs = 55000, modes = ['browser','page'],
+  site = 'https://idol-lens-private.wuke40758.chatgpt.site', groups = originalGroups,
+  startAction = 0, maxActions = Infinity, deadlineMs = 55000, modes = ['browser','page'], samplesOnly = false,
 } = {}) {
   const pw = tab.playwright;
   const origin = new URL(site).origin;
@@ -141,15 +193,26 @@ export async function checkTimelineEventActions(tab, {
   const normalize = value => value?.normalize('NFKC').replace(/\s+/g,' ').trim();
   for (const slug of groups) {
     if (Date.now() >= until) break;
+    if (!Object.hasOwn(timelines,slug)) throw Error('Unmapped artist timeline');
     const selector = timelines[slug];
-    if (!selector) throw Error('Unmapped artist timeline');
     const path = '/artists/' + slug, timeline = origin + path + '?section=updates';
     const group = {slug, events:[], totalActions:0, attempts:[]};
     results.push(group);
     const onList = url => url.origin===origin && url.pathname===path && url.searchParams.get('section')==='updates'
       && publicKeys.every(kind=>!url.searchParams.has(kind));
     const waitList = async () => {
-      if (slug !== 'ive') {
+      if (sharedCases[slug]) {
+        const selected=slug==='billlie'?/^大事$/:/时间轴/;
+        // On mobile the menu can be collapsed. The selected navigation state must still identify
+        // the timeline, since LE SSERAFIM and Billlie reuse the same timeline wrapper on their homes.
+        await pw.locator('nav [aria-current="page"]').filter({hasText:selected}).first().waitFor({state:'attached',...timeout(10000)});
+        const {heading,headingSelector}=sharedCases[slug];
+        // fromis_9's CSS flower can prefix its accessible heading. Match the text within the
+        // dedicated chronology heading; the home preview never has this section or selected nav.
+        const title = headingSelector ? pw.locator(headingSelector).filter({hasText:/^\s*(?:✤\s*)?时间轴\s*$/})
+          : pw.locator('main').getByRole('heading',{name:heading,exact:true}).first();
+        await title.waitFor({state:'visible',...timeout(10000)});
+      } else if (slug !== 'ive') {
         const title=slug==='adya'?'.idol-adya-title':'.wk-title';
         await pw.locator('main#artist-content > '+title+' > h1').filter({hasText:/^时间轴$/}).waitFor({state:'visible',...timeout(10000)});
       }
@@ -166,14 +229,28 @@ export async function checkTimelineEventActions(tab, {
       group.totalActions = actions.length;
       group.staticEvents = group.events.filter(e => !e.actions.length && !e.unrecognized).map(e => e.id);
       group.sourceOnlyEvents = group.events.filter(e => !e.actions.length && !e.unrecognized && e.sources).map(e => e.id);
+      const sampleLabels = new Map();
+      if (samplesOnly) {
+        if (!sharedCases[slug]) throw Error('Artist has no shared timeline samples');
+        group.missingSamples=[];
+        for (const [label,eventId,key] of sharedCases[slug].samples) {
+          const kind=label==='former-member'?'member':label;
+          const index=actions.findIndex(entry=>entry.event.id===eventId && entry.action.kind===kind && entry.action.key===key);
+          if (index < 0) group.missingSamples.push({label,event:eventId,key});
+          else sampleLabels.set(index,label);
+        }
+        group.expectedSamples=sharedCases[slug].samples.length;
+        group.sampledActionIndices=[...sampleLabels.keys()];
+      }
       for (const [actionIndex, {event,action}] of actions.entries()) {
         if (actionIndex < startAction || actionIndex >= startAction + maxActions || Date.now() >= until) continue;
-        const rowSelector=selector+(slug==='ive'?'[data-timeline-event-id=':'[id=')+JSON.stringify(event.id)+']';
+        if (samplesOnly && !sampleLabels.has(actionIndex)) continue;
+        const rowSelector=selector+(publicReleases[slug]?'[id=':'[data-timeline-event-id=')+JSON.stringify(event.id)+']';
         const source = pw.locator(rowSelector).locator('a[href]:visible,button:visible').nth(action.controlIndex);
         const spec = destination(slug,action);
         for (const mode of modes) {
           if (Date.now() >= until) break;
-          const row = {actionIndex,event:event.id,kind:action.kind,key:action.key,mode};
+          const row = {actionIndex,event:event.id,kind:action.kind,key:action.key,mode,...(samplesOnly&&{sample:sampleLabels.get(actionIndex)})};
           group.attempts.push(row);
           try {
             await list();
@@ -230,6 +307,13 @@ export async function checkTimelineEventActions(tab, {
       }
     } catch (error) { group.reason = safeFailure(error); }
   }
-  return {probeVersion:'timeline-ready-v2',site:origin, requestedGroups:groups, startAction, maxActions:Number.isFinite(maxActions)?maxActions:null, modes,
+  return {probeVersion:groups.some(slug=>sharedCases[slug])?'timeline-shared-v2':'timeline-ready-v2',site:origin, requestedGroups:groups, startAction, maxActions:Number.isFinite(maxActions)?maxActions:null, modes, samplesOnly,
     deadlineMs, deadlineReached:Date.now()>=until, groups:results};
+}
+
+// In a background tab: checkSharedTimelineSamples(tab,{groups:['newjeans','madein'],modes:['browser']}).
+// Pass the same groups to checkTimelineEventActions for every observed event/target combination.
+export function checkSharedTimelineSamples(tab,{groups=sharedTimelineGroups,...options}={}) {
+  if (groups.some(slug=>!Object.hasOwn(sharedCases,slug))) throw Error('Artist is outside the shared timeline batch');
+  return checkTimelineEventActions(tab,{...options,groups,samplesOnly:true});
 }

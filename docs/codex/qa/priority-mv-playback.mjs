@@ -4,9 +4,6 @@
  * const result = await checkPriorityMvPlayback(tab);
  * options.ids 可选择下列作品的子集。timeoutMs 为点击后每项最多等待的毫秒数。
  */
-import {createRequire} from 'node:module';
-const require = createRequire(import.meta.url);
-const load = require('../../../apps/idol-site/tests/helpers/public-artist-loader.cjs');
 const site = 'https://idol-lens-private.wuke40758.chatgpt.site';
 const works = [
   {id:'rec28ldfRTrLku', title:'BILLIONAIRE', original:'Gz_yRl6703c', provider:'RUTUBE',
@@ -20,6 +17,22 @@ const stage = '.detail:not(.stage-view) .video-stage';
 const frameSelector = stage+' > iframe';
 const attached = ['Target.attachedToTarget'];
 const delay = ms => new Promise(resolve=>setTimeout(resolve,ms));
+
+export function acceptPlaybackTime(samples,sample) {
+  if (Number.isFinite(sample?.time) && sample.time>0 && samples.length<2 && (!samples.length || sample.time>samples[0].time)) {
+    samples.push(sample);
+  }
+  return samples.length===2;
+}
+
+export async function leavePlaybackTab(tab) {
+  try {
+    await tab.goto('about:blank');
+    if(await tab.url()==='about:blank')return;
+  } catch { /* A dedicated test tab can still be closed if navigation failed. */ }
+  await tab.close();
+  throw Error('未能返回空白页，已关闭测试标签。');
+}
 
 function approvedUrl(value,work,requireMute) {
   try {
@@ -68,14 +81,7 @@ async function checkOne(tab,cdp,work,timeoutMs) {
   const url=new URL('/?view=works&work='+work.id+'&video=mv',site);
   let timer,exiting,cursor,targetId;
   function leave() {
-    if(!exiting)exiting=(async()=>{
-      try {
-        await tab.goto('about:blank');
-        if(await tab.url()==='about:blank')return;
-      } catch { /* A dedicated test tab can still be closed if navigation failed. */ }
-      await tab.close();
-      throw Error('未能返回空白页，已关闭测试标签。');
-    })();
+    if(!exiting)exiting=leavePlaybackTab(tab);
     return exiting;
   }
   try {
@@ -136,10 +142,9 @@ async function checkOne(tab,cdp,work,timeoutMs) {
         if(observation?.error){row.providerError=observation.error;row.status='provider-error';return row;}
         if(observation?.audible){row.status='mute-not-confirmed';return row;}
         if(observation?.sample){
-          const sample=observation.sample, first=row.samples[0];
-          if(!first || sample.time>first.time)row.samples.push(sample);
+          const finished=acceptPlaybackTime(row.samples,observation.sample);
           if(observation.bitrateEvidence){row.kbps=observation.kbps;row.bitrateEvidence=observation.bitrateEvidence;}
-          if(row.samples.length===2){row.status='playing';return row;}
+          if(finished){row.status='playing';return row;}
         }
       } else if(await failure.count()){row.status='player-error';return row;}
       else if(mounted){row.status='player-disappeared';return row;}
@@ -159,6 +164,8 @@ export async function checkPriorityMvPlayback(tab,{ids=works.map(work=>work.id),
   if(!Array.isArray(ids) || !ids.length || new Set(ids).size!==ids.length || !ids.every(id=>works.some(work=>work.id===id)))
     throw Error('请选择三支已核对作品中的一项或多项。');
   if(!Number.isFinite(timeoutMs) || timeoutMs<500 || timeoutMs>15000)throw Error('播放采样时限为 500 至 15000 毫秒。');
+  const {createRequire}=await import('node:module');
+  const load=createRequire(import.meta.url)('../../../apps/idol-site/tests/helpers/public-artist-loader.cjs');
   const {workPlayback}=load('lib/idol/work-playback.ts'), rows=[];
   const plan=ids.map(id=>works.find(work=>work.id===id));
   for(const work of plan){

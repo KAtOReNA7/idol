@@ -46,3 +46,9 @@ YG 中文与英文《DRIP》目录将《BILLIONAIRE》列为第五首，页面�
 首发视频的发布说明列出了 BABYMONSTER 的官方 Facebook 和 Instagram 账号。本轮检索没有找到能核对 163.497 秒片长并提供独立嵌入的官方帖。Facebook 账号主页读取受限。NAVER TV、KakaoTV 及官方微博的公开检索也没有找到可验的同版视频 ID。YG 仍将 2 月 7 日的首发导演剪辑与 2 月 14 日的练舞版分开列出。[首发及官方账号](https://www.youtube.com/watch?v=Gz_yRl6703c) · [官方 Facebook](https://www.facebook.com/babymonster.ygofficial/) · [YG 首发说明](https://ygfamily.com/cn/news/report/6728)
 
 在 v225 同一作品页另做了一次静音诊断。9.2 秒内，RUTUBE 向本站发出了初始化和就绪事件，未取得出画或递增读数，本站仍只显示重新加载按钮。这个样本中未捕获具体拒播码。[播放器事件和屏幕控件](../evidence/20261122-v226/v225-player-status.json) · [本站短播](../evidence/20261122-v226/v225-priority-recheck.json) · [播放器官方事件定义](https://rutube.ru/info/embed/)
+
+### v228《BILLIONAIRE》自动播放参数对照
+
+RUTUBE 用 `autostartmute=true` 设置自动起播时静音，用 `autoplay=true` 覆盖视频的默认自动播放设置。`q=1080` 请求初始画质，播放器可优先采用用户已保存的档位。访客点击本站的播放按钮后，页面会在播放器就绪时发送播放指令。[RUTUBE 官方嵌入说明](https://rutube.ru/info/embed/)
+
+Codex 内置浏览器在本机页面上使用与 v228 相同的播放器组件和首发版片源，每次点一次播放，各观察 10 秒。第一轮使用现有地址，第二轮只增加 `autoplay=true`。两次均收到初始化、就绪、当前画质和可选画质四类消息，播放器报告的当前档位高度都是 880。两次均未读到递增的播放时间、实际解码宽高、独立视频码率或具体报错。加上参数后仍未能验证起播，因此此次沿用现有配置。《BILLIONAIRE》在 v228 正式站的上次短播也未通过。[本机两次对照结果](../evidence/20261122-v228/billionaire-autoplay-comparison.json) · [v228 正式站短播](../evidence/20261122-v228/formal-mv-playback.json)

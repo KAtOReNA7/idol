@@ -1,0 +1,55 @@
+{
+  "origin": "http://127.0.0.1:52496",
+  "workId": "rec28ldfRTrLku",
+  "videoId": "Gz_yRl6703c",
+  "timeoutMs": 10000,
+  "method": "Public trusted RUTUBE messages on a loopback parent. Active quality is provider-reported; decoded size and independent bitrate are unavailable.",
+  "rows": [
+    {
+      "condition": "current",
+      "status": "no-confirmed-progress",
+      "decodedSize": null,
+      "kbps": null,
+      "events": [
+        "player:init",
+        "player:ready",
+        "player:currentQuality",
+        "player:qualityList"
+      ],
+      "samples": [],
+      "ended": null,
+      "frames": 1,
+      "observedSrc": "https://rutube.ru/play/embed/9d692403740a2ae5e84dbd5a8ec167d0?autostartmute=true&q=1080",
+      "providerError": null,
+      "reportedMuted": null,
+      "reportedQuality": {
+        "event": "player:currentQuality",
+        "height": 880
+      },
+      "elapsedMs": 10096
+    },
+    {
+      "condition": "explicit",
+      "status": "no-confirmed-progress",
+      "decodedSize": null,
+      "kbps": null,
+      "events": [
+        "player:init",
+        "player:ready",
+        "player:currentQuality",
+        "player:qualityList"
+      ],
+      "samples": [],
+      "ended": null,
+      "frames": 1,
+      "observedSrc": "https://rutube.ru/play/embed/9d692403740a2ae5e84dbd5a8ec167d0?autostartmute=true&q=1080&autoplay=true",
+      "providerError": null,
+      "reportedMuted": null,
+      "reportedQuality": {
+        "event": "player:currentQuality",
+        "height": 880
+      },
+      "elapsedMs": 10173
+    }
+  ]
+}

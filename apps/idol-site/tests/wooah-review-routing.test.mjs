@@ -130,7 +130,8 @@ test('build produces additive physical entries, actual components, originals and
     assert.ok(!manifest.bundleInputs.some(file=>/data\/snapshot|native-save|app\/api\//.test(file)));
     for(const asset of manifest.assets) assert.equal(digest(path.join(out,asset.path)),asset.sha256,asset.path);
     for(const sheet of ['fonts/genblue/genblue-text.css','fonts/wooah/wooah-text.css']) for(const match of fs.readFileSync(path.join(out,sheet),'utf8').matchAll(/url\(['"]?(\/[^)'"\s]+)/g)) assert.ok(fs.existsSync(path.join(out,match[1])),match[1]);
-    assert.ok(fs.existsSync(path.join(out,'fonts/Syne.ttf')));
+    assert.ok(fs.existsSync(path.join(out,'fonts/genblue/roboto-condensed-black-latin.woff2')));
+    assert.ok(fs.existsSync(path.join(out,'artist/wooah/identity/official-mark.png')));
     assert.deepEqual(existing.map(file=>digest(path.join(root,file))),before);
   } finally { fs.rmSync(out,{recursive:true,force:true}); }
 });

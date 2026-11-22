@@ -71,6 +71,7 @@ test('zero, null and decimal scores remain independent for MV/stage; unbound sta
 test('finite return/focus routes preserve query context and reject foreign or conflicting destinations',()=>{
  const origin=route({section:'works',format:'mv',queue:'unrated',search:'woo!ah!'}),destination=videoRoute(mv);
  const focus={path:origin,href:destination,key:'media-title:'+mv.key};assert.deepEqual(api.readWooahLinkFocus(focus,origin),focus);
+ assert.deepEqual(api.readWooahLinkFocus({...focus,key:'media-arrow:'+mv.key},origin),focus);
  const memberFocus={path:destination,href:memberRoute(songyee),key:'member:'+songyee.id};assert.deepEqual(api.readWooahLinkFocus(memberFocus,destination),memberFocus);
  for(const value of ['https://example.com','//example.com','/artists/genblue','/artists/wooah?section=members&member=recMissing','/artists/wooah?section=works&format=stage&media='+mv.key,'/artists/wooah?section=works&section=members','/artists/wooah#fragment','/artists/wooah?unsupported=1']){assert.equal(api.readWooahRoute(value),null);assert.equal(api.wooahRecordHref(synthetic,mv,value),null);}
  assert.equal(api.readWooahLinkFocus({...focus,key:'member:'+songyee.id},origin),null);
@@ -90,6 +91,9 @@ test('49 real React route states render independently with synthetic data and ex
  assert.equal(routes.length,49);
  for(const path of routes){const html=render(path);assert.ok(html.includes('data-artist="wooah"'));assert.ok(!html.includes('这个页面地址暂不可用'));assert.ok(!html.includes('时间轴暂时无法显示'));}
  const home=render(route({}));for(const member of design.members)assert.ok(home.includes(member.displayName));
+ const rows=[...render(route({section:'works'})).matchAll(/<article[^>]+class="wa-video-row [^>]+>([\s\S]*?)<\/article>/g)];
+ assert.equal(rows.length,design.videos.length);
+ for(const row of rows){assert.equal((row[1].match(/<a\s/g)||[]).length,1);assert.match(row[1],/class="wa-video-hit"/);}
  const hero=home.match(/<section class="wa-group-hero"[\s\S]*?<\/section>/)?.[0];assert.ok(hero);
  assert.ok(hero.includes('href="'+design.hero.runtime+'"'),'the full official original opens on request');
  assert.equal((hero.match(new RegExp('src="'+design.groupPreview+'"','g'))||[]).length,1);
@@ -105,8 +109,19 @@ test('49 real React route states render independently with synthetic data and ex
  assert.ok(memberHtml.includes('data-member-mv-id="'+songyee.id+'"'));assert.ok(memberHtml.includes('media-title:'+mv.key));
  assert.ok(mvHtml.includes('data-mv-members="'+mv.key+'"'));assert.ok(mvHtml.includes('member:'+songyee.id));
  assert.ok(!render(videoRoute(stage),c).includes('data-mv-members='));
- assert.ok(mvHtml.includes('查看作品记录'));assert.ok(render(videoRoute(mv),c,{canEdit:true}).includes('打开评分与观看记录'));
- const release=render(releaseRoute(design.releases[0]),c);assert.ok(!release.includes('/?view=works'));assert.ok(!release.includes('打开评分与观看记录'));
+ for(const video of [mv,stage]){
+  for(const canEdit of [false,true]){
+   const html=render(videoRoute(video),c,{canEdit});
+   const detail=html.match(/<div class="wa-detail-copy">([\s\S]*?)<\/article>/)[1];
+   const firstLink=detail.match(/<a [^>]*href="([^"]+)"[^>]*>([^<]*)<\/a>/);
+   assert.equal(firstLink[1],api.wooahRecordHref(c,video,videoRoute(video)).replaceAll('&','&amp;'));
+   assert.equal(firstLink[2],canEdit?'在站内观看与评分':'在站内观看');
+   assert.equal(detail.split(firstLink[1]).length-1,1);
+   assert.match(detail,/<details class="wa-sources">[^]*?<a [^>]*href="https:\/\/[^]*?<\/details>/);
+   assert.ok(!detail.includes('前往官方视频'));
+  }
+ }
+ const release=render(releaseRoute(design.releases[0]),c);assert.ok(!release.includes('/?view=works'));assert.ok(!release.includes('在站内观看与评分'));
 });
 
 test('failed/foreign/malformed catalog keeps editorial pages and recovery available without borrowed records',()=>{

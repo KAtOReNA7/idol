@@ -10,5 +10,7 @@ export function readWooahLinkFocus(value:unknown,path:string):WooahLinkFocus|nul
   :target.release?['release:','featured-release:','related-release:','next-release:'].map(p=>p+target.release)
   :target.media?['media-title:','media-arrow:','related-media:','hero-media:'].map(p=>p+target.media)
   :['return'];
- return (v.key==='return'||keys.includes(v.key))?{path,href:v.href,key:v.key}:null;
+ if(v.key!=='return'&&!keys.includes(v.key))return null;
+ const key=target.media&&v.key==='media-arrow:'+target.media?'media-title:'+target.media:v.key;
+ return {path,href:v.href,key};
 }

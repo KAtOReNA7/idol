@@ -112,7 +112,8 @@
 [data-artist="wooah"] .wa-result{margin-top:22px;color:var(--wa-muted);font-size:13px}
 [data-artist="wooah"] .wa-work-section{margin-top:62px}
 [data-artist="wooah"] .wa-video-index{border-top:1px solid var(--wa-line)}
-[data-artist="wooah"] .wa-video-row{display:grid;grid-template-columns:36px minmax(0,1fr) minmax(130px,.25fr) 38px;gap:24px;align-items:center;border-bottom:1px solid var(--wa-line);padding-block:29px;min-width:0}
+[data-artist="wooah"] .wa-video-row{min-width:0;border-bottom:1px solid var(--wa-line)}
+[data-artist="wooah"] .wa-video-hit{display:grid;grid-template-columns:36px minmax(0,1fr) minmax(130px,.25fr) 38px;gap:24px;align-items:center;padding-block:29px;min-width:0}
 [data-artist="wooah"] .wa-video-number{font-size:12px;color:var(--wa-muted)}
 [data-artist="wooah"] .wa-video-title{min-width:0}
 [data-artist="wooah"] .wa-video-title h3{font-size:clamp(23px,2.8cqw,40px);line-height:1.17;font-weight:400;letter-spacing:-.03em;overflow-wrap:anywhere}
@@ -253,7 +254,7 @@
  [data-artist="wooah"] .wa-categories a{font-size:15px;gap:6px;padding-block:16px}
  [data-artist="wooah"] .wa-categories a>span{font-size:10px}
  [data-artist="wooah"] .wa-work-section{margin-top:42px}
- [data-artist="wooah"] .wa-video-row{grid-template-columns:23px minmax(0,1fr) 24px;gap:12px;padding-block:23px;align-items:start}
+ [data-artist="wooah"] .wa-video-hit{grid-template-columns:23px minmax(0,1fr) 24px;gap:12px;padding-block:23px;align-items:start}
  [data-artist="wooah"] .wa-video-number{font-size:10px;padding-top:6px}
  [data-artist="wooah"] .wa-video-title h3{font-size:25px;line-height:1.25}
  [data-artist="wooah"] .wa-video-title p{font-size:11px;margin-top:8px}

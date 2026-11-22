@@ -11,6 +11,18 @@ const media = require('../data/mv-public-media.json');
 const genieOriginal = (issue, file) =>
   `https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/${issue}/Mgz_Sub_IMG_${file}.jpg/dims/resize/Q_80,0`;
 const publisherSeries = {
+  'wooah-blush-2024': {
+    label: 'BLUSH · 本曲概念照',
+    source: 'https://www.etnews.com/20240406000018',
+    original: mediaId => 'https://pbs.twimg.com/media/' + mediaId + '?format=jpg&name=orig',
+    files: {
+      recvxyICzHGJek: 'GKSu6IUa8AA_RvV',
+      recvxyICzHzhWr: 'GKSvANUaUAAvz2p',
+      recvxyICzHu6mX: 'GKSvEw3a4AAz1tr',
+      recvxyICzH84mF: 'GKSvJL_aIAA89C0',
+      recvxyICzHi2X6: 'GKSvOf4aEAAemBy',
+    },
+  },
   'rescene-scenedrome-202408': {
     label: 'SCENEDROME · 本次发行概念照',
     source: 'https://www.hellokpop.com/kpop/rescene-makes-a-splash-with-first-scenedrome-concept-images/',
@@ -186,6 +198,7 @@ test('Attention shows each member’s 2022 debut portrait, with the credited ful
 });
 
 const reviewedReleases = [
+  ['BLUSH', 'wooah-blush-2024', 'recvxyH5pz0vNt', 'yh5W41ANcjo', 5],
   ['LOVE ATTACK', 'rescene-scenedrome-202408', 'rec28ldfRTrDat', '9XttLI0oH0I', 5],
   ['The Chase', 'hearts2hearts-the-chase-2025', 'rec28ldfRTrzDX', 'kxUA2wwYiME', 8],
   ['SO BAD', 'star-to-a-young-culture-2020', 'recvxyH5pzZo3m', 'gMe1c4UegBY', 6],

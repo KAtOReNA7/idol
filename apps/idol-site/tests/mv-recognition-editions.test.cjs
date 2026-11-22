@@ -172,6 +172,7 @@ const reviewedReleases = [
   ['Purple', 'wish-2021', 'recvxyH5pzTgrL', 'UE--H12gl2I', 5],
   ['Bad Girl', 'qurious-2020', 'recvxyH5pzV8fK', 'xwDmGC2fTfU', 5],
   ["I Don't Miss U", 'qurious-2020', 'recvxyH5pz4VGa', 'hPzz4cRxtco', 5],
+  ['I DO ME', 'kiiikiii-uncut-gem-2025', 'rec28ldfRTrAb0', 'hAEfi_SKTEU', 5],
 ];
 
 for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {

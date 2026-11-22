@@ -9,13 +9,16 @@ import {MemberPublicCredits} from '@/components/public-work-credits';
 import {MemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPhysicalFacts} from '@/components/member-physical-facts';
 import {ArtistTimelineHost,useArtistTimelineHostOptions} from './artist-timeline-host';
-import {memberDisplayName} from '@/lib/idol/member-display-name';
+import {memberChineseName,memberDisplayName} from '@/lib/idol/member-display-name';
 import {useCallback,useEffect,useMemo,useRef,useState,useSyncExternalStore,type ComponentProps} from 'react';
 import {readArtistCatalog} from '@/lib/idol/catalog-read-deadline';
 import {ArrowLeft,ArrowUpRight,ImageIcon,Play,Search} from 'lucide-react';
 import type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';
 import {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';
 import {MvPhotoReference} from '@/components/mv-photo-reference';
+import {MvIdentityPhoto} from '@/components/mv-identity-photo';
+import {mvRecognitionEdition} from '@/lib/idol/mv-recognition-edition';
+import {OriginalPhotoLink} from './original-photo-link';
 import {memberWorks,memberWorkSummary} from '@/lib/idol/member-works';
 import {safeGroupLink} from '@/lib/idol/group-detail';
 import {approvedVideoPoster} from '@/lib/idol/approved-video-poster';
@@ -25,7 +28,17 @@ import {PhotoLightbox} from './photo-lightbox';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from './reliable-image';
 import {useArtistScroll} from './use-artist-scroll';
 
-type KiiikiiiContent=ExpandedArtistContent&{releaseCoverage:{scope:string};featuredReleaseIds:string[];releaseVideoIds:Record<string,string[]>};
+type DebutCampaign = {
+ page: string;
+ staff: string;
+ logo: string;
+ group: string;
+ groupOriginal: string;
+ jar: string;
+ workId: string;
+ videoId: string;
+};
+type KiiikiiiContent=ExpandedArtistContent&{debutCampaign:DebutCampaign;releaseCoverage:{scope:string};featuredReleaseIds:string[];releaseVideoIds:Record<string,string[]>};
 const path='/artists/kiiikiii';
 const sections:[ArtistSection,string][]=[['overview','概览'],['works','作品与舞台'],['members','成员'],['updates','大事时间轴'],['records','发行与成绩']];
 const queues=[['all','全部作品'],['tonight','待看'],['rewatch','高分重温'],['unrated','看过待评分']];
@@ -35,7 +48,42 @@ const external=(url:string)=>safeGroupLink(url)??undefined;
 function subscribe(fn:()=>void){window.addEventListener('popstate',fn);window.addEventListener('artist-location-change',fn);return()=>{window.removeEventListener('popstate',fn);window.removeEventListener('artist-location-change',fn);};}
 function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}
 function Picture({src,alt,priority=false,identityKey,missingLabel='本 MV 个人造型图暂缺'}:{src?:string|null;alt:string;priority?:boolean;identityKey?:string;missingLabel?:string}){return <ReliableImage src={src} identityKey={identityKey??src??alt} alt={alt} priority={priority} referrerPolicy="no-referrer" missing={<div className="kk-photo-empty"><ImageIcon size={22}/><span>{missingLabel}</span></div>} errorFallback={<div className="kk-photo-empty"><ImageIcon size={22}/><span>图片暂未加载</span></div>}/>;}
-function Heading({label,title,onMore}:{label:string;title:string;onMore?:()=>void}){return <div className="kk-heading"><div><small>{label}</small><h2>{title}</h2></div>{onMore&&<button onClick={onMore}>查看全部<ArrowUpRight size={14}/></button>}</div>;}
+function Heading({label,title,onMore}:{label:string;title:string;onMore?:()=>void}){return <div className="kk-heading"><div>{label&&<small>{label}</small>}<h2>{title}</h2></div>{onMore&&<button onClick={onMore}>查看全部<ArrowUpRight size={14}/></button>}</div>;}
+function DebutOpening({content,work,returnTo,openPhoto}:{
+ content:KiiikiiiContent;
+ work:Work|undefined;
+ returnTo:string;
+ openPhoto:(src:string,label:string)=>void;
+}){
+ const campaign=content.debutCampaign;
+ const sameVideo=work&&work.id===campaign.workId&&videoId(work.url)===campaign.videoId;
+ const groupLabel='《UNCUT GEM》官网五人合照';
+ return <section className="kk-campaign" aria-labelledby="kk-artist-name">
+  <div className="kk-campaign-heading">
+   <h1 id="kk-artist-name"><img src={campaign.logo} alt="KiiiKiii" width="214" height="68"/></h1>
+   <A href="/?view=groups"><ArrowLeft size={14}/>团体索引</A>
+  </div>
+  <div className="kk-campaign-spread">
+   <figure>
+    <OriginalPhotoLink href={campaign.groupOriginal} aria-label={'查看'+groupLabel+'原图'} onOpen={src=>openPhoto(src,groupLabel)}>
+     <Picture src={campaign.group} identityKey={'hero:'+content.groupId} alt={groupLabel} priority missingLabel="官方团体照暂缺"/>
+    </OriginalPhotoLink>
+    <figcaption>{groupLabel} · 查看原图</figcaption>
+   </figure>
+   <div className="kk-campaign-intro">
+    <p data-home-introduction="kiiikiii"><span className="group-intro-label">团体介绍</span>{publicCustomArtistText(content.profile.summary)}</p>
+    {work&&<A className="kk-campaign-work" href={artistWorkUrl(work,false,returnTo)}>
+     {sameVideo&&<img src={campaign.jar} alt="" width="74" height="106"/>}
+     <span><small>{[work.videoType,work.releaseDate].filter(Boolean).join(' · ')}</small><strong>{work.song||work.name}</strong><span>观看与评分 →</span></span>
+    </A>}
+    <div className="kk-campaign-sources">
+     <A href={campaign.page} target="_blank" rel="noopener noreferrer">首发期官网<ArrowUpRight size={12}/></A>
+     <OriginalPhotoLink href={content.hero.image} onOpen={src=>openPhoto(src,publicCustomArtistText(content.hero.caption))}>日本官网横幅</OriginalPhotoLink>
+    </div>
+   </div>
+  </div>
+ </section>;
+}
 function WorkCard({work,returnTo}:{work:Work;returnTo:string}){
  const id=videoId(work.url),poster=approvedVideoPoster(work.id,id,'mv');
  return <article className="kk-work"><A href={artistWorkUrl(work,false,returnTo)}><div className="kk-work-thumb">{<ReliableImage src={poster?.src??(id?(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null)} identityKey={'work:'+work.id} alt={`${work.song||work.name} · ${poster?.label??'视频封面'}`} referrerPolicy="no-referrer" fallback={<div className="kk-text-cover"><strong>{work.song||work.name}</strong><Play size={24}/></div>}/>}</div>{poster&&<small className="kk-poster-caption">{poster.label}</small>}<h3>{work.song||work.name}</h3><p>{[work.releaseDate,work.version||work.videoType].filter(Boolean).join(' · ')}</p><span className="kk-score">我的{work.videoType==='官方MV'?' MV':'作品'}分 <b>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</b></span></A><div className="kk-work-actions"><A className="kk-button" href={artistWorkUrl(work,false,returnTo)}><Play size={13}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A className="kk-button" href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={12}/></A>}</div></article>;
@@ -78,7 +126,7 @@ export default function KiiikiiiArtist({content}:{content:KiiikiiiContent}){
  const featured=content.featuredReleaseIds.map(id=>content.releases.find(r=>r.id===id)).filter((r):r is KiiikiiiContent['releases'][number]=>!!r);
  const releaseWorks=(releaseId:string)=>collection?.works.filter(w=>(content.releaseVideoIds[releaseId]??[]).includes(videoId(w.url)??''))??[];
  const visual=(m:Member)=>content.memberVisuals[m.stageName];
- function roster(){return <><div className="kk-roster">{shownMembers.map(m=><button key={m.id} data-artist-member-trigger={m.id} onClick={()=>navigate({section:'members',member:m.id})}><span className="kk-member-number">MEMBER {String(members.indexOf(m)+1).padStart(2,'0')}</span><span className="kk-portrait-frame"><Picture identityKey={'member:'+m.id} src={visual(m)?.image} alt={m.stageName+' · '+content.portraitSet.label} missingLabel="成员照暂缺"/></span><strong><span className="member-display-name">{memberDisplayName(m)}</span><ArrowUpRight size={13}/></strong><small>{m.status||'成员档案'}</small></button>)}</div><p className="kk-credit">{publicCustomArtistCaption(content.portraitSet.label,content.portraitSet.date)}</p></>;}
+ function roster(){return <><div className="kk-roster">{shownMembers.map(m=><button key={m.id} data-artist-member-trigger={m.id} onClick={()=>navigate({section:'members',member:m.id})}>{route.section==='members'&&<span className="kk-member-number">MEMBER {String(members.indexOf(m)+1).padStart(2,'0')}</span>}<span className="kk-portrait-frame"><Picture identityKey={'member:'+m.id} src={visual(m)?.image} alt={m.stageName+' · '+content.portraitSet.label} missingLabel="成员照暂缺"/></span><strong><span className="member-display-name">{memberDisplayName(m).replace(' · ',' / ')}</span></strong>{route.section==='members'&&m.status&&<small>{m.status}</small>}</button>)}</div><p className="kk-credit">{publicCustomArtistCaption(content.portraitSet.label,content.portraitSet.date)}</p></>;}
  function social(){return <section className="kk-social" aria-label="官方账号与粉丝数">{content.social.map(s=><A href={external(s.url)} key={s.platform} target="_blank" rel="noopener noreferrer"><small>{s.platform}<ArrowUpRight size={14}/></small><strong>{s.display?.replace(/\s*(?:粉丝|订阅|followers?|subscribers?)\s*$/i,'').trim()||'暂无公开数字'}</strong><span>{s.metric} · {s.handle} · {s.observedAt.slice(0,10)}</span></A>)}</section>;}
  function news(){return <div className="kk-news">{content.updates.map(u=><A key={u.id} href={external(u.url)} target="_blank" rel="noopener noreferrer"><div className="kk-news-image">{u.image?<Picture identityKey={'news:'+u.id} src={u.image} alt={u.title}/>:<strong>{u.title}</strong>}</div><time>{publicCustomArtistText(u.date)} · {u.publisher}</time><h3>{u.title}</h3><p>{publicCustomArtistText(u.summary)}</p><span>查看官方发行<ArrowUpRight size={13}/></span></A>)}</div>;}
  function renderTimeline(){return <ArtistTimelineHost groupId={content.groupId} catalog={data} background={<>{news()}{collectionFeature()}</>} loading={loading} error={error} onRetry={retry}/>;}
@@ -95,22 +143,24 @@ export default function KiiikiiiArtist({content}:{content:KiiikiiiContent}){
   const years=[...new Set([...content.releases.map(r=>r.date.slice(0,4)),...(content.wins??[]).map(w=>w.date.slice(0,4))])].sort().reverse();
   return <><p className="kk-scope">销量按发行年份筛选，一位按获奖年份筛选。</p><div className="kk-pills" aria-label="成绩年份">{['all',...years].map(y=><button key={y} aria-pressed={year===y} onClick={()=>setYear(y)}>{y==='all'?'全部':y}</button>)}</div><div className="kk-record-columns"><section><small className="kk-eyebrow">SALES / CIRCLE</small><strong className="kk-total">{sales.copies===null?'暂无数据':sales.copies.toLocaleString('zh-CN')}</strong><h3>Circle 已公开数据合计</h3><p className="kk-scope">{publicCustomArtistText(content.salesCoverage.scope)} 统计于 {content.asOf}。</p>{(compact?releases.slice(0,1):releases).map(r=><article className="kk-sale-row" key={r.id}><Picture identityKey={'release:'+r.id} src={r.image} alt={r.title+' 官方发行封面'}/><div><h4>{r.title}</h4><time>{r.date}</time><A href={external(r.circle!.sourceUrl)} target="_blank" rel="noopener noreferrer">Circle {r.circle!.copies?.toLocaleString('zh-CN')} 张<ArrowUpRight size={12}/></A>{r.hanteoFirstWeek&&<A href={external(r.hanteoFirstWeek.sourceUrl)} target="_blank" rel="noopener noreferrer">Hanteo 首周 {r.hanteoFirstWeek.copies.toLocaleString('zh-CN')} 张<ArrowUpRight size={12}/></A>}</div></article>)}{compact&&<button className="kk-button" onClick={()=>select('records')}>查看各发行成绩<ArrowUpRight size={13}/></button>}</section><section><small className="kk-eyebrow">MUSIC SHOWS</small><strong className="kk-total">{content.wins===null?'待整理':<>{wins.length}<em> 次</em></>}</strong><h3>韩国音乐节目一位 · 已收录</h3><p className="kk-scope">{publicCustomArtistText(content.winsCoverage.scope)}</p><div className="kk-win-table"><table><thead><tr><th>日期</th><th>歌曲</th><th>节目</th></tr></thead><tbody>{[...wins].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,compact?3:undefined).map(w=><tr key={w.id}><td>{w.date}</td><td>{w.song}</td><td><A href={external(w.sourceUrl)} target="_blank" rel="noopener noreferrer">{w.show}<ArrowUpRight size={11}/></A></td></tr>)}</tbody></table></div>{content.wins===null?<p className="kk-scope">一位记录尚未完成整理。空白不代表零次。</p>:!wins.length&&<p className="kk-scope">这个年份暂无收录一位记录。</p>}{compact&&<button className="kk-button" onClick={()=>select('records')}>查看完整收录清单<ArrowUpRight size={13}/></button>}</section></div></>;
  }
- function memberPage(m:Member){if(!data)return null;const items=memberWorks(data,m.id),s=memberWorkSummary(items);return <><button className="kk-back" onClick={()=>navigate({section:'members',member:null})}><ArrowLeft size={15}/>KiiiKiii · 全部成员</button><section className="kk-member-hero" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><figure><button className="kk-portrait-zoom" aria-label={'查看 '+memberDisplayName(m)+' 原图'} aria-haspopup="dialog" onClick={()=>visual(m)?.image&&setLightbox({src:visual(m).image,label:memberDisplayName(m)+' · '+content.portraitSet.label})}><Picture identityKey={'member:'+m.id} src={visual(m)?.image} alt={m.stageName+' · '+content.portraitSet.label} priority missingLabel="成员照暂缺"/></button><figcaption>{publicCustomArtistCaption(content.portraitSet.label,content.portraitSet.date)}</figcaption></figure><div data-member-module="basic"><small className="kk-eyebrow">KiiiKiii / MEMBER</small><h1><span className="member-display-name">{memberDisplayName(m)}</span></h1><MemberPhysicalFacts member={m}/><MemberCareerFacts member={m} part="intro"/><p>{[m.stageName,m.country,m.birthDate,m.status].filter(Boolean).join(' · ')}</p>{m.role&&<p>{m.role}</p>}<A className="kk-button" href={artistMemberUrl(m.id,returnTo)}>个人档案与记录<ArrowUpRight size={14}/></A><div className="kk-member-social">{(m.social??[]).map(a=><A key={a.platform} href={external(a.url)} target="_blank" rel="noopener noreferrer"><span>{a.platform==='instagram'?'Instagram':a.platform==='x'?'X':a.platform==='youtube'?'YouTube':'TikTok'}<ArrowUpRight size={13}/></span>{a.countLabel&&<strong>{followerAccountLabel(a)}</strong>}<small>{a.observedAt?'更新于 '+a.observedAt.slice(0,10):'粉丝数暂未收录'}</small></A>)}</div></div></section>
+ function memberPage(m:Member){if(!data)return null;const items=memberWorks(data,m.id),s=memberWorkSummary(items);return <><button className="kk-back" onClick={()=>navigate({section:'members',member:null})}><ArrowLeft size={15}/>KiiiKiii · 全部成员</button><section className="kk-member-hero" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><figure><button className="kk-portrait-zoom" aria-label={'查看 '+memberDisplayName(m)+' 原图'} aria-haspopup="dialog" onClick={()=>visual(m)?.image&&setLightbox({src:visual(m).image,label:memberDisplayName(m)+' · '+content.portraitSet.label})}><Picture identityKey={'member:'+m.id} src={visual(m)?.image} alt={m.stageName+' · '+content.portraitSet.label} priority missingLabel="成员照暂缺"/></button><figcaption>{publicCustomArtistCaption(content.portraitSet.label,content.portraitSet.date)}</figcaption></figure><div data-member-module="basic"><small className="kk-eyebrow">KiiiKiii / MEMBER</small><h1><span className="member-display-name">{memberChineseName(m)||m.stageName}</span></h1>{memberChineseName(m)&&<p className="kk-stage-name">{m.stageName}</p>}<MemberPhysicalFacts member={m}/><MemberCareerFacts member={m} part="intro"/><p>{[m.country,m.birthDate,m.status].filter(Boolean).join(' · ')}</p>{m.role&&<p>{m.role}</p>}<A className="kk-button" href={artistMemberUrl(m.id,returnTo)}>个人档案与记录<ArrowUpRight size={14}/></A><div className="kk-member-social">{(m.social??[]).map(a=><A key={a.platform} href={external(a.url)} target="_blank" rel="noopener noreferrer"><span>{a.platform==='instagram'?'Instagram':a.platform==='x'?'X':a.platform==='youtube'?'YouTube':'TikTok'}<ArrowUpRight size={13}/></span>{a.countLabel&&<strong>{followerAccountLabel(a)}</strong>}<small>{a.observedAt?'更新于 '+a.observedAt.slice(0,10):'粉丝数暂未收录'}</small></A>)}</div></div></section>
 <div className="kk-member-summary" data-member-module="scores"><div><small>作品综合分</small><strong>{number(s.composite)}</strong><span>{s.ratedWorks} 支作品已评</span></div><div className="kk-dimensions"><div><small>表现均分</small><strong>{number(s.performanceMean)}</strong><span>{s.performanceCount} 支已评</span></div><div><small>造型均分</small><strong>{number(s.stylingMean)}</strong><span>{s.stylingCount} 支已评</span></div></div>{s.composite===null&&<p>表现和造型都有评分后，显示作品综合分。</p>}</div>
-<Heading label="认人参考与作品评分" title="HER PORTRAITS"/><div className="kk-member-works" data-member-module="works">{items.map(x=><article key={x.work.id}><MemberWorkIdentityPhoto work={x.work} memberId={m.id} label={memberDisplayName(m)+' · '+x.work.song} photo={x.photo} live={data.mode==='live'} className={'kk-member-look member-mv-look'+(x.photo?.sourceKind==='mv_look_photo'?' mv-look-native':'')} onOpen={setLightbox} showMissing/><MvPhotoReference photo={x.photo} referencePhoto={x.referencePhoto} label={memberDisplayName(m)+' · '+x.work.song} live={data.mode==='live'}/><A data-member-work-trigger={x.work.id} href={artistWorkUrl(x.work,false,returnTo)}><h3>{x.work.song||x.work.name}<ArrowUpRight size={14}/></h3><p>{x.work.version||x.work.videoType}</p><div><span>表现 <b>{number(x.performance)}</b></span><span>造型 <b>{number(x.styling)}</b></span></div></A></article>)}</div>
+<Heading label="" title="认人参考与作品评分"/><div className="kk-member-works" data-member-module="works">{items.map(x=><article key={x.work.id}>{x.work.id===content.debutCampaign.workId&&videoId(x.work.url)===content.debutCampaign.videoId
+ ? <MvIdentityPhoto work={x.work} memberId={m.id} label={memberDisplayName(m)} selectEdition={mvRecognitionEdition} photo={x.photo} live={data.mode==='live'}/>
+ : <MemberWorkIdentityPhoto work={x.work} memberId={m.id} label={memberDisplayName(m)+' · '+x.work.song} photo={x.photo} live={data.mode==='live'} className={'kk-member-look member-mv-look'+(x.photo?.sourceKind==='mv_look_photo'?' mv-look-native':'')} onOpen={setLightbox} showMissing/>}<MvPhotoReference photo={x.photo} referencePhoto={x.referencePhoto} label={memberDisplayName(m)+' · '+x.work.song} live={data.mode==='live'}/><A data-member-work-trigger={x.work.id} href={artistWorkUrl(x.work,false,returnTo)}><h3>{x.work.song||x.work.name}<ArrowUpRight size={14}/></h3><p>{x.work.version||x.work.videoType}</p><div><span>表现 <b>{number(x.performance)}</b></span><span>造型 <b>{number(x.styling)}</b></span></div></A></article>)}</div>
 <MemberPublicCredits memberId={m.id} data={data} renderLink={(work,label)=><A href={artistWorkUrl(work,false,returnTo)}>{label}</A>}/>
 <MemberCareerFacts member={m} part="history"/>
 <MemberCareerFacts member={m} part="sources"/>
 </>;}
- return <ImageRecoveryProvider><div className="kiiikiii-artist"><header className="kk-header"><A className="kk-brand" href="/">STAGE</A><nav aria-label="网站导航"><A href="/">我的放映室</A><A href="/?view=works">作品库</A><A href="/?view=members">成员档案</A><A href="/?view=groups">团体索引</A></nav><small>公开可读，只有本人可编辑</small></header>{!route.member&&<>{route.section==='overview'&&<><section className="kk-hero"><A className="kk-crumb" href="/?view=groups"><ArrowLeft size={13}/>团体索引</A><div className="kk-title-row"><div><span className="kk-issue">STAGE / THE PLAYROOM / 005</span><h1><span>Kiii</span><span>Kiii</span></h1></div><div className="kk-hero-intro"><span className="kk-stamp">키키<br/>PRESS PLAY ↗</span><p>STARSHIP Entertainment</p><small>STARSHIP ENTERTAINMENT<br/>DEBUT {content.profile.debutDate}</small></div></div><div className="kk-hero-spread"><figure><Picture identityKey={'hero:'+content.groupId} src={content.hero.image} alt={publicCustomArtistText(content.hero.caption)} priority missingLabel="官方团体照暂缺"/><figcaption>{publicCustomArtistCaption(content.hero.caption,content.hero.date)}</figcaption></figure><div className="kk-encyclopedia"><p data-home-introduction="kiiikiii"><span className="kk-eyebrow group-intro-label">团体介绍</span>{publicCustomArtistText(content.profile.summary)}</p><div className="kk-hero-actions">{representative&&<A className="kk-button primary" href={artistWorkUrl(representative,false,returnTo)}><Play size={14}/>从 {representative.song} 开始</A>}<A className="kk-official-link" href={external(content.profile.sourceUrl)} target="_blank" rel="noopener noreferrer">官方网站<ArrowUpRight size={13}/></A></div></div></div></section></>}<nav className="kk-tabs" aria-label="团体内容">{sections.map(([k,label])=><button key={k} aria-current={route.section===k?'page':undefined} onClick={()=>select(k)}>{label}</button>)}</nav></>}
+ return <ImageRecoveryProvider><div className="kiiikiii-artist"><header className="kk-header"><A className="kk-brand" href="/">STAGE</A><nav aria-label="网站导航"><A href="/">我的放映室</A><A href="/?view=works">作品库</A><A href="/?view=members">成员档案</A><A href="/?view=groups">团体索引</A></nav></header>{!route.member&&<>{route.section==='overview'&&<DebutOpening content={content} work={representative} returnTo={returnTo} openPhoto={(src,label)=>setLightbox({src,label})}/>}<nav className="kk-tabs" aria-label="团体内容">{sections.map(([k,label])=><button key={k} aria-current={route.section===k?'page':undefined} onClick={()=>select(k)}>{label}</button>)}</nav></>}
  <main className="kk-content" id="artist-content">{loading&&!data?<div className="kk-empty" role="status">正在打开你的 KiiiKiii 收藏…</div>:error?<div className="kk-empty" role="alert"><p>{error}</p><button className="kk-button" onClick={retry}>重新加载</button></div>:!collection?<div className="kk-empty">暂未找到团体资料。<A href="/?view=groups">返回团体索引</A></div>:route.member?(member?memberPage(member):<div className="kk-empty">这个成员不在 KiiiKiii 档案中。<button onClick={()=>navigate({member:null,section:'members'})}>查看成员</button></div>):<>
  {route.section==='overview'&&<>
+<section className="kk-home-members"><Heading label="" title="成员" onMore={()=>select('members')}/>{roster()}</section>
 <ArtistInformation slug="kiiikiii" catalog={data}/>
-<section><Heading label="MEMBERS / 成员档案" title="KiiiKiii MEMBERS" onMore={()=>select('members')}/>{roster()}</section>
-<section className="kk-listen-first"><Heading label="YOUR COLLECTION / 观看与评分" title="HIT PLAY, AGAIN." onMore={()=>select('works')}/>{taste()}<div className="kk-work-grid">{collection.works.slice(0,3).map(w=><WorkCard key={w.id} work={w} returnTo={returnTo}/>)}</div></section>
-<section><Heading label="DISCOGRAPHY" title="专辑" onMore={()=>select('records')}/><div className="kk-release-grid">{content.releases.slice(0,3).map(r=><article key={r.id}><A href={releaseUrl(r.id)}><Picture src={r.image} alt={r.title+' 发行封面'}/><h3>{r.title}</h3><p>{r.date}</p></A></article>)}</div></section>
-<section><Heading label="TIMELINE" title="大事时间轴" onMore={()=>select('updates')}/>{renderTimeline()}</section>
-<section className="kk-record-section"><Heading label="RECORDS / 发行与音乐节目" title="THE SCOREBOARD" onMore={()=>select('records')}/>{records(true)}</section>
+<section className="kk-listen-first"><Heading label="" title="MV 与舞台" onMore={()=>select('works')}/>{taste()}<div className="kk-work-grid">{collection.works.slice(0,3).map(w=><WorkCard key={w.id} work={w} returnTo={returnTo}/>)}</div></section>
+<section><Heading label="" title="专辑" onMore={()=>select('records')}/><div className="kk-release-grid">{content.releases.slice(0,3).map(r=><article key={r.id}><A href={releaseUrl(r.id)}><Picture src={r.image} alt={r.title+' 发行封面'}/><h3>{r.title}</h3><p>{r.date}</p></A></article>)}</div></section>
+<section><Heading label="" title="大事时间轴" onMore={()=>select('updates')}/>{renderTimeline()}</section>
+<section className="kk-record-section"><Heading label="" title="销量与音乐节目" onMore={()=>select('records')}/>{records(true)}</section>
 </>}
  {route.section==='members'&&<section><Heading label="MEMBERS / 成员档案" title="KiiiKiii MEMBERS"/><div className="kk-work-tools"><label><Search size={17}/><input aria-label="搜索成员" placeholder="中文名或艺名" value={route.search} onChange={e=>navigate({search:e.target.value},true)}/></label></div><p className="kk-result-count" role="status">{shownMembers.length} 位成员</p>{roster()}{!shownMembers.length&&<div className="kk-empty"><p>没有符合条件的成员。</p><button className="kk-button" onClick={()=>navigate({search:''},true)}>查看全部成员</button></div>}</section>}
  {route.section==='updates'&&<section><Heading label="TIMELINE" title="大事时间轴"/>{renderTimeline()}</section>}

@@ -79,7 +79,13 @@ fs.writeFileSync(path.join(out,'review-kiiikiii/kiiikiii-experience.css'),record
 // Copy only the native Kiiikiii artwork, original portraits and fonts.
 const native = JSON.parse(read('data/kiiikiii-artist.json'));
 const posters=JSON.parse(read('data/day19-mv-video-posters.json')).entries.filter(p=>archive.works.some(w=>w.id===p.workId));
-const assets = new Set([native.hero.image,...native.releases.map(r=>r.image),...posters.map(p=>p.src)]);
+const campaign = native.debutCampaign;
+const edition = JSON.parse(read('data/mv-recognition-editions.json'))['kiiikiii-uncut-gem-2025'];
+const assets = new Set([
+  native.hero.image, campaign.logo, campaign.group, campaign.groupOriginal, campaign.jar,
+  ...native.releases.map(release=>release.image), ...posters.map(poster=>poster.src),
+  ...Object.values(edition.portraits).flatMap(photo=>[photo.preview,photo.original]),
+]);
 const pinned = new Map();
 for (const binding of assetBindings) {
   if (!archive.members.some(m=>m.id===binding.memberId) || !/^\/artist\/kiiikiii\/portraits\/[a-z-]+\.jpg$/.test(binding.url)) throw new Error('Unexpected Kiiikiii portrait binding');

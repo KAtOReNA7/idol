@@ -24,7 +24,17 @@ test('KiiiKiii queue counts follow the active format and search',()=>{const d=fi
 test('KiiiKiii member MV links expose the work key for return focus',()=>{const s=setup('/artists/kiiikiii?section=members&member=recM').render();assert.match(s,/data-member-work-trigger="recSticky"/);assert.match(s,/returnTo=%2Fartists%2Fkiiikiii%3Fsection%3Dmembers%26member%3DrecM/);});
 
 test('KiiiKiii registration includes authenticated projection without adding mutations',()=>{const {load}=setup('/artists/kiiikiii');assert.equal(load('lib/idol/artist-catalog.ts').requestedArtist(new URLSearchParams('artist=kiiikiii')),group);const c=fs.readFileSync('lib/idol/artist-catalog.ts','utf8');assert.doesNotMatch(c,/INSERT |UPDATE |DELETE |fetch\(/);});
-test('KiiiKiii group-index hero is independent and the work title respects all older theme precedence',()=>{const s=fs.readFileSync('components/group-detail.tsx','utf8');assert.match(s,/g.id===KIIIKIII_GROUP_ID.*?kiiikiii-index-card/);assert.match(s,/data-browse-anchor=\{'group-'\+g.id\}/);const page=fs.readFileSync('app/page.tsx','utf8');assert.match(page,/nmixxExperience\?'nmixx-experience':hearts2heartsExperience\?'hearts2hearts-experience':kiiikiiiExperience\?'kiiikiii-experience'/);const heading=page.split('\n').find(l=>l.includes('className="kiiikiii-work-heading"'));assert.match(heading,/KIOF_GROUP_ID,STAYC_GROUP_ID,NMIXX_GROUP_ID,HEARTS2HEARTS_GROUP_ID\]/);assert.equal((page.match(/className="kiiikiii-work-heading"/g)||[]).length,1);});
+test('KiiiKiii retains its independent index and its exact single-group work theme',()=>{
+ const registry=require('../data/artist-timeline-registry.json');
+ const {workExperience}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-experience.ts');
+ const group=registry.find(row=>row.slug==='kiiikiii');
+ const elsewhere=registry.find(row=>row.slug==='nmixx');
+ assert.match(fs.readFileSync('components/group-detail.tsx','utf8'),/g.id===KIIIKIII_GROUP_ID.*?kiiikiii-index-card/);
+ const data={works:[{id:'kiii-work',groupIds:[group.groupId]}]};
+ for(const artistReturn of [undefined,group.path,elsewhere.path]) {
+  assert.equal(workExperience(data,{work:'kiii-work',artistReturn}).className,'kiiikiii-experience');
+ }
+});
 test('KiiiKiii format stage includes verified alternatives and queue counts match rendered cards',()=>{const d=fixture();d.works[1].stageSupplement={alternatives:[{videoId:'abcdefghijk'}]};const html=setup('/artists/kiiikiii?section=works&format=stage',d).render();assert.match(html,/全部作品<span>1<\/span>/);assert.equal((html.match(/class="kk-work"/g)||[]).length,1);assert.match(html,/其他现场/);});
 test('KiiiKiii official release and social dates never claim realtime or complete charts',()=>{assert.equal(content.asOf,'2026-10-15');assert.equal(content.releases[0].date,'2026-08-10');assert.equal(content.releases[0].title,'WhyKiiiKiii');assert.equal(content.profile.debutDate,'2025-03-24');assert.match(content.releaseCoverage.scope,/MV 上线日期不同/);const html=setup('/artists/kiiikiii?section=records').render();assert.doesNotMatch(html,/0 次|实时|全量已核/);});
 
@@ -34,10 +44,43 @@ test('KiiiKiii MV filter excludes Track Film and Lyric Video without changing th
 
 test('KiiiKiii known sales cannot turn unknown music-show wins into zero',()=>{const c=JSON.parse(JSON.stringify(content));c.releases[0].circle={copies:100,asOf:'2026-10-15',sourceUrl:'https://example.test/synthetic',cumulativeComplete:false};const html=setup('/artists/kiiikiii?section=records',fixture(),c).render();assert.match(html,/待整理/);assert.match(html,/空白不代表零次/);assert.doesNotMatch(html,/>0<em> 次/);});
 
-test('social unit presentation handles observed counts with units without changing source data',()=>{const original=JSON.stringify(content.social);try{const samples=['约587.1万粉丝','约492.3K Followers','约418万订阅','约8.5M subscribers'];content.social.forEach((s,i)=>{s.display=samples[i];});const before=JSON.stringify(content.social),html=setup('/artists/kiiikiii').render(),social=html.match(/<section class="kk-social"[^>]*>([\s\S]*?)<\/section>/)[1];for(const n of ['约587.1万','约492.3K','约418万','约8.5M'])assert.ok(social.includes('<strong>'+n+'</strong>'));assert.doesNotMatch(social,/<strong>[^<]*(?:粉丝|订阅|followers|subscribers)/i);assert.equal(JSON.stringify(content.social),before);}finally{content.social=JSON.parse(original);}});
+test('the group information section associates KiiiKiii social counts with their source and observation date',async()=>{
+ const records=require('../data/group-statistics-completion-evidence.json').groups.kiiikiii.social;
+ const {formatFollowerCount}=await import('../lib/idol/follower-count.mjs');
+ const html=setup('/artists/kiiikiii').render();
+ const social=html.match(/<div class="group-info-social"[^>]*>([\s\S]*?)<\/div>/)[1];
+ for(const row of records.filter(a=>a.accountExists&&a.observedValue>0&&a.observedAt)) {
+  assert.ok(social.includes(row.url),row.platform);
+  assert.ok(social.includes('<strong>'+formatFollowerCount(String(row.observedValue))+'</strong>'),row.platform);
+  assert.ok(social.includes(row.observedAt.slice(0,10)),row.platform);
+ }
+ assert.doesNotMatch(social,/<strong>[^<]*(?:粉丝|订阅|followers|subscribers)/i);
+});
 
-test('member roster and detail visibly render Chinese first without renaming identity',()=>{const d=fixture(),m=d.members[0];m.cnName='测试中文名（音译）';const before=JSON.stringify(d);for(const url of ['/artists/kiiikiii?section=members','/artists/kiiikiii?section=members&member='+m.id]){const html=setup(url,d).render();assert.ok(html.includes('测试中文名 · '+m.stageName));assert.ok(html.includes('member-display-name'));assert.ok(!html.includes('测试中文名（音译）'));}assert.equal(JSON.stringify(d),before);});
-test('KiiiKiii mobile headings wrap visibly without changing the desktop title rule',()=>{const css=fs.readFileSync('app/artists/kiiikiii/kiiikiii-artist.css','utf8');assert.match(css,/@media\(max-width:700px\)\{\.kk-title-row\{grid-template-columns:minmax\(0,1fr\)\}\.kk-title-row h1\{font-size:clamp\(64px,20vw,130px\)\}\.kk-heading\{flex-wrap:wrap\}\.kk-heading>div\{min-width:0;max-width:100%\}\.kk-heading h2\{font-size:clamp\(20px,6\.5vw,29px\);overflow-wrap:anywhere\}\}/);assert.match(css,/\.kk-heading h2\{font:800 clamp\(26px,3\.8vw,48px\)\/1\.15 KiiiDisplay,sans-serif/);const html=setup('/artists/kiiikiii').render();assert.match(html,/THE SCOREBOARD/);assert.match(html,/查看全部/);});
+test('member roster and detail visibly render Chinese first without renaming identity',()=>{
+ const data=fixture(),member=data.members[0];member.cnName='测试中文名（音译）';
+ const before=JSON.stringify(data);
+ const roster=setup('/artists/kiiikiii?section=members',data).render();
+ assert.ok(roster.includes('测试中文名 / '+member.stageName));
+ const details=setup('/artists/kiiikiii?section=members&member='+member.id,data).render();
+ assert.match(details,/<h1><span class="member-display-name">测试中文名<\/span><\/h1><p class="kk-stage-name">JIYU<\/p>/);
+ assert.ok(!roster.includes('测试中文名（音译）')&&!details.includes('测试中文名（音译）'));
+ assert.equal(JSON.stringify(data),before);
+});
+test('the debut home opens the full group photograph and links directly to the matching recording',()=>{
+ const data=fixture(),work=data.works[0];
+ work.id=content.debutCampaign.workId;work.song='I DO ME';
+ const html=setup('/artists/kiiikiii',data).render();
+ for(const file of [content.debutCampaign.logo,content.debutCampaign.group,content.debutCampaign.jar]) {
+  assert.ok(html.includes('src="'+file+'"'));
+  assert.ok(fs.existsSync('public'+file));
+ }
+ assert.ok(html.includes('href="'+content.debutCampaign.groupOriginal+'"'));
+ assert.match(html,/<a[^>]+href="[^"]*work=rec28ldfRTrAb0[^"]*"[^>]*class="kk-campaign-work"|<a[^>]+class="kk-campaign-work"[^>]*href="[^"]*work=rec28ldfRTrAb0/);
+ assert.ok(html.indexOf('kk-campaign-work') < html.indexOf('>专辑</h2>'));
+ const source=fs.readFileSync('app/artists/kiiikiii/kiiikiii-artist.css','utf8');
+ assert.ok(source.includes('Inter-Latin-Variable.woff2')&&source.includes('overflow-wrap:anywhere'));
+});
 
 test('kiiikiii approved looks retain native dimensions, exact private primary and qualified individual reference',()=>{
  const d=fixture();d.mode='live';const r=d.ratings[0];r.personalPhotoEligible=true;
@@ -56,4 +99,11 @@ test('kiiikiii approved looks retain native dimensions, exact private primary an
 test('member search retains stable ordinals and detail return search',()=>{const d=fixture();d.members.push({...d.members[0],id:'recM2',stageName:'LEESOL',cnName:'李修旻'});const html=setup('/artists/kiiikiii?section=members&q=李修',d).render();assert.match(html,/MEMBER 02/);assert.doesNotMatch(html,/MEMBER 01/);assert.match(html,/1 位成员/);const empty=setup('/artists/kiiikiii?section=members&q=absent',d).render();assert.match(empty,/没有符合条件的成员/);const detail=setup('/artists/kiiikiii?section=members&member=recM&q=JIYU',d).render();assert.match(detail,/q%3DJIYU/);assert.match(detail,/查看 JIYU 原图/);});
 test('release detail preserves search and uses exact work-video bindings, no phantom recordings',()=>{const d=fixture();const html=setup('/artists/kiiikiii?section=records&q=UNCUT&release=uncut-gem',d).render();assert.match(html,/PLAY THIS RELEASE/);assert.match(html,/recSticky/);assert.doesNotMatch(html,/recWho|recSweat/);assert.match(html,/q%3DUNCUT%26release%3Duncut-gem/);const absent=setup('/artists/kiiikiii?section=records&release=to-me-from-me',d).render();assert.match(absent,/尚未收录这张发行的相关影像/);assert.doesNotMatch(absent,/<a[^>]+href="[^"]*work=/);assert.match(setup('/artists/kiiikiii?section=records&release=unknown',d).render(),/未找到这张发行/);});
 test('only the six known release IDs can return from shared records',()=>{const {load}=setup('/artists/kiiikiii'),{safeArtistReturn}=load('lib/idol/artist-navigation.ts');for(const r of content.releases){const url='/artists/kiiikiii?section=records&q=test&release='+r.id;assert.equal(safeArtistReturn(url),url);}for(const url of ['/artists/kiiikiii?section=records&release=unknown','/artists/kiiikiii?release=uncut-gem&release=uncut-gem','https://evil.test/artists/kiiikiii?release=uncut-gem','/artists/kiiikiii?release=uncut-gem#bad','/artists/kiiikiii?release=uncut-gem&media=x'])assert.equal(safeArtistReturn(url),null);});
-test('approved poster requires work, video and view tuple, never uses album art',()=>{const d=fixture();d.works[0].id='rec28ldfRTrAb0';const html=setup('/artists/kiiikiii?section=works',d).render();assert.match(html,/rec28ldfRTrAb0-mv-hAEfi_SKTEU-bugs-original.jpg/);assert.match(html,/MV 预览图（Bugs 来源）/);d.works[0].url='https://youtube.com/watch?v=otherVideo1';assert.doesNotMatch(setup('/artists/kiiikiii?section=works',d).render(),/rec28ldfRTrAb0-mv-hAEfi_SKTEU-bugs-original.jpg/);});
+test('the original I DO ME cut shows its exact STARSHIP preview in the work directory',()=>{
+ const data=fixture();data.works[0].id='rec28ldfRTrAb0';
+ const source='/artist/mv-identity-20261025/covers/hAEfi_SKTEU.jpg';
+ const html=setup('/artists/kiiikiii?section=works',data).render();
+ assert.ok(html.includes('src="'+source+'"'));assert.match(html,/对应视频封面/);
+ data.works[0].url='https://youtube.com/watch?v=otherVideo1';
+ assert.ok(!setup('/artists/kiiikiii?section=works',data).render().includes(source));
+});

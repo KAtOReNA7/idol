@@ -6307,15 +6307,15 @@
       "currentStyleCssPaths": [
         "app/artists/kiiikiii/kiiikiii-artist.css"
       ],
-      "paper": "#f7f8ef",
-      "surface": "#f7f8ef",
-      "ink": "#17241b",
-      "muted": "#5b685b",
-      "line": "#b4c1a6",
-      "accent": "#214b35",
-      "soft": "#c4f460",
-      "fontBody": "\"Noto Sans SC\",system-ui,sans-serif",
-      "fontHeading": "KiiiDisplay,sans-serif",
+      "paper": "#ececec",
+      "surface": "#f7f7f4",
+      "ink": "#151515",
+      "muted": "#505050",
+      "line": "#bdbdba",
+      "accent": "#203992",
+      "soft": "#e4e8f1",
+      "fontBody": "KiiiInter,\"Noto Sans SC\",\"Microsoft YaHei\",sans-serif",
+      "fontHeading": "KiiiInter,\"Noto Sans SC\",\"Microsoft YaHei\",sans-serif",
       "fontHeadingStyle": "normal",
       "fontFaceCssPaths": [
         "app/artists/kiiikiii/kiiikiii-artist.css"
@@ -6324,11 +6324,11 @@
         {
           "file": "app/artists/kiiikiii/kiiikiii-artist.css",
           "line": 1,
-          "css": "@font-face{font-family:KiiiDisplay;src:url('/fonts/Syne.ttf') format('truetype');font-weight:400 800;font-display:swap}",
-          "family": "KiiiDisplay",
-          "font-family": "KiiiDisplay",
-          "src": "url('/fonts/Syne.ttf') format('truetype')",
-          "font-weight": "400 800",
+          "css": "@font-face{font-family:KiiiInter;src:url('/fonts/hearts2hearts/Inter-Latin-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap}",
+          "family": "KiiiInter",
+          "font-family": "KiiiInter",
+          "src": "url('/fonts/hearts2hearts/Inter-Latin-Variable.woff2') format('woff2')",
+          "font-weight": "100 900",
           "font-display": "swap"
         }
       ],
@@ -6338,7 +6338,7 @@
           "kind": "current_root_variable"
         },
         "surface": {
-          "source": "--kk-paper",
+          "source": "--kk-surface",
           "kind": "current_root_variable"
         },
         "ink": {
@@ -6368,12 +6368,12 @@
           "line": 2,
           "selector": ".kiiikiii-artist",
           "declarations": {
-            "--kk-paper": "#f7f8ef",
-            "--kk-ink": "#17241b",
-            "--kk-muted": "#5b685b",
-            "--kk-line": "#b4c1a6",
-            "--kk-acid": "#c4f460",
-            "--kk-green": "#214b35",
+            "--kk-paper": "#ececec",
+            "--kk-ink": "#151515",
+            "--kk-muted": "#505050",
+            "--kk-line": "#bdbdba",
+            "--kk-acid": "#e4e8f1",
+            "--kk-green": "#203992",
             "--kk-pad": "clamp(22px,5vw,76px)",
             "min-height": "100vh",
             "background": "var(--kk-paper)",
@@ -6388,21 +6388,61 @@
           "declarations": {
             "--kk-pad": "clamp(18px,5vw,76px)"
           }
+        },
+        {
+          "file": "app/artists/kiiikiii/kiiikiii-artist.css",
+          "line": 26,
+          "selector": ".kiiikiii-artist",
+          "declarations": {
+            "--kk-surface": "#f7f7f4",
+            "--kk-gutter": "max(20px, calc((100% - 1120px) / 2))",
+            "font-family": "KiiiInter, \"Noto Sans SC\", \"Microsoft YaHei\", sans-serif"
+          }
         }
       ],
       "oldJournalPaletteDifferences": [
         {
+          "token": "paper",
+          "before": "#f7f8ef",
+          "after": "#ececec"
+        },
+        {
           "token": "surface",
-          "before": "#fff",
-          "after": "#f7f8ef"
+          "before": "#f7f8ef",
+          "after": "#f7f7f4"
+        },
+        {
+          "token": "ink",
+          "before": "#17241b",
+          "after": "#151515"
+        },
+        {
+          "token": "muted",
+          "before": "#5b685b",
+          "after": "#505050"
+        },
+        {
+          "token": "line",
+          "before": "#b4c1a6",
+          "after": "#bdbdba"
+        },
+        {
+          "token": "accent",
+          "before": "#214b35",
+          "after": "#203992"
+        },
+        {
+          "token": "soft",
+          "before": "#c4f460",
+          "after": "#e4e8f1"
         }
       ],
       "corePaletteDifferences": [],
       "fontCorrectionNeeded": false,
       "sourceStatus": "core_palette_matches",
       "headingReview": "Use current heading font shown here; existing journal declarations may override variables on descendants.",
-      "character": "奶绿/酸绿、粗几何标题",
-      "browserStatus": "pending",
+      "character": "UNCUT GEM 出道官网浅灰色与蓝色链接、Inter 字体",
+      "browserStatus": "local 375px and 1425px full work page",
       "name": "KiiiKiii"
     },
     {

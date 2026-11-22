@@ -1,0 +1,100 @@
+{
+  "applicationCommit": "32ca6e8df71e84ea9f237af80558f712a7a1252a",
+  "baselineApplicationCommit": "fccf75a8d8327941ac49245cc8afa1330a7b3025",
+  "baselineValidationCommit": "f20298ffd7fd1df08e259c8401d59f055c057a94",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4319,"pass": 4201,"fail": 79,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4327,"pass": 4209,"fail": 79,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1395,"pass": 1395,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 79,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "IVE’s Music navigation opens its approved LOVE DIVE directory with films before album periods",
+        "Per shows the five credited Genie set photos and keeps each member’s earlier jersey portrait and named MV still",
+        "illit shows each MV once before albums, with matching artwork and a usable filtered return",
+        "madein shows each MV once before albums, with matching artwork and a usable filtered return",
+        "purplekiss shows each MV once before albums, with matching artwork and a usable filtered return",
+        "qwer shows each MV once before albums, with matching artwork and a usable filtered return",
+        "rescene shows each MV once before albums, with matching artwork and a usable filtered return",
+        "triples shows each MV once before albums, with matching artwork and a usable filtered return"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4319,"pass": 4201,"fail": 79,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4327,"pass": 4209,"fail": 79,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1395,"pass": 1395,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 79,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "IVE’s Music navigation opens its approved LOVE DIVE directory with films before album periods",
+        "Per shows the five credited Genie set photos and keeps each member’s earlier jersey portrait and named MV still",
+        "illit shows each MV once before albums, with matching artwork and a usable filtered return",
+        "madein shows each MV once before albums, with matching artwork and a usable filtered return",
+        "purplekiss shows each MV once before albums, with matching artwork and a usable filtered return",
+        "qwer shows each MV once before albums, with matching artwork and a usable filtered return",
+        "rescene shows each MV once before albums, with matching artwork and a usable filtered return",
+        "triples shows each MV once before albums, with matching artwork and a usable filtered return"
+      ],
+      "removedTests": []
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each verified and ran the full test suite in a dedicated checkout of the frozen application."
+}

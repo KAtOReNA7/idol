@@ -1,0 +1,613 @@
+{
+  "method": "Local server rendering of the public, work-scoped catalogue and the production WorkDetail in both initial tabs.",
+  "inputs": [
+    "apps/idol-site/data/snapshot.json",
+    "apps/idol-site/data/stage-videos.json"
+  ],
+  "scope": "Count each work once in totals and once per credited group. Catalogue placeholders have no work detail.",
+  "groups": 51,
+  "groupsWithWorks": 50,
+  "groupsWithDifferentOrUnknownStageDate": 50,
+  "statesChecked": 1210,
+  "totals": {
+    "works": 605,
+    "placeholders": 9,
+    "differentDates": 480,
+    "stageDateUnknownWithMvDate": 13,
+    "noBoundStage": 78,
+    "otherViewingOptions": 11,
+    "mvPassed": 605,
+    "stagePassed": 605
+  },
+  "samples": {
+    "rec28ldfRTrNcl": {
+      "song": "ShaLala (Japanese version)",
+      "mv": "官方MV · 2025-04-11",
+      "stage": "表演视频 · 同曲后备 · 不同版本 · 视频发布于 2025-03-14"
+    },
+    "recvxyHuKMFzlZ": {
+      "song": "ATTITUDE",
+      "mv": "官方MV · 韩文原版 · 2025-02-03",
+      "stage": "舞台表演 · 视频发布于 2025-02-07"
+    },
+    "recvxyOz5XkyEY": {
+      "song": "Voltage",
+      "mv": "官方MV · 日文原版 · 2022-03-22",
+      "stage": "表演视频 · 同曲后备 · 节选"
+    },
+    "recvxDMFHNyJoh": {
+      "song": "GALA",
+      "mv": "官方MV · 原版 · 2025-09-19",
+      "stage": "音乐节目舞台 · 视频发布于 2026-01-22"
+    },
+    "recvxIZy35Xwr7": {
+      "song": "Cherry Blossom",
+      "mv": "官方MV · 原版 · 2026-04-15",
+      "stage": "暂无舞台"
+    }
+  },
+  "byGroup": {
+    "rec28ldfRTiBAq": {
+      "group": "Hearts2Hearts",
+      "works": 13,
+      "placeholders": 0,
+      "differentDates": 10,
+      "stageDateUnknownWithMvDate": 1,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 13,
+      "stagePassed": 13
+    },
+    "rec28ldfRTiBON": {
+      "group": "ILLIT",
+      "works": 21,
+      "placeholders": 0,
+      "differentDates": 15,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 4,
+      "otherViewingOptions": 0,
+      "mvPassed": 21,
+      "stagePassed": 21
+    },
+    "rec28ldfRTiBUk": {
+      "group": "KiiiKiii",
+      "works": 9,
+      "placeholders": 0,
+      "differentDates": 8,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 9,
+      "stagePassed": 9
+    },
+    "rec28ldfRTiC1X": {
+      "group": "BABYMONSTER",
+      "works": 19,
+      "placeholders": 0,
+      "differentDates": 16,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 3,
+      "otherViewingOptions": 0,
+      "mvPassed": 19,
+      "stagePassed": 19
+    },
+    "rec28ldfRTiC6k": {
+      "group": "MEOVV",
+      "works": 10,
+      "placeholders": 0,
+      "differentDates": 8,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 10,
+      "stagePassed": 10
+    },
+    "rec28ldfRTiCdf": {
+      "group": "KISS OF LIFE",
+      "works": 25,
+      "placeholders": 0,
+      "differentDates": 21,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 25,
+      "stagePassed": 25
+    },
+    "rec28ldfRTiChs": {
+      "group": "SAY MY NAME",
+      "works": 6,
+      "placeholders": 0,
+      "differentDates": 5,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 6,
+      "stagePassed": 6
+    },
+    "rec28ldfRTiCpp": {
+      "group": "izna",
+      "works": 9,
+      "placeholders": 0,
+      "differentDates": 7,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 9,
+      "stagePassed": 9
+    },
+    "rec28ldfRTiCtw": {
+      "group": "tripleS",
+      "works": 25,
+      "placeholders": 0,
+      "differentDates": 15,
+      "stageDateUnknownWithMvDate": 1,
+      "noBoundStage": 4,
+      "otherViewingOptions": 0,
+      "mvPassed": 25,
+      "stagePassed": 25
+    },
+    "rec28ldfRTiCzI": {
+      "group": "MADEIN",
+      "works": 8,
+      "placeholders": 0,
+      "differentDates": 7,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 8,
+      "stagePassed": 8
+    },
+    "rec28ldfRTiCGa": {
+      "group": "ifeye",
+      "works": 4,
+      "placeholders": 0,
+      "differentDates": 2,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 4,
+      "stagePassed": 4
+    },
+    "rec28ldfRTiCKv": {
+      "group": "GENBLUE",
+      "works": 4,
+      "placeholders": 0,
+      "differentDates": 4,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 4,
+      "stagePassed": 4
+    },
+    "rec28ldfRTiCOB": {
+      "group": "RESCENE",
+      "works": 10,
+      "placeholders": 0,
+      "differentDates": 10,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 10,
+      "stagePassed": 10
+    },
+    "rec28ldfRTiCWc": {
+      "group": "UNIS",
+      "works": 6,
+      "placeholders": 0,
+      "differentDates": 4,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 6,
+      "stagePassed": 6
+    },
+    "rec28ldfRTiD0h": {
+      "group": "BADVILLAIN",
+      "works": 6,
+      "placeholders": 0,
+      "differentDates": 5,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 6,
+      "stagePassed": 6
+    },
+    "rec28ldfRTiD4A": {
+      "group": "QWER",
+      "works": 7,
+      "placeholders": 0,
+      "differentDates": 3,
+      "stageDateUnknownWithMvDate": 1,
+      "noBoundStage": 2,
+      "otherViewingOptions": 1,
+      "mvPassed": 7,
+      "stagePassed": 7
+    },
+    "rec28ldfRTiD8K": {
+      "group": "VVUP",
+      "works": 7,
+      "placeholders": 0,
+      "differentDates": 6,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 7,
+      "stagePassed": 7
+    },
+    "rec28ldfRTiDcU": {
+      "group": "YOUNG POSSE",
+      "works": 14,
+      "placeholders": 0,
+      "differentDates": 7,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 6,
+      "otherViewingOptions": 1,
+      "mvPassed": 14,
+      "stagePassed": 14
+    },
+    "rec28ldfRTiDh1": {
+      "group": "BEWAVE",
+      "works": 2,
+      "placeholders": 0,
+      "differentDates": 2,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 2,
+      "stagePassed": 2
+    },
+    "rec28ldfRTiDlb": {
+      "group": "Candy Shop",
+      "works": 3,
+      "placeholders": 0,
+      "differentDates": 3,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 3,
+      "stagePassed": 3
+    },
+    "rec28ldfRTiDpi": {
+      "group": "ODD YOUTH",
+      "works": 3,
+      "placeholders": 0,
+      "differentDates": 2,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 1,
+      "mvPassed": 3,
+      "stagePassed": 3
+    },
+    "rec28ldfRTiDtr": {
+      "group": "ADYA",
+      "works": 3,
+      "placeholders": 0,
+      "differentDates": 2,
+      "stageDateUnknownWithMvDate": 1,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 3,
+      "stagePassed": 3
+    },
+    "rec28ldfRTiDxx": {
+      "group": "Geenius",
+      "works": 6,
+      "placeholders": 1,
+      "differentDates": 1,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 5,
+      "otherViewingOptions": 5,
+      "mvPassed": 6,
+      "stagePassed": 6
+    },
+    "rec28ldfRTiDBG": {
+      "group": "TRACER",
+      "works": 1,
+      "placeholders": 1,
+      "differentDates": 1,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 1,
+      "stagePassed": 1
+    },
+    "rec28ldfRTiDFM": {
+      "group": "W!TCHX",
+      "works": 0,
+      "placeholders": 1,
+      "differentDates": 0,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 0,
+      "stagePassed": 0
+    },
+    "rec28ldfRTiDJU": {
+      "group": "SPIA",
+      "works": 1,
+      "placeholders": 1,
+      "differentDates": 1,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 1,
+      "stagePassed": 1
+    },
+    "rec28ldfRTiDPs": {
+      "group": "UDTT",
+      "works": 1,
+      "placeholders": 1,
+      "differentDates": 1,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 1,
+      "stagePassed": 1
+    },
+    "rec28ldfRTiDUd": {
+      "group": "KATSEYE",
+      "works": 8,
+      "placeholders": 1,
+      "differentDates": 6,
+      "stageDateUnknownWithMvDate": 1,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 8,
+      "stagePassed": 8
+    },
+    "rec28ldfRTiE0h": {
+      "group": "VCHA",
+      "works": 4,
+      "placeholders": 1,
+      "differentDates": 4,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 4,
+      "stagePassed": 4
+    },
+    "rec28ldfRTiE4q": {
+      "group": "HITGS",
+      "works": 8,
+      "placeholders": 1,
+      "differentDates": 5,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 3,
+      "otherViewingOptions": 0,
+      "mvPassed": 8,
+      "stagePassed": 8
+    },
+    "rec28ldfRTiEaV": {
+      "group": "AtHeart",
+      "works": 2,
+      "placeholders": 1,
+      "differentDates": 2,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 2,
+      "stagePassed": 2
+    },
+    "recvxyEBDZqkpg": {
+      "group": "i-dle",
+      "works": 28,
+      "placeholders": 0,
+      "differentDates": 22,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 3,
+      "otherViewingOptions": 0,
+      "mvPassed": 28,
+      "stagePassed": 28
+    },
+    "recvxyEBDZ52oG": {
+      "group": "IZ*ONE",
+      "works": 10,
+      "placeholders": 0,
+      "differentDates": 5,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 2,
+      "otherViewingOptions": 0,
+      "mvPassed": 10,
+      "stagePassed": 10
+    },
+    "recvxyEBDZcosR": {
+      "group": "fromis_9",
+      "works": 16,
+      "placeholders": 0,
+      "differentDates": 15,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 16,
+      "stagePassed": 16
+    },
+    "recvxyEBDZJAXm": {
+      "group": "LOONA",
+      "works": 10,
+      "placeholders": 0,
+      "differentDates": 8,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 10,
+      "stagePassed": 10
+    },
+    "recvxyEBDZqxjD": {
+      "group": "ITZY",
+      "works": 32,
+      "placeholders": 0,
+      "differentDates": 27,
+      "stageDateUnknownWithMvDate": 1,
+      "noBoundStage": 3,
+      "otherViewingOptions": 1,
+      "mvPassed": 32,
+      "stagePassed": 32
+    },
+    "recvxyEBDZ9Jl3": {
+      "group": "EVERGLOW",
+      "works": 10,
+      "placeholders": 0,
+      "differentDates": 10,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 10,
+      "stagePassed": 10
+    },
+    "recvxyEBDZB3pz": {
+      "group": "Rocket Punch",
+      "works": 11,
+      "placeholders": 0,
+      "differentDates": 9,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 11,
+      "stagePassed": 11
+    },
+    "recvxyEBDZm40w": {
+      "group": "Cherry Bullet",
+      "works": 7,
+      "placeholders": 0,
+      "differentDates": 6,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 7,
+      "stagePassed": 7
+    },
+    "recvxyEBDZxfeD": {
+      "group": "aespa",
+      "works": 36,
+      "placeholders": 0,
+      "differentDates": 29,
+      "stageDateUnknownWithMvDate": 3,
+      "noBoundStage": 4,
+      "otherViewingOptions": 1,
+      "mvPassed": 36,
+      "stagePassed": 36
+    },
+    "recvxyEBDZ2V3c": {
+      "group": "STAYC",
+      "works": 17,
+      "placeholders": 0,
+      "differentDates": 12,
+      "stageDateUnknownWithMvDate": 1,
+      "noBoundStage": 3,
+      "otherViewingOptions": 0,
+      "mvPassed": 17,
+      "stagePassed": 17
+    },
+    "recvxyEBDZPbu5": {
+      "group": "Weeekly",
+      "works": 14,
+      "placeholders": 0,
+      "differentDates": 10,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 3,
+      "otherViewingOptions": 0,
+      "mvPassed": 14,
+      "stagePassed": 14
+    },
+    "recvxyEBDZs5Ic": {
+      "group": "WOOAH",
+      "works": 14,
+      "placeholders": 0,
+      "differentDates": 9,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 4,
+      "otherViewingOptions": 0,
+      "mvPassed": 14,
+      "stagePassed": 14
+    },
+    "recvxyEBDZllCe": {
+      "group": "PURPLE KISS",
+      "works": 13,
+      "placeholders": 0,
+      "differentDates": 11,
+      "stageDateUnknownWithMvDate": 1,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 13,
+      "stagePassed": 13
+    },
+    "recvxyEBDZPXW9": {
+      "group": "Billlie",
+      "works": 13,
+      "placeholders": 0,
+      "differentDates": 13,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 0,
+      "otherViewingOptions": 0,
+      "mvPassed": 13,
+      "stagePassed": 13
+    },
+    "recvxyEBDZT8Xj": {
+      "group": "IVE",
+      "works": 25,
+      "placeholders": 0,
+      "differentDates": 21,
+      "stageDateUnknownWithMvDate": 1,
+      "noBoundStage": 3,
+      "otherViewingOptions": 0,
+      "mvPassed": 25,
+      "stagePassed": 25
+    },
+    "recvxyEBDZ8A0W": {
+      "group": "Kep1er",
+      "works": 16,
+      "placeholders": 0,
+      "differentDates": 15,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 0,
+      "mvPassed": 16,
+      "stagePassed": 16
+    },
+    "recvxyEBDZOpTf": {
+      "group": "NMIXX",
+      "works": 20,
+      "placeholders": 0,
+      "differentDates": 16,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 4,
+      "otherViewingOptions": 0,
+      "mvPassed": 20,
+      "stagePassed": 20
+    },
+    "recvxyEBDZvpPh": {
+      "group": "LE SSERAFIM",
+      "works": 20,
+      "placeholders": 0,
+      "differentDates": 19,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 1,
+      "otherViewingOptions": 1,
+      "mvPassed": 20,
+      "stagePassed": 20
+    },
+    "recvxyEBDZ9qVl": {
+      "group": "NewJeans",
+      "works": 25,
+      "placeholders": 0,
+      "differentDates": 22,
+      "stageDateUnknownWithMvDate": 0,
+      "noBoundStage": 2,
+      "otherViewingOptions": 0,
+      "mvPassed": 25,
+      "stagePassed": 25
+    },
+    "recvxDKdOtKdWD": {
+      "group": "XG",
+      "works": 23,
+      "placeholders": 0,
+      "differentDates": 18,
+      "stageDateUnknownWithMvDate": 1,
+      "noBoundStage": 3,
+      "otherViewingOptions": 0,
+      "mvPassed": 23,
+      "stagePassed": 23
+    }
+  },
+  "failures": []
+}

@@ -2,11 +2,13 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v223。IZ*ONE 手机成员照片首次点击 3/3 打开本人，十团 40/40 返回原卡并恢复焦点。四次翻页的历史写入少 93.8%。《Magnetic》《ATTITUDE》站内 4K，《BILLIONAIRE》本版仍拒播。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [正式验收](worklogs/20261122-v223-release.md) |
+| 正式站 | v224。舞台页首现在显示当前视频的类型与发布日期，五支作品双宽正式实测 20/20。《Magnetic》《ATTITUDE》站内 4K，《BILLIONAIRE》首发版仍拒播。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [正式验收](worklogs/20261122-v224-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v223 正式应用提交 `86626824`。[发布回执](evidence/20261122-v223/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，v224 正式应用提交 `05e8060b`。[发布回执](evidence/20261122-v224/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v224 修正 605 项作品切换舞台后的页首，公开目录同条件渲染从 0/605 到 605/605，MV 保持 605/605。正式站另验 5 项作品的 30 次页面状态。三团 12 次点卡测速中，Cherry Bullet 的 4 次为 1405–1630 ms，先前较慢的两次没有稳定复现。四场电视舞台仍无站内高清入口。[正式验收与待解决项](worklogs/20261122-v224-release.md)
 
 v223 从 IVE 进入 IZ*ONE 手机目录后，首点 WONYOUNG 三次均成功。四次 PageDown 两版都滚动 3,149 px，历史写入从 81 次降至 5 次。十团 40 次打开本人并返回，原卡全部重新获得焦点，37 次坐标偏差在 4 px 内。AtHeart、HITGS、VCHA 的桌面短目录在首载后因滚动条消失而重排，三张原卡仍在屏内。等目录请求结束再测，两种返回方式合计 6/6 精确归位。[正式回读与实页图](worklogs/20261122-v223-release.md) · [短目录的设计取舍](20261122-USABILITY-DISCUSSION.md)
 
@@ -64,6 +66,6 @@ v216 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4
 
 v215 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4,106 项，Windows 通过 3,929 项、失败 138 项、跳过 39 项，WSL 通过 3,933 项、失败 134 项、跳过 39 项。相对 v214，两边均通过新加的六项回归，另外消除一条服务端首次渲染失败。余下失败均在上个版本出现。v213 已更新四团的作品评分、草稿、返回与隔离 D1 验收，消除 27 条旧失败。[v215 双平台结果](evidence/20261122-v215/tests.json) · [v214 双平台结果](evidence/20261122-v214/tests.json) · [四团详情验收](worklogs/20261122-current-detail-regression.md)
 
-后续优先处理《BILLIONAIRE》拒播和 Cherry Bullet 点作品后的等待。四场独占舞台继续寻找同场站内高清来源。三个桌面短目录首次加载时的重排已记录待讨论。剩余 146 个已标注跨期的认人位置中，124 个已找到当次发行的图集，22 个还缺合适的具名单人出处。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑的顺序。个人目录批量读取在连接器提供对应工具时验证。[认人位置明细](evidence/20261122-member-release-portraits/remaining-194.csv) · [两档宽度的排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
+后续优先处理《BILLIONAIRE》首发版拒播。Cherry Bullet 点卡耗时的分段复测见本轮回执。四场独占舞台继续寻找同场站内高清来源。三个桌面短目录首次加载时的重排已记录待讨论。剩余 146 个已标注跨期的认人位置中，124 个已找到当次发行的图集，22 个还缺合适的具名单人出处。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑的顺序。个人目录批量读取在连接器提供对应工具时验证。[认人位置明细](evidence/20261122-member-release-portraits/remaining-194.csv) · [两档宽度的排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
 
 前轮工程优化、发布与原始审查分别保存在各自的工作记录中。[上一正式版 v203](v203-release-20261030.md) · [项目审查](worklogs/20261121-project-audit.md) · [历史协作与验收](https://github.com/KAtOReNA7/idol/blob/0e77838a88f9ff9b14fb67f803156534c7c651e1/docs/codex/STATUS.md)

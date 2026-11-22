@@ -20,6 +20,7 @@ function load(file) {
   }}).outputText;
   vm.runInNewContext('(function(require,exports){' + code + '\n})', {}, {filename: file})((name) => {
     if (name.endsWith('.css')) return {};
+    if (name === '@/components/artist-recognition') return {ArtistRecognition: ({children}) => children};
     if (name.startsWith('@/components/')) return {__esModule: true, default: () => React.createElement('div', {'data-design': 'unchanged'})};
     if (name.startsWith('@/') || name.startsWith('.')) {
       const base = name.startsWith('@/') ? path.resolve(name.slice(2)) : path.resolve(path.dirname(file), name);

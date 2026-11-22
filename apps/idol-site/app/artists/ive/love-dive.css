@@ -231,3 +231,26 @@
   .ive-period-sleeve { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 66px; }
   .ive-period-lineup > div { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px 12px; }
 }
+/* Artist identity and the original STARSHIP six-person profile photograph. */
+.sr-ive .ive-artist-opening {display:grid;grid-template-columns:minmax(155px,.5fr) minmax(0,2.15fr);align-items:center;gap:clamp(18px,3vw,50px);padding:clamp(18px,3vw,46px) var(--ive-gutter) 20px;background:linear-gradient(112deg,#112743 0%,#192f4e 48%,#233f63);border-block:1px solid #819ab2}
+.ive-artist-name {align-self:stretch;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.sr-ive .ive-artist-name>img {width:clamp(58px,7vw,110px);height:auto;max-height:140px;object-fit:contain;object-position:left center}
+.sr-ive .ive-artist-name h1 {margin:.12em 0 0;font:400 clamp(60px,6.8vw,111px)/.97 var(--ive-display);letter-spacing:.015em;color:#f1f3fc}
+.ive-artist-name p {font-size:15px;letter-spacing:.16em;color:#c5d0e1}
+.ive-artist-name nav {display:flex;align-items:flex-start;flex-direction:column;gap:4px;margin-top:clamp(14px,3vw,38px)}
+.sr-ive .ive-artist-name nav a,.sr-ive .ive-artist-name nav button {margin:0;display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;font-size:14px}
+.sr-ive .ive-artist-name nav button {padding-inline:0;color:#e2e9f4}
+.ive-official-portrait {min-width:0}
+.sr-ive .ive-official-portrait .ive-archive-photo {display:block;border:1px solid #b6c9dd;padding:4px;background:#2c435f}
+.sr-ive .ive-official-portrait .ive-archive-photo img {width:100%;height:auto;aspect-ratio:1.872;object-fit:contain}
+.sr-ive .ive-official-portrait figcaption {display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:12px;color:#dae1ee}
+.sr-ive .ive-official-portrait figcaption a {display:inline-flex;align-items:center;min-height:36px;text-underline-offset:4px;text-decoration:underline}
+@media(max-width:740px){
+ .sr-ive .ive-artist-opening {grid-template-columns:1fr;gap:12px;padding:12px 14px 8px}
+ .ive-artist-name {display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
+ .sr-ive .ive-artist-name>img {width:40px;max-height:58px}
+ .sr-ive .ive-artist-name h1 {font-size:41px;margin:0}
+ .ive-artist-name p {font-size:11px}
+ .ive-artist-name nav {margin:0;align-items:flex-end;gap:0}
+ .sr-ive .ive-artist-name nav a,.sr-ive .ive-artist-name nav button {min-height:36px;font-size:12px}
+}

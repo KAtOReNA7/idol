@@ -7,3 +7,25 @@
 
 /* Fresh Court: airy tennis-green editorial layout, independent from the sunset theme. */
 .sc-hero>h1{font-family:StaycMono,sans-serif;font-size:clamp(88px,18vw,240px);letter-spacing:-.075em;line-height:1;margin-left:-.04em}.sc-hero-spread{grid-template-columns:1.55fr 1fr;gap:36px;align-items:center}.sc-hero-spread>figure{border-radius:14px;overflow:hidden}.sc-encyclopedia{border-top:6px solid var(--sc-sun);padding-top:30px}.sc-roster{grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}.sc-roster button{border-radius:120px 120px 12px 12px;overflow:hidden;background:var(--sc-cream);padding-bottom:20px}.sc-roster button img{aspect-ratio:5/6;object-fit:contain}.sc-tabs{background:var(--sc-sun);border-radius:40px;position:relative}.sc-tabs button[aria-current=page]{background:var(--sc-ink);color:var(--sc-cream);border-radius:28px}.sc-heading :is(h1,h2){font-family:StaycMono,sans-serif;letter-spacing:-.055em}.sc-work{border:1px solid var(--sc-line);border-radius:16px;padding:14px;background:var(--sc-cream)}.sc-social{border-top:1px solid var(--sc-line);border-bottom:1px solid var(--sc-line);margin-bottom:24px}.sc-release-feature article{border-radius:18px;background:var(--sc-cream);padding:16px}.sc-news-image{border-radius:18px;overflow:hidden}@media(max-width:700px){.sc-hero-spread{grid-template-columns:1fr;gap:20px}.sc-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.sc-tabs{border-radius:0;overflow:auto}.sc-roster button{border-radius:70px 70px 8px 8px}.sc-hero>h1{font-size:25vw}.sc-hero-spread>figure{border-radius:12px}}
+/* High Up's six-member 2:LOVE group photograph sets the color and scale. */
+.stayc-artist {--sc-paper:#e5f0f8;--sc-cream:#f4f8fc;--sc-ink:#16354b;--sc-cherry:#235676;--sc-line:#a5bece;--sc-sun:#c8e1f0}
+.stayc-artist .sc-header {background:#16354b;color:#fff;border-color:#46647a}
+.stayc-artist .sc-brand,.stayc-artist .sc-footer-mark {display:inline-flex;align-items:center;min-height:44px}
+.stayc-artist .sc-brand img,.stayc-artist .sc-footer-mark img {width:128px;height:auto}
+.stayc-artist .sc-hero {max-width:1440px;padding:clamp(12px,1.6vw,24px) var(--sc-pad)}
+.stayc-artist .sc-hero>.sc-artist-title {position:absolute;width:1px;height:1px;margin:-1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+.stayc-artist .sc-hero-spread {display:block}
+.stayc-artist .sc-hero-spread>figure {margin:0;border:0;border-radius:0;overflow:visible}
+.sc-portrait-open {display:block;background:#adcee0}
+.stayc-artist .sc-portrait-open img {display:block;width:100%;height:auto;aspect-ratio:1600/1067;max-height:none;object-fit:contain}
+.sc-hero-spread figcaption {padding:8px 0 0;font-size:12px;color:var(--sc-cherry)}
+.sc-profile-strip {display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 0 4px}
+.sc-profile-strip p {margin:0;max-width:66ch;line-height:1.75}
+.sc-profile-strip .sc-hero-actions {flex-shrink:0}
+.stayc-artist .sc-tabs {border-radius:0;background:#d2e6f2}
+.stayc-artist .sc-footer {background:#16354b;color:#f5faff}
+@media(max-width:700px){
+ .stayc-artist .sc-hero {padding:10px 12px 16px}
+ .sc-profile-strip {display:grid;gap:8px;padding-top:10px}
+ .stayc-artist .sc-brand img {width:110px}
+}

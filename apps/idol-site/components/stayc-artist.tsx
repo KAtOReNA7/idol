@@ -19,6 +19,7 @@ import {safeGroupLink} from '@/lib/idol/group-detail';
 import {videoId} from '@/lib/idol/values';
 import type {ExpandedArtistContent} from './expanded-artist';
 import {PhotoLightbox} from './photo-lightbox';
+import {OriginalPhotoLink} from './original-photo-link';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from './reliable-image';
 import {useArtistScroll} from './use-artist-scroll';
 import {ArtistTimelineHost,useArtistTimelineHostOptions} from './artist-timeline-host';
@@ -81,8 +82,16 @@ export default function StaycArtist({content}:{content:StaycContent}){
 <MemberCareerFacts member={m} part="history"/>
 <MemberCareerFacts member={m} part="sources"/>
 </>;}
- return <ImageRecoveryProvider><div className="stayc-artist"><header className="sc-header"><A className="sc-brand" href="/">STAGE</A><nav aria-label="网站导航"><A href="/">我的放映室</A><A href="/?view=works">作品库</A><A href="/?view=members">成员档案</A><A href="/?view=groups">团体索引</A></nav><small>公开可读，只有本人可编辑</small></header>{!route.member&&<>
- {route.section === 'overview' && <section className="sc-hero"><A className="sc-crumb" href="/?view=groups"><ArrowLeft size={13}/>团体索引</A><h1>STAYC</h1><p className="sc-meta">HIGH UP ENTERTAINMENT / SEOUL / DEBUT {content.profile.debutDate}</p><div className="sc-hero-spread"><figure><Picture identityKey="stayc:hero" src={content.hero.image} alt={publicCustomArtistText(content.hero.caption)} priority/></figure><div className="sc-encyclopedia"><h2>HIGH UP<br/>ENTERTAINMENT</h2><p data-home-introduction="stayc"><span className="group-intro-label">团体介绍</span>{publicCustomArtistText(content.profile.summary)}</p><div className="sc-hero-actions">{representative&&<A className="sc-button primary" href={artistWorkUrl(representative,false,returnTo)}><Play size={14}/>从 {representative.song} 开始</A>}<A className="sc-official-link" href={external(content.profile.sourceUrl)} target="_blank" rel="noopener noreferrer">官方网站<ArrowUpRight size={13}/></A></div></div></div><p className="sc-credit">{publicCustomArtistCaption(content.hero.caption,content.hero.date)}</p></section>}
+ return <ImageRecoveryProvider><div className="stayc-artist"><header className="sc-header"><A className="sc-brand" href={path} aria-label="STAYC 首页"><img src="/artist/stayc/identity/highup-logo.svg" alt="STAYC"/></A><nav aria-label="网站导航"><A href="/">我的放映室</A><A href="/?view=works">作品库</A><A href="/?view=members">成员档案</A><A href="/?view=groups">团体索引</A></nav></header>{!route.member&&<>
+ {route.section==='overview'&&<section className="sc-hero">
+  <h1 className="sc-artist-title">STAYC</h1>
+  <div className="sc-hero-spread"><figure>
+   <OriginalPhotoLink className="sc-portrait-open" href={content.hero.image} onOpen={src=>setLightbox({src,label:content.hero.caption})} aria-label="查看 STAYC 完整团照"><Picture identityKey="stayc:hero" src={content.hero.image} alt={publicCustomArtistText(content.hero.caption)} priority/></OriginalPhotoLink>
+   <figcaption>{publicCustomArtistCaption(content.hero.caption,content.hero.date)}</figcaption>
+  </figure><div className="sc-profile-strip">
+   <p data-home-introduction="stayc"><span className="group-intro-label">团体介绍</span>{publicCustomArtistText(content.profile.summary)}</p>
+   <div className="sc-hero-actions">{representative&&<A className="sc-button primary" href={artistWorkUrl(representative,false,returnTo)}><Play size={14}/>{representative.song} · MV</A>}<A className="sc-official-link" href={external(content.profile.sourceUrl)} target="_blank" rel="noopener noreferrer">官网<ArrowUpRight size={12}/></A></div>
+  </div></div></section>}
  <nav className="sc-tabs" aria-label="团体内容">{sections.map(([k,label])=><button key={k} aria-current={route.section===k?'page':undefined} onClick={()=>select(k)}>{label}</button>)}</nav></>}
  <main className="sc-content" id="artist-content">{loading&&!data?<div className="sc-empty" role="status">正在打开你的 STAYC 收藏…</div>:error?<div className="sc-empty" role="alert"><p>{error}</p><button className="sc-button" onClick={retry}>重新加载</button></div>:!collection?<div className="sc-empty">暂未找到团体资料。<A href="/?view=groups">返回团体索引</A></div>:route.member?(member?memberPage(member):<div className="sc-empty">这个成员不在 STAYC 档案中。<button onClick={()=>navigate({member:null,section:'members'})}>查看成员</button></div>):<>
  {route.section==='overview'&&<>
@@ -96,5 +105,5 @@ export default function StaycArtist({content}:{content:StaycContent}){
  {route.section==='updates'&&<section><Heading primary label="TIMELINE" title="大事时间轴"/><ArtistTimelineHost groupId={content.groupId} catalog={data} loading={loading} error={error} onRetry={retry} background={news()}/></section>}
  {route.section==='works'&&<section><Heading primary label={`${collection.works.length} 支收录作品`} title="PRESS PLAY"/><div className="sc-work-tools"><label><Search size={17}/><input aria-label="搜索本团作品" placeholder="搜索歌曲或版本" value={route.search} onChange={e=>navigate({search:e.target.value},true)}/></label><div className="sc-pills">{queues.map(([k,l])=><button key={k} aria-pressed={route.queue===k} onClick={()=>navigate({queue:k})}>{l}<span>{artistWorkRows(collection.works,k,route.search).filter(matchesFormat).length}</span></button>)}</div><div className="sc-pills" aria-label="播放内容">{([['all','全部'],['mv','MV'],['stage','可看舞台']] as const).map(([k,l])=><button key={k} aria-pressed={route.format===k} onClick={()=>navigate({format:k})}>{l}</button>)}</div></div><div className="sc-work-grid">{rows.map(w=><WorkCard key={w.id} work={w} returnTo={returnTo}/>)}</div>{!rows.length&&<div className="sc-empty"><p>没有符合条件的作品。</p><button className="sc-button" onClick={()=>navigate({queue:'all',search:'',format:'all'})}>查看全部作品</button></div>}</section>}
  {route.section==='records'&&<section><Heading primary label="DISCOGRAPHY / 发行档案" title="THE RELEASE SHELF"/>{records()}</section>}
- </>}</main><footer className="sc-footer"><strong>STAYC</strong><A href="/?view=groups">返回团体索引<ArrowUpRight size={14}/></A><small>STAGE · 私人观看与评分手帐</small></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}</div><ImageRecoveryControls/></ImageRecoveryProvider>;
+ </>}</main><footer className="sc-footer"><A className="sc-footer-mark" href={path} aria-label="STAYC 首页"><img src="/artist/stayc/identity/highup-logo.svg" alt="STAYC"/></A><A href="/?view=groups">返回团体索引<ArrowUpRight size={14}/></A><small>STAGE · 私人观看与评分手帐</small></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}</div><ImageRecoveryControls/></ImageRecoveryProvider>;
 }

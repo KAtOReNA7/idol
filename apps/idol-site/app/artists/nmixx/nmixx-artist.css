@@ -7,3 +7,24 @@
 @media(prefers-reduced-motion:reduce){.nmixx-artist *{scroll-behavior:auto!important;transition:none!important}}
 
 @media(max-width:700px){.nmixx-artist .nx-hero-spread{grid-template-columns:minmax(0,1fr)}.nmixx-artist .nx-encyclopedia{min-width:0;overflow-wrap:anywhere}.nmixx-artist .nx-hero-actions{flex-wrap:wrap}.nmixx-artist .nx-tabs{flex-wrap:wrap;gap:4px 14px}}
+/* JYP's official profile pairs a full group photograph with its own white wordmark. */
+.nmixx-artist {--nx-paper:#f1ece2;--nx-ink:#302b24;--nx-line:#bcb19b}
+.nmixx-artist .nx-header,.nmixx-artist .nx-footer {background:#302b24;color:#faf7ee}
+.nmixx-artist .nx-brand,.nmixx-artist .nx-footer-mark {display:inline-flex;align-items:center;min-height:44px}
+.nmixx-artist :is(.nx-brand,.nx-footer-mark) img {display:block;width:108px;height:52px;object-fit:contain}
+.nmixx-artist .nx-hero {padding:0}
+.nmixx-artist .nx-hero-spread {display:block;margin:0;background:#a69b85}
+.nmixx-artist .nx-hero-spread figure {position:relative;margin:0}
+.nx-portrait-open {display:block}
+.nmixx-artist .nx-portrait-open img {width:100%;height:auto;aspect-ratio:1800/1013;object-fit:contain}
+.nmixx-artist .nx-hero-spread figcaption {position:absolute;inset:auto 0 0;padding:6% var(--nx-pad) 2%;display:flex;align-items:baseline;justify-content:space-between;gap:12px;background:linear-gradient(transparent,#201d1ac9);color:#fff;pointer-events:none}
+.nmixx-artist .nx-hero-spread figcaption h1 {font-size:clamp(28px,4vw,62px);line-height:1.05;margin:0}
+.nx-hero-spread figcaption span {font-size:12px}
+.nx-profile-caption {display:flex;align-items:center;gap:20px;padding:18px var(--nx-pad);background:#eee7db}
+.nx-profile-caption p {margin:0 auto 0 0;max-width:70ch;font-size:14px;line-height:1.7}
+.nx-profile-caption a {flex-shrink:0}
+@media(max-width:700px){
+ .nmixx-artist .nx-hero-spread figcaption {padding:26px 14px 10px}
+ .nx-profile-caption {gap:8px 18px;flex-wrap:wrap;padding:14px}
+ .nx-profile-caption p {width:100%}
+}

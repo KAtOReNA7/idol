@@ -1,7 +1,8 @@
 'use client';
 import {ArtistRosterMemberLink,returnToArtistRoster} from './artist-roster-link';
 import {OriginalPhotoLink} from './original-photo-link';
-import {artistMvHref} from '@/lib/idol/artist-mv-link';
+import {artistMvHref, reviewedEditorialWorkId} from '@/lib/idol/artist-mv-link';
+import {EditorialWorkHandoff} from './editorial-work-handoff';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {publicVideoCover} from '@/lib/idol/mv-public-media';
@@ -80,6 +81,10 @@ export default function AtheartArtist(){
  const retryCatalog=()=>injected.onRetry?injected.onRetry():setAttempt(value=>value+1);
  function videoDetail(video:Video){
   const source='https://www.youtube.com/watch?v='+video.videoId;
+  if (data && video.type === 'mv' && reviewedEditorialWorkId(groupId, video.videoId)) {
+    const target = artistMvHref(data, groupId, source, sectionUrl({media:null}), video.workId);
+    if (target) return <EditorialWorkHandoff href={target} title={video.title}/>;
+  }
   const work=video.workId?data?.works.find(work=>work.id===video.workId&&work.groupIds.includes(groupId)&&
    (video.type==='stage'?work.stage?.videoId===video.videoId:work.url===source)):undefined;
   const needsCatalog=Boolean(video.workId&&!data&&(wait||failure));
@@ -127,7 +132,7 @@ export default function AtheartArtist(){
  {section==='members'&&<><div className="ah-page-title"><h1>MEMBERS</h1><p>AtHeart 七位成员</p></div>{search('搜索成员')}{roster.length?memberCards(roster):empty}</>}
  {section==='records'&&<><div className="ah-page-title"><h1>MUSIC</h1><p>九项发行 · 包含语言版本、混音与成员合作</p></div>{search('搜索发行')}{releaseRows.length?releaseCards(releaseRows):empty}</>}
  {section==='works'&&<><div className="ah-page-title"><h1>WATCH</h1><p>每一个影像，都有自己的版本。</p></div>{search('搜索影像')}<div className="ah-filters" aria-label="影像类型">{[[null,'全部'],['mv','音乐影像'],['stage','表演 / 现场']].map(([value,label])=><button key={label} aria-pressed={(format||null)===value} onClick={()=>navigate({format:value})}>{label}</button>)}</div>{videoRows.length?videoCards(videoRows):empty}</>}
- {section==='updates'&&<><div className="ah-page-title"><h1>TIMELINE</h1><p>沿着日期，回看每个时刻。</p></div><ArtistTimelineHost groupId={groupId} catalog={data}/></>}
+ {section==='updates'&&<><div className="ah-page-title"><h1>TIMELINE</h1></div><ArtistTimelineHost groupId={groupId} catalog={data}/></>}
  </section>}
  {!mediaKey&&wait&&<p className="ah-data-status" role="status">正在读取已有手帐关联…</p>}{!mediaKey&&failure&&<div className="ah-data-status" role="alert">{failure} <button onClick={retryCatalog}>重新读取</button></div>}
  </main><footer className="ah-footer"><button className="ah-brand" onClick={()=>select('overview')}><img src={editorial.logo} alt="AtHeart"/></button><p>STAGE · 私人观看与评分手帐</p><button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}>回到页首 ↑</button></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}</div><ImageRecoveryControls/></ImageRecoveryProvider>;

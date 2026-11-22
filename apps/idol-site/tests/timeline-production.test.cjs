@@ -17,6 +17,7 @@ const continuousEvidence=require('../../../docs/codex/evidence/20261028-continuo
 const reportRecords=require('../data/timeline-reported-records.json').records;
 const {beforePriorityTimelineBytes,receipt:priorityDates}=require('./helpers/priority-date-baseline.cjs');
 const {agencyEventIds,beforeAgencyTimelineBytes,beforeAgencyEditorialBytes}=require('./helpers/ifeye-agency-baseline.cjs');
+const nativeDesignEdits=require('./fixtures/timeline/native-design-edits.json');
 const closedDates=require('../../../docs/codex/evidence/20261101-closeout/closure.json').dates;
 const octoberReports=JSON.parse(priorityDates.reportDocument.expectedBeforeText).records;
 const closedBoundary={
@@ -47,6 +48,22 @@ const nativeContracts={
  spia:['spia-native-design','b82bd3dc6756ae450695640554d07b0eaa3f57ec842d160126b5037d4e9c2915','sp-timeline'],
 };
 const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+function historicalNativeBytes(slug, bytes) {
+ if (slug === 'ifeye') return beforeAgencyEditorialBytes(bytes);
+ const edits = nativeDesignEdits[slug];
+ if (!edits) return bytes;
+ const document = JSON.parse(bytes);
+ for (const edit of edits) {
+  const identity = ['releases', 'works'].includes(edit.collection) ? 'key' : 'id';
+  const record = document[edit.collection].find(row => row[identity] === edit.record);
+  const label = [slug, edit.collection, edit.record, edit.field].join('/');
+  assert.ok(record, label);
+  assert.equal(record[edit.field], edit.after, label);
+  if (Object.hasOwn(edit, 'before')) record[edit.field] = edit.before;
+  else delete record[edit.field];
+ }
+ return Buffer.from(JSON.stringify(document, null, 2) + '\n');
+}
 function beforeContinuousSourceUpgrade(slug,bytes){
  bytes=beforePriorityTimelineBytes(slug,bytes);
  const change=continuousEvidence.timelines.find(row=>row.slug===slug);
@@ -231,7 +248,7 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
  const contract=nativeContracts[group.slug];let nativeData;
  if(contract){
   const bytes=fs.readFileSync(path.join(root,'data',contract[0]+'.json'));
-  assert.equal(sha(group.slug==='ifeye'?beforeAgencyEditorialBytes(bytes):bytes),contract[1],'exact historical native event and edition identities');
+  assert.equal(sha(historicalNativeBytes(group.slug,bytes)),contract[1],'exact historical native event and edition identities');
   nativeData=JSON.parse(bytes);
  }
  const actualQueries=['?section=updates','?section=overview'];

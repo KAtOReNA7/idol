@@ -20,11 +20,19 @@ import {memberWorks,memberWorkSummary} from '@/lib/idol/member-works';
 import {safeGroupLink} from '@/lib/idol/group-detail';
 import {videoId} from '@/lib/idol/values';
 import type {ExpandedArtistContent} from './expanded-artist';
+import {OriginalPhotoLink} from './original-photo-link';
+import {PhotoSourceDisclosure} from './photo-source-disclosure';
 import {PhotoLightbox} from './photo-lightbox';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from './reliable-image';
 import {useArtistScroll} from './use-artist-scroll';
 
-type ItzyContent=ExpandedArtistContent&{supplementalReleases?:(ExpandedArtistContent['releases'][number]&{category:string})[];releaseCoverage:{scope:string}};
+type ItzyPortrait=ExpandedArtistContent['memberVisuals'][string]&{recordId:string;identitySourceUrl:string;sourcePhotoUrl:string};
+type ItzyContent=Omit<ExpandedArtistContent,'memberVisuals'>&{
+ memberVisuals:Record<string,ItzyPortrait>;
+ portraitPreviews?:Record<string,string>;
+ supplementalReleases?:(ExpandedArtistContent['releases'][number]&{category:string})[];
+ releaseCoverage:{scope:string};
+};
 const path='/artists/itzy';
 const sections:[ArtistSection,string][]=[['overview','概览'],['works','作品与舞台'],['members','成员'],['updates','大事时间轴'],['records','发行与成绩']];
 const queues=[['all','全部作品'],['tonight','待看'],['rewatch','高分重温'],['unrated','看过待评分']];
@@ -33,7 +41,13 @@ const media=(p:Photo)=>`/api/media?table=${p.table}&record=${p.recordId}&index=$
 const external=(url:string)=>safeGroupLink(url)??undefined;
 function subscribe(fn:()=>void){window.addEventListener('popstate',fn);window.addEventListener('artist-location-change',fn);return()=>{window.removeEventListener('popstate',fn);window.removeEventListener('artist-location-change',fn);};}
 function A({href,children,...props}:ComponentProps<'a'>){return href?<a href={href} {...props}>{children}</a>:<span>{children}</span>;}
-function Picture({src,alt,priority=false,identityKey}:{src?:string|null;alt:string;priority?:boolean;identityKey?:string}){return <ReliableImage src={src} identityKey={identityKey??src??alt} alt={alt} priority={priority} referrerPolicy="no-referrer" missing={<div className="iz-photo-empty"><ImageIcon size={22}/><span>{'本 MV 个人造型图暂缺'}</span></div>} errorFallback={<div className="iz-photo-empty"><ImageIcon size={22}/><span>图片暂未加载</span></div>}/>;}
+function Picture({src,alt,priority=false,identityKey,width,height,missingLabel='暂无对应图片'}:{
+ src?:string|null;alt:string;priority?:boolean;identityKey?:string;width?:number;height?:number;missingLabel?:string;
+}){
+ return <ReliableImage src={src} identityKey={identityKey??src??alt} alt={alt} width={width} height={height} priority={priority} referrerPolicy="no-referrer"
+  missing={<div className="iz-photo-empty"><ImageIcon aria-hidden="true" size={22}/><span>{missingLabel}</span></div>}
+  errorFallback={<div className="iz-photo-empty"><ImageIcon aria-hidden="true" size={22}/><span>图片暂未加载</span></div>}/>;
+}
 function Heading({label,title,onMore,primary=false}:{label:string;title:string;onMore?:()=>void;primary?:boolean}){const Title=primary?'h1':'h2';return <div className="iz-heading"><div><Title>{title}</Title>{label!==title&&<small>{label}</small>}</div>{onMore&&<button onClick={onMore}>查看全部<ArrowUpRight size={14}/></button>}</div>;}
 function WorkCard({work,returnTo,stageOnly=false}:{work:Work;returnTo:string;stageOnly?:boolean}){
  const canEdit=useCanEdit();
@@ -79,8 +93,12 @@ export default function ItzyArtist({content}:{content:ItzyContent}){
  const representative=collection?.works.find(w=>videoId(w.url)==='fE2h3lGlOsk')??collection?.works.find(w=>!!w.url);
  const matchesFormat=(w:Work)=>route.format==='stage'?!!(w.stage||w.stageSupplement?.alternatives.length):route.format==='mv'?!!w.url:true;
  const rows=collection?artistWorkRows(collection.works,route.queue,route.search).filter(matchesFormat):[];
- const visual=(m:Member)=>content.memberVisuals[m.stageName];
- function roster(){return <><div className="iz-roster">{members.map(m=><button key={m.id} data-artist-member-trigger={m.id} onClick={()=>navigate({section:'members',member:m.id})}><Picture identityKey={'member:'+m.id} src={visual(m)?.image} alt={m.stageName+' · '+content.portraitSet.label}/><strong><span className="member-display-name">{memberDisplayName(m)}</span><ArrowUpRight size={13}/></strong><small>{m.status||'成员档案'}</small></button>)}</div><p className="iz-credit">{publicCustomArtistCaption(content.portraitSet.label,content.portraitSet.date)}</p></>;}
+ function visual(m:Member){
+  const portrait=content.memberVisuals[m.stageName];
+  if(!portrait?.image||portrait.recordId!==m.id)return undefined;
+  return {...portrait,preview:content.portraitPreviews?.[portrait.image]??portrait.image};
+ }
+ function roster(){return <><div className="iz-roster">{members.map(m=><button key={m.id} data-artist-member-trigger={m.id} onClick={()=>navigate({section:'members',member:m.id})}><Picture identityKey={'member:'+m.id} src={visual(m)?.preview} alt={m.stageName+' · '+content.portraitSet.label} width={1004} height={1280} missingLabel="成员资料照暂缺"/><strong><span className="member-display-name">{memberDisplayName(m)}</span><ArrowUpRight size={13}/></strong><small>{m.status||'成员档案'}</small></button>)}</div><p className="iz-credit">{publicCustomArtistCaption(content.portraitSet.label,content.portraitSet.date)}</p></>;}
  function news(){return <div className="iz-news">{content.updates.map(u=><A key={u.id} href={external(u.url)} target="_blank" rel="noopener noreferrer">{u.image&&<div className="iz-news-image"><Picture identityKey={'news:'+u.id} src={u.image} alt={u.title}/></div>}<time>{publicCustomArtistText(u.date)} · {u.publisher}</time><h3>{u.title}</h3><p>{publicCustomArtistText(u.summary)}</p><span>阅读官方内容<ArrowUpRight size={15}/></span></A>)}</div>;}
  function renderTimeline(){return <ArtistTimelineHost groupId={content.groupId} catalog={data} background={news()} loading={loading} error={error} onRetry={retry}/>;}
  function taste(){return canEdit&&collection&&<div className="iz-taste"><button onClick={()=>navigate({section:'works',queue:'tonight',member:null,search:''})}><small>接着发现</small><strong>{collection.pending.length} 支待看</strong><ArrowUpRight size={16}/></button><div><small>我的 MV 均分</small><strong>{number(collection.mv.mean)}</strong><span>{collection.mv.count} 支已评</span></div><div><small>我的舞台均分</small><strong>{number(collection.stage.mean)}</strong><span>{collection.stage.count} 支已评</span></div></div>;}
@@ -90,7 +108,36 @@ export default function ItzyArtist({content}:{content:ItzyContent}){
   const years=[...new Set([...content.releases.map(r=>r.date.slice(0,4)),...(content.wins??[]).map(w=>w.date.slice(0,4))])].sort().reverse();
   return <><p className="iz-scope">销量按发行年份筛选，一位按获奖年份筛选。</p><div className="iz-pills" aria-label="成绩年份">{['all',...years].map(y=><button key={y} aria-pressed={year===y} onClick={()=>setYear(y)}>{y==='all'?'全部':y}</button>)}</div><div className="iz-record-columns"><section><small className="iz-eyebrow">SALES / CIRCLE</small><strong className="iz-total">{sales.copies===null?'暂无数据':sales.copies.toLocaleString('zh-CN')}</strong><h3>Circle 已公开数据合计</h3><p className="iz-scope">{publicCustomArtistText(content.salesCoverage.scope)} 统计于 {content.asOf}。</p>{(compact?releases.slice(0,1):releases).map(r=><article className="iz-sale-row" key={r.id}><Picture identityKey={'release:'+r.id} src={r.image} alt={r.title+' 官方发行封面'}/><div><h4>{r.title}</h4><time>{r.date}</time><A href={external(r.circle!.sourceUrl)} target="_blank" rel="noopener noreferrer">Circle {r.circle!.copies?.toLocaleString('zh-CN')} 张<ArrowUpRight size={12}/></A>{r.hanteoFirstWeek&&<A href={external(r.hanteoFirstWeek.sourceUrl)} target="_blank" rel="noopener noreferrer">Hanteo 首周 {r.hanteoFirstWeek.copies.toLocaleString('zh-CN')} 张<ArrowUpRight size={12}/></A>}</div></article>)}{compact&&<button className="iz-button" onClick={()=>select('records')}>查看各发行成绩<ArrowUpRight size={13}/></button>}</section><section><small className="iz-eyebrow">MUSIC SHOWS</small><strong className="iz-total">{wins.length}<em> 次</em></strong><h3>韩国音乐节目一位 · 已收录</h3><p className="iz-scope">{publicCustomArtistText(content.winsCoverage.scope)}</p><div className="iz-win-table"><table><thead><tr><th>日期</th><th>歌曲</th><th>节目</th></tr></thead><tbody>{[...wins].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,compact?3:undefined).map(w=><tr key={w.id}><td>{w.date}</td><td>{w.song}</td><td><A href={external(w.sourceUrl)} target="_blank" rel="noopener noreferrer">{w.show}<ArrowUpRight size={11}/></A></td></tr>)}</tbody></table></div>{!wins.length&&<p className="iz-scope">这个年份暂无收录一位记录。</p>}{compact&&<button className="iz-button" onClick={()=>select('records')}>查看完整收录清单<ArrowUpRight size={13}/></button>}</section></div></>;
  }
- function memberPage(m:Member){if(!data)return null;const items=memberWorks(data,m.id),s=memberWorkSummary(items);return <><button className="iz-back" onClick={()=>navigate({section:'members',member:null})}><ArrowLeft size={15}/>ITZY · 全部成员</button><section className="iz-member-hero" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><figure><Picture identityKey={'member:'+m.id} src={visual(m)?.image} alt={m.stageName+' · '+content.portraitSet.label} priority/><figcaption>{publicCustomArtistCaption(content.portraitSet.label,content.portraitSet.date)}</figcaption></figure><div data-member-module="basic"><small className="iz-eyebrow">ITZY / MEMBER</small><h1><span className="member-display-name">{memberDisplayName(m)}</span></h1><MemberPhysicalFacts member={m}/><MemberCareerFacts member={m} part="intro"/><p>{[m.stageName,m.country,m.birthDate,m.status].filter(Boolean).join(' · ')}</p>{m.role&&<p>{m.role}</p>}<A className="iz-button" href={artistMemberUrl(m.id,returnTo)}>个人档案与记录<ArrowUpRight size={14}/></A><div className="iz-member-social">{(m.social??[]).map(a=><A key={a.platform} href={external(a.url)} target="_blank" rel="noopener noreferrer"><span>{a.platform==='instagram'?'Instagram':a.platform==='x'?'X':a.platform==='youtube'?'YouTube':'TikTok'}<ArrowUpRight size={13}/></span>{a.countLabel&&<strong>{followerAccountLabel(a)}</strong>}<small>{a.observedAt?'更新于 '+a.observedAt.slice(0,10):'粉丝数暂未收录'}</small></A>)}</div></div></section>
+ function memberPage(m:Member){
+  if(!data)return null;
+  const items=memberWorks(data,m.id),s=memberWorkSummary(items);
+  const name=memberDisplayName(m),portrait=visual(m),photoLabel=name+' · '+(portrait?.label??'成员资料照');
+  const openPortrait=(src:string)=>setLightbox({src,label:photoLabel});
+  return <><button className="iz-back" onClick={()=>navigate({section:'members',member:null})}><ArrowLeft aria-hidden="true" size={15}/>ITZY · 全部成员</button>
+  <section className="iz-member-hero" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity">
+   <header className="iz-member-heading">
+    <h1><span className="member-display-name">{name}</span></h1>
+    <A className="iz-button iz-member-record" href={artistMemberUrl(m.id,returnTo)}>个人档案与记录<ArrowUpRight aria-hidden="true" size={14}/></A>
+   </header>
+   <figure className="iz-member-portrait">
+    <OriginalPhotoLink className="iz-portrait-open" href={portrait?.image} aria-label={'放大'+name+'的资料照'} onOpen={openPortrait}>
+     <Picture identityKey={'member:'+m.id} src={portrait?.preview} alt={photoLabel} width={1004} height={1280} missingLabel="成员资料照暂缺" priority/>
+    </OriginalPhotoLink>
+    {portrait&&<figcaption>
+     <OriginalPhotoLink className="iz-original-link" href={portrait.image} aria-label={'查看'+name+'的原图'} onOpen={openPortrait}>查看原图</OriginalPhotoLink>
+     <PhotoSourceDisclosure>
+      <p>{portrait.label} · {content.portraitSet.copyright}</p>
+      <A href={external(portrait.identitySourceUrl)} target="_blank" rel="noopener noreferrer">JYP 成员档案</A>
+      <A href={external(portrait.sourcePhotoUrl)} target="_blank" rel="noopener noreferrer">JYP 照片原件</A>
+     </PhotoSourceDisclosure>
+    </figcaption>}
+   </figure>
+   <div data-member-module="basic">
+    <p className="iz-member-facts">{[m.country,m.birthDate,m.status,m.role].filter(Boolean).join(' · ')}</p>
+    <MemberPhysicalFacts member={m}/><MemberCareerFacts member={m} part="intro"/>
+    <div className="iz-member-social">{(m.social??[]).map(a=><A key={a.platform} href={external(a.url)} target="_blank" rel="noopener noreferrer"><span>{a.platform==='instagram'?'Instagram':a.platform==='x'?'X':a.platform==='youtube'?'YouTube':'TikTok'}<ArrowUpRight size={13}/></span>{a.countLabel&&<strong>{followerAccountLabel(a)}</strong>}<small>{a.observedAt?'更新于 '+a.observedAt.slice(0,10):'粉丝数暂未收录'}</small></A>)}</div>
+   </div>
+  </section>
 <div className="iz-member-summary" data-member-module="scores"><div><small>作品综合分</small><strong>{number(s.composite)}</strong><span>{s.ratedWorks} 支作品已评</span></div><div className="iz-dimensions"><div><small>表现均分</small><strong>{number(s.performanceMean)}</strong><span>{s.performanceCount} 支已评</span></div><div><small>造型均分</small><strong>{number(s.stylingMean)}</strong><span>{s.stylingCount} 支已评</span></div></div>{s.composite===null&&<p>表现和造型都有评分后，显示作品综合分。</p>}</div>
 <Heading label="作品评分" title="成员影像"/><div className="iz-member-works" data-member-module="works">{items.map(x=><article key={x.work.id}><MemberWorkIdentityPhoto work={x.work} memberId={m.id} label={memberDisplayName(m)+' · '+x.work.song} photo={x.photo} live={data.mode==='live'} className="iz-member-look member-mv-look" onOpen={setLightbox} showMissing/><A data-member-work-trigger={x.work.id} href={artistWorkUrl(x.work,false,returnTo)}><h3>{x.work.song||x.work.name}<ArrowUpRight size={14}/></h3><p>{x.work.version||x.work.videoType}</p><div><span>表现 <b>{number(x.performance)}</b></span><span>造型 <b>{number(x.styling)}</b></span></div></A>{!!(x.work.stage||x.work.stageSupplement?.alternatives.length)&&<A className="iz-button" data-member-work-trigger={x.work.id+':stage'} href={artistWorkUrl(x.work,true,returnTo)}>{x.work.stage?'看舞台':'其他现场'}<ArrowUpRight size={13}/></A>}</article>)}</div>
 <MemberPublicCredits memberId={m.id} data={data} renderLink={(work,label)=><A href={artistWorkUrl(work,false,returnTo)}>{label}</A>}/>

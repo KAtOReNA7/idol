@@ -26,11 +26,11 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 413,
+    "twoWidthBoardMatches": 414,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
-      "profile": 49,
+      "profile": 50,
       "works": 44,
       "release": 39,
       "mv": 51,
@@ -49,7 +49,6 @@
         "kiiikiii"
       ],
       "profile": [
-        "itzy",
         "lesserafim"
       ],
       "works": [
@@ -165,7 +164,8 @@
     "adya-per-set": "docs/codex/evidence/20261122-adya-per-set/design-and-sources.json",
     "three-artist-directories": "docs/codex/worklogs/20261122-three-artist-directories.md",
     "four-artist-film-directories": "docs/codex/worklogs/20261122-four-artist-film-directories.md",
-    "stage-directory-cards": "docs/codex/worklogs/20261122-stage-directory-targets.md"
+    "stage-directory-cards": "docs/codex/worklogs/20261122-stage-directory-targets.md",
+    "itzy-yeji-profile": "docs/codex/worklogs/20261123-itzy-member-profile.md"
   },
   "groups": [
     {
@@ -3542,8 +3542,8 @@
           "1463:1454"
         ],
         "profile": [
-          null,
-          null
+          "1633:1757",
+          "1633:1846"
         ],
         "works": [
           "1463:1260",
@@ -3575,7 +3575,8 @@
         "members": "itzy-lsf-home",
         "works": "itzy-lsf-home",
         "mv": "itzy-lsf-work",
-        "stage": "itzy-lsf-work"
+        "stage": "itzy-lsf-work",
+        "profile": "itzy-yeji-profile"
       },
       "implementation": [
         {
@@ -3587,6 +3588,11 @@
           "at": "本地",
           "scope": "首发 MV、表演版与已登记成员的评分入口",
           "evidence": "itzy-lsf-work"
+        },
+        {
+          "at": "本地",
+          "scope": "五位成员可打开本人原图和 JYP 出处，具名预览用于名录与详情",
+          "evidence": "itzy-yeji-profile"
         }
       ],
       "additional": []
@@ -4126,6 +4132,16 @@
     "1555:1795": {
       "page": "850:1132",
       "name": "MACARONI CHEESE / SUNHYE 本人评分已展开 / 390",
+      "type": "FRAME"
+    },
+    "1633:1757": {
+      "page": "1457:1109",
+      "name": "ITZY / 黄礼志 · YEJI / 成员详情 / 1440",
+      "type": "FRAME"
+    },
+    "1633:1846": {
+      "page": "1457:1109",
+      "name": "ITZY / 黄礼志 · YEJI / 成员详情 / 375",
       "type": "FRAME"
     }
   }

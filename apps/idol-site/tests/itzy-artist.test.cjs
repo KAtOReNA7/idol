@@ -11,10 +11,45 @@ test('ITZY search queue and format roundtrip',()=>{const {load}=setup('/artists/
 test('ITZY overview shows actual library MV scores including zero and null',()=>{const s=setup('/artists/itzy').render();assert.match(s,/recWho/);assert.match(s,/recSweat/);assert.match(s,/recSticky/);assert.match(s,/未评分/);assert.match(s,/8\.0 \/ 10/);assert.match(s,/0\.0 \/ 10/);assert.doesNotMatch(s,/实时粉丝|核验流程|sourceKey/);});
 test('ITZY collection cannot invent stage sources or mix member scores',()=>{const s=setup('/artists/itzy?section=works').render();assert.match(s,/0\.0 \/ 10/);assert.match(s,/未评分/);assert.match(s,/returnTo=%2Fartists%2Fitzy%3Fsection%3Dworks/);const stage=setup('/artists/itzy?section=works&format=stage').render();assert.match(stage,/没有符合条件/);assert.doesNotMatch(stage,/class="iz-work"/);});
 test('ITZY member summaries preserve zero, dimension sample counts and exact MV photo absence', () => {
- assertMemberWorkCard(setup, fixture, 'itzy', '暂无对应图片');
+ const data=fixture(),id=content.memberVisuals.YEJI.recordId;
+ data.members[0].id=id;
+ data.ratings[0].memberIds=[id];
+ assertMemberWorkCard(setup, ()=>data, 'itzy', '暂无对应图片');
 });
 
 test('ITZY five portraits preserve named official provenance and existing private media identities',()=>{assert.equal(content.profile.members.length,5);assert.deepEqual(Object.keys(content.memberVisuals),content.profile.members);for(const v of Object.values(content.memberVisuals)){assert.equal(v.identitySourceUrl,'https://itzy.jype.com/profile');assert.match(v.sourcePhotoUrl,/^https:\/\/d1meds70430yck.cloudfront.net\/artists\/itzy\/profiles\//);assert.equal(v.previousImage,'/api/media?table=members&record='+v.recordId+'&index=0');assert.ok(fs.existsSync('public'+v.image));}});
+
+test('each ITZY member opens the exact original and official credit from their smaller portrait',async()=>{
+ const {parse}=require('next/dist/compiled/node-html-parser'),sharp=require('sharp');
+ const data=fixture(),base=data.members[0];
+ data.members=Object.entries(content.memberVisuals).map(([stageName,portrait])=>({...base,stageName,id:portrait.recordId}));
+ const roster=parse(setup('/artists/itzy?section=members',data).render());
+ for(const member of data.members){
+  const portrait=content.memberVisuals[member.stageName],preview=content.portraitPreviews[portrait.image];
+  const src=await sharp('public'+portrait.image).metadata(),card=await sharp('public'+preview).metadata();
+  assert.deepEqual([src.width,src.height],[1004,1280]);
+  assert.deepEqual([card.width,card.height],[760,969]);
+  assert.ok(fs.statSync('public'+preview).size<fs.statSync('public'+portrait.image).size);
+  assert.equal(roster.querySelector('[data-artist-member-trigger="'+member.id+'"] img').getAttribute('src'),preview);
+  const detail=parse(setup('/artists/itzy?section=members&member='+member.id,data).render());
+  const hero=detail.querySelector('[data-member-module="identity"]');
+  assert.equal(hero.querySelector('img').getAttribute('src'),preview);
+  assert.equal(hero.querySelector('header h1').text,member.stageName);
+  assert.doesNotMatch(hero.querySelector('.iz-member-facts').text,new RegExp(member.stageName));
+  assert.equal(new URL(hero.querySelector('.iz-member-record').getAttribute('href'),'https://stage.test').searchParams.get('member'),member.id);
+  const originals=hero.querySelectorAll('figure a[data-original-photo]');
+  assert.equal(originals.length,2);
+  assert.ok(originals.every(a=>a.getAttribute('href')===portrait.image&&a.getAttribute('aria-haspopup')==='dialog'));
+  assert.equal(originals[1].text,'查看原图');
+  const source=hero.querySelector('figcaption details');
+  assert.equal(source.hasAttribute('open'),false);
+  assert.equal(source.querySelector('summary').text,'照片出处');
+  assert.deepEqual(source.querySelectorAll('a').map(a=>a.getAttribute('href')),[portrait.identitySourceUrl,portrait.sourcePhotoUrl]);
+ }
+ const unknown=parse(setup('/artists/itzy?section=members&member=recM').render()).querySelector('[data-member-module="identity"]');
+ assert.match(unknown.text,/成员资料照暂缺/);
+ assert.equal(unknown.querySelector('figure a,figure details'),null);
+});
 test('ITZY missing performance records are unknown, never invented zero',()=>{assert.equal(content.wins,null);assert.ok(content.releases.every(r=>r.circle===null));const s=setup('/artists/itzy?section=records').render();assert.match(s,/暂无完整记录/);assert.match(s,/完整音乐节目一位记录暂缺|一位记录尚不完整/);assert.doesNotMatch(s,/0<em/);});
 test('ITZY reads only the authenticated catalog and retains shared member math',()=>{const s=fs.readFileSync('components/itzy-artist.tsx','utf8');assert.match(s,/readArtistCatalog\('itzy', controller\.signal\)/);assert.doesNotMatch(s,/method:'POST'|localStorage|sessionStorage|api\/save|api\/manage/);assert.match(s,/memberWorks\(data,m.id\)/);assert.match(s,/memberWorkSummary\(items\)/);});
 test('ITZY social dates are retained historical observations',()=>{for(const s of content.social)assert.match(s.observedAt,/^2026-10-09/);assert.equal(content.social.length,4);});

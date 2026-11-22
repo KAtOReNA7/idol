@@ -19,3 +19,26 @@
 .candidate-spia-experience .work-detail-top{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr);gap:38px}.candidate-spia-experience .work-aside{border-top:0;padding:14px 0}.candidate-spia-experience .work-aside h1{font-size:48px;letter-spacing:0}.candidate-spia-experience .private-pill{border:1px solid var(--line)}.candidate-spia-experience .detail-return{background:#f1f4ed;border:1px solid #d9e2d2}.candidate-spia-experience .button.primary{background:var(--rose);color:#fff}.candidate-spia-experience .header .brand{font-family:SpiaSans,SpiaText,sans-serif;font-weight:600;letter-spacing:1px}.candidate-spia-experience .member-detail h1{font-family:SpiaSans,SpiaText,sans-serif;font-weight:500}.candidate-spia-experience .video-mode-tabs button[aria-selected=true]{color:#fff}@media(max-width:760px){.candidate-spia-experience .work-detail-top{grid-template-columns:1fr;gap:20px}.candidate-spia-experience .work-aside{padding:14px 0}.candidate-spia-experience .work-aside h1{font-size:36px}.candidate-spia-experience .header{align-items:start;flex-wrap:wrap}}
 
 .candidate-spia-experience{--paper:#ffffff;--white:#f1f4ed;--ink:#23482c;--muted:#65735f;--line:#d9e2d2;--rose:#426c3d;--blush:#f1f4ed;--lilac:#f8f9ed;--experience-display:SpiaSerif,SpiaText,serif;background:#fff;color:#23482c;font-family:SpiaText,sans-serif}.candidate-spia-experience .button.primary{background:#23482c;color:#fff;border-color:#23482c}.candidate-spia-experience .member-detail>.bm-concept-photo{height:auto;aspect-ratio:4/5;align-self:start;margin-bottom:30px;overflow:visible}.candidate-spia-experience .member-detail>.bm-concept-photo img{width:100%;height:100%;object-fit:contain}.candidate-spia-experience .image-label{white-space:normal;color:#23482c;background:#f1f4ed}.candidate-spia-experience .member-detail h1{font-family:SpiaSerif,SpiaText,serif}.candidate-spia-experience .back{color:#23482c}.candidate-spia-experience .member-detail{grid-template-columns:minmax(0,.65fr) minmax(0,1fr)}@media(max-width:760px){.candidate-spia-experience .member-detail{display:flex;flex-direction:column}}
+
+/* SPIA · Deeeep — shared MV and THE SHOW records. */
+body .work-experience[data-work-theme="spia"] {
+  --experience-display: var(--font-editorial);
+}
+body .work-experience[data-work-theme="spia"] :is(.music-work-title h1,.work-aside h1,.member-name) {
+  font-family: var(--font-editorial); font-weight: 700; letter-spacing: -.025em;
+}
+body .work-experience[data-work-theme="spia"] :is(.work-aside,.editor,.cast-card,.detail-return) {
+  background: var(--white); color: var(--ink); border-color: var(--line);
+}
+body .work-experience[data-work-theme="spia"] :is(.back,.video-caption,.tags span) { color: var(--muted); }
+body .work-experience[data-work-theme="spia"] :is(.editor-open,.credit-score-action,.video-play,.button.primary,.video-mode-tabs button[aria-selected="true"]) {
+  background: var(--rose); color: #142940; border-color: var(--rose); min-height: 44px;
+}
+body .work-experience[data-work-theme="spia"] .video-play { padding: 8px 16px; border-radius: 0; }
+body .work-experience[data-work-theme="spia"] .work-aside { padding: 16px; }
+body .work-experience[data-work-theme="spia"] .cast-grid {
+  display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px;
+}
+@media (max-width: 760px) {
+  body .work-experience[data-work-theme="spia"] .cast-grid { grid-template-columns: minmax(0,1fr); }
+}

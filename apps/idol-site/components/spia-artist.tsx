@@ -63,7 +63,9 @@ export default function SpiaArtist({content}:{content:CandidateContent}){
  const backToLibrary=href({section:'works',release:null,media:null,member:null});
  function go(e:MouseEvent<HTMLAnchorElement>,target:string){if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;remember(e);if(target.startsWith('/?'))return;e.preventDefault();history.pushState(newArtistHistoryState(history.state,target),'',target);window.dispatchEvent(new Event('artist-location-change'));document.getElementById('artist-content')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
  const showPhoto=(src:string,label:string)=>setLightbox({src:originalPhoto(src),label});
- const heading=(cn:string,en:string)=><header className="sp-heading"><h2>{en}</h2><p>{cn}</p></header>;
+ const heading=(cn:string,en:string)=><header className="sp-heading">
+   {route.section==='overview'?<><h2>{en}</h2><p>{cn}</p></>:<h2>{cn}</h2>}
+ </header>;
  const title=(cn:string,en:string)=><header className="sp-title"><h1>{cn}</h1><p>{en}</p></header>;
  function search(kind:'members'|'works'){return <form className="sp-search" onSubmit={e=>{e.preventDefault();const q=String(new FormData(e.currentTarget).get('q')??'').trim().slice(0,200);remember();history.pushState(newArtistHistoryState(history.state),'',href({q:q||null}));window.dispatchEvent(new Event('artist-location-change'));}}><label htmlFor="sp-search">搜索{kind==='members'?'成员':'作品'}</label><div><input id="sp-search" key={route.search} name="q" defaultValue={route.search} maxLength={200} placeholder={kind==='members'?'中文名 / 艺名':'作品名称'}/><button type="submit">查找</button>{route.search&&<Link to={href({q:null})}>清除搜索</Link>}</div></form>;}
  function roster(people:Person[]=design.members){return <div className="sp-members">{people.map(m=><article key={m.id} className="sp-member"><Link to={personHref(m.id)} memberId={m.id}><Picture src={content.portraits[m.id].image} alt={`${m.cnName} ${m.stageName} · Deeeep 时期具名转载照片`} className="sp-portrait"/><h3>{m.cnName}</h3><p>{m.stageName.toUpperCase()}</p></Link></article>)}</div>;}

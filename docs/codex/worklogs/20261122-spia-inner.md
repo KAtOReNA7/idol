@@ -15,3 +15,8 @@
 目录保留同一组四个影像版本和两张发行。每张卡把封面、片名与版本合成一个可聚焦的链接。原站相同内容原有 14 个链接，现在有 6 个，键盘完整浏览少经过 8 个重复入口。作品影像在两张发行之前。时间轴保留节目日期、音源发行与原始来源，移除了内部绑定和录入说明。手机上的成员、发行详情缩短大图到基本资料的距离。
 
 本机 Codex 自带浏览器实测 375 / 1425 px 共 14 个页面。均无横向溢出，名册均有五人，时间轴均有五个事件，两档目录所有卡片都只有一个可操作入口。两份映射到共享作品封面的 MV 已逐像素比对，和 Figma 对应原海报完全相同。使用现成摄图片和字体，本批没有新增站点图片或字体。本批定向测试 125/125。正式站复验及飞书状态见发布回执。[修改前目录](../evidence/20261122-spia-inner/formal-before.json) · [本机双宽结果](../evidence/20261122-spia-inner/local-browser.json)
+## 站内播放与评分页
+
+从 SPIA 目录进入《Daddy’s Little Girl》时，原正式站的播放器仍使用白色背景、森林绿操作和 Playfair Display。另在 Figma 按实际站内导航、原版 MV 与 THE SHOW 海报、五名成员照片、本人评分和整体舞台分绘制四稿。[MV 桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1515-8045) · [MV 手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1515-8102) · [舞台桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1515-8152) · [舞台手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1515-8183)
+
+两版实际作品组件在 375 与 1425 px 都使用深蓝背景、粉色播放与版本按钮及 700 字重 DM Sans 标题。MV 与舞台切换后保持各自的视频封面，两档无横向溢出。隔离目录此次只有作品记录；正式成员照片和评分控件另在原站复验。[四稿导出](../evidence/20261122-spia-inner/work-boards.webp) · [切换与色值实测](../evidence/20261122-spia-inner/local-native-works.json)

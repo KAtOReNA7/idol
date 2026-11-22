@@ -2946,15 +2946,15 @@
       "currentStyleCssPaths": [
         "components/spia-artist.css"
       ],
-      "paper": "#fff",
-      "surface": "#f1f4ed",
-      "ink": "#23482c",
-      "muted": "#65735f",
-      "line": "#d9e2d2",
-      "accent": "#23482c",
-      "soft": "#f1f4ed",
-      "fontBody": "SpiaText,Arial,sans-serif",
-      "fontHeading": "SpiaSerif,serif",
+      "paper": "#0a1e32",
+      "surface": "#142c49",
+      "ink": "#f6f4fa",
+      "muted": "#c2d1e1",
+      "line": "#48617c",
+      "accent": "#f2c0d6",
+      "soft": "#142c49",
+      "fontBody": "SpiaSans,SpiaText,sans-serif",
+      "fontHeading": "SpiaSans,SpiaText,sans-serif",
       "fontHeadingStyle": "normal",
       "fontFaceCssPaths": [
         "components/spia-artist.css"
@@ -2963,16 +2963,16 @@
         {
           "file": "components/spia-artist.css",
           "line": 1,
-          "css": "@font-face{font-family:SpiaSerif;src:url('/fonts/PlayfairDisplay-Variable.woff2') format('woff2');font-weight:400 900;font-display:swap}",
-          "family": "SpiaSerif",
-          "font-family": "SpiaSerif",
-          "src": "url('/fonts/PlayfairDisplay-Variable.woff2') format('woff2')",
-          "font-weight": "400 900",
+          "css": "@font-face{font-family:SpiaSans;src:url('/fonts/DMSans-Variable.woff2') format('woff2');font-weight:100 1000;font-display:swap}",
+          "family": "SpiaSans",
+          "font-family": "SpiaSans",
+          "src": "url('/fonts/DMSans-Variable.woff2') format('woff2')",
+          "font-weight": "100 1000",
           "font-display": "swap"
         },
         {
           "file": "components/spia-artist.css",
-          "line": 2,
+          "line": 3,
           "css": "@font-face{font-family:SpiaText;src:url('/fonts/unis/NotoSansSC-Regular.woff2') format('woff2');font-weight:400;font-display:swap}",
           "family": "SpiaText",
           "font-family": "SpiaText",
@@ -2983,72 +2983,60 @@
       ],
       "tokenEvidence": {
         "paper": {
-          "source": "#fff",
-          "kind": "current_palette_reuse",
-          "note": "No new color introduced; reuse an existing artist palette color for shared detail surfaces."
+          "source": "SPIA Deeeep • native work boards",
+          "kind": "reviewed_figma_color"
         },
         "surface": {
-          "source": "#f1f4ed",
-          "kind": "current_palette_reuse",
-          "note": "No new color introduced; reuse an existing artist palette color for shared detail surfaces."
+          "source": "SPIA Deeeep • native work boards",
+          "kind": "reviewed_figma_color"
         },
         "ink": {
-          "source": "--sp-ink",
-          "kind": "current_root_variable"
+          "source": "SPIA Deeeep • native work boards",
+          "kind": "reviewed_figma_color"
         },
         "muted": {
-          "source": "--sp-muted",
-          "kind": "current_root_variable"
+          "source": "SPIA Deeeep • native work boards",
+          "kind": "reviewed_figma_color"
         },
         "line": {
-          "source": "--sp-line",
-          "kind": "current_root_variable"
+          "source": "SPIA Deeeep • native work boards",
+          "kind": "reviewed_figma_color"
         },
         "accent": {
-          "source": "--sp-ink",
-          "kind": "current_root_variable"
+          "source": "SPIA Deeeep • native work boards",
+          "kind": "reviewed_figma_color"
         },
         "soft": {
-          "source": "#f1f4ed",
-          "kind": "current_palette_reuse",
-          "note": "No new color introduced; reuse an existing artist palette color for shared detail surfaces."
+          "source": "SPIA Deeeep • native work boards",
+          "kind": "reviewed_figma_color"
         }
       },
       "rootEvidence": [
         {
           "file": "components/spia-artist.css",
-          "line": 5,
+          "line": 49,
           "selector": "[data-idol-spia-native]",
           "declarations": {
-            "--sp-ink": "#23482c",
-            "--sp-muted": "#65735f",
-            "--sp-line": "#d9e2d2",
-            "min-height": "100vh",
-            "background": "#fff",
-            "color": "var(--sp-ink)",
-            "font": "14px/1.85 SpiaText,Arial,sans-serif"
+            "--sp-ink": "#f6f4fa",
+            "--sp-muted": "#c2d1e1",
+            "--sp-line": "#48617c",
+            "background": "#0a1e32"
           }
         }
       ],
-      "oldJournalPaletteDifferences": [
-        {
-          "token": "accent",
-          "before": "#426c3d",
-          "after": "#23482c"
-        }
-      ],
-      "corePaletteDifferences": [
-        {
-          "token": "accent",
-          "before": "#426c3d",
-          "after": "#23482c"
-        }
-      ],
+      "oldJournalPaletteDifferences": [],
+      "corePaletteDifferences": [],
       "fontCorrectionNeeded": false,
-      "sourceStatus": "requires_correction",
-      "headingReview": "Use current heading font shown here; existing journal declarations may override variables on descendants.",
-      "character": "白底森林绿；Playfair Display",
-      "browserStatus": "pending"
+      "sourceStatus": "reviewed_official_artist_and_detail_design",
+      "headingReview": "Upright DM Sans Bold matches the Deeeep artist spreads and its two in-site work views.",
+      "character": "Deeeep campaign navy with pink controls and DM Sans",
+      "browserStatus": "pending",
+      "figmaDetailFrames": [
+        "1515:8045",
+        "1515:8102",
+        "1515:8152",
+        "1515:8183"
+      ]
     },
     {
       "slug": "udtt",

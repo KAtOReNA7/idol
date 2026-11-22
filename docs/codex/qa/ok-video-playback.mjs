@@ -126,15 +126,19 @@ export async function checkOkVideo(tab, work, site, timeoutMs) {
         return await run(() => window.idolTemporaryPlaybackProbe.samples);
       } finally {await run(() => window.idolTemporaryPlaybackProbe.stop());}
     }
-    const resume=frame.getByRole('button',{name:/^(Смотреть|Воспроизвести|Play|播放)$/i});
+    const resume=frame.getByRole('button',{name:/^(Смотреть|Воспроизвести|Play|播放)$/i}).filter({visible:true}).first();
     row.beforeTestMute=await run(() => window.idolTemporaryPlaybackProbe.beforeMute);
     row.defaultSamples=await measure(1);
     row.firstClickPlayed=row.defaultSamples.length===2;
     if (!row.firstClickPlayed) {
       row.lastMedia=await run(() => window.idolTemporaryPlaybackProbe.media());
-      row.status='no-confirmed-first-click-progress';return row;
+      if(!work.verifyManualFallback||!await resume.isVisible()){
+        row.status='no-confirmed-first-click-progress';return row;
+      }
+      row.manualSamples=await measure(1,()=>resume.press('Enter',click));
+      if(row.manualSamples.length!==2){row.status='no-confirmed-manual-progress';return row;}
     }
-    if (!work.verifyQualityMenu && row.defaultSamples.every(s => s.w === width && s.h === height)) {
+    if (!work.verifyQualityMenu && row.defaultSamples.length===2 && row.defaultSamples.every(s => s.w === width && s.h === height)) {
       row.qualityChoice='current setting';
       row.samples=row.defaultSamples;
     } else {

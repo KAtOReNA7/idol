@@ -30,6 +30,7 @@ export interface ArtistTimelineProps {
   /** The host applies the existing dirty/save guard before navigation. */
   onMember?: (memberId: string, eventId: string) => void;
   onWork?: (workId: string, eventId: string) => void;
+  recordHref?: (kind: 'member'|'work', id: string, eventId: string) => string | null;
   releaseTargets?: Readonly<Record<string,{id:string;label:string}>>;
   onRelease?: (releaseId:string,eventId:string)=>void;
   memberLabels?: Readonly<Record<string, string>>;
@@ -75,11 +76,12 @@ function titleWithCjkPunctuation(title: string): ReactNode {
     ? <span className="at-title-punctuation" key={index}>{part}</span> : part);
 }
 
-function EventLinks({event,context,onMember,onWork,memberLabels,workLabels,releaseTargets,onRelease}: {
+function EventLinks({event,context,onMember,onWork,memberLabels,workLabels,releaseTargets,onRelease,recordHref}: {
   event: TimelineEvent; context: TimelineValidationContext;
   releaseTargets?: ArtistTimelineProps['releaseTargets']; onRelease?: ArtistTimelineProps['onRelease'];
   onMember?: ArtistTimelineProps['onMember']; onWork?: ArtistTimelineProps['onWork'];
   memberLabels?: ArtistTimelineProps['memberLabels']; workLabels?: ArtistTimelineProps['workLabels'];
+  recordHref?: ArtistTimelineProps['recordHref'];
 }) {
   const release=releaseTargets?.[event.id];
   const targets = [
@@ -88,9 +90,17 @@ function EventLinks({event,context,onMember,onWork,memberLabels,workLabels,relea
     ...event.workIds.map(id => ({id,kind:'work' as const,label:workLabels?.[id],usable:context.works?.some(work=>work.id===id&&work.groupIds.includes(event.groupId)),navigate:onWork})),
   ].filter(target=>target.label);
   if (!targets.length) return null;
-  return <div className="at-references" aria-label="关联成员与作品">{targets.map(target=>target.usable&&target.navigate
-    ? <button type="button" key={`${target.kind}-${target.id}`} data-timeline-event-trigger={event.id} data-timeline-target-kind={target.kind} data-timeline-target-id={target.id} onClick={()=>target.navigate!(target.id,event.id)}>{target.label}</button>
-    : <span key={`${target.kind}-${target.id}`}>{target.label}</span>)}</div>;
+  return <div className="at-references" aria-label="关联成员与作品">{targets.map(target=>{
+    const key=target.kind+'-'+target.id;
+    if (!target.usable) return <span key={key}>{target.label}</span>;
+    const trigger={'data-timeline-event-trigger':event.id,'data-timeline-target-kind':target.kind,'data-timeline-target-id':target.id};
+    const href=target.kind==='release'?null:recordHref?.(target.kind,target.id,event.id);
+    if (href) return <a key={key} {...trigger} href={href} data-member-work-trigger={'timeline:'+event.id+':'+target.kind+':'+target.id} onClick={e=>{
+      if (!target.navigate || e.defaultPrevented || e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault(); target.navigate(target.id,event.id);
+    }}>{target.label}</a>;
+    return target.navigate?<button key={key} type="button" {...trigger} onClick={()=>target.navigate!(target.id,event.id)}>{target.label}</button>:<span key={key}>{target.label}</span>;
+  })}</div>;
 }
 
 type TimelineVisual = 'debut' | 'people' | 'release' | 'organization' | 'ordinary';
@@ -120,7 +130,7 @@ function EventMarker({visual}: {visual: TimelineVisual}) {
 }
 
 /** A single read-only chronological axis. Audit/source content stays in canonical data. */
-export function ArtistTimeline({input,context,catalog,title='大事时间轴',showTitle=true,loading=false,error='',onRetry,retryLabel='重新读取',onMember,onWork,memberLabels,workLabels,releaseTargets,onRelease}: ArtistTimelineProps) {
+export function ArtistTimeline({input,context,catalog,title='大事时间轴',showTitle=true,loading=false,error='',onRetry,retryLabel='重新读取',onMember,onWork,memberLabels,workLabels,releaseTargets,onRelease,recordHref}: ArtistTimelineProps) {
   const instanceId=useId();
   const presentation=useMemo(()=>catalog!==undefined?prepareTimelinePresentation(input,catalog,context.groups):null,[input,catalog,context.groups]);
   const validation=useMemo(()=>presentation?.timeline&&presentation.state!=='invalid'?{ok:true as const,value:presentation.timeline,issues:[]}:validateTimeline(input,context),[input,context,presentation]);
@@ -138,7 +148,7 @@ export function ArtistTimeline({input,context,catalog,title='大事时间轴',sh
           <span className="at-event-kind">{eventKindLabels[event.eventType]}</span>
           <p className="at-when"><DateLabel date={timelineDisplayDate(event)}/></p>
           <h3 id={eventHeadingId(instanceId,event.id)}>{titleWithCjkPunctuation(eventTitle(event))}</h3>
-          <EventLinks event={event} context={identityContext} onMember={onMember} onWork={onWork} memberLabels={memberLabels} workLabels={workLabels} releaseTargets={releaseTargets} onRelease={onRelease}/>
+          <EventLinks event={event} context={identityContext} onMember={onMember} onWork={onWork} memberLabels={memberLabels} workLabels={workLabels} releaseTargets={releaseTargets} onRelease={onRelease} recordHref={recordHref}/>
         </article>
       </li>)}</ol>}
     {validation.ok&&!loading&&!error&&<TimelineReportedRecords slug={validation.value.slug} groupId={validation.value.groupId}/>}

@@ -12,6 +12,8 @@ const source = [
   ...imports,
   `export const pages={${entries.join(',')}};`,
   "export {ArtistTimelineHostProvider} from './components/artist-timeline-host';",
+  "export {ArtistTimeline} from './components/artist-timeline';",
+  "export {PublicAccessProvider} from './components/public-access';",
   "export {projectCatalog} from './lib/idol/catalog';",
   "export {projectArtistCatalog} from './lib/idol/artist-catalog';",
   "export {projectBrowserCatalog} from './lib/idol/browser-catalog';",
@@ -46,9 +48,11 @@ function artistCatalog(group) {
 async function renderArtist(group, query = {}, data = artistCatalog(group), options = {}, renderer = api) {
   const search = new URLSearchParams(query).toString();
   const serverRoute = group.path + (search ? '?' + search : '');
-  const node = React.createElement(renderer.ArtistTimelineHostProvider,
-    {value: {catalog: data, serverRoute, ...options}},
+  const {canEdit, ...hostOptions} = options;
+  const page = React.createElement(renderer.ArtistTimelineHostProvider,
+    {value: {catalog: data, serverRoute, ...hostOptions}},
     React.createElement(renderer.pages[group.slug], {searchParams: Promise.resolve(query)}));
+  const node = canEdit === undefined ? page : React.createElement(renderer.PublicAccessProvider, {canEdit}, page);
   const stream = await renderToReadableStream(node);
   await stream.allReady;
   return new Response(stream).text();

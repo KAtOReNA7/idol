@@ -1,0 +1,497 @@
+{
+  "asOf": "2026-11-23",
+  "baseVersion": "v254",
+  "formalBaselineCommit": "fbb29ab438216ed537e8d5ebc100548cc8e0863c",
+  "group": "BABYMONSTER",
+  "route": "/artists/babymonster",
+  "officialSources": {
+    "ygProfile": "https://www.ygfamily.com/en/artists/babymonster/profile",
+    "statusChecked": 200,
+    "masthead": "The YG website labels its artist page BABYMONSTER in an h1. The album-era member images were published by YG LIFE with the seven stage names.",
+    "photos": "apps/idol-site/data/babymonster-artist.json#memberVisuals",
+    "priorIdentityReceipt": "../20261123-babymonster-member-profile/figma-and-sources.json",
+    "members": [
+      {
+        "id": "rec28ldbniB9dP",
+        "stage": "RUKA",
+        "status": "在团"
+      },
+      {
+        "id": "rec28ldbniB9lW",
+        "stage": "PHARITA",
+        "status": "在团"
+      },
+      {
+        "id": "rec28ldbniB9uh",
+        "stage": "ASA",
+        "status": "在团"
+      },
+      {
+        "id": "rec28ldbniB9CH",
+        "stage": "AHYEON",
+        "status": "在团"
+      },
+      {
+        "id": "rec28ldbniB9KV",
+        "stage": "RAMI",
+        "status": "暂停活动"
+      },
+      {
+        "id": "rec28ldbniB9Tl",
+        "stage": "RORA",
+        "status": "在团"
+      },
+      {
+        "id": "rec28ldbniBa1w",
+        "stage": "CHIQUITA",
+        "status": "在团"
+      }
+    ]
+  },
+  "figma": {
+    "fileKey": "zeLNExz4TbpWRW3uiahef7",
+    "pageId": "0:1",
+    "sectionId": "1676:1485",
+    "boards": [
+      {
+        "section": "members",
+        "id": "1678:1478",
+        "width": 1440,
+        "height": 660,
+        "instances": 7,
+        "url": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1678-1478"
+      },
+      {
+        "section": "members",
+        "id": "1678:1545",
+        "width": 375,
+        "height": 1729,
+        "instances": 7,
+        "url": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1678-1545"
+      },
+      {
+        "section": "works",
+        "id": "1678:1615",
+        "width": 1440,
+        "height": 1984,
+        "instances": 19,
+        "url": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1678-1615"
+      },
+      {
+        "section": "works",
+        "id": "1678:1811",
+        "width": 375,
+        "height": 1955,
+        "instances": 19,
+        "url": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1678-1811"
+      },
+      {
+        "section": "updates",
+        "id": "1678:2007",
+        "width": 1440,
+        "height": 1253,
+        "instances": 11,
+        "url": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1678-2007"
+      },
+      {
+        "section": "updates",
+        "id": "1678:2206",
+        "width": 375,
+        "height": 1279,
+        "instances": 11,
+        "url": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1678-2206"
+      }
+    ],
+    "style": {
+      "background": "#0a0b0d",
+      "surface": "#151619",
+      "rule": "#323337",
+      "ink": "#f4f2ef",
+      "secondary": "#aaa9ad",
+      "accent": "#ff3154",
+      "fonts": [
+        "Anton",
+        "Playfair Display",
+        "Noto Sans SC"
+      ]
+    },
+    "readback": "The six complete editable boards were retrieved with get_design_context and inspected at their submitted sizes. Both timeline boards were reread after the 11 event markers were corrected. Works boards each bind 19 distinct exact video images.",
+    "layout": {
+      "roster": {
+        "desktopColumns": 7,
+        "mobileColumns": 2,
+        "crop": "whole image"
+      },
+      "workThumbnail": [
+        104,
+        59
+      ],
+      "events": {
+        "rows": 11,
+        "linkedTargets": 18
+      }
+    }
+  },
+  "validation": {
+    "sameFixtureBeforeAfter": {
+      "method": "Actual app route plus approved catalog snapshot. First render supplies query parameters in the request but no injected route, catalog or client timeline. Hydrated render supplies the same group-scoped catalog and reviewed events.",
+      "sections": [
+        {
+          "section": "members",
+          "before": {
+            "active": "概览",
+            "hero": true,
+            "rows": 0
+          },
+          "after": {
+            "rows": 7,
+            "hero": false,
+            "hydratedSameOrder": true
+          }
+        },
+        {
+          "section": "works",
+          "before": {
+            "active": "概览",
+            "hero": true,
+            "rows": 0
+          },
+          "after": {
+            "rows": 19,
+            "hero": false,
+            "hydratedSameOrder": true
+          }
+        },
+        {
+          "section": "updates",
+          "before": {
+            "active": "概览",
+            "hero": true,
+            "rows": 0
+          },
+          "after": {
+            "rows": 11,
+            "hero": false,
+            "hydratedSameOrder": true
+          }
+        }
+      ]
+    },
+    "anonymousHttp": {
+      "method": "Node fetch, no cookies or session, Accept text/html; inspect actual first response without executing scripts. Production and local development use different builds. Body-byte and wall-time changes are not used as a speed comparison.",
+      "at": "2026-11-23T02:50:00+08:00",
+      "requests": [
+        {
+          "surface": "formal_v254",
+          "query": "?section=members",
+          "status": 200,
+          "finalOrigin": "https://idol-lens-private.wuke40758.chatgpt.site",
+          "mainHeading": null,
+          "groupHero": true,
+          "homeSpinner": true,
+          "active": "概览",
+          "members": 0,
+          "works": 0,
+          "stages": 0,
+          "events": 0,
+          "eventLinks": 0,
+          "ownerControls": 0,
+          "publicQueueMessage": false,
+          "canonicalResearchEvidenceRef": false,
+          "legacyHeroPreloads": 0
+        },
+        {
+          "surface": "formal_v254",
+          "query": "?section=works",
+          "status": 200,
+          "finalOrigin": "https://idol-lens-private.wuke40758.chatgpt.site",
+          "mainHeading": null,
+          "groupHero": true,
+          "homeSpinner": true,
+          "active": "概览",
+          "members": 0,
+          "works": 0,
+          "stages": 0,
+          "events": 0,
+          "eventLinks": 0,
+          "ownerControls": 0,
+          "publicQueueMessage": false,
+          "canonicalResearchEvidenceRef": false,
+          "legacyHeroPreloads": 0
+        },
+        {
+          "surface": "formal_v254",
+          "query": "?section=updates",
+          "status": 200,
+          "finalOrigin": "https://idol-lens-private.wuke40758.chatgpt.site",
+          "mainHeading": null,
+          "groupHero": true,
+          "homeSpinner": true,
+          "active": "概览",
+          "members": 0,
+          "works": 0,
+          "stages": 0,
+          "events": 0,
+          "eventLinks": 0,
+          "ownerControls": 0,
+          "publicQueueMessage": false,
+          "canonicalResearchEvidenceRef": false,
+          "legacyHeroPreloads": 0
+        },
+        {
+          "surface": "formal_v254",
+          "query": "?section=works&q=BILLIONAIRE",
+          "status": 200,
+          "finalOrigin": "https://idol-lens-private.wuke40758.chatgpt.site",
+          "mainHeading": null,
+          "groupHero": true,
+          "homeSpinner": true,
+          "active": "概览",
+          "members": 0,
+          "works": 0,
+          "stages": 0,
+          "events": 0,
+          "eventLinks": 0,
+          "ownerControls": 0,
+          "publicQueueMessage": false,
+          "canonicalResearchEvidenceRef": false,
+          "legacyHeroPreloads": 0
+        },
+        {
+          "surface": "formal_v254",
+          "query": "?section=works&queue=rewatch",
+          "status": 200,
+          "finalOrigin": "https://idol-lens-private.wuke40758.chatgpt.site",
+          "mainHeading": null,
+          "groupHero": true,
+          "homeSpinner": true,
+          "active": "概览",
+          "members": 0,
+          "works": 0,
+          "stages": 0,
+          "events": 0,
+          "eventLinks": 0,
+          "ownerControls": 0,
+          "publicQueueMessage": false,
+          "canonicalResearchEvidenceRef": false,
+          "legacyHeroPreloads": 0
+        },
+        {
+          "surface": "local_v255",
+          "query": "?section=members",
+          "status": 200,
+          "finalOrigin": "http://127.0.0.1:5173",
+          "mainHeading": "成员名录",
+          "groupHero": false,
+          "homeSpinner": false,
+          "active": "成员",
+          "members": 7,
+          "works": 0,
+          "stages": 0,
+          "events": 0,
+          "eventLinks": 0,
+          "ownerControls": 0,
+          "publicQueueMessage": false,
+          "canonicalResearchEvidenceRef": false,
+          "legacyHeroPreloads": 0
+        },
+        {
+          "surface": "local_v255",
+          "query": "?section=works",
+          "status": 200,
+          "finalOrigin": "http://127.0.0.1:5173",
+          "mainHeading": "作品与舞台",
+          "groupHero": false,
+          "homeSpinner": false,
+          "active": "作品与舞台",
+          "members": 0,
+          "works": 19,
+          "stages": 16,
+          "events": 0,
+          "eventLinks": 0,
+          "ownerControls": 0,
+          "publicQueueMessage": false,
+          "canonicalResearchEvidenceRef": false,
+          "legacyHeroPreloads": 0
+        },
+        {
+          "surface": "local_v255",
+          "query": "?section=updates",
+          "status": 200,
+          "finalOrigin": "http://127.0.0.1:5173",
+          "mainHeading": "大事时间轴",
+          "groupHero": false,
+          "homeSpinner": false,
+          "active": "大事时间轴",
+          "members": 0,
+          "works": 0,
+          "stages": 0,
+          "events": 11,
+          "eventLinks": 18,
+          "ownerControls": 0,
+          "publicQueueMessage": false,
+          "canonicalResearchEvidenceRef": false,
+          "legacyHeroPreloads": 0
+        },
+        {
+          "surface": "local_v255",
+          "query": "?section=works&q=BILLIONAIRE",
+          "status": 200,
+          "finalOrigin": "http://127.0.0.1:5173",
+          "mainHeading": "作品与舞台",
+          "groupHero": false,
+          "homeSpinner": false,
+          "active": "作品与舞台",
+          "members": 0,
+          "works": 1,
+          "stages": 1,
+          "events": 0,
+          "eventLinks": 0,
+          "ownerControls": 0,
+          "publicQueueMessage": false,
+          "canonicalResearchEvidenceRef": false,
+          "legacyHeroPreloads": 0
+        },
+        {
+          "surface": "local_v255",
+          "query": "?section=works&queue=rewatch",
+          "status": 200,
+          "finalOrigin": "http://127.0.0.1:5173",
+          "mainHeading": "作品与舞台",
+          "groupHero": false,
+          "homeSpinner": false,
+          "active": "作品与舞台",
+          "members": 0,
+          "works": 0,
+          "stages": 0,
+          "events": 0,
+          "eventLinks": 0,
+          "ownerControls": 0,
+          "publicQueueMessage": true,
+          "canonicalResearchEvidenceRef": false,
+          "legacyHeroPreloads": 0
+        }
+      ]
+    },
+    "photos": {
+      "method": "21 full Sharp decodes including all 14 derived WebPs. All use the full 2:3 original; compare the encoded byte lengths of the same seven images at each width. Actual transfer depends on the browser-selected source.",
+      "oldOriginalWidth": 800,
+      "mobileAndDesktopSlotWidths": [
+        163,
+        176
+      ],
+      "candidates": [
+        360,
+        540,
+        800
+      ],
+      "bytes": {
+        "original": 1016692,
+        "width360": 188850,
+        "width540": 353636
+      },
+      "percentageSaved": {
+        "width360": 81.43,
+        "width540": 65.22
+      },
+      "members": [
+        {
+          "360": 29038,
+          "540": 54514,
+          "name": "RUKA",
+          "original": 155964
+        },
+        {
+          "360": 24398,
+          "540": 47750,
+          "name": "PHARITA",
+          "original": 145338
+        },
+        {
+          "360": 24380,
+          "540": 43066,
+          "name": "ASA",
+          "original": 109674
+        },
+        {
+          "360": 26198,
+          "540": 47856,
+          "name": "AHYEON",
+          "original": 133948
+        },
+        {
+          "360": 34004,
+          "540": 66548,
+          "name": "RAMI",
+          "original": 207224
+        },
+        {
+          "360": 26202,
+          "540": 49682,
+          "name": "RORA",
+          "original": 145152
+        },
+        {
+          "360": 24630,
+          "540": 44220,
+          "name": "CHIQUITA",
+          "original": 119392
+        }
+      ]
+    },
+    "privacy": {
+      "membersKeys": [
+        "id",
+        "stageName",
+        "cnName",
+        "status"
+      ],
+      "workKeys": [
+        "id",
+        "name",
+        "song",
+        "version",
+        "videoType",
+        "officialTitle",
+        "releaseDate",
+        "videoId",
+        "stageAction"
+      ],
+      "timeline": "Only ready events, publicly cited sources, dates and verified related record IDs enter the first response. Source evidence file references, editorial summaries, scope notes, hold reasons and gaps are absent or empty.",
+      "visitors": "No private filter buttons, queues, scores, notes or owner writes. A direct private-queue link shows its owner restriction. An independently injected owner fixture preserves an actual zero and withholds queue results until catalog readiness."
+    },
+    "tests": {
+      "typecheck": "passed",
+      "newCases": 8,
+      "targeted": {
+        "total": 512,
+        "pass": 512,
+        "fail": 0,
+        "files": [
+          "babymonster-share-directories",
+          "artist-home-media-layout",
+          "babymonster-mv-look",
+          "babymonster-member-profile",
+          "babymonster-badge",
+          "catalog-read-deadline",
+          "image-host-matrix",
+          "timeline-host-matrix",
+          "artist-roster-return",
+          "timeline-react",
+          "timeline-chronological",
+          "timeline-return",
+          "timeline-production-guard"
+        ]
+      },
+      "fullVerify": "Collected on the combined release by the validation owner."
+    },
+    "browser": {
+      "scope": "The subagent CUA provider listed Chrome only and rejected a new iab tab. No external browser was launched. The release owner handles Codex built-in browser measurements.",
+      "hydratedCatalogResourceCount": null,
+      "localHmr5173": "The release owner verified all three page headings, AHYEON enter/back and focus on her card, plus BILLIONAIRE search, open and return to the original query. An obsolete Vite module reference on that existing service prevented a valid client-request count and work-card focus verdict.",
+      "isolated5194": "A read-only public seven-member, nineteen-work catalog was seeded in a separate temporary D1. The group catalog returned HTTP 200, public access, all seven members, nineteen works and sixteen stages. This endpoint can be used for a fresh built-in browser run.",
+      "workAndTimelineFocusOnCurrentClient": null,
+      "formalV255": false
+    }
+  }
+}

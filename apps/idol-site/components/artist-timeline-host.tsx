@@ -50,7 +50,7 @@ function subscribe(listener:()=>void) {
   return ()=>{window.removeEventListener('popstate',listener);window.removeEventListener('artist-location-change',listener);};
 }
 
-export function ArtistTimelineHost({groupId,catalog,background,loading=false,error='',onRetry,styleReady=true,showTitle=false,releaseTargets,onRelease}:{releaseTargets?:ArtistTimelineProps['releaseTargets'];onRelease?:(request:{eventId:string;releaseId:string;returnTo:string},beforeLeave:()=>boolean)=>void;groupId:string;catalog:CatalogView|null;background?:ReactNode;loading?:boolean;error?:string;onRetry?:()=>void;styleReady?:boolean;showTitle?:boolean}) {
+export function ArtistTimelineHost({groupId,catalog,background,loading=false,error='',onRetry,styleReady=true,showTitle=false,releaseTargets,onRelease,recordHref}:{recordHref?:ArtistTimelineProps['recordHref'];releaseTargets?:ArtistTimelineProps['releaseTargets'];onRelease?:(request:{eventId:string;releaseId:string;returnTo:string},beforeLeave:()=>boolean)=>void;groupId:string;catalog:CatalogView|null;background?:ReactNode;loading?:boolean;error?:string;onRetry?:()=>void;styleReady?:boolean;showTitle?:boolean}) {
   const options=useArtistTimelineHostOptions();
   const groups=options.groups??registry51;
   const data=options.catalog!==undefined?options.catalog:catalog;
@@ -64,6 +64,7 @@ export function ArtistTimelineHost({groupId,catalog,background,loading=false,err
   const [cssReady,setCssReady]=useState(false);
   const styles=(options.styleReady??styleReady)&&cssReady;
   const ready=!busy&&!failed&&styles&&presentation.state!=='loading'&&presentation.state!=='invalid';
+  const interceptRecords=options.navigate&&(!recordHref||ready||options.blocked||options.restoreBlocked);
   const {rootRef,rememberTarget}=useTimelineReturn({ready,routeKey,filters,captureClicks:false,blocked:options.restoreBlocked??options.blocked??false});
   useEffect(()=>{
     const check=()=>{
@@ -89,8 +90,9 @@ export function ArtistTimelineHost({groupId,catalog,background,loading=false,err
   return <div ref={rootRef} data-timeline-host={groupId} data-timeline-ready={ready?'true':'false'} data-timeline-style-ready={styles?'true':'false'}>
     <ArtistTimeline showTitle={showTitle} input={input} context={presentation.identity.context} catalog={data}
       loading={busy||presentation.state==='loading'} error={failed} onRetry={options.onTimelineRetry??options.onRetry??onRetry} retryLabel={options.timelineError?options.timelineRetryLabel:undefined}
-      onMember={options.navigate?(id,eventId)=>navigate('member',id,eventId):undefined}
-      onWork={options.navigate?(id,eventId)=>navigate('work',id,eventId):undefined}
+      recordHref={recordHref}
+      onMember={interceptRecords?(id,eventId)=>navigate('member',id,eventId):undefined}
+      onWork={interceptRecords?(id,eventId)=>navigate('work',id,eventId):undefined}
       releaseTargets={releaseTargets} onRelease={onRelease?(releaseId,eventId)=>{
         if(!ready||options.blocked||releaseTargets?.[eventId]?.id!==releaseId||!presentation.timeline?.events.some(event=>event.id===eventId&&event.groupId===groupId))return;
         onRelease({eventId,releaseId,returnTo:routeKey},()=>rememberTarget({eventId,kind:'release',targetId:releaseId},undefined,true));

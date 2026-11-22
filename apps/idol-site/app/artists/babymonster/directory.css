@@ -1,0 +1,76 @@
+@font-face {
+  font-family: BmDirectoryBrand;
+  src: url('/fonts/PlayfairDisplay-Variable.woff2') format('woff2');
+  font-weight: 400 900;
+  font-display: swap;
+}
+.bm-directory-site { --bm-gutter: clamp(18px,3.9vw,56px); }
+.bm-directory-site .as-header { height: 62px; padding-inline: var(--bm-gutter); }
+.bm-directory-site .as-brand { font: 400 29px BmDirectoryBrand, Georgia, serif; }
+.bm-directory-site .as-header nav a { font-size: 13px; }
+.bm-directory-mast { background: var(--as-surface); border-bottom: 1px solid var(--as-line); }
+.bm-directory-mast > div { display: flex; align-items: center; gap: 48px; min-height: 64px; max-width: 1440px; margin-inline: auto; padding-inline: var(--bm-gutter); }
+.bm-directory-brand { display: inline-flex; align-items: center; min-height: 44px; color: var(--as-ink); font: 400 29px/1.45 ArtistAnton, Impact, sans-serif; }
+.bm-directory-mast nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0 24px; }
+.bm-directory-mast nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--as-muted); font-size: 14px; }
+.bm-directory-mast nav a[aria-current] { color: var(--as-red); font-weight: 700; }
+.bm-directory-site .as-content { display: block; max-width: 1440px; margin-inline: auto; padding: 32px var(--bm-gutter) 50px; }
+.bm-directory-panel { min-width: 0; }
+.bm-directory-panel > header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 24px; }
+.bm-directory-panel h1 { margin: 0; color: var(--as-ink); font: 700 36px/1.45 'Noto Sans SC', system-ui, sans-serif; }
+.bm-directory-panel > header p { color: var(--as-muted); font-size: 13px; }
+.bm-directory-roster { display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); gap: 20px 16px; }
+.bm-directory-roster a { display: flex; flex-direction: column; align-items: start; gap: 2px; min-width: 0; }
+.bm-directory-portrait { display: block; width: 100%; aspect-ratio: 2/3; background: var(--as-bg); }
+.bm-directory-portrait img, .bm-directory-poster img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.bm-directory-roster strong { margin-top: 5px; font: 400 23px/1.45 ArtistAnton, Impact, sans-serif; }
+.bm-directory-roster a > span:not(.bm-directory-portrait) { font-size: 13px; font-weight: 700; overflow-wrap: anywhere; }
+.bm-directory-roster small, .bm-directory-credit { color: var(--as-muted); font-size: 12px; }
+.bm-directory-panel .bm-directory-credit { margin-top: 14px; }
+.bm-directory-search { display: flex; align-items: center; width: 100%; min-height: 46px; padding-inline: 14px; background: var(--as-surface); }
+.bm-directory-search input { flex: 1; min-width: 0; min-height: 44px; border: 0; background: transparent; color: var(--as-ink); font-size: 14px; }
+.bm-directory-search input::placeholder { color: var(--as-muted); }
+.bm-directory-search button, .bm-directory-queues button, .bm-directory-empty button, .bm-directory-error button { min-height: 44px; padding: 0 12px; color: var(--as-red); font-size: 13px; font-weight: 700; }
+.bm-directory-queues { display: flex; flex-wrap: wrap; gap: 5px 12px; margin-block: 8px; }
+.bm-directory-queues button { color: var(--as-muted); }
+.bm-directory-queues button[aria-pressed=true] { color: var(--as-red); }
+.bm-directory-queues span { margin-left: 6px; }
+.bm-directory-panel .bm-directory-work { display: flex; flex-wrap: nowrap; align-items: center; gap: 14px; min-height: 87px; padding: 0; border-bottom: 1px solid var(--as-line); }
+.bm-directory-work-main { display: flex; flex: 1; align-items: center; gap: 14px; min-width: 0; min-height: 86px; color: var(--as-ink); }
+.bm-directory-poster { display: block; flex: 0 0 104px; width: 104px; height: 59px; overflow: hidden; }
+.bm-directory-work-copy { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.bm-directory-work-copy strong { overflow-wrap: anywhere; font-size: 20px; line-height: 1.45; }
+.bm-directory-work-copy small, .bm-directory-score { color: var(--as-muted); font-size: 13px; }
+.bm-directory-stage { display: inline-flex; flex: none; align-items: center; min-height: 44px; color: var(--as-red); font-size: 13px; font-weight: 700; }
+.bm-directory-empty, .bm-directory-error { margin-block: 14px; color: var(--as-muted); font-size: 14px; }
+.bm-directory-panel .at-list { margin-block: 0; }
+.bm-directory-panel .at-event-kind, .bm-directory-panel .at-when { display: inline; margin: 0; }
+.bm-directory-panel .at-event-kind { position: static; width: auto; height: auto; overflow: visible; clip-path: none; color: var(--as-red); font-size: 12px; }
+.bm-directory-panel .at-event .at-when { margin-left: 16px; font-size: 13px; color: var(--as-muted); }
+.bm-directory-panel .at-event h3 { margin: 0; color: var(--as-ink); font-size: 17px; line-height: 1.45; }
+.bm-directory-panel .at-references { margin-top: 0; }
+.bm-directory-panel .artist-timeline .at-references :is(a,button) { display: inline-flex; align-items: center; min-height: 44px; color: var(--as-red); font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
+@media (min-width:721px) and (max-width:1040px) {
+  .bm-directory-roster { grid-template-columns: repeat(4,minmax(0,1fr)); }
+}
+@media (max-width:720px) {
+  .bm-directory-site { --bm-gutter: 18px; }
+  .bm-directory-site .as-header { height: 58px; }
+  .bm-directory-site .as-brand { font-size: 23px; }
+  .bm-directory-site .as-header nav { gap: 9px; }
+  .bm-directory-site .as-header nav a { font-size: 10px; }
+  .bm-directory-mast > div { flex-direction: column; align-items: start; gap: 0; min-height: 0; padding-top: 8px; }
+  .bm-directory-brand { min-height: 35px; font-size: 24px; }
+  .bm-directory-mast nav { gap: 0 13px; }
+  .bm-directory-mast nav a { font-size: 12px; }
+  .bm-directory-site .as-content { padding-block: 22px 32px; }
+  .bm-directory-panel > header { margin-bottom: 18px; }
+  .bm-directory-panel h1 { font-size: 26px; }
+  .bm-directory-roster { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px 13px; }
+  .bm-directory-portrait { aspect-ratio: 163/264; }
+  .bm-directory-panel .bm-directory-credit { margin-top: 20px; }
+  .bm-directory-work-copy strong { font-size: 16px; }
+  .bm-directory-work:has(.bm-directory-score) { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 0 8px; padding-block: 6px; }
+  .bm-directory-work:has(.bm-directory-score) .bm-directory-work-main { grid-row: span 2; min-height: 74px; }
+  .bm-directory-score { max-width: 82px; font-size: 11px; }
+}

@@ -1,0 +1,67 @@
+{
+  "command": "node docs/codex/qa/catalog-projection-cost.cjs dab8d049ddf0caa7aa11b46d84ebb98d323bc7e1 475d32f9a688e7ed4b4a4e9e1239887d75675bb4",
+  "runtime": {
+    "node": "v24.16.0",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "input": {
+    "snapshotCapturedAt": "2026-10-11T08:45:38.562181+00:00",
+    "rows": {
+      "groups": 51,
+      "members": 338,
+      "works": 614,
+      "ratings": 2828
+    }
+  },
+  "method": "Same checkout dependencies. Three warm-up pairs followed by 14 alternating baseline/candidate and candidate/baseline pairs. Each call rebuilds the full projectCatalog from identical raw input. Milliseconds exclude bundle compilation, database, network, subsequent enrichment and browser work.",
+  "fullProjectionEqualExceptLoadedAt": true,
+  "priorRatingRowChecks": 1736392,
+  "indexedWorkMemberships": 2828,
+  "baseline": {
+    "commit": "dab8d049ddf0caa7aa11b46d84ebb98d323bc7e1",
+    "samplesMs": [
+      153.16,
+      166.4,
+      147.25,
+      185.36,
+      174.28,
+      155.19,
+      150.49,
+      153.45,
+      143.61,
+      207.48,
+      182.19,
+      153.55,
+      127.82,
+      173
+    ],
+    "minimumMs": 127.82,
+    "medianMs": 154.37,
+    "maximumMs": 207.48
+  },
+  "indexed": {
+    "commit": "475d32f9a688e7ed4b4a4e9e1239887d75675bb4",
+    "samplesMs": [
+      75.47,
+      80.37,
+      82.6,
+      108.07,
+      94.88,
+      104.53,
+      80.14,
+      83.42,
+      71.57,
+      71.77,
+      94.14,
+      100.63,
+      84.17,
+      88.31
+    ],
+    "minimumMs": 71.57,
+    "medianMs": 83.8,
+    "maximumMs": 108.07
+  },
+  "medianDifferenceMs": -70.57,
+  "medianDifferencePercent": -45.71
+}

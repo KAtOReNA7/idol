@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const React = require('react');
+const {parse} = require('next/dist/compiled/node-html-parser');
 const sharp = require('sharp');
 const {renderToStaticMarkup} = require('react-dom/server');
 const {MvIdentityPhoto, mvRecognitionEdition} = require('./helpers/image-dependency-loader.cjs').imageDependency('@/components/mv-identity-photo');
@@ -259,6 +260,9 @@ test('COCOCO credits each member’s own official photo and keeps the following 
 });
 
 const reviewedReleases = [
+  ['LOVE BOMB', 'fromis-from9-201810', 'recvxyOz5XR2zO', '-SK6cvkK4c0', 9],
+  ['To Heart', 'fromis-to-heart-201801', 'recvxyOz5X4q4h', 'iFUHS1Ei7qw', 9],
+  ['DKDK', 'fromis-to-day-201806', 'recvxyOz5X3fM9', 'B3KuJqe3Epg', 8],
   ['woo!ah!', 'wooah-exclamation-202005', 'recvxyH5pzlG0W', 'X2FB37r4Oyw', 6],
   ['Forever (약속)', 'aespa-forever-202102', 'recvxyHuKM4HSw', 'wog1R1d4zls', 4],
   ['Danger', 'wooah-joy-danger-202206', 'recvxyH5pz4vBM', '_X9720wjipE', 5],
@@ -349,6 +353,54 @@ test('woo!ah! retains its six debut members and each member’s own original MV 
   }
 });
 
+const fromis2018Campaigns = [
+  {series: 'fromis-from9-201810', prefix: 'love-bomb', posts: {
+    JIHEON: '1047095373452328961', GYURI: '1047094444208484353', CHAEYOUNG: '1047095084515123200',
+    NAGYUNG: '1047095228052566016', SAEROM: '1047093881156718592', SEOYEON: '1047094909499392001',
+    JIWON: '1047094594985283585', JISUN: '1047094757057429504', HAYOUNG: '1047094065282473985',
+  }},
+  {series: 'fromis-to-heart-201801', prefix: 'to-heart', posts: {
+    JIHEON: '952878037636272128', GYURI: '952884327901220864', CHAEYOUNG: '952876781823918080',
+    NAGYUNG: '952880552784248832', SAEROM: '952875542344228864', SEOYEON: '952879295436746754',
+    JIWON: '952883083295932416', JISUN: '952874267623931904', HAYOUNG: '952881826737020928',
+  }},
+  {series: 'fromis-to-day-201806', prefix: 'dkdk', posts: {
+    JIHEON: '999621044972339200', CHAEYOUNG: '999983685532246016', NAGYUNG: '999983727605202944',
+    SAEROM: '999983427486081024', SEOYEON: '999621145480462338', JIWON: '999621342587600896',
+    JISUN: '999621559819030528', HAYOUNG: '999983553101287429',
+  }},
+];
+
+for (const {series, prefix, posts} of fromis2018Campaigns) {
+  test(prefix + ' uses the original 2018 campaign, retaining each member’s earlier source once', () => {
+    const ids = Object.fromEntries(require('../data/fromis9-public.json').members.map(person => [person.stageName.split(' ').at(-1), person.id]));
+    const campaign = editions[series];
+    const binding = campaign.works[0];
+    assert.deepEqual(new Set(binding.memberIds), new Set(Object.keys(posts).map(name => ids[name])));
+    const work = {id: binding.workId, url: 'https://www.youtube.com/watch?v=' + binding.videoId};
+    for (const [name, id] of Object.entries(posts)) {
+      const memberId = ids[name];
+      const photo = mvRecognitionEdition({...binding, memberId});
+      const base = '/artist/recognition-editions/fromis9/' + prefix + '-' + name.toLowerCase();
+      assert.equal(photo.preview, base + '.card.webp');
+      assert.equal(photo.original, base + '.original.jpg');
+      assert.equal(photo.sourceUrl, 'https://x.com/realfromis_9/status/' + id);
+      const original = media.portraits.find(p => p.workId === work.id && p.videoId === binding.videoId && p.memberId === memberId);
+      const html = renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId, label: name, selectEdition: mvRecognitionEdition}));
+      const oldLabel = (prefix === 'dkdk' && name === 'SEOYEON') ? '2021《Talk & Talk》认人照' : '《FUN FACTORY》概念照';
+      const earlier = oldLabel.startsWith('2021') ? original : editions['fromis-fun'].portraits[memberId];
+      assert.deepEqual(photo.previousEdition, {label: oldLabel, original: earlier.original ?? earlier.src, sourceUrl: earlier.sourceUrl});
+      const history = parse(html).querySelectorAll('.mv-identity-history');
+      assert.deepEqual(history.map(item => item.querySelector('button').text),
+        earlier === original ? ['查看' + oldLabel] : ['查看' + oldLabel, '查看原作品图']);
+      assert.deepEqual(history.map(item => item.querySelector('a').getAttribute('href')),
+        earlier === original ? [original.sourceUrl] : [earlier.sourceUrl, original.sourceUrl]);
+      if (earlier === original) assert.equal(original.label, oldLabel);
+    }
+    if (prefix === 'dkdk') assert.equal(mvRecognitionEdition({...binding, memberId: ids.GYURI}), null);
+  });
+}
+
 const wooahPostSets = [
   {
     title: 'Catch the Stars', series: 'wooah-catch-the-stars-202201', assetPrefix: 'catch-the-stars',
@@ -418,7 +470,7 @@ for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
       assert.ok(photo, old.memberId);
       const html = renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId: old.memberId, label: title, selectEdition: mvRecognitionEdition}));
       assert.ok(html.includes('src="' + photo.preview + '"') && html.includes('href="' + photo.sourceUrl.replaceAll('&', '&amp;') + '"'), old.memberId);
-      assert.equal(html.includes('查看原作品图'), old.src !== photo.original, old.memberId);
+      assert.equal(html.includes('查看原作品图'), old.src !== photo.original && old.src !== photo.previousEdition?.original, old.memberId);
       const preview = await sharp(path.join(__dirname, '../public', photo.preview)).metadata();
       assert.equal(preview.format, 'webp');
       assert.equal(preview.width * 4, preview.height * 3);

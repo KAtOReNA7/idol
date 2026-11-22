@@ -71,7 +71,7 @@ test('every artist projection matches the full registry for current and former m
  assert.equal(covered.size,all.length);assert(withEditions.has('madein')&&withEditions.has('saymyname'));assert.deepEqual(artistRecognitionEditions('unregistered'),[]);
 });
 test('member profile image and text-only button open the same full release image and keep the old work image accessible',()=>{
- for(const [slug,workId,videoId,memberId] of [['stayc','recvxyH5pzZo3m','gMe1c4UegBY','recvxyICzHvtEe'],['hearts2hearts','rec28ldfRTrzDX','kxUA2wwYiME','rec28ldbniB70B']]){
+ for(const [slug,workId,videoId,memberId,historyLabel='原作品图'] of [['stayc','recvxyH5pzZo3m','gMe1c4UegBY','recvxyICzHvtEe'],['hearts2hearts','rec28ldfRTrzDX','kxUA2wwYiME','rec28ldbniB70B'],['fromis9','recvxyOz5X3fM9','B3KuJqe3Epg','recvxyICzHhcJq','2021《Talk & Talk》认人照']]){
   const work={id:workId,url:'https://youtu.be/'+videoId},editions=artistRecognitionEditions(slug),release=mvRecognitionEdition({workId,videoId,memberId});
   for(const Component of [MemberWorkIdentityPhoto,MemberWorkPhotoButton]){
    let checked=false;
@@ -79,6 +79,7 @@ test('member profile image and text-only button open the same full release image
     const opened=[],element=Component({work,memberId,label:'成员 · 作品',photo:privatePhoto,live:true,className:'existing-frame mv-look-native',onOpen:value=>opened.push(value.src)});
     const children=React.Children.toArray(element.props.children);const main=children.find(c=>c.type==='button'),history=children.find(c=>typeof c.type==='function'&&c.props.selected?.publicImage);
     main.props.onClick();const original=history.type(history.props).props.children[0];original.props.onClick();
+    assert.equal(React.Children.toArray(original.props.children).join(''),'查看'+historyLabel);
     const old=memberWorkPhoto(work,memberId,null,false);assert.deepEqual(opened,[release.original,old.original]);checked=true;return element;
    }
    const html=renderToStaticMarkup(React.createElement(MemberRecognitionProvider,{editions},React.createElement(Probe)));

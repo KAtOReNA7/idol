@@ -49,7 +49,7 @@ function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,ed
   const prior=edition.previousEdition;
   history.push({src:prior.original,sourceUrl:prior.sourceUrl,title:prior.label,caption:prior.label});
  }
- if(previous)history.push({src:previous.src,sourceUrl:previous.sourceUrl,title:previousLabel,caption:previous.label});
+ if(previous&&previous.src!==edition?.previousEdition?.original)history.push({src:previous.src,sourceUrl:previous.sourceUrl,title:previousLabel,caption:previous.label});
  const frameImage=<>
    <ReliableImage src={thumbnail||null} identityKey={key} alt={`${label} · ${caption}`} style={style} missing={<span className="mv-identity-missing">认人图待补</span>} fallback={<span className="mv-identity-missing">图片暂未加载</span>}/>
    {src&&<span className="mv-identity-expand">查看原图 ↗</span>}

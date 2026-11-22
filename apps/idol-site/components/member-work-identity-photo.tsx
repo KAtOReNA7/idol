@@ -10,9 +10,12 @@ type Props={work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo
 
 function OriginalWorkPhoto({selected,label,onOpen}:{selected:ReturnType<typeof memberWorkPhoto>}&Pick<Props,'label'|'onOpen'>){
  const previous=selected?.publicImage;
- if(!selected?.edition||!previous||previous.src===selected.original)return null;
+ const previousSrc=previous?.originalSrc??previous?.src;
+ if(!selected?.edition||!previous||!previousSrc||previousSrc===selected.original)return null;
+ const prior=selected.edition.previousEdition;
+ const title=prior?.original===previousSrc?prior.label:'原作品图';
  return <span className="member-work-photo-history">
-  <button type="button" aria-haspopup="dialog" aria-label={`查看${label}的原作品图 · ${previous.label}`} onClick={()=>onOpen({src:previous.originalSrc??previous.src,label:`${label} · ${previous.label}`})}>查看原作品图</button>
+  <button type="button" aria-haspopup="dialog" aria-label={`查看${label}的${title}${title===previous.label?'':' · '+previous.label}`} onClick={()=>onOpen({src:previousSrc,label:`${label} · ${previous.label}`})}>查看{title}</button>
   <a href={previous.sourceUrl} target="_blank" rel="noopener noreferrer">原出处 ↗</a>
  </span>;
 }

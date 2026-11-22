@@ -1,6 +1,7 @@
 const {expectedPublicPortrait}=require('./helpers/image-dependency-loader.cjs');
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto'),vm=require('node:vm'),path=require('node:path');
 const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
+const {parse}=require('next/dist/compiled/node-html-parser');
 const api=require('./helpers/image-dependency-loader.cjs').imageDependency('@/lib/idol/approved-video-poster');
 const runtime=require('../data/mv-public-media.json'),evidence=require('../../../docs/codex/mv-identity-asset-audit-20261025.json');
 const {approvedVideoPoster,WorkCoverImage,MvIdentityPhoto}=api;
@@ -14,7 +15,9 @@ test('every current work cover uses its precise video; another work, video or st
 test('MV identity pictures require exact work, member and video and never fabricate a missing picture',()=>{
  for(const p of runtime.portraits){const work={id:p.workId,url:'https://www.youtube.com/watch?v='+p.videoId};
   const expected=expectedPublicPortrait(p),html=renderToStaticMarkup(React.createElement(MvIdentityPhoto,{work,memberId:p.memberId,label:'Fixture'}));
-  assert(html.includes('src="'+expected.src+'"'));assert(html.includes(expected.label));
+  const figure=parse(html).querySelector('figure');
+  assert.equal(figure.querySelector('img').getAttribute('src'),expected.src);
+  assert.equal(figure.querySelector('figcaption').firstChild.text,expected.label);
   for(const props of [{work:{...work,id:'wrong'}},{work:{...work,url:'https://youtu.be/XXXXXXXXXXX'}},{memberId:'wrong'}]){
    const mismatch=renderToStaticMarkup(React.createElement(MvIdentityPhoto,{work,memberId:p.memberId,label:'Fixture',...props}));
    assert.match(mismatch,/认人图待补/);assert(!mismatch.includes(expected.src));assert.match(mismatch,/<button[^>]* disabled/);assert.doesNotMatch(mismatch,/保留成员评分/);

@@ -51,7 +51,7 @@
 | aespa | 4 | 嵌图 | 待定位 | 嵌图 | 待定位 | 待定位 | 已定位 | 已定位 | 待定位 | 待定位 | — |
 | IVE | 6 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 嵌图 | 已定位 | 嵌图 | LOVE DIVE 首页 |
 | KISS OF LIFE | 4 | 嵌图 | 待定位 | 嵌图 | 待定位 | 待定位 | 已定位 | 已定位 | 待定位 | 待定位 | — |
-| STAYC | 6 | 嵌图 | 仅手机 | 旧稿缺图 | 待定位 | 待定位 | 已定位 | 已定位 | 待定位 | 待定位 | 官网团照及首页 |
+| STAYC | 6 | 嵌图 | 六人双宽 | SUMIN 双宽 | 待定位 | 待定位 | SO BAD 双宽 | SBS 双宽 | 待定位 | MV 内六人入口 | 官网团照及首页 |
 | NMIXX | 7 | 嵌图 | 待定位 | 旧稿缺图 | 待定位 | 待定位 | 已定位 | 已定位 | 待定位 | 待定位 | 官网团照及首页 |
 | Hearts2Hearts | 8 | 嵌图 | 嵌图 | 嵌图 | 已定位 | 嵌图 | 已定位 | 已定位 | 已定位 | 已定位 | — |
 | KiiiKiii | 5 | 嵌图 | 待定位 | 嵌图 | 待定位 | 待定位 | 嵌图 | 嵌图 | 待定位 | 嵌图 | — |
@@ -62,6 +62,6 @@
 
 v238 团别改动覆盖 20 团的指定位置。共享改动覆盖索引、推荐、团体简介、本人收起与展开评分、游客成员资料、原图打开与失败重试，共八种双宽状态。对 86 个指定节点逐一读回尺寸与内容，另外抽看 12 张桌面或手机渲染。GENBLUE 的 MV 与舞台封面可以区分，UNIS 的三支 MV 对应三个不同封面，VVUP 与 YOUNG POSSE 的目录使用真实视频图。《BILLIONAIRE》七张照片均有本人入口。对两团历史链接另补了可手动打开的两套画板。[86 个本次节点](../evidence/20261122-group-design-coverage/v238-specific-nodes.json) · [共享 16 幅](20261122-shared-figma-interface.md) · [旧作品链接](20261122-editorial-work-handoff.md)
 
-ifeye 已补六类双宽稿并在本地实测 MV 快捷入口。izna 旧稿也发现原图缺口，按该团专项记录新结果。STAYC 的 SUMIN 旧稿为单色占位；NMIXX 的 LILY 旧稿写有「图片待补」。UDTT 手机成员名录实际能看到人物，旧组件的图片计数未体现真实渲染。两处已明确的缺图需检查对应团体的成员、MV 和舞台。[ifeye 画稿及实测](20261122-ifeye-official-photos.md) · [STAYC 旧成员稿](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=191-1147) · [NMIXX 旧成员稿](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=197-1098) · [UDTT 名录](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=891-1574)
+ifeye 已补六类双宽稿并在本地实测 MV 快捷入口。izna 旧稿也发现原图缺口，按该团专项记录新结果。STAYC 原 SUMIN 稿为单色占位。后续已补六人名录、SUMIN、《SO BAD》及 SBS 舞台八份双宽稿，最新节点与初审节点均保留在矩阵。NMIXX 的 LILY 旧稿写有「图片待补」。UDTT 手机成员名录实际能看到人物，旧组件的图片计数未体现真实渲染。其余状态以相应团体专项最近一次实测为准。[ifeye 画稿及实测](20261122-ifeye-official-photos.md) · [STAYC 新稿及素材](20261122-stayc-debut-and-scores.md) · [STAYC 旧成员稿](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=191-1147) · [NMIXX 旧成员稿](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=197-1098) · [UDTT 名录](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=891-1574)
 
 WOOAH《BLUSH》旧稿标有「影像预览待补」，Hearts2Hearts《The Chase》把外跳作为主入口。YOUNG POSSE《MACARONI CHEESE》也用文字入口。SAY MY NAME、KISS OF LIFE、aespa、BABYMONSTER、ILLIT、XG 抽查到的历史播放稿用底色、作品名或播放器示意。需结合各自真实播放版本和页面还原另验。当前一致采用的共享成员评分、播放及返回规则有单独回执。[WOOAH](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=921-1546) · [Hearts2Hearts](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=591-6294) · [YOUNG POSSE](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=850-2349) · [共享组件](20261122-shared-figma-interface.md)

@@ -108,7 +108,7 @@ function reportAssertions(dom,group,held,{shown=true,native=false}={}){
   for(const a of sources){assert.equal(a.attrs.target,'_blank');assert.match(a.attrs.rel,/noopener/);}
  }
 }
-function sharedAssertions(dom,group,ready,held,expected,{navigation=true,releaseTargets={}}={}){
+function sharedAssertions(dom,group,ready,held,expected,{navigation=true,releaseTargets={},recordReturnTo=group.path+'?section=updates'}={}){
  const axes=find(dom,n=>n.tag==='section'&&hasClass(n,'artist-timeline'));
  assert.equal(axes.length,1,'one actual timeline axis');const axis=axes[0];
  const events=find(axis,n=>Object.hasOwn(n.attrs,'data-timeline-event-id')&&!reported(n));
@@ -119,10 +119,25 @@ function sharedAssertions(dom,group,ready,held,expected,{navigation=true,release
  assert.equal(find(axis,n=>['at-filters','at-background','at-sources','at-related','at-gaps','at-badges'].some(c=>hasClass(n,c))).length,0);
  if(navigation)for(const event of ready){
   const node=events.find(n=>eventId(n)===event.id);assert.ok(node);
-  const controls=find(node,n=>n.tag==='button'&&Object.hasOwn(n.attrs,'data-timeline-target-id'));
+  const controls=find(node,n=>(n.tag==='button'||n.tag==='a')&&Object.hasOwn(n.attrs,'data-timeline-target-id'));
   const actual=controls.map(n=>[n.attrs['data-timeline-target-kind'],n.attrs['data-timeline-target-id']]);
   assert.deepEqual(actual,[...(releaseTargets[event.id]?[['release',releaseTargets[event.id]]]:[]),...event.memberIds.map(id=>['member',id]),...event.workIds.map(id=>['work',id])],'all exact scoped member/work references stay navigable');
-  for(const button of controls){assert.equal(button.attrs['data-timeline-event-trigger'],event.id);assert.ok(text(button).trim());assert.ok(!Object.hasOwn(button.attrs,'disabled'));}
+  for(const control of controls){
+   assert.equal(control.attrs['data-timeline-event-trigger'],event.id);
+   assert.ok(text(control).trim());
+   assert.ok(!Object.hasOwn(control.attrs,'disabled'));
+   assert.notEqual(control.attrs['aria-disabled'],'true');
+   if(control.tag==='a'){
+    const kind=control.attrs['data-timeline-target-kind'],id=control.attrs['data-timeline-target-id'];
+    assert.ok(kind==='member'||kind==='work');
+    const destination=new URL(control.attrs.href,'https://test.invalid');
+    assert.equal(destination.origin,'https://test.invalid');
+    assert.equal(destination.pathname,'/');
+    assert.deepEqual(Object.fromEntries(destination.searchParams),{
+     view:kind==='member'?'members':'works',[kind]:id,returnTo:recordReturnTo,
+    });
+   }
+  }
  }
  reportAssertions(dom,group,held);
  return axis;
@@ -298,7 +313,10 @@ for(const group of registry)test(`${group.slug}: canonical hashes, ready/hold is
    const major=product.selectChronologicalTimeline(ready).filter(e=>e.importance==='major');assert.equal(major.length,12);
    const axis=sharedAssertions(dom,group,major,held,major.map(e=>e.id),{navigation:false});
    for(const event of major){const release=product.wooahTimelineRelease(event.id),media=product.wooahTimelineMedia(event.id);const node=find(axis,n=>eventId(n)===event.id)[0];const buttons=find(node,n=>n.tag==='button');const target=release??media;assert.equal(buttons.length,target?1:0);if(target){assert.equal(buttons[0].attrs['data-timeline-target-id'],target.key);assert.equal(buttons[0].attrs['data-timeline-target-kind'],release?'release':'media');assert.equal(buttons[0].attrs['data-timeline-event-trigger'],event.id);}}
-  }else sharedAssertions(dom,group,ready,held,expected,{releaseTargets:group.slug==='billlie'?product.billlieEventReleases:{}});
+  }else{
+   const recordReturnTo=group.path+(home?'':'?section=updates')+(query.includes('timelineType=release')?'&timelineType=release':'');
+   sharedAssertions(dom,group,ready,held,expected,{releaseTargets:group.slug==='billlie'?product.billlieEventReleases:{},recordReturnTo});
+  }
   // These home pages also retain a separate approved navigation door.
   const doorClass={katseye:'ke-timeline-entry',hearts2hearts:'h2h-history-entry'}[group.slug];
   if(home&&doorClass){const door=find(dom,n=>hasClass(n,doorClass));assert.equal(door.length,1);assert.ok(find(door[0],n=>n.tag==='button'&&/浏览时间轴|完整历程/.test(text(n))).length===1);}

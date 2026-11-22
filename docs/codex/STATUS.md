@@ -2,11 +2,13 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v238。两档实测 IVE、UDTT、KiiiKiii、Kep1er 等团页及各自作品入口。飞书修订 1215 有 25/29 条已解决。AtHeart 和 W!TCHX 的新作品导入在写前返回 409。[本批正式结果](worklogs/20261122-v238-release.md) |
+| 正式站 | v239。STAYC《SO BAD》六张预览和六张原图已正式解码。AtHeart《3!4!》、W!TCHX《BLALA》两支原生作品已加入并读回。AtHeart 正式页点播仍停在零秒。[本批正式结果](worklogs/20261122-v239-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v238 正式应用 `daa9aa7b`。izna、NMIXX、STAYC 及原生作品关联兼容修复另在后续批次。[发布回执](evidence/20261122-v238/publication.json) |
+| 当前开发 | `codex/project-optimization-20261121`。v239 正式应用 `ec729b4c` 已含 izna、NMIXX、STAYC 与原生作品关联兼容修复。Hearts2Hearts、评分入口位置和字体请求进入下一批验证。[v239 发布回执](evidence/20261122-v239/publication.json) |
 
 ## 11 月 22 日更新
+
+v239 的 Windows、WSL 各通过类型检查、生产构建及 1,353/1,353 项现行测试。正式站 NewJeans 手机首页和 SAY MY NAME 桌面首页均实取 571,240 字节的 Nunito Sans。该字体的全字形 WOFF2 已在开发端验证为 208,864 字节。飞书清单在 v238 的最近一次已存记录是 25/29 项已解决。[v239 回归](evidence/20261122-v239/tests.json) · [字体实测](evidence/20261122-v239/home-font-baseline.json) · [v238 飞书记录](worklogs/20261122-v238-release.md)
 
 已在 51 团打开 338 张成员档案。UDTT 5 人使用正式 v236，其余在隔离开发环境逐个验证；其中 48 团另核了资料模块顺序。后续播放按实际发生的变化验收。《BILLIONAIRE》沿用正式 v236 已通过的站内实播记录，已从默认短测列表移除。[成员档案验收](worklogs/20261122-member-routes.md) · [已有播放结果](evidence/20261122-v236/formal-billionaire-2160p.json)
 

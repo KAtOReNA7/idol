@@ -12,3 +12,9 @@
 | NewJeans《Attention》 | 原 MV 长 4:22，表演版 2:57。Weverse 仍指向 HYBE 的同一原视频。西班牙制作服务商 NEVADA 列出委托方、导演与制作，但其 Vimeo 公共嵌入未开放，独立个人上传缺少可核实的发布身份。[Weverse 原版](https://weverse.io/newjeansofficial/media/2-107782613) · [发行目录](https://music.bugs.co.kr/artist/20164333/mvs?group=REGULAR&wl_ref=S_ar_14_02) · [制作方说明](https://www.nevada-service.com/legal/) |
 
 YouTube 隐私增强播放器的浏览器实测受到此设备已有域访问策略限制。该候选未接入，也未计为可播。三支尚缺稳定来源的作品继续保留原视频身份、原评分以及重试功能。
+
+### v235 再查 ADYA《Per》
+
+Kstyle 在 2023 年 5 月 9 日发行当天报道了这支 MV。报道内嵌的地址为 `www.youtube.com/embed/v08zVNXb4is`，与 STONE MUSIC 的《Official S#3 MV》及本站登记的视频 ID 一致。Bugs 目录将这版的 5 分 09 秒完整片与 19 秒预告分开列出。本次查证仍未找到可供本站使用的新完整片源，《Per》的站内播放问题尚未解决。[Kstyle 发行报道](https://kstyle.com/article.ksn?articleNo=2217175) · [STONE MUSIC 首发视频](https://www.youtube.com/watch?v=v08zVNXb4is) · [Bugs 发行目录](https://music.bugs.co.kr/album/20563938)
+
+下一次有发行方或制作方开放第三方嵌入时，核对原版标注和完整性。新候选片长不同的，先比对片头、中段与片尾，再在正式详情页静音短播，记录两次递增进度与实际解码宽高。[已核候选版本](../evidence/20261122-v234/newjeans-player-sources.json)

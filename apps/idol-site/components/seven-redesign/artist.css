@@ -47,3 +47,57 @@
 .sr-rescene .sr-brand img {width:auto;height:45px}
 .sr-illit .sr-brand img {width:100px;height:36px}
 .sr-purplekiss .sr-brand img {width:auto;height:52px;filter:invert(1)}
+/* Super Obvious uses MADEIN's separate desktop and portrait campaign photographs. */
+.sr-madein .sr-madein-hero .sr-hero-photo,
+.sr-madein .sr-madein-hero picture {display:block;width:100%}
+.sr-madein .sr-madein-hero .sr-hero-photo img {display:block;width:100%;height:auto;min-height:0;max-height:none;aspect-ratio:2000/1019;object-fit:contain}
+.sr-madein .madein-single {position:absolute;inset:auto 0 0;padding:8% 5% 4%;color:#fff;background:linear-gradient(transparent,rgba(12,1,4,.88));pointer-events:none}
+.sr-madein .madein-single h1 {font:400 clamp(28px,4vw,62px)/1.05 SevenMadein,sans-serif;letter-spacing:-.025em}
+.sr-madein .madein-single :is(a,button) {display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:6px 16px;margin-top:12px;border:1px solid #fff;background:#13080bd9;color:white;font-weight:600;pointer-events:auto}
+.sr-madein .sr-hero-credit {background:#16090c!important}
+.sr-madein.sr-home .sr-header {position:absolute;background:linear-gradient(#0603069e,transparent)}
+.sr-madein .sr-footer {background:#100609;color:white}
+.sr-site .sr-footer-mark {display:inline-flex;align-items:center;justify-self:start;min-height:48px}
+.sr-site .sr-footer-mark img {width:auto;max-width:150px;height:48px;object-fit:contain}
+.sr-madein .sr-footer-mark img {width:148px;height:auto}
+.sr-site .sr-accessible-title {position:absolute;width:1px;height:1px;margin:-1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+
+/* The Japanese tripleS profile gives S1–S24 their own stable navigation. */
+.sr-triples.sr-home {--sr-bg:#101011;--sr-ink:#fafafa;--sr-panel:#1c1c20;--sr-line:#424246;--sr-muted:#b7b7bf;--sr-accent:#d7ceff}
+.sr-triples.sr-home .sr-header,.sr-triples.sr-home .sr-hero-credit {background:#090909;color:#f4f4f4}
+.sr-triples .sr-triples-hero {background:#090909;padding:clamp(16px,2vw,28px) max(4%,16px) 0}
+.sr-triples .sr-triples-hero .sr-hero-photo {display:block;width:min(100%,1000px,calc(80svh * 4 / 3));margin-inline:auto}
+.sr-triples .sr-triples-hero .sr-hero-photo img {height:auto;aspect-ratio:4/3}
+.triples-number-index {display:flex;align-items:center;gap:clamp(20px,4vw,58px);max-width:1120px;margin:20px auto 0;padding:16px 0;border-block:1px solid #45454b}
+.triples-number-index h2 {font:600 17px/1.2 'Helvetica Neue',Arial,sans-serif;letter-spacing:.08em}
+.triples-number-index>div {flex:1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr))}
+.sr-triples .triples-number-index button {min-height:44px;font:500 14px/1 'Helvetica Neue',Arial,sans-serif;font-variant-numeric:tabular-nums;border:1px solid #424246;margin:0 -1px -1px 0}
+.sr-triples .triples-number-index button:hover {color:#0b0b0c;background:#e2dcff}
+.sr-triples.sr-home .sr-person-index {background:#ddd5ff;color:#16111d}
+.sr-triples.sr-home .sr-work,.sr-triples.sr-home .sr-release {color:var(--sr-ink);background:var(--sr-panel)}
+.sr-triples.sr-home .sr-person-name {text-align:left}
+
+/* RESCENE's five-person plate and names follow THE MUZE's silver photographic palette. */
+.sr-rescene {--sr-bg:#eeeae7;--sr-ink:#352f36;--sr-line:#bdb4b9;--sr-panel:#e2dbdd;--sr-muted:#655d65;--sr-accent:#6c405f}
+.sr-rescene .sr-header {background:#eeeae7;border-bottom:1px solid var(--sr-line)}
+.sr-rescene .sr-rescene-hero {padding:clamp(12px,1.7vw,26px) 4% 0;background:linear-gradient(155deg,#e1ddde,#f2eeeb 55%,#cec7ce)}
+.sr-rescene .sr-rescene-hero .sr-hero-photo {display:block;width:min(100%,1180px);margin-inline:auto}
+.sr-rescene .sr-rescene-hero .sr-hero-photo img {width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;background:#b0b0b3}
+.rescene-plate {max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:clamp(12px,2vw,26px) 0;border-bottom:1px solid #978a93}
+.sr-rescene .rescene-plate h1 {font:500 clamp(35px,5vw,78px)/1 SevenBody,sans-serif;letter-spacing:.025em}
+.rescene-plate nav {display:flex;flex-wrap:wrap;gap:3px 12px}
+.sr-rescene .rescene-plate button {min-height:44px;font-size:13px;letter-spacing:.06em;text-decoration:underline;text-underline-offset:5px}
+.sr-rescene .sr-hero-credit {background:#e3dddf;color:#514950}
+.sr-rescene .sr-footer {background:#d9d0d5}
+.sr-site .sr-footer-mark:focus-visible,.sr-triples .triples-number-index button:focus-visible {outline-offset:1px}
+@media(max-width:700px) {
+ .sr-madein .sr-madein-hero .sr-hero-photo img {aspect-ratio:2/3}
+ .sr-madein .madein-single {padding:16% 5% 5%}
+ .sr-madein .sr-header {min-height:58px;padding-block:14px}
+ .sr-madein .madein-single :is(a,button) {margin-top:6px}
+ .triples-number-index {display:block;margin-top:12px;padding-top:12px}
+ .triples-number-index h2 {margin-bottom:12px}
+ .triples-number-index>div {grid-template-columns:repeat(8,minmax(0,1fr))}
+ .rescene-plate {display:block}
+ .rescene-plate nav {column-gap:14px;margin-top:4px}
+}

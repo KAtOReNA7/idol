@@ -1,4 +1,5 @@
 'use client';
+import './identity.css';
 import {useEffect,useMemo,useRef,useState} from 'react';
 import {useArtistTimelineHostOptions} from '@/components/artist-timeline-host';
 import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';

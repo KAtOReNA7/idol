@@ -44,6 +44,16 @@ test('candidate source stays byte-exact outside the approved opening, public inf
  }
  function unchangedRenderer(source,current){
   if(!current)source=approvedSectionOrder(source);
+  if(current){
+   const brandLine=source.match(/^ const brandMark = '(<img class="izna-wordmark" src="\/artist\/izna\/identity\/official-mark\.svg" alt="izna" width="115" height="80">)';\n/m);
+   assert.ok(brandLine);source=source.replace(brandLine[0],'');
+   const footer='class="footer-name" aria-label="izna 首页">${brandMark}</a>';
+   assert.ok(source.includes(footer));source=source.replace(footer,'class="footer-name">${e(D.group.name)}</a>');
+   for(const [index,label] of ['MEMBERS','FILMS','RELEASES','TIMELINE'].entries()){
+    const heading='<span class="chapter-index">'+label+'</span>';assert.ok(source.includes(heading));
+    source=source.replace(heading,'<span class="chapter-index">0'+(index+1)+' / '+label+'</span>');
+   }
+  }
   if(current){const importLine="import {nativeMvImage,nativeMvCoverHtml} from '../native-mv-cover.mjs';\n";assert.ok(source.startsWith(importLine));source=source.replace(importLine,'');assert.ok(source.includes('image:displayAsset(nativeMvImage(row))'));source=source.replace('image:displayAsset(nativeMvImage(row))','image:displayAsset(row.image)');const coverLine='  const cover=nativeMvCoverHtml(asset,alt,kind,eager);if(cover)return cover;\n';assert.ok(source.includes(coverLine));source=source.replace(coverLine,'');}
   if(current){const review=JSON.parse(fs.readFileSync('../../docs/codex/evidence/20261029-member-layout/native-movement.json')).find(r=>r.file.endsWith('/izna.mjs'));const start=source.indexOf(' function person('),end=source.indexOf('\n function ',start+1);assert.equal(crypto.createHash('sha256').update(source.slice(start,end)).digest('hex'),review.reviewedPersonSha256);source=source.slice(0,start)+review.previousPersonFunction+source.slice(end);}
   if(current){assert.ok(source.startsWith("import {renderGroupInformation} from '../group-information.mjs';\n"));source=source.replace("import {renderGroupInformation} from '../group-information.mjs';\n",'');assert.ok(source.includes('return {group,accounts:raw.publicAccounts??[],'));source=source.replace('return {group,accounts:raw.publicAccounts??[],','return {group,');}
@@ -58,7 +68,12 @@ test('candidate source stays byte-exact outside the approved opening, public inf
  const oldCss=fs.readFileSync(base+'/public/design-review/astra/izna.css','utf8'),css=fs.readFileSync('public/artist/izna/native-v3/izna.css','utf8');
  assert.equal(css.slice(0,oldCss.length),oldCss);
  const addedCss=css.slice(oldCss.length).replace(/\/\*[\s\S]*?\*\//g,'').trim();assert.ok(addedCss);
- for(const rule of addedCss.split('}').filter(rule=>rule.trim()))for(const selector of rule.split('{')[0].split(','))assert.match(selector.trim(),/^\[data-astra-group="izna"\](?:\[data-astra-max-width~="767"\])? \.home-/);
+ const otherApprovedSelectors=new Set(['','.izna-wordmark','.brand .izna-wordmark','.footer-name .izna-wordmark','.chapter-index','.chapter','.group-index-link']);
+ for(const rule of addedCss.split('}').filter(rule=>rule.trim()))for(const selector of rule.split('{')[0].split(',')){
+  const match=selector.trim().match(/^\[data-astra-group="izna"\](?:\[data-astra-max-width~="767"\])?(.*)$/);
+  assert.ok(match,selector);const inside=match[1].trim();
+  assert.ok(inside.startsWith('.home-')||otherApprovedSelectors.has(inside),selector);
+ }
 });
 test('7 members and all 15 izna video slots preserve exact identity when two works share the BEEP stage',()=>{
  const before=JSON.stringify(actual);

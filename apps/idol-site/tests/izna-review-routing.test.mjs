@@ -184,7 +184,9 @@ test('build produces additive physical entries, actual components and original i
     assert.ok(indexCopy,'the actual CandidateIndexCard image must be present after returning to the group index');
     assert.equal(indexCopy.sha256,digest(path.join(root,'public',indexImage)));
     assert.equal(indexCopy.bytes,fs.statSync(path.join(root,'public',indexImage)).size);
-    assert.deepEqual(manifest.assets.filter(asset=>asset.path.includes('/batch-b-20261016-webp-v1/')).map(asset=>asset.path),[indexImage],'copy the exact izna index image without importing other index media');
+    const indexImages=new Set(Object.values(JSON.parse(fs.readFileSync(path.join(root,'data/candidate-index-visuals.json')))).map(group=>group.hero?.image).filter(Boolean));
+    assert.deepEqual(manifest.assets.filter(asset=>indexImages.has(asset.path)).map(asset=>asset.path),[indexImage],'include only izna’s group index photograph');
+    for(const asset of ['/artist/izna/identity/official-mark.svg','/artist/izna/identity/BebasNeue-Regular.ttf']) assert.ok(manifest.assets.some(row=>row.path===asset),asset);
     const firstManifest=fs.readFileSync(path.join(out,'review-izna/manifest.json'),'utf8');
     execFileSync(process.execPath,['scripts/build-izna-review.mjs','--out',out],{cwd:root,stdio:'pipe'});
     assert.equal(fs.readFileSync(path.join(out,'review-izna/manifest.json'),'utf8'),firstManifest,'same source rebuild must be deterministic');

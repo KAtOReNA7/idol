@@ -15,7 +15,7 @@ export function useArtistRosterReturn(ready:boolean,routeKey:string){
   if(!current||current.member)return;
   const path=location.pathname+location.search;
   const origin=history.state?.artistRosterFocus;
-  const exact=origin?.path===path&&memberKey.test(origin.key)&&['portrait','profile'].includes(origin.action);
+  const exact=origin?.path===path&&memberKey.test(origin.key)&&['portrait','profile','index'].includes(origin.action);
   if(current.section!=='members'&&!exact)return;
   if(!exact&&before?.path===current.path&&before.roster===current.roster&&before.member&&memberKey.test(before.member)){
    history.replaceState({...history.state,artistRosterFocus:{path,key:before.member}},'',location.href);

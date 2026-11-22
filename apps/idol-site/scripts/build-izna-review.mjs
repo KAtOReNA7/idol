@@ -67,6 +67,12 @@ const result = await build({
       ignoredStyles.push(path.relative(root,args.path).split(path.sep).join('/'));
       return {contents:'',loader:'css'};
     });
+    // The single-artist preview needs the shared rules but only izna's typefaces.
+    builder.onLoad({filter:/(?:candidate-index-fonts|work-theme-tokens)\.css$/},args=>({
+      contents:fs.readFileSync(args.path,'utf8').replace(/@font-face\s*\{[^}]+\}/g,face=>
+        /\/artist\/(?!izna\/)/.test(face)?'':face),
+      loader:'css'
+    }));
     builder.onResolve({filter:/^\/(?:artist|fonts)\//},args=>args.kind === 'url-token' ? {path:args.path,external:true} : undefined);
   }}],logLevel:'warning'
 });
@@ -83,7 +89,7 @@ if(sha(fs.readFileSync(path.join(out,recordStyle.path)))!==sha(recordStyleBytes)
 const indexVisual = JSON.parse(read('data/candidate-index-visuals.json'))[archive.group.id];
 const indexImage = indexVisual?.hero?.image;
 if (indexVisual?.slug !== 'izna' || typeof indexImage !== 'string' || !/^\/artist\/izna\/[A-Za-z0-9_./-]+$/.test(indexImage) || indexImage.includes('..')) throw new Error('Unexpected izna index image');
-const assets = new Set(['/artist/izna/native-v3/izna.css', indexImage]);
+const assets = new Set(['/artist/izna/native-v3/izna.css', '/artist/izna/identity/official-mark.svg', '/artist/izna/identity/OFL.txt', indexImage]);
 const pinned = new Map();
 for (const binding of assetBindings) {
   if (binding.groupId !== archive.group.id || !/^\/artist\/izna\/[A-Za-z0-9_./-]+$/.test(binding.url) || binding.url.includes('..')) throw new Error('Unexpected izna asset binding');

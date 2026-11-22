@@ -4,7 +4,9 @@
 
 ## 本轮已交付与接续顺序
 
-v246 已修复 UDTT 照片读取，上线 GENBLUE 六人同期照、四团字体、五团分享入口以及三个团的舞台直达。下一批按各自官网重做 RESCENE、MADEIN、tripleS 的作品目录，并用同一视口核首张封面、实际搜索、返回和评分入口。ADYA《Per》的五人照片另按首发专题逐人核对。[v246 正式结果](worklogs/20261122-v246-release.md) · [三套目录的 Figma 与图源](worklogs/20261122-three-artist-directories.md)
+v247 已上线 RESCENE、MADEIN、tripleS、QWER、PURPLE KISS、ILLIT 的作品目录、IVE 的 MUSIC 导航和 ADYA《Per》的五张首发片场照。七团首屏已在两种宽度复验，六团逐页实测搜索、清空、准确详情和原卡回焦。下一批先清理 ODD YOUTH、Geenius、TRACER、HITGS、AtHeart 共 26 位成员照片上的编辑说明，保留姓名、来源和有依据的拍摄时期，再逐团核对 51 团页面的正文、图注及替代文本。其余页面的设计按逐团清单接续，用同宽正式站结果验收。播放工作并行核《Per》完整首发、《BLALA》歌词版及四场指定舞台，找到准确版本后静音短播并记录实际画质。[v247 正式读数与范围](worklogs/20261122-v247-release.md) · [逐团设计清单](worklogs/20261122-group-design-coverage.md) · [四场节目出处](worklogs/20261122-exact-stage-rights.md)
+
+v246 已修复 UDTT 照片读取，上线 GENBLUE 六人同期照、四团字体、五团分享入口以及三个团的舞台直达。[v246 正式结果](worklogs/20261122-v246-release.md)
 
 v245 七团舞台卡、四团分享入口与访客目录计算优化已上线。下一批先修本人访问 UDTT 时部分照片偶发失败，交付 GENBLUE 六张发行期成员照及四团的等价压缩字体，同时按飞书八个实际示例分团参照官网和 Figma 重做仍有问题的目录。四场独占节目和《BLALA》歌词版按新出现的准确片源核查。[v245 正式验收](worklogs/20261122-v245-release.md)
 

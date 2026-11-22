@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v246。本人打开 UDTT 首页的九张原图均已恢复。GENBLUE《COCOCO》六张默认照片少传 95.01%，四团首页的字体合计少传 26.2%。三团 11 个入口直达对应舞台，五团的分享链接直接显示目标栏目。[正式验收](worklogs/20261122-v246-release.md) |
+| 正式站 | v247。六团作品目录的手机首屏共可见 26 张封面，改前为 6 张。六团逐页搜索、清空和返回原卡均通过。IVE 的作品导航显示 MUSIC，ADYA《Per》换为五人首发片场照，手机少传 9.16%。[正式验收](worklogs/20261122-v247-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v246 正式应用 `fccf75a8`。RESCENE、MADEIN、tripleS 的新目录已完成 Figma 与本机双宽验收，待上线；ADYA《Per》同期成员照正在制作。[正式发布](evidence/20261122-v246/publication.json) · [三团设计](worklogs/20261122-three-artist-directories.md) |
+| 当前开发 | `codex/project-optimization-20261121`。v247 正式应用 `32ca6e8d`。接下来处理五团 26 位成员照片旁及替代文本中的核查说明，再按 51 团清单推进其余页面。四场节目、《Per》首发完整版与《BLALA》歌词版仍待合格的站内片源。[正式发布](evidence/20261122-v247/publication.json) · [逐团设计清单](worklogs/20261122-group-design-coverage.md) |
 
 ## 11 月 22 日更新
 

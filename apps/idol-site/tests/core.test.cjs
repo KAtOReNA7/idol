@@ -37,6 +37,28 @@ test('source gaps are preserved except the exact reviewed display repair; no pri
   const work={...repaired[0],url:'',version:'',...patch};assert.equal(applyReviewedWorkMetadata(work).url,'');
  }
 });
+test('work rating links retain row order, repeated record IDs and separate arrays for repeated works', () => {
+ const work = recordId => ({recordId, fields: {}});
+ const rating = (recordId, workIds) => ({recordId, fields: {[F.ratings.works]: workIds}});
+ const tables = {
+  groups: {records: []},
+  members: {records: []},
+  works: {records: ['recA', 'recA', 'recB', 'recC'].map(work)},
+  ratings: {records: [
+   rating('recLater', ['recA', 'recA', 'recB']),
+   rating('recEarlier', ['recB', 'recA']),
+   rating('recLater', ['recA']),
+   rating('recOrphan', ['recMissing']),
+   rating('recEmpty', []),
+  ]},
+ };
+ const projected = projectCatalog(tables, 'live', 'test-capture');
+ const links = Array.from(projected.works, entry => Array.from(entry.ratingIds));
+ const expectedA = ['recLater', 'recEarlier', 'recLater'];
+ assert.deepEqual(links, [expectedA, expectedA, ['recLater', 'recEarlier'], []]);
+ assert.notStrictEqual(projected.works[0].ratingIds, projected.works[1].ratingIds);
+ assert.deepEqual(Array.from(projected.ratings[0].workIds), ['recA', 'recA', 'recB']);
+});
 test('empty numbers remain null, zero is zero',()=>{assert.equal(asNumber(null),null);assert.equal(asNumber(''),null);assert.equal(asNumber('0'),0);assert.equal(asNumber('bad'),null);});
 test('snapshot and API relations preserve ids',()=>{assert.equal(asIds([{recordId:'recABC',text:'Label'}])[0],'recABC');assert.equal(asIds({link_record_ids:['recABC']})[0],'recABC');});
 test('URLs and exact video IDs are bounded',()=>{assert.equal(asUrl([{url:'https://www.youtube.com/watch?v=5sT20edl02I',text:'label'}]),'https://www.youtube.com/watch?v=5sT20edl02I');assert.equal(videoId('https://evil.test/watch?v=5sT20edl02I'),null);assert.equal(videoId('https://www.youtube.com/watch?v=5sT20edl02I'),'5sT20edl02I');assert.equal(asUrl('javascript:alert(1)'),'');});

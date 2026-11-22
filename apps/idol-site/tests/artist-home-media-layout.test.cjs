@@ -15,6 +15,43 @@ const editorialVideos = {
 const groupBySlug = new Map(registry.map(group => [group.slug, group]));
 const homeAndDirectory = [{}, {section: 'works'}, {section: 'works', format: 'mv'}];
 
+test('Kep1er pairs every listed film and stage with its own picture, title, destination and return', async () => {
+  const group=groupBySlug.get('kep1er'), catalog=artistCatalog(group);
+  for(const query of [...homeAndDirectory,{section:'works',format:'stage'}]){
+    const html=parse(await renderArtist(group,query,catalog));
+    const rows=html.querySelectorAll('.kf-work-row');
+    const stageOnly=query.format==='stage';
+    assert.equal(rows.length,stageOnly?15:query.section?16:3);
+    for(const row of rows){
+      const id=row.getAttribute('data-work-id'),work=catalog.works.find(item=>item.id===id);
+      const main=row.querySelector('a.kf-work-main'), image=main.querySelector('.kf-work-photo img');
+      const primary=new URL(main.getAttribute('href'),'https://artist.test');
+      const from=group.path+(query.section?'?'+new URLSearchParams(query):'');
+      assert.equal(main.querySelector('h3').text,work.song||work.name);
+      assert.ok(image.getAttribute('src').startsWith('/artist/'),id);
+      assert.ok(fs.existsSync('public'+image.getAttribute('src')),image.getAttribute('src'));
+      assert.equal(primary.searchParams.get('work'),id);
+      assert.equal(primary.searchParams.get('video'),stageOnly?'stage':null);
+      assert.equal(primary.searchParams.get('returnTo'),from);
+      const links=row.querySelectorAll('a[href]');
+      assert.equal(new Set(links.map(link=>link.getAttribute('href'))).size,links.length);
+      const secondary=row.querySelector('a.kf-work-stage');
+      if(secondary){
+        const stage=new URL(secondary.getAttribute('href'),'https://artist.test');
+        assert.ok(work.stage||work.stageSupplement?.alternatives.length);
+        assert.equal(stage.searchParams.get('work'),id);
+        assert.equal(stage.searchParams.get('video'),'stage');
+        assert.equal(stage.searchParams.get('returnTo'),from);
+      }
+    }
+    if(!query.section){
+      assert.deepEqual(rows.map(row=>row.querySelector('img').getAttribute('src').split('/').at(-1)),
+        ['AMwK8YGZGnU.jpg','MZm4qcvbvbQ.jpg','3nMOUzBZ0ZI.jpg']);
+      assert.equal(html.querySelector('.kf-selected-release .kf-cover img').getAttribute('src'),'/artist/kep1er/editorial-20261018/crack-code-cover.jpg');
+    }
+  }
+});
+
 test('every artist group keeps reviewed video artwork inside its own picture and preserves the source', async t => {
   const groups = [];
   const located = new Set();

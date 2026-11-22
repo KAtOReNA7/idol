@@ -1,0 +1,135 @@
+{
+  "baselineCommit": "727e6490fb2b17f095defab174144fb94b85797d",
+  "isolation": "Two production npm run build runs in the same dedicated Windows checkout, with the same lockfile, dependencies, Node v24.16.0, npm 11.13.0 and the same Git baseline. The second build replaces only vite.config.ts and adds build/group-information-display.mjs. The .gitignore and tests do not enter this comparison.",
+  "method": "For each of the 51 group page.tsx files, match its direct source imports to the built .vite/vinext-client-reference-sources.json. For those client entries, traverse the client .vite/manifest.json imports recursively, deduplicate emitted JavaScript paths, sum file bytes and gzip each file separately at level 6. Excludes other layout/indirect server components, lazy imports, HTML, images, CSS, headers, browser cache and elapsed time. Different pages share chunks; rows are independent comparisons.",
+  "moduleScope": {
+    "consumer": "components/artist-information.tsx",
+    "renderer": "lib/idol/group-information.mjs",
+    "projectedAuthoritativeInputs": [
+      "music-index-artwork.json",
+      "group-information-facts.json",
+      "group-statistics-completion-evidence.json"
+    ],
+    "applies": "Vite production client only. Server renderers, native runtime callers and direct model imports retain their complete input."
+  },
+  "checks": {
+    "actualGroups": 51,
+    "knownAndUnknownEqualHtmlForNoCatalogEmptySocialAndMixedSocial": 156,
+    "additionalEqualHtmlWithActualProjectedSnapshotGroups": 51,
+    "legacyAndUnknownFixtureEqualHtml": 12,
+    "sameComparison": "Strict string equality on the renderer output and equality of public group IDs. Includes partial completion, nested fallback, duplicate social observations, date rows, source links, observed 0, unavailable measurements, lower bounds, private canaries and invalid links.",
+    "targetedNode": {
+      "pass": 20,
+      "fail": 0
+    },
+    "typecheck": "passed",
+    "productionBuilds": 2
+  },
+  "reactEntries": {
+    "count": 48,
+    "gzip6BytesSavedRange": [
+      56140,
+      60085
+    ],
+    "medianGzip6BytesSaved": 60084.0
+  },
+  "nativeEntryGzip6Changes": {
+    "ifeye": 14,
+    "izna": 10,
+    "udtt": 222
+  },
+  "windowsEmittedModules": {
+    "before": [
+      {
+        "name": "group-information",
+        "url": "/_next/static/chunks/CppfrczH.js",
+        "bytes": 538655,
+        "gzip6Bytes": 78116
+      },
+      {
+        "name": "artist-information",
+        "url": "/_next/static/chunks/gTRpCUkd.js",
+        "bytes": 914,
+        "gzip6Bytes": 532
+      }
+    ],
+    "after": [
+      {
+        "name": "artist-information",
+        "url": "/_next/static/chunks/aun-mDct.js",
+        "bytes": 124061,
+        "gzip6Bytes": 16899
+      },
+      {
+        "name": "group-information",
+        "url": "/_next/static/chunks/3AwcmFLl.js",
+        "bytes": 523000,
+        "gzip6Bytes": 72718
+      }
+    ]
+  },
+  "columns": [
+    "slug",
+    "directClientReferences",
+    "beforeJsFiles",
+    "afterJsFiles",
+    "beforeRawBytes",
+    "afterRawBytes",
+    "beforeGzip6Bytes",
+    "afterGzip6Bytes",
+    "gzip6ChangeBytes"
+  ],
+  "routeEntryWeights": [
+    ["adya", "components/adya-artist.tsx", 42, 41, 3649585, 3235802, 599093, 539010, -60083],
+    ["aespa", "components/expanded-artist.tsx", 42, 41, 3640998, 3227215, 596670, 536585, -60085],
+    ["atheart", "components/atheart-artist.tsx", 42, 41, 3651035, 3237252, 597848, 537765, -60083],
+    ["babymonster", "components/artist-sample.tsx", 45, 44, 3675404, 3261621, 606149, 546065, -60084],
+    ["badvillain", "components/candidate/badvillain-design.tsx", 38, 37, 3641237, 3227454, 595799, 535715, -60084],
+    ["bewave", "components/bewave-artist.tsx", 42, 41, 3646085, 3232302, 598868, 538784, -60084],
+    ["billlie", "components/candidate/billlie-design.tsx", 38, 37, 3637810, 3224027, 594739, 534657, -60082],
+    ["candyshop", "components/candyshop-artist.tsx", 40, 39, 3648296, 3234513, 598707, 538625, -60082],
+    ["cherrybullet", "components/candidate/cherrybullet-design.tsx", 37, 36, 3641465, 3227682, 595175, 535091, -60084],
+    ["everglow", "components/candidate/everglow-design.tsx", 38, 37, 3629699, 3215916, 592367, 532285, -60082],
+    ["fromis9", "components/candidate/fromis9-design.tsx", 38, 37, 3629516, 3215733, 592275, 532192, -60083],
+    ["geenius", "components/geenius-artist.tsx", 41, 40, 3650333, 3236550, 598857, 538774, -60083],
+    ["genblue", "components/genblue/bluecut-experience.tsx", 38, 37, 3653508, 3239725, 599934, 539850, -60084],
+    ["hearts2hearts", "components/hearts2hearts-artist.tsx", 41, 40, 3637713, 3223930, 595471, 535387, -60084],
+    ["hitgs", "components/hitgs-artist.tsx", 39, 38, 3646331, 3232548, 596429, 536346, -60083],
+    ["idle", "components/candidate/idle-design.tsx", 37, 36, 3633016, 3219233, 592763, 532680, -60083],
+    ["ifeye", "components/ifeye/editorial.tsx", 16, 16, 519353, 519389, 160955, 160969, 14],
+    ["illit", "components/seven-redesign/artist.tsx", 47, 46, 3671246, 3257463, 608621, 548537, -60084],
+    ["itzy", "components/itzy-artist.tsx", 45, 44, 3644888, 3231105, 597492, 537409, -60083],
+    ["ive", "components/seven-redesign/artist.tsx", 47, 46, 3671246, 3257463, 608621, 548537, -60084],
+    ["izna", "components/izna/editorial.tsx", 16, 16, 540764, 540800, 164250, 164260, 10],
+    ["izone", "components/candidate/izone-design.tsx", 37, 36, 3628745, 3214962, 591887, 531803, -60084],
+    ["katseye", "components/katseye-artist.tsx", 42, 41, 3639903, 3226120, 596287, 536203, -60084],
+    ["kep1er", "components/design-review/kep1er-design-review.tsx", 40, 39, 3924189, 3510406, 631640, 571555, -60085],
+    ["kiiikiii", "components/kiiikiii-artist.tsx", 44, 43, 3647933, 3234150, 599367, 539283, -60084],
+    ["kissoflife", "components/kiof-artist.tsx", 44, 43, 3663536, 3249753, 603261, 543177, -60084],
+    ["lesserafim", "components/lesserafim-artist.tsx", 45, 44, 3634499, 3220716, 595389, 535305, -60084],
+    ["loona", "components/candidate/loona-design.tsx", 44, 43, 3673047, 3259264, 606755, 546673, -60082],
+    ["madein", "components/seven-redesign/artist.tsx", 47, 46, 3671246, 3257463, 608621, 548537, -60084],
+    ["meovv", "components/candidate/meovv-design.tsx", 43, 42, 3639092, 3225309, 596938, 536854, -60084],
+    ["newjeans", "components/candidate/newjeans-design.tsx", 39, 38, 3666082, 3252299, 601541, 541457, -60084],
+    ["nmixx", "components/nmixx-artist.tsx", 44, 43, 3645264, 3231481, 597430, 537346, -60084],
+    ["oddyouth", "components/oddyouth-artist.tsx", 41, 40, 3647569, 3233786, 598177, 538093, -60084],
+    ["purplekiss", "components/seven-redesign/artist.tsx", 47, 46, 3671246, 3257463, 608621, 548537, -60084],
+    ["qwer", "components/seven-redesign/artist.tsx", 47, 46, 3671246, 3257463, 608621, 548537, -60084],
+    ["rescene", "components/seven-redesign/artist.tsx", 47, 46, 3671246, 3257463, 608621, 548537, -60084],
+    ["rocketpunch", "components/candidate/rocketpunch-design.tsx", 38, 37, 3648896, 3235113, 597084, 537000, -60084],
+    ["saymyname", "components/saymyname-artist.tsx", 45, 44, 3649512, 3235729, 599778, 539693, -60085],
+    ["spia", "components/spia-artist.tsx", 38, 37, 3638443, 3224660, 594461, 534379, -60082],
+    ["stayc", "components/stayc-artist.tsx", 44, 43, 3639036, 3225253, 597257, 537172, -60085],
+    ["tracer", "components/tracer-artist.tsx", 39, 38, 3636077, 3222294, 594122, 534039, -60083],
+    ["triples", "components/seven-redesign/artist.tsx", 47, 46, 3671246, 3257463, 608621, 548537, -60084],
+    ["udtt", "components/candidate/udtt-native-design.tsx", 13, 14, 1127837, 1127895, 261599, 261821, 222],
+    ["unis", "components/design-review/unis-design-review.tsx", 40, 39, 3824818, 3411035, 617541, 557457, -60084],
+    ["vcha", "components/vcha-artist.tsx", 38, 37, 3646411, 3232628, 596261, 536178, -60083],
+    ["vvup", "components/vvup-artist.tsx", 44, 44, 3646489, 3246667, 599121, 542981, -56140],
+    ["weeekly", "components/candidate/weeekly-design.tsx", 37, 36, 3646788, 3233005, 596612, 536528, -60084],
+    ["witchx", "components/witchx-artist.tsx", 40, 39, 3638252, 3224469, 594600, 534517, -60083],
+    ["wooah", "components/wooah/editorial.tsx", 38, 37, 3688380, 3274597, 606988, 546906, -60082],
+    ["xg", "components/expanded-artist.tsx", 42, 41, 3640998, 3227215, 596670, 536585, -60085],
+    ["youngposse", "components/youngposse-artist.tsx", 40, 39, 3653940, 3240157, 599431, 539348, -60083]
+  ]
+}

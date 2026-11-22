@@ -24,7 +24,7 @@ const current = [
   'member-layout-order', 'group-index', 'ifeye-native-integration', 'izna-native-integration',
   'editor-flow', 'ive-badvillain-detail', 'meovv-detail', 'private-note-render', 'native-save-order', 'native-loading-recovery',
 ].map(name => `tests/${name}.test.cjs`).concat(
-  ['stage-selection-policy', 'prune-unused-display-assets', 'unused-ifeye-original-build-assets', 'youngposse-retention-audit']
+  ['stage-selection-policy', 'prune-unused-display-assets', 'unused-ifeye-original-build-assets', 'youngposse-retention-audit', 'group-information-display']
     .map(name => `tests/${name}.test.mjs`),
 );
 const isolated = 'tests/artist-runtime-data.test.cjs';

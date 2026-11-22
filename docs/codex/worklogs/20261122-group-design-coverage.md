@@ -4,13 +4,13 @@
 
 正式路由目录、具名 Figma 页面和逐团记录的名单一致，共 51 团，重复和遗漏均为 0。逐团索引按九类页面列出桌面、手机节点，给出素材来源文件、适用的专项实现和正式实测版本。原文件 53 页、3,676 个条目的清点保存在下方。初次清点定位 750 个位置、746 个不同节点，补录后的原索引有 751 个位置、747 个不同节点。[现行逐团索引](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [原索引](../evidence/20261122-group-design-coverage/group-screen-matrix.json)
 
-459 个「团体 × 页面类别」组合中，412 个已定位双宽候选画稿，另有 47 个至少一宽待定位，涉及 16 团。VCHA、HITGS、AtHeart 新增了实际节目的团内舞台详情稿。BEWAVE《SING !》补齐两项，YOUNG POSSE、ADYA 和 GENBLUE 各补齐一项本人评分，izna 补齐 KBS 节目舞台。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
+459 个「团体 × 页面类别」组合中，413 个已定位双宽候选画稿，另有 46 个至少一宽待定位，涉及 16 团。BABYMONSTER 新增 AHYEON 的手机成员详情稿，与她已有的桌面稿配对。VCHA、HITGS、AtHeart 已有实际节目的团内舞台详情稿。BEWAVE《SING !》补齐两项，YOUNG POSSE、ADYA 和 GENBLUE 各补齐一项本人评分，izna 补齐 KBS 节目舞台。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [AHYEON 手机版](20261123-babymonster-member-profile.md) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
 
 | 类别 | 双宽候选 | 至少一宽仍待定位的团 |
 | --- | ---: | --- |
 | 首页 | 51/51 | 无 |
 | 成员名录 | 45/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、NMIXX、KiiiKiii |
-| 成员详情 | 48/51 | BABYMONSTER（仅 AHYEON 桌面稿）、ITZY、LE SSERAFIM |
+| 成员详情 | 49/51 | ITZY、LE SSERAFIM |
 | 作品目录 | 44/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii |
 | 发行详情 | 39/51 | MEOVV、HITGS、LOONA、BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
 | MV 详情 | 51/51 | 无 |

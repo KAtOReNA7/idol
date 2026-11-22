@@ -1,5 +1,5 @@
 {
-  "scope": "2026-11-22。正式工程 51 团。团内舞台入口现含 v246 实测。作品目录设计与本机、正式回执分别列于专项。",
+  "scope": "2026-11-23。正式工程 51 团。各团的桌面与手机代表稿、对应实现和实测版本逐项列出。",
   "figmaFile": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/",
   "surfaceNames": {
     "home": "首页",
@@ -26,11 +26,11 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 412,
+    "twoWidthBoardMatches": 413,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
-      "profile": 48,
+      "profile": 49,
       "works": 44,
       "release": 39,
       "mv": 51,
@@ -49,7 +49,6 @@
         "kiiikiii"
       ],
       "profile": [
-        "babymonster",
         "itzy",
         "lesserafim"
       ],
@@ -147,6 +146,7 @@
     "shared": "docs/codex/worklogs/20261122-shared-figma-interface.md",
     "handoff": "docs/codex/worklogs/20261122-editorial-work-handoff.md",
     "profiles": "docs/codex/worklogs/20261122-member-profile-work-editions.md",
+    "babymonster-profile": "docs/codex/evidence/20261123-babymonster-member-profile/figma-and-sources.json",
     "kiiikiii": "docs/codex/worklogs/20261122-kiiikiii-uncut-gem.md",
     "journeys": "docs/codex/worklogs/20261122-group-journeys.md",
     "page-index": "docs/codex/evidence/20261122-group-design-coverage/current-screen-matrix.json#pageIndexReadback",
@@ -2862,7 +2862,7 @@
         ],
         "profile": [
           "87:533",
-          null
+          "1624:1124"
         ],
         "works": [
           null,
@@ -2890,9 +2890,15 @@
         ]
       },
       "revised": {
+        "profile": "babymonster-profile",
         "score": "shared"
       },
       "implementation": [
+        {
+          "at": "v250",
+          "scope": "AHYEON 的旧桌面代表稿与新手机全页稿成对。七名成员均使用姓名在前、本人原图与本人写真出处的实现。",
+          "evidence": "babymonster-profile"
+        },
         {
           "at": "v236",
           "scope": "《BILLIONAIRE》七人评分入口与本人照片",

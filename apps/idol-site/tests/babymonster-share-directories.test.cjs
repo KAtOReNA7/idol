@@ -122,17 +122,74 @@ test('BABYMONSTER search links retain the exact text, selected work and stage, w
   const query={section:'works',q:'biLLionaire'}, returnTo=group.path+'?section=works&q=biLLionaire';
   for(const doc of [await cold(query),await hydrated(query)]){
     assert.equal(doc.querySelectorAll('[data-work-id]').length,1);
-    assert.equal(doc.querySelector('.bm-directory-search input').getAttribute('value'),query.q);
-    assert.equal(doc.querySelector('.bm-directory-search button').text,'清空');
+    const form=doc.querySelector('form.bm-directory-search[role="search"]');
+    assert.equal(form.getAttribute('action'),group.path);
+    assert.equal(form.getAttribute('method'),'get');
+    assert.equal(form.querySelector('input[name=q]').getAttribute('value'),query.q);
+    assert.equal(form.querySelector('button[type=submit]').text,'搜索');
+    const clear=form.querySelector('a[href]');
+    assert.equal(clear.text,'清空');
+    assert.equal(clear.getAttribute('href'),group.path+'?section=works');
+    assert.equal((await cold(Object.fromEntries(url(clear).searchParams))).querySelectorAll('[data-work-id]').length,19);
     const id=catalog.works.find(w=>w.song==='BILLIONAIRE').id;
     recordLink(doc.querySelector('.bm-directory-work-main'),'work',id,returnTo);
     recordLink(doc.querySelector('.bm-directory-stage'),'work',id,returnTo);
     assert.equal(doc.querySelector('.bm-directory-work-copy strong').text,'BILLIONAIRE');
   }
   const empty=await cold({section:'works',q:'A & B'});
-  assert.equal(empty.querySelector('.bm-directory-search input').getAttribute('value'),'A & B');
+  assert.equal(empty.querySelector('.bm-directory-search input[name=q]').getAttribute('value'),'A & B');
   assert.equal(empty.querySelector('[data-work-id]'),null);
-  assert.equal(empty.querySelector('.bm-directory-empty button').text,'查看全部作品');
+  assert.equal(empty.querySelector('.bm-directory-empty a').getAttribute('href'),group.path+'?section=works');
+});
+
+test('BABYMONSTER native GET search, clearing and queue links retain their filters before the page attaches handlers',async()=>{
+  for(const queue of ['all','rewatch']){
+    const query={section:'works',q:'BILLIONAIRE',...(queue==='all'?{}:{queue})};
+    const page=await cold(query), form=page.querySelector('form[role=search]');
+    const fields=new URLSearchParams(form.querySelectorAll('input[name]').map(input=>[input.getAttribute('name'),input.getAttribute('value')]));
+    fields.set('q','DRIP');
+    assert.deepEqual(Object.fromEntries(fields),{...query,q:'DRIP'});
+    const searched=await cold(Object.fromEntries(fields));
+    assert.equal(searched.querySelector('input[name=q]').getAttribute('value'),'DRIP');
+    const cleared=url(form.querySelector('a'));
+    assert.equal(cleared.searchParams.has('q'),false);
+    assert.equal(cleared.searchParams.get('queue'),queue==='all'?null:queue);
+    if(queue==='all'){
+      const records=searched.querySelectorAll('[data-work-id]');
+      assert.equal(records.length,1);
+      assert.equal(records[0].querySelector('strong').text,'DRIP');
+      assert.equal(url(records[0].querySelector('a')).searchParams.get('returnTo'),group.path+'?section=works&q=DRIP');
+    }else{
+      assert.match(searched.querySelector('main').text,/个人观看记录仅本人可见/);
+      assert.equal(searched.querySelector('.bm-directory-empty a').getAttribute('href'),group.path+'?section=works');
+    }
+  }
+  const owner=await hydrated({section:'works',q:'DRIP'},{canEdit:true});
+  const filters=owner.querySelectorAll('.bm-directory-queues a');
+  assert.deepEqual(filters.map(a=>url(a).searchParams.get('queue')),[null,'tonight','rewatch','unrated']);
+  for(const entry of filters)assert.equal(url(entry).searchParams.get('q'),'DRIP');
+});
+
+test('an attached directory search filters while typing or submitting and returns focus on a plain clear click',()=>{
+  const {Children}=require('react'), load=require('./helpers/public-artist-loader.cjs');
+  const {ArtistDirectorySearch}=load('components/artist-directory-search.tsx');
+  const {artistRoute}=load('lib/idol/artist-preview.ts');
+  const calls=[];
+  const form=ArtistDirectorySearch({className:'bm-directory-search',basePath:group.path,
+    route:artistRoute(group.path+'?section=works&queue=rewatch&q=DRIP'),navigate:(...args)=>calls.push(args)});
+  const children=Children.toArray(form.props.children), field=children.find(node=>node.props.name==='q'),clear=children.find(node=>node.type==='a');
+  let focused=0,prevented=0;
+  const click={button:0,currentTarget:{closest:()=>({querySelector:()=>({focus:()=>focused++})})},preventDefault(){prevented++;}};
+  for(const change of [{metaKey:true},{ctrlKey:true},{shiftKey:true},{altKey:true},{button:1},{defaultPrevented:true}])clear.props.onClick({...click,...change});
+  assert.deepEqual(calls,[]);
+  assert.equal(prevented,0);
+  assert.equal(focused,0);
+  field.props.onChange({currentTarget:{value:'DRI'}});
+  form.props.onSubmit({preventDefault(){prevented++;},currentTarget:{elements:{namedItem:name=>name==='q'?{value:'A & B'}:null}}});
+  clear.props.onClick(click);
+  assert.deepEqual(calls,[[{search:'DRI'},true],[{search:'A & B'},true],[{search:''},true]]);
+  assert.equal(prevented,2);
+  assert.equal(focused,1);
 });
 
 test('BABYMONSTER public fields and server event props exclude private records, unpublished events and research notes',async()=>{
@@ -184,7 +241,7 @@ test('BABYMONSTER private filters require owner access and live data, preserve z
   assert.ok(owner.querySelector('.bm-directory-queues'));
   const none=parse(await renderArtist(group,personal,local,{canEdit:true}));
   assert.equal(none.querySelector('[data-work-id]'),null);
-  assert.equal(none.querySelector('.bm-directory-empty button').text,'查看全部作品');
+  assert.equal(none.querySelector('.bm-directory-empty a').text,'查看全部作品');
 });
 
 test('BABYMONSTER retains public entries on a catalog failure, provides a retry for each failure, and keeps the home group photo on the overview',async()=>{

@@ -1,6 +1,6 @@
 'use client';
 
-import type {MouseEvent, ReactNode} from 'react';
+import type {ReactNode} from 'react';
 import type {CatalogView, Member, Work} from '@/lib/idol/types';
 import {artistMemberUrl, artistRoute, artistRouteUrl, artistWorkRows, artistWorkScoreLabel, artistWorkUrl} from '@/lib/idol/artist-preview';
 import {BABYMONSTER_GROUP_ID, BABYMONSTER_PATH} from '@/lib/idol/artist-navigation';
@@ -8,6 +8,7 @@ import {memberChineseName, memberDisplayName} from '@/lib/idol/member-display-na
 import {publicVideoCover} from '@/lib/idol/mv-public-covers';
 import {videoId} from '@/lib/idol/values';
 import {ArtistTimeline} from './artist-timeline';
+import {ArtistDirectorySearch, followDirectoryLink} from './artist-directory-search';
 import {ArtistTimelineHost, useArtistTimelineHostOptions} from './artist-timeline-host';
 import {ReliableImage} from './reliable-image';
 import {useCanEdit} from '@/components/public-access';
@@ -37,20 +38,13 @@ const timelineContext = {
 const memberLabels = Object.fromEntries(publicMembers.map(member=>[member.id,memberChineseName(member)||memberDisplayName(member)]));
 const workLabels = Object.fromEntries(publicWorks.map(work=>[work.id,work.song||work.name]));
 
-function unmodified(event: MouseEvent<HTMLAnchorElement>) {
-  return !event.defaultPrevented && event.button===0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey;
-}
-
 export function BabymonsterDirectoryNav({section,navigate}: {section:Section; navigate:Selection}) {
   return <div className="bm-directory-mast"><div>
     <a className="bm-directory-brand" href={BABYMONSTER_PATH}>BABYMONSTER</a>
     <nav aria-label="团体内容">{tabs.map(([key,label])=><a key={key}
       href={BABYMONSTER_PATH+(key==='overview'?'':'?section='+key)}
-      aria-current={section===key?'page':undefined} onClick={event=>{
-        if (!unmodified(event)) return;
-        event.preventDefault();
-        navigate({section:key,member:null,search:'',queue:'all',format:'all'});
-      }}>{label}</a>)}</nav>
+      aria-current={section===key?'page':undefined} onClick={event=>followDirectoryLink(event,()=>
+        navigate({section:key,member:null,search:'',queue:'all',format:'all'}))}>{label}</a>)}</nav>
   </div></div>;
 }
 
@@ -85,11 +79,8 @@ function Roster({people,route,navigate}: {people:DirectoryMember[]; route:Route;
     const srcSet=portrait?.directoryPreview360&&portrait?.directoryPreview540?`${portrait.directoryPreview360} 360w, ${portrait.directoryPreview540} 540w, ${portrait.image} 800w`:undefined;
     const target={...route,section:'members' as const,member:person.id};
     return <a key={person.id} data-artist-member-trigger={person.id} data-member-work-trigger={'roster:'+person.id}
-      href={artistRouteUrl(target,BABYMONSTER_PATH)} onClick={event=>{
-        if (!unmodified(event)) return;
-        event.preventDefault();
-        navigate({section:'members',member:person.id});
-      }}>
+      href={artistRouteUrl(target,BABYMONSTER_PATH)}
+      onClick={event=>followDirectoryLink(event,()=>navigate({section:'members',member:person.id}))}>
       <span className="bm-directory-portrait"><ReliableImage src={src} srcSet={srcSet} sizes={srcSet?portraitSizes:undefined}
         alt={memberDisplayName(person)+' · '+(portrait?.label??'成员档案照')} identityKey={'member:'+person.id+':portrait'} width={176} height={264} original/></span>
       <strong>{person.stageName}</strong><span>{memberChineseName(person)}</span><small>{person.status}</small>
@@ -126,15 +117,16 @@ function WorkDirectory({route,collection,loading,error,navigate,retry}: Director
   else if (privateQueue&&!liveWorks) empty='个人观看记录暂时无法读取。';
 
   return <DirectoryPanel section="works" count={count} error={error} retry={retry}>
-    <div className="bm-directory-search"><input value={route.search} aria-label="搜索本团作品" placeholder="搜索歌曲或版本"
-      onChange={event=>navigate({search:event.target.value},true)}/>{route.search&&<button onClick={()=>navigate({search:''},true)}>清空</button>}</div>
+    <ArtistDirectorySearch className="bm-directory-search" basePath={BABYMONSTER_PATH} route={route} navigate={navigate}/>
     {canEdit&&<div className="bm-directory-queues" aria-label="个人观看筛选">{queues.map(([key,label])=>
-      <button key={key} aria-pressed={route.queue===key} onClick={()=>navigate({queue:key})}>{label}
-        {liveWorks&&<span>{artistWorkRows(liveWorks,key,route.search).length}</span>}</button>)}</div>}
+      <a key={key} aria-current={route.queue===key?'true':undefined} href={artistRouteUrl({...route,queue:key},BABYMONSTER_PATH)}
+        onClick={event=>followDirectoryLink(event,()=>navigate({queue:key}))}>{label}
+        {liveWorks&&<span>{artistWorkRows(liveWorks,key,route.search).length}</span>}</a>)}</div>}
     {visible.map(work=><WorkCard key={work.id} work={work} returnTo={returnTo} score={scores?.get(work.id)}/>)}
     {!visible.length&&<div className="bm-directory-empty">
       {waiting?<p role="status">正在读取个人观看记录…</p>:
-        <><p>{empty}</p><button onClick={()=>navigate({queue:'all',search:''})}>查看全部作品</button></>}
+        <><p>{empty}</p><a href={artistRouteUrl({...route,queue:'all',search:''},BABYMONSTER_PATH)}
+          onClick={event=>followDirectoryLink(event,()=>navigate({queue:'all',search:''}))}>查看全部作品</a></>}
     </div>}
   </DirectoryPanel>;
 }

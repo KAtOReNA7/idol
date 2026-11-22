@@ -69,7 +69,7 @@ export default function CandyshopArtist({content}:{content:CandidateContent}){
   return <header className="cs-section-heading"><h2>{cn}</h2>{en&&<span className="cs-en" lang="en">{en}</span>}</header>;
  }
  function title(cn:string,en:string){
-  return <header className="cs-title"><img src="/artist/candyshop/japan/star.svg" width="20" height="20" alt=""/><h1><span lang="en">{en}</span>{cn}</h1></header>;
+  return <header className="cs-title"><img src="/artist/candyshop/japan/star.svg" width="20" height="20" alt=""/><span className="cs-title-en" lang="en" aria-hidden="true">{en}</span><h1>{cn}</h1></header>;
  }
  function search(kind:'members'|'works'){return <form className="cs-search" onSubmit={e=>{e.preventDefault();const q=String(new FormData(e.currentTarget).get('q')??'').trim().slice(0,200);remember();history.pushState(newArtistHistoryState(history.state),'',href({q:q||null}));window.dispatchEvent(new Event('artist-location-change'));}}><label htmlFor="cs-search-input">搜索{kind==='members'?'成员':'作品'}</label><div><input id="cs-search-input" name="q" key={route.search} defaultValue={route.search} placeholder={kind==='members'?'中文名 / 艺名':'作品名称'} maxLength={200}/><button type="submit">查找</button>{route.search&&<Link to={href({q:null})}>清除搜索</Link>}</div></form>;}
  function memberCard(m:Person){

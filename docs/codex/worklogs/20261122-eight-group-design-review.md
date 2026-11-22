@@ -2,6 +2,8 @@
 
 飞书同一条问题含两组配图。四张组内图依次为 Cherry Bullet、VCHA、UDTT、Candy Shop，另外四张依次为 BEWAVE、RESCENE、MADEIN、tripleS。izna 是用户提到的排版参照。下表列出每个首页实际采用的图源，以及已经取得的正式站回执。
 
+该条另要求检查未点名的团。51 个首页的字体、留白、图源和实际访问信息已与项目 Figma 名单对应，九类内页和状态的逐团清单列出了已落地的范围与旧示意稿。WOOAH《BLUSH》的旧图框和部分团的作品详情仍待处理，不能据八个首页的回执结清整个问题。[51 团现行覆盖与分工](20261122-group-design-coverage.md#现行索引与待补设计)
+
 | 团体 | 团标、主视觉与测试范围 |
 | --- | --- |
 | Cherry Bullet | 《Cherry Dash》时期的七人 Fashion House 官方摄影 2700 × 1800，页眉使用官方频道的樱桃签名 414 × 240。v240 手机、桌面首屏均解码，实测宽 375、1425 px，横向溢出 0。[FNC 图库](https://fncent.com/CherryBullet/b/gallery/55485) · [官方图形出处](../evidence/20261121-official-marks/source-marks.json) · [正式回执](../evidence/20261122-candyshop-inner/v240-three-home-openings.json) |

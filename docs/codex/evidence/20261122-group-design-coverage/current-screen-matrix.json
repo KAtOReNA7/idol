@@ -1,0 +1,3690 @@
+{
+  "scope": "2026-11-22。覆盖正式工程登记的 51 团。正式实测按记录发布号区分，本次归并到 v240；本地改动随新版本另验。",
+  "figmaFile": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/",
+  "surfaceNames": {
+    "home": "首页",
+    "members": "成员名录",
+    "profile": "成员详情",
+    "works": "作品目录",
+    "release": "发行详情",
+    "mv": "MV 详情",
+    "stage": "舞台详情",
+    "timeline": "时间轴",
+    "score": "评分或手帐状态"
+  },
+  "pairOrder": [
+    "desktop",
+    "mobile"
+  ],
+  "howToRead": {
+    "pairs": "每团九类画稿候选，按桌面与手机排列。空值表示缺少具名匹配。旧手帐、演示稿、目录筛选及组件另见 qualification 或 additional。",
+    "revised": "覆盖原索引所选节点的专项来源，或补正其标签归类。其余按 inventory 追溯。",
+    "implementation": "每团同时有 homepage213 正式首页、directories236 正式 MV 目录及 routes 五入口渲染；专项逐项另列。名录、目录、手帐旧稿不等于新版完整详情已有正式逐屏对稿。",
+    "identitySourceFile": "早期审稿登记的工程素材文件，部分含第三方发行交叉资料。视觉时期与最新团标从所属团专项核对。",
+    "sourceKeys": "sources 采用仓库相对路径。用 figmaFile 加 ?node-id= 并将节点中的冒号替换为连字符可打开画板。"
+  },
+  "counts": {
+    "groups": 51,
+    "scopeCombinations": 459,
+    "twoWidthBoardMatches": 381,
+    "twoWidthBySurface": {
+      "home": 51,
+      "members": 45,
+      "profile": 48,
+      "works": 44,
+      "release": 39,
+      "mv": 41,
+      "stage": 33,
+      "timeline": 42,
+      "score": 38
+    },
+    "missingOrPartialBySurface": {
+      "home": [],
+      "members": [
+        "babymonster",
+        "xg",
+        "aespa",
+        "kissoflife",
+        "nmixx",
+        "kiiikiii"
+      ],
+      "profile": [
+        "babymonster",
+        "itzy",
+        "lesserafim"
+      ],
+      "works": [
+        "babymonster",
+        "xg",
+        "aespa",
+        "kissoflife",
+        "stayc",
+        "nmixx",
+        "kiiikiii"
+      ],
+      "release": [
+        "meovv",
+        "hitgs",
+        "loona",
+        "babymonster",
+        "xg",
+        "aespa",
+        "kissoflife",
+        "stayc",
+        "nmixx",
+        "kiiikiii",
+        "itzy",
+        "lesserafim"
+      ],
+      "mv": [
+        "rescene",
+        "qwer",
+        "vvup",
+        "izone",
+        "fromis9",
+        "everglow",
+        "rocketpunch",
+        "cherrybullet",
+        "weeekly",
+        "purplekiss"
+      ],
+      "stage": [
+        "izna",
+        "ifeye",
+        "rescene",
+        "qwer",
+        "vvup",
+        "bewave",
+        "oddyouth",
+        "vcha",
+        "hitgs",
+        "atheart",
+        "izone",
+        "fromis9",
+        "everglow",
+        "rocketpunch",
+        "cherrybullet",
+        "weeekly",
+        "wooah",
+        "purplekiss"
+      ],
+      "timeline": [
+        "babymonster",
+        "xg",
+        "aespa",
+        "kissoflife",
+        "stayc",
+        "nmixx",
+        "kiiikiii",
+        "itzy",
+        "lesserafim"
+      ],
+      "score": [
+        "genblue",
+        "vvup",
+        "youngposse",
+        "bewave",
+        "adya",
+        "udtt",
+        "wooah",
+        "xg",
+        "aespa",
+        "kissoflife",
+        "stayc",
+        "itzy",
+        "lesserafim"
+      ]
+    }
+  },
+  "sources": {
+    "inventory": "docs/codex/evidence/20261122-group-design-coverage/group-screen-matrix.json",
+    "routes": "docs/codex/evidence/20261122-group-design-coverage/actual-route-surfaces.json",
+    "homepage213": "docs/codex/evidence/20261122-v213/formal-home-design.json",
+    "directories236": "docs/codex/evidence/20261122-v236/formal-directories.json",
+    "identity": "docs/codex/evidence/20261121-artist-brand/group-review.json",
+    "marks": "docs/codex/evidence/20261121-official-marks/source-marks.json",
+    "people": "docs/codex/evidence/20261122-member-page-coverage/visits.json",
+    "editions": "docs/codex/evidence/20261122-member-profile-editions/coverage.json",
+    "simulatedScores": "docs/codex/evidence/20261122-stayc-debut/score-coverage.json",
+    "copy": "docs/codex/evidence/20261122-candyshop-inner/all-groups-copy.json",
+    "v238-boards": "docs/codex/evidence/20261122-group-design-coverage/v238-specific-nodes.json",
+    "candy-screens": "docs/codex/evidence/20261122-candyshop-inner/figma-and-sources.json",
+    "candy-work": "docs/codex/evidence/20261122-candyshop-inner/figma-shared-work.json",
+    "udtt-mark": "docs/codex/evidence/20261122-candyshop-inner/udtt-mark-source.json",
+    "eight-home-v240": "docs/codex/evidence/20261122-candyshop-inner/v240-three-home-openings.json",
+    "kiiikiii-json": "docs/codex/evidence/20261122-kiiikiii-uncut-gem/official-and-design.json",
+    "ifeye": "docs/codex/worklogs/20261122-ifeye-official-photos.md",
+    "izna": "docs/codex/worklogs/20261122-izna-portraits.md",
+    "itzy-lsf-home": "docs/codex/worklogs/20261122-itzy-lesserafim-official-design.md",
+    "itzy-lsf-work": "docs/codex/worklogs/20261122-itzy-lesserafim-work-details.md",
+    "nmixx": "docs/codex/worklogs/20261122-nmixx-member-work-details.md",
+    "hearts2hearts": "docs/codex/worklogs/20261122-hearts2hearts-the-chase-details.md",
+    "stayc": "docs/codex/worklogs/20261122-stayc-debut-and-scores.md",
+    "spia": "docs/codex/worklogs/20261122-spia-inner.md",
+    "eight": "docs/codex/worklogs/20261122-eight-group-design-review.md",
+    "four": "docs/codex/worklogs/20261122-four-artist-first-screens.md",
+    "v238": "docs/codex/worklogs/20261122-v238-release.md",
+    "v239": "docs/codex/worklogs/20261122-v239-release.md",
+    "v240": "docs/codex/worklogs/20261122-v240-release.md",
+    "v236": "docs/codex/worklogs/20261122-v236-release.md",
+    "v226": "docs/codex/worklogs/20261122-v226-release.md",
+    "v220": "docs/codex/worklogs/20261122-v220-release.md",
+    "vvup": "docs/codex/worklogs/20261122-figma-redesign.md",
+    "kep1er": "docs/codex/worklogs/20261122-kep1er-covers-and-release-control.md",
+    "violet": "docs/codex/worklogs/20261122-group-photo-priority.md",
+    "blala": "docs/codex/worklogs/20261122-witchx-debut-design.md",
+    "adya-witchx": "docs/codex/worklogs/20261122-adya-witchx-figma.md",
+    "bewave": "docs/codex/worklogs/20261122-group-entry-and-bewave.md",
+    "shared": "docs/codex/worklogs/20261122-shared-figma-interface.md",
+    "handoff": "docs/codex/worklogs/20261122-editorial-work-handoff.md",
+    "profiles": "docs/codex/worklogs/20261122-member-profile-work-editions.md",
+    "kiiikiii": "docs/codex/worklogs/20261122-kiiikiii-uncut-gem.md",
+    "journeys": "docs/codex/worklogs/20261122-group-journeys.md",
+    "page-index": "docs/codex/evidence/20261122-group-design-coverage/current-screen-matrix.json#pageIndexReadback"
+  },
+  "groups": [
+    {
+      "slug": "meovv",
+      "name": "MEOVV",
+      "designPages": [
+        "252:1964"
+      ],
+      "homePath": "/artists/meovv",
+      "identitySourceFile": "apps/idol-site/data/meovv-artist.json",
+      "pairs": {
+        "home": [
+          "252:1965",
+          "252:2014"
+        ],
+        "members": [
+          "419:18147",
+          "419:18192"
+        ],
+        "profile": [
+          "252:2062",
+          "252:2088"
+        ],
+        "works": [
+          "419:18314",
+          "419:18531"
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "252:2113",
+          "252:2139"
+        ],
+        "stage": [
+          "252:2164",
+          "252:2194"
+        ],
+        "timeline": [
+          "419:19138",
+          "419:19177"
+        ],
+        "score": [
+          "419:19050",
+          "419:19088"
+        ]
+      },
+      "revised": {
+        "profile": "page-index"
+      },
+      "implementation": [],
+      "additional": [
+        {
+          "scope": "另有金粹仁原图灯箱，原索引曾选作成员详情",
+          "source": "inventory",
+          "nodes": [
+            "544:421",
+            "544:432"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://en.tblshop.com/meovv/profile.html",
+      "qualification": "成员栏指回金粹仁完整档案，原图灯箱单列。"
+    },
+    {
+      "slug": "izna",
+      "name": "izna",
+      "designPages": [
+        "811:1095",
+        "1400:1109"
+      ],
+      "homePath": "/artists/izna",
+      "identitySourceFile": "apps/idol-site/data/izna-artist.json",
+      "pairs": {
+        "home": [
+          "812:19251",
+          "812:19340"
+        ],
+        "members": [
+          "812:19431",
+          "812:19484"
+        ],
+        "profile": [
+          "812:19538",
+          "812:19569"
+        ],
+        "works": [
+          "812:19600",
+          "812:19747"
+        ],
+        "release": [
+          "812:19895",
+          "812:19935"
+        ],
+        "mv": [
+          "812:19975",
+          "812:20028"
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "812:20082",
+          "812:20124"
+        ],
+        "score": [
+          "812:20166",
+          "812:20213"
+        ]
+      },
+      "revised": {
+        "home": "izna",
+        "members": "izna",
+        "profile": "izna",
+        "works": "izna"
+      },
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "首页、名录、MAI 与作品库",
+          "evidence": "izna"
+        },
+        {
+          "at": "v239",
+          "scope": "MAI 和历史成员尹智允的名录搜索",
+          "evidence": "v239"
+        },
+        {
+          "at": "v236",
+          "scope": "首页团体主题、两宽主图",
+          "evidence": "v236"
+        }
+      ],
+      "additional": [],
+      "earlierHomeReference": "https://wake-one.com/en/artists/izna/",
+      "qualification": "旧评分稿为 DEMO；局部本人筛选与展示沿用新名录。"
+    },
+    {
+      "slug": "triples",
+      "name": "tripleS",
+      "designPages": [
+        "348:1097",
+        "1266:1095",
+        "1400:1109"
+      ],
+      "homePath": "/artists/triples",
+      "identitySourceFile": "apps/idol-site/data/triples-artist.json",
+      "pairs": {
+        "home": [
+          "1400:1136",
+          "1400:1172"
+        ],
+        "members": [
+          "1267:1182",
+          "1267:1190"
+        ],
+        "profile": [
+          "1267:1183",
+          "1267:1191"
+        ],
+        "works": [
+          "1267:1184",
+          "1267:1192"
+        ],
+        "release": [
+          "1267:1185",
+          "1267:1193"
+        ],
+        "mv": [
+          "351:1195",
+          "351:1301"
+        ],
+        "stage": [
+          "351:1212",
+          "351:1318"
+        ],
+        "timeline": [
+          "1267:1186",
+          "1267:1194"
+        ],
+        "score": [
+          "1267:1187",
+          "1267:1195"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v236",
+          "scope": "首页团体主题、两宽主图",
+          "evidence": "v236"
+        }
+      ],
+      "additional": [],
+      "earlierHomeReference": "https://www.triples-official.jp/profile/"
+    },
+    {
+      "slug": "madein",
+      "name": "MADEIN",
+      "designPages": [
+        "385:1095",
+        "1266:1095",
+        "1400:1109"
+      ],
+      "homePath": "/artists/madein",
+      "identitySourceFile": "apps/idol-site/data/madein-artist.json",
+      "pairs": {
+        "home": [
+          "1400:1126",
+          "1400:1131"
+        ],
+        "members": [
+          "1267:1114",
+          "1267:1122"
+        ],
+        "profile": [
+          "1267:1115",
+          "1267:1123"
+        ],
+        "works": [
+          "1267:1116",
+          "1267:1124"
+        ],
+        "release": [
+          "1267:1117",
+          "1267:1125"
+        ],
+        "mv": [
+          "386:22812",
+          "386:22855"
+        ],
+        "stage": [
+          "386:22933",
+          "386:22978"
+        ],
+        "timeline": [
+          "1267:1118",
+          "1267:1126"
+        ],
+        "score": [
+          "1267:1119",
+          "1267:1127"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v236",
+          "scope": "首页团体主题、两宽主图",
+          "evidence": "v236"
+        }
+      ],
+      "additional": [],
+      "earlierHomeReference": "https://www.madein-official.net/"
+    },
+    {
+      "slug": "ifeye",
+      "name": "ifeye",
+      "designPages": [
+        "811:1096"
+      ],
+      "homePath": "/artists/ifeye",
+      "identitySourceFile": "apps/idol-site/data/ifeye-artist.json",
+      "pairs": {
+        "home": [
+          "812:1133",
+          "812:1217"
+        ],
+        "members": [
+          "812:1303",
+          "812:1348"
+        ],
+        "profile": [
+          "812:1394",
+          "812:1425"
+        ],
+        "works": [
+          "812:1456",
+          "812:1528"
+        ],
+        "release": [
+          "812:1601",
+          "812:1635"
+        ],
+        "mv": [
+          "812:1669",
+          "812:1722"
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "812:1776",
+          "812:1797"
+        ],
+        "score": [
+          "812:1818",
+          "812:1865"
+        ]
+      },
+      "revised": {
+        "home": "ifeye",
+        "members": "ifeye",
+        "profile": "ifeye",
+        "works": "ifeye",
+        "release": "ifeye",
+        "mv": "ifeye"
+      },
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "首页与目录，六名成员、四支 MV 和三份发行",
+          "evidence": "ifeye"
+        },
+        {
+          "at": "v240",
+          "scope": "Kasia 共享认人参考卡可展开",
+          "evidence": "v240"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "Kasia 团体认人参考的共享权限与评分组件",
+          "source": "stayc",
+          "nodes": [
+            "1503:1596",
+            "1503:1605"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://www.hihat.co.kr/eng/artist/458",
+      "qualification": "旧评分稿为 DEMO，时间轴稿为说明；新《r u ok?》另有本人卡，周边组件见 additional。"
+    },
+    {
+      "slug": "genblue",
+      "name": "GENBLUE",
+      "designPages": [
+        "851:1095"
+      ],
+      "homePath": "/artists/genblue",
+      "identitySourceFile": "apps/idol-site/data/genblue-artist.json",
+      "pairs": {
+        "home": [
+          "851:1134",
+          "851:1421"
+        ],
+        "members": [
+          "851:1707",
+          "851:1797"
+        ],
+        "profile": [
+          "851:1888",
+          "851:1933"
+        ],
+        "works": [
+          "851:1978",
+          "851:2203"
+        ],
+        "release": [
+          "851:2428",
+          "851:2479"
+        ],
+        "mv": [
+          "851:2529",
+          "851:2572"
+        ],
+        "stage": [
+          "851:2615",
+          "851:2659"
+        ],
+        "timeline": [
+          "851:2703",
+          "851:2773"
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页或卡片两宽，范围按团别回执",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "《COCOCO》MV 和舞台封面并排选择",
+          "source": "vvup",
+          "nodes": [
+            "1441:2653",
+            "1441:2670"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://www.tenentcorp.com/pages/genblue"
+    },
+    {
+      "slug": "rescene",
+      "name": "RESCENE",
+      "designPages": [
+        "1266:1095",
+        "1400:1109"
+      ],
+      "homePath": "/artists/rescene",
+      "identitySourceFile": "apps/idol-site/data/rescene-artist.json",
+      "pairs": {
+        "home": [
+          "1400:1208",
+          "1400:1213"
+        ],
+        "members": [
+          "1267:1199",
+          "1267:1207"
+        ],
+        "profile": [
+          "1267:1200",
+          "1267:1208"
+        ],
+        "works": [
+          "1267:1201",
+          "1267:1209"
+        ],
+        "release": [
+          "1267:1202",
+          "1267:1210"
+        ],
+        "mv": [
+          null,
+          null
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1267:1203",
+          "1267:1211"
+        ],
+        "score": [
+          "1267:1204",
+          "1267:1212"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v236",
+          "scope": "首页团体主题、两宽主图",
+          "evidence": "v236"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "rescene / workJournal 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1267:1205",
+            "1267:1213"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://themuze.kr/rescene"
+    },
+    {
+      "slug": "unis",
+      "name": "UNIS",
+      "designPages": [
+        "659:18392"
+      ],
+      "homePath": "/artists/unis",
+      "identitySourceFile": "apps/idol-site/data/unis-artist.json",
+      "pairs": {
+        "home": [
+          "659:18393",
+          "663:2"
+        ],
+        "members": [
+          "659:18677",
+          "663:147"
+        ],
+        "profile": [
+          "659:18849",
+          "663:231"
+        ],
+        "works": [
+          "659:18992",
+          "663:301"
+        ],
+        "release": [
+          "659:19305",
+          "663:453"
+        ],
+        "mv": [
+          "663:503",
+          "663:568"
+        ],
+        "stage": [
+          "663:630",
+          "663:696"
+        ],
+        "timeline": [
+          "663:759",
+          "663:834"
+        ],
+        "score": [
+          "663:908",
+          "663:953"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页或卡片两宽，范围按团别回执",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "首页 MV、发行封面各一对",
+          "source": "vvup",
+          "nodes": [
+            "1442:1109",
+            "1442:1124",
+            "1445:3830",
+            "1445:3850"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://www.unv-jp.com/ja/articles/dJPdStB6njkXP8nwfksZmE"
+    },
+    {
+      "slug": "badvillain",
+      "name": "BADVILLAIN",
+      "designPages": [
+        "415:10592"
+      ],
+      "homePath": "/artists/badvillain",
+      "identitySourceFile": "apps/idol-site/data/badvillain-artist.json",
+      "pairs": {
+        "home": [
+          "431:11958",
+          "431:12091"
+        ],
+        "members": [
+          "434:1549",
+          "434:1651"
+        ],
+        "profile": [
+          "434:2381",
+          "434:2597"
+        ],
+        "works": [
+          "434:1869",
+          "434:2030"
+        ],
+        "release": [
+          "434:3792",
+          "434:4141"
+        ],
+        "mv": [
+          "434:4987",
+          "434:5176"
+        ],
+        "stage": [
+          "434:5113",
+          "434:5302"
+        ],
+        "timeline": [
+          "434:6190",
+          "434:6321"
+        ],
+        "score": [
+          "434:6759",
+          "434:6879"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [],
+      "earlierHomeReference": "https://music.bugs.co.kr/artist/20212684"
+    },
+    {
+      "slug": "qwer",
+      "name": "QWER",
+      "designPages": [
+        "1266:1095"
+      ],
+      "homePath": "/artists/qwer",
+      "identitySourceFile": "apps/idol-site/data/qwer-artist.json",
+      "pairs": {
+        "home": [
+          "1267:1130",
+          "1267:1138"
+        ],
+        "members": [
+          "1267:1131",
+          "1267:1139"
+        ],
+        "profile": [
+          "1267:1132",
+          "1267:1140"
+        ],
+        "works": [
+          "1267:1133",
+          "1267:1141"
+        ],
+        "release": [
+          "1267:1134",
+          "1267:1142"
+        ],
+        "mv": [
+          null,
+          null
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1267:1135",
+          "1267:1143"
+        ],
+        "score": [
+          "1267:1136",
+          "1267:1144"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [
+        {
+          "scope": "qwer / workJournal 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1267:1137",
+            "1267:1145"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://qwerjapan.com/news/2/"
+    },
+    {
+      "slug": "vvup",
+      "name": "VVUP",
+      "designPages": [
+        "802:1095"
+      ],
+      "homePath": "/artists/vvup",
+      "identitySourceFile": "apps/idol-site/data/vvup-artist.json",
+      "pairs": {
+        "home": [
+          "802:1096",
+          "802:1097"
+        ],
+        "members": [
+          "1451:1125",
+          "1451:1218"
+        ],
+        "profile": [
+          "1451:1141",
+          "1451:1234"
+        ],
+        "works": [
+          "1451:1177",
+          "1451:1270"
+        ],
+        "release": [
+          "1451:1166",
+          "1451:1259"
+        ],
+        "mv": [
+          null,
+          null
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1451:1194",
+          "1451:1287"
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {
+        "members": "vvup",
+        "profile": "vvup",
+        "works": "vvup",
+        "release": "vvup",
+        "timeline": "vvup"
+      },
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页或卡片两宽，范围按团别回执",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "发行目录",
+          "source": "vvup",
+          "nodes": [
+            "1451:1151",
+            "1451:1244"
+          ]
+        },
+        {
+          "scope": "首页四人团照、影像模块，桌/手机各两块",
+          "source": "vvup",
+          "nodes": [
+            "1442:1147",
+            "1442:1152",
+            "1442:1169",
+            "1442:1174"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://weverse.io/vvup/highlight?hl=ko"
+    },
+    {
+      "slug": "youngposse",
+      "name": "YOUNG POSSE",
+      "designPages": [
+        "850:1132"
+      ],
+      "homePath": "/artists/youngposse",
+      "identitySourceFile": "apps/idol-site/data/youngposse-artist.json",
+      "pairs": {
+        "home": [
+          "850:1159",
+          "850:1348"
+        ],
+        "members": [
+          "850:1530",
+          "850:1590"
+        ],
+        "profile": [
+          "850:1648",
+          "850:1692"
+        ],
+        "works": [
+          "850:1733",
+          "850:1993"
+        ],
+        "release": [
+          "850:2257",
+          "850:2292"
+        ],
+        "mv": [
+          "850:2325",
+          "850:2349"
+        ],
+        "stage": [
+          "850:2372",
+          "850:2395"
+        ],
+        "timeline": [
+          "850:2418",
+          "850:2521"
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页或卡片两宽，范围按团别回执",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "MV 目录",
+          "source": "vvup",
+          "nodes": [
+            "1442:1509",
+            "1442:1531"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://youngposseofficial.jp/profile",
+      "qualification": "《MACARONI CHEESE》旧稿以外部文字入口为主。v238 已实测的封面改动属于影片目录。"
+    },
+    {
+      "slug": "bewave",
+      "name": "BEWAVE",
+      "designPages": [
+        "977:1095"
+      ],
+      "homePath": "/artists/bewave",
+      "identitySourceFile": "apps/idol-site/data/bewave-artist.json",
+      "pairs": {
+        "home": [
+          "977:1096",
+          "977:1103"
+        ],
+        "members": [
+          "977:1097",
+          "977:1104"
+        ],
+        "profile": [
+          "977:1098",
+          "977:1105"
+        ],
+        "works": [
+          "977:1099",
+          "977:1106"
+        ],
+        "release": [
+          "977:1100",
+          "977:1107"
+        ],
+        "mv": [
+          "977:1101",
+          "977:1108"
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "977:1102",
+          "977:1109"
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页团体原图、标志及适用的作品入口",
+          "evidence": "v238"
+        },
+        {
+          "at": "v236",
+          "scope": "首页团体主题、两宽主图",
+          "evidence": "v236"
+        }
+      ],
+      "additional": [],
+      "earlierHomeReference": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/670a71aa813c344c968ab3c0"
+    },
+    {
+      "slug": "candyshop",
+      "name": "Candy Shop",
+      "designPages": [
+        "1006:1095"
+      ],
+      "homePath": "/artists/candyshop",
+      "identitySourceFile": "apps/idol-site/data/candyshop-artist.json",
+      "pairs": {
+        "home": [
+          "1425:1842",
+          "1425:1856"
+        ],
+        "members": [
+          "1514:8218",
+          "1514:8259"
+        ],
+        "profile": [
+          "1514:8300",
+          "1514:8326"
+        ],
+        "works": [
+          "1514:8352",
+          "1514:8430"
+        ],
+        "release": [
+          "1514:8592",
+          "1514:8624"
+        ],
+        "mv": [
+          "1519:1142",
+          "1519:1189"
+        ],
+        "stage": [
+          "1519:1219",
+          "1519:1243"
+        ],
+        "timeline": [
+          "1514:8726",
+          "1514:8756"
+        ],
+        "score": [
+          "1519:1262",
+          "1519:1314"
+        ]
+      },
+      "revised": {
+        "members": "candy-screens",
+        "profile": "candy-screens",
+        "works": "candy-screens",
+        "release": "candy-screens",
+        "timeline": "candy-screens",
+        "mv": "candy-work",
+        "stage": "candy-work",
+        "score": "candy-work",
+        "home": "four"
+      },
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "重做的团内和作品详情，含五名成员档案、发行、舞台、本人评分",
+          "evidence": "eight"
+        },
+        {
+          "at": "v238",
+          "scope": "首页团体原图、标志及适用的作品入口",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "首页其余栏目",
+          "source": "candy-screens",
+          "nodes": [
+            "1514:8078",
+            "1514:8148"
+          ]
+        },
+        {
+          "scope": "唱片目录",
+          "source": "candy-screens",
+          "nodes": [
+            "1514:8508",
+            "1514:8550"
+          ]
+        },
+        {
+          "scope": "原生 MV 详情",
+          "source": "candy-screens",
+          "nodes": [
+            "1514:8656",
+            "1514:8676"
+          ]
+        },
+        {
+          "scope": "原生舞台详情",
+          "source": "candy-screens",
+          "nodes": [
+            "1514:8696",
+            "1514:8711"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://candy-shop.jp/about"
+    },
+    {
+      "slug": "oddyouth",
+      "name": "ODD YOUTH",
+      "designPages": [
+        "1022:1095"
+      ],
+      "homePath": "/artists/oddyouth",
+      "identitySourceFile": "apps/idol-site/data/oddyouth-artist.json",
+      "pairs": {
+        "home": [
+          "1022:1096",
+          "1022:1097"
+        ],
+        "members": [
+          "1022:1099",
+          "1022:1100"
+        ],
+        "profile": [
+          "1022:1102",
+          "1022:1103"
+        ],
+        "works": [
+          "1022:1105",
+          "1022:1106"
+        ],
+        "release": [
+          "1022:1108",
+          "1022:1109"
+        ],
+        "mv": [
+          "1022:1111",
+          "1022:1112"
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1022:1114",
+          "1022:1115"
+        ],
+        "score": [
+          "1022:1117",
+          "1022:1118"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [],
+      "earlierHomeReference": "https://www.itopgroup.com/bbs/page.php?hid=ODDYOUTH"
+    },
+    {
+      "slug": "adya",
+      "name": "ADYA",
+      "designPages": [
+        "798:1095"
+      ],
+      "homePath": "/artists/adya",
+      "identitySourceFile": "apps/idol-site/data/adya-artist.json",
+      "pairs": {
+        "home": [
+          "1442:1553",
+          "1442:1561"
+        ],
+        "members": [
+          "1039:1095",
+          "1039:4489"
+        ],
+        "profile": [
+          "1039:1379",
+          "1039:4767"
+        ],
+        "works": [
+          "1039:1679",
+          "1039:5064"
+        ],
+        "release": [
+          "1039:2265",
+          "1041:1095"
+        ],
+        "mv": [
+          "1039:2541",
+          "1041:1366"
+        ],
+        "stage": [
+          "1039:3269",
+          "1041:2085"
+        ],
+        "timeline": [
+          "1039:2876",
+          "1041:1697"
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页或卡片两宽，范围按团别回执",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "首页团照和成员入口",
+          "source": "vvup",
+          "nodes": [
+            "1442:1553",
+            "1442:1561"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://prtimes.jp/main/html/rd/p/000001548.000003711.html"
+    },
+    {
+      "slug": "geenius",
+      "name": "Geenius",
+      "designPages": [
+        "1047:1095"
+      ],
+      "homePath": "/artists/geenius",
+      "identitySourceFile": "apps/idol-site/data/geenius-artist.json",
+      "pairs": {
+        "home": [
+          "1425:3629",
+          "1425:3645"
+        ],
+        "members": [
+          "1055:1095",
+          "1055:6000"
+        ],
+        "profile": [
+          "1055:1443",
+          "1055:6322"
+        ],
+        "works": [
+          "1055:1937",
+          "1055:6802"
+        ],
+        "release": [
+          "1055:2620",
+          "1055:7468"
+        ],
+        "mv": [
+          "1055:2885",
+          "1055:7730"
+        ],
+        "stage": [
+          "1055:3548",
+          "1055:8389"
+        ],
+        "timeline": [
+          "1055:3152",
+          "1055:7995"
+        ],
+        "score": [
+          "1055:3945",
+          "1055:8607"
+        ]
+      },
+      "revised": {
+        "home": "four"
+      },
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页团体原图、标志及适用的作品入口",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [],
+      "earlierHomeReference": "https://www.geeniushome.com/geenius"
+    },
+    {
+      "slug": "tracer",
+      "name": "TRACER",
+      "designPages": [
+        "1076:1095"
+      ],
+      "homePath": "/artists/tracer",
+      "identitySourceFile": "apps/idol-site/data/tracer-artist.json",
+      "pairs": {
+        "home": [
+          "1442:7231",
+          "1442:7238"
+        ],
+        "members": [
+          "1080:22806",
+          "1081:5322"
+        ],
+        "profile": [
+          "1080:23322",
+          "1081:5803"
+        ],
+        "works": [
+          "1080:23832",
+          "1081:6308"
+        ],
+        "release": [
+          "1080:24482",
+          "1081:6963"
+        ],
+        "mv": [
+          "1080:25005",
+          "1081:7522"
+        ],
+        "stage": [
+          "1080:26060",
+          "1081:8579"
+        ],
+        "timeline": [
+          "1080:25540",
+          "1081:8059"
+        ],
+        "score": [
+          "1081:3061",
+          "1081:9007"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页或卡片两宽，范围按团别回执",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "首页团照",
+          "source": "vvup",
+          "nodes": [
+            "1442:7231",
+            "1442:7238"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://www.gleammedia.co.kr/artist"
+    },
+    {
+      "slug": "witchx",
+      "name": "W!TCHX",
+      "designPages": [
+        "1093:1095"
+      ],
+      "homePath": "/artists/witchx",
+      "identitySourceFile": "apps/idol-site/data/witchx-artist.json",
+      "pairs": {
+        "home": [
+          "1427:9556",
+          "1427:9732"
+        ],
+        "members": [
+          "1427:9645",
+          "1427:9825"
+        ],
+        "profile": [
+          "1097:2545",
+          "1100:6676"
+        ],
+        "works": [
+          "1427:9676",
+          "1427:9858"
+        ],
+        "release": [
+          "1097:4236",
+          "1100:8362"
+        ],
+        "mv": [
+          "1097:4693",
+          "1100:8846"
+        ],
+        "stage": [
+          "1097:5683",
+          "1100:9830"
+        ],
+        "timeline": [
+          "1097:4983",
+          "1100:9135"
+        ],
+        "score": [
+          "1099:3828",
+          "1100:10118"
+        ]
+      },
+      "revised": {
+        "home": "blala",
+        "members": "blala",
+        "works": "blala"
+      },
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "BLALA 主题和名录、作品目录",
+          "evidence": "blala"
+        },
+        {
+          "at": "v239",
+          "scope": "歌词链接、手选 Lucia 及返回搜索",
+          "evidence": "v239"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "《BLALA》原歌词版书签的站内观看入口",
+          "source": "handoff",
+          "nodes": [
+            "1473:1570",
+            "1473:1577"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://music.bugs.co.kr/artist/20222498"
+    },
+    {
+      "slug": "spia",
+      "name": "SPIA",
+      "designPages": [
+        "1113:1095"
+      ],
+      "homePath": "/artists/spia",
+      "identitySourceFile": "apps/idol-site/data/spia-artist.json",
+      "pairs": {
+        "home": [
+          "1425:10597",
+          "1425:10618"
+        ],
+        "members": [
+          "1507:8045",
+          "1507:8076"
+        ],
+        "profile": [
+          "1507:8193",
+          "1507:8217"
+        ],
+        "works": [
+          "1507:8107",
+          "1507:8150"
+        ],
+        "release": [
+          "1507:8241",
+          "1507:8264"
+        ],
+        "mv": [
+          "1515:8045",
+          "1515:8102"
+        ],
+        "stage": [
+          "1515:8152",
+          "1515:8183"
+        ],
+        "timeline": [
+          "1507:8355",
+          "1507:8385"
+        ],
+        "score": [
+          "1118:8061",
+          "1119:8061"
+        ]
+      },
+      "revised": {
+        "members": "spia",
+        "works": "spia",
+        "profile": "spia",
+        "release": "spia",
+        "mv": "spia",
+        "stage": "spia",
+        "timeline": "spia",
+        "home": "four"
+      },
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "新内页、五名成员小图/原图、站内 MV 与舞台",
+          "evidence": "spia"
+        },
+        {
+          "at": "v238",
+          "scope": "首页团体原图、标志及适用的作品入口",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "原生 MV 详情",
+          "source": "spia",
+          "nodes": [
+            "1507:8321",
+            "1507:8338"
+          ]
+        },
+        {
+          "scope": "原生舞台详情",
+          "source": "spia",
+          "nodes": [
+            "1507:8287",
+            "1507:8304"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=451476&id=&lang=k&menu_cate=enternews",
+      "qualification": "新原生和站内作品详情已有双宽。旧「MV 手帐」仍按历史评分画稿记。"
+    },
+    {
+      "slug": "udtt",
+      "name": "UDTT",
+      "designPages": [
+        "840:1095"
+      ],
+      "homePath": "/artists/udtt",
+      "identitySourceFile": "apps/idol-site/data/udtt-artist.json",
+      "pairs": {
+        "home": [
+          "840:1096",
+          "840:1098"
+        ],
+        "members": [
+          "891:1573",
+          "891:1574"
+        ],
+        "profile": [
+          "891:1575",
+          "891:1576"
+        ],
+        "works": [
+          "893:1255",
+          "893:1256"
+        ],
+        "release": [
+          "898:1336",
+          "898:1335"
+        ],
+        "mv": [
+          "893:1257",
+          "893:1258"
+        ],
+        "stage": [
+          "893:1259",
+          "893:1260"
+        ],
+        "timeline": [
+          "893:1261",
+          "893:1262"
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "SW Entertainment 页眉亲核原件及原生渲染",
+          "evidence": "eight"
+        },
+        {
+          "at": "v240",
+          "scope": "四人主页旧页眉；此版尚无新图形",
+          "evidence": "eight-home-v240"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "SW Entertainment 页眉团标，1440、1024、390、320",
+          "source": "udtt-mark",
+          "nodes": [
+            "1522:2105",
+            "1522:2112",
+            "1522:2119",
+            "1522:2126"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://prtimes.jp/main/html/rd/p/000000006.000170584.html"
+    },
+    {
+      "slug": "vcha",
+      "name": "VCHA",
+      "designPages": [
+        "1136:1095"
+      ],
+      "homePath": "/artists/vcha",
+      "identitySourceFile": "apps/idol-site/data/vcha-artist.json",
+      "pairs": {
+        "home": [
+          "1137:1095",
+          "1138:2774"
+        ],
+        "members": [
+          "1138:1108",
+          "1138:3150"
+        ],
+        "profile": [
+          "1138:1281",
+          "1138:3313"
+        ],
+        "works": [
+          "1138:1423",
+          "1138:3450"
+        ],
+        "release": [
+          "1138:1561",
+          "1138:3580"
+        ],
+        "mv": [
+          "1138:1993",
+          "1138:4009"
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1138:2092",
+          "1138:4104"
+        ],
+        "score": [
+          "1138:2462",
+          "1138:4468"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v240",
+          "scope": "六人发行时期首页和 JYP 标志",
+          "evidence": "eight-home-v240"
+        }
+      ],
+      "additional": [],
+      "earlierHomeReference": "https://www.universalmusic.com.br/2024/03/15/o-grupo-de-pop-feminino-vcha-faz-o-lancamento-duplo-de-only-one-e-favorite-girl/"
+    },
+    {
+      "slug": "hitgs",
+      "name": "HITGS",
+      "designPages": [
+        "1145:1095"
+      ],
+      "homePath": "/artists/hitgs",
+      "identitySourceFile": "apps/idol-site/data/hitgs-artist.json",
+      "pairs": {
+        "home": [
+          "1148:2360",
+          "1151:1154"
+        ],
+        "members": [
+          "1148:1095",
+          "1151:1488"
+        ],
+        "profile": [
+          "1148:1260",
+          "1151:1634"
+        ],
+        "works": [
+          "1148:1407",
+          "1151:1767"
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "1148:1779",
+          "1151:2141"
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1148:1881",
+          "1151:2234"
+        ],
+        "score": [
+          "1148:2086",
+          "1151:2432"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [],
+      "earlierHomeReference": "https://www.genie.co.kr/magazine/subMain?ctid=1&mgz_seq=15198"
+    },
+    {
+      "slug": "atheart",
+      "name": "AtHeart",
+      "designPages": [
+        "1166:1095"
+      ],
+      "homePath": "/artists/atheart",
+      "identitySourceFile": "apps/idol-site/data/atheart-artist.json",
+      "pairs": {
+        "home": [
+          "1168:1095",
+          "1169:3403"
+        ],
+        "members": [
+          "1169:1105",
+          "1169:3776"
+        ],
+        "profile": [
+          "1169:1339",
+          "1169:3999"
+        ],
+        "works": [
+          "1169:1532",
+          "1169:4185"
+        ],
+        "release": [
+          "1169:1768",
+          "1169:4418"
+        ],
+        "mv": [
+          "1169:2695",
+          "1169:5363"
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1169:2846",
+          "1169:5510"
+        ],
+        "score": [
+          "1169:3128",
+          "1169:5788"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v239",
+          "scope": "原版链接、手选 Michi 及返回搜索",
+          "evidence": "v239"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "《3!4!》原书签的站内观看入口",
+          "source": "handoff",
+          "nodes": [
+            "1473:1553",
+            "1473:1560"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://atheart.jp/contents/menu/176621"
+    },
+    {
+      "slug": "idle",
+      "name": "i-dle",
+      "designPages": [
+        "252:1116",
+        "1178:1095"
+      ],
+      "homePath": "/artists/idle",
+      "identitySourceFile": "apps/idol-site/data/idle-artist.json",
+      "pairs": {
+        "home": [
+          "1180:1095",
+          "1180:1880"
+        ],
+        "members": [
+          "1180:1427",
+          "1182:1923"
+        ],
+        "profile": [
+          "1180:1605",
+          "1183:1126"
+        ],
+        "works": [
+          "1184:1128",
+          "1185:2754"
+        ],
+        "release": [
+          "1181:1986",
+          "1183:2314"
+        ],
+        "mv": [
+          "252:1263",
+          "252:1289"
+        ],
+        "stage": [
+          "1182:1099",
+          "1185:3925"
+        ],
+        "timeline": [
+          "1182:1218",
+          "1185:4044"
+        ],
+        "score": [
+          "1185:1128",
+          "1186:1161"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [],
+      "earlierHomeReference": "https://i-dle.cubeent.co.jp/profile/"
+    },
+    {
+      "slug": "izone",
+      "name": "IZ*ONE",
+      "designPages": [
+        "1206:1095"
+      ],
+      "homePath": "/artists/izone",
+      "identitySourceFile": "apps/idol-site/data/izone-artist.json",
+      "pairs": {
+        "home": [
+          "1206:1103",
+          "1206:1113"
+        ],
+        "members": [
+          "1206:1104",
+          "1206:1114"
+        ],
+        "profile": [
+          "1206:1105",
+          "1206:1115"
+        ],
+        "works": [
+          "1206:1106",
+          "1206:1116"
+        ],
+        "release": [
+          "1206:1107",
+          "1206:1117"
+        ],
+        "mv": [
+          null,
+          null
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1206:1109",
+          "1206:1119"
+        ],
+        "score": [
+          "1206:1110",
+          "1206:1120"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [
+        {
+          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1206:1111",
+            "1206:1121"
+          ]
+        },
+        {
+          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1206:1112",
+            "1206:1122"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://world.kbs.co.kr/service/contents_view.htm?board_seq=351078&id=&lang=j&menu_cate=artist"
+    },
+    {
+      "slug": "fromis9",
+      "name": "fromis_9",
+      "designPages": [
+        "1219:1095"
+      ],
+      "homePath": "/artists/fromis9",
+      "identitySourceFile": "apps/idol-site/data/fromis9-artist.json",
+      "pairs": {
+        "home": [
+          "1219:1102",
+          "1219:1113"
+        ],
+        "members": [
+          "1219:1103",
+          "1219:1114"
+        ],
+        "profile": [
+          "1219:1105",
+          "1219:1116"
+        ],
+        "works": [
+          "1219:1106",
+          "1219:1117"
+        ],
+        "release": [
+          "1219:1107",
+          "1219:1118"
+        ],
+        "mv": [
+          null,
+          null
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1219:1109",
+          "1219:1120"
+        ],
+        "score": [
+          "1219:1110",
+          "1219:1121"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [
+        {
+          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1219:1111",
+            "1219:1122"
+          ]
+        },
+        {
+          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1219:1112",
+            "1219:1123"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://fromis9.fanpla.jp/"
+    },
+    {
+      "slug": "loona",
+      "name": "LOONA",
+      "designPages": [
+        "266:1095"
+      ],
+      "homePath": "/artists/loona",
+      "identitySourceFile": "apps/idol-site/data/loona-artist.json",
+      "pairs": {
+        "home": [
+          "266:1096",
+          "325:4401"
+        ],
+        "members": [
+          "333:10116",
+          "333:12098"
+        ],
+        "profile": [
+          "324:2476",
+          "324:4221"
+        ],
+        "works": [
+          "277:1594",
+          "277:1595"
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "325:3019",
+          "325:3240"
+        ],
+        "stage": [
+          "277:1598",
+          "277:1599"
+        ],
+        "timeline": [
+          "277:1600",
+          "277:1601"
+        ],
+        "score": [
+          "323:2024",
+          "323:3367"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [],
+      "earlierHomeReference": "https://www.universal-music.co.jp/loona/biography/"
+    },
+    {
+      "slug": "everglow",
+      "name": "EVERGLOW",
+      "designPages": [
+        "1228:1098"
+      ],
+      "homePath": "/artists/everglow",
+      "identitySourceFile": "apps/idol-site/data/everglow-artist.json",
+      "pairs": {
+        "home": [
+          "1230:1095",
+          "1230:1106"
+        ],
+        "members": [
+          "1230:1096",
+          "1230:1107"
+        ],
+        "profile": [
+          "1230:1098",
+          "1230:1109"
+        ],
+        "works": [
+          "1230:1099",
+          "1230:1110"
+        ],
+        "release": [
+          "1230:1100",
+          "1230:1111"
+        ],
+        "mv": [
+          null,
+          null
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1230:1102",
+          "1230:1113"
+        ],
+        "score": [
+          "1230:1103",
+          "1230:1114"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页原图、关闭回焦",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1230:1104",
+            "1230:1115"
+          ]
+        },
+        {
+          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1230:1105",
+            "1230:1116"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://www.chxxta.com/everglow"
+    },
+    {
+      "slug": "rocketpunch",
+      "name": "Rocket Punch",
+      "designPages": [
+        "1236:1095"
+      ],
+      "homePath": "/artists/rocketpunch",
+      "identitySourceFile": "apps/idol-site/data/rocketpunch-artist.json",
+      "pairs": {
+        "home": [
+          "1239:1095",
+          "1239:1105"
+        ],
+        "members": [
+          "1239:1096",
+          "1239:1106"
+        ],
+        "profile": [
+          "1239:1097",
+          "1239:1107"
+        ],
+        "works": [
+          "1239:1098",
+          "1239:1108"
+        ],
+        "release": [
+          "1239:1099",
+          "1239:1109"
+        ],
+        "mv": [
+          null,
+          null
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1239:1101",
+          "1239:1111"
+        ],
+        "score": [
+          "1239:1102",
+          "1239:1112"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页原图、关闭回焦",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1239:1103",
+            "1239:1113"
+          ]
+        },
+        {
+          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1239:1104",
+            "1239:1114"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://www.woolliment.com/album/boom"
+    },
+    {
+      "slug": "cherrybullet",
+      "name": "Cherry Bullet",
+      "designPages": [
+        "1246:1095"
+      ],
+      "homePath": "/artists/cherrybullet",
+      "identitySourceFile": "apps/idol-site/data/cherrybullet-artist.json",
+      "pairs": {
+        "home": [
+          "1246:1102",
+          "1246:1113"
+        ],
+        "members": [
+          "1246:1103",
+          "1246:1114"
+        ],
+        "profile": [
+          "1246:1105",
+          "1246:1116"
+        ],
+        "works": [
+          "1246:1106",
+          "1246:1117"
+        ],
+        "release": [
+          "1246:1107",
+          "1246:1118"
+        ],
+        "mv": [
+          null,
+          null
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1246:1109",
+          "1246:1120"
+        ],
+        "score": [
+          "1246:1110",
+          "1246:1121"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v240",
+          "scope": "七人首页摄影与页眉官方签名",
+          "evidence": "eight-home-v240"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1246:1111",
+            "1246:1122"
+          ]
+        },
+        {
+          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1246:1112",
+            "1246:1123"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://fncent.com/CherryBullet/b/gallery/55485"
+    },
+    {
+      "slug": "weeekly",
+      "name": "Weeekly",
+      "designPages": [
+        "1258:1095"
+      ],
+      "homePath": "/artists/weeekly",
+      "identitySourceFile": "apps/idol-site/data/weeekly-artist.json",
+      "pairs": {
+        "home": [
+          "1258:1102",
+          "1258:1113"
+        ],
+        "members": [
+          "1258:1103",
+          "1258:1114"
+        ],
+        "profile": [
+          "1258:1105",
+          "1258:1116"
+        ],
+        "works": [
+          "1258:1106",
+          "1258:1117"
+        ],
+        "release": [
+          "1258:1107",
+          "1258:1118"
+        ],
+        "mv": [
+          null,
+          null
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1258:1109",
+          "1258:1120"
+        ],
+        "score": [
+          "1258:1110",
+          "1258:1121"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页原图、关闭回焦",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1258:1111",
+            "1258:1122"
+          ]
+        },
+        {
+          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1258:1112",
+            "1258:1123"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://weverse.io/weeekly/media/2-144406028"
+    },
+    {
+      "slug": "wooah",
+      "name": "WOOAH",
+      "designPages": [
+        "921:1104"
+      ],
+      "homePath": "/artists/wooah",
+      "identitySourceFile": "apps/idol-site/data/wooah-artist.json",
+      "pairs": {
+        "home": [
+          "945:1662",
+          "945:1869"
+        ],
+        "members": [
+          "945:1789",
+          "945:1998"
+        ],
+        "profile": [
+          "949:3534",
+          "949:4064"
+        ],
+        "works": [
+          "949:3730",
+          "949:4260"
+        ],
+        "release": [
+          "949:3798",
+          "949:4329"
+        ],
+        "mv": [
+          "921:1273",
+          "921:1546"
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "921:1305",
+          "921:1578"
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页原图、关闭回焦",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "《BLUSH》发行详情，含完整封面",
+          "source": "page-index",
+          "nodes": [
+            "949:3826",
+            "949:4357"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://wooahjapan.jp/profile/",
+      "qualification": "《BLUSH》旧 MV 稿标注「影像预览待补」。该发行封面与其他歌曲的人像均不能作为本剪辑的海报或具名宣传照。"
+    },
+    {
+      "slug": "purplekiss",
+      "name": "PURPLE KISS",
+      "designPages": [
+        "1266:1095"
+      ],
+      "homePath": "/artists/purplekiss",
+      "identitySourceFile": "apps/idol-site/data/purplekiss-artist.json",
+      "pairs": {
+        "home": [
+          "1267:1147",
+          "1267:1155"
+        ],
+        "members": [
+          "1267:1148",
+          "1267:1156"
+        ],
+        "profile": [
+          "1267:1149",
+          "1267:1157"
+        ],
+        "works": [
+          "1267:1150",
+          "1267:1158"
+        ],
+        "release": [
+          "1267:1151",
+          "1267:1159"
+        ],
+        "mv": [
+          null,
+          null
+        ],
+        "stage": [
+          null,
+          null
+        ],
+        "timeline": [
+          "1267:1152",
+          "1267:1160"
+        ],
+        "score": [
+          "1267:1153",
+          "1267:1161"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [
+        {
+          "scope": "purplekiss / workJournal 旧稿；播放器类型及版本仍需核对",
+          "source": "page-index",
+          "nodes": [
+            "1267:1154",
+            "1267:1162"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://www.jvcmusic.co.jp/-/Profile/A026967.html"
+    },
+    {
+      "slug": "billlie",
+      "name": "Billlie",
+      "designPages": [
+        "596:1167"
+      ],
+      "homePath": "/artists/billlie",
+      "identitySourceFile": "apps/idol-site/data/billlie-artist.json",
+      "pairs": {
+        "home": [
+          "600:1108",
+          "600:1231"
+        ],
+        "members": [
+          "602:1227",
+          "602:1309"
+        ],
+        "profile": [
+          "602:1479",
+          "602:1534"
+        ],
+        "works": [
+          "603:1578",
+          "603:1675"
+        ],
+        "release": [
+          "603:2433",
+          "603:2477"
+        ],
+        "mv": [
+          "603:4323",
+          "603:4357"
+        ],
+        "stage": [
+          "603:4427",
+          "603:4461"
+        ],
+        "timeline": [
+          "603:7630",
+          "603:7758"
+        ],
+        "score": [
+          "603:4531",
+          "603:4572"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [],
+      "earlierHomeReference": "https://billlie.jp/profile/"
+    },
+    {
+      "slug": "kep1er",
+      "name": "Kep1er",
+      "designPages": [
+        "663:2829"
+      ],
+      "homePath": "/artists/kep1er",
+      "identitySourceFile": "apps/idol-site/data/kep1er-artist.json",
+      "pairs": {
+        "home": [
+          "663:7874",
+          "663:8068"
+        ],
+        "members": [
+          "663:4369",
+          "663:3531"
+        ],
+        "profile": [
+          "663:4480",
+          "663:3634"
+        ],
+        "works": [
+          "1441:1150",
+          "1441:1502"
+        ],
+        "release": [
+          "663:4905",
+          "663:4061"
+        ],
+        "mv": [
+          "663:5030",
+          "663:4178"
+        ],
+        "stage": [
+          "1441:1332",
+          "1441:1686"
+        ],
+        "timeline": [
+          "663:5237",
+          "663:8863"
+        ],
+        "score": [
+          "663:5503",
+          "663:6070"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页 MV、发行封面及控件",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "首页精选、作品目录、仅舞台筛选，桌/手机各三块",
+          "source": "kep1er",
+          "nodes": [
+            "1441:1109",
+            "1441:1150",
+            "1441:1332",
+            "1441:1461",
+            "1441:1502",
+            "1441:1686"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://wake-one.com/en/artists/kep1er/"
+    },
+    {
+      "slug": "newjeans",
+      "name": "NewJeans",
+      "designPages": [
+        "459:1095"
+      ],
+      "homePath": "/artists/newjeans",
+      "identitySourceFile": "apps/idol-site/data/newjeans-artist.json",
+      "pairs": {
+        "home": [
+          "1428:2038",
+          "1428:2058"
+        ],
+        "members": [
+          "484:1140",
+          "484:1220"
+        ],
+        "profile": [
+          "486:1170",
+          "486:1425"
+        ],
+        "works": [
+          "486:2151",
+          "486:2400"
+        ],
+        "release": [
+          "486:3032",
+          "486:3589"
+        ],
+        "mv": [
+          "486:5000",
+          "486:5164"
+        ],
+        "stage": [
+          "486:5082",
+          "486:5248"
+        ],
+        "timeline": [
+          "486:7711",
+          "486:7909"
+        ],
+        "score": [
+          "486:5611",
+          "486:5718"
+        ]
+      },
+      "revised": {
+        "home": "four"
+      },
+      "implementation": [
+        {
+          "at": "v240",
+          "scope": "首页本地字体实际加载",
+          "evidence": "v240"
+        },
+        {
+          "at": "v238",
+          "scope": "首页团体原图、标志及适用的作品入口",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [],
+      "earlierHomeReference": "https://www.newjeans.jp/profile/"
+    },
+    {
+      "slug": "babymonster",
+      "name": "BABYMONSTER",
+      "designPages": [
+        "0:1"
+      ],
+      "homePath": "/artists/babymonster",
+      "identitySourceFile": "apps/idol-site/data/babymonster-artist.json",
+      "pairs": {
+        "home": [
+          "87:531",
+          "87:532"
+        ],
+        "members": [
+          null,
+          null
+        ],
+        "profile": [
+          "87:533",
+          null
+        ],
+        "works": [
+          null,
+          null
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "110:611",
+          "110:612"
+        ],
+        "stage": [
+          "110:613",
+          "110:614"
+        ],
+        "timeline": [
+          null,
+          null
+        ],
+        "score": [
+          "1446:1232",
+          "1446:1416"
+        ]
+      },
+      "revised": {
+        "score": "shared"
+      },
+      "implementation": [
+        {
+          "at": "v236",
+          "scope": "《BILLIONAIRE》七人评分入口与本人照片",
+          "evidence": "v236"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "RUKA 发行阵容的共享权限与评分组件",
+          "source": "stayc",
+          "nodes": [
+            "1503:1578",
+            "1503:1587"
+          ]
+        },
+        {
+          "scope": "游客成员资料，位于作品页",
+          "source": "shared",
+          "nodes": [
+            "1453:1508",
+            "1453:1575"
+          ]
+        }
+      ],
+      "earlierHomeReference": "https://www.hanteonews.com/es/article/62594",
+      "qualification": "历史观看稿用文字模拟播放器。新《BILLIONAIRE》具名成员及评分组件已有正式读数。"
+    },
+    {
+      "slug": "illit",
+      "name": "ILLIT",
+      "designPages": [
+        "1266:1095",
+        "0:1"
+      ],
+      "homePath": "/artists/illit",
+      "identitySourceFile": "apps/idol-site/data/illit-artist.json",
+      "pairs": {
+        "home": [
+          "1267:1215",
+          "1267:1223"
+        ],
+        "members": [
+          "1267:1216",
+          "1267:1224"
+        ],
+        "profile": [
+          "1267:1217",
+          "1267:1225"
+        ],
+        "works": [
+          "1267:1218",
+          "1267:1226"
+        ],
+        "release": [
+          "1267:1219",
+          "1267:1227"
+        ],
+        "mv": [
+          "125:623",
+          "125:768"
+        ],
+        "stage": [
+          "125:909",
+          "125:984"
+        ],
+        "timeline": [
+          "1267:1220",
+          "1267:1228"
+        ],
+        "score": [
+          "1267:1221",
+          "1267:1229"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [],
+      "earlierHomeReference": "https://weverse.io/illit/media/4-154964518",
+      "qualification": "《Magnetic》旧稿以曲名示意；正式播放已有独立实测。"
+    },
+    {
+      "slug": "xg",
+      "name": "XG",
+      "designPages": [
+        "0:1"
+      ],
+      "homePath": "/artists/xg",
+      "identitySourceFile": "apps/idol-site/data/xg-artist.json",
+      "pairs": {
+        "home": [
+          "133:717",
+          "133:718"
+        ],
+        "members": [
+          null,
+          null
+        ],
+        "profile": [
+          "133:719",
+          "133:720"
+        ],
+        "works": [
+          null,
+          null
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "133:721",
+          "133:722"
+        ],
+        "stage": [
+          "133:723",
+          "133:724"
+        ],
+        "timeline": [
+          null,
+          null
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [],
+      "earlierHomeReference": "https://shop.xgalx.com/products/nfcc-00053",
+      "qualification": "《WOKE UP》旧稿用曲名示意播放器。"
+    },
+    {
+      "slug": "aespa",
+      "name": "aespa",
+      "designPages": [
+        "0:1"
+      ],
+      "homePath": "/artists/aespa",
+      "identitySourceFile": "apps/idol-site/data/aespa-artist.json",
+      "pairs": {
+        "home": [
+          "134:694",
+          "134:695"
+        ],
+        "members": [
+          null,
+          null
+        ],
+        "profile": [
+          "134:696",
+          "134:697"
+        ],
+        "works": [
+          null,
+          null
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "134:698",
+          "134:699"
+        ],
+        "stage": [
+          "134:700",
+          "134:701"
+        ],
+        "timeline": [
+          null,
+          null
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [],
+      "earlierHomeReference": "https://aespa-official.jp/",
+      "qualification": "《Armageddon》旧稿用底色和曲名示意播放器。"
+    },
+    {
+      "slug": "ive",
+      "name": "IVE",
+      "designPages": [
+        "159:1095",
+        "1266:1095"
+      ],
+      "homePath": "/artists/ive",
+      "identitySourceFile": "apps/idol-site/data/ive-artist.json",
+      "pairs": {
+        "home": [
+          "1415:3517",
+          "1415:3528"
+        ],
+        "members": [
+          "1267:1165",
+          "1267:1173"
+        ],
+        "profile": [
+          "1267:1166",
+          "1267:1174"
+        ],
+        "works": [
+          "1267:1167",
+          "1267:1175"
+        ],
+        "release": [
+          "1267:1168",
+          "1267:1176"
+        ],
+        "mv": [
+          "418:18750",
+          "418:18941"
+        ],
+        "stage": [
+          "159:1102",
+          "159:1103"
+        ],
+        "timeline": [
+          "1267:1169",
+          "1267:1177"
+        ],
+        "score": [
+          "1267:1170",
+          "1267:1178"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "首页或卡片两宽，范围按团别回执",
+          "evidence": "v238"
+        }
+      ],
+      "additional": [],
+      "earlierHomeReference": "https://ive-official.jp/mob/pageShw.php?site=DIVE&cd=profile"
+    },
+    {
+      "slug": "kissoflife",
+      "name": "KISS OF LIFE",
+      "designPages": [
+        "178:1095"
+      ],
+      "homePath": "/artists/kissoflife",
+      "identitySourceFile": "apps/idol-site/data/kissoflife-artist.json",
+      "pairs": {
+        "home": [
+          "180:1098",
+          "180:1200"
+        ],
+        "members": [
+          null,
+          null
+        ],
+        "profile": [
+          "180:1302",
+          "180:1337"
+        ],
+        "works": [
+          null,
+          null
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "180:1372",
+          "180:1418"
+        ],
+        "stage": [
+          "180:1464",
+          "180:1483"
+        ],
+        "timeline": [
+          null,
+          null
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [],
+      "qualification": "《STICKY》旧播放器为底色示意；《Nobody Knows》原图另有正式回执。"
+    },
+    {
+      "slug": "stayc",
+      "name": "STAYC",
+      "designPages": [
+        "190:1095"
+      ],
+      "homePath": "/artists/stayc",
+      "identitySourceFile": "apps/idol-site/data/stayc-artist.json",
+      "pairs": {
+        "home": [
+          "1415:3536",
+          "1415:3551"
+        ],
+        "members": [
+          "1495:1109",
+          "1495:1161"
+        ],
+        "profile": [
+          "1495:1213",
+          "1495:1242"
+        ],
+        "works": [
+          null,
+          null
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "1495:1271",
+          "1495:1324"
+        ],
+        "stage": [
+          "1495:1377",
+          "1495:1402"
+        ],
+        "timeline": [
+          null,
+          null
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {
+        "members": "stayc",
+        "profile": "stayc",
+        "mv": "stayc",
+        "stage": "stayc"
+      },
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "成员名录、SUMIN、原版《SO BAD》及 SBS 舞台",
+          "evidence": "stayc"
+        },
+        {
+          "at": "v239",
+          "scope": "SUMIN 原图、六张出道写真与 SBS 场次",
+          "evidence": "v239"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "《SO BAD》ISA 与《2 L0VE》SUMIN 在通用评分组件中的两种身份，桌/手机分别一对",
+          "source": "stayc",
+          "nodes": [
+            "1503:1558",
+            "1503:1568",
+            "1503:1614",
+            "1503:1628"
+          ]
+        },
+        {
+          "scope": "SUMIN 档案的作品照片及来源",
+          "source": "profiles",
+          "nodes": [
+            "1516:1109",
+            "1516:1119"
+          ]
+        }
+      ],
+      "qualification": "《SO BAD》MV 已画入六张评分入口，ISA 展开与 SUMIN 手选共用全站组件。"
+    },
+    {
+      "slug": "nmixx",
+      "name": "NMIXX",
+      "designPages": [
+        "194:1095"
+      ],
+      "homePath": "/artists/nmixx",
+      "identitySourceFile": "apps/idol-site/data/nmixx-artist.json",
+      "pairs": {
+        "home": [
+          "1415:3652",
+          "1415:3660"
+        ],
+        "members": [
+          null,
+          null
+        ],
+        "profile": [
+          "1491:2054",
+          "1491:2093"
+        ],
+        "works": [
+          null,
+          null
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "1491:1195",
+          "1491:1653"
+        ],
+        "stage": [
+          "1491:1535",
+          "1491:1960"
+        ],
+        "timeline": [
+          null,
+          null
+        ],
+        "score": [
+          "1491:1336",
+          "1491:1766"
+        ]
+      },
+      "revised": {
+        "profile": "nmixx",
+        "mv": "nmixx",
+        "stage": "nmixx",
+        "score": "nmixx"
+      },
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "LILY、《Roller Coaster》、本人评分、表演版",
+          "evidence": "nmixx"
+        },
+        {
+          "at": "v239",
+          "scope": "LILY 至《Roller Coaster》，六张本曲照片",
+          "evidence": "v239"
+        }
+      ],
+      "additional": []
+    },
+    {
+      "slug": "hearts2hearts",
+      "name": "Hearts2Hearts",
+      "designPages": [
+        "214:1095"
+      ],
+      "homePath": "/artists/hearts2hearts",
+      "identitySourceFile": "apps/idol-site/data/hearts2hearts-artist.json",
+      "pairs": {
+        "home": [
+          "591:1393",
+          "591:5764"
+        ],
+        "members": [
+          "591:1881",
+          "591:6051"
+        ],
+        "profile": [
+          "591:3002",
+          "591:6569"
+        ],
+        "works": [
+          "591:5077",
+          "591:7489"
+        ],
+        "release": [
+          "591:3982",
+          "591:7155"
+        ],
+        "mv": [
+          "1500:1536",
+          "1500:1894"
+        ],
+        "stage": [
+          "1500:1843",
+          "1500:2205"
+        ],
+        "timeline": [
+          "591:4355",
+          "591:4845"
+        ],
+        "score": [
+          "1500:1683",
+          "1500:2043"
+        ]
+      },
+      "revised": {
+        "mv": "hearts2hearts",
+        "stage": "hearts2hearts",
+        "score": "hearts2hearts"
+      },
+      "implementation": [
+        {
+          "at": "v240",
+          "scope": "《The Chase》八人卡、STELLA 原图与评分、切到表演版",
+          "evidence": "v240"
+        }
+      ],
+      "additional": [
+        {
+          "scope": "STELLA 档案的作品照片及来源",
+          "source": "profiles",
+          "nodes": [
+            "1516:1678",
+            "1516:1689"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kiiikiii",
+      "name": "KiiiKiii",
+      "designPages": [
+        "211:1095"
+      ],
+      "homePath": "/artists/kiiikiii",
+      "identitySourceFile": "apps/idol-site/data/kiiikiii-artist.json",
+      "pairs": {
+        "home": [
+          "211:1102",
+          "211:1240"
+        ],
+        "members": [
+          null,
+          null
+        ],
+        "profile": [
+          "211:1157",
+          "211:1295"
+        ],
+        "works": [
+          null,
+          null
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "211:1182",
+          "211:1320"
+        ],
+        "stage": [
+          "211:1211",
+          "211:1349"
+        ],
+        "timeline": [
+          null,
+          null
+        ],
+        "score": [
+          "211:1182",
+          "211:1320"
+        ]
+      },
+      "revised": {
+        "home": "kiiikiii-json",
+        "profile": "kiiikiii-json",
+        "mv": "kiiikiii-json",
+        "stage": "kiiikiii-json",
+        "score": "kiiikiii-json"
+      },
+      "implementation": [
+        {
+          "at": "v238",
+          "scope": "团页至 JIYU、《I DO ME》五人及 1theK 版本",
+          "evidence": "v238"
+        }
+      ],
+      "additional": []
+    },
+    {
+      "slug": "itzy",
+      "name": "ITZY",
+      "designPages": [
+        "1457:1109"
+      ],
+      "homePath": "/artists/itzy",
+      "identitySourceFile": "apps/idol-site/data/itzy-artist.json",
+      "pairs": {
+        "home": [
+          "1463:1113",
+          "1463:1354"
+        ],
+        "members": [
+          "1463:1214",
+          "1463:1454"
+        ],
+        "profile": [
+          null,
+          null
+        ],
+        "works": [
+          "1463:1260",
+          "1463:1497"
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "1483:1345",
+          "1483:1604"
+        ],
+        "stage": [
+          "1483:1486",
+          "1483:1716"
+        ],
+        "timeline": [
+          null,
+          null
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {
+        "home": "itzy-lsf-home",
+        "members": "itzy-lsf-home",
+        "works": "itzy-lsf-home",
+        "mv": "itzy-lsf-work",
+        "stage": "itzy-lsf-work"
+      },
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "首页、名录及作品目录的官网主题",
+          "evidence": "itzy-lsf-home"
+        },
+        {
+          "at": "本地",
+          "scope": "首发 MV、表演版与已登记成员的评分入口",
+          "evidence": "itzy-lsf-work"
+        }
+      ],
+      "additional": []
+    },
+    {
+      "slug": "lesserafim",
+      "name": "LE SSERAFIM",
+      "designPages": [
+        "1457:1130"
+      ],
+      "homePath": "/artists/lesserafim",
+      "identitySourceFile": "apps/idol-site/data/lesserafim-artist.json",
+      "pairs": {
+        "home": [
+          "1463:1604",
+          "1463:1864"
+        ],
+        "members": [
+          "1463:1718",
+          "1463:1977"
+        ],
+        "profile": [
+          null,
+          null
+        ],
+        "works": [
+          "1463:1769",
+          "1463:2025"
+        ],
+        "release": [
+          null,
+          null
+        ],
+        "mv": [
+          "1483:2171",
+          "1483:2430"
+        ],
+        "stage": [
+          "1483:2312",
+          "1483:2542"
+        ],
+        "timeline": [
+          null,
+          null
+        ],
+        "score": [
+          null,
+          null
+        ]
+      },
+      "revised": {
+        "home": "itzy-lsf-home",
+        "members": "itzy-lsf-home",
+        "works": "itzy-lsf-home",
+        "mv": "itzy-lsf-work",
+        "stage": "itzy-lsf-work"
+      },
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "首页、名录及作品目录的官网主题",
+          "evidence": "itzy-lsf-home"
+        },
+        {
+          "at": "本地",
+          "scope": "首发 MV、表演版与已登记成员的评分入口",
+          "evidence": "itzy-lsf-work"
+        }
+      ],
+      "additional": [],
+      "earlierHomeReference": "https://www.sourcemusic.com/artist/profile/LE%20SSERAFIM"
+    },
+    {
+      "slug": "saymyname",
+      "name": "SAY MY NAME",
+      "designPages": [
+        "238:1095"
+      ],
+      "homePath": "/artists/saymyname",
+      "identitySourceFile": "apps/idol-site/data/saymyname-artist.json",
+      "pairs": {
+        "home": [
+          "609:1187",
+          "609:19188"
+        ],
+        "members": [
+          "609:19655",
+          "609:20089"
+        ],
+        "profile": [
+          "609:20372",
+          "609:20742"
+        ],
+        "works": [
+          "609:21217",
+          "609:21801"
+        ],
+        "release": [
+          "609:23583",
+          "609:24139"
+        ],
+        "mv": [
+          "609:24564",
+          "609:25133"
+        ],
+        "stage": [
+          "609:25514",
+          "609:26083"
+        ],
+        "timeline": [
+          "609:26537",
+          "609:27065"
+        ],
+        "score": [
+          "609:27518",
+          "609:27890"
+        ]
+      },
+      "revised": {},
+      "implementation": [
+        {
+          "at": "v240",
+          "scope": "首页本地字体实际加载",
+          "evidence": "v240"
+        }
+      ],
+      "additional": [],
+      "qualification": "《WaveWay》粉色示意播放器需与实际剪辑、海报重核；v240 字体回执只覆盖首页。"
+    },
+    {
+      "slug": "katseye",
+      "name": "KATSEYE",
+      "designPages": [
+        "241:1095"
+      ],
+      "homePath": "/artists/katseye",
+      "identitySourceFile": "apps/idol-site/data/katseye-artist.json",
+      "pairs": {
+        "home": [
+          "1128:43318",
+          "1128:45083"
+        ],
+        "members": [
+          "1128:43687",
+          "1128:45454"
+        ],
+        "profile": [
+          "1128:43798",
+          "1128:45560"
+        ],
+        "works": [
+          "1128:43979",
+          "1128:45728"
+        ],
+        "release": [
+          "1128:44107",
+          "1128:45850"
+        ],
+        "mv": [
+          "241:1100",
+          "241:1101"
+        ],
+        "stage": [
+          "1128:44726",
+          "1128:46452"
+        ],
+        "timeline": [
+          "1130:1254",
+          "1130:1608"
+        ],
+        "score": [
+          "1128:44887",
+          "1128:46600"
+        ]
+      },
+      "revised": {},
+      "implementation": [],
+      "additional": [],
+      "earlierHomeReference": "https://www.katseye.world/story-of-katseye/"
+    }
+  ],
+  "pageIndexReadback": {
+    "1206:1111": {
+      "page": "1206:1095",
+      "name": "MV手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1206:1121": {
+      "page": "1206:1095",
+      "name": "MV手帐 / 390",
+      "type": "FRAME"
+    },
+    "1206:1112": {
+      "page": "1206:1095",
+      "name": "舞台手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1206:1122": {
+      "page": "1206:1095",
+      "name": "舞台手帐 / 390",
+      "type": "FRAME"
+    },
+    "1219:1111": {
+      "page": "1219:1095",
+      "name": "MV手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1219:1122": {
+      "page": "1219:1095",
+      "name": "MV手帐 / 390",
+      "type": "FRAME"
+    },
+    "1219:1112": {
+      "page": "1219:1095",
+      "name": "舞台手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1219:1123": {
+      "page": "1219:1095",
+      "name": "舞台手帐 / 390",
+      "type": "FRAME"
+    },
+    "1230:1104": {
+      "page": "1228:1098",
+      "name": "MV手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1230:1115": {
+      "page": "1228:1098",
+      "name": "MV手帐 / 390",
+      "type": "FRAME"
+    },
+    "1230:1105": {
+      "page": "1228:1098",
+      "name": "舞台手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1230:1116": {
+      "page": "1228:1098",
+      "name": "舞台手帐 / 390",
+      "type": "FRAME"
+    },
+    "1239:1103": {
+      "page": "1236:1095",
+      "name": "MV手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1239:1113": {
+      "page": "1236:1095",
+      "name": "MV手帐 / 390",
+      "type": "FRAME"
+    },
+    "1239:1104": {
+      "page": "1236:1095",
+      "name": "舞台手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1239:1114": {
+      "page": "1236:1095",
+      "name": "舞台手帐 / 390",
+      "type": "FRAME"
+    },
+    "1246:1111": {
+      "page": "1246:1095",
+      "name": "MV手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1246:1122": {
+      "page": "1246:1095",
+      "name": "MV手帐 / 390",
+      "type": "FRAME"
+    },
+    "1246:1112": {
+      "page": "1246:1095",
+      "name": "舞台手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1246:1123": {
+      "page": "1246:1095",
+      "name": "舞台手帐 / 390",
+      "type": "FRAME"
+    },
+    "1258:1111": {
+      "page": "1258:1095",
+      "name": "MV手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1258:1122": {
+      "page": "1258:1095",
+      "name": "MV手帐 / 390",
+      "type": "FRAME"
+    },
+    "1258:1112": {
+      "page": "1258:1095",
+      "name": "舞台手帐 / 1440",
+      "type": "FRAME"
+    },
+    "1258:1123": {
+      "page": "1258:1095",
+      "name": "舞台手帐 / 390",
+      "type": "FRAME"
+    },
+    "1267:1205": {
+      "page": "1266:1095",
+      "name": "rescene / workJournal / 1440",
+      "type": "FRAME"
+    },
+    "1267:1213": {
+      "page": "1266:1095",
+      "name": "rescene / workJournal / 390",
+      "type": "FRAME"
+    },
+    "1267:1137": {
+      "page": "1266:1095",
+      "name": "qwer / workJournal / 1440",
+      "type": "FRAME"
+    },
+    "1267:1145": {
+      "page": "1266:1095",
+      "name": "qwer / workJournal / 390",
+      "type": "FRAME"
+    },
+    "1267:1154": {
+      "page": "1266:1095",
+      "name": "purplekiss / workJournal / 1440",
+      "type": "FRAME"
+    },
+    "1267:1162": {
+      "page": "1266:1095",
+      "name": "purplekiss / workJournal / 390",
+      "type": "FRAME"
+    },
+    "252:2062": {
+      "page": "252:1964",
+      "name": "MEOVV / 金粹仁个人页 / 1440",
+      "type": "FRAME"
+    },
+    "252:2088": {
+      "page": "252:1964",
+      "name": "MEOVV / 金粹仁个人页 / 390",
+      "type": "FRAME"
+    },
+    "949:3826": {
+      "page": "921:1104",
+      "name": "WOOAH / Photo V1 / 发行详情 / BLUSH / 1440",
+      "type": "FRAME"
+    },
+    "949:4357": {
+      "page": "921:1104",
+      "name": "WOOAH / Photo V1 / 发行详情 / BLUSH / 390",
+      "type": "FRAME"
+    }
+  }
+}

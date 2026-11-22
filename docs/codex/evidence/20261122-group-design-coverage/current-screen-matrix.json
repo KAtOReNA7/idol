@@ -26,17 +26,17 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 394,
+    "twoWidthBoardMatches": 400,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
       "profile": 48,
       "works": 44,
       "release": 39,
-      "mv": 48,
-      "stage": 39,
+      "mv": 50,
+      "stage": 42,
       "timeline": 42,
-      "score": 38
+      "score": 39
     },
     "missingOrPartialBySurface": {
       "home": [],
@@ -77,22 +77,17 @@
         "lesserafim"
       ],
       "mv": [
-        "rescene",
-        "qwer",
         "vvup"
       ],
       "stage": [
         "izna",
         "ifeye",
-        "rescene",
-        "qwer",
         "vvup",
         "bewave",
         "oddyouth",
         "vcha",
         "hitgs",
         "atheart",
-        "wooah",
         "purplekiss"
       ],
       "timeline": [
@@ -113,7 +108,6 @@
         "bewave",
         "adya",
         "udtt",
-        "wooah",
         "xg",
         "aespa",
         "kissoflife",
@@ -121,7 +115,8 @@
         "itzy",
         "lesserafim"
       ]
-    }
+    },
+    "groupsWithMissingOrPartial": 24
   },
   "sources": {
     "inventory": "docs/codex/evidence/20261122-group-design-coverage/group-screen-matrix.json",
@@ -169,7 +164,9 @@
     "journeys": "docs/codex/worklogs/20261122-group-journeys.md",
     "page-index": "docs/codex/evidence/20261122-group-design-coverage/current-screen-matrix.json#pageIndexReadback",
     "journal-version-readback": "docs/codex/evidence/20261122-group-design-coverage/journal-version-readback.json",
-    "v241": "docs/codex/worklogs/20261122-v241-release.md"
+    "v241": "docs/codex/worklogs/20261122-v241-release.md",
+    "three-work-states": "docs/codex/evidence/20261122-group-design-coverage/three-work-states.json",
+    "rescene-work": "docs/codex/worklogs/20261122-rescene-work.md"
   },
   "groups": [
     {
@@ -603,12 +600,12 @@
           "1267:1210"
         ],
         "mv": [
-          null,
-          null
+          "1530:1239",
+          "1530:1365"
         ],
         "stage": [
-          null,
-          null
+          "1530:1324",
+          "1530:1443"
         ],
         "timeline": [
           "1267:1203",
@@ -619,17 +616,25 @@
           "1267:1212"
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "three-work-states",
+        "stage": "three-work-states"
+      },
       "implementation": [
         {
           "at": "v236",
           "scope": "首页团体主题、两宽主图",
           "evidence": "v236"
+        },
+        {
+          "at": "开发版",
+          "scope": "LOVE ATTACK 五人照片及两个视频视图，375、1425 px",
+          "evidence": "rescene-work"
         }
       ],
       "additional": [
         {
-          "scope": "rescene / workJournal 旧稿；播放器类型及版本仍需核对",
+          "scope": "旧《LOVE ATTACK》workJournal 只画 MV 封面，五位成员缺图，舞台仅有未选标签。",
           "source": "page-index",
           "nodes": [
             "1267:1205",
@@ -637,7 +642,8 @@
           ]
         }
       ],
-      "earlierHomeReference": "https://themuze.kr/rescene"
+      "earlierHomeReference": "https://themuze.kr/rescene",
+      "qualification": "新稿有 THE MUZE 的同次发行五人照、逐人评分入口和独立 dancEAR 舞台封面。"
     },
     {
       "slug": "unis",
@@ -788,12 +794,12 @@
           "1267:1142"
         ],
         "mv": [
-          null,
-          null
+          "1531:1944",
+          "1531:2047"
         ],
         "stage": [
-          null,
-          null
+          "1531:2008",
+          "1531:2109"
         ],
         "timeline": [
           "1267:1135",
@@ -804,11 +810,14 @@
           "1267:1144"
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "three-work-states",
+        "stage": "three-work-states"
+      },
       "implementation": [],
       "additional": [
         {
-          "scope": "qwer / workJournal 旧稿；播放器类型及版本仍需核对",
+          "scope": "早期 Our Voyage 的 workJournal 归入本团旧版本参照。",
           "source": "page-index",
           "nodes": [
             "1267:1137",
@@ -816,7 +825,8 @@
           ]
         }
       ],
-      "earlierHomeReference": "https://qwerjapan.com/news/2/"
+      "earlierHomeReference": "https://qwerjapan.com/news/2/",
+      "qualification": "《SHOW DOWN》新稿在 MV 放四人 CEREMONY 认人参考，舞台放バズリズム02 的节目帧。"
     },
     {
       "slug": "vvup",
@@ -2377,19 +2387,23 @@
           "921:1546"
         ],
         "stage": [
-          null,
-          null
+          "1531:1392",
+          "1531:1414"
         ],
         "timeline": [
           "921:1305",
           "921:1578"
         ],
         "score": [
-          null,
-          null
+          "1531:1436",
+          "1531:1510"
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "three-work-states",
+        "stage": "three-work-states",
+        "score": "three-work-states"
+      },
       "implementation": [
         {
           "at": "v238",
@@ -2408,7 +2422,7 @@
         }
       ],
       "earlierHomeReference": "https://wooahjapan.jp/profile/",
-      "qualification": "《BLUSH》旧 MV 稿标注「影像预览待补」。该发行封面与其他歌曲的人像均不能作为本剪辑的海报或具名宣传照。"
+      "qualification": "《BLUSH》沿用原 MV 节点，换成实际 MV 封面和五位同期成员；另有 Just Dance 舞台与 LUCY 展开评分的双宽独立稿。"
     },
     {
       "slug": "purplekiss",
@@ -3696,6 +3710,76 @@
     "949:4357": {
       "page": "921:1104",
       "name": "WOOAH / Photo V1 / 发行详情 / BLUSH / 390",
+      "type": "FRAME"
+    },
+    "1530:1239": {
+      "page": "1266:1095",
+      "name": "LOVE ATTACK / THE MUZE 官方 MV / 1440",
+      "type": "FRAME"
+    },
+    "1530:1365": {
+      "page": "1266:1095",
+      "name": "LOVE ATTACK / THE MUZE 官方 MV / 390",
+      "type": "FRAME"
+    },
+    "1530:1324": {
+      "page": "1266:1095",
+      "name": "LOVE ATTACK / 1theK dancEAR 舞台 / 1440",
+      "type": "FRAME"
+    },
+    "1530:1443": {
+      "page": "1266:1095",
+      "name": "LOVE ATTACK / 1theK dancEAR 舞台 / 390",
+      "type": "FRAME"
+    },
+    "1531:1944": {
+      "page": "1266:1095",
+      "name": "QWER / SHOW DOWN / 官方 MV 与四人评分 / 1440",
+      "type": "FRAME"
+    },
+    "1531:2047": {
+      "page": "1266:1095",
+      "name": "QWER / SHOW DOWN / 官方 MV 与四人评分 / 390",
+      "type": "FRAME"
+    },
+    "1531:2008": {
+      "page": "1266:1095",
+      "name": "QWER / SHOW DOWN / バズリズム02 舞台 / 1440",
+      "type": "FRAME"
+    },
+    "1531:2109": {
+      "page": "1266:1095",
+      "name": "QWER / SHOW DOWN / バズリズム02 舞台 / 390",
+      "type": "FRAME"
+    },
+    "921:1273": {
+      "page": "921:1104",
+      "name": "WOOAH / BLUSH / 官方 MV / 1440",
+      "type": "FRAME"
+    },
+    "921:1546": {
+      "page": "921:1104",
+      "name": "WOOAH / BLUSH / 官方 MV / 390",
+      "type": "FRAME"
+    },
+    "1531:1392": {
+      "page": "921:1104",
+      "name": "WOOAH / BLUSH / 舞台 · Just Dance / 1440",
+      "type": "FRAME"
+    },
+    "1531:1414": {
+      "page": "921:1104",
+      "name": "WOOAH / BLUSH / 舞台 · Just Dance / 390",
+      "type": "FRAME"
+    },
+    "1531:1436": {
+      "page": "921:1104",
+      "name": "WOOAH / BLUSH / 成员评分 · LUCY / 1440",
+      "type": "FRAME"
+    },
+    "1531:1510": {
+      "page": "921:1104",
+      "name": "WOOAH / BLUSH / 成员评分 · LUCY / 390",
       "type": "FRAME"
     }
   }

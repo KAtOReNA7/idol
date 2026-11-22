@@ -4,7 +4,7 @@
 
 正式路由目录、具名 Figma 页面和逐团记录的名单一致，共 51 团，重复和遗漏均为 0。逐团索引按九类页面列出桌面、手机节点，给出素材来源文件、适用的专项实现和正式实测版本。原文件 53 页、3,676 个条目的清点保存在下方。初次清点定位 750 个位置、746 个不同节点，补录后的原索引有 751 个位置、747 个不同节点。[现行逐团索引](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [原索引](../evidence/20261122-group-design-coverage/group-screen-matrix.json)
 
-459 个「团体 × 页面类别」组合中，394 个已定位双宽候选画稿。另有 65 个至少一宽待定位，涉及 27 团。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
+459 个「团体 × 页面类别」组合中，400 个已定位双宽候选画稿。上一轮为 394 个，本轮新增六对。另有 59 个至少一宽待定位，涉及 24 团。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
 
 | 类别 | 双宽候选 | 至少一宽仍待定位的团 |
 | --- | ---: | --- |
@@ -13,12 +13,12 @@
 | 成员详情 | 48/51 | BABYMONSTER（仅 AHYEON 桌面稿）、ITZY、LE SSERAFIM |
 | 作品目录 | 44/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii |
 | 发行详情 | 39/51 | MEOVV、HITGS、LOONA、BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
-| MV 详情 | 48/51 | RESCENE、QWER、VVUP |
-| 舞台详情 | 39/51 | izna、ifeye、RESCENE、QWER、VVUP、BEWAVE、ODD YOUTH、VCHA、HITGS、AtHeart、WOOAH、PURPLE KISS |
+| MV 详情 | 50/51 | VVUP |
+| 舞台详情 | 42/51 | izna、ifeye、VVUP、BEWAVE、ODD YOUTH、VCHA、HITGS、AtHeart、PURPLE KISS |
 | 时间轴 | 42/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
-| 评分或手帐状态 | 38/51 | GENBLUE、VVUP、YOUNG POSSE、BEWAVE、ADYA、UDTT、WOOAH、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
+| 评分或手帐状态 | 39/51 | GENBLUE、VVUP、YOUNG POSSE、BEWAVE、ADYA、UDTT、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
 
-已在项目 Figma 中逐幅读取六团的 MV、舞台手帐及 PURPLE KISS 的 MV 手帐，共 26 幅。可辨认《La Vie en Rose》《LIKE YOU BETTER》《CODE》《BOOM》《P.O.W!》《LIGHTS ON》的真实 MV 和节目舞台，以及《Breath》MV 的两档设计。这 13 对已有作品级设计出处；旧稿中的成员截图占位和外跳提示仍与现行产品有差异，现代成员评分组件另有双宽 Figma 与 599 支可评 MV 的结构验收。RESCENE 和 QWER 的旧稿与新设计另逐项更新。[七团图层与版本](../evidence/20261122-group-design-coverage/journal-version-readback.json) · [成员评分组件](20261122-stayc-debut-and-scores.md)
+已在项目 Figma 中逐幅读取六团的 MV、舞台手帐及 PURPLE KISS 的 MV 手帐，共 26 幅。可辨认《La Vie en Rose》《LIKE YOU BETTER》《CODE》《BOOM》《P.O.W!》《LIGHTS ON》的真实 MV 和节目舞台，以及《Breath》MV 的两档设计。这 13 对已有作品级设计出处；旧稿中的成员截图占位和外跳提示仍与现行产品有差异，现代成员评分组件另有双宽 Figma 与 599 支可评 MV 的结构验收。本轮另读回三团的 14 幅画稿。RESCENE《LOVE ATTACK》与 QWER《SHOW DOWN》各补 MV 和准确节目舞台两对。WOOAH《BLUSH》原 MV 两幅补齐实图，新增 Just Dance 舞台和 LUCY 本人评分展开两对。[三团逐帧记录](../evidence/20261122-group-design-coverage/three-work-states.json) · [七团图层与版本](../evidence/20261122-group-design-coverage/journal-version-readback.json) · [成员评分组件](20261122-stayc-debut-and-scores.md)
 
 | 已可沿用的工作 | 到 v240 为止的实现与实测 |
 | --- | --- |
@@ -27,9 +27,11 @@
 | ITZY、LE SSERAFIM、KiiiKiii | ITZY 和 LE SSERAFIM 各有首页、成员、作品、MV 与舞台两宽，已在本地实点。KiiiKiii《I DO ME》的五人和 1theK 舞台已在 v238 两宽实点。[两团首页与名录](20261122-itzy-lesserafim-official-design.md) · [两团作品详情](20261122-itzy-lesserafim-work-details.md) · [KiiiKiii 正式回执](../evidence/20261122-v238/formal-kiiikiii.json) |
 | Candy Shop、SPIA、UDTT | 正式 v241 两宽实开 SPIA、Candy Shop 的成员原图、作品、发行和舞台，UDTT 页眉的公司原标及成员返回也已核对。[正式结果](20261122-v241-release.md) |
 
-飞书第 8 项涉及八个示例，也要求核查其余团。51 团首页已有来源和视觉初查，五种栏目入口有 255 次正式路由本地渲染，338 个成员详情有实际访问记录，603 页横查已清理那批公开页面编辑说明。后续仍需区分组件行为、团体识别、官方发行期复原和每张内页的成稿。WOOAH《BLUSH》旧稿仍有明确的缺图标记；YOUNG POSSE《MACARONI CHEESE》以文字外跳呈现。SAY MY NAME《WaveWay》、KISS OF LIFE《STICKY》、aespa《Armageddon》、ILLIT《Magnetic》、XG《WOKE UP》及早期 BABYMONSTER 的作品旧稿仍为播放器示意。具体作品及同版封面须逐一核对，已经独立通过的播放、字体和照片结果继续有效。[八团图源与 603 页横查](20261122-eight-group-design-review.md) · [实际路由](../evidence/20261122-group-design-coverage/actual-route-surfaces.json) · [成员访问](../evidence/20261122-member-page-coverage/visits.json)
+飞书第 8 项涉及八个示例，也要求核查其余团。51 团首页已有来源和视觉初查，五种栏目入口有 255 次正式路由本地渲染，338 个成员详情有实际访问记录，603 页横查已清理那批公开页面编辑说明。后续仍需区分组件行为、团体识别、官方发行期复原和每张内页的成稿。WOOAH《BLUSH》原稿中的缺图标记已替换。[作品、舞台及成员评分稿](../evidence/20261122-group-design-coverage/three-work-states.json)
 
-后续可并行执行三项。作品视觉先补 WOOAH《BLUSH》缺图，再按上述七组旧样稿核同期图、准确剪辑、本人照片和站内播放操作。舞台与路由先逐团打开上表已有「手帐」的九团并核对具名版本，再对其余团分别补真正缺少的舞台或 MV 画稿。成员与发行先从缺幅较多的 BABYMONSTER、XG、aespa、KISS OF LIFE、NMIXX、KiiiKiii 接续，其余按上表。每项交实际页面、Figma 桌/手机节点和适用的正式回执。首页、返回与共享评分已有的部分沿用原稿。
+YOUNG POSSE《MACARONI CHEESE》以文字外跳呈现。SAY MY NAME《WaveWay》、KISS OF LIFE《STICKY》、aespa《Armageddon》、ILLIT《Magnetic》、XG《WOKE UP》及早期 BABYMONSTER 的作品旧稿仍为播放器示意。具体作品及同版封面须逐一核对，已经独立通过的播放、字体和照片结果继续有效。[八团图源与 603 页横查](20261122-eight-group-design-review.md) · [实际路由](../evidence/20261122-group-design-coverage/actual-route-surfaces.json) · [成员访问](../evidence/20261122-member-page-coverage/visits.json)
+
+下一批先补 VVUP《Doo Doom Chit》的官方 MV 和已绑定的 M COUNTDOWN EP.833，同时处理飞书点名的 BEWAVE《SING !》官方 Live Clip 及其评分状态。ifeye《r u ok?》的 STUDIO CHOOM 版本与 izna《IZNA》的 KBS Music Bank 241129 已有确切舞台绑定。四团的旧 Figma 页可定位目录、MV 或评分演示，本轮按已知宽度与状态名称未找到相应的独立舞台画板。旧作品示意另按来源和剪辑逐项替换。成员与发行可并行从 BABYMONSTER、XG、aespa、KISS OF LIFE、NMIXX、KiiiKiii 的缺幅接续。[四团旧画板回读](../evidence/20261122-group-design-coverage/three-work-states.json) · [真实入口](../evidence/20261122-group-design-coverage/actual-route-surfaces.json)
 
 ## 首次清点记录
 

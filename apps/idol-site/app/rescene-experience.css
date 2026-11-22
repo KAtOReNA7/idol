@@ -41,3 +41,148 @@
 .candidate-experience.candidate-rescene-experience :is(button,a,input,select,textarea):focus-visible{outline:3px solid #4e7180;outline-offset:4px}
 @media(max-width:720px){.candidate-experience.candidate-rescene-experience .header{padding:20px 5%;flex-wrap:wrap;gap:16px}.candidate-experience.candidate-rescene-experience .header nav{max-width:100%;flex-wrap:wrap}.candidate-experience.candidate-rescene-experience main{padding:28px 5% 60px}.candidate-experience.candidate-rescene-experience :is(.work-detail-top,.madein-detail-hero,.member-detail){grid-template-columns:1fr;gap:25px}.candidate-experience.candidate-rescene-experience .cast-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.candidate-experience.candidate-rescene-experience .member-detail h1{font-size:44px}.candidate-experience.candidate-rescene-experience .section-heading h2{font-size:28px}.candidate-experience.candidate-rescene-experience .member-work-summary{padding:20px}.candidate-experience.candidate-rescene-experience .cast-copy{padding:18px 0}.candidate-experience.candidate-rescene-experience .member-name{font-size:18px}}
 
+
+@font-face {
+  font-family: ResceneMontserrat;
+  src: url('/artist/rescene/redesign-20261025/montserrat-latin.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* Keep the artist archive's silver palette outside the SCENEDROME release. */
+body .work-experience.candidate-rescene-experience[data-work-theme="rescene"] {
+  --paper: #eeeae7;
+  --white: #f5f1ee;
+  --ink: #352f36;
+  --muted: #655d65;
+  --line: #bdb4b9;
+  --rose: #6c405f;
+  --blush: #e2dbdd;
+  --lilac: var(--blush);
+  --rescene-trim: #b5a4b0;
+  --work-on-accent: #fff;
+  --font-body: ResceneMontserrat, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-editorial: var(--font-body);
+  --font-number: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+
+  &:has(.detail[data-work-id="rec28ldfRTrDat"]) {
+    --paper: #e2f1ef;
+    --white: #f3faf7;
+    --ink: #143e49;
+    --muted: #405f68;
+    --line: #8cbabc;
+    --rose: #075f66;
+    --blush: #c7e4e2;
+    --rescene-trim: #eecdd7;
+  }
+
+  & > main { padding: clamp(20px, 3vw, 44px) clamp(20px, 3vw, 48px) 48px; }
+  & :is(h1, h2, h3, .member-name, .editor, button, input, textarea, select) {
+    font-family: var(--font-body);
+    color: var(--ink);
+  }
+  & :is(.music-sidebar, .music-mobile-header, .music-bottom-nav) { background: var(--white); }
+  & .music-work-title {
+    padding: 0 0 20px;
+    margin: 17px 0 14px;
+    border-bottom: 2px solid var(--line);
+    position: relative;
+  }
+  & .music-work-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: clamp(58px, 10%, 104px);
+    height: 3px;
+    background: var(--rescene-trim);
+  }
+  & .music-work-title h1 {
+    margin: 5px 0 8px;
+    font-size: clamp(35px, 4.6vw, 66px);
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: -.04em;
+  }
+  & .music-work-title :is(p, .group-links button) { color: var(--muted); }
+  & .work-detail-top {
+    grid-template-columns: minmax(0, 2.3fr) minmax(235px, 1fr);
+    gap: 24px;
+    margin: 18px 0 36px;
+  }
+  & .work-aside {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--rescene-trim);
+    border-radius: 8px;
+    background: var(--white);
+  }
+  & .work-aside > :is(h1, .group-links) { display: none; }
+  & :is(.work-aside p, .video-caption, .mv-identity-photo figcaption, .mv-identity-history) {
+    color: var(--muted);
+    font-family: var(--font-body);
+    opacity: 1;
+  }
+  & .video-mode-tabs { background: transparent; border: 0; gap: 6px; padding: 0; }
+  & :is(.video-mode-tabs button, .button, .editor-open, .credit-score-action) {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--white);
+    color: var(--ink);
+    min-height: 44px;
+  }
+  & :is(.video-play, .button.primary, .video-mode-tabs button[aria-selected="true"],
+        .music-sidebar button[aria-current="page"], .music-bottom-nav button[aria-current="page"]) {
+    color: var(--work-on-accent);
+    background: var(--rose);
+    border-color: var(--rose);
+  }
+  & .video-play {
+    min-height: 44px;
+    padding: 9px 15px;
+    border-radius: 6px;
+    flex-direction: row;
+    gap: 8px;
+  }
+  & .video-play svg { width: 19px; height: 19px; }
+  & :is(.stage-source, .stage-overall-note, .editor) {
+    color: var(--ink);
+    background: var(--blush);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+  & .section-heading { padding-bottom: 12px; margin-bottom: 18px; border-color: var(--line); }
+  & .section-heading h2 { font-size: clamp(24px, 2.5vw, 34px); line-height: 1.25; }
+  & .cast-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+  & .cast-card {
+    min-width: 0;
+    padding: 0;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  & .cast-copy { padding: 10px; }
+  & .cast-card .member-name { font-size: clamp(16px, 1.45vw, 22px); }
+  & .cast-card .mv-photo-score { padding-inline: 8px; }
+  & .cast-card .mv-photo-score :is(.credit-score-action, .editor-open) { max-width: 100%; }
+  & :is(.mv-identity-photo figcaption, .mv-identity-history) { padding-inline: 8px; }
+  & :is(.mv-identity-photo figcaption a, .mv-identity-history a) { color: var(--rose); }
+  & .editor-fields :is(input, textarea, select) { background: var(--white); border-color: var(--line); }
+
+  @media (max-width: 1250px) {
+    & .cast-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 1040px) {
+    & .work-detail-top { grid-template-columns: minmax(0, 1fr); }
+    & .cast-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 720px) {
+    & > main { padding: 16px 6% 56px; }
+    & .work-detail-top { gap: 18px; margin-bottom: 28px; }
+    & .cast-grid { grid-template-columns: minmax(0, 1fr); }
+  }
+}

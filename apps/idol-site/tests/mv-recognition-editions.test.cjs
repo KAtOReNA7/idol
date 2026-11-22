@@ -11,6 +11,18 @@ const media = require('../data/mv-public-media.json');
 const genieOriginal = (issue, file) =>
   `https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/${issue}/Mgz_Sub_IMG_${file}.jpg/dims/resize/Q_80,0`;
 const publisherSeries = {
+  'rescene-scenedrome-202408': {
+    label: 'SCENEDROME · 本次发行概念照',
+    source: 'https://www.hellokpop.com/kpop/rescene-makes-a-splash-with-first-scenedrome-concept-images/',
+    original: mediaId => 'https://pbs.twimg.com/media/' + mediaId + '?format=jpg&name=orig',
+    files: {
+      recvxAPQCFEoKg: 'GVBQYEaa4AElI99',
+      recvxAPQCFHERK: 'GU2cD49bUAAUTIp',
+      recvxAPQCF0JXd: 'GU2b8gOaMAAU5eG',
+      recvxAPQCFmsPH: 'GU2b0cFbcAAtmh4',
+      recvxAPQCFbn3I: 'GVBQgW8boAEHPJ1',
+    },
+  },
   'hearts2hearts-the-chase-2025': {
     label: 'The Chase · 本曲概念照',
     original: mediaId => 'https://pbs.twimg.com/media/' + mediaId + '?format=jpg&name=orig',
@@ -174,6 +186,7 @@ test('Attention shows each member’s 2022 debut portrait, with the credited ful
 });
 
 const reviewedReleases = [
+  ['LOVE ATTACK', 'rescene-scenedrome-202408', 'rec28ldfRTrDat', '9XttLI0oH0I', 5],
   ['The Chase', 'hearts2hearts-the-chase-2025', 'rec28ldfRTrzDX', 'kxUA2wwYiME', 8],
   ['SO BAD', 'star-to-a-young-culture-2020', 'recvxyH5pzZo3m', 'gMe1c4UegBY', 6],
   ['Buenos Aires', 'buenos-aires-2019', 'recvxyH5pzEDfw', 'M46FRJsB0Qw', 12],

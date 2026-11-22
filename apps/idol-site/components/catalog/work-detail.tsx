@@ -272,7 +272,7 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  const credits=<PublicWorkCredits work={work} data={data} onMember={onMember} renderScore={scoreForPhoto} inScoringSection={hasMemberScores}/>;
  const switchView=(next:'mv'|'stage')=>{setSelection({workId:work.id,initialView,view:next});onViewChange?.(next);};
  function jumpToMemberDraft(){const id=memberDrafts[0]?.slice('ratings:'.length);if(!id)return;if(view==='stage')switchView('mv');window.requestAnimationFrame(()=>{const card=nativeLocations[id]?.host??memberCards.current[id]??document.getElementById(id);const button=card?.querySelector<HTMLButtonElement>('.editor-actions button:not(:disabled)');(button??card)?.scrollIntoView({block:'center',behavior:'smooth'});button?.focus({preventScroll:true});});}
- return <div className={'detail '+(view==='stage'?'stage-view':'')}><button className="back text-button" onClick={onBack}><ArrowLeft size={16}/>{backLabel}</button>
+ return <div className={'detail '+(view==='stage'?'stage-view':'')} data-work-id={work.id}><button className="back text-button" onClick={onBack}><ArrowLeft size={16}/>{backLabel}</button>
  <header className="music-work-title"><GroupLinks data={data} ids={work.groupIds} onGroup={onGroup}/><h1>{work.song||work.name}</h1><p>{headingDetails.filter(Boolean).join(' · ')}</p></header>
  {sequence&&<SequencePreview sequence={sequence} currentId={work.id} catalog={data} onNext={onNext} nextDisabled={navigationBlockedKeys.length>0}/>}
  {sequenceLabel&&<div className="watch-context"><span>{sequenceLabel}</span><small>第 {sequencePosition} / {sequenceTotal} 首</small></div>}

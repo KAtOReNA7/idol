@@ -90,6 +90,6 @@ v216 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4
 
 v215 的 Windows 和 WSL 均通过 `npm run verify`。完整 `npm test` 各有 4,106 项，Windows 通过 3,929 项、失败 138 项、跳过 39 项，WSL 通过 3,933 项、失败 134 项、跳过 39 项。相对 v214，两边均通过新加的六项回归，另外消除一条服务端首次渲染失败。余下失败均在上个版本出现。v213 已更新四团的作品评分、草稿、返回与隔离 D1 验收，消除 27 条旧失败。[v215 双平台结果](evidence/20261122-v215/tests.json) · [v214 双平台结果](evidence/20261122-v214/tests.json) · [四团详情验收](worklogs/20261122-current-detail-regression.md)
 
-后续优先处理《BILLIONAIRE》首发版拒播。Cherry Bullet 点卡耗时的分段复测见本轮回执。四场独占舞台继续寻找同场站内高清来源。三个桌面短目录首次加载时的重排已记录待讨论。剩余 146 个已标注跨期的认人位置中，124 个已找到当次发行的图集，22 个还缺合适的具名单人出处。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑的顺序。个人目录批量读取在连接器提供对应工具时验证。[认人位置明细](evidence/20261122-member-release-portraits/remaining-194.csv) · [两档宽度的排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
+接续 W!TCHX《BLALA》官方歌词版、ADYA《Per》指定完整版和四场独占舞台的同版站内来源。《BILLIONAIRE》沿用正式 v236 的站内 2160p 实播记录。飞书第 9 项已标记解决，第 17 项仍在跟进，修订 1216 读回 26 条已解决。三个桌面短目录首次加载时的重排留待讨论。51 团首页和 49 个有关目录已在手机、桌面核过 MV 与专辑顺序。个人目录批量读取在连接器提供对应工具时验证。[歌词版正式结果](evidence/20261122-v240/formal-blala-playback.json) · [独占舞台来源](worklogs/20261122-exact-stage-rights.md) · [成员照片逐项清单](evidence/20261122-member-release-portraits/remaining-194.csv) · [双宽排序](worklogs/20261122-group-interaction-followup.md) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md)
 
 前轮工程优化、发布与原始审查分别保存在各自的工作记录中。[上一正式版 v203](v203-release-20261030.md) · [项目审查](worklogs/20261121-project-audit.md) · [历史协作与验收](https://github.com/KAtOReNA7/idol/blob/0e77838a88f9ff9b14fb67f803156534c7c651e1/docs/codex/STATUS.md)

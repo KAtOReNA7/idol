@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v242。WOOAH、RESCENE、QWER 三支作品的 14 张成员照在相同手机宽度下合计少传 97.5%。桌面和手机均已实开原图和照片下评分。[正式结果](worklogs/20261122-v242-release.md) |
+| 正式站 | v243。VVUP 和 BEWAVE 出道期作品的十张具名成员照合计少传 90.4%，手机版三团首页六份字体少传 68.8%。两支作品的个人评分和准确舞台均已双宽验收。[正式结果](worklogs/20261122-v243-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v242 正式工程 `bdc1e7d7`。v243 正在更新 VVUP 与 BEWAVE 的出道期作品、舞台和评分，并精简目录与页尾。[发布回执](evidence/20261122-v242/publication.json) · [51 团 Figma 覆盖](worklogs/20261122-group-design-coverage.md) |
+| 当前开发 | `codex/project-optimization-20261121`。v243 正式工程 `c303ec96`。下一批为 YOUNG POSSE 的出道 MV、ADYA《RIZZ》从舞台筛选进错评分对象的问题，以及三团首页提前展示原图与目录入口。[发布回执](evidence/20261122-v243/publication.json) · [51 团 Figma 覆盖](worklogs/20261122-group-design-coverage.md) |
 
 ## 11 月 22 日更新
 

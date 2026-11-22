@@ -1,0 +1,76 @@
+{
+  "method": "Separate focused runs during implementation in the Windows and Linux Node runtimes. The full frozen application results are recorded in tests.json.",
+  "suites": {
+    "publicDelivery": {
+      "win": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "skipped": 0
+      },
+      "linux": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "skipped": 0
+      }
+    },
+    "historicGuard": {
+      "win": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "skipped": 0
+      },
+      "linux": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "skipped": 0
+      }
+    },
+    "artistPhotoAndTimeline": {
+      "win": {
+        "tests": 310,
+        "pass": 310,
+        "fail": 0,
+        "skipped": 0
+      },
+      "linux": {
+        "tests": 310,
+        "pass": 310,
+        "fail": 0,
+        "skipped": 0
+      }
+    },
+    "exactArtistReadAndRecovery": {
+      "win": {
+        "tests": 132,
+        "pass": 132,
+        "fail": 0,
+        "skipped": 0
+      },
+      "linux": {
+        "tests": 132,
+        "pass": 132,
+        "fail": 0,
+        "skipped": 0
+      }
+    },
+    "indexAndPreload": {
+      "win": {
+        "tests": 24,
+        "pass": 23,
+        "fail": 1,
+        "skipped": 0
+      },
+      "linux": {
+        "tests": 24,
+        "pass": 23,
+        "fail": 1,
+        "skipped": 0
+      },
+      "existingFailure": "tripleS: homepage server preload is hoisted once with exact image request attributes (present in v240)"
+    }
+  }
+}

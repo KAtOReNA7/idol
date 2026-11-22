@@ -1,0 +1,123 @@
+{
+  "applicationCommit": "8c8d5104fbacf095859417f5f275b2c2a82f00f7",
+  "baselineApplicationCommit": "ee8695d772a3d0f3aec24338debe11b9bf69e6dd",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4278,"pass": 4143,"fail": 96,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4282,"pass": 4150,"fail": 93,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1354,"pass": 1354,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 652,
+          "localBytes": 34544586
+        }
+      },
+      "retainedFailureCount": 93,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/hearts2hearts-artist.test.cjs",
+          "test": "Hearts2Hearts independent index hero and watch theme retain existing collaboration priority"
+        },
+        {
+          "suite": "main",
+          "file": "tests/hearts2hearts-artist.test.cjs",
+          "test": "Hearts2Hearts reuses all eight existing original portraits by verified byte identity"
+        },
+        {
+          "suite": "main",
+          "file": "tests/spia-content.test.mjs",
+          "test": "native score access requires existing record, group and exact video slot"
+        }
+      ],
+      "addedTests": [
+        "Candy Shop exposes all five portraits and preserves each album original on demand",
+        "Candy Shop keeps each video on a single card and places every MV before stage and release cards",
+        "every artist projection matches the full registry for current and former members, including their other groups",
+        "member profile image and text-only button open the same full release image and keep the old work image accessible"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4278,"pass": 4147,"fail": 92,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4282,"pass": 4154,"fail": 89,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1354,"pass": 1354,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 652,
+          "localBytes": 34544586
+        }
+      },
+      "retainedFailureCount": 89,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/hearts2hearts-artist.test.cjs",
+          "test": "Hearts2Hearts independent index hero and watch theme retain existing collaboration priority"
+        },
+        {
+          "suite": "main",
+          "file": "tests/hearts2hearts-artist.test.cjs",
+          "test": "Hearts2Hearts reuses all eight existing original portraits by verified byte identity"
+        },
+        {
+          "suite": "main",
+          "file": "tests/spia-content.test.mjs",
+          "test": "native score access requires existing record, group and exact video slot"
+        }
+      ],
+      "addedTests": [
+        "Candy Shop exposes all five portraits and preserves each album original on demand",
+        "Candy Shop keeps each video on a single card and places every MV before stage and release cards",
+        "every artist projection matches the full registry for current and former members, including their other groups",
+        "member profile image and text-only button open the same full release image and keep the old work image accessible"
+      ],
+      "removedTests": []
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each verified and ran the full test suite in a dedicated checkout of the frozen application."
+}

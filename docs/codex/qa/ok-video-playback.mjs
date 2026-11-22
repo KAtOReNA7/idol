@@ -131,7 +131,7 @@ export async function checkOkVideo(tab, work, site, timeoutMs) {
       row.lastMedia=await run(() => window.idolTemporaryPlaybackProbe.media());
       row.status='no-confirmed-first-click-progress';return row;
     }
-    if (row.defaultSamples.every(s => s.w === width && s.h === height)) {
+    if (!work.verifyQualityMenu && row.defaultSamples.every(s => s.w === width && s.h === height)) {
       row.qualityChoice='current setting';
       row.samples=row.defaultSamples;
     } else {

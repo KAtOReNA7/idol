@@ -1,0 +1,41 @@
+{
+  "applicationCommit": "7b8ad937078862902d296d065bfebe5a37176f23",
+  "testCommit": "93fbfa6a84d289b00f0b63208b13558929f51099",
+  "changedApplicationPaths": [
+    "apps/idol-site/tests/catalog-concurrency.test.cjs"
+  ],
+  "reason": "Two historical client-loading fixtures returned objects with only ok and json. A real Fetch response carries Headers. The fixtures now return Response.json with the owner access header for successful reads and an HTTP 502 status for their existing failed reads.",
+  "tests": [
+    "catalog-concurrency.test.cjs",
+    "home-read-deadline.test.cjs",
+    "browser-catalog.test.cjs",
+    "work-detail-d1.test.cjs",
+    "artist-catalog.test.cjs"
+  ],
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "tests": 72,
+      "pass": 72,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "formerlyFailedNowPassed": [
+        "actual client load callback ignores stale success, errors and spinner completion",
+        "persistent snapshot is rendered before background refresh completes and remains on failure"
+      ]
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "tests": 72,
+      "pass": 72,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "formerlyFailedNowPassed": [
+        "actual client load callback ignores stale success, errors and spinner completion",
+        "persistent snapshot is rendered before background refresh completes and remains on failure"
+      ]
+    }
+  }
+}

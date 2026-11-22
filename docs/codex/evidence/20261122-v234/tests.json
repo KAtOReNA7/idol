@@ -1,0 +1,116 @@
+{
+  "applicationCommit": "7b8ad937078862902d296d065bfebe5a37176f23",
+  "baselineApplicationCommit": "9b5929161866f7c283c863a76776c74f983425d2",
+  "fixtureFollowup": "fixture-followup.json",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4212,"pass": 4042,"fail": 131,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4218,"pass": 4046,"fail": 133,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1319,"pass": 1319,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5995,
+          "restrictedCopies": 10,
+          "localAssets": 586,
+          "localBytes": 16905055
+        }
+      },
+      "retainedFailureCount": 131,
+      "newFailures": [
+        {
+          "suite": "main",
+          "file": "tests/catalog-concurrency.test.cjs",
+          "test": "actual client load callback ignores stale success, errors and spinner completion"
+        },
+        {
+          "suite": "main",
+          "file": "tests/catalog-concurrency.test.cjs",
+          "test": "persistent snapshot is rendered before background refresh completes and remains on failure"
+        }
+      ],
+      "clearedFailures": [],
+      "addedTests": [
+        "a background refresh after sign-out removes the earlier owner data and requires a new page",
+        "a changed login or missing access tag cannot adopt the early body under a different layout",
+        "a claimed early read still aborts during a pending body and cannot replace the next work",
+        "only a fresh, same-group card navigation starts an early read",
+        "the document discards an unclaimed read on timeout, leaving, work change and capability change",
+        "the first group-card navigation starts one scoped read before hydration for owners and visitors"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4212,"pass": 4046,"fail": 127,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4218,"pass": 4050,"fail": 129,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1319,"pass": 1319,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5995,
+          "restrictedCopies": 10,
+          "localAssets": 586,
+          "localBytes": 16905055
+        }
+      },
+      "retainedFailureCount": 127,
+      "newFailures": [
+        {
+          "suite": "main",
+          "file": "tests/catalog-concurrency.test.cjs",
+          "test": "actual client load callback ignores stale success, errors and spinner completion"
+        },
+        {
+          "suite": "main",
+          "file": "tests/catalog-concurrency.test.cjs",
+          "test": "persistent snapshot is rendered before background refresh completes and remains on failure"
+        }
+      ],
+      "clearedFailures": [],
+      "addedTests": [
+        "a background refresh after sign-out removes the earlier owner data and requires a new page",
+        "a changed login or missing access tag cannot adopt the early body under a different layout",
+        "a claimed early read still aborts during a pending body and cannot replace the next work",
+        "only a fresh, same-group card navigation starts an early read",
+        "the document discards an unclaimed read on timeout, leaving, work change and capability change",
+        "the first group-card navigation starts one scoped read before hydration for owners and visitors"
+      ],
+      "removedTests": []
+    }
+  }
+}

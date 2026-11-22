@@ -1,0 +1,25 @@
+{
+  "source": "Sites production Worker error logs. Matched the invocation and structured error by request ID.",
+  "retainedFields": "HTTP invocation and application diagnostic labels",
+  "browserReceivedAtUtc": "2026-11-22T04:28:32.371Z",
+  "invocation": {
+    "utc": "2026-11-22T04:28:32.698Z",
+    "route": "/api/catalog",
+    "requestId": "90b0b7b23638ddcb2758ce11c4ab3e57",
+    "method": "GET",
+    "outcome": "ok",
+    "wallTimeMs": 68,
+    "cpuTimeMs": 4,
+    "status": 502,
+    "labels": {
+      "retried": false,
+      "cancelled": false,
+      "event": "idol_catalog_read_failed",
+      "phase": "native-read",
+      "kind": "unknown",
+      "nativeStep": "tables",
+      "nativeCache": "joined",
+      "status": 502
+    }
+  }
+}

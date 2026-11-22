@@ -1,0 +1,49 @@
+.editorial-work-handoff {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(960px, calc(100vw - 32px), 100%);
+  min-height: 77px;
+  margin: 24px auto;
+  border-top: 1px solid var(--wk-line, var(--line, currentColor));
+}
+
+.editorial-work-handoff h1 {
+  min-width: 0;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 35px;
+  overflow-wrap: anywhere;
+}
+
+[data-idol-witchx-native] .editorial-work-handoff h1 {
+  font-family: Orbitron, WitchText, sans-serif;
+}
+
+.editorial-work-handoff .editorial-work-handoff-action {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid currentColor;
+  color: var(--wk-ember, var(--ink, currentColor));
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 22px;
+  text-decoration: none;
+}
+
+.editorial-work-handoff-action span { font-size: 18px; }
+.editorial-work-handoff-action:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+@media (max-width: 600px) {
+  [data-idol-witchx-native] main:has(> .editorial-work-handoff) { width: calc(100% - 32px); }
+  .editorial-work-handoff { min-height: 73px; margin-block: 16px; }
+  .editorial-work-handoff h1 { font-size: 22px; line-height: 28px; }
+}

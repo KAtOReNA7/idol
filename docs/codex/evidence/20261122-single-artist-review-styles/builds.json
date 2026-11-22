@@ -1,0 +1,268 @@
+{
+  "baselineBuilderCommit": "b5b514ca39c2886b5c4d4f62add530a90f9d8725",
+  "runtime": "Node v24.16.0",
+  "before": "Original per-artist builders via Node module load hook on Windows, current project data and components, default local-original delivery.",
+  "after": "Native Windows and WSL builds to unique temporary outputs. Each success was checked for its theme, font file bytes, listed font URLs, artist directory and existing read-only boundary. Both platforms returned the same result per artist.",
+  "totalBuilders": 28,
+  "builtBefore": 1,
+  "builtAfterPerPlatform": 19,
+  "blockedByExistingStageIdentityPerPlatform": 9,
+  "resolvedForeignFontRejections": 18,
+  "artists": [
+    {
+      "artist": "adya",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 151990,
+      "fontFiles": 3,
+      "foreignArtistFontFiles": 0,
+      "theme": "adya",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "atheart",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 143339,
+      "fontFiles": 4,
+      "foreignArtistFontFiles": 0,
+      "theme": "atheart",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "bewave",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 147701,
+      "fontFiles": 1,
+      "foreignArtistFontFiles": 0,
+      "theme": "bewave",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "candyshop",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 150203,
+      "fontFiles": 3,
+      "foreignArtistFontFiles": 0,
+      "theme": "candyshop",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "cherrybullet",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 140095,
+      "fontFiles": 2,
+      "foreignArtistFontFiles": 0,
+      "theme": "cherrybullet",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "everglow",
+      "prior": "Review stage video identity mismatch: recvxyH5pz6LHw",
+      "builtOnBothPlatforms": false,
+      "firstUnmatchedWork": "Promise",
+      "unmatchedWorkId": "recvxyH5pz6LHw"
+    },
+    {
+      "artist": "fromis9",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 139225,
+      "fontFiles": 2,
+      "foreignArtistFontFiles": 0,
+      "theme": "fromis9",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "geenius",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 147628,
+      "fontFiles": 2,
+      "foreignArtistFontFiles": 0,
+      "theme": "geenius",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "genblue",
+      "prior": "Unexpected review CSS asset: /fonts/adya/ArchivoNarrow.ttf",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 171077,
+      "fontFiles": 32,
+      "foreignArtistFontFiles": 0,
+      "theme": "genblue",
+      "apiIsolationChecks": 8
+    },
+    {
+      "artist": "hearts2hearts",
+      "prior": "Review stage video identity mismatch: rec28ldfRTrI8S",
+      "builtOnBothPlatforms": false,
+      "firstUnmatchedWork": "STYLE",
+      "unmatchedWorkId": "rec28ldfRTrI8S"
+    },
+    {
+      "artist": "hitgs",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 143675,
+      "fontFiles": 2,
+      "foreignArtistFontFiles": 0,
+      "theme": "hitgs",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "idle",
+      "prior": "Review stage video identity mismatch: recvxyOz5Xa1EK",
+      "builtOnBothPlatforms": false,
+      "firstUnmatchedWork": "LATATA",
+      "unmatchedWorkId": "recvxyOz5Xa1EK"
+    },
+    {
+      "artist": "ifeye",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 127586,
+      "fontFiles": 0,
+      "foreignArtistFontFiles": 0,
+      "theme": "ifeye",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "izna",
+      "prior": "built",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 127824,
+      "fontFiles": 1,
+      "foreignArtistFontFiles": 0,
+      "theme": "izna",
+      "apiIsolationChecks": 9,
+      "priorCssBytes": 213736,
+      "priorFontFiles": 64
+    },
+    {
+      "artist": "izone",
+      "prior": "Review stage video identity mismatch: recvxyH5pzYOf3",
+      "builtOnBothPlatforms": false,
+      "firstUnmatchedWork": "Vampire",
+      "unmatchedWorkId": "recvxyH5pzYOf3"
+    },
+    {
+      "artist": "katseye",
+      "prior": "Review stage video identity mismatch: recvxIZd9vfxUk",
+      "builtOnBothPlatforms": false,
+      "firstUnmatchedWork": "Gnarly",
+      "unmatchedWorkId": "recvxIZd9vfxUk"
+    },
+    {
+      "artist": "kiiikiii",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 149845,
+      "fontFiles": 1,
+      "foreignArtistFontFiles": 0,
+      "theme": "kiiikiii",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "oddyouth",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 147055,
+      "fontFiles": 1,
+      "foreignArtistFontFiles": 0,
+      "theme": "oddyouth",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "rocketpunch",
+      "prior": "Review stage video identity mismatch: recvxyH5pzZ4x9",
+      "builtOnBothPlatforms": false,
+      "firstUnmatchedWork": "Bubble Up!",
+      "unmatchedWorkId": "recvxyH5pzZ4x9"
+    },
+    {
+      "artist": "saymyname",
+      "prior": "Review stage video identity mismatch: rec28ldfRTrNcl",
+      "builtOnBothPlatforms": false,
+      "firstUnmatchedWork": "ShaLala (Japanese version)",
+      "unmatchedWorkId": "rec28ldfRTrNcl"
+    },
+    {
+      "artist": "spia",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 146028,
+      "fontFiles": 3,
+      "foreignArtistFontFiles": 0,
+      "theme": "spia",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "tracer",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 144625,
+      "fontFiles": 2,
+      "foreignArtistFontFiles": 0,
+      "theme": "tracer",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "vcha",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 142730,
+      "fontFiles": 2,
+      "foreignArtistFontFiles": 0,
+      "theme": "vcha",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "vvup",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 144228,
+      "fontFiles": 1,
+      "foreignArtistFontFiles": 0,
+      "theme": "vvup",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "weeekly",
+      "prior": "Review stage video identity mismatch: recvxyH5pzMCLp",
+      "builtOnBothPlatforms": false,
+      "firstUnmatchedWork": "7days Tension",
+      "unmatchedWorkId": "recvxyH5pzMCLp"
+    },
+    {
+      "artist": "witchx",
+      "prior": "Unexpected review CSS asset: /artist/rocketpunch/official-boom/open-sans.woff2",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 143844,
+      "fontFiles": 8,
+      "foreignArtistFontFiles": 0,
+      "theme": "witchx",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "wooah",
+      "prior": "Unexpected review CSS asset: /fonts/adya/ArchivoNarrow.ttf",
+      "builtOnBothPlatforms": true,
+      "cssBytes": 210951,
+      "fontFiles": 34,
+      "foreignArtistFontFiles": 0,
+      "theme": "wooah",
+      "apiIsolationChecks": 9
+    },
+    {
+      "artist": "youngposse",
+      "prior": "Review alternative identity mismatch: rec28ldfRTrGj0",
+      "builtOnBothPlatforms": false,
+      "firstUnmatchedWork": "나의 이름은 (ROTY)",
+      "unmatchedWorkId": "rec28ldfRTrGj0"
+    }
+  ]
+}

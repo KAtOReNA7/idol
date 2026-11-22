@@ -184,7 +184,9 @@ test('build produces additive physical entries, actual components and original i
     assert.ok(indexCopy,'the actual CandidateIndexCard image must be present after returning to the group index');
     assert.equal(indexCopy.sha256,digest(path.join(root,'public',indexImage)));
     assert.equal(indexCopy.bytes,fs.statSync(path.join(root,'public',indexImage)).size);
-    assert.deepEqual(manifest.assets.filter(asset=>asset.path.includes('/batch-b-20261016-webp-v1/')).map(asset=>asset.path),[indexImage],'copy the exact ifeye index image without importing other index media');
+    const allowedImages=new Set([...bindings.map(binding=>binding.url),indexImage]);
+    const packedImages=manifest.assets.filter(asset=>/\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(asset.path)).map(asset=>asset.path);
+    assert.deepEqual(packedImages.sort(),[...allowedImages].sort(),'ship precisely the bound photographs, covers and current index image');
     const firstManifest=fs.readFileSync(path.join(out,'review-ifeye/manifest.json'),'utf8');
     execFileSync(process.execPath,['scripts/build-ifeye-review.mjs','--out',out],{cwd:root,stdio:'pipe'});
     assert.equal(fs.readFileSync(path.join(out,'review-ifeye/manifest.json'),'utf8'),firstManifest,'same source rebuild must be deterministic');

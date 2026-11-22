@@ -9,6 +9,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {build} from 'esbuild';
+import {singleArtistReviewStyles, reviewStyleInputs} from './single-artist-review-styles.mjs';
 import {createReadOnlyReviewFetch} from '../review/genblue/read-only-fetch.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -67,17 +68,13 @@ const result = await build({
   plugins:[{
     name:'genblue-review-boundary',
     setup(builder){
+      singleArtistReviewStyles(builder, root, 'genblue', ignoredStyles);
       builder.onResolve({filter:/^genblue-review-catalog$/},()=>({path:'catalog',namespace:'review-catalog'}));
       builder.onLoad({filter:/.*/,namespace:'review-catalog'},()=>({contents:'export default '+catalogText,loader:'js'}));
       builder.onResolve({filter:/\.css\?url$/},args=>({path:args.path,namespace:'review-style-url'}));
       builder.onLoad({filter:/.*/,namespace:'review-style-url'},args=>({contents:'export default '+(args.path.endsWith('/genblue-experience.css?url')?'"/review-genblue/genblue-experience.css"':'undefined'),loader:'js'}));
       // These imports belong to other group-specific details, absent from the
       // fixture. Their CSS and assets are not part of a one-group review build.
-      builder.onLoad({filter:/[/\\]app[/\\][^/\\]+-experience\.css$/},args=>{
-        if (['candidate-experience.css','genblue-experience.css'].includes(path.basename(args.path))) return;
-        ignoredStyles.push(path.relative(root,args.path));
-        return {contents:'',loader:'css'};
-      });
       builder.onResolve({filter:/^\/(?:artist|fonts)\//},args=>args.kind === 'url-token'?{path:args.path,external:true}:undefined);
     }
   }],logLevel:'warning'
@@ -128,7 +125,7 @@ fs.mkdirSync(path.join(out,'artists/genblue'),{recursive:true});
 fs.writeFileSync(path.join(out,'artists/genblue/index.html'),html);
 fs.writeFileSync(path.join(out,'_redirects'),'/artists/genblue /index.html 200\n');
 fs.writeFileSync(path.join(out,'_headers'),`/*\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: no-store\n  Content-Security-Policy: ${csp}\n`);
-const inputs = Object.keys(result.metafile.inputs).filter(file=>!file.includes('node_modules/')&&!file.startsWith('review-')).sort().map(file=>({path:file,sha256:sha(fs.readFileSync(path.join(root,file)))}));
+const inputs = [...new Set([...Object.keys(result.metafile.inputs).filter(file=>!file.includes('node_modules/')&&!file.startsWith('review-')),...reviewStyleInputs])].sort().map(file=>({path:file,sha256:sha(fs.readFileSync(path.join(root,file)))}));
 const sourceFingerprint = sha(JSON.stringify({inputs,assets:assetManifest,fixture:sha(fixtureBytes),catalog:sha(catalogText),builder:sha(read('scripts/build-genblue-review.mjs'))}));
 const manifest = {kind:'genblue-static-read-only-review',sourceBaseCommit:execFileSync('git',['rev-parse','HEAD'],{cwd:repo,encoding:'utf8'}).trim(),sourceFingerprint,sourceInputs:inputs,fixture:{path:fixturePath,sha256:sha(fixtureBytes)},catalogSha256:sha(catalogText),sanitizedRelations:18,apiIsolationChecks:8,ignoredOtherGroupStyles:ignoredStyles.sort(),assets:assetManifest,bundleInputs:Object.keys(result.metafile.inputs).sort()};
 fs.writeFileSync(path.join(out,'review-genblue/manifest.json'),JSON.stringify(manifest,null,2)+'\n');

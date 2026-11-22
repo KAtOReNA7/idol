@@ -157,11 +157,17 @@ test('build produces additive physical entries, actual components and original i
     for(const asset of manifest.assets) assert.equal(digest(path.join(out,asset.path)),asset.sha256,asset.path);
     assert.equal(manifest.assets.filter(asset=>asset.path.includes('/portraits/')).length,5);
     const compiledCss=fs.readFileSync(path.join(out,'review-kiiikiii/app.css'),'utf8');
-    assert.match(compiledCss,/\.kiiikiii-experience/,'the production record stylesheet is statically included');
+    assert.match(compiledCss,/\.work-experience/,'shared work layout is available on first render');
     assert.match(compiledCss,/\.kiiikiii-artist/);
     assert.doesNotMatch(compiledCss,/\.candidate-(?:wooah|genblue)-experience|\.wooah-experience|\.genblue-bluecut/);
     const recordInput=manifest.sourceInputs.find(input=>input.path==='app/kiiikiii-experience.css');
     assert.equal(recordInput.sha256,digest(path.join(root,recordInput.path)));
+    const recordUrl='/review-kiiikiii/kiiikiii-experience.css';
+    const appJs=fs.readFileSync(path.join(out,'review-kiiikiii/app.js'),'utf8');
+    assert.deepEqual([...appJs.matchAll(/\/review-[a-z0-9-]+\/[a-z0-9-]+-experience\.css/g)].map(match=>match[0]),[recordUrl]);
+    const recordCss=fs.readFileSync(path.join(out,recordUrl),'utf8');
+    assert.equal(recordCss,fs.readFileSync(path.join(root,recordInput.path),'utf8'));
+    assert.match(recordCss,/\.kiiikiii-experience/);
     const bindings=JSON.parse(fs.readFileSync(path.join(root,'data/kiiikiii-portraits.json')));
     for(const binding of bindings){const copy=manifest.assets.find(asset=>asset.path===binding.url);assert.ok(copy,binding.url);assert.equal(copy.sha256,binding.sha256);assert.equal(copy.bytes,binding.bytes);}
     assert.ok(manifest.assets.some(asset=>asset.path==='/artist/kiiikiii/hero.png'));

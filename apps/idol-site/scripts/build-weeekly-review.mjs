@@ -7,6 +7,7 @@ import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
+import {singleArtistReviewStyles, reviewStyleInputs} from './single-artist-review-styles.mjs';
 import {createReadOnlyReviewFetch} from '../review/weeekly/read-only-fetch.mjs';
 import {reviewNavigationSource,reviewTimelineSource} from '../review/weeekly/native-navigation.mjs';
 import {createWeeeklyReviewCatalog} from '../review/weeekly/catalog.mjs';
@@ -62,17 +63,13 @@ const result = await build({
   outfile:path.join(out,'review-weeekly/app.js'),bundle:true,format:'esm',platform:'browser',target:['es2022'],jsx:'automatic',
   minify:true,metafile:true,sourcemap:false,define:{'process.env.NODE_ENV':'"production"'},
   plugins:[{name:'weeekly-review-boundary',setup(builder){
+    singleArtistReviewStyles(builder, root, 'weeekly', ignoredStyles);
     builder.onLoad({filter:/[/\\]components[/\\](?:artist-timeline-host\.tsx|use-timeline-return\.ts)$/},args=>({contents:reviewTimelineSource(path.basename(args.path),fs.readFileSync(args.path,'utf8')),loader:args.path.endsWith('.tsx')?'tsx':'ts'}));
     builder.onLoad({filter:/[/\\]components[/\\]use-browse-journey\.ts$/},args=>({contents:reviewNavigationSource(fs.readFileSync(args.path,'utf8')),loader:'ts'}));
     builder.onResolve({filter:/^weeekly-review-catalog$/},()=>({path:'catalog',namespace:'review-catalog'}));
     builder.onLoad({filter:/.*/,namespace:'review-catalog'},()=>({contents:'export default '+catalogText,loader:'js'}));
     builder.onResolve({filter:/\.css\?url$/},args=>({path:args.path,namespace:'review-style-url'}));
     builder.onLoad({filter:/.*/,namespace:'review-style-url'},args=>({contents:'export default '+(args.path.endsWith('/weeekly-experience.css?url')?JSON.stringify('/review-weeekly/weeekly-experience.css?v='+sha(read('app/weeekly-experience.css')).slice(0,16)):'undefined'),loader:'js'}));
-    builder.onLoad({filter:/[/\\]app[/\\][^/\\]+-experience\.css$/},args=>{
-      if (['candidate-experience.css','weeekly-experience.css'].includes(path.basename(args.path))) return;
-      ignoredStyles.push(path.relative(root,args.path).split(path.sep).join('/'));
-      return {contents:'',loader:'css'};
-    });
     builder.onResolve({filter:/^\/(?:artist|fonts)\//},args=>args.kind === 'url-token' ? {path:args.path,external:true} : undefined);
   }}],logLevel:'warning'
 });
@@ -127,7 +124,7 @@ const html = `<!doctype html>
 <html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="${csp}"><title>Weeekly · 页面审阅</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/review-weeekly/app.css?v=${cssVersion}"><style>#weeekly-review-context{position:relative;z-index:5;padding:8px 16px;background:#000;color:#ddd;text-align:center;font:12px/1.5 system-ui,sans-serif}#weeekly-review-context a{text-decoration:underline;margin-left:12px}</style></head><body><aside id="weeekly-review-context" role="note">示例资料 · 评分不写入正式手帐<a href="/artists/weeekly">Weeekly 首页</a></aside><div id="root"></div><script type="module" src="/review-weeekly/app.js?v=${jsVersion}"></script></body></html>\n`;
 const entries=['artists/weeekly/index.html','review-weeekly/index.html','review-weeekly/records.html'];
 for (const entry of entries) {fs.mkdirSync(path.dirname(path.join(out,entry)),{recursive:true});fs.writeFileSync(path.join(out,entry),html);}
-const extraInputs=['review/weeekly/native-navigation.mjs','review/weeekly/catalog.mjs','scripts/build-weeekly-review.mjs','data/weeekly-review-editorial.json','data/weeekly-review-assets.json',recordStyle.source];
+const extraInputs=[...reviewStyleInputs,'review/weeekly/native-navigation.mjs','review/weeekly/catalog.mjs','scripts/build-weeekly-review.mjs','data/weeekly-review-editorial.json','data/weeekly-review-assets.json',recordStyle.source];
 const inputs=[...new Set([...Object.keys(result.metafile.inputs).filter(file=>!file.includes('node_modules/')&&fs.existsSync(path.join(root,file))),...extraInputs])].sort().map(file=>({path:file,sha256:sha(read(file))}));
 const sourceFingerprint=sha(JSON.stringify({inputs,assets:assetManifest,catalog:sha(catalogText)}));
 const manifest={kind:'weeekly-static-read-only-review',sourceFingerprint,sourceInputs:inputs,catalogSha256:sha(catalogText),sanitizedRelations:catalog.ratings.length,apiIsolationChecks:isolationCases.length,entries,recordsPath:'/review-weeekly/records.html',preservesExistingRoot:true,ignoredOtherGroupStyles:ignoredStyles.sort(),assets:assetManifest,bundleInputs:Object.keys(result.metafile.inputs).sort()};

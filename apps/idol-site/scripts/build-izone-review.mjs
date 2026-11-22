@@ -7,6 +7,7 @@ import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
+import {singleArtistReviewStyles, reviewStyleInputs} from './single-artist-review-styles.mjs';
 import {createReadOnlyReviewFetch} from '../review/izone/read-only-fetch.mjs';
 import {reviewNavigationSource,reviewTimelineSource} from '../review/izone/native-navigation.mjs';
 import {createIzoneReviewCatalog} from '../review/izone/catalog.mjs';
@@ -62,17 +63,13 @@ const result = await build({
   outfile:path.join(out,'review-izone/app.js'),bundle:true,format:'esm',platform:'browser',target:['es2022'],jsx:'automatic',
   minify:true,metafile:true,sourcemap:false,define:{'process.env.NODE_ENV':'"production"'},
   plugins:[{name:'izone-review-boundary',setup(builder){
+    singleArtistReviewStyles(builder, root, 'izone', ignoredStyles);
     builder.onLoad({filter:/[/\\]components[/\\](?:artist-timeline-host\.tsx|use-timeline-return\.ts)$/},args=>({contents:reviewTimelineSource(path.basename(args.path),fs.readFileSync(args.path,'utf8')),loader:args.path.endsWith('.tsx')?'tsx':'ts'}));
     builder.onLoad({filter:/[/\\]components[/\\]use-browse-journey\.ts$/},args=>({contents:reviewNavigationSource(fs.readFileSync(args.path,'utf8')),loader:'ts'}));
     builder.onResolve({filter:/^izone-review-catalog$/},()=>({path:'catalog',namespace:'review-catalog'}));
     builder.onLoad({filter:/.*/,namespace:'review-catalog'},()=>({contents:'export default '+catalogText,loader:'js'}));
     builder.onResolve({filter:/\.css\?url$/},args=>({path:args.path,namespace:'review-style-url'}));
     builder.onLoad({filter:/.*/,namespace:'review-style-url'},args=>({contents:'export default '+(args.path.endsWith('/izone-experience.css?url')?JSON.stringify('/review-izone/izone-experience.css?v='+sha(read('app/izone-experience.css')).slice(0,16)):'undefined'),loader:'js'}));
-    builder.onLoad({filter:/[/\\]app[/\\][^/\\]+-experience\.css$/},args=>{
-      if (['candidate-experience.css','izone-experience.css'].includes(path.basename(args.path))) return;
-      ignoredStyles.push(path.relative(root,args.path).split(path.sep).join('/'));
-      return {contents:'',loader:'css'};
-    });
     builder.onResolve({filter:/^\/(?:artist|fonts)\//},args=>args.kind === 'url-token' ? {path:args.path,external:true} : undefined);
   }}],logLevel:'warning'
 });
@@ -127,7 +124,7 @@ const html = `<!doctype html>
 <html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="${csp}"><title>IZ*ONE · 页面审阅</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/review-izone/app.css?v=${cssVersion}"><style>#izone-review-context{position:relative;z-index:5;padding:8px 16px;background:#000;color:#d2d0d4;text-align:center;font:12px/1.5 system-ui,sans-serif}#izone-review-context a{text-decoration:underline;margin-left:12px}</style></head><body><aside id="izone-review-context" role="note">示例资料 · 评分不写入正式手帐<a href="/artists/izone">IZ*ONE 首页</a></aside><div id="root"></div><script type="module" src="/review-izone/app.js?v=${jsVersion}"></script></body></html>\n`;
 const entries=['artists/izone/index.html','review-izone/index.html','review-izone/records.html'];
 for (const entry of entries) {fs.mkdirSync(path.dirname(path.join(out,entry)),{recursive:true});fs.writeFileSync(path.join(out,entry),html);}
-const extraInputs=['review/izone/native-navigation.mjs','review/izone/catalog.mjs','scripts/build-izone-review.mjs','data/izone-review-editorial.json','data/izone-review-assets.json',recordStyle.source];
+const extraInputs=[...reviewStyleInputs,'review/izone/native-navigation.mjs','review/izone/catalog.mjs','scripts/build-izone-review.mjs','data/izone-review-editorial.json','data/izone-review-assets.json',recordStyle.source];
 const inputs=[...new Set([...Object.keys(result.metafile.inputs).filter(file=>!file.includes('node_modules/')&&fs.existsSync(path.join(root,file))),...extraInputs])].sort().map(file=>({path:file,sha256:sha(read(file))}));
 const sourceFingerprint=sha(JSON.stringify({inputs,assets:assetManifest,catalog:sha(catalogText)}));
 const manifest={kind:'izone-static-read-only-review',sourceFingerprint,sourceInputs:inputs,catalogSha256:sha(catalogText),sanitizedRelations:catalog.ratings.length,apiIsolationChecks:isolationCases.length,entries,recordsPath:'/review-izone/records.html',preservesExistingRoot:true,ignoredOtherGroupStyles:ignoredStyles.sort(),assets:assetManifest,bundleInputs:Object.keys(result.metafile.inputs).sort()};

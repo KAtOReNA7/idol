@@ -8,6 +8,7 @@ import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
+import {singleArtistReviewStyles, reviewStyleInputs} from './single-artist-review-styles.mjs';
 import {createReadOnlyReviewFetch} from '../review/wooah/read-only-fetch.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -67,15 +68,11 @@ const result = await build({
   plugins:[{
     name:'wooah-review-boundary',
     setup(builder){
+      singleArtistReviewStyles(builder, root, 'wooah', ignoredStyles);
       builder.onResolve({filter:/^wooah-review-catalog$/},()=>({path:'catalog',namespace:'review-catalog'}));
       builder.onLoad({filter:/.*/,namespace:'review-catalog'},()=>({contents:'export default '+catalogText,loader:'js'}));
       builder.onResolve({filter:/\.css\?url$/},args=>({path:args.path,namespace:'review-style-url'}));
       builder.onLoad({filter:/.*/,namespace:'review-style-url'},args=>({contents:'export default '+(args.path.endsWith('/wooah-experience.css?url')?'"/review-wooah/wooah-experience.css"':'undefined'),loader:'js'}));
-      builder.onLoad({filter:/[/\\]app[/\\][^/\\]+-experience\.css$/},args=>{
-        if (['candidate-experience.css','wooah-experience.css'].includes(path.basename(args.path))) return;
-        ignoredStyles.push(path.relative(root,args.path));
-        return {contents:'',loader:'css'};
-      });
       builder.onResolve({filter:/^\/(?:artist|fonts)\//},args=>args.kind === 'url-token'?{path:args.path,external:true}:undefined);
     }
   }],logLevel:'warning'
@@ -124,7 +121,7 @@ const entries = ['artists/wooah/index.html','review-wooah/index.html','review-wo
 for (const entry of entries) { fs.mkdirSync(path.dirname(path.join(out,entry)),{recursive:true}); fs.writeFileSync(path.join(out,entry),html); }
 // Integrators copy these files additively, retaining the accepted root HTML,
 // GENBLUE bundle and hosting configuration. No root rewrite is required.
-const inputs = Object.keys(result.metafile.inputs).filter(file=>!file.includes('node_modules/')&&fs.existsSync(path.join(root,file))).sort().map(file=>({path:file,sha256:sha(read(file))}));
+const inputs = [...new Set([...Object.keys(result.metafile.inputs).filter(file=>!file.includes('node_modules/')&&fs.existsSync(path.join(root,file))),...reviewStyleInputs])].sort().map(file=>({path:file,sha256:sha(read(file))}));
 const sourceFingerprint = sha(JSON.stringify({inputs,assets:assetManifest,fixture:sha(fixtureBytes),catalog:sha(catalogText),builder:sha(read('scripts/build-wooah-review.mjs'))}));
 const manifest = {kind:'wooah-static-read-only-review',sourceFingerprint,sourceInputs:inputs,fixture:{path:fixturePath,sha256:sha(fixtureBytes)},catalogSha256:sha(catalogText),sanitizedRelations:56,apiIsolationChecks:isolationCases.length,entries,recordsPath:'/review-wooah/records.html',preservesExistingRoot:true,ignoredOtherGroupStyles:ignoredStyles.sort(),assets:assetManifest,bundleInputs:Object.keys(result.metafile.inputs).sort()};
 fs.writeFileSync(path.join(out,'review-wooah/manifest.json'),JSON.stringify(manifest,null,2)+'\n');

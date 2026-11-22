@@ -30,7 +30,25 @@ const currentCopyGuard={
 function beforeCloseoutGuard(current){
  const groupIntroductionGuard='1900aba8bbc5f4cca39f9e496c4a17afb902a63d6e79f68bb01b7f53f8eaf350';
  const revisedIntroductionGuard='c6543ed1669a598062e3c83abf634183b7a0c6020c4dd7f2429a83ba86c1a001';
- if(hash(current)==='51944d762c787e2bc9b4d145f362ccede93ff1610b1156944eef4def2f6b85b5'){
+ const publicMastheadGuard='51944d762c787e2bc9b4d145f362ccede93ff1610b1156944eef4def2f6b85b5';
+ if(current.imageReadQueueReview20261122){
+  assert.equal(hash(current),'a566d57cfecb90a7828795fca891365f233df4b81e4e1937d6f0506cf6296c97','complete closeout guard after the image read queue');
+  const restored=structuredClone(current);
+  const changes=restored.imageReadQueueReview20261122.changes;
+  assert.deepEqual(changes.map(change=>change.path),[
+   'lib/idol/design-review/sol15-runtime/private-images.mjs',
+   'lib/idol/udtt-native/host.mjs',
+   'lib/idol/udtt-native/image-recovery.mjs',
+  ]);
+  for(const change of changes){
+   assert.deepEqual(restored.runtimeGuards[change.path],change.reviewed);
+   restored.runtimeGuards[change.path]=change.previous;
+  }
+  delete restored.imageReadQueueReview20261122;
+  assert.equal(hash(restored),publicMastheadGuard,'complete closeout guard before the image read queue');
+  current=restored;
+ }
+ if(hash(current)===publicMastheadGuard){
   const restored=structuredClone(current);
   const [change]=restored.publicBrandReview20261122.changes;
   assert.equal(change.path,'lib/idol/udtt-native/presentation.mjs');

@@ -39,6 +39,10 @@ async function fixture(t) {
   return dir;
 }
 test('full font derivatives, retained sources and licenses are immutable pinned artifacts', () => {
+  const recovery = 'lib/idol/udtt-native/image-recovery.mjs';
+  const fontManifest = JSON.parse(fs.readFileSync(path.join(root, 'scripts/udtt-font-retention-manifest.json')));
+  const imageManifest = JSON.parse(fs.readFileSync(path.join(root, 'scripts/udtt-private-build-assets-manifest.json')));
+  assert.deepEqual(fontManifest.runtimeGuards[recovery], imageManifest.runtimeGuards[recovery]);
   for (const e of entries) {
     assert.equal(fs.statSync(path.join(root,'public',e.path)).size,e.bytes);
     assert.equal(hash(path.join(root,'public',e.path)),e.sha256);

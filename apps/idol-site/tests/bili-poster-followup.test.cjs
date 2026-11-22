@@ -44,6 +44,11 @@ test('the observed Password thumbnail retains its actual decoded dimensions and 
     ...require('../data/public-recognition-editions.json'),
    ];
    const portraitPaths=new Set();
+   const laterFontAssets=new Set([
+    '/artist/cherrybullet/fonts/NanumGothic.woff2','/artist/cherrybullet/fonts/NanumGothicBold.woff2',
+    '/artist/cherrybullet/fonts/OFL.txt','/artist/illit/redesign-20261025/pixelify-sans-bold.woff2',
+    '/fonts/InstrumentSerif-Regular.woff2','/fonts/Syne.woff2',
+   ]);
    for(const {preview,original} of editions.flatMap(edition=>Object.values(edition.portraits))){
     portraitPaths.add(preview);
     portraitPaths.add(original);
@@ -51,7 +56,7 @@ test('the observed Password thumbnail retains its actual decoded dimensions and 
    manifest.assets=manifest.assets.filter(row=>{
     const artistWebfont=/^\/fonts\/(?:adya\/ArchivoNarrow|vvup\/Archivo-Italic|witchx\/Rajdhani-[0-3])\.woff2$/.test(row.path);
     const editionPhoto=row.path.startsWith('/artist/recognition-editions/')&&portraitPaths.has(row.path);
-    const addedAfterReceipt=artistWebfont||row.path==='/fonts/NunitoSans-Variable.woff2'||editionPhoto||laterCollections.some(directory=>row.path.startsWith(directory));
+    const addedAfterReceipt=artistWebfont||row.path==='/fonts/NunitoSans-Variable.woff2'||laterFontAssets.has(row.path)||editionPhoto||laterCollections.some(directory=>row.path.startsWith(directory));
     if(!styles.has(row.path)&&!addedAfterReceipt)return true;
     const actual=fs.readFileSync(path.join(__dirname,'../public',row.path));
     assert.equal(row.delivery,'local',row.path);

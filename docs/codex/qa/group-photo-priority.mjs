@@ -44,24 +44,24 @@ function readOpening({slug, hero, photo, actions}) {
       (slug!=='weeekly'||!document.querySelector('img[src*="bliss-banner"]')))};
 }
 
-function readUdtt() {
-  const outer=document.querySelector('[data-udtt-native-host]'), parent=[outer,...(outer?.querySelectorAll('*')??[])].find(e=>e?.shadowRoot);
-  const root=parent?.shadowRoot;
-  const cards=Array.from(root?.querySelectorAll('.ud-home-works .ud-edition-home')??[]).map(el=>{
-    const sleeve=el.querySelector('.ud-sleeve'), box=sleeve.getBoundingClientRect();
-    return {title:el.querySelector('h2')?.textContent.trim(),w:Math.round(box.width),h:Math.round(box.height),target:sleeve.getAttribute('href')};
+function udttRequests() {
+  if(typeof performance==='undefined'||typeof performance.getEntriesByType!=='function')return null;
+  return performance.getEntriesByType('resource').flatMap(entry=>{
+    const url=new URL(entry.name);
+    const catalog=url.pathname==='/api/catalog'&&url.searchParams.get('artist')==='udtt';
+    const viewer=['/api/editorial-assets/viewer','/api/manage/editorial-assets/viewer'].includes(url.pathname);
+    return url.origin===location.origin&&(catalog||viewer)
+      ? [{path:url.pathname,startMs:Math.round(entry.startTime),endMs:Math.round(entry.responseEnd)}] : [];
   });
-  const [one,two]=cards, equalCovers=!!(one&&two&&one.w>0&&one.h>0&&Math.abs(one.w-two.w)<=1&&Math.abs(one.h-two.h)<=1);
-  let requests=null;
-  if(typeof performance!=='undefined' && typeof performance.getEntriesByType==='function'){
-    const rows=performance.getEntriesByType('resource').filter(e=>e.name.includes('/api/catalog?artist=udtt')||e.name.includes('/editorial-assets/viewer'));
-    requests=rows.map(e=>({path:new URL(e.name).pathname,startMs:Math.round(e.startTime),endMs:Math.round(e.responseEnd)}));
-  }
-  const index=requests?.find(e=>e.path.endsWith('/editorial-assets/viewer')), cat=requests?.find(e=>e.path==='/api/catalog');
-  const overlapMs=index&&cat?Math.min(index.endMs,cat.endMs)-Math.max(index.startMs,cat.startMs):null;
-  return {width:document.documentElement.clientWidth,cards,equalCovers,requests,overlapMs,
-    ownerIndex:index?index.path==='/api/manage/editorial-assets/viewer':null,
-    ok:equalCovers&&cards.length===2&&cards.every(card=>card.target)};
+}
+
+function udttCard(anchor) {
+  const card=anchor.closest('.ud-edition-home'), sleeve=anchor.getBoundingClientRect();
+  const title=card.querySelector('h2'), detail=card.querySelector('.ud-text-link').getBoundingClientRect();
+  return {title:title.textContent.trim(),w:Math.round(sleeve.width),h:Math.round(sleeve.height),
+    rowHeight:Math.round(card.getBoundingClientRect().height),detailHeight:Math.round(detail.height),
+    detailNextToCover:title.getBoundingClientRect().left>=sleeve.right-1,marginRight:Math.round(document.documentElement.clientWidth-card.getBoundingClientRect().right),
+    target:anchor.getAttribute('href')};
 }
 
 /** Run on a new, muted built-in browser tab at each requested desktop/mobile viewport. */
@@ -108,15 +108,36 @@ export async function checkGroupPhotoPriority(tab,{site=production,slugs=Object.
 }
 
 export async function checkUdttPhotoLayout(tab,{site=production,timeoutMs=30000}={}) {
-  await tab.goto(new URL('/artists/udtt',site).href);
+  const home=new URL('/artists/udtt',site);
+  await tab.goto(home.href);
   const sleeves=tab.playwright.locator('.ud-home-works .ud-edition-home .ud-sleeve');
   await sleeves.first().waitFor({state:'visible',timeoutMs});
-  const row=await tab.playwright.evaluate(readUdtt);
-  const target=await sleeves.first().getAttribute('href');
-  await sleeves.first().click({timeoutMs});
-  const expected=new URL(target,site);
-  const opened=await tab.playwright.evaluate(()=>location.pathname+location.search);
-  await tab.back();
-  await sleeves.first().waitFor({state:'visible',timeoutMs});
-  return {...row,opened,returned:true,ok:row.ok&&opened===expected.pathname+expected.search};
+  const width=await tab.playwright.evaluate(()=>document.documentElement.clientWidth);
+  const requests=await tab.playwright.evaluate(udttRequests).catch(()=>null);
+  const index=requests?.find(r=>r.path.endsWith('/editorial-assets/viewer'));
+  const catalog=requests?.find(r=>r.path==='/api/catalog');
+  const overlapMs=index&&catalog?Math.min(index.endMs,catalog.endMs)-Math.max(index.startMs,catalog.startMs):null;
+  const cards=[],visits=[],expectedTitles=['School Rush','VIPER','RETRY'],count=await sleeves.count();
+  for(let i=0;i<count;i++){
+    const sleeve=sleeves.nth(i);
+    await sleeve.press('Tab',{timeoutMs});
+    const observation=await imageSize(sleeve.locator('img'),Math.min(timeoutMs,12000));
+    const card=await sleeve.evaluate(udttCard);
+    cards.push({...card,natural:observation.size,decoded:observation.complete&&observation.size.every(Boolean)});
+    const target=new URL(card.target,home);
+    if(i===1)await sleeve.press('Enter',{timeoutMs});else await sleeve.click({timeoutMs});
+    const heading=tab.playwright.locator('.ud-release-opening h1');
+    await heading.waitFor({state:'visible',timeoutMs});
+    const title=await heading.evaluate(el=>el.textContent.trim()),opened=new URL(await tab.url());
+    await tab.back();
+    await sleeves.first().waitFor({state:'visible',timeoutMs});
+    const returned=new URL(await tab.url());
+    visits.push({title,opened:opened.pathname+opened.search+opened.hash,
+      returned:returned.pathname===home.pathname&&(!returned.hash||returned.hash==='#/udtt/home'),
+      matched:title===card.title&&opened.href===target.href});
+  }
+  const equalCovers=cards.length===3&&cards.every(c=>Math.abs(c.w-cards[0].w)<=1&&c.w===c.h);
+  const fits=cards.every(c=>c.detailNextToCover&&c.detailHeight>=44&&c.marginRight>=0&&c.w>=80&&c.w<=(width<=760?99:169));
+  return {width,cards,equalCovers,requests,overlapMs,ownerIndex:index?index.path==='/api/manage/editorial-assets/viewer':null,visits,
+    ok:equalCovers&&fits&&cards.every((c,i)=>c.title===expectedTitles[i]&&c.decoded)&&visits.every(v=>v.matched&&v.returned)};
 }

@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {artist,render} from '../lib/idol/design-review/sol15-runtime/groups/udtt/index.js';
 import {helpers} from '../lib/idol/design-review/sol15-runtime/model.mjs';
 import {publicWorkDescription,publicMemberSources,publicWorkSources} from '../lib/idol/design-review/sol15-runtime/groups/udtt/presentation.js';
+import {navigation,releaseEventPairs} from '../lib/idol/design-review/sol15-runtime/groups/udtt/relations.mjs';
 const {parseHTML}=process.env.UDTT_DOM_MODULE?await import(process.env.UDTT_DOM_MODULE):{};
 const route=(page,key=null)=>({slug:'udtt',page,key,query:new URLSearchParams()});
 const routes=[...['home','members','works','timeline'].map(page=>route(page)),...artist.members.map(member=>route('member',member.id)),...artist.works.map(work=>route('work',helpers.entityKey(work)))];
@@ -25,6 +26,28 @@ for(const r of routes)test(`parsed public copy: ${r.page}${r.key?': '+r.key:''}`
  for(const forbidden of ['metadata version matching','audio fingerprinting','full viewing','依据公开标题','未逐句核对','不据此判定真唱','来源核验','主办方原稿','发行者原稿','未知，不作'])assert.equal(text.includes(forbidden),false,forbidden);
  if(r.page==='member'){const member=artist.members.find(m=>m.id===r.key);assert.ok(text.includes(member.profile||member.summary));assert.equal(main.querySelectorAll('details.ud-sources').length,1);const links=[...main.querySelectorAll('.ud-sources a')].map(node=>node.getAttribute('href'));assert.equal(new Set(links).size,links.length);assert.equal(links.length,publicMemberSources(member).length);}
  if(r.page==='work'){const work=artist.works.find(w=>helpers.entityKey(w)===r.key);assert.equal(main.querySelector('h1').textContent,work.title);if(work.date)assert.equal(main.querySelector('time').textContent,helpers.dateLabel(work.date));if(work.description)assert.equal(text.includes(work.description),false);}
- if(r.page==='timeline'){const events=helpers.sortTimeline(artist.timeline),rows=[...main.querySelectorAll('li[data-event-id]')];assert.equal(rows.length,4);rows.forEach((node,index)=>{const event=events[index];assert.equal(node.getAttribute('data-event-id'),event.id);assert.equal(node.querySelector('time').getAttribute('datetime'),event.date);assert.equal(node.querySelector('time').textContent,helpers.dateLabel(event.date,event.precision));assert.equal(node.querySelector('h2').textContent,event.title);assert.equal(node.querySelectorAll('p,a,details,dl').length,0);assert.equal(node.textContent,helpers.dateLabel(event.date,event.precision)+event.title);});}
+ if(r.page==='timeline'){
+  const events=helpers.sortTimeline(artist.timeline),rows=[...main.querySelectorAll('li[data-event-id]')];
+  const pairs=releaseEventPairs(artist),nav=navigation(artist,r,helpers);
+  assert.equal(rows.length,4);
+  rows.forEach((node,index)=>{
+   const event=events[index],date=helpers.dateLabel(event.date,event.precision);
+   assert.equal(node.getAttribute('data-event-id'),event.id);
+   assert.equal(node.querySelector('time').getAttribute('datetime'),event.date);
+   assert.equal(node.querySelector('time').textContent,date);
+   assert.equal(node.querySelector('h2').textContent,event.title);
+   const pair=pairs.find(p=>p.event.id===event.id);
+   const actions=[...node.querySelectorAll('p,a,details,dl')];
+   assert.deepEqual(actions.map(el=>el.localName),pair?['p','a']:[]);
+   const label=pair?`查看《${pair.work.title}》发行资料 ↗`:'';
+   if(pair){
+    const key=helpers.entityKey(pair.work),anchor=actions[1];
+    assert.equal(anchor.getAttribute('data-udtt-event-release'),key);
+    assert.equal(anchor.getAttribute('href'),nav.enter('work',key,{event:event.id}));
+    assert.equal(anchor.textContent,label);
+   }
+   assert.equal(node.textContent,date+event.title+label);
+  });
+ }
 });
 test('write the optional all-route visible text audit only after every parsed route completed',{skip:!parseHTML&&'Requires parsed DOM'},()=>{assert.equal(report.length,14);if(process.env.UDTT_COPY_REPORT)fs.writeFileSync(process.env.UDTT_COPY_REPORT,JSON.stringify({note:'Includes all parsed text, including collapsed source labels; not visual browser acceptance.',routes:report},null,2)+'\n');});

@@ -259,6 +259,7 @@ test('COCOCO credits each member’s own official photo and keeps the following 
 });
 
 const reviewedReleases = [
+  ['Forever (약속)', 'aespa-forever-202102', 'recvxyHuKM4HSw', 'wog1R1d4zls', 4],
   ['Danger', 'wooah-joy-danger-202206', 'recvxyH5pz4vBM', '_X9720wjipE', 5],
   ['Catch the Stars', 'wooah-catch-the-stars-202201', 'recvxyH5pzzH06', 'g5B6zCSMrcc', 5],
   ['COCOCO', 'genblue-cococo-202408', 'rec28ldfRTrCU6', 'Ke5jk7Ngpqs', 6],
@@ -281,6 +282,35 @@ const reviewedReleases = [
   ["I Don't Miss U", 'qurious-2020', 'recvxyH5pz4VGa', 'hPzz4cRxtco', 5],
   ['I DO ME', 'kiiikiii-uncut-gem-2025', 'rec28ldfRTrAb0', 'hAEfi_SKTEU', 5],
 ];
+
+test('Forever keeps the Black Mamba originals and credits the SM release portraits for the right members', async () => {
+  const work = {id: 'recvxyHuKM4HSw', url: 'https://www.youtube.com/watch?v=wog1R1d4zls'};
+  const februaryFirst = 'https://www.spotvnews.co.kr/news/articleView.html?idxno=402713';
+  const februarySecond = 'https://enter.etoday.co.kr/news/view/196755';
+  const members = [
+    ['recvxyICzHaPe7', 'giselle', februarySecond],
+    ['recvxyICzH9h49', 'karina', februaryFirst],
+    ['recvxyICzHE7ST', 'ningning', februaryFirst],
+    ['recvxyICzHT9Ft', 'winter', februarySecond],
+  ];
+  for (const [memberId, name, sourceUrl] of members) {
+    const photo = mvRecognitionEdition({workId: work.id, videoId: 'wog1R1d4zls', memberId});
+    const earlier = mvRecognitionEdition({workId: 'recvxyHrxVovnG', videoId: 'ZeerrnuLi5E', memberId});
+    const prefix = '/artist/recognition-editions/aespa/forever-' + name;
+    assert.equal(photo.preview, prefix + '.card.webp');
+    assert.equal(photo.original, prefix + '.original.jpg');
+    assert.equal(photo.sourceUrl, sourceUrl);
+    assert.equal(earlier.label, 'Black Mamba · 本次发行概念照');
+    assert.deepEqual(photo.previousEdition, {
+      original: earlier.original, sourceUrl: earlier.sourceUrl, label: '《Black Mamba》概念照',
+    });
+    const html = renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId, label: name, selectEdition: mvRecognitionEdition}));
+    assert.ok(html.includes('查看《Black Mamba》概念照') && html.includes('查看原作品图'), name);
+    const preview = await sharp(path.join(__dirname, '../public', photo.preview)).metadata();
+    const full = await sharp(path.join(__dirname, '../public', photo.original)).metadata();
+    assert.deepEqual([preview.width, preview.height, full.width, full.height], [480, 640, 2000, 2997], name);
+  }
+});
 
 const wooahPostSets = [
   {

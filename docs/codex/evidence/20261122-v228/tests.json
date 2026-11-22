@@ -1,0 +1,282 @@
+{
+  "applicationCommit": "dab8d049ddf0caa7aa11b46d84ebb98d323bc7e1",
+  "baselineApplicationCommit": "e3de21d3749b62a77c070b1d816d581b72c1dce3",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {
+        "tests": 4196,
+        "pass": 4026,
+        "fail": 131,
+        "skipped": 39,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "full": {
+        "log": {
+          "name": "full-win.tap",
+          "bytes": 2045911
+        },
+        "nodeSuites": {
+          "main": {
+            "tests": 4159,
+            "pass": 3989,
+            "fail": 131,
+            "cancelled": 0,
+            "skipped": 39,
+            "todo": 0
+          },
+          "isolatedArtistRuntime": {
+            "tests": 9,
+            "pass": 9,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "personalInsights": {
+            "tests": 31,
+            "pass": 31,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "nodeTotal": {
+          "tests": 4199,
+          "pass": 4029,
+          "fail": 131,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "pythonPassedByMode": {
+          "default": 4,
+          "optimized": 4
+        },
+        "exitCode": 1
+      },
+      "retainedFailureCount": 131,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "catalog projection and social enrichment preserve their original errors and precise cold step",
+        "joined readers keep separate request traces and observe the same failed cold operation",
+        "opaque owner read failures identify their native operation without retrying or exposing data"
+      ],
+      "removedTests": [],
+      "verify": {
+        "log": {
+          "name": "verify-win.log",
+          "bytes": 237442
+        },
+        "nodeSuites": {
+          "current": {
+            "tests": 1301,
+            "pass": 1301,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "optimizedPythonPreflight": {
+            "tests": 19,
+            "pass": 19,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "builtAssets": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "typecheck": "passed",
+        "productionBuild": "passed",
+        "pythonPasses": {
+          "batch": 4,
+          "optimizedBatch": 4,
+          "builtCssHttp": 7
+        },
+        "stageValidation": {
+          "inventory": 614,
+          "sources": 527,
+          "valid": true
+        },
+        "supplementValidation": {
+          "works": 137,
+          "alternatives": 88,
+          "reviews": 70,
+          "runtimeAlternatives": 50,
+          "scoreBindings": 0
+        },
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "publicRef": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+          "recognitionRef": "c953afa5a3829737dc6bfacd62439a524fe03df9",
+          "releasePortraitRef": "59e5d54969f46f43f7004c79667b524f549342b4",
+          "remoteCopies": 5995,
+          "remoteBytes": 3958966888,
+          "restrictedCopies": 10,
+          "restrictedAliases": 1,
+          "localAssets": 586,
+          "localBytes": 16905055
+        },
+        "cssFixture": {
+          "themes": 50,
+          "fontFiles": 105,
+          "fontPaths": 68,
+          "bundleBytes": 1210962
+        },
+        "exitCode": 0
+      }
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {
+        "tests": 4196,
+        "pass": 4030,
+        "fail": 127,
+        "skipped": 39,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "full": {
+        "log": {
+          "name": "full-linux.tap",
+          "bytes": 2066288
+        },
+        "nodeSuites": {
+          "main": {
+            "tests": 4159,
+            "pass": 3993,
+            "fail": 127,
+            "cancelled": 0,
+            "skipped": 39,
+            "todo": 0
+          },
+          "isolatedArtistRuntime": {
+            "tests": 9,
+            "pass": 9,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "personalInsights": {
+            "tests": 31,
+            "pass": 31,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "nodeTotal": {
+          "tests": 4199,
+          "pass": 4033,
+          "fail": 127,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "pythonPassedByMode": {
+          "default": 4,
+          "optimized": 4
+        },
+        "exitCode": 1
+      },
+      "retainedFailureCount": 127,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "catalog projection and social enrichment preserve their original errors and precise cold step",
+        "joined readers keep separate request traces and observe the same failed cold operation",
+        "opaque owner read failures identify their native operation without retrying or exposing data"
+      ],
+      "removedTests": [],
+      "verify": {
+        "log": {
+          "name": "verify-linux.log",
+          "bytes": 239807
+        },
+        "nodeSuites": {
+          "current": {
+            "tests": 1301,
+            "pass": 1301,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "optimizedPythonPreflight": {
+            "tests": 19,
+            "pass": 19,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          },
+          "builtAssets": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        "typecheck": "passed",
+        "productionBuild": "passed",
+        "pythonPasses": {
+          "batch": 4,
+          "optimizedBatch": 4,
+          "builtCssHttp": 7
+        },
+        "stageValidation": {
+          "inventory": 614,
+          "sources": 527,
+          "valid": true
+        },
+        "supplementValidation": {
+          "works": 137,
+          "alternatives": 88,
+          "reviews": 70,
+          "runtimeAlternatives": 50,
+          "scoreBindings": 0
+        },
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "publicRef": "b8eac29b77eebf12103f0f5174d41c73744a3ba3",
+          "recognitionRef": "c953afa5a3829737dc6bfacd62439a524fe03df9",
+          "releasePortraitRef": "59e5d54969f46f43f7004c79667b524f549342b4",
+          "remoteCopies": 5995,
+          "remoteBytes": 3958966888,
+          "restrictedCopies": 10,
+          "restrictedAliases": 1,
+          "localAssets": 586,
+          "localBytes": 16905055
+        },
+        "cssFixture": {
+          "themes": 50,
+          "fontFiles": 105,
+          "fontPaths": 68,
+          "bundleBytes": 1210962
+        },
+        "exitCode": 0
+      }
+    }
+  }
+}

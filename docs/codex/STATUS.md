@@ -2,11 +2,13 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v227。十团发行筛选及作品入口已修正，EVERGLOW《SLAY》换用六人同次发行照，W!TCHX 已补成员图出处并修正页脚团标。《Magnetic》《ATTITUDE》静音实播 4K，《BILLIONAIRE》首发版尚无解码画面。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [v227 回执](worklogs/20261122-v227-release.md) |
+| 正式站 | v228。十团发行筛选、作品海报站内入口与《SLAY》同期照片已上线。目录故障可细分到读取步骤。《BILLIONAIRE》首发版仍未出画，《Magnetic》《ATTITUDE》静音解码 4K。[正式站](https://idol-lens-private.wuke40758.chatgpt.site) · [本批回执](worklogs/20261122-v228-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v227 正式应用提交 `e3de21d3`。[发布回执](evidence/20261122-v227/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，v228 正式应用提交 `dab8d049`。[发布回执](evidence/20261122-v228/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
+
+v228 在隔离故障对照中从 0/8 提到 8/8 可区分具体读取步骤。正式抽测中三团代表卡以及前次较慢的两条作品库路径均抵达播放器按钮并返回。IVE 时间轴 22 个关联目标均已逐个实点。完整测试两端各 4,199 项，均无新增失败。[正式数据与范围](worklogs/20261122-v228-release.md)
 
 v227 在手机与桌面逐一检查十团发行目录。两档宽度各保留 49 张唱片，混入的影像从 78 条降至 0 条，打开唱片后返回原发行筛选从 0/10 升至 10/10。八团样本的 MV 封面主操作均改为站内作品，桌面首轮 6/8 看见播放按钮并返回，Geenius《Voyage》和 TRACER《365》重走均通过。三支正式静音短播中有两支解码 3840 × 2160。《BILLIONAIRE》仍在等待，七人的照片下评分两宽共 14/14 可展开。四场指定 B 站舞台站内高清仍为 0/4。[正式操作、短播与同条件前后对照](worklogs/20261122-v227-release.md)
 

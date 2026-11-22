@@ -1,0 +1,256 @@
+{
+  "date": "2026-11-22",
+  "environment": "Windows, isolated workerd/Miniflare HTTP GET with temporary D1, synthetic records and test authentication",
+  "baseline": "v227",
+  "candidate": "v228 working tree",
+  "fixture": "apps/idol-site/tests/work-detail-d1.test.cjs",
+  "request": "Same ordinary work-detail GET and injection point in both runs. Generation advanced between cold reads; the last case uses a warm cache.",
+  "production": "Two v227 terminal events only reported native-read/unknown. These controlled failures exercise the same signature; their injected causes do not identify the historical cause.",
+  "checks": [
+    {
+      "injection": "source-generation",
+      "baseline": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "candidate": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "source-generation",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "injectedCalls": [
+        1,
+        1
+      ]
+    },
+    {
+      "injection": "snapshot",
+      "baseline": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "candidate": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "snapshot",
+        "nativeCache": "miss",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "injectedCalls": [
+        1,
+        1
+      ]
+    },
+    {
+      "injection": "table-schema",
+      "baseline": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "candidate": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "table-schema",
+        "nativeCache": "miss",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "injectedCalls": [
+        1,
+        1
+      ]
+    },
+    {
+      "injection": "table-rows",
+      "baseline": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "candidate": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "table-rows",
+        "nativeCache": "miss",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "injectedCalls": [
+        1,
+        1
+      ]
+    },
+    {
+      "injection": "table-decode",
+      "baseline": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "data",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "candidate": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "data",
+        "nativeStep": "table-decode",
+        "nativeCache": "miss",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "injectedCalls": [
+        1,
+        1
+      ]
+    },
+    {
+      "injection": "cache-generation",
+      "baseline": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "candidate": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "cache-generation",
+        "nativeCache": "miss",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "injectedCalls": [
+        1,
+        1
+      ]
+    },
+    {
+      "injection": "response-generation",
+      "baseline": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "candidate": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "response-generation",
+        "nativeCache": "miss",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "injectedCalls": [
+        1,
+        1
+      ]
+    },
+    {
+      "injection": "personal-ratings",
+      "baseline": {
+        "event": "idol_catalog_read_failed",
+        "phase": "member-ratings",
+        "kind": "unknown",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "candidate": {
+        "event": "idol_catalog_read_failed",
+        "phase": "member-ratings",
+        "kind": "unknown",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "injectedCalls": [
+        1,
+        1
+      ]
+    },
+    {
+      "injection": "public-control",
+      "baseline": {
+        "event": "idol_catalog_read_failed",
+        "phase": "public-read",
+        "kind": "unknown",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "candidate": {
+        "event": "idol_catalog_read_failed",
+        "phase": "public-read",
+        "kind": "unknown",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "injectedCalls": [
+        1,
+        1
+      ]
+    },
+    {
+      "injection": "warm-final",
+      "baseline": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "candidate": {
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "response-generation",
+        "nativeCache": "hit",
+        "status": 502,
+        "retried": false,
+        "cancelled": false
+      },
+      "injectedCalls": [
+        1,
+        1
+      ]
+    }
+  ]
+}

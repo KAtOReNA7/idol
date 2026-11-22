@@ -60,12 +60,13 @@ function installProbe(duration) {
   return true;
 }
 
-function onWork(actual, page) {
+export function onWork(actual, page) {
   const location = new URL(actual);
   return location.origin === page.origin && location.pathname === page.pathname
     && location.searchParams.get('view') === 'works'
     && location.searchParams.get('work') === page.searchParams.get('work')
-    && (location.searchParams.get('video') || 'mv') === 'mv';
+    && location.searchParams.getAll('video').length <= 1
+    && (location.searchParams.get('video') ?? 'mv') === 'mv';
 }
 
 export async function checkOkVideo(tab, work, site, timeoutMs) {

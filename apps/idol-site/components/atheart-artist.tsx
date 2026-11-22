@@ -59,10 +59,10 @@ export default function AtheartArtist(){
  const memberCards=(rows:typeof editorial.members)=><div className="ah-roster">{rows.map(m=><ArtistRosterMemberLink className="ah-person" key={m.id} memberId={m.id} href={sectionUrl({section:'members',member:m.id,release:null,media:null,format:null})}><span className="ah-portrait"><Picture src={m.image} label={m.cnName+' · '+m.stageName}/></span><span className="ah-person-name"><strong>{m.stageName}</strong><span>{m.cnName}</span><b aria-hidden="true">↗</b></span></ArtistRosterMemberLink>)}</div>;
  const releaseCards=(rows:typeof editorial.releases)=><div className="ah-releases">{rows.map(r=><button key={r.key} className="ah-release" onClick={()=>navigate({section:'works',release:r.key,media:null,format:null})}><Picture src={r.image} label={r.title+' 发行封面'}/><span><small>{r.date} / {r.tracks} 曲</small><strong>{r.title}</strong><b aria-hidden="true">↗</b></span></button>)}</div>;
  const videoCards=(rows:Video[])=><div className="ah-videos">{rows.map(v=>{
-   const homeMv=section==='overview'&&!memberId&&!releaseKey&&!mediaKey&&v.type==='mv';
-   const direct=homeMv?artistMvHref(data,groupId,'https://www.youtube.com/watch?v='+v.videoId,returnTo):null;
+   const isMv=v.type==='mv';
+   const direct=isMv?artistMvHref(data,groupId,'https://www.youtube.com/watch?v='+v.videoId,returnTo,v.workId):null;
    const patch={section:'works',media:v.key,format:v.type,release:null};
-   const target=direct??(homeMv?sectionUrl(patch):undefined);
+   const target=direct??(isMv?sectionUrl(patch):undefined);
    const Card=target?'a':'button';
    function openVideo(event:MouseEvent){
     if(direct){remember();return;}
@@ -106,7 +106,7 @@ export default function AtheartArtist(){
  return <ImageRecoveryProvider><div className="atheart-artist"><a className="ah-skip" href="#ah-content">跳到内容</a><header className="ah-header"><div className="ah-brandbar"><button className="ah-brand" onClick={()=>select('overview')} aria-label="AtHeart 首页"><img src={editorial.logo} alt="AtHeart"/></button><a className="ah-home-link" href="/?view=groups">团体索引 ↗</a></div><nav aria-label="AtHeart 导航">{sections.map(({key,label,Icon})=><button key={key} aria-current={section===key?'page':undefined} onClick={()=>select(key)}><Icon size={20} strokeWidth={1.7}/><span>{label}</span></button>)}</nav></header>
  <main id="ah-content" tabIndex={-1}>
  {section==='overview'&&!memberId&&!releaseKey&&!mediaKey&&<>
-<section className="ah-hero"><h1 className="ah-sr-only">AtHeart · 成员、音乐与手帐</h1><figure><OriginalPhotoLink className="ah-hero-art" href={editorial.hero} onOpen={src=>showImage(src,'AtHeart · 日本官网团体主图')} aria-label="查看 AtHeart 团照原图"><Picture src={editorial.hero} label="AtHeart · 日本官网团体主图" priority/></OriginalPhotoLink><figcaption><span>AtHeart（앳하트） · TITAN CONTENT</span><OriginalPhotoLink className="ah-hero-original" href={editorial.hero} onOpen={src=>showImage(src,'AtHeart · 官网团体主图')}>查看原图 ↗</OriginalPhotoLink></figcaption></figure><div className="ah-intro"><p>从《Plot Twist》开始，<br/>听见 AtHeart 的每一个篇章。</p><button className="ah-button" onClick={()=>select('records')}>探索音乐 ↗</button></div></section>
+<section className="ah-hero"><h1 className="ah-sr-only">AtHeart · 成员、音乐与手帐</h1><figure><OriginalPhotoLink className="ah-hero-art" href={editorial.hero} onOpen={src=>showImage(src,'AtHeart · 日本官网团体主图')} aria-label="查看 AtHeart 团照原图"><Picture src={editorial.hero} label="AtHeart · 日本官网团体主图" priority/></OriginalPhotoLink><figcaption><span>AtHeart（앳하트） · TITAN CONTENT</span><OriginalPhotoLink className="ah-hero-original" href={editorial.hero} onOpen={src=>showImage(src,'AtHeart · 官网团体主图')}>查看原图 ↗</OriginalPhotoLink></figcaption></figure><div className="ah-intro"><p data-home-introduction="atheart"><span className="group-intro-label">团体介绍</span>AtHeart 是 TITAN CONTENT 推出的女团，<br/>于 2025 年 8 月 13 日以首张 EP《Plot Twist》出道。</p><button className="ah-button" onClick={()=>select('records')}>探索音乐 ↗</button></div></section>
 <ArtistInformation slug="atheart" catalog={data}/>
 <section className="ah-section ah-members-section"><div className="ah-heading"><h2>MEMBERS<span>认识七位成员</span></h2><button onClick={()=>select('members')}>成员目录 ↗</button></div>{memberCards(editorial.members)}<p className="ah-caption">七份日本官网成员档案 · 中文名为展示转写。照片拍摄日期未注明，名册不代表实时活动状态。</p></section>
 <section className="ah-section"><div className="ah-heading"><h2>VIDEO<span>音乐与表演</span></h2><button onClick={()=>select('works')}>全部影像 ↗</button></div>{videoCards(editorial.videos.filter(v=>v.chapter==='Official MV').slice(0,2))}</section>

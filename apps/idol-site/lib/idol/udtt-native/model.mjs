@@ -45,6 +45,28 @@ export function nativeHref({reference, action, catalog, route, mountedUrl, curre
     ? {nav:'members',member:entity.memberId,work:null,video:'mv',artistReturn}
     : {nav:'works',member:null,work:entity.workId,video:entity.kind,artistReturn});
 }
+export function mvCardHref(key,origin,catalog,production) {
+  const route=readReviewUrl(origin);
+  if(!route)return null;
+  return nativeHref({reference:{kind:'mv',key},action:'play',catalog,route,
+    mountedUrl:origin,currentUrl:origin,mayLeave:true},production);
+}
+
+// The shared player accepts public query routes. Restore UDTT's own release,
+// filters and scroll position when that player sends the visitor back.
+export function mvReturnPosition(value,currentUrl,referrer,origin,catalog,production) {
+  if(!value||typeof value.path!=='string'||value.path.length>4400||
+     !Number.isFinite(value.y)||value.y<0||value.y>10000000)return null;
+  const href=mvCardHref(value.key,value.path,catalog,production);
+  if(!href)return null;
+  try{
+    const from=new URL(referrer),target=new URL(href,origin);
+    if(from.origin!==target.origin||from.pathname!==target.pathname||
+       from.searchParams.get('work')!==target.searchParams.get('work')||
+       from.searchParams.get('returnTo')!==currentUrl||target.searchParams.get('returnTo')!==currentUrl)return null;
+    return {path:value.path,y:value.y,focus:href};
+  }catch{return null;}
+}
 export function referenceFor(route) {
   if (route?.page === 'member') return {kind:'member',key:route.key};
   if (route?.page === 'work') {const media = group.media.find(row=>row.key===route.key);return media ? {kind:media.kind,key:media.key} : null;}

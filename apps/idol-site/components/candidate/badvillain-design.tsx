@@ -5,6 +5,7 @@ import {ArtistInformation,ArtistHomeTimeline} from '@/components/artist-informat
 import {createContext,useContext,useEffect,useMemo,useState,useSyncExternalStore,type ReactNode,type MouseEvent} from 'react';
 import type {CandidateContent} from '@/lib/idol/candidate/types';
 import type {CatalogView} from '@/lib/idol/types';
+import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {artistRoute,artistWorkUrl,artistWorkScoreLabel,artistMemberUrl} from '@/lib/idol/artist-preview';
 import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
@@ -43,9 +44,13 @@ export default function BadvillainDesign({content}:{content:CandidateContent}){
  function zoom(image:string,label:string,priority=false){return <button className="image-button" aria-label={`放大${label}`} aria-haspopup="dialog" onClick={()=>setLightbox({src:image,label})}>{photo(image,label,'1',priority)}</button>;}
  function heading(cn:string,en:string,sub=''){return <div className="page-heading"><h1>{cn}</h1><div><div className="latin">{en}</div>{sub&&<p>{sub}</p>}</div></div>;}
  function roster(full=false){return <div className="portraits">{publicData.members.map((m,i)=><article className={`portrait${full&&i===6?' featured':''}`} key={m.id}><Link to={path('members',{member:m.id})} className="photo-link" memberId={m.id}>{photo(m.image,m.cn)}</Link><div className="portrait-caption"><h3><Link className="" to={path('members',{member:m.id})}>{m.cn}</Link></h3><p className={full?'latin':'muted small'}>{m.stageName}</p><Link to={path('members',{member:m.id})}>{full?'个人详情':'个人页'}</Link>{full&&i===6&&<Link to={path('works')}>浏览团体作品</Link>}</div></article>)}</div>;}
- function matchedWork(m:Media){const candidates=(state.data?.works??[]).filter(w=>w.id===WORK_IDS[m.id]&&w.url===m.watchUrl&&w.groupIds.includes(publicData.groupId));return candidates.length===1?candidates[0]:null;}
- function mediaHref(m:Media){const w=matchedWork(m);return w?artistWorkUrl(w,false,returnTo):path('works',{media:m.id});}
- function mediaLink(m:Media,children:ReactNode,className='button'){const w=matchedWork(m);return w?<a className={className} href={mediaHref(m)} onClick={remember}>{children}</a>:<Link to={mediaHref(m)} className={className}>{children}</Link>;}
+ function watchHref(m:Media){
+  return m.kind==='mv'?artistMvHref(state.data,publicData.groupId,m.watchUrl,returnTo,WORK_IDS[m.id]??null):null;
+ }
+ function mediaLink(m:Media,children:ReactNode,className='button'){
+  const target=watchHref(m);
+  return target?<a className={className} href={target} onClick={remember}>{children}</a>:<Link to={path('works',{media:m.id})} className={className}>{children}</Link>;
+ }
  function film(m:Media){return <article className="film" data-kind={m.kind} key={m.id}>{mediaLink(m,photo(m.image,m.title,'16 / 9'),'photo-link')}<p className="kicker">{m.kind==='stage'?'舞台':'MV'}</p><h3 className="latin">{m.title}</h3><p className="meta">{m.dateLabel} {m.date}</p>{mediaLink(m,`打开${m.kind==='stage'?'舞台':'MV'}详情`)}</article>;}
  function films(items:Media[],label:string,home=false){return items.length?<section className={`section${home?' home-films':''}`}><h2 className="section-title latin">{label}</h2>{home&&<p className="section-subtitle">MV 与舞台</p>}<div className="films">{items.map(film)}</div></section>:null;}
  function record(r:Release){return <article className="record" key={r.id}><Link to={path('records',{release:r.id})} className="photo-link">{photo(r.image,r.shortTitle)}</Link><h3 className="latin">{r.shortTitle}</h3><div className="meta"><span className="kicker">{r.displayType}</span><span>音源发行 {r.date}</span></div><Link to={path('records',{release:r.id})}>查看发行</Link></article>;}
@@ -57,7 +62,7 @@ export default function BadvillainDesign({content}:{content:CandidateContent}){
 {member&&<MemberCareerFacts member={member} part="sources"/>}
 
 </>;}
- function mediaPage(m:Media){return <><Link to={path('works')}>返回作品库</Link><div className="media-heading"><p className="kicker">{m.kind==='stage'?'舞台':'MV'}</p><h1 className="latin">{m.title}</h1><p className="meta">{m.dateLabel} {m.date}</p></div><div className={`screen ${m.kind==='stage'?'stage':''}`}>{photo(m.image,m.title,'16 / 9')}</div><div className="actions"><External href={m.watchUrl}>打开{m.sourceName}观看</External>{matchedWork(m)&&mediaLink(m,'观看记录与评分')}<Link to={path('records',{release:m.releaseId})}>关联发行</Link></div></>;}
+ function mediaPage(m:Media){return <><Link to={path('works')}>返回作品库</Link><div className="media-heading"><p className="kicker">{m.kind==='stage'?'舞台':'MV'}</p><h1 className="latin">{m.title}</h1><p className="meta">{m.dateLabel} {m.date}</p></div><div className={`screen ${m.kind==='stage'?'stage':''}`}>{photo(m.image,m.title,'16 / 9')}</div><div className="actions"><External href={m.watchUrl}>打开{m.sourceName}观看</External>{watchHref(m)&&mediaLink(m,'观看记录与评分')}<Link to={path('records',{release:m.releaseId})}>关联发行</Link></div></>;}
  const active=route.member?'members':release||media||route.section==='records'?'works':route.section;
  return <NavigationContext.Provider value={go}><ImageRecoveryProvider><div className="bv-design"><a className="skip" href="#badvillain-main">跳到内容</a><header className="bv-header"><div className="brand-row"><Link className="brand" to={PATH}><img src="/artist/badvillain/identity/official-mark.png" alt="" width={31} height={35} style={{display:'inline-block',verticalAlign:'middle'}}/> BADVILLAIN</Link><a className="edition" href="/?view=groups">团体索引 ↗</a></div><nav aria-label="BADVILLAIN 导航">{[['overview','首页'],['members','成员'],['works','作品'],['updates','时间轴']].map(([section,label])=><a key={section} href={path(section)} aria-current={active===section?'page':undefined} onClick={event=>go(path(section),event)}>{label}</a>)}</nav></header><main id="badvillain-main">{release?releasePage(release):media?mediaPage(media):person?memberPage(person):route.member?<><h1>未找到成员</h1><Link to={path('members')}>返回成员</Link></>:route.section==='members'?<>{heading('成员','MEMBERS','7 位成员')}{roster(true)}</>:route.section==='works'||route.section==='records'?library():route.section==='updates'?<>{heading('时间轴','TIMELINE','最早优先')}<ArtistTimelineHost groupId={content.groupId} catalog={state.data} loading={state.loading} error={state.error} onRetry={retry}/></>:<>
 <div className="group-poster"><OriginalPhotoLink className="image-button" aria-label="放大BADVILLAIN 团照" href={publicData.hero.image} onOpen={src=>setLightbox({src,label:'BADVILLAIN 团照'})}>{photo(publicData.hero.image,'BADVILLAIN 团照','1',true)}</OriginalPhotoLink><h1 className="display">BADVILLAIN</h1></div>

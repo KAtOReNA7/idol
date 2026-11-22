@@ -39,10 +39,12 @@ const eventId=node=>node.attrs['data-timeline-event-id']??node.attrs['data-event
 
 function mountAstra(product,slug,data,route){
  const actual=product.createAstraRuntime({document:{},location:{href:'https://timeline-test.invalid/'}});
- const hash=route.includes('section=overview')?'#/home':'#/timeline';
+ const hash=route.startsWith('#/')?route:route.includes('section=overview')?'#/home':'#/timeline';
+ const url=new URL(hash.slice(1),'https://artist.test');
+ const [,page,id]=url.pathname.split('/');
  let html='';
  const scope={data,hash,alive:true,element:{},ownsRoot:()=>true,destroy(){this.alive=false;},listen(){},onRoute(){},get:()=>null,raf(){},setHTML:value=>{html=value;},
-  api:{...actual,route:()=>({page:hash==='#/home'?'home':'timeline',params:new URLSearchParams()}),qualityStyle:()=>'',assetQuality:asset=>({nativeWidth:asset?.width,nativeHeight:asset?.height}),zoomAllowed:()=>false}};
+  api:{...actual,route:()=>({page,id:id&&decodeURIComponent(id),params:url.searchParams}),qualityStyle:()=>'',assetQuality:asset=>({nativeWidth:asset?.width,nativeHeight:asset?.height}),zoomAllowed:()=>false}};
  const factory=slug==='izna'?product.createIznaModule:product.createIfeyeModule;
  const handle=factory({createScope:()=>scope}).mount({element:scope.element,data});handle.destroy();
  assert.ok(html,'native renderer must synchronously deliver its actual HTML');

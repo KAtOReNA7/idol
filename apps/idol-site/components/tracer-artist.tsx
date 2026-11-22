@@ -56,7 +56,7 @@ export default function TracerArtist({content}:{content:CandidateContent}){
  const sectionHref=(s:string)=>path+(s==='overview'?'':'?section='+s);
  const personHref=(id:string)=>href({section:'members',member:id,release:null,media:null,format:null,q:route.section==='members'?route.search||null:null});
  const releaseHref=(r:Release)=>href({section:'works',release:r.key,member:null,media:null,format:route.format==='release'?'release':null,q:route.section==='works'||route.section==='records'?route.search||null:null});
- const videoHref=(v:Video)=>(route.section==='overview'&&!route.member&&v.type==='MV'?artistMvHref(state.data,content.groupId,v.url,safeArtistReturn(url)??path):null)??href({section:'works',media:v.key,format:v.type.toLowerCase(),release:null,member:null,q:route.section==='works'?route.search||null:null});
+ const videoHref=(v:Video)=>(v.type==='MV'?artistMvHref(state.data,content.groupId,v.url,safeArtistReturn(url)??path,v.id):null)??href({section:'works',media:v.key,format:v.type.toLowerCase(),release:null,member:null,q:route.section==='works'?route.search||null:null});
  const backToLibrary=href({section:'works',release:null,media:null,member:null});
  function go(e:MouseEvent<HTMLAnchorElement>,target:string){if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;remember(e);if(target.startsWith('/?'))return;e.preventDefault();history.pushState(newArtistHistoryState(history.state,target),'',target);window.dispatchEvent(new Event('artist-location-change'));document.getElementById('artist-content')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
  const showPhoto=(src:string,label:string)=>setLightbox({src:originalPhoto(src),label});

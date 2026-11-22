@@ -9,6 +9,7 @@ export type NativeServices=Readonly<{
   bindings:readonly NativeBinding[];
   routeUrl:(route:any)=>string;
   safeArtistReturn:(value:string)=>string|null;
+  pendingMvHref?:(workId:string,videoId:string,returnTo:string)=>string|null;
   open:(request:PublicRequest,context:Readonly<{href:string;resume:()=>void}>)=>boolean;
 }>;
 export type ReviewHandle=Readonly<{ready:Promise<{status:string}>;root:HTMLElement;shadow:ShadowRoot;navigate:(hash:string)=>boolean;destroy:()=>void;inspect:()=>{activeScopes:number;scopes:unknown[]}}>;

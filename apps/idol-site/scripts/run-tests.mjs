@@ -16,7 +16,7 @@ const current = [
   'catalog-read-deadline', 'expanded-read-deadline', 'timeline-navigation',
   'mv-look-selection', 'mv-look-successor-policy', 'photo-soldelta5-registry', 'archive-transfer',
   'image-host-matrix', 'timeline-host-matrix', 'work-video-player', 'browser-catalog',
-  'artist-roster-return', 'native-timeline-link-focus', 'artist-library-filters', 'artist-film-primary', 'witchx-portrait-credit', 'artist-brand-portraits', 'three-group-public-bridge', 'home-read-deadline',
+  'artist-roster-return', 'native-timeline-link-focus', 'artist-library-filters', 'artist-film-primary', 'artist-mv-card-targets', 'witchx-portrait-credit', 'artist-brand-portraits', 'three-group-public-bridge', 'home-read-deadline',
   'artist-migration', 'public-artist-copy', 'image-group-index', 'unused-unis-font-build-assets',
   'member-layout-order', 'group-index', 'ifeye-native-integration', 'izna-native-integration',
   'editor-flow', 'ive-badvillain-detail', 'meovv-detail', 'private-note-render', 'native-save-order', 'native-loading-recovery',

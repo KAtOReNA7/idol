@@ -1,3 +1,4 @@
+import {editorialRequest,bindEditorialLinks,restoreEditorialMvFocus} from '../editorial-mv-links.mjs';
 import {createAstraRuntime} from './runtime.mjs';
 import {createIznaModule} from './izna.mjs';
 import {groups,reviewPath,validRoute,readReviewUrl,artistUrl,nativeHref,reviewState,savedPosition,publicPosition,routeCategory} from './model.mjs';
@@ -7,6 +8,7 @@ const owners=new WeakMap();
 const nativeActions=new Set(['open-member','open-work','open-rating']);
 export function readIznaNavigationFocus(root){
   const active=deepActiveElement(root.ownerDocument),action=active?.dataset?.iznaNativeFocus;
+  if(root.contains(active)&&active?.dataset?.editorialFocusHref)return {kind:'href',value:active.dataset.editorialFocusHref};
   return root.contains(active)&&nativeActions.has(action)?{kind:'native',value:action}:focusKey(root);
 }
 export function restoreIznaNavigationFocus(root,key){
@@ -15,7 +17,7 @@ export function restoreIznaNavigationFocus(root,key){
     if(button&&!button.disabled&&!button.closest('[hidden],[inert],[aria-hidden="true"]')){button.focus({preventScroll:true});return true;}
     restoreFocus(root,null);return false;
   }
-  restoreFocus(root,key);return true;
+  if(!restoreEditorialMvFocus(root,key))restoreFocus(root,key);return true;
 }
 const reset=`:host{all:initial;display:block;min-width:0;isolation:isolate;color-scheme:light}
 [data-astra-review-root]{display:block;min-width:0;direction:ltr;text-align:start;line-height:normal;letter-spacing:normal;font-size:16px}
@@ -52,7 +54,7 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
   };
   const storageKey='izna.public-navigation.v1';
   const stored=()=>{try{const raw=win.sessionStorage.getItem(storageKey);return raw&&raw.length<=10000?publicPosition(data,JSON.parse(raw),currentUrl()):null;}catch{return null;}};
-  const persist=()=>{if(dead||!mountedUrl||currentUrl()!==mountedUrl)return;const value=publicPosition(data,{url:mountedUrl,route:mountedRoute,y:win.scrollY,focus:navigationFocus()},mountedUrl);if(value)try{win.sessionStorage.setItem(storageKey,JSON.stringify(value));}catch{}};
+  const persist=(focus=navigationFocus())=>{if(dead||!mountedUrl||currentUrl()!==mountedUrl)return;const value=publicPosition(data,{url:mountedUrl,route:mountedRoute,y:win.scrollY,focus},mountedUrl);if(value)try{win.sessionStorage.setItem(storageKey,JSON.stringify(value));}catch{}};
   const listen=(node,type,fn,options)=>{if(dead)return;node.addEventListener(type,fn,options);off.push(()=>node.removeEventListener(type,fn,options));};
   const frame=fn=>{const id=win.requestAnimationFrame(()=>{frames.delete(id);if(!dead)fn();});frames.add(id);return id;};
   const remember=(focus=navigationFocus())=>{
@@ -74,31 +76,17 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
     }));
   };
   const canRequest=request=>!dead&&currentUrl()===mountedUrl&&typeof native?.open==='function'&&!!nativeHref(data,request,native);
-  const nativeRequest=()=>{
-    const hash=mountedRoute??readReviewUrl(data,mountedUrl);if(!hash)return null;
-    const url=new URL(hash.slice(1),win.location.origin),parts=url.pathname.split('/');
-    if(parts[1]==='person')return {action:'open-member',groupId:data.group.id,memberId:decodeURIComponent(parts[2]),returnTo:hash};
-    if(parts[1]!=='works'||!url.searchParams.has('detail'))return null;
-    const category=routeCategory(data,url.searchParams);
-    if(category==='release')return {action:'open-release',groupId:data.group.id,releaseKey:url.searchParams.get('detail'),releaseRecordId:data.releases.find(r=>r.key===url.searchParams.get('detail'))?.recordId??null,returnTo:hash};
-    const w=data.works.find(w=>w.key===url.searchParams.get('detail')&&w.type===category);
-    return w?{action:'open-work',groupId:data.group.id,workId:w.id??null,videoId:w.videoId,videoType:w.videoType??null,slotType:w.type,returnTo:hash}:null;
-  };
-  const requestNative=request=>{
+  const nativeRequest=(hash=mountedRoute,returnTo=hash)=>editorialRequest(data,hash,returnTo,routeCategory);
+  const requestNative=(request,focus=navigationFocus())=>{
     if(!canRequest(request))return false;
-    remember();persist();const href=nativeHref(data,request,native);
+    remember(focus);persist(focus);const href=nativeHref(data,request,native);
     const opened=native.open(Object.freeze({...request}),Object.freeze({href,resume:()=>{if(!dead)navigate(request.returnTo);}}))===true;
     if(!opened)try{win.sessionStorage.removeItem(storageKey);}catch{}
     return opened;
   };
   const pending=()=>{
     onHomeChange(mountedRoute==='#/home');
-    // The renderer retains its independent internal route contract. Exposed
-    // anchors use real query URLs so copying/opening a new tab works as expected.
-    for(const a of root.querySelectorAll('a[href^="#/"]')){
-      const hash=a.getAttribute('href'),href=artistUrl(data,hash);
-      if(href){a.dataset.iznaRoute=hash;a.setAttribute('href',href);}
-    }
+    bindEditorialLinks({root,data,origin:mountedRoute,artistUrl,nativeRequest,nativeHref,native});
     for(const input of root.querySelectorAll('input[type="search"]'))input.maxLength=200;
     for(const row of root.querySelectorAll('[data-event-key]')){
       const links=[...row.querySelectorAll('[data-izna-route]')].filter(a=>a.dataset.iznaRoute.includes('kind=MV')||a.dataset.iznaRoute.includes('kind=STAGE'));
@@ -208,6 +196,17 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
     if(nativeControl){event.preventDefault();const request=nativeRequest();if(request&&!nativeControl.disabled)requestNative(nativeControl.dataset.astraNativeOpen==='open-rating'?{...request,action:'open-rating'}:request);return;}
     const a=event.target.closest?.('a[href]');if(!a)return;
     const href=a.getAttribute('href');
+    if(a.dataset.editorialFocusHref){
+      const focus={kind:'href',value:a.dataset.editorialFocusHref};
+      if(event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey){
+        const request=nativeRequest(a.dataset.iznaRoute,mountedRoute);
+        if(request&&canRequest(request)){
+          event.preventDefault();
+          if(!requestNative(request,focus))navigate(a.dataset.iznaRoute);
+        }else{remember(focus);persist(focus);}
+      }
+      event.stopImmediatePropagation();return;
+    }
     if(a.dataset.iznaRoute){remember({kind:'href',value:href});if(event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey){event.preventDefault();event.stopImmediatePropagation();navigate(a.dataset.iznaRoute);}return;}
     if(href?.startsWith('#/')&&!validRoute(data,href)){event.preventDefault();event.stopImmediatePropagation();return;}
     remember({kind:'href',value:href});

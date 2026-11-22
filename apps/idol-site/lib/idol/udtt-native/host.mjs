@@ -7,7 +7,7 @@ import {createPrivateHelpers,validatePrivateViewer,createPrivateImageQueue,prepa
 import * as sourceModule from './presentation.mjs';
 import {mountArtist,createScope} from '../design-review/sol15-runtime/shared/lifecycle.js';
 import {actionIdentity,validateIdentity,lookupEntity} from '../design-review/sol15-runtime/shared/identity.js';
-import {REVIEW_PATH,group,helpers,urlNow,readReviewUrl,catalogBelongs,resolveNative,nativeHref,referenceFor,reviewTarget,reviewHistoryState,savedReviewPosition,viewPositionKey} from './model.mjs';
+import {REVIEW_PATH,group,helpers,urlNow,readReviewUrl,catalogBelongs,resolveNative,nativeHref,mvCardHref,mvReturnPosition,referenceFor,reviewTarget,reviewHistoryState,savedReviewPosition,viewPositionKey} from './model.mjs';
 export {catalogBelongs} from './model.mjs';
 export async function prepareUdttNativePortrait({catalog,viewer,production,window:win,signal,publicMode=false}){
  if(!catalogBelongs(catalog)||resolveNative({kind:'member',key:'recvxAPQCF66Sl'},catalog,production)?.memberId!=='recvxAPQCF66Sl')throw new Error('原生照片成员身份未通过核验。');
@@ -80,6 +80,15 @@ export function createUdttNative({host,catalog,viewer,production,canEdit=false,n
   const lifetime=createScope({scheduler:win,id:'sol15-udtt-host'});
   let handle=null,sequence=0,mountedUrl=null,dead=false,leaving=false,index=Number.isInteger(win.history.state?.sol15Review?.index)?win.history.state.sol15Review.index:0,scrollFrame=null,restoreObserver=null,restoreTimer=null,restoring=false;
   const positions=new Map();
+  const mvReturnKey='udtt.mv-return.v1';
+  try{
+    const raw=win.sessionStorage.getItem(mvReturnKey);
+    if(raw){
+      win.sessionStorage.removeItem(mvReturnKey);
+      const saved=raw.length<=7000&&mvReturnPosition(JSON.parse(raw),urlNow(win),document.referrer,win.location.origin,catalog,production);
+      if(saved)win.history.replaceState(reviewHistoryState(win.history.state,saved.path,saved.y,saved.focus),'',saved.path);
+    }
+  }catch{}
   const mayLeave=()=>mayLeaveReview({document,shadow,confirm:message=>win.confirm(message),alert:message=>win.alert(message)});
   const deny=event=>{event.preventDefault();event.stopImmediatePropagation();};
   const remember=(focus=null)=>{
@@ -123,7 +132,8 @@ export function createUdttNative({host,catalog,viewer,production,canEdit=false,n
     return `<section class="ud-native-records" ${context}><p>评分、备注与观看状态沿用原有记录。</p>${actions.map(([action,label])=>`<button type="button" data-native-action="${action}"${binding}${!entity||entity.kind==='stage'&&action==='records'&&!entity.stageScoreBindingValid?' disabled':''}>${label}</button>`).join('')}${!entity?'<p role="status">当前资料的精确身份未匹配，记录入口暂不开放。</p>':''}</section>`;
   };
   const reviewModule={...sourceModule,artist:identityArtist,render:({route,...args})=>{
-    const html=sourceModule.render({route,...args,catalog,canEdit,resolvedNative:referenceFor(route)?resolveNative(referenceFor(route),catalog,production):null});
+    const html=sourceModule.render({route,...args,catalog,canEdit,mvHref:key=>mvCardHref(key,mountedUrl,catalog,production),
+      resolvedNative:referenceFor(route)?resolveNative(referenceFor(route),catalog,production):null});
     return html.replace('<!-- native-record-controls -->',nativeControls(route));
   },afterRender:({root:scoped,route,scope})=>{
     images.attach(scoped);
@@ -162,6 +172,18 @@ export function createUdttNative({host,catalog,viewer,production,canEdit=false,n
       if(!['click','auxclick'].includes(event.type)||element.tagName!=='A')return;
       const href=element.getAttribute('href');
       if(!mayLeave()){deny(event);return;}
+      if(element.hasAttribute('data-udtt-mv')){
+        const key=element.dataset.udttMv;
+        if(identity.entityType!=='mv'||identity.workId!==key||href!==mvCardHref(key,url,catalog,production)){
+          deny(event);onStatus('此版本的站内入口已变更，请重新读取。');return;
+        }
+        if(event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey){
+          remember(href);
+          try{win.sessionStorage.setItem(mvReturnKey,JSON.stringify({path:url,key,y:win.scrollY}));}catch{}
+          leaving=true;
+        }
+        return;
+      }
       if(href?.startsWith('#/')) {
         if(!reviewTarget(href)){deny(event);return;}
         if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;

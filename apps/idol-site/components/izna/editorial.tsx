@@ -3,6 +3,7 @@ import {useEffect,useMemo,useRef,useState} from 'react';
 import {useArtistTimelineHostOptions} from '@/components/artist-timeline-host';
 import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {safeArtistReturn} from '@/lib/idol/artist-navigation';
+import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {routeUrl} from '@/lib/idol/journey';
 import {validIznaCatalog,iznaAssetResolver,iznaNativeBindings,prepareIznaDisplayData} from '@/lib/idol/izna-native';
 import type {CatalogView} from '@/lib/idol/types';
@@ -33,13 +34,15 @@ export default function IznaEditorial({onNativeOpen,onPresentationMount}:{onNati
   void import('@/lib/idol/izna-runtime/host.mjs').then(async module=>{
    if(cancelled||!host.current)return;
    handle=module.mountIznaEditorial({host:host.current,data:display,resolveAsset:iznaAssetResolver,
-    native:{bindings,routeUrl,safeArtistReturn,open:onNativeOpen??((_request,context)=>{window.location.assign(context.href);return true;})},
+    native:{bindings,routeUrl,safeArtistReturn,
+     pendingMvHref:loading&&!catalog?(workId,videoId,returnTo)=>artistMvHref(null,display.group.id,'https://www.youtube.com/watch?v='+videoId,returnTo,workId):undefined,
+     open:onNativeOpen??((_request,context)=>{window.location.assign(context.href);return true;})},
     onHomeChange:setIsHome,onStatus:message=>{if(!cancelled)setStatus(message);}});
    await handle.ready;
    if(!cancelled)detachPresentation=onPresentationMount?.(handle.root);
   }).catch(error=>{if(cancelled)return;handle?.destroy();setFailed(true);setStatus(error instanceof Error?error.message:'页面暂时无法打开。');});
   return()=>{cancelled=true;detachPresentation?.();handle?.destroy();};
- },[display,bindings,onNativeOpen,onPresentationMount,mountAttempt]);
+ },[display,bindings,catalog,loading,onNativeOpen,onPresentationMount,mountAttempt]);
  return <section data-izna-native-host="true" style={{minWidth:0}}>
   {(!isHome||failed||loading||error)&&<div style={{padding:'12px 20px',font:'14px/1.6 Arial,sans-serif',display:'flex',gap:16,flexWrap:'wrap'}}>{(!isHome||failed)&&<a href="/?view=groups">← 团体索引</a>}{loading?<span role="status">正在读取手帐关联…</span>:error?<span role="alert">{error} 公开资料仍可浏览。 <button type="button" onClick={()=>options.onRetry?options.onRetry():setAttempt(n=>n+1)}>重新读取</button></span>:null}</div>}
   {status&&<div role="status" aria-live="polite" style={{padding:'10px 20px',font:'14px/1.6 Arial,sans-serif'}}>{status}{failed&&<> <button type="button" onClick={()=>setMountAttempt(n=>n+1)}>重新打开</button></>}</div>}

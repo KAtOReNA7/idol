@@ -2,6 +2,86 @@ const assert = require('node:assert/strict');
 const test = require('node:test');
 const {parse} = require('next/dist/compiled/node-html-parser');
 const {artistCatalog, registry, renderArtist} = require('./fixtures/current-artist-pages.cjs');
+const mediaSelectors = require('./fixtures/artist-media-order.cjs');
+const {approvedStagePoster,stagePreviewFallback} = require('./helpers/public-artist-loader.cjs')('lib/idol/approved-video-poster.ts');
+
+const directoryGroups = ['vvup','loona','stayc','nmixx','kiiikiii','saymyname'];
+const targetUrl = anchor => new URL(anchor.getAttribute('href'), 'https://site.invalid');
+
+for (const slug of directoryGroups) {
+  test(slug + ' opens the selected stage from its poster, title and main action', async () => {
+    const group = registry.find(g => g.slug === slug);
+    const catalog = artistCatalog(group);
+    const eligible = catalog.works.filter(w => w.groupIds.includes(group.groupId) && !w.placeholder && (w.stage || w.stageSupplement?.alternatives.length));
+    const fields = {section:'works',format:'stage'};
+    const doc = parse(await renderArtist(group, fields));
+    const cards = doc.querySelectorAll(mediaSelectors.get(slug).worksVideo);
+    assert.deepEqual(new Set(cards.map(c => c.getAttribute('data-work-id'))), new Set(eligible.map(w => w.id)));
+    assert.equal(cards.length, eligible.length);
+
+    for (const card of cards) {
+      const work = eligible.find(w => w.id === card.getAttribute('data-work-id'));
+      const primary = card.querySelector('a');
+      const url = targetUrl(primary);
+      assert.equal(url.pathname, '/');
+      assert.equal(url.searchParams.get('video'), 'stage');
+      assert.equal(url.searchParams.get('work'), work.id);
+      assert.equal(new URL(url.searchParams.get('returnTo'), url).pathname, group.path);
+      assert.deepEqual(Object.fromEntries(new URL(url.searchParams.get('returnTo'), url).searchParams), fields);
+      assert.equal(primary.querySelector('h3').text, work.song || work.name);
+      assert.ok(primary.querySelector('.stage-directory-action'));
+      assert.doesNotMatch(primary.text, /我的\s*MV\s*分/);
+      if (work.stage) {
+        assert.equal(primary.querySelector('.stage-directory-source').text, work.stage.title);
+        assert.equal(primary.querySelector('time')?.getAttribute('datetime'), work.stage.publishedDate || undefined);
+        const picture = primary.querySelector('.artist-work-preview img');
+        assert.ok(picture);
+        const poster = approvedStagePoster(work.id, work.stage) || stagePreviewFallback(work, work.stage, true);
+        assert.equal(picture.getAttribute('src'), poster.src);
+        if (work.stage.platform === 'bilibili') assert.match(primary.text, /暂无站内高清片源/);
+      }
+      const related = card.querySelector('.stage-directory-related');
+      if (work.url && !work.stage?.reusesOriginalVideo) {
+        assert.equal(targetUrl(related).searchParams.get('work'), work.id);
+        assert.equal(targetUrl(related).searchParams.get('video'), null);
+      } else assert.equal(related, null);
+    }
+
+    const sample = eligible.find(w => w.stage?.scoreBinding && w.url);
+    const query = {section:'works',queue:'rewatch',q:sample.song};
+    const data = {...catalog,works:[{...sample,score:9.5,stageScore:0}]};
+    const stagePage = parse(await renderArtist(group, {...query,format:'stage'}, data));
+    const stage = stagePage.querySelector('[data-artist-stage-card]');
+    assert.equal(stage.querySelector('.stage-directory-score b').text, '0.0 / 10');
+    const back = new URL(targetUrl(stage.querySelector('a')).searchParams.get('returnTo'), 'https://site.invalid');
+    assert.deepEqual(Object.fromEntries(back.searchParams), {...query,format:'stage'});
+    for (const format of ['all','mv']) {
+      const page = parse(await renderArtist(group, {...query,format}, data));
+      const original = page.querySelector(mediaSelectors.get(slug).worksVideo);
+      assert.equal(original.querySelector('.stage-directory-score'), null);
+      assert.equal(targetUrl(original.querySelector('a')).searchParams.get('video'), null);
+      assert.match(original.text,/9\.5/);
+    }
+  });
+}
+
+test('stage options keep other performances view-only and ignore a stale saved score', async () => {
+  const group = registry.find(g => g.slug === 'loona');
+  const catalog = artistCatalog(group);
+  const sample = catalog.works.find(w => w.stage?.scoreBinding && w.url);
+  async function card(overrides) {
+    const rows = {...catalog,works:[{...sample,score:8,stageScore:7,...overrides}]};
+    const page = parse(await renderArtist(group, {section:'works',format:'stage'}, rows));
+    return page.querySelector('[data-artist-stage-card]');
+  }
+  const unbound = await card({stage:{...sample.stage,scoreBinding:{...sample.stage.scoreBinding,sourceKey:'unrelated'}}});
+  assert.match(unbound.text,/这版舞台暂时无法评分/);
+  assert.equal(unbound.querySelector('.stage-directory-score'), null);
+  const alternative = await card({stage:null,stageSupplement:{alternatives:[{id:'view-only'}]}});
+  assert.match(alternative.text,/仅供观看/);
+  assert.equal(alternative.querySelector('.stage-directory-action').text, '查看其他现场');
+  assert.equal(alternative.querySelector('.stage-directory-score'), null);
+});
 
 test('KISS OF LIFE stage cards use one link and the matching thumbnail, date and score across the full stage filter',async()=>{
   const group=registry.find(g=>g.slug==='kissoflife'), catalog=artistCatalog(group);

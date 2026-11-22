@@ -1,5 +1,6 @@
 'use client';
 import {MemberWorkIdentityPhoto} from '@/components/member-work-identity-photo';
+import {ArtistStageDirectoryCard} from '@/components/artist-stage-directory-card';
 
 import {MvPhotoReference} from '@/components/mv-photo-reference';
 import {useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode} from 'react';
@@ -145,11 +146,22 @@ export default function LoonaDesign({content}: {content: CandidateContent}) {
   const timeline = <section className="ln-timeline-wrap"><div className="timeline-intro"><h1>大事时间轴</h1><p>最早优先 · 只读</p></div><ArtistTimelineHost groupId={content.groupId} catalog={state.data} loading={state.loading} error={state.error} onRetry={options.onRetry}/></section>;
   function library(filtered: boolean) {
     const releases = loonaHomeReleases(works);
-    const displayRows = (filtered ? rows : works).filter(work => libraryTab !== 'stage' || !!(work.stage || work.stageSupplement?.alternatives.length));
+    const displayRows = filtered ? rows : works;
+    const stageView = route.format === 'stage';
+    const activeTab = libraryTab === 'releases' ? 'releases' : stageView ? 'stage' : 'works';
+    function selectLibraryTab(key: string) {
+      const target = key === 'releases' ? 'loona-inner-releases' : 'loona-inner-works';
+      const format = key === 'stage' ? 'stage' : key === 'works' && stageView ? 'all' : route.format;
+      setLibraryTab(key === 'releases' ? 'releases' : 'works');
+      if (format !== route.format) navigate({format}, false, target);
+      else requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView({block: 'start'}));
+    }
     return <section className="catalog ln-inner-library"><h1>{route.section === 'records' ? '我的观看记录' : '作品库'}</h1><p className="ln-inner-muted">MUSIC / VIDEO / STAGE</p><p className="ln-inner-lede">从一首作品，进入 LOONA 的音乐与舞台。</p>
-    {filtered && <div className="ln-tools"><input aria-label="搜索本团作品" placeholder="搜索作品名称" value={route.search} onChange={event => navigate({search: event.target.value}, true)}/><div>{queues.map(([key, title]) => <button key={key} aria-pressed={route.queue === key} onClick={() => navigate({queue: key})}>{title}</button>)}</div><div aria-label="播放内容">{([['all', '全部'], ['mv', 'MV'], ['stage', '可看舞台']] as const).map(([key, title]) => <button key={key} aria-pressed={route.format === key} onClick={() => navigate({format: key})}>{title}</button>)}</div></div>}
-    <div className="ln-inner-tabs">{[['works', `作品 ${works.length}`], ['releases', '关联发行'], ['stage', '舞台']].map(([key, title]) => <button key={key} aria-pressed={libraryTab === key} onClick={() => {setLibraryTab(key); requestAnimationFrame(() => document.getElementById(key === 'releases' ? 'loona-inner-releases' : 'loona-inner-works')?.scrollIntoView({block: 'start'}));}}>{title}</button>)}</div>
-    <h2 id="loona-inner-works">{libraryTab === 'stage' ? '舞台' : '全部作品'}</h2><p className="ln-inner-muted">{displayRows.length} 支作品</p><div className="ln-inner-work-grid">{displayRows.map(work => <WorkEntry key={work.id} work={work} returnTo={returnTo}/>)}</div>
+    {filtered && <div className="ln-tools"><input aria-label="搜索本团作品" placeholder="搜索作品名称" value={route.search} onChange={event => navigate({search: event.target.value}, true)}/><div>{queues.map(([key, title]) => <button key={key} aria-pressed={route.queue === key} onClick={() => navigate({queue: key})}>{title}</button>)}</div><div aria-label="播放内容">{([['all', '全部'], ['mv', 'MV'], ['stage', '可看舞台']] as const).map(([key, title]) => <button key={key} aria-pressed={route.format === key} onClick={() => {setLibraryTab('works'); navigate({format: key});}}>{title}</button>)}</div></div>}
+    <div className="ln-inner-tabs">{[['works', `作品 ${works.length}`], ['releases', '关联发行'], ['stage', '舞台']].map(([key, title]) => <button key={key} aria-pressed={activeTab === key} onClick={() => selectLibraryTab(key)}>{title}</button>)}</div>
+    <h2 id="loona-inner-works">{stageView ? '舞台' : '全部作品'}</h2><p className="ln-inner-muted">{displayRows.length} 支作品</p><div className="ln-inner-work-grid">{displayRows.map(work => stageView
+      ? <ArtistStageDirectoryCard key={work.id} className="ln-inner-work" work={work} returnTo={returnTo}/>
+      : <WorkEntry key={work.id} work={work} returnTo={returnTo}/>)}</div>
     {!displayRows.length && <p>没有符合条件的作品。<button onClick={() => {setLibraryTab('works'); navigate({queue: 'all', search: '', format: 'all'});}}>查看全部</button></p>}
     <section id="loona-inner-releases"><h2>关联发行</h2><div className="ln-inner-release-grid">{releases.map(entry => <article key={entry.releaseKey}><Link href={entry.work ? artistWorkUrl(entry.work, false, returnTo) : undefined}><Picture src={loonaHomeAsset(entry.file)} identityKey={`library-release:${entry.releaseKey}`} alt={`${entry.title} 发行封面`}/><h3>{entry.title}</h3><p>{entry.song}</p><time dateTime={entry.date}>{entry.date}</time></Link></article>)}</div></section>
     </section>;}

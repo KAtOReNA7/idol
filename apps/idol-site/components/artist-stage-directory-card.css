@@ -1,0 +1,92 @@
+article[data-artist-stage-card][data-work-id] {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  align-content: start;
+  --stage-action-color: var(--vu-acid, var(--sc-cherry, var(--nx-blue, var(--kk-blue, var(--smn-blue, currentColor)))));
+}
+
+[data-artist-stage-card] > .stage-directory-primary,
+[data-artist-stage-card] > .stage-directory-related {
+  grid-area: 1 / 1;
+  color: inherit;
+  text-decoration: none;
+}
+
+[data-artist-stage-card] .stage-directory-primary {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+[data-artist-stage-card] .stage-directory-image {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  align-self: start;
+  overflow: hidden;
+  background: #202124;
+  color: #fff;
+}
+
+[data-artist-stage-card] .stage-directory-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+[data-artist-stage-card] .stage-directory-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+  padding-top: 12px;
+  overflow-wrap: anywhere;
+}
+
+[data-artist-stage-card] .stage-directory-copy p,
+[data-artist-stage-card] .stage-directory-copy h3 {margin: 0}
+[data-artist-stage-card] .stage-directory-copy p {font-size: 13px; line-height: 1.45}
+[data-artist-stage-card] .stage-directory-kind {font-size: 12px; font-weight: 700; color: var(--stage-action-color)}
+[data-artist-stage-card] .stage-directory-score {padding-top: 2px}
+
+[data-artist-stage-card] .stage-directory-action,
+[data-artist-stage-card] .stage-directory-related {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-size: 14px;
+}
+
+[data-artist-stage-card] .stage-directory-action {
+  margin-top: auto;
+  padding-inline-end: 5em;
+  font-weight: 700;
+  color: var(--stage-action-color);
+}
+
+[data-artist-stage-card] .stage-directory-related {
+  align-self: end;
+  justify-self: end;
+  position: relative;
+  padding: 0 6px;
+}
+
+[data-artist-stage-card] a:focus-visible {outline: 2px solid currentColor; outline-offset: 2px}
+[data-artist-stage-card] a:hover .stage-directory-action,
+[data-artist-stage-card] .stage-directory-related:hover {text-decoration: underline}
+
+@media (min-width: 701px) {
+  .smn-work[data-artist-stage-card] .stage-directory-primary {
+    display: grid;
+    grid-template-columns: minmax(144px, 300px) minmax(0, 1fr);
+    gap: 24px;
+  }
+  .smn-work[data-artist-stage-card] .stage-directory-copy {padding-top: 0}
+}

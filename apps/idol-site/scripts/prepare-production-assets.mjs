@@ -9,7 +9,8 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),clien
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'data/production-asset-delivery.json'),'utf8'));
 const recognition=JSON.parse(fs.readFileSync(path.join(root,'data/recognition-asset-delivery.json'),'utf8'));
 const releasePortraits=JSON.parse(fs.readFileSync(path.join(root,'data/mv-release-asset-delivery.json'),'utf8'));
-const assets=[...manifest.assets,...recognition.assets,...releasePortraits.assets];
+const kissoflifePortraits=JSON.parse(fs.readFileSync(path.join(root,'data/kissoflife-portrait-asset-delivery.json'),'utf8'));
+const assets=[...manifest.assets,...recognition.assets,...releasePortraits.assets,...kissoflifePortraits.assets];
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const plan=[];
 for(const row of assets){
@@ -35,4 +36,4 @@ if(process.argv.includes('--apply')){
  for(const row of privatePlan){const file=path.resolve(root,row.file);if(!file.startsWith(client+path.sep))throw Error('Private generated copy outside output');fs.unlinkSync(file);}
 }
 const local=assets.filter(row=>row.delivery==='local');
-console.log(JSON.stringify({status:'passed',mode:process.argv.includes('--apply')?'apply':'dry-run',publicRef:manifest.publicRef,recognitionRef:recognition.publicRef,releasePortraitRef:releasePortraits.publicRef,remoteCopies:plan.length,remoteBytes:plan.reduce((n,r)=>n+r.bytes,0),restrictedCopies:privatePlan.length,restrictedAliases:1,localAssets:local.length,localBytes:local.reduce((n,r)=>n+r.bytes,0)},null,2));
+console.log(JSON.stringify({status:'passed',mode:process.argv.includes('--apply')?'apply':'dry-run',publicRef:manifest.publicRef,recognitionRef:recognition.publicRef,releasePortraitRef:releasePortraits.publicRef,kissoflifePortraitRef:kissoflifePortraits.publicRef,remoteCopies:plan.length,remoteBytes:plan.reduce((n,r)=>n+r.bytes,0),restrictedCopies:privatePlan.length,restrictedAliases:1,localAssets:local.length,localBytes:local.reduce((n,r)=>n+r.bytes,0)},null,2));

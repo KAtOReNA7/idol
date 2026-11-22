@@ -4,8 +4,17 @@ const result=esbuild.buildSync({entryPoints:[path.join(root,'lib/public-asset-de
 const m=new Module(__filename,module);m._compile(result.outputFiles[0].text,__filename);const {publishedPublicAsset}=m.exports;
 const asset=manifest.assets.find(r=>r.delivery==='remote'),url='https://formal.example'+asset.path;
 const request=(pathname,method='GET')=>new Request(pathname.startsWith('https:')?pathname:'https://formal.example'+pathname,{method});
+test('Nobody Knows streams its four release originals and keeps its four matching card previews in the package',()=>{
+ const edition=require('../data/mv-recognition-editions.json')['born-to-be-xx-2023'];
+ const delivery=require('../data/kissoflife-portrait-asset-delivery.json');
+ const portraits=Object.values(edition.portraits);
+ assert.equal(portraits.length,4);
+ const paths=kind=>delivery.assets.filter(row=>row.delivery===kind).map(row=>row.path).sort();
+ assert.deepEqual(paths('remote'),portraits.map(photo=>photo.original).sort());
+ assert.deepEqual(paths('local'),portraits.map(photo=>photo.preview).sort());
+});
 test('reviewed recognition photos use their own immutable sources and display images stay local', async () => {
- const sources = [require('../data/recognition-asset-delivery.json'), require('../data/mv-release-asset-delivery.json')];
+ const sources = [require('../data/recognition-asset-delivery.json'), require('../data/mv-release-asset-delivery.json'), require('../data/kissoflife-portrait-asset-delivery.json')];
  const previous = new Set(manifest.assets.map(row => row.path));
  const restricted = new Set(require('../scripts/udtt-private-build-assets-manifest.json').files.map(row => row.sha256));
  for (const series of sources) for (const row of series.assets) {

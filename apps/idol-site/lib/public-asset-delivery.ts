@@ -1,13 +1,14 @@
 import manifest from '../data/production-asset-delivery.json';
 import portraits from '../data/recognition-asset-delivery.json';
 import releasePortraits from '../data/mv-release-asset-delivery.json';
+import kissoflifePortraits from '../data/kissoflife-portrait-asset-delivery.json';
 
 type Fetcher=(url:string,init:RequestInit&{cf?:{cacheEverything:boolean;cacheTtlByStatus:Record<string,number>}})=>Promise<Response>;
 const encoded=(value:string)=>value.split('/').map(encodeURIComponent).join('/');
 const safeBase=/^https:\/\/raw\.githubusercontent\.com\/KAtOReNA7\/idol\/[a-f0-9]{40}\/apps\/idol-site\/public$/;
 type RemoteAsset = {url: string; ref: string; bytes: number; sha256: string; mime: string};
 const remote = new Map<string, RemoteAsset>();
-for (const source of [manifest, portraits, releasePortraits]) {
+for (const source of [manifest, portraits, releasePortraits, kissoflifePortraits]) {
  if (!safeBase.test(source.baseUrl)) throw Error('Invalid immutable original source');
  for (const asset of source.assets) {
   if (asset.delivery !== 'remote') continue;

@@ -1,0 +1,7 @@
+# RESCENE《LOVE ATTACK》的 MV 和 1theK 舞台
+
+《LOVE ATTACK》的五张默认成员照采用 THE MUZE 提供的《SCENEDROME》第一组概念照。发行报道逐张标明 LIV、MAY、MINAMI、WONI 与 ZENA。点击照片可打开出版社交账号上的完整原图，也能在卡上打开原 MV 章节图和原出处。原作品、成员和评分继续按原有 ID 对应。五张图在成员档案的该作品入口也采用同一登记。[公司发行页](https://en.themuze.kr/scenedrome) · [THE MUZE 供图、五人具名图注](https://www.hellokpop.com/kpop/rescene-makes-a-splash-with-first-scenedrome-concept-images/) · [照片与绑定](../evidence/20261122-rescene-work/design-and-sources.json)
+
+原 Figma 稿已有 MV 封面，五个成员位置有待补图文字，舞台只有未选中的标签。新稿沿用 RESCENE 官网团页的 Montserrat，在这首歌的作品页采用发行照里的水蓝、贝粉和深青。其余 RESCENE 作品沿用团页的银灰、梅紫；本次两宽视觉抽验集中在《LOVE ATTACK》。MV 与 1theK Originals 的 dancEAR 现场分别使用各自的封面与整体评分，五位成员在本人照片下评分。[官网团体页](https://themuze.kr/rescene) · [桌面 MV](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1530-1239) · [手机 MV](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1530-1365) · [桌面舞台](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1530-1324) · [手机舞台](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1530-1443)
+
+在内置浏览器中用同一组隔离记录对照原版与开发版，实际正文宽 375、1425 px，四次检查的横向溢出均为零。原版五张章节图合计 7,084,753 B，优化后五张 480 × 640 的 WebP 合计 142,864 B，按首显文件大小减少 97.98%。两宽的十个入口均位于照片下方 8 px，按钮高 44 px，实际展开可见表现及造型两个字段。WONI 两套灯箱在两宽分别解码为 2500 × 1667 的发行原图和 1886 × 913 的原作品图。两版视频封面分别解码为 1280 × 720 和 640 × 360，均可切回 MV。本批未播放媒体。三个专项测试文件在 Windows 与 WSL 各通过 38/38。正式站与全项目回归随集成发布核对。[本机同条件数据](../evidence/20261122-rescene-work/local-browser.json)

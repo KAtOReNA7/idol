@@ -1,0 +1,85 @@
+{
+  "applicationCommit": "9b5929161866f7c283c863a76776c74f983425d2",
+  "baselineApplicationCommit": "d65ad5ec2df151a42e7bf68dd822494282a88a14",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4210,"pass": 4040,"fail": 131,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4212,"pass": 4042,"fail": 131,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1313,"pass": 1313,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5995,
+          "restrictedCopies": 10,
+          "localAssets": 586,
+          "localBytes": 16905055
+        }
+      },
+      "retainedFailureCount": 131,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "a direct, separately opened or catalogue detail keeps its filtered catalogue and has no event action",
+        "the timeline detail button goes back to the clicked cover or text, with the full library alongside"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4210,"pass": 4044,"fail": 127,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4212,"pass": 4046,"fail": 127,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1313,"pass": 1313,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5995,
+          "restrictedCopies": 10,
+          "localAssets": 586,
+          "localBytes": 16905055
+        }
+      },
+      "retainedFailureCount": 127,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "a direct, separately opened or catalogue detail keeps its filtered catalogue and has no event action",
+        "the timeline detail button goes back to the clicked cover or text, with the full library alongside"
+      ],
+      "removedTests": []
+    }
+  }
+}

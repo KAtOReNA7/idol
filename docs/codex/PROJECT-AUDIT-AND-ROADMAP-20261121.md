@@ -4,7 +4,7 @@
 
 ## 本轮已交付与接续顺序
 
-v232 已在正式站验收《BILLIONAIRE》首发版的 2160p 档，仍须改善刚开页时的首次点击。ADYA、W!TCHX 已决定让时间轴来访者从详情主按钮返回原事件，并保留作品库入口。[v232 实播与范围](worklogs/20261122-v232-release.md)
+v232 已在正式站验收《BILLIONAIRE》首发版的 2160p 档，仍须改善刚开页时的首次点击。v233 已上线 ADYA、W!TCHX 的原事件主按钮及作品库次入口，双宽 60/60 次通过。[返回验收](worklogs/20261122-v233-release.md)[v232 实播与范围](worklogs/20261122-v232-release.md)
 
 v231 已上线 11 团的时间轴文字调整。51 团首页与时间轴在两版各渲染 102 页，已确认的 34 处编辑表述全部移除。正式站手机和桌面各实开全部 19 个改动页，分别读到 38/38 处新句。v230 的 WOOAH《Purple》五张同次发行照片、九团共 71 个时间轴控件已取得正式实点结果。继续优先解决《BILLIONAIRE》首发版和四场指定舞台，并跟踪 IVE 与 ADYA 的点卡等待。[v231 验收](worklogs/20261122-v231-release.md) · [v230 图片与播放](worklogs/20261122-v230-release.md) · [v229 逐项回执](worklogs/20261122-v229-release.md)
 
@@ -13,7 +13,7 @@ v231 已上线 11 团的时间轴文字调整。51 团首页与时间轴在两�
 | 顺序 | 已在正式站验证 | 接下来按什么条件推进 |
 |---|---|---|
 | 1. 站内观看 | v231《BILLIONAIRE》2 月 7 日首发版在 10.5 秒内未取得播放进度。《Magnetic》本版、《ATTITUDE》在 v229 静音解码 4K。四场 B 站独占舞台在本版仍缺合格站内来源。 | v232 首发剪辑已站内实播 3840 × 1770，继续跟踪开页首击。四场舞台核节目方、场次、分 P 和区间，在本站验证原片与账号可用的最高档。NewJeans《ETA》《Attention》和 ADYA《Per》按同一标准继续查找。在作品页读取两个递增的时间、解码尺寸与可测码率。[v231 两首](worklogs/20261122-v231-release.md#站内短播) · [v229 三首](evidence/20261122-v229/formal-mv-playback.json) · [v231 四场舞台](evidence/20261122-v231/formal-priority-controls.json) · [其他三支](worklogs/20261122-additional-mv-playback.md) |
-| 2. 作品目录和返回 | 九团共 71 个自定义时间轴控件已实点并通过浏览器后退，70 个在 v229，末项在 v230。IVE 的 22 个目标、NewJeans 的 18 个、MADEIN 的 8 个、QWER 的 11 个、tripleS 的 23 个也已逐项打开并返回。 | 继续补其余团共用时间轴的实际路径。ADYA、W!TCHX 按已决定的原事件主按钮和作品库次入口做双宽实点。逐团清掉正文、图注与辅助标签中妨碍使用的说明，保留作品、来源和评分信息。[九团与共用时间轴记录](worklogs/20261122-v229-release.md) · [末个实点](evidence/20261122-v230/spia-last-timeline-link.json) · [使用取舍](20261122-USABILITY-DISCUSSION.md) |
+| 2. 作品目录和返回 | 九团共 71 个自定义时间轴控件已实点并通过浏览器后退，70 个在 v229，末项在 v230。IVE 的 22 个目标、NewJeans 的 18 个、MADEIN 的 8 个、QWER 的 11 个、tripleS 的 23 个也已逐项打开并返回。 | 继续补其余团共用时间轴的实际路径。两团主、次入口已正式验收。继续跟踪直接分享时间轴时出现首页摘要的问题。逐团清掉正文、图注与辅助标签中妨碍使用的说明，保留作品、来源和评分信息。[九团与共用时间轴记录](worklogs/20261122-v229-release.md) · [末个实点](evidence/20261122-v230/spia-last-timeline-link.json) · [使用取舍](20261122-USABILITY-DISCUSSION.md) |
 | 3. 团页到作品的等待 | 同快照的目录计算中位数在 v229 减少 45.71%。正式三轮点卡到播放按钮的中位数，Cherry Bullet 减少 1265 毫秒，IVE 和 ADYA 分别增加 520、668 毫秒。v230 抽样出现四次站标 404 和四次目录请求取消。 | 用同卡、同宽度继续定位 IVE 和 ADYA 的等待，保留一次目录请求和现有鉴权。核对取消请求的上下文，后续出现 502 时读取已细分的失败步骤。修复浏览器请求的站标并复验。[三轮前后对照](worklogs/20261122-v229-release.md) · [正式日志](evidence/20261122-v230/formal-worker-observation.json) · [既有两次 502](evidence/20261122-v227/catalog-errors.json) |
 | 4. 团页设计与成员照片 | 51 团首屏和 100 个混合或单类入口已核，IVE、NewJeans、ADYA、W!TCHX 的代表期视觉已有出处。v230《Purple》五人、v227《SLAY》六人的同期海报、旧作品图与照片下评分均已在正式站两档宽度逐人实点。 | 194 个跨期位置已核 59 个，余 135 个中，113 个可据现成发行图集逐人核验，22 个需补具名同期依据。按作品、视频、成员绑定继续选图，保留原件、旧图与评分关系。[四团设计与官网原件](worklogs/20261122-adya-witchx-figma.md) · [逐人位置清单](evidence/20261122-member-release-portraits/remaining-194.csv) · [《Purple》实测](worklogs/20261122-v230-release.md) · [《SLAY》实测](evidence/20261122-v227/formal-slay.json) |
 

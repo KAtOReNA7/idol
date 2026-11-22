@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v232。《BILLIONAIRE》2 月 7 日首发版站内实播 3840 × 1770。[正式作品](https://idol-lens-private.wuke40758.chatgpt.site/?view=works&work=rec28ldfRTrLku) · [实播与首击限制](worklogs/20261122-v232-release.md) |
+| 正式站 | v233。ADYA、W!TCHX 时间轴详情支持回原事件及作品库。《BILLIONAIRE》首发版已在本站实播 3840 × 1770。[两团验收](worklogs/20261122-v233-release.md) · [作品实播](worklogs/20261122-v232-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`，v232 正式应用 `d65ad5ec`。[发布回执](evidence/20261122-v232/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
+| 当前开发 | `codex/project-optimization-20261121`，v233 正式应用 `9b592916`。[发布回执](evidence/20261122-v233/publication.json) · [开发顺序](PROJECT-AUDIT-AND-ROADMAP-20261121.md) |
 
 ## 11 月 22 日更新
 

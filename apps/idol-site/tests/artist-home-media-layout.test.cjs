@@ -56,6 +56,61 @@ test('three artist home photos and catalog links are usable before the catalog a
   }
 });
 
+test('VVUP shared links include the four members, six stages and nine timeline entries in their first HTML', async () => {
+  const group=groupBySlug.get('vvup'), catalog=artistCatalog(group);
+  const {input}=await require('./fixtures/current-artist-pages.cjs').loadArtistTimeline('vvup');
+  const pending={loading:true,timelineLoading:true,input:null,serverRoute:undefined};
+  const cold=async query=>parse(await renderArtist(group,query,null,pending));
+  const complete=async query=>parse(await renderArtist(group,query,catalog,{input,loading:false}));
+  for(const [query,title,selector,attribute,count] of [
+    [{section:'members'},'成员档案','[data-artist-member-trigger]','data-artist-member-trigger',4],
+    [{section:'works',format:'stage'},'作品与舞台','[data-artist-stage-card]','data-work-id',6],
+    [{section:'updates'},'时间轴','[data-timeline-event-id]','data-timeline-event-id',9],
+  ]) {
+    const first=await cold(query), ready=await complete(query);
+    assert.equal(first.querySelector('main h1').text,title);
+    assert.equal(first.querySelector('.vu-hero'),null);
+    assert.doesNotMatch(first.querySelector('main').text,/正在打开 VVUP 档案|资料暂时没有/);
+    const rows=first.querySelectorAll(selector),hydrated=ready.querySelectorAll(selector);
+    assert.equal(rows.length,count);
+    assert.deepEqual(rows.map(r=>r.getAttribute(attribute)),hydrated.map(r=>r.getAttribute(attribute)));
+    if(query.section==='members'){
+      for(const row of rows) assert.equal(new URL(row.getAttribute('href'),'https://test.invalid').searchParams.get('member'),row.getAttribute(attribute));
+    }
+    if(query.section==='works'){
+      assert.equal(first.querySelector('[aria-label="播放内容"] [aria-pressed="true"]').text,'可看舞台');
+      assert.equal(first.querySelector('.stage-directory-score'),null);
+      for(const [index,row] of rows.entries()){
+        const primary=row.querySelector('a.stage-directory-primary');
+        assert.equal(primary.getAttribute('href'),hydrated[index].querySelector('a.stage-directory-primary').getAttribute('href'));
+        assert.equal(row.querySelector('img').getAttribute('src'),hydrated[index].querySelector('img').getAttribute('src'));
+        assert.equal(row.querySelector('time').getAttribute('datetime'),hydrated[index].querySelector('time').getAttribute('datetime'));
+        assert.equal(row.querySelector('h3').text,hydrated[index].querySelector('h3').text);
+      }
+    }
+  }
+  const past=await cold({section:'members',roster:'history',q:'Hyunny'});
+  assert.equal(past.querySelectorAll('[data-artist-member-trigger]').length,1);
+  assert.equal(past.querySelector('[data-artist-member-trigger] small').text,'历史成员');
+  const filtered=await cold({section:'works',format:'stage',q:'House Party'});
+  assert.equal(filtered.querySelectorAll('[data-artist-stage-card]').length,1);
+  const privateQueue=await cold({section:'works',format:'stage',queue:'tonight'});
+  assert.equal(privateQueue.querySelector('[data-artist-stage-card]'),null);
+  assert.match(privateQueue.querySelector('main').text,/正在读取作品记录/);
+  const failed=parse(await renderArtist(group,{section:'works',format:'stage'},null,{loading:false,error:'资料读取失败'}));
+  assert.equal(failed.querySelector('[role="alert"] button').text,'重新加载');
+  assert.equal(failed.querySelector('[data-artist-stage-card]'),null);
+  const missing=parse(await renderArtist(group,{section:'members'},null,{loading:false}));
+  assert.match(missing.querySelector('main').text,/暂未找到团体资料/);
+  const timelineFailure=parse(await renderArtist(group,{section:'updates'},catalog,{input:null,timelineError:'时间轴模块未能加载。',onTimelineRetry() {}}));
+  assert.match(timelineFailure.querySelector('[role="alert"]').text,/时间轴模块未能加载/);
+  assert.ok(timelineFailure.querySelector('[role="alert"] button'));
+  const rated=structuredClone(catalog), work=rated.works.find(w=>w.stage?.scoreBinding);
+  work.stageScore=0;
+  const live=parse(await renderArtist(group,{section:'works',format:'stage'},rated,{loading:false}));
+  assert.equal(live.querySelector('[data-work-id="'+work.id+'"] .stage-directory-score b').text,'0.0 / 10');
+});
+
 test('Kep1er pairs every listed film and stage with its own picture, title, destination and return', async () => {
   const group=groupBySlug.get('kep1er'), catalog=artistCatalog(group);
   for(const query of [...homeAndDirectory,{section:'works',format:'stage'}]){

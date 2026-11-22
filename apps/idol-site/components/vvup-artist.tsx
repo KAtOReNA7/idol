@@ -11,6 +11,7 @@ import indexArtwork from '@/data/music-index-artwork.json';
 import editorial from '@/data/vvup-review-editorial.json';
 import supplements from '@/data/vvup-review-supplements.json';
 import {approvedVideoPoster} from '@/lib/idol/approved-video-poster';
+import {publicVideoPreview} from '@/lib/idol/mv-public-covers';
 import {artistCollection,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistMemberUrl,type ArtistSection} from '@/lib/idol/artist-preview';
 import {memberChineseName,memberDisplayName} from '@/lib/idol/member-display-name';
 import {memberWorks} from '@/lib/idol/member-works';
@@ -18,6 +19,8 @@ import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
 import {videoId} from '@/lib/idol/values';
 import {ArtistTimelineHost,useArtistTimelineHostOptions} from './artist-timeline-host';
+import {ArtistTimeline} from './artist-timeline';
+import {stageKindLabel} from '@/lib/idol/stage-display';
 import {PhotoLightbox} from './photo-lightbox';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from './reliable-image';
 import {MemberPublicCredits} from '@/components/public-work-credits';
@@ -29,12 +32,23 @@ import {useArtistNavigationScroll} from './use-artist-navigation-scroll';
 const path='/artists/vvup';
 const homePhoto=indexArtwork.find(group=>group.slug==='vvup')!;
 const officialIds=new Set(editorial.members.filter(m=>m.roster==='official').map(m=>m.id));
+type RosterMember=Pick<Member,'id'|'name'|'stageName'|'cnName'|'groupIds'>;
+const publicMembers=editorial.members.map(person=>({...person,name:person.stageName,groupIds:[editorial.group.id]}));
+const publicStages=editorial.works.flatMap(work=>work.stage?[{...work,stage:work.stage}]:[])
+ .sort((a,b)=>b.date.localeCompare(a.date)||a.id.localeCompare(b.id));
+const timelineIdentities={
+ groups:[{slug:'vvup',groupId:editorial.group.id}],
+ members:publicMembers,
+ works:editorial.works.map(work=>({id:work.id,groupIds:[editorial.group.id]})),
+};
+const firstMemberLabels=Object.fromEntries(publicMembers.map(member=>[member.id,memberChineseName(member)||memberDisplayName(member)]));
+const firstWorkLabels=Object.fromEntries(editorial.works.map(work=>[work.id,work.title]));
 const historicalPortrait=supplements.assets.find(a=>a.kind==='member');
 const sections:[ArtistSection,string][]=[['overview','首页'],['members','成员'],['works','影像'],['records','发行'],['updates','时间轴']];
 const subscribe=(f:()=>void)=>{window.addEventListener('popstate',f);window.addEventListener('artist-location-change',f);return()=>{window.removeEventListener('popstate',f);window.removeEventListener('artist-location-change',f);};};
 const score=(v:number|null)=>v===null?'未评分':v.toFixed(1);
 function Photo({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){return <ReliableImage src={src} identityKey={src??alt} alt={alt} priority={priority} missing={<div className="vu-missing">照片暂未收录</div>} errorFallback={<div className="vu-missing">图片暂时无法加载</div>}/>;}
-function Chapter({title,label,onMore}:{title:string;label?:string;onMore?:()=>void}){return <div className="vu-chapter-heading"><h2>{title}</h2>{onMore&&<button onClick={onMore}>{label??'查看全部'} <ArrowUpRight size={18}/></button>}</div>;}
+function Chapter({title,label,onMore,primary=false}:{title:string;label?:string;onMore?:()=>void;primary?:boolean}){const Heading=primary?'h1':'h2';return <div className="vu-chapter-heading"><Heading>{title}</Heading>{onMore&&<button onClick={onMore}>{label??'查看全部'} <ArrowUpRight size={18}/></button>}</div>;}
 function VideoCard({work,returnTo}:{work:Work;returnTo:string}){
  const title=work.song||work.name;
  const poster=approvedVideoPoster(work.id,videoId(work.url),'mv');
@@ -51,13 +65,26 @@ function VideoCard({work,returnTo}:{work:Work;returnTo:string}){
  </article>;
 }
 
-export default function VvupArtist({content}:{content:CandidateContent}){
+function PublicStageCard({work,returnTo}:{work:(typeof publicStages)[number];returnTo:string}) {
+ const {stage}=work, poster=approvedVideoPoster(work.id,stage.videoId,'stage')?.src??publicVideoPreview(stage.url,'');
+ return <article className="vu-video" data-artist-stage-card="" data-work-id={work.id}>
+  <a className="stage-directory-primary" href={artistWorkUrl(work,true,returnTo)} data-member-work-trigger={'work-stage:'+work.id}>
+   <div className="stage-directory-image">{poster&&<span className="artist-work-preview"><Photo src={poster} alt={work.title+' · '+stage.channel}/></span>}</div>
+   <div className="stage-directory-copy"><span className="stage-directory-kind">{stageKindLabel(stage.kind)}</span><h3>{work.title}</h3>
+    <p className="stage-directory-source">{stage.title}</p><p className="stage-directory-credit">{stage.channel} · <time dateTime={stage.publishedDate}>{stage.publishedDate}</time></p>
+    <span className="stage-directory-action"><Play size={14} aria-hidden="true"/>观看舞台</span></div>
+  </a>
+  <a className="stage-directory-related" href={artistWorkUrl(work,false,returnTo)} data-member-work-trigger={'work-mv:'+work.id} aria-label={'观看《'+work.title+'》MV'}>MV <ArrowUpRight size={14}/></a>
+ </article>;
+}
+
+export default function VvupArtist({content,initialSearch='',initialTimeline}:{content:CandidateContent;initialSearch?:string;initialTimeline?:unknown}){
  const host=useArtistTimelineHostOptions();
  const [fetched,setFetched]=useState<{data:CatalogView|null;error:string;loading:boolean}>({data:null,error:'',loading:true});
  const state=host.catalog!==undefined?{data:host.catalog,error:host.error??'',loading:host.loading??false}:fetched;
  const [attempt,setAttempt]=useState(0);
  const [lightbox,setLightbox]=useState<{src:string;label:string}|null>(null);
- const url=useSyncExternalStore(subscribe,()=>window.location.href,()=>host.serverRoute??path);
+ const url=useSyncExternalStore(subscribe,()=>window.location.href,()=>host.serverRoute??path+initialSearch);
  const route=useMemo(()=>artistRoute(url),[url]);
  const params=new URL(url,'https://stage.invalid').searchParams;
  const releaseId=params.get('release');
@@ -90,22 +117,37 @@ export default function VvupArtist({content}:{content:CandidateContent}){
  }
  const select=(section:ArtistSection)=>navigate({section,member:null,search:'',queue:'all',format:'all'},false,false);
  const collection=useMemo(()=>state.data?artistCollection(state.data,content.groupId):null,[state.data,content.groupId]);
+ const publicDirectory=state.loading&&!state.data&&!state.error&&!route.member&&['members','works','updates'].includes(route.section);
  const allMembers=collection?.members??[];
- const official=editorial.members.filter(m=>officialIds.has(m.id)).map(m=>allMembers.find(row=>row.id===m.id)).filter((m):m is Member=>!!m);
- const archive=allMembers.filter(m=>!officialIds.has(m.id));
+ const rosterMembers:RosterMember[]=publicDirectory?publicMembers:allMembers;
+ const official=editorial.members.filter(m=>officialIds.has(m.id)).map(m=>rosterMembers.find(row=>row.id===m.id)).filter((m):m is RosterMember=>!!m);
+ const archive=rosterMembers.filter(m=>!officialIds.has(m.id));
  const member=allMembers.find(m=>m.id===route.member);
  const needle=route.search.trim().toLocaleLowerCase();
- const matchesMember=(m:Member)=>[memberDisplayName(m),m.stageName].some(s=>s.toLocaleLowerCase().includes(needle));
+ const matchesMember=(m:RosterMember)=>[memberDisplayName(m),m.stageName].some(s=>s.toLocaleLowerCase().includes(needle));
  const returnTo=routeHref();
  const works=collection?.works??[];
  const related=(id:string)=>{const r=releases.entries.find(r=>r.id===id);return works.filter(w=>r?.videoIds.includes(videoId(w.url)??''));};
  const releaseHref=(id:string)=>`${path}?section=records${route.section==='records'&&route.search?'&q='+encodeURIComponent(route.search):''}&release=${encodeURIComponent(id)}`;
  const releaseList=artistRouteUrl({...route,section:'records',member:null,queue:'all',format:'all'},path);
  const shownWorks=artistWorkRows(works,route.queue,route.search).filter(w=>route.format==='stage'?!!(w.stage||w.stageSupplement?.alternatives.length):route.format==='mv'?w.videoType==='官方MV':true);
+ const pendingStages=publicDirectory&&route.section==='works'&&route.format==='stage'&&route.queue==='all'
+  ?publicStages.filter(work=>[work.title,work.version,work.videoType,work.officialTitle].join(' ').toLocaleLowerCase().includes(needle)):null;
  function portraitOriginal(m:Member){if(m.id===historicalPortrait?.memberId)return historicalPortrait.url;const p=content.portraits[m.id];return p?`/artist/vvup/batch-b-20261016/${p.stageName.toLowerCase()}-original.jpg`:null;}
- function roster(items:Member[]){return <div className="vu-roster">{items.map(m=><button key={m.id} data-artist-member-trigger={m.id} onClick={()=>navigate({section:'members',member:m.id},false,!officialIds.has(m.id)||historical)}><span className="vu-portrait-frame"><Photo src={content.portraits[m.id]?.image??(m.id===historicalPortrait?.memberId?historicalPortrait.url:null)} alt={memberDisplayName(m)+' · 官方资料照'}/></span><strong>{memberChineseName(m)||m.stageName}</strong>{memberChineseName(m)&&memberChineseName(m)!==m.stageName&&<span>{m.stageName}</span>}{!officialIds.has(m.id)&&<small>历史成员</small>}</button>)}</div>;}
+ function roster(items:RosterMember[]){return <div className="vu-roster">{items.map(m=>{
+  const withHistory=!officialIds.has(m.id)||historical;
+  const memberRoute={section:'members' as const,member:m.id};
+  return <a key={m.id} data-artist-member-trigger={m.id} href={routeHref({...route,...memberRoute},withHistory)} onClick={event=>{
+    if(event.defaultPrevented||event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+    event.preventDefault();navigate(memberRoute,false,withHistory);
+  }}><span className="vu-portrait-frame"><Photo src={content.portraits[m.id]?.image??(m.id===historicalPortrait?.memberId?historicalPortrait.url:null)} alt={memberDisplayName(m)+' · 官方资料照'}/></span><strong>{memberChineseName(m)||m.stageName}</strong>{memberChineseName(m)&&memberChineseName(m)!==m.stageName&&<span>{m.stageName}</span>}{!officialIds.has(m.id)&&<small>历史成员</small>}</a>;
+ })}</div>;}
  function releaseGrid(entries= releases.entries){return <div className="vu-releases">{entries.map(r=><a key={r.id} href={releaseHref(r.id)} data-artist-release-trigger={r.id}><div className="vu-cover">{r.image?<Photo src={r.image} alt={r.title+' · 发行封面'}/>:<div className="vu-cover-missing"><strong>{r.title}</strong><span>发行封面暂缺</span></div>}</div><h3>{r.title}</h3><p>{r.date||'发行日期不详'} · {r.type}</p></a>)}</div>;}
- function timeline(){return <ArtistTimelineHost groupId={content.groupId} catalog={state.data} loading={state.loading} error={state.error} onRetry={retry}/>;}
+ function timeline(){
+  if(route.section==='updates'&&initialTimeline&&(publicDirectory||host.timelineLoading)&&!host.timelineError){
+   return <ArtistTimeline input={initialTimeline} context={timelineIdentities} showTitle={false} memberLabels={firstMemberLabels} workLabels={firstWorkLabels}/>;
+  }
+  return <ArtistTimelineHost groupId={content.groupId} catalog={state.data} loading={state.loading} error={state.error} onRetry={retry}/>;}
  function retry(){if(host.onRetry)host.onRetry();else setAttempt(x=>x+1);}
  function memberPage(m:Member){
   const items=state.data?memberWorks(state.data,m.id):[],original=portraitOriginal(m);
@@ -133,7 +175,7 @@ export default function VvupArtist({content}:{content:CandidateContent}){
    <figcaption><a href={homePhoto.sourceUrl} target="_blank" rel="noopener noreferrer">《Super Model》发行团照 · Genie ↗</a></figcaption>
   </figure>
  </section>}
- <main id="artist-content" className={route.section==='overview'&&!route.member?'vu-home':'vu-content'}>{state.loading?<p className="vu-empty" role="status">正在打开 VVUP 档案…</p>:state.error?<div className="vu-empty" role="alert"><p>{state.error}</p><button onClick={retry}>重新加载</button></div>:!collection?<div className="vu-empty">暂未找到团体资料。</div>:route.member?(member?memberPage(member):<div className="vu-empty">未找到这位成员。<button onClick={()=>select('members')}>返回成员</button></div>):<>
+ <main id="artist-content" className={route.section==='overview'&&!route.member?'vu-home':'vu-content'}>{state.loading&&!publicDirectory&&!state.error?<p className="vu-empty" role="status">正在打开 VVUP 档案…</p>:state.error?<div className="vu-empty" role="alert"><p>{state.error}</p><button onClick={retry}>重新加载</button></div>:!collection&&!publicDirectory?<div className="vu-empty">暂未找到团体资料。</div>:route.member?(member?memberPage(member):<div className="vu-empty">未找到这位成员。<button onClick={()=>select('members')}>返回成员</button></div>):<>
  {route.section==='overview'&&<>
 <ArtistInformation slug="vvup" catalog={state.data}/>
 <div className="vu-acid-band"><h2>成员</h2><button onClick={()=>select('members')}>全部成员 <ArrowUpRight size={18}/></button></div>
@@ -142,10 +184,14 @@ export default function VvupArtist({content}:{content:CandidateContent}){
 <section><Chapter title="发行作品" label="全部发行" onMore={()=>select('records')}/>{releaseGrid(releases.entries.slice(0,3))}</section>
 <section><Chapter title="时间轴" label="完整时间轴" onMore={()=>select('updates')}/>{timeline()}</section>
 </>}
- {route.section==='members'&&<section><Chapter title="成员档案"/><div className="vu-pills" aria-label="成员范围"><button aria-pressed={!historical} onClick={()=>navigate({member:null},false,false)}>官方列示成员</button><button aria-pressed={historical} onClick={()=>navigate({member:null},false,true)}>含历史成员</button></div><SearchBox label="搜索成员" value={route.search} change={q=>navigate({search:q},true)}/><p className="vu-count" role="status">{[...official,...(historical?archive:[])].filter(matchesMember).length} 份档案</p>{roster(official.filter(matchesMember))}{historical&&archive.some(matchesMember)&&<><h2 className="vu-archive-title">历史成员</h2>{roster(archive.filter(matchesMember))}</>}{![...official,...(historical?archive:[])].some(matchesMember)&&<EmptyResult clear={()=>navigate({search:''},true)}/>}<p className="vu-muted">官方资料页列示四位成员；历史档案及原有作品关系独立保留。</p></section>}
+ {route.section==='members'&&<section><Chapter title="成员档案" primary/><div className="vu-pills" aria-label="成员范围"><button aria-pressed={!historical} onClick={()=>navigate({member:null},false,false)}>官方列示成员</button><button aria-pressed={historical} onClick={()=>navigate({member:null},false,true)}>含历史成员</button></div><SearchBox label="搜索成员" value={route.search} change={q=>navigate({search:q},true)}/><p className="vu-count" role="status">{[...official,...(historical?archive:[])].filter(matchesMember).length} 份档案</p>{roster(official.filter(matchesMember))}{historical&&archive.some(matchesMember)&&<><h2 className="vu-archive-title">历史成员</h2>{roster(archive.filter(matchesMember))}</>}{![...official,...(historical?archive:[])].some(matchesMember)&&<EmptyResult clear={()=>navigate({search:''},true)}/>}<p className="vu-muted">官方资料页列示四位成员；历史档案及原有作品关系独立保留。</p></section>}
  {route.section==='records'&&releasePage()}
- {route.section==='works'&&<section><Chapter title="作品与舞台"/><SearchBox label="搜索本团作品" value={route.search} change={q=>navigate({search:q},true)}/><div className="vu-pills" aria-label="播放内容">{[['all','全部影像'],['mv','MV'],['stage','可看舞台']].map(([key,label])=><button key={key} aria-pressed={route.format===key} onClick={()=>navigate({format:key})}>{label}</button>)}</div><div className="vu-pills" aria-label="观看状态">{[['all','全部记录'],['tonight','待看'],['rewatch','高分重温'],['unrated','看过待评分']].map(([key,label])=><button key={key} aria-pressed={route.queue===key} onClick={()=>navigate({queue:key})}>{label}</button>)}</div><p className="vu-count" role="status">{shownWorks.length} 支影像</p><div className="vu-videos">{shownWorks.map(w=>route.format==='stage'?<ArtistStageDirectoryCard key={w.id} className="vu-video" work={w} returnTo={returnTo}/>:<VideoCard key={w.id} work={w} returnTo={returnTo}/>)}</div>{!shownWorks.length&&<EmptyResult clear={()=>navigate({search:'',queue:'all',format:'all'})}/>}</section>}
- {route.section==='updates'&&<section><Chapter title="时间轴"/>{timeline()}</section>}
+ {route.section==='works'&&<section><Chapter title="作品与舞台" primary/><SearchBox label="搜索本团作品" value={route.search} change={q=>navigate({search:q},true)}/><div className="vu-pills" aria-label="播放内容">{[['all','全部影像'],['mv','MV'],['stage','可看舞台']].map(([key,label])=><button key={key} aria-pressed={route.format===key} onClick={()=>navigate({format:key})}>{label}</button>)}</div><div className="vu-pills" aria-label="观看状态">{[['all','全部记录'],['tonight','待看'],['rewatch','高分重温'],['unrated','看过待评分']].map(([key,label])=><button key={key} aria-pressed={route.queue===key} onClick={()=>navigate({queue:key})}>{label}</button>)}</div>{publicDirectory&&!pendingStages?.length?<p className="vu-count" role="status">正在读取作品记录…</p>:<>
+  <p className="vu-count" role="status">{pendingStages?.length??shownWorks.length} 支影像</p>
+  <div className="vu-videos">{pendingStages?pendingStages.map(w=><PublicStageCard key={w.id} work={w} returnTo={returnTo}/>):shownWorks.map(w=>route.format==='stage'?<ArtistStageDirectoryCard key={w.id} className="vu-video" work={w} returnTo={returnTo}/>:<VideoCard key={w.id} work={w} returnTo={returnTo}/>)}</div>
+  {!publicDirectory&&!shownWorks.length&&<EmptyResult clear={()=>navigate({search:'',queue:'all',format:'all'})}/>}
+ </>}</section>}
+ {route.section==='updates'&&<section><Chapter title="时间轴" primary/>{timeline()}</section>}
  </>}</main><footer className="vu-footer"><a className="vu-logo" href={path}>VVUP</a><a href="/?view=groups">团体索引 <ArrowUpRight size={16}/></a><button onClick={()=>select('updates')}>时间轴 <ArrowUpRight size={16}/></button></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}</div><ImageRecoveryControls/></ImageRecoveryProvider>;
 }
 function SearchBox({label,value,change}:{label:string;value:string;change:(v:string)=>void}){return <label className="vu-search"><Search size={18}/><input aria-label={label} placeholder={label} value={value} onChange={e=>change(e.target.value)}/></label>;}

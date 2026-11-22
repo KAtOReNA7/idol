@@ -282,21 +282,43 @@ test('an unstarted RUTUBE frame gets one inline wait notice at eight seconds, in
  }
 });
 
-test('an early or late trusted start dismisses the notice and pausing after playback never reopens it',()=>{
- for(const event of [{type:'player:playStart'},{type:'player:changeState',data:{state:'playing'}},{type:'player:currentTime',data:{time:.125}}]){
-  for(const afterHint of [false,true]){
-   const h=startSession(),frame=h.frame();
-   h.advance(afterHint?8001:7900);
-   assert.equal(!!waiting(h.render()),afterHint);
-   h.message(JSON.stringify(event));
-   assert.equal(waiting(h.render()),undefined);
-   h.message({type:'player:changeState',data:{state:'paused'}});
-   h.advance(20000);
-   assert.equal(waiting(h.render()),undefined);
-   assert.strictEqual(h.frame(),frame);
-   assert.equal(h.timers.size,0);
-   h.unmount();
-  }
+const currentTime=time=>({type:'player:currentTime',data:{time}});
+test('player start, selected quality and stalled or reset positions keep the waiting notice available',()=>{
+ const traces=[
+  [{type:'player:playStart',data:{q_w:1920,q_h:880}}],
+  [{type:'player:changeState',data:{state:'playing'}}],
+  [{type:'player:currentQuality',data:{quality:{height:880}}},{type:'player:qualityList',data:{list:[880]}}],
+  [currentTime(.125)], [currentTime(.125),currentTime(.125)], [currentTime(.25),currentTime(.125)],
+  [currentTime(.125),currentTime(0),currentTime(.25)], [currentTime('0.125'),currentTime(.25)],
+  ...['paused','stopped'].map(state=>[currentTime(.125),{type:'player:changeState',data:{state}},currentTime(.25)]),
+ ];
+ for(const events of traces)for(const afterHint of [false,true]){
+  const h=startSession(),frame=h.frame();
+  if(afterHint)h.advance(8000);
+  for(const event of events)h.message(JSON.stringify(event));
+  if(!afterHint)h.advance(8000);
+  assert.ok(waiting(h.render()),JSON.stringify(events));
+  assert.strictEqual(h.frame(),frame);
+  h.unmount();
+ }
+});
+
+test('two advancing trusted media times dismiss the notice and later user pauses do not bring it back',()=>{
+ for(const afterHint of [false,true]){
+  const h=startSession(),frame=h.frame();
+  h.advance(afterHint?8000:7900);
+  h.message(currentTime(.125));
+  h.message(currentTime(.25),'https://unrelated.invalid');
+  h.message(currentTime(.25),'https://rutube.ru',{});
+  assert.equal(!!waiting(h.render()),afterHint);
+  h.message(JSON.stringify(currentTime(.25)));
+  assert.equal(waiting(h.render()),undefined);
+  h.message({type:'player:changeState',data:{state:'paused'}});
+  h.advance(20000);
+  assert.equal(waiting(h.render()),undefined);
+  assert.strictEqual(h.frame(),frame);
+  assert.equal(h.timers.size,0);
+  h.unmount();
  }
 });
 
@@ -324,6 +346,7 @@ test('late messages, errors and timers from a replaced frame cannot affect its r
  const h=startSession(),oldFrame=h.frame(),oldElement=node(h.render(),'iframe');
  const oldTimer=[...h.timers.values()][0].fn,oldListener=[...h.listeners][0];
  h.advance(8000);assert.ok(waiting(h.render()));
+ h.message(currentTime(.125));
  node(h.render(),'button','video-reload').props.onClick();
  const replacement=node(h.render(),'iframe'),newFrame=h.frame();
  assert.notEqual(replacement.key,oldElement.key);
@@ -331,6 +354,8 @@ test('late messages, errors and timers from a replaced frame cannot affect its r
  oldTimer();oldListener({origin:'https://rutube.ru',source:oldFrame.contentWindow,data:{type:'player:error'}});
  oldElement.props.onError({currentTarget:oldFrame});
  h.message({type:'player:playStart'},'https://rutube.ru',oldFrame.contentWindow);
+ h.message(currentTime(.2),'https://rutube.ru',oldFrame.contentWindow);
+ h.message(currentTime(.25));
  assert.equal(waiting(h.render()),undefined);
  h.advance(8000);assert.ok(waiting(h.render()));assert.strictEqual(h.frame(),newFrame);
  h.unmount();

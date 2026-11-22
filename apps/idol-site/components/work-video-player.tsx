@@ -47,7 +47,7 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
   if(!attempt||failed||!embedUrl?.startsWith('https://rutube.ru/play/embed/'))return;
   const frame=frameRef.current;
   if(!frame)return;
-  let awaitingStart=true,requestedPlay=false;
+  let awaitingStart=true,requestedPlay=false,previousTime=0;
   const timer=window.setTimeout(()=>{
    if(awaitingStart&&frameRef.current===frame)setWaitingAttempt(attempt);
   },8000);
@@ -64,13 +64,18 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
     return;
    }
    if(!awaitingStart)return;
-   // An initial paused state and player:ready may both arrive before the first frame.
-   // Once playback has begun, a later deliberate pause must not restart this timer.
-   if(message?.type==='player:playStart'||(message?.type==='player:changeState'&&message.data?.state==='playing')
-     ||(message?.type==='player:currentTime'&&Number.isFinite(message.data?.time)&&message.data.time>0)){
-    awaitingStart=false;
-    window.clearTimeout(timer);
-    setWaitingAttempt(null);
+   // The player may announce a start or quality before its clock advances.
+   if(message?.type==='player:changeState'&&(message.data?.state==='paused'||message.data?.state==='stopped'))previousTime=0;
+   if(message?.type==='player:currentTime'){
+    const time=message.data?.time;
+    if(typeof time==='number'&&Number.isFinite(time)){
+     if(previousTime>0&&time>previousTime){
+      awaitingStart=false;
+      window.clearTimeout(timer);
+      setWaitingAttempt(null);
+     }
+     previousTime=time;
+    }
     return;
    }
    if(message?.type==='player:ready'&&!requestedPlay){

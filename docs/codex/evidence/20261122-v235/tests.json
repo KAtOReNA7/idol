@@ -1,0 +1,134 @@
+{
+  "applicationCommit": "c9a99aa72e43436ffa3bc4b5e4728e495d2e5d55",
+  "baselineApplicationCommit": "7b8ad937078862902d296d065bfebe5a37176f23",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4218,"pass": 4046,"fail": 133,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4222,"pass": 4052,"fail": 131,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1321,"pass": 1321,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5995,
+          "restrictedCopies": 10,
+          "localAssets": 586,
+          "localBytes": 16905055
+        }
+      },
+      "retainedFailureCount": 131,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/catalog-concurrency.test.cjs",
+          "test": "actual client load callback ignores stale success, errors and spinner completion"
+        },
+        {
+          "suite": "main",
+          "file": "tests/catalog-concurrency.test.cjs",
+          "test": "persistent snapshot is rendered before background refresh completes and remains on failure"
+        }
+      ],
+      "addedTests": [
+        "Bad Girl shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "I Don't Miss U shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "after a request ends during the cold D1 read, the next HTTP request opens the work without a retry",
+        "concurrent reads within one request coalesce and release the pending operation after failure",
+        "one pending cold request cannot block a different request or evict its completed projection",
+        "readers within one request keep separate traces and observe the same failed cold operation"
+      ],
+      "removedTests": [
+        "concurrent normal reads coalesce, errors clear the exact pending entry",
+        "joined readers keep separate request traces and observe the same failed cold operation"
+      ]
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4218,"pass": 4050,"fail": 129,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4222,"pass": 4056,"fail": 127,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1321,"pass": 1321,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5995,
+          "restrictedCopies": 10,
+          "localAssets": 586,
+          "localBytes": 16905055
+        }
+      },
+      "retainedFailureCount": 127,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/catalog-concurrency.test.cjs",
+          "test": "actual client load callback ignores stale success, errors and spinner completion"
+        },
+        {
+          "suite": "main",
+          "file": "tests/catalog-concurrency.test.cjs",
+          "test": "persistent snapshot is rendered before background refresh completes and remains on failure"
+        }
+      ],
+      "addedTests": [
+        "Bad Girl shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "I Don't Miss U shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "after a request ends during the cold D1 read, the next HTTP request opens the work without a retry",
+        "concurrent reads within one request coalesce and release the pending operation after failure",
+        "one pending cold request cannot block a different request or evict its completed projection",
+        "readers within one request keep separate traces and observe the same failed cold operation"
+      ],
+      "removedTests": [
+        "concurrent normal reads coalesce, errors clear the exact pending entry",
+        "joined readers keep separate request traces and observe the same failed cold operation"
+      ]
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each tested the same application commit in a dedicated checkout. A shared Windows run encountered later test-only edits and its counts are excluded.",
+  "compiledQuriousPreviews": {
+    "path": "dist/client/artist/recognition-editions/wooah",
+    "files": {
+      "qurious-2020-lucy.card.webp": 36584,
+      "qurious-2020-minseo.card.webp": 18358,
+      "qurious-2020-nana.card.webp": 10938,
+      "qurious-2020-sora.card.webp": 16486,
+      "qurious-2020-wooyeon.card.webp": 29160
+    },
+    "bytesPerPlatform": {"win": 111526,"linux": 111526}
+  }
+}

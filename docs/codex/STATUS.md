@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v256。KISS OF LIFE 三个分享首份直接显示 4 人、25 支作品和 17 条事件。fromis_9 三支 MV 的 26 张默认成员预览减少 74.32%。BABYMONSTER 首次清空与原生搜索已验收，LE SSERAFIM 发行日期从 1/11 到 11/11。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v256-release.md) |
+| 正式站 | v257。ITZY、LE SSERAFIM 的 11 个具名分享首份显示本人，BABYMONSTER、KISS OF LIFE 保留接管前搜索词，《Glass Shoes》九张预览实测减少 95.72%。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v257-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。从 v256 接续《Glass Shoes》九张同期照、ITZY 与 LE SSERAFIM 的 11 个成员分享首屏及搜索接管期间的输入保留。四场节目、《Per》首发完整版及《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v256/publication.json) |
+| 当前开发 | `codex/project-optimization-20261121`。从 v257 接续 BABYMONSTER《DRIP》发行详情、Kep1er《Sugar Rush》同期照片，核 XG 与 aespa 的作品、舞台筛选及返回。四场节目、《Per》首发完整版及《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v257/publication.json) |
 
 ## 11 月 22 日更新
 

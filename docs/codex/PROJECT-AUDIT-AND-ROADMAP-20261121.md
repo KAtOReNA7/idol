@@ -4,12 +4,12 @@
 
 ## 11 月 23 日接续目标
 
-正式站从 v256 接续。成员原图首击和飞书第 8 项已在 v249 验收，VVUP 分享入口和 BABYMONSTER 成员详情已在 v250 交付。飞书 CLI 以用户身份回读仍为修订 1218，29 条反馈中 28 条已解决。[v249](worklogs/20261123-v249-release.md) · [v250](worklogs/20261123-v250-release.md) · [v256](worklogs/20261123-v256-release.md)
+从 v257 接续。成员原图首击与飞书第 8 项已在 v249 验收，VVUP 分享与 BABYMONSTER 成员详情在 v250 交付。v257 再交付 ITZY、LE SSERAFIM 十一个具名分享、两团搜索和《Glass Shoes》九张同期照。飞书 CLI 仍读到修订 1218，29 条反馈中 28 条已解决。[v249](worklogs/20261123-v249-release.md) · [v250](worklogs/20261123-v250-release.md) · [v257](worklogs/20261123-v257-release.md)
 
-1. v256 已上线并复验 BABYMONSTER 首次清空与提交搜索、KISS OF LIFE 三个分享栏目和原事件返回、fromis_9 三支 MV 的 26 张同期成员照，以及 LE SSERAFIM 的 11 张带日期唱片。接续搜索在前端接管期间的输入保留。[v256 实测](evidence/20261123-v256/formal-v256.json)
-2. 先交付从 2017 年团体具名官宣选出的 fromis_9《Glass Shoes》九张成员照，保留旧照入口和评分绑定。逐图复核已有发行图集的 64 个候选位置，缺具名同期材料的 18 个位置继续留证。成员照先在项目 Figma 双宽确认，再在实页核对原图、照片下评分和读取字节。[同期照片台账](evidence/20261122-member-release-portraits/remaining-194.csv)
-3. 在剩余双宽候选中先核实际影响找人、找作品和返回的入口。ITZY、LE SSERAFIM 的 11 个成员分享地址已逐人复现首份缺本人。沿用对应 Figma 布局，让首份网页直接显示本人姓名、肖像、出处和可用的返回入口；再按已登记的内页样本补项目 Figma、代码和正式站验证。每批报告具体页面及前后数据。[使用观察](20261122-USABILITY-DISCUSSION.md) · [设计索引](worklogs/20261122-group-design-coverage.md)
-4. 《BILLIONAIRE》沿用已验收的播放结果。六个待播指定版本有新同版来源后才静音短测。已通过的 51 团首页、MV 顺序和评分绑定复用现有回执，检查本批受影响的路径。[播放回执](evidence/20261122-v236/formal-billionaire-2160p.json) · [当前状态](STATUS.md)
+1. 下一批优先接入 BABYMONSTER《DRIP》官方完整封面、九首曲目和对应六条站内影像。从首页或发行目录进入时返回原封面，曲目返回原行。《BILLIONAIRE》沿用已有站内版本与播放验收。[《DRIP》桌面](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1711-2165) · [手机](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1711-2185)
+2. 交付 Kep1er《Sugar Rush》九张同期成员照。八张属于原台账，坂本舞白另有跨期修正。保留十七处历史图及原评分绑定。原台账已有 114/194 项核到原件，其余 64 项有发行图集待逐图确认，16 项待具名同期证据。[《Sugar Rush》手机稿](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1711-2516) · [台账](evidence/20261122-member-release-portraits/remaining-194.csv)
+3. XG、aespa 的六个栏目分享首开仍显示团首页和等待提示。先做两团作品目录，解决舞台筛选后仍点入 MV 的问题，再做 XG 名录。复用各团官方原图，先补项目 Figma 双宽；每批测试实际路径、焦点和同条件读数。团体资料的访问优化继续用 51 团同输入对照，并保留已有统计语义。[设计索引](worklogs/20261122-group-design-coverage.md)
+4. 六个指定待播版本在取得新同版来源后静音短测。已通过的首页、MV 顺序、评分绑定复用已有回执，检查本批受影响的路径。[已验播放](evidence/20261122-v236/formal-billionaire-2160p.json) · [当前状态](STATUS.md)
 
 ## 本轮已交付与接续顺序
 

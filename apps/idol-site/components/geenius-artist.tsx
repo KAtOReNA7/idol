@@ -134,7 +134,7 @@ export default function GeeniusArtist({content}:{content:CandidateContent}){
  if(route.member)body=selectedMember?person(selectedMember):missing('没有找到这位成员。','members');
  else if(params.has('release'))body=selectedRelease?releaseDetail(selectedRelease):missing('没有找到此发行。','works');
  else if(params.has('media'))body=selectedVideo?videoDetail(selectedVideo):missing('暂时找不到这个视频版本。','works');
- else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="idol-geenius-result">{people.length} 份档案</p>{people.length?roster(people):<p className="idol-geenius-empty">没有符合条件的成员。</p>}<details className="idol-geenius-roster-note group-roster-source"><summary>成员照片来源</summary><p>HOMe 官网资料照 · 中文名为本站显示名。</p></details></>;}
+ else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="idol-geenius-result">{people.length} 份档案</p>{people.length?roster(people):<p className="idol-geenius-empty">没有符合条件的成员。</p>}<details className="idol-geenius-roster-note group-roster-source"><summary>成员照片来源</summary><p>HOMe 官网成员资料照。</p></details></>;}
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','OUR YEARS')}{timeline()}</>;
  else body=<>

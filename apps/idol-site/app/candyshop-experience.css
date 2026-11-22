@@ -1,8 +1,7 @@
-@font-face{font-family:CandyShopSleeve;src:url('/fonts/BodoniModa-Variable.ttf') format('truetype');font-display:swap}
 .candidate-candyshop-experience{--paper:#fff;--white:#fff;--ink:#57364f;--muted:#775d71;--line:#d8c7d3;--rose:#57364f;--blush:#f9e5ef;--lilac:#eee7f5;background:var(--paper);color:var(--ink);font-family:'CS Sans','Microsoft YaHei',sans-serif}
 .candidate-candyshop-experience .work-detail-top>*{min-width:0}.candidate-candyshop-experience .video-stage,.candidate-candyshop-experience .video-play,.candidate-candyshop-experience .video-mode-tabs,.candidate-candyshop-experience .video-mode-tabs button,.candidate-candyshop-experience .button,.candidate-candyshop-experience .cast-card,.candidate-candyshop-experience .cast-card .photo,.candidate-candyshop-experience .editor,.candidate-candyshop-experience .editor-actions,.candidate-candyshop-experience .editor-fields input,.candidate-candyshop-experience .editor-fields select,.candidate-candyshop-experience .editor-fields textarea,.candidate-candyshop-experience .stage-source,.candidate-candyshop-experience .alternative-card,.candidate-candyshop-experience .watch-lead-card,.candidate-candyshop-experience .watch-next{border-radius:0}.candidate-candyshop-experience .video-stage{background:#161b1b}.candidate-candyshop-experience .video-mode-tabs{background:var(--white);border:1px solid var(--line)}.candidate-candyshop-experience .video-mode-tabs button[aria-selected=true]{background:var(--rose);color:var(--paper)}.candidate-candyshop-experience .video-play{min-height:48px;background:var(--ink);color:var(--paper)}.candidate-candyshop-experience .button{min-height:44px;line-height:1.5;white-space:normal}.candidate-candyshop-experience .button.primary{background:var(--rose);color:var(--paper);border-color:var(--rose)}.candidate-candyshop-experience .work-aside h1{line-height:1.25;overflow-wrap:anywhere}.candidate-candyshop-experience .work-score{flex-wrap:wrap;gap:10px}.candidate-candyshop-experience .editor-fields input,.candidate-candyshop-experience .editor-fields textarea,.candidate-candyshop-experience .editor-fields select{min-width:0;color:var(--ink);background:var(--white);border-color:var(--line)}.candidate-candyshop-experience .caption-help{border:0;border-top:1px solid var(--line);border-radius:0;background:none;padding:18px 0}.candidate-candyshop-experience .section-heading h2{line-height:1.35}.candidate-candyshop-experience .member-name{overflow-wrap:anywhere}.candidate-candyshop-experience .cast-scores b{color:var(--ink)}.candidate-candyshop-experience .image-label{border-radius:0;background:var(--paper);color:var(--muted)}.candidate-candyshop-experience .stage-overall-note{background:var(--blush);padding:18px;line-height:1.8}.candidate-candyshop-experience .alternative-card,.candidate-candyshop-experience .watch-lead-card{border:1px solid var(--line);background:var(--white)}.candidate-candyshop-experience .member-detail{display:grid;align-items:start}.candidate-candyshop-experience .member-detail h1{font-size:clamp(36px,4vw,62px);line-height:1.3;overflow-wrap:anywhere}.candidate-candyshop-experience .member-detail>.bm-concept-photo{height:auto;aspect-ratio:1;border-radius:0;background:var(--blush)}.candidate-candyshop-experience .bm-concept-photo img{object-fit:contain}.candidate-candyshop-experience .member-work-summary,.candidate-candyshop-experience .member-work-card,.candidate-candyshop-experience .member-work-card__art{border-radius:0}.candidate-candyshop-experience .watch-next{border:1px solid var(--line);background:var(--white)}
 @media(max-width:760px){.candidate-candyshop-experience .header{height:auto;min-height:68px;flex-wrap:wrap;gap:16px;padding-top:14px}.candidate-candyshop-experience .header nav{width:100%;min-width:0;background:var(--paper)}.candidate-candyshop-experience .header nav button{font-size:10px;min-width:0}.candidate-candyshop-experience .editor-fields input,.candidate-candyshop-experience .editor-fields textarea,.candidate-candyshop-experience .editor-fields select{font-size:16px}.candidate-candyshop-experience .video-mode-tabs{min-width:0;width:100%}.candidate-candyshop-experience .video-mode-tabs button{flex:1;min-width:0;min-height:44px}.candidate-candyshop-experience .member-detail h1{font-size:36px}.candidate-candyshop-experience .cast-scores{gap:8px}.candidate-candyshop-experience .stage-source{min-width:0}}
-.candidate-candyshop-experience .work-detail-top{grid-template-columns:minmax(0,1.5fr) minmax(270px,1fr);gap:32px}.candidate-candyshop-experience .work-aside{border:1px dashed var(--line);padding:26px;background:var(--white)}.candidate-candyshop-experience .work-aside h1{font-family:CandyShopSleeve,Georgia,serif;font-size:43px;font-weight:400}.candidate-candyshop-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.candidate-candyshop-experience .cast-card{padding:18px;background:var(--white);border:1px solid var(--line)}.candidate-candyshop-experience .cast-card .photo{aspect-ratio:1}.candidate-candyshop-experience .cast-copy{padding:18px 0 0}.candidate-candyshop-experience .stage-view .work-detail-top{grid-template-columns:1fr}.candidate-candyshop-experience .stage-view .work-aside{border-inline:0;border-block:1px dashed var(--line);padding:26px 0;background:none}.candidate-candyshop-experience .stage-source{border:1px dashed var(--line);padding:24px;background:var(--white)}.candidate-candyshop-experience .member-detail{grid-template-columns:1fr 1fr;gap:36px}.candidate-candyshop-experience .member-work-summary{background:var(--white);border:1px dashed var(--line);padding:24px}
+.candidate-candyshop-experience .work-detail-top{grid-template-columns:minmax(0,1.5fr) minmax(270px,1fr);gap:32px}.candidate-candyshop-experience .work-aside{border:1px dashed var(--line);padding:26px;background:var(--white)}.candidate-candyshop-experience .work-aside h1{font-family:var(--font-editorial);font-size:43px;font-weight:400}.candidate-candyshop-experience .cast-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.candidate-candyshop-experience .cast-card{padding:18px;background:var(--white);border:1px solid var(--line)}.candidate-candyshop-experience .cast-card .photo{aspect-ratio:1}.candidate-candyshop-experience .cast-copy{padding:18px 0 0}.candidate-candyshop-experience .stage-view .work-detail-top{grid-template-columns:1fr}.candidate-candyshop-experience .stage-view .work-aside{border-inline:0;border-block:1px dashed var(--line);padding:26px 0;background:none}.candidate-candyshop-experience .stage-source{border:1px dashed var(--line);padding:24px;background:var(--white)}.candidate-candyshop-experience .member-detail{grid-template-columns:1fr 1fr;gap:36px}.candidate-candyshop-experience .member-work-summary{background:var(--white);border:1px dashed var(--line);padding:24px}
 @media(max-width:760px){.candidate-candyshop-experience .work-detail-top{grid-template-columns:1fr;gap:24px}.candidate-candyshop-experience .work-aside{padding:20px}.candidate-candyshop-experience .cast-grid{grid-template-columns:1fr}.candidate-candyshop-experience .cast-card{display:grid;grid-template-columns:84px minmax(0,1fr);padding:14px;gap:16px}.candidate-candyshop-experience .cast-card .photo{width:84px;height:84px}.candidate-candyshop-experience .cast-copy{padding:0}.candidate-candyshop-experience .work-aside h1{font-size:34px}.candidate-candyshop-experience .member-detail{grid-template-columns:1fr;gap:24px}}
 
 /* Batch B: preserve readable titles and touch targets in this theme only. */
@@ -11,3 +10,56 @@
 .candidate-candyshop-experience .cast-scores{font-variant-numeric:tabular-nums}
 .candidate-candyshop-experience :is(a,button):focus-visible{outline:3px solid var(--rose);outline-offset:4px}
 @media(max-width:360px){.candidate-candyshop-experience .cast-grid{grid-template-columns:minmax(0,1fr)}.candidate-candyshop-experience .cast-card{margin-top:0}.candidate-candyshop-experience .video-mode-tabs button{font-size:12px;line-height:1.4}.candidate-candyshop-experience .work-aside h1{font-size:30px}}
+
+/* Candy Shop Japan official member and music pages, Figma 1519:1142–1314. */
+body .work-experience[data-work-theme="candyshop"] {
+  --experience-display: var(--font-editorial);
+}
+body .work-experience[data-work-theme="candyshop"] :is(.work-aside h1,.music-work-title h1,.member-name) {
+  font-family: var(--font-editorial);
+  font-weight: 650;
+  font-style: normal;
+  letter-spacing: -.035em;
+}
+body .work-experience[data-work-theme="candyshop"] .work-detail-top {
+  grid-template-columns: minmax(0,1.55fr) minmax(260px,1fr);
+  gap: clamp(18px,2.2vw,32px);
+}
+body .work-experience[data-work-theme="candyshop"] :is(.work-aside,.stage-aside) {
+  align-self: start;
+  min-width: 0;
+  padding: clamp(16px,2vw,28px);
+  border: 0;
+  border-radius: 8px;
+  background: var(--lilac);
+}
+body .work-experience[data-work-theme="candyshop"] :is(.work-aside h1,.stage-aside h1) {
+  margin-block: 6px 12px;
+  font-size: clamp(36px,3.7vw,56px);
+  line-height: 1.06;
+}
+body .work-experience[data-work-theme="candyshop"] :is(.video-stage,.stage-source,.cast-card,.editor) { border-radius: 6px; }
+body .work-experience[data-work-theme="candyshop"] :is(.stage-source,.cast-card,.editor) {
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+}
+body .work-experience[data-work-theme="candyshop"] .cast-section .section-heading h2 {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0;
+}
+body .work-experience[data-work-theme="candyshop"] .cast-section .section-heading h2::before {
+  content: ''; width: .65em; height: .65em; background: url('/artist/candyshop/japan/star.svg') center/contain no-repeat;
+}
+body .work-experience[data-work-theme="candyshop"] .cast-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); align-items: start; gap: 16px; }
+body .work-experience[data-work-theme="candyshop"] .cast-card { min-width: 0; padding: 10px; }
+body .work-experience[data-work-theme="candyshop"] .cast-copy { padding-top: 10px; }
+body .work-experience[data-work-theme="candyshop"] :is(.editor-open,.credit-score-action,.video-play,.button.primary,.video-mode-tabs button[aria-selected="true"]) {
+  min-height: 44px; border-color: var(--ink); border-radius: 24px; background: var(--ink); color: #fff;
+}
+body .work-experience[data-work-theme="candyshop"] .video-mode-tabs { border: 0; background: transparent; gap: 8px; }
+body .work-experience[data-work-theme="candyshop"] .video-mode-tabs button:not([aria-selected="true"]) { background: var(--lilac); color: var(--ink); border: 0; border-radius: 24px; }
+body .work-experience[data-work-theme="candyshop"] .video-play { padding-inline: 18px; }
+body .work-experience[data-work-theme="candyshop"] :is(.back,.video-caption,.tags span) { color: var(--muted); }
+@media (max-width: 760px) {
+  body .work-experience[data-work-theme="candyshop"] :is(.work-detail-top,.cast-grid) { grid-template-columns: minmax(0,1fr); }
+}

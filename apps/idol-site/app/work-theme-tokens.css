@@ -258,8 +258,21 @@
 @font-face{font-family:YPInter;src:url('/fonts/hearts2hearts/Inter-Latin-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
 @font-face{font-family:YoungPossePress;src:url('/fonts/Anton-Regular.ttf') format('truetype');font-display:swap}
 @font-face{font-family:BewaveTide;src:url('/fonts/InstrumentSerif-Regular.ttf') format('truetype');font-display:swap}
-@font-face{font-family:CS Bodoni;src:url('/fonts/BodoniModa-Italic.ttf') format('truetype');font-style:italic;font-weight:100 900;font-display:swap}
-@font-face{font-family:CS Sans;src:url('/fonts/DMSans-Variable.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+@font-face {
+  font-family: 'CS Sans';
+  src: url('/fonts/DMSans-Variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CS Chinese';
+  src: url('/fonts/candyshop/NotoSansSC-artist.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+3000-303F, U+3400-9FFF, U+FF00-FFEF;
+}
 @font-face{font-family:OddYouthAlbum;src:url('/fonts/Syne.ttf') format('truetype');font-display:swap}
 @font-face{font-family:AdyaDisplay;src:url('/fonts/adya/ArchivoNarrow.ttf') format('truetype');font-weight:400 700;font-display:swap}
 @font-face{font-family:AdyaText;src:url('/fonts/unis/NotoSansSC-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
@@ -652,7 +665,7 @@ body .work-experience[data-work-theme="qwer"]{--paper:#0c0c0b;--white:#1c1917;--
 body .work-experience[data-work-theme="vvup"]{--paper:#111215;--white:#202228;--ink:#f3f5e9;--muted:#b1b6ba;--line:#4a4d52;--rose:#dcf65c;--blush:#9ee4e9;--lilac:#9ee4e9;--work-on-accent:#111;--font-body:"Noto Sans SC",system-ui,sans-serif;--font-editorial:VvupArchivo,Arial,sans-serif;--font-number:"Noto Sans SC",system-ui,sans-serif;--work-heading-style:italic;background:#111215;color:#f3f5e9;font-family:"Noto Sans SC",system-ui,sans-serif}
 body .work-experience[data-work-theme="youngposse"]{--paper:#141412;--white:#25251f;--ink:#e6e2d8;--muted:#b2b2a5;--line:#51514a;--rose:#e5fd45;--blush:#25251f;--lilac:#25251f;--work-on-accent:#111;--font-body:YPInter,"Noto Sans SC","Microsoft YaHei",sans-serif;--font-editorial:YoungPossePress,Impact,sans-serif;--font-number:YPInter,"Noto Sans SC","Microsoft YaHei",sans-serif;--work-heading-style:normal;background:#141412;color:#e6e2d8;font-family:YPInter,"Noto Sans SC","Microsoft YaHei",sans-serif}
 body .work-experience[data-work-theme="bewave"]{--paper:#edf4f3;--white:#f8fbf9;--ink:#294c5b;--muted:#54717a;--line:#bfd2d4;--rose:#294c5b;--blush:#edf4f3;--lilac:#edf4f3;--work-on-accent:#fff;--font-body:"Noto Sans SC","Microsoft YaHei",sans-serif;--font-editorial:BewaveTide,Georgia,serif;--font-number:"Noto Sans SC","Microsoft YaHei",sans-serif;--work-heading-style:normal;background:#edf4f3;color:#294c5b;font-family:"Noto Sans SC","Microsoft YaHei",sans-serif}
-body .work-experience[data-work-theme="candyshop"]{--paper:#fff;--white:#f9e5ef;--ink:#57364f;--muted:#775d71;--line:#d8c7d3;--rose:#57364f;--blush:#eee7f5;--lilac:#eee7f5;--work-on-accent:#fff;--font-body:"CS Sans","Microsoft YaHei",sans-serif;--font-editorial:"CS Bodoni",Georgia,serif;--font-number:"CS Sans","Microsoft YaHei",sans-serif;--work-heading-style:italic;background:#fff;color:#57364f;font-family:"CS Sans","Microsoft YaHei",sans-serif}
+body .work-experience[data-work-theme="candyshop"]{--paper:#fff8fc;--white:#ffffff;--ink:#39233f;--muted:#664d69;--line:#bdace7;--rose:#39233f;--blush:#f6e8fa;--lilac:#f6e8fa;--work-on-accent:#fff;--font-body:"CS Sans","CS Chinese","Microsoft YaHei","PingFang SC",sans-serif;--font-editorial:"CS Sans","CS Chinese","Microsoft YaHei","PingFang SC",sans-serif;--font-number:"CS Sans","CS Chinese","Microsoft YaHei","PingFang SC",sans-serif;--work-heading-style:normal;background:#fff8fc;color:#39233f;font-family:"CS Sans","CS Chinese","Microsoft YaHei","PingFang SC",sans-serif}
 body .work-experience[data-work-theme="oddyouth"]{--paper:#fff;--white:#eaf6ff;--ink:#142846;--muted:#536781;--line:#bfd4f3;--rose:#2465d5;--blush:#eaf6ff;--lilac:#eaf6ff;--work-on-accent:#fff;--font-body:Arial,"Microsoft YaHei",sans-serif;--font-editorial:OddYouthAlbum,Arial,sans-serif;--font-number:Arial,"Microsoft YaHei",sans-serif;--work-heading-style:normal;background:#fff;color:#142846;font-family:Arial,"Microsoft YaHei",sans-serif}
 body .work-experience[data-work-theme="adya"]{--paper:#111112;--white:#242427;--ink:#f5f3ef;--muted:#b7b6b4;--line:#555557;--rose:#f64e37;--blush:#242427;--lilac:#242427;--work-on-accent:#111;--font-body:AdyaText,sans-serif;--font-editorial:AdyaDisplay,sans-serif;--font-number:AdyaText,sans-serif;--work-heading-style:normal;background:#111112;color:#f5f3ef;font-family:AdyaText,sans-serif}
 body .work-experience[data-work-theme="geenius"]{--paper:#000;--white:#141414;--ink:#fff;--muted:#aaa;--line:#3c3c3c;--rose:#6bbcff;--blush:#141414;--lilac:#141414;--work-on-accent:#111;--font-body:GeeniusSans,GeeniusText,sans-serif;--font-editorial:GeeniusSans,GeeniusText,sans-serif;--font-number:GeeniusSans,GeeniusText,sans-serif;--work-heading-style:normal;background:#000;color:#fff;font-family:GeeniusSans,GeeniusText,sans-serif}

@@ -2204,16 +2204,16 @@
       "currentStyleCssPaths": [
         "components/candyshop-artist.css"
       ],
-      "paper": "#fff",
-      "surface": "#f9e5ef",
-      "ink": "#57364f",
-      "muted": "#775d71",
-      "line": "#d8c7d3",
-      "accent": "#57364f",
-      "soft": "#eee7f5",
-      "fontBody": "\"CS Sans\",\"Microsoft YaHei\",sans-serif",
-      "fontHeading": "\"CS Bodoni\",Georgia,serif",
-      "fontHeadingStyle": "italic",
+      "paper": "#fff8fc",
+      "surface": "#ffffff",
+      "ink": "#39233f",
+      "muted": "#664d69",
+      "line": "#bdace7",
+      "accent": "#39233f",
+      "soft": "#f6e8fa",
+      "fontBody": "\"CS Sans\",\"CS Chinese\",\"Microsoft YaHei\",\"PingFang SC\",sans-serif",
+      "fontHeading": "\"CS Sans\",\"CS Chinese\",\"Microsoft YaHei\",\"PingFang SC\",sans-serif",
+      "fontHeadingStyle": "normal",
       "fontFaceCssPaths": [
         "components/candyshop-artist.css"
       ],
@@ -2221,93 +2221,77 @@
         {
           "file": "components/candyshop-artist.css",
           "line": 1,
-          "css": "@font-face{font-family:CS Bodoni;src:url('/fonts/BodoniModa-Italic.ttf') format('truetype');font-style:italic;font-weight:100 900;font-display:swap}",
-          "family": "CS Bodoni",
-          "font-family": "CS Bodoni",
-          "src": "url('/fonts/BodoniModa-Italic.ttf') format('truetype')",
-          "font-style": "italic",
+          "css": "@font-face {\n  font-family: 'CS Sans';\n  src: url('/fonts/DMSans-Variable.woff2') format('woff2');\n  font-style: normal;\n  font-weight: 100 900;\n  font-display: swap;\n}",
+          "family": "CS Sans",
+          "font-family": "'CS Sans'",
+          "src": "url('/fonts/DMSans-Variable.woff2') format('woff2')",
+          "font-style": "normal",
           "font-weight": "100 900",
           "font-display": "swap"
         },
         {
           "file": "components/candyshop-artist.css",
-          "line": 2,
-          "css": "@font-face{font-family:CS Sans;src:url('/fonts/DMSans-Variable.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}",
-          "family": "CS Sans",
-          "font-family": "CS Sans",
-          "src": "url('/fonts/DMSans-Variable.woff2') format('woff2')",
+          "line": 8,
+          "css": "@font-face {\n  font-family: 'CS Chinese';\n  src: url('/fonts/candyshop/NotoSansSC-artist.woff2') format('woff2');\n  font-style: normal;\n  font-weight: 400 700;\n  font-display: swap;\n  unicode-range: U+3000-303F, U+3400-9FFF, U+FF00-FFEF;\n}",
+          "family": "CS Chinese",
+          "font-family": "'CS Chinese'",
+          "src": "url('/fonts/candyshop/NotoSansSC-artist.woff2') format('woff2')",
           "font-style": "normal",
-          "font-weight": "100 900",
-          "font-display": "swap"
+          "font-weight": "400 700",
+          "font-display": "swap",
+          "unicode-range": "U+3000-303F, U+3400-9FFF, U+FF00-FFEF"
         }
       ],
       "tokenEvidence": {
         "paper": {
-          "source": "#fff",
-          "kind": "current_palette_reuse",
-          "note": "No new color introduced; reuse an existing artist palette color for shared detail surfaces."
+          "source": "Candy Shop Japan official artist and native record boards",
+          "kind": "reviewed_figma_color"
         },
         "surface": {
-          "source": "--cs-pink",
-          "kind": "current_root_variable"
+          "source": "Candy Shop Japan official artist and native record boards",
+          "kind": "reviewed_figma_color"
         },
         "ink": {
-          "source": "--cs-ink",
-          "kind": "current_root_variable"
+          "source": "Candy Shop Japan official artist and native record boards",
+          "kind": "reviewed_figma_color"
         },
         "muted": {
-          "source": "--cs-muted",
-          "kind": "current_root_variable"
+          "source": "Candy Shop Japan official artist and native record boards",
+          "kind": "reviewed_figma_color"
         },
         "line": {
-          "source": "--cs-line",
-          "kind": "current_root_variable"
+          "source": "Candy Shop Japan official artist and native record boards",
+          "kind": "reviewed_figma_color"
         },
         "accent": {
-          "source": "--cs-ink",
-          "kind": "current_root_variable"
+          "source": "Candy Shop Japan official artist and native record boards",
+          "kind": "reviewed_figma_color"
         },
         "soft": {
-          "source": "--cs-lilac",
-          "kind": "current_root_variable"
+          "source": "Candy Shop Japan official artist and native record boards",
+          "kind": "reviewed_figma_color"
         }
       },
       "rootEvidence": [
         {
           "file": "components/candyshop-artist.css",
-          "line": 3,
+          "line": 16,
           "selector": "[data-cs-native]",
           "declarations": {
-            "--cs-ink": "#57364f",
-            "--cs-pink": "#f9e5ef",
-            "--cs-lilac": "#eee7f5",
-            "--cs-line": "#d8c7d3",
-            "--cs-muted": "#775d71",
-            "background": "#fff",
-            "color": "var(--cs-ink)",
-            "font": "16px/1.65 'CS Sans','Microsoft YaHei',sans-serif",
-            "min-height": "100vh",
-            "padding": "0 max(28px,calc((100vw - 1328px)/2))"
+            "--cs-ink": "#39233f",
+            "--cs-muted": "#664d69",
+            "--cs-line": "#bdace7",
+            "--cs-lilac": "#f6e8fa",
+            "background": "#fff8fc"
           }
         }
       ],
-      "oldJournalPaletteDifferences": [
-        {
-          "token": "surface",
-          "before": "#fff",
-          "after": "#f9e5ef"
-        },
-        {
-          "token": "soft",
-          "before": "#f9e5ef",
-          "after": "#eee7f5"
-        }
-      ],
+      "oldJournalPaletteDifferences": [],
       "corePaletteDifferences": [],
-      "fontCorrectionNeeded": true,
-      "sourceStatus": "requires_correction",
-      "headingReview": "Use current heading font shown here; existing journal declarations may override variables on descendants.",
-      "character": "白粉紫；Bodoni斜体",
+      "fontCorrectionNeeded": false,
+      "sourceStatus": "reviewed_official_artist_and_detail_design",
+      "headingReview": "Upright DM Sans and Noto Sans SC follow the approved Japanese artist site working boards.",
+      "character": "Japan official pink and lavender, dark plum type and rounded controls",
       "browserStatus": "pending"
     },
     {

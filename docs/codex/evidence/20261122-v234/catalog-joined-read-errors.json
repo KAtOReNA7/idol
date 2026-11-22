@@ -1,0 +1,119 @@
+{
+  "source": "Sites production Worker errors (v234), structured event joined by request ID to HTTP invocation. IVE and XG browser times matched to the only detail GET with the corresponding status in these windows.",
+  "rows": [
+    {
+      "utc": "2026-11-22T04:28:32.698Z",
+      "route": "/api/catalog",
+      "artistQuery": null,
+      "requestId": "90b0b7b23638ddcb2758ce11c4ab3e57",
+      "method": "GET",
+      "status": 502,
+      "outcome": "ok",
+      "wallTimeMs": 68,
+      "cpuTimeMs": 4,
+      "labels": {
+        "retried": false,
+        "cancelled": false,
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "tables",
+        "nativeCache": "joined",
+        "status": 502
+      },
+      "group": "IVE",
+      "work": "LOVE DIVE",
+      "browserReceivedAtUtc": "2026-11-22T04:28:32.371Z",
+      "receipt": "formal-access-three-rounds.json"
+    },
+    {
+      "utc": "2026-11-22T04:29:38.283Z",
+      "route": "/api/catalog",
+      "artistQuery": "badvillain",
+      "requestId": "557dda315f1611b5101e8bae90ffabeb",
+      "method": "GET",
+      "status": 502,
+      "outcome": "ok",
+      "wallTimeMs": 68,
+      "cpuTimeMs": 5,
+      "labels": {
+        "retried": false,
+        "cancelled": false,
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "tables",
+        "nativeCache": "joined",
+        "status": 502
+      }
+    },
+    {
+      "utc": "2026-11-22T04:29:56.352Z",
+      "route": "/api/catalog",
+      "artistQuery": "oddyouth",
+      "requestId": "b9e4a3249ac5a975fe792245f53cbf99",
+      "method": "GET",
+      "status": 502,
+      "outcome": "ok",
+      "wallTimeMs": 72,
+      "cpuTimeMs": 7,
+      "labels": {
+        "retried": false,
+        "cancelled": false,
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "tables",
+        "nativeCache": "joined",
+        "status": 502
+      }
+    },
+    {
+      "utc": "2026-11-22T04:30:47.923Z",
+      "route": "/api/catalog",
+      "artistQuery": "kep1er",
+      "requestId": "e0e6328de1799e0b49423c988883f150",
+      "method": "GET",
+      "status": 502,
+      "outcome": "ok",
+      "wallTimeMs": 66,
+      "cpuTimeMs": 3,
+      "labels": {
+        "retried": false,
+        "cancelled": false,
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "tables",
+        "nativeCache": "joined",
+        "status": 502
+      }
+    },
+    {
+      "utc": "2026-11-22T04:31:13.876Z",
+      "route": "/api/catalog",
+      "artistQuery": null,
+      "requestId": "dbba1e925e5a45865be4bbb2bbc4474f",
+      "method": "GET",
+      "status": 502,
+      "outcome": "ok",
+      "wallTimeMs": 76,
+      "cpuTimeMs": 8,
+      "labels": {
+        "retried": false,
+        "cancelled": false,
+        "event": "idol_catalog_read_failed",
+        "phase": "native-read",
+        "kind": "unknown",
+        "nativeStep": "tables",
+        "nativeCache": "joined",
+        "status": 502
+      },
+      "group": "XG",
+      "work": "WOKE UP",
+      "browserReceivedAtUtc": "2026-11-22T04:31:13.568Z",
+      "receipt": "formal-51-representative-cards.json"
+    }
+  ],
+  "interpretation": "Each of these five 502s was reported as unknown while the caller waited for a pending native read at tables. The Worker did not retain its exception text. In isolated workerd, awaiting a promise from an already-ended invocation reproduces that symptom."
+}

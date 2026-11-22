@@ -1,0 +1,139 @@
+{
+  "method": "Same Windows workerd, ephemeral synthetic D1 and real /api/catalog handlers for each version. One HTTP invocation completes its response after native records return from D1 but before request-owned async work settles. Each role then opens the synthetic work twice in separate HTTP requests; the table read counts are measured per request. Each role started with a fresh catalog generation. No real ratings were written.",
+  "regression": "apps/idol-site/tests/work-detail-d1.test.cjs",
+  "crossInvocationError": "This promise was created by a request that has since ended, so it can never settle. With the handle_cross_request_promise_resolution compatibility flag, a promise can only settle in the request that created it, and settling it after that request ends is dropped.",
+  "before": {
+    "application": "7b8ad937078862902d296d065bfebe5a37176f23",
+    "rows": [
+      {
+        "access": "owner",
+        "attempt": 1,
+        "departedStatus": 204,
+        "status": 502,
+        "nativeTableReads": 0,
+        "personalSql": false,
+        "returnedPrivateScores": false,
+        "scope": null,
+        "workMatched": false,
+        "retry": false,
+        "errorEvents": [
+          {
+            "event": "idol_catalog_read_failed",
+            "phase": "native-read",
+            "kind": "unknown",
+            "nativeStep": "tables",
+            "nativeCache": "joined",
+            "status": 502,
+            "retried": false,
+            "cancelled": false
+          }
+        ]
+      },
+      {
+        "access": "owner",
+        "attempt": 2,
+        "departedStatus": 204,
+        "status": 200,
+        "nativeTableReads": 1,
+        "personalSql": true,
+        "returnedPrivateScores": true,
+        "scope": "work",
+        "workMatched": true,
+        "retry": false,
+        "errorEvents": []
+      },
+      {
+        "access": "public",
+        "attempt": 1,
+        "departedStatus": 204,
+        "status": 502,
+        "nativeTableReads": 0,
+        "personalSql": false,
+        "returnedPrivateScores": false,
+        "scope": null,
+        "workMatched": false,
+        "retry": false,
+        "errorEvents": [
+          {
+            "event": "idol_catalog_read_failed",
+            "phase": "public-read",
+            "kind": "unknown",
+            "status": 502,
+            "retried": false,
+            "cancelled": false
+          }
+        ]
+      },
+      {
+        "access": "public",
+        "attempt": 2,
+        "departedStatus": 204,
+        "status": 200,
+        "nativeTableReads": 1,
+        "personalSql": false,
+        "returnedPrivateScores": false,
+        "scope": "work",
+        "workMatched": true,
+        "retry": false,
+        "errorEvents": []
+      }
+    ]
+  },
+  "after": {
+    "application": "c9a99aa72e43436ffa3bc4b5e4728e495d2e5d55",
+    "rows": [
+      {
+        "access": "owner",
+        "attempt": 1,
+        "departedStatus": 204,
+        "status": 200,
+        "nativeTableReads": 1,
+        "personalSql": true,
+        "returnedPrivateScores": true,
+        "scope": "work",
+        "workMatched": true,
+        "retry": false,
+        "errorEvents": []
+      },
+      {
+        "access": "owner",
+        "attempt": 2,
+        "departedStatus": 204,
+        "status": 200,
+        "nativeTableReads": 0,
+        "personalSql": true,
+        "returnedPrivateScores": true,
+        "scope": "work",
+        "workMatched": true,
+        "retry": false,
+        "errorEvents": []
+      },
+      {
+        "access": "public",
+        "attempt": 1,
+        "departedStatus": 204,
+        "status": 200,
+        "nativeTableReads": 1,
+        "personalSql": false,
+        "returnedPrivateScores": false,
+        "scope": "work",
+        "workMatched": true,
+        "retry": false,
+        "errorEvents": []
+      },
+      {
+        "access": "public",
+        "attempt": 2,
+        "departedStatus": 204,
+        "status": 200,
+        "nativeTableReads": 0,
+        "personalSql": false,
+        "returnedPrivateScores": false,
+        "scope": "work",
+        "workMatched": true,
+        "retry": false,
+        "errorEvents": []
+      }
+    ]
+  }
+}

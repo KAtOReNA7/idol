@@ -1,0 +1,133 @@
+{
+  "applicationCommit": "d50bd972a31b1e50072674368b30a53208fa5e37",
+  "baselineApplicationCommit": "32ca6e8df71e84ea9f237af80558f712a7a1252a",
+  "baselineValidationCommit": "32ca6e8df71e84ea9f237af80558f712a7a1252a",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4327,"pass": 4209,"fail": 79,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4334,"pass": 4217,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1402,"pass": 1402,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/tracer-content.test.mjs",
+          "test": "native handoffs bind record, group and exact video; zero differs from no score"
+        }
+      ],
+      "addedTests": [
+        "ADYA and W!TCHX roster photo credits link to the named publisher from home and members",
+        "atheart keeps every portrait credit available on demand and the original photo accessible",
+        "geenius keeps every portrait credit available on demand and the original photo accessible",
+        "hitgs keeps every portrait credit available on demand and the original photo accessible",
+        "home group photos keep dates and source links in a closed disclosure",
+        "oddyouth keeps every portrait credit available on demand and the original photo accessible",
+        "tracer keeps every portrait credit available on demand and the original photo accessible"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4327,"pass": 4209,"fail": 79,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4334,"pass": 4217,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1402,"pass": 1402,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/tracer-content.test.mjs",
+          "test": "native handoffs bind record, group and exact video; zero differs from no score"
+        }
+      ],
+      "addedTests": [
+        "ADYA and W!TCHX roster photo credits link to the named publisher from home and members",
+        "atheart keeps every portrait credit available on demand and the original photo accessible",
+        "geenius keeps every portrait credit available on demand and the original photo accessible",
+        "hitgs keeps every portrait credit available on demand and the original photo accessible",
+        "home group photos keep dates and source links in a closed disclosure",
+        "oddyouth keeps every portrait credit available on demand and the original photo accessible",
+        "tracer keeps every portrait credit available on demand and the original photo accessible"
+      ],
+      "removedTests": []
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "validationCommit": "e8cefd35907987b7c9a2a5d16f0af6fac4a8550c",
+  "testOnlyChanges": ["apps/idol-site/tests/fixtures/timeline/native-design-edits.json"],
+  "firstFullAtApplication": {
+    "platforms": ["Windows","WSL"],
+    "nodeTotal": {"tests": 4334,"pass": 4214,"fail": 81,"skipped": 39,"cancelled": 0,"todo": 0},
+    "newFailures": [
+      {
+        "suite": "main",
+        "file": "tests/timeline-production.test.cjs",
+        "test": "geenius: canonical hashes, ready/hold isolation and actual production renderer contract"
+      },
+      {
+        "suite": "main",
+        "file": "tests/timeline-production.test.cjs",
+        "test": "oddyouth: canonical hashes, ready/hold isolation and actual production renderer contract"
+      },
+      {
+        "suite": "main",
+        "file": "tests/timeline-production.test.cjs",
+        "test": "tracer: canonical hashes, ready/hold isolation and actual production renderer contract"
+      }
+    ]
+  },
+  "input": "Windows and WSL each ran npm run verify and npm test on the published application. The first full run found three timeline assertions affected by 14 approved member biography edits. Both platforms ran npm test again after the only fixture change, which lets those identities recover their original documents. The verify results are from the published application. The full-suite results and failure inventory are from the revised test fixture."
+}

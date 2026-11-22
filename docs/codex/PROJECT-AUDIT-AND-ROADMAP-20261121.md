@@ -4,7 +4,9 @@
 
 ## 本轮已交付与接续顺序
 
-v247 已上线 RESCENE、MADEIN、tripleS、QWER、PURPLE KISS、ILLIT 的作品目录、IVE 的 MUSIC 导航和 ADYA《Per》的五张首发片场照。七团首屏已在两种宽度复验，六团逐页实测搜索、清空、准确详情和原卡回焦。下一批先清理 ODD YOUTH、Geenius、TRACER、HITGS、AtHeart 共 26 位成员照片上的编辑说明，保留姓名、来源和有依据的拍摄时期，再逐团核对 51 团页面的正文、图注及替代文本。其余页面的设计按逐团清单接续，用同宽正式站结果验收。播放工作并行核《Per》完整首发、《BLALA》歌词版及四场指定舞台，找到准确版本后静音短播并记录实际画质。[v247 正式读数与范围](worklogs/20261122-v247-release.md) · [逐团设计清单](worklogs/20261122-group-design-coverage.md) · [四场节目出处](worklogs/20261122-exact-stage-rights.md)
+v248 已上线五团 26 位成员、三团首页及两处成员名录的照片出处。AtHeart 米奇在 375 px 正文的首图响应体减小 92.87%。v249 先修 ODD YOUTH 成员页刚出现时「查看原图」首次点击只获得焦点的问题，按同一操作检查其他团。另一项工作从 BEWAVE 等团成员详情着手，在 51 团继续核首屏、图注和替代文本中含义相同的编辑说明。正式站复验后再回写飞书第 8 项。其余内页按逐团设计清单接续。播放工作并行核 ADYA《Per》完整首发、W!TCHX《BLALA》歌词版及四场指定舞台，找到准确版本后静音短播并记录实际画质。[v248 正式读数与范围](worklogs/20261122-v248-release.md) · [逐团设计清单](worklogs/20261122-group-design-coverage.md) · [四场节目出处](worklogs/20261122-exact-stage-rights.md)
+
+v247 已上线 RESCENE、MADEIN、tripleS、QWER、PURPLE KISS、ILLIT 的作品目录、IVE 的 MUSIC 导航和 ADYA《Per》的五张首发片场照。七团首屏已在两种宽度复验，六团逐页实测搜索、清空、打开选中的具体作品和返回原卡。[v247 正式读数与范围](worklogs/20261122-v247-release.md)
 
 v246 已修复 UDTT 照片读取，上线 GENBLUE 六人同期照、四团字体、五团分享入口以及三个团的舞台直达。[v246 正式结果](worklogs/20261122-v246-release.md)
 

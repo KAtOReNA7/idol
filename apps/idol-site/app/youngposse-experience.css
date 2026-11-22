@@ -18,3 +18,94 @@
 @font-face{font-family:YPRecord;src:url('/fonts/hearts2hearts/Inter-Latin-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
 .candidate-youngposse-experience h1{font-family:YPRecord,"Noto Sans SC",sans-serif;font-weight:900;letter-spacing:-.03em}
 .candidate-youngposse-experience .editor-actions{background:var(--white);border-color:var(--line)}
+
+/* MACARONI CHEESE uses the debut campaign's yellow with the group's approved dark navigation. */
+body .work-experience[data-work-theme="youngposse"]:has(.detail[data-work-id="rec28ldfRTrFPR"]) {
+  --paper: #171611;
+  --white: #28261e;
+  --ink: #f7f2e5;
+  --muted: #c5c0ae;
+  --line: #655f48;
+  --rose: #ffd254;
+  --blush: #373224;
+  --lilac: #e5fd45;
+  --work-on-accent: var(--paper);
+  --font-editorial: YPInter, "Noto Sans SC", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+
+  & > main { padding: clamp(18px, 3vw, 42px) clamp(20px, 3.3vw, 48px) 52px; }
+  & :is(.music-sidebar, .music-mobile-header, .music-bottom-nav) { background: var(--white); }
+  & .music-work-title {
+    position: relative;
+    margin: 18px 0;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  & .music-work-title::after {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: clamp(54px, 9%, 88px);
+    height: 3px;
+    background: var(--rose);
+    content: '';
+  }
+  & .music-work-title h1 {
+    margin: 8px 0 12px;
+    font: 900 clamp(45px, 5.35vw, 78px)/1.03 var(--font-editorial);
+    letter-spacing: -.055em;
+    text-wrap: balance;
+  }
+  & .music-work-title .group-links button { color: var(--lilac); }
+  & .music-work-title p { color: var(--muted); }
+  & :is(.work-detail-top, .stage-view .work-detail-top) {
+    grid-template-columns: minmax(0, 2.2fr) minmax(240px, 1fr);
+    align-items: start;
+    gap: 24px;
+    margin: 18px 0 34px;
+  }
+  & :is(.work-aside, .stage-view .work-aside) {
+    padding: 18px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--rose);
+  }
+  & .work-aside > :is(.group-links, h1) { display: none; }
+  & .stage-source { padding: 15px 0; background: var(--paper); border-color: var(--line); }
+  & .video-mode-tabs { gap: 8px; padding: 0; border: 0; background: transparent; }
+  & :is(.video-mode-tabs button, .editor-open, .credit-score-action) {
+    min-height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--white);
+    color: var(--ink);
+  }
+  & :is(.video-play, .video-mode-tabs button[aria-selected="true"], .button.primary) {
+    background: var(--rose);
+    color: var(--work-on-accent);
+    border-color: var(--rose);
+  }
+  & .video-play { min-height: 44px; padding: 9px 16px; flex-direction: row; gap: 8px; }
+  & .video-play svg { width: 19px; height: 19px; }
+  & .section-heading { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  & .section-heading h2 { font-size: clamp(26px, 2.5vw, 38px); }
+  & .cast-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-items: start; }
+  & .cast-card { min-width: 0; padding: 0; display: block; border: 1px solid var(--line); background: var(--white); }
+  & .cast-copy { min-width: 0; margin: 8px 10px 0; padding: 10px 0; border-top: 1px solid var(--line); }
+  & .cast-card .member-name { font-size: clamp(18px, 1.7vw, 25px); text-transform: uppercase; }
+  & .mv-identity-frame { border-radius: 0; }
+  & :is(.mv-photo-score, .mv-identity-photo figcaption, .mv-identity-history) { padding-inline: 9px; }
+  & .mv-photo-score :is(.editor-open, .credit-score-action) { width: 100%; }
+  & .mv-identity-photo figcaption { opacity: 1; color: var(--muted); }
+  & :is(.mv-identity-photo figcaption a, .mv-identity-history a) { color: var(--lilac); }
+  & :is(.editor-fields input, .editor-fields textarea, .editor-fields select) { background: var(--paper); color: var(--ink); }
+
+  @media (max-width: 1150px) { & .cast-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 1040px) { & :is(.work-detail-top, .stage-view .work-detail-top) { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 720px) {
+    & > main { padding: 16px 6% 54px; }
+    & .work-detail-top { gap: 18px; margin-bottom: 27px; }
+    & .cast-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  }
+}

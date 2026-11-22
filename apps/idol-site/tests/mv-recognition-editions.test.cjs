@@ -228,6 +228,26 @@ const reviewedReleases = [
   ['I DO ME', 'kiiikiii-uncut-gem-2025', 'rec28ldfRTrAb0', 'hAEfi_SKTEU', 5],
 ];
 
+test('MACARONI CHEESE reuses its two shooting stills and keeps the earlier images accessible for the other three members', async () => {
+  const work = {id: 'rec28ldfRTrFPR', url: 'https://www.youtube.com/watch?v=-6HWMkyTAaA'};
+  const retained = new Set(['recvxAPQCFWkr2', 'recvxAPQCFgfgo']);
+  const members = media.portraits.filter(row => row.workId === work.id);
+  assert.equal(members.length, 5);
+  for (const member of members) {
+    const photo = mvRecognitionEdition(member);
+    assert.equal(photo.label, '本 MV 拍摄现场照');
+    assert.equal(photo.sourceUrl, 'https://www.melon.com/musicstory/inform.htm?mstorySeq=14254');
+    assert.equal(photo.original === member.src, retained.has(member.memberId));
+    const [preview, full] = await Promise.all([photo.preview, photo.original].map(src => sharp(path.join(__dirname, '../public', src)).metadata()));
+    assert.deepEqual([preview.format, preview.width, preview.height], ['webp', 480, 640]);
+    assert.deepEqual([full.format, full.width, full.height], ['jpeg', 736, 1104]);
+    const html = renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId: member.memberId, label: member.memberId, selectEdition: mvRecognitionEdition}));
+    assert.ok(html.includes('src="' + photo.preview + '"'));
+    assert.equal(html.includes('查看原作品图'), !retained.has(member.memberId));
+    assert.equal(mvRecognitionEdition({...member, videoId: '_Scn9pIxLqU'}), null);
+  }
+});
+
 for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
   test(title + ' shows the full contemporary roster on its original MV and preserves the earlier work images', async () => {
     const selected = editions[series];

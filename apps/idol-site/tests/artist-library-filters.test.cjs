@@ -11,7 +11,11 @@ const {artistCollection} = load('lib/idol/artist-preview.ts');
 const slugs = ['adya','witchx','geenius','oddyouth','tracer','spia','youngposse','bewave','candyshop','genblue'];
 const formats = ['all','mv','stage','release'];
 
-for (const [slug,title,count] of [['rescene','DISCOGRAPHY',10],['madein','VIDEO',8],['triples','Movie',25]]) {
+const filmLibraries=[
+  ['rescene','DISCOGRAPHY',10],['madein','VIDEO',8],['triples','Movie',25],
+  ['qwer','Music',7],['purplekiss','Films',13],['illit','Video',21],
+];
+for (const [slug,title,count] of filmLibraries) {
   test(slug+' shows each MV once before albums, with matching artwork and a usable filtered return', async () => {
     const group=registry.find(row=>row.slug===slug);
     const catalog=artistCatalog(group);
@@ -30,6 +34,7 @@ for (const [slug,title,count] of [['rescene','DISCOGRAPHY',10],['madein','VIDEO'
       const primary=card.querySelector('.sr-library-film-link');
       assert.equal(primary.querySelector('h3').text,works[i].song||works[i].name);
       assert.ok(primary.querySelector('img').getAttribute('src').includes(new URL(works[i].url).searchParams.get('v')));
+      assert.equal(primary.querySelector('img').getAttribute('alt'),(works[i].song||works[i].name)+' · '+(works[i].version||works[i].videoType||'MV')+'封面');
       assert.equal(localUrl(primary).searchParams.get('work'),works[i].id);
       assert.equal(primary.getAttribute('data-member-work-trigger'),'work-mv:'+works[i].id);
       const relatedStage=card.querySelector('.sr-library-record a');
@@ -54,6 +59,20 @@ for (const [slug,title,count] of [['rescene','DISCOGRAPHY',10],['madein','VIDEO'
     assert.equal(empty.querySelector('.sr-library-film'),null);
   });
 }
+
+test('IVE’s Music navigation opens its approved LOVE DIVE directory with films before album periods', async () => {
+  const group=registry.find(g=>g.slug==='ive');
+  const page=parse(await renderArtist(group,{section:'works'}));
+  const nav=page.querySelector('nav[aria-label="团体栏目"] button[aria-current="page"]');
+  assert.equal(nav.querySelector('span').text,'MUSIC');
+  assert.equal(nav.querySelector('small').text,'作品');
+  assert.deepEqual(page.querySelectorAll('.sr-library-tools .sr-row-links a').map(x=>x.getAttribute('href')),['#sr-videos','#sr-releases']);
+  const cards=page.querySelectorAll('#sr-videos .sr-work');
+  assert.equal(cards.length,25);
+  assert.equal(page.querySelector('main .sr-work,main .sr-release'),cards[0]);
+  assert.ok(page.querySelector('#sr-releases .ive-period-links'));
+  assert.equal(page.querySelector('.sr-film-library'),null);
+});
 
 function localUrl(link) {
   assert.ok(link, 'Expected a visitor-facing link');

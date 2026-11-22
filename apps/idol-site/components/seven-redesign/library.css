@@ -113,3 +113,64 @@
   .sr-triples .sr-catalog-heading {justify-content: space-between}
   .sr-triples .sr-library-film-link {grid-template-columns: 44% minmax(0,1fr)}
 }
+
+@font-face {
+  font-family: QwerLibrary;
+  src: url('/fonts/qwer/LeagueSpartan-Latin.woff2') format('woff2');
+  font-weight: 100 900; font-display: swap;
+}
+/* Dates and song names share one horizontal line of sight, as on QWER's release pages. */
+.sr-qwer .sr-film-library {--catalog-field: #25201f; --sr-line: #827772; background: #151311; color-scheme: dark}
+.sr-qwer .sr-catalog-heading h1 {font: 550 clamp(40px,5vw,68px)/1 QwerLibrary,SevenBody,sans-serif; color: #ff9066}
+.sr-qwer .sr-film-library .sr-tools input::placeholder {color: #c9bcb5}
+.sr-qwer .sr-film-library .sr-work-grid {grid-template-columns: minmax(0,1fr); gap: 15px}
+.sr-qwer .sr-library-film {
+  display: grid; grid-template-columns: minmax(0,1fr) minmax(130px,18%);
+  align-items: center; padding: 10px 0; border-top: 1px solid #776961;
+}
+.sr-qwer .sr-library-film-link {
+  display: grid; grid-template-columns: minmax(140px,32%) minmax(0,1fr); align-items: center;
+}
+.sr-qwer .sr-film-library .sr-work-copy {display: flex; flex-direction: column-reverse; gap: 7px; padding-inline: clamp(10px,2.5vw,38px)}
+.sr-qwer .sr-film-library .sr-work-copy h3 {font: 550 clamp(22px,3.2vw,48px)/1.02 QwerLibrary,SevenBody,sans-serif; margin: 0}
+.sr-qwer .sr-work-copy small {color: #ffab8c; font-family: QwerLibrary,SevenBody,sans-serif; font-size: 13px}
+.sr-qwer .sr-library-record {display: grid; align-content: center; justify-content: end}
+
+/* The photographic pages published for HIDE & SEEK use framed production stills. */
+.sr-purplekiss .sr-film-library {
+  background: #19151e; --catalog-field: #2c2431; --sr-line: #9e86ae; color-scheme: dark;
+}
+.sr-purplekiss .sr-catalog-heading h1 {font: 400 clamp(38px,5vw,66px)/1 SevenPoster,Impact,sans-serif; color: #c8ff3d}
+.sr-purplekiss .sr-film-library .sr-tools input::placeholder {color: #d8c6e1}
+.sr-purplekiss .sr-film-library .sr-work-grid {grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px}
+.sr-purplekiss .sr-film-library .sr-library-film {padding: 9px; background: #efe7f3; color: #301d3a}
+.sr-purplekiss .sr-film-library .sr-work-copy {padding: 10px 4px 2px}
+.sr-purplekiss .sr-film-library .sr-work-copy h3 {font: 400 clamp(22px,2.1vw,33px)/1.08 SevenPoster,Impact,sans-serif}
+.sr-purplekiss .sr-library-record {border-top: 1px solid #baaabf; margin-top: 7px; padding: 0 4px}
+.sr-purplekiss .sr-library-film .sr-play {border-color: #d2ff76; color: #e5ffa6}
+
+/* BELIFT's SUPER REAL ME page pairs a main video with a list of separately named versions. */
+.sr-illit .sr-film-library {background: #e5efff; --sr-line: #7f94bf; --catalog-field: #fff}
+.sr-illit .sr-catalog-heading h1 {font: 700 clamp(36px,4.8vw,65px)/1 SevenPixel,monospace; color: #2d4b94}
+.sr-illit .sr-film-library .sr-work-grid {grid-template-columns: minmax(0,1.16fr) minmax(0,1fr); gap: 13px 20px}
+.sr-illit .sr-film-library .sr-library-film {min-width: 0; border: 1px solid #8298bf; background: #fff}
+.sr-illit .sr-library-film:first-child {grid-row: span 3}
+.sr-illit .sr-library-film:first-child::before {content: ''; display: block; height: 10px; border-bottom: 1px solid #8195bc; background: #c7dbff}
+.sr-illit .sr-library-film:not(:first-child) .sr-library-film-link {
+  display: grid; grid-template-columns: 39% minmax(0,1fr); align-items: center;
+}
+.sr-illit .sr-film-library .sr-work-copy h3 {font-size: clamp(16px,1.45vw,23px); letter-spacing: -.025em}
+.sr-illit .sr-library-film:first-child .sr-work-copy h3 {font-size: clamp(20px,2.4vw,35px)}
+.sr-illit .sr-library-record {border-top: 1px solid #bbcbe5}
+
+@media (max-width: 720px) {
+  .sr-qwer .sr-library-film {grid-template-columns: minmax(0,1fr); padding-bottom: 0}
+  .sr-qwer .sr-library-film-link {grid-template-columns: 40% minmax(0,1fr)}
+  .sr-qwer .sr-library-record {display: flex; justify-content: start; padding: 0}
+  .sr-purplekiss .sr-film-library .sr-work-grid {grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px 10px}
+  .sr-purplekiss .sr-film-library .sr-library-film {padding: 5px}
+  .sr-purplekiss .sr-film-library .sr-work-copy h3 {font-size: 21px}
+  .sr-illit .sr-film-library .sr-work-grid {grid-template-columns: minmax(0,1fr)}
+  .sr-illit .sr-library-film:first-child {grid-row: auto}
+  .sr-illit .sr-library-film:not(:first-child) .sr-library-film-link {grid-template-columns: 38% minmax(0,1fr)}
+}

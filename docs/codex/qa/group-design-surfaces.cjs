@@ -71,6 +71,8 @@ async function inventory() {
   return groups;
 }
 
+module.exports = {routesFor};
+
 if (require.main===module) {
   inventory().then(groups=>{
     const json=JSON.stringify(groups,null,2)+'\n';

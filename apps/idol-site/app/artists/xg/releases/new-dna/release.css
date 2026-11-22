@@ -1,0 +1,98 @@
+@font-face {
+  font-family: XgDnaHeading;
+  src: url('/fonts/SpaceGrotesk.woff2') format('woff2');
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+/* Noto Sans CJK subsets; the source license is in /fonts/unis/NotoSansCJK-LICENSE.txt. */
+@font-face {
+  font-family: XgDnaText;
+  src: url('/fonts/xg/new-dna-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: XgDnaText;
+  src: url('/fonts/xg/new-dna-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+.xg-dna {
+  --dna-background: #1b112b;
+  --dna-header: #281a3c;
+  --dna-text: #f6f0ff;
+  --dna-muted: #c8b8d9;
+  --dna-link: #e3c8ff;
+  --dna-line: #463459;
+  --dna-margin: clamp(18px,4.45vw,64px);
+  min-height: 100vh;
+  background: var(--dna-background);
+  color: var(--dna-text);
+  font-family: XgDnaText, 'Noto Sans SC', system-ui, sans-serif;
+}
+.xg-dna :is(h1,h2,p,ol,figure) { margin: 0; }
+.xg-dna a { color: var(--dna-link); text-decoration: none; }
+.xg-dna a:hover { text-decoration: underline; text-underline-offset: .2em; }
+.xg-dna a:focus-visible { outline: 2px solid var(--dna-link); outline-offset: 3px; }
+.xg-dna .xg-dna-skip { position: absolute; z-index: 1; top: 6px; left: 6px; padding: 10px; transform: translateY(-160%); background: var(--dna-header); }
+.xg-dna .xg-dna-skip:focus { transform: none; }
+.xg-dna-header { background: var(--dna-header); }
+.xg-dna-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  min-height: 62px;
+  margin-inline: auto;
+  padding-inline: var(--dna-margin) clamp(48px,12.3vw,178px);
+}
+.xg-dna-header a, .xg-dna-sources a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 700; }
+.xg-dna-header .xg-dna-wordmark { color: var(--dna-text); font: 700 24px/1.15 XgDnaHeading, sans-serif; }
+.xg-dna main {
+  display: grid;
+  grid-template-columns: minmax(0,35.5%) minmax(0,1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas: 'cover title' 'cover tracks';
+  column-gap: clamp(26px,3.62vw,52px);
+  align-items: start;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: clamp(46px,6.1vw,88px) var(--dna-margin) 68px;
+}
+.xg-dna-heading { grid-area: title; padding-block: 8px 4px; }
+.xg-dna-heading h1 { color: var(--dna-text); font: 700 clamp(48px,5.28vw,76px)/1.08 XgDnaHeading, sans-serif; }
+.xg-dna-heading p { margin-top: 2px; color: var(--dna-muted); font-size: 14px; line-height: 22px; }
+.xg-dna main figure { grid-area: cover; min-width: 0; }
+.xg-dna main figure img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
+.xg-dna figcaption { margin-top: 7px; color: var(--dna-muted); font-size: 13px; line-height: 20px; }
+.xg-dna-tracks { grid-area: tracks; min-width: 0; }
+.xg-dna-tracks h2 { margin-bottom: 13px; color: var(--dna-text); font-size: 20px; line-height: 28px; }
+.xg-dna-tracks ol { padding: 0; list-style: none; }
+.xg-dna-tracks li { border-top: 1px solid var(--dna-line); }
+.xg-dna-tracks .xg-dna-track {
+  display: grid;
+  grid-template-columns: 30px minmax(0,1fr) auto;
+  gap: 12px;
+  align-items: center;
+  min-height: 56px;
+  padding-inline: 3px 24px;
+  color: var(--dna-text);
+  font-size: 16px;
+  font-weight: 700;
+}
+.xg-dna-number { color: var(--dna-muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.xg-dna-name { overflow-wrap: anywhere; }
+.xg-dna-watch { color: var(--dna-link); font-size: 14px; white-space: nowrap; }
+.xg-dna-sources { display: flex; flex-wrap: wrap; gap: 0 clamp(24px,7vw,100px); padding-top: 8px; border-top: 1px solid var(--dna-line); }
+@media (max-width:680px) {
+  .xg-dna { --dna-margin: 18px; }
+  .xg-dna-header nav { padding-inline-end: clamp(36px,15.6vw,61px); }
+  .xg-dna main { grid-template-columns: minmax(0,1fr); grid-template-rows: auto; grid-template-areas: 'title' 'cover' 'tracks'; padding-block: 44px 42px; }
+  .xg-dna-heading { padding: 0 0 18px; }
+  .xg-dna-heading h1 { font-size: clamp(35px,11vw,45px); line-height: 1.16; }
+  .xg-dna-heading p { margin-top: 5px; }
+  .xg-dna-tracks { margin-top: 7px; }
+  .xg-dna-sources { flex-direction: column; align-items: start; }
+}

@@ -1,0 +1,179 @@
+{
+  "scope": "XG《NEW DNA》本机实现与两团发行页返回修复",
+  "sourceVersion": 252,
+  "developmentVersion": 253,
+  "release": {
+    "id": "xg-directory-20",
+    "path": "/artists/xg/releases/new-dna",
+    "date": "2023-09-27",
+    "directory": "/artists/xg?section=records",
+    "directoryCardCount": 25,
+    "otherExistingDirectoryLinks": 24,
+    "previousCoverHref": "https://xgalx.com/en/xg/discography/",
+    "trackCountBefore": 0,
+    "trackCountAfter": 6,
+    "originalWorkLinksBefore": 0,
+    "originalWorkLinksAfter": 4
+  },
+  "officialSources": [
+    {
+      "page": "XGALX 发行目录",
+      "url": "https://xgalx.com/en/xg/discography/",
+      "http": 200
+    },
+    {
+      "page": "NEW DNA 英文特设站",
+      "url": "https://xg-newdna.com/en/",
+      "http": 200
+    },
+    {
+      "page": "X 版包装历史出处",
+      "url": "https://shop.xgalx.com/products/nfcc-00005",
+      "thisAutomatedRequestStatus": 429,
+      "packagingImage": "复用此前已核的项目原图。"
+    }
+  ],
+  "design": {
+    "file": "zeLNExz4TbpWRW3uiahef7",
+    "page": "0:1",
+    "desktop": {
+      "id": "1646:2013",
+      "width": 1440,
+      "packagingSlot": [
+        466,
+        466
+      ],
+      "position": "left"
+    },
+    "mobile": {
+      "id": "1646:2047",
+      "width": 390,
+      "packagingSlot": [
+        354,
+        354
+      ],
+      "position": "betweenTitleAndTracks"
+    },
+    "contextAndScreenshotRead": 2,
+    "colors": {
+      "background": "#1b112b",
+      "header": "#281a3c",
+      "text": "#f6f0ff",
+      "secondary": "#c8b8d9",
+      "links": "#e3c8ff",
+      "lines": "#463459"
+    }
+  },
+  "assets": {
+    "cover": {
+      "path": "/artist/xg/cover-newdna.webp",
+      "pixels": [
+        640,
+        641
+      ],
+      "bytes": 21198,
+      "alt": "NEW DNA · X 版官方包装"
+    },
+    "heading": {
+      "name": "Space Grotesk",
+      "path": "/fonts/SpaceGrotesk.woff2",
+      "bytes": 49256
+    },
+    "body": {
+      "name": "Noto Sans CJK",
+      "license": "/fonts/unis/NotoSansCJK-LICENSE.txt",
+      "sources": [
+        "/fonts/unis/NotoSansSC-Regular.woff",
+        "/fonts/unis/NotoSansSC-Bold.woff"
+      ],
+      "subsets": [
+        {
+          "path": "/fonts/xg/new-dna-regular.woff2",
+          "weight": 400,
+          "glyphCodepoints": 62,
+          "bytes": 13208
+        },
+        {
+          "path": "/fonts/xg/new-dna-bold.woff2",
+          "weight": 700,
+          "glyphCodepoints": 62,
+          "bytes": 13496
+        }
+      ]
+    }
+  },
+  "tracks": [
+    {
+      "title": "HESONOO"
+    },
+    {
+      "title": "X-GENE"
+    },
+    {
+      "title": "GRL GVNG",
+      "work": "recvxDMFHN9v3k",
+      "sourceVideo": "Xiai4BRzZpU",
+      "published": "2023-06-30"
+    },
+    {
+      "title": "TGIF",
+      "work": "recvxDMFHNk8MX",
+      "sourceVideo": "IPxDgf-g9Kw",
+      "published": "2023-08-04"
+    },
+    {
+      "title": "NEW DANCE",
+      "work": "recvxDMFHNLljT",
+      "sourceVideo": "cQTo9O85Zro",
+      "published": "2023-08-23"
+    },
+    {
+      "title": "PUPPET SHOW",
+      "work": "recvxDMFHNonmf",
+      "sourceVideo": "VFeRPM7Sm6c",
+      "published": "2023-09-27"
+    }
+  ],
+  "otherNewDance": {
+    "work": "recvxDMFHN1Y9G",
+    "sourceVideo": "LAZlfCjXPb0",
+    "date": "2023-10-06",
+    "observedInSongSearch": true
+  },
+  "returnNavigation": {
+    "oldProduction": "v252 手机 375 px 和桌面 1425 px 均能返回《Armageddon》，但《Live My Life》的曲目未获焦点。",
+    "previousEvidence": "docs/codex/evidence/20261123-v252/formal-release-and-portraits.json",
+    "specificTrackDestinations": 7,
+    "activationSimulations": {
+      "kind": [
+        "native click from pointer",
+        "native click from Enter"
+      ],
+      "total": 14,
+      "observed": "早期脚本标记当前历史条目的精确片段；pageshow 将焦点定位到对应真实链接。"
+    },
+    "workReturnBranches": [
+      "相同来源的已标记历史记录",
+      "直接访问或缺少有效来源时以片段定位",
+      "私人评分待保存或草稿取消时停留"
+    ]
+  },
+  "validation": {
+    "typecheck": "passed",
+    "targeted": {
+      "passed": 79,
+      "total": 79,
+      "files": [
+        "aespa-armageddon-release.test.cjs",
+        "xg-new-dna-release.test.cjs",
+        "journey.test.cjs",
+        "artist-roster-return.test.cjs",
+        "font-woff2.test.cjs",
+        "editorial-fonts-woff2.test.cjs",
+        "artist-mv-card-targets.test.cjs"
+      ]
+    },
+    "playback": "本次未播放视频。",
+    "production": "由 v253 发布回执单列。"
+  }
+}

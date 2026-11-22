@@ -30,9 +30,21 @@ export const ILLIT_GROUP_ID='rec28ldfRTiBON';
 export const ILLIT_PATH='/artists/illit';
 export const XG_GROUP_ID='recvxDKdOtKdWD';
 export const XG_PATH='/artists/xg';
+export const XG_NEW_DNA_PATH=XG_PATH+'/releases/new-dna';
 export const AESPA_GROUP_ID='recvxyEBDZxfeD';
 export const AESPA_PATH='/artists/aespa';
 export const AESPA_ARMAGEDDON_PATH=AESPA_PATH+'/releases/armageddon';
+export const armageddonOriginals={Supernova:'recvxyHuKM4BvC',Armageddon:'recvxyHuKMKPod','Live My Life':'recvxyHuKMKGBh'};
+export const newDnaOriginals={'GRL GVNG':'recvxDMFHN9v3k',TGIF:'recvxDMFHNk8MX','NEW DANCE':'recvxDMFHNLljT','PUPPET SHOW':'recvxDMFHNonmf'};
+const releaseReturnLabels=new Map([[AESPA_ARMAGEDDON_PATH,'《Armageddon》'],[XG_NEW_DNA_PATH,'《NEW DNA》']]);
+const releaseReturnPaths=new Map<string,string>();
+for(const [path,originals] of [[AESPA_ARMAGEDDON_PATH,armageddonOriginals],[XG_NEW_DNA_PATH,newDnaOriginals]] as const){
+ releaseReturnPaths.set(path,path);
+ for(const id of Object.values(originals))releaseReturnPaths.set(releaseTrackReturn(path,id),path);
+}
+export function releaseTrackAnchor(id:string){return 'track-'+id;}
+export function releaseTrackReturn(path:string,id:string){return path+'#'+releaseTrackAnchor(id);}
+function releaseReturnDocument(value:string|null|undefined){return value?releaseReturnPaths.get(value):undefined;}
 export const IVE_GROUP_ID='recvxyEBDZT8Xj';
 export const IVE_PATH='/artists/ive';
 export const KIOF_GROUP_ID='rec28ldfRTiCdf';
@@ -56,7 +68,7 @@ export const KATSEYE_PATH='/artists/katseye';
 const bases=[...candidateArtistPaths,SAYMYNAME_PATH,KATSEYE_PATH,ITZY_PATH,LESSERAFIM_PATH,KIIIKIII_PATH,HEARTS2HEARTS_PATH,NMIXX_PATH,STAYC_PATH,KIOF_PATH,IVE_PATH,BABYMONSTER_PATH,ILLIT_PATH,XG_PATH,AESPA_PATH,'/preview/babymonster'];
 export function safeArtistReturn(value:string|null|undefined):string|null{
  if(!value||value.length>4096)return null;
- if(value===AESPA_ARMAGEDDON_PATH)return value;
+ if(releaseReturnDocument(value))return value;
  try{const u=new URL(value,'https://site.invalid');if(u.origin!=='https://site.invalid'||!bases.includes(u.pathname)||u.hash)return null;
  for(const key of u.searchParams.keys())if(!['section','member','queue','q','format','roster','reader','release','media','timelineType','timelineImportance','timelineOrder','unit','participant','sort','rosterView','year','event'].includes(key)||u.searchParams.getAll(key).length!==1)return null;
  if(supportsReleaseFilter(u.pathname)&&u.searchParams.get('format')==='release'&&value.includes('#'))return null;
@@ -82,5 +94,7 @@ export function groupArtistUrl(id:string){return id===SAYMYNAME_GROUP_ID?SAYMYNA
 export function memberArtistUrl(member:{id:string;groupIds:string[]}){const path=member.groupIds.map(groupArtistUrl).find(Boolean);return path?path+'?section=members&member='+encodeURIComponent(member.id):null;}
 
 export function artistReturnLabel(value:string|null|undefined){
- if(value===AESPA_ARMAGEDDON_PATH)return '《Armageddon》';
+ const releasePath=releaseReturnDocument(value);
+ const releaseLabel=releasePath&&releaseReturnLabels.get(releasePath);
+ if(releaseLabel)return releaseLabel;
  const safe=safeArtistReturn(value);return safe?.startsWith(SAYMYNAME_PATH)?'SAY MY NAME':safe?.startsWith(KATSEYE_PATH)?'KATSEYE':safe?.startsWith(ITZY_PATH)?'ITZY':safe?.startsWith(LESSERAFIM_PATH)?'LE SSERAFIM':safe?.startsWith(KIIIKIII_PATH)?'KiiiKiii':safe?.startsWith(HEARTS2HEARTS_PATH)?'Hearts2Hearts':safe?.startsWith(NMIXX_PATH)?'NMIXX':safe?.startsWith(STAYC_PATH)?'STAYC':safe?.startsWith(KIOF_PATH)?'KISS OF LIFE':safe?.startsWith(IVE_PATH)?'IVE':safe?.startsWith(ILLIT_PATH)?'ILLIT':safe?.startsWith(XG_PATH)?'XG':safe?.startsWith(AESPA_PATH)?'aespa':safe?(candidateArtistLabel(safe)??'BABYMONSTER'):null;}

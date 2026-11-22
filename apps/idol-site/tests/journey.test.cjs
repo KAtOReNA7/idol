@@ -111,6 +111,28 @@ test('group deep links return to index and invalid history filters are rejected'
 
 test('artist cross-page return blocks unknown saves and cancelled drafts, then preserves list position',()=>{const h=harness();h.api.updateFilters({search:'BABYMONSTER',limit:48});h.scroll(1200);h.setBlocked(true);assert.equal(h.api.leaveTo('/artists/babymonster'),false);h.setBlocked(false);h.setDirty(true,false);assert.equal(h.api.leaveTo('/artists/babymonster'),false);h.setDirty(false);assert.equal(h.api.leaveTo('https://evil.test/'),false);assert.equal(h.api.leaveTo('/artists/babymonster'),true);assert.equal(h.location.href,'https://test.site/artists/babymonster');assert.equal(h.history.state.idolBrowse.scrollY,1200);assert.equal(h.history.state.idolBrowse.lists.works.search,'BABYMONSTER');});
 
+test('a work returns to its marked album history entry or directly to the same first-HTML track',()=>{
+ const origin='https://test.site',album='/artists/xg/releases/new-dna',id='recvxDMFHNLljT';
+ const track=album+'#track-'+id;
+ const work=origin+'/?view=works&work='+id+'&returnTo='+encodeURIComponent(track);
+ for(const referrer of [origin+album,'',origin+'/artists/aespa/releases/armageddon']){
+  const h=harness(work);
+  let back=0;
+  h.history.length=2;
+  h.history.back=()=>{back++;};
+  h.document.referrer=referrer;
+  h.setBlocked(true);
+  assert.equal(h.api.leaveTo(track,true),false);
+  h.setBlocked(false);
+  h.setDirty(true,false);
+  assert.equal(h.api.leaveTo(track,true),false);
+  h.setDirty(false);
+  assert.equal(h.api.leaveTo(track,true),true);
+  assert.equal(back,referrer===origin+album?1:0);
+  if(!back)assert.equal(h.location.href,origin+track);
+ }
+});
+
 test('sorted library retains bounded page and sort through next, Back, Forward and reload',()=>{
  const h=harness();h.api.updateFilters({sort:'release-asc',limit:72});h.api.setLibraryPage(3,24);h.flush();h.scroll(2100);
  const sequence={ids:['recOld','recNew','recLatest'],label:'作品库',filters:{...pure.defaultFilters(),sort:'release-asc',limit:72}};

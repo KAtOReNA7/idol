@@ -1,10 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const Module = require('node:module');
-const React = require('react');
-const {renderToStaticMarkup} = require('react-dom/server');
-const {buildSync} = require('esbuild');
 const {parse} = require('next/dist/compiled/node-html-parser');
+const renderRelease = require('./helpers/render-artist-release.cjs');
 const {artistCatalog, registry, renderArtist} = require('./fixtures/current-artist-pages.cjs');
 const load = require('./helpers/public-artist-loader.cjs');
 const records = require('../data/aespa-artist.json').releases;
@@ -20,15 +17,7 @@ const originals = [
   ['Armageddon', 'recvxyHuKMKPod', 'nFYwcndNuOY'],
   ['Live My Life', 'recvxyHuKMKGBh', 'YEA1ROHi0Eg'],
 ];
-const build = buildSync({
-  entryPoints:['app/artists/aespa/releases/armageddon/page.tsx'], bundle:true, write:false,
-  platform:'node', format:'cjs', jsx:'automatic', external:['react','react/*','next/navigation'],
-  loader:{'.css':'empty'}, logLevel:'silent',
-});
-const compiled = new Module(__filename);
-compiled.require = require;
-compiled._compile(build.outputFiles[0].text, __filename);
-const release = parse(renderToStaticMarkup(React.createElement(compiled.exports.default)));
+const release = renderRelease('app/artists/aespa/releases/armageddon/page.tsx');
 
 test('only the matched aespa cover opens a same-tab album and its return lands on that exact card', async () => {
   const page = parse(await renderArtist(aespa, {section:'records'}));
@@ -50,7 +39,7 @@ test('only the matched aespa cover opens a same-tab album and its return lands o
   }
   const xg = registry.find(group => group.slug === 'xg');
   const xgPage = parse(await renderArtist(xg, {section:'records'}));
-  const xgCard = xgPage.querySelectorAll('.nx-releases a').find(n => n.querySelector('h3').text === 'NEW DNA');
+  const xgCard = xgPage.querySelectorAll('.nx-releases a').find(n => n.querySelector('h3').text === 'WOKE UP');
   assert.equal(xgCard.getAttribute('href'), 'https://xgalx.com/en/xg/discography/');
   assert.equal(xgCard.getAttribute('target'), '_blank');
 });
@@ -85,7 +74,9 @@ test('the three watchable rows lead to the original album videos and preserve a 
     assert.equal(route.work, id);
     assert.equal(route.nav, 'works');
     assert.equal(route.video, 'mv');
-    assert.equal(route.artistReturn, releasePath);
+    assert.equal(link.id, 'track-'+id);
+    assert.equal(route.artistReturn, releasePath+'#'+link.id);
+    assert.equal(artistReturnLabel(route.artistReturn), '《Armageddon》');
     const work = catalog.works.find(work => work.id === route.work);
     assert.equal(work.song, title);
     assert.equal(work.videoType, '官方MV');
@@ -97,7 +88,7 @@ test('the three watchable rows lead to the original album videos and preserve a 
 test('only the published album path is accepted as a return destination', () => {
   assert.equal(safeArtistReturn(releasePath), releasePath);
   for (const path of [releasePath+'/', releasePath+'?q=1', releasePath+'#track', releasePath+'-remix',
-    'https://example.com'+releasePath, '/artists/xg/releases/armageddon']) {
+    'https://example.com'+releasePath, '/artists/xg/releases/armageddon',releasePath+'#track-recvxDMFHNLljT']) {
     assert.equal(safeArtistReturn(path), null, path);
   }
 });

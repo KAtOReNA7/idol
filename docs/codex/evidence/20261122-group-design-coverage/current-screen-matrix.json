@@ -26,13 +26,13 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 416,
+    "twoWidthBoardMatches": 417,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
       "profile": 51,
       "works": 44,
-      "release": 40,
+      "release": 41,
       "mv": 51,
       "stage": 48,
       "timeline": 42,
@@ -63,7 +63,6 @@
         "hitgs",
         "loona",
         "babymonster",
-        "xg",
         "kissoflife",
         "stayc",
         "nmixx",
@@ -164,7 +163,8 @@
     "stage-directory-cards": "docs/codex/worklogs/20261122-stage-directory-targets.md",
     "itzy-yeji-profile": "docs/codex/worklogs/20261123-itzy-member-profile.md",
     "lesserafim-profile": "docs/codex/evidence/20261123-v251/lesserafim-profile.json",
-    "aespa-armageddon-release": "docs/codex/evidence/20261123-v252/aespa-armageddon-release.json"
+    "aespa-armageddon-release": "docs/codex/evidence/20261123-v252/aespa-armageddon-release.json",
+    "xg-new-dna": "docs/codex/evidence/20261123-v253/xg-new-dna-and-track-return.json"
   },
   "groups": [
     {
@@ -3007,8 +3007,8 @@
           null
         ],
         "release": [
-          null,
-          null
+          "1646:2013",
+          "1646:2047"
         ],
         "mv": [
           "133:721",
@@ -3027,8 +3027,16 @@
           null
         ]
       },
-      "revised": {},
-      "implementation": [],
+      "revised": {
+        "release": "xg-new-dna"
+      },
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "《NEW DNA》发行详情的 X 版包装、六首曲目、四支原版 MV 与曲目和封面回焦",
+          "evidence": "xg-new-dna"
+        }
+      ],
       "additional": [],
       "earlierHomeReference": "https://shop.xgalx.com/products/nfcc-00053",
       "qualification": "《WOKE UP》旧稿用曲名示意播放器。"
@@ -4165,6 +4173,16 @@
     "1644:1283": {
       "page": "0:1",
       "name": "aespa / Armageddon / 发行详情 / 375",
+      "type": "FRAME"
+    },
+    "1646:2013": {
+      "page": "0:1",
+      "name": "XG · NEW DNA 发行详情 / 1440",
+      "type": "FRAME"
+    },
+    "1646:2047": {
+      "page": "0:1",
+      "name": "XG · NEW DNA 发行详情 / 390",
       "type": "FRAME"
     }
   }

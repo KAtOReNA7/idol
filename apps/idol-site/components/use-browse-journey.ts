@@ -80,7 +80,8 @@ export function useBrowseJourney(dataReady:boolean,stylesheetForRoute:(route:Rou
  // A new document is the honest recovery for native ESM load failures.
  // Reuse the same save/draft guard; never refresh automatically.
  function reloadPage(){if(!mayLeave())return false;capture();window.location.reload();return true;}
- function leaveTo(href:string,preferBack=false){const safe=safeArtistReturn(href);if(!safe||!mayLeave())return false;capture();if(preferBack&&history.length>1){try{const ref=new URL(document.referrer),current=new URL(location.href);if(ref.origin===current.origin&&safeArtistReturn(ref.pathname+ref.search)===safe){history.back();return true;}}catch{}}window.location.assign(safe);return true;}
+ // Album track fragments identify a control on the same referring document.
+ function leaveTo(href:string,preferBack=false){const safe=safeArtistReturn(href);if(!safe||!mayLeave())return false;capture();if(preferBack&&history.length>1){try{const ref=new URL(document.referrer),current=new URL(location.href);if(ref.origin===current.origin&&safeArtistReturn(ref.pathname+ref.search)===safe.split('#',1)[0]){history.back();return true;}}catch{}}window.location.assign(safe);return true;}
  function continueWork(id:string){
   const previous=current.current;if(!previous.route.work||!previous.sequence||previous.sequence.ids.indexOf(previous.route.work)<0||previous.sequence.ids.indexOf(id)<=previous.sequence.ids.indexOf(previous.route.work)||!mayLeave())return false;const before=capture();const e=nextEntry(before,{work:id,member:null,video:'mv'},'',undefined,before.sequence);e.from=before.from;restoring.current=true;current.current=e;history.pushState({idolBrowse:e},'',routeUrl(e.route));setEntry(e);return true;
  }

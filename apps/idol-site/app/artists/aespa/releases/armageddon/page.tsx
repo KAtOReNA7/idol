@@ -4,9 +4,9 @@ import {ArrowLeft, ArrowUpRight, Play} from 'lucide-react';
 import {ReliableImage} from '@/components/reliable-image';
 import aespa from '@/data/aespa-artist.json';
 import {armageddonCampaign, armageddonReleaseId, armageddonTracks} from '@/lib/idol/aespa-armageddon';
-import {AESPA_ARMAGEDDON_PATH} from '@/lib/idol/artist-navigation';
+import {AESPA_ARMAGEDDON_PATH, releaseTrackAnchor, releaseTrackReturn} from '@/lib/idol/artist-navigation';
 import {artistWorkUrl} from '@/lib/idol/artist-preview';
-import {ArmageddonTrackList} from './track-list';
+import {ReleaseTrackList} from '@/components/release-track-list';
 import './release.css';
 
 export const metadata: Metadata = {
@@ -46,7 +46,7 @@ export default function ArmageddonRelease() {
         </figure>
         <section className="arm-tracklist" aria-labelledby="arm-tracks">
           <header><h2 id="arm-tracks">曲目</h2><span>{armageddonTracks.length} 首</span></header>
-          <ArmageddonTrackList>
+          <ReleaseTrackList route={AESPA_ARMAGEDDON_PATH}>
             {armageddonTracks.map((track,index)=>{
               const item = <>
                 <span className="arm-track-number" aria-hidden="true">{String(index+1).padStart(2,'0')}</span>
@@ -54,10 +54,11 @@ export default function ArmageddonRelease() {
                 {track.workId&&<span className="arm-watch"><Play aria-hidden="true" size={12} fill="currentColor"/>看 MV</span>}
               </>;
               return <li key={track.title}>{track.workId
-                ? <a className="arm-track" data-member-work-trigger={track.workId} href={artistWorkUrl({id:track.workId},false,AESPA_ARMAGEDDON_PATH)}>{item}</a>
+                ? <a className="arm-track" id={releaseTrackAnchor(track.workId)} data-member-work-trigger={track.workId}
+                    referrerPolicy="no-referrer" href={artistWorkUrl({id:track.workId},false,releaseTrackReturn(AESPA_ARMAGEDDON_PATH,track.workId))}>{item}</a>
                 : <div className="arm-track">{item}</div>}</li>;
             })}
-          </ArmageddonTrackList>
+          </ReleaseTrackList>
         </section>
       </div>
     </main>

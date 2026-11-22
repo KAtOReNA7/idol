@@ -12,7 +12,26 @@ test('STAYC work scores retain zero and null; no invented stage',()=>{const s=se
 test('STAYC member dimensions remain distinct and missing MV photo never uses portrait', () => {
  assertMemberWorkCard(setup, fixture, 'stayc', '暂无对应图片');
 });
-test('STAYC 23 optimized assets retain exact previously verified hashes',()=>{for(const v of [content.hero,...Object.values(content.memberVisuals)])assert.equal(crypto.createHash('sha256').update(fs.readFileSync('public'+v.image)).digest('hex'),v.sha256);assert.equal(fs.readdirSync('public/artist/stayc').length,23);assert.equal(Object.keys(content.memberVisuals).length,6);});
+test('STAYC retains the full original group, roster, release and news image set',()=>{
+ const portraits=[content.hero,...Object.values(content.memberVisuals)];
+ for(const photo of portraits)assert.equal(crypto.createHash('sha256').update(fs.readFileSync('public'+photo.image)).digest('hex'),photo.sha256);
+ const originalFiles=fs.readdirSync('public/artist/stayc',{withFileTypes:true}).filter(entry=>entry.isFile()).map(entry=>entry.name).sort();
+ const expected=[...portraits,...content.releases,...content.updates].map(row=>row.image.split('/').at(-1)).sort();
+ assert.equal(expected.length,23);
+ assert.deepEqual(originalFiles,expected);
+ assert.equal(Object.keys(content.memberVisuals).length,6);
+});
+test('all six agency portraits offer their own full-size original inside the member page',()=>{
+ for(const [name,photo] of Object.entries(content.memberVisuals)){
+  const data=fixture();data.members[0].stageName=name;
+  const memberPage=setup('/artists/stayc?section=members&member=recM',data).render();
+  const [,figure]=memberPage.match(/class="sc-member-hero"[^>]*><figure>([\s\S]*?)<\/figure>/);
+  assert.ok(figure.includes('aria-label="查看 '+name+' 完整成员照"'));
+  assert.ok(figure.includes('href="'+photo.sourcePhotoUrl+'"')&&figure.includes('aria-haspopup="dialog"'));
+  assert.ok(figure.includes('src="'+photo.image+'"')&&!figure.includes('src="'+photo.sourcePhotoUrl+'"'));
+  assert.ok(figure.includes('href="'+photo.identitySourceUrl+'"')&&figure.includes('2:LOVE'));
+ }
+});
 test('STAYC unknown achievements never become false zero; historical counts dated',()=>{const s=setup('/artists/stayc?section=records').render();assert.match(s,/销量与音乐节目一位暂未收录/);assert.doesNotMatch(s,/0<em/);assert.equal(content.wins,null);for(const x of content.social)assert.match(x.observedAt,/^2026-10-09/);});
 test('STAYC uses only authenticated read and preserves exact MV source model',()=>{const s=fs.readFileSync('components/stayc-artist.tsx','utf8');assert.match(s,/readArtistCatalog\('stayc', controller\.signal\)/);assert.doesNotMatch(s,/method:'POST'|api\/save|api\/manage|localStorage|sessionStorage/);assert.match(s,/memberWorks\(data,m.id\)/);});
 

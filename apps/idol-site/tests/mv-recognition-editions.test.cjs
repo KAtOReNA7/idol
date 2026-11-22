@@ -160,6 +160,7 @@ test('Attention shows each member’s 2022 debut portrait, with the credited ful
 });
 
 const reviewedReleases = [
+  ['SO BAD', 'star-to-a-young-culture-2020', 'recvxyH5pzZo3m', 'gMe1c4UegBY', 6],
   ['Buenos Aires', 'buenos-aires-2019', 'recvxyH5pzEDfw', 'M46FRJsB0Qw', 12],
   ['La Vie en Rose', 'color-iz-2018', 'recvxyGO7qIB31', 'WZwr2a_lFWY', 12],
   ['Suki to Iwasetai', 'suki-to-iwasetai-2019', 'recvxyH5pzydzY', 'dLymsYC7Kmo', 12],

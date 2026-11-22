@@ -104,7 +104,7 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
   </div>
   {!failed&&waitingAttempt===attempt&&<p className="video-start-notice" role="status">如果仍未出画，可以继续等待或重新加载视频。</p>}
   {playbackCredit&&<small className="video-source-credit">{playbackCredit}</small>}
-  {manualPlayer&&!failed&&<p className="video-start-notice">可在播放器内静音。要选 2160p，打开设置，依次选择「Качество（画质）」和「Другое（其他）」。</p>}
+  {manualPlayer&&!failed&&<p className="video-start-notice">可在播放器内静音。打开设置，进入「Качество（画质）」→「Другое（其他）」，选择最高可用画质。</p>}
   <button type="button" className="video-reload" onClick={()=>setAttempt(n=>n+1)}>
    <RotateCcw aria-hidden="true" size={16}/>重新加载视频
   </button>

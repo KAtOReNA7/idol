@@ -1,0 +1,265 @@
+{
+  "checked": "2026-11-22",
+  "previousBrowserResult": "../20261122-v215/additional-playback.json",
+  "methods": {
+    "publicPreviews": "Matched RGB frames from the public 30-second distributor previews to the publicly displayed seek thumbnails at 36 × 20 pixels after trimming letterboxes. All source playback URLs used by the website are standard public embeds.",
+    "independentTimelines": "For each selected upload thumbnail, found the strongest RGB correlation against every thumbnail in the independent archive. Counted matches of at least 0.90 within two seconds of the same timeline position.",
+    "etaSamples": "Used 14 seconds of unencrypted media segments serving the normal anonymous 1080p player to compare three original HYBE stills and three 1.4-second excerpts of mono audio. Audio was resampled to 8 kHz and compared against the full official Apple preview by normalized waveform cross-correlation. Only stable source pages and measured results are recorded."
+  },
+  "works": [
+    {
+      "title": "Attention",
+      "workId": "recvxyOz5X2J0A",
+      "officialVideo": "https://www.youtube.com/watch?v=js1CtxSY38I",
+      "officialRelease": "https://weverse.io/newjeansofficial/media/2-107782613",
+      "distributorRelease": "https://music.apple.com/us/music-video/attention/1635831675",
+      "distributorDurationSeconds": 262.178,
+      "separatePerformanceVersion": {
+        "page": "https://music.apple.com/us/music-video/attention-performance-ver/1636011744",
+        "durationSeconds": 177.885
+      },
+      "selected": {
+        "page": "https://ok.ru/video/10326677850722",
+        "embed": "https://ok.ru/videoembed/10326677850722",
+        "publicChannelName": "HYBE LABELS",
+        "channelPage": "https://ok.ru/group/70000043203170/video/all",
+        "creditType": "repost",
+        "channelNameEvidence": "The public card lists this channel with this video. The channel display name alone does not establish affiliation.",
+        "listedSeconds": 262,
+        "listedSize": [
+          3840,
+          2160
+        ]
+      },
+      "applePreviewComparison": [
+        {
+          "applePreviewSeconds": 2.75,
+          "okPreviewSeconds": 234,
+          "rgbCorrelation": 0.9958
+        },
+        {
+          "applePreviewSeconds": 11.0,
+          "okPreviewSeconds": 242,
+          "rgbCorrelation": 0.9963
+        },
+        {
+          "applePreviewSeconds": 27.0,
+          "okPreviewSeconds": 258,
+          "rgbCorrelation": 0.9964
+        }
+      ],
+      "alignedPreviewMatches": 16,
+      "independentTimeline": {
+        "reference": "https://ok.ru/video/5172300876432",
+        "uploadedMoscow": "2022-09-04T21:41:06+03:00",
+        "thumbnailCounts": [
+          132,
+          131
+        ],
+        "matches": 62,
+        "examplesSelectedSecondsReferenceSecondsCorrelation": [
+          [
+            20,
+            20,
+            0.9805
+          ],
+          [
+            78,
+            78,
+            0.9968
+          ],
+          [
+            138,
+            138,
+            0.9981
+          ],
+          [
+            164,
+            164,
+            0.9883
+          ],
+          [
+            244,
+            244,
+            0.9937
+          ]
+        ]
+      },
+      "visibleScenes": "Green-lit concert, bedroom, store, dancing on the sports field and the underwater ending. The final distributor frames include a swimmer and a floating page."
+    },
+    {
+      "title": "ETA",
+      "workId": "recvxyOz5XSxiH",
+      "officialVideo": "https://www.youtube.com/watch?v=jOTfBlKSQYY",
+      "distributorRelease": "https://music.apple.com/us/music-video/eta/1698562914",
+      "distributorDurationSeconds": 216.625,
+      "separatePerformanceVersion": {
+        "page": "https://music.apple.com/us/music-video/eta/1699113873",
+        "durationSeconds": 155.792
+      },
+      "selected": {
+        "page": "https://ok.ru/video/5970279860834",
+        "embed": "https://ok.ru/videoembed/5970279860834",
+        "publicChannelName": "Владимир Горбатовский",
+        "channelPage": "https://ok.ru/profile/560617967714/video/all",
+        "creditType": "repost",
+        "uploadedMoscow": "2023-08-17T07:05:04+03:00",
+        "listedSeconds": 216,
+        "listedSize": [
+          1920,
+          1080
+        ]
+      },
+      "applePreviewComparison": [
+        {
+          "applePreviewSeconds": 8.5,
+          "okPreviewSeconds": 136,
+          "rgbCorrelation": 0.9886
+        },
+        {
+          "applePreviewSeconds": 14.25,
+          "okPreviewSeconds": 142,
+          "rgbCorrelation": 0.9906
+        },
+        {
+          "applePreviewSeconds": 20.5,
+          "okPreviewSeconds": 148,
+          "rgbCorrelation": 0.9851
+        }
+      ],
+      "independentTimeline": {
+        "reference": "https://ok.ru/video/6240041110113",
+        "uploadedMoscow": "2023-07-21T18:19:51+03:00",
+        "thumbnailCounts": [
+          109,
+          109
+        ],
+        "matches": 108,
+        "examplesSelectedSecondsReferenceSecondsCorrelation": [
+          [
+            2,
+            2,
+            0.9719
+          ],
+          [
+            12,
+            12,
+            0.9994
+          ],
+          [
+            88,
+            88,
+            0.999
+          ],
+          [
+            150,
+            150,
+            0.9981
+          ],
+          [
+            210,
+            210,
+            0.9912
+          ]
+        ]
+      },
+      "sameEditChecks": {
+        "selectedContainerVideoSeconds": 216.62976666666665,
+        "selectedContainerAudioSeconds": 216.7350566893424,
+        "declaredDashPeriodSeconds": 216.639,
+        "declared1080HlsDurationSum": 216.639,
+        "finalHLSSegmentSeconds": 1.593,
+        "frameSamples": [
+          {
+            "originalHQ": 1,
+            "previousOriginalPosition": 11.333,
+            "sampledOKSecondsApprox": 11.504,
+            "rgbCorrelation": 0.9997
+          },
+          {
+            "originalHQ": 2,
+            "previousOriginalPosition": 88.667,
+            "sampledOKSecondsApprox": 88.796,
+            "rgbCorrelation": 0.9911
+          },
+          {
+            "originalHQ": 3,
+            "previousOriginalPosition": 149.0,
+            "sampledOKSecondsApprox": 149.004,
+            "rgbCorrelation": 0.9946
+          }
+        ],
+        "audioSamples": [
+          {
+            "okSecondsApprox": 136,
+            "matchedApplePreviewSeconds": 8.428,
+            "durationOfAudioSample": 1.4,
+            "waveformCorrelation": 0.9924
+          },
+          {
+            "okSecondsApprox": 142,
+            "matchedApplePreviewSeconds": 14.442,
+            "durationOfAudioSample": 1.4,
+            "waveformCorrelation": 0.9795
+          },
+          {
+            "okSecondsApprox": 148,
+            "matchedApplePreviewSeconds": 20.433,
+            "durationOfAudioSample": 1.4,
+            "waveformCorrelation": 0.9653
+          }
+        ],
+        "sampledPublishedSegments": 14,
+        "totalPublishedMediaSecondsSampled": 14.0
+      },
+      "originalStills": [
+        "https://i.ytimg.com/vi/jOTfBlKSQYY/hq1.jpg",
+        "https://i.ytimg.com/vi/jOTfBlKSQYY/hq2.jpg",
+        "https://i.ytimg.com/vi/jOTfBlKSQYY/hq3.jpg"
+      ],
+      "visibleScenes": "Black title card at 2 s, crowd at 12 s, choreography at 88 s, night scene at 150 s and three-column end credits at 210 s are aligned with the July 21 archive. Brand spot and performance-only cuts were excluded.",
+      "durationInterpretation": "The browser exposed a duration of 218.000 seconds. The native video track lasts 216.629767 seconds, within 0.005 seconds of the distributor master. The 1080p HLS presentation ends normally at 216.639 seconds. The audio comparison covers the three sampled positions. The reason the player UI reports 218 is unconfirmed."
+    }
+  ],
+  "otherNativeCandidates": [
+    {
+      "page": "https://vimeo.com/850053140",
+      "title": "ETA",
+      "credit": "Grace Taylor",
+      "listedSeconds": 216
+    },
+    {
+      "page": "https://vimeo.com/948216361",
+      "title": "Attention",
+      "credit": "leejihye",
+      "listedSeconds": 262
+    }
+  ],
+  "otherNativeCandidatesStatus": "Both standard Vimeo oEmbed endpoints supplied iframe markup. An uploader/commissioner relationship and a higher working rendition were not established for these alternatives.",
+  "adyaPer": {
+    "original": "https://www.youtube.com/watch?v=v08zVNXb4is",
+    "officialRelease": "https://music.bugs.co.kr/album/20563938",
+    "edition": "Official S#3 MV, 5:09",
+    "checked": [
+      {
+        "page": "https://ok.ru/video/6225808591450",
+        "durationSeconds": 944,
+        "format": "reaction"
+      },
+      {
+        "page": "https://music.apple.com/us/music-video/per/1689025099",
+        "durationSeconds": 319.193,
+        "format": "Apple lists a different duration; same cut unverified"
+      },
+      {
+        "page": "https://asiapoisk.com/music/ADYA/adya_single/videos",
+        "format": "Per points to the previously tested Starting House YouTube upload. The VK embed on the same page belongs to RIZZ."
+      },
+      {
+        "page": "https://www.bilibili.tv/en/video/4787117761632768",
+        "format": "Title refers to S#3; the source returned HTTP 412 during metadata verification. Station playback and highest quality remain unverified."
+      }
+    ],
+    "route": "No qualified replacement in this batch."
+  }
+}

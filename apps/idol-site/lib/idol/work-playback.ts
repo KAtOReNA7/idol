@@ -5,7 +5,7 @@ import {stageSourceKey,stageSourceMatchesUrl} from './stage-source';
 export type PlaybackSource = {label:string;embedUrl:string;credit:string};
 
 type PublicPlayer = {
- original:string;rutube:string;uploader:string;
+ original:string;rutube?:string;uploader?:string;
  vimeo?:{id:string;publisher:string};
  okVideo?:{id:string;uploader:string};
 };
@@ -26,6 +26,7 @@ export function workPlayback(workId:string,videoId:string|null,view:'mv'|'stage'
   embedUrl:`https://player.vimeo.com/video/${player.vimeo.id}?autoplay=1&muted=1&dnt=1&playsinline=1&quality=4k`,
   credit:`Vimeo · ${player.vimeo.publisher}`
  };
+ if(!player.rutube||!player.uploader)return null;
  return {
   label:'RUTUBE',
   embedUrl:`https://rutube.ru/play/embed/${player.rutube}?autostartmute=true&q=1080`,

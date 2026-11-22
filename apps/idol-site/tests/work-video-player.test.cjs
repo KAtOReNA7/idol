@@ -98,7 +98,8 @@ test('BILLIONAIRE uses one manually activated OK player for the original edit an
  assert.match(frames[0].props.allow,/^autoplay 'none';/);
  assert.equal(frames[0].props.allowFullScreen,true);
  assert.equal(node(initial,'button','video-play'),undefined);
- assert.match(renderToStaticMarkup(initial),/Качество（画质）.*Другое（其他）/);
+ assert.match(renderToStaticMarkup(initial),/设置.*Качество（画质）.*Другое（其他）.*最高可用画质/);
+ assert.doesNotMatch(renderToStaticMarkup(initial),/2160p/);
  assert.equal(player.timers.size,0);assert.equal(player.messages.length,0);assert.equal(player.opens(),0);
 });
 test('cover failure offers one explicit retry of the unchanged image without playback',()=>{
@@ -197,6 +198,11 @@ test('each confirmed work selects one exact player and preserves stage score ide
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const {stageSourceKey,stageSourceMatchesUrl}=require('./helpers/public-artist-loader.cjs')('lib/idol/stage-source.ts');
  const mappings=require('../data/verified-work-players.json'),stages=require('../data/stage-videos.json');
+ const okByWork={
+  rec28ldfRTrLku:{video:'Gz_yRl6703c',player:'9392431106679',uploader:'😍НОВОЕ ❤️ ЛУЧШЕЕ⭐МУЗ КЛИПЫ⭐'},
+  recvxyOz5X2J0A:{video:'js1CtxSY38I',player:'10326677850722',uploader:'HYBE LABELS'},
+  recvxyOz5XSxiH:{video:'jOTfBlKSQYY',player:'5970279860834',uploader:'Владимир Горбатовский'}
+ };
  const vimeoByWork={
   rec28ldfRTrzPI:{video:'Vk5-c_v4gMU',player:'930729644',credit:'COLORGRAF · 调色制作'},
   recvxyHuKMFzlZ:{video:'38xYeot-ciM',player:'1054517686',credit:'Yunah Sheep · 导演与剪辑'}
@@ -205,11 +211,12 @@ test('each confirmed work selects one exact player and preserves stage score ide
   const video=mapping.original, route=workPlayback(id,video,'mv',null);
   assert.equal(route.fallbackPlayers,undefined,id);
   const vimeo=vimeoByWork[id];
-  if(id==='rec28ldfRTrLku'){
-   assert.equal(video,'Gz_yRl6703c');
-   assert.equal(route.label,'OK Video');
-   assert.equal(route.embedUrl,'https://ok.ru/videoembed/9392431106679');
-   assert.equal(route.credit,'OK Video · 😍НОВОЕ ❤️ ЛУЧШЕЕ⭐МУЗ КЛИПЫ⭐ 转载');
+  const ok=okByWork[id];
+  if(ok){
+   assert.equal(video,ok.video,id);
+   assert.equal(route.label,'OK Video',id);
+   assert.equal(route.embedUrl,`https://ok.ru/videoembed/${ok.player}`,id);
+   assert.equal(route.credit,`OK Video · ${ok.uploader} 转载`,id);
   }else if(vimeo){
    assert.equal(video,vimeo.video,id);
    assert.equal(route.label,'Vimeo',id);
@@ -230,11 +237,11 @@ test('each confirmed work selects one exact player and preserves stage score ide
 test('failed attempts retry the same selected source without opening another player or tab',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const mappings=require('../data/verified-work-players.json');
- for(const id of ['rec28ldfRTrLku','rec28ldfRTrzPI','recvxyHuKMFzlZ']){
+ for(const id of ['rec28ldfRTrLku','recvxyOz5X2J0A','recvxyOz5XSxiH','rec28ldfRTrzPI','recvxyHuKMFzlZ']){
   const video=mappings[id].original, player=workPlayback(id,video,'mv',null);
   const h=sessionHarness({workId:id,videoId:video,embedUrl:player.embedUrl,playbackCredit:player.credit,playbackLabel:player.label});
   const initial=h.render();
-  if(id==='rec28ldfRTrLku'){
+  if(player.label==='OK Video'){
    assert.equal(node(initial,'button','video-play'),undefined);
    assert.ok(node(initial,'iframe'));
   }else{

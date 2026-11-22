@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v248。五团 26 位成员可在照片旁展开出处，三团首页和两个团的名录也能直接找到发布页。正式实测十处开关与八张原图。AtHeart 米奇的手机首图响应体减少 92.87%，点开仍能看到 1080 × 1080 原图。[正式验收](worklogs/20261122-v248-release.md) |
+| 正式站 | v249。萨默的文字入口和肖像可在前端脚本到达前第一次操作打开原图，关闭后回焦。六团九次正式抽验均能展开出处、打开正确原图。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v249-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v248 正式应用 `d50bd972`。v249 接续 BEWAVE 等团成员详情的重复说明，以及 ODD YOUTH 刚打开成员页时点「查看原图」需再点一次的问题。四场节目、《Per》首发完整版和《BLALA》歌词版继续核站内片源。[正式发布](evidence/20261122-v248/publication.json) · [逐团设计清单](worklogs/20261122-group-design-coverage.md) |
+| 当前开发 | `codex/project-optimization-20261121`。v249 正式应用 `035a5df5`。v250 处理 VVUP 分享链接的首份网页和 BABYMONSTER 成员详情的手机版设计。四场节目、《Per》首发完整版和《BLALA》歌词版待新同版片源。[正式发布](evidence/20261122-v249/publication.json) · [逐团设计清单](worklogs/20261122-group-design-coverage.md) |
 
 ## 11 月 22 日更新
 

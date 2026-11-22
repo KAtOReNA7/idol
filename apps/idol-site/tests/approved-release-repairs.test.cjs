@@ -25,13 +25,50 @@ test('all source bytes retained and all display paths verified within budget',()
 for(const group of ['itzy','nmixx','kiiikiii','xg'])test(group+' preserves existing identity and private-independent metadata',()=>{
  const before=read('evidence/approved-release-repairs/'+group+'-baseline.json');
  const after=read('data/'+group+'-artist.json');
+ const debutPortraits=group==='kiiikiii'?read('data/kiiikiii-portraits.json'):null;
  for(const [key,value] of Object.entries(before)){
   if(['releases','supplementalReleases','upcoming','releaseCoverage'].includes(key))continue;
+  if(key==='memberVisuals'&&(group==='itzy'||debutPortraits)){
+   assert.deepEqual(Object.keys(after.memberVisuals).sort(),Object.keys(value).sort());
+   for(const [name,old] of Object.entries(value)){
+    const current=after.memberVisuals[name];
+    assert.equal(current.previousImage,old.image,name);
+    if(group==='itzy'){
+     const image='/artist/itzy/official-profiles/'+name.toLowerCase()+'.original.jpg';
+     assert.deepEqual(current,{...old,image,previousImage:old.image},name);
+     assert.ok(fs.existsSync(path.join(root,'public',image)),image);
+    }else{
+     const source=debutPortraits.find(portrait=>portrait.stageName===name);
+     assert.ok(source,name);
+     assert.equal(old.image,'/api/media?table=members&record='+source.memberId+'&index=0');
+     assert.equal(current.image,source.url);
+     assert.equal(current.sourcePhotoUrl,source.sourceUrl);
+     assert.equal(current.identitySourceUrl,source.identitySourceUrl);
+     assert.equal(current.date,source.publishedAt);
+     assert.deepEqual(current.dimensions,[source.width,source.height]);
+     assert.equal(current.label,after.portraitSet.label);
+    }
+   }
+   continue;
+  }
+  if(key==='portraitSet'&&debutPortraits){
+   assert.match(after.portraitSet.label,/出道时期成员资料照/);
+   assert.ok(after.portraitSet.date.includes(debutPortraits[0].publishedAt));
+   assert.match(after.portraitSet.copyright,/STARSHIP.*allkpop/i);
+   continue;
+  }
   assert.deepEqual(after[key],value,key);
  }
  for(const old of before.releases){
   const now=after.releases.find(r=>r.id===old.id);assert.ok(now,old.id);
   for(const [key,value] of Object.entries(old)){
+   if(key==='imageStatus'&&!old.image&&value==='not_downloaded'){
+    const cover=manifest.covers.find(row=>row.group===group&&row.releaseId===old.id);
+    assert.equal(cover?.mode,'display_derivative',old.id);
+    assert.equal(now.image,cover.displayPath);
+    assert.equal(now.imageStatus,'local_verified_display_derivative_original_preserved_in_research');
+    continue;
+   }
    if(['image','imageSourceUrl','imageKind'].includes(key)&&!old.image)continue;
    assert.deepEqual(now[key],value,old.id+':'+key);
   }

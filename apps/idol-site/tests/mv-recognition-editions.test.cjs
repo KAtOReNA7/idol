@@ -192,7 +192,7 @@ test('the same portrait is captioned for each release and historical members ret
   assert.equal(photoFor(release).original, photoFor(reference).original);
   assert.equal(photoFor(release).label, release.label);
   assert.equal(photoFor(reference).label, reference.label);
-  const debut = editions['wooah-archive'].works.find(work => work.memberIds.includes('recvxyICzHxcEJ'));
+  const debut = editions['wooah-exclamation-202005'].works.find(work => work.memberIds.includes('recvxyICzHxcEJ'));
   const historical = mvRecognitionEdition({...debut, memberId: 'recvxyICzHxcEJ'});
   assert.match(historical.label, /EXCLAMATION/);
   assert.match(historical.sourceUrl, /kstationtv/);
@@ -259,6 +259,7 @@ test('COCOCO credits each member’s own official photo and keeps the following 
 });
 
 const reviewedReleases = [
+  ['woo!ah!', 'wooah-exclamation-202005', 'recvxyH5pzlG0W', 'X2FB37r4Oyw', 6],
   ['Forever (약속)', 'aespa-forever-202102', 'recvxyHuKM4HSw', 'wog1R1d4zls', 4],
   ['Danger', 'wooah-joy-danger-202206', 'recvxyH5pz4vBM', '_X9720wjipE', 5],
   ['Catch the Stars', 'wooah-catch-the-stars-202201', 'recvxyH5pzzH06', 'g5B6zCSMrcc', 5],
@@ -309,6 +310,42 @@ test('Forever keeps the Black Mamba originals and credits the SM release portrai
     const preview = await sharp(path.join(__dirname, '../public', photo.preview)).metadata();
     const full = await sharp(path.join(__dirname, '../public', photo.original)).metadata();
     assert.deepEqual([preview.width, preview.height, full.width, full.height], [480, 640, 2000, 2997], name);
+  }
+});
+
+test('woo!ah! retains its six debut members and each member’s own original MV still', () => {
+  const series = editions['wooah-exclamation-202005'];
+  const work = {id: 'recvxyH5pzlG0W', url: 'https://www.youtube.com/watch?v=X2FB37r4Oyw'};
+  const roster = [
+    ['recvxyICzH84mF', 'LUCY', '1255874555471491073', '2024 年 Singles 写真'],
+    ['recvxyICzHi2X6', 'MINSEO', '1255149777370546184', '2024 年 Singles 写真'],
+    ['recvxyICzHGJek', 'NANA', '1258411267095556096', '日本官网档案照'],
+    ['recvxyICzHxcEJ', 'SONGYEE', null, null],
+    ['recvxyICzHu6mX', 'SORA', '1257686490018189313', '2024 年 Singles 写真'],
+    ['recvxyICzHzhWr', 'WOOYEON', '1254424997847658499', null],
+  ];
+  assert.deepEqual(series.works[0].memberIds, roster.map(([id]) => id));
+  for (const [memberId, name, officialPost, previousLabel] of roster) {
+    const still = media.portraits.find(row => row.workId === work.id && row.videoId === 'X2FB37r4Oyw' && row.memberId === memberId);
+    const portrait = mvRecognitionEdition(still);
+    assert.equal(portrait.label, 'EXCLAMATION · 出道发行预告照', name);
+    if (officialPost) {
+      const prefix = '/artist/recognition-editions/wooah/exclamation-' + name.toLowerCase();
+      assert.equal(portrait.sourceUrl, 'https://x.com/WOOAH_HM/status/' + officialPost, name);
+      assert.equal(portrait.preview, prefix + '.card.webp');
+      assert.equal(portrait.original, prefix + '.original.jpg');
+    } else {
+      assert.equal(portrait.preview, '/artist/mv-release-portraits/cards/d2cfda4a4678b66f897b1120.webp', name);
+      assert.match(portrait.sourceUrl, /2020\/05\/04\/wooah-a-4th-young-and-talented-member/);
+    }
+    assert.equal(portrait.previousEdition?.label ?? null, previousLabel, name);
+    const html = renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId, label: name, selectEdition: mvRecognitionEdition}));
+    assert.ok(html.includes('查看原作品图') && html.includes('href="' + still.sourceUrl + '"'), name);
+    assert.equal((html.match(/class="mv-identity-previous"/g) ?? []).length, previousLabel ? 2 : 1, name);
+    if (previousLabel) {
+      assert.ok(html.includes('查看' + previousLabel) && html.includes('href="' + portrait.previousEdition.sourceUrl + '"'), name);
+      assert.ok(fs.existsSync(path.join(__dirname, '../public', portrait.previousEdition.original)), name);
+    }
   }
 });
 
@@ -390,7 +427,7 @@ for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
         assert.deepEqual([preview.width, preview.height], [480, 640]);
         assert.equal(photo.label, publisherSeries[series].label);
       } else {
-        assert.match(photo.label, /本曲概念照|本次发行/);
+        assert.match(photo.label, /本曲概念照|本次发行|出道发行预告照/);
         const original = await sharp(path.join(__dirname, '../public', photo.original)).metadata();
         assert.ok(original.width >= preview.width && original.height >= preview.height, old.memberId);
       }

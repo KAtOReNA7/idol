@@ -24,6 +24,7 @@ function mount(initialFailure) {
     react:React,
     'react/jsx-runtime':jsxRuntime,
     '@/components/public-access':{useCanEdit:() => false},
+    '@/data/artist-home-introductions.json':require('../data/artist-home-introductions.json'),
     '@/lib/idol/journey':load('lib/idol/journey.ts'),
     '@/lib/idol/artist-navigation':load('lib/idol/artist-navigation.ts'),
     '@/lib/idol/stage-source':load('lib/idol/stage-source.ts'),
@@ -78,6 +79,8 @@ for (const [stage, message, hasWork] of [
       const tree = page.render();
       const status = find(tree, node => node.props.role === 'status');
       assert.equal(text(status), message + ' 重新读取');
+      const introduction = find(tree, node => node.props['data-home-introduction'] === 'udtt');
+      assert.equal(text(introduction), '团体介绍' + require('../data/artist-home-introductions.json').udtt.text);
       const links = all(tree, node => node.type === 'a');
       assert.deepEqual(links.map(link => text(link)), hasWork ? ['REALLY REALLY', '浏览作品库'] : ['浏览作品库']);
       if (hasWork) {
@@ -92,6 +95,7 @@ for (const [stage, message, hasWork] of [
       const recovered = page.render();
       assert.equal(text(find(recovered, node => node.props.role === 'status')), 'UDTT · 资料已载入');
       assert.equal(all(recovered, node => node.type === 'button' || node.type === 'a').length, 0);
+      assert.equal(all(recovered, node => node.props['data-home-introduction'] === 'udtt').length, 0);
       assert.equal(page.requests.filter(url => url.startsWith('/api/catalog?')).length, 2);
     } finally {
       page.unmount();

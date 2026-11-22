@@ -10,7 +10,7 @@ import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {MemberWorkPhotoButton} from '@/components/member-work-identity-photo';
 import {publicVideoPreview} from '@/lib/idol/mv-public-media';
-import {ArtistInformation} from '@/components/artist-information';
+import {ArtistInformation,ArtistIntroduction} from '@/components/artist-information';
 import {createContext,useContext,useEffect,useMemo,useState,useSyncExternalStore,type MouseEvent,type ReactNode} from 'react';
 import type {CatalogView} from '@/lib/idol/types';
 import type {CandidateContent} from '@/lib/idol/candidate/types';
@@ -137,13 +137,13 @@ export default function AdyaArtist({content}:{content:CandidateContent}){
  if(route.member)body=selectedMember?person(selectedMember):missing('没有找到这位成员。','members');
  else if(params.has('release'))body=selectedRelease?releaseDetail(selectedRelease):missing('没有找到此发行。','works');
  else if(params.has('media'))body=selectedVideo?videoDetail(selectedVideo):missing('暂时找不到这个视频版本。','works');
- else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="idol-adya-result">{people.length} 份档案</p>{people.length?roster(people):<p className="idol-adya-empty">没有符合条件的成员。</p>}<p className="idol-adya-roster-note">2023 年公司供图 · 中文名为本站显示名。</p></>;}
+ else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="idol-adya-result">{people.length} 份档案</p>{people.length?roster(people):<p className="idol-adya-empty">没有符合条件的成员。</p>}<details className="idol-adya-roster-note group-roster-source"><summary>2023 年成员照片来源</summary><p>2023 年公司供图 · 中文名为本站显示名。</p></details></>;}
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','OUR YEARS')}{timeline()}</>;
  else body=<>
-<section className="idol-adya-poster"><div className="idol-adya-poster-title"><h1>ADYA</h1><Link to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><div className="idol-adya-poster-body"><OriginalPhotoLink className="idol-adya-photo-button idol-adya-group" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'ADYA · 官方合作方团体照片'})}><Picture src={content.hero.image!} alt="ADYA 五人团体照片 · 官方合作方发布于2024年12月23日" priority/></OriginalPhotoLink><aside className="idol-adya-poster-index"><Link to={sectionHref('members')}><strong>05</strong><span>成员档案 <Arrow/></span></Link><p>{content.intro}</p><Link to={sectionHref('updates')}>时间轴 <Arrow/></Link><a href="https://www.youtube.com/@OFFICIAL_ADYA" target="_blank" rel="noopener noreferrer">官方频道 ↗</a></aside></div><p className="idol-adya-caption">{content.hero.caption}</p></section>
+<section className="idol-adya-poster"><div className="idol-adya-poster-title"><h1>ADYA</h1><Link to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><div className="idol-adya-poster-body"><OriginalPhotoLink className="idol-adya-photo-button idol-adya-group" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'ADYA · 官方合作方团体照片'})}><Picture src={content.hero.image!} alt="ADYA 五人团体照片 · 官方合作方发布于2024年12月23日" priority/></OriginalPhotoLink><aside className="idol-adya-poster-index"><Link to={sectionHref('members')}><strong>05</strong><span>成员档案 <Arrow/></span></Link><ArtistIntroduction slug="adya"/><Link to={sectionHref('updates')}>时间轴 <Arrow/></Link><a href="https://www.youtube.com/@OFFICIAL_ADYA" target="_blank" rel="noopener noreferrer">官方频道 ↗</a></aside></div><p className="idol-adya-caption">{content.hero.caption}</p></section>
 <ArtistInformation slug="adya" catalog={state.data}/>
-<section className="idol-adya-home-members">{heading('成员','MEMBERS')}{roster()}<p className="idol-adya-roster-note">五人出道时期档案 · 公司供图，2023.05.09 发布。中文名为本站显示名。</p></section>
+<section className="idol-adya-home-members">{heading('成员','MEMBERS')}{roster()}<details className="idol-adya-roster-note group-roster-source"><summary>2023 年成员照片来源</summary><p>五人出道时期档案 · 公司供图，2023.05.09 发布。中文名为本站显示名。</p></details></section>
 <section className="idol-adya-home-videos">{heading('影像','WATCH')}{videos(design.works.filter(v=>v.type!=='STAGE'))}</section>
 <section className="idol-adya-home-releases">{heading('发行','RELEASES')}{releases()}<Link className="idol-adya-more" to={sectionHref('works')}>完整作品目录 <Arrow/></Link></section>
 <section className="idol-adya-home-timeline">{heading('时间轴','TIMELINE')}{timeline()}</section>

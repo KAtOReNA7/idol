@@ -1,4 +1,5 @@
 import artwork from '../../data/music-index-artwork.json';
+import introductions from '../../data/artist-home-introductions.json';
 import facts from '../../data/group-information-facts.json';
 import completion from '../../data/group-statistics-completion-evidence.json';
 import {formatFollowerCount,followerCount} from './follower-count.mjs';
@@ -21,7 +22,8 @@ export function groupInformationModel(slug,group){
  const accounts=Object.keys(platforms).flatMap(platform=>byPlatform.has(platform)?[byPlatform.get(platform)]:[]);
  const storedSales=completed?.sales??row.sales;
  const sales=slug==='triples'&&storedSales?{...storedSales,notes:['采用可复算的Circle Album公开累计下界，统计截止2026-06；不是全球完整累计。旧汇总与历次差额保留在来源档案中，按用户决定不再追查。']}:storedSales;
- return {name:artwork.find(g=>g.slug===slug)?.name??slug,accounts:accounts.map(a=>{
+ const introduction=Object.hasOwn(introductions,slug)?introductions[slug]:null;
+ return {name:artwork.find(g=>g.slug===slug)?.name??slug,introduction,accounts:accounts.map(a=>{
   const observed=typeof a.observedValue==='number'&&Number.isFinite(a.observedValue)&&a.observedValue>=0&&a.observedAt;
   const legacy=a.observedAt?followersInWan(a.countLabel):null;
   return {...a,value:observed?followersInWan(String(a.observedValue)):legacy??'0人',fallbackZero:!observed&&!legacy};
@@ -73,10 +75,7 @@ function metricCard(item,kind){
  const limited=retail||item?.evidence?.periodType==='week'||/已核[^周]*周/.test(item?.title??'');
  const label=sales?(retail?'零售销量':limited?'专辑销量':'唱片累计销量'):'打歌一位总数';
  const scope=value===null?'暂无累计数据，显示为 0':sales?(item?.title?.replace(/^已核/,'').replace('下界','下限').replace('已公开累计','公开累计下限')??'唱片累计'):'团体音乐节目获奖';
- const periodLabel=item?.evidence?.periodType==='week'?'统计周':retail?'统计日':'截至';
- const date=item?.evidence?.periodLabel??item?.asOf;
- const dateLine=date?`<small>${periodLabel} ${escape(date)}</small>`:'';
- return `<article class="group-info-stat" data-stat-status="${value===null?'unavailable':escape(item.status??'observed')}"><span>${label}</span><strong>${(value??0).toLocaleString('zh-CN')}<em>${sales?'张':'次'}</em></strong><small>${escape(scope)}</small>${dateLine}</article>`;
+ return `<article class="group-info-stat" data-stat-status="${value===null?'unavailable':escape(item.status??'observed')}"><span>${label}</span><strong>${(value??0).toLocaleString('zh-CN')}<em>${sales?'张':'次'}</em></strong><small>${escape(scope)}</small></article>`;
 }
 function publicSourceTitle(title){
  if(!title)return '';
@@ -87,10 +86,25 @@ function publicSourceTitle(title){
 }
 export function renderGroupInformation(slug,group){
  const model=groupInformationModel(slug,group);
+ // Several artist designs already introduce the group in the hero. Only add
+ // copy here for the designs whose information section supplies the introduction.
+ const {introduction}=model;
+ const paragraph=introduction&&introduction.placement!=='hero'?`<p class="group-info-introduction" data-home-introduction="${escape(slug)}"><span class="group-intro-label">团体介绍</span>${escape(introduction.text)}</p>`:'';
+ const introductionSources=introduction?.sources.flatMap(({label,url})=>{
+  const href=https(url);
+  return href?[`<li><a href="${escape(href)}" target="_blank" rel="noopener noreferrer">${escape(label)} ↗</a></li>`]:[];
+ }).join('')??'';
  const social=model.accounts.map(a=>`<article class="group-info-stat" data-stat-status="${a.fallbackZero?'unavailable':escape(a.status??'observed')}"><a href="${escape(https(a.url))}" target="_blank" rel="noopener noreferrer"><span>${platforms[a.platform]} ↗</span><strong>${escape(a.value)}</strong></a><small>${a.platform==='youtube'?'订阅':'粉丝'}${a.observedAt?' · '+escape(a.observedAt.slice(0,10)):''}</small>${a.subjectName&&a.subjectName.toLowerCase()!==model.name.toLowerCase()?`<small>账号现名 / ${escape(a.subjectName)}</small>`:''}</article>`).join('');
  const evidence=['粉丝和订阅人数达到一万时四舍五入为整数万，不足一万时显示人数。日期为观察日或来源更新日，非实时人数。',
   ...model.accounts.filter(a=>a.fallbackZero).map(a=>`${platforms[a.platform]} 暂无人数数据；显示的 0 不是已确认的零。`),
-  ...['sales','wins'].flatMap(k=>{const item=model[k];if(!item)return [];const date=item.asOf?'截至 '+item.asOf:'来源未注明统计截止日';return [`${k==='sales'?'销量':'一位'}：${publicMetricScope(slug,k,item)} ${date}。`];})];
+  ...['sales','wins'].flatMap(k=>{
+   const item=model[k];
+   if(!item)return [];
+   const days=item.evidence?.dayRows?.map(row=>row.date).filter(Boolean);
+   const period=item.evidence?.periodLabel||(days?.length?[...new Set(days)].join('、'):null);
+   const date=period?(item.evidence?.periodType==='week'?'统计周 ':'统计日 ')+period:item.asOf?'截至 '+item.asOf:'来源未注明统计截止日';
+   return [`${k==='sales'?'销量':'一位'}：${publicMetricScope(slug,k,item)} ${date}。`];
+  })];
  const sources=[...model.accounts.map(a=>{const url=https(a.sourceUrl??a.url);return `<li><a href="${escape(url)}" target="_blank" rel="noopener noreferrer">${platforms[a.platform]} · ${escape(publicSourceTitle(a.sourceTitle)||(a.observedAt?'人数公开记录 '+a.observedAt.slice(0,10):'官方账号，人数未查得'))} ↗</a></li>`;}),...['sales','wins'].flatMap(k=>{const a=model[k],sources=a?.sources?.length?a.sources:[{url:a?.sourceUrl,title:a?.sourceTitle}];return sources.flatMap(s=>{const url=https(s.url);return url?[`<li><a href="${escape(url)}" target="_blank" rel="noopener noreferrer">${escape(publicSourceTitle(s.title)||(k==='sales'?'销量来源':'一位来源'))} ↗</a></li>`]:[];});})].join('');
- return `<section class="group-information" data-home-module="information" aria-label="${escape(model.name)} 信息"><header><small>INFORMATION</small><h2>信息</h2></header><div class="group-info-grid" data-stat-count="${model.accounts.length+2}">${social?`<div class="group-info-social" aria-label="社媒人数">${social}</div>`:''}<div class="group-info-records" aria-label="作品成绩">${metricCard(model.sales,'sales')}${metricCard(model.wins,'wins')}</div></div><details class="group-info-sources"><summary>统计日期与来源</summary>${evidence.map(t=>`<p>${escape(t)}</p>`).join('')}<ul>${sources}</ul></details></section>`;
+ return `<section class="group-information" data-home-module="information" aria-label="${escape(model.name)} 信息"><header><small>INFORMATION</small><h2>信息</h2></header>${paragraph}<div class="group-info-grid" data-stat-count="${model.accounts.length+2}">${social?`<div class="group-info-social" aria-label="社媒人数">${social}</div>`:''}<div class="group-info-records" aria-label="作品成绩">${metricCard(model.sales,'sales')}${metricCard(model.wins,'wins')}</div></div><details class="group-info-sources"><summary>${introduction?'资料来源与统计日期':'统计日期与来源'}</summary>${introductionSources?`<ul aria-label="团体介绍来源">${introductionSources}</ul>`:''}${evidence.map(t=>`<p>${escape(t)}</p>`).join('')}<ul>${sources}</ul></details></section>`;
 }

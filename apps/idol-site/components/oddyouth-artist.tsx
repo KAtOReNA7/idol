@@ -8,7 +8,7 @@ import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {MemberWorkPhotoButton} from '@/components/member-work-identity-photo';
 import {publicVideoPreview} from '@/lib/idol/mv-public-media';
-import {ArtistInformation} from '@/components/artist-information';
+import {ArtistInformation,ArtistIntroduction} from '@/components/artist-information';
 import {createContext,useContext,useEffect,useMemo,useState,useSyncExternalStore,type MouseEvent,type ReactNode} from 'react';
 import type {CatalogView} from '@/lib/idol/types';
 import type {CandidateContent} from '@/lib/idol/candidate/types';
@@ -131,13 +131,13 @@ export default function OddyouthArtist({content}:{content:CandidateContent}){
  if(route.member)body=selectedMember?person(selectedMember):missing('没有找到这位成员。','members');
  else if(params.has('release'))body=selectedRelease?releaseDetail(selectedRelease):missing('没有找到此发行。','works');
  else if(params.has('media'))body=selectedVideo?videoDetail(selectedVideo):missing('暂时找不到这个视频版本。','works');
- else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="oy-result">{people.length} 份档案</p>{people.length?roster(people):<p className="oy-empty">没有符合条件的成员。</p>}<p className="oy-roster-note">官网具名资料照 · 中文名为本站显示名。</p></>;}
+ else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="oy-result">{people.length} 份档案</p>{people.length?roster(people):<p className="oy-empty">没有符合条件的成员。</p>}<details className="oy-roster-note group-roster-source"><summary>成员照片来源</summary><p>官网具名资料照 · 中文名为本站显示名。</p></details></>;}
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','OUR YEARS')}{timeline()}</>;
  else body=<>
-<section className="oy-opening"><div className="oy-opening-copy"><h1>ODD<br/>YOUTH</h1><h2>{content.headline}</h2><p>{content.intro}</p><div className="oy-actions"><Link className="oy-button oy-white" to={sectionHref('members')}>认识成员 <Arrow/></Link><Link className="oy-button oy-white" to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><span className="oy-opening-foot">TOP MEDIA · 2024 —</span></div><OriginalPhotoLink className="oy-photo-button oy-group" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'ODD YOUTH · 官网团体资料照'})}><Picture src={content.hero.image!} alt="ODD YOUTH 五人官网团体资料照" priority/></OriginalPhotoLink></section>
+<section className="oy-opening"><div className="oy-opening-copy"><h1>ODD<br/>YOUTH</h1><ArtistIntroduction slug="oddyouth"/><div className="oy-actions"><Link className="oy-button oy-white" to={sectionHref('members')}>认识成员 <Arrow/></Link><Link className="oy-button oy-white" to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><span className="oy-opening-foot">TOP MEDIA · 2024 —</span></div><OriginalPhotoLink className="oy-photo-button oy-group" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'ODD YOUTH · 官网团体资料照'})}><Picture src={content.hero.image!} alt="ODD YOUTH 五人官网团体资料照" priority/></OriginalPhotoLink></section>
 <ArtistInformation slug="oddyouth" catalog={state.data}/>
-<section className="oy-home-members">{heading('成员','ALL FIVE TOGETHER')}{roster()}<p className="oy-roster-note">官网具名资料照 · 中文名为本站显示名。</p></section>
+<section className="oy-home-members">{heading('成员','ALL FIVE TOGETHER')}{roster()}<details className="oy-roster-note group-roster-source"><summary>成员照片来源</summary><p>官网具名资料照 · 中文名为本站显示名。</p></details></section>
 <section className="oy-related" data-home-module="mv">{heading("MV","MUSIC VIDEO")}{videos(design.works.filter(v=>v.type==='MV').slice(0,3))}</section>
 <section className="oy-home-releases">{heading('唱片','DISCOGRAPHY')}{releases()}<Link className="oy-more" to={sectionHref('works')}>全部影像与舞台 <Arrow/></Link></section>
 <section className="oy-home-timeline">{heading('时间轴','OUR YEARS')}{timeline()}</section>

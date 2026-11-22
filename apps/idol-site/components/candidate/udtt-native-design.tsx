@@ -1,6 +1,7 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
 import {useCanEdit} from '@/components/public-access';
+import {udtt as introduction} from '@/data/artist-home-introductions.json';
 import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {routeUrl} from '@/lib/idol/journey';
 import {safeArtistReturn} from '@/lib/idol/artist-navigation';
@@ -47,8 +48,9 @@ export default function UdttNativeDesign(){
   return <div data-udtt-native-host="true">
     <link rel="stylesheet" href="/fonts/udtt/fonts.css"/>
     <div role="status" aria-live="polite" style={status==='UDTT · 资料已载入'?{position:'absolute',width:1,height:1,overflow:'hidden',clipPath:'inset(50%)'}:{padding:'12px 20px',font:'14px/1.6 Arial, sans-serif',background:'#f4f3eb',color:'#162c32'}}>{status}{failed&&<> <button type="button" onClick={()=>{setFailed(false);setPublicWorks([]);setStatus('正在读取 UDTT 资料…');setAttempt(value=>value+1);}}>重新读取</button></>}</div>
-    {failed&&<section aria-label="UDTT 公开作品" style={{padding:'20px',background:'#f4f3eb',color:'#162c32'}}>
+    {failed&&<section aria-label="UDTT 团体与作品" style={{padding:'20px',background:'#f4f3eb',color:'#162c32',fontFamily:'UdttNotoSansSC, sans-serif'}}>
       <h1>UDTT</h1>
+      <p data-home-introduction="udtt" style={{maxWidth:'42em',lineHeight:1.8}}><span className="group-intro-label" style={{display:'block',fontWeight:600}}>团体介绍</span>{introduction.text}</p>
       {publicWorks.length>0&&<ul>{publicWorks.map(work=><li key={work.id}><a href={routeUrl({nav:'works',work:work.id,video:'mv',member:null,artistReturn})}>{work.title}</a></li>)}</ul>}
       <a href="/?view=works">浏览作品库</a>
     </section>}

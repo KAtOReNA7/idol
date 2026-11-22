@@ -11,7 +11,7 @@ import {TimelineReportedRecords} from './timeline-reported-records';
 import {supersededNativeReportIds} from '@/lib/idol/timeline/reported-records.mjs';
 import {MemberWorkPhotoButton} from '@/components/member-work-identity-photo';
 import {publicVideoPreview} from '@/lib/idol/mv-public-media';
-import {ArtistInformation} from '@/components/artist-information';
+import {ArtistInformation,ArtistIntroduction} from '@/components/artist-information';
 import {createContext,useContext,useEffect,useMemo,useState,useSyncExternalStore,type MouseEvent,type ReactNode} from 'react';
 import type {CatalogView} from '@/lib/idol/types';
 import type {CandidateContent} from '@/lib/idol/candidate/types';
@@ -134,13 +134,13 @@ export default function CandyshopArtist({content}:{content:CandidateContent}){
  if(route.member)body=selectedMember?person(selectedMember):missing('没有找到这位成员。','members');
  else if(params.has('release'))body=selectedRelease?releaseDetail(selectedRelease):missing('没有找到此发行。','works');
  else if(params.has('media'))body=selectedVideo?videoDetail(selectedVideo):missing('暂时找不到这个视频版本。','works');
- else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<><div className="cs-directory-heading">{title('成员','Members')}{search('members')}</div><p className="cs-result" role="status">{people.length} 份档案 · 官网列示四人及出道时期历史档案</p>{people.length?roster(people):<p className="cs-empty">没有符合条件的成员。</p>}<p className="cs-note">官网照片的拍摄日期未注明；中文显示名不代表官方中文姓名。</p></>;}
+ else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<><div className="cs-directory-heading">{title('成员','Members')}{search('members')}</div><p className="cs-result" role="status">{people.length} 份档案 · 官网列示四人及出道时期历史档案</p>{people.length?roster(people):<p className="cs-empty">没有符合条件的成员。</p>}<details className="cs-note group-roster-source"><summary>成员照片来源</summary><p>官网照片的拍摄日期未注明；中文显示名不代表官方中文姓名。</p></details></>;}
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','Through the years')}{timeline()}</>;
  else body=<>
-<section className="cs-opening"><div className="cs-hero-title"><h1>Candy Shop</h1><span>2024 —</span></div><div className="cs-hero-grid"><OriginalPhotoLink className="cs-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'Candy Shop · 官网团体资料照'})}><Picture src={content.hero.image!} alt="Candy Shop 官网四人团体资料照" className="cs-group-photo" priority/></OriginalPhotoLink><div className="cs-intro"><h2>从青春里，<br/>听见她们。</h2><p>{content.intro}</p><div className="cs-actions"><Link className="cs-button" to={sectionHref('members')}>认识成员 <Arrow/></Link><Link className="cs-button cs-outline" to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><div className="cs-hero-credit"><span>官网公开资料照 · 拍摄日期未注明</span><a href={content.hero.sourceUrl??undefined} target="_blank" rel="noopener noreferrer">官网资料 ↗</a></div></div></div></section>
+<section className="cs-opening"><div className="cs-hero-title"><h1>Candy Shop</h1><span>2024 —</span></div><div className="cs-hero-grid"><OriginalPhotoLink className="cs-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'Candy Shop · 官网团体资料照'})}><Picture src={content.hero.image!} alt="Candy Shop 官网四人团体资料照" className="cs-group-photo" priority/></OriginalPhotoLink><div className="cs-intro"><ArtistIntroduction slug="candyshop"/><div className="cs-actions"><Link className="cs-button" to={sectionHref('members')}>认识成员 <Arrow/></Link><Link className="cs-button cs-outline" to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><div className="cs-hero-credit"><span>官网公开资料照 · 拍摄日期未注明</span><a href={content.hero.sourceUrl??undefined} target="_blank" rel="noopener noreferrer">官网资料 ↗</a></div></div></div></section>
 <ArtistInformation slug="candyshop" catalog={state.data}/>
-<section className="cs-home-members">{heading('成员','SORAM · SUI · SARANG · JULIA')}{roster()}<p className="cs-note">四张成员照片来自官网同一资料页。中文名为本站显示名。</p></section>
+<section className="cs-home-members">{heading('成员','SORAM · SUI · SARANG · JULIA')}{roster()}<details className="cs-note group-roster-source"><summary>成员照片来源</summary><p>四张成员照片来自官网同一资料页。中文名为本站显示名。</p></details></section>
 <section className="cs-related" data-home-module="mv">{heading("MV","MUSIC VIDEO")}{design.works.filter(v=>v.type==='MV').map(videoRow)}</section>
 <section className="cs-home-records">{heading('唱片','Discography')}<div className="cs-records">{design.releases.map(releaseCard)}</div><Link className="cs-more" to={sectionHref('works')}>全部影像与舞台 <Arrow/></Link></section>
 <section className="cs-home-timeline">{heading('时间轴')}{timeline(true)}<Link className="cs-more" to={sectionHref('updates')}>完整时间轴 <Arrow/></Link></section>

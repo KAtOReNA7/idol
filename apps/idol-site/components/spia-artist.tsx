@@ -8,7 +8,7 @@ import {publicCustomArtistText} from '@/lib/idol/custom-artist-copy';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {publicVideoPreview} from '@/lib/idol/mv-public-media';
-import {ArtistInformation} from '@/components/artist-information';
+import {ArtistInformation,ArtistIntroduction} from '@/components/artist-information';
 import {createContext,useContext,useEffect,useMemo,useState,useSyncExternalStore,type MouseEvent,type ReactNode} from 'react';
 import type {CatalogView} from '@/lib/idol/types';
 import type {CandidateContent} from '@/lib/idol/candidate/types';
@@ -130,16 +130,16 @@ export default function SpiaArtist({content}:{content:CandidateContent}){
  if(route.member)body=selectedMember?person(selectedMember):missing('没有找到这位成员。','members');
  else if(params.has('release'))body=selectedRelease?releaseDetail(selectedRelease):missing('没有找到此发行。','works');
  else if(params.has('media'))body=selectedVideo?videoDetail(selectedVideo):missing('暂时找不到这个视频版本。','works');
- else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName,m.nativeName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="sp-result">{people.length} 份档案</p>{people.length?roster(people):<p className="sp-empty">没有符合条件的成员。</p>}<p className="sp-roster-note">2024 年出道五人阵容 · 同系列具名转载照片</p></>;}
+ else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName,m.nativeName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="sp-result">{people.length} 份档案</p>{people.length?roster(people):<p className="sp-empty">没有符合条件的成员。</p>}<details className="sp-roster-note group-roster-source"><summary>2024 年出道阵容与照片来源</summary><p>2024 年出道五人阵容 · 同系列具名转载照片</p></details></>;}
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','TIMELINE')}{timeline()}<p className="sp-note">SPIA 目前的活动状态不详。</p></>;
  else body=<>
-<section className="sp-hero"><div className="sp-hero-copy"><h1>SPIA<span>수피아</span></h1><p>穿过树林，走向舞台。</p><p className="sp-hero-intro">从《Daddy’s Little Girl》的鲜明节拍，<br/>到《Deeeep》的明亮夏日。</p><div className="sp-hero-actions">
+<section className="sp-hero"><div className="sp-hero-copy"><h1>SPIA<span>수피아</span></h1><ArtistIntroduction slug="spia"/><div className="sp-hero-actions">
  {debutMv&&<Link className="sp-button" to={videoHref(debutMv)}>观看 Daddy’s Little Girl 官方 MV <Arrow/></Link>}
  {summerSingle&&<Link className="sp-source" to={releaseHref(summerSingle)}>Deeeep 单曲发行详情</Link>}
 </div></div><figure className="sp-hero-photo"><OriginalPhotoLink className="sp-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'SPIA · Deeeep 宣传照'})}><Picture src={content.hero.image!} alt="SPIA 五人 · Deeeep 官方宣传照" priority/></OriginalPhotoLink><figcaption>DEEEEP · 2024.06.05<br/>Campus Entertainment 提供 / KBS 刊载</figcaption></figure></section>
 <ArtistInformation slug="spia" catalog={state.data}/>
-<section className="sp-home-members" aria-label="成员">{heading('认识她们','MEMBERS')}{roster()}<p className="sp-roster-note">2024 年出道五人阵容。照片为 Kprofiles 的具名转载；中文名为艺名转写。</p></section>
+<section className="sp-home-members" aria-label="成员">{heading('认识她们','MEMBERS')}{roster()}<details className="sp-roster-note group-roster-source"><summary>2024 年出道阵容与照片来源</summary><p>2024 年出道五人阵容。照片为 Kprofiles 的具名转载；中文名为艺名转写。</p></details></section>
 <section className="sp-section">{heading('从影像到舞台','FILMS')}{videos(design.works)}</section>
 <section className="sp-section">{heading('两次相遇','DISCOGRAPHY')}{releases()}</section>
 <section className="sp-section">{heading('一起走过的日子','TIMELINE')}{timeline()}</section>

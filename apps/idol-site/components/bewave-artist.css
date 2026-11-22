@@ -117,3 +117,34 @@
 
 .film-preview[data-film-primary]{position:relative}
 .film-preview .film-action-label{position:absolute;bottom:12px;right:12px;background:#111;color:#fff;padding:6px 10px;font-weight:600}
+
+[data-bw-native]{--paper:#eff8f5;--white:#fbfcf6;--sea:#063e52;--muted:#386858;--line:#b6d6ca}
+[data-bw-native] .masthead .wordmark img,[data-bw-native] .footer-name img{display:block;width:auto;max-width:100%;height:34px}
+[data-bw-native] .footer-name img{height:44px}
+[data-bw-native] .bw-debut-opening{
+ display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);grid-template-areas:"photo identity" "photo profile";
+ grid-template-rows:1fr auto;gap:0 clamp(24px,4.7vw,72px);align-items:end;max-width:1220px;margin:clamp(16px,2.8vw,40px) auto 0;
+}
+[data-bw-native] .bw-debut-photo{grid-area:photo;align-self:start;min-width:0}
+[data-bw-native] .bw-debut-photo .photo{width:100%;height:auto;aspect-ratio:600/852;object-fit:contain}
+[data-bw-native] .bw-debut-photo figcaption{display:flex;justify-content:space-between;gap:8px;margin-top:8px;font-size:12px;line-height:1.4;color:var(--muted);flex-wrap:wrap}
+[data-bw-native] .bw-debut-photo figcaption a,[data-bw-native] .bw-roster-source summary{text-decoration:underline;text-underline-offset:.18em}
+[data-bw-native] .bw-debut-identity{
+ grid-area:identity;align-self:stretch;display:flex;flex-direction:column;justify-content:space-between;
+ padding:clamp(18px,3vw,44px);min-width:0;min-height:230px;overflow:hidden;
+ background:linear-gradient(155deg,rgba(238,251,246,.95) 0%,rgba(231,250,245,.7) 59%,rgba(211,248,240,.4) 100%),url('/artist/bewave/be-wave/debut-water.webp') center/cover;
+}
+[data-bw-native] .bw-era-title{display:flex;align-items:baseline;justify-content:space-between;font:400 clamp(24px,3vw,48px)/1.2 BewaveTide,Georgia,serif;letter-spacing:.025em}
+[data-bw-native] .bw-era-title span{font-family:"Noto Sans SC","Microsoft YaHei",sans-serif;font-weight:600;font-size:13px;line-height:1.3;letter-spacing:.10em}
+[data-bw-native] .bw-debut-identity h1 img{display:block;width:100%;height:auto}
+[data-bw-native] .bw-debut-profile{grid-area:profile;min-width:0;align-self:start;padding:clamp(20px,3vw,42px) 0}
+[data-bw-native] .bw-debut-profile p{font-size:clamp(15px,1.25vw,19px);line-height:1.85;max-width:34em}
+[data-bw-native] .bw-roster-source{margin:0 0 20px;font-size:13px;color:var(--muted)}
+[data-bw-native] .bw-roster-source summary{width:fit-content;cursor:pointer}
+@media(max-width:700px){
+ [data-bw-native] .bw-debut-opening{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;grid-template-areas:"identity" "photo" "profile";gap:14px;margin-top:14px}
+ [data-bw-native] .bw-debut-identity{min-height:0;padding:14px 18px 17px;gap:13px}
+ [data-bw-native] .bw-era-title{font-size:20px}
+ [data-bw-native] .bw-debut-identity h1{max-width:260px}
+ [data-bw-native] .bw-debut-profile{padding:6px 0 0}
+}

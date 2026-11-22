@@ -2,10 +2,15 @@
 
 import {ArtistTimelineHost, useArtistTimelineHostOptions} from './artist-timeline-host';
 import {informationGroupId, renderGroupInformation} from '@/lib/idol/group-information.mjs';
+import introductions from '@/data/artist-home-introductions.json';
 import type {CatalogView} from '@/lib/idol/types';
 import '../public/artist/group-information.css';
 
 type SectionProps = {slug: string; catalog: CatalogView | null};
+
+export function ArtistIntroduction({slug}: {slug: keyof typeof introductions}) {
+  return <p data-home-introduction={slug}><span className="group-intro-label">团体介绍</span>{introductions[slug].text}</p>;
+}
 
 export function ArtistInformation({slug, catalog}: SectionProps) {
   const group = catalog?.groups.find(row => row.id === informationGroupId(slug));

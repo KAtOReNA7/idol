@@ -8,7 +8,7 @@ const https=value=>{try{const url=new URL(value);return url.protocol==='https:'&
 export function withGroupInformationIdentity(artist,group){
  if(!artist?.id||informationGroupId(artist.slug)!==artist.id||group&&group.id!==artist.id)return artist;
  const model=groupInformationModel(artist.slug,group);
- const candidates=[...model.accounts.flatMap(account=>[account.url,account.sourceUrl??account.url]),...['sales','wins'].flatMap(kind=>{
+ const candidates=[...(model.introduction?.sources??[]).map(source=>source.url),...model.accounts.flatMap(account=>[account.url,account.sourceUrl??account.url]),...['sales','wins'].flatMap(kind=>{
   const metric=model[kind];return metric?.sources?.length?metric.sources.map(source=>source.url):[metric?.sourceUrl];
  })];
  const sources=[...(artist.sources??[])],known=new Set(sources.map(source=>typeof source==='string'?source:source?.url));

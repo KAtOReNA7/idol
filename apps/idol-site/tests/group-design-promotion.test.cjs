@@ -141,7 +141,8 @@ test('shared path adapter preserves canonical timeline query grammar and never r
 
 function productionHarness(group) {
   const filename=path.join(root,'tests/timeline-production-guard.test.cjs');
-  let source=read('tests/timeline-production-guard.test.cjs').split("test('production dirty cancel")[0];
+  // Load the reusable harness without registering standalone test cases in this VM.
+  let source=read('tests/timeline-production-guard.test.cjs').split(/^test\(/m,1)[0];
   source=source.replace('const group=registry[0],location=',`const group=registry.find(row=>row.slug===${JSON.stringify(group)}),location=`);
   const scope={module:{exports:{}},require:createRequire(filename),process,console,URL,URLSearchParams};
   vm.runInNewContext(source+'\nmodule.exports={harness,request};',scope,{filename});

@@ -1,0 +1,111 @@
+{
+  "applicationCommit": "ee8695d772a3d0f3aec24338debe11b9bf69e6dd",
+  "baselineApplicationCommit": "ec729b4ce57670e2cbf3f1973605f2c534fcdef4",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4277,"pass": 4142,"fail": 96,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4278,"pass": 4143,"fail": 96,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1354,"pass": 1354,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 642,
+          "localBytes": 34053050
+        }
+      },
+      "retainedFailureCount": 95,
+      "newFailures": [
+        {
+          "suite": "main",
+          "file": "tests/hearts2hearts-artist.test.cjs",
+          "test": "Hearts2Hearts reuses all eight existing original portraits by verified byte identity"
+        }
+      ],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/bili-poster-followup.test.cjs",
+          "test": "the observed Password thumbnail retains its actual decoded dimensions and all original bytes"
+        }
+      ],
+      "addedTests": [
+        "The Chase shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "UNIS and Kep1er retain their promoted font sources and the shared Instrument Serif faces prefer WOFF2"
+      ],
+      "removedTests": ["only the two promoted designs change font src; descriptors and shared TTF consumers stay"]
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4277,"pass": 4146,"fail": 92,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4278,"pass": 4147,"fail": 92,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1354,"pass": 1354,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 642,
+          "localBytes": 34053050
+        }
+      },
+      "retainedFailureCount": 91,
+      "newFailures": [
+        {
+          "suite": "main",
+          "file": "tests/hearts2hearts-artist.test.cjs",
+          "test": "Hearts2Hearts reuses all eight existing original portraits by verified byte identity"
+        }
+      ],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/bili-poster-followup.test.cjs",
+          "test": "the observed Password thumbnail retains its actual decoded dimensions and all original bytes"
+        }
+      ],
+      "addedTests": [
+        "The Chase shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "UNIS and Kep1er retain their promoted font sources and the shared Instrument Serif faces prefer WOFF2"
+      ],
+      "removedTests": ["only the two promoted designs change font src; descriptors and shared TTF consumers stay"]
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each verified and ran the full test suite in a dedicated checkout of the frozen application."
+}

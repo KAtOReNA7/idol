@@ -1,0 +1,14 @@
+{
+  "releaseApplication": "ee8695d772a3d0f3aec24338debe11b9bf69e6dd",
+  "testCorrection": "d40b42117e01c0cce62bf1cfbb7906f00bf363cc",
+  "testFile": "apps/idol-site/tests/hearts2hearts-artist.test.cjs",
+  "releaseFailure": "The exact top-level directory list gained the registered the-chase folder. All eight existing source portraits, their dimensions, binding data and bytes passed the original assertions.",
+  "testCorrectionScope": "Check that the eight original portrait filenames are exactly present, preserve original byte and identity checks, and accept additional top-level entries only when they belong to a registered Hearts2Hearts release portrait path.",
+  "runtimeInputsChangedByCorrection": false,
+  "commands": [
+    "node --test --test-name-pattern=verified.byte.identity tests/hearts2hearts-artist.test.cjs",
+    "node --test tests/mv-recognition-editions.test.cjs"
+  ],
+  "windows": {"originalPortraitTest": 1, "releaseRecognitionTests": 19, "passed": 20, "failed": 0},
+  "wslUbuntu": {"originalPortraitTest": 1, "releaseRecognitionTests": 19, "passed": 20, "failed": 0}
+}

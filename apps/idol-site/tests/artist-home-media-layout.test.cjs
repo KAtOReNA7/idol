@@ -15,6 +15,26 @@ const editorialVideos = {
 const groupBySlug = new Map(registry.map(group => [group.slug, group]));
 const homeAndDirectory = [{}, {section: 'works'}, {section: 'works', format: 'mv'}];
 
+test('three artist home photos and catalog links are usable before the catalog arrives', async () => {
+  for (const slug of ['qwer','purplekiss','illit']) {
+    const group=groupBySlug.get(slug);
+    const cold=parse(await renderArtist(group,{},null,{loading:true}));
+    const ready=parse(await renderArtist(group));
+    const original='.sr-hero a[data-original-photo]';
+    for (const page of [cold,ready]) {
+      assert.equal(page.querySelectorAll(original).length,1,slug);
+      assert.equal(page.querySelector(original).getAttribute('href'),ready.querySelector(original).getAttribute('href'));
+      const urls=page.querySelectorAll('.sr-hero-actions a[href]').map(link=>link.getAttribute('href'));
+      assert.deepEqual(urls,[group.path+'?section=works',group.path+'?section=members']);
+    }
+    assert.equal(cold.querySelector(original+' img').getAttribute('src'),ready.querySelector(original+' img').getAttribute('src'));
+    for (const query of [{section:'members'},{section:'works'}, {section:'updates'}, {q:'test'}]) {
+      const inner=parse(await renderArtist(group,query,null,{loading:true}));
+      assert.equal(inner.querySelector(original),null,slug+' '+JSON.stringify(query));
+    }
+  }
+});
+
 test('Kep1er pairs every listed film and stage with its own picture, title, destination and return', async () => {
   const group=groupBySlug.get('kep1er'), catalog=artistCatalog(group);
   for(const query of [...homeAndDirectory,{section:'works',format:'stage'}]){

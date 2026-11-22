@@ -80,12 +80,11 @@ function sessionHarness(props={}){
 }
 function nodes(tree){if(!tree||typeof tree!=='object')return [];return [tree,...React.Children.toArray(tree.props?.children).flatMap(nodes)];}
 const node=(tree,type,className)=>nodes(tree).find(n=>n.type===type&&(!className||n.props.className===className));
-test('a single HD player matches the full MV and the identical stage without changing its score identity',()=>{
+test('BILLIONAIRE uses one manually activated OK player for the original edit and matching stage score',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const id='rec28ldfRTrLku',video='Gz_yRl6703c',stage=require('../data/stage-videos.json')[id];
- const selected=workPlayback(id,video,'mv',null),embed=new URL(selected.embedUrl);
- assert.equal(embed.origin,'https://rutube.ru');assert.equal(embed.searchParams.get('q'),'1080');
- assert.equal(embed.searchParams.get('autostartmute'),'true');
+ const selected=workPlayback(id,video,'mv',null);
+ assert.deepEqual(selected,{label:'OK Video',embedUrl:'https://ok.ru/videoembed/9392431106679',credit:'OK Video · 😍НОВОЕ ❤️ ЛУЧШЕЕ⭐МУЗ КЛИПЫ⭐ 转载'});
  assert.equal(workPlayback(id,video,'stage',stage).embedUrl,selected.embedUrl);
  assert.equal(stage.scoreBinding.videoId,video);
  for(const other of [null,{...stage,reusesOriginalVideo:false},{...stage,url:'https://example.org'},{...stage,clip:{startSeconds:0,endSeconds:20,sourceDurationSeconds:164}}]){
@@ -93,12 +92,14 @@ test('a single HD player matches the full MV and the identical stage without cha
  }
  assert.equal(workPlayback(id,'MN2RlOy8y8k','mv',null),null);
  assert.equal(workPlayback('toString',video,'mv',null),null);
- const player=sessionHarness({embedUrl:selected.embedUrl});
- assert.equal(node(player.render(),'iframe'),undefined);
- node(player.render(),'button','video-play').props.onClick();
- assert.equal(nodes(player.render()).filter(n=>n.type==='iframe').length,1);
- assert.equal(node(player.render(),'iframe').props.src,selected.embedUrl);
- assert.equal(player.opens(),0);
+ const player=sessionHarness({workId:id,videoId:video,embedUrl:selected.embedUrl,playbackCredit:selected.credit,playbackLabel:selected.label});
+ const initial=player.render(),frames=nodes(initial).filter(n=>n.type==='iframe');
+ assert.equal(frames.length,1);assert.equal(frames[0].props.src,selected.embedUrl);
+ assert.match(frames[0].props.allow,/^autoplay 'none';/);
+ assert.equal(frames[0].props.allowFullScreen,true);
+ assert.equal(node(initial,'button','video-play'),undefined);
+ assert.match(renderToStaticMarkup(initial),/Качество（画质）.*Другое（其他）/);
+ assert.equal(player.timers.size,0);assert.equal(player.messages.length,0);assert.equal(player.opens(),0);
 });
 test('cover failure offers one explicit retry of the unchanged image without playback',()=>{
  for(const view of ['mv','stage']){
@@ -204,7 +205,12 @@ test('each confirmed work selects one exact player and preserves stage score ide
   const video=mapping.original, route=workPlayback(id,video,'mv',null);
   assert.equal(route.fallbackPlayers,undefined,id);
   const vimeo=vimeoByWork[id];
-  if(vimeo){
+  if(id==='rec28ldfRTrLku'){
+   assert.equal(video,'Gz_yRl6703c');
+   assert.equal(route.label,'OK Video');
+   assert.equal(route.embedUrl,'https://ok.ru/videoembed/9392431106679');
+   assert.equal(route.credit,'OK Video · 😍НОВОЕ ❤️ ЛУЧШЕЕ⭐МУЗ КЛИПЫ⭐ 转载');
+  }else if(vimeo){
    assert.equal(video,vimeo.video,id);
    assert.equal(route.label,'Vimeo',id);
    assert.equal(route.embedUrl,`https://player.vimeo.com/video/${vimeo.player}?autoplay=1&muted=1&dnt=1&playsinline=1&quality=4k`,id);
@@ -221,16 +227,21 @@ test('each confirmed work selects one exact player and preserves stage score ide
  }
 });
 
-test('failed attempts can retry the same muted source without opening another player or tab',()=>{
+test('failed attempts retry the same selected source without opening another player or tab',()=>{
  const {workPlayback}=require('./helpers/public-artist-loader.cjs')('lib/idol/work-playback.ts');
  const mappings=require('../data/verified-work-players.json');
  for(const id of ['rec28ldfRTrLku','rec28ldfRTrzPI','recvxyHuKMFzlZ']){
   const video=mappings[id].original, player=workPlayback(id,video,'mv',null);
   const h=sessionHarness({workId:id,videoId:video,embedUrl:player.embedUrl,playbackCredit:player.credit,playbackLabel:player.label});
-  const cover=h.render();
-  assert.ok(renderToStaticMarkup(cover).includes('播放视频（'+player.label+'）'));
-  assert.equal(node(cover,'iframe'),undefined);
-  node(cover,'button','video-play').props.onClick();
+  const initial=h.render();
+  if(id==='rec28ldfRTrLku'){
+   assert.equal(node(initial,'button','video-play'),undefined);
+   assert.ok(node(initial,'iframe'));
+  }else{
+   assert.ok(renderToStaticMarkup(initial).includes('播放视频（'+player.label+'）'));
+   assert.equal(node(initial,'iframe'),undefined);
+   node(initial,'button','video-play').props.onClick();
+  }
   const first=node(h.render(),'iframe');
   first.props.onError({currentTarget:h.frame()});
   const failure=h.render();

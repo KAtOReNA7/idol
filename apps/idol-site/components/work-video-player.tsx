@@ -33,6 +33,8 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
  const rangedStage=view==='stage'&&((sourceKey&&sourceKey!==videoId)||/[?&#](?:t|start|end|time_continue)=/.test(url+' '+(embedUrl??'')));
  const wholeVideo=platform==='youtube'&&videoId&&!rangedStage;
  const externalBili=platform==='bilibili'&&!embedUrl;
+ // OK's standard embed exposes play, volume and quality in its own controls.
+ const manualPlayer=embedUrl?.startsWith('https://ok.ru/videoembed/');
  const coverSrc=posterSrc||(wholeVideo?`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`:undefined);
  const playControl=useRef<HTMLButtonElement>(null);
  const frameRef=useRef<HTMLIFrameElement>(null);
@@ -92,15 +94,17 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
  },[attempt,embedUrl,failed]);
  // Some providers render their own error document without firing an iframe error.
  // Retrying always reopens the exact selected edit and leaves the editors mounted.
- if(attempt>0&&embedUrl)return <>
+ if((attempt>0||manualPlayer)&&embedUrl)return <>
   <div className="video-stage">
    {failed?<p className="video-cover-fallback" role="status">视频暂时无法播放。请稍后重试。</p>:
-    <iframe key={attempt} src={embedUrl} title={title} referrerPolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen
+    <iframe key={attempt} src={embedUrl} title={title} referrerPolicy="strict-origin-when-cross-origin" loading={manualPlayer?'lazy':undefined}
+     allow={manualPlayer?"autoplay 'none'; encrypted-media; picture-in-picture; fullscreen":"autoplay; encrypted-media; picture-in-picture; fullscreen"} allowFullScreen
      onError={event=>{if(event.currentTarget===frameRef.current)setFailedAttempt(attempt);}}
      ref={frame=>{frameRef.current=frame;if(frame&&focusOnStart.current){focusOnStart.current=false;frame.focus({preventScroll:true});}}}/>}
   </div>
   {!failed&&waitingAttempt===attempt&&<p className="video-start-notice" role="status">如果仍未出画，可以继续等待或重新加载视频。</p>}
   {playbackCredit&&<small className="video-source-credit">{playbackCredit}</small>}
+  {manualPlayer&&!failed&&<p className="video-start-notice">可在播放器内静音。要选 2160p，打开设置，依次选择「Качество（画质）」和「Другое（其他）」。</p>}
   <button type="button" className="video-reload" onClick={()=>setAttempt(n=>n+1)}>
    <RotateCcw aria-hidden="true" size={16}/>重新加载视频
   </button>

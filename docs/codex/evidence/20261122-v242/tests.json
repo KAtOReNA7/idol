@@ -1,0 +1,108 @@
+{
+  "applicationCommit": "bdc1e7d7d25c03580594e8fd6ea92bdd0273307c",
+  "baselineApplicationCommit": "8c8d5104fbacf095859417f5f275b2c2a82f00f7",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4282,"pass": 4150,"fail": 93,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4285,"pass": 4154,"fail": 92,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1356,"pass": 1356,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 668,
+          "localBytes": 35040052
+        }
+      },
+      "retainedFailureCount": 92,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/home-image-preload.test.cjs",
+          "test": "triples: homepage server preload is hoisted once with exact image request attributes"
+        }
+      ],
+      "addedTests": [
+        "BLUSH shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "LOVE ATTACK shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "only artists using the shared timeline request its data and start its deadline"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4282,"pass": 4154,"fail": 89,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4285,"pass": 4158,"fail": 88,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1356,"pass": 1356,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 668,
+          "localBytes": 35040052
+        }
+      },
+      "retainedFailureCount": 88,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/home-image-preload.test.cjs",
+          "test": "triples: homepage server preload is hoisted once with exact image request attributes"
+        }
+      ],
+      "addedTests": [
+        "BLUSH shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "LOVE ATTACK shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "only artists using the shared timeline request its data and start its deadline"
+      ],
+      "removedTests": []
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "testInput": {
+    "applicationCommit": "bdc1e7d7d25c03580594e8fd6ea92bdd0273307c",
+    "testPatchCommit": "6e70a90518f4391dd1de58bb815cb92fcb35ce44",
+    "pathsTakenFromTestPatch": ["apps/idol-site/tests/group-design-promotion.test.cjs"],
+    "reason": "The initial VM harness registered the standalone 51-group assertion as subtests of both UNIS and Kep1er. The fixed test fixture imports only setup. Both full suites used the final single-file overlay; verify and the published archive used the original application commit.",
+    "linuxLogNote": "WSL emitted both successful Python summaries over the first TAP banner in the combined log. All 4,285 named Node results and the three suite summaries were retained and independently reconciled."
+  },
+  "input": "Windows and WSL verified the frozen application. Their complete npm test runs used the named test-only overlay on the frozen application in dedicated checkouts."
+}

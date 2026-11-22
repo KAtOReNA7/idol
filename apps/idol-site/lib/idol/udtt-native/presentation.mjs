@@ -58,5 +58,5 @@ export function render({route,helpers:h,catalog=null,canEdit=false,resolvedNativ
  }
  if(!page)page=title('UDTT','没有找到这个条目','请返回目录选择已有成员或作品。');
  const active=route.page==='member'?'members':route.page==='work'?'works':route.page;
- return `<div class="ud-page"><header class="ud-nav ud-navy"><div class="ud-brand-row"><a class="ud-brand" href="${link()}">UDTT</a><span>${canEdit?'本人浏览 · 可编辑记录':'公开浏览 · 只读'}</span></div><nav aria-label="UDTT 页面">${[['home','首页'],['members','成员'],['works','发行与影像'],['timeline','时间线']].map(([p,t])=>`<a href="${link(p)}" ${active===p?'aria-current="page"':''}>${t}</a>`).join('')}</nav></header><main id="ud-main">${page}</main><footer class="ud-footer ud-navy"><small>UDTT / PEOPLE</small><p>成员 · 发行 · 影像</p></footer></div>`;
+ return `<div class="ud-page"><header class="ud-nav ud-navy"><div class="ud-brand-row"><a class="ud-brand" href="${link()}" aria-label="UDTT 首页"><span class="ud-brand-name">UDTT</span></a><span>${canEdit?'本人浏览 · 可编辑记录':'公开浏览 · 只读'}</span></div><nav aria-label="UDTT 页面">${[['home','首页'],['members','成员'],['works','发行与影像'],['timeline','时间线']].map(([p,t])=>`<a href="${link(p)}" ${active===p?'aria-current="page"':''}>${t}</a>`).join('')}</nav></header><main id="ud-main">${page}</main><footer class="ud-footer ud-navy"><small>UDTT / PEOPLE</small><p>成员 · 发行 · 影像</p></footer></div>`;
 }

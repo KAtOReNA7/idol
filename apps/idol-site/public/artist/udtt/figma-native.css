@@ -63,3 +63,21 @@
   .ud-edition-home .ud-edition-copy > p { font-size: 11px; line-height: 16px; }
   .ud-edition-home .ud-text-link { font-size: 12px; }
 }
+
+/* SW Entertainment's November 2024 public identity, separate from the private media viewer. */
+.ud-nav .ud-brand {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 80px;
+  height: 53px;
+  background: url('/artist/udtt/identity/official-mark.png') left center / contain no-repeat;
+}
+.ud-brand-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (max-width: 760px) {
+  .ud-nav .ud-brand { width: 65px; height: 44px; }
+}
+@media (forced-colors: active) {
+  .ud-nav .ud-brand { background: none; }
+  .ud-brand-name { position: static; width: auto; height: auto; clip-path: none; font-weight: 700; }
+}

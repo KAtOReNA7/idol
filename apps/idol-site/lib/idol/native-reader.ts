@@ -17,7 +17,9 @@ type NativeSource={native:true;state:StorageControl;key:string};
 type LegacySource={native:false;state:StorageControl|null};
 type CatalogReadKind='hit'|'miss'|'joined';
 type ColdReadStep='snapshot'|'tables'|NativeTableStep|'catalog-project'|'social-facts'|'cache-generation';
-type NativeCatalogEntry={key:string;created:number;step:ColdReadStep;value?:Catalog;pending?:Promise<Catalog>};
+type ColdReadProgress={step:ColdReadStep};
+type ColdRead={progress:ColdReadProgress;pending:Promise<Catalog>};
+type NativeCatalogEntry={key:string;created:number;value?:Catalog;reads:WeakMap<Request,ColdRead>};
 export type NativeCatalogTrace={step?:'source-generation'|ColdReadStep|'response-generation';cache?:CatalogReadKind};
 const nativeCatalogEntries=new Map<string,NativeCatalogEntry>();
 
@@ -30,49 +32,59 @@ async function catalogSource(userId:string):Promise<NativeSource|LegacySource>{
 }
 function catalogTiming(result:CatalogReadKind,started:number){console.info(JSON.stringify({event:'idol_native_catalog',result,elapsedMs:Math.max(0,Date.now()-started)}));}
 
-function selectCatalogEntry(userId:string,before:NativeSource,force:boolean):{entry:NativeCatalogEntry;result:CatalogReadKind}{
+function selectCatalogEntry(userId:string,before:NativeSource,force:boolean):NativeCatalogEntry{
  const prior=nativeCatalogEntries.get(userId);
- if(!force&&prior?.key===before.key&&Date.now()-prior.created<NATIVE_CATALOG_TTL){
-  return {entry:prior,result:prior.value?'hit':'joined'};
- }
- const entry:NativeCatalogEntry={key:before.key,created:Date.now(),step:'snapshot'};
+ if(!force&&prior?.key===before.key&&Date.now()-prior.created<NATIVE_CATALOG_TTL)return prior;
+ const entry:NativeCatalogEntry={key:before.key,created:Date.now(),reads:new WeakMap()};
  nativeCatalogEntries.delete(userId);
  nativeCatalogEntries.set(userId,entry);
  while(nativeCatalogEntries.size>MAX_NATIVE_OWNERS)nativeCatalogEntries.delete(nativeCatalogEntries.keys().next().value!);
- entry.pending=(async()=>{
-  const snapshot=await nativeDb().prepare('SELECT captured_at FROM idol_native_snapshots WHERE id = ? AND owner_id = ?').bind(before.state.active_snapshot,userId).first<{captured_at:string}>();
-  if(!snapshot)throw new AppError('NATIVE_DATA_MISSING','资料暂时无法读取，请稍后重试。',503);
-  entry.step='tables';
-  const tables=await nativeTables(before.state.active_snapshot!,step=>{entry.step=step;});
-  entry.step='catalog-project';
-  const catalog=withGroupMilestones(withVerifiedVersionDisplay(projectCatalog(tables,'live',new Date().toISOString()),tables));
-  entry.step='social-facts';
-  const value:Catalog={...await withSocialFacts(catalog,tables),cache:{source:'live',refreshRecommended:false}};
-  entry.step='cache-generation';
-  const after=await catalogSource(userId);
-  if(!after.native||after.key!==before.key)throw new AppError('CATALOG_SUPERSEDED','资料刚刚更新，请重新读取。',409);
-  if(nativeCatalogEntries.get(userId)===entry){entry.value=value;entry.pending=undefined;}
-  return value;
- })();
- return {entry,result:'miss'};
+ return entry;
 }
 
-export async function withNativeCatalog<T>(userId:string,force:boolean,read:(catalog:Catalog,control:StorageControl)=>T|Promise<T>,trace?:NativeCatalogTrace):Promise<{native:true;value:T}|{native:false;state:StorageControl|null}>{
+async function loadNativeCatalog(userId:string,before:NativeSource,entry:NativeCatalogEntry,progress:ColdReadProgress):Promise<Catalog>{
+ const snapshot=await nativeDb().prepare('SELECT captured_at FROM idol_native_snapshots WHERE id = ? AND owner_id = ?').bind(before.state.active_snapshot,userId).first<{captured_at:string}>();
+ if(!snapshot)throw new AppError('NATIVE_DATA_MISSING','资料暂时无法读取，请稍后重试。',503);
+ progress.step='tables';
+ const tables=await nativeTables(before.state.active_snapshot!,step=>{progress.step=step;});
+ progress.step='catalog-project';
+ const catalog=withGroupMilestones(withVerifiedVersionDisplay(projectCatalog(tables,'live',new Date().toISOString()),tables));
+ progress.step='social-facts';
+ const value:Catalog={...await withSocialFacts(catalog,tables),cache:{source:'live',refreshRecommended:false}};
+ progress.step='cache-generation';
+ const after=await catalogSource(userId);
+ if(!after.native||after.key!==before.key)throw new AppError('CATALOG_SUPERSEDED','资料刚刚更新，请重新读取。',409);
+ if(nativeCatalogEntries.get(userId)===entry)entry.value??=value;
+ return entry.value??value;
+}
+
+export async function withNativeCatalog<T>(userId:string,force:boolean,read:(catalog:Catalog,control:StorageControl)=>T|Promise<T>,trace?:NativeCatalogTrace,request?:Request):Promise<{native:true;value:T}|{native:false;state:StorageControl|null}>{
  if(trace){trace.step='source-generation';delete trace.cache;}
  const started=Date.now(),initial=await catalogSource(userId);
  if(!initial.native){nativeCatalogEntries.delete(userId);return initial;}
  let before=initial;
  for(let attempt=0;attempt<2;attempt++){
-  const {entry,result}=selectCatalogEntry(userId,before,force&&attempt===0);
+  const entry=selectCatalogEntry(userId,before,force&&attempt===0);
+  let catalog=entry.value;
+  let flight=request&&entry.reads.get(request);
+  const result:CatalogReadKind=catalog?'hit':flight?'joined':'miss';
   if(trace)trace.cache=result;
-  let catalog:Catalog|null=null;
-  try{
-   catalog=entry.value??await entry.pending!;
-  }catch(error){
-   // Joiners observe the operation that failed in the shared cold read.
-   if(trace)trace.step=entry.step;
-   if(nativeCatalogEntries.get(userId)===entry)nativeCatalogEntries.delete(userId);
-   if(!(error instanceof AppError&&error.code==='CATALOG_SUPERSEDED'&&attempt===0))throw error;
+  if(catalog===undefined){
+   // Workerd may discard unresolved I/O when its HTTP request ends. Only a completed
+   // projection can be reused by other requests; calls within one request can share I/O.
+   if(!flight){
+    const progress:ColdReadProgress={step:'snapshot'};
+    flight={progress,pending:loadNativeCatalog(userId,before,entry,progress)};
+    if(request)entry.reads.set(request,flight);
+   }
+   try{
+    catalog=await flight.pending;
+   }catch(error){
+    if(trace)trace.step=flight.progress.step;
+    if(!(error instanceof AppError&&error.code==='CATALOG_SUPERSEDED'&&attempt===0))throw error;
+   }finally{
+    if(request&&entry.reads.get(request)===flight)entry.reads.delete(request);
+   }
   }
   // This read belongs to the request. The shared entry never contains private rating rows or its response.
   const selection=catalog?{value:await read(catalog,before.state)}:null;
@@ -88,8 +100,8 @@ export async function withNativeCatalog<T>(userId:string,force:boolean,read:(cat
  throw new AppError('STORAGE_CHANGING','资料刚刚更新，请重新读取，输入已保留。',409);
 }
 
-export async function readNativeCatalog(userId:string,force=false):Promise<Catalog|null>{
- const read=await withNativeCatalog(userId,force,catalog=>catalog);
+export async function readNativeCatalog(userId:string,force=false,request?:Request):Promise<Catalog|null>{
+ const read=await withNativeCatalog(userId,force,catalog=>catalog,undefined,request);
  return read.native?read.value:null;
 }
 export async function readNativeDetail(userId:string,table:TableKey,id:string){const state=await activeNative(userId);if(!state)return null;const fields=await nativeSchema(state.active_snapshot!,table),row=await nativeRow(state.active_snapshot!,table,id),record={record_id:id,fields:namedFields(JSON.parse(row.fields_json),fields)};return {table,recordId:id,mode:'live',pendingSave:null,revision:row.revision,values:editableValues(table,record,fields),watchedOptions:table==='works'?(fields.find(f=>f.field_id===F.works.watched)?.property?.options??[]).map(o=>o.name):[]};}

@@ -37,6 +37,28 @@ before(async () => {
       export default {async fetch(request) {
         const url = new URL(request.url);
         try {
+          if (url.pathname === '/test/leave-catalog') {
+            // End this real workerd invocation while its native cold read still has request-owned I/O.
+            let markStarted;
+            const started = new Promise(resolve => { markStarted = resolve; });
+            const db = env.DB;
+            const tracked = {prepare(sql) {
+              const statement = db.prepare(sql);
+              if (!sql.includes('FROM idol_native_records')) return statement;
+              return {bind(...params) {
+                const bound = statement.bind(...params);
+                return {async all() {
+                  const rows = await bound.all();
+                  markStarted();
+                  await scheduler.wait(30000);
+                  return rows;
+                }};
+              }};
+            }};
+            const reading = withEnv({DB: tracked}, () => readCatalog(request));
+            await Promise.race([started, reading.then(() => { throw Error('Cold table read did not start'); })]);
+            return new Response(null, {status: 204});
+          }
           if (url.pathname === '/api/catalog' && request.method === 'GET') {
             const fault=request.headers.get('X-Test-Fault');
             if (!fault && !request.headers.has('X-Test-Queries')) return readCatalog(request);
@@ -197,6 +219,30 @@ test('opaque owner read failures identify their native operation without retryin
   const publicSql=JSON.parse(publicRead.headers.get('X-Test-Queries'));
   assert.equal(publicSql.some(sql=>sql.includes('idol_personal_mv_ratings')),false);
   assert.equal(publicSql.filter(sql=>sql.includes('SELECT generation FROM idol_catalog_state')).length,2);
+});
+
+test('after a request ends during the cold D1 read, the next HTTP request opens the work without a retry', async () => {
+  const workId = 'recDepartedRead';
+  await seed('works',workId,{[F.works.groups]:['recGroup'],[F.works.song]:'Synthetic work',[F.works.url]:'https://youtu.be/abcdefghijk'});
+  for (const access of ['owner','public']) {
+    await db.prepare("UPDATE idol_catalog_state SET generation=generation+1 WHERE user_id='test-owner'").run();
+    const departed = await runtime.dispatchFetch('http://localhost/test/leave-catalog?shape=display-v1');
+    assert.equal(departed.status,204);
+    const headers = {Prefer:'omit-stage-candidates, work-detail='+workId,'X-Test-Queries':'1'};
+    if (access === 'public') headers['X-Test-Public']='1';
+    for (const expectedTableReads of [1,0]) {
+      const response = await runtime.dispatchFetch('http://localhost/api/catalog?shape=display-v1',{headers});
+      assert.equal(response.status,200,access);
+      assert.equal(response.headers.get('X-Catalog-Access'),access);
+      assert.equal(response.headers.get('Server-Timing'),null);
+      const sql = JSON.parse(response.headers.get('X-Test-Queries'));
+      assert.equal(sql.filter(statement=>statement.includes('FROM idol_native_records')).length,expectedTableReads);
+      assert.equal(sql.some(statement=>statement.includes('FROM idol_personal_mv_ratings')),access==='owner');
+      const data = await response.json();
+      assert.deepEqual(data.scope,{type:'work',workId});
+      assert.equal(Object.hasOwn(data,'personalMvRatings'),access==='owner');
+    }
+  }
 });
 
 for (const [title, id] of records) {

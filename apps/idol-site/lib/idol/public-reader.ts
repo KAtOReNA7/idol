@@ -26,11 +26,11 @@ export async function assertPublicScope(before:Awaited<ReturnType<typeof publicS
  const after=await publicScope();
  if(after.control.owner_id!==before.control.owner_id||sourceStamp(after.control)!==sourceStamp(before.control)||after.generation!==before.generation)throw new AppError('STORAGE_CHANGING','资料刚刚更新，请重新读取。',409);
 }
-export async function readPublicCatalog(artist:string|null=null,workId:string|null=null):Promise<CatalogView>{
+export async function readPublicCatalog(artist:string|null=null,workId:string|null=null,request?:Request):Promise<CatalogView>{
  const before=await publicScope();
  // Reuse the native read-only generation-checked cache with its actual partition
  // key. Never use the Feishu fallback or force refresh. No auth state is changed.
- const native=await readNativeCatalog(before.control.owner_id,false);
+ const native=await readNativeCatalog(before.control.owner_id,false,request);
  if(!native)throw denied();
  const work=findDetailWork(native,workId);
  const selection=artist?projectArtistCatalog(native,artist):work?projectWorkCatalog(native,work):native;

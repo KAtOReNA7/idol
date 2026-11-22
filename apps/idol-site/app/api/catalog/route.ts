@@ -66,7 +66,7 @@ async function catalogResponse(request:Request,readCatalog:<T>(read:()=>Promise<
    const artist=requestedArtist(query);
    const work=artist?null:preferredDetailWork(request.headers.get('Prefer'));
    trace.phase='public-read';
-   const catalog=await readCatalog(()=>readPublicCatalog(artist,work));
+   const catalog=await readCatalog(()=>readPublicCatalog(artist,work,request));
    trace.phase='project';
    return displayResponse(request,catalog,'public');
   }
@@ -84,7 +84,7 @@ async function catalogResponse(request:Request,readCatalog:<T>(read:()=>Promise<
     // The native reader can revalidate the generation and repeat its own guarded read.
     trace.phase='native-read';
     return {result,work,personal};
-   },trace.native);
+   },trace.native,request);
   },!params.has('refresh'));
   let selection: {result:Catalog; work:Work|null; personal?:PersonalMvRatings};
   if (native.native) selection=native.value;

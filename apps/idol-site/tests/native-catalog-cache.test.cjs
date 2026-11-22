@@ -15,7 +15,35 @@ function setup(){
  return {model,read:out.readNativeCatalog,readWith:out.withNativeCatalog};
 }
 test('native catalog same-owner same-generation reads reuse projection; force is fresh',async()=>{const {read,model:m}=setup();assert.equal((await read('owner')).marker,1);assert.equal((await read('owner')).marker,1);assert.equal(m.reads,1);assert.equal(m.projects,1);assert.equal(m.logs.at(-1).result,'hit');await read('owner',true);assert.equal(m.reads,2);assert.equal(m.logs.at(-1).result,'miss');});
-test('concurrent normal reads coalesce, errors clear the exact pending entry',async()=>{const {read,model:m}=setup(),gate=deferred();m.gates.push(gate);const a=read('owner'),b=read('owner');await until(()=>m.reads===1);gate.resolve();assert.equal((await a).marker,1);assert.equal((await b).marker,1);assert.equal(m.reads,1);m.generation++;m.fail=true;await assert.rejects(read('owner'),/failed/);m.fail=false;m.value=2;assert.equal((await read('owner')).marker,2);assert.equal(m.reads,3);});
+test('concurrent reads within one request coalesce and release the pending operation after failure',async()=>{
+ const {read,model:m}=setup(),gate=deferred(),request=new Request('https://example.org/api/catalog');
+ m.gates.push(gate);
+ const a=read('owner',false,request),b=read('owner',false,request);
+ await until(()=>m.reads===1);
+ gate.resolve();
+ assert.equal((await a).marker,1);
+ assert.equal((await b).marker,1);
+ assert.equal(m.reads,1);
+ m.generation++;
+ m.fail=true;
+ await assert.rejects(read('owner',false,request),/failed/);
+ m.fail=false;m.value=2;
+ assert.equal((await read('owner',false,request)).marker,2);
+ assert.equal(m.reads,3);
+});
+test('one pending cold request cannot block a different request or evict its completed projection',async()=>{
+ const {read,model}=setup(),gate=deferred();
+ const first=new Request('https://example.org/api/catalog'),next=new Request(first.url);
+ model.gates.push(gate);
+ const failed=assert.rejects(read('owner',false,first),/request ended/);
+ await until(()=>model.reads===1);
+ const completed=await read('owner',false,next);
+ assert.equal(model.reads,2);
+ gate.reject(Error('request ended'));
+ await failed;
+ assert.strictEqual(await read('owner'),completed);
+ assert.equal(model.reads,2);
+});
 test('committed save or facts generation change misses immediately even if POST acknowledgement was lost',async()=>{const {read,model:m}=setup();await read('owner');m.generation++;m.value=2;assert.equal((await read('owner')).marker,2);await read('owner');assert.equal(m.reads,2);});
 test('save during old read causes bounded re-read, never publishes old generation',async()=>{const {read,model:m}=setup(),old=deferred();m.gates.push(old);const a=read('owner');await until(()=>m.reads===1);m.generation++;m.value=2;assert.equal((await read('owner')).marker,2);old.resolve();assert.equal((await a).marker,2);assert.equal((await read('owner')).marker,2);assert.equal(m.reads,2);});
 test('force replaces even same-key pending and late old promise joins the new result',async()=>{const {read,model:m}=setup(),old=deferred(),fresh=deferred();m.gates.push(old,fresh);const a=read('owner');await until(()=>m.reads===1);m.value=2;const b=read('owner',true);await until(()=>m.reads===2);fresh.resolve();assert.equal((await b).marker,2);old.resolve();assert.equal((await a).marker,2);assert.equal((await read('owner')).marker,2);assert.equal(m.reads,2);});
@@ -65,13 +93,14 @@ test('a failed private read preserves the shared projection and repeated private
  assert.equal(attempts,2);
  assert.equal(model.projects,2);
 });
-test('joined readers keep separate request traces and observe the same failed cold operation',async()=>{
+test('readers within one request keep separate traces and observe the same failed cold operation',async()=>{
  const {readWith,model}=setup(),gate=deferred(),first={},second={};
+ const request=new Request('https://example.org/api/catalog');
  model.gates.push(gate);
  model.fail=true;
  const requests=Promise.allSettled([
-  readWith('owner',false,catalog=>catalog,first),
-  readWith('owner',false,catalog=>catalog,second),
+  readWith('owner',false,catalog=>catalog,first,request),
+  readWith('owner',false,catalog=>catalog,second,request),
  ]);
  await until(()=>first.cache==='miss'&&second.cache==='joined');
  gate.resolve();

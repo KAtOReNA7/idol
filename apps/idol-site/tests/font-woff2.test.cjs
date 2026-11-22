@@ -1,6 +1,6 @@
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),postcss=require('postcss');
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const {artistStyle, journalStyle, assertFace, assertStack} = require('./helpers/routed-fonts.cjs');
 const root=path.resolve(__dirname,'..');
-const sources=['app/katseye-experience.css','app/nmixx-experience.css','app/artists/expanded-artist.css','app/artists/lesserafim/lesserafim-artist.css','app/artists/kissoflife/kiof-artist.css','app/artists/stayc/stayc-artist.css','app/artists/itzy/itzy-artist.css','app/artists/nmixx/nmixx-artist.css','app/artists/katseye/katseye-artist.css'];
 test('Space Grotesk source and complete WOFF2 are immutable known artifacts',()=>{
  const hash=p=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex');
  assert.equal(hash('public/fonts/SpaceGrotesk.ttf'),'acad6de1fc93436f5c0f1f4137751ef04f1aea3063e7036535970ffcfbd79f72');
@@ -9,9 +9,30 @@ test('Space Grotesk source and complete WOFF2 are immutable known artifacts',()=
  assert.equal(hash('public/fonts/spacegrotesk-OFL.txt'),'564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72');
  assert.match(fs.readFileSync(path.join(root,'public/fonts/spacegrotesk-OFL.txt'),'utf8'),/Copyright 2020 The Space Grotesk Project Authors/);
 });
-test('all nine source styles prefer full WOFF2 and retain TTF fallback and swap',()=>{
- let count=0;
- for(const file of sources){let matches=0;postcss.parse(fs.readFileSync(path.join(root,file),'utf8')).walkAtRules('font-face',r=>{let src=r.nodes.find(n=>n.prop==='src');if(!src?.value.includes('SpaceGrotesk'))return;matches++;count++;
- assert.equal(src.value,"url('/fonts/SpaceGrotesk.woff2') format('woff2'),url('/fonts/SpaceGrotesk.ttf') format('truetype')");assert.equal(r.nodes.find(n=>n.prop==='font-display')?.value,'swap');assert.ok(r.nodes.find(n=>n.prop==='font-family'));assert.ok(r.nodes.find(n=>n.prop==='font-weight'));
- });assert.ok(matches,file)}assert.equal(count,10);
+test('routed Space Grotesk faces prefer the complete WOFF2, retain the TTF and use their published weights', () => {
+  const urls = ['/fonts/SpaceGrotesk.woff2', '/fonts/SpaceGrotesk.ttf'];
+  const homes = [
+    ['xg', '../expanded-artist.css', 'ArtistNumber'],
+    ['aespa', '../expanded-artist.css', 'ArtistNumber'],
+    ['lesserafim', './lesserafim-artist.css', 'LeMono'],
+    ['kissoflife', './kiof-artist.css', 'KiofMono'],
+    ['stayc', './stayc-artist.css', 'StaycMono'],
+    ['itzy', './itzy-artist.css', 'ItzyDisplay'],
+    ['nmixx', './nmixx-artist.css', 'NMixxDisplay'],
+  ];
+  for (const [slug, specifier, family] of homes) {
+    assertFace(artistStyle(slug, specifier), family, urls, '300 700');
+  }
+  assertFace(journalStyle('nmixx', false), 'NMixxDisplay', urls, '200 700');
+});
+
+test('KATSEYE uses its licensed Nimbus Sans Narrow on its home and work page', () => {
+  const urls = ['/fonts/Katseye-NimbusSansNarrow-Bold.otf'];
+  const home = artistStyle('katseye', './katseye-artist.css');
+  const journal = journalStyle('katseye', false);
+  assertFace(home, 'KeDisplay', urls, '700');
+  assertFace(journal, 'KatseyeDisplay', urls, '300 700');
+  assertStack(home, 'KeDisplay,Arial Narrow,Noto Sans SC,sans-serif');
+  assertStack(journal, 'KatseyeDisplay,Noto Sans SC,sans-serif');
+  assert.ok(fs.statSync(path.join(root, 'public/fonts/Katseye-Nimbus-LICENSE.txt')).size > 0);
 });

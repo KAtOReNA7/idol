@@ -11,6 +11,7 @@ const os = require('node:os');
 const esbuild = require('esbuild');
 const crypto = require('node:crypto');
 const registry = require('../HANDOFF/artist-registry51.json');
+const {syntheticEditorial} = require('./fixtures/editorial-shapes.cjs');
 const {sourceRoot, explicitTestAliases, assertExplicitTestInputs, publicNavigationInputs, assertPublicNavigationContent} = require('./fixtures/timeline-host/explicit-test-aliases.cjs');
 const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'timeline-navigation-'));
 const defaults = {type: 'all', importance: 'major', order: 'recent'};
@@ -32,7 +33,7 @@ test.before(async () => {
     resolveDir: sourceRoot, sourcefile: 'timeline-navigation-entry.ts', loader: 'ts',
   }, bundle: true, outfile: output, absWorkingDir: sourceRoot, platform: 'node', format: 'cjs',
   nodePaths: process.env.NODE_PATH ? process.env.NODE_PATH.split(path.delimiter) : [],
-  plugins: [explicitTestAliases(aliases)], metafile: true, logLevel: 'silent'});
+  plugins: [explicitTestAliases(aliases), syntheticEditorial(/^\.\.\/\.\.\/data\/xg-directory-work-keys\.json$/)], metafile: true, logLevel: 'silent'});
   proof = assertExplicitTestInputs(result.metafile, aliases);
   api = require(output);
 });
@@ -43,6 +44,7 @@ test('actual artist routing modules are bundled with only the finite unused jour
   assert.equal(proof.aliases.length, 1);
   assert.equal(proof.aliases[0].original, './journey');
   assert.equal(proof.aliases[0].replacement, path.join(sourceRoot, 'tests/fixtures/timeline-host/journey-route-adapter.ts'));
+  assert.deepEqual(proof.inputs.filter(file => file.startsWith('editorial-fixture:')), ['editorial-fixture:xg-directory-work-keys.json']);
   assert.ok(!proof.inputs.some(file => /app\/api\/|data\/snapshot|use-browse-journey/.test(file)));
 });
 
@@ -65,7 +67,7 @@ test('only explicitly reviewed public navigation inputs pass the strict provenan
       assert.throws(() => assertPublicNavigationContent(repinned, changed), /Unexpected public navigation fields|Non-key public navigation payload/);
     }
   }
-  for (const file of ['data/snapshot.json', 'data/billlie-navigation-keys-extra.json', 'data/billlie-artist.json', 'data/triples/identity-evidence.json']) {
+  for (const file of ['data/snapshot.json', 'data/xg-directory-work-keys.json', 'data/billlie-navigation-keys-extra.json', 'data/billlie-artist.json', 'data/triples/identity-evidence.json']) {
     assert.throws(() => assertExplicitTestInputs(meta(file, 'lib/idol/artist-navigation.ts'), []), /Unauthorized actual data imported/);
   }
 });

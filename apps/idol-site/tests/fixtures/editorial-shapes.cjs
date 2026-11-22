@@ -14,9 +14,9 @@ function fixtureForImport(specifier, importer) {
  if (contract?.from.includes(from)) return {name, data: contract.fixture};
 }
 
-function syntheticEditorial() {
+function syntheticEditorial(filter = /\.json$/) {
  return {name:'synthetic-editorial-data',setup(build){
-  build.onResolve({filter:/\.json$/}, args=>{
+  build.onResolve({filter}, args=>{
    const fixture = fixtureForImport(args.path, args.importer);
    if (fixture) return {namespace:'editorial-fixture',path:fixture.name,pluginData:fixture.data};
   });

@@ -15,7 +15,7 @@ const catalog = {...fixture, works:[
   {...fixture.works[1], id:'recForeign', song:'其他团作品', groupIds:['recForeignGroup']},
 ]};
 
-function mount(initialFailure) {
+function mount(initialFailure, {owner=false, catalogGate}={}) {
   let failure = initialFailure;
   const requests = [];
   const window = {location:new URL('https://site.invalid/artists/udtt?section=works')};
@@ -23,7 +23,7 @@ function mount(initialFailure) {
   const ports = {
     react:React,
     'react/jsx-runtime':jsxRuntime,
-    '@/components/public-access':{useCanEdit:() => false},
+    '@/components/public-access':{useCanEdit:() => owner},
     '@/data/artist-home-introductions.json':require('../data/artist-home-introductions.json'),
     '@/lib/idol/journey':load('lib/idol/journey.ts'),
     '@/lib/idol/artist-navigation':load('lib/idol/artist-navigation.ts'),
@@ -45,12 +45,13 @@ function mount(initialFailure) {
   async function fetch(url) {
     requests.push(url);
     if (url.startsWith('/api/catalog?')) {
+      await catalogGate;
       if (failure === 'catalog') unexpected();
       return Response.json(failure === 'identity' ? {...catalog, groups:[]} : catalog);
     }
-    assert.equal(url, '/api/editorial-assets/viewer');
+    assert.equal(url, owner?'/api/manage/editorial-assets/viewer':'/api/editorial-assets/viewer');
     if (failure === 'viewer') unexpected();
-    return Response.json({entries:Array(10).fill(null)});
+    return Response.json({entries:Array(owner?11:10).fill(null)});
   }
   const modulePort = {exports:{}};
   vm.runInNewContext('(function(require,module,exports){' + compiled + '})', {window, fetch, AbortController})(
@@ -63,6 +64,28 @@ function mount(initialFailure) {
   }
   render();
   return {render, requests, recover() {failure = null;}, unmount() {runner.unmount();}};
+}
+
+for(const owner of [false,true]){
+  test('UDTT starts the '+(owner?'owner':'public')+' photo index while the catalog is pending',async()=>{
+    let release;
+    const catalogGate=new Promise(resolve=>{release=resolve;});
+    const page=mount(null,{owner,catalogGate});
+    try{
+      await tick();
+      assert.deepEqual(page.requests,[
+        '/api/catalog?artist=udtt&shape=display-v1',
+        owner?'/api/manage/editorial-assets/viewer':'/api/editorial-assets/viewer',
+      ]);
+      assert.equal(text(find(page.render(),node=>node.props.role==='status')),'正在读取 UDTT 资料…');
+      release();
+      await tick();
+      assert.equal(text(find(page.render(),node=>node.props.role==='status')),'UDTT · 资料已载入');
+    }finally{
+      release();
+      page.unmount();
+    }
+  });
 }
 
 for (const [stage, message, hasWork] of [

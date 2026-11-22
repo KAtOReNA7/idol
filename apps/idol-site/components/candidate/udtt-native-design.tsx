@@ -22,19 +22,30 @@ export default function UdttNativeDesign(){
     const controller=new AbortController();let mounted:ReturnType<typeof createUdttNative>|null=null;let nativePortrait:NativePortraitBinding|null=null;
     let failureMessage='暂时无法读取 UDTT 资料。';
     void catalogReadWithDeadline(async signal=>{
-      const response=await fetch('/api/catalog?artist=udtt&shape=display-v1',{headers:artistCatalogHeaders,cache:'no-store',signal});
-      if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('资料库暂时无法读取，请稍后重试。');
-      const catalog=await response.json() as CatalogView;
-      const groupId=catalog.scope?.type==='artist'?catalog.scope.groupId:null;
-      if(!groupId||!catalogBelongs(catalog))throw new Error('资料所属团体未能核验，暂不开放记录入口。');
-      if(!signal.aborted)setPublicWorks(catalog.works.filter(work=>!work.placeholder&&work.groupIds.includes(groupId)).map(work=>({id:work.id,title:work.song||work.name})));
-      failureMessage='UDTT 图片暂时无法加载。';
-      const responseViewer=await fetch(canEdit?'/api/manage/editorial-assets/viewer':'/api/editorial-assets/viewer',{cache:'no-store',credentials:'same-origin',signal});
-      if(!responseViewer.ok||!responseViewer.headers.get('content-type')?.includes('application/json'))throw new Error('图片暂不可用；未使用其他图片替代。');
-      const viewer:unknown=await responseViewer.json();
-      const entries=viewer&&typeof viewer==='object'&&'entries' in viewer?viewer.entries:null;
-      if(!Array.isArray(entries)||entries.length!==(canEdit?11:10))throw new Error('图片尚未全部发布，完整页面暂不可用。');
-      return {catalog,viewer};
+      async function readCatalog(){
+        const response=await fetch('/api/catalog?artist=udtt&shape=display-v1',{headers:artistCatalogHeaders,cache:'no-store',signal});
+        if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('资料库暂时无法读取。');
+        const catalog=await response.json() as CatalogView;
+        const groupId=catalog.scope?.type==='artist'?catalog.scope.groupId:null;
+        if(!groupId||!catalogBelongs(catalog))throw new Error('资料所属团体未能核验。');
+        if(!signal.aborted){
+          setPublicWorks(catalog.works.filter(work=>!work.placeholder&&work.groupIds.includes(groupId)).map(work=>({id:work.id,title:work.song||work.name})));
+          failureMessage='UDTT 图片暂时无法加载。';
+        }
+        return catalog;
+      }
+      async function readViewer(){
+        const response=await fetch(canEdit?'/api/manage/editorial-assets/viewer':'/api/editorial-assets/viewer',{cache:'no-store',credentials:'same-origin',signal});
+        if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw new Error('图片暂不可用。');
+        const viewer:unknown=await response.json();
+        const entries=viewer&&typeof viewer==='object'&&'entries' in viewer?viewer.entries:null;
+        if(!Array.isArray(entries)||entries.length!==(canEdit?11:10))throw new Error('图片尚未全部发布。');
+        return viewer;
+      }
+      const [catalog,viewer]=await Promise.allSettled([readCatalog(),readViewer()]);
+      if(catalog.status==='rejected')throw catalog.reason;
+      if(viewer.status==='rejected')throw viewer.reason;
+      return {catalog:catalog.value,viewer:viewer.value};
     },controller.signal).then(async ({catalog,viewer})=>{
       if(controller.signal.aborted||!host.current)return;
       nativePortrait=await prepareUdttNativePortrait({catalog,viewer,production,window,publicMode:!canEdit,signal:controller.signal});
@@ -46,6 +57,7 @@ export default function UdttNativeDesign(){
     return()=>{controller.abort();mounted?.destroy();nativePortrait?.destroy();};
   },[attempt,canEdit]);
   return <div data-udtt-native-host="true">
+    <link rel="preload" as="style" href="/artist/udtt/figma-native.css"/>
     <link rel="stylesheet" href="/fonts/udtt/fonts.css"/>
     <div role="status" aria-live="polite" style={status==='UDTT · 资料已载入'?{position:'absolute',width:1,height:1,overflow:'hidden',clipPath:'inset(50%)'}:{padding:'12px 20px',font:'14px/1.6 Arial, sans-serif',background:'#f4f3eb',color:'#162c32'}}>{status}{failed&&<> <button type="button" onClick={()=>{setFailed(false);setPublicWorks([]);setStatus('正在读取 UDTT 资料…');setAttempt(value=>value+1);}}>重新读取</button></>}</div>
     {failed&&<section aria-label="UDTT 团体与作品" style={{padding:'20px',background:'#f4f3eb',color:'#162c32',fontFamily:'UdttNotoSansSC, sans-serif'}}>

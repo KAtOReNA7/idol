@@ -31,13 +31,17 @@ function OfficialHero({onOriginal,catalog,returnTo,useHomePreviews}:{onOriginal:
  const mv=data.media.find(film=>film.releaseId===releaseId&&film.kind==='mv'&&film.videoId==='D7dzSapaIS4');
  const watch=mv&&artistMvHref(catalog,groupId,mv.url,returnTo);
  return <section className="rp-hero">
+  <OriginalPhotoLink className="rp-hero-photo" href={data.hero.image} onOpen={onOriginal} aria-label="查看 Rocket Punch 六人团照原图">
+   <Picture item={photo} alt="Rocket Punch 六人坐在教室课桌前" priority/>
+  </OriginalPhotoLink>
   <div className="rp-hero-copy">
-   <h1>ROCKET<br/>PUNCH</h1><p className="rp-hero-date">2023 · BOOM</p><p className="rp-hero-intro">历年六人成员档案</p>
-   {mv&&<Link to={watch??mv.url} external={!watch}>{mv.title} 官方 MV</Link>}
-   <Link to={href('records',{release:releaseId})}>BOOM 发行详情</Link>
-   <OriginalPhotoLink className="rp-link" href={data.hero.image} onOpen={onOriginal}>查看团照原图 <Arrow external/></OriginalPhotoLink>
+   <h1>Rocket Punch</h1>
+   <p>《BOOM》官方概念照 · 2023</p>
+   <nav aria-label="Rocket Punch 精选作品">
+    {mv&&<Link to={watch??mv.url} external={!watch}>{mv.title} 官方 MV</Link>}
+    <Link to={href('records',{release:releaseId})}>BOOM 发行详情</Link>
+   </nav>
   </div>
-  <div className="rp-hero-photo"><Picture item={photo} alt="Rocket Punch · 2023 BOOM 官方六人概念照" priority/><p>2023 BOOM 官方概念照 · 历史时期</p></div>
  </section>;
 }
 function Search({query,label}:{query:string;label:string}){function change(q:string){const u=new URL(location.href);q?u.searchParams.set('q',q):u.searchParams.delete('q');history.replaceState(history.state,'',u.pathname+u.search);window.dispatchEvent(new Event('artist-location-change'));}return <label className="rp-search"><span>{label}</span><input value={query} type="search" maxLength={200} placeholder="输入中文名、名称或关键词" onChange={e=>change(e.target.value)}/>{query&&<button onClick={()=>change('')} type="button">清除</button>}</label>;}

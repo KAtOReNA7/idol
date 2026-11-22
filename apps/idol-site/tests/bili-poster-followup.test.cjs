@@ -20,20 +20,25 @@ test('the observed Password thumbnail retains its actual decoded dimensions and 
   if(file==='data/stage-videos.json'||file==='data/stages/status.json')bytes=Buffer.from(JSON.stringify(qwer.beforeQwer(file==='data/stage-videos.json'?'stageVideos':'stageStatuses',JSON.parse(bytes)),null,2)+'\n');
   if(file==='data/stages/supplements.json')bytes=Buffer.from(JSON.stringify(qwer.beforeQwerSupplements(JSON.parse(bytes)),null,2)+'\n');
   if(file==='data/production-asset-delivery.json'){
-   // Reconstruct the historical manifest across local styling and BEWAVE additions.
+   // Reconstruct the historical manifest across local styling and photo collections added after the receipt.
    const manifest=JSON.parse(bytes);
    const styles=new Map([
     ['/artist/group-information.css',[2775,'9c4219b23a62f33c457a56367c974933205120d71a9d8cd19bc0760c482130d7']],
     ['/artist/izna/native-v3/izna.css',[44685,'60008a942b4fac5601a35058d3a9b4fc60c41df95f7abfb3675aa4532fb6eeda']],
+    ['/artist/udtt/figma-native.css',[11859,'915a849fdcf2604828baf132b222885c4e052d16564294818ceeb4198db162a8']],
    ]);
-   const newImages=new Set(['/artist/bewave/be-wave/platform-chrome.webp','/artist/bewave/be-wave/six-concept.webp']);
+   const laterCollections=[
+    '/artist/bewave/be-wave/', '/artist/candyshop/japan/', '/artist/everglow/official-community/',
+    '/artist/newjeans/debut/', '/artist/nmixx/identity/', '/artist/spia/deeeep/', '/artist/stayc/identity/',
+   ];
    manifest.assets=manifest.assets.filter(row=>{
-    if(!styles.has(row.path)&&!newImages.has(row.path))return true;
+    const addedAfterReceipt=laterCollections.some(directory=>row.path.startsWith(directory));
+    if(!styles.has(row.path)&&!addedAfterReceipt)return true;
     const actual=fs.readFileSync(path.join(__dirname,'../public',row.path));
     assert.equal(row.delivery,'local',row.path);
     assert.equal(actual.length,row.bytes,row.path);assert.equal(hash(actual),row.sha256,row.path);
     manifest.summary.localBytes-=row.bytes;
-    if(newImages.has(row.path)){manifest.summary.assets--;manifest.summary.local--;return false;}
+    if(addedAfterReceipt){manifest.summary.assets--;manifest.summary.local--;return false;}
     [row.bytes,row.sha256]=styles.get(row.path);
     manifest.summary.localBytes+=row.bytes;
     return true;

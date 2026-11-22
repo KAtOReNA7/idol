@@ -21,7 +21,7 @@ test.after(()=>fs.rmSync(directory,{recursive:true,force:true}));
 const {artistCatalog, renderArtist, nativeSlugs} = require('./fixtures/current-artist-pages.cjs');
 const heroSources = require('./fixtures/approved-artist-heroes.json');
 const groupOriginals = require('./fixtures/home-group-originals.json');
-const homePreviewSlots = {cherrybullet:['hero'], rocketpunch:['hero'], weeekly:['banner','hero']};
+const homePreviewSlots = {cherrybullet:['hero'], everglow:['communityPhoto'], rocketpunch:['hero'], weeekly:['hero']};
 const externalPlayable = /(?:youtube\.com|youtu\.be|bilibili\.com|x\.com)/;
 const privateModes = new Set(['ive','loona','aespa','kissoflife','stayc','nmixx','itzy','lesserafim','triples','madein','illit','qwer','purplekiss','rescene']);
 
@@ -44,6 +44,16 @@ for (const [index, artist] of registry.entries()) {
   const photos=slots ? slots.map(slot=>require(`../data/${artist.slug}-public.json`)[slot]) : [{image:heroSources[artist.slug]}];
   assert.equal(photos[0].image,heroSources[artist.slug]);
   const rendered=images(html);
+  if (['everglow','rocketpunch','weeekly','wooah'].includes(artist.slug)) {
+   const heroClass={everglow:'eg-hero',rocketpunch:'rp-hero',weeekly:'wk-hero',wooah:'wa-group-hero'}[artist.slug];
+   const opening=html.match(new RegExp('<section class="'+heroClass+'"[^>]*>([\\s\\S]*?)</section>'))?.[1];
+   assert.ok(opening,'group photo section exists');
+   const photo=photos[0].preview??photos[0];
+   assert.equal(images(opening)[0]?.src,photo.image,'first image in the opening is the group, ahead of the title and release');
+   assert.ok(opening.indexOf('src="'+photo.image+'"')<opening.indexOf('<h1>'),'group photo precedes the visible group heading');
+   assert.doesNotMatch(opening,/历年六人成员档案|MEET WOOAH|6th Mini Album|eg-hero-date/);
+   if(artist.slug==='weeekly')assert.ok(!rendered.some(img=>img.src?.includes('bliss-banner')),'Bliss banner belongs to its release, outside the group home page');
+  }
   if (groupOriginals[artist.slug]) {
    const expected=groupOriginals[artist.slug];
    const actual=[...html.matchAll(/<a\b[^>]*>/g)].map(match=>attrs(match[0]))

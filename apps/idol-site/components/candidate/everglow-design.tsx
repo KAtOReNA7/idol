@@ -24,18 +24,20 @@ function Arrow({external=false}:{external?:boolean}){return <svg aria-hidden="tr
 function Link({to,children,external=false,rosterBack=false}:{to:string;children:ReactNode;external?:boolean;rosterBack?:boolean}){return <a className="eg-link" href={to} onClick={rosterBack?returnToArtistRoster:undefined} {...(external?{target:'_blank',rel:'noopener noreferrer'}:{})}>{children}<Arrow external={external}/></a>;}
 function Picture({item,alt,priority=false}:{item:{image:string;width:number;height:number};alt:string;priority?:boolean}){return <ReliableImage className="eg-image" src={item.image||undefined} width={item.width} height={item.height} alt={alt} identityKey={item.image} priority={priority}/>;}
 function Heading({number,en,children}:{number?:string;en:string;children:ReactNode}){return <div className="eg-heading"><p>{number&&<span>{number} / </span>}{en}</p><h2>{children}</h2></div>;}
-function OfficialHero({onOriginal,catalog,returnTo}:{onOriginal:()=>void;catalog:CatalogView|null;returnTo:string}){
+function OfficialHero({onOriginal,catalog,returnTo}:{onOriginal:(src:string)=>void;catalog:CatalogView|null;returnTo:string}){
  const release=data.releases.find(item=>item.title==='CODE')!;
  const mv=data.media.find(film=>film.releaseId===release.id&&film.kind==='mv'&&film.videoId==='pe3EWBY7SIc');
  const watch=mv&&artistMvHref(catalog,groupId,mv.url,returnTo);
  return <section className="eg-hero">
-  <div className="eg-hero-photo"><Picture item={data.hero} alt="EVERGLOW · CHXXTA 官方四人团照" priority/></div>
+  <OriginalPhotoLink className="eg-hero-photo" href={data.communityPhoto.image} onOpen={onOriginal} aria-label="查看 EVERGLOW 四人团照原图">
+   <Picture item={data.communityPhoto.preview} alt="EVERGLOW 官方社区的四人团照" priority/>
+  </OriginalPhotoLink>
   <div className="eg-hero-copy">
-   <img className="eg-hero-logo" src={data.branding.logo} alt="EVERGLOW"/>
-   <p className="eg-kicker">4TH MINI ALBUM</p><h1>CODE</h1><p className="eg-hero-date">2026.03.03</p>
-   {mv&&<Link to={watch??mv.url} external={!watch}>{mv.title} 官方 MV</Link>}
-   <Link to={href('records',{release:release.id})}>发行详情</Link>
-   <OriginalPhotoLink className="eg-link" href={data.hero.image} onOpen={onOriginal}>查看原图 <Arrow external/></OriginalPhotoLink>
+   <h1><img className="eg-hero-logo" src={data.branding.logo} alt="EVERGLOW" width="2516" height="371"/></h1>
+   <nav aria-label="EVERGLOW 精选作品">
+    {mv&&<Link to={watch??mv.url} external={!watch}>{mv.title} 官方 MV</Link>}
+    <Link to={href('records',{release:release.id})}>CODE 发行详情</Link>
+   </nav>
   </div>
  </section>;
 }
@@ -73,9 +75,9 @@ export default function EverglowDesign({content}:{content:CandidateContent}){
 <ScopedMemberCareerFacts data={catalog} memberId={person.id} groupId="recvxyEBDZ9Jl3" part="sources"/>
 
 </>:release?<><section className="eg-section"><div className="eg-page-top"><p className="eg-kicker">RECORD / {release.type}</p><Link to={href('records',query?{q:query}:{})}>返回发行目录</Link></div><div className="eg-release-detail"><div className="eg-print"><Picture item={release} alt={release.title+' 发行封面'} priority/>{original(release,release.title)}</div><div className="eg-identity"><h1>{release.title}</h1><p>{release.credit}</p><p>{release.type} · {release.dateLabel}<br/>{release.date.replaceAll('-','.')}</p>{release.note&&<p>{release.note}</p>}<Link to={release.sourceUrl} external>发行来源 · Bugs</Link></div></div></section><section className="eg-section"><Heading en="TRACKLIST">{release.scope==='compilation'?'本团收录曲目':'曲目'}</Heading><ol className="eg-tracks">{release.tracks.map((track,i)=><li key={i}><span>{String(i+1).padStart(2,'0')}</span>{track}</li>)}</ol>{data.media.some(f=>f.releaseId===release.id)&&<><Heading en="RELATED FILMS">相关影像</Heading>{filmList(data.media.filter(f=>f.releaseId===release.id))}</>}</section></>:section==='members'?<section className="eg-section"><Heading en="MEMBERS">成员档案</Heading><p className="eg-intro">官网四位成员与历史档案分开展示，照片注明来源与时期。</p><div className="eg-roster-tabs"><a aria-current={!historical?'page':undefined} href={href('members')}>官网四人</a><a aria-current={historical?'page':undefined} href={href('members',{roster:'history'})}>历来六人</a></div><Search query={query} label="搜索成员"/>{memberList()}{!visibleMembers.length&&<p role="status">没有符合条件的成员。</p>}</section>:section==='records'?<section className="eg-section"><Heading en="DISCOGRAPHY">发行目录</Heading><p className="eg-intro">按音源版本收录发行与曲目；历史时期与现行活动分开保留。</p><Search query={query} label="搜索发行"/>{[['korea','韩国发行'],['japan','日本发行'],['collaboration','合作 / OST'],['compilation','节目合辑']].map(([scope,label])=>{const rows=data.releases.filter(r=>r.scope===scope&&match(r.title+' '+r.credit+' '+r.tracks.join(' ')));return rows.length?<section key={scope} className="eg-release-group"><h3>{label}</h3>{releases(rows)}</section>:null;})}{!data.releases.some(r=>match(r.title+' '+r.credit+' '+r.tracks.join(' ')))&&<p role="status">没有符合条件的发行。</p>}</section>:section==='works'?<section className="eg-section"><Heading en="FILMS & LIVE">影像与舞台</Heading><Search query={query} label="搜索影像"/><form className="eg-filters" onSubmit={e=>{e.preventDefault();const form=new FormData(e.currentTarget);history.pushState(null,'',href('works',{...(query?{q:query}:{}),...(form.get('queue')!=='all'?{queue:String(form.get('queue'))}:{}),...(form.get('format')!=='all'?{format:String(form.get('format'))}:{})}));window.dispatchEvent(new Event('artist-location-change'));}}><label>内容<select name="format" key={format} defaultValue={format}><option value="all">全部影像</option><option value="mv">MV</option><option value="stage">舞台</option></select></label><label>观看队列<select name="queue" key={queue} defaultValue={queue}><option value="all">全部作品</option><option value="tonight">待看</option><option value="rewatch">高分重温</option><option value="unrated">看过待评分</option></select></label><button className="eg-link" type="submit">筛选 →</button></form>{filmList(films)}{!films.length&&<p role="status">没有符合条件的影像。</p>}</section>:section==='updates'?<section className="eg-section eg-timeline"><Heading en="CHRONOLOGY">时间轴</Heading><ArtistTimelineHost groupId={content.groupId} catalog={catalog} loading={loading} error={error}/></section>:<>
-<OfficialHero catalog={catalog} returnTo={returnTo} onOriginal={()=>setLightbox({src:data.hero.image,label:'EVERGLOW · 官网团照原图'})}/>
+<OfficialHero catalog={catalog} returnTo={returnTo} onOriginal={src=>setLightbox({src,label:'EVERGLOW · 官方社区团照'})}/>
 <ArtistInformation slug="everglow" catalog={catalog}/>
-<section className="eg-section"><Heading number="01" en="MEMBERS">成员档案</Heading>{memberList(true)}<Link to={href('members')}>成员目录与搜索</Link></section>
+<section className="eg-section"><Heading number="01" en="MEMBERS">成员档案</Heading>{memberList(true)}<div className="eg-member-links"><Link to={href('members')}>成员目录与搜索</Link><OriginalPhotoLink className="eg-link" href={data.hero.image} onOpen={src=>setLightbox({src,label:'CHXXTA 四人资料照'})}>CHXXTA 四人资料照 <Arrow external/></OriginalPhotoLink></div></section>
 <section className="eg-section"><Heading number="02" en="ON SCREEN">影像选集</Heading>{filmList(data.media.filter(f=>f.kind==='mv'&&['CODE','ZOMBIE'].includes(f.title)))}<Link to={href('works')}>全部影像与舞台</Link></section>
 <section className="eg-section"><Heading number="03" en="DISCOGRAPHY">发行选集</Heading>{releases(data.releases.filter(r=>r.scope==='korea').slice(0,4))}<Link to={href('records')}>全部 {data.releases.length} 项发行与版本</Link></section>
 <ArtistHomeTimeline slug="everglow" catalog={catalog}/>

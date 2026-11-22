@@ -29,3 +29,87 @@ main:has(.h2h-work-detail)>.source-status{margin:0;padding:4px 16px;background:#
 /* Group index carries the same official image and Hearts2Hearts graphic palette. */
 .group-index-card.hearts2hearts-index-card{background:#f2f6fc;color:#101c43;border:1px solid #b8cff3;border-radius:0;padding:16px}.hearts2hearts-index-card .h2h-index-cover{padding:0;border:0;background:none;transform:none}.hearts2hearts-index-card .h2h-index-cover img{aspect-ratio:3/2;object-fit:cover}.hearts2hearts-index-card .h2h-index-cover>span{display:none}.hearts2hearts-index-card .h2h-index-copy{background-image:linear-gradient(#b8cff34d 1px,transparent 1px),linear-gradient(90deg,#b8cff34d 1px,transparent 1px);background-size:24px 24px;padding:20px 8px 8px}.hearts2hearts-index-card .h2h-index-copy h2{font:700 clamp(26px,3vw,40px)/1.15 Inter,Arial,sans-serif;color:#101c43;letter-spacing:-1px}.hearts2hearts-index-card .h2h-index-copy small{color:#53627c}.hearts2hearts-index-card .h2h-index-copy>span{border:0;border-radius:24px;background:#f3f66c;padding:12px;color:#101c43}
 .h2h-work-detail .h2hd-drafts{margin:0 48px 24px;padding:16px 20px;border:1px solid #b8cff3;background:#d9e9ff;border-radius:16px}.h2h-work-detail .h2hd-drafts .member-draft-link{margin-top:12px}@media(max-width:700px){.h2h-work-detail .h2hd-drafts{margin:0 16px 20px;padding:14px}}
+/* The Chase uses the artist site's wordmark, blue grid and rounded display face. */
+body .work-experience[data-work-theme="hearts2hearts"] .detail {
+  --h2h-lemon: #f3f66c;
+  --h2h-grid: #caddfa;
+  --h2h-tint: #e4edfc;
+
+  & .music-work-title {
+    margin: 12px 0 20px;
+    padding: clamp(16px, 2vw, 24px);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background-color: var(--h2h-tint);
+    background-image: linear-gradient(to right, var(--h2h-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--h2h-grid) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  & .music-work-title .group-links > :only-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: clamp(170px, 16vw, 198px);
+    min-height: 44px;
+    padding: 0;
+    font-size: 0;
+    border: 0;
+    background: transparent url('/artist/hearts2hearts/logo.svg') left center / calc(100% - 18px) auto no-repeat;
+  }
+  & :is(.music-work-title h1, .work-aside h1) {
+    margin: 0;
+    font: normal 400 clamp(40px, 5vw, 64px)/1.12 var(--font-editorial);
+    letter-spacing: normal;
+  }
+  & .work-aside h1 { font-size: 31px; }
+  & .music-work-title > p { margin: 5px 0 0; color: var(--muted); }
+  & :is(.cast-card, .work-aside) {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--white);
+  }
+  & .work-aside { padding: 16px; }
+  & .video-stage { overflow: hidden; border-radius: 14px; }
+  & .video-mode-tabs { border: 0; background: transparent; gap: 8px; }
+  & .video-mode-tabs button {
+    min-height: 44px;
+    padding: 9px 20px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--ink);
+  }
+  & .video-mode-tabs button[aria-selected="true"] {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--white);
+  }
+  & :is(.video-play, .button.primary) {
+    flex-direction: row;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 17px;
+    border: 1px solid var(--h2h-lemon);
+    border-radius: 999px;
+    background: var(--h2h-lemon);
+    color: var(--ink);
+  }
+  & .video-play svg { width: 18px; height: 18px; }
+  & .cast-card { padding: 12px; }
+  & .mv-identity-frame { border-radius: 9px; }
+  & :is(.editor-open, .credit-score-action) {
+    min-height: 44px;
+    padding: 9px 15px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--h2h-tint);
+    color: var(--ink);
+  }
+  & .mv-identity-photo figcaption { color: var(--muted); font: 400 12px/1.5 var(--font-body); opacity: 1; }
+  & :is(.mv-identity-history, .editor-fields) { font-family: var(--font-body); }
+}
+body .work-experience[data-work-theme="hearts2hearts"] :is(.music-sidebar, .music-bottom-nav) button[aria-current="page"] {
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+}

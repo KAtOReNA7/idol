@@ -11,6 +11,20 @@ const media = require('../data/mv-public-media.json');
 const genieOriginal = (issue, file) =>
   `https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/${issue}/Mgz_Sub_IMG_${file}.jpg/dims/resize/Q_80,0`;
 const publisherSeries = {
+  'hearts2hearts-the-chase-2025': {
+    label: 'The Chase · 本曲概念照',
+    original: mediaId => 'https://pbs.twimg.com/media/' + mediaId + '?format=jpg&name=orig',
+    files: {
+      rec28ldbniB6s5: 'GjwYDazacAMS27W',
+      rec28ldbniB6Jp: 'GjwZdatacAEmLl7',
+      rec28ldbniB6Rt: 'GjwZG1qacAAdbkI',
+      rec28ldbniB70B: 'GjwZBzHaYAAE3uk',
+      rec28ldbniB7cX: 'GjwZiH3acAEedQ2',
+      rec28ldbniB7m2: 'GjwZM3fbMAA9Zyt',
+      rec28ldbniB7vO: 'GjwZZemacAIGhBO',
+      rec28ldbniB7F7: 'GjwZUoLacAI-cTM',
+    },
+  },
   'all-my-girls-2023': {
     label: 'ALL MY GIRLS · 本次发行概念照',
     original: file => 'https://0.soompi.io/wp-content/uploads/2023/07/' + file,
@@ -160,6 +174,7 @@ test('Attention shows each member’s 2022 debut portrait, with the credited ful
 });
 
 const reviewedReleases = [
+  ['The Chase', 'hearts2hearts-the-chase-2025', 'rec28ldfRTrzDX', 'kxUA2wwYiME', 8],
   ['SO BAD', 'star-to-a-young-culture-2020', 'recvxyH5pzZo3m', 'gMe1c4UegBY', 6],
   ['Buenos Aires', 'buenos-aires-2019', 'recvxyH5pzEDfw', 'M46FRJsB0Qw', 12],
   ['La Vie en Rose', 'color-iz-2018', 'recvxyGO7qIB31', 'WZwr2a_lFWY', 12],

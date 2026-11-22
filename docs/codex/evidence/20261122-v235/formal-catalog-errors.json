@@ -1,0 +1,150 @@
+{
+  "source": "Sites production Worker error logs, project from apps/idol-site/.openai/hosting.json. This is a time-bounded query for reported catalog errors, not an all-time or all-traffic request count.",
+  "deployedVersion": 235,
+  "application": "c9a99aa72e43436ffa3bc4b5e4728e495d2e5d55",
+  "windowUtc": {
+    "from": "2026-11-22T04:47:49.416Z",
+    "to": "2026-11-22T05:13:50.000Z"
+  },
+  "errorsOnly": true,
+  "maximumEventsPerQuery": 100,
+  "coverage": "Requested query intervals overlap across the entire acceptance window; no individual result reached the 100 event limit. Per-query counts include other routes and disconnected requests and should not be added.",
+  "catalogMatch": "Count unique invocation request IDs for /api/catalog HTTP 5xx or an idol_catalog_read_failed structured application event during the window.",
+  "uniqueReportedCatalogFailures": 0,
+  "failedInvocations": [],
+  "independentBrowserSamples": [
+    {
+      "file": "formal-51-representative-cards.json",
+      "groups": 51,
+      "bodyWidthPx": 375,
+      "journeys": 51,
+      "returned": 51,
+      "homeCatalogResponses": 29,
+      "afterCardCatalogResponses": 52,
+      "totalRecordedResponses": 81,
+      "http200": 81,
+      "recoveredByServerReadRetry": 0,
+      "sharedPlayer": 49,
+      "sourceOnly": 2
+    },
+    {
+      "file": "formal-access-three-rounds.json",
+      "groups": 3,
+      "roundsPerGroup": 3,
+      "bodyWidthPx": 375,
+      "journeys": 9,
+      "returned": 9,
+      "homeCatalogResponses": 3,
+      "afterCardCatalogResponses": 9,
+      "totalRecordedResponses": 12,
+      "http200": 12,
+      "recoveredByServerReadRetry": 0
+    }
+  ],
+  "queries": [
+    {
+      "queriedAtUtc": "2026-11-22 04:48:47 UTC",
+      "minutes": 5,
+      "errorEntries": 0,
+      "earliestReturnedUtc": null,
+      "latestReturnedUtc": null,
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 04:50:30 UTC",
+      "minutes": 5,
+      "errorEntries": 4,
+      "earliestReturnedUtc": "2026-11-22T04:48:25.811Z",
+      "latestReturnedUtc": "2026-11-22T04:48:39.312Z",
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 04:52:07 UTC",
+      "minutes": 5,
+      "errorEntries": 48,
+      "earliestReturnedUtc": "2026-11-22T04:48:25.811Z",
+      "latestReturnedUtc": "2026-11-22T04:51:42.954Z",
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 04:53:19 UTC",
+      "minutes": 5,
+      "errorEntries": 54,
+      "earliestReturnedUtc": "2026-11-22T04:48:25.811Z",
+      "latestReturnedUtc": "2026-11-22T04:52:02.523Z",
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 04:54:49 UTC",
+      "minutes": 6,
+      "errorEntries": 50,
+      "earliestReturnedUtc": "2026-11-22T04:50:23.369Z",
+      "latestReturnedUtc": "2026-11-22T04:52:02.523Z",
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 04:58:42 UTC",
+      "minutes": 6,
+      "errorEntries": 10,
+      "earliestReturnedUtc": "2026-11-22T04:56:46.624Z",
+      "latestReturnedUtc": "2026-11-22T04:57:19.460Z",
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 05:02:14 UTC",
+      "minutes": 6,
+      "errorEntries": 18,
+      "earliestReturnedUtc": "2026-11-22T04:56:46.624Z",
+      "latestReturnedUtc": "2026-11-22T05:01:47.761Z",
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 05:03:53 UTC",
+      "minutes": 6,
+      "errorEntries": 10,
+      "earliestReturnedUtc": "2026-11-22T04:58:46.488Z",
+      "latestReturnedUtc": "2026-11-22T05:01:51.891Z",
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 05:05:05 UTC",
+      "minutes": 6,
+      "errorEntries": 10,
+      "earliestReturnedUtc": "2026-11-22T04:59:20.368Z",
+      "latestReturnedUtc": "2026-11-22T05:03:30.380Z",
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 05:11:09 UTC",
+      "minutes": 13,
+      "errorEntries": 25,
+      "earliestReturnedUtc": "2026-11-22T04:58:46.488Z",
+      "latestReturnedUtc": "2026-11-22T05:10:36.022Z",
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 05:13:00 UTC",
+      "minutes": 6,
+      "errorEntries": 32,
+      "earliestReturnedUtc": "2026-11-22T05:10:11.488Z",
+      "latestReturnedUtc": "2026-11-22T05:12:28.142Z",
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 05:14:16 UTC",
+      "minutes": 11,
+      "errorEntries": 66,
+      "earliestReturnedUtc": "2026-11-22T05:03:29.553Z",
+      "latestReturnedUtc": "2026-11-22T05:13:41.582Z",
+      "truncatedPossible": false
+    },
+    {
+      "queriedAtUtc": "2026-11-22 05:15:04 UTC",
+      "minutes": 12,
+      "errorEntries": 66,
+      "earliestReturnedUtc": "2026-11-22T05:03:29.553Z",
+      "latestReturnedUtc": "2026-11-22T05:13:41.582Z",
+      "truncatedPossible": false
+    }
+  ]
+}

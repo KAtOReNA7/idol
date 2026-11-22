@@ -19,6 +19,7 @@ function harness(initial={}){
  const helper={};vm.runInNewContext(compile(fs.readFileSync('lib/idol/catalog-read-deadline.ts','utf8')),{exports:helper,AbortController,DOMException,...timer});
  const exports={};
  vm.runInNewContext(code,{exports,...workRequest,useCanEdit:()=>view.canEdit,catalogReadWithDeadline:helper.catalogReadWithDeadline,AbortController,
+  URLSearchParams,window:{location:new URL('https://site.invalid/')},
   loadWorkDetailModule:()=>{detailModuleLoads.push(view.work);return detailModule.promise;},
   useState:v=>{const i=cursor++;if(!(i in states))states[i]=v;return [states[i],n=>{states[i]=n;if(unmounted)writesAfterUnmount++;}];},
   useRef:v=>{const i=refIndex++;return refs[i]??(refs[i]={current:v});},

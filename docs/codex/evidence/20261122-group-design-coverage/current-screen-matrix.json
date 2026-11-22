@@ -26,11 +26,11 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 414,
+    "twoWidthBoardMatches": 415,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
-      "profile": 50,
+      "profile": 51,
       "works": 44,
       "release": 39,
       "mv": 51,
@@ -48,9 +48,7 @@
         "nmixx",
         "kiiikiii"
       ],
-      "profile": [
-        "lesserafim"
-      ],
+      "profile": [],
       "works": [
         "babymonster",
         "xg",
@@ -165,7 +163,8 @@
     "three-artist-directories": "docs/codex/worklogs/20261122-three-artist-directories.md",
     "four-artist-film-directories": "docs/codex/worklogs/20261122-four-artist-film-directories.md",
     "stage-directory-cards": "docs/codex/worklogs/20261122-stage-directory-targets.md",
-    "itzy-yeji-profile": "docs/codex/worklogs/20261123-itzy-member-profile.md"
+    "itzy-yeji-profile": "docs/codex/worklogs/20261123-itzy-member-profile.md",
+    "lesserafim-profile": "docs/codex/evidence/20261123-v251/lesserafim-profile.json"
   },
   "groups": [
     {
@@ -3615,8 +3614,8 @@
           "1463:1977"
         ],
         "profile": [
-          null,
-          null
+          "1631:1526",
+          "1631:1547"
         ],
         "works": [
           "1463:1769",
@@ -3648,9 +3647,15 @@
         "members": "itzy-lsf-home",
         "works": "itzy-lsf-home",
         "mv": "itzy-lsf-work",
-        "stage": "itzy-lsf-work"
+        "stage": "itzy-lsf-work",
+        "profile": "lesserafim-profile"
       },
       "implementation": [
+        {
+          "at": "v251 开发",
+          "scope": "咲良成员详情的双宽代表稿和五位现行成员的原图、官网出处实现。",
+          "evidence": "lesserafim-profile"
+        },
         {
           "at": "本地",
           "scope": "首页、名录及作品目录的官网主题",

@@ -1,0 +1,144 @@
+{
+  "applicationCommit": "035a5df5708c7ab90e99dd7b8d7d8a586d2fe55b",
+  "baselineApplicationCommit": "d50bd972a31b1e50072674368b30a53208fa5e37",
+  "baselineValidationCommit": "e8cefd35907987b7c9a2a5d16f0af6fac4a8550c",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4334,"pass": 4217,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4343,"pass": 4226,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1410,"pass": 1410,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "ADYA places the original directly under each portrait and before its source",
+        "BEWAVE keeps its six historical members identifiable and the original interview photos available on first activation",
+        "UNIS and Kep1er open the retained original of each named portrait while keeping its small preview",
+        "a missing portrait keeps its visual fallback without offering a broken action",
+        "adya keeps attribution and original photographs for each named member",
+        "everglow keeps attribution and original photographs for each named member",
+        "fromis9 keeps attribution and original photographs for each named member",
+        "rocketpunch keeps attribution and original photographs for each named member",
+        "witchx keeps attribution and original photographs for each named member"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4334,"pass": 4217,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4343,"pass": 4226,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1410,"pass": 1410,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "ADYA places the original directly under each portrait and before its source",
+        "BEWAVE keeps its six historical members identifiable and the original interview photos available on first activation",
+        "UNIS and Kep1er open the retained original of each named portrait while keeping its small preview",
+        "a missing portrait keeps its visual fallback without offering a broken action",
+        "adya keeps attribution and original photographs for each named member",
+        "everglow keeps attribution and original photographs for each named member",
+        "fromis9 keeps attribution and original photographs for each named member",
+        "rocketpunch keeps attribution and original photographs for each named member",
+        "witchx keeps attribution and original photographs for each named member"
+      ],
+      "removedTests": []
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "validationCommit": "b31e1c28d89bd871c669e14c0f6e160bdbda5d10",
+  "testOnlyChanges": [
+    "apps/idol-site/tests/hearts2hearts-figma.test.cjs",
+    "apps/idol-site/tests/historical-roster.test.cjs",
+    "apps/idol-site/tests/idle-verified-design.test.cjs"
+  ],
+  "firstFullAtApplication": {
+    "platforms": ["Windows","WSL"],
+    "nodeTotal": {"tests": 4343,"pass": 4220,"fail": 84,"skipped": 39,"cancelled": 0,"todo": 0},
+    "newFailures": [
+      {
+        "suite": "main",
+        "file": "tests/hearts2hearts-figma.test.cjs",
+        "test": "all eight stable member identities render parameterized member pages"
+      },
+      {
+        "suite": "main",
+        "file": "tests/hearts2hearts-figma.test.cjs",
+        "test": "member original-view button retains the named identity and original asset"
+      },
+      {
+        "suite": "main",
+        "file": "tests/hearts2hearts-figma.test.cjs",
+        "test": "missing member work photo never becomes oversized fake artwork"
+      },
+      {
+        "suite": "main",
+        "file": "tests/historical-roster.test.cjs",
+        "test": "former portraits follow the current artist contract; known EVERGLOW archive links remain reachable and other fallbacks stay scoped"
+      },
+      {
+        "suite": "main",
+        "file": "tests/idle-verified-design.test.cjs",
+        "test": "KBS stage is its own read-only detail with no production rating link"
+      },
+      {
+        "suite": "main",
+        "file": "tests/idle-verified-design.test.cjs",
+        "test": "historical membership remains separate with exact uncropped supplied portrait"
+      }
+    ]
+  },
+  "input": "Windows and WSL each ran npm run verify and npm test on the published application. The first full run found six assertions using outdated image controls or photo source labels at three artist routes. Both platforms reran npm test with those three test files loading the actual photo links and checking the named images and publisher links. The verify results are from the published application. The full-suite results and failure inventory are from the revised tests."
+}

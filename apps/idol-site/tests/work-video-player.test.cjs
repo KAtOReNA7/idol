@@ -45,11 +45,38 @@ test('title is safely escaped in cover content',()=>{const html=render({videoId:
 
 // Synthetic React state transitions. These prove event separation, not browser/CDN recovery.
 function sessionHarness(props={}){
- const values=[];let cursor=0,opens=0;
- const mockReact={...React,useEffect(){},useRef(initial){const i=cursor++;return values[i]??(values[i]={current:initial});},useState(initial){const i=cursor++;if(!(i in values))values[i]=initial;return [values[i],next=>{values[i]=typeof next==='function'?next(values[i]):next;}];}};
+ const values=[],listeners=new Set(),timers=new Map(),messages=[];
+ let cursor=0,opens=0,now=0,nextTimer=0,dependencies,cleanup,effect,frame,frameKey,frameRef;
+ const win={
+  open(){opens++;},
+  addEventListener(type,listener){if(type==='message')listeners.add(listener);},
+  removeEventListener(type,listener){if(type==='message')listeners.delete(listener);},
+  setTimeout(fn,ms){const id=++nextTimer;timers.set(id,{fn,at:now+ms});return id;},
+  clearTimeout(id){timers.delete(id);},
+ };
+ const mockReact={...React,
+  useEffect(fn,deps){if(!dependencies||deps.some((v,i)=>!Object.is(v,dependencies[i]))){dependencies=deps;effect=fn;}},
+  useRef(initial){const i=cursor++;return values[i]??(values[i]={current:initial});},
+  useState(initial){const i=cursor++;if(!(i in values))values[i]=initial;return [values[i],next=>{values[i]=typeof next==='function'?next(values[i]):next;}];}
+ };
  const e={},js=ts.transpileModule(fs.readFileSync('components/work-video-player.tsx','utf8')+'\nexport {VideoSession};',{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
- vm.runInNewContext('(function(exports,require){'+js+'})',{window:{open(){opens++;}}})(e,name=>name==='react'?mockReact:require(name));
- return {render(){cursor=0;return e.VideoSession({...source,...props});},opens:()=>opens};
+ vm.runInNewContext('(function(exports,require){'+js+'})',{window:win})(e,name=>name==='react'?mockReact:require(name));
+ function render(){
+  cursor=0;
+  const tree=e.VideoSession({...source,...props}),element=node(tree,'iframe');
+  if(element?.key!==frameKey){
+   frameRef?.(null);frameKey=element?.key;frameRef=element?.props.ref;
+   frame=element?{focus(){},contentWindow:{postMessage:(data,origin)=>messages.push({data,origin})}}:null;
+   frameRef?.(frame);
+  }
+  if(effect){cleanup?.();cleanup=effect();effect=undefined;}
+  return tree;
+ }
+ return {render,opens:()=>opens,frame:()=>frame,timers,listeners,messages,
+  advance(ms){now+=ms;for(const [id,t] of timers)if(t.at<=now){timers.delete(id);t.fn();}},
+  message(data,origin='https://rutube.ru',source=frame?.contentWindow){for(const listener of listeners)listener({data,origin,source});},
+  unmount(){frameRef?.(null);cleanup?.();}
+ };
 }
 function nodes(tree){if(!tree||typeof tree!=='object')return [];return [tree,...React.Children.toArray(tree.props?.children).flatMap(nodes)];}
 const node=(tree,type,className)=>nodes(tree).find(n=>n.type===type&&(!className||n.props.className===className));
@@ -205,7 +232,7 @@ test('failed attempts can retry the same muted source without opening another pl
   assert.equal(node(cover,'iframe'),undefined);
   node(cover,'button','video-play').props.onClick();
   const first=node(h.render(),'iframe');
-  first.props.onError();
+  first.props.onError({currentTarget:h.frame()});
   const failure=h.render();
   assert.equal(node(failure,'iframe'),undefined);
   assert.equal(node(failure,'p').props.role,'status');
@@ -216,5 +243,102 @@ test('failed attempts can retry the same muted source without opening another pl
   assert.equal(frames[0].props.src,player.embedUrl);
   assert.equal(node(restored,'small','video-source-credit').props.children,player.credit);
   assert.equal(h.opens(),0);
+ }
+});
+
+const rutubeEmbed='https://rutube.ru/play/embed/1234567890abcdef1234567890abcdef?autostartmute=true';
+const waiting=tree=>node(tree,'p','video-start-notice');
+function startSession(embedUrl=rutubeEmbed){
+ const h=sessionHarness({embedUrl});
+ node(h.render(),'button','video-play').props.onClick();h.render();
+ return h;
+}
+
+test('an unstarted RUTUBE frame gets one inline wait notice at eight seconds, including when ready is absent',()=>{
+ for(const ready of [false,true]){
+  const h=startSession(),frame=h.frame();
+  h.message({type:'player:init'});
+  if(ready){
+   h.message(JSON.stringify({type:'player:ready'}));
+   h.message({type:'player:ready'});
+   assert.deepEqual(h.messages,[{data:JSON.stringify({type:'player:play',data:{}}),origin:'https://rutube.ru'}]);
+  }
+  h.message({type:'player:changeState',data:{state:'paused'}});
+  for(const time of [0,-1,NaN,Infinity,'2']){
+   h.message({type:'player:currentTime',data:{time}});
+  }
+  h.message({type:'player:playStart'},'https://unrelated.invalid');
+  h.message({type:'player:playStart'},'https://rutube.ru',{});
+  h.advance(7999);assert.equal(waiting(h.render()),undefined);
+  h.advance(1);
+  const tree=h.render();
+  assert.equal(waiting(tree).props.role,'status');
+  assert.match(waiting(tree).props.children,/继续等待或重新加载视频/);
+  assert.strictEqual(h.frame(),frame);
+  assert.equal(node(tree,'iframe').props.src,rutubeEmbed);
+  assert.ok(node(tree,'button','video-reload'));
+  assert.equal(h.opens(),0);
+  h.unmount();
+ }
+});
+
+test('an early or late trusted start dismisses the notice and pausing after playback never reopens it',()=>{
+ for(const event of [{type:'player:playStart'},{type:'player:changeState',data:{state:'playing'}},{type:'player:currentTime',data:{time:.125}}]){
+  for(const afterHint of [false,true]){
+   const h=startSession(),frame=h.frame();
+   h.advance(afterHint?8001:7900);
+   assert.equal(!!waiting(h.render()),afterHint);
+   h.message(JSON.stringify(event));
+   assert.equal(waiting(h.render()),undefined);
+   h.message({type:'player:changeState',data:{state:'paused'}});
+   h.advance(20000);
+   assert.equal(waiting(h.render()),undefined);
+   assert.strictEqual(h.frame(),frame);
+   assert.equal(h.timers.size,0);
+   h.unmount();
+  }
+ }
+});
+
+test('provider and native errors replace the wait notice and keep the same-source retry',()=>{
+ for(const afterHint of [false,true]){
+  for(const nativeError of [false,true]){
+   const h=startSession();
+   if(afterHint){h.advance(8000);assert.ok(waiting(h.render()));}
+   if(nativeError)node(h.render(),'iframe').props.onError({currentTarget:h.frame()});
+   else h.message({type:'player:error'});
+   const tree=h.render();
+   assert.equal(node(tree,'iframe'),undefined);
+   assert.equal(waiting(tree),undefined);
+   assert.match(node(tree,'p','video-cover-fallback').props.children,/视频暂时无法播放/);
+   assert.equal(h.timers.size,0);assert.equal(h.listeners.size,0);
+   node(tree,'button','video-reload').props.onClick();
+   assert.equal(node(h.render(),'iframe').props.src,rutubeEmbed);
+   assert.equal(waiting(h.render()),undefined);
+   assert.equal(h.timers.size,1);h.unmount();
+  }
+ }
+});
+
+test('late messages, errors and timers from a replaced frame cannot affect its retry or another source',()=>{
+ const h=startSession(),oldFrame=h.frame(),oldElement=node(h.render(),'iframe');
+ const oldTimer=[...h.timers.values()][0].fn,oldListener=[...h.listeners][0];
+ h.advance(8000);assert.ok(waiting(h.render()));
+ node(h.render(),'button','video-reload').props.onClick();
+ const replacement=node(h.render(),'iframe'),newFrame=h.frame();
+ assert.notEqual(replacement.key,oldElement.key);
+ assert.notStrictEqual(newFrame,oldFrame);
+ oldTimer();oldListener({origin:'https://rutube.ru',source:oldFrame.contentWindow,data:{type:'player:error'}});
+ oldElement.props.onError({currentTarget:oldFrame});
+ h.message({type:'player:playStart'},'https://rutube.ru',oldFrame.contentWindow);
+ assert.equal(waiting(h.render()),undefined);
+ h.advance(8000);assert.ok(waiting(h.render()));assert.strictEqual(h.frame(),newFrame);
+ h.unmount();
+ assert.equal(h.listeners.size,0);assert.equal(h.timers.size,0);
+ for(const url of [source.embedUrl,'https://player.vimeo.com/video/123?muted=1']){
+  assert.notEqual(WorkVideoPlayer({...source,embedUrl:url}).key,WorkVideoPlayer({...source,embedUrl:rutubeEmbed}).key);
+  const next=startSession(url);oldTimer();next.advance(16000);
+  assert.equal(waiting(next.render()),undefined);
+  assert.equal(next.listeners.size,0);assert.equal(next.timers.size,0);next.unmount();
  }
 });

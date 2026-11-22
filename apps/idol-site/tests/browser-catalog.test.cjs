@@ -55,11 +55,11 @@ test('reduction is only after owner/source fencing and artist selection, never i
 
 test('response shape is explicit, versioned and rejects unknown or ambiguous requests',()=>{assert.equal(requestedBrowserCatalog(new URLSearchParams()),false);assert.equal(requestedBrowserCatalog(new URLSearchParams('shape=display-v1')),true);for(const p of ['shape=','shape=v2','shape=full','shape=display-v1&shape=display-v1','shape=display-v1&shape=other'])assert.throws(()=>requestedBrowserCatalog(new URLSearchParams(p)),e=>e.status===400);});
 function routeHarness(onCall){
- const model={data:sample(),publicData:{public:true,ratings:[]},publicReads:[],projectedAfter:[],calls:[],native:true,deny:false,drift:false};
+ const model={data:sample(),publicData:{public:true,ratings:[]},publicReads:[],projectedAfter:[],calls:[],errors:[],info:[],native:true,deny:false,drift:false};
  const record=label=>{model.calls.push(label);onCall?.(label);};
  const stubs={
   '@/lib/idol/feishu':{AppError},
-  '@/lib/idol/personal-mv-ratings':{personalMvRatingsForOwner:async()=>model.personal},
+  '@/lib/idol/personal-mv-ratings':{personalMvRatingsForOwner:async()=>{onCall?.('member-ratings');return model.personal;}},
   '@/lib/idol/public-access':{ownerForRequest:async()=>{record('auth');return model.deny?null:{userId:'owner'};}},
   '@/lib/idol/public-reader':{publicQuery:request=>{record('public-query');return new URL(request.url).searchParams;},readPublicCatalog:async(artist,workId)=>{model.publicReads.push({artist,workId});record('public:'+artist);const work=workExports.findDetailWork(model.publicData,workId);return work?workExports.projectWorkCatalog(model.publicData,work):model.publicData;}},
   '@/lib/idol/work-catalog':workExports,'@/lib/idol/work-catalog-request':workRequest,
@@ -77,7 +77,8 @@ function routeHarness(onCall){
   '@/lib/idol/durable-catalog':{getReadableCatalog:async(u,force)=>{record('fallback:'+force);return model.data;}},
   '@/lib/idol/http':load('lib/idol/http.ts'),
  };
- const out={},js=ts.transpileModule(fs.readFileSync('app/api/catalog/route.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL,Error,TypeError,SyntaxError,DOMException,setTimeout,clearTimeout})(n=>{const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(n);if(timelineModule!==undefined)return timelineModule;assert.ok(n in stubs,n);return stubs[n];},out);
+ const console={error:(...args)=>model.errors.push(args),info:(...args)=>model.info.push(args)};
+ const out={},js=ts.transpileModule(fs.readFileSync('app/api/catalog/route.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;vm.runInNewContext('(function(require,exports){'+js+'})',{URL,Error,TypeError,SyntaxError,DOMException,setTimeout,clearTimeout,console})(n=>{const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(n);if(timelineModule!==undefined)return timelineModule;assert.ok(n in stubs,n);return stubs[n];},out);
  return {model,read:(p,headers,signal)=>out.GET(new Request('https://example.org/api/catalog'+p,{headers,signal}))};
 }
 
@@ -87,6 +88,67 @@ function failingRoute(step,...errors){
   if(label===step&&errors.length)throw errors.shift();
  });
 }
+
+test('terminal catalog failures expose a fixed phase and class to the invocation log and preserve the response',async()=>{
+ const privateText='private-marker@example.test/signed?score=8.5';
+ const headers={Cookie:'session='+privateText,Authorization:'Bearer '+privateText,'X-Request-ID':privateText};
+ const cases=[
+  ['auth','identity','unknown',Object.assign(new Error(privateText),{name:privateText})],
+  ['native:owner:false','native-read','d1',new Error('D1_ERROR: '+privateText)],
+  ['native:owner:false','native-read','capacity',new Error('D1_ERROR',{cause:new Error('overloaded '+privateText)})],
+  ['member-ratings','member-ratings','type',new TypeError(privateText)],
+  ['native-fence','native-read','data',new SyntaxError(privateText)],
+  ['public:hearts2hearts','public-read','sqlite-or-query',new Error('SQLITE_ERROR: '+privateText)],
+  ['fallback:false','legacy-read','upstream',new AppError('FEISHU_1001',privateText,502)],
+  ['fallback-fence','source-fence','storage-state',new AppError('STORAGE_NOT_READY',privateText,503)],
+  ['artist:hearts2hearts','project','application',new AppError(privateText,privateText,502)],
+ ];
+ for(const [step,phase,kind,error] of cases){
+  let failedCalls=0;
+  const h=routeHarness(label=>{if(label===step){failedCalls++;throw error;}});
+  h.model.deny=step.startsWith('public:');
+  h.model.native=!step.startsWith('fallback');
+  const res=await h.read('?artist=hearts2hearts&shape=display-v1&secret='+encodeURIComponent(privateText),headers);
+  const status=error instanceof AppError?error.status:502;
+  assert.equal(res.status,status,step);
+  assert.equal(res.headers.get('Cache-Control'),'private, no-store');
+  assert.equal(res.headers.get('Server-Timing'),null);
+  assert.equal((await res.json()).error,error instanceof AppError?error.code:'REQUEST_FAILED');
+  assert.equal(failedCalls,1,step);
+  assert.deepEqual(h.model.info,[]);
+  assert.equal(h.model.errors.length,1,step);
+  const [args]=h.model.errors;
+  assert.equal(args.length,1);
+  assert.deepEqual(JSON.parse(args[0]),{event:'idol_catalog_read_failed',phase,kind,status,retried:false,cancelled:false});
+ }
+});
+
+test('only the terminal 5xx produces a failure event, with the failing attempt’s own phase',async()=>{
+ const url='?artist=hearts2hearts&shape=display-v1';
+ const native='native:owner:false';
+ let reads=0;
+ const h=routeHarness(step=>{
+  if(step===native&&++reads===2)throw new Error('D1_ERROR: unclassified');
+  if(step==='member-ratings')throw disconnected();
+ });
+ assert.equal((await h.read(url)).status,502);
+ assert.equal(reads,2);
+ assert.deepEqual(h.model.errors.map(([event])=>JSON.parse(event)),[
+  {event:'idol_catalog_read_failed',phase:'native-read',kind:'d1',status:502,retried:true,cancelled:false},
+ ]);
+ assert.deepEqual(h.model.info.map(([event])=>JSON.parse(event)),[
+  {event:'idol_catalog_read_retry',outcome:'failed',attempts:2},
+ ]);
+ const recovered=failingRoute(native,disconnected());
+ assert.equal((await recovered.read(url)).headers.get('Server-Timing'),'catalog-retry');
+ assert.equal((await recovered.read(url)).status,200);
+ assert.equal((await recovered.read('?shape=invalid')).status,400);
+ assert.deepEqual(recovered.model.errors,[]);
+ assert.deepEqual(recovered.model.info.map(([event])=>JSON.parse(event)),[
+  {event:'idol_catalog_read_retry',outcome:'recovered',attempts:2},
+ ]);
+ assert.equal(recovered.model.calls.filter(step=>step===native).length,3);
+});
 
 test('ordinary artist, work and library GETs recover one interrupted read with the original scope and identity',async t=>{
  const workId='recRetryWork';

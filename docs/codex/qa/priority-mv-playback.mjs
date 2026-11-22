@@ -63,7 +63,7 @@ function readMedia(body,expected) {
 async function checkOne(tab,cdp,work,timeoutMs) {
   const name='播放视频（'+work.provider+'）', expected={origin:work.origin,path:work.path};
   const row={id:work.id,title:work.title,name,expectedOrigin:work.origin,origin:null,count:0,frames:0,mute:null,requestedQuality:null,
-    status:'unverified',samples:[],providerError:'',kbps:null,bitrateEvidence:null};
+    status:'unverified',samples:[],providerError:'',waitingHintSeen:false,kbps:null,bitrateEvidence:null};
   const frame=tab.playwright.locator(frameSelector), failure=tab.playwright.locator(stage+' [role="status"]');
   const url=new URL('/?view=works&work='+work.id+'&video=mv',site);
   let timer,exiting,cursor,targetId;
@@ -101,6 +101,8 @@ async function checkOne(tab,cdp,work,timeoutMs) {
       row.frames=Math.max(row.frames,count);
       if(count>1){row.status='unexpected-player';return row;}
       if(count===1){
+        if(work.provider==='RUTUBE'&&!row.waitingHintSeen&&Date.now()>=deadline-timeoutMs+7500)
+          row.waitingHintSeen=await tab.playwright.locator(stage+' + .video-start-notice[role="status"]').isVisible();
         const src=await frame.first().evaluate(el=>el.getAttribute('src'),undefined,{timeoutMs:350});
         if(!approvedUrl(src,work,true)){row.status='unexpected-player-or-mute';return row;}
         const address=new URL(src);

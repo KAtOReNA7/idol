@@ -39,36 +39,62 @@ function VideoSession({view,url,videoId,embedUrl,title,platform='youtube',source
  const focusOnStart=useRef(false);
  const [attempt,setAttempt]=useState(0);
  const [failedAttempt,setFailedAttempt]=useState<number|null>(null);
+ const [waitingAttempt,setWaitingAttempt]=useState<number|null>(null);
  const [coverFailed,setCoverFailed]=useState(false);
  const [coverRetried,setCoverRetried]=useState(false);
+ const failed=failedAttempt===attempt;
  useEffect(()=>{
-  if(!attempt||!embedUrl?.startsWith('https://rutube.ru/play/embed/'))return;
+  if(!attempt||failed||!embedUrl?.startsWith('https://rutube.ru/play/embed/'))return;
   const frame=frameRef.current;
-  let requestedPlay=false;
+  if(!frame)return;
+  let awaitingStart=true,requestedPlay=false;
+  const timer=window.setTimeout(()=>{
+   if(awaitingStart&&frameRef.current===frame)setWaitingAttempt(attempt);
+  },8000);
   function onPlayerMessage(event:MessageEvent){
-   if(!frame?.contentWindow||event.origin!=='https://rutube.ru'||event.source!==frame.contentWindow)return;
+   if(!frame?.contentWindow||frameRef.current!==frame||event.origin!=='https://rutube.ru'||event.source!==frame.contentWindow)return;
    let message=event.data;
    if(typeof message==='string'){
     try{message=JSON.parse(message);}catch{return;}
    }
-   if(message?.type==='player:error')setFailedAttempt(attempt);
+   if(message?.type==='player:error'){
+    awaitingStart=false;
+    window.clearTimeout(timer);
+    setFailedAttempt(attempt);
+    return;
+   }
+   if(!awaitingStart)return;
+   // An initial paused state and player:ready may both arrive before the first frame.
+   // Once playback has begun, a later deliberate pause must not restart this timer.
+   if(message?.type==='player:playStart'||(message?.type==='player:changeState'&&message.data?.state==='playing')
+     ||(message?.type==='player:currentTime'&&Number.isFinite(message.data?.time)&&message.data.time>0)){
+    awaitingStart=false;
+    window.clearTimeout(timer);
+    setWaitingAttempt(null);
+    return;
+   }
    if(message?.type==='player:ready'&&!requestedPlay){
     requestedPlay=true;
     frame.contentWindow.postMessage(JSON.stringify({type:'player:play',data:{}}),event.origin);
    }
   }
   window.addEventListener('message',onPlayerMessage);
-  return ()=>window.removeEventListener('message',onPlayerMessage);
- },[attempt,embedUrl]);
+  return ()=>{
+   awaitingStart=false;
+   window.clearTimeout(timer);
+   window.removeEventListener('message',onPlayerMessage);
+  };
+ },[attempt,embedUrl,failed]);
  // Some providers render their own error document without firing an iframe error.
  // Retrying always reopens the exact selected edit and leaves the editors mounted.
  if(attempt>0&&embedUrl)return <>
   <div className="video-stage">
-   {failedAttempt===attempt?<p className="video-cover-fallback" role="status">视频暂时无法播放。请稍后重试。</p>:
+   {failed?<p className="video-cover-fallback" role="status">视频暂时无法播放。请稍后重试。</p>:
     <iframe key={attempt} src={embedUrl} title={title} referrerPolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen
-     onError={()=>setFailedAttempt(attempt)}
+     onError={event=>{if(event.currentTarget===frameRef.current)setFailedAttempt(attempt);}}
      ref={frame=>{frameRef.current=frame;if(frame&&focusOnStart.current){focusOnStart.current=false;frame.focus({preventScroll:true});}}}/>}
   </div>
+  {!failed&&waitingAttempt===attempt&&<p className="video-start-notice" role="status">如果仍未出画，可以继续等待或重新加载视频。</p>}
   {playbackCredit&&<small className="video-source-credit">{playbackCredit}</small>}
   <button type="button" className="video-reload" onClick={()=>setAttempt(n=>n+1)}>
    <RotateCcw aria-hidden="true" size={16}/>重新加载视频

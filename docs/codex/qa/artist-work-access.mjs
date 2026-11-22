@@ -96,6 +96,7 @@ async function checkOne(tab, cdp, item, origin, timeoutMs) {
   const row = {slug: item.slug, title: item.title, expected: item.expected, oldStatus: item.oldStatus,
     status: 'unverified', clickCount: 0, toPlayerMs: null, toSourceMs: null, back: false, entries: []};
   const catalog = new Map();
+  const navigationStart = clock.now();
   let baseline, started;
   function collect(data) {
     if (!baseline) return;
@@ -121,6 +122,7 @@ async function checkOne(tab, cdp, item, origin, timeoutMs) {
     await tab.goto(origin + item.path);
     const card = first(item.card);
     await visible(card);
+    row.homeReadyMs = Math.round(clock.now() - navigationStart);
     const link = await card.evaluate(el => ({href: el.getAttribute('href'), target: el.getAttribute('target')}));
     const home = new URL(await tab.url());
     if (routeKind(home, item, origin) !== 'home' || !link.href || link.target === '_blank') throw Error('首页或入口不符');
@@ -200,12 +202,24 @@ async function checkOne(tab, cdp, item, origin, timeoutMs) {
     // A login redirect can have its own URL parameters. Retain only its origin and path.
     try {
       const observed = new URL(await tab.url());
-      row.observedPath = routeKind(observed, item, origin) === 'unexpected' ? observed.origin + observed.pathname : relative(observed);
+      const observedKind = routeKind(observed, item, origin);
+      row.observedPath = observedKind === 'unexpected' ? observed.origin + observed.pathname : relative(observed);
+      if (observedKind === 'unexpected') return row;
+      const atFailure = await sample();
+      row.failureScreen = {
+        urlKind: observedKind, width: atFailure.width,
+        observedAtUtc: new Date(atFailure.origin + atFailure.now).toISOString(),
+        alertVisible: await tab.playwright.locator('[role="alert"]').filter({visible:true}).count() > 0,
+        catalogResponses: atFailure.entries.map(entry => ({
+          artist: entry.artist, status: entry.status, recovered: entry.recovered,
+          receivedAtUtc: entry.end === null ? null : new Date(atFailure.origin + entry.end).toISOString(),
+        })),
+      };
       if (row.step === 'group-to-shared') {
         const control = first(item.bridge);
         if (await control.count()) row.bridgeDisabled = await control.evaluate(el => el.matches(':disabled'));
       }
-      if (baseline) collect(await sample());
+      collect(atFailure);
     } catch { /* Keep the original failure when the document is no longer reachable. */ }
   }
   return row;

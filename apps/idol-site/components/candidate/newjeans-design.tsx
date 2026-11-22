@@ -45,6 +45,7 @@ function Image({assetKey,priority=false}:{assetKey:string;priority?:boolean}){co
 function Link({href,children,primary=false,external=false,focusKey}:{href:string;children:ReactNode;primary?:boolean;external?:boolean;focusKey?:string}){return <a className={`nj-button${primary?' nj-primary':''}`} href={href} data-member-work-trigger={focusKey} {...(external?{target:'_blank',rel:'noopener noreferrer'}:{})}>{children}</a>;}
 function Title({cn,en}:{cn:string;en:string}){return <div className="nj-title"><h2>{cn}</h2><p>{en}</p></div>;}
 type PublicMember=typeof data.members[number];
+const groupPhotoSource = data.assets.find(asset => asset.key === 'hero')?.sourceUrl;
 const howSweetOriginal = '/artist/newjeans/how-sweet/official-cards.jpg';
 const howSweetSource = 'https://www.newjeans.jp/news/eefrjs';
 const campaignPortraits: Record<string, string> = {
@@ -79,7 +80,12 @@ export default function NewJeansDesign({content}:{content:CandidateContent}){
  const works=collection?.works??[];
  const memberHref=(id:string)=>artistRouteUrl({...route,section:'members',member:id},PATH);
  function memberCard(p:PublicMember){return <article key={p.id} data-member-id={p.id}><a href={memberHref(p.id)} data-artist-member-trigger={p.id}><MemberPortrait person={p}/></a><h3><a href={memberHref(p.id)}>{p.cn}</a></h3><p>{p.stageName}</p><Link href={memberHref(p.id)}>个人详情</Link></article>;}
- const roster=<><Title cn="成员" en="Members"/><div className={`nj-roster${route.section==='overview'?' nj-roster-home':''}`}>{current.map(memberCard)}</div></>;
+ const roster=<><Title cn="成员" en="Members"/>
+  <figure className="nj-roster-photos">
+   {current.length>0 && current.every(person=>Object.hasOwn(campaignPortraits,person.id)) &&
+    <figcaption className="nj-photo-credit"><a href={howSweetSource} target="_blank" rel="noopener noreferrer">《How Sweet》日本 HMV 特典小卡 · 2024</a></figcaption>}
+   <div className={`nj-roster${route.section==='overview'?' nj-roster-home':''}`}>{current.map(memberCard)}</div>
+  </figure></>;
  const historyBlock=history.length>0&&<section className="nj-section" id="newjeans-history"><Title cn="历史成员" en="History"/>{history.map(p=><article className="nj-split nj-history" key={p.id} data-member-id={p.id}><a href={memberHref(p.id)} data-artist-member-trigger={p.id}><MemberPortrait person={p}/></a><div><h3>{p.cn}</h3><h4>{p.stageName}</h4><p>历史成员 · 曾属 NewJeans</p><Link href={memberHref(p.id)}>{p.stageName==='DANIELLE'?'查看丹妮尔':'查看'+p.cn}</Link></div></article>)}</section>;
  function mediaCard(m:typeof data.media[number]){const work=works.find(w=>w.id===m.id&&w.groupIds.includes(content.groupId)&&(w.url===m.sourceUrl||(!!videoId(w.url)&&videoId(w.url)===videoId(m.sourceUrl))));return <article key={m.id} data-media-id={m.id}><Image assetKey={m.imageKey}/><small>{m.kind==='stage'?'舞台':'MV'}</small><h3>{m.title}</h3><p>{m.kind==='stage'?'节目播出日':'影像公开日'} <time>{m.date}</time> · 韩国时间</p>{m.kind==='stage'?<Link href={publicMediaHref(m.id)}>影像详情</Link>:work?<Link focusKey={work.id} href={artistWorkUrl(work,m.kind==='stage',returnTo)}>观看与评分</Link>:<Link href={m.sourceUrl} external>官方影像 ↗</Link>}</article>;}
  function releaseCard(r:typeof data.releases[number]){return <article key={r.id} data-release-id={r.id}><a href={releaseHref(r.id)}><Image assetKey={r.imageKey}/></a><h3>{r.title}</h3><small>{r.type}</small><p>{r.region}<br/>发行日 <time>{r.date}</time></p><Link href={releaseHref(r.id)}>发行详情</Link></article>;}
@@ -124,7 +130,10 @@ export default function NewJeansDesign({content}:{content:CandidateContent}){
    if(destination.origin!==window.location.origin||destination.pathname!==PATH||destination.hash)return;
    event.preventDefault();navigate(artistRoute(destination.href),false,destination.pathname+destination.search);
   }}><header className="nj-header"><div className="nj-brand"><a href={PATH} aria-label="NewJeans 首页"><Image assetKey="logo"/></a><span>成员 · 作品 · 影像</span></div><nav aria-label="NewJeans 导航">{nav.map(([section,label])=><button key={section} className="nj-button" aria-current={(route.member?'members':detail.requested||route.section==='records'?'works':route.section)===section?'page':undefined} onClick={()=>navigate({section,member:null})}>{label}</button>)}</nav></header><main id="artist-content" className="nj-main">{state.loading?<p role="status">正在读取资料…</p>:state.error?<div role="alert"><p>{state.error}</p><button className="nj-button" onClick={()=>host.onRetry?host.onRetry():window.location.reload()}>重新加载</button></div>:detail.requested?(detail.release?releasePage(detail.release):detail.media?stagePage(detail.media):<div><p>未找到这条公开资料。</p><Link href={`${PATH}?section=works`}>返回作品库</Link></div>):route.member?(selected&&publicSelected?memberPage(selected,publicSelected):<p>未找到这位关联成员。<a href={`${PATH}?section=members`}>返回成员</a></p>):<>{route.section==='overview'&&<>
-<Image assetKey="hero" priority/>
+<figure className="nj-hero-photo">
+ <Image assetKey="hero" priority/>
+ {groupPhotoSource && <figcaption className="nj-photo-credit"><a href={groupPhotoSource} target="_blank" rel="noopener noreferrer">日本官网四人资料照 · 拍摄日期未公开</a></figcaption>}
+</figure>
 <h1>NewJeans</h1>
 <ArtistInformation slug="newjeans" catalog={state.data}/>
 <section className="nj-section">{roster}</section>

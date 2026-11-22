@@ -36,6 +36,26 @@ test('home has all current Chinese names and photos, with separately labelled hi
  assert.ok(!html.includes('TO KEEP'));
 });
 test('all five exact-ID profiles work including direct history links without roster query',()=>{for(const m of data.members){const html=render('/artists/newjeans?section=members&member='+m.id);assert.ok(html.includes(m.cn));assert.ok(html.includes(m.stageName));assert.ok(html.includes('个人资料与记录'));}assert.ok(render('/artists/newjeans?section=members&member=recvxyICzHLSfX').includes('历史成员 · 曾属 NewJeans'));});
+test('home and member directory credit the photos they actually contain', () => {
+ const home = render('/artists/newjeans');
+ const directory = render('/artists/newjeans?section=members');
+ const groupPhoto = home.match(/<figure class="nj-hero-photo">([\s\S]*?)<\/figure>/)?.[1];
+ assert.ok(groupPhoto);
+ assert.match(groupPhoto, /<img [^>]*src="[^"]*\/hero-[^"]+"[^>]*\/><figcaption [^>]*><a href="https:\/\/www\.newjeans\.jp\/profile\/"[^>]*>日本官网四人资料照 · 拍摄日期未公开<\/a>/);
+ assert.doesNotMatch(directory, /日本官网四人资料照/);
+ for (const html of [home, directory]) {
+  const roster = html.match(/<figure class="nj-roster-photos">([\s\S]*?)<\/figure>/)?.[1];
+  assert.ok(roster);
+  assert.match(roster, /^<figcaption [^>]*><a href="https:\/\/www\.newjeans\.jp\/news\/eefrjs"[^>]*>《How Sweet》日本 HMV 特典小卡 · 2024<\/a><\/figcaption><div class="nj-roster/);
+  assert.deepEqual([...roster.matchAll(/\/how-sweet\/(\w+)\.webp/g)].map(match => match[1]).sort(), ['haerin', 'hanni', 'hyein', 'minji']);
+  assert.match(html.slice(html.indexOf('id="newjeans-history"')), /\/how-sweet\/danielle\.webp/);
+ }
+ const historyOnly = fixture();
+ historyOnly.members = historyOnly.members.filter(person => person.formerGroupIds.includes(data.groupId));
+ const historicalDirectory = render('/artists/newjeans?section=members', historyOnly);
+ assert.doesNotMatch(historicalDirectory, /HMV 特典小卡/);
+ assert.match(historicalDirectory, /\/how-sweet\/danielle\.webp/);
+});
 test('public images never manufacture live membership relations',()=>{const catalog=fixture();catalog.members=catalog.members.filter(m=>m.id!=='recvxyICzHhlFz');assert.ok(!render('/artists/newjeans',catalog).includes('data-member-id="recvxyICzHhlFz"'));});
 test('seven releases are read-only separate IDs and the full production timeline stays in place',()=>{const html=render('/artists/newjeans?section=works');for(const r of data.releases){assert.ok(html.includes('data-release-id="'+r.id+'"'));assert.ok(html.includes('release='+r.id));}assert.ok(render('/artists/newjeans?section=updates').includes('data-full-timeline'));assert.ok(!Object.hasOwn(data,'timeline'));assert.doesNotMatch(source,/method:\s*['"](?:POST|PATCH|PUT)|localStorage|sessionStorage/);});
 test('exact media identity binds production detail only with matching official video',()=>{const c=fixture(),m=data.media[0];const w={id:m.id,groupIds:[data.groupId],song:m.title,name:m.title,url:m.sourceUrl,releaseDate:m.date,score:0,stageScore:null,watched:'未观看'};c.works=[w];assert.ok(render('/artists/newjeans',c).includes('观看与评分'));c.works=[{...w,url:'https://youtube.com/watch?v=wrong000000'}];assert.ok(!render('/artists/newjeans',c).includes('观看与评分'));});

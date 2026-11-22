@@ -26,46 +26,76 @@ function displayResponse(request:Request, catalog:CatalogView) {
 // D1 may wrap its transport error in Error.cause. Use its documented disconnect
 // and restart messages when the binding does not forward a retryable flag.
 const transientD1 = /\b(?:network connection lost|replica disconnected from primary|storage caused object to be reset|reset because its code was updated|cannot resolve D1 DB due to transient issue on remote node)\b/i;
-const resourceOrQueryFailure = /\boverloaded\b|\bquota\b|\b(?:read|write|CPU(?: time)?) limit\b|storage operation exceeded timeout|\bSQLITE_\w+\b|\bsyntax error\b|\bno such (?:table|column)\b/i;
+const capacityFailure = /\boverloaded\b|\bquota\b|\b(?:read|write|CPU(?: time)?) limit\b|storage operation exceeded timeout/i;
+const queryFailure = /\bSQLITE_\w+\b|\bsyntax error\b|\bno such (?:table|column)\b/i;
 
-function isTransientReadError(error:unknown) {
+function readFailureKind(error:unknown) {
  let transient=false;
+ let fallback:'unknown'|'d1'|'type'|'timeout'='unknown';
  for(let depth=0; depth<4 && error && typeof error==='object'; depth++) {
   const cause=error as {name?:string;message?:string;retryable?:boolean;overloaded?:boolean;cause?:unknown};
   const message=typeof cause.message==='string'?cause.message:'';
-  if(error instanceof AppError || cause.name==='AbortError' || cause.name==='SyntaxError' || cause.name==='RangeError'
-    || cause.retryable===false || cause.overloaded===true || resourceOrQueryFailure.test(message)) return false;
+  if(error instanceof AppError) {
+   if(['NATIVE_DATA_MISSING','NATIVE_SCHEMA_MISSING','STORAGE_NOT_READY','PUBLIC_READ_UNAVAILABLE'].includes(error.code)) return 'storage-state';
+   if(error.code==='SOURCE_READ_DEADLINE') return 'timeout';
+   if(['AUTH_INVALID','UPSTREAM_INVALID','NOT_CONFIGURED'].includes(error.code) || /^FEISHU_\d+$/.test(error.code)) return 'upstream';
+   return 'application';
+  }
+  if(cause.name==='AbortError') return 'aborted';
+  if(cause.name==='SyntaxError'||cause.name==='RangeError') return 'data';
+  if(cause.overloaded===true||capacityFailure.test(message)) return 'capacity';
+  if(queryFailure.test(message)) return 'sqlite-or-query';
+  if(cause.retryable===false) return 'not-retryable';
   if(cause.retryable===true || transientD1.test(message)) transient=true;
+  if(/\bD1_ERROR\b/i.test(message)) fallback='d1';
+  else if(fallback==='unknown'&&cause.name==='TypeError') fallback='type';
+  else if(fallback==='unknown'&&cause.name==='TimeoutError') fallback='timeout';
   error=cause.cause;
  }
- return transient;
+ return transient?'transient-read':fallback;
 }
 
-async function catalogResponse(request:Request,readCatalog:<T>(read:()=>Promise<T>,ordinary?:boolean)=>Promise<T>) {
+type CatalogTrace = {phase:'identity'|'request'|'public-read'|'native-read'|'member-ratings'|'source-fence'|'legacy-read'|'project'};
+async function catalogResponse(request:Request,readCatalog:<T>(read:()=>Promise<T>,ordinary?:boolean)=>Promise<T>,trace:CatalogTrace) {
   const user = await ownerForRequest();
+  trace.phase='request';
   if (!user) {
    const query = publicQuery(request, ['artist','shape'], ['shape']);
    requestedBrowserCatalog(query);
    const artist=requestedArtist(query);
    const work=artist?null:preferredDetailWork(request.headers.get('Prefer'));
-   return displayResponse(request, await readCatalog(()=>readPublicCatalog(artist,work)));
+   trace.phase='public-read';
+   const catalog=await readCatalog(()=>readPublicCatalog(artist,work));
+   trace.phase='project';
+   return displayResponse(request,catalog);
   }
   const params = new URL(request.url).searchParams;
   const artist = requestedArtist(params), browserView = requestedBrowserCatalog(params);
   const requestedWork=browserView&&!artist?preferredDetailWork(request.headers.get('Prefer')):null;
   const force = ['1','background'].includes(params.get('refresh') ?? '');
-  const native = await readCatalog(()=>withNativeCatalog(user.userId, force, async (result,control) => {
-   const work = findDetailWork(result,requestedWork);
-   const personal = browserView ? await personalMvRatingsForOwner(user.userId,control,result,work?.id) : undefined;
-   return {result,work,personal};
-  }),!params.has('refresh'));
+  const native = await readCatalog(()=>{
+   trace.phase='native-read';
+   return withNativeCatalog(user.userId, force, async (result,control) => {
+    trace.phase='project';
+    const work = findDetailWork(result,requestedWork);
+    trace.phase='member-ratings';
+    const personal = browserView ? await personalMvRatingsForOwner(user.userId,control,result,work?.id) : undefined;
+    // The native reader can revalidate the generation and repeat its own guarded read.
+    trace.phase='native-read';
+    return {result,work,personal};
+   });
+  },!params.has('refresh'));
   let selection: {result:Catalog; work:Work|null; personal?:PersonalMvRatings};
   if (native.native) selection=native.value;
   else {
+   trace.phase='legacy-read';
    const result = await getReadableCatalog(user.userId, force);
+   trace.phase='source-fence';
    await assertSourceUnchanged(user.userId, native.state);
+   trace.phase='project';
    selection={result,work:findDetailWork(result,requestedWork)};
   }
+  trace.phase='project';
   const {result,work,personal}=selection;
   const scoped = artist ? projectArtistCatalog(result, artist, personal?.entries) : work ? projectWorkCatalog(result,work,personal?.entries) : result;
   if (!browserView) return json(scoped);
@@ -81,12 +111,13 @@ async function catalogResponse(request:Request,readCatalog:<T>(read:()=>Promise<
 
 export async function GET(request:Request) {
  let retried=false;
+ const trace:CatalogTrace={phase:'identity'};
  async function readCatalog<T>(read:()=>Promise<T>, ordinary=true) {
   request.signal.throwIfAborted();
   try {
    return await read();
   } catch(error) {
-   if(!ordinary || request.method!=='GET' || request.signal.aborted || !isTransientReadError(error)) throw error;
+   if(!ordinary || request.method!=='GET' || request.signal.aborted || readFailureKind(error)!=='transient-read') throw error;
    // The binding can retry individual statements itself. Stagger one new
    // application-level read, inside the same identity and generation fences.
    await new Promise<void>(resolve=>setTimeout(resolve,75+Math.random()*75));
@@ -99,9 +130,16 @@ export async function GET(request:Request) {
  }
  let response:Response;
  try {
-  response=await catalogResponse(request,readCatalog);
+  response=await catalogResponse(request,readCatalog,trace);
  } catch(error) {
   response=failure(error);
+  if(response.status>=500) {
+   // Workers Logs attaches the invocation request ID. Keep request headers, error text and data out of this event.
+   try {
+    console.error(JSON.stringify({event:'idol_catalog_read_failed',phase:trace.phase,kind:readFailureKind(error),
+     status:response.status,retried,cancelled:request.signal.aborted}));
+   } catch { /* Diagnostics must not replace the original response. */ }
+  }
  }
  if(retried) {
   if(response.ok) response.headers.append('Server-Timing','catalog-retry');

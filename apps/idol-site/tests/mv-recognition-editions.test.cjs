@@ -395,7 +395,10 @@ for (const {series, prefix, posts} of fromis2018Campaigns) {
         earlier === original ? ['查看' + oldLabel] : ['查看' + oldLabel, '查看原作品图']);
       assert.deepEqual(history.map(item => item.querySelector('a').getAttribute('href')),
         earlier === original ? [original.sourceUrl] : [earlier.sourceUrl, original.sourceUrl]);
-      if (earlier === original) assert.equal(original.label, oldLabel);
+      if (earlier === original) {
+        assert.equal(original.label, '同系列概念照 · 认人参考');
+        assert.equal(history[0].querySelector('button').getAttribute('aria-label'), '查看' + name + '的' + oldLabel);
+      }
     }
     if (prefix === 'dkdk') assert.equal(mvRecognitionEdition({...binding, memberId: ids.GYURI}), null);
   });

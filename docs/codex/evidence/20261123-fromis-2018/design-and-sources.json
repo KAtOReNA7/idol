@@ -1959,6 +1959,18 @@
       "existingGalleryNeedsIndividualIdentification": 64,
       "needsContemporaryEvidence": 18,
       "extraDefaultOutsideHistoricalLedger": 1
+    },
+    "historicalCreditsRegression": {
+      "platform": "Windows",
+      "includedFiles": [
+        "continuous-public-credits.test.cjs",
+        "stage-fill-public-credits.test.cjs",
+        "v200-public-credits.test.cjs"
+      ],
+      "runAlongsideFourFocusedFiles": true,
+      "passed": 95,
+      "failed": 0,
+      "historicalAssetRegistry": "data/mv-public-media.json is byte-identical to the v255 release revision 371778f8. The named 2021 caption and source live on the exact 2018 DKDK member binding, including accessible action names and the member page lightbox."
     }
   }
 }

@@ -76,11 +76,15 @@ test('member profile image and text-only button open the same full release image
   for(const Component of [MemberWorkIdentityPhoto,MemberWorkPhotoButton]){
    let checked=false;
    function Probe(){
-    const opened=[],element=Component({work,memberId,label:'成员 · 作品',photo:privatePhoto,live:true,className:'existing-frame mv-look-native',onOpen:value=>opened.push(value.src)});
+    const opened=[],element=Component({work,memberId,label:'成员 · 作品',photo:privatePhoto,live:true,className:'existing-frame mv-look-native',onOpen:value=>opened.push(value)});
     const children=React.Children.toArray(element.props.children);const main=children.find(c=>c.type==='button'),history=children.find(c=>typeof c.type==='function'&&c.props.selected?.publicImage);
     main.props.onClick();const original=history.type(history.props).props.children[0];original.props.onClick();
     assert.equal(React.Children.toArray(original.props.children).join(''),'查看'+historyLabel);
-    const old=memberWorkPhoto(work,memberId,null,false);assert.deepEqual(opened,[release.original,old.original]);checked=true;return element;
+    const old=memberWorkPhoto(work,memberId,null,false);
+    const caption=historyLabel==='原作品图'?old.label:historyLabel;
+    assert.equal(original.props['aria-label'],'查看成员 · 作品的'+historyLabel+(historyLabel===caption?'':' · '+caption));
+    assert.deepEqual(opened,[{src:release.original,label:'成员 · 作品 · '+release.label},{src:old.original,label:'成员 · 作品 · '+caption}]);
+    checked=true;return element;
    }
    const html=renderToStaticMarkup(React.createElement(MemberRecognitionProvider,{editions},React.createElement(Probe)));
    assert(checked);assert(html.includes(release.label));assert(html.includes(release.sourceUrl));assert(html.includes('原出处'));assert(html.includes('named-series'));assert(!html.includes('/api/media'));

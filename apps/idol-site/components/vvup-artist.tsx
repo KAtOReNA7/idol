@@ -5,6 +5,7 @@ import {ArrowLeft,ArrowUpRight,Search,Play} from 'lucide-react';
 import type {CatalogView,Member,Work} from '@/lib/idol/types';
 import type {CandidateContent} from '@/lib/idol/candidate/types';
 import releases from '@/data/vvup-releases.json';
+import indexArtwork from '@/data/music-index-artwork.json';
 import editorial from '@/data/vvup-review-editorial.json';
 import supplements from '@/data/vvup-review-supplements.json';
 import {approvedVideoPoster} from '@/lib/idol/approved-video-poster';
@@ -24,6 +25,7 @@ import {useArtistScroll} from './use-artist-scroll';
 import {useArtistNavigationScroll} from './use-artist-navigation-scroll';
 
 const path='/artists/vvup';
+const homePhoto=indexArtwork.find(group=>group.slug==='vvup')!;
 const officialIds=new Set(editorial.members.filter(m=>m.roster==='official').map(m=>m.id));
 const historicalPortrait=supplements.assets.find(a=>a.kind==='member');
 const sections:[ArtistSection,string][]=[['overview','首页'],['members','成员'],['works','影像'],['records','发行'],['updates','时间轴']];
@@ -31,7 +33,20 @@ const subscribe=(f:()=>void)=>{window.addEventListener('popstate',f);window.addE
 const score=(v:number|null)=>v===null?'未评分':v.toFixed(1);
 function Photo({src,alt,priority=false}:{src?:string|null;alt:string;priority?:boolean}){return <ReliableImage src={src} identityKey={src??alt} alt={alt} priority={priority} missing={<div className="vu-missing">照片暂未收录</div>} errorFallback={<div className="vu-missing">图片暂时无法加载</div>}/>;}
 function Chapter({title,label,onMore}:{title:string;label?:string;onMore?:()=>void}){return <div className="vu-chapter-heading"><h2>{title}</h2>{onMore&&<button onClick={onMore}>{label??'查看全部'} <ArrowUpRight size={18}/></button>}</div>;}
-function VideoCard({work,returnTo}:{work:Work;returnTo:string}){const poster=approvedVideoPoster(work.id,videoId(work.url),'mv');return <article className="vu-video"><a href={artistWorkUrl(work,false,returnTo)}>{poster&&<div className="vu-video-preview"><Photo src={poster.src} alt={(work.song||work.name)+" · "+(work.version||work.videoType)}/></div>}<div className="vu-video-type"><Play size={32}/><span>{work.videoType||'影像'}</span><small>打开影像</small></div><h3>{work.song||work.name}</h3></a><p>{work.version||work.videoType} · {work.releaseDate||'公开日期不详'}</p><div className="vu-video-links"><a href={artistWorkUrl(work,false,returnTo)}>观看与评分 <ArrowUpRight size={16}/></a>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<a href={artistWorkUrl(work,true,returnTo)}>看舞台 <ArrowUpRight size={16}/></a>}<span>{score(work.score)}</span></div></article>;}
+function VideoCard({work,returnTo}:{work:Work;returnTo:string}){
+ const title=work.song||work.name;
+ const poster=approvedVideoPoster(work.id,videoId(work.url),'mv');
+ return <article className="vu-video">
+  <a className="vu-watch" href={artistWorkUrl(work,false,returnTo)}>
+   <div className={poster?'vu-video-preview':'vu-video-preview vu-video-no-cover'}>
+    {poster&&<Photo src={poster.src} alt={title+' · '+(work.version||work.videoType||'MV')}/>}
+    <span className="vu-play"><Play aria-hidden="true" size={18}/>观看与评分</span>
+   </div><h3>{title}</h3>
+  </a>
+  <p>{[work.version||work.videoType,work.releaseDate].filter(Boolean).join(' · ')}</p>
+  <div className="vu-video-links">{!!(work.stage||work.stageSupplement?.alternatives.length)&&<a href={artistWorkUrl(work,true,returnTo)}>看舞台 <ArrowUpRight size={16}/></a>}<span>{score(work.score)}</span></div>
+ </article>;
+}
 
 export default function VvupArtist({content}:{content:CandidateContent}){
  const host=useArtistTimelineHostOptions();
@@ -106,7 +121,15 @@ export default function VvupArtist({content}:{content:CandidateContent}){
   return <section><Chapter title="发行档案"/><p className="vu-muted">{releases.scope}</p><SearchBox label="搜索发行" value={route.search} change={q=>navigate({search:q},true)}/><p className="vu-count" role="status">{filtered.length} 项发行</p>{releaseGrid(filtered)}{!filtered.length&&<EmptyResult clear={()=>navigate({search:''},true)}/>}</section>;
  }
  return <ImageRecoveryProvider><div className="vvup-artist" data-design-source="figma-802-1096"><header className="vu-header"><a className="vu-logo" href={path}>VVUP</a><nav aria-label="团体内容">{sections.map(([key,label])=><button key={key} aria-current={!route.member&&route.section===key?'page':undefined} onClick={()=>select(key)}>{label}</button>)}</nav></header>
- {!route.member&&route.section==='overview'&&<section className="vu-hero"><div className="vu-title"><h1>VVUP</h1><span>2024.04.01 DEBUT</span></div><div className="vu-hero-stage"><figure><Photo src={content.hero.image} alt="VVUP · 官方团体资料照" priority/><figcaption><a href={content.hero.sourceUrl??undefined} target="_blank" rel="noopener noreferrer">官方团体资料图 ↗</a></figcaption></figure><div><button onClick={()=>select('members')}>认识成员 <ArrowUpRight/></button><button onClick={()=>select('works')}>进入影像 <ArrowUpRight/></button></div></div></section>}
+ {!route.member&&route.section==='overview'&&<section className="vu-hero">
+  <div className="vu-title"><h1>VVUP</h1><span>2024.04.01 DEBUT</span></div>
+  <figure className="vu-group-photo">
+   <button type="button" aria-label="查看 VVUP《Super Model》团体照原图" onClick={()=>setLightbox({src:homePhoto.image,label:'VVUP · 《Super Model》四人团体照'})}>
+    <Photo alt="VVUP · 《Super Model》四人团体照" src={homePhoto.image} priority/>
+   </button>
+   <figcaption><a href={homePhoto.sourceUrl} target="_blank" rel="noopener noreferrer">《Super Model》发行团照 · Genie ↗</a></figcaption>
+  </figure>
+ </section>}
  <main id="artist-content" className={route.section==='overview'&&!route.member?'vu-home':'vu-content'}>{state.loading?<p className="vu-empty" role="status">正在打开 VVUP 档案…</p>:state.error?<div className="vu-empty" role="alert"><p>{state.error}</p><button onClick={retry}>重新加载</button></div>:!collection?<div className="vu-empty">暂未找到团体资料。</div>:route.member?(member?memberPage(member):<div className="vu-empty">未找到这位成员。<button onClick={()=>select('members')}>返回成员</button></div>):<>
  {route.section==='overview'&&<>
 <ArtistInformation slug="vvup" catalog={state.data}/>

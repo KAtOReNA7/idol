@@ -104,7 +104,12 @@ function statusNode(node: ReactNode, status: 'missing' | 'error', alt: string, r
 export function ReliableImage(props: ReliableImageProps) {
   const {original,...imageProps}=props;
   const zoom=original?1:publicCoverZoom(props.src);
-  if(zoom>1){imageProps.style={...props.style,transform:`scale(${zoom})`,transformOrigin:'50% 50%',objectFit:'cover'};imageProps['data-video-cover-cropped']=true;}
+  if (zoom > 1) {
+    // Crop the source pixels within the image's layout box. The parent can also hold a title or controls.
+    const inset = (1 - 1 / zoom) * 50;
+    imageProps.style = {...props.style, objectViewBox: `inset(${inset}%)`, objectFit: 'cover'};
+    imageProps['data-video-cover-cropped'] = true;
+  }
   const identityKey = props.identityKey ?? props.alt;
   const inputKey = imageInputKey(props.src, identityKey, props.attemptKey);
   return <ImageGeneration key={inputKey} {...imageProps} identityKey={identityKey} inputKey={inputKey}/>;

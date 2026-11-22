@@ -9,7 +9,7 @@ function register(slugs, homeVideo, homeRelease, worksVideo = homeVideo, worksRe
 register('triples madein rescene qwer purplekiss illit ive', '.sr-work', '.sr-release', '.sr-work', '.sr-release');
 register('meovv', '.mf-work-featured', '.mf-release-image', '.mf-work', '.mf-release-image');
 register('genblue', '.gb-video-row', '.gb-release-focus a', '.gb-video-row', '.gb-release-row');
-register('unis', '.uf-work-grid a', '.uf-featured-release', '.uf-work-row', '.uf-release-row');
+register('unis', '.uf-film-grid a', '.uf-featured-release', '.uf-work-row', '.uf-release-row');
 register('badvillain', 'article.film', '.lead-record', 'article.film', 'article.record');
 register('vvup', '.vu-video', '.vu-releases a');
 register('youngposse bewave', '.video-row', 'article.record', '.video-row', 'article.record');

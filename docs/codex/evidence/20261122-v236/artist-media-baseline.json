@@ -1,0 +1,93 @@
+{
+  "baseline": "55130817",
+  "recordsCompared": 628,
+  "scope": "Same public catalog, server-rendered home components and React image/player covers on Windows. Source sizes read from decoded image metadata. Visual geometry and playback require the browser.",
+  "before": {
+    "covers": {
+      "previewElementScale": 39,
+      "playerElementScale": 39,
+      "previewSourceCrop": 0,
+      "playerSourceCrop": 0,
+      "modifiedOriginalPresentation": 0,
+      "originalUrlChanged": 0
+    },
+    "homepages": {
+      "genblue": {
+        "source": "/artist/mv-identity-20261025/covers/Ke5jk7Ngpqs.jpg",
+        "elementScale": true,
+        "sourceCrop": false
+      },
+      "unis": {
+        "homeWorkLinks": 3,
+        "linksWithMatchingCover": 0
+      },
+      "vvup": {
+        "source": "/artist/vvup/batch-b-20261016-webp-v1/group-display.webp",
+        "pixelSize": [
+          670,
+          223
+        ],
+        "heroSectionJumpButtons": 2,
+        "homeVideoCards": 2,
+        "separateGrayPlayPanels": 2,
+        "workLinksInEachCard": [
+          2,
+          2
+        ]
+      },
+      "youngposse": {
+        "homeVideoCards": 3,
+        "linksInEachCard": [
+          3,
+          3,
+          3
+        ],
+        "singleLinksContainingBothTitleAndPhoto": 0
+      }
+    }
+  },
+  "after": {
+    "covers": {
+      "previewElementScale": 0,
+      "playerElementScale": 0,
+      "previewSourceCrop": 39,
+      "playerSourceCrop": 39,
+      "modifiedOriginalPresentation": 0,
+      "originalUrlChanged": 0
+    },
+    "homepages": {
+      "genblue": {
+        "source": "/artist/mv-identity-20261025/covers/Ke5jk7Ngpqs.jpg",
+        "elementScale": false,
+        "sourceCrop": true
+      },
+      "unis": {
+        "homeWorkLinks": 3,
+        "linksWithMatchingCover": 3
+      },
+      "vvup": {
+        "source": "/artist/vvup/photo-audit-20261025/vvon-genie-group.jpg",
+        "pixelSize": [
+          1032,
+          582
+        ],
+        "heroSectionJumpButtons": 0,
+        "homeVideoCards": 2,
+        "separateGrayPlayPanels": 0,
+        "workLinksInEachCard": [
+          1,
+          1
+        ]
+      },
+      "youngposse": {
+        "homeVideoCards": 3,
+        "linksInEachCard": [
+          1,
+          1,
+          1
+        ],
+        "singleLinksContainingBothTitleAndPhoto": 3
+      }
+    }
+  }
+}

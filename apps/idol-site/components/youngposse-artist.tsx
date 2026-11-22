@@ -61,7 +61,17 @@ export default function YoungposseArtist({content}:{content:CandidateContent}){
  function searchForm(kind:'members'|'works'){const label=kind==='members'?'搜索成员':'搜索作品';return <form className="search-form" onSubmit={event=>{event.preventDefault();const q=String(new FormData(event.currentTarget).get('q')??'').trim().slice(0,200);remember();history.pushState(newArtistHistoryState(history.state),'',href({q:q||null}));window.dispatchEvent(new Event('artist-location-change'));}}><label htmlFor="yp-search">{label}</label><div><input id="yp-search" name="q" key={route.search} defaultValue={route.search} placeholder={kind==='members'?'中文名 / 艺名':'作品名称'} maxLength={200}/><button type="submit">查找</button>{route.search&&<Link className="search-clear" to={href({q:null})}>清除搜索</Link>}</div></form>;}
  function missing(message:string,section:string){return <section className="empty"><h1>{message}</h1><Link className="button" to={sectionHref(section)}>返回{section==='members'?'成员':'作品'}目录</Link></section>;}
  function releaseCard(r:Release){return <article className="record" key={r.key}><Link to={releaseHref(r)}><Picture src={r.cover} alt={`${r.title} 发行封面`} className="cover"/><h3>{r.title}</h3><time dateTime={r.date??undefined}>{r.date??'发行日期不详'}</time></Link></article>;}
- function videoRow(v:Video){const cover=publicVideoPreview(v.url,'');return <article className="video-row" key={v.key} data-video-key={v.key}>{cover&&<Link className="public-video-preview" to={videoHref(v)}><Picture src={cover} alt={v.title+' · 对应视频封面'}/></Link>}<div className="video-copy"><Link to={videoHref(v)}><h3>{v.title}</h3></Link><div className="video-metadata"><p className="video-kind">{v.label}</p><time dateTime={v.date}>{v.date}</time></div></div><a className="official-video" href={v.url} target="_blank" rel="noopener noreferrer">打开官方视频 ↗</a></article>;}
+ function videoRow(v:Video){
+  const cover=publicVideoPreview(v.url,'');
+  return <article className="video-row" key={v.key} data-video-key={v.key}>
+   <Link className="yp-video-link" to={videoHref(v)}>
+    {cover&&<span className="yp-video-art"><Picture src={cover} alt={v.title+' · 对应视频封面'}/></span>}
+    <div className="video-copy"><h3>{v.title}</h3><div className="video-metadata">
+     <p className="video-kind">{v.label}</p>{v.date&&<time dateTime={v.date}>{v.date}</time>}
+    </div></div>
+   </Link>
+  </article>;
+ }
  function sectionHead(title:string){return <header className="section-head"><h2>{title}</h2></header>;}
  function timeline(teaser=false){const events=[...design.events].sort((a,b)=>a.date.localeCompare(b.date));return <ol data-artist-timeline="" className="single-timeline">{(teaser?events.slice(0,3):events).map(e=>{const r=design.releases.find(r=>r.key===e.releaseKey);return <li className="event" id={e.id} key={e.id}><div className="event-date"><time dateTime={e.date}>{e.date}</time></div><div className="event-copy"><h2>{e.title}</h2><div className="event-links">{r&&<Link to={releaseHref(r)}>{r.title} ↗</Link>}{e.memberIds.map(id=>{const m=design.members.find(m=>m.id===id);return m?<Link key={id} to={personHref(id)}>{m.cnName} ↗</Link>:null;})}</div></div></li>;})}</ol>;}
  function filmAction(v:Video){

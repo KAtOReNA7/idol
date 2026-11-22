@@ -12,8 +12,6 @@
 @media(max-width:390px){.ri-recovery li{align-items:stretch;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.ri-placeholder,.ri-fallback,.ri-retry,.ri-recovery{animation:none;transition:none;scroll-behavior:auto}}
 
-/* Native image remains a direct child; clipping contains reviewed border zoom. */
-:where(a,div,button,figure,span):has(>img[data-video-cover-cropped]){overflow:hidden}
 /* Work previews reserve their space as the exact source image loads. */
 .artist-work-preview{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden}
 .artist-work-preview>img{display:block;width:100%;height:100%;object-fit:contain}

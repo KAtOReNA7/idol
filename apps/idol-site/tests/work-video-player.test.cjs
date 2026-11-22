@@ -11,6 +11,40 @@ vm.runInNewContext('(function(exports,require){'+code+'})')(exportsObject,requir
 const {WorkVideoPlayer}=exportsObject;
 const source={workId:'recDemoWork',view:'mv',url:'https://www.youtube.com/watch?v=DemoVideo01',videoId:'DemoVideo01',embedUrl:'https://www.youtube.com/embed/DemoVideo01?autoplay=1',title:'合成作品'};
 const render=props=>renderToStaticMarkup(React.createElement(WorkVideoPlayer,{...source,...props}));
+test('reviewed letterbox crops stay inside the image on both previews and preserve each full original', async t=>{
+ const {parse}=require('next/dist/compiled/node-html-parser');
+ const {imageDependency}=require('./helpers/image-dependency-loader.cjs');
+ const {ReliableImage}=imageDependency('./reliable-image');
+ const {publicCoverZoom}=require('./helpers/public-artist-loader.cjs')('lib/idol/mv-public-covers.ts');
+ const covers=require('../data/runtime/mv-public-covers.json');
+ const sharp=require('sharp');
+ let cropped=0;
+ for(const cover of covers){
+  const zoom=publicCoverZoom(cover.src);
+  const photo=original=>parse(renderToStaticMarkup(React.createElement(ReliableImage,{src:cover.src,alt:cover.label,original}))).querySelector('img');
+  const preview=photo(false),original=photo(true);
+  const player=parse(render({posterSrc:cover.src,posterLabel:cover.label,posterZoom:zoom,posterFit:'cover'})).querySelector('img');
+  for(const image of [preview,player,original]){
+   assert.equal(image.getAttribute('src'),cover.src);
+   assert.doesNotMatch(image.getAttribute('style')??'',/transform\s*:/,cover.videoId);
+  }
+  assert.doesNotMatch(original.getAttribute('style')??'',/object-view-box/,cover.videoId);
+  assert.equal(preview.hasAttribute('data-video-cover-cropped'),zoom>1,cover.videoId);
+  if(zoom===1){
+   assert.doesNotMatch(player.getAttribute('style')??'',/object-view-box/,cover.videoId);
+   continue;
+  }
+  const inset=(1-1/zoom)*50;
+  for(const image of [preview,player])assert.ok(image.getAttribute('style').includes(`object-view-box:inset(${inset}%)`),cover.videoId);
+  const source=sharp('public'+cover.src),meta=await source.metadata();
+  assert.deepEqual([meta.width,meta.height],[cover.width,cover.height],cover.videoId);
+  // Exercise an actual decode, including the stripped original JPEG border.
+  assert.equal((await source.resize(1,1).removeAlpha().raw().toBuffer()).length,3,cover.videoId);
+  cropped++;
+ }
+ assert.ok(cropped>0&&cropped<covers.length);
+ t.diagnostic(`${covers.length} sources, ${cropped} reviewed crops, ${covers.length-cropped} full-frame covers`);
+});
 test('MV renders a cover and explicit play control without an iframe',()=>{const html=render();assert.doesNotMatch(html,/<iframe/);assert.match(html,/合成作品 视频封面/);assert.match(html,/播放视频/);assert.doesNotMatch(html,/youtube\.com\/embed\//);});
 test('stage clip is also dormant until user activation',()=>{const html=render({view:'stage',embedUrl:source.embedUrl+'&start=20&end=40'});assert.doesNotMatch(html,/<iframe|start=20/);assert.match(html,/播放舞台视频/);});
 test('a bounded stage never inherits the full-event thumbnail and its work reference stays visible',()=>{

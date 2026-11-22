@@ -28,16 +28,16 @@ test('UNIS intermediate desktop actions follow the full identity block in normal
  assert.ok(last.includes('.uf-hero-actions{grid-row:2;margin-top:0}'));
 });
 
-test('each UNIS home MV has one full-row link to its own work',async()=>{
+test('each UNIS home MV has one full-card link to its own work',async()=>{
  const {registry,renderArtist}=require('./fixtures/current-artist-pages.cjs');
  const {parse}=require('next/dist/compiled/node-html-parser');
  const document=parse(await renderArtist(registry.find(group=>group.slug==='unis')));
- const selector='.unis-figma .uf-work-grid > a';
+ const selector='.unis-figma .uf-film-grid > a';
  const cards=document.querySelectorAll(selector);
  assert.equal(cards.length,3);
  const targets=cards.map(card=>{
   const url=new URL(card.getAttribute('href'),'https://site.test');
-  assert.ok(card.querySelector('h3')&&card.querySelector('span'));
+  assert.ok(card.querySelector('h3')&&card.querySelector('img'));
   assert.equal(url.pathname,'/');
   assert.equal(url.searchParams.get('view'),'works');
   assert.equal(url.searchParams.get('returnTo'),'/artists/unis');
@@ -48,5 +48,5 @@ test('each UNIS home MV has one full-row link to its own work',async()=>{
  const sheet=require('postcss').parse(fs.readFileSync('components/design-review/unis-design-review.css','utf8'));
  const rule=sheet.nodes.find(node=>node.type==='rule'&&node.selectors.includes(selector));
  assert.ok(rule?.nodes.some(node=>node.prop==='display'&&['block','flex','grid'].includes(node.value)),
-  'Each anchor must cover the heading and the full width beside its action label at all widths');
+  'Each anchor must cover its image and title at all widths');
 });

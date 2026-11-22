@@ -15,6 +15,7 @@ import {candidatePortrait} from '@/lib/idol/candidate/portrait';
 import type {CandidateContent} from '@/lib/idol/candidate/types';
 import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
 import {safeGroupLink} from '@/lib/idol/group-detail';
+import {publicVideoPreview} from '@/lib/idol/mv-public-covers';
 import {memberChineseName, memberDisplayName} from '@/lib/idol/member-display-name';
 import {memberWorks} from '@/lib/idol/member-works';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
@@ -211,10 +212,20 @@ export default function UnisDesignReview({content, basePath = UNIS_PATH}: {conte
             </section>
 <ArtistInformation slug="unis" catalog={state.data}/>
 <section className="uf-home-members"><Title en="MEMBERS" level={2}>成员</Title>{roster()}</section>
-<section className="uf-library" data-home-module="mv"><h2>MV</h2><div className="uf-work-grid">{works.slice(0,3).map(work=><a key={work.id} href={artistWorkUrl(work,false,returnTo)}><h3>{work.song||work.name}</h3><span>观看 MV ↗</span></a>)}</div></section>
-<section className="uf-home-releases uf-native-host"><UnisNativeSurface slot="home-panel"/><div className="uf-release-heading"><h2><UnisNativeText role="homeReleases" label="RELEASES"/></h2><p>发行</p></div>
+<section className="uf-home-films" data-home-module="mv"><h2>MV</h2><div className="uf-film-grid">
+ {works.filter(work=>safeGroupLink(work.url)).slice(0,3).map(work=>{
+  const title=work.song||work.name;
+  return <a key={work.id} href={artistWorkUrl(work,false,returnTo)}>
+   <div className="uf-film-preview"><Picture src={publicVideoPreview(work.url,'')} alt={title+' · MV 封面'}/></div>
+   <h3>{title}<span aria-hidden="true">↗</span></h3>
+  </a>;
+ })}
+</div></section>
+<section className="uf-home-releases uf-native-host"><UnisNativeSurface slot="home-panel"/>
+ <header className="uf-release-header"><div className="uf-release-heading"><h2><UnisNativeText role="homeReleases" label="RELEASES"/></h2><p>发行</p></div>
+  <button type="button" className="uf-button uf-library-button" onClick={goLibrary}>浏览发行与影像 ↗</button>
+ </header>
               {featuredRelease && <div className="uf-featured-release"><ReleaseImage release={featuredRelease}/><div><h3>{featuredRelease.title}</h3><p><span className="uf-desktop-label">{unisReleaseDate(featuredRelease)} · </span>第二张迷你专辑</p><button type="button" className="uf-button uf-yellow uf-native-host" onClick={() => navigate({section: 'works', member: null}, featuredRelease.releaseKey)}><UnisNativeSurface slot="home-release"/><span className="uf-desktop-label">查看发行 ↗</span><span className="uf-mobile-label">查看发行</span></button></div></div>}
-              <button type="button" className="uf-button uf-library-button uf-native-host" onClick={goLibrary}><UnisNativeSurface slot="home-library"/>浏览发行与影像</button>
               {releaseRows(releases.filter(item => item.releaseKey !== UNIS_FEATURED_RELEASE && !!item.cover).slice(0, 4), true)}
             </section>
 <section className="uf-timeline-teaser uf-native-host"><UnisNativeSurface slot="home-teaser"/><time dateTime="2024-01-17">2024.01.17</time><h2>《Universe Ticket》最终八人成团</h2><button type="button" className="uf-button uf-native-host" onClick={() => navigate({section: 'updates', member: null})}><UnisNativeSurface slot="home-timeline"/>查看时间轴</button></section>

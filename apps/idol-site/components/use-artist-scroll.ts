@@ -1,8 +1,9 @@
 'use client';
-import {useCallback,useEffect,useLayoutEffect,useRef} from 'react';
+import {useCallback,useEffect,useLayoutEffect,useRef,type MouseEvent} from 'react';
 
 import {useMemberWorkFocus} from './use-member-work-focus';
 import {useArtistRosterReturn} from './use-artist-roster-return';
+import {nativeTimelineLinkFocus, restoreNativeTimelineLink} from './native-timeline-link-focus';
 import {tryArtistHistoryChange} from '../lib/idol/timeline/history-state';
 
 const currentPath = () => location.pathname + location.search;
@@ -12,17 +13,34 @@ const scrollWriteInterval = 500;
 export function useArtistScroll(ready:boolean,routeKey:string){
  useMemberWorkFocus(ready,routeKey);
  const restoring=useRef(true);
- const remember = useCallback((departure = false) => {
+ const previousPath=useRef<string|null>(null);
+ useLayoutEffect(() => {
+  if (!ready) return;
+  const path = currentPath();
+  const from = previousPath.current;
+  previousPath.current = path;
+  const saved = history.state?.artistTimelineLink;
+  if (!saved || saved.path !== path) return;
+  if (from !== null) {
+   if (from !== saved.href) return;
+  } else if ((performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined)?.type !== 'back_forward') return;
+  return restoreNativeTimelineLink(saved);
+ }, [ready, routeKey]);
+ const remember = useCallback((departure = false, source?: Element) => {
   const path = currentPath();
   const state = history.state;
   const y = window.scrollY;
   const moved = ready && !restoring.current && (state?.artistScroll?.path !== path || state.artistScroll.y !== y);
   const clearTimeline = departure && state?.timelineReturn?.path === path;
+  const nativeLink = source && nativeTimelineLinkFocus(source, path);
+  const clearNativeLink = departure && state?.artistTimelineLink?.path === path;
   const clearWork = departure && state?.memberWorkFocus?.path === path;
-  if (!moved && !clearTimeline && !clearWork) return;
+  if (!moved && !clearTimeline && !nativeLink && !clearNativeLink && !clearWork) return;
   const next = {...state};
   if (moved) next.artistScroll = {path, y};
   if (clearTimeline) delete next.timelineReturn;
+  if (nativeLink) next.artistTimelineLink = nativeLink;
+  else if (clearNativeLink) delete next.artistTimelineLink;
   if (clearWork) delete next.memberWorkFocus;
   tryArtistHistoryChange(() => history.replaceState(next, '', location.href));
  }, [ready]);
@@ -76,9 +94,9 @@ export function useArtistScroll(ready:boolean,routeKey:string){
  return()=>{stop();events.forEach(e=>removeEventListener(e,stop));};
  },[ready,routeKey]);
  useArtistRosterReturn(ready,routeKey);
- const rememberNavigation = useCallback(() => {
+ const rememberNavigation = useCallback((event?: MouseEvent<HTMLElement>) => {
   restoring.current = false;
-  remember(true);
+  remember(true, event?.currentTarget);
  }, [remember]);
  return rememberNavigation;
 }

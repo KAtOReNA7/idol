@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v251。ITZY、LE SSERAFIM 成员详情可看本人原图和官方出处，WOOAH《Catch the Stars》五张同期照的手机传输字节减少 32.30%。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v251-release.md) |
+| 正式站 | v252。aespa《Armageddon》可在站内读完整十曲及打开三支原版 MV，返回目录可聚焦原封面。WOOAH《Danger》五张同期照的手机传输字节减少 9.15%。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v252-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v251 正式应用 `3c2cfe15`。发行详情下一项是 aespa《Armageddon》，已核官方曲目与视觉出处。四场节目、《Per》首发完整版和《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v251/publication.json) · [逐团设计清单](worklogs/20261122-group-design-coverage.md) |
+| 当前开发 | `codex/project-optimization-20261121`。v252 正式应用 `4f9fe822`。接续 XG《NEW DNA》及发行页从 MV 返回原曲目的焦点恢复。四场节目、《Per》首发完整版和《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v252/publication.json) · [XG 画稿](worklogs/20261123-xg-new-dna-design.md) |
 
 ## 11 月 22 日更新
 

@@ -4,6 +4,8 @@
 
 ## 本轮已交付与接续顺序
 
+v245 七团舞台卡、四团分享入口与访客目录计算优化已上线。下一批先修本人访问 UDTT 时部分照片偶发失败，交付 GENBLUE 六张发行期成员照及四团的等价压缩字体，同时按飞书八个实际示例分团参照官网和 Figma 重做仍有问题的目录。四场独占节目和《BLALA》歌词版按新出现的准确片源核查。[v245 正式验收](worklogs/20261122-v245-release.md)
+
 v244 两团十张成员照、三团首页和《RIZZ》舞台整体评分已上线。下批先清理已选舞台筛选却进入 MV 评分的卡片，再交付 izna 的 11 月 29 日 KBS 舞台直达，以及 ADYA 目录仍在加载时的首次点击。访客目录提速按全目录、51 个团与 614 个作品的现有快照逐字段对照。[v244 正式站](worklogs/20261122-v244-release.md) · [izna 的 Figma 与 KBS 原件](worklogs/20261122-izna-kbs-stage.md)
 
 v243 的两团作品成员照、三团首页字体、目录和本人评分表单已上线。下一批将 YOUNG POSSE 首发拍摄照统一到五人，修正 ADYA《RIZZ》舞台筛选的评分对象，并让 QWER、PURPLE KISS 和 ILLIT 的访客在目录尚未返回时即可看团照和进入作品或成员栏目。[v243 正式验收](worklogs/20261122-v243-release.md) · [YOUNG POSSE 发行专访与图源](worklogs/20261122-youngposse-macaroni-sources.md)

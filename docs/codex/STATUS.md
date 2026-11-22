@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v244。ADYA 与 YOUNG POSSE 的十张默认成员照合计少传 88.4%。ADYA《RIZZ》从舞台筛选打开舞台整体评分。QWER、PURPLE KISS、ILLIT 的首页原图和目录可随首份网页打开。[正式验收](worklogs/20261122-v244-release.md) |
+| 正式站 | v245。七团 83 张舞台卡的封面和标题直达舞台，四团的分享链接首屏显示目标栏目。ADYA《RIZZ》返回后立即再点也能直接评分，izna《IZNA》进入 11 月 29 日 Music Bank。[正式验收](worklogs/20261122-v245-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v244 正式工程 `b2cd0bdf`。下一批修正 KISS OF LIFE 等团的舞台卡、izna 的站内舞台入口和 ADYA 返回后立即再次点击的入口，缩短访客目录计算。[发布回执](evidence/20261122-v244/publication.json) · [逐团设计清单](worklogs/20261122-group-design-coverage.md) |
+| 当前开发 | `codex/project-optimization-20261121`。v245 正式应用 `7d3c7930`。下一批处理 UDTT 首页部分照片偶发失败、GENBLUE《COCOCO》六人同期概念照与四团字体传输。[发布记录](evidence/20261122-v245/publication.json) · [逐团设计](worklogs/20261122-group-design-coverage.md) |
 
 ## 11 月 22 日更新
 

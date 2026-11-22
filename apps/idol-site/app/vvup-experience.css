@@ -11,3 +11,90 @@
 .candidate-vvup-experience .cast-scores{font-variant-numeric:tabular-nums}
 .candidate-vvup-experience :is(a,button):focus-visible{outline:3px solid var(--rose);outline-offset:4px}
 @media(max-width:360px){.candidate-vvup-experience .cast-grid{grid-template-columns:minmax(0,1fr)}.candidate-vvup-experience .cast-card{margin-top:0}.candidate-vvup-experience .video-mode-tabs button{font-size:12px;line-height:1.4}.candidate-vvup-experience .work-aside h1{font-size:30px}}
+
+/* Doo Doom Chit, March 2024: graphite, silver lettering and the lavender single campaign. */
+body .work-experience[data-work-theme="vvup"]:has(.detail[data-work-id="rec28ldfRTrFb6"]) {
+  --paper: #111216;
+  --white: #1b1c22;
+  --ink: #f3f3f8;
+  --muted: #bdc0d1;
+  --line: #626577;
+  --rose: #d9f45f;
+  --blush: #313342;
+  --lilac: #bfb8e3;
+  --work-on-accent: #111216;
+  color: var(--ink);
+  background: var(--paper);
+
+  & > main { padding: clamp(18px, 3vw, 42px) clamp(20px, 3vw, 46px) 48px; }
+  & :is(.music-sidebar, .music-mobile-header, .music-bottom-nav) { background: var(--white); }
+  & .music-work-title {
+    margin: 16px 0;
+    padding: 0 0 19px;
+    border-bottom: 2px solid var(--line);
+    position: relative;
+  }
+  & .music-work-title::after {
+    content: '';
+    width: clamp(58px, 10%, 105px);
+    height: 3px;
+    background: var(--lilac);
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+  }
+  & .music-work-title h1 {
+    font: italic 700 clamp(34px, 4.6vw, 70px)/1.08 VvupArchivo, "Malgun Gothic", sans-serif;
+    letter-spacing: -.035em;
+    margin: 6px 0 9px;
+  }
+  & .music-work-title :is(.group-links button, p) { color: var(--muted); }
+  & :is(.work-detail-top, .stage-view .work-detail-top) {
+    grid-template-columns: minmax(0, 2.15fr) minmax(235px, 1fr);
+    gap: 24px;
+    margin: 18px 0 34px;
+    align-items: start;
+  }
+  & :is(.work-aside, .stage-view .work-aside) {
+    padding: 18px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--lilac);
+  }
+  & .work-aside > :is(h1, .group-links) { display: none; }
+  & .video-mode-tabs { padding: 0; border: 0; background: transparent; gap: 6px; }
+  & :is(.video-mode-tabs button, .credit-score-action, .editor-open) {
+    min-height: 44px;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 0;
+  }
+  & :is(.video-play, .video-mode-tabs button[aria-selected="true"], .button.primary) {
+    color: var(--work-on-accent);
+    background: var(--rose);
+    border: 1px solid var(--rose);
+  }
+  & .video-play { flex-direction: row; gap: 9px; padding: 9px 15px; min-height: 44px; }
+  & .video-play svg { width: 19px; height: 19px; }
+  & .stage-source { padding: 14px 18px; background: var(--blush); border: 1px solid var(--line); }
+  & .section-heading { margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  & .section-heading h2 { font-size: clamp(24px, 2.4vw, 34px); line-height: 1.25; }
+  & .cast-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  & .cast-card { display: block; padding: 0; min-width: 0; background: var(--white); border: 1px solid var(--line); }
+  & .cast-copy { padding: 10px; }
+  & .cast-card .member-name { font-size: clamp(16px, 1.4vw, 21px); text-transform: uppercase; }
+  & .cast-card .mv-photo-score, & .mv-identity-photo figcaption, & .mv-identity-history { padding-inline: 8px; }
+  & .mv-identity-photo figcaption { color: var(--muted); opacity: 1; }
+  & :is(.mv-identity-photo figcaption a, .mv-identity-history a) { color: var(--lilac); }
+  & .cast-card .mv-photo-score :is(.editor-open, .credit-score-action) { max-width: 100%; }
+  & :is(.editor-fields input, .editor-fields textarea, .editor-fields select) { background: var(--white); color: var(--ink); }
+
+  @media (max-width: 1180px) { & .cast-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 1040px) { & :is(.work-detail-top, .stage-view .work-detail-top) { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 720px) {
+    & > main { padding: 16px 6% 56px; }
+    & .cast-grid { grid-template-columns: minmax(0, 1fr); }
+    & .work-detail-top { gap: 18px; margin-bottom: 26px; }
+  }
+}

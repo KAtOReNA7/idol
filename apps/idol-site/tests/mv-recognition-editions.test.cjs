@@ -11,6 +11,16 @@ const media = require('../data/mv-public-media.json');
 const genieOriginal = (issue, file) =>
   `https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/${issue}/Mgz_Sub_IMG_${file}.jpg/dims/resize/Q_80,0`;
 const publisherSeries = {
+  'vvup-debut-introductions-202402': {
+    label: '2024 出道同期 · 官方成员介绍照',
+    original: url => url,
+    files: {
+      recvxAPQCFN2Tn: 'https://images.khan.co.kr/article/2024/02/26/news-p.v1.20240226.be75d7f2840d4874b794de3e85d9cb8e_P1.jpg',
+      recvxAPQCFDPha: 'https://images.khan.co.kr/article/2024/02/27/news-p.v1.20240227.30ef6107086142fe8967c7b01aea7286_P1.jpg',
+      recvxAPQCFQR2I: 'https://image.starnewskorea.com/21/2024/02/2024022809061718275_1.jpg',
+      recvxAPQCFtTIC: 'https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?pp=002&idx=999&simg=2024022909410108995d3244b4fed58141237106.jpg&nmt=29',
+    },
+  },
   'wooah-blush-2024': {
     label: 'BLUSH · 本曲概念照',
     source: 'https://www.etnews.com/20240406000018',
@@ -198,6 +208,7 @@ test('Attention shows each member’s 2022 debut portrait, with the credited ful
 });
 
 const reviewedReleases = [
+  ['Doo Doom Chit', 'vvup-debut-introductions-202402', 'rec28ldfRTrFb6', 'dYWGeQ4HFD8', 4],
   ['BLUSH', 'wooah-blush-2024', 'recvxyH5pz0vNt', 'yh5W41ANcjo', 5],
   ['LOVE ATTACK', 'rescene-scenedrome-202408', 'rec28ldfRTrDat', '9XttLI0oH0I', 5],
   ['The Chase', 'hearts2hearts-the-chase-2025', 'rec28ldfRTrzDX', 'kxUA2wwYiME', 8],
@@ -231,7 +242,6 @@ for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
       assert.ok(photo, old.memberId);
       const html = renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId: old.memberId, label: title, selectEdition: mvRecognitionEdition}));
       assert.ok(html.includes('src="' + photo.preview + '"') && html.includes('href="' + photo.sourceUrl.replaceAll('&', '&amp;') + '"'), old.memberId);
-      assert.match(photo.label, /本曲概念照|本次发行/);
       assert.equal(html.includes('查看原作品图'), old.src !== photo.original, old.memberId);
       const preview = await sharp(path.join(__dirname, '../public', photo.preview)).metadata();
       assert.equal(preview.format, 'webp');
@@ -241,6 +251,7 @@ for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
         assert.deepEqual([preview.width, preview.height], [480, 640]);
         assert.equal(photo.label, publisherSeries[series].label);
       } else {
+        assert.match(photo.label, /本曲概念照|本次发行/);
         const original = await sharp(path.join(__dirname, '../public', photo.original)).metadata();
         assert.ok(original.width >= preview.width && original.height >= preview.height, old.memberId);
       }

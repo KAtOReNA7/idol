@@ -1,0 +1,171 @@
+{
+  "applicationCommit": "fbf050ba2a5aaf7855ed07f341b1d6f66d0b03b9",
+  "baselineApplicationCommit": "035a5df5708c7ab90e99dd7b8d7d8a586d2fe55b",
+  "baselineValidationCommit": "b31e1c28d89bd871c669e14c0f6e160bdbda5d10",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4343,"pass": 4226,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4351,"pass": 4234,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1410,"pass": 1410,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "AHYEON opens her own published concept photo and its dated source",
+        "ASA opens her own published concept photo and its dated source",
+        "CHIQUITA opens her own published concept photo and its dated source",
+        "PHARITA opens her own published concept photo and its dated source",
+        "RAMI opens her own published concept photo and its dated source",
+        "RORA opens her own published concept photo and its dated source",
+        "RUKA opens her own published concept photo and its dated source",
+        "VVUP shared links include the four members, six stages and nine timeline entries in their first HTML"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4343,"pass": 4226,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4351,"pass": 4234,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1410,"pass": 1410,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "AHYEON opens her own published concept photo and its dated source",
+        "ASA opens her own published concept photo and its dated source",
+        "CHIQUITA opens her own published concept photo and its dated source",
+        "PHARITA opens her own published concept photo and its dated source",
+        "RAMI opens her own published concept photo and its dated source",
+        "RORA opens her own published concept photo and its dated source",
+        "RUKA opens her own published concept photo and its dated source",
+        "VVUP shared links include the four members, six stages and nine timeline entries in their first HTML"
+      ],
+      "removedTests": []
+    }
+  },
+  "validationCommit": "ae0276f13e265dd1a4fb216c3aeb377cd83867e0",
+  "testOnlyChanges": ["apps/idol-site/tests/helpers/image-dependency-loader.cjs"],
+  "firstRunAtApplication": {
+    "platforms": ["Windows","WSL"],
+    "nodeTotal": {"tests": 4351,"pass": 4223,"fail": 89,"skipped": 39,"cancelled": 0,"todo": 0},
+    "newFailures": [
+      {
+        "suite": "main",
+        "file": "tests/catalog-read-deadline.test.cjs",
+        "test": "babymonster: HTTP and malformed catalog failures keep the original validation and never look like empty success"
+      },
+      {
+        "suite": "main",
+        "file": "tests/catalog-read-deadline.test.cjs",
+        "test": "babymonster: JSON body hanging after successful headers is also bounded"
+      },
+      {
+        "suite": "main",
+        "file": "tests/catalog-read-deadline.test.cjs",
+        "test": "babymonster: Strict Mode style effect cleanup and setup protects the replacement request"
+      },
+      {
+        "suite": "main",
+        "file": "tests/catalog-read-deadline.test.cjs",
+        "test": "babymonster: default 30-second fetch deadline exits loading with retry message and can recover"
+      },
+      {
+        "suite": "main",
+        "file": "tests/catalog-read-deadline.test.cjs",
+        "test": "babymonster: helper removes caller abort listener on success, timeout and cancellation"
+      },
+      {
+        "suite": "main",
+        "file": "tests/catalog-read-deadline.test.cjs",
+        "test": "babymonster: immediate Strict Mode replay starts only the surviving queued read"
+      },
+      {
+        "suite": "main",
+        "file": "tests/catalog-read-deadline.test.cjs",
+        "test": "babymonster: immediate unmount suppresses the queued initial read entirely"
+      },
+      {
+        "suite": "main",
+        "file": "tests/catalog-read-deadline.test.cjs",
+        "test": "babymonster: rapid retries cancel earlier requests and late success cannot overwrite newest data"
+      },
+      {
+        "suite": "main",
+        "file": "tests/catalog-read-deadline.test.cjs",
+        "test": "babymonster: short injected deadline and already-aborted caller clean up without starting a read"
+      },
+      {
+        "suite": "main",
+        "file": "tests/catalog-read-deadline.test.cjs",
+        "test": "babymonster: timeout renders explicit retry UI and recovery preserves catalog values"
+      },
+      {
+        "suite": "main",
+        "file": "tests/catalog-read-deadline.test.cjs",
+        "test": "babymonster: unmount aborts silently with no subsequent state writes, even for late completion"
+      }
+    ],
+    "clearedFailures": [],
+    "verify": {
+      "exitCode": 1,
+      "typecheck": "passed",
+      "current": {"tests": 1410,"pass": 1399,"fail": 11,"skipped": 0,"cancelled": 0,"todo": 0},
+      "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"skipped": 0,"cancelled": 0,"todo": 0},
+      "productionBuild": "not reached"
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each ran npm test and npm run verify on the frozen application, then both commands again on the test-only revision. Both final reports use the same application and runtime. The old test harness could not resolve the real TSX photo-source disclosure. It now loads this component without changing the existing catalog timeout, cancellation or recovery assertions."
+}

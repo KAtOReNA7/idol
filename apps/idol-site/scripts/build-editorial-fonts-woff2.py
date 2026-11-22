@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build/check full Playfair Display and DM Sans webfonts, never subset.
+"""Build/check full Playfair Display, DM Sans and Nunito Sans webfonts.
 Toolchain: fontTools 4.61.1 and Node 24.19.0, as used by the shared converter.
 Run: python scripts/build-editorial-fonts-woff2.py [--check]
 Original TTF/OFL files and metadata remain unchanged. Playfair's RFN is retained
@@ -20,6 +20,8 @@ FONTS = {
                                '4297e9ec39f1b8157623d048fb99eab03c90e482669599e8fc662ee178994c49'),
     'DMSans-Variable': ('8cd08d97e89c24d0aa92edd2f0f4c8ee6195eee9b7c9f154865a58b02f0c1c0d',
                        '40c3837c53c103a38fbce7faaa590b76edd61a8ede14672eb1e2f7eab0e0c6a4'),
+    'NunitoSans-Variable': ('f934d7142fb4784bf828da485b7dcbd90c0c80d514e9d49a5da0ed3a1ae2491d',
+                            '443c5b7d3731face4a49115327b46288bae5616b79630f31e2c098680194a93d'),
 }
 
 

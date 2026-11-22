@@ -1,4 +1,4 @@
-@font-face{font-family:NewJeansLetter;src:url('/fonts/InstrumentSerif-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:NewJeansLetter;src:url('/fonts/InstrumentSerif-Italic.woff2') format('woff2'),url('/fonts/InstrumentSerif-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
 .candidate-newjeans{--ca-bg:#f2f6fc;--ca-ink:#234b86;--ca-muted:#5c789e;--ca-line:#a7bbd7;--ca-accent:#2756a0;--ca-panel:#dce8f7;--ca-on-accent:#f9fcff}
 .candidate-newjeans .ca-hero{background-image:linear-gradient(#b5c7e32b 1px,transparent 1px),linear-gradient(90deg,#b5c7e32b 1px,transparent 1px);background-size:26px 26px}
 .candidate-newjeans .newjeans-letter{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);grid-template-areas:'heading heading' 'picture message' 'picture stamps';gap:30px 55px}

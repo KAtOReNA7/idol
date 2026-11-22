@@ -73,7 +73,25 @@ test('public images never manufacture live membership relations',()=>{const cata
 test('seven releases are read-only separate IDs and the full production timeline stays in place',()=>{const html=render('/artists/newjeans?section=works');for(const r of data.releases){assert.ok(html.includes('data-release-id="'+r.id+'"'));assert.ok(html.includes('release='+r.id));}assert.ok(render('/artists/newjeans?section=updates').includes('data-full-timeline'));assert.ok(!Object.hasOwn(data,'timeline'));assert.doesNotMatch(source,/method:\s*['"](?:POST|PATCH|PUT)|localStorage|sessionStorage/);});
 test('exact media identity binds production detail only with matching official video',()=>{const c=fixture(),m=data.media[0];const w={id:m.id,groupIds:[data.groupId],song:m.title,name:m.title,url:m.sourceUrl,releaseDate:m.date,score:0,stageScore:null,watched:'未观看'};c.works=[w];assert.ok(render('/artists/newjeans',c).includes('观看与评分'));c.works=[{...w,url:'https://youtube.com/watch?v=wrong000000'}];assert.ok(!render('/artists/newjeans',c).includes('观看与评分'));});
 test('legacy filter queries and exact artist return context survive',()=>{const u='/artists/newjeans?section=works&queue=unrated&q=Super&format=mv';assert.equal(component(u,fixture()).returnUrl(u),u);const h=render(u);assert.ok(h.includes('value="Super"'));assert.ok(h.includes('看过待评分'));const member='/artists/newjeans?section=members&member=recvxyICzHLSfX&roster=history';assert.equal(component(member,fixture()).returnUrl(member),member);assert.ok(source.includes('useArtistScroll'));assert.ok(source.includes('data-member-work-trigger'));});
-test('NewJeans uses licensed self-hosted Nunito Sans without runtime external font requests',()=>{const css=fs.readFileSync('components/candidate/newjeans-design.css','utf8');assert.match(css,/@font-face\{font-family:'NewJeans Nunito Sans';src:url\('\/fonts\/NunitoSans-Variable.ttf'\)/);assert.match(css,/font-weight:200 1000/);assert.ok(fs.statSync('public/fonts/NunitoSans-Variable.ttf').size>100000);assert.match(fs.readFileSync('public/fonts/nunitosans-OFL.txt','utf8'),/SIL OPEN FONT LICENSE/);assert.doesNotMatch(css,/@import|url\(['"]?https?:/);assert.match(css,/'PingFang SC','Microsoft YaHei'/);});
+test('NewJeans uses licensed self-hosted Nunito Sans without runtime external font requests', () => {
+ const family = "font-family:'NewJeans Nunito Sans'";
+ const sources = "src:url('/fonts/NunitoSans-Variable.woff2') format('woff2'),url('/fonts/NunitoSans-Variable.ttf') format('truetype')";
+ for (const file of ['components/candidate/newjeans-design.css', 'app/newjeans-experience.css', 'components/candidate-index-fonts.css', 'app/work-theme-tokens.css']) {
+  const styles = fs.readFileSync(file, 'utf8');
+  const face = styles.match(/@font-face\s*\{[^}]*\}/g)?.find(rule => rule.includes(family));
+  assert.ok(face?.includes(sources), file);
+  assert.ok(face.includes('font-weight:200 1000') && face.includes('font-stretch:75% 125%'), file);
+ }
+ const ttf = fs.statSync('public/fonts/NunitoSans-Variable.ttf');
+ const woff2 = fs.readFileSync('public/fonts/NunitoSans-Variable.woff2');
+ assert.ok(ttf.size > 100000);
+ assert.equal(woff2.subarray(0, 4).toString(), 'wOF2');
+ assert.ok(woff2.length < ttf.size);
+ assert.match(fs.readFileSync('public/fonts/nunitosans-OFL.txt', 'utf8'), /SIL OPEN FONT LICENSE/);
+ const css = fs.readFileSync('components/candidate/newjeans-design.css', 'utf8');
+ assert.doesNotMatch(css, /@import|url\(['"]?https?:/);
+ assert.match(css, /'PingFang SC','Microsoft YaHei'/);
+});
 
 test('seven public release details retain exact cover, credits, dates, sources and track titles',()=>{for(const r of data.releases){for(const section of ['works','records']){const html=render(`/artists/newjeans?section=${section}&release=${r.id}`);assert.ok(html.includes('data-public-release-id="'+r.id+'"'));assert.ok(html.includes(r.title));assert.ok(html.includes(r.date));assert.ok(html.includes(r.sourceUrl));assert.ok(html.includes(data.assets.find(a=>a.key===r.imageKey).figmaDisplayPath.replace('public','')));for(const t of r.tracks??[])assert.ok(html.includes(t.title));}}});
 test('SBS 2023-08-06 detail remains read-only and cannot score the different KBS production stage',()=>{const c=fixture();c.works=[{id:'recvxyOz5XdFJL',groupIds:[data.groupId],song:'Super Shy',name:'Super Shy',url:'https://www.youtube.com/watch?v=ArmDp-zijuc',releaseDate:'2023-07-07',score:null,stageScore:9,watched:'未观看',stage:{url:'https://www.youtube.com/watch?v=P14lg1Nlwa0'}}];const html=render('/artists/newjeans?section=works&media=newjeans-stage-super-shy-inkigayo-20230806',c);assert.ok(html.includes('data-public-media-id="newjeans-stage-super-shy-inkigayo-20230806"'));assert.ok(html.includes('OC466811493'));assert.ok(html.includes('2023-08-06'));assert.ok(html.includes('release=newjeans-release-get-up'));assert.ok(!html.includes('为这条舞台评分'));assert.ok(!html.includes('P14lg1Nlwa0'));assert.ok(!html.includes('9.0'));});

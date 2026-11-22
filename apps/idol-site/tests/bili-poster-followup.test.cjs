@@ -31,9 +31,10 @@ test('the observed Password thumbnail retains its actual decoded dimensions and 
     '/artist/bewave/be-wave/', '/artist/candyshop/japan/', '/artist/everglow/official-community/',
     '/artist/itzy/identity/', '/artist/kiiikiii/uncut-gem/', '/artist/lesserafim/identity/', '/artist/newjeans/debut/', '/artist/nmixx/identity/', '/artist/spia/deeeep/', '/artist/stayc/identity/',
     '/artist/stayc/star-to-a-young-culture/',
+    '/artist/hearts2hearts/the-chase/',
    ];
    manifest.assets=manifest.assets.filter(row=>{
-    const addedAfterReceipt=laterCollections.some(directory=>row.path.startsWith(directory));
+    const addedAfterReceipt=row.path==='/fonts/NunitoSans-Variable.woff2'||laterCollections.some(directory=>row.path.startsWith(directory));
     if(!styles.has(row.path)&&!addedAfterReceipt)return true;
     const actual=fs.readFileSync(path.join(__dirname,'../public',row.path));
     assert.equal(row.delivery,'local',row.path);

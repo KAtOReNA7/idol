@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const crypto = require('node:crypto');
+const postcss = require('postcss');
 const {pathToFileURL} = require('node:url');
 const root = process.env.GROUP_FONT_TEST_ROOT || path.resolve(__dirname, '..');
 const script = path.resolve(__dirname, '../scripts/audit-unused-unis-font-build-assets.mjs');
@@ -50,15 +51,30 @@ test('full font derivatives, retained sources and licenses are immutable pinned 
   assert.equal(hash(path.join(root,'public/fonts/unis/NotoSansCJK-LICENSE.txt')),'849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b');
   assert.equal(hash(path.join(root,'public/fonts/InstrumentSerif-OFL.txt')),'129ed7618959716959f2941fdd5b49e0ad6e6c1d78726761786a00253d865521');
 });
-test('only the two promoted designs change font src; descriptors and shared TTF consumers stay', () => {
+test('UNIS and Kep1er retain their promoted font sources and the shared Instrument Serif faces prefer WOFF2', () => {
   const unis=fs.readFileSync(path.join(root,'components/design-review/unis-design-review.css'),'utf8');
   assert.ok(unis.includes("src:url('/fonts/unis/NotoSansSC-Regular.woff2') format('woff2');font-style:normal;font-weight:400 500;font-display:swap"));
   assert.ok(unis.includes("src:url('/fonts/unis/NotoSansSC-Bold.woff2') format('woff2');font-style:normal;font-weight:600 900;font-display:swap"));
   assert.ok(unis.includes("src:url('/fonts/unis/URWGothic-Demi.otf') format('opentype')"));
   const kep=fs.readFileSync(path.join(root,'components/design-review/kep1er-figma-design.css'),'utf8');
   assert.ok(kep.includes("src:url('/fonts/InstrumentSerif-Italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap"));
-  for (const p of ['app/newjeans-experience.css','app/artists/newjeans/newjeans-artist.css','app/artists/nmixx/nmixx-artist.css','app/artists/illit/artist.css'])
-    assert.ok(fs.readFileSync(path.join(root,p),'utf8').includes('/fonts/InstrumentSerif-Italic.ttf'),p);
+  const families = {
+    'app/newjeans-experience.css': 'NewJeansDetail',
+    'app/artists/newjeans/newjeans-artist.css': 'NewJeansLetter',
+    'app/artists/nmixx/nmixx-artist.css': 'NMixxSerif',
+    'app/artists/illit/artist.css': 'IllitSerif',
+  };
+  const sources = ["url('/fonts/InstrumentSerif-Italic.woff2') format('woff2')", "url('/fonts/InstrumentSerif-Italic.ttf') format('truetype')"];
+  for (const [file, family] of Object.entries(families)) {
+    const matchingSources = [];
+    postcss.parse(fs.readFileSync(path.join(root, file), 'utf8')).walkAtRules('font-face', rule => {
+      const declarations = Object.fromEntries(rule.nodes.map(node => [node.prop, node.value]));
+      if (declarations['font-family'] === family && declarations.src.includes('InstrumentSerif-Italic')) {
+        matchingSources.push(declarations.src.split(/\s*,\s*/));
+      }
+    });
+    assert.deepEqual(matchingSources, [sources], file);
+  }
 });
 test('audit returns exactly two build-only paths and never writes public/shared assets', async t => {
   const dir=await fixture(t), plan=await audit(dir);

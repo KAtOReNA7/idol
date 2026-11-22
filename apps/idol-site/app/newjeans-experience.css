@@ -1,4 +1,4 @@
-@font-face{font-family:NewJeansDetail;src:url('/fonts/InstrumentSerif-Italic.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:NewJeansDetail;src:url('/fonts/InstrumentSerif-Italic.woff2') format('woff2'),url('/fonts/InstrumentSerif-Italic.ttf') format('truetype');font-weight:400;font-display:swap}
 .candidate-newjeans-experience{--paper:#f2f6fc;--white:#fbfdff;--ink:#234b86;--muted:#5c789e;--line:#a7bbd7;--rose:#2756a0;--blush:#dce8f7;--lilac:#e5edf9;background:var(--paper);color:var(--ink)}
 .candidate-newjeans-experience .work-detail-top>*{min-width:0}
 .candidate-newjeans-experience .work-aside h1,.candidate-newjeans-experience .mobile-work-heading h1{font-family:NewJeansDetail,Georgia,serif;line-height:1.15;overflow-wrap:anywhere}
@@ -67,7 +67,7 @@
 @media(max-width:390px){.candidate-newjeans-experience .editor-actions{display:flex;flex-wrap:wrap;gap:10px}.candidate-newjeans-experience .editor-actions>.button{flex:1 1 120px;white-space:nowrap}.candidate-newjeans-experience .video-mode-tabs button{white-space:nowrap;padding-inline:8px}}
 
 /* Attention's verified design detail; other NewJeans records retain their existing view. */
-@font-face{font-family:'NewJeans Nunito Sans';src:url('/fonts/NunitoSans-Variable.ttf') format('truetype');font-style:normal;font-weight:200 1000;font-stretch:75% 125%;font-display:swap}
+@font-face{font-family:'NewJeans Nunito Sans';src:url('/fonts/NunitoSans-Variable.woff2') format('woff2'),url('/fonts/NunitoSans-Variable.ttf') format('truetype');font-style:normal;font-weight:200 1000;font-stretch:75% 125%;font-display:swap}
 .candidate-newjeans-experience:has(.newjeans-work-detail)>header.header{display:none}
 .candidate-newjeans-experience>main:has(.newjeans-work-detail){max-width:none;margin:0;padding:0}
 .candidate-newjeans-experience:has(.newjeans-work-detail) .source-status{padding:4px 20px;margin:0;font-size:12px}

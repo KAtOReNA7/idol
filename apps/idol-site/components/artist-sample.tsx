@@ -4,7 +4,8 @@ import {followerAccountLabel} from '@/lib/idol/follower-count.mjs';
 import {publicVideoCover} from '@/lib/idol/mv-public-media';
 import {ArtistInformation} from '@/components/artist-information';
 import {publicCustomArtistText} from '@/lib/idol/custom-artist-copy';
-import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
+import {focusLinkedRelease,newArtistHistoryState} from '@/lib/idol/timeline/history-state';
+import {dripCardId,dripReleaseId} from '@/lib/idol/babymonster-drip';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {MemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPhysicalFacts} from '@/components/member-physical-facts';
@@ -14,7 +15,7 @@ import {readArtistCatalog} from '@/lib/idol/catalog-read-deadline';
 import {ArrowLeft,ArrowUpRight,ChevronRight,ImageIcon,Play,Search} from 'lucide-react';
 import type {CatalogView as Catalog,Member,Photo,Work} from '@/lib/idol/types';
 import {artistCollection,artistMemberUrl,artistRoute,artistRouteUrl,artistWorkRows,artistWorkUrl,artistWorkScoreLabel,artistSalesTotals,type ArtistSection} from '@/lib/idol/artist-preview';
-import {BABYMONSTER_GROUP_ID,BABYMONSTER_PATH} from '@/lib/idol/artist-navigation';
+import {BABYMONSTER_DRIP_PATH,BABYMONSTER_GROUP_ID,BABYMONSTER_PATH,DRIP_FROM_OVERVIEW} from '@/lib/idol/artist-navigation';
 import {memberWorks,memberWorkSummary} from '@/lib/idol/member-works';
 import {safeGroupLink} from '@/lib/idol/group-detail';
 import {videoId} from '@/lib/idol/values';
@@ -84,7 +85,19 @@ export default function ArtistSample({basePath='/preview/babymonster',initialSea
  const renderRoster=()=> <div className="as-roster">{orderedMembers.map((m,i)=><button key={m.id} data-artist-member-trigger={m.id} onClick={()=>openMember(m)}><div><Picture identityKey={`member:${m.id}:portrait`} src={memberVisual(m)?.image??(m.photo?imageUrl(m.photo):undefined)} alt={`${memberDisplayName(m)} · BABYMONS7ER 官方概念照`} fit="contain"/></div><strong><span className="member-display-name">{memberDisplayName(m)}</span><small>{String(i+1).padStart(2,'0')}</small></strong><span>{m.status}</span></button>)}</div>;
  const renderSocial=()=> <section className="as-social-reach" aria-label="官方账号与粉丝数"><header><h2>SOCIAL REACH</h2><span>公开账号 · 更新于 2026.10.14</span></header><div>{content.social.map(s=><LinkTo key={s.platform} href={external(s.url)} target="_blank" rel="noopener noreferrer"><span>{s.platform}</span><strong>约 {s.display}</strong><small>{s.metric}</small><span className="as-social-open">官方账号<ArrowUpRight size={12}/></span><small className="as-social-handle">{s.handle}</small></LinkTo>)}</div></section>;
  const renderUpdates=()=> <div className="as-updates">{content.updates.map(u=><LinkTo href={external(u.url)} target="_blank" rel="noopener noreferrer" key={u.id}><div><Picture identityKey={`update:${u.id}:image`} src={u.image} alt={u.title} fit="contain"/></div><time>{publicCustomArtistText(u.date)} / YG LIFE</time><h3>{u.title}</h3><p>{publicCustomArtistText(u.summary)}</p><span>阅读官方原文<ArrowUpRight size={13}/></span></LinkTo>)}</div>;
- const renderReleases=()=> <div className="as-releases">{[...content.releases].reverse().map(r=><LinkTo key={r.title} href={external(r.sourceUrl)} target="_blank" rel="noopener noreferrer"><Picture identityKey={`release:${r.date}:${r.title}:cover`} src={r.image} alt={`${r.title} 专辑封面`} fit="contain"/><div><small>{r.type}</small><h3>{r.title}</h3><time>{r.date}</time><span>官方发行详情<ArrowUpRight size={12}/></span></div></LinkTo>)}</div>;
+ const renderReleases=()=> <div className="as-releases">{[...content.releases].reverse().map(release=>{
+  const onsite=basePath===BABYMONSTER_PATH&&release.id===dripReleaseId;
+  const link=route.section==='overview'?DRIP_FROM_OVERVIEW:BABYMONSTER_DRIP_PATH;
+  return <LinkTo key={release.id} href={onsite?link:external(release.sourceUrl)}
+    id={onsite?dripCardId:undefined} ref={onsite?focusLinkedRelease:undefined}
+    data-member-work-trigger={onsite?'release:'+release.id:undefined}
+    target={onsite?undefined:'_blank'} rel={onsite?undefined:'noopener noreferrer'}>
+    <Picture identityKey={`release:${release.date}:${release.title}:cover`} src={release.image} alt={`${release.title} 专辑封面`} fit="contain"/>
+    <div><small>{release.type}</small><h3>{release.title}</h3><time>{release.date}</time>
+      <span>{onsite?'查看发行':<>官方发行详情<ArrowUpRight size={12}/></>}</span>
+    </div>
+  </LinkTo>;
+ })}</div>;
  const renderRecords=()=>{const sales=artistSalesTotals(content.releases,recordYear),releases=[...content.releases].filter(r=>recordYear==='all'||r.date.startsWith(recordYear)).reverse();return <div className="as-records">
  <div className="as-record-years" aria-label="成绩年份">{['all',...new Set([...content.releases.map(r=>r.date.slice(0,4)),...content.wins.map(w=>w.date.slice(0,4))].sort().reverse())].map(year=><button key={year} aria-pressed={recordYear===year} onClick={()=>setRecordYear(year)}>{year==='all'?'全部':year}</button>)}</div>
  <div className="as-record-header"><p>发行成绩与音乐节目逐场记录</p><time>更新于 {content.asOf}</time></div>

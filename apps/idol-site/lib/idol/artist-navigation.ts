@@ -27,6 +27,16 @@ const newjeansRouteKeys={"releases":[{"id":"newjeans-release-supernatural"},{"id
 // This is navigation context only: no scores, notes, tokens or record payloads.
 export const BABYMONSTER_GROUP_ID='rec28ldfRTiC1X';
 export const BABYMONSTER_PATH='/artists/babymonster';
+export const BABYMONSTER_DRIP_PATH=BABYMONSTER_PATH+'/releases/drip';
+export const DRIP_FROM_OVERVIEW=BABYMONSTER_DRIP_PATH+'?from=overview';
+export const dripOriginals={
+ 'CLIK CLAK':'rec28ldfRTrALg',
+ DRIP:'rec28ldfRTrAPA',
+ 'Really Like You':'rec28ldfRTrAYJ',
+ BILLIONAIRE:'rec28ldfRTrLku',
+ 'Love In My Heart':'rec28ldfRTrAUD',
+ FOREVER:'rec28ldfRTrAGW',
+};
 export const ILLIT_GROUP_ID='rec28ldfRTiBON';
 export const ILLIT_PATH='/artists/illit';
 export const XG_GROUP_ID='recvxDKdOtKdWD';
@@ -55,6 +65,8 @@ for(const [path,label,originals] of [
  [LESSERAFIM_EASY_PATH,'《EASY》',easyOriginals],
  [EASY_FROM_OVERVIEW,'《EASY》',easyOriginals],
  [ITZY_KILL_MY_DOUBT_PATH,'《KILL MY DOUBT》',killMyDoubtOriginals],
+ [BABYMONSTER_DRIP_PATH,'《DRIP》',dripOriginals],
+ [DRIP_FROM_OVERVIEW,'《DRIP》',dripOriginals],
 ] as const){
  releaseReturnLabels.set(path,label);
  for(const id of Object.values(originals))releaseReturnLabels.set(releaseTrackReturn(path,id),label);

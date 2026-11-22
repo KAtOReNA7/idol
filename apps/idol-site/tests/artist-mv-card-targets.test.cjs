@@ -32,11 +32,12 @@ test('an old media bookmark opens the reviewed native detail and returns to its 
     const query={section:'works',format:'mv',media:film.key};
     const source='https://www.youtube.com/watch?v='+entry.videoId;
     const work={...catalog.works[0],id:entry.workId,song:entry.song,url:source,groupIds:[entry.groupId],placeholder:null};
+    const manualAction='a[aria-label="打开《'+entry.song+'》播放与评分"]';
     const old=parse(await renderArtist(group,query,catalog));
-    assert.equal(old.querySelector('p[role="status"] a'),null);
+    assert.equal(old.querySelector(manualAction),null);
     for(const works of [[...catalog.works,work],[...catalog.works,{...work,url:'https://youtu.be/I5-ZVMQVJsQ'}]]){
       const current=parse(await renderArtist(group,query,{...catalog,works}));
-      const link=current.querySelector('p[role="status"] a');
+      const link=current.querySelector(manualAction);
       if(works.at(-1).url===source){
         assert.ok(link,film.key);
         assertPlayer(link.getAttribute('href'),entry.workId,group.path+'?section=works&format=mv');

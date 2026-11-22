@@ -161,8 +161,10 @@ export async function checkSharedPresentation(tab,{site=formal,timeoutMs=20000,e
     return {width:document.documentElement.clientWidth,font,gap,count:document.querySelectorAll('[data-home-introduction]').length,
       pass:font>=16&&font<=18&&gap===8&&p.textContent.includes('SUPER REAL ME')};
   });
-  await tab.goto(new URL('/?view=works&work=rec28ldfRTrLku',site).href);
-  const gallery='[data-credit-work="rec28ldfRTrLku"]';
+  const workId='recvxIZRWKy9zg';
+  await tab.goto(new URL('/?view=works&work='+workId,site).href);
+  await tab.playwright.getByRole('heading',{name:'SHOW DOWN',exact:true}).waitFor({state:'visible',timeoutMs});
+  const gallery='[data-credit-work="'+workId+'"]';
   await tab.playwright.locator(gallery+' li').first().waitFor({state:'visible',timeoutMs});
   if(expectWritable===true){
     await tab.playwright.locator(gallery+' .credit-score-action').first().waitFor({state:'visible',timeoutMs});
@@ -172,7 +174,7 @@ export async function checkSharedPresentation(tab,{site=formal,timeoutMs=20000,e
     const entries=cards.map(card=>{
       const image=card.querySelector('.mv-identity-frame')?.getBoundingClientRect();
       const action=card.querySelector('.credit-score-action')?.getBoundingClientRect();
-      return {height:action?Math.round(action.height):null,below:!!image&&!!action&&action.top>=image.bottom};
+      return {memberId:card.dataset.photoMember,height:action?Math.round(action.height):null,below:!!image&&!!action&&action.top>=image.bottom};
     });
     const scoringRegion=gallery.closest('.cast-section[aria-label="成员与评分"]:not([hidden])');
     const title=scoringRegion?.querySelector('.section-heading h2');
@@ -194,7 +196,9 @@ export async function checkSharedPresentation(tab,{site=formal,timeoutMs=20000,e
   const titleFits=scores.writable?scores.heading==='成员与评分':
     (scores.heading==='成员与评分'||(scores.heading===null&&scores.creditHeading==='成员资料'));
   const accessFits=expectWritable===undefined||expectWritable===scores.writable;
-  scores.pass=scores.entries.length===7&&accessFits&&titleFits&&scores.scope==='《DRIP》发行阵容'&&(!scores.writable||
+  const members=['recvxAPQCFvKfO','recvxAPQCFoCDX','recvxAPQCFka3h','recvxAPQCFK2AL'];
+  const sameMembers=scores.entries.length===members.length&&members.every(id=>scores.entries.some(entry=>entry.memberId===id));
+  scores.pass=sameMembers&&accessFits&&titleFits&&scores.scope==='宣传／发行阵容'&&(!scores.writable||
     (scores.entries.every(entry=>entry.height>=44&&entry.below)&&scores.form.fields===2&&scores.form.below));
   return {cards,introduction,scores};
 }

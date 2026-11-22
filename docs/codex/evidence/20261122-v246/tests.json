@@ -1,0 +1,240 @@
+{
+  "applicationCommit": "fccf75a8d8327941ac49245cc8afa1330a7b3025",
+  "baselineApplicationCommit": "7d3c7930001d7738b087511ec0046d3d9f248a0b",
+  "baselineValidationCommit": "b4255fe33b4957a8e4e824e843cdbfe9c75cec8d",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4303,"pass": 4179,"fail": 85,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4319,"pass": 4201,"fail": 79,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1387,"pass": 1387,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 710,
+          "localBytes": 48288697
+        }
+      },
+      "retainedFailureCount": 79,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/candidate-font-woff2.test.cjs",
+          "test": "eight candidate styles prefer existing Space Grotesk WOFF2 with unchanged TTF fallback and descriptors"
+        },
+        {
+          "suite": "main",
+          "file": "tests/candidate-font-woff2.test.cjs",
+          "test": "six candidate styles prefer full editorial WOFF2 with unchanged TTF fallback and descriptors"
+        },
+        {
+          "suite": "main",
+          "file": "tests/editorial-fonts-woff2.test.cjs",
+          "test": "DMSans-Variable has WOFF2 priority and unchanged descriptors in both source styles"
+        },
+        {
+          "suite": "main",
+          "file": "tests/editorial-fonts-woff2.test.cjs",
+          "test": "PlayfairDisplay-Variable has WOFF2 priority and unchanged descriptors in both source styles"
+        },
+        {
+          "suite": "main",
+          "file": "tests/font-woff2.test.cjs",
+          "test": "all nine source styles prefer full WOFF2 and retain TTF fallback and swap"
+        },
+        {
+          "suite": "main",
+          "file": "tests/genblue-native-integration.test.cjs",
+          "test": "night market MV evidence adds bidirectional browsing without inventing personal ratings or stage images"
+        }
+      ],
+      "addedTests": [
+        "COCOCO credits each member’s own official photo and keeps the following day’s performance separate",
+        "COCOCO shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "Cherry Bullet, BEWAVE, ODD YOUTH and ILLIT use their full WOFF2 before the original on the routed home and work styles",
+        "IVE LOVE DIVE loads its real display, sans and Chinese fallback through the artist route",
+        "KATSEYE uses its licensed Nimbus Sans Narrow on its home and work page",
+        "QWER, TRACER, Kep1er, izna and tripleS load the fonts of their active designs",
+        "RESCENE, Weeekly, SPIA and UNIS keep the editorial and Chinese fonts used by their current routes",
+        "SAY MY NAME loads Nunito Sans and Oswald on its artist and work pages",
+        "UDTT queues a cold group page of exact originals behind two live reads, cancels abandoned reads and keeps writes bounded",
+        "UDTT reports a visible image failure once and exposes the page reload button",
+        "artist remount waits for a pending native read and abandons cancelled waiters",
+        "atheart stage links preserve the collectible version on cold, failed, or changed catalogues",
+        "atheart stage posters and bookmarked actions open the same cut, with the complete return route",
+        "hitgs stage links preserve the collectible version on cold, failed, or changed catalogues",
+        "hitgs stage posters and bookmarked actions open the same cut, with the complete return route",
+        "only an unauthenticated or nonowner identity uses the approved public reader, before any private scope access",
+        "routed Space Grotesk faces prefer the complete WOFF2, retain the TTF and use their published weights",
+        "the artist page resumes its replacement queue after the previous real image settles",
+        "vcha stage links preserve the collectible version on cold, failed, or changed catalogues",
+        "vcha stage posters and bookmarked actions open the same cut, with the complete return route",
+        "waiting originals have a bounded queue and deadline without consuming another storage read"
+      ],
+      "removedTests": [
+        "DMSans-Variable has WOFF2 priority and unchanged descriptors in both source styles",
+        "PlayfairDisplay-Variable has WOFF2 priority and unchanged descriptors in both source styles",
+        "all nine source styles prefer full WOFF2 and retain TTF fallback and swap",
+        "eight candidate styles prefer existing Space Grotesk WOFF2 with unchanged TTF fallback and descriptors",
+        "six candidate styles prefer full editorial WOFF2 with unchanged TTF fallback and descriptors"
+      ]
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4303,"pass": 4179,"fail": 85,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4319,"pass": 4201,"fail": 79,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1387,"pass": 1387,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 710,
+          "localBytes": 48288697
+        }
+      },
+      "retainedFailureCount": 79,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/candidate-font-woff2.test.cjs",
+          "test": "eight candidate styles prefer existing Space Grotesk WOFF2 with unchanged TTF fallback and descriptors"
+        },
+        {
+          "suite": "main",
+          "file": "tests/candidate-font-woff2.test.cjs",
+          "test": "six candidate styles prefer full editorial WOFF2 with unchanged TTF fallback and descriptors"
+        },
+        {
+          "suite": "main",
+          "file": "tests/editorial-fonts-woff2.test.cjs",
+          "test": "DMSans-Variable has WOFF2 priority and unchanged descriptors in both source styles"
+        },
+        {
+          "suite": "main",
+          "file": "tests/editorial-fonts-woff2.test.cjs",
+          "test": "PlayfairDisplay-Variable has WOFF2 priority and unchanged descriptors in both source styles"
+        },
+        {
+          "suite": "main",
+          "file": "tests/font-woff2.test.cjs",
+          "test": "all nine source styles prefer full WOFF2 and retain TTF fallback and swap"
+        },
+        {
+          "suite": "main",
+          "file": "tests/genblue-native-integration.test.cjs",
+          "test": "night market MV evidence adds bidirectional browsing without inventing personal ratings or stage images"
+        }
+      ],
+      "addedTests": [
+        "COCOCO credits each member’s own official photo and keeps the following day’s performance separate",
+        "COCOCO shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "Cherry Bullet, BEWAVE, ODD YOUTH and ILLIT use their full WOFF2 before the original on the routed home and work styles",
+        "IVE LOVE DIVE loads its real display, sans and Chinese fallback through the artist route",
+        "KATSEYE uses its licensed Nimbus Sans Narrow on its home and work page",
+        "QWER, TRACER, Kep1er, izna and tripleS load the fonts of their active designs",
+        "RESCENE, Weeekly, SPIA and UNIS keep the editorial and Chinese fonts used by their current routes",
+        "SAY MY NAME loads Nunito Sans and Oswald on its artist and work pages",
+        "UDTT queues a cold group page of exact originals behind two live reads, cancels abandoned reads and keeps writes bounded",
+        "UDTT reports a visible image failure once and exposes the page reload button",
+        "artist remount waits for a pending native read and abandons cancelled waiters",
+        "atheart stage links preserve the collectible version on cold, failed, or changed catalogues",
+        "atheart stage posters and bookmarked actions open the same cut, with the complete return route",
+        "hitgs stage links preserve the collectible version on cold, failed, or changed catalogues",
+        "hitgs stage posters and bookmarked actions open the same cut, with the complete return route",
+        "only an unauthenticated or nonowner identity uses the approved public reader, before any private scope access",
+        "routed Space Grotesk faces prefer the complete WOFF2, retain the TTF and use their published weights",
+        "the artist page resumes its replacement queue after the previous real image settles",
+        "vcha stage links preserve the collectible version on cold, failed, or changed catalogues",
+        "vcha stage posters and bookmarked actions open the same cut, with the complete return route",
+        "waiting originals have a bounded queue and deadline without consuming another storage read"
+      ],
+      "removedTests": [
+        "DMSans-Variable has WOFF2 priority and unchanged descriptors in both source styles",
+        "PlayfairDisplay-Variable has WOFF2 priority and unchanged descriptors in both source styles",
+        "all nine source styles prefer full WOFF2 and retain TTF fallback and swap",
+        "eight candidate styles prefer existing Space Grotesk WOFF2 with unchanged TTF fallback and descriptors",
+        "six candidate styles prefer full editorial WOFF2 with unchanged TTF fallback and descriptors"
+      ]
+    }
+  },
+  "validationCommit": "f20298ffd7fd1df08e259c8401d59f055c057a94",
+  "initialBuild": {
+    "applicationCommit": "c137afa6fa386dd092716664b0cc19b52804890f",
+    "packageCheck": "The initial package stopped before publishing because the compiled lifecycle names and bytes had changed with the image queue. The accepted package has both corrected exact module pins.",
+    "protectedMetadata": "Every restricted targetUrl object literal and every asset URL in both emitted modules matched the published v245 archive.",
+    "objectLiteralsPerModule": 11,
+    "assetUrlOccurrencesPerModule": 11,
+    "developmentTests": {
+      "win": {
+        "nodeTotal": {"tests": 4315,"pass": 4174,"fail": 102,"skipped": 39,"cancelled": 0,"todo": 0},
+        "newFailuresByFile": {
+          "tests/access-period-lower-bound-20261030.test.cjs": 1,
+          "tests/artist-video-detail-actions.test.cjs": 1,
+          "tests/bili-poster-followup.test.cjs": 1,
+          "tests/image-host-matrix.test.cjs": 3,
+          "tests/next-followup-statistics.test.cjs": 1,
+          "tests/priority-statistics-20261030.test.cjs": 1,
+          "tests/research-closeout-20261101.test.cjs": 1,
+          "tests/unused-unis-font-build-assets.test.cjs": 14
+        },
+        "retainedFailureCount": 79,
+        "clearedFailureCount": 6
+      },
+      "linux": {
+        "nodeTotal": {"tests": 4315,"pass": 4174,"fail": 102,"skipped": 39,"cancelled": 0,"todo": 0},
+        "newFailuresByFile": {
+          "tests/access-period-lower-bound-20261030.test.cjs": 1,
+          "tests/artist-video-detail-actions.test.cjs": 1,
+          "tests/bili-poster-followup.test.cjs": 1,
+          "tests/image-host-matrix.test.cjs": 3,
+          "tests/next-followup-statistics.test.cjs": 1,
+          "tests/priority-statistics-20261030.test.cjs": 1,
+          "tests/research-closeout-20261101.test.cjs": 1,
+          "tests/unused-unis-font-build-assets.test.cjs": 14
+        },
+        "retainedFailureCount": 79,
+        "clearedFailureCount": 6
+      }
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each ran npm run verify and npm test in a dedicated checkout. The validation revision differs from the shipped application only in five test files and one legacy audit manifest. Application runtime, fonts, portraits, compiled module pins and production build scripts are identical."
+}

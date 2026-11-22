@@ -1,5 +1,5 @@
 {
-  "scope": "2026-11-22。覆盖正式工程登记的 51 团。正式实测按记录发布号区分，本次归并到 v240；本地改动随新版本另验。",
+  "scope": "2026-11-22。正式工程 51 团。正式实测截至 v241，具名画板按实际内容核定类别。",
   "figmaFile": "https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/",
   "surfaceNames": {
     "home": "首页",
@@ -26,15 +26,15 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 381,
+    "twoWidthBoardMatches": 394,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
       "profile": 48,
       "works": 44,
       "release": 39,
-      "mv": 41,
-      "stage": 33,
+      "mv": 48,
+      "stage": 39,
       "timeline": 42,
       "score": 38
     },
@@ -79,14 +79,7 @@
       "mv": [
         "rescene",
         "qwer",
-        "vvup",
-        "izone",
-        "fromis9",
-        "everglow",
-        "rocketpunch",
-        "cherrybullet",
-        "weeekly",
-        "purplekiss"
+        "vvup"
       ],
       "stage": [
         "izna",
@@ -99,12 +92,6 @@
         "vcha",
         "hitgs",
         "atheart",
-        "izone",
-        "fromis9",
-        "everglow",
-        "rocketpunch",
-        "cherrybullet",
-        "weeekly",
         "wooah",
         "purplekiss"
       ],
@@ -180,7 +167,9 @@
     "profiles": "docs/codex/worklogs/20261122-member-profile-work-editions.md",
     "kiiikiii": "docs/codex/worklogs/20261122-kiiikiii-uncut-gem.md",
     "journeys": "docs/codex/worklogs/20261122-group-journeys.md",
-    "page-index": "docs/codex/evidence/20261122-group-design-coverage/current-screen-matrix.json#pageIndexReadback"
+    "page-index": "docs/codex/evidence/20261122-group-design-coverage/current-screen-matrix.json#pageIndexReadback",
+    "journal-version-readback": "docs/codex/evidence/20261122-group-design-coverage/journal-version-readback.json",
+    "v241": "docs/codex/worklogs/20261122-v241-release.md"
   },
   "groups": [
     {
@@ -1107,7 +1096,8 @@
           "at": "v238",
           "scope": "首页团体原图、标志及适用的作品入口",
           "evidence": "v238"
-        }
+        },
+        "v241"
       ],
       "additional": [
         {
@@ -1528,7 +1518,8 @@
           "at": "v238",
           "scope": "首页团体原图、标志及适用的作品入口",
           "evidence": "v238"
-        }
+        },
+        "v241"
       ],
       "additional": [
         {
@@ -1608,7 +1599,8 @@
           "at": "v240",
           "scope": "四人主页旧页眉；此版尚无新图形",
           "evidence": "eight-home-v240"
-        }
+        },
+        "v241"
       ],
       "additional": [
         {
@@ -1880,12 +1872,12 @@
           "1206:1117"
         ],
         "mv": [
-          null,
-          null
+          "1206:1111",
+          "1206:1121"
         ],
         "stage": [
-          null,
-          null
+          "1206:1112",
+          "1206:1122"
         ],
         "timeline": [
           "1206:1109",
@@ -1896,20 +1888,23 @@
           "1206:1120"
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "journal-version-readback",
+        "stage": "journal-version-readback"
+      },
       "implementation": [],
       "additional": [
         {
-          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "La Vie en Rose · MV旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1206:1111",
             "1206:1121"
           ]
         },
         {
-          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "La Vie en Rose · 舞台旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1206:1112",
             "1206:1122"
@@ -1948,12 +1943,12 @@
           "1219:1118"
         ],
         "mv": [
-          null,
-          null
+          "1219:1111",
+          "1219:1122"
         ],
         "stage": [
-          null,
-          null
+          "1219:1112",
+          "1219:1123"
         ],
         "timeline": [
           "1219:1109",
@@ -1964,20 +1959,23 @@
           "1219:1121"
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "journal-version-readback",
+        "stage": "journal-version-readback"
+      },
       "implementation": [],
       "additional": [
         {
-          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "LIKE YOU BETTER · MV旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1219:1111",
             "1219:1122"
           ]
         },
         {
-          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "LIKE YOU BETTER · 舞台旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1219:1112",
             "1219:1123"
@@ -2067,12 +2065,12 @@
           "1230:1111"
         ],
         "mv": [
-          null,
-          null
+          "1230:1104",
+          "1230:1115"
         ],
         "stage": [
-          null,
-          null
+          "1230:1105",
+          "1230:1116"
         ],
         "timeline": [
           "1230:1102",
@@ -2083,7 +2081,10 @@
           "1230:1114"
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "journal-version-readback",
+        "stage": "journal-version-readback"
+      },
       "implementation": [
         {
           "at": "v238",
@@ -2093,16 +2094,16 @@
       ],
       "additional": [
         {
-          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "CODE · MV旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1230:1104",
             "1230:1115"
           ]
         },
         {
-          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "CODE · 舞台旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1230:1105",
             "1230:1116"
@@ -2141,12 +2142,12 @@
           "1239:1109"
         ],
         "mv": [
-          null,
-          null
+          "1239:1103",
+          "1239:1113"
         ],
         "stage": [
-          null,
-          null
+          "1239:1104",
+          "1239:1114"
         ],
         "timeline": [
           "1239:1101",
@@ -2157,7 +2158,10 @@
           "1239:1112"
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "journal-version-readback",
+        "stage": "journal-version-readback"
+      },
       "implementation": [
         {
           "at": "v238",
@@ -2167,16 +2171,16 @@
       ],
       "additional": [
         {
-          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "BOOM · MV旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1239:1103",
             "1239:1113"
           ]
         },
         {
-          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "BOOM · 舞台旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1239:1104",
             "1239:1114"
@@ -2215,12 +2219,12 @@
           "1246:1118"
         ],
         "mv": [
-          null,
-          null
+          "1246:1111",
+          "1246:1122"
         ],
         "stage": [
-          null,
-          null
+          "1246:1112",
+          "1246:1123"
         ],
         "timeline": [
           "1246:1109",
@@ -2231,7 +2235,10 @@
           "1246:1121"
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "journal-version-readback",
+        "stage": "journal-version-readback"
+      },
       "implementation": [
         {
           "at": "v240",
@@ -2241,16 +2248,16 @@
       ],
       "additional": [
         {
-          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "P.O.W! (Play On the World) · MV旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1246:1111",
             "1246:1122"
           ]
         },
         {
-          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "P.O.W! (Play On the World) · 舞台旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1246:1112",
             "1246:1123"
@@ -2289,12 +2296,12 @@
           "1258:1118"
         ],
         "mv": [
-          null,
-          null
+          "1258:1111",
+          "1258:1122"
         ],
         "stage": [
-          null,
-          null
+          "1258:1112",
+          "1258:1123"
         ],
         "timeline": [
           "1258:1109",
@@ -2305,7 +2312,10 @@
           "1258:1121"
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "journal-version-readback",
+        "stage": "journal-version-readback"
+      },
       "implementation": [
         {
           "at": "v238",
@@ -2315,16 +2325,16 @@
       ],
       "additional": [
         {
-          "scope": "MV手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "LIGHTS ON · MV旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1258:1111",
             "1258:1122"
           ]
         },
         {
-          "scope": "舞台手帐 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "LIGHTS ON · 舞台旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1258:1112",
             "1258:1123"
@@ -2430,8 +2440,8 @@
           "1267:1159"
         ],
         "mv": [
-          null,
-          null
+          "1267:1154",
+          "1267:1162"
         ],
         "stage": [
           null,
@@ -2446,12 +2456,14 @@
           "1267:1161"
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "journal-version-readback"
+      },
       "implementation": [],
       "additional": [
         {
-          "scope": "purplekiss / workJournal 旧稿；播放器类型及版本仍需核对",
-          "source": "page-index",
+          "scope": "Breath · MV旧版双宽。已辨认作品、版本和封面；当前评分及排版另核。",
+          "source": "journal-version-readback",
           "nodes": [
             "1267:1154",
             "1267:1162"

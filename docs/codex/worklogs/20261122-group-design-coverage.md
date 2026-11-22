@@ -4,7 +4,7 @@
 
 正式路由目录、具名 Figma 页面和逐团记录的名单一致，共 51 团，重复和遗漏均为 0。逐团索引按九类页面列出桌面、手机节点，给出素材来源文件、适用的专项实现和正式实测版本。原文件 53 页、3,676 个条目的清点保存在下方。初次清点定位 750 个位置、746 个不同节点，补录后的原索引有 751 个位置、747 个不同节点。[现行逐团索引](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [原索引](../evidence/20261122-group-design-coverage/group-screen-matrix.json)
 
-合并后续专项后，459 个「团体 × 页面类别」组合中，381 个找到桌面和手机候选画稿，78 个仍缺至少一宽，分布在 33 团。381 个中包含文字示意、旧手帐和各自的真实状态。首页 51/51 都有双宽稿，v213 正式站也逐团留下 1265 px 正文下的字体、背景和首图。v236 另逐团核过实际 MV 目录。正式站对所有内页逐屏还原这 381 组设计的证据尚不齐。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
+459 个「团体 × 页面类别」组合中，394 个已定位双宽候选画稿。另有 65 个至少一宽待定位，涉及 27 团。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
 
 | 类别 | 双宽候选 | 至少一宽仍待定位的团 |
 | --- | ---: | --- |
@@ -13,19 +13,19 @@
 | 成员详情 | 48/51 | BABYMONSTER（仅 AHYEON 桌面稿）、ITZY、LE SSERAFIM |
 | 作品目录 | 44/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii |
 | 发行详情 | 39/51 | MEOVV、HITGS、LOONA、BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
-| MV 详情 | 41/51 | RESCENE、QWER、VVUP、IZ*ONE、fromis_9、EVERGLOW、Rocket Punch、Cherry Bullet、Weeekly、PURPLE KISS |
-| 舞台详情 | 33/51 | izna、ifeye、RESCENE、QWER、VVUP、BEWAVE、ODD YOUTH、VCHA、HITGS、AtHeart、IZ*ONE、fromis_9、EVERGLOW、Rocket Punch、Cherry Bullet、Weeekly、WOOAH、PURPLE KISS |
+| MV 详情 | 48/51 | RESCENE、QWER、VVUP |
+| 舞台详情 | 39/51 | izna、ifeye、RESCENE、QWER、VVUP、BEWAVE、ODD YOUTH、VCHA、HITGS、AtHeart、WOOAH、PURPLE KISS |
 | 时间轴 | 42/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
 | 评分或手帐状态 | 38/51 | GENBLUE、VVUP、YOUNG POSSE、BEWAVE、ADYA、UDTT、WOOAH、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
 
-原始画板目录中，IZ*ONE、fromis_9、EVERGLOW、Rocket Punch、Cherry Bullet、Weeekly 各有两宽的「MV 手帐」与「舞台手帐」。RESCENE、QWER、PURPLE KISS 各有两宽作品手帐。逐团索引保留这 15 对节点和分类；需要打开对应作品才能核定是否呈现该剪辑、播放器及版本切换。MEOVV 的成员详情现指回金粹仁个人页，另列原来选中的灯箱。全站四类照片下评分组件已有两宽实测，599 支可评 MV 的逐卡结构及 729 次隔离写入也有覆盖；表中 13 团列的是各团单独的画稿。[节点清单](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [成员评分实际覆盖](../evidence/20261122-stayc-debut/score-coverage.json)
+已在项目 Figma 中逐幅读取六团的 MV、舞台手帐及 PURPLE KISS 的 MV 手帐，共 26 幅。可辨认《La Vie en Rose》《LIKE YOU BETTER》《CODE》《BOOM》《P.O.W!》《LIGHTS ON》的真实 MV 和节目舞台，以及《Breath》MV 的两档设计。这 13 对已有作品级设计出处；旧稿中的成员截图占位和外跳提示仍与现行产品有差异，现代成员评分组件另有双宽 Figma 与 599 支可评 MV 的结构验收。RESCENE 和 QWER 的旧稿与新设计另逐项更新。[七团图层与版本](../evidence/20261122-group-design-coverage/journal-version-readback.json) · [成员评分组件](20261122-stayc-debut-and-scores.md)
 
 | 已可沿用的工作 | 到 v240 为止的实现与实测 |
 | --- | --- |
 | IVE、NewJeans、ADYA、W!TCHX | IVE《LOVE DIVE》官网图形、学院照和版本入口在 v238 双宽通过。NewJeans 首发官网首页在 v238 复验，v240 单验字体。ADYA 首页团照、W!TCHX 的《BLALA》首页、名录和作品稿均有专项，歌词版的旧链接与选人另在 v239 通过。[v238 正式回执](20261122-v238-release.md) · [W!TCHX 设计](20261122-witchx-debut-design.md) · [v239 正式回执](20261122-v239-release.md) |
 | ifeye、izna、NMIXX、STAYC、Hearts2Hearts | 保留 ifeye 六类官方原图稿及本地两宽回执。izna 名录、NMIXX《Roller Coaster》、STAYC《SO BAD》在 v239 复验；Hearts2Hearts《The Chase》八人和两个版本在 v240 复验，取代旧手机稿的外跳主按钮。STAYC、Hearts2Hearts 的新个人档案作品卡属于局部组件。[ifeye](20261122-ifeye-official-photos.md) · [成员页组件](20261122-member-profile-work-editions.md) · [v239](20261122-v239-release.md) · [v240](20261122-v240-release.md) |
 | ITZY、LE SSERAFIM、KiiiKiii | ITZY 和 LE SSERAFIM 各有首页、成员、作品、MV 与舞台两宽，已在本地实点。KiiiKiii《I DO ME》的五人和 1theK 舞台已在 v238 两宽实点。[两团首页与名录](20261122-itzy-lesserafim-official-design.md) · [两团作品详情](20261122-itzy-lesserafim-work-details.md) · [KiiiKiii 正式回执](../evidence/20261122-v238/formal-kiiikiii.json) |
-| Candy Shop、SPIA、UDTT | Candy Shop、SPIA 首页已有 v238 回执；其余本批原生内页及站内详情按各自专项本地验收。UDTT 新公司图标的四档属于页眉，v240 所见仍为文字。三项进一步的线上结果以对应新发布号登记。[Candy Shop 与 UDTT](20261122-eight-group-design-review.md) · [SPIA](20261122-spia-inner.md) |
+| Candy Shop、SPIA、UDTT | 正式 v241 两宽实开 SPIA、Candy Shop 的成员原图、作品、发行和舞台，UDTT 页眉的公司原标及成员返回也已核对。[正式结果](20261122-v241-release.md) |
 
 飞书第 8 项涉及八个示例，也要求核查其余团。51 团首页已有来源和视觉初查，五种栏目入口有 255 次正式路由本地渲染，338 个成员详情有实际访问记录，603 页横查已清理那批公开页面编辑说明。后续仍需区分组件行为、团体识别、官方发行期复原和每张内页的成稿。WOOAH《BLUSH》旧稿仍有明确的缺图标记；YOUNG POSSE《MACARONI CHEESE》以文字外跳呈现。SAY MY NAME《WaveWay》、KISS OF LIFE《STICKY》、aespa《Armageddon》、ILLIT《Magnetic》、XG《WOKE UP》及早期 BABYMONSTER 的作品旧稿仍为播放器示意。具体作品及同版封面须逐一核对，已经独立通过的播放、字体和照片结果继续有效。[八团图源与 603 页横查](20261122-eight-group-design-review.md) · [实际路由](../evidence/20261122-group-design-coverage/actual-route-surfaces.json) · [成员访问](../evidence/20261122-member-page-coverage/visits.json)
 

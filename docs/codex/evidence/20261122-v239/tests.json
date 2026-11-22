@@ -1,0 +1,129 @@
+{
+  "applicationCommit": "ec729b4ce57670e2cbf3f1973605f2c534fcdef4",
+  "baselineApplicationCommit": "daa9aa7b1860ee74f88184401d5fc111719f6adb",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4273,"pass": 4138,"fail": 96,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4277,"pass": 4142,"fail": 96,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1353,"pass": 1353,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 633,
+          "localBytes": 33594520
+        }
+      },
+      "retainedFailureCount": 95,
+      "newFailures": [
+        {
+          "suite": "main",
+          "file": "tests/bili-poster-followup.test.cjs",
+          "test": "the observed Password thumbnail retains its actual decoded dimensions and all original bytes"
+        }
+      ],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/stayc-artist.test.cjs",
+          "test": "STAYC 23 optimized assets retain exact previously verified hashes"
+        }
+      ],
+      "addedTests": [
+        "Figma roster and profiles preserve search, portraits, exact credits and module order for all seven people",
+        "SO BAD shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "STAYC retains the full original group, roster, release and news image set",
+        "all six agency portraits offer their own full-size original inside the member page",
+        "candidate source stays byte-exact outside the approved home, roster, profile and asset changes",
+        "each Roller Coaster relationship opens the official member portrait and shows the same named song photograph as its MV",
+        "the official group palettes reach the shared player, title and member controls"
+      ],
+      "removedTests": [
+        "STAYC 23 optimized assets retain exact previously verified hashes",
+        "candidate source stays byte-exact outside the approved opening, public information, and original-asset metadata",
+        "the two official group palettes reach the shared player, title and member controls"
+      ]
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4273,"pass": 4142,"fail": 92,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4277,"pass": 4146,"fail": 92,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1353,"pass": 1353,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 633,
+          "localBytes": 33594520
+        }
+      },
+      "retainedFailureCount": 91,
+      "newFailures": [
+        {
+          "suite": "main",
+          "file": "tests/bili-poster-followup.test.cjs",
+          "test": "the observed Password thumbnail retains its actual decoded dimensions and all original bytes"
+        }
+      ],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/stayc-artist.test.cjs",
+          "test": "STAYC 23 optimized assets retain exact previously verified hashes"
+        }
+      ],
+      "addedTests": [
+        "Figma roster and profiles preserve search, portraits, exact credits and module order for all seven people",
+        "SO BAD shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "STAYC retains the full original group, roster, release and news image set",
+        "all six agency portraits offer their own full-size original inside the member page",
+        "candidate source stays byte-exact outside the approved home, roster, profile and asset changes",
+        "each Roller Coaster relationship opens the official member portrait and shows the same named song photograph as its MV",
+        "the official group palettes reach the shared player, title and member controls"
+      ],
+      "removedTests": [
+        "STAYC 23 optimized assets retain exact previously verified hashes",
+        "candidate source stays byte-exact outside the approved opening, public information, and original-asset metadata",
+        "the two official group palettes reach the shared player, title and member controls"
+      ]
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each verified and ran the full test suite in a dedicated checkout of the frozen application."
+}

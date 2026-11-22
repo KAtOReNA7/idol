@@ -152,6 +152,37 @@ test('MV cards show the reviewed series and retain the old work image only for t
   }
 });
 
+test('Per shows the five credited Genie set photos and keeps each member’s earlier jersey portrait and named MV still', async () => {
+  const workId = 'rec28ldfRTrH9V';
+  const videoId = 'v08zVNXb4is';
+  const work = {id: workId, url: 'https://www.youtube.com/watch?v=' + videoId};
+  const cast = [
+    ['recvxAPKXChZPr', 'yeonsu', '872c5dc1f3ce54'],
+    ['recvxAPQCFEeoQ', 'seowon', '237ad03eeeca91'],
+    ['recvxAPQCF1pq2', 'sena', '50368b8e3517f1'],
+    ['recvxAPQCFdy35', 'chaeeun', '6b3bef1157474f'],
+    ['recvxAPQCFRLvq', 'seungchae', 'bd4eb0ea3c4306'],
+  ];
+  const old = media.portraits.filter(item => item.workId === workId && item.videoId === videoId);
+  assert.deepEqual(new Set(old.map(item => item.memberId)), new Set(cast.map(([memberId]) => memberId)));
+  for (const [memberId, name, jersey] of cast) {
+    const photo = mvRecognitionEdition({workId, videoId, memberId});
+    const still = old.find(item => item.memberId === memberId);
+    assert.equal(photo.preview, '/artist/recognition-editions/adya/per-' + name + '.card.webp');
+    assert.equal(photo.sourceUrl, 'https://genie.co.kr/magazine/subMain?ctid=1&mgz_seq=13145');
+    assert.equal(photo.previousEdition.original, '/artist/mv-identity-batch-w-20261027/identities/adya-' + jersey + '.jpg');
+    assert.equal(photo.previousEdition.sourceUrl, 'https://kprofiles.com/adya-members-profile/');
+    const images = await Promise.all([photo.preview, photo.original, photo.previousEdition.original].map(src => sharp(path.join(__dirname, '../public', src)).metadata()));
+    assert.deepEqual(images.slice(0, 2).map(({format, width, height}) => [format, width, height]), [['webp', 480, 640], ['jpeg', 840, 1260]]);
+    assert.ok(images[2].width > 0 && images[2].height > 0, name);
+    const html = renderToStaticMarkup(React.createElement(MvIdentityPhoto, {work, memberId, label: name, selectEdition: mvRecognitionEdition}));
+    assert.ok(html.includes('src="' + photo.preview + '"') && html.includes('本 MV 拍摄现场照'));
+    assert.ok(html.includes('查看红色球衣写真') && html.includes('href="' + photo.previousEdition.sourceUrl + '"'));
+    assert.ok(html.includes('查看原作品图') && html.includes('href="' + still.sourceUrl + '"'));
+    assert.equal(mvRecognitionEdition({workId, videoId: 'MTGRTklCseU', memberId}), null);
+  }
+});
+
 test('the same portrait is captioned for each release and historical members retain their own provenance', () => {
   const portraits = editions['idle-i-feel'];
   const release = portraits.works.find(work => work.label.includes('本次发行'));

@@ -1,4 +1,5 @@
-type Portrait = {preview: string; original: string; sourceUrl: string; label?: string};
+type PreviousEdition = {original: string; sourceUrl: string; label: string};
+type Portrait = {preview: string; original: string; sourceUrl: string; label?: string; previousEdition?: PreviousEdition};
 export type RecognitionEditionPhoto = Portrait & {label: string};
 export type RecognitionEdition = {
   label: string;

@@ -43,6 +43,12 @@ function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,ed
  const style=crop&&width&&height?croppedStyle(width,height,crop):{objectFit:'cover' as const,objectPosition:publicImage?.objectPosition??'50% 35%'};
  const caption=edition?.label??card?.label??publicImage?.label??(photo?.sourceKind==='mv_look_photo'?'本MV同造型照片':'本MV认人图');
  const previous=edition&&publicImage?.src!==edition.original?publicImage:null;
+ const history=[];
+ if(edition?.previousEdition){
+  const prior=edition.previousEdition;
+  history.push({src:prior.original,sourceUrl:prior.sourceUrl,title:prior.label,caption:prior.label});
+ }
+ if(previous)history.push({src:previous.src,sourceUrl:previous.sourceUrl,title:previousLabel,caption:previous.label});
  return <figure className="mv-identity-photo" data-mv-identity={src?'available':'missing'} data-identity-source={edition?'named-series':publicImage?.photoKind}>
   <button className="mv-identity-frame" type="button" disabled={!src} onClick={()=>setOpened(key)} aria-label={src?`查看${label}的${caption}原图`:`${label}的认人图待补`} aria-haspopup={src?'dialog':undefined}>
    <ReliableImage src={thumbnail||null} identityKey={key} alt={`${label} · ${caption}`} style={style} missing={<span className="mv-identity-missing">认人图待补</span>} fallback={<span className="mv-identity-missing">图片暂未加载</span>}/>
@@ -50,10 +56,13 @@ function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,ed
   </button>
   {children&&<div className="mv-photo-score">{children}</div>}
   {src&&<figcaption>{caption}{publicImage&&<a href={edition?.sourceUrl??publicImage.sourceUrl} target="_blank" rel="noopener noreferrer">来源 ↗</a>}</figcaption>}
-  {previous&&<div className="mv-identity-history"><button className="mv-identity-previous" type="button" aria-haspopup="dialog" aria-label={`查看${label}的${previousLabel} · ${previous.label}`} onClick={()=>setOpened(key+':previous')}>查看{previousLabel}</button><a href={previous.sourceUrl} target="_blank" rel="noopener noreferrer">原出处 ↗</a></div>}
+  {history.map(item=><div key={item.src} className="mv-identity-history">
+   <button className="mv-identity-previous" type="button" aria-haspopup="dialog" aria-label={`查看${label}的${item.title}${item.title===item.caption?'':' · '+item.caption}`} onClick={()=>setOpened(key+':'+item.src)}>查看{item.title}</button>
+   <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={item.caption+'的原出处'}>原出处 ↗</a>
+   {opened===key+':'+item.src&&<PhotoLightbox src={item.src} label={`${label} · ${item.caption}`} onClose={()=>setOpened(null)}/>}
+  </div>)}
   {nativeSrc&&<button className="mv-identity-native" type="button" onClick={()=>setOpened(key+':native')}>查看原有照片 ↗</button>}
   {opened===key&&src&&<PhotoLightbox src={src} label={`${label} · ${caption}`} onClose={()=>setOpened(null)}/>}
-  {opened===key+':previous'&&previous&&<PhotoLightbox src={previous.src} label={`${label} · ${previous.label}`} onClose={()=>setOpened(null)}/>}
   {opened===key+':native'&&nativeSrc&&<PhotoLightbox src={nativeSrc} label={`${label} · 原有照片`} onClose={()=>setOpened(null)}/>}
  </figure>;
 }

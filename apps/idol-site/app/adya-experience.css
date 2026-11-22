@@ -42,6 +42,16 @@ body .work-experience[data-work-theme="adya"] {
  & .public-recognition-grid .mv-photo-score .credit-score-action { width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 0; color: var(--ink); }
  & .public-recognition-grid .mv-identity-photo figcaption { font: 400 12px/1.5 var(--font-body); color: var(--muted); opacity: 1; }
  & .public-recognition-grid .personal-score-form { width: 100%; max-width: 100%; min-width: 0; margin: 8px 0 0; padding: 8px; box-sizing: border-box; }
+ & .cast-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: start; border-top: 0; }
+ & .cast-card { display: block; min-width: 0; padding: 0; border: 0; background: var(--white); }
+ & .cast-card .mv-identity-frame { border-radius: 0; }
+ & .cast-card .mv-photo-score :is(.editor-open, .credit-score-action) {
+  width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 0; background: var(--white); color: var(--ink);
+ }
+ & .cast-card .credit-score-action[aria-expanded="true"] { background: var(--rose); color: var(--paper); }
+ & .cast-card :is(.mv-identity-photo figcaption, .mv-identity-history) { margin-inline: 10px; color: var(--muted); opacity: 1; }
+ & .cast-card .cast-copy { margin: 8px 10px 0; padding: 12px 0; border-top: 1px solid var(--line); }
+ & .cast-card .editor, & .cast-card .editor-fields { min-width: 0; max-width: 100%; }
  & .personal-score-form .editor-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
  & .personal-score-form :is(label, .score-input, input) { min-width: 0; max-width: 100%; }
  & .personal-score-form .editor-actions .button { width: 100%; min-height: 44px; padding-inline: 5px; text-align: center; text-decoration: none; }
@@ -50,7 +60,11 @@ body .work-experience[data-work-theme="adya"] {
 @media (min-width: 1200px) {
  body .work-experience[data-work-theme="adya"] :is(.work-detail-top, .stage-view .work-detail-top) { grid-template-columns: minmax(0, 1.8fr) minmax(250px, 1fr); }
 }
+@media (min-width: 761px) and (max-width: 1150px) {
+ body .work-experience[data-work-theme="adya"] .cast-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 760px) {
+ body .work-experience[data-work-theme="adya"] .cast-grid { grid-template-columns: minmax(0, 1fr); }
  body .work-experience[data-work-theme="adya"] .public-work-credits .public-recognition-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 10px; }
 }
 @media (max-width: 359px) {

@@ -42,3 +42,5 @@ AtHeart 另八场分别保留《3!4!》两个版本、《Say It》三个版本�
 首次打开的作品仍分别为《Runaway》《PUNG!》《Welcome to Heaven》。待首屏图片解码后复查，三团 16 张图片实际为 1280 × 720，图中人物完整。[正式基线](../evidence/20261122-v246/three-works-fold-before.json) · [本机同宽读数](../evidence/20261122-v247/three-works-fold-local.json)
 
 改前通过键盘打开 MADEIN 第三支 MV 后返回，焦点落到整页正文。修改后从三团各自的 MV 和舞台各往返一次，本机六次均回到打开时的具体入口。[六次返回结果](../evidence/20261122-v247/three-works-return-focus-local.json)
+
+v247 正式上线后，三团两宽的第一张封面位置及首屏作品数均与上表相同，首屏所有图片已解码。RESCENE 和 tripleS 使用 1425 px 正文、MADEIN 使用 375 px 正文，各搜到零结果再清除，恢复 10、25、8 张作品卡。三次点开 MV 或舞台均到了原先选定的作品，返回后焦点落在同一条目。三页实际顺序均是 MV 在前、唱片在后。[正式站两宽](../evidence/20261122-v247/catalogs-formal-fold.json) · [三团搜索与返回](../evidence/20261122-v247/catalogs-formal-flows.json)

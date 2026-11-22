@@ -15,3 +15,13 @@
 @media(prefers-reduced-motion:no-preference){.f9-link,.f9-header a{transition:color .15s,border-color .15s}}
 
 .fromis9-archive {background:#eff6f1;}
+
+.f9-portrait-credit {
+  --photo-source-line: var(--f9-line);
+  margin-top: 6px;
+}
+.f9-portrait-credit .photo-source-body a {
+  border: 0;
+  padding: 0;
+  gap: 6px;
+}

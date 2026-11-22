@@ -38,6 +38,29 @@ test('ADYA and W!TCHX roster photo credits link to the named publisher from home
  }
 });
 const visible = html => html.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
+
+for (const slug of ['adya','witchx','fromis9','everglow','rocketpunch']) {
+ test(slug + ' keeps attribution and original photographs for each named member', async () => {
+  const native = ['adya','witchx'].includes(slug);
+  const {members} = require('../data/' + slug + (native ? '-native-design.json' : '-public.json'));
+  const {portraits} = require('../data/' + slug + '-artist.json');
+  const artist = registry.find(row => row.slug === slug);
+  for (const member of members) {
+   const page = parse(await renderArtist(artist, {section:'members', member:member.id}, artistCatalog(artist)));
+   const identity = page.querySelector('[data-member-module="identity"]');
+   const disclosure = identity.querySelector('details.photo-source-disclosure');
+   assert.equal(disclosure.querySelector('summary').text, '照片出处');
+   assert.equal(disclosure.hasAttribute('open'), false);
+   const source = new URL(disclosure.querySelector('a').getAttribute('href'));
+   const expected = new URL(native ? portraits[member.id].sourceUrl : member.sourceUrl);
+   assert.equal(source.origin + source.pathname, expected.origin + expected.pathname);
+   if (member.photoDate) assert.ok(disclosure.text.includes(member.photoDate));
+   assert.ok(identity.querySelector('a[data-original-photo][href]'), member.id);
+   disclosure.remove();
+   assert.doesNotMatch(identity.text, /本页照片由|拍摄及测量时期|拍摄日期未载|拍摄日期未注明/);
+  }
+ });
+}
 for(const artist of registry)test(`${artist.slug}: public navigation keeps research-only input out of the visible page`, async()=>{
  const catalog=artistCatalog(artist);
  const member=catalog.members.find(m=>m.groupIds.includes(artist.groupId)||m.formerGroupIds?.includes(artist.groupId));

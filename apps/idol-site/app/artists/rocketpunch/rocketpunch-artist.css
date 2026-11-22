@@ -30,3 +30,13 @@
  .rp-hero nav{display:flex;flex-wrap:wrap;gap:0 24px}
  .rp-hero nav .rp-link{font-size:13px;border-bottom:0}
 }
+
+.rp-portrait-credit {
+  --photo-source-line: var(--rp-line);
+  margin-top: 6px;
+}
+.rp-portrait-credit .photo-source-body a {
+  border: 0;
+  padding: 0;
+  gap: 6px;
+}

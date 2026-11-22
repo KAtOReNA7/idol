@@ -39,9 +39,9 @@ function Picture({src,alt,className='',priority=false}:{src:string;alt:string;cl
 function subscribe(cb:()=>void){window.addEventListener('popstate',cb);window.addEventListener('artist-location-change',cb);return()=>{window.removeEventListener('popstate',cb);window.removeEventListener('artist-location-change',cb);};}
 const score=(n:number|null|undefined)=>n==null?'未评分':n.toFixed(1);
 
-export default function OddyouthArtist({content}:{content:CandidateContent}){
+export default function OddyouthArtist({content,initialSearch=''}:{content:CandidateContent;initialSearch?:string}){
  const host=useArtistTimelineHostOptions();
- const url=useSyncExternalStore(subscribe,()=>path+window.location.search,()=>host.serverRoute??path);
+ const url=useSyncExternalStore(subscribe,()=>path+window.location.search,()=>host.serverRoute??(path+initialSearch));
  const params=useMemo(()=>new URL(url,'https://site.invalid').searchParams,[url]);
  const route=useMemo(()=>artistRoute(url),[url]);
  const [fetched,setFetched]=useState<{data:CatalogView|null;error:string;loading:boolean}>({data:null,error:'',loading:true});

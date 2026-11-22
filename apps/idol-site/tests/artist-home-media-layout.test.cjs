@@ -16,7 +16,7 @@ const groupBySlug = new Map(registry.map(group => [group.slug, group]));
 const homeAndDirectory = [{}, {section: 'works'}, {section: 'works', format: 'mv'}];
 
 test('shared artist links render the requested section before hydration or catalog data', async () => {
-  for (const slug of ['adya', 'bewave', 'spia', 'witchx']) {
+  for (const slug of ['adya', 'bewave', 'spia', 'witchx', 'candyshop', 'geenius', 'oddyouth', 'tracer', 'youngposse']) {
     const group = groupBySlug.get(slug);
     const home = parse(await renderArtist(group, {}, null, {serverRoute: undefined, loading: true}));
     const member = artistCatalog(group).members.find(person => person.groupIds.includes(group.groupId));

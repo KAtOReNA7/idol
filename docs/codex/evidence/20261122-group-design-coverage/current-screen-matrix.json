@@ -26,17 +26,17 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 418,
+    "twoWidthBoardMatches": 420,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
       "profile": 51,
       "works": 44,
-      "release": 42,
+      "release": 43,
       "mv": 51,
       "stage": 48,
       "timeline": 42,
-      "score": 44
+      "score": 45
     },
     "missingOrPartialBySurface": {
       "home": [],
@@ -66,8 +66,7 @@
         "kissoflife",
         "stayc",
         "nmixx",
-        "kiiikiii",
-        "itzy"
+        "kiiikiii"
       ],
       "mv": [],
       "stage": [
@@ -89,7 +88,6 @@
       "score": [
         "udtt",
         "xg",
-        "aespa",
         "kissoflife",
         "stayc",
         "itzy",
@@ -165,7 +163,10 @@
     "aespa-armageddon-release": "docs/codex/evidence/20261123-v252/aespa-armageddon-release.json",
     "xg-new-dna": "docs/codex/evidence/20261123-v253/xg-new-dna-and-track-return.json",
     "lesserafim-easy": "docs/codex/evidence/20261123-v254/lesserafim-easy-release.json",
-    "v253-album-journeys": "docs/codex/evidence/20261123-v253/formal-album-journeys.json"
+    "v253-album-journeys": "docs/codex/evidence/20261123-v253/formal-album-journeys.json",
+    "v254-formal-easy-and-forever": "docs/codex/evidence/20261123-v254/formal-easy-and-forever.json",
+    "aespa-forever": "docs/codex/evidence/20261123-aespa-forever/design-and-sources.json",
+    "itzy-kill-my-doubt": "docs/codex/worklogs/20261123-itzy-kill-my-doubt-design.md"
   },
   "groups": [
     {
@@ -3084,18 +3085,24 @@
           null
         ],
         "score": [
-          null,
-          null
+          "1659:1433",
+          "1659:1524"
         ]
       },
       "revised": {
-        "release": "aespa-armageddon-release"
+        "release": "aespa-armageddon-release",
+        "score": "aespa-forever"
       },
       "implementation": [
         {
           "at": "本地",
           "scope": "《Armageddon》发行详情的十首曲目、三支原版 MV 和返回唱片封面",
           "evidence": "aespa-armageddon-release"
+        },
+        {
+          "at": "正式 v254",
+          "scope": "《Forever》同期四人照、原图、历史图及两宽评分展开",
+          "evidence": "v254-formal-easy-and-forever"
         }
       ],
       "additional": [],
@@ -3566,8 +3573,8 @@
           "1463:1497"
         ],
         "release": [
-          null,
-          null
+          "1669:1491",
+          "1669:1527"
         ],
         "mv": [
           "1483:1345",
@@ -3592,7 +3599,8 @@
         "works": "itzy-lsf-home",
         "mv": "itzy-lsf-work",
         "stage": "itzy-lsf-work",
-        "profile": "itzy-yeji-profile"
+        "profile": "itzy-yeji-profile",
+        "release": "itzy-kill-my-doubt"
       },
       "implementation": [
         {
@@ -3670,9 +3678,9 @@
       },
       "implementation": [
         {
-          "at": "v254 开发",
-          "scope": "《EASY》双宽发行页，首页与目录可读发行日期、放大整张官方封面，并从两支原版 MV 返回原曲目。",
-          "evidence": "lesserafim-easy"
+          "at": "正式 v254",
+          "scope": "《EASY》两入口、完整五曲、两条原版 MV、原图及双宽返回",
+          "evidence": "v254-formal-easy-and-forever"
         },
         {
           "at": "v251 开发",
@@ -4200,6 +4208,26 @@
     "1658:1841": {
       "page": "1457:1130",
       "name": "LE SSERAFIM / EASY / 发行详情 / 375",
+      "type": "FRAME"
+    },
+    "1659:1433": {
+      "page": "0:1",
+      "name": "aespa / Forever / GISELLE 评分展开 / 1440",
+      "type": "FRAME"
+    },
+    "1659:1524": {
+      "page": "0:1",
+      "name": "aespa / Forever / GISELLE 评分展开 / 390",
+      "type": "FRAME"
+    },
+    "1669:1491": {
+      "page": "1457:1109",
+      "name": "ITZY / KILL MY DOUBT / 发行详情 / 1440",
+      "type": "FRAME"
+    },
+    "1669:1527": {
+      "page": "1457:1109",
+      "name": "ITZY / KILL MY DOUBT / 发行详情 / 390",
       "type": "FRAME"
     }
   }

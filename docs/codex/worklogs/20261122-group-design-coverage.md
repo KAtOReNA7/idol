@@ -4,7 +4,7 @@
 
 正式路由目录、具名 Figma 页面和逐团记录的名单一致，共 51 团，重复和遗漏均为 0。逐团索引按九类页面列出桌面、手机节点，给出素材来源文件、适用的专项实现和正式实测版本。原文件 53 页、3,676 个条目的清点保存在下方。初次清点定位 750 个位置、746 个不同节点，补录后的原索引有 751 个位置、747 个不同节点。[现行逐团索引](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [原索引](../evidence/20261122-group-design-coverage/group-screen-matrix.json)
 
-459 个「团体 × 页面类别」组合中，418 个已定位双宽候选画稿，另有 41 个至少一宽待定位，涉及 16 团。LE SSERAFIM 新增《EASY》双宽稿，五首曲目、两支韩文原版 MV 和官网完整封面已接入。XG 补齐《NEW DNA》的 X 版包装、六首曲目与四条原版 MV。aespa 补齐《Armageddon》发行详情，十首曲目和三条原版 MV 均已接入。LE SSERAFIM 补齐咲良两宽详情后，51 团的成员详情各有双宽代表稿。ITZY 补齐黄礼志的两宽详情，BABYMONSTER 新增 AHYEON 的手机成员详情稿，与她已有的桌面稿配对。VCHA、HITGS、AtHeart 已有实际节目的团内舞台详情稿。BEWAVE《SING !》补齐两项，YOUNG POSSE、ADYA 和 GENBLUE 各补齐一项本人评分，izna 补齐 KBS 节目舞台。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [《EASY》双宽](20261123-lesserafim-easy-release.md) · [《NEW DNA》双宽](20261123-xg-new-dna-design.md) · [《Armageddon》双宽](20261123-aespa-armageddon-release.md) · [咲良双宽](20261123-lesserafim-member-profile.md) · [黄礼志双宽](20261123-itzy-member-profile.md) · [AHYEON 手机版](20261123-babymonster-member-profile.md) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
+459 个「团体 × 页面类别」组合中，420 个已定位双宽候选画稿，另有 39 个至少一宽待定位，涉及 16 团。LE SSERAFIM《EASY》五首曲目、两支韩文原版 MV 和官网完整封面已上线，aespa《Forever》补齐双宽评分展开稿并在正式站复验。ITZY《KILL MY DOUBT》的 JYP 封面与双宽发行详情画稿已完成，站内实现待交付。XG 补齐《NEW DNA》的 X 版包装、六首曲目与四条原版 MV。aespa 补齐《Armageddon》发行详情，十首曲目和三条原版 MV 均已接入。LE SSERAFIM 补齐咲良两宽详情后，51 团的成员详情各有双宽代表稿。ITZY 补齐黄礼志的两宽详情，BABYMONSTER 新增 AHYEON 的手机成员详情稿，与她已有的桌面稿配对。VCHA、HITGS、AtHeart 已有实际节目的团内舞台详情稿。BEWAVE《SING !》补齐两项，YOUNG POSSE、ADYA 和 GENBLUE 各补齐一项本人评分，izna 补齐 KBS 节目舞台。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [《EASY》双宽](20261123-lesserafim-easy-release.md) · [《NEW DNA》双宽](20261123-xg-new-dna-design.md) · [《Armageddon》双宽](20261123-aespa-armageddon-release.md) · [咲良双宽](20261123-lesserafim-member-profile.md) · [黄礼志双宽](20261123-itzy-member-profile.md) · [AHYEON 手机版](20261123-babymonster-member-profile.md) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
 
 | 类别 | 双宽候选 | 至少一宽仍待定位的团 |
 | --- | ---: | --- |
@@ -12,11 +12,11 @@
 | 成员名录 | 45/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、NMIXX、KiiiKiii |
 | 成员详情 | 51/51 | 无 |
 | 作品目录 | 44/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii |
-| 发行详情 | 42/51 | MEOVV、HITGS、LOONA、BABYMONSTER、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY |
+| 发行详情 | 43/51 | MEOVV、HITGS、LOONA、BABYMONSTER、KISS OF LIFE、STAYC、NMIXX、KiiiKiii |
 | MV 详情 | 51/51 | 无 |
 | 舞台详情 | 48/51 | ifeye、ODD YOUTH、PURPLE KISS |
 | 时间轴 | 42/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
-| 评分或手帐状态 | 44/51 | UDTT、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
+| 评分或手帐状态 | 45/51 | UDTT、XG、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
 
 已在项目 Figma 中逐幅读取六团的 MV、舞台手帐及 PURPLE KISS 的 MV 手帐，共 26 幅。可辨认《La Vie en Rose》《LIKE YOU BETTER》《CODE》《BOOM》《P.O.W!》《LIGHTS ON》的真实 MV 和节目舞台，以及《Breath》MV 的两档设计。这 13 对已有作品级设计出处；旧稿中的成员截图占位和外跳提示仍与现行产品有差异，现代成员评分组件另有双宽 Figma 与 599 支可评 MV 的结构验收。本轮另读回三团的 14 幅画稿。RESCENE《LOVE ATTACK》与 QWER《SHOW DOWN》各补 MV 和准确节目舞台两对。WOOAH《BLUSH》原 MV 两幅补齐实图，新增 Just Dance 舞台和 LUCY 本人评分展开两对。[三团逐帧记录](../evidence/20261122-group-design-coverage/three-work-states.json) · [七团图层与版本](../evidence/20261122-group-design-coverage/journal-version-readback.json) · [成员评分组件](20261122-stayc-debut-and-scores.md)
 

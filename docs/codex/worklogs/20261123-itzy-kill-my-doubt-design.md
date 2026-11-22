@@ -1,0 +1,16 @@
+# ITZY《KILL MY DOUBT》发行详情画稿
+
+JYP 的发行目录和完整 1200 × 1200 封面用于本次设计。项目中已有的完整 WebP 为 264,334 B，画稿导入同像素 PNG。深蓝底、红色提示与封面相呼应，标题沿用团页的 Space Grotesk，正文使用 Noto Sans SC。桌面将封面与曲单并排，手机先读专辑名和日期，再看完整封面与曲单。[JYP 发行页](https://itzy.jype.com/discography/r4uyqzku) · [官方封面](https://d1meds70430yck.cloudfront.net/artist/itzy/651dfb33f55248dd87339ba5d51d90ed-d05a2169be8b4462b1a7520964c1ff9c-KILL%20MY%20DOUBT.jpg)
+
+两幅画稿位于项目 Figma 的 ITZY 页面，桌面 1440 × 755，手机 390 × 1044。均回读真实封面、六个可编辑曲目实例、正确字体与零横向越界。封面图层在桌面为 474 × 474，手机为 354 × 354。两个完整构图均已查看。[桌面稿](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1669-1491) · [手机稿](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1669-1527)
+
+| 发行曲序 | 曲名 | 已收录原版 MV |
+| --- | --- | --- |
+| 1 | BET ON ME | `recvxyOz5XJvBE` |
+| 2 | CAKE（主打） | `recvxyOz5X64xs` |
+| 3 | None of My Business | `recvxyOz5Xk9CH` |
+| 4 | Bratty (나쁜 애) | — |
+| 5 | Psychic Lover | — |
+| 6 | Kill Shot | — |
+
+两档画稿均包含封面原图和三支原版 MV 的入口。落地时复用站内发行曲目返回，保留 JYP 原出处，将返回目标定位到打开 MV 前的曲目或唱片封面。此稿已完成，站内发行详情待实施。

@@ -26,17 +26,17 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 403,
+    "twoWidthBoardMatches": 405,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
       "profile": 48,
       "works": 44,
       "release": 39,
-      "mv": 50,
+      "mv": 51,
       "stage": 44,
       "timeline": 42,
-      "score": 40
+      "score": 41
     },
     "missingOrPartialBySurface": {
       "home": [],
@@ -76,9 +76,7 @@
         "itzy",
         "lesserafim"
       ],
-      "mv": [
-        "bewave"
-      ],
+      "mv": [],
       "stage": [
         "izna",
         "ifeye",
@@ -102,7 +100,6 @@
       "score": [
         "genblue",
         "youngposse",
-        "bewave",
         "adya",
         "udtt",
         "xg",
@@ -113,7 +110,7 @@
         "lesserafim"
       ]
     },
-    "groupsWithMissingOrPartial": 23
+    "groupsWithMissingOrPartial": 22
   },
   "sources": {
     "inventory": "docs/codex/evidence/20261122-group-design-coverage/group-screen-matrix.json",
@@ -165,7 +162,8 @@
     "three-work-states": "docs/codex/evidence/20261122-group-design-coverage/three-work-states.json",
     "rescene-work": "docs/codex/worklogs/20261122-rescene-work.md",
     "vvup-debut-work": "docs/codex/evidence/20261122-vvup-doo-doom-chit/design-and-sources.json",
-    "bewave-previous-stage": "docs/codex/evidence/20261122-vvup-doo-doom-chit/bewave-historical-state.json"
+    "bewave-previous-stage": "docs/codex/evidence/20261122-vvup-doo-doom-chit/bewave-historical-state.json",
+    "bewave-sing": "docs/codex/worklogs/20261122-bewave-sing.md"
   },
   "groups": [
     {
@@ -1015,25 +1013,26 @@
           "977:1107"
         ],
         "mv": [
-          null,
-          null
+          "1549:1229",
+          "1549:1297"
         ],
         "stage": [
-          "977:1101",
-          "977:1108"
+          "1549:1438",
+          "1549:1461"
         ],
         "timeline": [
           "977:1102",
           "977:1109"
         ],
         "score": [
-          null,
-          null
+          "1549:1484",
+          "1549:1562"
         ]
       },
       "revised": {
-        "mv": "bewave-previous-stage",
-        "stage": "bewave-previous-stage"
+        "mv": "bewave-sing",
+        "stage": "bewave-sing",
+        "score": "bewave-sing"
       },
       "implementation": [
         {
@@ -1045,11 +1044,33 @@
           "at": "v236",
           "scope": "首页团体主题、两宽主图",
           "evidence": "v236"
+        },
+        {
+          "at": "开发版 b2f02a67",
+          "scope": "SING ! 首发表演版与 4 月 22 日 Live Clip，六位公开发行成员的同期概念照和本人评分，正文 1425、375、305 px。隔离库杰娜表现 0 已读回。",
+          "evidence": "bewave-sing"
         }
       ],
-      "additional": [],
+      "additional": [
+        {
+          "scope": "SING ! 首发表演版 320 px · 单列六人",
+          "source": "bewave-sing",
+          "nodes": [
+            "1549:1366"
+          ]
+        },
+        {
+          "scope": "另一首十月作品 Dance Performance · 原三宽外链示意",
+          "source": "bewave-previous-stage",
+          "nodes": [
+            "977:1101",
+            "977:1108",
+            "977:1115"
+          ]
+        }
+      ],
       "earlierHomeReference": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/670a71aa813c344c968ab3c0",
-      "qualification": "旧 video 页标明 2024-10-18 的《너에게로 가는 길이 너무 어려워》Dance Performance 和舞台评分，零图片层。当前候选仅代表历史舞台文字示意。"
+      "qualification": "四月两支录音使用各自封面，六人属于公开发行阵容。另列十月 Dance Performance 的历史文字示意。"
     },
     {
       "slug": "candyshop",
@@ -3837,6 +3858,41 @@
     "977:1115": {
       "page": "977:1095",
       "name": "BEWAVE / video / 320",
+      "type": "FRAME"
+    },
+    "1549:1229": {
+      "page": "977:1095",
+      "name": "BEWAVE / SING ! / 首发表演版 / 1440",
+      "type": "FRAME"
+    },
+    "1549:1297": {
+      "page": "977:1095",
+      "name": "BEWAVE / SING ! / 首发表演版 / 390",
+      "type": "FRAME"
+    },
+    "1549:1366": {
+      "page": "977:1095",
+      "name": "BEWAVE / SING ! / 首发表演版 / 320",
+      "type": "FRAME"
+    },
+    "1549:1438": {
+      "page": "977:1095",
+      "name": "BEWAVE / SING ! / Live Clip / 1440",
+      "type": "FRAME"
+    },
+    "1549:1461": {
+      "page": "977:1095",
+      "name": "BEWAVE / SING ! / Live Clip / 390",
+      "type": "FRAME"
+    },
+    "1549:1484": {
+      "page": "977:1095",
+      "name": "BEWAVE / SING ! / 杰娜本人评分 / 1440",
+      "type": "FRAME"
+    },
+    "1549:1562": {
+      "page": "977:1095",
+      "name": "BEWAVE / SING ! / 杰娜本人评分 / 390",
       "type": "FRAME"
     }
   }

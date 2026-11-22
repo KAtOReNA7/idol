@@ -1,0 +1,93 @@
+{
+  "applicationCommit": "3c2cfe150fb2d43645dc02431b5b84898b156f72",
+  "baselineApplicationCommit": "fbf050ba2a5aaf7855ed07f341b1d6f66d0b03b9",
+  "baselineValidationCommit": "ae0276f13e265dd1a4fb216c3aeb377cd83867e0",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4351,"pass": 4234,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4355,"pass": 4238,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1412,"pass": 1412,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "Catch the Stars shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "Catch the Stars uses the individual publisher posts and keeps the previous portrait for each of the five members",
+        "each ITZY member opens the exact original and official credit from their smaller portrait",
+        "five LE SSERAFIM members show their own name before their portrait, original and official source"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4351,"pass": 4234,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4355,"pass": 4238,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1412,"pass": 1412,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "Catch the Stars shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "Catch the Stars uses the individual publisher posts and keeps the previous portrait for each of the five members",
+        "each ITZY member opens the exact original and official credit from their smaller portrait",
+        "five LE SSERAFIM members show their own name before their portrait, original and official source"
+      ],
+      "removedTests": []
+    }
+  },
+  "validationCommit": "3c2cfe150fb2d43645dc02431b5b84898b156f72",
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each verified and ran the full test suite in a dedicated checkout of the frozen application."
+}

@@ -23,13 +23,14 @@ export function MvIdentityPhoto({work,memberId,label,photo,live=false,selectEdit
 }
 
 /** A read-only public credit can show a named reference without inventing a rating. */
-export function PublicCreditRecognitionPhoto({work,memberId,label,reference,children}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;reference:Pick<MvPublicPortrait,'src'|'originalSrc'|'width'|'height'|'label'|'sourceUrl'|'objectPosition'|'sourceCrop'>;children?:ReactNode}){
+export function PublicCreditRecognitionPhoto({work,memberId,label,reference,edition,children}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;reference:Pick<MvPublicPortrait,'src'|'originalSrc'|'width'|'height'|'label'|'sourceUrl'|'objectPosition'|'sourceCrop'>;edition?:RecognitionEditionPhoto|null;children?:ReactNode}){
  const caption=reference.label.replace(/ · 认人参考$/,'').replace(/^既有/,'')
   .replace('已审完整原图','成员资料照').replace('具名照片','成员资料照').replace('团体通用认人参考','团体资料照');
- return <IdentityPhotoFrame work={work} memberId={memberId} label={label} publicImage={{...reference,label:caption,workId:work.id,videoId:'',memberId}}>{children}</IdentityPhotoFrame>;
+ return <IdentityPhotoFrame work={work} memberId={memberId} label={label} publicImage={{...reference,label:caption,workId:work.id,videoId:'',memberId}}
+  edition={edition} previousLabel="原认人照">{children}</IdentityPhotoFrame>;
 }
 
-function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,edition,retainNative=false,children}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;publicImage:MvPublicPortrait|null;edition?:RecognitionEditionPhoto|null;retainNative?:boolean;children?:ReactNode}){
+function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,edition,previousLabel='原作品图',retainNative=false,children}:{work:Pick<Work,'id'|'url'>;memberId:string;label:string;photo?:Photo|null;live?:boolean;publicImage:MvPublicPortrait|null;edition?:RecognitionEditionPhoto|null;previousLabel?:string;retainNative?:boolean;children?:ReactNode}){
  const src=edition?.original??publicImage?.originalSrc??publicImage?.src??(photo&&live?`/api/media?table=${photo.table}&record=${encodeURIComponent(photo.recordId)}&index=${photo.index}`:'');
  const card=publicImage&&publicPortraitCard(publicImage.src);
  const thumbnail=edition?.preview??card?.src??publicImage?.src??src;
@@ -49,7 +50,7 @@ function IdentityPhotoFrame({work,memberId,label,photo,live=false,publicImage,ed
   </button>
   {children&&<div className="mv-photo-score">{children}</div>}
   {src&&<figcaption>{caption}{publicImage&&<a href={edition?.sourceUrl??publicImage.sourceUrl} target="_blank" rel="noopener noreferrer">来源 ↗</a>}</figcaption>}
-  {previous&&<div className="mv-identity-history"><button className="mv-identity-previous" type="button" aria-haspopup="dialog" aria-label={`查看${label}的原作品图 · ${previous.label}`} onClick={()=>setOpened(key+':previous')}>查看原作品图</button><a href={previous.sourceUrl} target="_blank" rel="noopener noreferrer">原出处 ↗</a></div>}
+  {previous&&<div className="mv-identity-history"><button className="mv-identity-previous" type="button" aria-haspopup="dialog" aria-label={`查看${label}的${previousLabel} · ${previous.label}`} onClick={()=>setOpened(key+':previous')}>查看{previousLabel}</button><a href={previous.sourceUrl} target="_blank" rel="noopener noreferrer">原出处 ↗</a></div>}
   {nativeSrc&&<button className="mv-identity-native" type="button" onClick={()=>setOpened(key+':native')}>查看原有照片 ↗</button>}
   {opened===key&&src&&<PhotoLightbox src={src} label={`${label} · ${caption}`} onClose={()=>setOpened(null)}/>}
   {opened===key+':previous'&&previous&&<PhotoLightbox src={previous.src} label={`${label} · ${previous.label}`} onClose={()=>setOpened(null)}/>}

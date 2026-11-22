@@ -148,3 +148,17 @@
  [data-bw-native] .bw-debut-identity h1{max-width:260px}
  [data-bw-native] .bw-debut-profile{padding:6px 0 0}
 }
+
+[data-bw-native] .video-row[data-video-key] { display: block; padding: 0; }
+[data-bw-native] .video-card {
+ display: flex;
+ align-items: center;
+ gap: clamp(16px, 3vw, 40px);
+ min-height: 44px;
+ padding-block: 18px;
+}
+[data-bw-native] .video-card:hover h3 { text-decoration: underline; text-underline-offset: .17em; }
+[data-bw-native] .video-card .video-preview { margin: 0; }
+@media (max-width: 600px) {
+ [data-bw-native] .video-card { align-items: flex-start; flex-direction: column; gap: 10px; }
+}

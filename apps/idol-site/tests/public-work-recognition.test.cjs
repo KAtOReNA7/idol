@@ -18,3 +18,33 @@ test('recognition crops remain within complete original pixels and support a con
   assert(Math.min(c.width,c.height*3/4)>=540);
  }
 });
+
+test('SING ! matches six April release portraits to public credits and keeps the interviews behind each portrait',()=>{
+ const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
+ const {parse}=require('next/dist/compiled/node-html-parser');
+ const {PublicWorkCredits}=require('./helpers/shared-journal-dependency-loader.cjs').sharedJournalDependency('@/components/public-work-credits');
+ const {publicRecognitionEdition}=require('./helpers/public-artist-loader.cjs')('lib/idol/public-work-recognition.ts');
+ const evidence=require('../../../docs/codex/evidence/20261122-bewave-sing/sources-and-crops.json');
+ const groupId='rec28ldfRTiDh1',work={id:evidence.workId,url:'https://www.youtube.com/watch?v='+evidence.performanceVideo.videoId,groupIds:[groupId],ratingIds:[]};
+ const members=evidence.members.map(person=>({id:person.memberId,stageName:person.name,groupIds:[groupId]}));
+ const data={works:[work],members,ratings:[]},before=structuredClone(data);
+ const page=parse(renderToStaticMarkup(React.createElement(PublicWorkCredits,{work,data,onMember(){},
+  renderScore:member=>React.createElement('button',{'data-test-score':member.id},'个人评分')})));
+ const cards=page.querySelectorAll('.public-recognition-grid > li');
+ assert.equal(cards.length,6);
+ assert.match(page.text,/发行阵容/);
+ for(const [index,person] of evidence.members.entries()){
+  const binding={workId:work.id,videoId:evidence.performanceVideo.videoId,memberId:person.memberId};
+  const edition=publicRecognitionEdition(binding),card=cards[index];
+  assert.equal(card.getAttribute('data-photo-member'),person.memberId);
+  assert.equal(card.querySelector('.mv-identity-frame img').getAttribute('src'),person.card);
+  assert.equal(card.querySelector('.mv-identity-frame + .mv-photo-score button').getAttribute('data-test-score'),person.memberId);
+  assert.equal(card.querySelector('figcaption a').getAttribute('href'),person.publisher);
+  assert.equal(edition.original,person.original);
+  assert.match(card.querySelector('.mv-identity-previous').text,/原认人照/);
+  assert.equal(new URL(card.querySelector('.mv-identity-history a').getAttribute('href')).hostname,'www.edaily.co.kr');
+  assert.equal(read(work)[index].src,person.retainedPortrait);
+  for(const mismatch of [{workId:'another-work'},{memberId:'another-member'},{videoId:evidence.liveClip.videoId}])assert.equal(publicRecognitionEdition({...binding,...mismatch}),null);
+ }
+ assert.deepEqual(data,before);
+});

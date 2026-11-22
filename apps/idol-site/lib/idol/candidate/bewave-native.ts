@@ -1,7 +1,8 @@
 import type {Work} from '@/lib/idol/types';
 import {videoId} from '@/lib/idol/values';
 import {stageSourceKey,stageHasValidBinding} from '@/lib/idol/stage-source';
-export const BEWAVE_GROUP_ID='rec28ldfRTiDh1';
+import {BEWAVE_GROUP_ID} from '../bewave-film-version';
+export {BEWAVE_GROUP_ID};
 export type BewaveVideo={id:string;type:string;videoId:string};
 /** A native score belongs to a record AND a video slot, never just a song title. */
 export function bewaveNativeBinding(item:BewaveVideo,works:readonly Work[]){

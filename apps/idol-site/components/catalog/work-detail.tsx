@@ -9,6 +9,7 @@ import {useState, useCallback, useRef} from 'react';
 import {ArrowUpRight, ArrowLeft, Check, ChevronRight, Music2, Disc3} from 'lucide-react';
 import type {CatalogView as Catalog, Member, Work} from '@/lib/idol/types';
 import {videoId} from '@/lib/idol/values';
+import {BEWAVE_GROUP_ID,bewaveFilmVersion} from '@/lib/idol/bewave-film-version';
 import {approvedVideoPoster, approvedStagePoster, stagePreviewFallback} from '@/lib/idol/approved-video-poster';
 import {MvPhotoReference} from '@/components/mv-photo-reference';
 import {mvRecognitionEdition} from '@/lib/idol/mv-recognition-edition';
@@ -230,8 +231,12 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  const versionLinks=work.versionDisplay?.links??[];
  const versionGroups=[...new Set(versionLinks.map(link=>link.categories.join(' / ')))];
  const stage=work.stage;const stageBound=stageHasValidBinding(stage);
- const headingDetails = view === 'mv' ? [work.videoType, work.version, work.releaseDate]
-  : stage ? [stageKindLabel(stage.kind), stage.publishedDate && `视频发布于 ${stage.publishedDate}`]
+ const filmVersion=work.groupIds.includes(BEWAVE_GROUP_ID)?bewaveFilmVersion(work.id,view==='stage'?stageSourceKey(stage):videoId(work.url),view==='stage'):null;
+ const videoType=filmVersion?.label??work.videoType;
+ const stageKind=filmVersion?.label??(stage?stageKindLabel(stage.kind):'');
+ const videoDate=filmVersion?.date??(view==='stage'?stage?.publishedDate:work.releaseDate);
+ const headingDetails = view === 'mv' ? [videoType, work.version, videoDate]
+  : stage ? [stageKind, videoDate && `视频发布于 ${videoDate}`]
   : [stageStatusLabel(work)];
  const stageNote=stage?.verificationNote&&!stage.sameSongFallback?stageViewingNote(work.id,stageSourceKey(stage)):null;
  const activeUrl=view==='stage'?(stage?stageWatchUrl(stage):''):work.url;const vid=view==='stage'?stage?.videoId??null:videoId(activeUrl);const activePlatform=view==='stage'?stage?.platform??'youtube':'youtube';const activePlatformLabel=activePlatform==='bilibili'?'B站':activePlatform==='x'?'X':'YouTube';const title=view==='stage'?stage?.title??'暂无舞台视频':work.officialTitle||work.name;
@@ -300,11 +305,11 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  <div className="video-caption"><span>{title}</span>{!playback&&activeUrl&&<a href={activeUrl} target="_blank" rel="noopener noreferrer">{activePlatformLabel} 原视频<ArrowUpRight size={13}/></a>}</div>
  {loonaButterfly&&<div className="loona-associated-release"><img src="/artist/loona/approved-home/butterfly-album.jpg" width="96" height="96" alt="关联发行《X X》封面"/><div><strong>关联发行《X X》</strong><span>发行封面</span></div></div>}
  {!playback&&vid&&activePlatform==='youtube'&&<CaptionHelp/>}
- {view==='stage'&&stage&&<div className="stage-source">{stage.sameSongFallback&&<StageSameSongFallback stage={stage}/>}<p>{stage.channel} · {stageKindLabel(stage.kind)}{stage.sourceClass==='reupload'?' · 转载':stage.sourceClass==='third_party'?' · 第三方上传':''}</p>{stageNote&&<p className="stage-version-note">{stageNote}</p>}{stage.clip&&<p className="stage-reuse-note">整场中的单曲片段 · {formatStageTime(stage.clip.startSeconds)}–{formatStageTime(stage.clip.endSeconds)}<br/>{stage.platform==='bilibili'?'在 B 站原页选择最高画质，观看标注的区间。':'站内播放此片段；打开原视频会从起点开始，需自行在终点停止。'}</p>}{stage.reusesOriginalVideo&&<p className="stage-reuse-note">与 MV 页为同一支表演视频。</p>}{stage.higherCandidate&&<p className="stage-reuse-note">另有更高赞舞台可看，当前评分仍对应这支视频。<a href={stage.higherCandidate.url} target="_blank" rel="noopener noreferrer">观看另一版 ↗</a></p>}{!stageBound&&work.stageScore!==null&&<p className="stage-version-note">原有舞台分已保留，但对应的视频还未确认；暂不为这支视频改分。</p>}</div>}
+ {view==='stage'&&stage&&<div className="stage-source">{stage.sameSongFallback&&<StageSameSongFallback stage={stage}/>}<p>{stage.channel} · {stageKind}{stage.sourceClass==='reupload'?' · 转载':stage.sourceClass==='third_party'?' · 第三方上传':''}</p>{stageNote&&<p className="stage-version-note">{stageNote}</p>}{stage.clip&&<p className="stage-reuse-note">整场中的单曲片段 · {formatStageTime(stage.clip.startSeconds)}–{formatStageTime(stage.clip.endSeconds)}<br/>{stage.platform==='bilibili'?'在 B 站原页选择最高画质，观看标注的区间。':'站内播放此片段；打开原视频会从起点开始，需自行在终点停止。'}</p>}{stage.reusesOriginalVideo&&<p className="stage-reuse-note">与 MV 页为同一支表演视频。</p>}{stage.higherCandidate&&<p className="stage-reuse-note">另有更高赞舞台可看，当前评分仍对应这支视频。<a href={stage.higherCandidate.url} target="_blank" rel="noopener noreferrer">观看另一版 ↗</a></p>}{!stageBound&&work.stageScore!==null&&<p className="stage-version-note">原有舞台分已保留，但对应的视频还未确认；暂不为这支视频改分。</p>}</div>}
 
  {view==='stage'&&<StageSupplements work={work}/>}
  </div><aside className={'work-aside '+(view==='stage'?'stage-aside':'')}><GroupLinks data={data} ids={work.groupIds} onGroup={onGroup}/><h1>{work.song||work.name}</h1>
- <div className="tags">{view==='stage'?<><span>舞台</span><span>{stage?stageKindLabel(stage.kind):'暂无舞台'}</span>{stage?.publishedDate&&<span>{stage.publishedDate}</span>}</>:<><span>{work.videoType||'视频'}</span>{work.version&&<span>{work.version}</span>}{work.releaseDate&&<span>{work.releaseDate}</span>}{versionTags.map(tag=><span key={tag}>{tag}</span>)}</>}</div>
+ <div className="tags">{view==='stage'?<><span>舞台</span><span>{stage?stageKind:'暂无舞台'}</span>{videoDate&&<span>{videoDate}</span>}</>:<><span>{videoType||'视频'}</span>{work.version&&<span>{work.version}</span>}{videoDate&&<span>{videoDate}</span>}{versionTags.map(tag=><span key={tag}>{tag}</span>)}</>}</div>
  {view==='mv'&&versionLinks.length>0&&<nav className="work-version-links" aria-label="作品版本与关联">{versionGroups.map(category=><div className="work-version-group" key={category}><span className="work-version-category">{category}</span><div>{versionLinks.filter(link=>link.categories.join(' / ')===category).map(link=><button type="button" key={link.workId} data-browse-anchor={'version-'+work.id+'-'+link.workId} data-member-work-trigger={'version:'+work.id+':'+link.workId} disabled={navigationBlockedKeys.length>0} onClick={event=>{event.currentTarget.focus({preventScroll:true});onVersion(link.workId);}}><span>{link.title}</span>{link.labels.length>0&&<small>{link.labels.join(' · ')}</small>}<ChevronRight size={14}/></button>)}</div></div>)}</nav>}
  {view==='mv'&&mvVersionWarning(work.verification)&&<p className="verification">{mvVersionWarning(work.verification)}</p>}
 

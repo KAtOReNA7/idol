@@ -3,7 +3,7 @@ import type {ReactNode} from 'react';
 import type {CatalogView,Member,Work} from '@/lib/idol/types';
 import {creditHeading,publicCreditForWork,publicCreditsForMember} from '@/lib/idol/public-work-credits';
 import {publicProductionForWork} from '@/lib/idol/public-production-credits';
-import {publicWorkRecognition} from '@/lib/idol/public-work-recognition';
+import {publicRecognitionEdition,publicWorkRecognition} from '@/lib/idol/public-work-recognition';
 import {PublicCreditRecognitionPhoto} from './mv-identity-photo';
 import {publicGroupRecognitionForWork} from '@/lib/idol/public-group-recognition';
 import {MusicMemberPhoto} from './catalog/member-portrait';
@@ -35,7 +35,9 @@ export function PublicWorkCredits({work,data,onMember,renderScore,inScoringSecti
   {!inScoringSection&&<h2>成员资料</h2>}
   <p className="member-credit-scope">{title}</p>
   <ul className={portraits.length?'public-recognition-grid':undefined}>{members.map(m=>{const portrait=portraits.find(p=>p.memberId===m.id),score=renderScore?.(m);return <li key={m.id} data-photo-member={m.id}>
-   {portrait?<PublicCreditRecognitionPhoto work={work} memberId={m.id} label={memberDisplayName(m)} reference={portrait}>{score}</PublicCreditRecognitionPhoto>:score&&<><MusicMemberPhoto member={m} live/><div className="mv-photo-score">{score}</div><small>成员资料照</small></>}
+   {portrait?<PublicCreditRecognitionPhoto work={work} memberId={m.id} label={memberDisplayName(m)} reference={portrait}
+     edition={publicRecognitionEdition({workId:work.id,videoId:credit.videoId,memberId:m.id})}>
+     {score}</PublicCreditRecognitionPhoto>:score&&<><MusicMemberPhoto member={m} live/><div className="mv-photo-score">{score}</div><small>成员资料照</small></>}
    <button type="button" onClick={()=>onMember(m.id)}>{memberDisplayName(m)} ↗</button>
   </li>;})}</ul>
   <a href={credit.sourceUrl} target="_blank" rel="noopener noreferrer">查看资料来源 ↗</a>

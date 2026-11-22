@@ -30,7 +30,7 @@ export async function checkReleaseFilters(tab, {site, groups=slugs}) {
       await back.click();
       await release.waitFor({state:'visible',timeoutMs:4000});
       row.returned=await pw.evaluate(catalogContents);
-      if(['adya','witchx'].includes(slug)) {
+      {
         const box=pw.getByRole('textbox').first();
         await box.fill('no-match-482');
         await box.press('Enter');
@@ -39,7 +39,7 @@ export async function checkReleaseFilters(tab, {site, groups=slugs}) {
         if(await clear.count()) await clear.click();
         else {await box.fill('');await box.press('Enter');}
         row.cleared=await pw.evaluate(catalogContents);
-        for(const [key,name] of [['mv',/^(MV|影像)$/],['stage',/^舞台$/]]) {
+        for(const [key,name] of [['mv',/^(MV|影像)(?:\s+\d+)?$/],['stage',/^舞台(?:\s+\d+)?$/]]) {
           await pw.getByRole('link',{name}).click();
           row[key]=await pw.evaluate(catalogContents);
         }

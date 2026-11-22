@@ -26,22 +26,21 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 420,
+    "twoWidthBoardMatches": 423,
     "twoWidthBySurface": {
       "home": 51,
-      "members": 45,
+      "members": 46,
       "profile": 51,
-      "works": 44,
+      "works": 45,
       "release": 43,
       "mv": 51,
       "stage": 48,
-      "timeline": 42,
+      "timeline": 43,
       "score": 45
     },
     "missingOrPartialBySurface": {
       "home": [],
       "members": [
-        "babymonster",
         "xg",
         "aespa",
         "kissoflife",
@@ -50,7 +49,6 @@
       ],
       "profile": [],
       "works": [
-        "babymonster",
         "xg",
         "aespa",
         "kissoflife",
@@ -75,7 +73,6 @@
         "purplekiss"
       ],
       "timeline": [
-        "babymonster",
         "xg",
         "aespa",
         "kissoflife",
@@ -166,7 +163,10 @@
     "v253-album-journeys": "docs/codex/evidence/20261123-v253/formal-album-journeys.json",
     "v254-formal-easy-and-forever": "docs/codex/evidence/20261123-v254/formal-easy-and-forever.json",
     "aespa-forever": "docs/codex/evidence/20261123-aespa-forever/design-and-sources.json",
-    "itzy-kill-my-doubt": "docs/codex/worklogs/20261123-itzy-kill-my-doubt-design.md"
+    "itzy-kill-my-doubt": "docs/codex/worklogs/20261123-itzy-kill-my-doubt-design.md",
+    "babymonster-share-directories": "docs/codex/evidence/20261123-v255/babymonster-share-directories.json",
+    "wooah-exclamation": "docs/codex/evidence/20261123-wooah-exclamation/design-and-sources.json",
+    "v255-formal": "docs/codex/evidence/20261123-v255/formal-babymonster-itzy-wooah.json"
   },
   "groups": [
     {
@@ -2580,6 +2580,11 @@
           "at": "v238",
           "scope": "首页原图、关闭回焦",
           "evidence": "v238"
+        },
+        {
+          "at": "正式 v255",
+          "scope": "《woo!ah!》六人出道照片、原作品截图和双宽本人评分",
+          "evidence": "v255-formal"
         }
       ],
       "additional": [
@@ -2858,16 +2863,16 @@
           "87:532"
         ],
         "members": [
-          null,
-          null
+          "1678:1478",
+          "1678:1545"
         ],
         "profile": [
           "87:533",
           "1624:1124"
         ],
         "works": [
-          null,
-          null
+          "1678:1615",
+          "1678:1811"
         ],
         "release": [
           null,
@@ -2882,8 +2887,8 @@
           "110:614"
         ],
         "timeline": [
-          null,
-          null
+          "1678:2007",
+          "1678:2206"
         ],
         "score": [
           "1446:1232",
@@ -2892,7 +2897,10 @@
       },
       "revised": {
         "profile": "babymonster-profile",
-        "score": "shared"
+        "score": "shared",
+        "members": "babymonster-share-directories",
+        "works": "babymonster-share-directories",
+        "timeline": "babymonster-share-directories"
       },
       "implementation": [
         {
@@ -2904,6 +2912,11 @@
           "at": "v236",
           "scope": "《BILLIONAIRE》七人评分入口与本人照片",
           "evidence": "v236"
+        },
+        {
+          "at": "正式 v255",
+          "scope": "三个分享首份分别显示七人、十九个作品及十一条事件，作品、事件和成员实测恢复焦点",
+          "evidence": "v255-formal"
         }
       ],
       "additional": [
@@ -3617,6 +3630,11 @@
           "at": "本地",
           "scope": "五位成员可打开本人原图和 JYP 出处，具名预览用于名录与详情",
           "evidence": "itzy-yeji-profile"
+        },
+        {
+          "at": "正式 v255",
+          "scope": "《KILL MY DOUBT》原封面、完整六曲、三个原版 MV、双宽回焦",
+          "evidence": "v255-formal"
         }
       ],
       "additional": []
@@ -4228,6 +4246,56 @@
     "1669:1527": {
       "page": "1457:1109",
       "name": "ITZY / KILL MY DOUBT / 发行详情 / 390",
+      "type": "FRAME"
+    },
+    "1678:1478": {
+      "page": "0:1",
+      "name": "BABYMONSTER / 成员名录 / 1440",
+      "type": "FRAME"
+    },
+    "1678:1545": {
+      "page": "0:1",
+      "name": "BABYMONSTER / 成员名录 / 375",
+      "type": "FRAME"
+    },
+    "1678:1615": {
+      "page": "0:1",
+      "name": "BABYMONSTER / 作品目录 / 1440",
+      "type": "FRAME"
+    },
+    "1678:1811": {
+      "page": "0:1",
+      "name": "BABYMONSTER / 作品目录 / 375",
+      "type": "FRAME"
+    },
+    "1678:2007": {
+      "page": "0:1",
+      "name": "BABYMONSTER / 时间轴 / 1440",
+      "type": "FRAME"
+    },
+    "1678:2206": {
+      "page": "0:1",
+      "name": "BABYMONSTER / 时间轴 / 375",
+      "type": "FRAME"
+    },
+    "1674:2095": {
+      "page": "921:1104",
+      "name": "WOOAH / woo!ah! / 1440",
+      "type": "FRAME"
+    },
+    "1674:2121": {
+      "page": "921:1104",
+      "name": "WOOAH / woo!ah! / 390",
+      "type": "FRAME"
+    },
+    "1674:2148": {
+      "page": "921:1104",
+      "name": "WOOAH / woo!ah! / 1440",
+      "type": "FRAME"
+    },
+    "1674:2174": {
+      "page": "921:1104",
+      "name": "WOOAH / woo!ah! / 390",
       "type": "FRAME"
     }
   }

@@ -2,9 +2,9 @@
 
 | 入口 | 当前可用版本 |
 |---|---|
-| 正式站 | v254。LE SSERAFIM《EASY》同一手机目录封面的响应体减少 98.17%，两宽从作品和专辑各 4/4 返回原入口。aespa《Forever》四张具名同期照首显减少 68.10%，完整原图两宽 8/8 打开并回焦。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v254-release.md) |
+| 正式站 | v255。BABYMONSTER 三个分享入口首份直接显示 7 人、19 作和 11 个事件。ITZY《KILL MY DOUBT》六首与三条原版 MV 已上线。WOOAH《woo!ah!》六卡预览减少 66.30%。飞书 28/29 项已解决。[正式验收](worklogs/20261123-v255-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v254 正式应用 `fbb29ab4`。接续 ITZY《KILL MY DOUBT》、WOOAH《woo!ah!》同期照与 BABYMONSTER 的成员、作品和时间轴直达。四场节目、《Per》首发完整版及《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v254/publication.json) |
+| 当前开发 | `codex/project-optimization-20261121`。v255 正式应用 `a377e1c3`。接续 BABYMONSTER 冷开搜索首击、fromis_9 三次发行同期照和 KISS OF LIFE 分享布局。四场节目、《Per》首发完整版及《BLALA》歌词版待新同版片源。[正式发布](evidence/20261123-v255/publication.json) |
 
 ## 11 月 22 日更新
 

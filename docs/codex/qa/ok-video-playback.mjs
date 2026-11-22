@@ -54,6 +54,7 @@ function installProbe(duration) {
       deadline = setTimeout(() => this.stop(), timeout);
     },
   };
+  probe.beforeMute=probe.media();
   eachMedia(silence);
   window.idolTemporaryPlaybackProbe = probe;
   return true;
@@ -69,7 +70,7 @@ function onWork(actual, page) {
 
 export async function checkOkVideo(tab, work, site, timeoutMs) {
   const page = new URL('/?view=works&work='+work.id+'&video=mv', site);
-  const address = work.origin + work.path;
+  const address = work.origin + work.path + '?autoplay=1&silent=1';
   const row = {id:work.id,title:work.title,origin:work.origin,status:'unverified',frames:0,
     defaultSamples:[],samples:[],qualityChoice:null,samePage:false,kbps:null};
   if (new URL(await tab.url()).origin !== page.origin) await tab.goto(new URL('/favicon.svg', page).href);
@@ -80,6 +81,13 @@ export async function checkOkVideo(tab, work, site, timeoutMs) {
     await tab.goto(page.href);
     const selector = '.detail:not(.stage-view) .video-stage iframe';
     const player = tab.playwright.locator(selector);
+    const activate=tab.playwright.getByRole('button',{name:'播放视频（OK Video）',exact:true});
+    await activate.waitFor({state:'visible',timeoutMs:15000});
+    const heading=await activate.evaluate(el=>el.closest('.detail')?.querySelector('.music-work-title h1')?.textContent.trim());
+    row.framesBefore=await player.count();
+    if (row.framesBefore!==0 || heading!==work.title || !onWork(await tab.url(),page))
+      throw Error('Unexpected player before the user action');
+    await activate.click({timeoutMs:5000});
     await player.waitFor({state:'visible',timeoutMs:15000});
     const details = await player.evaluate(el => ({src:el.src,allow:el.allow,
       heading:el.closest('.detail')?.querySelector('.music-work-title h1')?.textContent.trim()}));
@@ -106,7 +114,7 @@ export async function checkOkVideo(tab, work, site, timeoutMs) {
     async function measure(width, activate) {
       await run(options => window.idolTemporaryPlaybackProbe.start(options), {width,timeout:timeoutMs});
       try {
-        await activate();
+        if (activate) await activate();
         const until = Date.now() + timeoutMs;
         while (Date.now() < until) {
           if (await run(() => window.idolTemporaryPlaybackProbe.done)) break;
@@ -115,18 +123,13 @@ export async function checkOkVideo(tab, work, site, timeoutMs) {
         return await run(() => window.idolTemporaryPlaybackProbe.samples);
       } finally {await run(() => window.idolTemporaryPlaybackProbe.stop());}
     }
-    const cover=frame.locator('.vid_play');
     const resume=frame.getByRole('button',{name:/^(Смотреть|Воспроизвести|Play|播放)$/i});
-    row.defaultSamples = await measure(1, () => cover.click(click));
-    if (row.defaultSamples.length !== 2) {
-      row.firstAttempt={media:await run(() => window.idolTemporaryPlaybackProbe.media()),
-        coverVisible:await cover.isVisible(),resumeVisible:await resume.isVisible()};
-      const retry=row.firstAttempt.resumeVisible?resume:row.firstAttempt.coverVisible?cover:null;
-      if (retry) row.defaultSamples=await measure(1,() => retry.click(click));
-      if (row.defaultSamples.length !== 2) {
-        row.lastMedia=await run(() => window.idolTemporaryPlaybackProbe.media());
-        row.status='no-confirmed-progress';return row;
-      }
+    row.beforeTestMute=await run(() => window.idolTemporaryPlaybackProbe.beforeMute);
+    row.defaultSamples=await measure(1);
+    row.firstClickPlayed=row.defaultSamples.length===2;
+    if (!row.firstClickPlayed) {
+      row.lastMedia=await run(() => window.idolTemporaryPlaybackProbe.media());
+      row.status='no-confirmed-first-click-progress';return row;
     }
     if (row.defaultSamples.every(s => s.w === width && s.h === height)) {
       row.qualityChoice='current setting';
@@ -144,7 +147,7 @@ export async function checkOkVideo(tab, work, site, timeoutMs) {
       });
     }
     row.samePage=onWork(await tab.url(), page) && (await player.count())===1;
-    row.status=row.samples.length===2 && row.samePage?'playing':'highest-quality-unverified';
+    row.status=row.samples.length===2 && row.samples.every(s=>s.w===width && s.h===height) && row.samePage?'playing':'highest-quality-unverified';
   } catch(error) {
     row.error=String(error.message).split('\n')[0].slice(0,140);
   } finally {

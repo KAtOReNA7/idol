@@ -1,0 +1,303 @@
+{
+  "applicationCommit": "ffcc04d97d902c43c0119014da5440dedf2818f7",
+  "baselineApplicationCommit": "c9a99aa72e43436ffa3bc4b5e4728e495d2e5d55",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4222,"pass": 4052,"fail": 131,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4252,"pass": 4096,"fail": 117,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1343,"pass": 1343,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5995,
+          "restrictedCopies": 10,
+          "localAssets": 588,
+          "localBytes": 17136007
+        }
+      },
+      "retainedFailureCount": 117,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/expanded-artist.test.cjs",
+          "test": "themed member pages retain captured social counts and dates without calling them live"
+        },
+        {
+          "suite": "main",
+          "file": "tests/hearts2hearts-artist.test.cjs",
+          "test": "Hearts2Hearts member summaries preserve zero, dimension sample counts and exact MV photo absence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/hearts2hearts-figma.test.cjs",
+          "test": "missing member work photo never becomes oversized fake artwork"
+        },
+        {
+          "suite": "main",
+          "file": "tests/itzy-artist.test.cjs",
+          "test": "ITZY member summaries preserve zero, dimension sample counts and exact MV photo absence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/izna-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/katseye-artist.test.cjs",
+          "test": "KATSEYE member dimensions remain distinct and missing MV photo never uses portrait"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "KiiiKiii member summaries preserve zero, dimension sample counts and exact MV photo absence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiof-artist.test.cjs",
+          "test": "KIOF member summaries preserve zero, dimension sample counts and exact MV photo absence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/lesserafim-artist.test.cjs",
+          "test": "LE SSERAFIM member dimensions remain distinct and missing MV photo never uses portrait"
+        },
+        {
+          "suite": "main",
+          "file": "tests/loona-detail.test.cjs",
+          "test": "LOONA failed save keeps typed zero and draft; score widget never writes by itself"
+        },
+        {
+          "suite": "main",
+          "file": "tests/nmixx-artist.test.cjs",
+          "test": "NMIXX member summaries preserve zero, dimension sample counts and exact MV photo absence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/saymyname-artist.test.cjs",
+          "test": "SAY MY NAME member summary uses true relationships and exact work photo only"
+        },
+        {
+          "suite": "main",
+          "file": "tests/stayc-artist.test.cjs",
+          "test": "STAYC member dimensions remain distinct and missing MV photo never uses portrait"
+        },
+        {
+          "suite": "main",
+          "file": "tests/triples-detail.test.cjs",
+          "test": "tripleS typed zero survives failed save, and MV/stage keep the same editor"
+        }
+      ],
+      "addedTests": [
+        "BADVILLAIN home and catalog expose their five exact MVs before and after the catalog arrives",
+        "Butterfly reads back the correct work and member after a lost D1 save response",
+        "Girls Never Die reads back the correct work and member after a lost D1 save response",
+        "MVs show the historical cast and their records once without the roster of buttons below the player",
+        "UDTT links the original MV from its directory, release, cast and related performance with an exact return",
+        "UNIS gives its first three MVs matching artwork and a direct player before the release covers",
+        "VVUP presents the larger release photo, one viewing action per card and statistics detail on request",
+        "YOUNG POSSE keeps each title beside its own source artwork and opens the corresponding work in one action",
+        "adya MV directory offers a same-tab player only for the exact public version, including cold links",
+        "atheart MV directory offers a same-tab player only for the exact public version, including cold links",
+        "bewave MV directory offers a same-tab player only for the exact public version, including cold links",
+        "candyshop MV directory offers a same-tab player only for the exact public version, including cold links",
+        "current and historical agencies use the same display, company filter and text search",
+        "each UNIS home MV has one full-card link to its own work",
+        "each of the 51 actual group home renderers shows exactly one uncollapsed introduction",
+        "every artist group keeps reviewed video artwork inside its own picture and preserves the source",
+        "geenius MV directory offers a same-tab player only for the exact public version, including cold links",
+        "genblue MV directory offers a same-tab player only for the exact public version, including cold links",
+        "hitgs MV directory offers a same-tab player only for the exact public version, including cold links",
+        "ifeye original home, every MV, filtered directory and related cards link straight to their own player",
+        "ifeye preserves its mounted host and the same focused MV anchor when its live catalog arrives",
+        "izna original home, every MV, filtered directory and related cards link straight to their own player",
+        "izna preserves its mounted host and the same focused MV anchor when its live catalog arrives",
+        "oddyouth MV directory offers a same-tab player only for the exact public version, including cold links",
+        "reviewed letterbox crops stay inside the image on both previews and preserve each full original",
+        "same-title sources, conflicting record IDs, duplicates and placeholders cannot acquire another MV’s route",
+        "spia MV directory offers a same-tab player only for the exact public version, including cold links",
+        "the 51 directory cards and five homepage cards keep a single public company line at every score",
+        "the member editor stays below its own portrait and keeps its draft across the stage tab",
+        "tracer MV directory offers a same-tab player only for the exact public version, including cold links",
+        "vcha MV directory offers a same-tab player only for the exact public version, including cold links",
+        "witchx MV directory offers a same-tab player only for the exact public version, including cold links",
+        "wooah MV directory offers a same-tab player only for the exact public version, including cold links",
+        "youngposse MV directory offers a same-tab player only for the exact public version, including cold links"
+      ],
+      "removedTests": [
+        "MV cast shortcuts use only this work’s historical rating roster, Chinese display names, and exact card targets",
+        "each UNIS home MV has one full-row link to its own work",
+        "shortcut focuses and scrolls only its card without saving, playing, navigating, clearing drafts or changing editor identity",
+        "shortcuts disappear for stage and empty rosters; returning to MV preserves drafts"
+      ]
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4222,"pass": 4056,"fail": 127,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4252,"pass": 4100,"fail": 113,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1343,"pass": 1343,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5995,
+          "restrictedCopies": 10,
+          "localAssets": 588,
+          "localBytes": 17136007
+        }
+      },
+      "retainedFailureCount": 113,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/expanded-artist.test.cjs",
+          "test": "themed member pages retain captured social counts and dates without calling them live"
+        },
+        {
+          "suite": "main",
+          "file": "tests/hearts2hearts-artist.test.cjs",
+          "test": "Hearts2Hearts member summaries preserve zero, dimension sample counts and exact MV photo absence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/hearts2hearts-figma.test.cjs",
+          "test": "missing member work photo never becomes oversized fake artwork"
+        },
+        {
+          "suite": "main",
+          "file": "tests/itzy-artist.test.cjs",
+          "test": "ITZY member summaries preserve zero, dimension sample counts and exact MV photo absence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/izna-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/katseye-artist.test.cjs",
+          "test": "KATSEYE member dimensions remain distinct and missing MV photo never uses portrait"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "KiiiKiii member summaries preserve zero, dimension sample counts and exact MV photo absence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiof-artist.test.cjs",
+          "test": "KIOF member summaries preserve zero, dimension sample counts and exact MV photo absence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/lesserafim-artist.test.cjs",
+          "test": "LE SSERAFIM member dimensions remain distinct and missing MV photo never uses portrait"
+        },
+        {
+          "suite": "main",
+          "file": "tests/loona-detail.test.cjs",
+          "test": "LOONA failed save keeps typed zero and draft; score widget never writes by itself"
+        },
+        {
+          "suite": "main",
+          "file": "tests/nmixx-artist.test.cjs",
+          "test": "NMIXX member summaries preserve zero, dimension sample counts and exact MV photo absence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/saymyname-artist.test.cjs",
+          "test": "SAY MY NAME member summary uses true relationships and exact work photo only"
+        },
+        {
+          "suite": "main",
+          "file": "tests/stayc-artist.test.cjs",
+          "test": "STAYC member dimensions remain distinct and missing MV photo never uses portrait"
+        },
+        {
+          "suite": "main",
+          "file": "tests/triples-detail.test.cjs",
+          "test": "tripleS typed zero survives failed save, and MV/stage keep the same editor"
+        }
+      ],
+      "addedTests": [
+        "BADVILLAIN home and catalog expose their five exact MVs before and after the catalog arrives",
+        "Butterfly reads back the correct work and member after a lost D1 save response",
+        "Girls Never Die reads back the correct work and member after a lost D1 save response",
+        "MVs show the historical cast and their records once without the roster of buttons below the player",
+        "UDTT links the original MV from its directory, release, cast and related performance with an exact return",
+        "UNIS gives its first three MVs matching artwork and a direct player before the release covers",
+        "VVUP presents the larger release photo, one viewing action per card and statistics detail on request",
+        "YOUNG POSSE keeps each title beside its own source artwork and opens the corresponding work in one action",
+        "adya MV directory offers a same-tab player only for the exact public version, including cold links",
+        "atheart MV directory offers a same-tab player only for the exact public version, including cold links",
+        "bewave MV directory offers a same-tab player only for the exact public version, including cold links",
+        "candyshop MV directory offers a same-tab player only for the exact public version, including cold links",
+        "current and historical agencies use the same display, company filter and text search",
+        "each UNIS home MV has one full-card link to its own work",
+        "each of the 51 actual group home renderers shows exactly one uncollapsed introduction",
+        "every artist group keeps reviewed video artwork inside its own picture and preserves the source",
+        "geenius MV directory offers a same-tab player only for the exact public version, including cold links",
+        "genblue MV directory offers a same-tab player only for the exact public version, including cold links",
+        "hitgs MV directory offers a same-tab player only for the exact public version, including cold links",
+        "ifeye original home, every MV, filtered directory and related cards link straight to their own player",
+        "ifeye preserves its mounted host and the same focused MV anchor when its live catalog arrives",
+        "izna original home, every MV, filtered directory and related cards link straight to their own player",
+        "izna preserves its mounted host and the same focused MV anchor when its live catalog arrives",
+        "oddyouth MV directory offers a same-tab player only for the exact public version, including cold links",
+        "reviewed letterbox crops stay inside the image on both previews and preserve each full original",
+        "same-title sources, conflicting record IDs, duplicates and placeholders cannot acquire another MV’s route",
+        "spia MV directory offers a same-tab player only for the exact public version, including cold links",
+        "the 51 directory cards and five homepage cards keep a single public company line at every score",
+        "the member editor stays below its own portrait and keeps its draft across the stage tab",
+        "tracer MV directory offers a same-tab player only for the exact public version, including cold links",
+        "vcha MV directory offers a same-tab player only for the exact public version, including cold links",
+        "witchx MV directory offers a same-tab player only for the exact public version, including cold links",
+        "wooah MV directory offers a same-tab player only for the exact public version, including cold links",
+        "youngposse MV directory offers a same-tab player only for the exact public version, including cold links"
+      ],
+      "removedTests": [
+        "MV cast shortcuts use only this work’s historical rating roster, Chinese display names, and exact card targets",
+        "each UNIS home MV has one full-row link to its own work",
+        "shortcut focuses and scrolls only its card without saving, playing, navigating, clearing drafts or changing editor identity",
+        "shortcuts disappear for stage and empty rosters; returning to MV preserves drafts"
+      ]
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each verified and ran the full test suite in a dedicated checkout of the frozen application."
+}

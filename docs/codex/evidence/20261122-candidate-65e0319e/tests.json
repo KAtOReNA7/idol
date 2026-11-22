@@ -1,0 +1,111 @@
+{
+  "applicationCommit": "65e0319e7bc2cfd7895477bb72388dda0bfbb7c4",
+  "baselineApplicationCommit": "ffcc04d97d902c43c0119014da5440dedf2818f7",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4252,"pass": 4096,"fail": 117,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4261,"pass": 4105,"fail": 117,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1347,"pass": 1347,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5995,
+          "restrictedCopies": 10,
+          "localAssets": 601,
+          "localBytes": 26707091
+        }
+      },
+      "retainedFailureCount": 117,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "Kep1er pairs every listed film and stage with its own picture, title, destination and return",
+        "UDTT starts the owner photo index while the catalog is pending",
+        "UDTT starts the public photo index while the catalog is pending",
+        "W!TCHX unites its original wordmark, group photograph, introduction and both catalog paths",
+        "an old media bookmark opens the reviewed native detail and returns to its video catalog without looping",
+        "an unhydrated artist photo opens inside the page, retries and returns focus on close",
+        "featured MV actions match the exact version present in each catalog, including newly imported works",
+        "opening a fresh work leaves the play control in place during late artwork layout",
+        "original photo links retain their file URL and enhance an unmodified activation with focus and a dialog",
+        "reviewed editorial MVs import into their own empty records and retain scores after a retried save",
+        "reviewed editorial detail gives each AtHeart release portrait its own score and distinguishes the BLALA lyric video"
+      ],
+      "removedTests": [
+        "featured MV actions have the same verified destination before and after catalog loading",
+        "original photo links navigate before hydration and enhance a plain activation with focus and a dialog"
+      ]
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4252,"pass": 4100,"fail": 113,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4261,"pass": 4109,"fail": 113,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1347,"pass": 1347,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5995,
+          "restrictedCopies": 10,
+          "localAssets": 601,
+          "localBytes": 26707091
+        }
+      },
+      "retainedFailureCount": 113,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "Kep1er pairs every listed film and stage with its own picture, title, destination and return",
+        "UDTT starts the owner photo index while the catalog is pending",
+        "UDTT starts the public photo index while the catalog is pending",
+        "W!TCHX unites its original wordmark, group photograph, introduction and both catalog paths",
+        "an old media bookmark opens the reviewed native detail and returns to its video catalog without looping",
+        "an unhydrated artist photo opens inside the page, retries and returns focus on close",
+        "featured MV actions match the exact version present in each catalog, including newly imported works",
+        "opening a fresh work leaves the play control in place during late artwork layout",
+        "original photo links retain their file URL and enhance an unmodified activation with focus and a dialog",
+        "reviewed editorial MVs import into their own empty records and retain scores after a retried save",
+        "reviewed editorial detail gives each AtHeart release portrait its own score and distinguishes the BLALA lyric video"
+      ],
+      "removedTests": [
+        "featured MV actions have the same verified destination before and after catalog loading",
+        "original photo links navigate before hydration and enhance a plain activation with focus and a dialog"
+      ]
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each verified and ran the full test suite in a dedicated checkout of the frozen application."
+}

@@ -1,0 +1,81 @@
+{
+  "candidate": "70bbe761436b0d95a892492c5903f43038f3a66d",
+  "baseline": "ffcc04d97d902c43c0119014da5440dedf2818f7",
+  "published": false,
+  "platforms": {
+    "win": {
+      "verifyExit": 1,
+      "full": {
+        "tests": 4269,
+        "pass": 3799,
+        "fail": 431,
+        "skipped": 39,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "newFailuresByTestFile": {
+        "tests/artist-mv-card-targets.test.cjs": 1,
+        "tests/catalog-read-deadline.test.cjs": 22,
+        "tests/image-host-matrix.test.cjs": 199,
+        "tests/timeline-host-matrix.test.cjs": 111
+      },
+      "cleared": 19
+    },
+    "linux": {
+      "verifyExit": 1,
+      "full": {
+        "tests": 4269,
+        "pass": 3803,
+        "fail": 427,
+        "skipped": 39,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "newFailuresByTestFile": {
+        "tests/artist-mv-card-targets.test.cjs": 1,
+        "tests/catalog-read-deadline.test.cjs": 22,
+        "tests/image-host-matrix.test.cjs": 199,
+        "tests/timeline-host-matrix.test.cjs": 111
+      },
+      "cleared": 19
+    }
+  },
+  "cause": "Group browser code pulled the entire MV recognition catalog into isolated image/timeline fixtures. The catalog deadline harness for ITZY and LE SSERAFIM could not load the two groups' access hook, and the bookmark test looked up the former loading paragraph.",
+  "followUpAttempt": {
+    "candidate": "5cbee4c64e9b5b667e10b6833ab09c1d602d4ef7",
+    "published": false,
+    "platforms": {
+      "win": {
+        "verifyExit": 1,
+        "full": {
+          "tests": 4270,
+          "pass": 4127,
+          "fail": 104,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "newFailuresByTestFile": {
+          "tests/catalog-read-deadline.test.cjs": 8
+        },
+        "cleared": 21
+      },
+      "linux": {
+        "verifyExit": 1,
+        "full": {
+          "tests": 4270,
+          "pass": 4131,
+          "fail": 100,
+          "skipped": 39,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "newFailuresByTestFile": {
+          "tests/catalog-read-deadline.test.cjs": 8
+        },
+        "cleared": 21
+      }
+    },
+    "cause": "The catalog deadline fixture read the first React hook positions as the state values; an independent memo occupied the first position. The fixture now records the actual state-hook slots."
+  }
+}

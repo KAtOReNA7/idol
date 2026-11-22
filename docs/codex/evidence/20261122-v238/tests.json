@@ -1,0 +1,379 @@
+{
+  "applicationCommit": "daa9aa7b1860ee74f88184401d5fc111719f6adb",
+  "baselineApplicationCommit": "ffcc04d97d902c43c0119014da5440dedf2818f7",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4252,"pass": 4096,"fail": 117,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4273,"pass": 4138,"fail": 96,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1351,"pass": 1351,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 621,
+          "localBytes": 28928390
+        }
+      },
+      "retainedFailureCount": 96,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/adya-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/approved-release-repairs.test.cjs",
+          "test": "itzy preserves existing identity and private-independent metadata"
+        },
+        {
+          "suite": "main",
+          "file": "tests/approved-release-repairs.test.cjs",
+          "test": "kiiikiii preserves existing identity and private-independent metadata"
+        },
+        {
+          "suite": "main",
+          "file": "tests/bewave-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/candyshop-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/geenius-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/genblue-review-routing.test.mjs",
+          "test": "the built review includes a physical GENBLUE entry with resolvable scripts and styles"
+        },
+        {
+          "suite": "main",
+          "file": "tests/ifeye-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/itzy-artist.test.cjs",
+          "test": "ITZY social counts show each localized unit once without changing observations"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "KiiiKiii group-index hero is independent and the work title respects all older theme precedence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "approved poster requires work, video and view tuple, never uses album art"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "social unit presentation handles observed counts with units without changing source data"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/lesserafim-artist.test.cjs",
+          "test": "LE SSERAFIM approved originals use native frames and qualified reference without changing private scores or links"
+        },
+        {
+          "suite": "main",
+          "file": "tests/oddyouth-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/spia-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/spia-review-routing.test.mjs",
+          "test": "optional public-original delivery pins five untouched portraits to a full immutable SHA"
+        },
+        {
+          "suite": "main",
+          "file": "tests/tracer-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/vvup-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/witchx-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/wooah-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components, originals and nested fonts without modifying GENBLUE"
+        }
+      ],
+      "addedTests": [
+        "I DO ME shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "ITZY displays its dated public accounts with one unit and retains earlier observations in the archive",
+        "ITZY keeps a long bilingual member name legible without decorative numbering",
+        "ITZY uses its official wordmark, full group photograph, and accessible five-member layout",
+        "Kep1er pairs every listed film and stage with its own picture, title, destination and return",
+        "KiiiKiii retains its independent index and its exact single-group work theme",
+        "LE SSERAFIM uses its SOURCE MUSIC artist wordmark, full group image and responsive controls",
+        "Nobody Knows streams its four release originals and keeps its four matching card previews in the package",
+        "UDTT starts the owner photo index while the catalog is pending",
+        "UDTT starts the public photo index while the catalog is pending",
+        "W!TCHX unites its original wordmark, group photograph, introduction and both catalog paths",
+        "an old editorial MV link keeps its native work, group filter and search in the manual action",
+        "an old media bookmark opens the reviewed native detail and returns to its video catalog without looping",
+        "an unhydrated artist photo opens inside the page, retries and returns focus on close",
+        "automatic navigation and keyboard fallback share the exact URL even when replace is denied",
+        "each native member route receives only its own I DO ME release photograph and retains the original",
+        "every standalone review keeps its theme, all local font subsets and the shared work layouts",
+        "featured MV actions match the exact version present in each catalog, including newly imported works",
+        "opening a fresh work leaves the play control in place during late artwork layout",
+        "original photo links retain their file URL and enhance an unmodified activation with focus and a dialog",
+        "reviewed editorial MVs import into their own empty records and retain scores after a retried save",
+        "reviewed editorial detail gives each AtHeart release portrait its own score and distinguishes the BLALA lyric video",
+        "the debut home opens the full group photograph and links directly to the matching recording",
+        "the four homepage shortcuts open the correct sections with MVs before releases",
+        "the full AtHeart MV opens only its official cross-origin X post and can retry without changing the score binding",
+        "the group information section associates KiiiKiii social counts with their source and observation date",
+        "the original I DO ME cut shows its exact STARSHIP preview in the work directory",
+        "the overview keeps the latest and previously featured official releases together after every MV card",
+        "the two official group palettes reach the shared player, title and member controls",
+        "visitors see one link per recording and a stage filter opens the selected performance directly",
+        "visitors see one link per recording and a stage filter opens the selected performance directly"
+      ],
+      "removedTests": [
+        "ITZY fourth roster badge stays intact beside a full Chinese and long Latin name",
+        "ITZY social counts show each localized unit once without changing observations",
+        "ITZY visual identity uses a full group hero, independent electric rail and five-member roster",
+        "KiiiKiii group-index hero is independent and the work title respects all older theme precedence",
+        "KiiiKiii mobile headings wrap visibly without changing the desktop title rule",
+        "LE SSERAFIM distinct sports-editorial hero and mobile/accessibility rules",
+        "approved poster requires work, video and view tuple, never uses album art",
+        "featured MV actions have the same verified destination before and after catalog loading",
+        "original photo links navigate before hydration and enhance a plain activation with focus and a dialog",
+        "social unit presentation handles observed counts with units without changing source data"
+      ]
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4252,"pass": 4100,"fail": 113,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4273,"pass": 4142,"fail": 92,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1351,"pass": 1351,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 621,
+          "localBytes": 28928390
+        }
+      },
+      "retainedFailureCount": 92,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/adya-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/approved-release-repairs.test.cjs",
+          "test": "itzy preserves existing identity and private-independent metadata"
+        },
+        {
+          "suite": "main",
+          "file": "tests/approved-release-repairs.test.cjs",
+          "test": "kiiikiii preserves existing identity and private-independent metadata"
+        },
+        {
+          "suite": "main",
+          "file": "tests/bewave-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/candyshop-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/geenius-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/genblue-review-routing.test.mjs",
+          "test": "the built review includes a physical GENBLUE entry with resolvable scripts and styles"
+        },
+        {
+          "suite": "main",
+          "file": "tests/ifeye-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/itzy-artist.test.cjs",
+          "test": "ITZY social counts show each localized unit once without changing observations"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "KiiiKiii group-index hero is independent and the work title respects all older theme precedence"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "approved poster requires work, video and view tuple, never uses album art"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-artist.test.cjs",
+          "test": "social unit presentation handles observed counts with units without changing source data"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiiikiii-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/lesserafim-artist.test.cjs",
+          "test": "LE SSERAFIM approved originals use native frames and qualified reference without changing private scores or links"
+        },
+        {
+          "suite": "main",
+          "file": "tests/oddyouth-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/spia-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/spia-review-routing.test.mjs",
+          "test": "optional public-original delivery pins five untouched portraits to a full immutable SHA"
+        },
+        {
+          "suite": "main",
+          "file": "tests/tracer-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/vvup-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/witchx-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components and original images without changing accepted reviews"
+        },
+        {
+          "suite": "main",
+          "file": "tests/wooah-review-routing.test.mjs",
+          "test": "build produces additive physical entries, actual components, originals and nested fonts without modifying GENBLUE"
+        }
+      ],
+      "addedTests": [
+        "I DO ME shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "ITZY displays its dated public accounts with one unit and retains earlier observations in the archive",
+        "ITZY keeps a long bilingual member name legible without decorative numbering",
+        "ITZY uses its official wordmark, full group photograph, and accessible five-member layout",
+        "Kep1er pairs every listed film and stage with its own picture, title, destination and return",
+        "KiiiKiii retains its independent index and its exact single-group work theme",
+        "LE SSERAFIM uses its SOURCE MUSIC artist wordmark, full group image and responsive controls",
+        "Nobody Knows streams its four release originals and keeps its four matching card previews in the package",
+        "UDTT starts the owner photo index while the catalog is pending",
+        "UDTT starts the public photo index while the catalog is pending",
+        "W!TCHX unites its original wordmark, group photograph, introduction and both catalog paths",
+        "an old editorial MV link keeps its native work, group filter and search in the manual action",
+        "an old media bookmark opens the reviewed native detail and returns to its video catalog without looping",
+        "an unhydrated artist photo opens inside the page, retries and returns focus on close",
+        "automatic navigation and keyboard fallback share the exact URL even when replace is denied",
+        "each native member route receives only its own I DO ME release photograph and retains the original",
+        "every standalone review keeps its theme, all local font subsets and the shared work layouts",
+        "featured MV actions match the exact version present in each catalog, including newly imported works",
+        "opening a fresh work leaves the play control in place during late artwork layout",
+        "original photo links retain their file URL and enhance an unmodified activation with focus and a dialog",
+        "reviewed editorial MVs import into their own empty records and retain scores after a retried save",
+        "reviewed editorial detail gives each AtHeart release portrait its own score and distinguishes the BLALA lyric video",
+        "the debut home opens the full group photograph and links directly to the matching recording",
+        "the four homepage shortcuts open the correct sections with MVs before releases",
+        "the full AtHeart MV opens only its official cross-origin X post and can retry without changing the score binding",
+        "the group information section associates KiiiKiii social counts with their source and observation date",
+        "the original I DO ME cut shows its exact STARSHIP preview in the work directory",
+        "the overview keeps the latest and previously featured official releases together after every MV card",
+        "the two official group palettes reach the shared player, title and member controls",
+        "visitors see one link per recording and a stage filter opens the selected performance directly",
+        "visitors see one link per recording and a stage filter opens the selected performance directly"
+      ],
+      "removedTests": [
+        "ITZY fourth roster badge stays intact beside a full Chinese and long Latin name",
+        "ITZY social counts show each localized unit once without changing observations",
+        "ITZY visual identity uses a full group hero, independent electric rail and five-member roster",
+        "KiiiKiii group-index hero is independent and the work title respects all older theme precedence",
+        "KiiiKiii mobile headings wrap visibly without changing the desktop title rule",
+        "LE SSERAFIM distinct sports-editorial hero and mobile/accessibility rules",
+        "approved poster requires work, video and view tuple, never uses album art",
+        "featured MV actions have the same verified destination before and after catalog loading",
+        "original photo links navigate before hydration and enhance a plain activation with focus and a dialog",
+        "social unit presentation handles observed counts with units without changing source data"
+      ]
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each verified and ran the full test suite in a dedicated checkout of the frozen application."
+}

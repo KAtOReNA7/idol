@@ -1,0 +1,7 @@
+# VVUP《Doo Doom Chit》的首发四人与 M COUNTDOWN 舞台
+
+首发 MV 保留 HYUNNY、KIM、PAAN、SUYEON 四人的原记录。四张新图来自 EgoENT 在 2024 年 2 月 26–29 日逐人发布的出道介绍，页面标为「2024 出道同期 · 官方成员介绍照」。SUYEON 的预览取自发行方提供的本人双图左幅，点开可看全图。每张卡仍保留原 MV 章节图及两套出处。3 月 4 日的官方单曲宣传有三张四人团照，正式单曲封面使用银色题字。设计沿用获准的深炭色、荧光黄与 Archivo 斜体，以单曲的银紫色区分这支作品。[官方单曲宣传](https://x.com/22_vvup_22/status/1764440807233516016) · [数字发行封面](https://music.bugs.co.kr/album/20629106) · [四人的出处与完整原图](../evidence/20261122-vvup-doo-doom-chit/design-and-sources.json)
+
+官方 MV 沿用工程登记的 3 月 12 日视频日期，Bugs 的音源发行日是 3 月 13 日。舞台是 Mnet K-POP 的 3 月 14 日 M COUNTDOWN 第 833 期，使用该场封面和独立整体评分。项目 Figma 加入六幅可编辑画稿，手机和桌面各包含 MV、节目舞台以及 HYUNNY 展开表现分、造型、记忆点与备注的状态。[桌面 MV](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1540-1145) · [手机 MV](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1540-1264) · [桌面舞台](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1540-1222) · [手机舞台](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1540-1334) · [桌面评分](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1540-1369) · [手机评分](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7/?node-id=1540-1417)
+
+内置浏览器在同一组隔离的作品、评级和来源绑定上，对照原版与开发版。实际正文宽 375、1425 px，四次检查均无横向溢出。四张初始文件从 3,428,554 B 降到 205,004 B，减少 94.02%。新图片均解码为 480 × 640。两宽八个评分入口在本人照片下方 8 px，按钮高 44 px，逐人点开均出现四个编辑字段。HYUNNY 的发行方照片解码为 700 × 875，原作品图为 1901 × 908。MV 和舞台封面分别为 1280 × 720、640 × 360，切回后可继续操作成员卡。这次未重播视频。Windows 与 WSL 各通过 40/40 项专项回归。本记录的浏览器数据来自本机开发版。[同条件数据](../evidence/20261122-vvup-doo-doom-chit/local-browser.json)

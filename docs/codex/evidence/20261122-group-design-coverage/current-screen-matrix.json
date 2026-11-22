@@ -26,7 +26,7 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 400,
+    "twoWidthBoardMatches": 403,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
@@ -34,9 +34,9 @@
       "works": 44,
       "release": 39,
       "mv": 50,
-      "stage": 42,
+      "stage": 44,
       "timeline": 42,
-      "score": 39
+      "score": 40
     },
     "missingOrPartialBySurface": {
       "home": [],
@@ -77,13 +77,11 @@
         "lesserafim"
       ],
       "mv": [
-        "vvup"
+        "bewave"
       ],
       "stage": [
         "izna",
         "ifeye",
-        "vvup",
-        "bewave",
         "oddyouth",
         "vcha",
         "hitgs",
@@ -103,7 +101,6 @@
       ],
       "score": [
         "genblue",
-        "vvup",
         "youngposse",
         "bewave",
         "adya",
@@ -116,7 +113,7 @@
         "lesserafim"
       ]
     },
-    "groupsWithMissingOrPartial": 24
+    "groupsWithMissingOrPartial": 23
   },
   "sources": {
     "inventory": "docs/codex/evidence/20261122-group-design-coverage/group-screen-matrix.json",
@@ -166,7 +163,9 @@
     "journal-version-readback": "docs/codex/evidence/20261122-group-design-coverage/journal-version-readback.json",
     "v241": "docs/codex/worklogs/20261122-v241-release.md",
     "three-work-states": "docs/codex/evidence/20261122-group-design-coverage/three-work-states.json",
-    "rescene-work": "docs/codex/worklogs/20261122-rescene-work.md"
+    "rescene-work": "docs/codex/worklogs/20261122-rescene-work.md",
+    "vvup-debut-work": "docs/codex/evidence/20261122-vvup-doo-doom-chit/design-and-sources.json",
+    "bewave-previous-stage": "docs/codex/evidence/20261122-vvup-doo-doom-chit/bewave-historical-state.json"
   },
   "groups": [
     {
@@ -858,20 +857,20 @@
           "1451:1259"
         ],
         "mv": [
-          null,
-          null
+          "1540:1145",
+          "1540:1264"
         ],
         "stage": [
-          null,
-          null
+          "1540:1222",
+          "1540:1334"
         ],
         "timeline": [
           "1451:1194",
           "1451:1287"
         ],
         "score": [
-          null,
-          null
+          "1540:1369",
+          "1540:1417"
         ]
       },
       "revised": {
@@ -879,13 +878,21 @@
         "profile": "vvup",
         "works": "vvup",
         "release": "vvup",
-        "timeline": "vvup"
+        "timeline": "vvup",
+        "mv": "vvup-debut-work",
+        "stage": "vvup-debut-work",
+        "score": "vvup-debut-work"
       },
       "implementation": [
         {
           "at": "v238",
           "scope": "首页或卡片两宽，范围按团别回执",
           "evidence": "v238"
+        },
+        {
+          "at": "开发版",
+          "scope": "Doo Doom Chit 四位首发人员、M COUNTDOWN 第833期和历史成员 HYUNNY 展开评分，375、1425 px。",
+          "evidence": "vvup-debut-work"
         }
       ],
       "additional": [
@@ -908,7 +915,8 @@
           ]
         }
       ],
-      "earlierHomeReference": "https://weverse.io/vvup/highlight?hl=ko"
+      "earlierHomeReference": "https://weverse.io/vvup/highlight?hl=ko",
+      "qualification": "MV、节目与本人评分均有首发四人同一资料期的图片或准确视频封面。"
     },
     {
       "slug": "youngposse",
@@ -1007,12 +1015,12 @@
           "977:1107"
         ],
         "mv": [
-          "977:1101",
-          "977:1108"
-        ],
-        "stage": [
           null,
           null
+        ],
+        "stage": [
+          "977:1101",
+          "977:1108"
         ],
         "timeline": [
           "977:1102",
@@ -1023,7 +1031,10 @@
           null
         ]
       },
-      "revised": {},
+      "revised": {
+        "mv": "bewave-previous-stage",
+        "stage": "bewave-previous-stage"
+      },
       "implementation": [
         {
           "at": "v238",
@@ -1037,7 +1048,8 @@
         }
       ],
       "additional": [],
-      "earlierHomeReference": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/670a71aa813c344c968ab3c0"
+      "earlierHomeReference": "https://bewave.bstage.in/community/board/66f006fbfdbe825318d0519e/post/670a71aa813c344c968ab3c0",
+      "qualification": "旧 video 页标明 2024-10-18 的《너에게로 가는 길이 너무 어려워》Dance Performance 和舞台评分，零图片层。当前候选仅代表历史舞台文字示意。"
     },
     {
       "slug": "candyshop",
@@ -3780,6 +3792,51 @@
     "1531:1510": {
       "page": "921:1104",
       "name": "WOOAH / BLUSH / 成员评分 · LUCY / 390",
+      "type": "FRAME"
+    },
+    "1540:1145": {
+      "page": "802:1095",
+      "name": "Doo Doom Chit / EgoENT 官方 MV / 1440",
+      "type": "FRAME"
+    },
+    "1540:1264": {
+      "page": "802:1095",
+      "name": "Doo Doom Chit / EgoENT 官方 MV / 390",
+      "type": "FRAME"
+    },
+    "1540:1222": {
+      "page": "802:1095",
+      "name": "Doo Doom Chit / M COUNTDOWN EP.833 / 1440",
+      "type": "FRAME"
+    },
+    "1540:1334": {
+      "page": "802:1095",
+      "name": "Doo Doom Chit / M COUNTDOWN EP.833 / 390",
+      "type": "FRAME"
+    },
+    "1540:1369": {
+      "page": "802:1095",
+      "name": "Doo Doom Chit / HYUNNY 本人评分已展开 / 1440",
+      "type": "FRAME"
+    },
+    "1540:1417": {
+      "page": "802:1095",
+      "name": "Doo Doom Chit / HYUNNY 本人评分已展开 / 390",
+      "type": "FRAME"
+    },
+    "977:1101": {
+      "page": "977:1095",
+      "name": "BEWAVE / video / 1440",
+      "type": "FRAME"
+    },
+    "977:1108": {
+      "page": "977:1095",
+      "name": "BEWAVE / video / 390",
+      "type": "FRAME"
+    },
+    "977:1115": {
+      "page": "977:1095",
+      "name": "BEWAVE / video / 320",
       "type": "FRAME"
     }
   }

@@ -4,7 +4,7 @@
 
 正式路由目录、具名 Figma 页面和逐团记录的名单一致，共 51 团，重复和遗漏均为 0。逐团索引按九类页面列出桌面、手机节点，给出素材来源文件、适用的专项实现和正式实测版本。原文件 53 页、3,676 个条目的清点保存在下方。初次清点定位 750 个位置、746 个不同节点，补录后的原索引有 751 个位置、747 个不同节点。[现行逐团索引](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [原索引](../evidence/20261122-group-design-coverage/group-screen-matrix.json)
 
-459 个「团体 × 页面类别」组合中，400 个已定位双宽候选画稿。上一轮为 394 个，本轮新增六对。另有 59 个至少一宽待定位，涉及 24 团。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
+459 个「团体 × 页面类别」组合中，403 个已定位双宽候选画稿。上一轮从 394 个增至 400 个，此次补入 VVUP 三对并校正 BEWAVE 旧稿类别。另有 56 个至少一宽待定位，涉及 23 团。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
 
 | 类别 | 双宽候选 | 至少一宽仍待定位的团 |
 | --- | ---: | --- |
@@ -13,10 +13,10 @@
 | 成员详情 | 48/51 | BABYMONSTER（仅 AHYEON 桌面稿）、ITZY、LE SSERAFIM |
 | 作品目录 | 44/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii |
 | 发行详情 | 39/51 | MEOVV、HITGS、LOONA、BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
-| MV 详情 | 50/51 | VVUP |
-| 舞台详情 | 42/51 | izna、ifeye、VVUP、BEWAVE、ODD YOUTH、VCHA、HITGS、AtHeart、PURPLE KISS |
+| MV 详情 | 50/51 | BEWAVE |
+| 舞台详情 | 44/51 | izna、ifeye、ODD YOUTH、VCHA、HITGS、AtHeart、PURPLE KISS |
 | 时间轴 | 42/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
-| 评分或手帐状态 | 39/51 | GENBLUE、VVUP、YOUNG POSSE、BEWAVE、ADYA、UDTT、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
+| 评分或手帐状态 | 40/51 | GENBLUE、YOUNG POSSE、BEWAVE、ADYA、UDTT、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
 
 已在项目 Figma 中逐幅读取六团的 MV、舞台手帐及 PURPLE KISS 的 MV 手帐，共 26 幅。可辨认《La Vie en Rose》《LIKE YOU BETTER》《CODE》《BOOM》《P.O.W!》《LIGHTS ON》的真实 MV 和节目舞台，以及《Breath》MV 的两档设计。这 13 对已有作品级设计出处；旧稿中的成员截图占位和外跳提示仍与现行产品有差异，现代成员评分组件另有双宽 Figma 与 599 支可评 MV 的结构验收。本轮另读回三团的 14 幅画稿。RESCENE《LOVE ATTACK》与 QWER《SHOW DOWN》各补 MV 和准确节目舞台两对。WOOAH《BLUSH》原 MV 两幅补齐实图，新增 Just Dance 舞台和 LUCY 本人评分展开两对。[三团逐帧记录](../evidence/20261122-group-design-coverage/three-work-states.json) · [七团图层与版本](../evidence/20261122-group-design-coverage/journal-version-readback.json) · [成员评分组件](20261122-stayc-debut-and-scores.md)
 
@@ -31,7 +31,9 @@
 
 YOUNG POSSE《MACARONI CHEESE》以文字外跳呈现。SAY MY NAME《WaveWay》、KISS OF LIFE《STICKY》、aespa《Armageddon》、ILLIT《Magnetic》、XG《WOKE UP》及早期 BABYMONSTER 的作品旧稿仍为播放器示意。具体作品及同版封面须逐一核对，已经独立通过的播放、字体和照片结果继续有效。[八团图源与 603 页横查](20261122-eight-group-design-review.md) · [实际路由](../evidence/20261122-group-design-coverage/actual-route-surfaces.json) · [成员访问](../evidence/20261122-member-page-coverage/visits.json)
 
-下一批先补 VVUP《Doo Doom Chit》的官方 MV 和已绑定的 M COUNTDOWN EP.833，同时处理飞书点名的 BEWAVE《SING !》官方 Live Clip 及其评分状态。ifeye《r u ok?》的 STUDIO CHOOM 版本与 izna《IZNA》的 KBS Music Bank 241129 已有确切舞台绑定。四团的旧 Figma 页可定位目录、MV 或评分演示，本轮按已知宽度与状态名称未找到相应的独立舞台画板。旧作品示意另按来源和剪辑逐项替换。成员与发行可并行从 BABYMONSTER、XG、aespa、KISS OF LIFE、NMIXX、KiiiKiii 的缺幅接续。[四团旧画板回读](../evidence/20261122-group-design-coverage/three-work-states.json) · [真实入口](../evidence/20261122-group-design-coverage/actual-route-surfaces.json)
+VVUP《Doo Doom Chit》、M COUNTDOWN EP.833 和 HYUNNY 已展开本人评分的六幅都已读回，四位首发人员的照片下评分在本机两宽通过。BEWAVE 的旧 video 稿写明 2024-10-18 另一首歌的 Dance Performance 与舞台评分，三宽均无图片，现归为旧舞台示意。后续先补飞书点名的 BEWAVE《SING !》MV、4 月 22 日官方 Live Clip 与准确评分状态。[VVUP 画稿及本机回执](20261122-vvup-doo-doom-chit.md) · [BEWAVE 旧画稿](../evidence/20261122-vvup-doo-doom-chit/bewave-historical-state.json)
+
+ifeye《r u ok?》的 STUDIO CHOOM 版本与 izna《IZNA》的 KBS Music Bank 241129 已有确切舞台绑定。四团第一轮按宽度及名称扫描；逐层核实 BEWAVE 后已在上表补正。旧作品示意另按来源和剪辑逐项替换。成员与发行可并行从 BABYMONSTER、XG、aespa、KISS OF LIFE、NMIXX、KiiiKiii 的缺幅接续。[四团旧画板回读](../evidence/20261122-group-design-coverage/three-work-states.json) · [真实入口](../evidence/20261122-group-design-coverage/actual-route-surfaces.json)
 
 ## 首次清点记录
 

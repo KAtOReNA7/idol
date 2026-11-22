@@ -8,6 +8,81 @@ const {approvedStagePoster,stagePreviewFallback} = require('./helpers/public-art
 const directoryGroups = ['vvup','loona','stayc','nmixx','kiiikiii','saymyname'];
 const targetUrl = anchor => new URL(anchor.getAttribute('href'), 'https://site.invalid');
 
+for (const [slug, stageCount, scoreableCount] of [['vcha',4,4],['hitgs',5,5],['atheart',10,2]]) {
+  const group = registry.find(g => g.slug === slug);
+  const videos = require('../data/'+slug+'-review-editorial.json').videos.filter(v => v.type === 'stage');
+  const catalog = artistCatalog(group);
+  test(slug+' stage posters and bookmarked actions open the same cut, with the complete return route', async () => {
+    assert.equal(videos.length, stageCount);
+    assert.equal(videos.filter(v => v.workId).length, scoreableCount);
+    for (const v of videos) {
+      const fields = {section:'works',format:'stage',q:v.title};
+      const source = 'https://www.youtube.com/watch?v='+v.videoId;
+      const library = parse(await renderArtist(group, fields, catalog));
+      const card = library.querySelector('[data-artist-media="'+v.key+'"]');
+      assert.equal(card.tagName, 'A', v.key);
+      assert.ok(card.querySelector('img'));
+      const main = targetUrl(card);
+      const detailFields = {...fields,media:v.key};
+      const detail = parse(await renderArtist(group, detailFields, catalog));
+      const action = detail.querySelector('[data-film-primary]');
+      assert.equal(detail.querySelectorAll('[data-film-primary]').length, 1);
+      assert.equal(detail.querySelectorAll('main a').filter(a => a.getAttribute('href') === source).length, 1);
+      if (v.workId) {
+        assert.equal(action.getAttribute('data-film-primary'),'onsite');
+        assert.match(detail.querySelector('details a[href="'+source+'"]').text,/原片出处/);
+        for (const [target, backFields] of [[main,fields],[targetUrl(action),detailFields]]) {
+          assert.equal(target.pathname, '/');
+          assert.equal(target.searchParams.get('video'), 'stage');
+          assert.equal(target.searchParams.get('work'), v.workId);
+          const back = new URL(target.searchParams.get('returnTo'),target);
+          assert.equal(back.pathname, group.path);
+          assert.deepEqual(Object.fromEntries(back.searchParams), backFields);
+        }
+      } else {
+        assert.equal(main.pathname,group.path);
+        assert.deepEqual(Object.fromEntries(main.searchParams),detailFields);
+        assert.equal(action.getAttribute('href'),source);
+        assert.equal(action.getAttribute('data-film-primary'),'source');
+        assert.match(detail.text,/此版本暂无站内播放或评分/);
+      }
+    }
+  });
+  test(slug+' stage links preserve the collectible version on cold, failed, or changed catalogues', async () => {
+    const v = videos.find(v => v.workId);
+    const query = {section:'works',format:'stage',q:v.title};
+    const detailFields = {...query,media:v.key};
+    for (const state of [{loading:true},{error:'离线'}]) {
+      const library = parse(await renderArtist(group,query,null,state));
+      const anchor = library.querySelector('[data-artist-media="'+v.key+'"]');
+      assert.equal(targetUrl(anchor).pathname,group.path);
+      assert.deepEqual(Object.fromEntries(targetUrl(anchor).searchParams),detailFields);
+      const detail = parse(await renderArtist(group,detailFields,null,state));
+      assert.equal(detail.querySelector('[data-film-primary="source"]'),null);
+      assert.match(detail.text,state.loading?/正在读取站内观看入口/:/重试/);
+    }
+    const w = catalog.works.find(w => w.id === v.workId);
+    const stage = w.stage;
+    const variants = [
+      [{...w,stage:null}], [{...w,groupIds:['another-group']}], [{...w,id:'other-work'}], [w,w],
+      [{...w,stage:{...stage,url:'https://www.youtube.com/watch?v=aaaaaaaaaaa'}}],
+      [{...w,stage:{...stage,scoreBinding:{...stage.scoreBinding,sourceKey:'previous-cut'}}}],
+      [{...w,stage:{...stage,clip:{startSeconds:1,endSeconds:61,sourceDurationSeconds:200},
+        scoreBinding:{...stage.scoreBinding,sourceKey:stage.videoId+'@1-61'}}}],
+    ];
+    for (const works of variants) {
+      const data = {...catalog,works};
+      const library = parse(await renderArtist(group,query,data));
+      const card = library.querySelector('[data-artist-media="'+v.key+'"]');
+      assert.equal(targetUrl(card).searchParams.get('media'),v.key);
+      const detail = parse(await renderArtist(group,detailFields,data));
+      assert.equal(detail.querySelector('[data-film-primary="onsite"]'),null);
+      assert.equal(detail.querySelector('[data-film-primary="source"]').getAttribute('href'),
+        'https://www.youtube.com/watch?v='+v.videoId);
+    }
+  });
+}
+
 for (const slug of directoryGroups) {
   test(slug + ' opens the selected stage from its poster, title and main action', async () => {
     const group = registry.find(g => g.slug === slug);

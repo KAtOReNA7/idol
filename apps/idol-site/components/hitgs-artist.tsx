@@ -1,7 +1,8 @@
 'use client';
 import {ArtistRosterMemberLink,returnToArtistRoster} from './artist-roster-link';
 import {OriginalPhotoLink} from './original-photo-link';
-import {artistMvHref} from '@/lib/idol/artist-mv-link';
+import {artistMvHref,artistStageHref} from '@/lib/idol/artist-mv-link';
+import {EditorialVideoActions} from './artist-film-action';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {ArtistInformation,ArtistHomeTimeline} from '@/components/artist-information';
@@ -40,8 +41,11 @@ export default function HitgsArtist(){
  function navigate(patch:Record<string,string|null>,replace=false){remember();const destination=sectionUrl(patch);if(!safeArtistReturn(destination))return;history[replace?'replaceState':'pushState'](newArtistHistoryState(history.state),'',destination);window.dispatchEvent(new Event('artist-location-change'));if(!replace)document.getElementById('hg-content')?.scrollIntoView({block:'start'});}
  const select=(value:string)=>navigate({section:value==='overview'?null:value,member:null,release:null,media:null,format:null,q:null});
  const member=editorial.members.find(m=>m.id===memberId),release=editorial.releases.find(r=>r.key===releaseKey),video=editorial.videos.find(v=>v.key===mediaKey&&v.type===format);
+ const retryCatalog=()=>injected.onRetry?injected.onRetry():setAttempt(a=>a+1);
  const showImage=(src:string,label:string)=>setLightbox({src,label});
- const nativeVideo=(v:Video)=>data?.works.find(w=>w.id===v.workId&&(v.type==='stage'?w.stage?.videoId===v.videoId:w.url==='https://www.youtube.com/watch?v='+v.videoId));
+ const watchHref=(v:Video)=>v.type==='stage'
+  ?artistStageHref(data,groupId,v.videoId,returnTo,v.workId)
+  :artistMvHref(data,groupId,'https://www.youtube.com/watch?v='+v.videoId,returnTo,v.workId);
  const match=(text:string)=>text.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase());
  const roster=editorial.members.filter(m=>match(m.stageName+' '+m.cnName));
  const releaseRows=editorial.releases.filter(r=>match(r.title)).sort((a,b)=>b.date.localeCompare(a.date));
@@ -51,9 +55,9 @@ export default function HitgsArtist(){
  const memberCards=(rows:typeof editorial.members)=><div className="hg-roster">{rows.map(m=><ArtistRosterMemberLink className="hg-person" key={m.id} memberId={m.id} href={sectionUrl({section:'members',member:m.id,release:null,media:null,format:null})}><span className="hg-portrait"><Picture src={m.image} label={m.cnName+' · '+m.stageName}/></span><span className="hg-person-name"><strong>{m.cnName}</strong><span>{m.stageName}</span><b aria-hidden="true">↗</b></span></ArtistRosterMemberLink>)}</div>;
  const releaseCards=(rows:typeof editorial.releases)=><div className="hg-releases">{rows.map(r=><button key={r.key} className="hg-release" onClick={()=>navigate({section:'works',release:r.key,media:null,format:null})}><Picture src={r.image} label={r.title+' 发行封面'}/><span><small>{r.date} / {r.tracks} 曲</small><strong>{r.title}</strong><b aria-hidden="true">↗</b></span></button>)}</div>;
  const videoCards=(rows:Video[])=><div className="hg-videos">{rows.map(v=>{
-   const direct=v.type==='mv'?artistMvHref(data,groupId,'https://www.youtube.com/watch?v='+v.videoId,returnTo,v.workId):null;
-   const Card=direct?'a':'button';
-   return <Card href={direct??undefined} className="hg-video" key={v.key} data-artist-media={v.key} data-video-id={v.videoId} onClick={direct?()=>remember():()=>navigate({section:'works',media:v.key,format:v.type,release:null})}><span className="hg-video-image"><Picture src={v.image} label={v.title+' · '+(v.type==='mv'?'MV':'舞台')}/><span className="hg-play" aria-hidden="true">↗</span></span><span className="hg-video-caption"><small>{v.chapter.toUpperCase()} / {v.type==='mv'?'MV':'舞台'}</small><strong>{v.title}</strong><span>{v.date||'视频公开日期未收录'}</span></span></Card>;
+   const direct=watchHref(v);
+   const detail=sectionUrl({section:'works',media:v.key,format:v.type,release:null});
+   return <a href={direct??detail} className="hg-video" key={v.key} data-artist-media={v.key} data-video-id={v.videoId} onClick={()=>remember()}><span className="hg-video-image"><Picture src={v.image} label={v.title+' · '+(v.type==='mv'?'MV':'舞台')}/><span className="hg-play" aria-hidden="true">↗</span></span><span className="hg-video-caption"><small>{v.chapter.toUpperCase()} / {v.type==='mv'?'MV':'舞台'}</small><strong>{v.title}</strong><span>{v.date||'视频公开日期未收录'}</span></span></a>;
  })}</div>;
  const linkedMemberWorks=member&&data?data.works.filter(w=>data.ratings.some(r=>r.memberIds.length===1&&r.memberIds[0]===member.id&&r.workIds.length===1&&r.workIds[0]===w.id)):[];
  const releaseVideos=release?editorial.videos.filter(v=>release.trackList.includes(v.title)):[];
@@ -77,13 +81,16 @@ export default function HitgsArtist(){
 <button className="hg-next" onClick={()=>navigate({member:editorial.members[(editorial.members.indexOf(member)+1)%5].id})}>下一位：{editorial.members[(editorial.members.indexOf(member)+1)%5].cnName} →</button>
 </section>:<section className="hg-empty"><h1>未找到这位成员</h1><button onClick={()=>select('members')}>返回成员目录</button></section>)}
  {releaseKey&&(release?<section className="hg-section"><button className="hg-back" onClick={()=>navigate({release:null,section:'records'})}>← 返回发行目录</button><div className="hg-release-detail"><button onClick={()=>showImage(release.image,release.title+' · 发行封面')} aria-label="查看发行封面原图"><Picture src={release.image} label={release.title+' 发行封面'} priority/></button><div><small>HITGS / MUSIC</small><h1>{release.title}</h1><dl><div><dt>数字发行</dt><dd>{release.date}</dd></div><div><dt>收录</dt><dd>{release.tracks} 曲</dd></div></dl><button className="hg-button" onClick={()=>showImage(release.image,release.title+' · 发行封面')}>查看原图 ↗</button><a className="hg-button" href={release.sources[0]} target="_blank" rel="noopener noreferrer">在音乐平台打开 ↗</a><Sources urls={release.sources}/></div></div><div className="hg-tracklist"><h2>TRACK LIST<span>收录曲目</span></h2><ol>{release.trackList.map(track=><li key={track}>{track}</li>)}</ol>{release.note&&<p>{release.note}</p>}</div><div className="hg-heading"><h2>WATCH<span>相关影像</span></h2></div>{releaseVideos.length?videoCards(releaseVideos):<p>当前目录尚无这张发行的相关视频。</p>}</section>:<section className="hg-empty"><h1>未找到这张发行</h1><button onClick={()=>select('records')}>返回发行目录</button></section>)}
- {mediaKey&&(video?<section className="hg-section"><button className="hg-back" onClick={()=>navigate({media:null})}>← 返回影像目录</button><div className="hg-video-title"><span>{video.chapter.toUpperCase()} / {video.type==='mv'?'MV':'舞台'}</span><h1>{video.title}</h1></div><div className="hg-video-detail"><div><button className="hg-video-original" onClick={()=>showImage(video.image,video.title+' · 发布者预览图')} aria-label="查看视频预览原图"><Picture src={video.image} label={video.title+' · '+video.type} priority/></button><p className="hg-caption">对应视频的发布者预览图，保留完整构图。</p></div><div><h2>{video.type==='mv'?'音乐影像':'舞台版本'}</h2><p>{video.type==='stage'?'对应作品的独立舞台版本，保留发布频道和公开日期。':'HITGS 音乐影像，点击打开对应的官方视频。'}</p><p>{video.date||'公开日期不详'}</p><a className="hg-button" href={'https://www.youtube.com/watch?v='+video.videoId} target="_blank" rel="noopener noreferrer">在 YouTube 播放 ↗</a>{nativeVideo(video)&&<a className="hg-button" href={artistWorkUrl(nativeVideo(video)!,video.type==='stage',returnTo)}>观看与手帐 ↗</a>}<Sources urls={video.sources}/></div></div></section>:<section className="hg-empty"><h1>未找到这个视频版本</h1><button onClick={()=>select('works')}>返回影像目录</button></section>)}
+ {mediaKey&&(video?<section className="hg-section"><button className="hg-back" onClick={()=>navigate({media:null})}>← 返回影像目录</button><div className="hg-video-title"><span>{video.chapter.toUpperCase()} / {video.type==='mv'?'MV':'舞台'}</span><h1>{video.title}</h1></div><div className="hg-video-detail"><div><button className="hg-video-original" onClick={()=>showImage(video.image,video.title+' · 发布者预览图')} aria-label="查看视频预览原图"><Picture src={video.image} label={video.title+' · '+video.type} priority/></button><p className="hg-caption">发布者预览图</p></div><div><h2>{video.type==='mv'?'音乐影像':'舞台版本'}</h2><p>{video.date||'公开日期不详'}</p><EditorialVideoActions href={watchHref(video)} source={'https://www.youtube.com/watch?v='+video.videoId}
+     sources={video.sources.map(url=>({url,label:'影像资料'}))} stage={video.type==='stage'}
+     waiting={!data&&!!video.workId&&wait} failed={!data&&!!video.workId&&!!failure}
+     retry={retryCatalog} remember={remember} buttonClass="hg-button" sourcesClass="hg-source"/></div></div></section>:<section className="hg-empty"><h1>未找到这个视频版本</h1><button onClick={()=>select('works')}>返回影像目录</button></section>)}
  {!memberId&&!releaseKey&&!mediaKey&&section!=='overview'&&<section className="hg-section">
  {section==='members'&&<><div className="hg-page-title"><h1>MEMBERS</h1><p>HITGS 五位成员</p></div>{search('搜索成员')}{roster.length?memberCards(roster):empty}</>}
  {section==='records'&&<><div className="hg-page-title"><h1>MUSIC</h1><p>七张发行 · 从 Things we love 到 Things We Dream</p></div>{search('搜索发行')}{releaseRows.length?releaseCards(releaseRows):empty}</>}
- {section==='works'&&<><div className="hg-page-title"><h1>WATCH</h1><p>每一个影像，都有自己的版本。</p></div>{search('搜索影像')}<div className="hg-filters" aria-label="影像类型">{[[null,'全部'],['mv','MV'],['stage','舞台']].map(([value,label])=><button key={label} aria-pressed={(format||null)===value} onClick={()=>navigate({format:value})}>{label}</button>)}</div>{videoRows.length?videoCards(videoRows):empty}</>}
+ {section==='works'&&<><div className="hg-page-title"><h1>WATCH</h1></div>{search('搜索影像')}<div className="hg-filters" aria-label="影像类型">{[[null,'全部'],['mv','MV'],['stage','舞台']].map(([value,label])=><button key={label} aria-pressed={(format||null)===value} onClick={()=>navigate({format:value})}>{label}</button>)}</div>{videoRows.length?videoCards(videoRows):empty}</>}
  {section==='updates'&&<><div className="hg-page-title"><h1>TIMELINE</h1></div><ArtistTimelineHost groupId={groupId} catalog={data}/></>}
  </section>}
- {wait&&<p className="hg-data-status" role="status">正在读取已有手帐关联…</p>}{failure&&<div className="hg-data-status" role="alert">{failure} <button onClick={()=>injected.onRetry?injected.onRetry():setAttempt(a=>a+1)}>重新读取</button></div>}
+ {wait&&<p className="hg-data-status" role="status">正在读取已有手帐关联…</p>}{failure&&<div className="hg-data-status" role="alert">{failure} <button onClick={retryCatalog}>重新读取</button></div>}
  </main><footer className="hg-footer"><button className="hg-brand" onClick={()=>select('overview')}><img src="/artist/hitgs/identity/official-mark.png" alt="HITGS" width={58} height={37} style={{display:'inline-block',verticalAlign:'middle'}}/></button><p>STAGE · 私人观看与评分手帐</p><button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}>回到页首 ↑</button></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}</div><ImageRecoveryControls/></ImageRecoveryProvider>;
 }

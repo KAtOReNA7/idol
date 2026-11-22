@@ -1,7 +1,8 @@
 'use client';
 import {ArtistRosterMemberLink,returnToArtistRoster} from './artist-roster-link';
 import {OriginalPhotoLink} from './original-photo-link';
-import {artistMvHref, reviewedEditorialWorkId} from '@/lib/idol/artist-mv-link';
+import {artistMvHref, artistStageHref, reviewedEditorialWorkId} from '@/lib/idol/artist-mv-link';
+import {EditorialVideoActions} from './artist-film-action';
 import {EditorialWorkHandoff} from './editorial-work-handoff';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPublicCredits} from '@/components/public-work-credits';
@@ -51,6 +52,9 @@ export default function AtheartArtist(){
  const select=(value:string)=>navigate({section:value==='overview'?null:value,member:null,release:null,media:null,format:null,q:null});
  const member=editorial.members.find(m=>m.id===memberId),release=editorial.releases.find(r=>r.key===releaseKey),video=editorial.videos.find(v=>v.key===mediaKey&&v.type===format);
  const showImage=(src:string,label:string)=>setLightbox({src,label});
+ const watchHref=(v:Video)=>v.type==='stage'
+  ?artistStageHref(data,groupId,v.videoId,returnTo,v.workId)
+  :artistMvHref(data,groupId,'https://www.youtube.com/watch?v='+v.videoId,returnTo,v.workId);
  const match=(text:string)=>text.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase());
  const roster=editorial.members.filter(m=>match(m.stageName+' '+m.cnName));
  const releaseRows=editorial.releases.filter(r=>match(r.title)).sort((a,b)=>b.date.localeCompare(a.date));
@@ -60,20 +64,16 @@ export default function AtheartArtist(){
  const memberCards=(rows:typeof editorial.members)=><div className="ah-roster">{rows.map(m=><ArtistRosterMemberLink className="ah-person" key={m.id} memberId={m.id} href={sectionUrl({section:'members',member:m.id,release:null,media:null,format:null})}><span className="ah-portrait"><Picture src={m.image} label={m.cnName+' · '+m.stageName}/></span><span className="ah-person-name"><strong>{m.stageName}</strong><span>{m.cnName}</span><b aria-hidden="true">↗</b></span></ArtistRosterMemberLink>)}</div>;
  const releaseCards=(rows:typeof editorial.releases)=><div className="ah-releases">{rows.map(r=><button key={r.key} className="ah-release" onClick={()=>navigate({section:'works',release:r.key,media:null,format:null})}><Picture src={r.image} label={r.title+' 发行封面'}/><span><small>{r.date} / {r.tracks} 曲</small><strong>{r.title}</strong><b aria-hidden="true">↗</b></span></button>)}</div>;
  const videoCards=(rows:Video[])=><div className="ah-videos">{rows.map(v=>{
-   const isMv=v.type==='mv';
-   const direct=isMv?artistMvHref(data,groupId,'https://www.youtube.com/watch?v='+v.videoId,returnTo,v.workId):null;
+   const direct=watchHref(v);
    const patch={section:'works',media:v.key,format:v.type,release:null};
-   const target=direct??(isMv?sectionUrl(patch):undefined);
-   const Card=target?'a':'button';
+   const target=direct??sectionUrl(patch);
    function openVideo(event:MouseEvent){
     if(direct){remember();return;}
-    if(target){
-     if(event.defaultPrevented||event.button!==0||event.altKey||event.ctrlKey||event.metaKey||event.shiftKey)return;
-     event.preventDefault();
-    }
+    if(event.defaultPrevented||event.button!==0||event.altKey||event.ctrlKey||event.metaKey||event.shiftKey)return;
+    event.preventDefault();
     navigate(patch);
    }
-   return <Card href={target} className="ah-video" key={v.key} data-artist-media={v.key} data-video-id={v.videoId} onClick={openVideo}><span className="ah-video-image"><Picture src={publicVideoCover(v.videoId)?.src??v.image} label={v.title+' · '+(v.type==='mv'?'音乐影像':'表演 / 现场')}/><span className="ah-play" aria-hidden="true">↗</span></span><span className="ah-video-caption"><small>{v.chapter.toUpperCase()} / {v.type==='mv'?'音乐影像':'表演 / 现场'}</small><strong>{v.title}</strong><span>{v.date||'视频公开日期未收录'}</span></span></Card>;
+   return <a href={target} className="ah-video" key={v.key} data-artist-media={v.key} data-video-id={v.videoId} onClick={openVideo}><span className="ah-video-image"><Picture src={publicVideoCover(v.videoId)?.src??v.image} label={v.title+' · '+(v.type==='mv'?'音乐影像':'表演 / 现场')}/><span className="ah-play" aria-hidden="true">↗</span></span><span className="ah-video-caption"><small>{v.chapter.toUpperCase()} / {v.type==='mv'?'音乐影像':'表演 / 现场'}</small><strong>{v.title}</strong><span>{v.date||'视频公开日期未收录'}</span></span></a>;
  })}</div>;
  const linkedMemberWorks=member&&data?data.works.filter(w=>data.ratings.some(r=>r.memberIds.length===1&&r.memberIds[0]===member.id&&r.workIds.length===1&&r.workIds[0]===w.id)):[];
  const releaseVideos=release?editorial.videos.filter(v=>v.releaseKey===release.key):[];
@@ -85,11 +85,6 @@ export default function AtheartArtist(){
     const target = artistMvHref(data, groupId, source, sectionUrl({media:null}), video.workId);
     if (target) return <EditorialWorkHandoff href={target} title={video.title}/>;
   }
-  const work=video.workId?data?.works.find(work=>work.id===video.workId&&work.groupIds.includes(groupId)&&
-   (video.type==='stage'?work.stage?.videoId===video.videoId:work.url===source)):undefined;
-  const needsCatalog=Boolean(video.workId&&!data&&(wait||failure));
-  const credits=video.sources.filter(url=>url!==source).map(url=>({url,label:url.startsWith('https://atheart.jp/')?'AtHeart 日本官网':undefined}));
-  if(work||needsCatalog)credits.unshift({url:source,label:'YouTube 原片出处'});
   return <section className="ah-section">
    <button className="ah-back" onClick={()=>navigate({media:null})}>← 返回影像目录</button>
    <div className="ah-video-title"><span>{video.chapter.toUpperCase()} / {video.type==='mv'?'音乐影像':'表演 / 现场'}</span><h1>{video.title}</h1></div>
@@ -100,10 +95,10 @@ export default function AtheartArtist(){
     </OriginalPhotoLink></div>
     <div>
      <p>{video.date?<time dateTime={video.date}>公开日期 {video.date}</time>:'公开日期未收录'}</p>
-     {work&&<a className="ah-button" href={artistWorkUrl(work,video.type==='stage',returnTo)} onClick={remember}>打开{video.type==='stage'?'舞台':' MV '}观看与评分</a>}
-     {needsCatalog&&(failure?<div role="alert"><p>站内观看与评分入口暂时无法加载。</p><button className="ah-button" onClick={retryCatalog}>重试</button></div>:<p role="status">正在加载站内观看与评分入口…</p>)}
-     {!work&&!needsCatalog&&<><p>此版本暂无站内播放或评分。</p><a className="ah-button" href={source} target="_blank" rel="noopener noreferrer">在 YouTube 观看原片 ↗</a></>}
-     <Sources urls={credits}/>
+     <EditorialVideoActions href={video.type==='mv'&&!data?null:watchHref(video)} source={source}
+      sources={video.sources.map(url=>({url,label:url.startsWith('https://atheart.jp/')?'AtHeart 日本官网':'影像资料'}))}
+      stage={video.type==='stage'} waiting={!data&&!!video.workId&&wait} failed={!data&&!!video.workId&&!!failure}
+      retry={retryCatalog} remember={remember} buttonClass="ah-button" sourcesClass="ah-source"/>
     </div>
    </div>
   </section>;
@@ -131,7 +126,7 @@ export default function AtheartArtist(){
  {!memberId&&!releaseKey&&!mediaKey&&section!=='overview'&&<section className="ah-section">
  {section==='members'&&<><div className="ah-page-title"><h1>MEMBERS</h1><p>AtHeart 七位成员</p></div>{search('搜索成员')}{roster.length?memberCards(roster):empty}</>}
  {section==='records'&&<><div className="ah-page-title"><h1>MUSIC</h1><p>九项发行 · 包含语言版本、混音与成员合作</p></div>{search('搜索发行')}{releaseRows.length?releaseCards(releaseRows):empty}</>}
- {section==='works'&&<><div className="ah-page-title"><h1>WATCH</h1><p>每一个影像，都有自己的版本。</p></div>{search('搜索影像')}<div className="ah-filters" aria-label="影像类型">{[[null,'全部'],['mv','音乐影像'],['stage','表演 / 现场']].map(([value,label])=><button key={label} aria-pressed={(format||null)===value} onClick={()=>navigate({format:value})}>{label}</button>)}</div>{videoRows.length?videoCards(videoRows):empty}</>}
+ {section==='works'&&<><div className="ah-page-title"><h1>WATCH</h1></div>{search('搜索影像')}<div className="ah-filters" aria-label="影像类型">{[[null,'全部'],['mv','音乐影像'],['stage','表演 / 现场']].map(([value,label])=><button key={label} aria-pressed={(format||null)===value} onClick={()=>navigate({format:value})}>{label}</button>)}</div>{videoRows.length?videoCards(videoRows):empty}</>}
  {section==='updates'&&<><div className="ah-page-title"><h1>TIMELINE</h1></div><ArtistTimelineHost groupId={groupId} catalog={data}/></>}
  </section>}
  {!mediaKey&&wait&&<p className="ah-data-status" role="status">正在读取已有手帐关联…</p>}{!mediaKey&&failure&&<div className="ah-data-status" role="alert">{failure} <button onClick={retryCatalog}>重新读取</button></div>}

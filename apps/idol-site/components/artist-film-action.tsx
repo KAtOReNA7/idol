@@ -24,7 +24,7 @@ export function artistFilmAction(binding: Binding | null, returnTo: string | nul
   return {href, source, pending, label, status};
 }
 
-type FilmAction = ReturnType<typeof artistFilmAction>;
+type FilmAction = Pick<ReturnType<typeof artistFilmAction>,'href'|'source'|'pending'|'label'>;
 
 export function ArtistFilmPrimary({action, className, remember, children}: {
   action: FilmAction; className: string; remember: () => void; children?: ReactNode;
@@ -44,4 +44,26 @@ export function ArtistFilmSource({action, className, publisher}: {
   return <a className={className} href={action.source} target="_blank" rel="noopener noreferrer">
     {publisher ? publisher+' · ' : ''}YouTube 原片出处 ↗
   </a>;
+}
+
+export function EditorialVideoActions({href, source, sources, stage, waiting, failed, retry, remember, buttonClass, sourcesClass}: {
+  href: string | null; source: string; sources: {url: string; label: string}[]; stage: boolean;
+  waiting: boolean; failed: boolean; retry: () => void; remember: () => void; buttonClass: string; sourcesClass: string;
+}) {
+  const pending = !href && (waiting || failed);
+  const label = href ? (stage ? '观看舞台与评分' : '观看 MV 与评分') : '在 YouTube 观看原片';
+  const action = {href, source, pending, label};
+  const credits = sources.filter(item => item.url !== source);
+  return <>
+    {pending ? <div role={failed ? 'alert' : 'status'}>
+      {failed ? <>站内观看入口暂时无法加载。 <button className={buttonClass} onClick={retry}>重试</button></> : '正在读取站内观看入口…'}
+    </div> : <>
+      {!href && <p>此版本暂无站内播放或评分。</p>}
+      <ArtistFilmPrimary action={action} className={buttonClass} remember={remember}/>
+    </>}
+    {(href || pending || credits.length > 0) && <details className={sourcesClass}><summary>资料与图片来源</summary>
+      <ArtistFilmSource action={action}/>
+      {credits.map(({url,label}) => <a key={url} href={url} target="_blank" rel="noopener noreferrer">{label} ↗</a>)}
+    </details>}
+  </>;
 }

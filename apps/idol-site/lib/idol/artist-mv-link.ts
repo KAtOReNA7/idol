@@ -1,6 +1,7 @@
 import type {CatalogView} from './types';
 import {artistWorkUrl} from './artist-preview';
 import {videoId} from './values';
+import {stageHasValidBinding, stageSourceKey, stageSourceMatchesUrl} from './stage-source';
 import reviewedImports from '../../data/reviewed-editorial-work-imports.json';
 
 export function reviewedEditorialWorkId(groupId: string, id: string) {
@@ -152,4 +153,15 @@ export function artistMvWorkId(catalog: Pick<CatalogView,'works'> | null | undef
 export function artistMvHref(catalog: Pick<CatalogView,'works'> | null | undefined, groupId: string, source: string, returnTo: string, expectedWork?: string | null) {
   const id = artistMvWorkId(catalog, groupId, source, expectedWork);
   return id ? artistWorkUrl({id}, false, returnTo) : null;
+}
+
+/** A publisher's full-length video can open only its own scoring slot. */
+export function artistStageHref(catalog: Pick<CatalogView,'works'> | null | undefined, groupId: string, video: string, returnTo: string, expectedWork?: string | null) {
+  if (!catalog || !expectedWork) return null;
+  const matches = catalog.works.filter(work => work.id === expectedWork);
+  if (matches.length !== 1) return null;
+  const work = matches[0], stage = work.stage;
+  if (work.placeholder || !work.groupIds.includes(groupId) || !stage ||
+      stageSourceKey(stage) !== video || !stageSourceMatchesUrl(stage) || !stageHasValidBinding(stage)) return null;
+  return artistWorkUrl(work, true, returnTo);
 }

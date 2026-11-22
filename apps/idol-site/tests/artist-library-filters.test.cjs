@@ -31,6 +31,9 @@ for (const [slug,title,count] of [['rescene','DISCOGRAPHY',10],['madein','VIDEO'
       assert.equal(primary.querySelector('h3').text,works[i].song||works[i].name);
       assert.ok(primary.querySelector('img').getAttribute('src').includes(new URL(works[i].url).searchParams.get('v')));
       assert.equal(localUrl(primary).searchParams.get('work'),works[i].id);
+      assert.equal(primary.getAttribute('data-member-work-trigger'),'work-mv:'+works[i].id);
+      const relatedStage=card.querySelector('.sr-library-record a');
+      if(relatedStage) assert.equal(relatedStage.getAttribute('data-member-work-trigger'),'work-stage:'+works[i].id);
       assert.equal(card.querySelectorAll('a').filter(a=>localUrl(a).href===localUrl(primary).href).length,1);
     }
     const w=works.find(row=>row.stage);

@@ -13,6 +13,7 @@ export function LibraryFilm({work, returnTo, remember}: {work: Work; returnTo: s
   const version = work.version || work.videoType;
   return <article className="sr-work sr-library-film" data-work-id={work.id}>
     <a className="sr-library-film-link" href={artistWorkUrl(work, false, returnTo)} onClick={remember}
+      data-member-work-trigger={`work-mv:${work.id}`}
       aria-label={`观看《${title}》${version || 'MV'}与评分`}>
       <div className="sr-film-art">
         <ReliableImage src={cover} alt={title+' MV 封面'} identityKey={cover ?? work.id}
@@ -27,7 +28,8 @@ export function LibraryFilm({work, returnTo, remember}: {work: Work; returnTo: s
     <div className="sr-library-record">
       <span>MV 评分 {artistWorkScoreLabel(work.score)}</span>
       {!!(work.stage || work.stageSupplement?.alternatives.length) &&
-        <a href={artistWorkUrl(work, true, returnTo)} onClick={remember}>舞台与其他现场 ↗</a>}
+        <a href={artistWorkUrl(work, true, returnTo)} onClick={remember}
+          data-member-work-trigger={`work-stage:${work.id}`}>舞台与其他现场 ↗</a>}
     </div>
   </article>;
 }

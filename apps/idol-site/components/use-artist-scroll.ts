@@ -49,7 +49,8 @@ export function useArtistScroll(ready:boolean,routeKey:string){
   const clearTimeline = departure && state?.timelineReturn?.path === path;
   const nativeLink = source && nativeTimelineLinkFocus(source, path);
   const clearNativeLink = departure && state?.artistTimelineLink?.path === path;
-  const clearWork = departure && state?.memberWorkFocus?.path === path;
+  const clickedWorkKey = source?.closest<HTMLElement>('[data-member-work-trigger]')?.dataset.memberWorkTrigger;
+  const clearWork = departure && state?.memberWorkFocus?.path === path && state.memberWorkFocus.key !== clickedWorkKey;
   if (!moved && !clearTimeline && !nativeLink && !clearNativeLink && !clearWork) return;
   const next = {...state};
   if (moved) next.artistScroll = {path, y};

@@ -59,7 +59,7 @@ export default function SevenArtist({slug,initialHome=false}:{slug:SevenSlug;ini
  const release=config.releases.find(r=>r.id===params.get('release')),film=config.films.find(f=>f.id===params.get('media'));
  const currentPath=path+(params.size?'?'+params:'');
  const returnTo=safeArtistReturn(currentPath)??path+'?section='+route.section;
- const rememberScroll=useArtistScroll(true,url);
+ const rememberScroll=useArtistScroll(route.section!=='works'||!!data,url);
  const collection=useMemo(()=>data?artistCollection(data,config.groupId):null,[data,config.groupId]);
  const works=collection?.works??[],members=collection?.members??emptyMembers;
  const sRoster=useMemo(()=>slug==='triples'?triplesRoster(members):[],[slug,members]);

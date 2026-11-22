@@ -106,6 +106,31 @@ test('a directly opened profile can return to its named directory card with the 
   assert.equal(h.history.state.artistScroll, undefined);
 });
 
+test('ITZY and LE SSERAFIM return to the exact roster anchor with or without hydrated history', () => {
+  for (const [slug,id] of [['itzy','recvxyICzHbJGN'],['lesserafim','recvxyICzHeqSw']]) {
+    const roster = '/artists/' + slug + '?section=members&q=return';
+    const detail = roster + '&member=' + id;
+    const target = roster + '#member-' + id;
+    const hydrated = navigation(detail), back = hydrated.click(target);
+    hydrated.returnToArtistRoster(back);
+    assert.equal(back.defaultPrevented, true);
+    assert.equal(hydrated.history.state.artistRosterFocus.key, id);
+    assert.equal(hydrated.location.pathname + hydrated.location.search, roster);
+
+    const native = navigation(detail), fallback = native.click(target);
+    native.history.pushState = () => {};
+    native.returnToArtistRoster(fallback);
+    assert.equal(!!fallback.defaultPrevented, false);
+    native.location.href = fallback.currentTarget.href;
+    const link = native.ArtistRosterMemberLink({href: detail, memberId: id, anchorId: 'member-' + id});
+    const calls = [];
+    link.props.ref({id:link.props.id, focus:() => calls.push('focus'), scrollIntoView:() => calls.push('scroll')});
+    assert.deepEqual(calls, ['focus','scroll']);
+    assert.equal(native.location.hash, '');
+    assert.equal(native.location.pathname + native.location.search, roster);
+  }
+});
+
 const roster = '/artists/izone?section=members';
 const wonyoung = 'recvxyICzH8OvK';
 const profile = roster + '&member=' + wonyoung;

@@ -10,7 +10,15 @@ function setup(url,data=fixture(),canEdit=true){
 test('LE SSERAFIM stable route, filters and stage return stay bounded',()=>{const {load}=setup('/artists/lesserafim'),n=load('lib/idol/artist-navigation.ts'),p=load('lib/idol/artist-preview.ts');assert.equal(n.groupArtistUrl(group),'/artists/lesserafim');assert.equal(n.artistReturnLabel('/artists/lesserafim'),'LE SSERAFIM');assert.equal(n.safeArtistReturn('https://evil.test/artists/lesserafim'),null);const url='/artists/lesserafim?section=works&format=stage';assert.equal(p.artistRouteUrl(p.artistRoute(url),'/artists/lesserafim'),url);assert.equal(n.safeArtistReturn(url),url);});
 test('LE SSERAFIM work scores retain zero and null; no invented stage',()=>{const s=setup('/artists/lesserafim?section=works').render();assert.match(s,/0\.0 \/ 10/);assert.match(s,/未评分/);const stage=setup('/artists/lesserafim?section=works&format=stage').render();assert.match(stage,/没有符合条件/);});
 test('LE SSERAFIM member dimensions remain distinct and missing MV photo never uses portrait', () => {
- assertMemberWorkCard(setup, fixture, 'lesserafim', '认人图待补');
+ const data=fixture(),id=content.memberVisuals.SAKURA.recordId;
+ data.members[0].id=id;
+ data.ratings[0].memberIds=[id];
+ assertMemberWorkCard(setup, ()=>data, 'lesserafim', '认人图待补');
+});
+test('a different member record with the same stage name does not borrow the official portrait',()=>{
+ const {parse}=require('next/dist/compiled/node-html-parser');
+ const page=parse(setup('/artists/lesserafim?section=members&member=recM').render());
+ assert.equal(page.querySelector('[data-member-id="recM"] figure a[data-original-photo]'),null);
 });
 test('LE SSERAFIM official five-person hero and named portrait evidence',()=>{assert.equal(crypto.createHash('sha256').update(fs.readFileSync('public'+content.hero.image)).digest('hex'),content.hero.sha256);assert.equal(Object.keys(content.memberVisuals).length,5);assert.match(content.hero.sourceUrl,/sourcemusic.com\/artist\/profile/);assert.match(content.hero.caption,/五人团体合照/);for(const [name,v] of Object.entries(content.memberVisuals)){assert.match(v.sourcePhotoUrl,/officialsite.cds-jp.online/);const original=JSON.parse(fs.readFileSync('../../docs/codex/lesserafim-original-transport-20261025.json')).assets.find(a=>a.url===v.sourcePhotoUrl);assert.equal(v.image,original.image);assert.equal(crypto.createHash('sha256').update(fs.readFileSync('public'+v.image)).digest('hex'),original.sha256);assert.match(v.identitySourceUrl,/le-sserafim.jp\/profile\//);}});
 test('LE SSERAFIM keeps its official directory scope and omits unknown sales or win totals',()=>{const s=setup('/artists/lesserafim?section=records').render();assert.match(s,/SOURCE MUSIC 韩国官网收录的 11 项发行/);assert.doesNotMatch(s,/待完整核验|暂不展示总计|销量与音乐节目一位数据尚不完整|0<em/);assert.equal(content.wins,null);for(const x of content.social)assert.match(x.observedAt,/^2026-10-09/);});

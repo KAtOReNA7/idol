@@ -31,9 +31,11 @@ import {MvPhotoReference} from './mv-photo-reference';
 import {mvPhotoLabel,MV_LOOK_PHOTO_LABEL} from '@/lib/idol/mv-photo-presentation';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from './reliable-image';
 import {useArtistScroll} from './use-artist-scroll';
+import {ArtistRosterMemberLink,returnToArtistRoster} from './artist-roster-link';
+import type {SharedArtistMember} from '@/lib/idol/shared-artist-member';
 
 type LesserafimContent=Omit<ExpandedArtistContent,'memberVisuals'|'releases'>&{
- memberVisuals:Record<string,ExpandedArtistContent['memberVisuals'][string]&{identitySourceUrl?:string}>;
+ memberVisuals:Record<string,ExpandedArtistContent['memberVisuals'][string]&{recordId:string;identitySourceUrl?:string}>;
  releases:(ExpandedArtistContent['releases'][number]&EasyPreviews)[];
  releaseCoverage:{scope:string};
  featuredReleaseIds:string[];
@@ -65,12 +67,14 @@ function WorkCard({work,returnTo,stageOnly=false}:{work:Work;returnTo:string;sta
   </A></div>}
  </article>;
 }
-export default function LesserafimArtist({content}:{content:LesserafimContent}){
+export default function LesserafimArtist({content,initialSearch='',initialMember=null}:{
+ content:LesserafimContent;initialSearch?:string;initialMember?:SharedArtistMember|null;
+}){
  const timelineHostOptions=useArtistTimelineHostOptions();
  const canEdit=useCanEdit();
  const [fetchedData,setData]=useState<Catalog|null>(null),[fetchedError,setError]=useState(''),[fetchedLoading,setLoading]=useState(true),[lightbox,setLightbox]=useState<{src:string;label:string}|null>(null);
  const data=timelineHostOptions.catalog!==undefined?timelineHostOptions.catalog:fetchedData,loading=timelineHostOptions.loading??(timelineHostOptions.catalog!==undefined?false:fetchedLoading),error=timelineHostOptions.error??fetchedError;
- const url=useSyncExternalStore(subscribe,()=>window.location.href,()=>timelineHostOptions.serverRoute??path),route=useMemo(()=>artistRoute(url),[url]),returnTo=artistRouteUrl(route,path),rememberScroll=useArtistScroll(!!data,url);
+ const url=useSyncExternalStore(subscribe,()=>window.location.href,()=>timelineHostOptions.serverRoute??path+initialSearch),route=useMemo(()=>artistRoute(url),[url]),returnTo=artistRouteUrl(route,path),rememberScroll=useArtistScroll(!!data,url);
  const loadSequence=useRef(0),loadAbort=useRef<AbortController|null>(null);
  const load=useCallback(async()=>{
   if(timelineHostOptions.catalog!==undefined)return;
@@ -91,15 +95,27 @@ export default function LesserafimArtist({content}:{content:LesserafimContent}){
  const members=collection?[...collection.members].sort((a,b)=>content.profile.members.indexOf(a.stageName)-content.profile.members.indexOf(b.stageName)):[];
  const historicalMembers=(data?.members??[]).filter(m=>!m.groupIds.includes(content.groupId)&&(m.formerGroupIds??[]).includes(content.groupId));
  const member=members.find(m=>m.id===route.member)??historicalMembers.find(m=>m.id===route.member);
+ const sharedMember=member??(!data&&initialMember?.id===route.member?initialMember:null);
+ const rosterHref=artistRouteUrl({...route,section:'members',member:null},path);
  const select=(section:ArtistSection)=>{navigate({section,member:null,format:'all'});};
  const representative=collection?.works.find(w=>videoId(w.url)==='pyf8cbqyfPs')??collection?.works.find(w=>!!w.url);
  const matchesFormat=(w:Work)=>route.format==='stage'?!!(w.stage||w.stageSupplement?.alternatives.length):route.format==='mv'?!!w.url:true;
  const rows=collection?artistWorkRows(collection.works,route.queue,route.search).filter(matchesFormat):[];
  const featured=content.featuredReleaseIds.map(id=>content.releases.find(r=>r.id===id)).filter((r):r is LesserafimContent['releases'][number]=>!!r);
  const releaseWorks=(releaseId:string)=>collection?.works.filter(w=>(content.releaseVideoIds[releaseId]??[]).includes(videoId(w.url)??''))??[];
- const visual=(m:Member)=>content.memberVisuals[m.stageName];
- function roster(){return <><div className="lf-roster">{members.map(m=><button key={m.id} data-artist-member-trigger={m.id} onClick={()=>navigate({section:'members',member:m.id})}><Picture identityKey={'member:'+m.id} src={visual(m)?.image} alt={m.stageName+' · '+content.portraitSet.label}/><strong><span className="member-display-name">{memberDisplayName(m)}</span><ArrowUpRight size={13}/></strong><small>{m.status||'成员档案'}</small></button>)}</div><p className="lf-credit">{publicCustomArtistCaption(content.portraitSet.label,content.portraitSet.date)}</p></>;}
- function historicalRoster(){return historicalMembers.length>0&&<section aria-label="历史成员"><Heading label="HISTORICAL MEMBERS" title="历史成员"/><p className="lf-credit">曾属本团的独立档案，保留历史作品与个人记录。</p><div className="lf-pills">{historicalMembers.map(m=><button key={m.id} data-artist-member-trigger={m.id} onClick={()=>navigate({section:'members',member:m.id})}>{memberDisplayName(m)} · 历史档案<ArrowUpRight size={13}/></button>)}</div></section>;}
+ function visual(m:Pick<Member,'id'|'stageName'>){
+  const portrait=content.memberVisuals[m.stageName];
+  return portrait?.recordId===m.id?portrait:undefined;
+ }
+ function roster(){return <><div className="lf-roster">{members.map(m=><ArtistRosterMemberLink key={m.id} memberId={m.id}
+  anchorId={'member-'+m.id} href={artistRouteUrl({...route,section:'members',member:m.id},path)}>
+  <Picture identityKey={'member:'+m.id} src={visual(m)?.image} alt={m.stageName+' · '+content.portraitSet.label}/>
+  <strong><span className="member-display-name">{memberDisplayName(m)}</span><ArrowUpRight size={13}/></strong><small>{m.status||'成员档案'}</small>
+ </ArtistRosterMemberLink>)}</div><p className="lf-credit">{publicCustomArtistCaption(content.portraitSet.label,content.portraitSet.date)}</p></>;}
+ function historicalRoster(){return historicalMembers.length>0&&<section aria-label="历史成员"><Heading label="HISTORICAL MEMBERS" title="历史成员"/><p className="lf-credit">曾属本团的独立档案，保留历史作品与个人记录。</p><div className="lf-pills">{historicalMembers.map(m=>
+  <ArtistRosterMemberLink key={m.id} memberId={m.id} anchorId={'member-'+m.id} href={artistRouteUrl({...route,section:'members',member:m.id},path)}>
+   {memberDisplayName(m)} · 历史档案<ArrowUpRight size={13}/>
+  </ArtistRosterMemberLink>)}</div></section>;}
  function news(){return <div className="lf-news">{content.updates.map(u=><A key={u.id} href={external(u.url)} target="_blank" rel="noopener noreferrer"><div className="lf-news-image"><Picture identityKey={'news:'+u.id} src={u.image} alt={u.title}/></div><time>{publicCustomArtistText(u.date)} · {u.publisher}</time><h3>{u.title}</h3><p>{publicCustomArtistText(u.summary)}</p><span>阅读官方动态<ArrowUpRight size={13}/></span></A>)}</div>;}
  function renderTimeline(){return <ArtistTimelineHost groupId={content.groupId} catalog={data} background={news()} loading={loading} error={error} onRetry={retry}/>;}
  function taste(){return canEdit&&collection&&<div className="lf-taste"><button onClick={()=>navigate({section:'works',queue:'tonight',member:null,search:''})}><small>接着发现</small><strong>{collection.pending.length} 支待看</strong><ArrowUpRight size={16}/></button><div><small>我的 MV 均分</small><strong>{number(collection.mv.mean)}</strong><span>{collection.mv.count} 支已评</span></div><div><small>我的舞台均分</small><strong>{number(collection.stage.mean)}</strong><span>{collection.stage.count} 支已评</span></div></div>;}
@@ -127,16 +143,14 @@ export default function LesserafimArtist({content}:{content:LesserafimContent}){
     </A></article>;
    })}</div></>;
  }
- function memberPage(m:Member){
-  if(!data)return null;
-  const items=memberWorks(data,m.id),s=memberWorkSummary(items);
+ function memberIdentity(m:SharedArtistMember){
   const name=memberDisplayName(m), historical=!m.groupIds.includes(content.groupId)&&(m.formerGroupIds??[]).includes(content.groupId);
   const historyVisual=historical?historicalMemberVisual(m.id,content.groupId):null;
   const portrait=historical?null:visual(m);
   const source=portrait?.identitySourceUrl?external(portrait.identitySourceUrl):undefined;
   const openOriginal=(src:string)=>setLightbox({src,label:name+' · 日本官网成员照'});
   return <>
-   <button className="lf-back" onClick={()=>navigate({section:'members',member:null})}>返回全部成员</button>
+   <a className="lf-back" href={rosterHref+'#member-'+m.id} onClick={returnToArtistRoster}>返回全部成员</a>
    <section className="lf-member-hero" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity">
     <header className="lf-member-heading">
      <h1><span className="member-display-name">{name}</span></h1>
@@ -161,9 +175,13 @@ export default function LesserafimArtist({content}:{content:LesserafimContent}){
      <p>{[m.country,m.birthDate,m.status].filter(Boolean).join(' · ')}</p>
      {m.role&&<p>{m.role}</p>}
      <A className="lf-button" href={artistMemberUrl(m.id,returnTo)}>个人档案与记录</A>
-     <div className="lf-member-social">{(m.social??[]).map(a=><A key={a.platform} href={external(a.url)} target="_blank" rel="noopener noreferrer"><span>{a.platform==='instagram'?'Instagram':a.platform==='x'?'X':a.platform==='youtube'?'YouTube':'TikTok'}<ArrowUpRight size={13}/></span>{a.countLabel&&<strong>{followerAccountLabel(a)}</strong>}<small>{a.observedAt?'更新于 '+a.observedAt.slice(0,10):'粉丝数暂未收录'}</small></A>)}</div>
+     <div className="lf-member-social">{(member?.social??[]).map(a=><A key={a.platform} href={external(a.url)} target="_blank" rel="noopener noreferrer"><span>{a.platform==='instagram'?'Instagram':a.platform==='x'?'X':a.platform==='youtube'?'YouTube':'TikTok'}<ArrowUpRight size={13}/></span>{a.countLabel&&<strong>{followerAccountLabel(a)}</strong>}<small>{a.observedAt?'更新于 '+a.observedAt.slice(0,10):'粉丝数暂未收录'}</small></A>)}</div>
     </div>
-   </section>
+   </section></>;
+ }
+ function memberRecords(m:Member,data:Catalog){
+  const items=memberWorks(data,m.id),s=memberWorkSummary(items);
+  return <>
 <div className="lf-member-summary" data-member-module="scores"><div><small>作品综合分</small><strong>{number(s.composite)}</strong><span>{s.ratedWorks} 支作品已评</span></div><div className="lf-dimensions"><div><small>表现均分</small><strong>{number(s.performanceMean)}</strong><span>{s.performanceCount} 支已评</span></div><div><small>造型均分</small><strong>{number(s.stylingMean)}</strong><span>{s.stylingCount} 支已评</span></div></div>{s.composite===null&&<p>表现和造型都有评分后，显示作品综合分。</p>}</div>
 <Heading label="作品评分" title="成员影像"/><div className="lf-member-works" data-member-module="works">{items.map(x=><article key={x.work.id}><MvIdentityPhoto work={x.work} memberId={m.id} label={memberDisplayName(m)} photo={x.photo} live={data.mode==='live'}/><MvPhotoReference photo={x.photo} referencePhoto={x.referencePhoto} label={memberDisplayName(m)+' · '+x.work.song} live={data.mode==='live'}/><A data-member-work-trigger={x.work.id} href={artistWorkUrl(x.work,false,returnTo)}><h3>{x.work.song||x.work.name}<ArrowUpRight size={14}/></h3><p>{x.work.version||x.work.videoType}</p><div><span>表现 <b>{number(x.performance)}</b></span><span>造型 <b>{number(x.styling)}</b></span></div></A>{!!(x.work.stage||x.work.stageSupplement?.alternatives.length)&&<A className="lf-button" data-member-work-trigger={x.work.id+':stage'} href={artistWorkUrl(x.work,true,returnTo)}>看舞台<ArrowUpRight size={13}/></A>}</article>)}</div>{!items.length&&<p className="lf-empty">尚未收录这位成员的作品记录。</p>}
 <MemberPublicCredits memberId={m.id} data={data} renderLink={(work,label)=><A href={artistWorkUrl(work,false,returnTo)}>{label}</A>}/>
@@ -188,7 +206,12 @@ export default function LesserafimArtist({content}:{content:LesserafimContent}){
   <p className="lf-credit">{publicCustomArtistCaption(content.hero.caption,content.hero.date)}</p>
  </section>}
  <nav className="lf-tabs" aria-label="团体内容">{sections.map(([k,label])=><button key={k} aria-current={route.section===k?'page':undefined} onClick={()=>select(k)}>{label}</button>)}</nav></>}
- <main className="lf-content" id="artist-content">{loading&&!data?<div className="lf-empty" role="status">正在打开你的 LE SSERAFIM 收藏…</div>:error?<div className="lf-empty" role="alert"><p>{error}</p><button className="lf-button" onClick={retry}>重新加载</button></div>:!collection?<div className="lf-empty">暂未找到团体资料。<A href="/?view=groups">返回团体索引</A></div>:route.member?(member?memberPage(member):<div className="lf-empty">这个成员不在 LE SSERAFIM 档案中。<button onClick={()=>navigate({member:null,section:'members'})}>查看成员</button></div>):<>
+ <main className="lf-content" id="artist-content">
+ {sharedMember&&memberIdentity(sharedMember)}
+ {loading&&!data?<div className="lf-empty" role="status">{sharedMember?'正在加载成员影像与评分…':route.member?'正在查找成员…':'正在打开你的 LE SSERAFIM 收藏…'}</div>
+ :error?<div className="lf-empty" role="alert"><p>{error}</p><button className="lf-button" onClick={retry}>重新加载</button></div>
+ :!collection?<div className="lf-empty">暂未找到团体资料。<A href="/?view=groups">返回团体索引</A></div>
+ :route.member?(member&&data?memberRecords(member,data):<div className="lf-empty">这个成员不在 LE SSERAFIM 档案中。<a href={rosterHref} onClick={returnToArtistRoster}>查看成员</a></div>):<>
  {route.section==='overview'&&<>
 <ArtistInformation slug="lesserafim" catalog={data}/>
 <section><Heading label="MEMBERS" title="成员" onMore={()=>select('members')}/>{roster()}</section>

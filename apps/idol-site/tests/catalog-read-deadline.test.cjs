@@ -3,11 +3,11 @@ const tick=()=>new Promise(r=>setImmediate(r));
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return {promise,resolve,reject};};
 for(const artist of ['itzy','lesserafim','ive','kissoflife','stayc','nmixx','hearts2hearts','kiiikiii','katseye','saymyname','babymonster','illit']){
  const test=(name,fn)=>require('node:test')(artist+': '+name,fn);
-function harness(){
+function harness(memberProps={}){
  let now=0,next=0,cursor=0,effects=[],unmounted=false,afterUnmount=0;const timers=new Map(),hooks=[],stateSlots=[],requests=[],cache={};
  const setTimeout=(fn,ms)=>{const id=++next;timers.set(id,{fn,due:now+ms,ms});return id;},clearTimeout=id=>timers.delete(id);
  const eq=(a,b)=>a&&b&&a.length===b.length&&a.every((v,i)=>Object.is(v,b[i]));
- const mockReact={...React,useState(initial){const i=cursor++;if(!hooks[i]){hooks[i]={value:initial};stateSlots.push(hooks[i]);}return [hooks[i].value,v=>{if(unmounted)afterUnmount++;hooks[i].value=typeof v==='function'?v(hooks[i].value):v;}];},useRef(value){const i=cursor++;return hooks[i]??(hooks[i]={current:value});},useMemo(fn,deps){const i=cursor++;if(!hooks[i]||!eq(hooks[i].deps,deps))hooks[i]={deps,value:fn()};return hooks[i].value;},useCallback(fn,deps){return mockReact.useMemo(()=>fn,deps);},useEffect(fn,deps){const i=cursor++,old=hooks[i];if(!old||!eq(old.deps,deps)){hooks[i]={deps,setup:fn,cleanup:old?.cleanup};effects.push(()=>{hooks[i].cleanup?.();hooks[i].cleanup=fn();});}},useSyncExternalStore(){return '/artists/'+artist+(artist==='ive'?'?section=works':'');}};
+ const mockReact={...React,useState(initial){const i=cursor++;if(!hooks[i]){hooks[i]={value:initial};stateSlots.push(hooks[i]);}return [hooks[i].value,v=>{if(unmounted)afterUnmount++;hooks[i].value=typeof v==='function'?v(hooks[i].value):v;}];},useRef(value){const i=cursor++;return hooks[i]??(hooks[i]={current:value});},useMemo(fn,deps){const i=cursor++;if(!hooks[i]||!eq(hooks[i].deps,deps))hooks[i]={deps,value:fn()};return hooks[i].value;},useCallback(fn,deps){return mockReact.useMemo(()=>fn,deps);},useEffect(fn,deps){const i=cursor++,old=hooks[i];if(!old||!eq(old.deps,deps)){hooks[i]={deps,setup:fn,cleanup:old?.cleanup};effects.push(()=>{hooks[i].cleanup?.();hooks[i].cleanup=fn();});}},useSyncExternalStore(){return '/artists/'+artist+(memberProps.initialSearch??(artist==='ive'?'?section=works':''));}};
  function load(file){if(cache[file])return cache[file];const e={};cache[file]=e;const js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
   vm.runInNewContext('(function(require,exports){'+js+'})',{URL,URLSearchParams,Date,AbortController,DOMException,setTimeout,clearTimeout,fetch:(url,options)=>{const d=deferred();requests.push({...d,url,options});return d.promise;}})(name=>{const imageModule=require('./helpers/image-dependency-loader.cjs').imageDependency(name);if(imageModule!==undefined)return imageModule;const timelineModule=require('./helpers/timeline-dependency-loader.cjs').timelineDependency(name);if(timelineModule!==undefined)return timelineModule;if(name==='@/components/member-physical-facts')return require('./helpers/member-physical-loader.cjs');if(name==='@/components/member-career-facts')return require('./helpers/member-career-loader.cjs');if(name==='react')return mockReact;
    if(name==='@/components/public-access')return {useCanEdit:()=>false};
@@ -16,7 +16,7 @@ function harness(){
    if(name==='./use-artist-scroll')return {useArtistScroll:()=>()=>{}};if(name==='./photo-lightbox')return {PhotoLightbox:()=>null};if(name.endsWith('.json'))return {default:JSON.parse(fs.readFileSync(name.replace('@/','')))};if(name.startsWith('@/'))return load(name.slice(2)+'.ts');if(name.startsWith('./'))return load(path.join(path.dirname(file),name)+'.ts');return require(name);},e);return e;
  }
  const Artist=load(artist==='babymonster'?'components/artist-sample.tsx':'components/'+(artist==='kissoflife'?'kiof':artist)+'-artist.tsx').default,content=JSON.parse(fs.readFileSync('data/'+artist+'-artist.json'));
- return {hooks,requests,timers,helper:load('lib/idol/catalog-read-deadline.ts'),render(){cursor=0;effects=[];const tree=Artist({content});for(const f of effects)f();return tree;},retry(){return hooks.find(h=>typeof h?.value==='function'&&/read(?:Artist)?Catalog/.test(String(h.value))).value();},unmount(){unmounted=true;for(const h of hooks)h?.cleanup?.();},afterUnmount:()=>afterUnmount,strictReplay(){for(const h of hooks)h?.cleanup?.();for(const h of hooks)if(h?.setup)h.cleanup=h.setup();},async advance(ms){now+=ms;for(const [id,t] of timers)if(t.due<=now){timers.delete(id);t.fn();}await tick();},reply(i,data){requests[i].resolve({ok:true,headers:{get:()=> 'application/json'},json:()=>Promise.resolve(data)});},data:()=>stateSlots[0].value,error:()=>stateSlots[1].value,loading:()=>stateSlots[2].value};
+ return {hooks,requests,timers,helper:load('lib/idol/catalog-read-deadline.ts'),render(){cursor=0;effects=[];const tree=Artist({content,...memberProps});for(const f of effects)f();return tree;},retry(){return hooks.find(h=>typeof h?.value==='function'&&/read(?:Artist)?Catalog/.test(String(h.value))).value();},unmount(){unmounted=true;for(const h of hooks)h?.cleanup?.();},afterUnmount:()=>afterUnmount,strictReplay(){for(const h of hooks)h?.cleanup?.();for(const h of hooks)if(h?.setup)h.cleanup=h.setup();},async advance(ms){now+=ms;for(const [id,t] of timers)if(t.due<=now){timers.delete(id);t.fn();}await tick();},reply(i,data){requests[i].resolve({ok:true,headers:{get:()=> 'application/json'},json:()=>Promise.resolve(data)});},data:()=>stateSlots[0].value,error:()=>stateSlots[1].value,loading:()=>stateSlots[2].value};
 }
 const catalog=()=>({groups:[],members:[],works:[],ratings:[]});
 test('default 30-second fetch deadline exits loading with retry message and can recover',async()=>{
@@ -84,5 +84,57 @@ test('timeout renders explicit retry UI and recovery preserves catalog values',a
  const before=JSON.stringify(d);h.reply(1,d);await tick();tree=h.render();assert.equal(h.data(),d);assert.equal(JSON.stringify(d),before);assert.ok(!walk(tree).some(n=>n.props?.role==='alert'));assert.doesNotMatch(text(tree),/暂未找到团体资料/);
  assert.ok(h.requests.every(r=>r.url.startsWith('/api/catalog?')&&!r.options.method&&!r.options.body));
 });
+
+if (artist === 'itzy' || artist === 'lesserafim') {
+ test('the named identity stays present through a delayed read, an actual retry and a recovered zero score', async () => {
+  const {registry,artistCatalog} = require('./fixtures/current-artist-pages.cjs');
+  const group = registry.find(group => group.slug === artist);
+  const known = require('../data/shared-artist-member-identities.json')[group.groupId];
+  const person = artist === 'itzy' ? known[0] : known.find(m => m.stageName === 'KIM GARAM');
+  const initialSearch = '?section=members&member=' + person.id;
+  const h = harness({initialSearch,initialMember:person});
+  const walk = n => Array.isArray(n) ? n.flatMap(walk) : !n || typeof n !== 'object' ? [] : [n,...walk(n.props?.children)];
+  const find = (tree, fn) => walk(tree).find(fn);
+  const text = n => Array.isArray(n) ? n.map(text).join('') : n && typeof n === 'object'
+   ? text(n.props?.children) : n == null || typeof n === 'boolean' ? '' : String(n);
+  function identity(tree) {
+   const hero = find(tree, n => n.props?.['data-member-module'] === 'identity');
+   assert.equal(hero?.props['data-member-id'], person.id);
+   const title = find(hero, n => n.type === 'h1');
+   assert.equal(title.props.children.props.children, person.cnName+' · '+person.stageName);
+  }
+  identity(h.render());
+  await tick();
+  await h.advance(29999);
+  let tree = h.render();
+  identity(tree);
+  assert.ok(find(tree,n => n.props?.role === 'status'));
+  assert.equal(find(tree,n => n.props?.['data-member-module'] === 'scores'), undefined);
+  await h.advance(1);
+  tree = h.render();
+  identity(tree);
+  const alert = find(tree,n => n.props?.role === 'alert');
+  const retry = find(alert,n => n.type === 'button' && n.props.children === '重新加载');
+  retry.props.onClick();
+  identity(h.render());
+  await tick();
+  const catalog = artistCatalog(group);
+  const rated = catalog.ratings.find(row => row.memberIds.length === 1 && row.memberIds[0] === person.id
+   && row.workIds.length === 1 && catalog.works.some(work => work.id === row.workIds[0] && !work.placeholder));
+  assert.ok(rated);
+  const loaded = {...catalog, ratings:[{...rated,score:0,stylingScore:8}]};
+  h.reply(1,loaded);
+  await tick();
+  tree = h.render();
+  identity(tree);
+  assert.equal(find(tree,n => n.props?.role === 'alert'), undefined);
+  const scores = find(tree,n => n.props?.['data-member-module'] === 'scores');
+  assert.match(text(scores), /表现均分0\.0/);
+  assert.match(text(scores), /造型均分8\.0/);
+  assert.ok(find(tree,n => n.props?.['data-member-module'] === 'works'));
+  assert.equal(h.requests.length, 2);
+  h.unmount();
+ });
+}
 
 }

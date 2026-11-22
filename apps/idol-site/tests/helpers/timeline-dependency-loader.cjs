@@ -30,6 +30,7 @@ function timelineDependency(name){
  if(name==='../../data/triples/design-public-catalog.json')return {default:JSON.parse(fs.readFileSync(path.join(root,'data/triples/design-public-catalog.json'),'utf8'))};
  if(name.endsWith('/data/artist-timeline-registry.json'))return {default:JSON.parse(fs.readFileSync(path.join(root,'data/artist-timeline-registry.json'),'utf8'))};
  if(name==='./artist-timeline-host')return {...bundled('components/artist-timeline-host.tsx'),useArtistTimelineHostOptions:()=>({})};
+ if(name==='./artist-roster-link')return bundled('components/artist-roster-link.tsx');
  if(name==='./babymonster-directory')return bundled('components/babymonster-directory.tsx');
  if(name==='./kiof-directory')return bundled('components/kiof-directory.tsx');
  const match=name.match(/(?:^|\/)timeline\/(route|history-state|navigation)$/);

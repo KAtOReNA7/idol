@@ -3,7 +3,14 @@
   "imported-work-credits-and-portraits.json": {"from":["lib/idol/public-work-credits.ts","lib/idol/public-work-recognition.ts"],"fixture":{"credits":[],"recognition":[]}},
   "public-video-date-evidence.json": {"from":["lib/idol/reviewed-work-metadata.ts"],"fixture":{"changes":[]}},
   "public-work-metadata-completion.json": {"from":["lib/idol/reviewed-work-metadata.ts"],"fixture":{"records":[]}},
-  "mv-recognition-editions.json": {"from":["app/artists/kiiikiii/page.tsx"],"fixture":{"kiiikiii-uncut-gem-2025":{"label":"合成发行成员照","works":[],"portraits":{}}}},
+  "mv-recognition-editions.json": {
+    "from":["app/artists/kiiikiii/page.tsx","app/artists/nmixx/page.tsx"],
+    "fixture":{
+      "kiiikiii-uncut-gem-2025":{"label":"合成发行成员照","works":[],"portraits":{}},
+      "nmixx-admare-mix-202202":{"label":"合成出道成员照","works":[],"portraits":{}},
+      "roller-coaster-2023":{"label":"合成单曲成员照","works":[],"portraits":{}}
+    }
+  },
   "stages/research-followups-20261030.json": {"from":["lib/idol/stage-research-followups.ts"],"fixture":{"records":[]}},
   "stages/research-followups-20261121.json": {"from":["lib/idol/stage-research-followups.ts"],"fixture":{"records":[]}},
   "adya-native-design.json": {"from":["components/adya-artist.tsx"],"fixture":{"asOf":"","members":[],"releases":[],"works":[],"events":[]}},

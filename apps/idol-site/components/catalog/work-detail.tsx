@@ -230,6 +230,9 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  const versionLinks=work.versionDisplay?.links??[];
  const versionGroups=[...new Set(versionLinks.map(link=>link.categories.join(' / ')))];
  const stage=work.stage;const stageBound=stageHasValidBinding(stage);
+ const headingDetails = view === 'mv' ? [work.videoType, work.version, work.releaseDate]
+  : stage ? [stageKindLabel(stage.kind), stage.publishedDate && `视频发布于 ${stage.publishedDate}`]
+  : [stageStatusLabel(work)];
  const stageNote=stage?.verificationNote&&!stage.sameSongFallback?stageViewingNote(work.id,stageSourceKey(stage)):null;
  const activeUrl=view==='stage'?(stage?stageWatchUrl(stage):''):work.url;const vid=view==='stage'?stage?.videoId??null:videoId(activeUrl);const activePlatform=view==='stage'?stage?.platform??'youtube':'youtube';const activePlatformLabel=activePlatform==='bilibili'?'B站':activePlatform==='x'?'X':'YouTube';const title=view==='stage'?stage?.title??'暂无舞台视频':work.officialTitle||work.name;
  const playback=workPlayback(work.id,vid,view,stage);
@@ -273,7 +276,7 @@ export function WorkDetail({work,data,sequence,onBack,onMember,onGroup,onSaved,o
  }
  function jumpToMemberDraft(){const id=memberDrafts[0]?.slice('ratings:'.length);if(!id)return;if(view==='stage')switchView('mv');window.requestAnimationFrame(()=>{const card=nativeLocations[id]?.host??memberCards.current[id]??document.getElementById(id);const button=card?.querySelector<HTMLButtonElement>('.editor-actions button:not(:disabled)');(button??card)?.scrollIntoView({block:'center',behavior:'smooth'});button?.focus({preventScroll:true});});}
  return <div className={'detail '+(view==='stage'?'stage-view':'')}><button className="back text-button" onClick={onBack}><ArrowLeft size={16}/>{backLabel}</button>
- <header className="music-work-title"><GroupLinks data={data} ids={work.groupIds} onGroup={onGroup}/><h1>{work.song||work.name}</h1><p>{[work.videoType,work.version,work.releaseDate].filter(Boolean).join(' · ')}</p></header>
+ <header className="music-work-title"><GroupLinks data={data} ids={work.groupIds} onGroup={onGroup}/><h1>{work.song||work.name}</h1><p>{headingDetails.filter(Boolean).join(' · ')}</p></header>
  {sequence&&<SequencePreview sequence={sequence} currentId={work.id} catalog={data} onNext={onNext} nextDisabled={navigationBlockedKeys.length>0}/>}
  {sequenceLabel&&<div className="watch-context"><span>{sequenceLabel}</span><small>第 {sequencePosition} / {sequenceTotal} 首</small></div>}
  <div className="video-mode-row"><div className="video-mode-tabs" role="tablist" aria-label="视频版本" onFocus={event=>{for(const tab of event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]'))tab.tabIndex=tab===(event.target as EventTarget)?0:-1;}} onKeyDown={event=>{

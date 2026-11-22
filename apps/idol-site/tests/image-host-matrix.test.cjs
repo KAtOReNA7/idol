@@ -95,9 +95,26 @@ for (const [index, artist] of registry.entries()) {
   const ownMedia=targets.filter(u=>u.pathname===artist.path&&u.searchParams.has('media'));
   if (['vcha','hitgs','atheart'].includes(artist.slug)) {
    const videos=require(`../data/${artist.slug}-review-editorial.json`).videos;
-   const cards=[...html.matchAll(/<button\b[^>]*data-artist-media=[^>]*>/g)].map(m=>attrs(m[0]));
-   assert.ok(cards.length>0);
-   for (const card of cards) assert.ok(videos.some(v=>v.key===card['data-artist-media']&&v.videoId===card['data-video-id']));
+   const cards=[...html.matchAll(/<a\b[^>]*data-artist-media=[^>]*>/g)].map(m=>attrs(m[0]));
+   assert.equal(cards.length,videos.length);
+   assert.deepEqual(new Set(cards.map(card=>card['data-artist-media'])),new Set(videos.map(v=>v.key)));
+   for (const card of cards) {
+    const video=videos.find(v=>v.key===card['data-artist-media']);
+    assert.equal(card['data-video-id'],video.videoId);
+    const dest=new URL(card.href,'https://host.example');
+    assert.equal(dest.origin,'https://host.example');
+    if(dest.pathname==='/'){
+     const work=catalog.works.find(w=>w.id===dest.searchParams.get('work'));
+     assert.ok(work?.groupIds.includes(artist.groupId));
+     if(video.workId)assert.equal(work.id,video.workId);
+     assert.equal(dest.searchParams.get('video'),video.type==='stage'?'stage':null);
+     assert.equal(video.type==='stage'?work.stage?.videoId:new URL(work.url).searchParams.get('v'),video.videoId);
+    }else{
+     assert.equal(dest.pathname,artist.path);
+     assert.equal(dest.searchParams.get('media'),video.key);
+     assert.equal(dest.searchParams.get('format'),video.type);
+    }
+   }
   } else {
    assert.ok(open.length||ownMedia.length||targets.some(u=>externalPlayable.test(u.hostname)), 'reachable work or video');
   }

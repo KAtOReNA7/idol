@@ -54,9 +54,16 @@ test('AtHeart distinguishes a delayed or failed catalog from an unavailable vide
   const catalog = artistCatalog(group);
   const video = atheart.videos.find(video => video.workId && video.type === 'stage');
   const query = queryFor(video);
-  for (const [options, status] of [[{loading: true}, /正在加载/], [{error: '读取失败'}, /重试/]]) {
+  for (const options of [{loading: true}, {error: '读取失败'}]) {
     const detail = parse(await renderArtist(group, query, null, options)).querySelector('.ah-video-detail');
-    assert.match(detail.text, status);
+    if (options.loading) {
+      assert.match(detail.querySelector('[role="status"]').text, /站内观看入口/);
+      assert.equal(detail.querySelector('[role="alert"]'),null);
+    } else {
+      assert.match(detail.querySelector('[role="alert"] button').text, /重试/);
+    }
+    assert.equal(detail.querySelector('[data-film-primary="source"]'),null);
+    assert.equal(detail.querySelector('[data-film-primary="onsite"]'),null);
     assert.doesNotMatch(detail.text, /暂无站内播放或评分/);
   }
   const works = catalog.works.map(work => work.id === video.workId ? {...work, stage: null} : work);

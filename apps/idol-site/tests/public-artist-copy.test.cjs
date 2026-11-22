@@ -10,6 +10,22 @@ const audit=/未知|待核|核验|核对于|核于|仅证|不作.{0,12}证明|�
 test.before(async()=>{const output=path.join(temp,'routes.cjs');await esbuild.build({entryPoints:['tests/fixtures/public-copy/entry.tsx'],bundle:true,outfile:output,platform:'node',format:'cjs',jsx:'automatic',external:['react','react/*'],loader:{'.css':'empty'},nodePaths:[path.resolve('node_modules')],plugins:[{name:'actual-public-artist-documents',setup(build){build.onResolve({filter:/^@\/data\/.*-artist\.json$/},args=>({path:path.resolve(args.path.slice(2))}));}},explicitTestAliases()],metafile:true,logLevel:'silent'}).then(result=>{assert.ok(Object.keys(result.metafile.inputs).some(p=>p==='data/badvillain-artist.json'));assert.ok(!Object.keys(result.metafile.inputs).some(p=>/data\/snapshot/.test(p)));});bundle=require(output);});
 test.after(()=>fs.rmSync(temp,{recursive:true,force:true}));
 const {artistCatalog, renderArtist, nativeSlugs} = require('./fixtures/current-artist-pages.cjs');
+const {parse} = require('next/dist/compiled/node-html-parser');
+
+test('home group photos keep dates and source links in a closed disclosure', async () => {
+ for (const [slug, publisher] of [['adya', 'CJ ENM Japan'], ['witchx', 'Bugs'], ['rescene', 'THE MUZE']]) {
+  const artist = registry.find(row => row.slug === slug);
+  const page = parse(await renderArtist(artist, {}, artistCatalog(artist)));
+  const source = page.querySelector('main details.photo-source-disclosure');
+  assert.ok(source, slug);
+  assert.equal(source.hasAttribute('open'), false);
+  assert.equal(source.querySelector('summary').text.trim(), '照片出处');
+  assert.ok(source.querySelector('a[href]').text.includes(publisher));
+  assert.match(source.text, /拍摄(?:日期|时期)未注明/);
+  source.remove();
+  assert.doesNotMatch(page.querySelector('main').toString(), /拍摄(?:日期|时期)未注明/);
+ }
+});
 const visible = html => html.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
 for(const artist of registry)test(`${artist.slug}: public navigation keeps research-only input out of the visible page`, async()=>{
  const catalog=artistCatalog(artist);

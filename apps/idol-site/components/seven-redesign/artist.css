@@ -93,6 +93,13 @@
 .rescene-plate nav {display:flex;flex-wrap:wrap;gap:3px 12px}
 .sr-rescene .rescene-plate button {min-height:44px;font-size:13px;letter-spacing:.06em;text-decoration:underline;text-underline-offset:5px}
 .sr-rescene .sr-hero-credit {background:#e3dddf;color:#514950}
+.sr-rescene .sr-rescene-photo-credit {
+  --photo-source-line: #bdb4b9;
+  padding-block: 0;
+  background: #eeeae7;
+  color: #352f36;
+}
+.sr-rescene .sr-rescene-photo-credit .photo-source-body p { color: #655d65; }
 .sr-rescene .sr-footer {background:#d9d0d5}
 .sr-site .sr-footer-mark:focus-visible,.sr-triples .triples-number-index button:focus-visible {outline-offset:1px}
 @media(max-width:700px) {

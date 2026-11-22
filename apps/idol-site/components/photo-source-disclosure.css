@@ -1,0 +1,38 @@
+.photo-source-disclosure {
+  width: 100%;
+  border-top: 1px solid var(--photo-source-line, currentColor);
+  font-size: 14px;
+  text-align: start;
+}
+
+.photo-source-disclosure > summary {
+  display: list-item;
+  min-height: 44px;
+  padding: 0;
+  line-height: 44px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.photo-source-disclosure .photo-source-body {
+  color: inherit;
+  font: inherit;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.photo-source-disclosure .photo-source-body p {
+  margin: 0;
+  font: inherit;
+}
+
+.photo-source-disclosure .photo-source-body a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

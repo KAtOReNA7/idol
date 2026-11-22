@@ -1,4 +1,5 @@
 'use client';
+import {PhotoSourceDisclosure} from '@/components/photo-source-disclosure';
 import {ArtistLibraryFilters} from './artist-library-filters';
 import {NativeTimelineDetailBack} from './native-timeline-detail-back';
 import {publicCustomArtistText} from '@/lib/idol/custom-artist-copy';
@@ -144,7 +145,12 @@ export default function WitchxArtist({content,initialSearch=''}:{content:Candida
   <nav className="wk-hero-actions" aria-label="团体档案入口"><Link className="wk-button" to={sectionHref('members')}>认识成员 <Arrow/></Link><Link to={sectionHref('works')}>作品与影像 <Arrow/></Link></nav>
   <a className="wk-hero-source" href="https://kpopmedia.co.kr/#artists" target="_blank" rel="noopener noreferrer">官方艺人介绍 ↗</a>
  </header>
- <figure className="wk-group"><OriginalPhotoLink className="wk-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'W!TCHX · Bugs 艺人资料合照'})}><Picture src={content.hero.image!} alt="W!TCHX · Bugs 艺人资料合照" priority/></OriginalPhotoLink><figcaption>Bugs 艺人资料合照 · 拍摄时期未注明 · 查看原图</figcaption></figure>
+ <figure className="wk-group"><OriginalPhotoLink className="wk-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'W!TCHX · Bugs 艺人资料合照'})}><Picture src={content.hero.image!} alt="W!TCHX · Bugs 艺人资料合照" priority/></OriginalPhotoLink><figcaption>
+   <PhotoSourceDisclosure className="wk-photo-credit">
+     <p>Bugs 艺人资料页的团体合照，拍摄时期未注明。</p>
+     {content.hero.sourceUrl && <a href={content.hero.sourceUrl} target="_blank" rel="noopener noreferrer">Bugs 艺人资料 ↗</a>}
+   </PhotoSourceDisclosure>
+ </figcaption></figure>
 </section>
 <section className="wk-home-members" aria-label="成员">{heading('成员','MEMBERS')}{roster()}<details className="wk-roster-note group-roster-source"><summary>成员照片来源</summary><p>{rosterPhotoCredit}中文名为艺名转写。</p></details></section>
 <section className="wk-section">{heading('影像与舞台','VIDEO')}{videos(design.works)}</section>

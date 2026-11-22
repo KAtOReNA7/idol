@@ -1,3 +1,11 @@
+.idol-adya-poster-photo { min-width: 0; }
+.idol-adya-poster-photo .idol-adya-photo-credit {
+  --photo-source-line: #555557;
+  margin-top: 12px;
+  color: var(--idol-adya-ink, #f5f3ef);
+}
+.idol-adya-photo-credit .photo-source-body p { color: var(--idol-adya-muted, #b7b6b4); }
+
 /* Artist content must not use the ad- prefix: generic cosmetic filters hide it. */
 @font-face{font-family:AdyaDisplay;src:url('/fonts/adya/ArchivoNarrow.woff2') format('woff2'),url('/fonts/adya/ArchivoNarrow.ttf') format('truetype');font-weight:400 700;font-display:swap}
 @font-face{font-family:AdyaText;src:url('/fonts/unis/NotoSansSC-Regular.woff2') format('woff2');font-weight:400;font-display:swap}

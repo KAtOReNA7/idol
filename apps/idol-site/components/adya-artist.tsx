@@ -1,4 +1,5 @@
 'use client';
+import {PhotoSourceDisclosure} from '@/components/photo-source-disclosure';
 import {artistFilmAction,ArtistFilmPrimary,ArtistFilmSource} from './artist-film-action';
 import {ArtistLibraryFilters} from './artist-library-filters';
 import {NativeTimelineDetailBack} from './native-timeline-detail-back';
@@ -168,7 +169,12 @@ export default function AdyaArtist({content,initialSearch=''}:{content:Candidate
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','OUR YEARS')}{timeline()}</>;
  else body=<>
-<section className="idol-adya-poster"><div className="idol-adya-poster-title"><h1>ADYA</h1><Link to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><div className="idol-adya-poster-body"><OriginalPhotoLink className="idol-adya-photo-button idol-adya-group" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'ADYA · 官方合作方团体照片'})}><Picture src={content.hero.image!} alt="ADYA 五人团体照片 · 官方合作方发布于2024年12月23日" priority/></OriginalPhotoLink><aside className="idol-adya-poster-index"><Link to={sectionHref('members')}><span>成员档案 <Arrow/></span></Link><ArtistIntroduction slug="adya"/><Link to={sectionHref('updates')}>时间轴 <Arrow/></Link><a href="https://www.youtube.com/@OFFICIAL_ADYA" target="_blank" rel="noopener noreferrer">官方频道 ↗</a></aside></div><p className="idol-adya-caption">{content.hero.caption}</p></section>
+<section className="idol-adya-poster"><div className="idol-adya-poster-title"><h1>ADYA</h1><Link to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><div className="idol-adya-poster-body"><div className="idol-adya-poster-photo"><OriginalPhotoLink className="idol-adya-photo-button idol-adya-group" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'ADYA · 官方合作方团体照片'})}><Picture src={content.hero.image!} alt="ADYA 五人团体合照" priority/></OriginalPhotoLink>
+  <PhotoSourceDisclosure className="idol-adya-photo-credit">
+    <p>CJ ENM Japan 于 2024 年 12 月 23 日发布。拍摄日期未注明。</p>
+    {content.hero.sourceUrl && <a href={content.hero.sourceUrl} target="_blank" rel="noopener noreferrer">CJ ENM Japan 发布原文 ↗</a>}
+  </PhotoSourceDisclosure>
+</div><aside className="idol-adya-poster-index"><Link to={sectionHref('members')}><span>成员档案 <Arrow/></span></Link><ArtistIntroduction slug="adya"/><Link to={sectionHref('updates')}>时间轴 <Arrow/></Link><a href="https://www.youtube.com/@OFFICIAL_ADYA" target="_blank" rel="noopener noreferrer">官方频道 ↗</a></aside></div></section>
 <ArtistInformation slug="adya" catalog={state.data}/>
 <section className="idol-adya-home-members">{heading('成员','MEMBERS')}{roster()}<details className="idol-adya-roster-note group-roster-source"><summary>2023 年成员照片来源</summary><p>五人出道时期的公司宣传照，2023 年 5 月 9 日发布。</p></details></section>
 <section className="idol-adya-home-videos">{heading('影像','WATCH')}{videos(design.works.filter(v=>v.type!=='STAGE'))}</section>

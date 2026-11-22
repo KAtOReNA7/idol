@@ -93,3 +93,45 @@ test('BEWAVE keeps its six historical members identifiable and the original inte
     assert.doesNotMatch(page.text, /更多参与资料持续补充/);
   }
 });
+
+test('UNIS and Kep1er open the retained original of each named portrait while keeping its small preview', async () => {
+  const unis = require('../docs/portrait-sources-20261016.json')
+    .filter(row => row.group === 'unis')
+    .map(row => ({id:row.memberId, preview:row.displayAsset, original:row.originalAsset}));
+  const kep1er = require('../docs/batch-c-assets-20261016.json').assets
+    .filter(row => row.groupSlug === 'kep1er' && row.memberRecordId)
+    .map(row => ({id:row.memberRecordId, preview:row.files.display.path.slice(6), original:row.files.original.path.slice(6)}));
+  assert.deepEqual([unis.length,kep1er.length],[8,7]);
+  for (const [slug, portraits] of [['unis',unis],['kep1er',kep1er]]) {
+    const group = registry.find(row => row.slug === slug);
+    const catalog = artistCatalog(group);
+    for (const portrait of portraits) {
+      const page = parse(await renderArtist(group,{section:'members',member:portrait.id},catalog));
+      const identity = page.querySelector('[data-member-module="identity"]');
+      assert.equal(identity.getAttribute('data-member-id'),portrait.id);
+      const picture = identity.querySelector('a[data-original-photo] img[src="'+portrait.preview+'"]');
+      assert.ok(picture,portrait.id);
+      const controls = identity.querySelectorAll('a[data-original-photo]');
+      assert.equal(controls.length,slug === 'unis'?2:1,portrait.id);
+      assert.ok(controls.every(link => link.getAttribute('href') === portrait.original),portrait.id);
+    }
+  }
+});
+
+test('ADYA places the original directly under each portrait and before its source', async () => {
+  const group = registry.find(row => row.slug === 'adya');
+  const catalog = artistCatalog(group);
+  for (const member of require('../data/adya-native-design.json').members) {
+    const page = parse(await renderArtist(group, {section:'members', member:member.id},catalog));
+    const identity = page.querySelector('[data-member-module="identity"]');
+    const photo = identity.querySelector('.idol-adya-member-photo');
+    const [picture, original, credit] = photo.childNodes.filter(child => child.nodeType === 1);
+    assert.ok(picture.querySelector('img'));
+    assert.equal(picture.getAttribute('href'), original.getAttribute('href'));
+    assert.equal(original.getAttribute('aria-label'), '查看'+member.cnName+'原图');
+    assert.equal(original.text, '查看原图');
+    assert.equal(credit.querySelector('summary').text, '照片出处');
+    assert.equal(identity.querySelectorAll('[data-original-photo]').length,2);
+    assert.equal(identity.querySelector('[data-member-module="basic"] [data-original-photo]'),null);
+  }
+});

@@ -7,3 +7,9 @@
 BEWAVE 六人页首标明「2024 年六人阵容」。展开「照片出处」可查 2024 年 6 月 7 日的 Edaily 采访和照片；六人姓名、国籍、作品和履历保留在原位。成员介绍中的六条重复采访图注和作品区的七条「更多参与资料持续补充」已移除，后者横跨 BEWAVE、YOUNG POSSE。338 个路由的首显共从 11 个资料页、13 条命中降至 0 条。[逐页同条件检查](../evidence/20261122-v249/member-originals-and-copy.json) · [Edaily 采访](https://www.edaily.co.kr/News/Read?mediaCodeNo=258&newsId=01492406638919424)
 
 Windows 通过 TypeScript 检查，原图灯箱、成员顺序与出处、BEWAVE 原件、认人照和全团影像宿主六个测试文件 289/289，通过 BEWAVE 时间轴定向回归 1/1。静态渲染覆盖 338 个成员路由，鼠标、空格、图片重试与关闭回焦另由首击灯箱交互测试覆盖。
+
+## 直接点成员照片
+
+对同一批 338 页补查直接点照片及「查看完整照片」「放大照片」等入口，另找到 24 团 161 个档案中的 244 个按钮。其中 164 个以图片触发，80 个以文字触发。改后逐一核对原预览地址、控件文字和新链接，实有 160 份本地公开原件，另有两个入口继续读取原有鉴权端点。以原图灯箱实际事件代码在 Windows Node 中重放 244 次点击和 244 次空格，均打开对应地址，488 次关闭全部回到原控件。[参与成员与逐团计数](../evidence/20261122-v249/member-portrait-controls.json)
+
+UNIS 八人和 Kep1er 七人的灯箱改为打开原发布文件，首次显示仍读现有 WebP。按具名来源与成员 ID 对照 15 对文件，显示图与原图尺寸逐对相同，每通道平均绝对像素差为 0.738–1.828（满量程 255）。ADYA 五人的独立「查看原图」均放在本人照片下，下一项是「照片出处」。两项操作都可在照片旁完成。Windows 的资料页、访客文案和灯箱三个文件共 122/122 项通过，含五份 ADYA 详情、15 对来源及缺少照片的情况。[原件与预览逐对记录](../evidence/20261122-v249/member-original-pairs.json) · [BEWAVE 手机稿](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1609-1512) · [BEWAVE 桌面稿](https://www.figma.com/design/zeLNExz4TbpWRW3uiahef7?node-id=1609-1527)

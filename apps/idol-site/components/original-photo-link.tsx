@@ -3,7 +3,7 @@
 import type {ComponentProps, MouseEvent} from 'react';
 
 type OriginalPhotoLinkProps = Pick<ComponentProps<'a'>, 'className' | 'aria-label' | 'children'> & {
-  href: string;
+  href?: string | null;
   onOpen: (src: string) => void;
 };
 
@@ -12,6 +12,7 @@ function hasModifier(event: Pick<MouseEvent, 'altKey' | 'ctrlKey' | 'metaKey' | 
 }
 
 export function OriginalPhotoLink({href, onOpen, ...props}: OriginalPhotoLinkProps) {
+  if (!href) return <span className={props.className}>{props.children}</span>;
   return <a {...props} href={href} aria-haspopup="dialog" data-original-photo="" ref={link => {
     if (!link) return;
     const open = (request: Event) => {

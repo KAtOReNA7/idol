@@ -1,4 +1,5 @@
 'use client';
+import {OriginalPhotoLink} from '@/components/original-photo-link';
 import {MemberPublicCredits} from '@/components/public-work-credits';
 import {ArtistInformation} from '@/components/artist-information';
 
@@ -163,16 +164,17 @@ export default function UnisDesignReview({content, basePath = UNIS_PATH}: {conte
 
   function personPage(person: Member) {
     const image = portrait(person);
+    const original = image?.image.replace(/^(\/artist\/unis\/verified-20261016\/[^/]+)\.webp$/, '$1.png');
     const items = state.data ? memberWorks(state.data, person.id) : [];
     return <>
       <button type="button" className="uf-back uf-native-host" onClick={goMembers}><UnisNativeSurface slot="profile-back"/>← 返回成员</button>
       <section className="uf-person" data-member-layout="ordered-v1" data-member-id={person.id} data-member-module="identity">
-        <button type="button" className="uf-square uf-portrait-button" disabled={!image} aria-label={`放大${name(person)}的照片`} aria-haspopup="dialog" onClick={() => image && setLightbox({src: image.image, label: `${name(person)} · ${person.stageName}`})}>
+        <OriginalPhotoLink className="uf-square uf-portrait-button" href={original} aria-label={`放大${name(person)}的照片`} onOpen={src=>setLightbox({src,label:`${name(person)} · ${person.stageName}`})}>
           <Picture src={image?.image} identityKey={`member:${person.id}`} alt={`${name(person)} · ${person.stageName} 资料照`} priority/>
-        </button>
+        </OriginalPhotoLink>
         <div className="uf-person-copy" data-member-module="basic"><h1 className="member-display-name">{name(person)}</h1><h2>{person.id === 'recvxAPQCFgu8Z' ? <UnisNativeText role="nana" label="NANA"/> : person.stageName.toUpperCase()}</h2><p>UNIS</p>
           <div className="uf-person-actions"><a className="uf-button uf-pale" href={artistMemberUrl(person.id, returnTo)}>个人档案与记录 ↗</a>
-            {image && <button type="button" className="uf-button uf-pale uf-native-host" aria-haspopup="dialog" onClick={() => setLightbox({src: image.image, label: `${name(person)} · ${person.stageName}`})}><UnisNativeSurface slot="profile-zoom"/>放大照片</button>}</div>
+            {image && <OriginalPhotoLink className="uf-button uf-pale uf-native-host" href={original} aria-label={`放大${name(person)}的照片`} onOpen={src=>setLightbox({src,label:`${name(person)} · ${person.stageName}`})}><UnisNativeSurface slot="profile-zoom"/>放大照片</OriginalPhotoLink>}</div>
           <section className="uf-person-facts"><h3 className="member-profile-heading">成员资料</h3><MemberPhysicalFacts member={person}/><MemberCareerFacts member={person} part="intro"/></section>
         </div>
       </section>

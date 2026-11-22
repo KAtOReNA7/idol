@@ -7,6 +7,15 @@ const load = require('./helpers/public-artist-loader.cjs');
 const {EarlyOriginalPhotoDialog} = load('components/early-original-photo-dialog.tsx');
 const {OriginalPhotoLink} = load('components/original-photo-link.tsx');
 
+test('a missing portrait keeps its visual fallback without offering a broken action', () => {
+  const {parse} = require('next/dist/compiled/node-html-parser');
+  const html = renderToStaticMarkup(React.createElement(OriginalPhotoLink,
+    {className:'portrait', 'aria-label':'放大照片', onOpen:() => assert.fail('missing source')}, '暂无照片'));
+  const page = parse(html);
+  assert.equal(page.querySelector('a,button'),null);
+  assert.equal(page.querySelector('.portrait').text,'暂无照片');
+});
+
 test('an unhydrated artist photo opens inside the page, retries and returns focus on close', () => {
   const html = renderToStaticMarkup(React.createElement(EarlyOriginalPhotoDialog));
   const script = html.match(/<script>([\s\S]*?)<\/script>/)?.[1];

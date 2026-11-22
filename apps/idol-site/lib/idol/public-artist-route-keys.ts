@@ -1,4 +1,5 @@
 import navigation from '../../data/public-artist-navigation-keys.json';
+import {supportsReleaseFilter} from './artist-library-format';
 
 /** ID-only data: no public display catalog, private records, router or I/O imports. */
 export type PublicArtistSlug = keyof typeof navigation.groups;
@@ -29,13 +30,16 @@ export function validPublicArtistRoute(value: string, url: URL): boolean {
   const reader = params.get('reader');
   const release = params.get('release');
   const media = params.get('media');
+  const releaseFilter = params.get('format') === 'release';
+  if (releaseFilter && (!supportsReleaseFilter(url.pathname) || section !== 'works'
+    || [...params.keys()].some(key => !['section','q','format','release'].includes(key)))) return false;
   if (params.has('member') && (!member || !group.memberIds.includes(member))) return false;
   if (params.has('reader') && (!triples || !reader || !group.memberIds.includes(reader))) return false;
   if (params.has('release')) {
     if (!release || !group.releases.includes(release) || params.has('media') || !triples && params.has('member')) return false;
     // Sol's new release detail is works-only. The released tripleS reader also
     // keeps release while opening a participant member; retain that back context.
-    if (!triples && (section !== 'works' || params.has('format'))) return false;
+    if (!triples && (section !== 'works' || params.has('format') && !releaseFilter)) return false;
   }
   if (params.has('media')) {
     const matches = group.media.filter(entry => entry.key === media && entry.kind === params.get('format'));

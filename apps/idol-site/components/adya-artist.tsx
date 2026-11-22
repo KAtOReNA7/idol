@@ -1,4 +1,7 @@
 'use client';
+import {artistFilmAction,ArtistFilmPrimary,ArtistFilmSource} from './artist-film-action';
+import {ArtistLibraryFilters} from './artist-library-filters';
+import {libraryResultLabel} from '@/lib/idol/artist-library-format';
 import {OriginalPhotoLink} from './original-photo-link';
 import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
@@ -54,7 +57,7 @@ export default function AdyaArtist({content}:{content:CandidateContent}){
  function href(patch:Record<string,string|null>){const p=new URLSearchParams(params);for(const[k,v]of Object.entries(patch)){if(v===null)p.delete(k);else p.set(k,v);}return path+(p.size?'?'+p:'');}
  const sectionHref=(s:string)=>path+(s==='overview'?'':'?section='+s);
  const personHref=(id:string)=>href({section:'members',member:id,release:null,media:null,format:null,q:route.section==='members'?route.search||null:null});
- const releaseHref=(r:Release)=>href({section:'works',release:r.key,member:null,media:null,format:null,q:route.section==='works'?route.search||null:null});
+ const releaseHref=(r:Release)=>href({section:'works',release:r.key,member:null,media:null,format:route.format==='release'?'release':null,q:route.section==='works'||route.section==='records'?route.search||null:null});
  const videoHref=(v:Video)=>(route.section==='overview'&&!route.member&&v.type==='MV'?artistMvHref(state.data,content.groupId,v.url,safeArtistReturn(url)??path):null)??href({section:'works',media:v.key,format:v.type.toLowerCase(),release:null,member:null,q:route.section==='works'?route.search||null:null});
  const backToLibrary=href({section:'works',release:null,media:null,member:null});
  function go(e:MouseEvent<HTMLAnchorElement>,target:string){if(target.startsWith('/?')){remember();return;}if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();remember();history.pushState(newArtistHistoryState(history.state),'',target);window.dispatchEvent(new Event('artist-location-change'));document.getElementById('artist-content')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
@@ -67,7 +70,13 @@ export default function AdyaArtist({content}:{content:CandidateContent}){
  function videos(rows:Video[]){return <div className="idol-adya-videos">{rows.map(v=><article key={v.key} className="idol-adya-video" data-video-key={v.key}><Link className="idol-adya-video-image" to={videoHref(v)}><Picture src={publicVideoPreview(v.url,v.preview)} alt={`${v.title} · ${v.label} · 视频预览`}/><span>查看详情 <Arrow/></span></Link><Link to={videoHref(v)}><h3>{v.title}</h3><p>{v.label}</p></Link></article>)}</div>;}
  function timeline(){return <ol className="idol-adya-timeline">{design.events.map(e=>{const r=design.releases.find(r=>r.key===e.releaseKey)!;return <li key={e.id} id={e.id}><div className="idol-adya-event-date"><time dateTime={e.date}>{e.date.replaceAll('-','.')}</time><span>{e.dateLabel}</span></div><Link className="idol-adya-event-cover" to={releaseHref(r)}><Picture src={r.cover} alt={`${r.title} 正式发行封面`}/></Link><div className="idol-adya-event-copy"><h3>{e.title}</h3><p>{e.summary}</p><div className="idol-adya-event-links"><Link to={releaseHref(r)}>查看发行 <Arrow/></Link><a href={e.sourceUrl} target="_blank" rel="noopener noreferrer">来源 ↗</a></div></div></li>;})}</ol>;}
  function retryRecords(){return state.error?<button className="idol-adya-button" onClick={()=>host.onRetry?host.onRetry():setRetry(n=>n+1)}>重试记录</button>:null;}
- function nativeAction(v:Video){const binding=adyaNativeBinding(v,collection?.works??[]),returnTo=safeArtistReturn(url);return <div className="idol-adya-record-handoff">{binding&&returnTo?<><a className="idol-adya-button" href={artistWorkUrl(binding.work,binding.stage,returnTo)} onClick={()=>remember()}>评分与记录 <Arrow/></a><p className="idol-adya-note">{binding.stage?'舞台':'影像'}评分：{binding.scoreBindingValid?score(binding.score):'此版本暂无可显示的评分'}</p></>:<p className="idol-adya-note">{!v.id?'此版本暂未接入手帐。':state.loading?'正在读取手帐…':state.error?'手帐暂时无法读取，作品仍可浏览。':'此版本暂未接入手帐。'}</p>}{retryRecords()}</div>;}
+ function filmAction(v:Video){
+  const binding=adyaNativeBinding(v,collection?.works??[]);
+  return artistFilmAction(binding,safeArtistReturn(url),v.url,Boolean(v.id),state);
+ }
+ function recordStatus(action:ReturnType<typeof filmAction>){
+  return <div className="idol-adya-record-handoff"><p className="idol-adya-note">{action.status}</p>{retryRecords()}</div>;
+ }
  function person(m:Person){const nativeMember=collection?.members.find(row=>row.id===m.id),related=state.data&&nativeMember?memberWorks(state.data,m.id):[],next=design.members[(design.members.indexOf(m)+1)%design.members.length];return <><Link className="idol-adya-back" to={href({member:null})}><Arrow back/> 返回成员</Link><section className="idol-adya-person-detail" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><button className="idol-adya-photo-button" aria-label={`放大${m.cnName}资料照`} onClick={()=>showPhoto(content.portraits[m.id].image,m.cnName+' · 公司资料照')}><Picture src={`/artist/adya/portraits/${m.stageName.toLowerCase()}.webp`} alt={`${m.cnName} ${m.stageName} 2023 年公司供图`} className="idol-adya-portrait" priority/></button><div className="idol-adya-person-copy" data-member-module="basic"><span className="idol-adya-number">{String(design.members.indexOf(m)+1).padStart(2,'0')}</span><h1>{m.cnName}</h1><p className="idol-adya-stage-name">{m.stageName.toUpperCase()}</p><p>{m.profile}</p><div className="idol-adya-actions"><button className="idol-adya-button idol-adya-outline" onClick={()=>showPhoto(content.portraits[m.id].image,m.cnName+' · 原图')}>查看原图</button>{nativeMember&&<a className="idol-adya-button" href={artistMemberUrl(m.id,safeArtistReturn(url)??path)} onClick={()=>remember()}>个人档案与记录 <Arrow/></a>}</div><p className="idol-adya-note">中文名为本站显示名。</p></div></section><section className="idol-adya-related" data-member-module="works">{heading('已关联作品','IN THE RECORDS')}{related.length?<div className="idol-adya-related-list">{related.map(item=>{const v=design.works.find(v=>v.id===item.work.id&&v.type==='MV');return <article key={item.work.id}>{v&&<Link className="idol-adya-related-image" to={videoHref(v)}><Picture src={publicVideoPreview(v.url,v.preview)} alt={`${item.work.song} 视频预览`}/></Link>}<div>{v?<Link to={videoHref(v)}><h3>{item.work.song||item.work.name}</h3></Link>:<h3>{item.work.song||item.work.name}</h3>}<p>表现 {score(item.performance)} · 造型 {score(item.styling)}</p></div><a data-member-work-trigger={item.work.id} href={artistWorkUrl(item.work,false,safeArtistReturn(url)??path)} onClick={()=>remember()}>评分与记录 <Arrow/></a><MemberWorkPhotoButton work={item.work} memberId={m.id} label={m.cnName+' · '+item.work.song} photo={item.photo} live={state.data?.mode==='live'} className="idol-adya-button idol-adya-outline" onOpen={setLightbox}/></article>;})}</div>:<p className="idol-adya-note">{state.loading?'正在读取已有关联…':state.error?'已有记录暂时无法读取。':'此成员暂未收录作品关系。'}</p>}{retryRecords()}</section>
 
 {state.data&&<MemberPublicCredits memberId={m.id} data={state.data} renderLink={(work,label)=><a href={artistWorkUrl(work,false,safeArtistReturn(url)??path)}>{label}</a>}/>}
@@ -77,8 +86,45 @@ export default function AdyaArtist({content}:{content:CandidateContent}){
 <div className="idol-adya-next"><Link to={personHref(next.id)}>下一位：{next.cnName} <Arrow/></Link></div>
 </>;}
  function releaseDetail(r:Release){const related=design.works.filter(v=>v.releaseKey===r.key);return <><Link className="idol-adya-back" to={backToLibrary}><Arrow back/> 返回发行目录</Link><section className="idol-adya-release-detail"><div className="idol-adya-release-art"><button className="idol-adya-photo-button" aria-label={`放大${r.title}发行封面`} onClick={()=>showPhoto(r.cover,r.title+' · 正式封面')}><Picture src={r.cover} alt={`${r.title} 正式发行封面`} className="idol-adya-cover" priority/></button><button className="idol-adya-text-link" onClick={()=>showPhoto(r.cover,r.title+' · 正式封面')}>查看封面原图 <Arrow/></button></div><div className="idol-adya-release-copy"><p>{r.kind} · <time dateTime={r.date}>{r.date}</time></p><h1>{r.title}</h1><p>{r.description}</p><h2>曲目</h2><ol className="idol-adya-tracks">{r.tracks.map(t=><li key={t}>{t}</li>)}</ol><a className="idol-adya-source" href={r.sourceUrl} target="_blank" rel="noopener noreferrer">发行来源 ↗</a></div></section><section className="idol-adya-related">{heading('影像与舞台','WATCH')}{related.length?videos(related):<p className="idol-adya-note">此发行暂未收录独立视频。</p>}</section></>;}
- function videoDetail(v:Video){const r=design.releases.find(r=>r.key===v.releaseKey);return <><Link className="idol-adya-back" to={backToLibrary}><Arrow back/> 返回影像目录</Link><section className="idol-adya-film"><div className="idol-adya-film-header"><div><h1>{v.title}</h1><p>{v.label}</p>{v.date&&<p className="idol-adya-note">{v.dateLabel} · <time dateTime={v.date}>{v.date}</time></p>}</div>{nativeAction(v)}{v.sharedStage&&<div className="idol-adya-shared-stage"><p className="idol-adya-note">同一 Performance Video 还保留已有表演记录：</p>{nativeAction({...v,type:'STAGE'})}</div>}</div><a className="idol-adya-film-screen" href={v.url} target="_blank" rel="noopener noreferrer"><Picture src={publicVideoPreview(v.url,v.preview)} alt={`${v.title} · ${v.label} · 视频预览`} priority/><span className="idol-adya-play">打开官方视频 <Arrow/></span></a><div className="idol-adya-film-links"><a href={v.url} target="_blank" rel="noopener noreferrer">打开官方视频 ↗</a>{r&&<Link to={releaseHref(r)}>所属发行：{r.title} <Arrow/></Link>}</div>{v.memberIds.length>0&&<section className="idol-adya-related">{heading('已关联成员','MEMBERS')}<div className="idol-adya-name-links">{v.memberIds.map(id=>{const m=design.members.find(m=>m.id===id)!;return <Link key={id} to={personHref(id)}>{m.cnName} / {m.stageName} <Arrow/></Link>;})}</div></section>}</section></>;}
- function library(){const q=route.search.toLocaleLowerCase(),rs=design.releases.filter(r=>[r.title,...r.tracks].join(' ').toLocaleLowerCase().includes(q)),vs=design.works.filter(v=>(route.format==='all'||v.type.toLowerCase()===route.format||(route.format==='stage'&&v.sharedStage))&&[v.title,v.label].join(' ').toLocaleLowerCase().includes(q));return <>{title('作品','DISCOGRAPHY')}<div className="idol-adya-library-tools"><nav className="idol-adya-tabs" aria-label="作品类型">{[['mv','影像'],['all','发行'],['stage','舞台']].map(([key,label])=><Link key={key} className={route.format===key?'is-active':''} to={href({format:key==='all'?null:key,release:null,media:null})}>{label}</Link>)}</nav>{search('works')}</div><p role="status" className="idol-adya-result">{route.format==='all'?`${rs.length} 张发行 · `:''}{vs.length} 个影像</p><section className="idol-adya-related">{heading(route.format==='stage'?'舞台':'影像与舞台','WATCH')}{vs.length?videos(vs):<p className="idol-adya-empty">没有符合条件的影像。</p>}</section>{route.format==='all'&&(rs.length?releases(rs):<p className="idol-adya-empty">没有符合条件的发行。</p>)}</>;}
+ function videoDetail(v:Video){
+  const action=filmAction(v);
+  const stageAction=v.sharedStage?filmAction({...v,type:'STAGE'}):null;
+  const r=design.releases.find(r=>r.key===v.releaseKey);
+  return <><Link className="idol-adya-back" to={backToLibrary}><Arrow back/> 返回影像目录</Link>
+   <section className="idol-adya-film"><div className="idol-adya-film-header"><div><h1>{v.title}</h1><p>{v.label}</p>{v.date&&<p className="idol-adya-note">{v.dateLabel} · <time dateTime={v.date}>{v.date}</time></p>}</div>
+    {recordStatus(action)}{stageAction?.href&&<div className="idol-adya-shared-stage"><a href={stageAction.href} onClick={()=>remember()}>舞台评分与记录</a><p className="idol-adya-note">{stageAction.status}</p></div>}</div>
+   <ArtistFilmPrimary action={action} className="idol-adya-film-screen" remember={()=>remember()}>
+      <Picture src={publicVideoPreview(v.url,v.preview)} alt={`${v.title} · ${v.label} · 视频预览`} priority/><span className="idol-adya-play">{action.label} <Arrow/></span>
+    </ArtistFilmPrimary>
+   <div className="idol-adya-film-links"><ArtistFilmSource action={action}/>
+     {r&&<Link to={releaseHref(r)}>所属发行：{r.title} <Arrow/></Link>}</div>
+   {v.memberIds.length>0&&<section className="idol-adya-related">{heading('已关联成员','MEMBERS')}<div className="idol-adya-name-links">{v.memberIds.map(id=>{const m=design.members.find(m=>m.id===id)!;return <Link key={id} to={personHref(id)}>{m.cnName} / {m.stageName} <Arrow/></Link>;
+ })}</div></section>}</section></>;
+ }
+ function library() {
+   const query = route.search.trim().toLocaleLowerCase();
+   const showVideos = route.format !== 'release';
+   const showReleases = route.format === 'all' || route.format === 'release';
+   const matchedVideos = showVideos ? design.works.filter(video =>
+     (route.format === 'all' || video.type.toLowerCase() === route.format || (route.format === 'stage' && video.sharedStage))
+     && [video.title, video.label].join(' ').toLocaleLowerCase().includes(query)) : [];
+   const matchedReleases = showReleases
+     ? design.releases.filter(row => [row.title, ...row.tracks].join(' ').toLocaleLowerCase().includes(query)) : [];
+   return <>
+     {title('作品','DISCOGRAPHY')}
+     <div className="idol-adya-library-tools">
+       <ArtistLibraryFilters className="idol-adya-tabs" selected={route.format} onNavigate={go}
+         hrefFor={format => href({section:'works', format:format === 'all' ? null : format, queue:null, release:null, media:null})}/>
+       {search('works')}
+     </div>
+     <p role="status" className="idol-adya-result">{libraryResultLabel(route.format, matchedVideos.length, matchedReleases.length)}</p>
+     {showVideos && <section className="idol-adya-related">
+       {heading(route.format === 'stage' ? '舞台' : route.format === 'mv' ? 'MV' : '影像与舞台', 'WATCH')}
+       {matchedVideos.length ? videos(matchedVideos) : <p className="idol-adya-empty">没有符合条件的影像。</p>}
+     </section>}
+     {showReleases && (matchedReleases.length ? releases(matchedReleases) : <p className="idol-adya-empty">没有符合条件的发行。</p>)}
+   </>;
+ }
  function missing(message:string,section:string){return <section className="idol-adya-empty"><h1>{message}</h1><Link className="idol-adya-button" to={sectionHref(section)}>返回目录</Link></section>;}
  const selectedMember=design.members.find(m=>m.id===route.member),selectedRelease=design.releases.find(r=>r.key===params.get('release')),selectedVideo=design.works.find(v=>v.key===params.get('media')&&v.type.toLowerCase()===route.format);
  let body:ReactNode;

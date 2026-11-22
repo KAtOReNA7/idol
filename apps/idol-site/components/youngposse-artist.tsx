@@ -1,4 +1,7 @@
 'use client';
+import {artistFilmAction,ArtistFilmPrimary,ArtistFilmSource} from './artist-film-action';
+import {ArtistLibraryFilters} from './artist-library-filters';
+import {libraryCounts, libraryResultLabel} from '@/lib/idol/artist-library-format';
 import {OriginalPhotoLink} from './original-photo-link';
 import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
@@ -49,7 +52,7 @@ export default function YoungposseArtist({content}:{content:CandidateContent}){
  function href(patch:Record<string,string|null>){const p=new URLSearchParams(params);for(const [key,value]of Object.entries(patch)){if(value===null)p.delete(key);else p.set(key,value);}return path+(p.size?'?'+p:'');}
  const sectionHref=(section:string)=>path+(section==='overview'?'':'?section='+section);
  const personHref=(id:string)=>href({section:'members',member:id,release:null,media:null,format:null});
- const releaseHref=(r:Release)=>href({section:'works',release:r.key,media:null,member:null,format:null});
+ const releaseHref=(r:Release)=>href({section:'works',release:r.key,media:null,member:null,format:route.format==='release'?'release':null});
  const videoHref=(v:Video)=>(route.section==='overview'&&!route.member&&v.type==='MV'?artistMvHref(state.data,content.groupId,v.url,safeArtistReturn(url)??path):null)??href({section:'works',media:v.key,format:v.type.toLowerCase(),release:null,member:null});
  function go(event:MouseEvent<HTMLAnchorElement>,target:string){if(target.startsWith('/?')){remember();return;}if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();remember();history.pushState(newArtistHistoryState(history.state),'',target);window.dispatchEvent(new Event('artist-location-change'));document.getElementById('artist-content')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
  const backToLibrary=href({section:'works',release:null,media:null,member:null});
@@ -61,7 +64,13 @@ export default function YoungposseArtist({content}:{content:CandidateContent}){
  function videoRow(v:Video){const cover=publicVideoPreview(v.url,'');return <article className="video-row" key={v.key} data-video-key={v.key}>{cover&&<Link className="public-video-preview" to={videoHref(v)}><Picture src={cover} alt={v.title+' · 对应视频封面'}/></Link>}<div className="video-copy"><Link to={videoHref(v)}><h3>{v.title}</h3></Link><div className="video-metadata"><p className="video-kind">{v.label}</p><time dateTime={v.date}>{v.date}</time></div></div><a className="official-video" href={v.url} target="_blank" rel="noopener noreferrer">打开官方视频 ↗</a></article>;}
  function sectionHead(title:string){return <header className="section-head"><h2>{title}</h2></header>;}
  function timeline(teaser=false){const events=[...design.events].sort((a,b)=>a.date.localeCompare(b.date));return <ol className="single-timeline">{(teaser?events.slice(0,3):events).map(e=>{const r=design.releases.find(r=>r.key===e.releaseKey);return <li className="event" id={e.id} key={e.id}><div className="event-date"><time dateTime={e.date}>{e.date}</time></div><div className="event-copy"><h2>{e.title}</h2><div className="event-links">{r&&<Link to={releaseHref(r)}>{r.title} ↗</Link>}{e.memberIds.map(id=>{const m=design.members.find(m=>m.id===id);return m?<Link key={id} to={personHref(id)}>{m.cnName} ↗</Link>:null;})}</div></div></li>;})}</ol>;}
- function nativeAction(v:Video){const binding=youngposseNativeBinding(v,collection?.works??[]);const returnTo=safeArtistReturn(url);return <div className="record-handoff">{binding&&returnTo?<><a className="button" href={artistWorkUrl(binding.work,binding.stage,returnTo)} onClick={()=>remember()}>评分与记录 ↗</a><p className="availability">{binding.stage?'舞台':'影像'}评分：{binding.scoreBindingValid?score(binding.score):'此版本暂无可显示的评分'} · 公开可查看，编辑仅本人</p></>:<p className="availability">{state.loading?'正在读取手帐…':state.error?'手帐暂时无法读取，作品仍可浏览。':'此版本暂未接入手帐。'}</p>}{state.error&&<button className="button" onClick={()=>host.onRetry?host.onRetry():setRetry(n=>n+1)}>重试记录</button>}</div>;}
+ function filmAction(v:Video){
+  const binding=youngposseNativeBinding(v,collection?.works??[]);
+  return artistFilmAction(binding,safeArtistReturn(url),v.url,Boolean(v.id),state);
+ }
+ function recordStatus(action:ReturnType<typeof filmAction>){
+  return <div className="record-handoff"><p className="availability">{action.status}</p>{state.error&&<button className="button" onClick={()=>host.onRetry?host.onRetry():setRetry(n=>n+1)}>重试记录</button>}</div>;
+ }
  const selectedMember=design.members.find(m=>m.id===route.member);
  const selectedRelease=design.releases.find(r=>r.key===params.get('release'));
  const selectedVideo=design.works.find(v=>v.key===params.get('media')&&v.type.toLowerCase()===route.format);
@@ -74,8 +83,42 @@ export default function YoungposseArtist({content}:{content:CandidateContent}){
 <div className="person-next"><Link to={personHref(next.id)}>下一位：{next.cnName} ↗</Link></div>
 </>;}
  function releaseDetail(r:Release){return <article className="release-detail"><Link className="back" to={backToLibrary}>← 返回发行目录</Link><div className="detail-spread"><button className="photo-open" aria-label={`放大${r.title}发行封面`} onClick={()=>setLightbox({src:r.cover,label:r.title+' · 发行封面'})}><Picture src={r.cover} alt={`${r.title} 发行封面`} className="cover" priority/></button><div className="detail-copy"><h1>{r.title}</h1><time dateTime={r.date??undefined}>{r.date??'发行日期不详'}</time>{r.memberIds.length>0&&<section className="detail-members"><h2>关联成员</h2>{r.memberIds.map(id=>{const m=design.members.find(m=>m.id===id);return m?<Link key={id} to={personHref(id)}>{m.cnName} ↗</Link>:null;})}</section>}<a className="image-source" href={r.sourceUrl} target="_blank" rel="noopener noreferrer">发行来源 ↗</a></div></div>{design.works.some(v=>v.releaseKey===r.key)&&<section className="related-videos">{sectionHead('影像')}<div className="videos-list">{design.works.filter(v=>v.releaseKey===r.key).map(videoRow)}</div></section>}</article>;}
- function videoDetail(v:Video){const r=design.releases.find(r=>r.key===v.releaseKey),cover=publicVideoPreview(v.url,'');return <article className="video-detail"><Link className="back" to={backToLibrary}>← 返回影像目录</Link><div className={'detail-spread'+(cover?'':' without-preview')}>{cover&&<a className="public-film-preview" href={v.url} target="_blank" rel="noopener noreferrer"><Picture src={cover} alt={v.title+' · 对应视频封面'} priority/></a>}<div className="detail-copy"><h1>{v.title}</h1><p className="detail-kind">{v.label}</p><time dateTime={v.date}>{v.date}</time><a className="button" href={v.url} target="_blank" rel="noopener noreferrer">打开官方视频 ↗</a>{!cover&&<p className="availability">可打开官方视频观看。</p>}{r&&<Link className="parent-release" to={releaseHref(r)}>所属发行：{r.title} ↗</Link>}{nativeAction(v)}</div></div></article>;}
- function library(){const q=route.search.toLocaleLowerCase();const releases=design.releases.filter(r=>r.title.toLocaleLowerCase().includes(q));const videos=design.works.filter(v=>(route.format==='all'||v.type.toLowerCase()===route.format)&&[v.title,v.label].join(' ').toLocaleLowerCase().includes(q));return <><header className="page-heading"><h1>THE<br/>RECORDS</h1></header><nav className="work-tabs" aria-label="作品类型">{[['mv','影像',design.works.filter(v=>v.type==='MV').length],['all','发行',design.releases.length],['stage','舞台',design.works.filter(v=>v.type==='STAGE').length]].map(([key,label,count])=><Link key={key} to={href({format:key==='all'?null:String(key),release:null,media:null})}><span aria-current={route.format===key?'page':undefined}>{label} {count}</span></Link>)}</nav>{searchForm('works')}<p className="result-count" role="status">{route.format==='all'?`${releases.length} 张发行 · `:''}{videos.length} 个影像</p><section className="library-videos">{sectionHead(route.format==='stage'?'STAGE':'MV / STAGE')}<div className="videos-list">{videos.map(videoRow)}</div>{!videos.length&&<p className="empty">没有符合条件的影像。</p>}</section>{route.format==='all'&&<><div className="records-grid">{releases.map(releaseCard)}</div>{!releases.length&&<p className="empty">没有符合条件的发行。</p>}</>}</>;}
+ function videoDetail(v:Video){
+  const action=filmAction(v);
+  const r=design.releases.find(r=>r.key===v.releaseKey),cover=publicVideoPreview(v.url,'');
+  return <article className="video-detail"><Link className="back" to={backToLibrary}>← 返回影像目录</Link>
+   <div className={'detail-spread'+(cover?'':' without-preview')}>{cover?<ArtistFilmPrimary action={action} className="public-film-preview" remember={()=>remember()}>
+      <Picture src={cover} alt={v.title+' · 对应视频封面'} priority/>
+      <span className="film-action-label">{action.label}</span>
+    </ArtistFilmPrimary>:<ArtistFilmPrimary action={action} className="button" remember={()=>remember()}/>}<div className="detail-copy"><h1>{v.title}</h1><p className="detail-kind">{v.label}</p><time dateTime={v.date}>{v.date}</time><ArtistFilmSource action={action}/>
+     {r&&<Link className="parent-release" to={releaseHref(r)}>所属发行：{r.title} ↗</Link>}{recordStatus(action)}</div></div></article>;
+ }
+ function library() {
+   const query = route.search.trim().toLocaleLowerCase();
+   const showVideos = route.format !== 'release';
+   const showReleases = route.format === 'all' || route.format === 'release';
+   const matchedVideos = showVideos ? design.works.filter(video =>
+     (route.format === 'all' || video.type.toLowerCase() === route.format)
+     && [video.title, video.label].join(' ').toLocaleLowerCase().includes(query)) : [];
+   const matchedReleases = showReleases
+     ? design.releases.filter(row => row.title.toLocaleLowerCase().includes(query)) : [];
+   return <>
+     <header className="page-heading"><h1>THE<br/>RECORDS</h1></header>
+     <ArtistLibraryFilters className="work-tabs" selected={route.format} onNavigate={go} counts={libraryCounts(design.works, design.releases)}
+         hrefFor={format => href({section:'works', format:format === 'all' ? null : format, queue:null, release:null, media:null})}/>
+     {searchForm('works')}
+     <p role="status" className="result-count">{libraryResultLabel(route.format, matchedVideos.length, matchedReleases.length)}</p>
+     {showVideos && <section className="library-videos">
+       {sectionHead(route.format === 'stage' ? 'STAGE' : route.format === 'mv' ? 'MV' : 'MV / STAGE')}
+       <div className="videos-list">{matchedVideos.map(videoRow)}</div>
+       {!matchedVideos.length && <p className="empty">没有符合条件的影像。</p>}
+     </section>}
+     {showReleases && <>
+       <div className="records-grid">{matchedReleases.map(releaseCard)}</div>
+       {!matchedReleases.length && <p className="empty">没有符合条件的发行。</p>}
+     </>}
+   </>;
+ }
  let body:ReactNode;
  if(route.member)body=selectedMember?person(selectedMember):missing('没有找到这位成员。','members');
  else if(params.has('release'))body=selectedRelease?releaseDetail(selectedRelease):missing('没有找到此发行。','works');

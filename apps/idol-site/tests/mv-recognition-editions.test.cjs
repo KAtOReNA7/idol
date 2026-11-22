@@ -8,8 +8,16 @@ const {renderToStaticMarkup} = require('react-dom/server');
 const {MvIdentityPhoto, mvRecognitionEdition} = require('./helpers/image-dependency-loader.cjs').imageDependency('@/components/mv-identity-photo');
 const editions = require('../data/mv-recognition-editions.json');
 const media = require('../data/mv-public-media.json');
+const slayPublisherFiles = {
+  recvxyICzH3DKT: '31091644/yiren-2.jpeg',
+  recvxyICzHDN27: '31091717/eu-2.jpeg',
+  recvxyICzHl9XF: '30085311/Onda-1.jpeg',
+  recvxyICzHtX1e: '31091611/mia-.jpeg',
+  recvxyICzHxIn2: '30085410/Sihyeon-1.jpeg',
+  recvxyICzHyLkP: '30085341/Aisha-1.jpeg',
+};
 
-test('every display selection belongs to one existing work, video and member and has distinct preview and original files', () => {
+test('every display selection belongs to one existing work, video and member and retains its reviewed original', () => {
   const key = row => [row.workId, row.videoId, row.memberId].join('/');
   const old = new Set(media.portraits.map(key));
   const selected = new Set();
@@ -28,10 +36,17 @@ test('every display selection belongs to one existing work, video and member and
       }
     }
     assert.deepEqual([...used].sort(), Object.keys(edition.portraits).sort());
-    for (const p of Object.values(edition.portraits)) {
+    for (const [memberId, p] of Object.entries(edition.portraits)) {
       assert.match(p.sourceUrl, /^https?:\/\//);
       assert.notEqual(p.original, p.preview);
-      for (const url of [p.original, p.preview]) {
+      const local = [p.preview];
+      if (edition === editions['all-my-girls-2023']) {
+        assert.ok(slayPublisherFiles[memberId], memberId);
+        assert.equal(p.original, 'https://0.soompi.io/wp-content/uploads/2023/07/' + slayPublisherFiles[memberId]);
+      } else {
+        local.push(p.original);
+      }
+      for (const url of local) {
         assert.match(url, /^\/artist\//);
         assert(fs.existsSync(path.join(__dirname, '../public', url)), url);
       }
@@ -119,6 +134,7 @@ const reviewedReleases = [
   ['In the morning', 'guess-who-night-2021', 'recvxyOz5XJljg', '_ysomCGaZLw', 5],
   ['Zig Zag', 'we-can-2020', 'recvxyH5pziABU', '1FqAoADnId4', 7],
   ['Nobody Knows', 'born-to-be-xx-2023', 'rec28ldfRTrBgQ', 'unLuba-TQiE', 4],
+  ['SLAY', 'all-my-girls-2023', 'recvxyH5pzPiQ3', 'jI5p2ePoVcc', 6],
 ];
 
 for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
@@ -136,10 +152,16 @@ for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
       assert.match(photo.label, /本曲概念照|本次发行/);
       assert.equal(html.includes('查看原作品图'), old.src !== photo.original, old.memberId);
       const preview = await sharp(path.join(__dirname, '../public', photo.preview)).metadata();
-      const original = await sharp(path.join(__dirname, '../public', photo.original)).metadata();
       assert.equal(preview.format, 'webp');
       assert.equal(preview.width * 4, preview.height * 3);
-      assert.ok(original.width >= preview.width && original.height >= preview.height, old.memberId);
+      assert.ok(!html.includes('src="' + photo.original + '"'), 'Full image should load on demand for ' + old.memberId);
+      if (series === 'all-my-girls-2023') {
+        assert.deepEqual([preview.width, preview.height], [480, 640]);
+        assert.equal(photo.label, 'ALL MY GIRLS · 本次发行概念照');
+      } else {
+        const original = await sharp(path.join(__dirname, '../public', photo.original)).metadata();
+        assert.ok(original.width >= preview.width && original.height >= preview.height, old.memberId);
+      }
       assert.equal(mvRecognitionEdition({...old, videoId: 'differentMV'}), null);
     }
   });

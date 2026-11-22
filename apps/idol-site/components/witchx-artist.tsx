@@ -1,4 +1,6 @@
 'use client';
+import {ArtistLibraryFilters} from './artist-library-filters';
+import {libraryResultLabel} from '@/lib/idol/artist-library-format';
 import {OriginalPhotoLink} from './original-photo-link';
 import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {ScopedMemberCareerFacts} from '@/components/member-career-facts';
@@ -22,6 +24,7 @@ import {witchxOriginalPhoto as originalPhoto} from '@/lib/idol/witchx-photos';
 import './witchx-artist.css';
 
 const path='/artists/witchx';
+const rosterPhotoCredit='成员人像截自 IN MEDIA A&D 官网档案卡，可在成员页查看完整原卡。';
 const nav=[['overview','首页','HOME'],['members','成员','MEMBERS'],['works','作品','MUSIC'],['updates','时间轴','TIMELINE']] as const;
 type Person=typeof design.members[number];
 type Release=typeof design.releases[number];
@@ -52,7 +55,7 @@ export default function WitchxArtist({content}:{content:CandidateContent}){
  function href(patch:Record<string,string|null>){const p=new URLSearchParams(params);for(const[k,v]of Object.entries(patch)){if(v===null)p.delete(k);else p.set(k,v);}return path+(p.size?'?'+p:'');}
  const sectionHref=(s:string)=>path+(s==='overview'?'':'?section='+s);
  const personHref=(id:string)=>href({section:'members',member:id,release:null,media:null,format:null,q:route.section==='members'?route.search||null:null});
- const releaseHref=(r:Release)=>href({section:'works',release:r.key,member:null,media:null,format:null,q:route.section==='works'?route.search||null:null});
+ const releaseHref=(r:Release)=>href({section:'works',release:r.key,member:null,media:null,format:route.format==='release'?'release':null,q:route.section==='works'||route.section==='records'?route.search||null:null});
  const videoHref=(v:Video)=>(route.section==='overview'&&!route.member&&v.type==='MV'?artistMvHref(state.data,content.groupId,v.url,safeArtistReturn(url)??path):null)??href({section:'works',media:v.key,format:v.type.toLowerCase(),release:null,member:null,q:route.section==='works'?route.search||null:null});
  const backToLibrary=href({section:'works',release:null,media:null,member:null});
  function go(e:MouseEvent<HTMLAnchorElement>,target:string){if(target.startsWith('/?')){remember();return;}if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();remember();history.pushState(newArtistHistoryState(history.state),'',target);window.dispatchEvent(new Event('artist-location-change'));document.getElementById('artist-content')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
@@ -85,21 +88,44 @@ export default function WitchxArtist({content}:{content:CandidateContent}){
     {v.memberIds.length>0&&<section className="wk-section">{heading('该作品参与成员','MEMBERS')}<div className="wk-name-links">{v.memberIds.map(id=>{const m=design.members.find(m=>m.id===id)!;return <Link key={id} to={personHref(id)}>{m.cnName} / {m.stageName} <Arrow/></Link>;})}</div></section>}
    </section></>;
  }
- function library(){const q=route.search.toLocaleLowerCase(),rs=design.releases.filter(r=>[r.title,...r.tracks].join(' ').toLocaleLowerCase().includes(q)),vs=design.works.filter(v=>(route.format==='all'||v.type.toLowerCase()===route.format)&&[v.title,v.label].join(' ').toLocaleLowerCase().includes(q));return <>{title('作品','MUSIC')}<div className="wk-library-tools"><nav className="wk-tabs" aria-label="作品类型">{[['mv','影像'],['all','发行'],['stage','舞台']].map(([key,label])=><Link key={key} className={route.format===key?'is-active':''} to={href({format:key==='all'?null:key,release:null,media:null})}>{label}</Link>)}</nav>{search('works')}</div><p role="status" className="wk-result">{route.format==='all'?`${rs.length} 张发行 · `:''}{vs.length} 个影像</p><section className="wk-section">{heading(route.format==='stage'?'舞台':'影像与舞台','WATCH')}{vs.length?videos(vs):<p className="wk-empty">没有符合条件的影像。</p>}</section>{route.format==='all'&&(rs.length?releases(rs):<p className="wk-empty">没有符合条件的发行。</p>)}</>;}
+ function library() {
+   const query = route.search.trim().toLocaleLowerCase();
+   const showVideos = route.format !== 'release';
+   const showReleases = route.format === 'all' || route.format === 'release';
+   const matchedVideos = showVideos ? design.works.filter(video =>
+     (route.format === 'all' || video.type.toLowerCase() === route.format)
+     && [video.title, video.label].join(' ').toLocaleLowerCase().includes(query)) : [];
+   const matchedReleases = showReleases
+     ? design.releases.filter(row => [row.title, ...row.tracks].join(' ').toLocaleLowerCase().includes(query)) : [];
+   return <>
+     {title('作品','MUSIC')}
+     <div className="wk-library-tools">
+       <ArtistLibraryFilters className="wk-tabs" selected={route.format} onNavigate={go}
+         hrefFor={format => href({section:'works', format:format === 'all' ? null : format, queue:null, release:null, media:null})}/>
+       {search('works')}
+     </div>
+     <p role="status" className="wk-result">{libraryResultLabel(route.format, matchedVideos.length, matchedReleases.length)}</p>
+     {showVideos && <section className="wk-section">
+       {heading(route.format === 'stage' ? '舞台' : route.format === 'mv' ? 'MV' : '影像与舞台', 'WATCH')}
+       {matchedVideos.length ? videos(matchedVideos) : <p className="wk-empty">没有符合条件的影像。</p>}
+     </section>}
+     {showReleases && (matchedReleases.length ? releases(matchedReleases) : <p className="wk-empty">没有符合条件的发行。</p>)}
+   </>;
+ }
  function missing(message:string,section:string){return <section className="wk-empty"><h1>{message}</h1><Link className="wk-button" to={sectionHref(section)}>返回目录</Link></section>;}
  const selectedMember=design.members.find(m=>m.id===route.member),selectedRelease=design.releases.find(r=>r.key===params.get('release')),selectedVideo=design.works.find(v=>v.key===params.get('media')&&v.type.toLowerCase()===route.format);
  let body:ReactNode;
  if(route.member)body=selectedMember?person(selectedMember):missing('没有找到这位成员。','members');
  else if(params.has('release'))body=selectedRelease?releaseDetail(selectedRelease):missing('没有找到此发行。','works');
  else if(params.has('media'))body=selectedVideo?videoDetail(selectedVideo):missing('暂时找不到这个视频版本。','works');
- else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName,m.nativeName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="wk-result">{people.length} 份档案</p>{people.length?roster(people):<p className="wk-empty">没有符合条件的成员。</p>}<p className="wk-roster-note">IN MEDIA A&D 官网完整具名档案卡 · 五位成员</p></>;}
+ else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName,m.nativeName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="wk-result">{people.length} 份档案</p>{people.length?<>{roster(people)}<p className="wk-roster-note">{rosterPhotoCredit}</p></>:<p className="wk-empty">没有符合条件的成员。</p>}</>;}
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','TIMELINE')}{timeline()}<p className="wk-note">公司出道标注、音源发行和视频公开采用各自日期；活动预告不作为已经举办的证明。</p></>;
  else body=<>
 <figure className="wk-group"><OriginalPhotoLink className="wk-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'W!TCHX · Bugs 艺人资料合照'})}><Picture src={content.hero.image!} alt="W!TCHX · Bugs 艺人资料合照" priority/></OriginalPhotoLink><figcaption>Bugs 艺人资料合照 · 拍摄时期未注明 · 点击查看原图</figcaption></figure>
 <header className="wk-page-title"><h1>W!TCHX</h1></header>
 <ArtistInformation slug="witchx" catalog={state.data}/>
-<section className="wk-home-members" aria-label="成员">{heading('成员','MEMBERS')}{roster()}<p className="wk-roster-note">公司官网列示的五位成员。完整具名档案卡保留原始构图；中文名为艺名转写。</p></section>
+<section className="wk-home-members" aria-label="成员">{heading('成员','MEMBERS')}{roster()}<p className="wk-roster-note">{rosterPhotoCredit}中文名为艺名转写。</p></section>
 <section className="wk-section">{heading('影像与舞台','VIDEO')}{videos(design.works)}</section>
 <section className="wk-section">{heading('发行','ALBUM')}{releases()}</section>
 <section className="wk-section">{heading('时间轴','TIMELINE')}{timeline()}</section>

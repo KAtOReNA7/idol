@@ -1,3 +1,4 @@
+import {supportsReleaseFilter} from './artist-library-format';
 import sevenReleaseKeys from '../../data/seven-redesign-navigation-keys.json';
 import {publicArtistKeysForPath,validPublicArtistRoute} from './public-artist-route-keys';
 import katseyeRouteKeys from '../../data/katseye-navigation-keys.json';
@@ -56,7 +57,7 @@ export function safeArtistReturn(value:string|null|undefined):string|null{
  if(!value||value.length>4096)return null;
  try{const u=new URL(value,'https://site.invalid');if(u.origin!=='https://site.invalid'||!bases.includes(u.pathname)||u.hash)return null;
  for(const key of u.searchParams.keys())if(!['section','member','queue','q','format','roster','reader','release','media','timelineType','timelineImportance','timelineOrder','unit','participant','sort','rosterView','year','event'].includes(key)||u.searchParams.getAll(key).length!==1)return null;
- if(u.pathname==='/artists/billlie'&&u.searchParams.get('format')==='release'&&value.includes('#'))return null;
+ if(supportsReleaseFilter(u.pathname)&&u.searchParams.get('format')==='release'&&value.includes('#'))return null;
  if(!validPublicArtistRoute(value,u))return null;
  const publicKeys=publicArtistKeysForPath(u.pathname);
  if(['timelineType','timelineImportance','timelineOrder'].some(key=>u.searchParams.has(key))&&!readTimelineFilters(u.pathname+u.search,registry51.map(group=>group.path)).ok)return null;
@@ -66,7 +67,7 @@ export function safeArtistReturn(value:string|null|undefined):string|null{
  if(u.searchParams.has('media')&&u.searchParams.has('release'))return null;
  if(u.searchParams.has('reader')&&(u.pathname!=='/artists/triples'||!/^rec[A-Za-z0-9]+$/.test(u.searchParams.get('reader')!)))return null;
  if(u.searchParams.has('roster')&&((!historicalRosterPath(u.pathname)&&u.pathname!=='/artists/vvup')||u.searchParams.get('roster')!=='history'))return null;
- if(u.searchParams.has('format')&&(![...candidateArtistPaths,ILLIT_PATH,SAYMYNAME_PATH,KATSEYE_PATH,ITZY_PATH,LESSERAFIM_PATH,IVE_PATH,KIOF_PATH,STAYC_PATH,NMIXX_PATH,HEARTS2HEARTS_PATH,KIIIKIII_PATH].includes(u.pathname)||!(u.pathname==='/artists/billlie'?['mv','stage','release']:['mv','stage']).includes(u.searchParams.get('format')!)))return null;
+ if(u.searchParams.has('format')&&(![...candidateArtistPaths,ILLIT_PATH,SAYMYNAME_PATH,KATSEYE_PATH,ITZY_PATH,LESSERAFIM_PATH,IVE_PATH,KIOF_PATH,STAYC_PATH,NMIXX_PATH,HEARTS2HEARTS_PATH,KIIIKIII_PATH].includes(u.pathname)||!(supportsReleaseFilter(u.pathname)?['mv','stage','release']:['mv','stage']).includes(u.searchParams.get('format')!)))return null;
  const section=u.searchParams.get('section'),member=u.searchParams.get('member'),queue=u.searchParams.get('queue');
  if(section&&!['overview','works','members','updates','records'].includes(section)||member&&!/^rec[A-Za-z0-9]+$/.test(member)||queue&&!['all','tonight','rewatch','unrated'].includes(queue)||(u.searchParams.get('q')?.length??0)>200)return null;
  // LOONA's historical reader restores exact same-entry query/scroll context.

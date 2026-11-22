@@ -11,7 +11,7 @@ export const GENBLUE_PATH = '/artists/genblue';
 export const GENBLUE_GROUP_ID = data.groupId;
 export type GenblueMedia = typeof data.media[number];
 export type GenblueRelease = typeof data.releases[number];
-export type GenblueRoute = {section:'overview'|'members'|'works'|'updates'; member:string|null; release:string|null; media:string|null; format:'all'|'mv'|'stage'; search:string; queue:'all'|'tonight'|'rewatch'|'unrated'; year:string|null;event:string|null;timelineType:'all'|'members'|'release'|'organization';timelineImportance:'all'|'major';timelineOrder:'earliest'|'recent';valid:boolean};
+export type GenblueRoute = {section:'overview'|'members'|'works'|'updates'; member:string|null; release:string|null; media:string|null; format:'all'|'mv'|'stage'|'release'; search:string; queue:'all'|'tonight'|'rewatch'|'unrated'; year:string|null;event:string|null;timelineType:'all'|'members'|'release'|'organization';timelineImportance:'all'|'major';timelineOrder:'earliest'|'recent';valid:boolean};
 export const genblueDefaultRoute:GenblueRoute = {section:'overview',member:null,release:null,media:null,format:'all',search:'',queue:'all',year:null,event:null,timelineType:'all',timelineImportance:'all',timelineOrder:'earliest',valid:true};
 
 export function readGenblueRoute(value:string):GenblueRoute {
@@ -22,7 +22,7 @@ export function readGenblueRoute(value:string):GenblueRoute {
     const u=new URL(safe,'https://site.invalid');
     if(u.pathname!==GENBLUE_PATH)return {...genblueDefaultRoute,valid:false};
     const p=u.searchParams,section=p.get('section');
-    return {section:section==='members'||section==='works'||section==='updates'?section:section==='records'?'works':'overview',member:p.get('member'),release:p.get('release'),media:p.get('media'),format:p.get('format')==='mv'?'mv':p.get('format')==='stage'?'stage':'all',search:p.get('q')??'',queue:(p.get('queue')??'all') as GenblueRoute['queue'],year:p.get('year'),event:p.get('event'),timelineType:(p.get('timelineType')??'all') as GenblueRoute['timelineType'],timelineImportance:(p.get('timelineImportance')??'all') as GenblueRoute['timelineImportance'],timelineOrder:(p.get('timelineOrder')??'earliest') as GenblueRoute['timelineOrder'],valid:true};
+    return {section:section==='members'||section==='works'||section==='updates'?section:section==='records'?'works':'overview',member:p.get('member'),release:p.get('release'),media:p.get('media'),format:(p.get('format')??'all') as GenblueRoute['format'],search:p.get('q')??'',queue:(p.get('queue')??'all') as GenblueRoute['queue'],year:p.get('year'),event:p.get('event'),timelineType:(p.get('timelineType')??'all') as GenblueRoute['timelineType'],timelineImportance:(p.get('timelineImportance')??'all') as GenblueRoute['timelineImportance'],timelineOrder:(p.get('timelineOrder')??'earliest') as GenblueRoute['timelineOrder'],valid:true};
   } catch {return {...genblueDefaultRoute,valid:false};}
 }
 export function genblueHref(patch:Partial<GenblueRoute> = {}, base:GenblueRoute=genblueDefaultRoute):string {
@@ -42,7 +42,7 @@ export function genblueHref(patch:Partial<GenblueRoute> = {}, base:GenblueRoute=
   return safeArtistReturn(GENBLUE_PATH+(p.size?'?'+p:''))??GENBLUE_PATH;
 }
 export const genblueMemberHref=(id:string,context?:GenblueRoute)=>genblueHref({section:'members',member:id,search:context?.section==='members'?context.search:''});
-export const genblueReleaseHref=(key:string,context?:GenblueRoute)=>genblueHref({section:'works',release:key,search:context?.section==='works'?context.search:''});
+export const genblueReleaseHref=(key:string,context?:GenblueRoute)=>genblueHref({section:'works',release:key,format:context?.section==='works'&&context.format==='release'?'release':'all',search:context?.section==='works'?context.search:''});
 export const genblueMediaHref=(media:GenblueMedia,context?:GenblueRoute)=>genblueHref({section:'works',format:media.kind as 'mv'|'stage',media:media.key,search:context?.section==='works'?context.search:'',queue:context?.section==='works'?context.queue:'all'});
 const validScore=(n:unknown):n is number=>typeof n==='number'&&Number.isFinite(n)&&n>=0&&n<=10;
 export const genblueScoreLabel=(n:number|null)=>n===null?'未评分':n.toFixed(1);

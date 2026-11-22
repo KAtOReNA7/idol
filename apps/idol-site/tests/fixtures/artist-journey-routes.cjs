@@ -14,6 +14,9 @@ const combinedRecords = new Set([
   'adya', 'geenius', 'tracer', 'witchx', 'spia', 'billlie', 'kep1er', 'newjeans',
 ]);
 const noFormatControls = new Set(['babymonster','xg','aespa','badvillain']);
+const releaseFormatControls = new Set([
+  'adya','witchx','geenius','oddyouth','tracer','spia','youngposse','bewave','candyshop','genblue','billlie',
+]);
 const indexedDesigns = new Set(['badvillain','billlie','cherrybullet','everglow','fromis9','hearts2hearts','idle','ive','izone','katseye','rocketpunch','weeekly']);
 const releaseInRecords = new Set(['cherrybullet','everglow','fromis9','hearts2hearts','idle','izone','katseye','kiiikiii','rocketpunch','saymyname','vvup','weeekly']);
 const nativeAstra = new Set(['ifeye', 'izna']);
@@ -44,7 +47,7 @@ function routeEntries(slug) {
   if (!noFormatControls.has(slug)) {
     for (const format of ['mv','stage']) add('section','works',{format});
   }
-  if (slug === 'billlie') add('section','works',{format:'release'});
+  if (releaseFormatControls.has(slug)) add('section','works',{format:'release'});
 
   // The UDTT native router uses a hash for each exact release or media key.
   // Its section=works page does not interpret a release or media query.

@@ -8,6 +8,24 @@ const request=v=>({action:'open-rating',groupId:design.group.id,workId:v.id,vide
 const services=c=>({bindings:api.ifeyeNativeBindings(c),routeUrl:api.routeUrl,safeArtistReturn:api.safeArtistReturn});
 const mv=design.works.find(v=>v.type==='MV'),stage=design.works.find(v=>v.type==='STAGE');
 
+test('the four homepage shortcuts open the correct sections with MVs before releases',()=>{
+ const {parse}=require('next/dist/compiled/node-html-parser');
+ const load=require('./helpers/public-artist-loader.cjs');
+ const {mountAstra}=require('./helpers/timeline-production-renderers.cjs');
+ const product={...load('lib/idol/izna-runtime/runtime.mjs'),...load('lib/idol/ifeye-runtime/ifeye.mjs')};
+ const home=parse(mountAstra(product,'ifeye',design,'#/home'));
+ const links=home.querySelectorAll('nav.hero-jump a');
+ assert.deepEqual(links.map(a=>a.querySelector('span').text.trim()),['成员','MV','发行作品','时间轴']);
+ assert.deepEqual(links.map(a=>api.artistUrl(design,a.getAttribute('href'))),[
+  '/artists/ifeye?section=members','/artists/ifeye?section=works&format=mv',
+  '/artists/ifeye?section=records','/artists/ifeye?section=updates',
+ ]);
+ const items=home.querySelectorAll('.video-section,.release-section');
+ assert.equal(items[0].classNames.includes('video-section'),true);
+ assert.equal(items[1].classNames.includes('release-section'),true);
+ assert.equal(items[0].querySelectorAll('[data-public-video-cover]').length,3);
+});
+
 
 test('ten original images keep exact bytes and identity; resolver rejects altered metadata',()=>{
  const assets=require('../data/ifeye-assets.json');assert.equal(assets.length,10);

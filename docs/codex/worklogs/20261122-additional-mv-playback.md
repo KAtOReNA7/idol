@@ -26,3 +26,5 @@ ADYA 在发行日发布的 X 帖链接到 Melon、Genie、Bugs 三个音源。�
 W!TCHX 的经纪公司 Artform 将官网中的《BLALA》4K 影像标为 SIMPLY POP 舞台，Bugs 艺人目录将同名发行列作音轨。官网舞台、节目演出和官方歌词影像仍是三个需分清的入口。本站歌词版的正式片源待解决。[Artform 艺人页](https://www.art-form.net/Witches) · [Bugs 艺人目录](https://music.bugs.co.kr/artist/20222498) · [团体发布的歌词影像](https://www.youtube.com/watch?v=DYigxyW8Oiw)
 
 MegaVRBox 在制作方页面列出 3 分 36 秒的《WITCHX_BLALA_HD》，同栏有“180 3DVR Content”入口。制作方播放器海报是白底、绿黑服装的成员图，官方歌词影像的封面是火焰与曲名。现有来源只能确认这是另一项 VR 节目候选，未能证明与歌词影像同剪辑。[节目制作方](https://www.megavrbox.com/%EB%B3%B5%EC%A0%9C-%EC%A0%84%EC%98%81%EB%9E%80)
+
+在平台标示的上传日 2024-11-05 查《BLALA》官方歌词版。团体 X 主页可读，按 11 月 5 至 6 日筛选时要求登录。Instagram 公开主页仅返回帐号资料，公开嵌入页提示该主页链接不可用。Facebook 主页转登录，视频页未给出可识别的帖子。公开索引也未找到能核对当天完整剪辑的社交帖子。团体资料站的《BLALA》区列出两条 3:21 音轨，内嵌影像实际指向 Moving Mix `6dYelUvJA3A`。这一轮没有可交站内复测的新候选，正式歌词版继续待解决。[官方原片与平台日期](https://www.youtube.com/watch?v=DYigxyW8Oiw) · [团体 X](https://x.com/WiTCHX_twt) · [Instagram](https://www.instagram.com/witchxofficial/) · [Facebook 视频页](https://www.facebook.com/witchesxofficial/videos/) · [资料站该曲目录](https://witchx.carrd.co/#blala)

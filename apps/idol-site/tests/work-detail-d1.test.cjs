@@ -391,7 +391,8 @@ test('reviewed editorial MVs import into their own empty records and retain scor
     .bind(JSON.stringify(fields), snapshot).run();
   for (const entry of entries) {
     const nearby = 'recExisting' + entry.videoId;
-    await seed('groups', entry.groupId, {[F.groups.name]: entry.group, [F.groups.works]: [nearby], [F.groups.note]:'isolated original'});
+    const groupWorks = entry === atheart ? {link_record_ids:[nearby]} : [nearby];
+    await seed('groups', entry.groupId, {[F.groups.name]: entry.group, [F.groups.works]: groupWorks, [F.groups.note]:'isolated original'});
     await seed('works', nearby, {[F.works.groups]:[entry.groupId], [F.works.song]:entry.song, [F.works.score]:7,
       [F.works.url]:'https://www.youtube.com/watch?v=' + (entry === atheart ? 'I5-ZVMQVJsQ' : '6dYelUvJA3A')});
   }
@@ -442,8 +443,14 @@ test('reviewed editorial MVs import into their own empty records and retain scor
       .bind(snapshot, entry.groupId).first();
     const raw = JSON.parse(group.fields_json);
     assert.equal(raw[F.groups.note], 'isolated original');
-    assert.equal(raw[F.groups.works].length, 2);
-    assert.equal(raw[F.groups.works][1].recordId, entry.workId);
+    const nearby = 'recExisting' + entry.videoId;
+    if (entry === atheart) {
+      assert.deepEqual(raw[F.groups.works], {link_record_ids:[nearby, entry.workId]});
+    } else {
+      assert.equal(raw[F.groups.works].length, 2);
+      assert.equal(raw[F.groups.works][0],nearby);
+      assert.equal(raw[F.groups.works][1].recordId, entry.workId);
+    }
 
     const body = JSON.stringify({table:'works', recordId:entry.workId, revision:details.revision,
       operationId:crypto.randomUUID(), values:{score:0}});

@@ -14,6 +14,23 @@ function conflict(message: string): never {
   throw new AppError('EDITORIAL_WORK_CONFLICT', message, 409);
 }
 
+// Imports can contain legacy display links or the native search relation envelope.
+// Preserve the existing representation when appending the new reverse link.
+function appendWorkLink(value: unknown, entry: Entry) {
+  if (value == null || Array.isArray(value)) {
+    return [...(value ?? []), {tableId: TABLES.works, recordId: entry.workId, text: entry.group + ' · ' + entry.song}];
+  }
+  if (typeof value === 'object') {
+    const link = value as Record<string, unknown>;
+    const ids = Object.hasOwn(link, 'link_record_ids') ? link.link_record_ids : [];
+    if (Object.keys(link).every(key => key === 'link_record_ids') && Array.isArray(ids) &&
+        ids.every(id => typeof id === 'string' && /^rec[A-Za-z0-9]+$/.test(id))) {
+      return {link_record_ids: [...ids, entry.workId]};
+    }
+  }
+  return conflict('该团体的作品关系格式已变化。');
+}
+
 async function inspect(userId: string) {
   const control = await ownControl(userId);
   if (control?.mode !== 'native' || !control.active_snapshot) {
@@ -48,10 +65,10 @@ async function inspect(userId: string) {
       conflict('目标作品身份与已存在的记录不一致。');
     }
     const priorLinks = groupFields[F.groups.works] ?? [];
-    if (!Array.isArray(priorLinks)) conflict('该团体的作品关系格式已变化。');
+    const nextLinks = appendWorkLink(priorLinks, entry);
     const references = asIds(priorLinks).filter(id => id === entry.workId).length;
     if (references !== Number(Boolean(own))) conflict('团体和作品之间的关系需要核对。');
-    return {entry, present: Boolean(own), group, groupFields, priorLinks};
+    return {entry, present: Boolean(own), group, groupFields, nextLinks};
   });
   await assertSourceUnchanged(userId, control);
   return {control, snapshot, records, generation: generation.generation};
@@ -123,11 +140,10 @@ export async function importEditorialWorks(userId: string, operationId: string) 
   const gate = 'EXISTS (SELECT 1 FROM idol_saves WHERE id=? AND user_id=? AND request_hash=? AND result_json=?)';
   const gateArgs = [operationId, userId, requestHash, JSON.stringify(result)];
   const statements = [journal];
-  for (const {entry, group, groupFields, priorLinks} of missing) {
+  for (const {entry, group, groupFields, nextLinks} of missing) {
     const raw = workFields(entry);
     const workRevision = await nativeRevision(snapshot, 'works', entry.workId, 1, raw);
-    const nextGroup = {...groupFields, [F.groups.works]: [...priorLinks,
-      {tableId: TABLES.works, recordId: entry.workId, text: raw[F.works.name]}]};
+    const nextGroup = {...groupFields, [F.groups.works]: nextLinks};
     const groupRevision = await nativeRevision(snapshot, 'groups', entry.groupId, group.version + 1, nextGroup);
     statements.push(
       db.prepare(`INSERT INTO idol_native_records (key,snapshot_id,table_key,record_id,fields_json,revision,version,updated_at,source_order)

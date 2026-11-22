@@ -179,3 +179,47 @@ test('UDTT links the original MV from its directory, release, cast and related p
   const mismatch={...data,works:data.works.map(w=>w.id===original.key?{...w,url:'https://youtu.be/aaaaaaaaaaa'}:w)};
   assert.equal(product.mvCardHref(original.key,group.path,mismatch,production),null);
 });
+for(const slug of ['izna','ifeye']){
+  test(slug+' preserves its mounted host and the same focused MV anchor when its live catalog arrives',async()=>{
+    const fs=require('node:fs'),vm=require('node:vm'),ts=require('typescript');
+    const {Runner,React,jsxRuntime,find,tick}=require('./helpers/read-recovery-harness.cjs');
+    const {editorialRequest,bindEditorialLinks}=load('lib/idol/editorial-mv-links.mjs');
+    const native=load('lib/idol/'+slug+'-native.ts'),model=load('lib/idol/'+slug+'-runtime/model.mjs');
+    const {design}=native,cap=slug==='izna'?'Izna':'Ifeye',key=slug==='izna'?'kind=MV':'type=mv';
+    const original=design.works.find(v=>v.type==='MV');
+    const route='#/works?'+key,raw=route+'&detail='+encodeURIComponent(original.key);
+    const link={href:raw,dataset:{},getAttribute(name){assert.equal(name,'href');return this.href;},setAttribute(name,v){assert.equal(name,'href');this.href=v;}};
+    const mountedRoot={querySelectorAll(selector){assert.ok(selector.includes('a[data-'+slug+'-route]'));return [link];}};
+    let mounts=0,destroys=0,updates=0,options={catalog:null,loading:true};
+    const refresh=services=>bindEditorialLinks({root:mountedRoot,data:design,origin:route,artistUrl:model.artistUrl,
+      nativeRequest:(hash,origin)=>editorialRequest(design,hash,origin,model.routeCategory),nativeHref:model.nativeHref,native:services});
+    const ports={
+      react:React,'react/jsx-runtime':jsxRuntime,'./identity.css':{},
+      '@/components/artist-timeline-host':{useArtistTimelineHostOptions:()=>options},
+      '@/lib/idol/catalog-read-deadline':{},'@/lib/idol/artist-navigation':{safeArtistReturn},
+      '@/lib/idol/journey':{routeUrl},'@/lib/idol/artist-mv-link':{artistMvHref},
+      ['@/lib/idol/'+slug+'-native']:native,
+      ['@/lib/idol/'+slug+'-runtime/host.mjs']:{['mount'+cap+'Editorial']:({native:services})=>{
+        mounts++;refresh(services);
+        return {ready:Promise.resolve(),root:mountedRoot,updateCatalog(_accounts,next){updates++;refresh(next);},destroy(){destroys++;}};
+      }},
+    };
+    const source=fs.readFileSync('components/'+slug+'/editorial.tsx','utf8');
+    const compiled=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,target:ts.ScriptTarget.ES2022}}).outputText;
+    const exports={};vm.runInNewContext('(function(require,exports){'+compiled+'})')(
+      name=>{assert.ok(name in ports,name);return ports[name];},exports);
+    const runner=new Runner(exports.default);
+    const tree=runner.render({});
+    find(tree,node=>node.type==='div'&&node.props.ref).props.ref.current={};
+    await tick();
+    assertPlayer(link.href,original.id,model.artistUrl(design,route));
+    const catalog=artistCatalog(registry.find(g=>g.slug===slug));
+    options={catalog,loading:false};runner.render({});
+    assert.equal(mounts,1);assert.equal(destroys,0);assert.equal(updates,1);
+    assertPlayer(link.href,original.id,model.artistUrl(design,route));
+    options={catalog:{...catalog,works:catalog.works.filter(w=>w.id!==original.id)},loading:false};runner.render({});
+    assert.equal(link.href,model.artistUrl(design,raw));assert.equal(link.dataset.editorialFocusHref,undefined);
+    assert.equal(mounts,1);assert.equal(destroys,0);
+    runner.unmount();assert.equal(destroys,1);
+  });
+}

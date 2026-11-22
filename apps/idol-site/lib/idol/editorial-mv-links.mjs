@@ -1,3 +1,5 @@
+import {renderGroupInformation} from './group-information.mjs';
+
 export function editorialRequest(data,hash,returnTo,routeCategory) {
   if(!hash)return null;
   const url=new URL(hash.slice(1),'https://artist.invalid');
@@ -18,11 +20,12 @@ export function editorialRequest(data,hash,returnTo,routeCategory) {
 
 /** Keep the public editorial route as the focus key when a verified MV can open the shared player. */
 export function bindEditorialLinks({root, data, origin, artistUrl, nativeRequest, nativeHref, native}) {
-  for (const link of root.querySelectorAll('a[href^="#/"]')) {
-    const route = link.getAttribute('href');
+  const routeKey=data.group.slug+'Route';
+  for (const link of root.querySelectorAll('a[href^="#/"],a[data-'+data.group.slug+'-route]')) {
+    const route = link.dataset[routeKey]??link.getAttribute('href');
     const local = artistUrl(data, route);
     if (!local) continue;
-    link.dataset[data.group.slug + 'Route'] = route;
+    link.dataset[routeKey] = route;
     const request = nativeRequest(route, origin);
     let destination = null;
     if (request?.slotType === 'MV') {
@@ -30,7 +33,30 @@ export function bindEditorialLinks({root, data, origin, artistUrl, nativeRequest
         ?? native?.pendingMvHref?.(request.workId, request.videoId, artistUrl(data, origin));
     }
     if (destination) link.dataset.editorialFocusHref = local;
-    link.setAttribute('href', destination ?? local);
+    else delete link.dataset.editorialFocusHref;
+    const href=destination??local;
+    if(link.getAttribute('href')!==href)link.setAttribute('href',href);
+  }
+}
+
+export function updateEditorialAccounts(root,data,accounts) {
+  data.publicAccounts.splice(0,data.publicAccounts.length,...accounts);
+  const current=root.querySelector('[data-home-module="information"]');
+  if(!current)return;
+  const template=root.ownerDocument.createElement('template');
+  template.innerHTML=renderGroupInformation(data.group.slug,{social:accounts});
+  const next=template.content.firstElementChild;
+  if(!next||next.isEqualNode(current))return;
+  const active=root.getRootNode().activeElement;
+  const focus=current.contains(active)?active:null;
+  const open=current.querySelector('details')?.open;
+  const details=next.querySelector('details');
+  if(details)details.open=Boolean(open);
+  current.replaceWith(next);
+  if(focus){
+    const link=focus.getAttribute('href');
+    const target=link?[...next.querySelectorAll('a[href]')].find(a=>a.getAttribute('href')===link):next.querySelector('summary');
+    target?.focus({preventScroll:true});
   }
 }
 

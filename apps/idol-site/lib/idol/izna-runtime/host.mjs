@@ -1,4 +1,4 @@
-import {editorialRequest,bindEditorialLinks,restoreEditorialMvFocus} from '../editorial-mv-links.mjs';
+import {editorialRequest,bindEditorialLinks,restoreEditorialMvFocus,updateEditorialAccounts} from '../editorial-mv-links.mjs';
 import {createAstraRuntime} from './runtime.mjs';
 import {createIznaModule} from './izna.mjs';
 import {groups,reviewPath,validRoute,readReviewUrl,artistUrl,nativeHref,reviewState,savedPosition,publicPosition,routeCategory} from './model.mjs';
@@ -32,6 +32,8 @@ const reset=`:host{all:initial;display:block;min-width:0;isolation:isolate;color
 export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{},onHomeChange=()=>{}}) {
   const slug=data?.group?.slug,group=groups[slug],doc=host?.ownerDocument,win=doc?.defaultView;
   if(!win||!group||group.id!==data?.group?.id)throw new TypeError('Exact izna public input and host required');
+  let lastAccounts=data.publicAccounts;
+  data={...data,publicAccounts:[...(lastAccounts??[])]};
   owners.get(host)?.destroy();
   const shadow=host.shadowRoot??host.attachShadow({mode:'open'});
   if(shadow.childNodes.length)throw new Error('Refusing to overwrite an unowned ShadowRoot');
@@ -99,7 +101,7 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
     if(!button){button=doc.createElement('button');button.type='button';button.dataset.astraNativeOpen='true';button.className='action';section.append(button);}
     button.textContent=request.action==='open-member'?'查看成员手帐 ↗':request.action==='open-release'?'查看发行记录 ↗':'查看作品手帐 ↗';
     button.dataset.iznaNativeFocus=request.action;
-    button.disabled=!allowed;
+    button.disabled=!allowed;button.removeAttribute('aria-describedby');
     if(!allowed){const reason=doc.createElement('p');reason.id=root.getAttribute('data-astra-instance')+'--native-pending';reason.textContent=request.action==='open-release'?'发行资料可浏览，目前没有对应的手帐记录。':'暂无对应的手帐记录，仍可浏览本页资料。';button.setAttribute('aria-describedby',reason.id);section.append(reason);}
     if(request.action==='open-work'){
       const ratingRequest={...request,action:'open-rating'},ratingAllowed=canRequest(ratingRequest);
@@ -121,6 +123,15 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
       mountedUrl=target;pending();restore(backToMember);
       if(!detail.route.startsWith('#/person/'))memberDirectory=null;
     }else pending();
+  }
+  function updateCatalog(accounts,services) {
+    if(dead)return;
+    native=services;
+    if(accounts!==lastAccounts){lastAccounts=accounts;updateEditorialAccounts(root,data,accounts);}
+    if(mountedUrl&&currentUrl()===mountedUrl){
+      const focus=navigationFocus();pending();
+      if(focus?.kind==='native')restoreNavigationFocus(focus);
+    }
   }
   const owner={destroy,inspect:()=>runtime.inspect()};owners.set(host,owner);
   function destroy() {
@@ -212,5 +223,5 @@ export function mountIznaEditorial({host,data,resolveAsset,native,onStatus=()=>{
     remember({kind:'href',value:href});
   },true);
   listen(root,'submit',()=>remember(),true);
-  return Object.freeze({ready,root,shadow,navigate,destroy,inspect:owner.inspect});
+  return Object.freeze({ready,root,shadow,navigate,updateCatalog,destroy,inspect:owner.inspect});
 }

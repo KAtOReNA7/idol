@@ -21,6 +21,15 @@ export default function IznaEditorial({onNativeOpen,onPresentationMount}:{onNati
  const error=injected?(options.error||(options.catalog!==null&&!validIznaCatalog(options.catalog)?'暂时无法读取本团记录。':'')):fetched.error;
  const display=useMemo(()=>prepareIznaDisplayData(catalog),[catalog]);
  const bindings=useMemo(()=>iznaNativeBindings(catalog),[catalog]);
+ const services=useMemo<NativeServices>(()=>({bindings,routeUrl,safeArtistReturn,
+  pendingMvHref:loading&&!catalog?(workId,videoId,back)=>artistMvHref(null,display.group.id,'https://www.youtube.com/watch?v='+videoId,back,workId):undefined,
+  open:onNativeOpen??((_request,context)=>{window.location.assign(context.href);return true;}),
+ }),[bindings,catalog,display.group.id,loading,onNativeOpen]);
+ const latest=useRef({display,services}),mounted=useRef<ReviewHandle|null>(null);
+ useEffect(()=>{
+  latest.current={display,services};
+  mounted.current?.updateCatalog(display.publicAccounts,services);
+ },[display,services]);
  useEffect(()=>{
   if(injected)return;const controller=new AbortController();setFetched({catalog:null,loading:true,error:''});
   void catalogReadWithDeadline(async signal=>{
@@ -34,16 +43,15 @@ export default function IznaEditorial({onNativeOpen,onPresentationMount}:{onNati
   let cancelled=false,handle:ReviewHandle|null=null,detachPresentation:void|(()=>void);setFailed(false);setStatus('正在打开 izna…');
   void import('@/lib/idol/izna-runtime/host.mjs').then(async module=>{
    if(cancelled||!host.current)return;
-   handle=module.mountIznaEditorial({host:host.current,data:display,resolveAsset:iznaAssetResolver,
-    native:{bindings,routeUrl,safeArtistReturn,
-     pendingMvHref:loading&&!catalog?(workId,videoId,returnTo)=>artistMvHref(null,display.group.id,'https://www.youtube.com/watch?v='+videoId,returnTo,workId):undefined,
-     open:onNativeOpen??((_request,context)=>{window.location.assign(context.href);return true;})},
-    onHomeChange:setIsHome,onStatus:message=>{if(!cancelled)setStatus(message);}});
+   const current=latest.current;
+   handle=module.mountIznaEditorial({host:host.current,data:current.display,resolveAsset:iznaAssetResolver,
+    native:current.services,onHomeChange:setIsHome,onStatus:message=>{if(!cancelled)setStatus(message);}});
+   mounted.current=handle;
    await handle.ready;
    if(!cancelled)detachPresentation=onPresentationMount?.(handle.root);
   }).catch(error=>{if(cancelled)return;handle?.destroy();setFailed(true);setStatus(error instanceof Error?error.message:'页面暂时无法打开。');});
-  return()=>{cancelled=true;detachPresentation?.();handle?.destroy();};
- },[display,bindings,catalog,loading,onNativeOpen,onPresentationMount,mountAttempt]);
+  return()=>{cancelled=true;if(mounted.current===handle)mounted.current=null;detachPresentation?.();handle?.destroy();};
+ },[onPresentationMount,mountAttempt]);
  return <section data-izna-native-host="true" style={{minWidth:0}}>
   {(!isHome||failed||loading||error)&&<div style={{padding:'12px 20px',font:'14px/1.6 Arial,sans-serif',display:'flex',gap:16,flexWrap:'wrap'}}>{(!isHome||failed)&&<a href="/?view=groups">← 团体索引</a>}{loading?<span role="status">正在读取手帐关联…</span>:error?<span role="alert">{error} 公开资料仍可浏览。 <button type="button" onClick={()=>options.onRetry?options.onRetry():setAttempt(n=>n+1)}>重新读取</button></span>:null}</div>}
   {status&&<div role="status" aria-live="polite" style={{padding:'10px 20px',font:'14px/1.6 Arial,sans-serif'}}>{status}{failed&&<> <button type="button" onClick={()=>setMountAttempt(n=>n+1)}>重新打开</button></>}</div>}

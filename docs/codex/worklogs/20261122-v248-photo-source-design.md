@@ -1,6 +1,6 @@
 # v248 照片出处与原图入口
 
-八团的首页、成员名录或个人档案出现了重复图注。此次在 Figma 为十个场景制作了收起与展开两种状态，各有 1440 px 桌面稿和 390 px 手机稿。五个个人档案示例分别代表 ODD YOUTH 5 人、Geenius 5 人、TRACER 4 人、HITGS 5 人和 AtHeart 7 人。[改前逐页记录](../evidence/20261122-v247/photo-caption-before.json) · [逐稿核验](../evidence/20261122-v248/photo-source-figma.json)
+八团的首页、成员名录或个人档案出现了重复图注。此次在 Figma 为十个场景制作了收起与展开两种状态，各有 1440 px 桌面稿和 390 px 手机稿。五个个人档案示例分别代表 ODD YOUTH 5 人、Geenius 5 人、TRACER 4 人、HITGS 5 人和 AtHeart 7 人。[改前逐页记录](../evidence/20261122-v248/photo-caption-before.json) · [逐稿核验](../evidence/20261122-v248/photo-source-figma.json)
 
 访客可直接看照片，点「照片出处」后再读发布方与拍摄时期，或前往来源原文。ADYA 和 W!TCHX 的名录沿用已有的照片来源名称。点成员卡仍进入本人档案。八个单张照片的场景均可单独打开原图。TRACER 的历史照片标识和 AtHeart 的出生日期放在首显，HITGS 将 Kprofiles 的转载肖像与维基百科的人物资料分开。
 

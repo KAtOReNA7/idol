@@ -1,0 +1,131 @@
+{
+  "applicationCommit": "4f9fe8222887b9e8406863a4f40e3658f160fb79",
+  "baselineApplicationCommit": "3c2cfe150fb2d43645dc02431b5b84898b156f72",
+  "baselineValidationCommit": "3c2cfe150fb2d43645dc02431b5b84898b156f72",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4355,"pass": 4238,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4361,"pass": 4244,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1414,"pass": 1414,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "Danger shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "Danger uses the individual publisher posts and keeps the previous portrait for each of the five members",
+        "album server HTML exposes the complete official order, double lead tracks, cover and sources",
+        "only the matched aespa cover opens a same-tab album and its return lands on that exact card",
+        "only the published album path is accepted as a return destination",
+        "the three watchable rows lead to the original album videos and preserve a round trip"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4355,"pass": 4238,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4361,"pass": 4244,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1414,"pass": 1414,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "Danger shows the full contemporary roster on its original MV and preserves the earlier work images",
+        "Danger uses the individual publisher posts and keeps the previous portrait for each of the five members",
+        "album server HTML exposes the complete official order, double lead tracks, cover and sources",
+        "only the matched aespa cover opens a same-tab album and its return lands on that exact card",
+        "only the published album path is accepted as a return destination",
+        "the three watchable rows lead to the original album videos and preserve a round trip"
+      ],
+      "removedTests": []
+    }
+  },
+  "validationCommit": "db3441f2f651f9ce76d023f8ae5e1a053d12ed5c",
+  "testOnlyChanges": ["apps/idol-site/tests/fixtures/image-reliability/non-image-history.ts"],
+  "firstRunAtApplication": {
+    "platforms": ["Windows","WSL"],
+    "full": {
+      "nodeTotal": {"tests": 4361,"pass": 4045,"fail": 277,"skipped": 39,"cancelled": 0,"todo": 0},
+      "retainedFailureCount": 78,
+      "clearedFailures": []
+    },
+    "newFailureGroup": {
+      "suite": "main",
+      "file": "tests/image-host-matrix.test.cjs",
+      "cases": 199,
+      "phase": "before the assertions during the shared bundle build",
+      "error": "No matching export in \"tests/fixtures/image-reliability/non-image-history.ts\" for import \"tryArtistHistoryChange\""
+    },
+    "verify": {
+      "exitCode": 1,
+      "typecheck": "passed",
+      "current": {"tests": 1414,"pass": 1215,"fail": 199,"skipped": 0,"cancelled": 0,"todo": 0},
+      "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"skipped": 0,"cancelled": 0,"todo": 0},
+      "productionBuild": "not reached"
+    },
+    "targetedAfterTestRepair": {
+      "platform": "Windows",
+      "files": ["tests/image-host-matrix.test.cjs","tests/aespa-armageddon-release.test.cjs"],
+      "tests": 203,
+      "pass": 203
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "compiledReleaseRoute": {
+    "path": "/artists/aespa/releases/armageddon",
+    "artifact": "dist/server/ssr/index.js",
+    "listedIn": ["Windows","WSL"]
+  },
+  "input": "Windows and WSL each ran both npm run verify and npm test first on the frozen application and again after restoring the missing history callback signature in a test-only image fixture. The final verify and full-suite totals refer to the test-only revision of the same application."
+}

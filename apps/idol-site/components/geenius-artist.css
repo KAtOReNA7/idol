@@ -24,3 +24,31 @@
 @media(max-width:760px){[data-idol-geenius-native]{padding:0 20px}.idol-geenius-masthead{min-height:84px}.idol-geenius-masthead nav{width:100%;justify-content:space-between;gap:8px}.idol-geenius-masthead nav a{font-size:17px;letter-spacing:-.8px}.idol-geenius-hero-title{font-size:76px!important;letter-spacing:-5px!important;line-height:1.25!important;padding:12px 0 24px}.idol-geenius-introduction{padding-top:30px}.idol-geenius-introduction h2{font-size:32px;letter-spacing:-1.2px;line-height:1.25}.idol-geenius-about{grid-template-columns:1fr;gap:22px;margin-top:30px;font-size:13px}.idol-geenius-socials{margin:60px 0 28px}.idol-geenius-socials a{font-size:26px;line-height:1.25;min-height:36px}.idol-geenius-home-releases,.idol-geenius-home-videos,.idol-geenius-home-timeline{margin-top:76px}.idol-geenius-heading{gap:10px;margin-bottom:28px}.idol-geenius-heading>span{font-size:42px;letter-spacing:-2px}.idol-geenius-heading h2{font-size:12px}.idol-geenius-members{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 8px}.idol-geenius-home-members .idol-geenius-portrait{aspect-ratio:3/5;object-position:50% 43%}.idol-geenius-person-label{padding-top:12px}.idol-geenius-person-label p{font-size:18px}.idol-geenius-person-label h3{font-size:12px}.idol-geenius-title{padding:32px 0}.idol-geenius-title>span{font-size:46px;letter-spacing:-2.5px}.idol-geenius-title h1{font-size:14px}.idol-geenius-search{display:block}.idol-geenius-search>div{gap:10px;margin-top:8px}.idol-geenius-search input{width:calc(100% - 80px);font-size:16px}.idol-geenius-search button{padding:8px 16px}.idol-geenius-search>div>a{flex-basis:100%;font-size:12px}.idol-geenius-result{padding:22px 0}.idol-geenius-releases{grid-template-columns:1fr;gap:42px}.idol-geenius-release>a{gap:8px}.idol-geenius-release-meta h3{font-size:30px;margin:10px 0}.idol-geenius-videos,.idol-geenius-interactive-heading+.idol-geenius-videos{grid-template-columns:1fr;gap:34px}.idol-geenius-video h3{font-size:28px}.idol-geenius-interactive-heading{gap:24px;margin:60px 0 28px}.idol-geenius-interactive-heading h3{font-size:58px}.idol-geenius-interactive-heading p{font-size:12px}.idol-geenius-library-tools{display:block}.idol-geenius-tabs{margin-bottom:24px}.idol-geenius-related{margin-top:52px}.idol-geenius-related .idol-geenius-heading>span{font-size:36px}.idol-geenius-person-detail,.idol-geenius-release-detail{grid-template-columns:1fr;gap:28px}.idol-geenius-person-copy,.idol-geenius-release-copy{padding:0}.idol-geenius-stage-name{font-size:58px}.idol-geenius-actions{gap:12px;align-items:stretch}.idol-geenius-button{font-size:12px;padding:12px 16px}.idol-geenius-related-list article{grid-template-columns:104px minmax(0,1fr);gap:14px}.idol-geenius-related-list article>a:last-child{grid-column:2}.idol-geenius-related-list h3{font-size:26px}.idol-geenius-related-list p{font-size:10px}.idol-geenius-release-copy h1{font-size:42px}.idol-geenius-film-header{display:block}.idol-geenius-film-header h1{font-size:64px}.idol-geenius-record-handoff{margin-top:28px}.idol-geenius-play,.idol-geenius-film-links{font-size:12px}.idol-geenius-timeline li{grid-template-columns:1fr;gap:20px;padding:28px 0 32px}.idol-geenius-event-date{flex-direction:row;align-items:center;gap:14px}.idol-geenius-event-copy h3{font-size:28px}.idol-geenius-event-copy p{font-size:13px}.idol-geenius-event-links{gap:20px}.idol-geenius-footer{display:block;margin-top:80px}.idol-geenius-footer>div{margin-top:28px;gap:20px;flex-wrap:wrap;font-size:11px}}
 @media(max-width:350px){[data-idol-geenius-native]{padding-inline:16px}.idol-geenius-masthead nav{gap:5px}.idol-geenius-masthead nav a{font-size:14px;letter-spacing:-.6px}.idol-geenius-hero-title{font-size:66px!important}.idol-geenius-title>span{font-size:39px;letter-spacing:-2px}.idol-geenius-heading>span{font-size:36px}.idol-geenius-introduction h2{font-size:28px}}
 @media(prefers-reduced-motion:reduce){[data-idol-geenius-native] *{scroll-behavior:auto!important;transition:none!important}}
+
+/* HOMe artist typography and Voyage / Figma 1425:3629, 1425:3645. */
+[data-idol-geenius-native] { padding-inline: max(24px,calc((100% - 1176px) / 2)); background: #090909; }
+.ge-home-profile { margin: clamp(18px,2.45vw,35px) 0 0; }
+.ge-home-title { border-bottom: 1px solid #63615c; padding-bottom: clamp(12px,1.4vw,20px); margin-bottom: 15px; }
+.ge-home-title h1 { display: flex; align-items: center; gap: clamp(10px,1.2vw,17px); font: 750 clamp(44px,5.8vw,84px)/1 GeeniusSans,sans-serif; letter-spacing: -.06em; color: #f6f5e8; }
+.ge-home-title h1 img { width: clamp(39px,4.6vw,66px); height: auto; }
+.ge-home-body { display: grid; grid-template-columns: minmax(0, 1.26fr) minmax(0,1fr); gap: clamp(24px,4.45vw,64px); }
+.ge-home-portrait { margin: 0; }
+.ge-home-portrait .idol-geenius-photo-button, .ge-home-portrait img, .ge-home-mv img { display: block; width: 100%; height: auto; }
+.ge-home-portrait figcaption, .ge-home-sleeve, .ge-home-accounts { font-size: 13px; color: #c8c8c3; }
+.ge-home-portrait figcaption { margin-top: 6px; }
+.ge-home-profile :is(figcaption a,.ge-home-sleeve,.ge-home-accounts a) { text-decoration: underline; text-underline-offset: .25em; }
+.ge-home-copy .ge-home-mv { padding: 0; margin: 0; }
+.ge-home-mv h2 { margin: 0; line-height: 1; }
+.ge-home-mv h2 a { display: flex; flex-direction: column; text-decoration: none; }
+.ge-home-mv h2 a > span { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 12px; color: #f6f5e8; font: 700 clamp(30px,3.1vw,45px)/1.2 GeeniusSans,sans-serif; letter-spacing: -.055em; }
+.ge-home-mv h2 small { font: 400 13px/1.45 GeeniusSans,GeeniusText,sans-serif; letter-spacing: normal; }
+.ge-home-mv h2 a:hover > span { text-decoration: underline; }
+.ge-home-sleeve { display: inline-block; margin-top: 10px; }
+.ge-home-copy > p { margin: 30px 0 22px; font: 400 clamp(15px,1.2vw,17px)/1.7 GeeniusSans,GeeniusText,sans-serif; }
+.ge-home-accounts summary { cursor: pointer; width: fit-content; }
+.ge-home-accounts nav { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 10px; }
+@media (max-width: 700px) {
+  [data-idol-geenius-native] { padding-inline: 16px; }
+  .ge-home-body { grid-template-columns: minmax(0,1fr); gap: 18px; }
+  .ge-home-copy > p { margin-block: 20px 14px; }
+}

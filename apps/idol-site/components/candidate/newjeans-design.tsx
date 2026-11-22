@@ -1,7 +1,7 @@
 'use client';
 import {MemberWorkIdentityPhoto} from '@/components/member-work-identity-photo';
 import {ArtistWorkPreview} from '@/components/app-image-presentation';
-import {ArtistInformation,ArtistHomeTimeline} from '@/components/artist-information';
+import {ArtistInformation,ArtistHomeTimeline,ArtistIntroduction} from '@/components/artist-information';
 
 import {MvPhotoReference} from '@/components/mv-photo-reference';
 import {useEffect,useMemo,useState,useSyncExternalStore,type ReactNode} from 'react';
@@ -11,6 +11,8 @@ import {MemberPublicCredits} from '@/components/public-work-credits';
 import {MemberCareerFacts} from '@/components/member-career-facts';
 import {MemberPhysicalFacts} from '@/components/member-physical-facts';
 import {PhotoLightbox} from '@/components/photo-lightbox';
+import {OriginalPhotoLink} from '@/components/original-photo-link';
+import {artistMvHref} from '@/lib/idol/artist-mv-link';
 import {useArtistScroll} from '@/components/use-artist-scroll';
 import {newArtistHistoryState} from '@/lib/idol/timeline/history-state';
 import {artistCatalogHeaders, catalogReadWithDeadline} from '@/lib/idol/catalog-read-deadline';
@@ -45,7 +47,11 @@ function Image({assetKey,priority=false}:{assetKey:string;priority?:boolean}){co
 function Link({href,children,primary=false,external=false,focusKey}:{href:string;children:ReactNode;primary?:boolean;external?:boolean;focusKey?:string}){return <a className={`nj-button${primary?' nj-primary':''}`} href={href} data-member-work-trigger={focusKey} {...(external?{target:'_blank',rel:'noopener noreferrer'}:{})}>{children}</a>;}
 function Title({cn,en}:{cn:string;en:string}){return <div className="nj-title"><h2>{cn}</h2><p>{en}</p></div>;}
 type PublicMember=typeof data.members[number];
-const groupPhotoSource = data.assets.find(asset => asset.key === 'hero')?.sourceUrl;
+const debutImages = '/artist/newjeans/debut';
+const debutArchive = 'https://web.archive.org/web/20220724172456/https://newjeans.kr/';
+const debutVideo = data.media.find(media =>
+ media.kind === 'mv' && media.id === 'recvxyOz5X2J0A' && videoId(media.sourceUrl) === 'js1CtxSY38I'
+);
 const howSweetOriginal = '/artist/newjeans/how-sweet/official-cards.jpg';
 const howSweetSource = 'https://www.newjeans.jp/news/eefrjs';
 const campaignPortraits: Record<string, string> = {
@@ -121,6 +127,10 @@ export default function NewJeansDesign({content}:{content:CandidateContent}){
 <MemberCareerFacts member={m} part="sources"/>
 <div className="nj-adjacent">{!historical&&current.length>1?[-1,1].map((step)=>{const next=current[(index+step+current.length)%current.length];return <Link key={step} href={memberHref(next.id)}>{step<0?'上一位':'下一位'} · {next.cn}</Link>;}):<button className="nj-button" onClick={()=>navigate({section:'members',member:null})}>回到成员与历史成员</button>}</div>
 </>;}
+ const overview = !route.member && !detail.requested && route.section === 'overview';
+ const debutHref = overview && debutVideo
+  ? artistMvHref(state.data, content.groupId, debutVideo.sourceUrl, returnTo, debutVideo.id)
+  : null;
  const rows=artistWorkRows(works,route.queue,route.search).filter(w=>route.format==='stage'?!!(w.stage||w.stageSupplement?.alternatives.length):route.format==='mv'?!!w.url:true);
  return <ImageRecoveryProvider><div className="nj-site" onClick={event=>{
    if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
@@ -129,12 +139,33 @@ export default function NewJeansDesign({content}:{content:CandidateContent}){
    const destination=new URL(anchor.href,window.location.href);
    if(destination.origin!==window.location.origin||destination.pathname!==PATH||destination.hash)return;
    event.preventDefault();navigate(artistRoute(destination.href),false,destination.pathname+destination.search);
-  }}><header className="nj-header"><div className="nj-brand"><a href={PATH} aria-label="NewJeans 首页"><Image assetKey="logo"/></a><span>成员 · 作品 · 影像</span></div><nav aria-label="NewJeans 导航">{nav.map(([section,label])=><button key={section} className="nj-button" aria-current={(route.member?'members':detail.requested||route.section==='records'?'works':route.section)===section?'page':undefined} onClick={()=>navigate({section,member:null})}>{label}</button>)}</nav></header><main id="artist-content" className="nj-main">{state.loading?<p role="status">正在读取资料…</p>:state.error?<div role="alert"><p>{state.error}</p><button className="nj-button" onClick={()=>host.onRetry?host.onRetry():window.location.reload()}>重新加载</button></div>:detail.requested?(detail.release?releasePage(detail.release):detail.media?stagePage(detail.media):<div><p>未找到这条公开资料。</p><Link href={`${PATH}?section=works`}>返回作品库</Link></div>):route.member?(selected&&publicSelected?memberPage(selected,publicSelected):<p>未找到这位关联成员。<a href={`${PATH}?section=members`}>返回成员</a></p>):<>{route.section==='overview'&&<>
-<figure className="nj-hero-photo">
- <Image assetKey="hero" priority/>
- {groupPhotoSource && <figcaption className="nj-photo-credit"><a href={groupPhotoSource} target="_blank" rel="noopener noreferrer">日本官网四人资料照 · 拍摄日期未公开</a></figcaption>}
-</figure>
-<h1>NewJeans</h1>
+  }}>
+  <header className="nj-header">
+   <div className="nj-brand"><a href={PATH} aria-label="NewJeans 首页">
+    <img src={debutImages+'/nj.png'} alt="" width={66} height={56}/><span>NewJeans</span>
+   </a></div>
+   <nav aria-label="NewJeans 导航">{nav.map(([section,label])=>
+    <button key={section} className="nj-button" aria-current={(route.member?'members':detail.requested||route.section==='records'?'works':route.section)===section?'page':undefined} onClick={()=>navigate({section,member:null})}>{label}</button>
+   )}</nav>
+  </header>
+  <main id="artist-content" className="nj-main">
+  {overview && <section className="nj-debut-opening" aria-labelledby="nj-debut-name">
+   <figure className="nj-hero-photo">
+    <OriginalPhotoLink href={debutImages+'/five-original.jpg'} aria-label="查看团体原图" onOpen={src=>setLightbox({src,label:'NewJeans · 2022 年 7 月出道五人团照'})}>
+     <ReliableImage src={debutImages+'/group.webp'} identityKey="newjeans-debut-day-one" alt="NewJeans 五位出道成员在蓝天下围成一圈" width={1300} height={867} priority/>
+    </OriginalPhotoLink>
+    <figcaption className="nj-debut-credit">
+     <span>2022 年 7 月 · 出道五人团照</span>
+     <details><summary>照片出处</summary><a href={debutArchive} target="_blank" rel="noopener noreferrer">NewJeans 韩国官网 · Day 1 相册</a></details>
+    </figcaption>
+   </figure>
+   <div className="nj-debut-identity">
+    <h1 id="nj-debut-name"><img src={debutImages+'/identity.webp'} alt="NewJeans" width={860} height={452}/></h1>
+    <ArtistIntroduction slug="newjeans"/>
+    {debutHref && debutVideo && <a className="nj-debut-watch" data-member-work-trigger={debutVideo.id} href={debutHref}><span aria-hidden="true">▶</span> Attention · 观看 MV</a>}
+   </div>
+  </section>}
+  {state.loading?<p role="status">正在读取资料…</p>:state.error?<div role="alert"><p>{state.error}</p><button className="nj-button" onClick={()=>host.onRetry?host.onRetry():window.location.reload()}>重新加载</button></div>:detail.requested?(detail.release?releasePage(detail.release):detail.media?stagePage(detail.media):<div><p>未找到这条公开资料。</p><Link href={`${PATH}?section=works`}>返回作品库</Link></div>):route.member?(selected&&publicSelected?memberPage(selected,publicSelected):<p>未找到这位关联成员。<a href={`${PATH}?section=members`}>返回成员</a></p>):<>{route.section==='overview'&&<>
 <ArtistInformation slug="newjeans" catalog={state.data}/>
 <section className="nj-section">{roster}</section>
 <section className="nj-section"><Title cn="MV" en="Music videos"/><div className="nj-media-grid">{data.media.filter(m=>m.kind==='mv').slice(0,2).map(mediaCard)}</div></section>
@@ -142,5 +173,5 @@ export default function NewJeansDesign({content}:{content:CandidateContent}){
 <ArtistHomeTimeline slug="newjeans" catalog={state.data}/>
 {historyBlock}
 <button className="nj-button nj-timeline-link" onClick={()=>navigate({section:'updates',member:null})}>从最初开始 · 时间轴</button>
-</>}{route.section==='members'&&<>{roster}{historyBlock}</>}{(route.section==='works'||route.section==='records')&&<><Title cn="作品库" en="Discography & films"/><div className="nj-library-nav"><a href="#newjeans-videos">MV 与舞台</a><a href="#newjeans-releases">唱片发行</a><a href="#newjeans-records">我的观看记录</a></div><section className="nj-section" id="newjeans-videos"><Title cn="MV" en="Music videos"/><div className="nj-media-grid">{data.media.filter(m=>m.kind==='mv').map(mediaCard)}{works.filter(w=>w.url&&!data.media.some(m=>m.kind==='mv'&&m.id===w.id&&m.sourceUrl===w.url)).map(w=>productionWork(w))}</div></section><section className="nj-section"><Title cn="舞台" en="Stage"/><div className="nj-media-grid">{data.media.filter(m=>m.kind==='stage').map(mediaCard)}</div></section><div id="newjeans-releases" className="nj-release-grid">{data.releases.map(releaseCard)}</div><section className="nj-section" id="newjeans-records"><Title cn="我的观看记录" en="My collection"/><p>MV 均分 {formatScore(collection?.mv.mean??null)} · 舞台均分 {formatScore(collection?.stage.mean??null)}</p><div className="nj-filters"><input aria-label="搜索本团作品" placeholder="搜索歌曲或版本" value={route.search} onChange={e=>navigate({search:e.target.value},true)}/>{queues.map(([key,label])=><button key={key} className="nj-button" aria-pressed={route.queue===key} onClick={()=>navigate({queue:key})}>{label}</button>)}{[['all','全部'],['mv','MV'],['stage','可看舞台']].map(([key,label])=><button className="nj-button" key={key} aria-pressed={route.format===key} onClick={()=>navigate({format:key})}>{label}</button>)}</div><div className="nj-media-grid">{rows.map(w=>productionWork(w,route.format==='stage'))}</div>{!rows.length&&<p>没有符合条件的作品。</p>}</section></>}{route.section==='updates'&&<section className="nj-timeline-shell"><Title cn="时间轴" en="Timeline"/><p className="nj-timeline-order">最早在先 · 升序</p><ArtistTimelineHost groupId={content.groupId} catalog={state.data} loading={state.loading} error={state.error} onRetry={host.onRetry}/></section>}</>}</main><footer className="nj-footer"><h3>NewJeans</h3><p>成员 · 作品 · 影像</p><Link href="https://www.newjeans.jp/" external>日本官网 ↗</Link><a className="nj-index-link" href="/?view=groups">返回团体索引</a></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}</div><ImageRecoveryControls/></ImageRecoveryProvider>;
+</>}{route.section==='members'&&<>{roster}{historyBlock}</>}{(route.section==='works'||route.section==='records')&&<><Title cn="作品库" en="Discography & films"/><div className="nj-library-nav"><a href="#newjeans-videos">MV 与舞台</a><a href="#newjeans-releases">唱片发行</a><a href="#newjeans-records">我的观看记录</a></div><section className="nj-section" id="newjeans-videos"><Title cn="MV" en="Music videos"/><div className="nj-media-grid">{data.media.filter(m=>m.kind==='mv').map(mediaCard)}{works.filter(w=>w.url&&!data.media.some(m=>m.kind==='mv'&&m.id===w.id&&m.sourceUrl===w.url)).map(w=>productionWork(w))}</div></section><section className="nj-section"><Title cn="舞台" en="Stage"/><div className="nj-media-grid">{data.media.filter(m=>m.kind==='stage').map(mediaCard)}</div></section><div id="newjeans-releases" className="nj-release-grid">{data.releases.map(releaseCard)}</div><section className="nj-section" id="newjeans-records"><Title cn="我的观看记录" en="My collection"/><p>MV 均分 {formatScore(collection?.mv.mean??null)} · 舞台均分 {formatScore(collection?.stage.mean??null)}</p><div className="nj-filters"><input aria-label="搜索本团作品" placeholder="搜索歌曲或版本" value={route.search} onChange={e=>navigate({search:e.target.value},true)}/>{queues.map(([key,label])=><button key={key} className="nj-button" aria-pressed={route.queue===key} onClick={()=>navigate({queue:key})}>{label}</button>)}{[['all','全部'],['mv','MV'],['stage','可看舞台']].map(([key,label])=><button className="nj-button" key={key} aria-pressed={route.format===key} onClick={()=>navigate({format:key})}>{label}</button>)}</div><div className="nj-media-grid">{rows.map(w=>productionWork(w,route.format==='stage'))}</div>{!rows.length&&<p>没有符合条件的作品。</p>}</section></>}{route.section==='updates'&&<section className="nj-timeline-shell"><Title cn="时间轴" en="Timeline"/><p className="nj-timeline-order">最早在先 · 升序</p><ArtistTimelineHost groupId={content.groupId} catalog={state.data} loading={state.loading} error={state.error} onRetry={host.onRetry}/></section>}</>}</main><footer className="nj-footer"><h3><a href={PATH} aria-label="NewJeans 首页"><img src={debutImages+'/nj.png'} width={66} height={56} alt=""/>NewJeans</a></h3><Link href="https://www.newjeans.jp/" external>日本官网 ↗</Link><a className="nj-index-link" href="/?view=groups">返回团体索引</a></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}</div><ImageRecoveryControls/></ImageRecoveryProvider>;
 }

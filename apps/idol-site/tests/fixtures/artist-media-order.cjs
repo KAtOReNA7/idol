@@ -47,7 +47,7 @@ register('katseye', '.ke-work', '.ke-latest-art');
 
 // These home pages also offer individual works and releases before their main lists.
 for (const [slug, video, release] of [
-  ['ive', '.ive-dive-mv', '.ive-dive-sleeve'],
+  ['ive', '.ive-dive-mv', '.ive-period-links a'],
   ['geenius', '.idol-geenius-introduction h2 a', '.idol-geenius-introduction > a[href*="release="]'],
   ['spia', '.sp-hero-actions .sp-button', '.sp-hero-actions .sp-source'],
   ['everglow', '.eg-hero-copy a[href*="work="]', '.eg-hero-copy a[href*="release="]'],

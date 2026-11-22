@@ -138,11 +138,24 @@ export default function CandyshopArtist({content}:{content:CandidateContent}){
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','Through the years')}{timeline()}</>;
  else body=<>
-<section className="cs-opening"><div className="cs-hero-title"><h1>Candy Shop</h1><span>2024 —</span></div><div className="cs-hero-grid"><OriginalPhotoLink className="cs-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'Candy Shop · 官网团体资料照'})}><Picture src={content.hero.image!} alt="Candy Shop 官网四人团体资料照" className="cs-group-photo" priority/></OriginalPhotoLink><div className="cs-intro"><ArtistIntroduction slug="candyshop"/><div className="cs-actions"><Link className="cs-button" to={sectionHref('members')}>认识成员 <Arrow/></Link><Link className="cs-button cs-outline" to={sectionHref('works')}>浏览作品 <Arrow/></Link></div><div className="cs-hero-credit"><span>官网公开资料照 · 拍摄日期未注明</span><a href={content.hero.sourceUrl??undefined} target="_blank" rel="noopener noreferrer">官网资料 ↗</a></div></div></div></section>
+<section className="cs-japan-opening">
+ <OriginalPhotoLink className="cs-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'Candy Shop · 日本官网四人主视觉'})}>
+  <Picture src={content.hero.image!} className="cs-japan-photo" alt="日本官网主视觉中的 Candy Shop 四位成员" priority/>
+ </OriginalPhotoLink>
+ <div className="cs-japan-profile">
+  <div className="cs-signature-band">
+   <h1><img src="/artist/candyshop/japan/wordmark.webp" width={980} height={223} alt="Candy Shop"/></h1>
+   <img src="/artist/candyshop/japan/star.svg" width={28} height={28} alt=""/>
+  </div>
+  <div className="cs-japan-bio"><ArtistIntroduction slug="candyshop"/>
+   <a href={content.hero.sourceUrl??undefined} target="_blank" rel="noopener noreferrer">日本官网 ↗</a>
+  </div>
+ </div>
+</section>
 <ArtistInformation slug="candyshop" catalog={state.data}/>
 <section className="cs-home-members">{heading('成员','SORAM · SUI · SARANG · JULIA')}{roster()}<details className="cs-note group-roster-source"><summary>成员照片来源</summary><p>四张成员照片来自官网同一资料页。中文名为本站显示名。</p></details></section>
 <section className="cs-related" data-home-module="mv">{heading("MV","MUSIC VIDEO")}{design.works.filter(v=>v.type==='MV').map(videoRow)}</section>
-<section className="cs-home-records">{heading('唱片','Discography')}<div className="cs-records">{design.releases.map(releaseCard)}</div><Link className="cs-more" to={sectionHref('works')}>全部影像与舞台 <Arrow/></Link></section>
+<section className="cs-home-records">{heading('唱片','Discography')}<div className="cs-records">{design.releases.map(releaseCard)}</div><Link className="cs-more" to={href({section:'works',format:'release',queue:null,release:null,media:null})}>完整发行目录 <Arrow/></Link></section>
 <section className="cs-home-timeline">{heading('时间轴')}{timeline(true)}<Link className="cs-more" to={sectionHref('updates')}>完整时间轴 <Arrow/></Link></section>
 </>;
  return <Navigation.Provider value={go}><ImageRecoveryProvider><div data-cs-native><a className="cs-skip" href="#artist-content">跳到正文</a><header className="cs-masthead"><Link className="cs-wordmark" to={path}><img src="/artist/candyshop/identity/official-mark.svg" alt="Candy Shop" width={119} height={27} style={{display:'inline-block',verticalAlign:'middle'}}/></Link><nav aria-label="团体内容">{nav.map(([key,label])=><a key={key} href={sectionHref(key)} aria-current={(route.section==='records'?'works':route.section)===key?'page':undefined} onClick={e=>go(e,sectionHref(key))}>{label}</a>)}</nav></header><main id="artist-content" tabIndex={-1}>{body}</main><footer className="cs-footer"><Link className="cs-wordmark" to={path}><img src="/artist/candyshop/identity/official-mark.svg" alt="Candy Shop" width={119} height={27} style={{display:'inline-block',verticalAlign:'middle'}}/></Link><div><a href="https://candy-shop.jp/" target="_blank" rel="noopener noreferrer">日本官网 ↗</a><a href="/?view=groups">团体索引 <Arrow/></a></div></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}<ImageRecoveryControls/></div></ImageRecoveryProvider></Navigation.Provider>;

@@ -44,3 +44,69 @@
   .nj-site .nj-roster { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .nj-site .nj-history { grid-template-columns: minmax(0, calc((100% - 48px)/4)) minmax(0, 1fr); }
 }
+
+/* The July 2022 Korean site pairs its NJ navigation icon with an orange
+   signature and illustrated lineup against a sky-blue field. */
+.nj-site {
+  --nj-paper: #e4effa;
+  --nj-ink: #152748;
+  --nj-muted: #42597a;
+  --nj-line: #97aac7;
+  --nj-accent: #24365b;
+  background: linear-gradient(152deg, #d7e9fc 0, var(--nj-paper) 62rem);
+}
+.nj-site .nj-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 76px;
+  padding: 12px clamp(16px, 4.1vw, 60px);
+  background: transparent;
+}
+.nj-header .nj-brand { margin: 0; }
+.nj-header .nj-brand a, .nj-footer h3 a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: auto;
+  height: auto;
+  min-height: 44px;
+}
+.nj-header .nj-brand img, .nj-footer h3 img { width: 36px; height: auto; }
+.nj-header .nj-brand span { color: var(--nj-ink); font-size: 26px; font-weight: 850; letter-spacing: -.05em; }
+.nj-header nav { display: flex; align-items: center; gap: clamp(12px, 2vw, 34px); }
+.nj-header nav .nj-button { width: auto; min-height: 44px; padding: 7px 5px; background: transparent; border: 0; border-radius: 0; font-weight: 700; }
+.nj-header nav .nj-button[aria-current=page] { background: transparent; color: #a13717; text-decoration: underline 2px; text-underline-offset: .48em; }
+.nj-main { padding: clamp(22px, 2.35vw, 34px) clamp(16px, 4.1vw, 60px) 64px; }
+.nj-debut-opening {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(18px, 2.5vw, 36px);
+}
+.nj-hero-photo > a, .nj-hero-photo > a img { display: block; width: 100%; height: auto; }
+.nj-hero-photo > a { cursor: zoom-in; }
+.nj-debut-credit { display: flex; gap: 6px 16px; flex-wrap: wrap; align-items: baseline; margin-top: 9px; font-size: 13px; color: var(--nj-muted); }
+.nj-debut-credit summary { cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
+.nj-debut-credit a { display: inline-block; padding-block: 5px; text-decoration: underline; }
+.nj-debut-identity { display: flex; flex-direction: column; gap: clamp(16px, 1.6vw, 23px); align-items: flex-start; }
+.nj-debut-identity h1, .nj-debut-identity h1 img { display: block; width: 100%; height: auto; }
+.nj-debut-identity > p { font-size: clamp(15px, 1.3vw, 19px); line-height: 1.75; }
+.nj-debut-identity > p .group-intro-label { display: none; }
+.nj-site .nj-debut-watch { display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 9px 19px; border-radius: 3px; background: var(--nj-accent); color: #fff; font-weight: 750; }
+.nj-debut-watch:hover { text-decoration: underline; text-underline-offset: .2em; }
+.nj-site .nj-footer { background: #cfdeef; }
+.nj-footer h3 { margin-bottom: 12px; }
+@media (max-width: 700px) {
+  .nj-site .nj-header { min-height: 60px; gap: 6px; padding-block: 6px; }
+  .nj-header .nj-brand a { gap: 6px; }
+  .nj-header .nj-brand img { width: 30px; }
+  .nj-header .nj-brand span { font-size: 20px; }
+  .nj-header nav { gap: clamp(2px, 2vw, 9px); }
+  .nj-header nav .nj-button { font-size: 13px; padding-inline: 4px; }
+  .nj-main { padding-top: 22px; }
+  .nj-debut-opening { grid-template-columns: minmax(0, 1fr); gap: 19px; }
+  .nj-debut-identity { gap: 14px; }
+  .nj-debut-credit { font-size: 12px; }
+}

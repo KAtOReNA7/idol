@@ -9,6 +9,8 @@ export function reviewedEditorialWorkId(groupId: string, id: string) {
 
 // Checked public MV identities used while the live catalog is loading. A loaded catalog always wins.
 const verifiedPublicMv: Readonly<Record<string,string>> = {
+  // newjeans
+  "recvxyEBDZ9qVl:js1CtxSY38I": "recvxyOz5X2J0A",
   // cherrybullet
   "recvxyEBDZm40w:85h-tVHNasg": "recvxyH5pza4kq",
   "recvxyEBDZm40w:sXQ3c2TAbH8": "recvxyH5pzU0qX",

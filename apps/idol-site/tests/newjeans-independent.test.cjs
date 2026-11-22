@@ -11,6 +11,8 @@ function component(url,catalog){const out={};const code=ts.transpileModule(sourc
  if(name==='react/jsx-runtime')return require('react/jsx-runtime');
  if(name.endsWith('.json'))return data;
  if(name.endsWith('artist-preview'))return preview;
+ if(name.endsWith('artist-mv-link'))return require('./helpers/public-artist-loader.cjs')('lib/idol/artist-mv-link.ts');
+ if(name.endsWith('original-photo-link'))return require('./helpers/public-artist-loader.cjs')('components/original-photo-link.tsx');
  if(name.endsWith('member-affiliation'))return affiliation;
  if(name.endsWith('artist-navigation'))return load('lib/idol/artist-navigation.ts');
  if(name.endsWith('/values'))return load('lib/idol/values.ts');
@@ -41,8 +43,19 @@ test('home and member directory credit the photos they actually contain', () => 
  const directory = render('/artists/newjeans?section=members');
  const groupPhoto = home.match(/<figure class="nj-hero-photo">([\s\S]*?)<\/figure>/)?.[1];
  assert.ok(groupPhoto);
- assert.match(groupPhoto, /<img [^>]*src="[^"]*\/hero-[^"]+"[^>]*\/><figcaption [^>]*><a href="https:\/\/www\.newjeans\.jp\/profile\/"[^>]*>日本官网四人资料照 · 拍摄日期未公开<\/a>/);
- assert.doesNotMatch(directory, /日本官网四人资料照/);
+ assert.match(groupPhoto, /<a [^>]*href="\/artist\/newjeans\/debut\/five-original\.jpg"[^>]*>/);
+ assert.ok(groupPhoto.includes('aria-haspopup="dialog"'));
+ assert.match(groupPhoto, /src="\/artist\/newjeans\/debut\/group\.webp"/);
+ assert.ok(groupPhoto.includes('2022 年 7 月 · 出道五人团照'));
+ assert.ok(groupPhoto.includes('https://web.archive.org/web/20220724172456/https://newjeans.kr/'));
+ assert.match(home, /<h1 id="nj-debut-name"><img[^>]*identity\.webp" alt="NewJeans"/);
+ assert.doesNotMatch(directory, /出道五人团照|debut\/group\.webp/);
+ const live=fixture();
+ live.works=[{id:'recvxyOz5X2J0A',groupIds:[data.groupId],song:'Attention',url:'https://www.youtube.com/watch?v=js1CtxSY38I'}];
+ const watch = render('/artists/newjeans',live).match(/<a class="nj-debut-watch"[^>]+>/)?.[0];
+ assert.ok(watch?.includes('work=recvxyOz5X2J0A') && watch?.includes('returnTo=%2Fartists%2Fnewjeans'));
+ live.works[0].url='https://www.youtube.com/watch?v=jj-pXlyKrSs';
+ assert.doesNotMatch(render('/artists/newjeans',live), /class="nj-debut-watch"/);
  for (const html of [home, directory]) {
   const roster = html.match(/<figure class="nj-roster-photos">([\s\S]*?)<\/figure>/)?.[1];
   assert.ok(roster);

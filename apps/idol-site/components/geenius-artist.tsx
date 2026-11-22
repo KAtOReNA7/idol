@@ -138,8 +138,29 @@ export default function GeeniusArtist({content}:{content:CandidateContent}){
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','OUR YEARS')}{timeline()}</>;
  else body=<>
-<section className="idol-geenius-opening"><h1 className="idol-geenius-hero-title">GEENIUS</h1><figure className="idol-geenius-group"><OriginalPhotoLink className="idol-geenius-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'Geenius · HOMe 官网团体照片'})}><Picture src={content.hero.image!} alt="Geenius · HOMe 官网五人合照" priority/></OriginalPhotoLink><figcaption className="idol-geenius-caption">{content.hero.caption} · 点击查看原图</figcaption></figure><div className="idol-geenius-introduction"><h2>{voyageMv&&<Link to={videoHref(voyageMv)}>Voyage <small>官方 MV ↗</small></Link>}</h2>
-{voyageRelease&&<Link className="idol-geenius-text-link" to={releaseHref(voyageRelease)}>Voyage · 2024 单曲发行 <Arrow/></Link>}<div className="idol-geenius-about"><p data-home-introduction="geenius"><span className="group-intro-label">团体介绍</span>Geenius 的五位成员是芮英、始温、米卡、佐伊与安达米罗。<br/>她们以首支单曲《Voyage》出道，并共同参与了这首歌的韩语歌词创作。</p></div><nav className="idol-geenius-socials" aria-label="官方链接"><a href="https://www.youtube.com/@geenius_official" target="_blank" rel="noopener noreferrer">YOUTUBE ↗</a><a href="https://www.instagram.com/geenius_official/" target="_blank" rel="noopener noreferrer">INSTAGRAM ↗</a><a href="https://x.com/geeniusofficial" target="_blank" rel="noopener noreferrer">X_OFFICIAL ↗</a><a href="https://x.com/geenius_members" target="_blank" rel="noopener noreferrer">X_MEMBERS ↗</a><a href="https://www.tiktok.com/@geenius.official" target="_blank" rel="noopener noreferrer">TIKTOK ↗</a></nav></div></section>
+<section className="ge-home-profile">
+ <header className="ge-home-title"><h1><img src="/artist/geenius/identity/official-mark.png" alt="" width={66} height={66}/>GEENIUS,</h1></header>
+ <div className="ge-home-body">
+  <figure className="ge-home-portrait">
+   <OriginalPhotoLink className="idol-geenius-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'Geenius · HOMe 官网五人团照'})}><Picture src={content.hero.image!} alt="HOMe 艺人页上的 Geenius 五人团照" priority/></OriginalPhotoLink>
+   <figcaption><a href={content.hero.sourceUrl??undefined} target="_blank" rel="noopener noreferrer">HOMe 艺人官网 ↗</a></figcaption>
+  </figure>
+  <div className="ge-home-copy">
+   {voyageMv&&<article className="ge-home-mv idol-geenius-introduction" data-video-key={voyageMv.key}>
+    <h2><Link to={videoHref(voyageMv)}><span>Voyage <small>官方 MV ↗</small></span><Picture src={voyageMv.preview} alt="Voyage 官方 MV 封面"/></Link></h2>
+    {voyageRelease&&<Link className="ge-home-sleeve" to={releaseHref(voyageRelease)}>2024 单曲发行 ↗</Link>}
+   </article>}
+   <p data-home-introduction="geenius"><span className="group-intro-label">团体介绍</span>Geenius 的五位成员是芮英、始温、米卡、佐伊与安达米罗。她们以首支单曲《Voyage》出道，并共同参与了这首歌的韩语歌词创作。</p>
+   <details className="ge-home-accounts"><summary>官方社交账号</summary><nav aria-label="官方社交账号">
+    <a href="https://www.youtube.com/@geenius_official" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+    <a href="https://www.instagram.com/geenius_official/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+    <a href="https://x.com/geeniusofficial" target="_blank" rel="noopener noreferrer">X · 团体 ↗</a>
+    <a href="https://x.com/geenius_members" target="_blank" rel="noopener noreferrer">X · 成员 ↗</a>
+    <a href="https://www.tiktok.com/@geenius.official" target="_blank" rel="noopener noreferrer">TikTok ↗</a>
+   </nav></details>
+  </div>
+ </div>
+</section>
 <ArtistInformation slug="geenius" catalog={state.data}/>
 <section className="idol-geenius-home-members" aria-label="成员">{roster()}<Link className="idol-geenius-more" to={sectionHref('members')}>认识五位成员 <Arrow/></Link><details className="idol-geenius-roster-note group-roster-source"><summary>成员照片来源</summary><p>HOMe 官网五人名册 · 原图拍摄时期未注明。中文名为转写，不作为官方本名。</p></details></section>
 <section className="idol-geenius-home-videos">{heading('影像','Film')}{videos(design.works.filter(v=>v.title==='Voyage'))}<div className="idol-geenius-interactive-heading"><h3>I.L.Y</h3><p>同一首歌，五个成员视角。<br/>选择一个版本，进入她的画面。</p></div>{videos(design.works.filter(v=>v.title==='I.L.Y'))}</section>

@@ -64,30 +64,43 @@ test('home hero links open the exact MV before the original release in reading a
     const hero = groups.get(slug).hero;
     const query = {section:'overview'};
     const pages = [await renderArtist(group,query,null,{loading:true}),await renderArtist(group,query)];
-    for (const html of pages) {
+    for (const [index,html] of pages.entries()) {
       const document = parse(html);
       const mv = document.querySelector(hero.video);
       const release = document.querySelector(hero.release);
-      assert.ok(mv && release, slug+' must offer both destinations');
+      const loadingArtistProfile=slug==='ive'&&index===0;
+      assert.ok(mv,slug+' must offer its featured video');
+      if(loadingArtistProfile){
+        assert.equal(document.querySelector('.ive-artist-name h1').text,'IVE');
+        assert.equal(release,null,'period navigation loads below the artist and members');
+      }else assert.ok(release,slug+' must offer its release destination');
       const firstWork = document.querySelector('main').querySelectorAll('a[href]').find(link=>{
         const url = new URL(link.getAttribute('href'),'https://site.invalid');
         return ['work','media','release'].some(key=>url.searchParams.has(key));
       });
       assert.equal(firstWork,mv,slug+' first individual work or release action');
       const links = document.querySelectorAll('a[href],button');
-      assert.ok(links.indexOf(mv) >= 0 && links.indexOf(mv) < links.indexOf(release), slug+' hero order');
-      for (const link of [mv,release]) {
+      assert.ok(links.indexOf(mv) >= 0 && (loadingArtistProfile||links.indexOf(mv) < links.indexOf(release)), slug+' hero order');
+      for (const link of [mv,release].filter(Boolean)) {
         assert.equal(link.tagName,'A');
         assert.equal(link.getAttribute('target'),undefined);
         assert.equal(link.getAttribute('tabindex'),undefined);
       }
       assert.ok(mv.text.includes(title) && mv.text.includes('MV'), slug+' identifies its video');
-      assert.equal(mv.querySelector('img'),null, slug+' keeps the album art on the release');
+      if(slug==='geenius'){
+        const source=require('../data/geenius-native-design.json').works.find(video=>video.type==='MV'&&video.id===workId);
+        assert.equal(source.videoId,'KnoZi2E7RDw');
+        const art=mv.querySelector('img');
+        assert.equal(art.getAttribute('src'),source.preview);
+        assert.match(art.getAttribute('alt'),/Voyage.*MV/);
+        assert.notEqual(source.preview,require('../data/geenius-native-design.json').releases.find(item=>item.key===releaseId).cover);
+      }else assert.equal(mv.querySelector('img'),null, slug+' keeps the album art on the release');
       const watch = new URL(mv.getAttribute('href'),'https://site.invalid');
       assert.equal(watch.origin,'https://site.invalid');
       assert.equal(watch.pathname,'/');
       assert.equal(watch.searchParams.get('work'),workId);
       assert.equal(watch.searchParams.get('returnTo'),group.path+'?section=overview');
+      if(loadingArtistProfile)continue;
       const album = new URL(release.getAttribute('href'),'https://site.invalid');
       assert.equal(album.pathname,group.path);
       assert.equal(album.searchParams.get('release'),releaseId);

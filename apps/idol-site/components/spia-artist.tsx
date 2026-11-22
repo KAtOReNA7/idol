@@ -134,16 +134,31 @@ export default function SpiaArtist({content}:{content:CandidateContent}){
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','TIMELINE')}{timeline()}<p className="sp-note">SPIA 目前的活动状态不详。</p></>;
  else body=<>
-<section className="sp-hero"><div className="sp-hero-copy"><h1>SPIA<span>수피아</span></h1><ArtistIntroduction slug="spia"/><div className="sp-hero-actions">
- {debutMv&&<Link className="sp-button" to={videoHref(debutMv)}>观看 Daddy’s Little Girl 官方 MV <Arrow/></Link>}
- {summerSingle&&<Link className="sp-source" to={releaseHref(summerSingle)}>Deeeep 单曲发行详情</Link>}
-</div></div><figure className="sp-hero-photo"><OriginalPhotoLink className="sp-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'SPIA · Deeeep 宣传照'})}><Picture src={content.hero.image!} alt="SPIA 五人 · Deeeep 官方宣传照" priority/></OriginalPhotoLink><figcaption>DEEEEP · 2024.06.05<br/>Campus Entertainment 提供 / KBS 刊载</figcaption></figure></section>
+<section className="sp-marquee">
+ <header className="sp-marquee-title"><img src="/artist/spia/identity/official-mark.png" alt="" width={51} height={56}/><h1>SPIA <span lang="ko">수피아</span></h1></header>
+ <div className="sp-promo-spread">
+  <figure className="sp-marquee-photo">
+   <OriginalPhotoLink className="sp-photo-button" aria-label="查看团体原图" href={originalPhoto(content.hero.image!)} onOpen={src=>setLightbox({src,label:'SPIA · Deeeep 五人宣传照'})}><Picture src={content.hero.image!} alt="SPIA 在《Deeeep》宣传照中的五位成员" priority/></OriginalPhotoLink>
+   <figcaption>《Deeeep》五人宣传照 · <a href={content.hero.sourceUrl??undefined} target="_blank" rel="noopener noreferrer">Campus Entertainment / KBS ↗</a></figcaption>
+  </figure>
+  <figure className="sp-marquee-art">
+   <img className="sp-official-illustration" src="/artist/spia/deeeep/five-illustrations.webp" width={880} height={457} alt="《Deeeep》发行插画中的五位成员"/>
+   <figcaption>《Deeeep》发行插画</figcaption>
+  </figure>
+ </div>
+ <div className="sp-program">
+  <ArtistIntroduction slug="spia"/>
+  <div className="sp-hero-actions">
+   {debutMv&&<Link className="sp-button" to={videoHref(debutMv)}>观看 Daddy’s Little Girl 官方 MV <Arrow/></Link>}
+   {summerSingle&&<Link className="sp-source" to={releaseHref(summerSingle)}>Deeeep 单曲发行详情</Link>}
+  </div>
+ </div>
+</section>
 <ArtistInformation slug="spia" catalog={state.data}/>
 <section className="sp-home-members" aria-label="成员">{heading('认识她们','MEMBERS')}{roster()}<details className="sp-roster-note group-roster-source"><summary>2024 年出道阵容与照片来源</summary><p>2024 年出道五人阵容。照片为 Kprofiles 的具名转载；中文名为艺名转写。</p></details></section>
-<section className="sp-section">{heading('从影像到舞台','FILMS')}{videos(design.works)}</section>
-<section className="sp-section">{heading('两次相遇','DISCOGRAPHY')}{releases()}</section>
-<section className="sp-section">{heading('一起走过的日子','TIMELINE')}{timeline()}</section>
-<div className="sp-intro-line"><span>樹 · 翍 · 娥</span><p>在树木之间展开翅膀的美丽精灵。<br/>五位成员，两张单曲，一个从 2024 年开始的故事。</p><a href="https://music.bugs.co.kr/album/4099720" target="_blank" rel="noopener noreferrer">认识 SPIA ↗</a></div>
+<section className="sp-section">{heading('MV 与舞台','FILMS')}{videos(design.works)}</section>
+<section className="sp-section">{heading('专辑','DISCOGRAPHY')}{releases()}</section>
+<section className="sp-section">{heading('时间轴','TIMELINE')}{timeline()}</section>
 </>;
  return <Navigation.Provider value={go}><ImageRecoveryProvider><div data-idol-spia-native><a className="sp-skip" href="#artist-content">跳到正文</a><header className="sp-masthead"><div className="sp-header-inner"><Link className="sp-wordmark" to={path}><img src="/artist/spia/identity/official-mark.png" alt="" width={28} height={31} style={{display:'inline-block',verticalAlign:'middle'}}/> SPIA<small>수피아</small></Link><nav aria-label="团体内容">{nav.map(([key,label,en])=><Link key={key} to={sectionHref(key)} className={(route.section==='records'?'works':route.section)===key?'is-current':''}><span>{label}</span><small>{en}</small></Link>)}</nav></div></header><main id="artist-content" tabIndex={-1}>{body}</main><footer className="sp-footer"><Link className="sp-wordmark" to={path}><img src="/artist/spia/identity/official-mark.png" alt="" width={28} height={31} style={{display:'inline-block',verticalAlign:'middle'}}/> SPIA<small>수피아</small></Link><div><a href="https://www.youtube.com/@spia_official" target="_blank" rel="noopener noreferrer">SPIA · 官方频道 ↗</a><a href="/?view=groups">团体索引 <Arrow/></a></div></footer>{lightbox&&<PhotoLightbox {...lightbox} onClose={()=>setLightbox(null)}/>}<ImageRecoveryControls/></div></ImageRecoveryProvider></Navigation.Provider>;
 }

@@ -89,3 +89,51 @@ export async function checkGroupIndexContent(tab,{site=formal,timeoutMs=20000}={
   const homeMatches=home.length===5&&home.every(r=>r.lines===1&&!r.hasScore&&cards.some(c=>c.anchor===r.anchor&&c.company===r.company));
   return {ok:all&&homeMatches&&filters.every(f=>f.ok),indexCount:cards.length,cards,filters,home,homeMatches};
 }
+
+const reportedOpenings={
+  bewave:{hero:'.bw-debut-opening',photo:'.bw-debut-photo img',mark:'h1 img',extra:null},
+  candyshop:{hero:'.cs-japan-opening',photo:'.cs-japan-photo',mark:'h1 img',extra:null},
+  geenius:{hero:'.ge-home-profile',photo:'.ge-home-portrait img',mark:'.ge-home-title h1 img',extra:'.ge-home-mv img',video:'.ge-home-mv h2 a',work:'rec28ldfRTrPmh'},
+  newjeans:{hero:'.nj-debut-opening',photo:'.nj-hero-photo img',mark:'#nj-debut-name img',extra:null,video:'.nj-debut-watch',work:'recvxyOz5X2J0A'},
+  spia:{hero:'.sp-marquee',photo:'.sp-marquee-photo img',mark:'.sp-marquee-title>img',extra:'.sp-official-illustration'},
+};
+
+/** Read the actual rendered boxes and decoded sources after navigating in the built-in browser. */
+export async function checkReportedOpenings(tab,{site=formal,slugs=Object.keys(reportedOpenings),timeoutMs=15000}={}){
+  const output=[];
+  for(const slug of slugs){
+    const selectors=reportedOpenings[slug];
+    if(!selectors)throw Error('No reported opening for '+slug);
+    await tab.goto(new URL('/artists/'+slug,site).href);
+    await tab.playwright.locator(selectors.hero).waitFor({state:'visible',timeoutMs});
+    await tab.playwright.locator(selectors.photo).waitFor({state:'visible',timeoutMs});
+    const measure=()=>tab.playwright.evaluate(({slug,selectors})=>{
+      const hero=document.querySelector(selectors.hero);
+      const photo=hero.querySelector(selectors.photo),mark=hero.querySelector(selectors.mark);
+      const extra=selectors.extra?hero.querySelector(selectors.extra):null, width=document.documentElement.clientWidth;
+      function item(el){
+        if(!el)return null;
+        const r=el.getBoundingClientRect();
+        return {src:el.getAttribute('src'),alt:el.alt,width:Math.round(r.width),height:Math.round(r.height),
+          left:Math.round(r.left),right:Math.round(r.right),natural:[el.naturalWidth,el.naturalHeight],
+          fit:getComputedStyle(el).objectFit,decoded:el.complete&&el.naturalWidth>0};
+      }
+      const images=[photo,mark,...(extra?[extra]:[])].map(item);
+      const paragraph=hero.querySelector('[data-home-introduction]'),photoControl=photo.closest('a');
+      const mv=selectors.video?hero.querySelector(selectors.video):null;
+      return {slug,width,images,original:photoControl?.getAttribute('href')??null,
+        featuredMv:mv?.getAttribute('href')??null,accountListClosed:slug==='geenius'?!hero.querySelector('details').open:null,
+        pass:images.length===(selectors.extra?3:2)&&images.every(im=>im&&im.decoded&&im.width>30&&im.height>15&&im.left>=-1&&im.right<=width+1)
+          &&paragraph?.dataset.homeIntroduction===slug&&photoControl?.getAttribute('aria-haspopup')==='dialog'
+          &&(!selectors.work||(!!mv&&new URL(mv.href).searchParams.get('work')===selectors.work))};
+    },{slug,selectors});
+    const deadline=Date.now()+timeoutMs;
+    let row=await measure();
+    while(row.images.some(im=>im&&!im.decoded)&&Date.now()<deadline){
+      await new Promise(resolve=>setTimeout(resolve,150));
+      row=await measure();
+    }
+    output.push(row);
+  }
+  return output;
+}

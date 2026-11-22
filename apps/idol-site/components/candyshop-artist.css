@@ -17,3 +17,29 @@
 @media(max-width:700px){[data-cs-native] main{padding-bottom:36px}[data-cs-native] .cs-intro h2 br{display:block}}
 
 .cs-row-video-preview{display:block;width:180px;max-width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:14px}.cs-row-video-preview img{width:100%;height:100%;object-fit:cover}
+
+/* Japan official site / Figma 1425:1842, 1425:1856. */
+[data-cs-native] { background: #fff8fc; }
+[data-cs-native] .cs-masthead { background: #fff5fd; }
+.cs-japan-opening {
+  max-width: 1200px; margin: clamp(16px,2.2vw,32px) auto 0;
+  display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: clamp(16px,2.15vw,31px); align-items: start;
+}
+.cs-japan-opening .cs-photo-button, .cs-japan-opening .cs-japan-photo { display: block; width: 100%; height: auto; margin: 0; }
+.cs-japan-profile { background: #f6e8fa; color: #39233f; }
+.cs-signature-band { position: relative; display: flex; align-items: center; justify-content: center; min-height: clamp(90px,11vw,161px); padding: 24px; background: #39233f; }
+.cs-signature-band h1 { width: 100%; line-height: 0; }
+.cs-signature-band h1 img { width: 100%; height: auto; display: block; }
+.cs-signature-band > img { position: absolute; right: 21px; bottom: 13px; width: 28px; height: auto; }
+.cs-japan-bio { display: grid; gap: 25px; padding: clamp(18px,2vw,28px) 24px; }
+.cs-japan-bio p { font-size: clamp(15px,1.25vw,18px); line-height: 1.72; }
+.cs-japan-bio a { justify-self: start; text-decoration: underline; text-underline-offset: .22em; font-size: 13px; }
+@media (max-width: 700px) {
+  [data-cs-native] { padding-inline: 16px; }
+  .cs-japan-opening { grid-template-columns: minmax(0,1fr); gap: 12px; }
+  .cs-signature-band { min-height: 78px; justify-content: flex-start; padding: 14px 18px; }
+  .cs-signature-band h1 { width: min(75%,230px); }
+  .cs-signature-band > img { right: 18px; top: 50%; bottom: auto; width: 24px; transform: translateY(-50%); }
+  .cs-japan-bio { padding: 16px 18px; gap: 12px; }
+}

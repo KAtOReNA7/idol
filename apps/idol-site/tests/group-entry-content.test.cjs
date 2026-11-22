@@ -93,5 +93,29 @@ test('each of the 51 actual group home renderers shows exactly one uncollapsed i
       assert.equal(picture.querySelector('figcaption a').getAttribute('href'),'https://enews.imbc.com/News/RetrieveNewsInfo/414368');
       assert.equal(page.querySelector('.bw-roster-source').hasAttribute('open'),false);
     }
+    if(group.slug==='candyshop'){
+      const hero=page.querySelector('.cs-japan-opening');
+      assert.equal(hero.querySelector('h1 img').getAttribute('alt'),'Candy Shop');
+      assert.equal(hero.querySelector('.cs-japan-photo').getAttribute('src'),'/artist/candyshop/japan/artist.webp');
+      assert.match(hero.querySelector('.cs-photo-button').getAttribute('href'),/japan\/artist-original\.jpg$/);
+      assert.doesNotMatch(hero.text,/拍摄日期|认识成员|浏览作品/);
+    }
+    if(group.slug==='geenius'){
+      const hero=page.querySelector('.ge-home-profile');
+      const accounts=hero.querySelector('.ge-home-accounts');
+      assert.equal(accounts.hasAttribute('open'),false);
+      assert.equal(accounts.querySelectorAll('a').length,5);
+      const feature=hero.querySelector('.ge-home-mv h2 a');
+      assert.match(feature.getAttribute('href'),/\bwork=/);
+      assert.match(feature.querySelector('img').getAttribute('src'),/preview-KnoZi2E7RDw\.jpg$/);
+      assert.ok(hero.querySelector('.ge-home-portrait img').getAttribute('alt').includes('五人'));
+    }
+    if(group.slug==='spia'){
+      const hero=page.querySelector('.sp-marquee');
+      assert.equal(hero.querySelector('h1').text.trim(),'SPIA 수피아');
+      assert.equal(hero.querySelector('.sp-official-illustration').getAttribute('src'),'/artist/spia/deeeep/five-illustrations.webp');
+      assert.match(hero.querySelector('figcaption a').getAttribute('href'),/kbs\.co\.kr/);
+      assert.doesNotMatch(page.text,/一起走过的日子|两次相遇|一个从 2024 年开始的故事/);
+    }
   }
 });

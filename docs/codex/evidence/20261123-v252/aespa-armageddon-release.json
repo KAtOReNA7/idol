@@ -1,0 +1,165 @@
+{
+  "versionScope": "v251 目录与 v252 本地发行页",
+  "group": "aespa",
+  "releaseId": "aespa-release-armageddon",
+  "releasePath": "/artists/aespa/releases/armageddon",
+  "directory": "/artists/aespa?section=records",
+  "returnFromRelease": "/artists/aespa?section=records#aespa-release-armageddon",
+  "baseline": {
+    "productionRelease": 251,
+    "directoryHttpStatus": 200,
+    "initialHtml": "目录正文在客户端读取后呈现唱片卡。",
+    "coverPrimaryAction": "https://aespa-official.jp/discography/armageddon/",
+    "sameTabReleaseEntry": 0,
+    "tracksAvailableFromRelease": 0,
+    "originalMvLinksFromTracks": 0
+  },
+  "localImplementation": {
+    "initialHtml": "专辑正文由服务端输出，包括封面、日期、十曲、两条出处和三条作品链接。",
+    "sameTabReleaseEntry": 1,
+    "tracksAvailableFromRelease": 10,
+    "originalMvLinksFromTracks": 3,
+    "otherAespaCardsVerified": 19
+  },
+  "officialSources": [
+    {
+      "title": "aespa 日本官网唱片页",
+      "url": "https://aespa-official.jp/discography/armageddon/",
+      "response": 200,
+      "releaseDate": "2024-05-27",
+      "coverOriginal": "https://aespa-official.jp/aspect/wp-content/uploads/2024/04/armageddon.webp",
+      "imagePixels": [
+        1200,
+        1200
+      ],
+      "localCover": "/artist/aespa/cover-armageddon.webp",
+      "localPixels": [
+        640,
+        640
+      ]
+    },
+    {
+      "title": "Warner 日本 Armageddon 发行期特设站",
+      "url": "https://sp.wmg.jp/aespa_Armageddon/",
+      "response": 200,
+      "colors": [
+        "#000000",
+        "#00d1ff",
+        "#e50575"
+      ],
+      "embeddedLeadVideos": [
+        "phuiiNCxRMg",
+        "nFYwcndNuOY"
+      ]
+    }
+  ],
+  "tracks": [
+    "Supernova",
+    "Armageddon",
+    "Set The Tone",
+    "Mine",
+    "Licorice",
+    "BAHAMA",
+    "Long Chat (#♥)",
+    "Prologue",
+    "Live My Life",
+    "Melody"
+  ],
+  "originalMvs": [
+    {
+      "number": 1,
+      "title": "Supernova",
+      "workId": "recvxyHuKM4BvC",
+      "version": "韩文原版",
+      "videoId": "phuiiNCxRMg",
+      "published": "2024-05-13"
+    },
+    {
+      "number": 2,
+      "title": "Armageddon",
+      "workId": "recvxyHuKMKPod",
+      "version": "韩文原版",
+      "videoId": "nFYwcndNuOY",
+      "published": "2024-05-27"
+    },
+    {
+      "number": 9,
+      "title": "Live My Life",
+      "workId": "recvxyHuKMKGBh",
+      "version": "完整MV版",
+      "videoId": "YEA1ROHi0Eg",
+      "published": "2024-06-19"
+    }
+  ],
+  "figma": {
+    "file": "zeLNExz4TbpWRW3uiahef7",
+    "page": "0:1",
+    "coverReuse": [
+      "143:1017",
+      "143:1077"
+    ],
+    "officialCoverLayerPixels": [
+      550,
+      550
+    ],
+    "trackComponent": "1644:1125",
+    "contextRead": 2,
+    "screenshotsRead": 2,
+    "frames": [
+      {
+        "id": "1644:1140",
+        "name": "aespa / Armageddon / 发行详情 / 1440",
+        "width": 1440,
+        "height": 905,
+        "descendants": 106,
+        "cover": [
+          "1644:1157",
+          406,
+          406
+        ],
+        "tracks": 10,
+        "mvLinks": 3,
+        "sources": 2,
+        "horizontalOverflow": 0
+      },
+      {
+        "id": "1644:1283",
+        "name": "aespa / Armageddon / 发行详情 / 375",
+        "width": 375,
+        "height": 1131,
+        "descendants": 106,
+        "cover": [
+          "1644:1300",
+          252,
+          252
+        ],
+        "tracks": 10,
+        "mvLinks": 3,
+        "sources": 2,
+        "horizontalOverflow": 0
+      }
+    ]
+  },
+  "localTests": {
+    "typecheck": "passed",
+    "newReleaseTests": {
+      "file": "apps/idol-site/tests/aespa-armageddon-release.test.cjs",
+      "passed": 4,
+      "total": 4
+    },
+    "sharedNavigationTests": {
+      "passed": 65,
+      "total": 69,
+      "previousVersionFailures": 4,
+      "comparison": "docs/codex/evidence/20261123-v251/full-suite-failures.csv",
+      "files": [
+        "artist-history-focus.test.cjs",
+        "artist-navigation.test.cjs",
+        "expanded-artist.test.cjs",
+        "journey.test.cjs"
+      ]
+    },
+    "method": "React 服务端渲染真实路由；团体和作品读取使用项目既有快照，未操作正式私人数据。"
+  },
+  "productionScope": "本文件未将本地渲染计作正式浏览器实测。"
+}

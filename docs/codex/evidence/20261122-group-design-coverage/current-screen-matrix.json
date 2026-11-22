@@ -26,13 +26,13 @@
   "counts": {
     "groups": 51,
     "scopeCombinations": 459,
-    "twoWidthBoardMatches": 415,
+    "twoWidthBoardMatches": 416,
     "twoWidthBySurface": {
       "home": 51,
       "members": 45,
       "profile": 51,
       "works": 44,
-      "release": 39,
+      "release": 40,
       "mv": 51,
       "stage": 48,
       "timeline": 42,
@@ -64,7 +64,6 @@
         "loona",
         "babymonster",
         "xg",
-        "aespa",
         "kissoflife",
         "stayc",
         "nmixx",
@@ -164,7 +163,8 @@
     "four-artist-film-directories": "docs/codex/worklogs/20261122-four-artist-film-directories.md",
     "stage-directory-cards": "docs/codex/worklogs/20261122-stage-directory-targets.md",
     "itzy-yeji-profile": "docs/codex/worklogs/20261123-itzy-member-profile.md",
-    "lesserafim-profile": "docs/codex/evidence/20261123-v251/lesserafim-profile.json"
+    "lesserafim-profile": "docs/codex/evidence/20261123-v251/lesserafim-profile.json",
+    "aespa-armageddon-release": "docs/codex/evidence/20261123-v252/aespa-armageddon-release.json"
   },
   "groups": [
     {
@@ -3059,8 +3059,8 @@
           null
         ],
         "release": [
-          null,
-          null
+          "1644:1140",
+          "1644:1283"
         ],
         "mv": [
           "134:698",
@@ -3079,8 +3079,16 @@
           null
         ]
       },
-      "revised": {},
-      "implementation": [],
+      "revised": {
+        "release": "aespa-armageddon-release"
+      },
+      "implementation": [
+        {
+          "at": "本地",
+          "scope": "《Armageddon》发行详情的十首曲目、三支原版 MV 和返回唱片封面",
+          "evidence": "aespa-armageddon-release"
+        }
+      ],
       "additional": [],
       "earlierHomeReference": "https://aespa-official.jp/",
       "qualification": "《Armageddon》旧稿用底色和曲名示意播放器。"
@@ -4147,6 +4155,16 @@
     "1633:1846": {
       "page": "1457:1109",
       "name": "ITZY / 黄礼志 · YEJI / 成员详情 / 375",
+      "type": "FRAME"
+    },
+    "1644:1140": {
+      "page": "0:1",
+      "name": "aespa / Armageddon / 发行详情 / 1440",
+      "type": "FRAME"
+    },
+    "1644:1283": {
+      "page": "0:1",
+      "name": "aespa / Armageddon / 发行详情 / 375",
       "type": "FRAME"
     }
   }

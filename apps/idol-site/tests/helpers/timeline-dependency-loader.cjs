@@ -22,6 +22,7 @@ function timelineDependency(name){
  if(name==='../../data/izone-navigation-keys.json')return {default:JSON.parse(fs.readFileSync(path.join(root,'data/izone-navigation-keys.json'),'utf8'))};
  if(name==='../../data/katseye-navigation-keys.json')return {default:JSON.parse(fs.readFileSync(path.join(root,'data/katseye-navigation-keys.json'),'utf8'))};
  if(name==='./public-artist-route-keys')return bundled('lib/idol/public-artist-route-keys.ts');
+ if(name==='./aespa-armageddon')return bundled('lib/idol/aespa-armageddon.ts');
  if(name==='./artist-library-format'||name==='@/lib/idol/artist-library-format')return bundled('lib/idol/artist-library-format.ts');
  if(name==='./artist-library-filters'||name==='@/components/artist-library-filters')return bundled('components/artist-library-filters.tsx');
  if(name==='@/components/artist-stage-directory-card')return bundled('components/artist-stage-directory-card.tsx');

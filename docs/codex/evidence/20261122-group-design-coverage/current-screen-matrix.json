@@ -164,7 +164,8 @@
     "adya-rizz": "docs/codex/worklogs/20261122-adya-rizz.md",
     "izna-kbs": "docs/codex/worklogs/20261122-izna-kbs-stage.md",
     "kiof-stage-directory": "docs/codex/worklogs/20261122-kiof-stage-catalog.md",
-    "genblue-cococo": "docs/codex/evidence/20261122-genblue-cococo/design-and-sources.json"
+    "genblue-cococo": "docs/codex/evidence/20261122-genblue-cococo/design-and-sources.json",
+    "adya-per-set": "docs/codex/evidence/20261122-adya-per-set/design-and-sources.json"
   },
   "groups": [
     {
@@ -1302,8 +1303,8 @@
           "1041:1095"
         ],
         "mv": [
-          "1039:2541",
-          "1041:1366"
+          "1594:1599",
+          "1594:1676"
         ],
         "stage": [
           "1039:3269",
@@ -1319,7 +1320,8 @@
         ]
       },
       "revised": {
-        "score": "adya-rizz"
+        "score": "adya-rizz",
+        "mv": "adya-per-set"
       },
       "implementation": [
         {
@@ -1331,6 +1333,11 @@
           "at": "开发版 d067fc28",
           "scope": "舞台目录直接进入整体舞台分；同一表演视频的 MV 页分别保留五人图下评分。375、1425、305px 实测。",
           "evidence": "adya-rizz"
+        },
+        {
+          "at": "开发版 dee65a74",
+          "scope": "《Per》五人 Genie 首发 MV 片场照、旧球衣与具名截图、照片下本人评分及 Music Bank 返回，正文 375、1425 px。",
+          "evidence": "adya-per-set"
         }
       ],
       "additional": [
@@ -1352,9 +1359,26 @@
             "1561:1258",
             "1561:1427"
           ]
+        },
+        {
+          "scope": "《Per》原 MV 双宽画稿，保留旧版。",
+          "source": "adya-per-set",
+          "nodes": [
+            "1039:2541",
+            "1041:1366"
+          ]
+        },
+        {
+          "scope": "《Per》书媛在本人首发片场照片下展开四项评分。当前索引的评分栏另有《RIZZ》延秀双宽。",
+          "source": "adya-per-set",
+          "nodes": [
+            "1594:1751",
+            "1594:1843"
+          ]
         }
       ],
-      "earlierHomeReference": "https://prtimes.jp/main/html/rd/p/000001548.000003711.html"
+      "earlierHomeReference": "https://prtimes.jp/main/html/rd/p/000001548.000003711.html",
+      "qualification": "《Per》首发 MV 与书媛评分完成新版双宽，采用正式站五人既有顺序。《RIZZ》同版整体分与延秀评分另有双宽。Music Bank 230526 沿用既有两幅舞台稿。"
     },
     {
       "slug": "geenius",

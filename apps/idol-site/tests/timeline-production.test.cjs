@@ -55,7 +55,9 @@ function historicalNativeBytes(slug, bytes) {
  const document = JSON.parse(bytes);
  for (const edit of edits) {
   const identity = ['releases', 'works'].includes(edit.collection) ? 'key' : 'id';
-  const record = document[edit.collection].find(row => row[identity] === edit.record);
+  const record = edit.publicContent
+   ? document.publicContent[edit.collection][edit.record]
+   : document[edit.collection].find(row => row[identity] === edit.record);
   const label = [slug, edit.collection, edit.record, edit.field].join('/');
   assert.ok(record, label);
   assert.equal(record[edit.field], edit.after, label);

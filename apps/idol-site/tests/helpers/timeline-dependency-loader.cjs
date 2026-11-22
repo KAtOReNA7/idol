@@ -14,6 +14,7 @@ function bundled(file){
  return result;
 }
 function timelineDependency(name){
+ if(name==='./expanded-work-directory')return bundled('components/expanded-work-directory.tsx');
  if(name==='@/lib/idol/follower-count.mjs'||name==='./follower-count.mjs')return require('../../lib/idol/follower-count.mjs');
  if(['@/components/artist-information','./artist-information','../artist-information'].includes(name))return bundled('components/artist-information.tsx');
  if(name==='@/components/public-work-credits')return bundled('components/public-work-credits.tsx');

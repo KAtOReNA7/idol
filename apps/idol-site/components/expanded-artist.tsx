@@ -22,6 +22,8 @@ import {MvPhotoReference} from './mv-photo-reference';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from './reliable-image';
 import {useArtistScroll} from './use-artist-scroll';
 import {ArtistTimelineHost,useArtistTimelineHostOptions} from './artist-timeline-host';
+import {ExpandedWorkDirectory} from './expanded-work-directory';
+import type {DirectoryWork} from '@/lib/idol/expanded-work-directory';
 
 export type ExpandedArtistContent={
  asOf:string;groupId:string;profile:{name:string;company:string;members:string[];debutDate:string;summary:string;sourceUrl:string;expandedName?:string;fandom?:string};
@@ -48,15 +50,15 @@ function Wave(){return <svg className="nx-wave" viewBox="0 0 700 80" aria-hidden
 function Heading({title,label,onMore,primary=false}:{title:string;label:string;onMore?:()=>void;primary?:boolean}){const Title=primary?'h1':'h2';return <div className="nx-heading"><div><small>{label}</small><Title>{title}</Title></div>{onMore&&<button onClick={onMore}>查看全部<ArrowUpRight size={15}/></button>}</div>;}
 function Thumb({work}:{work:Work}){const id=videoId(work.url);return <div className="nx-thumb"><ReliableImage src={id?(publicVideoCover(id)?.src??`https://i.ytimg.com/vi/${id}/hqdefault.jpg`):null} identityKey={`work:${work.id}:thumbnail`} alt={`${work.song||work.name} 视频封面`} referrerPolicy="no-referrer" loading="lazy" fallback={<div className="nx-text-cover"><Wave/><strong>{work.song||work.name}</strong><Play size={22}/></div>}/></div>;}
 function WorkCard({work,returnTo}:{work:Work;returnTo:string}){return <article className="nx-work"><A href={artistWorkUrl(work,false,returnTo)}><Thumb work={work}/><div className="nx-work-copy"><small>{work.videoType||'MV'} · {work.releaseDate}</small><h3>{work.song||work.name}</h3><p>{work.version||work.videoType}</p><span>我的 MV 分 <strong>{artistWorkScoreLabel(work.score)}{work.score===null?'':' / 10'}</strong></span></div></A><div className="nx-work-actions"><A href={artistWorkUrl(work,false,returnTo)}><Play size={14}/>观看与评分</A>{!!(work.stage||work.stageSupplement?.alternatives.length)&&<A href={artistWorkUrl(work,true,returnTo)}>{work.stage?'看舞台':'其他现场'}<ArrowUpRight size={13}/></A>}</div></article>;}
-type ExpandedArtistProps={slug:'xg'|'aespa';content:ExpandedArtistContent;releaseDetailPaths?:Record<string,string>};
+type ExpandedArtistProps={slug:'xg'|'aespa';content:ExpandedArtistContent;releaseDetailPaths?:Record<string,string>;initialSearch?:string;workDirectory?:{initial?:DirectoryWork[]}};
 export default function ExpandedArtist(props:ExpandedArtistProps){return <ExpandedArtistSession key={props.slug} {...props}/>;}
-function ExpandedArtistSession({slug,content,releaseDetailPaths}:ExpandedArtistProps){
+function ExpandedArtistSession({slug,content,releaseDetailPaths,initialSearch='',workDirectory}:ExpandedArtistProps){
  const xg=slug==='xg',name=content.profile.name,path='/artists/'+slug;
  const timelineOptions=useArtistTimelineHostOptions();
  const [fetchedData,setData]=useState<Catalog|null>(null),[fetchedError,setError]=useState(''),[fetchedLoading,setLoading]=useState(true),[year,setYear]=useState('all'),[lightbox,setLightbox]=useState<{src:string;label:string}|null>(null);
  const data=timelineOptions.catalog!==undefined?timelineOptions.catalog:fetchedData;
  const loading=timelineOptions.loading??(timelineOptions.catalog!==undefined?false:fetchedLoading),error=timelineOptions.error??(timelineOptions.catalog!==undefined?'':fetchedError);
- const url=useSyncExternalStore(subscribe,()=>window.location.href,()=>timelineOptions.serverRoute??path),route=useMemo(()=>artistRoute(url),[url]),returnTo=artistRouteUrl(route,path),rememberScroll=useArtistScroll(!!data,url);
+ const url=useSyncExternalStore(subscribe,()=>window.location.href,()=>timelineOptions.serverRoute??path+initialSearch),route=useMemo(()=>artistRoute(url),[url]),returnTo=artistRouteUrl(route,path),rememberScroll=useArtistScroll(!!data,url);
  const loadSequence=useRef(0),loadAbort=useRef<AbortController|null>(null);
  const load=useCallback(async()=>{
   if(timelineOptions.catalog!==undefined)return;
@@ -100,6 +102,11 @@ function ExpandedArtistSession({slug,content,releaseDetailPaths}:ExpandedArtistP
 <MemberCareerFacts member={m} part="history"/>
 <MemberCareerFacts member={m} part="sources"/>
 </>;}
+ if(workDirectory&&route.section==='works'&&!route.member)return <ImageRecoveryProvider>
+   <ExpandedWorkDirectory slug={slug} name={name} route={route} initial={workDirectory.initial}
+     live={collection?.works} loading={loading} error={error} retry={retry} navigate={navigate}/>
+   <ImageRecoveryControls/>
+ </ImageRecoveryProvider>;
  const heroCopy=<div className="nx-about"><small className="nx-eyebrow">{content.profile.company} · {xg?'X-POP':'에스파'}</small>{xg?<><h1>XG</h1><h2>XTRAORDINARY GENES</h2></>:<h2>SM Entertainment</h2>}<p data-home-introduction={slug}><span className="group-intro-label">团体介绍</span>{publicCustomArtistText(content.profile.summary)}</p><div className="nx-facts"><div><small>出道</small><strong>{content.profile.debutDate}</strong></div><div><small>成员</small><strong>{content.profile.members.length} 位</strong></div><div><small>{xg?'厂牌':'日本出道'}</small><strong>{xg?'XGALX':'2024.07.03'}</strong></div></div><div className="nx-actions">{representative&&<A className="nx-button primary" href={artistWorkUrl(representative,false,returnTo)}><Play size={15}/>从 {representative.song} 开始</A>}<A className="nx-button" href={external(content.profile.sourceUrl)} target="_blank" rel="noopener noreferrer">官方网站<ArrowUpRight size={14}/></A></div></div>;
  const heroPhoto=<figure className="nx-hero-photo"><Picture identityKey={`${slug}:hero`} src={content.hero.image} alt={publicCustomArtistText(content.hero.caption)} priority/><figcaption>{publicCustomArtistCaption(content.hero.caption,content.hero.date)}</figcaption></figure>;
  return <ImageRecoveryProvider><div className={'expanded-artist '+slug+'-artist'}><header className="nx-header"><A className="nx-brand" href="/">STAGE</A><nav aria-label="网站导航"><A href="/">我的放映室</A><A href="/?view=works">作品库</A><A href="/?view=members">成员档案</A><A href="/?view=groups">团体索引</A><A href="/?view=insights">偏好手帐</A></nav><small>公开可读，只有本人可编辑</small></header>{!route.member&&<>

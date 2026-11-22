@@ -1,3 +1,5 @@
+import xgWorks from '../../data/xg-directory-work-keys.json';
+
 // Public route IDs only. Unlisted records continue to use their ordinary directory return.
 const kiofEvents:Record<string,string[]> = {
   "e-kissoflife-formal-debut": ['work-rec28ldfRTrB8a', 'work-rec28ldfRTrLRV', 'work-rec28ldfRTrLVT', 'work-rec28ldfRTrM01', 'work-rec28ldfRTrM44', 'work-rec28ldfRTrM8d'],
@@ -58,6 +60,9 @@ export function timelineLinkAnchor(eventId:string, kind:'member'|'work', id:stri
 }
 export function workLinkAnchor(id:string, stage:boolean) { return (stage?'stage-':'mv-')+id; }
 
+const directoryWorks:Record<string,Record<string,boolean>> = {'/artists/xg': xgWorks};
+export function hasExpandedDirectory(path:string) { return Object.hasOwn(directoryWorks,path); }
+
 const valid = new Map<string,Set<string>>();
 for (const [path,events] of [['/artists/kissoflife',kiofEvents],['/artists/babymonster',babymonsterEvents]] as const) {
   valid.set(path+'?section=updates',new Set(Object.entries(events).flatMap(([event,targets])=>targets.map(t=>'event-'+event+'-'+t))));
@@ -67,6 +72,12 @@ valid.set('/artists/kissoflife?section=works',new Set(Object.entries(kiofVideos)
 
 export function hasDirectoryRecordAnchor(base:string,anchor:string) {
   const url=new URL(base,'https://site.invalid');
+  if (hasExpandedDirectory(url.pathname)) {
+    const target = /^(mv|stage)-(rec[A-Za-z0-9]+)$/.exec(anchor);
+    if (!target || url.searchParams.get('section')!=='works' || url.searchParams.has('member')) return false;
+    const records=directoryWorks[url.pathname], needsStage=target[1]==='stage'||url.searchParams.get('format')==='stage';
+    return Object.hasOwn(records,target[2]) && (!needsStage || records[target[2]]);
+  }
   return !url.searchParams.has('member')&&!!valid.get(url.pathname+'?section='+url.searchParams.get('section'))?.has(anchor);
 }
 

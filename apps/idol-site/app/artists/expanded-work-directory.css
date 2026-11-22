@@ -1,0 +1,71 @@
+.nx-directory {
+  --dir-card: #fafcf7;
+  --dir-muted: #51615a;
+  --dir-active-text: var(--nx-ink);
+  --dir-radius: 0px;
+  padding: 28px max(var(--nx-pad), calc((100vw - 1440px)/2)) 40px;
+}
+.nx-directory-site, .nx-directory-site nav, .nx-directory-sections, .nx-directory-filters,
+.nx-directory-content>header, .nx-directory-search {display:flex;align-items:center;gap:24px}
+.nx-directory-site, .nx-directory-sections {margin:0 auto 16px;max-width:1440px}
+.nx-directory-site .nx-brand {font:600 21px/1 ArtistNumber,sans-serif}
+.nx-directory-site-menu {display:none}
+.nx-directory-site a, .nx-directory-sections a, .nx-directory-filters a,
+.nx-directory-related a {display:inline-flex;align-items:center;min-height:44px}
+.nx-directory-site a, .nx-directory-sections a {font-size:13px}
+.nx-directory-sections {gap:28px;flex-wrap:wrap}
+.nx-directory-sections a {color:var(--dir-muted)}
+.nx-directory-sections [aria-current="page"] {color:var(--nx-ink);font-weight:700}
+.nx-directory-content {display:grid;gap:24px;max-width:1440px;margin:auto}
+.nx-directory-content h1 {font-size:clamp(26px,3vw,41px);line-height:1.25;letter-spacing:-.025em}
+.nx-directory-content>header p, .nx-directory-movie-copy p, .nx-directory-program p,
+.nx-directory-related small {color:var(--dir-muted);line-height:1.6}
+.nx-directory-search {gap:8px;padding:0 12px;width:min(450px,100%);background:var(--dir-card);border-radius:var(--dir-radius)}
+.nx-directory-search input:not([type=hidden]) {flex:1;width:0;min-width:0;height:44px;font:inherit;color:inherit;background:transparent;border:0}
+.nx-directory-search :is(a,button) {display:inline-grid;place-items:center;min-width:44px;min-height:44px;font-size:13px}
+.nx-directory-filters {gap:12px;flex-wrap:wrap}
+.nx-directory-filters a {justify-content:center;padding:0 17px;gap:8px;font-size:13px;background:var(--nx-panel);border-radius:var(--dir-radius)}
+.nx-directory-filters [aria-current="true"] {color:var(--dir-active-text);background:var(--nx-accent);font-weight:650}
+.nx-directory-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 20px;align-items:start}
+.nx-directory-movie, .nx-directory-show {min-width:0;background:var(--dir-card);border-radius:var(--dir-radius)}
+.nx-directory-movie-link {display:block}
+.nx-directory-cover {position:relative;display:grid;place-items:center;overflow:hidden;aspect-ratio:16/9;background:var(--nx-panel);border-radius:var(--dir-radius) var(--dir-radius) 0 0}
+.nx-directory-cover img {width:100%;height:100%;object-fit:cover}
+.nx-directory-cover small {position:absolute;bottom:6px;left:6px;padding:3px 6px;color:white;background:#1a1c1e}
+.nx-directory-movie-copy, .nx-directory-program {padding:12px;display:grid;gap:8px}
+.nx-directory-content h2 {font:600 clamp(23px,2.2vw,28px)/1.14 var(--nx-heading);overflow-wrap:anywhere}
+.nx-directory-movie-copy p, .nx-directory-program p, .nx-directory-related small {font-size:12px}
+.nx-directory .nx-directory-stage-link, .nx-directory-related a {min-height:44px;font-size:13px;font-weight:600}
+.nx-directory-stage-link {display:inline-flex;align-items:center;margin:0 12px}
+.nx-directory-movie>.nx-directory-score {padding:0 12px 8px}
+.nx-directory-score {display:flex;gap:8px;font-size:12px;align-items:center}
+.nx-directory-shows {display:grid;gap:24px}
+.nx-directory-show {display:grid;grid-template-columns:minmax(280px,min(38%,452px)) minmax(0,1fr);grid-template-rows:auto 1fr;align-items:start}
+.nx-directory-show-main {display:contents}
+.nx-directory-show-main .nx-directory-cover {grid-column:1;grid-row:1/3;border-radius:var(--dir-radius) 0 0 var(--dir-radius)}
+.nx-directory-show-main:focus-visible h2 {outline:3px solid currentColor;outline-offset:3px}
+.nx-directory-program, .nx-directory-related {grid-column:2;min-width:0}
+.nx-directory-related {padding:0 12px 12px}
+.nx-directory-content h3 {font-size:13px}
+.nx-directory-related ul {list-style:none;padding:0;margin:2px 0 0}
+.nx-directory-related li {display:grid;justify-items:start}
+.nx-directory-notice {padding:16px 0;line-height:1.7}
+.nx-directory-notice :is(a,button) {display:inline-flex;align-items:center;min-height:44px;text-decoration:underline}
+@media (max-width:900px) and (min-width:701px) {.nx-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px) {
+  .nx-directory {padding:16px 20px 40px}
+  .nx-directory-site {margin-bottom:4px;justify-content:space-between}
+  .nx-directory-site-wide {display:none!important}
+  .nx-directory-site-menu {display:block;position:relative;font-size:12px}
+  .nx-directory-site-menu summary {cursor:pointer;min-height:44px;display:flex;align-items:center}
+  .nx-directory-site-menu nav {z-index:1;position:absolute;right:0;top:100%;display:grid;gap:0;min-width:128px;padding:4px 12px;background:var(--dir-card);border:1px solid var(--nx-line)}
+  .nx-directory-site .nx-brand {font-size:18px;min-height:32px}
+  .nx-directory-sections {gap:2px 12px;margin-bottom:10px}
+  .nx-directory-sections a {font-size:12px}
+  .nx-directory-content, .nx-directory-grid, .nx-directory-shows {gap:15px}
+  .nx-directory-content>header {gap:12px;flex-wrap:wrap}
+  .nx-directory-content>header p {font-size:12px}
+  .nx-directory-grid {grid-template-columns:minmax(0,1fr)}
+  .nx-directory-show, .nx-directory-show-main {display:block}
+  .nx-directory-show-main .nx-directory-cover {border-radius:var(--dir-radius) var(--dir-radius) 0 0}
+}

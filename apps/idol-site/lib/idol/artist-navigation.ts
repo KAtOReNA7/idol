@@ -1,5 +1,5 @@
 import {supportsReleaseFilter} from './artist-library-format';
-import {hasDirectoryRecordAnchor} from './directory-record-return';
+import {hasDirectoryRecordAnchor,hasExpandedDirectory} from './directory-record-return';
 import sevenReleaseKeys from '../../data/seven-redesign-navigation-keys.json';
 import {publicArtistKeysForPath,validPublicArtistRoute} from './public-artist-route-keys';
 import katseyeRouteKeys from '../../data/katseye-navigation-keys.json';
@@ -111,7 +111,7 @@ export function safeArtistReturn(value:string|null|undefined):string|null{
  if(u.searchParams.has('media')&&u.searchParams.has('release'))return null;
  if(u.searchParams.has('reader')&&(u.pathname!=='/artists/triples'||!/^rec[A-Za-z0-9]+$/.test(u.searchParams.get('reader')!)))return null;
  if(u.searchParams.has('roster')&&((!historicalRosterPath(u.pathname)&&u.pathname!=='/artists/vvup')||u.searchParams.get('roster')!=='history'))return null;
- if(u.searchParams.has('format')&&(![...candidateArtistPaths,ILLIT_PATH,SAYMYNAME_PATH,KATSEYE_PATH,ITZY_PATH,LESSERAFIM_PATH,IVE_PATH,KIOF_PATH,STAYC_PATH,NMIXX_PATH,HEARTS2HEARTS_PATH,KIIIKIII_PATH].includes(u.pathname)||!(supportsReleaseFilter(u.pathname)?['mv','stage','release']:['mv','stage']).includes(u.searchParams.get('format')!)))return null;
+ if(u.searchParams.has('format')&&(!(hasExpandedDirectory(u.pathname)&&u.searchParams.get('section')==='works'&&!u.searchParams.has('member'))&&![...candidateArtistPaths,ILLIT_PATH,SAYMYNAME_PATH,KATSEYE_PATH,ITZY_PATH,LESSERAFIM_PATH,IVE_PATH,KIOF_PATH,STAYC_PATH,NMIXX_PATH,HEARTS2HEARTS_PATH,KIIIKIII_PATH].includes(u.pathname)||!(supportsReleaseFilter(u.pathname)?['mv','stage','release']:['mv','stage']).includes(u.searchParams.get('format')!)))return null;
  const section=u.searchParams.get('section'),member=u.searchParams.get('member'),queue=u.searchParams.get('queue');
  if(section&&!['overview','works','members','updates','records'].includes(section)||member&&!/^rec[A-Za-z0-9]+$/.test(member)||queue&&!['all','tonight','rewatch','unrated'].includes(queue)||(u.searchParams.get('q')?.length??0)>200)return null;
  // LOONA's historical reader restores exact same-entry query/scroll context.

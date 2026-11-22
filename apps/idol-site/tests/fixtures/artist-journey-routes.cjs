@@ -13,7 +13,7 @@ const combinedRecords = new Set([
   'genblue', 'unis', 'badvillain', 'youngposse', 'bewave', 'candyshop', 'oddyouth',
   'adya', 'geenius', 'tracer', 'witchx', 'spia', 'billlie', 'kep1er', 'newjeans',
 ]);
-const noFormatControls = new Set(['babymonster','xg','aespa','badvillain']);
+const noFormatControls = new Set(['babymonster','aespa','badvillain']);
 const releaseFormatControls = new Set([
   'adya','witchx','geenius','oddyouth','tracer','spia','youngposse','bewave','candyshop','genblue','billlie',
 ]);

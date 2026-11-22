@@ -34,7 +34,8 @@ register('billlie', '.bf-hero-mv', '.bf-hero .bf-square', '.bf-work', '[data-des
 register('kep1er', '.kf-work-row', '.kf-home-releases', '.kf-work-row', '.kf-release-card');
 register('newjeans', '.nj-media-grid article', '.nj-feature-release', '#newjeans-videos article', '#newjeans-releases article');
 register('babymonster', '.as-featured', '.as-releases a', '.as-work-row');
-register('aespa xg', '.nx-work', '.nx-releases a');
+register('aespa', '.nx-work', '.nx-releases a');
+register('xg', '.nx-work', '.nx-releases a', '.nx-directory-movie');
 register('kissoflife', '.kf-release-song a', '.kf-album-cover', '.kf-work');
 register('stayc', '.sc-release-song a', '.sc-album-cover', '.sc-work');
 register('lesserafim', '.lf-work', '.lf-album-cover');

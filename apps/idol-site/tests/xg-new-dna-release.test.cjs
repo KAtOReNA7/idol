@@ -69,7 +69,7 @@ test('only the August NEW DANCE is used by its album and both editions remain in
   const alternate=works.find(w=>w.id==='recvxDMFHN1Y9G');
   assert.deepEqual([alternate.releaseDate,alternate.version,new URL(alternate.url).searchParams.get('v')],['2023-10-06','Multiverse独立版','LAZlfCjXPb0']);
   const search=parse(await renderArtist(xg,{section:'works',q:'NEW DANCE'}));
-  const found=search.querySelectorAll('.nx-work>a').map(a=>readRoute(a.getAttribute('href')).work);
+  const found=search.querySelectorAll('.nx-directory-movie-link').map(a=>readRoute(a.getAttribute('href')).work);
   assert.deepEqual(new Set(found),new Set([alternate.id,originals[2][1]]));
 });
 

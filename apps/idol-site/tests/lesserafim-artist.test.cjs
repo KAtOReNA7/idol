@@ -31,6 +31,30 @@ test('LE SSERAFIM uses its SOURCE MUSIC artist wordmark, full group image and re
 
 test('member roster and detail visibly render Chinese first without renaming identity',()=>{const d=fixture(),m=d.members[0];m.cnName='测试中文名（音译）';const before=JSON.stringify(d);for(const url of ['/artists/lesserafim?section=members','/artists/lesserafim?section=members&member='+m.id]){const html=setup(url,d).render();assert.ok(html.includes('测试中文名 · '+m.stageName));assert.ok(html.includes('member-display-name'));assert.ok(!html.includes('测试中文名（音译）'));}assert.equal(JSON.stringify(d),before);});
 
+test('five LE SSERAFIM members show their own name before their portrait, original and official source',async()=>{
+ const {parse}=require('next/dist/compiled/node-html-parser');
+ const {registry,artistCatalog,renderArtist}=require('./fixtures/current-artist-pages.cjs');
+ const group=registry.find(candidate=>candidate.slug==='lesserafim');
+ const catalog=artistCatalog(group);
+ const current=catalog.members.filter(member=>member.groupIds.includes(group.groupId)&&content.memberVisuals[member.stageName]);
+ assert.equal(current.length,5);
+ for(const member of current){
+  const page=parse(await renderArtist(group,{section:'members',member:member.id},catalog));
+  const identity=page.querySelector('[data-member-module="identity"]');
+  assert.equal(identity.getAttribute('data-member-id'),member.id);
+  const parts=identity.childNodes.filter(node=>node.nodeType===1);
+  assert.ok(parts[0].querySelector('h1').text.includes(member.stageName));
+  const picture=content.memberVisuals[member.stageName];
+  assert.equal(parts[1].querySelector('img').getAttribute('src'),picture.image);
+  const controls=parts[1].querySelectorAll('a[data-original-photo]');
+  assert.deepEqual(controls.map(link=>link.getAttribute('href')),[picture.image,picture.image]);
+  const source=parts[1].querySelector('details');
+  assert.equal(source.hasAttribute('open'),false);
+  assert.equal(source.querySelector('a').getAttribute('href'),picture.identitySourceUrl);
+  assert.equal(parts[2].getAttribute('data-member-module'),'basic');
+ }
+});
+
 test('LE SSERAFIM approved originals use native frames and qualified reference without changing private scores or links',()=>{
  const d=fixture();d.mode='live';const r=d.ratings[0];r.personalPhotoEligible=true;
  r.photo={table:'ratings',recordId:r.id,fieldId:'photos',index:3,sourceKind:'mv_look_photo'};

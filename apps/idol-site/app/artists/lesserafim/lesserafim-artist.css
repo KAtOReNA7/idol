@@ -55,3 +55,57 @@
  .lf-work h3,.lf-roster strong {font-size:16px}
  .lf-content>section {margin-top:28px}
 }
+
+.lf-member-hero {
+  grid-template-areas: "photo heading" "photo basic";
+  grid-template-rows: auto 1fr;
+  row-gap: 26px;
+}
+.lf-member-heading {grid-area: heading; min-width: 0}
+.lf-member-heading h1 {
+  margin: 0;
+  font: 700 clamp(32px, 3.7vw, 52px)/1.24 'Noto Sans SC', system-ui, sans-serif;
+  overflow-wrap: anywhere;
+}
+.lf-member-heading p {margin-top: 10px; color: #b7c5d1; font-size: 14px}
+.lf-member-hero > figure {grid-area: photo; min-width: 0; align-self: start}
+.lf-member-basic {grid-area: basic; min-width: 0}
+.lf-member-basic > h2 {
+  margin-bottom: 12px;
+  font: 700 24px/1.32 'Noto Sans SC', system-ui, sans-serif;
+}
+.lf-member-photo {display: block}
+.lf-member-hero .lf-official-member-portrait img {height: auto; max-height: none}
+.lf-member-original {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 116px;
+  min-height: 44px;
+  margin-top: 8px;
+  padding: 0 14px;
+  background: var(--lf-accent);
+  color: var(--lf-paper) !important;
+  font-size: 14px;
+  font-weight: 700;
+}
+.lf-member-photo-source {margin-top: 4px; border-top: 0}
+.lf-member-photo-source > summary {
+  width: fit-content;
+  min-width: 128px;
+  padding: 0 14px;
+  border: 1px solid var(--lf-rule);
+  line-height: 42px;
+}
+.lf-member-photo-source .photo-source-body {margin-top: 8px; color: #b7c5d1}
+
+@media (max-width: 650px) {
+  .lf-member-hero {
+    grid-template-areas: "heading" "photo" "basic";
+    grid-template-rows: auto;
+    gap: 18px;
+  }
+  .lf-member-heading h1 {font-size: clamp(25px, 8vw, 32px)}
+  .lf-member-hero .lf-official-member-portrait {max-width: none; margin: 0}
+  .lf-member-basic > h2 {font-size: 21px}
+}

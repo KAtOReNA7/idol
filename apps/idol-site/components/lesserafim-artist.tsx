@@ -23,12 +23,19 @@ import {safeGroupLink} from '@/lib/idol/group-detail';
 import {videoId} from '@/lib/idol/values';
 import type {ExpandedArtistContent} from './expanded-artist';
 import {PhotoLightbox} from './photo-lightbox';
+import {OriginalPhotoLink} from './original-photo-link';
+import {PhotoSourceDisclosure} from './photo-source-disclosure';
 import {MvPhotoReference} from './mv-photo-reference';
 import {mvPhotoLabel,MV_LOOK_PHOTO_LABEL} from '@/lib/idol/mv-photo-presentation';
 import {ReliableImage,ImageRecoveryProvider,ImageRecoveryControls} from './reliable-image';
 import {useArtistScroll} from './use-artist-scroll';
 
-type LesserafimContent=ExpandedArtistContent&{releaseCoverage:{scope:string};featuredReleaseIds:string[];releaseVideoIds:Record<string,string[]>};
+type LesserafimContent=Omit<ExpandedArtistContent,'memberVisuals'>&{
+ memberVisuals:Record<string,ExpandedArtistContent['memberVisuals'][string]&{identitySourceUrl?:string}>;
+ releaseCoverage:{scope:string};
+ featuredReleaseIds:string[];
+ releaseVideoIds:Record<string,string[]>;
+};
 const path='/artists/lesserafim';
 const sections:[ArtistSection,string][]=[['overview','概览'],['works','作品与舞台'],['members','成员'],['updates','大事时间轴'],['records','发行档案']];
 const queues=[['all','全部作品'],['tonight','待看'],['rewatch','高分重温'],['unrated','看过待评分']];
@@ -101,7 +108,43 @@ export default function LesserafimArtist({content}:{content:LesserafimContent}){
   const latest=content.releases.slice(0,3);
   const releases=compact?[...latest,...featured.filter(release=>!latest.includes(release))]:content.releases;
   return <><p className="lf-scope">{publicCustomArtistText(content.releaseCoverage.scope)}</p><div className="lf-release-feature">{releases.map(r=><article key={r.id}><A href={external(r.sourceUrl)} target="_blank" rel="noopener noreferrer"><div className="lf-album-cover"><Picture identityKey={'release:'+r.id} src={r.image} alt={r.title+' 官方发行封面'}/></div><h3>{r.title}</h3><p>{r.date||'发行日期暂缺'} · {r.type}</p></A></article>)}</div><p className="lf-scope">销量与音乐节目一位数据尚不完整，暂不展示总计。</p></>;}
- function memberPage(m:Member){if(!data)return null;const items=memberWorks(data,m.id),s=memberWorkSummary(items);const historical=!m.groupIds.includes(content.groupId)&&(m.formerGroupIds??[]).includes(content.groupId),historyVisual=historical?historicalMemberVisual(m.id,content.groupId):null;return <><button className="lf-back" onClick={()=>navigate({section:'members',member:null})}><ArrowLeft size={15}/>LE SSERAFIM · 全部成员</button><section className="lf-member-hero" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity"><figure style={historyVisual?{width:'100%'}:undefined}>{historyVisual?<><MvIdentityPhoto work={historyVisual.work} memberId={m.id} label={memberDisplayName(m)} profilePortrait/><figcaption>历史时期影像 · {historyVisual.title}</figcaption></>:<><Picture identityKey={'member:'+m.id} src={visual(m)?.image} alt={m.stageName+' · '+content.portraitSet.label} priority/><figcaption>{publicCustomArtistCaption(content.portraitSet.label,content.portraitSet.date)}</figcaption></>}</figure><div data-member-module="basic"><small className="lf-eyebrow">LE SSERAFIM / MEMBER</small>{historical&&<p>{memberAffiliationLabel(m,content.groupId)}</p>}<h1><span className="member-display-name">{memberDisplayName(m)}</span></h1><MemberPhysicalFacts member={m}/><MemberCareerFacts member={m} part="intro"/><p>{[m.stageName,m.country,m.birthDate,m.status].filter(Boolean).join(' · ')}</p>{m.role&&<p>{m.role}</p>}<A className="lf-button" href={artistMemberUrl(m.id,returnTo)}>个人档案与记录<ArrowUpRight size={14}/></A><div className="lf-member-social">{(m.social??[]).map(a=><A key={a.platform} href={external(a.url)} target="_blank" rel="noopener noreferrer"><span>{a.platform==='instagram'?'Instagram':a.platform==='x'?'X':a.platform==='youtube'?'YouTube':'TikTok'}<ArrowUpRight size={13}/></span>{a.countLabel&&<strong>{followerAccountLabel(a)}</strong>}<small>{a.observedAt?'更新于 '+a.observedAt.slice(0,10):'粉丝数暂未收录'}</small></A>)}</div></div></section>
+ function memberPage(m:Member){
+  if(!data)return null;
+  const items=memberWorks(data,m.id),s=memberWorkSummary(items);
+  const name=memberDisplayName(m), historical=!m.groupIds.includes(content.groupId)&&(m.formerGroupIds??[]).includes(content.groupId);
+  const historyVisual=historical?historicalMemberVisual(m.id,content.groupId):null;
+  const portrait=historical?null:visual(m);
+  const source=portrait?.identitySourceUrl?external(portrait.identitySourceUrl):undefined;
+  const openOriginal=(src:string)=>setLightbox({src,label:name+' · 日本官网成员照'});
+  return <>
+   <button className="lf-back" onClick={()=>navigate({section:'members',member:null})}>返回全部成员</button>
+   <section className="lf-member-hero" data-member-layout="ordered-v1" data-member-id={m.id} data-member-module="identity">
+    <header className="lf-member-heading">
+     <h1><span className="member-display-name">{name}</span></h1>
+     {historical&&<p>{memberAffiliationLabel(m,content.groupId)}</p>}
+     {portrait&&<p>日本官网成员照</p>}
+    </header>
+    <figure className={portrait?'lf-official-member-portrait':undefined}>
+     {historyVisual?<><MvIdentityPhoto work={historyVisual.work} memberId={m.id} label={name} profilePortrait/><figcaption>历史时期影像 · {historyVisual.title}</figcaption></>:portrait?<>
+      <OriginalPhotoLink className="lf-member-photo" href={portrait.image} aria-label={'放大'+name+'资料照'} onOpen={openOriginal}>
+       <Picture identityKey={'member:'+m.id} src={portrait.image} alt={name+' · 日本官网成员照'} priority/>
+      </OriginalPhotoLink>
+      <OriginalPhotoLink className="lf-member-original" href={portrait.image} aria-label={'查看'+name+'原图'} onOpen={openOriginal}>查看原图</OriginalPhotoLink>
+      {source&&<PhotoSourceDisclosure className="lf-member-photo-source">
+       <p>LE SSERAFIM 日本官网发布的具名肖像。</p>
+       <A href={source} target="_blank" rel="noopener noreferrer">日本官网本人资料</A>
+      </PhotoSourceDisclosure>}
+     </>:<Picture identityKey={'member:'+m.id} alt={name+' 资料照'} priority/>}
+    </figure>
+    <div className="lf-member-basic" data-member-module="basic">
+     <h2>个人资料</h2>
+     <MemberPhysicalFacts member={m}/><MemberCareerFacts member={m} part="intro"/>
+     <p>{[m.country,m.birthDate,m.status].filter(Boolean).join(' · ')}</p>
+     {m.role&&<p>{m.role}</p>}
+     <A className="lf-button" href={artistMemberUrl(m.id,returnTo)}>个人档案与记录</A>
+     <div className="lf-member-social">{(m.social??[]).map(a=><A key={a.platform} href={external(a.url)} target="_blank" rel="noopener noreferrer"><span>{a.platform==='instagram'?'Instagram':a.platform==='x'?'X':a.platform==='youtube'?'YouTube':'TikTok'}<ArrowUpRight size={13}/></span>{a.countLabel&&<strong>{followerAccountLabel(a)}</strong>}<small>{a.observedAt?'更新于 '+a.observedAt.slice(0,10):'粉丝数暂未收录'}</small></A>)}</div>
+    </div>
+   </section>
 <div className="lf-member-summary" data-member-module="scores"><div><small>作品综合分</small><strong>{number(s.composite)}</strong><span>{s.ratedWorks} 支作品已评</span></div><div className="lf-dimensions"><div><small>表现均分</small><strong>{number(s.performanceMean)}</strong><span>{s.performanceCount} 支已评</span></div><div><small>造型均分</small><strong>{number(s.stylingMean)}</strong><span>{s.stylingCount} 支已评</span></div></div>{s.composite===null&&<p>表现和造型都有评分后，显示作品综合分。</p>}</div>
 <Heading label="作品评分" title="成员影像"/><div className="lf-member-works" data-member-module="works">{items.map(x=><article key={x.work.id}><MvIdentityPhoto work={x.work} memberId={m.id} label={memberDisplayName(m)} photo={x.photo} live={data.mode==='live'}/><MvPhotoReference photo={x.photo} referencePhoto={x.referencePhoto} label={memberDisplayName(m)+' · '+x.work.song} live={data.mode==='live'}/><A data-member-work-trigger={x.work.id} href={artistWorkUrl(x.work,false,returnTo)}><h3>{x.work.song||x.work.name}<ArrowUpRight size={14}/></h3><p>{x.work.version||x.work.videoType}</p><div><span>表现 <b>{number(x.performance)}</b></span><span>造型 <b>{number(x.styling)}</b></span></div></A>{!!(x.work.stage||x.work.stageSupplement?.alternatives.length)&&<A className="lf-button" data-member-work-trigger={x.work.id+':stage'} href={artistWorkUrl(x.work,true,returnTo)}>看舞台<ArrowUpRight size={13}/></A>}</article>)}</div>{!items.length&&<p className="lf-empty">尚未收录这位成员的作品记录。</p>}
 <MemberPublicCredits memberId={m.id} data={data} renderLink={(work,label)=><A href={artistWorkUrl(work,false,returnTo)}>{label}</A>}/>

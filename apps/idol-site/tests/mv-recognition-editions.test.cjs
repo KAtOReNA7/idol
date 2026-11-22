@@ -8,13 +8,32 @@ const {renderToStaticMarkup} = require('react-dom/server');
 const {MvIdentityPhoto, mvRecognitionEdition} = require('./helpers/image-dependency-loader.cjs').imageDependency('@/components/mv-identity-photo');
 const editions = require('../data/mv-recognition-editions.json');
 const media = require('../data/mv-public-media.json');
-const slayPublisherFiles = {
-  recvxyICzH3DKT: '31091644/yiren-2.jpeg',
-  recvxyICzHDN27: '31091717/eu-2.jpeg',
-  recvxyICzHl9XF: '30085311/Onda-1.jpeg',
-  recvxyICzHtX1e: '31091611/mia-.jpeg',
-  recvxyICzHxIn2: '30085410/Sihyeon-1.jpeg',
-  recvxyICzHyLkP: '30085341/Aisha-1.jpeg',
+const publisherSeries = {
+  'all-my-girls-2023': {
+    label: 'ALL MY GIRLS · 本次发行概念照',
+    original: file => 'https://0.soompi.io/wp-content/uploads/2023/07/' + file,
+    files: {
+      recvxyICzH3DKT: '31091644/yiren-2.jpeg',
+      recvxyICzHDN27: '31091717/eu-2.jpeg',
+      recvxyICzHl9XF: '30085311/Onda-1.jpeg',
+      recvxyICzHtX1e: '31091611/mia-.jpeg',
+      recvxyICzHxIn2: '30085410/Sihyeon-1.jpeg',
+      recvxyICzHyLkP: '30085341/Aisha-1.jpeg',
+    },
+  },
+  'wish-2021': {
+    label: 'WISH · 本次发行概念照',
+    source: 'https://www.genie.co.kr/magazine/subMain?mgz_seq=10231',
+    original: file => 'https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/10231/'
+      + 'Mgz_Sub_IMG_' + file + '.jpg/dims/resize/Q_80,0',
+    files: {
+      recvxyICzHGJek: '20210526110851',
+      recvxyICzHzhWr: '20210526110905',
+      recvxyICzHu6mX: '20210526110924',
+      recvxyICzH84mF: '20210526110939',
+      recvxyICzHi2X6: '20210526110954',
+    },
+  },
 };
 
 test('every display selection belongs to one existing work, video and member and retains its reviewed original', () => {
@@ -22,7 +41,7 @@ test('every display selection belongs to one existing work, video and member and
   const old = new Set(media.portraits.map(key));
   const selected = new Set();
   const workIds = new Set();
-  for (const edition of Object.values(editions)) {
+  for (const [series, edition] of Object.entries(editions)) {
     const used = new Set();
     for (const binding of edition.works) {
       assert(!workIds.has(binding.workId), binding.workId);
@@ -40,9 +59,11 @@ test('every display selection belongs to one existing work, video and member and
       assert.match(p.sourceUrl, /^https?:\/\//);
       assert.notEqual(p.original, p.preview);
       const local = [p.preview];
-      if (edition === editions['all-my-girls-2023']) {
-        assert.ok(slayPublisherFiles[memberId], memberId);
-        assert.equal(p.original, 'https://0.soompi.io/wp-content/uploads/2023/07/' + slayPublisherFiles[memberId]);
+      const publisher = publisherSeries[series];
+      if (publisher) {
+        assert.ok(publisher.files[memberId], memberId);
+        assert.equal(p.original, publisher.original(publisher.files[memberId]));
+        if (publisher.source) assert.equal(p.sourceUrl, publisher.source);
       } else {
         local.push(p.original);
       }
@@ -135,6 +156,7 @@ const reviewedReleases = [
   ['Zig Zag', 'we-can-2020', 'recvxyH5pziABU', '1FqAoADnId4', 7],
   ['Nobody Knows', 'born-to-be-xx-2023', 'rec28ldfRTrBgQ', 'unLuba-TQiE', 4],
   ['SLAY', 'all-my-girls-2023', 'recvxyH5pzPiQ3', 'jI5p2ePoVcc', 6],
+  ['Purple', 'wish-2021', 'recvxyH5pzTgrL', 'UE--H12gl2I', 5],
 ];
 
 for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
@@ -155,9 +177,9 @@ for (const [title, series, workId, videoId, memberCount] of reviewedReleases) {
       assert.equal(preview.format, 'webp');
       assert.equal(preview.width * 4, preview.height * 3);
       assert.ok(!html.includes('src="' + photo.original + '"'), 'Full image should load on demand for ' + old.memberId);
-      if (series === 'all-my-girls-2023') {
+      if (publisherSeries[series]) {
         assert.deepEqual([preview.width, preview.height], [480, 640]);
-        assert.equal(photo.label, 'ALL MY GIRLS · 本次发行概念照');
+        assert.equal(photo.label, publisherSeries[series].label);
       } else {
         const original = await sharp(path.join(__dirname, '../public', photo.original)).metadata();
         assert.ok(original.width >= preview.width && original.height >= preview.height, old.memberId);

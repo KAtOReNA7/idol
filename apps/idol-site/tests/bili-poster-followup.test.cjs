@@ -29,7 +29,7 @@ test('the observed Password thumbnail retains its actual decoded dimensions and 
    ]);
    const laterCollections=[
     '/artist/bewave/be-wave/', '/artist/candyshop/japan/', '/artist/everglow/official-community/',
-    '/artist/newjeans/debut/', '/artist/nmixx/identity/', '/artist/spia/deeeep/', '/artist/stayc/identity/',
+    '/artist/itzy/identity/', '/artist/kiiikiii/uncut-gem/', '/artist/lesserafim/identity/', '/artist/newjeans/debut/', '/artist/nmixx/identity/', '/artist/spia/deeeep/', '/artist/stayc/identity/',
    ];
    manifest.assets=manifest.assets.filter(row=>{
     const addedAfterReceipt=laterCollections.some(directory=>row.path.startsWith(directory));

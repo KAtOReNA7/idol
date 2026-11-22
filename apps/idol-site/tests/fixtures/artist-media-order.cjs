@@ -37,7 +37,7 @@ register('babymonster', '.as-featured', '.as-releases a', '.as-work-row');
 register('aespa xg', '.nx-work', '.nx-releases a');
 register('kissoflife', '.kf-release-song a', '.kf-album-cover', '.kf-work');
 register('stayc', '.sc-release-song a', '.sc-album-cover', '.sc-work');
-register('lesserafim', '.lf-release-song a', '.lf-album-cover', '.lf-work');
+register('lesserafim', '.lf-work', '.lf-album-cover');
 register('nmixx', '.nx-work', '.nx-discography a');
 register('itzy', '.iz-work', '.iz-discography a');
 register('hearts2hearts', '.h2h-watch a', '.h2h-music-cover', '.h2h-work');

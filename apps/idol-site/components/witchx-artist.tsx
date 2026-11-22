@@ -28,7 +28,12 @@ import {witchxOriginalPhoto as originalPhoto} from '@/lib/idol/witchx-photos';
 import './witchx-artist.css';
 
 const path='/artists/witchx';
-const rosterPhotoCredit='成员人像截自 IN MEDIA A&D 官网档案卡，可在成员页查看完整原卡。';
+const rosterPhotoCredit = (
+  <PhotoSourceDisclosure label="成员照片来源" className="wk-photo-credit wk-roster-note group-roster-source">
+    <p>成员人像截自 IN MEDIA A&amp;D 官网具名档案卡，可在成员页查看完整原卡。</p>
+    <a href="https://kpopmedia.co.kr/#artists" target="_blank" rel="noopener noreferrer">IN MEDIA A&amp;D 艺人页 ↗</a>
+  </PhotoSourceDisclosure>
+);
 const nav=[['overview','首页'],['members','成员'],['works','作品'],['updates','时间轴']] as const;
 type Person=typeof design.members[number];
 type Release=typeof design.releases[number];
@@ -133,7 +138,7 @@ export default function WitchxArtist({content,initialSearch=''}:{content:Candida
  if(route.member)body=selectedMember?person(selectedMember):missing('没有找到这位成员。','members');
  else if(params.has('release'))body=selectedRelease?releaseDetail(selectedRelease):missing('没有找到此发行。','works');
  else if(params.has('media'))body=selectedVideo?videoDetail(selectedVideo):missing('暂时找不到这个视频版本。','works');
- else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName,m.nativeName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="wk-result">{people.length} 份档案</p>{people.length?<>{roster(people)}<details className="wk-roster-note group-roster-source"><summary>成员照片来源</summary><p>{rosterPhotoCredit}</p></details></>:<p className="wk-empty">没有符合条件的成员。</p>}</>;}
+ else if(route.section==='members'){const people=design.members.filter(m=>[m.cnName,m.stageName,m.nativeName].join(' ').toLocaleLowerCase().includes(route.search.toLocaleLowerCase()));body=<>{title('成员','MEMBERS')}{search('members')}<p role="status" className="wk-result">{people.length} 份档案</p>{people.length?<>{roster(people)}{rosterPhotoCredit}</>:<p className="wk-empty">没有符合条件的成员。</p>}</>;}
  else if(route.section==='works'||route.section==='records')body=library();
  else if(route.section==='updates')body=<>{title('时间轴','TIMELINE')}{timeline()}</>;
  else body=<>
@@ -152,7 +157,7 @@ export default function WitchxArtist({content,initialSearch=''}:{content:Candida
    </PhotoSourceDisclosure>
  </figcaption></figure>
 </section>
-<section className="wk-home-members" aria-label="成员">{heading('成员','MEMBERS')}{roster()}<details className="wk-roster-note group-roster-source"><summary>成员照片来源</summary><p>{rosterPhotoCredit}中文名为艺名转写。</p></details></section>
+<section className="wk-home-members" aria-label="成员">{heading('成员','MEMBERS')}{roster()}{rosterPhotoCredit}</section>
 <section className="wk-section">{heading('影像与舞台','VIDEO')}{videos(design.works)}</section>
 <section className="wk-section">{heading('发行','RELEASES')}{releases()}</section>
 <section className="wk-section">{heading('时间轴','TIMELINE')}{timeline()}</section>

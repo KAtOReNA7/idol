@@ -8,7 +8,7 @@ const group = registry.find(artist => artist.slug === 'witchx');
 test('W!TCHX identifies portrait crops and directs visitors to the full company cards', async () => {
   for (const query of [{}, {section: 'members'}]) {
     const html = await renderArtist(group, query);
-    assert.match(html, /成员人像截自 IN MEDIA A&amp;D 官网档案卡，可在成员页查看完整原卡。/);
+    assert.match(html, /成员人像截自 IN MEDIA A&amp;D 官网具名档案卡，可在成员页查看完整原卡。/);
     for (const person of ['lucia', 'mago', 'mari', 'niaa', 'mew']) {
       assert.ok(html.includes('/artist/witchx/portraits/' + person + '.webp'));
     }

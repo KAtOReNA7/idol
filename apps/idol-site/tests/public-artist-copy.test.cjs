@@ -26,6 +26,17 @@ test('home group photos keep dates and source links in a closed disclosure', asy
   assert.doesNotMatch(page.querySelector('main').toString(), /拍摄(?:日期|时期)未注明/);
  }
 });
+test('ADYA and W!TCHX roster photo credits link to the named publisher from home and members', async () => {
+ for (const [slug, href] of [['adya', 'https://v.daum.net/v/KURjomI9oP'], ['witchx', 'https://kpopmedia.co.kr/#artists']]) {
+  const artist = registry.find(row => row.slug === slug);
+  for (const query of [{}, {section:'members'}]) {
+   const page = parse(await renderArtist(artist, query, artistCatalog(artist)));
+   const disclosure = page.querySelector('details.group-roster-source');
+   assert.ok(disclosure && !disclosure.hasAttribute('open'));
+   assert.equal(disclosure.querySelector('a').getAttribute('href'), href);
+  }
+ }
+});
 const visible = html => html.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
 for(const artist of registry)test(`${artist.slug}: public navigation keeps research-only input out of the visible page`, async()=>{
  const catalog=artistCatalog(artist);

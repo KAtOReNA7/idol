@@ -36,6 +36,17 @@
   "geenius-video-posters.json": {"from":["lib/idol/approved-video-poster.ts"],"fixture":{"entries":[]}},
   "genblue-bluecut.json": {"from":["components/genblue/bluecut-experience.tsx","lib/idol/genblue-bluecut.ts"],"fixture":{"groupId":"","company":"","hero":"","sourceUrl":"","members":[],"releases":[],"media":[],"events":[]}},
   "genblue-media-evidence.json": {"from":["lib/idol/genblue-bluecut.ts"],"fixture":[]},
+  "artist-home-introductions.json": {
+    "from": ["components/artist-information.tsx","components/candidate/udtt-native-design.tsx","lib/idol/group-information.mjs"],
+    "fixture": {
+      "adya": {"text":"Fixture introduction","sources":[],"placement":"hero"},
+      "candyshop": {"text":"Fixture introduction","sources":[],"placement":"hero"},
+      "oddyouth": {"text":"Fixture introduction","sources":[],"placement":"hero"},
+      "spia": {"text":"Fixture introduction","sources":[],"placement":"hero"},
+      "witchx": {"text":"Fixture introduction","sources":[],"placement":"hero"},
+      "udtt": {"text":"Fixture introduction","sources":[]}
+    }
+  },
   "group-information-facts.json": {"from":["lib/idol/group-information.mjs"],"fixture":{}},
   "group-statistics-completion-evidence.json": {"from":["lib/idol/group-information.mjs"],"fixture":{"schemaVersion":0,"checkedAt":"","researchStatus":"","baseCommit":"","displayPolicy":"","summary":{},"groups":{}}},
   "hitgs-member-portraits.json": {"from":["lib/idol/hitgs-photos.ts"],"fixture":[]},

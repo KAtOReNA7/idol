@@ -274,6 +274,12 @@ test('leaving via another control clears stale event focus from that history ent
 });
 
 test('native timelines expose the event and exact detail link in all nine real routes', async () => {
+  const workEvents = new Map([
+    ['geenius-ily-interactive', 'recvxIZRWKKCeh'],
+    ['tracer-performance-365', 'rec28ldfRTrPq2'],
+    ['spia-debut', 'rec28ldfRTrPua'],
+  ]);
+  const observedWorkEvents = new Set();
   for (const slug of ['adya','witchx','geenius','oddyouth','tracer','spia','candyshop','youngposse','bewave']) {
     const page = parse(await renderArtist(registry.find(group => group.slug === slug), {section:'updates'}));
     const events = page.querySelectorAll(sourceRow);
@@ -281,8 +287,18 @@ test('native timelines expose the event and exact detail link in all nine real r
     const links = events.flatMap(event => event.querySelectorAll('a[href]')).filter(link => link.getAttribute('href').startsWith('/'));
     assert.ok(links.length, slug);
     for (const link of links) {
-      assert.ok(link.closest(sourceRow).id, slug);
-      assert.ok(link.getAttribute('href').startsWith('/artists/'+slug+'?'), slug);
+      const eventId = link.closest(sourceRow).id;
+      const href = link.getAttribute('href');
+      assert.ok(eventId, slug);
+      if (href.startsWith('/?')) {
+        const correct = new URLSearchParams({view:'works', work:workEvents.get(eventId), returnTo:'/artists/'+slug+'?section=updates'});
+        assert.ok(workEvents.has(eventId), eventId);
+        assert.equal(href, '/?'+correct, eventId);
+        observedWorkEvents.add(eventId);
+      } else {
+        assert.ok(href.startsWith('/artists/'+slug+'?'), slug);
+      }
     }
   }
+  assert.deepEqual(observedWorkEvents, new Set(workEvents.keys()));
 });

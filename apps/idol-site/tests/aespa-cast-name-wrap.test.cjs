@@ -8,7 +8,9 @@ test('aespa cast names override anywhere wrapping on both text containers withou
 test('NINGNING remains complete and Chinese-first text is unchanged',()=>{
  const exports={};vm.runInNewContext('(function(exports){'+ts.transpileModule(fs.readFileSync('lib/idol/member-display-name.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText+'})')(exports);
  assert.equal(exports.memberDisplayName({id:'fixture',name:'NINGNING',stageName:'NINGNING',cnName:'宁艺卓',groupIds:[]}),'宁艺卓 · NINGNING');
- const page=require('./helpers/catalog-view-source.cjs')();assert.match(page,/<strong><span className="member-display-name">\{m\?memberDisplayName\(m\):r.name\}<\/span><\/strong>/);
+ const detail=fs.readFileSync('components/catalog/work-detail.tsx','utf8');
+ assert.match(detail,/const label=member\?memberDisplayName\(member\):r.name/);
+ assert.match(detail,/<strong><span className="member-display-name">\{label\}<\/span><\/strong>/);
 });
 
 test('Syne 800 NINGNING fits narrowest desktop and tablet name columns',()=>{

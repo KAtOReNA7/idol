@@ -8,6 +8,7 @@ function render(url,catalog={works:[],members:[],ratings:[]}){
  if(name==='react')return {...React,useEffect:()=>{},useSyncExternalStore:()=>url};
  if(name==='react/jsx-runtime')return require('react/jsx-runtime');
  if(name.endsWith('badvillain-figma-public.json'))return {default:data};
+ if(name.endsWith('artist-mv-link'))return require('./helpers/public-artist-loader.cjs')('lib/idol/artist-mv-link.ts');
  if(name.endsWith('artist-preview'))return {artistRoute:s=>{const p=new URL(s,'https://test').searchParams;return {section:p.get('section')||'overview',member:p.get('member')};},artistWorkUrl:(w,stage,ret)=>'/?work='+w.id+'&artistReturn='+encodeURIComponent(ret),artistWorkScoreLabel:v=>v===null?'未评分':v.toFixed(1)};
  if(name.endsWith('artist-timeline-host'))return {useArtistTimelineHostOptions:()=>({catalog}),ArtistTimelineHost:()=>React.createElement('div',{'data-full-timeline':'true'})};
  if(name.endsWith('reliable-image'))return {ReliableImage:({src,alt,style})=>React.createElement('img',{src,alt,style}),ImageRecoveryProvider:({children})=>children,ImageRecoveryControls:()=>null};
@@ -24,5 +25,13 @@ test('seven individual pages keep exact identities without speculative filler',(
 test('library retains four distinct group releases and separate 100RED collaboration',()=>{const html=render('/artists/badvillain?section=works');for(const r of data.releases)assert.ok(html.includes(r.image));assert.ok(html.includes('合作发行'));assert.ok(html.includes('100RED / 多位艺人共同参与，包含 BADVILLAIN'));});
 test('all five release details have matching sleeves, dates, credits and tracks',()=>{for(const r of data.releases){const html=render('/artists/badvillain?section=records&release='+r.id);assert.ok(html.includes(r.image));assert.ok(html.includes(r.date));for(const t of r.tracks)assert.ok(html.includes(t.title));if(r.id==='badvillain-hurricane')assert.ok(!html.includes('Performance'));}});
 test('timeline delegates to full production host, never package sample events',()=>{assert.ok(render('/artists/badvillain?section=updates').includes('data-full-timeline'));assert.ok(!Object.hasOwn(data,'timeline'));});
-test('only exact group, work ID and official URL match can open private record',()=>{const m=data.media[0];const good={id:'rec28ldfRTrQ0L',url:m.watchUrl,groupIds:[data.groupId]};assert.ok(render('/artists/badvillain',{works:[good],members:[],ratings:[]}).includes('/?work=rec28ldfRTrQ0L'));assert.ok(!render('/artists/badvillain',{works:[{...good,url:'https://wrong.invalid'}],members:[],ratings:[]}).includes('/?work=rec28ldfRTrQ0L'));});
+test('only exact group, work ID and official URL match can open private record',()=>{
+ const m=data.media[0],good={id:'rec28ldfRTrQ0L',url:m.watchUrl,groupIds:[data.groupId]};
+ const target='/?view=works&amp;work='+good.id+'&amp;returnTo=%2Fartists%2Fbadvillain';
+ const show=work=>render('/artists/badvillain',{works:[work],members:[],ratings:[]});
+ assert.ok(show(good).includes(target));
+ for(const changed of [{url:'https://wrong.invalid'},{groupIds:['another-group']},{id:'another-work'}]){
+  assert.ok(!show({...good,...changed}).includes(target));
+ }
+});
 test('SBS preview stays exact independent read-only media, with no new scores',()=>{const html=render('/artists/badvillain?section=works&media=badvillain-stage-inkigayo-20240616');assert.ok(html.includes('OC470821569'));assert.ok(html.includes('stage-badvillain-inkigayo-240616.png'));assert.ok(!src.includes("method:'POST'"));assert.ok(!src.includes('localStorage'));});

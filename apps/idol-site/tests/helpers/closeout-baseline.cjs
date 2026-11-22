@@ -28,6 +28,16 @@ const currentCopyGuard={
   }
 };
 function beforeCloseoutGuard(current){
+ if(hash(current)==='1900aba8bbc5f4cca39f9e496c4a17afb902a63d6e79f68bb01b7f53f8eaf350'){
+  const restored=structuredClone(current);
+  const priorPins={...guard.after.runtimeGuards,...currentCopyGuard.pins};
+  for(const file of ['lib/idol/udtt-native/host.mjs','lib/idol/udtt-native/model.mjs','lib/idol/udtt-native/presentation.mjs','lib/idol/udtt-native/information-identity.mjs','lib/idol/group-information.mjs']){
+   restored.runtimeGuards[file]=structuredClone(priorPins[file]);
+  }
+  delete restored.runtimeGuards['data/artist-home-introductions.json'];
+  assert.equal(hash(restored),currentCopyGuard.sha256,'exact guard before direct MV links and group introductions');
+  current=restored;
+ }
  if(hash(current)===currentCopyGuard.sha256){
   const restored=structuredClone(current);
   for(const [file,pin] of Object.entries(currentCopyGuard.pins)){

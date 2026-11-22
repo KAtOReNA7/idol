@@ -41,9 +41,9 @@ const NavigationContext=createContext<(event:MouseEvent<HTMLAnchorElement>,targe
 function Link({to,children,className,memberId,filmKey}:{to:string;children:ReactNode;className?:string;memberId?:string;filmKey?:string}){const go=useContext(NavigationContext);return <a href={to} className={className} data-artist-member-trigger={memberId} data-member-work-trigger={filmKey} onClick={event=>{if(!filmKey||!to.startsWith('/?'))go(event,to);}}>{children}</a>;}
  function Picture({src,alt,className='',priority=false}:{src:string;alt:string;className?:string;priority?:boolean}){return <ReliableImage src={src} identityKey={src} alt={alt} priority={priority} className={'photo '+className} retryMode="external" missing={<p className="missing-art">暂无封面</p>} errorFallback={<p role="status">图片暂时无法加载，可重试。</p>}/>;}
 
-export default function BewaveArtist({content}:{content:CandidateContent}){
+export default function BewaveArtist({content,initialSearch=''}:{content:CandidateContent;initialSearch?:string}){
  const host=useArtistTimelineHostOptions();
- const url=useSyncExternalStore(subscribe,()=>path+window.location.search,()=>host.serverRoute??path);
+ const url=useSyncExternalStore(subscribe,()=>path+window.location.search,()=>host.serverRoute??(path+initialSearch));
  const params=useMemo(()=>new URL(url,'https://site.invalid').searchParams,[url]);
  const route=useMemo(()=>artistRoute(url),[url]);
  const [fetched,setFetched]=useState<{data:CatalogView|null;error:string;loading:boolean}>({data:null,error:'',loading:true});

@@ -15,6 +15,27 @@ const editorialVideos = {
 const groupBySlug = new Map(registry.map(group => [group.slug, group]));
 const homeAndDirectory = [{}, {section: 'works'}, {section: 'works', format: 'mv'}];
 
+test('shared artist links render the requested section before hydration or catalog data', async () => {
+  for (const slug of ['adya', 'bewave', 'spia', 'witchx']) {
+    const group = groupBySlug.get(slug);
+    const home = parse(await renderArtist(group, {}, null, {serverRoute: undefined, loading: true}));
+    const member = artistCatalog(group).members.find(person => person.groupIds.includes(group.groupId));
+    for (const query of [
+      {section: 'works', format: 'stage'},
+      {section: 'members'},
+      {section: 'members', member: member.id},
+      {section: 'works', q: 'A & B'},
+      {section: 'updates'},
+    ]) {
+      const request = parse(await renderArtist(group, query, null, {serverRoute: undefined, loading: true}));
+      const selected = parse(await renderArtist(group, query, null, {loading: true}));
+      const actual = request.querySelector('main');
+      assert.equal(actual.innerHTML, selected.querySelector('main').innerHTML, slug + JSON.stringify(query));
+      assert.notEqual(actual.innerHTML, home.querySelector('main').innerHTML, slug + JSON.stringify(query));
+    }
+  }
+});
+
 test('three artist home photos and catalog links are usable before the catalog arrives', async () => {
   for (const slug of ['qwer','purplekiss','illit']) {
     const group=groupBySlug.get(slug);

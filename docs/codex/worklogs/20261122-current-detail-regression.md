@@ -18,3 +18,11 @@ Windows 与 WSL Ubuntu 使用同一批源文件。四团现行业务用例 35 �
 ## v231 复核
 
 原四个详情文件的失败分别为 Hearts2Hearts 9 项、Billlie 7 项、i-dle 6 项、NewJeans 5 项，v212 中缺少 `h.media` 的用例分别为 1、2、1、2 项。v213 消除全部 27 项后，v231 的完整 Windows、WSL 日志里，这四个文件都没有失败。v231 在两端另跑四个详情文件与隔离 D1 文件，均为 41/41。35 项详情之外，四条作品与成员的丢回执读回，以及两条所有者读取验证全部通过。[v213 按文件清单](../evidence/20261122-v213/tests.json) · [v231 重跑](../evidence/20261122-v231/four-work-details.json)
+
+## LOONA 与 tripleS 的评分复核
+
+v234 的完整测试中，两条评分用例都在查找旧组件时中止，未执行保存。现按页面上的「MV 分数」和「作品整体舞台分」操作真实作品详情。LOONA《Butterfly》使用 M COUNTDOWN 第 607 期（`ezA5LkSzEyo`），tripleS《Girls Never Die》使用第 843 期（`y2Zx2JpmUU8`）。两首均在模拟编辑冲突后保留 0 分草稿，来回切换视频不会发起保存。[LOONA 评分用例](../../../apps/idol-site/tests/loona-detail.test.cjs) · [tripleS 评分用例](../../../apps/idol-site/tests/triples-detail.test.cjs)
+
+在隔离 D1 分别保存 MV 0 分、舞台 9.1 分，模拟数据库已提交但页面未收到回执，再点「核对上次保存」。两次请求内容相同，每首数据库均只记一次，回执中的作品和舞台与原选择一致。成员卡的 0 分、未填的造型分和备注均可读回。最后单独清空 MV 分数，舞台仍为 9.1，成员仍为 0。试验使用公开的团体、作品和舞台身份，以及合成的所有者、成员记录和评分，无正式私人写入。[共享详情操作](../../../apps/idol-site/tests/helpers/current-work-detail.cjs) · [隔离 D1 保存与读回](../../../apps/idol-site/tests/work-detail-d1.test.cjs)
+
+Windows 和 WSL 各通过两条此前失败的评分用例，再各通过 44 项相关回归（原四团详情 35 项、六首 D1 保存 6 项及目录读取 3 项），均无跳过。本次共改动测试与工作日志。以上为定向结果，未据此重算全项目历史失败数。

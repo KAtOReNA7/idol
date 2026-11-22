@@ -12,6 +12,7 @@ function currentDetail(id, schedule=setTimeout) {
   assert.ok(work && stages[id], id);
   const api = `
     return {settle,wp,find,walk,txt,requests,footer:()=>footer,editor:()=>et,member:()=>mt,tree:()=>wt,renderWork:()=>w.render(wp),
+      renderControl(node){return new Runner(node.type).render(node.props);},
       setReadTransport(transport){readTransport=transport;},setSaveTransport(transport){saveTransport=transport;},
       rejectSave(code){saveFailure=code?{error:code}:null;},receipt(value){receiptOverride=value;},
       player(){return find(wt,node=>node.props.workId===wp.work.id && 'embedUrl' in node.props);}};
@@ -30,7 +31,14 @@ function currentDetail(id, schedule=setTimeout) {
 }
 
 async function turn(h,id) { h.find(h.tree(),n=>n.props.id===id+'-tab').props.onClick(); await h.settle(); }
-function input(h,label) { return h.find(h.editor(),n=>n.type==='input' && n.props['aria-label']===label); }
+function input(h, label, tree = h.editor()) {
+  const matches = node => node.type === 'input' && node.props['aria-label'] === label;
+  const direct = h.find(tree, matches);
+  if (direct) return direct;
+  // Some member editors wrap the same labelled input in a decimal stepper.
+  const control = h.find(tree, node => typeof node.type === 'function' && node.props.label === label);
+  return control && h.find(h.renderControl(control), matches);
+}
 const change = (field,value) => field.props.onChange({target:{value}});
 const posts = h => h.requests.filter(request => request.url==='/api/save');
 async function assertWorkDrafts(id) {
@@ -42,6 +50,8 @@ async function assertWorkDrafts(id) {
   assert.equal(input(h,'MV 分数').props.value,0); assert.equal(posts(h).length,0);
   h.rejectSave('EDIT_CONFLICT'); await h.footer().props.onClick(); await h.settle();
   assert.equal(h.editor().props['data-dirty'],'true'); assert.equal(input(h,'MV 分数').props.value,0);
+  const status = h.find(h.editor(), node => node.props.role === 'status');
+  assert.match(h.txt(status), /输入(?:仍在|已保留)/);
   h.rejectSave(null); await h.footer().props.onClick(); await h.settle();
   const saved=JSON.parse(posts(h).at(-1).body);
   assert.equal(saved.recordId,id); assert.deepEqual(saved.values,{score:0,stageScore:9.1});

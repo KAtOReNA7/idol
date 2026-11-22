@@ -13,6 +13,7 @@ const snapshot = 'detail-test';
 const records = [
   ['The Chase', 'rec28ldfRTrzDX'], ['RING X RING', 'recvxyH5pzBi6D'],
   ['TOMBOY', 'recvxyOz5XuYef'], ['Attention', 'recvxyOz5X2J0A'],
+  ['Butterfly', 'recvxyOz5X7G95'], ['Girls Never Die', 'rec28ldfRTrCjG'],
 ];
 let runtime, db;
 
@@ -248,16 +249,22 @@ test('after a request ends during the cold D1 read, the next HTTP request opens 
 for (const [title, id] of records) {
   test(title + ' reads back the correct work and member after a lost D1 save response', async () => {
     const h = currentDetail(id);
+    const group = h.wp.data.groups[0];
+    const memberId = 'recTestMember' + id;
     const ratingId = 'recTestRating' + id;
+    h.wp.data.members[0].id = memberId;
+    h.wp.data.ratings[0].memberIds = [memberId];
     h.wp.data.ratings[0].id = ratingId;
     const workFields = F.works, memberFields = F.ratings;
+    await seed('groups', group.id, {[F.groups.name]: group.name});
+    await seed('members', memberId, {[F.members.name]: 'Synthetic member', [F.members.groups]: [group.id]});
     await seed('works', id, {
       [workFields.url]: h.wp.work.url, [workFields.score]: 8, [workFields.stageScore]: null,
-      [workFields.groups]: ['recGroup'], [workFields.song]: title,
+      [workFields.groups]: [group.id], [workFields.song]: title,
       [workFields.note]: 'test work note', [workFields.watched]: '未观看',
     });
     await seed('ratings', ratingId, {
-      [memberFields.works]: [{recordId: id}], [memberFields.members]: [{recordId: 'recMember'}],
+      [memberFields.works]: [{recordId: id}], [memberFields.members]: [{recordId: memberId}],
       [memberFields.score]: '7', [memberFields.stylingScore]: null, [memberFields.memory]: '', [memberFields.note]: 'test member note',
     });
     // Resolve Worker/D1 reads before inspecting a render; setImmediate alone can finish too early.
@@ -284,6 +291,7 @@ for (const [title, id] of records) {
     await h.settle();
     await turn(h, 'mv');
     assert.equal(input(h, 'MV 分数').props.value, 0);
+    assert.equal(posts(h).length, 0);
     let dropReply = true;
     h.setSaveTransport(async ({body}) => {
       const result = await post(body);
@@ -298,9 +306,11 @@ for (const [title, id] of records) {
     await h.footer().props.onClick();
     await h.settle();
     assert.equal(h.editor().props['data-dirty'], 'true');
+    assert.equal(input(h, 'MV 分数').props.value, 0);
     assert.match(h.txt(h.footer()), /核对上次保存/);
     await h.footer().props.onClick();
     await h.settle();
+    assert.equal(posts(h).length, 2);
     assert.equal(posts(h)[0].body, posts(h)[1].body);
     const savedWork = await (await read('works', id)).json();
     assert.equal(savedWork.values.score, 0);
@@ -308,13 +318,16 @@ for (const [title, id] of records) {
     assert.equal(savedWork.values.note, 'test work note');
     const journals = await db.prepare('SELECT result_json FROM idol_saves WHERE record_id = ?').bind(id).all();
     assert.equal(journals.results.length, 1);
-    assert.equal(JSON.parse(journals.results[0].result_json).stageSource.sourceKey, h.wp.work.stage.videoId);
+    const receipt = JSON.parse(journals.results[0].result_json);
+    assert.equal(receipt.operationId, JSON.parse(posts(h)[0].body).operationId);
+    assert.equal(receipt.recordId, id);
+    assert.equal(receipt.stageSource.sourceKey, h.wp.work.stage.videoId);
 
     const card = h.find(h.tree(), n => n.props.id === 'mv-cast-' + ratingId);
     assert.equal(h.find(card, n => n.props.table === 'ratings').props.id, ratingId);
     h.find(h.member(), n => n.type === 'button').props.onClick();
     await settleReads();
-    const performance = () => h.find(h.member(), n => n.props['aria-label'] === '表现分');
+    const performance = () => input(h, '表现分', h.member());
     change(performance(), '0');
     await h.settle();
     await turn(h, 'stage');
@@ -323,7 +336,7 @@ for (const [title, id] of records) {
     h.find(h.tree(), n => n.type === 'button' && h.txt(n).includes('去保存成员评分')).props.onClick();
     await h.settle();
     assert.equal(focused, true);
-    assert.equal(performance().props.value, 0);
+    assert.match(String(performance().props.value), /^0(?:\.0)?$/);
     await h.find(h.member(), n => n.type === 'button' && h.txt(n).includes('保存此条记录')).props.onClick();
     await h.settle();
     const savedRating = await (await read('ratings', ratingId)).json();
@@ -335,10 +348,15 @@ for (const [title, id] of records) {
     assert.match(response.headers.get('Preference-Applied'),/work-detail=/);
     const refreshed = await response.json();
     assert.deepEqual(refreshed.scope,{type:'work',workId:id});
-    assert.equal(refreshed.works.find(w=>w.id===id).score,0);
-    assert.equal(refreshed.works.find(w=>w.id===id).stageScore,9.1);
-    assert.equal(refreshed.ratings.find(r=>r.id===ratingId).score,0);
-    assert.ok(refreshed.members.some(m=>m.id==='recMember'));
+    const refreshedWork = refreshed.works.find(work => work.id === id);
+    assert.deepEqual(refreshedWork.groupIds, [group.id]);
+    assert.equal(refreshedWork.score, 0);
+    assert.equal(refreshedWork.stageScore, 9.1);
+    const refreshedRating = refreshed.ratings.find(rating => rating.id === ratingId);
+    assert.deepEqual(refreshedRating.memberIds, [memberId]);
+    assert.deepEqual(refreshedRating.workIds, [id]);
+    assert.equal(refreshedRating.score, 0);
+    assert.ok(refreshed.members.some(member => member.id === memberId));
     assert.equal(refreshed.personalMvRatings.writable,true);
     change(input(h, 'MV 分数'), '');
     await h.settle();

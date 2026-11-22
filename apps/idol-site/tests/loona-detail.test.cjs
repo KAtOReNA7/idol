@@ -1,4 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const {assertWorkDrafts} = require('./helpers/current-work-detail.cjs');
 function harness(){
  const prefix=fs.readFileSync(path.join(__dirname,'editor-flow.test.cjs'),'utf8').split('(async()=>{')[0].replace('export {Editor,WorkDetail};','export {Editor,WorkDetail,LoonaScoreInput};');
  return vm.runInNewContext('(function(require,__dirname){'+prefix+`
@@ -29,9 +30,5 @@ test('LOONA stage ticket uses actual metadata and retains MV/stage editor identi
  const ticket=h.find(h.tree(),n=>n.props.className==='loona-programme-ticket');assert.ok(ticket);assert.ok(h.txt(ticket).includes(h.wp.work.stage.title));assert.doesNotMatch(h.txt(ticket),/EP\.607/);
  assert.equal(h.find(h.tree(),n=>n.props.table==='works').key,editor.key);
 });
-test('LOONA failed save keeps typed zero and draft; score widget never writes by itself',async()=>{
- const h=harness();h.wp.work={...h.wp.work,groupIds:['recvxyEBDZJAXm']};await h.settle();
- let input=h.find(h.editor(),n=>typeof n.type==='function'&&n.type.name==='LoonaScoreInput');input.props.onChange(0);await h.settle();assert.equal(h.requests.filter(r=>r.url==='/api/save').length,0);
- h.fail();await h.find(h.editor(),n=>n.props.ref).props.onClick();await h.settle();
- input=h.find(h.editor(),n=>typeof n.type==='function'&&n.type.name==='LoonaScoreInput');assert.equal(input.props.value,0);assert.equal(h.editor().props['data-dirty'],'true');assert.match(h.txt(h.editor()),/输入已保留/);
-});
+test('LOONA failed save keeps typed zero and draft; score widget never writes by itself',
+  () => assertWorkDrafts('recvxyOz5X7G95'));

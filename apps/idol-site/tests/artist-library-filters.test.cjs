@@ -1,14 +1,56 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const {parse} = require('next/dist/compiled/node-html-parser');
-const {registry, renderArtist} = require('./fixtures/current-artist-pages.cjs');
+const {registry, renderArtist, artistCatalog} = require('./fixtures/current-artist-pages.cjs');
 const selectors = require('./fixtures/artist-media-order.cjs');
 const {artistJourneys} = require('./fixtures/artist-journey-routes.cjs');
 const load = require('./helpers/public-artist-loader.cjs');
 const {safeArtistReturn} = load('lib/idol/artist-navigation.ts');
+const {artistCollection} = load('lib/idol/artist-preview.ts');
 
 const slugs = ['adya','witchx','geenius','oddyouth','tracer','spia','youngposse','bewave','candyshop','genblue'];
 const formats = ['all','mv','stage','release'];
+
+for (const [slug,title,count] of [['rescene','DISCOGRAPHY',10],['madein','VIDEO',8],['triples','Movie',25]]) {
+  test(slug+' shows each MV once before albums, with matching artwork and a usable filtered return', async () => {
+    const group=registry.find(row=>row.slug===slug);
+    const catalog=artistCatalog(group);
+    const works=artistCollection(catalog,group.groupId).works;
+    const page=async query=>parse(await renderArtist(group,query,catalog));
+    const all=await page({section:'works'});
+    assert.equal(all.querySelector('.sr-catalog-heading h1').text,title);
+    assert.deepEqual(all.querySelectorAll('.sr-catalog-heading a').map(a=>a.getAttribute('href')),['#sr-videos','#sr-releases']);
+    assert.deepEqual(all.querySelectorAll('.sr-film-library [role="group"] label').map(l=>l.childNodes[0].text),['搜索作品','观看记录','内容']);
+    const cards=all.querySelectorAll('#sr-videos .sr-library-film');
+    assert.equal(cards.length,count);
+    assert.equal(all.querySelector('main .sr-work,main .sr-release'),cards[0]);
+    assert.equal(new Set(cards.map(c=>c.querySelector('img').getAttribute('src'))).size,count);
+    assert.equal(all.querySelectorAll('#sr-videos img').length,count);
+    for(const [i,card] of cards.entries()){
+      const primary=card.querySelector('.sr-library-film-link');
+      assert.equal(primary.querySelector('h3').text,works[i].song||works[i].name);
+      assert.ok(primary.querySelector('img').getAttribute('src').includes(new URL(works[i].url).searchParams.get('v')));
+      assert.equal(localUrl(primary).searchParams.get('work'),works[i].id);
+      assert.equal(card.querySelectorAll('a').filter(a=>localUrl(a).href===localUrl(primary).href).length,1);
+    }
+    const w=works.find(row=>row.stage);
+    for(const format of ['mv','stage']){
+      const query={section:'works',format,q:w.song};
+      const filtered=await page(query);
+      const target=localUrl(filtered.querySelector('[data-work-id="'+w.id+'"] > a'));
+      assert.equal(target.searchParams.get('work'),w.id);
+      assert.equal(target.searchParams.get('video'),format==='stage'?'stage':null);
+      assertDestination(new URL(target.searchParams.get('returnTo'),target),group.path,query);
+      assert.equal(filtered.querySelector('input[type=search]').getAttribute('value'),w.song);
+      assert.equal(filtered.querySelector('a[href="#sr-releases"]'),null);
+      if(format==='stage')assert.ok(filtered.querySelector('[data-artist-stage-card] .stage-directory-credit').text.includes(w.stage.publishedDate));
+    }
+    const empty=await page({section:'works',format:'stage',q:'no-such-record-6829'});
+    assert.match(empty.text,/没有符合条件的舞台/);
+    assert.match(empty.querySelector('[role=status]').text,/清除筛选/);
+    assert.equal(empty.querySelector('.sr-library-film'),null);
+  });
+}
 
 function localUrl(link) {
   assert.ok(link, 'Expected a visitor-facing link');

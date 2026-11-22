@@ -1,5 +1,7 @@
 'use client';
 import {MemberWorkIdentityPhoto} from '@/components/member-work-identity-photo';
+import {ArtistStageDirectoryCard} from '@/components/artist-stage-directory-card';
+import {LibraryFilm} from './library-film';
 import {ArtistWorkPreview} from '@/components/app-image-presentation';
 import {publicVideoCover} from '@/lib/idol/mv-public-media';
 import {ArtistInformation,ArtistHomeTimeline} from '@/components/artist-information';
@@ -33,6 +35,7 @@ import starshipProfile from '@/data/ive-love-dive-archive.json';
 import {IvePeriod,IvePeriodLinks,ivePeriodFor} from './ive-periods';
 
 type Direction={hero?:string;heroOriginal?:string;heroSourceUrl?:string;memberOrder?:string[];logo?:string;secondary?:string;portraits?:Record<string,{image:string;original?:string;label:string;sourceUrl:string}>};
+const libraryTitles: Partial<Record<SevenSlug,string>> = {rescene:'DISCOGRAPHY',madein:'VIDEO',triples:'Movie'};
 const nav:[ArtistSection,string,string][]=[['overview','HOME','首页'],['members','PROFILE','成员'],['works','DISCOGRAPHY','作品'],['updates','HISTORY','时间轴']];
 const subscribe=(fn:()=>void)=>{window.addEventListener('popstate',fn);window.addEventListener('artist-location-change',fn);return()=>{window.removeEventListener('popstate',fn);window.removeEventListener('artist-location-change',fn);};};
 const emptyMembers: Member[] = [];
@@ -113,7 +116,37 @@ export default function SevenArtist({slug,initialHome=false}:{slug:SevenSlug;ini
  function filmCard(f:Film){const w=exactFilm(f);return <article className="sr-work" key={f.id}><button className="sr-film-art" aria-label={'查看'+f.title} onClick={()=>w?location.assign(artistWorkUrl(w,f.kind==='stage',returnTo)):go('works',{media:f.id,...(['triples','purplekiss','rescene'].includes(slug)?{format:f.kind}: {})})}><Picture src={f.image} alt={f.title}/><span className="sr-play">↗</span></button><div className="sr-work-copy"><small>{f.kind.toUpperCase()} · {f.date}</small><h3>{f.title}</h3><button onClick={()=>w?location.assign(artistWorkUrl(w,f.kind==='stage',returnTo)):go('works',{media:f.id,...(['triples','purplekiss','rescene'].includes(slug)?{format:f.kind}: {})})}>{w?'观看与记录':'影像详情'} →</button></div></article>;}
  function releaseCard(r:Release){return <article className="sr-release" key={r.id}><button className="sr-cover" onClick={()=>go('works',{release:r.id})} aria-label={'查看'+r.title+'发行详情'}>{r.image?<Picture src={r.image} alt={r.title+'封面'}/>:<span className="sr-text-cover">{r.title}<small>发行档案</small></span>}</button><small>{r.date} · {r.type||'RELEASE'}</small><h3><button onClick={()=>go('works',{release:r.id})}>{r.title} ↗</button></h3></article>;}
  function releases(home=false){const rows=config.releases.filter(r=>home||normalize(r.title).includes(normalize(route.search)));return rows.length?<section className="sr-section sr-releases">{heading('DISCOGRAPHY','发行目录')}<div className="sr-release-grid">{(home?rows.slice(0,3):rows).map(releaseCard)}</div>{home&&<button className="sr-more" onClick={()=>go('works')}>全部发行 / VIEW ALL <span>↗</span></button>}</section>:null;}
- function library(){const rows=artistWorkRows(works,route.queue,route.search);return <><section className="sr-section sr-library-tools">{heading('MUSIC','MV · 舞台 · 发行')}<div className="sr-tools"><label>搜索作品<input type="search" aria-label="搜索本团作品" placeholder="歌曲、版本或专辑" value={route.search} onChange={e=>query(e.target.value)}/></label><label>观看记录<select aria-label="筛选观看记录" value={route.queue} onChange={e=>go('works',{q:route.search,queue:e.target.value,format:route.format})}>{[['all','全部'],['tonight','待看'],['rewatch','高分重温'],['unrated','看过待评分']].map(([k,v])=><option key={k} value={k}>{v}</option>)}</select></label><label>内容<select aria-label="筛选影像类型" value={route.format} onChange={e=>go('works',{q:route.search,queue:route.queue,format:e.target.value})}>{[['all','全部'],['mv','MV'],['stage','舞台']].map(([k,v])=><option key={k} value={k}>{v}</option>)}</select></label></div><div className="sr-row-links"><a href="#sr-videos">影像 ↓</a>{config.releases.length>0&&<a href="#sr-releases">发行 ↓</a>}<button onClick={()=>go('records')}>我的记录 →</button></div></section><section id="sr-videos" className="sr-section">{heading(route.format==='stage'?'ON STAGE':'VIDEOS','已收录影像')}<div className="sr-work-grid">{rows.filter(w=>route.format==='stage'?!!(w.stage||w.stageSupplement?.alternatives.length):true).map(w=>workCard(w,route.format==='stage'))}</div>{!rows.length&&<p>没有符合条件的作品。<button onClick={()=>go('works')}>清除筛选</button></p>}</section>{route.queue==='all'&&config.films.some(f=>!exactFilm(f))&&<section className="sr-section">{heading('MORE FILMS','更多官方影像')}<div className="sr-work-grid">{config.films.filter(f=>!exactFilm(f)&&(route.format==='all'||route.format===f.kind)&&normalize(f.title).includes(normalize(route.search))).map(filmCard)}</div></section>}<div id="sr-releases">{slug==='ive'&&<IvePeriodLinks/>}{route.format==='all'&&route.queue==='all'&&releases()}</div></>;}
+ function library() {
+  const title=libraryTitles[slug], stage=route.format==='stage';
+  const rows=artistWorkRows(works,route.queue,route.search).filter(w=>!stage||w.stage||w.stageSupplement?.alternatives.length);
+  const films=route.queue==='all'?config.films.filter(f=>!exactFilm(f)&&(route.format==='all'||route.format===f.kind)&&normalize(f.title).includes(normalize(route.search))):[];
+  const albums=route.format==='all'&&route.queue==='all'?releases():null;
+  const tools=<div className="sr-tools" role="group" aria-label="筛选作品">
+   <label>搜索作品<input type="search" aria-label="搜索本团作品" placeholder="歌曲或版本" value={route.search} onChange={e=>query(e.target.value)}/></label>
+   <label>观看记录<select aria-label="筛选观看记录" value={route.queue} onChange={e=>go('works',{q:route.search,queue:e.target.value,format:route.format})}>
+    {[['all','全部'],['tonight','待看'],['rewatch','高分重温'],['unrated','看过待评分']].map(([k,v])=><option key={k} value={k}>{v}</option>)}
+   </select></label>
+   <label>内容<select aria-label="筛选影像类型" value={route.format} onChange={e=>go('works',{q:route.search,queue:route.queue,format:e.target.value})}>
+    {[['all','全部'],['mv','MV'],['stage','舞台']].map(([k,v])=><option key={k} value={k}>{v}</option>)}
+   </select></label>
+  </div>;
+  const jump=<div className="sr-row-links"><a href="#sr-videos">影像 ↓</a>{albums&&<a href="#sr-releases">发行 ↓</a>}<button onClick={()=>go('records')}>我的记录 →</button></div>;
+  const catalogCards=rows.map(w=>!title?workCard(w,stage):stage
+   ?<ArtistStageDirectoryCard key={w.id} work={w} returnTo={returnTo} className="sr-work"/>
+   :<LibraryFilm key={w.id} work={w} returnTo={returnTo} remember={rememberScroll}/>);
+  return <div className={title?'sr-film-library':undefined}>
+   {title?<header className="sr-catalog-header">
+    <div className="sr-catalog-heading"><h1>{title}</h1>{jump}</div>{tools}
+   </header>:<section className="sr-section sr-library-tools">{heading('MUSIC','MV · 舞台 · 发行')}{tools}{jump}</section>}
+   <section id="sr-videos" className="sr-section" aria-label={stage?'舞台':'MV'}>
+    {!title&&heading(stage?'ON STAGE':'VIDEOS','已收录影像')}
+    <div className="sr-work-grid">{catalogCards}</div>
+    {!rows.length&&!films.length&&<p role="status">{stage?'没有符合条件的舞台。':'没有符合条件的影像。'} <button onClick={()=>go('works')}>清除筛选</button></p>}
+   </section>
+   {!!films.length&&<section className="sr-section">{heading('MORE FILMS','更多官方影像')}<div className="sr-work-grid">{films.map(filmCard)}</div></section>}
+   <div id="sr-releases">{slug==='ive'&&<IvePeriodLinks/>}{albums}</div>
+  </div>;
+ }
  function memberPage(m:Member){const p=portrait(m),items=data?memberWorks(data,m.id):[],summary=memberWorkSummary(items);return <article className="sr-member-detail sr-section" data-member-layout="ordered-v1" data-member-id={m.id}><button className="sr-back" onClick={backMembers}>{slug==='ive'&&typeof window!=='undefined'&&window.history.state?.sevenOrigin?.path?.includes('&release=')?'← 返回发行时期':'← 返回成员目录'}</button><div className="sr-profile-layout" data-member-module="identity"><div className="sr-profile-image"><button onClick={()=>p&&enlarge(p.image,name(m))} disabled={!p}><Picture src={p?.image} alt={name(m)} priority/></button><p>{p?.credit}</p>{p&&<div className="sr-row-links"><button onClick={()=>enlarge(p.image,name(m))}>查看完整原图 ↗</button></div>}</div><div className="sr-biography" data-member-module="basic"><small>{slug==='triples'&&sNumber(m)?'S'+sNumber(m):config.name} / PROFILE</small><h1>{m.stageName||name(m)}</h1><h2>{name(m)}</h2><p>{[m.role,m.status].filter(Boolean).join(' · ')}</p><MemberCareerFacts member={m} part="intro"/><MemberPhysicalFacts member={m}/><a className="sr-cta" href={artistMemberUrl(m.id,returnTo)}>个人作品与评分 ↗</a></div></div><section className="sr-member-works" data-member-module="works">{heading('ON RECORD','已关联作品')}<p className="sr-note">{summary.ratedWorks} 支已评 · 表现 {artistWorkScoreLabel(summary.performanceMean)} · 造型 {artistWorkScoreLabel(summary.stylingMean)}</p><div className="sr-work-grid">{items.map(item=><article className="sr-work" key={item.work.id}><MemberWorkIdentityPhoto work={item.work} memberId={m.id} label={name(m)+' · '+item.work.song} photo={item.photo} live={data?.mode==='live'} className="sr-look" onOpen={({src,label})=>enlarge(src,label)}/><MvPhotoReference photo={item.photo} referencePhoto={item.referencePhoto} label={name(m)+' · '+item.work.song} live={data?.mode==='live'}/><div className="sr-work-copy"><h3><a data-member-work-trigger={item.work.id} href={artistWorkUrl(item.work,false,returnTo)}>{item.work.song||item.work.name} ↗</a></h3><p>表现 {artistWorkScoreLabel(item.performance)} · 造型 {artistWorkScoreLabel(item.styling)}</p></div></article>)}</div>{!items.length&&<p>暂无个人作品记录。</p>}</section>{data&&<MemberPublicCredits memberId={m.id} data={data} onWork={id=>{const work=works.find(w=>w.id===id);if(work)location.assign(artistWorkUrl(work,false,returnTo));}}/>}<MemberCareerFacts member={m} part="history"/><MemberCareerFacts member={m} part="sources"/>{p&&<section className="member-profile-sources" data-member-module="sources"><External href={p.sourceUrl}>图片来源</External></section>}<div className="sr-member-next">{[-1,1].map(step=>{const other=ordered[(ordered.indexOf(m)+step+ordered.length)%ordered.length];return other&&<button key={step} onClick={()=>go('members',{member:other.id})}>{step<0?'← 上一位':'下一位 →'}<span>{other.stageName}</span></button>;})}</div></article>;}
  function releasePage(r:Release){
   const period=slug==='ive'&&ivePeriodFor(r.id);

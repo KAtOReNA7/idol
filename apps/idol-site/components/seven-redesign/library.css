@@ -1,0 +1,115 @@
+.sr-site .sr-film-library {
+  --catalog-width: min(1260px, 91%);
+  padding: 22px 0 32px;
+}
+.sr-film-library .sr-catalog-header,
+.sr-site .sr-film-library #sr-videos {
+  width: var(--catalog-width);
+  margin-inline: auto;
+}
+.sr-site .sr-film-library #sr-videos {padding: 0; scroll-margin-top: 12px}
+.sr-film-library .sr-catalog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.sr-film-library .sr-catalog-heading h1 {font-size: clamp(34px,4.4vw,64px); line-height: 1.05}
+.sr-film-library .sr-catalog-heading .sr-row-links {margin: 0; gap: 16px}
+.sr-film-library .sr-catalog-heading :is(a,button) {min-height: 44px; padding: 0}
+.sr-site .sr-film-library .sr-tools {
+  display: grid;
+  grid-template-columns: minmax(0,1.8fr) repeat(2,minmax(0,1fr));
+  gap: 10px 16px;
+  margin: 16px 0;
+}
+.sr-film-library .sr-tools label {min-width: 0; gap: 3px; font-size: 12px}
+.sr-site .sr-film-library .sr-tools :is(input,select) {
+  width: 100%; min-width: 0; min-height: 44px; margin: 0;
+  padding: 7px 11px; border: 1px solid var(--sr-line);
+  background-color: var(--catalog-field,#fff); color: var(--sr-ink);
+  font: inherit; font-size: 15px;
+}
+.sr-film-library .sr-work-grid {gap: 24px 20px; align-items: start}
+.sr-film-library .sr-library-film-link {display: block; min-width: 0}
+.sr-film-library .sr-film-art {background-color: #191719!important}
+.sr-film-library .sr-film-art img {object-fit: contain}
+.sr-film-library .sr-play {
+  bottom: 8px; right: 8px; width: 33px; height: 33px; border-radius: 50%;
+  background: #171418dc; border: 1px solid #ffffffa0; color: #fff;
+}
+.sr-site .sr-film-library .sr-work-copy {padding: 10px 12px; border: 0}
+.sr-site .sr-film-library .sr-work-copy h3 {margin: 0 0 5px; font-size: clamp(17px,1.6vw,25px)}
+.sr-film-library .sr-work-copy small {font-size: 11px; letter-spacing: .025em}
+.sr-film-library .sr-library-record {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+  gap: 0 9px; padding: 0 12px; min-height: 44px; font-size: 12px;
+}
+.sr-film-library .sr-library-record a {display: inline-flex; align-items: center; min-height: 44px}
+.sr-film-library .sr-library-film-link:hover h3,
+.sr-film-library .sr-library-record a:hover {text-decoration: underline; text-underline-offset: 3px}
+.sr-film-library .sr-section:not(#sr-videos) {padding-block: 42px}
+
+/* THE MUZE sets its release titles in Montserrat on an equal-width photographic grid. */
+.sr-rescene .sr-film-library {background: #edf1f4; --sr-line: #aaa4ac; --sr-ink: #28242a}
+.sr-rescene .sr-catalog-heading h1 {
+  color: #483746; font-family: ResceneMontserrat,SevenBody,sans-serif; font-weight: 650; letter-spacing: -.045em;
+}
+.sr-rescene .sr-film-library .sr-work-grid {grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px}
+.sr-rescene .sr-film-library .sr-work-copy {background: #29262b; color: #fff}
+.sr-rescene .sr-library-record {border: 1px solid #bcb7bd; border-top: 0; color: #4d414d}
+
+/* The official MADEIN VIDEO section uses a magenta rule, Hammersmith One and one lead video. */
+.sr-madein .sr-film-library {background: #fff8fb; --sr-line: #c6aeb9; --sr-ink: #26181f}
+.sr-madein .sr-catalog-heading h1 {
+  padding-inline-start: 13px; border-left: 6px solid #d92589;
+  font-family: SevenMadein,SevenBody,sans-serif; font-weight: 400; color: #ae165f;
+}
+.sr-madein .sr-film-library .sr-work-grid {grid-template-columns: repeat(3,minmax(0,1fr))}
+.sr-madein .sr-library-film-link {background: #281820; color: #fff}
+.sr-madein .sr-library-film .sr-work-copy h3 {font-family: SevenMadein,SevenBody,sans-serif; font-weight: 400}
+.sr-madein .sr-library-film:first-child {grid-column: 1 / -1}
+.sr-madein .sr-library-film:first-child .sr-library-film-link {
+  display: grid; grid-template-columns: minmax(0,57fr) minmax(0,43fr); align-items: center;
+}
+.sr-madein .sr-library-film:first-child .sr-work-copy {padding: clamp(14px,3vw,44px)}
+.sr-madein .sr-library-film:first-child .sr-work-copy h3 {font-size: clamp(28px,4vw,60px)}
+.sr-madein .sr-library-record {border-bottom: 1px solid #c6aeb9}
+
+/* The official Movie index pairs two columns, centered titles and warm gray media labels. */
+.sr-triples .sr-film-library {
+  --sr-bg: #262426; --sr-ink: #fbf9f9; --sr-muted: #e0d6d4; --sr-line: #797172;
+  --sr-accent: #edd9d0; --catalog-field: #403d40;
+  background: var(--sr-bg); color: var(--sr-ink); color-scheme: dark;
+}
+.sr-triples .sr-catalog-heading {
+  display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
+}
+.sr-triples .sr-catalog-heading h1 {grid-column: 2; font-family: "Helvetica Neue",SevenBody,sans-serif; font-weight: 400}
+.sr-triples .sr-catalog-heading .sr-row-links {justify-self: end}
+.sr-triples .sr-film-library .sr-work-grid {grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px 24px}
+.sr-triples .sr-library-film-link {
+  display: grid; grid-template-columns: 45% minmax(0,1fr); align-items: center; background: #514b4b; color: #fff;
+}
+.sr-triples .sr-film-library .sr-work-copy {padding: 10px 14px}
+.sr-triples .sr-library-record {background: #363235}
+.sr-triples .sr-film-library .sr-tools input::placeholder {color: #dbd2d0}
+
+@media (max-width: 720px) {
+  .sr-site .sr-film-library {padding-top: 14px; --catalog-width: 91%}
+  .sr-film-library .sr-catalog-heading {display: flex; flex-wrap: wrap; gap: 0 10px}
+  .sr-film-library .sr-catalog-heading .sr-row-links {flex-wrap: nowrap; gap: 12px}
+  .sr-film-library .sr-catalog-heading :is(a,button) {font-size: 12px}
+  .sr-site .sr-film-library .sr-tools {grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px 10px; margin: 7px 0 14px}
+  .sr-film-library .sr-tools label:first-child {grid-column: 1 / -1}
+  .sr-site .sr-film-library .sr-tools :is(input,select) {font-size: 16px}
+  .sr-film-library .sr-library-record {padding: 0 8px; justify-content: start; gap: 0 8px}
+  .sr-rescene .sr-film-library .sr-work-grid,
+  .sr-madein .sr-film-library .sr-work-grid {grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px 10px}
+  .sr-site .sr-film-library .sr-work-copy {padding: 8px}
+  .sr-madein .sr-library-film:first-child .sr-library-film-link {display: block}
+  .sr-madein .sr-library-film:first-child .sr-work-copy {padding: 10px 12px}
+  .sr-triples .sr-film-library .sr-work-grid {grid-template-columns: minmax(0,1fr); gap: 12px}
+  .sr-triples .sr-catalog-heading {justify-content: space-between}
+  .sr-triples .sr-library-film-link {grid-template-columns: 44% minmax(0,1fr)}
+}

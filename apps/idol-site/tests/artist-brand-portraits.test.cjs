@@ -57,8 +57,17 @@ test('IVE keeps the verified April 2022 official white mark and its clickable or
   const mark = readFileSync('public' + marks.ive);
   assert.equal(createHash('sha256').update(mark).digest('hex'), '43b9034014bccae36297d81c8103d463ec20c1e8dbd4c48e3fd96305ea838047');
   const html = await renderArtist(pathFor('ive'));
-  for (const label of ['放大IVE团体照','放大 2022 年官网团照','查看 LOVE DIVE 发行详情'])
-    assert.ok(html.includes('aria-label="'+label+'"'), label);
+  const {parse} = require('next/dist/compiled/node-html-parser');
+  const opening = parse(html).querySelector('.ive-artist-opening');
+  const archive = require('../data/ive-love-dive-archive.json');
+  const photo = opening.querySelector('a[aria-label="查看 IVE 六人团照原图"]');
+  assert.equal(photo.getAttribute('href'), archive.original);
+  assert.equal(photo.querySelector('img').getAttribute('src'), archive.image);
+  assert.equal(opening.querySelector('figcaption a').getAttribute('href'), archive.sourceUrl);
+  assert.match(opening.querySelector('a[href="/artist/ive/love-dive/group.jpg"]').text, /学院造型原图/);
+  const watch = new URL(opening.querySelector('a.ive-dive-mv').getAttribute('href'), 'https://artist.test');
+  assert.equal(watch.searchParams.get('work'), 'recvxyHuKMaCIP');
+  assert.equal(watch.searchParams.get('returnTo'), '/artists/ive');
 });
 
 test('the new member portraits appear on the real directory and directly linked member page', async () => {

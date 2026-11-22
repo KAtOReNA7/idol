@@ -186,7 +186,15 @@ test('all approved retained-source assets have exact hashes and separate provena
  assert.equal(hash(file('public/artist/unis/retained-source-20261019/swicy-phone.svg')),'8dd3b59808cb4f878a5f0a9c07cb03837e188e68cefe9a6dada42b6bb7c1c4bf');
 });
 test('Kep1er homes, roster, profile headings and timeline resolve only approved source nodes',()=>{
- const cases=[['/design-review/kep1er',['663:7902','663:7028','663:7069']],['/design-review/kep1er?section=members',['663:3544']],['/design-review/kep1er?section=members&member=recvxyICzHvPnL',['663:8667','663:4515']],['/design-review/kep1er?section=updates',['663:5268','663:5340','663:5350','663:5239']]];
+ const {parse}=req('next/dist/compiled/node-html-parser');
+ const home=parse(renderer('kep1er',scene('kep1er'),'/design-review/kep1er').render());
+ const release=home.querySelector('.kf-selected-release');
+ assert.equal(release.querySelector('a').getAttribute('href'),'https://kep1er.jp/discography/crackcode/');
+ const browse=release.querySelector('button.kf-release-browse');
+ assert.match(browse.text,/浏览发行与影像/);
+ assert.equal(browse.querySelector('[aria-hidden=true]').text,'→');
+ assert.equal(browse.querySelector('.kf-control-art'),null);
+ const cases=[['/design-review/kep1er?section=members',['663:3544']],['/design-review/kep1er?section=members&member=recvxyICzHvPnL',['663:8667','663:4515']],['/design-review/kep1er?section=updates',['663:5268','663:5340','663:5350','663:5239']]];
  for(const [route,nodes]of cases){const html=renderer('kep1er',scene('kep1er'),route).render();for(const id of nodes){assert.ok(html.includes('data-source-art-node="'+id+'"'),id);assert.ok(!html.includes('data-native-unresolved="'+id+'"'),id);}}
 });
 test('full canonical timelines retain every event in earliest-first order with one logical axis',()=>{

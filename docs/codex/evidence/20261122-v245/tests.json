@@ -1,0 +1,177 @@
+{
+  "applicationCommit": "7d3c7930001d7738b087511ec0046d3d9f248a0b",
+  "baselineApplicationCommit": "b2cd0bdfc2e1248703d4cf3f010630cefb7869b5",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4292,"pass": 4166,"fail": 87,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4303,"pass": 4179,"fail": 85,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1369,"pass": 1369,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 692,
+          "localBytes": 36904756
+        }
+      },
+      "retainedFailureCount": 85,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/kiof-artist.test.cjs",
+          "test": "KIOF only adds authenticated read projection and scoped visual wrappers"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiof-artist.test.cjs",
+          "test": "KIOF social measurements retain original rounded precision and old collection date"
+        }
+      ],
+      "addedTests": [
+        "KIOF uses the read-only group catalog and shared stage editor",
+        "KISS OF LIFE stage cards use one link and the matching thumbnail, date and score across the full stage filter",
+        "ifeye legacy stage bookmarks retain a single in-site watch action and the original video identity",
+        "ifeye original home, filtered directories and related cards open every MV and exact stage player",
+        "izna legacy stage bookmarks retain a single in-site watch action and the original video identity",
+        "izna original home, filtered directories and related cards open every MV and exact stage player",
+        "kiiikiii opens the selected stage from its poster, title and main action",
+        "loona opens the selected stage from its poster, title and main action",
+        "nmixx opens the selected stage from its poster, title and main action",
+        "saymyname opens the selected stage from its poster, title and main action",
+        "shared artist links render the requested section before hydration or catalog data",
+        "stage options keep other performances view-only and ignore a stale saved score",
+        "stayc opens the selected stage from its poster, title and main action",
+        "vvup opens the selected stage from its poster, title and main action"
+      ],
+      "removedTests": [
+        "KIOF only adds authenticated read projection and scoped visual wrappers",
+        "ifeye original home, every MV, filtered directory and related cards link straight to their own player",
+        "izna original home, every MV, filtered directory and related cards link straight to their own player"
+      ]
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4292,"pass": 4166,"fail": 87,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4303,"pass": 4179,"fail": 85,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1369,"pass": 1369,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 692,
+          "localBytes": 36904756
+        }
+      },
+      "retainedFailureCount": 85,
+      "newFailures": [],
+      "clearedFailures": [
+        {
+          "suite": "main",
+          "file": "tests/kiof-artist.test.cjs",
+          "test": "KIOF only adds authenticated read projection and scoped visual wrappers"
+        },
+        {
+          "suite": "main",
+          "file": "tests/kiof-artist.test.cjs",
+          "test": "KIOF social measurements retain original rounded precision and old collection date"
+        }
+      ],
+      "addedTests": [
+        "KIOF uses the read-only group catalog and shared stage editor",
+        "KISS OF LIFE stage cards use one link and the matching thumbnail, date and score across the full stage filter",
+        "ifeye legacy stage bookmarks retain a single in-site watch action and the original video identity",
+        "ifeye original home, filtered directories and related cards open every MV and exact stage player",
+        "izna legacy stage bookmarks retain a single in-site watch action and the original video identity",
+        "izna original home, filtered directories and related cards open every MV and exact stage player",
+        "kiiikiii opens the selected stage from its poster, title and main action",
+        "loona opens the selected stage from its poster, title and main action",
+        "nmixx opens the selected stage from its poster, title and main action",
+        "saymyname opens the selected stage from its poster, title and main action",
+        "shared artist links render the requested section before hydration or catalog data",
+        "stage options keep other performances view-only and ignore a stale saved score",
+        "stayc opens the selected stage from its poster, title and main action",
+        "vvup opens the selected stage from its poster, title and main action"
+      ],
+      "removedTests": [
+        "KIOF only adds authenticated read projection and scoped visual wrappers",
+        "ifeye original home, every MV, filtered directory and related cards link straight to their own player",
+        "izna original home, every MV, filtered directory and related cards link straight to their own player"
+      ]
+    }
+  },
+  "validationCommit": "b4255fe33b4957a8e4e824e843cdbfe9c75cec8d",
+  "initialFullCheck": {
+    "applicationCommit": "7d3c7930001d7738b087511ec0046d3d9f248a0b",
+    "platforms": {
+      "win": {
+        "nodeTotal": {"tests": 4303,"pass": 4178,"fail": 86,"skipped": 39,"cancelled": 0,"todo": 0},
+        "newFailures": [
+          {
+            "suite": "main",
+            "file": "tests/timeline-production.test.cjs",
+            "test": "izna: canonical hashes, ready/hold isolation and actual production renderer contract"
+          }
+        ],
+        "verifyExitCode": 0
+      },
+      "linux": {
+        "nodeTotal": {"tests": 4303,"pass": 4178,"fail": 86,"skipped": 39,"cancelled": 0,"todo": 0},
+        "newFailures": [
+          {
+            "suite": "main",
+            "file": "tests/timeline-production.test.cjs",
+            "test": "izna: canonical hashes, ready/hold isolation and actual production renderer contract"
+          }
+        ],
+        "verifyExitCode": 0
+      }
+    },
+    "testCorrection": {
+      "files": [
+        "apps/idol-site/tests/fixtures/timeline/native-design-edits.json",
+        "apps/idol-site/tests/timeline-production.test.cjs"
+      ],
+      "onlyDisplayChange": "izna / rec28ldfRTrBGz-stage-rTj06CFlDTU / typeLabel: 节目舞台 → KBS Music Bank 舞台",
+      "scope": "The historical event and edition guard verifies the adopted broadcast label, reverses that single comparison field, and still checks its original historical digest. Git diff from packaged source to validation revision contains only these two test files."
+    }
+  },
+  "failureInventory": "full-suite-failures.csv",
+  "input": "Windows and WSL each ran npm run verify and npm test on the packaged application and on the subsequent test-only correction. Runtime and product inputs are identical in both revisions."
+}

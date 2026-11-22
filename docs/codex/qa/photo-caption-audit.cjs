@@ -9,7 +9,9 @@ const {mountAstra} = app('./tests/helpers/timeline-production-renderers.cjs');
 const load = app('./tests/helpers/public-artist-loader.cjs');
 const {memberBelongsInArchive} = load('lib/idol/member-affiliation.ts');
 const visits = require('../evidence/20261122-member-page-coverage/visits.json');
-const wanted = /拍摄(?:日期|时间|时期)(?:未注明|未公开|未披露|未知|不详)|官网公开资料照|从一首歌，再一次认识她们|从青春里，听见她们|此处收录.{0,8}六人阵容/;
+const wanted = process.argv.includes('--member-credits')
+  ? /拍摄日期未载|完整档案卡来自公司官网，拍摄及测量时期未注明|本页照片由 Starting House|肖像来自.{0,25}Edaily 具名采访|更多参与资料持续补充/
+  : /拍摄(?:日期|时间|时期)(?:未注明|未公开|未披露|未知|不详)|官网公开资料照|从一首歌，再一次认识她们|从青春里，听见她们|此处收录.{0,8}六人阵容/;
 
 function visibleMatches(html) {
   const root = parse(html);

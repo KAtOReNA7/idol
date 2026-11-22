@@ -26,12 +26,12 @@ export function artistFilmAction(binding: Binding | null, returnTo: string | nul
 
 type FilmAction = Pick<ReturnType<typeof artistFilmAction>,'href'|'source'|'pending'|'label'>;
 
-export function ArtistFilmPrimary({action, className, remember, children}: {
-  action: FilmAction; className: string; remember: () => void; children?: ReactNode;
+export function ArtistFilmPrimary({action, className, remember, children, focusKey}: {
+  action: FilmAction; className: string; remember: () => void; children?: ReactNode; focusKey?: string;
 }) {
   const content = children ?? action.label;
   if (action.pending) return <div className={className} data-film-primary="pending">{content}</div>;
-  if (action.href) return <a data-film-primary="onsite" className={className} href={action.href}
+  if (action.href) return <a data-film-primary="onsite" data-member-work-trigger={focusKey} className={className} href={action.href}
     onClick={remember} aria-label={action.label}>{content}</a>;
   return <a data-film-primary="source" className={className} href={action.source} target="_blank"
     rel="noopener noreferrer" aria-label={action.label}>{content}</a>;
@@ -59,7 +59,7 @@ export function EditorialVideoActions({href, source, sources, stage, waiting, fa
       {failed ? <>站内观看入口暂时无法加载。 <button className={buttonClass} onClick={retry}>重试</button></> : '正在读取站内观看入口…'}
     </div> : <>
       {!href && <p>此版本暂无站内播放或评分。</p>}
-      <ArtistFilmPrimary action={action} className={buttonClass} remember={remember}/>
+      <ArtistFilmPrimary action={action} className={buttonClass} remember={remember} focusKey={'editorial-video:'+source}/>
     </>}
     {(href || pending || credits.length > 0) && <details className={sourcesClass}><summary>资料与图片来源</summary>
       <ArtistFilmSource action={action}/>

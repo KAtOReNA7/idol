@@ -56,7 +56,7 @@ export default function VchaArtist(){
  const videoCards=(rows:Video[])=><div className="vc-videos">{rows.map(v=>{
    const direct=watchHref(v);
    const detail=sectionUrl({section:'works',media:v.key,format:v.type,release:null});
-   return <a href={direct??detail} className="vc-video" key={v.key} data-artist-media={v.key} data-video-id={v.videoId} onClick={()=>remember()}><span className="vc-video-image"><Picture src={v.image} label={v.title+' · '+(v.type==='mv'?'MV':'舞台')}/><span className="vc-play" aria-hidden="true">↗</span></span><span className="vc-video-caption"><small>{v.chapter.toUpperCase()} / {v.type==='mv'?'MV':'舞台'}</small><strong>{v.title}</strong><span>{v.date||'视频公开日期未收录'}</span></span></a>;
+   return <a href={direct??detail} className="vc-video" key={v.key} data-artist-media={v.key} data-video-id={v.videoId} data-member-work-trigger={'artist-media:'+v.key} onClick={remember}><span className="vc-video-image"><Picture src={v.image} label={v.title+' · '+(v.type==='mv'?'MV':'舞台')}/><span className="vc-play" aria-hidden="true">↗</span></span><span className="vc-video-caption"><small>{v.chapter.toUpperCase()} / {v.type==='mv'?'MV':'舞台'}</small><strong>{v.title}</strong><span>{v.date||'视频公开日期未收录'}</span></span></a>;
  })}</div>;
  const linkedMemberWorks=member&&data?data.works.filter(w=>data.ratings.some(r=>r.memberIds.length===1&&r.memberIds[0]===member.id&&r.workIds.length===1&&r.workIds[0]===w.id)):[];
  const releaseVideos=release?editorial.videos.filter(v=>v.chapter==='vcha'&&v.title===release.title):[];

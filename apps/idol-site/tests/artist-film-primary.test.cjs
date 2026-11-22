@@ -22,6 +22,7 @@ for (const [slug, stageCount, scoreableCount] of [['vcha',4,4],['hitgs',5,5],['a
       const card = library.querySelector('[data-artist-media="'+v.key+'"]');
       assert.equal(card.tagName, 'A', v.key);
       assert.ok(card.querySelector('img'));
+      assert.equal(card.getAttribute('data-member-work-trigger'),'artist-media:'+v.key);
       const main = targetUrl(card);
       const detailFields = {...fields,media:v.key};
       const detail = parse(await renderArtist(group, detailFields, catalog));
@@ -30,6 +31,7 @@ for (const [slug, stageCount, scoreableCount] of [['vcha',4,4],['hitgs',5,5],['a
       assert.equal(detail.querySelectorAll('main a').filter(a => a.getAttribute('href') === source).length, 1);
       if (v.workId) {
         assert.equal(action.getAttribute('data-film-primary'),'onsite');
+        assert.equal(action.getAttribute('data-member-work-trigger'),'editorial-video:'+source);
         assert.match(detail.querySelector('details a[href="'+source+'"]').text,/原片出处/);
         for (const [target, backFields] of [[main,fields],[targetUrl(action),detailFields]]) {
           assert.equal(target.pathname, '/');

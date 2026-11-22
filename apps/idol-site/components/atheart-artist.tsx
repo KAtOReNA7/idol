@@ -48,7 +48,7 @@ export default function AtheartArtist(){
   for(const [key,value] of Object.entries(patch)){if(value)next.set(key,value);else next.delete(key);}
   return path+(next.size?'?'+next:'');
  }
- function navigate(patch:Record<string,string|null>,replace=false){remember();const destination=sectionUrl(patch);if(!safeArtistReturn(destination))return;history[replace?'replaceState':'pushState'](newArtistHistoryState(history.state),'',destination);window.dispatchEvent(new Event('artist-location-change'));if(!replace)document.getElementById('ah-content')?.scrollIntoView({block:'start'});}
+ function navigate(patch:Record<string,string|null>,replace=false,event?:MouseEvent<HTMLElement>){remember(event);const destination=sectionUrl(patch);if(!safeArtistReturn(destination))return;history[replace?'replaceState':'pushState'](newArtistHistoryState(history.state),'',destination);window.dispatchEvent(new Event('artist-location-change'));if(!replace)document.getElementById('ah-content')?.scrollIntoView({block:'start'});}
  const select=(value:string)=>navigate({section:value==='overview'?null:value,member:null,release:null,media:null,format:null,q:null});
  const member=editorial.members.find(m=>m.id===memberId),release=editorial.releases.find(r=>r.key===releaseKey),video=editorial.videos.find(v=>v.key===mediaKey&&v.type===format);
  const showImage=(src:string,label:string)=>setLightbox({src,label});
@@ -67,13 +67,13 @@ export default function AtheartArtist(){
    const direct=watchHref(v);
    const patch={section:'works',media:v.key,format:v.type,release:null};
    const target=direct??sectionUrl(patch);
-   function openVideo(event:MouseEvent){
-    if(direct){remember();return;}
+   function openVideo(event:MouseEvent<HTMLAnchorElement>){
+    if(direct){remember(event);return;}
     if(event.defaultPrevented||event.button!==0||event.altKey||event.ctrlKey||event.metaKey||event.shiftKey)return;
     event.preventDefault();
-    navigate(patch);
+    navigate(patch,false,event);
    }
-   return <a href={target} className="ah-video" key={v.key} data-artist-media={v.key} data-video-id={v.videoId} onClick={openVideo}><span className="ah-video-image"><Picture src={publicVideoCover(v.videoId)?.src??v.image} label={v.title+' · '+(v.type==='mv'?'音乐影像':'表演 / 现场')}/><span className="ah-play" aria-hidden="true">↗</span></span><span className="ah-video-caption"><small>{v.chapter.toUpperCase()} / {v.type==='mv'?'音乐影像':'表演 / 现场'}</small><strong>{v.title}</strong><span>{v.date||'视频公开日期未收录'}</span></span></a>;
+   return <a href={target} className="ah-video" key={v.key} data-artist-media={v.key} data-video-id={v.videoId} data-member-work-trigger={'artist-media:'+v.key} onClick={openVideo}><span className="ah-video-image"><Picture src={publicVideoCover(v.videoId)?.src??v.image} label={v.title+' · '+(v.type==='mv'?'音乐影像':'表演 / 现场')}/><span className="ah-play" aria-hidden="true">↗</span></span><span className="ah-video-caption"><small>{v.chapter.toUpperCase()} / {v.type==='mv'?'音乐影像':'表演 / 现场'}</small><strong>{v.title}</strong><span>{v.date||'视频公开日期未收录'}</span></span></a>;
  })}</div>;
  const linkedMemberWorks=member&&data?data.works.filter(w=>data.ratings.some(r=>r.memberIds.length===1&&r.memberIds[0]===member.id&&r.workIds.length===1&&r.workIds[0]===w.id)):[];
  const releaseVideos=release?editorial.videos.filter(v=>v.releaseKey===release.key):[];

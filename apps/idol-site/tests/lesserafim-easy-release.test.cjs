@@ -27,6 +27,8 @@ test('both existing catalog entries show the confirmed date and web preview, kee
     assert.deepEqual(cards.map(card=>card.querySelector('h3').text), records.map(record=>record.title));
     for (const [index,item] of records.entries()) {
       const card = cards[index];
+      assert.match(item.date, /^\d{4}-\d{2}-\d{2}$/, item.title);
+      assert.ok(card.querySelector('p').text.startsWith(item.date+' · '), item.title);
       if (item.id !== easy.id) {
         assert.equal(card.getAttribute('href'), item.sourceUrl, item.title);
         assert.equal(card.getAttribute('target'), '_blank', item.title);
@@ -42,7 +44,7 @@ test('both existing catalog entries show the confirmed date and web preview, kee
       assert.equal(card.querySelector('img').getAttribute('srcset'),easy.imagePreview+' 480w, '+easy.imagePreviewLarge+' 720w');
     }
     assert.match(page.text,/SOURCE MUSIC 韩国官网收录的 11 项发行/);
-    assert.doesNotMatch(page.text,/暂不展示总计|待完整核验/);
+    assert.doesNotMatch(page.text,/发行日期暂缺|暂不展示总计|待完整核验/);
     if (overview) {
       const items = page.querySelectorAll('.lf-work,.lf-album-cover');
       const firstCover = items.findIndex(item=>item.classNames.includes('lf-album-cover'));

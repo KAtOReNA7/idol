@@ -4,7 +4,7 @@
 |---|---|
 | 正式站 | v240。四类成员评分入口移到本人照片正下方。Hearts2Hearts《The Chase》八张首显图均已正式解码。NewJeans 和 SAY MY NAME 首次字体请求各减少 362,376 字节。[本批正式结果](worklogs/20261122-v240-release.md) |
 | GitHub 主线 | `main` 保留用户验收的 `0e77838a`。归档历史和两个独有分支可按标签恢复。[仓库整理回执](evidence/20261121-repository-and-routes/github-consolidation.json) |
-| 当前开发 | `codex/project-optimization-20261121`。v240 正式应用 `ee8695d7`。SPIA 已完成内页设计及本地复验，Candy Shop 和 STAYC 成员页继续合批。AtHeart《3!4!》正式点播最近仍停在零秒。[v240 发布](evidence/20261122-v240/publication.json) · [SPIA 内页](worklogs/20261122-spia-inner.md) · [AtHeart 实播记录](evidence/20261122-v239/formal-atheart-playback.json) |
+| 当前开发 | `codex/project-optimization-20261121`。v240 正式应用 `ee8695d7`。SPIA 已完成内页设计及本地复验，Candy Shop 和 STAYC 成员页继续合批。AtHeart《3!4!》已在正式作品页静音起播，实际解码 1280 × 720。[v240 发布](evidence/20261122-v240/publication.json) · [SPIA 内页](worklogs/20261122-spia-inner.md) · [AtHeart 正式短播](evidence/20261122-v240/formal-atheart-trusted-click.json) |
 
 ## 11 月 22 日更新
 

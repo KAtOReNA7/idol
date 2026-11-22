@@ -30,9 +30,14 @@ test('Kep1er pairs every listed film and stage with its own picture, title, dest
       assert.equal(main.querySelector('h3').text,work.song||work.name);
       assert.ok(image.getAttribute('src').startsWith('/artist/'),id);
       assert.ok(fs.existsSync('public'+image.getAttribute('src')),image.getAttribute('src'));
+      const videoId=stageOnly?work.stage?.videoId:covers.find(cover=>cover.workId===id)?.videoId;
+      assert.ok(videoId&&image.getAttribute('src').includes(videoId),id);
       assert.equal(primary.searchParams.get('work'),id);
       assert.equal(primary.searchParams.get('video'),stageOnly?'stage':null);
       assert.equal(primary.searchParams.get('returnTo'),from);
+      const date=main.querySelector('time');
+      assert.equal(date?.getAttribute('datetime'),stageOnly?work.stage?.publishedDate:work.releaseDate);
+      if(stageOnly&&date) assert.ok(date.text.startsWith('视频发布 '));
       const links=row.querySelectorAll('a[href]');
       assert.equal(new Set(links.map(link=>link.getAttribute('href'))).size,links.length);
       const secondary=row.querySelector('a.kf-work-stage');
@@ -48,6 +53,13 @@ test('Kep1er pairs every listed film and stage with its own picture, title, dest
       assert.deepEqual(rows.map(row=>row.querySelector('img').getAttribute('src').split('/').at(-1)),
         ['AMwK8YGZGnU.jpg','MZm4qcvbvbQ.jpg','3nMOUzBZ0ZI.jpg']);
       assert.equal(html.querySelector('.kf-selected-release .kf-cover img').getAttribute('src'),'/artist/kep1er/editorial-20261018/crack-code-cover.jpg');
+      const selected=html.querySelector('.kf-selected-release');
+      assert.equal(selected.querySelector('a').getAttribute('href'),'https://kep1er.jp/discography/crackcode/');
+      const browse=selected.querySelector('button.kf-release-browse');
+      assert.equal(browse.text.trim(),'浏览发行与影像 →');
+      assert.equal(browse.querySelector('[aria-hidden="true"]').text,'→');
+      assert.equal(browse.querySelector('.kf-control-art'),null);
+      assert.equal(html.querySelectorAll('.kf-release-track').length,1);
     }
   }
 });

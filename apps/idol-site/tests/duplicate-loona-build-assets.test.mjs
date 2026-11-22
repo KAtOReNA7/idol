@@ -80,7 +80,9 @@ test('read-only audit then build-only pruning preserves all originals and canoni
  assert.equal(f.audit().length,4);
  for(const entry of manifest.files)assert.ok(fs.existsSync(path.join(f.root,'dist/client',entry.path)));
  const plan=apply(f);assert.equal(plan.length,4);assert.equal(plan.reduce((sum,entry)=>sum+entry.bytes,0),1441978);
- assert.ok(plan.every(entry=>entry.file.startsWith('dist/client/artist/loona/independent-v2/')));
+ const plannedFiles = new Set(plan.map(entry => entry.file));
+ const expectedFiles = new Set(manifest.files.map(entry => path.join('dist', 'client', entry.path)));
+ assert.deepEqual(plannedFiles, expectedFiles);
  assert.deepEqual(manifest.files.flatMap(entry=>[entry.path,entry.replacement]).map(file=>hash(fs.readFileSync(path.join(f.root,'public',file)))),before);
  for(const entry of manifest.files){assert.ok(!fs.existsSync(path.join(f.root,'dist/client',entry.path)));assert.equal(hash(fs.readFileSync(path.join(f.root,'dist/client',entry.replacement))),entry.sha256);}
  assert.deepEqual(apply(f),[]);

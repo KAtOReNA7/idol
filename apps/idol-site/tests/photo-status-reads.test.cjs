@@ -1,16 +1,28 @@
 // Real source/native readers and SQL on isolated SQLite. No external requests or writes.
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ts=require('typescript'),{DatabaseSync}=require('node:sqlite');
-const root=process.cwd(),source=fs.readFileSync('lib/idol/photo-maintenance.ts','utf8');
+const root=process.cwd();
+const maintenanceFile=path.join(root,'lib/idol/photo-maintenance.ts');
+const source=fs.readFileSync(maintenanceFile,'utf8');
 function harness(uncached=false){
  const sql=new DatabaseSync(':memory:');for(const f of fs.readdirSync('drizzle').filter(f=>f.endsWith('.sql')).sort())sql.exec(fs.readFileSync('drizzle/'+f,'utf8'));
  const queries=[];let hook=null;
  const db={prepare(query){let args=[];const read=()=>{queries.push({query,args});if(hook)hook(query,args);return sql.prepare(query)};return {bind(...values){args=values;return this},async first(){return read().get(...args)??null},async all(){return {results:read().all(...args)}},async run(){throw Error('Status must never write')}}},async batch(){throw Error('Status must never write')}};
  const modules={},legacy=JSON.parse(fs.readFileSync('data/photo-import-candidates.json'));
- function load(file){file=path.resolve(root,file);if(modules[file])return modules[file];const out={};modules[file]=out;let text=fs.readFileSync(file,'utf8');if(file.endsWith('/photo-maintenance.ts')&&uncached){assert.ok(text.includes('const reads=statusTargetReads(),options=[]'));text=text.replace('const reads=statusTargetReads(),options=[]','const reads=targetReads,options=[]');}
+ function load(file){
+  file=path.resolve(root,file);
+  if(modules[file])return modules[file];
+  const out={};
+  modules[file]=out;
+  let text=fs.readFileSync(file,'utf8');
+  if(uncached && file===maintenanceFile){
+   const cachedRead='const reads=statusTargetReads(),options=[]';
+   assert.ok(text.includes(cachedRead));
+   text=text.replace(cachedRead,'const reads=targetReads,options=[]');
+  }
  const js=ts.transpileModule(text,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText;
  vm.runInNewContext('(function(require,exports){'+js+'})',{crypto:globalThis.crypto,console,TextEncoder,TextDecoder,Uint8Array,DataView,Response,URL,Date,Map,Set,Number,JSON,encodeURIComponent})(name=>{if(name==='cloudflare:workers')return {env:{DB:db}};if(name==='@/data/photo-import-candidates.json')return legacy;if(name==='./native-save')return {nativeRevision:()=>{throw Error('Status cannot save')}};if(name.startsWith('./')||name.startsWith('@/')){const p=name.startsWith('@/')?path.join(root,name.slice(2)):path.resolve(path.dirname(file),name);if(p.endsWith('.json'))return JSON.parse(fs.readFileSync(p));return load(p.endsWith('.ts')?p:p+'.ts')}return require(name)},out);return out;
  }
- const F=load('lib/idol/fields.ts').F,append=load('lib/idol/photo-append-candidates.ts').appendPhotoCandidates,all=[...legacy.candidates,...append],api=load('lib/idol/photo-maintenance.ts');
+ const F=load('lib/idol/fields.ts').F,append=load('lib/idol/photo-append-candidates.ts').appendPhotoCandidates,all=[...legacy.candidates,...append],api=load(maintenanceFile);
  sql.exec("INSERT INTO idol_storage_control VALUES ('main','owner','native',6,'snap',NULL,1); INSERT INTO idol_catalog_state(user_id,generation) VALUES ('owner',10)");
  for(const table of ['ratings','works','members'])sql.prepare('INSERT INTO idol_native_fields VALUES (?,?,?,?)').run('snap:'+table,'snap',table,JSON.stringify(table==='ratings'?[{field_id:F.ratings.photo,field_name:'造型图',type:17}]:[]));
  for(const a of all){for(const [table,id,fields] of [['ratings',a.ratingId,{[F.ratings.members]:[a.memberId],[F.ratings.works]:[a.workId],[F.ratings.photo]:[]}],['works',a.workId,{[F.works.url]:'https://www.youtube.com/watch?v='+a.videoId}],['members',a.memberId,{[F.members.name]:a.memberName}]])sql.prepare('INSERT OR IGNORE INTO idol_native_records VALUES (?,?,?,?,?,?,1,1,7)').run('snap:'+table+':'+id,'snap',table,id,JSON.stringify(fields),'a'.repeat(64));}

@@ -23,7 +23,8 @@ for (const [name, makePlugin, check] of [
       const original = `../../data/triples/${file}.json`;
       const importer = path.join(root, `lib/idol/${module}.ts`);
       const result = resolve({path: original, importer});
-      assert.ok(result?.path.endsWith(`/content-aliases/triples-${file}.ts`));
+      const expectedPath = path.join(__dirname, 'fixtures', 'timeline-host', 'content-aliases', `triples-${file}.ts`);
+      assert.equal(result?.path, expectedPath);
       assert.match(fs.readFileSync(result.path, 'utf8'), /entries: \[\]/);
       assert.equal(resolve({path: original, importer: path.join(root, 'lib/idol/unrelated.ts')}), undefined);
       // A real metadata import escaping the explicit substitution still fails closed.

@@ -4,7 +4,7 @@
 
 正式路由目录、具名 Figma 页面和逐团记录的名单一致，共 51 团，重复和遗漏均为 0。逐团索引按九类页面列出桌面、手机节点，给出素材来源文件、适用的专项实现和正式实测版本。原文件 53 页、3,676 个条目的清点保存在下方。初次清点定位 750 个位置、746 个不同节点，补录后的原索引有 751 个位置、747 个不同节点。[现行逐团索引](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [原索引](../evidence/20261122-group-design-coverage/group-screen-matrix.json)
 
-459 个「团体 × 页面类别」组合中，409 个已定位双宽候选画稿，另有 50 个至少一宽待定位，涉及 18 团。BEWAVE《SING !》补齐两项，YOUNG POSSE、ADYA 和 GENBLUE 各补齐一项本人评分，izna 补齐 KBS 节目舞台。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
+459 个「团体 × 页面类别」组合中，412 个已定位双宽候选画稿，另有 47 个至少一宽待定位，涉及 16 团。VCHA、HITGS、AtHeart 新增了实际节目的团内舞台详情稿。BEWAVE《SING !》补齐两项，YOUNG POSSE、ADYA 和 GENBLUE 各补齐一项本人评分，izna 补齐 KBS 节目舞台。首页 51/51 均有双宽稿。候选包含旧手帐、文字示意和当前实装，各自适用版本可从逐团索引查看。v213 逐团实测首页字体、背景及首图，v236 另核 51 团正式 MV 目录。[逐团索引与来源](../evidence/20261122-group-design-coverage/current-screen-matrix.json) · [51 团首页样式](../evidence/20261122-v213/formal-home-design.json) · [正式站 MV 目录](../evidence/20261122-v236/formal-directories.json)
 
 | 类别 | 双宽候选 | 至少一宽仍待定位的团 |
 | --- | ---: | --- |
@@ -14,7 +14,7 @@
 | 作品目录 | 44/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii |
 | 发行详情 | 39/51 | MEOVV、HITGS、LOONA、BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
 | MV 详情 | 51/51 | 无 |
-| 舞台详情 | 45/51 | ifeye、ODD YOUTH、VCHA、HITGS、AtHeart、PURPLE KISS |
+| 舞台详情 | 48/51 | ifeye、ODD YOUTH、PURPLE KISS |
 | 时间轴 | 42/51 | BABYMONSTER、XG、aespa、KISS OF LIFE、STAYC、NMIXX、KiiiKiii、ITZY、LE SSERAFIM |
 | 评分或手帐状态 | 44/51 | UDTT、XG、aespa、KISS OF LIFE、STAYC、ITZY、LE SSERAFIM |
 
@@ -25,6 +25,8 @@
 | IVE、NewJeans、ADYA、W!TCHX | IVE《LOVE DIVE》官网图形、学院照和版本入口在 v238 双宽通过。NewJeans 首发官网首页在 v238 复验，v240 单验字体。ADYA 首页团照、W!TCHX 的《BLALA》首页、名录和作品稿均有专项，歌词版的旧链接与选人另在 v239 通过。[v238 正式回执](20261122-v238-release.md) · [W!TCHX 设计](20261122-witchx-debut-design.md) · [v239 正式回执](20261122-v239-release.md) |
 | ifeye、izna、NMIXX、STAYC、Hearts2Hearts | 保留 ifeye 六类官方原图稿及本地两宽回执。izna 名录、NMIXX《Roller Coaster》、STAYC《SO BAD》在 v239 复验；Hearts2Hearts《The Chase》八人和两个版本在 v240 复验，取代旧手机稿的外跳主按钮。STAYC、Hearts2Hearts 的新个人档案作品卡属于局部组件。[ifeye](20261122-ifeye-official-photos.md) · [成员页组件](20261122-member-profile-work-editions.md) · [v239](20261122-v239-release.md) · [v240](20261122-v240-release.md) |
 | ITZY、LE SSERAFIM、KiiiKiii | ITZY 和 LE SSERAFIM 各有首页、成员、作品、MV 与舞台两宽，已在本地实点。KiiiKiii《I DO ME》的五人和 1theK 舞台已在 v238 两宽实点。[两团首页与名录](20261122-itzy-lesserafim-official-design.md) · [两团作品详情](20261122-itzy-lesserafim-work-details.md) · [KiiiKiii 正式回执](../evidence/20261122-v238/formal-kiiikiii.json) |
+| VCHA、HITGS、AtHeart、RESCENE、MADEIN、tripleS | v246 正式验三个代表节目与筛选返回。另三团的作品目录按发行方实际布局做了桌面和手机稿，首屏已有真实封面。[舞台与作品目录](20261122-three-artist-directories.md) |
+| IVE、QWER、PURPLE KISS、ILLIT | IVE 原目录设计已把 MV 置于专辑前。QWER 乐队发行、PURPLE KISS 印相册、ILLIT 主影像与版本列表均有具名双宽稿和本机对照。[四团目录](20261122-four-artist-film-directories.md) |
 | Candy Shop、SPIA、UDTT | 正式 v241 两宽实开 SPIA、Candy Shop 的成员原图、作品、发行和舞台，UDTT 页眉的公司原标及成员返回也已核对。[正式结果](20261122-v241-release.md) |
 
 飞书第 8 项涉及八个示例，也要求核查其余团。51 团首页已有来源和视觉初查，五种栏目入口有 255 次正式路由本地渲染，338 个成员详情有实际访问记录，603 页横查已清理那批公开页面编辑说明。后续仍需区分组件行为、团体识别、官方发行期复原和每张内页的成稿。WOOAH《BLUSH》原稿中的缺图标记已替换。[作品、舞台及成员评分稿](../evidence/20261122-group-design-coverage/three-work-states.json)

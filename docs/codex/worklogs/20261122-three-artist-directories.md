@@ -14,6 +14,8 @@ AtHeart 另八场分别保留《3!4!》两个版本、《Say It》三个版本�
 
 全 51 团的 535 个舞台入口中，直接打开站内舞台从 474 提至 485。33 个经对应资料页进入，17 个提供该次演出的资料。目录首操作误进 MV 为 0。真实组件验证三团每场、旧书签、过滤词、错误绑定、剪辑区间和失效记录。33 项定向用例及 202 项图片与详情用例全部通过。[本批逐团清单](../evidence/20261122-three-artist-directories/stage-routes.json) · [上一批清单](../evidence/20261122-stage-directory-targets/groups.json)
 
+正式 v246 的手机页分别从三团舞台目录打开上表三场，核对了作品页选中的舞台、实际封面和发布者链接，并返回原团舞台筛选。本机后续从三团各自的另一条记录往返，三次焦点都回到原控件。[三场正式站操作](../evidence/20261122-v246/three-stage-direct.json) · [三团本机返回](../evidence/20261122-v247/three-other-return-focus-local.json)
+
 ## RESCENE、MADEIN、tripleS 的作品首屏
 
 此组三个团原已采用官网团标和首页照片。进入作品后，都需要经过 MUSIC、筛选、分区导航与第二个大标题才能看到封面。现在保留各自作品顺序、搜索、观看记录、格式筛选和专辑。封面和片名共同打开同一支 MV，舞台及整体舞台评分保持独立。
@@ -38,3 +40,5 @@ AtHeart 另八场分别保留《3!4!》两个版本、《Say It》三个版本�
 | 1425 | tripleS | 713 → 283 | 131 → 156 | 3 → 6 |
 
 首次打开的作品仍分别为《Runaway》《PUNG!》《Welcome to Heaven》。待首屏图片解码后复查，三团 16 张图片实际为 1280 × 720，图中人物完整。[正式基线](../evidence/20261122-v246/three-works-fold-before.json) · [本机同宽读数](../evidence/20261122-v247/three-works-fold-local.json)
+
+改前通过键盘打开 MADEIN 第三支 MV 后返回，焦点落到整页正文。修改后从三团各自的 MV 和舞台各往返一次，本机六次均回到打开时的具体入口。[六次返回结果](../evidence/20261122-v247/three-works-return-focus-local.json)

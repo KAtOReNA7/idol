@@ -1,0 +1,104 @@
+{
+  "applicationCommit": "25427d0329bb9c5bffcddc755ca0ed31ebaebcc9",
+  "baselineApplicationCommit": "4f9fe8222887b9e8406863a4f40e3658f160fb79",
+  "baselineValidationCommit": "db3441f2f651f9ce76d023f8ae5e1a053d12ed5c",
+  "comparison": "Node TAP failures matched by suite, relative test file and test title on the same platform.",
+  "platforms": {
+    "win": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4361,"pass": 4244,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4368,"pass": 4251,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1415,"pass": 1415,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "a work returns to its marked album history entry or directly to the same first-HTML track",
+        "before React, native pointer and Enter activation both preserve the exact track across a return",
+        "modified clicks keep their current position, and refused history writes retain the direct track return",
+        "only the August NEW DANCE is used by its album and both editions remain in the song search",
+        "only the seven exact, edition-specific track fragments can travel through the work route",
+        "server HTML includes the six tracks, date, full X-edition package and both source links",
+        "the XG directory and exact cover return retain every other album, film and solo release link"
+      ],
+      "removedTests": []
+    },
+    "linux": {
+      "node": "v24.16.0",
+      "npm": "11.13.0",
+      "sameRuntimeAsBaseline": true,
+      "baselineFull": {"tests": 4361,"pass": 4244,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+      "full": {
+        "exitCode": 1,
+        "nodeTotal": {"tests": 4368,"pass": 4251,"fail": 78,"skipped": 39,"cancelled": 0,"todo": 0},
+        "pythonPassedByMode": {"default": 4,"optimized": 4}
+      },
+      "verify": {
+        "exitCode": 0,
+        "nodeSuites": {
+          "current": {"tests": 1415,"pass": 1415,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "optimizedPythonPreflight": {"tests": 19,"pass": 19,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0},
+          "builtAssets": {"tests": 6,"pass": 6,"fail": 0,"cancelled": 0,"skipped": 0,"todo": 0}
+        },
+        "productionBuild": "passed",
+        "typecheck": "passed",
+        "pythonPasses": {"batch": 4,"optimizedBatch": 4,"builtCssHttp": 7},
+        "stageValidation": {"inventory": 614,"sources": 527,"valid": true},
+        "assetValidation": {
+          "status": "passed",
+          "mode": "dry-run",
+          "remoteCopies": 5999,
+          "restrictedCopies": 10,
+          "localAssets": 720,
+          "localBytes": 49862816
+        }
+      },
+      "retainedFailureCount": 78,
+      "newFailures": [],
+      "clearedFailures": [],
+      "addedTests": [
+        "a work returns to its marked album history entry or directly to the same first-HTML track",
+        "before React, native pointer and Enter activation both preserve the exact track across a return",
+        "modified clicks keep their current position, and refused history writes retain the direct track return",
+        "only the August NEW DANCE is used by its album and both editions remain in the song search",
+        "only the seven exact, edition-specific track fragments can travel through the work route",
+        "server HTML includes the six tracks, date, full X-edition package and both source links",
+        "the XG directory and exact cover return retain every other album, film and solo release link"
+      ],
+      "removedTests": []
+    }
+  },
+  "validationCommit": "25427d0329bb9c5bffcddc755ca0ed31ebaebcc9",
+  "failureInventory": "full-suite-failures.csv",
+  "compiledReleaseRoutes": {
+    "paths": ["/artists/aespa/releases/armageddon","/artists/xg/releases/new-dna"],
+    "artifact": "dist/server/ssr/index.js",
+    "listedIn": ["Windows","WSL"]
+  },
+  "input": "Windows and WSL each verified and ran the full test suite in a dedicated checkout of the frozen application."
+}
